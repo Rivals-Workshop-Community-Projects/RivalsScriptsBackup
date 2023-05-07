@@ -51,7 +51,7 @@ knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 16;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .5; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -62,7 +62,7 @@ crouch_recovery_frames = 3;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 2;
-dodge_recovery_frames = 3;
+dodge_recovery_frames = 4;
 
 //tech animation frames
 tech_active_frames = 14;
@@ -110,6 +110,11 @@ puffshroom_timer = 0;
 puffshroom_sprite = sprite_get("puffshroom");
 playtest = (object_index == oTestPlayer);
 practice_mode = false;
+uspecial_used = false;
 
 copy_ability_id = 47;
 TCG_Kirby_Copy = 11;
+mamizou_transform_spr = sprite_get("helpless");
+pot_compat_variable = sprite_get("food");
+pot_compat_text = "Ghost Pepper Fajita"
+arena_title = "The Harvest's Haunter";

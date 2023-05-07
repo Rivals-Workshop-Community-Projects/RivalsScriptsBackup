@@ -94,7 +94,6 @@ set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, sound_get("slash0"));
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_TECHABLE, 1);
 
@@ -157,5 +156,4 @@ set_hitbox_value(AT_USTRONG, 8, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 8, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 8, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 8, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_USTRONG, 8, HG_HIT_SFX, sound_get("slash5"));
 set_hitbox_value(AT_USTRONG, 8, HG_HITBOX_GROUP, 7);

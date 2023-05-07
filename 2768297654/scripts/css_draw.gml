@@ -37,7 +37,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.14";
-patch_day = "25";
+patch_day = "29";
 patch_month = "APR";
  
 var num_alts = 25;
@@ -101,6 +101,7 @@ alt_name[22]  = "I'm in your walls, BK.";
 alt_name[23]  = "Pastel Pride"; 
 alt_name[24]  = "Maestro"; 
 }else{
+alt_name[20]  = "Ballin'";
 alt_name[21]  = "Genome"; 
 alt_name[22]  = "Retro-Tag"; 
 }
@@ -126,7 +127,7 @@ if (get_player_color(player)== 19){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     
-if (get_player_color(player)==21 || get_player_color(player)==22){
+if (get_player_color(player)==21 || get_player_color(player)==22 || get_player_color(player)==20){
 	is_alt_changeable = true;
 }else{
 	is_alt_changeable = false;

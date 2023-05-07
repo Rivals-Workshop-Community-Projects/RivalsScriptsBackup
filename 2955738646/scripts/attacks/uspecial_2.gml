@@ -86,7 +86,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_TYPE, 1); //Scanner for air
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_LIFETIME, 10);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_X, 159);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_X, 155);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_Y, -205);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WIDTH, 230);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HEIGHT, 210);
@@ -116,7 +116,7 @@ set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 1); //Scanner for ground
 set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_LIFETIME, 10);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_X, 159);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_X, 155);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_Y, -205);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_WIDTH, 230);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HEIGHT, 210);
@@ -226,10 +226,10 @@ set_hitbox_value(AT_USPECIAL_2, 5, HG_PROJECTILE_DESTROY_EFFECT, 197);
 
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_TYPE, 2); //First missile
 set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW, 6);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 9);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 23);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_LIFETIME, 200);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_X, -20);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_Y, -80);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_WIDTH, 90);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HEIGHT, 90);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PRIORITY, 5);
@@ -245,16 +245,16 @@ set_hitbox_value(AT_USPECIAL_2, 3, HG_HIT_SFX, sound_get("ARC_BTL_GNN_GnyFrc_RKN
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_SPRITE, sprite_get("uspecial2_proj"));
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_ANIM_SPEED, .9);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_HSPEED, 1);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_VSPEED, -1);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_DESTROY_EFFECT, 197);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_HSPEED, 4);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_VSPEED, -9);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_PROJECTILE_DESTROY_EFFECT, Explosive);
 
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_TYPE, 2); //Second missile
 set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW, 6);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW_CREATION_FRAME, 18);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW_CREATION_FRAME, 31);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_LIFETIME, 200);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_X, 30);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_Y, -80);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_X, 20);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_WIDTH, 90);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HEIGHT, 90);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PRIORITY, 5);
@@ -270,9 +270,9 @@ set_hitbox_value(AT_USPECIAL_2, 4, HG_HIT_SFX, sound_get("ARC_BTL_GNN_GnyFrc_RKN
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_SPRITE, sprite_get("uspecial2_proj"));
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_ANIM_SPEED, .9);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_HSPEED, 1);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_VSPEED, -1);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_DESTROY_EFFECT, 197);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_HSPEED, 9);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_VSPEED, -4);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_PROJECTILE_DESTROY_EFFECT, Explosive);
 /*
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_TYPE, 2); //First missile 2
 set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW, 5);

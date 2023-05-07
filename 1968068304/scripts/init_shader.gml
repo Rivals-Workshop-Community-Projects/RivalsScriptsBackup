@@ -1,7 +1,7 @@
 //init_shader.gml:
 var alt_clr = get_player_color("online_css" in self ? 0 : player);
 
-if (alt_clr == 15) {
+if (alt_clr == 12) {
 set_character_color_shading( 0, 0 );
 set_character_color_shading( 1, 0 );
 set_character_color_shading( 2, 0 );

@@ -54,6 +54,7 @@ if get_gameplay_time() % f == 0 {
 }
 
 // ===== LATE ATTACK UPDATE =====
+var should_stop_uspec_sound = true;
 if state == clamp(state, 5, 6) switch attack {
     case AT_UAIR:
         if window >= 2 && image_index < 4 { hud_offset = 30; }
@@ -65,7 +66,8 @@ if state == clamp(state, 5, 6) switch attack {
     	if window >= 3 && image_index < 10 { hud_offset = 80; }
     	break;
 	case AT_USPECIAL:
-		if window >= 2 && image_index < 13 { hud_offset = 70; }
+		if window == 1 { should_stop_uspec_sound = false };
+		else if window >= 2 && image_index < 13 { hud_offset = 70; }
 		break;
 	case AT_NSPECIAL:
 		if window == 5 && window_timer == 0 && !hitpause {
@@ -109,8 +111,15 @@ if state == clamp(state, 5, 6) switch attack {
     	}
     	break;
 }
-else { // jab parry stuff
+else { // if not attacking
 	jab_parried = false;
+}
+
+if should_stop_uspec_sound {
+	if uspec_sound != noone {
+		sound_stop(uspec_sound);
+		uspec_sound = noone;
+	}
 }
 
 // ===== STORAGE =====

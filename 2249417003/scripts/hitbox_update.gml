@@ -33,16 +33,18 @@ if (type == 2 && !in_hitpause) {
         break;
         
         case AT_USPECIAL_GROUND:
-            if (hitbox_timer > 45 && !free) { destroyed = true; break;}
+            if (hitbox_timer > 40 && !free) { destroyed = true; sound_play(asset_get("sfx_ell_small_missile_ground")); break;}
             if (hitbox_timer <= 1) { 
                 proj_angle = point_direction(0, 0, hsp, vsp); 
                 ralsei_was_hit = false; break;
             }
+            var sqrttimer = sqrt(hitbox_timer / 2);
+            if (sqrttimer == floor(sqrttimer)) spawn_hit_fx(x, y, 14);
             
             //don't track the opponent if ralsei was attacked.
             //if (player_id.hitstun >= 1) { ralsei_was_hit = true; }
 
-            if (hitbox_timer == 44) { // && !ralsei_was_hit) {
+            if (hitbox_timer == 39) { // && !ralsei_was_hit) {
                 walls = 0;
                 grounds = 0;
                 

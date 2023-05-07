@@ -40,7 +40,7 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 	destroy_hitboxes();
 	window = 2;
 	window_timer = 15;
-	move_cooldown[AT_USPECIAL_2] = 50;
+	move_cooldown[AT_USPECIAL_2] = 90;
 	marked_id = true;
 	other.should_make_shockwave = false;
 	other.targeted = true;
@@ -52,12 +52,13 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 		//other.targeted = false;
 		//hsp = -10 * spr_dir;
 		//vsp = -10;
-		other.target_time -= 1;
+		//other.target_time -= 1;
 		if (other.target_time == 0){
-		other.targeted = false;
+		//other.targeted = false;
 		}
 	}
-	if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){
+	if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
+		other.target_time -= 1;
 		//other.targeted = false;
 		//hsp = -20 * spr_dir;
 		//vsp = -20;
@@ -65,17 +66,10 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 	if (my_hitboxID.hbox_num == 5){
 		x = my_hitboxID.x;
 		y = my_hitboxID.y+35;
-		//other.targeted = false;
+		other.targeted = false;
+		other.maintarget = false;
 		//hsp = -20 * spr_dir;
 		//vsp = -20;
-	}
-}
-
-if (timestop > 0){
-	timestop_amount -= 3;
-	timestop_BG.image_alpha -= 0.1;
-	if (my_hitboxID.attack == AT_NSPECIAL){
-		timestop_amount -= 2;
 	}
 }
 
@@ -149,19 +143,23 @@ if ((my_hitboxID.attack == AT_UTILT && window == 2) && hit_player_obj.state != P
 */
 
 if (my_hitboxID.attack == AT_FSTRONG){
-	if (hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
+	if (my_hitboxID.hbox_num == 1){
+		grabbedid = hit_player_obj;
+		destroy_hitboxes();
+	}
+	if (grabbedid > 0 && grabbedid.state != PS_RESPAWN && grabbedid.invincible == false and grabbedid.soft_armor == 0 and !grabbedid.super_armor){
     if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
+        grabbedid.grabbed = 1;
 		grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
     	}
 	}
 	if (my_hitboxID.hbox_num == 2){
-	if (hit_player_obj.should_make_shockwave == true){
+	if (grabbedid.should_make_shockwave == true){
 	spawn_hit_fx(my_hitboxID.x+6 * spr_dir, my_hitboxID.y-24, (Explosive_Punch));
 	}
-	if (hit_player_obj.should_make_shockwave == false){
+	if (grabbedid.should_make_shockwave == false){
 	spawn_hit_fx(my_hitboxID.x+25 * spr_dir, my_hitboxID.y-20, (204));
 		}
 	}
@@ -215,9 +213,16 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_DSPECIAL){
 	if (my_hitboxID.hbox_num == 1){
-		y = y-2;
+		y = y-4;
+		window = 4;
+		window_timer = 0;
 		dspecial_id = hit_player_obj;
 		destroy_hitboxes();
+	}
+	if (my_hitboxID.hbox_num == 3){
+		dspecial_id = hit_player_obj;
+		window = 4;
+		window_timer = 1;
 	}
 	if (my_hitboxID.hbox_num == 4){
 		hsp = -10 * spr_dir;
@@ -246,6 +251,7 @@ if((my_hitboxID.attack == AT_DSPECIAL_2 && window == 2) && hit_player_obj.state 
 
 //Timestop hitboxes
 if (timestop == true){
+	timestop_amount -= 1;
 	with (other){
 		timestop_damage += enemy_hitboxID.damage; 
 			if (get_player_damage( player ) > prev_damage){
@@ -253,18 +259,20 @@ if (timestop == true){
 		}
 	}
 	if (other.timestop_hit == false){
-		if !(attack == AT_EXTRA_3 && hbox_num == 4){
+		if !(attack == AT_EXTRA_3 && hbox_num > 0){
 		//other.timestop_damage = 1;
 		other.timestop_hit = true;
-		var timestop_hb = create_hitbox(AT_EXTRA_3, 2, other.x+20, other.y-90);
+		var timestop_hb = create_hitbox(AT_EXTRA_3, 2, other.x+2, other.y-9);
 		timestop_hb.follow = hit_player_obj.id;
 		}
 	}
-	if (attack == AT_EXTRA_3 && hbox_num == 4){
+	if (attack == AT_EXTRA_3 && hbox_num == 3){
 		//if (other.timestop_damage > 0){ other.timestop_damage -= 1; timestop_hb.destroyed = true; }
 	}
 }
 
 if (timestop == false){
+	//if (attack == AT_EXTRA_3 && hbox_num >= 3){
 	with (other){ timestop_damage -= 1; }
+	//}
 }

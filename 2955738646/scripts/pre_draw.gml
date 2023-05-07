@@ -7,7 +7,7 @@ shader_start();
 //draw_debug_text( x-90, y-180, "hsp: " + string( hsp ));
 //draw_debug_text( x-90, y-160, "vsp: " + string( vsp ));
 //draw_debug_text( x-90, y-140, "state timer: " + string( state_timer ));
-//draw_debug_text( x-90, y-140, "Uspecial Charge: " + string( Uspecial_Charge ));
+//draw_debug_text( x-90, y-140, "dspecial charge: " + string( dspecial_charge ));
 
 //draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.3, x - 118, y - 138, 2, 1.5, 0, c_white, .4);
 //draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.2, x - 118, y - 162, 2, 1.8, 0, c_white, .3);

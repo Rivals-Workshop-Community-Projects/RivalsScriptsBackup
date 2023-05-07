@@ -15,7 +15,7 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 18;
+var num_alts = 19;
 var alt_cur = get_player_color(player);
  
  
@@ -31,15 +31,17 @@ alt_name[5]  = "Catastrophe";
 alt_name[6]  = "Adamantite";
 alt_name[7]  = "Weave";
 alt_name[8]  = "Virus";
-alt_name[9]  = "Equinox";
-alt_name[10] = "Jblockman1";
-alt_name[11] = "Supersonic";
-alt_name[12] = "Rainbow";
+alt_name[9] = "Truan't";
+alt_name[10] = "Virulisk";
+alt_name[11] = "Heart"; 
+alt_name[12] = "Political";
 alt_name[13] = "Thirteen";
-alt_name[14] = "Virulisk";
-alt_name[15] = "Political";
-alt_name[16] = "Heart"; 
-alt_name[17] = "Truan't"; 
+alt_name[14]  = "Equinox";
+alt_name[15] = "Jblockman1";
+alt_name[16] = "Supersonic";
+alt_name[17] = "Rainbow";
+alt_name[18] = "Landkon2";
+
  
 //Patch
  

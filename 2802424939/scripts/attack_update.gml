@@ -352,14 +352,14 @@ switch(attack)
         can_fast_fall = false;
         if (window == 2 and window_timer == 1)
         {
-            if (!special_down)
+            if (!special_down and stopwatch2.cooldown == 0)
             {
                 stopwatch.dead = 1;
                 stopwatch2.dead = 1;
                 stopwatch.explode = 1;
                 stopwatch2.explode = 1;
             }
-            else
+            else if (special_down and stopwatch2.cooldown == 0)
             {
                 stopwatch.x = x - 4;
                 stopwatch2.x = x - 4;

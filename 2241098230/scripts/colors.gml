@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 5, 8, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 25 );
 
 // Blue
 set_color_profile_slot( 1, 0, 255, 209, 196 ); //Skin
@@ -238,6 +238,15 @@ set_color_profile_slot( 23, 3, 50, 0, 150 ); //Pants
 set_color_profile_slot( 23, 4, 244, 222, 255 ); //White
 set_color_profile_slot( 23, 5, 83, 0, 250 ); //Fire Outline
 set_color_profile_slot( 23, 6, 83, 0, 250 ); //Smoke
+
+// Regismolder
+set_color_profile_slot( 24, 0, 150, 158, 158 ); //Skin
+set_color_profile_slot( 24, 1, 41, 140, 57 ); //Hair
+set_color_profile_slot( 24, 2, 255, 206, 49 ); //Fire/Gold
+set_color_profile_slot( 24, 3, 231, 255, 255 ); //Pants
+set_color_profile_slot( 24, 4, 255, 206, 49 ); //White
+set_color_profile_slot( 24, 5, 219, 117, 33 ); //Fire Outline
+set_color_profile_slot( 24, 6, 41, 140, 57 ); //Smoke
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Skin","colors":[{"r":114,"g":105,"b":86},{"r":86,"g":72,"b":72},{"r":166,"g":150,"b":145,"main":true}]},{"name":"Hair","colors":[{"r":170,"g":149,"b":58},{"r":128,"g":96,"b":28},{"r":88,"g":55,"b":17,"main":true}]},{"name":"Fire/Gold","colors":[{"r":255,"g":228,"b":0,"main":true},{"r":255,"g":124,"b":0}]},{"name":"Pants","colors":[{"r":122,"g":25,"b":14,"main":true},{"r":83,"g":17,"b":9}]},{"name":"White","colors":[{"r":255,"g":255,"b":228,"main":true},{"r":193,"g":193,"b":157}]},{"name":"Fire Outline","colors":[{"r":170,"g":0,"b":0,"main":true}]},{"name":"Smoke","colors":[{"r":80,"g":87,"b":92,"main":true},{"r":57,"g":66,"b":71}]}]}

@@ -955,7 +955,7 @@ if (attack == AT_NTHROW){
 				var window_length = get_window_value(attack, 2, AG_WINDOW_LENGTH);
 				drive_grabbed();
 		
-				if(window_timer == window_length){ 
+				if(window_timer == window_length){
 					// var t = 24;
 					// var s = x + ((relative_dest_x + 160) * spr_dir);
 					// var so = x;
@@ -1371,6 +1371,6 @@ if(instance_exists(hoop_dfx)){ // Correct hoop position
 		var new_y = -1*(x_squared)*(relative_dest_y / relative_dest_x_squared) + relative_dest_y;
 	}
 	
-	count++;
+	if(!hitpause) count++;
 	grabbed_player_obj.y = floor(starting_y + new_y);
 	grabbed_player_obj.x = floor(starting_x + (relative_dest_x == 0 ? 0 : t));

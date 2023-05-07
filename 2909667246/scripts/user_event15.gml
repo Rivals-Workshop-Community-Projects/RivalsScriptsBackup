@@ -214,6 +214,11 @@ initImage_ext(sprite_get("dspecial"), -5, fa_center, 2, 2, true, c_white, 1, fal
 initWords("Unlike in Smash bros, the watering can will always be used in the air if a tree hasn't been planted. Villager can also use the axe at all times, even without a tree planted, if he holds Parry during DSpecial's startup!
 In addition to the above, the axe can also be charged, making it more powerful, and at full charge it can cut a tree in 1 swing!");
 
+initTip("Grab");
+initWords("Press Attack+Parry to use Villager's net and grab opponents (and projectiles)!");
+initImage_ext(sprite_get("grab"), -5, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("Unlike in Smash, the grab can be used both on the ground and in the air, and each throw functions a little differently while aerial. Use it for combos and setups you wouldn't be able to do otherwise!");
+
 initTip("Extra Pocket Functions");
 initWords("If Villager has a slingshot projectile pocketed while using FAir/BAir, he will fire two projectiles!");
 initWords("Also, if Villager has a balloon pocketed and uses USpecial, he will replenish some fuel and get a bigger vertical boost!");
@@ -254,6 +259,36 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.28", "2nd May, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Another small fix with projectile grab stuff (oops)");
+
+initPatch("1.27", "2nd May, 2023");
+initHeader("Buffs");
+initSection("+ Rune C now also makes grounded DThrow bury opponents");
+initHeader("Nerfs");
+initSection("- Bury now has a cooldown of 60 frames where the opponent can't be buried again (shouldn't come up very often though, and was mainly added due to the new Rune C thing)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added KoB_grabbed and compatibility with that on most projectiles, for improved behavior when grabbed by KoB characters
++ Made thrown projectiles able to re-hit opponents
++ Fixed some small things with the grab when grabbing certain projectiles (ex: bowling ball, tree)
++ Fixed a buggy interaction when throwing Kewtian stars with the grab");
+
+initPatch("1.26", "30th April, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some bugs with the new grab");
+
+initPatch("1.25", "30th April, 2023");
+initHeader("Buffs");
+initSection("+ Added Villager's grab! You can now use his net to grab opponents by pressing Attack + Parry on the ground or in the air, and throw them in 4 directions. Basically a brand new move that opens up a lot of new options and combos
++ Increased Jab finisher knockback a bit to be more kewtlike (8->9 bkb, angle 45->40)");
+initHeader("Nerfs");
+initSection("- UAir and DAir hitboxes are a little less wide, and UAir with 3 turnips has slightly less bkb (7->6)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added aerial sprites for NSpecial, FSpecial, USpecial, and DSpecial
++ Added some screenshake when the bowling ball lands, to make it feel heavier and stronger
++ Added alt Pocket icon sprites for all alt projectile sprites");
 
 initPatch("1.24", "25th April, 2023");
 initHeader("Fixes / Other Changes");

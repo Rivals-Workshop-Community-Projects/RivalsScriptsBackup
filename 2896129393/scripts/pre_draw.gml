@@ -1,5 +1,8 @@
 //a
 
+if (state == PS_RESPAWN or ((state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR) && attack = AT_TAUNT && initial_invince == 1)) {
+    draw_sprite(sprite_get("plat_extra"),0,x,y);    
+}
 
 /* am not drawing any pre particles rn so comment it out to lighten the code
 shader_start();

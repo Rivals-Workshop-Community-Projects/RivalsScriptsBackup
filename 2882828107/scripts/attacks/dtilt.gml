@@ -15,7 +15,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 7.5);
 set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
@@ -74,7 +74,7 @@ set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_DTILT, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

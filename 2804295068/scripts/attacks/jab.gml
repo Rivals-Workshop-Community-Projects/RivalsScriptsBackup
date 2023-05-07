@@ -69,7 +69,7 @@ set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 6);
-set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 50);
+set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 60);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 24);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_JAB, 2, HG_WIDTH, 24);

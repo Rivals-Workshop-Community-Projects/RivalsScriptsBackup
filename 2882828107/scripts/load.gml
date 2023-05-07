@@ -71,3 +71,5 @@ sprite_change_offset("witchhazel_blast", 0, 64);
 sprite_change_offset("puffshroom", 64, 64);
 
 sprite_change_offset("watering_cannot", 64, 110);
+
+sprite_change_offset("helpless", 64, 94);

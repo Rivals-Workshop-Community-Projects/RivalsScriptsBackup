@@ -104,23 +104,42 @@ switch (player_id.mode)
 						parried = 1;
 					}
 				}
-				if (instance_exists(player_id.stopwatch) and player_id.stopwatch.cooldown != 1)
+				if (instance_exists(player_id.stopwatch))
 				{
 					stun = 1;
 					projectile_parry_stun = true;
-					
-					if (setup == 0 and no_stopwatch == 0)
+					if (player_id.stopwatch.cooldown == 1)
 					{
-						x = player_id.stopwatch.x
-						y = player_id.stopwatch.y
 						setup = 1;
-						walls = 1;
-						grounds = 1;
 					}
-					else if (setup == 1)
+					if (player_id.stopwatch.cooldown != 1)
 					{
-						walls = 0;
-						grounds = 0;
+						if (setup == 0 and no_stopwatch == 0)
+						{
+							switch(hbox_num)
+							{
+								case 1:
+									x = player_id.stopwatch.x 
+									y = player_id.stopwatch.y
+									break;
+								case 2:
+									x = player_id.stopwatch.x
+									y = player_id.stopwatch.y
+									break;
+								case 3:
+									x = player_id.stopwatch.x
+									y = player_id.stopwatch.y
+									break;
+							}
+							setup = 1;
+							walls = 1;
+							grounds = 1;
+						}
+						else if (setup == 1)
+						{
+							walls = 0;
+							grounds = 0;
+						}
 					}
 				}
 				else if (!instance_exists(player_id.stopwatch) or instance_exists(player_id.stopwatch) and player_id.stopwatch.cooldown == 1)

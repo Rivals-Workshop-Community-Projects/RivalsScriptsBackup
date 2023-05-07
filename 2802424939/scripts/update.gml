@@ -17,16 +17,11 @@ with(pHitBox)
     }
 }
 */
-if (instance_exists(stopwatch))
-{
-    if (move_cooldown[AT_DSPECIAL_2] == 0)
-    {
-        stopwatch.cooldown = 0;
-        stopwatch2.cooldown = 0;
-    }
-}
 
 if (state == PS_PRATFALL or state == PS_PRATLAND)
 {
     stun = 0;
 }
+
+
+print(string(cooldown))

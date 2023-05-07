@@ -23,16 +23,16 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED, -2);
-set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DAIR, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DAIR, 5, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 1);

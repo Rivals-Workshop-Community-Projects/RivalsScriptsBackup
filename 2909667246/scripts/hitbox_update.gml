@@ -9,7 +9,8 @@ if (attack == AT_NSPECIAL){
 			("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) || "MattStar" in self && MattStar) && "Pocketable" not in self || "Pocketable" in self && Pocketable) &&
 			("PocketableByOwner" in self && PocketableByOwner != other.player || "PocketableByOwner" not in self) &&
 			("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable) || other.player_id.runeI)){
-	            if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND){
+	            if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND
+	            && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
 	            	//print(hbox_num);print(hitbox_timer);
 	            	hitbox_timer = 0;hit_priority = 0;
 	            	if(player == other.player){
@@ -89,13 +90,13 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_FSPECIAL){
 	if(hbox_num == 1){
 		if(hit_priority > 0 || player == orig_player){
-			if((player == orig_player || player != orig_player && hit_priority > 0) && !Pocketed){
+			if((player == orig_player || player != orig_player && hit_priority > 0) && !Pocketed && !KoB_grabbed){
 	        	timer += 1;
-			}else if(player != orig_player && hit_priority < 0 || Pocketed){
+			}else if(player != orig_player && hit_priority < 0 || Pocketed || !KoB_grabbed){
 				timer = 0;sound = false;
 			}
 	        if(timer >= 40){
-	        	hit_priority = 5;
+	        	if(!Pocketed && !KoB_grabbed)hit_priority = 5;
 	        	if(timer < 90){
 		        	if(abs(hsp) < 7){
 		        		hsp += 0.5*spr_dir;
@@ -130,7 +131,7 @@ if (attack == AT_NSPECIAL){
 	        		sound = true;
 	        		startsound = sound_play(sfx_start,false,noone,1);
 	        	}
-			}else if(Pocketed){
+			}else if(Pocketed || KoB_grabbed){
 				timer = 0;sound = false;
 			}
 	    }
@@ -792,6 +793,8 @@ if (attack == AT_NSPECIAL){
         	spawn_hit_fx(x, y, player_id.fx_dust);
 			destroyed = true;
 		}
+		if(despawning && (prev_player != player || KoB_grabbed)){despawning = false;timer = 0;timer2 = 0;}prev_player = player;
+		if(KoB_was_grabbed != KoB_grabbed && !KoB_grabbed && hit_priority <= 0){despawning = true;}KoB_was_grabbed = KoB_grabbed;
     }else if(hbox_num == 8){ //tree stump
     	depth = 4;
     	if(hitbox_timer == length){
@@ -806,7 +809,10 @@ if (attack == AT_NSPECIAL){
         if (landtimer <= 0 && !despawning && hit_priority > 0 && vsp >= 0 &&
         (position_meeting(x,y+20+vsp,asset_get("par_block")) || position_meeting(x+10,y+20+vsp,asset_get("par_block")) || position_meeting(x-10,y+20+vsp,asset_get("par_block")) ||
         (position_meeting(x,y+20+vsp,asset_get("par_jumpthrough")) || position_meeting(x+10,y+20+vsp,asset_get("par_jumpthrough")) || position_meeting(x-10,y+20+vsp,asset_get("par_jumpthrough"))) && !position_meeting(x,y+5,asset_get("par_jumpthrough")))){
-            spawn_hit_fx(x, y+15, player_id.fx_dust);sound_play(landsfx);
+            spawn_hit_fx(x, y+15, player_id.fx_dust);sound_play(landsfx);shake_camera(6, 5);
+            if(player_id.sol){
+        		var star = spawn_hit_fx(x+40*spr_dir, y-5, player_id.fx_star_tiny);star = spawn_hit_fx(x-40*spr_dir, y-5, player_id.fx_star_tiny);star.spr_dir = -spr_dir;
+			}
             landtimer = 6;hit_priority = 0;
             vsp *= 0.5;hsp *= 0.75;
             //create_hitbox(AT_FSTRONG, 2, x, y);
@@ -859,6 +865,8 @@ if (attack == AT_NSPECIAL){
         	spawn_hit_fx(x, y, player_id.fx_dust);
 			destroyed = true;
 		}
+		if(despawning && (prev_player != player || KoB_grabbed)){despawning = false;timer = 0;timer2 = 0;}prev_player = player;
+		if(KoB_was_grabbed != KoB_grabbed && !KoB_grabbed && hit_priority <= 0){despawning = true;}KoB_was_grabbed = KoB_grabbed;
     }
 }else if (attack == AT_USTRONG){
 	if(hbox_num == 4){ //fireworks
@@ -940,7 +948,7 @@ if (attack == AT_NSPECIAL){
 			spawn_hit_fx(x, y, player_id.fx_dust);
 			destroyed = true;
 		}
-		if(Pocketed){
+		if(Pocketed || KoB_grabbed){
 			num2 = 0;image_index = 0;timer = 0;waspocketed = true;
 		}
 	}else if(hbox_num != 1 && hbox_num != 5){ //fireworks explosions
@@ -983,7 +991,7 @@ if (attack == AT_NSPECIAL){
 				}
 			}
 		}
-		if(Pocketed){
+		if(Pocketed || KoB_grabbed){
 			hitbox_timer = 0;
 		}
 	}

@@ -70,7 +70,7 @@ if (attack == AT_TAUNT){
             spawn_hit_fx( x + 0*spr_dir, y - 25, 264 );
         }
     }
-    if (get_player_color(player) == 14){
+    if (get_player_color(player) == 15){
         attack = AT_TAUNT_2;
     }
     if (window == 4){

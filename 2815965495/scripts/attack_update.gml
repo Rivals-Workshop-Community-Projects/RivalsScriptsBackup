@@ -441,7 +441,7 @@ switch(attack){
 				if runeG {
 					move_cooldown[AT_USPECIAL]= 9999;
 				}
-				//if has_hit {can_fast_fall = true;}
+				if has_hit {can_fast_fall = true;}
 
 		}
 		break;

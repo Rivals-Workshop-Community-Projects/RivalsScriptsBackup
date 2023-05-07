@@ -10,7 +10,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
             spr_dir *= -1;
             hitbox_timer = 0;
             was_parried = true;
-            length = 90;
+            length = 60;
         }
     }
 }
@@ -47,7 +47,7 @@ if(my_hitboxID.attack == AT_FSPECIAL){
             spr_dir *= -1;
             hitbox_timer = 0;
             was_parried = true;
-            length = 90;
+            length = 60;
             var spacing = point_direction(x, y, player_id.x, player_id.y - 20)
             hsp = lengthdir_x(18, spacing)
             vsp = lengthdir_y(18, spacing);

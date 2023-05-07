@@ -1,3 +1,5 @@
+if ("button_cord" not in self) exit;
+
 if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26)) {
 	suppress_cursor = true;
 	if (menu_a_pressed) {

@@ -7,13 +7,15 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 6) {
 }
 
 //Parrying FSpecial marks causes all of them to go away.
-with (hit_player_obj) {
-	for (var i = 0; i < array_length(anthem_status_stacks); i++) {
-		var stack = anthem_status_stacks[i];
-		if (!instance_exists(stack)) continue;
-		other.anthem_status_stacks = array_cut(other.anthem_status_stacks, i);
-		instance_destroy(stack.id);
-		continue;
+if !(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3) {
+	with (hit_player_obj) {
+		for (var i = 0; i < array_length(anthem_status_stacks); i++) {
+			var stack = anthem_status_stacks[i];
+			if (!instance_exists(stack)) continue;
+			other.anthem_status_stacks = array_cut(other.anthem_status_stacks, i);
+			instance_destroy(stack.id);
+			continue;
+		}
 	}
 }
 

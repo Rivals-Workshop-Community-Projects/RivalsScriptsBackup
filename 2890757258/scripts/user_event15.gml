@@ -244,6 +244,20 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.10", "29 April, 2023");
+initHeader("GENERAL:");
+initSection("Fixed a bug for the chara-selec portrait that didn’t reset the colour mapping");
+initHeader("NSPECIAL:");
+initSection("(triple fireball related)
+The triple fireballs are briefly transcendent on cast before gradually losing it");
+initHeader("FSPECIAL:");
+initSection("Can now ledge snap instead of being oddly stuck on stage corners");
+initHeader("DSPECIAL_AIR:");
+initSection("- Endlag reduced from 44 -> 32
++ If the Elephant has hit any opponent and has successfully landed, 
+Shantae can cancel out of the move sooner
+If parried, Elephant cannot fall through platforms.");
+
 initPatch("1.09", "25 April, 2023");
 initHeader("GENERAL:");
 initSection("Updated the localization files");

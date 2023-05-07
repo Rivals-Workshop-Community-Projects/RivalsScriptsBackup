@@ -8,7 +8,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 //startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_hair"));
@@ -28,7 +28,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 27);
 
 //release 1
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 28);
 
@@ -40,7 +40,7 @@ set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 30);
 
 //release 2
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 31);
 
@@ -52,7 +52,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 33);
 
 //release 3
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 34);
 
@@ -64,7 +64,7 @@ set_window_value(AT_NSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 36);
 
 //release 4
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 37);
 
@@ -76,13 +76,13 @@ set_window_value(AT_NSPECIAL, 11, AG_WINDOW_ANIM_FRAME_START, 39);
 
 //release 5
 set_window_value(AT_NSPECIAL, 12, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 12, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 12, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 12, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 12, AG_WINDOW_ANIM_FRAME_START, 40);
 
 //endlag
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 13, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 13, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_ANIM_FRAME_START, 42);
 
@@ -105,6 +105,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("splat3"));

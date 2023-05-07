@@ -169,8 +169,10 @@ villager_bury = false;
 villager_bury_id = 0;
 villager_bury_timer = 0;
 villager_bury_hitpause = false;
+villager_bury_cooldown = 0;
 //villager_bury_mask_index = mask_index;
 villager_bury_sprite = sprite_get("bury");
+voice = noone;
 sfx = noone;
 upb = false;
 tauntcancel = false;
@@ -178,9 +180,26 @@ loaded = false;
 trainingmode = false;
 playtest = (object_index == oTestPlayer);
 
+AT_GRAB = AT_EXTRA_1;
+grabbedtarget = noone;
+grabbedtarget2 = noone;
+grabbedobject = false;
+grabbedarticle = false;
+grabbedposX = 0;
+grabbedposY = 0;
+grabtimer = 0;
+grabbedtargetsprite = asset_get("empty_sprite");
+grabbedtargetsprite_imageindex = 0;
+
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 
-//runeD = true;runeG = true;runesUpdated = true;
+//runeC = true;runesUpdated = true;
+
+if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"
+|| string_lower(get_player_name(player)) == "sky" || string_lower(get_player_name(player)) == "skycrafter1234"
+|| string_count("skycrafter", string_lower(get_player_name(player))) > 0 || string_count("scrafter", string_lower(get_player_name(player))) > 0 || string_count("skycra", string_lower(get_player_name(player))) > 0){
+	kewtmode = 1;
+}
 
 intro = (state == PS_SPAWN);
 introspeed = 0.2;

@@ -166,35 +166,35 @@ set_color_profile_slot( 13, 5, 85, 0, 0 ); //shoes
 set_color_profile_slot( 13, 6, 255, 238, 204 ); //skin
 set_color_profile_slot( 13, 7, 255, 255, 0 ); //light
 
+// kaiju
+set_color_profile_slot( 14, 0, 253, 168, 217 ); //hair/eyes
+set_color_profile_slot( 14, 1, 179, 98, 181 ); //hair shade/eyes shade
+set_color_profile_slot( 14, 2, 105, 107, 146 ); //pants
+set_color_profile_slot( 14, 3, 81, 69, 95 ); //shirt
+set_color_profile_slot( 14, 4, 39, 35, 64 ); //shirt shade
+set_color_profile_slot( 14, 5, 254, 55, 94 ); //shoes
+set_color_profile_slot( 14, 6, 252, 252, 213 ); //skin
+set_color_profile_slot( 14, 7, 223, 252, 53 ); //light
+
 // yuuto
-set_color_profile_slot( 14, 0, 19, 184, 255 ); //hair/eyes
-set_color_profile_slot( 14, 1, 0, 108, 209 ); //hair shade/eyes shade
-set_color_profile_slot( 14, 2, 255, 241, 82 ); //pants
-set_color_profile_slot( 14, 3, 176, 240, 255 ); //shirt
-set_color_profile_slot( 14, 4, 119, 160, 217 ); //shirt shade
-set_color_profile_slot( 14, 5, 65, 105, 139 ); //shoes
-set_color_profile_slot( 14, 6, 253, 228, 190 ); //skin
-set_color_profile_slot( 14, 7, 255, 244, 115 ); //light
+set_color_profile_slot( 15, 0, 19, 184, 255 ); //hair/eyes
+set_color_profile_slot( 15, 1, 0, 108, 209 ); //hair shade/eyes shade
+set_color_profile_slot( 15, 2, 255, 241, 82 ); //pants
+set_color_profile_slot( 15, 3, 176, 240, 255 ); //shirt
+set_color_profile_slot( 15, 4, 119, 160, 217 ); //shirt shade
+set_color_profile_slot( 15, 5, 65, 105, 139 ); //shoes
+set_color_profile_slot( 15, 6, 253, 228, 190 ); //skin
+set_color_profile_slot( 15, 7, 255, 244, 115 ); //light
 
 // cool bug
-set_color_profile_slot( 15, 0, 251, 55, 57 ); //hair/eyes
-set_color_profile_slot( 15, 1, 158, 19, 77 ); //hair shade/eyes shade
-set_color_profile_slot( 15, 2, 140, 31, 32 ); //pants
-set_color_profile_slot( 15, 3, 96, 17, 108 ); //shirt
-set_color_profile_slot( 15, 4, 63, 2, 74 ); //shirt shade
-set_color_profile_slot( 15, 5, 251, 55, 57 ); //shoes
-set_color_profile_slot( 15, 6, 234, 215, 140 ); //skin
-set_color_profile_slot( 15, 7, 251, 169, 55 ); //light
-
-// rider nightbug
-set_color_profile_slot( 16, 0, 253, 168, 217 ); //hair/eyes
-set_color_profile_slot( 16, 1, 179, 98, 181 ); //hair shade/eyes shade
-set_color_profile_slot( 16, 2, 105, 107, 146 ); //pants
-set_color_profile_slot( 16, 3, 81, 69, 95 ); //shirt
-set_color_profile_slot( 16, 4, 39, 35, 64 ); //shirt shade
-set_color_profile_slot( 16, 5, 254, 55, 94 ); //shoes
-set_color_profile_slot( 16, 6, 252, 252, 213 ); //skin
-set_color_profile_slot( 16, 7, 223, 252, 53 ); //light
+set_color_profile_slot( 16, 0, 251, 55, 57 ); //hair/eyes
+set_color_profile_slot( 16, 1, 158, 19, 77 ); //hair shade/eyes shade
+set_color_profile_slot( 16, 2, 140, 31, 32 ); //pants
+set_color_profile_slot( 16, 3, 96, 17, 108 ); //shirt
+set_color_profile_slot( 16, 4, 63, 2, 74 ); //shirt shade
+set_color_profile_slot( 16, 5, 251, 55, 57 ); //shoes
+set_color_profile_slot( 16, 6, 234, 215, 140 ); //skin
+set_color_profile_slot( 16, 7, 251, 169, 55 ); //light
 
 // rainbow
 set_color_profile_slot( 17, 0, 166, 69, 69 ); //hair/eyes

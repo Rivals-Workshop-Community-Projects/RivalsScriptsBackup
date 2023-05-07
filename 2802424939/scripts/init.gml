@@ -140,8 +140,8 @@ trail3 = hit_fx_create(sprite_get("knife_g_trail"), 1);
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
 split_var = split_synced_var(1,1);
 
-mode = 0; // Declare variable
-bair_mode = 0; // Declare variable
+mode = 1; // Declare variable
+bair_mode = 1; // Declare variable
 
 // Synced variable overwrite
 mode = split_var[0];

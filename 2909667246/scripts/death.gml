@@ -13,3 +13,35 @@ if(instance_exists(Pocketed_Projectile)){
     Pocketed_Projectile.destroyed = true;Pocketed_Projectile = noone;
     pocket_projectile = false;pocket_article = false;
 }
+
+if(instance_exists(grabbedtarget)){
+    if(grabbedobject){
+    	grabbedobject = false;grabbedtarget.KoB_grabbed = false;
+    	if(instance_exists(grabbedtarget)){
+    		grabbedtarget.state = 1;grabbedtarget.timer = 60;
+    	}
+    	if(grabbedarticle){
+			grabbedtarget.state = 1;grabbedtarget.timer = 60;
+			if("StarterBlock" in grabbedtarget){grabbedtarget.state = 2;}
+			grabbedtarget.visible = true;
+		}else{
+    		//if("Villager_Tree" in self || "Villager_Bowling_Ball" in self){despawning = true;}
+    	}//grabbedtarget.sprite_index = grabbedtargetsprite;
+    }else{
+    	grabbedtarget.visible = true;
+	}
+}
+
+sound_stop(voice);
+
+if(alt == 30){
+    PlayVoiceClip("craig just missed it a little", 3.5);
+}
+
+#define PlayVoiceClip
+/// PlayVoiceClip(name,?volume)
+//Plays SFX
+//if(!muted){
+	sound_stop(voice);
+	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+//}

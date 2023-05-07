@@ -67,7 +67,7 @@ set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITSTUN_MULTIPLIER, 0.75); 
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_SDI_MULTIPLIER, 0.5); //intended to stun opponents
 //effects
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, asset_get("sfx_ell_small_missile_ground"));
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_LOCKOUT, 0);
 
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_ground_missile"));
@@ -84,4 +84,4 @@ set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_EXTENDED_PARRY_STUN, 1 );
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0 );
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0 );
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_HSPEED, 1);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_VSPEED, -16);
+set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_VSPEED, -20);

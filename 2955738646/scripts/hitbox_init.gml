@@ -10,4 +10,6 @@ if (attack == AT_USPECIAL_2 && (hbox_num == 3 || hbox_num == 4)){
     sound_play(sound_get("S3&K_51"));
     //particleeffect.force_depth = true;
     //particleeffect.depth = depth-20;
+	if (spr_dir == 1){ proj_angle = -310; }
+	if (spr_dir == -1){ proj_angle = 310; }
 }

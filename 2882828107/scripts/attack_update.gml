@@ -5,6 +5,49 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+//dust
+switch(attack){
+	case AT_NSPECIAL:
+		if ((window == 2 || window == 3) && window_timer == 1){
+			spawn_base_dust(x, y, "n_wavedash", spr_dir);
+			spawn_base_dust(x + 16, y, "dash_start", -1);
+			spawn_base_dust(x + 60, y, "dash_start", -1);
+			spawn_base_dust(x - 16, y, "dash_start", 1);
+			spawn_base_dust(x - 60, y, "dash_start", 1);
+			sound_play(sound_get("haunt_ambience"));
+		}
+		break;
+	case AT_DTILT:
+		if ((window == 1 || window == 2) && (window_timer == 6)) || (window == 3 && (window_timer == 4)){
+			spawn_base_dust(x, y + 4, "walk", spr_dir);
+		}
+		break;
+	case AT_DATTACK:
+		if (window == 1 && window_timer == 6) || (window == 2 || window == 3 || window == 4) && (window_timer mod 4 == 3){
+			spawn_base_dust(x, y, "wavedash", spr_dir);
+		}
+		break;
+	case AT_FSTRONG:
+		if (window == 2 && window_timer == 4){
+			spawn_base_dust(x, y, "dash_start", spr_dir);
+		}
+		if (window == 3 && (window_timer == 2 || window_timer == 4)){
+			spawn_base_dust(x, y, "dash", spr_dir);
+		}
+		break;
+	case AT_USTRONG:
+		if (window == 3 && window_timer == 2){
+			spawn_base_dust(x, y, "land", spr_dir);
+		}
+		break;
+	case AT_DSTRONG:
+		if (window == 2 && window_timer == 4) || (window == 3 && window_timer == 5){
+			spawn_base_dust(x + 30, y, "dash", -1);
+			spawn_base_dust(x - 30, y, "dash", 1);
+		}
+		break;
+}
+
 var witchhazel_exists = false;
 var jackolantern_exists = false;
 
@@ -19,11 +62,34 @@ with (obj_article2){
     }
 }
 
+
+if (attack == AT_JAB){
+	if (window == 8){
+		if (window_timer mod 4 == 1){
+			sound_play(asset_get("sfx_swipe_weak2"));
+		}
+		if (window_timer == 8){
+			if !(attack_down){
+				window = 9;
+				window_timer = 0;
+			}
+		}
+	}
+}
+
+
 if (attack == AT_DATTACK){
 	can_move = false
-    if (window == 2){
-		if (window_timer >= 4) && (!attack_down || free){
-			window = 3;
+	if (window == 1 && free){
+		vsp = 0
+		hsp *= 0.8
+	}
+	if (window == 2 || window == 3){
+		hsp = 8 * spr_dir
+	}
+    if (window == 2 && window_timer >= 4) || (window == 3){
+		if (!attack_down || free){
+			window = 4;
 			window_timer = 0;
 			destroy_hitboxes();
 		}
@@ -32,14 +98,14 @@ if (attack == AT_DATTACK){
             y = lerp(y, other.y, 0.5)
         }
 	}
-	if (window == 3){
+	if (window == 4){
 		with oPlayer if id != other.id && dattack_flick == other.id {
             x = lerp(x + 24*other.spr_dir, other.x + 24*other.spr_dir, 1)
             y = lerp(y, other.y, 0.5)
 			dattack_drag = false;
         }
 	}
-	if (window == 4){
+	if (window == 5){
         with oPlayer if id != other.id && dattack_flick == other.id {
 			dattack_flick = false;
         }
@@ -49,7 +115,7 @@ if (attack == AT_DATTACK){
 		hsp = clamp(hsp, -5,5);
 	}
 	/*
-	if (window == 2 && window_timer >= 4){
+	if (window == 2 && window_timer >= 4) || (window == 3){
 		can_jump = true;
 		if (shield_down){
 			set_state( PS_IDLE );
@@ -73,27 +139,24 @@ if (attack == AT_FSTRONG){
     if (window == 1 || window == 2){
 		if (free){
 			vsp = 0
-			hsp = 0
-			can_move = false
+			hsp *= 0.8
 		}
 	}
+	if (window == 1 && (window_timer == 6 || (strong_charge mod 20 == 0 && strong_charge > 0))){
+		spawn_hit_fx(floor(x + (90 + strong_charge*2)*spr_dir),floor(y - 30),20)
+	}
 	if (window == 3){
-		hsp = (25 + (strong_charge/6))*spr_dir;
+		hsp = (20 + (strong_charge/2))*spr_dir;
 	}
 }
 
-/*
-if (attack == AT_DSTRONG){
-    if (window == 3){
-		if (left_down){
-			hsp = -4
-		}
-		if (right_down){
-			hsp = 4
-		}
+if (has_rune("L")){
+	if (attack == AT_USTRONG || attack == AT_DSTRONG) && strong_charge > 1 && window < 4{
+		vsp = 0;
+		hsp *= 0.9
+		can_move = false
 	}
 }
-*/
 
 if (attack == AT_NSPECIAL){
 	can_move = false;
@@ -101,12 +164,13 @@ if (attack == AT_NSPECIAL){
 		if (free){
 			vsp = min(vsp, 1.5);
 			hsp = clamp(hsp, -5,5);
-		}
-		if (left_down && spr_dir == 1 && special_down){
-			spr_dir = -1
-		}
-		if (right_down && spr_dir == -1 && special_down){
-			spr_dir = 1
+		} else {
+			if (left_down && !right_down && special_down){
+				spr_dir = -1
+			}
+			if (right_down && !left_down && special_down){
+				spr_dir = 1
+			}
 		}
 	}
 	//loop
@@ -126,6 +190,7 @@ if (attack == AT_NSPECIAL){
 	}
 	if (window == 4){
 		can_move = true;
+		sound_stop(sound_get("haunt_ambience"));
 	}
 }
 
@@ -160,12 +225,29 @@ if (attack == AT_USPECIAL){
 	}
 	if (window == 3){
 		if (window_timer == 1){
-			spawn_hit_fx(floor(x),floor(y - 36),195)
+			spawn_hit_fx(floor(x),floor(y - 30),195)
 			take_damage (player, -1, 3)
+			if (down_down) && !(up_down){
+				vsp = max(vsp, 6);
+			}
+		}
+		if (window_timer >= 16){
+			if (!free){
+				if (!has_rune("C")){
+					set_state( PS_PRATLAND );
+				} else {
+					set_state( PS_IDLE );
+				}
+			}
+		}
+	}
+	if (has_rune("C")){
+		uspecial_used = true;
+		if (window == 3 && window_timer >= 2){
+			iasa_script()
 		}
 	}
 }
-
 if (attack == AT_DSPECIAL){
     if (window == 2){
 		if (free){
@@ -202,3 +284,37 @@ if (attack == AT_TAUNT){
 		}
 	}
 }
+
+//soup
+#define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

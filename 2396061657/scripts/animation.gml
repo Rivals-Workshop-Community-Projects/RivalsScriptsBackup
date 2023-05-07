@@ -11,12 +11,11 @@ if (state == PS_ATTACK_GROUND){
 	}
 }
 
-/*
+
 // Halloween Code
-if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) == 19)){
+if (!costume_end && (get_player_color(player) == 6)){
 	if (state == PS_SPAWN || state == PS_IDLE){
-		sprite_index = sprite_get("hallow_intro");
+		sprite_index = sprite_get("space_idle");
 		image_index = introTimer;
 	}
 }
-*/

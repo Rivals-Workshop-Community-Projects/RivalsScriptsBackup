@@ -37,7 +37,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //recovery
 set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

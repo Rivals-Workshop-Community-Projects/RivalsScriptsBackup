@@ -1,6 +1,5 @@
 set_victory_theme( sound_get( "S&K3victory" ));
 
-
 sprite_change_offset("idle", 64, 108); sprite_change_offset("mecha_hurt", 20, 89);
 sprite_change_offset("hurt", 64, 108);
 sprite_change_offset("crouch", 64, 108); sprite_change_offset("mecha_crouch", 24, 59);
@@ -86,8 +85,8 @@ sprite_change_offset("airdodge_afterimage", 64, 108);
 sprite_change_offset("nspecial_proj", 84, 74);
 sprite_change_offset("nspecial_air_proj", 84, 74);
 sprite_change_offset("uspecial_proj", 64, 64);
-sprite_change_offset("uspecial2_proj", 38, 34);
-sprite_change_offset("uspecial2_proj2", 38, 34);
+sprite_change_offset("uspecial2_proj", 64, 34);
+sprite_change_offset("uspecial2_proj2", 64, 34);
 sprite_change_offset("unibeam", 90, 90);
 sprite_change_offset("unibeam_stretch", -1, 90);
 sprite_change_offset("unibeam_done", -1, 90);

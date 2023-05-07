@@ -141,8 +141,9 @@ set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1 ); //stop on walls
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1 ); //stop on ground
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0 );
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_UNBASHABLE, 0 );
-set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_PARRY_STUN, 0 );
-set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 0 );
+set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_PARRY_STUN, 1 );
+set_hitbox_value(AT_FAIR, 4, HG_EXTENDED_PARRY_STUN, 1 );
+set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1 );
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_IS_TRANSCENDENT, 0 );
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_FAIR, 4, HG_PROJECTILE_VSPEED, 5);

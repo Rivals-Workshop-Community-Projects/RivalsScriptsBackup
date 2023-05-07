@@ -2,6 +2,9 @@
 //	put this at the VERY TOP of the file.
 cpu_hover_update(); 
 
+//	fix odd colour bug
+alt_fix = player;
+
 if ("sound_control" in self)
 {
 	if (sound_control > 0)

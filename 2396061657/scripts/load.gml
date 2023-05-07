@@ -108,7 +108,7 @@ sprite_change_offset("vfx_ribbonslam", 120, 120);
 sprite_change_offset("vfx_beeg", 176, 184);
 
 sprite_change_offset("date_bg", 800, 500);
-sprite_change_offset("hallow_intro", 48, 98);
+sprite_change_offset("space_idle", 28, 80);
 sprite_change_offset("costume_fall", 48, 98);
 
 sprite_change_offset("hit_particle1", 4, 16);

@@ -1,5 +1,5 @@
 set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 2);
-set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_DSPECIAL_AIR, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL_AIR, AG_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));
@@ -41,12 +41,12 @@ set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_HSPEED_TYPE, 1);
 
-set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_LENGTH, 10);				//	16
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 
 //	Endlag
-set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_LENGTH, 16);				//	22
 set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_ANIM_FRAME_START, 13);
 

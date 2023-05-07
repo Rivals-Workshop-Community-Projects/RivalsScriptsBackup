@@ -7,8 +7,16 @@ switch attack {
     case AT_FSPECIAL:
         grabbed = [];
         snapped_to_ledge = false;
-        // intentionally no break
+        // mach mode physics
+        if nspec_mach_timer > 0 {
+            set_window_value(attack, 1, AG_WINDOW_HSPEED_TYPE, 0);
+        }
+        else {
+            reset_window_value(attack, 1, AG_WINDOW_HSPEED_TYPE);
+        }
+        break;
     case AT_USPECIAL:
+        uspec_charge = 0;
         // mach mode physics
         if nspec_mach_timer > 0 {
             set_window_value(attack, 1, AG_WINDOW_HSPEED_TYPE, 0);

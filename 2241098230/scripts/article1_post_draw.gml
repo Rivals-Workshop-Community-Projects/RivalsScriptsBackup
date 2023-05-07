@@ -13,6 +13,21 @@ if (get_player_color(player) == 17) {
     draw_sprite_tiled_ext(sprite_get("genesis_static"), (get_gameplay_time() * 0.25), x, y, 1, 1, c_white, 1)
     maskFooter();
 }
+else if (get_player_color(player) == 24) {
+    for (var i = 0; i < array_length(smoke_objects); i++) {
+        if (smoke_objects[i].size < 10)
+            draw_sprite(smoke4_spr, smoke_objects[i].size, round(smoke_objects[i].x), round(smoke_objects[i].y));
+    }
+    shader_end();
+    for (var i = 0; i < array_length(smoke_objects); i++) {
+        maskHeader(); 
+        if (smoke_objects[i].size < 10)
+            draw_sprite(smoke2_spr, smoke_objects[i].size, round(smoke_objects[i].x), round(smoke_objects[i].y));
+        maskMidder();
+    }
+    draw_sprite_tiled_ext(sprite_get("regi_statchange"), (get_gameplay_time() * 0.25), x, y, 1, 1, c_white, 1)
+    maskFooter();
+}
 else {
     for (var i = 0; i < array_length(smoke_objects); i++) {
         if (smoke_objects[i].size < 10)

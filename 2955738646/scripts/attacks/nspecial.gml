@@ -76,9 +76,9 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 16);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_HSPEED_TYPE, 0);
-set_window_value(AT_NSPECIAL, 6, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_HSPEED, 0);
-set_window_value(AT_NSPECIAL, 6, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_SFX, sound_get("Gun_reload"));
 
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_TYPE, 1); //Aerial gunning

@@ -28,7 +28,7 @@ set_num_hitboxes(AT_FSPECIAL, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 90);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 60);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 30);
@@ -56,7 +56,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("knife_hit1"));
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 90);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 60);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 30);
@@ -84,7 +84,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("knife_hit1"));
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 90);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 60);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 30);

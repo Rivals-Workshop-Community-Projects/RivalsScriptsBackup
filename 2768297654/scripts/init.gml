@@ -248,6 +248,15 @@ set_color_profile_slot( 22, 4, 96, 158, 155 ); //Pants
 set_color_profile_slot( 22, 5, 149, 202, 116 ); //Shoes
 set_color_profile_slot( 22, 6, 248, 219, 94 ); //Shirt Stripe
 }
+if(get_player_color(player) == 20){ // BLW
+set_color_profile_slot( 20, 0, 97, 97, 97 ); //Shirt
+set_color_profile_slot( 20, 1, 138, 99, 59 ); //Skin
+set_color_profile_slot( 20, 2, 59, 59, 59 ); //Hair1
+set_color_profile_slot( 20, 3, 59, 59, 59 ); //Hair2
+set_color_profile_slot( 20, 4, 122, 71, 52 ); //Pants
+set_color_profile_slot( 20, 5, 255, 212, 71 ); //Shoes
+set_color_profile_slot( 20, 6, 255, 212, 71 ); //Shirt Stripe
+}
 
 user_event(7);
 // MunoPhone Touch code - don't touch

@@ -159,7 +159,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Black Lives Winning" // the name of the alternate color.
-    ce[col,2] = "BLM/BLW" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "
+    BLM/BLW" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Azi" // the name of the alternate color.
@@ -195,7 +196,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 2), get_color_profile_slot_g(col, 2), get_color_profile_slot_b(col, 2));
     ce[col,1] = "Sakura Blossom" // the name of the alternate color.
-    ce[col,2] = "the color pink!" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "
+    the color pink!" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 2), get_color_profile_slot_g(col, 2), get_color_profile_slot_b(col, 2));
     ce[col,1] = "Lakers" // the name of the alternate color.

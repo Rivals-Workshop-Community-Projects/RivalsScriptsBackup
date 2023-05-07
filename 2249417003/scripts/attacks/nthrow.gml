@@ -81,7 +81,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, 6);
 //stun
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_NTHROW, 1, HG_HITSTUN_MULTIPLIER, 1); 
 set_hitbox_value(AT_NTHROW, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_SDI_MULTIPLIER, 1);

@@ -90,6 +90,7 @@ vfx_transform 		= hit_fx_create(sprite_get("vfx_transformation_poof"), 16);
 
 //	Variables
 muted 				= false;				//	For those who don't like Smash ULT ;-;
+											//	And any other sfxs
 
 wait_time 			= 440;
 wait_length 		= 100;
@@ -103,6 +104,7 @@ monke_count			= 0;					//	FSPECIAL & EXTRA
 stormy_puff			= noone;				//	DSPECIAL
 
 ele_loop 			= 0;					//	DSPECIAL_AIR
+ele_ouch			= false;	
 
 
 // Animation Info

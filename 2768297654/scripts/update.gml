@@ -173,6 +173,40 @@ if (get_gameplay_time() < 120){
 				}
 		}
 	}
+	if(get_player_color(player) = 20){
+		//Hawks
+		if(secret_alt_on == false){
+			if(attack_down && taunt_down){
+			  white_flash_timer = 18;
+			  sound_play(asset_get("mfx_levelup"));
+set_color_profile_slot( 20, 0, 71, 71, 71 ); //Shirt
+set_color_profile_slot( 20, 1, 214, 169, 141 ); //Skin
+set_color_profile_slot( 20, 2, 99, 67, 48 ); //Hair1
+set_color_profile_slot( 20, 3, 99, 67, 48 ); //Hair2
+set_color_profile_slot( 20, 4, 71, 54, 54 ); //Pants
+set_color_profile_slot( 20, 5, 255, 255, 255 ); //Shoes
+set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
+			secret_alt_num = 2;
+			seinfeld = true;
+			init_shader();
+			secret_alt_on = true;
+			}
+		}else{
+				if(!seinfeld){
+		white_flash_timer = 24;
+set_color_profile_slot( 20, 0, 71, 71, 71 ); //Shirt
+set_color_profile_slot( 20, 1, 214, 169, 141 ); //Skin
+set_color_profile_slot( 20, 2, 99, 67, 48 ); //Hair1
+set_color_profile_slot( 20, 3, 99, 67, 48 ); //Hair2
+set_color_profile_slot( 20, 4, 71, 54, 54 ); //Pants
+set_color_profile_slot( 20, 5, 255, 255, 255 ); //Shoes
+set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
+		secret_alt_num = 3;
+		init_shader();            
+		seinfeld = true;					
+				}
+		}
+	}
 }
 
 //check practice mode

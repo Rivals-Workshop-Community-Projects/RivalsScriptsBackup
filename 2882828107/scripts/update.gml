@@ -18,8 +18,10 @@ if (state == PS_WALL_JUMP && state_timer <= 2) && (wall_phase == false) && (vsp 
 	wall_phase = true;
 	sound_play(asset_get("sfx_frog_nspecial_cast"));
 }
-if (wall_phase == true) && (vsp > 0){
-	if !position_meeting(x, y - 16, asset_get("par_block")){
+if (wall_phase == true){
+	if (!position_meeting(x, y - 48, asset_get("par_block"))) && (state == PS_AIR_DODGE) && (state_timer > 0 && state_timer <= 14) && (vsp >= 0){
+		wall_phase = false;
+	} else if !position_meeting(x, y - 16, asset_get("par_block")) && (vsp > 0){
 		wall_phase = false;
 	}
 }
@@ -37,48 +39,8 @@ if (state == PS_PARRY){
 	}
 }
 
-//practice mode
-if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
-    practice_mode = true;
-}
-if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
-    jackolantern_recharge = 450;
-	witchhazel_recharge = 180;
-}
-
-if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-	if (attack == AT_NSPECIAL){
-		if (window == 2 || window == 3){
-			if (window_timer == 0){
-				spawn_base_dust(x, y, "land", spr_dir)
-				spawn_base_dust(x + 30, y, "dash_start", -1)
-				spawn_base_dust(x + 80, y, "dash_start", -1)
-				spawn_base_dust(x - 30, y, "dash_start", 1)
-				spawn_base_dust(x - 80, y, "dash_start", 1)
-			}
-		}
-		if (window == 2 || window == 3) && (window_timer == 0){
-			sound_play(sound_get("haunt_ambience"));
-		}
-		if ((window == 4) && (window_timer == 0)){
-			sound_stop(sound_get("haunt_ambience"));
-		}
-	}
-	if (attack == AT_FSTRONG){
-		if (window == 3 && window_timer == 0){
-			spawn_base_dust(x, y, "dash_start", spr_dir)
-		}
-		if (window == 3 && window_timer == 2) || (window == 4 && window_timer == 0){
-			spawn_base_dust(x, y, "dash", spr_dir)
-		}
-	}
-	if (attack == AT_DSTRONG && window == 3 && (window_timer == 0 || window_timer == 6)){
-		spawn_base_dust(x + 30, y, "dash", -1)
-		spawn_base_dust(x - 30, y, "dash", 1)
-	}
-}
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	sound_stop(asset_get("sfx_ori_charged_flame_charge2"));
+	sound_stop(sound_get("haunt_ambience"));
 }
 
 with (oPlayer) {
@@ -91,42 +53,166 @@ with (oPlayer) {
 		}
 	} else {
 		draw_y = 0;
-		witchhazel_transformed = false;
 	}
 	if (puffshroom_timer == 1){
 		spawn_hit_fx(floor(x),floor(y - 30),67);
 	}
 }
 
-//soup
-#define spawn_base_dust
-///spawn_base_dust(x, y, name, ?dir)
-//This function spawns base cast dusts. Names can be found below.
-var dlen; //dust_length value
-var dfx; //dust_fx value
-var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
-var dust_color = 0;
-var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
-
-switch (name) {
-    default: 
-    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-    case "doublejump": 
-    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+//practice mode
+if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
+    practice_mode = true;
 }
-var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-newdust.dust_fx = dfx; //set the fx id
-if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
-newdust.dust_color = dust_color; //set the dust color
-if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
-return newdust;
+if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
+    jackolantern_recharge = 450;
+	witchhazel_recharge = 180;
+}
+
+//ranibow sprimkle
+if !("hue" in self) hue = 0
+if get_player_color(player) = 15 {
+	hue+=1
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	var color_rgb1=make_color_rgb(250, 160, 160);
+	var color_rgb2=make_color_rgb(255, 62, 62);
+	var color_rgb3=make_color_rgb(170, 0, 0);
+	//make a gamemaker color variable using chosen color
+	var hue1=(color_get_hue(color_rgb1)+hue) mod 255;
+	var hue2=(color_get_hue(color_rgb2)+hue) mod 255;
+	var hue3=(color_get_hue(color_rgb3)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
+	var color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb2),color_get_value(color_rgb2)); 
+	var color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb3),color_get_value(color_rgb3));
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(get_player_color(player),0,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),1,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	set_color_profile_slot(get_player_color(player),2,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),5,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),7,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	}
+init_shader();
+
+if get_player_color(player) = 5 {
+	hue+=1
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	var color_rgb1=make_color_rgb(230, 216, 163);
+	var color_rgb2=make_color_rgb(111, 202, 231);
+	var color_rgb3=make_color_rgb(182, 114, 221);
+	//make a gamemaker color variable using chosen color
+	var hue1=(color_get_hue(color_rgb1)+hue) mod 255;
+	var hue2=(color_get_hue(color_rgb2)+hue) mod 255;
+	var hue3=(color_get_hue(color_rgb3)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
+	var color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb2),color_get_value(color_rgb2)); 
+	var color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb3),color_get_value(color_rgb3));
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(get_player_color(player),0,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),1,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	set_color_profile_slot(get_player_color(player),5,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),7,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	}
+init_shader();
+
+//runes
+if (has_rune("A")){
+	set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 8);
+}
+
+if (has_rune("B")){
+	set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 9);
+}
+
+if (has_rune("C")){
+	set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+	if (uspecial_used){
+		if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP){
+			move_cooldown[AT_USPECIAL] = 0;
+			uspecial_used = false;
+		}
+		move_cooldown[AT_USPECIAL] = 2;
+	}
+}
+
+if (has_rune("D")){
+	if (state == PS_WAVELAND && state_timer mod 2 == 0 && hsp != 0){
+		create_hitbox( AT_DSPECIAL, 1, (x),(y - 10) );
+	}
+}
+
+if (has_rune("E")){
+	walljump_hsp = 6
+	walljump_vsp = 9
+}
+
+if (has_rune("G")){
+	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 9);
+	set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 15);
+	set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 12);
+	set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 12);
+}
+
+if (has_rune("J")){
+	max_djumps = 2;
+}
+
+if (has_rune("L")){
+	set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+	set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+	if state == PS_ATTACK_AIR {
+		if state_timer == 0 {
+			if (left_strong_pressed) {
+				set_attack(AT_FSTRONG);
+				spr_dir = -1
+			}
+			if (right_strong_pressed) {
+				set_attack(AT_FSTRONG);
+				spr_dir = 1
+			}
+			if (up_strong_pressed) {
+				set_attack(AT_USTRONG);
+			}
+			if (down_strong_pressed) {
+				set_attack(AT_DSTRONG);
+			}
+		}
+	}
+}
+
+if (has_rune("M")){
+	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 3);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 14);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.8);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 10);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+}
+
+if (has_rune("N")){
+	set_hitbox_value(AT_DATTACK, 6, HG_EFFECT, 1);
+	set_hitbox_value(AT_DATTACK, 7, HG_EFFECT, 1);
+	set_hitbox_value(AT_BAIR, 1, HG_EFFECT, 1);
+	set_hitbox_value(AT_BAIR, 2, HG_EFFECT, 1);
+	set_hitbox_value(AT_DAIR, 1, HG_EFFECT, 1);
+	set_hitbox_value(AT_DAIR, 2, HG_EFFECT, 1);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 2);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+}

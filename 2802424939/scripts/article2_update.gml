@@ -10,15 +10,19 @@ if (cooldown == 0)
 else if (cooldown == 1)
 {
     sprite_index = sprite_get("stopwatch_gray");
+    cooldown_timer++;
 }
-
+if (cooldown_timer >= 120)
+{
+    dead = 1;
+}
 with(pHitBox)
 {
     if (place_meeting(x, y, other))
     {
         if (player_id != other.player_id)
         {
-            if (type == 1)
+            if (hit_priority != 0)
             {
                 if (other.cooldown == 0)
                 {

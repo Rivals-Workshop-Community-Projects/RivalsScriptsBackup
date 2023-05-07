@@ -6,6 +6,7 @@ switch (state){
 	case 0: //Foresight
 	sprite_index = asset_get("empty_sprite");
 	mask_index = sprite_get("idle");
+	is_hittable = true;
 	
 	if (state_timer > 8){ instance_destroy(); exit; }
 	//if (place_meeting( x, y, asset_get("par_block"))){ player_id.cooldowntime = 100; }
@@ -13,7 +14,15 @@ switch (state){
 	y = player_id.y;
 	hsp = player_id.hsp;
 	vsp = player_id.vsp;
-	if (place_meeting( x, y, asset_get("pHitBox"))){ player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true; }
+	
+	if (place_meeting( x, y, asset_get("pHitBox"))){
+		//player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true;
+	}
+	
+	if (hit_player_obj > 0){
+		player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true;
+		player_id.hitpause = false; player_id.y = player_id.y-1;
+	}
 	if (done == true && (player_id.state != PS_HITSTUN || player_id.state != PS_HITSTUN_LAND) ){ instance_destroy(); exit; }
 	//if (player_id.state == PS_HITSTUN){ player_id.cooldowntime = 10; }
 	break;
@@ -22,7 +31,9 @@ switch (state){
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
 	depth = -100;
-	if (player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND){ player_id.attack = AT_EXTRA_1; window = 1; window_timer = 0; }
+	
+	player_id.state = PS_ATTACK_AIR; player_id.attack = AT_EXTRA_1; window = 1; window_timer = 0;
+	
 	if (((state_timer mod 3) == 0)){
 		image_index++;
 	}
@@ -169,18 +180,18 @@ switch (state){
 		if (instance_exists(asset_get("camera_obj"))){
 			
 		if (x-15 > get_instance_x(asset_get("camera_obj")) ){
-			x = x-15;
+			x = x-20;
 			//spr_dir = -1;
 		}
 		if (x+15 < get_instance_x(asset_get("camera_obj")) ){
-			x = x+15;
+			x = x+20;
 			//spr_dir = 1;
 		}
 		if (y-400> get_instance_y(asset_get("camera_obj")) ){
-			y = y-15;
+			y = y-35;
 		}
 		if (y+400 < get_instance_y(asset_get("camera_obj")) ){
-			y = y+15;
+			y = y+35;
 			}
 		}
 		
@@ -189,7 +200,7 @@ switch (state){
 		image_speed = 0.8;
 		image_xscale = 1.7;
 		image_yscale = 1.5;
-		image_alpha = player_id.timestop_amount / 90;
+		image_alpha = 1;
 		//if (player_id.timestop_amount < 35){ image_alpha -= 0.1; }
 		//hsp = 4
 		//x = 200;

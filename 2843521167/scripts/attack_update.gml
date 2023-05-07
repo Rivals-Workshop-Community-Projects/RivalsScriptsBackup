@@ -179,11 +179,11 @@ if (attack == AT_DSPECIAL)
     set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
     set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4);
     }
-    if (free)
+    if (free && window >= 2)
     {
     move_cooldown[AT_DSPECIAL] = 999;
     }
-    if (!free)
+    if (!free && window >= 2)
     {
     move_cooldown[AT_DSPECIAL] = 240;
     }

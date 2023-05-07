@@ -207,16 +207,6 @@ if (has_rune("N")){
 	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 8);
 }
 
-if (has_rune("O")){
-	if (used_fs == false && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != 49 && state_timer <= 3 && attack_down && special_down) {
-        attack = 49;
-        window = 0;
-        window_timer = 0;
-        state_timer = 0;
-        used_fs = true;
-    }
-}
-
 //practice mode
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;

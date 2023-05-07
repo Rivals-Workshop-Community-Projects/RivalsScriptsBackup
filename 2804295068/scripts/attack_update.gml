@@ -117,8 +117,8 @@ if (attack == AT_DAIR){
 					state = PS_IDLE_AIR;
 					state_timer = 0;
 				} else {
-					state = PS_PRATFALL;
-					state_timer = 0;
+					window = 4;
+					window_timer = 0;
 				}
 			}
 		}
@@ -127,10 +127,10 @@ if (attack == AT_DAIR){
 
 if (attack == AT_NSPECIAL){
     if (window == 2){
-	    if free{
+		if free{
             hsp = clamp(hsp, -3, 3);
 			vsp -= gravity_speed * 2 / 3;
-			vsp = min(vsp, 5);
+			vsp = min(vsp, 4);
 		}
 		//releases
 	    if (window_timer >= 8 && window_timer < 12){
@@ -181,7 +181,7 @@ if (attack == AT_NSPECIAL){
 	    }
 	}
 	if (window == 1){
-		if (window_timer == 6){
+		if (window_timer == 9){
 			//stored charges
 			if (nspecial_charge == 1){
 				window = 2
@@ -208,87 +208,71 @@ if (attack == AT_NSPECIAL){
 	}
 	//projectile creation
 	if (window == 4){
-	    if (window_timer == 4){
+	    if (window_timer == 1){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
 			move_cooldown[AT_NSPECIAL] = 60
 		}
-	    if (window_timer == 8){
+	    if (window_timer == 12){
             window = 13
 			window_timer = 0
 		}
-		if (window_timer == 1){
-            if free {
-                hsp += -1.5 * spr_dir;
-			}
-		}
 	}
 	if (window == 6){
-	    if (window_timer == 3){
+	    if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
 			sound_play (sound_get ("throw"));
 			move_cooldown[AT_NSPECIAL] = 60
 		}
-	    if (window_timer == 4){
+	    if (window_timer == 5){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
+			sound_play (sound_get ("throw"));
 		}
-	    if (window_timer == 8){
+	    if (window_timer == 12){
             window = 13
 			window_timer = 0
 		}
-		if (window_timer == 1){
-            if free {
-                hsp += -1.5 * spr_dir;
-		    }
-		}
 	}
 	if (window == 8){
-	    if (window_timer == 5){
+	    if (window_timer == 9){
 		    create_hitbox( AT_NSPECIAL, 1, x+35*spr_dir, y-19 );
 			sound_play (sound_get ("throw"));
 			move_cooldown[AT_NSPECIAL] = 60
 		}
-		if (window_timer == 3){
+		if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
+			sound_play (sound_get ("throw"));
 		}
-	    if (window_timer == 4){
+	    if (window_timer == 5){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
 		}
-	    if (window_timer == 8){
+	    if (window_timer == 12){
             window = 13
 			window_timer = 0
 		}
-		if (window_timer == 1){
-            if free {
-                hsp += -1.5 * spr_dir;
-		    }
-		}
 	}
 	if (window == 10){
-	    if (window_timer == 2){
+	    if (window_timer == 5){
 	    	create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-33 );
 			sound_play (sound_get ("throw"));
 			move_cooldown[AT_NSPECIAL] = 60
 		}
-		if (window_timer == 5){
+		if (window_timer == 2){
 		    create_hitbox( AT_NSPECIAL, 1, x+35*spr_dir, y-19 );
+			sound_play (sound_get ("throw"));
 		}
-		if (window_timer == 3){
+		if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
-		}
-	    if (window_timer == 4){
-	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
 		}
 	    if (window_timer == 8){
+	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
+			sound_play (sound_get ("throw"));
+		}
+	    if (window_timer == 12){
             window = 13
 			window_timer = 0
-		}
-		if (window_timer == 1){
-            if free {
-                hsp += -1.5 * spr_dir;
-		    }
 		}
 	}
 	if (window == 12){
@@ -297,29 +281,26 @@ if (attack == AT_NSPECIAL){
 			sound_play (sound_get ("throw"));
 			move_cooldown[AT_NSPECIAL] = 60
 		}
-		if (window_timer == 2){
+		if (window_timer == 3){
 	    	create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-33 );
+			sound_play (sound_get ("throw"));
 		}
-		if (window_timer == 5){
+		if (window_timer == 10){
 		    create_hitbox( AT_NSPECIAL, 1, x+35*spr_dir, y-19 );
 			sound_play (sound_get ("throw"));
 		}
-		if (window_timer == 3){
+		if (window_timer == 4){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
 			sound_play (sound_get ("throw"));
 		}
-	    if (window_timer == 4){
+	    if (window_timer == 7){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
-		}
-		if (window_timer == 1){
-            if free {
-                hsp += -1.5 * spr_dir;
-		    }
+			sound_play (sound_get ("throw"));
 		}
 	}
 	//endlag skips cancel window
 	if (window == 13){
-	    if (window_timer == 12){
+	    if (window_timer == 8){
             set_state( PS_IDLE );
 		}
 	}
@@ -345,6 +326,11 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_USPECIAL){
+	if (window == 1){
+		if free{
+            hsp = clamp(hsp, -2, 2);
+		}
+	}
 	if (window == 2){
 	    with (obj_article1){
 		    if player_id = other.id{
@@ -422,8 +408,8 @@ if (attack == AT_DSPECIAL){
     }
 }
 
-if (has_rune("I")){
-	if (attack == AT_FSTRONG){
+if (attack == AT_FSTRONG){
+	if (has_rune("I")){
 		airraid_used = true
 		can_fast_fall = false
 		fall_through = true
@@ -441,6 +427,15 @@ if (has_rune("I")){
             hsp = lengthdir_x(max_speed, fly_dir);
             vsp = lengthdir_y(max_speed, fly_dir);
         }
+	}
+	if (has_rune("O")){
+		if (strong_charge == 60) {
+			sound_play (sound_get ("wakeup"));
+			attack = 49;
+			window = 0;
+			window_timer = 0;
+			state_timer = 0;
+		}
 	}
 }
 

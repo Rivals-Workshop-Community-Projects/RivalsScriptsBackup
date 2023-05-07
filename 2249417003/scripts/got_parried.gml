@@ -7,7 +7,7 @@ if (my_hitboxID.player != my_hitboxID.orig_player) exit;
 //if this attack was a projectile, make it stun whoever it gets reflected into.
 if (my_hitboxID.type == 2) {
 	switch (my_hitboxID.attack) {
-	
+	    /*
 		case AT_FAIR:
 			//increase the bullet's speed
 			my_hitboxID.hsp *= 2;
@@ -21,6 +21,7 @@ if (my_hitboxID.type == 2) {
 			//upward knockback
 			my_hitboxID.kb_angle = 90;
 		break;
+		*/
 		case AT_BAIR:
 			//increase the bullet's speed
 			my_hitboxID.hsp *= 2;
@@ -78,6 +79,12 @@ if (my_hitboxID.type == 2) {
 				window_timer = 0;
 				was_parried = true;
 				parry_lag = 40;
+			}
+		break;
+		case AT_DTILT:
+			with (obj_article1) {
+				if (player_id != other || article_index != 2) continue;
+				mine_was_parried = true;
 			}
 		break;
 	}

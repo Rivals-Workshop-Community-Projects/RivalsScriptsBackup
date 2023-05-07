@@ -1,3 +1,56 @@
+//ranibow sprimkle
+if !("hue" in self) hue = 0
+if get_player_color(player) = 15 {
+	hue+=1
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	var color_rgb1=make_color_rgb(250, 160, 160);
+	var color_rgb2=make_color_rgb(255, 62, 62);
+	var color_rgb3=make_color_rgb(170, 0, 0);
+	//make a gamemaker color variable using chosen color
+	var hue1=(color_get_hue(color_rgb1)+hue) mod 255;
+	var hue2=(color_get_hue(color_rgb2)+hue) mod 255;
+	var hue3=(color_get_hue(color_rgb3)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
+	var color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb2),color_get_value(color_rgb2)); 
+	var color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb3),color_get_value(color_rgb3));
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(get_player_color(player),0,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),1,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	set_color_profile_slot(get_player_color(player),2,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),5,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),7,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	}
+init_shader();
+
+if get_player_color(player) = 5 {
+	hue+=1
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	var color_rgb1=make_color_rgb(230, 216, 163);
+	var color_rgb2=make_color_rgb(111, 202, 231);
+	var color_rgb3=make_color_rgb(182, 114, 221);
+	//make a gamemaker color variable using chosen color
+	var hue1=(color_get_hue(color_rgb1)+hue) mod 255;
+	var hue2=(color_get_hue(color_rgb2)+hue) mod 255;
+	var hue3=(color_get_hue(color_rgb3)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
+	var color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb2),color_get_value(color_rgb2)); 
+	var color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb3),color_get_value(color_rgb3));
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(get_player_color(player),0,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),1,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	set_color_profile_slot(get_player_color(player),5,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
+	set_color_profile_slot(get_player_color(player),7,color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3));
+	}
+init_shader();
+
 var temp_x = x + 8;
 var temp_y = y + 9;
  
@@ -22,20 +75,29 @@ alt_name[4]  = "Grave Buster";
 alt_name[5]  = "Hypno-shroom";
 alt_name[6]  = "Abyss";
 alt_name[7]  = "Gameboy";
-alt_name[8]  = "Frightened";
-alt_name[9]  = "Vessel";
+alt_name[8]  = "Gameboy Color";
+alt_name[9]  = "Frightened";
 alt_name[10]  = "Disguised";
-alt_name[11]  = "Flaming Hot";
-alt_name[12]  = "Twilight";
-alt_name[13]  = "Blossoming";
-alt_name[14]  = "Cryptic";
-alt_name[15]  = "Excited";
-alt_name[16]  = "Infamous";
-alt_name[17]  = "Seethrough";
-alt_name[18]  = "Gold";
-alt_name[19]  = "Smoldering";
+alt_name[11]  = "Shadowy";
+alt_name[12]  = "Crowned";
+alt_name[13]  = "Vessel";
+alt_name[14]  = "Infamous";
+alt_name[15]  = "Spectral";
+alt_name[16]  = "Transcendence";
+alt_name[17]  = "Featureless";
+alt_name[18]  = "Protoplast";
+alt_name[19]  = "Flaming Hot";
+alt_name[20]  = "Eldritch";
+alt_name[21]  = "Blossoming";
+alt_name[22]  = "Reaper";
+alt_name[23]  = "Twilight";
+alt_name[24]  = "Cryptic";
+alt_name[25]  = "Excited";
+alt_name[26]  = "Smoldering";
  
 //Alt
+ 
+shader_end();
  
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
@@ -52,6 +114,8 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+ 
+ 
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

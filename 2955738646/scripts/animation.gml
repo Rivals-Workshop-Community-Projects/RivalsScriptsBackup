@@ -78,8 +78,13 @@ if (attack == AT_NSPECIAL && state == PS_ATTACK_AIR){
 }
 
 if (attack == AT_DSPECIAL){
-	if (state == PS_ATTACK_GROUND && hitpause == false){
-	image_index = 6 + 0.1 * window_timer;
+		if (state == PS_ATTACK_GROUND && window == 4){
+	sprite_index = sprite_get( "dspecial" );
+		}
+	if (state == PS_ATTACK_GROUND){
+		if (hitpause == false){
+	//image_index = 6 + 0.1 * window_timer;
+		}
 	//sprite_index = sprite_get( "dspecial_ground" );
 	}
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 6){

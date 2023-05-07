@@ -190,7 +190,9 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT_X_OFFSET, 16);
 //knockback
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, 5, HG_FINAL_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.9); 
+set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.45);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(AT_FSPECIAL, 5, HG_TECHABLE, 1); //untechable
 set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE, 80);
 //stun
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 12);

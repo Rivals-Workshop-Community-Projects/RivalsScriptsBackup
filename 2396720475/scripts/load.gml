@@ -114,6 +114,7 @@ sprite_change_offset("meter", 30, 4);
 
 sprite_change_offset("bighurt", 24, 50);
 sprite_change_offset("spinhurt", 30, 60);
+sprite_change_offset("space_idle", 48, 64);
 //sprite_change_offset("uphurt", 74, 118);
 
 set_victory_theme( sound_get( "victory_tune" ));

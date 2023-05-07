@@ -111,8 +111,17 @@ if (attack = AT_DSTRONG) {
     
     if (window >= 4) {
     		if (!free) {
-    			set_state(PS_LANDING_LAG);
-    			landing_lag_time = 9;
+	            if (!was_parried)
+	            	set_state(PS_LANDING_LAG);
+	            else if (was_parried)
+	            {
+	                if (!free)
+	                	set_state(PS_PRATLAND);
+	                else if(free)
+	                	set_state(PS_PRATFALL);
+	            }
+	            state_timer = 0;
+	            landing_lag_time = 4 * (1 + (0.5 * (1 - has_hit)));
     		}
     		can_fast_fall = window_timer >= ceil(get_window_value(attack, window, AG_WINDOW_LENGTH) / 2)
     }
@@ -986,6 +995,10 @@ smoke.attack = attack;
 return smoke;
 
 #define spawn_base_dust
+/// @param x
+/// @param y
+/// @param name
+/// @param dir=0
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.

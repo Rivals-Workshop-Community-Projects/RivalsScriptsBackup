@@ -1,59 +1,41 @@
 //draw_hud.gml
-temp_color = c_white;
-casual = c_black;
-absx = 258;
-absy = 464;
+temp_color = c_white; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+casual = c_black; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-codecbg_x = absx - 257.5;
-codecbg_y = absy - 90;
+hud_x = temp_x + 188; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+hud_y = temp_y - 16; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-codecx = absx + 8;
-codecy = absy - 80;
+absx = 258; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+absy = 464; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-speakeronex = absx + 370;
-speakeroney = absy - 77.5;
+codecbg_x = absx - 257.5; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+codecbg_y = absy - 90; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-speakertwox = absx+15;
-speakertwoy = absy - 77.5;
+codecx = absx + 8; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+codecy = absy - 80; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-codectextx = absx + 96;
-codectexty = absy - 64;
+speakeronex = absx + 370; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+speakeroney = absy - 77.5; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
-if get_gameplay_time() < 120{
-    if babymode == 0{
-        draw_debug_text(temp_x, temp_y - 20, "Press Parry to activate Baby Mode");
-    }
-    if babymode == 1{
-        draw_debug_text(temp_x, temp_y - 20, "Press Parry to deactivate Baby Mode");
-    }
+speakertwox = absx+15; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+speakertwoy = absy - 77.5; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+
+codectextx = absx + 96; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+codectexty = absy - 64; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+
+//draw_debug_text(2, 2, "Attack " + string(attack));
+
+/*
+draw_debug_text(temp_x, temp_y, "Mine Active:" + string(mine_active));
+draw_debug_text(temp_x, temp_y - 16, "Stuck State:" + string(mine_player.state));
+*/
+
+if move_cooldown[AT_DSPECIAL] == 0{
+    draw_sprite_ext(sprite_get("hud_minecooldown"), 0, hud_x, hud_y, 2, 2, 0, c_white, 1);
 } else {
-  if babymode == 1{
-    draw_sprite_ext( sprite_get("babymode"), xfactor_timer, temp_x + 180, temp_y - 30, 2, 2, 0, temp_color, 1 );
-  }
+    draw_sprite_ext(sprite_get("hud_minecooldown"), 0, hud_x, hud_y, 2, 2, 0, c_gray, 1);
 }
-
-if trumarvel{
-  if xfactor_timelimit > 0{
-    draw_sprite_ext( sprite_get("xfacactive"), xfactor_timer, temp_x - 95, temp_y - 45, 1.5, 1.5, 0, temp_color, .75 );
-  }
-  if xfactor_lvl == 0{
-    draw_sprite_ext( sprite_get("xfaclevel0"), xfactor_timer, temp_x - 95, temp_y - 45, 1.5, 1.5, 0, temp_color, 1 );
-  }
-  if xfactor_lvl == 1{
-    draw_sprite_ext( sprite_get("xfaclevel1"), xfactor_timer, temp_x - 95, temp_y - 44, 1.5, 1.5, 0, temp_color, 1 );
-  }
-  if xfactor_lvl == 2{
-    draw_sprite_ext( sprite_get("xfaclevel2"), xfactor_timer, temp_x - 95, temp_y - 44, 1.5, 1.5, 0, temp_color, 1 );
-  }
-  if xfactor_lvl == 3{
-    draw_sprite_ext( sprite_get("xfaclevel3"), xfactor_timer, temp_x - 95, temp_y - 44, 1.5, 1.5, 0, temp_color, 1 );
-  }
-} else {
-  draw_sprite_ext( asset_get("empty_sprite"), xfactor_timer, temp_x - 95, temp_y - 44, 1.5, 1.5, 0, temp_color, 1 );
-}
-
-
-// codec
+#region // codec
 draw_sprite_ext( sprite_get("codecaux"), codecbg_timer, codecbg_x, codecbg_y, 1, 1, 0, temp_color, codec_visible );
 draw_sprite_ext( sprite_get("codecbwoop"), bwoop_timer, codecx, codecy, 1, 1, 0, temp_color, bwoop_visible );
 
@@ -119,10 +101,11 @@ else if (codec_active == 2 && faces_visible && (panel > 0 && codectimerbs >= 0))
 
   draw_text_ext_colour(codectextx, codectexty, codectext, 16, 250, temp_color, temp_color, temp_color, temp_color, 1);
 }
+#endregion
 
 //abyss gui code
-ab_hud_x = temp_x;
-ab_hud_y = temp_y;
+ab_hud_x = temp_x; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+ab_hud_y = temp_y; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 //this is for the outdated warning message
 if ("depNotice" not in self) depNotice = 0;
 if ("abyssEnabled" in self && abyssEnabled && (menuActive || timerActive)) abyssDraw();

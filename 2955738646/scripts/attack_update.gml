@@ -7,6 +7,7 @@ if (attack == AT_JAB){
 	if (has_hit_player){
 		if (window == 3 && place_meeting( x, y, hit_player_obj)){ x = x-9 * spr_dir; }
 		if (window == 5){
+		soft_armor = 100;
 		hsp = hit_player_obj.hsp + 0.5 * spr_dir;
 		}
 	}
@@ -14,6 +15,7 @@ if (attack == AT_JAB){
 
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
+	move_cooldown[AT_NSPECIAL] = 10;
 	if (air_special == true && free == false){
 	window = 9;
 	window_timer = 0;
@@ -23,12 +25,14 @@ if (attack == AT_NSPECIAL){
 	//vsp = -10;
 	}
 	if(window == 1){
+		nspecial_time = 37;
 		if(window_timer == 1){
 			Nspecial_moves = 100;
 		}
 	}
     if (window == 2){
     	can_jump = true;
+    	nspecial_time -= 1 / 3;
     	if (Nspecial_moves > 1 && free == true){
     		if (window_timer == 1){
     		Nspecial_moves = 1;
@@ -73,6 +77,11 @@ if (attack == AT_NSPECIAL){
     	    	window_timer = 0;
     	    }
     	}
+    	
+    	if (nspecial_time <= 0){
+    		window = 5;
+    	    window_timer = 0;
+    	}
     }
     if(window == 3){
     	can_jump = true;
@@ -105,24 +114,44 @@ if (attack == AT_NSPECIAL){
     	    }
     	}
     }
+
     if (window == 6){
-    	grav = 0.01;
+    	nspecial_time = 37;
+
+    	nspecial_air_time = 100;
     	can_move = false;
     	if (window_timer >= 14){ window = 7; window_timer = 0; }
     }
     if (window == 7){
+    	nspecial_time -= 1 / 3;
+
     	can_move = false;
-    	grav = 0.1;
+    	grav = 0.05;
     	if (joy_pad_idle == false){
-    	hsp += lengthdir_x(.3, joy_dir);
-    	//vsp += lengthdir_y(1, joy_dir);
+    	hsp += lengthdir_x(.4, joy_dir);
+    	vsp += lengthdir_y(.4, joy_dir);
     	}
     	var fly_dir = point_direction(0,0,hsp,vsp);
         var fly_dist = point_distance(0,0,hsp,vsp);
-        var max_speed = 9;
+        var max_speed = 11;
         if (fly_dist > max_speed){
             hsp = lengthdir_x(max_speed, fly_dir);
+            vsp = lengthdir_y(max_speed, fly_dir);
         }
+        
+        var floor_distance;
+		for (var i = 0; i < 10; i++;) {
+		floor_distance = y + (60);
+		if ( place_meeting( x, floor_distance, asset_get("par_block")) ){
+		//spawn_hit_fx(x, y, 304);
+		vsp -= 0.1;
+		if ((state_timer mod 10) == 0){
+			state_timer = 0;
+				}
+			}
+		}
+		
+        /*
         if (place_meeting( x + 1 * spr_dir, y + 140, asset_get("par_block"))){
             vsp = lengthdir_y(1, 90);
             max_height = 1;
@@ -145,21 +174,23 @@ if (attack == AT_NSPECIAL){
         	//grav = -2;
         	//vsp -= 1;
         }
-        	if (state_timer > 50){
-        	if (vsp >= -2){
+        */
+        
+        if (nspecial_time <= 0){
         		window = 8;
         		window_timer = 0;
         		//hsp = 0;
         		//vsp = 0;
         		//if (spr_dir == -1 && fly_dist > 0 ){ spr_dir = 1; }
         		//if (spr_dir == -1 && hsp < 1){ spr_dir = -1; }
-    		}
 		}
     	if (window_timer >= 6 && special_down){ window_timer = 0; window = 7; } else if (window_timer >= 6){ window = 8; window_timer = 0; }
     	//if (window_timer >= 5 && fly_dist >= 8){ window = 8; window_timer = 0; }
     }
+    
     if (window == 8){
     	max_height = 0;
+    	
     	if (window_timer == 1){
     		vsp = -9;
     	if (hsp > -1 * spr_dir && spr_dir == 1){
@@ -174,6 +205,7 @@ if (attack == AT_NSPECIAL){
     	//}
     	grav = 1;
     }
+    
     if (window == 10){
     	if (window_timer > 5 && window_timer < 20){
     	with (asset_get("oPlayer")) {
@@ -356,11 +388,11 @@ if(attack == AT_DSTRONG){
 
 if(attack == AT_FSTRONG){
 	if(window == 1){ grabbedid = noone; }
-	if(window == 2 && window_timer < 3){ hsp = -15 * spr_dir + (0.1 * strong_charge * spr_dir); } //fly back
-	if(window == 2 && window_timer > 3 && window_timer < 6){ hsp = 20 * spr_dir + (0.1 * strong_charge * spr_dir); }
+	if(window == 2 && window_timer < 3){ hsp = -10 * spr_dir + (0.1 * strong_charge * spr_dir); } //fly back
+	if(window == 2 && window_timer > 3 && window_timer < 6){ hsp = 15 * spr_dir + (0.1 * strong_charge * spr_dir); }
 	//if(window == 3){ hsp = 9 * spr_dir + (0.5 * strong_charge * spr_dir); }
     if(window == 2){
-        if(window_timer == 5 && grabbedid > 0){
+        if (window_timer == 5 && grabbedid > 0){
         	var deadgrabbed = random_func(0, 3, true);
         	if (deadgrabbed == 1){ sound_play(sound_get("Pest")); }
 			//grabbedid = noone;
@@ -441,8 +473,8 @@ if (attack == AT_USPECIAL){
 	if (window > 1 && has_walljump){ can_wall_jump = true; }
 	if (window == 4 && has_airdodge == true){
 		if (shield_pressed){
-			set_state(PS_AIR_DODGE);
-			move_cooldown[AT_USPECIAL] = 20;
+			//set_state(PS_AIR_DODGE);
+			//move_cooldown[AT_USPECIAL] = 0;
 		}
 	}
 	/*
@@ -495,7 +527,7 @@ if (attack == AT_USPECIAL){
 		if (window_timer >= 35){ can_jump = true; }
 	}
 }
-//if (move_cooldown[AT_EXTRA_1] < 1){ has_hit_id = noone; }
+
 /*
 if(attack == AT_USPECIAL_2){
 	if (window == 1){
@@ -596,17 +628,17 @@ if(attack == AT_USPECIAL_2){
 	//spawn_hit_fx(x, y-90, 145);
 	}
 	if (window > 1 && window < 7 && window_timer > 20 || window == 7){
-		target_addup = 0;
+		//target_addup = 0;
 		with (asset_get("oPlayer")){
 	        if (player != other.player){
-	        	targeted = false;
+	        	//targeted = false;
 			}
 		}
 	}
 }
 
 if (attack == AT_FSPECIAL){
-	move_cooldown[AT_FSPECIAL] = 25;
+	move_cooldown[AT_FSPECIAL] = 100;
 	can_fast_fall = false;
 	if (window == 1){
 		if (has_hit_id > 0 && telepunch == 0){
@@ -625,8 +657,8 @@ if (attack == AT_FSPECIAL){
 	}
 	if (window == 2){
 		go_through = true;
-		if (window_timer >= 3 && window_timer < 7){
-			can_attack = true; can_special = true; can_jump = true;
+		if (window_timer >= 4 && window_timer < 7){
+			//can_attack = true; can_special = true; can_jump = true;
 			if (down_down){ window = 10; }
 		}
 	}
@@ -637,8 +669,8 @@ if (attack == AT_FSPECIAL){
 	//instance_destroy(SuperDash_Particle4);
 	}
 	if (free == false && window > 1 || window == 2 && window_timer >= 4 || window > 2){ sound_stop(dash_sound); }
-	if (window == 3 && telepunch == 1 && window_timer == 0){ create_hitbox(AT_FSPECIAL, 5, x, y); }
-	if (special_down && window == 2 && window_timer >= 7){
+	//if (window == 3 && telepunch == 1 && window_timer == 0){ create_hitbox(AT_FSPECIAL, 5, x, y); }
+	if (special_down && window == 2 && window_timer >= 5){
 		window = 3;
 		window_timer = 0;
 		//x = x+5 * spr_dir;
@@ -651,11 +683,11 @@ if (attack == AT_FSPECIAL){
 		}
 		//hit_player_obj.hitpause = true;
 	}
-	if(window_timer >= 2 && window_timer <= 10 && telepunch == 1 && joy_pad_idle == false && (left_down || right_down) && (special_pressed)){
-		window = 4;
-		window_timer = 0;
+	if (window_timer >= 2 && window_timer <= 10 && telepunch == 1 && joy_pad_idle == false && (left_down || right_down) && (special_pressed)){
+		//window = 4;
+		//window_timer = 0;
 	}
-	if(hitpause == true){
+	if (hitpause == true){
 	    sound_stop(dash_sound);
 		}
 	}
@@ -714,14 +746,14 @@ if (attack == AT_EXTRA_2){
 					window = 4;
 				}
 				if (enemy_dist > 30 && has_hit_id.vsp > 8 && state == PS_ATTACK_GROUND){
-					attack = AT_FSPECIAL
+					attack = AT_FSPECIAL;
 					window = 2;
 					//vsp = 0;
 					//hsp = 0;
 					has_hit_id = noone;
 				}
 				if (enemy_dist > 30 && has_hit_id.vsp > 9 && state == PS_ATTACK_AIR){
-					attack = AT_FSPECIAL
+					attack = AT_FSPECIAL;
 					window = 2;
 					//vsp = -1;
 					//hsp = 0;
@@ -833,17 +865,17 @@ if (attack == AT_EXTRA_2){
 if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
 	can_shield = false;
-	Uspecial_Charge = 0;
+	dspecial_charge = 0;
 	if (was_parried == false){
 	if (window == 1){ cling_once = 0; dspecial_id = noone; var die = random_func(0, 3, true); }
-	if (window >= 2){
+	if (window == 2 || window == 3){
+		move_cooldown[AT_DSPECIAL_2] = 50;
 		if (free == false && dspecial_id < 0){
-		if (abs(hsp) < abs(vsp)){ attack = AT_DSPECIAL_2; window = 3; window_timer = 0; Uspecial_Charge = 0; }
-		if (abs(hsp) > abs(vsp)){ attack = AT_DSPECIAL_2; window = 3; window_timer = 0; Uspecial_Charge = 0; }
+		if (abs(hsp) < abs(vsp)){ attack = AT_DSPECIAL_2; window = 4; window_timer = 0; }
+		if (abs(hsp) > abs(vsp)){ attack = AT_DSPECIAL_2; window = 4; window_timer = 0; }
 		}
-		if (window < 6
-	&& place_meeting( x + 10 * spr_dir, y - 20, asset_get("par_block"))){
-		window = 6; window_timer = 0; move_cooldown[AT_DSPECIAL] = 90;
+		if (window < 6 && place_meeting( x + 10 * spr_dir, y - 20, asset_get("par_block"))){
+		window = 6; window_timer = 0;
 		spawn_hit_fx(x+20 * spr_dir, y-25, 193);
 		sound_play(asset_get("sfx_kragg_rock_land"));
 		}
@@ -865,7 +897,7 @@ if (attack == AT_DSPECIAL){
 	if (window == 3 && dspecial_id > 0){ can_jump = true; }
 	//if (window >= 4){ sound_stop(sound_get("ARC_BTL_OSM_Drive_Dash")); }
 	if (window == 3){
-		
+		can_move = false;
 		if (free == true){
 		if (abs(hsp) < abs(vsp)){ vsp -= 2; hsp -= 2 * spr_dir; }
 		if (abs(hsp) > abs(vsp)){ vsp -= 0.1; hsp -= 0.3 * spr_dir; }
@@ -888,7 +920,7 @@ if (attack == AT_DSPECIAL){
 	//if (window >= 2 && window <= 4 && free == false && special_down && has_hit_player == false){ attack = AT_DSPECIAL_2; window = 4; window_timer = 0; }
 	if (window == 4){
 		if (instance_exists(dspecial_id) && dspecial_id > 0){
-			if (state_timer > 31 && dspecial_id.free == true){
+			if (state_timer > 39 && dspecial_id.free == true){
 				//window = 5;
 				//window_timer = 0;
 			}
@@ -896,69 +928,49 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	if (window <= 4 && dspecial_id > 0){
-		if (dspecial_id.soft_armor || dspecial_id.super_armor){
-			//dspecial_id.hitpause = true;
-			dspecial_id.hitstop = 10;
-			dspecial_id.hitstop_full = 10;
-			dspecial_id.state = PS_HITSTUN;
-			//dspecial_id.y = dspecial_id.y + 19;
-		}
-		if (dspecial_id.state == PS_HITSTUN_LAND && hitpause == false){
 			dspecial_id.hitpause = true;
 			dspecial_id.hitstop = 10;
-			dspecial_id.hitstop_full = 10;
+			dspecial_id.hitstop_full = 1;
+			//dspecial_id.state = PS_HITSTUN;
+			//dspecial_id.y = dspecial_id.y + 19;
+		if (hitpause == false){
+			draw_x = -12 * spr_dir;
+			draw_y = -16;
+			dspecial_id.x = x + 4 * spr_dir;
+			dspecial_id.y = y - dspecial_id.char_height * 0.10;
+
+		//if (dspecial_id.free == false
+			//&& (dspecial_id.ground_type == 1 || dspecial_id.ground_type == 2 && dspecial_id.fall_through == false)){
+			if (state == PS_ATTACK_GROUND){
+			
+			//dspecial_id.x = x + 14 * spr_dir;
+			//dspecial_id.y = y + 8;
 			//dspecial_id.state = PS_HITSTUN_LAND;
 			//if ((state_timer mod 4) == abs(hsp)){ spawn_hit_fx(x+50 * spr_dir, y+45, 3); }
 			var randomfire = -50 + random_func( 0, 50, true );
 			//if ((get_gameplay_time() mod 5) == 0){ sound_play(asset_get("sfx_ori_spirit_flame_hit_1")); spawn_hit_fx(x+50 * spr_dir, y+45, 200); }
 			if ((get_gameplay_time() mod 5) == 0){ create_hitbox(AT_DSPECIAL, 6, x, y); }
-			if ((get_gameplay_time() mod 1) == 0){ spawn_hit_fx(x+80 * spr_dir, y+50 + randomfire, 100); }
-		}
-		//window = 4;
-		if (window <= 4 && hitpause == false){
-			x = dspecial_id.x - 15 * spr_dir;
-			y = dspecial_id.y - dspecial_id.char_height * 0.90;
-				draw_x = 10 * spr_dir;
-				draw_y = 9;
-			if (dspecial_id.state == PS_HITSTUN){
-			dspecial_id.x = dspecial_id.x + 13 * spr_dir;
-			dspecial_id.y = dspecial_id.y + 8;
+			if ((get_gameplay_time() mod 1) == 0){ spawn_hit_fx(x+50 * spr_dir, y+20 + randomfire, 100); }
+			}
+			if (state == PS_ATTACK_AIR && state_timer > 30){
+			window = 5;
+			window_timer = 0;
+			//dspecial_id.x = dspecial_id.x + 13 * spr_dir;
+			//dspecial_id.y = dspecial_id.y + 8;
 			//dspecial_id.hitpause = true;
 			//dspecial_id.hitstop = 1;
 			//dspecial_id.hitstop_full = 10;
 			}
 			
-			if (window == 2 && window_timer > 1 && dspecial_id.state == PS_HITSTUN){
-			window = 4;
-			window_timer = 0;
-			dspecial_id.x = dspecial_id.x + 13 * spr_dir;
-			dspecial_id.y = dspecial_id.y + 8;
-			}
-			if (dspecial_id.state == PS_HITSTUN_LAND){
-			window = 4;
-			window_timer = 25;
-			dspecial_id.x = dspecial_id.x + 24 * spr_dir;
-			dspecial_id.y = dspecial_id.y + 8;
-			}
-			if (window == 4 && window_timer > 20 && dspecial_id.state != PS_HITSTUN_LAND){
-			//window = 5;
+			if (window == 2 && window_timer > 1){
+			//window = 4;
 			//window_timer = 0;
-			//dspecial_id.x = dspecial_id.x + 24 * spr_dir;
+			//vsp = 16;
+			//hsp = 16 * spr_dir;
+			//dspecial_id.x = dspecial_id.x + 13 * spr_dir;
 			//dspecial_id.y = dspecial_id.y + 8;
 			}
 		//window = 4;
-		}
-	}
-	//}
-	
-	if (window <= 5 && dspecial_id > 0){
-		if (dspecial_id.state == PS_TUMBLE){
-
-			//dspecial_id.x = dspecial_id.x + 13 * spr_dir;
-			//dspecial_id.y = dspecial_id.y + 8;
-			dspecial_id.hitpause = true;
-			dspecial_id.hitstop = 10;
-			dspecial_id.hitstop_full = 10;
 		}
 	}
 	
@@ -967,20 +979,27 @@ if (attack == AT_DSPECIAL){
 		if (window_timer <= 2 && cling_once == 1){ has_walljump = true; }
 		if (window_timer <= 1){
 			move_snap(32, 0);
+			move_cooldown[AT_DSPECIAL] = 50;
 		}
-		if (window_timer >= 9 && djumps <= 2 && (jump_pressed || (tap_jump_pressed && can_tap_jump())) ){ state = PS_IDLE_AIR; vsp = -6; hsp = -6 * spr_dir; }
+		if (window_timer >= 19 && (jump_pressed || (tap_jump_pressed && can_tap_jump())) ){
+		state = PS_IDLE_AIR; vsp = -6; hsp = -6 * spr_dir;
+		move_cooldown[AT_DSPECIAL] = 40;
+		clear_button_buffer( PC_JUMP_PRESSED );
+		}
 		can_move = false;
 		telepunch = 0;
 		if (cling_once == 1){ can_wall_jump = true; can_jump = true; }
-		if (dspecial_id == true && hsp == 0){
+		if (dspecial_id > 0 && hsp == 0){
+			dspecial_id.y = y-1;
+			dspecial_id.x = x + 5 * spr_dir;
 			dspecial_id.hitpause = true;
 			dspecial_id.hitstop = 1;
 			dspecial_id.hitstop_full = 1;
-			if (window_timer >= 30 ){
+			if (window_timer >= 30){
 				state = PS_DOUBLE_JUMP;
 				vsp = -9;
 				hsp = -6 * spr_dir;
-				hit_player_obj.vsp = -6;
+				dspecial_id.vsp = -6;
 			}
 			
 			can_special = true;
@@ -1001,7 +1020,7 @@ if (attack == AT_DSPECIAL){
 		//hit_player_obj.hsp = old_hsp * 1;
 		}
 		if (window_timer >= 2 && telepunch == 1){ telepunch = 2; }
-		if (window_timer == 11){ sound_play(sound_get("dumbass")); }
+		//if (window_timer == 11){ sound_play(sound_get("dumbass")); }
 		if (window_timer > 10 && window_timer < 39){
 		x = dspecial_id.x - 60 * spr_dir;
 		y = dspecial_id.y + dspecial_id.char_height * 0.30;
@@ -1080,44 +1099,38 @@ if (attack == AT_DSPECIAL_2){ //Grounded Down Special changes
 if (was_parried == false){
 can_fast_fall = false;
 	if (window == 1){
+		dspecial_charge = 0;
 		can_shield = false;
-		if(window_timer <= 2){
-			Uspecial_Charge = 0;
-		}
-	}
-	if (window < 3 && free == true && state_timer > 50){
-		window = 10; //No a real window, so it goes into idle
-		Uspecial_Charge = 0;
-		vsp = -6;
-		hsp = 5 * spr_dir;
-		sound_stop(sound_get("USPECIAL_CHARGE"));
 	}
 	if (window == 4 && (jump_pressed || (tap_jump_pressed && can_tap_jump())) ){ window = 5; window_timer = 0; vsp = -9; }
 	//if (window <= 3){ can_jump = false; }
 	if (window == 2){
-		if (hsp * spr_dir > 0 || hsp * spr_dir < 0){ window = 4; window_timer = 0; Uspecial_Charge = 0; }
-		if (special_down && free == false && hsp == 0 && vsp == 0){ Uspecial_Charge++; }
+		if (special_down == false || timestop == true){ window = 4; window_timer = 0; }
+		if (window_timer == 2){ dspecial_charge += 1; }
         if (special_down == false){
-        	window = 4;
-        	window_timer = 0;
+        	//window = 4;
+        	//window_timer = 0;
         }
-        if (Uspecial_Charge >= 230){
-        	window = 5;
+        if (dspecial_charge >= 22){
+        	window = 6;
         	window_timer = 0;
         	timestop_ready = true;
         }
 	}
-	if(window == 10){
-		//if(Uspecial_Charge >= 191){ timestop = true; }
-		if(window_timer <= 2){
-			//sound_stop(sound_get("USPECIAL_CHARGE"));
+	if (window == 3){
+		//if (hsp * spr_dir > 0){ window = 4; window_timer = 0; hsp += 5 * spr_dir; }
+		if (free == false && ((window_timer mod 3) == 0)) { spawn_hit_fx( x-25 * spr_dir, y-52, Skrt); }
+	if (free == true && state_timer > 50){
+		window = 10; //No a real window, so it goes into idle
+		//Uspecial_Charge = 0;
+		vsp = -6;
+		hsp = 5 * spr_dir;
+		sound_stop(sound_get("USPECIAL_CHARGE"));
 		}
 	}
-	if (window == 3){ Uspecial_Charge = 0;
-	if (hsp * spr_dir > 0){ window = 4; window_timer = 0; hsp += 5 * spr_dir; }
-	if (free == false && ((window_timer mod 3) == 0)) { spawn_hit_fx( x-25 * spr_dir, y-52, Skrt); }
-	}
 	if (window == 4){
+		dspecial_charge = 0;
+		timestop_ready = false;
 		sound_stop(sound_get("USPECIAL_CHARGE"));
 		//if (abs(hsp) > 1){ can_jump = true; }
 		if (((window_timer mod 3) == 0) && hitpause == false){ create_hitbox(AT_DSPECIAL_2, 5, x, y); }
@@ -1141,14 +1154,21 @@ can_fast_fall = false;
 	}
 	if (window == 5){
 		can_shield = false;
-		if (timestop_ready == true && window_timer >= 3){ window = 6; window_timer = 0; }
+		dspecial_charge = 0;
+		move_cooldown[AT_DSPECIAL] = 30;
+		move_cooldown[AT_DSPECIAL_2] = 20;
+		//if (timestop_ready == true && window_timer >= 8){ window = 6; window_timer = 0; }
 	}
 	if (window == 6){
-		if (window_timer >= 30){ window_timer = 29; }
+		hit_player_obj = noone;
+		prevous_x = x;
+		prevous_y = y;
+		prevous_spr = spr_dir;
+		if (window_timer >= get_window_value( AT_DSPECIAL_2, 6, AG_WINDOW_LENGTH )){ window_timer = 19; }
 		if (special_down == false){ window = 7; window_timer = 0; }
 	}
 	if (window == 7){
-		if (window_timer == 1){
+		if (window_timer == 1 && instance_exists(asset_get("camera_obj")) ){
 		timestop = true;
 		timestop_BG = instance_create(750, 50, "obj_article1");
 		timestop_BG.state = 5;
@@ -1167,7 +1187,7 @@ if(attack == AT_UTILT){
 	//var enemy_dist = point_distance(got_hit_id.x, got_hit_id.y, x, y);
 	//if (hitpause == true){ can_strong = true; can_ustrong = true; can_attack = true; can_special = true; }
 	if (was_parried == false){
-	if (window == 1){ soft_armor = 100; super_armor = true; }
+	if (window == 1){ soft_armor = 100; super_armor = true; set_attack_value(AT_UTILT, AG_OFF_LEDGE, 0); }
 	if (window == 2){ soft_armor = 0; super_armor = false; }
 	if (window == 1 && window_timer <= 2){ flyforward = false; utilt_id = noone; face_opp = false; }
 	if (window == 2 && window_timer >= 3 && flyforward == false){ window = 3; window_timer = 2; destroy_hitboxes(); }
@@ -1176,11 +1196,13 @@ if(attack == AT_UTILT){
 	if (hitpause == true && flyforward == false){ flyforward = true; }
 	if (flyforward == true && window == 2){
 		if (utilt_id != noone){
+	set_attack_value(AT_UTILT, AG_OFF_LEDGE, 1);
 	reel_speed = 5;
 	var enemy_angle = point_direction(utilt_id.x, utilt_id.y - utilt_id.char_height * 1, x, y);
 	var enemy_dist = point_distance(utilt_id.x, utilt_id.y - utilt_id.char_height * 1, x, y);
 	var dragging_speed = max(sqrt(enemy_dist) * reel_speed / 5, reel_speed);
 		hsp = lengthdir_x(dragging_speed, enemy_angle + 180);
+		vsp = 0;
 		//vsp = lengthdir_y(dragging_speed, enemy_angle + 180);
 		ignores_walls = true;
 		through_platforms = 0;
@@ -1341,8 +1363,19 @@ if (attack == AT_TAUNT_2){
 
 if (attack == AT_EXTRA_1){
 	//Moving during 'Foresight'
-    hsp += lengthdir_x(.2, joy_dir);
-    vsp += lengthdir_y(.2, joy_dir);
+	can_move = false;
+    hsp += lengthdir_x(1, joy_dir);
+    vsp += lengthdir_y(1, joy_dir);
+    
+    if (state == PS_ATTACK_AIR){
+    hsp = old_hsp * 0.7;
+    vsp = old_vsp * 0.7;
+	}
+    if (state == PS_ATTACK_GROUND){
+    hsp = old_hsp * 0.5;
+    hsp = hsp * 1;
+    vsp = vsp * 0.6;
+    }
 }
 /*
 if (has_hit_player == true && EmeraldChance == true){
@@ -1361,9 +1394,10 @@ if (attack == AT_EXTRA_3){
 	can_move = false;
 	can_dash = true;
 	go_through = true;
+	if (window_timer > 1){ visible = true; }
 	if (window_timer <= 2 && ( (hsp < -10 && spr_dir == -1 || hsp > 10 && spr_dir == 1)) ){ hsp = hsp + 2 * spr_dir; }
-	if (joy_pad_idle == true || hsp == 0 || window_timer >= 94){
-		window = 2;
+	if (joy_pad_idle == true || hsp == 0 || window_timer >= 99){
+		window = 3;
 		crouch_dash = 2;
 	}
 	if ( (hsp < -1 && spr_dir == 1 || hsp > 1 && spr_dir == -1) && ((get_gameplay_time() mod 3 / abs(hsp)) == 0)){
@@ -1378,9 +1412,9 @@ if (attack == AT_TAUNT && window == 1 && ChaosEmerald == 4){
 }
 
 if (SuperMech == false){
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 11);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 11);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
 }
 
 //SUPER MECHA FUN TIME
@@ -1390,9 +1424,9 @@ if (SuperMech == true){
 	}
 	if (free == false && has_hit && hitpause == false && state == PS_PARRY && joy_pad_idle == false){ y = y-5; set_state(PS_AIR_DODGE); }
 
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 18);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 18);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
+	//set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 
 }
 /*

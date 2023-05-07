@@ -326,15 +326,15 @@ set_color_profile_slot( 29, 5, 224, 0, 113 ); //unnamed color row
 set_color_profile_slot( 29, 6, 44, 39, 54 ); //unnamed color row
 set_color_profile_slot( 29, 7, 14, 12, 18 ); //unnamed color row
 
-// Idk lol
-set_color_profile_slot( 30, 0, 241, 196, 15 ); //unnamed color row
-set_color_profile_slot( 30, 1, 3, 206, 164 ); //unnamed color row
-set_color_profile_slot( 30, 2, 0, 204, 102 ); //unnamed color row
-set_color_profile_slot( 30, 3, 253, 253, 253 ); //unnamed color row
-set_color_profile_slot( 30, 4, 247, 92, 3 ); //unnamed color row
-set_color_profile_slot( 30, 5, 22, 73, 105 ); //unnamed color row
-set_color_profile_slot( 30, 6, 219, 119, 101 ); //unnamed color row
-set_color_profile_slot( 30, 7, 217, 3, 104 ); //unnamed color row
+// TehEnd
+set_color_profile_slot( 30, 0, 33, 33, 33 ); //unnamed color row
+set_color_profile_slot( 30, 1, 81, 70, 102 ); //unnamed color row
+set_color_profile_slot( 30, 2, 81, 70, 102 ); //unnamed color row
+set_color_profile_slot( 30, 3, 110, 94, 138 ); //unnamed color row
+set_color_profile_slot( 30, 4, 74, 41, 99 ); //unnamed color row
+set_color_profile_slot( 30, 5, 132, 62, 140 ); //unnamed color row
+set_color_profile_slot( 30, 6, 255, 245, 245 ); //unnamed color row
+set_color_profile_slot( 30, 7, 42, 26, 54 ); //unnamed color row
 
 // Reforged
 set_color_profile_slot( 31, 0, 27, 168, 16 ); //unnamed color row

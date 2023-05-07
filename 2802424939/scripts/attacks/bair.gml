@@ -53,7 +53,6 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .4);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("slash4"));
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
@@ -69,4 +68,3 @@ set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .4);
-set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("slash4"));

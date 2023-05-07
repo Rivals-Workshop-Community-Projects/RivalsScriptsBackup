@@ -61,13 +61,13 @@ shader_end();
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 215, "v1.9", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 215, "v1.9.1", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 215, "April 15th, 2023", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 215, "May 5th, 2023", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

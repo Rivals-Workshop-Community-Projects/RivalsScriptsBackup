@@ -43,4 +43,22 @@ if(secret_alt_num = 2){
 	set_article_color_slot( 6, 242, 242, 242 ); //Shirt Stripe
 	}
     }
+if(secret_alt_num = 3){
+	if(seinfeld == true){
+set_character_color_slot( 0, 71, 71, 71 ); //Shirt
+set_character_color_slot( 1, 214, 169, 141 ); //Skin
+set_character_color_slot( 2, 99, 67, 48 ); //Hair1
+set_character_color_slot( 3, 99, 67, 48 ); //Hair2
+set_character_color_slot( 4, 71, 54, 54 ); //Pants
+set_character_color_slot( 5, 255, 255, 255 ); //Shoes
+set_character_color_slot( 6, 207, 43, 25 ); //Shirt Stripe
+set_article_color_slot( 0, 71, 71, 71 ); //Shirt
+set_article_color_slot( 1, 214, 169, 141 ); //Skin
+set_article_color_slot( 2, 99, 67, 48 ); //Hair1
+set_article_color_slot( 3, 99, 67, 48 ); //Hair2
+set_article_color_slot( 4, 71, 54, 54 ); //Pants
+set_article_color_slot( 5, 255, 255, 255 ); //Shoes
+set_article_color_slot( 6, 207, 43, 25 ); //Shirt Stripe
+	}
+    }
 }

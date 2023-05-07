@@ -97,16 +97,32 @@ switch attack {
     
     // ===== SUPER JUMP =====
     case AT_USPECIAL:
+    	can_fast_fall = false;
+    	strong_flashing = false;
         switch window {
 			case 1: // startup
-				can_fast_fall = false;
+				// drift
+				if abs(hsp) < nspec_max_hsp - 0.35 {
+					hsp = (right_down - left_down) * (1 + 2 * (nspec_mach_timer > 0));
+				}
+				
+				// sound effect
+				if uspec_sound == noone {
+					uspec_sound = sound_play(sfx_uspec_charge, true, noone, 1);
+				}
+				
+				// charge
+				if window_timer == 7 && special_down && uspec_charge < 60 {
+					window_timer -= 1;
+					uspec_charge += 1;
+				}
+				var mult = uspec_charge / 60;
+				set_window_value(attack, 2, AG_WINDOW_VSPEED, -12.5 - 6 * mult);
+				if uspec_charge { strong_flashing = uspec_charge % 10 < 5; }
+				
 				break;
 			case 2: // active
-				can_fast_fall = false;
 				hsp = clamp(hsp, -3, 3);
-				break;
-			case 3: // endlag
-				can_fast_fall = is_last_frame();
 				break;
         }
         break;

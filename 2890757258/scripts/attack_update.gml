@@ -66,6 +66,7 @@ if (attack == AT_NSPECIAL)
 		reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
 		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
 		reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT);
 	}
 	
 	if (window == 2)
@@ -98,7 +99,8 @@ if (attack == AT_NSPECIAL)
 			reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
 			reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
 			reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
-			reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
+			reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);			
+			reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT);
 			
 			if (window_timer == 2 && !hitpause)
 			{				
@@ -119,7 +121,8 @@ if (attack == AT_NSPECIAL)
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.35);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.35);			
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.35);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);			
 			
 			if (special_down && window_timer == 2 && !hitpause)
 			{				
@@ -145,12 +148,13 @@ if (attack == AT_FSPECIAL)
 	
 	if (window == 1)
 	{	
-		hsp = 0;
+		hsp 		= 0;		
+		moved_up 	= false;
 		
-		if (window_timer == 1)
-		{			
+		if (window_timer > 1 && window_timer < 15)
+		{
 			invincible 		= true;
-			invince_time 	= 10;
+			//invince_time 	= 10;
 		}
 		
 		if (window_timer == 2 && !hitpause)
@@ -167,7 +171,23 @@ if (attack == AT_FSPECIAL)
 	
 	if (window > 1 && window < 5)
 	{
-        //	If zero, you can climb. If not, you are a silly monkey :U
+        //	Ledge Snap
+		if (!was_parried && !hitpause) 
+		{        
+            if (place_meeting(x + hsp, y, asset_get("par_block")) && free)
+			{
+                for (var i = 1; i < 40; i++)
+				{
+                    if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+					{
+                        y -= i;
+                        break;
+                    }
+                }      
+            }
+		}
+		
+		//	If zero, you can climb. If not, you are a silly monkey :U
 		if (monke_count == 0)
 		{
 			//	This is where Monkey Shantae clings onto a wall
@@ -232,25 +252,26 @@ if (attack == AT_DSPECIAL_AIR)
 	
 	if (window == 1)
 	{
-		can_move = false;
+		reset_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS);
 		
-		vsp 	= -1;
-		hsp 	= 0;
+		can_move 		= false;
 		
-		if (window_timer == 1)
+		ele_loop 		= 0;
+		ele_ouch 		= false;
+		
+		vsp 			= -1;
+		hsp 			= 0;		
+		
+		if (window_timer > 1 && window_timer < 18)
 		{
-			ele_loop 		= 0;
-			
 			invincible 		= true;
-			invince_time 	= 14;
-			
-			reset_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS);
+			//invince_time 	= 14;
 		}
 		
 		if (window_timer == 2 && !hitpause)
 		{
-			var transform_effect = spawn_hit_fx(x-76*spr_dir, y-96, vfx_transform);
-			transform_effect.depth = depth-2;
+			var transform_effect 	= spawn_hit_fx(x-76*spr_dir, y-96, vfx_transform);
+			transform_effect.depth 	= depth-2;
 		}
 		
 		if (window_timer == phone_window_end)
@@ -262,20 +283,31 @@ if (attack == AT_DSPECIAL_AIR)
 	
 	if (window > 1 && special_down || down_down)
 	{
-		fall_through = true;
+		if (!was_parried)
+		{
+			fall_through = true;
+		}
 	}
 	
-	if (window == 3)
+	if (window == 2)
 	{
-		if (!hitpause) 
-		{		
-			soft_armor 		= 12;
+		if (window_timer == phone_window_end)
+		{
+			if (!was_parried && !hitpause) 
+			{		
+				soft_armor 		= 14;
+			}			
 		}
 	}
 	
 	if (window == 4)
 	{	
 		ele_loop++;
+		
+		if (was_parried)
+		{
+			soft_armor 		= 0;
+		}
 		
 		if (ele_loop > 10)
 		{
@@ -288,13 +320,17 @@ if (attack == AT_DSPECIAL_AIR)
 		{
 			vsp 			= 20;			
 		}
+		
+		if (has_hit_player)
+		{
+			//	Cancellable on hit fun
+			ele_ouch 		= true;
+		}
 			
 		if (!free) 
 		{
 			window 			= 5;
-			window_timer 	= 0;
-			
-			soft_armor 		= 0;
+			window_timer 	= 0;			
 			
 			set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 7);
 			
@@ -305,14 +341,30 @@ if (attack == AT_DSPECIAL_AIR)
 		}
 	}
 	
-	if (window == 5 && window_timer == 1)
+	if (window == 5)
 	{
-		shake_camera(8, 6);
+		soft_armor 		= 0;
+		
+		if (window_timer == 1)
+		{
+			shake_camera(8, 6);
+		}
 	}
 	
 	if (window == 7)
 	{
-		if (window_timer == 7 && !hitpause)
+		//	And here's the cancellation prize~
+		if (ele_ouch == true)
+		{
+			iasa_script();
+			
+			if (window_timer == 1 && !hitpause)
+			{
+				transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
+			}
+		}
+		
+		if (window_timer == 6 && !has_hit_player && !hitpause)
 		{
 			transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
 		}
@@ -344,10 +396,10 @@ if (attack == AT_USPECIAL)
 	
 	if (window == 1)
 	{
-		if (window_timer == 1)
-		{			
+		if (window_timer > 1 && window_timer < 5)
+		{
 			invincible 		= true;
-			invince_time 	= 8;
+			//invince_time 	= 8;
 		}
 		
 		if (window_timer == 2 && !hitpause)
@@ -490,8 +542,8 @@ if (attack == AT_TAUNT)
 		
 	if (taunt_down && window == 2 && window_timer == 19) 
 	{
-		window = 2;
-		window_timer = 0;
+		window 			= 2;
+		window_timer 	= 0;
 	}
 }
 
@@ -501,8 +553,8 @@ if (attack == AT_TAUNT_2)
 	{
 		if (window == 2)
 		{		
-			window = 3;
-			window_timer = 0;
+			window 			= 3;
+			window_timer 	= 0;
 		}
 	}
 }
@@ -595,7 +647,7 @@ switch(attack)
 		break;
 	
 	case AT_USTRONG:
-		if window == 2 && window_timer == phone_window_end{
+		if window == 3 && window_timer == phone_window_end{
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
 			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
 		}

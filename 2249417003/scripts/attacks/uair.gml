@@ -77,9 +77,18 @@ set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 0);
-set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .3);
+
+//brawlhalla jank stats
+set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 2, HG_EXTRA_HITPAUSE, 6);
+
+//normal stats
+set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.75);
+set_hitbox_value(AT_UAIR, 2, HG_EXTRA_HITPAUSE, 0);
+
+
 set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

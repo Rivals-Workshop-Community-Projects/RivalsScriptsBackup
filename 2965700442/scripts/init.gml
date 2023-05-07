@@ -33,7 +33,7 @@ air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.3;
 prat_fall_accel = .6; //multiplier of air_accel while in pratfall
-air_friction = 0.04;
+air_friction = 0.03;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5;
@@ -43,7 +43,7 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = 0.4;
 hitstun_grav = 0.45;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 11;
@@ -236,9 +236,9 @@ impulse_glow_alpha = 0;
 impulse_damage_adj = 1.3;
 impulse_walk_speed_adj = 1.1;
 impulse_initial_dash_speed_adj = 1.2;
-impulse_dash_speed_adj = 1.15;
-impulse_ground_friction_adj = 1.2;
-impulse_air_accel_adj = 1.1;
+impulse_dash_speed_adj = 1.2;
+impulse_ground_friction_adj = 1.3;
+impulse_air_accel_adj = 1.15;
 impulse_air_friction_adj = 1.05;
 impulse_grav_adj = 1.03;
 impulse_fall_speed_adj = 1.05;

@@ -177,7 +177,7 @@ if(attack == AT_DSPECIAL){
     if(window == 2){
         can_jump = true
         gyro_charge += 0.1
-        if(special_pressed){
+        if(!special_down){
             window = 4
             window_timer = 0
         }else if(gyro_charge >= 16){

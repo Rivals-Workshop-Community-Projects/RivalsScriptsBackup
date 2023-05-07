@@ -76,9 +76,8 @@ if (LoveGained_Visual && LoveGained_Timer > 0){
 	LoveGained_Timer--;
 }
 
-/* 
 // Halloween Costume Code
-if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) == 19)){
+if (!costume_end && get_player_color(player) == 6){
 	if (state_timer % 6 == 0) {
 		introTimer++;
 	}
@@ -87,7 +86,7 @@ if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) 
 		costume_end = true;
 	}
 }
-*/
+
 
 if (get_training_cpu_action() == CPU_STAND && taunt_pressed && attack == AT_TAUNT) {
 	taunt_counter = 140

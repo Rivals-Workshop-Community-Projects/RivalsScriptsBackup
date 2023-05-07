@@ -111,7 +111,6 @@ kirbyability = 16
 copy_ability_id = 64
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 110;
-used_fs = false;
 mamizou_transform_spr = sprite_get("helpless");
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Roasted Sugar Snap Peas"

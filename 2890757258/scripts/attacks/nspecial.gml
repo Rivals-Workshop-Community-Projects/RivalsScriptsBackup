@@ -26,6 +26,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 set_num_hitboxes(AT_NSPECIAL, 1);
 
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Fireball");
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 80);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);

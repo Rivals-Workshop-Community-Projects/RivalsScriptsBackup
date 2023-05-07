@@ -146,6 +146,11 @@ ralsei_dstrong_heal_amount = 0;
 ralsei_dstrong_player_heal_amount = [0, 0, 0, 0, 0];
 ralsei_heart_article_id = instance_create(x, y, "obj_article3");
 
+ralsei_heart_max_active_time = 150;
+ralsei_heart_cooldown_time = 50;
+spr_ralsei_heart_hurtbox = sprite_get("ralsei_hurtbox_heart");
+spr_ralsei_heart_hurtbox_crouch = sprite_get("ralsei_hurtbox_heart_crouch");
+
 ralsei_trigger = false;
 
 ralsei_intro_animation = 0;

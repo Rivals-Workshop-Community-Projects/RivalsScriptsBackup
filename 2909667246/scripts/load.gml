@@ -54,9 +54,15 @@ sprite_change_offset("fstrong_anvil", 40, 58, true);
 sprite_change_offset("ustrong", 40, 58, true);
 sprite_change_offset("dstrong", 40, 58, true);
 sprite_change_offset("nspecial", 40, 58, true);
+sprite_change_offset("nspecial_air", 40, 58, true);
 sprite_change_offset("fspecial", 40, 58, true);
+sprite_change_offset("fspecial_air", 40, 58, true);
 sprite_change_offset("uspecial", 40, 58, true);
+sprite_change_offset("uspecial_air", 40, 58, true);
 sprite_change_offset("dspecial", 40, 58, true);
+sprite_change_offset("dspecial_air", 40, 58, true);
+sprite_change_offset("grab", 40, 58, true);
+sprite_change_offset("grab_air", 40, 58, true);
 sprite_change_offset("taunt", 40/2, 78/2, true);
 sprite_change_offset("taunt_beeg", 100, 349, true);
 

@@ -10,9 +10,13 @@ if(instance_exists(Pocketed_Projectile)){
 		draw_sprite_ext(sprite_get("nspecial_pocket_hud"), 0, temp_x + 170, temp_y - 22,2,2,0,c_white,1);
 	}
 	shader_end();
-	with(Pocketed_Projectile.player_id){
+	//if(Pocketed_Projectile.player_id != self){
+		with(Pocketed_Projectile.player_id){
+			shader_start();
+		}
+	/*}else{
 		shader_start();
-	}
+	}*/
 	draw_sprite_ext(pocket_projectile_hud_sprite, pocket_projectile_hud_sprite_imageindex, temp_x + 170, temp_y - 22,2,2,0,c_white,1);
 	shader_end();
 }

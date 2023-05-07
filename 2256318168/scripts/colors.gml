@@ -185,4 +185,3 @@ set_color_profile_slot(15, 3, 120,  15,   0); //Shirt
 set_color_profile_slot(15, 4, 255, 140, 100); //Skirt
 set_color_profile_slot(15, 5, 255, 140, 100); //Leggings
 set_color_profile_slot(15, 6, 240, 160,  30); //VFX
-

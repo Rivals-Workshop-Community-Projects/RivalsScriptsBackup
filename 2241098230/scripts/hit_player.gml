@@ -37,7 +37,7 @@ if (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num < 3 && get_pla
 
 //Throws
 if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
-    if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
+    if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
         	//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
 		
@@ -54,7 +54,7 @@ if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && attack == AT_NSPECIAL){
-    if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
+    if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
         	
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
@@ -73,7 +73,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && attack == AT_NSPECIAL){
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL && attack == AT_FSPECIAL){
-    if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
+    if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
         	//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
 		
@@ -91,7 +91,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && attack == AT_FSPECIAL){
 }
 
 if (my_hitboxID.attack == AT_USPECIAL && attack == AT_USPECIAL){
-    if ((my_hitboxID.hbox_num >= 1 && my_hitboxID.hbox_num <= 3) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
+    if ((my_hitboxID.hbox_num >= 1 && my_hitboxID.hbox_num <= 3) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
        	//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
 		

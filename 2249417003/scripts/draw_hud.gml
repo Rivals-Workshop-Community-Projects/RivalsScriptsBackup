@@ -12,9 +12,9 @@ else {
         draw_sprite(sprite_get("fx_atk_up"), 0, temp_x + 144, temp_y - 2);
         
     }
-    else if (ralsei_heart_active) {
-        draw_tp_meter_overflow(3);
-    }
+    //else if (ralsei_heart_active) {
+    //    draw_tp_meter_overflow(3);
+    //}
     else {
         if (ralsei_tp > 0) {
             if (ralsei_draw_tp < ralsei_tp) {

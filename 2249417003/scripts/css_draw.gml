@@ -41,7 +41,7 @@ alt_name[11] = "Goat Ops";
 alt_name[12] = "Shooting Wind";
 alt_name[13] = "Misfire";
 alt_name[14] = "Super Snipe";
-alt_name[15] = "woag";
+alt_name[15] = "Landkon2";
  
  
  

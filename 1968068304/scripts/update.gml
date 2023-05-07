@@ -146,7 +146,7 @@ if (free)
 		epinel_heavy_state = 0;
 	}
 
-	
+	//snap to 
 }
 else //if not free
 {
@@ -317,16 +317,19 @@ if (epinel_grav_jump) {
 if (state == PS_DOUBLE_JUMP && check_fast_fall && djumps > 0) epinel_grav_jump = 1;
 
 //spawn respawn platform
-if (state == PS_RESPAWN && state_timer == 90) {
-	var plat = instance_create(x, y, "obj_article_platform");
-	plat.player_id = id;
-	plat.player = player;
-	plat.spr_dir = spr_dir;
-	plat.sprite_index = sprite_get("plat_article_large");
-	plat.hp = plat.hp_threshold;
-	plat.vsp = 0;
-	plat.break_when_not_stood_on = true;
-	epinel_other_standing_on_platform_id = plat;
+if (state == PS_RESPAWN) {
+	if (state_timer == 90) {
+		var plat = instance_create(x, y, "obj_article_platform");
+		plat.player_id = id;
+		plat.player = player;
+		plat.spr_dir = spr_dir;
+		plat.sprite_index = sprite_get("plat_article_large");
+		plat.hp = plat.hp_threshold;
+		plat.vsp = 0;
+		plat.break_when_not_stood_on = true;
+		epinel_other_standing_on_platform_id = plat;
+	}
+	epinel_buffered_standing_on_platform_id = epinel_other_standing_on_platform_id;
 }
 
 //kirby + other workshop character fix

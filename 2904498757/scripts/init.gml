@@ -130,7 +130,8 @@ spr_idle_air = sprite_get("pratfall");
 
 // SFX
 sfx_mach_loop = sound_get("pt_mach_loop");
-sfx_mach_dash = sound_get("pt_mach_attack")
+sfx_mach_dash = sound_get("pt_mach_attack");
+sfx_uspec_charge = sound_get("pt_uspec_charge");
 sfx_fspec_grab = sound_get("pt_grab");
 sfx_parry = sound_get("pt_parry");
 sfx_death = sound_get("pt_death");
@@ -158,6 +159,9 @@ taunt_sfx_array = [
     sound_get("pt_taunt2")
 ];
 
+uspec_charge = 0;
+uspec_sound = noone;
+
 dspec_timer = 0; // counts up during falling window of dspec
 
 nspec_turned = false;
@@ -172,10 +176,10 @@ nspec_mach_frict_mult = 0.5;
 
 nspec_mach_sound = noone;
 
-nspec_ai_tot = 4; // total number of afterimages
+nspec_ai_tot = 3; // total number of afterimages
 nspec_ai_cur = 0; // current number of images to draw
 nspec_ai_ind = 0; // which index to replace in the rolling buffer
-nspec_ai_freq = 3; // higher number --> less frequent updates to after image buffer
+nspec_ai_freq = 5; // higher number --> less frequent updates to after image buffer
 
 // array of afterimages
 nspec_afterimages = array_create(nspec_ai_tot, 0);

@@ -3,6 +3,8 @@
 b_reversed = false;
 tauntcancel = false;
 
+grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
+
 if(attack == AT_NSPECIAL){
 	pocket_release = 0;
 	if(instance_exists(Pocketed_Projectile)){
@@ -52,17 +54,17 @@ if (attack == AT_UAIR){
 	reset_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE);reset_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING);
 	reset_hitbox_value(AT_UAIR, 1, HG_HIT_SFX);
 	reset_hitbox_value(AT_UAIR, 2, HG_WIDTH);
-	if(rng < 30){
+	if(rng < 30){ //1
 		set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 50);set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 60);
 		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8);set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .85);
 		set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8);set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.8);
 		set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 		set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 45);
-	}else if(rng < 60){
+	}else if(rng < 60){ //2
 		set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair2"));set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("turnip2"));
-	}else{
+	}else{ //3
 		set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair3"));set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("turnip3"));
-		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 12);set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .95);
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 12);/*set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);*/set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .95);
 		set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 12);set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 1.3);
 		set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	}
@@ -81,7 +83,7 @@ if (attack == AT_DAIR){
 	reset_hitbox_value(AT_DAIR, 3, HG_DAMAGE);reset_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING);
 	reset_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE);reset_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING);
 	reset_hitbox_value(AT_DAIR, 3, HG_HIT_SFX);
-	if(rng < 30){
+	if(rng < 30){ //1
 		set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 38);set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 38);
 		set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 7);set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .9);
 		set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 8);set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .8);
@@ -90,9 +92,9 @@ if (attack == AT_DAIR){
 		set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 8);set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 5);set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, .5);
 		set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 8);set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, .8);
 		set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-	}else if(rng < 60){
+	}else if(rng < 60){ //2
 		set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair2"));set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("turnip2"));
-	}else{
+	}else{ //3
 		set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair3"));set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("turnip3"));
 		set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 12);set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 7);set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 1.0);
 		set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 10);set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1);
@@ -100,6 +102,10 @@ if (attack == AT_DAIR){
 		set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 12);set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 1.3);
 		set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	}
+}
+
+if(attack == AT_GRAB){
+	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
 }
 
 

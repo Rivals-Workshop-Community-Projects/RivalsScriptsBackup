@@ -46,7 +46,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("slash5"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -66,5 +65,4 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("slash5"));
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 5);

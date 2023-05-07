@@ -14,6 +14,17 @@ if (abs(hud_offset) < 1)
 
 //	My stuff
 
+switch (state)
+{
+	case PS_AIR_DODGE: 
+		if (!free && image_index == 0)
+		{
+			sprite_index = sprite_get("jumpstart");
+			image_index = 1;
+		}
+		break;
+}
+
 if (state== PS_ATTACK_GROUND && attack == AT_USTRONG && window == 2 && window_timer == 4) 
 { 
 	//	5 is the frame_start, 3 is the number of frames                                         

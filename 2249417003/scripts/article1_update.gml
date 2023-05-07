@@ -26,6 +26,8 @@ switch (article_index) {
 			hsp = max(abs(hsp) - 0.1, 0) * sign(hsp);
 		}
 		
+		if (state_timer >= 480) destroy = true;
+		
 		switch (state) {
 			
 			case 0: //startup
@@ -255,6 +257,7 @@ switch (article_index) {
 					ignores_walls = false;
 					hsp = spr_dir * 4;
 					vsp = -2;
+					mine_was_parried = false;
 				}
 				//activate when on the ground
 				if (!free) {
@@ -328,7 +331,8 @@ switch (article_index) {
 			break;
 			case 4: //inactive mine
 				if (state_timer == 1) sprite_index = sprite_get("dtilt_landmine_triggered");
-				if (state_timer >= 300) set_article_state(5);
+				if (mine_was_parried && state_timer % 40 == 0) spawn_hit_fx(x + 16, y - 4, 14).spr_dir = -1;
+				if (state_timer >= 300 * (1 + mine_was_parried)) set_article_state(5);
 			break;
 			case 5: //fadeaway
 				image_alpha -= 0.05;

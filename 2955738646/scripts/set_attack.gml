@@ -1,8 +1,14 @@
 //set_attack
 
-if (attack == AT_DSPECIAL && window != 4 && !free && has_hit == false){
+if (attack == AT_DSPECIAL && free == false && window < 2){
     attack = AT_DSPECIAL_2;
-    //window = 3;
+    window = 1;
+    window_timer = 0;
+}
+if (attack == AT_DSPECIAL && free == false && has_hit == false && (window == 2 || window == 3) ){
+    attack = AT_DSPECIAL_2;
+    window = 4;
+    window_timer = 0;
 }
 
 if (attack == AT_USPECIAL && !free){
@@ -17,14 +23,17 @@ if (attack == AT_TAUNT && special_down && attack_down){
     //attack = AT_TAUNT_2;
 }
 
-if (attack == AT_USPECIAL && move_cooldown[AT_USPECIAL_2] > 0 && !free){
+if (attack == AT_USPECIAL_2 && move_cooldown[AT_USPECIAL_2] > 0){
     //So he doesn't jump whenever it's on cooldown
-    //attack = AT_JAB;
-    window = 10;
-    vsp = 1;
+    attack = AT_USPECIAL;
+    window = 3;
+    window_timer = 0;
+    clear_button_buffer( PC_UP_STICK_PRESSED );
+    clear_button_buffer( PC_SPECIAL_PRESSED );
+    clear_button_buffer( PC_JUMP_PRESSED );
 }
 
-if(SuperMech == true){
+if (SuperMech == true){
     if (attack == AT_DSPECIAL){
         //attack = AT_DSPECIAL_2;
     }

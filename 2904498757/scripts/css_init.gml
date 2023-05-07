@@ -25,5 +25,6 @@ alt_name[12] = "Snowman";
 alt_name[13] = "Wario 2";
 alt_name[14] = "Snick";
 alt_name[15] = "Wario 4";
+alt_name[16] = "Colonel's Choice";
 
 online_css = (player == 0);

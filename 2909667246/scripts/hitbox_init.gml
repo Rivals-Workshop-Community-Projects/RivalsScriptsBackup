@@ -4,6 +4,8 @@ VillagerHitbox = true;
 originalplayer = player_id;
 num = 0;
 timer = 0;
+KoB_grabbed = false;
+KoB_was_grabbed = false;
 
 if (player_id.runeE) {
 	VillagerTreeCut = 1;
@@ -77,6 +79,10 @@ if(attack == AT_NSPECIAL){
 		
 		Pocketable = true;Pocket_hsp = 1;Pocket_vsp = 2;Pocketed = false;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 7;
+        if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1 || player_id.alt == 22 || player_id.alt == 25){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	if(player_id.alt == 0){Pocket_hud_imageindex = 16;}
+        }
 		MattCanGrab = true;
 	    MorshuCanGrab = true;
 	    CalCanSnack = 1;
@@ -112,19 +118,19 @@ if(attack == AT_NSPECIAL){
 	}else if(hbox_num == 3){ //tree
 		hp = 60;
 		image_index = 1;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            timer2 = 0;
-            cuts = 0;
-            lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            hitcollision = create_hitbox(AT_DSPECIAL, 4, round(x), round(y-45));
-            hitcollision.theplant = self;
+        knockback_power = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
+        timer = 0;
+        timer2 = 0;
+        cuts = 0;
+        lasthitbox = noone;
+        hitlockout = 4;
+        hitlockout2 = 0;
+        hitplayer = false;
+        hitplayertimer = 0;
+        hitcollision = create_hitbox(AT_DSPECIAL, 4, round(x), round(y-45));
+        hitcollision.theplant = self;
 	}else if(hbox_num == 4){ //tree hit collision
         playerurl = player_id.url;
     	UnReflectable = true;AriaCantAbsorb = true;
@@ -136,7 +142,13 @@ if(attack == AT_NSPECIAL){
     	Pocketable = true;PocketableByOwner = 0;
         Pocketed = false;waspocketed = false;waspocketed2 = false;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 9;
+        if(player_id.alt == 31){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 15;
+        }else if(player_id.alt != 0){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        }
         despawning = false;
+        prev_player = player;
         MattCanGrab = true;
         //MorshuCanGrab = true;
         CalCanSnack = 2;
@@ -158,6 +170,7 @@ if(attack == AT_NSPECIAL){
         Pocketed = false;waspocketed = false;waspocketed2 = false;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 2;
         despawning = false;
+        prev_player = player;
         MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
@@ -165,7 +178,15 @@ if(attack == AT_NSPECIAL){
         SpikeCanEat = true;//SpikeHealPercent = 0;
         landtimer = 0;
         landsfx = sound_get("fstrong_land");
-        if(player_id.alt == 31){
+        if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        }
+        if(player_id.alt == 25){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 10;
+        }else if(player_id.alt == 30){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 11;
+        }else if(player_id.alt == 31){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 12;
         	landsfx = sound_get("fstrong_land_anvil");
         }
         image_xscale += 0.1;image_yscale += 0.1;
@@ -184,6 +205,9 @@ if(attack == AT_NSPECIAL){
         CalCanSnack = 0;
         Pocket_hsp = 1;Pocket_vsp = -3;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 5;
+        if(player_id.alt == 31){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        }
         
         playercharge = 0;
         num2 = 0;used = false;
@@ -200,6 +224,14 @@ if(attack == AT_NSPECIAL){
 	Villager_Slingshot = true;
     Pocketable = true;Pocket_hsp = hsp;Pocket_vsp = vsp;
     Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 1;
+    if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
+    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+    }
+    if(player_id.alt == 25){
+    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 13;
+    }else if(player_id.alt == 30){
+    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 14;
+    }
     MattCanGrab = true;
     MorshuCanGrab = true;
     CalCanSnack = 1;
@@ -221,6 +253,9 @@ if(attack == AT_NSPECIAL){
 }else if(attack == AT_DATTACK){
     Pocketable = true;
     Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 4;
+    if(player_id.alt == 30){
+    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+    }
     MattCanGrab = true;
     MorshuCanGrab = true;
     CalCanSnack = 1;

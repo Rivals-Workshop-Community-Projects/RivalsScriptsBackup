@@ -339,6 +339,7 @@ if (attack == AT_NSPECIAL){
 	}else if(window == 7){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	        dusteff = spawn_hit_fx(x-5*spr_dir,y,fx_dust_sharp_big);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
+	        if(kewtmode >= 1){sound_play( sound_get("heavyattack") );shake_camera(5, 5);}
 	    }
 	}if(window == 5 || window == 6){
 		if(window_timer == 6){
@@ -455,6 +456,204 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 	}
+}else if (attack == AT_GRAB){
+	can_fast_fall = false;
+	if(instance_exists(grabbedtarget)){
+    	if(!grabbedobject){
+	    	if(grabbedtarget.state == PS_DEAD || grabbedtarget.state == PS_RESPAWN){
+	        	grabbedtarget = noone;
+	    	}
+		}else if(grabbedobject && !grabbedarticle){
+			grabbedtarget.hit_priority = 0;grabbedtarget.hitbox_timer = 0;
+            grabbedtarget.spr_dir = spr_dir;
+		}
+	}
+	
+	if(window == 1){
+		if(window_timer == 1 && !hitpause){
+			sound_play(sound_get("net"),false,noone,1);
+		}
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			if(!free){
+				var dust = spawn_hit_fx(x+45*spr_dir,y,fx_dust_sharp)dust.spr_dir = -spr_dir;dust.depth = depth-4;
+				var dust2 = spawn_hit_fx(x+115*spr_dir,y,fx_dust_sharp)dust2.depth = depth - 4;
+			}
+			if(!instance_exists(grabbedtarget) && !attack_down && !right_stick_down && !left_stick_down){
+		    	with(pHitBox){
+		            if(type == 2 && self != other){
+		            	if(string_length(string(player_id.url)) > 0 && orig_player != 5){
+			            	var playerurl = real(player_id.url);
+			                if(/*other.url == playerurl || */"MattCanGrab" in self && MattCanGrab || other.url != playerurl && (other.canon || other.op || playerurl < 20)){
+			                	var dist = point_distance(other.x+70*other.spr_dir, other.y-25, x, y); //distance
+		                	    if(dist <= 75 && !other.grabbedobject && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
+		                	        spr_dir = other.spr_dir;player = other.player;
+			                		other.grabbedtarget = self;other.grabbedobject = true;num = 1;
+			                		can_hit[1] = true;can_hit[2] = true;can_hit[3] = true;can_hit[4] = true;
+			                		KoB_grabbed = true;
+			                		if("Villager_Bowling_Ball" in self){
+			                			if(!waspocketed && !waspocketed2 && player_id == other){ //if its your own bowling ball and it hasnt been pocketed or anything yet, make it weaker
+							    			damage = 8;kb_value = 7;kb_scale = 0.9;waspocketed2 = true;
+							    		}
+							    	}
+		                	    }	 
+		            	    }
+		            	}
+		            }
+		        }with(asset_get("obj_article1")){
+                    grab_article_if_valid();
+                }with(asset_get("obj_article2")){
+                    grab_article_if_valid();
+                }with(asset_get("obj_article3")){
+                    grab_article_if_valid();
+                }
+    		}
+    		if(grabbedobject && instance_exists(grabbedtarget)){
+	        	grabtimer = 120;sound_play(sound_get("grab"));
+	        	window = 4;window_timer = 0;if(free && vsp > 0 && !position_meeting(x,y+20,asset_get("par_block")) && !position_meeting(x,y+20,asset_get("par_jumpthrough"))
+				&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))old_vsp = -5;
+	        	destroy_hitboxes();
+	           	spawn_hit_fx(grabbedtarget.x,grabbedtarget.y,302);sound_play(asset_get("sfx_blow_medium3"));
+	    	}
+		}
+	}else if(window == 3){
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)/2 && !hitpause && free && vsp > 4){
+			cancelattack3();
+		}
+	}else if(window == 4){ //grabbed
+		window_timer = 0;can_move = false;
+		grabbedposX = 75;grabbedposY = -2;
+		if(grabtimer > 0 && !hitpause && instance_exists(grabbedtarget)){ //holding
+			grabtimer -= 1;
+			if(free && vsp > 0 && !position_meeting(x,y+20,asset_get("par_block")) && !position_meeting(x,y+20,asset_get("par_jumpthrough"))
+			&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))grabtimer -= 4;
+			if(right_pressed || left_pressed){
+				window = 5;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 7);
+				if(right_pressed){spr_dir = 1;}else{spr_dir = -1;}instance_exists(grabbedtarget){grabbedtarget.y = y;grabbedtarget.x = x-(65*spr_dir);grabbedtarget.visible = false;}
+			}else if(up_pressed){
+				window = 8;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 10);
+				instance_exists(grabbedtarget){grabbedtarget.y = y+15;grabbedtarget.x = x+(75*spr_dir);grabbedtarget.visible = false;}
+			}else if(down_pressed){
+				window = 11;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 13);
+				instance_exists(grabbedtarget){grabbedtarget.y = y+5;grabbedtarget.x = x-(55*spr_dir);grabbedtarget.visible = false;}
+				if(free && vsp > -7){vsp = -7;}else if(!free){vsp = -6;}
+			}
+			if(!grabbedobject){
+				if(grabbedtarget.villager_bury_cooldown > 0){
+			    	grabbedtarget.villager_bury_cooldown = max(grabbedtarget.villager_bury_cooldown, 30);
+				}
+			}
+		}else if(grabtimer <= 0 && !hitpause || !instance_exists(grabbedtarget)){ //grab release
+			window = 3;window_timer = 16;hsp = -2*spr_dir;if(free && vsp > 0)vsp = -5;
+			if(instance_exists(grabbedtarget)){
+	        	if(!grabbedobject){
+	            	grabbedtarget.hsp = -5*grabbedtarget.spr_dir;grabbedtarget.vsp = -4;grabbedtarget.visible = true;
+	        	}else{
+	        		grabbedobject = false;grabbedtarget.KoB_grabbed = false;
+	            	if(grabbedarticle){
+	                    grabbedtarget.length = 1;
+	                }else{
+	                	with(grabbedtarget){
+	                		//if("Villager_Tree" in self || "Villager_Bowling_Ball" in self){despawning = true;}
+	                        if("MattPlanet" in self){state = 1;timer = 60;}
+	                    }grabbedtarget.state = 1;grabbedtarget.timer = 60;
+			    		if("StarterBlock" in grabbedtarget){grabbedtarget.state = 2;}
+			    		grabbedtarget.visible = true;
+	                }
+	        	}grabbedtarget = noone;
+			}
+        }
+	}else if(window >= 5 && window <= 7){ //fthrow / bthrow
+		if(window == 5){
+			grabbedposX = -55;grabbedposY = -10;
+			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				if(!free){create_hitbox(AT_GRAB, 2, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 3, x, y);}
+				if(instance_exists(grabbedtarget)){
+					grabbedtarget.x = x+(65*spr_dir);
+					if(!grabbedobject){
+	        			grabbedtarget.visible = true;grabbedtarget.y = y-10;
+	        		}else{
+						grabbedtarget.y = y-30;grabbedtarget.hsp = 10*spr_dir;grabbedtarget.vsp = -5;grabbedtarget.KoB_grabbed = false;
+				    	if(!grabbedarticle){
+		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
+		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		            	}else{
+		                	with(grabbedtarget){
+						    	if("MattPlanet" in self){state = 2;}
+				        	}grabbedtarget.visible = true;
+		            	}
+					}grabbedtarget = noone;
+				}
+			}
+		}
+	}else if(window >= 8 && window <= 10){ //uthrow
+		if(window == 8){
+			grabbedposX = 75;grabbedposY = 15;
+			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				if(!free){create_hitbox(AT_GRAB, 4, x, y);}else{if(vsp > -7){vsp = -7;}create_hitbox(AT_GRAB, 5, x, y);}
+				if(instance_exists(grabbedtarget)){
+					grabbedtarget.x = x+(40*spr_dir);
+					if(!grabbedobject){
+	        			grabbedtarget.visible = true;grabbedtarget.y = y-65;
+	        		}else{
+						grabbedtarget.y = y-85;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = -16;grabbedtarget.KoB_grabbed = false;
+				    	if(!grabbedarticle){
+		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
+		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		            	}else{
+		                	with(grabbedtarget){
+						    	if("MattPlanet" in self){state = 2;}
+				        	}grabbedtarget.visible = true;
+		            	}
+					}grabbedtarget = noone;
+				}
+			}
+		}
+	}else if(window >= 11 && window <= 13){ //dthrow
+		if(window == 11){
+			grabbedposX = -35;grabbedposY = -35;
+			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				var grounded = true;
+				if(!free || position_meeting(x,y+40,asset_get("par_block")) || position_meeting(x,y+40,asset_get("par_jumpthrough"))){create_hitbox(AT_GRAB, 6, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 7, x, y);grounded = false;}
+				if(instance_exists(grabbedtarget)){
+					grabbedtarget.x = x+(20*spr_dir);
+					if(!grabbedobject){
+	        			grabbedtarget.visible = true;grabbedtarget.y = y+35;
+	        			if(runeC && grounded){grabbedtarget.y = y+38;}
+	        		}else{
+						grabbedtarget.y = y+55;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = 14;grabbedtarget.KoB_grabbed = false;
+				    	if(!grabbedarticle){
+		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
+		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		            	}else{
+		                	with(grabbedtarget){
+						    	if("MattPlanet" in self){state = 2;}
+				        	}grabbedtarget.visible = true;
+		            	}
+					}
+					grabbedtarget = noone;
+				}
+			}
+		}
+	}
+	
+	if((window == 7 || window == 10 || window == 13) && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)/2){
+		cancelattack();
+	}
+	
+	if(instance_exists(grabbedtarget)){
+		grabbedtargetstuff();
+    	if(!grabbedobject){
+        	grabbedtarget.y = ease_expoOut(grabbedtarget.y, round(y+grabbedposY), 2, 20);
+    	}else{
+        	grabbedtarget.y = ease_expoOut(round(grabbedtarget.y), round(y+(grabbedposY-25)), 2, 20);
+    	}
+    	grabbedtarget.x = ease_expoIn(round(grabbedtarget.x), round(x+(grabbedposX*spr_dir)), 16, 20);
+	}else{
+		soft_armor = 0;
+	}
 }else if (attack == AT_TAUNT){
 	if((window == 1 || window == 3) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         sound_play(sound_get("crouch2"),false,noone,0.6);
@@ -543,60 +742,101 @@ if (canon || op) {
     	if(string_length(string(player_id.url)) > 0){
 	        var playerurl = real(player_id.url);
 	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")  || other.runeI){
-	            	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
-	            	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
-	            		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;
-			        	player = other.player;
-			        	if("current_player" in self){
-			        		current_player = other.player;
-			        	}
-			        	if("state" in self){
-					    	state = 3;
-						}other.pocket_projectile_sprite_imageindex = image_index;
-				    	other.pocket_projectile_sprite = sprite_index;//sprite_index = asset_get("empty_sprite");
-				    	
-				    	//velocity stuff
-				    	if("Pocket_hsp" not in self){  //if no forced hsp, then just use what the projectile had
-				    		other.pocket_hsp = abs(hsp);
-				    	}else{
-				    		other.pocket_hsp = abs(Pocket_hsp);
-				    	}if("Pocket_vsp" not in self){ //if no forced vsp, then just use what the projectile had
-				    		other.pocket_vsp = vsp;
-				    	}else{
-				    		other.pocket_vsp = Pocket_vsp;
+            	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
+            	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
+            		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;
+		        	player = other.player;
+		        	if("current_player" in self){
+		        		current_player = other.player;
+		        	}
+		        	if("state" in self){
+				    	state = 3;
+					}other.pocket_projectile_sprite_imageindex = image_index;
+			    	other.pocket_projectile_sprite = sprite_index;//sprite_index = asset_get("empty_sprite");
+			    	
+			    	//velocity stuff
+			    	if("Pocket_hsp" not in self){  //if no forced hsp, then just use what the projectile had
+			    		other.pocket_hsp = abs(hsp);
+			    	}else{
+			    		other.pocket_hsp = abs(Pocket_hsp);
+			    	}if("Pocket_vsp" not in self){ //if no forced vsp, then just use what the projectile had
+			    		other.pocket_vsp = vsp;
+			    	}else{
+			    		other.pocket_vsp = Pocket_vsp;
+			    	}
+			    	if(other.pocket_hsp <= 0.5 && abs(other.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol
+			    		if("Pocket_hsp" not in self){other.pocket_hsp = 5;}
+			    		if("Pocket_vsp" not in self){other.pocket_vsp = -5;}
+			    	}
+			    	
+			    	//if("Pocketed" in self){
+			    		Pocketed = true;
+			    	//}
+			    	if("Pocket_hud" in self){
+			    		if(Pocket_hud != -1){ //has sprites defined
+				    		other.pocket_projectile_hud_sprite = Pocket_hud;
+			    		}else{ //if set to -1, use generic icons
+			    			other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_basic;
+			    		}
+			    		if("Pocket_hud_imageindex" in self){
+				    		other.pocket_projectile_hud_sprite_imageindex = Pocket_hud_imageindex;
 				    	}
-				    	if(other.pocket_hsp <= 0.5 && abs(other.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol
-				    		if("Pocket_hsp" not in self){other.pocket_hsp = 5;}
-				    		if("Pocket_vsp" not in self){other.pocket_vsp = -5;}
-				    	}
-				    	
-				    	//if("Pocketed" in self){
-				    		Pocketed = true;
-				    	//}
-				    	if("Pocket_hud" in self){
-				    		if(Pocket_hud != -1){ //has sprites defined
-					    		other.pocket_projectile_hud_sprite = Pocket_hud;
-				    		}else{ //if set to -1, use generic icons
-				    			other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_basic;
-				    		}
-				    		if("Pocket_hud_imageindex" in self){
-					    		other.pocket_projectile_hud_sprite_imageindex = Pocket_hud_imageindex;
-					    	}
-				    	}else{
-				    		other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_original;
-				    		other.pocket_projectile_hud_sprite_imageindex = 0;
-				    	}
-				    	
-				    	with(other){
-				    		invincible = true;invince_time = 10;
-				    		sound_play(sound_get("pocket"),false,noone,1);
-				    		sound_stop(sfx);
-				    	}
-				    	if(instance_exists(other.Pocket_Hitbox)){
-				    		other.Pocket_Hitbox.img_spd = 2;
-				    	}
-	            	}
-	            	
-	        	}
+			    	}else{
+			    		other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_original;
+			    		other.pocket_projectile_hud_sprite_imageindex = 0;
+			    	}
+			    	
+			    	with(other){
+			    		invincible = true;invince_time = 10;
+			    		sound_play(sound_get("pocket"),false,noone,1);
+			    		sound_stop(sfx);
+			    	}
+			    	if(instance_exists(other.Pocket_Hitbox)){
+			    		other.Pocket_Hitbox.img_spd = 2;
+			    	}
+            	}
+        	}
     	}
     }
+    
+#define grab_article_if_valid
+    //contributed by Floral qua Floral <3
+    if(!other.grabbedobject){
+		if(string_length(string(player_id.url)) > 0 && orig_player != 5){
+    		var playerurl = real(player_id.url);
+    		var GrabRangeModifier = 0;
+    		if("MattGrabRangeModifier" in self){
+    			GrabRangeModifier = real(MattGrabRangeModifier);
+    		}
+    		var dist = point_distance(other.x+(70*other.spr_dir), other.y-25, x, y);;//distance
+    		var range = 65;
+	        
+        	if(dist <= range+GrabRangeModifier && ("MattPlanet" in self && (state == 0 || state == 1 || state == 2) || "MattPlanet" not in self && "MattCanGrab" in self && MattCanGrab
+        	|| other.url != playerurl && (other.canon || other.op || playerurl < 20)) && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
+            	other.grabbedtarget = self;other.grabbedobject = true;other.grabbedarticle = true;
+            	KoB_grabbed = true;
+	        	if("MattPlanet" in self){
+	            	state = 3;
+            	}if("current_player" in self){
+	            	current_player = other.player;
+            	}
+        	}
+		}
+	}
+	    	
+	    	
+#define grabbedtargetstuff
+	if(instance_exists(grabbedtarget)){
+		grabbedtarget.free = true;
+		grabbedtarget.hsp = hsp;grabbedtarget.vsp = vsp;
+		if(!grabbedobject){
+			with(grabbedtarget.id){
+		    	can_tech = false;can_bounce = false;off_edge = true;
+		    	can_wall_jump = false;can_wall_tech = false;can_be_grounded = false;
+		    	set_state(PS_HITSTUN);
+		    	hitstun = 20;hitstun_full = 20;
+			}
+		}if(!grabbedobject){
+			soft_armor = 9999;
+		}
+	}

@@ -74,10 +74,15 @@ with (oPlayer){
 	        }
 	    }
 	    if(!villager_bury){
+	    	villager_bury_cooldown = 60;
 		    with (other){
 				var buryeffect = spawn_hit_fx(other.x+35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = 1;
 				buryeffect = spawn_hit_fx(other.x-35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = -1;
 		    }
+		}
+	}else if(villager_bury_id == other.id){
+		if(!villager_bury && villager_bury_cooldown > 0){
+	        villager_bury_cooldown--;
 		}
 	}
 }
@@ -96,6 +101,16 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	}
 }else{
 	attacking = false;strong_charge = 0;fakecharge = 0;inendlag = true;
+}
+
+//grab input
+if(((state == PS_PARRY_START || state == PS_PARRY && state_timer <= 0 || state == PS_AIR_DODGE && state_timer <= 1)
+|| ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 1 && window_timer <= 2 && attack != AT_GRAB))
+&& ((attack_down || attack_pressed) && (shield_down || shield_pressed))){
+	attack_end();destroy_hitboxes();
+	attack = AT_GRAB;set_attack(AT_GRAB);hurtboxID.sprite_index = sprite_get("grab_hurt");
+	grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
+	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
 }
 
 if(canon || BossMode){

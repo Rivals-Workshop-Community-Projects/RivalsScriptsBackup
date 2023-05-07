@@ -49,6 +49,7 @@ sprite_change_offset("dspecial", 116, 142);
 sprite_change_offset("taunt", 88, 102);
 
 sprite_change_offset("plat", 64, 94);
+sprite_change_offset("plat_extra", 64, 94);
 
 sprite_change_offset("blood_drop", 8, 8);
 sprite_change_offset("blood_floor", 18, 0);

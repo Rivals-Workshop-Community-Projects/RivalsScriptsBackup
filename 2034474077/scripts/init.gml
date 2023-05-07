@@ -145,9 +145,9 @@ menu_open = false;
 menu_confirm = true;
 menu_close = false;                 //used to reset all variables at once when the menu is closed
 close_timer = -1;                   //used for menu vfx when closing
-if(practice){
-    menu_timer = -1;
-}
+
+menu_timer = -1;
+
 menu_dir = -1;                      //returns 0 for up, 1 for right, 2 for down, and -1 for left and idle
 prev_dir = -1;                      //used for input lockout so you pressing a direction once doesn't register every frame
 active_col = 0;                     //used for player selection

@@ -42,13 +42,31 @@
     }
 
 with pHitBox{
-    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_NSPECIAL){
-		with obj_article1{
-			if (player_id == other.player_id){
-				if (other.x - x) < 0 {
-					hsp = 6;
-				} else {
-					hsp = -6;
+    if place_meeting(x, y, other) && (player_id == other.player_id){
+		if (attack == AT_NSPECIAL){
+			with obj_article1{
+				if (player_id == other.player_id){
+					if (other.x - x) < 0 {
+						hsp = 6;
+					} else {
+						hsp = -6;
+					}
+				}
+			}
+		}
+		if (has_rune("H")){
+			if (attack == AT_USPECIAL){
+				with obj_article1{
+					if (player_id == other.player_id){
+						state = 1
+						state_timer = 240
+						vsp = -4.5;
+						if (other.x - x) < 0 {
+							hsp = 6;
+						} else {
+							hsp = -6;
+						}
+					}
 				}
 			}
 		}
@@ -73,7 +91,7 @@ if (buffertimer < 20){
 //gravity
 if (grav_on){
 	var grav_speed = .1
-	var grav_max = 8;
+	var grav_max = 6;
 	
 	if (free){
 		
@@ -118,10 +136,10 @@ if (state == 0){
 if (state == 1){
 	if (state_timer mod 6 == 0){
 		create_hitbox( AT_DSPECIAL, 1, (x + 54*spr_dir),(y - 10) );
-		if (state_timer >= 120){
+		if (state_timer >= 120 || has_rune("I")){
 			create_hitbox( AT_DSPECIAL, 1, (x + 102*spr_dir),(y - 10) );
 		}
-		if (state_timer >= 240){
+		if (state_timer >= 240 || has_rune("I")){
 			create_hitbox( AT_DSPECIAL, 1, (x + 150*spr_dir),(y - 10) );
 		}
 	}

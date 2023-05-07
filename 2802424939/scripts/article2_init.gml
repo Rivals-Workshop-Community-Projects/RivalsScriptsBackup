@@ -3,6 +3,7 @@ sprite_index = sprite_get("stopwatch");
 mask_index = sprite_get("stopwatch_mask2");
 
 cooldown = 0;
+cooldown_timer = 0;
 disable = 0;
 
 sound = 0;

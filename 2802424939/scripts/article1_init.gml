@@ -11,6 +11,7 @@ trigger = 0;
 explode = 0;
 anim_time = 0;
 cooldown = 0;
+cooldown_timer = 0;
 dead = 0;
 mode = 0;
 

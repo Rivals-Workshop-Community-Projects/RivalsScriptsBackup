@@ -60,10 +60,13 @@ if (my_hitboxID.attack == AT_DSTRONG) {
     else dstrong_hit_tipper = false; //the 2nd hitbox in the grab should always hit, releasing opponents from the grabbed state
 }
 
-if (my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 1) {
+if (my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 1 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && !hit_player_obj.bubbled) {
 	hit_player_obj.should_make_shockwave = false;
-	hit_player_obj.orig_knock = point_distance(x, y - 128, hit_player_obj.x, hit_player_obj.y)/12;
-	hit_player_obj.knock_dir = point_direction(x,  y - 128, hit_player_obj.x, hit_player_obj.y);
+	hit_player_obj.orig_knock = point_distance(hit_player_obj.x, hit_player_obj.y, x,  y - 64) / 6;
+	hit_player_obj.knock_dir = point_direction(hit_player_obj.x, hit_player_obj.y, x,  y - 64);
+	hit_player_obj.old_hsp = lengthdir_x(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
+	hit_player_obj.old_vsp = lengthdir_y(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
+	
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL) {

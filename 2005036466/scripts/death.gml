@@ -1,13 +1,3 @@
-// called when the character gets KO'd
-//Lights out. Sorry that you died.
-lit_jab = false;
-lit_tilt = false;
-lit_strong = false;
-lit_special = false;
-cancel_ready_tier1 = false;
-cancel_ready_tier2 = false;
-cancel_ready_tier3 = false;
-
 if faces_visible{
   // just stop all codec sound
   if (penny_speaker == 1 && speaker2 != "aigis") {
@@ -33,6 +23,45 @@ if faces_visible{
   speaker1 = ("static");
 }
 
-//U-Special button handling code.
-do_final_kick = false;
-reset_hitbox_value(AT_USPECIAL, 8, HG_EXTRA_HITPAUSE);
+// Remove everything on the field
+if (instance_exists(obj_article2)){
+    with(obj_article2){
+    	if (("pen_c4_charged" in self) and (player_id == other.id)){
+    		if instance_exists(hbox_mine){
+    			hbox_mine.destroyed = true;
+    		}
+            state = 5;
+            state_timer = 0;
+    	}
+    }
+}
+
+with(oPlayer){
+	if id != other.id{
+		if strapped_id.pen_mine_unstable{
+			outline_color = [0,0,0];
+			init_shader();
+		}
+	}
+}
+
+pen_mine_unstable = false;
+
+opponent_strapped = false;
+opponentx = 0;
+opponenty = 0;
+
+penny_strapped = false;
+
+goboom = false;
+boomtimer = 0;
+
+mine_active = 0;
+cooldown_mine = 0;
+
+with(mine_player){
+	penny_strapped = false;
+	strapped_id = noone;
+}
+mine_player = noone;
+penny_install = false;

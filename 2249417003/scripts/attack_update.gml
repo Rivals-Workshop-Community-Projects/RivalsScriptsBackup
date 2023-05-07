@@ -708,8 +708,8 @@ switch (attack) { //open switch(attack)
 			//	ralsei_heart_active = false;
 			//}
 			//else {
-				ralsei_heart_has_airdodge_before_activating = has_airdodge;
-				has_airdodge = false;
+				//ralsei_heart_has_airdodge_before_activating = has_airdodge;
+				//has_airdodge = false;
 				sound_play(sound_get("dr_powerup"));
 				ralsei_heart_deactivate_timer = 0;
 				ralsei_tp_drain_lock = ralsei_tp_drain_lock_time;
@@ -717,8 +717,9 @@ switch (attack) { //open switch(attack)
 
 		}
 		else {
-			has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
+			//has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
 			sound_play(sound_get("dr_powerup"));
+			//move_cooldown[AT_DSPECIAL] = max(move_cooldown[AT_DSPECIAL], ralsei_heart_cooldown_time);
 		}
 	break;
 	
@@ -744,7 +745,7 @@ switch (attack) { //open switch(attack)
 				var random_vol = 0.9 + random_func(5, 20, false) / 200;
 				var random_pitch = 0.9 + random_func(10, 20, false) / 200;
 				sound_play(sound_get("clap"), false, noone, random_vol, random_pitch);
-				if (state_timer > 90) ralsei_tp++;
+				if (state_timer > 90 && !free) ralsei_tp++;
 			break;
 			
 			case 4:

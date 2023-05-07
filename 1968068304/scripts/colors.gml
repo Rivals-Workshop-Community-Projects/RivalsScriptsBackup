@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 6, 2, 10 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // Sandslash
 set_color_profile_slot( 1, 0, 203, 219, 252 ); //body
@@ -116,45 +116,49 @@ set_color_profile_slot( 8, 5, 81, 122, 155 ); //scarf
 set_color_profile_slot( 8, 6, 255, 249, 249 ); //eyes
 set_color_profile_slot( 8, 7, 235, 142, 159 ); //nose
 
-// Equinox
-set_color_profile_slot( 9, 0, 217, 206, 206 ); //body
-set_color_profile_slot( 9, 1, 237, 90, 208 ); //hair
-set_color_profile_slot( 9, 2, 55, 204, 152 ); //cuffs
-set_color_profile_slot( 9, 3, 255, 255, 255 ); //cuffs highlight
-set_color_profile_slot( 9, 4, 55, 205, 222 ); //claws
-set_color_profile_slot( 9, 5, 136, 81, 212 ); //scarf
-set_color_profile_slot( 9, 6, 217, 255, 255 ); //eyes
-set_color_profile_slot( 9, 7, 214, 53, 212 ); //nose
+// Vigoroth
+set_color_profile_slot( 9, 0, 255, 253, 245 ); //body
+set_color_profile_slot( 9, 1, 255, 47, 0 ); //hair
+set_color_profile_slot( 9, 2, 214, 85, 68 ); //cuffs
+set_color_profile_slot( 9, 3, 255, 236, 224 ); //cuffs highlight
+set_color_profile_slot( 9, 4, 40, 48, 51 ); //claws
+set_color_profile_slot( 9, 5, 166, 87, 51 ); //scarf
+set_color_profile_slot( 9, 6, 244, 247, 244 ); //eyes
+set_color_profile_slot( 9, 7, 222, 45, 7 ); //nose
 
-// JBlockman1
-set_color_profile_slot( 10, 0, 212, 190, 159 ); //body
-set_color_profile_slot( 10, 1, 110, 55, 45 ); //hair
-set_color_profile_slot( 10, 2, 189, 182, 115 ); //cuffs
-set_color_profile_slot( 10, 3, 236, 236, 236 ); //cuffs highlight
-set_color_profile_slot( 10, 4, 179, 166, 66 ); //claws
-set_color_profile_slot( 10, 5, 188, 62, 62 ); //scarf
-set_color_profile_slot( 10, 6, 212, 207, 207 ); //eyes
-set_color_profile_slot( 10, 7, 235, 142, 159 ); //nose
+// Virulisk
+set_color_profile_slot( 10, 0, 127, 116, 191 ); //body
+set_color_profile_slot( 10, 1, 72, 63, 122 ); //hair
+set_color_profile_slot( 10, 2, 79, 140, 60 ); //cuffs
+set_color_profile_slot( 10, 3, 111, 181, 82 ); //cuffs highlight
+set_color_profile_slot( 10, 4, 147, 176, 29 ); //claws
+set_color_profile_slot( 10, 5, 168, 71, 164 ); //scarf
+set_color_profile_slot( 10, 6, 130, 214, 120 ); //eyes
+set_color_profile_slot( 10, 7, 99, 163, 79 ); //nose
 
-// Supersonic
-set_color_profile_slot( 11, 0, 83, 90, 97 ); //body
-set_color_profile_slot( 11, 1, 145, 207, 255 ); //hair
-set_color_profile_slot( 11, 2, 186, 223, 255 ); //cuffs
-set_color_profile_slot( 11, 3, 255, 255, 255 ); //cuffs highlight
-set_color_profile_slot( 11, 4, 155, 235, 235 ); //claws
-set_color_profile_slot( 11, 5, 58, 91, 117 ); //scarf
-set_color_profile_slot( 11, 6, 168, 255, 249 ); //eyes
-set_color_profile_slot( 11, 7, 66, 70, 74 ); //nose
+// Brand
+set_color_profile_slot( 11, 0, 202, 208, 219 ); //body
+set_color_profile_slot( 11, 1, 255, 158, 31 ); //hair
+set_color_profile_slot( 11, 2, 102, 128, 138 ); //cuffs
+set_color_profile_slot( 11, 3, 153, 181, 181 ); //cuffs highlight
+set_color_profile_slot( 11, 4, 9, 83, 128 ); //claws
+set_color_profile_slot( 11, 5, 10, 226, 250 ); //scarf
+set_color_profile_slot( 11, 6, 252, 253, 255 ); //eyes
+set_color_profile_slot( 11, 7, 156, 194, 232 ); //nose
 
-// Rainbeon
-set_color_profile_slot( 12, 0, 137, 247, 127 ); //body
-set_color_profile_slot( 12, 1, 207, 62, 239 ); //hair
-set_color_profile_slot( 12, 2, 218, 128, 237 ); //cuffs
-set_color_profile_slot( 12, 3, 243, 186, 255 ); //cuffs highlight
-set_color_profile_slot( 12, 4, 152, 45, 173 ); //claws
-set_color_profile_slot( 12, 5, 77, 138, 71 ); //scarf
-set_color_profile_slot( 12, 6, 239, 239, 239 ); //eyes
-set_color_profile_slot( 12, 7, 130, 39, 150 ); //nose
+// Politics
+set_color_profile_slot( 12, 0, 160, 160, 160 ); //body
+set_color_profile_slot( 12, 1, 160, 160, 160 ); //hair
+set_color_profile_slot( 12, 2, 160, 160, 160 ); //cuffs
+set_color_profile_slot( 12, 3, 160, 160, 160 ); //cuffs highlight
+set_color_profile_slot( 12, 4, 160, 160, 160 ); //claws
+set_color_profile_slot( 12, 5, 160, 160, 160 ); //scarf
+set_color_profile_slot( 12, 6, 160, 160, 160 ); //eyes
+set_color_profile_slot( 12, 7, 160, 160, 160 ); //nose
+
+
+
+
 
 // Red
 set_color_profile_slot( 13, 0, 204, 145, 106 ); //body
@@ -166,45 +170,58 @@ set_color_profile_slot( 13, 5, 67, 207, 194 ); //scarf
 set_color_profile_slot( 13, 6, 255, 217, 156 ); //eyes
 set_color_profile_slot( 13, 7, 128, 68, 59 ); //nose
 
-// Virulisk
-set_color_profile_slot( 14, 0, 127, 116, 191 ); //body
-set_color_profile_slot( 14, 1, 72, 63, 122 ); //hair
-set_color_profile_slot( 14, 2, 79, 140, 60 ); //cuffs
-set_color_profile_slot( 14, 3, 111, 181, 82 ); //cuffs highlight
-set_color_profile_slot( 14, 4, 147, 176, 29 ); //claws
-set_color_profile_slot( 14, 5, 168, 71, 164 ); //scarf
-set_color_profile_slot( 14, 6, 130, 214, 120 ); //eyes
-set_color_profile_slot( 14, 7, 99, 163, 79 ); //nose
+// Equinox
+set_color_profile_slot( 14, 0, 217, 206, 206 ); //body
+set_color_profile_slot( 14, 1, 237, 90, 208 ); //hair
+set_color_profile_slot( 14, 2, 55, 204, 152 ); //cuffs
+set_color_profile_slot( 14, 3, 255, 255, 255 ); //cuffs highlight
+set_color_profile_slot( 14, 4, 55, 205, 222 ); //claws
+set_color_profile_slot( 14, 5, 136, 81, 212 ); //scarf
+set_color_profile_slot( 14, 6, 217, 255, 255 ); //eyes
+set_color_profile_slot( 14, 7, 214, 53, 212 ); //nose
 
-// Politics
-set_color_profile_slot( 15, 0, 160, 160, 160 ); //body
-set_color_profile_slot( 15, 1, 160, 160, 160 ); //hair
-set_color_profile_slot( 15, 2, 160, 160, 160 ); //cuffs
-set_color_profile_slot( 15, 3, 160, 160, 160 ); //cuffs highlight
-set_color_profile_slot( 15, 4, 160, 160, 160 ); //claws
-set_color_profile_slot( 15, 5, 160, 160, 160 ); //scarf
-set_color_profile_slot( 15, 6, 160, 160, 160 ); //eyes
-set_color_profile_slot( 15, 7, 160, 160, 160 ); //nose
+// JBlockman1
+set_color_profile_slot( 15, 0, 212, 190, 159 ); //body
+set_color_profile_slot( 15, 1, 110, 55, 45 ); //hair
+set_color_profile_slot( 15, 2, 189, 182, 115 ); //cuffs
+set_color_profile_slot( 15, 3, 236, 236, 236 ); //cuffs highlight
+set_color_profile_slot( 15, 4, 179, 166, 66 ); //claws
+set_color_profile_slot( 15, 5, 188, 62, 62 ); //scarf
+set_color_profile_slot( 15, 6, 212, 207, 207 ); //eyes
+set_color_profile_slot( 15, 7, 235, 142, 159 ); //nose
 
-// Brand
-set_color_profile_slot( 16, 0, 202, 208, 219 ); //body
-set_color_profile_slot( 16, 1, 255, 158, 31 ); //hair
-set_color_profile_slot( 16, 2, 102, 128, 138 ); //cuffs
-set_color_profile_slot( 16, 3, 153, 181, 181 ); //cuffs highlight
-set_color_profile_slot( 16, 4, 9, 83, 128 ); //claws
-set_color_profile_slot( 16, 5, 10, 226, 250 ); //scarf
-set_color_profile_slot( 16, 6, 252, 253, 255 ); //eyes
-set_color_profile_slot( 16, 7, 156, 194, 232 ); //nose
+// Supersonic
+set_color_profile_slot( 16, 0, 83, 90, 97 ); //body
+set_color_profile_slot( 16, 1, 145, 207, 255 ); //hair
+set_color_profile_slot( 16, 2, 186, 223, 255 ); //cuffs
+set_color_profile_slot( 16, 3, 255, 255, 255 ); //cuffs highlight
+set_color_profile_slot( 16, 4, 155, 235, 235 ); //claws
+set_color_profile_slot( 16, 5, 58, 91, 117 ); //scarf
+set_color_profile_slot( 16, 6, 168, 255, 249 ); //eyes
+set_color_profile_slot( 16, 7, 66, 70, 74 ); //nose
 
-// Vigoroth
-set_color_profile_slot( 17, 0, 255, 253, 245 ); //body
-set_color_profile_slot( 17, 1, 255, 47, 0 ); //hair
-set_color_profile_slot( 17, 2, 214, 85, 68 ); //cuffs
-set_color_profile_slot( 17, 3, 255, 236, 224 ); //cuffs highlight
-set_color_profile_slot( 17, 4, 40, 48, 51 ); //claws
-set_color_profile_slot( 17, 5, 166, 87, 51 ); //scarf
-set_color_profile_slot( 17, 6, 244, 247, 244 ); //eyes
-set_color_profile_slot( 17, 7, 222, 45, 7 ); //nose
+// Rainbeon
+set_color_profile_slot( 17, 0, 137, 247, 127 ); //body
+set_color_profile_slot( 17, 1, 207, 62, 239 ); //hair
+set_color_profile_slot( 17, 2, 218, 128, 237 ); //cuffs
+set_color_profile_slot( 17, 3, 243, 186, 255 ); //cuffs highlight
+set_color_profile_slot( 17, 4, 152, 45, 173 ); //claws
+set_color_profile_slot( 17, 5, 77, 138, 71 ); //scarf
+set_color_profile_slot( 17, 6, 239, 239, 239 ); //eyes
+set_color_profile_slot( 17, 7, 130, 39, 150 ); //nose
+
+// Landkon2
+set_color_profile_slot( 18, 0, 88, 84, 122 ); //body
+set_color_profile_slot( 18, 1, 254, 254, 254 ); //hair
+set_color_profile_slot( 18, 2, 158, 126, 89 ); //cuffs
+set_color_profile_slot( 18, 3, 228, 214, 159 ); //cuffs highlight
+set_color_profile_slot( 18, 4, 153, 118, 160 ); //claws
+set_color_profile_slot( 18, 5, 133, 94, 126 ); //scarf
+set_color_profile_slot( 18, 6, 232, 56, 255 ); //eyes
+set_color_profile_slot( 18, 7, 179, 181, 217 ); //nose
+
+
+
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

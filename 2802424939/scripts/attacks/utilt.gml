@@ -41,7 +41,6 @@ set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 5);
-set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("slash0"));
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 0);
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
@@ -59,7 +58,6 @@ set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .3);
-set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("slash1"));
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
@@ -77,5 +75,4 @@ set_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 3, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_UTILT, 3, HG_EXTRA_HITPAUSE, 5);
-set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, sound_get("slash0"));
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_GROUP, 0);

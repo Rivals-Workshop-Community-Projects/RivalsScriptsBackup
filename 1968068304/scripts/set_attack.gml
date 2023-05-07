@@ -13,7 +13,7 @@ if (free) {
 			//snap back to the platform if this was an accidental drop-through d-special.
 			if (epinel_buffered_standing_on_platform_id != noone 
 				&& instance_exists(epinel_buffered_standing_on_platform_id) 
-				&& y > epinel_buffered_standing_on_platform_id.y
+				&& (y > epinel_buffered_standing_on_platform_id.y || (prev_state == PS_RESPAWN && y >= epinel_buffered_standing_on_platform_id.y) )
 				&& y <= epinel_buffered_standing_on_platform_id.y + 20
 				) {
 			

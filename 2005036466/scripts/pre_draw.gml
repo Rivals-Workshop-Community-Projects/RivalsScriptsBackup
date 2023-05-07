@@ -1,88 +1,66 @@
-if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-  switch(attack){
-    case AT_DAIR:
-      shader_start();
-      draw_sprite_ext(sprite_get("powerdunk"), image_index, x, y, spr_dir, 1, 0, -1, 1);
-      shader_end();
-      break;
-    default:
-      break;
-  }
+if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+    switch(attack){
+        case AT_FTILT:
+            draw_sprite_ext(sprite_get("ftilt_plasma"), image_index, x, y, 2 * spr_dir, 2, 0, penny_charge_col, 1);
+            break;
+        case AT_DAIR:
+            draw_sprite_ext(sprite_get("dair_plasma"), image_index, x, y, spr_dir * 2, 2, 0, penny_charge_col, 1);
+            break;
+    }
 }
 
+// pre_draw.gml
+var alt = get_player_color(player);
+var grad_alt = 17;
 
+if alt == grad_alt{
+    maskHeader();
+    //mask out your character sprite
+    draw_sprite_ext(sprite_index,image_index,x+draw_x,y+draw_y,spr_dir*(1+small_sprites), 1+small_sprites, spr_angle, -1, 1);
+    maskMidder();
+    //Replace this with whatever you want to draw under, what I have here is vertical pixel perfect tiling.
+    //the example sprite is 64x64.
+    var scale = 2;
+    var sprite = sprite_get("tropic");  // set it to be a square sprite of whatever you want
+    var _sprite_height = sprite_get_height(sprite)*scale;
+    for (var i = -1; i <= 1; i++) {
+        draw_sprite_ext(sprite_get("tropic"),
+            0,
+            x-_sprite_height/2,
+            y-_sprite_height+
+                (_sprite_height*i),//+ tile offset
+                //(floor(spawn_timer)&~1)%_sprite_height+16, //tile scrolling
+            2,
+            2,
+            0,
+            -1,
+            1
+        );
+    }
+    maskFooter();
+}
 
-//Blur code we currently don't have permission to use.
-//This will remain disabled until we have permission to use it.
-
-current_r = get_color_profile_slot_r(get_player_color(player), 2);
-current_g = get_color_profile_slot_g(get_player_color(player), 2);
-current_b = get_color_profile_slot_b(get_player_color(player), 2);
-
-current_eye_color = make_color_rgb(current_r, current_g, current_b);
-
-shader_start();
-
-	//MOTION BLUR CODE
-if (true == false) //To make it functional, put this in: (cancel_effect_timer > 0)
+//Defines, put at bottom of file
+#define maskHeader
 {
-for(var m = 0; m < array_length_1d(blur); m++) {
-
-		if (m == 4 || m == 8 || m == 12 || m == 16){
-		var _img = blur[m];
-		var _percent = 1 - (m / array_length_1d(blur));
-    draw_sprite_ext(_img[0], _img[1], _img[2], _img[3], _img[4], _img[5], _img[6], current_eye_color, _img[8] * _percent);
-		}
-	}
-
-switch (state){
-    case PS_ATTACK_GROUND:
-    case PS_ATTACK_AIR:
-        if (attack == AT_USPECIAL){
-            if (window == 2){
-                var elec_dir = point_direction(x,y-56,tag_target.x,tag_target.y-20);
-                if (spr_dir == -1) elec_dir += 180;
-                var elec_dist = point_distance(x,y-56,tag_target.x,tag_target.y-20);
-
-                //since the arm sprite's origin isn't centered, do some math
-                if (elec_dist < 7) elec_dist = 7; //needs minimum distance to prevent arcsin errors
-                var arm_dir = darcsin(6 / elec_dist);
-                arm_dir = elec_dir - arm_dir*spr_dir;
-                if (spr_dir == -1) arm_dir += 180;
-
-                if (elec_dist > 64){
-                    var rope_x = x + lengthdir_x(6, arm_dir+90*spr_dir) + lengthdir_x(54, arm_dir);
-                    var rope_y = y - 56 + lengthdir_y(6, arm_dir+90*spr_dir) + lengthdir_y(54, arm_dir);
-
-                    var rope_length = 0;
-                    var max_rope_length = point_distance(rope_x, rope_y, tag_target.x, tag_target.y);
-                    if (window == 5){
-                        var window_length = get_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH);
-                        max_rope_length = max_rope_length * (window_timer / window_length);
-                    }
-                    while (rope_length < max_rope_length-54){
-						if (window_timer == 2)
-                        draw_sprite_ext(sprite_get("uspecial_elec"), 0, rope_x, rope_y, 1, 1, arm_dir, c_white, 1);
-						else
-                        draw_sprite_ext(sprite_get("uspecial_elecb"), 0, rope_x, rope_y, 1, 1, arm_dir, c_white, 1);
-                        rope_x += lengthdir_x(54, arm_dir);
-                        rope_y += lengthdir_y(54, arm_dir);
-                        rope_length += 54;
-						set_hitbox_value( AT_USPECIAL, 3, HG_HITBOX_X, (tag_target.x-x)*spr_dir	);
-						set_hitbox_value( AT_USPECIAL, 3, HG_HITBOX_Y, tag_target.y-y-20);
-						set_hitbox_value( AT_USPECIAL, 3, HG_DAMAGE, tag_target.tagged);
-                    }
-					//if (window_timer == 2)
-                    //draw_sprite_ext(sprite_get("uspecial_elec"), 1, rope_x, rope_y, 1, 1, arm_dir, c_white, 1);
-					//else
-                    //draw_sprite_ext(sprite_get("uspecial_elecb"), 1, rope_x, rope_y, 1, 1, arm_dir, c_white, 1);
-                }
-
-
-            }
-        }
-    break;
-}
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false,false,false,true);
+    draw_set_alpha(0);
+    draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_black, c_black, false);
+    draw_set_alpha(1);
 }
 
-shader_end();
+#define maskMidder
+{
+    gpu_set_blendenable(true);
+    gpu_set_colorwriteenable(true,true,true,true);
+    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+}
+
+#define maskFooter
+{
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
+}

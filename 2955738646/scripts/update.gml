@@ -28,15 +28,21 @@ if (dashing == false){
 
 if (state == PS_CROUCH){ hud_offset = -20; }
 
-if (state == PS_AIR_DODGE && state_timer > 2 && state_timer < 15 || state == PS_ROLL_BACKWARD && state_timer > 3 && state_timer < 15
-|| state == PS_ROLL_FORWARD && state_timer > 3 && state_timer < 15 || state == PS_WAVELAND && state_timer < 4){
-	visible = false;
-} else { visible = true; }
+if (state == PS_AIR_DODGE && state_timer > 2 && state_timer < 16 ||
+state == PS_ROLL_BACKWARD && state_timer > 2 && state_timer < 16 ||
+state == PS_ROLL_FORWARD && state_timer > 2 && state_timer < 16 ||
+state == PS_WAVELAND && state_timer < 4){
+	//visible = false;
+	draw_indicator = false;
+	
+} else { /*visible = true;*/ }
 
 if (state == PS_RESPAWN && state_timer == 120){
 	platform_id = instance_create(x+1 * spr_dir, y-5, "obj_article1");
 	platform_id.state = 2;
 }
+
+if (free == false && move_cooldown[AT_FSPECIAL] > 2){ move_cooldown[AT_FSPECIAL] = 1; }
 
 /*
 if (ChaosEmerald >= 1){
@@ -146,8 +152,8 @@ if (state_cat == SC_GROUND_NEUTRAL){
 
 if (state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD){
 	//Dodging article that causes Foresight
-	if (state_timer < 5){ invincible = true; }
-    if (state_timer == 0){
+	//if (state_timer < 5){ invincible = true; }
+    if (state_timer == 0 && instance_exists(asset_get("camera_obj")) ){
     dodge_id = instance_create(x+1 * spr_dir, y-9000, "obj_article1");
     dodge_id.state = 0;
     dodge_id.state_timer = 0;
@@ -171,14 +177,14 @@ with (asset_get("oPlayer")) {
             hsp = 0;
             hitstop = 2;
             hitstop_full = 2;
-            hitpause = true;
+            hitpause = false;
         }
     }
 }
 if (timestop == true && (state_timer mod 1) == 0){
 with (asset_get("oPlayer")) {
         if (player != other.player) {
-        	soft_armor = 50;
+        	soft_armor = 100;
         	//old_vsp = vsp;
         	//old_hsp = hsp;
             //hsp = 0;
@@ -199,13 +205,17 @@ with (asset_get("oPlayer")) {
 if (timestop == true){
 with (asset_get("oPlayer")) {
         if (player != other.player) {
-        	//soft_armor = 100;
-        	//super_armor = true;
+        	soft_armor = 100;
+        	super_armor = true;
         	//invincible = true;
         	hitstop = 1;
         	hitpause = true;
         	if (hit_player_obj > 0){
+        		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
         	state = prev_state;
+        		}
+        	//hitpause = false;
+        	//hitstop = 0;
         	hit_player_obj = noone;
         	}
         	//old_vsp = vsp;
@@ -218,11 +228,18 @@ with (asset_get("oPlayer")) {
         }
     }
 }
-if (timestop == true && timestop_amount > 0){ timestop_amount--; } else if (timestop == true && timestop_amount <= 10){
-	timestop = false; timestop_amount = 500;
+//if (timestop == true && timestop_amount > 0){ timestop_amount--; } else if (timestop == true && timestop_amount <= 10){
+	//timestop = false; timestop_amount = 500;
+//}
+if (timestop == true){
+	if (timestop_amount < 1){ timestop = false; timestop_amount = 20; timestop_time = 207; }
+	if (timestop_time > 0 && instance_exists(timestop_BG) && timestop_BG.state_timer > 22){ timestop_time -= 1; }
+	if (timestop_time == 0){ timestop = false; timestop_amount = 20; timestop_time = 207; }
 }
+	
 
 if (timestop == false){
+	if (visible == false && state_timer > 1){ visible = true; }
 	with (asset_get("oPlayer")) {
 		if (player != other.player) {
 			prev_damage = (get_player_damage( player ));
@@ -230,18 +247,13 @@ if (timestop == false){
 	}
 }
 
-if (attack == AT_EXTRA_1){
-	invincible = true;
-	if (state == PS_ATTACK_AIR){
-    hsp = old_hsp * 0.9;
-    vsp = old_vsp * 0.9;
-    } else if (state == PS_ATTACK_GROUND){
-    hsp = old_hsp * 1.2;
-    vsp = old_vsp * 1.2;
-    }
+if (move_cooldown[AT_NSPECIAL] > 0 && nspecial_time < 37){
+	nspecial_time += 1 / 10;
+	move_cooldown[AT_NSPECIAL] = 10;
 }
+
 if (cooldowntime == 19){ vanishing = instance_create(x+1 * spr_dir, y-5, "obj_article1"); vanishing.state = 1; 
-dodgesound = sound_play(sound_get("instanttransmission")); attack = AT_EXTRA_1; window_timer = 0; max_djumps = 1; can_jump = true; }
+dodgesound = sound_play(sound_get("instanttransmission")); attack = AT_EXTRA_1; window_timer = 0; can_jump = true; }
 //if (cooldowntime > 1){ /*dodging_id = instance_create(x+1 * spr_dir, y-1, "obj_article1"); dodging_id.state = 1;*/ invincible = true; } //dodging.image_alpha = 1;  }
 if (foresight > 1 && invincible == true){ foresight--; }
 if (foresight <= 1 && invincible == true){ invincible = false; }
@@ -365,6 +377,7 @@ if (SuperMech == true){
 }
 if (SuperMech == false){ air_dodge_speed = 7.5; roll_backward_max = 10; roll_forward_max = 10; }
 if (move_cooldown[AT_TAUNT_2] > 1 && move_cooldown[AT_TAUNT_2] < 20){ white_flash_timer += 3; SuperMech = false; }
+if (move_cooldown[AT_USPECIAL_2] > 0){ move_cooldown[AT_USPECIAL] = move_cooldown[AT_USPECIAL_2]; }
 if (move_cooldown[AT_USPECIAL_2] < 3){
 	with (asset_get("oPlayer")){
 	        if (player != other.player){

@@ -4,6 +4,6 @@ if(ChaosEmerald != 0){
 //ChaosEmerald--;
 }
 
-if (enemy_hitboxID == timestopping_hitbox){
-	timestop_damage--;
-}
+//if (enemy_hitboxID == timestopping_hitbox){
+	//timestop_damage--;
+//}

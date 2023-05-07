@@ -12,7 +12,7 @@ patch_day = "";
 patch_month = "";
 
 //CHANGE THIS SECTION ONLY 
-var num_alts = 29;
+var num_alts = 30;
 var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
@@ -46,6 +46,7 @@ alt_name[25]  = "Mushroom Ink";
 alt_name[26]  = "A New Beginning";
 alt_name[27]  = "Strawberry Jam";
 alt_name[28]  = "Grape Jelly";
+alt_name[29]  = "Derby Drip";
 
 //Patch
 

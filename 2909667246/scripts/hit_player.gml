@@ -63,8 +63,11 @@ if(my_hitboxID.attack == AT_FSTRONG && attack == AT_FSTRONG || my_hitboxID.attac
 }
 
 //hitboxes that cause custom bury status effect
-if(my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 4) || my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 4){
-	if(!hit_player_obj.villager_bury && !hit_player_obj.free && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
+if(my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 4) || my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 4
+|| my_hitboxID.attack == AT_GRAB && my_hitboxID.hbox_num == 6 && runeC){
+	if(!hit_player_obj.villager_bury && hit_player_obj.villager_bury_cooldown <= 0
+	&& (!hit_player_obj.free || my_hitboxID.attack == AT_GRAB)
+	&& (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
 		hit_player_obj.free = false;hit_player_obj.orig_knock = 0;
         hit_player_obj.should_make_shockwave = false;
 		
@@ -99,6 +102,24 @@ if(my_hitboxID.attack == AT_DATTACK){
     sound_play(sound_get("dattack_bounce"));
 }
 
+if(my_hitboxID.attack == AT_GRAB){
+    if(grabbedtarget == noone && my_hitboxID.hbox_num == 1 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
+    	window = 4;window_timer = 0;if(free && vsp > 0 && !position_meeting(x,y+20,asset_get("par_block")) && !position_meeting(x,y+20,asset_get("par_jumpthrough"))
+		&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))old_vsp = -5;
+        hit_player_obj.free = true;hit_player_obj.orig_knock = 0;
+        grabbedtarget = hit_player_obj;soft_armor = 9999;
+        hit_player_obj.y = y;hit_player_obj.x = x+(75*spr_dir);
+        hit_player_obj.should_make_shockwave = false;grabbedobject = false;
+        var playerdmg = get_player_damage(hit_player_obj.player)/2;
+        grabtimer = 30+playerdmg;
+        sound_play(sound_get("grab"));
+        destroy_hitboxes();
+        if(hit_player_obj.villager_bury){
+        	hit_player_obj.villager_bury_cooldown = 120;
+    	}
+    }
+}
+
 //sharp hit fx
 if(my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num >= 5
 || my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DSTRONG){
@@ -112,6 +133,17 @@ if(my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_DSPECIAL && my_
 if(hit_player_obj.should_make_shockwave){
 	var sharphitfx = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35,fx_sharphit_big2);sharphitfx.draw_angle = random_func(6, 720, true);
 	sharphitfx = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35,fx_sharphit_big2);sharphitfx.draw_angle = random_func(7, 720, true);
+
+    if(alt == 30){
+    	rand = random_func(0, 3, true);
+		if(rand == 0){
+			PlayVoiceClip("craig inside mine", 2);
+		}else if(rand == 1){
+			PlayVoiceClip("craig instinct", 2);
+		}else if(rand == 2){
+			PlayVoiceClip("craig try your best to match my shot", 2.25);
+		}
+    }
 }
 
 if(strong_charge >= 10 && my_hitboxID.type != 2 && my_hitboxID.effect != 9){
@@ -148,3 +180,11 @@ if(BossMode){
 		has_hit = true;has_hit_player = true;
 	}
 }
+
+#define PlayVoiceClip
+/// PlayVoiceClip(name,?volume)
+//Plays SFX
+//if(!muted){
+	sound_stop(voice);
+	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+//}

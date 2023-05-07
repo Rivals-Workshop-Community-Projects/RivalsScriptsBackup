@@ -86,15 +86,15 @@ set_color_profile_slot( 5, 5, 247, 245, 255 ); //Skin
 set_color_profile_slot( 5, 6, 49, 49, 59 ); //Leggy 1
 set_color_profile_slot( 5, 7, 49, 49, 59 ); //Leggy 2
 
-// Event - Genesis
-set_color_profile_slot( 6, 0, 191, 4, 13 ); //Hair Bottom
-set_color_profile_slot( 6, 1, 11, 18, 20 ); //Shirt
-set_color_profile_slot( 6, 2, 251, 252, 255 ); //Tie/Hoodie
-set_color_profile_slot( 6, 3, 11, 18, 20 ); //Skirt
-set_color_profile_slot( 6, 4, 163, 15, 42 ); //Eyes
+// Event - Dev Derby
+set_color_profile_slot( 6, 0, 255, 169, 195 ); //Hair Bottom
+set_color_profile_slot( 6, 1, 52, 46, 46 ); //Shirt
+set_color_profile_slot( 6, 2, 22, 114, 130 ); //Tie/Hoodie
+set_color_profile_slot( 6, 3, 22, 114, 130 ); //Skirt
+set_color_profile_slot( 6, 4, 25, 197, 243 ); //Eyes
 set_color_profile_slot( 6, 5, 255, 216, 212 ); //Skin
-set_color_profile_slot( 6, 6, 191, 4, 13 ); //Leggy 1
-set_color_profile_slot( 6, 7, 191, 4, 13 ); //Leggy 2
+set_color_profile_slot( 6, 6, 93, 79, 71 ); //Leggy 1
+set_color_profile_slot( 6, 7, 93, 79, 71 ); //Leggy 2
 
 // Gameboy
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Hair Bottom

@@ -1,5 +1,5 @@
 set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt"));
-set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);
@@ -32,7 +32,7 @@ set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 70);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -10);
-set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 70);
+set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 66);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 30);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 2);
@@ -52,7 +52,7 @@ set_hitbox_value(AT_DTILT, 2, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 80);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -13);
-set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 64);
+set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 60);
 set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_DTILT, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 1);

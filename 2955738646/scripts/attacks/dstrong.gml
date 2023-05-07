@@ -108,7 +108,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 4);
-set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -31);

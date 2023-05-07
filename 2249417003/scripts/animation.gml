@@ -3,16 +3,34 @@ if (ralsei_heart_active) {
 	
 	if (state == PS_CROUCH && state_timer > 1) {
 		ralsei_heart_article_id.y = y + 16;
-		hurtboxID.sprite_index = sprite_get("ralsei_hurtbox_heart_crouch");
+		hurtboxID.sprite_index = spr_ralsei_heart_hurtbox_crouch;
 	}
 	else {
 		ralsei_heart_article_id.y = y;
-		hurtboxID.sprite_index = sprite_get("ralsei_hurtbox_heart");
+		hurtboxID.sprite_index = spr_ralsei_heart_hurtbox;
 	}
 }
-else if (ralsei_heart_article_id.image_alpha > 0) {
-	ralsei_heart_article_id.x = x;
-	ralsei_heart_article_id.y = y;
+else {
+	if (hurtboxID.sprite_index = spr_ralsei_heart_hurtbox) {
+		switch (state) {
+			case PS_ATTACK_AIR:
+			case PS_ATTACK_GROUND:
+				var prev_img_index = hurtboxID.image_index;
+				hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+				hurtboxID.image_index = prev_img_index;
+			break;
+			case PS_CROUCH:
+				hurtboxID.sprite_index = crouchbox_spr;
+			break;
+			default:
+				hurtboxID.sprite_index = hurtbox_spr;
+			break;
+		}
+	}
+	if (ralsei_heart_article_id.image_alpha > 0) {
+		ralsei_heart_article_id.x = x;
+		ralsei_heart_article_id.y = y;
+	}
 }
 
 switch (state){

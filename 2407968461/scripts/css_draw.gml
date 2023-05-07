@@ -8,7 +8,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 13;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
  
  
@@ -27,7 +27,7 @@ alt_name[9]  = " ";
 alt_name[10] = " ";
 alt_name[11] = " ";
 alt_name[12] = " (Tournament)";
-alt_name[13] = " ";
+alt_name[13] = " (Dev Derby)";
 alt_name[14] = " ";
 alt_name[15] = " ";
 

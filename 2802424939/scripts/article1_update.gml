@@ -9,6 +9,15 @@ switch (mode)
                 image_index += 1;
             }
         }
+        else if (cooldown == 1)
+        {
+            cooldown_timer++;
+        }
+        
+        if (cooldown_timer >= 120)
+        {
+            dead = 1;
+        }
         with (pHurtBox) {
             if (place_meeting(x, y, other)) {
                 if ((playerID.state == PS_HITSTUN || playerID.state == PS_HITSTUN_LAND || playerID.state == PS_TUMBLE) and (playerID.hitpause = false) and (playerID.state_cat != SC_GROUND_COMMITTED and playerID.state_cat != SC_GROUND_NEUTRAL and playerID.invincible == false) and player != other.player)
@@ -45,6 +54,15 @@ switch (mode)
             {
                 image_index += 1;
             }
+        }
+        else if (cooldown == 1)
+        {
+            cooldown_timer++;
+        }
+        
+        if (cooldown_timer >= 120)
+        {
+            dead = 1;
         }
         with (pHurtBox) {
             if (place_meeting(x, y, other)) {
@@ -102,7 +120,7 @@ if (dead == 1)
     else
     {
         spawn_hit_fx(x, y, 301);
-        sound_play(asset_get("sfx_shovel_hit_light2"));     
+        sound_play(asset_get("sfx_zetter_shine"));     
     }
     instance_destroy();
     exit;
