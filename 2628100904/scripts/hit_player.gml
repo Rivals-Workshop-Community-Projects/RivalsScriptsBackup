@@ -5,10 +5,11 @@ if(my_hitboxID.attack == AT_FAIR){
     if (my_hitboxID.hbox_num == 2) {
         window = 4;
         window_timer = 0;
-        old_vsp = -6;
-		old_hsp = -2 * spr_dir;
 		destroy_hitboxes();
 		can_fast_fall = false;
+    } else if (my_hitboxID.hbox_num == 3) {
+        old_vsp = -6;
+		old_hsp = -2 * spr_dir;
     }
 }
 

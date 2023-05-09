@@ -46,7 +46,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 0);
+set_hitbox_value(AT_USTRONG, 1, HG_IGNORES_PROJECTILES, 1);
 
 //flashbang projectile (heavily referenced wii safety guy for this)
 

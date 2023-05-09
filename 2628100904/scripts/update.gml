@@ -11,3 +11,11 @@ with(hit_fx_obj){
 if(!free || state == PS_RESPAWN || state == PS_DEAD || state_cat == SC_HITSTUN || state == PS_WALL_JUMP){
     move_cooldown[AT_USPECIAL] = 0;
 }
+
+if(state_cat != SC_HITSTUN && state != PS_TUMBLE){
+    uspecial_slip = false;
+}
+
+if(uspecial_slip){
+    off_edge = true;
+}

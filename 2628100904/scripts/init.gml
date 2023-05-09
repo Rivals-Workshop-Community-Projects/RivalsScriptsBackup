@@ -10,7 +10,7 @@ walk_anim_speed = .125;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.1;
+walk_speed = 3;
 walk_accel = 0.4;
 walk_turn_time = 5;
 initial_dash_time = 10;//14
@@ -33,7 +33,7 @@ air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal ae
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .1;
+air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 8;

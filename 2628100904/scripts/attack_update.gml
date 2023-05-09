@@ -50,6 +50,20 @@ if(attack == AT_JAB){
 	}
 }
 
+if(attack == AT_FAIR){
+	if(window == 4){
+		if(window_timer < 3){
+			vsp = 0;
+			hsp = 0;
+			can_move = false;
+			can_fast_fall = false;
+		} else {
+			can_move = true;
+			can_fast_fall = true;
+		}
+	}
+}
+
 //badass weed move (heavily referncing bluey's charge shot for this hopefully i can get it to work :)
 
 //charge

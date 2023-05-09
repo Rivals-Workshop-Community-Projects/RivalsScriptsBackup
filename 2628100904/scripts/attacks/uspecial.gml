@@ -57,7 +57,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 0);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -73);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 14);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 24);
