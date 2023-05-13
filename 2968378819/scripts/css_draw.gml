@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 30; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 31; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(152, 163, 255) // "color preview square" color. can be any color!
@@ -100,8 +100,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[9,1] = "Wanderer"
     ce[9,2] = "Kilia (Disgaea 5)"
     ce[10,0] = make_color_rgb(214, 48, 99)
-    ce[10,1] = "S. Reincarnated"
-    ce[10,2] = "Zed (Disgaea 6)"
+    ce[10,1] = "Street Fighter"
+    ce[10,2] = "Ryu"
     ce[11,0] = make_color_rgb(234, 240, 240)
     ce[11,1] = "Smoosh Wolf"
     ce[11,2] = "Jorkin (TehSquishyRay)"
@@ -135,33 +135,36 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb( 124, 72, 106 )
     ce[21,1] = "K-Style"
     ce[21,2] = "Original Palette (ThisIsKero)"
-    ce[22,0] = make_color_rgb(110, 110, 110)
-    ce[22,1] = "Stinker"
-    ce[22,2] = "Stinker (Azelinuu)"
-    ce[23,0] = make_color_rgb(112, 162, 232)
-    ce[23,1] = "Vilas"
-    ce[23,2] = "Vilas (Azelinuu)"
-    ce[24,0] = make_color_rgb(172, 136, 200)
-    ce[24,1] = "Cry"
-    ce[24,2] = "Cry (Azelinuu)"
-    ce[25,0] = make_color_rgb(255, 185, 25)
-    ce[25,1] = "JohnBain"
-    ce[25,2] = "John and Bain (Azelinuu)"
-    ce[26,0] = make_color_rgb(125, 125, 125)
-    ce[26,1] = "Kage"
-    ce[26,2] = "Kage (Azelinuu)"
-    ce[27,0] = make_color_rgb(159, 174, 183)
-    ce[27,1] = "Young Giest"
-    ce[27,2] = "Giest (Azelinuu)"
-    ce[28,0] = make_color_rgb(234, 241, 242)
-    ce[28,1] = "Genez"
-    ce[28,2] = "Genez (Azelinuu)"
-    ce[29,0] = make_color_rgb(129, 140, 150)
-    ce[29,1] = "Rayhan"
-    ce[29,2] = "Rayhan (Azelinuu)"
-    ce[30,0] = make_color_rgb(102, 139, 184)
-    ce[30,1] = "The Crusher"
-    ce[30,2] = "Bergamo (Dragon Ball Super)"
+    ce[22,0] = make_color_rgb(102, 139, 184)
+    ce[22,1] = "The Crusher"
+    ce[22,2] = "Bergamo (Dragon Ball Super)"
+    ce[23,0] = make_color_rgb(171, 149, 59)
+    ce[23,1] = "Exiled Flame"
+    ce[23,2] = "Forsburn (Rivals of Aether)"
+    ce[24,0] = make_color_rgb(110, 110, 110)
+    ce[24,1] = "Stinker"
+    ce[24,2] = "Stinker (Azelinuu)"
+    ce[25,0] = make_color_rgb(112, 162, 232)
+    ce[25,1] = "Vilas"
+    ce[25,2] = "Vilas (Azelinuu)"
+    ce[26,0] = make_color_rgb(172, 136, 200 )
+    ce[26,1] = "Cry"
+    ce[26,2] = "Cry (Azelinuu)"
+    ce[27,0] = make_color_rgb(255, 185, 25)
+    ce[27,1] = "JohnBain"
+    ce[27,2] = "JohnBain (Azelinuu)"
+    ce[28,0] = make_color_rgb(125, 125, 125)
+    ce[28,1] = "Kage"
+    ce[28,2] = "Kage (Azelinuu)"
+    ce[29,0] = make_color_rgb(159, 174, 183)
+    ce[29,1] = "Young Giest"
+    ce[29,2] = "Giest (Azelinuu)"
+    ce[30,0] = make_color_rgb(234, 241, 242)
+    ce[30,1] = "Genez"
+    ce[30,2] = "Genez (Azelinuu)"
+    ce[31,0] = make_color_rgb(129, 140, 150)
+    ce[31,1] = "Rayhan"
+    ce[31,2] = "Rayhan (Azelinuu)"
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

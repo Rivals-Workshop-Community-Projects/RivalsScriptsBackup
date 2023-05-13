@@ -110,6 +110,7 @@ if (attack == AT_NSPECIAL){
     
     if (window == 8 && window_timer = 5 && !has_hit && !was_grounded){
         state = PS_PRATFALL;
+        hurtboxID.sprite_index = sprite_get("idle_hurtbox");
     }
     
     if (window == 8 && window_timer = 5 && was_grounded && !has_hit){
@@ -152,8 +153,9 @@ if (attack == AT_DSPECIAL){
 
 if (attack == AT_DSPECIAL_AIR){
     can_fast_fall = false;
-    if (!free){
-        window = 9;
+    if (!free && window != 5){
+        window = 5;
+        window_timer = 0;
     }
 }
 

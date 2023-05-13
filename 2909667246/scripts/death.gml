@@ -34,8 +34,18 @@ if(instance_exists(grabbedtarget)){
 
 sound_stop(voice);
 
-if(alt == 30){
-    PlayVoiceClip("craig just missed it a little", 3.5);
+if(get_player_stocks(player) <= 1){ //last stock
+	if(alt == 30){
+	    PlayVoiceClip("craig_you_beat_me_today_but_tomorrow_im_gonna_catch_you", 3);
+	}else if(alt == 31){
+		sound_play(sound_get("villager death"));
+	}
+}else{
+	if(alt == 30){
+	    PlayVoiceClip("craig just missed it a little", 3);
+	}else if(alt == 31){
+		sound_play(sound_get("villager death"));
+	}
 }
 
 #define PlayVoiceClip

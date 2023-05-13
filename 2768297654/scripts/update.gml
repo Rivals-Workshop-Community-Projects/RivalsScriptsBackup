@@ -186,7 +186,7 @@ set_color_profile_slot( 20, 3, 99, 67, 48 ); //Hair2
 set_color_profile_slot( 20, 4, 71, 54, 54 ); //Pants
 set_color_profile_slot( 20, 5, 255, 255, 255 ); //Shoes
 set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
-			secret_alt_num = 2;
+			secret_alt_num = 3;
 			seinfeld = true;
 			init_shader();
 			secret_alt_on = true;

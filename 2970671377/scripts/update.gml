@@ -3,7 +3,7 @@
 //	Edit this value to adjust how many songs are randomized.
 if (cur_song == -1) 
 {
-	cur_song = random_func(current_second, 8, true)+1;
+	cur_song = random_func(current_second, 9, true)+1;
 }
 
 //	This is the actual line of code that plays the selected song.

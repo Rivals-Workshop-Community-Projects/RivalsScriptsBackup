@@ -22,6 +22,15 @@ if(attack == AT_NSPECIAL){
 		Is_Lloid_Rocket = true;
 	    Pocketable = true;Pocket_hsp = hsp;Pocket_vsp = vsp;Pocketed = false;PocketBuff = 0;
 	    Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 3;
+	    if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	if(player_id.alt != 0){
+        		Pocket_hud_imageindex = 18;
+        	}
+        }
+        if(player_id.alt == 30){
+        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 17;
+        }
 	    MattCanGrab = true;
 	    MorshuCanGrab = true;
 	    CalCanSnack = 1;
@@ -48,6 +57,9 @@ if(attack == AT_NSPECIAL){
     	sfx_start = sound_get("fspecial_start");
     	sfx_loop = sound_get("fspecial_loop");
     	sfx_explode = sound_get("fspecial_explode");
+    	if(player_id.alt == 30){
+    		sfx_loop = sound_get("craig_car");
+    	}
     	speedmod = 1;
     	if(player_id.runeL){
     		speedmod = 2;

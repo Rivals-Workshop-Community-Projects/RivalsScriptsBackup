@@ -260,6 +260,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.30", "11th May, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed UStrong just not having parry stun (not sure how this was never reported before)
++ Added an alt sprite for Mjau Mjau lloid so that she recolors better
++ Fixed some stuff with the new custom AI");
+
+initPatch("1.29", "11th May, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved Villager's AI (credit to DonGT for doing a bunch of it)
++ Added more SFX to the Craig alt, including parry sounds and a victory theme. Also added more SFX and a victory theme to the minecraft villager alt
++ Added special Lloid sprites for Kewtian alts and Craig alt");
+
 initPatch("1.28", "2nd May, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Another small fix with projectile grab stuff (oops)");

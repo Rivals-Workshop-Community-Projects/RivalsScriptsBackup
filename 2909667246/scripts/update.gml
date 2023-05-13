@@ -352,6 +352,8 @@ if(!loaded || kewtmode == 1){
 	}
 	if(alt >= 15 && alt <= 21 || kewtmode == 1){ //kewts
 		set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_balloon_sol_alts"));
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_mjau"));
+		if(alt != 0)set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_mjau_alts"));
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_planet"));
 		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_planet"));
 	    set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_planet"));
@@ -380,11 +382,16 @@ if(!loaded || kewtmode == 1){
 		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_abl"));
 	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_abl"));
 	}else if(alt == 30){
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_golfcar"));
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_golf"));
 		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_golf"));
 		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_golf"));
 	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_golf"));
+	    waveland_sound = sound_get("craig_mmm");
+	    set_victory_theme(sound_get("craig_victory"));
+	    PlayVoiceClip("craig_the_real_battle_starts_now", 2.5);
 	}else if(alt == 31){
+		sound_play(sound_get("villager"));waveland_sound = sound_get("villager");
 		set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack_mc"));
 		set_hitbox_value(AT_DATTACK, 1, HG_PROJECTILE_SPRITE, sprite_get("dattack_pot_mc"));
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_anvil"));
@@ -394,6 +401,7 @@ if(!loaded || kewtmode == 1){
 		set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_mc"));
 		set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_falling_mc"));
 		set_hitbox_value(AT_DSPECIAL, 8, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_mc"));
+		set_victory_theme(sound_get("emeralds win"));
 	}
 	
 	if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
@@ -526,3 +534,11 @@ if(trainingmode || op || canon || runeK){
 			}
 		}
 	}
+	
+#define PlayVoiceClip
+/// PlayVoiceClip(name,?volume)
+//Plays SFX
+//if(!muted){
+	sound_stop(voice);
+	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+//}

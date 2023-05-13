@@ -169,4 +169,8 @@ was_grounded = false;
 stock_number = 0;
 i_died = false;
 
+//Kirby Copy Ability
+
+TCG_Kirby_Copy = 4;
+
 

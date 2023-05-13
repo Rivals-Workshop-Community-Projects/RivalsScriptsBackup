@@ -135,13 +135,15 @@ if(hit_player_obj.should_make_shockwave){
 	sharphitfx = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35,fx_sharphit_big2);sharphitfx.draw_angle = random_func(7, 720, true);
 
     if(alt == 30){
-    	rand = random_func(0, 3, true);
+    	rand = random_func(0, 4, true);
 		if(rand == 0){
 			PlayVoiceClip("craig inside mine", 2);
 		}else if(rand == 1){
-			PlayVoiceClip("craig instinct", 2);
+			PlayVoiceClip("craig instinct", 2.5);
 		}else if(rand == 2){
 			PlayVoiceClip("craig try your best to match my shot", 2.25);
+		}else if(rand == 3){
+			PlayVoiceClip("craig_now_this_is_the_way_a_pro_putts", 2.25);
 		}
     }
 }

@@ -70,7 +70,7 @@ if (is_aether_stage())
 		
 		if (get_gameplay_time() mod 4 == 0)
 		{
-			pod_anim 		+= 1.04;
+			pod_anim 		+= 1.054;
 			image_index 	= pod_anim;
 		}
 		

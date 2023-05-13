@@ -544,6 +544,7 @@ if (attack == AT_NSPECIAL){
 			}
 		}else if(grabtimer <= 0 && !hitpause || !instance_exists(grabbedtarget)){ //grab release
 			window = 3;window_timer = 16;hsp = -2*spr_dir;if(free && vsp > 0)vsp = -5;
+			reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
 			if(instance_exists(grabbedtarget)){
 	        	if(!grabbedobject){
 	            	grabbedtarget.hsp = -5*grabbedtarget.spr_dir;grabbedtarget.vsp = -4;grabbedtarget.visible = true;

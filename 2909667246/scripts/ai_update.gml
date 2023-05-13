@@ -39,6 +39,80 @@ if(ai_recovering && attack == AT_USPECIAL){
 	attack_pressed = true;
 }
 
+if (get_training_cpu_action() == CPU_FIGHT){
+	with(oPlayer) if self != other{
+		if(point_distance(x,y,other.x,other.y) < 100){
+			with(other){
+				if(ai_attack_time == 0 && move_cooldown[AT_EXTRA_1] <= 0 && random_func(0,5,true) == 2 && !ai_recovering && can_attack && (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)){
+					set_attack(AT_EXTRA_1);
+					reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
+					move_cooldown[AT_EXTRA_1] = 80;
+				}
+			}
+		}
+	}
+	with(oPlayer) if self != other{
+		if(point_distance(x,y,other.x,other.y) < 400 && state == PS_PRATFALL){
+			with(other){
+				if(ai_attack_time == 0 && move_cooldown[AT_EXTRA_1] <= 0 && !ai_recovering && can_attack && (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)){
+					if(!free)jump_pressed = true;
+					set_attack(AT_DSPECIAL);
+				}
+			}
+		}
+	}	
+	if(attack == AT_EXTRA_1){
+		if(window == 4){
+			var rng_attack = random_func(0,3,true);
+			if(rng_attack == 0){
+				up_pressed = true;
+			}else if(rng_attack == 1){
+				down_pressed = true;
+			}else if(rng_attack == 2){
+				right_pressed = true;
+			}else if(rng_attack == 3){
+				left_pressed = true;
+			}
+		}
+	}
+	var rng_attack = random_func(0,2,true);
+	if(rng_attack == 0){
+		with(pHitBox){
+		    if(type == 2 && self != other && !instance_exists(other.Pocketed_Projectile) && (((damage > 0 && hit_priority > 0 &&
+				("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) || "MattStar" in self && MattStar) && "Pocketable" not in self || "Pocketable" in self && Pocketable) &&
+				("PocketableByOwner" in self && PocketableByOwner != other.player || "PocketableByOwner" not in self) &&
+				("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable) || other.runeI)){
+		        if(point_distance(x,y,other.x,other.y) < 125){
+		            with(other){
+		                if(ai_attack_time == 0 && can_attack && attack != AT_NSPECIAL){
+		                    set_attack(AT_NSPECIAL);
+		                }
+		            }
+		        }
+		    }
+		}
+	}else{
+		with(pHitBox){
+		    if(type == 2 && self != other){
+		    	if(string_length(string(player_id.url)) > 0 && orig_player != 5){
+		    		var playerurl = real(player_id.url);
+		    		if("MattCanGrab" in self && MattCanGrab || other.url != playerurl && (other.canon || other.op || playerurl < 20)){
+	                	var dist = point_distance(other.x+70*other.spr_dir, other.y-25, x, y); //distance
+                	    if(dist <= 75 && !other.grabbedobject && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
+					        with(other){
+								if(ai_attack_time == 0 && move_cooldown[AT_EXTRA_1] <= 0 && random_func(0,5,true) == 2 && !ai_recovering && can_attack && (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)){
+									set_attack(AT_EXTRA_1);
+									reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
+									move_cooldown[AT_EXTRA_1] = 80;
+								}
+					        }                	    
+                	    }
+		    		}
+		    	}
+		    }
+		}
+	}
+}
 
 if(temp_level == 1 || BossMode){
 	max_djumps = 999;

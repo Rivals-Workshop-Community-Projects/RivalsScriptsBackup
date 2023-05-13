@@ -17,6 +17,7 @@ song_name_array[5] = "Cyber Space 3-3: Memory will tell";
 song_name_array[6] = "Cyber Space 3-6: Enjoy this World";
 song_name_array[7] = "Sky Sanctuary Zone Remix - Sonic & Knuckles";
 song_name_array[8] = "Sanctuary - (Instrumental)";
+song_name_array[9] = "Cyber Space DJ Mix";
 
 //	Artist
 song_artist_array[1] = "SEGA / Tomoya Ohtani";
@@ -27,6 +28,7 @@ song_artist_array[5] = "SEGA / Tomoya Ohtani";
 song_artist_array[6] = "SEGA / Kenji Mizuno";
 song_artist_array[7] = "Plasma3Music Remixes";
 song_artist_array[8] = "Square Enix / Utada Hikaru";
+song_artist_array[9] = "SEGA / Tomoya Ohtani";
 
 //	Album/Source Game
 song_album_array[1] = "Sonic Frontiers";
@@ -37,3 +39,4 @@ song_album_array[5] = "Sonic Frontiers";
 song_album_array[6] = "Sonic Frontiers";
 song_album_array[7] = "Sonic & Knuckles";
 song_album_array[8] = "Kingdom Hearts II";
+song_album_array[9] = "Sonic Frontiers";

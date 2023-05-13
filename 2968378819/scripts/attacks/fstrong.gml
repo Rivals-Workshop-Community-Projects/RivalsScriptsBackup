@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 //Startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 //Release

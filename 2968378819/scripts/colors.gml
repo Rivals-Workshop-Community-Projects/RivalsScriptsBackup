@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 7, 8 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Red
 set_color_profile_slot( 1, 0, 209, 77, 48 ); //Fur 1
@@ -48,7 +48,7 @@ set_color_profile_slot( 1, 7, 178, 112, 112 ); //Claws 2
 
 // Blue
 set_color_profile_slot( 2, 0, 67, 116, 156 ); //Fur 1
-set_color_profile_slot( 2, 1, 45, 54, 112 ); //Fur 2
+set_color_profile_slot( 2, 1, 34, 41, 84 ); //Fur 2
 set_color_profile_slot( 2, 2, 115, 62, 36 ); //Belt 1
 set_color_profile_slot( 2, 3, 61, 12, 10 ); //Belt 2
 set_color_profile_slot( 2, 4, 66, 88, 207 ); //Pants
@@ -78,7 +78,7 @@ set_color_profile_slot( 4, 7, 145, 124, 66 ); //Claws 2
 
 // Purple
 set_color_profile_slot( 5, 0, 84, 0, 173 ); //Fur 1
-set_color_profile_slot( 5, 1, 45, 0, 112 ); //Fur 2
+set_color_profile_slot( 5, 1, 33, 0, 82 ); //Fur 2
 set_color_profile_slot( 5, 2, 214, 173, 255 ); //Belt 1
 set_color_profile_slot( 5, 3, 109, 66, 161 ); //Belt 2
 set_color_profile_slot( 5, 4, 109, 92, 163 ); //Pants
@@ -96,7 +96,7 @@ set_color_profile_slot( 6, 5, 232, 168, 0 ); //Eyes
 set_color_profile_slot( 6, 6, 248, 236, 248 ); //Bandages/Claws 1
 set_color_profile_slot( 6, 7, 138, 152, 181 ); //Claws 2
 
-// Pride
+// Trans-cendant
 set_color_profile_slot( 7, 0, 255, 255, 255 ); //Fur 1
 set_color_profile_slot( 7, 1, 138, 138, 138 ); //Fur 2
 set_color_profile_slot( 7, 2, 237, 81, 223 ); //Belt 1
@@ -126,13 +126,13 @@ set_color_profile_slot( 9, 5, 251, 204, 68 ); //Eyes
 set_color_profile_slot( 9, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 9, 7, 156, 156, 156 ); //Claws 2
 
-// S. Reincarnated
-set_color_profile_slot( 10, 0, 214, 48, 99 ); //Fur 1
-set_color_profile_slot( 10, 1, 117, 27, 54 ); //Fur 2
-set_color_profile_slot( 10, 2, 41, 166, 198 ); //Belt 1
-set_color_profile_slot( 10, 3, 24, 98, 117 ); //Belt 2
-set_color_profile_slot( 10, 4, 84, 99, 120 ); //Pants
-set_color_profile_slot( 10, 5, 255, 122, 160 ); //Eyes
+// Street Fighter
+set_color_profile_slot( 10, 0, 240, 201, 175 ); //Fur 1
+set_color_profile_slot( 10, 1, 105, 88, 76 ); //Fur 2
+set_color_profile_slot( 10, 2, 199, 56, 69 ); //Belt 1
+set_color_profile_slot( 10, 3, 115, 32, 40 ); //Belt 2
+set_color_profile_slot( 10, 4, 255, 255, 255 ); //Pants
+set_color_profile_slot( 10, 5, 0, 255, 247 ); //Eyes
 set_color_profile_slot( 10, 6, 222, 227, 231 ); //Bandages/Claws 1
 set_color_profile_slot( 10, 7, 122, 125, 128 ); //Claws 2
 
@@ -148,7 +148,7 @@ set_color_profile_slot( 11, 7, 91, 109, 153 ); //Claws 2
 
 // Life and Death
 set_color_profile_slot( 12, 0, 67, 60, 130 ); //Fur 1
-set_color_profile_slot( 12, 1, 29, 26, 56 ); //Fur 2
+set_color_profile_slot( 12, 1, 17, 15, 33 ); //Fur 2
 set_color_profile_slot( 12, 2, 67, 60, 130 ); //Belt 1
 set_color_profile_slot( 12, 3, 29, 26, 56 ); //Belt 2
 set_color_profile_slot( 12, 4, 67, 60, 130 ); //Pants
@@ -246,95 +246,105 @@ set_color_profile_slot( 21, 5, 200, 63, 153 ); //Eyes
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 21, 7, 150, 150, 150 ); //Claws 2
 
+// The Crusher
+set_color_profile_slot( 22, 0, 102, 139, 184 ); //Fur 1
+set_color_profile_slot( 22, 1, 42, 57, 74 ); //Fur 2
+set_color_profile_slot( 22, 2, 199, 56, 69 ); //Belt 1
+set_color_profile_slot( 22, 3, 115, 32, 40 ); //Belt 2
+set_color_profile_slot( 22, 4, 150, 121, 109 ); //Pants
+set_color_profile_slot( 22, 5, 255, 51, 51 ); //Eyes
+set_color_profile_slot( 22, 6, 224, 209, 190 ); //Bandages/Claws 1
+set_color_profile_slot( 22, 7, 184, 171, 155 ); //Claws 2
+
+// Exiled Flame
+set_color_profile_slot( 23, 0, 171, 149, 59 ); //Fur 1
+set_color_profile_slot( 23, 1, 77, 67, 26 ); //Fur 2
+set_color_profile_slot( 23, 2, 145, 19, 14 ); //Belt 1
+set_color_profile_slot( 23, 3, 74, 10, 7 ); //Belt 2
+set_color_profile_slot( 23, 4, 156, 146, 144 ); //Pants
+set_color_profile_slot( 23, 5, 255, 234, 0 ); //Eyes
+set_color_profile_slot( 23, 6, 156, 146, 144 ); //Bandages/Claws 1
+set_color_profile_slot( 23, 7, 87, 81, 80 ); //Claws 2
+
 // Stinker
-set_color_profile_slot( 22, 0, 110, 110, 110 ); //Fur 1
-set_color_profile_slot( 22, 1, 36, 36, 36 ); //Fur 2
-set_color_profile_slot( 22, 2, 138, 221, 78 ); //Belt 1
-set_color_profile_slot( 22, 3, 82, 149, 31 ); //Belt 2
-set_color_profile_slot( 22, 4, 55, 200, 102 ); //Pants
-set_color_profile_slot( 22, 5, 138, 221, 78 ); //Eyes
-set_color_profile_slot( 22, 6, 255, 255, 255 ); //Bandages/Claws 1
-set_color_profile_slot( 22, 7, 201, 201, 201 ); //Claws 2
+set_color_profile_slot( 24, 0, 110, 110, 110 ); //Fur 1
+set_color_profile_slot( 24, 1, 36, 36, 36 ); //Fur 2
+set_color_profile_slot( 24, 2, 138, 221, 78 ); //Belt 1
+set_color_profile_slot( 24, 3, 82, 149, 31 ); //Belt 2
+set_color_profile_slot( 24, 4, 55, 200, 102 ); //Pants
+set_color_profile_slot( 24, 5, 138, 221, 78 ); //Eyes
+set_color_profile_slot( 24, 6, 255, 255, 255 ); //Bandages/Claws 1
+set_color_profile_slot( 24, 7, 201, 201, 201 ); //Claws 2
 
 // Vilas
-set_color_profile_slot( 23, 0, 112, 162, 232 ); //Fur 1
-set_color_profile_slot( 23, 1, 65, 95, 138 ); //Fur 2
-set_color_profile_slot( 23, 2, 255, 255, 255 ); //Belt 1
-set_color_profile_slot( 23, 3, 196, 196, 196 ); //Belt 2
-set_color_profile_slot( 23, 4, 183, 100, 214 ); //Pants
-set_color_profile_slot( 23, 5, 99, 255, 109 ); //Eyes
-set_color_profile_slot( 23, 6, 255, 255, 255 ); //Bandages/Claws 1
-set_color_profile_slot( 23, 7, 181, 181, 181 ); //Claws 2
+set_color_profile_slot( 25, 0, 112, 162, 232 ); //Fur 1
+set_color_profile_slot( 25, 1, 54, 79, 115 ); //Fur 2
+set_color_profile_slot( 25, 2, 255, 255, 255 ); //Belt 1
+set_color_profile_slot( 25, 3, 196, 196, 196 ); //Belt 2
+set_color_profile_slot( 25, 4, 183, 100, 214 ); //Pants
+set_color_profile_slot( 25, 5, 99, 255, 109 ); //Eyes
+set_color_profile_slot( 25, 6, 255, 255, 255 ); //Bandages/Claws 1
+set_color_profile_slot( 25, 7, 181, 181, 181 ); //Claws 2
 
 // Cry
-set_color_profile_slot( 24, 0, 172, 136, 200 ); //Fur 1
-set_color_profile_slot( 24, 1, 90, 71, 105 ); //Fur 2
-set_color_profile_slot( 24, 2, 82, 82, 82 ); //Belt 1
-set_color_profile_slot( 24, 3, 41, 41, 41 ); //Belt 2
-set_color_profile_slot( 24, 4, 71, 71, 245 ); //Pants
-set_color_profile_slot( 24, 5, 245, 245, 245 ); //Eyes
-set_color_profile_slot( 24, 6, 149, 72, 196 ); //Bandages/Claws 1
-set_color_profile_slot( 24, 7, 106, 51, 138 ); //Claws 2
+set_color_profile_slot( 26, 0, 172, 136, 200 ); //Fur 1
+set_color_profile_slot( 26, 1, 90, 71, 105 ); //Fur 2
+set_color_profile_slot( 26, 2, 82, 82, 82 ); //Belt 1
+set_color_profile_slot( 26, 3, 41, 41, 41 ); //Belt 2
+set_color_profile_slot( 26, 4, 71, 71, 245 ); //Pants
+set_color_profile_slot( 26, 5, 245, 245, 245 ); //Eyes
+set_color_profile_slot( 26, 6, 149, 72, 196 ); //Bandages/Claws 1
+set_color_profile_slot( 26, 7, 106, 51, 138 ); //Claws 2
 
 // JohnBain
-set_color_profile_slot( 25, 0, 255, 185, 25 ); //Fur 1
-set_color_profile_slot( 25, 1, 163, 118, 16 ); //Fur 2
-set_color_profile_slot( 25, 2, 241, 226, 223 ); //Belt 1
-set_color_profile_slot( 25, 3, 186, 175, 172 ); //Belt 2
-set_color_profile_slot( 25, 4, 104, 100, 120 ); //Pants
-set_color_profile_slot( 25, 5, 251, 248, 75 ); //Eyes
-set_color_profile_slot( 25, 6, 204, 183, 131 ); //Bandages/Claws 1
-set_color_profile_slot( 25, 7, 168, 150, 105 ); //Claws 2
+set_color_profile_slot( 27, 0, 255, 185, 25 ); //Fur 1
+set_color_profile_slot( 27, 1, 125, 90, 12 ); //Fur 2
+set_color_profile_slot( 27, 2, 241, 226, 223 ); //Belt 1
+set_color_profile_slot( 27, 3, 186, 175, 172 ); //Belt 2
+set_color_profile_slot( 27, 4, 104, 100, 120 ); //Pants
+set_color_profile_slot( 27, 5, 251, 248, 75 ); //Eyes
+set_color_profile_slot( 27, 6, 204, 183, 131 ); //Bandages/Claws 1
+set_color_profile_slot( 27, 7, 168, 150, 105 ); //Claws 2
 
 // Kage
-set_color_profile_slot( 26, 0, 125, 125, 125 ); //Fur 1
-set_color_profile_slot( 26, 1, 51, 51, 51 ); //Fur 2
-set_color_profile_slot( 26, 2, 71, 71, 71 ); //Belt 1
-set_color_profile_slot( 26, 3, 28, 28, 28 ); //Belt 2
-set_color_profile_slot( 26, 4, 196, 59, 59 ); //Pants
-set_color_profile_slot( 26, 5, 250, 250, 250 ); //Eyes
-set_color_profile_slot( 26, 6, 214, 214, 214 ); //Bandages/Claws 1
-set_color_profile_slot( 26, 7, 166, 166, 166 ); //Claws 2
+set_color_profile_slot( 28, 0, 125, 125, 125 ); //Fur 1
+set_color_profile_slot( 28, 1, 28, 28, 28 ); //Fur 2
+set_color_profile_slot( 28, 2, 71, 71, 71 ); //Belt 1
+set_color_profile_slot( 28, 3, 28, 28, 28 ); //Belt 2
+set_color_profile_slot( 28, 4, 196, 59, 59 ); //Pants
+set_color_profile_slot( 28, 5, 250, 250, 250 ); //Eyes
+set_color_profile_slot( 28, 6, 214, 214, 214 ); //Bandages/Claws 1
+set_color_profile_slot( 28, 7, 166, 166, 166 ); //Claws 2
 
 // Young Giest
-set_color_profile_slot( 27, 0, 159, 174, 183 ); //Fur 1
-set_color_profile_slot( 27, 1, 75, 82, 87 ); //Fur 2
-set_color_profile_slot( 27, 2, 240, 240, 46 ); //Belt 1
-set_color_profile_slot( 27, 3, 184, 184, 35 ); //Belt 2
-set_color_profile_slot( 27, 4, 204, 166, 143 ); //Pants
-set_color_profile_slot( 27, 5, 200, 69, 87 ); //Eyes
-set_color_profile_slot( 27, 6, 255, 255, 255 ); //Bandages/Claws 1
-set_color_profile_slot( 27, 7, 191, 191, 191 ); //Claws 2
+set_color_profile_slot( 29, 0, 159, 174, 183 ); //Fur 1
+set_color_profile_slot( 29, 1, 75, 82, 87 ); //Fur 2
+set_color_profile_slot( 29, 2, 240, 240, 46 ); //Belt 1
+set_color_profile_slot( 29, 3, 184, 184, 35 ); //Belt 2
+set_color_profile_slot( 29, 4, 204, 166, 143 ); //Pants
+set_color_profile_slot( 29, 5, 200, 69, 87 ); //Eyes
+set_color_profile_slot( 29, 6, 255, 255, 255 ); //Bandages/Claws 1
+set_color_profile_slot( 29, 7, 191, 191, 191 ); //Claws 2
 
 // Genez
-set_color_profile_slot( 28, 0, 234, 241, 242 ); //Fur 1
-set_color_profile_slot( 28, 1, 111, 114, 115 ); //Fur 2
-set_color_profile_slot( 28, 2, 184, 86, 70 ); //Belt 1
-set_color_profile_slot( 28, 3, 94, 44, 36 ); //Belt 2
-set_color_profile_slot( 28, 4, 128, 128, 128 ); //Pants
-set_color_profile_slot( 28, 5, 255, 251, 0 ); //Eyes
-set_color_profile_slot( 28, 6, 234, 241, 242 ); //Bandages/Claws 1
-set_color_profile_slot( 28, 7, 111, 114, 115 ); //Claws 2
+set_color_profile_slot( 30, 0, 234, 241, 242 ); //Fur 1
+set_color_profile_slot( 30, 1, 111, 114, 115 ); //Fur 2
+set_color_profile_slot( 30, 2, 184, 86, 70 ); //Belt 1
+set_color_profile_slot( 30, 3, 94, 44, 36 ); //Belt 2
+set_color_profile_slot( 30, 4, 128, 128, 128 ); //Pants
+set_color_profile_slot( 30, 5, 255, 251, 0 ); //Eyes
+set_color_profile_slot( 30, 6, 234, 241, 242 ); //Bandages/Claws 1
+set_color_profile_slot( 30, 7, 111, 114, 115 ); //Claws 2
 
 // Rayhan
-set_color_profile_slot( 29, 0, 129, 140, 150 ); //Fur 1
-set_color_profile_slot( 29, 1, 48, 52, 56 ); //Fur 2
-set_color_profile_slot( 29, 2, 200, 222, 147 ); //Belt 1
-set_color_profile_slot( 29, 3, 138, 153, 101 ); //Belt 2
-set_color_profile_slot( 29, 4, 234, 240, 240 ); //Pants
-set_color_profile_slot( 29, 5, 255, 255, 255 ); //Eyes
-set_color_profile_slot( 29, 6, 222, 222, 222 ); //Bandages/Claws 1
-set_color_profile_slot( 29, 7, 171, 171, 171 ); //Claws 2
-
-// The Crusher
-set_color_profile_slot( 30, 0, 102, 139, 184 ); //Fur 1
-set_color_profile_slot( 30, 1, 42, 57, 74 ); //Fur 2
-set_color_profile_slot( 30, 2, 199, 56, 69 ); //Belt 1
-set_color_profile_slot( 30, 3, 115, 32, 40 ); //Belt 2
-set_color_profile_slot( 30, 4, 150, 121, 109 ); //Pants
-set_color_profile_slot( 30, 5, 255, 51, 51 ); //Eyes
-set_color_profile_slot( 30, 6, 224, 209, 190 ); //Bandages/Claws 1
-set_color_profile_slot( 30, 7, 184, 171, 155 ); //Claws 2
+set_color_profile_slot( 31, 0, 129, 140, 150 ); //Fur 1
+set_color_profile_slot( 31, 1, 48, 52, 56 ); //Fur 2
+set_color_profile_slot( 31, 2, 200, 222, 147 ); //Belt 1
+set_color_profile_slot( 31, 3, 138, 153, 101 ); //Belt 2
+set_color_profile_slot( 31, 4, 234, 240, 240 ); //Pants
+set_color_profile_slot( 31, 5, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 31, 6, 222, 222, 222 ); //Bandages/Claws 1
+set_color_profile_slot( 31, 7, 171, 171, 171 ); //Claws 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

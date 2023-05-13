@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 7);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 //Startup
@@ -18,7 +18,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //Endlag
-set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
