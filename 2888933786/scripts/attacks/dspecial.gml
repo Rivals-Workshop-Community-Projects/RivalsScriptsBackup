@@ -41,9 +41,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("blue"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 //collision sprite
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .30);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .33);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 

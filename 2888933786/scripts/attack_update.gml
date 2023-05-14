@@ -409,11 +409,6 @@ super_armor = false
 }
 
 if (attack == AT_FTILT) {
-    if (window == 3){
-super_armor = true
-    }
-}
-if (attack == AT_FTILT) {
     if (window == 4){
 super_armor = true
     }
@@ -441,19 +436,10 @@ super_armor = true
 }
 if (attack == AT_DTILT) {
     if (window == 6){
-super_armor = true
-    }
-}
-if (attack == AT_DTILT) {
-    if (window == 7){
-super_armor = true
-    }
-}
-if (attack == AT_DTILT) {
-    if (window == 8){
 super_armor = false
     }
 }
+
 
 if (attack == AT_USTRONG_2) {
     if (window >= 1 && window <= 3){

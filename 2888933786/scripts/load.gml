@@ -40,7 +40,7 @@ sprite_change_offset("spinhurt", 50, 121);
 
 sprite_change_offset("jab", 84, 122);
 sprite_change_offset("hit", 52, 120);
-sprite_change_offset("jabproj", 50, 60);
+sprite_change_offset("jabproj", 35, 20);
 sprite_change_offset("jabproj2", 50, 60);
 sprite_change_offset("jabproj4", 50, 60);
 sprite_change_offset("dattack", 100, 110);
