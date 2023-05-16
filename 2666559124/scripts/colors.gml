@@ -52,7 +52,7 @@ set_color_profile_slot( 3, 3, 255, 250, 10 ); //Plus
 set_color_profile_slot( 3, 4, 232, 112, 80 ); //Nose
 set_color_profile_slot( 3, 5, 7, 168, 7 ); //Shoes
 
-// Blackey
+// Black Race
 set_color_profile_slot( 4, 0, 153, 56, 0 ); //Skin
 set_color_profile_slot( 4, 1, 0, 125, 118 ); //Shirt
 set_color_profile_slot( 4, 2, 124, 115, 150 ); //Hat

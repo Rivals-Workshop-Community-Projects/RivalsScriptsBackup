@@ -77,6 +77,6 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_DSPECIAL){
 	if (window == 2 && window_timer == 1){
-		instance_create( round(x), round(y) - 20, "obj_article1" );
+		instance_create( round(x), round(y) - 50, "obj_article1" );
 	}
 }
