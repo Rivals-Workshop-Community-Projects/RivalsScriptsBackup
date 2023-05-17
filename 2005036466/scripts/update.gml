@@ -53,6 +53,10 @@ if opponent_strapped{
 	}
 }
 
+if state != PS_PRATLAND{
+	prat_land_time = 10;
+}
+
 switch(state){
 	case PS_WALL_JUMP:
 	case PS_LAND:
@@ -238,17 +242,20 @@ if goboom{
 		mineblinktimer = get_gameplay_time() *.4;
 		boomtimer--;
 	} else {
-		if !pen_mine_unstable{
-			sound_play(asset_get("sfx_ell_explosion_medium"));
-			spawn_hit_fx(opponentx, opponenty, 143);
-			create_hitbox(AT_DSPECIAL_2, 1, opponentx, opponenty);
-		} else {
-			// Hitbox
-			sound_play(asset_get("sfx_ell_dspecial_explosion_3"));
-			spawn_hit_fx(opponentx, opponenty, vfx_dspecchargeexp);
-			create_hitbox(AT_DSPECIAL_2, 2, opponentx, opponenty);
-			
-			pen_mine_unstable = false;
+		if boomstuff{
+			boomstuff = false;
+			if !pen_mine_unstable{
+				sound_play(asset_get("sfx_ell_explosion_medium"));
+				spawn_hit_fx(opponentx, opponenty, 143);
+				create_hitbox(AT_DSPECIAL_2, 1, opponentx, opponenty);
+			} else {
+				// Hitbox
+				sound_play(asset_get("sfx_ell_dspecial_explosion_3"));
+				spawn_hit_fx(opponentx, opponenty, vfx_dspecchargeexp);
+				create_hitbox(AT_DSPECIAL_2, 2, opponentx, opponenty);
+				
+				pen_mine_unstable = false;
+			}
 		}
 		with (mine_player){
 			if strapped_id == other.id{
@@ -277,6 +284,7 @@ if cooldown_mine == 1 and opponent_strapped{
 	sound_play(asset_get("mfx_xp"));
 }
 if cooldown_mine == 0 and !goboom{
+	boomstuff = true;
 	cooldown_mine = 0;
 	move_cooldown[AT_DSPECIAL_2] = 0;
 	mineblinktimer = get_gameplay_time() *.1;

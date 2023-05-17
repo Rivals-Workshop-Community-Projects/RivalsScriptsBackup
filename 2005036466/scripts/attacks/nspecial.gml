@@ -4,7 +4,7 @@ set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 0);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
-set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("penny_hurt"));
+set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_USES_CUSTOM_GRAVITY, 0);
 
 
@@ -175,8 +175,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .25);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 16);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.75);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, -7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -14);

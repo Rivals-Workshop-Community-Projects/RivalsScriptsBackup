@@ -33,9 +33,9 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 
-set_num_hitboxes(AT_NSPECIAL, 2);
+set_num_hitboxes(AT_NSPECIAL, 3);
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 50);
@@ -61,6 +61,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, poof);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, -.08);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 93);

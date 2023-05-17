@@ -23,6 +23,23 @@ if faces_visible{
   speaker1 = ("static");
 }
 
+
+pen_mine_unstable = false;
+penny_install = false;
+
+opponent_strapped = false;
+opponentx = 0;
+opponenty = 0;
+
+penny_strapped = false;
+
+goboom = false;
+boomtimer = 0;
+
+mine_active = 0;
+cooldown_mine = 0;
+
+
 // Remove everything on the field
 if (instance_exists(obj_article2)){
     with(obj_article2){
@@ -44,24 +61,8 @@ with(oPlayer){
 		}
 	}
 }
-
-pen_mine_unstable = false;
-
-opponent_strapped = false;
-opponentx = 0;
-opponenty = 0;
-
-penny_strapped = false;
-
-goboom = false;
-boomtimer = 0;
-
-mine_active = 0;
-cooldown_mine = 0;
-
 with(mine_player){
 	penny_strapped = false;
 	strapped_id = noone;
 }
 mine_player = noone;
-penny_install = false;

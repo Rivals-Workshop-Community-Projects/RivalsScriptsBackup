@@ -35,9 +35,14 @@ switch(my_hitboxID.attack){
 			}
 		}
 		break;
-	case AT_FSTRONG_2:
-	case AT_DSTRONG_2:
-	case AT_USTRONG_2:
-		penny_install = false;
+	case AT_DSPECIAL_2:
+		if !free{
+			set_state(PS_PRATLAND);
+			prat_land_time = 120;
+		}
 		break;
+}
+if my_hitboxID.type == 1{
+	sound_play(asset_get("sfx_ell_cooldown"));
+	penny_install = false;
 }

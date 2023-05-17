@@ -128,7 +128,6 @@ set_hitbox_value(AT_DTILT, 4, HG_HITPAUSE_SCALING, .8);
 
 set_hitbox_value(AT_DTILT, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 6);
-set_hitbox_value(AT_DTILT, 5, HG_EFFECT, 15);
 set_hitbox_value(AT_DTILT, 5, HG_LIFETIME, 4);
 set_hitbox_value(AT_DTILT, 5, HG_HITBOX_X, 60);
 set_hitbox_value(AT_DTILT, 5, HG_HITBOX_Y, -100);

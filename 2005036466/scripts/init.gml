@@ -49,6 +49,7 @@ col_penc4	= make_color_rgb(255, col_oth, col_oth);
 goboom = false;
 boomtimer = 0;
 boommax = 100;
+boomstuff = true;
 
 mineblinkspeed = 0;
 
