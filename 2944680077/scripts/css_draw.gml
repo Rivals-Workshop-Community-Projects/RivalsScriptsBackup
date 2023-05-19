@@ -1,3 +1,5 @@
+alt_fix = player;
+
 cpu_hover_update();
 
 //voice button

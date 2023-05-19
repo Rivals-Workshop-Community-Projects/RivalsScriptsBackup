@@ -1,3 +1,5 @@
+var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(player);
+
 //init shader
 
 //Image Mask
