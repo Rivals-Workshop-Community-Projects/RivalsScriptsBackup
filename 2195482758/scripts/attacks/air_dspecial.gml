@@ -10,7 +10,7 @@ set_attack_value(AT_AIR_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("air_dspecial_hu
 //set_attack_value(AT_AIR_DSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_LENGTH, 11); //9
+set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_LENGTH, 9); //9
 set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);

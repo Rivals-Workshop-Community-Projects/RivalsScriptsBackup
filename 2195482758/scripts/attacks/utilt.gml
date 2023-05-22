@@ -121,24 +121,24 @@ set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 1);
 
-// // Tail swipe Hitbox 2
-// set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 0);
-// set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
-// set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
-// set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 4);
-// set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -15);
-// set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, -2);
-// set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 70);
-// set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 30);
-// set_hitbox_value(AT_UTILT, 2, HG_PRIORITY, 1);
-// set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3);
-// set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 90);
-// set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 5);
-// set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .35);
-// set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 3);
-// set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .35);
-// set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-// set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 1);
+// Tail swipe Hitbox 2
+set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -15);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, -2);
+set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 70);
+set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 30);
+set_hitbox_value(AT_UTILT, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3);
+set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .35);
+set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .35);
+set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 1);
 
 // Tail swipe Hitbox 3
 set_hitbox_value(AT_UTILT, 3, HG_PARENT_HITBOX, 0);

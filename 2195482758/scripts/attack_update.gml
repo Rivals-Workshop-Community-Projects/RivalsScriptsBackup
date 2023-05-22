@@ -323,7 +323,15 @@ if (attack == AT_NSPECIAL){
 		}
 		
 		// Cooldown
-		move_cooldown[AT_NSPECIAL] = 40;
+		move_cooldown[AT_NSPECIAL] = 60;
+		
+		with(pHitBox)
+		{
+			if((attack == AT_EXTRA_3 && player_id == other.enemykirby) || (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1))
+			{
+				destroyed = true;
+			}
+		}
 		
 		//throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
 		throw_speed = firecracker_speed;
@@ -338,8 +346,6 @@ if (attack == AT_NSPECIAL){
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, (throw_speed*0.5) * dcos(firecracker_angle));
 		}
 		
-		
-
 		// Set firecracker spawn loc
 		
 		// Prevent throw spawn location from being beyond the hand's throw arc
@@ -428,6 +434,7 @@ if (attack == AT_FSPECIAL){
 		caught_projectile = false;
 		grabbed_solid = false;
 		KRAGG = false;
+		ignoring_projectiles = false;
 	}
 	can_fast_fall = false;
 	can_move = true;
@@ -469,9 +476,8 @@ if (attack == AT_FSPECIAL){
 		sound_play(asset_get("sfx_land_light"));
 	}
 
-
 	// Grabbing projectile
-	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !grabbed_solid)
+	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !grabbed_solid && !ignoring_projectiles)
 	{
 		var FSpecGrabRadius = 55;
 		
@@ -778,8 +784,8 @@ if (attack == AT_FSPECIAL){
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
-			hitstop_full = 3;
-		    hitstop = 3;
+			hitstop_full = stage_grab_hitpause;
+		    hitstop = stage_grab_hitpause;
 		    hitpause = true;
 		    
 			// Delete hitbox
@@ -1256,12 +1262,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             	
             	should_set_sprite_to_spin = true;
             	
-            	hsp = 10.5*spr_dir;
-            	
-            	if(fspec_yoff < 0)
-            		vsp = -6 + (fspec_yoff/10);
-            	else
-            		vsp = -6;
+            	hsp = (fspec_yoff < 0) ? 6.5*spr_dir : 10.5*spr_dir;
+            	vsp = (fspec_yoff < 0) ? -10 : -6;
             		
             	// Hijacking this for firecracker launch code
             	if(grabbedProj != noone)
@@ -1269,8 +1271,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             		grabbedProj.in_hitpause = false;
             		grabbedProj.hsp = -13.5*spr_dir;
             		grabbedProj.vsp = -6;
-            		vsp = -7.5;
-            		hsp = 12*spr_dir;
+            		vsp = (fspec_yoff < 0) ? -11.5 : -7.5;
+            		hsp = (fspec_yoff < 0) ? 8*spr_dir : 12*spr_dir;
 					
             		grabbedProj = noone;
             	}
@@ -1296,7 +1298,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         	
     	    set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_air_spin"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air_spin"));
-			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 14);
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
     		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 11);
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 40);
 		
@@ -1358,6 +1360,7 @@ if (attack == AT_USPECIAL){
 		uspecial_ground = state == PS_ATTACK_GROUND;
 		first_uspec = !used_uspec;
 		used_uspec = !uspecial_ground;
+		ignoring_projectiles = false;
 	}
 	can_fast_fall = false;
 	
@@ -1416,9 +1419,9 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2) && !grabbed_solid)
+	if(grabbedProj == noone && (window < 7 && window > 2) && !grabbed_solid && !ignoring_projectiles)
 	{
-		var USpecGrabRadius = 55;
+		var USpecGrabRadius = 65;
 		
 		// First, get nearby hitboxes
 		var tempProj = collision_circle(
@@ -1638,8 +1641,8 @@ if (attack == AT_USPECIAL){
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
-			hitstop_full = 6;
-		    hitstop = 6;
+			hitstop_full = stage_grab_hitpause;
+		    hitstop = stage_grab_hitpause;
 		    hitpause = true;
 		    
 		    		    
@@ -1675,7 +1678,11 @@ if (attack == AT_USPECIAL){
 		true,
 		true );
 		
-    	if(tempSolid == noone || (special_down || shield_down)) create_hitbox( AT_USPECIAL, 5, floor(x), floor(y) );
+    	if(tempSolid == noone || (special_down || shield_down)) 
+    	{
+    		create_hitbox( AT_USPECIAL, 5, floor(x), floor(y));
+    		create_hitbox( AT_USPECIAL, 7, floor(x), floor(y));
+    	}
     }
 	
 	// Custom hitbox creation
@@ -1697,6 +1704,12 @@ if (attack == AT_USPECIAL){
     }
 }
 #endregion
+
+// Reset uspec cooldown when doing a different move
+if(attack != AT_USPECIAL)
+{
+	uspec_grab_cooldown = 0;
+}
 
 #region Uspecial Grab
 // Uspecial Grab
@@ -1734,7 +1747,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
-				through_platforms = other.fc_lifetime * 0.1;
+				through_platforms = other.fc_lifetime * 0.15;
 				set_transcendent = true;
 				if(in_hitpause)
 				{
@@ -1772,7 +1785,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     		{
     			window = 7;
     			window_timer = 1;
-    			vsp = -14;
+    			vsp = -15;
     			hsp = 2.2*spr_dir;
     		}
     	
@@ -2000,6 +2013,10 @@ if (attack == AT_DSPECIAL){
 		
 		wave_land_adj = 1.8;
 		air_dodge_speed = 9;
+		
+		// Reduce hsp on djump cancel
+		hsp *= 0.5;
+		djump_speed = original_djump_speed * 1.2;
 	}
 	if((window > 2 || (window == 2 && window_timer > cancelwindow)) && (attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
 	{
@@ -2076,6 +2093,7 @@ if (attack == AT_AIR_DSPECIAL){
 		hsp /= 1.3;
 		vsp /= 1.3;
 		
+		ignoring_projectiles = false;
 	}
 	
 	
@@ -2146,9 +2164,11 @@ if (attack == AT_AIR_DSPECIAL){
 		jump_queue = 1;
 	}
 	
-	can_wall_jump = (window == 2 && window_timer >= 12);
+	var CancelWindow = 10;
 	
-	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed)) || (special_pressed && !(down_down))) && (window == 2 && window_timer >= 12))
+	can_wall_jump = (window == 2 && window_timer >= CancelWindow);
+	
+	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed)) || (special_pressed && !(down_down))) && (window == 2 && window_timer >= CancelWindow))
 	{
 		if(shield_pressed && !has_airdodge)
 		{
@@ -2175,16 +2195,15 @@ if (attack == AT_AIR_DSPECIAL){
 	
 	
 	 // Grabbing projectile
-	if(grabbedProj == noone && (window == 2) && !shield_down && !special_down)
+	if(grabbedProj == noone && (window == 2) && !shield_down && !ignoring_projectiles)
 	{
 		
-		var DSpecGrabRadius = 55;
-		
 		// First, get nearby hitboxes
-		var tempProj = collision_circle(
-		x+((get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)+30)*spr_dir),
-		y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)-30), 
-		DSpecGrabRadius, 
+		var tempProj = collision_ellipse(
+		x+((get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X))*spr_dir) * 3,
+		y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)), 
+		x+(-(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X))*spr_dir) * 3,
+		y+(-get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)*3), 
 		pHitBox, 
 		true,
 		true );
@@ -2918,6 +2937,12 @@ if(attack == AT_UAIR){
 	// Landing lag
 	if(window < 3 && has_hit_player) set_attack_value(AT_UAIR, AG_LANDING_LAG, 0);
 	else reset_attack_value(AT_UAIR, AG_LANDING_LAG);
+	
+	if(window == 3 && jump_pressed && djumps == 0)
+	{
+		window = 5;
+		window_timer = 99;
+	}
 }
 #endregion
 

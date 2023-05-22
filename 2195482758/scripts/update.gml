@@ -326,10 +326,11 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESP
 	// 1 Firecracker on screen at a time
 	var can_can_throw = true;
 	
-	with (pHitBox) 
-		if (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1) 
-			if("ungrab" in self)
-				other.move_cooldown[AT_NSPECIAL] = max(other.move_cooldown[AT_NSPECIAL],1);
+	// MOVE COOLDOWN TEST TEST TEST
+	// with (pHitBox) 
+	// 	if (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1) 
+	// 		if("ungrab" in self)
+	// 			other.move_cooldown[AT_NSPECIAL] = max(other.move_cooldown[AT_NSPECIAL],1);
 				
 				
 	can_throw = can_can_throw;
@@ -403,25 +404,6 @@ else scream_timer--;
 // 	screaming = false;
 // }
 
-with(oPlayer)
-{
-	if(self != other)
-	{
-		// Populate the array of variable names and object ID
-	 //   var arrayNames = variable_instance_get_names(self);
-
-	    
-	 //   for (var i = 0; i < array_length_1d(arrayNames); i++) {
-  //      	if(string_pos("roll", arrayNames[i]) != 0 )
-  //      	{
-  //      		print_debug(arrayNames[i]);
-  //      	}
-		// }
-
-		//perfect_dodging = true;
-	}
-}
-
 
 // Command grab stuff
 if (state_cat == SC_HITSTUN) {
@@ -429,7 +411,17 @@ if (state_cat == SC_HITSTUN) {
     grabbedid = 0;
 }
 
+// Ignore projectiles for the duraction of grab moves if parry is pressed
+if(shield_pressed)
+{
+	ignoring_projectiles = true;
+}
 
+// Reset double jump modifiers
+if(state == PS_DOUBLE_JUMP)
+{
+	djump_speed = original_djump_speed;
+}
 
 //print_debug(string(grabbedProj) + " " + string(grabbedid));
 //print_debug(string(joy_dir) + " " + string(hsp));
@@ -453,9 +445,10 @@ with(pHitBox){
     if((attack == AT_EXTRA_3 && player_id == other.enemykirby) || (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1))
     {
     	// Only one firecracker at once
-		with(player_id){
-			move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],2);
-		}
+    	// REMOVED TEST TEST TEST
+		// with(player_id){
+		// 	move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],2);
+		// }
 		
         // Variables
         id_assigned = 0;
@@ -575,7 +568,10 @@ with(pHitBox){
         
         
         // Outside stage
-        if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
+        //x < 0 || x > room_width || y > room_height || 
+        
+        // Respawn
+        if(player_id.state == PS_RESPAWN)
 		{
 			if(hitbox_timer >= 30)
 			{
@@ -584,7 +580,12 @@ with(pHitBox){
 		}
         
 
-     // Wall bounce (unused)  ( (hsp < 0 && neg_hsp < 0)  || (hsp > 0 && neg_hsp > 0)
+     // Wall bounce   
+     if ( (hsp < 0 && neg_hsp < 0)  || (hsp > 0 && neg_hsp > 0))
+     {
+     	hsp *= 0.5;
+     }
+     
      // If bounced
      if((vsp < 0 && neg_vsp < 0) && !(reset && hitbox_timer == 0))  
      {
@@ -593,11 +594,10 @@ with(pHitBox){
          
          //hitbox_timer = bounced == 2 ? other.fc_lifetime-1 : hitbox_timer;
 
-		if(bounced > 0)
-		{
-			vsp = max(vsp,other.fc_standardized_bounce_speed);
-			//vsp = min(vsp,other.fc_standardized_min_bounce_speed);
-		}
+
+		vsp = max(vsp,other.fc_standardized_bounce_speed);
+		vsp = min(vsp,other.fc_standardized_min_bounce_speed);
+
 
          // Increment bounce counter
          bounced++;

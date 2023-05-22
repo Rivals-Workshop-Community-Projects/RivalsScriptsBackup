@@ -13,7 +13,7 @@ can_wall_cling = true;
 clingtime = 0;
 
 walk_speed = 4.25;
-walk_accel = 0.2;
+walk_accel = 0.35;
 walk_turn_time = 6;
 initial_dash_time = 9;
 initial_dash_speed = 8;
@@ -36,13 +36,14 @@ jump_start_time = 5;
 max_jump_speed = 11.5;
 jump_speed = 11.5;
 short_hop_speed = 7;
-djump_speed = 13.5;
+original_djump_speed = 13.5;
+djump_speed = original_djump_speed;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.0; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
-prat_fall_accel = .7; //multiplier of air_accel while in pratfall
+prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -51,7 +52,7 @@ base_walljump_vsp = 10;
 walljump_hsp = 5;
 walljump_vsp = 10;
 walljump_time = 32;
-max_fall = 8; //10 //maximum fall speed without fastfalling
+max_fall = 7.5; //10 //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
@@ -132,15 +133,15 @@ fc_base_y = -40;
 fc_base_x = 0;
 fc_backspin = false;
 fc_bunt = false;
-fc_standardized_bounce_speed = -8;
-fc_standardized_min_bounce_speed = -1;
+fc_standardized_bounce_speed = -10;
+fc_standardized_min_bounce_speed = -5;
 
 fc_trail = hit_fx_create( sprite_get( "smoketrail" ), 15 );
 fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
 party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
 party_has_moved = false;
 
-fc_lifetime = 200; // 85 -> // 100
+fc_lifetime = 220; // 85 -> // 100
 
 fc_string = "firecracker_single";
 
@@ -188,8 +189,8 @@ can_grab_plat_fspec = true;
 can_grab_solid_uspec = true;
 can_grab_plat_uspec = true;
 should_set_sprite_to_spin = false;
-base_uspecial_vsp = -9;
-varying_uspecial_vsp = -9;
+base_uspecial_vsp = -10;
+varying_uspecial_vsp = -10;
 fspec_yoff = 0;
 uspecial_ground = false;
 KRAGG = false;
@@ -197,6 +198,8 @@ used_uspec = false;
 first_uspec = false;
 uspec_grab_cooldown_max = 60;
 uspec_grab_cooldown = 0;
+ignoring_projectiles = false;
+stage_grab_hitpause = 2;
 
 // Air dspecial
 AT_AIR_DSPECIAL = AT_DSPECIAL_2;
