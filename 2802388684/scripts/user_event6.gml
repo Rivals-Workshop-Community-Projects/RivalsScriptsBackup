@@ -38,7 +38,8 @@ naruto_clone_max_lifetime = master_player_id.c_naruto_dspecial_clone_active_time
 
 
 //tell the master player that it currently has a dspecial clone active.
-master_player_id.naruto_currently_has_dspecial_clone_active  = true;
+master_player_id.naruto_currently_has_dspecial_clone_active = 1;
+
 
 
 // print(ai_attacks)

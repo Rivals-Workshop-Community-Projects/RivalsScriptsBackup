@@ -89,7 +89,6 @@ wall_frames         = 2;		// may or may not actually work... dan pls
 crouch_startup_frames   = 2;
 crouch_active_frames    = 1;
 crouch_recovery_frames  = 2;
-
 if (custom_clone) exit;
 
 // Parry

@@ -1,3 +1,21 @@
+
+if (is_master_player) {
+		dspecial_clones_out = naruto_currently_has_dspecial_clone_active * dspecial_clone_out;
+	if hitpause{
+	}else{
+		if dspecial_clones_out == 0 {
+			knockback_adj       = 1;
+		}else if dspecial_clones_out == 1{
+			knockback_adj       = 1.75;
+		}else if dspecial_clones_out == 2{
+			knockback_adj       = 2.5;
+		}
+		damage_scaling = knockback_adj;
+		
+	}
+	
+}
+
 if get_player_color(player) == 0 {
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_default_hud"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_default_hurt"));
@@ -29,7 +47,6 @@ if get_player_color(player) == 0 {
 }
 //update script for naruto.
 if (is_master_player) {
-
 	//initiate
     if (!initialize_unit_players) {
     	user_event(3); //user_event3.gml - initialize master player instance.
@@ -54,8 +71,7 @@ if (is_master_player) {
 	
 	// MunoPhone Touch code - don't touch
 	// should be at TOP of file
-	muno_event_type = 1;
-	user_event(14);
+
 
 	exit;
 }

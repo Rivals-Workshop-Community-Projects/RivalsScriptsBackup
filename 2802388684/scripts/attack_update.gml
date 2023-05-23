@@ -27,31 +27,29 @@ if (is_end_of_window()) {
 	case AT_FTILT:
 	case AT_DTILT:
 		if window == 1 {
-			array_push(master_player_id.phone_dust_query, [x, y, "dash", spr_dir]);
+
 		}
 		break;
 	case AT_UTILT:
 		if window == 1 {
-			array_push(master_player_id.phone_dust_query, [x, y, "dash", spr_dir]);
-			array_push(master_player_id.phone_dust_query, [x, y, "dash", -spr_dir]);
+
 		}
 		break;
 	case AT_FSTRONG:
 	case AT_DSTRONG:
 		if window == 2 {
-			array_push(master_player_id.phone_dust_query, [x, y, "dash_start", spr_dir]);
+
 		}
 		break;
 	case AT_USTRONG:
 		if window == 2 {
-			array_push(master_player_id.phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(master_player_id.phone_dust_query, [x, y, "dash_start", -spr_dir]);
+
 		}
 		break;
 		
 	case AT_DAIR:
 		if window == 2 {
-			array_push(master_player_id.phone_dust_query, [x, y, "jump", spr_dir]);
+
 		}
 		break;
 	}
@@ -107,10 +105,6 @@ switch(attack) {
 			break;
 			
 			case 3:
-				//munophone stuff
-				array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-				array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
-				//end munophone stuff
 			
 			
 			break;
@@ -792,27 +786,27 @@ switch(attack) {
 			break;
 				
 			case 2:
-				if (window_timer == 1 && !naruto_currently_has_dspecial_clone_active) { //get_window_value(attack, window, AG_WINDOW_LENGTH) - 2) {
+				if (window_timer == 1 && naruto_currently_has_dspecial_clone_active == 0) { //get_window_value(attack, window, AG_WINDOW_LENGTH) - 2) {
 					cap_maximum_clones(1);
 				}
 			
 			case 3:
 				//if the player has dspecial clones summoned, unsummon them and transition to dspecial_2.
-				if (naruto_currently_has_dspecial_clone_active) {
+				if (naruto_currently_has_dspecial_clone_active > 0) {
+					dspecial_clone_out = 0;
 					user_event(4);
 					safely_set_attack(AT_DSPECIAL_2);
 					break;
 				}
 				
 				//summon 1 clone if the player is not charging dspecial.
+				dspecial_clone_out = 1;
+				dspecial_clones_out = 1;
 				if (special_down || down_stick_down) break;
-				
 				var new_clone = spawn_clone(x, y);
 				
 				if (instance_exists(new_clone)) {
-					
 					spawn_hit_fx_2x(x, y, vfx_clone_smoke).depth = depth-1;
-					
 					//position swap based on held direction
 					var slide_dir = (right_down - left_down);
 					if (slide_dir == 0) slide_dir = spr_dir;
@@ -824,6 +818,7 @@ switch(attack) {
 						hsp = -slide_dir * 6;
 					}
 					sound_play(sound_get("snd_clonespawn"));
+					
 				}
 				
 				safely_set_attack(AT_DSPECIAL_2);
@@ -834,12 +829,14 @@ switch(attack) {
 			
 			case 4:
 				//dspecial is fully charged; summon 2 clones.
-				
+
 				var new_clone1 = spawn_clone(x, y);
 				var new_clone2 = spawn_clone(x, y);
 				var clone_successful = (new_clone1 != noone || new_clone2 != noone);
 				
 				if (clone_successful) {
+					dspecial_clone_out = 2;
+					dspecial_clones_out = 2;
 					switch (right_down - left_down) {
 						case -1:
 							hsp = -8;
@@ -854,6 +851,7 @@ switch(attack) {
 							if (instance_exists(new_clone1))  new_clone1.hsp = 8;
 							if (instance_exists(new_clone2))  new_clone2.hsp = -8;
 							break;
+						
 					}
 				
 
@@ -865,6 +863,7 @@ switch(attack) {
 				}
 				else {
 					//if no clones were spawned, despawn all existing clones instead.
+					dspecial_clone_out = 0;
 					user_event(4);
 					//sound_play(sound_get("snd_clonedespawn"))
 				}

@@ -199,12 +199,13 @@ if(chosenAttack != noone){
 				try_wavedash()
 			}
 			if(is_master_player and !attacking){
-				var att = lerp(AT_FSPECIAL, AT_DSPECIAL, random_func(id-3, 100, true) < 50)
-				if(move_cooldown[att] <= 0)
-	    	if(xdist > 250){
-	    		if(att != AT_DSPECIAL or !naruto_currently_has_dspecial_clone_active) perform_attack(att)
-	    		if(att == AT_FSPECIAL) hold_towards_target()
-	    	}
+				var att = lerp(AT_FSPECIAL, AT_DSPECIAL, random_func(abs(x)-3, 100, true) < 50)
+				if(move_cooldown[att] <= 0){
+		    	if(xdist > 250){
+		    		if(att != AT_DSPECIAL or !naruto_currently_has_dspecial_clone_active) perform_attack(att)
+		    		if(att == AT_FSPECIAL) hold_towards_target()
+		    	}
+				}
 	    }
 		}
 	}
@@ -236,7 +237,6 @@ if(state == PS_JUMPSQUAT or (state == PS_FIRST_JUMP and state_timer <= 1)){
 if ai_target == self and !free and !attacking{
 	clear_button_buffer(PC_JUMP_PRESSED);
 	unpress_actions()
-	tiltDance();
 }
 #define try_wavedash()
 
@@ -307,7 +307,7 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
 	  	
 	  	var chance_decrease = (ai_target.state_cat == SC_GROUND_NEUTRAL)*50
 	  	chance_decrease += near_stage_ledge*30
-  		if(window_timer == window_length and  random_func(id-1, 100, true) < (80 - chance_decrease)){
+  		if(window_timer == window_length and  random_func(abs(x)-1, 100, true) < (80 - chance_decrease)){
   			press_special()
   			print("WAAAA")
   		}
@@ -555,7 +555,7 @@ if len != 0{
 			iterations++;
 		reroll = false;
 		
-		chosenAttack = listAtk[random_func(id, j, true)];
+		chosenAttack = listAtk[random_func(abs(x), j, true)];
 		
 		if(chosenAttack != noone and move_cooldown[chosenAttack] > 0){
 			reroll = true;

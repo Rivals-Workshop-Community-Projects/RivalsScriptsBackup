@@ -1,12 +1,4 @@
-// MunoPhone Touch code - don't touch
-// should be at TOP of file
 
-
-//draw_debug_text(x, y - 200, string(id));
-
-
-
-//draw_debug_text(x, y - 250, string(unit_player_id_array));
 
 shader_start();
 
@@ -111,8 +103,7 @@ shader_end();
 
 if (!is_master_player) exit; 
 
-muno_event_type = 4;
-user_event(14);
+
 
 #define rectDraw(x1, y1, width, height, color)
 

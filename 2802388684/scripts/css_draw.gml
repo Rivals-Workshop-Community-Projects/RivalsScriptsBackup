@@ -31,8 +31,6 @@ if get_player_color(player) == 0 {
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt1_result_small"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
 }
-muno_event_type = 6;
-user_event(14);
 
 
 var alt_cur = get_player_color(player);

@@ -18,6 +18,9 @@ if (instance_exists(naruto_clone_hitbox)) naruto_clone_hitbox.destroyed = true;
 switch (master_player_id.c_naruto_clone_mode) {
     //clone mode 0: destroy the clone.
     case 0:
+		if (is_dspecial_clone){
+			master_player_id.dspecial_clone_out = master_player_id.dspecial_clone_out - 1;
+		}
     	//make fx
 	    spawn_hit_fx_2x(x, y, master_player_id.vfx_clone_smoke).depth = depth-1;
     	is_dspecial_clone = false
@@ -31,6 +34,9 @@ switch (master_player_id.c_naruto_clone_mode) {
 	
 	//clone mode 1: deactivate the clone.
 	case 1:
+		if (is_dspecial_clone){
+			master_player_id.dspecial_clone_out = master_player_id.dspecial_clone_out - 1;
+		}
 		//skip if already deactivated
 		naruto_clone_destroy = false;
 		if (attack == AT_EXTRA_3 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) break;
@@ -95,14 +101,14 @@ neutral_attacks		= array_create(1, 0);
 #define update_dspecial_cooldown
 
 //if (master_player_id.c_naruto_dspecial_cooldown_time > 0) {
-var still_clones_active = false;
+var still_clones_active = 0;
 with (oPlayer) {
 	//exclude all oPlayers who are not Naruto's Dspecial clones, also exclude any clones on cooldown.
 	if (!custom_clone || player != other.player || id == other
 	|| (attack == AT_EXTRA_3 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 	|| naruto_clone_max_lifetime != master_player_id.c_naruto_dspecial_clone_active_time) continue;
 	
-	still_clones_active = true;
+	still_clones_active = 1;
 	break;
 }
 

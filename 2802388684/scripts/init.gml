@@ -57,7 +57,9 @@ char_height = 80;
 is_master_player = false;
 
 //do the following with the master player
+dspecial_clones = 0 
 if (!custom_clone) {
+	
     //set constants in user_event0.gml.
     user_event(0);
     
@@ -88,6 +90,8 @@ if (!custom_clone) {
     naruto_taunt_spr = sprite_get("taunt_sexyjutsu_male");               //stores the reference of the sprite used for the special taunt, which varies depending on the opponent.
     naruto_attack_group_index = 0; //used to determine which set of attack indexes this clone will use.
     naruto_currently_has_dspecial_clone_active = 0; //counts how many dspecial clones naruto has. Updates in user_event5.gml and user_event6.gml.
+	dspecial_clones_out = 0;
+	dspecial_clone_out = 0;
     naruto_clone_despawn_article = noone; //reference of the article that will safely despawn clones. spawned in user_event3.gml.
     
     //move index constants. 
@@ -106,9 +110,6 @@ if (!custom_clone) {
     c_naruto_attack_index_array[AT_FSTRONG] = [AT_FSTRONG, 48, 49];
     
     
-    // MunoPhone Touch code - I touched it :sunglasses:
-    muno_event_type = 0;
-    user_event(14);
     
     //exit the script here if this is a test oPlayer
     //if (!is_test_player) exit;

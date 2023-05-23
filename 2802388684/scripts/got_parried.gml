@@ -1,5 +1,8 @@
 //destroy all clones when the real Naruto's melee attacks get parried.
 //if a clone was parried, destroy just that clone.
+if (is_master_player) {
+	dspecial_clone_out = 0;
+}
 if (!is_master_player) {
     
     //for these 'team-up' moves in particular, also stun naruto.
@@ -8,6 +11,7 @@ if (!is_master_player) {
         case AT_USTRONG_2:
         case AT_USPECIAL:
             naruto_clone_destroy = true;
+			
             with (master_player_id) {
                 was_parried = true;
                 parry_lag = other.parry_lag;

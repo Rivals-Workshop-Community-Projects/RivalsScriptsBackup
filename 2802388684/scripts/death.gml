@@ -4,6 +4,7 @@ if (is_master_player) {
     if (prev_state == PS_HITSTUN || prev_state == PS_TUMBLE) voice_play(VB_DEATH);
     
     //destroy clones
+	dspecial_clone_out = 0;
     user_event(4);
 }
 else {

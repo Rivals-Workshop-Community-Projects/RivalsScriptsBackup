@@ -17,10 +17,10 @@ c_naruto_maximum_clones = 2;
 c_naruto_clone_auto_despawn_when_using_specials = true;
 
 //amount of time, in frames, that naruto's clones linger for after performing an attack that summons them. 60 frames = 1 second.
-c_naruto_clone_active_time = 100;
+c_naruto_clone_active_time = 200;
 
 //amount of time, in frames, that naruto's dspecial clones stay active for. 
-c_naruto_dspecial_clone_active_time = 1000;
+c_naruto_dspecial_clone_active_time = 500;
 
 //distance, in pixels, that naruto can initiate a special move using one of his existing clones.
 c_naruto_clone_teamup_max_distance = 80;
