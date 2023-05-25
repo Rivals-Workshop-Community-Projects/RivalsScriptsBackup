@@ -42,6 +42,7 @@ set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_SFX, asset_get("sfx_ice_fspecial_hit_ground"));
+set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL_AIR, 2);
 
@@ -59,7 +60,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 199);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, freezehit);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));

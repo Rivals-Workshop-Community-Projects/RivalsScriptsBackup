@@ -58,6 +58,7 @@ sprite_change_offset("taunt", 58, 98);
 sprite_change_offset("taunt2", 58, 98);
 sprite_change_offset("taunt3", 58, 98);
 sprite_change_offset("taunt4", 58, 98);
+sprite_change_offset("bigheart", 58, 98);
 
 sprite_change_offset("plat", 75, 85);
 sprite_change_offset("maggiecannot", 75, 85);
@@ -90,3 +91,10 @@ sprite_change_offset("booom", 110, 134);
 sprite_change_offset("booom2", 110, 134);
 sprite_change_offset("boing", 55, 44);
 sprite_change_offset("boing2", 55, 44);
+sprite_change_offset("thunder_hit_large", 128, 126);
+sprite_change_offset("thunder_hit_med", 88, 90);
+sprite_change_offset("freeze_hit", 88, 90);
+sprite_change_offset("fire_hit", 35, 30);
+sprite_change_offset("thisthing", 138, 138);
+sprite_change_offset("thirst", 128, 128);
+sprite_change_offset("hfx_heart", 141, 114);

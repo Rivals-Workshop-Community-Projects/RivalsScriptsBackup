@@ -47,6 +47,7 @@ set_window_value(AT_BAIR, 5, AG_WINDOW_CANCEL_FRAME, 0);
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 5, AG_WINDOW_SFX, sound_get("hit_bonk"));
 set_window_value(AT_BAIR, 5, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 2);
 

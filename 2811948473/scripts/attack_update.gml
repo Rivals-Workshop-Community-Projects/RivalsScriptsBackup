@@ -3,6 +3,15 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
+if (attack == AT_DTILT){
+	if (window == 3 && window_timer == 4 && attack_down == false)
+	{
+        window = 9;
+        window_timer = 0;
+	}
+}
+
 if (attack == AT_NTHROW){
 	if (window == 1 && window_timer == 30)
 	{
@@ -14,6 +23,14 @@ if (attack == AT_USPECIAL){
 	if (window == 2 && window_timer == 11)
 	{
         spawn_hit_fx( x-19, y-35, shocky );
+	}
+	if (window == 1 && window_timer == 1)
+	{
+	sound_play(sound_get("psi"));
+	}
+	if (window == 2 && window_timer == 14)
+	{
+	sound_stop(sound_get("psi"));
 	}
 	if (window == 2 && window_timer == 3)
 	{
@@ -35,7 +52,7 @@ if (attack == AT_USPECIAL){
 	{
         spawn_hit_fx( x+28, y-16, shocky );
 	}
-    if (window == 2 && window_timer == 1){
+    if (window == 1 && window_timer == 12){
             take_damage(player, 4, 4);
 				}
 	if (window == 1 && window_timer == 1)
@@ -57,21 +74,24 @@ if (attack == AT_USPECIAL){
 }
     
 if (attack == AT_NSPECIAL){
-	if (window == 3){
+	if (window == 4){
             take_damage(player, 2, 2);
 	}
-    if (window == 3){
+    if (window == 4){
             spawn_hit_fx( x+5, y-45, 14 );
             spawn_hit_fx( x, y, nspecialfx );
-        window = 4;
+        window = 5;
         window_timer = 0;
         }
-	if (window == 2 && window_timer == 3)
+	if (window == 3 && window_timer == 3)
 	{
 	sound_play(sound_get("psi_fire"));
     }
+	{
+	if (window == 5 && window_timer == 10)
+	sound_stop(sound_get("psi"))
+	}
 }
-
     
 if (attack == AT_DSPECIAL){
     if (window == 5){
@@ -95,6 +115,10 @@ if (attack == AT_DSPECIAL){
     if (window == 6 && char_height >= 55){
         char_height -= 7;   
     }
+	if (window == 1 && window_timer == 1)
+	{
+	sound_play(sound_get("psi"));
+	}
     }
 }
 
@@ -124,6 +148,14 @@ if (attack == AT_DAIR){
 	}
     }
 
+if (attack == AT_UTHROW){
+	if (window == 2 && window_timer == 47){
+	soft_armor = 9999999999
+	}
+	if (window == 3 && window_timer == 3){
+	soft_armor = 0
+	}
+}
 
 if (attack == AT_FSPECIAL){
 	if (window == 2 && window_timer == 1){
@@ -131,7 +163,7 @@ if (attack == AT_FSPECIAL){
 	}
 	if (window == 2)
 	{
-	super_armor = true
+	soft_armor = 14
 	}
 	if (window == 3)
 	{
@@ -139,15 +171,23 @@ if (attack == AT_FSPECIAL){
 	}
 	if (window == 1 && window_timer == 1)
 	{
-	sound_play(sound_get("psi_freeze"));
+	sound_play(sound_get("psi"));
 	}
 	if (window == 1 && window_timer == 3)
 	{
         spawn_hit_fx( x-34, y-71, freeze );
 	}
+	if (window == 1 && window_timer == 9)
+	{
+		sound_play(sound_get("psi_freeze"));
+	}
 	if (window == 1 && window_timer == 11)
 	{
         spawn_hit_fx( x+46, y-56, freeze );
+	}
+	if (window == 2 && window_timer == 4)
+	{
+		sound_stop(sound_get("psi"));
 	}
 	if (window == 1 && window_timer == 23)
 	{
@@ -260,6 +300,10 @@ if (attack == AT_FSPECIAL_AIR){
 	{
         spawn_hit_fx( x+31, y-38, hexgon );
 	}
+		if (window == 1 && window_timer == 10)
+	{
+		sound_play(sound_get("psi_freeze"));
+	}
 	if (window == 2 && window_timer == 13)
 	{
         spawn_hit_fx( x-15, y-16, hexgon );
@@ -271,6 +315,10 @@ if (attack == AT_FSPECIAL_AIR){
 	if (window == 3 && window_timer == 21)
 	{
         spawn_hit_fx( x-5, y-64, hexgon );
+	}
+		if (window == 1 && window_timer == 24)
+	{
+		sound_stop(sound_get("psi"));
 	}
 	if (window == 3 && window_timer == 27)
 	{
@@ -308,7 +356,7 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_UAIR){
-    if (window == 1 && window_timer == 7){
+    if (window == 1 && window_timer == 10){
 	sound_play(sound_get("swipe3"));
     }
 }
@@ -351,6 +399,7 @@ if (attack == AT_DSTRONG){
 	}
 	if (window == 3 && window_timer == 1)
 	{
+	sound_play(sound_get("boom"));
 	sound_play(sound_get("hit_smash"));
 	}
 }
@@ -374,7 +423,20 @@ if (attack == AT_DATTACK && window_timer == 2 && spr_dir = -1 ){
 if (attack == AT_TAUNT && window == 1 && down_down){
     attack = AT_TAUNT_2;
 }
+if (attack == AT_TAUNT && window == 1 && up_down){
+    attack = AT_UTHROW;
+    window_timer = 2;
+}
 
+if (attack == AT_UTHROW && window == 3 && special_down && window_timer == 3)
+		{
+		sound_stop(sound_get("stupidsexymolecule"));
+		sound_play(sound_get("ploksnesost"));
+    }
+
+if (attack == AT_UTHROW && window == 2 && taunt_down && window_timer >= 45){
+    window_timer = 45
+}
 
 //oh my god!!!!!!!!!!!!!
 
@@ -450,3 +512,5 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+ 

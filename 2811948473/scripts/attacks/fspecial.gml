@@ -38,6 +38,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_ice_fspecial_hit_ground"));
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 3);
 
@@ -54,7 +55,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
-set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 199);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, freezehit);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
@@ -73,7 +74,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 199);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, freezehit);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));

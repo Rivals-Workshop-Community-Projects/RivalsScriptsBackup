@@ -59,7 +59,7 @@ if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 3 {
 if(spr_dir = -1){
 if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 3 {
         window = 3;
-	old_vsp = -5;
+	old_vsp = -7;
 	old_hsp = 3;
 }
 }
@@ -94,18 +94,10 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
 }
 }
 
-    
-if my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1 {
-	sound_play(sound_get("hit_heavy"));
-}
-    
-if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1 {
-	sound_play(sound_get("hit_heavy"));
-}
-
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
         spawn_hit_fx( x, y, icebreak );
 	sound_play(sound_get("hit_ice"));
+	sound_stop(sound_get("psi"));
 }
 if my_hitboxID.attack == AT_FSPECIAL_AIR && my_hitboxID.hbox_num == 1 {
         spawn_hit_fx( x, y, icebreak );
@@ -128,8 +120,8 @@ if my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 4 {
 
 
 if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 {
-            take_damage(player, 3, 3);
+		sound_stop(sound_get("psi"));
 }
 if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2 {
-            take_damage(player, 2, 2);
+		sound_stop(sound_get("psi"));
 }

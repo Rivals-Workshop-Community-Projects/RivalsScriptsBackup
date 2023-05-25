@@ -14,8 +14,8 @@ if (abs(orig_knock) > 10){
 	} 
 }
 
+sound_stop(sound_get("psi"));
+sound_stop(sound_get("psi_freeze"));
 
 
 
-gravity_speed = .40;
-max_fall = 4;

@@ -1,3 +1,7 @@
+
+//holyyyyyyyyyyy shit dude
+set_victory_theme( sound_get("eb_win"));
+
 hurtbox_spr = sprite_get("ouchyidle");
 crouchbox_spr = sprite_get("crouchouch");
 air_hurtbox_spr = -1;
@@ -32,7 +36,7 @@ max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 8; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .2;
-prat_fall_accel = .9; //multiplier of air_accel while in pratfall
+prat_fall_accel = 1.1	; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 2;
 djump_accel = -1.9;
@@ -42,17 +46,17 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 9;
 walljump_time = 20;
-max_fall = 4; //maximum fall speed without fastfalling
-fast_fall = 8.4; //fast fall speed
+max_fall = 6; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
 gravity_speed = .40;
 hitstun_grav = .5;
 knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 9;
-wave_land_time = 8;
+wave_land_time = 12;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = 0.6; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -61,7 +65,7 @@ crouch_recovery_frames = 2;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
+dodge_active_frames = 2;
 dodge_recovery_frames = 3;
 
 //tech animation frames
@@ -130,3 +134,9 @@ boing = hit_fx_create( sprite_get( "boing" ), 35 );;
 boing2 = hit_fx_create( sprite_get( "boing2" ), 35 );
 zoom = hit_fx_create( sprite_get( "zoom" ), 35 );;
 zoom2 = hit_fx_create( sprite_get( "zoom2" ), 35 );
+zoom2 = hit_fx_create( sprite_get( "zoom2" ), 35 );
+thunderhitlarge = hit_fx_create ( sprite_get( "thunder_hit_large" ), 28);
+thunderhitmed = hit_fx_create ( sprite_get( "thunder_hit_med" ), 22);
+freezehit = hit_fx_create ( sprite_get( "freeze_hit" ), 32);
+firehit = hit_fx_create ( sprite_get( "fire_hit" ), 22);
+heartFX = hit_fx_create(sprite_get("hfx_heart"), 32);

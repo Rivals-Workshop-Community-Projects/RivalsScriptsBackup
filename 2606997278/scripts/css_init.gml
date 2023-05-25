@@ -14,3 +14,20 @@ button_highlighted = false;
 button_x = 10;
 button_y = 120;
 
+playlist_persistence = get_playlist_persistence();
+playlist_highlighted = false;
+playlist_x = 8;
+playlist_y = 40;
+
+playlist_page = 0;
+playlist_perpage = 4;
+
+#define get_playlist_persistence()
+{
+    var data = noone;
+    with asset_get("hit_fx_obj") if ("uhc_playlist_persistence" in self)
+    {
+        data = self; break;
+    }
+    return data;
+}
