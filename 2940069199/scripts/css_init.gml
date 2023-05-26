@@ -33,7 +33,7 @@ button_cord = [[136, 36],[170,36]];
 // Color Shifter
 last_frame_color_alt = get_player_color(player); // Color slot variable for memory
 color_shift = 0;
-total_num_color_shifts = 1; // change this to add more shifts
+total_num_color_shifts = 2; // change this to add more shifts
 
 //#region Synced Variable
 // Supersonic's Synched Variable Code
