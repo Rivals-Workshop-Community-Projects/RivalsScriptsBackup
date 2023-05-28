@@ -11,7 +11,7 @@ SetAttack();
 
 #define ChangeStates()
 {
-	if (state == PS_RESPAWN) tryhard = true;
+	if ((state == PS_RESPAWN && temp_level == 9) || aura) tryhard = true;
 	if (state == PS_PRATFALL || state_cat == SC_HITSTUN || was_parried) ai_state = AS_RECOVER;
 	switch (ai_state)
 	{
@@ -58,15 +58,15 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 4;
+			ai_attack_time = 4 + (9-temp_level) * 4;
 			Movement();
 			break;
 		case AS_RECOVER:
-			ai_attack_time = 20;
+			ai_attack_time = 20 + (9-temp_level) * 8;
 			if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 20;
+			ai_attack_time = 20 + (9-temp_level) * 8;
 			Movement();
 			break;
 	}

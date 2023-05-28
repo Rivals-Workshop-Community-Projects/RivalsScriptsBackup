@@ -62,10 +62,10 @@ switch (attack)
 		}
 		break;
 	case AT_FSPECIAL:
-		if (!was_parried && orig_player == player) with (oPlayer) if (player != other.player && get_player_team(player) == get_player_team(other.player)) with (other) if (collision_circle(x, y, 24, other, true, true))
+		if (!was_parried && orig_player == player) with (oPlayer) if (self != other.player_id && get_player_team(player) == get_player_team(other.player)) with (other) if (collision_circle(x, y, 24, other, true, true))
 		{
 			destroyed = true;
-			with (other) take_damage(player, -1, -1);
+			with (other) take_damage(player, -1, -2);
 		}
 		if (hitbox_timer%6==0)
 		{

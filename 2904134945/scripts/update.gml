@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 5;
+	var noOfPatches = 7;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -133,7 +133,7 @@ if (state == PS_SPAWN)
 
 // frostbite
 var hasRuneA = has_rune("A");
-with (oPlayer) if (self != other && noelleFrostbiteID == other)
+with (oPlayer) if (player != other.player && noelleFrostbiteID == other)
 {
 	if (state == PS_RESPAWN)
 	{
@@ -144,7 +144,7 @@ with (oPlayer) if (self != other && noelleFrostbiteID == other)
 	else if (noelleFrostgrave > 0 && !hitpause)
 	{
 		noelleFrostgrave--;
-		if (state != PS_HITSTUN || noelleFrostgrave <= 0 || (state == PS_HITSTUN && state_timer == 1 && noelleFrostgrave <= hitstun_full/3)) // early pop
+		if (state != PS_HITSTUN || noelleFrostgrave <= 0) // early pop
 		{
 			noelleFrostgrave = 0;
 			var icebreaksfx = noone;

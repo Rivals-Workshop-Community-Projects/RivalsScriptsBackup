@@ -131,6 +131,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 29);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.7);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 19);

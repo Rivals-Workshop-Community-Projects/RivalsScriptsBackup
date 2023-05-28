@@ -1,6 +1,6 @@
 if ("other_player_id" in self)
 {
-	if (noelleFrostbiteID == other_player_id)
+	if (instance_exists(noelleFrostbiteID) && noelleFrostbiteID.player == other_player_id.player)
 	{
 		if (draw_indicator && noelleFrostbite > 0) with (other_player_id)
 		{

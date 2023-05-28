@@ -18,11 +18,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
         	if (has_rune("E"))
         		super_armor = true;
-        	else
-        		soft_armor = 4;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -31,11 +29,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
         	if (has_rune("E"))
         		super_armor = true;
-        	else
-        		soft_armor = 4;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -44,11 +40,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
         	if (has_rune("E"))
         		super_armor = true;
-        	else
-        		soft_armor = 4;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -57,11 +51,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
         	if (has_rune("D"))
         		super_armor = true;
-        	else
-        		soft_armor = 8;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -70,11 +62,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
         	if (has_rune("D"))
         		super_armor = true;
-        	else
-        		soft_armor = 8;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -82,11 +72,9 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
         	if (has_rune("D"))
         		super_armor = true;
-        	else
-        		soft_armor = 8;
         }
         else {
-            soft_armor = 0;
+            //soft_armor = 0;
         	super_armor = false;
         }
     }
@@ -511,7 +499,6 @@ if (attack == AT_DSPECIAL){
 	
 	if (window == 1) {
 		if (window_timer < 11 && ((left_pressed && spr_dir == 1) || right_pressed && spr_dir == -1)) {
-			window_timer = 0;
 			spr_dir = -spr_dir;
 		}
 	}

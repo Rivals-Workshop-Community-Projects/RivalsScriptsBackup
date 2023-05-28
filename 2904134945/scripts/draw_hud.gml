@@ -138,6 +138,29 @@ if ("practice" in self)
 						AddText("Nyan: HELP, M30W");
 						AddText("Aurora: Aurora, Auro<3");
 						break;
+					case 5:
+						AddText("v1.4 - 1 Apr 2023");
+						AddText("");
+						AddText("Added more custom colours on the last alt for specific tags:");
+						AddText("London: WEET");
+						AddText("Maeday: FUGG");
+						AddText("");
+						AddText("NSpec Weak IceShock Hitstun Multiplier 1.0 -> 0.7");
+						AddText("FSpec Hitstun Multiplier 1.0 -> 0.9");
+						AddText("DTilt Projectiles Hitstun Multiplier 1.0 -> 0.9");
+						AddText("");
+						AddText("Fixed Ice Crystal Break not Galaxying when necessary");
+						AddText("Rainbow alts now work on the results screen");
+						AddText("Lower CPU levels now have weaker ai to match its proper level");
+						break;
+					case 6:
+						AddText("v1.5 - 1 Apr 2023");
+						AddText("");
+						AddText("FSpec now heals 2% instead of 1% each");
+						AddText("FSpec throw sfx volume now lowers over time");
+						AddText("");
+						AddText("Added Backward Jump animations");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

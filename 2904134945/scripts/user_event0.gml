@@ -11,8 +11,8 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 30, 6, 255, 216, 202 ); //Skin1
 		set_color_profile_slot( 30, 7, 232, 153, 142 ); //Skin2
 		break;
-	case "KARU":
 	case "LUKARU":
+	case "KARU":
 		// Key Frame
 		set_color_profile_slot( 30, 0, 255, 201, 240 ); //Dress1
 		set_color_profile_slot( 30, 1, 200, 219, 214 ); //Snow1
@@ -46,5 +46,27 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 30, 5, 230, 179, 126 ); //Hair2
 		set_color_profile_slot( 30, 6, 176, 172, 171 ); //Skin1
 		set_color_profile_slot( 30, 7, 153, 128, 122 ); //Skin2
+		break;
+	case "WEET":
+		// London
+		set_color_profile_slot( 30, 0, 148, 67, 91 ); //Dress1
+		set_color_profile_slot( 30, 1, 223, 238, 249 ); //Snow1
+		set_color_profile_slot( 30, 2, 112, 40, 74 ); //Dress2
+		set_color_profile_slot( 30, 3, 156, 170, 219 ); //Snow2
+		set_color_profile_slot( 30, 4, 255, 174, 201 ); //Hair1
+		set_color_profile_slot( 30, 5, 204, 104, 162 ); //Hair2
+		set_color_profile_slot( 30, 6, 195, 195, 195 ); //Skin1
+		set_color_profile_slot( 30, 7, 162, 143, 143 ); //Skin2
+		break;
+	case "FUGG":
+		// Maeday
+		set_color_profile_slot( 30, 0, 145, 65, 10 ); //Dress1
+		set_color_profile_slot( 30, 1, 165, 205, 234 ); //Snow1
+		set_color_profile_slot( 30, 2, 122, 21, 1 ); //Dress2
+		set_color_profile_slot( 30, 3, 124, 151, 213 ); //Snow2
+		set_color_profile_slot( 30, 4, 153, 71, 77 ); //Hair1
+		set_color_profile_slot( 30, 5, 125, 42, 42 ); //Hair2
+		set_color_profile_slot( 30, 6, 12, 41, 61 ); //Skin1
+		set_color_profile_slot( 30, 7, 4, 12, 38 ); //Skin2
 		break;
 }

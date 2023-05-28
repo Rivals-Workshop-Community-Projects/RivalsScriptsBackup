@@ -52,7 +52,26 @@ switch (attack)
 			clear_button_buffer(PC_TAUNT_PRESSED);
 			tutDoneAdv[0] = 1;
 		}
-		if (taunt_down && !jump_pressed) suppress_stage_music(0, 0.05);
+		if (taunt_down && !jump_pressed)
+		{
+			suppress_stage_music(0, 0.05);
+			if (aura && temp_level == 0 && attack_counter == 0 && object_index!=oTestPlayer)
+			{
+				if (instance_exists(auraClone))
+				{
+					with (oPlayer) if ("noelleFrostbiteID" in self && noelleFrostbiteID == other.auraClone) noelleFrostbiteID = other;
+					with (asset_get("obj_article1")) if (player_id == other.auraClone) newState = 2;
+					instance_destroy(auraClone);
+					sound_play(asset_get("sfx_abyss_despawn"));
+				}
+				else
+				{
+					auraClone = instance_create(x,y,"oPlayer");
+					auraClone.aura = true;
+					sound_play(asset_get("sfx_abyss_spawn"));
+				}
+			}
+		}
 		else window = 2;
 		break;
 
@@ -107,14 +126,14 @@ switch (attack)
 				++nspecMeter;
 				break;
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(4, 10);
-            SkipWindow(6, 7);
-            SkipWindow(8, 10);
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(4, 10);
+			SkipWindow(6, 7);
+			SkipWindow(8, 10);
 			clear_button_buffer(PC_SPECIAL_PRESSED);
-        }
+		}
 		break;
 
 	case AT_FSPECIAL:
@@ -142,20 +161,21 @@ switch (attack)
 					hbox.hsp = hsp/2+spr_dir*lengthdir_x(spe, ang);
 					hbox.vsp = vsp/2+lengthdir_y(spe, ang);
 					hbox.length = clamp(fspecMeter.charge/3, 4, 24)*(has_rune("J")?2:1);
+					var vol = lerp(1, 0.5, min(state_timer/100,1));
 					if (fspecMeter.charge < 70)
 					{
 						hbox.hasHitCrystal = true;
-						sound_play(asset_get("sfx_swipe_weak2"));
+						sound_play(asset_get("sfx_swipe_weak2"), 0, -4, vol);
 					}
-					else sound_play(asset_get("sfx_swipe_weak1"));
+					else sound_play(asset_get("sfx_swipe_weak1"), 0, -4, vol);
 					if (hbox.length == 4) hbox.damage = 0;
 				}
 				break;
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(3, 4);
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 4);
 			clear_button_buffer(PC_SPECIAL_PRESSED);
 		}
 		break;
@@ -216,10 +236,10 @@ switch (attack)
 				}
 				break;
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(3, 4);
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 4);
 			clear_button_buffer(PC_SPECIAL_PRESSED);
 		}
 		break;
@@ -293,10 +313,10 @@ switch (attack)
 				hurtboxID.sprite_index = sprite_get("uspec_hurt2");
 				break;
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(3, 4);
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 4);
 			clear_button_buffer(PC_SPECIAL_PRESSED);
 		}
 		break;
@@ -345,12 +365,12 @@ switch (attack)
 					sound_play(sound_get("flakeIce"));
 			}
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(4, 5);
-            clear_button_buffer(PC_UP_STRONG_PRESSED);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(4, 5);
+			clear_button_buffer(PC_UP_STRONG_PRESSED);
+		}
 		break;
 
 	case AT_FSTRONG:
@@ -371,22 +391,22 @@ switch (attack)
 					sound_play(sound_get("flakeIce"));
 			}
 		}
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(4, 5);
-            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
-            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(4, 5);
+			clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+			clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+		}
 		break;
 
 	case AT_DSTRONG:
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(4, 6);
-            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(4, 6);
+			clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+		}
 		break;
 
 	case AT_FTILT:
@@ -399,19 +419,19 @@ switch (attack)
 			SkipWindow(1, 2);
 			SkipWindow(3, 4);
 			clear_button_buffer(PC_ATTACK_PRESSED);
-            clear_button_buffer(PC_UP_STICK_PRESSED);
-            clear_button_buffer(PC_DOWN_STICK_PRESSED);
-            clear_button_buffer(PC_LEFT_STICK_PRESSED);
-            clear_button_buffer(PC_RIGHT_STICK_PRESSED);
-            clear_button_buffer(PC_UP_STRONG_PRESSED);
-            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
-            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
-            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+			clear_button_buffer(PC_UP_STICK_PRESSED);
+			clear_button_buffer(PC_DOWN_STICK_PRESSED);
+			clear_button_buffer(PC_LEFT_STICK_PRESSED);
+			clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+			clear_button_buffer(PC_UP_STRONG_PRESSED);
+			clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+			clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+			clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
 		}
 		break;
 
 	case AT_DATTACK:
-        if (aura)
+		if (aura)
 		{
 			SkipWindow(1, 2);
 			SkipWindow(3, 5);
@@ -427,26 +447,26 @@ switch (attack)
 		}
 		break;
 
-    case AT_FAIR:
-    case AT_BAIR:
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(3, 5);
-            clear_button_buffer(PC_ATTACK_PRESSED);
-            clear_button_buffer(PC_LEFT_STICK_PRESSED);
-            clear_button_buffer(PC_RIGHT_STICK_PRESSED);
-            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
-            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
-        }
-        break;
+	case AT_FAIR:
+	case AT_BAIR:
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 5);
+			clear_button_buffer(PC_ATTACK_PRESSED);
+			clear_button_buffer(PC_LEFT_STICK_PRESSED);
+			clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+			clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+			clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+		}
+		break;
 
 	case AT_UAIR:
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(5, 6);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(5, 6);
+		}
 		if (state_timer == 4)
 		{
 			sound_play(asset_get("sfx_swipe_medium2"));
@@ -456,12 +476,12 @@ switch (attack)
 		break;
 
 	case AT_NAIR:
-        if (aura)
-        {
-            SkipWindow(1, 3);
-            SkipWindow(4, 5);
-            clear_button_buffer(PC_ATTACK_PRESSED);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 3);
+			SkipWindow(4, 5);
+			clear_button_buffer(PC_ATTACK_PRESSED);
+		}
 		if (window == 2 && (window_timer == (has_rune("D")?1:2)))
 		{
 			sound_play(asset_get("sfx_boss_shine"));
@@ -471,11 +491,11 @@ switch (attack)
 		break;
 
 	case AT_DAIR:
-        if (aura)
-        {
-            SkipWindow(1, 2);
-            SkipWindow(3, 4);
-        }
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 4);
+		}
 		if (window==2 && window_timer%3==0 && !hitpause) create_hitbox(AT_DAIR, 2, 0, 0);
 		break;
 
@@ -637,6 +657,13 @@ switch (attack)
 		sound_play(asset_get("sfx_absa_uair"));
 		shake_camera(8, 6);
 		spawn_hit_fx(x, y-42, 157);
+	}
+	else if (instance_exists(auraClone))
+	{
+		with (oPlayer) if ("noelleFrostbiteID" in self && noelleFrostbiteID == other.auraClone) noelleFrostbiteID = other;
+		with (asset_get("obj_article1")) if (player_id == other.auraClone) newState = 2;
+		instance_destroy(auraClone);
+		sound_play(asset_get("sfx_abyss_despawn"));
 	}
 }
 

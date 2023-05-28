@@ -8,7 +8,7 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 9);
 
-set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 6);

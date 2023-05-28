@@ -121,5 +121,7 @@ init_shader();
 		case "AURO<3": return "Aurora";
 		case "HELP":
 		case "M30W": return "Nyan";
+		case "WEET": return "London";
+		case "FUGG": return "Maeday";
 	}
 }

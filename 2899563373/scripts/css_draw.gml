@@ -67,7 +67,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     color_name_activate = false; // when "false", disables the color names
     
-    col_max = 10; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 11; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(164, 239, 249) // "color preview square" color. can be any color!
@@ -103,6 +103,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[10,0] = make_color_rgb(212, 74, 40)
     ce[10,1] = "Goddess of...?"
     ce[10,2] = "The Goddess of Explosions!"
+    ce[11,0] = make_color_rgb(167, 206, 240)
+    ce[11,1] = "Utmost Divinity"
+    ce[11,2] = "Divine Dragon Lumera"
+    ce[12,0] = make_color_rgb(136, 46, 166)
+    ce[12,1] = "Purpler"
+    ce[12,2] = "Dakota's Champion alt"
     
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

@@ -5,7 +5,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
  
-var num_alts = 12;
+var num_alts = 13;
 var alt_cur = get_player_color(player);
  
  
@@ -24,8 +24,8 @@ alt_name[8]  = "Miiku";
 alt_name[9]  = "Purple";
 alt_name[10] = "Early Access";
 alt_name[11] = "Mii Baller";
+alt_name[12] = "Champion";
 /*alt_name[12] = "woag";
-alt_name[12] = "woag";
 alt_name[13] = "woag";
 alt_name[14] = "woag";
 alt_name[15] = "woag";

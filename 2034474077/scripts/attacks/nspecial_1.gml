@@ -8,6 +8,9 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 if(ballin){
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ballin"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_ballin"));
+}else if(rofl){
+    set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_rofl"));
+    set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_rofl"));
 }
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);

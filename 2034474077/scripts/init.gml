@@ -119,14 +119,13 @@ if(get_training_cpu_action() == CPU_FIGHT){
     practice = true;
 }
 
-
+classic = false;
+ballin = false;
+rofl = false;
 if(get_player_color(player) == 11){
-    //classic = true;
-    classic = false;
     ballin = true;
-}else{
-    classic = false;
-    ballin = false;
+}else if(get_player_color(player) == 12){
+    rofl = true;
 }
 
 

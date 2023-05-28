@@ -180,8 +180,15 @@ if (has_rune("O"))
 
 if (hit_player_obj != self && hit_player_obj.noelleFrostgrave > 0)
 {
-	hit_player_obj.should_make_shockwave = false;
-	hit_player_obj.noelleFrostgraveSpeed = {hsp:hit_player_obj.old_hsp, vsp:hit_player_obj.old_vsp};
+	if (hit_player_obj.noelleFrostgrave <= hit_player_obj.hitstun_full/3) // early pop
+	{
+		hit_player_obj.noelleFrostgrave = 1;
+	}
+	else
+	{
+		hit_player_obj.should_make_shockwave = false;
+		hit_player_obj.noelleFrostgraveSpeed = {hsp:hit_player_obj.old_hsp, vsp:hit_player_obj.old_vsp};
+	}
 }
 
 if (aura)

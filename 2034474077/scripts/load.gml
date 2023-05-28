@@ -69,3 +69,6 @@ sprite_change_offset("kirbyability", 45, 72);
 
 sprite_change_offset("aaaball", 15, 15);
 sprite_change_offset("nspecial_ballin", 29, 43, true);
+
+sprite_change_offset("aaarofl", 15, 15);
+sprite_change_offset("nspecial_rofl", 29, 43, true);

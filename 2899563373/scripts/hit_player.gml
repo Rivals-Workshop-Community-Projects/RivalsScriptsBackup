@@ -10,10 +10,26 @@ switch(my_hitboxID.attack){
         sound_play(sound_get("sfx_magichit_medium1"), false, noone, 0.80, 1);
         break;
     
+    /*case AT_NAIR:
+        if(my_hitboxID.hbox_num == 8){
+			hit_player_obj.can_bounce = true;
+		}else{
+			hit_player_obj.can_bounce = false;
+		}
+		break;//*/
+    
     case AT_FAIR:
         sound_play(sound_get("sfx_magichit_medium1"), false, noone, 1.1, 1.0);
         break;
-        
+
+    /*case AT_UAIR:
+        if(my_hitboxID.hbox_num == 5){
+			hit_player_obj.can_bounce = true;
+		}else{
+			hit_player_obj.can_bounce = false;
+		}
+		break;//*/
+
     case AT_DAIR:
         sound_play(sound_get("sfx_magichit_heavy1"), false, noone, 0.70, 1);
         break;

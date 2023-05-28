@@ -21,17 +21,17 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_NAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
-set_num_hitboxes(AT_NAIR, 2);
+set_num_hitboxes(AT_NAIR, 3);
 //Clean
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Clean");
+set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Clean 1");
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 8);
-set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -65);
-set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 140);
-set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 105);
-set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
+set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 44);
+set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -66);
+set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 118);
+set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 72);
+set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 50);
@@ -43,27 +43,49 @@ set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 6);
 
-//Late
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Late");
+//Clean 2
+set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_NAME, "Clean 2");
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 8);
-set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 16);
-set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -65);
-set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 136);
-set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 96);
-set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 2);
-set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 6);
+set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -76);
+set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 166);
+set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 84);
+set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 50);
+set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.65);
+set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 301);
-set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE_FLIPPER, 6);
+
+//Late
+set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_NAME, "Late");
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_NAIR, 3, HG_WINDOW_CREATION_FRAME, 6);
+set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 6);
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -76);
+set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 148);
+set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 122);
+set_hitbox_value(AT_NAIR, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_NAIR, 3, HG_PRIORITY, 2);
+set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 6);
+set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 45);
+set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_NAIR, 3, HG_ANGLE_FLIPPER, 6);
 
 if (has_rune("O")) {
     big_yes(AT_NAIR);

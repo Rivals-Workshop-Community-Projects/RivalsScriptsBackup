@@ -62,9 +62,7 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_JAB, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 
 //Jab2
 set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Hit 2");

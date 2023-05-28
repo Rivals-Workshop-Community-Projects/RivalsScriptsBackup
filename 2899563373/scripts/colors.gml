@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 8, 18 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 13 );
 
 // red
 set_color_profile_slot( 1, 0, 166, 201, 252 ); //energy1
@@ -136,15 +136,36 @@ set_color_profile_slot( 10, 5, 105, 110, 105 ); //clothes1
 set_color_profile_slot( 10, 6, 201, 86, 102 ); //clothes2
 set_color_profile_slot( 10, 7, 233, 176, 75 ); //trim
 
-// actual colors
-set_color_profile_slot( 11, 0, 164, 239, 249 ); //energy1
-set_color_profile_slot( 11, 1, 76, 156, 206 ); //energy2
-set_color_profile_slot( 11, 2, 43, 155, 73 ); //hair
+// lumera
+set_color_profile_slot( 11, 0, 122, 255, 255 ); //energy1
+set_color_profile_slot( 11, 1, 51, 161, 230 ); //energy2
+set_color_profile_slot( 11, 2, 96, 135, 194 ); //hair
 set_color_profile_slot( 11, 3, 226, 170, 138 ); //skin
-set_color_profile_slot( 11, 4, 155, 110, 13 ); //gold
-set_color_profile_slot( 11, 5, 204, 204, 183 ); //clothes1
-set_color_profile_slot( 11, 6, 204, 204, 204 ); //clothes2
-set_color_profile_slot( 11, 7, 169, 34, 49 ); //trim
+set_color_profile_slot( 11, 4, 155, 93, 13 ); //gold
+set_color_profile_slot( 11, 5, 222, 211, 224 ); //clothes1
+set_color_profile_slot( 11, 6, 201, 115, 141 ); //clothes2
+set_color_profile_slot( 11, 7, 135, 150, 222 ); //trim
+
+// dakota
+set_color_profile_slot( 12, 0, 225, 164, 249 ); //energy1
+set_color_profile_slot( 12, 1, 179, 77, 207 ); //energy2
+set_color_profile_slot( 12, 2, 136, 46, 166 ); //hair
+set_color_profile_slot( 12, 3, 226, 170, 138 ); //skin
+set_color_profile_slot( 12, 4, 155, 110, 13 ); //gold
+set_color_profile_slot( 12, 5, 43, 38, 43 ); //clothes1
+set_color_profile_slot( 12, 6, 100, 94, 102 ); //clothes2
+set_color_profile_slot( 12, 7, 154, 38, 184 ); //trim
+
+
+// actual colors
+set_color_profile_slot( 13, 0, 164, 239, 249 ); //energy1
+set_color_profile_slot( 13, 1, 76, 156, 206 ); //energy2
+set_color_profile_slot( 13, 2, 43, 155, 73 ); //hair
+set_color_profile_slot( 13, 3, 226, 170, 138 ); //skin
+set_color_profile_slot( 13, 4, 155, 110, 13 ); //gold
+set_color_profile_slot( 13, 5, 204, 204, 183 ); //clothes1
+set_color_profile_slot( 13, 6, 204, 204, 183 ); //clothes2
+set_color_profile_slot( 13, 7, 169, 34, 49 ); //trim
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

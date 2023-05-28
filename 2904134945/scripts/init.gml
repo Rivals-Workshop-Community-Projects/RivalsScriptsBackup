@@ -147,6 +147,7 @@ uspecAngle = 0;
 // misc
 renderer = instance_create(0, 0, "obj_article2");
 aura = false;
+auraClone = noone;
 auraMeter = 0;
 hue = 0;
 frostbiteMax = 6;
@@ -156,6 +157,7 @@ afterimage_array = 0;
 transcounter = 0;
 hasHitUAir = false;
 user_event(0);
+jumpSprites = [sprite_get("jump"), sprite_get("jumpMid"), sprite_get("jumpBack")];
 
 // ustrong
 ustrongLoop = 0;

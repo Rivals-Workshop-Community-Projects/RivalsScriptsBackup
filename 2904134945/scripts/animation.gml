@@ -13,6 +13,12 @@ switch(state)
 		rollSpr = sprite_index;
 		if (image_index<3) rollArray[image_index]={rollX:x,rollY:y,rollDir:spr_dir,rollAlpha:16};
 		break;
+	case PS_FIRST_JUMP:
+	case PS_IDLE_AIR:
+		var enemyOffset = -1;
+		if (instance_exists(hit_player_obj) && point_distance(x,y,hit_player_obj.x,hit_player_obj.y)<=300) enemyOffset = sign(x-hit_player_obj.x)*spr_dir;
+		sprite_index = jumpSprites[sign(round((hsp)*-spr_dir)+enemyOffset)+1];
+		break;
 	case PS_WALL_JUMP:
 		spr_angle = 0;
 		draw_x = 0;

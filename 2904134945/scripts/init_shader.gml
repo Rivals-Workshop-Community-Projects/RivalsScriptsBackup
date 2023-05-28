@@ -40,11 +40,6 @@ switch (playerAlt)
 }
 outline_color = outline_colour;
 
-if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
-{
-    winner_name = "Snow Angel Noelle wins!";
-}
-
 #define AltColour(_index, _colour)
 {
 	var temp_r = color_get_red(_colour);

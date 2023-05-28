@@ -132,7 +132,7 @@ fx_fstrong_debris = hit_fx_create(sprite_get("fstrong_debris"), 16)
 SLOWSTART_STATE_OFF = 0;
 SLOWSTART_STATE_ON = 1;
 
-old_slowstart_state = SLOWSTART_STATE_ON;
+old_slowstart_state = SLOWSTART_STATE_OFF;
 slowstart_state = SLOWSTART_STATE_ON;
 
 slowstart_damage_mult = 0.75; //Slow Start's damage multiplier (Apply to damage)

@@ -18,6 +18,8 @@ sprite_change_offset("dashstop", 14, 40);
 sprite_change_offset("dashturn", 12, 40);
 sprite_change_offset("jumpstart", 11, 34);
 sprite_change_offset("jump", 20, 44);
+sprite_change_offset("jumpMid", 20, 44);
+sprite_change_offset("jumpBack", 20, 44);
 sprite_change_offset("doublejump", 16, 40);
 sprite_change_offset("walljump", 18, 39);
 sprite_change_offset("pratfall", 20, 41);

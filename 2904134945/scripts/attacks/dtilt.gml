@@ -65,6 +65,7 @@ set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_DTILT, 2, HG_HITSTUN_MULTIPLIER, 0.9);
 
 set_hitbox_value(AT_DTILT, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DTILT, 3, HG_WINDOW, 2);
@@ -87,3 +88,4 @@ set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 29);
 set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, spinfx);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DTILT, 3, HG_HITSTUN_MULTIPLIER, 0.9);
