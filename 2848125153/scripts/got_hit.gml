@@ -1,4 +1,4 @@
-if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	mask_index = asset_get("ex_guy_collision_mask");
 	//current_money -= floor(enemy_hitboxID.damage*100);
 	var hitbox_dmg = round(enemy_hitboxID.damage*(1+(enemy_hitboxID.player_id.strong_charge/100)));//print(hitbox_dmg);

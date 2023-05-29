@@ -784,24 +784,25 @@ if (attack == AT_NSPECIAL){
 	}
 }else if (attack == AT_BAIR){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
-    	if(attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down || strong_down){
+    	if(BAir_cooldown <= 0 && (attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down || strong_down)){
     		set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_throw"));set_num_hitboxes(AT_BAIR, 1);
     		if(current_money2 <= 15000){
-    			if(current_money >= 1000*discount){
+    			if(current_money >= 1500*discount){
 					var money = create_hitbox(AT_BAIR, 3, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 1000*discount;
+					current_money -= 1500*discount;
     			}
 			}else if(current_money2 <= 30000){
-				if(current_money >= 2000*discount){
+				if(current_money >= 3000*discount){
 					var money = create_hitbox(AT_BAIR, 4, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 2000*discount;
+					current_money -= 3000*discount;
     			}
 			}else{
-				if(current_money >= 4000*discount){
+				if(current_money >= 6000*discount){
 					var money = create_hitbox(AT_BAIR, 5, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 4000*discount;
+					current_money -= 6000*discount;
     			}
 			}
+			BAir_cooldown = 45;
     	}
     }
     if(window == 2 && window_timer == 1 && !hitpause && get_num_hitboxes(AT_BAIR) > 1){
@@ -826,11 +827,11 @@ if (attack == AT_NSPECIAL){
 				moneysfx();
     			var money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 0.5;money.vsp *= 2;
     			current_money -= 500*discount;
-    			if(current_money >= 3000*discount && (attack_down || up_stick_down || up_strong_down || strong_down)){
+    			if(current_money >= 5000*discount && (attack_down || up_stick_down || up_strong_down || strong_down)){
     				hsp -= 3*spr_dir;vsp += 5;
     				create_hitbox(AT_UAIR, 2, round(x), round(y));
 	    			var money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 0.25;money.vsp *= 3;money.value = 1000;
-	    			current_money -= 3000*discount;
+	    			current_money -= 5000*discount;
 	    			//if(current_money >= 500){
 		    			money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 1;money.vsp *= 1.5;money.value = 1000;
 		    			//current_money -= 500;
@@ -950,6 +951,10 @@ if (attack == AT_NSPECIAL){
     	if(!taunt_down){
 	    	window = 6;window_timer = 0;
 	    }
+    }
+    
+    if(!free && kewtmode <= 0 && attack_down && jump_down && taunt_down){ //kewtians!!!!!!!!!!!!
+		kewtmode = 1;
     }
 }else if (attack == 49){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){

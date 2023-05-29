@@ -1191,8 +1191,8 @@ if(attack == AT_DSTRONG && hbox_num == 6){
     }
 }
 
+draw_xscale = spr_dir;
+
 #define random_angle
 	kb_angle = random_func(0, 360, true);
 	hit_flipper = random_func(1, 11, true);
-
-draw_xscale = spr_dir;

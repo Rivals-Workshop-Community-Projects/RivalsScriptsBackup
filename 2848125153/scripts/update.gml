@@ -26,6 +26,8 @@ if(instance_exists(thetoken)){
 	}
 }
 
+BAir_cooldown--;
+
 if(alt == 29){
 	if(state == PS_AIR_DODGE || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD){
 		if(state_timer == 0 && !hitpause){
@@ -37,7 +39,7 @@ if(alt == 29){
 if(state == PS_RESPAWN && state_timer >= 80 && state_timer < 120 || state == PS_DEAD && get_player_stocks(player) <= 0){
 	if((state == PS_RESPAWN && state_timer % 5 == 0 || state == PS_DEAD && get_player_stocks(player) <= 0 && get_gameplay_time() % 5 == 0) && current_money2 >= current_money){
 		sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
-		var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 12-random_func(0, 24, true);money.vsp = -3-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+		var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 12-random_func(0, 24, true);money.vsp = -3-random_func(1, 8, true);money.hitbox_timer = 40;money.hit_priority = 0;
 		if(current_money2 >= 4200 && current_money2 >= 30000){
 			money.value = 4200;current_money2 -= 4200;
 		}else if(current_money2 >= 3600 && current_money2 >= 25000){
@@ -73,14 +75,20 @@ if(get_gameplay_time() <= 120){
 	if(taunt_pressed && !muted){
 		muted = true;
 	}
-	if(shield_pressed && kewtmode <= 0){
-		kewtmode = 2;
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
-		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
-		sound_play(sound_get("big"));
-	}
 	playercount = 0;
 	with(oPlayer){ if(is_player_on(player)){ other.playercount++;}}
+}
+if(get_gameplay_time() <= 120 || kewtmode == 1){
+	if(shield_pressed && kewtmode <= 0 || kewtmode == 1){
+		kewtmode = 2;
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
+		if(alt != 0){
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden_alts"));
+		}else{
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
+		}
+		sound_play(sound_get("big"));
+	}
 }
 
 if(phone_cheats_updated[CHEAT_Money]){

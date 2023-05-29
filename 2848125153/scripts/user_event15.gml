@@ -319,8 +319,21 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.18", "22nd April, 2023");
-initHeader("Nerfs");
+initPatch("1.20", "28th May, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Added 2 more CSS images (going from 3 to 5). Very skillful!
++ Mr Monopoly now has 25+ random victory quotes after winning a match (including another one when you open the sidebar to see the match stats)
++ Mr Monopoly now has waiting voice lines if you take too long on the CSS");
+initHeader("Unskillful Nerfs");
+initSection("- BAir now has a slight cooldown on throwing money bags (30f). Only really affects small ones, but maybe helps just a little
+- BAir thrown money bags cost more (100k->150k, 200k->300k, 400k->600k). Before, they could be spammed completely free (in fact, Mr Monopoly would even gain money as they would return more than they cost to throw out, and even more so if Bair hit an opponent as well). So hopefully this makes it more costly and offsets how powerful BAir is a little bit
+- Boosted UAir costs more to use (350k->550k). I was gonna nerf the kbs very slightly, but making it more costly may be more interesting than actually making the move weaker");
+initHeader("Fixes / Other Changes");
+initSection("+ Made golden Kewt tokens recolor with alts (you can also turn on Kewt tokens at the start of the match on any alt with Shield/Parry, or during taunt with Attack+Jump)
++ Made Mario tokens recolor better with alts as their colors were off");
+
+initPatch("1.19", "22nd April, 2023");
+initHeader("Unskillful Nerfs");
 initSection("- Reverted passive income for House and Hotel (150k->100k, 300k->200k), as it seems to have been too much");
 
 initPatch("1.18", "30th March, 2023");
@@ -333,7 +346,7 @@ initHeader("Fixes / Other Changes");
 initSection("+ Fixed a misc error and some projectile things");
 
 initPatch("1.16", "3rd March, 2023");
-initHeader("Buffs");
+initHeader("Skillful Buffs");
 initSection("+ Increased money gain on hit somewhat, to balance out that he loses money much easier after last patch");
 initSection("+ Falling money will now gravitate towards Mr Monopoly if he is near them, making it a bit easier to collect (doesn't work while in hitstun or similar, and only with his own money)");
 initSection("+ Reverted USpecial money nerf (125k->200k)");

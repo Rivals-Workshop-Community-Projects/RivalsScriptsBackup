@@ -122,7 +122,7 @@ if(alt == 12 || alt == 13 || alt == 17){ //matthew, TL, katie
 	dice_sprite2 = sprite_get("nspecial_dice_planet2");
 	dice_sprite3 = sprite_get("nspecial_dice_planet3");
 	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
-	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden_alts"));
 	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));
 	dspec_sprite1 = sprite_get("dspecial_oarly");
 	dspec_sprite2 = sprite_get("dspecial_hotel_oarly");
@@ -130,7 +130,7 @@ if(alt == 12 || alt == 13 || alt == 17){ //matthew, TL, katie
 	kewtmode = 2;
 }else if(alt == 14 || alt == 15 || alt == 16){ //oarly, oarluis, pasino
 	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
-	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden_alts"));
 	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));
 	dspec_sprite1 = sprite_get("dspecial_oarly");
 	dspec_sprite2 = sprite_get("dspecial_hotel_oarly");
@@ -146,8 +146,13 @@ if(alt == 12 || alt == 13 || alt == 17){ //matthew, TL, katie
 	dice_sprite1 = sprite_get("nspecial_dice_mario");
 	dice_sprite2 = sprite_get("nspecial_dice_mario2");
 	dice_sprite3 = sprite_get("nspecial_dice_mario3");
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario"));
-	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario_golden"));
+	if(alt == 25){
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario"));
+		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario_golden"));
+	}else{
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario_alts"));
+		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario_golden_alts"));
+	}
 }else if(alt == 24 || alt == 30){ //ice king, snow miser
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ice"));
 	dice_sprite1 = sprite_get("nspecial_dice_ice");
@@ -217,6 +222,7 @@ soldsfx = sound_get("soldsfx");
 upb = false;
 dairhitbox = noone;
 DairBounce = 0;
+BAir_cooldown = 0;
 VerySkillful = true;
 current_money = 15000;
 current_money2 = 15000;
@@ -263,6 +269,10 @@ ncode3 = "Bye bye now!";
 pkmn_stadium_name_override = "Monopoly";
 arena_title = "Millionaire";
 boxing_title = "Millionaire";
+
+if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"){
+	kewtmode = 1;
+}
 
 fx_dust_sharp_big = hit_fx_create(sprite_get("dust_sharp_big"), 20);
 fx_dust_sharp = hit_fx_create(sprite_get("dust_sharp"), 20);

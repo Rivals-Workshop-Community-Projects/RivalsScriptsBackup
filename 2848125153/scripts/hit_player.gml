@@ -128,7 +128,7 @@ if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_DAIR && my_h
 	    }else if(rand == 7){
 	    	sound_stop(voice);voice = sound_play(sound_get("lets go"));
 	    }else if(rand == 8 || rand == 9){
-	    	rand = random_func(0, 4, true);
+	    	rand = random_func(1, 4, true);
 	    	if(rand == 0){
 		    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh"));
 		    }else if(rand == 1){
