@@ -29,6 +29,7 @@ state_timer = 0;
 // Set Priming time on article
 hitbox_created_ID = 0;
 
+
 //Set initial speed variables if thrown on the floor
 if(!player_id.free){
     vsp = -3;

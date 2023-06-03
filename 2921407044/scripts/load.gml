@@ -88,6 +88,7 @@ sprite_change_offset("hfx_medium", 128, 128);
 sprite_change_offset("hfx_large", 128, 128);
 sprite_change_offset("hfx_shotgun", 128, 128);
 sprite_change_offset("hfx_steam", 128, 128);
+sprite_change_offset("hfx_bomb_disarm", 128, 128);
 
 sprite_change_offset("hit_particle1",0,16);
 sprite_change_offset("hit_particle2",0,16);

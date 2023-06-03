@@ -119,7 +119,7 @@ current_article1_HitboxID = noone;
 dspecial_script_hitbox_time_length = 0;
 suitcase_bomb = 0; // Object ID Variable
 //suitcase_residual = 0; // Object ID Variable
-dspecial_cooldown = 60 * 5; // 5 sec cooldown
+dspecial_cooldown = 60 * 7; // 7 sec cooldown
 dspecial_hit_fx = hit_fx_create(sprite_get("dspec_explosion"),30);
 
 // Hit Particles
@@ -144,6 +144,7 @@ hfx_medium = hit_fx_create(sprite_get("hfx_medium"),18);
 hfx_large = hit_fx_create(sprite_get("hfx_large"),18);
 hfx_shotgun = hit_fx_create(sprite_get("hfx_shotgun"),18);
 hfx_steam = hit_fx_create(sprite_get("hfx_shotgun"),18);
+hfx_bomb_disarm = hit_fx_create(sprite_get("hfx_bomb_disarm"),28);
 
 hfx_steam_boost_small = hit_fx_create(sprite_get("hfx_steam_boost_small"),18);
 hfx_steam_boost_large = hit_fx_create(sprite_get("hfx_steam_boost_large"),18);

@@ -4,7 +4,8 @@
 #macro AS_NEUTRAL_AIR 0
 #macro AS_NEUTRAL_GROUND 1
 #macro AS_GOT_HIT 2
-#macro AS_TIMEOUT 3 
+#macro AS_TIMEOUT 3
+#macro AS_DISARM 4
 
 #macro AS_ARTICLE_DESTROY 99
 
@@ -41,7 +42,7 @@ switch(state){
 	    	state = AS_TIMEOUT;
 	    	state_timer = 0;
 	    }
-	    
+	    Disarm_Function();
 		Priming_Function();
 	break;
 	
@@ -68,18 +69,19 @@ switch(state){
 	    	state = AS_TIMEOUT;
 	    	state_timer = 0;
 	    }
-		
+	    
+	    Disarm_Function();
 		Priming_Function();
 	break;
 	
 	// May need to create a seperate hitfx and leave it independant from the hitbox
 	case AS_GOT_HIT:
-		if(state_timer < 15){
+		if(state_timer < 26){
 			sprite_index = sprite_get("suitcase_bomb"); // Replace this with more flashy build up effects
 			image_index = 0;
 		}
 		
-		if(state_timer = 15){
+		if(state_timer = 26){
 			hitbox_created_ID = create_article_hitbox(AT_DSPECIAL, 1, x, y-28);
 			//spawn_hit_fx(x,y - 28,143) //143 - explosion large;
 			spawn_hit_fx(x,y - 28,player_id.dspecial_hit_fx) //Steam effects
@@ -95,7 +97,7 @@ switch(state){
 	
 	case AS_TIMEOUT:
 		if(state_timer < 20){
-			sprite_index = sprite_get("suitcase_bomb"); // Replace this with more flashy build up effects
+			sprite_index = sprite_get("suitcase_bomb");
 			image_index = 0;
 		}
 			
@@ -112,6 +114,23 @@ switch(state){
 		}
 	break;
 	
+	case AS_DISARM:
+		// State Start
+		if(state_timer == 1){
+			sprite_index = sprite_get("suitcase_bomb"); // Replace this with more flashy build up effects
+			image_index = 0;
+			sound_play(asset_get( "sfx_shop_close" ),false,noone,1,1);
+			spawn_hit_fx(x,y - 50,player_id.hfx_bomb_disarm); //Disarm Effect
+		}
+		//State End
+		if(state_timer == 20){
+	    	state = AS_ARTICLE_DESTROY;
+			state_timer = 0;
+		}
+		//print("AS_DISARM / " + string(state_timer));
+		
+	break;
+	
 	case AS_ARTICLE_DESTROY:
 		instance_destroy(self);
 		exit;
@@ -119,11 +138,7 @@ switch(state){
 }
 state_timer++;
 article_timer++;
-/*
-print(state)
-print(state_timer)
-print(free)
-*/
+
 
 #define Priming_Function()
 {
@@ -137,6 +152,24 @@ print(free)
 		if (article_timer > priming_timer){
 			hit_detection();
 		}
+}
+
+#define Disarm_Function()
+{
+	var temp_x = x;
+	var temp_y = y - 28;
+	var temp_obj_id = self;
+	
+	with(asset_get("oPlayer")){
+		var temp_distance = point_distance(x, y - floor(char_height/2), temp_x, temp_y);
+		if(temp_distance < 90 && state == PS_PARRY){
+			//print("Disarm");
+			temp_obj_id.state = AS_DISARM;
+			temp_obj_id.state_timer = 0;
+		}
+	//print("D:" + string(temp_distance) + "/S:" + string(state));
+	
+	}
 }
 /*
     Supersonic's Complex Hit Detection script v2
