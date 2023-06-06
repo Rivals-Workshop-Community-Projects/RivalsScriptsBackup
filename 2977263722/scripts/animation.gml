@@ -150,7 +150,7 @@ switch state {
 			break;
 			
 			case AT_EXTRA_2:
-			    if free image_index = 10;
+			    if free && !respawn_taunt && window != 3 image_index = 10;
 				
 				if window = 5 && window_timer > 2 image_index = 9;
 			break;

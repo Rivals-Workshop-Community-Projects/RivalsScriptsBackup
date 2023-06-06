@@ -81,6 +81,7 @@ sprite_change_offset("_phone", 132/2, 162/2);
 sprite_change_offset("plat", 132/2, 162/2);
 sprite_change_offset("plat_feet", 132/2, 162/2);
 sprite_change_offset("bullet_hud", 16, 16);
+sprite_change_offset("airhorn_hud", 16, 16);
 sprite_change_offset("dorito_cooldown_hud", 16, 16);
 sprite_change_offset("dorito", 44, 52);
 sprite_change_offset("shard", 95, 100);

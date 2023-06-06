@@ -13,6 +13,7 @@ if(state == PS_CROUCH && state_timer > 20){
 
 // Idle Flourish Code
 if(state == PS_IDLE && !instance_exists(clone_object_ID)){
+	//print(idle_2_current_timer)
 	idle_2_current_timer++;
 	if(idle_2_current_timer > idle_2_start_timer){
 		sprite_index = sprite_get_skinned("idle_2");
@@ -81,6 +82,33 @@ if(attack == AT_DTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 		default:
 		sprite_index = sprite_get_skinned("dthrow_behind"); // Full Sprite
 			break;
+	}
+}
+
+// Custom Landing Animations
+if(state == PS_LANDING_LAG){
+	var num_of_frames = 3; // This is fixed for each animation
+	var length_of_landing_lag = floor(get_attack_value(attack,AG_LANDING_LAG) * 1.5);
+	var length_per_frame = length_of_landing_lag / num_of_frames;
+	image_index = (state_timer / length_per_frame);
+	switch(attack){
+		case AT_NAIR:
+			sprite_index = sprite_get_skinned("nair_land");
+		break;
+		case AT_FAIR:
+			sprite_index = sprite_get_skinned("fair_land");
+		break;
+		case AT_DAIR:
+			sprite_index = sprite_get_skinned("dair_land");
+		break;
+		case AT_UAIR:
+			sprite_index = sprite_get_skinned("uair_land");
+		break;
+		case AT_BAIR:
+			sprite_index = sprite_get_skinned("bair_land");
+		break;
+		default:
+		break;
 	}
 }
 

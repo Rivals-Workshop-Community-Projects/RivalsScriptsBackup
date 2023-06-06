@@ -71,7 +71,7 @@ sprite_change_offset("taunt_transform", 64, 108);
 sprite_change_offset("foresight", 64, 108);
 
 sprite_change_offset("plat", 64, 94);
-sprite_change_offset("target", 250, 420);
+sprite_change_offset("target", 60, 95);
 sprite_change_offset("taunt_aura", 0, 14);
 sprite_change_offset("taunt_transform_aura", 270, 94);
 
@@ -96,6 +96,6 @@ sprite_change_offset("fstrong_explode", 50, 120);
 sprite_change_offset("fstrong_burst_tail", 0, 80);
 
 sprite_change_offset("electric_effect", 10, 40);
-sprite_change_offset("timestop_BG", 340, 20);
+sprite_change_offset("timestop_BG", 160, 120);
 
 set_victory_bg(sprite_get("victory_screen"));

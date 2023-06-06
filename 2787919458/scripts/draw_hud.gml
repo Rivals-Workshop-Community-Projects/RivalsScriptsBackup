@@ -11,34 +11,19 @@ if(get_gameplay_time() <= 120){
 }
 
 
-//Speed Meter
 if(get_gameplay_time() > 120){
     var char_x = temp_x;
     draw_sprite_ext(sprite_get("fests"),0,temp_x,temp_y-38-("fs_charge" in self)*8,2,2,0,-1,1)
     //Don't mind this cursed shit.
-    curspd = abs(hsp/10)
-    if curspd_override{
-        if(phone_attacking && attack == AT_DTILT){
-        	if(!runeF){
-            	curspd = 0.1;
-        	}else{
-        		curspd = dtilt_mash/10;
-        	}
-        }
-    }
-    draw_sprite_ext(sprite_get("speeds"),curspd,char_x+105,temp_y-36-("fs_charge" in self)*8,2,2,0,-1,1)
+    draw_sprite_ext(sprite_get("speeds"),abs(curspd/10),char_x+105,temp_y-36-("fs_charge" in self)*8,2,2,0,-1,1)
     char_x += 24;
-    curspd = abs(hsp)
-    if curspd_override{
-        if(phone_attacking && attack == AT_DTILT){
-            curspd = dtilt_mash;
-        }
-    }
-    draw_sprite_ext(sprite_get("speeds"),curspd,char_x+105,temp_y-36-("fs_charge" in self)*8,2,2,0,-1,1)
+
+    draw_sprite_ext(sprite_get("speeds"),abs(curspd),char_x+105,temp_y-36-("fs_charge" in self)*8,2,2,0,-1,1)
     char_x += 24;
     
     draw_sprite_ext(sprite_get("bullet_hud"),0,temp_x+180,temp_y+6,-2,2,0, need_to_reload ? c_gray : -1,1);
     draw_sprite_ext(sprite_get("dorito_cooldown_hud"),0,temp_x+156,temp_y+6-("fs_charge" in self)*12,-2,2,0, (instance_exists(dorito_hb) || move_cooldown[AT_NSPECIAL] > 0) ? c_gray : -1,1);
+    draw_sprite_ext(sprite_get("airhorn_hud"),0,temp_x+203,temp_y-18,2,2,0,-1,(instance_exists(shrek_door) || instance_exists(doge) || instance_exists(dat_boi))?.7:0);
 }
 if(killcam_timer > 0){
     killcam_timer--;
@@ -56,7 +41,7 @@ if(get_gameplay_time() <= 120){
 }
 */
 if(sanic_uspec_count != 0){
-	draw_sprite_ext(sprite_get("hud_joint"),sanic_uspec_count-1,temp_x+180,temp_y,2,2,0,sanic_uspec_count==3?c_gray:-1,1)
+	draw_sprite_ext(sprite_get("hud_joint"),sanic_uspec_count-1,temp_x+192,temp_y,2,2,0,sanic_uspec_count==3?c_gray:-1,1)
 }
 
 // MunoPhone Touch code - don't touch

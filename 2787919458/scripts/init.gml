@@ -21,7 +21,7 @@
 // Physical size
 char_height         = 60;       //                  not zetterburn's. this is just cosmetic anyway
 knockback_adj       = 1.1;		// 0.9  -  1.2
-maxspd = 70;
+maxspd = 69;
 // Ground movement
 walk_speed          = 4.25;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
@@ -183,6 +183,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 fx_dust = hit_fx_create(sprite_get("dust_effect"), 20);
+wheel_sfx = noone;
 ringcooldown = 0;
 upb = false;
 upbtimer = 0;
@@ -227,6 +228,8 @@ san_has_played = false;
 current_taunt = 0;
 bair_grab_projectile_box = noone;
 datboi_hit_cooldown = 0;
+bair_pin = false;
+just_did_dattack = false;
 weegee_face = get_player_color(player) == 15;
 if(get_player_color(player) == 22){
     set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));

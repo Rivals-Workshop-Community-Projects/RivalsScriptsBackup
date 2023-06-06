@@ -28,7 +28,7 @@ if(state == PS_DOUBLE_JUMP){
 // Intro Code
 if(state == PS_SPAWN){
 	// Genesis
-	if(get_player_color(player) == 4 && color_shift == false){
+	if(get_player_color(player) == 4 && color_shift == 0){
 		sprite_index = sprite_get("intro_g8");
 		// Parameters of the intro sequence
 		intro_animation_frames_before_start = 6; // Set this to calibrate where the animation should start
@@ -45,7 +45,7 @@ if(state == PS_SPAWN){
 		
 	} 
 	// Riptide
-	else if(get_player_color(player) == 12 && color_shift == true){
+	else if(get_player_color(player) == 12 && color_shift == 1){
 		sprite_index = sprite_get("intro_riptide");
 		intro_animation_frames_before_start = 80; // Set this to calibrate where the animation should start
 		intro_animation_strip_frames = 7;
@@ -57,6 +57,25 @@ if(state == PS_SPAWN){
 			//print("spawn bubbles")
 		}
 	}
+	
+	// Furi's Intro
+	if(get_player_color(player) == 30 && color_shift == 1){
+		sprite_index = sprite_get("intro_furi");
+		intro_animation_frames_before_start = 60; // Set this to calibrate where the animation should start
+		intro_animation_strip_frames = 15;
+		intro_animation_speed = 5; // Inverse
+		// Sound
+		if(state_timer == 80){
+			sound_play(sound_get("thunder_3"));
+		}
+		/*
+		if(image_index == 8 && intro_sound_played_flag == false){ // play reload sound on image index 8S
+		    sound_play(asset_get("sfx_syl_dspecial_howl"));
+		    intro_sound_played_flag = true;
+		}
+		*/
+	}
+	
 	// All others
 	else{
 		sprite_index = sprite_get("intro");
@@ -100,6 +119,33 @@ if(attack == AT_EXTRA_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 		default:
 		sprite_index = sprite_get("extra_2_behind"); // Full Sprite
 			break;
+	}
+}
+
+// Custom Landing Animations
+if(state == PS_LANDING_LAG){
+	var num_of_frames = 3; // This is fixed for each animation
+	var length_of_landing_lag = floor(get_attack_value(attack,AG_LANDING_LAG) * 1.5);
+	var length_per_frame = length_of_landing_lag / num_of_frames;
+	image_index = (state_timer / length_per_frame);
+	switch(attack){
+		case AT_NAIR:
+			sprite_index = sprite_get("nair_land");
+		break;
+		case AT_FAIR:
+			sprite_index = sprite_get("fair_land");
+		break;
+		case AT_DAIR:
+			sprite_index = sprite_get("dair_land");
+		break;
+		case AT_UAIR:
+			sprite_index = sprite_get("uair_land");
+		break;
+		case AT_BAIR:
+			sprite_index = sprite_get("bair_land");
+		break;
+		default:
+		break;
 	}
 }
 

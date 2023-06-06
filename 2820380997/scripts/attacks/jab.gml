@@ -102,10 +102,9 @@ window_num++;
 
 // Window #9 / Frame(s) # 19-26 / Jab 3 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 17);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 19);
-set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 

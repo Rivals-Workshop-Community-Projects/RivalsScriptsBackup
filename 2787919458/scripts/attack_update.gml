@@ -433,6 +433,7 @@ switch(attack){
 		}
 		if(window == 2 && !hitpause && !was_parried){
 			if(window_timer == 4){
+				just_did_dattack = true;
 				if(!instance_exists(spring)){
 					sound_play(asset_get("sfx_blow_heavy1"));
 					spring = create_hitbox(AT_DATTACK, 1, x+35*spr_dir, y-20);
@@ -440,7 +441,40 @@ switch(attack){
 					spring.destroyed = true;
 					sound_play(asset_get("sfx_blow_heavy1"));
 					spring = create_hitbox(AT_DATTACK, 1, x+35*spr_dir, y-20);					
-				}			
+				}
+				if(invincible){
+			        sound_play (sound_get("spring"))
+			        var fx = spawn_hit_fx( spring.x +15*spr_dir, spring.y-0, 305 );fx.pause = 8.58;
+		            djumps = 0;has_airdodge = true;
+		            has_walljump = true;move_cooldown[AT_USPECIAL] = 0;
+		            if(state == PS_PRATFALL){
+		              state = PS_IDLE_AIR;
+		            }
+		            spr_dir = spring.spr_dir;			        
+			        spring.img_spd = .25;
+			        spring.launched = 30;
+			        spring.image_index = 2;					
+					window = 4;window_timer = 999;
+	                sanic_uspec_count = 0;
+	                move_cooldown[AT_FSPECIAL] = 0;
+	                if(attack != AT_FSPECIAL){
+	                    vsp = -10;hsp = 10*other.spring.spr_dir;
+	                    fspec_launch = false;
+	                }else if(attack == AT_FSPECIAL){
+	                    if(window != 1){
+	                        window = 2;window_timer = 2;
+	                		for (var i = 0; i < 20; i++){
+	                			can_hit[i] = 1;
+	                		}                    
+	                        fspec_launch = true;
+	                    }
+	                    if(phone_attacking){
+	                        vsp = -8;hsp = 20*other.spring.spr_dir;
+	                    }else{
+	                        vsp = -10;hsp = 10*other.spring.spr_dir;
+	                    }
+	                }					
+				}
 			}
 		}
 	break;		
@@ -455,6 +489,21 @@ switch(attack){
 			}
 		}
 		if(window == 2 && window_timer <= 4 && !instance_exists(grab_target)){
+	        if(window_timer == 1){
+		        if(position_meeting(x-85*spr_dir,y-40,asset_get("par_block")) && !bair_pin){
+			        window = 5;window_timer = 0;bair_pin = true;
+			        shake_camera(4,5);destroy_hitboxes();sound_play(sound_get("succ"))sound_play(asset_get("sfx_blow_heavy2"));
+			        if(position_meeting(x-30*spr_dir,y-35,asset_get("par_block"))){
+			        	x += 20*spr_dir;
+				        if(position_meeting(x-50*spr_dir,y-35,asset_get("par_block"))){
+					        x += 20*spr_dir;
+					        if(position_meeting(x-70*spr_dir,y-35,asset_get("par_block"))){
+						        x += 10*spr_dir;
+						    }
+					    }
+				    }
+			    }
+	        }
 			with(pHitBox){
 				if(type == 2 && self != other && string_length(string(player_id.url)) > 0 && orig_player != 5){
 					var playerurl = real(player_id.url);
@@ -520,6 +569,13 @@ switch(attack){
 	        	}old_hsp = 0;
 	        }
 	    }
+	    if(window == 5){
+	    	can_fast_fall = false;can_move = false;
+	    	cancelattack();
+	    	if(position_meeting(x-70*spr_dir,y-35,asset_get("par_block"))){
+				x += 10*spr_dir;
+			}
+	    }	    
 	break;
 	case AT_DTILT:
 		if(state_timer == 1){
@@ -546,6 +602,7 @@ switch(attack){
 					set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .7+dtilt_mash/30);
 				}
 			}
+			curspd = dtilt_mash;		
 			if(!down_down && !attack_down || (dtilt_mash == 5 && !runeF || dtilt_mash == 69 && runeF)){
 				window = 2;window_timer = 0;
 				var dust = spawn_hit_fx(x-30*spr_dir,y,fx_dust_sharp_big)dust.spr_dir=-spr_dir;
@@ -705,6 +762,11 @@ switch(attack){
 		}	
 	break;	
 }
+#define cancelattack
+    if(/*has_hit && */(attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
+		window = 20;
+	}
 
 #define spawn_base_dust // written by supersonic
 /// spawn_base_dust(x, y, name, dir = 0)

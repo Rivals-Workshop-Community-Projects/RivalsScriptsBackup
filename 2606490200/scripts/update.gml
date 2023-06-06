@@ -417,10 +417,6 @@ if hitpause {
 
 if !hitpause {
 	
-	if state != PS_CROUCH and state != PS_LAND and state != PS_LANDING_LAG{
-    croutime += random_func(1,5,true)
-	}
-	
 	if get_gameplay_time() %2 == 0 {
 	shsp = (shsp + hsp)/2
     svsp = (svsp + vsp)/2

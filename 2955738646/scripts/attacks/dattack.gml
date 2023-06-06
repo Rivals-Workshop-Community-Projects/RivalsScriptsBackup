@@ -21,7 +21,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_WHIFFLAG, 10);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_Furi_Keri"));
+set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, sound_get("f3527_014_swish_p_xl"));
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1); //Done skid
 set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 10);
@@ -54,7 +54,7 @@ set_window_value(AT_DATTACK, 5, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DATTACK, 5, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_DrgnRush_Start"));
+set_window_value(AT_DATTACK, 5, AG_WINDOW_SFX, sound_get("f3527_025_throw"));
 //set_window_value(AT_DATTACK, 5, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);

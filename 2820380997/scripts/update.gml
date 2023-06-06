@@ -29,6 +29,14 @@ if(instance_exists(clone_object_ID)){
 // Gain D jump flag on landing
 if(!free && djump_given_back_flag == true){djump_given_back_flag = false;max_djumps = 1;}
 
+// Gain Emergency Fspec flag back on landing
+if(instance_exists(clone_object_ID)){
+    if(!free && emergency_fspec_given_back_flag == true){
+        emergency_fspec_given_back_flag = false;
+        move_cooldown[AT_FSPECIAL_AIR] = 0;
+    }
+}
+
 //WISP
 if(wisp_returned == true){
     white_flash_timer = 10;

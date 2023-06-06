@@ -123,6 +123,8 @@ if(phone_attacking){
 		break;
 		case AT_DATTACK:case AT_BAIR:case AT_FSPECIAL:
 			Get_Alt_Sprite();
+			if(attack == AT_DATTACK && window == 3 && window_timer < 10){sprite_index = sprite_get("nair");}
+			if(attack == AT_DATTACK && window == 3 && window_timer >= 10){sprite_index = sprite_get("jump");image_index = floor(lerp(0, 2, window_timer/4));}
 		break;
 		case AT_UAIR:
 			if(window == 1 && window_timer == 1 && !hitpause){

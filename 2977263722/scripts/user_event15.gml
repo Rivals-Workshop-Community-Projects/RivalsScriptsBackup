@@ -221,7 +221,8 @@ Disclaimer: The name of this move has nothing to do with temperature, and is sim
 
 initTip("DStrong: Firebar Spin");
 initWords("Spin a firebar along the elusive Z axis, scorching either sides of Bully! While slow, this move is active for a long time and it's just as disjointed as Bully's other fire attacks. Also like those attacks, it inflicts the Burn effect for extra damage.");
-initWords("While charging, the fireballs also give the Burn effect, although deal no damage or knockback otherwise.");
+initWords("The fire nearest to Bully's body also deals more damage and knockback, so getting up close and personal is as good an idea as always with Bully!");
+initWords("One last thing! (DStrong is such a special guy what can I say-) While charging, the fireballs also give the Burn effect, although deal no damage or knockback otherwise.");
 initImage_ext(sprite_get("pho_dstrong"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("pho_dstrong"), -4, fa_right, -2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -270,6 +271,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "29 May, 2023");
+initHeader("Aesthetic");
+initSection("-Updated DStrong's Munophone entry to reflect changes
+-Updated names of DStrong hitboxes in the Munophone");
+initHeader("Balance");
+initSection("-NSpecial now has Angle flipper 8 (away from hitbox)
+-DStrong now has 3 close-range sweetspots (2 for the two halves of the front swing, 1 for the back swing)
+-BAir sweetspot KB Scaling increased from 0.6 to 0.75
+-BAir sweetspot angle adjusted from 135 to 140");
+initHeader("Fixes");
+initSection("-Walking with DTaunt after respawning is now a feature
+-Fixed CSS occasionally spitting errors on the debug log when loading");
 
 initPatch("1.4", "24 May, 2023");
 initHeader("Fixes");

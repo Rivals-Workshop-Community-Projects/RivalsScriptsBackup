@@ -714,12 +714,12 @@ return chunk_arr;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Craum";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Craum";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Zaora";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for MGAM";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
@@ -729,7 +729,7 @@ return chunk_arr;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Kumaki";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for EcK$";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
@@ -768,13 +768,28 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Prue Furies";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Pure Furies";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Junko for Renecup";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Rushing Rei";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Giovanna(GG) for Inverted";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Lilac";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Cam for Aperson";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Bloody Roar";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Vaporwave";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Jashy";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 

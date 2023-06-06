@@ -11,6 +11,7 @@ voice_icon = sprite_get("_voice_button");
 voice_state = 0;
 cursor_bounds = false;
 */
+alt = 0;
 
 alt_name = [
 "Bully",

@@ -491,6 +491,16 @@ set_color_profile_slot( 14, 5, 185, 210, 215 ); //Tail Tip
 set_color_profile_slot( 14, 6, 81, 103, 179 ); //Soul Fire
 set_color_profile_slot( 14, 7, 231, 116, 98 ); //Pawpads
 
+// Casual Observer
+set_color_profile_slot( 15, 0, 188, 151, 120 ); //Fur
+set_color_profile_slot( 15, 1, 45, 45, 45 ); //Hair
+set_color_profile_slot( 15, 2, 110, 110, 196 ); //Kimono Main
+set_color_profile_slot( 15, 3, 197, 23, 167 ); //Kimono Accent
+set_color_profile_slot( 15, 4, 23, 183, 197 ); //Sash and Anklet
+set_color_profile_slot( 15, 5, 197, 23, 167 ); //Tail Tip
+set_color_profile_slot( 15, 6, 179, 198, 255 ); //Soul Fire
+set_color_profile_slot( 15, 7, 45, 45, 45 ); //Pawpads
+
 
 //#endregion
 

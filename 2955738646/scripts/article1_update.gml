@@ -7,6 +7,7 @@ switch (state){
 	sprite_index = asset_get("empty_sprite");
 	mask_index = sprite_get("idle");
 	is_hittable = true;
+	uses_shader = true;
 	
 	if (state_timer > 8){ instance_destroy(); exit; }
 	//if (place_meeting( x, y, asset_get("par_block"))){ player_id.cooldowntime = 100; }
@@ -28,6 +29,7 @@ switch (state){
 	break;
 	
 	case 1: //Foresight
+	uses_shader = true;
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
 	depth = -100;
@@ -38,10 +40,6 @@ switch (state){
 		image_index++;
 	}
 	if (image_index >= 7){
-		instance_destroy();
-		exit;
-	}
-	if (state_timer >= 15){
 		instance_destroy();
 		exit;
 	}
@@ -180,27 +178,27 @@ switch (state){
 		if (instance_exists(asset_get("camera_obj"))){
 			
 		if (x-15 > get_instance_x(asset_get("camera_obj")) ){
-			x = x-20;
+			x = x-5;
 			//spr_dir = -1;
 		}
 		if (x+15 < get_instance_x(asset_get("camera_obj")) ){
-			x = x+20;
+			x = x+5;
 			//spr_dir = 1;
 		}
-		if (y-400> get_instance_y(asset_get("camera_obj")) ){
-			y = y-35;
+		if (y-50 > get_instance_y(asset_get("camera_obj")) ){
+			y = y-5;
 		}
-		if (y+400 < get_instance_y(asset_get("camera_obj")) ){
-			y = y+35;
+		if (y+50 < get_instance_y(asset_get("camera_obj")) ){
+			y = y+5;
 			}
 		}
 		
 		sprite_index = sprite_get("timestop_BG");
 		mask_index = sprite_get("timestop_BG");
-		image_speed = 0.8;
-		image_xscale = 1.7;
-		image_yscale = 1.5;
-		image_alpha = 1;
+		image_speed = 0.7;
+		image_xscale = 3.2;
+		image_yscale = 3;
+		//image_alpha = 1;
 		//if (player_id.timestop_amount < 35){ image_alpha -= 0.1; }
 		//hsp = 4
 		//x = 200;

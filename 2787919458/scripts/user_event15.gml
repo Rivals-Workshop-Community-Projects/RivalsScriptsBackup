@@ -228,30 +228,27 @@ initWords_ext("Summons", fa_center, c_gray, 0, false);
 initWords("-----------------------------------------------------------");
 initWords_ext("Doge will first bork, sending the opponent up. Then he will spit facts at you.",fa_center,c_white,false,false);
 initWords("Charging the strong will cause Doge's words to be more factual as the charge gets higher.");
-switch(get_player_color(player)){
-	default:
-		initImage_ext(sprite_get("doge_idle_alts"), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-	break;
-	case 0:
-		initImage_ext(sprite_get("doge_idle"), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-	break;
-	case 23:
-		initImage_ext(sprite_get("doge_idle_lolbit"), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-	break;
-}
-initWords("-----------------------------------------------------------");
-initImage_ext(sprite_get("shrek_door"), -6, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("shrek"), -6, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initWords_ext("Shrek will flush the toilet before opening it, slamming the door open.",fa_center,c_white,false,false);
+var doge_sprite = "doge_alts";
+if(alt == 0 || alt == 20)doge_sprite = "doge";
+if(alt == 15)doge_sprite = "doge_weegee";
+if(alt == 23)doge_sprite = "doge_lolbit";
+initImage_ext(sprite_get(doge_sprite), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("
-                        
-
-
+-----------------------------------------------------------
 
 ");
-initWords_ext("-----------------------------------------------------------",fa_left,c_white,false,false);
-initImage_ext(sprite_get("datboi_idle"), -6, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("datboi_ride"), -6, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+var shrek_sprite = "shrek_alts";
+if(alt == 0 || alt == 19)shrek_sprite = "shrek";
+if(alt == 15)shrek_sprite = "shrek_weegee";
+initImage_ext(sprite_get(shrek_sprite), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords_ext("Shrek will flush the toilet before opening it, slamming the door open.",fa_center,c_white,false,false);
+initWords("
+-----------------------------------------------------------                        
+");
+var datboi_sprite = "datboi_alts";
+if(alt == 0 || alt == 21)datboi_sprite = "datboi";
+if(alt == 15)datboi_sprite = "datboi_weegee";
+initImage_ext(sprite_get(datboi_sprite), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords_ext("Dat Boi will sit there waiting to dash, when called he will dash forward",fa_center,c_white,false,true);
 
 initTip("BAir: Plunger");
@@ -296,6 +293,38 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.20", "June 5th, 2023");
+
+initHeader("Buffs");
+initSection("- Sanic can pin himself to the wall with BAir
+- Spring now sends you less distance, but to make up for it it now scales with percent slightly; making it more deadly at higher percents.
+- FTilt is 1 frame quicker
+- FTilt sweetspot KBS .7 > .9
+- UTilt sourspot BKB 6 > 7
+- UTilt sweetspot KBS .7 > .9
+- UTilt startup 8 > 5
+- UTilt endlag 8 > 6
+- Made UTilt's hitboxes a bit different to make the priority fix feel better, also changed the sweetspot vfx");
+
+initHeader("Nerfs");
+initSection("- Made UTilt sweetspot have less priority than sourspot
+- Fixed how the Fests hud works and as a result your top speed is properly 69 instead of 70 (I was lying to you)
+- Dattack now has 12 frames of endlag on the initial slam to make annoying combos less easy
+- UAir sourspot BKB 8 > 7
+- UAir sourspot KBS .8 > .6");
+
+initHeader("Fixes / Other Changes");
+initSection("- Sanic will now launch himself properly when invincible and using dattack (only works on the inital run)
+- Sanic now displays on the hud when he is unable to use his summons
+- Sanic now has a little effect and sound queue to when his summons/dorito are usable again
+- Fixed a bug that would cause Dat Boi to be unusable for a long while if activated while dying
+- Fixed munophone summon images
+- Fixed strange behavior with dash accel code
+- Fixed the wheel sfx on the skateboard dash
+- Fixed a mishap with runes being incorrectly ordered
+- Tweaked the joint hud icon's position slightly
+- Attemped to mitigate some janky movement with the spring");
+
 initPatch("1.19", "20th February, 2023");
 
 initHeader("Buffs");

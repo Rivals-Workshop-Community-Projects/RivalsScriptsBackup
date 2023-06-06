@@ -11,18 +11,35 @@ draw_sprite_ext(sprite_get("target"), 0, has_hit_id.x-70, has_hit_id.y - has_hit
 }
 */
 
+if (get_player_color(player) == 8) {
+    if (targeted == true && target_time > 0){
+    with (other_player_id){
+    draw_sprite_ext(sprite_get("target"), 1, other.x, other.y, 1, 1, 0, c_white, 0.3);
+    }
+}
+
+if (maintarget == true && target_time > 0){
+    with (other_player_id){
+    draw_sprite_ext(sprite_get("target"), 1, other.x, other.y, 1, 1, 0, c_white, 0.9);
+    }
+}
+    
+} else {
+
 if (targeted == true && target_time > 0){
     with (other_player_id){
     //spawn_hit_fx(x, y, (target_locked));
-    draw_sprite_ext(sprite_get("target"), 0, other.x, other.y, 0.3, 0.3, 0, c_gray, 0.4);
+    draw_sprite_ext(sprite_get("target"), 0, other.x, other.y, 1, 1, 0, c_white, 0.3);
     }
 }
 
 if (maintarget == true && target_time > 0){
     with (other_player_id){
     //spawn_hit_fx(x, y, (target_locked));
-    draw_sprite_ext(sprite_get("target"), 0, other.x, other.y, 0.3, 0.3, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("target"), 0, other.x, other.y, 1, 1, 0, c_white, 0.9);
     }
+}
+
 }
 
 if (timestop_damage > 0){

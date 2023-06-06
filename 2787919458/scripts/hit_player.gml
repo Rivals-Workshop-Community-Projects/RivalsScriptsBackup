@@ -57,12 +57,14 @@ if(my_hitboxID.attack == AT_DATTACK){
               state = PS_IDLE_AIR;
             }
             spr_dir = other.spring.spr_dir;
+            y-=10;
+            vsp = -8-(get_player_damage(player)/16);hsp = (8+(get_player_damage(player)/16))*other.spring.spr_dir;
             if("is_Sanic" in self){
                 sanic_uspec_count = 0;
                 move_cooldown[AT_FSPECIAL] = 0;
                 if(attack != AT_FSPECIAL){
-                    vsp = -10;hsp = 10*other.spring.spr_dir;
                     fspec_launch = false;
+                    if(attack == AT_DATTACK && just_did_dattack && self == other){window = 3;window_timer = 0;vsp = -10;hsp = 10*other.spring.spr_dir;just_did_dattack = false;}
                 }else if(attack == AT_FSPECIAL){
                     if(window != 1){
                         window = 2;window_timer = 2;
@@ -71,15 +73,9 @@ if(my_hitboxID.attack == AT_DATTACK){
                 		}                    
                         fspec_launch = true;
                     }
-                    if(phone_attacking){
-                        vsp = -8;hsp = 20*other.spring.spr_dir;
-                    }else{
-                        vsp = -10;hsp = 10*other.spring.spr_dir;
-                    }
+                    vsp = -8;hsp = 20*other.spring.spr_dir;
                 }
-            }else{
-                vsp = -10;hsp = 10*other.spring.spr_dir;
-            }
+            }            
         }
     }
 }

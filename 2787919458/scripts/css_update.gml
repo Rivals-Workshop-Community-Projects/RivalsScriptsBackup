@@ -1,3 +1,5 @@
+if(!instance_exists(cursor_id)) exit;
+
 //button stuff
 var cur_x = get_instance_x(cursor_id);
 var cur_y = get_instance_y(cursor_id);

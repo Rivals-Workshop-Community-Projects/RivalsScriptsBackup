@@ -6,10 +6,8 @@ temp_y = y + 9;
 //Fancy CSS template by Muno
 //32 Alt code stolen from Kris, if you steal this keep the chain going :)
 
-if "alt" in self {
-    if alt != get_player_color(player) {
+if alt != get_player_color(player) {
         fade_time = 6;
-    }
 }
 
 alt = get_player_color(player);

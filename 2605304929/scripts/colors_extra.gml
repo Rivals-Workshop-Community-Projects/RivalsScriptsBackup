@@ -287,14 +287,14 @@ set_color_profile_slot( 25, 6, 238, 248, 254 ); //kimono bottom
 set_color_profile_slot( 25, 7, 76, 132, 195 ); //kimono accents
 
 // Sailee
-set_color_profile_slot( 26, 0, 224, 205, 36 ); //fur
-set_color_profile_slot( 26, 1, 250, 229, 40 ); //fur tip
-set_color_profile_slot( 26, 2, 255, 240, 105 ); //hair
-set_color_profile_slot( 26, 3, 64, 68, 219 ); //horns + accents
+set_color_profile_slot( 26, 0, 227, 214, 160 ); //fur
+set_color_profile_slot( 26, 1, 227, 214, 160 ); //fur tip
+set_color_profile_slot( 26, 2, 227, 214, 160 ); //hair
+set_color_profile_slot( 26, 3, 74, 79, 219 ); //horns + accents
 set_color_profile_slot( 26, 4, 237, 230, 230 ); //kimono top
 set_color_profile_slot( 26, 5, 237, 230, 230 ); //kimono wave
-set_color_profile_slot( 26, 6, 237, 230, 230 ); //kimono bottom
-set_color_profile_slot( 26, 7, 64, 68, 219 ); //kimono accents
+set_color_profile_slot( 26, 6, 70, 74, 212 ); //kimono bottom
+set_color_profile_slot( 26, 7, 70, 74, 212 ); //kimono accents
 
 // Zexiphi
 set_color_profile_slot( 27, 0, 248, 249, 250 ); //fur

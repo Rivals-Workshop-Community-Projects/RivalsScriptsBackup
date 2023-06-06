@@ -98,4 +98,5 @@ if(attack == AT_DAIR){
 if(attack == AT_NAIR){
 	reset_attack_value(AT_NAIR,AG_NUM_WINDOWS);
 	reset_window_value(AT_NAIR, 3, AG_WINDOW_CANCEL_TYPE);
+	nair_down_detected = false;
 }

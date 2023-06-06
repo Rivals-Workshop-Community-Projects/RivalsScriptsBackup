@@ -74,8 +74,19 @@ if(flag_win_quote_enabled == true && winner == player){
 }
 
 //print(portrait_to_use);
-//Handle setting portraits
-switch(portrait_to_use){
+//Handle setting portraits - Colors Take Priority
+// Cam's Portrait
+if(get_player_color(player) == 23){ // Flame Shackle
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_cam"));
+}
+
+// Feni's Portrait
+else if(get_player_color(player) == 10 && color_shift == 0){ // Flame Shackle
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_feni"));
+}
+
+// Everything Else
+else switch(portrait_to_use){
 	case 0: // Default
 		set_ui_element(UI_WIN_PORTRAIT, get_char_info(player, INFO_PORTRAIT));
 	break;

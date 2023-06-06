@@ -32,7 +32,6 @@ if (state == PS_AIR_DODGE && state_timer > 2 && state_timer < 16 ||
 state == PS_ROLL_BACKWARD && state_timer > 2 && state_timer < 16 ||
 state == PS_ROLL_FORWARD && state_timer > 2 && state_timer < 16 ||
 state == PS_WAVELAND && state_timer < 4){
-	//visible = false;
 	draw_indicator = false;
 	
 } else { /*visible = true;*/ }
@@ -233,7 +232,7 @@ with (asset_get("oPlayer")) {
 //}
 if (timestop == true){
 	if (timestop_amount < 1){ timestop = false; timestop_amount = 20; timestop_time = 207; }
-	if (timestop_time > 0 && instance_exists(timestop_BG) && timestop_BG.state_timer > 22){ timestop_time -= 1; }
+	if (timestop_time > 0 && instance_exists(timestop_BG) && timestop_BG.state_timer > 22){ timestop_time -= 1 / 1; }
 	if (timestop_time == 0){ timestop = false; timestop_amount = 20; timestop_time = 207; }
 }
 	
@@ -247,9 +246,18 @@ if (timestop == false){
 	}
 }
 
-if (move_cooldown[AT_NSPECIAL] > 0 && nspecial_time < 37){
-	nspecial_time += 1 / 10;
-	move_cooldown[AT_NSPECIAL] = 10;
+if (nspecial_time < 37 && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	//floor(nspecial_time);
+	if (move_cooldown[AT_NSPECIAL] = 0){
+		if ((get_gameplay_time() mod 10) == 0){
+		nspecial_time += 1;
+	} else {
+		if ((get_gameplay_time() mod 5) == 0){
+		nspecial_time += 1;
+		}
+	}
+	//move_cooldown[AT_NSPECIAL] = 10;
+	}
 }
 
 if (cooldowntime == 19){ vanishing = instance_create(x+1 * spr_dir, y-5, "obj_article1"); vanishing.state = 1; 

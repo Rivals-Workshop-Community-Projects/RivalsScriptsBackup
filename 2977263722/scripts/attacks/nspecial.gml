@@ -55,6 +55,7 @@ set_hitbox_value(temp_attack, temp_num, HG_SHAPE, 0);
 set_hitbox_value(temp_attack, temp_num, HG_PRIORITY, 3);
 set_hitbox_value(temp_attack, temp_num, HG_DAMAGE, 2);
 set_hitbox_value(temp_attack, temp_num, HG_ANGLE, 50);
+set_hitbox_value(temp_attack, temp_num, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(temp_attack, temp_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(temp_attack, temp_num, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(temp_attack, temp_num, HG_EFFECT, 1);

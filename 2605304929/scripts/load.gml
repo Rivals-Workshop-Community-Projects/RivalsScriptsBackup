@@ -119,6 +119,7 @@ sprite_change_offset("platform_icon", 128, 128);
 sprite_change_offset("intro", 128, 162);
 sprite_change_offset("intro_g8", 128, 162);
 sprite_change_offset("intro_riptide", 128, 162);
+sprite_change_offset("intro_furi", 128, 162);
 sprite_change_offset("plat", 128, 162);
 sprite_change_offset("plat_bg", 128, 162);
 sprite_change_offset("plat_idle", 128, 162);
@@ -135,6 +136,13 @@ sprite_change_offset("cintematic_final_smash_grab1", 350, 350);
 sprite_change_offset("cintematic_final_smash_throw1", 350, 350);
 sprite_change_offset("cintematic_final_smash_eyes", 350, 350);
 sprite_change_offset("Cintematic_Final_Smash_Throw_Background", 0, 0);
+
+// Custom Land Lag Animations
+sprite_change_offset("nair_land", 128, 162);
+sprite_change_offset("dair_land", 128, 162);
+sprite_change_offset("bair_land", 128, 162);
+sprite_change_offset("uair_land", 128, 162);
+sprite_change_offset("fair_land", 128, 162);
 
 // Hurtbox
 sprite_change_offset("hurtbox", 128, 164);

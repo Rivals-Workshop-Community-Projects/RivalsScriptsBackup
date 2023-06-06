@@ -10,6 +10,44 @@ if htrain > 100 && (state == PS_DASH or state == PS_DASH_START){
     
 }
 
+
+
+
+  
+
+if state == PS_CROUCH {
+  if state_timer == 1{
+  if (left_down or right_down) and up_down {
+     croutime = 2
+  } 
+
+  else if down_hard_pressed {
+     croutime = 4
+  } 
+
+  else if up_down {
+     croutime = 3
+  }
+
+  else {
+     croutime = 1
+  } 
+  }
+
+  if croutime = 1 {
+     sprite_index = sprite_get("crouch")
+  }
+  if croutime = 2 {
+     sprite_index = sprite_get("crouch2")
+  } 
+  if croutime = 4 {
+     sprite_index = sprite_get("crouch4")
+  } 
+  if croutime = 3 {
+     sprite_index = sprite_get("crouch3")
+  }
+}
+
 if atrain < 100 && state == PS_DOUBLE_JUMP && state_timer < 25{ 
     
     sprite_index = sprite_get("jump")

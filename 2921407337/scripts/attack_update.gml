@@ -89,11 +89,29 @@ switch(attack){
         		window_timer = 1;
         	}
         }
-        // Set VSP. 
+        // Set VSP for boucing on hit
+        // This will set to bounce if down is not being held during window 2 (including hitpause).
         // Cannot fast fall nair 2 so nair 3 can be set to down angle
+        // Reset nair_down_detected on set attack.
+        
+        // Nair 2 Bounce always happens
+    	if(window == 5){old_vsp = -4}
+    	// Nair 1 will have all of window 1 and 2 to input down to hitfall
+    	if(window == 1 || window == 2){
+    		// Detect down input, if it is ever detected, set a flag
+    		if(down_down == true){nair_down_detected = 1;}
+    		// If no down was ever detected and it hits, then manually set VSP. 
+    		// This way we do not alter old vsp if down was inputted
+    		if(nair_down_detected == false && has_hit == true){
+    			old_vsp = -4;
+    		}
+    	}
+    	//print(nair_down_detected);
+    	/*
         if(((window == 2 and down_down == false) or window == 5) and has_hit == true ){
             old_vsp = -4; // Set VSP after hitpause
         }
+        */
     break;
     
     case AT_DSPECIAL:
@@ -750,6 +768,11 @@ switch(attack){
 			spawn_hit_fx(x,y,hfx_uspecial_jumpfx);
 		}
 	break;
+	case AT_NSPECIAL:
+		if(window == 1 && window_timer == 1 && !hitpause){
+			spawn_hit_fx(x - (50 * spr_dir),y - 60,hfx_parryfx);
+		}
+	
 	case AT_DTILT:
 	if(window == 1 && window_timer == (get_window_value(attack,1,AG_WINDOW_LENGTH) - 1) && !hitpause){
 			spawn_base_dust(x, y, "dash_start",spr_dir);
@@ -862,6 +885,7 @@ switch(attack){
 		insert_sfx(1,window_timer_last_frame,"sfx_Uair",.5,1,false);
 	break;
 	case AT_NSPECIAL:
+		insert_sfx(1,1,"mfx_star",.65,2,true);
 		insert_sfx(1,window_timer_last_frame,"sfx_swipe_heavy2",.65,.85,true);
 	break;
 	case AT_FSPECIAL:

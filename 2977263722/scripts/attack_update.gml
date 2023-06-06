@@ -467,14 +467,20 @@ break;
 	//set movement checks ==
 	    var held_forward = false;
 	    var held_back = false;
+		var free_var = false;
 		if (left_down && spr_dir = -1) || (right_down && spr_dir = 1) held_forward = true;
-		if (left_down && spr_dir = 1) || (right_down && spr_dir = -1) held_back = true;
+		if ((left_down && spr_dir = 1) || (right_down && spr_dir = -1)) held_back = true;
+		if free && !respawn_taunt free_var = true;
+		
 		
 	    if ground_type = 1 || window = 1 {
 			off_edge = false;
 		} else {
 			off_edge = true;
 		}
+	
+	//fall off respawn =====
+	if respawn_taunt && (x > plat_x + 80 || x < plat_x - 80) respawn_taunt = false;
 		
 	//check movement =======
 		if held_forward {
@@ -487,7 +493,7 @@ break;
 		}
 	
 	//cancel ===============
-		if !free && (window != 1 && window != 3) && (taunt_pressed || attack_pressed || special_pressed || shield_pressed) {
+		if !free_var && (window != 1 && window != 3) && (taunt_pressed || attack_pressed || special_pressed || shield_pressed) {
 			window = 3;
 			window_timer = 0;
 			sound_play(sound_get("3dw_pop"));
@@ -506,18 +512,18 @@ break;
 	
 			case 2:
 	//turn =================
-			    if held_back && !free {
+			    if held_back && !free_var {
 				    window = 5;
 				    window_timer = 0;
 					spr_dir *= -1;
 				}
 	
     //sounds ===============
-				if window_timer = 12 && !hitpause && !free {
+				if window_timer = 12 && !hitpause && !free_var {
 				    sound_play(sound_get("3dw_crouch"), false, noone, 0.4, 1);
 					spawn_base_dust(x-16*spr_dir, y, "walk", spr_dir);
 				}
-				if window_timer = 24 && !hitpause && !free {
+				if window_timer = 24 && !hitpause && !free_var {
 				    sound_play(sound_get("3dw_crouch"), false, noone, 0.4, 0.8);
 					spawn_base_dust(x-16*spr_dir, y, "walk", spr_dir);
 				}
@@ -526,10 +532,11 @@ break;
 			case 5:
     //turn like base walk ==
 			    if window_timer = 4 {
-				    if held_forward && !held_back && !free {
+				    if held_forward && !held_back && !free_var {
 					    window = 4;
 						window_timer = 6;
-					} else if held_back && !free {
+					} else if held_back && !free_var {
+					print_debug("??");
 					    window = 5;
 						window_timer = 0;
 						spr_dir *= -1;

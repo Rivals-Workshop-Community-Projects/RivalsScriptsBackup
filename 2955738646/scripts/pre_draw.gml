@@ -3,15 +3,64 @@ shader_start();
 //draw_debug_text( x-90, y-240, "window: " + string( window ));
 //draw_debug_text( x-90, y-220, "window timer: " + string( window_timer ));
 //draw_debug_text( x-90, y-200, "state: " + get_state_name( state ));
-//draw_debug_text( x-90, y-180, "state timer: " + string( state_timer ));
+//draw_debug_text( x-90, y-160, "nspecial time: " + string( nspecial_time ));
 //draw_debug_text( x-90, y-180, "hsp: " + string( hsp ));
 //draw_debug_text( x-90, y-160, "vsp: " + string( vsp ));
-//draw_debug_text( x-90, y-140, "state timer: " + string( state_timer ));
-//draw_debug_text( x-90, y-140, "dspecial charge: " + string( dspecial_charge ));
+//draw_debug_text( x-70, y-160, "state timer: " + string( state_timer ));
+//draw_debug_text( x-70, y-180, "window: " + string( window ));
+//draw_debug_text( x-70, y-200, "window timer: " + string( window_timer ));
 
 //draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.3, x - 118, y - 138, 2, 1.5, 0, c_white, .4);
 //draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.2, x - 118, y - 162, 2, 1.8, 0, c_white, .3);
 //draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.1, x - 118, y - 198, 2, 2.2, 0, c_white, .2);
+
+if (get_player_color(player) == 8) {
+	if((state == PS_ATTACK_AIR || state_cat == SC_AIR_NEUTRAL)){
+	//Except all of these
+	if !(attack == AT_DSPECIAL && window == 6 || attack == AT_DSPECIAL_2 || attack == AT_NSPECIAL && free == false
+	|| attack == AT_NSPECIAL && window > 5 && air_special == true || attack == AT_EXTRA_1 || attack == AT_FSPECIAL && window <= 2 ||
+	attack == AT_USPECIAL && window == 7 || attack == AT_DSPECIAL && window == 1 && window_timer < 30 || attack == AT_USPECIAL_2){
+	if(vsp < 1){
+	if(hsp >= 8){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x + 40, y - 120, 2, 2, 270, c_olive, 1);
+		
+	}else if(hsp <= -8){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 40, y + 20, 2, 2, 90, c_olive, 1);
+		
+	}else if(hsp > 4 && hsp < 8){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 10, y - 130, 2, 2, 315, c_olive, 1);
+		
+	}else if((hsp < -4 && hsp > -8)){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 90, y - 40, 2, 2, 45, c_olive, 1);
+		
+	}else{
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 70, y - 90, 2, 2, 0, c_olive, 1);
+			}
+		}
+	}
+}
+
+if (state == PS_ATTACK_AIR && attack == AT_NSPECIAL && (window == 6 || window == 7 || window == 10) && air_special == true){
+	if (vsp < 0.1 || vsp > 0.1){
+	if(hsp >= 0.1){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x + 40, y - 120, 2, 2, 270, c_olive, 1);
+		
+	}else if(hsp <= -1.0){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 40, y + 20, 2, 2, 90, c_olive, 1);
+		
+	}else if(hsp > 0.1 && hsp < 0.1){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 10, y - 130, 2, 2, 315, c_olive, 1);
+		
+	}else if((hsp < -10.0 && hsp > -0.1)){
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 90, y - 40, 2, 2, 45, c_olive, 1);
+		
+	}else{
+	draw_sprite_ext(sprite_get("bosters"), get_gameplay_time()*.5, x - 70, y - 90, 2, 2, 0, c_olive, 1);
+		}
+	}
+}
+	
+} else 
 
 if((state == PS_ATTACK_AIR || state_cat == SC_AIR_NEUTRAL)){
 	//Except all of these

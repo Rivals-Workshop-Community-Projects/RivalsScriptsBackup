@@ -178,7 +178,9 @@ draw_set_alpha(1);
     if(character_name == "Untitled Goose"){win_quote = "GO AWAY GOOSE, I AM TRYING TO RELAX HERE.";} // works
     if(character_name == "Valley & Death"){win_quote = "You reek of death. You are no ordinary florae, you may be the most evil one I have met yet.";} // works
     if(character_name == "Yuuto Ichika"){win_quote = "Bolders, space ships, magic, is there anything you won't throw at me?";} //works
-
+    
+    //Others
+    if(character_name == "Lilac"){win_quote = "I find some kinship in another half water dragon. Together we can fight evil!";} //works
     
     //Generic Quotes if none are listed above
     if(win_quote == 0){

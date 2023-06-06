@@ -27,7 +27,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 5);
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1); //Gut punch
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1); //Hard punch
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);

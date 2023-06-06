@@ -112,6 +112,7 @@ player_location_start_of_grab_y = 0;
 double_jump_backward_flag = false;
 hsp_at_start_of_double_jump = 0;
 djump_given_back_flag = false;
+emergency_fspec_given_back_flag = false;
 uspecial_stall_lockout_flag = false;
 uspecial_stall_counter = 0;
 

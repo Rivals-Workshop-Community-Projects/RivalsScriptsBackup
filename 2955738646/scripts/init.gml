@@ -48,7 +48,7 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 17; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 0.7; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 9;
@@ -99,6 +99,7 @@ jump_sound = sound_get("ARC_BTL_CMN_GK_JumpAir");
 djump_sound = sound_get("ARC_BTL_CMN_ZSpin");
 air_dodge_sound = sound_get("ARC_BTL_CMN_PC_AirDash");
 
+
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
@@ -121,6 +122,7 @@ SoundPlayed = false;
 timestop_aftershock = noone;
 
 dash_sound = (asset_get("sfx_ell_hover"));
+random_mecha = 0; //Random Mecha number
 telepunch = 0;
 //0 - Ready
 //1 - Teleported 
@@ -156,6 +158,8 @@ chasedodge = 0;
 target_addup = 0;
 
 IllCrushYou = 0; //The little eletricity after taunting
+
+loopingwindow = 0; //Down Special holding onto the window
 
 RollAfter = hit_fx_create( sprite_get( "roll_afterimage" ),15);
 RollAfterL = hit_fx_create( sprite_get( "roll_afterimage_l" ),15);

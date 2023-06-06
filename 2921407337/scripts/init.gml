@@ -164,6 +164,7 @@ old_has_airdodge = false;
 other_player_galaxied = false;
 current_sound_obj = noone;
 stage_music_suppression_timer = 0;
+nair_down_detected = false; // Used in Nair 1 hitfall timing
 
 // SL Variables
 SL_damage_timer = 0;

@@ -38,9 +38,11 @@ switch (state){
     break;
 }
 
-if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIAL_2 && window == 6){
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIAL_2){
+	if (window == 6){
 	sprite_index = sprite_get( "uspecial_ground" );
 	hurtboxID.sprite_index = sprite_get( "uspecial_ground_hurt" );
+	}
 }
 
 if(state == PS_WALK){

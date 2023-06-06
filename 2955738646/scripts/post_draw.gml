@@ -1,10 +1,6 @@
 shader_start();
 //nothin'
 
-//draw_sprite_ext(sprite_get("taunt_aura2"), get_gameplay_time()*.2, x - 118, y - 109, 2, 1, 0, c_white, .2);
-//draw_sprite_ext(sprite_get("taunt_aura2"), get_gameplay_time()*.3, x - 118, y - 149, 2, 1.5, 0, c_white, .2);
-//draw_sprite_ext(sprite_get("taunt_aura2"), get_gameplay_time()*.5, x - 118, y - 209, 2, 2, 0, c_white, .4);
-
 if (draw_indicator == true){
 if (attack == AT_DSPECIAL_2){
     if (window == 2 && state_timer == 9 && state == PS_ATTACK_GROUND){
@@ -33,23 +29,24 @@ if (attack == AT_USPECIAL_2 && window == 2 && (state == PS_ATTACK_AIR || state =
     //draw_sprite_ext(sprite_get("uspecial_ground2_scan"), 0, x+12 * spr_dir, y-312, 1 * spr_dir, 1, 0, c_white, 1);
 }
 
-if (nspecial_time < 38 && move_cooldown[AT_NSPECIAL] > 0){
-    draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-126, 1, 1, 0, c_white, 0.6);
+if (nspecial_time > 0 && nspecial_time < 36){
+    draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-127 - hud_offset, 1, 1, 0, c_white, 0.4);
 }
 
 if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 if (attack == AT_NSPECIAL){
-    if (window == 1 || window == 6){
-    draw_sprite_ext(sprite_get("bar"), 0, x-22, y-126, 1.2, 0.8, 0, c_white, 0.3);
+    if ( (window == 1 || window == 6) ){
+        if (nspecial_time == 37){
+            draw_sprite_ext(sprite_get("bar"), 36, x-22, y-127, 1, 1, 0, c_white, 0.5);
+        }
     }
-    if (window == 2 || window == 7){
-    draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-126, 1, 1, 0, c_white, 1);
-    }
-    if (window == 3 || window == 4){
-    draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-126, 1, 1, 0, c_white, 0.9);
-    }
-    if (window == 5 || window == 8){
-    draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-126, 1, 1, 0, c_white, 0.5);
+    if ( (window == 2 || window == 7) ){
+        if (nspecial_time < 37){
+            draw_sprite_ext(sprite_get("bar"), nspecial_time, x-22, y-127, 1, 1, 0, c_white, 1);
+        }
+        if (nspecial_time == 37){
+            draw_sprite_ext(sprite_get("bar"), 36, x-22, y-127, 1, 1, 0, c_white, 1);
+        }
     }
     
     if (window == 10 && window_timer > 20 && window_timer < 35){

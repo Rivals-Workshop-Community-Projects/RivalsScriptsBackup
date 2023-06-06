@@ -49,7 +49,7 @@ if attack == AT_EXTRA_2 {
     	spr_dir = iaidir 
     }
 
-    if window_timer = 5*4 {
+    if window_timer = 5*2 {
     	sound_play(sound_get("swingw1"),false,noone,.6,1.4)
     	sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, .6,1.6)
     	fx1 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash )	

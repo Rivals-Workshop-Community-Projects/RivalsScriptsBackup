@@ -13,7 +13,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("f3527_012_swish_p_l"));
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_WHIFFLAG, 10);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1); //Holding enemy in place

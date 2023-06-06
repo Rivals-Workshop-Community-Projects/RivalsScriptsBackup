@@ -57,7 +57,6 @@ set_hitbox_value(AT_FSTRONG, hbox_num, HG_VISUAL_EFFECT, hfx_fire_1);
 set_hitbox_value(AT_FSTRONG, hbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_FSTRONG, hbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, hbox_num, HG_HIT_PARTICLE_NUM, 4);
-//set_hitbox_value(AT_FSTRONG, hbox_num, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 
 set_hitbox_value(AT_FSTRONG, hbox_num, HG_PROJECTILE_SPRITE, sprite_get("fstrong_proj"));
 set_hitbox_value(AT_FSTRONG, hbox_num, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("fstrong_proj_mask"));

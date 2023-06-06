@@ -640,6 +640,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Erika";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "These colors shine briliantly, like an RGB gamer set up at the local cafe.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Casual Observer";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
 	num_of_shifted_alts = color_slot - 32;
 	//print(num_of_shifted_alts);

@@ -32,6 +32,16 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 4, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_BAIR, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
+//pin to wall
+set_window_value(AT_BAIR, 5, AG_WINDOW_TYPE, 1);
+set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 120);
+set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_BAIR, 5, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_BAIR, 5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_BAIR, 5, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_BAIR, 5, AG_WINDOW_VSPEED_TYPE, 1);
+
 set_num_hitboxes(AT_BAIR, 4);
 
 set_hitbox_value(AT_BAIR, 1, HG_PARENT_HITBOX, 1);

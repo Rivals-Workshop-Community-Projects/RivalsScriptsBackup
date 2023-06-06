@@ -87,7 +87,7 @@ set_color_profile_slot( 5, 6, 67, 68, 87 ); //kimono bottom
 set_color_profile_slot( 5, 7, 238, 220, 0 ); //kimono accents
 
 // Lyca
-set_color_profile_slot( 6, 0, 255, 130, 47 ); //fur
+set_color_profile_slot( 6, 0, 255, 97, 79 ); //fur
 set_color_profile_slot( 6, 1, 247, 238, 213 ); //fur tip
 set_color_profile_slot( 6, 2, 247, 238, 213 ); //hair
 set_color_profile_slot( 6, 3, 72, 130, 172 ); //horns + accents

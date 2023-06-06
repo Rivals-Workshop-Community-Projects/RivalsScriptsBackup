@@ -37,7 +37,11 @@
 #macro CL_ARTICLE_DESTROY 99
 
 check_interupts();
-if(state != CL_GOT_HIT && state != CL_ARTICLE_DESTROY){hit_detection();}
+if(state != CL_GOT_HIT && state != CL_ARTICLE_DESTROY // Lockout on destroy
+	&& state != CL_DTHROW && state != CL_DTHROW_TEAM // Lockout on Grabs
+	){
+	hit_detection();
+}
 //print("left_down: " + string(player_id.left_down) + "\ right_down: " + string(player_id.right_down));
 if(mask_index != player_id.hurtbox_spr){mask_index = player_id.hurtbox_spr;} // Enable for hurtbox editing Set this before every state and change it later
 
@@ -454,17 +458,22 @@ switch(state){
         		break;
         }
         //vsp = clamp(vsp,-8,player_id.max_fall);
+        // Right Grab Controls
         if(state_timer < 5 && (player_id.right_down || player_id.right_strong_pressed) && !player_id.left_strong_pressed){ spr_dir = 1}; // Face Right, Need to disable alt direction if drifting
+        // Left Grab Controls
         if(state_timer < 5 && (player_id.left_down || player_id.left_strong_pressed) && !player_id.right_strong_pressed){ spr_dir = -1}; // Face Left, Need to disable alt direction if drifting
-        if(state_timer < 5 && (player_id.up_down || player_id.up_strong_pressed)){state = CL_DSPECIAL_UP;state_timer = 0;} // Go to Dspecial Up
-        if(state_timer < 5 && (player_id.down_down || player_id.down_strong_pressed)
+        // Up Grab Controls
+        if(state_timer < 5 && (player_id.up_down || player_id.up_strong_pressed || player_id.up_stick_pressed)){state = CL_DSPECIAL_UP;state_timer = 0;} // Go to Dspecial Up
+        // Down Grab Controls
+        if(state_timer < 5 && (player_id.down_down || player_id.down_strong_pressed || player_id.down_stick_pressed)
         && free && player_id.attack == AT_EXTRA_1){state = CL_DSPECIAL_DOWN;state_timer = 0} // Go to Dspecial Down
         
-        
+        // Play Sound
         if(state_timer = 4){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.8)// sound_play(sound_temp,false,noone,volume_temp,pitch_temp ); // soundID,looping,panning,volume,pitch /
-        	} 
+        	}
+        // Create Hitbox, if it exists, make it follow her.
         if(state_timer = 5){current_hitbox = create_article_hitbox(AT_DSPECIAL,2,x + (spr_dir * 35), y - 26);}
         if(instance_exists(current_hitbox)){
 			var temp_x = x + (spr_dir * 38);
@@ -905,7 +914,10 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 		(
 		//(player_id.attack == AT_DSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Dspecial without swapped inputs
 		//(player_id.attack == AT_NSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Nspecial with swapped inputs
+		// Controls inputs, Up and down variant need to be managed above in state
 		(player_id.attack == AT_EXTRA_1 && (player_id.attack_pressed // Attack Pressed
+		|| player_id.left_stick_pressed || player_id.right_stick_pressed // Tilt Stick Compat L/R
+		|| player_id.up_stick_pressed || player_id.down_stick_pressed // Tilt Stick Compat U/D
 		|| player_id.up_strong_pressed || player_id.down_strong_pressed // Any Strong Pressed
 		|| player_id.right_strong_pressed || player_id.left_strong_pressed) // Any Strong Pressed
 		))){
@@ -1036,10 +1048,26 @@ hitstop = floor(desired_hitstop);
 //Hit Lockout
 if article_should_lockout hit_lockout = hbox.no_other_hit;
 
+// Custom Roekoko stuff
 state = CL_GOT_HIT;
 if(was_hit == false){was_hit = true; state_timer = 0;}
 
-/* commented out due to her disapeering on it.
+// Determine if it is a null player number and make it negative 1
+if (hit_player_num == 0){ hit_player_num = -1}
+// Read damage taken an halve it for the real roekoko as damage
+var damage_taken = floor(hbox.damage / 2);
+// Flat out damage under the threshold to atleast 3 minium.
+if(damage_taken < 3){damage_taken = 3};
+// Damage application to the real Roekoko
+take_damage(player_id.player, hit_player_num,damage_taken);
+// Destroy a projectile hitbox that hits it if it is not plasma safe to mirror Forsclone
+if(hbox.type == 2){ // Do this check first 
+	if(hbox.plasma_safe != true){
+		hbox.destroyed = true;
+	}
+}
+
+/* commented out due to her disapeering on hit.
 //Default Hitstun Calculation
 hitstun = (hbox.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + hbox.damage * 0.12 * hbox.kb_scale * 4 * 0.65 * kb_adj) + 12;
 hitstun_full = hitstun;

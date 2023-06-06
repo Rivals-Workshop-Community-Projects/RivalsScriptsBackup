@@ -16,22 +16,39 @@ switch my_hitboxID.attack {
 		sound_play(sound_get("bully_noise"));
 	break;
 	
-	case AT_FSTRONG:
-	    sound_stop(asset_get("sfx_ell_small_missile_ground"));
-	    sound_play(asset_get("sfx_ell_small_missile_ground"));
 	case AT_DSTRONG:
-	    if my_hitboxID.hbox_num = 6 {
+	    switch my_hitboxID.hbox_num {
+		    case 9:
 		    //fake burn because it doesnt apply on hitboxes without kb thanks dan !!!!!!!!!!!
-		        sound_play(asset_get("sfx_burnapplied"));
 				hit_player_obj.burned = true;
 				hit_player_obj.burnt_id = other;
 				hit_player_obj.burn_timer = 0;
-		        hit_player_obj.burned_color = bully_burn_colour;
-		} else {
-		    sound_stop(asset_get("sfx_burnapplied"));
-		    sound_play(asset_get("sfx_burnapplied"));
-		    hit_player_obj.burned_color = bully_burn_colour;
+				sound_play(asset_get("sfx_burnapplied"));
+			break;
+		    case 1:
+		    case 3:
+		    case 6:
+			    sound_play(asset_get("sfx_ori_charged_flame_hit"));
+		    break;
+			case 2:
+			case 4:
+			case 7:
+			    sound_play(asset_get("sfx_ell_small_missile_ground"));
+			break;
+			case 5:
+			case 8:
+			    sound_play(asset_get("sfx_zetter_upb_hit"));
+			break;
 		}
+		hit_player_obj.burned_color = bully_burn_colour;
+	break;
+	
+	case AT_FSTRONG:
+	    sound_stop(asset_get("sfx_ell_small_missile_ground"));
+	    sound_play(asset_get("sfx_ell_small_missile_ground"));
+		sound_stop(asset_get("sfx_burnapplied"));
+		sound_play(asset_get("sfx_burnapplied"));
+		hit_player_obj.burned_color = bully_burn_colour;
 	break;
 	
 	case AT_NSPECIAL:

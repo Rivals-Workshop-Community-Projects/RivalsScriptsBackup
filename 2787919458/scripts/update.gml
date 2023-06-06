@@ -7,12 +7,17 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
     move_cooldown[AT_USPECIAL] = 0;upb = false;sanic_uspec_count=0;dspec_stall = false;
 	nspec_stall = false;
 	move_cooldown[AT_FSPECIAL] = 0;
+	bair_pin = false;
 }
 switch(state){
     case PS_DASH_TURN:
      	if(state_timer == 0){
     		random_dash = random_func(1,7,true)
     	}   
+		if(random_dash == 6 && state_timer == 7){
+			sound_stop(wheel_sfx);
+			wheel_sfx = sound_play(sound_get("wheel"));
+		}      	
     	if(state_timer < 4){
     		hsp += 2*spr_dir;
     	}
@@ -31,13 +36,10 @@ switch(state){
 		}
 		if(random_dash == 6){
 			if(get_gameplay_time() % 120 == 0 || state_timer == 1){
-				sound_stop(airhorn_sfx);
-				airhorn_sfx = sound_play(sound_get("wheel"))
+				sound_stop(wheel_sfx);
+				wheel_sfx = sound_play(sound_get("wheel"));
 			}
 		}
-    break;
-    case PS_DASH_STOP:case PS_FIRST_JUMP:
-    	sound_stop(sound_get("wheel"))
     break;
     case PS_AIR_DODGE://Credit to Sai
 		if(state_timer == 1 && !joy_pad_idle){
@@ -56,7 +58,6 @@ switch(state){
         }
     break;
     case PS_CROUCH:
-    	sound_stop(sound_get("wheel"))
         if(state_timer == 1 && !hitpause){
             sound_play(sound_get("sfx_crouch"));
         }
@@ -78,7 +79,55 @@ switch(state){
     break;
     case PS_SPAWN:
 		if(state_timer == 5){
-			switch(get_player_color(player)){
+			with(oPlayer) if(self != other){
+				if(other.alt == 9){
+					if(url == 2397064593){ //Rouge
+						with(other){
+							sound_stop(sound_get("step_it_up"));
+							sound_play(sound_get("one_polygon"));
+							return;
+						}
+					}					
+				}
+				if(other.alt == 10){
+					if("is_Sanic" in self && alt == 11 || url == 1967487025){
+						with(other){
+							sound_stop(sound_get("hot_topic"));
+							sound_play(sound_get("shadow_small_dick"));
+							return;
+						}
+					}else if("is_Sanic" in self && alt == 8 || (url == 2128232080 || url == 2545216686)){
+						with(other){
+							sound_stop(sound_get("step_it_up"));
+							sound_play(sound_get("miss_wife"));
+							return;
+						}
+					}					
+				}
+				if(other.alt == 12){
+					if("is_Sanic" in self && alt == 8 || (url == 2128232080 || url == 2545216686)){
+						with(other){
+							sound_stop(sound_get("step_it_up"));
+							sound_play(sound_get("are_you_my_mom"));
+							return;
+						}
+					}else if("is_Sanic" in self && alt == 0 || (string_count("sonic", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0)){
+						with(other){
+							sound_stop(sound_get("step_it_up"));
+							sound_play(sound_get("shut up you stupid bitch"));
+							return;
+						}
+					}					
+				}
+				with(other){
+					if(alt == 11){sound_play(sound_get("hot_topic"));return;}
+					if(alt == 15){sound_play(sound_get("weegee"));return;}
+					if(alt == 16){sound_play(sound_get("you want it"));return;}
+					if(alt == 19){sound_play(sound_get("shrek_hello"));return;}
+					sound_play(sound_get("step_it_up"));
+				}
+			}
+			/*switch(get_player_color(player)){
 				default:
 					sound_play(sound_get("step_it_up"));
 				break;
@@ -151,9 +200,9 @@ switch(state){
 				break;				
 				case 19:
 					sound_play(sound_get("shrek_hello"));
-				break;
+				break;*/
 			}
-		}    
+		//}  
     break;
     case PS_TECH_GROUND:
 		if(state_timer == 1 && !trigger_warning){
@@ -162,11 +211,13 @@ switch(state){
 		}    
     break;    
 }
-dash_speed = hsp*spr_dir;
+dash_speed = abs(hsp);
 hsp = clamp(hsp,-maxspd,maxspd);
 if(!curspd_override){
-	is_fest = (curspd >= 10 && hsp != 0);
+	is_fest = (abs(curspd) >= 10 && hsp != 0);curspd = hsp;
 }
+if(state != PS_DASH && (state != PS_DASH_TURN && random_dash == 6 || state == PS_DASH_TURN && random_dash != 6))sound_stop(wheel_sfx);
+
 //Credit to Bar-Kun, Frtoud, and Mr. Nart!
 if(is_fest && trail_draw_size < trail_total_size) trail_draw_size++;
 else if (!is_fest && trail_draw_size > 1) trail_draw_size--;
@@ -202,9 +253,11 @@ if get_player_color(player) = 2 {
 
 if(!instance_exists(dorito_hb) && move_cooldown[AT_NSPECIAL] > 65){
 	move_cooldown[AT_NSPECIAL] = 0;
+	var fx = spawn_hit_fx(x,y-40,301);fx.depth = depth - 4;sound_play(sound_get("lighthit2"));
 }
 if(move_cooldown[AT_NSPECIAL] == 0 && instance_exists(dorito_hb)){
 	dorito_hb = noone;
+	var fx = spawn_hit_fx(x,y-40,301);fx.depth = depth - 4;sound_play(sound_get("lighthit2"));
 }
 if(!instance_exists(shrek_door) && move_cooldown[AT_FSTRONG] < 3){
 	move_cooldown[AT_FSTRONG] = 0;
@@ -218,7 +271,6 @@ if(!instance_exists(doge) && move_cooldown[AT_USTRONG] < 3){
 if((state != PS_RESPAWN && attack != AT_TAUNT || attack == AT_TAUNT && vsp != 0) && respawnplat == 1){
 	respawnplat = 0;
 }
-
 if(instance_exists(dat_boi)){
 	with(asset_get("oPlayer")){
 		if(datboi_hit_cooldown > 0){

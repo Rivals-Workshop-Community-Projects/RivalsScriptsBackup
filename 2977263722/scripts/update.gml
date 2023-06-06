@@ -173,15 +173,15 @@ with oPlayer {
 	}
 }
 
-
-
 //RESPAWN PLAT =====================================================================
 if state = PS_RESPAWN || respawn_taunt {
-    
-    plat_x = x;
-	plat_y = y;
+
+
+    if !respawn_taunt plat_x = x;
+	if !respawn_taunt plat_y = y;
 	plat_y_offset = 0;
 	plat_y_offset2 = 0;
+	
 	
 	if visible {
 	    plat_on = 10;
@@ -189,7 +189,7 @@ if state = PS_RESPAWN || respawn_taunt {
 	    plat_on = 0;
 	}
 	
-	if alt = 17 { plat_dir = 1 } else { plat_dir = spr_dir; }
+	if alt = 17 { plat_dir = 1 } else if !respawn_taunt { plat_dir = spr_dir; }
 
 	if "article_starticle" not in self {
 	    article_starticle = instance_create(x,y,"obj_article1")

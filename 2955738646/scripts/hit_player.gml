@@ -1,30 +1,3 @@
-/*
-if ((my_hitboxID.attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR ) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-    }
-}
-*/
-
-/*
-//if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-	//if(attack == (AT_USPECIAL || AT_FSPECIAL || AT_NSPECIAL || AT_DSPECIAL)){
-if !(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num < 3
-	|| my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num < 4 
-	|| my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num < 3
-	|| my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num < 2
-	|| my_hitboxID.attack == AT_USPECIAL_2 && my_hitboxID.hbox_num < 4
-	|| my_hitboxID.attack == AT_USTRONG
-	|| my_hitboxID.attack == AT_FSTRONG
-	|| my_hitboxID.attack == AT_DSTRONG){
-	has_hit_id = noone;
-}
-	//}
-//}
-*/
 if (move_cooldown[AT_TAUNT_2] > 10){ move_cooldown[AT_TAUNT_2] -= 10; }
 
 if (my_hitboxID.attack == AT_USPECIAL){
@@ -38,24 +11,14 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 	if (my_hitboxID.hbox_num <= 2){
 		sound_play (sound_get ("ScouterFound")); 
 	destroy_hitboxes();
-	window = 2;
-	window_timer = 15;
+	//window = 2;
+	window_timer += 2;
 	move_cooldown[AT_USPECIAL_2] = 90;
 	marked_id = true;
 	other.should_make_shockwave = false;
 	other.targeted = true;
 	other.target_time = 2;
 	target_addup += 1;
-	//if (other.hitstop > 1){ sound_play(asset_get("mfx_player_found")); }
-	}
-	if (my_hitboxID.hbox_num > 2){
-		//other.targeted = false;
-		//hsp = -10 * spr_dir;
-		//vsp = -10;
-		//other.target_time -= 1;
-		if (other.target_time == 0){
-		//other.targeted = false;
-		}
 	}
 	if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
 		other.target_time -= 1;
@@ -64,6 +27,7 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 		//vsp = -20;
 	}
 	if (my_hitboxID.hbox_num == 5){
+		destroy_hitboxes();
 		x = my_hitboxID.x;
 		y = my_hitboxID.y+35;
 		other.targeted = false;
@@ -95,52 +59,6 @@ if (my_hitboxID.attack == AT_FAIR){
 		if (my_hitboxID.spark_rng == 3){ spawn_hit_fx(my_hitboxID.x-1 * spr_dir, my_hitboxID.y - my_hitboxID.spark_dist, (BulletHit2)); }
 	}
 }
-/*
-if ((my_hitboxID.attack == AT_USPECIAL) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-    }
-}
-
-if ((my_hitboxID.attack == AT_FSTRONG) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-    }
-}
-
-if ((my_hitboxID.attack == AT_DATTACK) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-    }
-}
-if ((my_hitboxID.attack == AT_DSTRONG) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-    }
-}
-if ((my_hitboxID.attack == AT_UTILT && window == 2) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
-    if (grabbedid == noone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-		grabbedid.ungrab = 0;
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-        window = 4;
-        window_timer = 0;
-    }
-}
-*/
 
 if (my_hitboxID.attack == AT_FSTRONG){
 	if (my_hitboxID.hbox_num == 1){
@@ -158,6 +76,9 @@ if (my_hitboxID.attack == AT_FSTRONG){
 	if (my_hitboxID.hbox_num == 2){
 	if (grabbedid.should_make_shockwave == true){
 	spawn_hit_fx(my_hitboxID.x+6 * spr_dir, my_hitboxID.y-24, (Explosive_Punch));
+	//sound_play(sound_get("f16999_001_str_se_0"));
+	sound_play(sound_get("f15480_054_cmn_other_dokabaki_offset_0"));
+	
 	}
 	if (grabbedid.should_make_shockwave == false){
 	spawn_hit_fx(my_hitboxID.x+25 * spr_dir, my_hitboxID.y-20, (204));
@@ -177,6 +98,7 @@ if (my_hitboxID.attack == AT_DSTRONG && hit_player_obj.state != PS_RESPAWN && hi
 if (attack == AT_FSPECIAL){
 	vsp = -9;
 	hsp = -9 * spr_dir;
+	if (random_mecha == 1){ sound_play(sound_get("Mecha_Too_Slow")); random_mecha = 0; }
 		//instance_destroy(SuperDash_Particle2);
 		//instance_destroy(SuperDash_Particle3);
 		//instance_destroy(SuperDash_Particle4);
@@ -243,10 +165,15 @@ if (attack == AT_EXTRA_2){
 
 //SUPER MECHA FUN TIME
 
-if((my_hitboxID.attack == AT_DSPECIAL_2 && window == 2) && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
+if(my_hitboxID.attack == AT_DSPECIAL_2){
+	if (my_hitboxID.hbox_num == 1){
+		if (random_mecha == 1){ sound_play(sound_get("Mecha_NoUseRunning")); random_mecha = 0; }
+	if (window == 2 && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
 	set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 6);
 	window = 4;
 	window_timer = 0;
+		}
+	}
 }
 
 //Timestop hitboxes

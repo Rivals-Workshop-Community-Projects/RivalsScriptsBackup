@@ -161,7 +161,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_elec_paw);//// 304 - basic large
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Late");//HG_MUNO_HITBOX_NAME
 

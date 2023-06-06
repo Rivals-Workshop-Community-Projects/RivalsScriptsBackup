@@ -179,7 +179,7 @@ set_hitbox_value(AT_DTILT, 7, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 7, HG_DAMAGE, 1);
 set_hitbox_value(AT_DTILT, 7, HG_ANGLE, 100);
 set_hitbox_value(AT_DTILT, 7, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DTILT, 7, HG_KNOCKBACK_SCALING, .1);
+set_hitbox_value(AT_DTILT, 7, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DTILT, 7, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DTILT, 7, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DTILT, 7, HG_EXTRA_HITPAUSE, 4);
@@ -188,6 +188,3 @@ set_hitbox_value(AT_DTILT, 7, HG_VISUAL_EFFECT_X_OFFSET, 9);
 set_hitbox_value(AT_DTILT, 7, HG_VISUAL_EFFECT_Y_OFFSET, 9);
 set_hitbox_value(AT_DTILT, 7, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(AT_DTILT, 7, HG_HITBOX_GROUP, -1);
-
-
-

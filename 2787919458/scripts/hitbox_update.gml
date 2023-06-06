@@ -248,6 +248,8 @@ if(attack == AT_NSPECIAL){
 				if(player == player_id.player){
 					player_id.shrek_door = noone;
 					player_id.move_cooldown[AT_FSTRONG] = 60;
+					var fx = spawn_hit_fx(player_id.x,player_id.y-40,301);fx.depth = player_id.depth - 4;
+					sound_play(sound_get("lighthit2"));
 				}
 			}			
 		}
@@ -325,6 +327,7 @@ if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
 		if(x > room_width+1000 || x < -1000 || y >= room_height+1000 || y < -2000){
 	    	destroyed = true;
+	    	player_id.move_cooldown[AT_DSTRONG] = 0;
 	    	with(player_id)sound_play(sound_get("airhorn"))
 		}
 		if(num == 0){//boi idle
@@ -370,15 +373,19 @@ if(attack == AT_NSPECIAL){
 				if(image_index >= 9.8)image_index = 7;
 			}
 			if(hitbox_timer == length){
+				var fxa = spawn_hit_fx(player_id.x,player_id.y-40,301);fxa.depth = player_id.depth - 4;
 				spawn_hit_fx(x,y,302);
 				destroyed = true;
 				player_id.move_cooldown[AT_DSTRONG] = 0;
+				sound_play(sound_get("lighthit2"));
 			}
 			if(player != player_id.player){
 		    	datboi_timer++;
 		    	if(datboi_timer == 240){
 		    		player_id.dat_boi = noone;
 		    		player_id.move_cooldown[AT_DSTRONG] = 0;
+		    		var fx = spawn_hit_fx(player_id.x,player_id.y-40,301);fx.depth = player_id.depth - 4;
+		    		sound_play(sound_get("lighthit2"));
 		    	}
 			}
 	    	if(!player_id.charged_summon && hitbox_timer % 8 == 0 || player_id.charged_summon && hitbox_timer % 6 == 0){
@@ -418,6 +425,8 @@ if(attack == AT_NSPECIAL){
 	    	if(doge_timer == 240){
 	    		player_id.doge = noone;
 	    		player_id.move_cooldown[AT_USTRONG] = 0;
+	    		var fx = spawn_hit_fx(player_id.x,player_id.y-40,301);fx.depth = player_id.depth - 4;
+	    		sound_play(sound_get("lighthit2"));
 	    	}
 		}
 		spr_dir = 1;
@@ -448,6 +457,8 @@ if(attack == AT_NSPECIAL){
 					if(player == player_id.player){
 						player_id.doge = noone;
 						player_id.move_cooldown[AT_USTRONG] = 27;
+						var fx = spawn_hit_fx(player_id.x,player_id.y-40,301);fx.depth = player_id.depth - 4;
+						sound_play(sound_get("lighthit2"));
 					}
 				}
 			}

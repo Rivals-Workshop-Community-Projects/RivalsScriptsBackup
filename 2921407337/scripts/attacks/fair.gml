@@ -69,8 +69,8 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE, 40);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .7);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hfx_claw_slash);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hfx_big_normal);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
 

@@ -1,32 +1,13 @@
 //Updating hitboxes
-/*
-if (attack == AT_EXTRA_1){
-	if (hitbox_timer < 20){
-	hsp = (1 * spr_dir) + (player_id.hsp * spr_dir);
-	}
-	if (free == true && hsp != 0){ proj_angle -= 2 * spr_dir; }
-	if (hitbox_timer >= 100){ hitbox_timer = 20; }
-	cooldowntime = player_id.move_cooldown[AT_EXTRA_1];
-	if (cooldowntime > 0 && moved == false){
-	//has_hit_id = player_id.hit_player_obj;
-	//spr_dir = has_hit_id.spr_dir;
-	moved = true;
-	}
-	if (hitbox_timer > 20){
-		if (place_meeting( x, y-1, player_id)){
-		player_id.ChaosEmerald += 1;
-		destroyed = true;
-		}
-	}
-}
-*/
 
 if (attack == AT_NSPECIAL){
 	if(was_parried == true || player_id.state == PS_PRATLAND || player_id.state == PS_PRATFALL){ instance_destroy(); }
 	if (hbox_num == 1){
+		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
 	//create_hitbox(AT_NSPECIAL, 4, x + 30, y + 30);
 	}
 	if (hbox_num == 2){
+		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
 		if (place_meeting( x, y+9, asset_get("par_block"))){
 		//destroyed = true;
 		spark = true;
@@ -104,7 +85,7 @@ if (attack == AT_USPECIAL_2){ //Teleporting attack after lock-on
 if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 	if (hbox_num == 2){
 	x = follow.x+2;
-	y = follow.y-50;
+	y = follow.y-10 - follow.char_height;
 	if (hitbox_timer > 100 && player_id.timestop == true){
 		hitbox_timer = 0;
 	}
@@ -169,6 +150,7 @@ if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 
 if (attack == AT_USPECIAL_2){
 	//if (hbox_num == 3 || hbox_num == 4){
+			if (player_id.move_cooldown[AT_USPECIAL_2] < 1){ destroyed = true; }
 	if (hbox_num == 3){
 	    var missileparticle = spawn_hit_fx(x, y, 100);
 	    var mydir = point_direction(hsp,vsp,0,0);
@@ -205,8 +187,8 @@ if (attack == AT_USPECIAL_2){
 			        
 			        if (other.hitbox_timer > 5){
 	
-	    			if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed + 330; }
-	    			if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed + 200; }
+	    			if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed + 340; }
+	    			if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed + 190; }
 	    			other.hsp += lengthdir_x(2, curr_dir);
 	    			other.vsp += lengthdir_y(2, curr_dir);
 
@@ -330,48 +312,5 @@ if (hbox_num == 4){
 	vsp = -21;
 	}
 	*/
-	}
-}
-
-/*
-if (attack == AT_USPECIAL_2){
-	depth = 1;
-	marked_id = player_id.marked_id;
-	drag_speed = -1;
-	reel_speed = 8;
-	//if (hitbox_timer <= 10){ proj_angle = 35 * spr_dir; }
-	//if ((hitbox_timer mod 2) == 0) {
-	if (spr_dir == 1){ proj_angle = vsp * -3; } else if (spr_dir == -1){ proj_angle = vsp * 3; }
-	//}
-	//if (hitbox_timer > 1){
-	if (was_parried == false){
-			if (marked_id != noone && instance_exists(marked_id)) {
-				
-				//if ((hitbox_timer mod 3) == 0) {
-
-					var enemy_angle = point_direction(marked_id.x, marked_id.y - marked_id.char_height * 1, x, y);
-					
-					var enemy_dist = point_distance(marked_id.x, marked_id.y - marked_id.char_height * 1, x, y);
-					
-						//var drag_speed = max(sqrt(enemy_dist) * reel_speed, reel_speed);
-						var drag_speed = max(sqrt(10) * reel_speed, reel_speed);
-						hsp = lengthdir_x(drag_speed, enemy_angle + 180);
-						vsp = lengthdir_y(drag_speed, enemy_angle + 180);
-						ignores_walls = true;
-						through_platforms = 0;
-				//}
-			//}
-		}
-	}
-}
-
-
-/*
-if (attack == AT_USTRONG){
-	if (hbox_num == 2){
-		if (player_id.has_hit_player){
-	player_id.hit_player_obj.x = x+1 * spr_dir;
-	player_id.hit_player_obj.y = y+5 * player_id.hit_player_obj.char_height * 0.1;
-		}
 	}
 }

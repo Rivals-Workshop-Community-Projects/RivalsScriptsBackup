@@ -73,6 +73,7 @@ set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_INVINCIBILITY, 1);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_SFX, sound_get("Mecha_EAUH"));
 
@@ -90,7 +91,8 @@ set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, 3);
 
 set_num_hitboxes(AT_DSPECIAL_2, 5);
 
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_PARENT_HITBOX, 1); //Shmack
+//Shmack
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 3);
@@ -111,36 +113,8 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, sound_get("ARC_BTL_HTN_Kyusho_Hit"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_LOCKOUT, 1);
-/*
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_LIFETIME, 2);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_Y, -37);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_LOCKOUT, 1);
 
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_LIFETIME, 2);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_Y, -37);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_HIT_LOCKOUT, 1);
-
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_WINDOW_CREATION_FRAME, 6);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_LIFETIME, 2);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_HITBOX_Y, -37);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_HIT_LOCKOUT, 1);
-*/
-
-//set_hitbox_value(AT_DSPECIAL_2, 5, HG_PARENT_HITBOX, 5); //Pushing away
+//Pushing away
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_WINDOW_CREATION_FRAME, 2);

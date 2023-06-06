@@ -107,6 +107,12 @@ sprite_change_offset("downhurt", 128, 190);
 sprite_change_offset("uphurt", 128, 190);
 sprite_change_offset("spinhurt", 128, 190);
 
+sprite_change_offset("nair_land", 128, 190);
+sprite_change_offset("fair_land", 128, 190);
+sprite_change_offset("uair_land", 128, 190);
+sprite_change_offset("dair_land", 128, 190);
+sprite_change_offset("bair_land", 128, 190);
+
 sprite_change_offset("compat_mamizou", 64, 94);
 
 set_victory_theme(CH_FORSBURN);

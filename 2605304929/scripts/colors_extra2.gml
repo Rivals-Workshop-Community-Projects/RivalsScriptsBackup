@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 13, 18, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 17 );
 
 // Craum
 set_color_profile_slot( 1, 0, 209, 237, 234 ); //fur
@@ -165,6 +165,36 @@ set_color_profile_slot( 13, 4, 234, 230, 215 ); //kimono top
 set_color_profile_slot( 13, 5, 165, 107, 47 ); //kimono wave
 set_color_profile_slot( 13, 6, 72, 79, 81 ); //kimono bottom
 set_color_profile_slot( 13, 7, 57, 145, 106 ); //kimono accents
+
+// Lilac (Freedom Planet 2)
+set_color_profile_slot( 14, 0, 224, 209, 255 ); //fur
+set_color_profile_slot( 14, 1, 238, 227, 255 ); //fur tip
+set_color_profile_slot( 14, 2, 140, 81, 214 ); //hair
+set_color_profile_slot( 14, 3, 184, 15, 49 ); //horns + accents
+set_color_profile_slot( 14, 4, 230, 243, 255 ); //kimono top
+set_color_profile_slot( 14, 5, 217, 62, 62 ); //kimono wave
+set_color_profile_slot( 14, 6, 30, 125, 227 ); //kimono bottom
+set_color_profile_slot( 14, 7, 255, 215, 87 ); //kimono accents
+
+// Bloody roar
+set_color_profile_slot( 15, 0, 132, 89, 75 ); //fur
+set_color_profile_slot( 15, 1, 172, 143, 121 ); //fur tip
+set_color_profile_slot( 15, 2, 179, 120, 102 ); //hair
+set_color_profile_slot( 15, 3, 229, 98, 0 ); //horns + accents
+set_color_profile_slot( 15, 4, 87, 87, 87 ); //kimono top
+set_color_profile_slot( 15, 5, 255, 255, 255 ); //kimono wave
+set_color_profile_slot( 15, 6, 53, 52, 52 ); //kimono bottom
+set_color_profile_slot( 15, 7, 166, 23, 23 ); //kimono accents
+
+// Vaporwave
+set_color_profile_slot( 16, 0, 252, 46, 144 ); //fur
+set_color_profile_slot( 16, 1, 232, 195, 195 ); //fur tip
+set_color_profile_slot( 16, 2, 253, 193, 69 ); //hair
+set_color_profile_slot( 16, 3, 26, 103, 185 ); //horns + accents
+set_color_profile_slot( 16, 4, 38, 38, 38 ); //kimono top
+set_color_profile_slot( 16, 5, 26, 103, 185 ); //kimono wave
+set_color_profile_slot( 16, 6, 38, 38, 38 ); //kimono bottom
+set_color_profile_slot( 16, 7, 26, 103, 185 ); //kimono accents
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

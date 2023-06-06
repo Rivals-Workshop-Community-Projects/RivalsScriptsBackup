@@ -471,6 +471,30 @@ switch(my_hitboxID.attack){
 }
 //#endregion
 
+//#region Add In Sounds for Jashy Alt
+if(get_player_color(player) == 16 && color_shift == 2)
+switch(attack){
+	case AT_FAIR:
+		insert_sfx_on_hit("color_specific_LTG",1,1,1,false);
+	break;
+	case AT_FSPECIAL_2:
+		insert_sfx_on_hit("color_specific_LTG",4,1,1,false);
+	break;
+	case AT_USPECIAL_2:
+		insert_sfx_on_hit("color_specific_LTG",9,1,1,false);
+	break;
+	case AT_DSPECIAL_2:
+		insert_sfx_on_hit("color_specific_LTG",5,1,1,false);
+	break;
+	case AT_EXTRA_3:
+		insert_sfx_on_hit("color_specific_LTG",5,1,1,false);
+	break;
+	default:
+	break;
+}
+
+//#endregion
+
 #define Resolve_Element(hitbox_attack_name)
 {
 	var element = "non-elemental"; // Default Case
@@ -518,5 +542,23 @@ switch(my_hitboxID.attack){
 			status_effect_water = true;
 			buildup_water_fx_timer = 0;
 		}
+	}
+}
+
+#define insert_sfx_on_hit(temp_sound_string,temp_hitbox_num,temp_volume,temp_pitch,use_asset_version)
+{
+	if(my_hitboxID.hbox_num == temp_hitbox_num){
+		switch(use_asset_version){
+			case 0: // False
+				temp_sfx_obj = sound_play(sound_get(temp_sound_string),false,noone,temp_volume,temp_pitch);
+			break;
+			case 1: // True
+				temp_sfx_obj = sound_play(asset_get(temp_sound_string),false,noone,temp_volume,temp_pitch);
+			break;
+			default: // Error
+				temp_sfx_obj = noone; 
+			break;
+		}
+		return temp_sfx_obj;
 	}
 }
