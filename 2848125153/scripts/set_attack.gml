@@ -338,7 +338,13 @@ if (attack == AT_BAIR){
 if (attack == AT_TAUNT){
 	if(down_down){
 		window = 4;set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 6);
-		sound_stop(voice);voice = sound_play(sound_get("i see you"));
+		sound_stop(voice);
+		rand = random_func(0, 2, true);
+		if(rand == 0){
+			voice = sound_play(sound_get("i see you"));
+		}else if(rand == 1){
+			voice = sound_play(sound_get("i see you2"));
+		}
 	}else if((right_down || left_down) && current_money >= 10000){
 		attack = AT_FSPECIAL;window = 4;set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);move_cooldown[AT_FSPECIAL] = 0;
 		if(attack_down && current_money >= 40000){

@@ -1,6 +1,4 @@
-//hit_player - called when one of your hitboxes hits a player
-
-if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	sound_stop(sfx);
     sound_stop(voice);
     

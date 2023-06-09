@@ -27,19 +27,19 @@ if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2
 	 
 	switch ziaido%5 {
 		case 0 :
-			draw_sprite_ext(sprite_get("iaido_arm1"),window_timer/2,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+			draw_sprite_ext(sprite_get("iaido_arm1"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break
 		case 1 :
-			draw_sprite_ext(sprite_get("iaido_arm2"),window_timer/2,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+			draw_sprite_ext(sprite_get("iaido_arm2"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break	
 		case 2 :
-			draw_sprite_ext(sprite_get("iaido_arm3"),window_timer/2,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+			draw_sprite_ext(sprite_get("iaido_arm3"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break
 		case 3 :
-			draw_sprite_ext(sprite_get("iaido_arm4"),window_timer/2,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+			draw_sprite_ext(sprite_get("iaido_arm4"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break
 		case 4 :
-			draw_sprite_ext(sprite_get("iaido_arm5"),window_timer/2,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+			draw_sprite_ext(sprite_get("iaido_arm5"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break
 	}
 	

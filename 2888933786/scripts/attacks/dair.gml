@@ -34,7 +34,7 @@ set_num_hitboxes(AT_DAIR, 2);
 
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 200);
+set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 150);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, -30);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_Y, -27);
 set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 80);
@@ -55,7 +55,7 @@ set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_VSPEED, 10);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GRAVITY, 0.4);
+set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GRAVITY, 0.5);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 2);

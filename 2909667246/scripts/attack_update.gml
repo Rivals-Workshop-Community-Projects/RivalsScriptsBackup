@@ -218,11 +218,11 @@ if (attack == AT_NSPECIAL){
 	}
 	
 	if(window == 1 || window == 3){
-			if(shield_down){
-				set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 9);
-				window = 6;window_timer = 0;
-			}
+		if(shield_down){
+			set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 9);
+			window = 6;window_timer = 0;
 		}
+	}
 	if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 		if(!position_meeting(x+40*spr_dir,y+2,asset_get("par_block")) && !position_meeting(x+40*spr_dir,y+2,asset_get("par_jumpthrough"))){
 			x -= 15*spr_dir;
@@ -287,7 +287,7 @@ if (attack == AT_NSPECIAL){
 		}
 	}
 }else if (attack == AT_FSTRONG){
-	//FStrong if made by ExW
+	//FStrong if it was made by ExW
 	
 	/*if(window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         free = true;set_state(PS_PRATFALL);hsp = 10*spr_dir;vsp = -6;

@@ -219,7 +219,7 @@ switch(attack){
     case AT_DTHROW:
     	if (window == 1) {
     	super_armor = true;
-    		if (window_timer == 5){
+    		if (window_timer == 5 && !hitpause){
     			sound_play(sound_get("qoedil_grunt"),false,noone,0.6, 0.8);
     		}
     	}
@@ -251,7 +251,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

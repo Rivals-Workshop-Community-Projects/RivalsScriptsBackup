@@ -260,6 +260,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.31", "6th June, 2023");
+initHeader("Mega Buffs");
+initSection("+ Villager can now observe you");
+
 initPatch("1.30", "11th May, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed UStrong just not having parry stun (not sure how this was never reported before)

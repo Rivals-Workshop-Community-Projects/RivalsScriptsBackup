@@ -69,6 +69,12 @@ if alt == 15 {
 
 }
 
+if alt == 8 {
+    if drawtime == 1 {
+    sound_play(sound_get("Pv3"))
+    }
+
+}
 
 //define the palette names
 var palette_names = [
@@ -81,7 +87,7 @@ var palette_names = [
   "Chad Average",
   "Chad Steve",
   "Chad Guperman",
-  "Chad Void",
+  "Chad Prime",
   "Chad Ranger",
   "Chad BLW",
   "Chad Drip",

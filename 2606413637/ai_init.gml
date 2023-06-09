@@ -1,6 +1,6 @@
 is_ai = true;
 // ai_draw = ds_list_create();
-has_taunted = 0;
+
 xdist = 0
 delay_time = 0
 offstage = 0;

@@ -289,6 +289,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.2", "08 June, 2023");
+initSection("(by DrFlux)");
+initHeader("CPU AI");
+initSection("General improvements.");
+
 initPatch("2.1", "14 April, 2023");
 initWords("Advertising");
 

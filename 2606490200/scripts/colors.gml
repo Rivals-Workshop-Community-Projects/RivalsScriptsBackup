@@ -106,15 +106,15 @@ set_color_profile_slot( 7, 5, 11, 176, 14 ); //Eyes
 set_color_profile_slot( 7, 6, 36, 33, 59 ); //Shirt
 set_color_profile_slot( 7, 7, 255, 0, 0 ); //Shine
 
-// Void
-set_color_profile_slot( 8, 0, 174, 255, 0 ); //Energy
+// Prime
+set_color_profile_slot( 8, 0, 97, 178, 255 ); //Energy
 set_color_profile_slot( 8, 1, 255, 255, 255 ); //Skin
-set_color_profile_slot( 8, 2, 175, 169, 219 ); //Skinshade
+set_color_profile_slot( 8, 2, 196, 169, 219 ); //Skinshade
 set_color_profile_slot( 8, 3, 247, 247, 247 ); //Hair
-set_color_profile_slot( 8, 4, 24, 38, 11 ); //pant
-set_color_profile_slot( 8, 5, 174, 255, 0 ); //Eyes
-set_color_profile_slot( 8, 6, 23, 23, 23 ); //Shirt
-set_color_profile_slot( 8, 7, 174, 255, 0 ); //Shine
+set_color_profile_slot( 8, 4, 235, 237, 247 ); //pant
+set_color_profile_slot( 8, 5, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 8, 6, 142, 153, 184 ); //Shirt
+set_color_profile_slot( 8, 7, 175, 169, 219 ); //Shine
 
 // Ranger
 set_color_profile_slot( 9, 0, 0, 255, 174 ); //Energy

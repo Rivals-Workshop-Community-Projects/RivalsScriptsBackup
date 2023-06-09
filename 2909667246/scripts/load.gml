@@ -69,6 +69,7 @@ sprite_change_offset("taunt_beeg", 100, 349, true);
 sprite_change_offset("plat", 35, 30, true);
 sprite_change_offset("plat2", 70, 60, true);
 sprite_change_offset("_phone", 40, 58, true);
+sprite_change_offset("lookup", 40/2, 78/2, true);
 
 sprite_change_offset("icon_gip", 4, 4, true);
 sprite_change_offset("icon_gip_2", 7, 7, true);

@@ -187,6 +187,7 @@ set_hitbox_value(AT_FSTRONG, 9, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FSTRONG, 9, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 9, HG_HIT_SFX, sound_get("hit1"));
 set_hitbox_value(AT_FSTRONG, 9, HG_HITBOX_GROUP, 5);
+set_hitbox_value(AT_FSTRONG, 9, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_FSTRONG, 10, HG_PARENT_HITBOX, 9);
 set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_TYPE, 1);
@@ -196,3 +197,4 @@ set_hitbox_value(AT_FSTRONG, 10, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_X, 120);
 set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_Y, -105);
 set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_GROUP, 5);
+set_hitbox_value(AT_FSTRONG, 10, HG_HIT_LOCKOUT, 10);

@@ -48,3 +48,17 @@ if(attack == AT_DSPECIAL){
         image_index = 21+round((strong_charge-10)/2.5);
     }
 }
+
+if(state == PS_IDLE && up_down){
+    lookuptime += 1;
+}else{
+    if(state == PS_IDLE && lookuptime != 0){
+        if(lookuptime > 0){lookuptime -= 1;}else if(lookuptime < 0){lookuptime += 1;}
+    }else{
+        lookuptime = 0;
+    }
+}
+if(state == PS_IDLE && lookuptime > 0){
+    sprite_index = sprite_get("lookup");image_index = floor(abs(lookuptime)/2);lookuptime = min(4,lookuptime);
+    if(image_index > 2)image_index = 2;
+}

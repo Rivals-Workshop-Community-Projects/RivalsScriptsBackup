@@ -16,7 +16,7 @@ if (attack == AT_NSPECIAL){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	if(!instance_exists(thedice1) || !instance_exists(thedice2)){
         		sound_play(asset_get("sfx_swipe_medium1"));
-	        	var dice = create_hitbox(AT_NSPECIAL, 1, x+30*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+30*spr_dir, y-35);
+	        	var dice = create_hitbox(AT_NSPECIAL, 1, round(x+30*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+30*spr_dir), round(y-35));
 	        	if(right_down && spr_dir == 1 || left_down && spr_dir == -1){
 	        		if(up_down){
 	        			dice.hsp *= 1.5;dice.vsp *= 1.75;
@@ -58,15 +58,15 @@ if (attack == AT_NSPECIAL){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	if(!instance_exists(thetoken)){
 	        	if(fspec_charge >= 30 && current_money >= 3000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 2, x+55*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+55*spr_dir, y-35);
+	        		thetoken = create_hitbox(AT_FSPECIAL, 2, round(x+55*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));
 	        		current_money -= 3000*discount;
 	        		rand = random_func(0, 3, true);                    
             		sound_play(sound_get("money_pickup"+string(rand+1)));
 	        	}else if(current_money >= 1000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 1, x+55*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+55*spr_dir, y-35);
+	        		thetoken = create_hitbox(AT_FSPECIAL, 1, round(x+55*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));
 	        		current_money -= 1000*discount;
 	        	}else{
-					create_hitbox(AT_JAB, 12, x+55*spr_dir, y-35);
+					create_hitbox(AT_JAB, 12, round(x+55*spr_dir), round(y-35));
 				}
 	        	if(instance_exists(thetoken) && (dicecooldown > 0 || instance_exists(thedice1) && instance_exists(thedice2))){
 		        	tokencooldown += 60;
@@ -537,7 +537,7 @@ if (attack == AT_NSPECIAL){
 		    		//}
 	    		}
 			}else{
-				create_hitbox(AT_JAB, 12, x+65*spr_dir, y-35);
+				create_hitbox(AT_JAB, 12, round(x+65*spr_dir), round(y-35));
 			}
     	}
 	}
@@ -571,7 +571,7 @@ if (attack == AT_NSPECIAL){
 	}else if(window == 6){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			//if(!free && freemd){
-				var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-25);choochoo.hsp = hsp;choochoo.vsp = vsp;
+				var choochoo = create_hitbox(AT_DATTACK, 4, round(x+60*spr_dir), round(y-25));choochoo.hsp = hsp;choochoo.vsp = vsp;
 			//}else{
 				//var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-29);choochoo.hsp = hsp;choochoo.vsp = vsp;
 			//}
@@ -627,7 +627,7 @@ if (attack == AT_NSPECIAL){
 			if(instance_exists(dattackhitbox)){
 				dattackhitbox.destroyed = true;
 			}
-			dattackhitbox = create_hitbox(AT_DATTACK, dattacknum, x, y);
+			dattackhitbox = create_hitbox(AT_DATTACK, dattacknum, round(x), round(y));
 		}
 		if(!free && (dattacknum = 1 && get_gameplay_time() % 2 == 0 || dattacknum = 2 && get_gameplay_time() % 4 == 0 || dattacknum = 3 && get_gameplay_time() % 6 == 0)){
 			var dusteff = spawn_hit_fx(x+15*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
@@ -655,8 +655,8 @@ if (attack == AT_NSPECIAL){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 		var dusteff = spawn_hit_fx(x-15*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 		//if(attack_down){
-			create_hitbox(AT_FTILT, 4, x, y);create_hitbox(AT_FTILT, 6, x, y);
-			create_hitbox(AT_FTILT, 3, x, y);hsp += 2*spr_dir;
+			create_hitbox(AT_FTILT, 4, round(x), round(y));create_hitbox(AT_FTILT, 6, round(x), round(y));
+			create_hitbox(AT_FTILT, 3, round(x), round(y));hsp += 2*spr_dir;
 		//}
 	}else if(window == 3){
 		if(!attack_down || was_parried){
@@ -689,7 +689,7 @@ if (attack == AT_NSPECIAL){
 		    		}
 	    		}
 			}else{
-				var dust = create_hitbox(AT_JAB, 12, x+50*spr_dir, y-65);dust.hsp *= 0.5;dust.vsp *= 1.75;
+				var dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-65));dust.hsp *= 0.5;dust.vsp *= 1.75;
 			}
     	}
 	}
@@ -778,7 +778,7 @@ if (attack == AT_NSPECIAL){
 		    		}
 	    		}
 			}else{
-				var dust = create_hitbox(AT_JAB, 12, x+50*spr_dir, y-65);dust.hsp *= 0.5;dust.vsp *= 1.75;
+				var dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-65));dust.hsp *= 0.5;dust.vsp *= 1.75;
 			}
     	}
 	}
@@ -888,7 +888,7 @@ if (attack == AT_NSPECIAL){
     	}else{
     		can_fast_fall = true;
     	}if(vsp >= 0 && !instance_exists(dairhitbox) && !hitpause){
-    		dairhitbox = create_hitbox(AT_DAIR, 2, x, y);
+    		dairhitbox = create_hitbox(AT_DAIR, 2, round(x), round(y));
     	}else if(vsp < 0){
     		destroy_hitboxes();
     	}
@@ -1009,10 +1009,10 @@ if (attack == AT_NSPECIAL){
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
 		window = 20;
 		if(attack == AT_DATTACK){
-			var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-25);choochoo.hsp = hsp;choochoo.vsp = vsp;
+			var choochoo = create_hitbox(AT_DATTACK, 4, round(x+60*spr_dir), round(y-25));choochoo.hsp = hsp;choochoo.vsp = vsp;
 			hitpause = 0;hitstop = 0;in_hitpause = false;
 			if(current_money >= 3000*discount){
-    			money = create_hitbox(AT_JAB, 10, x, round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 3000;money.hitbox_timer = 20;money.hit_priority = 0;
+    			money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 3000;money.hitbox_timer = 20;money.hit_priority = 0;
     			current_money -= 3000*discount;
     		}
 		}
@@ -1026,7 +1026,7 @@ if (attack == AT_NSPECIAL){
 			uspectarget.destroyed = true;spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 302);
 			window = 18;mask_index = asset_get("ex_guy_collision_mask");
 			if(current_money >= 5000*discount){
-    			money = create_hitbox(AT_JAB, 10, x, round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 5000;money.hitbox_timer = 20;money.hit_priority = 0;
+    			money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 5000;money.hitbox_timer = 20;money.hit_priority = 0;
     			current_money -= 5000*discount;
     		}
 		}

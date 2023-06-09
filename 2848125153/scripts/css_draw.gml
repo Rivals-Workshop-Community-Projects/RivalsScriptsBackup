@@ -193,7 +193,7 @@ if ("portrait" in self){
 	draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 	
 	if ("prev_alt2" in self && prev_alt2 != alt){
-	    portrait = random_func(0, 5, true);
+	    portrait = random_func(0, 6, true);
 	    if(portrait == 0){
 		    //set_victory_portrait(sprite_get("portrait1"));
 		    set_victory_sidebar(sprite_get("result_small_1"));
@@ -205,6 +205,8 @@ if ("portrait" in self){
 		    set_victory_sidebar(sprite_get("result_small_4"));
 	    }else if(portrait == 4){
 		    set_victory_sidebar(sprite_get("result_small_5"));
+	    }else if(portrait == 5){
+		    set_victory_sidebar(sprite_get("result_small_6"));
 	    }
 	}
 	
@@ -220,13 +222,15 @@ if ("portrait" in self){
 	    draw_sprite_ext(sprite_get("charselect_4"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 	}else if(portrait == 4){
 	    draw_sprite_ext(sprite_get("charselect_5"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+	}else if(portrait == 5){
+	    draw_sprite_ext(sprite_get("charselect_6"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 	}
 	     
-	if(portrait > 5){
+	if(portrait > 6){
 	    portrait = 0;
 	}
 }else{
-	portrait = random_func(0, 5, true);
+	portrait = random_func(0, 6, true);
 	if(portrait == 0){
 		set_victory_sidebar(sprite_get("result_small_1"));
 	}else if(portrait == 1){
@@ -237,6 +241,8 @@ if ("portrait" in self){
 	    set_victory_sidebar(sprite_get("result_small_4"));
     }else if(portrait == 4){
 	    set_victory_sidebar(sprite_get("result_small_5"));
+    }else if(portrait == 5){
+	    set_victory_sidebar(sprite_get("result_small_6"));
     }
 }
 

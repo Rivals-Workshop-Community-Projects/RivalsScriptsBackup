@@ -148,61 +148,27 @@ if(state == PS_WALL_JUMP){
 		press_jump()
 	}
 }
-
-if ssj == 0{
-	if(delay_time <= 0 and ((can_attack or can_strong or can_special) or (state == PS_DASH_START or state == PS_DASH or state_cat == SC_GROUND_NEUTRAL)) and (!dont_attack and !tgt_inv)){
+var in_strong = attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG
+if(delay_time <= 0 and ((can_attack or can_strong or can_special) or (state == PS_DASH_START or state == PS_DASH or state_cat == SC_GROUND_NEUTRAL)) and (!dont_attack and !tgt_inv)){
+	if(!free and state != PS_JUMPSQUAT){
 		
-		if(!free and state != PS_JUMPSQUAT){
-			
-			if(can_special){
-		  hitboxloc("specials")
-		}
-			
-			if can_strong{
-				hitboxloc("strongs")
-			}
-			
-			hitboxloc("tilts")
-			
-		}else{
-			if(can_special){
-		  hitboxloc("specials")
-		}
-			hitboxloc("aerials")
-		}
-	}
-}else{
-	if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
-		if has_hit{
-			can_special = true;
-			can_strong = true;
-			can_ustrong = true;
-			delay_time = 0
-		}
-	}
-	if(delay_time <= 0 and ((can_attack or can_strong or can_special) or (state == PS_DASH_START or state == PS_DASH or state_cat == SC_GROUND_NEUTRAL)) and (!dont_attack and !tgt_inv)){
+		if(can_special){
+      hitboxloc("specials")
+    }
 		
-		if(!free and state != PS_JUMPSQUAT){
-			
-			if(can_special){
-		  hitboxloc("specials")
+		if can_strong{
+			hitboxloc("strongs")
 		}
-			
-			if can_strong{
-				hitboxloc("strongs")
-			}
-			
-			hitboxloc("tilts")
-			
-		}else{
-			if(can_special){
-		  hitboxloc("specials")
-		}
-			hitboxloc("aerials")
-		}
+		
+		hitboxloc("tilts")
+		
+	}else{
+		if(can_special){
+      hitboxloc("specials")
+    }
+		hitboxloc("aerials")
 	}
 }
-
 
 // print(delay_time)
 if(delay_time > 0){
@@ -213,11 +179,20 @@ if(chosenAttack != noone){
 	clear_ai_inputs();
 	perform_attack(chosenAttack); 
 	print(get_attack_name(chosenAttack));
-	delay_time = 90 - temp_level*10
+	delay_time = (90 - temp_level*10) + 4
 }else{
 	if(ai_recovering){
 		if(state_cat != SC_HITSTUN and closest_wall_xdist > 100){
-
+			if(!attacking and attack == AT_FSPECIAL){
+				if(move_cooldown[AT_FSPECIAL] <= 0){
+					clear_ai_inputs()
+					perform_attack(AT_FSPECIAL)
+					hold_toward_center()
+				}else if(move_cooldown[AT_NSPECIAL] <= 0){
+					clear_ai_inputs()
+					perform_attack(AT_NSPECIAL)
+				}
+			}
 		}
 	}else{
 		// if(ai_target.state == PS_HITSTUN and state == PS_IDLE){
@@ -231,7 +206,7 @@ if(chosenAttack != noone){
 			if(ydisp < -100 and ai_target.state_cat == SC_HITSTUN and !free){
 				press_jump()
 			}
-			if(attacking and attack == AT_FSPECIAL and (xdist > 100) and ydisp < 0 and vsp >= 0){
+			if(attacking and attack == AT_FSPECIAL and (xdist > 150) and ydisp < 0 and vsp >= 0){
 				press_jump()
 				hold_towards_target()
 			}
@@ -272,10 +247,36 @@ if(chosenAttack != noone){
 					press_jump()
 				}
 			}
-			if(free and xdist > 200 and !near_stage_wall and !near_stage_ledge and !ai_target_offstage){
+			if(free and xdist > 230 and !near_stage_wall and !near_stage_ledge and !ai_target_offstage){
 				if(move_cooldown[AT_FSPECIAL] <= 0) perform_attack(AT_FSPECIAL)
 			}
 			
+			if(!offstage and xdist > 250 and !instance_exists(orig_mound1)){
+				if(move_cooldown[AT_DSPECIAL] <= 0) perform_attack(AT_DSPECIAL)
+			}
+			
+			if(instance_exists(mound_1) and instance_exists(mound_2)){
+				if(ai_target.state_cat != SC_GROUND_NEUTRAL and ai_target.state_cat != SC_AIR_NEUTRAL){
+					var mound_current = place_meeting(x, y, mound_1) ? 1 : 0
+					if(mound_current == 0) mound_current = place_meeting(x, y, mound_2) ? 2 : 0
+					
+					if(mound_current != 0){
+						var burrow = false
+						var pos = newPredict(ai_target, 30, ai_target.hsp, ai_target.hsp, true, false)
+						var m_target = mound_current == 1 ? mound_2 : mound_1
+						if point_in_rectangle(m_target.y - 100, m_target.y, m_target.x - 30, m_target.x + 30, pos[@0],pos[@1]){
+							burrow = true
+						}
+						if(burrow and ai_target) press_down();
+					}
+				}
+			}
+			
+			if( targetdamage+11 > calc_min_knockback_damage(23, 7, .9, ai_target.knockback_adj)){
+				var my_pos = newPredict(self, 11, hsp, vsp, true, false);
+				var pos = newPredict(ai_target, 11, ai_target.hsp, ai_target.vsp, true, false);
+				if(point_in_rectangle(my_pos[@1] - 130, my_pos[@1], my_pos[@0]-40, my_pos[@0]+40, pos[@0], pos[@1])) perform_attack(AT_USPECIAL)
+			}
 		
 		}
 		if(state == PS_HITSTUN and !hitpause){
@@ -311,24 +312,13 @@ if(state == PS_JUMPSQUAT or (state == PS_FIRST_JUMP and state_timer <= 1)){
 		jump_down = true
 	}
 }
-if has_taunted > 0{
-	has_taunted = has_taunted - 1;
-	taunt_down = false;
-	taunt_pressed = false;
+
+if ai_target == self and !free{
+	clear_button_buffer(PC_JUMP_PRESSED);
+	unpress_actions()
+	tiltDance();
 }
-if has_taunted == 0{
-	if ai_target == self and !free{
-		clear_button_buffer(PC_JUMP_PRESSED);
-		unpress_actions()
-		taunt_pressed = true;
-		taunt_down = true;
-	}
-}
-if has_taunted < 0{
-	has_taunted = 0;
-	taunt_down = false;
-	taunt_pressed = false;
-}
+
 #define agressive_score()
 var value = 0;
 var ai_dmg = get_player_damage(player);
@@ -343,11 +333,10 @@ return value
 #define AttackUpdate()
 
 if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
-	attacking = true;
+	attacking = true
   switch(attack){
     case AT_NSPECIAL:
-
-    	hold_towards_target_specials()
+    	hold_towards_target()
     	
     	var tgt = ai_target;
     	var dont_attack = false
@@ -387,37 +376,6 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     	if(ai_recovering and dist < 200) press_parry()
     break;
     case AT_USPECIAL:
-
-		uspecial_can_target = false
-		clear_ai_inputs()
-		special_down = false
-		special_pressed = false
-		if(ai_recovering){
-			if(offstage){
-			}else{
-				ai_recovering = false
-			}
-		}
-		if window == 1{
-			if(ai_recovering){
-				hold_towards_center_uspecial()
-			}else{
-				hold_towards_target_specials()
-			}
-		}else{
-			if(ai_recovering){
-				if(offstage){
-				}else{
-					hold_towards_target_specials()
-					ai_recovering = false
-					attack_pressed = true
-				}
-			}else{
-				hold_towards_target_specials()
-				attack_pressed = true
-			}
-			
-		}
     	// if(near_stage_wall and window == 1 and y > stagey + 35){
     	// 	print("GO UP IDO")
     	// 	unpress_left()
@@ -430,18 +388,26 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     	// }
     break;
     case AT_DSPECIAL:
-
-		if ki != ki_max{
-			clear_ai_inputs()
-			special_down = false;
-			special_pressed = false;
-		}
-
+    	// print("holding")
+    	hold_towards_target()
+    	if(dist < 50 and random_func(0, 100, true) < 20){
+    	}else{
+    		press_special()
+    	}
+    	if(vsp > 0 and collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, solid_asset, false, true)){
+    		// print("pressing jump")
+    		press_jump()
+    	}
     break;
     case AT_FSPECIAL:
-
-		if(xdist < 100) clear_ai_inputs()
-      	hold_towards_target_specials();
+      
+      if(xdist < 100) clear_ai_inputs()
+      if(!offstage and ai_target != self){ print("Holding to target") hold_towards_target() }
+      else{
+      	print("Holding in stage")
+      	hold_toward_center()
+      }
+      if(ai_recovering){print("Holding in stage") hold_toward_center()}
     break;
     case AT_DATTACK:
     	if(state_timer < 5){
@@ -452,15 +418,9 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     		}
     	}
     break;
-	case AT_TAUNT:
-		clear_ai_inputs()
-		taunt_pressed = false;
-		taunt_down = false;
-		has_taunted = 300;
-	break;
   }
 }else{
-	attacking = false;
+	attacking = false
 }
 
 #define newPredict(tgt, frame, vo_x, vo_y, apply_grav, is_hitbox)
@@ -551,7 +511,7 @@ for(var i = 0; i < len; i++){
 	var apply_grav_target = true
 
   if(attacke[i] == AT_NSPECIAL){
-	apply_grav_target = false
+  	vo_y = min(1, vo_x);
   	apply_grav = false
   }
   if(attacke[i] == AT_FSTRONG){
@@ -763,10 +723,10 @@ return -(tgt).char_height;
 #define tiltDance
 
 if !free{
-	
 	if spr_dir == 1{
-		
+		left_down = true;
 	}else{
+		right_down = true;
 	}
 }
 
@@ -807,28 +767,6 @@ down_down = sinn < 0;
 #define hold_towards_target
 	hold_toward_direction(xdisp)
 
-#define hold_towards_target_specials
-character_center = y-char_height/2
-ai_target_character_center = ai_target.y-ai_target.char_height/2
-var pd = point_direction(x, character_center, ai_target.x, ai_target_character_center)
-var dir = get_direction(pd);
-hold_toward_direction_specials(dir)
-
-return dir
-
-#define hold_toward_direction_specials(dir)
-
-joy_dir = dir*45
-joy_pad_idle = false
-
-var coss = dcos(joy_dir)
-var sinn = dsin(joy_dir)
-
-right_down  = coss > 0;
-left_down  = coss < 0;
-up_down = sinn > 0;
-down_down = sinn < 0;
-
 #define hold_away_from_target
 	hold_toward_direction(-xdisp)
 
@@ -847,15 +785,6 @@ down_down = sinn < 0;
 #define hold_toward_center
 	var center_dir = -sign(x - (room_width / 2));
 	hold_toward_direction(center_dir)
-	
-#define hold_towards_center_uspecial
-stage_center_y = 0
-stage_center_x = stage_center
-var pd = point_direction(x, y, stage_center_x, stage_center_y)
-var dir = get_direction(pd);
-hold_toward_direction_specials(dir)
-
-return dir
 
 #define tap_current_horizontal_direction
 	if left_down {
@@ -1067,79 +996,70 @@ return dir
 	
 	switch _attack {
 		case AT_JAB:
-
 			hold_neutral()
 			press_attack()
 		break
 		case AT_DATTACK:
-
 			hold_neutral()
 			hold_towards_target()
 			tap_current_horizontal_direction()
 			press_attack()
 		break
 		case AT_NSPECIAL:
-
 			hold_neutral()
 			press_special()
 		break
 		case AT_FSPECIAL:
 		case AT_FSPECIAL_2:
 		case AT_FSPECIAL_AIR:
-
 			hold_neutral()
-			hold_towards_target_specials()
+			hold_towards_target();
 			press_special()
 		break
 		case AT_USPECIAL:
 		case AT_USPECIAL_GROUND:
-
+			press_up()
+			hold_towards_target()
+			press_special()
 		break
 		case AT_DSPECIAL:
 		case AT_DSPECIAL_2:
 		case AT_DSPECIAL_AIR:
-
 			tap_down()
+			hold_towards_target()
 			press_special()
 		break
 		case AT_FSTRONG:
-
 			hold_neutral()
 			hold_towards_target()
 			press_strong()
 		break;
 		case AT_USTRONG:
-
 			press_up()
 			// hold_towards_target()
 			press_strong()
 		break
 		case AT_DSTRONG:
-
 			press_down()
 			// hold_towards_target()
 			press_strong()
 		break
 		case AT_FTILT:
-
 			hold_neutral()
 			hold_towards_target()
 			press_attack()
 		break
 		case AT_UTILT:
-
 			press_up()
 			hold_towards_target()
 			press_attack()
 		break
 		case AT_DTILT:
-
 			press_down()
 			hold_towards_target()
 			press_attack()
 		break
 		case AT_NAIR:
-
 			hold_neutral()
 			press_attack()
 			if !free { 
@@ -1156,21 +1076,18 @@ return dir
 			if (!free) { jump_down = (y <= ai_target.y - ai_target.char_height); jump_pressed = jump_down; down_hard_pressed = (y > ai_target.y); } 
 		break
 		case AT_DAIR:
-
 			press_down()
 			hold_towards_target()
 			press_attack()
 			if (!free) { jump_down = (y <= ai_target.y - ai_target.char_height); jump_pressed = jump_down; down_hard_pressed = (y > ai_target.y); } 
 		break
 		case AT_UAIR:
-
 			press_up()
 			hold_towards_target()
 			press_attack()
 			if (!free) { jump_down = (y <= ai_target.y - ai_target.char_height); jump_pressed = jump_down; down_hard_pressed = (y > ai_target.y); } 
 		break
 		case AT_BAIR:
-
 			hold_neutral()
 			hold_backwards()
 			if (!free) { jump_down = (y <= ai_target.y - ai_target.char_height); jump_pressed = jump_down; down_hard_pressed = (y > ai_target.y); } 
@@ -1187,13 +1104,10 @@ return dir
 			press_attack()
 		break
 		case AT_TAUNT:
-			clear_ai_inputs();
-			clear_ai_inputs()
-			taunt_pressed = false;
-			taunt_down = false;
-			has_taunted = 300;
-		break;
+			taunt_down = true;
+		break
 	}
+	
 	
 
 // used at the start to prevent anything from happening without explicit commands
@@ -1219,8 +1133,8 @@ return dir
   down_hard_pressed = false;
   right_hard_pressed = false;
 
-
   attack_down = false;
+  special_down = false;
   jump_down = false;
   shield_down = false;
   taunt_down = false;
@@ -1234,6 +1148,7 @@ return dir
   left_hard_down = false;
   down_hard_down = false;
   right_hard_down = false;
+
 
   up_down = false;
   left_down = false;

@@ -319,6 +319,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.21", "8th June, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Added another CSS image (now 6 total). Very skillful! (thanks to DonGT for the original)
++ Monopoly now has a much more skillful AI (thanks to DonGT for making it)
++ Mr Monopoly now has an extra voice line when doing the 'I see you' taunt");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some misc errors that could happen rarely");
+
 initPatch("1.20", "28th May, 2023");
 initHeader("Skillful Buffs");
 initSection("+ Added 2 more CSS images (going from 3 to 5). Very skillful!

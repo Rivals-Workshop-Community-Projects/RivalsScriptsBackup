@@ -108,7 +108,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "Ominous" // the name of the alternate color.
-    ce[col,2] = "Countless rituals becon... to what, they yet know..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "Countless rituals beckon... to what, they yet know..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "Endless" // the name of the alternate color.
@@ -196,7 +196,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "Hypogeal" // the name of the alternate color.
-    ce[col,2] = "There's no excape... from the ceasless rattling..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "There's no escape... from the ceasless rattling..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "Night" // the name of the alternate color.

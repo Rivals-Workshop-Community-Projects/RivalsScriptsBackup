@@ -144,6 +144,58 @@ if "standon" in self {
 	}
 }
 
+if get_player_color(player) == 8 {
+	if "vcd" not in self{
+		vcd = 0
+		vc = 0
+	} else {
+		vcd -= 1
+	}
+	
+	if state == PS_RESPAWN or state == PS_DEAD {
+    if state_timer == 1{
+    sound_play(sound_get("Pdeath"),false,noone,0.8,0.95 + random_func(1,20,true)/100)	
+    }
+    if state_timer == 90 and state != PS_DEAD{
+    sound_play(sound_get("Pv1"),false,noone,0.8,0.95 + random_func(1,20,true)/100)	
+    }
+    }
+
+	if get_gameplay_time() == 1{
+		vcd = 120
+		sound_play(sound_get("Pintro"),false,noone,1,1)
+		sound_play(sound_get("Pintro"),false,noone,0.5,1)
+	}
+	
+	if state_cat == SC_HITSTUN && vcd <= 0 && hitpause{
+		sound_play(sound_get("Ph"),false,noone,0.76,0.95 + random_func(1,20,true)/100)
+		vcd = hitstop + 10
+	}
+		
+	if state_timer == 1 && state_cat != SC_HITSTUN && (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND){
+		if vcd <= 0 {
+			vcd = 45
+			switch(vc%4){
+				case 1:
+				   sound_play(sound_get("Pv1"),false,noone,1,0.95 + random_func(1,10,true)/100)
+				break
+				case 2:
+				   sound_play(sound_get("Pv2"),false,noone,1,0.95 + random_func(1,10,true)/100)
+				break
+				case 3:
+				   sound_play(sound_get("Pv3"),false,noone,1,0.95 + random_func(1,10,true)/100)
+				break
+				case 0:
+				   sound_play(sound_get("Pv4"),false,noone,1,0.95 + random_func(1,10,true)/100)
+				break
+			}
+			vc += 1 + random_func(1,5,true)
+		}
+	}
+	
+	
+}
+
 if (get_gameplay_time() == 90 or get_gameplay_time() == 91)  && get_player_color(player) == 16 {
 	
 
@@ -381,6 +433,25 @@ if djumps == 1 {
 
 if state == PS_PRATFALL {
 	can_fast_fall = true
+}
+
+if (get_player_color(player) == 8) {
+	
+if uped == 4 {
+	sound_stop(sound_get("Pv1"))
+	sound_stop(sound_get("Pv2"))
+	sound_stop(sound_get("Pv3"))
+	sound_stop(sound_get("Pv4"))
+	sound_stop(sound_get("Pdeath"))
+	sound_play(sound_get("Pfull"))
+	sound_play(sound_get("Pfull"),false,noone,0.6,1)
+	vcd = 160
+	uped = 5
+}
+
+	outline_color = [48, 46, 102]
+	init_shader()
+	
 }
 
 if (get_player_color(player) == 11) {
