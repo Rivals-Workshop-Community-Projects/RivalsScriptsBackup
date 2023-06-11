@@ -53,17 +53,17 @@ if(was_parried)
 // }
 
 // [TEMP]
-if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
-if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
-if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
+// if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
+// if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
+// if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
 
-if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
-if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
-if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
+// if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
+// if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
+// if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
 
-if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
-if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
-if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
+// if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
+// if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
+// if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
 
 
 // var enemybox = noone;

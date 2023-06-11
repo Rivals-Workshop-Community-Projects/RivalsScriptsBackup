@@ -12,6 +12,8 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 // I am me
 is_tenru = true;
 
+var Tenru = self;
+
 // if(shield_down)
 // {
 // 	set_state(PS_IDLE);
@@ -360,6 +362,12 @@ if (land_dust_timer >= landing_time+2) {
     land_dust_timer = -1;
 }
 
+// Prevents walkturn from eating special inputs (why even?)
+if(state == PS_WALK_TURN && special_pressed)
+{
+	state_timer = 99;
+}
+
 // OOK OOK
 var scream_speed = 1;
 var taunt_volume = 2.75;
@@ -622,8 +630,10 @@ with(pHitBox){
          	img_spd = 0.4;
          	is_spin = true;
 
-			if(!transcendent) sprite_index = num_fc == 1 ? sprite_get("firecracker_single_spin_nooutline") : num_fc == 2 ? sprite_get("firecracker_double_spin_nooutline") : sprite_get("firecracker_triple_spin_nooutline");
-			else sprite_index = num_fc == 1 ? sprite_get("firecracker_single_spin") : num_fc == 2 ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
+			with(Tenru)
+			{
+				other.sprite_index = other.num_fc == 1 ? sprite_get("firecracker_single_spin") : num_fc == 2 ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
+			}
          }
          
      }

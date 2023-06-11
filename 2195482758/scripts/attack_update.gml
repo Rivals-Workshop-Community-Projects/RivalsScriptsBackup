@@ -35,13 +35,13 @@ if (attack == AT_NSPECIAL){
 			switch(fc_count)
 		    {
 		    	case 1:
-		    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt_nooutline");
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt");
 		    	break;
 		    	case 2:
-				fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt_nooutline");
+				fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt");
 		    	break;
 		    	case 3:
-		    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt_nooutline");
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt");
 		    	break;
 		    }
 		    
@@ -260,15 +260,15 @@ if (attack == AT_NSPECIAL){
 		switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single_bunt_nooutline";
+	    	fc_string = "firecracker_single_bunt";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double_bunt_nooutline";
+	    	fc_string = "firecracker_double_bunt";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple_bunt_nooutline";
+	    	fc_string = "firecracker_triple_bunt";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }	
@@ -278,15 +278,15 @@ if (attack == AT_NSPECIAL){
 	    switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single_nooutline";
+	    	fc_string = "firecracker_single";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double_nooutline";
+	    	fc_string = "firecracker_double";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple_nooutline";
+	    	fc_string = "firecracker_triple";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }
@@ -298,15 +298,15 @@ if (attack == AT_NSPECIAL){
 		switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single_spin_nooutline";
+	    	fc_string = "firecracker_single_spin";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double_spin_nooutline";
+	    	fc_string = "firecracker_double_spin";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple_spin_nooutline";
+	    	fc_string = "firecracker_triple_spin";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }
@@ -479,7 +479,7 @@ if (attack == AT_FSPECIAL){
 	// Grabbing projectile
 	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !grabbed_solid && !ignoring_projectiles)
 	{
-		var FSpecGrabRadius = 55;
+		var FSpecGrabRadius = 70;
 		
 		// First, get nearby hitboxes
 		var tempProj = collision_circle(
@@ -758,7 +758,7 @@ if (attack == AT_FSPECIAL){
 		// Handle plat/solid grab vars
 		if(tempSolid == noone)
 		{
-			if(can_grab_plat_fspec)
+			if(can_grab_plat_fspec && tempPlat != noone)
 			{
 				tempSolid = tempPlat;
 				can_grab_plat_fspec = true; // was !freeyea
@@ -1594,7 +1594,7 @@ if (attack == AT_USPECIAL){
 		var extension_x = 15;
 		var extension_y = 10;
 		var can_grab = false;
-		
+
 		// First, get nearby hitboxes
 		var tempPlat = collision_ellipse(
 		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir) - (extension_x + get_hitbox_value(AT_USPECIAL, window-2, HG_WIDTH)/2),
@@ -1617,7 +1617,7 @@ if (attack == AT_USPECIAL){
 		// Handle plat/solid grab vars
 		if(tempSolid == noone)
 		{
-			if(can_grab_plat_uspec)
+			if(can_grab_plat_uspec && tempPlat != noone)
 			{
 				tempSolid = tempPlat;
 				can_grab_plat_uspec = !free;
