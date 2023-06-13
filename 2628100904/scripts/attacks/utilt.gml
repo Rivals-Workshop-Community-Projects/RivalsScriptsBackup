@@ -28,8 +28,8 @@ set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -48);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 13);
-set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 60);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 15);
+set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 56);
 set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 57);
 set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 2); //rounded rectangle is 2, circle is 0, square is 1
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 2);

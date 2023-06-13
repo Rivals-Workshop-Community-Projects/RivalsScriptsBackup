@@ -85,3 +85,5 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 	}	
 }
 set_synced_var( player, voiced)
+
+init_shader();

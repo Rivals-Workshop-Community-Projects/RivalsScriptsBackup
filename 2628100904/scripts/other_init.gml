@@ -1,0 +1,1 @@
+gang_grab_id = noone;

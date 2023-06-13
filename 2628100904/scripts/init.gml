@@ -109,5 +109,7 @@ weednova = hit_fx_create( sprite_get( "weednova" ), 20 );
 //varrriaairiaiables :(((
 
 weedcharge = 0;
-mid_weedcharge = 30;
-max_weedcharge = 70;
+mid_weedcharge = 20;//30
+max_weedcharge = 50;//50
+
+jabbing = false;

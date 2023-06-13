@@ -2,11 +2,25 @@
 
 //upsmash recoil
 if (attack == AT_USTRONG){
-    if(hbox_num == 3){
-        can_hit_self = true;
+    strong_charge = player_id.strong_charge;
+    if(hbox_num == 2){
+        if(player_id.has_hit){
+            image_xscale = 90/200;
+            image_yscale = 90/200;
+            mask_index = asset_get("hitbox_circle_spr");
+        }
     }
+    // if(hbox_num == 3){
+    //     can_hit_self = true;
+    // }
     if(hbox_num == 2){
         vsp = -8 - player_id.strong_charge/20;
+    }
+}
+
+if(attack == AT_USTRONG_2){
+    if(hbox_num == 1){
+        can_hit_self = true;
     }
 }
 

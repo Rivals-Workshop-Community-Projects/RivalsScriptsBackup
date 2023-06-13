@@ -13,11 +13,11 @@ if (attack == AT_FSTRONG){
 
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 140 * !has_rune("L");
-    if(window == 2 && (!special_down || state_timer >= 30)){
+    if(window == 2 && (weedcharge < mid_weedcharge || ((!special_down && state_timer <= 12) || state_timer >= 24))){
     	set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
     	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
     	set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99);
-    	if(state_timer >= 30){
+    	if(state_timer >= 24){
     		if(weedcharge == max_weedcharge){
     			set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
 		    	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
@@ -48,6 +48,8 @@ if(attack == AT_JAB){
 	if(window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		sound_play(sound_get("pistol_shoot"));
 	}
+} else {
+	jabbing = false;
 }
 
 if(attack == AT_FAIR){
@@ -104,28 +106,34 @@ if (attack == AT_DSPECIAL){
 			}
 	if (window == 3 || window == 4 || window == 5) { //cant jump during these windows
 		can_jump = false;
-		if window_timer == 6 {
+		if window_timer == 3 {
+			weedcharge = 0;
+		}
+		if(window == 8){
 			weedcharge = 0;
 		}
 	}
 	if (window == 3 ) {
+		vsp *= .85;
+		hsp *= .85;
+		move_cooldown[AT_DSPECIAL] = 15;
 		if window_timer == 30 { //endlag
-			window = 8; //window 8 does not exist this just makes it end the attack i gues
+			window = 10; //window 8 does not exist this just makes it end the attack i gues
 			window_timer = 0;
 		}
 	}
-	if (window == 7 ) {
-		if window_timer == 10 { //transition from windup to actual attack ??
-			window = 4;
-			window_timer = 0;
-		}
-	}
-	if (window == 4 ) {
-		vsp *= .9;
-		if window_timer == 36 { //endlag
-			window = 8; //window 8 does not exist this just makes it end the attack i gues
-			window_timer = 0;
-		}
+	// if (window == 7 ) {
+	// 	if window_timer == 10 { //transition from windup to actual attack ??
+	// 		window = 4;
+	// 		window_timer = 0;
+	// 	}
+	// }
+	if (window == 4 || window == 8 || window == 9) {
+		vsp *= .97;
+		// if window_timer == 24 { //endlag
+		// 	window = 10; //window 8 does not exist this just makes it end the attack i gues
+		// 	window_timer = 0;
+		// }
 	}
 	if (window == 5 ) {
 		if(window_timer < 20){
@@ -135,7 +143,7 @@ if (attack == AT_DSPECIAL){
 			sound_play(asset_get("sfx_abyss_portal_intro"));
 		}
 		if window_timer == 24 { //endlag
-			window = 8; //window 8 does not exist this just makes it end the attack i gues
+			window = 10; //window 8 does not exist this just makes it end the attack i gues
 			window_timer = 0;
 		}
 		if (window_timer == 22 && !hitpause) { //splosion
@@ -148,8 +156,8 @@ if (attack == AT_DSPECIAL){
 		}
 	}
 	if (window == 6 ) {
-		if window_timer == 16 { //endlag
-			window = 8; //window 8 does not exist this just makes it end the attack i gues
+		if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) { //endlag
+			window = 10; //window 8 does not exist this just makes it end the attack i gues
 			window_timer = 0;
 		}
 	}
@@ -160,7 +168,10 @@ if (attack == AT_DSPECIAL){
 //fuckign hate programming
 
 if(attack == AT_USPECIAL){
-	if(window == 3 && window_timer == 6 && special_down && !hitpause){
+	if(window == 3){
+		can_wall_jump = true;
+	}
+	if(window == 3 && window_timer == 8 && special_down && !hitpause){
 		if(weedcharge == max_weedcharge){
 			create_hitbox(AT_USPECIAL, 4, x, y - char_height/2);
 			var hbox = create_hitbox(AT_USPECIAL, 3, x, y - char_height/2);

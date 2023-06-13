@@ -32,6 +32,41 @@ if get_player_color(player) == 0 {
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
 }
 
+//css names
+var temp_x = x;
+var temp_y = y;
+var alt_cur = get_player_color(player);
+
+alt_name = [
+"Naruto",
+"Naruto" + chr(10) + "pre-timeskip",
+"Sasuke" + chr(10) + "pre-timeskip",
+chr(10) + "Sakura",
+"Kakashi",
+"Rock lee",
+"Hinata",
+chr(10) + "Boruto",
+chr(10) + "Madara",
+chr(10) + "trans jutsu",
+chr(10) + "manga",
+chr(10) + "gameboy",
+chr(10) + "abyss",
+];
+
+if(alt_cur != prev_alt){
+    anim_timer = 0;
+    alpha_alt = 6;
+}
+if alpha_alt > 0 {
+    alpha_alt -= 0.05;
+    anim_timer++;
+}
+prev_alt = alt_cur;
+
+if(alt_cur == 17) draw_sprite_ext(sprite_get("css_icons"), 2, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
+draw_sprite_part_ext(sprite_get("idle"), anim_timer * 0.15, 38, 8, 50, 200, temp_x + 8, temp_y - 12 + 40, 2, 2, c_white, alpha_alt);
+draw_set_halign(fa_left);
+textDraw(temp_x + 60, temp_y + ((alt_cur < 4 || alt_cur > 6) && alt_cur? 127: 141), "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)), 14, 400, 1, 1, alpha_alt, alt_name[alt_cur], c_black);
 
 var alt_cur = get_player_color(player);
 var draw_index;
@@ -118,3 +153,19 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 }
 set_synced_var( player, voiced)
 draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 1, 1, 0, c_white, 1);
+
+#define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string, outline_c)
+
+draw_set_font(asset_get(argument[2]));
+
+if argument[7]{ //outline. doesn't work lol //now it does, you're welcome
+    draw_text_ext_transformed_color(argument[0] + argument[6]*2, argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0] + argument[6]*2, argument[1] + argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0] + argument[6]*2, argument[1] - argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0], argument[1] - argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0] - argument[6]*2, argument[1] - argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0] - argument[6]*2, argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0] - argument[6]*2, argument[1] + argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+    draw_text_ext_transformed_color(argument[0], argument[1] +  argument[6]*2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[10], argument[10], argument[10],argument[10], argument[8]);
+}
+draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);

@@ -76,6 +76,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_SDI_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, explode_fx);
+set_hitbox_value(AT_DATTACK, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 4);
@@ -100,6 +101,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_SDI_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, explode_fx);
+set_hitbox_value(AT_DATTACK, 2, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW, 5);
@@ -121,6 +123,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_mol_norm_explode"));
 set_hitbox_value(AT_DATTACK, 3, HG_EXTRA_CAMERA_SHAKE, 0);
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_VISUAL_EFFECT, explode_fx);
+set_hitbox_value(AT_DATTACK, 3, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 4, HG_WINDOW, 3);
@@ -144,6 +147,7 @@ set_hitbox_value(AT_DATTACK, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 4, HG_SDI_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 4, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 4, HG_VISUAL_EFFECT, explode_fx);
+set_hitbox_value(AT_DATTACK, 4, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 5, HG_WINDOW, 4);
@@ -168,3 +172,4 @@ set_hitbox_value(AT_DATTACK, 5, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 5, HG_SDI_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 5, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DATTACK, 5, HG_VISUAL_EFFECT, explode_fx);
+set_hitbox_value(AT_DATTACK, 5, HG_IGNORES_PROJECTILES, 1);

@@ -116,7 +116,7 @@ set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_BAIR, 4, HG_PROJECTILE_DESTROY_EFFECT, 20);
 
 set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
@@ -148,7 +148,7 @@ set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_BAIR, 5, HG_PROJECTILE_DESTROY_EFFECT, 20);
 
 set_hitbox_value(AT_BAIR, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 6, HG_WINDOW, 2);
@@ -180,4 +180,4 @@ set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_BAIR, 6, HG_PROJECTILE_DESTROY_EFFECT, 20);
