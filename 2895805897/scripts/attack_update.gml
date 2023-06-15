@@ -39,8 +39,11 @@ switch (attack) {
 	
 	case AT_NAIR:
 		if (window == 1 && window_timer == 1) {
-			sound_play(asset_get("sfx_spin"));
+			sound_play(asset_get("sfx_ori_stomp_spin"), false, noone, 0.9, 1.1);
 		}
+		/*if (window == 2 && window_timer == 1) {
+			sound_stop(asset_get("sfx_ori_stomp_spin"));
+		}*/
 		break;
 	
 	case AT_DAIR:
@@ -209,6 +212,7 @@ switch (attack) {
 				// Note: Remember to give windows 4, 5 and 6 invincibility
 				vsp = 0;
 				hsp = 0;
+				move_cooldown[AT_FSPECIAL] = 35;
 				break;
 		}
 		

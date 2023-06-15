@@ -851,7 +851,7 @@ switch (state) {
     		state = 2;
 		} else {
 			if (artAnim_currentAnim >= 7 && artAnim_currentAnim < 10) {
-				strongLag = 80;
+				strongLag = 50;
 			}
 			if (killNow == true) {
 				artAnim_newAnim = Animation.HitKill;

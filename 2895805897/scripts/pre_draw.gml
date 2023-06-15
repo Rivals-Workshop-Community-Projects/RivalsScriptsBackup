@@ -1,6 +1,6 @@
 // pre-draw
 
-if (state == PS_RESPAWN) {
+if (state == PS_RESPAWN || (initial_invince > 0 && attack == AT_TAUNT && free && state == PS_ATTACK_GROUND)) {
     shader_start();
     draw_sprite(sprite_get("plat_back"), 0, x, y);
     shader_end();

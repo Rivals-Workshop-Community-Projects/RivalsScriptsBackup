@@ -5,9 +5,9 @@ hitstun_hurtbox_spr = sprite_get("air_box");
 
 Hikaru_Title = "Underpaid Worker"
 
-nname = "Nolan Dolal [Abyss]"
-ncode1 = "A.k.a [Nullan]"
-ncode2 = "Nolan carrying the power of the Abyss."
+nname = "Nullan H. Aether"
+ncode1 = "A.k.a [NA]"
+ncode2 = "Nullan carrying the power of the Abyss."
 ncode3 = "It seems like he retains complete control."
 
 famix = x

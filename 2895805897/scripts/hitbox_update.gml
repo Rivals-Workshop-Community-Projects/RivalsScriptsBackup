@@ -21,7 +21,7 @@ if (attack == AT_DSPECIAL && hbox_num == 8 && destroyed == false) {
         	// Destroy this hitbox
         	destroyed = true;
         	y -= 1000;
-        	player_id.FlytrapCooldownTimer = 300;
+        	player_id.FlytrapCooldownTimer = 1326;
         	player_id.atk_noDSpecial = false;
         } else {
             isGrounded = true;

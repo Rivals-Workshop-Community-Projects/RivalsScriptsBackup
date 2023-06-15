@@ -240,3 +240,21 @@ grabObjectType = 1;
  * 2 = Hitbox
  * 3 = Article (note: must have article_hit.gml active)
  */
+
+// Taken from a newer project so this doesn't implode when masked man happens
+rnk_intUrl = url;
+try 
+{
+    if (url == "" || url == null) 
+    { // woah this character doesn't have a url :skull_emoji:
+        rnk_intUrl = noone;
+    }
+    else 
+    { // Url converted to an int from a string
+        rnk_intUrl = real(url); 
+    }
+} 
+catch (err) 
+{ // crashes heavily, worst gamefeel!
+    rnk_intUrl = noone;
+}

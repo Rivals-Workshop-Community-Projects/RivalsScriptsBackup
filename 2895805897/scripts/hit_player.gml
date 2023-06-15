@@ -24,13 +24,6 @@ if (my_hitboxID.attack == AT_DATTACK) {
     //sound_play(sound_get("stab"));
     sound_play(asset_get("sfx_shovel_hit_med2"));
 }
-
-if (my_hitboxID.attack == AT_NAIR) {
-    //sound_play(sound_get("GEN_throw"));
-    //sound_play(asset_get("sfx_blow_medium3"));
-    sound_play(asset_get("sfx_blow_medium1"));
-}
-
 // The COMMAND GRAB Code
 // By Wabungus!
 

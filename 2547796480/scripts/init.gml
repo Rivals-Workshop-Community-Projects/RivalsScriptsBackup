@@ -10,6 +10,7 @@ oknifecountcd = 0
 nctimer = 0
 oknifelost = 0
 
+nname = "!N H. Serling"
 ncode1 = "[Special Unit] who only take tasks directly"
 ncode2 = "from Mr.president. He has many encounters "
 ncode3 = "with Anomalies, notoriously [Burger Clown]"

@@ -636,7 +636,7 @@ if attack == AT_TAUNT {
 			}
 		}
 		if window == 1 && window_timer == 2 {
-			sound_play(sound_get("radio2"));
+			sound_play(sound_get("radio2"),false,noone,0.5,1);
 		}
 	}
 	
@@ -660,7 +660,7 @@ if attack == AT_TAUNT {
 		}	
 
 		create_hitbox(AT_TAUNT , 1 , x , y );
-		sound_play(sound_get("radio2"));
+		sound_play(sound_get("radio2"),false,noone,0.5,1);
 	}
 	if taunt_down && window == 2 && window_timer == 18 {
 		window_timer -= 1

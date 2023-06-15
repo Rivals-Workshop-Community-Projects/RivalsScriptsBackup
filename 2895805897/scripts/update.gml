@@ -8,10 +8,10 @@ if (!custom_clone) {
 	if (!instance_exists(FlytrapID)) {
 		FlytrapID = 0;
 	}
-	if (FlytrapID == 0) {
-		FlytrapCooldownTimer = max(FlytrapCooldownTimer - 1, 0);
-	}
-	if (FlytrapCooldownTimer > 0 || atk_noDSpecial == true) {
+	
+	FlytrapCooldownTimer = max(FlytrapCooldownTimer - 1, 0);
+	
+	if (FlytrapCooldownTimer > 0 || atk_noDSpecial == true || FlytrapID != 0) {
 		move_cooldown[AT_DSPECIAL] = 6;
 	}
 	
@@ -68,7 +68,6 @@ if (!custom_clone) {
 	            try {
 	                if (player != other.player) {
 	                    otherRunIsHighest = false;
-	                    print_debug(url);
 	                }
 	            } catch (err) {}
 	        }
@@ -79,10 +78,9 @@ if (!custom_clone) {
 	        // calls (oPlayer, pHitbox, etc.)
 	        // Set Hitboxes to be grabbed
 	        with (pHitBox) {
-	            var urlNumber = real(player_id.url);
 	            
 	            // Setting for base cast & workshop (needs testing)
-	            if (type == 2 && !does_not_reflect && !unbashable && (urlNumber < 100 || (!plasma_safe && hit_priority != 0))) {
+	            if (type == 2 && !does_not_reflect && !unbashable && ((rnk_intUrl < 100 && rnk_intUrl != noone) || (!plasma_safe && hit_priority != 0))) {
 	                // Checks if the variable has been set before
 	                if !variable_instance_exists(self, "grabObjectType") {
 	                    grabObjectType = 2;

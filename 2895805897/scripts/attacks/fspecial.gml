@@ -97,11 +97,12 @@ set_num_hitboxes(AT_FSPECIAL, 2);
         set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 80);
         
     // Hitplayer Stats
-        set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
         set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 80);
         
         set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
         set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.8);
         
         set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
         set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.5);
