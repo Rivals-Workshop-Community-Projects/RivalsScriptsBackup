@@ -111,7 +111,7 @@ can_move = false;
 	
 switch window {
 	case 1:
-	    fspecial_hit = false;
+	    fspecial_hit = 0;
         if window_timer = 1 && !hitpause sound_play(sound_get("bully_noise_2"));
 	break;
 	
@@ -145,7 +145,7 @@ switch window {
 			if window_timer%4 = 0 && !hitpause spawn_base_dust(x-(24*spr_dir), y, "walk", 0);
         }
 		
-		if has_hit { fspecial_hit = true; old_vsp = -6; }
+		if has_hit { fspecial_hit = 1; }
 	break;
 	
 	case 4:
@@ -163,12 +163,19 @@ switch window {
 		    window = 10;
 		    window_timer = 0;
 		}
-		if has_hit { fspecial_hit = true; }
+		if has_hit { fspecial_hit = 1; }
 	break;
 	
 	case 7:
-	    fspecial_hit = false;
-        destroy_hitboxes();
+	    if fspecial_hit != 0 && window_timer > 1 && !hitpause {
+			if fspecial_hit = 2 {
+			    vsp = -8;
+			} else {
+			    if !down_down vsp = -6;
+			}
+			fspecial_hit = 0;
+			destroy_hitboxes();
+		}
 	break;
 	
 	case 9:
@@ -178,8 +185,7 @@ switch window {
 }
 
 if (place_meeting( x+1 * spr_dir, y-1, asset_get("par_block"))) && (window == 3 or window == 6){
-	old_vsp = -8;
-    fspecial_hit = true;
+    fspecial_hit = 2;
     spawn_base_dust(x+(24*spr_dir), y-32, "walljump", spr_dir*-1);
     fxlol = spawn_hit_fx(x+(24*spr_dir), y-32, fspecial_bonk_fx);
 	fxlol.depth = depth-1;
@@ -194,7 +200,7 @@ if (place_meeting( x+1 * spr_dir, y-1, asset_get("par_block"))) && (window == 3 
 
 move_cooldown[AT_FSPECIAL] = 6;
 
-if fspecial_hit == true{
+if fspecial_hit > 0 && window != 7 {
     sound_stop(sound_get("sm64_swoosh"));
     window = 7;
     window_timer = 1;

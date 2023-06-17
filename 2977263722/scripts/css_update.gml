@@ -1,3 +1,5 @@
+if "alt" not in self exit;
+
 switch alt {
     case 1:
 	    set_ui_element( UI_CHARSELECT, sprite_get( "_css_chill" ));

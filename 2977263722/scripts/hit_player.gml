@@ -11,7 +11,7 @@ switch my_hitboxID.attack {
 	break;
 
     case AT_FSPECIAL:
-	    fspecial_hit = true;
+	    fspecial_hit = 1;
 		sound_play(sound_get("bully_dink"));
 		sound_play(sound_get("bully_noise"));
 	break;

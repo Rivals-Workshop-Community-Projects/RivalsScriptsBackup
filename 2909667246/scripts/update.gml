@@ -42,7 +42,6 @@ if(instance_exists(Pocketed_Projectile)){
         	if("Pocketed" in Pocketed_Projectile){
 				Pocketed_Projectile.Pocketed = false;
 			}
-			print("matty");
 		}else if(pocket_release == 2){ //destroy
 		    Pocketed_Projectile.x = 9000;
 		    Pocketed_Projectile.destroyed = true;

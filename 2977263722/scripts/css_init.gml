@@ -47,5 +47,3 @@ alt_name = [
 "Midboss",
 "Projectile Blue"
 ];
-
-init_shader();

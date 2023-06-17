@@ -182,7 +182,7 @@ initWords("When in the air, fireballs are launched at a downward angle, though u
 initImage_ext(sprite_get("pho_fireball"), -3, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("FSpecial: Bully Bash");
-initWords("Bully charges forwards with its horns, ramming into anyone in it's way! Hitting an opponent or wall will make Bully bounce off, cancelling the move early.");
+initWords("Bully charges forwards with its horns, ramming into anyone in it's way! Hitting an opponent or wall will make Bully bounce off, cancelling the move early. Holding Down during this recoil will stop Bully from gaining height.");
 initWords("When started on the ground, Bully will keep running no matter what! Running off a ledge during the grounded bash will keep Bully floating in mid-air, and it can even jump! If a bash is started in mid-air however, Bully can only jump after touching the ground.");
 initWords("Jumping during a bash is both a great mixup, and will extend the length of the move. Watch out though, jumping too close to the ledge can be risky and make it fly too far! The risk can be well worth it however, since again, landing the move will stop Bully in its tracks.");
 initImage_ext(sprite_get("pho_fspecial"), -4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
@@ -270,6 +270,24 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.6", "17 June, 2023");
+initHeader("Aesthetic");
+initSection("-Updated Munophone tips to reflect FSpecial changes
+-Added a unique animation for grounded FSpecial recoil
+-Added more Miiverse posts");
+initHeader("Balance");
+initSection("-When recoiling with FSpecial, you can now hold Down to stop vertical height
+-FSpecial hurtbox updated for the new animation
+-FSpecial BKB increased from 9 to 10
+-DSpecial falling hit BKB increased from 5 to 7
+-DSpecial falling hit KB Scaling increased from 0.5 to 0.6
+-BAir BKB increased from 5 to 7
+-BAir KB Scaling increased from 0.4 to 0.5");
+initHeader("Fixes");
+initSection("-FSpecial recoil fixed to be consistent
+-Respawn platform now flies away in training mode
+-Fixed CSS randomly spitting errors into the debug log on load for real this time");
 
 initPatch("1.5", "29 May, 2023");
 initHeader("Aesthetic");

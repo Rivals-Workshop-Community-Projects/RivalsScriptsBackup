@@ -268,15 +268,15 @@ if (attack == AT_NSPECIAL){
 				}else{
 					strong_charge += 1;window_timer -= 1;
 				}
-				set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(10+strong_charge/6));
-				set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.0+strong_charge/200);
+				set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/4));
+				set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.05+strong_charge/180);
 				if(strong_charge < 30){
 					reset_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH);reset_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX_FRAME);
 					VillagerTreeCut = 1;
 				}else{
 					set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 12);set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX_FRAME, 11);
-					set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(10+strong_charge/3));
-					set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.0+strong_charge/150);
+					set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/2.5));
+					set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.05+strong_charge/130);
 					VillagerTreeCut = 2;
 				}
 			}if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){ //only happens if uncharged
@@ -740,9 +740,13 @@ if (canon || op) {
 
 #define pocket_article_if_valid
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
-    	if(string_length(string(player_id.url)) > 0){
+    	if(string_length(string(player_id.url)) >= 0){
+	        /*var playerurl = 0;
+	        if("url" in player_id && string_length(string(player_id.url)) >= 0){
+	        	playerurl = real(player_id.url);
+	        }*/
 	        var playerurl = real(player_id.url);
-	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")  || other.runeI){
+	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite") || other.runeI){
             	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
             	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
             		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;

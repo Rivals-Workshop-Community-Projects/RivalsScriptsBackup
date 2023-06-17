@@ -18,8 +18,8 @@ with oPlayer {
 
 //idk what the glitch was but ok xoxo thank u zard
 //Shoulder Bash Glitch Possible Fix
-if (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND) || attack != AT_FSPECIAL{
-	fspecial_hit = false;
+if !((state = PS_ATTACK_AIR || state = PS_ATTACK_GROUND) && attack = AT_FSPECIAL) {
+	fspecial_hit = 0;
 }
 
 //RAINBOW ==========================================================================
@@ -183,7 +183,7 @@ if state = PS_RESPAWN || respawn_taunt {
 	plat_y_offset2 = 0;
 	
 	
-	if visible {
+	if visible || get_match_setting(SET_PRACTICE) {
 	    plat_on = 10;
 	} else {
 	    plat_on = 0;
