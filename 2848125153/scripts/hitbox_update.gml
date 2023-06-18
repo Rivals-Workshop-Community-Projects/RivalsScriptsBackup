@@ -881,6 +881,7 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_DATTACK){
+	if("Pocketed" not in self){Pocketed = false;}
 	if(hbox_num == 4 && !Pocketed){
 		hitbox_timer = 0;
 		
@@ -896,19 +897,19 @@ if(attack == AT_DATTACK){
 		//}
 		if(abs(hsp) > 14 || abs(vsp) > 14){
 			kb_value = 8;kb_scale = 1.0*critboost_kb_scale;
-            hitstun_factor = 1;damage = 10*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
+            hitstun_factor = 1;damage = 8*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 12;hitpause_growth = 1;
             sound_effect = asset_get("sfx_shovel_hit_heavy1");
 			hit_priority = 2;num = 1;hit_effect = 304;
 		}else if(abs(hsp) > 7 || abs(vsp) > 7){
 			kb_value = 7;kb_scale = 0.9*critboost_kb_scale;
-            hitstun_factor = 0.9;damage = 7*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
+            hitstun_factor = 0.9;damage = 6*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 8;hitpause_growth = .7;
             sound_effect = asset_get("sfx_shovel_hit_heavy1");
 			hit_priority = 2;num = 2;hit_effect = 304;
 		}else if(abs(hsp) > 3 || abs(vsp) > 3){
 			kb_value = 6;kb_scale = 0.5*critboost_kb_scale;
-            hitstun_factor = 0.5;damage = 4*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
+            hitstun_factor = 0.5;damage = 3*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 6;hitpause_growth = .5;
             sound_effect = asset_get("sfx_shovel_hit_heavy2");
 			hit_priority = 2;num = 3;hit_effect = 302;

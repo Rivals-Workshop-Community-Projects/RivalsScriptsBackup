@@ -801,7 +801,15 @@ if !hitpause and ((window == 3 && window_timer == 4) or (window == 5 && window_t
 
 
 }
+
+
 if attack == AT_FSTRONG {
+
+ if timefreeze < 1{
+  set_num_hitboxes(AT_FSTRONG, 5);
+ } else{
+set_num_hitboxes(AT_FSTRONG, 0);
+}
 
 if window == 4 && window_timer == 15 && !hitpause {
 		create_hitbox(AT_FTHROW,18,x- 36*spr_dir,y - 38)

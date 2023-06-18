@@ -1,5 +1,4 @@
 if kaioken && enemy_hitboxID.damage > 0 take_damage(player, enemy_hitboxID.player, 2);
-
 var ki_mult = 1;
 if ssj{
 	ki = max(ki - enemy_hitboxID.damage * ki_mult, 1);

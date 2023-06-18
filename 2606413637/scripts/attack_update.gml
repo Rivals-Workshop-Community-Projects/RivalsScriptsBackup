@@ -77,7 +77,7 @@ switch(attack){
 		if window == 2 && window_timer == phone_window_end{
 			spawn_base_dust(x, y, "dash_start");
 			var h = spawn_form_aura();
-			h.x += 32 * spr_dir;
+			h.x += 16 * spr_dir;
 		}
 		break;
 	case AT_USTRONG:
@@ -124,15 +124,45 @@ switch attack{
 		break;
 		
 	case AT_FTILT:
+		if window == 1 && window_timer = 6{
+				charged_ftilt = 10;
+				clear_button_buffer(PC_ATTACK_PRESSED);
+				clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+				clear_button_buffer(PC_LEFT_STICK_PRESSED);
+		}
+		if window == 1 && window_timer > 6{
+			if charged_ftilt == 10{
+				charged_ftilt = 11;
+				if attack_pressed || attack_down || right_stick_down || left_stick_down{
+					if phone_arrow_cooldown == 0{
+						if ssj == 0{
+							charged_ftilt = 9;
+						}else{
+							charged_ftilt = 0;
+						}
+					}
+				}
+			}else if charged_ftilt < 10{
+				if charged_ftilt > 4{
+					window_timer = 7;
+					charged_ftilt -= 1;
+				}
+			}
+		}
 		if window == 1 && window_timer == 8{
 			hsp = 6 * spr_dir;
 		}
 		if window == 2{
+			if charged_ftilt == 11{
+				if window == 2 phone_arrow_cooldown = max(phone_arrow_cooldown, 30);
+			}
 			hsp *= 0.8;
 		}
+		
 		if window == 3 phone_arrow_cooldown = max(phone_arrow_cooldown, 30);
+		
+
 		break;
-	
 	case AT_UTILT:
 		if window == 1{
 			set_attack_value(attack, AG_NUM_WINDOWS, 3);
@@ -145,8 +175,8 @@ switch attack{
 			}
 		}
 		if window == 4 && window_timer == phone_window_end{
-			var pos_x = x + 80 * spr_dir;
-			pos_x += (right_down - left_down) * 32
+			var pos_x = x + 60 * spr_dir;
+			pos_x += (right_down - left_down) * 24
 			
 			create_hitbox(attack, 3, pos_x, y - 32);
 			spawn_hit_fx(pos_x, y, vfx_utilt_spawn);
@@ -284,7 +314,7 @@ switch attack{
 	
 	case AT_FSTRONG:
 		if window == 2{
-			hsp += 7 * spr_dir;
+			hsp += 3.5 * spr_dir;
 			if window_timer == 1{
 				sound_play(asset_get("sfx_ori_charged_flame_release"));
 			}

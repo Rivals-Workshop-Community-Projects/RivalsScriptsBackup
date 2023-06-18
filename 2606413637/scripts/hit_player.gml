@@ -51,6 +51,9 @@ switch my_hitboxID.attack{
 			take_damage(hit_player_obj.player, player, 2);
 			kaioken = min(kaioken + my_hitboxID.damage * ki_mult, ki_max);
 		}
+		if ssj > 0{
+			take_damage(hit_player_obj.player, player, 2);
+		}
 		break;
 }
 

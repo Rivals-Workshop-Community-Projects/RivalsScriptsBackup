@@ -1,4 +1,5 @@
-//draw_debug_text( 200, 10, "state : " + joy_dir(dir));
+
+
 if "ki" not in self exit;
 if !phone_cheats[CHEAT_TRAILER]{
 	var alt_costume = get_player_color(player);

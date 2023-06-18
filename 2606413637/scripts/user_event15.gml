@@ -177,7 +177,8 @@ initTip("SSJ Meter");
 initWords("Goku's iconic Super Saiyan form appears in Rivals as a mid-match transformation - and you don't even need Abyss Runes or a Smash Ball!");
 initWords("The Ki Meter at the bottom of the screen fills up as you deal damage to opponents, and it also fills (much more slowly) when you receive damage. When it's full, press DSpecial to turn Super Saiyan for a limited time!");
 initImage(sprite_get("dspecial"), -5);
-initWords("In Super Saiyan form, you can cancel normal attacks into a Special or Strong on-hit, dash more quickly, and launch opponents further with Strongs... at the cost of taking more knockback.");
+initWords("In Super Saiyan form, you deal more damage, dash more quickly, launch opponents further with Strongs, and can even cancel normal attacks into a Special or Strong on-hit...");
+initWords("...all at the cost of lowered defense, since you take more damage and knockback from incoming attacks.");
 
 initTip("DSpecial: Kaioken");
 initWords("You're unlikely to fill the Ki Meter more than once per match by normal means... but if you want to push your limits, you can use DSpecial to enter Kaioken!");
@@ -288,6 +289,35 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("3.0", "16 June, 2022");
+initSection("(by DrFlux)");
+initHeader("SSJ - Buffs, Nerfs");
+initSection("Now has the same attack damage boost as Kaioken.");
+initSection("Knockback_adj 1.2 --> 1.1.");
+initSection("Now takes 1.2x damage from enemy attacks.");
+initHeader("DSpecial - Nerfs");
+initSection("Spirit Bomb max damage 40 --> 20.");
+initHeader("Dash Attack - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initHeader("FTilt - Nerfs, Reworks");
+initSection("Hitbox size reduced, position adjusted.");
+initSection("Ki blast is only fired if button is held (adds 5 frames of startup unless in SSJ).");
+initHeader("UTilt - Adjustments / Nerfs");
+initSection("Reduced the amount the ki blast can be aimed left or right.");
+initSection("Reduced ki blast vertical range.");
+initHeader("FAir - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initHeader("UAir - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initHeader("BAir - Adjustments");
+initSection("Angle flipper removed.");
+initHeader("DAir - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initHeader("FStrong - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initSection("Forward movement reduced.");
+initWords("Removed Advertising");
 
 initPatch("2.2", "08 June, 2023");
 initSection("(by DrFlux)");

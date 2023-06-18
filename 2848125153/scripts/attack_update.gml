@@ -648,7 +648,7 @@ if (attack == AT_NSPECIAL){
 	    	}
 		}
 	}
-	if(window <= 2){
+	if(window <= 2 && jump_pressed){
 		cancelattack();
 	}
 }else if (attack == AT_FTILT){

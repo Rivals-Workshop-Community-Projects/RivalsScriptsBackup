@@ -36,12 +36,10 @@ switch(attack){
 		set_num_hitboxes(attack, 2 + (ssj > 0));
 		break;
 }
-
-if attack == AT_DSPECIAL && ssj{
+if attack == AT_DSPECIAL && ssj > 0 && spirit_bomb_unlocked == 1{
 	attack = AT_DSPECIAL_2;
 	if funny_broken_mode || has_rune("M") attack = 49;
-	spirit_bomb_juice = floor(ki / ki_max * 10)
-	
+	spirit_bomb_juice = floor(ki / ki_max * 10)			
 	ssj = false;
 	ki = 0;
 }

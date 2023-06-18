@@ -73,6 +73,7 @@ sprite_change_offset("taunt", 20, 43, true);
 sprite_change_offset("_phone", 20, 43, true);
 
 sprite_change_offset("plat", round(31/2), 12);
+sprite_change_offset("lookup", 20, 43, true);
 
 sprite_change_offset("nspecial_dice", 20, 20);
 sprite_change_offset("nspecial_dice_alts", 20, 20);

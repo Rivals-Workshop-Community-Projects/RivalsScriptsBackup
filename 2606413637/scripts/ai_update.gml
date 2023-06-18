@@ -344,7 +344,16 @@ return value
 
 if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
 	attacking = true;
-  switch(attack){
+	switch(attack){
+	case AT_FTILT:
+		if xdisp > 50{
+			attack_down = true
+			attack_pressed = true
+		}else if xdisp < 50{
+			attack_down = false
+			attack_pressed = false
+		}
+		break;
     case AT_NSPECIAL:
 
     	hold_towards_target_specials()
@@ -524,7 +533,7 @@ switch(type){
 		var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG];
 		break;
 	case "specials":
-		var attacke = [AT_NSPECIAL];
+		var attacke = [AT_NSPECIAL, AT_FSPECIAL];
 		break;
 	case "DACUS":
 		var attacke = [AT_USTRONG];
@@ -555,13 +564,13 @@ for(var i = 0; i < len; i++){
   	apply_grav = false
   }
   if(attacke[i] == AT_FSTRONG){
-  	vo_x = spr_dir*(7 - ground_friction*8)
+  	vo_x = spr_dir*2
   }
   if(attacke[i] == AT_DTILT){
   	vo_x += spr_dir*3
   }
   if(attacke[i] == AT_FTILT){
-  	vo_x += spr_dir*(7 - ground_friction*6)
+  	vo_x += spr_dir*2
   }
   
   lastPos = newPredict(self, cad[@ AD_FRAME], vo_x, vo_y, apply_grav, false);
@@ -587,7 +596,7 @@ for(var i = 0; i < len; i++){
 		j++;
   }
   
-  // var ai_target_hurtbox_bbox = [estOPos[@ 1] + thh, estOPos[@ 1], estOPos[@ 0] - thw / 2, estOPos[@ 0] + thw / 2];
+   var ai_target_hurtbox_bbox = [estOPos[@ 1] + thh, estOPos[@ 1], estOPos[@ 0] - thw / 2, estOPos[@ 0] + thw / 2];
   
   
 }
@@ -1056,6 +1065,13 @@ return dir
 		case AT_USTRONG:
 		case AT_DSTRONG:
 		case AT_FTILT:
+			if xdisp > 75{
+				attack_down = true
+				attack_pressed = true
+			}else if xdisp < 75{
+				attack_down = false
+				attack_pressed = false
+			}
 		case AT_UTILT:
 		case AT_DTILT:
 			if(state == PS_DASH_START or state == PS_DASH){

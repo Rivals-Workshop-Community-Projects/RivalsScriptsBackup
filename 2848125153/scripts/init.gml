@@ -237,6 +237,7 @@ diedienowP2 = false;
 diedienowP3 = false;
 diedienowP4 = false;
 playercount = 0;
+lookuptime = 0;
 
 drawtime = 0;
 prev_alt = 0;

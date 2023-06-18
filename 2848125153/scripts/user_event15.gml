@@ -319,6 +319,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.22", "16th June, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Mr Monopoly can now observe money when it is above him");
+initHeader("Unskillful Nerfs");
+initSection("- DAttack cancelling is now a bit more limited and can be jump-cancelled instead of cancelled into anything
+- DAttack damage reduced a little bit overall");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a weird DAttack error that could just happen because Rivals");
+
 initPatch("1.21", "8th June, 2023");
 initHeader("Skillful Buffs");
 initSection("+ Added another CSS image (now 6 total). Very skillful! (thanks to DonGT for the original)

@@ -53,7 +53,7 @@ sprite_change_offset("intro", 108, 110);
 
 sprite_change_offset("fstrong", 70, 108);
 sprite_change_offset("ustrong", 59, 180,);
-sprite_change_offset("dstrong", 74, 102);
+sprite_change_offset("dstrong", 76, 102);
 
 sprite_change_offset("nspecial", 66, 110);
 sprite_change_offset("nspecial_air", 60, 106);

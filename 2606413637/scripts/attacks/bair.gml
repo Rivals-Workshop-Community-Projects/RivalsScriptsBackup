@@ -40,5 +40,5 @@ set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sfx_dbfz_hit_medium);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 6); // 0
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 0); // 0
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 10);

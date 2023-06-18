@@ -1,4 +1,3 @@
-
 if get_player_color(player) == 0 {
 	if ssj == 0 || ssj == 3 || ssj == 5 {
 		set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
@@ -43,6 +42,7 @@ if ssj == 2{
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ3"));
 	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ3"));	
 }
+
 muno_event_type = 1;
 user_event(14);
 
@@ -147,8 +147,30 @@ ki_meter = lerp(ki_meter, ki, 0.5);
 if abs(ki_meter - ki) < 1{
 	ki_meter = ki;
 }
+if ssj > 0{
+	if ki > 500{
+		move_cooldown[AT_DSPECIAL] = 500;
+		spirit_bomb_unlocked = 1;
+	}
+	if ki == 500 || ki == 1000{
+		move_cooldown[AT_DSPECIAL] = 0;
+		spirit_bomb_unlocked = 1;
 
+	}
+	if ki < 500{
+		move_cooldown[AT_DSPECIAL] = 0;
+		spirit_bomb_unlocked = 1;
+
+	}
+}else if ssj == 0{
+	move_cooldown[AT_DSPECIAL] = 0;
+	spirit_bomb_unlocked = 1;
+
+}
 if ssj{
+	if ssj > 0{
+		damage_scaling = 1.2;
+	}
 	if !has_rune("N") ki = max(ki - 1, 0);
 	if ki == 0{
 		ssj = SSJ_NONE;
@@ -161,6 +183,7 @@ if ssj{
 
 else{
 	if has_rune("N") ki = min(ki + 2, ki_max);
+	damage_scaling = 1;
 }
 
 if phone_cheats[CHEAT_KI] ki = ki_max;
@@ -177,7 +200,7 @@ if was_ssj != ssj{
 	}
 	dash_speed = orig_dash_speed + 1 * (ssj > 0);
 	initial_dash_speed = orig_initial_dash_speed + 1 * (ssj > 0);
-	knockback_adj = orig_knockback_adj + 0.2 * (ssj > 0);
+	knockback_adj = orig_knockback_adj + 0.1 * (ssj > 0);
 	current_sprite_set = ssjs[ssj].hairstyle;
 	
 	// set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6 + 2 * (ssj > 0));

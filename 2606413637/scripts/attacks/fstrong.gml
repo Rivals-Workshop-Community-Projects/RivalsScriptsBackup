@@ -30,10 +30,10 @@ set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Normal");
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 36); // 24
+set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 40); // 24
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 96); // 128
-set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 56); // 64
+set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 75); // 128
+set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 40); // 64
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 10);
@@ -50,10 +50,10 @@ set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "SSJ");
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 36); // 24
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 40); // 24
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 96); // 128
-set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 56); // 64
+set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 75); // 128
+set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 40); // 64
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);

@@ -95,7 +95,7 @@ set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_SPRITE, sprite_get("utilt_proj"));
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_HSPEED, 0);
-set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_VSPEED, -20);
+set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_VSPEED, -15);
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_UTILT, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
