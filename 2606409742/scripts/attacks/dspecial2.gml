@@ -30,6 +30,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .9);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, .7); // used to be 1.0
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 12);
@@ -48,7 +49,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1);
 
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Stasis Launched");
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Stasis Launch");
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_LIFETIME, 1000000);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_WIDTH, 48);
@@ -58,8 +59,9 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE, 0);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE_FLIPPER, 8);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, .7); // used to be 1.0
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE, 45); // used to be 0 (but it didn't matter)
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE_FLIPPER, 3); // formerly 8
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_SFX, sfx_botw_hit_1);
@@ -84,6 +86,7 @@ set_hitbox_value(AT_DSPECIAL_2, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITSTUN_MULTIPLIER, .7); // used to be 1.0
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_BASE_HITPAUSE, 9);

@@ -160,3 +160,7 @@ if state == PS_ATTACK_AIR and attack == AT_DSPECIAL{
 else{
     max_fall = 10; 
 }
+print(hive_cooldown)
+if hive_cooldown > 0{
+    hive_cooldown -= 1
+}

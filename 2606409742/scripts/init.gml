@@ -136,13 +136,13 @@ stamina_max = 180;
 stamina = stamina_max;
 stamina_alpha = 0;
 glide_sound = noone;
-spear_durability_max = 5;
+spear_durability_max = 4; // used to be 5
 spear_durability = spear_durability_max;
 flying_spear = noone; // to stop the looping sound
 flying_spear_sound = noone; // ^
 dspecial_window_tracker = 0;
 bomb_cooldown = 0;
-bomb_cooldown_max = 27 * 4;
+bomb_cooldown_max = 27 * 8; // formerly 27 * 4
 
 cur_spear = 1;
 spears = [];

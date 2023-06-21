@@ -88,7 +88,7 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 
 //Set killarticles to true in death.gml and all your articles will despawn. Gets reset to the false at the end of state 2
 
-if (player_id.killarticles && state != 2 and state !=3 or player_id.attack == AT_NSPECIAL and player_id.window == 4 and state != 2 and state != 3){
+if (player_id.killarticles && state != 2 and state !=3 and state != 9 or player_id.attack == AT_NSPECIAL and player_id.window == 4 and state != 2 and state != 3 and state != 9){
     if  player_id.sacrifice == false{
     	state = 2;
     	state_timer = 0;
@@ -99,7 +99,7 @@ if (player_id.killarticles && state != 2 and state !=3 or player_id.attack == AT
     		state_timer = 0;
     	}
     	if has_honey == false{
-    		state = 2;
+    		state = 9;
     		state_timer = 0;
     	}
     }
@@ -150,9 +150,16 @@ if (state == 0){
     //hsp = 2 * spr_dir;
     
     //Go to idle after 40 frames
-    if (state_timer >= 20){
+    if (state_timer >= 30){
         state = 1;
         state_timer = 0;
+    }
+    if player_id.honey_armor > 0{
+	    if has_honey == 0{
+	    	has_honey = 1
+	    	player_id.honey_armor -= 5
+	    	sound_play(asset_get("mfx_levelup"))
+	    }
     }
 }
 
@@ -197,7 +204,7 @@ if (state == 1){
 	}
 	
 	if hive_attack = 1{
-		hive_hp -= 1
+		hive_hp -= 3
         state = 5
         state_timer = 0
         hive_attack = 0
@@ -241,6 +248,7 @@ if (state == 2){
         // player_id.cycle = 1;
         //print("ow")
         player_id.hive_count -= 1
+        player_id.hive_cooldown = 180
         instance_destroy();
         exit;
     }
@@ -254,7 +262,7 @@ if (state == 3){
 	if state_timer == 0{
 		sound_play(asset_get("sfx_abyss_explosion_start"))
 	}
-	if state_timer == 12{
+	if state_timer == 18{
 		create_hitbox(AT_NSPECIAL, 4, x, y -32)
 		sound_play(asset_get("sfx_abyss_explosion"))
 	}
@@ -264,6 +272,7 @@ if (state == 3){
         // player_id.cycle = 1;
         //print("ow")
         player_id.hive_count -= 1
+        player_id.hive_cooldown = 180
         instance_destroy();
         exit;
     }
@@ -313,6 +322,7 @@ if (state == 4){
         state = 6
         state_timer = 0
         hive_attack = 0
+        hive_hp -= 1
     }
     
 	// with (oPlayer) //pushes opponent away when touching
@@ -419,27 +429,30 @@ if (state == 8){
 
 
 
-//State 9: Attack
+//State 9: sacrifice
 
 if (state == 9){
     
-    /*//11 frames in, create DSPECIAL hitbox 1
-    if (state_timer == 11){
-    	create_hitbox(AT_DSPECIAL, 1, floor(x), floor(y-18));
-    	sound_play(sound_get("a_cool_noise"));
+    if state_timer == 0{
+    	print("yolk")
+		sound_play(asset_get("sfx_abyss_explosion_start"))
+	}
+	if state_timer == 18{
+		create_hitbox(AT_NSPECIAL, 5, x, y -32)
+		sound_play(asset_get("sfx_abyss_explosion"))
+	}
+	if (state_timer == die_time){
+        player_id.killarticles = false;
+        // player_id.meowth_active = 0;
+        // player_id.cycle = 1;
+        //print("ow")
+        player_id.hive_count -= 1
+        player_id.hive_cooldown = 180
+        instance_destroy();
+        exit;
     }
     
-    //11 frames in, create DSPECIAL hitbox 2
-    if (state_timer == 15){
-    	create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y-18));
-    	sound_play(sound_get("a_cool_noise2"));
-    }
-    
-    //Die after 28 frames (article is used up)
-    if (state_timer == 28){
-	    state = 2;
-	    state_timer = 0;
-    }*/
+	//Put something here if you want
 }
 
 
@@ -491,8 +504,8 @@ if get_player_color(player) == 25{
 	        animation_type = 2;
 	        break
 	    case 9:
-	    	new_sprite = sprite_get("cactus_sprite4")
-	    	animation_type = 1;
+	    	new_sprite = sprite_get("cactus_break_sacrifice")
+	    	animation_type = 2;
 	        break;
 	}
 }
@@ -536,8 +549,8 @@ else if get_player_color(player) == 18{
 	        animation_type = 2;
 	        break
 	    case 9:
-	    	new_sprite = sprite_get("money_sprite4")
-	    	animation_type = 1;
+	    	new_sprite = sprite_get("money_break_sacrifice")
+	    	animation_type = 2;
 	        break;
 	}
 }
@@ -581,8 +594,8 @@ else{
 	        animation_type = 2;
 	        break
 	    case 9:
-	    	new_sprite = sprite_get("your_sprite4")
-	    	animation_type = 1;
+	    	new_sprite = sprite_get("hive_break_sacrifice")
+	    	animation_type = 2;
 	        break;
 	}
 }
@@ -674,12 +687,13 @@ if hbox.type == 1{
     	hit_player_obj.window = 4
     	hit_player_obj.window_timer = 0
     	hive_hp = 24
+    	player_id.hive_cooldown = 0
     	sound_play(asset_get("mfx_hp_spawn"))
     	if has_honey == true{
     		armor_activate = true
     		armor_timer = 0
     		armor_vfx_opac = 1
-			player_id.honey_armor += 1
+			player_id.honey_armor += 2
 			sound_play(asset_get("mfx_hp"))
 			sound_play(asset_get("sfx_may_arc_coineat"))
 		}

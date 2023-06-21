@@ -493,7 +493,7 @@ if (attack == AT_DAIR){
 if (attack == AT_FSPECIAL){
     if (window == 1){
         if window_timer == 4 {
-        	move_cooldown[AT_FSPECIAL] = 300;
+        	move_cooldown[AT_FSPECIAL] = 150;
 		}
 	}
 }
@@ -556,7 +556,7 @@ if (attack == AT_FAIR){
 if (attack == AT_USPECIAL){
     if (window == 1){
         if window_timer == 3 {
-        	move_cooldown[AT_USPECIAL] = 150;
+        	move_cooldown[AT_USPECIAL] = 120;
 		}
 	}
 }

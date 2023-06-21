@@ -26,9 +26,9 @@ buffertimer = 0;                                    //The current amount of fram
 
 //Animation speeds and timers
 idle_anim_rate = 8;                                 //Example animation speed value 1. The animation in question will increment every 8 frames in this case
-die_anim_rate = 4;                                  //Example animation speed value 2.
+die_anim_rate = 6;                                  //Example animation speed value 2.
 attack_anim_rate = 3;
-die_time = 28;                                      //Example variable used in this case to determine how long the article should take to die (state 2). 
+die_time = 42;                                      //Example variable used in this case to determine how long the article should take to die (state 2). 
 animation_type = 1;                                 //This variable is part of the animation handling found in article1_update. It determines when, or how frequently, the image_index should increment
 new_sprite = sprite_get("hive_spawn");             //This is another part of the animation handling. It tells the game "this is the sprite this article should be using; if it's not already, switch it over please"
 

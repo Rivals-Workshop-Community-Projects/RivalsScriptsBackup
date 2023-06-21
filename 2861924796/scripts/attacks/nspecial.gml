@@ -95,11 +95,11 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_cape_multihit"));
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 13);
+set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 7);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 110);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 110);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 10);
-set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 11);
+set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 20);
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_FORCE_FLINCH, 0)
@@ -117,6 +117,30 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("none"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, honey_large);
+
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 7);
+set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 110);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 110);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PRIORITY, 10);
+set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 10);
+set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 90);
+set_hitbox_value(AT_NSPECIAL, 5, HG_SHAPE, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_FORCE_FLINCH, 0)
+set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 20);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 19);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("none"));
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 304);
 
 // set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 // set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 2);

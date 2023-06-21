@@ -24,6 +24,8 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("evil_laugh"));
 
 set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 4);

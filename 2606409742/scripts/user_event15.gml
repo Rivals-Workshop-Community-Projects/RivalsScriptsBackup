@@ -317,6 +317,32 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "20 June, 2023");
+initHeader("FAir - Bugfixes");
+initSection("Sound effect works again.
+Rivals is a well-programmed video game")
+
+initPatch("1.8", "20 June, 2023");
+initHeader("I'm a good programmer");
+initSection("Hotfix to patch a coding error.")
+
+initPatch("1.7", "20 June, 2023");
+initHeader("Spear Attacks - Adjustments");
+initSection("Durability 5 --> 4.");
+initHeader("DSpecial - Nerfs, Adjustments");
+initSection("Cooldown 108 --> 216.
+Bomb explosion, Stasis launch, and Cryonis activation: hitstun multiplier 1.0 --> 0.7.
+Bomb explosion knockback 9/0.9 --> 8/0.8.
+Stasis launch knockback 8/0.7 --> 7/0.6.
+Stasis launch angle flipper 8 (sends away radially) --> 3 (sends away horizontally), angle 45.
+Cryonis pillar now breaks 14 frames earlier after being attacked.");
+initHeader("Jab - Adjustments");
+initSection("Angle 85 --> 75.");
+initHeader("FTilt - Nerfs");
+initSection("Armor now only applies during the attack's active frames.");
+initHeader("FAir - Buffs");
+initSection("Startup 12 --> 9.");
+
 initPatch("1.6", "14 April, 2023");
 initWords("Advertising");
 

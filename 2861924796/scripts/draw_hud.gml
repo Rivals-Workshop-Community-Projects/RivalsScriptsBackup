@@ -41,6 +41,9 @@ if honey_armor > 0{
 else{
     armored = 0
 }
+if hive_cooldown > 0{
+    draw_sprite(sprite_get("strike"), 0, temp_x+50, temp_y-32)
+}
 
 
 

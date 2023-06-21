@@ -30,6 +30,7 @@ hive_hp1 = 0;
 hive1_status = 0;
 hive_hp2 = 0;
 hive2_status = 0;
+hive_cooldown = 0;
 honey_armor = 0;
 honey_freeze = 0;
 sacrifice = false;

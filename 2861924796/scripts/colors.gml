@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // blue
 set_color_profile_slot( 1, 0, 181, 225, 255 ); //Fur1
@@ -295,6 +295,16 @@ set_color_profile_slot( 26, 4, 173, 173, 173 ); //Hive
 set_color_profile_slot( 26, 5, 156, 156, 156 ); //Tail
 set_color_profile_slot( 26, 6, 212, 255, 0 ); //Honey
 set_color_profile_slot( 26, 7, 0, 214, 82 ); //Eyes
+
+// unnamed alt palette
+set_color_profile_slot( 27, 0, 255, 183, 0 ); //Fur1
+set_color_profile_slot( 27, 1, 255, 119, 0 ); //Fur2
+set_color_profile_slot( 27, 2, 255, 53, 18 ); //Fur3
+set_color_profile_slot( 27, 3, 204, 0, 255 ); //Leafs
+set_color_profile_slot( 27, 4, 255, 242, 0 ); //Hive
+set_color_profile_slot( 27, 5, 245, 252, 255 ); //Tail
+set_color_profile_slot( 27, 6, 255, 68, 0 ); //Honey
+set_color_profile_slot( 27, 7, 255, 0, 60 ); //Eyes
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

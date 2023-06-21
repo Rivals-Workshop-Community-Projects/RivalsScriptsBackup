@@ -30,11 +30,11 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 // }
 
 if (attack == AT_NSPECIAL){
-    // if window == 1 and window_timer == 1{
-    //     sacrifice = false
-    // }
+    if window == 1 and window_timer == 1{
+        sacrifice = false
+    }
     if window == 3 and window_timer == 1{
-        if hive_count < 2 and hive_air == 0{
+        if hive_count < 2 and hive_air == 0 and hive_cooldown == 0{
             instance_create( x + 48 * spr_dir, y - 4, "obj_article1" );
             hive_count += 1
             if free == true{

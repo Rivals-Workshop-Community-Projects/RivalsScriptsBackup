@@ -100,7 +100,7 @@ set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 140);
 set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 60);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 9);
 set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 12);
-set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 190);
+set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 290);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, cartoon_punch);
 set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);

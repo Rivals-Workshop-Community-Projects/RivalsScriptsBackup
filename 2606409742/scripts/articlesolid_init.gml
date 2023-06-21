@@ -25,7 +25,7 @@ y = room_height / 2;
 
 cracked = false;
 cracked_timer = 0;
-cracked_timer_max = 15;
+cracked_timer_max = 1; // used to be 15
 
 exist_timer = 0;
 
