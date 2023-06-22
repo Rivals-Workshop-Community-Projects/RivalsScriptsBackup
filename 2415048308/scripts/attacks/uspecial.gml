@@ -48,7 +48,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1 );
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2 );
-set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_metal_hit_weak"));
+set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_med1"));
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 38);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 30);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 30);

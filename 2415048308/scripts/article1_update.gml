@@ -71,7 +71,9 @@ if (state == 1){
 
 if (state == 2){
 	if (state_timer == 1){
-		create_hitbox( AT_NSPECIAL, 1, x + 30*spr_dir, y - 2 ). can_hit_self = true;
+		var proj = create_hitbox( AT_NSPECIAL, 1, x + 30*spr_dir, y - 2 );
+		proj.can_hit_self = true;
+		proj.came_from_dummy = true;
 	}
 	if (state_timer == 3){
 		state = 1;
