@@ -55,7 +55,7 @@ sprite_change_offset("ftilt", 160, 182);
 sprite_change_offset("dtilt", 160, 182);
 sprite_change_offset("utilt", 68, 110);
 sprite_change_offset("nair", 160, 182);
-sprite_change_offset("fair",84, 98);
+sprite_change_offset("fair", 160, 182);
 sprite_change_offset("bair", 160, 182);
 sprite_change_offset("uair", 150, 172);
 sprite_change_offset("dair",150, 172);

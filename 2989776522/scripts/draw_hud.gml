@@ -19,6 +19,14 @@ if(instance_exists(the_eggpawn2) || eggpawn_cooldown2 > 0){
 	draw_sprite_ext(sprite_get("eggpawn_icon"), eggpawn_icon, temp_x + 166, temp_y - 34, 2, 2, 0, c_white, 1);
 }
 
+if(!inside_mech){
+	if(!can_summon_mech){
+		draw_sprite_ext(sprite_get("eggmobile_icon"), 0, temp_x - 6, temp_y - 34, 2, 2, 0, c_black, 0.3);
+	}else{
+		draw_sprite_ext(sprite_get("eggmobile_icon"), 0, temp_x - 6, temp_y - 34, 2, 2, 0, c_white, 1);
+	}
+}
+
 shader_end();
 
 // MunoPhone Touch code - don't touch

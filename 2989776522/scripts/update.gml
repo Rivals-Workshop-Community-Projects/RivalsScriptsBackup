@@ -9,9 +9,7 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
         float = floatmax;
     }djumpfloat = 0;
     
-    /*if(state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN || state == PS_HITSTUN_LAND){
-		inside_mech = true;
-	}*/
+    can_summon_mech = true;
 }
 
 if(voicemode != 3){
@@ -37,11 +35,11 @@ if(nspecial_charge < 400){
 if(!instance_exists(the_eggpawn)){
 	eggpawn_cooldown--;
 	eggpawn_cooldown = max(0,eggpawn_cooldown);
-}eggpawn_cooldown = min(1200,eggpawn_cooldown);
+}eggpawn_cooldown = min(1800,eggpawn_cooldown);
 if(!instance_exists(the_eggpawn2)){
 	eggpawn_cooldown2--;
 	eggpawn_cooldown2 = max(0,eggpawn_cooldown2);
-}eggpawn_cooldown2 = min(1200,eggpawn_cooldown2);
+}eggpawn_cooldown2 = min(1800,eggpawn_cooldown2);
 
 if(eggpawn_destroyed){
 	rand = random_func(2, 8, true);
@@ -94,9 +92,11 @@ if(inside_mech){
 	if(free && (vsp >= 0 && (state != PS_DOUBLE_JUMP || floating) || (down_down || floatbuffer > 0)) && jump_down && float > 0 && state != PS_HITSTUN && state != PS_AIR_DODGE
 		&& state != PS_PRATFALL && state != PS_RESPAWN && state != PS_DEAD && !hitpause
 		&& (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR || (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_DATTACK)){
-	    float -= 1;vsp = 0;
+	    float -= 1;if(y > 200){vsp = 0;}else{vsp = 2;}
 	    if(!floating_sfx){floating_sfx = true;hover_sfx = sound_play(sound_get("hover loop"),true,noone,0.35);sound_play(sound_get("hover start"),false,noone,0.35);}
 	    floating = true;
+	    air_max_speed = 3.25;
+	    if(hsp*spr_dir < 0)hsp *= 0.95;
 	    if (state == PS_DOUBLE_JUMP && state_timer < 9){
 	    	set_state(PS_IDLE_AIR);clear_button_buffer(PC_JUMP_PRESSED);
 	    	if(djumpfloat < 1){
@@ -111,6 +111,7 @@ if(inside_mech){
 	        var eff = spawn_hit_fx(x-((45+random_func(2, 25, true))+offset_x)*spr_dir,y-50+random_func(3, 30, true)+offset_y,fx_fire);eff.depth = depth+1;fire.draw_angle = (75+random_func(4, 30, true))*spr_dir;
 	    }
 	}else{
+		air_max_speed = 5;
 	    floating = false;
 	}
 	
@@ -582,7 +583,6 @@ if((state == PS_SPAWN || state == PS_RESPAWN) && !i_have_70_alt_accounts && voic
 		leave_ground_max = maxspd;
 		max_jump_hsp = maxspd-1;
 		air_max_speed = 4;
-		//air_max_speed       = maxspd;
 		air_accel = 0.225;
 		gravity_speed = 0.5;
 		max_djumps = 1;

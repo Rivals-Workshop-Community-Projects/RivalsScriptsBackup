@@ -3,7 +3,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.1"
+patch_ver = "1.2"
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);

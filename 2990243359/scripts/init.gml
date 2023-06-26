@@ -130,6 +130,7 @@ trident_choke = false;
 air_trident_choke = false;
 flame_choke = false;
 air_flame_choke = false;
+tri_plat = noone;
 
 uspecial_dir = 0;
 uspecial_hsp = 0;

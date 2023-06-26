@@ -63,6 +63,11 @@ switch(atk) {
     }
     break;
     case AT_USPECIAL: {
+        if hbox == 2 {
+            uspec_bomb.pause = 11
+            hitpause = true
+            hitstop = 11
+        }
         if hbox == 3 {
             sound_play(sound_get("atk3_nat"), noone, 0, 1.2, .97)
             sound_play(asset_get("sfx_blow_heavy1"), noone, 0, .8, .97)

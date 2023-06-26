@@ -425,6 +425,8 @@ if("fs_charge" in self && my_hitboxID.type == 2){
 
 if(my_hitboxID.type == 1){nspecial_charge += round((my_hitboxID.damage*1.25));}
 
+can_summon_mech = true;
+
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX

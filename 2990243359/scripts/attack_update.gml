@@ -281,12 +281,24 @@ if (attack == AT_FSPECIAL_AIR){
 	    	hit_player_obj.x = lerp(hit_player_obj.x, x+65*spr_dir, 0.6);
 		    hit_player_obj.y = lerp(hit_player_obj.y, y-30, 0.6);
 	    }
+	    if (state_timer > 45 + lighting_stun/2){
+	    	window = 9;
+	    	vsp = -5;
+	    	hsp = -4*spr_dir;
+	    	djumps = 0;
+	    	hit_player_obj.hsp = 2*spr_dir;
+	    	hit_player_obj.vsp = -3;
+	    	hit_player_obj.hitstop = 0;
+	    }
     }
 }
+
 if (attack == AT_FSPECIAL_2_AIR){
 	can_wall_jump = true;
     can_fast_fall = false;
     if (window == 1){
+    	set_hitbox_value(AT_FSPECIAL_2_AIR, 2, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_FSPECIAL_2_AIR, 2, HG_BASE_HITPAUSE, 8);
 		flame_choke = false;
 		trident_choke = false;
 	}
@@ -322,6 +334,11 @@ if (attack == AT_FSPECIAL_2_AIR){
             hit_player_obj.x = lerp(hit_player_obj.x, x+30*spr_dir, 0.8);
 	        hit_player_obj.y = lerp(hit_player_obj.y, y+70, 0.8);
         }
+        if (y > get_stage_data(SD_Y_POS) + 140 && !instance_exists(tri_plat)){
+        	set_hitbox_value(AT_FSPECIAL_2_AIR, 2, HG_BASE_KNOCKBACK, 10);
+			set_hitbox_value(AT_FSPECIAL_2_AIR, 2, HG_BASE_HITPAUSE, 10);
+		    tri_plat = instance_create( x, y, "obj_article_platform");
+		}
     }
 }
 

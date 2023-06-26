@@ -269,6 +269,7 @@ switch(attack){
 		if(window == 1 || window == 4){
 			if(window_timer == 1){
 				move_cooldown[AT_USPECIAL] = 999;upb = true;
+				if(inside_mech)can_summon_mech = false;
 			}
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 				if(window == 1){

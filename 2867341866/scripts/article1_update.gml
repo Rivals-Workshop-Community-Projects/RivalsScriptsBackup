@@ -41,7 +41,7 @@ with asset_get("oPlayer") { // This should be replaced with a url check after la
 
             with other { spawn_hit_fx(x, y-6, player_id.vfx_l);}
             sound_play(asset_get("sfx_oly_nspecial_flashbreak"));
-            sound_play(asset_get("sfx_shop_buy"));
+            sound_play(sound_get("power36"));
             
             instance_destroy(other);
             exit;

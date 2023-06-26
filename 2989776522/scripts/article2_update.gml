@@ -113,14 +113,14 @@ if(hitstop <= 0 && (state <= 2 || state == 4) && !Pocketed){
     	}//print(image_index);
     }else if(robot == 1){ //egg flapper
     	if(hp > 0 && hitstun <= 0){
-    		if(x > room_width-200){
+    		if(x > room_width-400){
     			if(hsp > -1)hsp -= 0.25;
-    		}else if(x < 200){
+    		}else if(x < 400){
     			if(hsp < 1)hsp += 0.25;
     		}
-    		if(y >= room_height-200){
+    		if(y >= room_height-300){
     			if(vsp > -1)vsp -= 0.25;
-    		}else if(y <= 250){
+    		}else if(y <= 350){
     			if(vsp < 1)vsp += 0.25;
     		}
 	        if(!attacking){
@@ -153,7 +153,7 @@ if(hitstop <= 0 && (state <= 2 || state == 4) && !Pocketed){
 		        }
 	        }
 	    	hsp *= 0.95;
-	    	if(y < room_height-200 && y > 250)vsp = ease_sineInOut(-1, 1, timer, 60);
+	    	if(y < room_height-300 && y > 350)vsp = ease_sineInOut(-1, 1, timer, 60);
     	}else{
     		image_index = 4;
 	    	if(hitstop <= 0){
@@ -332,6 +332,7 @@ if(state != 3 && !Pocketed){
     	        			knockback_angle = 45;
     	        		}other.knockback_power = kb_value;
     	        		var kbmod = .5;
+    	        		if(other.robot == 0 && other.hp > 0 /*&& !other.free*/)kbmod = .05;
     		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*14)*kbmod)*spr_dir;
     		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
     		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*14)*kbmod);
@@ -369,11 +370,13 @@ if(x > room_width+100 || x < -100 || y >= room_height+100 || y <= -200 || destro
     
     if(hp <= -30){
 	    if(eggpawn_num == 0){
-			player_id.eggpawn_cooldown += 300;
-			if(robot == 1)player_id.eggpawn_cooldown += 60;
+			player_id.eggpawn_cooldown += 420;
+			if(robot == 1)player_id.eggpawn_cooldown += 90;
+			player_id.eggpawn_cooldown2 += 120;
 		}else if(eggpawn_num == 1){
-			player_id.eggpawn_cooldown2 += 300;
-			if(robot == 1)player_id.eggpawn_cooldown2 += 60;
+			player_id.eggpawn_cooldown2 += 420;
+			if(robot == 1)player_id.eggpawn_cooldown2 += 90;
+			player_id.eggpawn_cooldown += 120;
 		}
 		player_id.eggpawn_destroyed = true;
     }

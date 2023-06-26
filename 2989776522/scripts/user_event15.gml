@@ -261,6 +261,21 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.13", "22nd June, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Tweaked the limited movement speed during float to feel a bit better and also still allow for stuff like float BAir");
+
+initPatch("1.12", "22nd June, 2023");
+initHeader("Buffs");
+initSection("+ Egg Pawns now take less knockback while alive, to be a little harder to knock off-stage (they will still launch as far when killed however)");
+initHeader("Nerfs");
+initSection("- While floating, Eggman can't move as quick horizontally (particularly if moving backwards). Float will also move downward slightly if used very high up, to prevent air camping
+- After using USpecial, Eggman can no longer regain his Eggmobile unless he lands, walljumps, or hits someone (indicated by a new icon on his HUD). This makes his recovery just a little more restricted and mechless state a bigger weakness
+- When Egg Pawns and Egg Flappers are destroyed, they add a bit more cooldown than before (300f->420f), and also add some cooldown to the other summon slot as well (120f)
+- Egg Flappers are now more restricted in their positions, making them a little easier to reach
+- Egg Flapper shots have less hitstun than before (0.75->0.5)
+- NAir is 1 frame slower (f11->f12)");
+
 initPatch("1.11", "15th June, 2023");
 initHeader("Nerfs");
 initSection("- NSpecial jump cancel now only works on the ground (not that bad of a nerf though, as this working in the air made it a bit clunky to charge and hover, so on the other hand hovering during NSpecial charge will feel better)");

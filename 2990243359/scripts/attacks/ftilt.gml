@@ -4,7 +4,7 @@ set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 //Startup
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("swing_heavy2"));

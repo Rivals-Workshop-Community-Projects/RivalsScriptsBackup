@@ -151,9 +151,13 @@ if attack == AT_TAUNT {
 
 if (attack == AT_USPECIAL){
     can_wall_jump = true
+    can_fast_fall = false
     //can_move = false;
     if window == 2 {
     spawn_sparkle();
+    }
+    if !free && window > 1 {
+        set_state(PS_LANDING_LAG)
     }
 
 

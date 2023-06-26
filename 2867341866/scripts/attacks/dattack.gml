@@ -1,6 +1,6 @@
 set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
+set_attack_value(AT_DATTACK, AG_CATEGORY, 0);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
 
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));

@@ -1,5 +1,8 @@
 //adrenaline = false;
-adrenaline_timer = 40;
+if adrenaline_timer > 0 {
+    adrenaline_timer = 40;
+
+}
 
 if my_hitboxID.attack == AT_NSPECIAL {
     my_hitboxID.hitbox_timer = 0 

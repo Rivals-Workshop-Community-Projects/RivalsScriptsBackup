@@ -32,7 +32,7 @@ if attack == AT_USPECIAL  {
         }
 
         //print(hitted)
-        if !free{
+        if !free {
                 vsp *= -.9
                 if vsp > -5 {
                     vsp = -5
@@ -52,7 +52,7 @@ if attack == AT_USPECIAL  {
         }
 
         if hitbox_timer == 4 || hitted == 2 {
-                spawn_hit_fx( x, y, player_id.vfx_ds )
+                player_id.uspec_bomb = spawn_hit_fx( x, y, player_id.vfx_ds )
 
         }
         if (hitbox_timer == 5 || hitted == 3){

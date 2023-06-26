@@ -157,6 +157,8 @@ rand = 0;
 
 inside_mech = true;
 inside_mech2 = true;
+can_summon_mech = true;
+
 //Ground
 spr_idle = sprite_get("idle");
 spr_crouch = sprite_get("crouch");

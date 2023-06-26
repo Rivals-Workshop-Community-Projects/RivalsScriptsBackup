@@ -32,15 +32,19 @@ if(!inside_mech){
 		}
 		
 	}else{
-		if(attack == AT_USPECIAL && move_cooldown[AT_USPECIAL] <= 0){
+		if((attack == AT_USPECIAL || !can_summon_mech && (attack == AT_NSPECIAL || attack == AT_FSPECIAL)) && move_cooldown[AT_USPECIAL] <= 0){
 			window = 4;window_timer = 0;
-		}else if(attack == AT_DSPECIAL && move_cooldown[AT_DSPECIAL] <= 0){
-			
 		}else if(attack == AT_TAUNT && move_cooldown[AT_TAUNT] <= 0){
 			//window = 4;window_timer = 0;
+		}else if(attack == AT_DSPECIAL){
+			
 		}else{
-			move_cooldown[AT_USPECIAL] = 0;attack = AT_USPECIAL;
-			window = 5;window_timer = 0;inside_mech = true;
+			if(can_summon_mech){
+				move_cooldown[AT_USPECIAL] = 0;attack = AT_USPECIAL;
+				window = 5;window_timer = 0;inside_mech = true;
+			}else if(move_cooldown[attack] <= 0){
+				move_cooldown[attack] = 1;
+			}
 		}
 	}
 }

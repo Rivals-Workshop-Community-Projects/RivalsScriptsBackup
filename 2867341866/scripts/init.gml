@@ -231,7 +231,7 @@ if get_player_color(player) == 16 {
   //set_hitbox_value( AT_DSPECIAL_AIR, 3, HG_PROJECTILE_DESTROY_EFFECT, 0 )
 
 }
-
+uspec_bomb = 0
 
 altReal =0 
 

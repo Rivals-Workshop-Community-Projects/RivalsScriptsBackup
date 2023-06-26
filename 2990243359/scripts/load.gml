@@ -80,6 +80,10 @@ sprite_change_offset("thunder_trail", 128, 384);
 sprite_change_offset("thunder_projectile_full", 128, 188);
 sprite_change_offset("thunder_strike", 128, 188);
 
+sprite_change_offset("tri_plat_spawn", 128, 128);
+sprite_change_offset("tri_plat_idle", 128, 128);
+sprite_change_offset("tri_plat_despawn", 128, 128);
+
 sprite_change_offset("ganondorf_hurtbox", 130, 170);
 sprite_change_offset("ganondorf_crouch_hurtbox", 130, 170);
 
