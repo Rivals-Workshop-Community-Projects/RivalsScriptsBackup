@@ -97,7 +97,7 @@ if ((hit_player_obj.anthem_status_id == noone || hit_player_obj.anthem_status_id
 				var hbox = create_hitbox(AT_FSPECIAL, 3, 0, 0);
 				hbox.player = my_hitboxID.player;
 				hbox.can_hit[hit_player_obj.player] = false;
-				hbox.can_hit[player] = false;
+				hbox.can_hit[my_hitboxID.player] = false;
 				hit_player_obj.anthem_status_stacks = array_push(hit_player_obj.anthem_status_stacks, hbox);
 			}
 		}
