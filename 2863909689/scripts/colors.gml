@@ -106,7 +106,7 @@ set_color_profile_slot( 7, 5, 83, 122, 62 ); //legs shading
 set_color_profile_slot( 7, 6, 83, 122, 62 ); //feet
 set_color_profile_slot( 7, 7, 83, 122, 62 ); //feet shading
 
-// doatk (use masking for paper effect on all colors)
+// paper
 set_color_profile_slot( 8, 0, 255, 255, 255 ); //torso
 set_color_profile_slot( 8, 1, 255, 255, 255 ); //torso shading
 set_color_profile_slot( 8, 2, 255, 255, 255 ); //skin

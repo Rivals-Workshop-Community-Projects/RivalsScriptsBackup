@@ -6,7 +6,7 @@ if (get_player_color(player) == 7){
     }
 }
 
-//doatk alt
+//paper alt
 if (get_player_color(player) == 8){
     for(i = 0; i < 4; i++){
         set_character_color_slot( i, 0, 0, 0, 0);
