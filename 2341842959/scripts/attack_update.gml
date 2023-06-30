@@ -386,6 +386,12 @@ if (attack == AT_FSPECIAL){
 		}
 		fspecial_cloud = 1;
 		explosion_cont = 0; 
+		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 0);
+	}
+	if (fspecial_cloud > 1) set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
+	if ((window == 2 || window == 3) && special_pressed){
+		window = 4;
+		window_timer = 0;
 	}
 	if (window == 5 && window_timer == 1 && free){
 		vsp = -2;

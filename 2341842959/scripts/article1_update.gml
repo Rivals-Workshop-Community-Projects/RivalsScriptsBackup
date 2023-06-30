@@ -67,7 +67,7 @@ with (asset_get("pHitBox")){
 	&& other.state == 1	&& other.fspecial_passed == false){
 		if (other.player_id.state_timer > 12){
 			other.player_id.window = 2;
-			other.player_id.window_timer = 2;	
+			other.player_id.window_timer = 1;
 		}
 		other.player_id.fspecial_cloud += 0.2;
 		

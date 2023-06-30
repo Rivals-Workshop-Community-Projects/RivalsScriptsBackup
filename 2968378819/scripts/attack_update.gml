@@ -1,24 +1,24 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_FSPECIAL || attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
-if (attack == AT_NSPECIAL){
+if (attack == AT_FSPECIAL){
     can_fast_fall = false;
     if (window == 1){
         if (window_timer == 1){
             if (!free) was_grounded = true;
             else was_grounded = false;
         }
-        if (window_timer == 11){
+        if (window_timer == 14){
             y -= 1;
         }
         if (up_down && !right_down && !left_down && !down_down){
-            set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 2);
+            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 2);
             nspecial_direction = 1;
         }
         if (up_down && (right_down || left_down) && !down_down){
-            set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 3);
+            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 3);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction = 2;
@@ -29,7 +29,7 @@ if (attack == AT_NSPECIAL){
             }
         }
         if ((!up_down && (right_down || left_down) && !down_down) || joy_pad_idle){
-            set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 4);
+            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 4);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction = 4;
@@ -42,7 +42,7 @@ if (attack == AT_NSPECIAL){
             if (spr_dir == -1) nspecial_direction = 5;
         }
         if (!up_down && (right_down || left_down) && down_down){
-            set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 5);
+            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 5);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction = 6;
@@ -53,18 +53,18 @@ if (attack == AT_NSPECIAL){
             }
         }
         if (!up_down && !right_down && !left_down && down_down){
-            set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 6);
+            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 6);
             nspecial_direction = 8;
         }
     }
 
     if (window == 8 && has_hit){
         if (up_down && !right_down && !left_down && !down_down){
-            set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 9);
+            set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 9);
             nspecial_direction2 = 1;
         }
         if (up_down && (right_down || left_down) && !down_down){
-            set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 10);
+            set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 10);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction2 = 2;
@@ -75,7 +75,7 @@ if (attack == AT_NSPECIAL){
             }
         }
         if (!up_down && (right_down || left_down) && !down_down){
-            set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 11);
+            set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 11);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction2 = 4;
@@ -86,7 +86,7 @@ if (attack == AT_NSPECIAL){
             }
         }
         if (!up_down && (right_down || left_down) && down_down){
-            set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 12);
+            set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 12);
             if (right_down){
                 spr_dir = 1;
                 nspecial_direction2 = 6;
@@ -97,7 +97,7 @@ if (attack == AT_NSPECIAL){
             }
         }
         if (!up_down && !right_down && !left_down && down_down){
-            set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 13);
+            set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 13);
             nspecial_direction2 = 8;
         }
  
@@ -124,10 +124,10 @@ if (attack == AT_NSPECIAL){
     
     if (window == 14){
         if (has_hit){
-            set_window_value(AT_NSPECIAL, 14, AG_WINDOW_TYPE, 1);
+            set_window_value(AT_FSPECIAL, 14, AG_WINDOW_TYPE, 1);
         }
         else {
-            set_window_value(AT_NSPECIAL, 14, AG_WINDOW_TYPE, 7);
+            set_window_value(AT_FSPECIAL, 14, AG_WINDOW_TYPE, 7);
         }
     }
 
@@ -137,8 +137,8 @@ if (attack == AT_NSPECIAL){
     }
 }
 
-if (attack == AT_FSPECIAL){
-    move_cooldown[AT_FSPECIAL] = 30;
+if (attack == AT_NSPECIAL){
+    move_cooldown[AT_NSPECIAL] = 30;
 }
 
 if (attack == AT_DSPECIAL){
