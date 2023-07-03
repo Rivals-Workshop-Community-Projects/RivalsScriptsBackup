@@ -739,13 +739,18 @@ if (attack == AT_FSPECIAL){
 		var can_grab = false;
 		
 		// First, get nearby hitboxes
-		var tempPlat = collision_circle(
-		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
-		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
-		5, 
-		asset_get("par_jumpthrough"), 
-		true,
-		true );
+		var rectwidth = 80;
+		var rectheight = 10;
+		
+		var tempPlat = collision_rectangle(
+			x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir) - rectwidth,
+			y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)) + rectheight,
+			x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir) + rectwidth,
+			y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)) - rectheight,
+			asset_get("par_jumpthrough"),
+			false,
+			true
+			);
 		
 		var tempSolid = collision_circle(
 		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir),
@@ -1331,7 +1336,7 @@ if (attack == AT_USPECIAL){
 	}
 	
 	// Air attributes
-	if(state == PS_ATTACK_AIR && window_timer == 1 && window == 2)
+	if(state == PS_ATTACK_AIR && window_timer == 3 && window == 1)
 	{
 		vsp = varying_uspecial_vsp;
 		
