@@ -1,6 +1,6 @@
 if(my_hitboxID.attack == AT_JAB){
     was_parried = false;
-}
+}//*/
 
 if(my_hitboxID.attack == AT_FSPECIAL){
     my_hitboxID.hitbox_timer = 0;

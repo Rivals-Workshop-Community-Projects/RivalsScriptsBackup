@@ -207,10 +207,10 @@ set_color_profile_slot( 17, 6, 0, 0, 0 ); //HORNS 2
 set_color_profile_slot( 17, 7, 255, 255, 255 ); //EYE RINGS
 
 // GOTTA WIN
-set_color_profile_slot( 18, 0, 39, 109, 29 ); //FEET
-set_color_profile_slot( 18, 1, 23, 73, 16 ); //FEET SHADING
+set_color_profile_slot( 18, 0, 70, 196, 52 ); //FEET
+set_color_profile_slot( 18, 1, 28, 128, 88 ); //FEET SHADING
 set_color_profile_slot( 18, 2, 255, 219, 56 ); //BODY 1
-set_color_profile_slot( 18, 3, 179, 125, 39 ); //BODY 2
+set_color_profile_slot( 18, 3, 207, 132, 70 ); //BODY 2
 set_color_profile_slot( 18, 4, 255, 255, 255 ); //HORN BANDS
 set_color_profile_slot( 18, 5, 147, 0, 255 ); //HORNS 1
 set_color_profile_slot( 18, 6, 75, 59, 255 ); //HORNS 2

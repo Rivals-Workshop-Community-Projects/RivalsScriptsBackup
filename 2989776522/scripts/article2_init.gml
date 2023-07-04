@@ -62,7 +62,7 @@ if(robot == 0){ //egg pawn
 		sprite_index = sprite_get("eggpawn_alts");
 	}
     mask_index = sprite_get("eggpawn_mask");
-    hp = 12;
+    hp = round(12*player_id.eggpawn_health_multiplier);
     can_be_grounded = true;
     ignores_walls = false;
     Pocketable = true;Pocket_hsp = 5;Pocket_vsp = -5;
@@ -74,7 +74,7 @@ if(robot == 0){ //egg pawn
 		sprite_index = sprite_get("eggflapper_alts");
 	}
 	mask_index = sprite_get("eggpawn_mask");
-	hp = 6;
+	hp = round(6*player_id.eggpawn_health_multiplier);
 	attack_cooldown = 90;
     can_be_grounded = false;
     ignores_walls = false;

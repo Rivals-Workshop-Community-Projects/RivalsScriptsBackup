@@ -51,8 +51,9 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
     }
     
     if window == 4 && !hitpause && window_timer > 8 && window_timer < 16{
-    	create_hitbox(AT_USPECIAL,3,x - 10 + random_func(1,20,true),y - random_func(3,20,true))
-    	set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_HSPEED, -6 + random_func(2,12,true))
+        set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_HSPEED, (window_timer)*6 - 72)
+        set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_VSPEED, 2 + (15 - abs(get_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_HSPEED)))/2)
+    	create_hitbox(AT_USPECIAL,3,x,y -10)
     }
     move_cooldow[AT_USPECIAL] = 999
     
@@ -308,7 +309,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 5*8);
 			}
 			
-			if window == 2 && window_timer == 15 && !special_down {
+			if window == 2 && window_timer == 12 && !special_down {
 				window = 4 
 				window_timer = 0
 				
@@ -365,37 +366,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 		}
 
 
-	if attack == AT_NAIR {
-		
-	if window == 3 {
-		set_attack_value(AT_NAIR, AG_CATEGORY, 2);
-		if !free {
-			sound_play(asset_get("sfx_blow_weak2"))
-			spawn_hit_fx(x,y + 10, 14)
-			vsp = -7
-		}
-	} else {
-		set_attack_value(AT_NAIR, AG_CATEGORY, 1);
-	}
-	
-	
-		 if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && window <= 4 {
-		 	if state_timer < 60 {
-		 		sound_play(asset_get("sfx_swipe_heavy2"))
-		 		window_timer = 1
-		 		state_timer = 100
-		 		vsp = -12
-		 	}
-		 }
-		 
-		 if state_timer >= 100 && window != 4{
-		 	hit_player_obj.x += floor((x + 10*spr_dir - hit_player_obj.x ))/3
-			hit_player_obj.y += floor((y - 30 - hit_player_obj.y ))/3
-		 }
-		 
 
-	}
-	
 	if attack == AT_JAB {
 		
 		

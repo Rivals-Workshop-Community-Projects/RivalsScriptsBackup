@@ -129,7 +129,10 @@ switch window {
 			if window_timer = 6 && !hitpause spawn_base_dust(x+(32*spr_dir), y, "dash_start", 0);
         }
 		
-		if window_timer = 6 && !hitpause sound_play(sound_get("sm64_swoosh"));
+		if window_timer = 6 && !hitpause {
+		    sound_play(sound_get("sm64_swoosh"));
+			if alt = 18 sound_play(sound_get("wario_GOE"));
+		}
 	break;
 	
 	case 3:

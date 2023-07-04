@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // True Form
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //face
@@ -245,6 +245,26 @@ set_color_profile_slot( 21, 4, 204, 125, 29 ); //soul
 set_color_profile_slot( 21, 5, 219, 202, 147 ); //eye blue
 set_color_profile_slot( 21, 6, 219, 202, 147 ); //eye red
 set_color_profile_slot( 21, 7, 255, 255, 255 ); //mouth
+
+// Champions
+set_color_profile_slot( 22, 0, 0, 255, 0 ); //face
+set_color_profile_slot( 22, 1, 0, 255, 0 ); //petals
+set_color_profile_slot( 22, 2, 0, 255, 0 ); //roots
+set_color_profile_slot( 22, 3, 0, 255, 0 ); //thorns
+set_color_profile_slot( 22, 4, 0, 255, 0 ); //soul
+set_color_profile_slot( 22, 5, 0, 255, 0 ); //eye blue
+set_color_profile_slot( 22, 6, 0, 255, 0 ); //eye red
+set_color_profile_slot( 22, 7, 0, 255, 0 ); //mouth
+
+// Custom
+set_color_profile_slot( 23, 0, 0, 255, 0 ); //face
+set_color_profile_slot( 23, 1, 0, 255, 0 ); //petals
+set_color_profile_slot( 23, 2, 0, 255, 0 ); //roots
+set_color_profile_slot( 23, 3, 0, 255, 0 ); //thorns
+set_color_profile_slot( 23, 4, 0, 255, 0 ); //soul
+set_color_profile_slot( 23, 5, 0, 255, 0 ); //eye blue
+set_color_profile_slot( 23, 6, 0, 255, 0 ); //eye red
+set_color_profile_slot( 23, 7, 0, 255, 0 ); //mouth
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

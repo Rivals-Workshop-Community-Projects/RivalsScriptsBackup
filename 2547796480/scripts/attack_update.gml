@@ -222,13 +222,42 @@ if attack == AT_NAIR{
 	
 }
 
+if attack == AT_JAB{
+
+if !hitpause && window == 1 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,1.25);
+}
+
+if !hitpause && window == 7 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,1.35);
+}
+
+
+}
+
+if attack == AT_USTRONG{
+
+if !hitpause && window == 1 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,0.75);
+}
+
+if !hitpause && window == 2 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.75);
+}
+
+
+}
+
 if attack == AT_FSTRONG{
 
-if !hitpause && window == 2 && window_timer == 5 {
-	sound_play(asset_get("sfx_shovel_hit_heavy2"))
-	sound_play(asset_get("sfx_blow_heavy2"))
-	shake_camera(4,4)
+if !hitpause && window == 1 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,0.75);
 }
+
+if !hitpause && window == 2 && window_timer == 1 {
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.75);
+}
+
 
 }
 
@@ -511,8 +540,6 @@ if attack == AT_USPECIAL{
 	move_cooldown[AT_DSPECIAL] = 0
 		set_attack_value(AT_FAIR, AG_CATEGORY, 2);
 	draw_indicator = false
-	hsp = 0
-	vsp = 0
 	if window == 2{
 	    if left_down && !right_down {
 	    	spr_dir = -1
@@ -525,6 +552,8 @@ if attack == AT_USPECIAL{
 	can_fast_fall = 0
 	
 	if window == 1 && window_timer == 1 {
+                 hsp = 0
+                 vsp = 0
 		ethrow = 0
 	}
 	
@@ -536,21 +565,21 @@ if attack == AT_USPECIAL{
     if window == 2 && window_timer == 1 && !hitpause {
     	var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
-			vsp += -10
-			y += -120;
+			vsp = -5
+			y += -100;
 			
 		}else{
-			hsp += (10 * cos(angle));
-			vsp += (10 * sin(angle));
-			x += (120 * cos(angle));
-			y += (120 * sin(angle)) + 10;
+	hsp = (4 * cos(angle));
+	vsp = (4 * sin(angle));
+			x += (100 * cos(angle));
+			y += (100 * sin(angle)) + 10;
 			
 		}
 		
     }
     
-    if window == 2 && window_timer == 2 && !hitpause {
-    	spawn_hit_fx(x,y - 30,timeS2)
+    if window == 2 && window_timer == 3 && !hitpause {
+    	spawn_hit_fx(x + hsp*12,y - 30 + vsp*12,timeS2)
     }
     
     if window == 3 && window_timer == 1 && !hitpause {
@@ -558,7 +587,7 @@ if attack == AT_USPECIAL{
     	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
     	shake_camera(2,4)
     	create_hitbox(AT_NSPECIAL,2,x,y)
-    		spawn_hit_fx(x,y - 30,timeS)
+    		spawn_hit_fx(x + hsp,y - 30 + vsp,timeS)
     		
     	//if special_down && batt > 0 && !has_hit_player{
     	//	batt -= 1
@@ -566,11 +595,11 @@ if attack == AT_USPECIAL{
     	//    window_timer = 9
     	//}
     }
-    
+
 
     if window == 3 && window_timer > 10 && !free {
     	set_state(PS_PRATLAND)
-    	state_timer = 9
+    	state_timer = 3
     }
 
     if window == 3 && has_hit_player {

@@ -271,6 +271,22 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "30 June, 2023");
+initHeader("Aesthetic");
+initSection("-Adjusted UTilt smear to go higher reflecting the new higher sourspot
+-Added an extra animation frame to UTilt endlag
+-Added easteregg when using FSpecial as the Gold Winner alt
+-Updated Gold Winner alt to have nicer colours (they were colourpicked from legacy Zard Wario but they looked kinda smelly)
+-Added more Miiverse posts (Big credit to TheAcidCat for contributing even more posts-!)");
+initHeader("Balance");
+initSection("-Lowered FStrong KB angle from 55 to 50
+-UTilt given a high sourspot that reaches platforms
+-UTilt attacking window extended from 4 to 8 frames
+-NSpecial projectiles are now transcendant");
+initHeader("Fixes");
+initSection("-Fixed Miiverse posts being at double scale
+-FStrong now completes its animation when parried (which actually gives enough time to punish it now)");
+
 initPatch("1.6", "17 June, 2023");
 initHeader("Aesthetic");
 initSection("-Updated Munophone tips to reflect FSpecial changes

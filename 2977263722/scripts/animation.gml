@@ -100,7 +100,7 @@ switch state {
 			    if window = 3 || window = 2 || window = 1 || (window = 4 && window_timer < 5) hud_offset = lerp(hud_offset, 180, 0.5);
 			break;
 			case AT_UTILT:
-			    if window = 2 || (window = 1 && window_timer > 4) || (window = 3 && window_timer < 6) hud_offset = lerp(hud_offset, 55, 0.5);
+			    if window = 2 || (window = 1 && window_timer > 4) || (window = 3 && window_timer < 6) hud_offset = lerp(hud_offset, 70, 0.5);
 			break;
 			
 			case AT_DSTRONG:

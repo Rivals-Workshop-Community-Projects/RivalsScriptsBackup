@@ -159,6 +159,21 @@ if(get_player_stocks(player) <= 1){ //last stock
 				    }
 				}
 			}
+		}else if(voicemode == 3){ //pingas
+			if(rand == 0){ //general death sfx
+				rand = random_func(0, 4, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas cry2", 2);
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas dies", 2);
+			    }else if(rand == 2){
+			    	PlayVoiceClip("pingas_dies4", 2);
+			    }else if(rand == 3){
+			    	PlayVoiceClip("pingas_stroke", 2);
+			    }
+			}else if(rand >= 1){ //specific characters
+				
+			}
 		}
 	}
 }else{
@@ -368,6 +383,32 @@ if(get_player_stocks(player) <= 1){ //last stock
 				    }
 				}
 			}
+		}else if(voicemode == 3){ //pingas
+			if(sonic || amy || shadow || silver){
+				rand = random_func(1, 3, true);
+			}else{
+				rand = 0;
+			}
+			if(rand == 0){ //general death sfx
+				rand = random_func(0, 6, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas cry", 2);
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas dies2", 2);
+			    }else if(rand == 2){
+			    	PlayVoiceClip("pingas dies3", 2);
+			    }else if(rand == 3){
+			    	PlayVoiceClip("pingas this is embarrassing", 2);
+			    }else if(rand == 4){
+			    	PlayVoiceClip("pingas_dies5", 2);
+			    }else if(rand == 5){
+			    	PlayVoiceClip("pingas_dies6", 2);
+			    }
+			}else if(rand >= 1){ //specific characters
+				if(sonic || amy || shadow || silver){
+					PlayVoiceClip("pingas i hate that hedgehog", 2);
+				}
+			}
 		}
 	}
 }
@@ -375,7 +416,7 @@ if(get_player_stocks(player) <= 1){ //last stock
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX
-	if(voicemode != 3){
+	//if(voicemode != 3){
 		sound_stop(voice);
 		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
-	}
+	//}

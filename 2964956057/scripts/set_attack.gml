@@ -8,3 +8,7 @@ if free && special_pressed && down_down{
 if attack == AT_DSPECIAL_AIR && window == 3 && window_timer == 12{
     attack = AT_DSPECIAL;
 }
+
+if !free && taunt_pressed && down_down{
+    attack = AT_TAUNT_2;
+}

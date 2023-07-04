@@ -757,9 +757,11 @@ if (attack == AT_DSTRONG){
     can_fast_fall = false;
 }
 
+/*
 if (attack == AT_BAIR && window_timer == 2 && window == 1){
     spr_dir = spr_dir*-1;
 }
+*/
 
 if (attack == AT_USPECIAL || attack == AT_USPECIAL_2){
     uspecial_timer -= 1;

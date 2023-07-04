@@ -370,13 +370,13 @@ if(x > room_width+100 || x < -100 || y >= room_height+100 || y <= -200 || destro
     
     if(hp <= -30){
 	    if(eggpawn_num == 0){
-			player_id.eggpawn_cooldown += 420;
-			if(robot == 1)player_id.eggpawn_cooldown += 90;
-			player_id.eggpawn_cooldown2 += 120;
+			player_id.eggpawn_cooldown += round(480*player_id.eggpawn_cooldown_multiplier);
+			if(robot == 1)player_id.eggpawn_cooldown += round(90*player_id.eggpawn_cooldown_multiplier);
+			player_id.eggpawn_cooldown2 += round(180*player_id.eggpawn_cooldown_multiplier);
 		}else if(eggpawn_num == 1){
-			player_id.eggpawn_cooldown2 += 420;
-			if(robot == 1)player_id.eggpawn_cooldown2 += 90;
-			player_id.eggpawn_cooldown += 120;
+			player_id.eggpawn_cooldown2 += round(480*player_id.eggpawn_cooldown_multiplier);
+			if(robot == 1)player_id.eggpawn_cooldown2 += round(90*player_id.eggpawn_cooldown_multiplier);
+			player_id.eggpawn_cooldown += round(180*player_id.eggpawn_cooldown_multiplier);
 		}
 		player_id.eggpawn_destroyed = true;
     }

@@ -42,7 +42,7 @@ switch(my_hitboxID.attack){
                 sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 0.9);
                 hit_player_obj.flowey_ustrong_quick_grab = self;
             break;
-            case 2:
+            case 2: case 3: // Catchers
                 sound_play(asset_get("sfx_leafy_hit1"), false, noone, 0.7, 1.15);
                 hit_player_obj.flowey_ustrong_quick_grab = noone;
                 if instance_exists(hit_player_obj) && !hit_player_obj.clone && !hit_player_obj.super_armor && hit_player_obj.soft_armor < check_kb{

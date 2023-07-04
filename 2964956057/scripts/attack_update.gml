@@ -287,7 +287,7 @@ switch(attack){
             break;
             case 3:
 				hud_offset = round(lerp(hud_offset, 180, 0.5));
-                hsp *= 0.98;
+                hsp *= 0.975;
                 if has_rune("M"){
                     hsp = 0;
                     switch window_timer{
@@ -339,8 +339,14 @@ switch(attack){
 		fall_through = (down_down == true? true:false);
     break;
     case AT_USPECIAL:
+		if flowey_savecooldown || !flowey_saves_used{
+			destroy_hitboxes();
+            attack_end();
+            set_state(free? PS_IDLE_AIR:PS_IDLE);
+    	}
         if window == 1 && window_timer == (has_rune("L")?8:12) && !instance_exists(flowey_save){
             flowey_save = instance_create(x, y, "obj_article1");
+            flowey_savecooldown = 10;
             destroy_hitboxes();
             attack_end();
             set_state(free? PS_IDLE_AIR:PS_IDLE);
@@ -376,9 +382,6 @@ switch(attack){
                 	hsp = flowey_save.hsp;
                 }
                 flowey_saves_used -= 1;
-                if flowey_saves_used == 0{
-                    move_cooldown[AT_USPECIAL] = 9999;
-                }
                 spawn_hit_fx(x, y - 24, vfx_star);
                 if "flowey_saveattack" in flowey_save{
                 	instance_destroy(flowey_save.flowey_saveattack);
@@ -409,6 +412,16 @@ switch(attack){
             attack_end();
             destroy_hitboxes();
             set_state(free? PS_IDLE_AIR:PS_IDLE);
+        }
+    break;
+    case AT_TAUNT_2:
+        move_cooldown[AT_TAUNT_2] = 2;
+        if window == 1 && window_timer == 28{
+        	sound_play(sound_get("vineboom"));
+        }
+        if window == 2 && state_timer >= 50 && !taunt_down{
+            window = 3;
+            window_timer = 0;
         }
     break;
 	case 49:

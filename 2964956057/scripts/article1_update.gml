@@ -3,10 +3,6 @@ image_index += .12;
 hsp *= 0.95;
 vsp *= 0.95;
 
-if y < get_stage_data(SD_TOP_BLASTZONE_Y){
-    y += 5;
-}
-
 if hsp >= 0{
     var move_dir = 1;
 }
@@ -27,7 +23,7 @@ else if place_meeting(x, y - 10, asset_get("par_block")){
     vsp *= -1;
 }
 
-if abs(hsp) <= 1 && abs(vsp) <= 1{
+if abs(hsp) <= 0.2 && abs(vsp) <= 0.2{
     instance_destroy(flowey_saveattack);
     hsp = 0;
     vsp = 0;

@@ -414,6 +414,47 @@ if(hit_player_obj.should_make_shockwave){
 					PlayVoiceClip("alfred_perish_rodent", 1.75);
 				}
 			}
+		}else if(voicemode == 3){ //pingas
+			if(sonic || tails || knuckles || amy || shadow || yucky_rat){
+				rand = random_func(1, 3, true);
+			}else{
+				rand = 0;
+			}
+			if(rand == 0){ //general kill sfx
+				rand = random_func(0, 11, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas no", 1.75);
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas destroyed", 1.75);
+			    }else if(rand == 2){
+			    	PlayVoiceClip("pingas obliterated", 1.75);
+			    }else if(rand == 3){
+			    	PlayVoiceClip("pingas_quiet_you_glob_of_repulsiveness", 1.75);
+			    }else if(rand == 4){
+			    	PlayVoiceClip("pingas_shut_up", 1.75);
+			    }else if(rand == 5){
+			    	PlayVoiceClip("pingas_you_fool", 1.75);
+			    }else if(rand == 6){
+			    	PlayVoiceClip("pingas_get_out_of_my_sight", 1.75);
+			    }else if(rand == 7){
+			    	PlayVoiceClip("pingas", 1.75);
+			    }else if(rand == 8){
+			    	PlayVoiceClip("pingas laugh", 1.75);
+			    }else if(rand == 9){
+			    	PlayVoiceClip("pingas laugh3", 1.75);
+			    }else if(rand == 10){
+			    	PlayVoiceClip("pingas snooping as usual i see", 1.75);
+			    }
+			}else if(rand >= 1){ //specific characters
+				if(sonic || tails || knuckles || amy || shadow || silver || rouge || yucky_rat){
+					if(sonic)rand = random_func(2, 2, true);
+					if(rand == 0){
+				    	PlayVoiceClip("pingas pest", 1.75);
+				    }else if(rand == 1){
+				    	PlayVoiceClip("pingas sayonara sonic", 1.75);
+				    }
+				}
+			}
 		}
 	}
 }
@@ -430,7 +471,7 @@ can_summon_mech = true;
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX
-	if(voicemode != 3){
+	//if(!hitpause){
 	    sound_stop(voice)
 	    voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
-	}
+	//}

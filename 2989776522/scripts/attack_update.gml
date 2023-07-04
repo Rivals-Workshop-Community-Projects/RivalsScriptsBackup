@@ -24,6 +24,14 @@ switch(attack){
 	    if(window == 1){
 	    	if(window_timer == 1){
 	    		nspecial_start_charge = nspecial_charge;
+	    		if(voicemode == 3){ //pingas
+					if(voicecooldown <= 0){
+						rand = random_func(2, 2, true);
+						if(rand == 0){
+							voicecooldown = 60;voicecooldown3 = 60;PlayVoiceClip("pingas prepare the eggblaster", 1.75);
+						}
+					}
+				}
 	    	}
 		}else if(window == 2){
 			if(special_down && !shield_pressed && !jump_pressed && (nspecial_start_charge >= 400 || nspecial_charge < 400 && nspecial_start_charge < 400)){
@@ -57,7 +65,7 @@ switch(attack){
 								voicecooldown = 60;voicecooldown3 = 60;PlayVoiceClip("pollock_fire", 2);
 							}
 						}
-					}if(voicemode == 2){ //alfred
+					}else if(voicemode == 2){ //alfred
 						if(voicecooldown <= 0){
 							rand = random_func(2, 3, true);
 							if(rand == 0){
@@ -66,6 +74,13 @@ switch(attack){
 								voicecooldown = 60;voicecooldown3 = 60;PlayVoiceClip("alfred_pissingonthemoon", 2);
 							}
 						}
+					}else if(voicemode == 3){ //pingas
+						//if(voicecooldown <= 0){
+							rand = random_func(2, 2, true);
+							if(rand == 0){
+								voicecooldown = 60;voicecooldown3 = 60;PlayVoiceClip("pingas subatomic beam weapon", 1.75);
+							}
+						//}
 					}
 					
 					rand = 0;PlayAttackVoiceClip();
@@ -314,6 +329,12 @@ switch(attack){
 			}
 			if(window_timer == 1){
 				sound_play(sound_get("mech phaser"),false,noone,1.25);
+				if(voicemode == 3){ //pingas
+					rand = random_func(0, 4, true);
+				    if(rand == 0){
+				    	PlayVoiceClip("pingas new town terrorizer", 1.75);
+				    }
+				}
 			}if(window_timer <= 3){
 				var eff = spawn_hit_fx(x-60+random_func(0, 120, true),y-90+random_func(1, 80, true),fx_pixel);eff.depth = depth-1;
 				eff = spawn_hit_fx(x-60+random_func(2, 120, true),y-90+random_func(3, 80, true),fx_pixel_fast);eff.depth = depth-1;
@@ -330,9 +351,11 @@ switch(attack){
 				if(eggpawn_cooldown <= 0 && !instance_exists(the_eggpawn) || eggpawn_cooldown2 <= 0 && !instance_exists(the_eggpawn2)){
 					var eggpawn = instance_create(round(x+65*spr_dir), round(y-45),"obj_article2");
 					if(!instance_exists(the_eggpawn) && eggpawn_cooldown <= 0){
-						the_eggpawn = eggpawn;the_eggpawn.eggpawn_num = 0;eggpawn_cooldown = 240;
+						the_eggpawn = eggpawn;the_eggpawn.eggpawn_num = 0;eggpawn_cooldown = round(300*eggpawn_cooldown_multiplier);
+						eggpawn_cooldown2 += round(120*eggpawn_cooldown_multiplier);
 					}else if(!instance_exists(the_eggpawn2) && eggpawn_cooldown2 <= 0){
-						the_eggpawn2 = eggpawn;the_eggpawn2.eggpawn_num = 1;eggpawn_cooldown2 = 300;
+						the_eggpawn2 = eggpawn;the_eggpawn2.eggpawn_num = 1;eggpawn_cooldown2 = round(300*eggpawn_cooldown_multiplier);
+						eggpawn_cooldown += round(120*eggpawn_cooldown_multiplier);
 					}
 					sound_play(sound_get("mech phaser2"),false,noone,1.1);
 					var eff = spawn_hit_fx(round(x+65*spr_dir),round(y-45),fx_orb);eff.depth = depth+2;
@@ -362,6 +385,21 @@ switch(attack){
 						    	PlayVoiceClip("pollock_your_mission_is_to_jump_this_froggy", 1.75);
 						    }
 					    }
+					}else if(voicemode == 3){ //pingas
+						rand = random_func(0, 5, true);
+					    if(rand == 0){
+					    	PlayVoiceClip("pingas i push this button", 1.75);
+					    }else if(rand == 1){
+					    	PlayVoiceClip("pingas its my greatest invention ever", 1.75);
+					    }else if(rand == 2){
+					    	PlayVoiceClip("pingas_after_them_you_shnookbots", 1.75);
+					    }else if(rand == 3){
+					    	if(sonic_inmatch || amy_inmatch || shadow_inmatch || silver_inmatch){
+						    	PlayVoiceClip("pingas now find that hedgehog", 1.75);
+						    }else if(tails_inmatch){
+						    	PlayVoiceClip("pingas after tails dont let him get away", 1.75);
+						    }
+					    }
 					}
 					if(free){
 						if(voicemode == 1){ //modern
@@ -385,6 +423,11 @@ switch(attack){
 					    	PlayVoiceClip("alfred_wtf", 2);
 					    }else if(rand == 1){
 					    	PlayVoiceClip("alfred_what_the_actual_shit", 2);
+					    }
+					}else if(voicemode == 3){ //pingas
+						rand = random_func(0, 2, true);
+					    if(rand == 0){
+					    	PlayVoiceClip("pingas_this_stupid_button", 1.75);
 					    }
 					}
 				}
@@ -515,6 +558,13 @@ switch(attack){
 					if(!instance_exists(eggpawn_target)){
 						spr_dir = other.spr_dir;
 					}
+				}
+			}
+			if(voicemode == 3){ //pingas
+				rand = random_func(2, 2, true);
+				if(rand == 0 && voicecooldown <= 0){
+					voicecooldown = 60;
+					PlayVoiceClip("pingas bumper", 1.75);
 				}
 			}
 		}
@@ -688,6 +738,21 @@ switch(attack){
 			    }else if(rand == 2){
 			    	PlayVoiceClip("alfred_laugh3", 1.75);
 			    }
+			}else if(voicemode == 3){ //pingas
+				rand = random_func(0, 6, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas laugh", 1.75);voicecooldown += 120;
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas laugh2", 1.75);voicecooldown += 180;
+			    }else if(rand == 2){
+			    	PlayVoiceClip("pingas laugh3", 1.75);voicecooldown += 90;
+			    }else if(rand == 3){
+			    	PlayVoiceClip("pingas laugh4", 1.75);voicecooldown += 120;
+			    }else if(rand == 4){
+			    	PlayVoiceClip("pingas laugh5", 1.75);voicecooldown -= 30;
+			    }else if(rand == 5){
+			    	PlayVoiceClip("pingas_laugh6", 1.75);voicecooldown += 180;
+			    }
 			}
 		}
 		if(window == 2){
@@ -800,13 +865,22 @@ if (attack = AT_FSTRONG || attack = AT_USTRONG || attack = AT_DSTRONG){
 			}else{
 				PlayVoiceClip("alfred_get_the_fuck_away_from_me", 1.5);
 			}
+		}else if(voicemode == 3){ //pingas
+			if(rand == 0){
+				rand = random_func(0, 2, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas take this", 1.75);
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas silence", 1.75);
+			    }
+			}
 		}
 	}
 	
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX
-	if(voicemode != 3 && !hitpause){
+	if(!hitpause){
 	    sound_stop(voice)
 	    voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
 	}

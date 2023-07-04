@@ -12,7 +12,7 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
     can_summon_mech = true;
 }
 
-if(voicemode != 3){
+if(voicemode != 4){
 	voicecooldown -= 1;voicecooldown2 -= 1;voicecooldown3 -= 1;
 }
 
@@ -26,6 +26,8 @@ if(nspecial_charge < 400){
 				PlayVoiceClip("adv_all_systems_full_power", 1.75);
 			}else if(voicemode == 1){ //modern
 				PlayVoiceClip("pollock_charged_n_ready", 2);
+			}else if(voicemode == 3){ //pingas
+				PlayVoiceClip("pingas full power", 1.75);
 			}
 		}
 		nspecial_charged = true;
@@ -35,11 +37,11 @@ if(nspecial_charge < 400){
 if(!instance_exists(the_eggpawn)){
 	eggpawn_cooldown--;
 	eggpawn_cooldown = max(0,eggpawn_cooldown);
-}eggpawn_cooldown = min(1800,eggpawn_cooldown);
+}//eggpawn_cooldown = min(1800,eggpawn_cooldown);
 if(!instance_exists(the_eggpawn2)){
 	eggpawn_cooldown2--;
 	eggpawn_cooldown2 = max(0,eggpawn_cooldown2);
-}eggpawn_cooldown2 = min(1800,eggpawn_cooldown2);
+}//eggpawn_cooldown2 = min(1800,eggpawn_cooldown2);
 
 if(eggpawn_destroyed){
 	rand = random_func(2, 8, true);
@@ -71,6 +73,16 @@ if(eggpawn_destroyed){
 	    		PlayVoiceClip("alfred_my_followerbase", 2);
 	    	}else if(rand == 1){
 	    		PlayVoiceClip("alfred_son_of_a_bitch2", 1.75);
+	    	}
+	    }
+	}else if(voicemode == 3){ //pingas
+	    if(rand == 0 && voicecooldown <= 0){
+	    	voicecooldown = 60;
+	    	rand = random_func(3, 2, true);
+	    	if(rand == 0){
+	    		PlayVoiceClip("pingas metal maggots", 1.75);
+	    	}else if(rand == 1){
+	    		PlayVoiceClip("pingas you stupid mounds of metal", 1.75);
 	    	}
 	    }
 	}
@@ -159,7 +171,16 @@ if(inside_mech){
 }else{ //mechless specific stuff
 	floating = false;
 	if(state == PS_DASH){
-	    hsp = clamp((6 * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
+	    if(!runeF){
+	    	hsp = clamp((6 * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
+	    }else{
+	    	if(abs(hsp) < 20){
+	    		hsp = clamp((10 * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
+	    	}else{
+	    		hsp = clamp(((10 + abs(hsp/2)) * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
+	    	}
+	    }
+	    //print(hsp);
 	}else if(state == PS_DASH_TURN){
 		if(state_timer == 0 && !hitpause){
 			sound_play(sound_get("skid"),false,noone,1.0);
@@ -277,7 +298,9 @@ if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
 		}else if(voicemode == 1){ //modern
 			PlayVoiceClip("pollock_sleep", 2.5);
 		}else if(voicemode == 2){ //alfred
-			//PlayVoiceClip("alfred_hey_bitches", 1.5);
+			
+		}else if(voicemode == 3){ //pingas
+			PlayVoiceClip("pingas sleep", 1.75);
 		}
 		kob_sleep_sfx = false;
 	}
@@ -439,6 +462,23 @@ if(!loaded){
 				voice = noone;
 			}
 		}
+	}else if(voicemode == 3){ //pingas
+		rand = random_func(player, 3, true);
+	    if(rand == 0){
+	    	PlayVoiceClip("pingas snooping as usual i see", 1.75);
+	    }else if(rand == 1){
+	    	PlayVoiceClip("pingas_get_out_of_my_sight", 1.75);
+	    }else if(rand == 2){
+	    	PlayVoiceClip("pingas", 1.75);
+	    }
+	    rand = random_func(player+4, 2, true);
+		if(rand == 0){
+			if(tails_inmatch){
+				PlayVoiceClip("pingas double tailed trouble maker", 1.75);
+			}
+		}
+		
+		gfzsignsfx = sound_get("pingas no");
 	}
 
     if (runesUpdated || get_match_setting(SET_RUNES)) {
@@ -446,14 +486,20 @@ if(!loaded){
 			
 		}if (has_rune("C") || runeC) {
 			
+		}if (has_rune("E") || runeE) {
+			runeE = true;
+			eggpawn_cooldown = 0;eggpawn_cooldown2 = 0;
+			eggpawn_cooldown_multiplier = 0.5;
 		}if (has_rune("F") || runeF) {
-			
+			runeF = true;
+			maxspd = 999999;
 		}
 		
 		if (has_rune("G") || runeG) {
-			
+			runeG = true;
+			set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 420);
 		}if (has_rune("H") || runeH) {
-			
+			runeH = true;eggpawn_health_multiplier = 3.0;
 		}if (has_rune("I") || runeI) {
 			
 		}if (has_rune("J") || runeJ) {

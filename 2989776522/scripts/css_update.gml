@@ -38,15 +38,15 @@ if (cur_x > x+voice_button_pos[0] && cur_x < x+voice_button_pos[2] && cur_y > y+
     if (menu_a_pressed && button_cool == 0){
         button_cool = 8;
         voicebutton = 2;
-        voicebutton = voicemode*3+(voicebutton+4) % 4;
-        voicemode+=1;voicemode = (voicemode+4) % 4;
+        voicebutton = voicemode*3+(voicebutton+5) % 5;
+        voicemode+=1;voicemode = (voicemode+5) % 5;
         set_synced_var(player, voicemode);
         sound_play(asset_get((voicemode==0)?"mfx_forward":"mfx_input_back"));
         voice_hover = false;
     }    
 }else{
     voicebutton = 0;
-    if(button_cool == 0)voicebutton = voicemode*3+(voicebutton+4) % 4;
+    if(button_cool == 0)voicebutton = voicemode*3+(voicebutton+5) % 5;
     voice_hover = false;
 }suppress_cursor = voice_hover;
 if(button_cool>0)button_cool--;

@@ -13,6 +13,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, -0.1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_sword_activate"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 6);

@@ -24,6 +24,11 @@ if (attack == AT_TAUNT && get_gameplay_time() > 120 && !hitpause && beyTimer){
         //hsp = hsp/1.1;
     if (has_rune("N") && !left_down && !right_down)
         hsp = hsp/1.1;
+        
+    if (free)
+        set_num_hitboxes(AT_TAUNT, 3);
+    else
+        set_num_hitboxes(AT_TAUNT, 2);
 }
 
 if (attack == AT_TAUNT && window == 2 && window_timer == 1){

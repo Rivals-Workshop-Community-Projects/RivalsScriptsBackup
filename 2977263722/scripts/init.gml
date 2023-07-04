@@ -88,7 +88,7 @@ wait_length = 56;
 // Jumps
 double_jump_time    = 24;		// 24   -  40
 walljump_time       = 18;		// 18   -  32
-wall_frames         = 2;		// may or may not actually work... dan pls
+wall_frames         = 1;		// may or may not actually work... dan pls
 
 // Parry
 dodge_startup_frames    = 1;

@@ -8,7 +8,9 @@ switch (attack) {
     //you dont need brackets around the cases of a switch statement btw just
     //remember to include the break;
     case AT_JAB:
-        was_parried = false;
+        if(window == 3 && window_timer == 15){
+            was_parried = false;
+        }
         break;
     
     case AT_DTILT:

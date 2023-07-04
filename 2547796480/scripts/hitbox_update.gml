@@ -1,6 +1,16 @@
 ///
+if attack == AT_FTHROW  {
+  if hitbox_timer == 1 {
+  hsp = (x - player_id.x)
+  vsp = (y - player_id.y + 30)
+  hsp = clamp(-10,hsp,10)
+  vsp = clamp(-10,vsp,10)
+  }
+  if hitbox_timer <= 15 {
+        vsp += 0.65
+  }
 
-if attack == AT_FTHROW {
+ if hitbox_timer > 15{
 	spawn_hit_fx (x,y, hams)
    if x < player_id.x {
    	   hsp += 1
@@ -41,7 +51,7 @@ if attack == AT_FTHROW {
    }
    
 }
-
+}
 if attack == AT_DSPECIAL && hbox_num == 6 && !free {
 	 create_hitbox(AT_DSPECIAL , 5 , x  , y - 16 );
 	 destroyed = 1
@@ -62,7 +72,7 @@ if hitbox_timer == 1 && !free{
 
 if attack == AT_FSPECIAL && hbox_num == 5 { 
 	if hitbox_timer == 59 {
-		create_hitbox(AT_FTHROW,1,x,y)
+          player_id.oknifelost ++
 	}
 	
 	if hsp > 0 {
@@ -97,8 +107,8 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
 	}
 	
 	if y > room_height {
-		create_hitbox(AT_FTHROW,1,x,y)
 		destroyed = true
+                player_id.oknifelost ++
 	}
     
     

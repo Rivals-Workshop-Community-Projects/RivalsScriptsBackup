@@ -1,5 +1,10 @@
 switch attack {
     case AT_FSTRONG:
+	
+	    if player_id.was_parried {
+			sound_play(sound_get("sm64_extinguish"));
+		}
+	
 	    if player_id.up_down || player_id.up_strong_down || player_id.up_stick_down {
 		    player_id.fstrong_aim -= 1;
 		}

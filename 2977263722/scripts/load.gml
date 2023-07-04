@@ -42,7 +42,7 @@ sprite_change_offset("dattack", 33, 47, true);
 sprite_change_offset("dattack_fx", 74, 94, true);
 sprite_change_offset("ftilt", 33, 47, true);
 sprite_change_offset("dtilt", 33, 47, true);
-sprite_change_offset("utilt", 33, 47, true);
+sprite_change_offset("utilt", 33, 57, true);
 
 sprite_change_offset("nair", 33, 47, true);
 sprite_change_offset("fair", 33, 47, true);

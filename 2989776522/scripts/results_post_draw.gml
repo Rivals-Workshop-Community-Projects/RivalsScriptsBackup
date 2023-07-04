@@ -48,6 +48,21 @@ with(asset_get("draw_result_screen")){
 			    }else if(rand == 3){
 			        sound_play(sound_get("alfred_garbage"),false,noone,2);
 			    }
+            }else if(get_synced_var(player) == 3){ //Pingas
+                rand = random_func(0, 6, true);
+			    if(rand == 0){
+			        sound_play(sound_get("pingas vanished destroyed obliterated"),false,noone,2);
+			    }else if(rand == 1){
+			        sound_play(sound_get("pingas villain worthwhile"),false,noone,2);
+			    }else if(rand == 2){
+			        sound_play(sound_get("pingas ill have to give myself a promotion"),false,noone,2);
+			    }else if(rand == 3){
+			        sound_play(sound_get("pingas culmination of career"),false,noone,2);
+			    }else if(rand == 4){
+			        sound_play(sound_get("pingas mama proud"),false,noone,2);
+			    }else if(rand == 5){
+			        sound_play(sound_get("pingas_i_win_double_my_salary"),false,noone,2);
+			    }
             }
         //}
     }

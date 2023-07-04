@@ -73,6 +73,7 @@ set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("nspecial_proj_mask"));
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_UNBASHABLE, 0);
+set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(temp_attack, temp_num, HG_PROJECTILE_GRAVITY, 0);

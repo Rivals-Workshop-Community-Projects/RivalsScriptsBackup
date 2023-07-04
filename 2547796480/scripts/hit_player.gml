@@ -9,27 +9,36 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
    hit_player_obj.ANtimeslow = 30
    } 
    if hit_player_obj.ANwounded == 1 {
-   	move_cooldown[AT_NSPECIAL] = 50
-    hit_player_obj.ANtimeslow = 50
+   	move_cooldown[AT_NSPECIAL] = 40
+    hit_player_obj.ANtimeslow = 40
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_medium"));   
-    sound_play(sound_get("Fstrong"),false,noone,1.4,0.8);   
+    sound_play(sound_get("Fstrong"),false,noone,1.4,0.8);  
+    create_hitbox(AT_FTHROW,1,x,y - 80) 
+    oknifelost -= 1
    }
 
    if hit_player_obj.ANwounded == 2 {
-   	move_cooldown[AT_NSPECIAL] = 60
-    hit_player_obj.ANtimeslow = 60
+   	move_cooldown[AT_NSPECIAL] = 50
+    hit_player_obj.ANtimeslow = 50
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(sound_get("Fstrong"),false,noone,1.5,0.7);  
+    create_hitbox(AT_FTHROW,1,x - 20,y - 45)
+    create_hitbox(AT_FTHROW,1,x + 20,y - 45)
+    oknifelost -= 2
    }
    
    if hit_player_obj.ANwounded == 3 {
-   	move_cooldown[AT_NSPECIAL] = 70
-    hit_player_obj.ANtimeslow = 70
+   	move_cooldown[AT_NSPECIAL] = 60
+    hit_player_obj.ANtimeslow = 60
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_heavy")); 
     sound_play(sound_get("Fstrong"),false,noone,1.6,0.6);  
+    create_hitbox(AT_FTHROW,1,x - 30,y - 45)
+    create_hitbox(AT_FTHROW,1,x + 30,y - 45)
+    create_hitbox(AT_FTHROW,1,x,y - 85) 
+    oknifelost -= 3
    }
    
    hit_player_obj.ANwounded = 0
@@ -121,9 +130,10 @@ if my_hitboxID.type == 1  {
 
 }
 
-if my_hitboxID.attack == AT_FSPECIAL {
+if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.sound_effect == sound_get("slice") {
 	
-	if my_hitboxID.hbox_num <= 4 && my_hitboxID.enemies = 0{
+	if my_hitboxID.hbox_num <= 4 && my_hitboxID.attack == AT_FSPECIAL{
+                my_hitboxID.destroyed = true
 		create_hitbox(AT_FTHROW,1,my_hitboxID.x,my_hitboxID.y)
 	}
 	       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
@@ -133,5 +143,10 @@ if my_hitboxID.attack == AT_FSPECIAL {
     if hit_player_obj.ANwounded < 3 {
     hit_player_obj.ANwounded += 1
     }
+if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG{
+   hit_player_obj.ANwounded = 3
+    sound_play(sound_get("slice"),false, 0, 1, 0.65);   
+}
+
 }
 

@@ -68,6 +68,9 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 	}
+	if (window >= 3 && special_down && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - nspecial_pop_hold) {
+		nspecial_pop_timer++
+	}
 }
 
 if (attack == AT_FSPECIAL){

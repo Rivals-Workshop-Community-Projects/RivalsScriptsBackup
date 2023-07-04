@@ -240,7 +240,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
             
 			
 		    for (var i = 1; i < 20; i++) can_hit[i] = true
-			damage = 5 + floor(nearbyhitbox.damage/2)
+			damage = 3 + floor(nearbyhitbox.damage/3)
 			
 			player = nearbyhitbox.player
 			      image_index = 0 

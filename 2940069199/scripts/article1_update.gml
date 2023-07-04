@@ -35,6 +35,7 @@ if (state >= 3)
 		player_id.comet = noone
 	}
 }
+
 if (killarticles == true){
 	player_id.move_cooldown[AT_NSPECIAL] = 90;
 	spawn_hit_fx(x, y, 112);
@@ -44,8 +45,8 @@ if (killarticles == true){
 	}
 	sound_play(asset_get("sfx_ori_energyhit_medium"));
 	player_id.comet = noone
-    instance_destroy();
-    exit;
+	instance_destroy();
+	exit;
 }
 
 if(state_timer % 10 == 0){
@@ -93,11 +94,21 @@ if (state == 2){ //launch
 			spr_dir = player_id.spr_dir; 
 		}
 	}
-	if (state_timer == 32){
-		setState(3);
-		state_timer = 1
-	}
 	player_id.move_cooldown[AT_NSPECIAL] = 90;
+	if (state_timer == 32){
+		if (player_id.nspecial_pop_timer >= player_id.nspecial_pop_hold) {
+			player_id.move_cooldown[AT_NSPECIAL] = 90;
+			spawn_hit_fx(x, y, 112);
+			create_hitbox(AT_NSPECIAL, 2,x - 0 * spr_dir, y + 0);
+			sound_play(asset_get("sfx_ori_energyhit_medium"));
+			player_id.comet = noone
+			instance_destroy();
+			exit;
+		} else {
+			setState(3);
+			state_timer = 1			
+		}
+	}
 }
 
 
@@ -254,6 +265,9 @@ if (state == 5){ //launch tetramino launch
 	}
 }
 
+
+
+
 /*
 
 
@@ -318,6 +332,11 @@ switch(anim_type[state]){
             var frame_dur = 4;
             image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
             break;
+		case 6:
+            var frames = 9;
+            var frame_dur = 4;
+            image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
+            break;
     }
 
 //If not already at the sprite it should be, switch to the new sprite
@@ -338,3 +357,4 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && state != 3){
 
 state = new_state;
 state_timer = 0;
+

@@ -4,6 +4,7 @@ if fps < 60{
 if !hitstop{
     flowey_last_grunt--;
 }
+flowey_savecooldown--;
 
 with oPlayer{
     if id != other.id && url == other.url{
@@ -22,13 +23,16 @@ with oPlayer{
     }
 }
 
-if y < get_stage_data(SD_TOP_BLASTZONE_Y) && move_cooldown[AT_USPECIAL] <= 2{
+if flowey_savecooldown || !flowey_saves_used || (y < get_stage_data(SD_TOP_BLASTZONE_Y) && !instance_exists(flowey_save)){
     move_cooldown[AT_USPECIAL] = 2;
 }
 if !free{
+    if !flowey_saves_used{
+        set_state(PS_PRATLAND);
+    }
     flowey_saves_used = flowey_saves_max;
     flowey_grapples_used = 0;
-    move_cooldown[AT_USPECIAL] = 0;
+    move_cooldown[AT_USPECIAL] = flowey_savecooldown + 1;
 }
 if (!place_meeting(x + (spr_dir * 60), y + 10, (asset_get("par_block"))) && !place_meeting(x + (spr_dir * 60), y + 10, (asset_get("par_jumpthrough")))) || place_meeting(x + (spr_dir * 35), y, (asset_get("par_block"))){
     move_cooldown[AT_DSPECIAL] = 2;

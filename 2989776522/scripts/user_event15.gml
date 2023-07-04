@@ -261,6 +261,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.14", "30th June, 2023");
+initHeader("Nerfs");
+initSection("- DSpecial robots now apply cooldown to both slots when summoned (to make it so Eggman can't summon two at the same time so easily), and Eggman starts with a bit of cooldown (so that he can't summon them immediately when the match begins). General cooldown numbers are also once again slightly increased");
+initHeader("Fixes / Other Changes");
+initSection("+ Added AoSTH / Pingas voice mode! Now Eggman has 4 entirely different voices instead of 3!
++ Added runes: E, F, G, H");
+
 initPatch("1.13", "22nd June, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Tweaked the limited movement speed during float to feel a bit better and also still allow for stuff like float BAir");

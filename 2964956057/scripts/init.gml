@@ -47,7 +47,7 @@ hitstun_grav = 0.5;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0.05; //grounded deceleration when wavelanding
@@ -146,9 +146,11 @@ enemy_pos = [];
 
 flowey_ustrong_quick_grab = noone;
 
-//uspc_atkFall = 0; // time in which if you attack you will not fall
-
 flowey_morefloweys = 0;
+
+flowey_specialeffects = 1;
+
+flowey_last_grunt = 180;
 
 // Runes
 if has_rune("G"){
@@ -158,11 +160,9 @@ if has_rune("G"){
     instance_destroy(rune_pellet2);
 }
 flowey_saves_max = has_rune("A")? 2:1;
+flowey_saves_used = flowey_saves_max;
+flowey_savecooldown = 0;
 flowey_savejump = 0;
-
-flowey_specialeffects = 1;
-
-flowey_last_grunt = 180;
 
 //#region compatability
 
@@ -232,13 +232,24 @@ Hikaru_Title = "Soulless";
 laylee_win_quote = "HEY, DON'T FEEL BAD. AT LEAST YOUR SOUL IS AT... OH, RIGHT."
 
 //Dracula support
-dracula_portrait = sprite_get("Flowey1");
-dracula_portrait2 = sprite_get("Flowey2");
-dracula_portrait3 = sprite_get("Flowey3");
-dracula_portrait4 = sprite_get("Flowey4");
-dracula_portrait5 = sprite_get("Flowey5");
-dracula_portrait6 = sprite_get("Flowey6");
-dracula_portrait7 = sprite_get("Flowey7");
+if get_player_color(player) == 0{
+    dracula_portrait = sprite_get("Flowey1Base");
+    dracula_portrait2 = sprite_get("Flowey2Base");
+    dracula_portrait3 = sprite_get("Flowey3Base");
+    dracula_portrait4 = sprite_get("Flowey4Base");
+    dracula_portrait5 = sprite_get("Flowey5Base");
+    dracula_portrait6 = sprite_get("Flowey6Base");
+    dracula_portrait7 = sprite_get("Flowey7Base");
+}
+else{
+    dracula_portrait = sprite_get("Flowey1");
+    dracula_portrait2 = sprite_get("Flowey2");
+    dracula_portrait3 = sprite_get("Flowey3");
+    dracula_portrait4 = sprite_get("Flowey4");
+    dracula_portrait5 = sprite_get("Flowey5");
+    dracula_portrait6 = sprite_get("Flowey6");
+    dracula_portrait7 = sprite_get("Flowey7");
+}
 var page = 0;
 
 //Page 0

@@ -1,6 +1,6 @@
 switch attack {
     case AT_FSTRONG:
-	    sound_stop(sound_get("sm64_flamethrower"));
+	    was_parried = true;
 	break;
 	case AT_NSPECIAL:
 	    my_hitboxID.hitbox_timer = 0; // reset lifetime

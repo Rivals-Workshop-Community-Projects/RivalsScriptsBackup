@@ -167,6 +167,12 @@ musiclarge = hit_fx_create(sprite_get("hfx_music_large"), 32)
 //Hit Particle
 set_hit_particle_sprite(1, sprite_get("hfx_part_music"));
 
+//NSPECIAL Pop - Changable
+nspecial_pop_hold = 6; //How many frames of holding special for it to pop instead of travel. (10 gives a decent buffer)
+//NSPECIAL Pop - 
+nspecial_pop_timer = 0; //Timer variable do not change.
+nspecial_pop_delay = 32; //Delay from activating for when comet explodes. (Animation Related so don't change unless you change animation)
+nspecial_pop_can = 0; //Don't change this
 
 #define split_synced_var
 ///args chunk_lengths...

@@ -61,7 +61,7 @@ else if (beyTimer && get_gameplay_time() > 120 && state != PS_DEAD && state != P
 	defSound = true;
 }
 if (!has_rune("B"))
-	pastVSP = clamp(vsp, -9, 9);
+	pastVSP = clamp(vsp, -12, 12);
 else
 	pastVSP = vsp;
 	
@@ -81,6 +81,9 @@ if (beyTimer > 7200){
     set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAME_START, 1);
     set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 15);
     set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 10);
+    set_hitbox_value(AT_TAUNT, 1, HG_WINDOW, 1);
+    set_hitbox_value(AT_TAUNT, 3, HG_WINDOW, 1);
+    set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 9);
     knockback_adj = 0.25;
 }
 else if (beyTimer <= 7200 && beyTimer > 3600){
@@ -108,6 +111,9 @@ else if (beyTimer <= 1800 && beyTimer > 0){
 }
 else if ((window == 1 && window_timer > 0) || window > 1){
 	set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 6);
+	set_hitbox_value(AT_TAUNT, 1, HG_WINDOW, 7);
+	set_hitbox_value(AT_TAUNT, 3, HG_WINDOW, 7);
+	set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 	ground_friction = 0.5;
 	super_armor = false;
 	knockback_adj = 0.9;
@@ -120,6 +126,9 @@ else if ((window == 1 && window_timer > 0) || window > 1){
 	if (deathTimer < 2){
 		window = 2;
 	}
+	
+	if (deathTimer > 79)
+		window = 6;
 }
 if (has_rune("I")){
 	set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 20);
@@ -174,3 +183,12 @@ if (get_gameplay_time() < 120){
 }
 else
 	air_max_speed = 2;
+
+/*if (free && y > room_height/2 + 360 && beyTimer > 1080){
+	vsp = -22.5;
+	hsp = 0;
+	beyTimer = beyTimer/2 - 1080;
+	spawn_hit_fx(x, y, 304);
+	sound_play(asset_get("sfx_shovel_hit_heavy1"), false, noone, 0.5, 0.9 + clangRandom);
+	sound_play(sound_get("bb-clang"), false, noone, 0.5, 0.9 + clangRandom);
+}*/

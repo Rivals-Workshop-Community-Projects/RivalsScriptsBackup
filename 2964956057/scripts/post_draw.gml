@@ -27,7 +27,7 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 Main spriter and creative director: Soka
 Main coder: Reaver of Souls
 Main sound source: Undertale
-Additional spriters: Rosar78, Zard, Delta Parallax
+Additional spriters: Rosar78, Zard, Delta Parallax, Camostar34
 Additional coders: Delta Parallax, DarkDakurai, V_force
 Victory theme musician: lock_wisp"
         
@@ -60,6 +60,16 @@ Victory theme musician: lock_wisp"
 + New victory theme by lock_wisp.
 = Using Side Special on SAVEs now grapples.
 - Grapples have diminishing returns in one airtime."
+
+        patch_note_title[i] = "Version 1.5"
+        patch_note_text[i++] = 
+        "Version 1.5
++ Up Air's launcher knockback scaling 0.7 -> 0.8.
+= Up Special now has a 10-frame cooldown after SAVE to minimize accidental LOADs.
+- Flowey now goes into pratLAND for 20 frames when landing after LOAD.
++ Added champion alts.
++ Added alt customizer.
++ Added Down Taunt (sprites by Camostar34)."
         
         //these are optional things that you can change if you'd like, but probably best to keep as-is
         pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.

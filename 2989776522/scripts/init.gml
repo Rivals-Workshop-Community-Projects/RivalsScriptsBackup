@@ -119,10 +119,12 @@ aimtarget = noone;
 aimtarget2 = noone;
 the_eggpawn = noone;
 the_eggpawn2 = noone;
-eggpawn_cooldown = 0;
-eggpawn_cooldown2 = 0;
+eggpawn_cooldown = 420;
+eggpawn_cooldown2 = 600;
+eggpawn_cooldown_multiplier = 1.0;
 eggpawn_icon = 0;
 eggpawn_destroyed = false;
+eggpawn_health_multiplier = 1.0;
 ftilt_hitbox = noone;
 dattack_timer = 0;
 dattack_hitbox = noone;
@@ -228,7 +230,7 @@ villager_bury_sprite = sprite_get("bury");
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 
-//runeA = true;runeL = true;runeD = true;runeK = true;runesUpdated = true;
+//runeE = true;runeF = true;runeG = true;runeH = true;runesUpdated = true;
 
 alpha = 0.5;
 playtesting = (object_index == oTestPlayer);

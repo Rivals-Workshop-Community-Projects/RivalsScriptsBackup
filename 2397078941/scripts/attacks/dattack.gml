@@ -62,5 +62,5 @@ set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_X_OFFSET, 22);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 

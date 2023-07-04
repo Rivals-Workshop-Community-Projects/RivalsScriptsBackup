@@ -19,6 +19,7 @@ hit_player_obj = self
 }
 
 print(oknifelost)
+oknifelost = clamp(0,oknifelost,5)
 
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_HSPEED, 6 - random_func(4, 14, true) );
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_VSPEED, -1 - random_func(3, 6, true) );

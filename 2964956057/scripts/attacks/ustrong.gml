@@ -36,9 +36,9 @@ set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_USTRONG, 2);
+set_num_hitboxes(AT_USTRONG, 3);
 
-// Top Hit
+// Launcher
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 5);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 2);
@@ -47,7 +47,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -110);
 set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 85);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
@@ -57,20 +57,37 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, xlarge_wood_hfx);
 //set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
-// Catcher
+// Top Catcher
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -43);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 60);
-set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 55);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
-set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, -5);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, small_wood_hfx);
 //set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+
+// Bottom Catcher
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 4);
+set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_Y, -25);
+set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 60);
+set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 55);
+set_hitbox_value(AT_USTRONG, 3, HG_SHAPE, 2);
+set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 3);
+set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 4);
+set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_USTRONG, 3, HG_EXTRA_HITPAUSE, -1);
+set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, small_wood_hfx);
+//set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

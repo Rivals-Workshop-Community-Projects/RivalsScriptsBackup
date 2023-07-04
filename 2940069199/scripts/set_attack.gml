@@ -28,3 +28,6 @@ if (attack == AT_FSPECIAL){
 	}
 }
 
+nspecial_pop_timer = 0;
+nspecial_pop_can = (comet == noone);
+

@@ -73,6 +73,27 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 			    }else if(rand == 5){
 			    	PlayVoiceClip("alfred_hurt6", 1.75);
 			    }
+			}else if(voicemode == 3){ //pingas
+				rand = random_func(0, 9, true);
+			    if(rand == 0){
+			    	PlayVoiceClip("pingas hurt", 1.75);
+			    }else if(rand == 1){
+			    	PlayVoiceClip("pingas hurt2", 1.75);
+			    }else if(rand == 2){
+			    	PlayVoiceClip("pingas_hurt3", 1.75);
+			    }else if(rand == 3){
+			    	PlayVoiceClip("pingas_hurt4", 1.75);
+			    }else if(rand == 4){
+			    	PlayVoiceClip("pingas_hurt5", 1.75);
+			    }else if(rand == 5){
+			    	PlayVoiceClip("pingas_hurt6", 1.75);
+			    }else if(rand == 6){
+			    	PlayVoiceClip("pingas_hurt7", 1.75);
+			    }else if(rand == 7){
+			    	PlayVoiceClip("pingas_hurt8", 1.75);
+			    }else if(rand == 8){
+			    	PlayVoiceClip("pingas_hurt9", 1.75);
+			    }
 			}
 		}
     }

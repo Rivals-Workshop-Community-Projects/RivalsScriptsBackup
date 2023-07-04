@@ -67,7 +67,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, timeS);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("hamburger"));
-set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
+set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_ANIM_SPEED, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 0);
