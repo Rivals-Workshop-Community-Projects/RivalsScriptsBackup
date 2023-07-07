@@ -8,6 +8,10 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
+if (brawl_mode){
+	set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_brawl_hurt"));
+}
+
 //Startup
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 6);
@@ -148,8 +152,8 @@ set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7 + (brawl_mode * 2));
+set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7 + (brawl_mode * 0.3));
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 304);

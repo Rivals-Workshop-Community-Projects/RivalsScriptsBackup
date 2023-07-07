@@ -93,11 +93,13 @@ sprite_change_offset("plat_behind", 92, 138);
 //Others
 sprite_change_offset("nspecial_proj", 64, 94);
 
+// Intro
+sprite_change_offset("intro", 98, 130);
+
 //Victory Background
 set_victory_bg(sprite_get("victory_background"));
 
 //pokemon stadium
-
 sprite_change_offset("metaknight_trial", 31, 0);
 
 //Feri

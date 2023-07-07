@@ -55,6 +55,7 @@ alt_name[25]  = "Poisonous";
 alt_name[26]  = "Devolver";
 alt_name[27]  = "High Noon";
 alt_name[28]  = "Shrinker";
+alt_name[29]  = "Beach Ready";
 //alt_name[31] = "";
 
 draw_set_halign(fa_right);

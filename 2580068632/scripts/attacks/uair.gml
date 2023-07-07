@@ -6,11 +6,11 @@ set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5 - (brawl_mode * 3));
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sfx_uair);
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4 - (brawl_mode * 3));
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 2);
@@ -19,7 +19,7 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -1);
 
 set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 14 - (brawl_mode * 8));
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

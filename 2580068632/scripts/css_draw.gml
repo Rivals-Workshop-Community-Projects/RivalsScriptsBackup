@@ -50,6 +50,11 @@ draw_set_halign(fa_left);
 shader_end();
 
 //Outlines
+if (get_player_color(player) == 15){
+	draw_sprite(sprite_get("charselect_NEScolor"),0,x + 8,y + 8);
+}
+
+//Outlines
 if (get_player_color(player) == 7){
 	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 }
@@ -72,9 +77,12 @@ if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
 }
 
+// CSS button
+draw_sprite_ext(sprite_get("css_voicedMode_button"), 0 + buttonShouldHighlight + (css_voicedMode_enabled * 3) + buttonPressed, temp_x + 174 - 4, temp_y + 26, 1, 1, 0, c_white, 1);
+
 //include alt. name
-textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "" : "") + string(alt_cur+1) + ": " +  alt_name[alt_cur]);
- 
+//textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 

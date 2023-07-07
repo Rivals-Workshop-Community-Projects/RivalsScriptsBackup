@@ -97,7 +97,7 @@ if (attack == AT_NSPECIAL)
             //hsp = 6*spr_dir;
             sound_play(asset_get("sfx_swipe_medium2"), false, noone, 0.8, 1.2)
             if (!free){
-            	hsp = 6*spr_dir;
+            	//hsp = 6*spr_dir;
             }
         }
     }

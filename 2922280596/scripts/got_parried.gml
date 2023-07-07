@@ -10,8 +10,8 @@ if (attack == AT_FSPECIAL_AIR){
 
 
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
-    my_hitboxID.hitbox_timer = 0;
-    my_hitboxID.transcendent = 1;
+    my_hitboxID.hitbox_timer = 1;
+    //my_hitboxID.transcendent = 1;
     //my_hitboxID.proj_angle = my_hitboxID.proj_angle + 180;
 }
 

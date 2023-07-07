@@ -6,15 +6,15 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 //Charge
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 10 - (brawl_mode * 7));
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, sfx_crouch);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX_FRAME, 6 - (brawl_mode * 4));
 
 //Release
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4 - (brawl_mode * 1));
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
@@ -59,7 +59,7 @@ set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 
 //Endlag
 set_window_value(AT_USTRONG, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 8, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_USTRONG, 8, AG_WINDOW_LENGTH, 20 - (brawl_mode * 10));
 set_window_value(AT_USTRONG, 8, AG_WINDOW_ANIM_FRAMES, 14);
 set_window_value(AT_USTRONG, 8, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USTRONG, 8, AG_WINDOW_HAS_WHIFFLAG, 1);

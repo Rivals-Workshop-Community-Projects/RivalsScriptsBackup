@@ -61,7 +61,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //Finishing Hit Endlag
 set_window_value(AT_JAB, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 12 - (brawl_mode * 4));
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_JAB, 8, AG_WINDOW_HAS_WHIFFLAG, 1);

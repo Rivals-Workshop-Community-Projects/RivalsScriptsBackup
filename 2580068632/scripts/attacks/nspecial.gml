@@ -55,7 +55,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 12);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 12 - (brawl_mode * 10));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
@@ -76,7 +76,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 65);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 70);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8 - (brawl_mode * 6));
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
@@ -97,7 +97,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 65);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 70);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 8);
+set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 8 - (brawl_mode * 6));
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
@@ -107,3 +107,31 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sfx_smash_ult_sword_hit_medium);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 6);
+
+if (brawl_mode){
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
+	
+	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 1);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.5);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
+	
+	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 1);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.5);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
+	
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
+	
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 0.9);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .1);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 0.9);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .1);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 0.9);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .1);
+}

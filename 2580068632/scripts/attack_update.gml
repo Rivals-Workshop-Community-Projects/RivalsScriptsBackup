@@ -9,17 +9,17 @@ if (attack == AT_JAB){
 		var buttonHold = (((left_stick_down && spr_dir == -1)||(right_stick_down && spr_dir == 1))||(attack_down));
 	}
 
-	if ((window < 6) && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+	if ((window < 6) && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){//>
 		//spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 	}
-	if (buttonHold && window > 1 && window < 6){
+	if (buttonHold && window > 1 && window < 6){//>
 		if (window == 5){
 			if (window_timer == 5){
 				window = 2
 				window_timer = 0
 			}
 		}
-	} else if (buttonLetGo && window > 1 && window < 5){
+	} else if (buttonLetGo && window > 1 && window < 5){//>
 		window = 6
 		window_timer = 0
 		destroy_hitboxes();
@@ -38,7 +38,7 @@ if (attack == AT_JAB){
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (voiced){
-				var scream = random_func( 1, 3, true );
+				var scream = random_func( 1, 2, true );
 				switch (scream){
 					case 1:
 					sound_play(vc_mk_jab);
@@ -60,7 +60,7 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_JAB){
-	if ((window == 6 && window_timer > 2) || (window == 7 && window_timer < 4)){
+	if ((window == 6 && window_timer > 2) || (window == 7 && window_timer < 4)){//>
 	    hud_offset = 62;
 	}
 }
@@ -221,7 +221,7 @@ if (attack == AT_DTILT){
 		}
 	}
 }
-
+//>
 //Air Voices lol
 if (attack == AT_NAIR
 	|| attack == AT_FAIR
@@ -324,7 +324,7 @@ if (attack == AT_USTRONG){
 		spawn_base_dust( x + (0 * spr_dir), y, "jump", spr_dir*-1)
 	}
 	if (window > 2 && window < 7 || (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		hud_offset = 72
+		//hud_offset = 72;
 		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (voiced){
 				sound_play(vc_mk_grunt_6)
@@ -341,6 +341,11 @@ if (attack == AT_USTRONG){
 			sound_play(sfx_landinglag)
 		}
 	}
+	
+	//Hud Offset
+	if ((window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 3 || window == 4 || window == 5 || window == 6 || window == 7 || (window == 8 && image_index < 20)){
+	    hud_offset = 90
+	} //>
 }
 
 //Dstrong
@@ -997,7 +1002,7 @@ if (attack == AT_TAUNT){
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (voiced == true && !free){
-				var tauntvc = random_func( 1, 5, true );
+				var tauntvc = random_func( 1, 4, true );
 				switch (tauntvc){
 					case 1:
 						sound_play(vc_mk_taunt_1)

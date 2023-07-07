@@ -1,5 +1,7 @@
 //init_shader.gml
-
+if (get_player_color(player) == 15){
+	if("NESalt_shouldAddBackShading" not in self) exit;
+}
 //Color Mapping
 if (get_player_color(player) == 0) {
 	set_character_color_slot(4, 243, 233, 57, 1);
@@ -8,7 +10,7 @@ if (get_player_color(player) == 0) {
 }
 
 //Early Access Thing + NES Alt
-if (get_player_color(player) == 7 || get_player_color(player) == 15){
+if (get_player_color(player) == 7 || (get_player_color(player) == 15 && !NESalt_shouldAddBackShading)){
     for(i = 0; i < 24; i++){
 		set_character_color_shading(i, 0);
 		if (get_player_color(player) == 7){

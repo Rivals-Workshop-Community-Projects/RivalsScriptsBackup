@@ -17,26 +17,38 @@ if (free){
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
 
+//print(get_synced_var( player ));
+voiced = get_synced_var( player );
+
+/*
 //Voiced Mode
 if (normal_voiced_toggle == 1){
-	voiced = 1
+	voiced = 1;
 } else if (normal_voiced_toggle == 0){
-	voiced = 0
+	voiced = 0;
 }
+*/
 
 switch (state){
 	case PS_SPAWN:
+		/*
 		//Voiced Mode
-		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){
+		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){//>
 			normal_voiced_toggle = 1
 			sound_play(asset_get("mfx_star"));
 			sound_play(vc_mk_taunt_1);
 		}
-		
+		*/
+		if (state_timer == 100 && taunt_down && get_player_color(player) == 15){
+			NESalt_shouldAddBackShading = true;
+			sound_play(asset_get("mfx_star"));
+			spawn_hit_fx(x, y - 20, 302);
+			init_shader();
+		}
 		//Input Swap Toggle
 		if (state == PS_SPAWN && state_timer <= 100 && inputs_swapped_toggle == false && (up_strong_pressed||down_strong_pressed||left_strong_pressed||right_strong_pressed)){
 			inputs_swapped_toggle = true;
-			sound_play(asset_get("mfx_star"));
+			sound_play(asset_get("mfx_star"));//>
 		}
 		break;
 	case PS_IDLE:
@@ -171,104 +183,31 @@ if (state != PS_PRATLAND){
 	prat_land_time = 20;
 }
 
-//brawl frame data rune :troll:
-if (brawl_mode){
-
-	voiced = 1
-
-	//jab
-	set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 8);
-	
-	//dattack
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 2);
-	set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 20);
-	
-	//ftilt
-	
-	//utilt
-	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
-	set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 8);
-	
-	//dtilt
-	set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 1);
-	
-	//nair
-	set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 1);
-	
-	//fair
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 3);
-	
-	//uair
-	set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 0);
-	set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 6);
-	
-	//dair
-	set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 8);
-	set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 2);
-	
-	//bair
-	set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 3);
-	
-	//fstrong
-	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 9);
-	
-	//ustrong
-	set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_USTRONG, 8, AG_WINDOW_LENGTH, 12);
-	set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX_FRAME, 2);
-	
-	//dstrong
-	set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 2);
-	
-	//nspecial
-	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
-	
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 1);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.5);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 1);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.5);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 6);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
-	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
-	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 0.9);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .1);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 0.9);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .1);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 0.9);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .1);
-	
-	//fspecial
-	
-	//uspecial
-	set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_brawl_hurt"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-	
-	//dspecial
-	set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
+// Intro stuff
+if (introTimer2 < 3) {//>
+    introTimer2++;
+} else {
+    introTimer2 = 0;
+    introTimer++;
 }
+
+// a
+if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
+	if (brawl_mode){
+		set_victory_portrait( sprite_get( "portrait_brawl" ));
+		set_victory_sidebar( sprite_get( "result_small" ));
+	} else if (!brawl_mode){
+		set_victory_portrait( sprite_get( "portrait" ));
+		set_victory_sidebar( sprite_get( "result_small" ));
+	}
+}
+
+//this increments introTimer every few frames, depending on the number entered
+
+if (introTimer < 19) {
+    hud_offset = 1000;
+} 
+//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 
 //i can now know how much gems sk has :smiling_imp:
 /*

@@ -7,10 +7,10 @@ set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 17);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
@@ -22,7 +22,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -41,7 +41,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .25);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 12);//12
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("hourglass"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("hourglass_col"));
@@ -57,7 +57,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
-
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 10);
@@ -82,4 +84,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
-//
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

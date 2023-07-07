@@ -9,9 +9,9 @@ blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 inputs_swapped_toggle = false;
 did_swap_inputs = false;
 
-voiced = 0
-voiced_in_vs = false
-normal_voiced_toggle = 0
+voiced = 0;
+voiced_in_vs = false;
+normal_voiced_toggle = 0;
 
 dattack_land_var = 0;
 
@@ -46,11 +46,19 @@ airdodging_out_of_shuttle_loop = false;
 condor_dive_timer = 0;
 condor_dive_dust_startup_timer = 0;
 
-brawl_mode = has_rune("O")
+brawl_mode = has_rune("O");
+
+NESalt_shouldAddBackShading = false;
 
 //Kirby Ability
 kirbyability = 4
 
+// Intro
+introTimer = -(3 * player);
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
+
+// ========== stats n shit ==============
 hurtbox_spr = sprite_get("meta_hurtbox");
 crouchbox_spr = sprite_get("meta_crouchbox");
 air_hurtbox_spr = -1;
@@ -162,6 +170,7 @@ sfx_dtilt = sound_get("sfx_dtilt");
 sfx_fair_1 = sound_get("sfx_fair_1");
 sfx_fair_2 = sound_get("sfx_fair_2");
 sfx_fair_3 = sound_get("sfx_fair_3");
+sfx_intro = sound_get("sfx_intro");
 sfx_jump = sound_get("sfx_jump");
 sfx_krtd_sword_blow1 = sound_get("sfx_krtd_sword_blow1");
 sfx_krtd_sword_spin_attack = sound_get("sfx_krtd_sword_spin_attack");
@@ -284,86 +293,19 @@ if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
 		set_victory_sidebar( sprite_get( "result_small" ));
 	}
 }
-
-if (get_player_color( player ) != 0){
-	spr_nspecial_muno = sprite_get("nspecial");
-	spr_fspecial_muno = sprite_get("fspecial");
-	spr_uspecial_muno = sprite_get("uspecial");
-	spr_dspecial_muno = sprite_get("dspecial");
-	spr_jab_muno = sprite_get("jab");
-	spr_ftilt_muno = sprite_get("ftilt");
-	spr_jump_muno = sprite_get("jump");
-	spr_jump_wings_muno = sprite_get("jump_wings");
-}
-
+set_victory_portrait( sprite_get( "portrait" ));
+set_victory_sidebar( sprite_get( "result_small" ));
 switch (get_player_color( player )){
-	case 0:
-		spr_nspecial_muno = sprite_get("nspecial_muno");
-		spr_fspecial_muno = sprite_get("fspecial_muno");
-		spr_uspecial_muno = sprite_get("uspecial_muno");
-		spr_dspecial_muno = sprite_get("dspecial_muno");
-		spr_jab_muno = sprite_get("jab_muno");
-		spr_jump_muno = sprite_get("jump_muno");
-		spr_jump_wings_muno = sprite_get("jump_wings_muno");
-		break;
-	case 1:
-	
-		break;
-	case 2:
-	
-		break;
-	case 3:
-	
-		break;
 	case 4:
 		set_victory_theme(sound_get("victory_dark"));
-		break;
-	case 5:
-	
-		break;
-	case 6:
-		break;
 	case 7:
 		//set_victory_theme(sound_get("victory_ea"));
 		set_victory_portrait( sprite_get( "portrait_ea" ));
 		set_victory_sidebar( sprite_get( "result_small_ea" ));
 		break;
-	case 8:
-	
-		break;
-	case 9:
-	
-		break;
-	case 10:
-	
-		break;
-	case 11:
-	
-		break;
-	case 12:
-	
-		break;
-	case 13:
-	
-		break;
-	case 14:
-	
-		break;
-	case 15:
-	
-		break;
-	case 16:
-	
-		break;
 	case 17:
 		set_victory_portrait( sprite_get( "portrait_gold" ));
 		set_victory_sidebar( sprite_get( "result_small_gold" ));
-		break;
-	case 18:
-	
-		break;
-	case 19:
-	
 		break;
 	case 20:
 		set_victory_theme(sound_get("victory_mage"));
@@ -373,9 +315,6 @@ switch (get_player_color( player )){
 		break;
 	case 22:
 		set_victory_theme(sound_get("victory_mage"));
-		break;
-	case 23:
-	
 		break;
 }
 

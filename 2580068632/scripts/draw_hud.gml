@@ -1,4 +1,5 @@
 //go and declare debug variable in init
+if("inputs_swapped_toggle" not in self) exit;
 /*
 draw_debug_text(temp_x,temp_y-16,"Current state: " + get_state_name(state))
 draw_debug_text(temp_x,temp_y-32,"Window timer: " + string(window_timer) + "    State timer: " + string(state_timer))
@@ -13,8 +14,8 @@ draw_debug_text(temp_x, temp_y-112,"Attacking out of Uspecial: " + string(attack
 */
 //Voiced Mode
 if (state == PS_SPAWN && state_timer <= 100){
-	if(voiced == 0){
-		draw_debug_text( temp_x + 50, temp_y - 20, string( "Taunt: Voiced" ));
+	if(get_player_color(player) == 15){
+		draw_debug_text( temp_x + 2, temp_y - 20, string( "Hold Taunt to add back shading." ));
 	}
 	if (!inputs_swapped_toggle){
 	draw_debug_text( temp_x + 8, temp_y - 60, string( "Input Strong to swap Jab
