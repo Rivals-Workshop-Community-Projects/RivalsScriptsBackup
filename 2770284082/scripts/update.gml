@@ -27,6 +27,10 @@ if side == 0 && get_gameplay_time() > 120 {
     side = spr_dir
 }
 
+if state == PS_PARRY{
+move_cooldown[AT_DSPECIAL] = 20
+}
+
 if ((state == PS_AIR_DODGE or state == PS_WAVELAND or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD
 or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) or (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_WALL_JUMP
 or state == PS_PARRY))&&state_timer < 15 {

@@ -21,3 +21,8 @@ if (hit_player_obj == trident_opponent && trident_opponent.trident_stuck == true
 if (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_2){
     was_parried = true;
 }
+
+if (my_hitboxID.attack == AT_USPECIAL){
+    was_parried = true;
+    state_timer = 151;
+}

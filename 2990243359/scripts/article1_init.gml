@@ -22,6 +22,7 @@ drop_hitbox = noone;
 trident_dir = 0;
 trident_hsp = 0;
 trident_ysp = 0;
+inside_ground = false;
 
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.

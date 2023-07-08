@@ -90,12 +90,6 @@ switch attack {
 	               			 hit_player_obj.hitstop = 5 //nearbyhitbox.hitpause
 	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
 	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
-	               			 if hit_player_obj.hatstate == 0 { 
-	               			 	hit_player_obj.hatstate = player*player  
-	               			     sound_play(sound_get("shing"),false,noone,0.5,.7)
-	               			     h3x = spawn_hit_fx(floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10), h3)
-                                 h3x.depth = -6
-	               			 }
 	               	            if hit_player_obj.x > x {
 	               		        	target = 46
 	               		        } else {
@@ -672,6 +666,7 @@ switch attack {
 	   move_cooldown[AT_EXTRA_3] = 0
 	   hsp /= 1.2
 	   move_cooldown[AT_DSPECIAL] = 20
+           parry_cooldown = 20
 	   if window < 3 {
 	    if vsp > 0 vsp /= 2
 	   }
@@ -714,12 +709,6 @@ switch attack {
 	               			 hit_player_obj.hitstop = 10 //max(20, min(40,nearbyhitbox.hitpause*4))
 	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
 	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
-	               			 if hit_player_obj.hatstate == 0 { 
-	               			 	hit_player_obj.hatstate = player*player  
-	               			     sound_play(sound_get("shing"),false,noone,0.5,.7)
-	               			     h3x = spawn_hit_fx(floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10), h3)
-                                 h3x.depth = -6
-	               			 }
 	               	            if hit_player_obj.x > x {
 	               		        	target = 46
 	               		        } else {

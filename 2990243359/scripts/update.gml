@@ -95,7 +95,7 @@ if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_RESPAWN){
 if (has_hit){
     lighting_stun = get_player_damage(hit_player_obj.player)/1.75;
 }
-
+print(move_cooldown[AT_FSPECIAL_AIR])
 //Trident Version
 if (!instance_exists(trident) && move_cooldown[AT_NSPECIAL] == 0 && window == 1 && window_timer == 0){
 	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair2"));
@@ -200,4 +200,9 @@ if (instance_exists(trident) || move_cooldown[AT_NSPECIAL] != 0){
 	
 	set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 	set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+}
+
+if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
+	move_cooldown[AT_FSPECIAL_AIR] = 0;
+	move_cooldown[AT_FSPECIAL_2_AIR] = 0;
 }

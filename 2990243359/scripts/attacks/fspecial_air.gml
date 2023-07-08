@@ -66,9 +66,9 @@ set_window_value(AT_FSPECIAL_AIR, 7, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 7, AG_WINDOW_GOTO, 10);
 
 //Endlag
-set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_TYPE, 7);
-set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_LENGTH, 29);
-set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_ANIM_FRAMES, 5);
+//set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_TYPE, 7);
+set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_LENGTH, 26);
+set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_HSPEED_TYPE, 2);

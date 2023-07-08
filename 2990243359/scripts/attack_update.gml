@@ -87,7 +87,8 @@ if (attack == AT_NSPECIAL){
     	trident.mask_index = sprite_get("trident_spin_mask");
     }
     //Triggers Trident Drop
-    if ((window == 2 || window == 3) && (special_pressed || shield_pressed) && trident.starts_moving == true && trident.state != 2){
+    if ((window == 2 || window == 3) && (special_pressed || shield_pressed) 
+    && trident.inside_ground == false && trident.starts_moving == true && trident.state != 2){
         window = 5;
         window_timer = 0;
         sound_play(asset_get("sfx_ell_utilt_fire"));
@@ -126,7 +127,7 @@ if (attack == AT_NSPECIAL_2){
     	window_timer = 12;
     }
     //Triggers Trident Drop
-    if ((window == 2 || window == 3) && (special_pressed || shield_pressed) && trident.starts_moving == true){
+    if ((window == 2 || window == 3) && (special_pressed || shield_pressed) && trident.inside_ground == false && trident.starts_moving == true){
         window = 4;
         window_timer = 0;
         sound_play(asset_get("sfx_ell_utilt_fire"));
@@ -223,6 +224,8 @@ if (attack == AT_FSPECIAL_2){
     }
 }
 if (attack == AT_FSPECIAL_AIR){
+	move_cooldown[AT_FSPECIAL_AIR] = 9999;
+	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;
     can_fast_fall = false;
     if (window == 1){
@@ -294,6 +297,8 @@ if (attack == AT_FSPECIAL_AIR){
 }
 
 if (attack == AT_FSPECIAL_2_AIR){
+	move_cooldown[AT_FSPECIAL_AIR] = 9999;
+	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;
     can_fast_fall = false;
     if (window == 1){

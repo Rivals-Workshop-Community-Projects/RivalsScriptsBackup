@@ -189,6 +189,11 @@ if (state == 8){
 	}
 }
 
+if ((state == 0 || state == 6) && place_meeting(x,y,asset_get("par_block"))){
+	inside_ground = true;
+}
+else inside_ground = false; 
+
 
 if (y > room_height + 200 && state == 2){//x > room_width or 
 	shoulddie = true;
