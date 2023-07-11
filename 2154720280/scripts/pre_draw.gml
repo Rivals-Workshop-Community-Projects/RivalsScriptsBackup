@@ -25,3 +25,11 @@ if battfade > 45 {
     draw_sprite_ext(sprite_get("batt"), 17  , hudx - 26, hudy - 54, 1, 1, 0 ,-1 , 0.3 + (battfade - 45)/45 );
 }
 shader_end();
+
+if sharpi == true{
+gpu_set_blendmode(bm_add);
+  draw_sprite_ext(sprite_get("XHalo"), 0  , x, y - 32, .5 + supply/16, .5 + supply/16, get_gameplay_time()*(1) ,-1 , 0.35 - supply/90 );
+  draw_sprite_ext(sprite_get("XHalo"), 0  , x, y - 32, .75 + supply/12, .75 + supply/12, get_gameplay_time()*(1.5) ,-1 , 0.25 - supply/90 );
+gpu_set_blendmode(bm_normal);
+}
+

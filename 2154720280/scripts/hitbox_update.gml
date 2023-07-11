@@ -206,6 +206,12 @@ if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	vsp += 0.1
 	spawn_hit_fx( x  , y , 156 )
 	spawn_hit_fx( x  , y , 195 )
+        fx2 = spawn_hit_fx( x  , y , 66 )
+  		fx2.spr_dir *= 1.5
+		fx2.image_yscale *= 1.5
+        fx = spawn_hit_fx( x  , y + 18 , 68 )
+  		fx.spr_dir *= 1.5
+		fx.image_yscale *= 1.5
     	sound_play(sound_get("explosionshake"));
     create_hitbox(AT_DSPECIAL , 2 , x , y );
 }

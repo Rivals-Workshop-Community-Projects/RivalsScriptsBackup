@@ -19,6 +19,7 @@ if get_gameplay_time() == 50 && get_player_color(player) == 13 {
 	if string_lower(get_player_name(player)) == "sharpi" {
 		sound_stop(sound_get("genocidecutter"))
 		sound_play(sound_get("genocidecutter"),false,noone,1,1.4)
+                sharpi = true  
 		set_color_profile_slot( 13, 0, 242, 255, 242 ); //unnamed color row
         set_color_profile_slot( 13, 1, 255, 255, 255 ); //unnamed color row
         set_color_profile_slot( 13, 2, 121, 121, 121 ); //unnamed color row

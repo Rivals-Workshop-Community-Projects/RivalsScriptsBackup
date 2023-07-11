@@ -12,6 +12,8 @@ ncode3 = "He also having fiancial issues."
 
 personalize = 0
 
+sharpi = false 
+
 introhit = 0
 intro = 0
 introtimer = -1
@@ -151,6 +153,8 @@ sprite_change_offset("darken", 1000, 1000);
 
 lasernor = hit_fx_create( sprite_get( "gun4" ), 12);
 sprite_change_offset("gun4", 570, 32);
+
+sprite_change_offset("XHalo", 64, 64);
 
 sw = hit_fx_create( sprite_get( "shockwave2" ), 16);
 sprite_change_offset("shockwave2", 107, 126);
