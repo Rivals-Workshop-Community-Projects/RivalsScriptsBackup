@@ -1,6 +1,6 @@
 set_attack_value(49, AG_CATEGORY, 2);
 set_attack_value(49, AG_SPRITE, sprite_get("wario_wallop"));
-set_attack_value(49, AG_NUM_WINDOWS, 2);
+set_attack_value(49, AG_NUM_WINDOWS, 8);
 set_attack_value(49, AG_OFF_LEDGE, 1);
 set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("wario_wallop_hurt"));
 
@@ -20,7 +20,7 @@ set_window_value(49, 1, AG_WINDOW_SFX, sound_get("SFX_Final_Smash"));
 set_window_value(49, 1, AG_WINDOW_SFX_FRAME, 15);
 
 //Dash Forward
-set_window_value(49, 2, AG_WINDOW_TYPE, 7);
+set_window_value(49, 2, AG_WINDOW_TYPE, 1);
 set_window_value(49, 2, AG_WINDOW_LENGTH, 24);
 set_window_value(49, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(49, 2, AG_WINDOW_ANIM_FRAME_START, 8);
@@ -31,6 +31,8 @@ set_window_value(49, 2, AG_WINDOW_HSPEED, 15);
 set_window_value(49, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(49, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(49, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
+
+set_window_value(49, 2, AG_WINDOW_GOTO, 8);
 
 //Send Upward
 set_window_value(49, 3, AG_WINDOW_TYPE, 1);
@@ -81,6 +83,16 @@ set_window_value(49, 7, AG_WINDOW_VSPEED, -12);
 set_window_value(49, 7, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(49, 7, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
+//Whiff
+set_window_value(49, 8, AG_WINDOW_TYPE, 7);
+set_window_value(49, 8, AG_WINDOW_LENGTH, 16);
+set_window_value(49, 8, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(49, 8, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(49, 8, AG_WINDOW_VSPEED_TYPE, 1);
+
+set_window_value(49, 8, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(49, 8, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
+set_window_value(49, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 
 set_num_hitboxes(49, 8);
 
@@ -89,7 +101,7 @@ set_hitbox_value(49, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(49, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(49, 1, HG_WINDOW, 2);
 set_hitbox_value(49, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(49, 1, HG_LIFETIME, 15);
+set_hitbox_value(49, 1, HG_LIFETIME, 20);
 set_hitbox_value(49, 1, HG_HITBOX_X, 16);
 set_hitbox_value(49, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(49, 1, HG_WIDTH, 72);

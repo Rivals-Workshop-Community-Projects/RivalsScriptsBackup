@@ -10,6 +10,27 @@ if (state == PS_DOUBLE_JUMP && state_timer == 0){
 }
 */
 
+//death_voice = random_func(0, 4, true);
+
+//Default Voice
+jab_1_voice = sound_get("VFX_Jab1_1");
+jab_2_voice = sound_get("VFX_Jab2_1");
+jab_3_voice = sound_get("VFX_Jab3_1");
+
+ftilt_voice = sound_get("VFX_Ftilt");
+dtilt_voice = sound_get("VFX_Dtilt");
+utilt_voice = sound_get("VFX_Utilt");
+
+fstrong_voice = sound_get("VFX_Fstrong");
+dstrong_voice = sound_get("VFX_Utilt");
+ustrong_voice = sound_get("VFX_Ustrong");
+
+fspecial_voice = sound_get("VFX_FSpecial_Start");
+dspecial_voice = sound_get("BUTT_SMASH");
+uspecial_voice = sound_get("VFX_Uspecial");
+
+taunt_voice = sound_get("VFX_Taunt")
+
 //KO Voice Line(s)
 death_voice = random_func(0, 4, true);
 

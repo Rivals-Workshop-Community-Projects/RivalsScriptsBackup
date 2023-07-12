@@ -1,6 +1,6 @@
 wario_css_impatience = wario_css_impatience+1;
 
-if wario_css_impatience == 900+(3*player){
+if wario_css_impatience == 1800+(3*player){
     sound_play( sound_get("VFX_Impatience_1") );
 }
 

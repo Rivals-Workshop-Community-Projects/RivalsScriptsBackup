@@ -43,7 +43,7 @@ set_window_value(AT_PICKUP, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //Startup
 set_window_value(AT_PICKUP, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_PICKUP, 6, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_PICKUP, 6, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_PICKUP, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_PICKUP, 6, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -66,15 +66,15 @@ set_window_value(AT_PICKUP, 8, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //Startup
 set_window_value(AT_PICKUP, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_PICKUP, 9, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_PICKUP, 9, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_PICKUP, 9, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_PICKUP, 9, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_PICKUP, 9, AG_WINDOW_ANIM_FRAME_START, 15);
 
 //Throw
 set_window_value(AT_PICKUP, 10, AG_WINDOW_TYPE, 1);
 set_window_value(AT_PICKUP, 10, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_PICKUP, 10, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_PICKUP, 10, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_PICKUP, 10, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_PICKUP, 10, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_PICKUP, 10, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_PICKUP, 10, AG_WINDOW_SFX_FRAME, 4);
@@ -83,13 +83,13 @@ set_window_value(AT_PICKUP, 10, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_PICKUP, 11, AG_WINDOW_TYPE, 1);
 set_window_value(AT_PICKUP, 11, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_PICKUP, 11, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_PICKUP, 11, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_PICKUP, 11, AG_WINDOW_ANIM_FRAME_START, 18);
 
 //DOWN THROW
 
 //Startup
 set_window_value(AT_PICKUP, 12, AG_WINDOW_TYPE, 1);
-set_window_value(AT_PICKUP, 12, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_PICKUP, 12, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_PICKUP, 12, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_PICKUP, 12, AG_WINDOW_ANIM_FRAME_START, 9);
 

@@ -7,7 +7,7 @@ char_height = 60;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;
-dash_anim_speed = .25;
+dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
 wait_sprite = sprite_get("wait");
@@ -110,6 +110,7 @@ bubble_y = 8;
 //Wario-Specific
 
 wario_anticheat = false;
+wario_anticheat_timer = 0;
 
 set_victory_theme(sound_get("SFX_Victory_Theme"));
 set_victory_bg(sprite_get("wario_victory_bg"));
@@ -134,7 +135,7 @@ in_bike_range = false;
 can_bike = true;
 bike_destroy_cooldown = 0;
 
-init_bike_health = 50;
+init_bike_health = 40;
 bike_health = init_bike_health;
 
 has_rock = false;
@@ -145,6 +146,7 @@ galaxy_sound = 0;
 
 wariobike_throttle = 0;
 wariobike_hud = sprite_get("wariobike_hud");
+wariobike_turn_time = 0;
 
 dspecial_shockwave = hit_fx_create( sprite_get("dspecial_kablooey"), 24);
 
@@ -261,8 +263,8 @@ if get_player_color(player) == 0{
     dracula_portrait2 = sprite_get("wario_dracula_portrait2");
 }
 else if get_player_color(player) != 0{
-    dracula_portrait = sprite_get("wario_dracula_portrait1_alt");
-    dracula_portrait2 = sprite_get("wario_dracula_portrait2_alt");
+    dracula_portrait = sprite_get("wario_dracula_portrait_alt1");
+    dracula_portrait2 = sprite_get("wario_dracula_portrait_alt2");
 }
 
 var page = 0;
@@ -320,6 +322,17 @@ fs_portrait_x = 80;
 fs_char_portrait_y = 105;
 fs_char_chosen_final_smash = "custom";
 fs_char_attack_index = 49;
+
+//Compatibility - Chaos Emeralds
+super_form_active = false;
+super_form_transform_sound = sound_get("VFX_FinalSmash_1");
+//super_form_music = not decided yet :(
+
+//Compatibility - Dialogue Buddy
+diag_portrait = sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
+//Adjust positioning of the portraits accordingly! Useful if the characters face is way too low
+diag_portrait_x = 0; // +: Backwards -:Forwards
+diag_portrait_y = 0; // +: Downwards -:Upwards
 
 
 //After-Image Code

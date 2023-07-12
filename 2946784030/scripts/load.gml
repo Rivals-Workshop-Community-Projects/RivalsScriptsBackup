@@ -4,10 +4,10 @@ sprite_change_offset("wario_crouch_hurtbox", 38, 74);
 sprite_change_offset("idle", 19, 37);
 sprite_change_offset("wait", 24, 47);
 sprite_change_offset("crouch", 19, 37);
-sprite_change_offset("walk", 19, 37);
+sprite_change_offset("walk", 24, 47);
 sprite_change_offset("walkturn", 20, 39);
-sprite_change_offset("dash", 19, 39);
-sprite_change_offset("dashstart", 19, 37);
+sprite_change_offset("dash", 24, 47);
+sprite_change_offset("dashstart", 24, 47);
 sprite_change_offset("dashstop", 24, 47);
 sprite_change_offset("dashturn", 24, 47);
 
@@ -68,6 +68,7 @@ sprite_change_offset("dair", 20, 39, true);
 
 sprite_change_offset("fstrong", 25, 47, true);
 sprite_change_offset("fstrong_peter", 25, 47, true);
+sprite_change_offset("fstrong_bull", 25, 47, true);
 
 sprite_change_offset("ustrong", 24, 63, true);
 sprite_change_offset("dstrong", 32, 47, true);
@@ -97,8 +98,11 @@ sprite_change_offset("taunt_2", 26, 50);
 
 sprite_change_offset("plat", 32, 31);
 
+sprite_change_offset("plat_2", 32, 31);
+sprite_change_offset("plat_pt", 40, 16);
 sprite_change_offset("plat_gb", 32, 31);
 sprite_change_offset("plat_vb", 32, 31);
+sprite_change_offset("plat_fg", 80, 65);
 
 sprite_change_offset("test_hitfx", 80, 80);
 
@@ -141,6 +145,9 @@ sprite_change_offset("wario_gfz_signpost", 20, 41);
 
 //Compatibility - Last Resort
 sprite_change_offset("wario_lastresort", 27, 39);
+
+//Compatibility - Miiverse
+sprite_change_offset("wario_miiverse", 60, 30);
 
 //Compatibility - Final Smash
 sprite_change_offset("wario_wallop", 32, 47, true);

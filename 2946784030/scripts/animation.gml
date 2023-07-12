@@ -51,7 +51,9 @@ if attack == AT_PICKUP && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 if (attack == AT_USPECIAL_2)
 && (image_index == 21
 || image_index == 22
-|| image_index == 28) {
+|| image_index == 28
+|| image_index == 29
+|| image_index == 30) {
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 		if (grabbed_player_obj != noone) {
 		   force_depth = true;
@@ -104,17 +106,6 @@ if has_rock == true{
 	
 }
 
-//RUNES - Big Dash Moment
-
-/*
-dash_speed = 9;
-if state == PS_DASH{
-	sprite_index = sprite_get("bigdash");
-	image_index = state_timer*0.3;
-	create_hitbox(AT_DATTACK, 3, x, y-24);
-}
-*/
-
 
 //FStrong Sound Effects
 
@@ -147,8 +138,8 @@ if state == PS_ATTACK_GROUND && attack == AT_DSTRONG && window == 5 && window_ti
 
 if state == PS_ATTACK_GROUND && attack == AT_DSPECIAL && window == 3 && window_timer == 3 && hitpause == false{
 	spawn_base_dust(x, y, "land");
-	spawn_base_dust(x-40, y, "dash", 1);
-	spawn_base_dust(x+40, y, "dash", -1);
+	spawn_base_dust(x-48, y, "dash", 1);
+	spawn_base_dust(x+48, y, "dash", -1);
 	shake_camera(5, 12);
 	
 }
@@ -157,6 +148,13 @@ if state == PS_ATTACK_GROUND && attack == AT_DSPECIAL_2 && window == 6 && window
 	spawn_base_dust(x, y, "land", 1);
 	spawn_base_dust(x-32, y, "dash", 1);
 	spawn_base_dust(x+32, y, "dash", -1);
+	shake_camera(5, 8);
+}
+
+if state == PS_ATTACK_GROUND && attack == AT_USPECIAL_2 && window == 6 && window_timer == 0   && hitpause == false{
+	spawn_base_dust(x, y, "land", 1);
+	spawn_base_dust(x-48, y, "dash", 1);
+	spawn_base_dust(x+48, y, "dash", -1);
 	shake_camera(5, 8);
 }
 
@@ -188,6 +186,20 @@ if (state == PS_BURIED){
 if plasma_pause == true{
     sprite_index = sprite_get("hurt_zap");
 }
+
+
+//RUNES
+
+/*
+if has_rune("A"){
+	if state == PS_DASH{
+		dash_speed = 9;
+		sprite_index = sprite_get("bigdash");
+		image_index = state_timer/3;
+		create_hitbox(AT_DATTACK, 3, x,y);
+	}
+}
+*/
 
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)

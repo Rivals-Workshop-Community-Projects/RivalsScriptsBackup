@@ -149,7 +149,7 @@ switch (state){
 //Destruction/Explosion
 
 if health <= 0 && hitstop <= 0{
-	player_id.move_cooldown[AT_FSPECIAL] = 180;
+	player_id.move_cooldown[AT_FSPECIAL] = 300;
 	player_id.bike_health = player_id.init_bike_health;
 	spawn_hit_fx(x, y-32, 143);
 	sound_play(asset_get("sfx_abyss_explosion_big"));
@@ -159,12 +159,15 @@ if health <= 0 && hitstop <= 0{
 
 //Kill the bike
 
-if (y >= room_height + 200 || x == SD_SIDE_BLASTZONE){
+if (y >= room_height + 200
+|| x <= get_stage_data(SD_LEFT_BLASTZONE_X)-64
+|| x >= get_stage_data(SD_RIGHT_BLASTZONE_X)+64){
     should_die = true;
     player_id.bike_health = player_id.init_bike_health;
 }
 
 if (should_die){
+	//sound_play(asset_get("sfx_blow_heavy2")); Debug test thing
     instance_destroy();
     exit;
 }

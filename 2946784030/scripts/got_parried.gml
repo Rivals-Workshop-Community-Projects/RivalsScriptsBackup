@@ -1,6 +1,6 @@
 if (attack == AT_FSTRONG){fstrong_bonk = true;}
 
-if wario_voiced == true && my_hitboxID.type != 2{
+if wario_voiced == true && my_hitboxID.projectile_parry_stun == 1{
     sound_play( sound_get("VFX_Parried") );
 }
 

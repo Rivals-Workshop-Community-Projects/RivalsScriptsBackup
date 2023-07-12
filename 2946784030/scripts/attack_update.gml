@@ -3,16 +3,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-/*Forward Strong - Shoulder Charge (OLD CODE)
-if attack == AT_FSTRONG && window == 1 && window_timer == 1{
-    wario_fstrong_player_obj = noone;
-}
-if attack == AT_FSTRONG && window == 2 && wario_fstrong_player_obj != noone{
-    wario_fstrong_player_obj.x = x + 40*spr_dir;
-    wario_fstrong_player_obj.y = y-8;
-    wario_fstrong_player_obj.hitpause = true;
-}*/
-
 var fstrong_speed = 12 + (strong_charge*(1/15));
 var hit_wall = place_meeting(x+spr_dir, y, asset_get("par_block"));
 
@@ -54,7 +44,7 @@ if attack == AT_FSTRONG{
 		set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 1);
 	}
 	
-	if free == true{
+	if free == true && !super_form_active{
 		attack_end();
 		destroy_hitboxes();
 		window_timer = 0;
@@ -85,35 +75,12 @@ if attack == AT_DSTRONG{
 		wario_fstrong_player_obj.x = x+8*spr_dir;
 		wario_fstrong_player_obj.y = y+16;
 		wario_fstrong_player_obj.hitpause = true;
+		wario_fstrong_player_obj.hitstop = 4;
 		wario_fstrong_player_obj.state = PS_HITSTUN_LAND;
 	}
 }
 
 //AERIALS
-
-//Back air - Wind Up Punch
-
-/*
-if attack == AT_BAIR{
-	if window == 1{
-		bair_charge_loops = 0;
-	}
-	if window == 2{
-		
-		if window_timer == 1{
-			bair_charge_loops = bair_charge_loops+1;
-		}
-		
-		if (attack_down == true || left_strong_down == true && spr_dir == 1 || right_strong_down && spr_dir == -1 || left_stick_down == true && spr_dir == 1 || right_stick_down && spr_dir == -1 ) && bair_charge_loops < 3{
-			set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 9);
-		}
-		else{
-			set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 1);
-		}
-		
-	}
-}
-*/
 
 //Down Air - Drill Dive
 if attack == AT_DAIR && free == false && window == 2{
@@ -153,7 +120,8 @@ if attack == AT_USPECIAL_2{
 	can_fast_fall = false;
 	
 	if window == 3{max_fall = 18;}
-	if window == 1 || window == 5{can_move = false;}
+	if window == 1 || window == 7{can_move = false;}
+	//if window >= 3 && window < 6{can_wall_jump = true;}
 	
 	move_cooldown[ AT_USPECIAL ] = 10;
 }
@@ -188,39 +156,60 @@ if (attack == AT_USPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		 
 		//on the first window, pull the opponent into the grab.
 		
-		if (image_index == 11){
+		var rnd_img_indx = round(image_index);
+		
+		if (rnd_img_indx == 11){
 		    grabbed_player_obj.x = x;
 		    grabbed_player_obj.y = y-52;
 		}
-		if (image_index == 12){
+		if (rnd_img_indx == 12){
 		    grabbed_player_obj.x = x;
 		    grabbed_player_obj.y = y-46;
 		}
 		
-		if (image_index >= 13 && image_index < 21){
-		    grabbed_player_obj.x = x;
+		if rnd_img_indx > 12 && rnd_img_indx < 20{
+			grabbed_player_obj.x = x;
 		    grabbed_player_obj.y = y-64;
 		}
-		if (image_index == 21 || image_index == 25){
-		    grabbed_player_obj.x = x;
+		
+		//Front and Back Facing
+		if rnd_img_indx == 21
+		|| rnd_img_indx == 25
+		|| rnd_img_indx == 29{
+			grabbed_player_obj.x = x;
 		    grabbed_player_obj.y = y;
 		}
-		if (image_index == 22 || image_index == 24){
-		    grabbed_player_obj.x = x + (16*spr_dir);
+		
+		//Front Diagonal
+		if rnd_img_indx == 22
+		|| rnd_img_indx == 24
+		|| rnd_img_indx == 30{
+			grabbed_player_obj.x = x+(spr_dir*24);
 		    grabbed_player_obj.y = y;
 		}
-		if (image_index == 23 || image_index == 29){
-		    grabbed_player_obj.x = x + (32*spr_dir);
+		
+		//Back Diagonal
+		if rnd_img_indx == 26
+		|| rnd_img_indx == 28{
+			grabbed_player_obj.x = x-(spr_dir*24);
 		    grabbed_player_obj.y = y;
 		}
-		if (image_index == 25 || image_index == 27){
-		    grabbed_player_obj.x = x - (16*spr_dir);
+		
+		//Forward
+		if rnd_img_indx == 23
+		|| rnd_img_indx == 31
+		|| rnd_img_indx == 32{
+			grabbed_player_obj.x = x+(spr_dir*32);
 		    grabbed_player_obj.y = y;
 		}
-		if (image_index == 26){
-		    grabbed_player_obj.x = x - (32*spr_dir);
+		
+		if rnd_img_indx == 27{
+			grabbed_player_obj.x = x-(spr_dir*32);
 		    grabbed_player_obj.y = y;
 		}
+		
+		//Backward
+		
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 	}
@@ -439,99 +428,6 @@ if attack == AT_NSPECIAL_2{
 	}
 }
 
-
-//Forward Special - Wario Bike
-
-/*
-if attack == AT_FSPECIAL{
-	
-	can_move = false;
-	can_jump = false;
-	
-	if window == 1 && window_timer == 1{ //Frame 1 Stat Reset
-		if (instance_exists(bike) && place_meeting(x, y, bike)){
-		    bike.should_die = true;
-		}
-		
-		set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
-		
-		if free == true{
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 5);
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -6);
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 5);
-			wario_bike_speed = 5;
-		}
-		if free == false{
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8);
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 3);
-			wario_bike_speed = 8;
-		}
-		
-	}
-	
-	if window == 3{//Riding Normally
-		
-		if stick_horizontal == 1{ wario_bike_speed = clamp(wario_bike_speed+0.5, 3, 12);}
-		if stick_horizontal == 0{ wario_bike_speed = clamp(wario_bike_speed-0.1, 3, 12);}
-		if hitpause = false{hsp = wario_bike_speed*spr_dir;}
-		set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
-		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18-wario_bike_speed);
-		
-		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, round(6+(wario_bike_speed*2.5)) );
-		
-		if free == true{window = 5;}
-		
-		if !hitpause{create_hitbox(AT_FSPECIAL, 3, x, y);}
-		
-	}
-	
-	if window == 3 && stick_horizontal == -1 && free == false && hitpause == false{ //Turning Around
-		window = 4;
-		window_timer = 0;
-		spr_dir = spr_dir*-1;
-		wario_bike_speed = 6;
-		
-		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6);
-		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
-		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 3);
-		
-		set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 0);
-		sound_play(sound_get("SFX_WarioBike_Skid"));
-		attack_end();
-		destroy_hitboxes();
-	}
-	
-	if window == 4 && free == true{ //Anti-Aerial Wario Bike Skid
-		hsp = 0;
-		x = x+16*spr_dir;
-	}
-	
-	if window == 5 && hitpause = false{
-		hsp = wario_bike_speed*spr_dir;
-		if hsp*spr_dir >= 7{create_hitbox(AT_FSPECIAL, 3, x, y);}
-		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 18-wario_bike_speed);
-	}
-	
-	if (window == 3 || window == 5) && jump_pressed == true{
-		window = 6;
-		window_timer = 0;
-	}
-	if window == 6 && window_timer < 15 && !hitpause && !free{
-		create_hitbox(AT_FSPECIAL, 3, x, y);
-	}
-	if (window == 6 && window_timer == 15){
-		bike = instance_create(x, y+2, "obj_article1");
-		bike.hsp = hsp;
-		bike.vsp = 1;
-	}
-	if window == 7{
-		can_move = true;
-	}
-	
-}
-*/
-
 //Search for bike
 
 if attack == AT_FSPECIAL_2{
@@ -628,27 +524,6 @@ if attack == AT_TAUNT_2 && window == 2{
 	}
 }
 
-//Runes
-
-//Infinidrill
-if has_rune( "A" ) && attack_down == true{set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 9);}
-else{set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);}
-
-//Coyote Time
-if has_rune( "A" ){
-	set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
-	set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
-	if attack == AT_DATTACK && free == true{
-		can_jump = true;
-	}
-}
-
-//Armored Charge
-if has_rune("A"){
-	if attack == AT_FSTRONG && window < 2{super_armor = true;}
-	else{super_armor = false;}
-}
-
 
 //AYO NEW BIKE CODE???
 
@@ -714,6 +589,7 @@ if attack == AT_FSPECIAL{
 		
 		//Turn Around
 		if stick_h_dir == -1 && !free{
+			wariobike_turn_time = 2*abs(hsp);
 			destroy_hitboxes();
 			attack_end();
 			sound_play(sound_get("SFX_WarioBike_Skid"));
@@ -733,7 +609,10 @@ if attack == AT_FSPECIAL{
 		case 3: //Turn around
 		
 		set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 0);
-		if hsp != 0{
+		wariobike_turn_time -= 1;
+		if wariobike_turn_time <= 0 wariobike_turn_time = 0;
+		
+		if wariobike_turn_time != 0{
 			window_timer = 1;
 		}
 		if window_timer == get_window_value(AT_FSPECIAL,3,AG_WINDOW_LENGTH)-1{
@@ -817,10 +696,10 @@ if attack == AT_FSPECIAL{
 if attack == AT_FSPECIAL{
 	
 	if abs(wariobike_hsp) < 6{
-		
+		//Weak Riding
 		set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 3);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.3);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.2);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 7);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, 0.7);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 301);
@@ -829,10 +708,10 @@ if attack == AT_FSPECIAL{
 	}
 	
 	if abs(wariobike_hsp) >= 6 && abs(wariobike_hsp) <= 9{
-		
+		//Medium Riding
 		set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 6);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.4);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.5);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 9);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, 0.6);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 304);
@@ -841,11 +720,11 @@ if attack == AT_FSPECIAL{
 	}
 	
 	if abs(wariobike_hsp) > 9{
-		
+		//Strong Riding
 		set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 9);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 10);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.7);
-		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 10);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 9);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, 0.7);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
@@ -888,7 +767,11 @@ if attack == 49{
 		wallop_loops = 0;
 		grabbed_player_obj = noone;
 		set_window_value(49, 4, AG_WINDOW_TYPE, 9);
-		set_attack_value(49, AG_NUM_WINDOWS, 2);
+		set_attack_value(49, AG_NUM_WINDOWS, 8);
+		
+		if window_timer == 41{
+			if (right_down - left_down)*spr_dir == -1 spr_dir *= -1;
+		}
 		
 		break;
 		
@@ -930,4 +813,201 @@ if attack == 49{
 		break;
 		
 	}
+}
+
+
+//Runes
+
+//Gatling
+if has_rune("A"){
+	if has_hit && attack == AT_DATTACK{
+		can_ustrong = true;
+	}
+}
+
+//Piledriver out of normal grab
+if has_rune("B"){
+	if attack == AT_NSPECIAL_2 && window == 1 && (special_pressed){
+		if wario_voiced sound_play(sound_get("VFX_Uspecial"));
+		set_attack( AT_USPECIAL_2 );
+	}
+}
+
+//Infinidrill
+if has_rune( "C" ) && attack_down == true{set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 9);}
+else{set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);}
+
+//Burying Spikes
+if has_rune("D"){
+	//set_hitbox_value(AT_DSTRONG, 2, HG_EFFECT, 15);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 15);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_EFFECT, 15);
+	set_hitbox_value(AT_DSPECIAL_2, 2, HG_EFFECT, 15);
+}
+
+//Shoulder Bash face plant
+if has_rune("E"){
+	if attack == AT_FSTRONG && window > 1 && window <= 3 && down_pressed{
+		set_attack( AT_DATTACK );
+		hsp = 12*spr_dir;
+	}
+}
+
+//Fart Boosting
+if has_rune("G") && !hitpause{
+	
+	if attack == AT_UAIR
+	&& window == 2
+	&& window_timer == 1
+	&& attack_down{
+		vsp = -7;
+		sound_play(sound_get("SFX_Waft_Quarter"));
+		create_hitbox(AT_DSPECIAL_2, 3, x, y+16);
+	}
+	
+	if attack == AT_DATTACK
+	&& (window == 2 && window_timer >= 10)
+	&& attack_pressed{
+		hsp += 8*spr_dir;
+		window_timer = 1;
+		sound_play(sound_get("SFX_Waft_Quarter"));
+		create_hitbox(AT_DSPECIAL_2, 3, x-(24*spr_dir), y);
+		create_hitbox(AT_DATTACK, 2, x, y);
+	}
+	
+	if attack == AT_BAIR
+	&& (window == 2 && window_timer == 2)
+	&& attack_down{
+		hsp -= 6*spr_dir;
+		sound_play(sound_get("SFX_Waft_Quarter"));
+		create_hitbox(AT_DSPECIAL_2, 2, x, y);
+		create_hitbox(AT_BAIR, 2, x, y);
+	}
+	
+	if attack == AT_JAB
+	&& (window == 5 && window_timer == 5)
+	&& attack_down{
+		hsp += 5*spr_dir;
+		sound_play(sound_get("SFX_Waft_Quarter"));
+		create_hitbox(AT_DSPECIAL_2, 3, x-(24*spr_dir), y);
+	}
+	
+}
+
+//Bike Teleport
+if has_rune("M"){
+	if instance_exists(bike) && attack == AT_FSPECIAL_2{
+		sound_play(asset_get("sfx_zetter_shine_charged"));
+		spawn_hit_fx(x, y-32, HFX_MOL_EXPLODE_HIT);
+		x = bike.x;
+		y = bike.y;
+		bike.should_die = true;
+		move_cooldown[ AT_FSPECIAL ] = 0;
+		set_attack( AT_FSPECIAL );
+	}
+	if instance_exists(bike) && attack == AT_NSPECIAL{
+		if window == 2 && window_timer == 2 && !has_hit_player{
+			sound_play(asset_get("sfx_zetter_shine_charged"));
+			spawn_hit_fx(bike.x, bike.y-32, HFX_MOL_EXPLODE_HIT);
+			bike.state = 1;
+			bike.x = x;
+			bike.y = y;
+		}
+	}
+	
+}
+
+//Insta-Kill Up Air
+if has_rune("L"){
+	set_attack_value(AT_UAIR, AG_LANDING_LAG, 12);
+	set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 30);
+	set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 80);
+	set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0);
+	set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 30);
+	set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0);
+	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 69);
+	set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -64);
+	set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 96);
+	set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 96);
+	set_hitbox_value(AT_UAIR, 1, HG_SHAPE, 0);
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
+	
+	if attack == AT_UAIR && window == 2 && !hitpause{
+		if window_timer == 2{
+		spawn_hit_fx(x,y-60, HFX_SHO_HORN_HIT);
+		sound_play(asset_get("sfx_war_horn"));
+		}
+		if has_hit_player && window_timer = 3{
+			hit_player_obj.state = PS_HITSTUN;
+			hit_player_obj.y=-9001;
+			hit_player_obj.x=x;
+		}
+	}
+}
+
+//Untiered Runes
+
+//Armored Charge
+if has_rune("A"){
+	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_bull"));
+	set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get("fstrong_bull"));
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 12);
+	if attack == AT_FSTRONG && window > 1 && window <= 3 {super_armor = true;}
+	else{super_armor = false;}
+}
+
+//Electric Wario God Fist
+if has_rune("A"){
+	set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 11);
+	set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0);
+	set_hitbox_value(AT_USTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.5);
+	set_hitbox_value(AT_USTRONG, 2, HG_EFFECT, 11);
+}
+
+//Belly Flop Super Jump
+if has_rune("A"){
+	var dstrong_rune_jump_spd = -(15+(strong_charge/3));
+	set_window_value(AT_DSTRONG, 2, AG_WINDOW_VSPEED, dstrong_rune_jump_spd);
+	
+	if attack == AT_DSTRONG && window == 4 && down_down{
+		fall_through = true;
+	}
+	
+	if attack == AT_DSTRONG
+	&& strong_charge >= 60
+	&& window == 5
+	&& window_timer == 1
+	&& !hitpause{
+		spawn_hit_fx(x,y-48,HFX_MOL_BOOM_FINISH);
+		sound_play(asset_get("sfx_ell_uspecial_explode"));
+		sound_play(asset_get("sfx_mol_norm_explode"));
+	}
+	
+}
+
+//Anti-Cheat Measures
+
+if attack == AT_TAUNT && special_pressed && shield_pressed{
+	user_event(1);
+}
+
+
+//Compatibility
+
+//Chaos Emeralds
+
+if super_form_active && attack == AT_DSTRONG && window >= 2{
+	
+	var super_form_dstrong = ease_linear(-20, 20, window_timer, 15);
+	var super_form_dstrong2 = ease_linear(-20, 20, window_timer+6, 15);
+	
+	if window == 2 vsp = super_form_dstrong;
+	if window == 3 vsp = super_form_dstrong2;
+	if window > 3 vsp = 20;
+}
+
+if super_form_active && attack == AT_FSTRONG && free{
+	var super_form_fstrong = ease_linear(16, 0, window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH));
+	if window == 3 hsp = super_form_fstrong*spr_dir;
+	if window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) set_state(PS_PRATFALL);
 }

@@ -27,7 +27,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("SFX_WarioBike_Idle"))
 
 //Turn Around
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_GOTO, 2);
@@ -158,8 +158,9 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 
-//Launched Hitbox
+//Launched/Thrown Hitbox
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 20);
 set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 2);
@@ -172,8 +173,8 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, 9);
 set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE, 45);
 set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE_FLIPPER, 3);
-set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 0.8);
@@ -188,3 +189,4 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);

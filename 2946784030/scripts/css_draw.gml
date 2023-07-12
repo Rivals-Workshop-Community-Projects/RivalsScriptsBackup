@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var impatience_1 = 900+(3*player);
+var impatience_1 = 1800+(3*player);
 
 if wario_css_impatience < impatience_1{
 	draw_sprite_ext(sprite_get("charselect"), 1, temp_x, temp_y-1, 2, 2, 0, c_white, 1);
