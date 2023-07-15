@@ -40,6 +40,7 @@ if (item_hbox_num > 0)
     else if (instance_exists(item_hbox))
     {
         item_hbox.length = item_timer;
+        item_hbox.hitbox_timer --;
         item_hbox.x = x + hsp;
         item_hbox.y = y + vsp;
 
@@ -65,13 +66,17 @@ if (item_hbox_num > 0)
         }
 
         //collision with other hitboxes
+        
         with (item_hbox)
         {
             var hitbox_check = instance_place(x, y, pHitBox);
 
             if (hitbox_check)
             {
-                if (hitbox_check.player_id != player_id || hitbox_check.attack != AT_NSPECIAL && hitbox_check.attack != AT_DSPECIAL && hitbox_check.attack != AT_DSPECIAL_AIR)
+                if (proj_break) exit;
+
+                if (hitbox_check.player_id != player_id && hitbox_check.owner != other ||
+                    hitbox_check.attack != AT_NSPECIAL && hitbox_check.attack != AT_DSPECIAL && hitbox_check.attack != AT_DSPECIAL_AIR)
                 {
                     sound_play(sound_effect);
                     spawn_hit_fx(x, y, hit_effect);
@@ -81,9 +86,6 @@ if (item_hbox_num > 0)
                         item_has_hit = true;
                         switch (item[item_type].name)
                         {
-                            case "water":
-                                item_landed = true;
-                                break;
                             case "bell":
                                 sound_stop(other.sound_effect);
                                 sound_play(asset_get("sfx_blow_medium2"));
@@ -94,6 +96,11 @@ if (item_hbox_num > 0)
                                 vsp = -5;
                                 rec_timer = item_timer;
                                 item_landed = true;
+                                break;
+                            case "soap": case "bomb":
+                                item_hit_lockout = hitstop_full + floor(orig_knock/2);
+                                hsp *= -1;
+                                vsp = -abs(vsp);
                                 break;
                         }
                     }
@@ -252,36 +259,40 @@ switch (item[item_type].name)
             else //slip time
             {
                 banana_slip = true;
-
                 if (instance_exists(item_hbox)) hitbox_destroy();
             }
 
-            if (banana_slip) with (oPlayer) if (invince_time <= 0 && !hurtboxID.dodging && state != PS_RESPAWN && state != PS_DEAD && place_meeting(x, y, other))
+            if (banana_slip)
             {
-                if (state == PS_PARRY)
+                is_hittable = true;
+
+                with (oPlayer) if (invince_time <= 0 && !hurtboxID.dodging && state != PS_RESPAWN && state != PS_DEAD && place_meeting(x, y, other))
                 {
-                    old_hsp = hsp; old_vsp = vsp; 
-                    hitpause = true; hitstop = 5; if(id != other.player_id) invincible = true; invince_time = 60; iasa_script()
-                    with(other)
+                    if (state == PS_PARRY)
                     {
-                        sound_play(asset_get("sfx_parry_success"));
+                        old_hsp = hsp; old_vsp = vsp; 
+                        hitpause = true; hitstop = 5; if(id != other.player_id) invincible = true; invince_time = 60; iasa_script()
+                        with(other)
+                        {
+                            sound_play(asset_get("sfx_parry_success"));
+                            destroy_item();
+                        }
+                    }
+                    else if (state != PS_PRATFALL && state != PS_PRATLAND)
+                    {
+                        was_parried = true;
+                        banana_prat_time = other.banana_prat_time_set;
+
+                        set_state(free ? PS_PRATFALL : PS_PRATLAND);
+                        hsp = 0;
+                        with (other) sound_play(sound_get("sfx_banana_slip"));
+                    }
+
+                    with (other)
+                    {
+                        spawn_hit_fx(x, y-8, HFX_ORI_BLUE_SMALL);
                         destroy_item();
                     }
-                }
-                else if (state != PS_PRATFALL && state != PS_PRATLAND)
-                {
-                    was_parried = true;
-                    banana_prat_time = other.banana_prat_time_set;
-
-                    set_state(free ? PS_PRATFALL : PS_PRATLAND);
-                    hsp = 0;
-                    with (other) sound_play(sound_get("sfx_banana_slip"));
-                }
-
-                with (other)
-                {
-                    spawn_hit_fx(x, y-8, HFX_ORI_BLUE_SMALL);
-                    destroy_item();
                 }
             }
         }
@@ -428,8 +439,8 @@ switch (item[item_type].name)
                         hitstop = 2;
 
                         var hbox_check = other.player_id.my_hitboxID;
-                        if (last_player_hit_me != other.player || instance_exists(hbox_check) && //let go of grabbd player if they are hit
-                            (hbox_check.attack != AT_NSPECIAL || hbox_check.hbox_num != 15))
+                        if (last_player_hit_me != other.player || instance_exists(hbox_check) && //let go of grabbed players if they are hit
+                            (hbox_check.attack != AT_NSPECIAL || hbox_check.hbox_num != 15 && hbox_check.hbox_num != 16))
                         {
                             hitstop = 0;
                             other.car_state = 1;
@@ -689,6 +700,22 @@ switch (item[item_type].name)
             if (instance_exists(item_hbox)) hitbox_destroy();
             destroy_item();
             exit;
+        }
+        break;
+    case "sandwich":
+        if (!hitpause)
+        {
+            if (free) rec_vsp = vsp;
+            else
+            {
+                spawn_hit_fx(x, y, 301);
+                sound_play(asset_get("sfx_blow_weak1"));
+                vsp = -rec_vsp;
+                
+                image_index = image_number - item_hp;
+                item_hp --;
+                if (item_hp < 0) destroy_item();
+            }
         }
         break;
 }

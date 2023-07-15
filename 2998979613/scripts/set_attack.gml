@@ -4,6 +4,11 @@ used_legs = [];
 with obj_article1 if player_id == other && state == 4 state = 1;
 
 if !move_cooldown[attack] switch attack{
+    case AT_USPECIAL:
+    set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
+    set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -95);
+    puddle_pos = [x, y];
+    break;
     case AT_NAIR:
     case AT_DSTRONG:
     case AT_USTRONG:

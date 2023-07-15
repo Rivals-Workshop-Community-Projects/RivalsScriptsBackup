@@ -1,4 +1,7 @@
 if attack == AT_NSPECIAL && hbox_num == 1{
+    //hsp = dcos(point_direction(x, y, target_pl.x, target_pl.y - target_pl.char_height/2))*20;
+    //vsp = -dsin(point_direction(x, y, target_pl.x, target_pl.y - target_pl.char_height/2))*20;
+    array_push(player_id.beam_pos, [x, y, point_direction(0, 0, hsp, -vsp)]);
     player_id.hit_pos = [x, y];
     if collision_point(x, y, asset_get("par_block"), 1, 1){
         var e = spawn_hit_fx(x, y, player_id.explosion_vfx);

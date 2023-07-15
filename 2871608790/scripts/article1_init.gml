@@ -10,8 +10,8 @@ spitting = (player_id.attack == AT_FSPECIAL && player_id.window == 4);
 //manipulate the "range" to change how frequently an item can spawn
 item[0] = { name: "pencil",     range: 50 };
 item[1] = { name: "ruler",      range: 45 };
-item[2] = { name: "scissors",   range: 30 };
-item[3] = { name: "water",      range: 35 };
+item[2] = { name: "scissors",   range: 40 };
+item[3] = { name: "water",      range: 30 };
 item[4] = { name: "lunchbox",   range: 20 };
 item[5] = { name: "banana",     range: 30 };
 item[6] = { name: "bell",       range: 20 };
@@ -20,11 +20,12 @@ item[8] = { name: "car",        range: 20 };
 item[9] = { name: "soap",       range: 20 };
 item[10] ={ name: "paper",      range: 20 };
 item[11] ={ name: "bomb",       range: 10 };
+item[12] ={ name: "sandwich",   range: 0  };
 
 total_item_amount = array_length(item);
 
 allow_rng = 1; //for testing mostly
-item_type = 0; //instance_number(obj_article1) > 1 ? 11 : 8;
+item_type = 0; //11 for bomb  //instance_number(obj_article1) > 1 ? 11 : 8;
 
 car_item_held = -1;
 
@@ -227,7 +228,7 @@ switch (item[item_type].name)
 		launch_hsp = 5;
 		vsp = (!spitting ? -12 : -4);
 		grav = 0.4; //turns 0.6 when landing
-		item_hbox_num = 8;
+		item_hbox_num = 12;
 		break;
 	case "lunchbox":
 		launch_hsp = 4;
@@ -292,6 +293,13 @@ switch (item[item_type].name)
 		g_fric = 0.9;
 		item_bouncy = true;
 		item_hbox_num = bomb_hbox;
+		break;
+	case "sandwich":
+		//item_bouncy = true; //it has it's own bounce code
+		launch_hsp = 6;
+		vsp = (!spitting ? -10 : -5);
+		grav = 0.5;
+		item_hbox_num = 18;
 		break;
 }
 

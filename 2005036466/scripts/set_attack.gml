@@ -1,3 +1,5 @@
+pen_prev_attack = attack;
+
 switch(attack){
     case AT_USPECIAL:
     case AT_USPECIAL_2:

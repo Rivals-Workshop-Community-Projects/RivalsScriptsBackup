@@ -23,12 +23,12 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_med2"));
 
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_charge_blade_swing"));
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
@@ -64,6 +64,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FSTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE_FLIPPER, 4);
 
 
 

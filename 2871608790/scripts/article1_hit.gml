@@ -31,7 +31,14 @@ if (is_hittable && enemy_hitboxID.type == 1)
                 other.hitstop_full = other.hitstop;
                 player_id.hitstop = other.hitstop_full;
 
-                //knockback
+                sound_play(sound_effect); //plays the hitbox's hit sound... on hit
+                spawn_hit_fx( //puts up the hit fx of the hitbox
+                    lerp(x, other.x, 0.5) + hit_effect_x*spr_dir,
+                    lerp(y, (bbox_top + bbox_bottom)/2, 0.5) + hit_effect_y,
+                    hit_effect
+                );
+
+                //item specific
                 switch (other.item[other.item_type].name)
                 {
                     case "bomb": case "soap":
@@ -68,14 +75,11 @@ if (is_hittable && enemy_hitboxID.type == 1)
                         other.car_state = 1;
                         other.car_state_timer = 0;
                         break;
+                    case "banana":
+                        with (other.player_id) sound_play(sound_get("sfx_splat"));
+                        instance_destroy(other);
+                        exit;
                 }
-
-                sound_play(sound_effect); //plays the hitbox's hit sound... on hit
-                spawn_hit_fx( //puts up the hit fx of the hitbox
-                    lerp(x, other.x, 0.5) + hit_effect_x*spr_dir,
-                    lerp(y, (bbox_top + bbox_bottom)/2, 0.5) + hit_effect_y,
-                    hit_effect
-                );
             }
 
             item_hit_lockout = hitstop_full + floor(orig_knock/2);

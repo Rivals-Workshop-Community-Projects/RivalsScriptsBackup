@@ -1,6 +1,8 @@
+//var playerAlt = "currAlt" in self ? currAlt : get_player_color(player); whoops wrong script
 var temp_x = x + 8;
 var temp_y = y + 15;
 var numAlts = 13;
+
 
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1); 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)); 
@@ -21,6 +23,7 @@ else if (alt_new != currAlt)
 	image_alpha = 1.5;
 	offset = sign(alt_new - currAlt)*16;
 	currAlt = alt_new;
+        init_shader();
 }
 
 alt_name[0]		= "The Noise";

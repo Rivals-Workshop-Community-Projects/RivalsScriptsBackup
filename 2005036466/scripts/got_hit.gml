@@ -4,6 +4,7 @@ var hbox_hit_stun = enemy_hitboxID.hitpause;
 
 move_cooldown[AT_USPECIAL] = 0;
 penny_dair_used = 0;
+pen_didairdash = false;
 
 if prev_state == PS_ATTACK_AIR or prev_state == PS_ATTACK_GROUND{
 	switch(attack){

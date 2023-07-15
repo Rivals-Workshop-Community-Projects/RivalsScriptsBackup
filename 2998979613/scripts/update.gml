@@ -1,5 +1,5 @@
 init_shader();
-soft_armor = 9;
+soft_armor = armor_val;
 var is_attacking = state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR;
 update_particles();
 
@@ -41,7 +41,7 @@ if stun_vfx stun_vfx = hitstop;
 //collision thing
 if !(is_attacking){
     col_displace = floor(lerp(col_displace, 10*!(state == PS_CROUCH && down_down), 0.2));
-    if reset_room_speed room_speed = 60;
+    if reset_room_speed room_speed = prev_spd;
 }
 if free col_displace = 0;
 sprite_change_offset("body_0", 39, -15 + col_displace);
@@ -89,6 +89,7 @@ if laser_timer = 390{
     line_fx_timer = 50;
     sound_play(sound_get("guardian_fire"), 0, noone, 0.8);
     var e = create_hitbox(AT_NSPECIAL, 1, floor(fire_pos[0]), floor(fire_pos[1]));
+    beam_pos = [[fire_pos[0], fire_pos[1], point_direction(fire_pos[0], fire_pos[1], target_pl.x, target_pl.y - target_pl.char_height/2)]];
     if instance_exists(target_pl){
         e.hsp = 40*dcos(point_direction(fire_pos[0], fire_pos[1], target_pl.x, target_pl.y - target_pl.char_height/2));
         e.vsp = -40*dsin(point_direction(fire_pos[0], fire_pos[1], target_pl.x, target_pl.y - target_pl.char_height/2));

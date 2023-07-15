@@ -11,6 +11,9 @@ if (item[item_type].name == "bomb" && item_timer >= bomb_time && item_timer < bo
     );
 }
 
+//draw_debug_text(x, y + 16 * 0, "id = " + string(item_id));
+//draw_debug_text(x, y + 16 * 1, "type = " + string(item_type));
+//draw_debug_text(x, y + 16 * 2, "item_hbox_num = " + string(item_hbox_num));
 
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////
 

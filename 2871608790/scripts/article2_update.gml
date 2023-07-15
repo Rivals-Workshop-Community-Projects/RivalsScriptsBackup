@@ -15,7 +15,8 @@ if (!player_id.holding_item)
                 if (other.item_hp > 0)
                 {
                     pocket_item.id = other.item_id;
-                    pocket_item.type = other.item_type;
+                    if (other.item_type != 4) pocket_item.type = other.item_type;
+                    else pocket_item.type = 12; //if pocketing lunchbox give her the new sandwich item
                     pocket_item.hp = other.item_hp-1;
                     pocket_item.car_type = other.car_item_held;
                     holding_item = true;
@@ -31,8 +32,13 @@ if (!player_id.holding_item)
                 window ++;
                 window_timer = 0;
 
-                instance_destroy(other);
-                instance_destroy();
+                if (instance_exists(other.item_hbox)) //detroy hitbox if it exists
+                {
+                    other.item_hbox.length = 0;
+                    other.item_hbox = noone;
+                }
+                instance_destroy(other); //destroy item
+                instance_destroy(); //destroy pocket range
                 exit;
             }
         }

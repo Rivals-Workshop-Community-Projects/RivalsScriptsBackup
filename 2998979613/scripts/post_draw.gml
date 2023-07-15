@@ -16,7 +16,7 @@ if skystrike && skystrike_timer >= 200{
 
 var pl_col = get_player_color(player);
 var col = make_color_rgb(get_color_profile_slot_r(pl_col, 5), get_color_profile_slot_g(pl_col, 5), get_color_profile_slot_b(pl_col, 5))
-var col2 = make_color_rgb(get_color_profile_slot_r(pl_col, 3), get_color_profile_slot_g(pl_col, 3), get_color_profile_slot_b(pl_col, 3))
+var col2 = make_color_rgb(get_color_profile_slot_r(pl_col, (alt_cur = 0? 6: 7)), get_color_profile_slot_g(pl_col, (alt_cur = 0? 6: 7)), get_color_profile_slot_b(pl_col, (alt_cur = 0? 6: 7)))
 if laser_timer{
     if laser_timer >= 60 && laser_timer < 370{
         if laser_timer < 270 && time%4 == 1 randoff = [random_func_2(abs(floor(time%200)), 10, 0) - 5, random_func_2(abs(floor((time + 1)%200)), 10, 0) - 5]
@@ -72,11 +72,15 @@ if laser_timer{
         }
     }
 }
-if line_fx_timer{
-    draw_set_alpha(0.5);
-    draw_line_width_color(fire_pos[0], fire_pos[1], hit_pos[0], hit_pos[1], clamp((line_fx_timer)*4/20, 0, 4) + 2, col2, col2);
-    draw_set_alpha(1);
-    draw_line_width_color(fire_pos[0], fire_pos[1], hit_pos[0], hit_pos[1], clamp((line_fx_timer)*4/20, 0, 4), c_white, c_white);
+if line_fx_timer && array_length(beam_pos) >= 2{
+    draw_primitive_begin(pr_trianglestrip);
+    for(var e = 0; e < array_length(beam_pos); e++){
+        var c = beam_pos[e]
+        var wdt = clamp((line_fx_timer)*4/20, 0, 2);
+        draw_vertex_color(c[0] - dcos(c[2] + 90)*wdt, c[1] - dsin(c[2] + 90)*wdt, c_white, 1);
+        draw_vertex_color(c[0] + dcos(c[2] + 90)*wdt, c[1] + dsin(c[2] + 90)*wdt, c_white, 1);
+    }
+    draw_primitive_end();
 }
 
 for(var e = 0; e < array_length(lwfx_buffer); e++){

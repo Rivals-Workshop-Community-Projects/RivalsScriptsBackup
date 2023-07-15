@@ -290,8 +290,8 @@ pocket_item = {
     car_type: -1,       //if the item is a car, it also records the item the car holds
 }
 
-spit_item_id = 12; //change this if you add/remove items to match the article's item array, this is the spitball projectile setup
-pocket_tank_kb = 12; //if above this number the item is lost
+spit_item_id = 13; //change this if you add/remove items to match the article's item array, this is the spitball projectile setup
+//pocket_tank_kb = 12; //if above this number the item is lost
 taunt_num = 0;
 
 HG_AZI_CANT_POCKET = 62;

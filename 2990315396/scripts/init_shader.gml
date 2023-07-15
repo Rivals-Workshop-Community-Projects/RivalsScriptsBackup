@@ -1,4 +1,6 @@
-if (get_player_color(player) == 0)
+var playerAlt = "currAlt" in self ? currAlt : get_player_color(player);
+
+if (playerAlt == 0)
 {
     set_character_color_slot(0, 248, 224, 128); //hat
     set_character_color_slot(1, 248, 224, 128); //body
@@ -13,7 +15,7 @@ if (get_player_color(player) == 0)
 }
 
     //doise
-    if (get_player_color(player) == 1)
+    if (playerAlt == 1)
     {
         set_character_color_shading( 0, -0.8 );
         set_character_color_shading( 1, -0.8 );
@@ -21,7 +23,7 @@ if (get_player_color(player) == 0)
     }
     
     //doisette
-    if (get_player_color(player) == 2)
+    if (playerAlt == 2)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, 2 );
@@ -29,7 +31,7 @@ if (get_player_color(player) == 0)
     }
 
     //dominoise
-    if (get_player_color(player) == 3)
+    if (playerAlt == 3)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, 2 );
@@ -37,7 +39,7 @@ if (get_player_color(player) == 0)
     }
     
     //peppino or pizelle????????
-    if (get_player_color(player) == 4)
+    if (playerAlt == 4)
     {
         set_character_color_shading( 0, 1.8 );
         set_character_color_shading( 1, 1.8 );
@@ -45,7 +47,7 @@ if (get_player_color(player) == 0)
     }
     
     //actual clear cut sugary spire reference
-    if (get_player_color(player) == 5)
+    if (playerAlt == 5)
     {
         set_character_color_shading( 0, -0.8 );
         set_character_color_shading( 1, -0.8 );
@@ -53,7 +55,7 @@ if (get_player_color(player) == 0)
     }
 
     //its happy hour!!
-    if (get_player_color(player) == 6)
+    if (playerAlt == 6)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 2, 2 );
@@ -61,7 +63,7 @@ if (get_player_color(player) == 0)
     }
 
     //its luigi timmer!!
-    if (get_player_color(player) == 7)
+    if (playerAlt == 7)
     {
         set_character_color_shading( 0, 3 );
         set_character_color_shading( 1, -1.5 );
@@ -70,7 +72,7 @@ if (get_player_color(player) == 0)
     }
 
     //its not luigi timmer :(
-    if (get_player_color(player) == 8)
+    if (playerAlt == 8)
     {
         set_character_color_shading( 0, 0.8 );
         set_character_color_shading( 1, 0.7 );
@@ -78,7 +80,7 @@ if (get_player_color(player) == 0)
     }
 
     //ugly noise
-    if (get_player_color(player) == 9)
+    if (playerAlt == 9)
     {
         set_character_color_shading( 0, 0.7 );
         set_character_color_shading( 1, 0.7 );
@@ -87,7 +89,7 @@ if (get_player_color(player) == 0)
     }
 
     //see you in 5 years (/th)
-    if (get_player_color(player) == 10)
+    if (playerAlt == 10)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, 1.4 );
@@ -96,7 +98,7 @@ if (get_player_color(player) == 0)
     }
 
     //boy kisser comment redacted: meme creator is very naughty
-    if (get_player_color(player) == 11)
+    if (playerAlt == 11)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, -1.4 );
@@ -105,7 +107,7 @@ if (get_player_color(player) == 0)
     }
 
     //its not the italian flag you nerd the noise is MEXICAN
-    if (get_player_color(player) == 12)
+    if (playerAlt == 12)
     {
         set_character_color_shading( 0, 3 );
         set_character_color_shading( 1, 3 );
@@ -116,7 +118,7 @@ if (get_player_color(player) == 0)
 
 
 
-//if (get_player_color(player) == 7) {
+//if (playerAlt == 7) {
 //    set_character_color_shading( 0, 0 );
 //    set_character_color_shading( 1, 0 );
 //    set_character_color_shading( 2, 0 );

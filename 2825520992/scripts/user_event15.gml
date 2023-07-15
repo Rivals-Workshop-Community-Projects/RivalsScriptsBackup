@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 6;
+num_alts = 32;
 
 // Whether or not to display a name for each alt.
 use_alt_names = true;
@@ -36,16 +36,43 @@ use_alt_names = true;
 // Which color slot in your char's colors.gml to use for certain UI elements.
 // Type "noone" to make it always white.
 // (you can also change it to different values depending on the alt, by using
+// get_player_color(player))
 alt_ui_recolor = 0;
 
 // The list of names for the alts, if enabled.
 alt_names = [
-	"Vanilla",
-	"Blueberry",
-	"Strawberry",
-	"Mint",
-	"gray",
-	"Lemon",
+	"Legend of Dee",
+	"Olive Ocean",
+	"Red Canyon",
+	"Cookie Country",
+	"Nutty Noon",
+	"Dream Warrior",
+	"Endless Abyss",
+	"Old Memories",
+	"Galactic Blade",
+	"His Majesty",
+	"Artful Adventure",
+	"Who... Me?",
+	"Spring Breeze",
+	"Darkened Sword",
+	"Another Dimension",
+	"Wicked Company",
+	"Shadow Ally",
+	"Gamble Galaxy",
+	"Elusive Gleam",
+	"Prayers to Hope",
+	"Sparkling Star",
+	"Spray and Prey",
+	"False Prestige",
+	"Acorn Plains",
+	"New Horizons",
+	"Smart Race",
+	"Remix Heart",
+	"Lost to Time",
+	"Draconic Spear",
+	"Hopeful Night",
+	"Hand Drawn",
+	"Adventure Awaits",
 	];
 
 
@@ -66,7 +93,7 @@ MunoPhone Touch.
 
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
-muno_char_name = "Bully";
+muno_char_name = "Bandana Dee";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -89,7 +116,7 @@ phone.dont_fast = false;
 // If you don't intend to use any of those bonus features in your character,
 // you should set this to true since it saves a bit of performance.
 // (it's false by default since Phone Sandbert uses some of those features)
-phone.lightweight = true;
+phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -168,71 +195,50 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
-initTip("Misc. Info");
-initWords_ext("- Full Force -", fa_left, $139B7A, false, false);
-initWords("Ramming forward with full commitment is what Bully is all about! Slowing down, not so much! While having high ground and air speed, Bully has low friction and accelration in every way, being slow to speed up and turn around.");
-initWords("Think carefully before rushing in, because before you know it it'll be too late to change your mind! ...Or commit to the role and don't think about anything whatsoever, slamming forward in a blaze of glory! Probably do that last one, it sounds more fun-");
-initWords_ext("- Deceptive Disjoint -", fa_left, $139B7A, false, false);
-initWords("While Bully doesn't seem to have much range, looks can be deceiving when Koopas are involved! Its horns are fully intangible, and it's kick attacks have a regular-sized hurtbox even when it's limbs grow big! (For attacks where it's body grows, this isn't the case.)");
+initTip("NSpecial: Spear Throw");
+initWords("Bandana Dee will throw out a spear, acting as a low comittment projectile option. Spears that contact the wall or floor will have them stick to it.");
+initWords("Holding Nspecial while on the ground allows you to delay your throw whilst charging your spear. You are also allowed to walk slowly and turn around while charging. Once the flash appears behind you, you're then able to throw 3 spears at once!");
+initWords("Spears don't do much on their own, but get launched if hit by attacks. If you use DSpecial, you can launch the spears in the air to wall out opponents or to catch them trying to jump around your spears.");
+initWords("Spears in the wall will bounce players up upon contacting it.");
+initImage_ext(sprite_get("spear_proj"), -7, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial_air"), -7, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial_charge"), -6, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("NSpecial: Boiling Fireball");
-initWords("With NSpecial Bully spits a slow moving fireball, good for the usual projectile purposes. Holding the button however, charges the fire into a burst of 3! While the charge is held, press Parry to store the charge for later. Charged fireballs are just as quick to come out but have a lot more endlag, so having it charged isn't always strictly better!");
-initWords("Bully will hold the fireballs in as long as the button is held, including pulling a charge back out! Use this to bait parries on unsuspecting foes, or just store the charge for a better time and place.");
-initWords("When in the air, fireballs are launched at a downward angle, though unlike flames from FStrong or USpecial, they won't travel through platforms. The angle is useful for making safe landings, and gives a small upward boost to mix up your recovery.");
-initImage_ext(sprite_get("pho_fireball"), -3, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initTip("FSpecial: Circus Throw");
+initWords("Bandana Dee pulls out his parasol and scoops upwards in an attempt to grab the opponent. If successful, he twirls them on his parasol before launching the opponent away.");
+initWords("You can choose between three different throw directions with Fspecial: Left, Right, or Up. Use this to mix up the opponent's DI and start combos.");
+initWords("If Bandana Dee grabs a spear with it, he does a faster twirl before throwing the spear in one of the 3 spear directions, allowing you to threanen several angles with one move.");
+initWords("Grabbing both an opponent and a pinned spear at the same time causes him to throw both at once, dealing additional damage for each spear grabbed.");
+initImage_ext(sprite_get("fspecial_hit"), -5, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("fspecial_miss"), -5, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("FSpecial: Bully Bash");
-initWords("Bully charges forwards with its horns, ramming into anyone in it's way! Hitting an opponent or wall will make Bully bounce off, cancelling the move early. Holding Down during this recoil will stop Bully from gaining height.");
-initWords("When started on the ground, Bully will keep running no matter what! Running off a ledge during the grounded bash will keep Bully floating in mid-air, and it can even jump! If a bash is started in mid-air however, Bully can only jump after touching the ground.");
-initWords("Jumping during a bash is both a great mixup, and will extend the length of the move. Watch out though, jumping too close to the ledge can be risky and make it fly too far! The risk can be well worth it however, since again, landing the move will stop Bully in its tracks.");
-initImage_ext(sprite_get("pho_fspecial"), -4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("pho_fspecial"), -4, fa_right, -1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("FSpecial Air: Parasol Dive");
+initWords("Bandana Dee sticks his parasol below him before diving downwards. Acting as a stall and fall move, this attack functions similarly to Orcane Dair on hit.");
+initWords("Bandana Dee's double jump gets restored if he goes through the whole attack's duration, allowing you to extend and mix up your recovery.");
+initImage_ext(sprite_get("fspecial_air"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("DSpecial: Groundpound");
-initWords("A full send groundpound to spike your enemies into oblivion! No jump cancels, around here we go all in! Landing the move (or landing in general) is the only way to stop, and hitting someone with it will pop Bully up into the air.");
-initWords("If for some reason you use this on the ground (lame!) hitting the stage will create a shockwave. It doesn't do much damage, but it's quick, safe, and disruptive! The initial flip also retains all horizontal momentum, so it's surprisingly versatile.");
-initImage_ext(sprite_get("pho_dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("USpecial: Waddle Copter");
+initWords("His Up Special is officially called, Waddlecopter, funniest thing I've ever read.");
+initWords("Bandana Dee twirls his spear above him to rise upwards, rapidly hitting opponents as he ascends. This move acts as a fairly solid vertical recovery, though it's not especially fast to rise.");
+initWords("After a short bit of time, Bandana Dee will start to slowly drift downwards, allowing you to float down to safety with no lag once you land, though you are fairly easy target while doing this.");
+initWords("Pressing down or parry during Uspecial will cancel the attack and enter pratfall, allowing you to mix up the usage of the attack a little better. Doing so also gives you a slight vertical boost, allowing you to get that last little bit of recovery distance you need where you wouldn't make it prior.");
+initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("USpecial: Lava Boost");
-initWords("Using a stream of fire, Bully propels into the air. This move only hits below Bully and doesn't have much knockback, or send it very high. On the other hand it lets Bully gain a lot of horizontal momentum, and the fire passes through platforms to burn opponents when attacking onstage!");
-initImage_ext(sprite_get("pho_uspecial"), -2, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("DSpecial: Megaton Punch");
+initWords("Bandana Dee gets ready to punch the ground, this is where a pendulum will appear above his head. Timing the move perfectly (when the dot is centered) will cause BWD to punch the ground as hard as he can, sending rocks shooting up that act as strong vertical killing hits.");
+initWords("If you miss the center BWD will still punch the ground just with no rocks, acting as a short ranged launcher with high hitstun.");
+initWords("If there are any spears pinned when you use Dspecial, they will get launched into the air. Perfectly timing Dspecial causes spears to get launched higher.");
+initWords("You are able to cancel out of the readied stance quickly by pressing parry.");
+initImage_ext(sprite_get("pendulum"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("FStrong: Flamethrower Breath");
-initWords("For FStrong, Bully will spew flames from its... mouth? While spewing flames, holding up and down will aim the fire in either direction. This can be handy for sneaky platform plays, either for hitting opponents on a higher platform or vice versa!");
-initWords("Fire that's aimed downward will collide with the ground but pass straight through platforms. The flames also burn about as much as you'd expect, inflicting the Burn effect on opponents.");
-initImage_ext(sprite_get("pho_fstrong"), -2, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("DSpecial: Megaton Punch (Air)");
+initWords("Bandana Dee gets ready to punch the ground, this is where a pendulum will appear above his head. Timing the move perfectly (when the dot is centered) will cause BWD to storm down the ground as hard as he can, sending rocks shooting up similar to the grounded version upon landing.");
+initWords("You can cancel this if you so happen to miss the opponent by jumping, airdodging, or using USpecial.");
+initWords("If you miss the center BWD will dive down holding his fist forward, acting as a weaker stall and fall.");
+initWords("You are able to cancel out of the readied stance quickly by pressing parry. This cancel is slightly more comittal than the grounded version, but can be used to mix up your aerial approach.");
+initImage_ext(sprite_get("dspecial_air"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("UStrong: Chill Skewer");
-initWords("ill skewer you,,,");
-initWords("While hard to hit, the tip of Bully's horn is a powerful sweetspot! Time it just right, and the results will be well worth it!");
-initImage_ext(sprite_get("ustrong"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("
-
-
-
-
-
-
-
-
-
-
-Disclaimer: The name of this move has nothing to do with temperature, and is simply to warn opponents of your approachable vibes.");
-
-initTip("DStrong: Firebar Spin");
-initWords("Spin a firebar along the elusive Z axis, scorching either sides of Bully! While slow, this move is active for a long time and it's just as disjointed as Bully's other fire attacks. Also like those attacks, it inflicts the Burn effect for extra damage.");
-initWords("The fire nearest to Bully's body also deals more damage and knockback, so getting up close and personal is as good an idea as always with Bully!");
-initWords("One last thing! (DStrong is such a special guy what can I say-) While charging, the fireballs also give the Burn effect, although deal no damage or knockback otherwise.");
-initImage_ext(sprite_get("pho_dstrong"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("pho_dstrong"), -4, fa_right, -2, 2, true, c_white, 1, false, noone, noone, noone, noone);
-
-initTip("Jab: Horn Stab");
-initWords("Impale your enemies, stopping them in their tracks! If this move connects, it'll stun opponents and let Bully cancel into a basic attack. Including another jab! Don't get any wobbly ideas though, there's a cooldown before it'll stun someone again.");
-initImage_ext(sprite_get("jab"), -5, fa_center, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
-
-initTip("NAir: Orb Burst");
-initWords("Bully fills with power (and fire) then ejects a burst of flame around itself, inflicting a Burn effect on anyone who touches it! During startup, as Bully grows in size it will also very slightly slow down it's momentum.");
-initImage_ext(sprite_get("nair"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -271,115 +277,39 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.8", "30 June, 2023");
-initHeader("Balance");
-initSection("-UAir sweetspot scaling increased from 0.7 to 0.8
--DSpecial falling hitbox width increased from 40 to 50
--DStrong inner sweetspots KB scaling increased from 1.0 to 1.1");
+initPatch("1.1", "30 June, 2022");
+initHeader("Utilt");
+initSection("+New late hit added to more properly match the animation. Total active time was increased from 3 frames to 4 frames as a result.");
+initSection("+Initial hit's hitbox moved forward slightly to more accurately match the visual");
+initSection("-Initial hit active time decreased from 3 frames to 2 frames");
+initHeader("Fair");
+initSection("~Multi hit base hitpause increased from 2 to 3");
+initHeader("Uspecial");
+initSection("+Pressing down or parry during the active time can now perform the cancel animation rather than just during the slow fall back down.");
+initSection("+Cancel window's Vspeed changed from 1 to -5, giving the cancel a bit of a vertical boost. Can be useful for just barely recovering when you wouldn't be able to otherwise.");
 
-initPatch("1.7", "30 June, 2023");
-initHeader("Aesthetic");
-initSection("-Adjusted UTilt smear to go higher reflecting the new higher sourspot
--Added an extra animation frame to UTilt endlag
--Added easteregg when using FSpecial as the Gold Winner alt
--Updated Gold Winner alt to have nicer colours (they were colourpicked from legacy Zard Wario but they looked kinda smelly)
--Added more Miiverse posts (Big credit to TheAcidCat for contributing even more posts-!)");
-initHeader("Balance");
-initSection("-Lowered FStrong KB angle from 55 to 50
--UTilt given a high sourspot that reaches platforms
--UTilt attacking window extended from 4 to 8 frames
--NSpecial projectiles are now transcendant");
-initHeader("Fixes");
-initSection("-Fixed Miiverse posts being at double scale
--FStrong now completes its animation when parried (which actually gives enough time to punish it now)");
-
-initPatch("1.6", "17 June, 2023");
-initHeader("Aesthetic");
-initSection("-Updated Munophone tips to reflect FSpecial changes
--Added a unique animation for grounded FSpecial recoil
--Added more Miiverse posts");
-initHeader("Balance");
-initSection("-When recoiling with FSpecial, you can now hold Down to stop vertical height
--FSpecial hurtbox updated for the new animation
--FSpecial BKB increased from 9 to 10
--DSpecial falling hit BKB increased from 5 to 7
--DSpecial falling hit KB Scaling increased from 0.5 to 0.6
--BAir BKB increased from 5 to 7
--BAir KB Scaling increased from 0.4 to 0.5");
-initHeader("Fixes");
-initSection("-FSpecial recoil fixed to be consistent
--Respawn platform now flies away in training mode
--Fixed CSS randomly spitting errors into the debug log on load for real this time");
-
-initPatch("1.5", "29 May, 2023");
-initHeader("Aesthetic");
-initSection("-Updated DStrong's Munophone entry to reflect changes
--Updated names of DStrong hitboxes in the Munophone");
-initHeader("Balance");
-initSection("-NSpecial now has Angle flipper 8 (away from hitbox)
--DStrong now has 3 close-range sweetspots (2 for the two halves of the front swing, 1 for the back swing)
--BAir sweetspot KB Scaling increased from 0.6 to 0.75
--BAir sweetspot angle adjusted from 135 to 140");
-initHeader("Fixes");
-initSection("-Walking with DTaunt after respawning is now a feature
--Fixed CSS occasionally spitting errors on the debug log when loading");
-
-initPatch("1.4", "24 May, 2023");
-initHeader("Fixes");
-initSection("-Fixed a desync when ramming into a wall with FSpecial online");
-
-initPatch("1.3", "19 May, 2023");
-initHeader("Aesthetic");
-initSection("-Projectile Blue alt no longer uses the alternate respawn platform
--Adjusted DAttack star effect to be bigger
--UAir sweetspot now uses the heavy stab SFX
--Munophone tips updated to reflect DStrong changes");
-initHeader("Balance");
-initSection("-DStrong sweetspot angles adjusted from 60 to 45
--DStrong first hit now extends farther behind Bully
--DStrong returning hit now matches the late sourspot
--DStrong charge window now has a Burn effect hitbox when touching the spawned fire
--FSpecial now gives a higher vertical recoil when hitting a wall");
-initHeader("Fixes");
-initSection("-Fixed UI elements not being properly set online
--Fixed USpecial sprites playing when parrying after using USpecial
--Fixed Projectile Blue alt being buggy online thanks d a n i e l
--Fixed the get_color_profile crash for real this time i am so tired");
-
-initPatch("1.2", "18 May, 2023");
-initHeader("Aesthetic");
-initSection("-Added these patches to the Munophone (forgor)");
-initHeader("Balance");
-initSection("-DTilt angle changed from 75 to 50");
-initHeader("Fixes");
-initSection("-Respawn platform no longer appears before Bully is visible
--Moved some stuff from CSS Draw to CSS Update (hopefully should work better online?)
--(hopefully) fixed an online crash involving get_color_profile_slot");
-
-initPatch("1.1", "18 May, 2023");
-initHeader("Fixes");
-initSection("-Munophone fixed to not call Bully Sandbert (this is new lore that Bully bullied Sandbert and stole his phone)
--Added a victory theme (i forbor)");
-
-initPatch("1.0", "18 May, 2023");
-initSection("its a funny lil guy :)");
+initPatch("1.0", "24 June, 2022");
+initWords_ext("He's got stellar attendance in the Kirby series and deserves a prize.", fa_center, c_white, 0, false);
+initWords_ext("That bandana! That spear!", fa_center, c_white, 0, false);
+initWords_ext("With his courage, he sets himself apart from carefree parasol holders!", fa_center, c_white, 0, false);
+initWords_ext("Bandana Waddle Dee is Here!", fa_center, c_white, 0, false);
+initImage_ext(sprite_get("taunt_apple_idle"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 
-initPatch("About Bully", "");
-initHeader("General Info");
-initSection("The Boiling Hothead from SM64, Bully, bashes into Rivals of Aether! A simple, no frills rushdown for those who like to charge in and get their hands dirty! ...Or rather horns, in this case!");
-
-initHeader("Credits");
-initSection("Flophawk: Everything xoxo
-Zard: Legacy Wario FSpecial Code & Effect Sprite
-TheAcidCat: Miiverse Posts (Miiverse Stage Compatability)
-VaporV01D: Character Inspiration (aka its his fault i decided to make this)");
-
-initHeader("Stuff used:");
-initSection("''Prince Bully Throws Coke at LH Martin and Gets Grounded'' by Weatherstar4000video");
-initSection("SFX sourced from Super Mario 64, Super Mario 3D World, Smash 64, Mariokart DS, SMB2, Super Mario Maker, SML2, Mario's Game Gallery, Marvel vs Capcom 3, and Toilet in Wonderland");
+initPatch("About Bandana Dee", "");
+initHeader("Attack Animation and General Implementation");
+initSection("ArtistOfSeer");
+initHeader("Movement, Defensive, and Taunt Animations");
+initSection("Smiley_The_Stickman");
+initHeader("Special move Code and Implementation");
+initSection("DonGT & VVizard.");
+initHeader("Additional SFX from");
+initSection("-Kirby Return to Dreamland               -Kirby Super Star Ultra");
+initSection("-Super Smash Bros Ultimate");
 initHeader("Compatible with");
-initSection("Trummel & Alto, Otto, Steve, Link, The Chosen One, Wall-E, Moonchild, TCG Kirby, Miiverse, Mt. Dedede, Soulbound Conflict, The Last Resort, and Pokemon Stadium");
+initSection("Trummel & Alto, Otto, Steve, Link, Hikaru, MT. Dedede Stadium, Soulbound Conflict, KF2 Buddy");
+initHeader("Credits");
+initSection("Kirby is owned by HAL Labratories. No copyright infingement was intended in making this. This is merely made out of love for the series.");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 
@@ -467,8 +397,8 @@ zero".
 
 #define CORE_cheats
 
-CHEAT_FIREBALL_SPAM		= initCheat("No Fireball Cooldown", [0, 1], ["Off", "On"], "Self explanatory!");
-CHEAT_BURNLESS          = initCheat("Burn Heal", [0, 1], ["Off", "On"], "Disables Bully giving the Burn effect.");
+CHEAT_LOL		= initCheat("There are no cheats, go home.", [0, 1], ["Off", "On"], "");
+
 
 
 /*
@@ -519,10 +449,10 @@ phone.move_ordering = [
 	AT_UTHROW,
 	AT_DTHROW,
 	AT_EXTRA_1,
+	AT_EXTRA_2,
 	AT_EXTRA_3,
 	AT_TAUNT,
 	AT_TAUNT_2,
-	AT_EXTRA_2,
 	AT_PHONE,
 	2,
 	3,
@@ -617,15 +547,12 @@ To use multiple gimmicks on a single page, MULTIPLY them together.
 */
 
 // Custom speaker setup - use 1, 2, 3, 4, ... for the index.
-SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
-SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+SPK_BWD = initSpeaker(1, "BWD", sprite_get("_pho_example_speaker"));
 
 initCodec(0); // this should just always be 0, because there are no codec gimmicks
-initCodecPage(SPK_ALTO, 2, 0, "Oh hey, it's Bully (from mario)!");
-initCodecPage(SPK_TRUM, 1, 0, "thats just u");
-initCodecPage(SPK_ALTO, 4, 0, "Lies and slander!");
-initCodecPage(SPK_ALTO, 6, 0, "I'm bully (from slingshell (by muno))");
-initCodecPage(SPK_TRUM, 0, 0, "pleas buy my game :)");
+initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
+initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
+initCodecPage(SPK_BWD, 0, GIM_COLOR * GIM_LAUGH_TRACK, "no"); // this page uses the custom speaker
 
 spr_custom_trummel_color = c_red;
 
@@ -633,13 +560,13 @@ spr_custom_trummel_color = c_red;
 otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 
 // Otto bobblehead body. (optional, don't really need this)
-otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+//otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got bullied to death";
+steve_death_message = "Steve got poked by a spear!";
 
 // Link spear. (determines which spear your char will drop the first time)
-link_spear_drop = 5;
+link_spear_drop = 1;
 
 /*
 Spear IDs:
@@ -659,7 +586,6 @@ Spear IDs:
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 
-/*
 initCodecPit();
 initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
 initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
@@ -673,7 +599,7 @@ initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this f
 initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
 initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
 initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
-*/
+
 
 
 /*
@@ -728,7 +654,7 @@ initWords_ext(obj_text, fa_left, "h", 0, 0);
 
 #define initSection(obj_text)
 
-initWords_ext(obj_text, fa_left, $4ABAA7, 1, 0);
+initWords_ext(obj_text, fa_left, c_white, 1, 0);
 
 #define initWords(obj_text)
 
@@ -736,7 +662,7 @@ array_push(phone.currently_edited_obj.objs, {
 	type: 0,
 	text: obj_text,
 	align: fa_left,
-	color: $4ABAA7,
+	color: c_white,
 	indent: 0,
 	side_by_side: false
 });

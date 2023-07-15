@@ -309,7 +309,7 @@ switch(attack){
 				}
 				if shield_pressed and !hitpause{
 					sound_stop(asset_get("sfx_absa_jabloop"));
-					create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
+					//create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
 					clear_button_buffer(PC_SHIELD_PRESSED);
 					attack = AT_EXTRA_1;
 					window = 1;
@@ -341,16 +341,19 @@ switch(attack){
 				}
 				break;
 		}
-		if window > 1 or (window == 1 and window_timer >= 10){
-			if ((shield_pressed or down_pressed) and window != 7){
+		if window > 1{
+			if (((shield_pressed and window != 1) or down_pressed) and window != 7){
 				penny_install = false;
 				sound_stop(asset_get("sfx_absa_jabloop"));
 				create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
 				if attack == AT_USPECIAL_2{
 					sound_play(asset_get("sfx_ell_cooldown"));
+					if !has_hit{
+						set_state(PS_PRATFALL);
+					}
+				} else {
+					set_state(PS_PRATFALL);
 				}
-				window = 7;
-				window_timer = 0;
 			}
 			can_attack = true;
 			can_special = true;
@@ -366,6 +369,7 @@ switch(attack){
 		}
 		break;
 	case AT_EXTRA_1:	// Flip Dash
+		pen_didairdash = true;
 		can_attack = true;
 		can_special = true;
 		can_shield = true;

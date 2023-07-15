@@ -23,24 +23,29 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_syl_fspecial_bite"));
 
 window_num ++; //hold pose
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 window_num ++; //whip back into azi
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_may_whip1"));
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 window_num ++; //hold pose but again
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 7);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);

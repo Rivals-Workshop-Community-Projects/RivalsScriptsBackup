@@ -7,7 +7,6 @@
 //draw_debug_text(x, y + 16 * 1, "type = " + string(pocket_item.type));
 //draw_debug_text(x, y + 16 * 2, "hp = " + string(pocket_item.hp));
 
-
 //Put this above all the #defines in your script.
 draw_colored_hitboxes();
 

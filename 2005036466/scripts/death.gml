@@ -39,6 +39,7 @@ boomtimer = 0;
 mine_active = 0;
 cooldown_mine = 0;
 
+pen_didairdash = false;
 
 // Remove everything on the field
 if (instance_exists(obj_article2)){

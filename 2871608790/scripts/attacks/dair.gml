@@ -4,7 +4,7 @@ set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("dair"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 8);
+set_attack_value(atk, AG_LANDING_LAG, 6);
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
@@ -27,6 +27,8 @@ window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 window_num ++; //endlag 2
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);

@@ -6,6 +6,7 @@ set_victory_sidebar(sprite_get("victory_sidebar1"))
 sprite_change_offset("crouchbox", 28, 42);
 sprite_change_offset("dashbox", 30, 56);
 
+sprite_change_offset("entrance", 32, 79);
 sprite_change_offset("idle", 16, 47);
 sprite_change_offset("crouch", 32, 31);
 sprite_change_offset("walk", 32, 47);

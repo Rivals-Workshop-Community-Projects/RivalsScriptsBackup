@@ -65,6 +65,10 @@ switch(state){
 	case PS_WAVELAND:
 		penny_dair_used = 0;
 		move_cooldown[AT_USPECIAL] = 0;
+		if pen_didairdash{
+			set_state(PS_PRATLAND)
+			pen_didairdash = false;
+		}
 		sound_stop(asset_get("sfx_absa_jabloop"))
 		break;
 	case PS_ATTACK_GROUND:
@@ -127,6 +131,16 @@ switch(state){
 		break;
 }
 
+if pen_didairdash{
+	switch(prev_state){
+		case PS_ATTACK_AIR:
+			if attack != AT_EXTRA_1 and pen_prev_attack == AT_EXTRA_1{
+				set_state(PS_PRATFALL);
+			}
+			break;
+	}
+}
+
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
 	if attack != AT_FTILT{
 		penny_ftilt_two = false;
@@ -145,16 +159,8 @@ with oPlayer{
 			if strapped_id == other.id and strapped_id.mine_active == 1 and strapped_id.goboom == false{
 				if (state != PS_TUMBLE and state_cat == SC_HITSTUN) or (state == PS_TUMBLE and state_timer <= 12){
 					penny_mine_indi = 1;
-					if strapped_id.pen_mine_indi_sound == false{
-						sound_play(asset_get("mfx_star"))
-						strapped_id.pen_mine_indi_sound = true;
-					}
 				} else {
 					penny_mine_indi = 0;
-					if strapped_id.pen_mine_indi_sound == true{
-						sound_play(asset_get("mfx_unstar"))
-						strapped_id.pen_mine_indi_sound = false;
-					}
 				}
 			}
 		}
@@ -191,12 +197,14 @@ with oPlayer{
 						penny_charge_sound = true;
 					}
 				} else {
-					// Change it back
-					outline_color = [0, 0, 0]
-					init_shader();
-					penny_charge_timer = 0;
-					penny_is_charged = false;
-					penny_charge_sound = false;
+					if ((penny_charge_timer >= penny_charge_time_max) or (penny_charge_timer <= 0)){
+						// Change it back
+						outline_color = [0, 0, 0]
+						init_shader();
+						penny_charge_timer = 0;
+						penny_is_charged = false;
+						penny_charge_sound = false;
+					}
 				}
 			}
 		}

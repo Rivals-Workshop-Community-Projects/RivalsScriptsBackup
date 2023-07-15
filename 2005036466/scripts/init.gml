@@ -13,6 +13,7 @@ penny_dair_used = 0;
 
 backwards_held = false;
 forwards_held = false;
+pen_prev_attack = AT_JAB;
 
 penny_charge_r = get_color_profile_slot_r(get_player_color(player), 3);
 penny_charge_g = get_color_profile_slot_g(get_player_color(player), 3);
@@ -44,6 +45,8 @@ pen_mine_unstable = false;
 
 col_oth		= 255;
 col_penc4	= make_color_rgb(255, col_oth, col_oth);
+
+pen_didairdash = false;
 
 //Variables for when strapped mine is primed and the timer is ticking before it blows.
 goboom = false;
@@ -104,9 +107,9 @@ jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 5.5;
 djump_speed = 11.5;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .65; //multiplier of air_accel while in pratfall

@@ -5,7 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, 14, 1);   // AG_HAS_COOLDOWN
-set_attack_value(AT_FSPECIAL, 15, 45);  // Cooldown
+set_attack_value(AT_FSPECIAL, 15, 90);  // Cooldown
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 // Start-up into hold
@@ -98,18 +98,18 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 35);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, vfx_fspecialhit);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, vfx_fspecialhit);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 16);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .50);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);

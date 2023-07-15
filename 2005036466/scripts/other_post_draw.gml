@@ -30,6 +30,7 @@ if penny_strapped and other_player_id == strapped_id{
 //post-draw
 if penny_charged_id != noone{
     if (penny_is_charged && other_player_id == penny_charged_id){
+        
         var charge_sprite = -1;
         with (penny_charged_id){
             //sprite_get can only be called directly by the workshop character
@@ -39,6 +40,7 @@ if penny_charged_id != noone{
                 charge_sprite = sprite_get("mark_top");
             shader_start();
         }
+        
         if (charge_sprite != -1)
             draw_sprite(charge_sprite, get_gameplay_time()*.15, x, y-char_height*.5);
             //draw_debug_text(x, y + 16, "CHARGED");

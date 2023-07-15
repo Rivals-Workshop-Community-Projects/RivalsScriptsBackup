@@ -134,6 +134,7 @@ laser_timer = 0;
 line_fx_timer = 0;
 explosion_vfx = hit_fx_create(sprite_get("laser_boom"), 28);
 fire_pos = [0, 0];
+beam_pos = [[fire_pos[0], fire_pos[1]]];
 hit_pos = [0, 0];
 randoff = [0, 0];
 aim = 0;
@@ -165,6 +166,8 @@ for(var e = 0; e < 6; e++){
 }
 col_displace = 0;
 prev_free = free;
+
+armor_val = 9;
 //#endregion
 
 //#region attacks
@@ -173,6 +176,7 @@ used_legs = [];
 
 //uspecial
 reset_room_speed = 0;
+prev_spd = 60;
 puddle_pos = [0, 0];
 cryonis_break = hit_fx_create(sprite_get("cryonis_break"), 24);
 

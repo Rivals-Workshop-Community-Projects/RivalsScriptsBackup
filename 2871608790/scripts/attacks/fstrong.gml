@@ -26,9 +26,10 @@ window_num ++; //hold pose
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -73,7 +74,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 18);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.10);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.25);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);

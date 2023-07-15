@@ -6,18 +6,14 @@ print("Hitbox Num: " + string(my_hitboxID.hbox_num))
 
 hit_player_obj.pen_can_det = my_hitboxID.no_other_hit;
 
-if hit_player_obj.penny_is_charged{
-	switch(hitmove){
-	    case AT_FSTRONG:
-	    case AT_USTRONG:
-	    case AT_DSTRONG:
-	    	// Change Things?
-	    	//give_pen_install();
-	    	break;
-	}
-}
-
 switch(hitmove){
+	case AT_JAB:
+		switch(my_hitboxID.hbox_num){
+			case 2:
+				give_pen_install();
+				break;
+		}
+		break;
     case AT_FTILT:
     	if my_hitboxID.hbox_num == 1{
     		penny_ftilt_two = true;
@@ -28,6 +24,10 @@ switch(hitmove){
 	        penny_ftilt_two = false;
 	        apply_pen_status();
     	}
+    	break;
+    case AT_FSTRONG:
+    case AT_USTRONG:
+    	give_pen_install();
     	break;
 	case AT_DAIR:
 		switch(my_hitboxID.hbox_num){
@@ -44,6 +44,16 @@ switch(hitmove){
 		}
 		break;
     case AT_FSPECIAL:
+    	switch(my_hitboxID.hbox_num){
+    		case 1:
+    			give_pen_install();
+    			apply_pen_status();
+    			break;
+    		case 2:
+    			apply_pen_status();
+    			break;
+    	}
+    	break;
     case AT_USPECIAL_2:
 		apply_pen_status();
         break;
@@ -169,6 +179,7 @@ if hit_player_obj.penny_strapped{
     if hit_player_obj.penny_is_charged != true{
         hit_player_obj.penny_charged_id = id;
         hit_player_obj.penny_is_charged = true;
+        hit_player_obj.penny_charge_timer = 0;
         with hit_player_obj{
             sound_play(asset_get("sfx_clairen_sword_activate"));
         }

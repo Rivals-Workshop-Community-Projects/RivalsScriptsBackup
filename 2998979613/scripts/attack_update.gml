@@ -365,27 +365,28 @@ switch attack{
 	can_fast_fall = 0;
 	switch window{
 		case 1:
+		if window_timer == 1 vsp = -4;
 		if window_timer == 4{
-			puddle_pos = [x, y + 16];
 			sound_play(sound_get("botw_bullet_time"));
 			array_push(lwfx_buffer, {xpos:x, ypos:y - 40, sprite:sprite_get("eye"), frame:0, alpha:1, decay:.1, layer:-1, blend:c_white, fog:0, shade:1, frame_adv:0, angle:0, dir:1, scale:1, scale_increment:.1, vspd:0, hspd:0});
 		}
 		break;
 		case 2:
+		if window_timer == 1 && !hitpause prev_spd = room_speed;
 		room_speed = 20;
 		reset_room_speed = 1;
 		if window_timer == window_end{
 			sound_play(sound_get("botw_cryonis_make"));
-			with oPlayer if self != other && x + ceil(sprite_get_bbox_right(mask_index)/2) >= other.puddle_pos[0] - 48 && x - ceil(sprite_get_bbox_right(mask_index)/2) <= other.puddle_pos[0] + 48 && y <= other.puddle_pos[1] && y >= other.puddle_pos[1] - 20 vsp = 0;
+			with oPlayer if self != other && x + ceil(sprite_get_bbox_right(mask_index)/2) >= other.puddle_pos[0] - 48 && x - ceil(sprite_get_bbox_right(mask_index)/2) <= other.puddle_pos[0] + 48 && y <= other.puddle_pos[1] + 30 && y >= other.puddle_pos[1] - 30 vsp = 0;
 		}
 		break;
 		case 3:
-		with oPlayer if self != other && x + ceil(sprite_get_bbox_right(mask_index)/2) >= other.puddle_pos[0] - 48 && x - ceil(sprite_get_bbox_right(mask_index)/2) <= other.puddle_pos[0] + 48 && y <= other.puddle_pos[1] && y >= other.puddle_pos[1] - ease_linear(0, 50, other.window_timer-1, 11) vsp -= 3;
+		with oPlayer if self != other && x + ceil(sprite_get_bbox_right(mask_index)/2) >= other.puddle_pos[0] - 48 && x - ceil(sprite_get_bbox_right(mask_index)/2) <= other.puddle_pos[0] + 48 && y <= other.puddle_pos[1] + 30 && y >= other.puddle_pos[1] - ease_linear(0, 50, other.window_timer-1, 11) vsp -= 2;
 		room_speed = 20;
 		reset_room_speed = 1;
 		if window_timer >= 3 vsp -= 2;
 		if window_timer == window_end{
-			room_speed = 60;
+			room_speed = prev_spd;
 			reset_room_speed = 0;
 			with oPlayer vsp *= 1.6;
 			sound_stop(sound_get("botw_bullet_time"));
@@ -393,6 +394,13 @@ switch attack{
 		break;
 		case 4:
 		if window_timer == 5 && !hitpause{
+			set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, (puddle_pos[0]-x)*spr_dir);
+			set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, puddle_pos[1] - 50 - y);
+			var e = create_hitbox(attack, 3, x, y);
+			e.length = 1;
+			e.sprite_index = asset_get("hitbox_square_spr");
+			e.image_xscale = 100/200;
+			e.image_yscale = 110/200;
 			sound_play(sound_get("botw_cryonis_break"));
 			spawn_hit_fx(puddle_pos[0], puddle_pos[1]-40, cryonis_break);
 		}

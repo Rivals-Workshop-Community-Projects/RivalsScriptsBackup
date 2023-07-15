@@ -1,5 +1,6 @@
 //got_hit.gml
 
+/*
 if (holding_item && orig_knock >= pocket_tank_kb) 
 {
     pocket_item.id = noone;
@@ -8,5 +9,6 @@ if (holding_item && orig_knock >= pocket_tank_kb)
     pocket_item.car_type = -1;
     holding_item = false;
 }
+*/
 
 uspec_used = false;

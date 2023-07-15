@@ -15,8 +15,7 @@ window_num ++; //attack 1
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
+
 
 window_num ++; //hold pose 1
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
@@ -35,8 +34,6 @@ window_num ++; //attack 2
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
 
 window_num ++; //hold pose 2
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);

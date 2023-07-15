@@ -22,6 +22,9 @@ if hitstop == 0{
 if get_player_color(player) == 17{
 	if pen_c4_charged == 1 and state == 1{
 		suppress_stage_music(0, 1);
+		if is_laststock(){
+			sfx_loop = sound_get("sfx_poolparty_loop_laststock")
+		}
 	}
 }
 

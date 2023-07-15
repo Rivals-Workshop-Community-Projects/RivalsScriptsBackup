@@ -2,25 +2,25 @@
 
 //ground movement
 sprite_change_offset("idle",            51, 72);
-sprite_change_offset("crouch",          49, 68);
-sprite_change_offset("walk",            75, 96);
-sprite_change_offset("walkturn",        46, 96); //doesn't have
-sprite_change_offset("dash",            54, 78);
-sprite_change_offset("dashstart",       54, 78); //doesn't have
-sprite_change_offset("dashstop",        54, 78); //doesn't have
-sprite_change_offset("dashturn",        55, 78); //doesn't have
+sprite_change_offset("crouch",          49, 66);
+sprite_change_offset("walk",            75, 94);
+sprite_change_offset("walkturn",        46, 94); //doesn't have
+sprite_change_offset("dash",            54, 77);
+sprite_change_offset("dashstart",       54, 77); //doesn't have
+sprite_change_offset("dashstop",        54, 77); //doesn't have
+sprite_change_offset("dashturn",        55, 77); //doesn't have
 
 //air movement
-sprite_change_offset("jumpstart",       57, 74);
+sprite_change_offset("jumpstart",       57, 72);
 sprite_change_offset("jump",            55, 81);
 sprite_change_offset("doublejump",      53, 81); //doesn't have
 sprite_change_offset("walljump",        53, 81); //doesn't have
 sprite_change_offset("pratfall",        55, 81); //doesn't have
-sprite_change_offset("land",            57, 74); //doesn't have
-sprite_change_offset("landinglag",      57, 74); //doesn't have
+sprite_change_offset("land",            57, 73); //doesn't have
+sprite_change_offset("landinglag",      57, 73); //doesn't have
 
 //parry button
-sprite_change_offset("parry",           54, 76);
+sprite_change_offset("parry",           54, 75);
 sprite_change_offset("roll_forward",    51, 73); //doesn't have
 sprite_change_offset("roll_backward",   51, 73); //doesn't have
 sprite_change_offset("airdodge",        55, 81); //doesn't have
@@ -55,8 +55,8 @@ sprite_change_offset("dspecial",        110, 123);
 sprite_change_offset("dspecial_air",    93, 137);
 
 //misc
-sprite_change_offset("taunt",           95, 94);
-sprite_change_offset("taunt_head",      38, 44);
+sprite_change_offset("taunt",           93, 94);
+sprite_change_offset("taunt_head",      41, 44);
 sprite_change_offset("intro",           24, 47);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
@@ -87,7 +87,7 @@ sprite_change_offset("artc_nspec_bell",     24, 24);
 sprite_change_offset("artc_nspec_bomb",     22, 22);
 sprite_change_offset("artc_nspec_soap",     22, 22);
 sprite_change_offset("artc_nspec_car",      24, 16);
-sprite_change_offset("artc_nspec_spit",     26, 30);
+sprite_change_offset("artc_nspec_sandwich", 22, 22);
 
 //effects
 sprite_change_offset("fx_bell_hit",         78*2, 86*2);
@@ -101,5 +101,6 @@ sprite_change_offset("fx_water_final",      192, 192);
 sprite_change_offset("fx_water_hit",        64, 67);
 
 sprite_change_offset("fx_fspec_spit",       72, 32);
+sprite_change_offset("fx_nspec_spit",       26, 30);
 sprite_change_offset("fx_uspec",            69, -2);
 sprite_change_offset("fx_dspec",            128, 32);

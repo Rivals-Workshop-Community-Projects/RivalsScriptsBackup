@@ -40,6 +40,7 @@ alt_name[17] = "Merchant";
 alt_name[18] = "Stellar Comet";
 alt_name[19] = "Angelic Devil";
 alt_name[20] = "Blueberry";
+alt_name[21] = "Lagkon";
 
 
 /*

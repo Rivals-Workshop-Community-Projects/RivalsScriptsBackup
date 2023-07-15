@@ -181,6 +181,18 @@ switch (attack)
 		break;
 }
 
+if attack == AT_DSPECIAL {
+    if window == 1 && window_timer == 5{
+        sound_play(asset_get("sfx_zetter_downb"));
+    }
+}
+
+if attack == AT_DSPECIAL {
+    if window == 4 && window_timer == 4{
+        sound_play(asset_get("sfx_zetter_downb"));
+    }
+}
+
 //0 will just go to the next window instead of a specific one
 //-1 makes it loop on the same window
 #define set_window(window_num)

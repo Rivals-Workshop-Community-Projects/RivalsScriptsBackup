@@ -1,9 +1,5 @@
-//#macro AT_JAB2 39;
+#macro AT_ENTRANCE 40;
 //other moves
-//
-//     
-//     
-//     
 
 //B - Reversals / Mach Cancel
 switch (attack)
@@ -36,6 +32,31 @@ switch (attack)
 switch (attack)
 {
 	
+        case AT_ENTRANCE:
+	if (window == 3 && window_timer == 1) 
+	{
+		easetimer = 0;
+		char_height = 100;
+	}
+	if (window == 1 || window == 5)
+	{
+		easetimer = 0;
+		char_height = 50;
+	}
+	if (window == 2 && !hitpause)
+	{
+			char_height = ease_quadIn(50, 100, window_timer, 2);
+        }  
+	if ((window == 3 && window_timer > 12 || window == 4) && !hitpause)
+	{
+		if (easetimer < 5)
+		{
+			char_height = ease_quadIn(100, 50, easetimer, 5);
+			easetimer++;
+		}
+		else char_height = 50;
+        }  
+        break;
 
 	case AT_TAUNT:
 	if (window = 1 && window_timer = 1)
@@ -43,11 +64,11 @@ switch (attack)
           taunt_free = free;
           sound_play(sound_get("sfx_taunt"),0,0,1,0.9 + ((random_func(4,1,false)*0.2)) )
 	}
-      if (taunt_free && !free)
-      {
-          iasa_script();
-          set_state(PS_LANDING_LAG);
-      }
+        if (taunt_free && !free)
+        {
+            iasa_script();
+            set_state(PS_LANDING_LAG);
+        }
 	break;
 
 
@@ -293,7 +314,14 @@ switch (attack)
       if (window = 5 && window_timer >= 18 || window = 6 && window_timer >= 28)
       {
           iasa_script();
-          set_state(free?PS_IDLE_AIR:PS_IDLE);
+          if (was_parried = true)
+          {
+              set_state(free?PS_PRATFALL:PS_PRATLAND);
+              was_parried = true;
+              parry_lag = 40;
+          }
+          else set_state(free?PS_IDLE_AIR:PS_IDLE);
+          
       }
       if (window = 7 && !free)
       {
@@ -696,7 +724,12 @@ switch (attack)
           x += (right_down - left_down)*1;
           hsp = clamp(hsp*0.8, -2, 2);
       }
-      else can_fast_fall = false;
+      else 
+      {
+          can_fast_fall = false;      
+          can_wall_jump = true;   
+      }
+
 	break;
 
     case AT_DSPECIAL:

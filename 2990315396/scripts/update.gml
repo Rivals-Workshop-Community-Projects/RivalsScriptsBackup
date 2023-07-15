@@ -1,3 +1,24 @@
+if (get_gameplay_time() <= 1)
+{
+    if (!entered) and (!instance_exists(oTestPlayer))
+    {
+        entered = true;
+        set_attack(AT_ENTRANCE);
+        var _nointro_timer = 0
+    }
+}
+
+if (attack == AT_ENTRANCE) 
+{
+    _nointro_timer++;
+    if (window == 8) && (window_timer == 7)
+    {
+        set_state(PS_SPAWN);
+        state_timer += _nointro_timer;
+    }
+    
+}
+
 if (state_cat = SC_HITSTUN || state_cat = SC_GROUND_NEUTRAL || state_cat = SC_AIR_NEUTRAL || state = PS_LANDING_LAG)
 {
 	char_height = 50;
