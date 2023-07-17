@@ -35,18 +35,18 @@ set_color_profile_slot(3, 3, 255, 126, 47);
 set_color_profile_slot(3, 4, 248, 15, 0);
 
 //Krook Color
-set_color_profile_slot(4, 0, 117, 76, 43);
+set_color_profile_slot(4, 0, 125, 79, 46);
 set_color_profile_slot(4, 1, 164, 137, 28);
-set_color_profile_slot(4, 2, 198, 166, 37)
-set_color_profile_slot(4, 3, 105, 135, 55);
+set_color_profile_slot(4, 2, 120, 80, 30)
+set_color_profile_slot(4, 3, 91, 110, 51);
 set_color_profile_slot(4, 4, 196, 191, 193);
 
 //Klinger Color
-set_color_profile_slot(5, 0, 215, 94, 41);
-set_color_profile_slot(5, 1, 90, 150, 75);
-set_color_profile_slot(5, 2, 116, 184, 86);
-set_color_profile_slot(5, 3, 176, 113, 60);
-set_color_profile_slot(5, 4, 90, 150, 75);
+set_color_profile_slot(5, 0, 184, 81, 31);
+set_color_profile_slot(5, 1, 86, 144, 70);
+set_color_profile_slot(5, 2, 60, 180, 40);
+set_color_profile_slot(5, 3, 150, 92, 57);
+set_color_profile_slot(5, 4, 80, 120, 75);
 
 //Kackle Color
 set_color_profile_slot(6, 0, 193, 188, 157);

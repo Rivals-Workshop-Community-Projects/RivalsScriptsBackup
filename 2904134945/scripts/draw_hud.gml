@@ -154,12 +154,24 @@ if ("practice" in self)
 						AddText("Lower CPU levels now have weaker ai to match its proper level");
 						break;
 					case 6:
-						AddText("v1.5 - 1 Apr 2023");
+						AddText("v1.5 - 23 May 2023");
 						AddText("");
 						AddText("FSpec now heals 2% instead of 1% each");
 						AddText("FSpec throw sfx volume now lowers over time");
 						AddText("");
 						AddText("Added Backward Jump animations");
+						break;
+					case 7:
+						AddText("v1.6 - 17 Jul 2023");
+						AddText("");
+						AddText("Added Spamton Ad compatibility");
+						AddText("");
+						AddText("FSpec Hitstun Multiplier 0.9 -> 0.8");
+						AddText("FSpec SDI multiplier 1.1 -> 1.2");
+						AddText("FSpec Angle 50 -> 45");
+						AddText("FSpec can now be fully crouch armoured through (Effect 12)");
+						AddText("");
+						AddText("Ice Crystal Extra Hitpause 0 -> 4 (Base is still 8)");
 						break;
 				}
 				DrawTutorialBlock();

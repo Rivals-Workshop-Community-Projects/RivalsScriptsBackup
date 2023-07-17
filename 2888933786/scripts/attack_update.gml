@@ -638,8 +638,8 @@ switch (attack)
     				sound_play(sound_get("uh"))
     			break;
     			case 1:
-    				sound_stop(sound_get("hurt2"))
-    				sound_play(sound_get("hurt2"))
+    				sound_stop(sound_get("voice6"))
+    				sound_play(sound_get("voice6"))
     		}
     	}
     break;
