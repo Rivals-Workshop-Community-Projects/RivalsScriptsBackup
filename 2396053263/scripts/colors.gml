@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 1, 30, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Dreams
 set_color_profile_slot( 1, 0, 48, 55, 122 ); //Shirt
@@ -128,6 +128,13 @@ set_color_profile_slot( 15, 1, 184, 130, 87 ); //Hair
 set_color_profile_slot( 15, 2, 255, 231, 205 ); //Skin
 set_color_profile_slot( 15, 3, 48, 90, 147 ); //Legs
 set_color_profile_slot( 15, 4, 196, 59, 76 ); //Eyes/Magic 
+
+// GeneralChimp Battle
+set_color_profile_slot( 16, 0, 66, 77, 55 ); //Shirt
+set_color_profile_slot( 16, 1, 111, 92, 78 ); //Hair
+set_color_profile_slot( 16, 2, 165, 148, 146 ); //Skin
+set_color_profile_slot( 16, 3, 94, 75, 59 ); //Legs
+set_color_profile_slot( 16, 4, 196, 59, 76 ); //Eyes/Magic
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

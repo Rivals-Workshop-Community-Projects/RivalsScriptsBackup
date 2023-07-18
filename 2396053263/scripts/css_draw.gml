@@ -6,7 +6,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 
 var names;
-names = ["End of Love","Dreams","Maroon","Viridian","Moonlight","Lonely","Solar","Seafoam","Berry","Tears","Air","Saccharine","Noise","Date","Warrior","Landkon Victory"]
+names = ["End of Love","Dreams","Maroon","Viridian","Moonlight","Lonely","Solar","Seafoam","Berry","Tears","Air","Saccharine","Noise","Date","Warrior","Landkon Victory", "Battle"]
 
 var alt_new = get_player_color(player);
 var offset;
