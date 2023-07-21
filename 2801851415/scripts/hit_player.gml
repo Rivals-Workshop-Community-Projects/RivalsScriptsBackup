@@ -137,7 +137,7 @@ if(hit_player_obj.frostineFreeze)
     take_damage(hit_player_obj.player, player, ceil(get_hitbox_value(atk, hbox, HG_DAMAGE)*0.5));
     spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30, 29)
 }
-if(atk == AT_NSPECIAL && hbox == 2 || atk == AT_DSPECIAL_2 || atk == AT_DSPECIAL && hbox == 2|| atk == AT_DSPECIAL && hbox == 1|| atk == AT_FTHROW  && hbox = 3|| atk == AT_USTRONG && hbox == 2 || atk == AT_EXTRA_1 || atk == AT_EXTRA_2) 
+if(atk == AT_NSPECIAL && hbox == 2 || atk == AT_DSPECIAL_2 || atk == AT_DSPECIAL && hbox == 2|| atk == AT_DSPECIAL && hbox == 1|| atk == AT_FTHROW  && hbox = 3|| atk == AT_USTRONG && hbox == 2 || atk == AT_EXTRA_2) 
 {
     if(!hit_player_obj.frostineFreeze)
     {
@@ -175,6 +175,10 @@ switch (atk) {
         sound_play(asset_get("sfx_icehit_heavy1"), 0, noone, 1, 1)
     break;
     case AT_FSPECIAL: 
+        if (free) {
+            old_hsp = 8*spr_dir;
+            old_vsp = -3;
+        }
         if hbox == 2 {
             sound_play(asset_get("sfx_infinidagger"), 0, noone, .7, 1)
         }

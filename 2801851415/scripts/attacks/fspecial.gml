@@ -35,13 +35,13 @@ set_num_hitboxes(AT_FSPECIAL,2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 3); //8, matches when the anim frame switches
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 128);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 148);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -32);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 114);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 39);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 67);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 31);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .7);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
 // set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);

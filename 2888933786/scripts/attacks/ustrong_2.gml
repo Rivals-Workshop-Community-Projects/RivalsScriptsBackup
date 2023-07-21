@@ -1,8 +1,8 @@
 set_attack_value(AT_USTRONG_2, AG_CATEGORY, 2);
 set_attack_value(AT_USTRONG_2, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USTRONG_2, AG_AIR_SPRITE, sprite_get("uspecial"));
-set_attack_value(AT_USTRONG_2, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
-set_attack_value(AT_USTRONG_2, AG_HURTBOX_AIR_SPRITE, sprite_get("uspecial_hurt"));
+set_attack_value(AT_USTRONG_2, AG_HURTBOX_SPRITE, sprite_get("krispy"));
+set_attack_value(AT_USTRONG_2, AG_HURTBOX_AIR_SPRITE, sprite_get("krispy"));
 set_attack_value(AT_USTRONG_2, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_USTRONG_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USTRONG_2, AG_USES_CUSTOM_GRAVITY, 1);

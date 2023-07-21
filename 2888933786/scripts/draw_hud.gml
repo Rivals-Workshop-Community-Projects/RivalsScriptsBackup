@@ -28,7 +28,7 @@ if (trolled && get_gameplay_time() >= 200 and get_gameplay_time() <= 400) {
     }
       
 if (trolled && get_gameplay_time() >= 420 and get_gameplay_time() <= 530) {
-        draw_debug_text(temp_x+0,temp_y-72, "* I'm gonna have fun torturing you and making you ragequit");
+        draw_debug_text(temp_x+0,temp_y-72, "* i won't let a neanderthal like you to win");
     }
 
      
@@ -38,7 +38,7 @@ if (trolled && get_gameplay_time() >= 420 and get_gameplay_time() <= 530) {
     }   
 
     if (trolled && get_gameplay_time() >= 3480 and get_gameplay_time() <= 3750) {
-        draw_debug_text(temp_x+140,temp_y-172, "* just kidding braintrust");
+        draw_debug_text(temp_x+140,temp_y-172, "* ");
         draw_debug_text(temp_x+0,temp_y-52, " ");
     }
 

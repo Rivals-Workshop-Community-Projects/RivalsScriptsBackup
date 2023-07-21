@@ -21,6 +21,10 @@ if "prev_alt" not in self {
 
 if prev_alt != alt {
     sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,.8,1.2 + alt/10)
+    if get_player_color(player) == 15{
+    sound_play(sound_get("METALPIPE"),false,noone,0.85,1)
+   }
+
 }
 
 prev_alt = alt;
@@ -43,10 +47,12 @@ var palette_names = [
   "Pause Ahead"
   "Megaman"
   "[The World]"
+  "Pan"
+
 ];
 
 shader_end()
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
-draw_debug_text(floor(x)+14,floor(y)+110 - floor(alt*2.5),string(palette_names[alt]));
+draw_debug_text(floor(x)+14,floor(y)+110 - floor(alt*2.4),string(palette_names[alt]));
 

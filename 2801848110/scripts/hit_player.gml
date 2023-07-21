@@ -13,7 +13,8 @@ if my_hitboxID.attack == AT_JAB {
      move_cooldown[AT_FTHROW] = 20
 }
 
-if my_hitboxID.attack == AT_USPECIAL &&  my_hitboxID.hbox_num == 9 {
+
+if (my_hitboxID.attack == AT_USPECIAL &&  my_hitboxID.hbox_num == 9) or my_hitboxID.attack == AT_FSPECIAL {
     y -= 2
     hitpause = true 
     hitstop = 6
@@ -61,6 +62,11 @@ if my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1 {
      hit_player_obj.hitstop += 10
      hit_player_obj.crippled = 1
      move_cooldown[AT_FTHROW] = 90
+
+    if get_player_color(player) == 15{
+    sound_play(sound_get("METALPIPE"),false,noone,0.85,1)
+   }
+
 }
 
 
@@ -68,6 +74,6 @@ if my_hitboxID.attack == AT_USPECIAL {
     has_hit = true 
 }
 
-timeflow += my_hitboxID.damage * 3
+timeflow += my_hitboxID.damage * 2
 move_cooldown[AT_EXTRA_2] = 15
 move_cooldown[AT_UTHROW] = hitstop

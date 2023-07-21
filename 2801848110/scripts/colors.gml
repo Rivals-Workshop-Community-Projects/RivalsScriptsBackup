@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 13, 45 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 16 );
 
 // Blink
 set_color_profile_slot( 1, 0, 255, 84, 147 ); //Energy
@@ -87,9 +87,6 @@ set_color_profile_slot( 5, 6, 36, 77, 148 ); //Poncho2
 set_color_profile_slot( 5, 7, 43, 44, 61 ); //Blue
 
 // Void
-// such a shame
-//set_color_profile_slot( 6, 0, 110, 255, 0 ); //Energy
-//set_color_profile_slot( 6, 1, 110, 255, 0 ); //Eye
 set_color_profile_slot( 6, 0, 255, 0, 0 ); //Energy
 set_color_profile_slot( 6, 1, 255, 0, 0 ); //Eye
 set_color_profile_slot( 6, 2, 0, 0, 0 ); //Eye2
@@ -99,7 +96,7 @@ set_color_profile_slot( 6, 5, 66, 135, 66 ); //Poncho1
 set_color_profile_slot( 6, 6, 39, 79, 39 ); //Poncho2
 set_color_profile_slot( 6, 7, 114, 207, 0 ); //Blue
 
-// 10
+// such a shame
 set_color_profile_slot( 7, 0, 255, 0, 0 ); //Energy
 set_color_profile_slot( 7, 1, 255, 0, 0 ); //Eye
 set_color_profile_slot( 7, 2, 255, 255, 255 ); //Eye2
@@ -109,7 +106,7 @@ set_color_profile_slot( 7, 5, 255, 18, 18 ); //Poncho1
 set_color_profile_slot( 7, 6, 133, 0, 18 ); //Poncho2
 set_color_profile_slot( 7, 7, 64, 51, 64 ); //Blue
 
-// 7-11
+// 10
 set_color_profile_slot( 8, 0, 21, 255, 0 ); //Energy
 set_color_profile_slot( 8, 1, 21, 255, 0 ); //Eye
 set_color_profile_slot( 8, 2, 0, 0, 0 ); //Eye2
@@ -119,7 +116,7 @@ set_color_profile_slot( 8, 5, 227, 227, 227 ); //Poncho1
 set_color_profile_slot( 8, 6, 153, 118, 191 ); //Poncho2
 set_color_profile_slot( 8, 7, 77, 51, 117 ); //Blue
 
-// LGBT
+// 7-11
 set_color_profile_slot( 9, 0, 255, 130, 175 ); //Energy
 set_color_profile_slot( 9, 1, 41, 255, 255 ); //Eye
 set_color_profile_slot( 9, 2, 232, 232, 232 ); //Eye2
@@ -129,7 +126,7 @@ set_color_profile_slot( 9, 5, 255, 255, 255 ); //Poncho1
 set_color_profile_slot( 9, 6, 255, 156, 192 ); //Poncho2
 set_color_profile_slot( 9, 7, 41, 255, 255 ); //Blue
 
-// NB
+// LGBT
 set_color_profile_slot( 10, 0, 101, 67, 232 ); //Energy
 set_color_profile_slot( 10, 1, 87, 49, 232 ); //Eye
 set_color_profile_slot( 10, 2, 0, 0, 0 ); //Eye2
@@ -139,7 +136,7 @@ set_color_profile_slot( 10, 5, 89, 89, 110 ); //Poncho1
 set_color_profile_slot( 10, 6, 44, 44, 54 ); //Poncho2
 set_color_profile_slot( 10, 7, 232, 232, 232 ); //Blue
 
-// BLW
+// NB
 set_color_profile_slot( 11, 0, 255, 241, 41 ); //Energy
 set_color_profile_slot( 11, 1, 255, 144, 41 ); //Eye
 set_color_profile_slot( 11, 2, 255, 255, 255 ); //Eye2
@@ -149,7 +146,7 @@ set_color_profile_slot( 11, 5, 98, 99, 120 ); //Poncho1
 set_color_profile_slot( 11, 6, 63, 67, 89 ); //Poncho2
 set_color_profile_slot( 11, 7, 255, 241, 41 ); //Blue
 
-// Stop Infront
+// BLW
 set_color_profile_slot( 12, 0, 181, 97, 255 ); //Energy
 set_color_profile_slot( 12, 1, 255, 92, 92 ); //Eye
 set_color_profile_slot( 12, 2, 246, 246, 246 ); //Eye2
@@ -159,7 +156,7 @@ set_color_profile_slot( 12, 5, 79, 125, 207 ); //Poncho1
 set_color_profile_slot( 12, 6, 26, 57, 115 ); //Poncho2
 set_color_profile_slot( 12, 7, 236, 84, 41 ); //Blue
 
-// Megam0n
+// Stop Infront
 set_color_profile_slot( 13, 0, 0, 255, 51 ); //Energy
 set_color_profile_slot( 13, 1, 48, 255, 179 ); //Eye
 set_color_profile_slot( 13, 2, 255, 255, 255 ); //Eye2
@@ -169,7 +166,7 @@ set_color_profile_slot( 13, 5, 255, 18, 18 ); //Poncho1
 set_color_profile_slot( 13, 6, 166, 22, 41 ); //Poncho2
 set_color_profile_slot( 13, 7, 107, 103, 112 ); //Blue
 
-// Stand
+// Megam0n
 set_color_profile_slot( 14, 0, 255, 247, 0 ); //Energy
 set_color_profile_slot( 14, 1, 217, 0, 0 ); //Eye
 set_color_profile_slot( 14, 2, 255, 255, 255 ); //Eye2
@@ -178,6 +175,16 @@ set_color_profile_slot( 14, 4, 212, 78, 0 ); //Fur2
 set_color_profile_slot( 14, 5, 255, 247, 0 ); //Poncho1
 set_color_profile_slot( 14, 6, 237, 111, 38 ); //Poncho2
 set_color_profile_slot( 14, 7, 0, 207, 24 ); //Blue
+
+// unnamed alt palette
+set_color_profile_slot( 15, 0, 41, 255, 255 ); //Energy
+set_color_profile_slot( 15, 1, 92, 135, 255 ); //Eye
+set_color_profile_slot( 15, 2, 255, 255, 255 ); //Eye2
+set_color_profile_slot( 15, 3, 255, 105, 185 ); //Fur1
+set_color_profile_slot( 15, 4, 170, 33, 194 ); //Fur2
+set_color_profile_slot( 15, 5, 255, 233, 112 ); //Poncho1
+set_color_profile_slot( 15, 6, 207, 128, 68 ); //Poncho2
+set_color_profile_slot( 15, 7, 71, 139, 255 ); //Blue
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

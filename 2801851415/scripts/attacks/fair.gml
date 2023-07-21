@@ -79,7 +79,7 @@ set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 52);//70
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 52);//70
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 361);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
@@ -102,7 +102,7 @@ set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 52);//70
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 52);//70
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 4);
+set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
@@ -125,7 +125,7 @@ set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 60);//75
 set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 60);//75
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 2);
-set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 5);
+set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 45);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 7); //this is high knockback for an aerial
 set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .7); //this is high scaling for an aerial

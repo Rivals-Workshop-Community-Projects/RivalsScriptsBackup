@@ -48,7 +48,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, -5);
 */
-set_num_hitboxes(AT_DSPECIAL, 3);
+set_num_hitboxes(AT_DSPECIAL, 2);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2); //setting this to 2 makes it a projectile
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 3);
@@ -90,7 +90,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0.1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 0);
 //set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, icefx);
 //set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, shatter);

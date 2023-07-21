@@ -4,7 +4,7 @@ RCing = 0
 
 tauntnum += 1
 
-timeflow += enemy_hitboxID.damage * 6
+timeflow += enemy_hitboxID.damage * 4
 move_cooldown[AT_EXTRA_2] = 15
 move_cooldown[AT_UTHROW] = hitstop
 

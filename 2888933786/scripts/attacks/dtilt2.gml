@@ -12,7 +12,7 @@ set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_SFX, sound_get("dumbape"));
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_SFX, sound_get("pathetic"));
+set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_SFX, sound_get("start"));
 
 //shot 1
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_TYPE, 1);

@@ -120,7 +120,7 @@ switch attack {
 	
 	case AT_TAUNT :
 	
-	   if state_timer > 30 {
+	   if state_timer > 45 {
 	   	can_jump = true 
 	   	can_dash = true 
 	   	can_shield = true
@@ -383,8 +383,8 @@ switch attack {
 	    		vsp = -1
 	        } else {
 	        var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
-	        		hsp = (5 * cos(angle));
-	        		vsp = (5 * sin(angle));
+	        		hsp = (6 * cos(angle));
+	        		vsp = (6 * sin(angle));
 	        }
 	
         	sound_play(asset_get("sfx_absa_concentrate"),false,noone,1,1.2)

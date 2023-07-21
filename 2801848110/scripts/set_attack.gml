@@ -19,8 +19,6 @@ if attack == AT_TAUNT {
         set_window_value(AT_TAUNT, 8, AG_WINDOW_ANIM_FRAME_START, 1);
         set_window_value(AT_TAUNT, 9, AG_WINDOW_ANIM_FRAME_START, 1);
     } else if up_down {
-        take_damage(player,-1,-1)
-        
         pitch = 0.5
         
         sound_play(asset_get("sfx_diamond_collect"))
@@ -36,8 +34,6 @@ if attack == AT_TAUNT {
         set_window_value(AT_TAUNT, 9, AG_WINDOW_ANIM_FRAME_START, 4);
      
     } else if down_down {
-        take_damage(player,-1,1)
-        
         pitch = -0.5
         
         sound_play(asset_get("sfx_ori_bash_use"))

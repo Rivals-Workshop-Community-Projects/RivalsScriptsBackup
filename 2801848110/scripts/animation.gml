@@ -30,12 +30,13 @@ switch (state){
 
 
 if state == PS_SPAWN {
-     //if state_timer == 15 {
-     //    sound_stop(asset_get("sfx_ori_grenade_aim"))
-     //    sound_stop(asset_get("sfx_ori_energyhit_medium"))
-     //    sound_play(asset_get("sfx_ori_grenade_aim"),false,noone,.9,1.4)
-     //    sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.9,1.2)
-     //}
+     if state_timer < 35 {
+       draw_indicator = false
+     }
+     if state_timer == 15 {
+         sound_stop(asset_get("sfx_ori_grenade_aim"))
+           spawn_hit_fx(x,y,RC)
+sound_play(asset_get("sfx_ori_grenade_aim"),false,noone,.9,1.4)     }
     if state_timer == 35 {
         vfx = spawn_hit_fx(x,y - 40,306)
          vfx.pause = 10
@@ -44,8 +45,7 @@ if state == PS_SPAWN {
          sound_stop(asset_get("sfx_ori_energyhit_medium"))
         sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.6)
      	sound_play(asset_get("sfx_waveland_abs"),false,noone,1,1)
-     	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.9,.6)
-     	spawn_hit_fx(x,y,RC)
+         	spawn_hit_fx(x,y,RC)
      	spawn_hit_fx(x,y - 60,air)
      	spawn_hit_fx(x,y - 160,air)
      	spawn_hit_fx(x,y - 260,air)
