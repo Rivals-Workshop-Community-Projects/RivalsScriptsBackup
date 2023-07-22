@@ -7,7 +7,7 @@ no_sword = true;
 
 use_sword = false;
 
-//float stuff, original code by RubyNights (for Pomme)
+//float stuff, original code by RubyNights (for Pomme) not mine
 floating = 0;
 floatTimer = 0;
 floatMax = 45;
@@ -46,23 +46,23 @@ pratfall_anim_speed = .25;
 walk_speed = 3.3;
 walk_accel = 0.4;
 walk_turn_time = 6;
-initial_dash_time = 3;
-initial_dash_speed = 4.5;
+initial_dash_time = 9;
+initial_dash_speed = 6;
 dash_speed = 5.5;
-dash_turn_time = 7;
+dash_turn_time = 9;
 dash_turn_accel = 1;
-dash_stop_time = 3;
+dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .5;
 moonwalk_accel = 1;
 
-jump_start_time = 6;
+jump_start_time = 5;
 jump_speed = 11;
-short_hop_speed = 8;
+short_hop_speed = 7.4;
 djump_speed = 12;
 leave_ground_max = 5.3; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4.8; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.3; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3.7; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -70,19 +70,19 @@ air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
-walljump_vsp = 11;
+walljump_vsp = 12;
 walljump_time = 22;
 max_fall = 12; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
-gravity_speed = .7;
-hitstun_grav = .6;
-knockback_adj = 0.8; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+gravity_speed = .65;
+hitstun_grav = .55;
+knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4; //normal landing frames
-prat_land_time = 3;
+land_time = 8; //normal landing frames
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.20; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = .06; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -107,8 +107,8 @@ techroll_speed = 10;
 //airdodge animation frames
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 4;
-air_dodge_recovery_frames = 1;
-air_dodge_speed = 6;
+air_dodge_recovery_frames = 2;
+air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 3;

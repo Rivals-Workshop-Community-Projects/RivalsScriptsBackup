@@ -69,7 +69,7 @@ if((state == PS_IDLE_AIR || (air && vsp > 0)) && (jump_down || up_down && can_ta
 if(floating){
 	
 	if (!free){
-		if (down_down){
+		if (down_down && jump_down){
 			freeFloatStop = 1;
 		}
 	    	

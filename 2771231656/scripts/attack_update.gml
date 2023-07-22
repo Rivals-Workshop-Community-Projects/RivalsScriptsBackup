@@ -192,27 +192,27 @@ if (attack == AT_FSPECIAL && window == 11 && left_pressed == true  && spr_dir ==
   window_timer = 0;
 }
 
-if (attack == AT_USTRONG && window == 3){
+if (attack == AT_USTRONG && window == 2){
 super_armor = true;
 }
 
-if (attack == AT_USTRONG && window == 7){
+if (attack == AT_USTRONG && window == 6){
 super_armor = true;
 }
 
-if (attack == AT_FSTRONG && window == 3){
+if (attack == AT_FSTRONG && window == 2){
 super_armor = true;
 }
 
-if (attack == AT_FSTRONG && window == 7){
+if (attack == AT_FSTRONG && window == 6){
 super_armor = true;
 }
 
-if (attack == AT_DSTRONG && window == 3){
+if (attack == AT_DSTRONG && window == 2){
 super_armor = true;
 }
 
-if (attack == AT_DSTRONG && window == 7){
+if (attack == AT_DSTRONG && window == 6){
 super_armor = true;
 }
 

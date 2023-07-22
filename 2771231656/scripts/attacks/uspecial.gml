@@ -8,7 +8,7 @@ set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
