@@ -607,9 +607,7 @@ if state == PS_RESPAWN && visible {
 with asset_get("pHitBox") {
 	if "player_id" in self {
 	if player_id = other.id {
-	        if (attack == AT_FSPECIAL) 
-	        or (attack == AT_UAIR )
-	        or (attack == AT_FSTRONG && hbox_num == 1) {	
+	        if (attack == AT_FSTRONG && hbox_num == 1) {	
         
                 
             with oPlayer{
@@ -617,7 +615,7 @@ with asset_get("pHitBox") {
             	var heal_player = instance_place(x, y, other)
             	if (heal_player != noone) {
             		
-                	if  id != other.player_id && (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD 
+                	if  id != other.player_id && (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD  or state == PS_PARRY
                 	or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD or invince_time > 0 or state == PS_TECH_GROUND) {
                 		if "fakeinvi" in self {
                 			if fakeinvi > 0 {
