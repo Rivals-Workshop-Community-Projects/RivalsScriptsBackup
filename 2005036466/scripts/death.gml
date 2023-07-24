@@ -60,6 +60,13 @@ with(oPlayer){
 			outline_color = [0,0,0];
 			init_shader();
 		}
+		if penny_charged_id != noone {
+			penny_charge_timer = 0;
+			penny_charge_sound = false;
+			outline_color = [0,0,0];
+			init_shader();
+			penny_charged_id = noone;
+		}
 	}
 }
 with(mine_player){

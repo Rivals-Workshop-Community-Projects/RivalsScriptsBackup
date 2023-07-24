@@ -161,13 +161,13 @@ switch(state){
 	    			switch(other.pen_c4_charged){
 	    				case 0:
 			    			if point_distance(x, y, other.x + other.hsp, other.y + other.vsp) <= 60{
-			    				other.state = 4;
+			    				other.state = 6;
 			    				other.state_timer = 0;
 			    			}
 	    					break;
 	    				case 1:
 			    			if point_distance(x, y, other.x + other.hsp, other.y + other.vsp) <= 80{
-			    				other.state = 6;
+			    				other.state = 8;
 			    				other.state_timer = 0;
 			    			}
 	    					break;
@@ -190,19 +190,19 @@ switch(state){
     		case 2:
     			image_index = 0;
     			break;
-    		case 17:
-    		case 18:
+    		case 13:
+    		case 14:
     			image_index = 2;
     			break;
-    		case 19:
-    		case 20:
+    		case 15:
+    		case 16:
     			image_index = 3;
     			break;
     		default:
     			image_index = 1;
     			break;
     	}
-        if state_timer == 20{
+        if state_timer == 16{
         	state = 4;
         	state_timer = 0;
         }
@@ -231,31 +231,51 @@ switch(state){
         instance_destroy();
         player_id.mine = noone;
         break;
-    case 6:
+    case 6: // Uncharged
     	is_hittable = false;
     	sprite_index = spr_det;
     	switch(state_timer){
     		case 0:
-    		case 1:
-    		case 2:
     			image_index = 0;
     			break;
+    		case 1:
+    		case 2:
     		case 3:
-    		case 4:
-    		case 5:
-    		case 6:
     			image_index = 1;
     			break;
-    		case 7:
-    		case 8:
+    		case 4:
     			image_index = 2;
     			break;
-    		case 9:
-    		case 10:
+    		case 5:
     			image_index = 3;
     			break;
     	}
-        if state_timer == 10{
+        if state_timer == 5{
+        	state = 4;
+        	state_timer = 0;
+        }
+        break;
+    case 8: // Charged
+    	is_hittable = false;
+    	sprite_index = spr_det;
+    	switch(state_timer){
+    		case 0:
+    			image_index = 0;
+    			break;
+    		case 1:
+    		case 2:
+    			image_index = 1;
+    			break;
+    		case 3:
+    		case 4:
+    			image_index = 2;
+    			break;
+    		case 5:
+    		case 6:
+    			image_index = 3;
+    			break;
+    	}
+        if state_timer == 6{
         	state = 4;
         	state_timer = 0;
         }
@@ -282,7 +302,8 @@ if place_meeting(x, y, pHitBox){
 			}
 		}
 		if toggle == 1 or toggle == 2{
-			if (pHitBox.player_id.penny_install != true and (pHitBox.attack == AT_NSPECIAL or pHitBox.attack == AT_FTILT or pHitBox.attack == AT_DAIR) and pHitBox.hbox_num == 1) and pen_c4_charged{
+			if (pHitBox.player_id.penny_install != true and (((pHitBox.attack == AT_NSPECIAL or pHitBox.attack == AT_FSPECIAL or pHitBox.attack == AT_FTILT or pHitBox.attack == AT_DAIR) and pHitBox.hbox_num == 1) or
+			(pHitBox.attack == AT_JAB and pHitBox.hbox_num == 2) or (pHitBox.attack == AT_USTRONG or pHitBox.attack == AT_FSTRONG))) and pen_c4_charged{
 				with pHitBox.player_id{
 					penny_install = true;
 					resetcolours = 1;

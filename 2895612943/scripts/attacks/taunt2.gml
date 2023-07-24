@@ -1,4 +1,5 @@
 set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt"));
+set_attack_value(AT_TAUNT_2, AG_SPRITE_BITE, sprite_get("bite_taunt"));
 set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 1);
 set_attack_value(AT_TAUNT_2, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_TAUNT_2, AG_OFF_LEDGE, 0);

@@ -257,6 +257,21 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.83", "23rd July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved the AI once again; GK will now hitfall a bit better, jumps a little more so that he does more aerials, and will attempt to block things more effectively with FSpecial");
+
+initPatch("1.82", "23rd July, 2023");
+initHeader("Buffs");
+initSection("+ If GK starts DStrong grounded, he can cancel out of the falling part on hit. This makes it slightly more useful when grounded, but also allows you to do DStrong off-stage and live (even if only in a specific scenario)
++ NAir can be cancelled late into the aerial spin as long as GK has hit an opponent and not landed yet
++ UAir multihits now pull through platforms (not a major thing but will prevent opponents from being stuck on a platform and therefore escape the move)");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved GK's AI in many ways:
+He will now hold NSpecial and FSpecial + send swords up during NSpecial if it's beneficial to, use rising UAir more effectively, charge his strong attacks, stop charging specials/strongs if opponent parries or gets close, use the new DStrong cancel if off-stage, won't SD as much with DStrong/NAir off-stage, uses more varied moves, can hitfall aerials, and more
++ GK can now look up
++ Finally added Toon Link compatibility");
+
 initPatch("1.81", "16th March, 2023");
 initHeader("Buffs");
 initSection("- DStrong tornado can now also be used on platforms, because why not (obviously the platform has to be big enough though)");
@@ -333,7 +348,7 @@ initSection("Galacta Knight is a Kirby character who debuted in Kirby Super Star
 initHeader("Character by");
 initSection("FelixBlobDev");
 initHeader("Compatible with");
-initSection("Steve, Link");
+initSection("Toon Link, Villager, Steve, Link");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 

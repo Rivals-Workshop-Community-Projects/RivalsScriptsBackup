@@ -67,3 +67,4 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 9);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UAIR, 2, HG_TECHABLE, 2);

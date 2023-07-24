@@ -56,6 +56,7 @@ sprite_change_offset("dstrong", 32, 63, true);
 sprite_change_offset("nspecial", 32, 63, true);
 sprite_change_offset("fspecial", 32, 63, true);
 sprite_change_offset("uspecial", 32, 63, true);
+sprite_change_offset("dspecialold", 32, 63, true);
 sprite_change_offset("dspecial", 32, 63, true);
 sprite_change_offset("taunt", 32, 63);
 sprite_change_offset("dspecproj", 64, 90);
@@ -63,6 +64,9 @@ sprite_change_offset("b_dspecproj", 64, 90);
 
 sprite_change_offset("dspecpose", 64, 126);
 sprite_change_offset("bite_dspecpose", 64, 126);
+sprite_change_offset("ohno", 32, 63);
+sprite_change_offset("bite_ohno", 32, 63);
+sprite_change_offset("dspec_mask", 64, 126);
 
 sprite_change_offset("disc", 14, 14);
 
@@ -79,5 +83,12 @@ sprite_change_offset("bite_bighurt", 32, 63);
 sprite_change_offset("bite_uphurt", 32, 63);
 
 sprite_change_offset("arrow", 3, 2);
+sprite_change_offset("arrow_white", 4, 3);
+sprite_change_offset("offscreen", 16, 18);
+sprite_change_offset("offscreenb", 16, 18);
+sprite_change_offset("hud_offscreen_arrow", 16, 16);
+
+sprite_change_offset("hud", 0, 0);
+sprite_change_offset("hudb", 0, 0);
 
 user_event(15);

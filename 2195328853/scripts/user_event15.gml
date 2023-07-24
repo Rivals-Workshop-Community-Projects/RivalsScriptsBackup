@@ -234,15 +234,24 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.80", "27nd April 2022");
+initPatch("1.81", "23rd July 2023");
+initHeader("Buffs");
+initSection("+ Hold USpecial can now be done multiple times in the air (it just only pushes BB upward once)
++ BAir is stronger (damage 9 -> 10, bkb 6->7.5, kbs 1.0->1.05)
++ UAir multihits now pull through platforms (helps prevent teching/falling out of the move)");
+initHeader("Fixes / Other Changes");
+initSection("+ Blue Blob can now look at Kewtians
++ Improved BB's AI a lot, as it'll recover better and much more");
+
+initPatch("1.80", "27nd April 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed some bugs from last patch with the blob ball and FSpecial");
 
-initPatch("1.79", "22nd April 2022");
+initPatch("1.79", "22nd April 2023");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed a small bug with the latest patch where FSpecial turning the blob ball into it's steam form wouldn't flip it to Blue Blob's direction (so now it works like it used to)");
 
-initPatch("1.78", "21st April 2022");
+initPatch("1.78", "21st April 2023");
 initHeader("Buffs");
 initSection("+ NAir can now be held cuz yay
 + Many moves now have a bit of disjoint to them, like most KoB characters (BB noteably lacked this)

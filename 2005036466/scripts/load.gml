@@ -4,8 +4,6 @@ var yy = 71;
 var vfx_xx = 100;
 var vfx_yy = 100;
 
-small_sprites = true;
-
 // Hurtboxes
 sprite_change_offset("penny_hurt", xx*2, yy*2);         // Done
 sprite_change_offset("pennycrouch_hurt", xx*2, yy*2);   // Done
@@ -168,7 +166,7 @@ sprite_change_offset("mark_small_top", 96, 96);
 sprite_change_offset("mark_small_bot", 96, 96);
 
 // Projectiles
-sprite_change_offset("fspecial_proj", vfx_xx, vfx_yy);
+sprite_change_offset("fspecial_proj", vfx_xx+16, vfx_yy);
 
 // VFX
 sprite_change_offset("vfx_plasmastrong", 150, 150);

@@ -70,8 +70,8 @@ tech_recovery_frames = 4;
 
 //tech roll animation frames
 techroll_startup_frames = 1
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
+techroll_active_frames = 3;
+techroll_recovery_frames = 4;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -141,6 +141,7 @@ runeM = false;
 runeO = false;
 outline_timer = 0;
 outline_rev = false;
+lookuptime = 0;
 KewtFriend = true;
 
 intro = (state == PS_SPAWN);

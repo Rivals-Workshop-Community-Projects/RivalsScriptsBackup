@@ -1,4 +1,4 @@
-var color = room != 113 || object_index == oTestPlayer ? get_player_color(player) : 0
+var color = room != 113 || object_index == oTestPlayer ? get_player_color(player) : get_player_color(0)
 
 set_character_color_slot(3, 
 	get_color_profile_slot_r(color, 8),

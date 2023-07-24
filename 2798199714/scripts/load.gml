@@ -54,7 +54,7 @@ sprite_change_offset("taunt_laser", 10,15, true);
 
 sprite_change_offset("plat", 100/2, 0, true);
 
-sprite_change_offset("feri_costume", 84, 114);
+sprite_change_offset("lookup", 57, 69, true);
 sprite_change_offset("miiverse_post", 60, 30);
 
 sprite_change_offset("nspecial_sword", 70, 70);

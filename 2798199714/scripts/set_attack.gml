@@ -115,15 +115,18 @@ if (attack == AT_USTRONG){
 if (attack == AT_DSTRONG){
 	reset_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH);
 	reset_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH);
+	dstrong_free = free;
 }
 
-/*if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
-	if(right_down){
-		spr_dir = 1;
-	}else if(left_down){
-		spr_dir = -1;
+//for the AI
+if (attack == AT_NAIR || attack == AT_DSTRONG){
+	if("temp_level" in self && temp_level > 0){
+		if(!position_meeting(x,y+50,asset_get("par_block")) && !position_meeting(x,y+200,asset_get("par_block")) && !position_meeting(x,y+500,asset_get("par_block"))
+		&& !position_meeting(x,y+50,asset_get("par_jumpthrough")) && !position_meeting(x,y+200,asset_get("par_jumpthrough")) && !position_meeting(x,y+500,asset_get("par_jumpthrough"))){
+			attack = AT_DAIR;
+		}
 	}
-}*/
+}
 
 if (attack == AT_TAUNT){
 	reset_attack_value(AT_TAUNT, AG_NUM_WINDOWS);

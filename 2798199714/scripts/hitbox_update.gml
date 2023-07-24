@@ -182,7 +182,8 @@ if(attack == AT_FSPECIAL){
     if(hbox_num == 3){
     	angle = darctan2(-vsp * spr_dir, hsp * spr_dir);proj_angle = angle;
 	    if(hitbox_timer % 3 == 0){
-            var trail = spawn_hit_fx(x+10*spr_dir, y, player_id.fx_fspecial_projectile_trail);trail.depth = depth-1;trail.draw_angle = proj_angle;
+            var trail = spawn_hit_fx(x+10*spr_dir, y, player_id.fx_fspecial_projectile_trail);trail.depth = depth-1;
+            trail.spr_dir = spr_dir;trail.draw_angle = proj_angle;
         }
     }
 }

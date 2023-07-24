@@ -21,3 +21,11 @@ if(my_hitboxID.attack == AT_FSPECIAL){
         my_hitboxID.hitbox_timer = 0;
     }
 }
+
+if(my_hitboxID.type == 2 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_FSPECIAL &&
+	my_hitboxID.attack != AT_USPECIAL && my_hitboxID.attack != AT_NSPECIAL){
+    
+    //putting the parry swap code here was really buggy so i moved it to update and it worked perfectly fine for some reason
+    assist_aerial_parrystun = true;
+    
+}

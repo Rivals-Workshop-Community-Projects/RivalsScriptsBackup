@@ -54,6 +54,7 @@ sprite_change_offset("taunt_dance", 50/2, 58/2, true);
 sprite_change_offset("taunt_pose", 50/2, 58/2, true);
 sprite_change_offset("idle_crown", 17, 34, true);
 
+sprite_change_offset("lookup", 50/2, 58/2, true);
 sprite_change_offset("respawn", 80/2, 40/2, true);
 sprite_change_offset("plat", 80, 0);
 

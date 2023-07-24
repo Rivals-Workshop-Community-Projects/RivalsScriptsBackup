@@ -3,6 +3,8 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL 
     trigger_b_reverse();
 }
 
+pen_prev_attack = attack;
+
 var whiff_time = round(get_window_value(attack, window, AG_WINDOW_LENGTH) * 1.5);
 
 switch(attack){
@@ -275,7 +277,7 @@ switch(attack){
 					if free{
 						hsp = hsp + (-3 * spr_dir)
 					}
-					create_hitbox(attack, 2, x + (36 * spr_dir), y - 28);
+					create_hitbox(attack, 2, x + (52 * spr_dir), y - 28);
 				}
 				break;
 		}
@@ -287,7 +289,7 @@ switch(attack){
 			sound_play(asset_get("sfx_propeller_dagger_loop"));
 		}
 		if vsp > -4.5 and window != 7{
-			vsp = lerp(vsp, -4, .5)
+			vsp = lerp(vsp, -3.5, .5)
 		}
 		if !free and window > 1{
 			attack_end();
@@ -340,9 +342,15 @@ switch(attack){
 					penny_install = false;
 				}
 				break;
+			case 6:
+				if ((window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH) - 1) and !hitpause){
+					set_state(PS_PRATFALL);
+					attack_end();
+				}
+				break;
 		}
 		if window > 1{
-			if (((shield_pressed and window != 1) or down_pressed) and window != 7){
+			if (!hitpause and (shield_pressed and window != 1)){
 				penny_install = false;
 				sound_stop(asset_get("sfx_absa_jabloop"));
 				create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
@@ -415,7 +423,7 @@ switch(attack){
 			    if window_timer == 1 and !hitpause{
 			        if (instance_exists(obj_article2)){
 			            with(obj_article2){
-			            	if (("pen_c4_charged" in self) and (player_id == other.id)){
+			            	if (("pen_c4_charged" in self) and (state != 0 and state != 7) and (player_id == other.id)){
 					            state = 3;
 					            state_timer = 0;
 					            sound_play(asset_get("sfx_mol_huge_countdown"));

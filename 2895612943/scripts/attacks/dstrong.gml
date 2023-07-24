@@ -1,6 +1,7 @@
 set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
 set_attack_value(AT_DSTRONG, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
+set_attack_value(AT_DSTRONG, AG_SPRITE_BITE, sprite_get("bite_dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 0);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);

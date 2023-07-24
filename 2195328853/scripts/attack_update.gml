@@ -213,7 +213,7 @@ if (attack == AT_NSPECIAL){
         if(window_timer == 10){
 	        if(!special_down){
 	        	
-	        }else if(!upb || runeH){
+	        }else /*if(!upb || runeH)*/{
         		window = 4;window_timer = 0;
         	}
 	    }
@@ -230,18 +230,18 @@ if (attack == AT_NSPECIAL){
 			}
 	    }
     }else if(window == 4){
-    	upb = true;upbtimer = 0;
         if(window_timer == 8){
 	        window = 5;window_timer = 0;
-	        if(free){
+	        if(free && (!upb || runeH)){
 	        	vsp = -3;//hsp *= 0.25;
-	        }else{
+	        }else if(!free){
 	        	vsp = -3;hsp = 0;
 	        }
+	        upb = true;upbtimer = 0;
 	    }
     }else if(window == 5){
         can_fast_fall = false;
-        if(special_down && free && upbtimer < 300 && !has_rune("L")){
+        if(special_down && free && upbtimer < 210 && !has_rune("L")){
 	    	can_move = false;
 	    	if(right_down && hsp <= 2.5){
 	        	hsp += .2;

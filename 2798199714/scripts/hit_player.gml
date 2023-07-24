@@ -54,6 +54,9 @@ if(my_hitboxID.attack == AT_FAIR){
 if(my_hitboxID.attack == AT_UAIR){
 	if(my_hitboxID.hbox_num == 2){
 		hit_player_obj.should_make_shockwave = false;
+		if(!hit_player_obj.free && !hit_player_obj.freemd){
+			hit_player_obj.y += 2;hit_player_obj.free = false;
+		}
 	}
 }
 

@@ -226,6 +226,10 @@ if (attack == AT_NSPECIAL){
     		reset_attack_value(AT_NAIR, AG_CATEGORY);
     	}
     }
+    
+    if(window >= 6 && window < 8 && has_hit){
+    	cancelattack();
+    }
 }else if (attack == AT_FAIR){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
     	sound_play(sound_get("stab"));
@@ -523,6 +527,9 @@ if (attack == AT_NSPECIAL){
     		//}
 	    }
     }
+    if(!dstrong_free && has_hit && window == 3){
+    	cancelattack();
+    }
 }else if (attack == AT_DATTACK){
 	if(!has_hit){
     	can_fast_fall = false;can_move = false;
@@ -716,6 +723,9 @@ if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
 		window = 20;
 		if (attack == AT_USPECIAL && vsp < -10){
 			vsp *= 0.5;
+		}
+		if (attack == AT_DSTRONG){
+			old_vsp = 0;hitpause = 0;hitstop = 0;
 		}
 	}
 	

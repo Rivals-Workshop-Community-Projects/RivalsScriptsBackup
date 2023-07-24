@@ -114,6 +114,7 @@ fspec_timer = 0;
 fspec_stall = 0;
 ustrongstall = false;
 dstrongcharge = 0;
+dstrong_free = false;
 time_rift = noone;
 time_rift_hitbox = noone;
 time_rift_hit_sprite = sprite_get("dspecial_time_rift_hit");
@@ -138,6 +139,7 @@ laserangle = 90;
 laseranglespeed = 0;
 laser_list = ds_list_create();
 contacthitbox = noone;
+lookuptime = 0;
 windowtiming = 0;
 loaded = false;
 trainingmode = false;
@@ -149,8 +151,8 @@ runeC_charge_multiplier2 = 1.0;
 //runeN = true;runeO = true;runesUpdated = true;
 //runeA = true; runeB = true runeC = true; runeD = true; runeE = true; runeF = true; runeG = true; runeH = true; runeI = true; runeJ = true; runeK = true; runeL = true; runeM = true; runeN = true; runeO = true;
 
-//toonlink_photo = sprite_get("toonlink_photo");
-//toonlink_photo2 = sprite_get("toonlink_photo_TL");
+toonlink_photo = sprite_get("toonlink_photo");
+toonlink_photo2 = sprite_get("toonlink_photo_TL");
 //toonlink_randomizephoto = false;
 //miiverse_post = sprite_get("miiverse_post");
 

@@ -10,6 +10,14 @@ draw_debug_text(x+20, y+16, "b = " + string(b_storedatk));
 draw_debug_text(x+20, y+32, "b = " + string(b_storedwintim));
 
 
+with(asset_get("obj_article1")){
+    if (player_id == other){
+        draw_debug_text(x-20, y+5, "Window:" + string(window));
+        draw_debug_text(x-20, y+20, "Window Timer:" + string(window_timer));
+        draw_debug_text(x-20, y+35, "Scratch:" + string(is_bite));
+    }
+}
+
 #define bite()
 ///Shortcut for get_skin() != -1.
 if object_index != oPlayer && object_index != oTestPlayer {

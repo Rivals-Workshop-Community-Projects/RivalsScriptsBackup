@@ -74,6 +74,7 @@ if (attack == AT_DSTRONG){
     }
 }
 
+/* */
 
 if (attack == AT_TAUNT){
     vsp = clamp(vsp, -100, 2);
@@ -138,14 +139,15 @@ if (attack == AT_USPECIAL && window == 1 && window_timer == 1 ){
 if attack == AT_USPECIAL_2 {
     if(window == 1){
         if(disk_obj != noone){
+            if(window_timer == 1) disk_obj.y -= 2;
             disk_obj.bounces = 0;
             disk_obj.enemies = 1;
-            disk_obj.length++;
+            disk_obj.hitbox_timer--;
             disk_obj.hsp = 0;
             disk_obj.vsp = 0;
             //disk_obj.phase = 5;
             disk_obj.hit_priority = 0;
-            disk_obj.grav = 0;
+            //disk_obj.grav = 0;
         }
     }
     if (window == 2 && !hitpause){
@@ -157,12 +159,13 @@ if attack == AT_USPECIAL_2 {
             if(place_meeting(x + (15 * sign(hsp)), y, asset_get("par_block"))){
                 vsp = sign(vsp) * 24;
             }
-            disk_obj.length++;
+            disk_obj.hitbox_timer--;
             disk_obj.hsp = 0;
             disk_obj.vsp = 0;
             //disk_obj.phase = 5;
             disk_obj.hit_priority = 0;
-            disk_obj.grav = 0;
+            //disk_obj.grav = 0;
+            fall_through = true;
             
             //stop when close
             if (point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y) < 32){
@@ -196,7 +199,7 @@ if (attack == AT_DSPECIAL_2) {
 }
 
 if attack == AT_DSPECIAL {
-    if window == 1 && window_timer == 10 {
+    /*if window == 1 && window_timer == 10 {
        var asfd = spawn_hit_fx( x + 35 * spr_dir, y - 15, 301 )
        asfd.pause = 8
     }
@@ -204,6 +207,11 @@ if attack == AT_DSPECIAL {
         set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("b_dspecproj"));
     } else {
         set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecproj"));
+    }*/
+    
+    if window == 1 && window_timer == 10 {
+        if (free) vsp = -5;
+        assist = instance_create(x+(40*spr_dir), y + 2, "obj_article1");
     }
 
 }
@@ -239,6 +247,10 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && 
 if attack == AT_NSPECIAL {
     if window_timer == 1 {
         white_flash_timer_set(10)
+        if(assist != noone && assist.can_swap){
+            assist.hitstop = 8;
+            assist.white_flash = 9;
+        }
         if bite() {
             sound_play(sound_get("sfx_record1r"))
         } else {
@@ -246,71 +258,125 @@ if attack == AT_NSPECIAL {
         }
     }
     if window_timer == 8 {
-    if bite() {
-        if s_storedatk != 0 {
-                smash_charging = 0;
-                clear_button_buffer( PC_STRONG_PRESSED )
-                attack_end();
-                attack = s_storedatk
-                if get_num_hitboxes( s_storedatk ) == 0 {
-                    window = 3   
-                } else {
-                    window = get_hitbox_value(s_storedatk, 1, HG_WINDOW) - 1 
-                }
-                window_timer = get_window_value(s_storedatk, window, AG_WINDOW_LENGTH) - 1 
-                set_attack_value(attack, AG_CATEGORY, 2); 
-                if(attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR){
-                    if(!free){
-                        vsp = -5;
-                        //y -= 2;
-                    }
-                }
-                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                s_storedatk = 0;
-                s_storedwin = 0;
-                s_storedwintim = 0
-                //specific attack interactions
-                if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DATTACK || attack == AT_FTILT || attack == AT_JAB || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG) && free {
-                    hsp = 0;
-                }
+        //swap to assist instead if possible
+        if(assist != noone && assist.can_swap){
+            var swapx = x;
+            var swapy = y;
+            x = assist.x;
+            y = assist.y;
+            hsp = assist.hsp;
+            vsp = assist.vsp;
+            
+            assist.x = floor(swapx);
+            assist.y = floor(swapy);
+            spr_dir = assist.spr_dir;
+            
+            //swap assist assets
+            with(assist){
+                is_bite = !is_bite;
+                spr_pose = (is_bite? sprite_get("bite_dspecpose") : sprite_get("dspecpose"));
+                spr_hit = (is_bite? sprite_get("bite_ohno") : sprite_get("ohno"));
             }
-            //print("swap to scratch")
-        }
-    if !bite() {
-        if b_storedatk != 0 {
-                smash_charging = 0;
-                attack_end();
-                attack = b_storedatk
-                if b_storedatk == AT_TAUNT_2 {
-                    window = 1 
-                } else {
-                    window = get_hitbox_value(b_storedatk, 1, HG_WINDOW) - 1 
-                }                
-                window_timer = get_window_value(b_storedatk, window, AG_WINDOW_LENGTH) - 1 
-                set_attack_value(attack, AG_CATEGORY, 2); 
-                if(attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR){
-                    if(!free){
-                        vsp = -5;
-                        //y -= 2;
-                    }
+            
+            attack_end();
+            destroy_hitboxes();
+            //swap to assist attack
+            if(assist.state == 0 || assist.state == 1){
+                //set attack to the assist's attack
+                var atk = assist.stored_atk;
+                if(atk == AT_NAIR || atk == AT_FAIR || atk == AT_BAIR || atk == AT_UAIR || atk == AT_DAIR){
+                    set_attack_value(atk, AG_CATEGORY, 2); 
                 }
-                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                b_storedatk = 0;
-                b_storedwin = 0;
-                b_storedwintim = 0
-                if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DATTACK || attack == AT_FTILT || attack == AT_JAB || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG) && free {
-                    hsp = 0;
-                }
+                set_attack(atk);
+                
+                
+                window = assist.window;
+                window_timer = assist.window_timer;
+                has_hit = assist.has_hit;
+            //else just go to idle
+            }else if(assist.state ==2){
+                set_state(assist.free? PS_IDLE_AIR : PS_IDLE);
             }
-        //print("swap to bite")
-        }
-        if attack == AT_DSTRONG {
-                move_cooldown[AT_NSPECIAL] = 120;
-        } else {
+            
+            //assist poses in your stead
+            assist.state = 2;
+            assist.state_timer = 0;
+            sound_play(asset_get("mfx_star"));
+            assist.sprite_index = assist.spr_pose;
+            assist.image_index = 0;
+            assist.image_xscale = 1;
+            assist.image_yscale = 1;
+            assist.can_swap = false;
+            swap();
             move_cooldown[AT_NSPECIAL] = 40;
+        }else{
+        //normal swap
+        if bite() {
+            if s_storedatk != 0 {
+                    smash_charging = 0;
+                    clear_button_buffer( PC_STRONG_PRESSED )
+                    attack_end();
+                    attack = s_storedatk
+                    if get_num_hitboxes( s_storedatk ) == 0 {
+                        window = 3   
+                    } else {
+                        window = get_hitbox_value(s_storedatk, 1, HG_WINDOW) - 1 
+                    }
+                    window_timer = get_window_value(s_storedatk, window, AG_WINDOW_LENGTH) - 1 
+                    set_attack_value(attack, AG_CATEGORY, 2); 
+                    if(attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR){
+                        if(!free){
+                            vsp = -5;
+                            //y -= 2;
+                        }
+                    }
+                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+                    s_storedatk = 0;
+                    s_storedwin = 0;
+                    s_storedwintim = 0
+                    //specific attack interactions
+                    if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DATTACK || attack == AT_FTILT || attack == AT_JAB || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG) && free {
+                        hsp = 0;
+                    }
+                }
+                //print("swap to scratch")
+            }
+        if !bite() {
+            if b_storedatk != 0 {
+                    smash_charging = 0;
+                    attack_end();
+                    attack = b_storedatk
+                    if b_storedatk == AT_TAUNT_2 {
+                        window = 1 
+                    } else {
+                        window = get_hitbox_value(b_storedatk, 1, HG_WINDOW) - 1 
+                    }                
+                    window_timer = get_window_value(b_storedatk, window, AG_WINDOW_LENGTH) - 1 
+                    set_attack_value(attack, AG_CATEGORY, 2); 
+                    if(attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR){
+                        if(!free){
+                            vsp = -5;
+                            //y -= 2;
+                        }
+                    }
+                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+                    b_storedatk = 0;
+                    b_storedwin = 0;
+                    b_storedwintim = 0
+                    if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DATTACK || attack == AT_FTILT || attack == AT_JAB || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG) && free {
+                        hsp = 0;
+                    }
+                }
+            //print("swap to bite")
+            }
+            if attack == AT_DSTRONG {
+                    move_cooldown[AT_NSPECIAL] = 120;
+            } else {
+                move_cooldown[AT_NSPECIAL] = 40;
+            }
+            swap();
+            
         }
-        swap();
-        
     }
 }
 
@@ -356,8 +422,14 @@ return _ssnksprites.skin_active != -1;
 #define swap()
 if (bite()) {
     set_skin(-1);
+    set_ui_element(UI_HUD_ICON, sprite_get("hud"));
+    set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_hurt"));
+    set_ui_element(UI_OFFSCREEN, sprite_get("offscreen"));
 } else {
     set_skin("bite");
+    set_ui_element(UI_HUD_ICON, sprite_get("hudb"));
+    set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_hurtb"));
+    set_ui_element(UI_OFFSCREEN, sprite_get("offscreenb"));
 }
 clear_button_buffer( PC_SPECIAL_PRESSED )
 
@@ -393,9 +465,6 @@ disk_obj.original_vsp = new_vsp;
 //doenst work with mask
 //disk_obj.image_xscale = 2*spr_dir;
 //disk_obj.image_yscale = 2;
-
-
-
 
 #define setstored() 
 

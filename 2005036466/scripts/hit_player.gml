@@ -152,7 +152,7 @@ switch(hitmove){
 		break;
 }
 #define give_pen_install
-if hit_player_obj.penny_is_charged or pen_mine_unstable and !penny_install{
+if ((hit_player_obj.penny_is_charged or pen_mine_unstable) and !penny_install){
 	sound_play(asset_get("sfx_absa_concentrate"));
 	penny_install = true;
 	hit_player_obj.penny_is_charged = false;

@@ -71,7 +71,7 @@ if attack == AT_FSPECIAL {
 			}
 			
 			//hitboxes
-			if(phase < 4 && hitbox_timer % 7 == 0 && (was_parried xor player_id.disk_lockout <= 0)){ //yeah i used xor
+			if(phase < 4 && hitbox_timer % 7 == 0 && (player_id.disk_lockout <= 0)){ //yeah i used xor //2023 edit: using xor was incorrect
 			    with(player_id){
 			        var next = create_hitbox(AT_FSPECIAL, 2, other.x, other.y);
 			        next.hsp = other.hsp;
@@ -87,7 +87,8 @@ if attack == AT_FSPECIAL {
 		//bounces
 		if (!free){
 			bounces += 1;
-			sound_play(asset_get("sfx_kragg_roll_land"));
+			//die about it
+			if !(player_id.attack == AT_USPECIAL_2  && player_id.state == PS_ATTACK_AIR) sound_play(asset_get("sfx_kragg_roll_land"));
 		    if(disk_ver == -1){
 		    	if(vsp < 5) vsp = 5;
 				vsp *= -1.0;
@@ -97,13 +98,15 @@ if attack == AT_FSPECIAL {
                 }
 
 		    }else{
+		    	if(vsp == 0) y -= 2;
 		    	original_vsp *= -1;
 		    	vsp = prev_vsp * -1;
 		    	if (phase >= 4) destroyed = true;
 		    }
 		}else if(collision_line(x - 17, y, x+ 17, y, asset_get("par_block"), false, true)){
 			bounces += 1;
-			sound_play(asset_get("sfx_kragg_roll_land"));
+			//die about it
+			if !(player_id.attack == AT_USPECIAL_2 && player_id.state == PS_ATTACK_AIR) sound_play(asset_get("sfx_kragg_roll_land"));
 		    if(disk_ver == -1){
 		    	if(abs(hsp) < 3) hsp = sign(hsp) * 3;
 				hsp *= -1;
@@ -143,6 +146,8 @@ if attack == AT_FSPECIAL {
         prev_hsp = hsp;
         
 	}
+	
+	if(destroyed) player_id.disk_obj = noone;
 
 }
 
@@ -220,6 +225,17 @@ if attack == AT_DSPECIAL {
     }
 
   
+}
+
+if(type == 2 && attack != AT_DSPECIAL && attack != AT_FSPECIAL &&
+	attack != AT_USPECIAL && attack != AT_NSPECIAL){
+	
+	hsp = owner.hsp;
+	vsp = owner.vsp;
+	if(owner.state == 3){
+		destroyed = true;
+	}
+
 }
 
 #define bite()

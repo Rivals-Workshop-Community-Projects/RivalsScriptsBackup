@@ -13,6 +13,7 @@ if attack == AT_DSPECIAL {
 
 
 if(attack == AT_FSPECIAL && hbox_num == 1){
+    offscreen_image = 0;
     bounces = 0;
     phase = 1;
     hitbox_timer = 0;

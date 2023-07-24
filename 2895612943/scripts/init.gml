@@ -148,7 +148,7 @@ set_victory_theme( sound_get("snb_vict") )
 
 disk_obj = noone;
 disk_dir = 0;
-vbite = hit_fx_create( sprite_get("vfx_bite"), 35 )
+vbite = hit_fx_create( sprite_get("vfx_bite"), 25 )
 vscratch = hit_fx_create( sprite_get("vfx_scratch"), 35 )
 uspec_stall = 4;        //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
 
@@ -162,3 +162,16 @@ disk_timer_back = 60;   //time until sdisc falls off + ratio
 disk_extra_scratchtime = 45; //extra hangtime for scratch uspecial disk
 disk_lockout_total = 8;//scratch disk hit lockout when you hit someone with a melee hit
 disk_lockout = 0;      //current hit lockout
+
+is_bite = 0;            //its called scratch n bite you either scratch or you n bite
+AG_SPRITE_BITE = 2;     //custom attack index used by dspecial to pull bite sprites from the attack data
+init_swap = true;       //if you can swap to bite at the start of the game via the css
+assist = noone;         //current active assist
+assist_aerial_parrystun = false; //i hate you
+
+
+//no disk indicator if in playtest room (very minor)
+snb_playtest = false;
+with (oTestPlayer) if("snb_playtest" in self) snb_playtest = true;
+
+if(snb_playtest) print("Playtest: On");

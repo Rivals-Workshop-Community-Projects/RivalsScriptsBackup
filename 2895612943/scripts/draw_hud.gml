@@ -9,7 +9,7 @@ if(!bite()){
     temp_spr = sprite_get("hud_bstored");
     temp_set = b_storedatk;
 }else{
-    temp_spr = sprite_get("hud_bstored"); //replace this sprite name with hud_stored to get the scratch-colored one, i just thought it didnt stand out as much
+    temp_spr = sprite_get("hud_stored"); //replace this sprite name with hud_stored to get the scratch-colored one, i just thought it didnt stand out as much
     temp_set = s_storedatk;
 }
 
@@ -82,9 +82,18 @@ switch(temp_set){
 
 draw_sprite_ext(temp_spr, temp_fr, temp_x + 146, temp_y - 22, 2, 2, 0, c_white, 1.0);
 
-if(disk_obj != noone){
-    draw_sprite(sprite_get("disc"), 0 + (bite() * 7), temp_x + 26, temp_y - 6);
+var dspec_frame = 2;
+if(move_cooldown[AT_DSPECIAL] > 0){
+    dspec_frame = 2;
+}else{
+    if(bite()){
+        dspec_frame = 0;
+    }else{
+        dspec_frame = 1;
+    }
 }
+
+draw_sprite_ext(sprite_get("dspec_cooldown"), dspec_frame, temp_x + 106, temp_y - 18, 2, 2, 0, c_white, 1.0);
 
 shader_end();
 /*

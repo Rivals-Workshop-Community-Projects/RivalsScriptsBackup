@@ -132,10 +132,25 @@ switch(state){
 }
 
 if pen_didairdash{
+	/*
+	switch(state){
+		case PS_IDLE_AIR:
+			set_state(PS_PRATFALL);
+			break;
+	}*/
 	switch(prev_state){
 		case PS_ATTACK_AIR:
-			if attack != AT_EXTRA_1 and pen_prev_attack == AT_EXTRA_1{
-				set_state(PS_PRATFALL);
+			if attack != AT_EXTRA_1 and pen_prev_attack != AT_EXTRA_1 and !hitpause{
+				switch(pen_prev_attack){
+					case AT_NAIR:
+					case AT_UAIR:
+					case AT_DAIR:
+					case AT_FAIR:
+					case AT_BAIR:
+							set_state(PS_PRATFALL);
+						break;
+				}
+				pen_prev_attack = attack;
 			}
 			break;
 	}
