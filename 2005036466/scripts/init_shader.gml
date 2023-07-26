@@ -1,5 +1,5 @@
-var color = room != 113 || object_index == oTestPlayer ? get_player_color(player) : get_player_color(0)
-
+var color = room != asset_get("network_char_select") || object_index == oTestPlayer ? get_player_color(player) : get_player_color(0)
+if "css_char" not in self && room == asset_get("network_char_select") && object_index == asset_get("cs_playerbg_obj") exit; //prevents a crash.
 set_character_color_slot(3, 
 	get_color_profile_slot_r(color, 8),
 	get_color_profile_slot_g(color, 8),
@@ -99,8 +99,11 @@ switch(color){
             set_character_color_shading( slot_num, 0 );
         }
         break;
-    case 14:	// Awoo
-    	// set_character_color_slot(3, 250, 176, 194 ); //Metaru
+    case 14:	// Yang
+        set_character_color_shading( 5, 0.5 );
+        break;
+    case 15:	// Hitfall
+    	// set_character_color_slot(3, 219, 219, 219 ); //Metaru
         set_character_color_shading( 5, 0.5 );
         break;
     case 16:	// Genesis
@@ -117,10 +120,18 @@ switch(color){
     case 22: // Lumi
     	set_shading([1, 2, 1, 1, 1, 1, 1, 1, 1])
     	break;
-    case 26:
+    case 26:	// Awoo
+    	// set_character_color_slot(3, 250, 176, 194 ); //Metaru
+        set_character_color_shading( 5, 0.5 );
+        break;
+    case 27: // Gingo
     	set_character_color_shading( 0, 2 );
     	set_character_color_shading( 1, 2 );
     	set_character_color_shading( 3, 0.75 );
+    	break;
+    case 29: // Luka
+    	set_character_color_shading( 2, 0.75);
+    	set_character_color_shading( 3, 0.75);
     	break;
 }
 #define set_shading(arr)

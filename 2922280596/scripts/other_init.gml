@@ -1,4 +1,5 @@
 desirae_timelock = false;
+desirae_time_left = 0;
 desirae_time_state = 0;
 desirae_time_x = 0;
 desirae_time_y = 0;

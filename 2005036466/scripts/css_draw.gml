@@ -27,7 +27,8 @@ var css_ex_y = temp_y - 30;
 var charuuid = string(sprite_get("idle"));
 if ("css_char" not in self || css_char != charuuid) {
     css_char = charuuid;
-    fur_col = array_create(29);
+    fur_col = array_create(31);
+    init_shader();
 }
 //path_scale = 0;
 //path_position = 0;
@@ -64,6 +65,7 @@ if (color >= 17){
 
 switch(color){
 	case 10:
+	case 15:
 	case 16:
 		set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
 		set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait"));
@@ -92,7 +94,7 @@ switch(color){
 image_index = color;
 
 // USES FUR COLOR FOR THE RGB
-for(var c = 0; c < 29; c++){
+for(var c = 0; c < 31; c++){
 	fur_col[c] = make_color_rgb(get_color_profile_slot_r(c, 0), get_color_profile_slot_g(c, 0), get_color_profile_slot_b(c, 0));
 }
 
@@ -254,7 +256,7 @@ for(var c = 0; c < 29; c++){
 				break;
 				
 				case 14:
-			name = " 15: Awoo";
+			name = " 15: I Burn";
 			var position = 14;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -265,7 +267,7 @@ for(var c = 0; c < 29; c++){
 				break;
 				
 				case 15:
-			name = " 16: I Burn";
+			name = " 16: Hitfall";
 			var position = 15;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -384,20 +386,20 @@ for(var c = 0; c < 29; c++){
 				path_position = 26;
 			}
 				break;
-				
+			
 				case 26:
-			name = " 27: Winter's Fury";
+			name = " 27: Awoo";
 			var position = 26;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
-			ColorNextNext = fur_col[0];
+			ColorNextNext = fur_col[color+2];
 			if (path_position == 26 && path_scale == 0){
 				path_position = 27;
 			}
 				break;
 				
 				case 27:
-			name = " 28: Vulnita";
+			name = " 28: Winter's Fury";
 			var position = 27;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -408,12 +410,34 @@ for(var c = 0; c < 29; c++){
 				break;
 				
 				case 28:
-			name = " 29: Tictacticol";
+			name = " 29: Vulnita";
 			var position = 28;
+			ColorPrev = fur_col[color-1];
+			ColorNext = fur_col[color+1];
+			ColorNextNext = fur_col[color+2];
+			if (path_position == 28 && path_scale == 0){
+				path_position = 29;
+			}
+				break;
+				
+				case 29:
+			name = " 30: Tictacticol";
+			var position = 29;
+			ColorPrev = fur_col[color-1];
+			ColorNext = fur_col[color+1];
+			ColorNextNext = fur_col[0];
+			if (path_position == 29 && path_scale == 0){
+				path_position = 30;
+			}
+				break;
+				
+				case 30:
+			name = " 31: Look A Star!";
+			var position = 30;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[0];
 			ColorNextNext = fur_col[1];
-			if (path_position == 28 && path_scale == 0){
+			if (path_position == 30 && path_scale == 0){
 				path_position = 0;
 			}
 				break;

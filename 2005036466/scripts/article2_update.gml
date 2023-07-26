@@ -53,33 +53,9 @@ switch(state){
 		is_hittable = false;
 		sprite_index = spr_plant;
 		pen_c4_interact(1);
-		switch(state_timer){
-			case 0:
-			case 1:
-				image_index = 0;
-				break;
-			case 2:
-			case 3:
-				image_index = 1;
-				break;
-			case 4:
-			case 5:
-				image_index = 2;
-				break;
-			case 6:
-			case 7:
-				image_index = 3;
-				break;
-			case 8:
-			case 9:
-				image_index = 4;
-				break;
-			case 10:
-			case 11:
-				image_index = 5;
-				break;
-		}
-		if state_timer == 12{
+		image_index = state_timer / 2;
+		
+		if state_timer == 11{
 			sound_play(sfx_active);
 			state = 1;
 			state_timer = 0;
@@ -105,8 +81,10 @@ switch(state){
 				hbox_mine.player_id = player_id;
 			}
 		} else {
-			hbox_mine.x = floor(x + hsp);
-			hbox_mine.y = floor(y + vsp);
+			if instance_exists(hbox_mine){
+				hbox_mine.x = floor(x + hsp);
+				hbox_mine.y = floor(y + vsp);
+			}
 		}
 		
 		if vsp < 12{
@@ -142,10 +120,22 @@ switch(state){
     	is_hittable = false;
     	unbashable = 0;
         sprite_index = spr_ground;
-        image_index = get_gameplay_time() *.1;
+        if get_player_color(player) == 17{
+        	if !pen_c4_charged{
+        		image_index = 0;
+        	} else {
+        		image_index = get_gameplay_time() / 6;
+        	}
+        } else {
+        	image_index = get_gameplay_time() *.1;
+        }
         
         if !charge_loop_started and pen_c4_charged == 1{
-        	sound_play(sfx_loop, true);
+        	if get_player_color(player) == 17{
+        		sound_play(sfx_loop, true, 0);
+        	} else {
+        		sound_play(sfx_loop, true);
+        	}
         	charge_loop_started = true;
         }
         
@@ -229,7 +219,6 @@ switch(state){
     case 5:
     	is_hittable = false;
         instance_destroy();
-        player_id.mine = noone;
         break;
     case 6: // Uncharged
     	is_hittable = false;
@@ -282,47 +271,54 @@ switch(state){
         break;
 }
 #define pen_c4_interact(toggle)
+var detected_object = instance_place(x, y, pHitBox);
 
-if place_meeting(x, y, pHitBox){
-	if pHitBox.player_id.url == player_id.url{
-		if (pHitBox.attack == AT_FSPECIAL or ((pHitBox.attack == AT_FTILT or pHitBox.attack == AT_DAIR) and pHitBox.hbox_num == 2)){
-			if !charge_sound_played{
-				sound_play(sfx_charge);
-				switch get_player_color(player){
-					case 17:
-						sound_play(asset_get("sfx_bite"))
-						break;
-				}
-				charge_sound_played = true;
+if (detected_object != noone and detected_object.player_id.url == player_id.url){
+	if (detected_object.attack == AT_FSPECIAL or ((detected_object.attack == AT_FTILT or detected_object.attack == AT_DAIR) and detected_object.hbox_num == 2)){
+		if !charge_sound_played{
+			sound_play(sfx_charge);
+			switch get_player_color(player){
+				case 17:
+					sound_play(asset_get("sfx_bite"))
+					break;
 			}
-			pen_c4_charged = 1;
-			if pHitBox.player_id != player_id{
-    			player_id = pHitBox.player_id;
+			charge_sound_played = true;
+		}
+		pen_c4_charged = 1;
+		if detected_object.player_id != player_id{
+			player_id = detected_object.player_id;
+			if detected_object.player_id == penny_orig_owner{
+				penny_orig_owner.mine = penny_orig_mine_id;
+			}
+			penny_orig_owner.mine = noone;
+		}
+	}
+	/*
+	if toggle == 1 or toggle == 2{
+		if (pHitBox.player_id.penny_install != true and (((pHitBox.attack == AT_NSPECIAL or pHitBox.attack == AT_FTILT or pHitBox.attack == AT_DAIR) and pHitBox.hbox_num == 1) or
+		(pHitBox.attack == AT_JAB and pHitBox.hbox_num == 2) or (pHitBox.attack == AT_USTRONG or pHitBox.attack == AT_FSTRONG))) and pen_c4_charged{
+			with pHitBox.player_id{
+				penny_install = true;
+				resetcolours = 1;
+				sound_play(asset_get("sfx_absa_concentrate"));
+			}
+			pen_c4_charged = 0;
+			sound_stop(sfx_loop);
+			charge_loop_started = false;
+		}
+	}*/
+	
+	if toggle == 2{
+		if (detected_object.attack == AT_DTILT){
+			hsp = 2 * detected_object.player_id.spr_dir;
+			vsp = -12;
+			sound_play(detected_object.sound_effect);
+			if detected_object.player_id != player_id{
+    			player_id = detected_object.player_id;
+    			if detected_object.player_id == penny_orig_owner{
+    				penny_orig_owner.mine = penny_orig_mine_id;
+    			}
     			penny_orig_owner.mine = noone;
-			}
-		}
-		if toggle == 1 or toggle == 2{
-			if (pHitBox.player_id.penny_install != true and (((pHitBox.attack == AT_NSPECIAL or pHitBox.attack == AT_FSPECIAL or pHitBox.attack == AT_FTILT or pHitBox.attack == AT_DAIR) and pHitBox.hbox_num == 1) or
-			(pHitBox.attack == AT_JAB and pHitBox.hbox_num == 2) or (pHitBox.attack == AT_USTRONG or pHitBox.attack == AT_FSTRONG))) and pen_c4_charged{
-				with pHitBox.player_id{
-					penny_install = true;
-					resetcolours = 1;
-					sound_play(asset_get("sfx_absa_concentrate"));
-				}
-				pen_c4_charged = 0;
-				sound_stop(sfx_loop);
-				charge_loop_started = false;
-			}
-		}
-		
-		if toggle == 2{
-			if (pHitBox.attack == AT_DTILT){
-				vsp = -12;
-				sound_play(pHitBox.sound_effect);
-				if pHitBox.player_id != player_id{
-	    			player_id = pHitBox.player_id;
-	    			penny_orig_owner.mine = noone;
-				}
 			}
 		}
 	}

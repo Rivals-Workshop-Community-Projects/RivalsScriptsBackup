@@ -327,6 +327,17 @@ switch attack {
     }
     break;
 }
+/*
+silk_cancel_id = noone
+if has_hit_player && hit_player_obj.hornet_silked_id != noone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+    if attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_NSPECIAL {
+        if hit_player_obj.state_timer <= 6 {
+            can_special = true
+            silk_cancel_id = hit_player_obj.id
+        }
+    }
+}
+*/
 
 if voice_mode {
     switch attack {

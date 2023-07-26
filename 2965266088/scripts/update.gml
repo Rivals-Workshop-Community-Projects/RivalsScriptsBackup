@@ -162,7 +162,6 @@ with (oPlayer)
 
                 //set off all the variables
                 darkness_owner.darkness_id = noone;
-                darkness_owner.dark_shield_hp = darkness_owner.max_dark_shield_hp;
                 if (!darkness_owner.practice_darkness) darkness_owner.darkness_cd = darkness_owner.darkness_cd_set;
                 has_darkness = false;
                 darkness_owner = noone;
@@ -171,7 +170,6 @@ with (oPlayer)
             case 5: //dark consume
                 //set off all the variables
                 darkness_owner.darkness_id = noone;
-                if (!darkness_owner.has_superspell) darkness_owner.dark_shield_hp = darkness_owner.max_dark_shield_hp;
                 has_darkness = false;
                 do_dark_blast = false;
 
@@ -194,6 +192,21 @@ with (oPlayer)
     }
 }
 
+//darkness alpha animation
+if (darkness_id == noone)
+{
+    dark_alpha_limits[2] = 0;
+    dark_alpha_limits[4] = true;
+}
+else
+{
+    dark_alpha = lerp(dark_alpha_limits[0], dark_alpha_limits[1], dark_alpha_limits[2]/dark_alpha_limits[3]);
+    dark_alpha_limits[2] += (dark_alpha_limits[4] ? 1 : -1);
+    if (dark_alpha_limits[2] >= dark_alpha_limits[3] || dark_alpha_limits[2] <= 0) dark_alpha_limits[4] = !dark_alpha_limits[4];
+}
+
+//with (oPlayer) rumia_enemy_last_window = window; //used for parry/dodge punish
+
 //rumia darkness - on herself it acts as a knockback reduction shield
 self_darkness = (darkness_owner == darkness_id && darkness_owner == self);
 
@@ -213,7 +226,7 @@ if (self_darkness)
         if (has_superspell && superspell_cur < superspell_max)
         {
             superspell_cur += dark_shield_hp;
-            dark_shield_hp = max_dark_shield_hp;
+            //dark_shield_hp = max_dark_shield_hp;
         }
 
         sound_play(asset_get("sfx_abyss_despawn"));
@@ -222,12 +235,20 @@ if (self_darkness)
 }
 else knockback_scaling = get_match_setting(SET_SCALING)*2;
 
-if (dark_shield_hp <= 0 && darkness_id != noone) darkness_id.dark_state = 4;
+if (dark_shield_hp <= 0 && darkness_id != noone)
+{
+    //fixes an obscure bug if rumia somehow lands a dark consume while being hit on the same frame and the darkness orb goes away
+    if ("do_dark_blast" in darkness_id && darkness_id.do_dark_blast) darkness_id.dark_state = 5;
+    else darkness_id.dark_state = 4;
+}
+//if nobody is affected by rumia's darkness, reset dark orb health
+if (dark_shield_hp != 0 && darkness_id == noone) dark_shield_hp = 0;
 
 
 //graze mechanic
 graze_stats[0] = x + hsp;
 graze_stats[1] = y - char_height / 1.83 + vsp;
+graze_stats[2] = graze_range[hurtboxID.dodging || invince_time > 0 || invincible];
 
 can_graze = (
     graze_delay == 0 && darkness_cd <= 0 && !has_darkness && darkness_id == noone &&
@@ -235,36 +256,41 @@ can_graze = (
     (attack != AT_DSPECIAL_2 && attack != 49 || !is_attacking)
 );
 
-//collision detection
+//hitbox detection
 var col_check = collision_circle(graze_stats[0], graze_stats[1], graze_stats[2], pHitBox, true, true);
-with (col_check) if (player != other.player) with (other)
+with (col_check)
 {
-    in_graze_range = true;
-    graze_hbox_type = other.type;
-    if (can_graze)
+    if (player != other.player && hit_priority != 0 && can_hit[other.player] && get_player_team(player) != get_player_team(other.player)) with (other)
     {
-        graze_delay = graze_delay_set;
-        sound_play(sound_get("sfx_graze"), false, 0, 0.7);
-        spawn_hit_fx( //detection point
-            lerp(x, other.x,  0.5),
-            lerp(y - char_height / 2, other.y,  0.5),
-            HFX_OLY_SHINE_SMALL
-        );
-        var fx = spawn_hit_fx(x, y - char_height / 2, fx_graze);
-        fx.depth = depth - 1;
+        in_graze_range = true;
+        graze_hbox_type = other.type;
+        if (can_graze)
+        {
+            graze_delay = graze_delay_set;
+            sound_play(sound_get("sfx_graze"), false, 0, 0.7);
+            spawn_hit_fx( //detection point
+                lerp(x, other.x,  0.5),
+                lerp(y - char_height / 2, other.y,  0.5),
+                HFX_OLY_SHINE_SMALL
+            );
+            var fx = spawn_hit_fx(x, y - char_height / 2, fx_graze);
+            fx.depth = depth - 1;
+
+            spawn_hit_fx(x, y - char_height / 2, msg_graze);
+        }
     }
 }
 //having projectiles go outside of the graze range counts automatically
 if (col_check == noone && graze_hbox_type == 2 && graze_delay > 0 && in_graze_range) in_graze_range = false;
 
-if (graze_delay > 0 && !graze_failed && state_cat != SC_HITSTUN && darkness_id == noone) //graze delay
+if (graze_delay > 0 && !graze_failed) //graze delay
 {
     graze_delay--;
     spawn_hit_fx(
         x + (random_func(8, 5, true) - 2) * 16,
         y - random_func(9, 5, true) * 16,
         hit_fx_create(sprite_get("fx_graze_part"), 16)
-    )
+    );
     
     if (graze_delay <= 0 || graze_hbox_type == 2 && !in_graze_range)
     {
@@ -273,7 +299,7 @@ if (graze_delay > 0 && !graze_failed && state_cat != SC_HITSTUN && darkness_id =
         dark_state = 0;
 
         graze_delay = 0;
-        if (dark_shield_hp != max_dark_shield_hp) dark_shield_hp = max_dark_shield_hp;
+        dark_shield_hp += dark_shield_gain_graze;
     }
 }
 else
@@ -293,8 +319,37 @@ move_cooldown[AT_DSPECIAL_2] = darkness_cd <= 0 ? 1 + (self_darkness) : darkness
 //uair blast if it should appear
 if ((state == PS_LANDING_LAG && state_timer == 0 && prev_state == PS_ATTACK_AIR && prev_window == 2 || window == 3 && window_timer == 0) && attack == AT_UAIR)
 {
-    var fx = spawn_hit_fx(uair_hbox_pos[0], uair_hbox_pos[1], fx_dark_hit[1]);
-    fx.depth = depth - 1;
+    uair_vfx = spawn_hit_fx(uair_hbox_pos[0], uair_hbox_pos[1], hit_fx_create(sprite_get("fx_dark_hit2"), 30));
+    uair_vfx.depth = depth - 1;
+}
+if (!instance_exists(uair_vfx) && state == PS_LANDING_LAG) sound_stop(uair_sfx);
+
+//crawl
+if (state == PS_CROUCH)
+{
+    if (!right_down && !left_down) crawl_time = 0;
+    else
+    {
+        crawl_time ++;
+
+        var max_check = (sprite_get_number(sprite_get("crawl")) / crawl_anim_speed);
+        var mod_check = floor(crawl_time % max_check);
+        if (floor(max_check)-1 <= mod_check || floor(max_check/2)-1 == mod_check)
+        {
+            sound_stop(asset_get("sfx_absa_cloud_place"));
+            crawl_sound = sound_play(asset_get("sfx_absa_cloud_place"), false, 0, 0.15, (random_func(2, 5, true) + 10) * 0.2);
+        }
+
+        if (right_down && spr_dir || left_down && -spr_dir) fake_img = crawl_time * crawl_anim_speed;
+		if (left_down && spr_dir || right_down && -spr_dir) fake_img = crawl_time * -crawl_anim_speed;
+        fake_img = fake_img % sprite_get_number(sprite_get("crawl"));
+
+        if (1 <= abs(fake_img) && 3 >= abs(fake_img) || 5 <= abs(fake_img) && 7 >= abs(fake_img))
+        {
+            if (right_down) hsp = crawl_speed;
+            if (left_down) hsp = -crawl_speed;
+        }
+    }
 }
 
 //special pratfall state - temporary pratfall
@@ -362,11 +417,24 @@ with (pHitBox) if (orig_player == other.player)
 //hit effect stuff
 with (hit_fx_obj) if (player == other.player)
 {
+    //counter/graze messeges
+    if (hit_fx == other.msg_counter || hit_fx == other.msg_graze)
+    {
+        depth = -10;
+        uses_shader = false;
+        spr_dir = 1;
+
+        if (step_timer == 0) vsp = -4;
+
+        if (vsp < 0) vsp += 0.2;
+        else vsp = 0;
+    }
+    
     //death effect
     if (other.temp_level == 0 && hit_fx == other.fx_death[other.player] || hit_fx == other.fx_death[0])
     {
         uses_shader = false;
-        if (step_timer > 30)
+        if (30 < step_timer)
         {
             hsp *= 0.95;
             vsp = (vsp * 0.9) + 0.1;
@@ -430,7 +498,7 @@ with (hit_fx_obj) if (player == other.player)
 
         with (other)
         {
-            if (abs(hsp) > 0.5 || hitpause && abs(old_hsp) > 0.5 || was_parried && hitpause) other.hsp = hsp;
+            if (0.5 < abs(hsp) || hitpause && abs(old_hsp) > 0.5 || was_parried && hitpause) other.hsp = hsp;
             //alternatively: (other.step_timer < 24) makes it based on time instead
 
             if (position_meeting(x + 32 * spr_dir, y - 2, asset_get("par_block"))) other.hsp = 0;
@@ -471,7 +539,7 @@ with (hit_fx_obj) if (player == other.player)
     //fspec projectile vanish
     if (hit_fx == other.fx_fspec_proj_end)
     {
-        if (abs(hsp) > 0) hsp -= 0.15 * spr_dir;
+        if (0 < abs(hsp)) hsp -= 0.15 * spr_dir;
         
         if (hsp < 0 && spr_dir == 1 || hsp > 0 && spr_dir == -1) hsp = 0;
     }
@@ -480,8 +548,8 @@ with (hit_fx_obj) if (player == other.player)
 }
 
 //final smash/strong background
-if (spell_bg && spell_bg_alpha < 1) spell_bg_alpha += spell_bg_alpha_inc;
-else if (!spell_bg && spell_bg_alpha > 0) spell_bg_alpha -= spell_bg_alpha_inc;
+if (spell_bg && 1 < spell_bg_alpha) spell_bg_alpha += spell_bg_alpha_inc;
+else if (!spell_bg && 0 < spell_bg_alpha) spell_bg_alpha -= spell_bg_alpha_inc;
 
 if (spell_bg && !instance_exists(spell_bg_obj)) spell_bg_obj = instance_create(x, y, "obj_article1");
 else if (spell_bg_alpha <= 0 && instance_exists(spell_bg_obj)) instance_destroy(spell_bg_obj);
@@ -611,29 +679,4 @@ prep_hitboxes();
     for (var i = 0; i < array_length(dark_rec_vars); i++) if (dark_rec_vars[i][0] == "max_fall") break;
     if (vsp > max_fall) vsp = dark_rec_vars[i][1];
     fast_falling = false;
-}
-
-//useful print function - allows us to print all variables in an specified object
-//usage: print_vars(object_name); | print_vars();
-#define print_vars
-{
-    //prints the variables in the given instance, or in whatever instance ran the function.
-    var instance = argument_count > 0 ? argument[0] : self;
-    with (instance) {
-        var names = variable_instance_get_names(self);
-        var str = "";
-        var lb = "
-    ";
-        for (var i = 0; i < array_length_1d(names); i++) {
-            var val_to_add = string(variable_instance_get(self, names[i]));
-        str += names[i] + ': ' + (string_length(val_to_add) > 100 ? "!!value ommitted due to size!!" : val_to_add) + ';'+lb
-        
-        }
-        var str_length = string_length(str);
-        var it = 1;
-        var max_pages = ceil(str_length/4096);
-        for (var i = 1; i < str_length; i+=4096) {
-            get_string(`variables pg ${it++}/${max_pages}`, string_copy(str,i,4096));
-        }
-    }
 }

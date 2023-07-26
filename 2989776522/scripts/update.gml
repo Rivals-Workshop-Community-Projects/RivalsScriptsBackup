@@ -379,6 +379,11 @@ if(!loaded){
 		}
 	}
     
+    rand = random_func(player+1, 2, true);
+    if(rand == 1){
+    	set_victory_bg(sprite_get("victorybg_fleet"));
+    }
+    
     if(voicemode == 0){ //adventure
     	rand = random_func(player, 4, true);
 	    if(rand == 0){
@@ -417,6 +422,7 @@ if(!loaded){
 		
 		gfzsignsfx = sound_get("pollock_laugh");
 		
+		set_victory_bg(sprite_get("victorybg_eggmanland"));
 	}else if(voicemode == 2){ //alfred
 		rand = random_func(player, 5, true);
 	    if(rand == 0){
@@ -480,7 +486,11 @@ if(!loaded){
 		
 		gfzsignsfx = sound_get("pingas no");
 	}
-
+	
+	if(alt == 13 || alt == 20 || alt == 27){
+		set_victory_bg(sprite_get("victorybg_frogforest"));
+	}
+	
     if (runesUpdated || get_match_setting(SET_RUNES)) {
 		if (has_rune("A") || runeA) {
 			

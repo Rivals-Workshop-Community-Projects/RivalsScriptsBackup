@@ -45,9 +45,11 @@ alt_name[18] = "Ranked Gold"; //has the shiny effect
 alt_name[19] = "Totsugeki!!!"; // has voicelines of the announcer from guilty gear strive
 alt_name[20] = "Emergence of Evil";
 alt_name[21] = "Triforce of Power";
-alt_name[22] = "Skyp'd Racer";
-alt_name[23] = "Elemental Guardian";
-alt_name[24] = "Driving Thunder";
+alt_name[22] = "Paimonial Rage (Lunch)";
+alt_name[23] = "Skyp'd Racer";
+alt_name[24] = "Elemental Guardian";
+alt_name[25] = "Driving Thunder";
+alt_name[26] = "Joyous Team Player";
 
 
 

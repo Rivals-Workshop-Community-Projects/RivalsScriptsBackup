@@ -7,6 +7,13 @@ switch (attack)
 {
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
     //
+	case AT_JAB:
+		if (window >= 5 && free)
+		{
+			if (left_down && spr_dir == 1) hsp -= 0.2;
+			if (right_down && spr_dir == -1) hsp += 0.2;
+		}
+		break;
 	case AT_UTILT:
 		if (window == 1 && window_timer == 1) total_window_time = 0;
 		if (window_timer == 1) total_window_time += window_end;
@@ -102,14 +109,20 @@ switch (attack)
 		{
 			if (window == 3 && window_timer == window_end || !free && my_grab_id == noone)
 			{
-				if (!free) landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
-				set_state(free ? PS_IDLE_AIR : PS_LANDING_LAG);
+				if (!was_parried)
+				{
+					if (!free) landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+					set_state(free ? PS_IDLE_AIR : PS_LANDING_LAG);
+				}
+				else set_state(free ? PS_PRATFALL : PS_PRATLAND);
 			}
 		}
 		break;
 	case AT_UAIR:
 		if (window == 1 && window_timer == 1) spawn_hit_fx(x, y - 40, fx_darkcharge);
 		with (hit_fx_obj) if (hit_fx == other.fx_darkcharge && other.state_timer > 8 && !other.hitpause) y -= 8;
+
+		if (window == 1 && window_timer == window_end) uair_sfx = sound_play(asset_get("sfx_ori_charged_flame_release"));
 
 		with (pHitBox)
 		{
@@ -297,7 +310,7 @@ switch (attack)
 				false,
 				0,
 				(random_func(1, 5, true) + 5) * 0.05,
-				(random_func(2, 5, true) + 10) * 0.2,
+				(random_func(2, 5, true) + 10) * 0.2
 			);
 		}
 		if (window == 2 && window_timer == window_end)

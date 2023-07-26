@@ -257,6 +257,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.84", "24th July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Another small fix with the new AI: GK won't hitfall UAir, as he wasn't meant to");
+
 initPatch("1.83", "23rd July, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Improved the AI once again; GK will now hitfall a bit better, jumps a little more so that he does more aerials, and will attempt to block things more effectively with FSpecial");

@@ -2,6 +2,8 @@ timer = 0
 window_length = 0
 state_attacking = false
 
+silk_cancel_id = noone
+
 on_keyboard = true
 
 taunt_attack = false

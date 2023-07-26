@@ -113,7 +113,7 @@ set_color_profile_slot( alt_cur, 5, 224, 183, 70 ); //white
 set_color_profile_slot( alt_cur, 6, 87, 137, 230 ); //red
 
 alt_cur ++; // chara
-set_color_profile_slot( alt_cur, 0, 255, 0, 0 ); //darkness
+set_color_profile_slot( alt_cur, 0, 150, 0, 0 ); //darkness
 set_color_profile_slot( alt_cur, 1, 60, 0, 0 ); //darkness 2
 set_color_profile_slot( alt_cur, 2, 99, 27, 16 ); //hair
 set_color_profile_slot( alt_cur, 3, 242, 195, 143 ); //skin
@@ -252,6 +252,15 @@ set_color_profile_slot( alt_cur, 4, 122, 75, 23 ); //black
 set_color_profile_slot( alt_cur, 5, 30, 55, 71 ); //white
 set_color_profile_slot( alt_cur, 6, 189, 118, 0 ); //red
 
+alt_cur ++; // paimon
+set_color_profile_slot( alt_cur, 0, 0, 29, 117 ); //darkness
+set_color_profile_slot( alt_cur, 1, 69, 48, 191 ); //darkness 2
+set_color_profile_slot( alt_cur, 2, 220, 219, 222 ); //hair
+set_color_profile_slot( alt_cur, 3, 222, 197, 162 ); //skin
+set_color_profile_slot( alt_cur, 4, 220, 219, 222 ); //black
+set_color_profile_slot( alt_cur, 5, 224, 164, 85 ); //white
+set_color_profile_slot( alt_cur, 6, 0, 33, 71 ); //red
+
 alt_cur ++; // Skyp Cooper - Splatracer
 set_color_profile_slot( alt_cur, 0, 31, 98, 41 ); //darkness
 set_color_profile_slot( alt_cur, 1, 59, 255, 115 ); //darkness 2
@@ -278,6 +287,16 @@ set_color_profile_slot( alt_cur, 3, 235, 212, 169 ); //skin
 set_color_profile_slot( alt_cur, 4, 109, 49, 176 ); //black
 set_color_profile_slot( alt_cur, 5, 161, 191, 224 ); //white
 set_color_profile_slot( alt_cur, 6, 62, 35, 105 ); //red
+
+alt_cur ++; // hud color (uses default as a base)
+set_color_profile_slot( alt_cur, 0, 55, 24, 123 ); //darkness
+set_color_profile_slot( alt_cur, 1, 178, 45, 212 ); //darkness 2
+set_color_profile_slot( alt_cur, 2, 200, 151, 83 ); //hair
+set_color_profile_slot( alt_cur, 3, 225, 172, 143 ); //skin
+set_color_profile_slot( alt_cur, 4, 32, 29, 43 ); //black
+set_color_profile_slot( alt_cur, 5, 206, 206, 227 ); //white
+set_color_profile_slot( alt_cur, 6, 172, 16, 3 ); //red
+
 
 set_num_palettes(alt_cur + 1);
 

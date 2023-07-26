@@ -14,11 +14,12 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 6);

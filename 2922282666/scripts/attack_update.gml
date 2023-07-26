@@ -5,14 +5,12 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if((attack == AT_UAIR || attack == AT_USPECIAL || attack == AT_UTILT || attack == AT_USTRONG) && window >= 2)
     hud_offset = 50;
 
-if(GemSelect == 0)
-{
-    if(has_hit_player && !hitpause && special_pressed && move_cooldown[AT_NSPECIAL] == 0
-    && collision_circle(GemObj.x,GemObj.y,100+(GemSelect == 0? 40:0),self,true,false) && GemObj.state == 1 &&
-    !(attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_NSPECIAL_2 || attack == AT_USTRONG))
-        set_attack(AT_NSPECIAL);
-}
-else if(GemSelect == 1 && GemObj.state != 4)
+if(has_hit_player && !hitpause && special_pressed && move_cooldown[AT_NSPECIAL] == 0
+&& collision_circle(GemObj.x,GemObj.y,140,self,true,false) &&
+!(attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_NSPECIAL_2 || attack == AT_USTRONG))
+    set_attack(AT_NSPECIAL);
+
+else if(GemObj.state < 3 && GemObj.state != 0)
 {
     if(attack == AT_FSTRONG || attack == AT_DSTRONG ||attack == AT_USTRONG)
     {
@@ -57,10 +55,10 @@ switch(attack)
                 spr_dir = -1;
             else if(sprite_rot > 0 && sprite_rot < 90 || sprite_rot > 270 && sprite_rot < 360)
                 spr_dir = 1;
-            if(collision_circle(GemObj.x,GemObj.y,100+(GemSelect == 0? 40:0),self,true,false) && GemObj.state == 1)
+            if(collision_circle(GemObj.x,GemObj.y,140,self,true,false) && GemObj.state == 1)
             {
                 set_num_hitboxes(AT_NSPECIAL_2, 1);
-                dashspd = (GemSelect==1?15:20);
+                dashspd = 20;
                 fx = spawn_hit_fx(x,y-30,194);
                 fx.depth = depth-10;
                 sound_play(asset_get("sfx_coin_collect"))
@@ -69,7 +67,7 @@ switch(attack)
             else 
             {
                 reset_num_hitboxes(AT_NSPECIAL_2);
-                dashspd = (GemSelect==1?8:10);
+                dashspd = 9;
             }
         }
         if(window != 1 && !hitpause && window != 4)
@@ -77,7 +75,7 @@ switch(attack)
             fall_through = 1;
             hsp = dashspd * cos(degtorad(sprite_rot));
             vsp = -dashspd * sin(degtorad(sprite_rot));
-            if(collision_circle(GemObj.x,GemObj.y,30,self,true,false)  && dashspd == (GemSelect==1?15:20) && GemObj.state == 1)
+            if(collision_circle(GemObj.x,GemObj.y,30,self,true,false) && dashspd == 20 && GemObj.state == 1)
             {
                 sound_play(asset_get("mfx_star"))
                 x = GemObj.x;
@@ -130,31 +128,6 @@ switch(attack)
         can_move = false;
         if (state_timer == 1)
             SetGem(0);
-        if(window == 2)
-        {
-            SetGem(2);
-            if(special_down)
-            {
-                if(left_pressed || down_pressed || right_pressed || right_stick_pressed || left_stick_pressed || down_stick_pressed)
-                { 
-                    if(right_down || right_pressed || right_stick_pressed) GemSelect = 2; 
-                    else if(left_down || left_pressed || left_stick_pressed) GemSelect = 0;
-                    else if(down_down || down_pressed || down_stick_pressed) GemSelect = 1;
-                    window_timer = 0; window = 3; 
-                }
-                else if(window_timer > 6) window_timer = 6;
-            }
-            vsp /= 1.02;
-            hsp /= 1.05;
-        }
-        if(window == 3 && window_timer == 1 && OldGem != GemSelect) 
-        {
-            GemPos_x = x;
-            GemPos_y = y-40
-            OldGem = GemSelect;
-            sound_play(asset_get("sfx_holy_tablet"));
-            GemShow_timer = 30;
-        }
         move_cooldown[AT_FSPECIAL] = 30;
         move_cooldown[AT_DSPECIAL] = 30;
         break;

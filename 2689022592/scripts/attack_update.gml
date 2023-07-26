@@ -267,7 +267,7 @@ switch attack {
 	  	if window_timer == 1 && !hitpause {
 	  		set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, hsp*spr_dir*-0.5 );
             set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, vsp*-0.5 );
-            //create_hitbox(AT_DSPECIAL,2,x,y - 20)
+            create_hitbox(AT_DSPECIAL,2,x,y - 20)
 	  		hsp /= 1.2
 	  		if vsp > 0 {
 	  			vsp = 0
@@ -355,7 +355,7 @@ switch attack {
 	   	  	
 	   	  	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 10 - random_func(1,6,true) );
             set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, 0 - random_func(2,9,true)  );
-            //create_hitbox(AT_DSPECIAL,2,x,y - 20)
+            create_hitbox(AT_DSPECIAL,2,x,y - 20)
             
 	   	  	take_damage(player,-1,-2)
 	   	  	window = 2

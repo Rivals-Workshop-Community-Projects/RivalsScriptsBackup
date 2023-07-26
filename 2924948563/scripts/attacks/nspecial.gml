@@ -42,7 +42,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 // Charged Punch Endlag
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 34);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 28);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -72,7 +72,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 // Uncharged Punch Endlag
-set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 19);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -81,7 +81,7 @@ set_window_value(AT_NSPECIAL, 8, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.8);
 
 // Cancel
-set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 32);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_CUSTOM_GRAVITY, 1);

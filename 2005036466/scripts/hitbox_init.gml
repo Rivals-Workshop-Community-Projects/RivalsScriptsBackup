@@ -1,3 +1,5 @@
+mine_knockedoff = false;
+
 // https://www.youtube.com/watch?v=--RU438cUM0
 //Come, traveller. Sit by the fire. Tell me a tale. I'm sure you have many.
 //        ______

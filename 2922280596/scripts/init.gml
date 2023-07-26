@@ -1,6 +1,6 @@
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
-gunshot = hit_fx_create( sprite_get("nspecialshot"), 30);
+gunshot = hit_fx_create( sprite_get("vfx_shot"), 24);
 hourglass = hit_fx_create( sprite_get("fastforward"), 30);
 ffhit = hit_fx_create( sprite_get("fffx"), 30);
 bigfx = hit_fx_create( sprite_get("bighit"), 30);
@@ -13,6 +13,9 @@ hitstun_hurtbox_spr = -1;
 
 //
 desirae_timelock = false;
+desirae_time_left = 0;
+desirae_time_percent = 0;
+desirae_time_mode = 0;
 desirae_time_state = 0;
 desirae_time_x = 0;
 desirae_time_y = 0;
@@ -70,9 +73,9 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 14;
+jump_speed = 13;
 short_hop_speed = 7;
-djump_speed = 11;
+djump_speed = 12;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state

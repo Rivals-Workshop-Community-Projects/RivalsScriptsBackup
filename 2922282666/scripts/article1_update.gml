@@ -5,10 +5,10 @@ if(state_timer >= 70 && state < 4)
 }
 else
 {
-    image_mult = (player_id.GemSelect==1?0:(player_id.GemSelect==0?1:2))
+    image_mult = 0;
     image_index = (image_mult*4)+((state_timer > 30?floor((state_timer-30)/10):0));
 }
-if(player_id.strong_charge != 0 && (player_id.attack == AT_FSPECIAL || player_id.GemSelect == 1) && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 1)
+if(player_id.strong_charge != 0 && (player_id.attack == AT_FSPECIAL) && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 1)
 {
     depth = player_id.depth-2;
     if(get_gameplay_time() % 5 == 0 )
@@ -36,98 +36,98 @@ if(state != 0 && state != 4 && player_id.attack != AT_DSPECIAL)
 switch(state)
 {
     case 0: //follow
-        spr_dir = player_id.spr_dir;
-        x = floor(lerp(x,player_id.x-(45*player_id.spr_dir), 0.15));
-        y = floor(lerp(y,player_id.y-50+10*sin(state_timer/20), 0.15));
+            spr_dir = player_id.spr_dir;
+            x = floor(lerp(x,player_id.x-(45*player_id.spr_dir), 0.15));
+            y = floor(lerp(y,player_id.y-50+10*sin(state_timer/20), 0.15));
         break;
     case 1: //shoot
-        var movemult = (player_id.GemSelect==1?.1:(player_id.GemSelect==2?.05:.025))
-        hsp *= 0.95-movemult;
-        vsp *= 0.95-movemult;
-        if(player_id.GemSelect == 1 && (abs(hsp) > 7 || abs(vsp) > 7)) 
-        {
-            hbox = create_hitbox(AT_NSPECIAL,(vsp>2?2:1), floor(x), floor(y));
-            if(vsp<-1) hbox.kb_angle = 90;
-            hbox = create_hitbox(AT_NSPECIAL,(vsp>2?2:1), floor(x+hsp), floor(y+vsp));
-            if(vsp<-1) hbox.kb_angle = 90;
-            image_alpha = 0;
-        }
-        else image_alpha = 1;
+            var movemult = .075;
+            hsp *= 0.95-movemult;
+            vsp *= 0.95-movemult;
+            if((abs(hsp) > 7 || abs(vsp) > 7)) 
+            {
+                hbox = create_hitbox(AT_NSPECIAL,(vsp>2?2:1), floor(x), floor(y));
+                if(vsp<-1) hbox.kb_angle = 90;
+                hbox = create_hitbox(AT_NSPECIAL,(vsp>2?2:1), floor(x+hsp), floor(y+vsp));
+                if(vsp<-1) hbox.kb_angle = 90;
+                image_alpha = 0;
+            }
+            else image_alpha = 1;
 
-        if(place_meeting(x+hsp,y,asset_get("par_block"))) hsp = -hsp*0.8;
-        if(place_meeting(x,y+vsp,asset_get("par_block"))) vsp = -vsp*0.8;
+            if(place_meeting(x+hsp,y,asset_get("par_block"))) hsp = -hsp*0.8;
+            if(place_meeting(x,y+vsp,asset_get("par_block"))) vsp = -vsp*0.8;
         break;
     case 2: //charge
-        switch(player_id.attack)
-        {
-            case AT_FSPECIAL:
-            var pos_x = -20;
-            var pos_y = -45;
-            break;
-            case AT_DSPECIAL:
-            var pos_x = 0;
-            var pos_y = -100;
-            player_id.hud_offset = 60;
-            depth = player_id.depth-10;
-            break;
-        }
-        x = floor(lerp(x,player_id.x+(pos_x*player_id.spr_dir), 0.2));
-        y = floor(lerp(y,player_id.y+pos_y+10, 0.2));
-        if (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)
-            state = 0;
+            switch(player_id.attack)
+            {
+                case AT_FSPECIAL:
+                var pos_x = -20;
+                var pos_y = -45;
+                break;
+                case AT_DSPECIAL:
+                var pos_x = 0;
+                var pos_y = -100;
+                player_id.hud_offset = 60;
+                depth = player_id.depth-10;
+                break;
+            }
+            x = floor(lerp(x,player_id.x+(pos_x*player_id.spr_dir), 0.2));
+            y = floor(lerp(y,player_id.y+pos_y+10, 0.2));
+            if (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)
+                state = 0;
         break;
     case 3: //explosion
-        depth = player_id.depth-10;
-        hsp *= 0.8;
-        vsp *= 0.8;
-        player_id.move_cooldown[AT_NSPECIAL] = 40;
-        //exploding
-        if(state_timer == 1)
-        {
-            spawn_hit_fx(x,y,196);
-            sound_play(asset_get("sfx_abyss_portal_spawn"),false, noone, 1, 1);
-        }
-        if(state_timer < 45)
-        {
-            with(oPlayer)
+            depth = player_id.depth-10;
+            hsp *= 0.8;
+            vsp *= 0.8;
+            player_id.move_cooldown[AT_NSPECIAL] = 40;
+            //exploding
+            if(state_timer == 1)
             {
-                if(self != other.player_id)
+                spawn_hit_fx(x,y,196);
+                sound_play(asset_get("sfx_abyss_portal_spawn"),false, noone, 1, 1);
+            }
+            if(state_timer < 45)
+            {
+                with(oPlayer)
                 {
-                    if(collision_circle(other.x,other.y,100,self,false,false) && state != PS_HITSTUN)
+                    if(self != other.player_id)
                     {
-                        hsp *= 0.8;
-                        vsp *= 0.8;
-                        x = floor(lerp(x,other.x, 0.05));
-                        if(free) y = floor(lerp(y,other.y+20, 0.05));
+                        if(collision_circle(other.x,other.y,100,self,false,false) && state != PS_HITSTUN)
+                        {
+                            hsp *= 0.8;
+                            vsp *= 0.8;
+                            x = floor(lerp(x,other.x, 0.05));
+                            if(free) y = floor(lerp(y,other.y+20, 0.05));
+                        }
                     }
                 }
             }
-        }
-        else {state = 4; state_timer = 0;}
+            else {state = 4; state_timer = 0;}
         break;
     case 4: //broken
-        hsp *= 0.8;
-        vsp *= 0.8;
-        //exploding
-        if(state_timer < 20)
-        {
-            if(state_timer == 1) sound_play(asset_get("sfx_pillar_crumble"),false, noone, 1, 1.5);
-            image_index = 12+(state_timer)/5;
-        }
-        else 
-        {
-            if(state_timer > 80)
+            hsp *= 0.8;
+            vsp *= 0.8;
+            //exploding
+            if(state_timer < 20)
             {
-                image_index = 16+(state_timer-80)/5;
-                x = floor(lerp(x,player_id.x-(45*player_id.spr_dir), 0.015));
-                y = floor(lerp(y,player_id.y-50+10*sin(state_timer/20), 0.015));
+                if(state_timer == 1) sound_play(asset_get("sfx_pillar_crumble"),false, noone, 1, 1.5);
+                image_index = 12+(state_timer)/5;
             }
-            else
-                image_index = 15;
-        }
+            else 
+            {
+                if(state_timer > 80)
+                {
+                    image_index = 16+(state_timer-80)/5;
+                    x = floor(lerp(x,player_id.x-(45*player_id.spr_dir), 0.015));
+                    y = floor(lerp(y,player_id.y-50+10*sin(state_timer/20), 0.015));
+                }
+                else
+                    image_index = 15;
+            }
 
-        if(state_timer >= 100)
-        { state = 0; state_timer = 0;}
+            if(state_timer >= 100)
+            { state = 0; state_timer = 0;}
         break;
 }
 image_timer ++;

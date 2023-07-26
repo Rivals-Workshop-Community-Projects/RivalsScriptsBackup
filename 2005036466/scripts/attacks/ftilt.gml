@@ -84,5 +84,5 @@ set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, vfx_fspecialhit);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_FTILT, 2, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, -1);

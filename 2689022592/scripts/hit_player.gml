@@ -10,7 +10,7 @@ switch hbox.attack {
 	
 
 	case AT_DSPECIAL :
-	    	boi = true
+	    	//boi = true
 	    	//reset = true
 	    	if hbox.hbox_num == 3 { 
 	    	    with (asset_get("pHitBox")) {
@@ -34,9 +34,9 @@ switch hbox.attack {
 	case AT_USPECIAL :
 	     if hbox.hbox_num == 2 {
 	    	sound_play(asset_get("sfx_absa_kickhit"),false, noone, .9, 1.2)
-	    	//create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
+	    	create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	     }
-	    	boi = true
+	    	//boi = true
 	    	//reset = true
 	break 
 	
@@ -51,8 +51,8 @@ switch hbox.attack {
 	
 	case AT_NSPECIAL :
 	    if hbox.hbox_num == 2 {
-	    	boi = true
-	    	//create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
+	    	//boi = true
+	    	create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	    	//reset = true
 	    }
 	break 
@@ -62,7 +62,7 @@ switch hbox.attack {
 	    old_hsp /= 2
 	    if hbox.hbox_num == 3 jabgrab = true 
 	    if hbox.hbox_num >= 3 {
-	        boi = true
+	        //boi = true
 	        if hbox.hbox_num == 4 {
 	        	create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	        }
@@ -71,41 +71,41 @@ switch hbox.attack {
 	
 	case AT_DTILT :
 		sound_play(asset_get("sfx_waterhit_medium"),false, noone, .6, 1.5)
-		create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
-		//boi = true
+		//create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
+		boi = true
 	break;
 	
 	case AT_DATTACK:
 		sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .8, .95)
 	    sound_play(asset_get("sfx_blow_heavy2"),false, noone, 1, 1.4)
-		//boi = true
+		boi = true
 	break;
 
 	case AT_BAIR:
 	     if hbox.hbox_num == 1 {
-	     	//boi = true
+	     	boi = true
 	    	sound_play(asset_get("sfx_waterhit_medium"),false, noone, .6, 1.4)
 	     }
 	     
 	     if hbox.hbox_num == 2 {
 	    	sound_play(asset_get("sfx_waterhit_heavy2"),false, noone, .8, .9)
 	    	sound_play(asset_get("sfx_blow_heavy2"),false, noone, 1, 1.2)
-	    	//boi = true
+	    	boi = true
 	     }
 	     
 	     
-	     create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
+	     //create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	break;
 	
 	case AT_FSTRONG :
 		sound_play(asset_get("sfx_blow_heavy1"),false, noone, .8, .9)
-		boi = true
+		//boi = true
 		create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	break;
 	
 	case AT_USTRONG :
 		sound_play(asset_get("sfx_blow_heavy1"),false, noone, .8, .8)
-		boi = true
+		//boi = true
 		create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	break;
 	
@@ -116,7 +116,7 @@ switch hbox.attack {
 	     if hbox.hbox_num == 2 {
 	    	sound_play(asset_get("sfx_waterhit_heavy1"),false, noone, .8, 1)
 	     }
-	     boi = true
+	     //boi = true
 	     create_hitbox(AT_DSPECIAL,2,hit_player_obj.x,hit_player_obj.y - 40)
 	break;
 	

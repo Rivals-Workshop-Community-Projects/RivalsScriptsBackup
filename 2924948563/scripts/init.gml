@@ -127,13 +127,9 @@ drill_timer = 0;
 mound_1 = noone;
 mound_2 = noone;
 entered_mound = 0;
-orig_mound1 = noone;
-orig_mound2 = noone;
-ditto_checked = false;
-mound_outline = true;
 
 //**** CHANGEABLE VARIABLES
-knuckles_soft_armor = 8;
+knuckles_soft_armor = 6;
 glide_speed = 7;
 glide_fall_speed = 1;
 glide_landing_lag_time = 4;
@@ -158,6 +154,8 @@ drill_cancel_time = 30; // How many frames until the drill can be cancelled
 mound_speed = 17; // How fast you travel between mounds
 mound_closeness = 40; // How close you need to be to a mound to get in it
 mound_max = 120; // How long you have to be chasing a mound before the game considers it a lost cause and just uppercuts you
+orig_mound1 = noone;
+orig_mound2 = noone;
 
 // Animation Info
 

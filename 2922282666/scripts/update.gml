@@ -12,7 +12,7 @@ if(get_gameplay_time() > 2)
     if(state == PS_RESPAWN && state_timer == 1) { GemObj.state = 4; GemObj.state_timer = 0;}
     if!(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     {
-        if(OldGem != GemSelect) OldGem = GemSelect;
+        // if(OldGem != GemSelect) OldGem = GemSelect;
         if(attack == AT_BAIR && attack_window > 1) { if(!hitpause)spr_dir /= -1; attack = 0;} 
     }
     if(GemShow_timer != 0) GemShow_timer --;

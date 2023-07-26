@@ -6,11 +6,11 @@ set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 8);
@@ -28,7 +28,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 
 set_window_value(AT_UAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -53,6 +53,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_UAIR, 1, HG_TECHABLE, 2);
 
 set_hitbox_value(AT_UAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);

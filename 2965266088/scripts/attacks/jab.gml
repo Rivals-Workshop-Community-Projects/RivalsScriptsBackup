@@ -43,7 +43,6 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED, 5);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -4);
 
-
 window_num ++; //attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
@@ -74,7 +73,7 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 30); //50
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 0); //50
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4); //4 //5
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);

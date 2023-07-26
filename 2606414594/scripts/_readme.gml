@@ -270,7 +270,7 @@ reference the phone_fast variable. For example:
 
 	// attack_update.gml
 	
-	if (attack == AT_USPECIAL && window == 2 && window_timer == 1){
+	if (attack == AT_USPECIAL && window == 2 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		if !phone_fast{
 			spawn_hit_fx(x, y, vfx_uspecial_start);
 		}
@@ -453,23 +453,11 @@ Compatibility --> Muno Character Compatibility
 
 // That's it! Happy modding.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

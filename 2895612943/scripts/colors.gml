@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 7, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 22 );
 
 // blue
 set_color_profile_slot( 1, 0, 130, 164, 171 ); //clothes a
@@ -137,13 +137,13 @@ set_color_profile_slot( 10, 6, 255, 255, 255 ); //biters
 set_color_profile_slot( 10, 7, 135, 113, 74 ); //cardboard
 
 // six and seven
-set_color_profile_slot( 11, 0, 228, 227, 213 ); //clothes a
-set_color_profile_slot( 11, 1, 136, 205, 165 ); //clothes b
-set_color_profile_slot( 11, 2, 32, 79, 71 ); //scratch fur
-set_color_profile_slot( 11, 3, 165, 116, 76 ); //bite fur
-set_color_profile_slot( 11, 4, 135, 255, 61 ); //scratch eyes
-set_color_profile_slot( 11, 5, 80, 47, 42 ); //soles
-set_color_profile_slot( 11, 6, 255, 255, 255 ); //biters
+set_color_profile_slot( 11, 0, 66, 71, 94 ); //clothes a
+set_color_profile_slot( 11, 1, 136, 205, 184 ); //clothes b
+set_color_profile_slot( 11, 2, 232, 221, 170 ); //scratch fur
+set_color_profile_slot( 11, 3, 87, 68, 68 ); //bite fur
+set_color_profile_slot( 11, 4, 128, 147, 199 ); //scratch eyes
+set_color_profile_slot( 11, 5, 235, 75, 91 ); //soles
+set_color_profile_slot( 11, 6, 255, 251, 242 ); //biters
 set_color_profile_slot( 11, 7, 141, 118, 77 ); //cardboard
 
 // rise and fall
@@ -235,6 +235,16 @@ set_color_profile_slot( 20, 4, 255, 217, 112 ); //scratch eyes
 set_color_profile_slot( 20, 5, 166, 159, 204 ); //soles
 set_color_profile_slot( 20, 6, 240, 240, 240 ); //biters
 set_color_profile_slot( 20, 7, 222, 215, 173 ); //cardboard
+
+// catch and release
+set_color_profile_slot( 21, 0, 59, 63, 79 ); //clothes a
+set_color_profile_slot( 21, 1, 61, 118, 255 ); //clothes b
+set_color_profile_slot( 21, 2, 255, 133, 133 ); //scratch fur
+set_color_profile_slot( 21, 3, 80, 78, 84 ); //bite fur
+set_color_profile_slot( 21, 4, 97, 204, 103 ); //scratch eyes
+set_color_profile_slot( 21, 5, 0, 255, 85 ); //soles
+set_color_profile_slot( 21, 6, 255, 218, 74 ); //biters
+set_color_profile_slot( 21, 7, 135, 113, 74 ); //cardboard
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

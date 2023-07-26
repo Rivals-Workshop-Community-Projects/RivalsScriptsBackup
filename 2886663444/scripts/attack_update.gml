@@ -27,7 +27,15 @@ if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 30
 	//can_move = true;
 	can_fast_fall = false;
-	
+	if (window >= 3){
+		can_wall_jump = true;
+	}
+    if (!free && window == 3 && !hitpause){
+    	destroy_hitboxes();
+    	CorrectHurtboxes();
+        set_attack(AT_DSPECIAL_2);
+
+    }
     }
 //flip direction
 if (attack == AT_USPECIAL || attack == AT_DSPECIAL)
@@ -139,6 +147,10 @@ if ( attack == AT_FSPECIAL){
         can_wall_jump = true;
     	}
     	can_fast_fall = false;
+}
+#define CorrectHurtboxes()
+{
+    hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
 }
 //if (attack = AT_NSPECIAL)
 //	move_cooldown[AT_NSPECIAL] = 25

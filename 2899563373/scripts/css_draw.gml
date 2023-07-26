@@ -14,7 +14,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "palutena"
 // ! you can now scroll down until you reach "the primary part you should change."
 
 var tmp_cur = 0;
@@ -67,7 +67,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     color_name_activate = false; // when "false", disables the color names
     
-    col_max = 11; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 12; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(164, 239, 249) // "color preview square" color. can be any color!

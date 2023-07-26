@@ -50,7 +50,7 @@ if ((attack == AT_FSPECIAL)  && hbox_num == 1) {
 		sprite_index = sprite_get("nspecial_projectile_abyss")
 		
 		
-		x += floor((player_id.x - x)/30)
+		x += floor((player_id.x - x)/20)
         y += floor((player_id.y - 40 - y)/30)
 		
 		if (y < player_id.y ) {

@@ -15,7 +15,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, -4);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED, 13);
@@ -42,7 +42,7 @@ set_num_hitboxes(AT_DAIR, 2);
 
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_Y, 13);
 set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 50);
@@ -50,7 +50,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 69);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 6);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);//7
+set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4);//7
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .8);
@@ -68,8 +68,8 @@ set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 45);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 270);
-set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 4);//7
-set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 3);//7
+set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("dagger_slash1"));

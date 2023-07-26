@@ -13,5 +13,10 @@ switch(state){
         }
         break;
 }
+/*
+if get_match_setting(SET_HITBOX_VIS){
+    draw_sprite_ext(mask_index,image_index,x,y,1,1,image_angle,c_green,0.5);
+}
 
-//draw_debug_text(x, y + 16,string(player_id));
+draw_debug_text(x, y + 16,string(penny_orig_owner));
+draw_debug_text(x, y + 32,string(penny_orig_owner.mine));*/

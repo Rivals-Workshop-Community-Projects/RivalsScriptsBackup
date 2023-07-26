@@ -42,7 +42,7 @@ switch(my_hitboxID.attack){
 		}
 		break;
 }
-if my_hitboxID.type == 1{
+if my_hitboxID.type == 1 and penny_install{
 	sound_play(asset_get("sfx_ell_cooldown"));
 	penny_install = false;
 }

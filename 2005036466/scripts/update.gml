@@ -66,12 +66,47 @@ switch(state){
 		penny_dair_used = 0;
 		move_cooldown[AT_USPECIAL] = 0;
 		if pen_didairdash{
-			set_state(PS_PRATLAND)
+			if state != PS_PRATLAND{
+				set_state(PS_PRATLAND);
+			}
+			reset_window_value(AT_NAIR, get_attack_value(AT_NAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+			reset_window_value(AT_FAIR, get_attack_value(AT_FAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+			reset_window_value(AT_BAIR, get_attack_value(AT_BAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+			reset_window_value(AT_UAIR, get_attack_value(AT_UAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+			reset_window_value(AT_DAIR, get_attack_value(AT_DAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
 			pen_didairdash = false;
 		}
 		sound_stop(asset_get("sfx_absa_jabloop"))
 		break;
+	case PS_AIR_DODGE:
+		if pen_didairdash{
+			
+			pen_didairdash = false;
+		}
+		break;
 	case PS_ATTACK_GROUND:
+	case PS_ATTACK_AIR:
+		if pen_didairdash{
+			switch(attack){
+				case AT_NAIR:
+				case AT_FAIR:
+				case AT_BAIR:
+				case AT_DAIR:
+				case AT_UAIR:
+					set_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_TYPE, 7);
+					break;
+			}
+		} else {
+			switch(attack){
+				case AT_NAIR:
+				case AT_FAIR:
+				case AT_BAIR:
+				case AT_DAIR:
+				case AT_UAIR:
+					reset_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+					break;
+			}
+		}
 		switch(attack){
 			case AT_DSPECIAL:
 				if window == 2 and window_timer == 1 and !hitpause{
@@ -129,31 +164,6 @@ switch(state){
 				break;
 		}
 		break;
-}
-
-if pen_didairdash{
-	/*
-	switch(state){
-		case PS_IDLE_AIR:
-			set_state(PS_PRATFALL);
-			break;
-	}*/
-	switch(prev_state){
-		case PS_ATTACK_AIR:
-			if attack != AT_EXTRA_1 and pen_prev_attack != AT_EXTRA_1 and !hitpause{
-				switch(pen_prev_attack){
-					case AT_NAIR:
-					case AT_UAIR:
-					case AT_DAIR:
-					case AT_FAIR:
-					case AT_BAIR:
-							set_state(PS_PRATFALL);
-						break;
-				}
-				pen_prev_attack = attack;
-			}
-			break;
-	}
 }
 
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
@@ -248,6 +258,7 @@ with oPlayer{
 				strapped_id.pen_mine_unstable = false;
 				strapped_id.opponent_strapped = false;
 				strapped_id.mine_active = 0;
+				strapped_id.mine_player = noone;
 				strapped_id = noone;
 			}
 		}
@@ -336,12 +347,26 @@ if penny_install{
 		case 10:
 			spr = sprite_get("vaporwave_particle");
 			break;
+		case 30:
+			spr = sprite_get("star_particle");
+			break;
 		default:
 			spr = sprite_get("test_particle");
 			break;
 	}
 	if get_gameplay_time() % 10 == 0{
 		createParticle(1,48,64,spr,x,y-32,-hsp/5,-vsp/5,0,0,2,-0.1,50,true);
+	}
+}
+#endregion
+
+#region // Mine Refresh
+if instance_exists(obj_article2){
+	with(obj_article2){
+		// check owner id
+		if player_id == penny_orig_owner{
+			penny_orig_owner.mine = self;
+		}
 	}
 }
 #endregion

@@ -9,7 +9,7 @@ var charuuid = string(sprite_get("idle"));
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 12;
+var numAlts = 14;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -50,7 +50,8 @@ alt_name[8]  = "Bloodseeker";
 alt_name[9]  = "Flayed Flesh";
 alt_name[10]  = "Eldritch";
 alt_name[11]  = "Ankh";
-
+alt_name[12]  = "Tripping Hazard 1";
+alt_name[13]  = "Tripping Hazard 2";
 
 //alt_name[31] = "";
 

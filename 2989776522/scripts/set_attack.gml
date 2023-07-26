@@ -49,5 +49,19 @@ if(!inside_mech){
 	}
 }
 
+if (attack == AT_FSPECIAL){
+	fspec_hit = false;
+}
+
+if (attack == AT_TAUNT){
+	voicecooldown = 0;
+	reset_attack_value(AT_TAUNT, AG_NUM_WINDOWS);
+	if(up_down || down_down || "temp_level" in self && silly == 5){
+		window = 4;window_timer = 0;
+		set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 6);
+		clear_button_buffer(PC_TAUNT_PRESSED);
+	}
+}
+
 muno_event_type = 2;
 user_event(14);

@@ -2,7 +2,7 @@
 // Variable Definition
 var hitmove = my_hitboxID.attack; // Checks the hitbox of the attack
 
-print("Hitbox Num: " + string(my_hitboxID.hbox_num))
+//print("Hitbox Num: " + string(my_hitboxID.hbox_num))
 
 hit_player_obj.pen_can_det = my_hitboxID.no_other_hit;
 
@@ -128,7 +128,6 @@ switch(hitmove){
             if hit_player_obj.was_parried == false and hit_player_obj.state != PS_PRATLAND || hit_player_obj.state != PS_PRATFALL{
                 cooldown_mine = cooldown_mine_max;
             }
-            opponent_strapped = false;
             
             with (oPlayer){
             	if id != other.id{

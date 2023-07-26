@@ -498,6 +498,11 @@ switch(attack){
 			create_hitbox(AT_NAIR, 2, x, y);
 		}
 	break;
+	case AT_FAIR:
+		if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(sound_get("mech sfx"),false,noone,0.5);sound_play(sound_get("mech sfx 2"),false,noone,0.4);sound_play(asset_get("sfx_metal_hit_weak"));
+		}
+	break;
 	case AT_BAIR:
 		if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			sound_play(sound_get("fire"),false,noone,0.75);
@@ -765,6 +770,54 @@ switch(attack){
 			if(taunt_down){
 				window_timer = 0;
 			}else{
+				voicecooldown = 0;sound_stop(voice);
+			}
+		}
+		
+		//announcement
+		if((window == 4 || window == 5) && window_timer == 1 && !hitpause && voicecooldown <= 0){
+			if(voicemode == 0){ //adventure
+				voicecooldown = 1600;
+				sound_stop(voice);voice = sound_play(sound_get("adv_sa2_cutscene"),false,noone,1.5);
+			}else if(voicemode == 1){ //modern
+				voicecooldown = 300;
+				rand = random_func(0, 6, true);
+			    if(rand == 0){
+			    	sound_stop(voice);voice = sound_play(sound_get("pollock_time_for_a_change_of_pace"),false,noone,1.5);
+			    }else if(rand == 1){
+			    	sound_stop(voice);voice = sound_play(sound_get("pollock_take_this"),false,noone,1.5);
+			    }else if(rand == 2){
+			    	sound_stop(voice);voice = sound_play(sound_get("pollock_how_about_this"),false,noone,1.5);
+			    }else if(rand == 3){
+			    	sound_stop(voice);voice = sound_play(sound_get("pollock_catch_me_if_you_can"),false,noone,1.5);
+			    }
+			}else if(voicemode == 2){ //alfred
+				voicecooldown = 6600;
+				sound_stop(voice);voice = sound_play(sound_get("alfred_announcement"),false,noone,3);
+			}else if(voicemode == 3){ //pingas
+				voicecooldown = 300;
+				rand = random_func(0, 6, true);
+			    if(rand == 0){
+			    	sound_stop(voice);voice = sound_play(sound_get("pingas snooping as usual i see"),false,noone,2);
+			    }else if(rand == 1){
+			    	sound_stop(voice);voice = sound_play(sound_get("pingas_get_out_of_my_sight"),false,noone,1.5);
+			    }else if(rand == 2){
+			    	sound_stop(voice);voice = sound_play(sound_get("pingas no"),false,noone,1.75);
+			    }else if(rand == 3){
+			    	sound_stop(voice);voice = sound_play(sound_get("pingas ill have to give myself a promotion"),false,noone,1.5);
+			    }
+			}
+		}
+		if(window == 5 && !hitpause){
+			if(inside_mech && !free){
+				if(right_down && hsp < 3){
+					hsp += 0.75;
+				}else if(left_down && hsp > -3){
+					hsp -= 0.75;
+				}
+			}
+			if(taunt_pressed || attack_pressed || special_pressed || jump_pressed || shield_pressed){
+            	window = 6;window_timer = 0;clear_button_buffer(PC_TAUNT_PRESSED);
 				voicecooldown = 0;sound_stop(voice);
 			}
 		}

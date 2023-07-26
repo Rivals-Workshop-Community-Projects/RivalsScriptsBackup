@@ -29,7 +29,7 @@ if (("draw_hud_type" not in self || draw_hud_type != "childe") && darkness_cd > 
     draw_sprite_ext(
         sprite_get("hud_player_arrow"), 0,
         x - 1, y - char_height - 24, 2, 2, 0,
-        get_player_hud_color(player)/2, cd_flash == 0 ? 0 : 1
+        make_color_rgb(hud_color[0]/2, hud_color[1]/2, hud_color[2]/2), cd_flash == 0 ? 0 : 1
     );
 }
 
@@ -59,7 +59,7 @@ if (dark_state > -1 && dark_state < 4 && darkness_id != noone && darkness_owner 
             point_distance(x, y, darkness_id.x, darkness_id.y) / (128),
             2,
             dark_state == 2 ? point_direction(x, y, darkness_id.x, darkness_id.y) : point_direction(darkness_id.x, darkness_id.y, x, y),
-            c_white, 1
+            c_white, dark_alpha
         );
     }
 }

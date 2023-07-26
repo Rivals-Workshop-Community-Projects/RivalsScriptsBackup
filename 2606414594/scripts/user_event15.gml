@@ -248,6 +248,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "16 July, 2023");
+initHeader("MunoPhone Touch Firmware v5");
+initSection("Low FPS warning is now disabled by default and can only be enabled in Practice Mode.");
+
 initPatch("1.6", "14 April, 2023");
 initWords("Advertising");
 

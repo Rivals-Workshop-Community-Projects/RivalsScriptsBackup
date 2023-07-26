@@ -14,7 +14,7 @@ set_color_profile_slot_range( 2, 9, 21, 26 );
 
 // skin
 set_color_profile_slot( 0, 3, 226, 170, 138 );
-set_color_profile_slot_range( 3, 12, 19, 12 );
+set_color_profile_slot_range( 3, 12, 19, 20 );
 
 // gold
 set_color_profile_slot( 0, 4, 155, 110, 13 );
@@ -156,7 +156,6 @@ set_color_profile_slot( 12, 5, 43, 38, 43 ); //clothes1
 set_color_profile_slot( 12, 6, 100, 94, 102 ); //clothes2
 set_color_profile_slot( 12, 7, 154, 38, 184 ); //trim
 
-
 // actual colors
 set_color_profile_slot( 13, 0, 164, 239, 249 ); //energy1
 set_color_profile_slot( 13, 1, 76, 156, 206 ); //energy2
@@ -170,6 +169,6 @@ set_color_profile_slot( 13, 7, 169, 34, 49 ); //trim
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"energy1","colors":[{"r":164,"g":239,"b":249,"main":true}]},{"name":"energy2","colors":[{"r":76,"g":156,"b":206,"main":true}]},{"name":"hair","colors":[{"r":96,"g":201,"b":110},{"r":43,"g":155,"b":73,"main":true},{"r":12,"g":91,"b":33}]},{"name":"skin","colors":[{"r":255,"g":231,"b":201},{"r":226,"g":170,"b":138,"main":true}]},{"name":"gold","colors":[{"r":255,"g":234,"b":150},{"r":204,"g":159,"b":57},{"r":155,"g":110,"b":13,"main":true}]},{"name":"clothes1","colors":[{"r":252,"g":252,"b":239},{"r":204,"g":204,"b":183,"main":true}]},{"name":"clothes2","colors":[{"r":206,"g":252,"b":239},{"r":157,"g":204,"b":190,"main":true}]},{"name":"trim","colors":[{"r":169,"g":34,"b":49,"main":true},{"r":124,"g":16,"b":28}]}]}
+{"formatversion":1,"data":[{"name":"energy1","colors":[{"r":164,"g":239,"b":249,"main":true}]},{"name":"energy2","colors":[{"r":76,"g":156,"b":206,"main":true}]},{"name":"hair","colors":[{"r":96,"g":201,"b":110},{"r":43,"g":155,"b":73,"main":true},{"r":12,"g":91,"b":33}]},{"name":"skin","colors":[{"r":255,"g":231,"b":201},{"r":226,"g":170,"b":138,"main":true},{"r":178,"g":117,"b":83}]},{"name":"gold","colors":[{"r":255,"g":234,"b":150},{"r":204,"g":159,"b":57},{"r":155,"g":110,"b":13,"main":true}]},{"name":"clothes1","colors":[{"r":252,"g":252,"b":239},{"r":204,"g":204,"b":183,"main":true}]},{"name":"clothes2","colors":[{"r":206,"g":252,"b":239},{"r":157,"g":204,"b":190,"main":true}]},{"name":"trim","colors":[{"r":169,"g":34,"b":49,"main":true},{"r":124,"g":16,"b":28}]}]}
 === END JSON PALETTE ===
 */

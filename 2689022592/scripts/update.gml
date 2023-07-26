@@ -103,17 +103,17 @@ with asset_get("oPlayer") {
                 sound_play(asset_get("sfx_boss_vortex_end"),false, noone, .8, .8)
            shake_camera(6,6)
            if state != PS_DEAD && state != PS_RESPAWN {
-           take_damage(player,-1,Tengia_pain)
+           take_damage(player,-1,1)
            }
            with other {
            fx_s = hit_fx_create( sprite_get( "fx_snap" ), 20 );       
            spawn_hit_fx(other.x,other.y - ceil(other.char_height) - 84, fx_s)
-           take_damage(player,-1,floor(other.Tengia_pain*-0.4)) 
+           take_damage(player,-1,floor(other.Tengia_pain*0) - 5) 
            fxds = spawn_hit_fx(x, y - 20, fx_ds)
            fxds.depth = -15
            set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
            set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -2 );
-           create_hitbox(AT_DSPECIAL,2,floor(x),floor(y) - 20)
+           //create_hitbox(AT_DSPECIAL,2,floor(x),floor(y) - 20)
            
            if has_rune("O") == true {
                vfx = spawn_hit_fx(floor(other.x),floor(other.y),306)

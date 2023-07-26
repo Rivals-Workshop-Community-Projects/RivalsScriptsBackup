@@ -63,12 +63,15 @@ sprite_change_offset("finalstrong_pratfall",    24, 47, true);
 sprite_change_offset("taunt",           24, 47, true);
 sprite_change_offset("taunt2",          24, 47, true);
 sprite_change_offset("intro",           24, 47, true);
+sprite_change_offset("crawl",           24, 31);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player
 
 sprite_change_offset("rumia_hurtbox",   16, 54);
 sprite_change_offset("hud_player_arrow",3, 2);
+sprite_change_offset("hud_msg1",        16, 48);
+sprite_change_offset("hud_msg2",        16, 48);
 
 sprite_change_offset("koakuma_idle",    24, 47);
 sprite_change_offset("koakuma_gone",    64, 94);

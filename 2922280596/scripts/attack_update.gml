@@ -8,7 +8,7 @@
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
-if attack == AT_DSPECIAL {
+if (attack == AT_DSPECIAL) {
 	can_fast_fall = false;
 	if window == 2 && window_timer == 3 {
         sound_play(asset_get("sfx_shovel_hit_light2"), 0, noone, .7, 1.3)
@@ -220,13 +220,23 @@ if (attack == AT_FSPECIAL_AIR){
 	can_fast_fall = false;
 	//set_window_value(AT_FSPECIAL_AIR, 5, AG_WINDOW_TYPE, 7 * !has_hit);
 	move_cooldown[AT_FSPECIAL_AIR] = 999;
-	if (!free and !has_hit){
+	if (!free and !has_hit)
 		window = 6;
-	} 
+    //hit wall
+    if(position_meeting(x+30*spr_dir,y-10,asset_get("par_block")) && window == 3 && !hitpause && !has_hit)
+    {
+        has_hit = true;
+        sound_play(asset_get("sfx_blow_heavy1"));
+        spawn_hit_fx(x+20*spr_dir, y, bigfx)
+        hitpause = true;
+        hitstop = 5;
+        old_vsp = -9;
+        old_hsp = -1*spr_dir;
+    }
 
-	if (window == 6 && window_timer = 4){
-	sound_play(asset_get("sfx_zetter_downb"), 0, noone, 1, 1.2);
-	}
+	if (window == 6 && window_timer = 4)
+	    sound_play(asset_get("sfx_zetter_downb"), 0, noone, 1, 1.2);
+	
 }
 
 if (attack == AT_DSPECIAL_2){

@@ -22,3 +22,7 @@ if(my_hitboxID.type == 1)
     nspec_shells = 0;
     nspec_target_timer = 0;
 }
+
+//disable rewind
+hit_player_obj.desirae_timelock = false;
+hit_player_obj.desirae_rewind_spots = 0;

@@ -1,5 +1,6 @@
 //got_hit.gml
 
+//print ("got hit - " + string(game_time/60))
 
 if (self_darkness)
 {
@@ -12,7 +13,7 @@ if (graze_delay > 0)
 {
     graze_failed = true;
     sound_stop(sound_get("sfx_graze"));
-    with (hit_fx_obj) if (player == other.player && hit_fx == other.fx_graze) step_timer = hit_length;
+    with (hit_fx_obj) if (player == other.player && hit_fx == other.fx_graze || hit_fx == other.msg_graze) step_timer = hit_length;
 }
 
 if (temp_dark_shield_hp > 0)

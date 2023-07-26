@@ -8,6 +8,20 @@ switch(get_player_color(player)){
         spr_det = sprite_get("mineV_det");
         spr_charge = sprite_get("mineV_charged");
         break;
+    case 16:
+        spr_plant = sprite_get("mineG_plant");
+        spr_air = sprite_get("dspecial_proj");
+        spr_ground = sprite_get("mineG");
+        spr_det = sprite_get("mineG_det");
+        spr_charge = sprite_get("mine_charged");
+        break;
+    case 17:
+        spr_plant = sprite_get("mineP_plant");
+        spr_air = sprite_get("dspecial_proj");
+        spr_ground = sprite_get("mineP");
+        spr_det = sprite_get("mineP_det");
+        spr_charge = sprite_get("mineP_charged");
+        break;
     default:
         spr_plant = sprite_get("mine_plant");
         spr_air = sprite_get("dspecial_proj");
@@ -63,6 +77,7 @@ charge_sound_played = false;
 charge_loop_started = false;
 
 penny_orig_owner = player_id;
+penny_orig_mine_id = player_id.mine;
 pen_c4_charged = 0;
 pen_mine_parried = false;
 

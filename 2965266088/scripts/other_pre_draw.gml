@@ -15,7 +15,7 @@ else
                 floor(other.y - other.char_height / 1.75),
                 2, 2,
                 other.dark_state == 2 || other.dark_state == 3 ? point_direction(other.x, other.y, x, y) : 0,
-                c_white, 1
+                c_white, dark_alpha
             );
             shader_end();
         }

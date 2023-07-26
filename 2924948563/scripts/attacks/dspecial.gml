@@ -33,9 +33,10 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED, -11);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
 
 // Uppercut Endlag
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 23);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 6);
 
 // Dig Moving
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 16);

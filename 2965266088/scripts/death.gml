@@ -26,13 +26,13 @@ if (my_grab_id != noone)
 
 
 spell_bg = false;
+superspell_cur = 0;
 
 
 //darkness reset
 has_darkness = false;
 darkness_cd = 0;
 dark_state = -1;
-dark_shield_hp = max_dark_shield_hp;
 
 //if rumia dies and is the owner of a darkness orb that's on the field
 if (darkness_id != noone) 

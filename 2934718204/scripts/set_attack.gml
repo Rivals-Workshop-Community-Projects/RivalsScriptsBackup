@@ -65,5 +65,12 @@ if attack == AT_TAUNT {
         taunt_attack = true
     }
 }
+/*
+if silk_cancel_id != noone {
+    silk_cancel_id.hornet_silked_id = noone
+    silk_cancel_id = noone
+    sound_play(asset_get("sfx_zetter_shine"))
+}
+*/
 #define check_input(dir)
 return ((dir == "up") && up_down) || ((dir == "left") && left_down) || ((dir == "right") && right_down) || ((dir == "down") && down_down);

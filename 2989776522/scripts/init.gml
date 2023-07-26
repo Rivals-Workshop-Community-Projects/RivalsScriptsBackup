@@ -112,6 +112,7 @@ nspecial_charge_sfx2 = noone;
 nspecial_meter_hud = 2;
 nspecial_start_charge = 0;
 fspecialY = 0;
+fspec_hit = false;
 target_list = ds_list_create();
 fspec_sfx = false;
 aim_sprite = sprite_get("fspec_aim");

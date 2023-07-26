@@ -26,7 +26,7 @@ if enemy_hitboxID.player_id != player_id or (enemy_hitboxID.player_id == player_
     if hbox_mine != noone{
         hbox_mine.player_id = player_id;
     }
-    player_id.last_player = enemy_hitboxID.player_id;
+    player_id.last_player = enemy_hitboxID.player;
     player_id.last_attack = enemy_hitboxID.attack;
     player_id.last_hbox_num = enemy_hitboxID.hbox_num;
 } else {

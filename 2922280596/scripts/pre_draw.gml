@@ -11,7 +11,7 @@ if((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
         draw_y = 0;
 }
 
-if(desirae_timelock)
+if(desirae_timelock && desirae_time_mode == 1)
 {
     draw_sprite_ext(sprite_index, image_index, desirae_time_x, desirae_time_y, spr_dir*(1+small_sprites), 1+small_sprites, 0, c_red, 0.5);
     for(ic = 0; ic > desirae_rewind_spots; ic ++)

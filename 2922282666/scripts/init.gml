@@ -5,7 +5,7 @@ hitstun_hurtbox_spr = -1;
 
 //Player variables
 GemObj = noone;
-GemSelect = get_synced_var(player); //0 - Freedom, 1 - Monster, 2 - Tranquility
+// GemSelect = get_synced_var(player); //0 - Freedom, 1 - Monster, 2 - Tranquility
 sprite_rot = 0;
 OldGem = 0;
 GemPos_x = 0;

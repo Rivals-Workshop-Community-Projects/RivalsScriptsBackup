@@ -261,6 +261,28 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.17", "24th July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Hopefully improved Eggman's AI again by making him use his float if he's low off-stage (mainly to prevent him from SD'ing), and he'll also try to charge his strongs
++ Eggman's AI can now also do either taunt after killing you");
+
+initPatch("1.16", "23rd July, 2023");
+initHeader("Buffs");
+initSection("+ UAir multihits now pull through platforms (helps prevent teching/falling out of the move)");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved Eggman's AI by a lot, making him recover better, combo better, use more varied moves, summon more Egg Pawns when available, attempt to reflect incoming projectiles, and more");
+
+initPatch("1.15", "21st July, 2023");
+initHeader("Nerfs");
+initSection("- FAir has a bit more startup and endlag, and some hitboxes (mainly the top and bottom late ones) have been weakened and made slightly smaller
+- BAir tap sweetspot is slightly smaller
+- Some additional moves have been made slightly slower (ex: Jab, FTilt, DTilt, UAir, NAir, etc)
+- DTilt spike toned down a little bit");
+initHeader("Fixes / Other Changes");
+initSection("+ Added the iconic Announcement taunt! Hold up/down while doing taunt to make an announcement!
++ Added Egg Fleet, Eggmanland, and Frog Forest victory backgrounds (which one you get depends on what voice option you chose and what alt)
++ Added some extra SFX when FAir comes out + when it hits, to make it feel more like a large wrecking ball");
+
 initPatch("1.14", "30th June, 2023");
 initHeader("Nerfs");
 initSection("- DSpecial robots now apply cooldown to both slots when summoned (to make it so Eggman can't summon two at the same time so easily), and Eggman starts with a bit of cooldown (so that he can't summon them immediately when the match begins). General cooldown numbers are also once again slightly increased");

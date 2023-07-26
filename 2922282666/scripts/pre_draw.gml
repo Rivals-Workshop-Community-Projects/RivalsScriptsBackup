@@ -12,6 +12,6 @@ if((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
 if(GemShow_timer != 0)
 {
     var IconSize = 1+(30/(GemShow_timer+10))
-    draw_sprite_ext(sprite_get("icon_select"),GemSelect,GemPos_x,GemPos_y,IconSize,IconSize,0,c_white,(GemShow_timer/30))
+    draw_sprite_ext(sprite_get("icon_select"),1,GemPos_x,GemPos_y,IconSize,IconSize,0,c_white,(GemShow_timer/30))
 }
 shader_end();

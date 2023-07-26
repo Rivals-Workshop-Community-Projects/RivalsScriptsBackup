@@ -16,10 +16,19 @@ sprite_change_offset("mine", 100, 100);                 // Done
 sprite_change_offset("mine_det", 100, 100);             // Done
 sprite_change_offset("mine_charged", 100, 100);         // Done
 
+sprite_change_offset("mineG_plant", 100, 100);          // Done
+sprite_change_offset("mineG", 100, 100);                // Done
+sprite_change_offset("mineG_det", 100, 100);            // Done
+
 sprite_change_offset("mineV_plant", 100, 100);          // Done
 sprite_change_offset("mineV", 100, 100);                // Done
 sprite_change_offset("mineV_det", 100, 100);            // Done
 sprite_change_offset("mineV_charged", 100, 100);        // Done
+
+sprite_change_offset("mineP_plant", 100, 100);          // Done
+sprite_change_offset("mineP", 100, 100);                // Done
+sprite_change_offset("mineP_det", 100, 100);            // Done
+sprite_change_offset("mineP_charged", 100, 100);        // Done
 
 sprite_change_offset("mine_chargedstrapped", 100, 100); // Done
 sprite_change_offset("mine_strapped", 100, 100);        // Done
@@ -133,6 +142,8 @@ sprite_change_offset("taunt_plasma", xx, yy);           // Done
 // Add More Later
 sprite_change_offset("taunt_l", xx, yy);
 sprite_change_offset("taunt_l_white", xx, yy);
+sprite_change_offset("taunt_hf", xx, yy);
+sprite_change_offset("taunt_hf_white", xx, yy);
 sprite_change_offset("taunt_pog", xx, yy);
 sprite_change_offset("taunt_pog_white", xx, yy);
 sprite_change_offset("taunt_happy", xx, yy);

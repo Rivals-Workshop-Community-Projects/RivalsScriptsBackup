@@ -1,8 +1,8 @@
 if my_hitboxID.attack == AT_DAIR {
-    old_vsp = -5;
+    //old_vsp = -5;
 }
 if my_hitboxID.attack == AT_DSPECIAL {
-    vsp = -3;
+    //vsp = -3;
 }
 
 if move_cooldown[AT_FSPECIAL] > 5 {

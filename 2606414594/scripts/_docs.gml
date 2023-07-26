@@ -38,7 +38,7 @@ phone_window_end
 	...which is a fancy way of saying "the last frame of the current attack
 	window." You can use this to run code at the end of a window, e.g.
 	
-	if (window_timer == phone_window_end){
+	if (window_timer == phone_window_end){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		print("this is being run at the END of this window");
 	}
 
@@ -374,3 +374,12 @@ If you're a big brain coder and have made your OWN custom AG_s or HG_s, there's
 a chance that their indexes overlap. To resolve this, see user_event15.gml.
 
 */
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

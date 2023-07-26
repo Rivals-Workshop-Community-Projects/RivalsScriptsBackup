@@ -54,9 +54,17 @@ if (instance_exists(obj_article2)){
     }
 }
 
+with(mine_player){
+	penny_strapped = false;
+	strapped_id = noone;
+	outline_color = [0,0,0];
+	init_shader();
+}
+mine_player = noone;
+
 with(oPlayer){
 	if id != other.id{
-		if strapped_id.pen_mine_unstable{
+		if strapped_id != noone and strapped_id.pen_mine_unstable{
 			outline_color = [0,0,0];
 			init_shader();
 		}
@@ -67,10 +75,9 @@ with(oPlayer){
 			init_shader();
 			penny_charged_id = noone;
 		}
+		if url == other.url{
+			opponent_strapped = false;
+			mine_player = noone;
+		}
 	}
 }
-with(mine_player){
-	penny_strapped = false;
-	strapped_id = noone;
-}
-mine_player = noone;

@@ -41,13 +41,24 @@ if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1){
 	my_hitboxID.hitbox_timer = max(my_hitboxID.hitbox_timer, 45);
 }
 
+if(my_hitboxID.attack == AT_FAIR){
+	if(my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 4){
+		sound_play(sound_get("groundhit"),false,noone,1.0);
+	}
+}
+
 if(my_hitboxID.attack == AT_BAIR){
 	if(my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5)sound_play(asset_get("sfx_zetter_upb_hit"),false,noone,1.0);
 	if(my_hitboxID.hbox_num <= 3)hit_player_obj.should_make_shockwave = false;
 }
 
 if(my_hitboxID.attack == AT_UAIR){
-	if(my_hitboxID.hbox_num == 5){
+	if(my_hitboxID.hbox_num <= 4){
+		hit_player_obj.should_make_shockwave = false;
+		if(!hit_player_obj.free && !hit_player_obj.freemd){
+			hit_player_obj.y += 2;hit_player_obj.free = false;
+		}
+	}else if(my_hitboxID.hbox_num == 5){
 		hit_player_obj.should_make_shockwave = false;hit_player_obj.y -= 25;
 		hit_player_obj.old_hsp = old_hsp;//hit_player_obj.old_vsp = old_vsp;
 	}else if(my_hitboxID.hbox_num == 7){
@@ -58,6 +69,10 @@ if(my_hitboxID.attack == AT_UAIR){
 
 if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1){
 	sound_play(sound_get("bumper"),false,noone,1.25);
+}
+
+if(my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 4){
+	move_cooldown[AT_DTILT] = 60;
 }
 
 if(my_hitboxID.attack == AT_DATTACK && (my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6 || my_hitboxID.hbox_num == 9)){

@@ -65,81 +65,119 @@ with(oPlayer)
 {
     if(desirae_timelock)
     {
-        desirae_time_state = hitstun;
-        if((desirae_time_state >= 4+floor(desirae_rewind_spots/1.5) || state == PS_HITSTUN_LAND) && desirae_rewind_state == 0)
+        switch(desirae_time_mode)
         {
-            if(get_gameplay_time() % clamp(10-floor((vsp+hsp)/6),2,20) == 0) //every 10 ticks save position
+            case 0: // BUILD UP
             {
-                desirae_rewind_spot[desirae_rewind_spots] = [x,y];
-                desirae_rewind_spots ++;
-            }
-        }
-        else
-        {
-            hitpause = true;
-            switch(desirae_rewind_state)
-            {
-                case 0: //REWIND SETUP!
-                    desirae_rewind_spots --; 
-                    desirae_rewind_spot[desirae_rewind_spots] = [x,y];
-                    desirae_rewind_spot[0] = [desirae_time_x, desirae_time_y]
-                    //Keep them in stun
-                    set_state(PS_HITSTUN);
-                    last_player = noone;
-                    desirae_rewind_state = 1;
+                if(!hitpause || state_cat != SC_HITSTUN) 
+                    desirae_time_left --; //remove time unless being hit
+
+                if(get_player_damage(player) >= desirae_time_percent)
+                {
                     white_flash_timer = 10;
-                    hitstun = 5*(3+desirae_rewind_spots);
-                    sound_play(asset_get("sfx_clairen_sword_deactivate"))
-                    can_tech = false;
-                    can_wall_tech = false;
-                break;
-                case 1: //Zoom into the last few positions
-                    var temppos = desirae_rewind_spot[desirae_rewind_spots];
-                    x = lerp(x,temppos[0],0.4);
-                    y = lerp(y,temppos[1],0.4);
-                    if(y < 0) y = 5; else if(y > view_get_hview()) y = view_get_hview()-5;
-                    if(x < 0) x = 5; else if(x > view_get_wview()) x = view_get_wview()-5;
-                    
-                    if(last_player != noone || (state == PS_RESPAWN || state == PS_DEAD)) //If hit
-                    {
-                        desirae_timelock = false;
-                        desirae_rewind_state = 0;
-                        desirate_rewind_spots = 0;
-                        exit;
-                    }
-                    if(get_gameplay_time() % 2 == 0)
-                    {
-                        if(desirae_rewind_spots != 0) 
-                            desirae_rewind_spots --; 
-                        else desirae_rewind_state = 2;
-                    }
-                break;
-                case 2: //Finish!
-                    x = desirae_time_x;
-                    y = desirae_time_y;
+		            desirae_time_mode = 1;
+                    desirae_time_x = x;
+                    desirae_time_y = y;
+                    sound_play(asset_get("sfx_abyss_despawn"));
+                }
+                else if(desirae_time_left <= 0) //whoops too bad
+                {
+                    white_flash_timer = 10;
+                    sound_play(asset_get("sfx_coin_collect"));
                     desirae_timelock = false;
+                    desirae_rewind_state = 0;
                     desirae_rewind_spots = 0;
-                    with(other)
-                    {
-                        hbox = create_hitbox(AT_DSPECIAL_2, 2,other.x,other.y)
-                        if(other.player == player)
-                        {
-                            for(i = 0; i<4; i++)
-                                if(i != player) hbox.can_hit[i] = false;
-                            hbox.can_hit_self = true;
-                        }
-                        move_cooldown[AT_DSPECIAL] = 30;
-                    }
-                break;
+                    desirae_time_state = 0;
+                }
             }
+            break;
+            case 1: // REWIND 
+            {
+                can_tech = false;
+                can_wall_tech = false;
+                desirae_time_state = hitstun;
+                //Keep marking spots as long they have a timer on.
+                if((desirae_time_state >= 4+floor(desirae_rewind_spots/1.5) || state == PS_HITSTUN_LAND) && desirae_rewind_state == 0)
+                {
+                    if(get_gameplay_time() % clamp(10-floor((vsp+hsp)/6),2,20) == 0) //every 10 ticks save position
+                    {
+                        desirae_rewind_spot[desirae_rewind_spots] = [x,y];
+                        desirae_rewind_spots ++;
+                    }
+                }
+                else
+                {
+                    hitpause = true;
+                    switch(desirae_rewind_state)
+                    {
+                        case 0: //REWIND SETUP!
+                            desirae_rewind_spots --; 
+                            desirae_rewind_spot[desirae_rewind_spots] = [x,y];
+                            desirae_rewind_spot[0] = [desirae_time_x, desirae_time_y];
+                            //Keep them in stun
+                            set_state(PS_HITSTUN);
+                            last_player = noone;
+                            desirae_rewind_state = 1;
+                            white_flash_timer = 10;
+                            hitstun = 5*(3+desirae_rewind_spots);
+                            sound_play(asset_get("sfx_clairen_sword_deactivate"));
+                            can_tech = false;
+                            can_wall_tech = false;
+                        break;
+                        case 1: //Zoom into the last few positions
+                            var temppos = desirae_rewind_spot[desirae_rewind_spots];
+                            x = temppos[0];
+                            y = temppos[1];
+                            if(y < 0) y = 5; else if(y > view_get_hview()) y = view_get_hview()-5;
+                            if(x < 0) x = 5; else if(x > view_get_wview()) x = view_get_wview()-5;
+                            
+                            if(last_player != noone || (state == PS_RESPAWN || state == PS_DEAD)) //If hit
+                            {
+                                desirae_timelock = false;
+                                desirae_rewind_state = 0;
+                                desirate_rewind_spots = 0;
+                                exit;
+                            }
+                            if(get_gameplay_time() % 2 == 0)
+                            {
+                                if(desirae_rewind_spots != 0) 
+                                    desirae_rewind_spots --; 
+                                else desirae_rewind_state = 2;
+                            }
+                        break;
+                        case 2: //Finish!
+                            x = desirae_time_x;
+                            y = desirae_time_y;
+                            desirae_timelock = false;
+                            desirae_time_state = 0;
+                            desirae_rewind_spots = 0;
+                            white_flash_timer = 4;
+                            with(other) //OLD REWIND HITBOX CAN BE REACTIVATED
+                            {
+                                hbox = create_hitbox(AT_DSPECIAL_2, 2,other.x,other.y)
+                                hbox.extra_hitpause = 10;
+                                if(other.player == player)
+                                {
+                                    for(i = 0; i<4; i++)
+                                        if(i != player) hbox.can_hit[i] = false;
+                                    hbox.can_hit_self = true;
+                                }
+                                move_cooldown[AT_DSPECIAL] = 60;
+                            }
+                        break;
+                    }
+                }
+            }
+            break;
         }
     }
-    if(state == PS_RESPAWN || state_cat != SC_HITSTUN)
+    if(state == PS_RESPAWN || state == PS_DEAD || other.state == PS_RESPAWN)
     {
         desirae_timelock = false;
         desirae_rewind_state = 0;
         desirae_rewind_spots = 0;
-        if(other.nspec_target == id && state == PS_RESPAWN)
+        desirae_time_state = 0;
+        if(other.nspec_target == id && (state == PS_RESPAWN || state == PS_DEAD))
         {
             print_debug('arf')
             other.nspec_target = noone;

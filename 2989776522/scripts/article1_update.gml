@@ -44,7 +44,7 @@ if(timer == 1){
         destroyed = true;
     }
     if(!destroyed){
-        sound_play(sound_get("laser_target"),false,noone,1.0);
+        sound_play(sound_get("laser_target"),false,noone,1.0);player_id.fspec_hit = true;
     }
 }
 

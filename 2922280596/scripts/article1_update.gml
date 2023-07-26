@@ -62,7 +62,7 @@ switch(state)
         if(pulse_timer == 20) pulse_timer = 0;
         pulse_timer ++;
         image_index = -floor(get_gameplay_time()/4);
-        if(state_timer > 300)
+        if(state_timer > 500)
             state = 4;
         else
         {
@@ -75,6 +75,7 @@ switch(state)
                         with(other) 
                         {
                             hbox = create_hitbox(AT_DSPECIAL,2,other.x,other.y)
+                            hbox.old_rewind = true;
                             hbox.vsp = other.vsp;
                             hbox.hsp = other.hsp;
                             state = 4;

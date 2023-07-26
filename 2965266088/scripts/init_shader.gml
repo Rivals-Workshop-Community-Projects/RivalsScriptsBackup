@@ -65,6 +65,19 @@ switch (alt_cur)
         set_character_color_shading(1, 3);
         set_character_color_shading(4, 2.5);
         break;
+    case 26: //player color
+        var hud_r = color_get_red(get_player_hud_color(player));
+        var hud_g = color_get_green(get_player_hud_color(player));
+        var hud_b = color_get_blue(get_player_hud_color(player));
+
+        //set_color_profile_slot(alt_cur, 0, floor(hud_r/4), floor(hud_g/4), floor(hud_b/4)); //darkness
+        //set_color_profile_slot(alt_cur, 1, floor(hud_r), floor(hud_g), floor(hud_b)); //darkness 2
+        set_color_profile_slot(alt_cur, 4, floor(hud_r/2), floor(hud_g/2), floor(hud_b/2) ); //black
+        set_color_profile_slot(alt_cur, 6, floor(hud_r), floor(hud_g), floor(hud_b)); //red
+
+        //set_article_color_slot(0, floor(hud_r/4), floor(hud_g/4), floor(hud_b/4)); //darkness
+        //set_article_color_slot(1, floor(hud_r), floor(hud_g), floor(hud_b)); //darkness 2
+        break;
 }
 
 

@@ -33,11 +33,15 @@ if(atk == AT_DSPECIAL)
 {
 	with(hit_player_obj)
 	{
+		var pillarhit = variable_instance_exists(other.my_hitboxID,"old_rewind");
+		desirae_rewind_state = 0;
 		desirae_timelock = true;
-		desirae_time_state = hitstun_full;
-		desirae_time_x = x;
-		desirae_time_y = y;
-		sound_play(asset_get("sfx_ell_arc_taunt_end"), 0, noone, 1, 1.2);
+		desirae_time_mode = 0;
+		desirae_time_percent = get_player_damage(player)+(pillarhit?0:25);
+		desirae_time_left = 60*5;
+		// desirae_time_x = x;
+		// desirae_time_y = y;
+		sound_play(asset_get("sfx_ell_arc_taunt_end"), false, noone, 1, 1.2);
 	}
 }
 //}

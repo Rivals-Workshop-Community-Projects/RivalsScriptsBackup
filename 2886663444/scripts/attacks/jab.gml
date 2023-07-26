@@ -30,6 +30,7 @@ set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_JAB, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_JAB, 4, AG_WINDOW_SFX, sound_get("dagger_swoosh2"));
 
 set_window_value(AT_JAB, 5, AG_WINDOW_TYPE, 1);

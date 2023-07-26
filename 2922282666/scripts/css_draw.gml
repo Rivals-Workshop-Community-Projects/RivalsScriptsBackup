@@ -14,13 +14,13 @@ var alt_cur = get_player_color(player);
 
 var doNotInitShader = "alt_name" in self; // check if running for the first time
 
-//Butonn via dinobros
-if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26)) {
-	suppress_cursor = true;
-	draw_sprite_ext(sprite_get("css_icon"), css_gem, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_gray, 1);
-} else {
-	draw_sprite_ext(sprite_get("css_icon"), css_gem, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
-}
+// //Butonn via dinobros
+// if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26)) {
+// 	suppress_cursor = true;
+// 	draw_sprite_ext(sprite_get("css_icon"), css_gem, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_gray, 1);
+// } else {
+// 	draw_sprite_ext(sprite_get("css_icon"), css_gem, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
+// }
 
 if(!variable_instance_exists(id,"timerSelect")) //init variables.
 {

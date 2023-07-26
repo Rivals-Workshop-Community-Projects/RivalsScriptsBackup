@@ -105,7 +105,7 @@ instance_create(x, y, "obj_article_solid");
 phone = {
 	
 	// version
-	firmware: 5,
+	firmware: 6,
 	
 	// dev-end config
 	uses_shader: 0,
@@ -259,7 +259,7 @@ with phone{
 		dont_fast = true;
 	}
 	
-	UTIL_FPS_WARN	= pho_initUtil("Low FPS Warning", [1, 0], ["On", "Off"], "Display an onscreen warning when the game's FPS dips below 60.")
+	UTIL_FPS_WARN	= pho_initUtil("Low FPS Warning", [0, 1], ["Off", "On"], "Display an onscreen warning when the game's FPS dips below 60.")
 	UTIL_OPAQUE		= pho_initUtil("Opaque Background", [0, 1, 2], ["Off", "On", "When Focused"], "Draw an opaque background for app content, instead of a transparent one.");
 	UTIL_DMG_FREEZE	= pho_initUtil("Freeze Own Damage", [0, 1], ["Off", "On"], "Prevent the phone user's damage from changing (by constantly setting it back to the initial value).");
 	UTIL_STATE_SAVE	= pho_initUtil("Save Position and Damage", [0], "", "Save the position and damage of all characters.");
@@ -632,10 +632,10 @@ if !array_equals(phone_offscreen, []){
 				var x_ = x + phone_offscr_x_offset * spr_dir;
 				var y_ = y + phone_offscr_y_offset;
 				
-				var off_l = x_ < view_get_xview() - leeway;
-				var off_r = x_ > view_get_xview() + view_get_wview() + leeway;
-				var off_u = y_ < view_get_yview() - leeway;
-				var off_d = y_ > view_get_yview() + view_get_hview() - 52 + leeway;
+				var off_l = x_ < view_get_xview() - leeway; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+				var off_r = x_ > view_get_xview() + view_get_wview() + leeway; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+				var off_u = y_ < view_get_yview() - leeway; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+				var off_d = y_ > view_get_yview() + view_get_hview() - 52 + leeway; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 				
 				var margin = 34;
 				var idx = noone;
@@ -654,9 +654,9 @@ if !array_equals(phone_offscreen, []){
 				else if off_d idx = 6;
 				
 				if idx != noone{
-					draw_sprite_ext(spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, get_player_hud_color(player), 1);
+					draw_sprite_ext(spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, get_player_hud_color(player), 1); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
 					with other shader_start();
-					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, c_white, 1);
+					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, c_white, 1); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
 					with other shader_end();
 				}
 			}
@@ -668,7 +668,7 @@ if !array_equals(phone_offscreen, []){
 
 // onscreen text
 
-if (fps_real) < 60 && !phone_online && phone.utils_cur[phone.UTIL_FPS_WARN]{
+if phone.utils_cur[phone.UTIL_FPS_WARN] && fps_real < 60 && !phone_online{
 	draw_debug_text(32, 32, "Low FPS! (" + string(floor(fps_real)) + ")");
 }
 
@@ -823,12 +823,12 @@ var phone_active = phone.state > 0;
 if phone.big_screen_pos_offset < 1{
 	var draw_w = view_get_wview();
 	var draw_h = view_get_hview();
-	var draw_x = view_get_xview() - draw_w * phone.big_screen_pos_offset;
-	var draw_y = view_get_yview();
+	var draw_x = view_get_xview() - draw_w * phone.big_screen_pos_offset; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+	var draw_y = view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 	
 	if in_hud{
-		draw_x -= view_get_xview();
-		draw_y -= view_get_yview();
+		draw_x -= view_get_xview(); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+		draw_y -= view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 	}
 	
 	var margin_l = 256;
@@ -1442,7 +1442,7 @@ if phone_practice{
 				if (url == CH_FORSBURN) move_cooldown[AT_FSPECIAL] = 2;
 				if (url == CH_SHOVEL_KNIGHT){
 					gems = 0;
-					if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){
+					if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 						set_num_hitboxes(AT_USPECIAL, 0);
 						set_num_hitboxes(AT_FSPECIAL, 0);
 					}
@@ -2191,3 +2191,12 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

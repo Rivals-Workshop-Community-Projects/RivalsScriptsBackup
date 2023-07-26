@@ -62,8 +62,16 @@ switch(attack){
 									penny_taunt_spr_white = sprite_get("taunt_owo_white");
 								}
 								if (!shield_down and !jump_down and !special_down and !attack_down and !strong_down){
-									penny_taunt_spr = sprite_get("taunt_l");
-									penny_taunt_spr_white = sprite_get("taunt_l_white");
+									switch(get_player_color(player)){
+										case 15:
+											penny_taunt_spr = sprite_get("taunt_hf");
+											penny_taunt_spr_white = sprite_get("taunt_hf_white");
+											break;
+										default:
+											penny_taunt_spr = sprite_get("taunt_l");
+											penny_taunt_spr_white = sprite_get("taunt_l_white");
+											break;
+									}
 								}
 							}
 							break;
@@ -402,6 +410,7 @@ switch(attack){
 					mine = instance_create(x, y - 32, "obj_article2");
 					mine.player_id = id;
 					mine.penny_orig_owner = id;
+					mine.penny_orig_mine_id = mine;
 				}
 				break;
 		}
@@ -412,11 +421,13 @@ switch(attack){
 				if window_timer == 1 and !hitpause{
 					move_cooldown[AT_DSPECIAL] = 120;
 					can_fast_fall = false;
-		            if ((mine_player.state != PS_TUMBLE and mine_player.state_cat == SC_HITSTUN) or (mine_player.state == PS_TUMBLE and mine_player.state_timer <= 12)) {
-		            	penny_autodet = true;
-		            } else {
-		                penny_autodet = false;
-		            }
+					if mine_player != noone{
+			            if ((mine_player.state != PS_TUMBLE and mine_player.state_cat == SC_HITSTUN) or (mine_player.state == PS_TUMBLE and mine_player.state_timer <= 12)) {
+			            	penny_autodet = true;
+			            } else {
+			                penny_autodet = false;
+			            }
+					}
 				}
 				break;
 			case 2:

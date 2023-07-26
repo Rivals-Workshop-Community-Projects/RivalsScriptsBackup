@@ -20,23 +20,23 @@ switch(attack){
 		was_parried = false; // easy method for single-hit jabs
 	case AT_FTILT:
 	case AT_DTILT:
-		if window == 1 && window_timer == phone_window_end{
+		if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
 		}
 		break;
 	case AT_UTILT:
-		if window == 1 && window_timer == phone_window_end{
+		if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
 			array_push(phone_dust_query, [x, y, "dash", -spr_dir]);
 		}
 		break;
 	case AT_FSTRONG:
-		if window == 2 && window_timer == phone_window_end{
+		if window == 2 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
 		}
 		break;
 	case AT_USTRONG:
-		if window == 2 && window_timer == phone_window_end{
+		if window == 2 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
 			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
 		}
@@ -59,7 +59,7 @@ switch(attack){
 				beam_clash_timer_max = 120;
 				break;
 			case 2: // charge loop
-				if window_timer == 1{
+				if window_timer == 1{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 					sound_play(sfx_dbfz_kame_charge, false, noone, 1, 1 + beam_juice * 0.001);
 				}
 				if beam_juice > 180{
@@ -93,7 +93,7 @@ switch(attack){
 				vsp = min(vsp, 3);
 				can_fast_fall = false;
 				
-				if window_timer == phone_window_end || window_timer == phone_window_end - 3|| window_timer == phone_window_end - 6{
+				if window_timer == phone_window_end || window_timer == phone_window_end - 3|| window_timer == phone_window_end - 6{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 					array_push(phone_dust_query, [x - 20 * spr_dir + sin(window_timer + 2) * 6 * spr_dir, y, beam_juice > 300 ? "dash_start" : (beam_juice > 180 ? "dash" : "walk"), spr_dir]);
 				}
 				break;
@@ -103,7 +103,7 @@ switch(attack){
 				can_move = false;
 				can_fast_fall = false;
 				was_fully_charged = (beam_juice >= beam_juice_max);
-				if window_timer == phone_window_end{
+				if window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 					spawn_nspecial_hitbox(1);
 					sound_play(sfx_dbfz_kame_fire);
 					array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
@@ -460,4 +460,11 @@ if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
 
-
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

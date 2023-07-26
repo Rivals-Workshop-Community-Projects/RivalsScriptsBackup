@@ -58,6 +58,7 @@ sprite_change_offset("ffnspecial", 128, 158);
 sprite_change_offset("ffnspecial_rot", 128, 126);
 sprite_change_offset("nspecial_air", 128, 158);
 sprite_change_offset("nspecialshot", 128, 128);
+sprite_change_offset("vfx_shot", 128, 128);
 sprite_change_offset("fspecial", 128, 158);
 sprite_change_offset("fspecialff", 128, 158);
 sprite_change_offset("uspecial", 128, 158);

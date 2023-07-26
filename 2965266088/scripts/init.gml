@@ -221,6 +221,18 @@ hb_color[2] = $FF0066;  //darkness transfer + consume
 
 practice_darkness = get_match_setting(SET_PRACTICE);
 rumia_debug_view = 0;
+hud_color = [
+    color_get_red(get_player_hud_color(player)),
+    color_get_green(get_player_hud_color(player)),
+    color_get_blue(get_player_hud_color(player))
+];
+
+//crawl stuff
+crawl_time = 0;
+crawl_speed = 1.5;
+crawl_anim_speed = 0.15;
+crawl_sound = noone;
+fake_img = 0;
 
 has_darkness = false;
 darkness_id = noone;
@@ -229,8 +241,11 @@ dark_state = -1;
 prev_dark_state = -1;
 
 max_dark_shield_hp = 30 + 20 * has_rune("G");
-dark_shield_hp = max_dark_shield_hp;
+dark_shield_hp = 0;
 self_darkness = false; //if true, it means rumia has darkness on herself
+dark_shield_gain_counter = 0; //15
+dark_shield_gain_graze = !has_rune("G") ? 15 : 25;
+dark_shield_gain_parry = !has_rune("G") ? 15 : 25;
 
 dark_air_max_speed = 3; //also used for dspec
 
@@ -281,6 +296,8 @@ dark_sprite = [
     [asset_get("empty_sprite"), 0]
 ];
 dark_image = 0;
+dark_alpha_limits = [0.25, 0.75, 0, 30, true]; //min, max, timer cur, timer max, alpha up/down
+dark_alpha = dark_alpha_limits[0];
 
 //average of darkness_col's color values to check if it's brighter than the most mid gray
 var average = ((color_get_red(darkness_col) + color_get_green(darkness_col) + color_get_blue(darkness_col)) / 3);
@@ -292,11 +309,14 @@ graze_delay_set = 30;
 graze_failed = false;
 in_graze_range = false;
 graze_hbox_type = 0;
-graze_stats = [0, 0, 32];
+graze_range = [32, 16]; //normal / dodging
+graze_stats = [0, 0, graze_range[0]]; //center x, center y, graze range
 hbox_view = get_match_setting(SET_HITBOX_VIS);
 counter_hitpause_mult = 1.75;
 
 uair_hbox_pos = [0, 0];
+uair_vfx = noone;
+uair_sfx = noone;
 nspec_turned = false;
 taunt_pose = 0;
 
@@ -333,6 +353,9 @@ fx_fs_bighit = hit_fx_create(sprite_get("fx_fs_bighit"), 32);
 
 
 //effects
+msg_counter = hit_fx_create(sprite_get("hud_msg1"), 60);
+msg_graze = hit_fx_create(sprite_get("hud_msg2"), 60);
+
 set_hit_particle_sprite(1, sprite_get("fx_dark_hit_part")); //this function allows us to create our own hit particles, the number is the particle slot (we have 6 slots)
 
 fx_dark_hit = [

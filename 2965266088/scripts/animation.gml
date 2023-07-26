@@ -58,6 +58,10 @@ switch (state)
 		if (extended_parry_lag || was_parried) image_index = lerp(0, image_number, timer_to_index_math);
 		else image_index = lerp(0, image_number, state_timer/prat_land_time);
 		break;
+	case PS_CROUCH:
+		if (right_down || left_down) sprite_index = sprite_get("crawl");
+		if (crawl_time > 0) image_index = fake_img;
+		break;
 	case PS_TUMBLE: case PS_HITSTUN_LAND:
 		hurt_img = 5;
 		break;

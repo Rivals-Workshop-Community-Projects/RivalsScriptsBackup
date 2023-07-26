@@ -6,10 +6,10 @@ set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_LANDING_LAG, 10);
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
