@@ -61,4 +61,14 @@ if(my_hitboxID.type == 2 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.att
 			assist.dspec_hitboxes[3] = 1;
 		}
 	}
+	//ustrong lerp
+	if(my_hitboxID.attack == AT_USTRONG && assist != noone){
+		if (assist.window == 3){
+		var lerpam;
+    	lerpam = [0.4, 0.05]	
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), assist.x+hsp, lerpam[0]) //update x
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), assist.y-64+assist.vsp, lerpam[1]) //update y
+        hit_player_obj.go_through = true;
+    }
+	}
 }

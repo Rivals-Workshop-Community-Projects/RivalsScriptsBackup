@@ -138,7 +138,7 @@ if (attack == AT_USPECIAL && window == 1 && window_timer == 1 ){
 }
 if attack == AT_USPECIAL_2 {
     if(window == 1){
-        if(disk_obj != noone){
+        if(instance_exists(disk_obj)){
             if(window_timer == 1) disk_obj.y -= 2;
             disk_obj.bounces = 0;
             disk_obj.enemies = 1;
@@ -151,7 +151,7 @@ if attack == AT_USPECIAL_2 {
         }
     }
     if (window == 2 && !hitpause){
-        if (disk_obj != noone){
+        if (instance_exists(disk_obj)){
             //zoom toward the bamboo
             disk_dir = point_direction(x, y-char_height*.5, disk_obj.x, disk_obj.y);
             vsp = lengthdir_y(24, disk_dir);
@@ -238,9 +238,10 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && 
             smash_charging = false;
             
             attack_end();
+            destroy_hitboxes(); //stops late hits from hitting when they shouldn't
             attack = AT_NSPECIAL;
             window = 1;
-        window_timer = 0;
+            window_timer = 0;
         }
     }
 }

@@ -117,7 +117,9 @@ if attack == AT_FSPECIAL {
 		    }else{
 		    	original_hsp *= -1;
 		    	hsp = prev_hsp * -1;
-		    	if (phase >= 4) destroyed = true;
+		    	if (phase >= 4){
+		    		destroyed = true;
+		    	}
 		    }
 		}//*/
 		
@@ -147,7 +149,6 @@ if attack == AT_FSPECIAL {
         
 	}
 	
-	if(destroyed) player_id.disk_obj = noone;
 
 }
 

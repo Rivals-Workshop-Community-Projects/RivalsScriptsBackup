@@ -30,6 +30,6 @@ if enemy_hitboxID.player_id != player_id or (enemy_hitboxID.player_id == player_
     player_id.last_attack = enemy_hitboxID.attack;
     player_id.last_hbox_num = enemy_hitboxID.hbox_num;
 } else {
-    hit_player_obj.hitstop_full = 0;
-    hit_player_obj.hitstop = 0;
+    player_id.hitstop_full = 0;
+    player_id.hitstop = 0;
 }
