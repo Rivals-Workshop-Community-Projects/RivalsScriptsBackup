@@ -7,6 +7,7 @@ if(my_hitboxID.attack == AT_FSPECIAL){
                 was_parried = true;
                 player = other.my_hitboxID.player;
                 phase = 1;
+                my_hitboxID.bounces = 0;
                 hitbox_timer = 0;
                 spr_dir *= -1;
                 original_hsp *= -1;
@@ -18,7 +19,10 @@ if(my_hitboxID.attack == AT_FSPECIAL){
             }
         }
     }else{
-        my_hitboxID.hitbox_timer = 0;
+		my_hitboxID.hitbox_timer = 0;
+		my_hitboxID.bounces = 0;
+		my_hitboxID.phase = 1;
+		my_hitboxID.hsp *= 1.2;
     }
 }
 

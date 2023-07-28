@@ -76,8 +76,6 @@ if (draw5 > 0){
     draw5 -= 0.08;
 }
 
-print(gooeyPPLHit);
-
 with (oPlayer){	
 	//print(get_char_info(player, INFO_STR_NAME) + string(visible));
 	if(url != 2840242565){

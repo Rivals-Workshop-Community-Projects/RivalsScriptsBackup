@@ -26,7 +26,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 1.5);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 4);
+set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.5);
 
 

@@ -1,4 +1,4 @@
-if enemy_hitboxID.player_id != player_id or (enemy_hitboxID.player_id == player_id and (enemy_hitboxID.attack != AT_NSPECIAL and enemy_hitboxID.attack != AT_FSPECIAL and enemy_hitboxID.attack != AT_DSPECIAL and enemy_hitboxID.attack != AT_DSPECIAL_2 and enemy_hitboxID.attack != AT_USPECIAL)){
+if (enemy_hitboxID.player_id != player_id or (enemy_hitboxID.player_id == player_id and (enemy_hitboxID.attack != AT_NSPECIAL and enemy_hitboxID.attack != AT_FSPECIAL and enemy_hitboxID.attack != AT_DSPECIAL and enemy_hitboxID.attack != AT_DSPECIAL_2 and enemy_hitboxID.attack != AT_USPECIAL))){
     
     if enemy_hitboxID.effect != 9{
         hitstop = ceil((get_hitstop_formula(0, enemy_hitboxID.damage, enemy_hitboxID.hitpause, 0, 0)) * .5);
@@ -29,7 +29,4 @@ if enemy_hitboxID.player_id != player_id or (enemy_hitboxID.player_id == player_
     player_id.last_player = enemy_hitboxID.player;
     player_id.last_attack = enemy_hitboxID.attack;
     player_id.last_hbox_num = enemy_hitboxID.hbox_num;
-} else {
-    player_id.hitstop_full = 0;
-    player_id.hitstop = 0;
 }

@@ -71,7 +71,7 @@ if attack == AT_FSPECIAL {
 			}
 			
 			//hitboxes
-			if(phase < 4 && hitbox_timer % 7 == 0 && (player_id.disk_lockout <= 0)){ //yeah i used xor //2023 edit: using xor was incorrect
+			if(phase < 4 && get_gameplay_time() % 7 == 0 && (player_id.disk_lockout <= 0)){ //yeah i used xor //2023 edit: using xor was incorrect
 			    with(player_id){
 			        var next = create_hitbox(AT_FSPECIAL, 2, other.x, other.y);
 			        next.hsp = other.hsp;

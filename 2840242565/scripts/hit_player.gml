@@ -1,6 +1,8 @@
 //hit_player.gml
 
+// Up Tilt
 if (my_hitboxID.attack == AT_UTILT){
+	/*
 	if ((y - hit_player_obj.y)>87){
 		hit_player_obj.y += 12
 	}
@@ -19,6 +21,7 @@ if (my_hitboxID.attack == AT_UTILT){
 	if (my_hitboxID.hbox_num > 5){
 		hit_player_obj.y += 2;
 	}
+	*/
 }
 
 if (my_hitboxID.attack == AT_NAIR){
@@ -57,16 +60,16 @@ if (my_hitboxID.attack == AT_FSTRONG){
 }
 
 if (my_hitboxID.attack == AT_USTRONG){
-	if (my_hitboxID.hbox_num == 1){
-		hit_player_obj.x -= 14*spr_dir
+	if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
+		//hit_player_obj.x -= 14*spr_dir
 		if (hit_player_obj.free == false){
-			hit_player_obj.y += 12;
+			//hit_player_obj.y += 12;
 		}
 	}
-	if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 2){
+	if (my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5){
 		hit_player_obj.y += 6;
 	}
-	if (my_hitboxID.hbox_num == 4){
+	if (my_hitboxID.hbox_num == 6){
 		sound_play(sfx_krdl_spark_hit);
 	}
 }
@@ -162,7 +165,7 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
 	hit_player_obj.gooeyOpponentShouldBeVisisbleTimer = 0;
 
 	gooeyPPLHit++;
-	print(gooeyPPLHit);
+	//print(gooeyPPLHit);
 
 	if(hit_player_obj.url != url){
 		hit_player_obj.gooeyOpponentShouldBeVisisbleTimer = 15*gooeyPPLHit;
