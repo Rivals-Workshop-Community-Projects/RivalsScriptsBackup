@@ -39,6 +39,9 @@ if (local_synced_var != 0) {
 			case "MILES": // Jordan
 				legal = true;
 				break;
+			case "PIKA": // Pikakip
+				legal = true;
+				break;
 			default:
 				legal = false;
 				break;

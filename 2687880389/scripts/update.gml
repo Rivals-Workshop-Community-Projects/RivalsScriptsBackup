@@ -77,6 +77,23 @@ if (rocketing) {
 }
 */
 
+if (state == PS_DASH_START) {
+	// accelerate smoothly
+	//print_debug("hsp_befor = " + string(hsp));
+	if ((spr_dir * hsp) < dash_speed - 1) {
+		var difference = dash_speed - 1 - abs(hsp);
+		hsp = spr_dir * (initial_dash_speed + (difference * (state_timer / initial_dash_time)));
+	}
+	//print_debug("hsp_after = " + string(hsp));
+	// Continue to a proper dash at some point
+	/*if (state_timer >= initial_dash_time) {
+		set_state(PS_DASH);
+		//state_timer = 0;
+	}*/
+}
+print_debug("hsp = " + string(hsp));
+//print_debug("player state = " + string(state));
+//print_debug("states: dash " + string(PS_DASH) + ", crouch " + string(PS_CROUCH));
 
 // Give something back on wall jump
 if (state == PS_WALL_JUMP) {
@@ -138,19 +155,21 @@ if (fuel_recovery_active) {
 }
 rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 
-// Play cue(s) if fuel crossed the fspecial threshold
-if ((rocket_fuel_prev < booster_rush_cost)
-	&& (rocket_fuel >= booster_rush_cost))
-{
-	white_flash_timer = white_flash_duration;
-	//current_recharge_twinkle = spawn_hit_fx(x, y, recharge_twinkle);
-	if (crouching) {
-		spawn_hit_fx(x + (spr_dir * 10), y + 20, recharge_twinkle);
-	} else {
-		spawn_hit_fx(x + (spr_dir * 6), y - 6, recharge_twinkle);
+if (!forbidden_tech_activated) {
+	// Play cue(s) if fuel crossed the fspecial threshold
+	if ((rocket_fuel_prev < booster_rush_cost)
+		&& (rocket_fuel >= booster_rush_cost))
+	{
+		white_flash_timer = white_flash_duration;
+		//current_recharge_twinkle = spawn_hit_fx(x, y, recharge_twinkle);
+		if (crouching) {
+			spawn_hit_fx(x + (spr_dir * 10), y + 20, recharge_twinkle);
+		} else {
+			spawn_hit_fx(x + (spr_dir * 6), y - 6, recharge_twinkle);
+		}
+		//current_recharge_twinkle.follow_id = current_recharge_twinkle.player_id;
+		sound_play(asset_get("sfx_boss_shine"), false, noone, 0.8, 1.3);
 	}
-	//current_recharge_twinkle.follow_id = current_recharge_twinkle.player_id;
-	sound_play(asset_get("sfx_boss_shine"), false, noone, 0.8, 1.3);
 }
 /*if (instance_exists(current_recharge_twinkle)) {
 	print(string(variable_instance_get_names(current_recharge_twinkle)));
@@ -177,8 +196,10 @@ if (booster_rush_charges <= 0){
 		move_cooldown[AT_USPECIAL] = 2;
 	}
 }*/
-if (rocket_fuel < booster_rush_cost) {
-	move_cooldown[AT_FSPECIAL] = 2;
+if (!forbidden_tech_activated) {
+	if (rocket_fuel < booster_rush_cost) {
+		move_cooldown[AT_FSPECIAL] = 2;
+	}
 }
 
 // Release anyone we may have grabbed if we detect them respawning
@@ -222,7 +243,7 @@ if (state == PS_CROUCH) {
 		driving = false;
 	}
 	
-	if (left_down) {
+	if (left_down && !right_down) {
 		spr_dir = -1;
 		hsp -= crawl_accel;
 		// apply more oomph when slower
@@ -231,7 +252,7 @@ if (state == PS_CROUCH) {
 		} else {
 			hsp *= (1 + gradual_crawl_accel);
 		}
-	} else if (right_down) {
+	} else if (!left_down && right_down) {
 		spr_dir = 1;
 		hsp += crawl_accel;
 		// apply more oomph when slower
@@ -286,6 +307,13 @@ if (driving) {
 	if (penalty_frames > 0) {
 		penalty_frames--;
 	}
+}
+
+// Adjust boomerang's 'foot offset'
+if (crouching) {
+	boomerang_current_foot_offset = boomerang_crouching_foot_offset;
+} else {
+	boomerang_current_foot_offset = boomerang_standing_foot_offset;
 }
 
 // nspecial arrow

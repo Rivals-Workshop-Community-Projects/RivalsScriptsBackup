@@ -592,6 +592,26 @@ if ("practice" in self)
 						AddText("");
 						AddText("Fixed a visual bug where the Constellation effect connects to the wrong stars.");
 						break;
+					case 31:
+						AddText("v1.30 - 28 Jul 2023");
+						AddText("");
+						AddText("Prat land time 17 -> 10");
+						AddText("");
+						AddText("Fixed a bug where stars can collide with solid objects on frame 1 with DSpecial");
+						AddText("Fixed a bug where the alternate taunt is set every frame in practice mode");
+						AddText("");
+						AddText("Touched up the shading on some alts");
+						AddText("");
+						LineBreak();
+						AddText("v1.30.1 - 29 Jul 2023");
+						AddText("");
+						AddText("Reverted Prat land time 10 -> 17");
+						AddText("");
+						AddText("Fixed a bug where Rainbow alts don't work on the results screen");
+						AddText("Lower CPU levels now have weaker ai to match its proper level");
+						AddText("Removed default CPU attack movepool");
+						AddText("Added Spamton Ad compatibility");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

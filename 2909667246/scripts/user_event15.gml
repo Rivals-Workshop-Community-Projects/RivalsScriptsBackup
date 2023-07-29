@@ -260,9 +260,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.33", "29th July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added a new portrait! The old one is still available of course, so Villager now has 2 portraits like some other characters");
+
 initPatch("1.32", "16th June, 2023");
 initHeader("Buffs");
-initSection("+ Increased DSpecial axe damage a bit (10->12) and kbs (1.05). Charged stats are also somewhat increased
+initSection("+ Increased DSpecial axe damage a bit (10->12) and kbs (1.0->1.05). Charged stats are also somewhat increased
 + Increased damage of some moves (Jab finisher 5->8, NAir sweetspot 6->7, FStrong sweetspot 10->12, etc)
 + Increased some dmg and kbs on Villager's throws slightly as they didn't feel particularly strong (+1 dmg on most throws, FThrow kbs 0.7->0.8/0.9)");
 

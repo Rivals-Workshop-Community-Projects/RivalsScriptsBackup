@@ -1,3 +1,11 @@
+enum BOOMERANG_STATE {
+	BOOMERANG_OUT_CONSTANT,
+	BOOMERANG_OUT_SLOWING,
+	BOOMERANG_RETURN_RAMPING,
+	BOOMERANG_RETURN_CONSTANT,
+	BOOMERANG_FREEDOM
+}
+
 // Check if we grabbed someone
 if (my_hitboxID == grab_hitbox) {
 	if (attack == AT_NSPECIAL) {
@@ -120,4 +128,26 @@ if (targeting_enabled) {
             hit_player_obj.RETROBLAST_TARGET_STACKS++;
         }
     }
+}
+
+// If the boomerang hits an enemy, bounce back in the opposite direction
+// Transition to returning state, but with the same speed it struck with
+if ((my_hitboxID.attack == AT_NSPECIAL_2) && (my_hitboxID.hbox_num == 1)) {
+	if ((my_hitboxID.curr_boomerang_state == BOOMERANG_STATE.BOOMERANG_OUT_CONSTANT)
+		|| (my_hitboxID.curr_boomerang_state == BOOMERANG_STATE.BOOMERANG_OUT_SLOWING))
+	{
+		my_hitboxID.hsp *= -1;
+		my_hitboxID.orig_hsp *= -1;
+		my_hitboxID.vsp *= -1;
+		my_hitboxID.orig_vsp *= -1;
+	}
+	my_hitboxID.bounce_off_player = true;
+	//sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+	if (my_hitboxID.curr_boomerang_state == BOOMERANG_STATE.BOOMERANG_OUT_CONSTANT) {
+		my_hitboxID.next_boomerang_state = BOOMERANG_STATE.BOOMERANG_RETURN_CONSTANT;
+		my_hitboxID.state_timer = 0;
+	} else if (my_hitboxID.curr_boomerang_state == BOOMERANG_STATE.BOOMERANG_OUT_SLOWING) {
+		my_hitboxID.next_boomerang_state = BOOMERANG_STATE.BOOMERANG_RETURN_RAMPING;
+		my_hitboxID.state_timer = my_hitboxID.state_time_return_ramping - my_hitboxID.state_timer;
+	}
 }

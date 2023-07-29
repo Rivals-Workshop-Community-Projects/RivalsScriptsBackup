@@ -16,7 +16,16 @@ switch (attack)
 	case AT_TAUNT:
 		if (practice&&object_index!=oTestPlayer)
 		{
-			if (state_timer == 1 && menuState == 0) menuStateBuffer = 1;
+			if (state_timer == 1)
+			{
+				if (menuState == 0)
+					menuStateBuffer = 1;
+				else
+				{
+					tutDone[tutPrevMenu] = 1;
+					tutDoneAdv[tutPrevMenu] = 1;
+				}
+			}
 			hsp = 0;
 			vsp = 0;
 		}
@@ -441,6 +450,7 @@ switch (attack)
 				var dir = point_direction(x, y, other.x, other.y-100);
 				hsp = lengthdir_x(len/3, dir);
 				vsp = lengthdir_y(len/3, dir);
+				ignores_walls = true;
 				checkMerge = true;
 			}
 		}

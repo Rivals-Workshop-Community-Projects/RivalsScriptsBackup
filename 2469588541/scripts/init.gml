@@ -202,3 +202,5 @@ fail_text = "Star Fox?
 More like Star Fail!";
 pot_compat_variable = sprite_get("plate");
 pot_compat_text = "Look a Cake!"
+spam_ad = sprite_get("spam_ad");
+user_event(0);

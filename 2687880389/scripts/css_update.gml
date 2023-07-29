@@ -19,6 +19,10 @@ switch (name) {
 		special_color_available = true;
 		selected_special_color = 3;
 		break;
+	case "PIKA": // Pikakip
+		special_color_available = true;
+		selected_special_color = 4;
+		break;
 	default:
 		special_mode_active = false;
 		break;

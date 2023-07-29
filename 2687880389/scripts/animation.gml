@@ -11,7 +11,7 @@ if ((state == PS_CROUCH) && (driving)) {
     	crouch_turning_timer++;
     } else {
         // Movement sprite
-    	if (left_down || right_down) {
+    	if ((left_down && !right_down) || (!left_down && right_down)) {
     		sprite_index = sprite_get("crouchmoving");
     		image_index = floor(crouch_anim_timer / (crouch_anim_timer_max / 2));
     		//if (vroom_cooldown == 0) {

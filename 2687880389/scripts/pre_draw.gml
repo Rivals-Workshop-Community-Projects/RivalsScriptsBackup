@@ -41,15 +41,18 @@ if (afterimage_countdown > 0) {
 							  get_color_profile_slot_g(selected_player_color, 0),
 							  get_color_profile_slot_b(selected_player_color, 0));
 	var num_afterimages = ds_list_size(afterimages);
+	gpu_set_fog(true, c_energy, 0, 1);
 	if (num_afterimages > 0) {
 		for (var i = 0; i < num_afterimages; i++) {
 			// Only draw X of them
 			//if ((i % 3) == 2) {
+			//if ((i % 2) == 1) {
 			if ((i % 2) == 1) {
+			//if (i > 0) {
 				var curr = afterimages[| i];
-				store_article_colors();
-				shader_start();
-				gpu_set_blendmode(bm_add);
+				//store_article_colors();
+				//shader_start();
+				//gpu_set_blendmode(bm_add);
 				/*
 				set_article_color_slot(0, color_get_red(c_energy), color_get_green(c_energy), color_get_blue(c_energy));
 				set_article_color_slot(1, color_get_red(c_energy), color_get_green(c_energy), color_get_blue(c_energy));
@@ -66,12 +69,13 @@ if (afterimage_countdown > 0) {
 				//draw_sprite_ext(curr.sprite_index, curr.image_index,
 				//				curr.x, curr.y, curr.spr_dir, 1, 0,
 				//				c_energy, i / num_afterimages);
-				gpu_set_blendmode(bm_normal);
-				shader_end();
+				//gpu_set_blendmode(bm_normal);
+				//shader_end();
 				//restore_article_colors();
 			}
 		}
 	}
+	gpu_set_fog(false, c_white, 0, 1);
 }
 
 // Draw special transformation

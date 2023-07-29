@@ -24,14 +24,18 @@ draw_sprite_ext(meter_fill_sprite, 0,
 				0, c_white, 1);
 
 // Draw the marker on the meter
-draw_sprite_ext(charge_indicator_sprite, 0,
-				temp_x + indicator_offset, temp_y + 1, 1, 1,
-				0, c_white, 1);
+if (!forbidden_tech_activated) {
+	draw_sprite_ext(charge_indicator_sprite, 0,
+					temp_x + indicator_offset, temp_y + 1, 1, 1,
+					0, c_white, 1);
+}
 
 // Draw the indicator light
-draw_sprite_ext(charge_button_sprite, rocket_fuel >= booster_rush_cost ? 1 : 0,
-				temp_x + indicator_offset, temp_y - 9, 1, 1,
-				0, c_white, 1);
+if (!forbidden_tech_activated) {
+	draw_sprite_ext(charge_button_sprite, rocket_fuel >= booster_rush_cost ? 1 : 0,
+					temp_x + indicator_offset, temp_y - 9, 1, 1,
+					0, c_white, 1);
+}
 
 /*
 // Center pip

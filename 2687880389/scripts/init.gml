@@ -12,6 +12,7 @@ increased_charges = has_rune("B");
 aerial_fstrong_enabled = has_rune("C");
 fstrong_recoil_enabled = has_rune("D");
 lightweight = has_rune("E");
+forbidden_tech_activated = has_rune("F");
 // tier 2
 accellerated_jump_kick = has_rune("G");
 can_store_dspecial_charge = has_rune("H");
@@ -169,12 +170,12 @@ char_height         = 68;       //                  not zetterburn's. this is ju
 knockback_adj       = lightweight? 1.2 : 0.95;		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 3.1;		// 3    -  4.5
+walk_speed          = 3.4;//3.1		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;	    // 6
-initial_dash_time   = 8;		// 8    -  16
-initial_dash_speed  = 6.5;		// 4    -  9
-dash_speed          = 5.5;		// 5    -  9
+initial_dash_time   = 15;//8;		// 8    -  16
+initial_dash_speed  = 4;//6.5;		// 4    -  9
+dash_speed          = 7;//5.5;		// 5    -  9
 dash_turn_time      = 24;		// 8    -  20
 dash_turn_accel     = 1.75;		// 0.1  -  2
 dash_stop_time      = 8;		// 4    -  6
@@ -191,7 +192,7 @@ air_accel           = lightweight? 0.5 : 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = lightweight? 0.03 : 0.06;		// 0.02 -  0.07
 max_fall            = lightweight? 8 : 10;		// 6    -  11
-fast_fall           = lightweight? 17 : 16;		// 11   -  16
+fast_fall           = lightweight? 20 : 16;		// 11   -  16
 gravity_speed       = lightweight? 0.3 : 0.5;		// 0.3  -  0.6
 hitstun_grav        = lightweight? 0.3 : 0.5;		// 0.45 -  0.53
 
@@ -326,9 +327,9 @@ bubble_y = 8;
 // Misc. character mechanics
 blast_hit_effect = hit_fx_create(sprite_get("blast_hit"), 42);
 
-// crawl
-crawl_speed = 12; // 13 15 17
-crawl_accel = 0.8 // 0.85 0.8
+// crawl (driving in car mode)
+crawl_speed = 13; // 13 15 17
+crawl_accel = 0.6; // 0.8 0.85 0.8
 gradual_crawl_accel = 0.005;
 crouch_time = 0;
 crouch_time_max = 4;
@@ -457,6 +458,20 @@ draw_big_arrow_timer_y = 0;
 draw_big_arrow_drift = 0;
 draw_big_arrow_angle = 0;
 
+// nspecial alt - boomerang
+//boomerang_time_to_turn = 60 * 1;
+boomerang_lifetime = 60 * 4;//boomerang_time_to_turn * 2;
+boomerang_countdown = 0;
+//intial_boomerang_throw_speed = 10;
+boomerang_upward_angle = 17;
+boomerang_downward_angle = 360 - boomerang_upward_angle;
+// A slight offset from the target's
+// feet, to give the illusion of
+// tracking the center of the target.
+boomerang_standing_foot_offset = 35;
+boomerang_crouching_foot_offset = 17;
+boomerang_current_foot_offset = boomerang_standing_foot_offset;
+
 // dspecial
 engine_revving_up_sound = sound_get("engine_revving");
 driving_dash_sound = sound_get("engine_dash");
@@ -478,7 +493,7 @@ dspecial_dust_deployed = false;
 
 // Afterimages
 //num_afterimages_max = 11;
-num_afterimages_max = 5;
+num_afterimages_max = 6;
 afterimage_countdown = 0;
 //afterimage_countdown_prev = 0;
 //afterimages = array_create(num_afterimages, noone);
@@ -690,6 +705,16 @@ switch (special_alt_number) {
         special_color_profile_slot_5 = make_color_rgb(163, 66, 184); //hands
         special_color_profile_slot_6 = make_color_rgb(57, 54, 60); //connectors
         special_color_profile_slot_7 = make_color_rgb(205, 45, 112); //feet
+        break;
+    case 4: // Pikakip
+        special_color_profile_slot_0 = make_color_rgb(255, 0, 0); //energy
+        special_color_profile_slot_1 = make_color_rgb(46, 74, 255); //helmet
+        special_color_profile_slot_2 = make_color_rgb(159, 0, 237); //visor
+        special_color_profile_slot_3 = make_color_rgb(242, 197, 140); //flesh
+        special_color_profile_slot_4 = make_color_rgb(209, 76, 148); //torso
+        special_color_profile_slot_5 = make_color_rgb(209, 76, 148); //hands
+        special_color_profile_slot_6 = make_color_rgb(159, 0, 237); //connectors
+        special_color_profile_slot_7 = make_color_rgb(46, 74, 255); //feet
         break;
     default: // 0 falls here
         break;

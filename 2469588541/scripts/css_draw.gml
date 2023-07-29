@@ -3,7 +3,7 @@ var temp_y = y + 9;
 
 if (get_color_profile_slot_r(1, 0) == 168)
 {
-    sound_play(sound_get("dspec"),0,-4,2);
+	sound_play(sound_get("dspec"),0,-4,2);
 	set_color_profile_slot( 1, 0, 167, 208, 232 );
 }
 
@@ -48,7 +48,7 @@ alt_name[15]  = "Nova Visionary";
 alt_name[16]  = "Flickering Spectre";
 alt_name[17]  = "Illusion";
 alt_name[18]  = "Spectrum";
-alt_name[19]  = "Sai M";
+alt_name[19]  = "Inkbrush";
 alt_name[20]  = "No Swiping";
 alt_name[21]  = "Wolf Star";
 alt_name[22]  = "DigiFurry";
@@ -60,7 +60,7 @@ alt_name[27]  = "Sylvan Watcher";
 alt_name[28]  = "Avatar's Bison";
 alt_name[29]  = "Champion";
 alt_name[30]  = "Abyss";
-alt_name[31]  = "Riptide";
+alt_name[31]  = GetCustomAltName();
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
@@ -107,4 +107,17 @@ init_shader();
 	draw_set_alpha(alpha);
 	draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, false);
 	draw_set_alpha(1);
+}
+
+#define GetCustomAltName()
+{
+	user_event(0);
+	switch (string_upper(get_player_name(player)))
+	{
+		default: return "Riptide";
+		case "KARU":
+		case "LUKARU": return "Sky High";
+		case "AURORA":
+		case "AURO<3": return "Fel Spark";
+	}
 }

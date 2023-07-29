@@ -20,8 +20,51 @@
 #macro codename_rotom_number        25
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
+}
+
+// Create boomerang
+if (attack == AT_NSPECIAL_2) {
+	can_fast_fall = false;
+	
+	if ((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		//sound_play(sound_get("horn_rotom"));
+		var boomerang_hitbox = create_hitbox(AT_NSPECIAL_2, 1, x + spr_dir * 30, y - 50);
+		//var fthrow_hsp = intial_boomerang_throw_speed;
+		//var fthrow_vsp = 0;
+		var throw_angle = 0;
+		if (up_down && !down_down) {
+			throw_angle = boomerang_upward_angle;
+			//fthrow_hsp = lengthdir_x(intial_boomerang_throw_speed, boomerang_upward_angle);
+			//fthrow_vsp = lengthdir_y(intial_boomerang_throw_speed, boomerang_upward_angle);
+		} else if (!up_down && down_down) {
+			throw_angle = boomerang_downward_angle;
+			//fthrow_hsp = lengthdir_x(intial_boomerang_throw_speed, boomerang_downward_angle);
+			//fthrow_vsp = lengthdir_y(intial_boomerang_throw_speed, boomerang_downward_angle);
+		}
+		
+		//boomerang_hitbox.intial_boomerang_angle = throw_angle;
+		var corrected_throw_angle = ((spr_dir > 0) ? throw_angle
+													: (throw_angle <= 180) ? 180 - throw_angle
+																			: 360 - (throw_angle - 180)) % 360;
+		boomerang_hitbox.curr_angle = corrected_throw_angle;
+		boomerang_hitbox.proj_angle = corrected_throw_angle;
+		boomerang_hitbox.hsp = spr_dir;
+		boomerang_hitbox.orig_hsp = spr_dir;
+		boomerang_hitbox.vsp = 0;
+		boomerang_hitbox.orig_vsp = 0;
+		//boomerang_hitbox.hsp = spr_dir * fthrow_hsp;
+		//boomerang_hitbox.orig_hsp = spr_dir * fthrow_hsp;
+		//boomerang_hitbox.vsp = fthrow_vsp;
+		//boomerang_hitbox.orig_vsp = fthrow_vsp;
+		//boomerang_hitbox.boomerang_time_to_turn = boomerang_time_to_turn;
+		boomerang_hitbox.length = boomerang_lifetime;
+		//boomerang_hitbox.intial_boomerang_throw_speed = intial_boomerang_throw_speed;
+		//boomerang_hitbox.decelleration = spr_dir * fthrow_hsp / boomerang_time_to_turn;
+		//boomerang_hitbox.decelleration = fthrow_vsp / boomerang_time_to_turn;
+		move_cooldown[AT_NSPECIAL_2] = boomerang_lifetime;
+	}
 }
 
 if ((attack == AT_NSPECIAL)
@@ -97,7 +140,7 @@ if ((attack == AT_NSPECIAL)
 		                draw_big_arrow_timer = draw_big_arrow_timer_max;
 						draw_big_arrow_timer_x = x;
 						draw_big_arrow_timer_y = y - 34;
-						draw_big_arrow_drift = 0.9;
+						draw_big_arrow_drift = 2;
 						draw_big_arrow_angle = 90;
 		            } else if (down_down) {
 		                attack = AT_DTHROW;
@@ -107,7 +150,7 @@ if ((attack == AT_NSPECIAL)
 		                draw_big_arrow_timer = draw_big_arrow_timer_max;
 						draw_big_arrow_timer_x = x;
 						draw_big_arrow_timer_y = y - 34;
-						draw_big_arrow_drift = 0.9;
+						draw_big_arrow_drift = 1.5;
 						draw_big_arrow_angle = 270;
 		            } else if (left_down) {
 		                if (spr_dir > 0) { // backward throw
@@ -115,7 +158,7 @@ if ((attack == AT_NSPECIAL)
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
-							draw_big_arrow_drift = 2.8;
+							draw_big_arrow_drift = 4;
 		                    // Turn around
 		                    spr_dir *= -1;
 		                } else { // forward throw
@@ -123,7 +166,7 @@ if ((attack == AT_NSPECIAL)
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
-							draw_big_arrow_drift = 1.5;
+							draw_big_arrow_drift = 2.5;
 		                }
 		                draw_big_arrow_timer = draw_big_arrow_timer_max;
 						draw_big_arrow_timer_x = x;
@@ -135,13 +178,13 @@ if ((attack == AT_NSPECIAL)
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
-							draw_big_arrow_drift = 1.5;
+							draw_big_arrow_drift = 2.5;
 		                } else { // backward throw
 		                    attack = AT_NTHROW;
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
-							draw_big_arrow_drift = 2.8;
+							draw_big_arrow_drift = 4;
 		                    // Turn around
 		                    spr_dir *= -1;
 		                }

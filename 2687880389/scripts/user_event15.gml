@@ -450,7 +450,26 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 */
 
 
-initPatch("2.12", "19 Mar, 2023");
+initPatch("2.13", "29 Jul, 2023");
+initHeader("Balance");
+initSection("- walk_speed bumped up (3.1->3.4)
+			- initial_dash_time increased (8->15)
+			- initial_dash_speed reduced (6.5->4)
+			- DASH_START now has some linear acceleration, with a tiny jump up at the end
+			- dash_speed increased (5.5->7)
+			- base acceleration of crawl reduced (0.8->0.6)
+			- Overall, dash has slower startup, but is faster. Crawl accelerates more slowly, to the point where it's slightly faster to dash, then transition to crawl.");
+initSection("Presentation");
+initSection("- fspecial afterimage is now energy-colored
+			- throw indicator arrows move faster/further to emphasize the selected direction")
+initSection("Runes");
+initSection("- Adjusted E: Alluminum Alloy - increased fast-fall speed 17->20
+			- Added F: Forbidden Tech - experimental moveset alteration");
+initSection("Bugs");
+initSection("- down taunt no longer transforms before the smoke appears
+			- glasses thrown by taunt should now be impossible to parry");
+
+initPatch("2.12", "20 Mar, 2023");
 initHeader("Balance");
 initSection("- fstrong's recoil no longer leaves the ground and is standardized across angles
 			- fstrong aim angles are narrower (30->25)

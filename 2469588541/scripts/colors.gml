@@ -65,7 +65,7 @@ set_color_profile_slot( 4, 1, 30, 30, 30 ); //Fur tone
 set_color_profile_slot( 4, 2, 220, 190, 160 ); //Fur tone2
 set_color_profile_slot( 4, 3, 190, 190, 190 ); //Eye
 set_color_profile_slot( 4, 4, 240, 120, 60 ); //Eye2
-set_color_profile_slot( 4, 5, 120, 80, 80 ); //Limbs
+set_color_profile_slot( 4, 5, 171, 113, 113 ); //Limbs
 set_color_profile_slot( 4, 6, 110, 70, 70 ); //Limbs2
 
 // Purple
@@ -74,8 +74,8 @@ set_color_profile_slot( 5, 1, 255, 180, 242 ); //Fur tone
 set_color_profile_slot( 5, 2, 255, 255, 220 ); //Fur tone2
 set_color_profile_slot( 5, 3, 255, 204, 242 ); //Eye
 set_color_profile_slot( 5, 4, 253, 243, 255 ); //Eye2
-set_color_profile_slot( 5, 5, 171, 121, 237 ); //Limbs
-set_color_profile_slot( 5, 6, 128, 97, 224 ); //Limbs2
+set_color_profile_slot( 5, 5, 163, 107, 237 ); //Limbs
+set_color_profile_slot( 5, 6, 99, 76, 173 ); //Limbs2
 
 // Kitsune
 set_color_profile_slot( 6, 0, 214, 73, 94 ); //Scarf
@@ -164,8 +164,8 @@ set_color_profile_slot( 15, 1, 214, 200, 242 ); //Fur tone
 set_color_profile_slot( 15, 2, 252, 244, 199 ); //Fur tone2
 set_color_profile_slot( 15, 3, 255, 255, 255 ); //Eye
 set_color_profile_slot( 15, 4, 217, 177, 0 ); //Eye2
-set_color_profile_slot( 15, 5, 252, 244, 199 ); //Limbs
-set_color_profile_slot( 15, 6, 253, 222, 171 ); //Limbs2
+set_color_profile_slot( 15, 5, 255, 247, 199 ); //Limbs
+set_color_profile_slot( 15, 6, 196, 180, 153 ); //Limbs2
 
 // Lyca
 set_color_profile_slot( 16, 0, 86, 74, 151 ); //Scarf
@@ -194,7 +194,7 @@ set_color_profile_slot( 18, 4, 93, 250, 253 ); //Eye2
 set_color_profile_slot( 18, 5, 85, 91, 102 ); //Limbs
 set_color_profile_slot( 18, 6, 45, 44, 64 ); //Limbs2
 
-// Sai M
+// Inkbrush
 set_color_profile_slot( 19, 0, 58, 102, 37 ); //Scarf
 set_color_profile_slot( 19, 1, 250, 242, 242 ); //Fur tone
 set_color_profile_slot( 19, 2, 176, 247, 255 ); //Fur tone2
@@ -210,7 +210,7 @@ set_color_profile_slot( 20, 2, 254, 234, 137 ); //Fur tone2
 set_color_profile_slot( 20, 3, 207, 207, 207 ); //Eye
 set_color_profile_slot( 20, 4, 23, 23, 15 ); //Eye2
 set_color_profile_slot( 20, 5, 0, 91, 170 ); //Limbs
-set_color_profile_slot( 20, 6, 0, 71, 135 ); //Limbs2
+set_color_profile_slot( 20, 6, 0, 54, 102 ); //Limbs2
 
 // Wolf O'Donnell
 set_color_profile_slot( 21, 0, 201, 106, 138 ); //Scarf
@@ -228,7 +228,7 @@ set_color_profile_slot( 22, 2, 254, 221, 119 ); //Fur tone2
 set_color_profile_slot( 22, 3, 0, 0, 0 ); //Eye
 set_color_profile_slot( 22, 4, 65, 174, 217 ); //Eye2
 set_color_profile_slot( 22, 5, 141, 107, 168 ); //Limbs
-set_color_profile_slot( 22, 6, 108, 76, 125 ); //Limbs2
+set_color_profile_slot( 22, 6, 99, 70, 115 ); //Limbs2
 
 // Parker
 set_color_profile_slot( 23, 0, 156, 32, 217 ); //Scarf

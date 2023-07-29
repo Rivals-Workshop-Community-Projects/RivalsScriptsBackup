@@ -20,6 +20,26 @@ if (remap_specials) {
 }
 */
 
+if (forbidden_tech_activated) {
+	/*
+	if (attack == AT_NSPECIAL) {
+	    attack = AT_NSPECIAL_2;
+	    window = 1;
+	    window_timer = 0;
+	}
+	if (attack == AT_FSPECIAL) {
+	    attack = AT_FSPECIAL_2;
+	    window = 1;
+	    window_timer = 0;
+	}
+	*/
+	if (attack == AT_FSPECIAL) {
+	    attack = AT_NSPECIAL_2;
+	    window = 1;
+	    window_timer = 0;
+	}
+}
+
 if (!tournament_legal_mode_active) {
 	// Special Taunt
 	if (attack == AT_TAUNT) && (down_down) {
@@ -63,7 +83,6 @@ if (!tournament_legal_mode_active) {
     }*/
 //}
 
-//if (uspecial_rework) {
 if (attack == AT_USPECIAL) {
 	if (rocket_fuel <= 0) {
 		attack = AT_USPECIAL_2;
@@ -75,7 +94,6 @@ if (attack == AT_USPECIAL) {
 		}
 	}
 }
-//}
 
 // Halt fuel recovery after uspecial/fspecial is used
 if (((attack == AT_USPECIAL) && (move_cooldown[AT_USPECIAL] == 0))
@@ -179,8 +197,7 @@ if (penalty_frames > 0) {
 		|| (attack == AT_FSPECIAL)
 		|| (attack == AT_USPECIAL)
 		|| (attack == AT_USPECIAL_2)
-		|| (attack == AT_TAUNT)
-		|| (attack == AT_TAUNT_2))
+		|| (attack == AT_TAUNT))
 	{
 		window = penalty_window;
 		//window_timer = max_penalty_frames - penalty_frames;

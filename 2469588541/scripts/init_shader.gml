@@ -1,27 +1,48 @@
 var playerAlt = "currAlt" in self ? currAlt : get_player_color(player);
 switch (playerAlt)
 {
-    //paint
-    case 8:
-        if ("hue" in self)
-        {
-            var color_rgb=make_color_rgb(255, 0, 255);
-            AltColour(0, make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
-            AltColour(3, make_color_hsv((color_get_hue(color_rgb)+hue+256/3*2)%255,color_get_saturation(color_rgb)*0.7,color_get_value(color_rgb)*0.7));
-            AltColour(4, make_color_hsv((color_get_hue(color_rgb)+hue+256/3*2)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
-            AltColour(5, make_color_hsv((color_get_hue(color_rgb)+hue+256/3)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
-            AltColour(6, make_color_hsv((color_get_hue(color_rgb)+hue+256/3)%255,color_get_saturation(color_rgb)*0.7,color_get_value(color_rgb)*0.7));
-        }
-        break;
-    //champion
-    case 29:
-	    AltColourAlpha(2, 0.4);
-        break;
-}
-
-if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
-{
-    winner_name = "Galaxy Fox Lukastar wins!";
+	case 2:
+	case 7:
+	case 12:
+	case 17:
+	case 19:
+	case 20:
+	case 22:
+	case 23:
+	case 26:
+	case 30:
+		set_character_color_shading(2, 1.6);
+		break;
+	//paint
+	case 8:
+		if ("hue" not in self) hue = 0;
+		var color_rgb=make_color_rgb(255, 0, 255);
+		AltColour(0, make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
+		AltColour(3, make_color_hsv((color_get_hue(color_rgb)+hue+256/3*2)%255,color_get_saturation(color_rgb)*0.7,color_get_value(color_rgb)*0.7));
+		AltColour(4, make_color_hsv((color_get_hue(color_rgb)+hue+256/3*2)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
+		AltColour(5, make_color_hsv((color_get_hue(color_rgb)+hue+256/3)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
+		AltColour(6, make_color_hsv((color_get_hue(color_rgb)+hue+256/3)%255,color_get_saturation(color_rgb)*0.7,color_get_value(color_rgb)*0.7));
+		break;
+	//champion
+	case 29:
+		AltColourAlpha(2, 0.4);
+		set_character_color_shading(2, 1.6);
+		break;
+	//custom
+	case 31:
+		switch (string_upper(get_player_name(player)))
+		{
+			default: // riptide
+				set_character_color_shading(2, 1.6);
+				break;
+			case "KARU":
+			case "LUKARU":
+				if ("hue" not in self) hue = 0;
+				var color_rgb=make_color_rgb(255, 0, 255);
+				AltColour(0, make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb)*0.5,color_get_value(color_rgb)));
+				break;
+		}
+		break;
 }
 
 #define AltColourAlpha(_index, _alpha)
