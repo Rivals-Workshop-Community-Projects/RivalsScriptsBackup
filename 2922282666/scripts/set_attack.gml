@@ -1,7 +1,11 @@
 switch(attack)
 {
     case AT_TAUNT:
-        if(down_down) attack = AT_TAUNT_2
+        if(down_down && move_cooldown[AT_TAUNT_2] < 1) 
+        {
+            attack = AT_TAUNT_2
+            clear_button_buffer(PC_TAUNT_PRESSED);
+        }
         break;
     case AT_FSPECIAL:
         if(GemObj.state != 0) attack = AT_DSPECIAL;

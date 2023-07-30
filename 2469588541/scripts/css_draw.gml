@@ -119,5 +119,8 @@ init_shader();
 		case "LUKARU": return "Sky High";
 		case "AURORA":
 		case "AURO<3": return "Fel Spark";
+		case "WEET": return "Pix";
+		case "GEAR": return "Just a Friend";
+		case "FUNGUS": return "Enby";
 	}
 }

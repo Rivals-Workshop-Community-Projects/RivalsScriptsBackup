@@ -33,6 +33,8 @@ if(state >= 3)
 }
 if(state != 0 && state != 4 && player_id.attack != AT_DSPECIAL)
     hit_detection();
+if(state != 1 && image_alpha == 0) image_alpha = 1;
+
 switch(state)
 {
     case 0: //follow

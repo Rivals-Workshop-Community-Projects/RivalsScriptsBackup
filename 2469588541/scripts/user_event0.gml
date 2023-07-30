@@ -32,4 +32,34 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 31, 5, 212, 161, 190 ); //Limbs
 		set_color_profile_slot( 31, 6, 138, 103, 136 ); //Limbs2
 		break;
+	case "WEET":
+		// Pix
+		set_color_profile_slot( 31, 0, 221, 70, 0 ); //Scarf
+		set_color_profile_slot( 31, 1, 250, 99, 203 ); //Fur tone
+		set_color_profile_slot( 31, 2, 254, 225, 249 ); //Fur tone2
+		set_color_profile_slot( 31, 3, 249, 255, 255 ); //Eye
+		set_color_profile_slot( 31, 4, 61, 77, 81 ); //Eye2
+		set_color_profile_slot( 31, 5, 255, 252, 6 ); //Limbs
+		set_color_profile_slot( 31, 6, 244, 152, 0 ); //Limbs2
+		break;
+	case "GEAR":
+		// Just a Friend
+		set_color_profile_slot( 31, 0, 219, 219, 219 ); //Scarf
+		set_color_profile_slot( 31, 1, 172, 144, 187 ); //Fur tone
+		set_color_profile_slot( 31, 2, 255, 255, 255 ); //Fur tone2
+		set_color_profile_slot( 31, 3, 212, 177, 33 ); //Eye
+		set_color_profile_slot( 31, 4, 255, 237, 146 ); //Eye2
+		set_color_profile_slot( 31, 5, 58, 24, 76 ); //Limbs
+		set_color_profile_slot( 31, 6, 43, 25, 45 ); //Limbs2
+		break;
+	case "FUNGUS":
+		// Enby
+		set_color_profile_slot( 31, 0, 253, 244, 53 ); //Scarf
+		set_color_profile_slot( 31, 1, 44, 44, 44 ); //Fur tone
+		set_color_profile_slot( 31, 2, 252, 252, 252 ); //Fur tone2
+		set_color_profile_slot( 31, 3, 157, 89, 210 ); //Eye
+		set_color_profile_slot( 31, 4, 253, 244, 53 ); //Eye2
+		set_color_profile_slot( 31, 5, 157, 89, 210 ); //Limbs
+		set_color_profile_slot( 31, 6, 93, 58, 148 ); //Limbs2
+		break;
 }

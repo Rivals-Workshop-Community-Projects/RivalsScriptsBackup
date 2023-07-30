@@ -6,10 +6,9 @@ if((attack == AT_UAIR || attack == AT_USPECIAL || attack == AT_UTILT || attack =
     hud_offset = 50;
 
 if(has_hit_player && !hitpause && special_pressed && move_cooldown[AT_NSPECIAL] == 0
-&& collision_circle(GemObj.x,GemObj.y,140,self,true,false) &&
+&& collision_circle(GemObj.x,GemObj.y,140,self,true,false) && GemObj.state == 1 &&
 !(attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_NSPECIAL_2 || attack == AT_USTRONG))
     set_attack(AT_NSPECIAL);
-
 else if(GemObj.state < 3 && GemObj.state != 0)
 {
     if(attack == AT_FSTRONG || attack == AT_DSTRONG ||attack == AT_USTRONG)
@@ -46,6 +45,7 @@ switch(attack)
             SetGem(3);
         break;
     case AT_NSPECIAL_2: //Crystal Dash
+        move_cooldown[AT_NSPECIAL_2] = 10;
         can_fast_fall = false;
         dashes = 1;
         if(state_timer = 1)

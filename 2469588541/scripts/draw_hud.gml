@@ -611,6 +611,16 @@ if ("practice" in self)
 						AddText("Lower CPU levels now have weaker ai to match its proper level");
 						AddText("Removed default CPU attack movepool");
 						AddText("Added Spamton Ad compatibility");
+						AddText("");
+						LineBreak();
+						AddText("v1.30.2 - 29 Jul 2023");
+						AddText("");
+						AddText("Added custom colours on the last alt for specific tags:");
+						AddText("LUKARU, KARU: Sky High");
+						AddText("AURORA, AURO<3: Fel Spark");
+						AddText("WEET: Pix");
+						AddText("GEAR: Just a Friend");
+						AddText("FUNGUS: Enby");
 						break;
 				}
 				DrawTutorialBlock();
