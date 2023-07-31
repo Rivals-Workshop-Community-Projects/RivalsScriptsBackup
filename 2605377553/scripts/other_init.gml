@@ -9,3 +9,6 @@ sickAfterGrace = 0;
 sickAfterGraceMax = 60;//How many frames the opponent is invincible from getting sick again after recovering from sickness
 strongStunnedTimer = 0;//how long the foe is stunned for after being struck by a strong while sick
 
+statuslog_timer = 0;
+statustexttrigger = false;
+resetOutline = false;

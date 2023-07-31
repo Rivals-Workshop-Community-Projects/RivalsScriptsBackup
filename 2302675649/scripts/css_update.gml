@@ -3,6 +3,7 @@ if ("syncUID" in id && syncUID == 25005)
 	var isCPU = get_player_hud_color(player) == 8421504;
 	var temp_x = x + 8;
 	var temp_y = y + 9;
+	isFurry = get_synced_var(player)==syncUID;
 
 	if (isCPU)
 	{

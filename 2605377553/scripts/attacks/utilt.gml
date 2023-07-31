@@ -43,6 +43,7 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, midsmoke);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_UTILT, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);

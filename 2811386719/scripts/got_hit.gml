@@ -3,7 +3,8 @@ if(have_armor){
 	have_armor = false;
 	var kb = get_kb_formula(get_player_damage(player), knockback_adj, 1.0, enemy_hitboxID.damage, enemy_hitboxID.kb_value, enemy_hitboxID.kb_scale);
 	var angle = get_hitbox_angle( enemy_hitboxID );
-	old_hsp += lengthdir_x(kb, angle)
+	if(dcos(angle)*spr_dir < 0) old_hsp = 0
+	old_hsp += lengthdir_x(kb, angle)*0.75
 
 }
 else if(instance_exists(right_bubble)) right_bubble.destroyed = true

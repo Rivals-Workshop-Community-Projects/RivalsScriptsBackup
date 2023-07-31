@@ -8,6 +8,7 @@ set_attack_value(AT_NTHROW, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_NTHROW, AG_OFF_LEDGE, 1);
 
 //startup
+set_window_value(AT_NTHROW, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX_FRAME, 4);
@@ -18,6 +19,7 @@ set_window_value(AT_NTHROW, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 //Launch/get water
+set_window_value(AT_NTHROW, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -29,6 +31,7 @@ set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Monster up
+set_window_value(AT_NTHROW, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 11);
@@ -36,6 +39,7 @@ set_window_value(AT_NTHROW, 3, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Monster hover/munch4
+set_window_value(AT_NTHROW, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_NTHROW, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NTHROW, 4, AG_WINDOW_ANIM_FRAME_START, 15);
@@ -49,6 +53,7 @@ set_window_value(AT_NTHROW, 4, AG_WINDOW_VSPEED, -4);
 // set_window_value(AT_NTHROW, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 
 //monster down
+set_window_value(AT_NTHROW, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_TYPE, 8);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_GOTO, 6);
@@ -61,6 +66,7 @@ set_window_value(AT_NTHROW, 5, AG_WINDOW_CUSTOM_GRAVITY, 2);
 // set_window_value(AT_NTHROW, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 1.1);
 
 //active
+set_window_value(AT_NTHROW, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 6, AG_WINDOW_LENGTH, 5);
 // set_window_value(AT_NTHROW, 6, AG_WINDOW_GOTO, 8);
 set_window_value(AT_NTHROW, 6, AG_WINDOW_ANIM_FRAMES, 1);
@@ -72,6 +78,7 @@ set_window_value(AT_NTHROW, 6, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NTHROW, 6, AG_WINDOW_VSPEED, 0);
 
 //recovery
+set_window_value(AT_NTHROW, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 7, AG_WINDOW_LENGTH, 32);
 // set_window_value(AT_NTHROW, 7, AG_WINDOW_GOTO, 29);
 set_window_value(AT_NTHROW, 7, AG_WINDOW_ANIM_FRAMES, 4);
@@ -84,6 +91,7 @@ set_window_value(AT_NTHROW, 7, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_NTHROW, 7, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 //aerial explosion
+set_window_value(AT_NTHROW, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 8, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_NTHROW, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NTHROW, 8, AG_WINDOW_ANIM_FRAME_START, 27);

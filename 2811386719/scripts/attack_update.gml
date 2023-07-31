@@ -171,7 +171,6 @@ if(attack == AT_DSTRONG){
 
 if(attack == AT_UAIR){
 	if(window == 1){
-		// user_event(2)
 	}
 }
 
@@ -209,7 +208,7 @@ if (attack == AT_FSPECIAL){
 		sound_play(asset_get("sfx_waterwarp_start"));
 	}
 	
-	if(have_armor and state_timer > 7 and window < 3){
+	if(have_armor and state_timer > 11 and window < 3){
 		super_armor = 1;
 	}else{
 		super_armor = 0;
@@ -222,7 +221,7 @@ if (attack == AT_FSPECIAL){
   if (window == 2){ //run
   	if(get_gameplay_time()%4 == 3 and hsp != 0){
   		spawn_hit_fx(x - spr_dir*25, y, wave_fx)
-  		if(static == 100) sound_play(asset_get("sfx_hod_jab_end"), false, noone, 0.4, 1.7 - random_func(0, 1, false)*0.5)
+  		if(static == 100) sound_play(asset_get("sfx_hod_jab_end"), false, noone, 0.6, 1.7 - random_func(0, 1, false)*0.5)
   	}
   	if(!hitpause){
   		// print("NOOO")
@@ -281,7 +280,7 @@ if (attack == AT_FSPECIAL){
   		// 	var sshsp = (abs(hsp) - 7)
   		// 	hsp *= (1 - (sshsp/6)*0.34)
   		// }
-  		hsp = clamp(hsp, -7, 7)
+  		hsp = clamp(hsp, -8, 8)
   		sound_play(asset_get("sfx_springgo"))
   		shake_camera(3, 5);
   	}
@@ -295,7 +294,11 @@ if (attack == AT_FSPECIAL){
   		sound_play(asset_get("sfx_holy_grass"), false, noone, 1, 0.7)
   	}
   	if(!free){
-  		set_state(PS_LAND)
+  		if(was_parried){
+  				set_state(PS_PRATLAND)
+  			}else{
+  				set_state(PS_LAND)
+  			}
   	}
   	can_move = true
   	can_fast_fall = false
@@ -499,12 +502,12 @@ if (attack == AT_DSPECIAL){
   	if(!free){
   		window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) + 1;
   	}else{
-  		if(window_timer == 45){
-	  		white_flash_timer = 10
-	  	}
-  		if(window_timer >= 45){
-	  		can_shield = true
-	  	}
+  		// if(window_timer == 45){
+	  	// 	white_flash_timer = 10
+	  	// }
+  		// if(window_timer >= 45){
+	  	// 	can_shield = true
+	  	// }
   	}
   	
   	var dir_val = (-left_down*air_accel*1) + (right_down*air_accel*1);
@@ -613,6 +616,9 @@ if(attack == AT_EXTRA_1){
 			
 			if(!col_above){
 				vsp += grav;
+				if(!col_below){
+					window = 29
+				}
 			}else{
 				vsp = 0;
 				var vel = 3;
@@ -1014,7 +1020,7 @@ if (attack == AT_NTHROW){
 			if(window == 6){
 				if(window_timer <= 0 and !hitpause){
 					var hsr = spawn_hit_fx(x, y, nspecial_water_explosion_hfx)
-					hsr.depth = depth - 1;
+					hsr.depth = depth - 3;
 				}
 				grabbed_player_obj.x = x + 1 * spr_dir;
 				grabbed_player_obj.y = y;

@@ -69,41 +69,41 @@ if(instance_exists(lightning_hbox)){
 
 
 
-if(is_ai and ds_list_valid(ai_draw)){
-    var len = ds_list_size(ai_draw);
-    for(var i = 0; i < len; i++){
-        var type_draw = ai_draw[| i].type;
-        
-        switch(type_draw){
-            case "rectOutlineCenter":
-                
-                draw_rectangle_color(ai_draw[| i].x - ai_draw[| i].width/2,
-                    ai_draw[| i].y - ai_draw[| i].height/2,
-                    ai_draw[| i].x + ai_draw[| i].width/2,
-                    ai_draw[| i].y + ai_draw[| i].height/2,
-                    ai_draw[| i].color, ai_draw[| i].color,
-                    ai_draw[| i].color, ai_draw[| i].color, true );
-                break;
-            case "rectOutline":
-                
-                draw_rectangle_color(ai_draw[| i].left,
-                    ai_draw[| i].top,
-                    ai_draw[| i].right,
-                    ai_draw[| i].bottom,
-                    ai_draw[| i].color, ai_draw[| i].color,
-                    ai_draw[| i].color, ai_draw[| i].color, true );
-                break;
-                
-            case "line":
-                draw_line_color(ai_draw[| i].x1,
-                    ai_draw[| i].y1,
-                    ai_draw[| i].x2,
-                    ai_draw[| i].y2,
-                    ai_draw[| i].color, ai_draw[| i].color);
-                break; 
-        }
-        
+if(temp_level > 0){
+  var len = ds_list_size(ai_draw);
+  for(var i = 0; i < len; i++){
+    var type_draw = ai_draw[| i].type;
+    
+    switch(type_draw){
+      case "rectOutlineCenter":
+          
+        draw_rectangle_color(ai_draw[| i].x - ai_draw[| i].width/2,
+          ai_draw[| i].y - ai_draw[| i].height/2,
+          ai_draw[| i].x + ai_draw[| i].width/2,
+          ai_draw[| i].y + ai_draw[| i].height/2,
+          ai_draw[| i].color, ai_draw[| i].color,
+          ai_draw[| i].color, ai_draw[| i].color, true );
+        break;
+      case "rectOutline":
+          
+        draw_rectangle_color(ai_draw[| i].left,
+          ai_draw[| i].top,
+          ai_draw[| i].right,
+          ai_draw[| i].bottom,
+          ai_draw[| i].color, ai_draw[| i].color,
+          ai_draw[| i].color, ai_draw[| i].color, true );
+        break;
+          
+      case "line":
+        draw_line_color(ai_draw[| i].x1,
+          ai_draw[| i].y1,
+          ai_draw[| i].x2,
+          ai_draw[| i].y2,
+          ai_draw[| i].color, ai_draw[| i].color);
+        break; 
     }
+    
+  }
 }
 
 #define draw_jet()

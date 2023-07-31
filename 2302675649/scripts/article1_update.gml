@@ -303,7 +303,7 @@ else
 	}
 	else if (safeZone || unsafeTimer < 200)
 	{
-		with (obj_article1) if (player_id == other.player_id && id != other.id && point_distance(x,y,other.x,other.y) < 124 && !isDespawn)
+		with (obj_article1) if (player_id.url == other.player_id.url && id != other.id && point_distance(x,y,other.x,other.y) < 124 && !isDespawn)
 		{
 			var ang = point_direction(x,y,other.x,other.y);
 			other.hsp = lengthdir_x(moveAdj, ang);

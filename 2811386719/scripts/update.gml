@@ -286,7 +286,7 @@ switch(state){
         static += (abs(hsp) > 1)*1;
         break;
     case PS_WAVELAND:
-        static += (abs(hsp) > 1)*1;
+        static += (abs(hsp) > 1)*1.2;
         break;
     case PS_DASH_START:
         static += 0.7;

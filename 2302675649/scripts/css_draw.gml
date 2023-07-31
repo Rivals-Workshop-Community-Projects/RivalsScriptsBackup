@@ -51,10 +51,11 @@ alt_name[23] = "Swordfighter";
 alt_name[24] = "Slayer of Demons";
 alt_name[25] = "Thunderclap Flash";
 alt_name[26] = "Paint";
-alt_name[27] = "Voidfox";
+alt_name[27] = "Inkbrush";
 alt_name[28] = "Champion";
 alt_name[29] = "Enby";
 alt_name[30] = "Ace";
+alt_name[31]  = GetCustomAltName();
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
@@ -103,4 +104,19 @@ init_shader();
 	draw_set_alpha(alpha);
 	draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, false);
 	draw_set_alpha(1);
+}
+
+#define GetCustomAltName()
+{
+	user_event(1);
+	switch (string_upper(get_player_name(player)))
+	{
+		default: return "Riptide";
+		case "KARU":
+		case "LUKARU":
+		case "AURORA":
+		case "AURO<3": return "Aurora";
+		case "MAKO":
+		case "4MAKO": return "Endless Now";
+	}
 }

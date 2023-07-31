@@ -51,6 +51,7 @@ if ((hitFSTRONG || hitUSTRONG|| hitDSTRONG) && hit_player_obj.malsick)
 	hit_player_obj.sickTimer = 0;
 	hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
 	markConsumed = true;
+	hit_player_obj.resetOutline = true;
 	
 	hit_player_obj.should_make_shockwave = false;
 	hit_player_obj.orig_knock = 5; //adjust this number
@@ -59,6 +60,32 @@ if ((hitFSTRONG || hitUSTRONG|| hitDSTRONG) && hit_player_obj.malsick)
 	hit_player_obj.hitpause = true;
 	
 	hit_player_obj.strongStunnedTimer = 20;
+}
+
+//(and dair now)
+var hitDAIR1 = my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1;
+var hitDAIR2 = my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num == 1;
+
+if (hitDAIR1) 
+{
+	if hit_player_obj.malsick {
+		set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 270);
+	}
+	else {
+		set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 80);
+	}
+}
+
+if (hitDAIR2 && hit_player_obj.malsick) 
+{
+		set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 270);
+		
+		sound_play(sound_get("getboosted"));  
+		hit_player_obj.malsick = false;
+		hit_player_obj.sickTimer = 0;
+		hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
+		markConsumed = true;
+		hit_player_obj.resetOutline = true;
 }
 
 if (my_hitboxID.attack == AT_USPECIAL) {
@@ -84,6 +111,7 @@ if (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DTILT)
     {
         if !hit_player_obj.malsick 
         {
+        	hit_player_obj.statustexttrigger = true;
             sound_play(sound_get("sick"));
         }
         hit_player_obj.sickAfterGrace = 0;

@@ -119,6 +119,7 @@ with oPlayer{
 }
 with pHitBox{
   if("bubble" in self and bubble and !was_parried){
+  	through_platforms = 2;
     var pull_to_x = 0;
     var pull_to_y = 0;
     switch(other.attack){

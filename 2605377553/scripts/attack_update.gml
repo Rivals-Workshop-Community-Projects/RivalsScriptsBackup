@@ -1,3 +1,63 @@
+//dust
+//good dust
+switch(attack)
+{
+	case AT_JAB:
+    	if (window == 1 && window_timer == 2)
+    		spawn_base_dust(x+(7*spr_dir),y, "dash_start", -spr_dir);
+    	break;
+    	
+    case AT_UTILT:
+    	if (window == 1 && get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH)-1 )
+    		spawn_base_dust(x+(12*-spr_dir),y, "dash", spr_dir);
+    	break;
+    	
+    case AT_FTILT:
+    	if (window == 1 && window_timer == 2)
+    		spawn_base_dust(x+(10*-spr_dir),y, "dash_start", spr_dir);
+    	break;
+    	
+    case AT_DATTACK:
+    	if (window == 3 && window_timer == 8)
+    		spawn_base_dust(x+(12*-spr_dir),y, "dash", spr_dir);
+    	break;
+	
+	case AT_FSTRONG:
+    	if (window == 2 && window_timer == 1)
+    		spawn_base_dust(x+(75*spr_dir),y, "dash_start", -spr_dir);
+    	break;
+    	
+    case AT_DSTRONG:
+    	if (window == 5 && window_timer == 1)
+    		spawn_base_dust(x+(64*spr_dir),y, "dash", -spr_dir);
+    	if (window == 5 && window_timer == 1)
+    		spawn_base_dust(x+(64*-spr_dir),y, "dash", spr_dir);
+    	break;	
+    	
+    case AT_USTRONG:
+    	if (window == 2 && window_timer == 1)
+    		spawn_base_dust(x+(10*spr_dir),y, "dash", -spr_dir);
+    	if (window == 2 && window_timer == 1)
+    		spawn_base_dust(x+(10*-spr_dir),y, "dash", spr_dir);
+    	break;	
+    	
+    case AT_USPECIAL:
+    	if (window == 1 && window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH)-1 ){
+    			spawn_base_dust(x+(10*spr_dir),y+-24, "doublejump", spr_dir, 10*-spr_dir);
+    	}
+    	break;
+    	
+    case AT_FSPECIAL:
+    	if (window == 4 && window_timer == 1){
+    			spawn_base_dust(x+(10*-spr_dir),y-30, "doublejump", spr_dir, 75*-spr_dir);
+    	}
+    	if (window == 6 && window_timer == 1){
+    			spawn_base_dust(x+(24*spr_dir),y, "land", spr_dir);
+    			sound_play(asset_get("sfx_land_heavy"));
+    	}
+    	break;
+}
+
 //taunt
 if attack == AT_TAUNT
 {
@@ -107,7 +167,7 @@ if attack == AT_BAIR
 //dairgrab
 //attack_update.gml
 if (attack == AT_DAIR) {
-
+	
 	//reset 'grabbed_player' variables on the first frame when performing a grab.
     if (window == 1 && window_timer == 1) { 
     	grabbed_player_obj = noone; 
@@ -234,6 +294,12 @@ if (attack == AT_FSPECIAL){
 	//fspecial cancels into aerials on hit (leap hit)
 	if has_hit && !hitpause {
 	can_attack = true;
+	}
+	
+	if (window == 5 && get_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH)-1 ) 
+	{
+		window = 6;
+		window_timer = 0;
 	}
 	
 }
@@ -412,7 +478,6 @@ if (attack == AT_UTILT) {
 	
 }
 
-
 #define createSmoke(smokeX, smokeY, life)
 {
 	var smoke = instance_create(smokeX,smokeY,"obj_article1");
@@ -509,3 +574,46 @@ if (attack == AT_UTILT) {
 	
 	return consumed;
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+	case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = angle;
+return newdust;

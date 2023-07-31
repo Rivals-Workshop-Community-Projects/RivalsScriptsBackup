@@ -59,15 +59,15 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 4;
+			ai_attack_time = aura?0:(4 + (9-temp_level) * 4);
 			Movement()
 			break;
 		case AS_RECOVER:
-			ai_attack_time = 40;
+			ai_attack_time = 20 + (9-temp_level) * 8;
 			if (state_cat != SC_HITSTUN && state_cat != SC_GROUND_COMMITTED) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 30;
+			ai_attack_time = 20 + (9-temp_level) * 8;
 			Movement()
 			break;
 	}

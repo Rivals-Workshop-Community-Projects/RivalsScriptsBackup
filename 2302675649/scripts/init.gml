@@ -220,3 +220,4 @@ hue = 0;
 // Mio
 isFurry = get_synced_var(player);
 user_event(0);
+user_event(1);

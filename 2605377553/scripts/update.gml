@@ -8,11 +8,45 @@ with (asset_get("oPlayer")){
     }
 }
 
-//handle sickness
+var sick_r = 0;
+var sick_g = 0;
+var sick_b = 0;
+
+if (get_player_color(player) == 5 || get_player_color(player) == 7 || get_player_color(player) == 9 || 
+	get_player_color(player) == 17 || get_player_color(player) == 24 ) {
+		
+	sick_r = get_color_profile_slot_r(get_player_color(player), 6)
+	sick_g = get_color_profile_slot_g(get_player_color(player), 6)
+	sick_b = get_color_profile_slot_b(get_player_color(player), 6)
+}
+else {
+	sick_r = get_color_profile_slot_r(get_player_color(player), 7)
+	sick_g = get_color_profile_slot_g(get_player_color(player), 7)
+	sick_b = get_color_profile_slot_b(get_player_color(player), 7)
+}
+
 with (oPlayer)
 {
+
 	if (malsick && sickOwner == other.id && !hitpause)
 	{
+		
+		if statustexttrigger == true {
+			statuslog_timer = 50;
+			statustexttrigger = false;
+		}
+
+		if statuslog_timer > 0 {
+			statuslog_timer--;
+		}
+		
+		if (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) {
+			statuslog_timer = 0;
+		}
+		
+		drawOutline = true;
+
+		
 		//Remove Sickness and add grace time
 		if sickTimer <= 0
 		{
@@ -20,14 +54,41 @@ with (oPlayer)
 			sickTimer = 0;
 			sickAfterGrace = sickAfterGraceMax;
 			sickGrace = 0;
+			resetOutline = true;
 		}
 		else
 			sickTimer--;
+			
+		if sickTimer >= 300 {
+			statuslog_timer = 0;
+		}
 		
 		//Take damage when sick
 		if (sickTimer % 90 == 0)
-			take_damage(player, other.player, 1);		
+			take_damage(player, other.player, 1);
+		
+		//graphics
+		outline_color = [sick_r, sick_g, sick_b];
+		init_shader();
+		
+		//hexsparks
+		with (other) {
+			if (get_gameplay_time() % 2 == 0) {
+				if (get_player_color( player ) == 0 || get_player_color( player ) == 5) {
+					var hexsparks = spawn_hit_fx( other.x-40+random_func( 1, 80, true ), other.y-(char_height/2)-48+random_func( 8, 96, true ), hexspark_alt1 );
+				}
+				else {
+					var hexsparks = spawn_hit_fx( other.x-40+random_func( 1, 80, true ), other.y-(char_height/2)-48+random_func( 8, 96, true ), hexspark_alt2 );
+				}
+				hexsparks.spr_dir = other.spr_dir;
+			}
+		}
 	}
+	if (!malsick && resetOutline) {
+		outline_color = [ 0, 0, 0 ];
+		init_shader();
+	}
+	
 	
 	//Deduct grace time
 	if id != other && sickAfterGrace > 0
@@ -81,7 +142,7 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 20 && tau
 }
 
 //TAG
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 3){
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 4){
 	if (taunt_down&&down_down){
 		extra_col = 5
 		white_flash_timer = 18;
@@ -91,7 +152,7 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 3){
 }
 
 //Something
-if (extra_col == 0 && get_player_color( player ) == 9){
+if (extra_col == 0 && get_player_color( player ) == 10){
 	if down_down {
 	move_cooldown[AT_TAUNT] = 10
 	}
@@ -104,22 +165,12 @@ if (extra_col == 0 && get_player_color( player ) == 9){
 	}
 }
 
-//JH (Urban Magic)
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 1 &&taunt_down&&down_down) or (get_gameplay_time() == 5 && get_player_color( player ) == 1 && get_player_name( player ) == "JH" ){
-	extra_col = 7
-	white_flash_timer = 18;
-	sound_play(sound_get("jh_alt"));
-	init_shader();
-}
-
 //Fungus (seyshun complex)
-if (get_gameplay_time() == 5 && extra_col == 0 && get_player_color( player ) == 11 ){
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 6 &&taunt_down&&down_down) or (get_gameplay_time() == 5 && get_player_color( player ) == 6 && get_player_name( player ) == "FUNGUS" ){
+	extra_col = 8
+	white_flash_timer = 18;
 	sound_play(sound_get("fungus_alt"));
-}
-
-//Robo (Cass Subway Midnight)
-if (get_gameplay_time() == 5 && extra_col == 0 && get_player_color( player ) == 12 ){
-	sound_play(sound_get("robo_alt"));
+	init_shader();
 }
 
 ///////////////////////
@@ -142,10 +193,10 @@ if (get_gameplay_time() == 1 && get_player_color( player ) == 24){
 		init_shader();	
 		break;
 		
-		case "JH":
-		extra_col_key = 7
+		case "FUNGUS":
+		extra_col_key = 8
 		white_flash_timer = 20;
-		sound_play(sound_get("jh_alt"));
+		sound_play(sound_get("fungus_alt"));
 		init_shader();
 		break;
 		
@@ -185,11 +236,46 @@ if (get_gameplay_time() == 1 && get_player_color( player ) == 24){
 		white_flash_timer = 20;
 		sound_play(sound_get("it's a secret!"));
 		init_shader();
+		break;
+		
+		case "TWENNY":
+		case "ROBOT":
+		case "HEX":
+		extra_col_key = 93
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		break;
+		
+		case "GRACE":
+		case "MAGIC":
+		case "MAGICAL":
+		case "BUSINESS":
+		extra_col_key = 94
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		break;
+		
+		case "KOCA":
+		extra_col_key = 95
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		break;
+		
+		case "WASTE":
+		case "WASTEY":
+		case "VALYA":
+		extra_col_key = 96
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
 		
 	}
 }
 
-//congrats, your diligence reading through dumbass code has earned you: the passwords for 3 secret alts! you probably wont use them, but check them out by changing your in-game tag to the keys!
+//congrats, your diligence reading through dumbass code has earned you: the passwords for a few secret alts! you probably wont use them, but check them out by changing your in-game tag to the keys!
 
 
 //smoke consume (airdog)
@@ -197,7 +283,7 @@ if state == PS_AIR_DODGE
 {
     if state_timer == 0
     {
-    	if get_player_color(player) == 8 {
+    	if get_player_color(player) == 9 {
     		sound_play(sound_get("dashing_mad"));  
     	}
     	uspeccancel = false
@@ -213,7 +299,7 @@ if state == PS_AIR_DODGE
         }	
 			
         if consumed or turnonsuperwavedash = true
-        	if get_player_color(player) == 8{
+        	if get_player_color(player) == 9{
         		sound_play(sound_get("getboosted_mad"));	
         	}
         	else
@@ -221,7 +307,7 @@ if state == PS_AIR_DODGE
     }
 }
 
-if get_player_color(player) == 8{
+if get_player_color(player) == 9{
 	if state == PS_RESPAWN
 	{
 	    if state_timer == 0
@@ -241,21 +327,50 @@ if get_player_color(player) == 8{
 
 }
 
+//afterimages
+if(state == PS_AIR_DODGE){
+  	
+    if air_dodge_speed == 12 {
+    	if get_gameplay_time() % 8 == 0 {
+    	    after_image_timer++;
+    	    if(after_image_timer == 10) after_image_timer = 0;
+    	    after_image[after_image_timer] = {sprite_index:sprite_index, image_index:image_index, x:x, y:y - 4, spr_dir:spr_dir, alpha:8, spr_angle:0, xscale:1, yscale:1};
+    	}
+    }
 
+}
 
+//fade handler
+for (var i = 0; i < 10; i++){
+   if(after_image[i] != -1 && get_gameplay_time() % 2 == 0){
+       after_image[i].alpha--;
+       if(after_image[i].alpha == 0){
+           after_image[i] = -1;
+       }
+   } 
+}
 
 
 
 
 
 //alt portrait
-if (get_player_color(player) == 3 || get_player_color(player) == 4 || 
-	get_player_color(player) == 6 || get_player_color(player) == 8 || get_player_color(player) == 11 || get_player_color(player) == 15 ||
-	get_player_color(player) == 20){
+if (get_player_color(player) == 4 || get_player_color(player) == 5 || 
+	get_player_color(player) == 7 || get_player_color(player) == 9 || get_player_color(player) == 15 ||
+	get_player_color(player) == 20) || (get_player_color(player) == 24 && (extra_col_key == 0 || extra_col_key == 8)) ||
+	(get_player_color(player) == 6 && extra_col == 8){
 set_victory_portrait( sprite_get( "portrait_alt" ));
 init_shader();
 }
-
+if (get_player_color(player) == 9){
+	set_victory_portrait( sprite_get( "portrait_madeline" ));
+}
+if (get_player_color(player) == 10){
+	set_victory_portrait( sprite_get( "portrait_mari" ));
+}
+if (get_player_color(player) == 23){
+	set_victory_portrait( sprite_get( "portrait_genny" ));
+}
 
 //handle death and strongs
 with (oPlayer){
@@ -330,6 +445,7 @@ with(oPlayer)
 			//we're not sick yet. play this once
 			if !malsick 
 			{
+				statustexttrigger = true;
 				with other
 				{
 					sound_play(sound_get("sick"));
@@ -361,29 +477,11 @@ uspechassmogboosted = false;
 turnonsuperwavedash = false;
 }
 
-//unchained attack details
-if state == SC_HITSTUN || state == PS_HITSTUN || state == SC_AIR_NEUTRAL || state == SC_GROUND_NEUTRAL || state == PS_WALL_JUMP || state == PS_HITSTUN_LAND
-|| state == PS_TUMBLE || state == PS_PRATFALL|| state == PS_PRATLAND|| state == PS_IDLE || state == PS_IDLE_AIR{
-	knockback_adj = 1.00
-	markConsumed = false;
-}
-
 if state == SC_AIR_NEUTRAL || state == SC_GROUND_NEUTRAL || state == PS_WALL_JUMP || state == PS_PRATFALL|| state == PS_PRATLAND|| state == PS_IDLE || state == PS_IDLE_AIR{
 	breakable = false;
 }
 
 
-
-if (state == PS_HITSTUN) && glassbreak == false && breakable == true
-{
-    //We set that we played a sound. This is to prevent further sound playing
-    glassbreak = true;
-    breakable = false;
-    sound_play(sound_get("glassbreak"));
-}
-
-if (state != PS_HITSTUN)
-    glassbreak = false;
 
 //whether the player is inside smoke, and consumes it. returns true if smoke was consumed
 

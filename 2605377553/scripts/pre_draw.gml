@@ -1,4 +1,24 @@
-//Smoke Stuff
+//afterimages
+if (get_player_color(player) == 9) {  
+	var col_trail = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0 ), get_color_profile_slot_g( get_player_color(player), 0 ), get_color_profile_slot_b( get_player_color(player), 0 ));
+}
+else {
+   var col_trail = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 6 ), get_color_profile_slot_g( get_player_color(player), 6 ), get_color_profile_slot_b( get_player_color(player), 6 )); 
+}
+for (var i = 0; i < 10; i++){
+    if (after_image[i] != -1 && after_image[i].alpha > 0){
+        
+        gpu_set_fog(true,col_trail,0,1);
+        
+        draw_sprite_ext(after_image[i].sprite_index, after_image[i].image_index, after_image[i].x, after_image[i].y, (1 + small_sprites) * after_image[i].spr_dir,
+            1 + small_sprites, 0, c_white, after_image[i].alpha/10 );
+            
+        gpu_set_fog(false,c_white,0,0);
+        
+    }
+}
+
+
 
 if galaxy_timer > 0 {
 	
@@ -25,7 +45,7 @@ if (state == PS_ATTACK_GROUND && attack == AT_DSTRONG)
     if window == 1
     a = window_timer < 10 ? window_timer/10 : 1;
     else if window == (6)
-     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-15 ? (1-(window_timer/10)) : 0;
+     a = window_timer > get_window_value(AT_DSTRONG, window, AG_WINDOW_LENGTH)-15 ? (1-(window_timer/10)) : 0;
   
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
@@ -36,7 +56,7 @@ if (state == PS_ATTACK_GROUND && attack == AT_USTRONG)
     if window == 1
     a = window_timer < 10 ? window_timer/10 : 1;
     else if window == (4)
-     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-17 ? (1-(window_timer/10)) : 0;
+     a = window_timer > get_window_value(AT_USTRONG, window, AG_WINDOW_LENGTH)-17 ? (1-(window_timer/10)) : 0;
   
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
@@ -47,7 +67,7 @@ if (state == PS_ATTACK_AIR && attack == AT_FAIR)
     if window == 1
     a = window_timer < 10 ? window_timer/10 : 1;
     else if window == (3)
-     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-14 ? (1-(window_timer/10)) : 0;
+     a = window_timer > get_window_value(AT_FAIR, window, AG_WINDOW_LENGTH)-14 ? (1-(window_timer/10)) : 0;
   
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
@@ -58,7 +78,7 @@ if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL || state == PS_ATTACK_AIR
     if window == 1
     a = window_timer < 10 ? window_timer/10 : 1;
     else if window == (4)
-     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
+     a = window_timer > get_window_value(AT_NSPECIAL, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
   
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
@@ -69,12 +89,10 @@ if (state == PS_ATTACK_AIR && attack == AT_NAIR )
     if window == 1
     a = window_timer < 10 ? window_timer/10 : 1;
     else if window == (4)
-     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
+     a = window_timer > get_window_value(AT_NAIR, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
   
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
-
-
 
 
 //respawn plat
@@ -87,7 +105,7 @@ if (state == PS_RESPAWN) {
 
 
 
-if  (get_player_color(player) == 8) {
+if  (get_player_color(player) == 9) {
 //crash prevention line
 shader_end();
 maskHeader();
@@ -107,8 +125,9 @@ if object_index != asset_get("oTestPlayer") {
     draw_sprite_tiled_ext(sprite_get("galaxy"), 1, x, y, 1, 1, c_white, 1)
     maskFooter();
     }
-}
 
+
+}
 
 
 //================================================================================

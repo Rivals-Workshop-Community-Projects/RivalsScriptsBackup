@@ -19,7 +19,7 @@ switch (attack)
 		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_UTHROW;
 		break;
 	case AT_TAUNT:
-		if (down_down || up_down)
+		if ((down_down || up_down) && (menuStateBuffer==0 || menuStateBuffer==5 || menuStateBuffer==6))
 			attack = AT_EXTRA_1;
 		else
 		{

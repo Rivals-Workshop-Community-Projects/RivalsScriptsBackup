@@ -75,22 +75,25 @@ tblastzone = get_stage_data(SD_TOP_BLASTZONE_Y);
 
 chosenAttack = noone;
 
+ai_threat_range_arr = [0,0,0,0,0]
+ai_threat_range_proj_arr = [0,0,0,0,0]
+
 // close_down_attacks[0] = AT_DAIR;
 
-far_side_attacks = [AT_DSPECIAL, AT_FSPECIAL];
+// far_side_attacks = [AT_DSPECIAL, AT_FSPECIAL];
 
 // far_down_attacks[0] = AT_DSPECIAL;
 
 // mid_side_attacks[0] = AT_FSTRONG;
 // mid_side_attacks[0] = AT_DATTACK;
-mid_side_attacks[0] = AT_FSPECIAL;
+// mid_side_attacks[0] = AT_FSPECIAL;
 // mid_side_attacks[3] = AT_FTILT;
 
 // close_up_attacks[0] = AT_USTRONG;
 // close_up_attacks[1] = AT_UAIR;
 // close_up_attacks[2] = AT_UTILT;
 
-close_down_attacks[0] = AT_DSPECIAL;
+// close_down_attacks[0] = AT_DSPECIAL;
 // close_down_attacks[1] = AT_DAIR;
 // close_down_attacks[2] = AT_DTILT;
 
@@ -101,4 +104,4 @@ close_down_attacks[0] = AT_DSPECIAL;
 
 // neutral_attacks[0] = AT_JAB;
 // neutral_attacks[1] = AT_NAIR;
-neutral_attacks = [AT_DSPECIAL, AT_DSTRONG];
+// neutral_attacks = [AT_DSPECIAL, AT_DSTRONG];

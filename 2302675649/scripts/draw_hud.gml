@@ -870,6 +870,17 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("CPU Mio button on the CSS can now be pressed by all players");
 						break;
+					case 52:
+						AddText("v1.52 - 30 Jul 2023");
+						AddText("");
+						AddText("Lonin portals now have collision with other Lonin portals");
+						AddText("");
+						AddText("Added custom colours on the last alt for specific tags");
+						AddText("Updated song list");
+						AddText("Fixed a bug where the alternate taunt is set every frame in practice mode");
+						AddText("Fixed a bug where Rainbow alts don't work on the results screen");
+						AddText("Lower CPU levels now have weaker ai to match its proper level");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -1105,9 +1116,11 @@ if ("rollArray" in self)
 			return "Luminous Impactor";
 		case 36:
 			return "Tactical Evolution EX ~ Creatures Medley";
+		case 37:
+			return "To Pure Horizons ~ Dungeons Medley";
 		default:
 			if ("loninMusicName" in obj_stage_main) return string(obj_stage_main.loninMusicName);
-			else if (CheckStageUrl(2061009621))		return "Derek Fiechter - Night at the Castle";
+			else if (CheckStageUrl(2061009621))	return "Derek Fiechter - Night at the Castle";
 			else if (CheckStageUrl(2082867100))	return "Evan King - [KARLSONVIBE]";
 			else if (CheckStageUrl(2210984773))	return "Porter Robinson - Shelter";
 			else if (CheckStageUrl(2158754801))	return "Bill Kiley - You Will Never Know";

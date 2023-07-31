@@ -42,6 +42,7 @@ if (!mal_handled_victory_quote)
                 data.priority = 1;
                 data.quote = builtin_quote;
             }
+            init_shader();
         }
         else
         {
@@ -116,7 +117,7 @@ if (!mal_handled_victory_quote)
             
         case "2605377553": // Mal
         case "2823291685":
-            quote = "Was that Cel again? Those clones of hers are getting really lifelike...";
+            quote = "Was that Cel again? Those clones of hers are getting borderline lifelike...";
             break;
         
         case "2561479115": // Rokesha
@@ -144,6 +145,22 @@ if (!mal_handled_victory_quote)
         case "2802300675": // Valley
             quote = "You feel like someone I would NEVER get along with. Cool smoke."; 
             break;
+            
+        case "2843521167": // Pastelle
+        quote = "Oh God I think I got some hair in my mouth. ...Crayons??";
+        break;
+        
+        case "2983344228": // Kiku Braeburn
+        quote = "Note to self: don't pick a fight with a Granny Smith.";
+        break;
+        
+        case "2965700442": // Humanthem
+        quote = "It's like 10 celsius out here, you should really put something on.";
+        break;
+        
+        case "2977835488": //Qoedil
+        quote = "Huh, never seen a pitch black ghost like that. Kinda cute."
+        break;
 
         default: break;
     }
@@ -179,6 +196,7 @@ return quote
         case "1917856427": // Liz
         case "2108895293": //Lumina
         case "2064167290": //Hana
+        case "2983344228": // Kiku Braeburn
             icon = 2;
             break;
         
@@ -188,6 +206,8 @@ return quote
         case "2396061657": // Callie
         case "2105839293": // Yuuto
         case "2626409326": // Yuuto
+        case "2843521167": // Pastelle
+        case "2965700442": // Humanthem
             icon = 3;
             break;
         
@@ -204,6 +224,11 @@ return quote
         //surprised
         case "2561479115": // Rokesha
             icon = 5;
+            break;
+            
+        //smiling
+        case "2977835488": //Qoedil
+            icon = 6;
             break;
         
         default: break;

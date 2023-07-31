@@ -51,6 +51,8 @@ if attack == AT_NSPECIAL
 			
 			hsp = lerp(hsp, mx, anglePower);
 			vsp = lerp(vsp, my, anglePower);//my + yPower;
+			
+			proj_angle = point_direction(hsp,vsp, mx, my);
 		}
 		else
 		{

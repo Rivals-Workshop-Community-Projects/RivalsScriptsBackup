@@ -1,5 +1,5 @@
 #region //Audio--------------------------------------------------------------
-if get_player_color(player) == 8 {
+if get_player_color(player) == 9 {
 	switch(state){
 	    case PS_DEAD:
 	    case PS_RESPAWN:

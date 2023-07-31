@@ -51,7 +51,7 @@ land_time = 6; //normal landing frames
 prat_land_time = 17;
 wave_land_time = 8;
 wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = 0; //grounded deceleration when wavelanding
+wave_friction = 0.15; //grounded deceleration when wavelanding
 
 // can_wall_cling = true;
 do_cling = false;

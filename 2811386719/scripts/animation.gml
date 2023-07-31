@@ -17,7 +17,7 @@ switch(state){
             image_index = 1 + round(lerp(0,2, value ));
           }
         }
-        if(window == 3 and window_timer > 0){
+        if(window == 3 and window_timer >= 0){
             image_index = 6 + (game_time%15)/5;
         }
       }

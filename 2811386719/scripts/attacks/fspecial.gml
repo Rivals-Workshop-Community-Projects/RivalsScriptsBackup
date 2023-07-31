@@ -7,7 +7,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 //startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_orc"));
@@ -26,7 +26,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 
 //about to hug
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

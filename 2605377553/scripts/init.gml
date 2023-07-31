@@ -16,6 +16,8 @@ bigsmoke = hit_fx_create( sprite_get( "hfx_bigsmoke" ), 50 );
 midsmoke = hit_fx_create( sprite_get( "hfx_midsmoke" ), 50 );
 smokeball = hit_fx_create( sprite_get( "hfx_smokeball" ), 15 );
 nothing = hit_fx_create( sprite_get( "nothing" ), 30 );
+hexspark_alt1 = hit_fx_create( sprite_get( "fx_hex_alt1" ), 15 );
+hexspark_alt2 = hit_fx_create( sprite_get( "fx_hex_alt2" ), 15 );
 set_hit_particle_sprite( 1, sprite_get( "particle_1" ) );
 set_hit_particle_sprite( 2, sprite_get( "particle_2" ) );
 set_hit_particle_sprite( 3, sprite_get( "nothing" ) );
@@ -150,12 +152,12 @@ smokeStencilAnimSpeed = 0.1;// <- change this if u want to adjust the speed of t
 //Example on how to change the sprite based on the alt
 switch(get_player_color( player ))
 {
-	case 8://celeste
+	case 9://celeste
 	{
 		smokeStencilSprite = sprite_get("galaxy");
 		smokeStencilAnimSpeed = 0.1;
 	}break;
-	case 9://omori
+	case 10://omori
 	{
 		smokeStencilSprite = sprite_get("omorispace");
 	}break;
@@ -190,16 +192,23 @@ markConsumed = false;
 sickAfterGraceMax = 0;
 sickAfterGrace = 0;//How many frames the opponent is invincible from getting sick again after recovering from sickness
 
-breakable = 0;
-glassbreak = 0;
-
 //bair 
 bairused = false;
 
+//dair
+dairboost = false;
 
 
+//random ass timers
 galaxy_timer = 0;
+statuslog_timer = 0;
 
+statustexttrigger = false;
+resetOutline = false;
+
+//afterimages
+after_image = array_create(10, -1);
+after_image_timer = -1;
 
 bluehairandpronouns = false;
 

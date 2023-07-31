@@ -90,7 +90,7 @@ if(bubble){
 	if(hitbox_timer == length) with player_id spawn_dust_fx(other.x, other.y, orb_dissipate_spr, 7);
   // owner = player_id;
   // if(was_parried) destroyed = true;
-  through_platforms = 2;
+  through_platforms = 0;
   var play_sound = false;
   hitbx = ds_list_create();
   var hbi = noone;
@@ -226,7 +226,7 @@ if(bubble){
   
   
   
-  if(place_meeting(x, y, solids) and vsp == 0){
+  if((place_meeting(x, y, solids) or place_meeting(x, y, plats)) and vsp == 0){
   	if(old_vsp > 0.5){
   		vsp = old_vsp*-1*0.85;
 	  	var vol = clamp(abs(vsp/20), 0, 0.15);
