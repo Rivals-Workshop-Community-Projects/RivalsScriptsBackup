@@ -169,9 +169,12 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
+//rest in peace my sweet summer swordie
+/*
 initTip("Ghostly Disjoint");
 initWords("Only direct attacks to the coffin part of Cofagrigus's body will connect. Any attacks that touch its hands will pass right through.");
 initWords("This gives Cofagrigus powerful disjoint on its attacks, making it difficult to get in. As a tradeoff, if the opponent does reach Cofagrigus its slow movements and floaty physics make it combo food.");
+*/
 
 initTip("Ability: Mummy");
 initWords("Cofagrigus's  main gimmick is it's ability, Mummy. When attacking with its body or certial specials, the opponent will be afflicted by it's mummy curse.");
@@ -179,6 +182,11 @@ initWords("When under the effects of the curse, any move that whiffs will cause 
 initWords("The curse is also tranferred if the cursed player succesfully parries, or lifted if the player who inflicted the curse loses a stock.");
 initHeader("Risk Vs. Reward");
 initWords("While inflicting Mummy is useful for its whiff effect and enabling FSpecial and DSpecial, be careful! The opponent can easily transfer it back and make you deal with the effects instead!");
+
+initTip("High Profile");
+initWords("For Cofagrigus's idle hurtbox, it floats slightly above the ground.");
+initWords("Hoever Parrying will lower the hurtbox during the active frames, so parrying while a hitbox flies below you will still parry it.");
+initImage_ext(sprite_get("parry"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("NSpecial: Will-O-Wisp");
 initWords("Cofagrigus charges Will-O-Wisp, a weak projectile attack that inflicts its Mummy Curse on anyone hit. It can be charged up to 3 levels, and pressing the parry button will store the charge.");
@@ -228,11 +236,6 @@ initWords("At the peak of the attack, Cofagirgus can slam straight down through 
 initImage_ext(sprite_get("dair"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("This attack inflicts the Mummy Curse, as Cofagrigus uses its body to attack.");
 
-initTip("High Profile");
-initWords("For Cofagrigus's idle hurtbox, it floats slightly above the ground.");
-initWords("Hoever Parrying will lower the hurtbox during the active frames, so parrying while a hitbox flies below you will still parry it.");
-initImage_ext(sprite_get("parry"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-
 initTip("Pokedex Entries");
 initWords("It has been said that they swallow those who get too close and turn them into mummies. They like to eat gold nuggets.");
 initWords("They pretend to be elaborate coffins to teach lessons to grave robbers. Their bodies are covered in pure gold");
@@ -277,6 +280,31 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.8", "July 28th, 2023");
+initHeader("Aesthetic");
+initSection("-Added special taunt for the ``Rainbow Sand`` alt
+-Re-added the fancy FSpecial display for the ``FSpecial Info`` cheat
+-Updated Munophone tips to reflect changes");
+initHeader("Balance");
+initSection("-COFAGRIGUS'S HANDS ARE NOW TANGIBLE! This applies to EVERY hurtbox
+-Idle hurtbox size increased (Pratfall, airdodge, and parry have smaller hitboxes still due to their visual size)
+
+-Jab no longer flinches
+-DAttack endlag increased from 12 to 18
+-FStrong sourspot hitbox active time reduced from 8 to 4 (effectively removes it having a late hit, now only has a sourspot)
+-Reducded minimum FSpecial time from 30 to 10
+-FSpecial release KB adjusted from 6 BKB, 0.45 scaling to 9 BKB, 0.1 scaling
+-FSpecial release now has a hitstun multiplier of 0.6x (the release is supposed to be like a whiff, and should feel more like it)
+-FSpecial time now only runs down after slamming (this was how its supposed to work? idk if it never did or always did until getting bugged)
+-FSpecial now uses the release hitbox instead of the throw when hitting a ledge
+-USpecial projectile lifetime reduced from 100 to 50");
+initHeader("Fixes");
+initSection("-Fixed info displaying for ``FSpecial Info`` cheat being commented out
+-Rainbow shader now applies to projectiles
+-Fixed some leftover grey on first frame of DAttack hands
+-Fixed taunt hurtbox using asset_get and not sprite_get
+-Fixed certain long patchnotes being cut off in the Munophone");
+
 initPatch("1.7", "March 18th, 2023");
 initHeader("Aesthetic");
 initSection("-Hit effect for Mummy damage is now layered behind players
@@ -286,7 +314,7 @@ initHeader("Balance");
 initSection("-Mummy damage no longer applies on whiff, and is instead applied at the start of attacks
 -Removed floor hurtbox when charging DStrong again (it's funny and i wanna)
 -DTilt startup increased from 8 to 10");
-initHeader("Bugs/Fixes");
+initHeader("Fixes");
 initSection("-Fixed Mummy not properly applying damage when attacking to fast by scrapping the whiff system entirely xoxo
 -Fixed Mummy only transferring back to Cofagrigus if it had been hit by a reflected NSpecial");
 
@@ -295,7 +323,7 @@ initHeader("Aesthetic");
 initSection("-Updated the compatibility list in the Munophone's ''About Cofagrigus''
 -Fixed messed up Miiverse compatability sprite");
 
-initPatch("1.5", "March 12th, 2023");
+initPatch("1.5 pt.1", "March 12th, 2023");
 initHeader("Aesthetic");
 initSection("-Idle, BAir, USpecial, and DStrong animations overhauled
 -Added more frames to jump and doublejump animations
@@ -319,6 +347,8 @@ initSection("-Idle, BAir, USpecial, and DStrong animations overhauled
 -Added more Miiverse posts
 -Added Regina Mario compatability
 -Removed Agent N & Toon Link compatability");
+
+initPatch("1.5 pt.2", "March 12th, 2023");
 initHeader("Balance");
 initSection("-Jab now has forced flinch
 -FTilt angle adjusted from 45 to 40
@@ -339,12 +369,14 @@ initSection("-Jab now has forced flinch
 -DStrong void hitbox width increased from 105 to 150
 -DStrong void hitbox height decreased from 105 to 55 (This should make landing each seperate angle easier)
 -DTilt width increased from 160 to 180 to better match the animation and be better at long range poking
--UTilt active window frames decreased from 8 to 6
--FSpecial base duration reduced from 30 to 10
+-UTilt active window frames decreased from 8 to 6");
+initPatch("1.5 pt.3", "March 12th, 2023");
+initHeader("Balance");
+initSection("-FSpecial base duration reduced from 30 to 10
 -FSpecial duration scaling reduced
 -FSpecial release no longer refreshes airdodge, walljump, and doublejumps on grabbed players
 -DSpecial will now kick Cofagrigus out of fastfall (offstage kills will be much cooler now)");
-initHeader("Bugs/Fixes");
+initHeader("Fixes");
 initSection("-USpecial now only spawns a wind projectile every third frame (this should improve performance on toasters)
 -Updated intro animation code to not replay if Cofagrigus is set to respawn state (eg. boss intros)
 -UStrong sweetspot now uses large hit effect
@@ -358,7 +390,7 @@ initSection("-USpecial now only spawns a wind projectile every third frame (this
 initPatch("1.4", "May 13th, 2022");
 initHeader("Aesthetic");
 initSection("-Walking animation now has more animnation frames (as a treat <:)");
-initHeader("Bugs");
+initHeader("Fixes");
 initSection("-Shader code wasn't updated to reflect new shader slot order, resulting in some weird issues");
 
 initPatch("1.3", "May 8th, 2022");
@@ -391,16 +423,13 @@ initSection("-Updated Munophone to reflect new Mummy mechanics
 -Removed even more leftover debug text");
 
 initHeader("Balance");
-initSection("
--Mummy is no longer inflicted when hitting Cofagrigus
+initSection("-Mummy is no longer inflicted when hitting Cofagrigus
 -Mummy is now inflicted when landing any physical move while under its effects
 -Removed curse grace period for opponents
-
 -Reflected NSpecial no longer inflicts Mummy for twice the length for Cofagrigus
-
 -Landing DSpecial on a cursed opponent will now remove Mummy");
 
-initPatch("1.0", "April 8th, 2022");
+initPatch("1.0 pt.1", "April 8th, 2022");
 initHeader("CHANGES FROM THE JAM BUILD");
 initHeader("Aesthetic");
 initSection("-Removed light grey outline from hands on all sprites
@@ -423,6 +452,8 @@ initSection("-Removed light grey outline from hands on all sprites
 -FSpecial debug info is now activated via cheat
 -Waveland now uses Shovel Knight's waveland sound effect instead of Kragg's");
 
+initPatch("1.0 pt.2", "April 8th, 2022");
+initHeader("CHANGES FROM THE JAM BUILD");
 initHeader("Balance");
 initSection("-Adjusted Mummy effect, when gaining Mummy from landing an attack there is now a period before the whiff = damage takes effect. FSpecial and DSpecial will treat this state as a normal Mummy curse. The timer is reset on every subsequent hit on Cofagrigus, but will not revert to the pre-curse state once the curse fully takes effect.
 -Mummy effect now applies to Cofagrigus when NSpecial is reflected, and will last twice as long.
@@ -442,9 +473,12 @@ initSection("-Adjusted Mummy effect, when gaining Mummy from landing an attack t
 -Reduced DStrong hitbox frames from 5 to 3 frames
 -Reduced DStrong middle hitbox size from 30 to 20
 -Reduced DStrong outer hitbox size from 115 to 105
--fine i added the stupid 1 pixel tall hurtbox
+-fine i added the stupid 1 pixel tall hurtbox");
 
--Reduced FStrong sourspot hitbox width from 150 to 130
+initPatch("1.0 pt.3", "April 8th, 2022");
+initHeader("CHANGES FROM THE JAM BUILD");
+initHeader("Balance");
+initSection("-Reduced FStrong sourspot hitbox width from 150 to 130
 
 -FAir second hitbox now extends lower to hopefully more consistently hit grounded opponents
 -FAir angles adjusted from 30 to 45
@@ -463,9 +497,12 @@ initSection("-Adjusted Mummy effect, when gaining Mummy from landing an attack t
 -FSpecial canceling now scales
 -FSpecial uncursed hitbox BKB changed from 6 to 8 for better use as a combo starter
 -FSpecial uncursed hitbox scaling changed from 0.3 to 0.1 for better use as a combo starter
--FSpecial can now only cancelled after frame 5 of the falling window
+-FSpecial can now only cancelled after frame 5 of the falling window");
 
--USpecial Wind no longer destroys projectiles
+initPatch("1.0 pt.4", "April 8th, 2022");
+initHeader("CHANGES FROM THE JAM BUILD");
+initHeader("Balance");
+initSection("-USpecial Wind no longer destroys projectiles
 -USpecial Wind now only creates a hit effect when inflicting Mummy
 -USpecial Wind now has knockback set at 0 instead of no knockback set at all
 -USpecial Wind now has polite hitstun (this and the 0 KB should hopefully reduce jank with cancelled attacks)
@@ -487,7 +524,7 @@ initSection("-Strong taunts no longer retains effect when taunt is released
 initPatch("About Cofagrigus", "");
 initHeader("General Info");
 initSection("Originally created in just a month for the November 2021 Pokemon Jam, Cofagrigus now has a full release!");
-initSection("Cofagrigus is a floaty heavyweight zoner with large disjoints but low kill power.");
+initSection("Cofagrigus is a floaty heavyweight with massive range but big potential to be combo food.");
 
 initHeader("Character by Fighting Polygon Team");
 initSection("Flophawk: Project Lead, Lead Artist, Lead Coder");

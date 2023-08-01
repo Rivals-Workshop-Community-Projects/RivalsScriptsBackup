@@ -43,3 +43,23 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 302);
+
+//pokeball
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_JAB, 3, HG_WINDOW, 20);
+set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 100);
+set_hitbox_value(AT_JAB, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_SPRITE, pokeball_sprite);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_MASK, -1);
+//set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_ANIM_SPEED, .25);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_HSPEED, 6.25);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_VSPEED, -4);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_GRAVITY, 0.3);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_AIR_FRICTION, .015);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_JAB, 3, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);

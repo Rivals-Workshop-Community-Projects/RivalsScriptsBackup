@@ -2,6 +2,8 @@
 //this script allows us to draw anything over the CSS - icons, text etc.
 //NOTE: CSS is short for Character Select Screen
 
+alt_cur = get_player_color(player); //checks the current alt
+
 //thanks to supersonic, we can use colors directly from init_shader.gml
 //which is useful for adding special colored outlines to our alts
 shader_end();

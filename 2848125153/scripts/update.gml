@@ -28,6 +28,10 @@ if(instance_exists(thetoken)){
 
 BAir_cooldown--;
 
+if(free && (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP) && taunt_pressed){
+   set_attack(AT_TAUNT);
+}
+
 if(alt == 29){
 	if(state == PS_AIR_DODGE || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD){
 		if(state_timer == 0 && !hitpause){
@@ -56,6 +60,23 @@ if(state == PS_RESPAWN && state_timer >= 80 && state_timer < 120 || state == PS_
 			current_money2 -= 600;
 		}
 	}
+}
+
+if(state == PS_WAVELAND && state_timer == 0 && !hitpause){
+	rand = random_func(0, 3, true);
+    if(rand == 0){
+    	PlayVoiceClip("very", 0.65);
+    }else if(rand == 1){
+    	PlayVoiceClip("skillful", 0.65);
+    }else if(rand == 2){
+    	PlayVoiceClip("money5", 0.85);
+    }
+}
+
+//failsafe for uspecial mask not being reset
+if(uspec_mask && ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_USPECIAL || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))){
+	mask_index = asset_get("ex_guy_collision_mask");
+	uspec_mask = false;
 }
 
 if(!loaded){
@@ -219,4 +240,11 @@ if(runeE){
     	current_money += 3000*income_boost;
 	}
 }
-			
+
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+	//}

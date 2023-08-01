@@ -18,42 +18,50 @@ if get_player_color(player) = 27 {
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	//make a gamemaker color variable using the new hue
 	set_color_profile_slot(27,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	//set the new color using rgb values from the gamemaker color
 
 	color_rgb=make_color_rgb(235, 244, 255);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(32, 149, 188);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,2,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(2,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(27, 85, 150);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(42, 42, 42);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(125, 203, 255);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(254, 199, 255);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	
 		color_rgb=make_color_rgb(133, 39, 196);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot(27,7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+    set_article_color_slot(7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 }
 init_shader();
 

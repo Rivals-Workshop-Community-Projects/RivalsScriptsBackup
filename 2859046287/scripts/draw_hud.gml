@@ -8,7 +8,15 @@ if (debug_display)
 {
     var mul = 16; //spacing
     
-    draw_debug_text(temp_x+mul*0, temp_y+mul*-4, "state = " + string(get_state_name(state)));
+    var state_name = get_state_name(state);
+    switch (state) //new workshop state names don't actually have a state name for get_state_name
+    {
+        case PS_FLASHED: state_name = "PS_FLASHED"; break;
+        case PS_CRYSTALIZED: state_name = "PS_CRYSTALIZED"; break;
+        case PS_BURIED: state_name = "PS_BURIED"; break;
+    }
+
+    draw_debug_text(temp_x+mul*0, temp_y+mul*-4, "state = " + string(state_name));
     draw_debug_text(temp_x+mul*0, temp_y+mul*-3, "state_timer = " + string(state_timer));
 
     if (
@@ -31,18 +39,15 @@ if (debug_display)
 //DSPECIAL ARTICLE - shows player if the article is available or not
 draw_sprite_ext(
     sprite_get("hud_dspec"),
-    move_cooldown[AT_DSPECIAL] > 0, //if the cooldown is over 0, this is true, which means the image index is 1 (game maker shenanigans)
+    0,
     temp_x + 186,
     temp_y - 24,
     2, //these two... 2s are for the scale of the image, this doubles the scale of the image
     2,
     0,
-    c_white,
+    move_cooldown[AT_DSPECIAL] > 0 ? c_gray : c_white, //if the cooldown is over 0, this is true, which changes the tint to gray, making it appear darker
     1
 );
-
-
-
 
 //NSPECIAL PROJECTILE CHARGE LEVEL - shows player how big of a charge they are currently storing
 //sprite drawing

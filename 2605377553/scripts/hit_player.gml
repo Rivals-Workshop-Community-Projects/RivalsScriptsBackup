@@ -84,7 +84,6 @@ if (hitDAIR2 && hit_player_obj.malsick)
 		hit_player_obj.malsick = false;
 		hit_player_obj.sickTimer = 0;
 		hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
-		markConsumed = true;
 		hit_player_obj.resetOutline = true;
 }
 

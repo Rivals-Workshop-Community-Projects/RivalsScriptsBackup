@@ -18,8 +18,14 @@ switch (attack){
         break;
 }
 
-
 reset_attack_value(attack, AG_NUM_WINDOWS);
 
 for(i=1; i < get_num_hitboxes(attack)+1; i++)
+{
 	set_hitbox_value(attack, i, HG_HIT_PARTICLE_NUM, 1); 
+    if(attack != AT_DSPECIAL_2)
+    {
+        set_hitbox_value(attack, i, HG_DRIFT_MULTIPLIER, 1);
+        set_hitbox_value(attack, i, HG_SDI_MULTIPLIER, 1);
+    }
+}

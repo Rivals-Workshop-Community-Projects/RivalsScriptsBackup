@@ -43,3 +43,11 @@ if (attack == AT_TAUNT){
     Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 10;Pocketed = false;
     Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 2;
 }
+
+//intro pokeball
+if(attack == AT_JAB && hbox_num == 3){
+	UnReflectable = true;
+	Pocketable = false;
+	pokeball = 0;
+	pokeball_sfx = sound_get("pokeball");
+}

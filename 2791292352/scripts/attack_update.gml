@@ -217,9 +217,6 @@ switch(attack){
 						vsp += .5;
 						if vsp < 0
 							vsp = 0;
-						
-						if (fspecial_grab_time <= fspecial_grab_time_max)
-							fspecial_grab_time++;
 					}
 				break;
 				case 5: // slam into ground
@@ -236,7 +233,7 @@ switch(attack){
 				case 6: // moving across the ground loop
 				    //print_debug(hsp);
 					if window_timer > 3 && hsp == 0{
-						window = 8;
+						window = 7;
 						window_timer = 0;
 						destroy_hitboxes();
 					}
@@ -362,13 +359,17 @@ switch(attack){
 	break;
 	
 	case AT_TAUNT:
-		if window == 1 && window_timer == 1{
-		tauntsfxnum = random_func( 0, 8, true );
-		}
-		if tauntsfxnum == 1 || attack_down || attack_pressed {
-		set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_sand_yell"));
+	    if get_player_color(player) = 27 {
+		    set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("boom"));
 		} else {
-		set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("cry"));
+			if window == 1 && window_timer == 1{
+			    tauntsfxnum = random_func( 0, 8, true );
+			}
+			if tauntsfxnum == 1 || attack_down || attack_pressed {
+			    set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_sand_yell"));
+			} else {
+			    set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("cry"));
+		    }
 		}
 		break;
 		

@@ -2,6 +2,9 @@
 //as the name suggests, this script runs when the player is parried, this can be useful for disabling effects like certain debuffs
 //or redirecting the character into certain states
 
+//this line takes the strong charge damage into consideration, useful if you want to include that for mechanics
+true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
+
 //prevents the grab ID from staying
 if (instance_exists(my_grab_id) && my_grab_id != noone) my_grab_id = noone;
 

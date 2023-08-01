@@ -3,8 +3,9 @@
 muno_event_type = 4;
 user_event(14);
 
+var alt = get_player_color(player);
+
 if (wow_chrg >= wow_chrg_max){
-	var alt = get_player_color(player);
 	var col_slot = 6;
 	var _col =  make_color_rgb(get_color_profile_slot_r( alt, col_slot), get_color_profile_slot_g( alt, col_slot), get_color_profile_slot_b( alt, col_slot));
 	var _alpha = .5;
@@ -18,7 +19,7 @@ gpu_set_fog(0, c_white, 0, 0);
 
 //lmao this code is so inefficient send help
 // ok i fixed it [thumbs up.png]
-if state == PS_ATTACK_GROUND && attack == AT_TAUNT && window == 2{
+if state == PS_ATTACK_GROUND && attack == AT_TAUNT && window == 2 && alt != 27 {
 	shader_start();
 	if (window_timer <= 7)
 		draw_sprite(sprite_get("taunt_scaryface"), window_timer/2, x, y);
@@ -35,15 +36,6 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_DSPECI
 	shader_end();
 }
 
-/*
-//snazzy but makes it too easy (sad)
-if attack = AT_FSPECIAL && window = 6 {
-    var alt = get_player_color(player);
-	var col_slot = 7;
-	var _col =  make_color_rgb(get_color_profile_slot_r( alt, col_slot), get_color_profile_slot_g( alt, col_slot), get_color_profile_slot_b( alt, col_slot));
-    draw_circle_color(x+16*spr_dir, y+16, clamp(fspecial_grab_time_max - fspecial_grab_time, 0, 14), _col, _col, false);
-}
-/*
 
 if (get_match_setting(SET_PRACTICE) && phone_cheats[CHEAT_FSPEC]){
 	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
@@ -51,9 +43,16 @@ if (get_match_setting(SET_PRACTICE) && phone_cheats[CHEAT_FSPEC]){
 			case AT_FSPECIAL:
 				if (fspecial_grab_id != noone){ // debug
 					var lol_y = y + 10;
-					draw_debug_text(x, lol_y, string(fspecial_grab_time) + "/" + string(fspecial_grab_time_max));
+					draw_debug_text(x-20, lol_y, string(fspecial_grab_time) + "/" + string(fspecial_grab_time_max));
 				}
 				//draw_debug_text(x, y - 30, string(window));
+				
+				if window = 6 {
+                	var col_slot = 7;
+                	var _col =  make_color_rgb(get_color_profile_slot_r( alt, col_slot), get_color_profile_slot_g( alt, col_slot), get_color_profile_slot_b( alt, col_slot));
+                    draw_circle_color(x+16*spr_dir, y+32, clamp(fspecial_grab_time_max - fspecial_grab_time, 0, 14), _col, _col, false);
+                }
+				
 			break
 		}
 	}

@@ -161,6 +161,26 @@ if (!mal_handled_victory_quote)
         case "2977835488": //Qoedil
         quote = "Huh, never seen a pitch black ghost like that. Kinda cute."
         break;
+        
+        case "2601775097": //Bar Reygard
+        quote = "So, angels exist? Eh, I've seen stranger things. Probably."
+        break;
+        
+        case "2254931693": //Bonby
+        quote = "Best friends with a frog... I guess there's companionship for everyone."
+        break;
+        
+        case "2867341866": //Aur (honorary human)
+        quote = "Curse of Gold? Seems there's things like that in any world."
+        break;
+        
+        case "2415092274": //Ao (honorary human)
+        quote = "Alone on the hill, do you fear your burden on others? Ok, projecting."
+        break;
+        
+        case "2817605804": //Jerma (honorary human)
+        quote = "That was close, that guy was like if you compiled all serial killers into one dude."
+        break;
 
         default: break;
     }
@@ -181,6 +201,7 @@ return quote
         case "2605377553": // Mal
         case "2823291685": // SSL Mal
         case "2802300675": // Valley
+        case "2817605804": //Jerma (honorary human)
             icon = 0;
             break;
             
@@ -197,6 +218,7 @@ return quote
         case "2108895293": //Lumina
         case "2064167290": //Hana
         case "2983344228": // Kiku Braeburn
+        case "2415092274": //Ao (honorary human)
             icon = 2;
             break;
         
@@ -218,6 +240,8 @@ return quote
         case "2014106219": // Cinna
         case "2871608790": //Azi
         case "1894194148": //AR
+        case "2601775097": //Bar Reygard
+        case "2867341866": //Aur (honorary human)
             icon = 4;
             break;
             
@@ -228,6 +252,7 @@ return quote
             
         //smiling
         case "2977835488": //Qoedil
+        case "2254931693": //Bonby
             icon = 6;
             break;
         

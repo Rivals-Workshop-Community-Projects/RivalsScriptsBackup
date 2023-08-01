@@ -4,6 +4,9 @@
 
 if (my_hitboxID.orig_player_id != self) exit; //this line makes it so only hitboxes that belong to tester work with hit_player
 
+//this line takes the strong charge damage into consideration, useful if you want to include that for mechanics
+true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
+
 switch (my_hitboxID.attack)
 {
     case AT_FTILT: //command grab
@@ -56,18 +59,27 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_EFFECT) == 30)
 
 with (my_hitboxID) if (type == 2)
 {
-    //psuedo melee hitbox hitbpause
+    //psuedo melee hitbox hitpause
     if (psuedo_melee_hitbox)
     {
-        in_hitpause = true;
-        with (other)
+        with (other) //this "other" reffers to us, the player that's hitting
         {
-            old_hsp = hsp;
+            old_hsp = hsp; //set the speed values that should activate when exiting the move
             old_vsp = vsp;
-            hitstop = hit_player_obj.hitstop;
-            hitstop_full = hit_player_obj.hitstop_full;
-            hitpause = true;
+            hitstop = get_hitstop_formula( //this formula is used to calculate how much hitpause we should get
+                get_player_damage(hit_player_obj.player),
+                other.damage,
+                other.hitpause,
+                other.hitpause_growth,
+                0);
+            hitstop_full = hitstop;
+            hitpause = true; //we also need to manually set hitpause to true as it doesn't normally do this for projectiles
         }
+
+        hitbox_hitstop = other.hitstop; //set the hitpause of the hitbox to the player's hitpause
+        has_hit = other.has_hit; //set off the has_hit and has_hit_player flags, usually used for cancels
+        has_hit_player = other.has_hit_player;
+        in_hitpause = true; //the hitbox counterpart to the player's "hitpause" variable
     }
 
     //stop projectile homing if multihits start multihitting
@@ -103,6 +115,7 @@ with (my_hitboxID) if (type == 2)
         }
     }
 }
+
 
 #define set_grab_id
 {

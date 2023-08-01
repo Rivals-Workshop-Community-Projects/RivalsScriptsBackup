@@ -3,22 +3,20 @@
 
 state_timer ++; //always count up state_timer (in this case since there's no states it can be used as a "lifetime timer")
 
-if (artc_hp > 0) image_index = lerp(image_number, 0, artc_hp/artc_hp_max); //spreads frames accross the different health values, article becomes more damage
-else if (artc_hp <= 0 && hitstop <= 0) //article has no health so it spontaniously conbusts lmao
+//prevent article from being hit by the owner's teammates (unless tester is using fspecial or can hit the article with rune H)
+with (oPlayer)
 {
-    with (player_id) move_cooldown[AT_DSPECIAL] = 180;
-    spawn_hit_fx(x, y-article_height/2, fx_dspec_despawn); //spawns explosion hit fx
-    sound_play(asset_get("sfx_ell_strong_attack_explosion")); //plays exolosion sound
-
-    if (has_rune("D")) create_hitbox(AT_DSPECIAL, 1, x, y-article_height/2);
-    instance_destroy(); //destroys the article, make sure there is nothing below this point
-    exit; //but if there is, add exit; to make it ignore the rest of the script for that frame
+    if (get_player_team(player) == get_player_team(other.player) && player != other.player ||
+        player == other.player && !has_rune("H") && (!is_attacking || attack != AT_FSPECIAL))
+    {
+        //can_be_hit works similarly to a move_cooldown, where it's a timer that counts down to 0
+        other.can_be_hit[player] = 2;
+    }
 }
 
 //gravity field rune
 if (has_rune("H"))
 {
-    if (!hitpause && gravity_field_cd > 0) gravity_field_cd --;
     if (gravity_field_time > 0)
     {
         gravity_field_time --;
@@ -40,4 +38,17 @@ if (has_rune("H"))
             }
         }
     }
+}
+
+
+if (artc_hp > 0) image_index = lerp(image_number, 0, artc_hp/artc_hp_max); //spreads frames accross the different health values, article becomes more damage
+else if (artc_hp <= 0 && hitstop <= 0) //article has no health so it spontaniously conbusts lmao
+{
+    with (player_id) move_cooldown[AT_DSPECIAL] = 180;
+    spawn_hit_fx(x, y-article_height/2, fx_dspec_despawn); //spawns explosion hit fx
+    sound_play(asset_get("sfx_ell_strong_attack_explosion")); //plays exolosion sound
+
+    if (has_rune("D")) create_hitbox(AT_DSPECIAL, 1, x, y-article_height/2);
+    instance_destroy(); //destroys the article, make sure there is nothing below this point
+    exit; //but if there is, add exit; to make it ignore the rest of the script for that frame
 }

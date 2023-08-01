@@ -40,7 +40,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 0); //set in attack_update
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2); //set in attack_update
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);

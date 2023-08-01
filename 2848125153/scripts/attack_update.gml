@@ -157,10 +157,10 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 	}else if(window == 14){ //getting ready to fly up
-		mask_index = asset_get("empty_sprite");
+		mask_index = asset_get("empty_sprite");uspec_mask = true;
 		vsp -= 0.5;
 	}else if(window == 15){ //flying up
-		mask_index = asset_get("empty_sprite");
+		mask_index = asset_get("empty_sprite");uspec_mask = true;
 		vsp -= 1;
 		if(vsp < -16){
 			vsp = -16;
@@ -175,7 +175,7 @@ if (attack == AT_NSPECIAL){
 			spawn_hit_fx(x-20+(random_func(0, 40, true)),y-20,fx_feathers);
 		}
 	}else if(window == 16){ //flying down on property
-		mask_index = asset_get("empty_sprite");
+		mask_index = asset_get("empty_sprite");uspec_mask = true;
 		vsp = 16;hsp = 0;can_move = false;
 		if(y >= round(room_height/2)-400){
 			mask_index = asset_get("ex_guy_collision_mask");
@@ -194,7 +194,7 @@ if (attack == AT_NSPECIAL){
 			spawn_hit_fx(x-20+(random_func(0, 40, true)),y-20,fx_feathers);
 		}
 	}else if(window == 17){ //flying to target
-		mask_index = asset_get("empty_sprite");fall_through = 999;
+		mask_index = asset_get("empty_sprite");uspec_mask = true;fall_through = 999;
 		if(instance_exists(uspectarget)){
 			uspectarget.spr_dir = 1;
 			if(!runeG){
@@ -241,9 +241,16 @@ if (attack == AT_NSPECIAL){
     if(window >= 20){
     	can_move = false;can_fast_fall = false;
     	soft_armor = 24;
+    	jailpropertymoney = 0;
+		if(instance_exists(property)){
+    		jailpropertymoney = property.housemoney;
+    	}
     	if(window == 20){ //enters jail
     		if(window_timer == 1 && !hitpause){
-    			jailcost = floor(current_money/3)*discount;
+    			jailcost = floor((current_money+jailpropertymoney)/3)*discount;
+    			if(jailcost > current_money){ //make it more expensive if mr monopoly needs to use the property money
+    				jailcost = round(jailcost*1.5);
+    			}
     			if(jailcost < 5000*discount){
     				jailcost = 5000*discount;
     			}sound_stop(voice);
@@ -317,12 +324,24 @@ if (attack == AT_NSPECIAL){
 					        }
 		    			}
 	    			}
-    			}else if((down_pressed || special_pressed || attack_pressed || jump_pressed) && /*free || !free && */jaildiceattempts >= 3 && current_money >= jailcost || current_money < jailcost && jaildiceattempts < 100){
-    				if(current_money >= jailcost){
+    			}else if((down_pressed || special_pressed || attack_pressed || jump_pressed) && /*free || !free && */jaildiceattempts >= 3 && (current_money+jailpropertymoney) >= jailcost || (current_money+jailpropertymoney) < jailcost && jaildiceattempts < 100){
+    				if((current_money+jailpropertymoney) >= jailcost){
+    					var jailcost2 = jailcost-current_money;
 	    				current_money -= jailcost;
 		    			if(current_money < 0){
 						    current_money = 0;
 						}
+
+						//if it wasnt enough, use from property as well
+						if(jailcost2 > 0){
+							if(instance_exists(property)){
+					    		property.housemoney -= jailcost2;
+					    		if(property.housemoney < 0){
+								    property.housemoney = 0;
+								}
+					    	}
+						}
+						
 						window = 25;window_timer = 0;set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 26);
 			    		move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
 			    		//if(free && vsp > -6){
@@ -333,11 +352,11 @@ if (attack == AT_NSPECIAL){
     				}
     			}else if(up_pressed && jailcard){
     				window = 25;window_timer = 0;set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 26);
-			    		move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
-			    		//if(free && vsp > -6){
-			    			vsp = -6;
-			    		//}
-			    		jailcard = false;
+		    		move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
+		    		//if(free && vsp > -6){
+		    			vsp = -6;
+		    		//}
+		    		jailcard = false;
     			}
     			if(current_money >= jailcost && jaildiceattempts >= 100){
     				jaildiceattempts = 0;
@@ -951,6 +970,10 @@ if (attack == AT_NSPECIAL){
     	if(!taunt_down){
 	    	window = 6;window_timer = 0;
 	    }
+    }
+    
+    if(jump_pressed && free){
+    	window = 30;window_timer = 0;
     }
     
     if(!free && kewtmode <= 0 && attack_down && jump_down && taunt_down){ //kewtians!!!!!!!!!!!!

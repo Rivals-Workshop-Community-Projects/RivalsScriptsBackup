@@ -169,8 +169,4 @@ set_color_profile_slot(pal_num, 1, 90, 0, 154); //body shade
 set_color_profile_slot(pal_num, 2, 255, 255, 255); //'-'
 set_color_profile_slot(pal_num, 3, 11, 7, 13); //effects
 
-
-
-
-
 set_num_palettes(pal_num + 1); //palletes total - no need to change this if you are using the pal_num variable for alts

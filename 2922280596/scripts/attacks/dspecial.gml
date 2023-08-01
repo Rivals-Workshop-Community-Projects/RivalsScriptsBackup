@@ -38,7 +38,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 45);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .25);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 12);//12
@@ -69,7 +69,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 45);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 45);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .25);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 12);

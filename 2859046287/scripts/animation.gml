@@ -35,25 +35,6 @@ switch (state)
 				break;
 		}
 		break;
-	case PS_WALL_JUMP: //easy clinging (only works if you set can_wall_cling to true in init.gml)
-		if (can_wall_cling)
-		{
-			//makes sure the cling_timer is consistent with the state_timer
-			if (state_timer == 0) cling_timer = 0;
-			if (clinging) cling_timer = state_timer;
-			
-			//sets image to the proper index
-			if (clinging && image_index >= cling_frame) image_index = cling_frame; //when clinging and the image_index goes over the cling frame, force it back
-			else //when not clinging, simply do the animation
-			{
-				image_index = lerp(
-					image_index < cling_frame ? 0 : cling_frame, //depending on if we clinged for enough time to reach the cling frame, the lerp adapts
-					image_number, //this is the maximum frame number in the strip
-					(state_timer-cling_timer)/walljump_time //checks when the animation starts [state_timer - cling_timer] and for how long with [walljump_time]
-				);
-			}
-		}
-		break;
 	case PS_PRATLAND:
 		//this complicated math allows the player to animate properly when in pratland
 
@@ -77,7 +58,7 @@ switch (state)
 	case PS_TUMBLE: case PS_HITSTUN_LAND:
 		hurt_img = 5;
 		break;
-	case PS_FLASHED: case PS_FROZEN: case PS_CRYSTALIZED:
+	case PS_FLASHED: case PS_FROZEN:
 		hurt_img = 1;
 		break;
 	case PS_BURIED:
@@ -101,16 +82,18 @@ if (state_cat == SC_HITSTUN || state == PS_TUMBLE)
 		}
 	}
 
-	//crystalized is a funny mechanic where it doesn't play nice with not using small_sprites
-	//if the character doesn't use small sprites, uncomment this crystalized section (and make sure you have a hurt_crystalized sprite in your sprites folder)
-	/*
-	if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || state == PS_CRYSTALIZED)
+	//crystalized compatibility
+	//if the character doesn't use small sprites, uncomment this crystalized section (also make sure you have a hurt_crystalized sprite in your folder)
+	if (crystalized_damage_remaining > 0 || state == PS_CRYSTALIZED)
 	{
-		sprite_index = sprite_get("hurt_crystalized");
-		small_sprites = 1;
+		hurt_img = 1;
+		if (crystal_stun_resize)
+		{
+			sprite_index = sprite_get("hurt_crystalized"); //this has to be using small sprites
+			small_sprites = 1;
+		}
 	}
-	else small_sprites = 0;
-	*/
+	else if (crystal_stun_resize) small_sprites = 0;
 
 	//ranno bubble forces the player into hurt_img 1 too
 	if (bubbled) hurt_img = 1;

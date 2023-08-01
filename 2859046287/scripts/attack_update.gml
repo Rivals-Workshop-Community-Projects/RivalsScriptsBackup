@@ -5,6 +5,9 @@
 //NOTE: to reffer to a window's window_timer == 0, we must take the last frame of the window before
 //		example: if (window == 3 && window_timer == window_end) will reffer to window 4, window_timer 0
 
+//used for custom attack grid functions, for more information check the #define with the same name
+custom_attack_grid();
+
 //B-reverse - it allows the character to turn in while using specials
 //it's seperate from the switch statement because switch statements always take the later instance of that case
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
@@ -153,7 +156,7 @@ switch (attack)
 				set_window_value(attack, 4, AG_WINDOW_LOOP_TIMES, floor(strong_charge/15)+1);
 				break;
 			case 4: //hit value setups because i don't feel like using individual hitboxes
-				if (window_loops == get_window_value(attack, 4, AG_WINDOW_LOOP_TIMES)) //final hit
+				if (window_loops == get_window_value(attack, 4, AG_WINDOW_LOOP_TIMES)-1) //final hit
 				{
 					set_hitbox_value(attack, 1, HG_WIDTH, 64);
 					set_hitbox_value(attack, 1, HG_HEIGHT, 80);
@@ -534,14 +537,13 @@ switch (attack)
 				if (window_timer == window_end) set_state(free ? PS_IDLE_AIR : PS_IDLE);
 				break;
 			//PART 2: TELEPORT
-			//the article existance check happens on set_attack.gml
-			
+			//the article existance check happens on set_attack.gml	
 			case 7: //teleport - it happens on window 8, window timer 0, but attack_update doesn't allow for window_timer 0
 				if (window_timer == window_end)
 				{
 					move_cooldown[attack] = 180;
 
-					instance_exists(artc_dspec)
+					if (instance_exists(artc_dspec))
 					{
 						spawn_hit_fx(x, y-32, fx_pow_hit[0]); //before warp effect
 
@@ -555,19 +557,29 @@ switch (attack)
 					
 				}
 			case 6: //effects
-				var tstr_fx = spawn_hit_fx(
+				do_particle(
+					sprite_get("fx_pow_sparks"),
+					12,
 					x + (random_func(5, 5, true) - 2) * 16,
 					y + (random_func(6, 5, true) - 2) * 16 - char_height / 2,
-					fx_pow_sparks);
-				tstr_fx.draw_angle = random_func(7, 30, true) * 12;
+					1, //xscale
+					1, //yscale
+					1, //spr_dir
+					random_func(7, 30, true) * 12 //angle
+				)
 
 				if (instance_exists(artc_dspec))
 				{
-					var artc_fx = spawn_hit_fx(
+					do_particle(
+						sprite_get("fx_pow_sparks"),
+						12,
 						artc_dspec.x + (random_func(8, 5, true) - 2) * 16,
-						artc_dspec.y + (random_func(9, 5, true) - 2) * 16 - char_height / 2,
-						fx_pow_sparks);
-					artc_fx.draw_angle = random_func(10, 30, true) * 12;
+						artc_dspec.y + (random_func(9, 5, true) - 2) * 16 - artc_dspec.article_height / 2,
+						1, //xscale
+						1, //yscale
+						1, //spr_dir
+						random_func(10, 30, true) * 12 //angle
+					)
 				}
 			case 8: case 9: case 10: //lock player movement
 				can_move = false;
@@ -601,7 +613,6 @@ switch (attack)
 }
 
 
-
 //0 will just go to the next window instead of a specific one
 //-1 makes it loop on the same window
 #define set_window(window_num)
@@ -610,4 +621,113 @@ switch (attack)
     else if (window_num == -1) window = window;
     else window = window_num;
     window_timer = 0;
+
+	//we need this so if we put an "illegal" value it will not crash the game
+	window_num = window;
+
+	//speed resetting - horizontally
+	switch (get_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE))
+	{
+		case 0: hsp += get_window_value(attack, window_num, AG_WINDOW_HSPEED) * spr_dir; break; //adds speed
+		case 1: case 2: hsp = get_window_value(attack, window_num, AG_WINDOW_HSPEED) * spr_dir; break; //sets speed for the first frame/the entire window
+	}
+
+	//speed resetting - vertically
+	switch (get_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE))
+	{
+		case 0: vsp += get_window_value(attack, window_num, AG_WINDOW_VSPEED); break; //adds speed
+		case 1: case 2: vsp = get_window_value(attack, window_num, AG_WINDOW_VSPEED); break; //sets speed for the first frame/the entire window
+	}
+}
+
+//custom attack grid example - Looping window X times (by Bar-Kun)
+#define custom_attack_grid
+{
+    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
+    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
+    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
+
+    //make sure the player isn't in hitpause
+    if (!hitpause)
+    {
+        //make sure the window is in type 9 or 10
+        if (window_type_value == 9 || window_type_value == 10)
+        {
+            //checks the end of the window
+            if (window_timer == window_end)
+            {
+                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
+            }
+
+            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
+            {
+                if (window_timer == 0)
+                {
+                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
+                    window_loops ++; //at the start of the window, count a loop up
+                }
+
+                //when all the loops are over, go to the next window and reset the loop value
+                //if it's window type 10, it should stop the loop prematurely
+                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
+                {
+                    destroy_hitboxes();
+                    if (window < window_last)
+                    {
+                        window += 1;
+                        window_timer = 0;
+                    }
+                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
+                    window_loops = 0;
+                }
+            }
+            else if (window_loop_value == 0) attack_end(attack);
+            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
+            //this is how the game usually treats window type 9
+        }
+    }
+}
+
+#define do_particle
+{
+	var _spr = argument[0], _length = argument[1], _xpos = argument[2], _ypos = argument[3];
+	var _dir = argument_count > 4 ? argument[4] : 0;
+	var _xscale = argument_count > 5 ? argument[5] : 1;
+	var _yscale = argument_count > 6 ? argument[6] : 1;
+	var _angle = argument_count > 7 ? argument[7] : 0;
+	var _layer = argument_count > 8 ? argument[8] : -1;
+	var _anim_img = argument_count > 9 ? argument[9] : true;
+	var _hsp = argument_count > 10 ? argument[10] : 0;
+	var _vsp = argument_count > 11 ? argument[11] : 0;
+	var _torque = argument_count > 12 ? argument[12] : 0;
+	var _alpha = argument_count > 13 ? argument[13] : 1;
+	var _anim_alpha = argument_count > 14 ? argument[14] : 0;
+	var _color = argument_count > 15 ? argument[15] : c_white;
+	var _filled = argument_count > 16 ? argument[16] : false;
+    var _shader = argument_count > 17 ? argument[17] : false;
+	var _img = argument_count > 18 ? argument[18] : 0;
+
+	var new_part = {
+		spr: _spr,
+		xpos: _xpos,
+		ypos: _ypos,
+		hsp: _hsp,
+		vsp: _vsp,
+		dir: _dir,
+		angle: _angle,
+		torque: _torque,
+		xscale: _xscale,
+		yscale: _yscale,
+		alpha: _alpha,
+		anim_alpha: _anim_alpha,
+		color: _color,
+		filled: _filled,
+        shader: _shader,
+		layer: _layer,
+		length: _length,
+		img: _img,
+		anim_img: _anim_img,
+		timer: 0
+    };
+    array_push(fx_part, new_part);
 }

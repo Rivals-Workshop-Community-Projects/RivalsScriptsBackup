@@ -105,8 +105,7 @@ with (obj_article3) {
     if (player_id == other.id && hitstop == 0 && state == 0) {
         var player_list = ds_list_create();
         with (oPlayer) {
-            var near = collision_line(round(other.x - lengthdir_x(40, other.img_angle)),round(other.y - 40 - lengthdir_y(40, other.img_angle)), 
-                round(other.x + lengthdir_x(40, other.img_angle)), round(other.y - 40 + lengthdir_y(40, other.img_angle)), id, 0, 0);
+            var near = collision_line(other.collision_pos[0], other.collision_pos[1], other.collision_pos[2], other.collision_pos[3], id, 0, 0);
             ds_list_add(player_list, near);
         }
         for (var i = 0; i < ds_list_size(player_list); i++) {
@@ -115,8 +114,23 @@ with (obj_article3) {
                 if (player_near.vsp > 0 && player_near.state_cat != PS_HITSTUN && player_near.visible && player_near.state != PS_DEAD && player_near.state != PS_RESPAWN && player_near.grav != 0 && (img_angle != 0 || player_near.free)) {
                     var jspd = bounce_speed;
                     with (player_near) jspd = jump_down || (up_down && can_tap_jump()) ? other.bounce_speed_max : other.bounce_speed;
-                    player_near.hsp = lengthdir_x(jspd, img_angle - 90);
-                    player_near.vsp = lengthdir_y(jspd, img_angle - 90);
+                    
+	                var new_dir = img_angle - 90;
+	                if (!player_near.joy_pad_idle) {
+	                    var di_diff = floor(angle_difference(img_angle - 90, player_near.joy_dir) / 90) * 90;
+	                    var change = 15 * sign(di_diff);
+	                    new_dir -= (sign(di_diff) * change)
+	                }
+	                if (img_angle - 90 != -90) {
+	                    player_near.hsp = lengthdir_x(jspd, new_dir);
+	                    player_near.vsp = lengthdir_y(jspd, new_dir);
+	                }
+	                else {
+	                    player_near.vsp = jspd;
+	                }
+	                if (player_near.state == PS_PRATFALL) {
+	                	with (player_near) set_state(PS_IDLE_AIR);
+	                }
                     sound_play(sound_get("sfx_drum"))
                     state = rune_applied ? 2 : 1;
                     state_timer = 0;

@@ -3,7 +3,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 29;
+var numAlts = 30;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -56,6 +56,7 @@ alt_name[26]  = "Devolver";
 alt_name[27]  = "High Noon";
 alt_name[28]  = "Shrinker";
 alt_name[29]  = "Beach Ready";
+// alt_name[30]  = "Beach Ready";
 //alt_name[31] = "";
 
 draw_set_halign(fa_right);

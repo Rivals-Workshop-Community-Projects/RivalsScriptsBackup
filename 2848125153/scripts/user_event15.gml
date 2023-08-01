@@ -319,6 +319,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.23", "30th July, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Mr Monopoly can now taunt in the air. Very skillful!
++ Mr Monopoly now laughs when looking up, and waveland plays some voice clips
++ Mr Monopoly can now use money from his property (if he has one) to pay for jail, if he gets stuck in jail after failing 3 dice rolls. Although this comes at a higher cost; if Mr Monopoly can't pay the bailout on his own the price will be 1.5x higher");
+initHeader("Unskillful Nerfs");
+initSection("- If Mr Monopoly gets stuck in jail, the bailout cost will take his property into account, making the cost more expensive overall (at least if you have a property out, as previously it didn't take property into account, so storing money would make the bailout much cheaper)
+- Reduced hitbox size very slightly for a few moves (FAir, FTilt, Jab, UStrong)
+- If Mr Monopoly gets hit by his own hitboxes (ex: dices and tokens getting hit back), he will lose a little bit more money on average. He will particularly lose more from rolling a 1 with NSpecial. This is mainly to punish dice and token overuse, but also bad NSpecial luck");
+initHeader("Fixes / Other Changes");
+initSection("+ Added a failsafe for USpecial that resets Mr Monopoly's collisions in case he gets cancelled out of the move unexpectedly, to prevent him from falling through the stage");
+
 initPatch("1.22", "16th June, 2023");
 initHeader("Skillful Buffs");
 initSection("+ Mr Monopoly can now observe money when it is above him");

@@ -27,12 +27,15 @@ desirae_rewind_spot[0] = [0,0];
 hud_timing = 0;
 
 og_desirae = true;
+other_desirae = false;
 with(oPlayer)
 {
     if(id != other.id)
     {
         if(variable_instance_exists(id,"og_desirae"))
         {
+            other_desirae = true;
+            other.other_desirae = true;
             print_debug("Im the OG")
             other.og_desirae = false;
         }

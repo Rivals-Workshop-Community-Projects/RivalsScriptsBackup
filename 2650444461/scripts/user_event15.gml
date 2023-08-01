@@ -261,6 +261,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.16", "30th July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added intro animation
++ Added shiny effects on Shiny alt
++ Mudkip can now look up
++ Improved Mudkip's AI a little");
+
 initPatch("1.15", "4th February, 2023");
 initHeader("Buffs");
 initSection("- Increased kbs a little bit on both Surf (0.7->0.8) and Muddy Water (1.05->1.1)");

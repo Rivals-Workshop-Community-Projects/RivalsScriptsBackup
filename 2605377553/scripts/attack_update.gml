@@ -72,18 +72,10 @@ if attack == AT_TAUNT
 
 
 if attack == AT_JAB || attack = AT_DATTACK || attack = AT_FTILT|| attack = AT_UTILT|| attack = AT_DTILT|| 
-attack = AT_FAIR|| attack = AT_NAIR|| attack = AT_BAIR|| attack = AT_DAIR|| attack = AT_UAIR || attack = AT_DSPECIAL||
+attack = AT_FAIR|| attack = AT_NAIR|| attack = AT_BAIR|| attack = AT_UAIR || attack = AT_DSPECIAL||
 attack = AT_USPECIAL|| attack = AT_NSPECIAL|| attack = AT_FSPECIAL
 {
 	    markConsumed = false;
-}
-
-if attack = AT_JAB|| attack = AT_DATTACK || attack = AT_FTILT|| attack = AT_UTILT|| attack = AT_DTILT||  attack = AT_BAIR|| attack = AT_DAIR|| attack = AT_UAIR || attack = AT_DSPECIAL||
-attack = AT_USPECIAL|| attack = AT_FSPECIAL
-{
-	    breakable = 0;
-		glassbreak = 0;
-		knockback_adj = 1.00;
 }
 
 
@@ -98,12 +90,6 @@ if attack == AT_USTRONG
 }
 
 move_cooldown[AT_NSPECIAL] = 20;
-
-//The hex is strong, it can be wielded by you, but be wary: you'll soon find yourself untethered to our own reality; the more you draw the frailer your body aches.
-if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_NSPECIAL || attack == AT_FAIR || attack == AT_NAIR {
-	knockback_adj = 1.15
-	breakable = 1;
-}
 
 //cloud pushers
 if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG

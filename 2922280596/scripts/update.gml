@@ -71,8 +71,8 @@ with(oPlayer)
             {
                 if(!hitpause || state_cat != SC_HITSTUN) 
                     desirae_time_left --; //remove time unless being hit
-
-                if(get_player_damage(player) >= desirae_time_percent)
+                    
+                if(get_player_damage(player) >= desirae_time_percent && state_cat == SC_HITSTUN)
                 {
                     white_flash_timer = 10;
 		            desirae_time_mode = 1;

@@ -97,7 +97,8 @@ crouch_recovery_frames  = 2;
 // Jumps
 double_jump_time        = 30;		// 24   -  40
 walljump_time           = 18;		// 18   -  32
-wall_frames             = 1;		// may or may not actually work... dan pls
+can_wall_cling          = false;    // lets the character cling onto walls, you can use [clinging] to check when the character is currently clinging
+wall_frames             = 0;		// amount of animation frames to play while clinging, spread accross 60 frames
 
 // Parry
 dodge_startup_frames    = 1;
@@ -150,13 +151,11 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-//set this to 1 if you want to export sprites at a smaller size (only includes character sprites without hurtboxes)
+//small_sprites = 1; //set this to 1 if you want to export sprites at a smaller size (only includes character sprites without hurtboxes)
 //alternatively, you can set it up on config.ini
-//small_sprites = 1;
 
-// setting to true will allow the character to cling by holding jump
-// when clinging you usually need to manually set the image_index in animation.gml, but i did it for you
-can_wall_cling = false;
+crystal_stun_resize = (small_sprites == 0 ? true : false); //automatically set to true if you disable small sprites
+//if [crystal_stun_resize] is true, it means your character does NOT use small_sprites and it will run the code to fix crystal stun's effect for you
 
 small_djump = false;                // setting this to true gives characters the smaller double jump vfx from wrastor
 
@@ -210,8 +209,8 @@ attack_names = [ //has the names of all the attacks
     "AT_TAUNT_2",
     "AT_EXTRA_2",
     "AT_EXTRA_3",
-    "39",
-    "40 (munophone default)",
+    "AT_EXTRA_4",
+    "AT_EXTRA_5 (munophone default)",
     "AT_NSPECIAL_AIR",
     "42",
     "43",
@@ -258,21 +257,36 @@ cur_loop_sound = noone; //you can use this to store a sound instance that you ca
 
 plat_speed = 0.2; //controls the respawn platform's animation speed without it relying on the player's animation
 
-//wall cling support
-cling_timer = 0; //custom var to help with animation on wall clinging
-cling_frame = 0; //sets the frame the player should be on when wall clinging
-
+//wall slide support (used for tester's rune A)
 wall_slide_enabled = false; //adds a slide function to wall clinding
 wall_slide_fric = 0.1;
+//relevant scripts:
+//  - update
+//  - animation
+
+//damage calculation that takes strong charge into consideration
+true_dmg = 0;
+//relevant scripts:
+//  - hit_player
+//  - got_hit
+//  - parry
+//  - got_parried
 
 //custom window loop time (NOTE: this is a custom index that is created manually)
-AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next to it is the amount to loop (starts at 0, includes written value)
+AG_WINDOW_LOOP_TIMES = 37;          //the number you put next to it is the amount to loop (starts at 1, includes written value, 0 lets you loop forever like normal)
+AG_WINDOW_LOOP_REFRESH_HITS = 38;   //if true, it will refresh hitboxes so they can hit again
 window_loops = 0;                   //decides the amount of times to loop
 //usage: set_window_value(attack, window, AG_WINDOW_LOOP_TIMES, #loops)
+//relevant scripts:
+//  - attack_update
 
 //projectile with melee hitbox behaviour
 HG_PROJECTILE_MELEE = 65;               //if true, it makes it so the projectile applies hitpause and sets off hit player flags
 //  set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_MELEE, true);
+//relevant scripts:
+//  - hitbox_init
+//  - hitbox_update
+//  - bair
 
 //projectile multihit
 HG_PROJECTILE_MULTIHIT = 58;            //hitbox grid index, the number of times the projectile should hit
@@ -286,6 +300,10 @@ HG_MULTIHIT_SFX = 62;                   //overwrites HG_HIT_SFX for multihits, p
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_DAMAGE, 3);
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_VFX, HFX_GEN_OMNI);
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_SFX, asset_get("sfx_blow_medium2"));
+//relevant scripts:
+//  - hitbox_init
+//  - hitbox_update
+//  - nspecial
 
 //projectile homing
 HG_PROJECTILE_HOMING = 63;              //if true, allow projectile to use the homing code
@@ -293,6 +311,48 @@ HG_PROJECTILE_HOMING_TURN = 64;         //how sharp the angle for the homing is,
 //usage example:
 //  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING, true);
 //  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING_TURN, 0.4);
+//relevant scripts:
+//  - hitbox_init
+//  - hitbox_update
+//  - nspecial
+
+//particle system
+artc_partc = instance_create(x, y, "obj_article3"); //used for layer 0 for the particle system
+artc_partc.depth = 5; //use this to set the custom depth
+artc_partc.uses_shader = false; //keep this false so it will not always use the shader for every particle
+fx_part = [];
+/* particle struct info
+    var new_part = { //new_part is set as a temporary variable to store all the information
+        spr:        sprite_get("???")   //particle's sprite
+        xpos:       #number             //x position
+        ypos:       #number             //y position
+        hsp:        #number             //horizontal speed
+        vsp:        #number             //vertical speed
+        dir:        -1 / 0 / 1          //0 means it will default to the object's spr_dir, otherwise you can put either 1 or -1 to set a specific spr_dir for it
+        angle:      0 - 360             //the angle to draw the particle with
+        torque:     #number             //rotation speed, negative numbers rotate clockwise, positive numbers rotate counter-clockwise
+        xscale:     #number             //the sprite's horizontal scale
+        yscale:     #number             //the sprite's vertical scale
+        alpha:      #number             //numbers between 0 to 1 have visual changes
+        anim_alpha: -1 / 0 / 1          //0 means it will not change the transperency, 1 will make it fade in, -1 will make it fade out
+        color:      #number             //the color of the particle - note that without "filled" the particle will be tinted with this color instead
+        filled:     true / false        //if true, the sprite's color will be a single color based on "color"
+        shader:     true / false        //if true, the particle will use the player's shaders
+        layer:      1 / 0 / -1          //0 means it will use article3 to set the depth, 1 uses pre_draw and -1 uses post_draw
+        length:     #number             //for how long should the particle play
+        img:        #number             //reffers to the particle's image index, if "anim_img" is false it will stick to that image for the duration of the particle
+        anim_img:   true / false        //if true, the particle's sprites will animate
+        timer:      0                   //increments in update, sets the start time of the particle (no need to change)
+    };
+    array_push(fx_part, new_part); //this pushes our new particle out to the particle system
+*/
+//alternatively, you can use the function in attack_update that is used for dspecial and play around with the arguments (it's the same code)
+//scripts used by tester:
+//  - update
+//  - pre_draw
+//  - post_draw
+//  - article3_post_draw
+//  - attack_update
 
 
 //custom "dust" effect support

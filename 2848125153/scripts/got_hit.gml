@@ -2,6 +2,12 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	mask_index = asset_get("ex_guy_collision_mask");
 	//current_money -= floor(enemy_hitboxID.damage*100);
 	var hitbox_dmg = round(enemy_hitboxID.damage*(1+(enemy_hitboxID.player_id.strong_charge/100)));//print(hitbox_dmg);
+	if(enemy_hitboxID.player_id == self){
+		hitbox_dmg *= 2;
+		if(enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 3){
+			hitbox_dmg *= 2;
+		}
+	}
 	if(current_money >= 600 && hitbox_dmg >= 3){
 		sound_play(sound_get("money_pickup2"),false,noone,2)
 		sound_play(sound_get("money_pickup3"),false,noone,2)

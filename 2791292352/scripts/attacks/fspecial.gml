@@ -179,10 +179,11 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSPECIAL, 5, HG_PRIORITY, 6);
 set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, 0);
 set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE, 70);
-set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.45);
+set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, 302);
 
 set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Gurantees suicide kill when connecting offstage.");

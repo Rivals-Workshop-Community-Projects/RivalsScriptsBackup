@@ -58,10 +58,10 @@ sprite_change_offset("dspecial_air", 20,38, true);
 sprite_change_offset("taunt", 20,39, true);
 sprite_change_offset("_phone", 20,39, true);
 sprite_change_offset("taunt_rain", 10, 80);
+sprite_change_offset("lookup", 30,79, true);
 
 sprite_change_offset("plat", 50, 20, true);
 
-sprite_change_offset("feri_costume", 84, 114);
 sprite_change_offset("miiverse_post", 60, 30);
 
 sprite_change_offset("bubbleprojectile", 15, 15);
@@ -74,6 +74,10 @@ sprite_change_offset("fx_mudtrail", 20, 20);
 sprite_change_offset("fx_watersplash", 60, 120);
 sprite_change_offset("fx_watersplash_verysmall", 15, 30);
 sprite_change_offset("eruption_small_fast", 50, 158);
+sprite_change_offset("pokeball", 18, 18);
+sprite_change_offset("pokeball_mudkip", 18, 18);
+sprite_change_offset("fx_pokeball", 150, 150);
+sprite_change_offset("fx_pokeball_orb", 70, 70);
 sprite_change_offset("star_trail", 20, 20);
 sprite_change_offset("star_trail_small", 10, 10);
 sprite_change_offset("star_trail2", 20, 20);
@@ -84,3 +88,4 @@ sprite_change_offset("teleport", 30, 60);
 sprite_change_offset("teleport2", 30, 60);
 sprite_change_offset("dust_sharp_big", 60, 80);
 sprite_change_offset("dust_sharp", 30, 40);
+sprite_change_offset("shine_small", 20, 20);

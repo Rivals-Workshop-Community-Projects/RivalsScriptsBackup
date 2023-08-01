@@ -80,3 +80,31 @@ if (attack == AT_TAUNT){
         spawn_hit_fx(x,taunt_rain_Y,player_id.fx_watersplash_verysmall);
     }
 }
+
+//intro pokeball
+if(attack == AT_JAB && hbox_num == 3){
+	depth = player_id.depth+1;
+	if(pokeball == 0){
+		if(get_gameplay_time() % 3 == 0){
+            image_index += 1;
+            if(image_index > 11)image_index = 0;
+        }
+		if(pokeball == 0 && y >= player_id.y){
+			x = player_id.x;y = player_id.y-4;
+			image_index = 12;pokeball = 1;hsp = 0;vsp = 0;grav = 0;
+		}
+	}else if(pokeball == 1){
+		if(get_gameplay_time() % 3 == 0 && image_index < 17){
+            image_index += 1;
+            if(image_index = 15){
+            	sound_play(pokeball_sfx,false,noone,0.85);
+            	var eff = spawn_hit_fx(round(x), round(y-10), player_id.fx_pokeball);eff.depth = player_id.depth-1;
+            	player_id.intro = 0;
+            }if(image_index = 17){
+            	eff = spawn_hit_fx(round(x), round(y-10), player_id.fx_pokeball_orb);eff.depth = player_id.depth-2;
+            }
+        }
+	}
+}
+
+draw_xscale = spr_dir;

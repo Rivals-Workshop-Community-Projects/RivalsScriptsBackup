@@ -93,4 +93,5 @@ sprite_change_offset("dspecialexplode", 128, 128);
 sprite_change_offset("uspecial_proj", 128, 158);
 sprite_change_offset("nspecial_proj", 128, 158);
 
+sprite_change_offset("arrow_indi", 64, 160);
 sprite_change_offset("hitspark", 128, 158);

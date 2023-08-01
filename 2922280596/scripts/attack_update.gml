@@ -40,8 +40,7 @@ if(attack == AT_USPECIAL)
             if(player_id == other.id)
                 state = 4;
         }
-        instance_create(x,y+300,"obj_article1")
-        
+        instance_create(x,y+280,"obj_article1");
     }
 }
 

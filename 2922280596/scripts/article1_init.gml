@@ -5,7 +5,7 @@ sprite_index = sprite_get("pillarbody");           //The sprite that the article
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
 image_alpha = 1;
 spr_dir = player_id.spr_dir;
-uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
+uses_shader = false;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 
 //State
 idle_timer = 0;

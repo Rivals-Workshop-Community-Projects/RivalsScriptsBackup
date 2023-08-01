@@ -261,6 +261,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.18", "28th July, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug causing Eggman's munophone to not work correctly");
+
 initPatch("1.17", "24th July, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Hopefully improved Eggman's AI again by making him use his float if he's low off-stage (mainly to prevent him from SD'ing), and he'll also try to charge his strongs

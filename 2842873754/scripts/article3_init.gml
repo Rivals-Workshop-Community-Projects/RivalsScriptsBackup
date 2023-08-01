@@ -22,9 +22,12 @@ alive_timer = 0;
 //Variables
 bounce_speed = -10 //The speed for jumping.
 bounce_speed_max = -15 //The speed for jumping.
-hitpoints_max = 4; // Can be bounced on twice.
+hitpoints_max = 3; // Can be bounced on 3 times.
 bounce_lag = 12; //The amount of frames the drum goes into lag after a bounce.
 alive_time = 600; //The amount of frames the drum is active for.
+
+collision_pos = [round(x - lengthdir_x(40, img_angle)),round(y - 40 - lengthdir_y(40, img_angle)), 
+                round(x + lengthdir_x(40, img_angle)), round(y - 40 + lengthdir_y(40, img_angle))]
 
 hitpoints = hitpoints_max;
 owned_player = player;

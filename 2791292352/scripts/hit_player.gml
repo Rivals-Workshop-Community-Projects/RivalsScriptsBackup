@@ -13,7 +13,7 @@ switch(my_hitboxID.attack){
 			case 1:
 				if (fspecial_grab_id == noone) && (!hit_player_obj.super_armor) && (hit_player_obj.soft_armor == 0 || hit_player_obj.soft_armor >= orig_knock) && ((hit_player_obj.cofa_mummy = true) || phone_cheats[CHEAT_SUDOCURSE]){ // grabby
 					fspecial_grab_id = hit_player_obj;
-					fspecial_grab_time_max = 30 + round(max(((get_player_damage(hit_player_obj.player) - 20) * 0.3), 0));
+					fspecial_grab_time_max = 10 + round(max(((get_player_damage(hit_player_obj.player) - 20) * 0.3), 0));
 					fspecial_grab_time_max = min(fspecial_grab_time_max, 200);
 					destroy_hitboxes();
 				}

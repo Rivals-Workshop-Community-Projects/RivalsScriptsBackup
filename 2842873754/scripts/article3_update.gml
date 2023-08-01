@@ -43,6 +43,10 @@ if (hitstop == 0) {
     img_index = (img_index % num_frames) + offset;
 }
 
+collision_pos = [round(x + lengthdir_y(42, img_angle) - lengthdir_x(32, img_angle)),round(y - lengthdir_x(42, img_angle) - lengthdir_y(32, img_angle)), 
+                round(x + lengthdir_y(42, img_angle) + lengthdir_x(32, img_angle)), round(y - lengthdir_x(42, img_angle) + lengthdir_y(32, img_angle))]
+
+
 if (state >= 0 && state < 2) {
     if (place_meeting(round(x), round(y), asset_get("plasma_field_obj"))) {
         destroy_self();

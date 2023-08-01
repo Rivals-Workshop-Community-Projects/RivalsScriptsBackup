@@ -21,6 +21,7 @@ if (is_attacking)
 }
 else
 {
+    window_loops = 0; //resets loop value in case the character isn't attacking (useful for hitstun)
     if (my_grab_id != noone) my_grab_id = noone; //if the player isn't attacking, we don't need the grab_id to stay
 
     if (state_timer == 0)
@@ -95,7 +96,7 @@ with (oPlayer) if (test_status_owner == other)
             }
         }
 
-        //basic status particles
+        //basic status particles - uses the particle system
         if (test_status_timer % 6 == 0)
         {
             //this "with" statement changes the perspective of the code, in this case it goes back to the owner player
@@ -104,13 +105,15 @@ with (oPlayer) if (test_status_owner == other)
             {
                 //spawns the little sparkles
                 //using random_func, we can make the particles spread randomly on the enemy player
-                var status_part = spawn_hit_fx(
-                    other.x + (random_func(11, 5, true) - 2) * 8,
-                    other.y + (random_func(12, 5, true) - 2) * 8 - other.char_height/2,
-                    fx_pow_sparks
-                );
-                status_part.depth = other.depth - 2; //sets the depth so they always appear in front of the enemy
-                status_part.spr_dir = 1; //forces the spr_dir of the effect to be consistent
+                do_particle(
+					sprite_get("fx_pow_sparks"),
+					12,
+					other.x + (random_func(11, 5, true) - 2) * 16,
+					other.y + (random_func(12, 5, true) - 2) * 16 - other.char_height / 2,
+                    1, //xscale
+					1, //yscale
+					1, //spr_dir
+				);
             }
         }
     }
@@ -322,6 +325,7 @@ if (get_match_setting(SET_RUNES))
         //this part has to be in update.gml
         //adds vsp when clinging basically
         if (clinging && wall_slide_enabled) vsp += state_timer*wall_slide_fric;
+        if (!free) clinging = false; //stop clinging
     }
 
     //RUNE B: movement stat alter using a rune
@@ -405,12 +409,12 @@ with (oPlayer) if (temp_level != 0 && state == PS_PARRY && !perfect_dodged)
 }
 */
 
+
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
-custom_attack_grid();
 if (uses_custom_dusts) custom_dust_effects();
 prep_hitboxes();
-
+particle_system();
 
 //custom hitbox colors system (by @SupersonicNK)
 #define prep_hitboxes
@@ -434,40 +438,76 @@ prep_hitboxes();
         }
     }
 }
-//custom attack grid example - Looping window X times (by Bar-Kun)
-#define custom_attack_grid
+#define particle_system
 {
-    //looping window for X times
-    var window_loop_value;
-    window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES);
-
-    if (!hitpause)
+    for (var i = 0; i < array_length(fx_part); i++) //should update all particles
     {
-        //loop window
-        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9 && is_attacking) //this will make it so it only works if the window type is 9
+        var cur_part = fx_part[i];
+
+        cur_part.timer ++; //increment timer
+        if (cur_part.anim_img) cur_part.img = lerp(0, sprite_get_number(cur_part.spr), cur_part.timer/cur_part.length); //animation
+        if (cur_part.dir == 0) cur_part.dir = spr_dir; //setting facing direction 0
+
+        //movements setup
+        cur_part.xpos += cur_part.hsp; //x
+        cur_part.ypos += cur_part.vsp; //y
+        cur_part.angle += cur_part.torque; //rotation
+
+        //fade effects
+        if (cur_part.anim_alpha == 1) cur_part.alpha = lerp(0, cur_part.alpha, cur_part.timer/(power(cur_part.length, 1.5)) );
+        else if (cur_part.anim_alpha == -1) cur_part.alpha = lerp(cur_part.alpha, 0, cur_part.timer/(power(cur_part.length, 1.5)) );
+
+        //if particle reaches the end of it's lifetime, refresh particles array
+        if (cur_part.timer >= cur_part.length)
         {
-            if (window_timer == window_end-1) //checks almost the end of the window
-            {
-                attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
-                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
-            }
-
-            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
-            {
-                if (window_timer == 0) window_loops ++; //at the start of the window, count a loop up
-
-                if (window_loops > window_loop_value) //when all the loops are over, go to the next window and reset the loop value
-                {
-                    destroy_hitboxes();
-                    window += 1;
-                    window_timer = 0;
-                    window_loops = 0;
-                }
-            }
+            var temp_fx_part = fx_part;
+            fx_part = [];
+            for (var j = 0; j < array_length(temp_fx_part); j ++) if (j != i) array_push(fx_part, temp_fx_part[j]);
         }
     }
+}
+#define do_particle
+{
+	var _spr = argument[0], _length = argument[1], _xpos = argument[2], _ypos = argument[3];
+	var _dir = argument_count > 4 ? argument[4] : 0;
+	var _xscale = argument_count > 5 ? argument[5] : 1;
+	var _yscale = argument_count > 6 ? argument[6] : 1;
+	var _angle = argument_count > 7 ? argument[7] : 0;
+	var _layer = argument_count > 8 ? argument[8] : -1;
+	var _anim_img = argument_count > 9 ? argument[9] : true;
+	var _hsp = argument_count > 10 ? argument[10] : 0;
+	var _vsp = argument_count > 11 ? argument[11] : 0;
+	var _torque = argument_count > 12 ? argument[12] : 0;
+	var _alpha = argument_count > 13 ? argument[13] : 1;
+	var _anim_alpha = argument_count > 14 ? argument[14] : 0;
+	var _color = argument_count > 15 ? argument[15] : c_white;
+	var _filled = argument_count > 16 ? argument[16] : false;
+    var _shader = argument_count > 17 ? argument[17] : false;
+	var _img = argument_count > 18 ? argument[18] : 0;
 
-    if (!is_attacking) window_loops = 0; //resets loop value in case the character isn't attacking (useful for hitstun)
+	var new_part = {
+		spr: _spr,
+		xpos: _xpos,
+		ypos: _ypos,
+		hsp: _hsp,
+		vsp: _vsp,
+		dir: _dir,
+		angle: _angle,
+		torque: _torque,
+		xscale: _xscale,
+		yscale: _yscale,
+		alpha: _alpha,
+		anim_alpha: _anim_alpha,
+		color: _color,
+		filled: _filled,
+        shader: _shader,
+		layer: _layer,
+		length: _length,
+		img: _img,
+		anim_img: _anim_img,
+		timer: 0
+    };
+    array_push(fx_part, new_part);
 }
 //remove dust from existance (not really we are just pushing it off-screen)
 #define custom_dust_effects

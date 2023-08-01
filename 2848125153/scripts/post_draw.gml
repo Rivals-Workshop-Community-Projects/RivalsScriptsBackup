@@ -19,7 +19,7 @@ if (attack == AT_USPECIAL){
         }
         
         if(/*free || !free && */jaildiceattempts >= 3){
-            if(current_money >= jailcost){
+            if((current_money+jailpropertymoney) >= jailcost){
                 draw_debug_text(x-(round(string_length(string_thousands(jailcost*100))*3.25)),y-110,string_thousands(jailcost*100));
                 //draw_sprite_ext(sprite_get("playerarrow"),0,x,y-96,1,1,0,get_player_hud_color(player),1);
             }else{

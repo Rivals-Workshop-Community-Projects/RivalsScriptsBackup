@@ -11,19 +11,21 @@ switch (state){
 }
 
 if(intro && (state == PS_IDLE or state == PS_SPAWN)){
-	//sprite_index = sprite_get("intro");
-	//var playernum = 5 + (player);
-	//image_index = (state_timer*introspeed)-playernum;
+	sprite_index = asset_get("empty_sprite");
 }else{
     intro = 0;
 }
 
-//if(state == PS_DASH || state == PS_DASH_START || state == PS_DASH_STOP || state == PS_DASH_TURN){
-    //if(currenthurtbox == 0){
-        //hurtbox_spr = sprite_get("hurtboxdash");
-        //currenthurtbox = 1;
-    //}
-//}else if(currenthurtbox == 1){
-    //hurtbox_spr = sprite_get("hurtbox");
-    //currenthurtbox = 0;
-//}
+if(state == PS_IDLE && up_down){
+    lookuptime += 1;
+}else{
+    if(state == PS_IDLE && lookuptime != 0){
+        if(lookuptime > 0){lookuptime -= 1;}else if(lookuptime < 0){lookuptime += 1;}
+    }else{
+        lookuptime = 0;
+    }
+}
+if(state == PS_IDLE && lookuptime > 0){
+    sprite_index = sprite_get("lookup");image_index = floor(abs(lookuptime)/2);lookuptime = min(4,lookuptime);
+    if(image_index > 2)image_index = 2;
+}

@@ -65,6 +65,8 @@ sprite_change_offset("uspecial", 66, 124);
 sprite_change_offset("dspecial", 68, 120);
 sprite_change_offset("dspecial_air", 68, 120);
 sprite_change_offset("taunt", 66, 112);
+sprite_change_offset("taunt_gay", 66, 112);
+sprite_change_offset("taunt_gay_r", 66, 112);
 sprite_change_offset("taunt_scaryface", 66, 112);
 sprite_change_offset("taunt_spooky", 64, 122);
 sprite_change_offset("taunt_nice", 68, 120);

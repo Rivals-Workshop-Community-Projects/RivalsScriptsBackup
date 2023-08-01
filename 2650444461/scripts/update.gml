@@ -108,6 +108,16 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 	}
 }
 
+//shiny effect for shiny alt
+switch(get_player_color(player)){
+	case 1:
+    	if(get_gameplay_time() % 180 == 0){
+			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_small);eff.depth = depth-1;
+        }if(get_gameplay_time() % 120 == 0){
+			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_smallfast);eff.depth = depth-1;
+        }
+	break;
+}
 
 if(!loaded){
 	//if(get_gameplay_time() <= 2){
@@ -117,29 +127,25 @@ if(!loaded){
 			
 		}
 	//}
-	if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
+	if (get_training_cpu_action() != CPU_FIGHT && !playtesting && !("is_ai" in self)) {
 		trainingmode = true;
 	}
+	
+	//for testing intro anim
+	//intro = 1;
+	//var pokeball = create_hitbox(AT_JAB, 3, x-200*spr_dir, y-35);//pokeball.spr_dir = spr_dir;pokeball.hsp = pokeball.hsp*spr_dir;
+	intro = 0;
 	
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
 	loaded = true;
 }
 
-//randomize TL photo when TL uses the taunt
-/*with(asset_get("oPlayer")){
-    if("pictophotoload" in self){
-    	if(pictophotoload){
-        	other.toonlink_randomizephoto = true;
-    	}
-    }
-}if(toonlink_randomizephoto){
-	toonlink_randomizephoto = false;
-	var random_photo = random_func(0, 5, true);
-	if(random_photo == 0){
-		toonlink_photo = sprite_get("toonlink_photo");
-		toonlink_photo2 = 2;
-	}else{
-		toonlink_photo = sprite_get("toonlink_photo2");
-		toonlink_photo2 = sprite_get("toonlink_photo_TL2");
+if(get_gameplay_time() <= 120){
+	//intro anim
+	if(/*!trainingmode &&*/ get_gameplay_time() <= 10){
+		intro = 1;
+		if(get_gameplay_time() == round(player*3)-2){
+			var pokeball = create_hitbox(AT_JAB, 3, x-200*spr_dir, y-35);//pokeball.spr_dir = spr_dir;pokeball.hsp = pokeball.hsp*spr_dir;
+		}
 	}
-}*/
+}

@@ -345,7 +345,7 @@ if (attack == AT_TAUNT){
 		}else if(rand == 1){
 			voice = sound_play(sound_get("i see you2"));
 		}
-	}else if((right_down || left_down) && current_money >= 10000){
+	}else if((right_down || left_down) && current_money >= 10000 && !up_down){
 		attack = AT_FSPECIAL;window = 4;set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);move_cooldown[AT_FSPECIAL] = 0;
 		if(attack_down && current_money >= 40000){
 			sound_stop(voice);voice = sound_play(sound_get("four million"));tauntmoney = 1;

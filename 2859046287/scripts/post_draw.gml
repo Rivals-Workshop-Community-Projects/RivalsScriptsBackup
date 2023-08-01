@@ -90,8 +90,36 @@ if (is_attacking) switch (attack)
 if (get_match_setting(SET_RUNES))
 {
     //spawns dusts on wall when sliding
-    if (has_rune("A")) if (clinging && wall_slide_enabled && state_timer % 6 == 0) spawn_base_dust(x-20*spr_dir, y-char_height/2, "walk", spr_dir, 90);
+    if (has_rune("A")) if (clinging && wall_slide_enabled && state_timer % 6 == 0) spawn_base_dust(x-20*spr_dir, y-char_height/2, "walk", spr_dir, spr_dir ? 270 : 90);
 }
+
+
+
+//particle system
+for(var i = 0; i < array_length(fx_part); i++)
+{
+    var cur_part = fx_part[i];
+
+    if (cur_part.shader) shader_start();
+    if (cur_part.layer == -1)
+    {
+        gpu_set_fog(cur_part.filled, cur_part.color, 0, 1);
+        draw_sprite_ext(
+            cur_part.spr,
+            cur_part.img,
+            cur_part.xpos,
+            cur_part.ypos,
+            cur_part.xscale * cur_part.dir,
+            cur_part.yscale,
+            cur_part.angle,
+            cur_part.color,
+            cur_part.alpha
+        )
+        gpu_set_fog(false, cur_part.color, 0, 0);
+    }
+    if (cur_part.shader) shader_end();
+}
+
 
 //written by muno
 #define rectDraw(x1, y1, width, height, color)

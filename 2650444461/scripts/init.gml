@@ -98,6 +98,7 @@ djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victorybg"));
+alt = get_player_color(player);
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -121,14 +122,14 @@ dtiltmud = false;
 crit = false;
 outline_timer = 0;
 outline_rev = false;
+pokeball_sprite = sprite_get("pokeball");
 intro = (state == PS_SPAWN);
 introspeed = 0.2;
-outline_timer = 0;
-outline_rev = false;
 windowtiming = 0;
+lookuptime = 0;
 loaded = false;
 trainingmode = false;
-playtest = (object_index == oTestPlayer);
+playtesting = (object_index == oTestPlayer);
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 
 //runeF = true;runesUpdated = true;
@@ -161,6 +162,8 @@ fx_watersplash_verysmall = hit_fx_create(sprite_get("fx_watersplash_verysmall"),
 fx_mudsplash = hit_fx_create(sprite_get("fx_mudsplash"), 20);
 fx_mudtrail = hit_fx_create(sprite_get("fx_mudtrail"), 15);
 fx_eruption_small_fast = hit_fx_create(sprite_get("eruption_small_fast"), 40);
+fx_pokeball = hit_fx_create(sprite_get("fx_pokeball"), 20);
+fx_pokeball_orb = hit_fx_create(sprite_get("fx_pokeball_orb"), 12);
 fx_starhit = hit_fx_create(sprite_get("fx_starhit"), 25);
 fx_starhit_med = hit_fx_create(sprite_get("fx_starhit_med"), 25);
 fx_starhit_big = hit_fx_create(sprite_get("fx_starhit_big"), 25);
@@ -169,7 +172,15 @@ fx_star_trail2 = hit_fx_create(sprite_get("star_trail2"), 10);
 fx_dust_sharp_big = hit_fx_create(sprite_get("dust_sharp_big"), 20);
 fx_dust_sharp_big_fast = hit_fx_create(sprite_get("dust_sharp_big"), 10);
 fx_dust_sharp = hit_fx_create(sprite_get("dust_sharp"), 20);
+fx_shine_small = hit_fx_create(sprite_get("shine_small"), 20);
+fx_shine_smallfast = hit_fx_create(sprite_get("shine_small"), 10);
+fx_shine_smallfast2 = hit_fx_create(sprite_get("shine_small"), 5);
 fx_empty = hit_fx_create(sprite_get("emptysprite"), 1);
+
+//swap some effects on alts
+if(alt != 0){
+	pokeball_sprite = sprite_get("pokeball_mudkip");
+}
 
 muno_event_type = 0;
 user_event(14);

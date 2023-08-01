@@ -4,7 +4,6 @@
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
-
 //article gravity field range (note it doesn't quite work like a hitbox cuz it isn't one, it just checks if the player's coordinates are in range)
 if (instance_exists(artc_dspec) && has_rune("H") && artc_dspec.gravity_field_time > 0 && hbox_view)
 {
@@ -19,7 +18,7 @@ draw_colored_hitboxes();
 //Put this at the very bottom of your script, with the rest of the #defines.
 #define draw_colored_hitboxes
 {
-    if get_match_setting(SET_HITBOX_VIS) {
+    if hbox_view {
         var arrowspr = __kb_arrow_spr, hitboxes = [], arr_len, __kb_angle, angle;
         with (pHitBox) if (player_id == other && draw_colored) array_push(hitboxes,self)
         arr_len = array_length(hitboxes);
@@ -32,6 +31,14 @@ draw_colored_hitboxes();
                 draw_sprite_ext(arrowspr, 0, x, y, 1,1,angle,-1,0.5);
             }
         }
+        //hide base hurtbox display
+        hurtboxID.image_alpha = 0;
+        //redraw hurtbox OVER hitbox display for visibility
+        if state_cat == SC_HITSTUN { //turn hurtbox yellow
+            gpu_set_fog(true, c_yellow, 0, 999)
+        }
+        draw_sprite_ext(hurtboxID.sprite_index, hurtboxID.image_index, x, y, hurtboxID.image_xscale, hurtboxID.image_yscale, 0, -1, 0.5)
+        gpu_set_fog(false, c_white, 0, 999)
     }
 }
 #define selection_sort_priority(arr)

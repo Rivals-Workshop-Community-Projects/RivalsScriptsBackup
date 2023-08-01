@@ -157,6 +157,7 @@ familiar_eggmans = 0;
 lookuptime = 0;
 airdodgeanimthing = 0;
 rand = 0;
+silly = 0;
 
 inside_mech = true;
 inside_mech2 = true;

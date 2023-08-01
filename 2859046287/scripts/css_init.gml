@@ -63,3 +63,7 @@ sprite_change_offset("idle", 23, 47); //should mimic the load.gml offsets
 preview_idle = sprite_get("idle");
 preview_scale = 2; //depends on if we have small sprites on, if we do, type 2, if not type 1
 preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprites animation speed
+
+
+
+

@@ -8,7 +8,15 @@ switch state {
 		}
 	break;
 	case PS_PARRY:
-	    hurtboxID.sprite_index = sprite_get("parry_hurtbox");
+	case PS_PRATFALL:
+	case PS_AIR_DODGE:
+        hurtboxID.sprite_index = sprite_get("parry_hurtbox");
+	break;
+	
+	case PS_IDLE_AIR:
+	case PS_WALL_JUMP:
+	case PS_DOUBLE_JUMP:
+	    hurtboxID.sprite_index = hurtbox_spr;
 	break;
     
 	case PS_SPAWN:
@@ -60,6 +68,9 @@ switch state {
 			    } else if window > 2 && !(window == 5 && window_timer > 7) {
 	                hud_offset = lerp(hud_offset, 90, 0.5);
 		        }
+			break;
+			case AT_TAUNT:
+			    if get_player_color(player) = 27 sprite_index = spr_dir = -1? sprite_get("taunt_gay_r") : sprite_get("taunt_gay");
 			break;
 		}
 	break;
