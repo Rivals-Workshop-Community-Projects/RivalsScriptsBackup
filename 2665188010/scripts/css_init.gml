@@ -3,7 +3,7 @@
 if (get_color_profile_slot_r(0, 0) == 12){
 	sound_stop(sound_get("futuresight_1"));
     sound_play(sound_get("futuresight_1"),false,0,0.9);
-    set_color_profile_slot( 0, 0, 11, 107, 155 );
+    set_color_profile_slot(0, 0, 11, 107, 155);
 }
 fade_timer = 0;
 current_alt = 0;

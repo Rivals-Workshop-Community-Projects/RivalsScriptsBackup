@@ -550,6 +550,7 @@ if(attack == AT_DSPECIAL){
 			if(num2 == 0){
 				num2 = 1;
 				shake_camera(10,8);sound_play(player_id.moneybaghitsfx2,false,noone,1);
+				hsp = 0;vsp = 0;
 			}
 			if(destroysoon){
 				destroying = true;
@@ -789,6 +790,8 @@ if(attack == AT_DSPECIAL){
 }
 
 if(attack == AT_JAB){
+	through_platforms = 999;
+    fall_through = true;
 	if(hbox_num == 10){
 		hsp *= 0.95;vsp *= 0.95;
 		if(hitbox_timer >= 10){

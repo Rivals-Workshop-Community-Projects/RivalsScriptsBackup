@@ -29,7 +29,7 @@ set_num_hitboxes(AT_DAIR,3);
 
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_Y, 21);
 set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 40);
@@ -47,7 +47,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_X, 3);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, 21);
 set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 50);

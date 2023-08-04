@@ -4,6 +4,7 @@ if attack == AT_FSPECIAL{
     through_platforms = 5;
     azelf_psychase = null;
     psybeam_vsp = 0;
+    old_owner = player;
     with obj_article1{
         if player_id.azelf_futureready && player_id.azelf_psybeam_ready{
             if player_id == other.player_id{
@@ -14,7 +15,7 @@ if attack == AT_FSPECIAL{
                 other.vsp = lengthdir_y(25,pounce_dir);
                 other.length = 40;
                 other.proj_angle = pounce_dir;
-                if other.hsp < 0 other.proj_angle += 180;
+                if other.draw_xscale == -1 other.proj_angle += 180;
                 other.image_index = 1;
                 other.damage = 9;
                 other.kb_value = 7;

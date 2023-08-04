@@ -55,3 +55,5 @@ sprite_change_offset("psybeam", 59*2, (15*2)+1);
 sprite_change_offset("azelf_hitbox", 18, 48);
 sprite_change_offset("azelf_crouch_hitbox", 18, 48);
 sprite_change_offset("offscreen", 16, 16);
+
+sprite_change_offset("mamizou_transform", 31, 45);

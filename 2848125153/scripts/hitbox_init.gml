@@ -154,6 +154,7 @@ if(attack == AT_NSPECIAL){
 		}
 		UnReflectable = true;AriaCantAbsorb = true;
 		Pocketable = false;
+		Untargetable = true;
 	}else if(hbox_num == 3){
     	can_hit_self = true;
     	Pocketable = false;
@@ -173,32 +174,32 @@ if(attack == AT_FSPECIAL){
         dice_has_hit = false;
         
         playerurl = player_id.url;
-            orig_player = player;
-            current_player = player;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            dicearmor = 2;dicearmor2 = 2;
-			statboost = 0;
-			hittimer = -1;
-			if(hbox_num == 2){
-				statboost = 0.3;
-				dicearmor = 4;dicearmor2 = 2;
-				UnReflectable = true;
+        orig_player = player;
+        current_player = player;
+        knockback_power = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
+        timer = 0;
+        lasthitbox = noone;
+        hitlockout = 4;
+        hitlockout2 = 0;
+        hitplayer = false;
+        hitplayertimer = 0;
+        dicearmor = 2;dicearmor2 = 2;
+		statboost = 0;
+		hittimer = -1;
+		if(hbox_num == 2){
+			statboost = 0.3;
+			dicearmor = 4;dicearmor2 = 2;
+			UnReflectable = true;
+		}
+		with(asset_get("pHitBox")){
+			if(place_meeting(x,y,other)){
+		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
+		        	other.thedice = self;
+		    	}
 			}
-			with(asset_get("pHitBox")){
-    			if(place_meeting(x,y,other)){
-    		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
-    		        	other.thedice = self;
-    		    	}
-    			}
-            }
+        }
 			
 		token_num = random_func(0, 8, true);
         if(player_id.phone_cheats[player_id.CHEAT_Fspec] > 0){
@@ -244,20 +245,20 @@ if(attack == AT_USPECIAL){
         thedice.choochoo = self;
         
         playerurl = player_id.url;
-            orig_player = player;
-            current_player = player;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            dicearmor = 15;
-			dicearmor2 = 15;
-			spr_dir = 1;
+        orig_player = player;
+        current_player = player;
+        knockback_power = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
+        timer = 0;
+        lasthitbox = noone;
+        hitlockout = 4;
+        hitlockout2 = 0;
+        hitplayer = false;
+        hitplayertimer = 0;
+        dicearmor = 15;
+		dicearmor2 = 15;
+		spr_dir = 1;
 	}else if(hbox_num == 3){
 		UnReflectable = true;
 		depth = -2;spr_dir = 1;
@@ -307,34 +308,35 @@ if(attack == AT_DSPECIAL){
         Bounceable = true;
 		depth = -2;
         thedice = instance_create(x,y-40,"obj_article_platform");
-        thedice.choochoo = self;
+        thedice.choochoo = self;thedice.property = true;
         moneytimer = 0;
         playerdead = false;
         playerurl = player_id.url;
-            orig_player = player;
-            current_player = player;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            destroying = false;
-            
-            destroysoon = false;
-            if(player_id.finalsmashtimer > 0){
-            	destroysoon = true;
-            	housemoney = 0;
-            }
+        orig_player = player;
+        current_player = player;
+        knockback_power = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
+        timer = 0;
+        lasthitbox = noone;
+        hitlockout = 4;
+        hitlockout2 = 0;
+        hitplayer = false;
+        hitplayertimer = 0;
+        destroying = false;
+        
+        destroysoon = false;
+        if(player_id.finalsmashtimer > 0){
+        	destroysoon = true;
+        	housemoney = 0;
+        }
 	}else if(hbox_num >= 4){
 		can_hit_self = true;
 	}
 	Pocketable = false;
 }
 
+//money
 if(attack == AT_JAB){
 	if(hbox_num == 10){
 		UnReflectable = true;
@@ -352,6 +354,7 @@ if(attack == AT_JAB){
 	    }
 	}
 	Pocketable = false;
+	Untargetable = true;
 }
 
 if(attack == AT_DATTACK){
@@ -367,19 +370,19 @@ if(attack == AT_DATTACK){
         ilovemychoochoo = true;
         
         playerurl = player_id.url;
-            orig_player = player;
-            current_player = player;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            dicearmor = 2;
-			dicearmor2 = 2;
+        orig_player = player;
+        current_player = player;
+        knockback_power = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
+        timer = 0;
+        lasthitbox = noone;
+        hitlockout = 4;
+        hitlockout2 = 0;
+        hitplayer = false;
+        hitplayertimer = 0;
+        dicearmor = 2;
+		dicearmor2 = 2;
 	}else{
 		Pocketable = false;
 	}
@@ -390,11 +393,11 @@ if(attack == AT_DATTACK){
 	if(hbox_num == 10){
 		armor = 4;
 		knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
+        knockback_angle = 0;
+        hitpausehit = 0;
 		lasthitbox = noone;
-            hitlockout = 4;
-            hitlockout2 = 0;
+        hitlockout = 4;
+        hitlockout2 = 0;
 	}
 	AriaCantAbsorb = true;
 }

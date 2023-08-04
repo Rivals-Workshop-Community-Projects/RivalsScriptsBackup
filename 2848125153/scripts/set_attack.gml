@@ -85,16 +85,15 @@ if (attack == AT_FSPECIAL && move_cooldown[AT_FSPECIAL] <= 0){
 
 if (attack == AT_USPECIAL && move_cooldown[AT_USPECIAL] <= 0){
 	rand = random_func(0, 9, true);
-    	//if(alt == 23){
-    		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
-    		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
-    		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
-    		}else if(rand <= 6){
-    			sound_stop(voice);voice = sound_play(sound_get("take a chance"));
-    		}
+	if(rand == 1){
+		sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
+	}else if(rand == 2){
+		sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+	}else if(rand == 3){
+		sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+	}else if(rand <= 6){
+		sound_stop(voice);voice = sound_play(sound_get("take a chance"));
+	}
 	jaildice1 = 0;jaildice2 = 0;jaildicetimer = 0;jaildiceattempts = 0;
 	if(window == 20){
 		set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 23);

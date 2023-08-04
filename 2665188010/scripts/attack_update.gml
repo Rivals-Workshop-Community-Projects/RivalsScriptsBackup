@@ -21,15 +21,15 @@ switch(attack){
         }
         break;
     case AT_DATTACK:
-        if window == 1 && window_timer == 3 azelf_sound = sound_play(asset_get("sfx_swipe_weak1"),false,noone,0.9,0.95)
-        if window == 1 && window_timer == 11 azelf_sound = sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,0.8,1.4)
+        if window == 1 && window_timer == 3     azelf_sound = sound_play(asset_get("sfx_swipe_weak1"),false,noone,0.9,0.95);
+        if window == 1 && window_timer == 11    azelf_sound = sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,0.8,1.4);
         break;
     case AT_DAIR:
-        if window == 1 && window_timer == 3 azelf_sound = sound_play(asset_get("sfx_absa_whip2"),false,noone,0.75,1.1)
+        if window == 1 && window_timer == 3     azelf_sound = sound_play(asset_get("sfx_absa_whip2"),false,noone,0.75,1.1);
         break;
     case AT_NSPECIAL:
         if window == 1 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH){
-            if azelf_futureplaced{
+            if azelf_futureready{
                 with(obj_article1){
                     if player_id == other{
                         state = 3;
@@ -49,16 +49,21 @@ switch(attack){
         can_move = false;
         can_fast_fall = false;
         move_cooldown[AT_FSPECIAL] = 20;
-        if window != 3 vsp = clamp(vsp,-10,1);
+        if window != 3{
+            if vsp > 0 grav = 0.3;
+            if vsp > 1 vsp = 1;
+        }
         if window == 1 && window_timer == 13{
             azelf_psybeam_ready = false;
             if azelf_futureready{
                 with(obj_article1){
                     if player_id == other{
-                        if abs(other.x - x) > 50{
-                            if (other.spr_dir == 1 && x > other.x) || (other.spr_dir == -1 && x < other.x){
-                                other.azelf_psybeam_ready = true;
-                                other.azelf_sound = sound_play(sound_get("psybeam"));
+                        with(other){
+                            if abs(x - other.x) > 50{
+                                if (spr_dir == 1 && other.x > x) || (spr_dir == -1 && other.x < x){
+                                    azelf_psybeam_ready = true;
+                                    azelf_sound = sound_play(sound_get("psybeam"));
+                                }
                             }
                         }
                     }
@@ -81,6 +86,7 @@ switch(attack){
                 window = 6;
                 window_timer = 0;
                 vsp = -5.5;
+                hsp *= 0.5;
                 destroy_hitboxes();
             }
         }
@@ -99,7 +105,8 @@ switch(attack){
                     sound_play(sound_get("futuresight_1"))
                 }
             }
-            vsp = clamp(vsp,-4,2);
+            if vsp > 0 grav = 0.5;
+            if vsp > 2 vsp = 2;
         }
         break;
     case AT_DSPECIAL_2:
@@ -108,9 +115,13 @@ switch(attack){
                 if player_id == other{
                     state = 2;
                     state_timer = 0;
+                    sound_play(sound_get("futuresight_2"))
                 }
             }
         }
-        if window == 2 vsp = clamp(vsp,-4,2);
+        if window == 2{
+            if vsp > 0 grav = 0.5;
+            if vsp > 2 vsp = 2;
+        }
         break;
 }

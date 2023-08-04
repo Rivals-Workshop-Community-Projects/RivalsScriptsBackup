@@ -72,6 +72,7 @@ for(i = 1; i < 3; i++){
     set_hitbox_value(AT_USPECIAL, i, HG_KNOCKBACK_SCALING, 0.45);
     set_hitbox_value(AT_USPECIAL, i, HG_BASE_HITPAUSE, 6);
     set_hitbox_value(AT_USPECIAL, i, HG_HITPAUSE_SCALING, 0.6);
+    set_hitbox_value(AT_USPECIAL, i, HG_HITSTUN_MULTIPLIER, 0.8);
     set_hitbox_value(AT_USPECIAL, i, HG_VISUAL_EFFECT, 304);
     set_hitbox_value(AT_USPECIAL, i, HG_VISUAL_EFFECT_X_OFFSET, -10);
     set_hitbox_value(AT_USPECIAL, i, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -84,3 +85,4 @@ set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0);

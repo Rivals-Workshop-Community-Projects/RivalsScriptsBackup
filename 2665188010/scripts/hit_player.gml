@@ -11,5 +11,19 @@ with(my_hitboxID){
             player_id.window_timer = 0;
             }
         }
+        if hbox_num == 2{
+            with obj_article1{
+                if player_id == other.player_id{
+                    hpo.x = x+20;
+                }
+            }
+        }
+        if hbox_num == 3{
+            with obj_article1{
+                if player_id == other.player_id{
+                    hpo.x = x-20;
+                }
+            }
+        }
     }
 }

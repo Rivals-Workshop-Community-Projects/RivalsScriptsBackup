@@ -129,7 +129,7 @@ if (attack == AT_NSPECIAL){
 			}
 			spawn_hit_fx(round(x+50*spr_dir) , round(y-75), 302);
 			rand = random_func(0, 3, true);                    
-            	sound_play(sound_get("money_pickup"+string(rand+1)));
+            sound_play(sound_get("money_pickup"+string(rand+1)));
 			//print(uspecnum);
 		}
 	}else if(window == 3){
@@ -138,10 +138,8 @@ if (attack == AT_NSPECIAL){
 				if(instance_exists(property)){
 					uspectarget = property;
 				}vsp = 4;
+				if(y > room_height-20)vsp = 1;
 				window = 14;window_timer = 0;set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 16);
-				//}else{
-					//window = 30;window_timer = 0;vsp = -3;
-				//}
 			}else if(uspecnum <= 20){ //home
 				uspectarget = create_hitbox(AT_USPECIAL, 3, round(room_width/2), round(room_height/2));spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 304);
 				window = 17;window_timer = 0;set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 18);uspec_speed = 1.3;
@@ -153,12 +151,18 @@ if (attack == AT_NSPECIAL){
 				vsp = -6;set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 24);
 			}else{ //get out of jail free card
 				window = 30;window_timer = 0;vsp = -8;move_cooldown[AT_USPECIAL] = 0;
-				jailcard = true;
+				jailcard = true;sound_play(asset_get("mfx_coin"),false,noone,3);sound_play(sound_get("soldsfx"));
+				rand = random_func(0, 3, true);
+				if(rand == 0){
+					sound_stop(voice);voice = sound_play(sound_get("break the jail"));
+				}else if(rand <= 2){
+					sound_stop(voice);voice = sound_play(sound_get("free jailbreak"));
+				}
 			}
 		}
 	}else if(window == 14){ //getting ready to fly up
 		mask_index = asset_get("empty_sprite");uspec_mask = true;
-		vsp -= 0.5;
+		vsp -= 0.5;if(y > room_height-5)vsp = 0;
 	}else if(window == 15){ //flying up
 		mask_index = asset_get("empty_sprite");uspec_mask = true;
 		vsp -= 1;

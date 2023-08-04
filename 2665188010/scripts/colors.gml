@@ -111,21 +111,21 @@ set_color_profile_slot( 15, 2, 255, 99, 133 ); //Jewel
 set_color_profile_slot( 15, 3, 42, 94, 233 ); //Eyes
 
 // Celebi
-set_color_profile_slot( 16, 0, 204, 219, 185 ); //Blue
+set_color_profile_slot( 16, 0, 197, 212, 179 ); //Blue
 set_color_profile_slot( 16, 1, 147, 188, 121 ); //Cyan
 set_color_profile_slot( 16, 2, 66, 154, 199 ); //Jewel
 set_color_profile_slot( 16, 3, 66, 154, 199 ); //Eyes
 
 // Jirachi
-set_color_profile_slot( 17, 0, 222, 202, 127 ); //Blue
+set_color_profile_slot( 17, 0, 217, 197, 124 ); //Blue
 set_color_profile_slot( 17, 1, 201, 204, 212 ); //Cyan
 set_color_profile_slot( 17, 2, 98, 194, 190 ); //Jewel
 set_color_profile_slot( 17, 3, 98, 194, 190 ); //Eyes
 
 // Gold Rank
 set_color_profile_slot( 18, 0, 191, 213, 214 ); //Blue
-set_color_profile_slot( 18, 1, 224, 194, 34 ); //Cyan
-set_color_profile_slot( 18, 2, 80, 140, 196 ); //Jewel
+set_color_profile_slot( 18, 1, 224, 188, 60 ); //Cyan
+set_color_profile_slot( 18, 2, 123, 141, 196 ); //Jewel
 set_color_profile_slot( 18, 3, 230, 134, 0 ); //Eyes
 
 // Deoxys

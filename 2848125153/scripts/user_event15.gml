@@ -321,6 +321,15 @@ in a Patch.
 
 initPatch("1.23", "30th July, 2023");
 initHeader("Skillful Buffs");
+initSection("+ Money, various hit collisions, etc, are now untargetable for Eggman FSpecial. As these shouldn't be targetable, particularly the latter caused many things to be targeted twice
++ If Mr Monopoly gets Home during USpecial and he's very far down off-stage, the move won't send him down (mainly prevents SD's from getting this option when very low off-stage)");
+initHeader("Fixes / Other Changes");
+initSection("+ If Mr Monopoly gets get out of jail free card during USpecial, it now plays a distinct sound (to hopefully be more noticeable so the player can react quicker). It also has some voice lines
++ Attempted to make properties slightly more stable online by having them disable the platform collision if the property is moving (should also prevent the rare case where a property could spike someone and they'd land on the property right after). Will revert if it causes any issues
++ Money now goes through platforms, to hopefully reduce the risk of desyncs online slightly (because Rivals loves to desync if even a single money pile lands on a property for a specific player but not for the rest)");
+
+initPatch("1.23", "30th July, 2023");
+initHeader("Skillful Buffs");
 initSection("+ Mr Monopoly can now taunt in the air. Very skillful!
 + Mr Monopoly now laughs when looking up, and waveland plays some voice clips
 + Mr Monopoly can now use money from his property (if he has one) to pay for jail, if he gets stuck in jail after failing 3 dice rolls. Although this comes at a higher cost; if Mr Monopoly can't pay the bailout on his own the price will be 1.5x higher");

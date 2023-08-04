@@ -36,7 +36,7 @@ max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .6; //multiplier of air_accel while in pratfall
 air_friction = .02;
 
 max_djumps = 1;
@@ -55,7 +55,7 @@ hitstun_grav = .5;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .1; //grounded deceleration when wavelanding
@@ -114,7 +114,7 @@ azelf_psybeam_ready = false;
 azelf_sound = null;
 azelf_jab_parried = false;
 
-sprite_change_collision_mask( "future_sight_mask", true, 0, 0, 0, 0, 0, 0 );
+sprite_change_collision_mask("future_sight_mask", true, 0, 0, 0, 0, 0, 0);
 
 //Workshop
 arena_title = "The Being of Willpower";
@@ -124,3 +124,12 @@ link_spear_drop = 8;
 Hikaru_Title = "Willfull Guardian";
 steve_death_message = "Steve fainted!";
 battle_text = "* Azelf appears before you.";
+copy_ability_id = 57; //ESP
+kf_custom_icon = sprite_get("kf_ability_icon");
+mamizou_transform_spr = sprite_get("mamizou_transform");
+plushForAmber = sprite_get("amber_plush");
+pot_compat_variable = sprite_get("po_gumbo_dish");
+pot_compat_text = "Super Mild Poffin";
+pkmn_stadium_front_img = sprite_get("poke_stadium");
+pkmn_stadium_back_img = sprite_get("poke_stadium2");
+gfzsignspr = sprite_get("GFZ_sign");
