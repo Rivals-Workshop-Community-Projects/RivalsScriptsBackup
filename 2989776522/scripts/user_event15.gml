@@ -261,6 +261,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.19", "3rd August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ FSpecial now checks if projectiles and articles have the 'Untargetable' variable, allowing characters to set projectiles and other objects as non-targetable
++ While Eggman doesn't have a custom final smash yet, he will now at least fully charge Power Laser (NSpecial) when getting his final smash (also the final smash meter on his HUD is properly offset and things like that now)");
+
 initPatch("1.18", "28th July, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug causing Eggman's munophone to not work correctly");

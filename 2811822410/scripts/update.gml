@@ -1,4 +1,5 @@
 //
+//
 if (!is_oc) {
 	if  (get_player_color(player) == 0) {
 		set_ui_element( UI_CHARSELECT, sprite_get( "charselect_color" ));
@@ -67,7 +68,7 @@ if (!custom_clone) {
 			}
 			if (!clone_hit_timer) { //Not allowing clone to attack while on cooldown
 				if (!clone_attack_hold) {
-					if !(attack == AT_DSPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_GRAB || attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || attack == AT_BTHROW_2 || attack == AT_DTHROW_2 || attack == AT_UTHROW_2) {
+					if !((attack == AT_TAUNT_2 && is_oc) || attack == AT_DSPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_GRAB || attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || attack == AT_BTHROW_2 || attack == AT_DTHROW_2 || attack == AT_UTHROW_2) {
 						clone_player.clone_attack = attack
 					} else {
 						clone_player.clone_attack = 0
@@ -492,6 +493,10 @@ if (get_training_cpu_action() != CPU_FIGHT) {
 	}
 }
 
+//Pizza Minigame
+if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
+	pizza_game = false;
+}
 #endregion
 
 //DELETE THIS

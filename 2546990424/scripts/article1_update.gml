@@ -22,6 +22,8 @@ with (asset_get("pHitBox")){
 						other.whirlwind2_active_hitbox.destroyed = true;	
 					}
 				other.state_timer = -24;
+				other.player_id.whirlwind_cooldown = 90;
+			//	other.player_id.move_cooldown[AT_DSPECIAL] = 90;
 		    }
 		}
 	}

@@ -449,6 +449,9 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
 
+initPatch("2.14", "03 Aug, 2023");
+initSection("Bugs");
+initSection("- Restored ability to moonwalk");
 
 initPatch("2.13", "29 Jul, 2023");
 initHeader("Balance");

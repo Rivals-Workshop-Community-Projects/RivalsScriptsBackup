@@ -51,6 +51,7 @@ sprite_change_offset("fspecial", 32, 47, true);
 sprite_change_offset("uspecial", 64, 111, true);
 sprite_change_offset("dspecial", 32, 47, true);
 sprite_change_offset("taunt", 32, 47);
+sprite_change_offset("taunt_riptide", 48, 64);
 
 sprite_change_offset("plat", 32, 0);
 sprite_change_offset("mamizou", 40, 80);

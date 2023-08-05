@@ -254,6 +254,12 @@ gfzsignsfx = sound_get("adv_laugh");
 //pkmn_stadium_front_img = sprite_get("pkmnstadium");
 //pkmn_stadium_back_img = sprite_get("pkmnstadium_back");
 pkmn_stadium_name_override = "Eggman";
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 80;
+fs_portrait_x = 60;
+fs_meter_x = -20;
+fs_meter_y = -10;
+fs_attack_index = AT_NSPECIAL;
 
 TCG_Kirby_Copy = 15;
 

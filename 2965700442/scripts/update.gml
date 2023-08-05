@@ -53,6 +53,13 @@ else grab_time = 0;
 custom_attack_grid();
 //#endregion
 
+if ("alt_cur" in self && alt_cur == 29) {
+	if (is_attacking && attack == AT_TAUNT_2 && window <= 6)
+		set_victory_portrait(sprite_get("portrait_riptide"))
+	else
+		set_victory_portrait(sprite_get("portrait"))
+}
+
 //Fair refresh
 if (!free && fair_wall_times > 0) {
     fair_wall_times = 0;

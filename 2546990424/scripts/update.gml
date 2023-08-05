@@ -111,6 +111,7 @@ if (whirlwind_punch == true){
 //Resets the DSpecial Cooldown
 if (state == PS_WALL_JUMP || !free){
 	move_cooldown[AT_DSPECIAL] = 0;
+	if (whirlwind_cooldown >= 0) whirlwind_hud = 0;
 }
 
 //Counts down the Whirlwind Cooldown
@@ -124,7 +125,7 @@ if (whirlwind_cooldown > 0){
 	}
 	if (whirlwind_cooldown < 2){
 		whirlwind_cooldown = 0;
-		whirlwind_hud = 0;
+		if (move_cooldown[AT_DSPECIAL] == 0) whirlwind_hud = 0;
 	}
 }
 

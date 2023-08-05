@@ -1,9 +1,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "2.0.2";
-patch_day = "11";
-patch_month = "APR";
+patch_ver = "2.1";
+patch_day = "1";
+patch_month = "AUG";
 
 var num_alts = 32;
 var alt_cur = get_player_color(player);
@@ -99,9 +99,9 @@ db_show();
 	
 if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26)) {
 	suppress_cursor = true;
-	draw_sprite_ext(sprite_get("css_browser"), 1, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("css_games"), 1, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
 } else {
-	draw_sprite_ext(sprite_get("css_browser"), 0, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("css_games"), 0, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
 }
 
 

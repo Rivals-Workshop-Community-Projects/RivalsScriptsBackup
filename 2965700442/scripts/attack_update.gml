@@ -469,6 +469,14 @@ switch (attack) {
     		can_move = false;
     	}
     break;
+    case AT_TAUNT_2:
+    	if ((window == 5 || window == 6) && !hitpause) {
+            if (!joy_pad_idle || jump_pressed || tap_jump_pressed || is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || is_special_pressed(DIR_ANY) || shield_pressed || taunt_pressed) {
+                window = 7;
+                window_timer = 0;
+            }
+    	}
+    break;
 }
 #define wall_test(_x, _y, _w, _h, x_rel, y_rel)
 var collision_x1 = _x - _w / 2;

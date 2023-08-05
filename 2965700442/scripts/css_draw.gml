@@ -203,6 +203,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,1] = "Lakers" // the name of the alternate color.
     ce[col,2] = "Los Angeles Lakers" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 2), get_color_profile_slot_g(col, 2), get_color_profile_slot_b(col, 2));
+    ce[col,1] = "Riptide" // the name of the alternate color.
+    ce[col,2] = "Riptide 2023" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
     col_max = col-1;
 }
  

@@ -124,7 +124,6 @@ switch(attack) {
 		}
 	break;
 	case AT_TAUNT:
-	case AT_TAUNT_2:
 	case AT_DTHROW:
 		can_move = false;
 		can_fast_fall = false;
@@ -132,6 +131,29 @@ switch(attack) {
 			if (taunt_down || clone_owner.taunt_down) {
 				window = 1;
 				window_timer = 0;
+			}
+		}
+	break;
+	case AT_TAUNT_2:
+		can_move = false;
+		can_fast_fall = false;
+		if !(is_oc) {
+			if ((window_timer == get_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_LENGTH)) && window == get_attack_value(attack, AG_NUM_WINDOWS)) {
+				if (taunt_down || clone_owner.taunt_down) {
+					window = 1;
+					window_timer = 0;
+				}
+			}
+		} else {
+			if (window == 2) {
+				pizza_gamemode();
+				if (taunt_pressed || shield_pressed) {
+					window = 3;
+					window_timer = 0;
+				}
+				if (window == 3) {
+					pizza_game = false;
+				}
 			}
 		}
 	break;
@@ -309,3 +331,178 @@ switch(attack) {
 		}
 	}
 }
+
+#define pizza_gamemode() {
+	//Debug
+	//print(pg_pizza);
+	//print(pg_order);
+	//
+	pizza_game = true;
+	#region Animation
+	if (pg_can_make) {
+		pg_make_timer--;
+	}
+	if (!pg_wait_timer) {
+		if (pg_pizza_offset < pg_pizza_offset_middle) { //Animation
+			pg_show_order = false;
+			pg_pizza_offset++;
+			pg_can_make = true;
+		} else if (pg_pizza_offset == pg_pizza_offset_middle) { //Make Pizza
+			pg_can_make = true;
+			if !(pg_make_timer) {
+				sound_play(sound_get("ERROR"));
+				window = 3;
+				window_timer = 0;
+				exit;
+			}
+			if (pg_pizza_sent) {
+				pg_pizza_offset++;
+				pg_pizza_sent = false;
+				pg_can_make = false;
+			}
+		} else if (pg_pizza_offset == pg_pizza_offset_max) { //Pizza Check
+			if (array_length(pg_order) && (array_length(pg_pizza) == array_length(pg_order))) {
+				for (var i = 0; i <= array_length(pg_order) - 1; i++) {
+					if (pg_order[i] != pg_pizza[i]) {
+						sound_play(sound_get("ERROR"));
+						window = 3;
+						window_timer = 0;
+						exit;
+					}
+				}
+			} else {
+				if (array_length(pg_pizza)) {
+					sound_play(sound_get("ERROR"));
+					window = 3;
+					window_timer = 0;
+					exit;
+				}
+			}
+			sound_play(asset_get("mfx_levelup"));
+			pg_score++;
+			pg_order = [];
+			pg_pizza = [];
+			pg_pizza_offset = 0;
+			pg_can_make = false;
+			pg_wait_timer = pg_wait_timer_curr;
+			pizza_order(pg_score);
+			if pg_wait_timer_curr > 30 {
+				pg_wait_timer_curr--;
+			}
+			if pg_make_timer_curr > 30 {
+				pg_make_timer_curr-=3;
+			}
+			pg_make_timer = pg_make_timer_curr;
+			pg_show_order = true;
+		} else if (pg_pizza_offset < pg_pizza_offset_max) { //Animation
+			pg_pizza_offset++;
+			pg_can_make = false;
+		}
+	}
+	#endregion
+	pg_pizza_offset = pg_pizza_offset % (99 + 1);
+	//print(pg_pizza_offset);
+	#region Cursor
+	if (left_pressed) {
+		pg_hori --;
+		clear_button_buffer( PC_LEFT_HARD_PRESSED);
+		if (pg_hori < 0) {
+			pg_hori = 4;
+		}		
+	}
+	if (right_pressed) {
+		pg_hori++;
+		clear_button_buffer( PC_RIGHT_HARD_PRESSED);
+		if (pg_hori  > 4) {
+			pg_hori = 0;
+		}	
+	}
+	if (up_pressed) {
+		pg_vert--
+		clear_button_buffer( PC_UP_HARD_PRESSED);
+		if (pg_vert < 0) {
+			pg_vert = 1;
+		}		
+	}
+	if (down_pressed) {
+		pg_vert++
+		clear_button_buffer( PC_DOWN_HARD_PRESSED);
+		if (pg_vert  > 1) {
+			pg_vert = 0;
+		}	
+	}
+	pg_cursor_pos = pg_hori + pg_vert * 5;
+	#endregion	
+	#region Buttons
+		if (attack_pressed && (pg_can_make || pg_show_order)) {
+		pg_wait_timer = 0;
+		pg_show_order = false;
+		clear_button_buffer( PC_ATTACK_PRESSED);
+		switch(pg_cursor_pos) {
+			case 4: //Confirm
+				sound_play(asset_get("mfx_confirm"));
+				pg_pizza_sent = true;
+				pg_can_make = false;
+			break;
+			case 9: //Trash
+				sound_play(asset_get("mfx_back"));
+				pg_pizza = [];
+			break;
+			default:
+				if (array_length(pg_pizza) <= 6) {
+					if (pg_cursor_pos <= 4) {
+						array_insert(pg_pizza, array_length(pg_pizza), pg_cursor_pos);
+					} else {
+						array_insert(pg_pizza, array_length(pg_pizza), pg_cursor_pos - 1);
+					}
+					sound_play(asset_get("mfx_option"));
+				} else {
+					sound_play(sound_get("ERROR"));
+				}
+			break;
+		}
+	}
+	if (special_pressed && pg_can_make) {
+		clear_button_buffer( PC_SPECIAL_PRESSED);
+		pg_pizza = array_delete(pg_pizza, array_length(pg_pizza) - 1);
+		sound_play(asset_get("mfx_editor_erase"));
+	}
+	#endregion
+	if (pg_pizza_offset == 0 && pg_wait_timer) {
+		pg_wait_timer--;
+	}
+}
+
+
+#define array_delete(_array, _id) {
+	var old_array = _array;
+	var new_array = [];
+	if (array_length(_array)) {
+		old_array[_id] = "deleteing from array";
+		for(var i = 0; i < array_length(old_array); i++) {
+			if old_array[i] != "deleteing from array" {
+				array_insert(new_array, array_length(new_array), old_array[i])
+			}
+		}
+	} else {
+		print("Error: Tried to delete from an empty array.")
+	}
+	return new_array;	
+}
+
+#define pizza_order(_score) {
+	var _num = 1;
+	var _rand_ing = 	0;
+	while ((_score >= sqr(_num + 1)) && _num < 6) {
+		_num++;
+	}
+	for (var i = 0; i < _num; i++) {
+			_rand_ing = random_func_2( 1 + i, 8, true );
+			array_insert(pg_order, array_length(pg_order), _rand_ing );
+	}
+}
+
+
+
+
+

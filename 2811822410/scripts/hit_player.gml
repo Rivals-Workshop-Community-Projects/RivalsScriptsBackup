@@ -78,7 +78,7 @@ switch(my_hitboxID.attack){
 			insert_sfx_on_hit(sfx_veg_light2,4,0.7,1.1,true);
 		break;
 		case AT_DATTACK:
-		case 48: //Clone Dash Attack
+		case 48:
 			insert_sfx_on_hit(sfx_veg_light2,1,0.8,0.8,true)
 		break;
 		case AT_USPECIAL:

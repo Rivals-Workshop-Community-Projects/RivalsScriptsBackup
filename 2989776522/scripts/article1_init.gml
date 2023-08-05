@@ -27,3 +27,4 @@ MorshuCanGrab = false;
 CalCanSnack = 0;
 Pocketable = false;
 UnReflectable = true;
+Untargetable = true;

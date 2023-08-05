@@ -52,8 +52,10 @@ if (hitstop == 0)
         image_index = 1;
         
         if (window_timer == 0) {
-            var hbox = create_hitbox(AT_DSPECIAL, 1, floor(x), floor(y))
-            hbox.owner = id;
+        	with (player_id) {
+	            var hbox = create_hitbox(AT_DSPECIAL, 1, floor(x), floor(y))
+	            hbox.owner = other.id;
+        	}
         }
         if (window_timer >= 3) {
             window = 4;
@@ -82,8 +84,10 @@ if (hitstop == 0)
         image_index = 3
         
         if (window_timer == 0) {
-            var hbox = create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y))
-            hbox.owner = id;
+        	with (player_id) {
+	            var hbox = create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y))
+	            hbox.owner = other.id;
+        	}
 
 			//this part of the code checks the "can_hit" array, which chooses who can be hit by what hitbox
 			//we are disabling the detection of the hitbox for any player that isn't the grabbed player
@@ -130,9 +134,10 @@ if (hitstop == 0)
 	    }
 	    
 	    if (window == 8 && window_timer == 0) {
-	        var throw_hbox = create_hitbox(AT_DSPECIAL, 3, floor(x), floor(y));
-            throw_hbox.owner = id;
-
+        	with (player_id) {
+		        var throw_hbox = create_hitbox(AT_DSPECIAL, 3, floor(x), floor(y));
+	            throw_hbox.owner =  other.id;
+			}
 			//this part of the code checks the "can_hit" array, which chooses who can be hit by what hitbox
 			//we are disabling the detection of the hitbox for any player that isn't the grabbed player
 			for (var i = 0; i < 5; ++i)

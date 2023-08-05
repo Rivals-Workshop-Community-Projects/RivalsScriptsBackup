@@ -145,3 +145,12 @@
 	sprite_change_offset("no_spinhurt", 162, 192);
 	sprite_change_offset("no_uphurt", 162, 192);
 	sprite_change_offset("no_downhurt", 162, 192);
+	
+sprite_change_offset("a_game_board", 47, 114);	
+sprite_change_offset("a_game_screen", 47, 114);	
+sprite_change_offset("a_game_bubble", 47, 114);
+sprite_change_offset("a_game_cursor", 9, 9);
+sprite_change_offset("a_game_icons", 7, 7);
+sprite_change_offset("a_game_pizza", 29, 10);
+sprite_change_offset("a_game_toppings", 29, 10);
+sprite_change_offset("a_game_taunt", 162, 192);

@@ -15,6 +15,10 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
 if(voicemode != 4){
 	voicecooldown -= 1;voicecooldown2 -= 1;voicecooldown3 -= 1;
 }
+ //NSpecial charge stuff
+if("fs_charge" in self && fs_charge >= 200 && nspecial_charge < 400){
+	nspecial_charge = 400;
+}
 
 if(nspecial_charge < 400){
 	nspecial_charged = false;

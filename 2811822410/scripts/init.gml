@@ -1,5 +1,33 @@
 //Oc or not but so I can copy init without any bad things happening.
+pizza_game = true;
+pg_base_timer = 300;
+pg_timer = 0;
+pg_max_timer = pg_base_timer;
+pg_score = 0;
+pg_size = 1; //Defaults to 1 increases every so often
+pg_order = [0];
+pg_pizza = [];
+pg_show_order = true;
+pg_pizza_sent = false;
+pg_pizza_offset = 0;
+pg_pizza_offset_max = 99;
+pg_pizza_offset_middle = 64;
+pg_cursor_pos = 0;
+pg_hori = 0;
+pg_vert = 0;
+pg_order_filled = false;
+pg_can_make = false;
+pg_wait_timer_max = 90;
+pg_wait_timer = pg_wait_timer_max;
+pg_wait_timer_curr = pg_wait_timer_max;
+pg_make_timer_max = 300;
+pg_make_timer = pg_make_timer_max;
+pg_make_timer_curr = pg_make_timer_max;
 
+
+
+
+//
 user_event(8);
 should_show_plat = false;
 is_training_mode = false;

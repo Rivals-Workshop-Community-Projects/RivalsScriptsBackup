@@ -80,9 +80,27 @@ if (rocketing) {
 if (state == PS_DASH_START) {
 	// accelerate smoothly
 	//print_debug("hsp_befor = " + string(hsp));
+	
+	// Detect if stick is held in current direction
+	var direction_held = false;
+	var reverse_held = false;
+	if (((spr_dir > 0) && right_down)
+		|| ((spr_dir < 0) && left_down))
+	{
+		direction_held = true;
+	} else if (((spr_dir > 0) && left_down)
+		|| ((spr_dir < 0) && right_down))
+	{
+		reverse_held = true;
+	}
+	
 	if ((spr_dir * hsp) < dash_speed - 1) {
 		var difference = dash_speed - 1 - abs(hsp);
-		hsp = spr_dir * (initial_dash_speed + (difference * (state_timer / initial_dash_time)));
+		if (direction_held) {
+			hsp = spr_dir * (initial_dash_speed + (difference * (state_timer / initial_dash_time)));
+		} else if (reverse_held) {
+			hsp = -spr_dir * (initial_dash_speed + (difference * (state_timer / initial_dash_time)));
+		}
 	}
 	//print_debug("hsp_after = " + string(hsp));
 	// Continue to a proper dash at some point

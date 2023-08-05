@@ -62,4 +62,16 @@ if (object_index == oTestPlayer) {
 		//}
 		//print(sprite_index);
 	}
-}
+} 
+
+
+
+
+
+
+
+
+
+
+
+

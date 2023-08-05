@@ -34,7 +34,7 @@ switch(attack){
 				}
 	    	}
 		}else if(window == 2){
-			if(special_down && !shield_pressed && !jump_pressed && (nspecial_start_charge >= 400 || nspecial_charge < 400 && nspecial_start_charge < 400)){
+			if(special_down && !shield_pressed && !jump_pressed && (nspecial_start_charge >= 400 || nspecial_charge < 400 && nspecial_start_charge < 400) && ("fs_using_final_smash" in self && !fs_using_final_smash || "fs_using_final_smash" not in self)){
 				nspecial_charge += 1;
 				if(!nspecial_charge_sfx){nspecial_charge_sfx = true;nspecial_charge_sfx2 = sound_play(sound_get("laser charge loop"),true,noone,1.0);sfx = sound_play(sound_get("laser charge start"),false,noone,1.0);}
 				if(get_gameplay_time() % 6 == 0){
@@ -47,9 +47,9 @@ switch(attack){
 		    		}
 		    	}
 			}else{
-	    		if(shield_pressed || !shield_pressed && !jump_pressed && nspecial_charge < 400 || nspecial_charge >= 400 && nspecial_start_charge < 400){ //cancel
+	    		if((shield_pressed || !shield_pressed && !jump_pressed && nspecial_charge < 400 || nspecial_charge >= 400 && nspecial_start_charge < 400) && ("fs_using_final_smash" in self && !fs_using_final_smash || "fs_using_final_smash" not in self)){ //cancel
 		    		window = 7;window_timer = 0;sound_stop(sfx);
-		    	}else if(jump_pressed && !free){ //cancel (jump)
+		    	}else if(jump_pressed && !free && ("fs_using_final_smash" in self && !fs_using_final_smash || "fs_using_final_smash" not in self)){ //cancel (jump)
 		    		window = 20;window_timer = 0;sound_stop(sfx);
 		    	}else if(nspecial_charge >= 400){ //pew
 		    		window = 3;window_timer = 0;
@@ -157,28 +157,32 @@ switch(attack){
 				target_list = collision_line_list(x+(50*spr_dir), y - 40, x+(10000*spr_dir), y - 50 + fspecialY, pHitBox, true, true);
 				if(ds_list_valid(target_list)) {
 					for(var i=0; i < ds_list_size(target_list); i++) {var target = ds_list_find_value(target_list, i);
-						if(target.type == 2 && target.player_id != self){var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
+						if(target.type == 2 && target.player_id != self && ("Untargetable" not in target || "Untargetable" in target && !target.Untargetable)){
+							var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
 					}
 				}
 				//target article 1
 				target_list = collision_line_list(x+(50*spr_dir), y - 40, x+(10000*spr_dir), y - 50 + fspecialY, obj_article1, true, true);
 				if(ds_list_valid(target_list)) {
 					for(var i=0; i < ds_list_size(target_list); i++) {var target = ds_list_find_value(target_list, i);
-						if("Eggman_Aim" not in target && target.player_id != self){var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
+						if("Eggman_Aim" not in target && target.player_id != self && ("Untargetable" not in target || "Untargetable" in target && !target.Untargetable)){
+							var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
 					}
 				}
 				//target article 2
 				target_list = collision_line_list(x+(50*spr_dir), y - 40, x+(10000*spr_dir), y - 50 + fspecialY, obj_article2, true, true);
 				if(ds_list_valid(target_list)) {
 					for(var i=0; i < ds_list_size(target_list); i++) {var target = ds_list_find_value(target_list, i);
-						if(target.player_id != self){var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
+						if(target.player_id != self && ("Untargetable" not in target || "Untargetable" in target && !target.Untargetable)){
+							var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
 					}
 				}
 				//target article 3
 				target_list = collision_line_list(x+(50*spr_dir), y - 40, x+(10000*spr_dir), y - 50 + fspecialY, obj_article3, true, true);
 				if(ds_list_valid(target_list)) {
 					for(var i=0; i < ds_list_size(target_list); i++) {var target = ds_list_find_value(target_list, i);
-						if(target.player_id != self){var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
+						if(target.player_id != self && ("Untargetable" not in target || "Untargetable" in target && !target.Untargetable)){
+							var aim = instance_create(round(target.x), round(target.y),"obj_article1");aim.fspec_target = target;}
 					}
 				}
 				//target players

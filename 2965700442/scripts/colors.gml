@@ -38,7 +38,7 @@ set_color_profile_slot_range( 8, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 30 );
 
 // Blue Violet
 set_color_profile_slot( 1, 0, 0, 103, 125 ); //Pants/Vine Dark
@@ -50,6 +50,7 @@ set_color_profile_slot( 1, 5, 225, 170, 133 ); //Skin
 set_color_profile_slot( 1, 6, 119, 122, 125 ); //Silver
 set_color_profile_slot( 1, 7, 22, 117, 153 ); //Red
 set_color_profile_slot( 1, 8, 255, 161, 208 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Phantom Rose
 set_color_profile_slot( 2, 0, 102, 41, 47 ); //Pants/Vine Dark
@@ -61,6 +62,7 @@ set_color_profile_slot( 2, 5, 158, 119, 93 ); //Skin
 set_color_profile_slot( 2, 6, 125, 99, 74 ); //Silver
 set_color_profile_slot( 2, 7, 84, 16, 21 ); //Red
 set_color_profile_slot( 2, 8, 255, 51, 0 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Vine Shroom
 set_color_profile_slot( 3, 0, 0, 161, 0 ); //Pants/Vine Dark
@@ -72,6 +74,7 @@ set_color_profile_slot( 3, 5, 254, 234, 214 ); //Skin
 set_color_profile_slot( 3, 6, 252, 252, 252 ); //Silver
 set_color_profile_slot( 3, 7, 0, 161, 0 ); //Red
 set_color_profile_slot( 3, 8, 0, 255, 106 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Vivian
 set_color_profile_slot( 4, 0, 100, 33, 105 ); //Pants/Vine Dark
@@ -83,6 +86,7 @@ set_color_profile_slot( 4, 5, 208, 187, 225 ); //Skin
 set_color_profile_slot( 4, 6, 100, 33, 105 ); //Silver
 set_color_profile_slot( 4, 7, 100, 33, 105 ); //Red
 set_color_profile_slot( 4, 8, 204, 155, 190 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Scythe Maiden
 set_color_profile_slot( 5, 0, 122, 97, 97 ); //Pants/Vine Dark
@@ -94,6 +98,7 @@ set_color_profile_slot( 5, 5, 254, 234, 214 ); //Skin
 set_color_profile_slot( 5, 6, 60, 60, 60 ); //Silver
 set_color_profile_slot( 5, 7, 255, 196, 232 ); //Red
 set_color_profile_slot( 5, 8, 255, 94, 225 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Psycho Hood
 set_color_profile_slot( 6, 0, 212, 212, 212 ); //Pants/Vine Dark
@@ -105,6 +110,7 @@ set_color_profile_slot( 6, 5, 254, 234, 214 ); //Skin
 set_color_profile_slot( 6, 6, 119, 122, 125 ); //Silver
 set_color_profile_slot( 6, 7, 207, 0, 114 ); //Red
 set_color_profile_slot( 6, 8, 255, 253, 250 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Ghost Passenger
 set_color_profile_slot( 7, 0, 217, 246, 255 ); //Pants/Vine Dark
@@ -116,6 +122,7 @@ set_color_profile_slot( 7, 5, 217, 246, 255 ); //Skin
 set_color_profile_slot( 7, 6, 217, 246, 255 ); //Silver
 set_color_profile_slot( 7, 7, 217, 246, 255 ); //Red
 set_color_profile_slot( 7, 8, 71, 255, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Septet
 set_color_profile_slot( 8, 0, 38, 30, 30 ); //Pants/Vine Dark
@@ -127,6 +134,7 @@ set_color_profile_slot( 8, 5, 252, 252, 252 ); //Skin
 set_color_profile_slot( 8, 6, 60, 60, 60 ); //Silver
 set_color_profile_slot( 8, 7, 252, 252, 252 ); //Red
 set_color_profile_slot( 8, 8, 255, 255, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // RR
 set_color_profile_slot( 9, 0, 69, 0, 0 ); //Pants/Vine Dark
@@ -138,6 +146,7 @@ set_color_profile_slot( 9, 5, 254, 234, 214 ); //Skin
 set_color_profile_slot( 9, 6, 38, 30, 30 ); //Silver
 set_color_profile_slot( 9, 7, 207, 0, 114 ); //Red
 set_color_profile_slot( 9, 8, 161, 13, 0 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Reforged
 set_color_profile_slot( 10, 0, 103, 14, 110 ); //Pants/Vine Dark
@@ -149,6 +158,7 @@ set_color_profile_slot( 10, 5, 222, 230, 255 ); //Skin
 set_color_profile_slot( 10, 6, 255, 0, 144 ); //Silver
 set_color_profile_slot( 10, 7, 194, 175, 0 ); //Red
 set_color_profile_slot( 10, 8, 54, 102, 207 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Limit Break
 set_color_profile_slot( 11, 0, 74, 89, 115 ); //Pants/Vine Dark
@@ -160,6 +170,7 @@ set_color_profile_slot( 11, 5, 254, 234, 214 ); //Skin
 set_color_profile_slot( 11, 6, 125, 122, 119 ); //Silver
 set_color_profile_slot( 11, 7, 125, 122, 119 ); //Red
 set_color_profile_slot( 11, 8, 255, 244, 196 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Hell's Edge
 set_color_profile_slot( 12, 0, 71, 56, 56 ); //Pants/Vine Dark
@@ -171,6 +182,7 @@ set_color_profile_slot( 12, 5, 255, 227, 198 ); //Skin
 set_color_profile_slot( 12, 6, 153, 149, 146 ); //Silver
 set_color_profile_slot( 12, 7, 71, 56, 56 ); //Red
 set_color_profile_slot( 12, 8, 255, 212, 244 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Abyss
 set_color_profile_slot( 13, 0, 80, 63, 94 ); //Pants/Vine Dark
@@ -182,6 +194,7 @@ set_color_profile_slot( 13, 5, 166, 172, 214 ); //Skin
 set_color_profile_slot( 13, 6, 220, 113, 255 ); //Silver
 set_color_profile_slot( 13, 7, 166, 172, 214 ); //Red
 set_color_profile_slot( 13, 8, 118, 71, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // EA
 set_color_profile_slot( 14, 0, 83, 122, 62 ); //Pants/Vine Dark
@@ -193,6 +206,7 @@ set_color_profile_slot( 14, 5, 211, 226, 154 ); //Skin
 set_color_profile_slot( 14, 6, 211, 226, 154 ); //Silver
 set_color_profile_slot( 14, 7, 167, 186, 74 ); //Red
 set_color_profile_slot( 14, 8, 211, 226, 154 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // SexyNate
 set_color_profile_slot( 15, 0, 12, 55, 133 ); //Pants/Vine Dark
@@ -204,6 +218,7 @@ set_color_profile_slot( 15, 5, 242, 219, 180 ); //Skin
 set_color_profile_slot( 15, 6, 249, 79, 255 ); //Silver
 set_color_profile_slot( 15, 7, 41, 8, 105 ); //Red
 set_color_profile_slot( 15, 8, 255, 228, 156 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Brisket
 set_color_profile_slot( 16, 0, 77, 79, 77 ); //Pants/Vine Dark
@@ -215,6 +230,7 @@ set_color_profile_slot( 16, 5, 242, 219, 180 ); //Skin
 set_color_profile_slot( 16, 6, 255, 0, 0 ); //Silver
 set_color_profile_slot( 16, 7, 255, 255, 87 ); //Red
 set_color_profile_slot( 16, 8, 255, 112, 105 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Charlotte
 set_color_profile_slot( 17, 0, 82, 67, 59 ); //Pants/Vine Dark
@@ -226,6 +242,7 @@ set_color_profile_slot( 17, 5, 255, 202, 176 ); //Skin
 set_color_profile_slot( 17, 6, 156, 117, 66 ); //Silver
 set_color_profile_slot( 17, 7, 10, 9, 10 ); //Red
 set_color_profile_slot( 17, 8, 255, 247, 230 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // BLM
 set_color_profile_slot( 18, 0, 255, 225, 0 ); //Pants/Vine Dark
@@ -237,6 +254,7 @@ set_color_profile_slot( 18, 5, 164, 117, 77 ); //Skin
 set_color_profile_slot( 18, 6, 240, 187, 0 ); //Silver
 set_color_profile_slot( 18, 7, 57, 57, 57 ); //Red
 set_color_profile_slot( 18, 8, 255, 225, 0 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Azi
 set_color_profile_slot( 19, 0, 233, 232, 255 ); //Pants/Vine Dark
@@ -248,6 +266,7 @@ set_color_profile_slot( 19, 5, 255, 224, 223 ); //Skin
 set_color_profile_slot( 19, 6, 255, 229, 129 ); //Silver
 set_color_profile_slot( 19, 7, 70, 70, 79 ); //Red
 set_color_profile_slot( 19, 8, 255, 255, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Kumaki
 set_color_profile_slot( 20, 0, 64, 39, 19 ); //Pants/Vine Dark
@@ -259,6 +278,7 @@ set_color_profile_slot( 20, 5, 255, 202, 176 ); //Skin
 set_color_profile_slot( 20, 6, 119, 122, 125 ); //Silver
 set_color_profile_slot( 20, 7, 15, 15, 15 ); //Red
 set_color_profile_slot( 20, 8, 255, 0, 64 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Linne
 set_color_profile_slot( 21, 0, 65, 65, 65 ); //Pants/Vine Dark
@@ -270,6 +290,7 @@ set_color_profile_slot( 21, 5, 249, 233, 229 ); //Skin
 set_color_profile_slot( 21, 6, 170, 166, 165 ); //Silver
 set_color_profile_slot( 21, 7, 67, 56, 53 ); //Red
 set_color_profile_slot( 21, 8, 255, 245, 230 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Lumi (obligatory)
 set_color_profile_slot( 22, 0, 48, 72, 110 ); //Pants/Vine Dark
@@ -281,6 +302,7 @@ set_color_profile_slot( 22, 5, 255, 243, 219 ); //Skin
 set_color_profile_slot( 22, 6, 102, 199, 255 ); //Silver
 set_color_profile_slot( 22, 7, 118, 139, 158 ); //Red
 set_color_profile_slot( 22, 8, 255, 255, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // very bright red
 set_color_profile_slot( 23, 0, 87, 0, 54 ); //Pants/Vine Dark
@@ -304,6 +326,7 @@ set_color_profile_slot( 24, 5, 235, 251, 255 ); //Skin
 set_color_profile_slot( 24, 6, 150, 220, 255 ); //Silver
 set_color_profile_slot( 24, 7, 0, 14, 143 ); //Red
 set_color_profile_slot( 24, 8, 196, 249, 255 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Zero (MMZ)
 set_color_profile_slot( 25, 0, 0, 45, 115 ); //Pants/Vine Dark
@@ -315,6 +338,7 @@ set_color_profile_slot( 25, 5, 248, 208, 168 ); //Skin
 set_color_profile_slot( 25, 6, 112, 255, 102 ); //Silver
 set_color_profile_slot( 25, 7, 214, 239, 255 ); //Red
 set_color_profile_slot( 25, 8, 255, 245, 222 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Mint
 set_color_profile_slot( 26, 0, 39, 102, 62 ); //Pants/Vine Dark
@@ -326,6 +350,7 @@ set_color_profile_slot( 26, 5, 247, 255, 247 ); //Skin
 set_color_profile_slot( 26, 6, 143, 255, 220 ); //Silver
 set_color_profile_slot( 26, 7, 57, 212, 152 ); //Red
 set_color_profile_slot( 26, 8, 230, 255, 253 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Sakura Blossom
 set_color_profile_slot( 27, 0, 56, 57, 71 ); //Pants/Vine Dark
@@ -337,6 +362,7 @@ set_color_profile_slot( 27, 5, 255, 232, 217 ); //Skin
 set_color_profile_slot( 27, 6, 255, 181, 247 ); //Silver
 set_color_profile_slot( 27, 7, 59, 42, 57 ); //Red
 set_color_profile_slot( 27, 8, 255, 89, 213 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 // Lakers
 set_color_profile_slot( 28, 0, 81, 0, 131 ); //Pants/Vine Dark
@@ -348,6 +374,19 @@ set_color_profile_slot( 28, 5, 176, 131, 96 ); //Skin
 set_color_profile_slot( 28, 6, 255, 208, 0 ); //Silver
 set_color_profile_slot( 28, 7, 214, 159, 6 ); //Red
 set_color_profile_slot( 28, 8, 255, 208, 0 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+// Riptide
+set_color_profile_slot( 29, 0, 1, 161, 177 ); //Pants/Vine Dark
+set_color_profile_slot( 29, 1, 2, 198, 216 ); //Pants/Vine Light
+set_color_profile_slot( 29, 2, 255, 148, 7 ); //Jacket
+set_color_profile_slot( 29, 3, 255, 191, 38 ); //Hair
+set_color_profile_slot( 29, 4, 255, 148, 7 ); //Boots
+set_color_profile_slot( 29, 5, 254, 234, 214 ); //Skin
+set_color_profile_slot( 29, 6, 255, 191, 38 ); //Silver
+set_color_profile_slot( 29, 7, 169, 202, 0 ); //Red
+set_color_profile_slot( 29, 8, 255, 255, 228 ); //Wing Hair
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
