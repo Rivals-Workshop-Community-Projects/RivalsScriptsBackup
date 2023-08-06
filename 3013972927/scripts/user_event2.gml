@@ -1,0 +1,12 @@
+//Floating Character Spawn Code stuff
+
+
+CAT_IDLE = 0;
+CAT_SPAWN = 1;
+CAT_RESET = 2;
+CAT_MOVE = 3;
+CAT_DIE = 4;
+
+PARTNER_PEPPERMINT = 0;
+PARTNER_MACARON = 1;
+PARTNER_KORSICA = 2;

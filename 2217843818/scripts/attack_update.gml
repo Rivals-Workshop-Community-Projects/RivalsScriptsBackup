@@ -282,7 +282,6 @@ if (attack == AT_TAUNT_2){
 
 
 
-
 //runes
 if (has_rune("C")){
     if (attack == AT_NSPECIAL){
@@ -302,6 +301,16 @@ if (has_rune("D")){
             can_jump = true;
             can_shield = true;
             can_special = true;
+        }
+    }
+}
+
+if (has_rune("L")){
+    if (attack != AT_USPECIAL && attack != AT_FSPECIAL && attack != AT_NSPECIAL){
+        if (has_hit){
+            if (special_pressed){
+                set_attack(AT_FSPECIAL);
+            }
         }
     }
 }

@@ -39,12 +39,7 @@ if (speed_mult != 0){
 
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
     if (attack == AT_USPECIAL_2){
-        if (!has_rune("L")){
-            gravity_speed = .32;
-        }
-        else{
-            gravity_speed = .32*3;
-        }
+        gravity_speed = .32;
     }
 }
 
@@ -94,6 +89,7 @@ if (has_rune("G")){
     set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 }
 
+/*
 if (has_rune("H")){
     var yourmom = noone;
     
@@ -115,6 +111,7 @@ if (has_rune("H")){
     }
     
 }
+*/
 
 if (has_rune("I")){
     set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
@@ -157,12 +154,13 @@ if (has_rune("I")){
 }
 
 
-
+/*
 if (has_rune("L")){
     if (dash_speed < 7){
         speed_mult = 3;
     }
 }
+*/
 
 if (has_rune("B")){
     with (asset_get("pHitBox")){
@@ -174,4 +172,8 @@ if (has_rune("B")){
             }
         }
     }
+}
+
+if (has_rune("H")){
+    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
 }

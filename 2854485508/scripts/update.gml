@@ -183,6 +183,9 @@ with (oPlayer) {
 	    	mamizou_trans_damage = 0;
 	    	draw_y = mamizou_draw_y;
 		}
+		else {
+			draw_y = 999;
+		}
 	}
 	
 	if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {

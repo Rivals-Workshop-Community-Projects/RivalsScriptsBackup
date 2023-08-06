@@ -1,0 +1,1 @@
+revenge_active = false;
