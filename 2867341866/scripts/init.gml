@@ -38,9 +38,11 @@ jump_start_time = 5;
 jump_speed = 10.99;
 short_hop_speed = 6;
 djump_speed = 10;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-base_max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-mod_max_jump_hsp = 1; //the maximum hsp you can have when jumping from the ground
+base_leave_ground_max = 7;
+leave_ground_max = base_leave_ground_max; //the maximum hsp you can have when you go from grounded to aerial without jumping
+base_max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+mod_max_jump_hsp = 1; //for adrenaline, additive
+max_jump_hsp = base_max_jump_hsp;
 
 base_air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 mod_air_max_speed = 2; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -62,7 +64,7 @@ hitstun_grav = .51;
 base_knockback_adj = .98; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 mod_knockback_adj = .17
 land_time = 4; //normal landing frames
-prat_land_time = 18;
+prat_land_time = 20;
 wave_land_time = 8;
 base_wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 mod_wave_land_adj = .25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
@@ -125,6 +127,7 @@ introTimer2 = 0;
 //adrenaline params
 adrenaline_timer = 0;
 adrenaline_max = 200;
+grinding = false; // used for resetting values on grind end
 
 gold_obj = noone;
 
@@ -144,6 +147,11 @@ switch (get_player_color( player )) {
         set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_sand"))
     }
     break;
+    case 21: {
+        set_ui_element(UI_HUD_ICON, sprite_get("hud_water")) 
+        set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_water"))
+    }
+    break;
 
     case 10: {
         outline_color = [42, 90, 63]
@@ -159,6 +167,7 @@ pot_compat_variable = sprite_get("soup");
 mamizou_transform_spr = sprite_get("florp"); //Replace "X" with your sprite.
 has_fail = true;
 fail_text = "You got rocked.";
+grindir = 0
 
 vfx_sparkle_s = hit_fx_create( sprite_get("sparkle_s"), 16);
 vfx_sparkle_m1 = hit_fx_create( sprite_get("sparkle_m1"), 20);
@@ -168,8 +177,13 @@ vfx_l = hit_fx_create( sprite_get("vfx_sai_l"), 30)
 vfx_m = hit_fx_create( sprite_get("vfx_sai_m"), 30)
 vfx_b = hit_fx_create( sprite_get("vfx_sai_b"), 30)
 //ty delta
-vfx_d = hit_fx_create( sprite_get("vfx_explosion"), 30)
-vfx_ds = hit_fx_create( sprite_get("vfx_explosionsmall"), 30)
+if get_player_color( player ) == 20 {
+  vfx_d = hit_fx_create( sprite_get("vfx_explosion_arc"), 30)
+  vfx_ds = hit_fx_create( sprite_get("vfx_explosionsmall_arc"), 30)
+} else { 
+  vfx_d = hit_fx_create( sprite_get("vfx_explosion"), 30)
+  vfx_ds = hit_fx_create( sprite_get("vfx_explosionsmall"), 30)
+}
 
 if get_player_color(player) == 16 {
   set_article_color_slot( 16, 3, 166, 133, 0 ); //pickdark
@@ -232,6 +246,7 @@ if get_player_color(player) == 16 {
 
 }
 uspec_bomb = 0
+arcadeswitch = 1
 
 altReal =0 
 
@@ -249,8 +264,7 @@ var tag_pal = player_tag_palettes(12, tag_pal_value);
 var real_alt = tag_pal != -1 ? tag_pal : alt_cur;
 
 
-if real_alt == 29 {
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("ring"));
+if real_alt == 30 {
     altReal = 1
 }
 
@@ -277,3 +291,4 @@ for (var i = 0; i < num_chunks; i++) {
     //print(`matching shift = ${chunk_len}`);
     chunk_offset += chunk_len;
 }
+

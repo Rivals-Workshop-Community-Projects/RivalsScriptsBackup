@@ -51,7 +51,7 @@ if attack == AT_DSTRONG {
     reset_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO);
 }
 
-if item_exists() != undefined {
+if item_exists() != undefined || fuse_arrow_exists() != undefined {
     if attack == AT_DSPECIAL {
         attack = AT_DSPECIAL_2
     }
@@ -103,4 +103,9 @@ if attack == AT_NSPECIAL {
 var returnid = undefined
 with obj_article1 if player_id == other.id && ("totk_item" in self) && totk_item == true returnid = id
 with obj_article_platform if player_id == other.id && ("totk_item" in self) && totk_item == true returnid = id
+return returnid;
+
+#define fuse_arrow_exists()
+var returnid = undefined
+with obj_article2 if player_id == other.id && item != 0 && !destroy && !hbox_has_hit returnid = id
 return returnid;

@@ -74,16 +74,17 @@ set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, vfx_l);
+set_hitbox_value(AT_DATTACK, 1, HG_THROWS_ROCK, 1);
 
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_DATTACK, 2, HG_SHAPE, 2);
-
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 6);
+set_hitbox_value(AT_DATTACK, 2, HG_THROWS_ROCK, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 45);
+set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 38);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 55);
 set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 86);
 set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 2);

@@ -23,36 +23,50 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
         //put text here.
         patch_note_title[i] = "Newest Patch"
         patch_note_text[i++] = 
-        "Aur 2.0.1 fixing a few things
+        "Misc:
+-To celebrate RCS's new season and Aurs continued relevance, he now has an Arcade alt! It changes colors between stocks and has custom visual effects!
+-To celebrate Mallows 2 Day late Birthday Bash, aur now has a Bad Rats alt, replacing the old Withered alt. It looks like shit. Thanks.
+-To celebrate Aur being legal in Riptide, he now has a 'Riptidal Rush' alt! It has a unique water effect.
+-Adjusted some animations and sound effects. 
 
-Dattack hit 2 lifetime 3 -> 4 (no longer has broken whifflag)
-Dattack endlag 14 -> 12
-Fstrong lifetime 3 -> 4 (no longer has broken whifflag)
-Fstrong endlag 18 -> 16
-//these changes were because people were complaining about characters whifflag values being messy. these now fit base cast whifflag values. they have less endlag now.
+Balance:
+-Bug Fix: Aur can no longer grab gold in hitstun.
+-Bug Fix: Aur should no longer drop downwards when occasionally hitting an opponent during up special.
+-General: Pratland increased, 18 -> 20.
+Mostly to match new F-Specials landing anim, but i think it deserved to take a slight tank after the new specials were added.
 
-Uspecial movement adjusted;
-it goes a bit higher, but has a bunch more overall active time, about 5 frames, making it a bit more sluggish in the air. Movement during the ascent is reduced slightly aswell but it still goes higher before, just in more time.
+-Up Air: Base KB increased, 8 -> 9.
+-Up Air: Landing lag increased, 6 -> 7 (10 -> 11 on whiff).
+ Up Air feels slightly less powerful than I wanted it to be, so giving it a slight boost in knockback to closer match base cast stats will help it perform a bit more in line. It is slightly more punishable, though.
 
-Dstrong 
-No longer has an angle flipper, sends forward every time
-Damage reduced by 1 (10)
-Startup pre charge 6 -> 8
-//might be a bit much but we'll see
+-Back Air: Landing lag increased, 7 -> 9 (11 -> 14 on whiff).
+Gives you more time to punish aur for recklessly spamming back air.
 
-Fspecial
-Removed the hurtbox on the tail for the aerial version
-Fixed the hurtbox on the grounded version being completely not disjointed and having parity with the aerial version
-Increased the endlag by 4 frames
-//The tail hurtbox made the move weirdly easy to challenge and created some really odd situations where aur would get hit where it looks like he shouldnt, since it extended out so far. It also has a little bit more disjoint now and the groudn version is fixed obviously. The frame data changes make it a bit easier to punish on start and end aswell.
+-Down Special: Startup increased, 12 -> 13. 
+-Down Special (Air): Has slightly less vertical momentum, -8 -> -7.
+ This move is a bit overtuned right now, and while its allowed to be strong, I felt like it needed some slight tuning down to make it less of a get out of jail free card in disadvantage.
 
-Nspecial (Ground)
-Made the ability to cancel out of the move on hit during the endlag available without adrenaline
-//this move is pretty lacking in utility and a lot of the (few) players expressed this. Since i want it to be one of his main moves to use, and since his old nspecial was so good, i decided to make the cancel part a bit more prevelant in normal play, to give it more combo utility, since it has too much endlag to reliably combo with atm. 
+-Forward Special: Animation redone. Has very slightly less range as a result, though not necessarily noticable.
+-Forward Special: Landing during the active frames of this hitbox (if you were in the air), or after a certain amount of time in endlag (on the ground), you will slam into the floor, giving you 20 extra frames of lag. 
+-Forward Special: Disjoint slightly increased (Used to be slightly negatively disjoint, now is slightly positively disjointed).
+The landing animation should give people time to punish Aur in situations where previously, he would take less lag than he should, in a way that was gimmicky and lame to fight. Particularly, this comes into effect when using the move near the ground, or off a platform above the ground. However, along with this, the move is a little bit harder to trade with.
 
-Misc
-added hyus cool template for patches. you can see the most recent one on the CSS screen by opening the playtest box and taunting. works online too!
-i went ahead and added a quick overview on how his gimmick and specials work for anyone new to the character."
+-Forward Tilt: Hitbox adjusted slightly and made a rounded rectangle.
+The move had a weird hitbox.
+
+-Dash Attack: Hitbox moved inside to match visual better.
+-Dash Attack: Hit 2 lifetime reduced, 5 -> 2.
+-Dash Attack: Now throws Kragg Rock.
+
+Oversight.
+
+-Up Strong: Sourspot damage reduced, 14 -> 12.
+-Up Strong: Sweetspot damage increased, 14 -> 15.
+Oversight where the sourspot and sweetspot had the same damage.
+
+-Down Strong: Pre-charge startup reduced by 1 frame.
+Im tinkering with dstrong buffs because it was heavily nerfed recently, but nowadays it doesn't see much use because ustrong was only slightly slower and way better at coverage. The move might be adjusted later, but I'm not going to re-buff it too much.
+"
         
         patch_note_title[i] = "Quick Guide"
         patch_note_text[i++] = 

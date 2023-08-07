@@ -49,7 +49,7 @@ set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_USTRONG, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_USTRONG, 1);
+set_num_hitboxes(AT_USTRONG, 2);
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 4);
@@ -74,3 +74,28 @@ set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("magnesis_shoot"));
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, vfx_energy);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
+
+//melee hit
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 15);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 30);
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 50);
+set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 4);
+set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_TECHABLE, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);

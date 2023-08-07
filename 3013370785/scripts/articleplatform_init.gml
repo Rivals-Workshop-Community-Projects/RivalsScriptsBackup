@@ -1,5 +1,6 @@
 //articleplatform_init
 totk_item = true
+max_lifetime = 300
 
 timer = 0
 

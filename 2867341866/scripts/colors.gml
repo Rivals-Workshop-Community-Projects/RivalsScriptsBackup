@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 22 );
 
 // Igneous
 set_color_profile_slot( 1, 0, 41, 35, 29 ); //bodydark
@@ -176,15 +176,15 @@ set_color_profile_slot( 14, 5, 142, 156, 186 ); //picklight
 set_color_profile_slot( 14, 6, 70, 31, 92 ); //feet
 set_color_profile_slot( 14, 7, 111, 56, 133 ); //feetlight
 
-// Withered
-set_color_profile_slot( 15, 0, 38, 38, 38 ); //bodydark
-set_color_profile_slot( 15, 1, 74, 74, 74 ); //bodylight
-set_color_profile_slot( 15, 2, 74, 74, 74 ); //bodyshine
+// Bad Rats
+set_color_profile_slot( 15, 0, 117, 113, 108 ); //bodydark
+set_color_profile_slot( 15, 1, 173, 166, 159 ); //bodylight
+set_color_profile_slot( 15, 2, 173, 166, 159 ); //bodyshine
 set_color_profile_slot( 15, 3, 117, 113, 108 ); //pickdark
 set_color_profile_slot( 15, 4, 173, 166, 159 ); //pickmid
 set_color_profile_slot( 15, 5, 173, 166, 159 ); //picklight
-set_color_profile_slot( 15, 6, 38, 38, 38 ); //feet
-set_color_profile_slot( 15, 7, 48, 48, 48 ); //feetlight
+set_color_profile_slot( 15, 6, 74, 71, 50 ); //feet
+set_color_profile_slot( 15, 7, 115, 110, 78 ); //feetlight
 
 // Stupid
 set_color_profile_slot( 16, 0, 77, 109, 148 ); //bodydark
@@ -226,125 +226,136 @@ set_color_profile_slot( 19, 5, 0, 255, 0 ); //picklight
 set_color_profile_slot( 19, 6, 0, 255, 0 ); //feet
 set_color_profile_slot( 19, 7, 0, 255, 0 ); //feetlight
 
+// Arcade
+set_color_profile_slot( 20, 0, 23, 22, 19 ); //bodydark
+set_color_profile_slot( 20, 1, 65, 63, 54 ); //bodylight
+set_color_profile_slot( 20, 2, 65, 63, 54 ); //bodyshine
+set_color_profile_slot( 20, 3, 72, 153, 60 ); //pickdark
+set_color_profile_slot( 20, 4, 140, 222, 94 ); //pickmid
+set_color_profile_slot( 20, 5, 220, 255, 191 ); //picklight
+set_color_profile_slot( 20, 6, 140, 154, 171 ); //feet
+set_color_profile_slot( 20, 7, 255, 255, 255 ); //feetlight
+
+// Riptidal Rush
+set_color_profile_slot( 21, 0, 216, 94, 3 ); //bodydark
+set_color_profile_slot( 21, 1, 235, 170, 2 ); //bodylight
+set_color_profile_slot( 21, 2, 255, 206, 77 ); //bodyshine
+set_color_profile_slot( 21, 3, 0, 110, 212 ); //pickdark
+set_color_profile_slot( 21, 4, 17, 185, 237 ); //pickmid
+set_color_profile_slot( 21, 5, 214, 245, 255 ); //picklight
+set_color_profile_slot( 21, 6, 20, 42, 97 ); //feet
+set_color_profile_slot( 21, 7, 36, 76, 179 ); //feetlight
+
+//LAST REAL ALT
 // Infamous
-set_color_profile_slot( 20, 0, 42, 50, 105 ); //bodydark
-set_color_profile_slot( 20, 1, 86, 83, 170 ); //bodylight
-set_color_profile_slot( 20, 2, 86, 83, 170 ); //bodyshine
-set_color_profile_slot( 20, 3, 14, 171, 109 ); //pickdark
-set_color_profile_slot( 20, 4, 0, 230, 151 ); //pickmid
-set_color_profile_slot( 20, 5, 253, 253, 253 ); //picklight
-set_color_profile_slot( 20, 6, 31, 33, 43 ); //feet
-set_color_profile_slot( 20, 7, 51, 55, 65 ); //feetlight
+set_color_profile_slot( 22, 0, 42, 50, 105 ); //bodydark
+set_color_profile_slot( 22, 1, 86, 83, 170 ); //bodylight
+set_color_profile_slot( 22, 2, 86, 83, 170 ); //bodyshine
+set_color_profile_slot( 22, 3, 14, 171, 109 ); //pickdark
+set_color_profile_slot( 22, 4, 0, 230, 151 ); //pickmid
+set_color_profile_slot( 22, 5, 253, 253, 253 ); //picklight
+set_color_profile_slot( 22, 6, 31, 33, 43 ); //feet
+set_color_profile_slot( 22, 7, 51, 55, 65 ); //feetlight
 
 // Pure Gold
-set_color_profile_slot( 21, 0, 212, 143, 3 ); //bodydark
-set_color_profile_slot( 21, 1, 255, 225, 71 ); //bodylight
-set_color_profile_slot( 21, 2, 255, 255, 255 ); //bodyshine
-set_color_profile_slot( 21, 3, 212, 143, 3 ); //pickdark
-set_color_profile_slot( 21, 4, 255, 225, 71 ); //pickmid
-set_color_profile_slot( 21, 5, 255, 255, 255 ); //picklight
-set_color_profile_slot( 21, 6, 212, 143, 3 ); //feet
-set_color_profile_slot( 21, 7, 255, 225, 71 ); //feetlight
+set_color_profile_slot( 23, 0, 212, 143, 3 ); //bodydark
+set_color_profile_slot( 23, 1, 255, 225, 71 ); //bodylight
+set_color_profile_slot( 23, 2, 255, 255, 255 ); //bodyshine
+set_color_profile_slot( 23, 3, 212, 143, 3 ); //pickdark
+set_color_profile_slot( 23, 4, 255, 225, 71 ); //pickmid
+set_color_profile_slot( 23, 5, 255, 255, 255 ); //picklight
+set_color_profile_slot( 23, 6, 212, 143, 3 ); //feet
+set_color_profile_slot( 23, 7, 255, 225, 71 ); //feetlight
 
 // NeonLight
-set_color_profile_slot( 22, 0, 28, 34, 87 ); //bodydark
-set_color_profile_slot( 22, 1, 46, 78, 143 ); //bodylight
-set_color_profile_slot( 22, 2, 46, 78, 143 ); //bodyshine
-set_color_profile_slot( 22, 3, 161, 157, 2 ); //pickdark
-set_color_profile_slot( 22, 4, 222, 217, 33 ); //pickmid
-set_color_profile_slot( 22, 5, 247, 250, 255 ); //picklight
-set_color_profile_slot( 22, 6, 1, 140, 204 ); //feet
-set_color_profile_slot( 22, 7, 1, 208, 248 ); //feetlight
+set_color_profile_slot( 24, 0, 28, 34, 87 ); //bodydark
+set_color_profile_slot( 24, 1, 46, 78, 143 ); //bodylight
+set_color_profile_slot( 24, 2, 46, 78, 143 ); //bodyshine
+set_color_profile_slot( 24, 3, 161, 157, 2 ); //pickdark
+set_color_profile_slot( 24, 4, 222, 217, 33 ); //pickmid
+set_color_profile_slot( 24, 5, 247, 250, 255 ); //picklight
+set_color_profile_slot( 24, 6, 1, 140, 204 ); //feet
+set_color_profile_slot( 24, 7, 1, 208, 248 ); //feetlight
 
 // Captain
-set_color_profile_slot( 23, 0, 39, 40, 57 ); //bodydark
-set_color_profile_slot( 23, 1, 77, 77, 94 ); //bodylight
-set_color_profile_slot( 23, 2, 77, 77, 94 ); //bodyshine
-set_color_profile_slot( 23, 3, 163, 149, 167 ); //pickdark
-set_color_profile_slot( 23, 4, 245, 245, 245 ); //pickmid
-set_color_profile_slot( 23, 5, 245, 245, 245 ); //picklight
-set_color_profile_slot( 23, 6, 163, 149, 167 ); //feet
-set_color_profile_slot( 23, 7, 245, 245, 245 ); //feetlight
+set_color_profile_slot( 25, 0, 39, 40, 57 ); //bodydark
+set_color_profile_slot( 25, 1, 77, 77, 94 ); //bodylight
+set_color_profile_slot( 25, 2, 77, 77, 94 ); //bodyshine
+set_color_profile_slot( 25, 3, 163, 149, 167 ); //pickdark
+set_color_profile_slot( 25, 4, 245, 245, 245 ); //pickmid
+set_color_profile_slot( 25, 5, 245, 245, 245 ); //picklight
+set_color_profile_slot( 25, 6, 163, 149, 167 ); //feet
+set_color_profile_slot( 25, 7, 245, 245, 245 ); //feetlight
 
 // RazzApple
-set_color_profile_slot( 24, 0, 51, 95, 255 ); //bodydark
-set_color_profile_slot( 24, 1, 112, 143, 255 ); //bodylight
-set_color_profile_slot( 24, 2, 112, 143, 255 ); //bodyshine
-set_color_profile_slot( 24, 3, 219, 144, 161 ); //pickdark
-set_color_profile_slot( 24, 4, 255, 255, 255 ); //pickmid
-set_color_profile_slot( 24, 5, 255, 255, 255 ); //picklight
-set_color_profile_slot( 24, 6, 161, 145, 12 ); //feet
-set_color_profile_slot( 24, 7, 227, 206, 25 ); //feetlight
+set_color_profile_slot( 26, 0, 51, 95, 255 ); //bodydark
+set_color_profile_slot( 26, 1, 112, 143, 255 ); //bodylight
+set_color_profile_slot( 26, 2, 112, 143, 255 ); //bodyshine
+set_color_profile_slot( 26, 3, 219, 144, 161 ); //pickdark
+set_color_profile_slot( 26, 4, 255, 255, 255 ); //pickmid
+set_color_profile_slot( 26, 5, 255, 255, 255 ); //picklight
+set_color_profile_slot( 26, 6, 161, 145, 12 ); //feet
+set_color_profile_slot( 26, 7, 227, 206, 25 ); //feetlight
 
 // Creamsicle
-set_color_profile_slot( 25, 0, 214, 103, 31 ); //bodydark
-set_color_profile_slot( 25, 1, 246, 151, 61 ); //bodylight
-set_color_profile_slot( 25, 2, 246, 216, 187 ); //bodyshine
-set_color_profile_slot( 25, 3, 184, 151, 83 ); //pickdark
-set_color_profile_slot( 25, 4, 245, 218, 164 ); //pickmid
-set_color_profile_slot( 25, 5, 245, 218, 164 ); //picklight
-set_color_profile_slot( 25, 6, 184, 169, 136 ); //feet
-set_color_profile_slot( 25, 7, 245, 236, 218 ); //feetlight
+set_color_profile_slot( 27, 0, 214, 103, 31 ); //bodydark
+set_color_profile_slot( 27, 1, 246, 151, 61 ); //bodylight
+set_color_profile_slot( 27, 2, 246, 216, 187 ); //bodyshine
+set_color_profile_slot( 27, 3, 184, 151, 83 ); //pickdark
+set_color_profile_slot( 27, 4, 245, 218, 164 ); //pickmid
+set_color_profile_slot( 27, 5, 245, 218, 164 ); //picklight
+set_color_profile_slot( 27, 6, 184, 169, 136 ); //feet
+set_color_profile_slot( 27, 7, 245, 236, 218 ); //feetlight
 
 // Caramel
-set_color_profile_slot( 26, 0, 150, 45, 45 ); //bodydark
-set_color_profile_slot( 26, 1, 212, 62, 62 ); //bodylight
-set_color_profile_slot( 26, 2, 212, 62, 62 ); //bodyshine
-set_color_profile_slot( 26, 3, 133, 96, 57 ); //pickdark
-set_color_profile_slot( 26, 4, 240, 120, 56 ); //pickmid
-set_color_profile_slot( 26, 5, 247, 173, 99 ); //picklight
-set_color_profile_slot( 26, 6, 138, 97, 58 ); //feet
-set_color_profile_slot( 26, 7, 240, 127, 56 ); //feetlight
+set_color_profile_slot( 28, 0, 150, 45, 45 ); //bodydark
+set_color_profile_slot( 28, 1, 212, 62, 62 ); //bodylight
+set_color_profile_slot( 28, 2, 212, 62, 62 ); //bodyshine
+set_color_profile_slot( 28, 3, 133, 96, 57 ); //pickdark
+set_color_profile_slot( 28, 4, 240, 120, 56 ); //pickmid
+set_color_profile_slot( 28, 5, 247, 173, 99 ); //picklight
+set_color_profile_slot( 28, 6, 138, 97, 58 ); //feet
+set_color_profile_slot( 28, 7, 240, 127, 56 ); //feetlight
 
 // Minted
-set_color_profile_slot( 27, 0, 131, 166, 194 ); //bodydark
-set_color_profile_slot( 27, 1, 212, 235, 255 ); //bodylight
-set_color_profile_slot( 27, 2, 212, 235, 255 ); //bodyshine
-set_color_profile_slot( 27, 3, 15, 15, 20 ); //pickdark
-set_color_profile_slot( 27, 4, 34, 34, 46 ); //pickmid
-set_color_profile_slot( 27, 5, 34, 34, 46 ); //picklight
-set_color_profile_slot( 27, 6, 15, 15, 20 ); //feet
-set_color_profile_slot( 27, 7, 34, 34, 46 ); //feetlight
-
-// deprecated VERY CANCEROUS RODENT
-set_color_profile_slot( 28, 0, 9, 122, 2 ); //bodydark
-set_color_profile_slot( 28, 1, 36, 166, 30 ); //bodylight
-set_color_profile_slot( 28, 2, 36, 166, 30 ); //bodyshine
-set_color_profile_slot( 28, 3, 13, 171, 3 ); //pickdark
-set_color_profile_slot( 28, 4, 100, 212, 93 ); //pickmid
-set_color_profile_slot( 28, 5, 199, 255, 179 ); //picklight
-set_color_profile_slot( 28, 6, 7, 94, 2 ); //feet
-set_color_profile_slot( 28, 7, 11, 148, 3 ); //feetlight
+set_color_profile_slot( 29, 0, 131, 166, 194 ); //bodydark
+set_color_profile_slot( 29, 1, 212, 235, 255 ); //bodylight
+set_color_profile_slot( 29, 2, 212, 235, 255 ); //bodyshine
+set_color_profile_slot( 29, 3, 15, 15, 20 ); //pickdark
+set_color_profile_slot( 29, 4, 34, 34, 46 ); //pickmid
+set_color_profile_slot( 29, 5, 34, 34, 46 ); //picklight
+set_color_profile_slot( 29, 6, 15, 15, 20 ); //feet
+set_color_profile_slot( 29, 7, 34, 34, 46 ); //feetlight
 
 // SONIC
-set_color_profile_slot( 29, 0, 0, 21, 179 ); //bodydark
-set_color_profile_slot( 29, 1, 33, 54, 217 ); //bodylight
-set_color_profile_slot( 29, 2, 33, 54, 217 ); //bodyshine
-set_color_profile_slot( 29, 3, 141, 150, 184 ); //pickdark
-set_color_profile_slot( 29, 4, 202, 206, 224 ); //pickmid
-set_color_profile_slot( 29, 5, 247, 248, 255 ); //picklight
-set_color_profile_slot( 29, 6, 180, 0, 1 ); //feet
-set_color_profile_slot( 29, 7, 207, 79, 79 ); //feetlight
+set_color_profile_slot( 30, 0, 0, 21, 179 ); //bodydark
+set_color_profile_slot( 30, 1, 33, 54, 217 ); //bodylight
+set_color_profile_slot( 30, 2, 33, 54, 217 ); //bodyshine
+set_color_profile_slot( 30, 3, 141, 150, 184 ); //pickdark
+set_color_profile_slot( 30, 4, 202, 206, 224 ); //pickmid
+set_color_profile_slot( 30, 5, 247, 248, 255 ); //picklight
+set_color_profile_slot( 30, 6, 180, 0, 1 ); //feet
+set_color_profile_slot( 30, 7, 207, 79, 79 ); //feetlight
 
 // SUPER AUR......
-set_color_profile_slot( 30, 0, 202, 167, 17 ); //bodydark
-set_color_profile_slot( 30, 1, 253, 215, 57 ); //bodylight
-set_color_profile_slot( 30, 2, 253, 243, 200 ); //bodyshine
-set_color_profile_slot( 30, 3, 202, 167, 17 ); //pickdark
-set_color_profile_slot( 30, 4, 253, 215, 57 ); //pickmid
-set_color_profile_slot( 30, 5, 253, 243, 200 ); //picklight
-set_color_profile_slot( 30, 6, 180, 45, 0 ); //feet
-set_color_profile_slot( 30, 7, 207, 102, 41 ); //feetlight
+set_color_profile_slot( 31, 0, 202, 167, 17 ); //bodydark
+set_color_profile_slot( 31, 1, 253, 215, 57 ); //bodylight
+set_color_profile_slot( 31, 2, 253, 243, 200 ); //bodyshine
+set_color_profile_slot( 31, 3, 202, 167, 17 ); //pickdark
+set_color_profile_slot( 31, 4, 253, 215, 57 ); //pickmid
+set_color_profile_slot( 31, 5, 253, 243, 200 ); //picklight
+set_color_profile_slot( 31, 6, 180, 45, 0 ); //feet
+set_color_profile_slot( 31, 7, 207, 102, 41 ); //feetlight
 
 // Perfection
-set_color_profile_slot( 31, 0, 52, 115, 125 ); //bodydark
-set_color_profile_slot( 31, 1, 69, 168, 167 ); //bodylight
-set_color_profile_slot( 31, 2, 69, 168, 167 ); //bodyshine
-set_color_profile_slot( 31, 3, 0, 107, 166 ); //pickdark
-set_color_profile_slot( 31, 4, 50, 164, 209 ); //pickmid
-set_color_profile_slot( 31, 5, 209, 209, 209 ); //picklight
-set_color_profile_slot( 31, 6, 0, 112, 143 ); //feet
-set_color_profile_slot( 31, 7, 61, 177, 209 ); //feetlight
+set_color_profile_slot( 32, 0, 52, 115, 125 ); //bodydark
+set_color_profile_slot( 32, 1, 69, 168, 167 ); //bodylight
+set_color_profile_slot( 32, 2, 69, 168, 167 ); //bodyshine
+set_color_profile_slot( 32, 3, 0, 107, 166 ); //pickdark
+set_color_profile_slot( 32, 4, 50, 164, 209 ); //pickmid
+set_color_profile_slot( 32, 5, 209, 209, 209 ); //picklight
+set_color_profile_slot( 32, 6, 0, 112, 143 ); //feet
+set_color_profile_slot( 32, 7, 61, 177, 209 ); //feetlight
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -35,3 +35,4 @@ if attack == AT_TAUNT && shield_down && move_cooldown[AT_TAUNT] == 0{
 //keeps fspec/dspec interactions in check
 hsp = clamp(hsp, -12, 12)
 
+

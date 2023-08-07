@@ -41,3 +41,6 @@ if state == PS_PARRY && !hitpause {
 if attack == AT_FSPECIAL && state == PS_PRATFALL {
     sprite_index = sprite_get("pratfall2")
 }
+if attack == AT_FSPECIAL && state == PS_PRATLAND {
+    sprite_index = sprite_get("pratland_2")
+}

@@ -6,6 +6,8 @@ sprite_change_offset("smil", 80, 122);
 
 sprite_change_offset("hud", 0, -2);
 sprite_change_offset("hurtd", 0, -2);
+sprite_change_offset("hud_water", 0, -2);
+sprite_change_offset("hurt_water", 0, -2);
 
 sprite_change_offset("hud_sand", 0, -2);
 sprite_change_offset("hurt_sand", 0, -2);
@@ -46,6 +48,8 @@ sprite_change_offset("roll_forward", 160, 182);
 sprite_change_offset("roll_backward", 160, 182);
 sprite_change_offset("airdodge", 154, 182);
 sprite_change_offset("waveland", 160, 182);
+sprite_change_offset("railgrind", 160, 182);
+
 sprite_change_offset("tech", 160, 182);
 
 sprite_change_offset("jab", 68, 68);
@@ -70,11 +74,14 @@ sprite_change_offset("coin", 168, 168);
 sprite_change_offset("gem_mask", 168, 168);
 
 sprite_change_offset("fspecial", 160, 182);
+sprite_change_offset("fspecial_new", 160, 182);
+
 sprite_change_offset("fspecial_air", 160, 182);
 
 sprite_change_offset("uspecial", 160, 182);
 sprite_change_offset("pratfall", 160, 182);
 sprite_change_offset("pratfall2", 160, 182);
+sprite_change_offset("pratland_2", 160, 182);
 
 sprite_change_offset("dspecial",160, 182);
 sprite_change_offset("taunt", 160, 182);
@@ -104,5 +111,7 @@ sprite_change_offset("vfx_sai_l", 174, 158);
 sprite_change_offset("vfx_sai_m", 174, 158);
 sprite_change_offset("vfx_sai_b", 160, 162);
 sprite_change_offset("vfx_explosion", 100, 106);
+sprite_change_offset("vfx_explosion_arc", 100, 106);
 sprite_change_offset("vfx_explosionsmall", 100, 96);
+sprite_change_offset("vfx_explosionsmall_arc", 100, 96);
 

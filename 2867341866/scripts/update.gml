@@ -1,18 +1,19 @@
 //ev
-if prev_state == PS_ATTACK_AIR || prev_state == PS_ATTACK_GROUND {
-    if attack == AT_FSPECIAL {
-        hsp = clamp(hsp, -12, 12)
-    }
 
+if state == PS_WALL_JUMP {
+    move_cooldown[AT_FSPECIAL] = 0
+    move_cooldown[AT_DSPECIAL] = 0
 }
-if babysoundtimer > 0 {
-    babysoundtimer = babysoundtimer - 1 
+
+//#region Adrenaline grind
+if (state == PS_WAVELAND && state_timer == 2 && !hitpause) {
     
-}
-if babysoundtimer == 20 {
-    sound_volume(babysound, 0, 20)
-}
-if state == PS_WAVELAND && state_timer == 1 && !hitpause{
+    //grind
+    if adrenaline_timer > 0 {
+        //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 9);
+        //set_attack( AT_EXTRA_3 );
+        //sound_play(asset_get("sfx_kragg_roll_loop"), 1, noone, .6, 1.05)
+    }
     sound_play(asset_get("sfx_waveland_kra"), noone, 0, .7, 1)
     sound_play(asset_get("sfx_waveland_fors"), noone, 0, .7, .95)
     sound_play(asset_get("sfx_waveland_oly"), noone, 0, .6, .9)
@@ -20,8 +21,16 @@ if state == PS_WAVELAND && state_timer == 1 && !hitpause{
 
 }
 
+if (grinding && state == PS_JUMPSQUAT) { // hacky
+    sound_stop(asset_get("sfx_kragg_roll_loop"));
+} else if (grinding && (state != PS_ATTACK_GROUND || attack != AT_EXTRA_3)) {
+    sound_stop(asset_get("sfx_kragg_roll_loop"));
+    grinding = false;
+}
 
-// Adrenaline magagement (aside from alts)
+//#endregion
+
+//#region Adrenaline magagement (aside from alts)
 if (adrenaline_timer > 0 && window != 1 && get_gameplay_time() % 24 == 0) spawn_sparkle();
 if (adrenaline_timer > 0) {
     dash_anim_speed = base_dash_anim_speed + mod_dash_anim_speed;
@@ -32,7 +41,7 @@ if (adrenaline_timer > 0) {
     wave_friction = base_wave_friction + mod_wave_friction;
     air_max_speed = base_air_max_speed + mod_air_max_speed
     air_accel = base_air_accel + mod_air_accel;
-    max_jump_hsp = base_max_jump_hsp + mod_max_jump_hsp
+    if (!grinding) max_jump_hsp = base_max_jump_hsp + mod_max_jump_hsp
     wave_land_adj = base_wave_land_adj + mod_wave_land_adj
     knockback_adj = base_knockback_adj + mod_knockback_adj
 
@@ -50,7 +59,7 @@ if (adrenaline_timer > 0) {
     wave_friction = base_wave_friction;
     air_max_speed = base_air_max_speed
     air_accel = base_air_accel;
-    max_jump_hsp = base_max_jump_hsp
+    if (!grinding) max_jump_hsp = base_max_jump_hsp
     wave_land_adj = base_wave_land_adj
     knockback_adj = base_knockback_adj
 
@@ -59,6 +68,16 @@ if adrenaline_timer == 1 && !hitpause{
     //print("ywauhiahs")
     sound_play(asset_get("sfx_abyss_despawn"))
 }
+if adrenaline_timer > 0 { 
+    if (state == PS_AIR_DODGE) {
+        if (state_timer % 2 == 1) spawn_sparkle();
+        // if (state_timer % 6 == 1) add_afterimage(20);
+    }
+    if (state == PS_WAVELAND) {
+        spawn_sparkle();
+    }
+}
+//#endregion
 
 /* DEPRECATED
 // Afterimage management (drawn in pre_draw.gml, added by attack_update.gml)
@@ -71,7 +90,7 @@ for (var i = 0; i < ds_list_size(afterimage_list); i++) {
     }
 }*/
 
-// Sparkle management (drawn in pre_draw.gml, added by update/attack_update.gml)
+//#region Sparkle management (drawn in pre_draw.gml, added by update/attack_update.gml)
 for (var i = 0; i < ds_list_size(sparkle_list); i++) {
     var sp = ds_list_find_value(sparkle_list, i);
     sp.sp_lifetime++;
@@ -80,9 +99,9 @@ for (var i = 0; i < ds_list_size(sparkle_list); i++) {
         i--;
     }
 }
+//#endregion
 
-
-// Alts
+//#region Alts
 
 
 /*
@@ -173,17 +192,18 @@ if adrenaline_timer == 10 || adrenaline_timer == 1  {
     init_shader();
 }
 
+//#endregion
 
-if state == PS_WALL_JUMP {
-    move_cooldown[AT_FSPECIAL] = 0
-    move_cooldown[AT_DSPECIAL] = 0
+if babysoundtimer > 0 {
+    babysoundtimer = babysoundtimer - 1 
 }
-//Custom Alts
-
-if get_gameplay_time() == 1 {
-
+if babysoundtimer == 20 {
+    sound_volume(babysound, 0, 20)
 }
-//intros
+
+
+
+//#region Intros
 
 if get_player_color(player) == 13 {
     if (introTimer2 < 5) {
@@ -234,15 +254,9 @@ if get_player_color( player ) != 13 {
     }
 
 }
-if adrenaline_timer > 0 { 
-    if (state == PS_AIR_DODGE) {
-        if (state_timer % 2 == 1) spawn_sparkle();
-        // if (state_timer % 6 == 1) add_afterimage(20);
-    }
-    if (state == PS_WAVELAND) {
-        spawn_sparkle();
-    }
-}
+//#endregion
+
+
 
 
 #define spawn_sparkle()

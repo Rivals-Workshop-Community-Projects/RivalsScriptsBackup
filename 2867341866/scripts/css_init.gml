@@ -2,7 +2,7 @@ inputpressed = 0
 contrib = 0
 if init != 0 {
     switch (get_player_name(player)) {
-        case "GNOME":
+        case "MARCY":
         case "snom":
         case "DPX":
         case "COOKIE":

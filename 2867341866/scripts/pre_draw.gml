@@ -65,6 +65,16 @@ if object_index == oPlayer { //removes playtesting hellscape
     maskFooter();
 
     }
+    if get_player_color(player) == 21 {
+    shader_end();
+    maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, 1*spr_dir, 1, spr_angle, c_white, 1);
+    maskMidder();
+    shader_start();
+    draw_sprite_tiled_ext(sprite_get("water"), get_player_color( player ) , x+draw_x , y+draw_y, 2, 2, c_white, 1)
+    maskFooter();
+
+    }
 }
 //goes at bottom
 

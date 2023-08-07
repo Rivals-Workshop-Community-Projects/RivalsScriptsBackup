@@ -683,22 +683,41 @@ switch attack {
     
     if window == 3 && window_timer == window_length { //release
         item_spawn_x = x + 50*spr_dir
-        item_spawn_y = y - 120
+        item_spawn_y = y - 100
+        var item_throw_mod_x = 1
+        var item_throw_mod_y = 1
+        if up_down && !down_down {
+            item_spawn_y -= 40
+            item_throw_mod_y = 1.5
+        }
+        if down_down && !up_down {
+            item_spawn_y += 40
+            item_throw_mod_y = 0.5
+        }
+        if left_down && !right_down {
+            item_spawn_x -= 40*spr_dir
+            item_throw_mod_x = spr_dir < 0 ? 1.5 : 0.5
+        }
+        if right_down && !left_down {
+            item_spawn_x += 40*spr_dir
+            item_throw_mod_x = spr_dir < 0 ? 0.5 : 1.5
+        }
+        
         switch fuse_item {
             case 1: //cart
-            spawn_obj = spawn_item(fuse_item, 3, -4, item_spawn_x, item_spawn_y)
+            spawn_obj = spawn_item(fuse_item, 3*item_throw_mod_x, -4*item_throw_mod_y, item_spawn_x, item_spawn_y)
             break;
             
             case 2: //hoverstone
-            spawn_obj = spawn_item(fuse_item, 7, -7, item_spawn_x, item_spawn_y)
+            spawn_obj = spawn_item(fuse_item, 7*item_throw_mod_x, -7*item_throw_mod_y, item_spawn_x, item_spawn_y)
             break;
             
             case 3: //bomb
-            spawn_obj = spawn_item(fuse_item, 5, -4, item_spawn_x, item_spawn_y)
+            spawn_obj = spawn_item(fuse_item, 5*item_throw_mod_x, -4*item_throw_mod_y, item_spawn_x, item_spawn_y)
             break;
             
             case 4: //rocket
-            spawn_obj = spawn_item(fuse_item, 5, -4, item_spawn_x, item_spawn_y)
+            spawn_obj = spawn_item(fuse_item, 5*item_throw_mod_x, -4*item_throw_mod_y, item_spawn_x, item_spawn_y)
             break;
         }
         //fuse_item = 0;
@@ -730,7 +749,7 @@ switch attack {
         sound_stop(sound_get("rune_search_start"))
         sound_play(sound_get("rune_search_end"))
         
-        var recall_item = item_exists()
+        var recall_item = item_exists() || fuse_arrow_exists()
         if recall_item != undefined {
             if recall_item.recall_cooldown == 0 {
                 recall_item.recall_active = !recall_item.recall_active
@@ -773,7 +792,7 @@ switch attack {
     break;
     
     case AT_USTRONG:
-    move_cooldown[AT_USTRONG] = 10
+    move_cooldown[AT_USTRONG] = 20
     if window == 1 && window_timer == 1 {
         sound_play(sfx_ustrong)
     }
@@ -784,6 +803,7 @@ switch attack {
     }
     ustrong_reticle_x = x + (15 + ustrong_distance_x)*spr_dir
     ustrong_reticle_y = y - 100 - ustrong_distance_y
+    
     if window == 3 && window_timer == window_length && !hitpause {
         set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, (ustrong_reticle_x - x)*spr_dir);
         set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, ustrong_reticle_y - y);
@@ -794,6 +814,10 @@ switch attack {
     }
     
     //ustrong lerping
+    with oPlayer if id != other.id && totk_ustrong_lerp_id == other.id {
+        x = lerp(x, other.ustrong_reticle_x, 0.2)
+        y = lerp(y, char_height/2 + other.ustrong_reticle_y, 0.2)
+    }
     with oPlayer if id != other.id && totk_ustrong_grabbed_id == other.id {
         if other.window == 4 {
             x = lerp(x, other.ustrong_reticle_x, 0.1)
@@ -950,4 +974,9 @@ return newdust;
 var returnid = undefined
 with obj_article1 if player_id == other.id && ("totk_item" in self) && totk_item == true returnid = id
 with obj_article_platform if player_id == other.id && ("totk_item" in self) && totk_item == true returnid = id
+return returnid;
+
+#define fuse_arrow_exists()
+var returnid = undefined
+with obj_article2 if player_id == other.id && item != 0 && !destroy && !hbox_has_hit returnid = id
 return returnid;

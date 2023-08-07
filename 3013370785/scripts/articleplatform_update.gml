@@ -25,11 +25,13 @@ switch item {
 
 var is_standing = false
 var link_standing = false
-with oPlayer if position_meeting(x, y, other) && !free && y == other.y {
+var standing_id = noone
+with oPlayer if place_meeting(x, y+2, other) && !free && y == other.y {
     is_standing = true
     totk_plat_id = other.id
     if id == other.player_id {
         link_standing = true
+        standing_id = id
     }
 }
 
@@ -47,6 +49,7 @@ if !recall_active { //all item logic and timers should run only if recall is ina
     switch item {
         
         case 1: //homing cart
+        max_lifetime = 300
         y_offset = 15
         switch state {
             case 0: //airborne
@@ -87,19 +90,39 @@ if !recall_active { //all item logic and timers should run only if recall is ina
         break;
         
         case 2: //hoverstone
+        max_lifetime = 300
         y_offset = 10
         
         real_vsp *= 0.9
         real_hsp *= 0.9
         
         if is_standing {
-            if free && timer > 30 real_vsp = 1
+            if free && timer > 30 {
+                if standing_id != noone && standing_id.state_attacking {
+                    var apply_hsp = false
+                    if standing_id.state_timer < 12 {
+                        apply_hsp = true
+                    } else if standing_id.strong_charge > 0 {
+                        with standing_id var charge_window = get_attack_value(attack, AG_STRONG_CHARGE_WINDOW);
+                        if standing_id.window <= charge_window {
+                            apply_hsp = true
+                        }
+                    } 
+                    
+                    if apply_hsp {
+                        real_hsp = clamp(real_hsp + 1*standing_id.spr_dir, -4, 4)
+                    }
+                    real_vsp = 1
+                } else {
+                    real_vsp = 1
+                }
+            }
             image_index = 2
         } else {
             image_index = 1
         }
         
-        if !free {
+        if !free && timer > 20 {
             destroy = true
         }
         
@@ -126,7 +149,7 @@ script = 1
 user_event(0)
 
 //timer destroy
-if timer >= 450 {
+if timer >= max_lifetime {
     die = true
 }
 

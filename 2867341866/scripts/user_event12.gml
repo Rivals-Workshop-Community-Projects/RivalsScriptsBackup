@@ -20,8 +20,8 @@ __run_script();
     (Yes, you can define alts past 31 in colors.gml! They're just typically
     not selectable. THIS IS SUPPORTED BY THE COLOR TOOL!)
 */
-    add_named_alt("MARCY", 21);
-    add_named_alt("TENDIE", 29);
+    add_named_alt("MARCY", 23);
+    add_named_alt("TENDIE", 30);
     
 /*
     Change other variables here.

@@ -2,6 +2,7 @@
 
 totk_plat_id = noone //if defined, id of article platform they are standing on
 totk_ustrong_grabbed_id = noone
+totk_ustrong_lerp_id = noone
 
 totk_dstrong_earthwake_id = noone
 totk_dstrong_earthwake_timer = 0

@@ -19,12 +19,41 @@ if real_alt == 0 {
     set_character_color_slot( 2, 65, 72, 99 )
 }
 //print(real_alt)
-if real_alt == 21 {
+if real_alt == 23 {
       outline_color = [129, 87, 1];
 }
 
 if real_alt == 29 {
     //set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("ring"));
+}
+
+if ( get_player_color(player)  == 20 && (object_index == oPlayer || object_index == oTestPlayer) && "arcadeswitch" in self ) {
+    switch arcadeswitch{
+        case 1:
+        set_character_color_slot( 3, 72, 153, 60, 1 ); //pickdark
+        set_character_color_slot( 4, 140, 222, 94, 1 ); //pickmid
+        set_character_color_slot( 5, 220, 255, 191, 1 ); //picklight 
+        set_article_color_slot( 3, 72, 153, 60, 1 ); //pickdark
+        set_article_color_slot( 4, 140, 222, 94, 1 ); //pickmid
+        set_article_color_slot( 5, 220, 255, 191, 1 ); //picklight
+        break;
+        case 2:
+        set_character_color_slot( 3, 70, 158, 203, 1 );//pickdark
+        set_character_color_slot( 4, 145, 210, 243, 1 );//pickmid
+        set_character_color_slot( 5, 225, 245, 255, 1 ); //picklight
+        set_article_color_slot( 3, 70, 158, 203, 1 );//pickdark
+        set_article_color_slot( 4, 145, 210, 243, 1 );//pickmid
+        set_article_color_slot( 5, 225, 245, 255, 1 ); //picklight
+        break;
+        case 3:
+        set_character_color_slot( 3, 210, 10, 44, 1 ); //pickdark
+        set_character_color_slot( 4, 230, 103, 86, 1 ); //pickmid
+        set_character_color_slot( 5, 255, 230, 234, 1 ); //picklight
+        set_article_color_slot( 3, 210, 10, 44, 1 ); //pickdark
+        set_article_color_slot( 4, 230, 103, 86, 1 ); //pickmid
+        set_article_color_slot( 5, 255, 230, 234, 1 ); //picklight
+        break;
+}
 }
 
 if get_gameplay_time() != 0 {
@@ -38,6 +67,11 @@ if get_gameplay_time() != 0 {
         set_character_color_slot( 0, 168, 116, 62, .6 )
         set_character_color_slot( 1, 203, 160, 117, .6 )
         set_character_color_slot( 2, 203, 160, 117, .6 )
+    }
+    if get_player_color( player ) == 21 {
+        set_character_color_slot( 3, 0, 110, 212, .4 )
+        set_character_color_slot( 4, 17, 185, 237, .3 )
+        set_character_color_slot( 5, 214, 245, 255, .3 )
     }
     if get_player_color( player ) == 5 {
     set_character_color_slot( 0, 36, 16, 48, .9 )
@@ -123,5 +157,5 @@ for (var i = 0; i < num_chunks; i++) {
     //print(`matching shift = ${chunk_len}`);
     chunk_offset += chunk_len;
 }
-print(chunk_arr);
+//eprint(chunk_arr);
 return chunk_arr;

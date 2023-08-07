@@ -1,3 +1,5 @@
+is_totk_link = true
+
 timer = 0
 ascend_plat = undefined
 ascend_y = 0

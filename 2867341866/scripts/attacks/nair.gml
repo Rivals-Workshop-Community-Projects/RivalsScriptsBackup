@@ -14,7 +14,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_buzzsaw_throw"));
@@ -22,13 +22,13 @@ set_window_value(AT_NAIR, 2, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_NAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_window_value(AT_NAIR, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_NAIR,3);

@@ -1,6 +1,7 @@
 //hit_player.gml
 
 if hit_player_obj.id != id && hit_player_obj.totk_ustrong_grabbed_id == id hit_player_obj.totk_ustrong_grabbed_id = noone
+if hit_player_obj.id != id && hit_player_obj.totk_ustrong_lerp_id == id hit_player_obj.totk_ustrong_lerp_id = noone
 
 switch my_hitboxID.attack {
     case AT_JAB:
@@ -45,6 +46,12 @@ switch my_hitboxID.attack {
         set_window_value(AT_USTRONG, 4, AG_WINDOW_GOTO, 5);
         hit_player_obj.totk_ustrong_grabbed_id = id
         ustrong_grabbing = true
+    }
+    
+    if my_hitboxID.hbox_num == 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+        hit_player_obj.totk_ustrong_lerp_id = id
+        ustrong_distance_x = 0
+        ustrong_distance_y = 20
     }
     break;
     

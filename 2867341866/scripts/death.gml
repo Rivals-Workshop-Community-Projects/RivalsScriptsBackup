@@ -1,6 +1,9 @@
 if get_player_color(player) == 17 {
     sound_play(sound_get("death"))
 }
+arcadeswitch++;
+if arcadeswitch > 3 arcadeswitch = 1
+
 
 if get_player_color( player ) == 12 {
     // Neon (FTL)

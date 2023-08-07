@@ -48,6 +48,9 @@ if attack == AT_USPECIAL  {
 
         if hitbox_timer == 5 || hitted == 2 {
             sound_play(sound_get("boom"), 0, noone, 1, 1.3)
+            if get_player_color( player ) == 21 {
+                sound_play(asset_get("sfx_swish_heavy2"), 0, noone, .5, 1.05)
+            }
 
         }
 
@@ -57,7 +60,7 @@ if attack == AT_USPECIAL  {
         }
         if (hitbox_timer == 5 || hitted == 3){
             sprite_index = asset_get( "empty_sprite" );
-            explosion = create_hitbox( AT_USPECIAL, 2, x, y );
+            explosion = create_hitbox( AT_USPECIAL, 2, x, y + 5 );
             //if (player == orig_player) spawn_gem(2*spr_dir, -3);
             destroyed = 1;
         }
@@ -108,6 +111,9 @@ if attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR {
 
         if hitbox_timer == 75 || hitted == 2 {
             sound_play(sound_get("boom"))
+            if get_player_color( player ) == 21 {
+                sound_play(asset_get("sfx_swish_heavy2"), 0, noone, 1, 1.05)
+            }
 
         }
         if hitbox_timer >70 {
