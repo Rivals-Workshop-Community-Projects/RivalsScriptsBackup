@@ -28,9 +28,9 @@ if get_player_color(player) == 17{
 	}
 }
 
-if (y > room_height + 100 && state != 5){
-	state = 5;
+if ((y > (room_height + 100)) || x > room_width || x < 0){
 	instance_destroy(hbox_mine);
+	instance_destroy();
 }
 
 if (free and (state == 1 or state == 2)){

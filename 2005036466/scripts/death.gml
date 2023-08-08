@@ -23,7 +23,6 @@ if faces_visible{
   speaker1 = ("static");
 }
 
-
 pen_mine_unstable = false;
 penny_install = false;
 
@@ -69,6 +68,7 @@ with(oPlayer){
 			init_shader();
 		}
 		if penny_charged_id != noone {
+			penny_is_charged = false;
 			penny_charge_timer = 0;
 			penny_charge_sound = false;
 			outline_color = [0,0,0];
@@ -80,4 +80,8 @@ with(oPlayer){
 			mine_player = noone;
 		}
 	}
+}
+
+if get_player_color(player) == 19{
+	pen_arcade_col++;
 }

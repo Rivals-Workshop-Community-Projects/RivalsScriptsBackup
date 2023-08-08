@@ -6,7 +6,7 @@ switch(attack){
     case AT_DAIR:
         reset_attack_value(AT_DAIR, AG_LANDING_LAG);
         if penny_dair_used < 6{
-            set_window_value(AT_DAIR, 4, AG_WINDOW_VSPEED, -6 + penny_dair_used);
+            set_window_value(AT_DAIR, 4, AG_WINDOW_VSPEED, -6 + floor(penny_dair_used * 1.5));
         }
         penny_dair_used++;
         break;

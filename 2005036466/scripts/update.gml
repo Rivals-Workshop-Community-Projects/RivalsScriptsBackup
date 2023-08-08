@@ -43,6 +43,38 @@ if !opponent_strapped{
 	pen_mine_unstable = false;
 }
 
+if get_player_color(player) == 19{
+	switch(pen_arcade_col){
+		case 0:
+			if penny_charge_r != 140{
+				set_article_color_slot(3, 140, 222, 94);
+				penny_charge_r = 140;
+				penny_charge_g = 222;
+				penny_charge_b = 94;
+				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
+			}
+			break;
+		case 1:
+			if penny_charge_r != 217{
+				set_article_color_slot(3, 217, 135, 205);
+				penny_charge_r = 217;
+				penny_charge_g = 135;
+				penny_charge_b = 205;
+				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
+			}
+			break;
+		case 2:
+			if penny_charge_r != 145{
+				set_article_color_slot(3, 145, 210, 243);
+				penny_charge_r = 145;
+				penny_charge_g = 210;
+				penny_charge_b = 243;
+				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
+			}
+			break;
+	}
+}
+
 // Funny
 if opponent_strapped{
 	if mine_active == 0 and move_cooldown[AT_DSPECIAL] != 360{

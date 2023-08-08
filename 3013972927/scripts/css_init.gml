@@ -16,9 +16,14 @@ preview_x = 0; //preview char
 preview_y = 0;
 
 vo_x = 180;
-vo_y = 35;
+vo_y = 110;
 vo_button_state = 0; //0 = normal | 1 = hover | 2 = press
 cur_select = 1; //0 = mute | 1 = On
+
+beat_x = 180;
+beat_y = 115;
+beat_button_state = 0; //0 = normal | 1 = hover | 2 = press
+cur1_select = 0; //0 = mute | 1 = On
 
 vo_pos = [
     x + vo_x,
@@ -27,9 +32,20 @@ vo_pos = [
     y + vo_y + sprite_get_height(sprite_get("cssvoice_button")) * 2
 ];
 
+beat_pos = [
+    x + beat_x,
+    y + beat_y,
+    x + beat_x + sprite_get_width(sprite_get("cssvoice_button")) * 2,
+    y + beat_y + sprite_get_height(sprite_get("cssvoice_button")) * 2
+];
+
 synced_vars = split_synced_var(2);
+synced_vars1 = split_synced_var(2);
 cur_select = synced_vars[0];
-voice_init(cur_select)
+voice_init(cur_select);
+
+cur1_select = synced_vars[0];
+bpm_init(cur1_select);
 
 //ALT NAMES
 //seasonal alt names
@@ -101,6 +117,16 @@ cur_voiceclip = [noone, noone];
 voice_cooldown = 0;
 voice_cooldown_set = 70; //cooldown for regular voiceclips
 voice_cooldown_set_100 = 110; //cooldown for high % lines
+
+#define bpm_init(_bpm)
+bpm = 0; 
+//Voice clips
+switch (_bpm)
+{
+    default: bpm = 0; break;
+    case 0: bpm = 0; break;
+    case 1: bpm = "On"; break;
+}
 
 #define generate_synced_var
 ///args chunks...

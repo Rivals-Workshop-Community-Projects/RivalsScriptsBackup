@@ -69,7 +69,7 @@ if(instance_exists(state))
             var frame_dur = 6; //duration of each frame
             image_index = beat_hit_time;
             spr_dir = player_id.spr_dir;
-            if(game_time % beat_hit_speed = 0)
+            if(player_id.bpm_onBeat_check)
             {
             	beat_hit_time++;
             	if(beat_hit_time > 10)
@@ -92,7 +92,7 @@ if(instance_exists(state))
             var frame_dur = 6; //duration of each frame
             image_index = beat_hit_time;
             spr_dir = player_id.spr_dir;
-            if(game_time % beat_hit_speed = 0)
+            if(player_id.bpm_onBeat_check)
             {
             	beat_hit_time++;
             	if(beat_hit_time > 10)

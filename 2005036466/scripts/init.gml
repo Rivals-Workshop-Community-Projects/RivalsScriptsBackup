@@ -73,6 +73,7 @@ switch(get_player_color(player)){
 }
 
 taunt_ready = 0;
+pen_arcade_col = 0;
 
 //Basic movement shtuff.
 hurtbox_spr = sprite_get("penny_hurt");

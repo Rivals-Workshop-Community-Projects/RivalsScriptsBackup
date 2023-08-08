@@ -5,7 +5,7 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("penny_hurt"));
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial_start"));
@@ -90,34 +90,34 @@ set_attack_value(AT_USPECIAL_2, AG_AIR_SPRITE, sprite_get("uspecial2"));
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("penny_hurt"));
 
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial_start"));
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 

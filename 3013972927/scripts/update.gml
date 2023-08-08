@@ -10,8 +10,9 @@ game_time = get_gameplay_time(); //get_gameplay_time() is a timer that counts up
 
 user_event(0);
 user_event(2);
+checkStageBGM();
 
-if(game_time % beat_hit_speed = 0)
+if(bpm_onBeat_check)
 {
 	beat_hit_time++;
 	
@@ -638,8 +639,8 @@ with (assist_call) {
 	reset_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE);
 	reset_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING);
 	
-	reset_hitbox_value(AT_DSTRONG, 2, AG_WINDOW_LOOP_REFRESH_HITS)
-	reset_window_value(AT_DSTRONG, 4, AG_WINDOW_LOOP_TIMES);
+//	reset_hitbox_value(AT_DSTRONG, 2, AG_WINDOW_LOOP_REFRESH_HITS)
+//	reset_window_value(AT_DSTRONG, 4, AG_WINDOW_LOOP_TIMES);
 	reset_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);
 	reset_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE);
 	//Special Reset
@@ -931,4 +932,200 @@ if (vo != 0)
             get_string(`variables pg ${it++}/${max_pages}`, string_copy(str,i,4096));
         }
     }
+}
+
+#define checkStageBGM
+{
+	var stageID = get_stage_data(SD_ID);
+//	print("BPM: " + string(get_stage_data(SD_ID)));
+	
+	if(game_time == 2)
+	{
+		print("Stage ID: " + string(get_stage_data(SD_ID)));
+		switch(stageID)
+		{
+			default:
+				songBPM = 130;
+				beat_hit_speed = 3;
+			break;
+			
+			case 1: 
+			print("Stage: " + "Treetop Lodge" + "BPM: 150");
+				songBPM = 150;
+			break;
+			
+			case 2: 
+				print("Stage: " + "Fire Capital" + "BPM: 140");
+				songBPM = 140;
+			break;
+			
+			case 3: 
+				print("Stage: " + "Air Armada" + "BPM: 170");
+				songBPM = 170;
+			break;
+			
+			case 4: 
+				print("Stage: " + "The Rock Wall" + "BPM: 135");
+				songBPM = 135;
+			break;
+			
+			case 5: 
+				print("Stage: " + "Merchant Port" + "BPM: 140");
+				songBPM = 140;
+			break;
+			
+			case 6: 
+				print("Stage: " + "Treetop Lodge" + "BPM: 150");
+				songBPM = 150;
+			break;
+			
+			case 7: 
+				print("Stage: " + "Blazing Hideout" + "BPM: 145");
+				songBPM = 145;
+			break;
+			
+			case 8: 
+				print("Stage: " + "Tower of Heaven" + "BPM: 140");
+				songBPM = 140;
+			break;
+			
+			case 9: 
+				print("Stage: " + "Tempest Peak" + "BPM: 160");
+				songBPM = 160;
+			break;
+			
+			case 10: 
+				print("Stage: " + "Frozen Fortress" + "BPM: 140");
+				songBPM = 140;
+			break;	
+			
+			case 11: 
+				print("Stage: " + "Aetheral Gates" + "BPM: 150");
+				songBPM = 150;
+			break;	
+			
+			case 12: 
+				print("Stage: " + "Endless Abyss" + "BPM: 150");
+				songBPM = 150;
+			break;
+			
+			case 15: 
+				print("Stage: " + "The Spirit Tree" + "BPM: 120");
+				songBPM = 120;
+			break;	
+			
+			case 17: 
+				print("Stage: " + "Neo Fire Capital" + "BPM: 160");
+				songBPM = 160;
+			break;	
+			
+			case 17: 
+				print("Stage: " + "Swampy Estuary" + "BPM: 166");
+				songBPM = 166;
+			break;
+			
+			case 19: 
+				print("Stage: " + "The Forest Floor" + "BPM: 165");
+				songBPM = 165;
+			break;	
+			
+			case 20: 
+				print("Stage: " + "Junesville" + "BPM: 140");
+				songBPM = 140;
+			break;	
+			
+			case 21: 
+				print("Stage: " + "Trouple Pond" + "BPM: 186");
+				songBPM = 186;
+			break;	
+			
+			case 22: 
+				print("Stage: " + "Practice Room" + "BPM: 130");
+				songBPM = 130;
+			break;	
+			
+			case 23: 
+				print("Stage: " + "Aether High" + "BPM: 129");
+				songBPM = 129;
+			break;
+			
+			case 24: 
+				print("Stage: " + "Pridemoon Keep" + "BPM: 139");
+				songBPM = 139;
+			break;
+			
+			case 25: 
+				print("Stage: " + "Frozen Gates" + "BPM: 144");
+				songBPM = 144;
+			break;
+			
+			case 26: 
+				print("Stage: " + "The Tutorial Grid" + "BPM: 130");
+				songBPM = 130;
+			break;
+			
+			case 27: 
+				print("Stage: " + "ROA Ring" + "BPM: 125");
+				songBPM = 125;
+			break;
+			
+			case 33: 
+				print("Stage: " + "Neo Blazing Rail" + "BPM: 150");
+				songBPM = 150;
+			break;
+			
+			case 34: 
+				print("Stage: " + "Neo Julesville" + "BPM: 150");
+				songBPM = 150;
+				
+			case 35: 
+				print("Stage: " + "Crystal Oasis" + "BPM: 150");
+				songBPM = 150;
+			break;
+			
+			case 36: 
+				print("Stage: " + "Diamond Groove" + "BPM: 150");
+				songBPM = 150;
+			break;	
+			
+		}
+		bpm_prev = songBPM;
+	}
+		calculateStageBPM();
+	
+}
+
+#define calculateStageBPM
+{
+	var BGMtimeCrotchet = 60 / songBPM;
+	var BGMtimeOffset = 1;
+	
+	BGMtimeBPS = 60 / songBPM; // Beats per second
+//	print(game_time);
+	if(game_time > 135) {
+		
+		var fixedUpdatesPS = game_time;
+		bpm_fixedUpdates++;
+		if(bpm_toggle == false)
+		{
+		songBPM = bpm_prev;
+		}
+		else 
+			{
+				songBPM = 130
+		//		print("Fixed Updates:" + string(BGMval));
+			}
+			
+		var BGMval = bpm_fixedUpdates % (songBPM / (songBPM/10));
+		
+		if(BGMval = 0 || BGMval = 3 || BGMval = 6 || BGMval = 9)
+			{
+			//	print("On beat!" + string(BGMval));
+			//	sound_play(sound_get("chai_tut_bell"),0,0,.4);
+				bpm_onBeat_check = true;
+			}
+			else {
+				bpm_onBeat_check = false;
+			}
+	}
 }

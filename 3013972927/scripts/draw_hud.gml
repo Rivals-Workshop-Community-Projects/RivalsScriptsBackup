@@ -27,6 +27,13 @@ if (debug_display)
     draw_debug_text(temp_x+mul*5, temp_y+mul*-1, "vsp = " + string(vsp));
 }
 */
+
+draw_debug_text(
+    (!debug_display ? temp_x + 86 : temp_x + 124),    //debug display alters the position of the hud
+    (!debug_display ? temp_y - 24 : temp_y - 30) + 10,      //the +16 and +10 are offsets
+    string(songBPM)
+);
+
 draw_sprite_ext(
     assistHud_strip[assist_index],
     move_cooldown[AT_DSPECIAL] > 0,
@@ -44,8 +51,8 @@ if(move_cooldown[AT_NSPECIAL] > 0)
     var fillCool_total = 120
     var fillCool = 1 - (move_cooldown[AT_NSPECIAL] / fillCool_total);
     //var fillCoolVis = (move_cooldown[AT_NSPECIAL] / fillCool_total);
-draw_sprite_ext(sprite_get("fx_grapple_meter_back"), 0, temp_x + 48, temp_y - 19, 1.5, 1, 0, c_white, .8);
-draw_sprite_ext(sprite_get("fx_grapple_meter_mask"), 0, temp_x + 48, temp_y - 19, fillCool*1.5, 1, 0, c_white, .8);
+draw_sprite_ext(sprite_get("fx_grapple_meter_back"), 0, temp_x + 48, temp_y - 24, 1.5, 1, 0, c_white, .8);
+draw_sprite_ext(sprite_get("fx_grapple_meter_mask"), 0, temp_x + 48, temp_y - 24, fillCool*1.5, 1, 0, c_white, .8);
 }
 
 if(move_cooldown[AT_DSPECIAL] > 0)

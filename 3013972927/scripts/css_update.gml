@@ -26,6 +26,7 @@ if (alt_cur == 11 || alt_cur == 12) user_event(0);
 
 if (instance_exists(cursor_id))
 {
+    
     if (get_instance_x(cursor_id) > vo_pos[0] && get_instance_x(cursor_id) < vo_pos[2] && get_instance_y(cursor_id) > vo_pos[1] && get_instance_y(cursor_id) < vo_pos[3]) //lanugage settings
     {
         if (press_delay == 0) vo_button_state = 1;
@@ -68,6 +69,7 @@ if (instance_exists(cursor_id))
         vo_button_state = 0;
         suppress_cursor = false;
     }
+    
 }
 
 

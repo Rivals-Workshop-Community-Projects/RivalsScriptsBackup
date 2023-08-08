@@ -365,6 +365,66 @@ var win_time = argument_count > 6 ? argument[6] : 0;
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        
+        patch_note_title[i] = "8/7/2023 - Music BPM Feature you all wanted"
+        patch_note_text[i++] = 
+        "8 / 7 / 2023
+---
+v1.4
+
+A huge change but small patch
+
+*** = Major update stuff
+
+Overall:
+
+*** Added the ability to change the BPM function to be adjusted to a base stage's music!
+	- On by default, if you want to revert to a more stable BPM then hold Right + press Taunt in the match!
+	- When on a custom stage, BPM defaults to an approximate 130 BPM
+
+Compatible with all BASE STAGES.
+'Treetop Lodge' + 'BPM: 150'
+'Fire Capital' + 'BPM: 140'
+'Air Armada' + 'BPM: 170'
+'The Rock Wall' + 'BPM: 135'
+'Merchant Port' + 'BPM: 140'
+'Blazing Hideout' + 'BPM: 145'
+'Tower of Heaven' + 'BPM: 140'
+'Tempest Peak' + 'BPM: 160'
+'Frozen Fortress' + 'BPM: 140'
+'Aetheral Gates' + 'BPM: 150'
+'Endless Abyss' + 'BPM: 150'
+'The Spirit Tree' + 'BPM: 120'
+'Neo Fire Capital' + 'BPM: 160'
+'Swampy Estuary' + 'BPM: 166'
+'The Forest Floor' + 'BPM: 165'
+'Junesville' + 'BPM: 140'
+'Trouple Pond' + 'BPM: 186'
+'Practice Room' + 'BPM: 130'
+'Aether High' + 'BPM: 129'
+'Pridemoon Keep' + 'BPM: 139'
+'Frozen Gates' + 'BPM: 144'
+'The Tutorial Grid' + 'BPM: 130'
+'ROA Ring' + 'BPM: 125'
+'Neo Blazing Rail' + 'BPM: 150'
+'Neo Julesville' + 'BPM: 150'
+'Crystal Oasis' + 'BPM: 150'
+'Diamond Groove' + 'BPM: 150'
+
+Aesthetics:
+	-Adjusted the y-position of Magnet Hand coolbar by 5 pixels
+
+Attacks:
+
+FStrong:
+	- Increased the knockback of attack
+		- From 7 to 9
+		- Beat Hit: From 9 to 11
+UStrong:
+	- Increased the knockback of attack
+		- From 8 to 10
+		- Beat Hit: From 9 to 11"
+		
         patch_note_title[i] = "8/5/2023 - 1st big balance"
         patch_note_text[i++] = 
         "8/5/2023

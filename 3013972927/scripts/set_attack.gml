@@ -65,6 +65,19 @@ if (attack == AT_TAUNT && down_down)
 				sound_play(sound_get("chai_tut_bell"),0,0,.4);
 			}
 	}
+	
+	if (attack == AT_TAUNT && right_down) 
+	{
+		if(bpm_toggle == true)
+		{
+			bpm_toggle = false;
+			sound_play(sound_get("chai_tut_bell"),0,0,.4);
+		}
+			else {
+				bpm_toggle = true;
+				sound_play(sound_get("chai_tut_bell"),0,0,.4);
+			}
+	}
 
 if (attack == AT_DSPECIAL)
 {

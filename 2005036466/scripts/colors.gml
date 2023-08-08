@@ -38,7 +38,7 @@ set_color_profile_slot_range( 8, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Blue (Lucario)
 set_color_profile_slot( 1, 0, 59, 106, 161 ); //Fur
@@ -238,49 +238,49 @@ set_color_profile_slot( 18, 6, 44, 50, 51 ); //Belts
 set_color_profile_slot( 18, 7, 85, 89, 107 ); //That Single FUCKING HAIR PARTICLE
 set_color_profile_slot( 18, 8, 245, 119, 29 ); //Real Metal Color
 
+// Arcade
+set_color_profile_slot( 19, 0, 214, 214, 214 ); //Fur
+set_color_profile_slot( 19, 1, 214, 214, 214 ); //Fur Light
+set_color_profile_slot( 19, 2, 65, 63, 54 ); //Hair
+set_color_profile_slot( 19, 3, 140, 222, 94 ); //Metaru
+set_color_profile_slot( 19, 4, 65, 63, 54 ); //Shirt
+set_color_profile_slot( 19, 5, 65, 63, 54 ); //Pants
+set_color_profile_slot( 19, 6, 214, 214, 214 ); //Belts
+set_color_profile_slot( 19, 7, 13, 11, 10 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 19, 8, 140, 222, 94 ); //Real Metal Color
+
 // Sunny
-set_color_profile_slot( 19, 0, 193, 71, 14 ); //Fur
-set_color_profile_slot( 19, 1, 212, 212, 212 ); //Fur Light
-set_color_profile_slot( 19, 2, 87, 46, 43 ); //Hair
-set_color_profile_slot( 19, 3, 154, 88, 196 ); //Metaru
-set_color_profile_slot( 19, 4, 110, 78, 74 ); //Shirt
-set_color_profile_slot( 19, 5, 43, 22, 22 ); //Pants
-set_color_profile_slot( 19, 6, 42, 43, 44 ); //Belts
-set_color_profile_slot( 19, 7, 38, 13, 24 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 19, 8, 174, 58, 58 ); //Real Metal Color
+set_color_profile_slot( 20, 0, 193, 71, 14 ); //Fur
+set_color_profile_slot( 20, 1, 212, 212, 212 ); //Fur Light
+set_color_profile_slot( 20, 2, 87, 46, 43 ); //Hair
+set_color_profile_slot( 20, 3, 154, 88, 196 ); //Metaru
+set_color_profile_slot( 20, 4, 110, 78, 74 ); //Shirt
+set_color_profile_slot( 20, 5, 43, 22, 22 ); //Pants
+set_color_profile_slot( 20, 6, 42, 43, 44 ); //Belts
+set_color_profile_slot( 20, 7, 38, 13, 24 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 20, 8, 174, 58, 58 ); //Real Metal Color
 
 // Freya
-set_color_profile_slot( 20, 0, 69, 69, 89 ); //Fur
-set_color_profile_slot( 20, 1, 193, 193, 157 ); //Fur Light
-set_color_profile_slot( 20, 2, 128, 96, 28 ); //Hair
-set_color_profile_slot( 20, 3, 255, 198, 66 ); //Metaru
-set_color_profile_slot( 20, 4, 52, 62, 133 ); //Shirt
-set_color_profile_slot( 20, 5, 214, 214, 174 ); //Pants
-set_color_profile_slot( 20, 6, 51, 53, 66 ); //Belts
-set_color_profile_slot( 20, 7, 56, 12, 3 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 20, 8, 240, 115, 69 ); //Real Metal Color
+set_color_profile_slot( 21, 0, 69, 69, 89 ); //Fur
+set_color_profile_slot( 21, 1, 193, 193, 157 ); //Fur Light
+set_color_profile_slot( 21, 2, 128, 96, 28 ); //Hair
+set_color_profile_slot( 21, 3, 255, 198, 66 ); //Metaru
+set_color_profile_slot( 21, 4, 52, 62, 133 ); //Shirt
+set_color_profile_slot( 21, 5, 214, 214, 174 ); //Pants
+set_color_profile_slot( 21, 6, 51, 53, 66 ); //Belts
+set_color_profile_slot( 21, 7, 56, 12, 3 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 21, 8, 240, 115, 69 ); //Real Metal Color
 
 // Pochita
-set_color_profile_slot( 21, 0, 191, 88, 36 ); //Fur
-set_color_profile_slot( 21, 1, 191, 88, 36 ); //Fur Light
-set_color_profile_slot( 21, 2, 172, 70, 25 ); //Hair
-set_color_profile_slot( 21, 3, 152, 167, 179 ); //Metaru
-set_color_profile_slot( 21, 4, 245, 242, 228 ); //Shirt
-set_color_profile_slot( 21, 5, 57, 61, 60 ); //Pants
-set_color_profile_slot( 21, 6, 89, 70, 60 ); //Belts
-set_color_profile_slot( 21, 7, 117, 0, 12 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 21, 8, 182, 192, 200 ); //Real Metal Color
-
-// Mint
-set_color_profile_slot( 22, 0, 129, 227, 178 ); //Fur
-set_color_profile_slot( 22, 1, 204, 255, 240 ); //Fur Light
-set_color_profile_slot( 22, 2, 27, 227, 182 ); //Hair
-set_color_profile_slot( 22, 3, 0, 255, 160 ); //Metaru
-set_color_profile_slot( 22, 4, 68, 122, 81 ); //Shirt
-set_color_profile_slot( 22, 5, 18, 82, 59 ); //Pants
-set_color_profile_slot( 22, 6, 107, 237, 171 ); //Belts
-set_color_profile_slot( 22, 7, 0, 116, 120 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 22, 8, 0, 255, 160 ); //Real Metal Color
+set_color_profile_slot( 22, 0, 191, 88, 36 ); //Fur
+set_color_profile_slot( 22, 1, 191, 88, 36 ); //Fur Light
+set_color_profile_slot( 22, 2, 172, 70, 25 ); //Hair
+set_color_profile_slot( 22, 3, 152, 167, 179 ); //Metaru
+set_color_profile_slot( 22, 4, 245, 242, 228 ); //Shirt
+set_color_profile_slot( 22, 5, 57, 61, 60 ); //Pants
+set_color_profile_slot( 22, 6, 89, 70, 60 ); //Belts
+set_color_profile_slot( 22, 7, 117, 0, 12 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 22, 8, 182, 192, 200 ); //Real Metal Color
 
 // Lumi
 set_color_profile_slot( 23, 0, 150, 249, 255 ); //Fur
@@ -369,6 +369,17 @@ set_color_profile_slot( 30, 5, 88, 67, 143 ); //Pants
 set_color_profile_slot( 30, 6, 206, 191, 224 ); //Belts
 set_color_profile_slot( 30, 7, 12, 10, 18 ); //That Single FUCKING HAIR PARTICLE
 set_color_profile_slot( 30, 8, 85, 85, 105 ); //Real Metal Color
+
+// DT
+set_color_profile_slot( 31, 0, 255, 180, 1 ); //Fur
+set_color_profile_slot( 31, 1, 240, 240, 180 ); //Fur Light
+set_color_profile_slot( 31, 2, 250, 136, 1 ); //Hair
+set_color_profile_slot( 31, 3, 153, 54, 207 ); //Metaru
+set_color_profile_slot( 31, 4, 148, 39, 207 ); //Shirt
+set_color_profile_slot( 31, 5, 92, 91, 96 ); //Pants
+set_color_profile_slot( 31, 6, 232, 211, 154 ); //Belts
+set_color_profile_slot( 31, 7, 173, 41, 0 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 31, 8, 250, 136, 1 ); //Real Metal Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

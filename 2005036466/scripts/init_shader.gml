@@ -93,34 +93,46 @@ switch(color){
                 break;
         }
         break;
-    case 12:	// GB
+    case 12: // GB
     	// set_character_color_slot(3, 211, 226, 154 ); //Metaru
         for (var slot_num = 0; slot_num < 8; slot_num++) {
             set_character_color_shading( slot_num, 0 );
         }
         break;
-    case 14:	// Yang
+    case 14: // Yang
         set_character_color_shading( 5, 0.5 );
         break;
-    case 15:	// Hitfall
+    case 15: // Hitfall
     	// set_character_color_slot(3, 219, 219, 219 ); //Metaru
         set_character_color_shading( 5, 0.5 );
         break;
-    case 16:	// Genesis
+    case 16: // Genesis
     	// set_character_color_slot(3, 219, 219, 219 ); //Metaru
         set_character_color_shading( 5, 0.5 );
         break;
-    case 17:
+    case 17: // Pool Party
     	set_character_color_slot( 5, 235, 236, 242, 0.1); //Pants
     	set_character_color_shading( 5, 2 );
     	break;
-    case 21: // Mint
-    	set_shading([2, 1, 1.5, 1, 1, 1, 1, 1, 1])
+    case 19: // Arcade
+    	set_character_color_shading( 4, .5 );
+    	set_character_color_shading( 5, .5 );
+    	switch(pen_arcade_col){
+    		case 0:
+    			set_character_color_slot( 3, 140, 222, 94 ); //Real Metal Color
+    			break;
+    		case 1:
+    			set_character_color_slot( 3, 217, 135, 205 ); //Real Metal Color
+    			break;
+    		case 2:
+    			set_character_color_slot( 3, 145, 210, 243 ); //Real Metal Color
+    			break;
+    	}
     	break;
-    case 22: // Lumi
+    case 23: // Lumi
     	set_shading([1, 2, 1, 1, 1, 1, 1, 1, 1])
     	break;
-    case 26:	// Awoo
+    case 26: // Awoo
     	// set_character_color_slot(3, 250, 176, 194 ); //Metaru
         set_character_color_shading( 5, 0.5 );
         break;
@@ -129,7 +141,7 @@ switch(color){
     	set_character_color_shading( 1, 2 );
     	set_character_color_shading( 3, 0.75 );
     	break;
-    case 29: // Luka
+    case 30: // Luka
     	set_character_color_shading( 2, 0.75);
     	set_character_color_shading( 3, 0.75);
     	break;

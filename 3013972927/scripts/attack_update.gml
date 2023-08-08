@@ -533,7 +533,7 @@ switch (attack)
 			
 			if( window_timer > 7 && !hitpause) 
 			{
-					if( (special_pressed || shield_down) && pressedUSpec == false)
+					if( (special_pressed || shield_down) && pressedUspec == false)
 						{
 						uspec_beat_timed = true;
 								
@@ -855,7 +855,7 @@ switch (attack)
 }
 
 
-
+//custom_attack_grid();
 //0 will just go to the next window instead of a specific one
 //-1 makes it loop on the same window
 #define spawn_uspec_beam(uspec_angle_)
@@ -895,6 +895,119 @@ switch (attack)
 					}
 		
 }
+
+#define custom_attack_grid
+{
+    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
+    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
+    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
+
+    //make sure the player isn't in hitpause
+    if (!hitpause)
+    {
+        //make sure the window is in type 9 or 10
+        if (window_type_value == 9 || window_type_value == 10)
+        {
+            //checks the end of the window
+            if (window_timer == window_end)
+            {
+                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
+            }
+
+            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
+            {
+                if (window_timer == 0)
+                {
+                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
+                    window_loops ++; //at the start of the window, count a loop up
+                }
+
+                //when all the loops are over, go to the next window and reset the loop value
+                //if it's window type 10, it should stop the loop prematurely
+                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
+                {
+                    destroy_hitboxes();
+                    if (window < window_last)
+                    {
+                        window += 1;
+                        window_timer = 0;
+                    }
+                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
+                    window_loops = 0;
+                }
+            }
+            else if (window_loop_value == 0) attack_end(attack);
+            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
+            //this is how the game usually treats window type 9
+        }
+    }
+}
+#define custom_dust_effects
+{
+    //original code by FQF (from QUA mario), modified by bar-kun
+    with (asset_get("new_dust_fx_obj"))
+    {
+        //dust_fx <= 24 && dust_fx >= 0 will check the values in the array that are in between 0 and 24
+        //other.dust_effect[dust_fx] != 0 will check the array value isn't 0 (which represents the default effect)
+        //if we put any other number value it will act as if you have an effect, and remove the default dust
+        if (dust_fx <= 24 && dust_fx >= 0 && player == other.player && x != -3000 && other.dust_effect[dust_fx] != 0)
+        {
+            //all the values of the effect that eventually spawn are based off the original effect
+            //this allows us to add our own dusts in the proper placement and such
+            var effect = other.dust_effect[dust_fx]; //sets up effect
+            var spawn_x = x; //X and Y coordinates for where the effect should spawn
+            var spawn_y = y;
+            var dust_angle = draw_angle; //allows us to rotate the sprites around
+            var dust_depth = dust_depth; //sets the depth of the effect
+
+            //other variable checks you can add yourself:
+            //player_id - player object
+            //player - player number
+            //spr_dir - dust's facing direction
+            //dust_length - dust's length
+            //dust_color - which shade (from the player's shade slots) should the dust color with
+            //init - checks if the dust spawned, false for the first frame
+            //shader_init - ???
+            //step_timer - ???
+            //fg_index - ???
+            //__sync_id - ???
+
+            //spawn new dusts
+            with (other)
+            {
+                //exceptions:
+                //  - we can add in exceptions for certain dusts to do various things (example below)
+                //  - the numbers go between 0 - 24
+                switch (other.dust_fx)
+                {
+                    case 8: //wall hit bounce - when hitting the celling it should b rotated properly
+                        if (hit_player_obj.vsp != 0 && hit_player_obj.free && dust_angle == 0) dust_angle = 180; //celling bounce
+                        break;
+                }
+                
+                //spawn effect
+                var new_dust_fx = spawn_hit_fx(spawn_x, spawn_y, effect);
+                new_dust_fx.draw_angle = dust_angle;
+                new_dust_fx.depth = dust_depth;
+                new_dust_fx.hsp = other.hsp;
+                new_dust_fx.vsp = other.vsp;
+            }
+
+            //"remove" dust by moving to a place nobody will see
+            x = -3000;
+            y = -3000;
+            dust_length = 0;
+        }
+    }
+
+    //K.O stars are kinda funky - they need to be controlled outside of the with statement
+    //as we need to make them move down every frame
+    with (hit_fx_obj) if (player == other.player) if (hit_fx == other.dust_effect[24]) vsp ++;
+}
+
+//collision_line() but it returns the point it collided with.
+//Function written by YellowAfterLife
+//https://yal.cc/gamemaker-collision-line-point/ 
 
 #define set_window(window_num)
 {

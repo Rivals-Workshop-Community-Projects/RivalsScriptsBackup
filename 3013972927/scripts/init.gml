@@ -239,12 +239,19 @@ beat_hit_time = 0;
 is_onBeat = false;
 hit_onBeat = false;
 beat_hit_speed = 3;
+beat_hit_speed_add = .3;
+beat_hit_time_total = 0;
+
+bpm_onBeat_check = false;
+bpm_toggle = false;
+bpm_fixedUpdates = 0;
+bpm_prev = 130;
+
 jump_canceled = false;
 jump_canceled_nair = false;
 beatSound = 0;
 tut_sound = false;
 tut_text = "";
-
 
 c808 = instance_create(x, y, "obj_article2");
 c808_beat_strip[0] = sprite_get("c808");
@@ -474,6 +481,10 @@ assistHud_strip[0] = sprite_get("chai_assistHUD_1x2");
 assistHud_strip[1] = sprite_get("chai_assistHUD_2x2");
 assistHud_strip[2] = sprite_get("chai_assistHUD_3x2");
 
+songBPM = 130;
+BGMtimer = 0; 
+BGMtimeBPS = songBPM / 60; // Beats per second
+
 //rune F needs 2 players only to work
 runeF_player_amount = 0; //needs to be 2 players
 runeF_face_dir = spr_dir; //to support facing back
@@ -510,6 +521,17 @@ cur_voiceclip = [noone, noone];
 voice_cooldown = 0;
 voice_cooldown_set = 70; //cooldown for regular voiceclips
 voice_cooldown_set_100 = 110; //cooldown for high % lines
+
+#define bpm_init(_bpm)
+bpm = 0; 
+//Voice clips
+switch (_bpm)
+{
+    default: bpm = 0; break;
+    case 0: bpm = 0; break;
+    case 1: bpm = "On"; break;
+}
+print(bpm);
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 

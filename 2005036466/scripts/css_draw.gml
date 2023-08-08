@@ -27,7 +27,7 @@ var css_ex_y = temp_y - 30;
 var charuuid = string(sprite_get("idle"));
 if ("css_char" not in self || css_char != charuuid) {
     css_char = charuuid;
-    fur_col = array_create(31);
+    fur_col = array_create(32);
     init_shader();
 }
 //path_scale = 0;
@@ -94,7 +94,7 @@ switch(color){
 image_index = color;
 
 // USES FUR COLOR FOR THE RGB
-for(var c = 0; c < 31; c++){
+for(var c = 0; c < 32; c++){
 	fur_col[c] = make_color_rgb(get_color_profile_slot_r(c, 0), get_color_profile_slot_g(c, 0), get_color_profile_slot_b(c, 0));
 }
 
@@ -311,7 +311,7 @@ for(var c = 0; c < 31; c++){
 				break;
 				
 				case 19:
-			name = " 20: Sunny";
+			name = " 20: Arcade";
 			var position = 19;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -322,7 +322,7 @@ for(var c = 0; c < 31; c++){
 				break;
 				
 				case 20:
-			name = " 21: Freya";
+			name = " 21: Sunny";
 			var position = 20;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -333,7 +333,7 @@ for(var c = 0; c < 31; c++){
 				break;
 				
 				case 21:
-			name = " 22: Hero of Hell";
+			name = " 22: Freya";
 			var position = 21;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -344,7 +344,7 @@ for(var c = 0; c < 31; c++){
 				break;
 				
 				case 22:
-			name = " 23: Minty";
+			name = " 23: Hero of Hell";
 			var position = 22;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
@@ -425,7 +425,7 @@ for(var c = 0; c < 31; c++){
 			var position = 29;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];
-			ColorNextNext = fur_col[0];
+			ColorNextNext = fur_col[color+2];
 			if (path_position == 29 && path_scale == 0){
 				path_position = 30;
 			}
@@ -435,9 +435,20 @@ for(var c = 0; c < 31; c++){
 			name = " 31: Look A Star!";
 			var position = 30;
 			ColorPrev = fur_col[color-1];
+			ColorNext = fur_col[color+1];
+			ColorNextNext = fur_col[0];
+			if (path_position == 30 && path_scale == 0){
+				path_position = 31;
+			}
+				break;
+				
+				case 31:
+			name = " 32: Dog Time";
+			var position = 31;
+			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[0];
 			ColorNextNext = fur_col[1];
-			if (path_position == 30 && path_scale == 0){
+			if (path_position == 31 && path_scale == 0){
 				path_position = 0;
 			}
 				break;
