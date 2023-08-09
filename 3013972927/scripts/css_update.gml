@@ -44,15 +44,16 @@ if (instance_exists(cursor_id))
             {
                 default: vo = 0; break;
                 case 0: vo = 0; break;
-                case 1: vo = "on"; break;
+                case 1: vo = 1; break;
             }
-            
-            synced_vars = generate_synced_var(cur_select, 2);
-            set_synced_var(player, synced_vars)
 
             sound_play(asset_get("mfx_option"));
             
             play_voice("taunt", 0);
+            
+            generated_var = generate_synced_var(cur_select,1,cur1_select,1)
+			//print(generated_var);
+			set_synced_var(player, generated_var);
             //the else above and this are both forcing one voice clip at a time so they don't overlap
             if (cur_voiceclip[0] != cur_voiceclip[1])
             {
@@ -65,10 +66,52 @@ if (instance_exists(cursor_id))
         }
     }
     else
-    {
-        vo_button_state = 0;
-        suppress_cursor = false;
-    }
+    	{
+    		if (get_instance_x(cursor_id) > beat_pos[0] && get_instance_x(cursor_id) < beat_pos[2] && get_instance_y(cursor_id) > beat_pos[1] && get_instance_y(cursor_id) < beat_pos[3]) //lanugage settings
+			    {
+			        if (press_delay == 0) beat_button_state = 1;
+			        suppress_cursor = true;
+			
+			        if (menu_a_pressed)
+			        {
+			            cur1_select ++;
+			            if (cur1_select >= 2) 
+			            {
+			                cur1_select = 0;
+			            }
+			            
+			            switch (cur1_select)
+			            {
+			                default: bpm = 0; break;
+			                case 0: bpm = 0; break;
+			                case 1: 
+			                bpm = 1; 
+			                sound_play(sound_get("chai_tilt_beat_1"));
+			                break;
+			            }
+			            
+			            sound_play(asset_get("mfx_option"));
+			            
+			            generated_var = generate_synced_var(cur_select,1,cur1_select,1)
+						//print(generated_var);
+						set_synced_var(player, generated_var);
+			            //the else above and this are both forcing one voice clip at a time so they don't overlap
+			            if (cur_voiceclip[0] != cur_voiceclip[1])
+			            {
+			                sound_stop(cur_voiceclip[1]);
+			                cur_voiceclip[1] = cur_voiceclip[0];
+			            }
+			
+			            press_delay = 3;
+			            beat_button_state = 2;
+			        }
+			    }
+			    	else
+				    {
+				        beat_button_state = 0;
+				        suppress_cursor = false;
+				    }
+    	}
     
 }
 
@@ -79,6 +122,7 @@ if (press_delay > 0)
     if (vo_button_state == 2) vo_button_state = 2;
     press_delay --;
 }
+
 
 #define generate_synced_var
 ///args chunks...

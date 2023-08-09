@@ -80,20 +80,19 @@ switch (my_hitboxID.attack)
     case AT_NTHROW: case AT_NSPECIAL_AIR:
         if (my_hitboxID.hbox_num == 1) do_rune_warp(); //rune warp
         break;
+    case AT_EXTRA_3:
+        if (my_hitboxID.hbox_num < 3)
+        {
+            hit_player_obj.should_make_shockwave = false;
+            hit_player_obj.orig_knock = point_distance(0, 0, old_hsp, old_vsp);
+        }
+        break;
     //bar_grabbed_id setup
     case AT_FTHROW: case AT_FSPECIAL_AIR:
         if (my_hitboxID.hbox_num == 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)) 
         {
             bar_grabbed_id = hit_player_obj;
             bar_grab_time = 0;
-        }
-        break;
-    case AT_EXTRA_3:
-        if (my_hitboxID.hbox_num < 4 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
-        {
-            bar_grabbed_id = hit_player_obj;
-            bar_grab_time = 0;
-            if (!bar_grabbed_id.was_free) bar_grabbed_id.old_vsp -= 5;
         }
         break;
     case 39:
@@ -117,25 +116,52 @@ switch (my_hitboxID.attack)
 }
 
 //polaris logic
-if (lightbuff_active && !was_parried && homing_cooldown <= -1)
+if (lightbuff_active && !was_parried && polaris_shots_left > 0)
 {
     //who to track
-	if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) polaris_id = noone;
-	else polaris_id = hit_player_obj;
-	
-	//prevents it from spawning on some attacks and conditions
-	if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48
-	&& (my_hitboxID.attack != skill[11].skill_attack || my_hitboxID.attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
-	&& !polaris_shot && polaris_id != self)
-	{
-		polaris_shot = true;
-		homing_cooldown = 20; //internal cooldown
-		if (x > hit_player_obj.x) create_hitbox(skill[7].skill_attack, 1, x+64, y-48);
-		else create_hitbox(skill[7].skill_attack, 1, x-64, y-48);
-		drain_mp();
-	}
+    if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) polaris_id = noone;
+    else
+    {
+        polaris_id = hit_player_obj;
+        if (polaris_id.player < 5 && (polaris_id.clone || polaris_id.custom_clone)) //if it's a clone player ignore them and go straight to the original
+        {
+            with (oPlayer) if (other.polaris_id.player == player && !clone && !custom_clone) other.polaris_id = self;
+        }
+    }
+    
+    //prevents it from shooting on some attacks and conditions
+    if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48
+    && (my_hitboxID.attack != skill[11].skill_attack || my_hitboxID.attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
+    && !polaris_shot && polaris_id != self)
+    {
+        polaris_shot = true;
+        polaris_shot_ids[polaris_shots_left-1].shoot_projectile = true;
+        polaris_shot_ids[polaris_shots_left-1].hitbox_timer = 0;
+        polaris_shot_ids[polaris_shots_left-1] = noone;
+        polaris_shots_left --;
+
+        last_hitstop = hit_player_obj.hitstop_full;
+        last_kb = [hit_player_obj.orig_knock, hit_player_obj.old_hsp, hit_player_obj.old_vsp, hit_player_obj.was_free, hit_player_obj.sent_down];
+        last_hitstun = hit_player_obj.hitstun_full;
+    }
 }
-if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_holy_lightning"));
+if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1)
+{
+    sound_play(asset_get("sfx_holy_lightning"));
+    mp_current += my_hitboxID.damage;
+    with (hit_player_obj)
+    {
+        hitstop = other.last_hitstop + 15;
+        hitstop_full = hitstop;
+        orig_knock = other.last_kb[0];
+        was_free = other.last_kb[3];
+        sent_down = other.last_kb[4];
+        old_hsp = other.last_kb[1];
+        old_vsp = other.last_kb[2];
+        hitstun = other.last_hitstun;
+        hitstun_full = hitstun;
+    }
+}
 
 
 //overdrive
@@ -147,6 +173,8 @@ if (can_overdrive && od_cast == 0) || ("fs_char_initialized" in self && fs_char_
 
 if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (godbuff_mult-1) ));
 if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (theikos_mult+theikos_type-1)));
+
+mp_current = clamp(mp_current, 0, mp_max);
 
 
 #define drain_mp

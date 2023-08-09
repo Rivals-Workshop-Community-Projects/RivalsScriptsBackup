@@ -135,6 +135,20 @@ switch (alt_cur)
 	case 26: //theikos alt hair color changing
 		do_theikos_colors();
 		break;
+	case 27: //player color
+		var hud_r = color_get_red(get_player_hud_color(player));
+        var hud_g = color_get_green(get_player_hud_color(player));
+        var hud_b = color_get_blue(get_player_hud_color(player));
+
+		set_color_profile_slot(alt_cur, 4, floor(hud_r), floor(hud_g), floor(hud_b)); //CLOTHLIGHTBLUE
+		set_color_profile_slot(alt_cur, 0, floor(hud_r/2), floor(hud_g/2), floor(hud_b/2)); //CLOTHDARKBLUE
+		set_color_profile_slot(alt_cur, 5, floor(hud_r/4), floor(hud_g/4), floor(hud_b/4)); //CLOTHBLACK
+		//set_color_profile_slot(alt_cur, 6, floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))); //LIGHT
+		//set_color_profile_slot(alt_cur, 7, floor(max(0, hud_r - 50)), floor(max(0, hud_g - 50)), floor(max(0, hud_b - 50))); //FIRE
+
+		//set_article_color_slot(6, floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))); //LIGHT
+		//set_article_color_slot(7, floor(max(0, hud_r - 50)), floor(max(0, hud_g - 50)), floor(max(0, hud_b - 50))); //FIRE
+		break;
 }
 
 if (object_index == asset_get("draw_result_screen")) set_endgame_stuff();

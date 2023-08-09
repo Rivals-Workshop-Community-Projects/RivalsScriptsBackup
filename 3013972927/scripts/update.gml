@@ -398,7 +398,7 @@ with (oPlayer) if (temp_level != 0 && state == PS_PARRY && !perfect_dodged)
 //unless you are adding #defines, which should be at the bottom
 custom_attack_grid();
 if (uses_custom_dusts) custom_dust_effects();
-prep_hitboxes();
+//prep_hitboxes();
 
 
 //custom hitbox colors system (by @SupersonicNK)
@@ -423,6 +423,7 @@ prep_hitboxes();
         }
     }
 }
+
 //custom attack grid example - Looping window X times (by Bar-Kun)
 #define custom_attack_grid
 {
@@ -1009,6 +1010,11 @@ if (vo != 0)
 				songBPM = 150;
 			break;
 			
+			case 14: 
+				print("Stage: " + "The CEO Ring" + "BPM: 125");
+				songBPM = 125;
+			break;	
+			
 			case 15: 
 				print("Stage: " + "The Spirit Tree" + "BPM: 120");
 				songBPM = 120;
@@ -1019,7 +1025,7 @@ if (vo != 0)
 				songBPM = 160;
 			break;	
 			
-			case 17: 
+			case 18: 
 				print("Stage: " + "Swampy Estuary" + "BPM: 166");
 				songBPM = 166;
 			break;
@@ -1069,7 +1075,12 @@ if (vo != 0)
 				songBPM = 125;
 			break;
 			
-			case 33: 
+			case 30: 
+				print("Stage: " + "Tutorial Grid X" + "BPM: 130");
+				songBPM = 130;
+			break;
+			
+			case 32: 
 				print("Stage: " + "Neo Blazing Rail" + "BPM: 150");
 				songBPM = 150;
 			break;
@@ -1088,6 +1099,11 @@ if (vo != 0)
 				songBPM = 150;
 			break;	
 			
+			case 60: 
+				print("Stage: " + "Badger Co. Mines" + "BPM: 140");
+				songBPM = 140;
+			break;	
+			
 		}
 		bpm_prev = songBPM;
 	}
@@ -1097,15 +1113,15 @@ if (vo != 0)
 
 #define calculateStageBPM
 {
-	var BGMtimeCrotchet = 60 / songBPM;
 	var BGMtimeOffset = 1;
 	
-	BGMtimeBPS = 60 / songBPM; // Beats per second
+	BGMtimeBPS = songBPM / 60; // Beats per second
+	var secondsPerBeat = 1 / BGMtimeBPS; // Seconds per beat
 //	print(game_time);
-	if(game_time > 135) {
+	if(game_time > 131) {
 		
 		var fixedUpdatesPS = game_time;
-		bpm_fixedUpdates++;
+		bpm_fixedUpdates += .5;
 		if(bpm_toggle == false)
 		{
 		songBPM = bpm_prev;
@@ -1113,15 +1129,17 @@ if (vo != 0)
 		else 
 			{
 				songBPM = 130
-		//		print("Fixed Updates:" + string(BGMval));
 			}
 			
-		var BGMval = bpm_fixedUpdates % (songBPM / (songBPM/10));
+		var BGMstep = (1 / ((songBPM / 60) * 4)) * 100;
+		var BGMtest = (round(BGMstep * 4) / 4)*.1;
+		var BGMval = songBPM * .01667;
 		
-		if(BGMval = 0 || BGMval = 3 || BGMval = 6 || BGMval = 9)
+	//					print("Fixed Updates:" + string(BGMtest) + " / " + string((bpm_fixedUpdates))+ " / " + string((secondsPerBeat)));
+		if(bpm_fixedUpdates >= (BGMtest))
 			{
-			//	print("On beat!" + string(BGMval));
-			//	sound_play(sound_get("chai_tut_bell"),0,0,.4);
+	//			print("On beat!" + string(BGMstep));
+				bpm_fixedUpdates = 0;
 				bpm_onBeat_check = true;
 			}
 			else {

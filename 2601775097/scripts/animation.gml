@@ -22,6 +22,13 @@ if (theikos_type > 0)
 
 ////////////////////////////////////////////////////////// ANIMATE //////////////////////////////////////////////////////////
 
+//halloween costume
+if ((sprite_index == sprite_get("theikos_idle") || sprite_index == sprite_get("idle")) && bibical)
+{
+	sprite_index = sprite_get("bibical_idle");
+	image_index = state_timer * idle_anim_speed;
+}
+
 switch (state) {
 	// ATTACK ANIMATIONS
 	case PS_ATTACK_AIR: case PS_ATTACK_GROUND:

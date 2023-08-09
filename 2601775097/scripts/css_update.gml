@@ -1,5 +1,6 @@
 //css_update
-if ("alt_total" not in self) exit;
+
+if ("css_anim_time" not in self || "skill_hover_time" not in self || "menu_active" not in self) exit;
 
 skill_script_type = 1;
 user_event(2);

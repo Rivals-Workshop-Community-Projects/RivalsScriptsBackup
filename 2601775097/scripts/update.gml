@@ -9,6 +9,7 @@ got_gameplay_time = get_gameplay_time();
 //attack/dodge check
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 is_dodging = (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE);
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 
 strong_pressed = (up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed)
 
@@ -240,7 +241,7 @@ if (holyburn_active)
         }
         else if ("url" in self && url != other.url && !holyburning && !burned)
         {
-            outline_color = [0, 0, 0];
+            outline_color = outline_check;
             init_shader();
         }
     }
@@ -384,6 +385,17 @@ if (!menu_active)
     {
         switch (skill[cur_skills[i]].skill_id)
         {
+            case 0: //light dagger
+                if (prepare_dagger_cd && (!is_attacking || attack != skill[0].skill_attack && attack != skill[0].skill_attack_air))
+                {
+                    dagger_spam_cd = dagger_spam_cd_set;
+                    prepare_dagger_cd = false;
+                }
+                
+                if (dagger_spam_cd > 0) dagger_spam_cd --;
+                move_cooldown[skill[0].skill_attack] = dagger_spam_cd;
+                move_cooldown[skill[0].skill_attack_air] = dagger_spam_cd;
+                break;
             case 8: //ember fist
                 if (fury_ember_timer > 0) fury_ember_timer --;
 
@@ -411,7 +423,7 @@ if (!menu_active)
 
                 if (burnbuff_active)
                 {
-                    if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
+                    if (!infinite_mp_mode) mp_current -= mp_cost_burn_rate/60;
                     if (mp_current <= 0) burnbuff_active = false;
 
                     //visual stuff
@@ -488,35 +500,26 @@ if (!menu_active)
                 if (blast_used) move_cooldown[skill[3].skill_attack] = 1 + blast_used;
                 break;
             case 7: //polaris
+                if (lightbuff_active) skill[7].mp_use_cost = skill[7].mp_cost2;
+                else skill[7].mp_use_cost = polaris_norm_cost;
+
                 if (lightbuff_active)
                 {
                     //mp burning
-                    if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
-                    if (mp_current <= 0) lightbuff_active = false;
+                    if (!infinite_mp_mode) mp_current -= (mp_cost_light_rate * polaris_shots_left)/60;
+                    if (mp_current <= 0)
+                    {
+                        lightbuff_active = false;
+                        sound_play(asset_get("sfx_abyss_despawn"));
+                        for (var j = 0; j < polaris_shots_left; j++)
+                        {
+                            spawn_hit_fx(polaris_shot_ids[j].x, polaris_shot_ids[j].y, fx_skill7_afterimage);
+                            polaris_shot_ids[j].length = 0;
+                        }
+                    }
 
                     //internal cooldown stuff
                     if (polaris_shot) polaris_shot = false;
-                    if (homing_cooldown >= 0) homing_cooldown --;
-
-                    //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
-                    if (is_attacking)
-                    {
-                        if (attack == skill[1].skill_attack || attack == skill[1].skill_attack_air || attack == skill[10].skill_attack
-                        || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
-                        {
-                            set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK, 0);
-                            set_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING, 0);
-                            set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE, 0);
-                            set_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING, 0);
-                        }
-                        else
-                        {
-                            reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK);
-                            reset_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING);
-                            reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE);
-                            reset_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING);
-                        }
-                    }
 
                     //updates the skill input lol
                     switch (i)
@@ -527,29 +530,86 @@ if (!menu_active)
                         case 3: skill_input_dir = down_down; break;
                     }
 
-                    //needs to not do the attack
-                    if (skill_input_dir && special_pressed && state_cat != SC_HITSTUN)
+                    //bar can cancel into this at any point
+                    if (skill_input_dir && special_pressed && state_cat != SC_HITSTUN && attack != skill[7].skill_attack && hitpause || polaris_shots_left <= 0)
                     {
-                        clear_button_buffer(PC_SPECIAL_PRESSED);
+                        if (polaris_shots_left > 0)
+                        {
+                            hitstop = 0;
+                            destroy_hitboxes();
+                            attack_end(attack);
+                            if (has_hit) hit_player_obj.hitstop += 10;
+                            set_attack(skill[7].skill_attack);
+                            hurtboxID.sprite_index = get_attack_value(skill[7].skill_attack, free ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE)
+                            window = 5;
+                            window_timer = 0;
+                        }
+                        else
+                        {
+                            spawn_hit_fx(x, y-32, fx_lightblow[1]);
+                            sound_play(asset_get("sfx_abyss_despawn"));
 
-                        set_state(free ? PS_IDLE_AIR : PS_IDLE);
-
-                        spawn_hit_fx(x, y-32, fx_lightblow[1]);
-                        sound_play(asset_get("sfx_abyss_despawn"));
-
-                        lightbuff_active = false;
+                            lightbuff_active = false;
+                        }
                     }
 
-                    //visual stuff
-                    if (got_gameplay_time % 6 == 0) generate_particles(fx_intro, x, y, 180, depth-1, 11, 9, 0, 0);
+                    //projectiles following bar around
+                    for (var j = 0; j < polaris_shots_left; j++) if ("shoot_projectile" in polaris_shot_ids[j] && !polaris_shot_ids[j].shoot_projectile)
+                    {
+                        var anim_time = 20;
 
+                        var angle = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                            ease_cubeOut(
+                                (j-4) * 90 - 90,
+                                (j+1) * 20 - 10,
+                                polaris_shot_ids[j].hitbox_timer,
+                                anim_time
+                            ) : (j+1) * 20 - 10;
+                        var turn_anim_dist = ease_cubeInOut(80, -80, polaris_shot_ids[j].play_turn_anim, 10);
+                        var dist = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                            ease_cubeOut(
+                                0,
+                                turn_anim_dist,
+                                polaris_shot_ids[j].hitbox_timer,
+                                anim_time
+                            ) : turn_anim_dist;
+                        var x_pos = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                            ease_cubeOut(
+                                32,
+                                0,
+                                polaris_shot_ids[j].hitbox_timer,
+                                anim_time
+                            ) : 0;
+
+                        //position setup
+                        polaris_shot_ids[j].x = floor(
+                            prev_bar_pos[0] + lengthdir_x(dist, angle) + x_pos * spr_dir
+                        );
+                        polaris_shot_ids[j].y = floor(
+                            prev_bar_pos[1] + lengthdir_y(
+                                polaris_shot_ids[j].hitbox_timer < 20 ?
+                                    abs(dist)/ease_cubeInOut(2, 1, polaris_shot_ids[j].hitbox_timer, anim_time) : 80,
+                                    angle
+                                ) - char_height/1.75
+                        );
+                        polaris_shot_ids[j].turn_dir = spr_dir;
+                        polaris_shot_ids[j].img_spd = abs(j+1 + polaris_shots_max - polaris_shots_left) * 0.04 + 0.2;
+
+                        //turning animation
+                        if (polaris_shot_ids[j].turn_dir == 1 && polaris_shot_ids[j].play_turn_anim < 10 || 
+                            polaris_shot_ids[j].turn_dir == -1 && polaris_shot_ids[j].play_turn_anim > 0)
+                        {
+                            if (polaris_shot_ids[j].play_turn_anim < 10 && polaris_shot_ids[j].turn_dir == 1) polaris_shot_ids[j].play_turn_anim ++;
+                            if (polaris_shot_ids[j].play_turn_anim > 0 && polaris_shot_ids[j].turn_dir == -1) polaris_shot_ids[j].play_turn_anim --;
+                        }
+                    }
+                    prev_bar_pos[0] = x;
+                    prev_bar_pos[1] = y;
+
+                    //visual stuff
                     if (lightbuff_increase) lightbuff_alpha += lightbuff_rate;
                     else lightbuff_alpha -= lightbuff_rate;
                     if (lightbuff_alpha >= 0.8 || lightbuff_alpha <= 0) lightbuff_increase = !lightbuff_increase;
-                }
-                else
-                {
-                    if (polaris_deactive_cd > 0) polaris_deactive_cd = 0;
                 }
                 break;
             case 11: //chasm burster
@@ -1256,7 +1316,7 @@ user_event(7);
             case AT_NTHROW: case AT_NSPECIAL_AIR:
                 if (hb_num < 2) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
                 break;
-            case 39:
+            case AT_EXTRA_4:
                 if (hb_num == 2) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
                 break;
             case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_EXTRA_2: case AT_USTRONG_2:

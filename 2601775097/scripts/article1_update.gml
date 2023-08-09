@@ -38,8 +38,6 @@ switch (state)
         //records the position of the article for as long as it's active
         if (state_timer % 5 == 0) array_push(player_id.accel_pos, [x, y]);
 
-        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) do_destroy();
-
         //when he's about to teleport, record the last position and delete the article
         if (player_id.window == 3)
         {
@@ -54,6 +52,8 @@ switch (state)
                     exit;
             }
         }
+
+        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) do_destroy();
         break;
     case "power_crater":        //power smash burning ground
         apply_base_logic(1, 0, sprite_get("fx_skill5"), sprite_get("hitbox_skill5"), player_id.hb_color[3]);

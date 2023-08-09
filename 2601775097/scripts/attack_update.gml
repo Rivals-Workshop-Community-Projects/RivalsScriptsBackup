@@ -254,6 +254,9 @@ switch (attack)
     //////////////////////////////////////////////// SKILLS ////////////////////////////////////////////////
     //
     case AT_NTHROW: case AT_NSPECIAL_AIR:   //  light dagger
+
+        prepare_dagger_cd = (window == 4 || window == 8);
+
         switch (window)
         {
             case 1: case 5: //startups
@@ -281,11 +284,15 @@ switch (attack)
                 }
                 else reset_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
 
-                if (special_pressed && window_timer <= window_cancel_time)
+                if (window_timer <= window_cancel_time)
                 {
-                    if (cur_skills[3] != 0 && down_down && skill[cur_skills[3]].mp_use_cost) set_attack(AT_DSPECIAL);
-                    if (cur_skills[2] != 0 && up_down && skill[cur_skills[2]].mp_use_cost) set_attack(AT_USPECIAL);
-                    if (cur_skills[1] != 0 && (right_down || left_down) && skill[cur_skills[1]].mp_use_cost) set_attack(AT_FSPECIAL);
+                    if (special_pressed)
+                    {
+                        if (cur_skills[3] != 0 && down_down && skill[cur_skills[3]].mp_use_cost) set_attack(AT_DSPECIAL);
+                        if (cur_skills[2] != 0 && up_down && skill[cur_skills[2]].mp_use_cost) set_attack(AT_USPECIAL);
+                        if (cur_skills[1] != 0 && (right_down || left_down) && skill[cur_skills[1]].mp_use_cost) set_attack(AT_FSPECIAL);
+                    }
+                    else iasa_script();
                 }
                 break;
         }
@@ -391,11 +398,15 @@ switch (attack)
                         else if (left_down && spr_dir) angle_saved = 45;
                     }
                 }
-                var speed = 12;
+                var speed = 16;
                 move_x = lengthdir_x(speed, angle_saved);
                 move_y = lengthdir_y(speed, angle_saved);
                 break;
-            case 4: case 5: //movement/input window
+            case 5: //go to pratfall at the end
+                hsp = move_x / 4;
+                vsp = move_y / 4;
+                if (window_timer == window_end) set_state(PS_PRATFALL);
+            case 4:
                 has_hit = false; //prevents bar from not going into pratfall if he hit with the initial attack
 
                 if (window == 4)
@@ -415,12 +426,13 @@ switch (attack)
                     if (mp_current >= skill[2].mp_cost2 && !was_parried) set_window(6); //allow the extention
                     else //don't allow the extention and pop the low MP error up
                     {
-                        if (attack_counter == 1 && notice_time == -1) notice_time = notice_time_max;
+                        if ((attack_counter == 1) && notice_time == -1) // || special_counter == 1
+                        {
+                            notice_time = notice_time_max;
+                            notice_type = 0;
+                        }
                     }
                 }
-                break;
-            case 5: //go to pratfall at the end
-                if (window_timer == window_end) set_state(PS_PRATFALL);
                 break;
             case 6: //blast spawn
                 if (window_timer == window_end)
@@ -508,7 +520,7 @@ switch (attack)
                 break;
         }
         break;
-    case 39:                                //  flashbang
+    case AT_EXTRA_4:                        //  flashbang
         can_fast_fall = false;
 
         //stuff to do with bar himself
@@ -713,11 +725,41 @@ switch (attack)
     case AT_USPECIAL_2:                     //  polaris
         can_fast_fall = false;
         //activation
-        if (window == 4 && window_timer == 1)
+        if (window == 2 && window_timer == 1)
         {
             lightbuff_active = true;
-            polaris_deactive_cd = 1;
-            spawn_hit_fx_ext(fx_lightblow[0], x, y-32);
+            polaris_shots_left = polaris_shots_max;
+            homing_cooldown = 0;
+            spawn_hit_fx(x + 32 * spr_dir, y - 32, fx_lightblow[0]);
+            sound_play(asset_get("sfx_abyss_hex_curse"), false, 0, 0.4, 4);
+            sound_play(sound_get("sfx_introlight"), false, 0, 0.8, 3);
+            for (var i = 0; i < polaris_shots_max; i++)
+            {
+                polaris_shot_ids[i] = create_hitbox(skill[7].skill_attack, 1, -100, -100);
+                polaris_shot_ids[i].play_turn_anim = 10 * spr_dir;
+                polaris_shot_ids[i].turn_dir = (spr_dir == 1);
+                polaris_shot_ids[i].play_turn_anim = (spr_dir == 1) ? 10 : 0;
+            }
+        }
+
+        if (window >= 3)
+        {
+            vsp /= 1.5;
+            hsp /= 1.1;
+            if (fast_falling) fast_falling = false;
+        }
+        if (window == 6 && lightbuff_active)
+        {
+            spawn_hit_fx(x, y-32, fx_lightblow[1]);
+            sound_play(asset_get("sfx_abyss_despawn"));
+            sound_play(asset_get("sfx_holy_lightning"));
+
+            for (var i = 0; i < polaris_shots_left; i++)
+            {
+                spawn_hit_fx(polaris_shot_ids[i].x, polaris_shot_ids[i].y, fx_skill7_afterimage);
+                polaris_shot_ids[i].length = 0;
+            }
+            lightbuff_active = false;
         }
         break;
     case AT_DSPECIAL_2:                     //  ember fist
@@ -739,10 +781,8 @@ switch (attack)
                         if (joy_pad_idle) angle_saved = spr_dir ? 0 : 180;
                         else
                         {
-                            if (right_down && spr_dir || left_down && -spr_dir) angle_saved = joy_dir;
-                            else if (up_down) angle_saved = spr_dir ? 40 : 140;
-                            else if (down_down) angle_saved = spr_dir ? 320 : 220;
-                            else angle_saved = spr_dir ? 0 : 180;
+                            if (spr_dir) angle_saved = joy_dir > 180 ? clamp(joy_dir, 360 - ember_range, 360) : clamp(joy_dir, 0, 0 + ember_range);
+                            else angle_saved = clamp(joy_dir, 180 - ember_range, 180 + ember_range);
                         }
 
                         if (angle_saved > 20 && angle_saved < 160) //aim up
@@ -779,9 +819,9 @@ switch (attack)
                 {
                     for (var ember_line_pos = 0; ember_line_pos <= 3; ++ember_line_pos)
                     {
-                        var ember_range = 50;
-                        var ember_line_x = x + 16*spr_dir + lengthdir_x(ember_line_pos, angle_saved) * ember_range;
-                        var ember_line_y = y - 30 + lengthdir_y(ember_line_pos, angle_saved) * ember_range;                        
+                        var range = 50;
+                        var ember_line_x = x + 16*spr_dir + lengthdir_x(ember_line_pos, angle_saved) * range;
+                        var ember_line_y = y - 30 + lengthdir_y(ember_line_pos, angle_saved) * range;                        
 
                         //hitbox spawning
                         if (window_timer % 2 == 0 && ember_line_pos*2 == window_timer && ember_line_pos != 0)
@@ -940,20 +980,12 @@ switch (attack)
                     reset_hitbox_value(attack, 4, HG_DAMAGE);
                     reset_hitbox_value(attack, 5, HG_DAMAGE);
                 }
-            case 2: //changing the hsp and vsp of bar_grabbed_id
-                if (bar_grabbed_id != noone)
-                {
-                    bar_grabbed_id.hsp = hsp/4;
-                    bar_grabbed_id.vsp = vsp*1.1;
-                }
                 break;
             case 4: //cancel frame
                 attack_end();
 
                 if (special_down && mp_current >= skill[10].mp_cost2 && !was_parried)
                 {
-                    if (bar_grabbed_id != noone) bar_grabbed_id.vsp = -5;
-                    bar_grabbed_id = noone;
                     set_window(0);
                     vsp = -9;
                     hsp = 0;
@@ -962,7 +994,6 @@ switch (attack)
                 {
                     set_state(PS_PRATFALL);
                     if (burnbuff_active) burnbuff_active = false;
-                    bar_grabbed_id = noone;
                 }
                 break;
             case 7: //meteor
@@ -1389,7 +1420,6 @@ if (theikos_type > 0 && attack != AT_OVERDRIVE) allow_turbo();
 
     var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
     var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
-    var random_fx = random_func(26, 3, true);
 
     fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
     fx_name.spr_dir = -spr_dir;
@@ -1449,7 +1479,7 @@ if (theikos_type > 0 && attack != AT_OVERDRIVE) allow_turbo();
     {
         //allow turbo mode to these attacks too, but with some restrictions
         if ( (attack != AT_USTRONG || window > 7) && (attack != AT_UTHROW || window > 7)
-        && (attack != AT_EXTRA_3 || window > 2) && (attack != 39 || window > 6) )
+        && (attack != AT_EXTRA_3 || window > 2) && (attack != AT_EXTRA_4 || window > 6) )
         {
             can_jump = true;
             can_attack = true;

@@ -23,7 +23,7 @@ draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_
 // CSS Voice button
 draw_sprite_ext(sprite_get("cssvoice_button"), cur_select * 3 + vo_button_state, x + vo_x, y + vo_y, 2, 2, 0, c_white, 1);
 
-//draw_sprite_ext(sprite_get("css_bpm_button"), cur1_select * 3 + beat_button_state, x + beat_x, y + beat_y, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_get("css_bpm_button"), cur1_select * 3 + beat_button_state, x + beat_x, y + beat_y, 2, 2, 0, c_white, 1);
 
 
 //animation - character

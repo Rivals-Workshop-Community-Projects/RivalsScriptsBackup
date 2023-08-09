@@ -8,7 +8,7 @@
 
 
 //Put this above all the #defines in your script.
-draw_colored_hitboxes();
+//draw_colored_hitboxes();
 
 //Put this at the very bottom of your script, with the rest of the #defines.
 #define draw_colored_hitboxes

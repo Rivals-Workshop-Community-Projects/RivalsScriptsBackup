@@ -20,6 +20,25 @@ switch (attack)
         break;
 }
 
+/*
+if (lightbuff_active)
+{
+    if (!infinite_mp_mode) mp_current -= 10;
+    if (state_cat == SC_HITSTUN) lightbuff_active = false;
+}
+*/
+if (attack == skill[7].skill_attack && super_armor)
+{
+    super_armor = false;
+    lightbuff_active = true;
+    polaris_shots_left = polaris_shots_max;
+    window = 4;
+    window_timer = 0;
+    spawn_hit_fx(x, y-32, fx_lightblow[1])
+    sound_play(asset_get("sfx_boss_charge"))
+    sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"))
+}
+
 leap_used = false;
 
 blast_used = false;

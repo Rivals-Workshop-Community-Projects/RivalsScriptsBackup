@@ -1,6 +1,4 @@
 //css_init
-alt_total = 27;
-
 alt_cur = 0;
 alt_prev = 0;
 css_anim_time = 0;
@@ -52,8 +50,10 @@ alt_name = [
     "Fiery Racing Spirit",
     "Ultraviolet",
     "Broken Prism",
-    "Theía Evlogía"
+    "Theía Evlogía",
+    "Reluctant Team Player"
 ];
+alt_total = array_length(alt_name);
 
 //ANIMATION VARS
 sprite_change_offset("idle", 16, 39);
@@ -92,13 +92,13 @@ for (var i = 0; i <= 3; ++i)
 {
     for (var j = i; j <= i + 8; j += 4)
     {
-        var offset_x = x + i * 38 + 44 + ((menu_type == 0) * 6);
+        var offset_x = x + i * 38 + 32 + ((menu_type == 0) * 6);
         var offset_y = y + floor(j / 4) * 32 + 46;
 
         skill_pos[j] = [
-            offset_x,
+            offset_x - 3,
             offset_y,
-            offset_x + w * 2,
+            offset_x + w * 2 - 1 + 3,
             offset_y + h * 2,
         ];
     }

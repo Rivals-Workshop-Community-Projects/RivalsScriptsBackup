@@ -16,9 +16,9 @@ preview_x = 0; //preview char
 preview_y = 0;
 
 vo_x = 180;
-vo_y = 110;
+vo_y = 85;
 vo_button_state = 0; //0 = normal | 1 = hover | 2 = press
-cur_select = 1; //0 = mute | 1 = On
+cur_select = 0; //0 = mute | 1 = On
 
 beat_x = 180;
 beat_y = 115;
@@ -39,13 +39,13 @@ beat_pos = [
     y + beat_y + sprite_get_height(sprite_get("cssvoice_button")) * 2
 ];
 
-synced_vars = split_synced_var(2);
-synced_vars1 = split_synced_var(2);
-cur_select = synced_vars[0];
-voice_init(cur_select);
+synced_vars = split_synced_var(2,1);
+//synced_vars1 = split_synced_var(2,1,1);
+cur_select = synced_vars[0]; // Change Voice toggle
 
-cur1_select = synced_vars[0];
-bpm_init(cur1_select);
+
+cur1_select = synced_vars[1]; // Change BPM toggle
+//voice_bpm_init(cur_select);
 
 //ALT NAMES
 //seasonal alt names
@@ -118,15 +118,53 @@ voice_cooldown = 0;
 voice_cooldown_set = 70; //cooldown for regular voiceclips
 voice_cooldown_set_100 = 110; //cooldown for high % lines
 
-#define bpm_init(_bpm)
+#define voice_bpm_init(_bpm)
 bpm = 0; 
 //Voice clips
+cur_voiceclip = [noone, noone];
+voice_cooldown = 0;
+voice_cooldown_set = 70; //cooldown for regular voiceclips
+voice_cooldown_set_100 = 110; //cooldown for high % lines
+
 switch (_bpm)
 {
-    default: bpm = 0; break;
-    case 0: bpm = 0; break;
-    case 1: bpm = "On"; break;
+    default: 
+    	bpm = 0;
+    	vo = 0;
+    	bpm_toggle = false;
+    break;
+    
+    case 0: 
+    	bpm = 0;
+    	vo = 0;
+    	bpm_toggle = false;
+    break;
+    
+    case 1: 
+	    bpm = 0;
+	    vo = "On"
+	    bpm_toggle = false;
+    break;
+    
+    case 2: 
+	    bpm = 1;
+	    vo = 0;
+	    bpm_toggle = true;
+    break;
+    
+    case 3: 
+	    bpm = 1;
+	    vo = "On"
+	    bpm_toggle = true;
+    break;
 }
+
+//print("Set BPM to: " + "130" + " / " + string(bpm_toggle));
+print(_bpm);
+
+
+////
+
 
 #define generate_synced_var
 ///args chunks...

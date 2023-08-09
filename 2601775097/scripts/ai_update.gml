@@ -506,8 +506,8 @@ if (cpu_fight_time > 0)
             }
             break;
         case 8: //ember fist
-            if (joy_dir > 20 && joy_dir < 160) joy_dir = spr_dir ? 40 : 140; //aim up
-            else if (joy_dir < 340 && joy_dir > 200) joy_dir = spr_dir ? 320 : 220; //aim down
+            if (spr_dir) angle_saved = joy_dir > 180 ? clamp(joy_dir, 360 - ember_range, 360) : clamp(joy_dir, 0, 0 + ember_range);
+            else angle_saved = clamp(joy_dir, 180 - ember_range, 180 + ember_range);
             break;
     }
 }

@@ -11,12 +11,12 @@ switch (skill_script_type)
         AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
         AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
         AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
-        AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 40, 0, 40);
+        AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 20, 10, 40); //40, 0
 
-        AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, 39, -1, 0, 10, 10);
+        AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, AT_EXTRA_4, -1, 0, 10, 10);
         AT_SKILL5  = set_skill("Power Smash", 5, 1, 1, AT_FSPECIAL_2, -1, 5, 25, 30);
         AT_SKILL6  = set_skill("Accel Blitz", 6, 2, 1, AT_NSPECIAL_2, -1, 10, 0, 10);
-        AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 10, 0, 50);
+        AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 30, 0, 50);
 
         AT_SKILL8  = set_skill("Ember Fist", 8, 0, 2, AT_DSPECIAL_2, -1, 20, 0, 20);
         AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
@@ -35,6 +35,7 @@ switch (skill_script_type)
         prev_skills = [0, 1, 2, 3];         //sets the previous selected skills
 
         cur_skill_hover = 0;                //currently hovered skill
+        prev_skill_hover = 0;               //previous hovered skill (used for CSS only)
         
         cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
         menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
@@ -50,7 +51,12 @@ switch (skill_script_type)
             if (instance_exists(oPlayer)) attack_invince = true;
 
             menu_active_time ++;
-            if (menu_active_time == 0) cur_select = 0;
+            if (menu_active_time == 0)
+            {
+                cur_select = 0;
+                cur_skill_hover = (menu_type == 0) ? -1 : 0;
+                prev_skill_hover = cur_skill_hover;
+            }
 
             switch (menu_type)
             {
@@ -60,19 +66,22 @@ switch (skill_script_type)
                     switch (menu_dir)
                     {
                         case -1: //confirm selection
-                            cur_skills[cur_select] = cur_skill_hover;
-                            sound_play(asset_get("mfx_confirm"));
-                            
-                            for (var i = 0; i < cur_select; i++) //prevent skill select from selectig skills that were already selected
+                            if (cur_skill_hover > -1)
                             {
-                                if (cur_skills[i] == cur_skill_hover)
+                                cur_skills[cur_select] = cur_skill_hover;
+                                sound_play(asset_get("mfx_confirm"));
+                                
+                                for (var i = 0; i < cur_select; i++) //prevent skill select from selectig skills that were already selected
                                 {
-                                    sound_stop(asset_get("mfx_confirm"));
-                                    sound_play(asset_get("mfx_tut_fail"));
-                                    cur_select --;
+                                    if (cur_skills[i] == cur_skill_hover)
+                                    {
+                                        sound_stop(asset_get("mfx_confirm"));
+                                        sound_play(asset_get("mfx_tut_fail"));
+                                        cur_select --;
+                                    }
                                 }
+                                cur_select ++;
                             }
-                            cur_select ++;
                             break;
                         case -2: //cancel select
                             sound_play(asset_get("mfx_back"));
@@ -264,14 +273,30 @@ switch (skill_script_type)
         }
 
         //cursor
-        if (cur_select > -1 && cur_select < 4)
+        if (cur_select > -1 && cur_select < 4 && cur_skill_hover > -1)
         {
             draw_sprite_ext(
                 sprite_get("hud_menu_cursor"),
                 menu_active_time * menu_cursor_speed,
                 menu_x + skill[cur_skill_hover].skill_pos_x * 38 + 38 + ((menu_type == 0) * -6),
                 menu_y + skill[cur_skill_hover].skill_pos_y * 32 - 84,
-                2, 2, 0, c_white, 1);
+                2, 2, 0, c_white, 1
+            );
+
+            /*
+            if (menu_type == 0) //skill name
+            {
+                textDraw(
+                    floor(get_instance_x(cursor_id)) + (get_instance_x(cursor_id) >= x + 145 ? -8 : 32),
+                    floor(get_instance_y(cursor_id)) + (get_instance_y(cursor_id) >= 400 ? -16 : 48),
+                    string(skill[cur_skill_hover].skill_name),
+                    c_white,
+                    "fName",
+                    fa_center,
+                    true
+                );
+            }
+            */
         }
         break;
 }
@@ -409,8 +434,8 @@ switch (skill_script_type)
             if (down_pressed) menu_dir = 3;
             if (left_pressed) menu_dir = 4;
 
-            if (attack_pressed && attack_counter == 0) menu_dir = -1;
-            if (jump_pressed && jump_counter == 0) menu_dir = -2;
+            if (attack_pressed && attack_counter == 0) menu_dir = -2;
+            if (jump_pressed && jump_counter == 0) menu_dir = -1;
             if (special_pressed && special_counter == 0) menu_dir = -3;
         }
         else //CSS
@@ -419,9 +444,11 @@ switch (skill_script_type)
             var cur_x = get_instance_x(cursor_id);
             var cur_y = get_instance_y(cursor_id);
 
-            for (var i = 0; i <= 3; ++i)
+            //not hovering on skill select icons will deselect skill
+            if (!point_in_rect(cur_x, cur_y, skill_pos[0][0], skill_pos[3][1], skill_pos[3][2], skill_pos[11][3])) cur_skill_hover = -1;
+            else
             {
-                for (var j = i; j <= i + 8; j += 4)
+                for (var i = 0; i <= 3; ++i) for (var j = i; j <= i + 8; j += 4)
                 {
                     if (point_in_rect(cur_x, cur_y, skill_pos[j][0], skill_pos[j][1], skill_pos[j][2], skill_pos[j][3]))
                     {
@@ -431,8 +458,16 @@ switch (skill_script_type)
                 }
             }
 
-            if (menu_type == 0 && menu_b_pressed) menu_dir = -1;
-            if (menu_type == 0 && menu_a_pressed) menu_dir = -2;
+            //hover sound
+            if (cur_skill_hover != prev_skill_hover && cur_skill_hover > -1)
+            {
+                sound_play(asset_get("mfx_move_cursor"));
+                prev_skill_hover = cur_skill_hover;
+            }
+
+
+            if (menu_b_pressed) menu_dir = -2;
+            if (menu_a_pressed) menu_dir = -1;
         }
     }
     else menu_dir = 0;

@@ -10,7 +10,7 @@ switch (attack)
     case AT_NTHROW: case AT_NSPECIAL_AIR:
         generate_particles(hbox_num-1); //particles
     
-        if (place_meeting(x, y, asset_get("par_block"))) destroyed = true;
+        if (place_meeting(x, y, asset_get("par_block")) || "touching_childe_wall" in self && touching_childe_wall) destroyed = true;
 
         if (hitbox_timer == length - 1 || destroyed) //disappear effect
         {
@@ -43,14 +43,16 @@ switch (attack)
             {
                 if (player_id.hook_grab == 0)
                 {
-                    if (has_hit && player != other) player_id.hook_grab = 1; //players
-                    else if (place_meeting(x, y, asset_get("par_block"))) player_id.hook_grab = 2; //the ground and walls
+                    //players
+                    if (has_hit && player != other) player_id.hook_grab = 1;
+                    else if (place_meeting(x, y, asset_get("par_block")) || "touching_childe_wall" in self && touching_childe_wall) player_id.hook_grab = 2;
+                    //the ground and walls
                 }
                 if (player_id.hook_grab > 0) destroyed = true;
             }
             else
             {
-                if (place_meeting(x, y, asset_get("par_block")))
+                if (place_meeting(x, y, asset_get("par_block")) || "touching_childe_wall" in self && touching_childe_wall)
                 {
                     create_hitbox(attack, 2, x, y); //the ground and walls
                     sound_play(asset_get("sfx_burnconsume"))
@@ -63,23 +65,31 @@ switch (attack)
         break;
     //polaris
     case AT_USPECIAL_2:
-        var proj_speed = 0;
-        var hit_sound_played = false;
-        
         //hit particles
         fx_particles = 1;
 
-        //afterimage effect
-        if (hitbox_timer % 4 == 0) spawn_hit_fx(x, y, player_id.fx_skill7_afterimage);
-
-        //target changing
-        if (!instance_exists(player_id.hit_player_obj))
+        if (!shoot_projectile)
         {
-            if (player_id.hit_player_obj.clone || player_id.hit_player_obj.custom_clone) //if they had a clone, go track the original
+            depth = 3;
+            length ++;
+
+            if (hitbox_timer > 2) with (player_id) if (attack == other.attack && y - other.y < 32) other.depth = depth-1;
+        }
+        else
+        {
+            depth = player_id.depth - 1;
+
+            if (image_xscale == 0)
             {
-                with (oPlayer) if (player == other.player_id.hit_player_obj) other.player_id.polaris_id = self;
+                image_xscale = saved_size_x;
+                image_yscale = saved_size_y;
             }
-            else //search for new target if the hit_player_obj doesn't exist
+
+            //afterimage effect
+            if (hitbox_timer % 4 == 0) spawn_hit_fx(x, y, player_id.fx_skill7_afterimage);
+
+            //target changing
+            if (!instance_exists(player_id.polaris_id))
             {
                 var closest_distance = 9999999999999;
                 with (oPlayer)
@@ -91,51 +101,48 @@ switch (attack)
                     }
                 }
             }
-        }
 
-        if (was_parried) player_id.polaris_id = player_id;
+            if (was_parried) player_id.polaris_id = player_id;
 
-        //hit detection
-        for(var i = array_length(can_hit); i > -1; i--;)
-        {
-            if (i != player_id.polaris_id.player) can_hit[i] = false;
-            else can_hit[i] = true;
-        }
-        
-        //homing
-        if (player_id.polaris_id != noone && !was_parried)
-        {
-            if (hitbox_timer < 30) proj_speed = -10 + hitbox_timer;
-            else proj_speed = 20;
-
-            var angle = point_direction(x, y, player_id.polaris_id.x, player_id.polaris_id.y-player_id.polaris_id.char_height+16);
-            hsp = lengthdir_x(proj_speed, angle);
-            vsp = lengthdir_y(proj_speed, angle);
-
-            if (hitbox_timer == length)
+            //hit detection
+            for(var i = array_length(can_hit); i > -1; i--;)
             {
-                sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-                spawn_hit_fx(x, y, player_id.fx_lightblow[0]);
+                if (i == player_id.polaris_id.player) can_hit[i] = true;
+                else can_hit[i] = false;
             }
-
-            //if the target is dead kill this hitbox
-            if (player_id.polaris_id.state == PS_RESPAWN || player_id.polaris_id.state == PS_DEAD) length = 0;
-        }
-
-        //if the projectile was parried, return to sender
-        if (was_parried)
-        {
-            length = 300;
-            proj_speed = 10;
-            kb_angle = 70;
-            kb_value = 8;
-            hitpause = 20;
-
-            if (hitbox_timer == 0)
+            
+            //homing
+            if (player_id.polaris_id != noone && !was_parried)
             {
-                angle = point_direction(x, y, player_id.x, player_id.char_height+16);
+                var angle = point_direction(x, y, player_id.polaris_id.x, player_id.polaris_id.y-player_id.polaris_id.char_height+16);
                 hsp = lengthdir_x(proj_speed, angle);
                 vsp = lengthdir_y(proj_speed, angle);
+
+                if (hitbox_timer == length)
+                {
+                    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
+                    spawn_hit_fx(x, y, player_id.fx_lightblow[0]);
+                }
+
+                //if the target is dead kill this hitbox
+                if (player_id.polaris_id.state == PS_RESPAWN || player_id.polaris_id.state == PS_DEAD) length = 0;
+            }
+
+            //if the projectile was parried, return to sender
+            if (was_parried)
+            {
+                length = 300;
+                proj_speed = 10;
+                kb_angle = 70;
+                kb_value = 8;
+                hitpause = 20;
+
+                if (hitbox_timer == 0)
+                {
+                    angle = point_direction(x, y, player_id.x, player_id.char_height+16);
+                    hsp = lengthdir_x(proj_speed, angle);
+                    vsp = lengthdir_y(proj_speed, angle);
+                }
             }
         }
         break;

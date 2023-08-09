@@ -533,7 +533,7 @@ switch (attack)
 			
 			if( window_timer > 7 && !hitpause) 
 			{
-					if( (special_pressed || shield_down) && pressedUspec == false)
+					if( (special_pressed || shield_down) && pressedUSpec == false)
 						{
 						uspec_beat_timed = true;
 								
@@ -547,11 +547,12 @@ switch (attack)
 							hit_onBeat = true;
 							}
 						
-							if(!pressedUspec)
+							if(pressedUspec == false)
 							{
 							window_timer = window_end - 1;
 							pressedUSpec = true;
 							}
+							pressedUSpec = true;
 						}
 			}
 			break;
@@ -896,52 +897,7 @@ switch (attack)
 		
 }
 
-#define custom_attack_grid
-{
-    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
-    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
-    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
 
-    //make sure the player isn't in hitpause
-    if (!hitpause)
-    {
-        //make sure the window is in type 9 or 10
-        if (window_type_value == 9 || window_type_value == 10)
-        {
-            //checks the end of the window
-            if (window_timer == window_end)
-            {
-                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
-            }
-
-            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
-            {
-                if (window_timer == 0)
-                {
-                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
-                    window_loops ++; //at the start of the window, count a loop up
-                }
-
-                //when all the loops are over, go to the next window and reset the loop value
-                //if it's window type 10, it should stop the loop prematurely
-                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
-                {
-                    destroy_hitboxes();
-                    if (window < window_last)
-                    {
-                        window += 1;
-                        window_timer = 0;
-                    }
-                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
-                    window_loops = 0;
-                }
-            }
-            else if (window_loop_value == 0) attack_end(attack);
-            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
-            //this is how the game usually treats window type 9
-        }
-    }
-}
 #define custom_dust_effects
 {
     //original code by FQF (from QUA mario), modified by bar-kun

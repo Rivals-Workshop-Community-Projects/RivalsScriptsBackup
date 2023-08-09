@@ -303,8 +303,8 @@ switch (attack){
 		sound_play(beat_hit_sfx[attacksfxindex],0,0,.4);
 		spawn_hit_fx(x - 70 * spr_dir, y-70, note_effect[0]);
 		set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);
-		set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 11);
-		set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
+	//	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 11);
+		set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 		set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 8);
 		set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.4);
 		}
@@ -326,8 +326,8 @@ switch (attack){
 		sound_play(beat_hit_sfx[attacksfxindex],0,0,.4);
 		spawn_hit_fx(x - 70 * spr_dir, y-70, note_effect[0]);
 		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12);
-		set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 11);
-		set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
+	//	set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 12);
+		set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 		set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.4);
 		}

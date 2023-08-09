@@ -106,6 +106,7 @@ sprite_change_offset("fx_skill5", 40, 16);
 sprite_change_offset("fx_skill6", 98, 70);
 sprite_change_offset("fx_skill6_marker", 16, 32);
 sprite_change_offset("fx_skill6_afterimage", 24, 48);
+sprite_change_offset("fx_skill7", 48, 48);
 sprite_change_offset("fx_skill7_proj", 16, 16);
 sprite_change_offset("fx_skill7_afterimage", 16, 16);
 sprite_change_offset("fx_skill8", -8, 40);
@@ -146,7 +147,7 @@ sprite_change_offset("plat", 32, 47);
 sprite_change_offset("plat_back", 32, 47);
 sprite_change_offset("wait", 24, 47, true);
 
-sprite_change_offset("bibical_idle", 68, 112);
+sprite_change_offset("bibical_idle", 68/2, 112/2);
 sprite_change_offset("bibical_death", 68, 112);
 
 sprite_change_offset("hud_player_arrow", 3, 2);

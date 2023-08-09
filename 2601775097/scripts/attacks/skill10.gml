@@ -88,81 +88,84 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
 set_num_hitboxes(atk, 6);
 
 var hitbox_num = 1; //rising fire hitbox 1
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 54);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 80);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.3);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2); //0.7
-set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 0.01);
-set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 3);
+set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.1); //3
+set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 
 hitbox_num ++; //rising fire hitbox 2
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 60);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 90);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.3);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2); //0.7
+set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.1); //3
+set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 
 hitbox_num ++; //rising fire hitbox 3
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -52); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -52);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 70);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 100);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90); //100
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.2); //0
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2); //0.7
+set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 
 hitbox_num ++; //meteor sweetspot
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 6); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -8); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, 0); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -8);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, 0);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 32);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 270);
@@ -178,14 +181,14 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
 
 hitbox_num ++; //meteor constant sourspot
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 4); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 4);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -8); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -8);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 50);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 270);
@@ -200,14 +203,14 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
 
 hitbox_num ++; //meteor landing hitbox
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 8); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 8);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 110);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);

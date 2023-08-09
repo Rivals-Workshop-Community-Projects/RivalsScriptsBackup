@@ -3,6 +3,20 @@
 fx = noone;
 artc = noone;
 
+if (destroy_fx == 0) destroy_fx = hit_effect;
+
+if (attack == AT_USPECIAL_2)
+{
+    proj_speed = 20;
+    hit_sound_played = false;
+
+    shoot_projectile = false;
+    saved_size_x = image_xscale;
+    saved_size_y = image_yscale;
+    image_xscale = 0;
+    image_yscale = 0;
+}
+
 if (attack == AT_EXTRA_2)
 {
     if (hbox_num == 1)

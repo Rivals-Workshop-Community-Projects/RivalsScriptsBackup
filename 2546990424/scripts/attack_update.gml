@@ -302,6 +302,7 @@ if (attack == AT_DSPECIAL){
 
 //USpecial - Maverick Copter
 if (attack == AT_USPECIAL){
+    can_fast_fall = false;
     can_wall_jump = true;
     can_move = true;
     //If grounded, stay on the ground

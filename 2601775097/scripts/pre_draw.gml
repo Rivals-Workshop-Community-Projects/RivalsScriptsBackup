@@ -63,11 +63,20 @@ if (lightbuff_active)
 	var aura_offset = 2;
 
 	gpu_set_fog(1, light_col, 0, 1);
-	//set X's and set Y's
-	for (var i_x = -aura_offset; i_x <= aura_offset; i_x += aura_offset) for (var i_y = -aura_offset; i_y <= aura_offset; i_y += aura_offset)
+	//set X's and set Y's. also don't draw in the center cuz bar is there
+	for (var i_x = -aura_offset; i_x <= aura_offset; i_x += aura_offset) for (var i_y = -aura_offset; i_y <= aura_offset; i_y += aura_offset) if (i_y != 0 && i_x != 0)
 	{
-		//don't draw in the center cuz bar is there
-		if (i_y != 0 && i_x != 0) draw_sprite_ext(sprite_index, image_index, x+i_x+draw_x, y-i_y+draw_y, 2*spr_dir, 2, spr_angle, c_white, lightbuff_alpha);
+		draw_sprite_ext(
+			sprite_index,
+			image_index,
+			x+i_x+draw_x,
+			y-i_y+draw_y,
+			2*spr_dir,
+			2,
+			spr_angle,
+			c_white,
+			lerp(0, 0.75, mp_current/mp_max) //lightbuff_alpha
+		);
 	}
 	gpu_set_fog(0, c_white, 0, 0);
 }

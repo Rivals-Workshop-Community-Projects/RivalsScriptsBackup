@@ -157,7 +157,7 @@ if (cargo_hit_left == true){
 	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.6);
 }
 
-
+if (state == PS_PRATFALL) can_fast_fall = true;
 
 // Grab timer ended
 if (grab_timer < 0){

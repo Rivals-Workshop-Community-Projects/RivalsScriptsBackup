@@ -375,6 +375,19 @@ set_color_profile_slot(pal_num, 5, 54, 40, 29); //CLOTHBLACK
 set_color_profile_slot(pal_num, 6, 255, 246, 207); //LIGHT
 set_color_profile_slot(pal_num, 7, 240, 205, 110); //FIRE
 
+pal_num ++;
+//P28 - HUD COLOR (uses default as a base)
+set_color_profile_slot(pal_num, 1, 206, 216, 227); //CLOTHWHITE
+set_color_profile_slot(pal_num, 2, 182, 88, 61); //HAIR
+set_color_profile_slot(pal_num, 3, 245, 181, 150); //SKIN
+set_color_profile_slot(pal_num, 4, 76, 144, 206); //CLOTHLIGHTBLUE
+set_color_profile_slot(pal_num, 0, 43, 60, 140); //CLOTHDARKBLUE
+set_color_profile_slot(pal_num, 5, 30, 26, 39); //CLOTHBLACK
+set_color_profile_slot(pal_num, 6, 165, 255, 255); //LIGHT
+set_color_profile_slot(pal_num, 7, 61, 113, 224); //FIRE
+
+
+
 //changes the maximum number of palettes
 set_num_palettes(pal_num + 1);
 

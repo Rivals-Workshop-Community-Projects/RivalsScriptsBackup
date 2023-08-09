@@ -105,7 +105,8 @@ if (my_hitboxID.attack == AT_NSPECIAL && cargo_grab == false){
 	        //Initiates the Cargo Hold (sets the variables)
 	        if (my_hitboxID.hbox_num == 3){
 	        	//Timer is the opponent percentage + 60
-	    		grab_timer = get_player_damage(hit_player_obj.player) + 18;
+	        	if (get_player_damage(hit_player_obj.player) <= 20) grab_timer = get_player_damage(hit_player_obj.player) + 18;
+	        	else grab_timer = get_player_damage(hit_player_obj.player);
 		        cargo_grab = true;
 	            window = 5;
 	            window_timer = 1;

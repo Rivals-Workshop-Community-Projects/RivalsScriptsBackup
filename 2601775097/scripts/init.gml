@@ -182,6 +182,7 @@ spr_pixel = sprite_get("white_pixel");
 window_end = 0; //the last frame (including whifflag if it's there)
 window_last = 0; //AG_NUM_WINDOWS
 window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 
 strong_pressed = false;
 
@@ -250,7 +251,7 @@ attack_index = [
 	"AT_LIGHT_HOOKSHOT",
 	"AT_SEARING_DESCENT",
 	"AT_FLASHBANG",
-	"AT_PHONE",
+	"AT_EXTRA_5",
 	"AT_LIGHT_DAGGER_AIR",
 	"???",
 	"???",
@@ -411,7 +412,6 @@ mp_color_ex = $FFFF00;
 
 //other mp costs
 mp_cost_strongs = 5;    //strongs
-mp_cost_const_rate = 5; //for burning fury and polaris' buffed states
 
 //value storage
 was_free = free;
@@ -425,7 +425,6 @@ user_event(2);
 //saves skill data in case it's needed
 if (get_synced_var(player) >= 4228) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
 else set_synced_var(player, 12816);
-
 //put this in user_event2 ^ because it needs to run on css and ingame
 
 skill = [0]; //this array checks all the attacks
@@ -435,12 +434,12 @@ a = 0; //array start
 AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
 AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
 AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
-AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 20, 10, 40); //40, 0
+AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 20, 10, 40);
 
-AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, 39, -1, 0, 10, 10);
+AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, AT_EXTRA_4, -1, 0, 10, 10);
 AT_SKILL5  = set_skill("Power Smash", 5, 1, 1, AT_FSPECIAL_2, -1, 5, 25, 30);
 AT_SKILL6  = set_skill("Accel Blitz", 6, 2, 1, AT_NSPECIAL_2, -1, 10, 0, 10);
-AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 10, 0, 50);
+AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 10, 10, 50);
 
 AT_SKILL8  = set_skill("Ember Fist", 8, 0, 2, AT_DSPECIAL_2, -1, 20, 0, 20);
 AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
@@ -494,9 +493,9 @@ skill_desc[6] = string("
     foes while flashing will prevent pratfall.
     ");
 skill_desc[7] = string("
-    Releases holy light to activate a special buff.
-    Whenever Bar hits a foe, a small spark of light
-    will shoot out. Input again to cancel.
+    Releases 4 sparks of light that burn MP over time.
+    When Bar hits a foe, a single spark will home to
+    the hit player. Input again to release a light blast.
     ");
 skill_desc[8] = string("
     Punches out a stream of holy fire that can be
@@ -564,21 +563,17 @@ fx_burn = hit_fx_create(sprite_get("fx_burn"), 18);
 fx_lightblow = [
     hit_fx_create(sprite_get("fx_lightblow1"), 15),
     hit_fx_create(sprite_get("fx_lightblow2"), 25),
-    hit_fx_create(sprite_get("fx_lightblow3"), 30)];
-
+    hit_fx_create(sprite_get("fx_lightblow3"), 30)
+];
 fx_fireblow = [
     hit_fx_create(sprite_get("fx_fireblow1"), 30),
     hit_fx_create(sprite_get("fx_fireblow2"), 40),
-    hit_fx_create(sprite_get("fx_fireblow3"), 50)];
-
+    hit_fx_create(sprite_get("fx_fireblow3"), 50)
+];
 fx_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
 
 fx_intro_back = sprite_get("fx_introlight_back");
 fx_intro = hit_fx_create(sprite_get("fx_intro"), 22);
-//fx_ustrong_lightaxe_sprite = asset_get("empty_sprite");
-//fx_lightdagger = asset_get("empty_sprite");
-//fx_lightdagger_air = asset_get("empty_sprite");
-//fx_lighthookshot = asset_get("empty_sprite");
 
 fx_dstrong_blast = hit_fx_create(sprite_get("fx_dstrong_blast"), 40);
 fx_dstrong_quake = hit_fx_create(sprite_get("fx_dstrong_quake"), 27);
@@ -627,10 +622,16 @@ ustrong_dir = [0, 0];
 //dstrong
 dstrong_last_hbox = 0;
 
+//light dagger
+prepare_dagger_cd = false;
+dagger_spam_cd = 0;
+dagger_spam_cd_set = 40;
+
 //burning fury
 burnbuff_active = false;
 fury_norm_cost = skill[1].mp_use_cost;
 fury_mult = 1.5;
+mp_cost_burn_rate = 5; //used for burning fury's buffed state
 
 //force leap
 leap_used = false;
@@ -658,14 +659,24 @@ accel_flashed_time = 0;
 lightbuff_active = false;
 polaris_shot = false;
 polaris_id = noone;
-polaris_deactive_cd = 0; //just prevents the low mp message from popping
-homing_cooldown = -1; //30 frames cooldown
+mp_cost_light_rate = 3; //used for polaris
+polaris_shots_max = 4;
+polaris_shots_left = 4;
+polaris_shot_ids = [];
+prev_bar_pos = [x, y, spr_dir];
+polaris_norm_cost = skill[7].mp_use_cost;
+last_hitstop = 0;
+last_kb = [0, 0, 0, 0, 0];
+last_hitstun = 0;
+//last_atk = [0, 0];
 
 lightbuff_alpha = 0.1;
 lightbuff_rate = 0.02;
 lightbuff_increase = true;
+lightbuff_softarmor_max = mp_max/4;
 
 //ember fist
+ember_range = 40;
 ember_alter_anim_start = 0;
 ember_alter_anim_end = 0;
 fury_ember_timer = 0;
@@ -863,6 +874,11 @@ mamizou_transform_spr = sprite_get(alt_cur == 8 ? "mamizou_shadow" : "mamizou_an
 //po and gumbo food
 pot_compat_variable = sprite_get("gumbo_schnitzel");
 pot_compat_text = "Holy Schnitzel";
+
+//Quote
+bar_victory_quote = "No problem.";
+bar_handled_victory_quote = false;
+bar_was_in_stage = get_stage_data(SD_ID);
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 

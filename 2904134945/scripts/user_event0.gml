@@ -69,4 +69,14 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 30, 6, 12, 41, 61 ); //Skin1
 		set_color_profile_slot( 30, 7, 4, 12, 38 ); //Skin2
 		break;
+	case "PIKA":
+		set_color_profile_slot( 30, 0, 45, 54, 54 ); //Dress1
+		set_color_profile_slot( 30, 1, 0, 161, 161 ); //Snow1
+		set_color_profile_slot( 30, 2, 35, 35, 36 ); //Dress2
+		set_color_profile_slot( 30, 3, 0, 130, 130 ); //Snow2
+		set_color_profile_slot( 30, 4, 255, 0, 0 ); //Hair1
+		set_color_profile_slot( 30, 5, 173, 0, 0 ); //Hair2
+		set_color_profile_slot( 30, 6, 220, 137, 152 ); //Skin1
+		set_color_profile_slot( 30, 7, 187, 86, 137 ); //Skin2
+		break;
 }

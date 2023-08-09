@@ -1,5 +1,5 @@
 // [4] FLASHBANG
-var atk = 39;
+var atk = AT_EXTRA_4;
 
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("skill4"));
@@ -17,12 +17,18 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.35);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction);
 
 window_num ++; //grab
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction);
 
 window_num ++; //grab fail
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);

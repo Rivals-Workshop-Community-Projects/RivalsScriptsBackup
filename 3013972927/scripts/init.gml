@@ -401,10 +401,10 @@ for (var i = 0; i < 2; i++)
     var shift = (i*4);
     synced_vars[i] = tmp_sync_vars >> shift & 15;
 }
-voice_init(synced_vars[0]);
+voice_bpm_init(synced_vars[0]);
 
 /////////////////////////////////////////////////////// CUSTOM HITBOX COLOR SYSTEM //////////////////////////////////////////////////////
-
+/*
 //Custom Hitbox Colors System (by @SupersonicNK)
 // USAGE: set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[#])
 
@@ -436,7 +436,7 @@ hb_color[1] = $00FFFF;  //any color hex value works ($BBGGRR), using this one fo
 hb_color[2] = $FF00FF;  //status effect hitbox
 
 
-
+*/
 ////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
 
 fair_cd = false;
@@ -514,7 +514,7 @@ switch (_voice)
 {
     default: vo = 0; break;
     case 0: vo = 0; break;
-    case 1: vo = "On"; break;
+    case 1: vo = 1; break;
 }
 print(vo);
 cur_voiceclip = [noone, noone];
@@ -522,16 +522,49 @@ voice_cooldown = 0;
 voice_cooldown_set = 70; //cooldown for regular voiceclips
 voice_cooldown_set_100 = 110; //cooldown for high % lines
 
-#define bpm_init(_bpm)
+#define voice_bpm_init(_bpm)
 bpm = 0; 
 //Voice clips
+
 switch (_bpm)
 {
-    default: bpm = 0; break;
-    case 0: bpm = 0; break;
-    case 1: bpm = "On"; break;
+    default: 
+    	bpm = 0;
+    	vo = 0;
+    	bpm_toggle = false;
+    break;
+    
+    case 0: 
+    	bpm = 0;
+    	vo = 0;
+    	bpm_toggle = false;
+    break;
+    
+    case 1: 
+	    bpm = 0;
+	    vo = 1;
+	    bpm_toggle = false;
+    break;
+    
+    case 2: 
+	    bpm = 1;
+	    vo = 0;
+	    bpm_toggle = true;
+    break;
+    
+    case 3: 
+	    bpm = 1;
+	    vo = 1;
+	    bpm_toggle = true;
+    break;
 }
-print(bpm);
+
+print(_bpm);
+cur_voiceclip = [noone, noone];
+voice_cooldown = 0;
+voice_cooldown_set = 70; //cooldown for regular voiceclips
+voice_cooldown_set_100 = 110; //cooldown for high % lines
+////
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 

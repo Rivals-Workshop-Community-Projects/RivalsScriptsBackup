@@ -123,5 +123,6 @@ init_shader();
 		case "M30W": return "Nyan";
 		case "WEET": return "London";
 		case "FUGG": return "Maeday";
+		case "PIKA": return "Pika alt I think";
 	}
 }

@@ -172,6 +172,14 @@ if ("practice" in self)
 						AddText("FSpec can now be fully crouch armoured through (Effect 12)");
 						AddText("");
 						AddText("Ice Crystal Extra Hitpause 0 -> 4 (Base is still 8)");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.6.1 - 8 Aug 2023");
+						AddText("");
+						AddText("Added more custom colours on the last alt for specific tags:");
+						AddText("Pika alt I think: PIKA");
+						AddText("");
+						AddText("Hopefully removed the secondary taunt sfx spam bug");
 						break;
 				}
 				DrawTutorialBlock();

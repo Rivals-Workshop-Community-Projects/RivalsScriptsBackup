@@ -95,6 +95,7 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 16);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 65);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("fx_skill0_proj"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightslash);
@@ -135,6 +136,6 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.3);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 15); //burning fury stat
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 0);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);

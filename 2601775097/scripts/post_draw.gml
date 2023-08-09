@@ -128,10 +128,8 @@ if (is_attacking) switch (attack)
         if (window == 17) draw_sprite_ext(sprite_get("fx_od_slash"), 0, x, y, 2*spr_dir, 2, 0, c_white, od_slash_alpha);
         break;
 }
-shader_end();
 
-//halloween costume
-if (bibical) draw_sprite_ext(sprite_get("bibical_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+shader_end();
 
 //small MP guage
 if (mp_mini_timer > 0)

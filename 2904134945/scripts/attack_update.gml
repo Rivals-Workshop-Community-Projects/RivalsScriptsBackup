@@ -48,6 +48,7 @@ switch (attack)
 		if (state_timer == 1)
 		{
 			spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
+			if (holidayID != noone) sound_stop(holidayID);
 			holidayID = sound_play(sound_get("holiday"), 1, 0, 2);
 			clear_button_buffer(PC_TAUNT_PRESSED);
 			tutDoneAdv[0] = 1;
