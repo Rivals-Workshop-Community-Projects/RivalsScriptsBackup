@@ -51,6 +51,43 @@ if attack == AT_USPECIAL {
         can_wall_jump = false
     }
     
+    //seed canceling
+    if window == 1 seed_hit = false;
+    var orig_id = id;
+    with pHitBox if player_id == other.id && attack == AT_USPECIAL {
+        var seed_obj = noone
+        with obj_article1 if ("is_seed" in self && is_seed) && (state == PS_IDLE || state == PS_SPAWN) && place_meeting(x, y, other) {
+            seed_obj = id
+        }
+        with pHitBox if ("is_seed" in self && is_seed) && place_meeting(x, y, other) {
+            seed_obj = id
+        }
+        
+        if seed_obj != noone && !seed_obj.die {
+            orig_id.seed_hit = true;
+        
+            orig_id.has_hit = true
+            orig_id.hitpause = true
+            orig_id.hitstop = 6
+            orig_id.old_hsp = orig_id.hsp
+            orig_id.old_vsp = orig_id.vsp
+            
+            with seed_obj {
+                die = true
+                sound_play(asset_get("sfx_crunch"))
+                spawn_hit_fx(x, y, 133)
+            }
+        }
+    }
+    
+    if seed_hit && !hitpause {
+        can_jump = true
+        can_attack = true
+        can_special = true
+        can_strong = true
+        can_ustrong = true
+    }
+    
     if window == 1 && window_timer == 1 sound_play(asset_get("sfx_syl_uspecial_travel_start"))
     if window == 2 {
         if !free {
@@ -71,13 +108,20 @@ if attack == AT_USPECIAL {
     //wall detection
     var touch_ceiling = place_meeting(x, y-char_height, asset_get("par_block")) && position_meeting(x, y-char_height-20, asset_get("par_block"))
     var touch_wall = (place_meeting(x+1, y, asset_get("par_block")) && position_meeting(x+20, y, asset_get("par_block"))) || (place_meeting(x-1, y, asset_get("par_block")) && position_meeting(x-20, y, asset_get("par_block")))
-    if window == 2 && touch_wall {
+    
+    if window == 2 && jump_down && !touch_ceiling && has_walljump{
+        if touch_wall {
+            spr_dir *= -1
+            set_state(PS_WALL_JUMP)
+        }
+    } else if window == 2 && touch_wall {
         window = 3
         window_timer = 0
     } else if window == 2 && touch_ceiling {
         window = 4
         window_timer = 0
     }
+    
     
     if window == 5 {
         if touch_wall {
@@ -124,12 +168,12 @@ if attack == AT_DSPECIAL {
     
     //1 seed on ground, 1 seed marked on player
     if seed_count >= 2 && window_timer == 8 {
-        with obj_article1 if player_id == other.id && state == PS_IDLE {
+        with obj_article1 if player_id == other.id && state == PS_IDLE && armed {
             state = PS_JUMPSQUAT
             state_timer = 0
         }
     } else if seed_count == 1 && ground_seed_count == 1 && window_timer == 8 { //only seed on ground
-        with obj_article1 if player_id == other.id && state == PS_IDLE {
+        with obj_article1 if player_id == other.id && state == PS_IDLE && armed {
             state = PS_ATTACK_AIR
             state_timer = 0
             window_timer = 0
@@ -213,7 +257,7 @@ if attack == AT_FSPECIAL {
         }
         
         //seed grab
-        with obj_article1 if player_id == other.id && place_meeting(x, y, grabbox) && state == PS_IDLE {
+        with obj_article1 if player_id == other.id && place_meeting(x, y, grabbox) && (state == PS_IDLE || state == PS_SPAWN) {
             if !other.wall_grab {
                 sound_play(asset_get("sfx_leafy_hit2"))
             }
@@ -232,23 +276,32 @@ if attack == AT_FSPECIAL {
     
     if wall_grab {
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 4);
-        
-        if (window == 2 && window_timer >= 6) || (window == 4 && window_timer != window_length) {
-            hsp += 2*spr_dir
-            hsp = clamp(hsp, -10, 10)
-            
+        //print(window)
+        if (window == 2 && window_timer > window_length - 2) || (window >= 4) {
             if seed_grab {
+                seed_grabbed = true
+                if window == 2 hsp = lerp(hsp, spr_dir*11, 0.9)
+                
                 seed_grab_id.destroyed = true
                 var hbox = create_hitbox(AT_NSPECIAL, 1, seed_grab_id.x, seed_grab_id.y)
                     hbox.spr_dir = -spr_dir
                     hbox.hsp *= -1.6
                     hbox.vsp *= 1
                 seed_grab = false
-                
+            } else if !seed_grabbed {
+                hsp = lerp(hsp, spr_dir*11, 0.9)
             }
+        }
+        
+        if (window == 2 && window_timer >= 6) || (window == 4 && window_timer != window_length) {
+            //hsp += 2*spr_dir
+            //hsp = clamp(hsp, -10, 10)
+            
+            
         }
         can_wall_jump = true
         if window >= 4 {
+            //print('a')
             can_jump = true
         }
         move_cooldown[AT_FSPECIAL] = 14
@@ -264,7 +317,7 @@ if attack == AT_DATTACK {
     if window == 1 seed_hit = false;
     var orig_id = id;
     with pHitBox if player_id == other.id && attack == AT_DATTACK && hbox_num == 3 {
-        with obj_article1 if is_seed && state == PS_IDLE && place_meeting(x, y, other) {
+        with obj_article1 if is_seed && (state == PS_IDLE || state == PS_SPAWN) && place_meeting(x, y, other) {
             orig_id.seed_hit = true;
         
             orig_id.has_hit = true
@@ -350,7 +403,7 @@ switch attack {
     }
     if dtiltbox != undefined && !seed_grab {
         //seed hit
-        with obj_article1 if player_id == other.id && place_meeting(x, y, dtiltbox) && state == PS_IDLE {
+        with obj_article1 if player_id == other.id && place_meeting(x, y, dtiltbox) && (state == PS_IDLE || state == PS_SPAWN) {
             sound_play(asset_get("sfx_leafy_hit2"))
             other.seed_grab = true
             other.seed_grab_id = id

@@ -13,18 +13,40 @@ if mark_id && !instance_exists(mark_id) {
     set_state(PS_DEAD)
 }
 
-if die && state == PS_IDLE {
+if die && (state == PS_IDLE || state == PS_SPAWN) {
     sound_play(asset_get("sfx_syl_nspecial_flowerhit"))
     spawn_hit_fx(x, y, player_id.vfx_wood_small)
     set_state(PS_DEAD)
 }
 
 switch state {
+    case PS_SPAWN: //arming period
+    floor_check()
+    sprite_index = sprite_get("seed_arm");
+    if state_timer < 47 image_index = 0
+    else image_index = 1 + floor((state_timer-47)/6)
+    
+    var is_colliding = false
+    with pHitBox if player_id != other.player_id && place_meeting(x, y, other) {
+        is_colliding = true
+    }
+    
+    if is_colliding {
+        sound_play(asset_get("sfx_syl_nspecial_flowerhit"))
+        spawn_hit_fx(x, y, player_id.vfx_wood_small)
+        set_state(PS_DEAD)
+    }
+    
+    if state_timer == 70 {
+        set_state(PS_IDLE)
+    }
+    break;
     
     case PS_IDLE: //normal
+    armed = true
     floor_check()
     sprite_index = sprite_get("seed_idle");
-    image_speed = 0.15;
+    image_index = floor(timer/15)
     
     var is_colliding = false
     with pHitBox if player_id != other.player_id && place_meeting(x, y, other) {
@@ -47,7 +69,7 @@ switch state {
     mark_id.arb_marked = true
     if mark_id.state == PS_DEAD || mark_id.state == PS_RESPAWN {
         set_state(PS_DEAD)
-        if other_seed_id != undefined with other_seed_id if state != PS_IDLE {
+        if other_seed_id != undefined with other_seed_id if (state != PS_IDLE && state != PS_SPAWN) {
             set_state(PS_DEAD)
         }
     }

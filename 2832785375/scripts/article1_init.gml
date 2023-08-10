@@ -4,7 +4,6 @@ uses_shader = true
 
 sprite_index = sprite_get("seed_idle");
 mask_index = sprite_get("seed_idle_hurt");
-image_speed = 0.15;
 can_be_grounded = true;
 is_seed = true;
 timer = 0;
@@ -34,11 +33,13 @@ seg_ydist = 0
 
 hitbox_timer = 0
 
-state = PS_IDLE
+state = PS_SPAWN
 state_timer = 0
 attack = undefined
 window = 0
 window_timer = 0
+
+armed = false
 
 draw_vine = false
 

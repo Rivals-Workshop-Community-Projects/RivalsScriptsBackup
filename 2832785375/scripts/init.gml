@@ -30,6 +30,7 @@ grabbedTimer = 0;
 wall_grab = false
 seed_grab = false
 seed_grab_id = undefined
+seed_grabbed = false
 
 timer = 0;
 seed_count = 0;
@@ -53,6 +54,9 @@ hurtbox_spr = asset_get("orca_hurtbox");
 crouchbox_spr = asset_get("orca_crouchbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
+
+//can_wall_cling = true;
+walljump_timer = 0;
 
 char_height = 44;
 idle_anim_speed = .125;
@@ -88,7 +92,7 @@ air_friction = .05;
 max_djumps = 1;
 double_jump_time = 26; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
-walljump_vsp = 9;
+walljump_vsp = 10;
 walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed

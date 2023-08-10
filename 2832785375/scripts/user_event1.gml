@@ -20,7 +20,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 13;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
  
  
@@ -40,6 +40,7 @@ alt_name[9]  = "Steampunk";
 alt_name[10]  = "Brazil";
 alt_name[11]  = "Early Access";
 alt_name[12]  = "Genesis";
+alt_name[13]  = "Riptide";
  
  
 //Patch

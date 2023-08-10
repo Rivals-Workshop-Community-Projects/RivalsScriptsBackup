@@ -6,6 +6,7 @@ if attack == AT_FSPECIAL {
     wall_grab = false
     seed_grab = false
     seed_grab_id = undefined
+    seed_grabbed = false
     reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO);
     reset_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS);
 }

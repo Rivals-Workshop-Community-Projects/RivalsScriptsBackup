@@ -7,7 +7,7 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
     //turn into article
     if !free {
         var spawn_y = ceil((y)/16)*16 - 6;
-        var spawn_x = round(x - hsp);
+        var spawn_x = round(x);
         /*
         var can_spawn = false;
         while can_spawn == false {
@@ -26,7 +26,7 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
             var seed = instance_create(spawn_x, spawn_y, "obj_article1");
                 seed.player_id = player_id;
                 seed.age = age;
-                seed.state = PS_IDLE
+                seed.state = PS_SPAWN
             sound_play(asset_get("sfx_plant_ready"))
         }
         destroyed = true;
@@ -36,6 +36,10 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
     
     if y > room_height {
         destroyed = true;
+    }
+    
+    if die {
+        destroyed = true
     }
 }
 

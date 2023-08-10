@@ -24,6 +24,9 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
     }
     
     age = player_id.timer;
+    
+    is_seed = true
+    die = false
 }
 
 if attack == AT_DSPECIAL && hbox_num == 1 {

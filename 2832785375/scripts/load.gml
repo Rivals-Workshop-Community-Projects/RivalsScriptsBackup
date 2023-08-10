@@ -47,10 +47,13 @@ sprite_change_offset("ustrong_vine", 100, 198);
 sprite_change_offset("dstrong", 140, 158);
 sprite_change_offset("dstrong_vine", 140, 158);
 sprite_change_offset("nspecial", 100, 118);
+sprite_change_offset("nspecial_air", 100, 118);
 sprite_change_offset("fspecial", 140, 118);
+sprite_change_offset("fspecial_air", 140, 118);
 sprite_change_offset("uspecial_ground", 100, 118);
 sprite_change_offset("uspecial", 100, 118);
 sprite_change_offset("dspecial", 100, 118);
+sprite_change_offset("dspecial_air", 100, 118);
 sprite_change_offset("taunt", 140, 158);
 
 sprite_change_offset("particle_flower", 15, 15);
@@ -61,6 +64,7 @@ sprite_change_offset("intro", 142, 316);
 
 sprite_change_offset("plat", 60, 4);
 
+sprite_change_offset("seed_arm", 32, 32);
 sprite_change_offset("seed_proj", 32, 32);
 sprite_change_offset("seed_idle", 32, 32);
 sprite_change_offset("seed_idle_hurt", 32, 32);

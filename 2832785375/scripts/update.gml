@@ -3,6 +3,11 @@ timer++;
 
 window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
 
+if state == PS_WALL_JUMP && !clinging {
+    if state_timer == 0 walljump_timer = 0
+    else walljump_timer++
+}
+
 if ground_seed_count > 1 {
     var max_age = 10000000000000;
     var oldest_id = undefined;
