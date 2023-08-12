@@ -59,6 +59,8 @@ sprite_change_offset("taunt", 20,39, true);
 sprite_change_offset("_phone", 20,39, true);
 sprite_change_offset("taunt_rain", 10, 80);
 sprite_change_offset("lookup", 30,79, true);
+sprite_change_offset("sleep", 20,39, true);
+sprite_change_offset("sleep_air", 20,39, true);
 
 sprite_change_offset("plat", 50, 20, true);
 

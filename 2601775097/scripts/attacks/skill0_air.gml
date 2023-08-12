@@ -115,6 +115,8 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 16);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 65);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("fx_skill0_proj"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightslash);

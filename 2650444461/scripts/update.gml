@@ -111,11 +111,13 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 //shiny effect for shiny alt
 switch(get_player_color(player)){
 	case 1:
-    	if(get_gameplay_time() % 180 == 0){
-			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_small);eff.depth = depth-1;
-        }if(get_gameplay_time() % 120 == 0){
-			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_smallfast);eff.depth = depth-1;
-        }
+		if (state != PS_RESPAWN && state != PS_DEAD){
+	    	if(get_gameplay_time() % 180 == 0){
+				var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_small);eff.depth = depth-1;
+	        }if(get_gameplay_time() % 120 == 0){
+				var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_smallfast);eff.depth = depth-1;
+	        }
+		}
 	break;
 }
 

@@ -296,7 +296,7 @@ with (oPlayer){
 
 //for based sleep sfx
 if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
-	if(kob_sleep && "kob_sleep_sfx" in self && kob_sleep_sfx){
+	if(kob_sleep && "kob_sleep_sfx" in self && kob_sleep_sfx && !hitpause){
 		if(voicemode == 0){ //adventure
 			PlayVoiceClip("adv_sleep", 1);
 		}else if(voicemode == 1){ //modern

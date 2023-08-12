@@ -260,6 +260,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.21", "11th August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed sleep sfx not working correctly");
+
+initPatch("1.20", "4th August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed bug where targeting some articles as of the latest update would bug out (yikes!)");
 
 initPatch("1.19", "3rd August, 2023");
 initHeader("Fixes / Other Changes");

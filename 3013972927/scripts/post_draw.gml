@@ -366,6 +366,39 @@ var win_time = argument_count > 6 ? argument[6] : 0;
         //
         //put text here.
         
+        patch_note_title[i] = "8/8/2023 - Music BPM Hot Fix"
+        patch_note_text[i++] = 
+        "8 / 8 / 2023
+---
+v1.8
+HOT FIX UPDATE! 
+Sorry for the frequent updates but seemed like the BPM feature wasn't working properly. This patch will fix it slightly and make the speed change more apparent.
+*** = Major change
+
+***BPM adjustment to Base game Stages have be tuned to better match their song speeds
+
+***Added a CSS button that allows you to toggle the Base Stage BPM change or to stay at a constant 130 BPM!
+	Click the Music note icon on the CSS to enable or disable. Disable will set BPM to 130 when match starts
+
+Added base stages that were missing in the initial patch:
+	- CEO Ring = BPM 125
+	- Badger Co Mines = BPM 140
+	- Tutorial Grid X = BPM 130
+	
+Bug fixes:
+- Fixed Assist Call HUD showing the wrong order of assists when on Korsica (Mac was placed on the 2nd slot)
+- Fixed issue with restarting a match with Chai causes the game to crash
+
+Attacks:
+
+FStrong:
+	- Increased Knockback scaling on Beat Hit
+		- From .8 to 1.1
+UStrong:
+	- Adjusted Knockback scaling on Beat Hit
+		- From .8 to 1.1
+"
+		
         patch_note_title[i] = "8/7/2023 - Music BPM Feature you all wanted"
         patch_note_text[i++] = 
         "8 / 7 / 2023

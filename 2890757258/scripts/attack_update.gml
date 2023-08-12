@@ -151,11 +151,12 @@ if (attack == AT_FSPECIAL)
 		hsp 		= 0;		
 		moved_up 	= false;
 		
-		if (window_timer > 1 && window_timer < 15)
+		//	Away with you
+		/*if (window_timer > 1 && window_timer < 15)
 		{
 			invincible 		= true;
 			//invince_time 	= 10;
-		}
+		}*/
 		
 		if (window_timer == 2 && !hitpause)
 		{
@@ -262,11 +263,12 @@ if (attack == AT_DSPECIAL_AIR)
 		vsp 			= -1;
 		hsp 			= 0;		
 		
-		if (window_timer > 1 && window_timer < 18)
+		//	Again, away with you
+		/*if (window_timer > 1 && window_timer < 18)
 		{
 			invincible 		= true;
 			//invince_time 	= 14;
-		}
+		}*/
 		
 		if (window_timer == 2 && !hitpause)
 		{
@@ -396,11 +398,14 @@ if (attack == AT_USPECIAL)
 	
 	if (window == 1)
 	{
-		if (window_timer > 1 && window_timer < 5)
+		reset_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY);
+		
+		//	Again, again... Away with you...
+		/*if (window_timer > 1 && window_timer < 5)
 		{
 			invincible 		= true;
 			//invince_time 	= 8;
-		}
+		}*/
 		
 		if (window_timer == 2 && !hitpause)
 		{
@@ -416,6 +421,11 @@ if (attack == AT_USPECIAL)
 				vsp = 0;
 			}
 		}
+	}
+	
+	if (window == 2 && window_timer > 7)
+	{
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 0);
 	}
 	
 	if (window == 1 || window == 2 && !hitpause)

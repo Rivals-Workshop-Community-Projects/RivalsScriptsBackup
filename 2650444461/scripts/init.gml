@@ -137,7 +137,9 @@ runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
 toonlink_randomizephoto = false;
-//feri_costume = sprite_get("feri_costume");
+kob_sleep_sprite = sprite_get("sleep");
+kob_sleep_sprite_air = sprite_get("sleep_air");
+kob_sleep = false;
 //miiverse_post = sprite_get("miiverse_post");
 //guiltySprite = sprite_get("trialgrounds");
 //resort_portrait = sprite_get("lastresort");

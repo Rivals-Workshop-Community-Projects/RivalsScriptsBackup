@@ -244,6 +244,19 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.11", "08 August, 2023");
+initHeader("General:");
+initSection("Updated the localization files");
+initHeader("Specials:");
+initSection("FSPECIAL:
+* Changed how Invincibility works on Start-Up. Only invincible to projectiles now
+
+USPECIAL:
+* Invincibility should now be working as intended for Start-Up. Invincible to all attacks
+
+DSPECIAL_AIR:
+* Invincibility should now be working as intended for Start-Up. Invincible to all attacks");
+
 initPatch("1.10", "29 April, 2023");
 initHeader("GENERAL:");
 initSection("Fixed a bug for the chara-selec portrait that didn’t reset the colour mapping");

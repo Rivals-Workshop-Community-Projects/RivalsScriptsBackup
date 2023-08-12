@@ -204,7 +204,7 @@ if (!bar_handled_victory_quote)
       //i wonder if these will ever be used lol
       /*
          case "venus": //venus (placeholder)
-            data.status_quote = "Yes, that was a good sparring match, you are getting stronger.";
+            data.status_quote = "Yes... that was a good sparring match, you are getting stronger!";
             break;
          case "asra": //asra (placeholder)
             data.status_quote = "Sahar sure keeps you up on your feet huh? Tell him I said hi.";

@@ -13,12 +13,14 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sfx_transform);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sfx_monkey_charge);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);

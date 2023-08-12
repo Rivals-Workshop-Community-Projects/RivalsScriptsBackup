@@ -261,9 +261,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.17", "11th August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added sleep animations
++ Fixed shiny alt effects playing when Mudkip was out of stocks");
+
 initPatch("1.16", "30th July, 2023");
 initHeader("Fixes / Other Changes");
-initSection("+ Added intro animation
+initSection("+ Added intro animation (credit to Skycrafter for the pokeball throw animation)
 + Added shiny effects on Shiny alt
 + Mudkip can now look up
 + Improved Mudkip's AI a little");

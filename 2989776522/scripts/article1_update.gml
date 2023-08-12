@@ -21,9 +21,9 @@ if(timer == 1){
     if(instance_exists(fspec_target)){
         //if(fspec_target_player)fspec_target_offset = 35;
         with(asset_get("obj_article1")){ //check if target is already targeted, or if it can be targeted
-    		if(self != other && player_id == other.player_id && fspec_target == other.fspec_target
-    		|| ("Untargetable" in fspec_target && fspec_target.Untargetable)){other.cantarget = 1;}
+    		if(self != other && player_id == other.player_id && fspec_target == other.fspec_target){other.cantarget = 1;}
     	}
+    	if("Untargetable" in fspec_target && fspec_target.Untargetable){cantarget = 1;}
     	
     	//if target cant be targeted and its a player, check for other players that are overlapping
     	if(fspec_target_player && cantarget >= 1){

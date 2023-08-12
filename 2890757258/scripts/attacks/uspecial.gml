@@ -10,10 +10,12 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sfx_transform);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_INVINCIBILITY, 1);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
