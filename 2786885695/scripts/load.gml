@@ -117,6 +117,8 @@ sprite_change_offset("taunt", 93, 126);
 sprite_change_offset("plat_back", 39, 66);
 sprite_change_offset("plat_back_gb", 39, 66);
 sprite_change_offset("intro", 53, 126);
+sprite_change_offset("wait", 45, 94);
+sprite_change_offset("hurtbox_wait", 4, 70);
 
 sprite_change_offset("taunt2", 29, 94);
 sprite_change_offset("fx_lyre_note", 16, 16);

@@ -66,6 +66,12 @@ Oversight where the sourspot and sweetspot had the same damage.
 
 -Down Strong: Pre-charge startup reduced by 1 frame.
 Im tinkering with dstrong buffs because it was heavily nerfed recently, but nowadays it doesn't see much use because ustrong was only slightly slower and way better at coverage. The move might be adjusted later, but I'm not going to re-buff it too much.
+
+v 2.35
+
+-Fixed bug where Up Special would go into normal landing lag and not pratland when landing (Makes the move more punishable.
+-Nspecial now has more landing lag when landing during the startup/endlag (4 -> 17).
+
 "
         
         patch_note_title[i] = "Quick Guide"

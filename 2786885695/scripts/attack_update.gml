@@ -446,6 +446,8 @@ switch(attack)
 		//1. special isn't neccesary to be held down to continiue the attack, just a direction (window 4)
 		//2. prev_joy_dir is reset to -1 (window 1, window 3)
 
+		if (uspec_fx_anim[0] <= uspec_fx_anim[1] && !hitpause) uspec_fx_anim[0] ++;
+
 		switch (window)
 		{
 			case 1: //check if the uspec started on the ground or not to see if it should pratfall
@@ -461,34 +463,29 @@ switch(attack)
 				{
 					var uspec_vanish = spawn_hit_fx(x, y-32, fx_uspec_vanish);
 					uspec_vanish.depth = -6;
+
+					uspec_fx_anim[0] = 0;
+
+					//quick slash aim logic
+					if (joy_pad_idle && prev_joy_dir = -1) joy_dir = 90;
+					hsp = lengthdir_x(uspec_travel_dist, joy_dir);
+					vsp = lengthdir_y(uspec_travel_dist, joy_dir);
+					prev_joy_dir = joy_dir;
+
+					if (joy_dir > 90 && joy_dir < 270) spr_dir = -1;
+					else if (joy_dir < 90 || joy_dir > 270) spr_dir = 1;
+					
+					uspec_points[0] = [x, y - 32];
+					uspec_points[1] = [x, y - 32];
 				}
 				break;
 			case 3: //movement
-				if (window_timer == 1)
-				{
-					if (!hitpause)
-					{
-						fall_through = true;
-
-						//quick slash aim logic
-						if (joy_pad_idle && prev_joy_dir = -1) joy_dir = 90;
-						hsp = lengthdir_x(uspec_travel_dist, joy_dir);
-						vsp = lengthdir_y(uspec_travel_dist, joy_dir);
-						prev_joy_dir = joy_dir;
-
-						if (joy_dir > 90 && joy_dir < 270) spr_dir = -1;
-						else if (joy_dir < 90 || joy_dir > 270) spr_dir = 1;
-					}
-				}
-				if (window_timer == 2)
-				{
-					if (abs(hsp) > 0 || abs(vsp) > 0)
-					{
-						uspec_flash = spawn_hit_fx(x, y-32, fx_uspec_flash);
-						uspec_flash.draw_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp * spr_dir);
-					}
-				}
+				if (window_timer == 1) if (!hitpause) fall_through = true;
 				if (window_timer == window_end) spawn_hit_fx(x, y-32, fx_nspec_cursorspawn); //lol reusing effects
+
+				grav = -gravity_speed;
+
+				uspec_points[1] = [x, y - 32];
 				break;
 			case 4: //post-movement
 				fall_through = false;
@@ -532,7 +529,7 @@ switch(attack)
 		
 		if (window == 3)
 		{
-			if (window_timer == 2 && afterimage_amount < 1 + has_rune("B")) //limit the amount of afterimage articles that can spawn
+			if (window_timer == 2 && afterimage_destroy_cd == 0 && afterimage_amount < 1 + has_rune("B")) //limit the amount of afterimage articles that can spawn
 			{
 				//dspec coordinate recordings are done in update.gml cuz dan moment
 				artc_afterimage = instance_create(dspec_rec_x, dspec_rec_y-34, "obj_article2");

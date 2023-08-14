@@ -1,7 +1,5 @@
 //update
 
-// end match to test result screen
-//if (shield_pressed) end_match(player);
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
@@ -33,6 +31,7 @@ if (debug_keqing)
 //i'm just checking if it's in those states and if it is, set it to true
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack check
 is_dodging = (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE); //dodge check
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 
 
 //set window_last, window_end, window_cancel_time every time keqing is in an attack state
@@ -234,6 +233,10 @@ move_cooldown[AT_FSPECIAL] = fspec_used+1;
 //  U-SPECIAL
 //electric flash effect pause (applies to both instances of starward sword)
 if (instance_exists(uspec_flash)) if (hitpause) uspec_flash.step_timer --;
+
+//  D-SPECIAL
+//parried afterimage cooldown
+if (afterimage_destroy_cd > 0) afterimage_destroy_cd --;
 
 ////////////////////////////////////////////////////////////// ABYSS RUNES /////////////////////////////////////////////////////////////
 
@@ -489,8 +492,6 @@ if (!used_burst && fs_alpha_bg > 0) fs_alpha_bg -= 0.05;
 if (fs_alpha_bg <= 0) fs_alpha_bg = 0;
 if (used_burst || vhd_attack) attack_invince = true;
 
-
-
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILITIES ///////////////////////////////////////////////////////
 
 //dracula boss dialouge
@@ -590,11 +591,11 @@ if (display_damage_numbers && state != PS_DEAD)
 //halloween hat effect
 if (qiqi_hat)
 {
-    wait_time = 0; //just in case i'm gonna add a wait animation
+    check_idle_time = 0;
     if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
     {
         qiqi_hat = false;
-        wait_time = normal_wait_time;
+        check_idle_time = check_idle_time_default;
         var newfx = spawn_hit_fx(x+1*spr_dir, y-66, fx_qiqi_vanish);
         newfx.depth = depth-1; 
     }
@@ -613,13 +614,26 @@ dialogue_buddy_compat();
 //custom hitbox color system by supersonic
 prep_hitboxes();
 
+//wait animation setup
+if (state == PS_IDLE)
+{
+    if (check_idle_time != 0 && state_timer % check_idle_time == 0 && wait_time == 0 && state_timer != 0)
+    {
+        var rng = random_func(0, 2 + (lang != 0), true);
+        if (rng == 1) wait_time = 1;
+        else if (rng == 2) voice_array(9);
+    }
+    else if (wait_time > 0 && sprite_index == wait_sprite && wait_timer == wait_length) wait_time = 0;
+}
+else wait_time = 0;
+
 //voice acting
 if (lang != 0)
 {
     if (voice_cooldown > 0 && !hitpause) voice_cooldown--;
     else if (voice_cooldown == 0)
     {
-        var should_speak = 1; //0-1
+        var should_speak = random_func(0, 2, true); //0-1
         if (should_speak == 1)
         {
             switch (state)
@@ -817,18 +831,18 @@ if (lang != 0)
     set_article_color_slot(0, lerp_array[0], lerp_array[1], lerp_array[2], 1);
     set_character_color_slot(0, lerp_array[0], lerp_array[1], lerp_array[2], 1);
 }
-#define voice_array (num) //this is just for the attack stuff specifically
+#define voice_array (num)
 {
     if (lang != 0)
     {
         switch (num)
         {
             case 0: //jump / move
-                var number = random_func(6, 5, true)+1;
+                var number = random_func_2(current_second, 5, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_jump" + string(number)));
                 break;
             case 1: //weak attacks
-                var number = random_func(6, 7, true)+1;
+                var number = random_func_2(current_second, 7, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_attack_weak" + string(number)));
                 break;
             case 2: //medium attacks
@@ -836,28 +850,32 @@ if (lang != 0)
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_attack_medium" + string(number)));
                 break;
             case 3: //strong attacks
-                var number = random_func(6, 3, true)+1;
+                var number = random_func_2(current_second, 3, true)+1;
                 cur_voiceclip[0] = lang == "kr" ? sound_play(sound_get("va_kr_attack_strong")) : sound_play(sound_get("va_" + string(lang) + "_attack_strong" + string(number)));
                 break;
             case 4: //specials
-                var number = random_func(6, 6, true)+1;
+                var number = random_func_2(current_second, 6, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_skill" + string(number)));
                 break;
             case 5: //burst / final smash
-                var number = random_func(6, 3, true)+1;
+                var number = random_func_2(current_second, 3, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_burst" + string(number)));
                 break;
             case 6: //hurt weak
-                var number = random_func(6, 6, true)+1;
+                var number = random_func_2(current_second, 6, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_hurt_weak" + string(number)));
                 break;
             case 7: //hurt hard
-                var number = random_func(6, 6, true)+1;
+                var number = random_func_2(current_second, 6, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_hurt_strong" + string(number)));
                 break;
             case 8: //reaching 100%
-                var number = random_func(6, 3, true)+1;
+                var number = random_func_2(current_second, 3, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_100_" + string(number)));
+                break;
+            case 9: //idle chatter
+                var number = random_func_2(current_second, 3, true)+1;
+                cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_idle" + string(number)));
                 break;
         }
         if (num != 8) voice_cooldown = voice_cooldown_set;

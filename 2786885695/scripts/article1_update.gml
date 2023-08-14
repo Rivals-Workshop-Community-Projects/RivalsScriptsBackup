@@ -92,11 +92,12 @@ switch (state)
         {
             if (player_id.attack == AT_FSPECIAL) if (variable_instance_exists(player_id, "artc_marker"))
             {
-                if (place_meeting(x, y, other) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone)
+                if (place_meeting(x, y, other) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone) with (player_id)
                 {
-                    player_id.artc_marker.state = 2;
-                    player_id.artc_marker.state_timer = 0;
-                    player_id.vsp = -9;
+                    artc_marker.state = 2;
+                    artc_marker.state_timer = 0;
+                    vsp = -9;
+                    sound_play(asset_get("sfx_absa_harderhit"));
                 }
             }
         }

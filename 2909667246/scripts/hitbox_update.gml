@@ -1015,9 +1015,9 @@ if (attack == AT_NSPECIAL){
 	}
     if(hitbox_timer < 3){
     	if (attack == AT_FAIR){
-        	damage = 5;kb_value = 6;kb_scale = 0.85;
+        	damage = 5;kb_value = 6;kb_scale = 0.9;
     	}else{
-    		damage = 8;kb_value = 6;kb_scale = 1.0;
+    		damage = 8;kb_value = 7;kb_scale = 1.0;
     	}
         hitstun_factor = 1;
         image_xscale = 0.25;image_yscale = 0.25;

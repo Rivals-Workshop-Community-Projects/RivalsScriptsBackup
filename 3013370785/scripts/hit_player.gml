@@ -59,7 +59,7 @@ switch my_hitboxID.attack {
     if my_hitboxID.hbox_num == 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
         hit_player_obj.totk_dstrong_earthwake_id = id
         hit_player_obj.totk_dstrong_earthwake_timer = 0
-        hit_player_obj.totk_dstrong_earthwake_y = y
+        hit_player_obj.totk_dstrong_earthwake_y = dstrong_earthwake_y
         hit_player_obj.totk_dstrong_pause = true
         
         set_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO, 6);

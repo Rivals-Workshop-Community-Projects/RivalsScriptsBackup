@@ -73,11 +73,12 @@ dash_anim_speed     = 0.3;
 pratfall_anim_speed = 0.2;
 
 // wait animation/s
-normal_wait_time            = 0;         //how long it takes for the animation to be done
-wait_length                 = 0;         //amount of frames the wait animation takes
+check_idle_time_default     = 500; //how long it takes for keqing to do something (does nothing if she has the qiqi hat)
+check_idle_time             = check_idle_time_default;
+wait_timer                  = 0; //wait anim buffer
+//wait_time                 = 0; //using a different logic for this
+wait_length                 = 110; //amount of frames the wait animation takes
 wait_sprite                 = sprite_get("wait");
-
-wait_time                   = normal_wait_time;
 
 // Jumps
 double_jump_time    = 24;		// 24   -  40
@@ -116,16 +117,16 @@ crouch_startup_frames   = 2;
 crouch_active_frames    = 1;
 crouch_recovery_frames  = 1;
 
+//Muno's Words of Wisdom:
 /*
+    Due to a Certified Dan Moment, you must duplicate the
+    last frame of your crouch animation. So like, if your animation has 10 frames
+    total, add an 11th that's the copy of the 10th. You do NOT include this 11th
+    frame in the crouch_recovery_frames or etc; configure these values AS IF there
+    were only 10 frames.
 
-Muno's Words of Wisdom: Due to a Certified Dan Moment, you must duplicate the
-last frame of your crouch animation. So like, if your animation has 10 frames
-total, add an 11th that's the copy of the 10th. You do NOT include this 11th
-frame in the crouch_recovery_frames or etc; configure these values AS IF there
-were only 10 frames.
-
-The reason for this is that otherwise, the crouch just glitches out at the end
-of the standing-up animation. Dan Moment
+    The reason for this is that otherwise, the crouch just glitches out at the end
+    of the standing-up animation. Dan Moment
 
 */
 
@@ -160,8 +161,10 @@ window_last = 0;
 window_end = 0;
 window_cancel_time = 0;
 empty = asset_get("empty_sprite");
-fx_empty = hit_fx_create(empty, 1);
+fx_empty = 1;
 ai_fight_time = 0;
+hbox_view = get_match_setting(SET_HITBOX_VIS);
+debug_keqing = false; //just in case i wanna see some basic variables
 
 has_intro = true;
 AT_INTRO = 2;
@@ -171,9 +174,7 @@ is_cpu = false;
 
 AT_BURST = 49;
 
-if (get_match_setting(SET_PRACTICE)) respawn_time_appear = 0;
-else respawn_time_appear = 90;
-debug_keqing = false; //just in case i wanna see some basic variables
+respawn_time_appear = get_match_setting(SET_PRACTICE) ? 0 : 90;
 heal_time = 0;
 heal_time_max = 7;
 
@@ -248,7 +249,10 @@ color_outline_rise = false;
 //U-special limiter
 uspec_count = 0;
 uspec_max = 1;
+uspec_points =[[x, y], [x, y]];
+uspec_fx_anim = [0, 7]; //current time, length
 uspec_travel_dist = 30; //40
+uspec_dist_mult = 0; //set up in set_attack
 uspec_to_nspec_cancel = false;
 uspec_started_grounded = true;
 
@@ -263,6 +267,8 @@ dspec_rec_x = 0;
 dspec_rec_y = 0;
 artc_afterimage = noone;
 afterimage_amount = 0;
+afterimage_destroy_cd = 0;
+afterimage_destroy_set = 120;
 dspec_fx_count = 0;
 
 //this effect still needs work but it's used for Dspecial when keqing goes backwards
@@ -459,8 +465,8 @@ attack_index = [
     "AT_TAUNT_2",
     "AT_EXTRA_2",
     "AT_EXTRA_3",
-    "???",
-    "???", //used for phone
+    "AT_EXTRA_4",
+    "AT_EXTRA_5", //used for phone
     "AT_NSPECIAL_AIR",
     "???",
     "???",
@@ -642,3 +648,8 @@ pot_compat_text = (food_random == 1) ? "Golden Shrimp Balls" : "Survival Grilled
 
 //mamizou cat
 mamizou_transform_spr = sprite_get("mamizou_catqing");
+
+//pokemon stadium
+pkmn_stadium_front_img = sprite_get("pokemon_front");
+pkmn_stadium_back_img = sprite_get("pokemon_back");
+pkmn_stadium_name_override = "keqing";

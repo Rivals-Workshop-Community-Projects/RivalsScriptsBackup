@@ -39,7 +39,19 @@ if(ai_recovering && attack == AT_USPECIAL){
 	attack_pressed = true;
 }
 
-if (get_training_cpu_action() == CPU_FIGHT){
+//hitfalling
+if(free && hitpause && can_fast_fall && has_hit
+&& (position_meeting(x,y+50,asset_get("par_block")) || position_meeting(x,y+200,asset_get("par_block"))
+|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")))){
+	if(!fast_falling)do_a_fast_fall = true;
+}
+
+//jab
+if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_JAB && has_hit && !was_parried && window < 7){
+	attack_pressed = true;
+}
+
+if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 	with(oPlayer) if self != other{
 		if(point_distance(x,y,other.x,other.y) < 100){
 			with(other){
@@ -112,7 +124,35 @@ if (get_training_cpu_action() == CPU_FIGHT){
 		    }
 		}
 	}
+	
+	//charging strongs
+	if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG) && instance_exists(ai_target)){
+		with(ai_target){
+			if((other.spr_dir == 1 && x > other.x || other.spr_dir == -1 && x < other.x || other.attack == AT_DSTRONG)
+			&& (other.strong_charge == 1 && random_func(0,2,true) != 0 || other.strong_charge != 1 && random_func(0,30,true) != 0)){
+				other.strong_down = true;
+				if(point_distance(x, y, other.x, other.y) < 150 && state == PS_PARRY){
+					other.strong_down = false;
+				}
+			}else{
+				other.strong_down = false;
+			}
+		}
+	}
+	
+	//to make the AI jump a bit more
+	with(ai_target){
+		if(point_distance(x, y, other.x, other.y) < 125 && random_func(0,4,true) == 0){
+			with(other){
+                if(!free && can_attack && can_jump){
+                    jump_pressed = true;
+                }
+            }
+		}
+	}
 }
+
+
 
 if(temp_level == 1 || BossMode){
 	max_djumps = 999;

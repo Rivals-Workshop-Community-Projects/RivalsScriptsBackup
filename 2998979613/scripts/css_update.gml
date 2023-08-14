@@ -99,7 +99,7 @@ if voicebutton == 2 || voicebutton == 5{
 }
 var x_temp = get_instance_x(cursor_id);
 var y_temp = get_instance_y(cursor_id);
-if (x_temp>tmp_xl1 && x_temp<tmp_xl2 && y_temp>tmp_yl1 && y_temp<tmp_yl2){ 
+if (x_temp>tmp_xl1 && x_temp<tmp_xl2 && y_temp>tmp_yl1 && y_temp<tmp_yl2){
 	if player == 0 suppress_cursor = true;
 	if voicebutton == voicebuttoncurrent && (voicebutton == 0 || voicebutton == 3) voicebutton += 1;
 }else{

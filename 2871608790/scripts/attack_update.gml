@@ -75,7 +75,7 @@ switch (attack)
 				else
 				{
 					//pocket detection position relative to azi
-					var pos_x = x - 40;
+					var pos_x = x - 10;
 					var pos_y = y - 60;
 					if (!instance_exists(artc_pocket)) artc_pocket = instance_create(pos_x, pos_y, "obj_article2");
 					else

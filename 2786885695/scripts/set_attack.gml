@@ -1,5 +1,7 @@
 //set_attack
 
+if (attack == AT_USPECIAL) uspec_dist_mult = get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH) + 1;
+
 if (attack == AT_NSPECIAL && burst_charge < 200 || burst_charge >= 200 && free)
 {
     //teleport check

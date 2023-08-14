@@ -178,6 +178,7 @@ switch attack {
                         attack_end();
                     } else {
                         set_state(PS_LANDING_LAG);
+                        landing_lag_time = 17
                     }
                 }
                 break;
@@ -286,7 +287,9 @@ switch attack {
         hud_offset = 70
         //can_move = false;
         if (window == 2) spawn_sparkle();
-        if (!free && window > 1) set_state(PS_LANDING_LAG)
+        if (!free && window > 1) {
+            set_state(PS_PRATLAND)
+        }
         //print_debug("old: " + string(old_vsp));
         break;
     

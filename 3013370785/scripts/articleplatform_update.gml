@@ -158,6 +158,11 @@ if recall_active || destroy {
 }
 
 if destroy {
+    /*
+    if player_id.move_cooldown[AT_NSPECIAL_2] == 0 {
+        player_id.move_cooldown[AT_NSPECIAL_2] = 60
+    }
+    */
     with player_id spawn_hit_fx(other.x, other.y, 301)
     sound_play(sound_get("SpObj_Disappear_short"))
     instance_destroy();

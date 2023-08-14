@@ -1,5 +1,6 @@
 //css_update
-if ("alt_total" not in self) exit;
+
+if ("css_anim_time" not in self || "lang_pos" not in self) exit;
 
 css_anim_time ++;
 alt_cur = get_player_color(player);
@@ -58,6 +59,11 @@ if (is_cpu) {
             cursor_id = cursors[hplayer];
         }
     }
+}
+else
+{
+    cursor_id = cursors[player];
+    if cpu_hover_time > 0 cpu_hover_time--;
 }
 //You should not need to touch any of the above code.
 //All of *YOUR* CSS code should be BELOW HERE (and above the #defines ofc)

@@ -260,6 +260,17 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.34", "13th August, 2023");
+initHeader("Buffs");
+initSection("+ Increased FAir sweetspot kbs (0.85->0.9) and BAir sweetspot bkb (6->7)
++ Grab hitbox is now a bit bigger, and grab has less startup (f13->f11)
++ Increased aerial DThrow bkb (4->5) and kbs (0.45->0.55), and grounded UThrow bkb (7->8)");
+initHeader("Nerfs");
+initSection("- Villager is now stuck a bit longer when cancelling USpecial (15f longer when out of fuel, and up to 30f longer when cancelling w fuel left)");
+initHeader("Fixes / Other Changes");
+initSection("+ Changed pratfall / aerial parry stun animation to be the flailing from USpecial
++ Pocket now resets the PocketableByOwner variable, fixing some unintended interactions when there's multiple Villagers (mainly with tree)");
+
 initPatch("1.33", "29th July, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Added a new portrait! The old one is still available of course, so Villager now has 2 portraits like some other characters");

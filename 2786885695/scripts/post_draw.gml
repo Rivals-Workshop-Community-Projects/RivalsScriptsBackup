@@ -116,10 +116,20 @@ if (is_attacking) switch (attack)
         break;
 }
 
+//uspecial lightning smear
+if (uspec_fx_anim[0] < uspec_fx_anim[1])
+{
+    draw_sprite_ext(
+        sprite_get("fx_uspec_flash"), lerp(0, sprite_get_number(sprite_get("fx_uspec_flash")), uspec_fx_anim[0]/uspec_fx_anim[1]),
+        uspec_points[0][0], uspec_points[0][1],
+        point_distance(uspec_points[0][0], uspec_points[0][1], uspec_points[1][0], uspec_points[1][1])/(uspec_travel_dist * uspec_dist_mult)*2, 1,
+        point_direction(uspec_points[0][0], uspec_points[0][1], uspec_points[1][0], uspec_points[1][1]), c_white, 1
+    );
+}
+
 //halloween qiqi hat
 if (qiqi_hat) draw_sprite_ext(sprite_get("qiqi_idle"), image_index, x+1*spr_dir, y-66, 2*spr_dir, 2, 0, c_white, 1);
 shader_end();
-
 
 
 

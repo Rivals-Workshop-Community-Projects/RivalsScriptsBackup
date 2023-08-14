@@ -30,6 +30,7 @@ if practice_mode {
 
 if from_nspec && (state == PS_AIR_DODGE || state == PS_PARRY || state == PS_PARRY_START || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) {
 	from_nspec = false
+	if fuse_item != 0 dspecial_cooldown()
 	fuse_item = 0
 }
 if !(state_attacking && attack == AT_NSPECIAL) {
@@ -140,8 +141,21 @@ if fuse_arrow_exists move_cooldown[AT_DSPECIAL] = 2
 if state == PS_WALL_JUMP && from_fspec {
     from_fspec = false
     stop_sounds = true
+    if fuse_item == 3 {
+    	sound_play(sound_get("SpObj_TimerBomb_Explode"), false, noone, 0.7)
+        sound_stop(sound_get("SpObj_TimerBomb_SignExplode_First"))
+        sound_stop(sound_get("SpObj_TimerBomb_SwitchOn"))
+        spawn_hit_fx(x, y, vfx_bomb_explosion)
+        create_hitbox(AT_FSPECIAL, 4, x, y)
+        walljump_vsp = 16
+    }
+    if fuse_item != 0 dspecial_cooldown()
     fuse_item = 0
+} else if state != PS_WALL_JUMP {
+	walljump_vsp = walljump_vsp_orig
 }
+
+//print(move_cooldown[AT_NSPECIAL_2])
 /*
 if special_pressed {
     with oPlayer if id != other.id {
@@ -270,3 +284,6 @@ if newdust != noone {
     if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 }
 return newdust;
+
+#define dspecial_cooldown()
+move_cooldown[AT_NSPECIAL_2] = dspec_cooldown_amt

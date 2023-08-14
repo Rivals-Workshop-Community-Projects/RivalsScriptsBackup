@@ -161,7 +161,8 @@ if !recall_active {
         if (timer == 60 || hbox_has_hit || place_meeting(x, y, asset_get("par_block"))) && !destroy {
             sound_play(asset_get("mfx_star"))
             destroy = true
-            spawn_item(item, hsp*spr_dir, vsp, x, y - 10)
+            var stone = spawn_item(item, hsp*spr_dir, vsp, x, y - 10)
+                stone.recall_array = recall_array
         }
         break;
         
@@ -252,6 +253,9 @@ if (x > player_id.room_width + 100) || (x < -100) || (y > player_id.room_height 
 }
 
 if destroy {
+    if item != 0 && player_id.move_cooldown[AT_NSPECIAL_2] == 0 {
+        player_id.move_cooldown[AT_NSPECIAL_2] = 30
+    }
     if hbox_id != undefined && instance_exists(hbox_id) {
         hbox_id.destroyed = true
     }

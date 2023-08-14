@@ -1,6 +1,7 @@
 if ("cpu_skill_pool" in self && ds_list_valid(cpu_skill_pool)) ds_list_destroy(cpu_skill_pool);
 
 
+
 //code by Frtoud
 if (!bar_handled_victory_quote)
 {
@@ -97,6 +98,7 @@ if (!bar_handled_victory_quote)
    smuggler.persistent = true; //survive room end
    smuggler.type = 2;
    smuggler.length = 60; //will destroy itself automatically after one second.
+   smuggler.dont_color = true; //colored hitboxes make the game crash lol
    
    smuggler.stage = bar_was_in_stage;
    smuggler.bar_victory_screen_array = transfer_array;

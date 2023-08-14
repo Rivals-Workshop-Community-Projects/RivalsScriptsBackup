@@ -6,7 +6,11 @@ var hbox = my_hitboxID.hbox_num
 switch(atk) {
 	
 	//#region Tilts ------------------------------------------------------------
-	
+	case AT_FAIR: 
+		if my_hitboxID.hitbox_timer < 5 {
+			can_fast_fall = true;
+		}
+		break;
 	case AT_JAB:
         if (hbox == 1) sound_play(asset_get("sfx_orca_crunch"),noone,0, 1.5, .8);
         if (hbox == 2) sound_play(asset_get("sfx_blow_medium3"));

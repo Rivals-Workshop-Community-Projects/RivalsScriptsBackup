@@ -35,6 +35,14 @@ if (abs(hud_offset) < 1) hud_offset = 0;
 
 switch (state)
 {
+	case PS_IDLE: //wait animation hurtbox because she is shifted to the side too much
+		if (sprite_index == wait_sprite)
+		{
+			wait_timer ++;
+			if (image_index >= 1 && image_index <= 10) hurtboxID.sprite_index = sprite_get("hurtbox_wait");
+		}
+		else wait_timer = 0;
+		break;
 	case PS_DASH_START: //play dash start sound
 		sound_stop(asset_get("sfx_dash_start"));
 		if (state_timer == 1) sound_play(dash_sound);
@@ -113,14 +121,14 @@ switch (state)
 	case PS_ATTACK_GROUND: case PS_ATTACK_AIR: //attack stuff
 		switch (attack)
 		{
+			case AT_USTRONG: //make the nametag go higher
+				if (window == 4 || window == 5 && window_timer <= 12) hud_offset = lerp(hud_offset, 110, 0.5);
 			case AT_FSTRONG: case AT_DSTRONG: //strong charging but with physics (also applies to ustrong)
 				if (window == 3)
 				{
 					if (strong_charge > 8) image_index = 5;
 					else image_index = 3+strong_charge/4;
 				}
-			case AT_USTRONG: //make the nametag go higher
-				if (window == 4 || window == 5 && window_timer <= 12) hud_offset = lerp(hud_offset, 110, 0.5);
 				break;
 			case AT_DATTACK: //here too
 				if (window == 3 || window == 4 && window_timer < 4) hud_offset = lerp(hud_offset, 80, 0.1);

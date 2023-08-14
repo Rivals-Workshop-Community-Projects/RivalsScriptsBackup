@@ -4,13 +4,14 @@ set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 6);
+set_attack_value(atk, AG_LANDING_LAG, 8);
 
 window_num = 1; //windup 1
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 11);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 10);
 
 window_num ++; //attack 1
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);

@@ -126,10 +126,10 @@ with(oPlayer)
                         break;
                         case 1: //Zoom into the last few positions
                             var temppos = desirae_rewind_spot[desirae_rewind_spots];
-                            x = temppos[0];
-                            y = temppos[1];
-                            if(y < 0) y = 5; else if(y > view_get_hview()) y = view_get_hview()-5;
-                            if(x < 0) x = 5; else if(x > view_get_wview()) x = view_get_wview()-5;
+                            x = lerp(x,temppos[0],0.5);
+                            y = lerp(y,temppos[1],0.5);
+                            if(y < 0) y = 5; else if(y > view_get_yview() + view_get_hview()) y = view_get_yview() + view_get_hview()-5;
+                            if(x < 0) x = 5; else if(x > view_get_xview() + view_get_wview()) x = view_get_xview() + view_get_wview()-5;
                             
                             if(last_player != noone || (state == PS_RESPAWN || state == PS_DEAD)) //If hit
                             {

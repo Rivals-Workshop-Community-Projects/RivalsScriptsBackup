@@ -124,7 +124,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, fx_lightblow[0])
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_holy_lightning"));
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.2);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 15);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_VSPEED, 15);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 0);

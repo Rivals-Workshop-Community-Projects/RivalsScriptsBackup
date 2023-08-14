@@ -4,7 +4,7 @@ set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("bair"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 6);
+set_attack_value(atk, AG_LANDING_LAG, 4);
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);

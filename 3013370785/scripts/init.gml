@@ -17,6 +17,8 @@ intro_x = x
 
 totk_plat_id = noone
 
+dspec_cooldown_amt = 60
+
 //ascend_draw_state = 0
 //ascend_draw_timer = 0
 vfx_ascend_ground = hit_fx_create(sprite_get("vfx_ascend_ground"), 25);
@@ -129,7 +131,8 @@ air_friction = 0.04;
 max_djumps = 1;
 double_jump_time = 28; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
-walljump_vsp = 10;
+walljump_vsp_orig = 10;
+walljump_vsp = walljump_vsp_orig;
 walljump_time = 32;
 wall_frames = 2;
 max_fall = 10; //maximum fall speed without fastfalling

@@ -41,6 +41,8 @@ if(instance_exists(Pocketed_Projectile)){
         	}
         	if("Pocketed" in Pocketed_Projectile){
 				Pocketed_Projectile.Pocketed = false;
+			}if("PocketableByOwner" in Pocketed_Projectile){
+				Pocketed_Projectile.PocketableByOwner = 0;
 			}
 		}else if(pocket_release == 2){ //destroy
 		    Pocketed_Projectile.x = 9000;
@@ -266,7 +268,7 @@ if(get_gameplay_time() <= 120 || !loaded){
 			if (url != ""){ //detects op characters. credit to sai for some of the logic here
 				if(
 				//exclude these characters	
-				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885
+				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274
 				//op characters
 				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646/*|| url ==  && "temp_level" in self*/
 				|| (string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0

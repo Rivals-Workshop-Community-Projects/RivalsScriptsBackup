@@ -149,7 +149,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_weak1);
 set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.8); //added
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);

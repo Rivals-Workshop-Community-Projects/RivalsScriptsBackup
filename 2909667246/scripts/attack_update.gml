@@ -32,8 +32,6 @@ if (attack == AT_NSPECIAL){
     	}
 	}
 	
-	
-	
 	if(instance_exists(Pocketed_Projectile)){
 		if(window <= 3){
 			Pocketed_Projectile.x = ease_expoOut(round(Pocketed_Projectile.x), round(x+(40*spr_dir)), 1, 20);
@@ -85,9 +83,10 @@ if (attack == AT_NSPECIAL){
 		    	}
         	}if("PocketBuff" in thepocketedprojectile && (pocket_buff || (has_rune("O") || runeO))){ //only buff if it isnt your own, cuz blnce
         		thepocketedprojectile.PocketBuff += 1;
-        	}
-        	if("Pocketed" in thepocketedprojectile){
+        	}if("Pocketed" in thepocketedprojectile){
 				thepocketedprojectile.Pocketed = false;
+			}if("PocketableByOwner" in thepocketedprojectile){
+				thepocketedprojectile.PocketableByOwner = 0;
 			}
         	pocket_projectile = false;pocket_article = false;
 		}
@@ -170,15 +169,15 @@ if (attack == AT_NSPECIAL){
 		if(attack_pressed || shield_pressed || uspec_fuel <= 0 || !instance_exists(balloon1) && !instance_exists(balloon2)){
 			if(!runeD || runeD && (!instance_exists(balloon1) && !instance_exists(balloon2) || shield_pressed || uspec_fuel <= 0)){
 				window = 6;window_timer = 0;vsp = -3;sound_play(sound_get("uspecial_stop"),false,noone,1);sound_play(sound_get("uspecial_fall"),false,noone,1);
-				if(!instance_exists(balloon1) && !instance_exists(balloon2)){
+				if(!instance_exists(balloon1) && !instance_exists(balloon2)){ //both balloons popped
 					uspec_fall = round(60+(150-uspec_fuel/2));
 					if(runeD && attack_pressed){
 						vsp = -8;
 					}
-				}else if(uspec_fuel <= 0){
-					uspec_fall = 60;
-				}else{
-					uspec_fall = round(10+(30-uspec_fuel/10));
+				}else if(uspec_fuel <= 0){ //no more fuel
+					uspec_fall = 75;
+				}else{ //normal cancel
+					uspec_fall = round(10+(60-uspec_fuel/5));
 				}
 			}else if(runeD && attack_pressed && (instance_exists(balloon1) || instance_exists(balloon2))){
 				if(instance_exists(balloon1)){
@@ -536,7 +535,9 @@ if (attack == AT_NSPECIAL){
 				window = 11;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 13);
 				instance_exists(grabbedtarget){grabbedtarget.y = y+5;grabbedtarget.x = x-(55*spr_dir);grabbedtarget.visible = false;}
 				if(free && vsp > -7){vsp = -7;}else if(!free){vsp = -6;}
-			}
+			}/*else if(special_pressed){
+				
+			}*/
 			if(!grabbedobject){
 				if(grabbedtarget.villager_bury_cooldown > 0){
 			    	grabbedtarget.villager_bury_cooldown = max(grabbedtarget.villager_bury_cooldown, 30);

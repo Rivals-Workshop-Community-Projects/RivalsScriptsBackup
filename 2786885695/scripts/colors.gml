@@ -303,6 +303,16 @@ set_color_profile_slot(palNum, 5, 237, 184, 94); //gold
 set_color_profile_slot(palNum, 6, 38, 33, 64); //purple-blue
 set_color_profile_slot(palNum, 7, 68, 34, 75); //stocking
 
+palNum ++; // 25 = hud color (uses default as a base)
+set_color_profile_slot(palNum, 0, 194, 116, 229); //electro
+set_color_profile_slot(palNum, 1, 137, 105, 168); //hair
+set_color_profile_slot(palNum, 2, 229, 176, 145); //skin
+set_color_profile_slot(palNum, 3, 219, 230, 246); //white-blue
+set_color_profile_slot(palNum, 4, 70, 52, 139); //dark purple
+set_color_profile_slot(palNum, 5, 237, 184, 94); //gold
+set_color_profile_slot(palNum, 6, 136, 134, 242); //purple-blue
+set_color_profile_slot(palNum, 7, 100, 48, 50); //stocking
+
 set_num_palettes(palNum + 1);
 
 /*

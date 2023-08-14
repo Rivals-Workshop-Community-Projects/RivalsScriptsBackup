@@ -320,6 +320,7 @@ switch attack {
         if jump_pressed && !fuse_attack_activated && !was_parried {
             set_window(4)
             fuse_item = 0
+            dspecial_cooldown()
         } else if abs(hsp) <= 2 && !free && !hitpause && fuse_item != 3 { //not bomb
             set_window(4)
         }
@@ -357,6 +358,7 @@ switch attack {
         }
         
         fuse_item = 0
+        //dspecial_cooldown()
         
         
     }
@@ -383,6 +385,7 @@ switch attack {
                 spawn_item(fuse_item, 0, 0, x + 40*spr_dir, y)
             }
             fuse_item = 0
+            dspecial_cooldown()
         }
         break;
         
@@ -423,6 +426,7 @@ switch attack {
                 if left_down hsp -= 4
                 if right_down hsp += 4
                 fuse_item = 0
+                dspecial_cooldown()
                 set_window(2)
                 window_timer = 60
             }
@@ -448,6 +452,7 @@ switch attack {
                 fuse_attack_activated = false
                 fuse_attack_timer = 0
                 fuse_item = 0
+                dspecial_cooldown()
                 spawn_hit_fx(x, y, 301)
                 sound_play(sound_get("SpObj_Disappear_short"))
                 sound_stop(sound_get("SpObjRocket_RadiateEnergyMoving"))
@@ -458,6 +463,7 @@ switch attack {
             fuse_attack_activated = false
             fuse_attack_timer = 0
             fuse_item = 0
+            dspecial_cooldown()
             sound_stop(sound_get("SpObjRocket_RadiateEnergyMoving"))
             sound_stop(sound_get("SpObjRocket_RadiateEnergyWait"))
         }
@@ -470,9 +476,9 @@ switch attack {
     case AT_FAIR:
     if window == 2 {
         if window_timer >= 4 soft_armor = 12
-        var kb = 0.6 + clamp(window_timer/160, 0, 0.2)
+        var kbg = 0.6 + clamp(window_timer/160, 0, 0.2)
         if !attack_down && !strong_down && !(left_stick_down && spr_dir == -1) && !(right_stick_down && spr_dir == 1) && window_timer >= 4 {
-            set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, kb);
+            set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, kbg);
             set_window(3)
             soft_armor = 0
         }
@@ -557,6 +563,7 @@ switch attack {
             }
             
             fuse_item = 0
+            dspecial_cooldown()
         }
     } else if window == 3 {
         sound_stop(sound_get("bullet_time"))
@@ -745,6 +752,7 @@ switch attack {
     break;
     
     case AT_DSPECIAL_2: //recall
+    move_cooldown[AT_DSPECIAL_2] = 30
     if window == 1 && window_timer == window_length {
         sound_stop(sound_get("rune_search_start"))
         sound_play(sound_get("rune_search_end"))
@@ -754,7 +762,7 @@ switch attack {
             if recall_item.recall_cooldown == 0 {
                 recall_item.recall_active = !recall_item.recall_active
                 if !recall_item.recall_active {
-                    recall_item.recall_cooldown = 90
+                    recall_item.recall_cooldown = 30
                 }
             }
         }
@@ -797,9 +805,9 @@ switch attack {
         sound_play(sfx_ustrong)
     }
     if window == 2 {
-        ustrong_distance_y += 4
-        if left_down ustrong_distance_x -= 1.5*spr_dir
-        if right_down ustrong_distance_x += 1.5*spr_dir
+        if y - ustrong_distance_y > 200 ustrong_distance_y += 6
+        if left_down ustrong_distance_x -= 1.8*spr_dir
+        if right_down ustrong_distance_x += 1.8*spr_dir
     }
     ustrong_reticle_x = x + (15 + ustrong_distance_x)*spr_dir
     ustrong_reticle_y = y - 100 - ustrong_distance_y
@@ -875,8 +883,24 @@ switch attack {
             }
             */
             var pos = x + spr_dir*dstrong_earthwake_dist*earthwake_mult
+            
+            //check for solid below
+            var ground_lowest_id = undefined
+            var ground_lowest_y = 0
+            var ground_increment = 16
+            for (i = 0; i < 15; i++) {
+                var cur_y = y + i*ground_increment
+                if position_meeting(pos, cur_y, asset_get("par_block")) {
+                    ground_lowest_id = instance_position(pos, cur_y, asset_get("par_block"))
+                    ground_lowest_y = cur_y
+                    break;
+                }
+            }
+            
             if position_meeting(pos, y + 2, asset_get("par_block")) || position_meeting(pos, y + 2, asset_get("par_jumpthrough")) {
                 spawn_hit_fx(pos - 13*spr_dir, y, 14)
+            } else if ground_lowest_id != undefined {
+                spawn_hit_fx(pos - 13*spr_dir, ground_lowest_y, 14)
             }
         }
     }
@@ -896,12 +920,34 @@ switch attack {
                     create_hitbox(AT_DSTRONG, 2, pos_r, y - 7)
                 }
                 */
+                //check for solid below
+                
                 var pos = x + i*spr_dir*earthwake_mult
-                if position_meeting(pos, y + 2, asset_get("par_block")) || position_meeting(pos, y + 2, asset_get("par_jumpthrough")) {
-                    spawn_base_dust(x + spr_dir*(20 + i*earthwake_mult), y, "dash", -spr_dir)
-                    spawn_hit_fx(x + spr_dir*i*earthwake_mult, y, vfx_ascend_ground)
-                    create_hitbox(AT_DSTRONG, 2, pos, y - 30)
+                
+                var ground_lowest_id = undefined
+                var ground_lowest_y = 0
+                var ground_increment = 16
+                for (var j = 0; j < 15; j++) {
+                    var cur_y = y + j*ground_increment
+                    if position_meeting(pos, cur_y, asset_get("par_block")) {
+                        ground_lowest_id = instance_position(pos, cur_y, asset_get("par_block"))
+                        ground_lowest_y = cur_y
+                        break;
+                    }
+                }
+                
+                var meeting_block = position_meeting(pos, y + 2, asset_get("par_block"))
+                var meeting_plat = position_meeting(pos, y + 2, asset_get("par_jumpthrough"))
+                if meeting_block || meeting_plat || ground_lowest_id != undefined {
+                    var spawn_y = y
+                    if ground_lowest_y != undefined && !meeting_block && !meeting_plat {
+                        spawn_y = ground_lowest_y
+                    }
+                    spawn_base_dust(x + spr_dir*(20 + i*earthwake_mult), spawn_y, "dash", -spr_dir)
+                    spawn_hit_fx(pos, spawn_y, vfx_ascend_ground)
+                    create_hitbox(AT_DSTRONG, 2, pos, spawn_y - 40)
                     shake_camera(8, 3)
+                    dstrong_earthwake_y = spawn_y
                     break;
                 }
             }
@@ -980,3 +1026,6 @@ return returnid;
 var returnid = undefined
 with obj_article2 if player_id == other.id && item != 0 && !destroy && !hbox_has_hit returnid = id
 return returnid;
+
+#define dspecial_cooldown()
+move_cooldown[AT_NSPECIAL_2] = dspec_cooldown_amt

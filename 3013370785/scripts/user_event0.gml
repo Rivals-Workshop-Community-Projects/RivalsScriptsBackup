@@ -30,7 +30,7 @@ switch script {
             sound_play(sound_get("stasis_end_weak"))
             hsp = 0
             vsp = 0
-            
+            player_id.move_cooldown[AT_DSPECIAL_2] = 30
             switch item {
                 case 1: //homing cart
                 if !free sound_play(sound_get("SpObj_Chaser_Move_01_2"), false, noone, 0.2)

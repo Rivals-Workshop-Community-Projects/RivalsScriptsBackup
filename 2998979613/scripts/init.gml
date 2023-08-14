@@ -197,4 +197,11 @@ instance_create(x, y, "obj_article2")
 
 //#endregion
 
+//#region compat
+
+//wii stage
+wiimote_stage_sprite = sprite_get("guardian_wiimote");
+
+//#endregion
+
 //#endregion

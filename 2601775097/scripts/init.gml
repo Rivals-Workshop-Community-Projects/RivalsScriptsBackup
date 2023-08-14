@@ -668,7 +668,6 @@ polaris_norm_cost = skill[7].mp_use_cost;
 last_hitstop = 0;
 last_kb = [0, 0, 0, 0, 0];
 last_hitstun = 0;
-//last_atk = [0, 0];
 
 lightbuff_alpha = 0.1;
 lightbuff_rate = 0.02;
@@ -770,6 +769,8 @@ prev_attack = 0;
 theikos_music = false;
 
 /////////////////////////////////////////////////////////// WORKSHOP SECTION ////////////////////////////////////////////////////////////
+
+made_by_bar = true;
 
 //greenwood stage compatibility
 greenwood_cheer = 1;

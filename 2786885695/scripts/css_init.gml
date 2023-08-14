@@ -46,6 +46,7 @@ alt_name = [
     "Flowering Night",
     "Elemental Guardian",
     "Baleful Stormstrider",
+    "Tenacious Team Player",
 ];
 
 alt_total = array_length(alt_name);
