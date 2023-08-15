@@ -2,14 +2,14 @@ taunt_looped = false;
 
 watering_time = 0;
 valid_planting_spot = true;
-time_to_water = 9;
+time_to_water = 7;
 touching_grass = false;
 can_water = false;
 
 windbox_speed = 1.5;
 max_windbox_speed = 3;
 
-grass_lifetime = 420;
+grass_lifetime = 720;
 
 boosted = false;
 strong_charge_modifier = 3;

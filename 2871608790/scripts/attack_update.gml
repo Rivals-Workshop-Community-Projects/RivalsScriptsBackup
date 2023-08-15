@@ -35,6 +35,12 @@ switch (attack)
 				break;
 		}
 		break;
+		
+	if (attack== AT_INTRO){
+  if ((window_timer+1)%6==0){
+    sound_play(asset_get("sfx_kitty_squeak"))
+  }
+}
 	/////////////////////////////////////////////// SPECIALS ///////////////////////////////////////////////
     //
 	case AT_NSPECIAL: //spawn item

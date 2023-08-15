@@ -224,7 +224,7 @@ game_time = 0; //checks get_gameplay_time() so we don't need to call the functio
 
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
-has_intro = false; //change to false if you don't have one
+has_intro = true; //change to false if you don't have one
 //relevant scripts:
 //  - update
 //  - attack_update (case 2)

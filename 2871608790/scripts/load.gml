@@ -33,14 +33,14 @@ sprite_change_offset("hurt_tumble",     40, 95); //normally called "spinhurt"
 sprite_change_offset("hurt_crystalized",26, 44);
 
 //normals
-sprite_change_offset("jab",             48, 107);
-sprite_change_offset("utilt",           43, 105);
-sprite_change_offset("ftilt",           75, 113);
-sprite_change_offset("dtilt",           56, 77);
-sprite_change_offset("dattack",         52, 95);
-sprite_change_offset("ustrong",         67, 191);
-sprite_change_offset("fstrong",         88, 93);
-sprite_change_offset("dstrong",         77, 151);
+sprite_change_offset("jab",             48, 106);
+sprite_change_offset("utilt",           43, 104);
+sprite_change_offset("ftilt",           75, 112);
+sprite_change_offset("dtilt",           56, 76);
+sprite_change_offset("dattack",         52, 94);
+sprite_change_offset("ustrong",         67, 190);
+sprite_change_offset("fstrong",         88, 92);
+sprite_change_offset("dstrong",         77, 150);
 sprite_change_offset("nair",            66, 89);
 sprite_change_offset("uair",            92, 136);
 sprite_change_offset("fair",            79, 123);
@@ -48,16 +48,16 @@ sprite_change_offset("bair",            90, 97);
 sprite_change_offset("dair",            66, 85);
 
 //specials
-sprite_change_offset("nspecial",        49, 81);
+sprite_change_offset("nspecial",        49, 80);
 sprite_change_offset("uspecial",        69, 79);
-sprite_change_offset("fspecial",        55, 97);
-sprite_change_offset("dspecial",        110, 123);
+sprite_change_offset("fspecial",        55, 96);
+sprite_change_offset("dspecial",        110, 122);
 sprite_change_offset("dspecial_air",    93, 137);
 
 //misc
 sprite_change_offset("taunt",           93, 94);
 sprite_change_offset("taunt_head",      41, 44);
-sprite_change_offset("intro",           24, 47);
+sprite_change_offset("intro",           65, 106);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player

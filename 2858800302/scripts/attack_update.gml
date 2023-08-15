@@ -87,9 +87,11 @@ if (attack == AT_TAUNT){
     }
 }
 
+var ustrong_startup = get_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH);
+
 if (attack == AT_USTRONG){
     if (window == 2){
-        if (window_timer == 6){
+        if (window_timer == ustrong_startup){
             sound_play(asset_get("sfx_leafy_hit2"));
         }
     }

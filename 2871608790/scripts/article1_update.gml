@@ -5,6 +5,16 @@
 
 if (!hitpause) item_timer ++;
 
+//prevent article from being hit by the owner's teammates (unless tester is using fspecial or can hit the article with rune H)
+with (oPlayer)
+{
+    if (player == other.player && other.item[other.item_type].name == "banana")
+    {
+        //can_be_hit works similarly to a move_cooldown, where it's a timer that counts down to 0
+        other.can_be_hit[player] = 2;
+    }
+}
+
 //physics
 if (free) vsp += grav;
 hsp = sign(hsp) * max((abs(hsp) - (free ? a_fric : g_fric)), 0);
@@ -372,6 +382,20 @@ switch (item[item_type].name)
     case "car":
         if (!hitpause) car_state_timer ++;
 
+        //destroy car with dodging
+        with (oPlayer) if (place_meeting(x, y, other) && hurtboxID.dodging && other.car_state != 2) with (other)
+        {
+            var hb_explode = create_hitbox(AT_NSPECIAL, 16, x, y-8);
+            hb_explode.kb_angle = spr_dir == 1 ? hb_explode.kb_angle : 90 - hb_explode.kb_angle + 90;
+            other.knock_dir = hb_explode.kb_angle;
+
+            spawn_hit_fx(x, y-8, fx_car_explode);
+            sound_play(asset_get("sfx_mol_huge_explode"));
+
+            destroy_item();
+            exit;
+        }
+
         switch (car_state)
         {
             case 0: //idle
@@ -672,6 +696,9 @@ switch (item[item_type].name)
         }
         break;
     case "bomb":
+        //destroy bomb with dodging
+        with (oPlayer) if (place_meeting(x, y, other) && hurtboxID.dodging && other.item_timer < other.bomb_time) other.item_timer = other.bomb_time;
+
         //image index shenanigans - before it's gonna blow up it stays on the last frame for a bit
         if (item_timer <= bomb_time) image_index = lerp(0, image_number-1, item_timer/bomb_time);
         else image_index = image_number-1;

@@ -2,7 +2,7 @@
 
 // hair
 set_color_profile_slot( 0, 0, 67, 64, 82 );
-set_color_profile_slot_range( 0, 3, 10, 14 );
+set_color_profile_slot_range( 0, 4, 28, 19 );
 
 // skin
 set_color_profile_slot( 0, 1, 255, 224, 223 );
@@ -96,7 +96,7 @@ set_color_profile_slot( 6, 5, 255, 255, 255 ); //tongue
 set_color_profile_slot( 6, 6, 255, 251, 235 ); //eye1
 set_color_profile_slot( 6, 7, 255, 213, 28 ); //eye2
 
-// chocolate 
+// chocolate
 set_color_profile_slot( 7, 0, 96, 57, 27 ); //hair
 set_color_profile_slot( 7, 1, 255, 234, 223 ); //skin
 set_color_profile_slot( 7, 2, 253, 230, 114 ); //bag 1
@@ -177,10 +177,10 @@ set_color_profile_slot( 14, 6, 255, 74, 38 ); //eye1
 set_color_profile_slot( 14, 7, 69, 13, 13 ); //eye2
 
 // Power Bag
-set_color_profile_slot( 15, 0, 78, 88, 99 ); //bag2
+set_color_profile_slot( 15, 0, 78, 88, 99 ); //hair
 set_color_profile_slot( 15, 1, 204, 193, 186 ); //skin
 set_color_profile_slot( 15, 2, 58, 109, 135 ); //bag 1
-set_color_profile_slot( 15, 3, 201, 213, 217 ); //hair
+set_color_profile_slot( 15, 3, 201, 213, 217 ); //bag2
 set_color_profile_slot( 15, 4, 73, 82, 89 ); //skirt
 set_color_profile_slot( 15, 5, 143, 239, 255 ); //tongue
 set_color_profile_slot( 15, 6, 96, 182, 213 ); //eye1
@@ -226,7 +226,7 @@ set_color_profile_slot( 19, 5, 236, 65, 143 ); //tongue
 set_color_profile_slot( 19, 6, 179, 204, 109 ); //eye1
 set_color_profile_slot( 19, 7, 93, 114, 47 ); //eye2
 
-// Blueberry 
+// Blueberry
 set_color_profile_slot( 20, 0, 32, 33, 33 ); //hair
 set_color_profile_slot( 20, 1, 120, 74, 48 ); //skin
 set_color_profile_slot( 20, 2, 255, 255, 255 ); //bag 1
@@ -246,8 +246,9 @@ set_color_profile_slot( 21, 5, 255, 135, 87 ); //tongue
 set_color_profile_slot( 21, 6, 164, 55, 78 ); //eye1
 set_color_profile_slot( 21, 7, 54, 48, 50 ); //eye2
 
+
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hair","colors":[{"r":67,"g":64,"b":82,"main":true},{"r":35,"g":33,"b":48}]},{"name":"skin","colors":[{"r":255,"g":224,"b":223,"main":true},{"r":220,"g":164,"b":163},{"r":157,"g":104,"b":103}]},{"name":"bag 1","colors":[{"r":95,"g":95,"b":108,"main":true},{"r":49,"g":49,"b":56}]},{"name":"bag2","colors":[{"r":243,"g":247,"b":255,"main":true},{"r":171,"g":184,"b":212},{"r":109,"g":119,"b":143}]},{"name":"skirt","colors":[{"r":233,"g":232,"b":255,"main":true},{"r":157,"g":156,"b":190}]},{"name":"tongue","colors":[{"r":194,"g":58,"b":94,"main":true},{"r":138,"g":43,"b":68}]},{"name":"eye1","colors":[{"r":255,"g":241,"b":142,"main":true},{"r":255,"g":244,"b":167}]},{"name":"eye2","colors":[{"r":255,"g":191,"b":90,"main":true},{"r":225,"g":138,"b":0}]}]}
+{"formatversion":1,"data":[{"name":"hair","colors":[{"r":67,"g":64,"b":82,"main":true},{"r":35,"g":33,"b":48},{"r":20,"g":18,"b":35}]},{"name":"skin","colors":[{"r":255,"g":224,"b":223,"main":true},{"r":220,"g":164,"b":163},{"r":157,"g":104,"b":103}]},{"name":"bag 1","colors":[{"r":95,"g":95,"b":108,"main":true},{"r":49,"g":49,"b":56}]},{"name":"bag2","colors":[{"r":243,"g":247,"b":255,"main":true},{"r":171,"g":184,"b":212},{"r":109,"g":119,"b":143}]},{"name":"skirt","colors":[{"r":233,"g":232,"b":255,"main":true},{"r":157,"g":156,"b":190}]},{"name":"tongue","colors":[{"r":194,"g":58,"b":94,"main":true},{"r":138,"g":43,"b":68}]},{"name":"eye1","colors":[{"r":255,"g":241,"b":142,"main":true},{"r":255,"g":244,"b":167}]},{"name":"eye2","colors":[{"r":255,"g":191,"b":90,"main":true},{"r":225,"g":138,"b":0}]}]}
 === END JSON PALETTE ===
 */
