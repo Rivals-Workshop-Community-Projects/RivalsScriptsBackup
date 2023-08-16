@@ -160,11 +160,11 @@ if (nair_checked == false) {
 
 
 if (nair_used = 1) {
-    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.2); }
+    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.3); }
     	if (nair_used = 2)  {	
-    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.4); }
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5); }
     	if (nair_used = 3)  {	
-    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.7); }
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.8); }
 
     	
 
@@ -258,6 +258,31 @@ if (window == 1 && window_timer == 1) {
 #region dspec
 
 if (attack == AT_DSPECIAL) {
+	
+	    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && instance_exists(nova_clone)) {
+	    	
+	    	nova_clone.state = 1
+	    	nova_clone.state_timer = 1
+	    }
+
+    
+    if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && instance_exists(nova_clone)) {
+    	
+    	temp_x_yay = x
+    	temp_y_yay = y
+    	x = nova_clone.x
+    	y = nova_clone.y
+    	nova_clone.vsp = vsp
+    	nova_clone.hsp = hsp
+    	vsp = 0
+    	hsp = 0
+    	nova_clone.x = temp_x_yay
+    	nova_clone.y = temp_y_yay
+    	
+    	sound_play(sound_get("counterhit"),false,noone,1,1.5)
+    	
+    }
+    
     
         can_fast_fall = false
 
@@ -683,7 +708,7 @@ nair_spike = false
         nair_spike = true
     }
     
-    if (nair_spike == true && window == 2 && (window_timer == 6 || window_timer == 15)) {
+    if (nair_spike == true && window == 2 && (window_timer == 15)) {
         
         window = 4
         window_timer = 0

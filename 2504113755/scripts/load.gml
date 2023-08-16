@@ -122,3 +122,55 @@ sprite_change_offset("plasma_circle", 102, 108);
 
 
 user_event(5);
+
+// ==================== MUlTI-ALTS ====================
+true_alt = get_player_color(player);
+get_fake_alt();
+init_shader();
+
+// portrait switcheroo
+switch fake_alt {
+    case 14: // gb
+        set_victory_portrait(sprite_get("portrait_gb"));
+		set_victory_sidebar(sprite_get("sidebar_gb"));
+		set_ui_element(UI_HUD_ICON, get_char_info(player, INFO_HUD));
+        set_ui_element(UI_HUDHURT_ICON, get_char_info(player, INFO_HUDHURT));
+        break;
+    case 24: // prism
+        set_victory_portrait(sprite_get("portrait_prism"));
+		set_victory_sidebar(sprite_get("sidebar_prism"));
+		set_ui_element(UI_HUD_ICON, get_char_info(player, INFO_HUD));
+        set_ui_element(UI_HUDHURT_ICON, get_char_info(player, INFO_HUDHURT));
+        break;
+    case 25: // event
+        if get_synced_var(player) == 0 {
+            set_victory_portrait(get_char_info(player, INFO_PORTRAIT));
+            set_victory_sidebar(sprite_get("sidebar_default"));
+            set_ui_element(UI_HUD_ICON, sprite_get("hud_genesis"));
+            set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_genesis"));
+            break; // break inside if statement intentionally
+        }
+    default:
+        set_victory_portrait(get_char_info(player, INFO_PORTRAIT));
+        set_victory_sidebar(sprite_get("sidebar_default"));
+        set_ui_element(UI_HUD_ICON, get_char_info(player, INFO_HUD));
+        set_ui_element(UI_HUDHURT_ICON, get_char_info(player, INFO_HUDHURT));
+        break;
+}
+
+#define get_fake_alt
+true_alt = get_player_color(player);
+fake_alt = true_alt;
+var test_alt = get_player_color(player);
+for (var i = 0; i < 4; i += 1) {
+    if get_color_profile_slot_r(test_alt, 0) == round(colorO[0] * 255)
+    && get_color_profile_slot_g(test_alt, 0) == round(colorO[1] * 255)
+    && get_color_profile_slot_b(test_alt, 0) == round(colorO[2] * 255)
+    {
+        fake_alt = test_alt;
+        break;
+    }
+    test_alt += 1;
+    if test_alt >= 6 { test_alt = 0; }
+}
+//print(get_player_name(player) + " " + string(true_alt) + " " + string(fake_alt))

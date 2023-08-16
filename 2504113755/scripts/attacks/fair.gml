@@ -50,7 +50,7 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, plasma_line )
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 35);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 73);
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 94);

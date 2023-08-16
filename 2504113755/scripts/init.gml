@@ -249,16 +249,7 @@ hue_speed=1; //change this to change the speed of the hueshift
  subcolor = 0
  cs_alt = 0;
  prev_alt = 0;
- 
- if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
- 
-        set_ui_element(UI_HUD_ICON, sprite_get("hud_genesis")) 
-        set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_genesis"))
- } else {
-     set_ui_element(UI_HUD_ICON, sprite_get("hud")) 
-        set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_hud"))
-     
- }
+
 
 // Muno template: (don't change)
 

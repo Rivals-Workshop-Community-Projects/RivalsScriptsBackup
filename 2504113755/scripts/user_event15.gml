@@ -516,6 +516,20 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+		initPatch("3.0", "15 August, 2023");
+
+initPatchWords_ext("Nerfs
+-Almost all normals have smaller hitboxes
+-Nair slam can only be done after 2 spins now
+-Fstrong late hit removed, endlag altered to compensate
+~Dspecial now swaps your position with the last clone on use
+-Dair vertical gain is lower
+
++Alt fixes thanks to Mr Nart! thank you! 
+this should have been patched ages ago my bad
+
+", fa_center, c_white, 0, 0);	
+	
 	initPatch("2.9", "2 January, 2023");
 
 initPatchWords_ext("Pre-G9 Nerfs

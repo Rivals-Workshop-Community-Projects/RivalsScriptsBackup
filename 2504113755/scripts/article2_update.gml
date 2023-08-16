@@ -10,7 +10,7 @@ state_timer += 1
 
 if (state == 0) {
 
-			if (get_player_color( player ) == 25 && get_synced_var(player) == 1) {
+			if ("fake_alt" in player_id && player_id.fake_alt == 25 && get_synced_var(player) == 1) {
 	sprite_index = sprite_get("dspec_ball") }
 	
 else {
@@ -129,8 +129,8 @@ if (state_timer < 3) {
 
 if (state == 3) {
 	
-if (get_player_color( player ) == 28) {
-				sprite_index = sprite_get("dspec_ball_die")
+if ("fake_alt" in player_id && player_id.fake_alt == 25 && get_synced_var(player) == 1) {
+				sprite_index = sprite_get("dspec_ball_die"); print("hi")
 
 		} else { 				sprite_index = sprite_get("dspec_die")
 }
@@ -210,10 +210,13 @@ if hit_lockout <= 0 {
             other.player_id.x = other.x  - other.player_id.hsp
             other.player_id.y = other.y - other.player_id.vsp
             other.player_id.num_articles -= 1
+
+            
             
             with(other.player_id) {
             	destroy_hitboxes()
             		
+            		sound_play(sound_get("counterhit"),false,noone,1,1.5)
             		if (state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD) {
             			hsp = 0
             			vsp = 0

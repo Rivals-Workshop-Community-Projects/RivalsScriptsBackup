@@ -1,23 +1,22 @@
 
 
-if object_index == oPlayer { //removes playtesting hellscape
-	
-	//pre_draw.gml
-	if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
-	    shader_end();
-	    maskHeader();
-	    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1);
-	    maskMidder();
-	    shader_start();
-	    draw_sprite_tiled_ext(sprite_get("matrix_code"), get_player_color( player ) , x , y + 2*get_gameplay_time(), 2, 2, c_white, 2)
-	    maskFooter();
-	}
-
-
-
-
-
-
+// genesis alt
+if (fake_alt == 25 && get_synced_var(player) == 0) {
+    shader_end();
+    gpu_push_state();
+    maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1);
+    maskMidder();
+    shader_start();
+    draw_sprite_tiled_ext(sprite_get("matrix_code"), get_player_color( player ) , x , y + 2*get_gameplay_time(), 2, 2, c_white, 2)
+    // playtest zone fix -- from frtoud
+    if object_index == oTestPlayer {
+        gpu_set_blendenable(false);
+        gpu_set_alphatestenable(false);
+        gpu_set_colorwriteenable(false, false, false, true);
+        draw_rectangle_color(0, 0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+    }
+    gpu_pop_state();
 }
 
 
@@ -29,7 +28,7 @@ if object_index == oPlayer { //removes playtesting hellscape
 
 // afterimage
 var tempColour = c_white;
-if (get_player_color(player) == 24) {
+if (fake_alt == 24) {
 
 
 
@@ -40,7 +39,7 @@ col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color
 col2 = GetColourPlayer(1)
 
 
-} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+} else if (fake_alt == 25 && get_synced_var(player) == 0) {
 
 col1 = make_colour_rgb(145, 0, 0);
 col2 = make_colour_rgb(237, 64, 64);
@@ -319,7 +318,7 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 
 // afterimage
 var tempColour = c_white;
-if (get_player_color(player) == 24) {
+if (fake_alt == 24) {
 
 
 
@@ -330,7 +329,7 @@ col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color
 col2 = GetColourPlayer(1)
 
 
-} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+} else if (fake_alt == 25 && get_synced_var(player) == 0) {
 
 col1 = make_colour_rgb(145, 0, 0);
 col2 = make_colour_rgb(237, 64, 64);
@@ -393,9 +392,9 @@ if (attack == AT_FSPECIAL) {
 // outputs the colour of the shade slot of the current alt
 #define GetColourPlayer(_index)
 {
-    return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),
-    get_color_profile_slot_g(get_player_color(player), _index),
-    get_color_profile_slot_b(get_player_color(player), _index));
+    return make_colour_rgb(get_color_profile_slot_r(fake_alt, _index),
+    get_color_profile_slot_g(fake_alt, _index),
+    get_color_profile_slot_b(fake_alt, _index));
 } // lukaru
 
 //Defines, put at bottom of file

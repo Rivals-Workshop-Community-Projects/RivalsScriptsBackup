@@ -7,9 +7,6 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
-print_debug(get_synced_var(player))
-
-
 
 
 

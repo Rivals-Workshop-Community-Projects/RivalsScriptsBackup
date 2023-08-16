@@ -1,5 +1,5 @@
 confirm_snd = asset_get("mfx_confirm");
-        cancel_snd = asset_get("mfx_back");
+cancel_snd = asset_get("mfx_back");
 
 var cx = get_instance_x(cursor_id);
 var cy = get_instance_y(cursor_id);

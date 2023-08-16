@@ -15,7 +15,7 @@ draw_debug_text( x, y + 40, "index" + string( sprite_index ) + "  swords:" + str
 user_event(12);
 
 var tempColour = c_white;
-if (get_player_color(player) == 24) {
+if (fake_alt == 24) {
 
 
 
@@ -26,7 +26,7 @@ col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color
 col2 = GetColourPlayer(1)
 
 
-} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+} else if (fake_alt == 25 && get_synced_var(player) == 0) {
 
 col1 = make_colour_rgb(145, 0, 0);
 col2 = make_colour_rgb(237, 64, 64);
@@ -81,7 +81,7 @@ shader_end()
 // outputs the colour of the shade slot of the current alt
 #define GetColourPlayer(_index)
 {
-    return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),
-    get_color_profile_slot_g(get_player_color(player), _index),
-    get_color_profile_slot_b(get_player_color(player), _index));
+    return make_colour_rgb(get_color_profile_slot_r(fake_alt, _index),
+    get_color_profile_slot_g(fake_alt, _index),
+    get_color_profile_slot_b(fake_alt, _index));
 } // lukaru
