@@ -1,5 +1,5 @@
 //firepea stuff
-if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49 && hbox_num != 3){
+if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49 && hbox_num != 3){
 	if was_parried{
 		instance_destroy();
 		exit;
@@ -20,11 +20,10 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 		damage = torch_damage_mult
 		length = torch_length_mult
 		hsp = torch_hsp_mult
-		vsp = torch_vsp_mult
 	}
 }
 if (has_rune("G")){
-	if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
+	if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
 		if torched{
 			extra_hitpause = 12
 		}
@@ -44,7 +43,6 @@ if (attack == 49 && hbox_num == 3){
 		damage = torch_damage_mult
 		length = torch_length_mult
 		hsp = torch_hsp_mult
-		vsp = torch_vsp_mult
 		if (has_rune("G")){
 		    extra_hitpause = 12
 		}
@@ -58,6 +56,15 @@ if (attack == AT_EXTRA_1){
 
 //bean stuff
 if (attack == AT_FSPECIAL && hbox_num == 1){
+	player_id.bean_x = x;
+	player_id.bean_y = y;
+	if (!free){
+	    hsp *= .97
+	    proj_angle += (hsp*-2)
+	}
+	if (player != orig_player){
+		player = orig_player
+	}
     if (hitbox_timer == 1){
 	    vsp = -2
 	    hsp = (player_id.hsp/3)+(2*spr_dir)
@@ -69,20 +76,13 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	if (hitbox_timer >= 120){
 	    sprite_index = sprite_get("bean_bomb_flashing");
 	}
-	if (!free){
-	    hsp *= .97
-	    proj_angle += (hsp*-2)
-	}
-	if (hitbox_timer == length){
+	if (hitbox_timer >= 180){
 		create_hitbox( AT_FSPECIAL, 2, x, y-12, );
-		spawn_hit_fx(x,y-12,263)
-		sound_play(sound_get("bean_explode"));
-		sound_stop (sound_get ("bean_voice"));
-		sound_stop (sound_get ("bean_voice2"));
+		spawn_hit_fx(x,y-12,145)
+		sound_play (sound_get("bean_explode"));
+		sound_stop (sound_get("bean_voice"));
+		sound_stop (sound_get("bean_voice2"));
+		instance_destroy();
+		exit;
 	}
-	if (was_parried){
-		player = orig_player
-	}
-	player_id.bean_x = x;
-	player_id.bean_y = y;
 }

@@ -47,8 +47,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "25";
-patch_month = "APR";
+patch_day = "16";
+patch_month = "AUG";
  
 var num_alts = 27;
 var alt_cur = get_player_color(player);
@@ -126,7 +126,7 @@ alt_name[12]  = "Mishima";
 alt_name[14]  = "Avocado";  
 alt_name[15]  = "RetroTag"; 
 alt_name[16]  = "Champed-Up"; 
-alt_name[21]  = "Investigator";
+alt_name[21]  = "Enby";
 alt_name[22]  = "The Best"; 
 }
 read_alts = 1;

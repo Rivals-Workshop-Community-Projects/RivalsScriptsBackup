@@ -107,6 +107,8 @@ pot_compat_variable = sprite_get("food");
 galaxy_pot = false;
 explode_owner = player;
 
+galaxy_prevention = false;
+
 
 /* README - Basic Article Usage
 

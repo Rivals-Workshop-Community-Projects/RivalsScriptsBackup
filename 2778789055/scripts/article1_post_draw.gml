@@ -34,7 +34,7 @@ if(!can_be_hit){
     }
 }
 }
-//draw_debug_text(x-7, y + -100,string(player_touching_pot));
+//draw_debug_text(x-7, y + -100,string(galaxy_prevention));
 //draw_debug_text(x-7, y + -120,string(hitstop));
 //draw_debug_text(x-7, y + -140,string(can_be_hit));
 draw_debug_text(floor(x)-12, floor(y) + 15,string(spice_level));

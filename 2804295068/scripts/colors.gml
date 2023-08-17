@@ -58,30 +58,30 @@ set_color_profile_slot( 2, 7, 169, 255, 216 ); //flame 3
 
 // Sweet
 set_color_profile_slot( 3, 0, 227, 218, 223 ); //head and peas
-set_color_profile_slot( 3, 1, 240, 111, 156 ); //head and peas 2
-set_color_profile_slot( 3, 2, 186, 49, 93 ); //head and peas 3
+set_color_profile_slot( 3, 1, 245, 130, 180 ); //head and peas 2
+set_color_profile_slot( 3, 2, 231, 73, 121 ); //head and peas 3
 set_color_profile_slot( 3, 3, 148, 198, 77 ); //body and leaves
 set_color_profile_slot( 3, 4, 90, 146, 74 ); //body and leaves 2
 set_color_profile_slot( 3, 5, 127, 23, 52 ); //flame
 set_color_profile_slot( 3, 6, 244, 132, 178 ); //flame 2
 set_color_profile_slot( 3, 7, 255, 253, 254 ); //flame 3
 
-// Heatwave
-set_color_profile_slot( 4, 0, 255, 255, 198 ); //head and peas
-set_color_profile_slot( 4, 1, 255, 206, 33 ); //head and peas 2
-set_color_profile_slot( 4, 2, 255, 107, 16 ); //head and peas 3
-set_color_profile_slot( 4, 3, 65, 224, 12 ); //body and leaves
-set_color_profile_slot( 4, 4, 49, 142, 0 ); //body and leaves 2
-set_color_profile_slot( 4, 5, 173, 41, 0 ); //flame
-set_color_profile_slot( 4, 6, 247, 198, 33 ); //flame 2
-set_color_profile_slot( 4, 7, 247, 247, 33 ); //flame 3
+// Plasma
+set_color_profile_slot( 4, 0, 0, 80, 130 ); //head and peas
+set_color_profile_slot( 4, 1, 0, 131, 196 ); //head and peas 2
+set_color_profile_slot( 4, 2, 35, 201, 241 ); //head and peas 3
+set_color_profile_slot( 4, 3, 0, 63, 119 ); //body and leaves
+set_color_profile_slot( 4, 4, 0, 40, 74 ); //body and leaves 2
+set_color_profile_slot( 4, 5, 64, 64, 65 ); //flame
+set_color_profile_slot( 4, 6, 131, 133, 136 ); //flame 2
+set_color_profile_slot( 4, 7, 213, 214, 217 ); //flame 3
 
 // Shadow
-set_color_profile_slot( 5, 0, 101, 170, 237 ); //head and peas
-set_color_profile_slot( 5, 1, 146, 222, 246 ); //head and peas 2
-set_color_profile_slot( 5, 2, 187, 136, 193 ); //head and peas 3
-set_color_profile_slot( 5, 3, 179, 38, 238 ); //body and leaves
-set_color_profile_slot( 5, 4, 4, 6, 81 ); //body and leaves 2
+set_color_profile_slot( 5, 0, 123, 198, 239 ); //head and peas
+set_color_profile_slot( 5, 1, 214, 252, 255 ); //head and peas 2
+set_color_profile_slot( 5, 2, 189, 146, 202 ); //head and peas 3
+set_color_profile_slot( 5, 3, 164, 28, 231 ); //body and leaves
+set_color_profile_slot( 5, 4, 9, 17, 137 ); //body and leaves 2
 set_color_profile_slot( 5, 5, 60, 48, 100 ); //flame
 set_color_profile_slot( 5, 6, 110, 94, 166 ); //flame 2
 set_color_profile_slot( 5, 7, 156, 135, 195 ); //flame 3
@@ -136,45 +136,45 @@ set_color_profile_slot( 10, 5, 160, 1, 42 ); //flame
 set_color_profile_slot( 10, 6, 255, 95, 97 ); //flame 2
 set_color_profile_slot( 10, 7, 255, 184, 135 ); //flame 3
 
-// Electric Blueberry
-set_color_profile_slot( 11, 0, 156, 222, 248 ); //head and peas
-set_color_profile_slot( 11, 1, 58, 186, 247 ); //head and peas 2
-set_color_profile_slot( 11, 2, 0, 114, 221 ); //head and peas 3
-set_color_profile_slot( 11, 3, 14, 174, 128 ); //body and leaves
-set_color_profile_slot( 11, 4, 20, 114, 122 ); //body and leaves 2
-set_color_profile_slot( 11, 5, 64, 64, 65 ); //flame
-set_color_profile_slot( 11, 6, 131, 133, 136 ); //flame 2
-set_color_profile_slot( 11, 7, 213, 214, 217 ); //flame 3
-
 // Undead
-set_color_profile_slot( 12, 0, 156, 173, 140 ); //head and peas
-set_color_profile_slot( 12, 1, 129, 144, 117 ); //head and peas 2
-set_color_profile_slot( 12, 2, 86, 96, 70 ); //head and peas 3
-set_color_profile_slot( 12, 3, 121, 87, 54 ); //body and leaves
-set_color_profile_slot( 12, 4, 75, 53, 29 ); //body and leaves 2
-set_color_profile_slot( 12, 5, 49, 72, 21 ); //flame
-set_color_profile_slot( 12, 6, 104, 147, 52 ); //flame 2
-set_color_profile_slot( 12, 7, 134, 179, 80 ); //flame 3
+set_color_profile_slot( 11, 0, 189, 202, 159 ); //head and peas
+set_color_profile_slot( 11, 1, 146, 162, 129 ); //head and peas 2
+set_color_profile_slot( 11, 2, 107, 115, 94 ); //head and peas 3
+set_color_profile_slot( 11, 3, 117, 84, 34 ); //body and leaves
+set_color_profile_slot( 11, 4, 77, 52, 22 ); //body and leaves 2
+set_color_profile_slot( 11, 5, 49, 72, 21 ); //flame
+set_color_profile_slot( 11, 6, 104, 147, 52 ); //flame 2
+set_color_profile_slot( 11, 7, 134, 179, 80 ); //flame 3
 
 // edition
-set_color_profile_slot( 13, 0, 195, 255, 251); //head and peas
-set_color_profile_slot( 13, 1, 0, 255, 169 ); //head and peas 2
-set_color_profile_slot( 13, 2, 4, 163, 109 ); //head and peas 3
-set_color_profile_slot( 13, 3, 210, 70, 253 ); //body and leaves
-set_color_profile_slot( 13, 4, 144, 66, 247 ); //body and leaves 2
-set_color_profile_slot( 13, 5, 0, 149, 170 ); //flame
-set_color_profile_slot( 13, 6, 54, 231, 251 ); //flame 2
-set_color_profile_slot( 13, 7, 90, 255, 249 ); //flame 3
+set_color_profile_slot( 12, 0, 195, 255, 251); //head and peas
+set_color_profile_slot( 12, 1, 0, 255, 169 ); //head and peas 2
+set_color_profile_slot( 12, 2, 4, 163, 109 ); //head and peas 3
+set_color_profile_slot( 12, 3, 210, 70, 253 ); //body and leaves
+set_color_profile_slot( 12, 4, 144, 66, 247 ); //body and leaves 2
+set_color_profile_slot( 12, 5, 0, 149, 170 ); //flame
+set_color_profile_slot( 12, 6, 54, 231, 251 ); //flame 2
+set_color_profile_slot( 12, 7, 90, 255, 249 ); //flame 3
 
-// Luminescent
-set_color_profile_slot( 14, 0, 69, 69, 69); //head and peas
-set_color_profile_slot( 14, 1, 0, 0, 0 ); //head and peas 2
-set_color_profile_slot( 14, 2, 0, 69, 62 ); //head and peas 3
-set_color_profile_slot( 14, 3, 41, 255, 234  ); //body and leaves
-set_color_profile_slot( 14, 4, 0, 0, 0 ); //body and leaves 2
-set_color_profile_slot( 14, 5, 41, 255, 234 ); //flame
-set_color_profile_slot( 14, 6, 0, 0, 0 ); //flame 2
-set_color_profile_slot( 14, 7, 0, 69, 62 ); //flame 3
+// Heatwave
+set_color_profile_slot( 13, 0, 255, 255, 198 ); //head and peas
+set_color_profile_slot( 13, 1, 255, 206, 33 ); //head and peas 2
+set_color_profile_slot( 13, 2, 255, 107, 16 ); //head and peas 3
+set_color_profile_slot( 13, 3, 65, 224, 12 ); //body and leaves
+set_color_profile_slot( 13, 4, 49, 142, 0 ); //body and leaves 2
+set_color_profile_slot( 13, 5, 173, 41, 0 ); //flame
+set_color_profile_slot( 13, 6, 247, 198, 33 ); //flame 2
+set_color_profile_slot( 13, 7, 247, 247, 33 ); //flame 3
+
+// Cosmic
+set_color_profile_slot( 14, 0, 104, 32, 123); //head and peas
+set_color_profile_slot( 14, 1, 156, 60, 149 ); //head and peas 2
+set_color_profile_slot( 14, 2, 203, 139, 211 ); //head and peas 3
+set_color_profile_slot( 14, 3, 104, 32, 123  ); //body and leaves
+set_color_profile_slot( 14, 4, 69, 25, 90 ); //body and leaves 2
+set_color_profile_slot( 14, 5, 255, 255, 255 ); //flame
+set_color_profile_slot( 14, 6, 104, 32, 123 ); //flame 2
+set_color_profile_slot( 14, 7, 203, 139, 211 ); //flame 3
 
 // Vampire
 set_color_profile_slot( 15, 0, 255, 255, 255 ); //head and peas

@@ -191,6 +191,11 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     		    pot_turn_off_lockout = false;
     		    sweet_baby_dont_go = false;
     		    
+    		    if(galaxy_prevention = true){
+    		    	no_hitbox = true;
+    		    	print("activating_galaxy_prevention");
+    		    }
+    		    
     		    /*
     			if(hitbox_hit.player_id.attack != AT_BAIR){
 				        if(hitbox_hit.spr_dir == 1){
@@ -305,6 +310,11 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			no_hitbox = false;
     		    can_be_hit = false;
     		    sweet_baby_dont_go = false;
+    		    
+    		    if(galaxy_prevention = true){
+    		    	no_hitbox = true;
+    		    	print("activating_galaxy_prevention");
+    		    }
     			//}
 
 				//bair lol
@@ -456,6 +466,7 @@ if (state == 0){
 		}
 	}if(hsp = 0 && state_timer > 2){
 		state = 1;
+		galaxy_prevention = false;
 		state_timer = 0;
 		can_be_hit = true;
 		pot_can_be_thrown = true;
@@ -503,6 +514,7 @@ if (state == 0){
 
 //#region State 1: Idle
 if (state == 1){
+	galaxy_prevention = false;
 	pot_hitbox_active = false;
 	pot_can_be_thrown = true;
 	if(hsp = 0 and pot_hit_cooldown == 0){
@@ -550,6 +562,7 @@ if (state == 2){
 		hsp = hsp_var * 0.9;
 		if(!has_shrimp){
 			if(!no_hitbox){
+				if(!galaxy_prevention){
 		pot_hitbox = create_hitbox(AT_EXTRA_2, 1, floor(x) + spr_dir, floor(y) - 25);
 		pot_hitbox.player = pot_owner;
 		if(pot_turn_off_lockout){
@@ -559,6 +572,7 @@ if (state == 2){
 			pot_hitbox.kb_angle = 50;
 		}		if(hsp < 0){
 			pot_hitbox.kb_angle = 130;
+		}
 		}
 		}
 		}
@@ -584,6 +598,7 @@ if(!free){
 		if(!pot_has_trapped){
 			//pot_owner.hitpause = false;
 		state = 1;
+		galaxy_prevention = false;
 		state_timer = 0;
 		pot_hit_cooldown = 5;
 		}if(pot_has_trapped){
@@ -629,6 +644,7 @@ if(!free){
 			}
 		pot_hitbox_active = false;
 		state = 1;
+		galaxy_prevention = false;
 		state_timer = 0;
 		pot_hit_cooldown = 5;
 		}if(pot_has_trapped){
@@ -670,6 +686,7 @@ if (state == 3){
 		hsp = hsp_var * 0.9;
 		if(!has_shrimp){
 			if(!no_hitbox){
+				if(!galaxy_prevention){
 		pot_hitbox = create_hitbox(AT_EXTRA_2, 1, floor(x) + spr_dir, floor(y) - 25);
 		pot_hitbox.player = pot_owner;
 				if(hsp > 0){
@@ -677,6 +694,7 @@ if (state == 3){
 		}		if(hsp < 0){
 			pot_hitbox.kb_angle = 130;
 		}
+			}
 			}
 		}
 		pot_hitbox_active = true;
@@ -773,6 +791,7 @@ if (state == 4){
 	}
 	if(state_timer = 28){
 		state = 1;
+		galaxy_prevention = false;
 		state_timer = 0;
 	}
 	if(state_timer = 1){
@@ -1154,11 +1173,13 @@ if(player_id.state != PS_ATTACK_GROUND and player_id.state != PS_ATTACK_AIR){
 	y = player_id.y - 15;
 	x = player_id.x;
 	state = 1;
+	galaxy_prevention = false;
 	state_timer = 0;
 }if(player_id.attack != AT_NSPECIAL){
 	y = player_id.y - 15;
 	x = player_id.x;
 	state = 1;
+	galaxy_prevention = false;
 	state_timer = 0;
 }
 }

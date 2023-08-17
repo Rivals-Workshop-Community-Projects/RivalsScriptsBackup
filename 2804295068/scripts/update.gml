@@ -6,7 +6,7 @@ torchwood_recharge = clamp(torchwood_recharge, 0, 450);
 torchwood_recharge++;
 
 //heatwave alt
-if (get_player_color(player) == 4){
+if (get_player_color(player) == 13){
     if (state_cat == SC_HITSTUN || state == PS_TUMBLE || state == PS_PRATFALL || state == PS_PRATLAND){
 		set_character_color_slot(0, 239, 206, 115);
 		set_character_color_slot(1, 214, 173, 49);
@@ -45,10 +45,10 @@ if (get_player_color(player) == 4){
 //shadow pea alt
 if (get_player_color(player) == 5){
 	if (state == PS_WAVELAND){
-		set_character_color_slot(0, 4, 6, 81);
-		set_character_color_slot(1, 4, 6, 81);
-		set_character_color_slot(2, 4, 6, 81);
-		set_character_color_slot(3, 4, 6, 81);
+		set_character_color_slot(0, 9, 17, 137);
+		set_character_color_slot(1, 9, 17, 137);
+		set_character_color_slot(2, 9, 17, 137);
+		set_character_color_slot(3, 9, 17, 137);
 	} else {
 		set_character_color_slot(0,
 		get_color_profile_slot_r( get_player_color(player), 0),
@@ -120,20 +120,48 @@ if (state == PS_PARRY){
 	}
 }
 
+// DAIR hover
+if (hover_used){
+	if (!free || state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN || state == PS_HITSTUN){
+		move_cooldown[AT_DAIR] = 0;
+		hover_used = false;
+	}
+	move_cooldown[AT_DAIR] = 2;
+}
+if (has_hit){
+	/*
+	if (hover_used){
+		hover_used = false;
+	}
+	*/
+	if (hover_pratfall){
+		hover_pratfall = false;
+	}
+}
+if (hover_store_jump != -1 && !hover_pratfall){
+	if !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL){
+		djumps = hover_store_jump;
+		hover_store_jump = -1;
+	}
+}
+if (hover_pratfall){
+	if (state == PS_PRATFALL || state == PS_PRATLAND || state == PS_HITSTUN || state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN){
+		hover_pratfall = false;
+	}
+}
+if (hover_pratfall){
+	if (state_cat == SC_AIR_NEUTRAL){
+		set_state( PS_PRATFALL );
+	}
+	if (state_cat == SC_GROUND_NEUTRAL || state == PS_LANDING_LAG){
+		set_state( PS_PRATLAND );
+	}
+}
+
 //runes
 if (has_rune("B")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 100);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
-}
-
-if (!has_rune("C")){
-	if (hover_used){
-		if (!free){
-			move_cooldown[AT_DAIR] = 0;
-			hover_used = false;
-		}
-		move_cooldown[AT_DAIR] = 2;
-	}
 }
 
 if (has_rune("E")){
@@ -142,8 +170,8 @@ if (has_rune("E")){
 }
 
 if (has_rune("F")){
-	set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_GRAVITY, 0.2);
-	set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_GRAVITY, 0.2);
+	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_GRAVITY, 0.2);
+	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GRAVITY, 0.2);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GRAVITY, 0.2);
 	set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GRAVITY, 0.2);
 	set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_GRAVITY, 1);
@@ -219,8 +247,8 @@ if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
 //copy ability
 if swallowed {
 	swallowed = 0
-	var ability_spr = sprite_get("jab_kirby")
-	var ability_hurt = sprite_get("jab_kirby_hurt")
+	var ability_spr = sprite_get("kirby")
+	var ability_hurt = sprite_get("kirby_hurt")
 	var ability_icon = sprite_get("kirby_icon")
     var ability_sfx_throw = sound_get("throw")
     var ability_sfx_splat2 = sound_get("splat2")
@@ -237,7 +265,7 @@ if swallowed {
 		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
-		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 8);
 		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 2);
 		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 1);
@@ -278,47 +306,52 @@ if swallowed {
 
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 60);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 15);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 12);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -20);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 24);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 24);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 80);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .3);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 70);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 6);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_FORCE_FLINCH, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, ability_proj);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 12);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_PARRY_STUN, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_EXTENDED_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 2);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 6);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, 60);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, 16);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, 12);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, -20);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 30);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 30);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 1);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_DAMAGE, 2);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 80);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, .3);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 5);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .3);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 50);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 5);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, .5);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 6);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .2);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_MASK, ability_proj);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED, 5);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED, 12);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_EXTENDED_PARRY_STUN, 1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_HITSTUN_MULTIPLIER, 0.6);
 	newicon = ability_icon
 	}
 }

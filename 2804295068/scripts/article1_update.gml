@@ -47,7 +47,7 @@
 if (state != 2){
     with pHitBox{
 	    //firepea
-	    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
+	    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
 	    	if (!torched){
 	            torched = true;
 				with obj_article1{
@@ -80,16 +80,14 @@ if (state != 2){
 		}
 		//bean
 		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_FSPECIAL && hbox_num == 1){
-		    if (hitbox_timer < 120){
-	            hitbox_timer = 120
-				vsp += -1
-				hsp += 1.8*spr_dir
-				sound_play (sound_get ("wakeup"));
-				with obj_article1{
-					if (player_id == other.player_id){
-						state = 2
-						state_timer = 0
-					}
+	        hitbox_timer += 120
+			vsp += -1.25
+			hsp += 2*spr_dir
+			sound_play (sound_get ("wakeup"));
+			with obj_article1{
+				if (player_id == other.player_id){
+					state = 2
+					state_timer = 0
 				}
 			}
 	    }
@@ -114,7 +112,7 @@ if (buffertimer < 20){
 //gravity
 if (grav_on){
 	var grav_speed = .1
-	var grav_max = 8;
+	var grav_max = 6;
 	
 	if (free){
 		
@@ -140,6 +138,14 @@ if (state == 0){
     if (state_timer == 1){
 		spawn_hit_fx(x + 16,y,15)
 		spawn_hit_fx(x - 16,y,15)
+	}
+	if (state_timer >= 1200) && (state_timer mod 30 == 1){
+		spawn_hit_fx(x,y - 62,14)
+	}
+	//delete if 30 seconds pass
+	if (state_timer >= 1800){
+		state = 2
+		state_timer = 0
 	}
 }
 
@@ -215,12 +221,6 @@ if (y > (room_height + 128)){
     sound_play (sound_get ("shovel"));
     instance_destroy();
     exit;
-}
-
-//delete if 30 seconds pass
-if (state_timer >= 1800){
-	state = 2
-	state_timer = 0
 }
 
 //shovel

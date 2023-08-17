@@ -18,22 +18,29 @@ alt_name[0]  = "Classic";
 alt_name[1]  = "Snow";
 alt_name[2]  = "Fire";
 alt_name[3]  = "Sweet";
-alt_name[4]  = "Heatwave";
+alt_name[4]  = "Plasma";
 alt_name[5]  = "Shadow";
 alt_name[6]  = "Abyss";
 alt_name[7]  = "Gameboy";
 alt_name[8]  = "Snapdragon";
 alt_name[9]  = "Mushroom";
 alt_name[10]  = "Sweet Potato";
-alt_name[11]  = "Electric Blueberry";
-alt_name[12]  = "Undead";
-alt_name[13]  = "Infamous";
-alt_name[14]  = "Luminescent";
+alt_name[11]  = "Undead";
+alt_name[12]  = "Infamous";
+alt_name[13]  = "Heatwave";
+alt_name[14]  = "Cosmic";
 alt_name[15]  = "Vampire";
 alt_name[16]  = "Puffy";
 alt_name[17]  = "Silver";
 alt_name[18]  = "Gold";
 alt_name[19]  = "Imitated";
+
+if (get_player_color(player) == 7){
+	draw_sprite_ext(sprite_get("gb_css_overlay"),0,x + 8,y + 8, 2, 2, 0, -1, 1);
+}
+if (get_player_color(player) == 14){
+	draw_sprite_ext(sprite_get("cosmic_charselect"),0,x + 8,y + 8, 2, 2, 0, -1, 1);
+}
  
 //Alt
  

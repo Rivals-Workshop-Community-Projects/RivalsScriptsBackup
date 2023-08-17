@@ -31,9 +31,9 @@ sprite_change_offset("airdodge", 64, 94);
 sprite_change_offset("waveland", 64, 94);
 sprite_change_offset("tech", 64, 94);
 
-sprite_change_offset("jab", 64, 94);
+sprite_change_offset("jab", 48, 94);
 sprite_change_offset("dattack", 32, 94);
-sprite_change_offset("ftilt", 48, 94);
+sprite_change_offset("ftilt", 64, 94);
 sprite_change_offset("dtilt", 48, 94);
 sprite_change_offset("utilt", 64, 94);
 sprite_change_offset("btilt", 64, 94);
@@ -53,7 +53,7 @@ sprite_change_offset("uspecial_air", 64, 94);
 sprite_change_offset("uspecial_torched", 64, 94);
 sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("taunt_trumpet", 64, 94);
-sprite_change_offset("taunt_costume", 64, 126);
+sprite_change_offset("taunt_costume", 64, 158);
 
 sprite_change_offset("plat", 64, 94);
 
@@ -76,3 +76,19 @@ sprite_change_offset("wait2", 64, 94);
 
 sprite_change_offset("jab_kirby", 32, 62);
 sprite_change_offset("helpless", 64, 94);
+
+if (get_player_color(player) == 7){
+	set_victory_portrait( sprite_get( "gb_portrait" ));
+	set_victory_sidebar( sprite_get( "gb_result_small" ));
+}
+if (get_player_color(player) == 14){
+	if object_index == oPlayer {
+        set_ui_element(UI_WIN_PORTRAIT, sprite_get("cosmic_portrait"));
+        set_ui_element(UI_HUD_ICON, sprite_get("cosmic_hud"));
+        set_ui_element(UI_HUDHURT_ICON, sprite_get("cosmic_hurt"));
+        set_ui_element(UI_OFFSCREEN, sprite_get("cosmic_offscreen"));
+        set_ui_element(UI_CHARSELECT, sprite_get("cosmic_charselect"));
+        set_ui_element(UI_WIN_SIDEBAR, sprite_get("cosmic_result_small"));
+    }
+}
+sprite_change_offset("cosmic_offscreen", 16, 18);

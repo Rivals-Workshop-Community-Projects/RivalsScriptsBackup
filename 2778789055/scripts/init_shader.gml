@@ -94,23 +94,23 @@ if(secret_alt_num = 4){
 
 if(secret_alt_num = 6){
     if(avocado = true){
-        //Investigator Azuma
-	set_character_color_slot( 0, 27, 156, 18 ); //Gumbo Skin 1
-	set_character_color_slot( 1, 27, 156, 18 ); //Gumb Skin 2
-	set_character_color_slot( 2, 78, 94, 0 ); //Jeans
-	set_character_color_slot( 3, 128, 150, 0 ); //Hoodie
-	set_character_color_slot( 4, 246, 245, 251 ); //Eyes
-	set_character_color_slot( 5, 97, 95, 98 ); //Po Skin 1
-	set_character_color_slot( 6, 153, 0, 0 ); //Po Skin 2
-	set_character_color_slot( 7, 246, 245, 251 ); //Apron
-	set_article_color_slot( 0, 27, 156, 18 ); //Gumbo Skin 1
-	set_article_color_slot( 1, 27, 156, 18 ); //Gumb Skin 2
-	set_article_color_slot( 2, 78, 94, 0 ); //Jeans
-	set_article_color_slot( 3, 128, 150, 0 ); //Hoodie
-	set_article_color_slot( 4, 246, 245, 251 ); //Eyes
-	set_article_color_slot( 5, 97, 95, 98 ); //Po Skin 1
-	set_article_color_slot( 6, 153, 0, 0 ); //Po Skin 2
-	set_article_color_slot( 7, 246, 245, 251 ); //Apron
+        //Fungus Alt
+set_character_color_slot( 0, 51, 51, 51 ); //Gumbo Skin 1
+set_character_color_slot( 1, 255, 255, 255 ); //Gumb Skin 2
+set_character_color_slot( 2, 253, 244, 53 ); //Jeans
+set_character_color_slot( 3, 117, 33, 176 ); //Hoodie
+set_character_color_slot( 4, 255, 255, 255 ); //Eyes
+set_character_color_slot( 5, 255, 255, 255 ); //Po Skin 1
+set_character_color_slot( 6, 255, 255, 255 ); //Po Skin 2
+set_character_color_slot( 7, 125, 125, 125 ); //Apron
+set_article_color_slot( 0, 51, 51, 51 ); //Gumbo Skin 1
+set_article_color_slot( 1, 255, 255, 255 ); //Gumb Skin 2
+set_article_color_slot( 2, 253, 244, 53 ); //Jeans
+set_article_color_slot( 3, 117, 33, 176 ); //Hoodie
+set_article_color_slot( 4, 255, 255, 255 ); //Eyes
+set_article_color_slot( 5, 255, 255, 255 ); //Po Skin 1
+set_article_color_slot( 6, 255, 255, 255 ); //Po Skin 2
+set_article_color_slot( 7, 125, 125, 125 ); //Apron
     }
 }
 

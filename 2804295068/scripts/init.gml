@@ -43,10 +43,10 @@ max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
-knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 12;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding
@@ -107,6 +107,16 @@ torchwood_recharge = 0;
 timer = 0;
 airraid_used = false;
 hover_used = false;
+hover_pratfall = false;
+hover_store_jump = -1;
+wait_time = 600;
+wait_length = 90;
+wait_sprite = sprite_get("wait");
+wait_what = 0;
+
+playtest = (object_index == oTestPlayer);
+practice_mode = false;
+
 kirbyability = 16
 copy_ability_id = 64
 fs_char_chosen_final_smash = "custom";
@@ -115,13 +125,5 @@ mamizou_transform_spr = sprite_get("helpless");
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Roasted Sugar Snap Peas"
 arena_title = "The Garden's First Defender";
-wait_time = 600;
-wait_length = 90;
-wait_sprite = sprite_get("wait");
-wait_what = 0;
 swallowed = 0;
 enemykirby = 0;
-
-//practice mode detector
-playtest = (object_index == oTestPlayer);
-practice_mode = false;

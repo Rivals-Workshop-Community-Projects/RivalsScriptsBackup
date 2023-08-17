@@ -326,19 +326,19 @@ if (get_gameplay_time() < 120){
 		}
 	}	
 	if(get_player_color(player) = 21){
-		//Investigator Azuma
+		//Fungus Alt
 		if(secret_alt_on == false){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));  
-	set_color_profile_slot( 21, 0, 27, 156, 18 ); //Gumbo Skin 1
-	set_color_profile_slot( 21, 1, 27, 156, 18 ); //Gumb Skin 2
-	set_color_profile_slot( 21, 2, 78, 94, 0 ); //Jeans
-	set_color_profile_slot( 21, 3, 128, 150, 0 ); //Hoodie
-	set_color_profile_slot( 21, 4, 246, 245, 251 ); //Eyes
-	set_color_profile_slot( 21, 5, 97, 95, 98 ); //Po Skin 1
-	set_color_profile_slot( 21, 6, 153, 0, 0 ); //Po Skin 2
-	set_color_profile_slot( 21, 7, 246, 245, 251 ); //Apron
+set_color_profile_slot( 21, 0, 51, 51, 51 ); //Gumbo Skin 1
+set_color_profile_slot( 21, 1, 255, 255, 255 ); //Gumb Skin 2
+set_color_profile_slot( 21, 2, 253, 244, 53 ); //Jeans
+set_color_profile_slot( 21, 3, 117, 33, 176 ); //Hoodie
+set_color_profile_slot( 21, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 21, 5, 255, 255, 255 ); //Po Skin 1
+set_color_profile_slot( 21, 6, 255, 255, 255 ); //Po Skin 2
+set_color_profile_slot( 21, 7, 125, 125, 125 ); //Apron
 		avocado = true;
 		secret_alt_num = 6;
 		init_shader();
@@ -347,14 +347,14 @@ if (get_gameplay_time() < 120){
 		}else{
 				if(!avocado){
 		white_flash_timer = 24;
-	set_color_profile_slot( 21, 0, 27, 156, 18 ); //Gumbo Skin 1
-	set_color_profile_slot( 21, 1, 27, 156, 18 ); //Gumb Skin 2
-	set_color_profile_slot( 21, 2, 78, 94, 0 ); //Jeans
-	set_color_profile_slot( 21, 3, 128, 150, 0 ); //Hoodie
-	set_color_profile_slot( 21, 4, 246, 245, 251 ); //Eyes
-	set_color_profile_slot( 21, 5, 97, 95, 98 ); //Po Skin 1
-	set_color_profile_slot( 21, 6, 153, 0, 0 ); //Po Skin 2
-	set_color_profile_slot( 21, 7, 246, 245, 251 ); //Apron
+set_color_profile_slot( 21, 0, 51, 51, 51 ); //Gumbo Skin 1
+set_color_profile_slot( 21, 1, 255, 255, 255 ); //Gumb Skin 2
+set_color_profile_slot( 21, 2, 253, 244, 53 ); //Jeans
+set_color_profile_slot( 21, 3, 117, 33, 176 ); //Hoodie
+set_color_profile_slot( 21, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 21, 5, 255, 255, 255 ); //Po Skin 1
+set_color_profile_slot( 21, 6, 255, 255, 255 ); //Po Skin 2
+set_color_profile_slot( 21, 7, 125, 125, 125 ); //Apron
 		secret_alt_num = 6;
 		init_shader();            
 		avocado = true;					
@@ -463,6 +463,21 @@ if(tutorialcooldown > 0){
 tutorialcooldown--;
 }if(menu_select_cooldown > 0){
 menu_select_cooldown--;
+}
+
+//prevents false galaxies
+if(instance_exists(hit_player_obj)){
+	if(hit_player_obj.activated_kill_effect){
+		if(instance_exists(pumbo_pot_ID)){
+		pumbo_pot_ID.galaxy_prevention = true;	
+		}
+	}
+}
+
+if(activated_kill_effect){
+	if(instance_exists(pumbo_pot_ID)){
+		pumbo_pot_ID.galaxy_prevention = true;	
+	}
 }
 
 #define gumbo_ditto

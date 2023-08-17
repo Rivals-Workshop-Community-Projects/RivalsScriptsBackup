@@ -12,4 +12,11 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 torch_damage_mult = round(damage*2);
 torch_length_mult = length*1.3;
 torch_hsp_mult = hsp*1.3;
-torch_vsp_mult = vsp*1.3;
+
+if (attack == AT_NSPECIAL && hbox_num == 1){
+	if (player_id.free){
+		grounds = -1;
+		hsp = 13 * spr_dir;
+		vsp = 9;
+	}
+}
