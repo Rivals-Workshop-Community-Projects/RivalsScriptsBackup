@@ -197,6 +197,7 @@ set_color_profile_slot( 16, 6, 57, 3, 0 ); //Hair
 set_color_profile_slot( 16, 7, 255, 250, 0 ); //Overall Buttons
 
 
+
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Cap","colors":[{"r":255,"g":0,"b":0,"main":true},{"r":182,"g":0,"b":0}]},{"name":"Shirt","colors":[{"r":0,"g":255,"b":255,"main":true},{"r":0,"g":182,"b":182}]},{"name":"Overalls","colors":[{"r":0,"g":0,"b":255,"main":true},{"r":0,"g":0,"b":182}]},{"name":"Shoes","colors":[{"r":156,"g":38,"b":19,"main":true},{"r":105,"g":26,"b":14}]},{"name":"Gloves","colors":[{"r":222,"g":222,"b":222},{"r":170,"g":170,"b":170,"main":true}]},{"name":"Skin","colors":[{"r":232,"g":202,"b":129,"main":true},{"r":222,"g":159,"b":82}]},{"name":"Hair","colors":[{"r":57,"g":3,"b":0,"main":true},{"r":37,"g":7,"b":0}]},{"name":"Overall Buttons","colors":[{"r":255,"g":250,"b":0,"main":true},{"r":184,"g":165,"b":0}]}]}

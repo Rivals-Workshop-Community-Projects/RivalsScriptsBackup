@@ -8,12 +8,12 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 //UStrong - Backwards Somersault
 if attack == AT_USTRONG {
 	can_fast_fall = false;
-	if window <= 3 {
+	if window <= 4 {
 		set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
 	} else {
 		set_attack_value(AT_USTRONG, AG_CATEGORY, 1);
 	}
-	if window == 3 && !hitpause {
+	if window == 4 && !hitpause {
 		if window_timer == 1 {	
 			sound_play(sound_get("jump"));
 		}
@@ -24,7 +24,7 @@ if attack == AT_USTRONG {
 			sound_play(sound_get("flip"));
 		}
 	}
-	if window == 4 {
+	if window == 5 {
 		if (window_timer == 12 && has_hit || window_timer == 18 && !has_hit) {
 		sound_play(sound_get("flip"));
 		}
@@ -84,7 +84,7 @@ if attack == AT_FSPECIAL {
 	}
 	
 	if window == 1 && window_timer == 6 {
-		spawn_base_dust(x, y, "jump");
+		spawn_base_dust(x+20*spr_dir, y, "dash_start");
 	}
 	
 	if (window == 2 && window_timer > 4) || window == 3 {
@@ -551,9 +551,44 @@ if (attack == AT_DAIR) {
 		}
 		
 	}
-	if window == 5 && window_timer == 0 && !hitpause {
-		destroy_hitboxes();
-		spawn_hit_fx( x-2*spr_dir, y, GroundPound);
+	if window == 5 && window_timer == 0 {
+		if !hitpause {
+			shake_camera(6,4);
+			destroy_hitboxes();
+			spawn_hit_fx( x-2*spr_dir, y, GroundPound);
+		}
+	}
+}
+
+
+//Dust effect stuff
+if !hitpause {
+	if attack == AT_DSTRONG {
+		if window == 2 && window_timer == 2 {
+			spawn_base_dust(x-2*spr_dir, y, "dash_start", spr_dir);
+			}
+		if window == 4 && window_timer == 2 {
+			spawn_base_dust(x+2*spr_dir, y, "dash_start", -spr_dir);
+			}
+		if window == 7 && window_timer == 6 {
+			spawn_base_dust(x+10*spr_dir, y, "dash", spr_dir);
+			}
+	}
+	
+	if attack == AT_FSTRONG {
+		if window == 3 && window_timer == 2 {
+			spawn_base_dust(x+50*spr_dir, y, "dash_start", -spr_dir);
+			spawn_base_dust(x-10*spr_dir, y, "dash", spr_dir);
+		}
+	}
+	
+	if attack == AT_USTRONG {
+		if window == 3 && window_timer == 2 {
+			spawn_base_dust(x, y, "jump", spr_dir);
+		}
+	}
+	if attack == AT_FSPECIAL_AIR && (window == 1) && window_timer == (get_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH)) {
+		spawn_base_dust(x, y, "dash", spr_dir);
 	}
 }
 
@@ -668,7 +703,15 @@ if attack == AT_DSTRONG && !hitpause {
 	if window == 1 && window_timer == 3 {
 		sound_play(sound_get("spark"));
 	}
-	if window == 8 && (window_timer == 5 && has_hit || window_timer == 8 && !has_hit) && !was_parried {
+	//hsp stuff
+	if window == 4 {
+		hsp -= 4*spr_dir;
+	}
+	if window == 6 {
+		hsp += 2*spr_dir;	
+	}
+	
+	if window == 7 && (window_timer == (get_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH)) && has_hit || window_timer == ((get_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH))-1)*1.5 && !has_hit) && !was_parried {
 		set_state(PS_CROUCH);
 		state_timer = 8;
 	}
@@ -676,7 +719,7 @@ if attack == AT_DSTRONG && !hitpause {
 
 if ItsAMeMario && !hitpause {
 	if attack == AT_USTRONG {
-		if window == 3 && window_timer == 1 {
+		if window == 4 && window_timer == 1 {
 			sound_play(yah);
 		}
 	}
@@ -685,7 +728,7 @@ if ItsAMeMario && !hitpause {
 		if window == 1 && window_timer == 1 {
 			sound_play(woo, false, noone, 1, 1.05);
 		}
-		if window == 3 && window_timer == 2 {
+		if window == 2 && window_timer == 3 {
 			sound_play(yahoo, false, noone, 1, 1.05);
 		}
 	}	
