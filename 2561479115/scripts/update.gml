@@ -1,5 +1,6 @@
 attacking = state == clamp(state,5,6);
 
+
 //#region Jump FX
 if (state == PS_JUMPSQUAT) played_hit_fx = false;
 if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
@@ -11,14 +12,14 @@ if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
         played_hit_fx = true; //ignore shorthop
     } else if (state_timer == 3 && played_hit_fx == false) {
         //play effect
-        sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
+        sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume, 1.05);
         spawn_hit_fx(floor(x),floor(y),jump_fx);
         played_hit_fx = true;
     }
 } else if (prev_state == PS_JUMPSQUAT && state == PS_ATTACK_AIR && state_timer == 3) {
     //play logic when fullhopping with attacks
     if (played_hit_fx == false && vsp < -(short_hop_speed+1)+(gravity_speed*3)) {
-        sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
+        sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume, 1.05);
         spawn_hit_fx(floor(x),floor(y),jump_fx);
         played_hit_fx = true;
     }
@@ -28,7 +29,7 @@ if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
 //djump sound, except it works with instant djump aerial now?
 if (djumps > fix_old_djumps && !djumped) { 
     djumped = true;
-    sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
+    sound_play(sound_get("fire_burn"),false,noone,jump_audio_volume + 0.1,1.1);
 }
 
 if djumps == 0 djumped = false; //reset djumped variable.
@@ -102,13 +103,19 @@ else if can_special && is_special_pressed(DIR_DOWN) && move_cooldown[AT_DSPECIAL
 
 //funny things
 if attacking {
-    if attack == AT_BAIR {
-        if (window == 3) {
-			if (window_timer == 0) {
+	switch attack {
+		case AT_BAIR:
+			if (window == 3 and window_timer == 0) {
 				destroy_hitboxes(); //kill the lingering hit on normal endlag
-			}	
-		}
-    }
+			}
+		break;
+		case AT_DSTRONG:
+			if window == 5 and window_timer == 6 and !hitpause {
+				sound_play(sound_get("gunshot"), false, noone, 0.4, 1.1)
+				sound_play(sound_get("gunshot_small"), false, noone, 0.6, 0.9)
+			}
+		break;
+	}
 }
 
 //#region Other Update
@@ -164,7 +171,7 @@ if (state == PS_LANDING_LAG && state_timer == 0 && bullet_fired) {
 
 with hit_fx_obj if player_id == other {
     if hit_fx == other.plasma_hitfx {
-        depth = player_id.depth-5;
+        //depth = player_id.depth-5;
     }
 }
 
@@ -243,6 +250,7 @@ if (ds_list_size(roke_dstrong_targets) > 0) {
     else
         ds_list_clear(roke_dstrong_targets);
 }
+prep_hitboxes();
 
 #define p_process()
 //process particles. everything here should be self explanatory.
@@ -261,6 +269,26 @@ repeat (ds_list_size(particles)) {
             continue;
         }
         i++;
+    }
+}
+
+#define prep_hitboxes
+//Applies the hitbox sprites and prepares them to be drawn (with color!)
+with (pHitBox) if player_id == other {
+    if "col" not in self {
+        with other {
+            other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
+            if other.col == 0 other.col = c_red;
+            other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+            other.draw_colored = true;
+            if other.type == 1
+                other.sprite_index = __hb_hd_spr[other.shape];
+            else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
+                other.mask_index = __hb_hd_spr[other.shape];
+            else 
+                other.draw_colored = false;
+            other.draw_spr = __hb_draw_spr;
+        }
     }
 }
 #define grab_process

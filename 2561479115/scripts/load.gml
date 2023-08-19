@@ -1,4 +1,4 @@
-sprite_change_offset("idle", 28, 62);
+sprite_change_offset("idle", 36, 62);
 sprite_change_offset("hurt", 68, 94);
 sprite_change_offset("bighurt", 68, 94);
 sprite_change_offset("hurtground", 68, 94);
@@ -40,14 +40,19 @@ sprite_change_offset("ftilt2", 66, 94);
 sprite_change_offset("dtilt", 64, 94);
 sprite_change_offset("utilt", 64, 114);
 sprite_change_offset("utilt_new", 64, 114);
+sprite_change_offset("hfx_utilt_muzzleflash", 30, 54)
+
 sprite_change_offset("nair", 64, 94);
+sprite_change_offset("new_nair", 86, 116);
+sprite_change_offset("newer_nair", 86, 116);
 sprite_change_offset("fair", 64, 94);
 sprite_change_offset("bair", 86, 112);
 sprite_change_offset("bairtrail", 68, 112);
-sprite_change_offset("uair", 64, 94);
+sprite_change_offset("uair", 64, 128);
 sprite_change_offset("dair", 64, 94);
 sprite_change_offset("fstrong", 64, 94);
-sprite_change_offset("ustrong", 62, 114);
+sprite_change_offset("ustrong", 68, 114);
+sprite_change_offset("ustrong_dissipationfx", 68, 114);
 sprite_change_offset("dstrong", 74, 94);
 sprite_change_offset("nspecial", 64, 94);
 sprite_change_offset("nspecial_air", 64, 94);
@@ -71,6 +76,9 @@ sprite_change_offset("article2half", 64, 94);
 sprite_change_offset("explosion", 71, 100);
 sprite_change_offset("plasma_fx", 126, 130);
 
+sprite_change_offset("hfx_plasma_large", 128, 128);
+sprite_change_offset("hfx_plasma_small", 64, 64);
+
 sprite_change_offset("drone", 64, 64);
 sprite_change_offset("drone_launch", 64, 64);
 sprite_change_offset("drone_launch_trans", 64, 64);
@@ -91,8 +99,10 @@ sprite_change_offset("blindfire_placeholder", 74, 64);
 sprite_change_offset("plat", 64, 76);
 
 sprite_change_offset("hitscan", 0, 4);
-sprite_change_offset("nspecialproj_strong", 76, 64);
-sprite_change_offset("nspecial_proj", 46, 14);
+sprite_change_offset("nspecial_proj_strong", 80, 20);
+sprite_change_offset("nspecial_proj", 58, 14);
+sprite_change_offset("nspecial_proj_strong_dissipate", 64, 16);
+sprite_change_offset("nspecial_proj_dissipate", 34, 6);
 sprite_change_offset("fspecial_proj", 79, 67);
 
 sprite_change_offset("beam_front", 56, 70);

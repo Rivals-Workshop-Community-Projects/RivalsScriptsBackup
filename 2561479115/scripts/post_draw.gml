@@ -22,17 +22,20 @@ if (ds_list_size(particles) > 0) {
     for (var i = 0; i < ds_list_size(particles); i++) {
         var ap = particles[| i];
         if (ap.shader == true) shader_start();
-        draw_sprite_ext(ap.sprite,0,ap.x,ap.y,1,1,0,-1,ap.alpha);
+        var img = sprite_get_number(ap.sprite)*ap.timer/ap.lifetime
+        draw_sprite_ext(ap.sprite,img,ap.x,ap.y,1,1,"rot" in ap?ap.rot:0,-1,ap.alpha);
         if (ap.shader == true) shader_end();
     }
 }
 
 
+/*
 shader_start();
 if (state == PS_PARRY && window == 1) {
     draw_sprite_ext(sprite_get("shield"),image_index,x,y,spr_dir,1,0,-1,1);
 }
 shader_end();
+*/
 
 
 //draw_debug_text(x,y,`${attack}`);

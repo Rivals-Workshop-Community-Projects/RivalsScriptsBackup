@@ -150,7 +150,7 @@ switch (attack) {
 		
 	break;
 	case AT_FSPECIAL:
-		move_cooldown[AT_FSPECIAL] = 12;
+		move_cooldown[AT_FSPECIAL] = 22;
 	break;
 	case AT_USTRONG:
 		
@@ -159,7 +159,7 @@ switch (attack) {
 		if window == 1 && free set_attack(AT_UAIR);
 		//if you hit the first hit of ustrong, create a hitbox that deletes their DI.
 		//remove this if people complain about it lol it's probably busted
-		if window == 3 && has_hit && !hitpause create_hitbox(attack,4,x+34*spr_dir,y-30);
+		//if window == 3 && has_hit && !hitpause create_hitbox(attack,4,x+34*spr_dir,y-30);
 		if window >= 3 && window < 5 {
 			hud_offset = ceil(lerp(hud_offset,100,0.3));
 		}
@@ -182,6 +182,11 @@ switch (attack) {
 	case AT_FSTRONG:
 		if (window == 1 && window_timer == 1) {
 			hsp = -4*spr_dir;
+		}
+		
+		if window == 2 and window_timer == 1 and !hitpause {
+			sound_play(sound_get("fire_burn"),false, noone, 0.8, 1.1)
+			sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.3);
 		}
 	break;
     case AT_DSTRONG:
@@ -223,17 +228,15 @@ switch (attack) {
 	break;
 	case AT_BAIR:
 		if (window == 4) {
+			
 	    	if (clamp(state_timer,1,50)%4 == 0) {
 	            var fx = instance_create(x,y,"obj_article3");
 	            fx.image_index = floor(state_timer/4)-4;
 	            fx.sprite_index = sprite_get("bairtrail");
 	            fx.image_alpha = 0.7;
 	        }
-	    } else if (window == 5 && window_timer == 1) {
-			spawn_hit_fx(x,y-28,burst);
-			spawn_hit_fx(x+(28*spr_dir),y-28,fire);
-		} else if (window == 5 && window_timer > 3 || window == 6) {
-			if (window_timer%2 == 0) createParticle(2,20,40,sprite_get("test_particle"),x,y-25,-hsp/3,-vsp/3,sign(hsp)*0.12,sign(vsp)*0.12,1.4,-0.1,30,true);
+	    } else if (window == 5 && window_timer > 3 || window == 6) {
+			if (window_timer%2 == 0) createParticle(2,20,40,sprite_get("line_part"),x,y-25,-hsp/3,-vsp/3,hsp*0.02,vsp*0.02,1.4,-0.1,1.4/0.1,true,point_direction(0,0,hsp,vsp));
 		}
 	break;
 	case AT_TAUNT:
@@ -243,7 +246,7 @@ switch (attack) {
 	break;
 	case AT_JAB:
 		if window == 4 && window_timer == 1 hsp += 6*spr_dir;
-		if (window == 6) && !hitpause && has_hit && !was_parried {
+		if (window == 6 and window_timer > 5) && !hitpause && has_hit && !was_parried {
 			can_attack = true;
 			move_cooldown[AT_JAB] = 2;
 			can_ustrong = true;
@@ -263,6 +266,10 @@ switch (attack) {
 	case AT_DATTACK:
 		can_fast_fall = false;
 		grav = 0.3;
+		if window == 1 and window_timer == 2 {
+			sound_play(sound_get("clothes_rub"), false, noone, 0.8, 1.1)
+		}
+		
 		if free && window == 4 {
 			set_state(PS_IDLE_AIR);
 		}
@@ -346,7 +353,7 @@ for (var i = 0; i <= total_entries; i++){
 
 return reg_index;
 
-#define createParticle(amt,xvar,yvar,sprite,x,y,hsp,vsp,hAccel,vAccel,alpha,alpha_rate,lifetime,uses_shader)
+#define createParticle(amt,xvar,yvar,sprite,x,y,hsp,vsp,hAccel,vAccel,alpha,alpha_rate,lifetime,uses_shader,Rot)
 var ind = 0;
 repeat(amt) {
     var newParticle = {
@@ -361,7 +368,8 @@ repeat(amt) {
         alpha_rate: alpha_rate,      //alpha rate
         timer: 0,      //particle timer
         lifetime: lifetime,       //particle lifetime
-        shader: uses_shader
+        shader: uses_shader,
+        rot:Rot
         };
     ds_list_add(particles,newParticle);
 }

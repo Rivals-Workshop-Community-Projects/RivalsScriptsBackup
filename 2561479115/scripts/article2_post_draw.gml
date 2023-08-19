@@ -26,7 +26,8 @@ if state == 3 && target != noone { //warn
     maskHeader();
     draw_line_width_color(x,y-44,finalCol[1],finalCol[2],4,c_white,c_white);
     maskMidder();
-    draw_sprite_ext(sprite_get("white_tracer"),0,x+lengthdir_x((state_timer-20)&~1,dir),y-44+lengthdir_y((state_timer)&~1-20,dir),8,8,dir,col,1);
+    var len = (state_timer-20)&~1;
+    draw_sprite_ext(sprite_get("white_tracer"),0,x+lengthdir_x(len,dir),y-44+lengthdir_y(len,dir),8,8,dir,col,1);
     maskFooter();
     
 } else if (state == 4 || shoost_anim_timer != 1) && target != noone && state != 5 { //shoot

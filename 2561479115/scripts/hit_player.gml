@@ -67,8 +67,12 @@ switch (my_hitboxID.attack) {
         sound_play(asset_get("sfx_blow_medium2"),false,noone,1,1);
     break;
     case AT_FTILT: if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.75,0.8); break;
-
-    case AT_UAIR: sound_play(asset_get("sfx_blow_weak1")); break;
+    case AT_BAIR:
+        if (my_hitboxID.hbox_num == 3){
+            sound_play(sound_get("hit_big_new"), false, noone, 0.8, 1.1)
+        }
+    break;
+    case AT_UAIR: sound_play(asset_get("sfx_blow_medium3")); break;
     case AT_FAIR: 
         if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.5,1); 
     break;
@@ -81,7 +85,10 @@ switch (my_hitboxID.attack) {
             case 3: sound_play(asset_get("sfx_clairen_hit_med")); break;
         }
     break;
-    case AT_FSTRONG: sound_play(asset_get("sfx_blow_heavy2")); break;
+    case AT_FSTRONG:
+        sound_play(asset_get("sfx_blow_heavy2"));
+        sound_play(sound_get("hit_big"), false, noone, 0.5, 1.4);
+    break;
     case AT_DSTRONG: 
         switch my_hitboxID.hbox_num {
             case 3:

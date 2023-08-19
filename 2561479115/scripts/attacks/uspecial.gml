@@ -11,14 +11,14 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 44);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_absa_concentrate"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("uspecial_start"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_absa_dashup"));
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("uspecial_stop"));
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 22);

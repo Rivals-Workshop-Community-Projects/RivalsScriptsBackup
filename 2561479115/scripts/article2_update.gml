@@ -18,7 +18,14 @@
 - 9 Attack
 
 */
+with oPlayer {
+	if get_player_team(player) == get_player_team(other.player) {
+		other.can_be_hit[player] = 2; //prevent article from being hit by teammates.
+	}
+}
 
+//attack_can_hit[player,AT_FAIR*10+0] = true;
+is_hittable = false;
 
 
 //Are there too many articles? If so, I should die
@@ -150,7 +157,7 @@ if (state == 1){
 			instance_destroy(col_hitbox);
 			state = 3;
 			state_timer = 0;
-        } else if (col_hitbox.attack == AT_FSPECIAL && col_hitbox.changed == 0) {
+        } else if (col_hitbox.attack == AT_FSPECIAL && col_hitbox.changed == 0 ) {
             tag = col_hitbox;
             tag.changed = 1;
             tag.length = 200;
@@ -196,6 +203,7 @@ if (state == 2){
 //State 3: shoost charge
 
 if (state == 3){
+	is_hittable = true;
 	player_id.move_cooldown[AT_DSPECIAL] = max(2,player_id.move_cooldown[AT_DSPECIAL]);
     if state_timer == 0 {
     	sound_play(asset_get("sfx_boss_shine"));
@@ -374,6 +382,7 @@ if (state == 5){
     	var dir = sign(target.x-x)
     	tag.spr_dir = dir != 0 ? dir : tag.spr_dir;
     	tag_ang = point_direction(tag.x,tag.y,target.x,target.y-25);
+    	tag.hit_priority = 0;
     	
     	var dst_from_90 = angle_difference(90,tag_ang)/2;
     	tag.proj_angle = clamp(90-dst_from_90,60,120)+180*(tag.spr_dir==-1);
@@ -402,6 +411,7 @@ if (state == 5){
     	    tag.changed = 2;
     	    tag.through_platforms = 6;
     	    tag.effect = 0;
+    	    tag.hit_priority = 3;
     	    charges--;
 	    }
 	    state = 1;

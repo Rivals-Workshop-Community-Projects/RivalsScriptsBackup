@@ -41,6 +41,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .06);
+set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("article1_launch"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.3);

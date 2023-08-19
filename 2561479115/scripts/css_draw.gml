@@ -94,7 +94,7 @@ add_alt("Rox");
 add_alt("Ольга");
 add_alt("Анна");
 add_alt("maki roll");
-add_alt("Zetta");
+add_alt("Mint");
 add_alt("Reisen");
 add_alt("Liz");
 add_alt("Lumi");

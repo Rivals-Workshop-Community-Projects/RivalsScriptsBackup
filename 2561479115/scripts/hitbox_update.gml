@@ -1,6 +1,8 @@
+draw_xscale = spr_dir;
+
 if (attack == AT_FSPECIAL && hbox_num == 1 && changed != 1) {
-    print(grounds);
-    if (!free && grounds == 0) {
+    //print(grounds);
+    if ((!free && grounds == 0) || force_fspec_fall) {
         //destroyed = 1;
         hit_priority = 0;
         unbashable = true;
@@ -100,6 +102,11 @@ if (attack == AT_NSPECIAL && hbox_num == 1) {
     var spr;
     with (player_id) spr = sprite_get("line_part");
     if (hitbox_timer%4-2*big == 0) createParticle(1,10,24+10*big,spr,x,y-4,-hsp/3,-vsp/3,sign(hsp)*0.1,sign(vsp)*0.1,1.4,-0.1,50,true);
+    if hitbox_timer == length-1 {
+        var fx = spawn_hit_fx(x, y, dissipation)
+        fx.hsp = hsp/4;
+        fx.spr_dir = spr_dir;
+    }
 }
 
 #define createParticle(amt,xvar,yvar,sprite,x,y,hsp,vsp,hAccel,vAccel,alpha,alpha_rate,lifetime,uses_shader)

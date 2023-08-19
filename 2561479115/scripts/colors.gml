@@ -290,7 +290,7 @@ set_num_palettes( 24 );
 set_color_profile_slot( 1, 0, 109, 140, 161 ); //Hair_light
 set_color_profile_slot( 1, 1, 74, 95, 110 ); //Hair_dark
 set_color_profile_slot( 1, 2, 253, 233, 185 ); //Skin
-set_color_profile_slot( 1, 3, 116, 184, 229 ); //Energy_light
+set_color_profile_slot( 1, 3, 137, 193, 229 ); //Energy_light
 set_color_profile_slot( 1, 4, 81, 153, 209 ); //Energy_dark
 set_color_profile_slot( 1, 5, 186, 121, 78 ); //Metal
 set_color_profile_slot( 1, 6, 110, 74, 61 ); //Shirt
@@ -301,8 +301,8 @@ set_color_profile_slot( 1, 7, 22, 28, 61 ); //Pants
 set_color_profile_slot( 2, 0, 46, 42, 42 ); //Hair_light
 set_color_profile_slot( 2, 1, 30, 27, 26 ); //Hair_dark
 set_color_profile_slot( 2, 2, 155, 125, 95 ); //Skin
-set_color_profile_slot( 2, 3, 245, 243, 248 ); //Energy_light
-set_color_profile_slot( 2, 4, 198, 194, 204 ); //Energy_dark
+set_color_profile_slot( 2, 3, 231, 232, 248 ); //Energy_light
+set_color_profile_slot( 2, 4, 180, 168, 196 ); //Energy_dark
 set_color_profile_slot( 2, 5, 90, 89, 88 ); //Metal
 set_color_profile_slot( 2, 6, 186, 8, 47 ); //Shirt
 set_color_profile_slot( 2, 7, 39, 38, 37 ); //Pants
@@ -312,7 +312,7 @@ set_color_profile_slot( 2, 7, 39, 38, 37 ); //Pants
 set_color_profile_slot( 3, 0, 179, 224, 101 ); //Hair_light
 set_color_profile_slot( 3, 1, 130, 145, 48 ); //Hair_dark
 set_color_profile_slot( 3, 2, 253, 233, 185 ); //Skin
-set_color_profile_slot( 3, 3, 200, 255, 0 ); //Energy_light
+set_color_profile_slot( 3, 3, 219, 255, 87 ); //Energy_light
 set_color_profile_slot( 3, 4, 176, 217, 74 ); //Energy_dark
 set_color_profile_slot( 3, 5, 52, 74, 53 ); //Metal
 set_color_profile_slot( 3, 6, 240, 155, 78 ); //Shirt
@@ -324,7 +324,7 @@ set_color_profile_slot( 4, 0, 51, 51, 51 ); //Hair_light
 set_color_profile_slot( 4, 1, 28, 28, 28 ); //Hair_dark
 set_color_profile_slot( 4, 2, 207, 171, 155 ); //Skin
 set_color_profile_slot( 4, 3, 255, 243, 69 ); //Energy_light
-set_color_profile_slot( 4, 4, 204, 191, 22 ); //Energy_dark
+set_color_profile_slot( 4, 4, 219, 187, 23 ); //Energy_dark
 set_color_profile_slot( 4, 5, 145, 145, 145 ); //Metal
 set_color_profile_slot( 4, 6, 130, 101, 69 ); //Shirt
 set_color_profile_slot( 4, 7, 33, 33, 38 ); //Pants
@@ -334,8 +334,8 @@ set_color_profile_slot( 4, 7, 33, 33, 38 ); //Pants
 set_color_profile_slot( 5, 0, 81, 65, 107 ); //Hair_light
 set_color_profile_slot( 5, 1, 57, 43, 87 ); //Hair_dark
 set_color_profile_slot( 5, 2, 255, 218, 192 ); //Skin
-set_color_profile_slot( 5, 3, 224, 95, 49 ); //Energy_light
-set_color_profile_slot( 5, 4, 206, 68, 22 ); //Energy_dark
+set_color_profile_slot( 5, 3, 224, 100, 56 ); //Energy_light
+set_color_profile_slot( 5, 4, 196, 35, 21 ); //Energy_dark
 set_color_profile_slot( 5, 5, 138, 150, 150 ); //Metal
 set_color_profile_slot( 5, 6, 138, 30, 30 ); //Shirt
 set_color_profile_slot( 5, 7, 57, 37, 37 ); //Pants
@@ -345,7 +345,7 @@ set_color_profile_slot( 5, 7, 57, 37, 37 ); //Pants
 set_color_profile_slot( 6, 0, 88, 111, 127 ); //Hair_light
 set_color_profile_slot( 6, 1, 49, 66, 74 ); //Hair_dark
 set_color_profile_slot( 6, 2, 255, 230, 210 ); //Skin
-set_color_profile_slot( 6, 3, 232, 155, 227 ); //Energy_light
+set_color_profile_slot( 6, 3, 232, 165, 228 ); //Energy_light
 set_color_profile_slot( 6, 4, 230, 106, 221 ); //Energy_dark
 set_color_profile_slot( 6, 5, 169, 169, 169 ); //Metal
 set_color_profile_slot( 6, 6, 65, 72, 80 ); //Shirt
@@ -367,8 +367,8 @@ set_color_profile_slot( 7, 7, 155, 178, 179 ); //Pants
 set_color_profile_slot( 8, 0, 178, 136, 112 ); //Hair_light
 set_color_profile_slot( 8, 1, 125, 105, 91 ); //Hair_dark
 set_color_profile_slot( 8, 2, 243, 222, 210 ); //Skin
-set_color_profile_slot( 8, 3, 118, 204, 227 ); //Energy_light
-set_color_profile_slot( 8, 4, 77, 176, 201 ); //Energy_dark
+set_color_profile_slot( 8, 3, 134, 207, 227 ); //Energy_light
+set_color_profile_slot( 8, 4, 75, 173, 196 ); //Energy_dark
 set_color_profile_slot( 8, 5, 74, 77, 74 ); //Metal
 set_color_profile_slot( 8, 6, 49, 50, 49 ); //Shirt
 set_color_profile_slot( 8, 7, 90, 162, 181 ); //Pants
@@ -378,29 +378,29 @@ set_color_profile_slot( 8, 7, 90, 162, 181 ); //Pants
 set_color_profile_slot( 9, 0, 64, 64, 53 ); //Hair_light
 set_color_profile_slot( 9, 1, 25, 30, 26 ); //Hair_dark
 set_color_profile_slot( 9, 2, 255, 218, 192 ); //Skin
-set_color_profile_slot( 9, 3, 252, 44, 44 ); //Energy_light
-set_color_profile_slot( 9, 4, 176, 21, 21 ); //Energy_dark
+set_color_profile_slot( 9, 3, 252, 96, 96 ); //Energy_light
+set_color_profile_slot( 9, 4, 194, 24, 24 ); //Energy_dark
 set_color_profile_slot( 9, 5, 201, 201, 200 ); //Metal
 set_color_profile_slot( 9, 6, 127, 58, 54 ); //Shirt
 set_color_profile_slot( 9, 7, 33, 33, 38 ); //Pants
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// zetta?
-set_color_profile_slot( 10, 0, 245, 245, 245 ); //Hair_light
-set_color_profile_slot( 10, 1, 217, 210, 224 ); //Hair_dark
+// mint
+set_color_profile_slot( 10, 0, 216, 245, 229 ); //Hair_light
+set_color_profile_slot( 10, 1, 164, 224, 180 ); //Hair_dark
 set_color_profile_slot( 10, 2, 253, 233, 185 ); //Skin
-set_color_profile_slot( 10, 3, 83, 224, 35 ); //Energy_light
-set_color_profile_slot( 10, 4, 61, 163, 25 ); //Energy_dark
-set_color_profile_slot( 10, 5, 37, 48, 41 ); //Metal
-set_color_profile_slot( 10, 6, 66, 91, 26 ); //Shirt
-set_color_profile_slot( 10, 7, 32, 32, 32 ); //Pants
+set_color_profile_slot( 10, 3, 96, 224, 162 ); //Energy_light
+set_color_profile_slot( 10, 4, 55, 161, 82 ); //Energy_dark
+set_color_profile_slot( 10, 5, 14, 48, 26 ); //Metal
+set_color_profile_slot( 10, 6, 12, 128, 118 ); //Shirt
+set_color_profile_slot( 10, 7, 14, 34, 38 ); //Pants
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Reisen
 set_color_profile_slot( 11, 0, 220, 168, 251 ); //Hair_light
 set_color_profile_slot( 11, 1, 149, 102, 222 ); //Hair_dark
 set_color_profile_slot( 11, 2, 253, 233, 185 ); //Skin
-set_color_profile_slot( 11, 3, 237, 36, 72 ); //Energy_light
+set_color_profile_slot( 11, 3, 237, 83, 111 ); //Energy_light
 set_color_profile_slot( 11, 4, 194, 30, 59 ); //Energy_dark
 set_color_profile_slot( 11, 5, 248, 197, 104 ); //Metal
 set_color_profile_slot( 11, 6, 255, 160, 156 ); //Shirt
@@ -455,7 +455,7 @@ set_color_profile_slot( 15, 7, 86, 48, 99 ); //Pants
 set_color_profile_slot( 16, 0, 245, 205, 223 ); //Hair_light
 set_color_profile_slot( 16, 1, 228, 140, 166 ); //Hair_dark
 set_color_profile_slot( 16, 2, 254, 236, 237 ); //Skin
-set_color_profile_slot( 16, 3, 181, 5, 68 ); //Energy_light
+set_color_profile_slot( 16, 3, 214, 6, 80 ); //Energy_light
 set_color_profile_slot( 16, 4, 122, 4, 46 ); //Energy_dark
 set_color_profile_slot( 16, 5, 112, 89, 64 ); //Metal
 set_color_profile_slot( 16, 6, 40, 36, 42 ); //Shirt
@@ -488,7 +488,7 @@ set_color_profile_slot( 18, 7, 26, 26, 26 ); //Pants
 set_color_profile_slot( 19, 0, 55, 59, 55 ); //Hair_light
 set_color_profile_slot( 19, 1, 0, 31, 0 ); //Hair_dark
 set_color_profile_slot( 19, 2, 255, 238, 194 ); //Skin
-set_color_profile_slot( 19, 3, 37, 81, 184 ); //Energy_light
+set_color_profile_slot( 19, 3, 42, 91, 207 ); //Energy_light
 set_color_profile_slot( 19, 4, 0, 20, 133 ); //Energy_dark
 set_color_profile_slot( 19, 5, 68, 115, 70 ); //Metal
 set_color_profile_slot( 19, 6, 0, 46, 84 ); //Shirt

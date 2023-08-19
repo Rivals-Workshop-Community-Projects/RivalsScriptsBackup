@@ -42,8 +42,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 60);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 22);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 25);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 11);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 85);
@@ -53,16 +53,18 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);//0
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 60);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hfx_plasma_small);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HIT_TAG, true);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_COLOR, hitbox_colors.gunshot)
 //make the hitbox be affected by your tags. projectiles only
 
+//laser hitbox
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
@@ -87,6 +89,11 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HIT_TAG, true);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_COLOR, hitbox_colors.gunshot)
+
+//big projectile modifiers
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 40);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 20);
 
 //NSPECIAL 2: RELOAD
 set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);

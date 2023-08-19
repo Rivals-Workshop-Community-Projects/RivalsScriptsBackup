@@ -19,14 +19,27 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-burst = hit_fx_create(sprite_get("burst"),16);
+
+
+hfx_ustrong_dissipation = hit_fx_create(sprite_get("ustrong_dissipationfx"), 12);
+hfx_plasma_large = hit_fx_create(sprite_get("hfx_plasma_large"),32);
+hfx_plasma_small = hit_fx_create(sprite_get("hfx_plasma_small"), 30);
+hfx_utilt_muzzleflash = hit_fx_create(sprite_get("hfx_utilt_muzzleflash"),6*4);
+
+hfx_small_shot_dissipate = hit_fx_create(sprite_get("nspecial_proj_dissipate"), 4*3);
+hfx_large_shot_dissipate = hit_fx_create(sprite_get("nspecial_proj_strong_dissipate"), 5*3);
+
+hfx_parry_shield = hit_fx_create(sprite_get("shield"), 6*4);
+parryshield_inst = noone;
+
+burst = hit_fx_create(sprite_get("burst"),6*5);
 fire = hit_fx_create(sprite_get("blindfire_placeholder"),10);
 jump_fx = hit_fx_create(sprite_get("jump_fx"),25);
 explo = hit_fx_create(sprite_get("explosion"),40);
-plasma_hitfx = hit_fx_create(sprite_get("plasma_fx"),32);
+plasma_hitfx = hfx_plasma_large
 
 char_height = 48;
-idle_anim_speed = .075;
+idle_anim_speed = .16666;
 crouch_anim_speed = .1;
 walk_anim_speed = .15;
 dash_anim_speed = .2;
@@ -251,3 +264,31 @@ ytarget = 0;
 //po & gumbo
 pot_compat_variable = sprite_get("plasma_curry");
 pot_compat_text = "Plasma Curry";
+
+
+//Custom Hitbox Colors System (by @SupersonicNK)
+HG_HITBOX_COLOR = 79; //This can be any number above 57 and below 100. It is recommended that you put this number below Munophone's starting_hg_index value, to prevent conflicts.
+
+//Sprite Setup
+//knockback arrow sprite
+__kb_arrow_spr = asset_get("knock_back_arrow_spr")
+//actual hitbox sprites
+var w = 100
+__hb_circle_t = sprite_get("hitbox_circle_trans");
+    sprite_change_offset("hitbox_circle_trans",w,w);
+    sprite_change_collision_mask("hitbox_circle_trans",false,0,0,0,0,0,0);
+__hb_rect_t = sprite_get("hitbox_square_trans");
+    sprite_change_offset("hitbox_square_trans",w,w);
+    sprite_change_collision_mask("hitbox_square_trans",false,0,0,0,0,0,0);
+__hb_r_rect_t = sprite_get("hitbox_rounded_rectangle_trans");
+    sprite_change_offset("hitbox_rounded_rectangle_trans",w,w);
+    sprite_change_collision_mask("hitbox_rounded_rectangle_trans",false,0,0,0,0,0,0);
+__hb_hd_spr = [__hb_circle_t, __hb_rect_t, __hb_r_rect_t];
+//drawn hitbox sprite
+__hb_draw_spr = sprite_get("hitbox_shapes");
+    sprite_change_offset("hitbox_shapes",w,w);
+    
+hitbox_colors = {
+    normal: $0000FF,
+    gunshot: $FF00FF
+}
