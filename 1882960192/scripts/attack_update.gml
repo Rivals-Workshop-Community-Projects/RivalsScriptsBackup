@@ -15,19 +15,39 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_wall_jump = true;
 	can_fast_fall = false;
-	can_move = false;
+	if 5 > window {
+		can_move = false;
+	}
 	if window == 2 && window_timer == 2 {
 		spawn_base_dust(x, y, "dash_start");
 	}
+	
 	if window == 2 && window_timer == 1 {
 		if free {
-			set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
-			set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE, 7);
-		} else {
-			reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
-			reset_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE);
+			shaboingboing = 1;
 		}
 	}
+	if shaboingboing == 1 && !has_hit {
+		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
+		/*set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE, 7);*/
+		} else {
+		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
+		/*reset_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE);*/
+	}
+	
+	if window == 5 && 5 > window_timer {
+		vsp = clamp(vsp, -100, 0);	
+	}
+	
+	if window == 4 && window_timer == 4 {
+		if attack == AT_DSPECIAL {
+			hsp = clamp(hsp, -9, 9);	
+		}
+		if attack == AT_DSPECIAL_2 {
+			hsp = clamp(hsp, -11, 11);	
+		}
+	}
+	
 	if window == 2 || window == 3 || window == 4 {
 		off_edge = true;
 	} else {
@@ -40,23 +60,35 @@ if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 		set_attack(AT_DSPECIAL);
 		window = 1;
 		window_timer = 3;
+		shaboingboing = 0;
 	}
 	can_wall_jump = true;
 	can_fast_fall = false;
 	can_move = false;
-	if (window == 3 || window == 4) && !free {
+	if (window == 3 || window == 4) && !free && !hitpause {
 		destroy_hitboxes();
 		sound_play(asset_get("sfx_zetter_downb"));
 		window = 6;
 		window_timer = 0;
+		shake_camera(2,2);
 		spawn_base_dust(x, y, "land");
 	}
+	
+	if window == 4 && window_timer == 3 {
+		if attack == AT_DSPECIAL_AIR {
+			vsp = clamp(vsp, -10, 10);	
+		}
+		if attack == AT_DTHROW {
+			vsp = clamp(vsp, -15, 15);	
+		}
+	}
+	
 	if window == 5 {
 		if window_timer == 1 {
-			vsp = clamp(vsp, -100, 5);
+			vsp = clamp(vsp, -100, 3);
 			hsp = clamp(hsp, -3, 3);
 		}
-		if !free {
+		if !free && !was_parried {
 			set_state(PS_LANDING_LAG);
 		}
 	}
@@ -173,7 +205,7 @@ if (attack == AT_UAIR && !hitpause) {
 		}
 	}
 	if window >= 3 && 5 >= window && (attack_down || strong_down || up_strong_down) {
-		vsp -= .25;
+		vsp -= .35;
 	}
 	if window == 5 && window_timer >= 4 && (attack_down || strong_down || up_strong_down) {
 		vsp = clamp(vsp, -3, .5);
@@ -580,6 +612,15 @@ if (attack == AT_USTRONG) && !hitpause {
 	}
 }
 
+if (attack == AT_DSPECIAL_2 || attack == AT_DTHROW) {
+	if (window == 2 && window_timer == 6) {
+		if !hitpause {
+			spawn_hit_fx(x-14*spr_dir, y-22, 112);
+		}
+		shake_camera(6,6);
+	}
+}
+
 if (attack == AT_DTHROW) && !hitpause {
 	if (window == 6 && window_timer == 2) {
 		spawn_hit_fx( x+( (get_hitbox_value(AT_DTHROW, 6, HG_HITBOX_X)) *spr_dir), y+(get_hitbox_value(AT_DTHROW, 6, HG_HITBOX_Y)), 111);
@@ -595,6 +636,7 @@ if (attack == AT_DTHROW) && !hitpause {
 if (attack == AT_DTILT) && !hitpause {
 	if (window == 3 && window_timer == 2) {
 		spawn_hit_fx(x+(50*spr_dir), y-15, 111);
+		shake_camera(2,2);
 	}
 }
 
@@ -607,6 +649,7 @@ if (attack == AT_EXTRA_3) && !hitpause {
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)-32), nspecialAfter);
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+32), nspecialAfter);
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+2) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+14), nspecialAfter3);
+			shake_camera(6,6);
 		}
 	}
 }
@@ -624,6 +667,7 @@ if (attack == AT_EXTRA_2) && !hitpause {
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_Y)-32), nspecialAfter);
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_Y)+32), nspecialAfter);
 			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_X))+2) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_Y)+14), nspecialAfter3);
+		shake_camera(6,6);
 	}
 }
 
@@ -651,36 +695,32 @@ if (attack == AT_USTRONG_2) && !hitpause {
 
 //Change fspecial's projectile depending on the alt
 if attack == AT_FSPECIAL && window == 1 && window_timer == 1 {
-	if (get_player_color( player ) == 9) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen"));
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen2"));
-	}
-
 	if (get_player_color( player ) == 14) {
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_socc"));
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_socc2"));
+	}
+
+/*
+	if (get_player_color( player ) == 9) {
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen"));
+		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen2"));
 	}
 
 	if (get_player_color( player ) == 16) {
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll"));
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll2"));
 	}
+*/
 }
 
 //sfx things because the window indexes kinda suck
-if 	(attack == AT_BAIR && window == 2 && window_timer == 6) {
+if 	(attack == AT_BAIR && window == 2 && window_timer == 6 ||
+	attack == AT_DTILT && window == 3 && window_timer == 2) {
 	sound_play(asset_get("sfx_zetter_shine"));
 }
 
-if 	(attack == AT_EXTRA_2 && window == 2 && window_timer == 6) {
-	sound_play(asset_get("sfx_absa_kickhit"));
-}
-
-if 	(attack == AT_DTILT && window == 3 && window_timer == 2) {
-	sound_play(asset_get("sfx_zetter_shine"));
-}
-
-if 	(attack == AT_EXTRA_3 && window == 3 && window_timer == 2) {
+if 	(attack == AT_EXTRA_2 && window == 2 && window_timer == 6 ||
+	attack == AT_EXTRA_3 && window == 3 && window_timer == 2) {
 	sound_play(asset_get("sfx_absa_kickhit"));
 }
 

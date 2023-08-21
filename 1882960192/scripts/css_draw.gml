@@ -7,7 +7,7 @@ patch_ver = "2.749";
 patch_day = "31";
 patch_month = "FEB";
  
-var num_alts = 19;
+var num_alts = 21;
 var alt_cur = get_player_color(player);
  
 if (get_player_color(player) == 11) {
@@ -25,16 +25,20 @@ alt_name[5]  = "Purple(y)";
 alt_name[6]  = "Black(y)";
 alt_name[7]  = "BLM";
 alt_name[8]  = "Snow";
-alt_name[9]  = "Genesis";
-alt_name[10] = "Cash Cow";
-alt_name[11] = "Orange";
+alt_name[9]  = "Cash Cow";
+alt_name[10] = "Lesser Cash Cow";
+alt_name[11] = "Pink(y)";
 alt_name[12] = "Inverted Colors";
 alt_name[13] = "Humanity's Strongest";
 alt_name[14] = "Brazil";
 alt_name[15] = "Retro";
-alt_name[16] = "Riptide";
+alt_name[16] = "Flame Blue";
 alt_name[17] = "Ting a Bit";
-alt_name[18] = "DD4";
+alt_name[18] = "Metal";
+alt_name[19] = "DD4";
+alt_name[20] = "Orange";
+ 
+ 
  
 //Alt
   

@@ -2,7 +2,9 @@
 
 //Stun effect
 if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3 || 
-	my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 1) {
+	my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 1 || 
+	my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 2 ||
+	my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 9) {
 	
 	var stung = hit_fx_create(sprite_get("nspecial_proj_after"), 28);
 	var stung2 = hit_fx_create(sprite_get("nspecial_proj3_after"), 34);

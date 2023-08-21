@@ -4,18 +4,21 @@
 draw_debug_text( x, y + 60, string(wblastcharge));
 */
 
+
 shader_start();
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL {
 
+	if (get_player_color( player ) == 14) {
+	draw_sprite_ext(sprite_get("fspecial_overlay_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
+	} 
+/*	else 
 	if (get_player_color( player ) == 9) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_gen"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} else 
-	if (get_player_color( player ) == 14) {
-	draw_sprite_ext(sprite_get("fspecial_overlay_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else 
 	if (get_player_color( player ) == 16) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else {
+	} 
+*/	else {
 	draw_sprite_ext(sprite_get("fspecial_overlay"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	}
 
@@ -33,15 +36,17 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL_2 {
 
+	if (get_player_color( player ) == 14) {
+	draw_sprite_ext(sprite_get("fspecial_overlay2_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
+	} 
+/*	else 
 	if (get_player_color( player ) == 9) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_gen"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} else
-	if (get_player_color( player ) == 14) {
-	draw_sprite_ext(sprite_get("fspecial_overlay2_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else 
 	if (get_player_color( player ) == 16) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else {
+	}
+*/	else {
 	draw_sprite_ext(sprite_get("fspecial_overlay2"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	}
 	
@@ -58,16 +63,3 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 }
 
 shader_end();
-
-
-//lmao
-/*
-if other_player_id.url == "1976183668" {
-	with other_player_id {
-		if move_cooldown[AT_NSPECIAL] >= 300 and get_gameplay_time() <= 600 and get_player_damage(player) <= 1 and (temp_level == 1 or temp_level == 9) {
-			draw_debug_text(other.x - 80 ,other.y - 120, "I appreciate the fashion tips.");
-			draw_debug_text(other.x - 120 ,other.y - 100,  "But I don't remember asking for any.");
-		}
-	}
-}
-*/
