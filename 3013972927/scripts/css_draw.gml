@@ -7,6 +7,8 @@
 shader_end();
 prepare_shader();
 
+muno_event_type = 6;
+user_event(14);
 //outline colors - the set_outline function is similar to the outline_color array- the numbers are red, green and blue values
 switch (alt_cur)
 {

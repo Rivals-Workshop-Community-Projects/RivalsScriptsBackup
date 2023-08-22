@@ -138,3 +138,6 @@ draw_debug_text(
     (!debug_display ? temp_y - 24 : temp_y - 30) + 10,      //the +16 and +10 are offsets
     string(tut_text)
 );
+
+muno_event_type = 5; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+user_event(14);

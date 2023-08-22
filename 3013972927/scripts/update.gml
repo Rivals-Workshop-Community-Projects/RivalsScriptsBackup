@@ -8,6 +8,11 @@ is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack c
 is_dodging = (hurtboxID.dodging); //dodge check - becomes true if the character is invincible when dodging/teching
 game_time = get_gameplay_time(); //get_gameplay_time() is a timer that counts up every frame of the match
 
+muno_event_type = 1;
+if(get_match_setting(SET_PRACTICE))
+{
+user_event(14);
+}
 user_event(0);
 user_event(2);
 checkStageBGM();
@@ -947,165 +952,197 @@ if (vo != 0)
 		{
 			default:
 				songBPM = 130;
+				songBPM_stage = 130;
 				beat_hit_speed = 3;
 			break;
 			
 			case 1: 
 			print("Stage: " + "Treetop Lodge" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;
 			
 			case 2: 
 				print("Stage: " + "Fire Capital" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;
 			
 			case 3: 
 				print("Stage: " + "Air Armada" + "BPM: 170");
 				songBPM = 170;
+				songBPM_stage = 170;
 			break;
 			
 			case 4: 
 				print("Stage: " + "The Rock Wall" + "BPM: 135");
 				songBPM = 135;
+				songBPM_stage = 135;
 			break;
 			
 			case 5: 
 				print("Stage: " + "Merchant Port" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;
 			
 			case 6: 
 				print("Stage: " + "Treetop Lodge" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;
 			
 			case 7: 
 				print("Stage: " + "Blazing Hideout" + "BPM: 145");
 				songBPM = 145;
+				songBPM_stage = 145;
 			break;
 			
 			case 8: 
 				print("Stage: " + "Tower of Heaven" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;
 			
 			case 9: 
 				print("Stage: " + "Tempest Peak" + "BPM: 160");
 				songBPM = 160;
+				songBPM_stage = 160;
 			break;
 			
 			case 10: 
 				print("Stage: " + "Frozen Fortress" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;	
 			
 			case 11: 
 				print("Stage: " + "Aetheral Gates" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;	
 			
 			case 12: 
 				print("Stage: " + "Endless Abyss" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;
 			
 			case 14: 
 				print("Stage: " + "The CEO Ring" + "BPM: 125");
 				songBPM = 125;
+				songBPM_stage = 125;
 			break;	
 			
 			case 15: 
 				print("Stage: " + "The Spirit Tree" + "BPM: 120");
 				songBPM = 120;
+				songBPM_stage = 120;
 			break;	
 			
 			case 17: 
 				print("Stage: " + "Neo Fire Capital" + "BPM: 160");
 				songBPM = 160;
+				songBPM_stage = 160;
 			break;	
 			
 			case 18: 
 				print("Stage: " + "Swampy Estuary" + "BPM: 166");
 				songBPM = 166;
+				songBPM_stage = 166;
 			break;
 			
 			case 19: 
 				print("Stage: " + "The Forest Floor" + "BPM: 165");
 				songBPM = 165;
+				songBPM_stage = 165;
 			break;	
 			
 			case 20: 
 				print("Stage: " + "Junesville" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;	
 			
 			case 21: 
 				print("Stage: " + "Trouple Pond" + "BPM: 186");
 				songBPM = 186;
+				songBPM_stage = 186;
 			break;	
 			
 			case 22: 
 				print("Stage: " + "Practice Room" + "BPM: 130");
 				songBPM = 130;
+				songBPM_stage = 130;
 			break;	
 			
 			case 23: 
 				print("Stage: " + "Aether High" + "BPM: 129");
 				songBPM = 129;
+				songBPM_stage = 129;
 			break;
 			
 			case 24: 
 				print("Stage: " + "Pridemoon Keep" + "BPM: 139");
 				songBPM = 139;
+				songBPM_stage = 139;
 			break;
 			
 			case 25: 
 				print("Stage: " + "Frozen Gates" + "BPM: 144");
 				songBPM = 144;
+				songBPM_stage = 144;
 			break;
 			
 			case 26: 
 				print("Stage: " + "The Tutorial Grid" + "BPM: 130");
 				songBPM = 130;
+				songBPM_stage = 130;
 			break;
 			
 			case 27: 
 				print("Stage: " + "ROA Ring" + "BPM: 125");
 				songBPM = 125;
+				songBPM_stage = 125;
 			break;
 			
 			case 30: 
 				print("Stage: " + "Tutorial Grid X" + "BPM: 130");
 				songBPM = 130;
+				songBPM_stage = 130;
 			break;
 			
 			case 32: 
 				print("Stage: " + "Neo Blazing Rail" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;
 			
 			case 34: 
 				print("Stage: " + "Neo Julesville" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 				
 			case 35: 
 				print("Stage: " + "Crystal Oasis" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;
 			
 			case 36: 
 				print("Stage: " + "Diamond Groove" + "BPM: 150");
 				songBPM = 150;
+				songBPM_stage = 150;
 			break;	
 			
 			case 60: 
 				print("Stage: " + "Badger Co. Mines" + "BPM: 140");
 				songBPM = 140;
+				songBPM_stage = 140;
 			break;	
 			
 		}
-		bpm_prev = songBPM;
+		bpm_prev = songBPM_stage;
 	}
 		calculateStageBPM();
 	

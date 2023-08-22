@@ -88,6 +88,12 @@ if (attack == AT_DSPECIAL)
         }
 }
 
+if(get_match_setting(SET_PRACTICE))
+{
+	muno_event_type = 2;
+	user_event(14);
+}
+
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.

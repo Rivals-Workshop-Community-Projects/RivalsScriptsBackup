@@ -3,7 +3,12 @@
 
 //respawn platform - check if the player is either in the respawn state or taunting while in the respawn state
 changelog();
-
+muno_event_type = 4; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+if(get_match_setting(SET_PRACTICE))
+{
+	user_event(14);
+}
+	
 if (state == PS_RESPAWN || respawn_taunt > 0)
 {
     draw_sprite_ext(sprite_get("plat_post"), game_time * plat_speed, x, y, 2, 2, 0, c_white, 1);

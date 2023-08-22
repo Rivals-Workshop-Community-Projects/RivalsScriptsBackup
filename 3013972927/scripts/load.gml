@@ -71,6 +71,7 @@ sprite_change_offset("dspecial_air",    25, 52, true);
 //misc
 sprite_change_offset("taunt",           26, 64, true);
 sprite_change_offset("intro",           26, 64, true);
+sprite_change_offset("phone_open",           26, 64, true);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player

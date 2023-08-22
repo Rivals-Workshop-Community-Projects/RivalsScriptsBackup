@@ -482,6 +482,7 @@ assistHud_strip[1] = sprite_get("chai_assistHUD_2x2");
 assistHud_strip[2] = sprite_get("chai_assistHUD_3x2");
 
 songBPM = 130;
+songBPM_stage = 130;
 BGMtimer = 0; 
 BGMtimeBPS = songBPM / 60; // Beats per second
 
@@ -506,6 +507,9 @@ fx_spec_arr = [
 set_hit_particle_sprite(1, sprite_get("fx_pow_part")); 
 fx_fstrong_pop = hit_fx_create(sprite_get("fx_fstrong_pop"), 12);
 fx_pow_sparks = hit_fx_create(sprite_get("fx_fstrong_pop"), 12); 
+
+muno_event_type = 0;
+user_event(14);
 
 #define voice_init(_voice)
 vo = 0; 
