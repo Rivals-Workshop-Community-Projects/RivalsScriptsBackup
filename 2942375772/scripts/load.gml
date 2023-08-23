@@ -39,13 +39,14 @@ sprite_change_offset("note_trail_purple", 8,8);
 sprite_change_offset("hud_notes", 6, 26);
 sprite_change_offset("notes_small", 4, 12);
 sprite_change_offset("tambo",128,156)
+sprite_change_offset("tambo-rt",128,156)
 sprite_change_offset("tambo_mask",128,156)
 sprite_change_offset("tambobounce",50,40)
 sprite_change_offset("nspecial_proj_1", 106, 34);
 sprite_change_offset("nspecial_proj_2", 64, 72);
 sprite_change_offset("nspecial_proj_3", 40, 38);
 sprite_change_offset("vfx_nspecial_fire", 38, 16);
-sprite_change_offset("vfx_tamboboom", 134, 158);
+sprite_change_offset("vfx_tamboboom", 172, 178);
 sprite_change_offset("thoughtbubble", 22, 42);
 sprite_change_offset("taunt3", 134, 158);
 

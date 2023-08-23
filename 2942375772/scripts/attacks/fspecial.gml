@@ -73,6 +73,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, note_hfx);
 
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 10)
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 1);
@@ -84,10 +85,12 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 10)
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.9);
+
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
@@ -101,7 +104,8 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 35);
 set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE_FLIPPER, 10)
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

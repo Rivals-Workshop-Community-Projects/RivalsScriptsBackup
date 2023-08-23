@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 24, 17 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 22 );
 
 // Blue
 set_color_profile_slot( 1, 0, 50, 85, 194 ); //body blue
@@ -187,6 +187,14 @@ set_color_profile_slot( 20, 2, 245, 228, 41 ); //hat black
 set_color_profile_slot( 20, 3, 0, 247, 206 ); //hat white
 set_color_profile_slot( 20, 4, 250, 225, 30 ); //tamb white
 set_color_profile_slot( 20, 5, 27, 230, 225 ); //tamb black
+
+// Riptide
+set_color_profile_slot( 21, 0, 255, 113, 56 ); //body blue
+set_color_profile_slot( 21, 1, 255, 232, 156 ); //body white
+set_color_profile_slot( 21, 2, 55, 101, 212 ); //hat black
+set_color_profile_slot( 21, 3, 196, 223, 255 ); //hat white
+set_color_profile_slot( 21, 4, 255, 232, 156 ); //tamb white
+set_color_profile_slot( 21, 5, 55, 101, 212 ); //tamb black
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

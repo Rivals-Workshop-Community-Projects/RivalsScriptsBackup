@@ -45,12 +45,15 @@ switch (attack)
                 can_shield = free;
                 can_wall_jump = true;
                 can_jump = free;
+                
+                if was_parried {
+                    set_state(PS_PRATFALL)
+                }
             }
             
             if !free and dattack_loops > 0 {
                 window++;
                 window_timer = 0;
-                off_edge = false;
                 sound_stop(dattack_sfx[0]);
                 sound_stop(dattack_sfx[1]);
                 sound_play(sound_get("sfx_dattack_plop"))
@@ -89,7 +92,7 @@ switch (attack)
         vsp += 0.4;
         
         fspecial_timer += 1;
-        if fspecial_timer > 20 {
+        if (fspecial_timer > 20 and !was_parried) {
             can_shield = free;
             can_jump = free;
         }
@@ -152,6 +155,9 @@ switch (attack)
                     tambo_obj = instance_create(x, y+9, "obj_article1")
                     tambo_obj.note_storage = notes;
                     notes = [-1,-1,-1,-1]
+                    note_pointer = -1;
+                    pointer_should_stay = false;
+                    last_note = -1
                 }
             break;
         }
@@ -218,7 +224,7 @@ switch (attack)
         if window == 1 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1
         {
             hsp += spr_dir * 3.5
-            print("lol")
+            //print("lol")
         }
         
         if window == 3 and window_timer == 4 {

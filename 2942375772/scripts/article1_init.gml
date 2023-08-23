@@ -42,7 +42,8 @@ draw_yscale = 1.4;
 should_die = false;
 
 explode_timer = 0;
-max_explode_timer = 7;
+max_explode_timer = 3;
+explode_should_hit_self = false;
 ///     article[index]_update.gml
  
 //Put this code at the bottom of the file.

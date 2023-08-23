@@ -29,6 +29,7 @@ var alt_name = [
     "Dalamadur",
     "BLW",
     "FTL",
+    "Riptide",
     ]
 
 var current_player = get_player_color(player);

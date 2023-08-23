@@ -31,8 +31,8 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 11;
-short_hop_speed = 7.5;
-djump_speed = 9;
+short_hop_speed = 7;
+djump_speed = 10;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -140,7 +140,7 @@ note_pointer_display_timer = 0;
 sfx_cooldown = 0;
 
 note_mappings = ds_map_create();
-note_mappings[? AT_DATTACK] = [NOTE_NONE, NOTE_SYNC]
+note_mappings[? AT_DATTACK] = [NOTE_SYNC, NOTE_WEAK]
 note_mappings[? AT_FTILT] = [NOTE_WEAK,NOTE_STRONG];
 note_mappings[? AT_DTILT] = [NOTE_WEAK];
 note_mappings[? AT_UTILT] = [NOTE_WEAK, NOTE_MED, NOTE_MED];

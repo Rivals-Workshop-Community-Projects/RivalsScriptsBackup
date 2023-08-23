@@ -4,6 +4,11 @@
 #macro NOTE_STRONG 2
 #macro NOTE_SYNC -2
 
+// with (pHitBox) {
+//     if player_id == other {
+//         can_hit_self = true;
+//     }
+// }
 
 if notes[0] == -1 {
     last_note = NOTE_NONE;
@@ -22,6 +27,15 @@ with (hit_fx_obj)
         vsp *= 0.88
     }
 
+}
+
+with (hit_fx_obj)
+{
+    if player_id == other {
+        if hit_fx == other.note_hfx || hit_fx == other.note_strong_hfx {
+            depth = player_id.depth+1;
+        }
+    }
 }
 
 //print(state_timer mod (image_number * (1/idle_anim_speed)))
@@ -65,6 +79,15 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
             }        
         break;
         case AT_FSPECIAL:
+        // with (pHitBox) {
+        //     if (player_id != self or attack != other.attack) continue;
+            
+        //     if (point_distance(0,0,other.hsp,other.vsp) > 1) {
+        //         with other print("lol")
+        //         kb_angle = point_direction(0,0,other.hsp,other.vsp) + (180*(other.spr_dir == -1))
+        //     }
+            
+        // }
             switch (window) {
                 case 2:
                 if window_timer == 0 and !hitpause {

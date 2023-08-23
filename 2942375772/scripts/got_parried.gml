@@ -10,6 +10,15 @@ while j > -1 and notes_to_remove > 0 {
     j--;
 }
 
+var g = get_num_notes()
+
+if g != 0
+{
+    last_note = notes[g-1];
+}
+else {
+    last_note = -1;
+}
 
 
 #define get_num_notes

@@ -73,7 +73,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 35);
+set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 30);
 set_hitbox_value(AT_FSTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 1);

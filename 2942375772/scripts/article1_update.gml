@@ -14,36 +14,48 @@ if visible {
     
     with (obj_article3) {
         if (player_id == other.player_id and x == clamp(x, other.x-72, other.x + 72) and y == clamp(y, other.y-40, other.y + 40)) {
-            with other 
-            {
-                create_hitbox(AT_DSPECIAL, 1, x, y-30)
-                append_note(other.projectile_number);
-            }
-    
-            var ang = random_func(4,360,true);
-            var numparts = 10
-            var vfx = other.player_id.note_trail;
-            switch projectile_number {
-                case 0:
-                vfx = other.player_id.note_trail_purple
-                break;
-                case 2:
-                vfx = other.player_id.note_trail_orange
-                break;
-            }
+            sound_play(asset_get("sfx_ori_grenade_hit_ground"))
+            sound_play(asset_get("sfx_mol_norm_explode"))
+            sound_play(asset_get("sfx_mol_flare_explode"))
             
-            repeat (numparts) {
-                
-                var part = spawn_hit_fx(other.x + lengthdir_x(40,ang), other.y - 20 + lengthdir_y(40,ang),vfx)
-                part.hsp = lengthdir_x(8,ang);
-                part.vsp = lengthdir_y(8,ang);
-                ang += 360/numparts
-            }
+            with other append_note(other.projectile_number);
             
-            sound_play(sound_get("sfx_idle_shake"), false, noone, 0.8, 1)
-            other.draw_xscale = 0.7
-            other.draw_yscale = 1.3
+            other.visible = false;
+            spawn_hit_fx(other.x,other.y-14,other.player_id.tamboboom_vfx);
             should_die = true;
+            break;
+            
+        //     with other 
+        //     {
+        //         create_hitbox(AT_DSPECIAL, 1, x, y-30)
+        //         append_note(other.projectile_number);
+        //     }
+    
+        //     var ang = random_func(4,360,true);
+        //     var numparts = 10
+        //     var vfx = other.player_id.note_trail;
+        //     switch projectile_number {
+        //         case 0:
+        //         vfx = other.player_id.note_trail_purple
+        //         break;
+        //         case 2:
+        //         vfx = other.player_id.note_trail_orange
+        //         break;
+        //     }
+            
+        //     repeat (numparts) {
+                
+        //         var part = spawn_hit_fx(other.x + lengthdir_x(40,ang), other.y - 20 + lengthdir_y(40,ang),vfx)
+        //         part.hsp = lengthdir_x(8,ang);
+        //         part.vsp = lengthdir_y(8,ang);
+        //         ang += 360/numparts
+        //     }
+            
+        //     sound_play(sound_get("sfx_idle_shake"), false, noone, 0.8, 1)
+        //     other.draw_xscale = 0.7
+        //     other.draw_yscale = 1.3
+        //     should_die = true;
+        // }
         }
     }
     
@@ -53,7 +65,9 @@ if visible {
         {
             with other.player_id
             {
-                sound_play(sound_get("sfx_trampoline_jump"),false,noone, clamp(abs(vsp)/12, 0.4, 1), 1.03 - min(0.2 - abs(other.vsp)/100, 0.2) );
+                var sound_to_play = get_player_color(player) != 21 ? "sfx_trampoline_jump" : "sfx_trampoline_jump_rt";
+                
+                sound_play(sound_get(sound_to_play),false,noone, clamp(abs(vsp)/12, 0.4, 1), 1.03 - min(0.2 - abs(other.vsp)/100, 0.2));
             }
             
             move_cooldown[AT_NAIR] = 7;
@@ -70,9 +84,15 @@ if visible {
             with other spawn_hit_fx(other.x,other.y-20,player_id.tambo_vfx)
             
             if other.player_id == self and state == PS_ATTACK_AIR and attack == AT_FSPECIAL and (window > 1) {
-                sound_play(asset_get("sfx_ori_grenade_hit_ground"))
-                sound_play(asset_get("sfx_mol_norm_explode"))
-                sound_play(asset_get("sfx_mol_flare_explode"))
+                if (get_player_color(player) == 21){
+                    sound_stop(asset_get("sfx_mol_flare_explode"))
+                    sound_play(sound_get("sfx_trampoline_pop_rt"))
+                }
+                else {
+                    sound_play(asset_get("sfx_ori_grenade_hit_ground"))
+                    sound_play(asset_get("sfx_mol_norm_explode"))
+                    sound_play(asset_get("sfx_mol_flare_explode"))
+                }
                 
                 vsp = -10;
                 attack_end();
@@ -81,16 +101,36 @@ if visible {
                 window = 4
                 window_timer = 0;
                 other.visible = false;
-                spawn_hit_fx(other.x,other.y,other.player_id.tamboboom_vfx);
+                spawn_hit_fx(other.x,other.y-14,other.player_id.tamboboom_vfx);
                 break;
             }
             
             vsp = clamp(-vsp*0.8, -12, -3)
             
+            var horizontal_clamp = 9;
+            hsp = clamp(hsp, -horizontal_clamp, horizontal_clamp);
+            
             //print("Hit, vsp="+string(vsp))
             if state_cat != SC_HITSTUN
             {
                 set_state(PS_IDLE_AIR)
+            }
+            else {
+                sound_play(asset_get("sfx_ori_grenade_hit_ground"))
+                sound_play(asset_get("sfx_mol_norm_explode"))
+                sound_play(asset_get("sfx_mol_flare_explode"))
+                with (other.player_id) if (get_player_color(player) == 21){
+                    sound_stop(asset_get("sfx_mol_flare_explode"))
+                    sound_play(sound_get("sfx_trampoline_pop_rt"))
+                }
+                
+                other.visible = false;
+                with other.player_id 
+                {
+                    spawn_hit_fx(tambo_obj.x,tambo_obj.y,tamboboom_vfx);
+                }
+                other.explode_should_hit_self = (self == other.player_id);
+                break;
             }
             
             if other.cooldown_timer == 0
@@ -134,8 +174,22 @@ else {
     
     if explode_timer > max_explode_timer {
         should_die = true;
-        var hit = create_hitbox(AT_DSPECIAL, 2, x-(4*spr_dir),y-30)
-        hit.damage = 8 + (2*(find_last_note(self)+1))
+        print("EXPLOSION CREATED")
+        var hit = create_hitbox(AT_DSPECIAL, 2, x,y-14)
+        var num_notes = (find_last_note(self) + 1);
+        
+        hit.damage = 8 + floor(1.5 * num_notes);
+        
+        
+        if (explode_should_hit_self) {
+            for (var p = 1; p < 5; p++) {
+                if p != player_id.player {
+                    hit.can_hit[p] = false;
+                }
+            }
+        }
+        print(explode_should_hit_self)
+        hit.can_hit_self = explode_should_hit_self;
     }
 }
 

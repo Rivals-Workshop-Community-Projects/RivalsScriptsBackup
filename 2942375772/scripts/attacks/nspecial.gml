@@ -87,7 +87,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, purple_nspec_vfx);
-
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //green multihit
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -108,6 +108,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //green finisher
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -128,6 +129,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //red
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
