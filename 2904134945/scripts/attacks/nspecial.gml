@@ -51,7 +51,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_TYPE, 1); // perfect endlag
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 18);
-set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_GOTO, 10);
 

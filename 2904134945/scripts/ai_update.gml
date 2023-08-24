@@ -114,6 +114,7 @@ SetAttack();
 						if (hasCrystal)
 							shield_pressed = true;
 					}
+					TryParry(5);
 				}
 				break;
 			case AT_USPECIAL:
@@ -130,6 +131,7 @@ SetAttack();
 					}
 					else
 					{
+						ai_state = AS_RECOVER;
 						if (y < topcustom-4)
 						{
 							joy_dir = 270 + sign(room_width/2-x)*70;
@@ -159,7 +161,7 @@ SetAttack();
 		case AS_RECOVER:
 			if (ai_recovering)
 			{
-				if (!aura && free && vsp > 0 && move_cooldown[AT_DSPECIAL]==0 && point_distance(x, y, ai_target.x, ai_target.y) > 250)
+				if (!aura && attack != AT_DSPECIAL && free && vsp > 0 && move_cooldown[AT_DSPECIAL]==0 && point_distance(x, y, ai_target.x, ai_target.y) > 250 && !collision_line(x, y, x, room_height, asset_get("par_block"), 1, 0) && !collision_line(x, y, x, room_height, asset_get("par_jumpthrough"), 1, 0))
 					DoAttack(AT_DSPECIAL);
 			}
 			break;
@@ -209,22 +211,22 @@ SetAttack();
 							else
 								DoAttack(AT_JAB);
 						}
-						else if (xdist < 80 && (ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90))
+						else if (xdist < 70 && (ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90))
 							DoAttack(AT_DSTRONG);
 						else if (xdist < 100)
 						{
-							if (fspecMeter.charge > ((has_rune("J")||aura)?200:90) && ai_target.noelleFrostbite!=frostbiteMax)
+							if (xdist < 90 && fspecMeter.charge > ((has_rune("J")||aura)?200:90) && ai_target.noelleFrostbite!=frostbiteMax)
 								DoAttack(AT_FSPECIAL);
 							else
 								DoAttack(AT_FTILT);
 						}
 						else if (xdist < 150)
-							DoAttack(ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90?AT_FSTRONG:AT_DTILT);
+							DoAttack((ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90)&&xdist<130?AT_FSTRONG:AT_DTILT);
 						else if (xdist < 200 && move_cooldown[AT_NSPECIAL]==0 && attack!=AT_NSPECIAL)
 							DoAttack(AT_NSPECIAL);
 						else if (dist >= 250 && aura)
 							DoAttack(AT_USPECIAL);
-						else if (xdist >= 200 && !hasCrystal)
+						else if (xdist >= 300 && !hasCrystal)
 							DoAttack(AT_DSPECIAL);
 					}
 				}
@@ -232,7 +234,9 @@ SetAttack();
 				{
 					if (free)
 					{
-						if (xdist < 40)
+						if (ai_target.y>y && (vsp < 0 || collision_line(x, y, x, room_height, asset_get("par_block"), 1, 0) || collision_line(x, y, x, room_height, asset_get("par_jumpthrough"), 1, 0)))
+							DoAttack(AT_DAIR);
+						else if (xdist < 40)
 							DoAttack(AT_NAIR);
 						else if (xdist < 120)
 							DoAttack(AT_FAIR);
@@ -249,7 +253,7 @@ SetAttack();
 							DoAttack(AT_UTILT);
 						else if (dist >= 250 && aura)
 							DoAttack(AT_USPECIAL);
-						else if (xdist >= 200 && !hasCrystal)
+						else if (xdist >= 300 && !hasCrystal)
 							DoAttack(AT_DSPECIAL);
 					}
 				}
@@ -259,13 +263,11 @@ SetAttack();
 					{
 						if (xdist < 70)
 						{
-							if (ai_target.y<y)
+							if (ai_target.y<y-16)
 								DoAttack(AT_UAIR);
-							else if (vsp < 0)
+							else if (vsp < 0 || collision_line(x, y, x, room_height, asset_get("par_block"), 1, 0) || collision_line(x, y, x, room_height, asset_get("par_jumpthrough"), 1, 0))
 								DoAttack(AT_DAIR);
 						}
-						else if (xdist < 120)
-							DoAttack(AT_FAIR);
 						else if (dist >= 250 && aura)
 							DoAttack(AT_USPECIAL);
 					}
@@ -275,7 +277,7 @@ SetAttack();
 							DoAttack(AT_USTRONG);
 						else if (dist >= 250 && aura)
 							DoAttack(AT_USPECIAL);
-						else if (xdist >= 200 && !hasCrystal)
+						else if (xdist >= 300 && !hasCrystal)
 							DoAttack(AT_DSPECIAL);
 					}
 				}
@@ -451,7 +453,7 @@ SetAttack();
 #define DetectCheaters()
 {
 	if (aura) return;
-	with (oPlayer) if (id != other && temp_level!=0)
+	with (oPlayer) if (id != other && temp_level!=0 && (clones_player_id == id || clones_player_id == noone))
 	{
 		if (other.cheatTracker[player].isCheater) other.aura = true;
 		else if (state == PS_PARRY)
@@ -489,7 +491,7 @@ SetAttack();
 
 #define Hitfall()
 {
-	if (free && hitpause && hitstop_full > 4 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+64, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+64, asset_get("par_jumpthrough"), 1, 0)))
+	if (free && hitpause && hitstop_full > 3 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+160, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+160, asset_get("par_jumpthrough"), 1, 0)))
 	{
 		do_a_fast_fall = true;
 	}

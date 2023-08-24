@@ -37,4 +37,10 @@ switch(state)
 			if (attack_counter<4 || special_counter<4) image_index = 4;
 		}
 		break;
+	case PS_LANDING_LAG:
+		if (attack == AT_FAIR)
+		{
+			sprite_index = sprite_get("fairLand");
+			break;
+		}
 }

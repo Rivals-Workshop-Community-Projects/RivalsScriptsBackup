@@ -180,6 +180,14 @@ if ("practice" in self)
 						AddText("Pika alt I think: PIKA");
 						AddText("");
 						AddText("Hopefully removed the secondary taunt sfx spam bug");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.6.2 - 24 Aug 2023");
+						AddText("");
+						AddText("Touched up FAir and NSpecial sprites");
+						AddText("Added custom landing FAir animation");
+						AddText("");
+						AddText("DTilt projectiles now have extended parry stun");
 						break;
 				}
 				DrawTutorialBlock();
