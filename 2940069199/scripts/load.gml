@@ -90,6 +90,9 @@ sprite_change_offset("axe_hit_large", 129, 131);
 sprite_change_offset("musicsmall", 64, 64);
 sprite_change_offset("hfx_music_large", 128, 128);
 
+sprite_change_offset("offscreen", 35, 35);
+sprite_change_offset("offscreen_comet", 35, 35);
+
 
 set_victory_bg(sprite_get("victory_screen"));
 set_victory_theme( sound_get("Next_Color_Planet_results_by_NitroAnilin"));

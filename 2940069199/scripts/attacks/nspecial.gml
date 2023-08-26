@@ -14,7 +14,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_pom_nspecial3"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, .5);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, .2);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);

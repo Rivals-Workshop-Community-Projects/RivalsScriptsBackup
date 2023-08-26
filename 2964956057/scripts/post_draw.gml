@@ -70,6 +70,13 @@ Victory theme musician: lock_wisp"
 + Added champion alts.
 + Added alt customizer.
 + Added Down Taunt (sprites by Camostar34)."
+
+        patch_note_title[i] = "Version 1.6"
+        patch_note_text[i++] = 
+        "Version 1.6
++ Pratland does not occur if Flowey is hit or dies before landing.
+- Friendliness Pellet no longer gives Flowey parry invincibility.
++ Fixed alt customizer."
         
         //these are optional things that you can change if you'd like, but probably best to keep as-is
         pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.

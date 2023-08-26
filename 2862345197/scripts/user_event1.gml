@@ -98,6 +98,10 @@ case 27:
 char_height = 60;
 
 //ATTACKS
+set_attack_value(AT_JAB, AG_SPRITE, sprite_get("idle_" +string(hat)) );
+set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("walk_" +string(hat)) );
+set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("jump_" +string(hat)) );
+
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAME_START, 6*hatoffs);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 6*hatoffs + 2);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 6*hatoffs + 4);
@@ -155,9 +159,9 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9*hatoffs + 5);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAME_START, 12*hatoffs);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 12*hatoffs + 3);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 12*hatoffs + 4);
-set_window_value(AT_PHONE, 1, AG_WINDOW_ANIM_FRAME_START, 20*hatoffs);
-set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAME_START, 20*hatoffs + 5);
-set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 20*hatoffs + 15);
+set_window_value(AT_PHONE, 1, AG_WINDOW_ANIM_FRAME_START, 11*hatoffs);
+set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAME_START, 11*hatoffs + 5);
+set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 11*hatoffs + 6);
 
 set_window_value(49, 1, AG_WINDOW_ANIM_FRAME_START, 9*hatoffs);
 set_window_value(49, 2, AG_WINDOW_ANIM_FRAME_START, 9*hatoffs + 1);

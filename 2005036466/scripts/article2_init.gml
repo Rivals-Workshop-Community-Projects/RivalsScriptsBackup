@@ -30,6 +30,15 @@ switch(get_player_color(player)){
         spr_charge = sprite_get("mine_charged");
         break;
 }
+switch(player_id.pen_name){
+    case "equi":
+        spr_plant = sprite_get("mineV_plant");
+        spr_air = sprite_get("dspecial_proj");
+        spr_ground = sprite_get("mineV");
+        spr_det = sprite_get("mineV_det");
+        spr_charge = sprite_get("mineV_charged");
+        break;
+}
 
 vfx_dspecchargeexplo =	hit_fx_create(sprite_get("vfx_dspecialchargeexplosion"), 15);
 
@@ -51,6 +60,11 @@ switch(get_player_color(player)){
         break;
     default:
         sfx_loop        = asset_get("sfx_plasma_field_loop");
+        break;
+}
+switch(player_id.pen_name){
+    case "equi":
+        sfx_loop        = sound_get ("sfx_vaporwave_loop");
         break;
 }
 sfx_charge          = asset_get("sfx_clairen_hit_med");

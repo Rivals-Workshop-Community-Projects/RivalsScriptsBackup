@@ -1,4 +1,4 @@
-set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt"));
+set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("walk"));
 set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("shelly_hurtbox"));
 set_attack_value(AT_FTILT, AG_OFF_LEDGE, 1);
@@ -30,7 +30,7 @@ set_num_hitboxes(AT_FTILT, 1);
 set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Laser (Normal)");
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 20);
+set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 15);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 55);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Laser
 (Third Hit)");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 20);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 15);
 set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 45);

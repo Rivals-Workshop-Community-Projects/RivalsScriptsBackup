@@ -2,7 +2,7 @@ var temp_x = x;
 var temp_y = y;
 
 var num_alts = 32;
-var alt_cur = get_player_color(("alt_fix" in self? alt_fix: player));
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
 var runes_mode = get_match_setting(SET_RUNES) == true? -16:0;
 if "prev_alt" not in self {
     prev_alt = 0;  
@@ -59,15 +59,15 @@ if(alpher_alt > 0){
     alpher_alt -= 0.025;
 }
 
-if(alt_cur != prev_alt) || champ_cur != prev_champ{
+if(get_player_color(real_player) != prev_alt) || champ_cur != prev_champ{
     alpher_alt = 3;
 }
 
-prev_alt = alt_cur;
+prev_alt = get_player_color(real_player);
 prev_champ = champ_cur;
 
 //extra icons
-switch alt_cur{
+switch get_player_color(real_player){
     case 4:
         draw_sprite_ext(sprite_get("css_icons"), 10, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 1);
     break;
@@ -124,14 +124,14 @@ switch alt_cur{
 }
 
 //alt name
-var color = alt_cur >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0));
-var colorgroup = alt_cur >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0));
-textDraw(temp_x + 12, temp_y + 125 + runes_mode, "fName", color, 14, 200, 1, 1, alpher_alt, alt_name[alt_cur], c_black);
-if alt_cur == 22{
+var color = get_player_color(real_player) >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
+var colorgroup = get_player_color(real_player) >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
+textDraw(temp_x + 12, temp_y + 125 + runes_mode, "fName", color, 14, 200, 1, 1, alpher_alt, alt_name[get_player_color(real_player)], c_black);
+if get_player_color(real_player) == 22{
     textDraw(temp_x + 12, temp_y + 112 + runes_mode, "fName", color, 14, 200, 1, 1, alpher_alt, champ_name[champ_cur], c_black);
     textDraw(temp_x + 118, temp_y + 36, "fName", colorgroup, 14, 120, 1, 1, alpher_alt, "Press A/B on icon to swap", c_black);
 }
-else if alt_cur == 23{
+else if get_player_color(real_player) == 23{
     textDraw(temp_x + 100, temp_y + 36, "fName", colorgroup, 14, 120, 1, 1, alpher_alt, "Press A on icon to customize", c_black);
 }
 

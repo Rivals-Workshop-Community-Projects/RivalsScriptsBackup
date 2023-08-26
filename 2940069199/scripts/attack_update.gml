@@ -53,6 +53,7 @@ if(attack == AT_JAB){
 }
 */
 if (attack == AT_NSPECIAL){
+	can_fast_fall = false;
 	if (window == 1)
 	{
 		tetris_hit = false;
@@ -62,6 +63,7 @@ if (attack == AT_NSPECIAL){
 			if(!hitpause){
 				if(comet == noone){
 					comet = instance_create(x+32*spr_dir, y-60, "obj_article1");
+					/*print(comet);*/
 				}else{
 					comet.activate = true;
 				}
@@ -234,16 +236,25 @@ if (attack == AT_USPECIAL){
             }
         }
         if(window_timer == 1){
-			if(instance_exists(comet) && instance_place(x, y, comet)){
-				comet.state = 4
-				comet.state_timer = 0
-				comet.hsp = -10 * spr_dir
-				comet.vsp = 15
-				comet.spr_dir = -spr_dir
-			}
-    		if(clinged_player == true and !hitpause){
+        	if(clinged_player == true and !hitpause){
+      
             	create_hitbox(AT_USPECIAL, 2, x + 10 * spr_dir, y - 52)
+            	var _hitbox=create_hitbox(AT_USPECIAL, 3, x + 10 * spr_dir, y - 52)
         	}
+        	/*print(comet);*/
+        
+			if(instance_exists(comet)) {
+			 with comet {
+        	if instance_place(x, y, other) {
+            state = 4;
+            state_timer = 0;
+            hsp = -10 * other.spr_dir;
+            vsp = 15;
+            spr_dir = -other.spr_dir;
+        }
+    }
+}
+    		
         }
         if(instance_exists(mic)){
             mic.destroyed = true 

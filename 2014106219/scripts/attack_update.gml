@@ -19,15 +19,33 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	if window == 2 && window_timer == 2 {
 		spawn_base_dust(x, y, "dash_start");
 	}
+	
 	if window == 2 && window_timer == 1 {
 		if free {
-			set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
-			set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE, 7);
-		} else {
-			reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
-			reset_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE);
+			shaboingboing = 1;
 		}
 	}
+	if shaboingboing && !has_hit {
+		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
+		/*set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE, 7);*/
+		} else {
+		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
+		/*reset_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE);*/
+	}
+	
+	if window == 4 && window_timer == 3 {
+		if attack == AT_DSPECIAL {
+			hsp = clamp(hsp, -9, 9);	
+		}
+		if attack == AT_DSPECIAL_2 {
+			hsp = clamp(hsp, -10, 10);	
+		}
+	}
+	
+	if window == 5 && 5 > window_timer {
+		vsp = clamp(vsp, -100, 0);	
+	}
+	
 	if window == 2 || window == 3 || window == 4 {
 		off_edge = true;
 	} else {
@@ -40,23 +58,35 @@ if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 		set_attack(AT_DSPECIAL);
 		window = 1;
 		window_timer = 3;
+		shaboingboing = 0;
 	}
 	can_wall_jump = true;
 	can_fast_fall = false;
 	can_move = false;
-	if (window == 3 || window == 4) && !free {
+	if (window == 3 || window == 4) && !free && !hitpause {
 		destroy_hitboxes();
 		sound_play(asset_get("sfx_zetter_downb"));
 		window = 6;
 		window_timer = 0;
+		shake_camera(2,2);
 		spawn_base_dust(x, y, "land");
 	}
+	
+	if window == 4 && window_timer == 3 {
+		if attack == AT_DSPECIAL_AIR {
+			vsp = clamp(vsp, -11, 11);	
+		}
+		if attack == AT_DTHROW {
+			vsp = clamp(vsp, -18, 18);	
+		}
+	}
+	
 	if window == 5 {
 		if window_timer == 1 {
-			vsp = clamp(vsp, -100, 5);
+			vsp = clamp(vsp, -100, 3);
 			hsp = clamp(hsp, -3, 3);
 		}
-		if !free {
+		if !free && !was_parried {
 			set_state(PS_LANDING_LAG);
 		}
 	}
@@ -579,6 +609,15 @@ if (attack == AT_USTRONG) && !hitpause {
 	}
 }
 
+if (attack == AT_DSPECIAL_2 || attack == AT_DTHROW) {
+	if (window == 2 && window_timer == 6) {
+		if !hitpause {
+			spawn_hit_fx(x-14*spr_dir, y-22, 115);
+		}
+		shake_camera(6,6);
+	}
+}
+
 if (attack == AT_DTHROW) && !hitpause {
 	if (window == 6 && window_timer == 2) {
 		spawn_hit_fx( x+( (get_hitbox_value(AT_DTHROW, 6, HG_HITBOX_X)) *spr_dir), y+(get_hitbox_value(AT_DTHROW, 6, HG_HITBOX_Y)), 109);
@@ -603,14 +642,14 @@ if (attack == AT_DTILT) && !hitpause {
 
 if (attack == AT_EXTRA_3) && !hitpause {
 	if (window == 3 && window_timer == 2) {
-		spawn_hit_fx( x+(54*spr_dir), y-10, 115);
-		
+		spawn_hit_fx( x+(54*spr_dir), y-10, 115);	
 		if !has_hit {
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))-30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)-32), nspecialAfter);
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))-30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+32), nspecialAfter);
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)-32), nspecialAfter);
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+32), nspecialAfter);
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+2) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+14), nspecialAfter3);
+			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))-30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)-32), nspecialAfter);
+			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))-30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+32), nspecialAfter);
+			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)-32), nspecialAfter);
+			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+30) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+32), nspecialAfter);
+			spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X))+2) *spr_dir), y+(get_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y)+14), nspecialAfter3);
+			shake_camera(6,6);
 		}
 	}
 }
@@ -641,13 +680,15 @@ if (attack == AT_EXTRA_2) && !hitpause {
 		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_X))+20) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_Y)+20), nspecialAfter);
 	}
 	if (window == 5 && window_timer == 1) {
-		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))+4) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)), 109);
+		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))+4) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)), 115);
 		
 		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))-20) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)+20), nspecialAfter3);
 		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))+20) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)-20), nspecialAfter3);
 		
 		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))+20) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)+2), nspecialAfter);
 		spawn_hit_fx( x+(((get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X))-20) *spr_dir), y+(get_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y)+2), nspecialAfter);
+		
+		shake_camera(3,3);
 	}
 }
 

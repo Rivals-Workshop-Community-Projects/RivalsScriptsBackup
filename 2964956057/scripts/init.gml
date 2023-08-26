@@ -163,6 +163,7 @@ flowey_saves_max = has_rune("A")? 2:1;
 flowey_saves_used = flowey_saves_max;
 flowey_savecooldown = 0;
 flowey_savejump = 0;
+flowey_pratprevent = 0;
 
 //#region compatability
 

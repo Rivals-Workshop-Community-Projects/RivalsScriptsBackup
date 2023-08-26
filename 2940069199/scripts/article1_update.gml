@@ -13,6 +13,8 @@
 
 */
 
+/* print(state_timer);
+ print(state);*/
 with (pHitBox)
 {
     if (player != other.player)
@@ -42,6 +44,7 @@ if (killarticles == true){
 	if (hitbox_activate == true)
 	{
 		create_hitbox(AT_NSPECIAL, 2,x - 0 * spr_dir, y + 0);
+		create_hitbox(AT_NSPECIAL, 3,x - 0 * spr_dir, y + 0);
 	}
 	sound_play(asset_get("sfx_ori_energyhit_medium"));
 	player_id.comet = noone
@@ -76,6 +79,7 @@ if (state == 0){ //Spawn
 
 
 if (state == 1){ //Idle
+mask_index = sprite_get("comet_idle_hurt")
 	hsp *= .89
 	if(state_timer > 3){
 		if(activate = true && comet_clinged != true){
@@ -153,6 +157,10 @@ if (state == 3){ //launch
 }
 
 if (state == 4){ //launch any angle
+if (state == 4 && state_timer <= 2) {
+/*print("In State 4")*/
+}
+
 	combustable = true;
 	mask_index = sprite_get("comet_hurt");
 	player_id.move_cooldown[AT_NSPECIAL] = 90;

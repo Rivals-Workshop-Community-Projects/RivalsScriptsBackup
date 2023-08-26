@@ -50,3 +50,18 @@ with(obj_stage_article){
        obj_stage_main.bud_train_plat_y = y;
    }
 }
+
+if is_laststock(){
+    if get_gameplay_time() < 120 and last_stonk_intro_timer <= 1189{
+        music_play_file( "music_loop_laststock_intro" );
+        last_stonk_intro_timer++;
+    } else {
+        music_play_file( "music_loop_laststock" );
+    }
+} else {
+    if get_game_timer() <= (1591){
+        music_play_file( "music_loop_intro" );
+    } else {
+        music_play_file( "music_loop" );
+    }
+}

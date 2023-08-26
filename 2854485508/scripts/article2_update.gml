@@ -722,7 +722,9 @@ percent += ceil(hbox.damage);
 if (hbox.player_id != player_id) {
 	hitpoints -= ceil(hbox.damage);
 }
-
+else {
+	hitpoints -= ceil(hbox.damage * 0.6);
+}
 //Default Hitstun Calculation
 if (hbox.effect != 9 || hitstun > 0) {
 	hitstun = get_hitstun_formula(percent, kb_adj, hbox.hitstun_factor == 0 ? 1 : hbox.hitstun_factor, hbox.damage, hbox.kb_value, hbox.kb_scale)

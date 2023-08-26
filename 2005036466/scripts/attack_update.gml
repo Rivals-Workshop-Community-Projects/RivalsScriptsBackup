@@ -72,6 +72,10 @@ switch(attack){
 											penny_taunt_spr_white = sprite_get("taunt_l_white");
 											break;
 									}
+									if pen_name == "gear"{
+										penny_taunt_spr = sprite_get("taunt_hf");
+										penny_taunt_spr_white = sprite_get("taunt_hf_white");
+									}
 								}
 							}
 							break;
@@ -108,6 +112,8 @@ switch(attack){
 							hitpause = true;
 							hitstop = 6;
 						}
+						
+						old_hsp = 10 * spr_dir;
 					}
 				}
 				break;
@@ -361,7 +367,7 @@ switch(attack){
 			if (!hitpause and (shield_pressed and window != 1)){
 				penny_install = false;
 				sound_stop(asset_get("sfx_absa_jabloop"));
-				create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
+				//create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
 				if attack == AT_USPECIAL_2{
 					sound_play(asset_get("sfx_ell_cooldown"));
 					if !has_hit{
@@ -371,15 +377,17 @@ switch(attack){
 					set_state(PS_PRATFALL);
 				}
 			}
-			can_attack = true;
-			can_special = true;
-			can_shield = true;
-			if attack_pressed or special_pressed and !is_special_pressed(DIR_UP) or shield_pressed or is_strong_pressed(DIR_ANY){
-				if window < 6{
-					create_hitbox(AT_USPECIAL, 1, x + (8 * spr_dir), y - 88);
+			if !was_parried{
+				can_attack = true;
+				can_special = true;
+				can_shield = true;
+				if ((attack_pressed or special_pressed) and (!is_special_pressed(DIR_UP)) or (shield_pressed or is_strong_pressed(DIR_ANY))){
+					if window < 6{
+						create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
+					}
+					penny_install = false;
+					sound_stop(asset_get("sfx_absa_jabloop"));
 				}
-				penny_install = false;
-				sound_stop(asset_get("sfx_absa_jabloop"));
 			}
 			can_wall_jump = true;
 		}
@@ -434,7 +442,7 @@ switch(attack){
 			    if window_timer == 1 and !hitpause{
 			        if (instance_exists(obj_article2)){
 			            with(obj_article2){
-			            	if (("pen_c4_charged" in self) and (state != 0 and state != 7) and (player_id == other.id)){
+			            	if (("pen_c4_charged" in self) and (state != 0 and state != 7 and state != 9) and (player_id == other.id)){
 					            state = 3;
 					            state_timer = 0;
 					            sound_play(asset_get("sfx_mol_huge_countdown"));

@@ -16,7 +16,7 @@ if(attack == AT_FSTRONG){
             destroyed = true;
         }
         if(hitbox_timer > 4){
-            image_xscale = .2;image_yscale = .3;hsp *= 1.0-(hitbox_timer/250);
+            if(!Frozen){image_xscale = .2;image_yscale = .3;hsp *= 1.0-(hitbox_timer/250);}
         }else{
         	depth = player_id.depth+1;
         }
@@ -144,7 +144,7 @@ else if(attack == AT_UAIR){
 			player_id.pig_hb = noone;
 		}
 		kb_angle = (vsp<5 && abs(hsp)>.5)?45:(vsp<2)?90:(abs(hsp)>3)?290:270;
-		if(!Pocketed){
+		if(!Pocketed && !Frozen && !in_hitpause){
 			if(vsp > 5){ //spike
 				kb_value *= 0.6;kb_scale *= 0.6;vsp*=1.03;
 				if(hitbox_timer % 6 == 0){var fcoin = create_hitbox(attack,3,x+5*spr_dir,y-50);fcoin.player = player;}
@@ -285,6 +285,19 @@ else if(attack == AT_UAIR){
 	var cloud = spawn_hit_fx(x-(25*spr_dir)+random_func(hitbox_timer, 60, true)*spr_dir,y-20+random_func(hitbox_timer, 40, true),player_id.fx_cloud);cloud.spr_dir = -spr_dir;cloud.draw_angle = random_func(0, 360, true);
 }
 
+if(attack == AT_USPECIAL){
+	if(hbox_num == 1){
+		if(hitbox_timer == length){
+        	var poof = spawn_hit_fx(x-55*spr_dir,y,player_id.fx_smoke_pink);poof.depth = depth+2;poof = spawn_hit_fx(x+75*spr_dir,y,player_id.fx_smoke_pink);poof.depth = depth+2;
+		    poof = spawn_hit_fx(x-35*spr_dir,y-75+45,player_id.fx_smoke_pink);poof.depth = depth+2;poof = spawn_hit_fx(x+45*spr_dir,y-75+45,player_id.fx_smoke_pink);poof.depth = depth+2;
+		    poof = spawn_hit_fx(x+5*spr_dir,y-95+45,player_id.fx_smoke_pink);poof.depth = depth+2;
+		    poof = spawn_hit_fx(x,y-25,player_id.fx_smoke_pink);poof.depth = depth+2;
+		    poof = spawn_hit_fx(x-45*spr_dir,y+55,player_id.fx_smoke_pink);poof.depth = depth+2;poof = spawn_hit_fx(x+35*spr_dir,y+55,player_id.fx_smoke_pink);poof.depth = depth+2;
+		    sound_play(sound_get("poof"));
+		}
+	}
+}
+
 draw_xscale = spr_dir;
 
 #define nspec_stun
@@ -299,10 +312,12 @@ if(place_meeting(x,y,other) && ("Freezable" in self && Freezable || "UnReflectab
 		hitstop = 1;
 		if(hitstop > 0 && other.hitbox_timer == other.length)hitstop = 0;
 	}
+	if("Frozen" in self)Frozen = other.hitbox_timer < other.length;
 }else if(!place_meeting(x,y,other) && ("Freezable" in self && Freezable || "UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 	if("in_hitpause" in self){
 		if(in_hitpause && other.hitbox_timer == other.length)in_hitpause = false;
 	}else if("hitstop" in self){
 		if(hitstop>0 && other.hitbox_timer == other.length)hitstop = 0;
-	}	
+	}
+	if("Frozen" in self)Frozen = false;
 }

@@ -27,9 +27,10 @@ if flowey_savecooldown || !flowey_saves_used || (y < get_stage_data(SD_TOP_BLAST
     move_cooldown[AT_USPECIAL] = 2;
 }
 if !free{
-    if !flowey_saves_used{
+    if !flowey_saves_used && !flowey_pratprevent{
         set_state(PS_PRATLAND);
     }
+    flowey_pratprevent = 0;
     flowey_saves_used = flowey_saves_max;
     flowey_grapples_used = 0;
     move_cooldown[AT_USPECIAL] = flowey_savecooldown + 1;

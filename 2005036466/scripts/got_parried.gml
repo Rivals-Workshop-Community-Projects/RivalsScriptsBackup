@@ -24,6 +24,21 @@ with(hit_player_obj){
 
 mine_player = noone;
 
+if my_hitboxID.attack != AT_JAB and my_hitboxID.type != 2{
+	if (instance_exists(obj_article2)){
+	    with(obj_article2){
+	    	if (("pen_c4_charged" in self) and (state != 0 and state != 7 and state != 9) and (player_id == other.id)){
+	            state = 9;
+	            if state == 9 and state_timer >= 10{
+	            	state_timer = 10;
+	            } else {
+	            	state_timer = 0;
+	            }
+	    	}
+	    }
+	}
+}
+
 // Check if you used DSpecial
 switch(my_hitboxID.attack){
 	case AT_DSPECIAL:

@@ -21,13 +21,13 @@ set_window_value(AT_PHONE, 1, AG_WINDOW_SFX, sound_get("smw_spit"));
 
 set_window_value(AT_PHONE, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_PHONE, 2, AG_WINDOW_LENGTH, 80);
-set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAMES, 10);
+set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
 //Closing window
 
 set_window_value(AT_PHONE, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 15);
+set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_PHONE, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_PHONE, 3, AG_WINDOW_SFX, sound_get("smw_eat"));

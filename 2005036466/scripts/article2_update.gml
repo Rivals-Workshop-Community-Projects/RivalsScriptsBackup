@@ -269,6 +269,38 @@ switch(state){
         	state_timer = 0;
         }
         break;
+    case 9:	// Disabled
+    	sprite_index = spr_plant;
+    	switch(state_timer){
+    		case 1:
+    		case 2:
+    			image_index = 5;
+    			break;
+    		case 3:
+    		case 4:
+    			image_index = 4;
+    			break;
+    		case 5:
+    		case 6:
+    			image_index = 3;
+    			break;
+    		case 7:
+    		case 8:
+    			image_index = 2;
+    			break;
+    		case 9:
+    		case 10:
+    			image_index = 1;
+    			break;
+    		default:
+    			image_index = 0;
+    			break;
+    	}
+    	if state_timer == 90{
+    		state = 7;
+    		state_timer = 0;
+    	}
+    	break;
 }
 #define pen_c4_interact(toggle)
 var detected_object = instance_place(x, y, pHitBox);

@@ -43,6 +43,8 @@ if attack == AT_NSPECIAL{
 	
 	//Move forward
 	hsp = max_speed * spr_dir;
+	
+	has_been_parried = false;
 }
 
 particles = [];

@@ -608,7 +608,10 @@ switch(attack){
         move_cooldown[AT_NSPECIAL] = 60;
         can_fast_fall = false;
         
-        if has_rune("M") containers[CT_TESTIFICATE].spent_items = [0, 0, 1];
+        if has_rune("M") {
+			containers[CT_TESTIFICATE].spent_items = [0, 0, 1];
+			containers[CT_MARIO].spent_items = [0, 0, 1];
+		}
         
         switch(window){
             
@@ -799,7 +802,10 @@ switch(attack){
             
         }
         
-        if has_rune("M") containers[CT_TESTIFICATE].spent_items = [0, 0, 1];
+        if has_rune("M") {
+			containers[CT_TESTIFICATE].spent_items = [0, 0, 1];
+			containers[CT_MARIO].spent_items = [0, 0, 1];
+		}
         
         break;
 	

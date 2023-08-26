@@ -20,11 +20,24 @@ if(free && /*floating &&*/ (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || st
     }
 	set_attack(AT_TAUNT_2);
 }
-
+if(state != PS_WALK && (state != PS_WALK_TURN || state == PS_WALK_TURN && abs(hsp) <= .2)){sound_stop(walk_music);walk_music_timer = 0;walk_music = noone;}
+with(oPlayer) if "walk_music" in self && self != other{
+	walk_music_blocked = other.walk_music != noone;
+}
 switch(state){
     case PS_SPAWN:
         if(state_timer == 5)sound_play(sound_get("Hotel_Mario_Intro"));
     break;
+    case PS_WALK:case PS_WALK_TURN:
+    	if(state == PS_WALK_TURN && abs(hsp) >= .2 || state == PS_WALK){
+			if(!walk_music_blocked){
+		    	if(walk_music_timer == 0)walk_music = sound_play(sound_get("sick walk music"));
+		    	walk_music_timer++;
+		    	if(walk_music_timer >= 900)walk_music_timer = 0;
+		    	suppress_stage_music(0.5,.2);
+			}
+    	}
+    break;    
     case PS_PARRY:
 		if(state_timer == 1)PlayVoiceClip("you know what they say2");
 	break;
@@ -61,6 +74,10 @@ if((state != PS_RESPAWN && attack != AT_TAUNT || attack == AT_TAUNT && vsp != 0)
 	respawnplat = 0;
 }
 
+if(runesUpdated || get_match_setting(SET_RUNES)){
+	if(runeB)set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 300);
+}
+
 if(instance_exists(nspec_cloud)){
 	with(oPlayer){
 		if(place_meeting(x,y,other.nspec_cloud)){
@@ -78,10 +95,6 @@ with(oPlayer){
 		    can_uspecial = false;
 		}
 	}
-}
-
-if(runesUpdated || get_match_setting(SET_RUNES)){
-	if(runeB)set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 240);
 }
 
 playercount = 0;

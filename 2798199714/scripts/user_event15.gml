@@ -257,6 +257,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.85", "25th August, 2023");
+initHeader("Buffs");
+initSection("+ Increased FStrong damage (11->12) and kbs (1.0->1.05), and gave it slightly less startup when uncharged (f25->f21)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added Final Smash!
++ Added rune O");
+
 initPatch("1.84", "24th July, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Another small fix with the new AI: GK won't hitfall UAir, as he wasn't meant to");

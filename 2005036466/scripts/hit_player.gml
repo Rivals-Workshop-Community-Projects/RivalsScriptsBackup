@@ -29,6 +29,13 @@ switch(hitmove){
     case AT_USTRONG:
     	give_pen_install();
     	break;
+    case AT_DSTRONG:
+    	switch(my_hitboxID.hbox_num){
+    		case 2:
+    			give_pen_install();
+    			break;
+    	}
+    	break;
 	case AT_DAIR:
 		switch(my_hitboxID.hbox_num){
 			case 1:

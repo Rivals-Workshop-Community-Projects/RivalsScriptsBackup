@@ -13,6 +13,8 @@
 muno_event_type = 1;
 user_event(14);
 
+var attacking = (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR);
+
 // ===== MAKE SURE THE NODE HANDLER IS STILL THERE =====
 if !instance_exists(node_handler) {
 	node_handler = instance_create(0, 0, "obj_article2");
@@ -97,12 +99,12 @@ if "asset_new_dust" in self{
 //print_debug("image index = " + string(image_index));
 //print_debug("idle index = " + string(idle_index));
 
-if (state == PS_IDLE || (phone_attacking && attack == AT_JAB)) && (idle_index < 19.8){
-idle_index += 0.2;
+if (state == PS_IDLE || (attacking && attack == AT_JAB)) && (idle_index < 19.8){
+idle_index = idle_index + 0.2 % 20;
 } else {
 idle_index = 0;
 }
-if (state == PS_WALK || (phone_attacking && attack == AT_FTILT)) && (walk_index < 3.875){
+if (state == PS_WALK || (attacking && attack == AT_FTILT)) && (walk_index < 3.875){
 walk_index +=0.125;
 } else {
 walk_index = 0;

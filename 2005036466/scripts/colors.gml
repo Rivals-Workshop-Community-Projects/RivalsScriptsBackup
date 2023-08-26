@@ -38,7 +38,7 @@ set_color_profile_slot_range( 8, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 32 );
+set_num_palettes( 34 );
 
 // Blue (Lucario)
 set_color_profile_slot( 1, 0, 59, 106, 161 ); //Fur
@@ -380,6 +380,28 @@ set_color_profile_slot( 31, 5, 92, 91, 96 ); //Pants
 set_color_profile_slot( 31, 6, 232, 211, 154 ); //Belts
 set_color_profile_slot( 31, 7, 173, 41, 0 ); //That Single FUCKING HAIR PARTICLE
 set_color_profile_slot( 31, 8, 250, 136, 1 ); //Real Metal Color
+
+// Byte Skin
+set_color_profile_slot( 32, 0, 209, 191, 214 ); //Fur
+set_color_profile_slot( 32, 1, 209, 191, 214 ); //Fur Light
+set_color_profile_slot( 32, 2, 218, 168, 216 ); //Hair
+set_color_profile_slot( 32, 3, 181, 105, 207 ); //Metaru
+set_color_profile_slot( 32, 4, 69, 61, 67 ); //Shirt
+set_color_profile_slot( 32, 5, 69, 61, 67 ); //Pants
+set_color_profile_slot( 32, 6, 239, 176, 103 ); //Belts
+set_color_profile_slot( 32, 7, 133, 91, 161 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 32, 8, 239, 182, 115 ); //Real Metal Color
+
+// Daora
+set_color_profile_slot( 33, 0, 201, 184, 224 ); //Fur
+set_color_profile_slot( 33, 1, 232, 225, 237 ); //Fur Light
+set_color_profile_slot( 33, 2, 48, 48, 138 ); //Hair
+set_color_profile_slot( 33, 3, 247, 191, 101 ); //Metaru
+set_color_profile_slot( 33, 4, 101, 218, 247 ); //Shirt
+set_color_profile_slot( 33, 5, 50, 72, 161 ); //Pants
+set_color_profile_slot( 33, 6, 212, 208, 172 ); //Belts
+set_color_profile_slot( 33, 7, 18, 13, 84 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 33, 8, 247, 191, 101 ); //Real Metal Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

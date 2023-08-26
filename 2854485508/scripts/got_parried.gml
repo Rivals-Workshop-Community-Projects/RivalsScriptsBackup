@@ -6,7 +6,8 @@ if (("mamizou_mark_id" in hit_player_obj) && hit_player_obj.mamizou_mark_id != n
 
 with (obj_article2) {
     if (player_id == other.id) {
-        percent += 999;
+        hitpoints -= 999;
+        percent += 100;
     	hitstun = 60;
     	hitstun_full = 60;
     	state_timer = 2;

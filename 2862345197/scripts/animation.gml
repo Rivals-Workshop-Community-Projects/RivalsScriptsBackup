@@ -1,3 +1,5 @@
+if "_ssnksprites" not in self exit;
+
 if (has_skin()) { //is there a skin equipped?
     sprite_index = skin_sprite(sprite_index); //get the skinned sprite
     basic_animations(); //correct the idle, walk, and dash animations
@@ -75,9 +77,8 @@ switch (state) {
 	    image_index = idle_index;
 	    attack_end();
 		}
-		if pshoot_carry{
-		sprite_index = sprite_get("jab");
-		image_index = idle_index + (60 * hatoffs);
+		if pshoot_carry {
+		image_index = idle_index;
 	    }
 		//floppos handy dandy DTilt animation looking less jarring if you stop holding down-inator
 		//plus hat jank
@@ -149,72 +150,16 @@ switch (state) {
 		
 		//megaman gang --------------------------------
 			case AT_JAB:
-				switch (window) {
-				    case 1:
-	 	 			    if get_num_hitboxes(AT_JAB) = 1 {
-					    image_index = idle_index+20 + (60 * hatoffs);
-					    } else {
-						image_index = idle_index + (60 * hatoffs);
-						}
-					break;
-					case 2:
-					    image_index = idle_index + (60 * hatoffs);
-					break;
-					case 3:
-					    image_index = idle_index + (60 * hatoffs);
-					break;
-					case 4:
-					    image_index = idle_index+40 + (60 * hatoffs);
-					break;
-					case 5:
-					    sprite_index = sprite_get("walkturn_shoot");
-				        image_index = window_timer + (5 * hatoffs);
-					break;
-				}
-		    break;
 			case AT_FTILT:
-				image_index = walk_index;
-				switch (window) {
-				    case 1:
-	 	 			    if get_num_hitboxes(AT_FTILT) = 1 {
-					    image_index = walk_index+4 + (12 * hatoffs);
-					    } else {
-						image_index = walk_index + (12 * hatoffs);
-						}
-					break;
-					case 2:
-					    image_index = walk_index + (12 * hatoffs);
-					break;
-					case 3:
-					    image_index = walk_index + (12 * hatoffs);
-					break;
-					case 4:
-					    image_index = walk_index+8 + (12 * hatoffs);
-					break;
-				    case 5:
-					    sprite_index = sprite_get("walkturn_shoot");
-				        image_index = window_timer + (5 * hatoffs);
-					break;
+				if window = 5 {
+					sprite_index = sprite_get("walkturn_shoot");
+				    image_index = window_timer + (5 * hatoffs);
+				} else {
+					image_index = attack = AT_JAB ? idle_index : walk_index;
 				}
-		    break;
+			break;
 			case AT_NAIR:
 			    image_index = jump_index;
-				    switch (window) {
-			            case 1:
-			    	        if get_num_hitboxes(AT_NAIR) = 1 {
-			    	        image_index = jump_index+7 + (21 * hatoffs);
-			    	        } else {
-			    		    image_index = jump_index + (21 * hatoffs);
-			    		    }
-						break;
-			    	    case 2:
-					    case 3:
-			    	        image_index = jump_index + (21 * hatoffs);
-						break;
-			        	case 4:
-			        	image_index = jump_index+14 + (21 * hatoffs);
-						break;
-			        }
 			break;
 			
 		//offset gang ---------------------------------

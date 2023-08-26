@@ -234,9 +234,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[25,0] = make_color_rgb(243, 130, 88)
 	ce[25,1] = "Possession"
 	ce[25,2] = "It likes to wreak havoc in electronic devices."
-	ce[26,0] = make_color_rgb(0, 163, 248)
-	ce[26,1] = "Vortex Gallery"
-	ce[26,2] = "Retroblast is leagal in Vortex Gallery?!"
+	ce[26,0] = make_color_rgb(255, 106, 0)
+	ce[26,1] = "Riptide"
+	ce[26,2] = "Retroblast is leagal in Riptide?!"
+//	ce[26,0] = make_color_rgb(0, 163, 248)
+//	ce[26,1] = "Vortex Gallery"
+//	ce[26,2] = "Retroblast is leagal in Vortex Gallery?!"
 //	ce[26,0] = make_color_rgb(255, 0, 0)
 //	ce[26,1] = "Overheated"
 //	ce[26,2] = "Original, red"

@@ -32,7 +32,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 20);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 180);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 100);

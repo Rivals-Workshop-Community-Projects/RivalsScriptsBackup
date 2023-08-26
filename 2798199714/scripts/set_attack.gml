@@ -31,6 +31,17 @@ if (attack == AT_NSPECIAL){
 	}
 }
 
+if (attack == AT_NSPECIAL || attack == AT_USPECIAL){
+	if(FinalSmash == 0 && "fs_charge" in self && fs_charge >= 200){
+		FinalSmash = 1;
+		attack = AT_USPECIAL;
+		if("fs_using_final_smash" in self){
+    		fs_force_fs = true;fs_using_final_smash = true;
+    		//fs_attack_index = AT_NSPECIAL;
+    	}
+	}
+}
+
 if (attack == AT_USPECIAL){
 	if(free){
 		reset_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH);

@@ -13,8 +13,8 @@ tornadosfx = noone;
 playercharge = 0;
 
 if(attack == AT_NSPECIAL){
-	swordnum = 0;
-	up = false;
+	if("swordnum" not in self)swordnum = 0;
+	if("up" not in self)up = false;
 	angle = darctan2(-vsp * spr_dir, hsp * spr_dir);
     proj_angle = angle;
 	start_rotation = proj_angle;
@@ -58,6 +58,7 @@ if(attack == AT_USTRONG){
 		UnReflectable = true;
 	    Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 0;Pocketed = false;waspocketed = false;waspocketed2 = false;PocketBuff = 0;
     	Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 3;
+    	if("extra_delay" not in self)extra_delay = 0;
 	}else if(hbox_num == 5 || hbox_num == 7){ //lightning hitboxes
 	    AriaCantAbsorb = false;
 	}

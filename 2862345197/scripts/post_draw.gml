@@ -4,9 +4,58 @@ muno_event_type = 4;
 user_event(14);
 
 switch (state) {
+    case PS_IDLE:
+	    if pshoot_carry {
+            draw_sprite_ext(sprite_get("jab_gun"), image_index, x, y, 2*spr_dir, 2, 0, c_white, 1);
+        }		
+	break;
     case PS_ATTACK_AIR: 
     case PS_ATTACK_GROUND:
     switch (attack) {
+	    
+		case AT_JAB:
+		    shader_start();
+		    switch (window) {
+				case 1:
+	 	 			draw_sprite_ext(sprite_get("jab_gun"), image_index + (get_num_hitboxes(AT_JAB) = 1 ? 20 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+				case 2:
+				case 3:
+				case 4:
+				    draw_sprite_ext(sprite_get("jab_gun"), image_index + (window = 4 ? 40 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+			}
+			shader_end();
+	    break;
+		case AT_FTILT:
+		    shader_start();
+		    switch (window) {
+				case 1:
+	 	 			draw_sprite_ext(sprite_get("ftilt_gun"), image_index + (get_num_hitboxes(AT_FTILT) = 1 ? 4 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+				case 2:
+				case 3:
+				case 4:
+				    draw_sprite_ext(sprite_get("ftilt_gun"), image_index + (window = 4 ? 8 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+			}
+			shader_end();
+	    break;
+		case AT_NAIR:
+		    shader_start();
+		    switch (window) {
+				case 1:
+	 	 			draw_sprite_ext(sprite_get("nair_gun"), image_index + (get_num_hitboxes(AT_NAIR) = 1 ? 7 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+				case 2:
+				case 3:
+				case 4:
+				    draw_sprite_ext(sprite_get("nair_gun"), image_index + (window = 4 ? 14 : 0), x, y, 2*spr_dir, 2, 0, c_white, 1);
+				break;
+			}
+			shader_end();
+	    break;
+		
 	    case AT_USPECIAL:
 	    shader_start();
 		if !has_rune("D") {

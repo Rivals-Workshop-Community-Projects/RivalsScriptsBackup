@@ -4,7 +4,7 @@ temp_y = y;
 set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
 
 num_alts = 24;
-alt_cur = get_player_color(("alt_fix" in self? alt_fix: player));
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
 champ_cur = 0;
 prev_champ = champ_cur;
 runes_mode = get_match_setting(SET_RUNES) == true? -16:0;
@@ -43,8 +43,6 @@ mouth_color = 1;
 custom_palette = face_color * 100000000 + petals_color * 1000000 + stem_color * 100000 + thorns_color * 10000 + soul_color * 1000 + lefteye_color * 100 + righteye_color * 10 + mouth_color;
 set_synced_var(player, custom_palette);
 custom_palette_max = 10;
-
-alt_cur = get_player_color(("alt_fix" in self? alt_fix: player));
 
 alpher = 1;
 

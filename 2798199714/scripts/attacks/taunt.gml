@@ -110,4 +110,4 @@ set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_TAUNT, 1, HG_EXTENDED_PARRY_STUN, true);
-set_hitbox_value(AT_TAUNT, 1, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_LOCKOUT, 20);

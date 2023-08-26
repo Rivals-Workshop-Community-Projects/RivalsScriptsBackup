@@ -1,13 +1,35 @@
-var color = room != asset_get("network_char_select") || object_index == oTestPlayer ? get_player_color(player) : get_player_color(0)
+var alt_cur = room != asset_get("network_char_select") || object_index == oTestPlayer ? get_player_color(player) : get_player_color(0)
 if "css_char" not in self && room == asset_get("network_char_select") && object_index == asset_get("cs_playerbg_obj") exit; //prevents a crash.
+//Init Shader
+
+// Split the synced var. For more info on this function, see:
+// https://github.com/SupersonicNK/roa-workshop-templates/tree/master/generate-synced-var 
+if "__syncvar" not in self __syncvar = split_synced_var(1);
+var tag_pal_value = __syncvar[0]; //change the 0 to the synced var index for the tag palette.
+// IMPORTANT: The 12 (first argument) in this function should be the same number as the user event.
+var tag_pal = player_tag_palettes(12, tag_pal_value);
+
+// This is your final alt value, which is the current alt palette the player has selected.
+var real_alt = tag_pal != -1 ? tag_pal : alt_cur;
+
 set_character_color_slot(3, 
-	get_color_profile_slot_r(color, 8),
-	get_color_profile_slot_g(color, 8),
-	get_color_profile_slot_b(color, 8)
+	get_color_profile_slot_r(real_alt, 8),
+	get_color_profile_slot_g(real_alt, 8),
+	get_color_profile_slot_b(real_alt, 8)
 )
 
-//Init Shader
-switch(color){
+switch(string_lower(get_player_name(player))){
+	case "equi":
+		set_article_color_slot(6 , get_color_profile_slot_r(10, 6), get_color_profile_slot_g(10, 6), get_color_profile_slot_b(10, 6));
+		break;
+	case "giga":
+	case "gear":
+		set_article_color_slot(6 , get_color_profile_slot_r(27, 0), get_color_profile_slot_g(37, 0), get_color_profile_slot_b(27, 0));
+		set_article_color_slot(6 , get_color_profile_slot_r(27, 3), get_color_profile_slot_g(37, 3), get_color_profile_slot_b(27, 3));
+		break;
+}
+
+switch(real_alt){
     case 0:
         // set_character_color_slot(3, 153, 163, 169);     // Metal
         set_character_color_slot(4, 74, 98, 69);       // Shirt
@@ -146,5 +168,32 @@ switch(color){
     	set_character_color_shading( 3, 0.75);
     	break;
 }
+
+// As usual, #defines all go at the bottom of the script.
+#define player_tag_palettes
+///(user_event, ?arg)
+__ssnk_tagpal_scr = script_get_name(1); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+__ssnk_tagpal_arg = argument_count > 1 ? argument[1] : 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+user_event(argument[0]);
+return "__ssnk_tagpal_res" in self ? __ssnk_tagpal_res : 0;
+
+// https://github.com/SupersonicNK/roa-workshop-templates/tree/master/generate-synced-var 
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var player = (room == asset_get("network_char_select")) ? 0 : self.player;
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+print(chunk_arr);
+return chunk_arr;
+
 #define set_shading(arr)
 for (var i = 0; i < min(8,array_length(arr)); i++) set_character_color_shading(i, arr[i])

@@ -1,14 +1,15 @@
 //Sprite and direction
-sprite_index = sprite_get("comet_spawn");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
-image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
+sprite_index = sprite_get("comet_spawn"); //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+image_index = 0;//The frame in the animation the article should start at. 0 = beginning of animation
 spr_dir = player_id.spr_dir;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
+mask_index = sprite_get("comet_idle_hurt");
 //uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 
 //State
 state = 0;                                          //The behavior state the article should start in.
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
-exist_timer = 0;                                    //How long the article has existed.
+exist_timer = 0;  //How long the article has existed.
 
 //Terrain behavior
 can_be_grounded = false;                            //Determines if the article follows platforms when free == false.

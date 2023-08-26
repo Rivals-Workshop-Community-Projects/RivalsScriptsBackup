@@ -7,6 +7,7 @@ CalCanSnack = false;
 UnReflectable = false;
 Pocketable = false;
 SpikeCanEat = false;
+Frozen = false;
 
 alt = player_id.alt;
 Pocket_hud = sprite_get((alt==0)?"villager_pocket_hud_icons":"villager_pocket_hud_icons_alts");

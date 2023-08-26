@@ -21,7 +21,7 @@ if(attack == AT_NSPECIAL){
 					}else if(player_id.left_down){
 						hsp -= 0.5;hsp = min(hsp,-1);vsp *= 0.25;
 					}
-				}
+				}if(player_id.FinalSmash > 0)up = true;
 			}
 		}
 		/*if(swordnum <= 1){
@@ -202,6 +202,10 @@ if(attack == AT_USTRONG){
     	if(player == orig_player && (player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND)){
 			destroyed = true;
 		}
+		if(extra_delay > 0){
+			extra_delay -= 1;hitbox_timer = 0;image_index = 0;
+			if(extra_delay == 0){extra_delay = -1;}
+		}
 	    if((hitbox_timer == 19 || destroyed) && player_id.state != PS_HITSTUN && player_id.state != PS_HITSTUN_LAND){
             var hit = create_hitbox(AT_USTRONG, hbox_num+1, x, y);hit.player = player;
             hit.PocketBuff = PocketBuff;
@@ -209,7 +213,7 @@ if(attack == AT_USTRONG){
 				hit.damage = ceil(hit.damage*(power(1.5,PocketBuff)));hit.kb_scale = hit.kb_scale*(power(1.25,PocketBuff));
 				hit.damage = min(hit.damage,999);hit.kb_scale = min(hit.kb_scale,2);
 			}
-            if(waspocketed2){
+            if(waspocketed2 || extra_delay == -1){
             	with(player_id){sound_play(sound_get("lightning"));sound_play(sound_get("lightning2"));}
 		    	shake_camera(15,5);
             }

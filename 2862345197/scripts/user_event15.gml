@@ -217,7 +217,6 @@ initWords("My favourite little reliable airspike, huh? Are you even going to be 
 initTip("FStrong: Turret Spread");
 initWords("This FStrong launches 3 slow noving projectiles from a large gun on Shelly's back. While having good coverage and range, using this move point blank will guarantee that all 3 bullets land, dealing a very powerful hit.");
 initWords("When parried the bullets are not reflected, and will put Shelly into extended parry stun. The bullets are also transcendant, so feel free to power through stuff with them!");
-initImage_ext(sprite_get("fstrong"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("");
 initWords_ext("- Squid's Advice -", fa_center, "h", 0, false);
 initImage(sprite_get("squid"), 0);
@@ -243,8 +242,7 @@ initTip("USpecial: Rising Bubble");
 initWords("Use a bubble to rise to the top of the stage, and pop out when you hit the ceiling. While extremely good for recovery, this USpecial has no hitbox. While in the bubble Shelly can move left and right, so what it lacks in offensive utility it makes up for in evasiveness when used correctly.");
 initWords("Pressing either Special or Jump will cause Shelly to pop out of the bubble with an upward boost, and put him into pratfall afterward. The bubble also automatically pops when near the top blastzone, giving opponents an opportunity to catch your landing if you aren't careful.");
 initWords("The bubble also preserves Shelly's momentum when activated, giving a large downward bob when falling quickly, and will keep his horizontal momentum. Don't worry though, once inside the bubble it will bounce off the blastzones, so don't worry about bobbing straight to your doom.");
-initImage_ext(sprite_get("uspecial"), -4, fa_center, 2, 2, true, c_white, 1, true, 32, 32, 48, 0);
-initImage_ext(sprite_get("uspecial_bubble"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("");
 initWords_ext("- Squid's Advice -", fa_center, "h", 0, false);
 initImage(sprite_get("squid"), 2);
 initWords("A bubble? Really? Normally I love bubbles, but you're just asking to have someone jump out and pop you to your doom. And I'm asking too! If anyone else is reading this, make it happen!");
@@ -303,12 +301,21 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.0", "12 September 2022");
-initHeader("General");
-initSection("Character is released woaw!");
+initPatch("1.2", "21 August 2023");
+initHeader("Balance");
+initSection("-FTilt movement speed reduced from 4 to 2.5
+-FTilt projectile lifetime reduced from 20 to 10 (Changes should hopefully stop being able to chase ppl with it)
+-Jab/NAir projectile lifetime reduced from 20 to 15 (Matches FTilt change + could stand to be less annoying anyway)
+-Increased FStrong KB from 7 BKB, 0.7 scaling to 8 BKB, 0.9 scaling
+-Increased UStrong KB from 7 BKB, 0.8 scaling to 8 BKB, 1.0 scaling
+-Increased DStrong KB scaling from 0.7 to 1.1");
+initHeader("Fixes");
+initSection("-Jab spritesheet is no longer 300 frames (DON'T ASK)
+-Optimized some other spritesheets (alt costumes amirite)
+-Fixed Shelly's alts showing up on the sprites when using the Munophone (and by fixed i mean removed those sprites entirely lol)");
 
 initPatch("1.1", "15 September 2022");
-initHeader("General");
+initHeader("Aesthetic");
 initSection("-Updated Munophone entry for Nodes to mention their new high kill power");
 initHeader("Balance");
 initSection("-Node link radius increased from 120 to 150
@@ -317,6 +324,10 @@ initSection("-Node link radius increased from 120 to 150
 -Node base hitpause increased from 8 to 10
 -Node hitpause scaling increased from 0.8 to 1
 ");
+
+initPatch("1.0", "12 September 2022");
+initHeader("General");
+initSection("Character is released woaw!");
 
 initPatch("About Shelly", "");
 initHeader("General Info");

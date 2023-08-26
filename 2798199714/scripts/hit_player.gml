@@ -91,3 +91,8 @@ if(hit_player_obj.should_make_shockwave){
 		sound_play(sound_get("iron knuckle die"));
 	}
 }
+
+//charge final smash when projectiles hit
+if("fs_charge" in self && my_hitboxID.type == 2){
+    fs_charge += my_hitboxID.damage;
+}

@@ -117,6 +117,7 @@ nspecialAfter3 = hit_fx_create( sprite_get( "nspecial_proj3_after" ),14);
 fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),6);
 fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),6);
 ligmaballs = 0;
+shaboingboing = 0;
 
 //Character support
 tcoart = sprite_get("cinnytcoart");

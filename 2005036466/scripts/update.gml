@@ -386,6 +386,11 @@ if penny_install{
 			spr = sprite_get("test_particle");
 			break;
 	}
+	switch(pen_name){
+		case "equi":
+			spr = sprite_get("vaporwave_particle");
+			break;
+	}
 	if get_gameplay_time() % 10 == 0{
 		createParticle(1,48,64,spr,x,y-32,-hsp/5,-vsp/5,0,0,2,-0.1,50,true);
 	}

@@ -106,6 +106,8 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 		runeL = true;
 	}if (has_rune("M") || runeM) {
 		runeM = true;
+	}if (has_rune("O") || runeO) {
+		runeO = true;
 	}
 }
 if(runeK){
@@ -141,4 +143,28 @@ if(!loaded){
 	
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
 	loaded = true;
+}
+
+//final smash stuff
+if(FinalSmash > 0){
+	soft_armor = 9999;strong_charge = 90;
+	was_parried = false;suppress_stage_music(0.25,120);
+	if(FinalSmash > 1){
+		vsp = 0;
+		x = round(room_width/2);y = round(room_height/2)-30;
+		if(state != PS_ATTACK_AIR){
+			if(FinalSmash == 2 || FinalSmash == 3){
+				set_attack(AT_NSPECIAL);
+			}else if(FinalSmash == 4 || FinalSmash == 5 || FinalSmash == 6 || FinalSmash == 7 || FinalSmash == 8){
+				set_attack(AT_USTRONG);
+			}else if(FinalSmash == 9){
+				set_attack(AT_TAUNT);
+			}
+		}
+		if(get_gameplay_time() % 20 == 0){
+        	var sword = create_hitbox(AT_NSPECIAL, 1, round(room_width/2)-300+random_func(0, 600, true), -190);//sound_play(sound_get("swords"));
+        	if(sword.x > round(room_width/2)){sword.spr_dir = -1;}else{sword.spr_dir = 1;}
+			sword.swordnum = 3;sword.swordnum2 = 1;sword.up = true;sword.hsp = 14*sword.spr_dir;sword.vsp = 14;sword.hitbox_timer = 110;
+    	}
+	}
 }

@@ -131,7 +131,7 @@ switch (attack){
     case AT_FSPECIAL:
 	    can_fast_fall = false;
 	    can_move = false;
-	    move_cooldown[AT_FSPECIAL] = 10;
+	    move_cooldown[AT_FSPECIAL] = 30;
 	    trigger_wavebounce();
 		var window_length = get_window_value(attack, 1, AG_WINDOW_LENGTH);
 		var window_frames = get_window_value(attack, 1, AG_WINDOW_ANIM_FRAMES);
@@ -220,7 +220,7 @@ switch (attack){
 	    if (window == 1) {
 	    	uspecial_hitstun = false;
 	    }
-	    if (window == 1 && window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH) && !hitpause) {
+	    if (window == 1 && window_timer == get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH) && !hitpause) {
 	    	hsp *= 0.5;
 	    }
 	    var mamizou_marked_temp = noone;
@@ -242,7 +242,7 @@ switch (attack){
 			}
 	    }
 	    
-	    if (window == 2 && window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH) && !hitpause) {
+	    if (window == 2 && window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) && !hitpause) {
 	    	var fx = spawn_hit_fx(round(x), round(y - 32), hfx_log);
 	    	fx.spr_dir = spr_dir;
 		    if (instance_exists(mamizou_marked_temp)) {

@@ -1,6 +1,15 @@
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+
 var currently_hovering = false;
 
-if get_player_color(player) == 22{
+if "customizer_active" not in self{
+    customizer_active = 0;
+}
+if "hovering" not in self{
+    hovering = 0;
+}
+
+if get_player_color(real_player) == 22{
     if get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer){
         currently_hovering = true;
         if hovering != 40{
@@ -27,7 +36,8 @@ if get_player_color(player) == 22{
     }
     set_synced_var(player, champ_cur);
 }
-else if !customizer_active && get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer) && get_player_color(player) == 23{
+
+else if !customizer_active && get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer) && get_player_color(real_player) == 23{
     currently_hovering = true;
     if hovering != 40{
         hovering = 40;
@@ -57,14 +67,14 @@ else if customizer_active{
     else{
         set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
         if customizer_closing{
-            mouth_color = get_synced_var(player) % 10;
-            righteye_color = ((get_synced_var(player) - mouth_color) / 10) % 10;
-            lefteye_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10)) / 100) % 10;
-            soul_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10;
-            thorns_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10;
-            stem_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10;
-            petals_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100;
-            face_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100;
+            mouth_color = get_synced_var(real_player) % 10;
+            righteye_color = ((get_synced_var(real_player) - mouth_color) / 10) % 10;
+            lefteye_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10)) / 100) % 10;
+            soul_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10;
+            thorns_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10;
+            stem_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10;
+            petals_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100;
+            face_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100;
         }
     }
     if customizer_timer < 0{

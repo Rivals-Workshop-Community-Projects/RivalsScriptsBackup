@@ -1,6 +1,6 @@
 //
 
-sprite_index = sprite_get("platform");
+sprite_index = sprite_get("x_platform");
 
 overridden = false;
 

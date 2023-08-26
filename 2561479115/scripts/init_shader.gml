@@ -12,6 +12,7 @@ switch(alt) {
     break;
     case 23:
         set_shading([1, 1, 1, 1, 1, 1, -5, 1]);
+        
     break;
 }
 #define set_shading(arr)

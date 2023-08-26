@@ -403,6 +403,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.11", "21 August, 2023");
+initHeader("Abyss Runes - Adjustments");
+initWords("Rune M now disables the Star item.");
+initWords("Removed Herobrine");
+
 initPatch("2.10", "14 April, 2023");
 initWords("Advertising");
 initWords("Removed Herobrine");

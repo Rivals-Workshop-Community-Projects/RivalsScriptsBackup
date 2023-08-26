@@ -1,3 +1,5 @@
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+
 if "champ_color_array" not in self{
     champ_color_array = [ // each array is a nested array of rgbs for each slot of the alt
         [ // seesaw
@@ -24,14 +26,14 @@ if "champ_color_array" not in self{
 }
 
 if "custom_color_array" not in self{
-    mouth_color = get_synced_var(player) % 10;
-    righteye_color = ((get_synced_var(player) - mouth_color) / 10) % 10;
-    lefteye_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10)) / 100) % 10;
-    soul_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10;
-    thorns_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10;
-    stem_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10;
-    petals_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100;
-    face_color = ((get_synced_var(player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100;
+    mouth_color = get_synced_var(real_player) % 10;
+    righteye_color = ((get_synced_var(real_player) - mouth_color) / 10) % 10;
+    lefteye_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10)) / 100) % 10;
+    soul_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10;
+    thorns_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10;
+    stem_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10;
+    petals_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100;
+    face_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100;
     custom_color_array = [ // [[shade 1's rgbs], [shade 2's rgbs], shade 1's shading, shade 2's shading]
         [[255, 0, 0], [192, 0, 1], 1, 1], // rainbow, 0
         [[255, 255, 255], [192, 177, 177], 1, 1], // white, 1
@@ -72,7 +74,7 @@ if "battle_over" not in self {
     battle_over = 0;  
 }
 
-switch get_player_color(player){
+switch get_player_color(real_player){
     case 0:
         set_character_color_slot( 5, 0, 0, 0, 1 ); //Blue Eyes White Dragon
         set_character_color_slot( 6, 0, 0, 0, 1 ); //Red Eyes Black Dragon
@@ -108,12 +110,12 @@ switch get_player_color(player){
         set_character_color_shading(6, 1);
         set_character_color_shading(7, 1);
         if "champ_cur" not in self{
-            champ_cur = get_synced_var(player);
+            champ_cur = get_synced_var(real_player);
         }
         for (var h = 0; h < 8; h++){
             set_character_color_slot(h, champ_color_array[champ_cur][h][0], champ_color_array[champ_cur][h][1], champ_color_array[champ_cur][h][2]);
         }
-        set_synced_var(player, champ_cur);
+        set_synced_var(real_player, champ_cur);
     break;
     case 23:
         set_character_color_slot(0, custom_color_array[face_color][0][0], custom_color_array[face_color][0][1], custom_color_array[face_color][0][2]);
@@ -124,6 +126,14 @@ switch get_player_color(player){
         set_character_color_slot(5, custom_color_array[lefteye_color][0][0], custom_color_array[lefteye_color][0][1], custom_color_array[lefteye_color][0][2]);
         set_character_color_slot(6, custom_color_array[righteye_color][0][0], custom_color_array[righteye_color][0][1], custom_color_array[righteye_color][0][2]);
         set_character_color_slot(7, custom_color_array[mouth_color][0][0], custom_color_array[mouth_color][0][1], custom_color_array[mouth_color][0][2]);
+        set_article_color_slot(0, custom_color_array[face_color][0][0], custom_color_array[face_color][0][1], custom_color_array[face_color][0][2]);
+        set_article_color_slot(1, custom_color_array[petals_color][0][0], custom_color_array[petals_color][0][1], custom_color_array[petals_color][0][2]);
+        set_article_color_slot(2, custom_color_array[stem_color][0][0], custom_color_array[stem_color][0][1], custom_color_array[stem_color][0][2]);
+        set_article_color_slot(3, custom_color_array[thorns_color][0][0], custom_color_array[thorns_color][0][1], custom_color_array[thorns_color][0][2]);
+        set_article_color_slot(4, custom_color_array[soul_color][0][0], custom_color_array[soul_color][0][1], custom_color_array[soul_color][0][2]);
+        set_article_color_slot(5, custom_color_array[lefteye_color][0][0], custom_color_array[lefteye_color][0][1], custom_color_array[lefteye_color][0][2]);
+        set_article_color_slot(6, custom_color_array[righteye_color][0][0], custom_color_array[righteye_color][0][1], custom_color_array[righteye_color][0][2]);
+        set_article_color_slot(7, custom_color_array[mouth_color][0][0], custom_color_array[mouth_color][0][1], custom_color_array[mouth_color][0][2]);
     default:
         set_character_color_shading(0, 1);
         set_character_color_shading(1, 1);
@@ -150,7 +160,7 @@ if "attack" not in self{
     attack = 0;
 }
 
-if get_player_color(player) == 3 || get_player_color(player) >= 22 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
+if get_player_color(real_player) == 3 || get_player_color(real_player) >= 22 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
 //remember rivals starts with 0
 
     color_rgb = make_color_rgb(240, 72, 72);
@@ -159,10 +169,10 @@ if get_player_color(player) == 3 || get_player_color(player) >= 22 || (attack ==
     //shift that colour by Hue, make sure it also loops
     color_hsv = make_color_hsv(hue2, color_get_saturation(color_rgb), color_get_value(color_rgb));
     //make a gamemaker color variable using the new hue
-    if get_player_color(player) == 3 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
+    if get_player_color(real_player) == 3 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
         set_character_color_slot(1, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
     }
-    else if get_player_color(player) == 23{
+    else if get_player_color(real_player) == 23{
         set_color_profile_slot(1, 0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         if face_color == 0{
             set_character_color_slot(0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));

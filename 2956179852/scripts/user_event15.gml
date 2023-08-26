@@ -252,6 +252,19 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.3", "21st August, 2023");
+initHeader("Buffs");
+initSection("- Mario can look at all the flying magestic toast above him
+- Walking now has sick music
+- NSpecial's spray cloud stays out 1 second longer (both rune and normal)");
+
+initHeader("Fixes / Other Changes");
+initSection("- Added 'Frozen' variable to projectiles caught in NSpecial's spray cloud. Use it to make things not happen when frozen
+- Added poof clouds to USpecial's pipe similar to Luigi
+- Uair's pig will no longer spam coins when in hitpause or when frozen
+- Peach will no longer lose all speed when unfrozen
+- Added sleep animation");
+
 initPatch("1.2", "20th April, 2023");
 initHeader("Nerfs");
 initSection("- DSpecial explosion base stats are weaker (9->7 dmg, 8->7 bkb, 1.0->0.7 kbs)");

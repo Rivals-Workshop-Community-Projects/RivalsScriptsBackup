@@ -135,7 +135,7 @@ if(variable_instance_exists(id,"diag"))
 
     //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
     diagchoice = [
-    "Alright, Cinna, you can do this!",
+    "(Alright, Cinna, you can do this!)",
     "Is it battle time already...?",
     "Let's do our best, okay?",
     "Heya!"]
@@ -145,12 +145,12 @@ if(variable_instance_exists(id,"diag"))
 //  Regular dialogue
     if(otherUrl == CH_ZETTERBURN && diag != "") 
     {
-        diag = "Should I call a fireman?";
+        diag = "Oh, no! I'll get a bucket of water for you ASAP!";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == CH_FORSBURN && diag != "") 
     {
-        diag = "(coughing uncontrollably)";
+        diag = "(uncontrollable coughing )";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == CH_ETALUS && diag != "") 
@@ -160,7 +160,7 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "1882960192" && diag != "") 
     {
-        diag = "Big bro? But I don't want to fight you...";
+        diag = "Blu?? But I don't want to fight you...";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2007375819" && diag != "") 

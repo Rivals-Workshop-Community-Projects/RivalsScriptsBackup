@@ -7,6 +7,12 @@ fx_sprites[1] = hit_fx_create(sprite_get("halloweencostumetoss"), 30);
 //
 guiltySprite = sprite_get("guiltySprite");
 
+#region // Training+ Buddy
+if instance_exists(pet_obj){
+	user_event(1);
+}
+#endregion
+
 // C4
 mine = noone;
 penny_dair_used = 0;
@@ -15,9 +21,16 @@ backwards_held = false;
 forwards_held = false;
 pen_prev_attack = AT_JAB;
 
-penny_charge_r = get_color_profile_slot_r(get_player_color(player), 3);
-penny_charge_g = get_color_profile_slot_g(get_player_color(player), 3);
-penny_charge_b = get_color_profile_slot_b(get_player_color(player), 3);
+pen_name = string_lower(get_player_name(player));
+if (pen_name == "equi"){
+	penny_charge_r = get_color_profile_slot_r(10, 3);
+	penny_charge_g = get_color_profile_slot_g(10, 3);
+	penny_charge_b = get_color_profile_slot_b(10, 3);
+} else {
+	penny_charge_r = get_color_profile_slot_r(get_player_color(player), 3);
+	penny_charge_g = get_color_profile_slot_g(get_player_color(player), 3);
+	penny_charge_b = get_color_profile_slot_b(get_player_color(player), 3);
+}
 penny_charge_col = make_color_rgb(penny_charge_r, penny_charge_g, penny_charge_b);
 
 penny_particles = ds_list_create();
@@ -277,4 +290,4 @@ codectext = "Hello, hello? Uh, I wanted to record a message for you to help you 
 codectext = "If this is displaying, the text system has broken."
 
 // For Codecs
-instance_create(x, y, "obj_article1");
+//instance_create(x, y, "obj_article1");

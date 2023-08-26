@@ -147,9 +147,9 @@ sprite_change_offset("bouncehurt_man", 19, 61);
 sprite_change_offset("bouncehurt_ice", 19, 61);
 sprite_change_offset("bouncehurt_uni", 19, 61);
 
-sprite_change_offset("jab", 17, 51);
-sprite_change_offset("ftilt", 28, 59);
-sprite_change_offset("nair", 20, 58);
+sprite_change_offset("jab_gun", 17, 59);
+sprite_change_offset("ftilt_gun", 16, 29);
+sprite_change_offset("nair_gun", 22, 30);
 sprite_change_offset("walkturn_shoot", 16, 59);
 sprite_change_offset("jumpstart_shoot", 19, 59);
 sprite_change_offset("landinglag_shoot", 19, 59);

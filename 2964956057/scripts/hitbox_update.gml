@@ -29,12 +29,13 @@ if attack == AT_NSPECIAL{
 			var xx = get_pID.x;
 			get_pID.x = -10000;
 			
+			if (was_parried){
+				was_parried = false;
+				hitbox_timer = 4;
+				hsp += 2 * spr_dir;
+				tracking_cap++;
+			}
 			if (player != orig_player){
-				if (was_parried){
-					was_parried = false;
-					hitbox_timer = 4;
-					tracking_cap++;
-				}
 				target_id = player_id;
 			}
 			else{

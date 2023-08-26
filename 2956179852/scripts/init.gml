@@ -211,6 +211,12 @@ nspec_cloud = noone;
 can_uspecial = false;
 respawnplat = 0;
 peach = noone;
+lookuptime = 0;
+kob_sleep_sprite = sprite_get("sleep");
+kob_sleep_sprite_air = sprite_get("hurt");
+walk_music_timer = 0;
+walk_music = noone;
+walk_music_blocked = false;
 
 if(alt != 0){
     set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_alts"));
@@ -247,7 +253,6 @@ if(alt != 0){
         peach_sprite = sprite_get("useless creature_smb");set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("useless creature_smb"));
     }
 }
-
 //Rune Support
 abyssEnabled = false;
 enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}

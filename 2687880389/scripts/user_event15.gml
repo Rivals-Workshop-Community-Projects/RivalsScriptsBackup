@@ -449,8 +449,13 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
 
+initPatch("2.15", "20 Aug, 2023");
+initHeader("Presentation");
+initSection("- Temporarily disabled alt-specific details, as well as down+taunt for Riptide
+			- Added Riptide alt");
+
 initPatch("2.14", "03 Aug, 2023");
-initSection("Bugs");
+initHeader("Bugs");
 initSection("- Restored ability to moonwalk");
 
 initPatch("2.13", "29 Jul, 2023");

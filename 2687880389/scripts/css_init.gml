@@ -1,5 +1,5 @@
 //set_synced_var(player, 0);
-tournament_legal_mode_active = false;
+tournament_legal_mode_active = true;
 special_color_available = false;
 
 party_button_origin_x = 14;//110;//92;

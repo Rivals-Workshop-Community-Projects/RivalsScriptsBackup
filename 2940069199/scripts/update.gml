@@ -26,6 +26,10 @@ if(!free && fspecial_hit_comet = true){
 if(prev_state == PS_RESPAWN && state_timer == 0){
 	spawn_hit_fx(x, y, VFX_plat_despawn)
 }
+
+if (!free || state == PS_WALL_JUMP || state == PS_RESPAWN) {
+  nspecstall = false;
+}
 /*if(get_gameplay_time()%10=0){
 	spawn_hit_fx(x,y,hfx_index)
 	print(hfx_index)

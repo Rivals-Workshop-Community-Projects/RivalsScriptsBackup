@@ -37,7 +37,7 @@ if(state == 0){ //waiting
         anim += 1;
     }
     if(timer >= 180){
-        state = 3;timer = 0;anim = 5;lasersound = sound_play(laser_sfx );sound_play(laserboom_sfx);
+        state = 3;timer = 0;anim = 5;lasersound = sound_play(laser_sfx);sound_play(laserboom_sfx);
     }
 }else if(state == 3){ //laser
     if((timer % 3 == 0 || timer == 0) && timer < 60){

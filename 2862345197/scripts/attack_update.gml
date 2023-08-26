@@ -116,7 +116,7 @@ switch(attack){
 		//turning
 		    if spr_dir == 1{
 			    if right_down || (right_stick_down && !right_strong_down){
-			    hsp = 4;
+			    hsp = 2.5;
 				} else if left_down || (left_stick_down && !left_strong_down){
 				    if has_rune("L") {
 						spr_dir = -1;
@@ -128,7 +128,7 @@ switch(attack){
 				}
 			} else if spr_dir = -1{
 			    if left_down || (left_stick_down && !left_strong_down){
-			    hsp = -4;
+			    hsp = -2.5;
 				} else if right_down || (right_stick_down && !right_strong_down){
 					if has_rune("L") {
 						spr_dir = 1;

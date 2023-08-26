@@ -19,7 +19,10 @@ close_down_attacks[2] = AT_DTILT;
 close_side_attacks[0] = AT_FSTRONG;
 close_side_attacks[1] = AT_FAIR;
 close_side_attacks[2] = AT_FTILT;
+close_side_attacks[3] = AT_JAB;
 
 neutral_attacks[0] = AT_JAB;
 neutral_attacks[1] = AT_NAIR;
 neutral_attacks[2] = AT_DSPECIAL;
+
+silly = 0;

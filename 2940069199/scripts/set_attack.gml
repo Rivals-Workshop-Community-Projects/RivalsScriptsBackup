@@ -9,6 +9,12 @@ if (should_switch % 2) {
     break;
   }
 }
+if attack = AT_NSPECIAL && free && !move_cooldown[AT_NSPECIAL] && !nspecstall {
+	if vsp > 0 {
+		nspecstall = true
+		vsp = -2
+	}
+}
 
 if (attack==AT_TAUNT){
 	if (down_down){

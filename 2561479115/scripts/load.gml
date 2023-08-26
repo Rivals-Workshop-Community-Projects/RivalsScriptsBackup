@@ -101,6 +101,7 @@ sprite_change_offset("plat", 64, 76);
 sprite_change_offset("hitscan", 0, 4);
 sprite_change_offset("nspecial_proj_strong", 80, 20);
 sprite_change_offset("nspecial_proj", 58, 14);
+sprite_change_offset("nspecial_proj_collision_mask", 58, 14);
 sprite_change_offset("nspecial_proj_strong_dissipate", 64, 16);
 sprite_change_offset("nspecial_proj_dissipate", 34, 6);
 sprite_change_offset("fspecial_proj", 79, 67);
