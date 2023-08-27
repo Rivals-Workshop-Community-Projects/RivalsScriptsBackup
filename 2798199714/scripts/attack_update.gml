@@ -126,7 +126,7 @@ if (attack == AT_NSPECIAL){
         		upbground = !free;
         		if(!free){
         			upbtimer = 8;
-        		}if(FinalSmash > 0)upbtimer = 20;
+        		}if(FinalSmash > 0){upbtimer = 20;mask_index = asset_get("empty_sprite");}
         	}
             hsp = hsp*0.9;
             vsp = 0;
@@ -684,7 +684,7 @@ if (attack == AT_NSPECIAL){
 			laseranglespeed *= 0.9;shake_camera(1,2);
 			if(lasernum2 == 3){lasernum2 = 4;}
 		}else{
-			window = 9;window_timer = 0;sound_stop(lasersound);
+			window = 9;window_timer = 0;sound_stop(lasersound);mask_index = asset_get("ex_guy_collision_mask");
 			if(FinalSmash > 0){
 	        	FinalSmash += 1;
 	        	if(FinalSmash > 9)FinalSmash = 0;

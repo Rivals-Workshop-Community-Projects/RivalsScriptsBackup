@@ -119,7 +119,7 @@ sprite_change_offset("plat_behind", 68, 108);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("wind", 10, 10);
 sprite_change_offset("wind2", 10, 10);
-sprite_change_offset("star_big", 30, 30);
+sprite_change_offset("projectile_star", 30, 30);
 sprite_change_offset("planet", 15, 15);
 sprite_change_offset("fx_dust_cloud", 100, 120);
 sprite_change_offset("fspecial_trail", 40, 62);

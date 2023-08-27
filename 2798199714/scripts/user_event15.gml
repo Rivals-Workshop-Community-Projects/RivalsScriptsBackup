@@ -257,6 +257,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.86", "25th August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed GK getting Final Smash meter when hitting characters with the final smash itself
++ Made Final Smash go through collision and platforms, fixing a couple of bugs");
+
 initPatch("1.85", "25th August, 2023");
 initHeader("Buffs");
 initSection("+ Increased FStrong damage (11->12) and kbs (1.0->1.05), and gave it slightly less startup when uncharged (f25->f21)");

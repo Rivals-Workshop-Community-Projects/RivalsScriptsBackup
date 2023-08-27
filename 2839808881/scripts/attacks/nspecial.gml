@@ -171,7 +171,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, star_hit_fx);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_ori_spirit_flame_hit_2"));
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("star_big"));
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("projectile_star"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_ANIM_SPEED, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_HSPEED, 15);

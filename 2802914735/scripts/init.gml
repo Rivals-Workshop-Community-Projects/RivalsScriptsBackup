@@ -144,3 +144,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//victory
+ayaka_victory_quote = "That was... me-! Not an illusion that was- What?! What's happening?!";
+ayaka_handled_victory_quote = false;
+ayaka_victory_icon = 4;

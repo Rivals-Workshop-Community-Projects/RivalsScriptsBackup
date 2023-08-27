@@ -149,9 +149,13 @@ if(!loaded){
 if(FinalSmash > 0){
 	soft_armor = 9999;strong_charge = 90;
 	was_parried = false;suppress_stage_music(0.25,120);
+	fall_through = 1;
 	if(FinalSmash > 1){
 		vsp = 0;
 		x = round(room_width/2);y = round(room_height/2)-30;
+		if(FinalSmash >= 9){
+			up_down = true;
+		}
 		if(state != PS_ATTACK_AIR){
 			if(FinalSmash == 2 || FinalSmash == 3){
 				set_attack(AT_NSPECIAL);
@@ -166,5 +170,8 @@ if(FinalSmash > 0){
         	if(sword.x > round(room_width/2)){sword.spr_dir = -1;}else{sword.spr_dir = 1;}
 			sword.swordnum = 3;sword.swordnum2 = 1;sword.up = true;sword.hsp = 14*sword.spr_dir;sword.vsp = 14;sword.hitbox_timer = 110;
     	}
+	}
+	if("fs_charge" in self){
+		fs_charge = 0;
 	}
 }
