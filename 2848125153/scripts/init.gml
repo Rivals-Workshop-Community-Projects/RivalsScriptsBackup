@@ -224,6 +224,7 @@ soldsfx = sound_get("soldsfx");
 upb = false;
 dairhitbox = noone;
 DairBounce = 0;
+DairBounceHits = 0;
 BAir_cooldown = 0;
 VerySkillful = true;
 current_money = 15000;
@@ -272,6 +273,8 @@ ncode3 = "Bye bye now!";
 pkmn_stadium_name_override = "Monopoly";
 arena_title = "Millionaire";
 boxing_title = "Millionaire";
+Toadie_Ability = -1;
+TCG_Kirby_Copy = -1;
 
 if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"){
 	kewtmode = 1;

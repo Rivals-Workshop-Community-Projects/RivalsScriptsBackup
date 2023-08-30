@@ -10,7 +10,7 @@ var tag_pal_value = __syncvar[0]; //change the 0 to the synced var index for the
 var tag_pal = player_tag_palettes(12, tag_pal_value);
 
 // This is your final alt value, which is the current alt palette the player has selected.
-var real_alt = tag_pal != -1 ? tag_pal : alt_cur;
+real_alt = tag_pal != -1 ? tag_pal : alt_cur; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
 set_character_color_slot(3, 
 	get_color_profile_slot_r(real_alt, 8),
@@ -18,16 +18,14 @@ set_character_color_slot(3,
 	get_color_profile_slot_b(real_alt, 8)
 )
 
-switch(string_lower(get_player_name(player))){
+/*switch(string_lower(get_player_name(player))){
 	case "equi":
-		set_article_color_slot(6 , get_color_profile_slot_r(10, 6), get_color_profile_slot_g(10, 6), get_color_profile_slot_b(10, 6));
 		break;
 	case "giga":
-	case "gear":
-		set_article_color_slot(6 , get_color_profile_slot_r(27, 0), get_color_profile_slot_g(37, 0), get_color_profile_slot_b(27, 0));
-		set_article_color_slot(6 , get_color_profile_slot_r(27, 3), get_color_profile_slot_g(37, 3), get_color_profile_slot_b(27, 3));
 		break;
-}
+	case "gear":
+		break;
+}*/
 
 switch(real_alt){
     case 0:
@@ -55,21 +53,25 @@ switch(real_alt){
     	break;
     case 5:
     	// set_character_color_slot(3, 238, 190, 0 ); //Metaru
-        if penny_install{
-			set_character_color_slot( 0, 167, 46, 82 ); //Fur
-			set_character_color_slot( 1, 219, 162, 182 ); //Fur Light
-			set_character_color_slot( 2, 167, 46, 82 ); //Hair
-			set_character_color_slot( 7, 99, 12, 68 ); //That Single FUCKING HAIR PARTICLE
-        } else {
-            set_character_color_slot( 0, 99, 99, 166 ); //Fur
-            set_character_color_slot( 1, 201, 201, 240 ); //Fur Light
-            set_character_color_slot( 2, 90, 90, 150 ); //Hair
-            set_character_color_slot( 7, 47, 42, 99 ); //That Single FUCKING HAIR PARTICLE
+    	if ("penny_install" in self){
+	        if penny_install{
+				set_character_color_slot( 0, 167, 46, 82 ); //Fur
+				set_character_color_slot( 1, 219, 162, 182 ); //Fur Light
+				set_character_color_slot( 2, 167, 46, 82 ); //Hair
+				set_character_color_slot( 7, 99, 12, 68 ); //That Single FUCKING HAIR PARTICLE
+	        } else {
+	            set_character_color_slot( 0, 99, 99, 166 ); //Fur
+	            set_character_color_slot( 1, 201, 201, 240 ); //Fur Light
+	            set_character_color_slot( 2, 90, 90, 150 ); //Hair
+	            set_character_color_slot( 7, 47, 42, 99 ); //That Single FUCKING HAIR PARTICLE
+	        }
         }
         break;
-    case 10:
+    case 10: // Vaporwave
     	// set_character_color_slot(3, 131, 81, 194 ); //Metaru
         set_character_color_shading( 5, 0.5 );
+        set_article_color_slot(0 , get_color_profile_slot_r(10, 0), get_color_profile_slot_g(10, 0), get_color_profile_slot_b(10, 0));
+        set_article_color_slot(6 , get_color_profile_slot_r(10, 6), get_color_profile_slot_g(10, 6), get_color_profile_slot_b(10, 6));
         break;
     case 11:
         switch(get_match_setting(SET_SEASON)){
@@ -127,6 +129,8 @@ switch(real_alt){
     case 15: // Hitfall
     	// set_character_color_slot(3, 219, 219, 219 ); //Metaru
         set_character_color_shading( 5, 0.5 );
+		set_article_color_slot(0 , get_color_profile_slot_r(15, 0), get_color_profile_slot_g(15, 0), get_color_profile_slot_b(15, 0));
+		set_article_color_slot(6 , get_color_profile_slot_r(15, 3), get_color_profile_slot_g(15, 3), get_color_profile_slot_b(15, 3));
         break;
     case 16: // Genesis
     	// set_character_color_slot(3, 219, 219, 219 ); //Metaru
@@ -139,16 +143,18 @@ switch(real_alt){
     case 19: // Arcade
     	set_character_color_shading( 4, .5 );
     	set_character_color_shading( 5, .5 );
-    	switch(pen_arcade_col){
-    		case 0:
-    			set_character_color_slot( 3, 140, 222, 94 ); //Real Metal Color
-    			break;
-    		case 1:
-    			set_character_color_slot( 3, 217, 135, 205 ); //Real Metal Color
-    			break;
-    		case 2:
-    			set_character_color_slot( 3, 145, 210, 243 ); //Real Metal Color
-    			break;
+    	if ("pen_arcade_col" in self){
+	    	switch(pen_arcade_col){
+	    		case 0:
+	    			set_character_color_slot( 3, 140, 222, 94 ); //Real Metal Color
+	    			break;
+	    		case 1:
+	    			set_character_color_slot( 3, 217, 135, 205 ); //Real Metal Color
+	    			break;
+	    		case 2:
+	    			set_character_color_slot( 3, 145, 210, 243 ); //Real Metal Color
+	    			break;
+	    	}
     	}
     	break;
     case 23: // Lumi
@@ -162,6 +168,8 @@ switch(real_alt){
     	set_character_color_shading( 0, 2 );
     	set_character_color_shading( 1, 2 );
     	set_character_color_shading( 3, 0.75 );
+		set_article_color_slot(0 , get_color_profile_slot_r(27, 0), get_color_profile_slot_g(27, 0), get_color_profile_slot_b(27, 0));
+		set_article_color_slot(6 , get_color_profile_slot_r(27, 3), get_color_profile_slot_g(27, 3), get_color_profile_slot_b(27, 3));
     	break;
     case 30: // Luka
     	set_character_color_shading( 2, 0.75);

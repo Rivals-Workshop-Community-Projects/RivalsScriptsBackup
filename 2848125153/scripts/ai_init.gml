@@ -30,3 +30,4 @@ money_override = false;
 property_override = false;
 jump_cooldown = 0;
 nair_chance = 0;
+haha = 0; 

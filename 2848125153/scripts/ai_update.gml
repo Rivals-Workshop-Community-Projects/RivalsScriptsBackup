@@ -21,11 +21,15 @@ if(ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN && ai_target != s
 	if(!free){
 		ready_to_attack = false;
 		if(silly == 1){
-			silly = 2+random_func(0,2,true);
+			silly = 2+random_func(0,3,true);
 		}else if(silly == 2){
 			down_down = true;set_attack_ai(AT_TAUNT);taunt_down = true;
 		}else if(silly == 3){
 			set_attack_ai(AT_TAUNT);taunt_down = true;
+		}else if(silly == 4){
+			if(get_gameplay_time() % 12 == 0 && haha == 0)haha = 6;
+			if(haha > 0)haha--;
+			up_down = haha>0;
 		}
 	}
 }

@@ -57,10 +57,11 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num <= 3){
 if(my_hitboxID.attack == AT_DAIR && free){
 	if(my_hitboxID.hbox_num == 1){
 		old_vsp = -11;
-	}else if(my_hitboxID.hbox_num == 2){
+	}else if(my_hitboxID.hbox_num >= 2){
 		old_vsp = -10;
 		destroy_hitboxes();attack_end();
 		window_timer = 5;
+		DairBounceHits += 1;
 	}
 	if(up_down){
 		old_vsp -= 3;

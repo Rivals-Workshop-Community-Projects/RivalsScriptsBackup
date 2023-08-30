@@ -151,7 +151,7 @@ if (attack == AT_USTRONG){
 		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_light"));
 		set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 6);set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 4);
 		set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 2);set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX_FRAME, 1);set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-		set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 4);set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 10);
+		set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 4);set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 12);
 		
 		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 6);set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 100);
 		set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, .5);set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 10);set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .7);
@@ -201,7 +201,7 @@ if (attack == AT_USTRONG){
 		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_heavy"));
 		set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 16);set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));reset_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH);
 		set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 8);set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX_FRAME, 7);set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-		reset_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH);set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 20);
+		reset_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH);set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 23);
 		
 		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12);reset_hitbox_value(AT_USTRONG, 1, HG_ANGLE);
 		set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.15);reset_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE);reset_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING);
@@ -320,7 +320,7 @@ if (attack == AT_BAIR){
 	}else{
 		set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_heavy"));
 		set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 15);set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 14);
-		set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 20);set_attack_value(AT_BAIR, AG_LANDING_LAG, 14);
+		set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 23);set_attack_value(AT_BAIR, AG_LANDING_LAG, 16);
 		
 		set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 12);
 		set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1.1);

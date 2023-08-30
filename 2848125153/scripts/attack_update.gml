@@ -911,7 +911,8 @@ if (attack == AT_NSPECIAL){
     	}else{
     		can_fast_fall = true;
     	}if(vsp >= 0 && !instance_exists(dairhitbox) && !hitpause){
-    		dairhitbox = create_hitbox(AT_DAIR, 2, round(x), round(y));
+    		if(DairBounceHits < 2){dairhitbox = create_hitbox(AT_DAIR, 2, round(x), round(y));}
+    		else{dairhitbox = create_hitbox(AT_DAIR, 3, round(x), round(y));}
     	}else if(vsp < 0){
     		destroy_hitboxes();
     	}

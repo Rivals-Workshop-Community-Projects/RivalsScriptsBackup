@@ -708,7 +708,7 @@ if(attack == AT_DSPECIAL){
 					}else if(housemoney >= 1200){
 						money.value = 1200;housemoney -= 1200;
 					}else{
-						housemoney -= 600;
+						money.value = 600;housemoney -= 600;
 					}
 					if(housemoney >= 600){
 						var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
@@ -723,7 +723,7 @@ if(attack == AT_DSPECIAL){
 						}else if(housemoney >= 1200){
 							money.value = 1200;housemoney -= 1200;
 						}else{
-							housemoney -= 600;
+							money.value = 600;housemoney -= 600;
 						}
 						if(housemoney >= 600){
 							var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
@@ -738,7 +738,7 @@ if(attack == AT_DSPECIAL){
 							}else if(housemoney >= 1200){
 								money.value = 1200;housemoney -= 1200;
 							}else{
-								housemoney -= 600;
+								money.value = 600;housemoney -= 600;
 							}
 							if(housemoney >= 600){
 								var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(3, 10, true);money.vsp = -2-random_func(4, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
@@ -753,7 +753,7 @@ if(attack == AT_DSPECIAL){
 								}else if(housemoney >= 1200){
 									money.value = 1200;housemoney -= 1200;
 								}else{
-									housemoney -= 600;
+									money.value = 600;housemoney -= 600;
 								}
 							}
 						}

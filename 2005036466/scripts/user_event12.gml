@@ -90,6 +90,7 @@ if (arg) {
 #define __css_init(arg)
 __system_init();
 var dat = ssnk_tagpal;
+dat.cur_name = get_player_name(player);
 dat.prev_name = dat.cur_name;
 dat.enabled = false;
 dat.active_clr = __get_tag_clr(dat.cur_name);
@@ -113,6 +114,7 @@ if (dat.cur_name != dat.prev_name) {
         dat.enabled = true;
         dat.active_clr = pal;
         sound_play(dat.confirm_snd);
+        init_shader();
     }
 }
 dat.alt = get_player_color(player);
@@ -120,6 +122,7 @@ if (dat.active_clr != -1) {
     if (dat.alt != dat.prev_alt && dat.enabled) {
         dat.enabled = false;
         sound_play(dat.cancel_snd);
+        init_shader();
     }
 }
 
@@ -130,17 +133,19 @@ dat.button_hovered = point_in_rect(cx, cy,
     y+77*2+1,
     x+80+14+(string_width(get_player_name(player))),
     y+(79+6)*2+1)
-if dat.button_hovered {
+if dat.button_hovered && dat.active_clr != -1 {
     suppress_cursor = true;
     if menu_a_pressed {
         dat.enabled = !dat.enabled;
         sound_play(dat.enabled ? dat.confirm_snd : dat.cancel_snd);
         dat.flash_timer = dat.flash_time;
+        init_shader();
     }
 }
 dat.prev_alt = dat.alt;
 return dat.enabled;
 #define __css_draw(arg)
+if "ssnk_tagpal" not in self return;
 var dat = ssnk_tagpal;
 var x = floor(self.x), y = floor(self.y);
 //white flash
@@ -179,6 +184,10 @@ if (arg) {
 #define __init_shader(arg)
 //print("init_shader")
 if "ssnk_tagpal" not in self {
+    //prevent from running first on css.
+    if (object_index == asset_get("cs_playerbg_obj")) {
+        return
+    }
     __init(arg);
 };
 var dat = ssnk_tagpal;

@@ -3,6 +3,7 @@ muno_event_type = 1;
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
    upb = false;move_cooldown[AT_USPECIAL] = 0;
+   DairBounceHits = 0;
 }
 
 if(instance_exists(thedice1) && instance_exists(thedice2)){

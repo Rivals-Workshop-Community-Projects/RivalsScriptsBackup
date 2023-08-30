@@ -319,7 +319,17 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.23", "30th July, 2023");
+initPatch("1.25", "29th August, 2023");
+initHeader("Unskillful Nerfs");
+initSection("- Jab1 has a bit more startup (f4->f6)
+- FTilt has a bit more startup (f6->f8), slightly smaller hitboxes (mostly just hits less behind Monopoly), and a bit more endlag (+2f)
+- BAir has a bit more landing lag (9->10 medium, 14->16 heavy)
+- UStrong has a bit more endlag (+2f light, +1f medium, and +3f heavy), and the back hit is slightly smaller
+- DAir late hit spike is now a bit more limited; Mr Monopoly can bounce on an opponent twice with it, but any further hits will send at a different angle and have less hitstun. This refreshes whenever Mr Monopoly lands again, and only applies to the held bounce and not the initial hit");
+initHeader("Fixes / Other Changes");
+initSection("+ Added 3 more Miiverse posts");
+
+initPatch("1.24", "3rd August, 2023");
 initHeader("Skillful Buffs");
 initSection("+ Money, various hit collisions, etc, are now untargetable for Eggman FSpecial. As these shouldn't be targetable, particularly the latter caused many things to be targeted twice
 + If Mr Monopoly gets Home during USpecial and he's very far down off-stage, the move won't send him down (mainly prevents SD's from getting this option when very low off-stage)");
