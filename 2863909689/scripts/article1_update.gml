@@ -145,10 +145,21 @@ if (state == 1){
     	shake_camera(3, 5);
     	
     	spawn_hit_fx( floor(hitbox_x), floor(hitbox_y), player_id.explosion_effect );
+    	
+    	if (player_who_hit.player != player_id.player){
+    		with (player_id){
+    			set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.65);
+    		}
+    	}
+    	
     	var beep_hitbox = create_hitbox(AT_DSPECIAL, 2, floor(hitbox_x), floor(hitbox_y) - floor(player_hit.char_height/2));
     	beep_hitbox.player = player_who_hit.player;
     	sound_play(sound_get("explosion"));
     	sound_play(sound_get("beep"));
+    	
+    	with (player_id){
+    		reset_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER);
+    	}
     	
     	text_color = c_white;
     	

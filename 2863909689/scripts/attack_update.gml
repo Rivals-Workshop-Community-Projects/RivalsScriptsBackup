@@ -257,6 +257,7 @@ if (attack == AT_FSPECIAL){
 			should_cancel = false;
 			enter_fspecial_command_grab = false;
 			set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
+			reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
 		}
 		if (window_timer == 13){
 			if (!hitpause && !hitstop){
@@ -298,13 +299,14 @@ if (attack == AT_FSPECIAL){
 			window = 5;
 			window_timer = 0;
 			enter_fspecial_command_grab = false;
+			fspec_start_y = y;
 		}
 		
 	}
 	if (window == 4){
 		
 		can_move = true;
-		can_fast_fall = true;
+		can_fast_fall = false;
 		
 		//bounce
 		if (window_timer == 1){
@@ -314,6 +316,16 @@ if (attack == AT_FSPECIAL){
 				spawn_hit_fx( x + 5*spr_dir, y - 20, 301 );
 				sound_play(sound_get("tool_break"));
 			}
+		}
+		
+		//enter grab on hit
+		if (enter_fspecial_command_grab){
+			destroy_hitboxes();
+			set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 10);
+			window = 5;
+			window_timer = 0;
+			enter_fspecial_command_grab = false;
+			fspec_start_y = y;
 		}
 		
 	}
@@ -370,6 +382,18 @@ if (attack == AT_FSPECIAL){
 			spawn_base_dust( x + (0 * spr_dir), y, "dash_start", spr_dir);
 			spawn_base_dust( x + (0 * spr_dir), y, "dash_start", spr_dir*-1);
 			sound_play(asset_get("sfx_blow_heavy1"));
+			
+			var fspecial_bkb = get_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
+			
+			//get bkb based on distance from starting y position
+			if (y < fspec_start_y - 50){
+				var fspecial_new_bkb = fspecial_bkb*(0.83/(fspec_start_y/y));
+				/*
+				print_debug( fspecial_new_bkb );
+				print_debug( y );
+				*/
+				set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, fspecial_new_bkb);
+			}
 		}
 	}
 	
