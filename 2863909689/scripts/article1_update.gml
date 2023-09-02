@@ -148,7 +148,7 @@ if (state == 1){
     	
     	if (player_who_hit.player != player_id.player){
     		with (player_id){
-    			set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.65);
+    			set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.5);
     		}
     	}
     	

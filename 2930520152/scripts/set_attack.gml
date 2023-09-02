@@ -111,8 +111,6 @@ if(attack == AT_TAUNT && down_down){
 	if(shield_down || has_rune("G")){
 		earrape = true;
 		attack = AT_EXTRA_2;
-	} else {
-		sound_play(sound_get("default_dance"), false, false, 200);
 	}
 }
 

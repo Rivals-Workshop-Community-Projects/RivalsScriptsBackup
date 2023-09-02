@@ -15,6 +15,9 @@ set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 140);//140
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 20);
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX, sound_get("lol_earrape"));
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX_FRAME, 20);
 
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 10);

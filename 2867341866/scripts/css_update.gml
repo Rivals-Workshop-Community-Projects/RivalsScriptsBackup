@@ -1,9 +1,12 @@
+
+
 // whether the tag palette is on. this variable is for your synced var.
 // IMPORTANT: The 12 (first argument) in this function should be the same number as the user event.
 tag_pal_on = player_tag_palettes(12); 
 // the current alt, even with a tag palette equipped.
 // just in case you want to support it in your css script somehow.
 cur_tag_pal = tag_pal_on ? ssnk_tagpal.active_clr : get_player_color(player);
+
 
 // please see 
 // https://github.com/SupersonicNK/roa-workshop-templates/tree/master/generate-synced-var 

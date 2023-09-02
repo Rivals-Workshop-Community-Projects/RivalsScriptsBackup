@@ -142,16 +142,16 @@ if adrenaline_timer == adrenaline_max || adrenaline_timer == adrenaline_max - 10
         set_article_color_slot( 12, 4, 222, 217, 33 ); //pickmid
         set_article_color_slot( 12, 5, 247, 250, 255 ); //picklight
     }
-    if ssnk_tagpal.active_clr == 29 {
+    if ssnk_tagpal.active_clr == 30 {
         // SUPER AUR......
-        set_color_profile_slot( 29, 0, 202, 167, 17 ); //bodydark
-        set_color_profile_slot( 29, 1, 253, 215, 57 ); //bodylight
-        set_color_profile_slot( 29, 2, 253, 243, 200 ); //bodyshine
-        set_color_profile_slot( 29, 3, 202, 167, 17 ); //pickdark
-        set_color_profile_slot( 29, 4, 253, 215, 57 ); //pickmid
-        set_color_profile_slot( 29, 5, 253, 243, 200 ); //picklight
-        set_color_profile_slot( 29, 6, 180, 45, 0 ); //feet
-        set_color_profile_slot( 29, 7, 207, 102, 41 ); //feetlight
+        set_color_profile_slot( 30, 0, 202, 167, 17 ); //bodydark
+        set_color_profile_slot( 30, 1, 253, 215, 57 ); //bodylight
+        set_color_profile_slot( 30, 2, 253, 243, 200 ); //bodyshine
+        set_color_profile_slot( 30, 3, 202, 167, 17 ); //pickdark
+        set_color_profile_slot( 30, 4, 253, 215, 57 ); //pickmid
+        set_color_profile_slot( 30, 5, 253, 243, 200 ); //picklight
+        set_color_profile_slot( 30, 6, 180, 45, 0 ); //feet
+        set_color_profile_slot( 30, 7, 207, 102, 41 ); //feetlight
          outline_color = [129, 87, 1];
          set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX, sound_get("SUPERAUR"));
 

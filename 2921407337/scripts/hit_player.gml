@@ -172,7 +172,7 @@ if (my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.type == 1 && my_hitboxID.
 }
 
 
-// Fix Custome HFX Not appearing.
+// Fix Custom HFX Not appearing.
 if(instance_exists(asset_get("hit_fx_obj"))){
 	var temp_self = self;
 	var temp_hit_player_obj = hit_player_obj;

@@ -517,6 +517,26 @@ set_color_profile_slot( 15, 5, 122, 104, 122 ); //Gold
 set_color_profile_slot( 15, 6, 64, 51, 64 ); //SL
 set_color_profile_slot( 15, 7, 202, 217, 245 ); //Lightning
 
+// Villain
+set_color_profile_slot( 16, 0, 49, 28, 99 ); //Fur
+set_color_profile_slot( 16, 1, 253, 253, 253 ); //Alt Fur
+set_color_profile_slot( 16, 2, 125, 16, 45 ); //gold2
+set_color_profile_slot( 16, 3, 49, 28, 99 ); //Fabric
+set_color_profile_slot( 16, 4, 49, 28, 99 ); //Pants
+set_color_profile_slot( 16, 5, 245, 68, 78 ); //Gold
+set_color_profile_slot( 16, 6, 49, 28, 99 ); //SL
+set_color_profile_slot( 16, 7, 194, 6, 6 ); //Lightning
+
+// Byte
+set_color_profile_slot( 17, 0, 230, 200, 228 ); //Fur
+set_color_profile_slot( 17, 1, 230, 200, 228 ); //Alt Fur
+set_color_profile_slot( 17, 2, 239, 182, 115 ); //gold2
+set_color_profile_slot( 17, 3, 234, 231, 240 ); //Fabric
+set_color_profile_slot( 17, 4, 44, 39, 43 ); //Pants
+set_color_profile_slot( 17, 5, 239, 182, 115 ); //Gold
+set_color_profile_slot( 17, 6, 177, 103, 202 ); //SL
+set_color_profile_slot( 17, 7, 171, 88, 192 ); //Lightning
+
 //#endregion
 
         break;

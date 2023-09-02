@@ -259,7 +259,7 @@ if (attack == AT_FSPECIAL){
 			set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 			reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
 		}
-		if (window_timer == 13){
+		if (window_timer == 12){
 			if (!hitpause && !hitstop){
 				//spawn initial vfx
 				spawn_hit_fx( x + 5*spr_dir, y - 20, 144 );

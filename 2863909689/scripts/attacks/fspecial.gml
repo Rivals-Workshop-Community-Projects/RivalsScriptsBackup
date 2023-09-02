@@ -8,11 +8,11 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 
 //startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 13);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
 
 //overshoot
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);

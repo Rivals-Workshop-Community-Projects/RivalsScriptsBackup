@@ -247,6 +247,7 @@ switch attack {
     
     
         if (window > 1){
+            set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
             if has_hit && !hitpause {
                 can_attack = true
                 can_special = true
@@ -274,7 +275,9 @@ switch attack {
                
             }
         }
-        
+        if window == 5 {
+            set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 0);
+        }
         break;
     
     //#endregion

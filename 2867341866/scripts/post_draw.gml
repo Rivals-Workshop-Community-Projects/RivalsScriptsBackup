@@ -72,6 +72,10 @@ v 2.35
 -Fixed bug where Up Special would go into normal landing lag and not pratland when landing (Makes the move more punishable.
 -Nspecial now has more landing lag when landing during the startup/endlag (4 -> 17).
 
+v 2.36
+-Fixed bug where Forward Special would slide off ledges during the landing animation.
+-Adjusted colors
+
 "
         
         patch_note_title[i] = "Quick Guide"

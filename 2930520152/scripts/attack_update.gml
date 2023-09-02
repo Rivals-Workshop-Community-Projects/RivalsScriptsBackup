@@ -41,7 +41,7 @@ var normal_voice = (attack == AT_FTILT || attack == AT_UTILT || attack == AT_DTI
 || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR || attack == AT_FTHROW || attack == AT_UTHROW);
 var throw_voice = ((attack == AT_NTHROW && window == 3) || ((attack == AT_DTHROW || attack == AT_EXTRA_1) && window == 3));
 
-if(((normal_voice && window == 1) || (attack == AT_JAB && window == 7) || throw_voice) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+if(((normal_voice && window == 1) || (attack == AT_JAB && window == 7) || throw_voice) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	voice_play();
 }
 
@@ -135,6 +135,7 @@ switch(attack){
 	
 	case AT_UTILT:
 	{
+		can_fast_fall = false;
 		if (window == 1){
 	        if (attack_down){ 
 		        set_window_value(AT_UTILT, 2, AG_WINDOW_VSPEED, -10);
@@ -833,7 +834,6 @@ switch(attack){
 			if(window_timer == 19 && !hitpause){
 				sound_play(sound_get("vc_finalsmash"), false, false, voice_brawl);
 				sound_play(sound_get("vc_ult_finalsmash"), false, false, voice_ult);
-				sound_play(sound_get("lol_earrape"), false, false, earrape * .5);
 			}
 		}
 		if(window_timer > 20 || window > 1) && earrape{
@@ -867,7 +867,7 @@ window == get_attack_value(attack, AG_NUM_WINDOWS) && window_timer == get_window
 }
 
 // if (attack == AT_USPECIAL){
-//     if (window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+//     if (window == 1 && window_timer == 1){
     
 // }
 
@@ -918,3 +918,12 @@ if(attack == AT_NSPECIAL){
 		sound_play(sound_get("vc_ult_" + string(rng_2)), false, false, voice_ult);
 	}
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

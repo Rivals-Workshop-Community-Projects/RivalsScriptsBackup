@@ -65,7 +65,7 @@ set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 0.75);
-set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 3);
+set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 2);
 
 set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
@@ -86,7 +86,7 @@ set_hitbox_value(AT_UTILT, 2, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 0.75);
-set_hitbox_value(AT_UTILT, 2, HG_TECHABLE, 3);
+set_hitbox_value(AT_UTILT, 2, HG_TECHABLE, 2);
 
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 4);

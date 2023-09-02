@@ -620,6 +620,16 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Roekoko Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Villain";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Bad Guy";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The Company Colors";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Byte";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for SpykerFX";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
 	// Lore overwrite for screen
 	for(var current_color_slot = 0;current_color_slot < 63;current_color_slot++;){

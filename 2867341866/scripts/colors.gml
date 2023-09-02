@@ -66,15 +66,15 @@ set_color_profile_slot( 3, 5, 3, 235, 235 ); //picklight
 set_color_profile_slot( 3, 6, 105, 113, 140 ); //feet
 set_color_profile_slot( 3, 7, 179, 209, 209 ); //feetlight
 
-// unnamed alt palette
-set_color_profile_slot( 4, 0, 189, 174, 174 ); //bodydark
-set_color_profile_slot( 4, 1, 235, 214, 214 ); //bodylight
-set_color_profile_slot( 4, 2, 235, 214, 214 ); //bodyshine
-set_color_profile_slot( 4, 3, 117, 25, 4 ); //pickdark
-set_color_profile_slot( 4, 4, 231, 34, 34 ); //pickmid
-set_color_profile_slot( 4, 5, 231, 104, 104 ); //picklight
-set_color_profile_slot( 4, 6, 140, 74, 53 ); //feet
-set_color_profile_slot( 4, 7, 231, 109, 109 ); //feetlight
+// Waga Bobaga
+set_color_profile_slot( 4, 0, 150, 61, 219 ); //bodydark
+set_color_profile_slot( 4, 1, 184, 115, 255 ); //bodylight
+set_color_profile_slot( 4, 2, 238, 168, 255 ); //bodyshine
+set_color_profile_slot( 4, 3, 105, 102, 122 ); //pickdark
+set_color_profile_slot( 4, 4, 177, 174, 179 ); //pickmid
+set_color_profile_slot( 4, 5, 240, 246, 255 ); //picklight
+set_color_profile_slot( 4, 6, 89, 75, 97 ); //feet
+set_color_profile_slot( 4, 7, 135, 131, 138 ); //feetlight
 
 // Arrowhead
 set_color_profile_slot( 5, 0, 38, 16, 48 ); //bodydark
