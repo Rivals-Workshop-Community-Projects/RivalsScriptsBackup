@@ -28,6 +28,14 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, .25);
 
+
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, .1);
+
+
 if(has_rune("K")){
     set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 3);
     set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 50);

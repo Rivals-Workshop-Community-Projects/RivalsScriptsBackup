@@ -40,7 +40,6 @@ if((free || !last_pillar || (!position_meeting(x, y + 1, asset_get("par_block"))
     	existant = true;
     }
     if(!existant){
-    	print(true)
         sprite_index = sprite_get("eruption_die");
         image_index = 0;
         state = 420;
@@ -139,7 +138,7 @@ switch(state){
                     }
                 }
                 if(meeting_other){
-                    var o_hbox = create_hitbox(AT_NSPECIAL, 10, x, y - 55);
+                    var o_hbox = create_hitbox(AT_NSPECIAL, 11, x, y - 55);
                     o_hbox.eruption_owner = self;
                     o_hbox.can_hit_self = true;
                     for(var i = 0; i < 20; i++){

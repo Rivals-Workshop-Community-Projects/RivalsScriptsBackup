@@ -319,6 +319,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.26", "2nd September, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Made Jab1 slightly faster again (f6->f4), keeping the rest of the small nerfs for now though");
+initHeader("Unskillful Nerfs");
+initSection("- Made normal tokens no longer have any soft armor (golden tokens still keep theirs however)");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved hit detection code on most hittable things, making them take player, hitbox, hitbox group, and attack all into account (compared to only hitbox like before).
+Also fixed an issue with Properties where they didn't account for same hitbox at all, unlike other things. Combine the two and things shouldn't hit too many times anymore, which was particularly a problem for Properties
++ Added a few more possible lines when the match ends, and made those lines a bit more reliable online (maybe)
++ Added 'skill' as a possible line on galaxy, wavedash, and victory
++ Added 9 more Miiverse posts (now 21 total)");
+
 initPatch("1.25", "29th August, 2023");
 initHeader("Unskillful Nerfs");
 initSection("- Jab1 has a bit more startup (f4->f6)

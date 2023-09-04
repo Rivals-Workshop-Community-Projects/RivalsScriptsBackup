@@ -367,9 +367,10 @@ set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NSPECIAL, 10, HG_EFFECT, 9);
 set_hitbox_value(AT_NSPECIAL, 10, HG_EFFECT, 203);
 set_hitbox_value(AT_NSPECIAL, 10, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_NSPECIAL, 10, HG_HITSTUN_MULTIPLIER, .4);
+set_hitbox_value(AT_NSPECIAL, 10, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_NSPECIAL, 10, HG_SDI_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_NSPECIAL, 11, HG_HITBOX_TYPE, 2);

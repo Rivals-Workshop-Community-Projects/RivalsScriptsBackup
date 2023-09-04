@@ -1,7 +1,6 @@
 set_attack_value(AT_FSPECIAL_GREEN, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL_GREEN, AG_SPRITE, sprite_get("throwgreen"));
 set_attack_value(AT_FSPECIAL_GREEN, AG_NUM_WINDOWS, 4);
-set_attack_value(AT_FSPECIAL_GREEN, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSPECIAL_GREEN, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL_GREEN, AG_AIR_SPRITE, sprite_get("throwgreen"));
 set_attack_value(AT_FSPECIAL_GREEN, AG_HURTBOX_SPRITE, sprite_get("throwgreen_hurt"));

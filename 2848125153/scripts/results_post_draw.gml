@@ -64,7 +64,7 @@ with(asset_get("draw_result_screen")){
 	    }else if(rand == 27){
 	    	sound_play(sound_get("cash grab"));
 	    }else if(rand == 28){
-	    	sound_play(sound_get("quite a haul"));
+	    	sound_play(sound_get("skill"));
 	    }
     }
     

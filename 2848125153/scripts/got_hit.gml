@@ -37,10 +37,10 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	
 	if(/*attacking && */attack == AT_DATTACK /*&& window >= 2*/ && takearideontherailroad){
 		//if(!free && freemd){
-					var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-25);choochoo.hsp = hsp;choochoo.vsp = vsp;
-				//}else{
-					//var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-29);choochoo.hsp = hsp;choochoo.vsp = vsp;
-				//}
+			var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-25);choochoo.hsp = hsp;choochoo.vsp = vsp;
+		//}else{
+			//var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-29);choochoo.hsp = hsp;choochoo.vsp = vsp;
+		//}
 	}
 	
 	sound_stop(voice);

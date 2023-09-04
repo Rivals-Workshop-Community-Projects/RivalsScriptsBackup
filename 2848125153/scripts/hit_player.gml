@@ -157,6 +157,8 @@ if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_DAIR && my_h
 	    	sound_stop(voice);voice = sound_play(sound_get("die die now"));
 	    }else if(rand == 18){
 	    	sound_stop(voice);voice = sound_play(sound_get("nicely done"));
+	    }else if(rand == 19){
+	    	sound_stop(voice);voice = sound_play(sound_get("skill"));
 	    }
 	    
 	    if(my_hitboxID.type == 2){

@@ -64,12 +64,14 @@ if(state == PS_RESPAWN && state_timer >= 80 && state_timer < 120 || state == PS_
 }
 
 if(state == PS_WAVELAND && state_timer == 0 && !hitpause){
-	rand = random_func(0, 3, true);
+	rand = random_func(0, 4, true);
     if(rand == 0){
     	PlayVoiceClip("very", 0.65);
     }else if(rand == 1){
     	PlayVoiceClip("skillful", 0.65);
     }else if(rand == 2){
+    	PlayVoiceClip("skill", 0.85);
+    }else if(rand == 3){
     	PlayVoiceClip("money5", 0.85);
     }
 }
@@ -129,28 +131,44 @@ if(playercount > 1 && get_gameplay_time() > 120){
 	if(get_gameplay_time() % 120 == 0 || get_game_timer() <= 0 || diedienow >= playercount-1){
 		if(get_player_stocks(player) >= 1){
 			diedienow = 0;
-			if(diedienowP1 || get_player_stocks(1) <= 0 || get_player_team(1) == get_player_team(player)/* || player == 1*/){
+			if(diedienowP1 || get_player_stocks(1) <= 0 || get_player_team(1) == get_player_team(player) && is_player_on(1)){
 				diedienow += 1;diedienowP1 = true;
-			}if(diedienowP2 || get_player_stocks(2) <= 0 || get_player_team(2) == get_player_team(player)){
+			}if(diedienowP2 || get_player_stocks(2) <= 0 || get_player_team(2) == get_player_team(player) && is_player_on(2)){
 				diedienow += 1;diedienowP2 = true;
-			}if(diedienowP3 || get_player_stocks(3) <= 0 || get_player_team(3) == get_player_team(player)){
+			}if(diedienowP3 || get_player_stocks(3) <= 0 || get_player_team(3) == get_player_team(player) && is_player_on(3)){
 				diedienow += 1;diedienowP3 = true;
-			}if(diedienowP4 || get_player_stocks(4) <= 0 || get_player_team(4) == get_player_team(player)){
+			}if(diedienowP4 || get_player_stocks(4) <= 0 || get_player_team(4) == get_player_team(player) && is_player_on(4)){
 				diedienow += 1;diedienowP4 = true;
 			}
+			//print(playercount);print(diedienow);
 			
 			if ((get_game_timer() <= 0 || diedienow >= playercount) && notmuchtimeleft < 10) { //match done
 				if (get_game_timer() <= 0) {
 				    sound_stop(voice);voice = sound_play(sound_get("lets see how you did"));
 				}else{
-					rand = random_func(0, 3, true);
+					rand = random_func(0, 6, true);
 		    		if(rand == 0){
-		    			sound_stop(voice);voice = sound_play(sound_get("lets see how you did"));
+		    			sound_stop(voice);voice = sound_play(sound_get("very skillful"));
 		    		}else if(rand == 1){
 		    			sound_stop(voice);voice = sound_play(sound_get("congratulations"));
 		    		}else if(rand == 2){
 		    			sound_stop(voice);voice = sound_play(sound_get("congratulations 2"));
-		    		}
+		    		}else if(rand == 3){
+		    			sound_stop(voice);voice = sound_play(sound_get("monopoly byebyenow"));
+		    		}else if(rand == 4){
+		    			sound_stop(voice);voice = sound_play(sound_get("gottem"));
+		    		}else if(rand == 5){
+				    	rand = random_func(1, 4, true);
+				    	if(rand == 0){
+					    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh"));
+					    }else if(rand == 1){
+					    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 2"));
+					    }else if(rand == 2){
+					    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 3"));
+					    }else if(rand == 3){
+					    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 4"));
+					    }
+				    }
 				}
 			    notmuchtimeleft = 10;
 			}else if (get_game_timer() < (60*60) && notmuchtimeleft < 3) { //1 min

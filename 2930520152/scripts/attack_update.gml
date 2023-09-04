@@ -59,7 +59,7 @@ switch(attack){
 		var base_kb = get_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK);
 		var kb_scaling = get_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING);
 		if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH) && !hitpause){
-			if(up_down){
+			if(up_down || up_stick_down){
 				set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 8);
 				set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 				set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -60);
@@ -67,14 +67,14 @@ switch(attack){
 				set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, base_kb + 1);
 				set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, kb_scaling + .05);
 				
-				set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 150);
+				set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 50);
 				set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 70);
 				set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -55);
 				set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 60);
 				set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 30);
 				set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 5);
 				set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 50);
-				set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 9);
+				set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8);
 				set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .4);
 				set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, .8);
 				set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("flareu"));
@@ -82,7 +82,7 @@ switch(attack){
 				set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_VSPEED, -4);
 				set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GRAVITY, 0);
 				set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_AIR_FRICTION, 0);
-			} else if(down_down){
+			} else if(down_down || down_stick_down){
 				set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 13);
 				set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 15);
 				set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -16);
@@ -90,14 +90,14 @@ switch(attack){
 				set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, base_kb - 1);
 				set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, kb_scaling - .15);
 				
-				set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 150);
+				set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 60);
 				set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 70);
 				set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -10);
 				set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 60);
 				set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 30);
 				set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 5);
 				set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 40);
-				set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7);
+				set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 6);
 				set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .4);
 				set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, .8);
 				set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("flared"));
@@ -135,9 +135,9 @@ switch(attack){
 	
 	case AT_UTILT:
 	{
-		can_fast_fall = false;
+		can_fast_fall = hitpause && get_hitbox_value(AT_UTILT, 1, HG_HIT_SFX) == sound_get("sfx_attack_l");
 		if (window == 1){
-	        if (attack_down){ 
+	        if (attack_down || up_stick_down){ 
 		        set_window_value(AT_UTILT, 2, AG_WINDOW_VSPEED, -10);
 		        set_window_value(AT_UTILT, 3, AG_WINDOW_VSPEED, 0);
 				set_window_value(AT_UTILT, 3, AG_WINDOW_VSPEED_TYPE, 0);
@@ -177,7 +177,7 @@ switch(attack){
 	case AT_UAIR:
 	{
 		if(window == 1 && get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH) && !hitpause){
-			if(attack_down || up_strong_down || strong_down){
+			if(attack_down || up_strong_down || strong_down || up_stick_down){
 				set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 10);
 				set_window_value(AT_UAIR, 2, AG_WINDOW_GOTO, 5);
 				set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 2);

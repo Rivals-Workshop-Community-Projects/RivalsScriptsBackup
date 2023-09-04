@@ -57,6 +57,22 @@ if(enemy_hitboxID.type == 1 && (((state == PS_ATTACK_AIR || state == PS_ATTACK_G
 	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HEIGHT, 150);
 	
 	countered = true;
+} else if(enemy_hitboxID.type == 2 && (((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL) || countering) && enemy_hitboxID.effect != 14 && (hit_player_obj != self || (hit_player_obj == self && enemy_hitboxID.attack != AT_NSPECIAL))){
+    if(hit_player_obj.x > x){
+        spr_dir = 1;
+    }
+    if(hit_player_obj.x < x){
+        spr_dir = -1;
+    }
+	if(!enemy_hitboxID.transcendent){
+   		enemy_hitboxID.destroyed = true;
+	}
+	invincible = true;
+	invince_time = 20;
+	window = 4;
+	window_timer = 0;
+	sound_play(sound_get("counter_hit"));
+	spawn_hit_fx(x + 10 * spr_dir, y - 50, 305);
 }
 
 if(eruption_stored && enemy_hitboxID.type == 1 && state_cat == SC_HITSTUN){

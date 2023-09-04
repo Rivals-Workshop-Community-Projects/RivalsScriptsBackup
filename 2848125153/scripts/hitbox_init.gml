@@ -47,6 +47,9 @@ if(attack == AT_NSPECIAL){
             hitpausehit = 0;
             timer = 0;
             lasthitbox = noone;
+            lasthitbox_player_id = noone;
+		    lasthitbox_group = -1;
+		    lasthitbox_attack = -1;
             hitlockout = 4;
             hitlockout2 = 0;
             hitplayer = false;
@@ -181,11 +184,14 @@ if(attack == AT_FSPECIAL){
         hitpausehit = 0;
         timer = 0;
         lasthitbox = noone;
+        lasthitbox_player_id = noone;
+        lasthitbox_group = -1;
+        lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
         hitplayer = false;
         hitplayertimer = 0;
-        dicearmor = 2;dicearmor2 = 2;
+        dicearmor = 0;dicearmor2 = 0;
 		statboost = 0;
 		hittimer = -1;
 		if(hbox_num == 2){
@@ -252,6 +258,9 @@ if(attack == AT_USPECIAL){
         hitpausehit = 0;
         timer = 0;
         lasthitbox = noone;
+        lasthitbox_player_id = noone;
+        lasthitbox_group = -1;
+        lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
         hitplayer = false;
@@ -319,6 +328,9 @@ if(attack == AT_DSPECIAL){
         hitpausehit = 0;
         timer = 0;
         lasthitbox = noone;
+        lasthitbox_player_id = noone;
+        lasthitbox_group = -1;
+        lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
         hitplayer = false;
@@ -377,6 +389,9 @@ if(attack == AT_DATTACK){
         hitpausehit = 0;
         timer = 0;
         lasthitbox = noone;
+        lasthitbox_player_id = noone;
+        lasthitbox_group = -1;
+        lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
         hitplayer = false;
@@ -396,6 +411,9 @@ if(attack == AT_DATTACK){
         knockback_angle = 0;
         hitpausehit = 0;
 		lasthitbox = noone;
+		lasthitbox_player_id = noone;
+        lasthitbox_group = -1;
+        lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
 	}

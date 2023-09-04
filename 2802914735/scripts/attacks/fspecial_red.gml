@@ -2,7 +2,6 @@ set_attack_value(AT_FSPECIAL_RED, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL_RED, AG_SPRITE, sprite_get("throwred"));
 set_attack_value(AT_FSPECIAL_RED, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL_RED, AG_OFF_LEDGE, 1);
-set_attack_value(AT_FSPECIAL_RED, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSPECIAL_RED, AG_AIR_SPRITE, sprite_get("throwred"));
 set_attack_value(AT_FSPECIAL_RED, AG_HURTBOX_SPRITE, sprite_get("throwred_hurt"));
 

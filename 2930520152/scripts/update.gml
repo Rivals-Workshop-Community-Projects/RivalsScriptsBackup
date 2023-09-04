@@ -294,7 +294,9 @@ with(pHitBox){
                     hit_effect = other.hfx_eruption_large;
                     effect = 200;
                     damage += 5;
-                    kb_scale += .12; 
+                    kb_scale += .15; 
+                    hitpause += 3;
+                    hitpause_growth += .2;
                     if(has_rune("L")){
                     	kb_scale += .1; 
                     }
@@ -305,7 +307,9 @@ with(pHitBox){
                     hit_effect = other.hfx_eruption_small;
                     effect = 201;
                     damage += 5;
-                    kb_scale += .12; 
+                    kb_scale += .15; 
+                    hitpause += 3;
+                    hitpause_growth += .2;
                     if(has_rune("L")){
                     	kb_scale += .1; 
                     }

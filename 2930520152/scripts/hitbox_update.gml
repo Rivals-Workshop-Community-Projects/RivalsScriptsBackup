@@ -1,5 +1,6 @@
 //hitbox update
 if(attack == AT_FTILT && hbox_num == 2){
+    draw_xscale = spr_dir;
     if(place_meeting(x, y, obj_article2)){
         var eruption = instance_place(x, y, obj_article2);
         if(variable_instance_exists(eruption, "is_ike_eruption") && eruption.state != 420){ // set state later
@@ -9,6 +10,7 @@ if(attack == AT_FTILT && hbox_num == 2){
             sound_play(asset_get("sfx_burnend"));
             transcendent = true;
             multi_hits += 2;
+            hitbox_timer = 0;
             if(has_rune("H")){
                 multi_hits += 4;
             }
@@ -29,6 +31,7 @@ if(attack == AT_FTILT && hbox_num == 2){
         var hbox = create_hitbox(AT_FTILT, 3, x, y);
         hbox.multi_hits = multi_hits;
         hbox.max_mult_hits = max_mult_hits;
+        hbox.can_hit_self = was_parried;
     }
 }
 
@@ -38,10 +41,12 @@ if(attack == AT_FTILT && hbox_num == 3 && hitbox_timer == length - 1){
         var hbox = create_hitbox(AT_FTILT, 3, x, y);
         hbox.multi_hits = multi_hits;
         hbox.max_mult_hits = max_mult_hits;
+        hbox.can_hit_self = can_hit_self;
     } else {
         var hbox = create_hitbox(AT_FTILT, 4, x, y);
         hbox.multi_hits = multi_hits;
         hbox.max_mult_hits = max_mult_hits;
         hbox.kb_scale = hbox.kb_scale + hbox.max_mult_hits * .1;
+        hbox.can_hit_self = can_hit_self;
     }
 }

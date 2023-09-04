@@ -33,47 +33,55 @@ if(attack == AT_NSPECIAL){
 	    if(instance_exists(thedice) && hit_priority > 0){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.thedice)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
+    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+    	            || player_id != other.lasthitbox_player_id)
+    	            && other != self && effect != 100){
+    	            	
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
-    	    	        		}
-    	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-    	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
-	    	    		            other.current_player = player;other.player = player;
-	    	    		            knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2)*spr_dir;
-	    	    		            if(other.hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-	    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
-	    	    		            }else{
-	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
-	    	    		            }
-    	    	        		}other.hit_priority = 4;
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
-    	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
+	                			    player_id.DairBounce = 1;
+	                			}
+	    	        		}
+	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
+    	    		            other.current_player = player;other.player = player;
+    	    		            knockback_angle = kb_angle;
+	    	        			other.knockback_power = kb_value;
+    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2)*spr_dir;
+    	    		            if(other.hsp > 0){
+    	    		            	other.spr_dir = 1;
+    	    		            }else if(other.hsp < 0){
+    	    		            	other.spr_dir = -1;
+    	    		            }
+    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
+    	    		            }else{
+    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
+    	    		            }
+	    	        		}other.hit_priority = 4;
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	        }
+    	    }
+    	    if(instance_exists(lasthitbox_player_id)){
+    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     	    }
 	    }else if(!instance_exists(thedice) && dicetimer >= 10 && !dice_has_hit){
 			destroyed = true;
@@ -281,47 +289,54 @@ if(attack == AT_FSPECIAL){
 	    if(instance_exists(thedice) && hit_priority > 0){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.thedice)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
+    	    		if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+    	            || player_id != other.lasthitbox_player_id)
+    	            && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
-    	    	        		}
-    	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-    	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
-	    	    		            other.current_player = player;other.player = player;
-	    	    		            knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2)*spr_dir;
-	    	    		            if(other.hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-	    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
-	    	    		            }else{
-	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
-	    	    		            }
-    	    	        		}other.hit_priority = 4;
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
-    	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
+	                			    player_id.DairBounce = 1;
+	                			}
+	    	        		}
+	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
+    	    		            other.current_player = player;other.player = player;
+    	    		            knockback_angle = kb_angle;
+	    	        			other.knockback_power = kb_value;
+    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2)*spr_dir;
+    	    		            if(other.hsp > 0){
+    	    		            	other.spr_dir = 1;
+    	    		            }else if(other.hsp < 0){
+    	    		            	other.spr_dir = -1;
+    	    		            }
+    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
+    	    		            }else{
+    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
+    	    		            }
+	    	        		}other.hit_priority = 4;
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	        }
+    	    }
+    	    if(instance_exists(lasthitbox_player_id)){
+    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     	    }
 	    }else if(!instance_exists(thedice) && dicetimer >= 10 && hit_priority > 0){
 			destroyed = true;
@@ -417,56 +432,64 @@ if(attack == AT_USPECIAL){
 	    	//thedice.x = x; thedice.y = y;
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other/*.thedice*/)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
+    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+    	            || player_id != other.lasthitbox_player_id)
+    	            && other != self && effect != 100){
+    	            	
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0){
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
-    	    	        		}
-    	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-    	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
-	    	    		            other.current_player = player;other.player = player;
-	    	    		            knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1)*spr_dir;
-	    	    		            if("ilovemychoochoo" in self && ilovemychoochoo){
-	    	    		            	other.hsp = hsp*2;other.hitlockout = 6;
-	    	    		            }
-	    	    		            if(other.hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-	    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1);
-	    	    		            }else{
-	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1);
-	    	    		            }
-	    	    		            //if(other.vsp < 0 && !other.free){
-	    	    		            	//other.y -= 5;
-	    	    		            //}
-    	    	        		}
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    					if("ilovemychoochoo" not in self){
-    	    	                	other.lasthitbox = id;
-    	    					}
-    	    	                other.hitbox_timer = 0;
-    	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
+	                			    player_id.DairBounce = 1;
+	                			}
+	    	        		}
+	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
+    	    		            other.current_player = player;other.player = player;
+    	    		            knockback_angle = kb_angle;
+	    	        			other.knockback_power = kb_value;
+    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1)*spr_dir;
+    	    		            if("ilovemychoochoo" in self && ilovemychoochoo){
+    	    		            	other.hsp = hsp*2;other.hitlockout = 6;
+    	    		            }
+    	    		            if(other.hsp > 0){
+    	    		            	other.spr_dir = 1;
+    	    		            }else if(other.hsp < 0){
+    	    		            	other.spr_dir = -1;
+    	    		            }
+    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1);
+    	    		            }else{
+    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1);
+    	    		            }
+    	    		            //if(other.vsp < 0 && !other.free){
+    	    		            	//other.y -= 5;
+    	    		            //}
+	    	        		}
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    					if("ilovemychoochoo" not in self){
+	    	                	other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;
+	    					}
+	    	                other.hitbox_timer = 0;
+	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	        }
+    	    }
+    	    if(instance_exists(lasthitbox_player_id)){
+    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     	    }
 	    //}
 	    if(hitstop <= 0){
@@ -576,30 +599,33 @@ if(attack == AT_DSPECIAL){
 	    	//thedice.x = x; thedice.y = y;
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other/*.thedice*/)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player && get_player_team(player) != get_player_team(other.player) && other != self && effect != 100){
+    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+    	            || player_id != other.lasthitbox_player_id)
+    	            && player != other.player && get_player_team(player) != get_player_team(other.player) && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 && type <= 1){
     	            		if(throws_rock < 1 && type <= 1 && !other.player_id.runeF){
     	            			other.hp -= round(damage*(1+(player_id.strong_charge/100)));
     	            		}
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
-    	    	        		}
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.hitbox_timer = 0;
-    	    	                //other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
+	                			    player_id.DairBounce = 1;
+	                			}
+	    	        		}
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+	    	                //other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	            if(get_player_team(player) == get_player_team(other.player) && "current_money" in player_id && attack == AT_JAB && hbox_num >= 10 && hbox_num < 12 && !other.destroying){
@@ -614,6 +640,10 @@ if(attack == AT_DSPECIAL){
     	            	}
     	            }
     	        }
+    	    }
+    	    if(instance_exists(lasthitbox_player_id)){
+    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     	    }
 	    //}
 	    if(hitstop <= 0){
@@ -942,50 +972,57 @@ if(attack == AT_DATTACK){
 	    	//thedice.x = x; thedice.y = y;
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other/*.thedice*/)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
+    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+    	            || player_id != other.lasthitbox_player_id)
+    	            && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
-    	    	        		}
-    	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-    	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
-	    	    		            other.current_player = player;other.player = player;
-	    	    		            knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
-	    	    		            if(other.hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-	    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-	    	    		            }else{
-	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-	    	    		            }
-	    	    		            //if(other.vsp < 0 && !other.free){
-	    	    		            	//other.y -= 5;
-	    	    		            //}
-    	    	        		}
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
-    	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
+	                			    player_id.DairBounce = 1;
+	                			}
+	    	        		}
+	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
+    	    		            other.current_player = player;other.player = player;
+    	    		            knockback_angle = kb_angle;
+	    	        			other.knockback_power = kb_value;
+    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
+    	    		            if(other.hsp > 0){
+    	    		            	other.spr_dir = 1;
+    	    		            }else if(other.hsp < 0){
+    	    		            	other.spr_dir = -1;
+    	    		            }
+    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+    	    		            }else{
+    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+    	    		            }
+    	    		            //if(other.vsp < 0 && !other.free){
+    	    		            	//other.y -= 5;
+    	    		            //}
+	    	        		}
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	        }
+    	    }
+    	    if(instance_exists(lasthitbox_player_id)){
+    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     	    }
 	    //}
 	    if(hitstop <= 0){
@@ -1009,39 +1046,48 @@ if(attack == AT_DATTACK){
 		x = player_id.x+(65*player_id.spr_dir);y = player_id.y-35;
     	with(asset_get("pHitBox")){
 			if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND){
-		    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player){
-			    	other.hitlockout = 6;other.hitlockout2 = 10;
-        			other.hitpausehit = hitpause;other.in_hitpause = true;
-        			if(other.hitpausehit <= 0){
-        				other.hitpausehit = 5;
-        			}
-        			other.hitstop = other.hitpausehit;
-					other.player_id.hitpause = true;other.player_id.hitstop = hitpause;
-					if(kb_value+(kb_scale*6) > other.armor){
-                		knockback_angle = kb_angle;
-	        			other.knockback_power = kb_value;
-    		            other.player_id.old_hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
-    		            if(other.player_id.old_hsp > 0){
-    		            	other.spr_dir = 1;
-    		            }else if(other.player_id.old_hsp < 0){
-    		            	other.spr_dir = -1;
-    		            }
-    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-    		                other.player_id.old_vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-    		            }else{
-    		                other.player_id.old_vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-    		            }
-					}
-					if(type == 1){
-    	        		player_id.hitpause = true;player_id.hitstop = hitpause;
-                		player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-					}
-					spawn_hit_fx(other.x, other.y, hit_effect);
-					sound_play(sound_effect);
-	                other.lasthitbox = id;other.hitbox_timer = 0;
-		    	}
+				if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+	            || player_id != other.lasthitbox_player_id)
+	            && player != other.player && other != self && effect != 100){
+			    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && player != other.player){
+				    	other.hitlockout = 6;other.hitlockout2 = 10;
+	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	        			if(other.hitpausehit <= 0){
+	        				other.hitpausehit = 5;
+	        			}
+	        			other.hitstop = other.hitpausehit;
+						other.player_id.hitpause = true;other.player_id.hitstop = hitpause;
+						if(kb_value+(kb_scale*6) > other.armor){
+	                		knockback_angle = kb_angle;
+		        			other.knockback_power = kb_value;
+	    		            other.player_id.old_hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
+	    		            if(other.player_id.old_hsp > 0){
+	    		            	other.spr_dir = 1;
+	    		            }else if(other.player_id.old_hsp < 0){
+	    		            	other.spr_dir = -1;
+	    		            }
+	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+	    		                other.player_id.old_vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    		            }else{
+	    		                other.player_id.old_vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    		            }
+						}
+						if(type == 1){
+	    	        		player_id.hitpause = true;player_id.hitstop = hitpause;
+	                		player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+						}
+						spawn_hit_fx(other.x, other.y, hit_effect);
+						sound_play(sound_effect);
+		                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+			    	}
+	            }
 			}
 		}
+		if(instance_exists(lasthitbox_player_id)){
+	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
+	    }
 		if(player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR || (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.window >= 6){
 			destroyed = true;
 		}
