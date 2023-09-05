@@ -136,7 +136,7 @@ set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, sound_get("sfx_attack_l"));
 set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 5, HG_EFFECT, 100);
 
-if(has_rune("O")){
+if(has_rune("O") || get_player_name(player) == "NAIR"){
     set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
     set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
     set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);

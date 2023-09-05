@@ -54,7 +54,7 @@ set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //kick endlag
 set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_ANIM_FRAME_START, 10);
 
@@ -78,7 +78,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("nspec_hook_proj"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_MASK, sprite_get("nspec_hook_proj"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 16);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 18);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ell_dspecial_stick"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, 0);

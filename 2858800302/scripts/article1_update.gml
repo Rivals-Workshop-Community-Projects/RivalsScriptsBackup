@@ -146,7 +146,9 @@ if (state == 1){
 	if (image_index == 1 && !attacked){
 		attack_anim_rate = 4;
 		sound_stop(asset_get("sfx_swipe_medium1"));
+		sound_stop(asset_get("sfx_leafy_hit1"));
 		sound_play(asset_get("sfx_swipe_medium1"));
+		sound_play(asset_get("sfx_leafy_hit1"));
 		create_hitbox(AT_DSPECIAL, 2, floor(x + 6*spr_dir), floor(y - 30));
 		attacked = true;
 	}

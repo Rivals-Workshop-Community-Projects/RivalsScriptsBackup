@@ -25,7 +25,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
         //x = hit_player_obj.x + 18*hit_player_obj.spr_dir;
         //y = hit_player_obj.y - 10;
         //old_hsp = fspec_bounce_hsp*spr_dir;
-        old_hsp = old_hsp/3;
+        old_hsp = (hit_player_obj.old_hsp)*1.4;
         old_vsp = fspec_bounce_vsp;
         djumps = 0; //restore djumps
     }
