@@ -144,7 +144,7 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_grab"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("harpoon"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, sprite_get("harpoon")); // Can replace with -1 for a normal hitbox shape
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 0);//fspecial_uncharged_initial_speed);
@@ -180,7 +180,7 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_grab"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("harpoon"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, sprite_get("harpoon")); // Can replace with -1 for a normal hitbox shape
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 0);//fspecial_charged_initial_speed);

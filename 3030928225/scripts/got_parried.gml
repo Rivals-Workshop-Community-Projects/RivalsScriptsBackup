@@ -10,25 +10,38 @@ with (asset_get("oPlayer")) {
 }
 // Mark hitbox as parried
 if (my_hitboxID.attack == AT_FSPECIAL) {
-    my_hitboxID.was_parried = true;
+    was_parried = true;
+    //my_hitboxID.was_parried = true;
     //window = fspecial_recovery_window + 1;
     //window_timer = 0;
     if ((grab_hitbox != noone)
     	&& (instance_exists(grab_hitbox)))
     {
         grab_hitbox.mask_index = asset_get("empty_sprite");
-    	grab_hitbox.destroyed = true;
+    	//grab_hitbox.destroyed = true;
     }
 }
 if ((dspecial_tail_article != noone) && (instance_exists(dspecial_tail_article))) {
-    with (asset_get("obj_article1")) {
+    was_parried = true;
+    /*with (asset_get("obj_article1")) {
     	if (other.id == player_id) {
     	    //print_debug("Counter!");
     		instance_destroy(id);
     	}
-    }
+    }*/
 }
 
+// Remove charges on parry
+// *Except for jab 1/2*
+if ((my_hitboxID.attack != AT_JAB)
+    || (my_hitbox.hbox_num > 2))
+{
+    stored_strong_charge = 0;
+    strong_charge = 0;
+    special_charge = 0;
+    fully_charged = false;
+    was_fully_charged = false;
+}
 
 //prevents the grab ID from staying
 //if (my_grab_id != noone) my_grab_id = noone;
