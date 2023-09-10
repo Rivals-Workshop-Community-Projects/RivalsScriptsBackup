@@ -47,7 +47,7 @@ if (attack == AT_FSPECIAL){
        can_fast_fall = 1;
    }
    
-   if (window == 11){
+   if (window >= 10){
        can_wall_jump = true;
    }
    
@@ -97,7 +97,7 @@ if (attack == AT_FSPECIAL){
                 window_timer = 1;
             }
             
-        } else if (specialEmpowered == -1){ //If currently using the additioanl special, stop
+        } else if (specialEmpowered == -1){ //If currently using the additional special, stop
             specialEmpowered = 0;
         }
         
@@ -143,17 +143,13 @@ if (attack == AT_USPECIAL){
         
     }
     
-    if (window < 4){
-        can_fast_fall = 0;
-    } else if (window == 4 && window_timer == 1 && !hitpause){
-        can_fast_fall = 1;
-    }
+    can_fast_fall = false;
     
-    if (window == 5){
+    if (window >= 4){
        can_wall_jump = true;
    }
     
-        if (window == 4 && window_timer == 3 && !hitpause){
+        if (window == 3 && window_timer == 4 && !hitpause){
             if (specialEmpowered == 1){
                 specialEmpowered = -1;
                 
@@ -176,7 +172,7 @@ if (attack == AT_USPECIAL){
         }
         
     //Hitbox Creation
-    if (window == 4 && window_timer == 1 && !hitpause){
+    if (window == 3 && window_timer == 4 && !hitpause){
         if (specialEmpowered == 1){
             create_hitbox(AT_USPECIAL, 5, x,y);
         } else {
@@ -208,16 +204,16 @@ if (attack == AT_DSPECIAL) {
     }
     
     
-    if (window == 1 && window_timer == 1 && !hitpause){ //Invincible on startup
-        move_cooldown[AT_DSPECIAL] = 90;
+    if (window == 1 && window_timer == 4 && !hitpause){ //Invincible on frame 3
+        move_cooldown[AT_DSPECIAL] = 88;
         invincible = 1;
         invince_time = 9;
     }
     
     if (window < 6){ //Cannot fastfall until end of the move
-        can_fast_fall = 0;
+        can_fast_fall = false;
     } else {
-        can_fast_fall = 1;
+        can_fast_fall = true;
     }
     
     
@@ -247,6 +243,14 @@ if (attack == AT_DSPECIAL) {
     }
 }
 
+// Flash
+if (attack == AT_FSPECIAL){
+    if window == 1 && window_timer == 3 {
+        gpu_set_fog(true, c_white, 1, 1);
+        draw_sprite_ext(sprite_index,image_index, x, y, 2*spr_dir, 2, 0, c_white, 0.5);
+        gpu_set_fog(false, c_white, 1, 1);
+    }
+}
 
 if (attack == AT_NSPECIAL){
     

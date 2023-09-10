@@ -32,9 +32,10 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 12);
 
-set_num_hitboxes(AT_USTRONG,5);
+set_num_hitboxes(AT_USTRONG, 6);
 
 set_hitbox_value(AT_USTRONG, 1, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 2);
@@ -44,13 +45,14 @@ set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 98);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 1);
-set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 4);
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 3);
 //set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("sora_swordhit1"));
+set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_USTRONG, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -97,3 +99,23 @@ set_hitbox_value(AT_USTRONG, 5, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 5, HG_HIT_SFX, sound_get("sora_swordhit3"));
 set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_GROUP, -1);
+
+set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 6, HG_SHAPE, 2);
+set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 6, HG_WINDOW, 3);
+set_hitbox_value(AT_USTRONG, 6, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_X, 3);
+set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_USTRONG, 6, HG_WIDTH, 40);
+set_hitbox_value(AT_USTRONG, 6, HG_HEIGHT, 40);
+set_hitbox_value(AT_USTRONG, 6, HG_PRIORITY, 2);
+set_hitbox_value(AT_USTRONG, 6, HG_DAMAGE, 1);
+set_hitbox_value(AT_USTRONG, 6, HG_ANGLE, 90);
+set_hitbox_value(AT_USTRONG, 6, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USTRONG, 6, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_USTRONG, 6, HG_HIT_SFX, sound_get("sora_swordhit1"));
+set_hitbox_value(AT_USTRONG, 6, HG_TECHABLE, 1);
+

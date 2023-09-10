@@ -28,8 +28,8 @@ if (state == 0){ //Moving
     vsp = (proj_speed*v_dir)/3;
     
     
-    if (state_timer%8 == 0){
-        if (state_timer > 44){
+    if (state_timer%7 == 0){
+        if (state_timer > 21){
             var proj_hit = create_hitbox(AT_NSPECIAL, 2, x, y);
         } else {
             var proj_hit = create_hitbox(AT_NSPECIAL, 1, x, y);
