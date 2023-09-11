@@ -12,7 +12,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 10);
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 7);
@@ -41,7 +41,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -29);
 set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 78);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 5);
+set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .6);

@@ -9,7 +9,7 @@ times = 0;
 distance_between_x_changing = 0;
 distance_between_y_changing = 0;
 fspec_teleporting = false;
-regular_prat_land = 12;
+regular_prat_land = 14;
 fspec_teleport_prat_land = 16;
 
 nspec_cooldown = 80;
@@ -74,12 +74,12 @@ walljump_hsp = 5;
 walljump_vsp = 8;
 walljump_time = 32;
 max_fall = 9; //maximum fall speed without fastfalling
-fast_fall = 12; //fast fall speed
+fast_fall = 13; //fast fall speed
 gravity_speed = .45;
 hitstun_grav = .45;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 8; //normal landing frames
+land_time = 4; //normal landing frames
 prat_land_time = regular_prat_land;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1

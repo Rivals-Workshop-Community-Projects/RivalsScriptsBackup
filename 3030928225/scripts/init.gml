@@ -44,7 +44,7 @@ dash_turn_accel         = 1.5;		            // 0.1  -  2
 dash_stop_time          = 6;		            // 4    -  6        zetterburn's is 4
 dash_stop_percent       = 0.35;		            // 0.25 -  0.5
 ground_friction         = 0.5;		            // 0.3  -  1
-moonwalk_accel          = 1.3;		            // 1.2  -  1.4
+moonwalk_accel          = 1.5;		            // 1.2  -  1.4
 
 // Air movement
 leave_ground_max        = 6;		            // 4    -  8
@@ -61,9 +61,9 @@ hitstun_grav            = 0.52;		            // 0.45 -  0.53
 
 // Jumps
 jump_start_time         = 5;		            // 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
-jump_speed              = 11;		            // 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+jump_speed              = 10.5;		            // 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed         = 6;		            // 4    -  7.4
-djump_speed             = 10;		            // 6    -  12       absa's is -1 because of her floaty djump
+djump_speed             = 11.5;		            // 6    -  12       absa's is -1 because of her floaty djump
 djump_accel             = 0;		            // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time    = 0;		            //                  the amount of time that   djump_accel   is applied for
 max_djumps              = 1;		            // 0    -  3        the 0 is elliana because she has hover instead

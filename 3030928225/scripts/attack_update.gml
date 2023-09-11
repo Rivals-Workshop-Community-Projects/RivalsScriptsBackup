@@ -9,9 +9,8 @@
 //B - Reversals
 if (attack == AT_FSPECIAL
 	|| attack == AT_DSPECIAL
-	|| attack == AT_DSPECIAL_AIR
-	|| attack == AT_USPECIAL
-	|| attack == AT_USPECIAL_GROUND)
+	|| attack == AT_DSPECIAL_AIR)
+
 {
 	trigger_b_reverse();
 }
@@ -520,8 +519,8 @@ if(attack == AT_USPECIAL){
 		if(shield_pressed or shield_down){
 			attack_end();
 			set_state(PS_PRATFALL);
-			vsp = -2;
-			hsp *= 0.5;
+			vsp = -5;
+			hsp *= 0.8;
 		}
 	}
 }
@@ -1584,6 +1583,7 @@ switch (attack) {
 	case AT_USPECIAL :
 		if ((window == uspecial_start_window)
 			&& (window_timer == 1))
+					can_fast_fall = false;
 		{
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
@@ -1602,7 +1602,7 @@ switch (attack) {
 		}
 		// If we hit the ground, go to the grounded version of the move
 		if (((window == uspecial_air_burrowed_ground_window)
-			 || (window == uspecial_air_burrowed_wall_window))
+			 || (window == uspecial_air_burrowed_wall_window)) 
 			&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
 		{
 			attack_end();

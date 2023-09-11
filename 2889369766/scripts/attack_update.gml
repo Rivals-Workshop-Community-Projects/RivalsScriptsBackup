@@ -6,7 +6,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL|| attack == AT_DSPECIAL || at
 
 
 if (attack == AT_NSPECIAL && free) { //Stop the players horizontal momentum when using these specials
-    vsp -= vsp*0.05;
+    vsp -= vsp*0.2;
 
 }
 
@@ -143,7 +143,7 @@ if (attack == AT_USPECIAL){
         
     }
     
-    can_fast_fall = false;
+    can_fast_fall = 0;
     
     if (window >= 4){
        can_wall_jump = true;
@@ -211,9 +211,9 @@ if (attack == AT_DSPECIAL) {
     }
     
     if (window < 6){ //Cannot fastfall until end of the move
-        can_fast_fall = false;
+        can_fast_fall = 0;
     } else {
-        can_fast_fall = true;
+        can_fast_fall = 1;
     }
     
     

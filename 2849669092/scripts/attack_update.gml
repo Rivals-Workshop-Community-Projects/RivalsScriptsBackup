@@ -372,6 +372,7 @@ if (attack == AT_USPECIAL){
             spawn_hit_fx( x + (spr_dir*1), y - 40, 265 );
             vsp = uspec_vsp*(-uspec_vsp/(-uspec_vsp + 9));
         }
+        can_move = false;
     }
     if (window == 6){
         if (window_timer == 8){

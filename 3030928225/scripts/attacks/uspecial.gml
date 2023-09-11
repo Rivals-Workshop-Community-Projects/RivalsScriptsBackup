@@ -37,7 +37,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 window_num ++; 
 uspecial_inbetween_window = window_num;
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 6);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

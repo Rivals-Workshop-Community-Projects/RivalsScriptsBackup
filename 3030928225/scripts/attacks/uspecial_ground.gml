@@ -49,13 +49,13 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 1);
 
 window_num++; // Uncharged hide
 uspecial_uncharged_hide_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 
 window_num++; // Uncharged rise
 uspecial_uncharged_rise_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 
@@ -190,7 +190,8 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 48);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6); //sends foes in the direction you're going
+set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 9);
+ //sends foes in the direction you're going
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.15);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
@@ -214,6 +215,7 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 100);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);

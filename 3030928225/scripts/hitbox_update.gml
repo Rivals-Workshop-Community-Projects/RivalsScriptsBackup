@@ -54,15 +54,18 @@ if (attack == AT_FSPECIAL) {
         hitbox_timer--;
         if (pause_to_animate > 0) {
             pause_to_animate--;
+            if (pause_to_animate < (pause_to_animate_max / 2)) {
+                mask_index = asset_get("empty_sprite");
+            }
         } else {
             end_clamp = true;
-            mask_index = asset_get("empty_sprite");
             if (hitbox_timer < (length / 2)) {
                 hitbox_timer = length - hitbox_timer;
             }
             proj_can_grab = false;
         }
         chosen_image_index = 2 * ((pause_to_animate_max - pause_to_animate) / pause_to_animate_max);
+        //print_debug("image_index = " + string(chosen_image_index));
         //print_debug("image_index = " + string(chosen_image_index));
     } else {
         /*if (hitbox_timer < time_to_clamp) {

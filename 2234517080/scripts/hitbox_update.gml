@@ -22,11 +22,16 @@ if (attack == AT_DSPECIAL){
 			if (place_meeting (x, y, other)){
 				if (state == PS_AIR_DODGE || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD){
 					
-					with (other){
-						sound_play(sound_get("go"));
-					}
+					if (other.hsp == 0 && other.vsp == 0){
+						
+						with (other){
+							sound_play(sound_get("go"));
+						}
+						
+						other.destroyed = true;
 					
-					other.destroyed = true;
+						
+					}
 					
 				}
 			}
@@ -41,7 +46,7 @@ if (attack == AT_DSPECIAL){
 						with (other){
 							player_id.has_hit = true;
 							if (hsp == 0){
-								spawn_hit_fx( x + 35*spr_dir, y - 5, 192 );
+								spawn_hit_fx( x + 35*spr_dir, y - 5, player_id.blaboa_big );
 								sound_play(asset_get("sfx_blow_heavy1"));
 							}
 							hsp = 12*spr_dir;
