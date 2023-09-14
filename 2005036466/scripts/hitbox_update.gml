@@ -12,4 +12,7 @@ switch(attack){
                 break;
         }
         break;
+    case AT_DSPECIAL_2:
+        can_hit_self = true;
+        break;
 }

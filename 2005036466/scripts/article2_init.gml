@@ -94,6 +94,7 @@ penny_orig_owner = player_id;
 penny_orig_mine_id = player_id.mine;
 pen_c4_charged = 0;
 pen_mine_parried = false;
+pen_c4_disable = false;
 
 // Timer
 inactive = 0;

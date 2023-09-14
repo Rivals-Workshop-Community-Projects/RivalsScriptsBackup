@@ -70,4 +70,3 @@ set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DATTACK, 1, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_DATTACK, 1, HG_HIT_LOCKOUT, 5);

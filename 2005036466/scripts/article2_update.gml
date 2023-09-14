@@ -106,13 +106,19 @@ switch(state){
 				state_timer = 0;
 				image_angle = 0;
 			}
-			sound_play(sfx_ground);
+			if pen_c4_disable{
+				state = 9;
+				state_timer = 0;
+				image_angle = 0;
+			} else {
+				state = 7;
+				state_timer = 0;
+				image_angle = 0;
+				pen_mine_hbox_dead = false;
+			}
 			hsp = 0;
 			vsp = 0;
-			state = 7;
-			state_timer = 0;
-			image_angle = 0;
-			pen_mine_hbox_dead = false;
+			sound_play(sfx_ground);
 		}
 		break;
     // Grounded
@@ -147,7 +153,7 @@ switch(state){
         
     	with oPlayer{
     		if id != other.player_id{
-	    		if ((penny_is_charged or (state == PS_HITSTUN or state == PS_HITSTUN_LAND)) and state != PS_WRAPPED and state != PS_FROZEN and pen_can_det == 0){
+	    		if (penny_is_charged or (state != PS_WRAPPED and state != PS_FROZEN) and pen_can_det == 0){
 	    			switch(other.pen_c4_charged){
 	    				case 0:
 			    			if point_distance(x, y, other.x + other.hsp, other.y + other.vsp) <= 60{
@@ -297,6 +303,7 @@ switch(state){
     			break;
     	}
     	if state_timer == 90{
+    		pen_c4_disable = false;
     		state = 7;
     		state_timer = 0;
     	}
@@ -341,9 +348,18 @@ if (detected_object != noone and detected_object.player_id.url == player_id.url)
 	}*/
 	
 	if toggle == 2{
-		if (detected_object.attack == AT_DTILT){
-			hsp = 2 * detected_object.player_id.spr_dir;
-			vsp = -12;
+		switch(detected_object.attack){
+			case AT_UTILT:
+				hsp = 1 * detected_object.player_id.spr_dir;
+				vsp = -16;
+				break;
+			case AT_DTILT:
+				hsp = 2 * detected_object.player_id.spr_dir;
+				vsp = -12;
+				break;
+		}
+
+		if (detected_object.attack == AT_DTILT or detected_object.attack == AT_UTILT){
 			sound_play(detected_object.sound_effect);
 			if detected_object.player_id != player_id{
     			player_id = detected_object.player_id;

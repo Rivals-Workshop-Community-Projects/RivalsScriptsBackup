@@ -53,7 +53,7 @@ switch(my_hitboxID.attack){
 	case AT_DSPECIAL_2:
 		if !free{
 			set_state(PS_PRATLAND);
-			prat_land_time = 120;
+			prat_land_time = 10 + point_distance(x, y, hit_player_obj.x, hit_player_obj.y);
 		}
 		break;
 }

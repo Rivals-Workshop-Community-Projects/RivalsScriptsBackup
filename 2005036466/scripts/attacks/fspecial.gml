@@ -5,7 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, 14, 1);   // AG_HAS_COOLDOWN
-set_attack_value(AT_FSPECIAL, 15, 90);  // Cooldown
+set_attack_value(AT_FSPECIAL, 15, 75);  // Cooldown
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 // Start-up into hold

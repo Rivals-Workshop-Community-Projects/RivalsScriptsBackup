@@ -100,6 +100,7 @@ switch(state){
 		if pen_didairdash{
 			if state != PS_PRATLAND{
 				set_state(PS_PRATLAND);
+				prat_land_time = 4 + ceil(get_attack_value(pen_prev_attack, AG_LANDING_LAG) * 1.5);
 			}
 			reset_window_value(AT_NAIR, get_attack_value(AT_NAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
 			reset_window_value(AT_FAIR, get_attack_value(AT_FAIR, AG_NUM_WINDOWS), AG_WINDOW_TYPE);

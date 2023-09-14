@@ -32,7 +32,7 @@ if(instance_exists(grabbedid)){
 // not pushing this yet, I want to get more feedback first.
 
 /*
-if (enemy_hitboxID.type == 1 and hbox_hit_dmg > 0 and enemy_hitboxID.force_flinch == 0) and mine_player == enemy_hitboxID.player_id{
+if (enemy_hitboxID.type == 1 and hbox_hit_dmg > 0 and enemy_hitboxID.force_flinch == 0) and mine_player.pen_can_det == 0 and mine_player == enemy_hitboxID.player_id{
 	if mine != noone {
 		instance_destroy(mine);
 	}
@@ -40,6 +40,7 @@ if (enemy_hitboxID.type == 1 and hbox_hit_dmg > 0 and enemy_hitboxID.force_flinc
 	mine.player_id = id;
 	mine.penny_orig_owner = id;
 	mine.penny_orig_mine_id = mine;
+	mine.pen_c4_disable = true;
 	if !instance_exists(mine.hbox_mine) and mine.pen_mine_hbox_dead == false{
 		if mine.pen_c4_charged == false{
 			mine.hbox_mine = create_hitbox(AT_DSPECIAL, 1, x, y);
@@ -79,7 +80,6 @@ if (enemy_hitboxID.type == 1 and hbox_hit_dmg > 0 and enemy_hitboxID.force_flinc
         mine.hit_cool = ((enemy_hitboxID.length - enemy_hitboxID.hitbox_timer));
     }
 }
-
 
 goboom = false;
 

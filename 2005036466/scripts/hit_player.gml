@@ -66,7 +66,7 @@ switch(hitmove){
         break;
     case AT_NSPECIAL:
     case AT_NSPECIAL_AIR:
-        if (window == 2 and grabbedid == noone and !hit_player_obj.clone) {
+        if (window == 2 and grabbedid == noone and !hit_player_obj.clone and hit_player_obj.super_armor == false) {
             hit_player_obj.grabbed = 1;
             grabbedid = hit_player_obj;
             grabbedid.ungrab = 0;

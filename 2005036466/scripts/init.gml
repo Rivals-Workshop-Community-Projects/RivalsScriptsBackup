@@ -120,7 +120,7 @@ short_hop_speed = 5.5;
 djump_speed = 11.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4.25; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .65; //multiplier of air_accel while in pratfall
@@ -134,7 +134,7 @@ walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .6;
-hitstun_grav = .5;
+hitstun_grav = .65;
 knockback_adj = .98; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames

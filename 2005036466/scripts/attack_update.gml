@@ -107,14 +107,6 @@ switch(attack){
 			case 2:
 				if has_hit and !was_parried{
 					can_ustrong = true;
-					if is_strong_pressed(DIR_UP){
-						with hit_player_obj{
-							hitpause = true;
-							hitstop = 6;
-						}
-						
-						old_hsp = 10 * spr_dir;
-					}
 				}
 				break;
 			case 3:
@@ -298,12 +290,12 @@ switch(attack){
 		break;
 	case AT_USPECIAL:
 	case AT_USPECIAL_2:
-		hsp = clamp(hsp, -4, 4);
+		hsp = clamp(hsp, -3, 3);
 		if(window_timer % 4 == 0 and !hitpause and (window > 1 and window < 7)){
 			sound_play(asset_get("sfx_propeller_dagger_loop"));
 		}
 		if vsp > -4.5 and window != 7{
-			vsp = lerp(vsp, -3.5, .5)
+			vsp = lerp(vsp, -4, .5)
 		}
 		if !free and window > 1{
 			attack_end();
@@ -324,6 +316,9 @@ switch(attack){
 					}
 				}
 				if shield_pressed and !hitpause{
+					if attack == AT_USPECIAL_2 and window_timer >= 9{
+						penny_install = false;
+					}
 					sound_stop(asset_get("sfx_absa_jabloop"));
 					//create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
 					clear_button_buffer(PC_SHIELD_PRESSED);
@@ -356,12 +351,6 @@ switch(attack){
 					penny_install = false;
 				}
 				break;
-			case 6:
-				if ((window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH) - 1) and !hitpause){
-					set_state(PS_PRATFALL);
-					attack_end();
-				}
-				break;
 		}
 		if window > 1{
 			if (!hitpause and (shield_pressed and window != 1)){
@@ -381,7 +370,7 @@ switch(attack){
 				can_attack = true;
 				can_special = true;
 				can_shield = true;
-				if ((attack_pressed or special_pressed) and (!is_special_pressed(DIR_UP)) or (shield_pressed or is_strong_pressed(DIR_ANY))){
+				if ((attack_pressed or special_pressed) and (!is_special_pressed(DIR_UP)) or (is_strong_pressed(DIR_ANY))){
 					if window < 6{
 						create_hitbox(AT_USPECIAL, 1, x + (-4 * spr_dir), y - 88);
 					}
