@@ -37,6 +37,17 @@ if (state == 0){ //Moving
         
         
     }
+    
+    
+    if (random_func(0,2, true) > 0){ // sparkly trail
+            if (state_timer%7 == 0){
+            spawn_hit_fx(x,y,player_id.sparkle1);
+        }
+    } else {
+            if (state_timer%7 == 0){
+            spawn_hit_fx(x,y,player_id.sparkle2);
+        }
+    }
 
     if (player_id.special_down && !create_field && state_timer > 10){
         

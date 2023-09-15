@@ -22,13 +22,13 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //hold pose
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 //endlag
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 
