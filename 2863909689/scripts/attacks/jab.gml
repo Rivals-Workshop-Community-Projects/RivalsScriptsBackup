@@ -33,7 +33,7 @@ set_window_value(AT_JAB, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 6);
 
 set_window_value(AT_JAB, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 12);
