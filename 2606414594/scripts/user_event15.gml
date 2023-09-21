@@ -81,6 +81,10 @@ phone.extra_top_size = 0;
 // Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
 phone.supports_fast_graphics = false;
 
+// Set to true and the copyrighted sfx will be replaced with RoA menu sounds.
+// They'll still be present in the files.
+phone.copyright_safe_mode = false;
+
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
 phone.dont_fast = false;
 
@@ -247,6 +251,10 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.8", "20 September, 2023");
+initHeader("MunoPhone Touch Firmware v6");
+initSection("Added a setting to change the phone menu navigation sfx to stock RoA menu sounds (copyright safe mode).");
 
 initPatch("1.7", "16 July, 2023");
 initHeader("MunoPhone Touch Firmware v5");

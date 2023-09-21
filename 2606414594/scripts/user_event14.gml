@@ -117,6 +117,7 @@ phone = {
 	custom_name: "",
 	custom_fd_content: [],
 	extra_top_size: 0,
+	copyright_safe_mode: false,
 	
 	// "constants"
 	lowered_y: 300,
@@ -167,16 +168,6 @@ phone = {
 	
 	dummy: 0 // footer, because LWOs don't support trailing commas :(
 }
-
-sfx_pho_open = sound_get("_pho_acnh_prompt3");
-sfx_pho_close = sound_get("_pho_acnh_cancel1");
-sfx_pho_move = sound_get("_pho_acnh_move1");
-sfx_pho_move_home = sound_get("_pho_acnh_move2");
-sfx_pho_page = sound_get("_pho_acnh_select2");
-sfx_pho_open_app = sound_get("_pho_acnh_select1");
-sfx_pho_close_app = sound_get("_pho_acnh_cancel2");
-sfx_pho_power_off = sound_get("_pho_acnh_chime3");
-sfx_pho_power_on = sound_get("_pho_acnh_chime1");
 
 initIndexes();
 
@@ -249,6 +240,29 @@ with phone{
 
 user_event(15);
 
+if phone.copyright_safe_mode {
+	sfx_pho_open = asset_get("mfx_chat_received");
+	sfx_pho_close = asset_get("mfx_return_cursor");
+	sfx_pho_move = asset_get("mfx_option");
+	sfx_pho_move_home = asset_get("mfx_option");
+	sfx_pho_page = asset_get("mfx_place_marker");
+	sfx_pho_open_app = asset_get("mfx_confirm");
+	sfx_pho_close_app = asset_get("mfx_back");
+	sfx_pho_power_off = asset_get("mfx_unstar");
+	sfx_pho_power_on = asset_get("mfx_chat_received");
+}
+else {
+	sfx_pho_open = sound_get("_pho_acnh_prompt3");
+	sfx_pho_close = sound_get("_pho_acnh_cancel1");
+	sfx_pho_move = sound_get("_pho_acnh_move1");
+	sfx_pho_move_home = sound_get("_pho_acnh_move2");
+	sfx_pho_page = sound_get("_pho_acnh_select2");
+	sfx_pho_open_app = sound_get("_pho_acnh_select1");
+	sfx_pho_close_app = sound_get("_pho_acnh_cancel2");
+	sfx_pho_power_off = sound_get("_pho_acnh_chime3");
+	sfx_pho_power_on = sound_get("_pho_acnh_chime1");
+}
+
 with phone{
 	if supports_fast_graphics{
 		UTIL_FAST		= pho_initUtil("Graphics", [0, 1], ["Fancy", "Fast"], "This character supports Fast Graphics! This setting disables certain visual effects to make the character run better on lesser hardware. It will trigger automatically (even in VS Mode) if the FPS drops below 60 for about 5+ frames while the MunoPhone is closed.
@@ -302,13 +316,15 @@ with phone{
 	UTIL_ATTACK		= pho_initUtil("Spam Attack", attack_list, attack_names, "Makes the CPU spam a certain attack. Set the CPU action to Crouch for ground moves, and Jump for air moves.
 	
 	(If the action is Jump, this Utility will also try to force the CPU to shorthop.)");
-	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [1, 0], ["On", "Off"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
+	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [0, 1], ["Off", "On"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
 	
-		Zetterburn, Maypul, and Ranno cannot inflict their status effects.
+		Zetterburnand Maypul cannot inflict their status effects.
 		
 		Kragg and Forsburn cannot create pillars or clones.
 		
-		Shovel Knight's FSpecial and USpecial have no hitbox (meaning no gems are created), and he doesn't drop bags of gems on death.");
+		Shovel Knight's FSpecial and USpecial have no hitbox (meaning no gems are created), and he doesn't drop bags of gems on death.
+		
+		Ranno's USpecial has no hitbox (meaning no poison is applied).");
 }
 
 initTip("Phone Controls", true);
@@ -1442,14 +1458,26 @@ if phone_practice{
 				if (url == CH_FORSBURN) move_cooldown[AT_FSPECIAL] = 2;
 				if (url == CH_SHOVEL_KNIGHT){
 					gems = 0;
-					if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+					if (state == PS_ATTACK_AIR){
 						set_num_hitboxes(AT_USPECIAL, 0);
 						set_num_hitboxes(AT_FSPECIAL, 0);
+					}
+					else{
+						reset_num_hitboxes(AT_USPECIAL);
+						reset_num_hitboxes(AT_FSPECIAL);
+					}
+				}
+				if (url == CH_RANNO){
+					if (state == PS_ATTACK_AIR){
+						set_num_hitboxes(AT_USPECIAL, 0);
+					}
+					else{
+						reset_num_hitboxes(AT_USPECIAL);
 					}
 				}
 			}
 			if (url != CH_MAYPUL) marked = false;
-			if (url != CH_RANNO) poison = 0;
+			// if (url != CH_RANNO) poison = 0;
 		}
 	}
 	
@@ -1463,7 +1491,9 @@ if phone_practice{
 			if (state == PS_FIRST_JUMP){
 				vsp = -short_hop_speed;
 			}
-			set_attack(atk);
+			if !(url == CH_ORI && atk == AT_NSPECIAL) {
+				set_attack(atk);
+			}
 		}
 	}
 }
@@ -2005,6 +2035,9 @@ var flipper = max(get_hitbox_value(atk_index, index, HG_ANGLE_FLIPPER), get_hitb
 // if flipper stored_angle += "*";
 
 var stored_priority = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_PRIORITY, pullHitboxValue(atk_index, index, HG_PRIORITY, (move.num_hitboxes > 1) ? "0" : def));
+if get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 2 {
+	stored_priority = "-1";
+}
 
 var stored_group = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_GROUP, pullHitboxValue(atk_index, index, HG_HITBOX_GROUP, (move.num_hitboxes > 1) ? "0" : def));
 
@@ -2191,12 +2224,3 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
-
-// #region vvv LIBRARY DEFINES AND MACROS vvv
-// DANGER File below this point will be overwritten! Generated defines and macros below.
-// Write NO-INJECT in a comment above this area to disable injection.
-#define window_time_is(frame) // Version 0
-    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
-    return window_timer == frame and !hitpause
-// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
-// #endregion
