@@ -422,6 +422,42 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.7", "September 22, 2023");
+	initPatchWords_ext("yeah i still haven't upgraded this phone
+(btw thank you NoArms/Weorgoran for a handful of these changes!)
+
+Misc:
+- Fixed Whifflag (it now exists instead of always deactivating)
+- Jab 1 now stops looping itself if the opponent is hit and the button is still held down
+
+Neutral Air:
+- Decreased landing lag: 8 -> 7
+
+Forward Air:
+- Decreased landing lag: 10 -> 8
+- Increased knockback scaling: 0.4 -> 0.45
+- Decreased endlag (window 3): 14 -> 12
+
+Neutral Special (Star Enhanced):
+- Lunge:
+    - Early hit 1 star base knockback: 12 -> 11
+    - Early hit 3 star base knockback: 21 -> 12.5
+    - Early hit knockback scaling 0.6 -> 0.8
+
+    - Late hit 1 star base knockback: 10 -> 9
+    - Late hit 3 star base knockback: 17.5 -> 10.5
+    - Late hit knockback scaling 0.5 -> 0.6
+
+-Uppercut:
+    - 1 star base knockback: 12 -> 11
+    - 3 star base knockback: 21 -> 12.5
+    - Knockback scaling 0.6 -> 0.8
+
+Forward Special (Star Enhanced):
+- 1 star base knockback: 10 -> 9
+- 3 star base knockback: 17.5 -> 10.5
+- Base knockback is reduced by 2 if the spike hitbox is selected", fa_left, c_white, 0, 0);
+	
 	initPatch("1.6", "February 12, 2022");
 	initPatchWords_ext("Star System:
 -Star Enhanced specials can only be performed by pressing A and B at the same time. This allows Mac to use his normal specials without spending any stars! Cancelling normals into Star specials still only need a B press to activate.

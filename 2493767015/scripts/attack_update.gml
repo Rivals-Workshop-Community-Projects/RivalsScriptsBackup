@@ -25,9 +25,6 @@ if (attack == AT_DATTACK){
     if (window == 2 && window_timer == 3){
         shake_camera( 2, 5 );
         sound_play(asset_get("sfx_obstacle_hit"));
-        if (has_hit = true){
-            sound_stop(asset_get("sfx_obstacle_hit"));
-        }
     }
 }
 
@@ -145,16 +142,16 @@ if (attack == AT_NSPECIAL_2){
         invince_time = 5;
         reset_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS);
         set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 12 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10.5 + (star_meter/2));
         set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 14 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 2, HG_DAMAGE, 10 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 8.5 + (star_meter/2));
         set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 3, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_KNOCKBACK, 14 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_KNOCKBACK, 10.5 + (star_meter/2));
         set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_HITPAUSE, 16 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 4, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 4, HG_BASE_KNOCKBACK, 14 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 4, HG_BASE_KNOCKBACK, 10.5 + (star_meter/2));
         set_hitbox_value(AT_NSPECIAL_2, 4, HG_BASE_HITPAUSE, 16 * (0.75 + (star_meter/4)));
         if (window_timer == 6){  
             if (up_down){
@@ -219,10 +216,10 @@ if (attack == AT_FSPECIAL_2){
         invincible = true;
         invince_time = 10;
         set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 10 * (0.75 + (star_meter/4)));
-        set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 8.5 + (star_meter/2));
         set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_FSPECIAL_2, 2, HG_DAMAGE, 10 * (0.75 + (star_meter/4)));
-        set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_KNOCKBACK, 8.5 + (star_meter/2));
         set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
     }
     if (window == 3){
@@ -238,6 +235,7 @@ if (attack == AT_FSPECIAL_2){
             set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH, 15);
             set_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE, 280);
             set_hitbox_value(AT_FSPECIAL_2, 2, HG_ANGLE, 280);
+            set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_KNOCKBACK, 6.5 + (star_meter/2));
             set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 12);
         }
         else {
@@ -369,7 +367,6 @@ if (attack != AT_NSPECIAL || attack != AT_FSPECIAL || attack != AT_USPECIAL || a
     }
     else {
     	star_cancel = false;
-    	has_hit = false;
     }
 }
 
