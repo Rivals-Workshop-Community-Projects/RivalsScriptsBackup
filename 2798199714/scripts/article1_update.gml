@@ -40,11 +40,18 @@ if(state == 0){ //waiting
         state = 3;timer = 0;anim = 5;lasersound = sound_play(laser_sfx);sound_play(laserboom_sfx);
     }
 }else if(state == 3){ //laser
+	with(player_id){
+		if (other.spr_dir == -1){
+			set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, -370);set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, -370);
+		}else{
+			set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 370);set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 370);
+		}
+	}
     if((timer % 3 == 0 || timer == 0) && timer < 60){
         hitbox = create_hitbox(AT_DSPECIAL,1,x-50*spr_dir,y-50);hitbox.player = player;
         if(anim == 5){
             anim += 1;
-        }else{
+        }else{	
             anim -= 1;
         }shake_camera(7,5);
     }

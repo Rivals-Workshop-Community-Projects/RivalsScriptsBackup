@@ -257,6 +257,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.87", "24th September, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Made Galacta Knight slightly floatier to fit him a bit better (gravity 0.4->0.37)
++ GK's sprite and hurtbox now moves in a floaty way during certain states (walk, dash, etc)
++ GK's walk + dash now move the hurtbox slightly off the ground since he's floating
++ Fixed a bug with Villager pocket where Galacta Knight's DSpecial laser would sometimes have an invisible hitbox facing the other way, and generally not match the visual. Now it should work just fine when pocketed");
+
 initPatch("1.86", "25th August, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed GK getting Final Smash meter when hitting characters with the final smash itself
@@ -617,7 +624,7 @@ otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got cut in half";
+steve_death_message = "Steve got cut in half by Galacta Knight";
 
 // Link spear. (determines which spear your char will drop the first time)
 link_spear_drop = 8;

@@ -39,3 +39,13 @@ if(state == PS_IDLE && lookuptime > 0){
     sprite_index = sprite_get("lookup");image_index = floor(abs(lookuptime)/2);lookuptime = min(4,lookuptime);
     if(image_index > 2)image_index = 2;
 }
+
+if(state == PS_WALK || state == PS_DASH || state == PS_DASH_START || state == PS_DASH_STOP){
+    draw_y = ease_sineIn(0,-5,get_gameplay_time(),50);
+    hud_offset = ease_sineIn(10,15,get_gameplay_time(),50);
+    sprite_change_offset("hurtbox", 50, round(118-ease_sineIn(0,-5,get_gameplay_time(),50))+10);
+}else{
+	sprite_change_offset("hurtbox", 50, 118);
+}
+
+if(abs(hud_offset) < 1)hud_offset = 0;
