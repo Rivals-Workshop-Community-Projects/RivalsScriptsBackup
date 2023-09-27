@@ -280,6 +280,21 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "September 26th, 2023");
+initHeader("Aesthetic");
+initSection("-FSpecial Throw made more visually distinct from the Release (aka whiff)");
+initHeader("Balance");
+initSection("-FSpecial release now sets the grabbed player's hurt sprite to Spinhurt
+
+-Idle hurtbox size reduced from 86 x 76 to 70 x 72
+-Jab, FTilt, UTilt, DTilt, DAttack, NAir, FAir, UAir, FStrong, UStrong, and FSpecial all have more disjointed hurtboxes on their active frames
+
+-UStrong hurtbox disjoint gets an extra note here because it turns it back into an evasive tool
+-DAttack endlag reduced from 18 to 12
+-USpecial projectile lifetime increased from 50 to 80
+-FSpecial release KB scaling increased from 0.1 to 0.3
+-FSpecial dragging hitbox angle changed from 90 to 270 (this only affected gameplay outside 1v1s, its mostly just so the grabbed player will use their downhurt anim)");
+
 initPatch("1.8", "July 28th, 2023");
 initHeader("Aesthetic");
 initSection("-Added special taunt for the ``Rainbow Sand`` alt

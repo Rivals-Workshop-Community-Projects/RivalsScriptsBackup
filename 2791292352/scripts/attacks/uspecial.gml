@@ -32,7 +32,7 @@ set_num_hitboxes(AT_USPECIAL, 2);
 
 set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Ominous Wind");
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 50);
+set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -33);
 set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 70);
@@ -44,7 +44,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_wind"));
-set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.24);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.15);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1)
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);

@@ -10,7 +10,7 @@ switch(my_hitboxID.attack){
 		}
 	case AT_FSPECIAL:
 		switch(my_hitboxID.hbox_num){
-			case 1:
+			case 1: //grab
 				if (fspecial_grab_id == noone) && (!hit_player_obj.super_armor) && (hit_player_obj.soft_armor == 0 || hit_player_obj.soft_armor >= orig_knock) && ((hit_player_obj.cofa_mummy = true) || phone_cheats[CHEAT_SUDOCURSE]){ // grabby
 					fspecial_grab_id = hit_player_obj;
 					fspecial_grab_time_max = 10 + round(max(((get_player_damage(hit_player_obj.player) - 20) * 0.3), 0));
@@ -21,10 +21,11 @@ switch(my_hitboxID.attack){
 				if (hit_player_obj.cofa_mummy = true)
 					hitbox_applies_mummy = true;
 			break;
-			case 2: // grab
-				if (hit_player_obj.cofa_mummy = true)
+			case 2: // drag
+				if (hit_player_obj.cofa_mummy = true) {
 					hitbox_applies_mummy = true;
-			break; 
+			    }
+			break;
 			case 3: // throw
 				if (hit_player_obj = fspecial_grab_id){
 					hit_player_obj.visible = true;
@@ -34,6 +35,11 @@ switch(my_hitboxID.attack){
 					fspecial_grab_id = noone;
 				}
 			break;
+			case 5: //release
+			    hit_player_obj.hurt_img = 5;
+			break;
+			
+			
 		}
 	break;
 	case AT_DSPECIAL:
