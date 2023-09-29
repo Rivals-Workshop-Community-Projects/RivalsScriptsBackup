@@ -66,15 +66,15 @@ set_color_profile_slot( 3, 5, 255, 255, 191 ); //Tail Tip
 set_color_profile_slot( 3, 6, 0, 0, 206 ); //Soul Fire
 set_color_profile_slot( 3, 7, 209, 44, 29 ); //Pawpads
 
-// Heatwave
-set_color_profile_slot( 4, 0, 27, 37, 90 ); //Fur
-set_color_profile_slot( 4, 1, 253, 253, 251 ); //Hair
-set_color_profile_slot( 4, 2, 140, 24, 33 ); //Kimono Main
-set_color_profile_slot( 4, 3, 226, 216, 23 ); //Kimono Accent
-set_color_profile_slot( 4, 4, 220, 216, 29 ); //Sash and Anklet
-set_color_profile_slot( 4, 5, 211, 108, 41 ); //Tail Tip
-set_color_profile_slot( 4, 6, 245, 27, 42 ); //Soul Fire
-set_color_profile_slot( 4, 7, 253, 253, 251 ); //Pawpads
+// Ninetailed Shaman
+set_color_profile_slot( 4, 0, 250, 236, 168 ); //Fur
+set_color_profile_slot( 4, 1, 250, 248, 245 ); //Hair
+set_color_profile_slot( 4, 2, 243, 242, 255 ); //Kimono Main
+set_color_profile_slot( 4, 3, 37, 94, 207 ); //Kimono Accent
+set_color_profile_slot( 4, 4, 37, 65, 207 ); //Sash and Anklet
+set_color_profile_slot( 4, 5, 250, 244, 242 ); //Tail Tip
+set_color_profile_slot( 4, 6, 217, 115, 186 ); //Soul Fire
+set_color_profile_slot( 4, 7, 244, 112, 133 ); //Pawpads
 
 // Kitsune
 set_color_profile_slot( 5, 0, 255, 255, 255 ); //Fur
@@ -143,7 +143,7 @@ set_color_profile_slot( 11, 2, 86, 74, 151 ); //Kimono Main
 set_color_profile_slot( 11, 3, 74, 208, 223 ); //Kimono Accent
 set_color_profile_slot( 11, 4, 74, 208, 223 ); //Sash and Anklet
 set_color_profile_slot( 11, 5, 238, 145, 88 ); //Tail Tip
-set_color_profile_slot( 11, 6, 255, 130, 47 ); //Soul Fire
+set_color_profile_slot( 11, 6, 58, 142, 214 ); //Soul Fire
 set_color_profile_slot( 11, 7, 247, 238, 213 ); //Pawpads
 
 // Portals
@@ -206,15 +206,15 @@ set_color_profile_slot( 17, 5, 33, 32, 32 ); //Tail Tip
 set_color_profile_slot( 17, 6, 71, 71, 71 ); //Soul Fire
 set_color_profile_slot( 17, 7, 133, 129, 129 ); //Pawpads
 
-// Ranked Gold
-set_color_profile_slot( 18, 0, 247, 241, 161 ); //Fur
-set_color_profile_slot( 18, 1, 204, 190, 98 ); //Hair
-set_color_profile_slot( 18, 2, 230, 232, 240 ); //Kimono Main
-set_color_profile_slot( 18, 3, 52, 56, 217 ); //Kimono Accent
-set_color_profile_slot( 18, 4, 52, 56, 217 ); //Sash and Anklet
-set_color_profile_slot( 18, 5, 250, 249, 248 ); //Tail Tip
-set_color_profile_slot( 18, 6, 19, 74, 194 ); //Soul Fire
-set_color_profile_slot( 18, 7, 244, 112, 133 ); //Pawpads
+// Heatwave
+set_color_profile_slot( 18, 0, 27, 37, 90 ); //Fur
+set_color_profile_slot( 18, 1, 253, 253, 251 ); //Hair
+set_color_profile_slot( 18, 2, 140, 24, 33 ); //Kimono Main
+set_color_profile_slot( 18, 3, 226, 216, 23 ); //Kimono Accent
+set_color_profile_slot( 18, 4, 220, 216, 29 ); //Sash and Anklet
+set_color_profile_slot( 18, 5, 211, 108, 41 ); //Tail Tip
+set_color_profile_slot( 18, 6, 245, 27, 42 ); //Soul Fire
+set_color_profile_slot( 18, 7, 253, 253, 251 ); //Pawpads
 
 // Tales of Ninjas
 set_color_profile_slot( 19, 0, 64, 56, 77 ); //Fur

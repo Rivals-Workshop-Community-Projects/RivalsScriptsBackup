@@ -1,3 +1,6 @@
+// css_draw.gml
+if("css_voicedMode_enabled" not in self) css_voicedMode_enabled = 0;
+
 var temp_x = x + 8;
 var temp_y = y + 9;
  

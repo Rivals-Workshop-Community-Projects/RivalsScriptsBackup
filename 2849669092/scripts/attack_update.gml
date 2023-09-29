@@ -97,6 +97,9 @@ if (attack == AT_DSTRONG){
 }
 
 if (attack == AT_USTRONG){
+	if (window == 1){
+		grabbed = -4;
+	}
     if (window == 3){
         if (window_timer == 1){
             if (!hitpause){
@@ -308,6 +311,7 @@ if (attack == AT_USPECIAL){
     if (window == 1){
         uspec_vsp = -7;
         interact_ver = false;
+        grabbed = -4;
     }
     if (window == 2){
         vsp = 0;

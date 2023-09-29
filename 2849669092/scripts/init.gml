@@ -10,7 +10,7 @@ distance_between_x_changing = 0;
 distance_between_y_changing = 0;
 fspec_teleporting = false;
 regular_prat_land = 14;
-fspec_teleport_prat_land = 16;
+fspec_teleport_prat_land = 22;
 
 nspec_cooldown = 80;
 

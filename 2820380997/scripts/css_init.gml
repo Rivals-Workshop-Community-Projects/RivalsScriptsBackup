@@ -422,9 +422,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Cosworth seems perpetually angry, but there is some kindness behind all the anger.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Heat Wave";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Heat Wave Brackets";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character is legal in 2022 Heatwave Workshop Bracket.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Ninetailed Shaman";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Sailee Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "My Aunt is the coolest! She taught me how to fight and use clone magic.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tricky Kitsune";sub_element_slot++;
@@ -492,9 +492,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Yin and Yang are the symbols my mother identifies with. I think of her whenever I see them.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Ranked Gold";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Ranked Gold Alt";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Gold is so pretty. It reminds me of my aunt and her golden fur.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Heat Wave";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Heat Wave Brackets";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character is legal in 2022 Heatwave Workshop Bracket.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tales of Ninjas";sub_element_slot++;
@@ -643,6 +643,61 @@ return chunk_arr;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Casual Observer";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "ENBY";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Fungus";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Zhyrl";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Zhyrl";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "PC98 Reimu";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Renecup";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Giovanna";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Fungus";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Tenchu";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Tenchu";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Feta";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Mrlasa / Chamma Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "FuRi's Edge";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for FuRi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Mint";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for FuRi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Ayaka";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Ambi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Senor";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Mothra";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Ceritifed Hater";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Landkon";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	

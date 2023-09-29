@@ -16,7 +16,7 @@ switch(article_state){
     case 3: // Idle
     sprite_index = platform_idle;
     image_index = article_state_timer / 20;
-    if(player_id.free && article_state_timer >= 60){article_state = 4;article_state_timer = 1;} // End the state if the play jumps 
+    if(player_id.free && article_state_timer >= 60){article_state = 4;article_state_timer = 1;} // End the state if the player jumps 
     if(article_state_timer >= 360){article_state = 4;article_state_timer = 0;}
     break;
     

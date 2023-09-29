@@ -683,8 +683,8 @@ if (attack == AT_NSPECIAL){
 	}
 }
 else if (attack == AT_TAUNT_2){ // beeg taunt
-	if(window <= 4){hud_offset = 600;}
-	else{hud_offset = 2000;}
+	if(window <= 4){hud_offset = 600;soft_armor = 8;}
+	else{hud_offset = 2000;soft_armor = 12;}
 	
     if(window == 1){
         if(window_timer <= 1){sound_play( sound_get("heavyattack") );shake_camera(10, 10);}

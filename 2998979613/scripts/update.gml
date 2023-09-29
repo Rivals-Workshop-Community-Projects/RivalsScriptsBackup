@@ -88,6 +88,7 @@ if laser_timer = 370{
 if laser_timer = 390{
     line_fx_timer = 50;
     sound_play(sound_get("guardian_fire"), 0, noone, 0.8);
+    fire_pos = [x + 24*dcos(body_angles[2]), y + -85*dsin(rot_angle + 90) + 24*dcos(body_angles[2])*dcos(rot_angle + 90) -col_displace*2];
     var e = create_hitbox(AT_NSPECIAL, 1, floor(fire_pos[0]), floor(fire_pos[1]));
     beam_pos = [[fire_pos[0], fire_pos[1], point_direction(fire_pos[0], fire_pos[1], target_pl.x, target_pl.y - target_pl.char_height/2)]];
     if instance_exists(target_pl){

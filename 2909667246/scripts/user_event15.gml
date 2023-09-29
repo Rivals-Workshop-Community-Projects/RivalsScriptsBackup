@@ -259,6 +259,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.36", "24th September, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added 7 more Miiverse posts");
+
+initPatch("1.35", "15th August, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ If Villager is riding Lloid and it is reflected, it can't hit him while he's still on it (however, Villager can't jump off Lloid for 60 frames if this happens, so that it's not too much of a buff).
+This is mainly to replicate the behavior from smash where Villager can be reflected back and explodes if he doesn't jump off soon enough");
 
 initPatch("1.34", "13th August, 2023");
 initHeader("Buffs");

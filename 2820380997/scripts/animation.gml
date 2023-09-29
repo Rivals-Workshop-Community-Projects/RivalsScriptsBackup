@@ -6,7 +6,7 @@ if (has_skin()) { //is there a skin equipped?
 
 // --------------------------------------------------
 // Crouch Idle
-if(state == PS_CROUCH && state_timer > 20){
+if(state == PS_CROUCH && state_timer > 10){
     sprite_index = sprite_get_skinned("crouch_idle");
     image_index = floor(image_number*state_timer/(image_number*10));
 }
@@ -87,29 +87,35 @@ if(attack == AT_DTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 
 // Custom Landing Animations
 if(state == PS_LANDING_LAG){
-	var num_of_frames = 3; // This is fixed for each animation
-	var length_of_landing_lag = floor(get_attack_value(attack,AG_LANDING_LAG) * 1.5);
-	var length_per_frame = length_of_landing_lag / num_of_frames;
-	image_index = (state_timer / length_per_frame);
+
 	switch(attack){
 		case AT_NAIR:
 			sprite_index = sprite_get_skinned("nair_land");
+			var num_of_frames = 2; // This is fixed for each animation
 		break;
 		case AT_FAIR:
 			sprite_index = sprite_get_skinned("fair_land");
+			var num_of_frames = 2; // This is fixed for each animation
 		break;
 		case AT_DAIR:
 			sprite_index = sprite_get_skinned("dair_land");
+			var num_of_frames = 3; // This is fixed for each animation
 		break;
 		case AT_UAIR:
 			sprite_index = sprite_get_skinned("uair_land");
+			var num_of_frames = 3; // This is fixed for each animation
 		break;
 		case AT_BAIR:
 			sprite_index = sprite_get_skinned("bair_land");
+			var num_of_frames = 3; // This is fixed for each animation
 		break;
 		default:
 		break;
 	}
+	
+	var length_of_landing_lag = floor(get_attack_value(attack,AG_LANDING_LAG) * 1.5);
+	var length_per_frame = length_of_landing_lag / num_of_frames;
+	image_index = (state_timer / length_per_frame);
 }
 
 // Advance / Beckon Code sprite swap for dspecial held button

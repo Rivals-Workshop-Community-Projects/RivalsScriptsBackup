@@ -16,5 +16,5 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	    	grabbedtarget.visible = true;
 		}
     }
-    print("matty");
+    //print("matty");
 }

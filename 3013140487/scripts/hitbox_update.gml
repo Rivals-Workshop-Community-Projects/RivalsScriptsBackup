@@ -3,8 +3,8 @@ if attack == AT_NSPECIAL && hbox_num == 1{
     if(sprite_index == handle_spr_big){
         if free proj_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp * spr_dir);
     }
-    if hitbox_timer >= 20 && !was_parried {
-        hsp = clamp(hsp - .2*spr_dir, -30*(spr_dir == -1), 30*(spr_dir == 1));
+    if hitbox_timer >= 16 && !was_parried {
+        hsp = clamp(hsp - .15*spr_dir, -30*(spr_dir == -1), 30*(spr_dir == 1));
         vsp += .5;//1
     }
     if(was_parried){

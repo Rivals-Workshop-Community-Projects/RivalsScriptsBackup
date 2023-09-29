@@ -72,6 +72,12 @@ if (attack == AT_NSPECIAL){
 			    			damage = 8;kb_value = 7;kb_scale = 0.9;waspocketed2 = true;
 			    		}
 			    	}
+			    	//check if villager is gonna mess with the 'state' variable or not (or i actually would, if this function worked)
+			    	/*if(get_char_info(player, INFO_STR_AUTHOR) == "FelixBlobDev" || get_char_info(player, INFO_STR_AUTHOR) == "DonGT"){
+			    		other.player_id.pocket_handle_state = true;
+			    	}else{
+			    		other.player_id.pocket_handle_state = false;
+			    	}*/
 			    	
 			    	with(other.player_id){
 			    		invincible = true;invince_time = 10;
@@ -305,7 +311,7 @@ if (attack == AT_NSPECIAL){
 		    if(instance_exists(rider)){
 		    	rider.x = x-(22*spr_dir);rider.y = y-16;rider.spr_dir = spr_dir;
 		    	rider.hsp = hsp;rider.vsp = vsp;rider.spr_dir = spr_dir;
-		    	depth = rider.depth+1;
+		    	depth = rider.depth+1;can_hit[rider.player] = false;
 		    	if(timer >= 40 && (spr_dir == 1 && player_id.right_down || spr_dir == -1 && player_id.left_down)){
 					if(abs(hsp) < 12 || player_id.runeL && abs(hsp) < 18){
 						hsp += (0.35*speedmod)*spr_dir;
@@ -324,12 +330,12 @@ if (attack == AT_NSPECIAL){
 						vsp += (0.25*speedmod);
 					}
 				}
-				if(player_id.window < 6 && (player_id.special_pressed || player_id.jump_pressed || player_id.shield_pressed)){
+				if(player_id.window < 6 && (player_id.special_pressed || player_id.jump_pressed || player_id.shield_pressed) && jumpoff_timer <= 0){
 					player_id.window = 6;player_id.window_timer = 0;
 				}
 				with(rider){
 					if(window == 6 && window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH)-1 || state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR || state == PS_HITSTUN){
-						other.rider = noone;
+						other.old_rider = other.rider;other.rider = noone;other.jumpoff_timer = 5;
 						other.damage = 7;other.kb_scale = 0.8;
 						if(state != PS_HITSTUN){
 							hsp = -2*other.spr_dir;vsp = -7;
@@ -344,13 +350,19 @@ if (attack == AT_NSPECIAL){
 		    if(player_id.runeM){
 		    	timer = min(timer,50);
 		    }
+		    if(prev_player != player)jumpoff_timer = 60;
 		}else{
 			Pocketable = true;
 	    	MattCanGrab = true;
 	    	MorshuCanGrab = true;
 	    	CalCanSnack = 1;
 	    	depth = -7;
+	    	if(jumpoff_timer <= 0 && instance_exists(old_rider)){
+	    		can_hit[old_rider.player] = true;old_rider = noone;
+	    	}
 		}
+		jumpoff_timer -= 1;
+		if(prev_player != player)prev_player = player;
 	}
 }else if (attack == AT_USPECIAL){
     if(hbox_num == 1){ //balloon
@@ -1114,7 +1126,7 @@ if(attack == AT_TAUNT){
 	with(asset_get("pHitBox")){
 	    if(place_meeting(x,y,other)){
 	        if(attack == AT_TAUNT && other != self){
-	            x += 100;//print("matty");
+	            x += 100;
 	        }
 	    }
     }

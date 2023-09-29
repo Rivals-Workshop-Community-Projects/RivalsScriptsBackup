@@ -27,7 +27,8 @@ if((other_player_id.state == PS_ATTACK_AIR || other_player_id.state == PS_ATTACK
 	with(other_player_id){
 		switch(attack){
 			case AT_DTHROW:
-		    	behind_sprite_index = sprite_get("dthrow_behind");
+			if(alt_outfit_enabled){behind_sprite_index = sprite_get("9t_dthrow_behind");}
+	    	else behind_sprite_index = sprite_get("dthrow_behind");
 				break;
 			default:
 				break;

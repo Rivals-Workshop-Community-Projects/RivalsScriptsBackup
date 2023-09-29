@@ -26,6 +26,10 @@ switch my_hitboxID.attack{
     break;
     
     case AT_NAIR:
+    if my_hitboxID.hbox_num < get_num_hitboxes(AT_NAIR) {
+        sound_play(asset_get("sfx_flareo_rod"));
+    }else sound_play(asset_get("sfx_forsburn_reapper_hit"));
+    break;
     case AT_DATTACK:
     if my_hitboxID.hbox_num == 1 {
         my_hitboxID.can_hit[hit_player_obj.player] = 1;
@@ -35,11 +39,13 @@ switch my_hitboxID.attack{
     break;
     
     case AT_FSTRONG:
-    if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_forsburn_combust"));
+    if my_hitboxID.hbox_num > 2 sound_play(asset_get("sfx_forsburn_combust"));
     else sound_play(asset_get("sfx_forsburn_reappear_hit"));
     break;
     
     case AT_UTILT:
+    sound_play(asset_get("sfx_forsburn_combust"));
+    break;
     case AT_BAIR:
     case AT_FAIR:
     case AT_NSPECIAL:

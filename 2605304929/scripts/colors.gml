@@ -39,12 +39,12 @@ set_num_palettes( 31 );
 // OG Colors
 set_color_profile_slot( 1, 0, 200, 200, 240 ); //fur
 set_color_profile_slot( 1, 1, 250, 251, 252 ); //fur tip
-set_color_profile_slot( 1, 2, 84, 84, 255 ); //hair
-set_color_profile_slot( 1, 3, 255, 255, 0 ); //horns + accents
-set_color_profile_slot( 1, 4, 128, 192, 255 ); //kimono top
+set_color_profile_slot( 1, 2, 143, 143, 255 ); //hair
+set_color_profile_slot( 1, 3, 255, 255, 125 ); //horns + accents
+set_color_profile_slot( 1, 4, 129, 175, 219 ); //kimono top
 set_color_profile_slot( 1, 5, 255, 255, 255 ); //kimono wave
-set_color_profile_slot( 1, 6, 56, 56, 232 ); //kimono bottom
-set_color_profile_slot( 1, 7, 199, 64, 64 ); //kimono accents
+set_color_profile_slot( 1, 6, 73, 73, 191 ); //kimono bottom
+set_color_profile_slot( 1, 7, 171, 60, 60 ); //kimono accents
 
 // Klockwurth
 set_color_profile_slot( 2, 0, 140, 132, 148 ); //fur
@@ -66,15 +66,15 @@ set_color_profile_slot( 3, 5, 255, 220, 222 ); //kimono wave
 set_color_profile_slot( 3, 6, 255, 220, 222 ); //kimono bottom
 set_color_profile_slot( 3, 7, 210, 34, 48 ); //kimono accents
 
-// Genesis 8
-set_color_profile_slot( 4, 0, 196, 33, 44 ); //fur
-set_color_profile_slot( 4, 1, 247, 221, 217 ); //fur tip
-set_color_profile_slot( 4, 2, 61, 55, 55 ); //hair
-set_color_profile_slot( 4, 3, 247, 221, 217 ); //horns + accents
-set_color_profile_slot( 4, 4, 115, 106, 106 ); //kimono top
-set_color_profile_slot( 4, 5, 87, 78, 80 ); //kimono wave
-set_color_profile_slot( 4, 6, 84, 60, 63 ); //kimono bottom
-set_color_profile_slot( 4, 7, 41, 33, 41 ); //kimono accents
+// Sailee
+set_color_profile_slot( 4, 0, 250, 236, 168 ); //fur
+set_color_profile_slot( 4, 1, 250, 244, 242 ); //fur tip
+set_color_profile_slot( 4, 2, 250, 248, 245 ); //hair
+set_color_profile_slot( 4, 3, 37, 65, 207 ); //horns + accents
+set_color_profile_slot( 4, 4, 243, 242, 255 ); //kimono top
+set_color_profile_slot( 4, 5, 37, 94, 207 ); //kimono wave
+set_color_profile_slot( 4, 6, 37, 65, 207 ); //kimono bottom
+set_color_profile_slot( 4, 7, 16, 36, 145 ); //kimono accents
 
 // Iroh
 set_color_profile_slot( 5, 0, 200, 200, 240 ); //fur
@@ -236,15 +236,15 @@ set_color_profile_slot( 20, 5, 232, 208, 137 ); //kimono wave
 set_color_profile_slot( 20, 6, 87, 60, 115 ); //kimono bottom
 set_color_profile_slot( 20, 7, 255, 226, 122 ); //kimono accents
 
-// Ouro Kronii
-set_color_profile_slot( 21, 0, 29, 51, 139 ); //fur
-set_color_profile_slot( 21, 1, 57, 57, 57 ); //fur tip
-set_color_profile_slot( 21, 2, 73, 76, 113 ); //hair
-set_color_profile_slot( 21, 3, 211, 168, 53 ); //horns + accents
-set_color_profile_slot( 21, 4, 156, 154, 153 ); //kimono top
-set_color_profile_slot( 21, 5, 230, 231, 240 ); //kimono wave
-set_color_profile_slot( 21, 6, 37, 44, 128 ); //kimono bottom
-set_color_profile_slot( 21, 7, 215, 216, 225 ); //kimono accents
+// FuRi's Edge
+set_color_profile_slot( 21, 0, 97, 0, 0 ); //fur
+set_color_profile_slot( 21, 1, 107, 107, 107 ); //fur tip
+set_color_profile_slot( 21, 2, 252, 254, 255 ); //hair
+set_color_profile_slot( 21, 3, 194, 0, 0 ); //horns + accents
+set_color_profile_slot( 21, 4, 48, 48, 64 ); //kimono top
+set_color_profile_slot( 21, 5, 252, 254, 255 ); //kimono wave
+set_color_profile_slot( 21, 6, 130, 0, 0 ); //kimono bottom
+set_color_profile_slot( 21, 7, 252, 254, 255 ); //kimono accents
 
 // Marlow
 set_color_profile_slot( 22, 0, 252, 250, 248 ); //fur

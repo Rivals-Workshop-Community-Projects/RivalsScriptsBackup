@@ -49,6 +49,7 @@ if (attack == AT_NSPECIAL && !free && destroyed == false){
 
 if (attack == AT_NSPECIAL){
     if (hitbox_timer == length - 1){
+    	sound_play(asset_get("sfx_leaves"));
         spawn_hit_fx( x + 12*spr_dir, y + 2, 14 );
     }
     

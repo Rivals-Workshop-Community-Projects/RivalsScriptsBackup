@@ -7,7 +7,11 @@ if(has_shrimp == false){
         if(!is_scalding){
         attack = AT_USPECIAL_2;
         }if(is_scalding){
+            if(num_pumbos > 1){
         attack = AT_EXTRA_1;
+            }else{
+            attack = AT_USPECIAL_2;    
+            }
         }
     }    if(attack == AT_DSPECIAL){
         attack = AT_DSPECIAL_2;

@@ -150,6 +150,7 @@ pocket_grounds = 0;
 pocket_walls = 0;
 pocket_buff = false;
 pocket_release = 0;
+pocket_handle_state = false;
 Lloid_Rocket = noone;
 fspec_spawned = false;
 Lloid_Rocket_Ride = false;
@@ -196,8 +197,8 @@ runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF
 //runeC = true;runesUpdated = true;
 
 if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"
-|| string_lower(get_player_name(player)) == "sky" || string_lower(get_player_name(player)) == "skycrafter1234"
-|| string_count("skycrafter", string_lower(get_player_name(player))) > 0 || string_count("scrafter", string_lower(get_player_name(player))) > 0 || string_count("skycra", string_lower(get_player_name(player))) > 0){
+/*|| string_lower(get_player_name(player)) == "sky" || string_lower(get_player_name(player)) == "skycrafter1234"
+|| string_count("skycrafter", string_lower(get_player_name(player))) > 0 || string_count("scrafter", string_lower(get_player_name(player))) > 0 || string_count("skycra", string_lower(get_player_name(player))) > 0*/){
 	kewtmode = 1;
 }
 
@@ -248,4 +249,4 @@ ncode3 = "Whatever you do, don't turn your back to him";
 TCG_Kirby_Copy = 7;
 
 muno_event_type = 0;
-	user_event(14);
+user_event(14);

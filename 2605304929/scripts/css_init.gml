@@ -401,9 +401,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Roekoko is a pupil like no other. She will one day surpass me.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Genesis";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Genesis 9";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Genesis 8 & 9 2022/2023 WS Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Being powerful comes with a responsibility. I cannot imagine a world where I had no morals...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
@@ -486,9 +486,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I love a rainy night...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for Jmillions";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The slow cruel hands of time has taken their toll on me.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "FuRi's Edge";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Marlow";sub_element_slot++;
@@ -585,11 +585,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Blueberry Bout";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character was in BB, bracket is now archived";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Baja";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "TLC";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pallet Description";sub_element_slot++;
@@ -609,6 +604,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "2022 Riptide Bracket";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Genesis";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Genesis 9";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character at Genesis 8 & 9 2022/2023 WS Bracket";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "R-00";sub_element_slot++;
@@ -676,9 +676,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "When I am not fighting evil, I can be a tad lazy... ";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Being powerful comes with a responsibility. I cannot imagine a world where I had no morals...";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Baja";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Zexiphi";sub_element_slot++;
@@ -696,9 +696,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Roekoko and I typically fight along side each other. We compliment each other's weakness well.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "FuRi's Edge";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for Jmillions";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The slow cruel hands of time has taken their toll on me.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 64 DO NOT USE
 	slot_property_array[color_slot,sub_element_slot] = "64 Not used yet";sub_element_slot++;
@@ -790,6 +790,11 @@ return chunk_arr;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Vaporwave";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for Jashy";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Mint";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Furi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 

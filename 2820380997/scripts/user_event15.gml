@@ -25,6 +25,7 @@ add_sprites("clone_airdash_backward", "clone_airdash_forward","clone_extra_3","c
             "crouch_idle","doublejump_backward","idle_2","plat_idle","intro", // Neutral Unique
             "dspecial_down", "dspecial_up", "dthrow_behind","dthrow", // Dspecial
             "extra_1_advance","extra_1_beckon","extra_3", // Nspecial
+            "nair_land","bair_land","fair_land","dair_land","uair_land", // Landing Code
             "fspecial_2","fspecial_air","uspecial_2","uspecial_ground") // Fspecial / special
             
 

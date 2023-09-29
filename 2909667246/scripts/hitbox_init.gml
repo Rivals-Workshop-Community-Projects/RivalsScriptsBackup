@@ -36,9 +36,10 @@ if(attack == AT_NSPECIAL){
 	    CalCanSnack = 1;
 	    SpikeCanEat = true;//SpikeHealPercent = 0;
 	    
-	    rider = noone;
+	    rider = noone;old_rider = noone;
 	    orig_player = player;
 	    current_player = player;
+	    prev_player = player;
 	    hp = 12;
 	    hashitplayer = false;
 	    hitpausehit = 0;
@@ -51,6 +52,7 @@ if(attack == AT_NSPECIAL){
     	lastplayerhit = -1;
     	thehit_player = -1;
     	anim = 0;
+    	jumpoff_timer = 0;
     	sound = false;
     	startsound = noone;
     	loopsound = noone;

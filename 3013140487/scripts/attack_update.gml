@@ -83,7 +83,7 @@ switch attack{
 	break;
 	
 	case AT_DTILT:
-	cancel_action(jump_pressed);
+	// cancel_action(jump_pressed);
 	break;
 	
 	case AT_UTILT:
@@ -140,7 +140,7 @@ switch attack{
 		can_fast_fall = 0;
 		hsp = (window_timer == window_end? 2*(right_down - left_down): dcos(usp_dir) * 12);
 		vsp = (window_timer == window_end? -8: dsin(usp_dir) * -12);
-		if window_timer == window_end vfx_explosion = [x, y - 20, 0];
+		if window_timer == window_end vfx_explosion = [x, y - 40, 0];
 		break;
 		
 		case 4:
@@ -166,8 +166,10 @@ switch attack{
 		case 2:
 		var colbox = collision_rectangle(x - 20, y, x + 20, y - 70, pHitBox, 1, 1);
 		if instance_exists(colbox) && colbox.player_id != self && colbox.hit_priority != 0 {
+			var dist = point_distance(x, y, colbox.player_id.x, colbox.player_id.y);
+			if(dist <= 200) counter_pos = [colbox.player_id.x - 60*colbox.player_id.spr_dir, x];
+			else counter_pos = [x+200*(colbox.player_id.x > x ? 1 : -1), x];
 			vsp = 0;
-			counter_pos = [colbox.player_id.x - 60*colbox.player_id.spr_dir, x];
 			spr_dir = sign((counter_pos[0]-x)*2 + 1);
 			window = 4;
 			window_timer = 0;
@@ -202,7 +204,7 @@ switch attack{
 	case AT_NSPECIAL:
 	switch window{
 		case 1:
-		if window_timer >= 7 && (!special_down || shield_pressed || attack_pressed) {
+		if (window_timer >= 7 && (shield_pressed || attack_pressed)) || (window_timer >= 10 && !special_down) {
 			knife_bunt = shield_pressed || attack_pressed;
 			window_goto(3);
 			voice_play(get_gameplay_time()%2? VC_ATK_SMALL: VC_ATK_BIG);
@@ -301,7 +303,7 @@ switch attack{
 		case 4:
 		if has_hit && !was_parried && !hitpause && has_pulled {
 			iasa_script();
-			if(!has_rune("B")) strong_cooldown = max(0, 20 - window_timer);
+			if(!has_rune("B")) strong_cooldown = max(0, 18 - window_timer);
 		} else if !has_hit && !was_parried can_move = true;
 		break;
 		case 5:
