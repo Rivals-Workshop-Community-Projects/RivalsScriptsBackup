@@ -11,7 +11,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
 
-set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 41);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
 
@@ -47,7 +47,7 @@ set_hitbox_value(AT_TAUNT, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_TAUNT, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_TAUNT, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_TAUNT, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_TAUNT, 2, HG_KNOCKBACK_SCALING, 1.9);
+set_hitbox_value(AT_TAUNT, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_TAUNT, 2, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_TAUNT, 2, HG_VISUAL_EFFECT, 158);
 set_hitbox_value(AT_TAUNT, 2, HG_HITPAUSE_SCALING, 1);
