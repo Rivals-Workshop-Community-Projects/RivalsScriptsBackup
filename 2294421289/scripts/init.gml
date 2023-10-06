@@ -112,3 +112,11 @@ spindash_limit = 18; //18
 
 //Dstrong jump cancel
 dstrong_cancel = 0;
+
+//Ring variables
+ring = noone;
+ring_take_vfx = hit_fx_create( sprite_get( "ring_take" ), 15 );
+
+//Fspecial
+fspec_charge_timer = 0;
+fspec_charge_max_time = 30;

@@ -37,13 +37,15 @@ sprite_change_offset("uair", 54, 93);
 sprite_change_offset("dair", 32, 69);
 sprite_change_offset("fstrong", 50, 76);
 sprite_change_offset("ustrong", 60, 107);
-sprite_change_offset("dstrong", 80, 100);
+sprite_change_offset("dstrong", 69, 111);
 sprite_change_offset("nspecial", 38, 72); 
 sprite_change_offset("fspecial", 70, 74);
 sprite_change_offset("uspecial", 48, 72); 
 sprite_change_offset("dspecial", 60, 76); 
 sprite_change_offset("taunt", 56, 93);
+
 sprite_change_offset("ring", 17, 17);
+sprite_change_offset("ring_take", 23, 24);
 sprite_change_offset("ringmask", 34, 34); //17, 17
 
 sprite_change_offset("plat", 73, 112);
