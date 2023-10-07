@@ -439,6 +439,8 @@ switch (state)
                         msg_unsafe_effects.shudder.horz_max = 8;
                         msg_unsafe_effects.shudder.vert_max = 8;
                         msg_persistence.music_request_breaking = GET_RNG(17, 0x01);
+                        //bonus
+                        msg_compat_data.stadium.reroll_sprites = true;
 
                         var charbox_offset = 3;
                         if (msg_persistence.state == PERS_CSS)
@@ -601,6 +603,60 @@ if (get_gameplay_time() > 90)
 
 //fakeout parry
 if (msg_fakeout_parry_timer > 0) msg_fakeout_parry_timer--;
+
+//==================================================================
+//Stage-compatibility setup
+if (get_gameplay_time() > 5)
+{
+    switch (msg_compat_data.stage_id)
+    {
+        //==========================================================
+        case "2237190890": //Pokemon Stadium
+        {
+            if (msg_compat_data.do_init)
+            {
+                with asset_get("obj_stage_article") if (num == 3)
+                {
+                    other.msg_compat_data.stadium.front_article = self; break;
+                }
+            }
+
+            //Toy with articles
+            if (player == obj_stage_main.front)
+            {
+                if !msg_compat_data.stadium.blinks && !(state == PS_DEAD)
+                    msg_compat_data.stadium.front_article.flash_timer = !msg_compat_data.stadium.front_article.visible;
+
+                if (msg_compat_data.stadium.reroll_sprites)
+                    obj_stage_main.front_changed = true;
+            }
+            if (player == obj_stage_main.back) && (msg_compat_data.stadium.reroll_sprites)
+            {
+                obj_stage_main.back_changed = true;
+            }
+
+            //Reroll own images
+            if (msg_compat_data.stadium.reroll_sprites)
+            {
+                var rng = random_func_2( 1 + GET_RNG(3, 7), array_length(msg_compat_data.stadium.front_sprites), true );
+                var random_front = msg_compat_data.stadium.front_sprites[rng];
+                pkmn_stadium_front_img = random_front.spr;
+                msg_compat_data.stadium.front_blink = random_front.blinks;
+
+                //only Front blinks
+                rng = random_func_2( 11 + GET_RNG(3, 7), array_length(msg_compat_data.stadium.back_sprites), true );
+                pkmn_stadium_back_img = msg_compat_data.stadium.back_sprites[rng];
+
+                msg_compat_data.stadium.reroll_sprites = false;
+            }
+        } break;
+        //==========================================================
+    }
+
+    msg_compat_data.do_init = false;
+}
+
+//==================================================================
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.

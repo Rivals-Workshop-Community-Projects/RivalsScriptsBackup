@@ -82,6 +82,10 @@ set_victory_theme(sound_get("victory"));
 
 sprite_change_offset("glitch_bg", 17, 37);
 
+//non-defined have implicit zero (what Pokemon Stadium expects)
+sprite_change_offset("cmp_stadium_front_alt3", 87, -1);
+sprite_change_offset("cmp_stadium_front_alt4", 87, -1);
+
 msg_effective_alt = get_fake_alt();
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

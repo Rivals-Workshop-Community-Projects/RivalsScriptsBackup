@@ -41,6 +41,16 @@ else if (state == PERS_SSS)
 {
     clone.depth = 7;
 }
+else if (state == PERS_RESULTS)
+{
+    with asset_get("draw_result_screen")
+    if (results_timer == 8) && ("uhc_victory_quote" in self)
+    && (uhc_victory_quote == "An unspecified error occurred while recording.")
+    {
+        trophy_enabled = true;
+        results_loop_active = true;
+    }
+}
 
 //=============================================================================
 //achievement unlocking

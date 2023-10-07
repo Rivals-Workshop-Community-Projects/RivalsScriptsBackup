@@ -1,4 +1,20 @@
+
+
+//someone_pressed = false;
+//end_charselect = false;
+//go_to_charselect = false;
+//results_timer = 3;
+//with asset_get("result_screen_box")
+//{
+    //can_input = false;
+//}
+
 if (results_timer < 5) exit;
+
+////Broken return to charselect
+//someone_pressed = false;
+//end_charselect = false;
+
 
 if (results_timer == 5) 
 {
@@ -23,8 +39,7 @@ if (msg_results_portrait_timer < 0) && (results_timer < 360)
     msg_results_portrait_timer = tmult * (3 + ((msg_results_random >> 8) & 0x1F));
     var p = 1 + ((msg_results_random >> 24) & 0x03);
 
-    if (player == p) set_victory_portrait(msg_orig_portrait);
-    else if is_player_on(p) set_victory_portrait(get_char_info(p, INFO_PORTRAIT));
+    if is_player_on(p) set_victory_portrait(get_char_info(p, INFO_PORTRAIT));
     else if is_player_on(clamp(p-1, 1, 4)) set_victory_portrait(get_char_info(clamp(p-1, 1, 4), INFO_PORTRAIT));
 }
 if (msg_results_background_timer < 0) && (results_timer < 320)

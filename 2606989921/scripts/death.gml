@@ -12,6 +12,12 @@ msg_persistence.stage_request_breaking = GET_RNG(16, 0x01) * noone;
 msg_persistence.music_request_breaking = GET_RNG(17, 0x01) * noone;
 msg_persistence.sound_request_breaking = GET_RNG(18, 0x01) * noone;
 
+//cannot execute this glitch on deathboxes, teleporting back doesnt guarantee a death
+var beyond_blastzone = (x > get_stage_data(SD_RIGHT_BLASTZONE_X))
+                    || (x < get_stage_data(SD_LEFT_BLASTZONE_X))
+                    || (y < get_stage_data(SD_TOP_BLASTZONE_Y))
+                    || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+
 //======================================================
 if (gfx_glitch_death_stack > 0)
 {
@@ -21,7 +27,7 @@ if (gfx_glitch_death_stack > 0)
 }
 else if (random_func(7, 8, true) == 0 || is_laststock())
      && (get_match_setting(SET_STOCKS) > 0)
-     && !msg_stability_mode
+     && !msg_stability_mode && beyond_blastzone
 {
     var active = [0, 0,0,0,0];
     var alive = [0, 0,0,0,0];
@@ -42,6 +48,9 @@ else if (random_func(7, 8, true) == 0 || is_laststock())
     gfx_glitch_death_position.x = x;
     gfx_glitch_death_position.y = y;
 }
+
+//bonus
+msg_compat_data.stadium.reroll_sprites = true;
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.

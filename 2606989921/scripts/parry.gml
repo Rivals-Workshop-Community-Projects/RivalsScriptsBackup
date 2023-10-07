@@ -11,7 +11,8 @@ if (!has_parried)
     }
 
     //multiparry glitch
-    if (msg_multiparry > 0)
+    //melee only: projectiles could get reflected and not connect...
+    if (msg_multiparry > 0) && (enemy_hitboxID.type == 1)
     {
         msg_multiparry--;
 

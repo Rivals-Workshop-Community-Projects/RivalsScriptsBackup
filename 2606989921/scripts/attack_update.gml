@@ -131,6 +131,22 @@ switch (attack)
             window = 2;
             window_timer = 0;
             sound_play(get_window_value(attack, 1, AG_WINDOW_SFX));
+            msg_dtilt_times_through++;
+
+            if (msg_dtilt_times_through > 4)
+            {
+                set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 0);
+                set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 1);
+            }
+
+            set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, 1 + msg_dtilt_times_through * 0.2);
+        }
+        else if (window == 1 && window_timer = 1)
+        {
+            msg_dtilt_times_through = 0;
+            reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
+            reset_hitbox_value(AT_DTILT, 1, HG_TECHABLE);
+            reset_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER);
         }
         else if (window == 5 && has_hit && !was_parried)
         {

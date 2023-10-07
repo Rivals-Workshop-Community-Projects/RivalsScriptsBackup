@@ -307,6 +307,8 @@ if ("msg_unsafe_handler_id" in self && other_player_id == msg_unsafe_handler_id)
     //'M- Hurt Sprites             .                         hh hhG
     //  - Hurt Corruptions         . FFFFFFFF ff  fSMB sssccc
     //===================================================================
+    //'M- Compat:Pokemon Stadium   .                              RNG
+    //===================================================================
     // Also see animation.gml, set_attack.gml
 
 
@@ -432,10 +434,10 @@ if ("msg_unsafe_handler_id" in self && other_player_id == msg_unsafe_handler_id)
 
                 for (var i = 0; i < 8; i++)
                 {
-                    msg_unsafe_effects.altswap.coloring[i*4 + 0] = get_color_profile_slot_r(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 1] = get_color_profile_slot_g(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 2] = get_color_profile_slot_b(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 3] = 1;
+                    fx.coloring[i*4 + 0] = get_color_profile_slot_r(alt_roll, i)/256;
+                    fx.coloring[i*4 + 1] = get_color_profile_slot_g(alt_roll, i)/256;
+                    fx.coloring[i*4 + 2] = get_color_profile_slot_b(alt_roll, i)/256;
+                    fx.coloring[i*4 + 3] = 1;
                 }
                 fx.active = true;
             }

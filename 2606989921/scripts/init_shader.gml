@@ -12,7 +12,21 @@ if ("msg_effective_alt" in self) && (msg_effective_alt != color)
     apply_color_slot(3, color, 3);
 }
 
-if (color == 14)
+//these are not reset automatically
+static_colorO[8*4 + 0] = 0;
+static_colorO[8*4 + 1] = 0;
+static_colorO[8*4 + 2] = 0;
+
+if (color == 8)
+{
+    colorO[8*4 + 0] = 1;
+    colorO[8*4 + 1] = 1;
+    colorO[8*4 + 2] = 1;
+    static_colorO[8*4 + 0] = 1;
+    static_colorO[8*4 + 1] = 1;
+    static_colorO[8*4 + 2] = 1;
+}
+else if (color == 14)
 {
     var sync = get_synced_var(player);
     apply_color_slot(1, (sync & 0xF0) >> 4, 2);
@@ -23,6 +37,9 @@ else if (color == 15)
     colorO[8*4 + 0] = 0;
     colorO[8*4 + 1] = 0.55;
     colorO[8*4 + 2] = 0;
+    static_colorO[8*4 + 0] = 0;
+    static_colorO[8*4 + 1] = 0.55;
+    static_colorO[8*4 + 2] = 0;
     set_character_color_shading(0, 0.0);
     set_character_color_shading(1, 0.0);
     set_character_color_shading(2, 0.0);

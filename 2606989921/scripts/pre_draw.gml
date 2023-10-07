@@ -13,46 +13,10 @@ if (state == PS_PRATFALL)
 }
 
 var matrix_mode = (msg_effective_alt == 15);
-if matrix_mode
+if matrix_mode && (!msg_persistence.achievement_saw_matrix)
 {
-    outline_color = [0, 140, 0];
-    colorO[8*4 + 0] = 0;
-    colorO[8*4 + 1] = 0.55;
-    colorO[8*4 + 2] = 0;
-    colorO[8*4 + 3] = 1;
-    static_colorO[8*4 + 0] = 0;
-    static_colorO[8*4 + 1] = 0.55;
-    static_colorO[8*4 + 2] = 0;
-    static_colorO[8*4 + 3] = 1;
-
-    if (!msg_persistence.achievement_saw_matrix)
-        msg_persistence.achievement_request_unlock_id = 1; //matrix witnessed
+    msg_persistence.achievement_request_unlock_id = 1; //matrix witnessed
 }
-else if (msg_effective_alt == 8)
-{
-    outline_color = [255, 255, 255];
-    colorO[8*4 + 0] = 1;
-    colorO[8*4 + 1] = 1;
-    colorO[8*4 + 2] = 1;
-    colorO[8*4 + 3] = 1;
-    static_colorO[8*4 + 0] = 1;
-    static_colorO[8*4 + 1] = 1;
-    static_colorO[8*4 + 2] = 1;
-    static_colorO[8*4 + 3] = 1;
-}
-else
-{
-    outline_color = [0, 0, 0];
-    colorO[8*4 + 0] = 0;
-    colorO[8*4 + 1] = 0;
-    colorO[8*4 + 2] = 0;
-    colorO[8*4 + 3] = 1;
-    static_colorO[8*4 + 0] = 0;
-    static_colorO[8*4 + 1] = 0;
-    static_colorO[8*4 + 2] = 0;
-    static_colorO[8*4 + 3] = 1;
-}
-
 
 //===================================================================
 //Simulated parry VFX
@@ -555,6 +519,8 @@ if (vfx_yoyo_snap.timer > 0)
     //'M- Hurt Sprites             .                         hh hhG
     //  - Hurt Corruptions         . FFFFFFFF ff  fSMB sssccc
     //===================================================================
+    //'M- Compat:Pokemon Stadium   .                              RNG
+    //===================================================================
     // Also see animation.gml, set_attack.gml
 
 
@@ -680,10 +646,10 @@ if (vfx_yoyo_snap.timer > 0)
 
                 for (var i = 0; i < 8; i++)
                 {
-                    msg_unsafe_effects.altswap.coloring[i*4 + 0] = get_color_profile_slot_r(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 1] = get_color_profile_slot_g(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 2] = get_color_profile_slot_b(alt_roll, i)/256;
-                    msg_unsafe_effects.altswap.coloring[i*4 + 3] = 1;
+                    fx.coloring[i*4 + 0] = get_color_profile_slot_r(alt_roll, i)/256;
+                    fx.coloring[i*4 + 1] = get_color_profile_slot_g(alt_roll, i)/256;
+                    fx.coloring[i*4 + 2] = get_color_profile_slot_b(alt_roll, i)/256;
+                    fx.coloring[i*4 + 3] = 1;
                 }
                 fx.active = true;
             }
