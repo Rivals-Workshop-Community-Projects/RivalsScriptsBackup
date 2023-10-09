@@ -102,11 +102,6 @@ if get_player_color(player) = 16 {
 	//set the new color using rgb values from the gamemaker color
 }
 
-//gold & silver alt
-if (get_player_color(player) == 17) || (get_player_color(player) == 18){
-	set_victory_theme(sound_get("finalfanfare"));
-}
-
 if (state == PS_PARRY){
 	if (state_timer == 1){
 		sound_play(sound_get("plant"));
@@ -317,7 +312,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 6);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .4);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_FORCE_FLINCH, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 303);
@@ -342,7 +337,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 5);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, .5);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 6);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .2);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .4);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_SPRITE, ability_proj);

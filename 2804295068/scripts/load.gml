@@ -1,4 +1,8 @@
-set_victory_theme( sound_get( "winmusic" ));
+if (get_player_color(player) == 17) || (get_player_color(player) == 18){
+	set_victory_theme(sound_get("finalfanfare"));
+} else {
+	set_victory_theme( sound_get( "winmusic" ));
+}
 
 sprite_change_offset("idle", 64, 94);
 sprite_change_offset("hurt", 64, 94);

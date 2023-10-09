@@ -65,11 +65,6 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	if (player != orig_player){
 		player = orig_player
 	}
-    if (hitbox_timer == 1){
-	    vsp = -2
-	    hsp = (player_id.hsp/3)+(2*spr_dir)
-		sound_play (sound_get ("bean_voice"));
-	}
 	if (hitbox_timer == 60){
 		sound_play (sound_get ("bean_voice2"));
 	}

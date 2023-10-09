@@ -1,11 +1,11 @@
 torched = false;
 if (has_rune("L")){
-	if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49){
+	if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49){
 		torched = true
 	}
 }
 
-if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49){
+if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49){
     img_spd = 0.2;
 }
 
@@ -18,5 +18,13 @@ if (attack == AT_NSPECIAL && hbox_num == 1){
 		grounds = -1;
 		hsp = 13 * spr_dir;
 		vsp = 9;
+	}
+}
+
+if (attack == AT_FSPECIAL && hbox_num == 1){
+    if (hitbox_timer == 1){
+	    vsp = -2
+	    hsp = (player_id.hsp/3)+(2*spr_dir)
+		sound_play (sound_get ("bean_voice"));
 	}
 }

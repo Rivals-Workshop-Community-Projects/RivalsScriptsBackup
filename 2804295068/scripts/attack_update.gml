@@ -3,11 +3,11 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-var exists = false;
+var torchwood_exists = false;
 
 with (obj_article1){
     if (player_id == other.id){
-        var exists = true;
+        var torchwood_exists = true;
     }
 }
 
@@ -47,20 +47,20 @@ if (attack == AT_FAIR){
 			vsp -= gravity_speed * 2 / 3;
 			vsp = min(vsp, 5);
 			if (window_timer == 4){
-				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-28 );
-				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-32 );
+				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-24 );
+				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-24 );
 				create_hitbox( AT_FAIR, 3, x+8*spr_dir, y-24 );
 				sound_play (sound_get ("throw"));
 			}
 			if (window_timer == 8){
-				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-28 );
-				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-32 );
+				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-24 );
+				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-24 );
 				create_hitbox( AT_FAIR, 3, x+8*spr_dir, y-24 );
 				sound_play (sound_get ("throw"));
 			}
 			if (window_timer == 12){
-				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-28 );
-				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-32 );
+				create_hitbox( AT_FAIR, 1, x+8*spr_dir, y-24 );
+				create_hitbox( AT_FAIR, 2, x+8*spr_dir, y-24 );
 				create_hitbox( AT_FAIR, 3, x+8*spr_dir, y-24 );
 				sound_play (sound_get ("throw"));
 			}
@@ -384,7 +384,7 @@ if (attack == AT_DSPECIAL){
 			vsp = clamp(vsp, -4, 1.5);
 		}
         if (window_timer == 1){
-			if (exists){
+			if (torchwood_exists){
 				with (obj_article1){
 					if (player_id == other.id){
 						shovel = true
@@ -399,7 +399,7 @@ if (attack == AT_DSPECIAL){
 				}
 				sound_play (sound_get ("plant"));
 				torchwood_recharge = 0
-			} else if (!exists){
+			} else if (!torchwood_exists){
 			    sound_play (sound_get ("buzzer"));
 			}
         }
@@ -472,6 +472,16 @@ if (attack == AT_TAUNT_2){
 			set_state( PS_IDLE );
 		}
 	}
+	/*
+	if (window == 4){
+		if (left_down && !right_down){
+			hsp = -1;
+		}
+		if (!left_down && right_down){
+			hsp = 1;
+		}
+	}
+	*/
 }
 
 if (attack == 49){

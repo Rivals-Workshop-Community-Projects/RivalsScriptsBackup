@@ -14,15 +14,15 @@ draw_sprite_ext(sprite_get("packet_recharge"), 0, temp_x+96, temp_y-44, 1, bean_
 
 var torchwood_packet_shader = c_gray;
 var torchwood_recharge_yscale = ((ceil((450-torchwood_recharge)/22.5))/20)
-var exists = false;
+var torchwood_exists = false;
 
 with (obj_article1){
     if (player_id == other.id){
-        var exists = true;
+        var torchwood_exists = true;
     }
 }
 
-if (torchwood_recharge >= 450) && (!exists){
+if (torchwood_recharge >= 450) && (!torchwood_exists){
     torchwood_packet_shader = c_white;
 }
 
