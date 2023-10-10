@@ -15,18 +15,23 @@ if (attack == AT_FSPECIAL
 	trigger_b_reverse();
 }
 
+
 // Allow use of previously charged strongs or specials on hit
 if (can_stancle) {
-	if ((stored_strong_charge >= strong_full_charge_time && !free)
-		&& (attack != AT_FSTRONG)
-		&& (attack != AT_DSTRONG)
-		&& (attack != AT_USTRONG)
-		&& (attack != AT_USTRONG_2))
-	{
-		can_strong = true;
-		can_ustrong = true;
-	}
-	
+    if ((stored_strong_charge >= strong_full_charge_time && !free)
+        && (attack != AT_FSTRONG)
+        && (attack != AT_DSTRONG)
+        && (attack != AT_USTRONG)
+        && (attack != AT_USTRONG_2))
+    {
+        if ((attack != AT_USPECIAL_GROUND)
+            || ((window != uspecial_uncharged_hide_window)
+                && (window != uspecial_charged_hide_window)))
+        {
+            can_strong = true;
+            can_ustrong = true;
+        }
+    }
 	if ((special_charge >= special_full_charge_time)
 		&& (attack != AT_NSPECIAL)
 		&& (attack != AT_NSPECIAL_AIR)

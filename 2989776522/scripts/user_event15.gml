@@ -260,6 +260,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.22", "9th October, 2023");
+initHeader("Buffs");
+initSection("+ Increased FStrong sweetspot kbs a bit (1.1->1.15) and gave it slightly faster startup (f23->f20)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added 8 more Miiverse posts");
+
 initPatch("1.21", "11th August, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed sleep sfx not working correctly");

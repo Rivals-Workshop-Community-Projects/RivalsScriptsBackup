@@ -42,9 +42,29 @@ set_article_color_slot( 4, 131, 223, 230 ); //skirt
 set_article_color_slot( 5, 109, 227, 214 ); //bw
 set_article_color_slot( 6, 230, 137, 232 ); //red
 set_article_color_slot( 7, 255, 233, 217 ); //skin
-}
+
 }
 
+if (extra_col==2){//transformed (tenchu)
+set_character_color_slot( 0, 126, 199, 86 ); //clothe
+set_character_color_slot( 1, 94, 159, 69 ); //clothe.2
+set_character_color_slot( 2, 197, 129, 56 ); //hair
+set_character_color_slot( 3, 94, 54, 27 ); //hair.2
+set_character_color_slot( 4, 46, 51, 52 ); //skirt
+set_character_color_slot( 5, 247, 246, 240 ); //bw
+set_character_color_slot( 6, 246, 233, 105 ); //red
+set_character_color_slot( 7, 248, 223, 182 ); //skin
+set_article_color_slot( 0, 126, 199, 86 ); //clothe
+set_article_color_slot( 1, 94, 159, 69 ); //clothe.2
+set_article_color_slot( 2, 197, 129, 56 ); //hair
+set_article_color_slot( 3, 94, 54, 27 ); //hair.2
+set_article_color_slot( 4, 46, 51, 52 ); //skirt
+set_article_color_slot( 5, 247, 246, 240 ); //bw
+set_article_color_slot( 6, 246, 233, 105 ); //red
+set_article_color_slot( 7, 248, 223, 182 ); //skin
+
+}
+}
 
 
 
@@ -74,5 +94,12 @@ The door, in fact, did not open at
 all.
  
 What happened?
+
+*/
+
+/*
+
+I'm the voice in your head that says you are corny for these notes 
+ooooooooooo
 
 */

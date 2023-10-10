@@ -55,7 +55,7 @@ if(attack == AT_DSPECIAL){
 		UnReflectable = true;
 		Pocketable = false;
 	}else if(hbox_num == 2){
-		Pocketable = false;
+		Pocketable = false;FireHitbox = true;
 	}else if(hbox_num == 3){
 		if("target" not in self)target = noone;
 		if(instance_exists(target)){

@@ -7,5 +7,5 @@ if (door_storage!=-4){
 }
 
 if (attack==AT_JAB){
-jabparry_queue = true;
+//jabparry_queue = true;
 }

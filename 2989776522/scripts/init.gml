@@ -260,7 +260,7 @@ fs_portrait_x = 60;
 fs_meter_x = -20;
 fs_meter_y = -10;
 fs_attack_index = AT_NSPECIAL;
-
+Toadie_Ability = 5;
 TCG_Kirby_Copy = 15;
 
 // Animation Info

@@ -62,7 +62,14 @@ if (state==PS_SPAWN && extra_col == 0){
 		init_shader();
 	}
 }
-
+if (state==PS_SPAWN && extra_col == 0){
+	if (special_down&&up_down){//transformed (nuzl)
+		extra_col = 2
+		white_flash_timer = 18;
+		sound_play(sound_get("small_build"));
+		init_shader();
+	}
+}
 
 if (!alt_init){
 	if (get_player_color( player ) == 21){
