@@ -268,6 +268,7 @@ switch(attack){
             var poof = spawn_hit_fx(x-45*spr_dir,y-45,fx_poof);poof.depth = depth-1;
             sound_play(sound_get("poof"))
             PlayVoiceClip("peach_boys");
+            PlayVoiceClip("princess",2,false);
         }
         if(window == 2){
         	if(window_timer == phone_window_end)peach = create_hitbox(attack,1,x-45*spr_dir,y-45);
@@ -463,11 +464,11 @@ switch(attack){
 	    }
 	}
 #define PlayVoiceClip
-/// PlayVoiceClip(name,?volume)
+/// PlayVoiceClip(name,?volume,?stopprev)
 //Plays SFX
 if(!muted && !hitpause){
-    sound_stop(voice)
-    voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+	if(argument_count>2?argument[2]!=false:true)sound_stop(voice);
+	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
 }
 
 #define cancelattack

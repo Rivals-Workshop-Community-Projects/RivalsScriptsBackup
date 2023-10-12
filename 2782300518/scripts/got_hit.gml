@@ -1,5 +1,6 @@
 if (motorbike == true)
 {
+	clinging = false;
 	//This variable determines the strength of Knockback for bike animation
 	if (enemy_hitboxID.kb_value >= 9)
 	{
@@ -9,33 +10,54 @@ if (motorbike == true)
 	{
 		damageCheck = false;
 	}
-	/*In Freedom Planet, getting hit three times while on the bike breaks the bike. 
-	This is not a one to one recreation but its something similar*/
-	fuel = fuel - enemy_hitboxID.damage;
 	//A bunch of conditions to prevent Carol from flying off into outer space on her bike
-	if (wall_ride)
+	/*if (wall_ride)
 	{
 		hsp = 0;
-		old_hsp = 0;
 		vsp = 0;
-		old_vsp = 0;		
+		wall_ride = false;
 	}
 	switch (prev_state)
 	{
 		case PS_WALL_JUMP:
 			hsp = 0;
-			old_hsp = 0;
 			vsp = 0;
-			old_vsp = 0;
+			wall_ride = false;
 		break;
 	}
 	switch (prev_prev_state)
 	{
 		case PS_WALL_JUMP:
 			hsp = 0;
-			old_hsp = 0;
 			vsp = 0;
-			old_vsp = 0;
+			wall_ride = false;
 		break;
-	}
+	}*/
 }
+
+stopVoice();
+
+if (voice == 1 && enemy_hitboxID.effect != 9)
+{
+    var random_hurt_voice = random_func_2(123, 11, 1);
+    switch (random_hurt_voice)
+    {
+        case 0:
+            sound_play(sound_get("hurt"));
+        break;
+    }
+}
+
+#define stopVoice
+
+sound_stop(sound_get("aw_yeah"));
+sound_stop(sound_get("feel_my_power"));
+sound_stop(sound_get("hold_on_lilac"));
+sound_stop(sound_get("im_bored"));
+sound_stop(sound_get("parry"));
+sound_stop(sound_get("pow_pow"));
+sound_stop(sound_get("that_stupid_panda"));
+sound_stop(sound_get("try_and_catch_me"));
+sound_stop(sound_get("what_you_doing"));
+sound_stop(sound_get("why_are_we_stopping"));
+sound_stop(sound_get("wittle_wiwac"));

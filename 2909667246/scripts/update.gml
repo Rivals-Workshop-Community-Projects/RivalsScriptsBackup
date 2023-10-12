@@ -249,11 +249,10 @@ if(state == PS_CROUCH && !hitpause){
 	}crouching = false;
 }
 
-if((state == PS_LAND || state == PS_LANDING_LAG || state == PS_PRATLAND|| state == PS_WAVELAND) && state_timer == 1 && !hitpause && (sol || op || canon)){
-	if(op || canon){
-		shake_camera(10, 10);sound_play( sound_get("dspecial_tree_land") );
-	}else{
-		shake_camera(3, 3);
+if((state == PS_LAND || state == PS_LANDING_LAG || state == PS_PRATLAND|| state == PS_WAVELAND) && state_timer == 1 && !hitpause && (size_mult > 1 || sol || op || canon)){
+	shake_camera(floor((size_mult>1)?5*(size_mult*.55):3), floor((size_mult>1)?3*(size_mult*.65):3));
+	if(size_mult > 2 || op || canon){
+		sound_play( sound_get("dspecial_tree_land") );
 	}sound_play( sound_get("heavyland") );
 }
 
@@ -509,6 +508,27 @@ if(trainingmode || op || canon || runeK){
         size_mult = 1;
     }
 }
+
+//uncanon things!
+if(get_gameplay_time() % 30 == 0 || hitpause){
+	poison = 0;
+	if("infection_timer" in self){ //nemesis
+		infection_timer = 0;blood_tick = 0;is_infected = false;
+	}if("has_bleeding" in self){ //hassan
+		has_bleeding = false;bleeding_time = 0;has_bleed_timer = 0;has_bleed_stacks = 0;
+	}if("filia_bleed" in self && "timer_nspecial" in self){ //filia
+		filia_bleed = 0;timer_nspecial = 0;filia_tempid = -1;filia_id = -1;outline_color = [ 0, 0, 0 ];init_shader();
+	}if("test_status_timer" in self){ //yor
+		test_status_timer = 0;
+	}if("amaya_venom" in self){ //amaya
+		amaya_venom = false;amaya_venom_count = 0;amaya_venom_id = 0;
+	}if ("croagpoison" in self){ //croagunk
+        croagpoison = 0;
+	}if ("malsick" in self){ //mal
+		malsick = false;sickTimer = 0;sickAfterGrace = sickAfterGraceMax;sickGrace = 0;resetOutline = true;
+	}
+}
+
 
 #define hyper_armor_triggered
 	set_state(PS_IDLE);

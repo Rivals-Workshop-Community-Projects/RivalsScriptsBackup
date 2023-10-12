@@ -252,6 +252,23 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.4", "7th October, 2023");
+initHeader("Nerfs");
+initSection("- Hotel Mario now loses some dspecial charge on death
+- If toast is frozen by NSpecial it becomes destroyable (no more wall of indestructible toast)
+- DStrong now has a bit more endlag (16/24->19/28) so it's not as safe to use anymore, and made the hitboxes slightly smaller (particularly the finisher)
+- UAir pig now has slightly bigger hit collision, making it a little easier to challenge");
+
+initHeader("Fixes / Other Changes");
+initSection("- Mr Monopoly can now pick up the coins from the pig and gain money from it, skillful
+- NSpecial's cloud now recolors properly with alts
+- NSpecial's cloud now properly affects other players
+- NSpecial's cloud now properly freezes articles
+- Fixed some issues with Freezable not overriding other conditions
+- Made USpecial's pulling in hitbox unable to be frozen by NSpecial
+- Uair's coins are now not freezable or reflectable
+- Mario now says 'princess' when doing FStrong like Luigi");
+
 initPatch("1.3", "21st August, 2023");
 initHeader("Buffs");
 initSection("- Mario can look at all the flying magestic toast above him

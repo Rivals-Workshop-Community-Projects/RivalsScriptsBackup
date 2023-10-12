@@ -41,7 +41,7 @@ switch(attack){
 		}
 	break;
 	case AT_UTILT:
-		can_fast_fall = false;
+		if (window == 1){ can_fast_fall = false; }
 		if (window == 1 and window_timer == 7){ 
 		sound_play(asset_get("sfx_swipe_weak1"));
 		}	
@@ -50,7 +50,10 @@ switch(attack){
 		}
 		if (window == 2 and window_timer == 4 and !hitpause){ 
 		sound_play(asset_get("sfx_swipe_medium2"))
-		}		
+		}
+		if (window == 2 and window_timer >= 7 and !hitpause){ 
+		can_fast_fall = true; 
+		}
 	break;
 	case AT_FAIR:
 		if (window == 1 && window_timer == 9) && !hitpause{
@@ -81,12 +84,17 @@ switch(attack){
     move_cooldown[AT_FSPECIAL] = 45;
     fspecial_spr_dir = spr_dir;
     can_fast_fall = false;
-    if (window == 1 && window_timer == 6) and special_down{
+    if (window == 1 && window_timer == 9 && has_hit){
+    	//sound_play(asset_get("sfx_ori_bash_hit"));
     	attack_end(); //call this when you cancel an attack, it resets hitboxes!
 		set_attack(AT_FSPECIAL_2);{
-			window_timer = 4;
+			window_timer = 11;
 		}
 		
+    }
+    if (window == 1 && window_timer == 1){
+    	    spawn_hit_fx( x -10*spr_dir, y-10, vfx_fspecial );
+    	    spawn_hit_fx( x -10*spr_dir, y+20, vfx_fspecial );
     }
     if (window == 1 && window_timer == 12) and !hitpause{
 		    	spawn_base_dust(x +20*spr_dir,y,"dash_start",1* spr_dir);
@@ -98,9 +106,9 @@ switch(attack){
     break;
 	case AT_FSPECIAL_2:
 	can_fast_fall = false;
-	if (window == 1 && window_timer == 5){
-		sound_play(asset_get("sfx_ori_bash_hit"));
-	}
+	//if (window == 1 && window_timer == 7){
+		//sound_play(asset_get("sfx_ori_bash_hit"));
+	//}
     if (window == 2 && window_timer == 1) and !hitpause{
 				spawn_base_dust(x +20*spr_dir,y,"dash_start",1* spr_dir);
 		    	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1.0,1.2);
@@ -112,6 +120,7 @@ switch(attack){
     can_wall_jump = true;
     //All of this is preety much taken and adapted from Tornado Kirby (I coded that myself too so it's fine lol)
 	if (window == 1){
+		hsp = clamp(hsp,-8,8);
 		uspecial_enhanced = 1;
 		set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 9);
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 9);
@@ -313,7 +322,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

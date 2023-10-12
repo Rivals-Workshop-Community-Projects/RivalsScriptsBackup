@@ -3,10 +3,10 @@ shader_start();
 //draw_debug_text( x-90, y-240, "window: " + string( window ));
 //draw_debug_text( x-90, y-220, "window timer: " + string( window_timer ));
 //draw_debug_text( x-90, y-200, "state: " + get_state_name( state ));
+//draw_debug_text( x-70, y-180, "state timer: " + string( state_timer ));
 //draw_debug_text( x-90, y-160, "nspecial time: " + string( nspecial_time ));
 //draw_debug_text( x-90, y-180, "hsp: " + string( hsp ));
 //draw_debug_text( x-90, y-160, "vsp: " + string( vsp ));
-//draw_debug_text( x-70, y-160, "state timer: " + string( state_timer ));
 //draw_debug_text( x-70, y-180, "window: " + string( window ));
 //draw_debug_text( x-70, y-200, "window timer: " + string( window_timer ));
 
@@ -179,7 +179,7 @@ if(attack == AT_TAUNT_2 && state == PS_ATTACK_AIR){
 
 if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 //MOTION BLUR CODE
-	if ((attack == AT_JAB && (window == 5 && window_timer > 10 || window == 6) && has_hit_player)
+	if ((attack == AT_JAB && (window == 5 || window == 6 || window == 7 && window_timer < 20) && has_hit_player)
 	|| (attack == AT_EXTRA_1) || attack == AT_UTILT && window == 2 && flyforward == true || timestop == true){
 
 	for(var m = 0; m < array_length_1d(blur); m++) {

@@ -18,6 +18,7 @@ sprite_change_offset("landinglag", 100, 136);
 sprite_change_offset("parry", 100, 136);
 sprite_change_offset("roll_forward", 100, 136);
 sprite_change_offset("roll_backward", 100, 136);
+sprite_change_offset("roll_vfx", 100, 136);
 sprite_change_offset("airdodge", 100, 136);
 sprite_change_offset("waveland", 100, 136);
 sprite_change_offset("tech", 100, 136);
@@ -73,6 +74,7 @@ sprite_change_offset("hfx_wind_small", 64, 64);
 sprite_change_offset("hfx_wind_large", 128, 128);
 sprite_change_offset("hfx_wind_huge", 256, 256);
 sprite_change_offset("vfx_fair", 100, 136);
+sprite_change_offset("vfx_fspecial", 100, 136);
 sprite_change_offset("dspecial_vfx", 100, 100);
 
 set_victory_bg(sprite_get("uysal_victoryscreen"));

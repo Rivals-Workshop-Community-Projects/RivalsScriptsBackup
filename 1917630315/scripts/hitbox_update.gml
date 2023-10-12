@@ -24,3 +24,8 @@ if (attack == AT_NSPECIAL)
     if (abs(hsp) > max_hsp)
         hsp = max_hsp * spr_dir;
 }
+
+if (attack == AT_USTRONG and type == 2)
+{
+    if (hitbox_timer >= 5) for (var i = 0; i < array_length(can_hit); ++i) can_hit[i] = false;
+}

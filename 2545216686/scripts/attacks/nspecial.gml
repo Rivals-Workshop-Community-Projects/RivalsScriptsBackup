@@ -25,6 +25,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_NSPECIAL, 1);
 
+// main hitbox
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99999);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
@@ -39,7 +40,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 20);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("energy_shot"));
@@ -50,6 +51,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4 + (nspecMultihitRune * 
 //set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 157 - (nspecMultihitRune * 136));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 157);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, 157);

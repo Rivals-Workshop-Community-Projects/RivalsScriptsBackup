@@ -1,7 +1,17 @@
+var game_time = get_gameplay_time()
+if (alt_cur == 18)
+{
+	maskHeader();
+	draw_sprite_ext(sprite_index, image_index, x +draw_x, y + draw_y, (1+small_sprites) * spr_dir, 1+small_sprites, spr_angle, -1, 1);
+	maskMidder();
+	draw_sprite_tiled(sprite_get("gold_shimmer"), game_time * 0.4, x - 50 *spr_dir, y - (char_height/2) - 50);
+	maskFooter();
+}
+
 //Draw Tail in front of Carol
 if (tsprite_index!=-1 && tfront==true){
 	init_shader();
-	if (get_player_color(player) == 17)
+	if (alt_cur == 14)
 	{
 		var base = 4*8;
 		static_colorO[base] = 0.137;
@@ -14,18 +24,26 @@ if (tsprite_index!=-1 && tfront==true){
 }
 
 //Draw Bike and shield in front of Carol
-if (bsprite_index!=-1 && bfront==true){
-	init_shader();
-	if (get_player_color(player) == 17)
+if (bsprite_index!=-1 && bfront==true)
+{
+	if (bshader == true)
 	{
-		var base = 4*8;
-		static_colorO[base] = 0.137;
-		static_colorO[base+1] = 0.262;
-		static_colorO[base+2] = 0.192;
+		init_shader();
+		if (alt_cur == 14)
+		{
+			var base = 4*8;
+			static_colorO[base] = 0.137;	
+			static_colorO[base+1] = 0.262;
+			static_colorO[base+2] = 0.192;
+		}
+		shader_start();
+		draw_sprite_ext(bsprite_index, bimage_index, x+bx, y+by, bsx*image_xscale, bsy, brotation, c_white, 1);
+		shader_end();
 	}
-	shader_start();
-	draw_sprite_ext(bsprite_index, bimage_index, x+bx, y+by, bsx*image_xscale, bsy, brotation, c_white, 1);
-	shader_end();
+	else
+	{
+		draw_sprite_ext(bsprite_index, bimage_index, x+bx, y+by, bsx*image_xscale, bsy, brotation, c_white, 1);
+	}
 }
 
 switch (state)
@@ -33,21 +51,65 @@ switch (state)
 	case PS_WALL_JUMP:
 		if (motorbike == false)
 		{
-			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x-26, y-80, 2, 2, 0, c_white, 1);
+			//draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2 + (state_timer*0.75), 2 + (state_timer*0.75), 0, c_white, 1-state_timer*0.1);
+		}
+	break;
+	case PS_ATTACK_AIR:
+	case PS_ATTACK_GROUND:
+		switch (attack)
+		{
+			case AT_FSPECIAL:
+			case AT_FSPECIAL_AIR:
+				if (motorbike == false && walljump_number > 0)
+				{
+					//draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1);
+					draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2 + (state_timer*0.75), 2 + (state_timer*0.75), 0, c_white, 1-state_timer*0.1);
+				}
+			break;
+		}
+	break;	
+	default:
+	break;
+}
+
+switch (prev_state)
+{
+	case PS_WALL_JUMP:
+		if (motorbike == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+		{
+			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1 - state_timer*0.05);
+		}
+	break;
+	case PS_ATTACK_AIR:
+	case PS_ATTACK_GROUND:
+		switch (attack)
+		{
+			case AT_FSPECIAL:
+			case AT_FSPECIAL_AIR:
+				if (motorbike == false && walljump_number > 0)
+				{
+					draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1 - state_timer*0.05);
+				}
+			break;
 		}
 	break;
 	default:
 	break;
 }
 
-if (motorbike == false && fuel >=40)
+if (multikick_energy < 200)
 {
-	draw_sprite_ext(sprite_get("fuel_prompt2"), 0, x-26, y-84, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("multikick_meter"), 0, x, y+6, 2, 2, 0, c_white, 1);
+	if (multikick_energy > 0)
+	{
+		//draw the meter based on how much energy there is
+		 draw_sprite_ext(sprite_get("multikick_charge"), 0, x-54, y+10, 2 * round(multikick_energy * 0.25), 2, 0, c_white, 1);
+	}
 }
-if (hitConfirm && motorbike == false)
+else if (multikick_energy == 200 && multikick_ready_timer <100)
 {
-	draw_sprite_ext(sprite_get("fuel_canister"), 0, x-16, y-84, 2, 2, 0, c_white, 1);
-	draw_debug_text(x +2, y-80, string(fuel));
+	draw_sprite_ext(sprite_get("multikick_meter_full"), 0, x, y+6, 2, 2, 0, c_white, 1);
 }
 
 if (nBoostReadyTimer < 100 && move_cooldown [AT_FSPECIAL_2] == 0 && motorbike == true)
@@ -81,6 +143,81 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        patch_note_title[i] = "2.0"
+        patch_note_text[i++] =  
+        
+        "Major character overhaul!
+        
+Entire moveset tweaked or revamped to some degree with 9 brand new moves, several other moves reanimated and a couple of new gimmicks to make her more of a Rivals character.
+
+All sprites reshaded and recolourmapped for better alts.
+        
+Major tweak made to the pounce move. You can now hold down the button to gain height during the pounce, making up somewhat for Carol's lack of a true double jump and allowing her to reach top plat on the training stage without the jump being too high. The move will also immediately land on platforms rather than slide.
+
+Stats tweaked, Jump height reduced, short hop height aligned better with shorthop, Bike jump height is lower, double jump height standardised.
+        
+HUD redesigned, removed excess clutter, previous info that was on the HUD now pops up whenever relevant like the charge in the Wild Kick meter or the number of Wall jumps left.
+        
+You can now store the bike if thrown with the new FSpecial Air. Press Shield when it FSpecial or FSpecial Air on bike to get back on bike.
+        
+Using DSpecial on bike, Carol will now get off the bike and park in on the stage. Kicking the bike with NSpecial will deplete its fuel and when you run out of fuel as you kick the bike it will create an explosion that will cause significant knockback.
+    	
+Throwing the Jump Disc at a parked bike will pick up the bike and turn it into a projectile. If it comes back to Carol she gets on the bike, if you zoom to it the bike is stored instead.
+    	
+Using USpecial on the bike turns it into a spinning projectile that will go up and in the direction that you pounce on it and then come down again, resting on the stage again as a bike.
+
+If the bike falls off the stage when you pounce on it then you fuel will start charging again.
+
+You can only get back on the bike if its parked on the stage if you're standing next to it.
+    	
+Full moveset overhaul details:
+    	
+Nair: Scrapped
+Fair: Now Nair
+New Fair: Her low flying kick from FP2
+Uair: Scrapped and replaced with her overhead kick from FP2
+Bair: it's now backwards Kragg Fair
+Dair: Has a bit of startup before the fall, now redesigned to encase Carol in a bubble (taken from Jade Creek stage). New bubble animation has more stretch on impact to help sell the animation better. No longer can free cancel the move, it is now a lot more committal.
+DStrong: Cat roll is gone and is now instead Sonic DStrong.
+UStrong: Still a flip ending in a handstand but she flips forward instead
+All Strongs now have three windows in startup and structured properly.
+USpecial: Is now the Pounce instead, Carol now actually has a double jump
+Dspecial: No longer Limit Break charge fuel, fuel now charges itself.
+
+Bike moveset changes:
+Jab, Ftilt, Utilt and Dtilt are no longer cancellable freely into each other. Ftilt Utilt and Dtilt are also singular strikes.
+Dtilt is now using the front wheel of the bike as a sawblade.
+UStrong: Now the off bike UStrong but holding the bike for the hitbox.
+Fair: Is now Fspecial Air but functions like Fspecial off bike.
+New Fair: Carol swings the bike like a giant Hammer
+Uair: Replaced with an on bike version of the overhead kick.
+Bair: Changed to backwards Kragg Fair but holding the bike.
+Dair: Now DSpecial Air instead and has a custom explosion effect.
+New Dair: Downward thrust with the bike. 
+Fspecial: No longer an instant boost and only usable on the ground. Has a lot more startup.
+USpecial: Same height as off bike
+Dspecial: You get off the bike and leave it on the stage.
+
+NSpecial on both bike and off it no longer requires a full bar to use. Furthermore you now hold down the button to continue kicking.
+
+In addition Jab, Ftilt, Utilt, Dtilt, FStrong, Nair, Dair, Bike Ftilt, Bike Utilt, Bike Nair, Bike DSpecial Air, Bike NSpecial, Bike FSpecial and Bike USpecial have all been reanimated.
+
+Idle, Parry and Airdodge have been reanimated, Walk and Dash have been adjusted to be smoother and less jittery.
+
+A bunch of bike animations have been tweaked a bit to show rotating wheels better as well as having more angles.
+
+Added Wiimote compatibility.
+
+Added Boris Anderson compatibility
+
+Added Gold Sheen to Alt 18, renamed to Solid Gold Motorbike.
+
+Added 8 new alts, Neera, Blaze, Honey, Niko, Kamen Rider, Wes, Valentino Rossi and Nanashi Mumei
+
+In light of the revamped moveset added two new Abyss Runes to replace the now redundant ones.
+
+Changed the size of the portrait and Char select so that the lines are proper and so that she's the same height as Lilac on the win screen."
+
         patch_note_title[i] = "1.72"
         patch_note_text[i++] = 
 		"If this patch doesn't fix all the issues that occur from wall riding and getting hit I don't know what will. Added an extra variable to prevent Carol from flying off into space when getting hit.
@@ -464,3 +601,25 @@ if (object_index == asset_get("oTestPlayer"))
         draw_set_alpha(a_str); draw_set_valign(fa_top); draw_set_halign(fa_center);
     }
 }//testplay check over
+
+#define maskHeader
+{
+	gpu_set_blendenable(false)
+	gpu_set_colorwriteenable(false, false, false, true);
+	draw_set_alpha(0);
+	draw_rectangle_color(-200, -200, room_width + 200, room_height + 200, c_white, c_white, c_white, c_white, false);
+	draw_set_alpha(1);
+}
+#define maskMidder
+{
+	gpu_set_blendenable(true);
+	gpu_set_colorwriteenable(true, true, true, true);
+	gpu_set_blendmode_ext(bm_dest_alpha, bm_inv_dest_alpha);
+	gpu_set_alphatestenable(true);
+}
+#define maskFooter
+{
+	gpu_set_alphatestenable(false);
+	gpu_set_blendmode(bm_normal);
+	draw_set_alpha(1);
+}

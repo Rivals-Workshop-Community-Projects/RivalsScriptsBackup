@@ -83,6 +83,11 @@ if(attack == AT_UAIR){
 		Pocketable = false;
 		UnReflectable = true;AriaCantAbsorb = true;
 	}
+	if(hbox_num == 3){
+		rupee_sfx = sound_get("ww_rupee");
+		Freezable = false;
+		UnReflectable = true;		
+	}
 }
 
 if(attack == AT_DATTACK){
@@ -99,6 +104,8 @@ if(attack == AT_DATTACK){
 if(attack == AT_USPECIAL){
 	proj_angle = -45*spr_dir;
 	image_index = 2;
+	Freezable = false;
+	UnReflectable = true;
 }
 
 if(attack == AT_FSPECIAL){

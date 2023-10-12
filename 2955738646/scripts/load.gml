@@ -44,7 +44,7 @@ sprite_change_offset("nspecial", 64, 108);
 sprite_change_offset("nspecial_air", 52, 109);
 sprite_change_offset("nspecial_2", 124, 168);
 sprite_change_offset("nspecial_followup", 70, 110);
-sprite_change_offset("fspecial", 104, 114);
+sprite_change_offset("fspecial", 98, 108);
 sprite_change_offset("fspecial_followup", 40, 80);
 sprite_change_offset("super_dash", 60, 108);
 sprite_change_offset("super_dash_startup", 130, 180);
@@ -59,7 +59,7 @@ sprite_change_offset("uspecial", 64, 94);
 sprite_change_offset("uspecial2", 72, 396);
 sprite_change_offset("uspecial2_laser", 72, 396);
 sprite_change_offset("uspecial_ground", 64, 158);
-sprite_change_offset("uspecial_ground2", 72, 396);
+sprite_change_offset("uspecial_ground2", 76, 396);
 sprite_change_offset("uspecial_ground_followup", 72, 112);
 sprite_change_offset("utilt2", 48, 76);
 sprite_change_offset("dspecial", 68, 106);
@@ -94,6 +94,10 @@ sprite_change_offset("ustrong_proj_charge", 58, 235);
 sprite_change_offset("ustrong_proj_blast", 58, 235);
 sprite_change_offset("fstrong_explode", 50, 120);
 sprite_change_offset("fstrong_burst_tail", 0, 80);
+
+sprite_change_offset("shockwave", 30, 0);
+sprite_change_offset("harsh_hit2", 20, 300);
+sprite_change_offset("lightspeed_particle", 100, 70);
 
 sprite_change_offset("electric_effect", 10, 40);
 sprite_change_offset("timestop_BG", 160, 120);

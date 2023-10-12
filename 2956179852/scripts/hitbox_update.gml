@@ -60,7 +60,7 @@ if(attack == AT_FSTRONG){
 	    hit_priority = 0;transcendent = false;
 		image_xscale = .25;image_yscale = .25;  
 	}
-	
+	if(Frozen){transcendent = false;}
 	if(vsp > 5){ //spike
 		kb_value *= 0.5;kb_scale *= 0.5;
 	}
@@ -231,11 +231,36 @@ else if(attack == AT_UAIR){
 	    	hitstop -= 1;grav = 0;
 	    }
 	}else if(hbox_num == 3){
-	    if(hitbox_timer == 40){image_xscale = 0;image_yscale = 0;hit_priority = 0;}	
+	    if(hitbox_timer == 40){hit_priority = 0;}
 	    if(get_gameplay_time() % 6 == 0){
 	    	var rand_dir = random_func(1, 359, true);
 	    	var sparkle = spawn_hit_fx((x) + round(lengthdir_x(15, rand_dir)), y - 15 + round(lengthdir_y(15, rand_dir)), player_id.fx_shine_small_slow);sparkle.depth = depth-1;
 		}
+        //sick compatibility
+        with(oPlayer){
+            if(place_meeting(x,y,other) && !other.destroyed && state != PS_HITSTUN && state != PS_HITSTUN_LAND && state != PS_PRATFALL && state != PS_PRATLAND && state != PS_DEAD && state != PS_RESPAWN
+            /*&& (get_player_team(player) == get_player_team(other.player) || get_player_team(player) != get_player_team(other.player))*/
+            && ("current_money" in self)){
+                with(other){
+                    destroyed = true;sound_play(rupee_sfx);
+                }
+                if("current_money" in self){
+                    if(get_player_team(player) == get_player_team(other.player)){current_money += 150;}
+                    else{current_money += 50;}
+                }
+            }
+        }
+        with(pHitBox){
+            if(place_meeting(x,y,other) && "housemoney" in self){
+                with(other){
+                    destroyed = true;sound_play(rupee_sfx);
+                }
+                if("housemoney" in self){
+                    if(get_player_team(player) == get_player_team(other.player)){housemoney += 100;}
+                    else{housemoney += 50;}
+                }
+            }
+        }		
 	}else if(hbox_num == 4){
 	    if(!instance_exists(theotherhitbox)){
 	    	destroyed = true;
@@ -301,19 +326,18 @@ if(attack == AT_USPECIAL){
 draw_xscale = spr_dir;
 
 #define nspec_stun
-if(place_meeting(x,y,other) && ("Freezable" in self && Freezable || "UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+if(place_meeting(x,y,other) && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Freezable" not in self || "Freezable" in self && Freezable){
 	if("in_hitpause" in self){
 		if(!in_hitpause){
-			//hsp*=.55;vsp*=.55;
 			in_hitpause = 1;		
 		}
 		if(in_hitpause && other.hitbox_timer == other.length)in_hitpause = false;
 	}else if("hitstop" in self){
-		hitstop = 1;
+		hitstop = 2;
 		if(hitstop > 0 && other.hitbox_timer == other.length)hitstop = 0;
 	}
 	if("Frozen" in self)Frozen = other.hitbox_timer < other.length;
-}else if(!place_meeting(x,y,other) && ("Freezable" in self && Freezable || "UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+}else if(!place_meeting(x,y,other) && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Freezable" not in self || "Freezable" in self && Freezable){
 	if("in_hitpause" in self){
 		if(in_hitpause && other.hitbox_timer == other.length)in_hitpause = false;
 	}else if("hitstop" in self){

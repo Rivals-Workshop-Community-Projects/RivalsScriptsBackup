@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 10 );
 
 // Chill Penguin
 set_color_profile_slot( 1, 0, 38, 33, 37 ); //Blue
@@ -103,6 +103,16 @@ set_color_profile_slot( 8, 3, 14, 82, 59 ); //Darker Blue
 set_color_profile_slot( 8, 4, 162, 237, 212 ); //Lighter Blue
 set_color_profile_slot( 8, 5, 0, 135, 0 ); //Red
 set_color_profile_slot( 8, 6, 107, 179, 71 ); //Infinity Stone
+
+// DUFF TIME
+set_color_profile_slot( 9, 0, 152, 23, 191 ); //Blue
+set_color_profile_slot( 9, 1, 255, 180, 1 ); //Yellow
+set_color_profile_slot( 9, 2, 255, 252, 227 ); //White
+set_color_profile_slot( 9, 3, 70, 5, 105 ); //Darker Blue
+set_color_profile_slot( 9, 4, 255, 255, 199 ); //Lighter Blue
+set_color_profile_slot( 9, 5, 46, 46, 48 ); //Red
+set_color_profile_slot( 9, 6, 250, 136, 1 ); //Infinity Stone
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

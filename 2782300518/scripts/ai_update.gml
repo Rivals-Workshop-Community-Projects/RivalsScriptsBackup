@@ -145,15 +145,8 @@ else if (state != PS_SPAWN)
 		break;
 	}
 
-	//Code to stop Carol for needlessly pouncing
-	if (free && !ai_recovering && motorbike == false)
-	{
-		jump_down = false;
-		jump_pressed = false;
-	}
-
 	//Carol's recovery is more unique that other characters, this code helps her recover
-	if (ai_recovering && motorbike == false)
+	if (ai_recovering)
 	{
 		do_not_attack = true;
 		if (x<get_stage_data( SD_X_POS)) 
@@ -166,7 +159,7 @@ else if (state != PS_SPAWN)
 		}
 		up_down=false;
 		facestage();
-		special_down = (state == PS_ATTACK_AIR && attack == AT_FSPECIAL);
+		special_down = (state == PS_ATTACK_AIR && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR));
 		if (djumps == 1 && special_down == false && distX > 20)
 		{
 			special_down = true;
@@ -186,16 +179,16 @@ else if (state != PS_SPAWN)
 		{
 			jump_down = false;
 			up_down = true;
-			if (!has_airdodge)
-			{
-				special_down = true;
-			}
 		}
 		switch (state)
 		{
 			case PS_WALL_JUMP:
 				up_down = true;
 				facestage();
+				if( motorbike)
+				{
+					jump_down = true;
+				}
 			break;
 			case PS_PRATFALL:
 				if (has_walljump)
@@ -208,6 +201,7 @@ else if (state != PS_SPAWN)
 				switch (attack)
 				{
 					case AT_FSPECIAL:
+					case AT_FSPECIAL_AIR:
 					{
 						joy_dir = point_direction(x, y, get_stage_data( SD_X_POS), get_stage_data( SD_Y_POS));
 					}
@@ -215,12 +209,24 @@ else if (state != PS_SPAWN)
 			break;
 		}
 	}
-	
-	//Make Carol get on the bike if fuel hits 40.
-	if (fuel == 40 && !ai_recovering && motorbike == false && !free && !do_not_attack)
+
+	strongPercent = (2 - ai_target.knockback_adj) * 90;
+	//Make Carol get on the bike if fuel hits 40 and the opponent is damaged a lot.
+	if (fuel == 40 && !ai_recovering && motorbike == false && !free && !do_not_attack && targetdamage >= strongPercent)
 	{
-		var get_on_bike = random_func(10, 4, 1);
+		var get_on_bike = random_func(10, 30, 1);
 		if (get_on_bike < 2)
+		{
+			joy_pad_idle = false;
+			down_down = true;
+			special_pressed = true;
+		}
+	}
+
+	if (!ai_recovering && motorbike == true && !free && !do_not_attack && targetdamage < strongPercent)
+	{
+		var get_off_bike = random_func_2(10, 30, 1);
+		if (get_off_bike < 2)
 		{
 			joy_pad_idle = false;
 			down_down = true;
@@ -235,10 +241,6 @@ else if (state != PS_SPAWN)
 		case AT_FTILT:
 		case AT_UTILT:
 		case AT_DTILT:
-		case 45:
-		case 46:
-		case 47:
-		case 48:
 			can_DACUS = false;
 			if (!do_not_attack && temp_level < 7 && attacking)
 			{
@@ -303,7 +305,7 @@ else if (state != PS_SPAWN)
 					}
 					else
 					{
-						if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
+						if ((window == 3 || window == 6) && window_timer == 2 && has_hit_player)
 						{
 							switch (random_direction)
 							{
@@ -355,7 +357,7 @@ else if (state != PS_SPAWN)
 				}
 				else if (random_direction == 0)
 				{
-					if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
+					if ((window == 3 || window == 6) && window_timer == 3 && has_hit_player)
 					{
 						joy_pad_idle = false;
 						attack_pressed = true;
@@ -365,45 +367,41 @@ else if (state != PS_SPAWN)
 			else if (!do_not_attack && temp_level >= 7)
 			{
 				if((attack == AT_JAB && window_timer == 2 && window = 3)
-				||(attack == 48 && window_timer == 2 && window = 3)
-				||(attack == AT_JAB && window_timer == 2 && window = 5)
-				||(attack == 48 && window_timer == 2 && window = 5))
+				||(attack == AT_JAB && window_timer == 2 && window = 6))
 				{
 					cancel_jab = true;
 					can_attack = true;
 				}
 				else if((attack == AT_FTILT && window_timer == 2 && window = 3)
-				||(attack == 47 && window_timer == 2 && window = 3)
-				||(attack == AT_FTILT && window_timer == 2 && window = 5)
-				||(attack == 47 && window_timer == 2 && window = 5))
+				||(attack == AT_FTILT && window_timer == 2 && window = 6))
 				{
 					cancel_ftilt = true;
 					can_attack = true;
 				}
 				else if((attack == AT_UTILT && window_timer == 2 && window = 3)
-				||(attack == 46 && window_timer == 2 && window = 3)
-				||(attack == AT_UTILT && window_timer == 2 && window = 5)
-				||(attack == 46 && window_timer == 2 && window = 5))
+				||(attack == AT_UTILT && window_timer == 2 && window = 6))
 				{
 					cancel_utilt = true;
 					can_attack = true;
 				}
 				else if((attack == AT_DTILT && window_timer == 2 && window = 3)
-				||(attack == 45 && window_timer == 2 && window = 3)
-				||(attack == AT_DTILT && window_timer == 2 && window = 5)
-				||(attack == 45 && window_timer == 2 && window = 5))
+				||(attack == AT_DTILT && window_timer == 2 && window = 6))
 				{
 					cancel_dtilt = true;
 					can_attack = true;
 				}
+				else if ((window == 3 || window == 6) && window_timer == 3 && has_hit_player)
+				{
+					joy_pad_idle = false;
+					attack_pressed = true;
+				}
 			}
-			if (window > 5 && temp_level >=7 && has_hit && DACUSpercent < targetdamage && targetdamage < DACUSpercent * 1.30 
+			if (window > 6 && temp_level >=7 && has_hit && DACUSpercent < targetdamage && targetdamage < DACUSpercent * 1.30 
 		    && !ai_recovering)
 		    {
 		    	switch (attack)
 		    	{
 		    		case AT_UTILT:
-		    		case 46:
 		    			can_DACUS = true;
 		    		break;
 		    		default:
@@ -416,23 +414,6 @@ else if (state != PS_SPAWN)
 		    	can_DACUS = false;
 		    }
 		break;
-		case AT_EXTRA_2:
-			can_DACUS = false;
-			if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && window == 2)
-			{
-				if (x<ai_target.x) 
-				{
-					right_down=true;
-					left_down=false;
-				} 
-				else
-				{
-					left_down=true;
-					right_down=false;
-				}
-				special_pressed = true;
-			}
-		break;
 		case AT_NSPECIAL:
 		case AT_NSPECIAL_2:
 			can_DACUS = false;
@@ -440,9 +421,9 @@ else if (state != PS_SPAWN)
 			{
 				case PS_ATTACK_GROUND:
 				case PS_ATTACK_AIR:
-					if (!has_hit_player)
+					if (has_hit_player && !ai_recovering && !offstage)
 					{
-						shield_pressed = true;
+						special_down = true;
 					}
 					else if (has_hit && (window == 2 && window_timer >= 79))
 					{
@@ -490,6 +471,17 @@ else if (state != PS_SPAWN)
 				cancel_dattack = true;
 				can_attack = true;
 			}
+		break;
+		case AT_DAIR:
+			if (offstage && window_timer >=20)
+			{
+				attack_down = false;
+				special_down = false;
+				facestage();
+				up_down = true;
+				shield_pressed = true;
+			}
+			can_DACUS = false;
 		break;
 		default:
 			can_DACUS = false;
@@ -838,6 +830,7 @@ else if (state != PS_SPAWN)
 			    attack_pressed = false;
 			break;
 			case AT_FSPECIAL:
+			case AT_FSPECIAL_AIR:
 				if (facing && !offstage && move_cooldown[AT_FSPECIAL] != 0)
 				{
 					if (ydist <= lengthdir_y(point_distance(x, y, xtrag, ytrag), point_direction(x, y, xtrag, ytrag))
@@ -847,19 +840,37 @@ else if (state != PS_SPAWN)
 						clear_button_buffer(PC_JUMP_PRESSED);
 						joy_pad_idle = true;
 						faceopponent();
-						up_down = false;
-						down_down = false;
-					    special_pressed = true;
-					    attack_pressed = false;					
+						if (motorbike = true && free)
+						{
+							up_down = false;
+							down_down = false;
+							special_pressed = true;
+							attack_pressed = false;				
+						}
+						else if (motorbike == false)
+						{
+							up_down = false;
+							down_down = false;
+							special_pressed = true;
+							attack_pressed = false;
+						}
 						switch (state)
 						{
 							case PS_ATTACK_GROUND:
 							case PS_ATTACK_AIR:
 							{
+								special_pressed = false;
 								joy_dir = point_direction(x, y, xtrag, ytrag);
-								if (x < 450 && ai_target.x > x && facing|| x > 950 && ai_target.x < x)
+								if (x < 450 && ai_target.x > x && facing|| x > 950 && ai_target.x < x && window = 3)
 								{
-									special_down = true;
+									if (bike_stored && target_damage >= strongPercent)
+									{
+										shield_down = true;
+									}
+									else
+									{
+										special_down = true;
+									}
 								}
 							}
 						}
@@ -1028,7 +1039,7 @@ if (!free)
 			break;
 			//Jab
 			case AT_JAB:
-			case 48:
+			case AT_EXTRA_3:
 				clear_button_buffer( PC_ATTACK_PRESSED );
 				joy_pad_idle = true;
 				left_down = false;
@@ -1541,16 +1552,16 @@ if (motorbike == true)
 	switch(argument[0])
 	{
 		case "tilts":
-			var attacke = [48, 47, 46, 45, 3, AT_USPECIAL_2, AT_NSPECIAL_2];
+			var attacke = [AT_EXTRA_3, 47, 46, 45, 3, AT_USPECIAL_2, AT_NSPECIAL_2];
 		break;
 		case "aerials":
-			var attacke = [44, 43, 42, 40, 39, AT_USPECIAL_2];
+			var attacke = [44, 43, 42, AT_EXTRA_1, 39, AT_USPECIAL_2];
 		break;
 		case "strongs":
 			var attacke = [AT_DSTRONG_2, AT_USTRONG_2, AT_FSTRONG_2];
 		break;
 		case "specials":
-			var attacke = [AT_NSPECIAL_2, AT_USPECIAL_2];
+			var attacke = [AT_NSPECIAL_2, AT_USPECIAL_2, AT_FSPECIAL_AIR, AT_DSPECIAL_AIR];
 		break;
 		case "DACUS":
 		var attacke = [AT_USTRONG_2];
@@ -1568,7 +1579,7 @@ else
 			var attacke = [AT_NAIR, AT_DAIR, AT_FAIR, AT_UAIR, AT_BAIR, AT_USPECIAL];
 		break;
 		case "strongs":
-			var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG, AT_USPECIAL];
+			var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG];
 		break;
 		case "specials":
 			var attacke = [AT_NSPECIAL, AT_USPECIAL, AT_FSPECIAL];
@@ -1621,7 +1632,7 @@ if (motorbike == true)
 {
 	switch (attacke[i])
 	{
-		case 48:
+		case AT_EXTRA_3:
 		case 47:
 		case 46:
 		case 45:
@@ -1659,27 +1670,10 @@ switch(attacke[i])
 		//Calculate when the hitbox will come out
 		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH);
 	break;
-	case 39:
-		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
-		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
-		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
-		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
-		//Calculate when the hitbox will come out
-		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 3;
-	break;
-	case 40:
+	case AT_DSPECIAL_AIR:
 		var ai_bike_dist = point_distance(x, y, ai_target.x, ai_target.y);
 		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
 		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y + (lengthdir_y(ai_bike_dist, 270)/ 9);
-		atkwidth = 80 div 2;
-		atkheight = 80 div 2;
-		//Calculate when the hitbox will come out
-		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH);
-	break;
-	case 43:
-		var ai_bike_dist = point_distance(x, y, ai_target.x, ai_target.y);
-		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x) + (lengthdir_x(ai_bike_dist, 0)/ 16)* spr_dir;
-		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
 		atkwidth = 80 div 2;
 		atkheight = 80 div 2;
 		//Calculate when the hitbox will come out
@@ -1693,39 +1687,18 @@ switch(attacke[i])
 		//Calculate when the hitbox will come out
 		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 1;
 		break;
-	case AT_DAIR:
 	case AT_USTRONG:
-		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
-		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
-		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
-		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
-		//Calculate when the hitbox will come out
-		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 2;
-	break;
 	case AT_FSTRONG:
+	case AT_DSTRONG:
+	case AT_USTRONG_2:
+	case AT_FSTRONG_2:
+	case AT_DSTRONG_2:
 		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
 		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
 		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
 		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
 		//Calculate when the hitbox will come out
 		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + get_window_value(attacke[i], 2, AG_WINDOW_LENGTH) + get_window_value(attacke[i], 3, AG_WINDOW_LENGTH);
-	break;		
-	
-	case AT_FSTRONG_2:
-		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
-		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
-		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
-		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
-		//Calculate when the hitbox will come out
-		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 3;
-	break;	
-	case AT_USTRONG_2:
-		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
-		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
-		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
-		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
-		//Calculate when the hitbox will come out
-		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 4;
 	break;
 }
 
@@ -1781,28 +1754,24 @@ if len != 0
 
 			break;
 			case AT_JAB:
-			case 48:
 				if (cancel_jab)
 				{
 					reroll = true;
 				}
 			break;
 			case AT_FTILT:
-			case 47:
 				if (cancel_ftilt)
 				{
 					reroll = true;
 				}
 			break;
 			case AT_UTILT:
-			case 46:
 				if (cancel_utilt)
 				{
 					reroll = true;
 				}
 			break;
 			case AT_DTILT:
-			case 45:
 				if (cancel_dtilt)
 				{
 					reroll = true;
@@ -1819,7 +1788,7 @@ if len != 0
 		}
 		
 		//Any other attack not testing do not reroll
-		if !(chosenAttack == AT_JAB || chosenAttack == 48 || chosenAttack == AT_FTILT || chosenAttack == 47)
+		if !(chosenAttack == AT_JAB || chosenAttack == AT_FTILT || chosenAttack == AT_UTILT || chosenAttack == AT_DTILT)
 		{
 			reroll = false;
 			break;

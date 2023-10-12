@@ -69,6 +69,8 @@ sprite_change_offset("toast", 20, 20);
 sprite_change_offset("dust_effect_dark", 15, 15);
 sprite_change_offset("nspecial_spray", 52, 58);
 sprite_change_offset("nspecial_cloud", 64, 64);
+sprite_change_offset("nspecial_spray_alts", 52, 58);
+sprite_change_offset("nspecial_cloud_alts", 64, 64);
 sprite_change_offset("fireball", 20, 20);
 sprite_change_offset("fireball_alts", 20, 20);
 sprite_change_offset("fireball_alts2", 20, 20);

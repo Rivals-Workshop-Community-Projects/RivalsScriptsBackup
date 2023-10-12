@@ -1,33 +1,87 @@
 switch (attack){
 	case AT_JAB:
-	if (window == 1){ var movesound = 0; }
+	if (window == 1){ var movesound = 0; turnbackaround = false; }
 	if (has_hit_player){
-		if (window == 3 && place_meeting( x, y, hit_player_obj)){ x = x-9 * spr_dir; }
+		if (window == 3 && place_meeting( x, y, hit_player_obj)){ x = x-5 * spr_dir; xprev = x; }
+		if (window == 4 && window_timer > 10 || window == 5 || window == 6){ soft_armor = 100; }
 		if (window == 5){
-		soft_armor = 100;
-		hsp = hit_player_obj.hsp + 0.5 * spr_dir;
-		//if (movesound == 0){ movesound = 1; sound_play(sound_get("f3527_022_scrm_se_cmn_jump_spin")); }
+			
+			if (free == true){
+				turnbackaround = false;
+				//x = xprev;
+			}
+			
+			if (window_timer == 9){
+			//white_flash_timer = 15;
+			turnbackaround = true;
+			}
+			if (window_timer == 10){
+			//x = has_hit_player.x;
+			//draw_y = 9000;
+			}
+			if (window_timer == 11 && free == false && turnbackaround == true){
+			//x = has_hit_player.x;
+			//spr_dir = spr_dir * -1;
+			}
+			if (window_timer > 11){
+			hsp = (hit_player_obj.hsp * 2) / 5;
+			//white_flash_timer = 1;
+			}
 		}
-	}
+		if (window == 6){
+			hsp += 1.3 * spr_dir;
+			if (hit_player_obj.x > x){ spr_dir = 1; }
+			if (hit_player_obj.x < x){ spr_dir = -1; }
+		}
+		if (window == 7){
+			move_cooldown[AT_JAB] = 20;
+			
+			//if !(place_meeting( hit_player_obj.x, hit_player_obj.y+15, asset_get("par_block"))){
+			//if (window_timer == 18){
+			//white_flash_timer = 11;
+			//}
+			//if (window_timer == 19){
+			//x = has_hit_player.x;
+			//}
+			
+			if (window_timer == 1 && turnbackaround == true){
+			//spr_dir = spr_dir * -1; turnbackaround = false;
+			}
+			if (window_timer > 1 && window_timer < 12){
+			//hsp = 1 * spr_dir;
+			}
+			
+			}
+			
+		}
+	//}
 break;
 
 	case AT_DATTACK:
+	if (window == 1){ hit_player_obj = noone; }
 	if (window == 2){
 	if (has_hit_player && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)){
 		if (window_timer > 2){
-		hit_player_obj.hsp = 1.3 * 0.9 * hsp;
-		hit_player_obj.vsp = 0;
+		//hit_player_obj.hsp = 1.3 * 0.9 * hsp;
+		//hit_player_obj.vsp = 0;
 			}
 		}
 	}
-	if ((window == 5 || window == 6 && window_timer < 9) && has_hit_player){
-		if (hit_player_obj.state == PS_HITSTUN_LAND){
-		hit_player_obj.hsp = 1.3 * 0.9 * hsp; }
+	if (window == 3 && window_timer > 2 && hit_player_obj > 0){
+		window = 5;
+		window_timer = 0;
 	}
-	if (window == 6 && window_timer > 6 && hitstop == false && has_hit_player == true){ can_jump = true; }
+	if (window == 5 && window_timer > 3){ draw_indicator = false; }
+	if (window == 6 && window_timer < 3){ x = hit_player_obj.x-100 * spr_dir; draw_indicator = false; }
+	//if ((window == 6 || window == 7 && window_timer < 9) && has_hit_player){
+		//if (hit_player_obj.state == PS_HITSTUN_LAND){
+		//hit_player_obj.hsp = 1.3 * 0.9 * hsp; }
+	//}
+	if (window == 7 && window_timer > 6 && hitstop == false && has_hit_player == true){ can_jump = true; }
 break;
 
 	case AT_UTILT:
+	/*
 	if (was_parried == false){
 	if (window == 1){ soft_armor = 100; super_armor = true; set_attack_value(AT_UTILT, AG_OFF_LEDGE, 0); }
 	if (window == 2){ soft_armor = 0; super_armor = false; }
@@ -84,6 +138,7 @@ break;
     if (spr_dir > 0 && hsp < 20) { hsp += 1; }
     if (spr_dir < 0 && hsp > -20) { hsp -= 1; }
 	}
+	*/
 break;
 	
 	case AT_FTILT:
@@ -132,8 +187,8 @@ break;
 	
 	case AT_FSTRONG:
 	if(window == 1){ grabbedid = noone; random_mecha = random_func(0, 3, true); }
-	if(window == 2 && window_timer < 3){ hsp = -10 * spr_dir + (0.1 * strong_charge * spr_dir); } //fly back
-	if(window == 2 && window_timer > 3 && window_timer < 6){ hsp = 15 * spr_dir + (0.1 * strong_charge * spr_dir); }
+	if(window == 2 && window_timer < 3){ hsp = -5 * spr_dir + (0.1 * strong_charge * spr_dir); } //fly back
+	if(window == 2 && window_timer > 3 && window_timer < 6){ hsp = 12 * spr_dir + (0.2 * strong_charge * spr_dir); }
     if(window == 2){
         if (window_timer == 5 && grabbedid > 0){
         	if (random_mecha == 1){ sound_play(sound_get("Mecha_Pest")); }
@@ -220,8 +275,8 @@ break;
 				grabbedid.hitstop = 1;
 				grabbedid.hitstop_full = 5;
 				if(window == 2){
-					force_depth = 1;
-					depth = 10;
+					if (window_timer > 1){ force_depth = 1; depth = -1; }
+					
 					if (window_timer < 6){
 					grabbedid.x = x + 45 * spr_dir; 
 					grabbedid.y = y - 1;
@@ -416,7 +471,7 @@ break;
     	//move_cooldown[AT_NSPECIAL] = 5;
     	if (free == true){ window = 8; window_timer = 2; vsp = -8; sound_play(sound_get("Gun_unload")); }
     }
-    if (window == 6){    
+    if (window == 6){
     	nspecial_air_time = 100;
     	can_move = false;
     	if (window_timer >= 14){ window = 7; window_timer = 0; }
@@ -471,6 +526,7 @@ break;
     	if (window_timer >= 6 && special_down){ window_timer = 0; window = 7; } else if (window_timer >= 6){ window = 8; window_timer = 0; }
     }
     if (window == 8){
+    	move_cooldown[AT_NSPECIAL] = 10;
     	max_height = 0;
     	grav = 1;
     	if (window_timer == 1){
@@ -556,9 +612,10 @@ break;
 		if (window_timer >= 35){ can_jump = true; }
 	}
 break;
-	 //
+
 	case AT_USPECIAL_2: //Grounded
 	if (window == 1){
+		can_move = true;
 		random_mecha = random_func(0, 3, true);
 	if (window_timer < 3){
 		marked_id = false;
@@ -611,8 +668,15 @@ break;
 	if (window == 1){
 		random_mecha = random_func(0, 3, true);
 		if (window_timer == 2 && telepunch == 2){ sound_play(dash_sound); }
-		if (window_timer == 2){ spawn_hit_fx(x-60 * spr_dir, y-70, Shockwave); }
+		if (window_timer == 2){ spawn_hit_fx(x-20 * spr_dir, y-70, Shockwave); }
 	}
+
+	if (special_down && window == 2 && window_timer >= get_window_value( AT_FSPECIAL, 2, AG_WINDOW_LENGTH )){
+		window = 3;
+		window_timer = 0;
+	}
+	
+	/*
 	if (window == 2){
 		go_through = true;
 		if (window_timer >= 4 && window_timer < 7){
@@ -638,6 +702,7 @@ break;
 		y = hit_player_obj.y + hit_player_obj.char_height * 0.30;
 		}
 	}
+	*/
 break;
 	
 	case AT_DSPECIAL: //Aerial Down Special
@@ -645,6 +710,7 @@ break;
 	can_fast_fall = false;
 	can_shield = false;
 	dspecial_charge = 0;
+	move_cooldown[AT_DSPECIAL] = 15;
 	if (was_parried == false){
 	if (window == 1){ cling_once = 0; dspecial_id = noone; random_mecha = random_func(0, 3, true); }
 	
@@ -776,8 +842,29 @@ break;
 			dspecial_charge = 0;
 			can_shield = false;
 		}
+		if (window == 2 && window_timer > 10 && free == true){
+			vsp = -11; hsp = hsp / 5; window = 10; window_timer = 0;
+			sound_stop(sound_get("USPECIAL_CHARGE"));
+			var jumpout = spawn_hit_fx(x-20, y, Shockwave);
+			jumpout.draw_angle = 90;
+		}
 		if (window == 4 && (jump_pressed || (tap_jump_pressed && can_tap_jump())) ){ window = 5; window_timer = 0; vsp = -9; }
 		if (window == 2){
+			if ((get_gameplay_time() mod 2) == 0){
+			//lightspeed = spawn_hit_fx(x,y+9000, Lightspeed_Particle);
+			//lightspeed_time = random_func(0, 300, true);
+			//lightspeed.y = y-lightspeed_time / 3;
+			//lightspeed.draw_angle = lightspeed_time;
+			//lightspeed.vsp = 100;
+			}
+			//lightspeed.hsp = lightspeed.image_length;
+			//lightspeed.player_dir = point_direction(lightspeed.player_id.x, lightspeed.player_id.y, x, y);
+			//lightspeed.hsp = lengthdir_x(3, lightspeed.player_dir);
+			//lightspeed.vsp = lengthdir_y(3, lightspeed.player_dir);
+			//lightspeed.hsp = lightspeed.draw_angle / 50;
+			//lightspeed.vsp = lightspeed.draw_angle / 50;
+
+			
 			if (special_down == false || timestop == true){ window = 4; window_timer = 0; }
 			if (window_timer == 2){ dspecial_charge += 1; }
 	        if (dspecial_charge >= 22){
@@ -887,6 +974,7 @@ break;
 break;
 
 	case AT_EXTRA_1:
+	invincible = true;
 	can_move = false;
 	has_airdodge = false;
 	move_cooldown[AT_EXTRA_1] = 90;
@@ -894,7 +982,7 @@ break;
 	draw_indicator = false;
 	var fly_dir = point_direction(0,0,hsp,vsp);
     var fly_dist = point_distance(0,0,hsp,vsp);
-    var max_speed = 9;
+    var max_speed = 12;
     	if (fly_dist > max_speed){
     	hsp = lengthdir_x(max_speed, fly_dir)
     	vsp = lengthdir_y(max_speed, fly_dir);
@@ -907,7 +995,7 @@ break;
     if (window == 2){
 	var fly_dir2 = point_direction(0,0,hsp,vsp);
     var fly_dist2 = point_distance(0,0,hsp,vsp);
-    var max_speed2 = 5;
+    var max_speed2 = 9;
     	if (fly_dist2 > max_speed2){
     	hsp = lengthdir_x(max_speed2, fly_dir2)
     	vsp = lengthdir_y(max_speed2, fly_dir2);

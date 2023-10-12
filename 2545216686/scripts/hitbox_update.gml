@@ -1,16 +1,31 @@
 //hitbox_update.gml
 
+// Up Strong
+if (attack == AT_USTRONG){
+	if (hbox_num == 4){
+		ustr_hand_timer++;
+		image_index = (ustr_hand_timer / 3);
+		x = player_id.x;
+		y = player_id.y;
+		spr_dir = player_id.spr_dir;
+		if (player_id.sprite_index != sprite_get("ustrong") || image_index == 5){
+			destroyed = true;
+		}
+	}
+}
+
 if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR){
 	if (hbox_num == 1){
 		if (hitbox_timer == 0){
 			nspec_air_elec_bounced = 0
 		}
-		if ((hitbox_timer == 119) || (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t)){
+		if ((hitbox_timer == 119) || (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t)){//>
 			sound_play(asset_get("sfx_absa_jab1"));
 			spawn_hit_fx( x , y, 197 );
 			instance_destroy();
 			exit;
 		}
+		/*
 		with (asset_get("obj_article1")){
 			if (place_meeting(x, y, other)){
 				if (player_id.player == other.player){
@@ -22,15 +37,16 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR){
 						sound_play(sfx_krtd_bomb_explode)
 						sound_play(asset_get("sfx_ell_big_missile_fire"))
 						shake_camera( 6, 3 )
-						nspec_air_elec_bounced = 0
+						nspec_air_elec_bounced = 0;
 						instance_destroy();
 						exit;
 					}
 				}
 			}
 		}
+		*/
 		if (attack == AT_NSPECIAL_AIR){
-			if (vsp < 0){
+			if (vsp < 0){//>
 				nspec_air_elec_bounced++;
 				if (nspec_air_elec_bounced == 1){
 					sound_play(asset_get("sfx_absa_cloud_pop"));
@@ -58,51 +74,6 @@ if (attack == AT_FSPECIAL_AIR){
 			shake_camera( 6, 3 )
 			instance_destroy();
 			exit;
-		}
-	}
-	
-}
-
-if (attack == AT_DSPECIAL){
-	if (hbox_num == 3 || hbox_num == 5){
-		if (has_hit){
-			print("wtf");
-		}
-		if (player_id.tailsdspechbox3destroyplease == true){
-			player_id.tailsdspechbox3destroyplease = false
-			instance_destroy();
-			exit;
-		}
-		if (player_id.tailsdspecheydidtherobotdieyet == 1){
-			player_id.tailsdspecheydidtherobotdieyet = 0
-			instance_destroy();
-			exit;
-		}
-		if (hbox_num == 3){
-		
-			x = player_id.tailsrobotx;
-			y = player_id.tailsroboty;
-		
-			if (player_id.tailsdidstartingdownbhitboxhitRobot1 == true){
-				player_id.tailsdidstartingdownbhitboxhit = false
-				instance_destroy();
-				exit;
-			}
-		}
-		if (hbox_num == 5){
-		
-			x = player_id.tailsrobot2x;
-			y = player_id.tailsrobot2y;
-		
-			if (player_id.tailsdidstartingdownbhitboxhitRobot2 == true){
-				player_id.tailsdidstartingdownbhitboxhit = false
-				instance_destroy();
-				exit;
-			}
-		}
-		if (hbox_num == 5 && (player_id.tailsrobot2x != 0 && player_id.tailsrobot2y != 0)){
-			x = player_id.tailsrobot2x;
-			y = player_id.tailsrobot2y;
 		}
 	}
 }

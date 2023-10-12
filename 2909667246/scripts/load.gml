@@ -64,7 +64,7 @@ sprite_change_offset("dspecial_air", 40, 58, true);
 sprite_change_offset("grab", 40, 58, true);
 sprite_change_offset("grab_air", 40, 58, true);
 sprite_change_offset("taunt", 40/2, 78/2, true);
-sprite_change_offset("taunt_beeg", 100, 349, true);
+sprite_change_offset("taunt_beeg", 100, 399, true);
 
 sprite_change_offset("plat", 35, 30, true);
 sprite_change_offset("plat2", 70, 60, true);

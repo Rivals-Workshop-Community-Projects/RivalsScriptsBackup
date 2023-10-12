@@ -13,12 +13,13 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 50);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1)
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3.6)
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("isaac_thruster_fly"));
 
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 76);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 50);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 50);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -2);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, -0.007);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7)

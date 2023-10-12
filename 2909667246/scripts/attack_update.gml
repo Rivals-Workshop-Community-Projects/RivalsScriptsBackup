@@ -695,6 +695,13 @@ else if (attack == AT_TAUNT_2){ // beeg taunt
             if (attack_down){
                 window = 5;window_timer = 0;set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 8);
 			    sound_play( sound_get("heavyattack") );sound_play( sound_get("heavyattack2") );shake_camera(20, 20);
+			    if(random_func(0,3,true) != 0){
+			    	set_window_value(AT_TAUNT_2, 5, AG_WINDOW_ANIM_FRAME_START, 8);set_window_value(AT_TAUNT_2, 6, AG_WINDOW_ANIM_FRAME_START, 10);
+					set_window_value(AT_TAUNT_2, 7, AG_WINDOW_ANIM_FRAME_START, 10);set_window_value(AT_TAUNT_2, 8, AG_WINDOW_ANIM_FRAME_START, 10);
+			    }else{
+			    	reset_window_value(AT_TAUNT_2, 5, AG_WINDOW_ANIM_FRAME_START);reset_window_value(AT_TAUNT_2, 6, AG_WINDOW_ANIM_FRAME_START);
+					reset_window_value(AT_TAUNT_2, 7, AG_WINDOW_ANIM_FRAME_START);reset_window_value(AT_TAUNT_2, 8, AG_WINDOW_ANIM_FRAME_START);
+			    }
             }
         }
     }
@@ -814,7 +821,7 @@ if (canon || op) {
     		if("MattGrabRangeModifier" in self){
     			GrabRangeModifier = real(MattGrabRangeModifier);
     		}
-    		var dist = point_distance(other.x+(70*other.spr_dir), other.y-25, x, y);;//distance
+    		var dist = point_distance(other.x+(70*other.spr_dir), other.y-25, x, y); //distance
     		var range = 65;
 	        
         	if(dist <= range+GrabRangeModifier && ("MattPlanet" in self && (state == 0 || state == 1 || state == 2) || "MattPlanet" not in self && "MattCanGrab" in self && MattCanGrab

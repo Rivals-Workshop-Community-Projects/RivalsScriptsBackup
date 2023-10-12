@@ -5,6 +5,13 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     }
 }
 
+if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
+    if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 5){
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+(30*spr_dir), .8);
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-20, .4);
+    }
+}
+
 switch my_hitboxID.attack {
     case AT_FSTRONG:
     case AT_USTRONG:
@@ -19,11 +26,21 @@ switch my_hitboxID.attack {
          sound_play(asset_get("sfx_hod_charged_uspecial_hit"));
      }
     break;
-
+	
+	case AT_FSPECIAL:
+     if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_infinidagger"),false,noone,1.0, 0.9);
+         sound_play(asset_get("sfx_frog_gong_hit"));
+     }
+     if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_ori_bash_hit"),false,noone,0.8);
+     }
+    break;
+	
 	case AT_FSPECIAL_2:
      if my_hitboxID.hbox_num == 2 {
          sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
-         sound_play(asset_get("sfx_hod_charged_uspecial_hit"));
+         sound_play(asset_get("sfx_hod_charged_uspecial_hit"),false,noone,0.8);
      }
     break;
 }

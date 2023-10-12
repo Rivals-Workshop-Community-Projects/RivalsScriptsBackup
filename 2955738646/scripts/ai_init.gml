@@ -34,6 +34,7 @@ close_down_attacks[1] = AT_DSTRONG;
 close_down_attacks[2] = AT_NAIR;
 close_down_attacks[3] = AT_FAIR;
 close_down_attacks[4] = AT_DSPECIAL;
+close_down_attacks[5] = AT_NSPECIAL;
 
 close_side_attacks[0] = AT_JAB;
 close_side_attacks[1] = AT_UTILT;

@@ -67,15 +67,15 @@ set_num_hitboxes(attack, 2); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-// Hitbox #1 / Window #4 - / Front Hitbox
+// Hitbox #1 / Window #4 - / Main Hitbox
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
-set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 44);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -14);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 50);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 2);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -15);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 133);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 30);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
@@ -88,30 +88,6 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
-set_hitbox_value(attack, hitbox_num, 81, "Front Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
+set_hitbox_value(attack, hitbox_num, 81, "Main Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
 
-hitbox_num++;
-
-// Hitbox #2 / Window #4 - / Rear Hitbox
-window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
-set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
-set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -40);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -14);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 50);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 30);
-set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 135);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); // 304 - basic large
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
-set_hitbox_value(attack, hitbox_num, 81, "Rear Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
 hitbox_num++;

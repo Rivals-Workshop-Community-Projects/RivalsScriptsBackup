@@ -230,6 +230,15 @@ initStage("Half-n-Half Showhall
 ( Night )", 11);
 initPlat(-4, -1.5, 19);
 
+initStage("Air Armada Heist", 10);
+initPlat(-6, 0, 4);
+initPlat(-3, -6, 4);
+
+initStage("The Time Machine
+( All Solid Ground )", 8);
+initPlat(-4, -11, 4);
+initPlat(-4, 11, 4);
+
 // initStage("ALL THE PLATS
 // (help)", 14);
 // initPlat(-7, 0, 4);

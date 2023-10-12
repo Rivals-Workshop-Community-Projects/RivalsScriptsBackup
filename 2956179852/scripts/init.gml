@@ -219,6 +219,8 @@ walk_music = noone;
 walk_music_blocked = false;
 
 if(alt != 0){
+    fx_spray = hit_fx_create(sprite_get("nspecial_spray_alts"), 30);
+    fx_cloud = hit_fx_create(sprite_get("nspecial_cloud_alts"), 25);    
     set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_alts"));
     pipesprite = sprite_get("pipe_alts");
     set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, pipesprite);

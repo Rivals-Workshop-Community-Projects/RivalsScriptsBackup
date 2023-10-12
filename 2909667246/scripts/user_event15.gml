@@ -259,7 +259,12 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.36", "24th September, 2023");
+initPatch("1.39", "5th October, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some error SFX when a non-Villager character chops down the tree, and made the tree flip properly if cut by a BAir
++ Added so that the extra big taunt will use Villager's new portrait (the old one is still there too, just slightly lower chance)");
+
+initPatch("1.38", "24th September, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Added 7 more Miiverse posts");
 

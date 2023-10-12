@@ -3,36 +3,11 @@ trotation=0;
 tsprite_index=-1;
 tsx=1;
 tsy=1;
-if (attack !=43)
-{
-	bsprite_index=-1;
-}
+bsprite_index=-1;
 //This code lets Carol get on the bike if fuel is full
 if (attack == AT_DSPECIAL && motorbike == false)
 {
-	if (fuel >=40  && motorbike == false && !free)
-	{
-		fuel = 40;
-		attack = AT_EXTRA_1;
-	}
-}
-
-//if (attack == AT_DAIR)
-//{
-	//y = y - 10;
-//}
-//Insurance for tail animations... just in case!
-if (attack == AT_EXTRA_2 && motorbike == false)
-{
-    tsprite_index = sprite_get("tail_walk");
-    timage_index=0;
-    timage_number=7;
-	tfront=false;
-	tx=-46*spr_dir;
-	ty=-70;
-	tsx=1;
-	tsy=1;
-	bsprite_index=-1;
+	if (move_cooldown[AT_DSPECIAL] > 0) exit;
 }
 
 //Carol has a different moveset while on the bike so this code ensures that she uses her bike moveset while on the bike
@@ -43,7 +18,7 @@ if (motorbike == true)
 	//This looks a bit messy tbh, but there's so many attacks to go over. May clean this up later
 	if (attack = AT_JAB)
 	{
-		attack = 48;
+		attack = AT_EXTRA_3;
 	}
 	if (attack = AT_FTILT)
 	{
@@ -71,7 +46,7 @@ if (motorbike == true)
 	}
 	if (attack = AT_DAIR)
 	{
-		attack = 40;
+		attack = AT_EXTRA_1;
 	}
 	if (attack = AT_BAIR)
 	{
@@ -87,7 +62,14 @@ if (motorbike == true)
 	}
 	if (attack == AT_FSPECIAL)
 	{
-		attack = AT_FSPECIAL_2;
+		if (free)
+		{
+			attack = AT_FSPECIAL_AIR;
+		}
+		else
+		{
+			attack = AT_FSPECIAL_2;
+		}
 	}
 	if (attack == AT_USPECIAL)
 	{

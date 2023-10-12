@@ -27,11 +27,11 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 3, AG_WINDOW_SFX, asset_get("sfx_mobile_gear_jump"));
 
 set_window_value(AT_NAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_NAIR, 4, AG_WINDOW_VSPEED, -8);
-set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 4);
+set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 9);

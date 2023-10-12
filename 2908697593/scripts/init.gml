@@ -8,15 +8,15 @@
 
 // Physical size
 char_height         = 64;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.95;		// 0.9  -  1.2
+knockback_adj       = 0.98;		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 3;		// 3    -  4.5
+walk_speed          = 3.2;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 4;	    // 6
 initial_dash_time   = 14;		// 8    -  16
-initial_dash_speed  = 4;		// 4    -  9
-dash_speed          = 3.5;		// 5    -  9
+initial_dash_speed  = 5;		// 4    -  9
+dash_speed          = 4.5;		// 5    -  9
 dash_turn_time      = 7;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
@@ -27,19 +27,19 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 4;		// 4    -  8
 max_jump_hsp        = 4;		// 4    -  8
-air_max_speed       = 2.7;  		// 3    -  7
+air_max_speed       = 4;  		// 3    -  7
 jump_change         = 5;		// 3
 air_accel           = 0.2;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
-max_fall            = 8;		// 6    -  11
-fast_fall           = 14;		// 11   -  16
+max_fall            = 9;		// 6    -  11
+fast_fall           = 16;		// 11   -  16
 gravity_speed       = 0.6;		// 0.3  -  0.6
-hitstun_grav        = 0.5;		// 0.45 -  0.53
+hitstun_grav        = 0.6;		// 0.45 -  0.53
 
 // Jumps
-jump_start_time     = 6;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
-jump_speed          = 9.7;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
+jump_speed          = 9;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 5;		// 4    -  7.4
 djump_speed         = 10;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
@@ -152,7 +152,7 @@ rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
 idle_anim_speed     = 0.07;
 crouch_anim_speed   = 0.1;
 walk_anim_speed     = 0.130;
-dash_anim_speed     = 0.2;
+dash_anim_speed     = 0.27;
 pratfall_anim_speed = 0.25;
 
 // Jumps

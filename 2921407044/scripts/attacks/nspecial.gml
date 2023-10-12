@@ -61,6 +61,7 @@ for (current_hitbox_index = 1; current_hitbox_index < total_number_hitboxes + 1;
     set_hitbox_value(temp_attack, current_hitbox_index, HG_PRIORITY, 2); 
     set_hitbox_value(temp_attack, current_hitbox_index, HG_DAMAGE, 12); // decreases over length of projectile in hitbox update
     set_hitbox_value(temp_attack, current_hitbox_index, HG_ANGLE, 45);
+    set_hitbox_value(temp_attack, current_hitbox_index, HG_ANGLE_FLIPPER, 6); // This is to prevent backward shots from sending at reverse angles.
     set_hitbox_value(temp_attack, current_hitbox_index, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj")); 
     set_hitbox_value(temp_attack, current_hitbox_index, HG_PROJECTILE_MASK, -1);
 

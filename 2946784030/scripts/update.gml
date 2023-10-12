@@ -30,6 +30,7 @@ if has_rock == false{
 }
 */
 
+
 //Wario Anti-Cheat
 if wario_anticheat{
 	

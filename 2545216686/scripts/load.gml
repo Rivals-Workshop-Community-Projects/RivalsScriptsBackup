@@ -1,5 +1,5 @@
 //Idle, Walk, Dash
-sprite_change_offset("idle", 54, 68);
+sprite_change_offset("idle", 100, 130);
 sprite_change_offset("intro", 242, 178);
 sprite_change_offset("crouch", 54, 68);
 sprite_change_offset("walk", 56, 70);
@@ -20,12 +20,16 @@ sprite_change_offset("downhurt", 50, 50);
 
 //Jump, Land
 sprite_change_offset("jumpstart", 54, 68);
-sprite_change_offset("jump", 54, 84);
+sprite_change_offset("jump", 100, 130);
+sprite_change_offset("jump_default", 54, 84);
+sprite_change_offset("jump_ea", 54, 84);
+sprite_change_offset("jump_gold", 54, 84);
 sprite_change_offset("doublejump", 52, 76);
 sprite_change_offset("walljump", 46, 86);
 sprite_change_offset("pratfall", 100, 118);
 sprite_change_offset("land", 54, 68);
 sprite_change_offset("landinglag", 56, 68);
+sprite_change_offset("fspec_landinglag", 56, 68);
 
 //Defense
 sprite_change_offset("parry", 56, 70);
@@ -36,9 +40,9 @@ sprite_change_offset("waveland", 84, 138);
 sprite_change_offset("tech", 84, 138);
 
 //Grounded Normals
-sprite_change_offset("jab", 56, 74);
+sprite_change_offset("jab", 100, 130);
 sprite_change_offset("dattack", 84, 138);
-sprite_change_offset("ftilt", 56, 72);
+sprite_change_offset("ftilt", 100, 130);
 sprite_change_offset("dtilt", 76, 58);
 sprite_change_offset("utilt", 64, 130);
 
@@ -47,11 +51,12 @@ sprite_change_offset("nair", 100, 118);
 sprite_change_offset("fair", 44, 72);
 sprite_change_offset("bair", 98, 114);
 sprite_change_offset("uair", 100, 118);
-sprite_change_offset("dair", 92, 108);
+sprite_change_offset("dair", 100, 130);
 
 //Strongs
 sprite_change_offset("fstrong", 84, 138);
-sprite_change_offset("ustrong", 84, 138);
+sprite_change_offset("ustrong", 100, 130);
+sprite_change_offset("ustrong_magichand", 100, 130);
 sprite_change_offset("dstrong", 154, 138);
 sprite_change_offset("dstrong_vfx", 154, 138);
 
@@ -63,6 +68,9 @@ sprite_change_offset("fspecial", 100, 118);
 sprite_change_offset("fspecial_2", 100, 118);
 sprite_change_offset("fspecial_air", 100, 118);
 sprite_change_offset("uspecial", 100, 118);
+sprite_change_offset("uspecial_default", 100, 118);
+sprite_change_offset("uspecial_ea", 100, 118);
+sprite_change_offset("uspecial_gold", 100, 118);
 sprite_change_offset("dspecial", 84, 138);
 sprite_change_offset("dspecial_air", 84, 138);
 sprite_change_offset("dspecial_2", 84, 138);

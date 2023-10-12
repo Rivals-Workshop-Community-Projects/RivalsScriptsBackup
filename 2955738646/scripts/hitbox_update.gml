@@ -4,16 +4,13 @@ if (attack == AT_NSPECIAL){
 	if(was_parried == true || player_id.state == PS_PRATLAND || player_id.state == PS_PRATFALL){ instance_destroy(); }
 	if (hbox_num == 1){
 		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
-	//create_hitbox(AT_NSPECIAL, 4, x + 30, y + 30);
 	}
 	if (hbox_num == 2){
 		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
 		if (place_meeting( x, y+9, asset_get("par_block"))){
-		//destroyed = true;
 		spark = true;
 		}
 		if (spark == true){
-			//spawn_hit_fx(x, y, (player_id.BulletHit1));
 			if (spark_rng == 0){ spawn_hit_fx(x + spark_dist, y, (player_id.BulletHit1)); }
 			if (spark_rng == 1){ spawn_hit_fx(x - spark_dist, y, (player_id.BulletHit1)); }
 			if (spark_rng == 2){ spawn_hit_fx(x + spark_dist, y, (player_id.BulletHit2)); }
@@ -23,8 +20,6 @@ if (attack == AT_NSPECIAL){
 	}
 if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	instance_destroy();
-	//create_hitbox(AT_NSPECIAL, 4, x + 30, y + 30);
-	//proj_angle = -20 * spr_dir;
 	}
 }
 
@@ -85,7 +80,7 @@ if (attack == AT_USPECIAL_2){ //Teleporting attack after lock-on
 if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 	if (hbox_num == 2){
 	x = follow.x+2;
-	y = follow.y-10 - follow.char_height;
+	y = follow.y-900 - follow.char_height;
 	if (hitbox_timer > 100 && player_id.timestop == true){
 		hitbox_timer = 0;
 	}
@@ -108,7 +103,7 @@ if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 		player_id.window_timer = 0;
 		player_id.vsp = 1;
 		hitbox_timer = 201;
-		var timestopping_hitbox = create_hitbox(AT_EXTRA_3, 3, x, y);
+		var timestopping_hitbox = create_hitbox(AT_EXTRA_3, 3, follow.x, follow.y);
 		//damagecount -= 1;
 		if (hitbox_timer >= 201){
 			player_id.visible = false;
@@ -123,7 +118,7 @@ if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 	}
 	if (player_id.timestop == false && follow.timestop_damage <= 1){
 		//player_id.state = PS_IDLE;
-		var timestopping_hitbox = create_hitbox(AT_EXTRA_3, 4, x, y);
+		var timestopping_hitbox = create_hitbox(AT_EXTRA_3, 4, follow.x, follow.y);
 		follow.timestop_hit = false;
 		if (hitbox_timer >= 202){
 			//player_id.visible = true;
@@ -137,11 +132,6 @@ if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 			player_id.window = 2;
 			player_id.window_timer = 0;
 			player_id.white_flash_timer = 13;
-			
-			//player_id.vsp = -1;
-			//player_id.hsp = -1 * player_id.spr_dir;
-			//player_id.state = PS_IDLE;
-			//player_id.soft_armor = 50;
 		}
 	}
 	
@@ -203,10 +193,6 @@ if (attack == AT_USPECIAL_2){
 }
 
 if (hbox_num == 4){
-		//if (spr_dir == 1){ sprite_index = sprite_get("uspecial2_proj2"); } //hate that I have to do this
-		//instead of just changing spr_dir whenever
-		
-	    //proj_angle = (310 * spr_dir);
 	    var missileparticle = spawn_hit_fx(x, y, 100);
 	    var mydir = point_direction(hsp,vsp,0,0);
 	    missileparticle.draw_angle = mydir - 80;
@@ -241,76 +227,52 @@ if (hbox_num == 4){
 			        var curr_dist_speed = point_distance(0,0,other.hsp,other.vsp);
 			        
 			        if (other.hitbox_timer > 5){
-			        if (curr_dir_speed > 50){
-			            //other.hsp = lengthdir_x(40, curr_dir_speed);
-			            //other.vsp = lengthdir_y(40, curr_dir_speed);
-			        }
-			        
-	        		//other.hsp += lengthdir_x(1, curr_dir2);
-	    			//other.vsp += lengthdir_y(1, curr_dir2);
-	
 	    			if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed - 1; }
 	    			if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed - 180; }
-	    			//other.proj_angle = (-curr_dir_speed + 180) * other.spr_dir;
-	    			//if ( (get_gameplay_time() mod 3) == 0){
+
 	    			other.hsp += lengthdir_x(2, curr_dir);
 	    			other.vsp += lengthdir_y(2, curr_dir);
 			        //}
 	    			
 	            var dist_from = y - other.y - (char_height / 1);
 	            if (other.hitbox_timer > 5 && other.hitbox_timer < 10){
-	            //if (other.proj_angle < curr_dir){ other.proj_angle += 10 * other.spr_dir; }
-	            //if (other.proj_angle > curr_dir){ other.proj_angle -= 10 * other.spr_dir; }
 	            if (other.hitbox_timer > 11){
-	            	//if (other.spr_dir == 1){ other.proj_angle = curr_dir - 50; }
-	            	//if (other.spr_dir == -1){ other.proj_angle = curr_dir - 110; }
 	            }
 	            if (y > other.y + (char_height) ) {
-	            	if (other.proj_angle > curr_dir){
-	            	//other.proj_angle = -curr_dir * other.spr_dir;
-	            	}
-	            	//other.proj_angle += (curr_dist2 / 20) * other.spr_dir;
-	            	//other.proj_angle += (1 + sqrt(abs(dist_from))) * -other.spr_dir;
-	                //other.vsp += 1 + sqrt(abs(dist_from));
-	                //other.vsp += 1;
-	                //other.vsp += 1 - vsp / 5;
-	                //other.proj_angle += 10 * -other.spr_dir;
+	            	if (other.proj_angle > curr_dir){ }
+
 	            } else if (y < other.y + (char_height) ) {
 	            	if (other.proj_angle < curr_dir){
-	            	//other.proj_angle = -curr_dir * other.spr_dir;
-	            	}
-	            	//other.proj_angle -= 3 + (curr_dist2 / 20) * other.spr_dir;
-	            	//other.proj_angle -= (1 - sqrt(abs(dist_from))) * -other.spr_dir;
-	                //other.vsp -= 1 - sqrt(abs(dist_from));
-	                //other.vsp -= 1 + vsp / 5;
-	                //other.proj_angle -= 1 * other.spr_dir;
+	            }
+
 	            } else {
 	                //maintarget = false;
 	            		}
 	        		}
 	        	}
 	        }
-	    //if (spr_dir > 0 && hsp < 10) { hsp += 1; }
-	    //if (spr_dir < 0 && hsp > -10) { hsp -= 1; }
-		//with (player_id){
-		//my_hitboxID.sprite_index = sprite_get("HMF2");
-			//}
+
 	    }
 	}
-	
-	/*
-	if (hbox_num == 1){
-	depth = 1;
-	//proj_angle = 50 * spr_dir;
-	hsp = 21 * spr_dir;
-	vsp = -21;
+
 	}
-	if (hbox_num == 2){
-	depth = 1;
-	//proj_angle = 50 * spr_dir;
-	hsp = 21 * spr_dir;
-	vsp = -21;
+}
+
+if (attack == AT_JAB){
+	if (hitbox_timer < 3){
+	hit_player_id = player_id.hit_player_obj;
 	}
-	*/
+	if (hitbox_timer < 28){
+		vsp = 21;
+	x = hit_player_id.x;
+	y = hit_player_id.y - hit_player_id.char_height * 0.5;
 	}
+	if (hitbox_timer >= 28 && vsp == 0){
+		if (player_id.window == 5 && player_id.window_timer == 11){ player_id.white_flash_timer = 8; }
+		if (player_id.window == 5 && player_id.window_timer == 13){ player_id.x = x+20 * spr_dir; }
+	}
+	if (hitbox_timer >= 30 && vsp == 0 && player_id.window == 6){
+	//player_id.spr_dir = player_id.spr_dir * -1;
+	}
+	//if (y+10 >= player_id.y){ vsp = 0; }
 }

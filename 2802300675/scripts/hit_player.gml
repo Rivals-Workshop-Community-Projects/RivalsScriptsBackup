@@ -1,4 +1,8 @@
 //hit_player - called when one of your hitboxes hits a player
+
+
+
+
 if my_hitboxID.attack == AT_DAIR {
 old_vsp = -7;
 old_hsp = 0;
@@ -43,4 +47,13 @@ if(my_hitboxID.attack == AT_USPECIAL){
     	smog_cloud = instance_create(other.x, other.y-30, ("obj_article1"));
 		destroyed = true;
     }
+}
+
+//sfx
+if (attack == AT_FTILT) {
+    sound_play(asset_get("sfx_hod_steamhit1"));
+}
+
+if (attack == AT_DATTACK) {
+    sound_play(asset_get("sfx_hod_steamhit3"));
 }

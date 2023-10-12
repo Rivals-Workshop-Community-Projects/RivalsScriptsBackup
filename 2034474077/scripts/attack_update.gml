@@ -254,8 +254,8 @@ switch (attack){
             if(window_timer <= 5 && (dir_held == spr_dir * -1) && can_b_reverse){
                 spr_dir *= -1;
                 hsp *= -1;
-                set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 8);
-                set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED, 8);
+                set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 9);
+                set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED, 9);
                 //set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
                 can_b_reverse = false;
             }
@@ -266,6 +266,7 @@ switch (attack){
         if(window > 2 && window < 5 && !free){
             window = 6;
             window_timer = 0;
+            sound_play(asset_get("sfx_land"));
         }
         //edge cancel
         if(window == 6 && free){
@@ -273,13 +274,13 @@ switch (attack){
         }
         if(window == 5){
             move_cooldown[AT_FSPECIAL_2] = 15;
+            can_move = false;
         }
         if(multihit != noone && !hitpause){
             destroy_hitboxes();
             window = 5;
             window_timer = 0;
-            can_move = true;
-            hsp = -2.5 * spr_dir; //was -0.5 * spr_dir
+            hsp = -2 * spr_dir; //was -0.5 * spr_dir
             vsp = -7; //was -6
             multihit = noone;
         }
@@ -301,6 +302,8 @@ switch (attack){
         }
         if(window == 7 && free){
             window_timer = 0;
+        }else if (window == 7 && !free){
+            sound_play(asset_get("sfx_zetter_downb"));
         }
         if(window >= 4 && window <= 7 && multihit != noone){
             with(multihit){
@@ -315,8 +318,8 @@ switch (attack){
                         y = ease_cubeOut(y, (other.y - 40), other.window_timer, 9);
                     }else if(other.window == 6){
                         invincible = true;
-                        x = ease_quadOut(x, (other.x - (22 * other.spr_dir)), other.window_timer, 14);
-                        y = ease_cubeIn(y, (other.y - 1), other.window_timer, 14);
+                        x = ease_quadOut(x, (other.x - (22 * other.spr_dir)), other.window_timer, 10);
+                        y = ease_cubeIn(y, (other.y - 1), other.window_timer, 10);
                     }else if (other.window == 7){
                         invincible = true;
                         x = other.x - (22 * other.spr_dir);
@@ -408,22 +411,22 @@ switch (attack){
         if (window > 1 && window < 8){
             vsp = -3.75;
             if(spr_dir == dir_held){                            //Holding forwards
-                if(abs(hsp) >= 5.5){
-                    hsp = 5.5 * spr_dir;
+                if(abs(hsp) >= 5.25){ //was 5.5
+                    hsp = 5.25 * spr_dir;
                 }else{
-                    hsp += (1.83 * spr_dir);
+                    hsp += (1.25 * spr_dir); //was 1.83
                 }
             }else if(spr_dir != dir_held && dir_held != 0){     //Holding back
                 if(hsp <= -3 || hsp >= 3){
                     hsp = -3 * spr_dir;
                 }else{
-                    hsp += (-1.5 * spr_dir);
+                    hsp += (-1.25 * spr_dir); //was -1.5
                 }
             }else{                                              //No hold
                 if(abs(hsp) >= 3){
                     hsp = (3 * spr_dir);
                 }else{
-                    hsp += (1.5 * spr_dir);
+                    hsp += (1.15 * spr_dir); //was 1.25
                 }
             }
         }

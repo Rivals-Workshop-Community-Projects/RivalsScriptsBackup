@@ -472,6 +472,7 @@ switch(my_hitboxID.attack){
 //#endregion
 
 //#region Add In Sounds for Jashy Alt
+// Different from Tehend alt cause it plays this only on Galaxy.
 if(get_player_color(player) == 16 && color_shift == 2)
 switch(attack){
 	case AT_FAIR:

@@ -13,8 +13,11 @@ switch (my_hitboxID.attack){
 		break;
 	case AT_UAIR:
 		if (window == 4){
-			window = 5
-			window_timer = 0
+			if (my_hitboxID.hbox_num == 2){
+				sound_play(sfx_blow_2, false, noone, 0.7, 1);
+			}
+			window = 5;
+			window_timer = 0;
 			destroy_hitboxes();
 		}	
 		break;
@@ -36,17 +39,21 @@ switch (my_hitboxID.attack){
 	case AT_FSPECIAL_AIR:
 		my_hitboxID.RemoteRobotThrownWithFspecHitSomeone = true
 		spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 12, 143);
-		create_hitbox(AT_DSPECIAL, 2, hit_player_obj.x, hit_player_obj.y - 12);
+		create_hitbox(AT_DSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 12);
 		//sound_play(sfx_krtd_bomb_explode)
 		sound_play(asset_get("sfx_ell_big_missile_fire"))
 		shake_camera( 6, 3 )
 		break;
 	case AT_DSPECIAL:
-		if (my_hitboxID.hbox_num == 3){
-			tailsdidstartingdownbhitboxhitRobot1 = true;
-		}
-		if (my_hitboxID.hbox_num == 5){
-			tailsdidstartingdownbhitboxhitRobot2 = true;
+		//
+		if (my_hitboxID.hbox_num == 1){
+			var touchexplodHitbox = create_hitbox(AT_DSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 12);
+			touchexplodHitbox.hit_effect = 157;
+			spawn_hit_fx( touchexplodHitbox.x, touchexplodHitbox.y - 26, 143);
+			if (instance_exists(remoteRobot)){
+				remoteRobot.throwHitboxHit = true;
+			}
+			sound_play(asset_get("sfx_absa_kickhit"), false, noone, 0.95, 1.25);
 		}
 		break;
 }
@@ -84,8 +91,10 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 		//transition to the 'throw' part of the attack.
 		destroy_hitboxes();
 		attack_end();
-		sound_play(sfx_krtd_grab)
-		set_attack(AT_FSPECIAL_2);
+		sound_play(sfx_krtd_grab);
+		attack = AT_FSPECIAL_2;
+		window = 1;
+		window_timer = 0;
 		
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbed_player_obj)) { grabbed_player_obj = hit_player_obj; }

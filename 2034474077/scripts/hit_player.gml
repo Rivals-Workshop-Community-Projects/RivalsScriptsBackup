@@ -74,7 +74,7 @@ switch(my_hitboxID.attack){
 					destroy_hitboxes();
 					window = 4;
 					window_timer = 0;
-					set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 8);
+					set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 9);
 				}
 			}
 		}

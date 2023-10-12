@@ -42,10 +42,17 @@ if(winner == player){
 	    // Set Winquote
 	    if("win_quote_string" not in self){
 	       if(results_data.num_of_players <= 2) {
-	       	if(get_player_color(player) == 28){ // Richter Alt  && color_shift == false for when colors are over 28
-	       		win_quote_string = "Your words are as empty as your soul. Mankind ill needs a savior such as you."
-	       	}
-	        else win_quote_string = get_win_quote(results_data.opponent_name);
+	       		// Override Section, the else section will run the function as normal.
+		       	// Richter Override
+		       	if(get_player_color(player) == 28){ // Richter Alt  && color_shift == false for when colors are over 28
+		       		win_quote_string = "Your words are as empty as your soul. Mankind ill needs a savior such as you."
+		       	}
+		       	// Spyker's Override for Byte Skin
+   		       	if(get_player_color(player) == 17 && color_shift == true){
+		       		win_quote_string = "I'm the coolest wolf ever!"
+		       	}
+		       	
+		        else win_quote_string = get_win_quote(results_data.opponent_name);
 	       }
 	       else{
 	            exit;

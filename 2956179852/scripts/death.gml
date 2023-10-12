@@ -15,6 +15,8 @@ if(!muted){
 	}
 }
 
+downspecialcharge = round(downspecialcharge/1.25);
+
 respawnplat = 1;
 
 #define PlayVoiceClip

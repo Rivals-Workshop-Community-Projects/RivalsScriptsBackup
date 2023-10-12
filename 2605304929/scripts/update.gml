@@ -72,6 +72,34 @@ if(move_cooldown[AT_FSPECIAL] == 10 || move_cooldown[AT_DSPECIAL] == 10){
 sound_play(asset_get("mfx_flashy_shing"));
 white_flash_timer = 10;
 }
+
+// Activated Kill Effect for Tehend's Alt
+if((color_shift == 1 || color_shift == 2) && get_player_color(player) == 29){
+	
+	// Visible for 35 frames then fades and fades 43
+	// Check opponent for galaxy effect and save to local variable
+	with(asset_get("oPlayer")){
+	    if (id != other.id){
+			// Record Galaxy
+			if(activated_kill_effect == true){
+				//print(" in with other player kill effect function");
+				var temp_opponent_galaxy = true;
+			}
+			else temp_opponent_galaxy = false;
+	    }
+	}
+	opponent_activated_kill_effect = temp_opponent_galaxy;
+
+	// Check Galaxy
+	if(opponent_activated_kill_effect){ 
+		galaxy_current_timer++; // Add to timer
+	}
+	else galaxy_current_timer = 0;
+	// Say the line...
+	if(galaxy_current_timer == 1){
+		sound_play(sound_get("color_specific_LTG"));
+	}
+}
 //#endregion
 
 //#region VFX

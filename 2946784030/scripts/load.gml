@@ -61,7 +61,7 @@ sprite_change_offset("dtilt", 24, 47, true);
 sprite_change_offset("utilt", 26, 50, true);
 
 sprite_change_offset("nair", 24, 40, true);
-sprite_change_offset("fair", 21, 35, true);
+sprite_change_offset("fair", 24, 47, true);
 sprite_change_offset("bair", 48, 47, true);
 sprite_change_offset("uair", 32, 50, true);
 sprite_change_offset("dair", 20, 39, true);
@@ -120,6 +120,8 @@ sprite_change_offset("waft_buddy_gas", 16, 16);
 sprite_change_offset("waft_buddy_gasbig", 32, 32);
 
 
+// --CHARACTERS!!--
+
 //Compatibility - Unregistered Hypercam 2
 sprite_change_offset("wario_uhc_video", 11, 8);
 
@@ -137,6 +139,8 @@ sprite_change_offset("wario_feri", 84, 114);
 //Compatibility - Regina Mario
 sprite_change_offset("wario_mario_compat", 64, 79);
 
+// --STAGES!!--
+
 //Compatibility - The Trial Grounds
 sprite_change_offset("wario_guilty", 31, 0);
 
@@ -148,6 +152,11 @@ sprite_change_offset("wario_lastresort", 27, 39);
 
 //Compatibility - Miiverse
 sprite_change_offset("wario_miiverse", 60, 30);
+
+//
+sprite_change_offset("wario_ttyd_audience", 28, 60);
+
+// --BUDDIES!!--
 
 //Compatibility - Final Smash
 sprite_change_offset("wario_wallop", 32, 47, true);

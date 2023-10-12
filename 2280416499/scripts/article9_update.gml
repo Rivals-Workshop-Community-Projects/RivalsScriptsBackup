@@ -10,7 +10,7 @@ switch(state){
 	case 0: //closed
 		user = noone;
 		
-		if practice with oPlayer if place_meeting(x, y + 64, other) && (state == PS_CROUCH || "training_town_crouch" in self && training_town_crouch){
+		if practice with oPlayer if place_meeting(x, y + 64, other) && (state == PS_CROUCH || "training_town_crouch" in self && training_town_crouch) && get_player_hud_color(player) != c_gray{
 			other.user = self;
 		}
 		
@@ -79,7 +79,7 @@ switch(state){
 				held_timer = 0;
 			}
 			
-			if (state == 3){
+			if (other.state == 1){
 				
 			}
 			else if right_pressed{

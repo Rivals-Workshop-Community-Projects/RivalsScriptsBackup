@@ -589,7 +589,11 @@ if attack == AT_FSPECIAL{
 		
 		//Turn Around
 		if stick_h_dir == -1 && !free{
-			wariobike_turn_time = 2*abs(hsp);
+			
+			//Set Turning Time
+			if !hitpause wariobike_turn_time = 2*abs(hsp);
+			if hitpause wariobike_turn_time = 2*abs(old_hsp);
+			
 			destroy_hitboxes();
 			attack_end();
 			sound_play(sound_get("SFX_WarioBike_Skid"));

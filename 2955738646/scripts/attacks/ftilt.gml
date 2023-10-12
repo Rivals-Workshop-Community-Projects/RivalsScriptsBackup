@@ -11,7 +11,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_Furi_Keri"));
 set_window_value(AT_FTILT, 2, AG_WINDOW_SFX_FRAME, 1);
@@ -23,10 +23,10 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 20);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 20);
+//set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 20);
 
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 30);

@@ -17,13 +17,6 @@ if attack == AT_DSPECIAL && window == 2 {
 	move_cooldown[AT_DSPECIAL] = 100 ;
 }
 
-// Cooldown for Zero-G Thruster
-
-if attack == AT_USPECIAL && window == 1 {
-	move_cooldown[AT_USPECIAL] = 90 ;
-}
-
-
 // Plasma Cutter Reload
 
 switch attack{
@@ -32,10 +25,3 @@ switch attack{
     break;
 }
 
-// Isaac can cancel out of Zero-G Thruster
-
-if (attack == AT_USPECIAL && window == 2) {
-	can_attack = true
-	can_strong = true
-	can_special = true
-}

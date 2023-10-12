@@ -10,20 +10,12 @@ switch (alt_cur)
         set_article_color_slot(1, 0, 0, 0);
         set_character_color_slot(5, 64, 124, 48, 1); 
         set_article_color_slot(5, 64, 124, 48);
-        if ("outline_charge" in self)
-        {
-			outline_color=[outline_charge, outline_charge, outline_charge];
-        }
+        set_character_color_slot(6, 33, 87, 18, 1);
+        set_article_color_slot(6, 33, 87, 18);
     break;
-    case 17:
+    case 14:
         for (var i = 0; i < 8; i++) set_character_color_shading(i, 0);
         outline_color = [35, 67, 49];
-    break;
-    default:
-        if ("outline_charge" in self)
-        {
-			outline_color=[outline_charge, outline_charge, outline_charge];
-        }
     break;
 }
 

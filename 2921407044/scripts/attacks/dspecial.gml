@@ -4,6 +4,11 @@ set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, 87, "- Bomb can be defused by parrying near it.
+- Opponent can also defuse bomb.
+- Bomb explodes 20 frames after being hit.
+- Usually safe to jab then parry bomb.
+- Klock does not get parry invuln when parrying it."); // Misc notes for the attack
 
 // Window Parameters ----------------------------------------------------- 
 // Window 1 - Frames 0 - 5 - Start Up
@@ -71,62 +76,3 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
-
-/*
-//individual hitbox properties
-set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_GROUNDEDNESS, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_FORCE_FLINCH, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK , 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_THROWS_ROCK, 0);
-
-//projectile properties
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_LIFESPAN, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 0);
-*/

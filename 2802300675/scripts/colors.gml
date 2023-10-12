@@ -285,3 +285,9 @@ set_color_profile_slot( 25, 4, 0, 0, 0 ); //eye
 set_color_profile_slot( 25, 5, 28, 28, 28 ); //death
 set_color_profile_slot( 25, 6, 255, 0, 0 ); //death outline
 set_color_profile_slot( 25, 7, 255, 148, 148 ); //gas skull
+
+/* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
+=== BEGIN JSON PALETTE ===
+{"formatversion":1,"data":[{"name":"unnamed color row","colors":[{"r":"232","g":"224","b":"255","main":true}]},{"name":"unnamed color row","colors":[{"r":"182","g":"158","b":"251","main":true}]},{"name":"unnamed color row","colors":[{"r":"68","g":"164","b":"115","main":true}]},{"name":"unnamed color row","colors":[{"r":"110","g":"103","b":"216","main":true}]},{"name":"unnamed color row","colors":[{"r":"69","g":"103","b":"225","main":true}]},{"name":"unnamed color row","colors":[{"r":"152","g":"91","b":"198","main":true}]},{"name":"unnamed color row","colors":[{"r":"55","g":"8","b":"87","main":true}]},{"name":"unnamed color row","colors":[{"r":"219","g":"167","b":"255","main":true}]}]}
+=== END JSON PALETTE ===
+*/

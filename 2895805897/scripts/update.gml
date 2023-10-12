@@ -35,7 +35,7 @@ if (!custom_clone) {
 			atk_NSpecialProjectile = 1;
 		}
 		// Spawn the effect
-		sound_play(asset_get("sfx_diamond_collect"));
+		sound_play(sound_get("funnymelong"));
 		switch (atk_NSpecialProjectile) {
 			case 1:
 				spawn_hit_fx(x, y - 20, bookpickFX);

@@ -6,9 +6,23 @@ var ct = current_time;
 char_height = motorbike? 56 : 50;
 walk_speed = motorbike? 6 : 3.25;
 initial_dash_speed = motorbike? 10 : 7;
-dash_speed = motorbike? 10: 7.5;
+if (has_rune("I"))
+{
+	short_hop_speed = 8;
+	jump_speed = motorbike? 11: 14;
+}
+else
+{
+	short_hop_speed = 6;
+	jump_speed = motorbike? 9: 11;
+}
+dash_speed = motorbike? 9: 7.5;
 dash_stop_time = motorbike? 12: 4;
-djump_speed = motorbike? 10: 3;
+//djump_speed = motorbike? 10: 10;
+//walljump_hsp = motorbike? 0:3;
+//walljump_vsp = motorbike? 7:11;
+//walljump_time = motorbike? 64:16;
+
 
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 was_attacking = (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR);
@@ -27,12 +41,17 @@ with (hit_fx_obj)
 if (feline_power = false)
 {
 	kickTime = 0;
-	multikick_energy = (motorbike? 200 - move_cooldown[AT_NSPECIAL_2] : 200 - move_cooldown[AT_NSPECIAL]);
-	if (multikick_energy >= 199)
+	multikick_ready_timer = 0;
+	multikick_energy++;
+	if (multikick_energy <39)
+	{
+		move_cooldown[AT_NSPECIAL] = 2;
+		move_cooldown[AT_NSPECIAL_2] = 2;
+	}
+	if (multikick_energy >= 199 && multikick_energy < 200)
 	{
 		sound_play(sound_get("regen"));
-		outline_charge = 255;
-		init_shader();
+		white_flash_timer = 10;
 		spawn_base_dust(x - 10, y - 30, "fastfall");
 		spawn_base_dust(x, y - 50, "fastfall");
 		spawn_base_dust(x + 10, y - 40, "fastfall");
@@ -44,6 +63,7 @@ if (feline_power = false)
 //Stop charging if meter is full
 if (multikick_energy >= 200)
 {
+	multikick_ready_timer++;
 	multikick_energy = 200;
 	if (outline_charge <= 0)
 	{
@@ -57,15 +77,66 @@ if (multikick_energy >= 200)
 	feline_power = true;
 }
 
+/*if (state_cat != SC_HITSTUN)
+{
+	//Fix for getting caught in the top of the stage after wall riding
+	if (y < get_stage_data(SD_TOP_BLASTZONE_Y) - 4)
+	{
+		y = y + 10;
+	}
+}*/
+
 if (motorbike == false)
 {
+	//play intro
+	if (time == 4) set_attack(2);
 	//Reset values back to default if coming from the bike
 	hurtbox_spr = sprite_get("carol_hurtbox_standing");
 	crouchbox_spr = sprite_get("carol_hurtbox_crouch");
 	jump_sound = sound_get("jump");
-	djump_sound = asset_get("sfx_jumpair");
+	if (alt_cur >= 15 && alt_cur <= 17)
+	{
+    	jump_sound = sound_get("sonic_jump");
+	}
+	djump_sound = sound_get("double_jump");
 	//Bike doesn't have idle fidget, this gives the fidget back
 	wait_time = 400;
+	
+	if (fuel < 40 && !bike_stored && !instance_exists(bike))
+	{
+		move_cooldown[AT_DSPECIAL] = 2;
+		if (floor(state_timer/10) == state_timer/10 && !instance_exists(thrownBike))
+		{
+			if (has_rune("C"))
+			{
+				fuel++;
+			}
+			fuel++;
+			if (fuel >= 40 && bikeReady == 0)
+			{
+				fuel = 40;
+				move_cooldown[AT_DSPECIAL] = 0;
+				bikeReady = 1;
+			}
+		}
+	}
+	
+	if (fuel >= 40 && bike_stored)
+	{
+		move_cooldown[AT_DSPECIAL] = 2;
+	}
+	
+	if (instance_exists(bike))
+	{
+		if (place_meeting(x, y, bike))
+		{
+			move_cooldown[AT_DSPECIAL] = 0;
+		}
+		else
+		{
+			move_cooldown[AT_DSPECIAL] = 2;
+		}
+	}
 	
 	//Abyss Runes reset, just in case!
 	if has_rune("B")
@@ -103,39 +174,6 @@ if (motorbike == false)
 	 	dash_turn_accel = 1.5;
 	}
 
-	//Carol's Double jump is a pounce, so if she double jumps there should be no additional vsp
-	if (state == PS_DOUBLE_JUMP)
-	{
-		pounce = true;
-		if ((left_pressed || left_down) && spr_dir == 1 && !pounceChange)
-		{
-			spr_dir = -1;
-			pounceChange = true;
-		}
-		if ((right_pressed || right_down) && spr_dir == -1 && !pounceChange)
-		{
-			spr_dir = 1;
-			pounceChange = true;
-		}
-		set_state(PS_ATTACK_AIR);
-		attack=AT_EXTRA_2;
-   		tsprite_index = sprite_get("tail_walk");
-		timage_index=0;
-		timage_number=7;
-		tfront=false;
-		tx=-46*spr_dir;
-		ty=-70;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-	}
-	
-	if (free==false)
-	{
-		pounce = false;
-	}
-
-	
 	//multiple Wall jumps, so that you can bounce up the same wall over and over again, just like Carol's gameplay in Freedom Planet!
 	if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit)
 	{
@@ -165,7 +203,7 @@ if (motorbike == false)
 	}
 	
 	//This code animated the tail and adds an effect to Parry depending on state
-	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND)
+	if (!is_attacking)
 	{
 		comboCounter = 0;
 		hitConfirm = false;
@@ -203,16 +241,16 @@ if (motorbike == false)
 							wait_sprite = sprite_get("waitb");
 						break;
 						case 2:
-							wait_length = 120;
+							wait_length = 100;
 							wait_sprite = sprite_get("waitc");
 							voice_protection = true;
 						case 3:
-							wait_length = 160;
+							wait_length = 120;
 							wait_sprite = sprite_get("waitc");
 							voice_protection = true;
 						break;
 						case 4:
-							wait_length = 160;
+							wait_length = 120;
 							wait_sprite = sprite_get("waitd");
 							voice_protection = true;				
 						default:
@@ -224,19 +262,19 @@ if (motorbike == false)
 				{
 					if (wait_idle_pick == 2 && state_timer == 20 && voice_protection = true)
 					{
-						sound_stop(sound_get("im_bored"));
+						stopVoice();
 						sound_play(sound_get("im_bored"));
 						voice_protection = false;
 					}
 					else if (wait_idle_pick == 3 && state_timer == 20 && voice_protection = true)
 					{	
-						sound_stop(sound_get("why_are_we_stopping"));
+						stopVoice();
 						sound_play(sound_get("why_are_we_stopping"));
 						voice_protection = false;
 					}
 					else if (wait_idle_pick == 4 && state_timer == 20 && voice_protection = true)
 					{
-						sound_stop(sound_get("what_you_doing"));
+						stopVoice();
 						sound_play(sound_get("what_you_doing"));
 						voice_protection = false;
 					}
@@ -244,20 +282,11 @@ if (motorbike == false)
 			break;
 	  		case PS_PARRY:
 		  		//Custom Parry Effect
-		  		sound_stop(asset_get("sfx_parry_use"));
 		  		if (state_timer == 0)
 		  		{
 		  			sound_play(sound_get("guard"));
 		  		}
-		  		tsprite_index=sprite_get("tail_idle");
-				trotation=0;
-				timage_number=12;
-				timage_speed=0.25;
-				tfront=false;
-				tx=-46*spr_dir;
-				ty=-66;
-				tsx=1;
-				tsy=1;
+		  		tsprite_index=-1;
     			bsprite_index=-1;
 				if (thrownBike != noone && state_timer = 0)
 				{
@@ -266,6 +295,11 @@ if (motorbike == false)
 			break;
 			case PS_WALK:
 			case PS_WALK_TURN:
+				//Fix for getting caught in the top of the stage after wall riding
+				//if (y < get_stage_data(SD_TOP_BLASTZONE_Y) - 4)
+				//{
+				//	y = y + 10;
+				//}
 	    		tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
@@ -279,6 +313,11 @@ if (motorbike == false)
 			break;
 			case PS_DASH_START:
 			case PS_DASH:
+				//Fix for getting caught in the top of the stage after wall riding
+				//if (y < get_stage_data(SD_TOP_BLASTZONE_Y) - 4)
+				//{
+			//		y = y - 10;
+				//}
 		 		tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
@@ -303,21 +342,6 @@ if (motorbike == false)
 				tsy=1;
 				bsprite_index=-1;
 	 		break;
-    		case PS_DOUBLE_JUMP:
-				can_attack = false;
-				can_special = false;
-				can_shield = false;
-				can_strong = false;
-			 	tsprite_index = sprite_get("tail_walk");
-				timage_index=0;
-				timage_number=7;
-				tfront=false;
-				tx=-46*spr_dir;
-				ty=-70;
-				tsx=1;
-				tsy=1;
-				bsprite_index=-1;    
-			break;
     		case PS_CROUCH:
     			tsprite_index=sprite_get("tail_walk");
 				trotation=0;
@@ -326,6 +350,20 @@ if (motorbike == false)
 				tfront=false;
 				tx=-46*spr_dir;
 				ty=-70;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+			break;
+			case PS_DOUBLE_JUMP:
+			case PS_LAND:
+			case PS_LANDING_LAG:
+				set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -6);
+				set_window_value(42, 2, AG_WINDOW_VSPEED, -6);
+				tsprite_index=-1;
+				trotation=0;
+				tfront=0;
+				tx=0;
+				ty=0;
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
@@ -442,14 +480,15 @@ else if (motorbike == true)
 			if (fuel > 0)
 			{
 				//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
-				if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
+				//Removed feature because too many gimmicks otherwise
+				/*if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
 				{
 					create_hitbox( AT_EXTRA_1, 1, x, y);
 				}
 				else
 				{
 					destroy_hitboxes();
-				}
+				}*/
 				bike_state_timer++;
 				if (state_timer = 1)
 				{
@@ -580,6 +619,8 @@ else if (motorbike == true)
 				case PS_JUMPSQUAT:
 				case PS_LAND:
 				case PS_LANDING_LAG:
+					set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -6);
+					set_window_value(42, 2, AG_WINDOW_VSPEED, -6);
 					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 18, 13);
 					bikeSmoke.depth = -100;
 				break;
@@ -613,7 +654,7 @@ else if (motorbike == true)
 				sound_stop(sound_get ("comeon"));
 				sound_play(sound_get ("comeon"));
 			}
-			set_attack(AT_DSPECIAL_2);
+			set_attack(AT_EXTRA_2);
 		}
 	}
 	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
@@ -632,25 +673,21 @@ if (bikeExplosion == true)
 //Reset Wall jumps and certain cooldowns
 if (!free)
 {
-	wall_ride = false;
 	if (state !=PS_ATTACK_GROUND)
 	{
 		walljump_number = 0;
 	}
-	move_cooldown[AT_USPECIAL] = 0;
-	move_cooldown[AT_DAIR] = 0;
-	move_cooldown[AT_DSPECIAL] = 0;
 }
 else
 {
-	move_cooldown[AT_DSPECIAL] = 200;
+	move_cooldown[AT_DSPECIAL] = 2;
 }
 
 //Bike can cling to walls, check for this
 can_wall_cling = ((motorbike = true && y > SD_Y_POS + 150 && hitpause == false)? true : false );
 
 //Enables the ability to ride up walls
-if (clinging == true && hitpause == false)
+if (clinging == true && hitpause == false && state != PS_HITSTUN)
 {
 	if(floor(state_timer/4) == state_timer /4)
 	{
@@ -661,19 +698,12 @@ if (clinging == true && hitpause == false)
 	sound_stop(sound_get("motorbike_move"));
 	sound_play(sound_get("motorbike_move"));
 	sound_stop(sound_get("motorbike_idle"));
-	vsp = -7;
-	
-	if (old_vsp == 7 && vsp !=7)
+	if (state_timer > 10) vsp = -7;
+	/*if (clinging == false)
 	{
-		old_vsp = 0;
 		vsp = 0;
-	}
-	if (clinging == false)
-	{
-		old_vsp = 0;
-		vsp = 0;
-		set_state(PS_IDLE_AIR);
-	}
+		wall_ride = false;
+	}*/
 }
 
 //Counts the dodges for a voice line
@@ -696,7 +726,7 @@ if (dodgeTaunt == true)
 	dodgeTaunt = false;
 	if (voice = 1)
 	{
-		sound_stop(sound_get ("try_and_catch_me"));
+		stopVoice();
 		sound_play(sound_get ("try_and_catch_me"));
 	}
 }
@@ -722,12 +752,12 @@ with (oPlayer)
 				case AT_FSPECIAL:
 				case AT_FSPECIAL_2:
 				case AT_EXTRA_1:
-				case AT_EXTRA_2:
+				case AT_USPECIAL:
 				case 43:
 				case 44:
 				case 45:
 				case 47:
-				case 48:
+				case AT_EXTRA_3:
 					galaxy_effect_sprite_index = sprite_get("galaxy_right");
 				break;
 				case AT_BAIR:
@@ -770,34 +800,45 @@ with (oPlayer)
 			}
 		}
 	}
-	//Unique quote if Lilac is KO'd
+	//Unique quote if Lilac is KO'd as teammate or if Neera is KO'd
 	if (player != other.player && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) 
 	{
 		switch (url)
 		{
-			case "2697174282":
+			case "2697174282"://Lilac
 			case "1870616155":
 			case "1897152603":
-	 		with (other)
-	 		{
-				if (voice == 1)
+			case "2972048421":
+				with (other)
 				{
-					sound_stop(sound_get ("hold_on_lilac"));
-					sound_play(sound_get ("hold_on_lilac"));
+					if (get_player_team(player) == get_player_team(other.player) && voice == 1)
+					{
+						sound_stop(sound_get ("hold_on_lilac"));
+						sound_play(sound_get ("hold_on_lilac"));
+					}
 				}
-	 		}
-	 		break;
-	 		default:
-	 		with (other)
-	 		{
-				if (voice == 1)
+			break;
+			case "2972347375": //Neera
+				with (other)
 				{
-					sound_stop(sound_get ("did_you_see_that"));
-					sound_play(sound_get ("did_you_see_that"));
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("that_stupid_panda"));
+						sound_play(sound_get ("that_stupid_panda"));
+					}
+				}	 			
+			break;
+			default:
+				with (other)
+				{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("did_you_see_that"));
+						sound_play(sound_get ("did_you_see_that"));
+					}
 				}
-	 		}
-	 		break;
-	 	}
+			break;
+		}
 	}
 }
 
@@ -805,10 +846,10 @@ with (oPlayer)
 if (bikeReady == 1)
 {
 	sound_stop(sound_get ("motorbike_spin"));
-	sound_play(sound_get ("motorbike_spin"));    		
+	sound_play(sound_get ("motorbike_spin"));	
 	if (voice == 1)
 	{
-		sound_stop(sound_get ("aw_yeah"));
+		stopVoice();
 		sound_play(sound_get ("aw_yeah"));
 	}
 	bikeReady = 2;
@@ -845,38 +886,12 @@ if (move_cooldown[3] > 0)
 	move_cooldown[3] = move_cooldown[3] - 1;
 }
 
-if (move_cooldown[43] > 0)
-{
-	move_cooldown[43] = move_cooldown[43] - 1;
-}
-
-if (move_cooldown[45] > 0)
-{
-	move_cooldown[45] = move_cooldown[45] - 1;
-}
-
-if (move_cooldown[46] > 0)
-{
-	move_cooldown[46] = move_cooldown[46] - 1;
-}
-
-if (move_cooldown[47] > 0)
-{
-	move_cooldown[47] = move_cooldown[47] - 1;
-}
-if (move_cooldown[48] > 0)
-{
-	move_cooldown[48] = move_cooldown[48] - 1;
-}
-
 //Check for Practicse mode
 if (get_match_setting(SET_PRACTICE) == true)
 {
 	practice = true;
 	practice_hud_clearance++;
 }
-
-user_event(6);
 
 //print_debug(string(hsp));
 prev_hsp = hsp;
@@ -928,6 +943,17 @@ if(variable_instance_exists(id,"diag"))
         diag = "Can't you be Little Miss Heropants some other time?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
+	if(otherUrl == "2972048421" && diag != "")
+	{
+        diag = "Can't you be Little Miss Heropants some other time?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+	}
+	//Neera
+	if ((otherUrl == "2972347375"))
+	{
+		diag = "Scary lady, what you doing here? You wanna have some fun? :D";
+		diag_index = 0;
+	}		
 
 	//Amber    
     if(otherUrl == "2229887722" && diag != "")
@@ -1028,6 +1054,13 @@ if(variable_instance_exists(id,"diag"))
 		diag_index = 0;		
 	}
 	
+	//Carol
+	if ((otherUrl == "2782300518"))
+	{
+		diag = "Hey look Lilac it's my identical twin sister!";
+		diag_index = 0;
+	}
+		
 	if (otherUrl == CH_ELLIANA && diag != "")
 	{
         diag = "A snake in a machine huh? That reminds me of someone...";
@@ -1053,6 +1086,20 @@ if(variable_instance_exists(id,"diag"))
         }
     }
 }
+
+#define stopVoice
+
+sound_stop(sound_get("aw_yeah"));
+sound_stop(sound_get("feel_my_power"));
+sound_stop(sound_get("hold_on_lilac"));
+sound_stop(sound_get("im_bored"));
+sound_stop(sound_get("parry"));
+sound_stop(sound_get("pow_pow"));
+sound_stop(sound_get("that_stupid_panda"));
+sound_stop(sound_get("try_and_catch_me"));
+sound_stop(sound_get("what_you_doing"));
+sound_stop(sound_get("why_are_we_stopping"));
+sound_stop(sound_get("wittle_wiwac"));
 
 #define spawn_base_dust // originally by supersonic
 /// spawn_base_dust(x, y, name, dir = 0)

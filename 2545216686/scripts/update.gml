@@ -1,34 +1,65 @@
 //update.gml
 
-// Intro stuff
-if (introTimer2 < 3) {
-    introTimer2++;
-} else {
-    introTimer2 = 0;
-    introTimer++;
-}
-// this increments introTimer every few frames, depending on the number entered
-
-if (introTimer < 17) {
-    //draw_indicator = false;
-	if (!was_reloaded){
-		hud_offset = 400;
+// Intro
+if (state == PS_SPAWN){
+	var flightSFX = sfx_flight;
+	if (playIntroAnim){ 
+		if (!shouldPlayLandingIntroAnim){
+			if (!introPlayFallAnim){
+				//print("false");
+				introImgTimer2++;
+				if (introImgTimer2 == 2){
+					if (introImgTimer != 7){
+						introImgTimer++;
+					} else {
+						introImgTimer = 0;
+					}
+					introImgTimer2 = 0;
+				}
+				introImgHorizOffset -= 10;
+				introImgHorizOffset = clamp(introImgHorizOffset, desiredDist, 1000);
+				if (introImgHorizOffset == desiredDist){
+					introPlayFallAnim = true;
+					sound_stop(flightSFX);
+					sound_play(jump_sound, false, noone, 0.9, 1.2);
+					//spawn_base_dust(x - ((introImgHorizOffset - (-40 * spr_dir)) * spr_dir), y - introImgVertOffset + 16, "doublejump", spr_dir, -30 * spr_dir);
+				}
+				
+				if (introImgHorizOffset == 420){
+					sound_play(flightSFX, false, noone, 0.65, 1);
+				}
+			} else if (introPlayFallAnim){
+				introImgTimer2++;
+				//print("true");
+				if (introImgTimer2 >= 5){
+					introImgTimer3++;
+					introImgTimer2 = 0;
+				}
+				introImgTimer3 = clamp(introImgTimer3, 0, 5);
+				introImgVertOffset -= ceil((1.2 * introCounter));
+				introCounter += 0.6;
+				introCounter = clamp(introCounter, -10, 14);
+				
+				if (introImgVertOffset <= 0){//>
+					shouldPlayLandingIntroAnim = true;
+					sound_play(landing_lag_sound);
+					spawn_base_dust( x, y, "land", spr_dir);
+				}
+				introImgHorizOffset -= 3.25;
+				introImgHorizOffset = clamp(introImgHorizOffset, -60, 110);
+			}
+		} else {
+			if (introImgLandTimer != 4){
+				introImgLandTimer2++;
+				if (introImgLandTimer2 == 5){
+					introImgLandTimer2 = 0;
+					introImgLandTimer++;
+				}
+			} else {
+				playIntroAnim = false;
+			}
+		}
 	}
-} else {
-    //draw_indicator = true;
-}
-// this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
-
-//Changing the portrait for alts that change outline colors.
-if (get_player_color( player ) == 7){
-	set_victory_portrait( sprite_get( "portrait_ea" ));
-	set_victory_sidebar( sprite_get( "result_small_ea" ));
-} else if (get_player_color( player ) == 17){
-	set_victory_portrait( sprite_get( "portrait_gold" ));
-	set_victory_sidebar( sprite_get( "result_small_gold" ));
-} else if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
-	set_victory_portrait( sprite_get( "portrait" ));
-	set_victory_sidebar( sprite_get( "result_small" ));
 }
 
 ////////////////////////////////////////////////////
@@ -92,24 +123,6 @@ if (didwavedash != 0){
 
 if (state == PS_LANDING_LAG){
 	sound_stop(sfx_spin)
-}
-
-if (state == PS_SPAWN){
-	if (state_timer == 1){
-		sound_play(sfx_flight, false, noone, 0.75, 1);
-	}
-	if (image_index == 13){
-		intro_anim_timer++;
-		if (intro_anim_timer == 1){
-			//spawn_base_dust( x - (10 * spr_dir), y, "dash_start", spr_dir)
-			spawn_base_dust( x - (0 * spr_dir), y, "land", spr_dir)
-			sound_play(sfx_land);
-		}
-	} else {
-		intro_anim_timer = 0;
-	}
-} else {
-	intro_anim_timer = 0;
 }
 
 ////////////////////////////////////////////////////
@@ -203,11 +216,6 @@ if (free){
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
 
-
-if (move_cooldown[AT_DSPECIAL] == 1){
-	tailsisrobotout = false
-}
-
 //Supersonic's Base Cast Dust Function
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)
@@ -215,10 +223,10 @@ if (move_cooldown[AT_DSPECIAL] == 1){
 var dlen; //dust_length value
 var dfx; //dust_fx value
 var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
 var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
 switch (name) {
     default: 
@@ -232,11 +240,22 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
+newdust.draw_angle = angle;
 return newdust;

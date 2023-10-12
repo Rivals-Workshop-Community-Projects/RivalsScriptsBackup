@@ -13,6 +13,9 @@ if (fspecial_used && !fspecial_hit && !instance_exists(bead_proj) && has_hit = f
 }
 */
 
+if state == PS_PRATFALL max_fall = ground_friction_crouch;
+else max_fall = ground_friction_init;
+
 print(marked_timer)
 
 //Neat way of getting the enemy state
@@ -47,7 +50,7 @@ if (instance_exists(beaded_player) && marked_timer > 0){
 				break;
 				case AT_USTRONG:
 					set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE, 90);
-					set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+					set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
 					set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 1.05);
 					set_hitbox_value(AT_FSPECIAL, 4, HG_EXTRA_HITPAUSE, 9);
 				break;
@@ -85,5 +88,4 @@ if (instance_exists(beaded_player) && marked_timer > 0){
 if (instance_exists(beaded_player) && (beaded_player.state == PS_RESPAWN || marked_timer <= 0)){
 	beaded_player.bead_marked = false;
 	marked_timer = 0;
-	move_cooldown[AT_FSPECIAL] = 0;
 }

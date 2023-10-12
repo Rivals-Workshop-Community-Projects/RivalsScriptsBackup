@@ -4,7 +4,7 @@ if(attack == AT_NSPECIAL){
     if(hbox_num = 1 || hbox_num = 2){
         if(hitbox_timer == 39){
            spawn_hit_fx(x, y + 20, player_id.hitsmoke); 
-           sound_play(asset_get("sfx_waterhit_weak"));
+           sound_play(asset_get("sfx_hod_fspecial_spirit"));
         }
     }
 }
@@ -12,7 +12,7 @@ if(attack == AT_NSPECIAL){
     if(hbox_num = 3){
         if(hitbox_timer == 49){
            spawn_hit_fx(x, y + 20, player_id.bigsmoke); 
-           sound_play(asset_get("sfx_waterhit_medium"));
+           sound_play(asset_get("sfx_forsburn_disappear"));
         }
     }
 }

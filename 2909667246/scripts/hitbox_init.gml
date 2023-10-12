@@ -81,7 +81,7 @@ if(attack == AT_NSPECIAL){
     		}
 		}
 	}else{
-		Pocketable = false;
+		Pocketable = false;FireHitbox = true;Toadie_Ability = 3;
 	}
 	Blockable = true;
 }else if (attack == AT_USPECIAL){
@@ -128,23 +128,16 @@ if(attack == AT_NSPECIAL){
 	}else if(hbox_num == 2){ //water
         Pocketable = true;Pocket_hsp = 8;Pocket_vsp = -1;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 8;
-        CalCanSnack = 1;
+        CalCanSnack = 1;WaterHitbox = true;Toadie_Ability = 6;
 	}else if(hbox_num == 3){ //tree
 		hp = 60;
 		image_index = 1;
-        knockback_power = 0;
-        knockback_angle = 0;
-        hitpausehit = 0;
-        timer = 0;
-        timer2 = 0;
-        cuts = 0;
-        lasthitbox = noone;
-        hitlockout = 4;
-        hitlockout2 = 0;
-        hitplayer = false;
-        hitplayertimer = 0;
-        hitcollision = create_hitbox(AT_DSPECIAL, 4, round(x), round(y-45));
-        hitcollision.theplant = self;
+        knockback_power = 0;knockback_angle = 0;
+        hitpausehit = 0;timer = 0;timer2 = 0;cuts = 0;
+        lasthitbox = noone;hitlockout = 4;hitlockout2 = 0;
+        hitplayer = false;hitplayertimer = 0;
+        hitcollision = create_hitbox(AT_DSPECIAL, 4, round(x), round(y-45));hitcollision.theplant = self;
+        chopsfx = player_id.tree_chopsfx;fallsfx = player_id.tree_fallsfx;
 	}else if(hbox_num == 4){ //tree hit collision
         playerurl = player_id.url;
     	UnReflectable = true;AriaCantAbsorb = true;
@@ -171,7 +164,7 @@ if(attack == AT_NSPECIAL){
         timer = 0;
         timer2 = 0;
         landtimer = 0;
-        landsfx = sound_get("dspecial_tree_land");
+        landsfx = player_id.tree_landsfx;
         hsp = 1.5*spr_dir;vsp = -5;prev_vsp = vsp;
         Pocket_hsp = 2;Pocket_vsp = -12;
     }else if(hbox_num == 8){ //tree stump
@@ -229,10 +222,12 @@ if(attack == AT_NSPECIAL){
         fireworks_sfx2 = sound_get("ustrong_charge");
         thechargesfx = noone;
         chargesfx = 80;
+        FireHitbox = true;Toadie_Ability = 3;
 	}else{ //fireworks explosions
 		Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 0;
 		UnReflectable = false;
 		Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 6;
+		FireHitbox = true;Toadie_Ability = 3;
 	}
 }else if (attack == AT_FAIR || attack == AT_BAIR){
 	Villager_Slingshot = true;

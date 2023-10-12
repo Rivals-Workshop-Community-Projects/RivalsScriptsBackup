@@ -1,4 +1,4 @@
-set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_3, AG_CATEGORY, 0);
 //set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("airdodge"));
 set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("crouch"));
 set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 2);

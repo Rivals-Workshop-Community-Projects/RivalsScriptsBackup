@@ -24,7 +24,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
-set_num_hitboxes(AT_FSPECIAL, 1);
+set_num_hitboxes(AT_FSPECIAL, 6);
 
 //Regular Hitbox
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
@@ -102,3 +102,45 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, hfx_wind_huge);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_MASK, -1);
+
+//Initial Grab
+set_hitbox_value(AT_FSPECIAL, 5, HG_PARENT_HITBOX, 5);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 1);
+set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 7);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_X, 14);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_FSPECIAL, 5, HG_WIDTH, 50);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HEIGHT, 60);
+set_hitbox_value(AT_FSPECIAL, 5, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, 1);
+set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FSPECIAL, 5, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, dspecial_vfx);
+set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT_X_OFFSET, 8);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, 0);
+
+//Detection Window
+set_hitbox_value(AT_FSPECIAL, 6, HG_PARENT_HITBOX, 6);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 8);
+set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_X, 40);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_Y, -35);
+set_hitbox_value(AT_FSPECIAL, 6, HG_SHAPE, 2);
+set_hitbox_value(AT_FSPECIAL, 6, HG_WIDTH, 80);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HEIGHT, 70);
+set_hitbox_value(AT_FSPECIAL, 6, HG_PRIORITY, 2);
+set_hitbox_value(AT_FSPECIAL, 6, HG_DAMAGE, 0);
+set_hitbox_value(AT_FSPECIAL, 6, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_FSPECIAL, 6, HG_EXTRA_HITPAUSE, 0);
+set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_GROUP, 0);

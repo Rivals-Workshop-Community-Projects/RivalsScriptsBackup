@@ -81,7 +81,12 @@ if(runesUpdated || get_match_setting(SET_RUNES)){
 if(instance_exists(nspec_cloud)){
 	with(oPlayer){
 		if(place_meeting(x,y,other.nspec_cloud)){
-			grav = 0;
+			if(free){
+				var vsp_alteration = 0 - gravity_speed;
+				if !(vsp_alteration < 0 && vsp < -max_fall) && vsp < max_fall {
+					vsp += vsp_alteration;
+				}
+			}			
 			if(!can_uspecial && move_cooldown[AT_USPECIAL] != 0){
 				move_cooldown[AT_USPECIAL] = 0;
 				can_uspecial = true;

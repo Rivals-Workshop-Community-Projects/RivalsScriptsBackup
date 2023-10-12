@@ -31,6 +31,20 @@ didwavedash = 0 //Checks to see if Tails wavedashed.
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = -8;
+introImgTimer = 0;
+introImgTimer2 = 0;
+introImgTimer3 = 0;
+introImgLandTimer = 0;
+introImgLandTimer2 = 0;
+var offsetTest = player;
+offsetTest = clamp(offsetTest, 1, 4);
+introImgHorizOffset = 430 + (40 * offsetTest);
+introImgVertOffset = 140;
+introCounter = -4;
+desiredDist = 20;
+shouldPlayLandingIntroAnim = false;
+playIntroAnim = true;
+introPlayFallAnim = false;
 
 //Dash Attack
 
@@ -92,19 +106,18 @@ heyiamtouchingitplsdont = false
 tailsdspecheydidtherobotdieyet = 0 //i hate rivals of aether
 
 tailsrobotx = 0
-
 tailsroboty = 0
-
 tailsrobot2x = 0
-
 tailsrobot2y = 0
-
 tailsdidrobotgetparried = false
-
 tailsdidbombhitrobot = false
 
 tailsdidstartingdownbhitboxhitRobot1 = false;
 tailsdidstartingdownbhitboxhitRobot2 = false;
+
+remoteRobot = noone;
+remoteRobot2 = noone;
+fspecHitboxTouchedRobot = false;
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -197,52 +210,75 @@ roll_forward_max = 9 + (rollRune * 8); //roll speed
 roll_backward_max = 9 + (rollRune * 8);
 
 //SFX List
-sfx_airdodge = sound_get("sfx_airdodge")
-sfx_blow_1 = sound_get("sfx_blow_1")
-sfx_blow_2 = sound_get("sfx_blow_2")
-sfx_blow_3 = sound_get("sfx_blow_3")
-sfx_dashstart = sound_get("sfx_dashstart")
-sfx_dive = sound_get("sfx_dive")
-sfx_dstrong_use = sound_get("sfx_dstrong_use")
-sfx_energyshot = sound_get("sfx_energyshot")
-sfx_flight = sound_get("sfx_flight")
-sfx_flight_cheat = sound_get("sfx_flight_cheat")
-sfx_flight_stop = sound_get("sfx_flight_stop")
-sfx_jump = sound_get("sfx_jump")
-sfx_land = sound_get("sfx_land")
-sfx_ring = sound_get("sfx_ring")
-sfx_ring_bomb = sound_get("sfx_ring_bomb")
-sfx_skid = sound_get("sfx_skid")
-sfx_slide = sound_get("sfx_slide")
-sfx_spin = sound_get("sfx_spin")
-sfx_swipe1 = sound_get("sfx_swipe1") //this is kinda a weak swipe sfx
-sfx_swipe2 = sound_get("sfx_swipe2")
-sfx_swipe3 = sound_get("sfx_swipe3")
-sfx_swipe4 = sound_get("sfx_swipe4")
-sfx_swipe5 = sound_get("sfx_swipe5")
-sfx_swipe6 = sound_get("sfx_swipe6")
-sfx_swipe7 = sound_get("sfx_swipe7")
-sfx_tail_swipe1 = sound_get("sfx_tail_swipe1")
-sfx_tail_swipe2 = sound_get("sfx_tail_swipe2")
-sfx_ustrong = sound_get("sfx_ustrong")
-sfx_waveland = sound_get("sfx_waveland")
+sfx_airdodge = sound_get("sfx_airdodge");
+sfx_blow_1 = sound_get("sfx_blow_1");
+sfx_blow_2 = sound_get("sfx_blow_2");
+sfx_blow_3 = sound_get("sfx_blow_3");
+sfx_dashstart = sound_get("sfx_dashstart");
+sfx_dive = sound_get("sfx_dive");
+sfx_dstrong_use = sound_get("sfx_dstrong_use");
+sfx_energyshot = sound_get("sfx_energyshot");
+sfx_flight = sound_get("sfx_flight");
+sfx_flight_cheat = sound_get("sfx_flight_cheat");
+sfx_flight_stop = sound_get("sfx_flight_stop");
+sfx_jump = sound_get("sfx_jump");
+sfx_land = sound_get("sfx_land");
+sfx_ring = sound_get("sfx_ring");
+sfx_ring_bomb = sound_get("sfx_ring_bomb");
+sfx_skid = sound_get("sfx_skid");
+sfx_slide = sound_get("sfx_slide");
+sfx_spin = sound_get("sfx_spin");
+sfx_swipe1 = sound_get("sfx_swipe1"); //this is kinda a weak swipe sfx
+sfx_swipe2 = sound_get("sfx_swipe2");
+sfx_swipe3 = sound_get("sfx_swipe3");
+sfx_swipe4 = sound_get("sfx_swipe4");
+sfx_swipe5 = sound_get("sfx_swipe5");
+sfx_swipe6 = sound_get("sfx_swipe6");
+sfx_swipe7 = sound_get("sfx_swipe7");
+sfx_tail_swipe1 = sound_get("sfx_tail_swipe1");
+sfx_tail_swipe2 = sound_get("sfx_tail_swipe2");
+sfx_ustrong = sound_get("sfx_ustrong");
+sfx_waveland = sound_get("sfx_waveland");
 
 //Kirby's Return to Dream Land SFX
-sfx_krtd_bomb_explode = sound_get("sfx_krtd_bomb_explode")
-sfx_krtd_bomb_prep = sound_get("sfx_krtd_bomb_prep")
-sfx_krtd_grab = sound_get("sfx_krtd_grab")
+sfx_krtd_bomb_explode = sound_get("sfx_krtd_bomb_explode");
+sfx_krtd_bomb_prep = sound_get("sfx_krtd_bomb_prep");
+sfx_krtd_grab = sound_get("sfx_krtd_grab");
 
 //Victory
-victory_theme = sound_get("victory")
+//victory_theme = sound_get("victory_old");
+victory_theme = sound_get("victory");
 
-land_sound = sfx_land
-landing_lag_sound = sfx_land
-waveland_sound = sfx_waveland
-jump_sound = sfx_jump
+land_sound = sfx_land;
+landing_lag_sound = sfx_land;
+waveland_sound = sfx_waveland;
+jump_sound = sfx_jump;
 djump_sound = asset_get("sfx_birdflap");
-air_dodge_sound = sfx_airdodge
+air_dodge_sound = sfx_airdodge;
 
 set_victory_theme(victory_theme);
+
+introFlySpr = sprite_get("uspecial");
+introFallSpr = sprite_get("jump");
+//Changing the portrait for alts that change outline colors.
+if (get_player_color( player ) == 7){
+	set_victory_portrait( sprite_get( "portrait_ea" ));
+	set_victory_sidebar( sprite_get( "result_small_ea" ));
+	introFlySpr = sprite_get("uspecial_ea");
+	introFallSpr = sprite_get("jump_ea");
+} else if (get_player_color( player ) == 17){
+	set_victory_portrait( sprite_get( "portrait_gold" ));
+	set_victory_sidebar( sprite_get( "result_small_gold" ));
+	introFlySpr = sprite_get("uspecial_gold");
+	introFallSpr = sprite_get("jump_gold");
+} else if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
+	set_victory_portrait( sprite_get( "portrait" ));
+	set_victory_sidebar( sprite_get( "result_small" ));
+	if (get_player_color( player ) == 0){
+		introFlySpr = sprite_get("uspecial_default");
+		introFallSpr = sprite_get("jump_default");
+	}
+}
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

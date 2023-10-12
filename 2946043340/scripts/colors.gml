@@ -268,13 +268,13 @@ set_color_profile_slot( 30, 3, 215, 204, 238 ); //Body
 set_color_profile_slot( 30, 4, 122, 131, 196 ); //Pants 1
 set_color_profile_slot( 30, 5, 65, 82, 152 ); //Pants 2
 
-// Tasmanian Glow
-set_color_profile_slot( 31, 0, 186, 0, 237 ); //Wind/Beads 1
-set_color_profile_slot( 31, 1, 255, 0, 179 ); //Wind Light
-set_color_profile_slot( 31, 2, 104, 0, 189 ); //Beads 2
-set_color_profile_slot( 31, 3, 255, 120, 217 ); //Body
-set_color_profile_slot( 31, 4, 33, 26, 145 ); //Pants 1
-set_color_profile_slot( 31, 5, 13, 14, 45 ); //Pants 2
+// Riptide
+set_color_profile_slot( 31, 0, 0, 212, 255 ); //Wind/Beads 1
+set_color_profile_slot( 31, 1, 189, 255, 255 ); //Wind Light
+set_color_profile_slot( 31, 2, 0, 145, 255 ); //Beads 2
+set_color_profile_slot( 31, 3, 181, 128, 87 ); //Body
+set_color_profile_slot( 31, 4, 255, 153, 0 ); //Pants 1
+set_color_profile_slot( 31, 5, 204, 92, 0 ); //Pants 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

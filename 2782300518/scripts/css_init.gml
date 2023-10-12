@@ -3,7 +3,7 @@
 alt_cur = get_player_color(player);
 default_alt = 0;
 alt_checker = get_player_color(player);
-num_alts = 22;
+num_alts = 23;
 offset = 0;
 temp_x = x + 8;
 temp_y = y + 9;
@@ -17,11 +17,21 @@ alttime = 0;
 col = c_white;
 thin = num_alts > 16;
 is_css = true;
+preview_x = 0; //preview char
+preview_y = 0;
 
 txt = "#" + string(alt_cur);
 
 voice_button_position_x = 0;
 voice_button_position_y = 0;
+
+//ANIMATION VARS
+sprite_change_offset("idle", 40, 78); //should mimic the load.gml offsets
+
+preview_idle = sprite_get("idle");
+preview_scale = 1; //depends on if we have small sprites on, if we do, type 2, if not type 1
+preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprites animation speed
+
 
 bike = sprite_get("bike_smokeH");
 scale = 4;

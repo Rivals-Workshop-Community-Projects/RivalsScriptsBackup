@@ -1,7 +1,7 @@
 //init_shader.gml
 
 if (get_player_color(player) == 7){
-    for(i = 0; i < 24; i++){
+    for(i = 0; i < 7; i++){
 		set_character_color_shading(i, 0);
 		outline_color = [35, 67, 49];
     }
@@ -34,4 +34,11 @@ if (get_player_color(player) == 8){
 // Chip
 if (get_player_color(player) == 15){
 	set_character_color_shading( 3, 1.4 );
+}
+
+// Pocket Adventure
+if (get_player_color(player) == 26){
+    for(i = 0; i < 7; i++){
+		set_character_color_shading(i, 0);
+    }
 }

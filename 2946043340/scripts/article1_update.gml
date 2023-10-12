@@ -43,7 +43,7 @@ if (state == 1){
 	}
 	//If an enemy player hits the point with a hitbox
 	with (asset_get("pHitBox")){
-		if (damage > 0 && kb_value > 0 && hit_priority > 0 && other.state_timer > 0){
+		if (damage > 0 && kb_value > 0 && hit_priority > 0 && type == 1 && other.state_timer > 0){
 			if (place_meeting(x,y,other.id) && other.player != player){
 				if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
 					other.state_timer = 425;

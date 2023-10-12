@@ -556,10 +556,12 @@ if (attack == AT_NSPECIAL){
 	    	            		if(other.num == 1  && other.hitlockout <= 0 && other.hitlockout2 <= 0 || axehit > 0){ //extra check to let axe specifically hit in all states, while all other hits can only hit in state 1
 		    	            		if(axehit > 0){
 		    	            			/*axehit = true;*/other.player = player;
-		    	            			if(/*player_id.strong_charge >= 30*/ axehit >= 2 || other.cuts == 1 && (type == 1 && other.spr_dir == player_id.spr_dir || type == 2 && (x > other.x && other.spr_dir == -1 || x < other.x && other.spr_dir == 1)) || other.cuts >= 2){
+		    	            			if(axehit >= 2 || other.cuts == 1 && (type == 1 && (attack != AT_BAIR && other.spr_dir == player_id.spr_dir || attack == AT_BAIR)
+		    	            			|| type == 2 && (x > other.x && other.spr_dir == -1 || x < other.x && other.spr_dir == 1)) || other.cuts >= 2){
 		    	            				other.cuts = 10;
 		    	            				if(type == 1){
 			    	            				other.spr_dir = player_id.spr_dir;
+			    	            				if(attack == AT_BAIR)other.spr_dir = -player_id.spr_dir;
 		    	            				}else{
 		    	            					if(x > other.x){
 			    	            					other.spr_dir = -1;
@@ -569,7 +571,8 @@ if (attack == AT_NSPECIAL){
 		    	            				}
 		    	            			}
 		    	            			other.cuts += 1;
-		    	            			if(type == 1 && other.cuts == 1 && (other.spr_dir == -1 && player_id.spr_dir == 1 || other.spr_dir == 1 && player_id.spr_dir == -1) || type == 2 && other.cuts == 1){
+		    	            			if(type == 1 && other.cuts == 1 && (attack != AT_BAIR && other.spr_dir != player_id.spr_dir || attack == AT_BAIR && other.spr_dir == player_id.spr_dir)
+		    	            			|| type == 2 && other.cuts == 1){
 		    	            				if(type == 1){
 			    	            				other.spr_dir = -other.spr_dir;
 		    	            				}else{
@@ -580,7 +583,7 @@ if (attack == AT_NSPECIAL){
 			    	            				}
 		    	            				}
 		    	            			}
-		    	            			with(player_id){sound_play(sound_get("dspecial_tree_chop"),false,noone,1);}
+		    	            			sound_play(other.chopsfx,false,noone,1);
 		    	            			if("Villager" in player_id && attack == AT_DSPECIAL && hbox_num == 9){ //if villager and specifically his axe then do some specific stuff
 			    	            			with(player_id){
 			    	            				if(strong_charge < 30){
@@ -634,10 +637,7 @@ if (attack == AT_NSPECIAL){
 											}destroyed = true;
 											var tree = create_hitbox(AT_DSPECIAL, 7, x, y-75);tree.spr_dir = spr_dir;tree.player = player;
 											create_hitbox(AT_DSPECIAL, 8, x, y);
-											with(player_id){
-			    	            				sound_play(sound_get("dspecial_tree_fall"),false,noone,1);shake_camera(4, 14);
-			    	            			}
-	    	    	                	}
+	    	    	                	}sound_play(other.fallsfx,false,noone,1);shake_camera(4, 14);
 	    	    	                }
 	    	    	                with(other){
 	    	    	                	var leaves = spawn_hit_fx(x+(70-random_func(0,140,true)), y+(50-random_func(1,100,true))-50, player_id.fx_leaves);
@@ -704,15 +704,15 @@ if (attack == AT_NSPECIAL){
 		}
 		
 		if(hitstop <= 0){
-		    	in_hitpause = false;hitlockout -= 1;
-		    	if (instance_exists(lasthitbox)) {
-		    		hitlockout2 -= 1;
-		    	}else{
-		    		hitlockout2 = 0;
-		    	}
-		    }else{
-		    	hitstop -= 1;
+	    	in_hitpause = false;hitlockout -= 1;
+	    	if (instance_exists(lasthitbox)) {
+	    		hitlockout2 -= 1;
+	    	}else{
+	    		hitlockout2 = 0;
 	    	}
+	    }else{
+	    	hitstop -= 1;
+    	}
 	}else if(hbox_num == 4){ //tree hit collision
         if(!instance_exists(theplant)){
 			destroyed = true;

@@ -188,6 +188,10 @@ color_picker_alt_index = 0;
 // Platform Code
 article_platform_id = noone;
 
+// Galaxy Screen Variable
+opponent_activated_kill_effect = false;
+galaxy_current_timer = false;
+
 // Final Smash Compat
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 96;
@@ -224,6 +228,8 @@ diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any cu
 
 kinniku_front = sprite_get("kinniku_front");
 kinniku_behind = sprite_get("kinniku_behind");
+
+
 
 //#region Synced Variable
 

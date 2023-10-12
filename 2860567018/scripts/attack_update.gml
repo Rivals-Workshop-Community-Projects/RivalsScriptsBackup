@@ -126,10 +126,12 @@ switch(attack){
             if(window == 1){
                 if(window_timer == 1){
                     xpos = x;
+                    xshuffle = 0;
                 }
-                xpos+=hsp;
+                xpos = x-xshuffle;
                 if(strong_charge > 2 and get_gameplay_time()%(40/strong_charge) <= 1){
-                    x = xpos + random_func(0, 4, true) - 2;
+                    xshuffle = random_func(0, 4, true) - 2
+                    x = xpos + xshuffle;
                 }
             }
             if(window == 2 and window_timer == 1){

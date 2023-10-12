@@ -19,7 +19,7 @@ walk_speed = 1.25;
 walk_accel = 0.2;
 walk_turn_time = 8;
 initial_dash_time = 11;
-initial_dash_speed = 9;
+initial_dash_speed = 7;
 dash_speed = 10;
 dash_turn_time = 16;
 dash_turn_accel = 1.91;
@@ -36,22 +36,22 @@ leave_ground_max = 7; //the maximum hsp you can have when you go from grounded t
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 7; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .35;
+air_accel = .30;
 prat_fall_accel = .45; //multiplier of air_accel while in pratfall
-air_friction = .04;
+air_friction = .03;
 max_djumps = 1;
 double_jump_time = 30; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 11;
 walljump_time = 32;
-max_fall = 11; //maximum fall speed without fastfalling
-fast_fall = 17; //fast fall speed
+max_fall = 10; //maximum fall speed without fastfalling
+fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 0.7; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 0.8; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4; //normal landing frames
-prat_land_time = 9;
+land_time = 6; //normal landing frames
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -118,6 +118,8 @@ ChaosEmerald = 0;
 EmeraldSense = 0;
 SuperMech = false;
 SoundPlayed = false;
+lightspeed = noone;
+lightspeed_time = noone;
 
 timestop_aftershock = noone;
 
@@ -156,6 +158,7 @@ marked_id3 = noone; //Picking up the player's id for grounded Up Special rockets
 utilt_id = noone; //Picking up the player's id for Up Tilt Up
 chasedodge = 0;
 target_addup = 0;
+turnbackaround = false; //Jab turn around
 
 IllCrushYou = 0; //The little eletricity after taunting
 
@@ -180,3 +183,5 @@ SuperDashing = hit_fx_create( sprite_get( "super_dash_smalleffect" ),8);
 SuperDashing2 = hit_fx_create( sprite_get( "super_dash_smalleffect2" ),10);
 SuperDashing3 = hit_fx_create( sprite_get( "super_dash_smalleffect3" ),11);
 SuperDashing4 = hit_fx_create( sprite_get( "super_dash_smalleffect4" ),12);
+Harsh_Hit = hit_fx_create( sprite_get( "harsh_hit2" ),6);
+Lightspeed_Particle = hit_fx_create( sprite_get( "lightspeed_particle" ),29);

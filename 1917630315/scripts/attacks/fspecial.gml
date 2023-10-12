@@ -23,8 +23,9 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_num_hitboxes(AT_FSPECIAL, 0); //This attack only creates an ice block article. It spawns a hitbox while its moving, though.
+set_num_hitboxes(AT_FSPECIAL, 3); //This attack only creates an ice block article. It spawns a hitbox while its moving, though.
 
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Ice Block");
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 600);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 50);
@@ -41,6 +42,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Ice Explosion");
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 12);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 128);
@@ -54,7 +56,6 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -65,11 +66,12 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
+set_hitbox_value(AT_FSPECIAL, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 12);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 0);

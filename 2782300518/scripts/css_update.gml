@@ -8,12 +8,19 @@ if ("css_timer" in self)
 	css_timer++;
 }
 alt_cur = get_player_color(player);
+alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable
+
 txt = "#" + string(alt_cur);
 
 temp_x = x + 8;
 temp_y = y + 9;
+icon_x_pos = x + 178;
+icon_y_pos = y + 98;
+preview_x = floor(x+10);
+preview_y = floor(y+10);
 
-if get_synced_var(player) > 1 {
+if get_synced_var(player) > 1 
+{
     set_synced_var( player, 0)
 }
 
@@ -49,27 +56,32 @@ drawtime += 1;
 alttime += 1;
 
 //Voice selection with new global variables - A fusion of code from Dr;Flux with adjustments made by myself
-if voicebutton == 2 || voicebutton == 5 {
-    if cssframes == 0{
-    sound_stop(sound_get("intro"));
+if voicebutton == 2 || voicebutton == 5 
+{
+    if cssframes == 0
+    {
+	    sound_stop(sound_get("intro"));
 		switch (voicebutton)
 		{
 			case 2:
+				sound_play(asset_get("mfx_forward"));
 				set_synced_var(player, 1);
-				sound_stop(sound_get("intro"));
 				sound_play(sound_get("intro"));
 			break;
 			case 5:
+			sound_play(asset_get("mfx_forward"));
 				set_synced_var(player, 0);
 			break;
 		}
 
     }
     cssframes++;
-    if cssframes == 5{
+    if cssframes == 5
+    {
         cssframes = 0;
         voicebutton += 1;
-        if voicebutton > 5 {
+        if voicebutton > 5 
+        {
             voicebutton -= 6;
         }
         voicebuttoncurrent = voicebutton;
@@ -79,22 +91,34 @@ if voicebutton == 2 || voicebutton == 5 {
 if (get_instance_x(cursor_id) >= voice_button_position_x && get_instance_x(cursor_id) <= voice_button_position_x + 30 
 && get_instance_y(cursor_id) >= voice_button_position_y && get_instance_y(cursor_id) <= voice_button_position_y + 26)
 {
-    if voicebutton == voicebuttoncurrent {
-        if voicebutton == 0 || voicebutton == 3{
+    if voicebutton == voicebuttoncurrent 
+    {
+        if voicebutton == 0 || voicebutton == 3
+        {
             voicebutton += 1;
         }
     }
-}else{
-    if voicebutton == 1 || voicebutton == 4 {
+}
+else
+{
+    if voicebutton == 1 || voicebutton == 4 
+    {
         voicebutton -= 1;
     }
     voicebuttoncurrent = voicebutton;
 }
-if voicebutton == 1 || voicebutton == 4 {
-    if menu_a_pressed{
+if voicebutton == 1 || voicebutton == 4 
+{
+	suppress_cursor = false
+    if menu_a_pressed
+    {
         voicebutton += 1;
         voicebuttoncurrent = voicebutton;
     }
+}
+else
+{
+	suppress_cursor = false
 }
 
 #define cpu_hover_update()

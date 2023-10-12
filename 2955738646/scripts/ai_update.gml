@@ -58,8 +58,8 @@ if (ready_to_attack == true && ai_attack_timer == 20 && free == false && (ai_tar
 if (attack == AT_NSPECIAL){
     var randomdash = random_func(0, 4, true);
     special_down = true;
-    //joy_pad_idle = false;
     if (window < 6){
+    	nspecial_air_time++;
         if (ai_target.y > y+3){ special_down = false; }
         if ((get_gameplay_time() mod 20) == 0){
             //spawn_hit_fx(x, y, 304);
@@ -69,8 +69,43 @@ if (attack == AT_NSPECIAL){
             if (randomdash == 3){ jump_pressed = true; }
         }
     }
-    if (free == true && ai_target.x > x){ left_pressed = true; }
-    if (free == true && ai_target.x < x){ right_pressed = true; }
+    
+    var randomdirection = random_func(0, 4, true);
+    //if (free == true && ai_target.x < x){ left_down = true; }
+    //if (free == true && ai_target.x > x){ right_down = true; }
+    if (window == 7){
+    	joy_pad_idle = false;
+    	if (ai_target.x > x){ lef_down = true; } //Right of him
+    	if (ai_target.x < x){ right_down = true; } //Left of him
+    	
+    	if (point_distance(x, y, ai_target.x, ai_target.y) > 390){ special_down = false; }
+
+    	if (instance_exists(asset_get("camera_obj"))){
+		//Little safety net so players don't fling themselves
+		if (x-325 > get_instance_x(asset_get("camera_obj")) ){
+			hsp -= 2;
+			special_down = false;
+		}
+		if (x+325 < get_instance_x(asset_get("camera_obj")) ){
+			hsp += 2;
+			special_down = false;
+		}
+		if (y-315 > get_instance_y(asset_get("camera_obj")) ){
+			vsp -= 2;
+			special_down = false;
+		}
+		if (y+315 < get_instance_y(asset_get("camera_obj")) ){
+			vsp += 2;
+			special_down = false;
+			}
+		}
+    	
+    	if (randomdirection == 0){ /**/ } 
+    	if (randomdirection == 1){ left_pressed = true; }
+    	if (randomdirection == 2){ right_pressed = true; }
+    	if (randomdirection == 3){ down_pressed = true; }
+    	if (randomdirection == 4){ up_pressed = true; }
+    }
     //if (free == false && (ai_target.y > y-5 || ai_target.y < y-5)){ special_down = false; }
 }
 

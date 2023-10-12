@@ -5,23 +5,24 @@ switch (my_hitboxID.attack){
 		//set_state(PS_PRATLAND)
 		break;
 	case AT_NSPECIAL:
+	case AT_NSPECIAL_AIR:
 		if my_hitboxID.type == 2 {
 			//my_hitboxID.hitbox_timer = 0;
-			//my_hitboxID.hsp *= 1.5;
+			my_hitboxID.hsp *= 1.85;
+			my_hitboxID.vsp *= 1.85;
 			//my_hitboxID.damage = my_hitboxID.damage + (my_hitboxID.damage * 0.5)
 		}
 		break;
 	case AT_FSPECIAL:
-		set_state(PS_PRATFALL)
+		set_state(PS_PRATFALL);
 		break;
 	case AT_DSPECIAL:
-		if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3){
-			tailsdidrobotgetparried = true;
-			destroy_hitboxes();
-			if (state != PS_DEAD || state != PS_RESPAWN || state != PS_SPAWN){
-				prat_land_time = 50;
-				set_state(PS_PRATFALL);
-			}
-		}
 		break;
+}
+
+// kill remote robot on parry
+if (instance_exists(remoteRobot)){
+	with(remoteRobot){
+		robotGotParried = true;
+	}
 }

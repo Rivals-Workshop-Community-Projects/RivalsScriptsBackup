@@ -23,6 +23,8 @@ switch (state){
 	if (hit_player_obj > 0){
 		player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true;
 		player_id.hitpause = false; player_id.y = player_id.y-1;
+		player_id.state = PS_ATTACK_GROUND; player_id.attack = AT_EXTRA_1;
+		player_id.window = 1; player_id.window_timer = 0;
 	}
 	if (done == true && (player_id.state != PS_HITSTUN || player_id.state != PS_HITSTUN_LAND) ){ instance_destroy(); exit; }
 	//if (player_id.state == PS_HITSTUN){ player_id.cooldowntime = 10; }
@@ -33,8 +35,6 @@ switch (state){
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
 	depth = -100;
-	
-	player_id.state = PS_ATTACK_AIR; player_id.attack = AT_EXTRA_1; window = 1; window_timer = 0;
 	
 	if (((state_timer mod 3) == 0)){
 		image_index++;

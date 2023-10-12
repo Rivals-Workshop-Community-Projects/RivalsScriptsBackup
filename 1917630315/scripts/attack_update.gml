@@ -10,6 +10,7 @@ if (attack == AT_DAIR ){
     if (window == 3 && !free) {
         window = 4;
         window_timer = 0;
+        destroy_hitboxes();
     }
 }
 
@@ -115,9 +116,12 @@ if (attack == AT_FSPECIAL){
     move_cooldown[AT_FSPECIAL] = 12;
     move_cooldown[AT_DSPECIAL] = 12;
     can_fast_fall = false;
+    can_wall_jump = true;
 }
 
 if (attack == AT_USPECIAL){
+    can_fast_fall = false;
+    can_wall_jump = true;
     if (window == 2){
         hsp = 2 * spr_dir;
         if (!joy_pad_idle){
@@ -137,7 +141,7 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_DSPECIAL) {
-    if (window == 2 && has_hit && window_timer >= 8) {
+    if (window == 2 && has_hit && window_timer >= 2) {
         can_jump = true;
         can_attack = true;
         

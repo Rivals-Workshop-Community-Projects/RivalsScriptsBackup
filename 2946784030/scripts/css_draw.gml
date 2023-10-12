@@ -1,13 +1,25 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var impatience_1 = 1800+(3*player);
+var impatience_1 = 1800+(3*player); //Originally 1800
+var impatience_2 = 3600+(3*player);
 
+var wario_leave_anim = (wario_css_impatience-impatience_2)*0.125;
+
+
+//Hurry Up!!
 if wario_css_impatience < impatience_1{
 	draw_sprite_ext(sprite_get("charselect"), 1, temp_x, temp_y-1, 2, 2, 0, c_white, 1);
 }
-if wario_css_impatience >= impatience_1{
+
+//This Stinks!!
+if wario_css_impatience >= impatience_1 && wario_css_impatience < impatience_2{
 	draw_sprite_ext(sprite_get("charselect_impatient"), 1, temp_x, temp_y-1, 2, 2, 0, c_white, 1);
+}
+
+//Gone
+if wario_css_impatience >= impatience_2 && wario_leave_anim < 14{
+	draw_sprite_ext(sprite_get("charselect_impatient_leave"), wario_leave_anim, temp_x, temp_y-1, 2, 2, 0, c_white, 1);
 }
 
 //Fancy CSS template by Muno

@@ -32,7 +32,7 @@ max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .9; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -46,7 +46,7 @@ hitstun_grav = .45;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 15;
+prat_land_time = 18;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -67,8 +67,8 @@ tech_recovery_frames = 1;
 
 //tech roll animation frames
 techroll_startup_frames = 1
-techroll_active_frames = 4;
-techroll_recovery_frames = 2;
+techroll_active_frames = 3;
+techroll_recovery_frames = 3;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -79,11 +79,11 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 4;
-roll_forward_recovery_frames = 2;
+roll_forward_active_frames = 3;
+roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 4;
-roll_back_recovery_frames = 2;
+roll_back_active_frames = 3;
+roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -99,8 +99,10 @@ hfx_wind_large = hit_fx_create(sprite_get("hfx_wind_large"), 15);
 hfx_wind_huge = hit_fx_create(sprite_get("hfx_wind_huge"), 28);
 fspecial_proj_particle = hit_fx_create(sprite_get("fspecial_proj_particle"), 24);
 vfx_fair = hit_fx_create(sprite_get("vfx_fair"), 15);
+vfx_fspecial = hit_fx_create(sprite_get("vfx_fspecial"), 12);
 point_die_vfx = hit_fx_create(sprite_get("point_die"), 15);
 dspecial_vfx = hit_fx_create(sprite_get("dspecial_vfx"), 20);
+vfx_roll_afterimage = hit_fx_create(sprite_get("roll_vfx"), 20);
 
 set_victory_theme( sound_get( "uysal_victory_theme" ) );
 
@@ -109,6 +111,9 @@ bubble_x = 0;
 bubble_y = 8;
 
 //Gameplay stuff
+ground_friction_crouch = 8
+ground_friction_init = 13
+
 AT_AIRDASH = AT_EXTRA_1;
 airdash_rot = 0;
 

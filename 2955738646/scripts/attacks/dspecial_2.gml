@@ -9,7 +9,7 @@ set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_ground_h
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial_ground_hurt"));
 
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_TYPE, 1); //Start up
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -88,6 +88,7 @@ set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_HSPEED, 10);
 set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_CUSTOM_AIR_FRICTION, 3);
 set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, 3);
+set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_INVINCIBILITY, 1);
 
 set_num_hitboxes(AT_DSPECIAL_2, 5);
 

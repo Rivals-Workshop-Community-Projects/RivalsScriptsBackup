@@ -10,4 +10,4 @@ switch (attack)
         break;
 }
 
-if (attack == AT_FSPECIAL && (move_cooldown[AT_FSPECIAL] > 0)) { attack = AT_FSPECIAL_2; }
+//if (attack == AT_FSPECIAL && (move_cooldown[AT_FSPECIAL] > 0)) { attack = AT_FSPECIAL_2; }

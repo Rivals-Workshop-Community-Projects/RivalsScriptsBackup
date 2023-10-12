@@ -4,9 +4,10 @@ switch (state){
     case PS_LAND:
     case PS_LANDING_LAG:
     case PS_FIRST_JUMP:
-    hurtboxID.sprite_index = sprite_get("mecha_hurt");
+    	hurtboxID.sprite_index = sprite_get("mecha_hurt");
     break;
     case PS_IDLE:
+    	hurtboxID.sprite_index = sprite_get("mecha_hurt");
     case PS_RESPAWN:
     case PS_SPAWN:
         image_index = floor(image_number*state_timer/(image_number*15.5));
@@ -43,6 +44,13 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECI
 	sprite_index = sprite_get( "uspecial_ground" );
 	hurtboxID.sprite_index = sprite_get( "uspecial_ground_hurt" );
 	}
+}
+
+if (state == PS_ATTACK_AIR && attack == AT_JAB){
+	//if (window == 5){
+	//sprite_index = asset_get( "empty_sprite" );
+	//hurtboxID.sprite_index = sprite_get( "uspecial_ground_hurt" );
+	//}
 }
 
 if(state == PS_WALK){
@@ -159,6 +167,10 @@ if (state == PS_CROUCH){
 
 if (state == PS_ATTACK_GROUND && attack == AT_EXTRA_3){
 	hurtboxID.sprite_index = sprite_get("mecha_crouch");
+}
+
+if (attack == AT_EXTRA_1){
+	hurtboxID.sprite_index = sprite_get("mecha_hurt");
 }
 
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){

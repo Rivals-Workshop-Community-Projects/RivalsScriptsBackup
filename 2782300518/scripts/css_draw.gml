@@ -9,20 +9,28 @@ alt_name[4]  = "White Scarf";
 alt_name[5]  = "Corazon";
 alt_name[6]  = "Lilac";
 alt_name[7]  = "Milla";
-alt_name[8]  = "Mayor Zhao";
-alt_name[9]  = "Garfield";
-alt_name[10] = "Litten";
-alt_name[11] = "Sprigatito";
-alt_name[12] = "Big";
+alt_name[8]  = "Neera";
+alt_name[9]  = "Mayor Zhao";
+alt_name[10] = "Garfield";
+alt_name[11] = "Ratchet";
+alt_name[12] = "Rivet";
 alt_name[13] = "Abyss";
-alt_name[14] = "Ratchet";
-alt_name[15] = "Rivet";
-alt_name[16] = "Carrie";
-alt_name[17] = "Game Boy";
-alt_name[18] = "Golden";
-alt_name[19] = "Mio";
-alt_name[20] = "Trans Rights";
-alt_name[21] = "Doraemon";
+alt_name[14] = "Early Access";
+alt_name[15] = "Big";
+alt_name[16] = "Blaze";
+alt_name[17] = "Honey";
+alt_name[18] = "Solid Gold Motorbike";
+alt_name[19] = "Litten";
+alt_name[20] = "Sprigatito";
+alt_name[21] = "Mio";
+alt_name[22] = "Niko";
+alt_name[23] = "Doraemon";
+alt_name[24] = "Kamen Rider";
+alt_name[25] = "Trans Rights";
+alt_name[26] = "Carrie";
+alt_name[27] = "Wes";
+alt_name[28] = "Valentino Rossi";
+alt_name[29] = "Nanashi Mumei";
 
 //Patch
 
@@ -31,7 +39,7 @@ prepare_shader();
 
 switch (alt_cur)
 {
-    case 17: set_outline(15, 56, 15); break; //early access / gameboy
+    case 14: set_outline(15, 56, 15); break; //early access / gameboy
     default: set_outline(0, 0, 0); break;
 }
 
@@ -64,6 +72,22 @@ var temp_y = floor(y+10);
 
 textDraw(floor(x) + 10, floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, 1, string(alt_name[alt_cur]), false);
 
+shader_start();
+if (css_timer < 140)
+{
+    draw_sprite_ext(
+        preview_idle,
+        css_timer * preview_anim_speed,
+        preview_x + 10 + (css_timer < 60 ?  + 24 + (css_timer / 20) : 16 + (css_timer / 5)), //if css_anim time is under 60 it positions the character differently
+        preview_y + 128,
+        preview_scale, //so it is affected by small_sprites aswell
+        preview_scale,
+        0,
+        c_white,
+        css_timer > 10 ? (css_timer * -0.01 + 1.25) + 0.2 : css_timer * 0.1 //if css_anim_time is over 10 the sprite's transperency acts differently
+    );
+}
+shader_end();
 
 //bike
 if (instance_exists(cursor_id))
@@ -75,7 +99,6 @@ draw_sprite_ext(sprite_get("voice_button"), voicebutton, voice_button_position_x
 
 if !(instance_exists(cursor_id)) exit;
 
-shader_end();
 cpu_hover_draw(); 
 
 //functions by muno

@@ -22,13 +22,14 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
+set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FAIR,3);
 
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 35);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -85);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 175);
@@ -44,19 +45,21 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
 
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Hit 2");
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 6);
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 35);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -85);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
 
+set_hitbox_value(AT_FAIR, 3, HG_MUNO_HITBOX_NAME, "Final Hit");
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 7);
-set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 10);
+set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 5);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 35);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -85);
 set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 175);

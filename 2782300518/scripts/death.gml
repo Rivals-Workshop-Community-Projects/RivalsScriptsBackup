@@ -1,6 +1,7 @@
 //Play sound effect if voiced
 if (voice = 1)
 {
+	stopVoice();
     sound_play(sound_get ("death"));
 }
 //destroy projectiles on death
@@ -9,15 +10,15 @@ destroy_hitboxes();
 chargeUpVoiceLine = true;
 
 fuel = fuel / 2;
-
-outline_charge = 0;
+bike_stored = false;
+instance_destroy(bike);
 
 if (kickTime > 0)
 {
+	multikick_energy = 0;
 	feline_power = false;
-	move_cooldown[AT_NSPECIAL]= 200;
-	move_cooldown[AT_NSPECIAL_2]= 200;
 }
+bikeReady = 0;
 
 //Reset Carol's motorbike and fuel to 0 upon death
 if (motorbike == true)
@@ -28,7 +29,6 @@ if (motorbike == true)
 
 	//The following code is resetting values back to default as declared in init.
 	motorbike = false;
-	bikeReady = 0;
 	walk_speed = 3;
 	initial_dash_speed = 5;
 	dash_speed = 7;
@@ -66,3 +66,16 @@ if (motorbike == true)
     	dash_turn_accel = 1.5;
 	}
 }
+#define stopVoice
+
+sound_stop(sound_get("aw_yeah"));
+sound_stop(sound_get("feel_my_power"));
+sound_stop(sound_get("hold_on_lilac"));
+sound_stop(sound_get("im_bored"));
+sound_stop(sound_get("parry"));
+sound_stop(sound_get("pow_pow"));
+sound_stop(sound_get("that_stupid_panda"));
+sound_stop(sound_get("try_and_catch_me"));
+sound_stop(sound_get("what_you_doing"));
+sound_stop(sound_get("why_are_we_stopping"));
+sound_stop(sound_get("wittle_wiwac"));

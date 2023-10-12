@@ -2,6 +2,10 @@
 
 nspec_air_elec_bounced = 0
 
+ustr_hand_timer = 0;
+
+fspecHitboxTouchedRobot = false;
+
 sfx_krtd_bomb_explode = sound_get("sfx_krtd_bomb_explode")
 sfx_krtd_bomb_prep = sound_get("sfx_krtd_bomb_prep")
 

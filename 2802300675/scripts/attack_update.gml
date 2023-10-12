@@ -7,7 +7,64 @@ switch(attack){
 		trigger_b_reverse();
 		break;
 }
+//sfxs
+if attack == AT_UAIR {
+    if window == 1 && window_timer == 3 {
+        sound_play(asset_get("sfx_forsburn_consume_fail"));
+    }
+    if window == 4 && window_timer == 2 {
+        sound_play(asset_get("sfx_forsburn_consume_fail"));
+    }
+}
 
+if attack == AT_NAIR {
+	if window == 1 && window_timer == 2 {
+		sound_play(asset_get("sfx_bird_upspecial"));
+	}
+}
+
+if attack == AT_DTILT {
+	if window == 1 && window_timer == 4 {
+		sound_play(asset_get("sfx_bird_sidespecial_start"));
+	}
+}
+
+
+if attack == AT_UTILT {
+	if window == 1 && window_timer == 5 {
+		sound_play(asset_get("sfx_bird_upspecial"));
+	}
+}
+
+
+if attack == AT_DAIR {
+	if window == 2 && window_timer == 1 {
+		sound_play(asset_get("sfx_forsburn_spew_end"));
+	}
+}
+
+if attack == AT_FTILT {
+	if window == 1 && window_timer == 3 {
+		sound_play(asset_get("sfx_hod_fspecial"));
+	}
+}
+if attack == AT_DATTACK {
+	if window == 1 && window_timer == 2 {
+		sound_play(asset_get("sfx_hod_fspecial"));
+	}
+}
+
+if attack == AT_FAIR {
+	if window == 2 && window_timer == 1 {
+		sound_play(asset_get("sfx_bird_sidespecial_start"));
+	}
+}
+if attack == AT_BAIR {
+	if window == 1 && window_timer == 6 {
+		sound_play(asset_get("sfx_forsburn_reappear"));
+	}
+}
+//everything else 
 if(attack == AT_FSTRONG){
 	if(window == 1 && window_timer = 1){
 		destroy_smog = false;
@@ -421,3 +478,4 @@ if(attack == AT_UTILT){
     	b_reversed = false;
 	}
 }
+

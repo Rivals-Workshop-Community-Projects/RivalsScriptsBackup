@@ -3,9 +3,11 @@ set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecial_2"));
 set_attack_value(AT_FSPECIAL_2, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL_2, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecial_2"));
-set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("fspecial_2_hurt"));
-set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecial_air_2_hurt"));
+set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE, hurtbox_spr);
+set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_AIR_SPRITE, hurtbox_spr);
 set_attack_value(AT_FSPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
+
+// note to self: if i change the length of windows 1 or 2 in here, change the hit lockout for the grab hitbox so the move can properly connect
 
 //Initial Grab
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_TYPE, 1);

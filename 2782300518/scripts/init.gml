@@ -4,9 +4,9 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 50;
-idle_anim_speed = .13;
-crouch_anim_speed = .1;
-walk_anim_speed = .125;
+idle_anim_speed = .2;
+crouch_anim_speed = .12;
+walk_anim_speed = .25;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 wait_time = 400;
@@ -30,9 +30,9 @@ ground_friction = .35;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 12;
-short_hop_speed = 5;
-djump_speed = -1;
+jump_speed = 11;
+short_hop_speed = 6;
+djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -66,8 +66,8 @@ crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
-dodge_recovery_frames = 1;
+dodge_active_frames = 3;
+dodge_recovery_frames = 3;
 
 //tech animation frames
 tech_active_frames = 1;
@@ -81,8 +81,8 @@ techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
-air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 1;
+air_dodge_active_frames = 4;
+air_dodge_recovery_frames = 3;
 air_dodge_speed = 8;
 
 //roll animation frames
@@ -96,6 +96,21 @@ roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
 refreshHitbox = false;
+
+//Custom attack indexes names:
+AT_JAB2 = AT_EXTRA_3;
+AT_FTILT2 = 47;
+AT_UTILT2 = 46;
+AT_DTILT2 = 45;
+AT_NAIR2 = 44;
+AT_FAIR2 = 43;
+AT_UAIR2 = 42;
+AT_DAIR2 = AT_EXTRA_1
+AT_BAIR2 = 39;
+AT_DATTACK2 = 3;
+
+//Custom attack index for Woodcock
+//AG_MUNO_ATTACK_NAME = 80;
 
 //Tail Sprite Stuff
 tsprite_index=-1;
@@ -120,11 +135,12 @@ bsx=1;
 bsy=1;
 brotation=0;
 bfront=false;
+bshader = true;
 
 //Motorbike related variables
 motorbike = false;
-bikeReady = false;
-fuel = 0;
+bikeReady = 2;
+fuel = 40;
 fuel_charge = 0;
 fuel_burn = 0;
 fuel_remaining = 0;
@@ -137,11 +153,17 @@ thrownBike = noone;
 bike_sp = 0;
 nBoostReadyTimer = 100;
 wall_ride = false;
+bike_stored = false;
+bike = noone;
 
 //Miscellaneous
 hitConfirm = false;
 dst = 0;
 outline_charge = 0;
+updateWallJump = 0;
+afterimage_array = 0;
+playtest_active = false;
+with (oTestPlayer) playtest_active = true;
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.
@@ -199,14 +221,15 @@ naruto_sexyjutsu_gender = 2;
 gfzsignspr = sprite_get("carol_sign");
 pot_compat_variable = sprite_get("cat_food");
 pot_compat_text = "Cat Food";
+mamizou_transform_spr = sprite_get("real_cat");
 draw_hud_event = 12;
 guiltySprite = sprite_get("guilty_carol");
 mario_cap_compat = sprite_get("cappytaunt_carol");
 mario_cap_top_compat = sprite_get("cappytaunt_head_carol");
-assistATIndex = 2; //46 is a bike move, changing this so that Carol can use her moveset
-
-dracula_portrait = sprite_get("dracula_port1");
-dracula_portrait2 = sprite_get("dracula_port2");
+wiimote_stage_sprite = sprite_get("carol_wiimote");
+assistATIndex = 29; //46 is a bike move, changing this so that Carol can use her moveset
+boris_intro_sfx = sound_get("carol_grounded");
+boris_intro_loop = 14;
 
 //Howzit Compatibility
 howzitisthebestshopowner123 = true //activates the compatibility
@@ -251,24 +274,34 @@ hit_small=hit_fx_create(sprite_get("hit_small"), 12);
 hit_medium=hit_fx_create(sprite_get("hit_medium"), 16);
 hit_large=hit_fx_create(sprite_get("hit_big"), 20);
 hit_proj=hit_fx_create(sprite_get("hit_proj"), 16);
-
+bubble_pop=hit_fx_create(sprite_get("bubble_pop"), 12);
+explosion=hit_fx_create(sprite_get("explosion"), 32);
+bike_break=hit_fx_create(sprite_get("bike_break"), 18);
 
 multikick_energy = 200;
 kickTime=0;
+start_kick_value = 0;
+multikick_ready_timer = 100;
 pounce = false;
 pounceChange = false;
 returnBike = false;
+bikeWarp = false;
 bikeExplosion = false;
 small_djumps = true;
 prev_hsp = 0;
 
 voice = get_synced_var(player);
+alt_cur = get_player_color(player);
 
 land_sound = sound_get("land");
 landing_lag_sound = sound_get("land");
 waveland_sound = asset_get("sfx_waveland_zet");
 jump_sound = sound_get("jump");
-djump_sound = asset_get("sfx_jumpair");
+if (alt_cur >= 15 && alt_cur <= 17)
+{
+    jump_sound = sound_get("sonic_jump");
+}
+djump_sound = sound_get("double_jump");
 air_dodge_sound = sound_get("guard");
 
 //visual offsets for when you're in Ranno's bubble

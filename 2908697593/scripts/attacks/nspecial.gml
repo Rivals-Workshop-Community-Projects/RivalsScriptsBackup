@@ -12,11 +12,11 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("isaac_plasmacutter_shot"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -24,7 +24,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 25);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 34);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 90);
@@ -41,4 +41,4 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 12);

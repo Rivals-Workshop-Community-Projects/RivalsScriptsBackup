@@ -1,5 +1,11 @@
 if (move_cooldown[AT_TAUNT_2] > 10){ move_cooldown[AT_TAUNT_2] -= 10; }
 
+if (my_hitboxID.attack == AT_JAB){
+	if (my_hitboxID.hbox_num == 2){ lockon = create_hitbox(AT_JAB, 5, x, y-190); }
+	if (my_hitboxID.hbox_num == 3){ hsp = 11 * spr_dir; }
+	//lockon.hit_player_id = player_id.hit_player_obj;
+}
+
 if (my_hitboxID.attack == AT_USPECIAL){
 	if (my_hitboxID.hbox_num == 1){
 		window = 5;
@@ -86,7 +92,7 @@ if (my_hitboxID.attack == AT_FSTRONG){
 	}
 }
 
-if (my_hitboxID.attack == AT_DSTRONG && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
+if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 1 && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
     if (grabbedid == noone){
         hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
@@ -193,9 +199,14 @@ if (timestop == true){
 		timestop_hb.follow = hit_player_obj.id;
 		}
 	}
-	if (attack == AT_EXTRA_3 && hbox_num == 3){
-		//if (other.timestop_damage > 0){ other.timestop_damage -= 1; timestop_hb.destroyed = true; }
-	}
+}
+if (my_hitboxID.attack == AT_EXTRA_3){
+	harsh_hitt = spawn_hit_fx(x,y,Harsh_Hit);
+	//harsh_hitt.depth = depth-3;
+	harsh_hitt.x = my_hitboxID.x-10;
+	harsh_hitt.y = my_hitboxID.y-30;
+	harsh_num = random_func(0, 120, true);
+	harsh_hitt.draw_angle = harsh_num;
 }
 
 if (timestop == false){

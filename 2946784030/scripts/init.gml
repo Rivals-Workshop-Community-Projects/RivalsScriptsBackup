@@ -7,7 +7,7 @@ char_height = 60;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;
-dash_anim_speed = .2;
+dash_anim_speed = .35;
 pratfall_anim_speed = .25;
 
 wait_sprite = sprite_get("wait");
@@ -224,6 +224,9 @@ TCG_Kirby_Copy = 10;
 //Compatibility - Regina Mario
 mario_cap_compat = sprite_get("wario_mario_compat");
 
+//Compatibility - Toon Link
+toonlink_photo = sprite_get("wario_pictograph");
+toonlink_photo2 = sprite_get("wario_pictograph_toonlink");
 
 ///Stage Compatibility
 
@@ -250,12 +253,8 @@ resort_portrait = sprite_get("wario_lastresort");
 //Compatibility - Greenwood Town
 greenwood_cheer = 2; //The guy likes cool characters
 
-/*Compatibility - Flipnote Studio
-fns_note1 = sprite_get("wario_flipnote");
-fns_note_speed1 = 12/60;
-fns_note_runtime1 = 120;
-fns_note_sound1 = noone;
-*/
+//Compatibility - TTYD Battle Stage
+ttyd_audience_sprite = sprite_get("wario_ttyd_audience");
 
 //Stage Compatibility: Dracula Boss Fight
 if get_player_color(player) == 0{
@@ -329,7 +328,8 @@ super_form_transform_sound = sound_get("VFX_FinalSmash_1");
 //super_form_music = not decided yet :(
 
 //Compatibility - Dialogue Buddy
-diag_portrait = sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
+if get_player_color(player) == 0 diag_portrait = sprite_get("portrait");
+if get_player_color(player) != 0 diag_portrait = sprite_get("portrait_alt");
 //Adjust positioning of the portraits accordingly! Useful if the characters face is way too low
 diag_portrait_x = 0; // +: Backwards -:Forwards
 diag_portrait_y = 0; // +: Downwards -:Upwards

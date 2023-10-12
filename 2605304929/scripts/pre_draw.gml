@@ -22,6 +22,17 @@ if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3
 		break;
 	}
 }
+// Draw Tehend Galaxy
+if(opponent_activated_kill_effect){
+	if (galaxy_current_timer > 0) {
+	    var temp_scalar = .50;
+	    var temp_opacity = .50 - ((galaxy_current_timer * 1.5) / 100);
+	    // Referenced Po and Gumbo's draw function for this.
+	    shader_start();
+        draw_sprite_ext(sprite_get("compat_ltg"),0, view_get_xview() -(-125 + temp_scalar*250), view_get_yview() -(-100 + temp_scalar*200), 1.5+temp_scalar , 1.5+temp_scalar ,0, c_white, temp_opacity );
+    	shader_end();
+	}
+}
 
 /* Disabled 3/18/22
 // afterimage  Code for Amateratsu

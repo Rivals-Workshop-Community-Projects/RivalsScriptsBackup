@@ -2,4 +2,10 @@
 
 sound_stop(sfx_flight);
 
-tailsdidrobotgetparried = true;
+if (instance_exists(remoteRobot) || instance_exists(remoteRobot2)){
+	if (instance_exists(remoteRobot)){
+		with(remoteRobot){
+			tailsDied = true;
+		}
+	}
+}

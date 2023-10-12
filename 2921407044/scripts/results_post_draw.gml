@@ -116,10 +116,10 @@ draw_set_alpha(1);
     if(character_name == "Shovel Knight"){win_quote = ""}
     */
     //My Characters / BAJA REALS NO WAY?!?!
-    if(character_name == "Daora"){win_quote = "That was a fun training session Daora! What are we getting to eat after this?"}
-    if(character_name == "Klockwurth"){win_quote = "I hope you had fun playing with me. I don't want you to be grumpy Mr. Owl."}
-    if(character_name == "Roekoko"){win_quote = "My illusions are so real... I think I may even be tricking myself..."}
-    if(character_name == "Baja"){win_quote = "Your jetpacks are so cool! Can I try them?"}
+    //if(character_name == "Daora"){win_quote = "That was a fun training session Daora! What are we getting to eat after this?"}
+    //if(character_name == "Klockwurth"){win_quote = "I hope you had fun playing with me. I don't want you to be grumpy Mr. Owl."}
+    //if(character_name == "Roekoko"){win_quote = "My illusions are so real... I think I may even be tricking myself..."}
+    //if(character_name == "Baja"){win_quote = "Your jetpacks are so cool! Can I try them?"}
     /*
     //Actual Lore Non Riptide
     if(character_name == "Iroh" || character_name == "Iroh DE"){win_quote = ""}

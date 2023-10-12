@@ -2,22 +2,7 @@ should_make_shockwave = false;
 
 switch (attack)
 {
-	case AT_JAB:
-	case 48:
-	case AT_FTILT:
-	case 47:
-	case AT_UTILT:
-	case 46:
-	case AT_DTILT:
-	case 45:
-	case AT_BAIR:
-	case AT_EXTRA_1:
-	case AT_EXTRA_2:
-		sound_play(sound_get("hit_deep"));
-	break;
 	case AT_NAIR:
-	case AT_USPECIAL:
-	case AT_UAIR:
 		if (pounce && motorbike == false)
 		{
 			take_damage(hit_player, player, 1);
@@ -31,62 +16,14 @@ switch (attack)
 	case AT_USPECIAL_2:
 		sound_play(sound_get("hit_light"));
 	break;
-	case AT_DATTACK:
-	case 3:
-	case 44:
 	case AT_DAIR:
-	case AT_FSTRONG:
-	case AT_FSTRONG_2:
-	case AT_USTRONG:
-	case AT_USTRONG_2:
-	case AT_DSTRONG:
-	case AT_DSTRONG_2:
-		sound_play(sound_get("hit_heavy"));	
+		window = 3;
+		window_timer = 0;
 	break;
-	case AT_FAIR:
-		if (pounce)
-		{
-			take_damage(hit_player, player, 1);
-			hit_player_obj.orig_knock += 1;	
-			pounce = false;
-		}
-		if (my_hitboxID.hbox_num == 1)
-		{
-			sound_play(sound_get("hit_deep"));
-		}
-		else
-		{
-			sound_play(sound_get("hit_heavy"));
-		}
-	break;
-	case AT_FSPECIAL:
-		if (my_hitboxID.hbox_num == 1)
-		{
-			sound_play(sound_get("hit_light"));
-		}
-		else
-		{
-			sound_play(sound_get("hit_heavy"));
-		}
-	break;	
-	
-
-	case AT_NSPECIAL:
-	case AT_NSPECIAL_2:
-		if (my_hitboxID.hbox_num < 16)
-		{
-			sound_play(sound_get("hit_light"));
-		}
-		else
-		{
-			sound_play(sound_get("hit_heavy"));
-		}	
-	break;
-	case 40:
 	case AT_DSPECIAL_AIR:
 		if (fps_real > 40)
 		{
-			var bikeExplode = spawn_hit_fx(x, y , 271);
+			var bikeExplode = spawn_hit_fx(x, y +20, explosion);
 		    bikeExplode.depth = -100;
 		}
 	break;
@@ -95,7 +32,7 @@ switch (attack)
 }
 
 //Gain fuel upon attacking opponent
-if (motorbike == false && my_hitboxID.attack != 43)
+if (motorbike == false && bike_stored = false && bike = noone && my_hitboxID.attack != AT_FSPECIAL_AIR)
 {
 	fuel = round(fuel); //This is to fix a glitch that causes decimal values
 	fuel++;
@@ -138,7 +75,7 @@ switch (hit_player_obj.url)
 			var tease = random_func(12, 32, 1);
 			if (tease == true)
 			{
-				sound_stop(sound_get("wittle_wiwac"));
+				stopVoice();
 				sound_play(sound_get("wittle_wiwac"));
 			}
 		}
@@ -148,10 +85,11 @@ switch (hit_player_obj.url)
 }
 
 //If Carol is hit by her own bike, get back on the bike
-if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == 43 && my_hitboxID.hbox_num == 1 && my_hitboxID.can_hit_self == true)
+if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.can_hit_self == true)
 {
 	if (my_hitboxID.orig_player == player)
 	{
+		move_cooldown[AT_DSPECIAL] = 0;
     	my_hitboxID.destroyed = true;
 		my_hitboxID.damage = 0;
 		hit_player_obj.orig_knock = 0;
@@ -164,6 +102,20 @@ if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == 43 && m
     	take_damage( player, -1, -999)
     	hit_player_obj.tsprite_index = -1;
 		thrownBike = noone;
-    	set_attack(AT_EXTRA_1);
+    	set_attack(AT_DSPECIAL);
 	}
 }
+
+#define stopVoice
+
+sound_stop(sound_get("aw_yeah"));
+sound_stop(sound_get("feel_my_power"));
+sound_stop(sound_get("hold_on_lilac"));
+sound_stop(sound_get("im_bored"));
+sound_stop(sound_get("parry"));
+sound_stop(sound_get("pow_pow"));
+sound_stop(sound_get("that_stupid_panda"));
+sound_stop(sound_get("try_and_catch_me"));
+sound_stop(sound_get("what_you_doing"));
+sound_stop(sound_get("why_are_we_stopping"));
+sound_stop(sound_get("wittle_wiwac"));

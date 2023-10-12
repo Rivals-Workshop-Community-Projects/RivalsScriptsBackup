@@ -41,6 +41,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_orca_soak"));
 
 set_num_hitboxes(AT_USPECIAL, 6);
 
+set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 23);
@@ -67,7 +68,9 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 
+set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW_CREATION_FRAME, 2);
@@ -94,8 +97,10 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, upsecial_projeffect);
 
+set_hitbox_value(AT_USPECIAL, 3, HG_MUNO_HITBOX_NAME, "Multihit 3");
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 2);
@@ -104,6 +109,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, 80);
 set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 
+set_hitbox_value(AT_USPECIAL, 4, HG_MUNO_HITBOX_NAME, "Multihit 4");
 set_hitbox_value(AT_USPECIAL, 4, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW, 2);
@@ -112,6 +118,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, 80);
 set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 
+set_hitbox_value(AT_USPECIAL, 5, HG_MUNO_HITBOX_NAME, "Multihit 5");
 set_hitbox_value(AT_USPECIAL, 5, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 2);
@@ -120,6 +127,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_LIFETIME, 3);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y, 80);
 set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 
+set_hitbox_value(AT_USPECIAL, 6, HG_MUNO_HITBOX_NAME, "Final Hit");
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 6, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 6, HG_LIFETIME, 12);
@@ -146,4 +154,5 @@ set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, upsecial_projeffect);

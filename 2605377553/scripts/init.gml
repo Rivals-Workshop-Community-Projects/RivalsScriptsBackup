@@ -9,6 +9,7 @@ pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
 pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 arena_title = "Heir of Miasma";
 spam_ad = sprite_get("mal_ad")
+miiverse_post = sprite_get("miiverse"); 
 
 //fx
 sword = hit_fx_create( sprite_get( "hfx_sword" ), 30 );
@@ -218,6 +219,6 @@ pot_compat_text = "Authentic Canadian Poutine"
 
 //sweet victory
 //Quote
-mal_victory_quote = "Dude, was that th-the SUS Guy????";
+mal_victory_quote = "Was that Cel again? Those clones of hers are getting borderline lifelike...";
 mal_handled_victory_quote = false;
 victoryicon_subimg = 0;

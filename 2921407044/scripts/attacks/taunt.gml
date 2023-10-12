@@ -62,6 +62,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_IGNORES_PROJECTILES, 1 );
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_GRAVITY, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_HSPEED, -1);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_VSPEED, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 //Shell 2
 set_hitbox_value(AT_TAUNT, 2, HG_HITBOX_TYPE, 2); // Sets to a projectile
@@ -82,3 +83,4 @@ set_hitbox_value(AT_TAUNT, 2, HG_IGNORES_PROJECTILES, 1 );
 set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_GRAVITY, 1);
 set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_HSPEED, -1); // How much the hit box moves, should be Slow or zero for this attack.
 set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_VSPEED, 1);
+set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_PLASMA_SAFE, 1);

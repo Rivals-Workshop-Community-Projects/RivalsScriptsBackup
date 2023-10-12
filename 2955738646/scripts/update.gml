@@ -1,5 +1,6 @@
 //update
 
+
 if (state == PS_DASH_START && (state_timer == 1)){
 	sound_play((dashstart), false, noone, 0.1, 1);
 } 
@@ -31,7 +32,7 @@ if (state == PS_CROUCH){ hud_offset = -20; }
 if (state == PS_AIR_DODGE && state_timer > 2 && state_timer < 16 ||
 state == PS_ROLL_BACKWARD && state_timer > 2 && state_timer < 16 ||
 state == PS_ROLL_FORWARD && state_timer > 2 && state_timer < 16 ||
-state == PS_WAVELAND && state_timer < 4){
+state == PS_WAVELAND && draw_indicator == false && state_timer < 6){
 	draw_indicator = false;
 	
 } else { /*visible = true;*/ }
@@ -211,7 +212,7 @@ with (asset_get("oPlayer")) {
         	hitpause = true;
         	if (hit_player_obj > 0){
         		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
-        	state = prev_state;
+        	//state = prev_state;
         		}
         	//hitpause = false;
         	//hitstop = 0;
@@ -232,7 +233,7 @@ with (asset_get("oPlayer")) {
 //}
 if (timestop == true){
 	if (timestop_amount < 1){ timestop = false; timestop_amount = 20; timestop_time = 207; }
-	if (timestop_time > 0 && instance_exists(timestop_BG) && timestop_BG.state_timer > 22){ timestop_time -= 1 / 1; }
+	if (timestop_time > 0 && instance_exists(timestop_BG) && timestop_BG.state_timer > 22){ timestop_time -= 1 / 2; }
 	if (timestop_time == 0){ timestop = false; timestop_amount = 20; timestop_time = 207; }
 }
 	
@@ -261,7 +262,7 @@ if (nspecial_time < 37 && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 }
 
 if (cooldowntime == 19){ vanishing = instance_create(x+1 * spr_dir, y-5, "obj_article1"); vanishing.state = 1; 
-dodgesound = sound_play(sound_get("instanttransmission")); attack = AT_EXTRA_1; window_timer = 0; can_jump = true; }
+dodgesound = sound_play(sound_get("instanttransmission")); can_jump = true; }
 //if (cooldowntime > 1){ /*dodging_id = instance_create(x+1 * spr_dir, y-1, "obj_article1"); dodging_id.state = 1;*/ invincible = true; } //dodging.image_alpha = 1;  }
 if (foresight > 1 && invincible == true){ foresight--; }
 if (foresight <= 1 && invincible == true){ invincible = false; }
@@ -407,4 +408,11 @@ if (fassfall == 19 && fassfall_check == true){ sound_play(fallsound); }
 
 if (IllCrushYou > 0){ IllCrushYou--; }
 
+if (instance_exists(lightspeed) && lightspeed > 0){
+	if (attack == AT_DSPECIAL_2){
+	lightspeed.x = x;
+	lightspeed.y = y-30;
+	lightspeed.vsp = 0;
+	}
+}
 

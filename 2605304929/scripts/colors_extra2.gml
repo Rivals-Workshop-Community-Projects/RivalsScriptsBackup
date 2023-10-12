@@ -206,6 +206,16 @@ set_color_profile_slot( 17, 5, 138, 255, 205 ); //kimono wave
 set_color_profile_slot( 17, 6, 235, 255, 253 ); //kimono bottom
 set_color_profile_slot( 17, 7, 36, 37, 61 ); //kimono accents
 
+// Astra
+set_color_profile_slot( 18, 0, 213, 199, 242 ); //fur
+set_color_profile_slot( 18, 1, 252, 244, 198 ); //fur tip
+set_color_profile_slot( 18, 2, 100, 100, 139 ); //hair
+set_color_profile_slot( 18, 3, 240, 188, 84 ); //horns + accents
+set_color_profile_slot( 18, 4, 175, 207, 249 ); //kimono top
+set_color_profile_slot( 18, 5, 134, 228, 230 ); //kimono wave
+set_color_profile_slot( 18, 6, 127, 148, 217 ); //kimono bottom
+set_color_profile_slot( 18, 7, 255, 234, 115 ); //kimono accents
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

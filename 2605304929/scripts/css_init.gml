@@ -381,7 +381,7 @@ return chunk_arr;
 	var sub_element_slot = 0;
     
 	// Slot 0
-	slot_property_array[color_slot,sub_element_slot] = "Daora";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Eye of the Storm";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Default Palette";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Everything I ever loved was destroyed in a single day. I will make sure that Loxodont will pay.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
@@ -392,37 +392,47 @@ return chunk_arr;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Mechanical Bird";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Klockwurth Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Klockwurth by Opengunner";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I used to know Cosworth before he became the shell of what he is now...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tricks and Clones";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Roekoko Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Roekoko by Opengunner";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Roekoko is a pupil like no other. She will one day surpass me.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Ninetailed Shaman";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Being powerful comes with a responsibility. I cannot imagine a world where I had no morals...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Thunderous Howl";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Iroh by SoA";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Somebody told me I look like one of my ancestors with a wig...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Sun's Champion";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Solarei by Opengunner";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The Sun is sometimes fierce and sometimes gentle...";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Moon's Dark Side";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Tzukiyo by Opengunner";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	//Slot 5
-	slot_property_array[color_slot,sub_element_slot] = "Lyca";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flickering Spectre";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Lyca by SoA";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "There are legends of a spectre that weaponized her own children.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Zerra";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Graceful Skater";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Zerra by SoA";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "A true marvel to behold the grace of an ice skater. I aspire for such grace.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Rykenburn";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Harbige12";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Smoke's Power";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Rykenburn by Harbige12";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I studied martial arts pioneered by a Fire Capital General named Rykenburn.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
@@ -431,19 +441,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "The odds are against us, but I have many friends...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Hikaru";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Lukaru";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Tricky Kitsune";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Hikaru by Lukaru";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I admire powerful illusionary Magic, you can get what you want without being destructive.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot
-	slot_property_array[color_slot,sub_element_slot] = "Zinogre";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Monster Hunter Color";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The wrath of thunder descends...";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Monster Hunter Color";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "A distant dark tide...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Kunoichi";sub_element_slot++;
@@ -451,8 +451,8 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Tuqiu";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Talemon";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Moonlit Guardian";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Tuqiu by Talemon";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 15
@@ -490,15 +490,20 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	//Slot
+	slot_property_array[color_slot,sub_element_slot] = "Zinogre";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Monster Hunter Color";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The wrath of thunder descends...";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Monster Hunter Color";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "A distant dark tide...";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Marlow";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Color for Zonyx";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Faster than greased lighting.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Solarei";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The Sun is sometimes fierce and sometimes gentle...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 25
 	slot_property_array[color_slot,sub_element_slot] = "Amaterasu";sub_element_slot++;
@@ -509,11 +514,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Zeraora";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pokemon Color";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I can run as fast as lightning strikes, and shredding my opponents with high-voltage claws.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Astra";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Wishdream";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The stars guided me home many nights when I lost my way.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Trans Rights";sub_element_slot++;
@@ -796,6 +796,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Mint";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for Furi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Astra";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character by Wishdream";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The stars guided me home many nights when I lost my way.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 
 	

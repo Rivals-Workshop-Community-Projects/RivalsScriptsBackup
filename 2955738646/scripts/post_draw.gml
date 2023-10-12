@@ -25,7 +25,7 @@ if (timestop == true){
 }
 
 if (attack == AT_USPECIAL_2 && window == 2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
-    draw_sprite_ext(sprite_get("uspecial_ground2_scan"), get_gameplay_time(), x+12 * spr_dir, y-313, 2 * spr_dir, 2, 0, c_white, 0.5);
+    draw_sprite_ext(sprite_get("uspecial_ground2_scan"), get_gameplay_time(), x+8 * spr_dir, y-315, 2 * spr_dir, 2, 0, c_white, 0.5);
     //draw_sprite_ext(sprite_get("uspecial_ground2_scan"), 0, x+12 * spr_dir, y-312, 1 * spr_dir, 1, 0, c_white, 1);
 }
 
