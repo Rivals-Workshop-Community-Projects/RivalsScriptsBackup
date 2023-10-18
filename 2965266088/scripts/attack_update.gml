@@ -466,6 +466,15 @@ switch (attack)
 				break;
 		}
 		break;
+	case 46: //sonic trick
+		iasa_script(); //lets character cancel out of the animation at any point
+		if (vsp > 0 && window == 3) //window 3 is the window specified for the trick hold pose
+		{
+			window ++;
+			window_timer = 0;
+		}
+		if (window > 1 && !free) set_state(PS_LANDING_LAG);
+		break;
 }
 
 //0 will just go to the next window instead of a specific one

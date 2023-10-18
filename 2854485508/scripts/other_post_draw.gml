@@ -12,3 +12,8 @@ if (("mamizou_mark_id" in self) && instance_exists(mamizou_mark_id)) {
         }
     }
 }
+
+
+if (("mamizou_trans" in self) && mamizou_trans) {
+	draw_y = mamizou_draw_y;
+}

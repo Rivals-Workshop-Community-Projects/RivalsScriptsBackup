@@ -16,6 +16,7 @@ if (("mamizou_mark_id" in self) && instance_exists(mamizou_mark_id)) {
 
 if (("mamizou_trans" in self) && mamizou_trans) {
     get_trans_spr();
+	draw_y = 999;
 }
 
 #define get_trans_spr()

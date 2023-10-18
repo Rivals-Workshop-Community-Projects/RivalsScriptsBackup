@@ -24,7 +24,7 @@
 
 // Physical size
 char_height             = 50;                   //                  the height of the overhead hud - the arrow with your name and %
-knockback_adj           = 0.95;		            // 0.9  -  1.2
+knockback_adj           = 0.97;		            // 0.9  -  1.2
 
 // Ground movement
 //walk_speed              = 0;		            // 3    -  4.5
@@ -41,7 +41,7 @@ ground_friction         = 0.3;		            // 0.3  -  1
 //moonwalk_accel          = 0;		            // 1.2  -  1.4
 
 // Air movement
-leave_ground_max        = 6;		            // 4    -  8
+//leave_ground_max        = 0;		            // 4    -  8
 //max_jump_hsp            = 0;		            // 4    -  8
 //air_max_speed           = 0;  		            // 3    -  7
 jump_change             = 3;		            // 3
@@ -252,34 +252,37 @@ dark_air_max_speed = 3; //also used for dspec
 //records all the variables to change back to them
 //format: [var name, normal, darkness]
 dark_rec_vars = [
-    ["walk_speed", 3, 2.25],
-    ["walk_accel", 0.3, 0.2],
+    ["walk_speed", 3, 1.75], //=, 2.25
+    ["walk_accel", 0.3, 0.12], //=, 0.2
     ["initial_dash_speed", 6, 4.5],
-    ["dash_speed", 5.5, 4.5],
+    ["dash_speed", 5.5, 4], //=, 4.5
     ["moonwalk_accel", 1.3, 1],
-    ["max_jump_hsp", 5, 4],
+    ["max_jump_hsp", 6, 4], //5, =
+    ["leave_ground_max", 6, 4],
     ["air_max_speed", 4, dark_air_max_speed],
-    ["max_fall", 9, 11.5], //9 / 7
+    ["max_fall", 9, 11.5],
     ["fast_fall", 14, 17],
-    ["gravity_speed", 0.5, 0.7], //0.5 / 0.4
-    ["jump_speed", 11, 13], //11 / 9
+    ["gravity_speed", 0.5, 0.7],
+    ["jump_speed", 11, 13],
     ["short_hop_speed", 6, 8],
     ["djump_speed", 10, 12],
     ["wave_friction", 0.07, 0.15],
     ["wave_land_adj", 1.3, 1],
     ["walk_anim_speed", 0.15, 0.1],
     ["dash_anim_speed", 0.2, 0.15],
+    ["dark_kb_mult", 1, 0.75], //wasn't dynamic - 0.85
+    ["dark_consume_kb_mult", 1, 1.2], //wasn't dynamic - 1.1
     ["land_sound", asset_get("sfx_land_light"), asset_get("sfx_land_med")],
     ["landing_lag_sound", asset_get("sfx_land_med"), asset_get("sfx_land_heavy")],
     ["waveland_sound", asset_get("sfx_waveland_may"), asset_get("sfx_waveland_ran")]
 ];
-dark_kb_mult = 0.85; //multiplies final knockback with this value
+//dark_kb_mult = 0.85; //multiplies final knockback with this value
 
 darkness_cd_set = 180;
 darkness_cd = 0;
 dark_hit_angle = 0;
 dark_hit_dir = 0;
-dark_consume_kb_mult = 1.1; //basically extra knockback scaling
+//dark_consume_kb_mult = 1.1; //basically extra knockback scaling
 dark_consume_kb = 0;
 
 darkness_col = make_color_rgb(
@@ -434,6 +437,7 @@ fs_char_chosen_trigger = "custom";
 fs_char_attack_index = 49;
 fs_hide_meter = true; //it doesn't work for some reason???
 fs_meter_y = 6; //because i can't hide it for some reason
+fs_charge_mult = 0;
 
 //kirby copy ability (2022 version)
 TCG_Kirby_Copy = 12;
@@ -446,3 +450,6 @@ dracula_portrait2 = sprite_get("dracula_port2");
 pkmn_stadium_front_img = sprite_get("pokemon_front");
 pkmn_stadium_back_img = sprite_get("pokemon_back");
 pkmn_stadium_name_override = "rumia";
+
+//sonic rainbow ring trick
+sonic_rainbowring_atk = 46;

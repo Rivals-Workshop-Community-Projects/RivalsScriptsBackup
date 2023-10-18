@@ -10,3 +10,9 @@ if (darkness_cd <= 0)
         hit_player_obj.dark_state = 0;
     }
 }
+
+if (graze_delay > 0)
+{
+    graze_delay = 0;
+    graze_failed = false;
+}

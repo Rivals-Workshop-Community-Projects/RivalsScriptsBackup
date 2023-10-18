@@ -197,6 +197,15 @@ if (darkness_id == noone)
 {
     dark_alpha_limits[2] = 0;
     dark_alpha_limits[4] = true;
+
+    if ("url" in self && url != "2965266088" && url != "2946614499")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=2965266088"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=2965266088";
+    }
 }
 else
 {
@@ -210,7 +219,22 @@ else
 //rumia darkness - on herself it acts as a knockback reduction shield
 self_darkness = (darkness_owner == darkness_id && darkness_owner == self);
 
-for (var i = 0; i < array_length(dark_rec_vars); i++) variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness * !has_rune("N")]);
+if (!has_rune("N")) for (var i = 0; i < array_length(dark_rec_vars); i++)
+{
+    if (string_pos("sound", dark_rec_vars[i][0]) == 0)
+    {
+        //variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness * !has_rune("N")]);
+        variable_instance_set(
+            self,
+            dark_rec_vars[i][0],
+            lerp(
+                dark_rec_vars[i][1],
+                dark_rec_vars[i][2],
+                (dark_shield_hp/max_dark_shield_hp) * self_darkness)
+        );
+    }
+    else variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness]);
+}
 
 if (self_darkness)
 {
@@ -355,6 +379,7 @@ if (state == PS_CROUCH)
 //special pratfall state - temporary pratfall
 if (state == PS_TEMP_PRATFALL)
 {
+    super_armor = false;
     if (state_timer == 1 && has_hit_player) state_timer = temp_prat_end;
 
     sprite_index = sprite_get("finalstrong_pratfall");
@@ -491,6 +516,12 @@ with (hit_fx_obj) if (player == other.player)
         if (other.is_attacking) real_vfx_pause();
     }
 
+    //dstrong vfx
+    if (hit_fx == other.fx_dstrong_smash)
+    {
+        if (other.attack == AT_DSTRONG && other.is_attacking) real_vfx_pause();
+    }
+
     //nspec dash effect
     if (hit_fx == other.fx_nspec)
     {
@@ -548,8 +579,8 @@ with (hit_fx_obj) if (player == other.player)
 }
 
 //final smash/strong background
-if (spell_bg && 1 < spell_bg_alpha) spell_bg_alpha += spell_bg_alpha_inc;
-else if (!spell_bg && 0 < spell_bg_alpha) spell_bg_alpha -= spell_bg_alpha_inc;
+if (spell_bg && spell_bg_alpha < 1) spell_bg_alpha += spell_bg_alpha_inc;
+else if (!spell_bg && spell_bg_alpha > 0) spell_bg_alpha -= spell_bg_alpha_inc;
 
 if (spell_bg && !instance_exists(spell_bg_obj)) spell_bg_obj = instance_create(x, y, "obj_article1");
 else if (spell_bg_alpha <= 0 && instance_exists(spell_bg_obj)) instance_destroy(spell_bg_obj);
@@ -599,7 +630,7 @@ if (koa_hat)
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
 custom_attack_grid();
-prep_hitboxes();
+if (game_time > 60) prep_hitboxes();
 
 //custom hitbox colors system (by @SupersonicNK)
 #define prep_hitboxes

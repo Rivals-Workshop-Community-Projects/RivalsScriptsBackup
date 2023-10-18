@@ -1,10 +1,14 @@
 //got_hit.gml
 
-//print ("got hit - " + string(game_time/60))
-
 if (self_darkness)
 {
     dark_shield_hp -= enemy_hitboxID.damage;
+    //sound_play(sound_get("sfx_absorb"));
+    var fx = spawn_hit_fx(x, y - 32, hit_fx_create(sprite_get("fx_darkorb_hit"), 16));
+    fx.depth = depth - 2;
+    fx.draw_angle = point_direction(0, 0, old_hsp, old_vsp);
+    fx.hsp = old_hsp;
+    fx.vsp = old_vsp;
     if (has_rune("C")) take_damage(player, player, floor(enemy_hitboxID.damage/2) * -1);
 }
 if (enemy_hitboxID.player_id == darkness_id) dark_shield_hp -= ceil(enemy_hitboxID.damage/2);

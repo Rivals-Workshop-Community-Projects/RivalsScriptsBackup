@@ -91,6 +91,7 @@ sprite_change_offset("fx_darkorb_transfer2",32, 32);
 sprite_change_offset("fx_darkorb_end",      64, 72);
 sprite_change_offset("fx_darkorb_travel",   64, 32);
 sprite_change_offset("fx_darkorb_consume",  160, 160);
+sprite_change_offset("fx_darkorb_hit",      64, 64);
 
 sprite_change_offset("fx_darksplash",       32, 64);
 sprite_change_offset("fx_darkcharge",       64, 64);
@@ -121,3 +122,4 @@ sprite_change_offset("fx_lancer",           48, 110);
 
 //WORKSHOP COMPATIBILITIES
 sprite_change_offset("mamizou_le_fishe", 16, 40);
+sprite_change_offset("sonictrick", 24, 47);

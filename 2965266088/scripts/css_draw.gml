@@ -1,5 +1,7 @@
 //css_draw.gml
 
+alt_cur = get_player_color(player);
+
 //thanks to supersonic, we can use colors directly from init_shader.gml
 //which is useful for adding special colored outlines to our alts
 shader_end();

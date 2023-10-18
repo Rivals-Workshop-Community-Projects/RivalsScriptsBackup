@@ -139,6 +139,12 @@ if (my_hitboxID.attack == 0 && my_hitboxID.hbox_num == 1)
 
     with (hit_player_obj)
     {
+        other.hitpause = true;
+        other.hitstop = hitstop;
+        other.hitstop_full = hitstop_full;
+        other.old_hsp = other.hsp;
+        other.old_vsp = other.vsp;
+        
         dark_state = -1;
         other.darkness_id = noone; //just in case
     }
