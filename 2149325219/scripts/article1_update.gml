@@ -249,8 +249,12 @@ with(asset_get("pHitBox")){
             other.smackT = 30;
             other.dir = spr_dir;
             if(other.bombpause >= 0){
-                other.hsp = cos(degtorad(kb_angle))*kb_value*spr_dir*1.15;
-                other.vsp = -sin(degtorad(kb_angle))*kb_value*1.15;
+                other.hsp = cos(degtorad(kb_angle))*kb_value*spr_dir*1.5;
+                other.vsp = -sin(degtorad(kb_angle))*kb_value*1.5;
+            }else{
+            	
+                other.hsp = 0
+                other.vsp = 0
             }
             if(instance_exists(other.smack))  instance_destroy(other.smack)
             other.smackT = 90
