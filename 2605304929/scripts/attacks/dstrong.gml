@@ -57,7 +57,7 @@ window_num++;
 
 // Window #5 / Frame(s) # 10-12 / End Lag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 17);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -81,7 +81,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -36);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 82);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 13);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); //6 = Horizontal knockback sends away from the enemy player
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
@@ -105,7 +105,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -36);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 82);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 13);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); //6 = Horizontal knockback sends away from the enemy player
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);

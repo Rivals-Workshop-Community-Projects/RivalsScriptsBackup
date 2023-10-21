@@ -12,7 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 4);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
-set_attack_value(attack, 87, "Sets Water Mark Status on opponent on hit. Sets into pratfall on whiff");//AG_MUNO_ATTACK_MISC_ADD 
+set_attack_value(attack, 87, "Sets Water Mark Status on opponent on hit. Sets into pratfall on whiff. Pratland adds 10 extra whiff to this move.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -103,7 +103,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -53);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 57);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 8);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 11);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 13);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
@@ -128,7 +128,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -74);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 57);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 76);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 7);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 9);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
@@ -153,7 +153,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -97);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 91);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 43);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 7);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 9);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);

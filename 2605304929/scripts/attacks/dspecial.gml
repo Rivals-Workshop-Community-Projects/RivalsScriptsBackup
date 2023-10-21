@@ -41,7 +41,7 @@ set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
 
 window_num++;
 
-// Window #3 / Frame(s) #8-9 / Strong box
+// Window #3 / Frame(s) #8-9 / Large Box
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
@@ -55,7 +55,7 @@ set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 
 window_num++;
 
-// Window #4 / Frame(s) #10-11 / Sour Spot
+// Window #4 / Frame(s) #10-11 / Traveling Box
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
@@ -93,7 +93,7 @@ set_num_hitboxes(attack, 2); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-//Strong Hitbox for Kick
+//Larger Hitbox at Start
 window_for_hitbox = 3;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -105,19 +105,18 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -23);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 70);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 48);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(attack, hitbox_num, HG_HIT_LOCKOUT, 20);
-set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
-set_hitbox_value(attack, hitbox_num, 81, "Strong Start Up Hitbox");//HG_MUNO_HITBOX_NAME
-set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45); // In case she trades
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7); // In case she trades
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0); 
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //197 - lightning large
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
+set_hitbox_value(attack, hitbox_num, 81, "Start up Hitbox Grab");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Hitting this will start the down special Grab.
+Has some fixed KB incase she trades.");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;
 
 //weak traveling hitbox
@@ -133,15 +132,15 @@ set_hitbox_value(attack, hitbox_num, HG_WIDTH, 40);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45); // In case she trades
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7); // In case she trades
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
-set_hitbox_value(attack, hitbox_num, 81, "Sweetspot Grab");//HG_MUNO_HITBOX_NAME
-set_hitbox_value(attack, hitbox_num, 92, "Hitting this will start the down special Grab");//HG_MUNO_HITBOX_MISC_ADD = i; i++;
+set_hitbox_value(attack, hitbox_num, 81, "Travel Hitbox Grab");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Same as above");//HG_MUNO_HITBOX_MISC_ADD = i; i++;
 
 hitbox_num++;

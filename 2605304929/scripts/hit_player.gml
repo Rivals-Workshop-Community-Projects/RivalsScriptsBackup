@@ -79,7 +79,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 }
 
 //DSpecial Command Grab
-if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 2) && my_hitboxID.type == 1) {
+if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -525,7 +525,7 @@ switch(attack){
 	if(hitbox_attack_name == AT_DSPECIAL ||
 	hitbox_attack_name == AT_DSPECIAL_AIR)
 	{
-		if(my_hitboxID.hbox_num == 1){element = "water";}
+		if(my_hitboxID.hbox_num == 1){element = "grab";} // This used to set mark but now its just a grab
 		if(my_hitboxID.hbox_num == 2){element = "grab";}
 	}
 	

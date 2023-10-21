@@ -85,33 +85,6 @@ set_num_hitboxes(attack, 10); // Swap 1 for number of hitboxes
 
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
-/*
-// Squeeze hitbox
-window_for_hitbox = 1; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 5);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 21);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -37);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 3);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
-    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_ice_uspecial_start"));
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
-    
-hitbox_num++;
-*/
 
 // Hitbox 1-4
 for(var hitbox_num = 1; hitbox_num < 5; hitbox_num++){
@@ -128,7 +101,7 @@ window_for_hitbox = 1;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
@@ -140,7 +113,7 @@ window_for_hitbox = 1;
     set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 }
 
-hitbox_num++;
+//hitbox_num++;
 // Hitbox 5
 window_for_hitbox = 2;
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
@@ -155,7 +128,7 @@ window_for_hitbox = 2;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
@@ -181,7 +154,7 @@ window_for_hitbox = 2;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
@@ -207,7 +180,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
@@ -233,7 +206,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
