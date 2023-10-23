@@ -499,8 +499,10 @@ if(attack == AT_FSPECIAL) {
 	
 		vsp = 0
 		
-		if ((right_stick_down || down_stick_down) || (down_stick_down) || (left_stick_down || down_stick_down)){
-			window_timer = 0;
+		if (brawl_mode){
+			if ((right_stick_down || down_stick_down) || (down_stick_down) || (left_stick_down || down_stick_down)){
+				window_timer = 0;
+			}
 		}
 		
 		/*
@@ -623,8 +625,8 @@ if(attack == AT_FSPECIAL) {
 		
 		if (window_timer == 12){
 			if (special_down){
-				window = 4
-				window_timer = 0
+				window = 4;
+				window_timer = 0;
 				set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);
 			}
 		}
@@ -635,7 +637,7 @@ if(attack == AT_FSPECIAL) {
 	if (window == 3){
 		can_move = true;
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
-		if (window_timer < 2){
+		if (window_timer < 2){//>
 			vsp = -6
 		}
 	}
@@ -674,7 +676,7 @@ if(attack == AT_FSPECIAL) {
 
 //Uspecial: Shuttle Loop
 if (attack == AT_USPECIAL){
-	fall_through = true
+	fall_through = true;
 	can_fast_fall = false;
 	can_move = false;
 	wings_out = true;
