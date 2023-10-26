@@ -9,6 +9,8 @@ fspecial_windup_window = window_num;
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 9);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 
 window_num++; // Charging
 fspecial_charging_window = window_num;

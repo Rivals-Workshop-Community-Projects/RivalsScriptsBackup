@@ -127,7 +127,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, 0.95);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_absa_uair"));

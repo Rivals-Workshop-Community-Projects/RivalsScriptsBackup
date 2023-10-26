@@ -17,8 +17,6 @@ if(blue_buffer && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)){
     }
 }
 
-
-
 if(blue){
     //vfx
     if(get_gameplay_time() % 10 == 0){
@@ -32,7 +30,7 @@ if(blue){
     }
     
     //self damage
-    if(get_gameplay_time() % blue_tick_rate == 0){
+    if(get_gameplay_time() % blue_tick_rate == 0 && attack != AT_DSPECIAL){
         self_damage(1);
         sound_play(asset_get("sfx_burnend"), false, noone, 0.75, 1.1);
     }

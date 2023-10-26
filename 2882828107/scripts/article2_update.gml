@@ -130,7 +130,7 @@ if (state == 1){
 	if (state_timer == 20){
 		sound_play (sound_get("witchhazel_blast"));
 		sound_play (sound_get("witchhazel_wobble"));
-		create_hitbox( AT_FSPECIAL, 1, (x + 228*spr_dir),(y - 34) );
+		create_hitbox( AT_FSPECIAL, 1, (x + 224*spr_dir),(y - 34) );
 		create_hitbox( AT_FSPECIAL, 2, (x + 144*spr_dir),(y - 34) );
 	}
 	if (state_timer == 60){

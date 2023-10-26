@@ -8,11 +8,13 @@ if (sprite_index == sprite_get("uspecial") && (state == PS_HITSTUN || state == P
 }
 
 // dropping property if hit out of throwing property anim
-if (sprite_index == sprite_get("fspecial_deed") && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
-	createProperty(fspec_grabbed_property, 3, fspec_grabbed_property_housesNum);
-	fspec_grabbed_property = 0;
-	touchingAnyPropFSpec = false;
-	fspec_grabbed_property_housesNum = 0;
+if (attack == AT_FSPECIAL_2 && window < 2 && sprite_index == sprite_get("fspecial_deed") && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){//>
+	if (!fspec_didAlreadyThrow){
+		createProperty(fspec_grabbed_property, 3, fspec_grabbed_property_housesNum);
+		fspec_grabbed_property = 0;
+		touchingAnyPropFSpec = false;
+		fspec_grabbed_property_housesNum = 0;
+	}
 }
 
 //--------------------------------------------

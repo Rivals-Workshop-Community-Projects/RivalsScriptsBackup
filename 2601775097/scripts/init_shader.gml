@@ -11,17 +11,6 @@ switch (alt_cur)
 
 		set_article_color_slot(6, 165, 255, 255); //LIGHT
 		set_article_color_slot(7, 61, 113, 224); //FIRE
-		
-		if ("theikos_type" in self && theikos_type > 0)
-		{
-			do_theikos_colors();
-
-			set_character_color_slot(6, 255, 246, 207); //LIGHT
-			set_character_color_slot(7, 240, 205, 110); //FIRE
-
-			set_article_color_slot(6, 255, 246, 207); //LIGHT
-			set_article_color_slot(7, 240, 205, 110); //FIRE
-		}
         break;
 	case 1: //p2 alt light shading amplify + fire reverse
 		set_character_color_shading(6, 1.5); //LIGHT
@@ -33,20 +22,21 @@ switch (alt_cur)
 	case 16: // seasonal
 		if ("birthboy" in self && birthboy)
 		{
-			set_color_profile_slot(alt_cur, 1, 102, 194, 241); //CLOTHWHITE
 		    if ("theikos_type" in self)
 			{
 				if (theikos_type == 0) set_color_profile_slot(alt_cur, 2, 202, 114, 70); //HAIR
 				else set_color_profile_slot(alt_cur, 2, 230, 230, 250); //HAIR
 			}
 		    set_color_profile_slot(alt_cur, 3, 245, 181, 150); //SKIN
+			set_color_profile_slot(alt_cur, 1, 102, 194, 241); //CLOTHWHITE
 		    set_color_profile_slot(alt_cur, 4, 62, 101, 185); //CLOTHLIGHTBLUE
 		    set_color_profile_slot(alt_cur, 0, 43, 60, 140); //CLOTHDARKBLUE
 		    set_color_profile_slot(alt_cur, 5, 33, 43, 139); //CLOTHBLACK
 			set_color_profile_slot(alt_cur, 6, 159, 241, 255); //LIGHT
 			set_color_profile_slot(alt_cur, 7, 247, 149, 56); //FIRE
 		
-			line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)]
+			line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
+			no_effect_line_color = [0, 0, 0];
 		
 			//shading tweaks
 			set_character_color_shading(5, 1); //CLOTHBLACK
@@ -133,7 +123,7 @@ switch (alt_cur)
 		set_character_color_shading(5, 2); //CLOTHBLACK
 		break;
 	case 26: //theikos alt hair color changing
-		do_theikos_colors();
+		set_character_color_shading(2, 1.5); //hair shading
 		break;
 	case 27: //player color
 		var hud_r = color_get_red(get_player_hud_color(player));
@@ -151,28 +141,11 @@ switch (alt_cur)
 		break;
 }
 
-if (object_index == asset_get("draw_result_screen")) set_endgame_stuff();
+if (alt_cur == 26 || "theikos_type" not in self || theikos_type > 0 && (alt_cur == 0 || alt_cur == 27)) user_event(1); //theikos color stuff
 
-#define do_theikos_colors
-{
-	var color_time_max = 30;
-	if ("color_time" not in self)
-	{
-		color_time = 0;
-		color_increase = true;
-	}
+if (object_index == asset_get("draw_result_screen")) set_endgame_stuff(); //old portrait setup code lol
 
-	if (color_increase) color_time ++;
-	else color_time --;
-	
-	if (color_time >= color_time_max || color_time <= 0) color_increase = !color_increase;
 
-	var t_r = merge_color(70, 97, color_time/color_time_max)
-	var t_g = merge_color(129, 174, color_time/color_time_max);
-	var t_b = merge_color(195, 219, color_time/color_time_max);
-
-	set_character_color_slot(2, floor(t_r), floor(t_g), floor(t_b), 1);
-}
 #define set_endgame_stuff
 {
 	//portrait image index basically

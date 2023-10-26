@@ -29,14 +29,15 @@ switch (alt_cur)
     case 16: //seasonal -> hallowen
         if (current_day == b_day && current_month == b_month)
         {
-            set_color_profile_slot(alt_cur, 1, 206, 216, 227); //CLOTHWHITE
             set_color_profile_slot(alt_cur, 2, 182, 88, 61); //HAIR
             set_color_profile_slot(alt_cur, 3, 245, 181, 150); //SKIN
-            set_color_profile_slot(alt_cur, 4, 43, 60, 140); //CLOTHLIGHTBLUE
-            set_color_profile_slot(alt_cur, 0, 43, 60, 140); //CLOTHDARKBLUE
-            set_color_profile_slot(alt_cur, 5, 43, 60, 140); //CLOTHBLACK
+			set_color_profile_slot(alt_cur, 1, 102, 194, 241); //CLOTHWHITE
+		    set_color_profile_slot(alt_cur, 4, 62, 101, 185); //CLOTHLIGHTBLUE
+		    set_color_profile_slot(alt_cur, 0, 43, 60, 140); //CLOTHDARKBLUE
+		    set_color_profile_slot(alt_cur, 5, 33, 43, 139); //CLOTHBLACK
 	        set_color_profile_slot(alt_cur, 6, 159, 241, 255); //LIGHT
 	        set_color_profile_slot(alt_cur, 7, 76, 133, 233); //FIRE
+            preview_line_color = $000000
         }
         else
         {

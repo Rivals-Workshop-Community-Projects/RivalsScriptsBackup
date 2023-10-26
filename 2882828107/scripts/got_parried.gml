@@ -13,7 +13,9 @@ if (my_hitboxID.attack == AT_DATTACK){
 	}
 }
 
-with obj_article1 if player_id == other.id {
-    state = 2
-	state_timer = 0
+if (my_hitboxID.attack == AT_DSPECIAL){
+    with obj_article1 if player_id == other.id {
+		state = 2
+		state_timer = 0
+	}
 }

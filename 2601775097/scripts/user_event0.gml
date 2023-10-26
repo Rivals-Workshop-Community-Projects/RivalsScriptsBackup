@@ -6,7 +6,8 @@
 if (theikos_event_runtime == 0)
 {
     //outline
-    no_effect_line_color = [97, 45, 2];
+    if (alt_cur != 14 && alt_cur != 15) no_effect_line_color = [97, 45, 2];
+    theikos_theme = noone;
 
     light_col = make_colour_rgb(get_color_profile_slot_r(26, 6), get_color_profile_slot_g(26, 6), get_color_profile_slot_g(26, 6));
 	line_color = [get_color_profile_slot_r(26, 7), get_color_profile_slot_g(26, 7), get_color_profile_slot_b(26, 7)];
@@ -17,10 +18,7 @@ if (theikos_event_runtime == 0)
     if (!playtesting) theikos_music = true;
     if (theikos_music)
     {
-        with (oPlayer) if ("theikos_music" in self && theikos_music && self != other)
-        {
-            do_i_hear_boss_music(false);
-        }
+        with (oPlayer) if ("theikos_music" in self && theikos_music && self != other) do_i_hear_boss_music(false);
         do_i_hear_boss_music(true);
     }
 
@@ -86,7 +84,7 @@ theikos_event_runtime ++;
 if (theikos_event_runtime > 0)
 {
     //let the theikos music play
-    suppress_stage_music(0, 100);
+    if (!playtesting) suppress_stage_music(0, 100);
 
     if (djumps > 0) djumps = 0; //he used to have 50 djumps but now his jumps just constnatly refresh
     glide_stamina = glide_stamina_max;
@@ -127,13 +125,14 @@ if (theikos_event_runtime > 0)
 {
     if (!enable)
     {
-        if (alt_cur != 14 || alt_cur != 15) sound_stop(sound_get("mus_theikos"));
-        else sound_stop(sound_get("mus_theikos_demake"));
+        if (alt_cur != 14 || alt_cur != 15) sound_stop(theikos_theme);
+        else sound_stop(theikos_theme);
+        theikos_theme = noone;
     }
     else
     {
         var volume = get_local_setting(3);
-        if (alt_cur != 14 || alt_cur != 15) sound_play(sound_get("mus_theikos"), true, noone, min(volume*2, 1));
-        else sound_play(sound_get("mus_theikos_demake"), true, noone, min(volume*2, 1));
+        if (alt_cur != 14 && alt_cur != 15) theikos_theme = sound_play(sound_get("mus_theikos"), true, noone, min(volume*2, 1));
+        else theikos_theme = sound_play(sound_get("mus_theikos_demake"), true, noone, min(volume*2, 1));
     }
 }

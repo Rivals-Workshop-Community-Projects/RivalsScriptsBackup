@@ -14,7 +14,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "mokou"
 // ! you can now scroll down until you reach "the primary part you should change."
 
 var tmp_cur = 0;

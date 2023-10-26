@@ -10,10 +10,8 @@ switch(attack){
 	case AT_NSPECIAL:
 		if ((window == 2 || window == 3) && window_timer == 1){
 			spawn_base_dust(x, y, "n_wavedash", spr_dir);
-			spawn_base_dust(x + 16, y, "dash_start", -1);
-			spawn_base_dust(x + 60, y, "dash_start", -1);
-			spawn_base_dust(x - 16, y, "dash_start", 1);
-			spawn_base_dust(x - 60, y, "dash_start", 1);
+			spawn_base_dust(x + 36, y, "dash_start", -1);
+			spawn_base_dust(x - 36, y, "dash_start", 1);
 			sound_play(sound_get("haunt_ambience"));
 		}
 		break;
@@ -164,13 +162,12 @@ if (attack == AT_NSPECIAL){
 		if (free){
 			vsp = min(vsp, 1.5);
 			hsp = clamp(hsp, -5,5);
-		} else {
-			if (left_down && !right_down && special_down){
-				spr_dir = -1
-			}
-			if (right_down && !left_down && special_down){
-				spr_dir = 1
-			}
+		}
+		if (left_down && !right_down && special_down) && !(window == 2 && window_timer < 8){
+			spr_dir = -1
+		}
+		if (right_down && !left_down && special_down) && !(window == 2 && window_timer < 8){
+			spr_dir = 1
 		}
 	}
 	//loop
@@ -248,6 +245,11 @@ if (attack == AT_USPECIAL){
 		}
 	}
 }
+
+if (attack != AT_USPECIAL) && (special_pressed && up_down) && (has_rune("C")){
+	set_attack( AT_USPECIAL );
+}
+
 if (attack == AT_DSPECIAL){
     if (window == 2){
 		if (free){
@@ -255,20 +257,19 @@ if (attack == AT_DSPECIAL){
 			hsp = clamp(hsp, -3,3);
 		}
         if (window_timer == 1){
-            if (!jackolantern_exists){
-			    if (jackolantern_recharge >= 450){
-					instance_create(x + (spr_dir*30),y - 0,"obj_article1");
-					sound_play (sound_get ("plant"));
-				    jackolantern_recharge = 0
-				} else if (jackolantern_recharge < 450){
-				    sound_play (sound_get ("buzzer"));
+            if (jackolantern_exists){
+				with (obj_article1){
+					if (player_id == other.id){
+						shovel = true
+					}
 				}
-	    	} else {
-                with (obj_article1){
-                    if (player_id == other.id){
-                        shovel = true
-                    }
-                }
+			}
+			if (jackolantern_recharge >= 450){
+				instance_create(x + (spr_dir*30),y - 0,"obj_article1");
+				sound_play (sound_get ("plant"));
+				jackolantern_recharge = 0
+			} else if (!jackolantern_exists){
+			    sound_play (sound_get ("buzzer"));
 			}
         }
     }

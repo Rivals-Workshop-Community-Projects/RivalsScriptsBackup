@@ -1,12 +1,11 @@
 // F-STRONG - normal ver.
 var atk = AT_FSTRONG;
 
-set_attack_value(atk, AG_CATEGORY, 2);
+set_attack_value(atk, AG_CATEGORY, 0);
 set_attack_value(atk, AG_SPRITE, sprite_get("fstrong"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 5);
 set_attack_value(atk, AG_STRONG_CHARGE_WINDOW, 2);
-set_attack_value(atk, AG_OFF_LEDGE, 0);
 
 var theikos_friction = 0.15;
 

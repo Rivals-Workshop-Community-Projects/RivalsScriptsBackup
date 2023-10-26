@@ -1,11 +1,14 @@
 // attack_update
 
-//B-reverse stuff
-if (attack == skill[0].skill_attack || attack == skill[0].skill_attack_air || attack == skill[1].skill_attack || attack == skill[1].skill_attack_air ||
-    attack == skill[2].skill_attack || attack == skill[3].skill_attack || attack == skill[4].skill_attack || attack == skill[5].skill_attack ||
-    attack == skill[6].skill_attack || attack == skill[7].skill_attack || attack == skill[8].skill_attack || attack == skill[9].skill_attack ||
-    attack == skill[10].skill_attack || attack == skill[11].skill_attack) trigger_b_reverse();
+//bar MP consumption on the attack grid
+custom_attack_grid();
 
+//B-reverse stuff
+if (attack == skill[0].skill_attack || attack == skill[1].skill_attack || attack == skill[1].skill_attack_air || attack == skill[2].skill_attack ||
+    attack == skill[3].skill_attack || attack == skill[4].skill_attack || attack == skill[5].skill_attack || attack == skill[6].skill_attack ||
+    attack == skill[7].skill_attack || attack == skill[8].skill_attack || attack == skill[9].skill_attack || attack == skill[10].skill_attack ||
+    attack == skill[11].skill_attack
+) trigger_b_reverse();
 switch (attack)
 {
     /////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
@@ -69,6 +72,12 @@ switch (attack)
         {
             vsp = 0;
             can_move = false;
+
+            if (has_rune("K"))
+            {
+                set_attack_value(atk, AG_CATEGORY, 2);
+                set_attack_value(atk, AG_OFF_LEDGE, 1);
+            }
         }
 
         switch (window)
@@ -111,8 +120,9 @@ switch (attack)
                     if (bar_tracking_id != noone) //track target
                     {
                         angle_saved = point_direction(bar_hitbox.x, bar_hitbox.y, bar_tracking_id.x, bar_tracking_id.y);
-                        if (angle_saved < 60) angle_saved = 60;
+                        if (angle_saved < 50 || angle_saved > 270) angle_saved = 50;
                         else if (angle_saved > 140) angle_saved = 140;
+
                         bar_tracking_id = noone;
                     }
                     else //check bar's inputs
@@ -144,6 +154,12 @@ switch (attack)
         {
             vsp = 0;
             can_move = false;
+
+            if (has_rune("K"))
+            {
+                set_attack_value(atk, AG_CATEGORY, 2);
+                set_attack_value(atk, AG_OFF_LEDGE, 1);
+            }
         }
         
         if (burnbuff_active)
@@ -171,6 +187,12 @@ switch (attack)
         {
             vsp = 0;
             can_move = false;
+
+            if (has_rune("K"))
+            {
+                set_attack_value(atk, AG_CATEGORY, 2);
+                set_attack_value(atk, AG_OFF_LEDGE, 1);
+            }
         }
         switch (window)
         {
@@ -253,8 +275,7 @@ switch (attack)
         break;
     //////////////////////////////////////////////// SKILLS ////////////////////////////////////////////////
     //
-    case AT_NTHROW: case AT_NSPECIAL_AIR:   //  light dagger
-
+    case AT_NTHROW:                         //  light dagger
         prepare_dagger_cd = (window == 4 || window == 8);
 
         switch (window)
@@ -271,8 +292,21 @@ switch (attack)
                     reset_window_value(attack, window, AG_WINDOW_SFX_FRAME);
                 }
                 break;
+            case 2: case 6: //jumping up in the air
+                if (window_timer == window_end && free)
+                {
+                    hsp = -1 * spr_dir;
+                    vsp = -5;
+                }
+                break;
             case 3: case 7: //throwing the projectile
-                if (window_timer == 2) bar_hitbox = create_hitbox(attack, burnbuff_active+1, x+16*spr_dir, y-30);
+                if (window_timer == 2)
+                {
+                    bar_hitbox = create_hitbox(skill[0].skill_attack, burnbuff_active+1, x+16*spr_dir, y-30);
+                    bar_hitbox.hsp = lengthdir_x(bar_hitbox.hsp, free * 315);
+                    bar_hitbox.vsp = lengthdir_y(bar_hitbox.hsp, free * 315)*spr_dir;
+                    bar_hitbox.proj_angle = (free * 315) * spr_dir;
+                }
                 break;
             case 4: case 8: //check skill cost for another one
                 burnbuff_active = false;
@@ -296,7 +330,8 @@ switch (attack)
                 }
                 break;
         }
-        if (attack == skill[0].skill_attack_air && !free) set_state(PS_LANDING_LAG);
+
+        if (was_free && !free) set_state(PS_LANDING_LAG);
         break;
     case AT_FTHROW: case AT_FSPECIAL_AIR:   //  burning fury
         //general set up
@@ -1401,6 +1436,15 @@ switch (attack)
         }
         //if (window == 3 && window_timer == 8 && menu_type < 2) state = PS_SPAWN;
         break;
+    case 46:    //sonic trick
+        iasa_script();
+        if (vsp > 0 && window == 3)
+        {
+            window ++;
+            window_timer = 0;
+        }
+        if (window > 1 && !free) set_state(PS_LANDING_LAG);
+        break;
 }
 
 if (theikos_type > 0 && attack != AT_OVERDRIVE) allow_turbo();
@@ -1488,6 +1532,39 @@ if (theikos_type > 0 && attack != AT_OVERDRIVE) allow_turbo();
             can_strong = true;
             can_ustrong = true;
             can_fast_fall = true;
+        }
+    }
+}
+
+#define custom_attack_grid
+{
+    //looping window for X times
+    var window_loop_value;
+    window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES);
+
+    if (!hitpause || attack == AT_THEIKOS)
+    {
+        //loop window
+        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9)
+        {
+            if (window_timer == window_end-1)
+            {
+                attack_end(attack); //reset hitboxes
+                if (window_loops <= window_loop_value) window_timer = 0; //window_timer is -1 so window_timer 0 can spawn hitboxes
+            }
+
+            if (window_loop_value > 0)
+            {
+                if (window_timer == 0) window_loops ++; //at the start of the window
+
+                if (window_loops >= window_loop_value)
+                {
+                    destroy_hitboxes();
+                    window += 1;
+                    window_timer = 0;
+                    window_loops = 0;
+                }
+            }
         }
     }
 }

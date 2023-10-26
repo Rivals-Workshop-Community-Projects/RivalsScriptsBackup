@@ -415,14 +415,12 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_FSPECIAL){
 	//
 	if (window == 1){
+		fspec_didAlreadyThrow = false;
 		if (window_timer != get_window_value(attack, window, AG_WINDOW_LENGTH) && window_timer > 2){
-			
 			// Throwing Properties when touching one
 			if (!free){
 				if (touchingProperty1 || touchingProperty2 || touchingProperty3){
-					//print("mario");
 					touchingAnyPropFSpec = true;
-					//print("mario");
 					if (touchingProperty1){
 						removeProperty(1);
 						fspec_grabbed_property = 1;
@@ -441,21 +439,19 @@ if (attack == AT_FSPECIAL){
 				}
 			}
 			if (window_timer > 3){
-			if (currCash < fspecialCashRequired && attack != AT_FSPECIAL_2 && touchingAnyPropFSpec == false){
-				window = 4;
-				window_timer = 0;
-				set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
-				fspecialNoCashTextTimer = 60;
-				sound_play(asset_get("sfx_shop_invalid"));
-				move_cooldown[AT_FSPECIAL] = 75;
-			}
+				if (currCash < fspecialCashRequired && attack != AT_FSPECIAL_2 && touchingAnyPropFSpec == false){//>
+					window = 4;
+					window_timer = 0;
+					set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
+					fspecialNoCashTextTimer = 60;
+					sound_play(asset_get("sfx_shop_invalid"));
+					move_cooldown[AT_FSPECIAL] = 75;
+				}
 			}
 		}
-		
 		if (window_timer == 4){
 			sound_play(asset_get("sfx_spin"));
 		}
-		
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (currCash >= fspecialCashRequired){
 				currCash -= fspecialCashRequired;
@@ -494,11 +490,15 @@ if (attack == AT_FSPECIAL_2){
 		//print("luigi: " + string(fspec_grabbed_property_housesNum));
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			createProperty(fspec_grabbed_property, 1, fspec_grabbed_property_housesNum);
+			fspec_didAlreadyThrow = true;
 		}
 	} else {
 		fspec_grabbed_property = 0;
 		fspec_grabbed_property_housesNum = 0;
 		//print("mario: " + string(fspec_grabbed_property_housesNum));
+	}
+	if (window == 3){
+		fspec_didAlreadyThrow = false;
 	}
 }
 
@@ -556,7 +556,7 @@ if (attack == AT_USPECIAL){
 	}
 }
 if (uspecial_attacked_out_of == true && !has_hit){
-	//This basically puts u into pratfall if you attacked out of up b lol
+	//This basically puts you into pratfall if you attacked out of up b
 	if (attack == AT_NAIR && window == 3 && window_timer == 17){
 		set_state(PS_PRATFALL);
 	}
@@ -581,7 +581,6 @@ if (attack == AT_USPECIAL_2){
 }
 //Down Special: Property Management
 if (attack == AT_DSPECIAL){
-	//a
 	if (window == 3){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (!free){
@@ -597,7 +596,7 @@ if (attack == AT_DSPECIAL){
 		if (window == 1){
 			if (totalPropertiesExist != maxPropertiesAllowed){
 				if (window_timer != get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					if (currCash < propertyBuildCashRequired){
+					if (currCash < propertyBuildCashRequired){//>
 						window = 10;
 						window_timer = 0;
 						fspecialNoCashTextTimer = 60;

@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL  || attack == AT_NSPECIAL_2|| attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -30,7 +30,7 @@ switch(attack){
         break;
     
     case AT_DATTACK:
-        if(window == 1 && window_timer == get_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH) - 1){
+        if(window == 1 && window_timer == get_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH) - 5){
             sound_play(asset_get("sfx_zetter_fireball_fire"), false, noone, 0.8, 1.05);
         }
         
@@ -316,6 +316,13 @@ switch(attack){
             sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.55, 1.0);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 1.0, 0.95);
             }
+        }
+        
+        //hold back to move less forwards
+        if((window == 3 || window == 7) && window_timer == 1 && !hitpause){
+        	if((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
+        		hsp -= 4.5 * spr_dir;
+        	}
         }
         
         //self damage

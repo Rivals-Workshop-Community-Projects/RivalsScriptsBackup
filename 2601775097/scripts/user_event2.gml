@@ -301,6 +301,8 @@ switch (skill_script_type)
         break;
 }
 
+
+
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 
 //checks the skills themselves
@@ -397,6 +399,19 @@ switch (skill_script_type)
             }
 
             burnbuff_active = false;
+            if (array_length(polaris_shot_ids) > 0)
+            {
+                var i = 0;
+                repeat (polaris_shots_left)
+                {
+                    if (instance_exists(polaris_shot_ids[i]))
+                    {
+                        spawn_hit_fx(polaris_shot_ids[i].x, polaris_shot_ids[i].y, fx_skill7_afterimage);
+                        polaris_shot_ids[i].length = 0;
+                    }
+                    i ++;
+                }
+            }
             lightbuff_active = false;
         }
         else
@@ -471,6 +486,16 @@ switch (skill_script_type)
         }
     }
     else menu_dir = 0;
+
+
+    if ("url" in self && url != "2601775097" && url != "2560739972")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097";
+    }
 }
 //stores button positions for CSS skill select
 #define point_in_rect (px, py, x1, y1, x2, y2)
@@ -505,8 +530,8 @@ switch (skill_script_type)
 }
 #define update_sync_var()
 {
-    var player = (room == 113) ? 0 : self.player; //online css player is 0, this will sync the player 0 with the actual player slot
-    //room 113 is the online CSS room btw
+    var player = (room == 114) ? 0 : self.player; //online css player is 0, this will sync the player 0 with the actual player slot
+    //room 114 is the online CSS room btw
 
     for (var i = 0; i <= 3; ++i)
     {

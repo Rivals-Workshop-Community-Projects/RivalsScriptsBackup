@@ -19,7 +19,11 @@ if (state == PS_WALL_JUMP && state_timer <= 2) && (wall_phase == false) && (vsp 
 	sound_play(asset_get("sfx_frog_nspecial_cast"));
 }
 if (wall_phase == true){
-	if (!position_meeting(x, y - 48, asset_get("par_block"))) && (state == PS_AIR_DODGE) && (state_timer > 0 && state_timer <= 14) && (vsp >= 0){
+	if (!position_meeting(x, y - 48, asset_get("par_block"))) && (state == PS_AIR_DODGE) 
+	&& (state_timer > 0 && state_timer <= 14) && (vsp >= 0){
+		wall_phase = false;
+	} else if (!position_meeting(x, y - 64, asset_get("par_block"))) 
+	&& (state == PS_PRATFALL) && (vsp >= 0){
 		wall_phase = false;
 	} else if !position_meeting(x, y - 16, asset_get("par_block")) && (vsp > 0){
 		wall_phase = false;
@@ -44,18 +48,20 @@ if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 }
 
 with (oPlayer) {
-	if (puffshroom_timer != 0 && puffshroom_timer <= 30){
-		if (state == PS_HITSTUN_LAND || state == PS_HITSTUN){
-			puffshroom_timer--;
-			draw_y = 999;
+	if (id != other.id){
+		if (puffshroom_timer != 0 && puffshroom_timer <= 30){
+			if (state == PS_HITSTUN_LAND || state == PS_HITSTUN){
+				puffshroom_timer--;
+				draw_y = 999;
+			} else {
+				puffshroom_timer = 0;
+			}
 		} else {
-			puffshroom_timer = 0;
+			draw_y = 0;
 		}
-	} else {
-		draw_y = 0;
-	}
-	if (puffshroom_timer == 1){
-		spawn_hit_fx(floor(x),floor(y - 30),67);
+		if (puffshroom_timer == 1){
+			spawn_hit_fx(floor(x),floor(y - 30),67);
+		}
 	}
 }
 
@@ -152,14 +158,6 @@ if (has_rune("E")){
 	walljump_vsp = 9
 }
 
-if (has_rune("G")){
-	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 9);
-	set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 15);
-	set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 12);
-	set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 12);
-}
-
 if (has_rune("J")){
 	max_djumps = 2;
 }
@@ -192,7 +190,7 @@ if (has_rune("M")){
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 14);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.8);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 10);
@@ -208,10 +206,11 @@ if (has_rune("N")){
 	set_hitbox_value(AT_DAIR, 1, HG_EFFECT, 1);
 	set_hitbox_value(AT_DAIR, 2, HG_EFFECT, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 2);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));

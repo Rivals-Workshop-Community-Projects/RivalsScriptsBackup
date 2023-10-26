@@ -49,7 +49,8 @@ grav = 0.4;
 max_fall = 8;
 fric = 0.98;
 hitstop = 0;
-mok_bomb_ang = player_id.HG_MOKOU_BOMB_ANGLE;
+mok_bomb_ang = player_id.HG_MOKOU_BOMB_ANGLE;       //hitboxes with the custom hitbox grid of 94 (same one used by Muno for hitting stuff like Otto ball) can have custom angles
+
 
 //Cure depression
 shoulddie = false;                                  //If this is set to true, the article will change to state 2 (despawn animation) as soon as it's not busy. This keeps it from despawning in the middle of something

@@ -139,16 +139,20 @@ if (mp_mini_timer > 0)
 
     //MP gauge
     var alpha = mp_mini_timer/20;
-    if (mp_current <= 100) //normal version
+    draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, alpha); // background
+    for (var i = 0; i <= 2; ++i) //fill
     {
-        draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, $8b1733, alpha); // background
-        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 0 + i * 2, mp_y - 2 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, alpha); // fill
+        draw_sprite_stretched_ext(
+            spr_pixel, 0,
+            mp_x + 0 + i * 2,
+            mp_y - 2 - i * 2,
+            floor(mp_current)/2 + 2 - 50 * (mp_current > 100),
+            2,
+            mp_current <= 100 ? mp_color : mp_color_ex,
+            alpha
+        );
     }
-    else if (mp_current > 100) //double mana version
-    {
-        draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, $e9973e, alpha); // background
-        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 0 + i * 2, mp_y - 2 - i * 2, floor(mp_current)/2 + 2, 2, mp_color_ex, alpha); // fill
-    }
+
     draw_sprite_ext(sprite_get("hud_mp_small"), 0, mp_x - 4, mp_y - 18, 2, 2, 0, c_white, alpha); //frame
     draw_set_alpha(alpha);
     draw_debug_text(mp_x - 2, mp_y - 14, string(floor(mp_current))); //text
@@ -166,14 +170,29 @@ if (playtesting)
     if (y > 466) menu_y = 466+16;
     if (y < 148) menu_y = 148+16;
 
-    draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, $8b1733, 1); // background
-    for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
+    draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, 1); // background
+    //for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
+
+    for (var i = 0; i <= 2; ++i) //fill
+    {
+        draw_sprite_stretched_ext(
+            spr_pixel, 0,
+            menu_x + 12 + i * 2,
+            menu_y - 102 - i * 2,
+            floor(mp_current)/2 + 2 - 50 * (mp_current > 100),
+            2,
+            mp_current <= 100 ? mp_color : mp_color_ex,
+            1
+        );
+    }
+
+
     draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
     draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
     
     /*
     //just in case online CSS messes up again
-    if (room == 113)
+    if (room == 114)
     {
         if (menu_active) //skill select
         {

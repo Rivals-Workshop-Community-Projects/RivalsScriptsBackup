@@ -1337,6 +1337,11 @@ switch (attack) {
 			window_timer = 0;
 		}
 
+    /*// Makes fspecial Attack Jump Cancellable
+    if (window == 11  && win1dow_timer == 2  && attack == AT_FSPECIAL) {
+    	can_jump = true;
+    }*/
+
 		break;
 	case AT_DSPECIAL :
 		// Skip initial charge window if charge is ready
@@ -1574,10 +1579,10 @@ switch (attack) {
         	dspecial_dive_time++;
         }
     	if ((window == 2)
-    		&& (dspecial_dive_time > 15)
+    		&& (dspecial_dive_time > 18)
     		&& !dspecial_caught_one)
 		{
-    		if (dspecial_dive_time == 16) {
+    		if (dspecial_dive_time == 19) {
     			white_flash_cooldown = charge_flash_cooldown_max;
     			sound_play(asset_get("sfx_burnend"));
     		}

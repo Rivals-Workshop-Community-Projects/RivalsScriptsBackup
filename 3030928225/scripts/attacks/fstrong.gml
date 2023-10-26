@@ -43,7 +43,7 @@ fstrong_charged_window = window_num;
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 42);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 14);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(atk, window_num, AG_WINDOW_HSPEED, 2.5);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 3.5);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 
 window_num++; // Recover
@@ -153,7 +153,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 10);
-    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 2);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 10)
@@ -228,7 +228,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 2);
-    set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 10)
+    set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 9)
     set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0);
     set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
     set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);

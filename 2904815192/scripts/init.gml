@@ -74,6 +74,7 @@ fspecProj_speedChange = 0;
 
 fspec_grabbed_property = 0;
 fspec_grabbed_property_housesNum = 0;
+fspec_didAlreadyThrow = false;
 
 touchingAnyPropFSpec = false;
 
@@ -160,7 +161,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier >
 
 land_time = 4; //normal landing frames
 prat_land_time = 14;

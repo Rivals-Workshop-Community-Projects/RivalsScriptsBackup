@@ -43,7 +43,9 @@ if(blue){
     for(var i = 1; i <= get_num_hitboxes(attack); i++){
         if(get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1){
             set_hitbox_value(attack, i, HG_DAMAGE, ceil(get_hitbox_value(attack, i, HG_DAMAGE) * blue_dmg_buff));
-            set_hitbox_value(attack, i, HG_BASE_HITPAUSE, get_hitbox_value(attack, i, HG_BASE_HITPAUSE) + 1);
+            if(attack != AT_FSPECIAL || i == 3){
+                set_hitbox_value(attack, i, HG_BASE_HITPAUSE, get_hitbox_value(attack, i, HG_BASE_HITPAUSE) + 1);
+            }
             if(attack != AT_NAIR && attack != AT_UAIR && attack != AT_DTILT){
                 set_hitbox_value(attack, i, HG_KNOCKBACK_SCALING, (get_hitbox_value(attack, i, HG_KNOCKBACK_SCALING) * (blue_kb_buff * 100))/100);
             }

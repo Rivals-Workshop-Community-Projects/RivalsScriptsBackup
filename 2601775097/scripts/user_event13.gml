@@ -1,10 +1,12 @@
 //user_event 13
 
+var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
+
 //mana
 if (mp_gainable)
 {
-    mp_current += (my_hitboxID.damage * 0.6 < 1) ? 1 : round(my_hitboxID.damage * 0.6);
-    if (!playtesting && my_hitboxID.damage > 0) mp_mini_timer = mp_mini_timer_set;
+    mp_current += (true_damage * 0.6 < 1) ? 1 : round(true_damage * 0.6);
+    if (!playtesting && true_damage > 0) mp_mini_timer = mp_mini_timer_set;
 }
 
 //hit mechanics
@@ -135,11 +137,15 @@ if (lightbuff_active && !was_parried && polaris_shots_left > 0)
     && !polaris_shot && polaris_id != self)
     {
         polaris_shot = true;
-        polaris_shot_ids[polaris_shots_left-1].shoot_projectile = true;
-        polaris_shot_ids[polaris_shots_left-1].hitbox_timer = 0;
-        polaris_shot_ids[polaris_shots_left-1] = noone;
-        polaris_shots_left --;
 
+        repeat (polaris_shots_left > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2] ? 2 : 1)
+        {
+            polaris_shot_ids[polaris_shots_left-1].shoot_projectile = true;
+            polaris_shot_ids[polaris_shots_left-1].hitbox_timer = 0;
+            polaris_shot_ids[polaris_shots_left-1] = noone;
+            polaris_shots_left --;
+        }
+        
         last_hitstop = hit_player_obj.hitstop_full;
         last_kb = [hit_player_obj.orig_knock, hit_player_obj.old_hsp, hit_player_obj.old_vsp, hit_player_obj.was_free, hit_player_obj.sent_down];
         last_hitstun = hit_player_obj.hitstun_full;
@@ -148,7 +154,7 @@ if (lightbuff_active && !was_parried && polaris_shots_left > 0)
 if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1)
 {
     sound_play(asset_get("sfx_holy_lightning"));
-    mp_current += my_hitboxID.damage;
+    mp_current += true_damage;
     with (hit_player_obj)
     {
         hitstop = other.last_hitstop + 15;
@@ -168,19 +174,20 @@ if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1)
 if (can_overdrive && od_cast == 0) || ("fs_char_initialized" in self && fs_char_initialized)
 {
     od_color_time = 10;
-    od_current += (my_hitboxID.damage * 0.4 < 1) ? 1 : floor(my_hitboxID.damage * 0.4);
+    od_current += (true_damage * 0.7 < 1) ? 1 : floor(true_damage * 0.7);
 }
 
-if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (godbuff_mult-1) ));
-if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (theikos_mult+theikos_type-1)));
+if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(true_damage * (godbuff_mult-1) ));
+if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(true_damage * (theikos_mult+theikos_type-1)));
 
 mp_current = clamp(mp_current, 0, mp_max);
 
 
 #define drain_mp
 {
-	//if (!has_rune("K") && !theikos_active) mp_current -= round(my_hitboxID.damage / 2);
-    if (!infinite_mp_mode) mp_current -= round(my_hitboxID.damage / 2);
+    var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
+	//if (!has_rune("K") && !theikos_active) mp_current -= round(true_damage / 2);
+    if (!infinite_mp_mode) mp_current -= round(true_damage / 2);
 }
 #define holyburn_apply
 {

@@ -10,7 +10,7 @@ if(!blue){
 }
 
 
-shader_start();
+
 maskHeader();
 draw_sprite_part_ext(sprite_get("hud_meter"), 1, 0, 0, width, 4, temp_x + 34, temp_y - 4, 2, 2, c_white, 1);
 maskMidder();

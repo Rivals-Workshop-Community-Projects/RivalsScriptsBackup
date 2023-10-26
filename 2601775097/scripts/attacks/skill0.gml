@@ -1,10 +1,14 @@
-// [0] LIGHT DAGGER - GROUND VERSION
+// [0] LIGHT DAGGER
 var atk = AT_NTHROW;
 
-set_attack_value(atk, AG_CATEGORY, 0);
+set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("skill0"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("skill0_hurt"));
-set_attack_value(atk, AG_NUM_WINDOWS, 9);
+set_attack_value(atk, AG_AIR_SPRITE, sprite_get("skill0_air"));
+set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("skill0_air_hurt"));
+set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
+set_attack_value(atk, AG_LANDING_LAG, 5);
 
 //LIGHT DAGGER 1 (1-4)
 
@@ -17,6 +21,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_spirit_flame_1"));
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //windup 2
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -24,6 +29,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[0].mp_cost1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num++; //throw
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -32,6 +38,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_charged_flame_release"));
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -40,6 +47,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //LIGHT DAGGER 2 (5-8)
 
@@ -51,6 +59,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_spirit_flame_1"));
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //windup 2
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -58,6 +67,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[0].mp_cost2);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num++; //throw
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -66,6 +76,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_charged_flame_release"));
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -74,11 +85,14 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++;
 set_window_value(atk, window_num, AG_WINDOW_GOTO, 1);
 
-set_num_hitboxes(atk, 2);
+set_attack_value(atk, AG_NUM_WINDOWS, window_num);
+
+/////////////////////////////////////////////////////////////////
 
 var hitbox_num = 1; //light dagger
 set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 1);
@@ -137,6 +151,8 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.3);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 15); //burning fury stat
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 0);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+
+set_num_hitboxes(atk, hitbox_num);

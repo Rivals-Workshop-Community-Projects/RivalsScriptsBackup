@@ -1,7 +1,7 @@
 // U-STRONG - normal ver.
 var atk = AT_USTRONG;
 
-set_attack_value(atk, AG_CATEGORY, 2);
+set_attack_value(atk, AG_CATEGORY, 0);
 set_attack_value(atk, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 8);
@@ -195,8 +195,8 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 40);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 8);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 16);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 16);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 100);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);

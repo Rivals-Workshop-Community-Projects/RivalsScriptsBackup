@@ -1,5 +1,7 @@
 //css_draw
 
+alt_cur = get_player_color(player);
+
 //PORTRAITS OVERLAY
 switch (alt_cur)
 {

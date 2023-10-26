@@ -35,7 +35,6 @@ else
 if (got_gameplay_time == 4 && !bibical && attack != AT_INTRO)
 {
     set_attack(has_theikos ? AT_THEIKOS : AT_INTRO);
-    exit;
 }
 
 
@@ -198,7 +197,6 @@ if (notice_time > -1)
 
 //mana mini gauge appear logic
 if (mp_mini_timer > 0) mp_mini_timer --;
-
 
 //HOLY BURNING MECHANIC
 if (holyburn_active)
@@ -394,7 +392,6 @@ if (!menu_active)
                 
                 if (dagger_spam_cd > 0) dagger_spam_cd --;
                 move_cooldown[skill[0].skill_attack] = dagger_spam_cd;
-                move_cooldown[skill[0].skill_attack_air] = dagger_spam_cd;
                 break;
             case 8: //ember fist
                 if (fury_ember_timer > 0) fury_ember_timer --;
@@ -640,6 +637,7 @@ if (!menu_active)
         }
     }
 }
+mp_consume_check();
 
 
 //theikos strongs
@@ -947,10 +945,11 @@ if ("fs_char_initialized" in self || "superTrue" in self || can_overdrive)
 }
 
 //theia evlogia
-if (has_theikos && (was_reloaded || theikos_type == 0 && got_gameplay_time > 100))
+if (theikos_type > 0 && (alt_cur == 0 || alt_cur == 27) || alt_cur == 26)
 {
-    theikos_type = 1 + found_cheapie;
-    exit;
+    theikos_color_time += theikos_color_increase ? 1 : -1;
+    if (theikos_color_increase && theikos_color_time >= theikos_color_time_max || theikos_color_time <= 0) theikos_color_increase = !theikos_color_increase;
+	user_event(1);
 }
 
 if (theikos_type > 0)
@@ -961,6 +960,8 @@ if (theikos_type > 0)
 
     if (theikos_type == 2) godpower(true);
 }
+
+if (has_theikos && (was_reloaded || theikos_type == 0 && got_gameplay_time > 100)) theikos_type = 1 + found_cheapie;
 
 ///////////////////////////////////////////////////////////////// MISC ////////////////////////////////////////////////////////////////
 
@@ -1056,14 +1057,11 @@ if (alt_cur == 25)
 }
 
 ////////////////////////////////////////////////////////// VALUE STORAGE /////////////////////////////////////////////////////////////////
-was_free = free;
+if (was_free != free) was_free = free;
 
 //Custom Hitbox Colors System (by @SupersonicNK)
 //Put this above all the #defines in your script
 prep_hitboxes();
-
-//bar MP consumption on the attack grid
-custom_attack_grid();
 
 //this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
 if (!found_cheapie && got_gameplay_time > got_gameplay_time-1 || found_cheapie && theikos_type == 0) check_cheapie();
@@ -1099,60 +1097,7 @@ user_event(7);
         }
     }
 }
-#define custom_attack_grid
-{
-    //looping window for X times
-    var window_loop_value;
-    window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES);
 
-    //MP mechanic
-    var mp_amount;
-    var mp_time;
-    var mp_type;
-    mp_amount = get_window_value(attack, window, AG_WINDOW_MP_CONSUME);
-    mp_time = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TIME);
-    mp_type = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TYPE);
-
-    if (!hitpause || attack == AT_THEIKOS)
-    {
-        //loop window
-        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9)
-        {
-            if (window_timer == window_end-1)
-            {
-                attack_end(attack); //reset hitboxes
-                if (window_loops <= window_loop_value) window_timer = 0; //window_timer is -1 so window_timer 0 can spawn hitboxes
-            }
-
-            if (window_loop_value > 0)
-            {
-                if (window_timer == 0) window_loops ++; //at the start of the window
-
-                if (window_loops > window_loop_value)
-                {
-                    destroy_hitboxes();
-                    window += 1;
-                    window_timer = 0;
-                    window_loops = 0;
-                }
-            }
-        }
-
-        //MP mechanic
-        if (mp_amount != 0 && is_attacking && !infinite_mp_mode)
-        {
-            switch (mp_type)
-            {
-                case 0:
-                    if (window_timer == mp_time) mp_current -= floor(mp_amount);
-                    break;
-                case 1:
-                    if (state_timer % mp_time == 0) mp_current -= floor(mp_amount);
-                    break;
-            }
-        }
-    } 
-}
 #define bar_pause(enable)
 {
     if (enable)
@@ -1280,6 +1225,28 @@ user_event(7);
     else fx_name.spr_dir = fx_dir;
     
 }
+#define mp_consume_check()
+{
+    var mp_amount;
+    var mp_time;
+    var mp_type;
+    mp_amount = get_window_value(attack, window, AG_WINDOW_MP_CONSUME);
+    mp_time = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TIME);
+    mp_type = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TYPE);
+
+    if (mp_amount != 0 && is_attacking && !infinite_mp_mode)
+    {
+        switch (mp_type)
+        {
+            case 0:
+                if (window_timer == mp_time) mp_current -= floor(mp_amount);
+                break;
+            case 1:
+                if (state_timer % mp_time == 0) mp_current -= floor(mp_amount);
+                break;
+        }
+    }
+}
 
 
 #define od_gauge_flash()
@@ -1396,6 +1363,7 @@ user_event(7);
         godstun(enable);
     }
 }
+
 
 #define check_string_for_name(player, string)
 {

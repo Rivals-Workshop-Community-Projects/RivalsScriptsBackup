@@ -80,6 +80,8 @@ if (attack == AT_TAUNT){
     }
 }
 
+var dstrong_startup = get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH);
+
 if (attack == AT_DSTRONG){
     if (window < 3){
         hud_offset = 20;
@@ -88,7 +90,7 @@ if (attack == AT_DSTRONG){
         hud_offset = 30;
     }
     if (window == 2){
-        if (window_timer == 3 && !hitpause){
+        if (window_timer == dstrong_startup && !hitpause){
             sound_play(asset_get("sfx_blow_medium2"));
             spawn_base_dust( x - (0 * spr_dir), y, "dash_start", spr_dir);
 		    spawn_base_dust( x - (0 * spr_dir), y, "dash_start", spr_dir*-1);

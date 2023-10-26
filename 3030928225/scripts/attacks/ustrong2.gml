@@ -120,7 +120,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
     set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
     set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[1]);
-    set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 10);
+    set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 9);
 
 }
 

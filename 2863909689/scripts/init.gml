@@ -38,7 +38,7 @@ fspec_jump = 38;
 fspec_start_y = 0;
 enter_fspecial_command_grab = false;
 grab_hsp_move = 4;
-fspec_hit_cooldown = 60;
+fspec_hit_cooldown = 40;
 
 uspec_hsp = 0;
 uspec_vsp = -12.5;

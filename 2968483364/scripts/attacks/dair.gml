@@ -106,6 +106,7 @@ set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DAIR, 4, HG_TECHABLE, 3);
 
 //ground hitbox
 set_hitbox_value(AT_DAIR, 5, HG_HITBOX_TYPE, 1);

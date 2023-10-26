@@ -1,7 +1,7 @@
 // D-STRONG - normal ver.
 var atk = AT_DSTRONG;
 
-set_attack_value(atk, AG_CATEGORY, 2);
+set_attack_value(atk, AG_CATEGORY, 0);
 set_attack_value(atk, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 5);

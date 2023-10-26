@@ -1,5 +1,7 @@
 //hitbox_update
 
+if (was_parried) draw_xscale = spr_dir;
+
 switch (attack)
 {
     case AT_USTRONG:
@@ -25,12 +27,6 @@ switch (attack)
                     sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
                     break;
             }
-        }
-        
-        if (attack == AT_NSPECIAL_AIR)
-        {
-            proj_angle = -45 * spr_dir;
-            if (was_parried) proj_angle = 45 * spr_dir;
         }
         break;
     //light hookshot
@@ -191,8 +187,6 @@ switch (attack)
         with (oPlayer) if (lightstun_type == 1) other.can_hit[player] = 1;
         break;
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 

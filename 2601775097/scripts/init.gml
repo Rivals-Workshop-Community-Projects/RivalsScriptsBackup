@@ -302,7 +302,8 @@ switch (alt_cur)
         no_effect_line_color = [32, 0, 178];    
         break;
     case 16: //seasonal-halloween
-        if (bibical) no_effect_line_color = [75, 43, 43];    
+        if (bibical) no_effect_line_color = [75, 43, 43];   
+        else no_effect_line_color = [0, 0, 0];
         break;    
     case 25: //helel
         no_effect_line_color = [52, 52, 52];    
@@ -369,7 +370,7 @@ __hb_draw_spr = sprite_get("hitbox_shapes");
 //color array
 hb_color[0] = 0;        //nothing
 hb_color[1] = $00FFFF;  //sweetspot
-hb_color[2] = $FFFFFF;  //holy light
+hb_color[2] = $88FFFF;  //holy light
 hb_color[3] = $FFFF00;  //holy fire
 
 
@@ -417,7 +418,6 @@ mp_cost_strongs = 5;    //strongs
 was_free = free;
 
 
-
 //record skill data
 skill_script_type = 0;
 user_event(2);
@@ -431,7 +431,7 @@ skill = [0]; //this array checks all the attacks
 a = 0; //array start
 
 //skill setup
-AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
+AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, -1, 5, 5, 5);
 AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
 AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
 AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 20, 10, 40);
@@ -768,9 +768,11 @@ found_cheapie = false;
 prev_attack = 0;
 theikos_music = false;
 
-/////////////////////////////////////////////////////////// WORKSHOP SECTION ////////////////////////////////////////////////////////////
+theikos_color_time_max = 30;
+theikos_color_time = 0;
+theikos_color_increase = true;
 
-made_by_bar = true;
+/////////////////////////////////////////////////////////// WORKSHOP SECTION ////////////////////////////////////////////////////////////
 
 //greenwood stage compatibility
 greenwood_cheer = 1;
@@ -878,8 +880,12 @@ pot_compat_text = "Holy Schnitzel";
 
 //Quote
 bar_victory_quote = "No problem.";
+emote = 2;
 bar_handled_victory_quote = false;
 bar_was_in_stage = get_stage_data(SD_ID);
+
+//sonic rainbow ring trick
+sonic_rainbowring_atk = 46;
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 
