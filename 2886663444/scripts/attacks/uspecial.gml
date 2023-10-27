@@ -113,10 +113,10 @@ set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 80);
 set_hitbox_value(AT_USPECIAL, 5, HG_PRIORITY, 5);
 set_hitbox_value(AT_USPECIAL, 5, HG_DAMAGE, 4);//4
 set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 45);
-set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .7);
-set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, fspecSmallHit);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("dagger_stab2"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, -1);

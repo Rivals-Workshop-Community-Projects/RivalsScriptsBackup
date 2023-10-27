@@ -267,13 +267,13 @@ set_color_profile_slot( 26, 5, 0, 255, 0 ); //Eyes
 set_color_profile_slot( 26, 6, 0, 255, 0 ); //ice
 
 // Bice Cream
-set_color_profile_slot( 27, 0, 255, 15, 138 ); //Blue
-set_color_profile_slot( 27, 1, 120, 22, 150 ); //Fur
-set_color_profile_slot( 27, 2, 0, 0, 199 ); //Gold
-set_color_profile_slot( 27, 3, 255, 0, 136 ); //Pink
-set_color_profile_slot( 27, 4, 0, 64, 125 ); //Belt
-set_color_profile_slot( 27, 5, 255, 74, 74 ); //Eyes
-set_color_profile_slot( 27, 6, 0, 0, 255 ); //ice
+set_color_profile_slot( 27, 0, 46, 74, 255 ); //Blue
+set_color_profile_slot( 27, 1, 169, 0, 252 ); //Fur
+set_color_profile_slot( 27, 2, 94, 116, 255 ); //Gold
+set_color_profile_slot( 27, 3, 255, 130, 196 ); //Pink
+set_color_profile_slot( 27, 4, 209, 76, 148 ); //Belt
+set_color_profile_slot( 27, 5, 199, 0, 0 ); //Eyes
+set_color_profile_slot( 27, 6, 99, 126, 255 ); //ice
 
 // Hyper Light
 set_color_profile_slot( 28, 0, 191, 51, 51 ); //Blue

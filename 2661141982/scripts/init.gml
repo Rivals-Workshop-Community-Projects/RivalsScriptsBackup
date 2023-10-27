@@ -77,7 +77,7 @@ lure_fade = 0;
 
 
 char_height = 52;
-idle_anim_speed = .2;
+idle_anim_speed = .15;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;
 dash_anim_speed = .2;
@@ -160,9 +160,9 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-wait_time = 90;
-wait_length = 100;
-wait_sprite = sprite_get("wait");
+//wait_time = 90;
+//wait_length = 100;
+//wait_sprite = sprite_get("wait");
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");

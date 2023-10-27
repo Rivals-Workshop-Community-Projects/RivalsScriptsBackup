@@ -44,21 +44,21 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         {
             parasiteLevel = 0;
             walk_speed = 4.75;
-            initial_dash_speed = 7.5;
-            dash_speed = 6.5;
+            initial_dash_speed = 6.5;
+            dash_speed = 6;
         }
         else if (parasiteTimer < 60*60)
         {    
             parasiteLevel = 1;
             walk_speed = 5.05;
-            initial_dash_speed = 7.8;
+            initial_dash_speed = 7.5;
             dash_speed = 6.8;
         }
         else if (parasiteTimer < 60*90)
         {    
             parasiteLevel = 2;
             walk_speed = 6.0;
-            initial_dash_speed = 9.5;
+            initial_dash_speed = 9.0;
             dash_speed = 9.0;
         }
         else
@@ -87,7 +87,7 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         if(parasiteLevel == 0)
         {
             walk_speed = 5.05;
-            initial_dash_speed = 7.8;
+            initial_dash_speed = 7.5;
             dash_speed = 6.8;
         }
         if(parasiteLevel == 1)

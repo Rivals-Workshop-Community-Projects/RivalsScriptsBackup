@@ -27,7 +27,7 @@ if (my_hitboxID.attack == AT_FSPECIAL_AIR) {
 
 
 if atk == AT_FTILT {
-	sound_play(asset_get("sfx_may_whip2"), 0, noone, 0, 1)
+	sound_play(asset_get("sfx_may_whip2"), 0, noone, 0, 1);
 }
 if(atk == AT_DSPECIAL)
 {
@@ -37,7 +37,7 @@ if(atk == AT_DSPECIAL)
 		desirae_rewind_state = 0;
 		desirae_timelock = true;
 		desirae_time_mode = 0;
-		desirae_time_percent = get_player_damage(player)+(pillarhit?0:25);
+		desirae_time_percent = get_player_damage(player)+(pillarhit?0:20);
 		desirae_time_left = 60*5;
 		// desirae_time_x = x;
 		// desirae_time_y = y;

@@ -23,7 +23,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //recovery
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -42,13 +42,13 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 31);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .7);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .5);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
 // set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 90); //this is a low angle for an aerial, you usually want to be above 45
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);//this is normal hitpause for a combo move
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);//this is normal hitpause for a combo move
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5)//this is normal hitpause scaling for a combo move
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, frost_fx);

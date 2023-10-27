@@ -31,7 +31,7 @@ set_window_value(AT_FTHROW, 5, AG_WINDOW_LENGTH, 6);//10
 set_window_value(AT_FTHROW, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTHROW, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
-set_window_value(AT_FTHROW, 6, AG_WINDOW_LENGTH, 18);//10
+set_window_value(AT_FTHROW, 6, AG_WINDOW_LENGTH, 12);//10
 set_window_value(AT_FTHROW, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTHROW, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FTHROW, 6, AG_WINDOW_HAS_SFX, 1);

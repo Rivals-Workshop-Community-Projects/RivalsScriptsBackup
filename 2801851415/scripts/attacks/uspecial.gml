@@ -71,7 +71,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 60);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 80);
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6); //this is absurd base knockback, do not give values this high to characters, sandbert has it because sandbert reasons
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 3); //this is good hitpause for a very strong kill move
@@ -94,10 +94,10 @@ set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_USPECIAL, 3, HG_EXTRA_CAMERA_SHAKE, 2);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6);//8 //this is absurd base knockback, do not give values this high to characters, sandbert has it because sandbert reasons
-//set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .8); //this is extremely high knockback scaling, this is a powerful kill scaling for a move with 6 base knockback, 11 means this move kills far earlier than anything normally should
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6);
+//set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, frost_fx);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 10); //this is good hitpause for a very strong kill move
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_oly_nspecial_flashbreak"));
 set_hitbox_value(AT_USPECIAL, 3, HG_IGNORES_PROJECTILES, 0);

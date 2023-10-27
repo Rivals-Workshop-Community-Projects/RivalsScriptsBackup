@@ -22,10 +22,10 @@ switch(attack){
 	break;
 	
 	case AT_USPECIAL:
-		if(window < 4)
-			can_fast_fall = false;
-		else
+		if(window >= 4 && was_parried == false)
 			can_fast_fall = true;
+		else
+			can_fast_fall = false;
 		if(window > 1)
 		can_wall_jump = true;
 		
@@ -291,6 +291,7 @@ switch(attack){
 		can_move = false
 	break;
 	case AT_DSPECIAL_2:
+		move_cooldown[AT_DSPECIAL] = 120;
 			//Flip code
     	if (window >= 1 && window_timer == 1){
         	var dir;
@@ -374,12 +375,17 @@ switch (attack) {
 	if window == 1 && window_timer == 7 {
 		sound_play(asset_get("sfx_swipe_medium2"))
 	}
+
+	if was_parried == true {
+		hsp = 0;
+		off_edge = false;
+	}
 	break;
 //	case AT_NAIR:
 //		if window == 1 && window_timer == 2 {
 //			sound_play(asset_get("sfx_swipe_weak2"))
 //		}
-	break;
+//	break;
 	case AT_FAIR: 
 		if window == 1 && window_timer == 11 {
 			sound_play(asset_get("sfx_ice_ftilt"))

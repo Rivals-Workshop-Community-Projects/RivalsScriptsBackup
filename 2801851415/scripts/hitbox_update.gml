@@ -22,12 +22,12 @@ if(attack == AT_NSPECIAL)
     if(hbox_num == 2)
     {
         through_platforms = 999;
-        y -= sin((hitbox_timer+1)/5)*25;
-        y += sin(hitbox_timer/5)*25;
-        hsp = 6*spr_dir;
+        y -= sin((hitbox_timer+1)/5)*15.4;
+        y += sin(hitbox_timer/5)*17;
+        hsp = 7*spr_dir;
     }
     else
-        hsp = clamp(hsp*1.2, -11, 11);
+        hsp = clamp(hsp*1.3, -11, 11);
 }
 
 

@@ -6,7 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial3_hurt"));
 
 //startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -36,9 +36,9 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2); //setting this to 2 makes i
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -15);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 125);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 125);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -65);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 100);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 100);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
@@ -49,7 +49,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .65);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 4);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("big_hitfx")); //this sets the projectile sprite
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1); //this sets the hitbox of the projectile to be the same as the sprite
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0);

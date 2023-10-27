@@ -79,7 +79,8 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DESTROY_EFFECT, 29); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_PARTICLE_NUM, 1); 
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
-
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 set_hitbox_value(AT_EXTRA_1, 2, HG_PARENT_HITBOX, 2);  //use this line to make follow up hitboxes share values with this one, remove it if it should be different
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 2); //setting this to 2 makes it a projectile
@@ -113,7 +114,8 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_DESTROY_EFFECT, 29); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
 set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_PARTICLE_NUM, 1); 
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
-
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 set_hitbox_value(AT_EXTRA_1, 3, HG_PARENT_HITBOX, 3);  //use this line to make follow up hitboxes share values with this one, remove it if it should be different
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_TYPE, 2); //setting this to 2 makes it a projectile
@@ -147,3 +149,5 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_DESTROY_EFFECT, 29); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
 set_hitbox_value(AT_EXTRA_1, 3, HG_HIT_PARTICLE_NUM, 1); 
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
+set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

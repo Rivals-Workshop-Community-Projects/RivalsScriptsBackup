@@ -85,7 +85,7 @@ if (attack == AT_FSPECIAL){
         if(window_timer == 4)
             hsp = 13*spr_dir;
         else if(window_timer == 3)
-            hsp = 18*spr_dir;
+            hsp = 13*spr_dir;
         else
             hsp = 12*spr_dir;
     }
@@ -153,11 +153,19 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_DSPECIAL){
-    if(parasiteLevel == 2 || parasiteLevel == 1 && parasiteTimer2 > 0)
-    {
-        soft_armor = 12;
-        outline_color = [50,50,50]
+    if(parasiteLevel == 2 || parasiteLevel == 1 && parasiteTimer2 > 0) {
+	    if (window == 1 && window_timer >= 3 || window == 2 && window_timer <= 5) {
+	        soft_armor = 12;
+	        outline_color = [60,60,60];
+	        init_shader();
+	    }
+	    if (window == 2 && window_timer > 5) {	
+	    	soft_armor = 0;
+	    	outline_color = [0,0,0];
+	    	init_shader();
+	    }
     }
+	    
     if (window == 1 && window_timer == 1 || window == 7) { //Reset variables
         reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
     	grabbed_player_obj = noone; 

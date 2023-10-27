@@ -57,6 +57,7 @@ set_window_value(AT_FAIR, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 7, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FAIR, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 7, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_FAIR, 7, AG_WINDOW_HAS_WHIFFLAG, true);
 
 //recovery window, these should have whifflag if the move is a melee hitbox
 set_window_value(AT_FAIR, 8, AG_WINDOW_TYPE, 1);

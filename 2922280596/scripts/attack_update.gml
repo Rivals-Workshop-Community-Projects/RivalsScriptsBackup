@@ -215,7 +215,7 @@ if (attack == AT_FSPECIAL_2 && window == 2 && window_timer == 6)
     sound_play(asset_get("sfx_ell_arc_taunt_start"), 0, noone, 1, 1.2);
 }
 if (attack == AT_FSPECIAL_AIR){
-	can_wall_jump = window > 1;
+	can_wall_jump = window > 3;
 	can_fast_fall = false;
 	//set_window_value(AT_FSPECIAL_AIR, 5, AG_WINDOW_TYPE, 7 * !has_hit);
 	move_cooldown[AT_FSPECIAL_AIR] = 999;
@@ -228,8 +228,8 @@ if (attack == AT_FSPECIAL_AIR){
         sound_play(asset_get("sfx_blow_heavy1"));
         spawn_hit_fx(x+20*spr_dir, y, bigfx)
         hitpause = true;
-        hitstop = 5;
-        old_vsp = -9;
+        hitstop = 2;
+        old_vsp = -7;
         old_hsp = -1*spr_dir;
     }
 

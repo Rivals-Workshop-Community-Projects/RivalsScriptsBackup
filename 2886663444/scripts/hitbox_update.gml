@@ -45,7 +45,7 @@ if ((attack == AT_FSPECIAL)  && hbox_num == 1) {
 	}
 	
 	if player_id.move_cooldown[AT_FSPECIAL] > 0 {
-		player_id.move_cooldown[AT_FSPECIAL] = 5
+		player_id.move_cooldown[AT_FSPECIAL] = 15
 		
 		sprite_index = sprite_get("nspecial_projectile_abyss")
 		

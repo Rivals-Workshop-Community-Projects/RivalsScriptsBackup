@@ -38,11 +38,11 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 155);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 175);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 60);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -65);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 91);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 77);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 75);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 75);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
@@ -59,7 +59,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 16);//16
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 13);//16
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);

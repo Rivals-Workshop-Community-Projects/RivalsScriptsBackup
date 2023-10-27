@@ -176,7 +176,7 @@ switch (atk) {
     break;
     case AT_FSPECIAL: 
         if (free) {
-            old_hsp = 8*spr_dir;
+            old_hsp = 7*spr_dir;
             old_vsp = -3;
         }
         if hbox == 2 {

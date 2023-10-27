@@ -27,15 +27,17 @@ if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 30
 	//can_move = true;
 	can_fast_fall = false;
+	
 	if (window >= 3){
 		can_wall_jump = true;
 	}
+	/*
     if (!free && window == 3 && !hitpause){
     	destroy_hitboxes();
     	CorrectHurtboxes();
         set_attack(AT_DSPECIAL_2);
-
     }
+    */
     }
 //flip direction
 if (attack == AT_USPECIAL || attack == AT_DSPECIAL)
@@ -133,15 +135,15 @@ if ( attack == AT_DAIR){
 if ( attack == AT_FSPECIAL){
 		if (window == 1){
         	if ( up_down ){//|| up_down and (spr_dir == 1 && left_down) || up_down and (spr_dir == -1 && right_down)
-        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 20);
+        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
             	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -12);
         	}
         	if (joy_pad_idle || !up_down and !down_down){
-        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 24);
+        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 20);
         	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
         	}
         	if ( down_down and  free){ //|| down_down and (spr_dir == -1 && left_down) || down_down and (spr_dir == 1 && right_down)
-        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 20);
+        	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
         	    set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 12);
         	}
         can_wall_jump = true;

@@ -64,8 +64,8 @@ switch(state)
     break;
 
     case 1: //return to player.
-        hsp -= floor(x - player_id.x) / 200;
-        vsp -= floor(y - player_id.y+10) / 200;
+        hsp -= floor(x - player_id.x) / 300;
+        vsp -= floor(y - player_id.y+10) / 300;
         if(player_id.parasiteLevel != 2 || player_id.parasiteLevel != 1 && player_id.parasiteTimer2 > 0)
             player_id.move_cooldown[AT_NSPECIAL] = 20;
             
