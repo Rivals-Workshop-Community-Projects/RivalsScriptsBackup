@@ -26,9 +26,23 @@ switch(attack)
 		if (changeSprite = true)
 		{
 			sprite_index = sprite_get("bike_spin");
-			if (hitbox_timer == 27 && player_id.moveDisc == true)
+			if (hitbox_timer == 27 && player_id.moveDisc == true && !get_match_setting(SET_TEAMS))
 			{
 				can_hit_self = true;				
+			}
+			if (hitbox_timer == 37 && player_id.moveDisc == true && get_match_setting(SET_TEAMS))
+			{
+				with (player_id)
+				{
+					move_cooldown[AT_DSPECIAL] = 0;
+					invince_time = 0;
+					invincible = 0;
+					hsp = 0;
+					vsp = 0;
+					tsprite_index = -1;
+					thrownBike = noone;
+    				set_attack(AT_DSPECIAL);
+				}
 			}
 			if (hitbox_timer == 60 && player_id.moveDisc = false)
 			{
@@ -61,10 +75,9 @@ switch(attack)
 			}
 			if ((has_hit && player_id.moveDisc == true) || hitbox_timer == 12 )
 			{
-				hit_flipper = 4;
 				player_id.Fspecial_positionX = x;
 				player_id.Fspecial_positionY = y;
-				if (hitbox_timer < 33)
+				if (hitbox_timer < 27)
 				{
 					hsp = 0;
 					vsp = 0;
@@ -78,6 +91,7 @@ switch(attack)
 			{
 				sprite_index = sprite_get("fspecial_proj")
 				grounds = 1;
+				walls = 1;
 				var disc_direction = point_direction(x, y, player_id.x, player_id.y);
 				var disc_distance = point_distance(x, y, player_id.x, player_id.y);
 				
@@ -90,14 +104,14 @@ switch(attack)
 			}
 			if (hitbox_timer >= 59)
 			{
-				hit_flipper = 0;
+				grounds = 1;
 				walls = 1;
 				var predictPosX = player_id.x;
-				if (player_id.right_down == true)
+				if (player_id.right_down == true && player_id.hsp > 0.5)
 				{
 					predictPosX = player_id.x + 80;
 				}
-				else if (player_id.left_down == true)
+				else if (player_id.left_down == true && player_id.hsp < -0.5)
 				{
 					predictPosX = player_id.x - 80;		
 				}
@@ -112,7 +126,6 @@ switch(attack)
 	
 				hsp = lengthdir_x (disc_distance2, disc_direction2) /6;
 				vsp = lengthdir_y(disc_distance2, disc_direction2) /6;
-				grounds = 1;
 			}
 		}
 		if (player_id.moveDisc == false)

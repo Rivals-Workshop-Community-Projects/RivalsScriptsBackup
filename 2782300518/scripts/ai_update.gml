@@ -126,8 +126,8 @@ else if (state != PS_SPAWN)
 	//AI difficulty affects wait time, higher difficulties will see a more aggressive Carol   
 	if(reaction_time == -1 && !attacking)
 	{
-		reaction_time = 29 - (temp_level * 3);
-		ai_attack_time = 29 - (temp_level * 3);
+		reaction_time = 42 - (temp_level * 3);
+		ai_attack_time = 42 - (temp_level * 3);
 	}
 	if reaction_time > 0
 	{
@@ -499,7 +499,7 @@ else if (state != PS_SPAWN)
    				switch (attack)
    				{
    					case AT_DTILT:
-   					case 45:
+   					case AT_DTHROW:
 						clear_button_buffer( PC_ATTACK_PRESSED );
 						clear_button_buffer( PC_JUMP_PRESSED );
 						if ai_target.x > x
@@ -1039,7 +1039,7 @@ if (!free)
 			break;
 			//Jab
 			case AT_JAB:
-			case AT_EXTRA_3:
+			case AT_NTHROW:
 				clear_button_buffer( PC_ATTACK_PRESSED );
 				joy_pad_idle = true;
 				left_down = false;
@@ -1052,7 +1052,7 @@ if (!free)
 			break;
 			//FTilt
 			case AT_FTILT:
-			case 47:
+			case AT_FTHROW:
 				clear_button_buffer( PC_ATTACK_PRESSED );
 				joy_pad_idle = true;
 				if x > ai_target.x
@@ -1073,7 +1073,7 @@ if (!free)
 			break;
 			//Utilt
 			case AT_UTILT:
-			case 46:
+			case AT_UTHROW:
 				clear_button_buffer( PC_ATTACK_PRESSED );
 				joy_pad_idle = true;
 				left_down = false;
@@ -1086,7 +1086,7 @@ if (!free)
 			break;
 			//DTilt
 			case AT_DTILT:
-			case 45:
+			case AT_DTHROW:
 				clear_button_buffer( PC_ATTACK_PRESSED );
 				joy_pad_idle = true;
 				left_down = false;
@@ -1552,7 +1552,7 @@ if (motorbike == true)
 	switch(argument[0])
 	{
 		case "tilts":
-			var attacke = [AT_EXTRA_3, 47, 46, 45, 3, AT_USPECIAL_2, AT_NSPECIAL_2];
+			var attacke = [AT_NTHROW, AT_FTHROW, AT_UTHROW, AT_DTHROW, 3, AT_USPECIAL_2, AT_NSPECIAL_2];
 		break;
 		case "aerials":
 			var attacke = [44, 43, 42, AT_EXTRA_1, 39, AT_USPECIAL_2];
@@ -1612,7 +1612,7 @@ switch attacke[i]
 		distadd_y = 0;
 	break;
 	case AT_FTILT:
-	case 47:
+	case AT_FTHROW:
 		distadd_x = 20;
 		distadd_y = 0;
 	break;
@@ -1632,10 +1632,10 @@ if (motorbike == true)
 {
 	switch (attacke[i])
 	{
-		case AT_EXTRA_3:
-		case 47:
-		case 46:
-		case 45:
+		case AT_NTHROW:
+		case AT_FTHROW:
+		case AT_UTHROW:
+		case AT_DTHROW:
 		case AT_USTRONG_2:	
 		case AT_FSTRONG_2:
 		case AT_DSTRONG_2:

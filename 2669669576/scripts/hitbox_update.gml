@@ -15,6 +15,9 @@ if(attack == AT_FSTRONG and hbox_num == 1){
     }*/
 }
 
+if(attack == AT_NSPECIAL and "is_gengar" in self and hitbox_timer > 6){
+    hit_priority = 1;
+}
 
 if(attack == AT_FSTRONG and hbox_num == 4){
     if(hitbox_timer == 6){

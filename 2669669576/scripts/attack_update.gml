@@ -111,6 +111,7 @@ switch(attack){
 						nspecial_cur_size = 1;
 						nspecial_hitbox = create_hitbox(AT_NSPECIAL, proj_size, x-spr_dir*24, y-30);
 						nspecial_hitbox.shadowball_size = proj_size;
+						nspecial_hitbox.is_gengar = true;
 						nspecial_hitbox.hsp = 0;
 						nspecial_cur_window = 0;
 						nspecial_cur_frame = 0;
@@ -160,6 +161,7 @@ switch(attack){
 				nspecial_cur_size = 1;
 				nspecial_hitbox = create_hitbox(AT_NSPECIAL, proj_size, x-spr_dir*24, y-30);
 				nspecial_hitbox.shadowball_size = proj_size;
+				nspecial_hitbox.is_gengar = true;
 				nspecial_hitbox.hsp = 0;
 			}
 		} else if (window == 6 and instance_exists(nspecial_hitbox)){

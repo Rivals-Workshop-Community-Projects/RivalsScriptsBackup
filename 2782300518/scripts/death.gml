@@ -20,6 +20,7 @@ if (kickTime > 0)
 }
 bikeReady = 0;
 
+pounce_number = 0;
 //Reset Carol's motorbike and fuel to 0 upon death
 if (motorbike == true)
 {

@@ -1,487 +1,687 @@
-//Dspecial Prevent Use Off Stage
-var stage_x = get_stage_data (SD_X_POS);
-
-if (x < stage_x || x > room_width - stage_x){
-	move_cooldown[AT_DSPECIAL] = 99999;
+//Purple Galaxy Effect Fatality
+if (instance_exists(hit_player_obj) && hit_player_obj.activated_kill_effect){
+	purple += 1;
 }
 
-if (x > stage_x && x < room_width - stage_x){
-	move_cooldown[AT_DSPECIAL] = 0;
+if (instance_exists(hit_player_obj) && !hit_player_obj.activated_kill_effect){
+	purple = 0;
 }
 
-
-
-//Ice Clone Gauge
-if (GAUGE_CURRENT = 0){
-	move_cooldown[AT_FSPECIAL] = 5;
+if (instance_exists(hit_player_obj) && hit_player_obj.activated_kill_effect && purple == 1 && spr_dir == 1){
+    	var fx = spawn_hit_fx(x, y-100, fatality)
+		fx.depth = -10
 }
 
-if (GAUGE_CURRENT = 1){
-	move_cooldown[AT_FSPECIAL] = 10;
-}
-
-if (GAUGE_CURRENT = 2){
-	move_cooldown[AT_FSPECIAL] = 20;
-}
-
-if (GAUGE_CURRENT = 3){
-	move_cooldown[AT_FSPECIAL] = 30;
-}
-
-if (GAUGE_CURRENT = 4){
-	move_cooldown[AT_FSPECIAL] = 40;
-}
-
-if (GAUGE_CURRENT = 5){
-	move_cooldown[AT_FSPECIAL] = 50;
-}
-
-if (GAUGE_CURRENT = 6){
-	move_cooldown[AT_FSPECIAL] = 60;
-}
-
-if (GAUGE_CURRENT = 7){
-	move_cooldown[AT_FSPECIAL] = 70;
-}
-
-if (GAUGE_CURRENT = 8){
-	move_cooldown[AT_FSPECIAL] = 80;
-}
-
-if (GAUGE_CURRENT = 9){
-	move_cooldown[AT_FSPECIAL] = 90;
-}
-
-if (GAUGE_CURRENT = 10){
-	move_cooldown[AT_FSPECIAL] = 100;
-}
-
-if (GAUGE_CURRENT = 11){
-	move_cooldown[AT_FSPECIAL] = 110;
+if (instance_exists(hit_player_obj) && hit_player_obj.activated_kill_effect && purple == 1 && spr_dir == -1){
+    	var fx = spawn_hit_fx(x, y-100, fatality2)
+		fx.depth = -10
 }
 
 
-if (GAUGE_CURRENT = GAUGE_MAX){
-	move_cooldown[AT_FSPECIAL] = 0;
+
+//Flip Animations
+if (jump_pressed && free && right_down && spr_dir == 1){
+	if (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR){
+		front_flip = true;
+		flip_timer = 30;
+	}
 }
 
+if (jump_pressed && free && left_down && spr_dir == 1){
+	if (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR){
+		back_flip = true;
+		flip_timer = 30;
+	}
+}
+
+if (jump_pressed && free && left_down && spr_dir == -1){
+	if (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR){
+		front_flip = true;
+		flip_timer = 30;
+	}
+}
+
+if (jump_pressed && free && right_down && spr_dir == -1){
+	if (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR){
+		back_flip = true;
+		flip_timer = 30;
+	}
+}
+
+if (flip_timer > 0){
+	flip_timer -= 1;
+}
+
+if (flip_timer == 0){
+	front_flip = false;
+	back_flip = false;
+}
+
+if (state != PS_FIRST_JUMP && state!= PS_DOUBLE_JUMP && state != PS_IDLE_AIR){
+	flip_timer = 0;
+}
+
+
+
+
+//Uspecial Cooldown Reset
+if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP){
+	move_cooldown[AT_USPECIAL] = 0;
+	move_cooldown[AT_USPECIAL_2] = 0;
+}
+
+
+//Parry FX
+if (state == PS_PARRY && state_timer == 16){
+	var fx = spawn_hit_fx(x, y-30, expire);
+		fx.depth = -10;
+}
+
+//Roll FX
+if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD || state == PS_AIR_DODGE){
+	if (state_timer == 2 || state_timer == 28){
+		var fx = spawn_hit_fx(x, y-30, expire);
+			fx.depth = -10;
+	}
+}
+
+//Air Dodge FX
+if (state == PS_AIR_DODGE){
+	if (state_timer == 2 || state_timer == 25){
+		var fx = spawn_hit_fx(x, y-30, expire);
+			fx.depth = -10;
+	}
+}
+
+//Waveland FX
+if (state == PS_WAVELAND && state_timer == 1){
+	var fx = spawn_hit_fx(x, y-30, expire);
+			fx.depth = -10;
+}
 
 
 //Alt Colours Hit Effects
 if (get_player_color( player ) == 1) {
 
-	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 127);
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 
-	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 20);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 20);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 20);
 
-	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 127);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 197);
 
-	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 127);
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 127);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 127);
+	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 197);
 
-	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 127);
-	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
 
-	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 125);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 
-	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 125);
+	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 20);
 
-	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 20);
 
-	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 127);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 20);
 
-	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 20);
+
+	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 20);
+
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 20);
+
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 20);
+
+	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 20);
+	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 197);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 197);
+
+	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));
+	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 20);
 }
 
 if (get_player_color( player ) == 2) {
 
-	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 3);
 
-	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 148);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 3);
 
-	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 148);
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 
-	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 3);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);
 
-	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 3);
+
+	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 148);
 
-	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 3);
 
-	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 148);
 
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 148);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 148);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 
-	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 148);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+
+	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 148);
-	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 3);
 
-	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);
+	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 3);
 
-	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 3);
 
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
 
-	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 148);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
 
-	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 3);
+
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 3);
+
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 3);
+
+	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 3);
+	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 148);
 	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 148);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+	set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 148);
 
-	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 3);
 }
 
 if (get_player_color( player ) == 3) {
 
 	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 120);
+	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 116);
 
-	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
 	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 
 	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 116);
 	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 116);
 	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 116);
+
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 120);
+	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 117);
 
 	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 120);
+	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 117);
 
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 120);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 120);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 120);
+	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 117);
 	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 117);
+	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 116);
 	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 117);
+	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 116);
 	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 117);
+	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 116);
+	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 116);
 
 	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 117);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 116);
+
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 116);
 
 	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 116);
 	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 116);
+
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 116);
+
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 116);
 
 	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
+	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 116);
+	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 117);
 	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 120);
+	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
+	set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 117);
 
 	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 117);
+	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 116);
 }
 
 if (get_player_color( player ) == 4) {
 
-	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 194);
 
-	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 194);
 	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 196);
+	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 194);
 
-	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
 
-	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 194);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 194);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 194);
 
-	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 194);
+
+	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 194);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 196);
+	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 66);
 
-	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 194);
 
-	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 194);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 196);
+	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 66);
 
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 196);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 196);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
 
-	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
+
+	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 194);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 196);
-	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 194);
 
-	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 13);
+	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 194);
 
-	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 194);
 
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 13);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 194);
 
-	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 194);
 
-	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 194);
+
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 194);
+
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 194);
+
+	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 194);
+	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
+	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 66);
 	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 196);
+	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 66);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
+	set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 66);
 
-	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 13);
+	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_forsburn_disappear"));
+	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 194);
 }
 
 if (get_player_color( player ) == 5) {
 
 	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 9);
 
-	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 
 	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 9);
 	set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 9);
 	set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 9);
+
+
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 161);
 
 	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 161);
 
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 161);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 161);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 161);
 	set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 150);
+	set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 9);
 	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 150);
+	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 9);
 	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 150);
+	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 9);
+	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 9);
 
 	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 150);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 9);
+
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 9);
 
 	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 9);
 	set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 9);
+
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 9);
+
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
+	set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 9);
 
 	set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 9);
+	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
+	set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 161);
 	set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
 	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
+	set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 161);
 
 	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 150);
+	set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 9);
 }
+
 
 
 
@@ -489,1082 +689,142 @@ if (get_player_color( player ) == 5) {
 
 //A
 if (has_rune("A")){
-	set_num_hitboxes(AT_UAIR,6);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 7);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 1);
 
-	set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 2);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
-	set_hitbox_value(AT_UAIR, 2, HG_PARENT_HITBOX, 1);
-	set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
-	set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
-	set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 2);
-	set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, 2);
-	set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -100);
-	set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 50);
-	set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, -1);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
 
-	set_hitbox_value(AT_UAIR, 3, HG_PARENT_HITBOX, 1);
-	set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
-	set_hitbox_value(AT_UAIR, 3, HG_WINDOW_CREATION_FRAME, 6);
-	set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 2);
-	set_hitbox_value(AT_UAIR, 3, HG_HITBOX_X, 2);
-	set_hitbox_value(AT_UAIR, 3, HG_HITBOX_Y, -100);
-	set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 50);
-	set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_UAIR, 4, HG_PARENT_HITBOX, 1);
-	set_hitbox_value(AT_UAIR, 4, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UAIR, 4, HG_WINDOW, 2);
-	set_hitbox_value(AT_UAIR, 4, HG_WINDOW_CREATION_FRAME, 9);
-	set_hitbox_value(AT_UAIR, 4, HG_LIFETIME, 2);
-	set_hitbox_value(AT_UAIR, 4, HG_HITBOX_X, 2);
-	set_hitbox_value(AT_UAIR, 4, HG_HITBOX_Y, -100);
-	set_hitbox_value(AT_UAIR, 4, HG_WIDTH, 50);
-	set_hitbox_value(AT_UAIR, 4, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_UAIR, 5, HG_PARENT_HITBOX, 1);
-	set_hitbox_value(AT_UAIR, 5, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UAIR, 5, HG_WINDOW, 2);
-	set_hitbox_value(AT_UAIR, 5, HG_WINDOW_CREATION_FRAME, 12);
-	set_hitbox_value(AT_UAIR, 5, HG_LIFETIME, 2);
-	set_hitbox_value(AT_UAIR, 5, HG_HITBOX_X, 2);
-	set_hitbox_value(AT_UAIR, 5, HG_HITBOX_Y, -100);
-	set_hitbox_value(AT_UAIR, 5, HG_WIDTH, 50);
-	set_hitbox_value(AT_UAIR, 5, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_UAIR, 6, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UAIR, 6, HG_WINDOW, 2);
-	set_hitbox_value(AT_UAIR, 6, HG_WINDOW_CREATION_FRAME, 15);
-	set_hitbox_value(AT_UAIR, 6, HG_LIFETIME, 2);
-	set_hitbox_value(AT_UAIR, 6, HG_HITBOX_X, 2);
-	set_hitbox_value(AT_UAIR, 6, HG_HITBOX_Y, -100);
-	set_hitbox_value(AT_UAIR, 6, HG_WIDTH, 50);
-	set_hitbox_value(AT_UAIR, 6, HG_HEIGHT, 80);
-	set_hitbox_value(AT_UAIR, 6, HG_SHAPE, 2);
-	set_hitbox_value(AT_UAIR, 6, HG_PRIORITY, 5);
-	set_hitbox_value(AT_UAIR, 6, HG_DAMAGE, 5);
-	set_hitbox_value(AT_UAIR, 6, HG_ANGLE, 90);
-	set_hitbox_value(AT_UAIR, 6, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_UAIR, 6, HG_KNOCKBACK_SCALING, .3);
-	set_hitbox_value(AT_UAIR, 6, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_UAIR, 6, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_ice_nspecial_hit_ground"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_UAIR, 6, HG_HITBOX_GROUP, -1);
-}
-
-if (has_rune("A") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 125);
-}
-
-if (has_rune("A") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 3);
-}
-
-if (has_rune("A") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 117);
-}
-
-if (has_rune("A") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 13);
-}
-
-if (has_rune("A") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_UAIR, 6, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_UAIR, 6, HG_VISUAL_EFFECT, 150);
 }
 
 
 //B
+if (has_rune("B")){
+	set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 3);
+
+	set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+	
+	set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
+	set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 5);
+	set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
+	set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+	set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+	set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_SFX, 0);
+
+	set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
+	set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 2);
+	set_hitbox_value(AT_FTILT, 4, HG_WINDOW, 2);
+
+	set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 25);
+	set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 25);
+	set_hitbox_value(AT_FTILT, 3, HG_LIFETIME, 25);
+	set_hitbox_value(AT_FTILT, 4, HG_LIFETIME, 25);
+}
 
 
 //C
 if (has_rune("C")){
-	set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 12);
-	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .7);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 31);
 }
 
 
 //D
 if (has_rune("D")){
-	set_num_hitboxes(AT_USPECIAL, 1);
-
-	set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 3);
-	set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 7);
-	set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -35);
-	set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 90);
-	set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 90);
-	set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
-	set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 7);
-	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 45);
-	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, .9);
-	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 6);
-	set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .4);
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 199);
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
-}
-
-if (has_rune("D") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 127);
-}
-
-if (has_rune("D") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 148);
-}
-
-if (has_rune("D") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 120);
-}
-
-if (has_rune("D") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 196);
-}
-
-if (has_rune("D") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
-	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 135);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .25);
 }
 
 
 //E
 if (has_rune("E")){
-	set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 30);
-	set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 30);
+	set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 8);
+	set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 20);
+	set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 18);
 }
 
 
 //F
-if (has_rune("F")){
-	set_num_hitboxes(AT_FSTRONG,4);
-
-	set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("nspec_proj2"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_ANIM_SPEED, .25);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_HSPEED, 8);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_VSPEED, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW, 3);
-	set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 180);
-	set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 60);
-	set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -50);
-	set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 45);
-	set_hitbox_value(AT_FSTRONG, 4, HG_HEIGHT, 30);
-	set_hitbox_value(AT_FSTRONG, 4, HG_SHAPE, 0);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PRIORITY, 6);
-	set_hitbox_value(AT_FSTRONG, 4, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FSTRONG, 4, HG_ANGLE, 45);
-	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, .8);
-	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 28);
-}
-
-if (has_rune("F") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 125);
-}
-
-if (has_rune("F") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 3);
-}
-
-if (has_rune("F") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 117);
-}
-
-if (has_rune("F") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 13);
-}
-
-if (has_rune("F") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 150);
-}
 
 
 //G
-if (has_rune("G")){
-	set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
-}
 
-
+	
 //H
 if (has_rune("H")){
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+	walk_speed = 3.5;
+	initial_dash_speed = 6;
+	dash_speed = 7.5;
+	air_friction = .03;
+	knockback_adj = 1.05;
 }
-
 
 //I
 if (has_rune("I")){
-	set_num_hitboxes(AT_FTILT,6);
-
-	set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 90);
-	set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj1"));
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 6.5);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_VSPEED, -1);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
-	set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 4);
-	set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 18);
-	set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 25);
-	set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -45);
-	set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 25);
-	set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 25);
-	set_hitbox_value(AT_FTILT, 2, HG_SHAPE, 0);
-	set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 2);
-	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 95);
-	set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .1);
-	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_FTILT, 3, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj2"));
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_HSPEED, 6);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_VSPEED, -2);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 3);
-	set_hitbox_value(AT_FTILT, 3, HG_LIFETIME, 20);
-	set_hitbox_value(AT_FTILT, 3, HG_HITBOX_X, 25);
-	set_hitbox_value(AT_FTILT, 3, HG_HITBOX_Y, -50);
-	set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 25);
-	set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 25);
-	set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
-	set_hitbox_value(AT_FTILT, 3, HG_PRIORITY, 2);
-	set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 95);
-	set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, .1);
-	set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_FTILT, 3, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_FTILT, 4, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj2"));
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_HSPEED, 5.5);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_VSPEED, -3.5);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FTILT, 4, HG_WINDOW, 3);
-	set_hitbox_value(AT_FTILT, 4, HG_WINDOW_CREATION_FRAME, 4);
-	set_hitbox_value(AT_FTILT, 4, HG_LIFETIME, 20);
-	set_hitbox_value(AT_FTILT, 4, HG_HITBOX_X, 24);
-	set_hitbox_value(AT_FTILT, 4, HG_HITBOX_Y, -54);
-	set_hitbox_value(AT_FTILT, 4, HG_WIDTH, 25);
-	set_hitbox_value(AT_FTILT, 4, HG_HEIGHT, 25);
-	set_hitbox_value(AT_FTILT, 4, HG_SHAPE, 0);
-	set_hitbox_value(AT_FTILT, 4, HG_PRIORITY, 2);
-	set_hitbox_value(AT_FTILT, 4, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 4, HG_ANGLE, 95);
-	set_hitbox_value(AT_FTILT, 4, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FTILT, 4, HG_KNOCKBACK_SCALING, .1);
-	set_hitbox_value(AT_FTILT, 4, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_FTILT, 4, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_FTILT, 5, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj3"));
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_HSPEED, 5);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_VSPEED, -5);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FTILT, 5, HG_WINDOW, 4);
-	set_hitbox_value(AT_FTILT, 5, HG_LIFETIME, 20);
-	set_hitbox_value(AT_FTILT, 5, HG_HITBOX_X, 23);
-	set_hitbox_value(AT_FTILT, 5, HG_HITBOX_Y, -57);
-	set_hitbox_value(AT_FTILT, 5, HG_WIDTH, 25);
-	set_hitbox_value(AT_FTILT, 5, HG_HEIGHT, 25);
-	set_hitbox_value(AT_FTILT, 5, HG_SHAPE, 0);
-	set_hitbox_value(AT_FTILT, 5, HG_PRIORITY, 2);
-	set_hitbox_value(AT_FTILT, 5, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 5, HG_ANGLE, 95);
-	set_hitbox_value(AT_FTILT, 5, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FTILT, 5, HG_KNOCKBACK_SCALING, .1);
-	set_hitbox_value(AT_FTILT, 5, HG_BASE_HITPAUSE, 4);
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_FTILT, 5, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_FTILT, 6, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj3"));
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_HSPEED, 4);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_VSPEED, -6);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_FTILT, 6, HG_WINDOW, 4);
-	set_hitbox_value(AT_FTILT, 6, HG_WINDOW_CREATION_FRAME, 4);
-	set_hitbox_value(AT_FTILT, 6, HG_LIFETIME, 23);
-	set_hitbox_value(AT_FTILT, 6, HG_HITBOX_X, 23);
-	set_hitbox_value(AT_FTILT, 6, HG_HITBOX_Y, -60);
-	set_hitbox_value(AT_FTILT, 6, HG_WIDTH, 25);
-	set_hitbox_value(AT_FTILT, 6, HG_HEIGHT, 25);
-	set_hitbox_value(AT_FTILT, 6, HG_SHAPE, 0);
-	set_hitbox_value(AT_FTILT, 6, HG_PRIORITY, 2);
-	set_hitbox_value(AT_FTILT, 6, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 6, HG_ANGLE, 45);
-	set_hitbox_value(AT_FTILT, 6, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FTILT, 6, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_FTILT, 6, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_FTILT, 6, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_FTILT, 6, HG_HITBOX_GROUP, -1);
-}
-
-if (has_rune("I") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 125);
-}
-
-if (has_rune("I") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 3);
-}
-
-if (has_rune("I") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 117);
-}
-
-if (has_rune("I") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 13);
-}
-
-if (has_rune("I") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 5, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 6, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_FTILT, 6, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_FTILT, 6, HG_PROJECTILE_DESTROY_EFFECT, 150);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 190);
 }
 
 
 //J
-if (has_rune("J")){
-	set_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING, 0);
-	set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0);
-	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_JAB, 3, HG_EXTRA_HITPAUSE, 90);
-}
 
 
 //K
 if (has_rune("K")){
-	set_num_hitboxes(AT_DSTRONG,8);
-
-	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj1"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_HSPEED, 7);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_VSPEED, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 15);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 25);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -20);
-	set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj2"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_HSPEED, 6);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_VSPEED, -2);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 20);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 25);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -30);
-	set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj3"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_HSPEED, 5);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_VSPEED, -5);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 20);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 23);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -40);
-	set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_SPRITE, sprite_get("rune_proj1"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_HSPEED, -7);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_VSPEED, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 15);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_X, -25);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_Y, -20);
-	set_hitbox_value(AT_DSTRONG, 5, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 5, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_ANGLE, 135);
-	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 5, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_SPRITE, sprite_get("rune_proj2"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_HSPEED, -6);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_VSPEED, -2);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 6, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_LIFETIME, 20);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_X, -25);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_Y, -30);
-	set_hitbox_value(AT_DSTRONG, 6, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 6, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 135);
-	set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_SPRITE, sprite_get("rune_proj3"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_ANIM_SPEED, .1);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_HSPEED, -5);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_VSPEED, -5);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_GRAVITY, 0);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_IS_TRANSCENDENT, false);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_PLASMA_SAFE, false);
-	set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_LIFETIME, 20);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_X, -23);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_Y, -40);
-	set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 25);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 25);
-	set_hitbox_value(AT_DSTRONG, 7, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PRIORITY, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 135);
-	set_hitbox_value(AT_DSTRONG, 7, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_DSTRONG, 7, HG_KNOCKBACK_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 7, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HITPAUSE_SCALING, .2);
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 28);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, -1);
-
-	set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_DSTRONG, 8, HG_WINDOW, 5);
-	set_hitbox_value(AT_DSTRONG, 8, HG_LIFETIME, 5);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_X, 5);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_Y, -35);
-	set_hitbox_value(AT_DSTRONG, 8, HG_WIDTH, 140);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HEIGHT, 95);
-	set_hitbox_value(AT_DSTRONG, 8, HG_SHAPE, 0);
-	set_hitbox_value(AT_DSTRONG, 8, HG_PRIORITY, 7);
-	set_hitbox_value(AT_DSTRONG, 8, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DSTRONG, 8, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 8, HG_ANGLE_FLIPPER, 6);
-	set_hitbox_value(AT_DSTRONG, 8, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_DSTRONG, 8, HG_KNOCKBACK_SCALING, .9);
-	set_hitbox_value(AT_DSTRONG, 8, HG_BASE_HITPAUSE, 6);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HITPAUSE_SCALING, .4);
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 199);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_ice_back_air"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_GROUP, -1);
-}
-
-if (has_rune("K") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_absa_new_whip2"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 125);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 127);
-}
-
-if (has_rune("K") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 3);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 148);
-}
-
-if (has_rune("K") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 117);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 120);
-}
-
-if (has_rune("K") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 13);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 196);
-}
-
-if (has_rune("K") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_troupple_fish_splash_out"));
-	set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_DESTROY_EFFECT, 150);
-	set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
-	set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 161);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, .0053);
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_LIFETIME, 900);
 }
 
 
 //L
-if (has_rune("L")){
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 11);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 45);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-}
-
-if (has_rune("L") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("L") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("L") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("L") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("L") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
 
 
 //M
-if (has_rune("M")){
-	set_num_hitboxes(AT_TAUNT_2, 1);
-
-	set_hitbox_value(AT_TAUNT_2, 1, HG_WINDOW, 5);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_LIFETIME, 20);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HITBOX_Y, 0);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_WIDTH, 2000);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HEIGHT, 2000);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_SHAPE, 1);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_PRIORITY, 10);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_DAMAGE, 2);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_ANGLE, 75);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_BASE_KNOCKBACK, 4);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, 0);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_EXTRA_HITPAUSE, 90);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("ice_hit_heavy1"));
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 199);
-}
-
-if (has_rune("M") && attack == AT_TAUNT_2 && window == 5){
-	move_cooldown[AT_TAUNT_2] = 300;
-}
-
-if (has_rune("M") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 127);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-}
-
-if (has_rune("M") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 148);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
-}
-
-if (has_rune("M") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 120);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-}
-
-if (has_rune("M") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 196);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-}
-
-if (has_rune("M") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 161);
-	set_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
-}
 
 
 //N
-if (has_rune("N") && !has_rune("L")){
-	set_num_hitboxes(AT_DSPECIAL, 5);
-
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_ANIM_SPEED, .04);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_HSPEED, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_VSPEED, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GRAVITY, .8);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 199);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_IGNORES_PROJECTILES, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_LIFETIME, 120);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_Y, -34);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WIDTH, 50);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HEIGHT, 65);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_SHAPE, 2);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PRIORITY, 9);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_DAMAGE, 2);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 75);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_KNOCKBACK, 4);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_KNOCKBACK_SCALING, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_EXTRA_HITPAUSE, 90);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 199);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_icehit_heavy2"));
-}
-
-if (has_rune("N") && attack == AT_DSPECIAL && window == 5){
-	move_cooldown[AT_DSPECIAL] = 300;
-}
-
-if (has_rune("N") && !has_rune("L") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 127);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 127);
-}
-
-if (has_rune("N") && !has_rune("L") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 148);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 148);
-}
-
-if (has_rune("N") && !has_rune("L") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 120);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 120);
-}
-
-if (has_rune("N") && !has_rune("L") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 196);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 196);
-}
-
-if (has_rune("N") && !has_rune("L") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 161);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_troupple_splash_big"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 161);
-}
-
-if (has_rune("N") && has_rune("L")){
-	set_num_hitboxes(AT_DSPECIAL, 5);
-
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 2);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_MASK, -1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_ANIM_SPEED, .04);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_HSPEED, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_VSPEED, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GRAVITY, .8);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, false);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, false);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, true);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_IGNORES_PROJECTILES, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_LIFETIME, 120);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_Y, -34);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WIDTH, 50);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HEIGHT, 65);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_SHAPE, 2);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PRIORITY, 9);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_DAMAGE, 11);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_KNOCKBACK_SCALING, 1);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_EXTRA_HITPAUSE, 0);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-}
-
-if (has_rune("N") && has_rune("L")) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("N") && has_rune("L") && get_player_color( player ) == 1) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("N") && has_rune("L") && get_player_color( player ) == 2) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("N") && has_rune("L") && get_player_color( player ) == 3) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("N") && has_rune("L") && get_player_color( player ) == 4) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
-}
-
-if (has_rune("N") && has_rune("L") && get_player_color( player ) == 5) {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-	set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 143);
+if (has_rune("N")){
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 4);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 90);
 }
 
 
 //O
+if (has_rune("O") && BAR < 5){
+	knockback_adj = .95;
+}
+
+if (has_rune("O") && BAR >= 5 && BAR < 10){
+	knockback_adj = .9;
+}
+
+if (has_rune("O") && BAR >= 10 && BAR < 15){
+	knockback_adj = .85;
+}
+
+if (has_rune("O") && BAR == 15){
+	knockback_adj = .8;
+}
+
+
+if (has_rune("O") && has_rune("H") && BAR < 5){
+	knockback_adj = 1.05;
+}
+
+if (has_rune("O") && has_rune("H") && BAR >= 5 && BAR < 10){
+	knockback_adj = 1;
+}
+
+if (has_rune("O") && has_rune("H") && BAR >= 10 && BAR < 15){
+	knockback_adj = .95;
+}
+
+if (has_rune("O") && has_rune("H") && BAR == 15){
+	knockback_adj = .9;
+}
+
 
 

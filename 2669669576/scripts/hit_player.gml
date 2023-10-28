@@ -39,7 +39,7 @@ if(hit_player_obj == shadowball_hit_player and shadowball_hit_timer > 0){
     shadowball_hit_timer+= 10*my_hitboxID.damage;
 }
 
-if (my_hitboxID.attack == AT_NSPECIAL) and !hit_player_obj.clone
+if (my_hitboxID.attack == AT_NSPECIAL) and !hit_player_obj.clone and "is_gengar" in my_hitboxID
 {
     if(shadowball_hit_timer <= 0 or shadowball_hit_player != hit_player_obj){
         move_cooldown[AT_NSPECIAL] = 0;

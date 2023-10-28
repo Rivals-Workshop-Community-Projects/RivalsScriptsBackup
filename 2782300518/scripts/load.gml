@@ -108,6 +108,7 @@ sprite_change_offset("dspecial_air_proj", 42, 82);
 sprite_change_offset("exit_bike", 40, 78);
 sprite_change_offset("taunt", 40, 78);
 sprite_change_offset("taunt2", 40, 98);
+sprite_change_offset("secret_taunt", 40, 78);
 sprite_change_offset("intro", 440, 78);
 
 sprite_change_offset("bike_hurtbox", 40, 78);

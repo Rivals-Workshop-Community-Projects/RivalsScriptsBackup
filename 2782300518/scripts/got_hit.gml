@@ -34,6 +34,16 @@ if (motorbike == true)
 		break;
 	}*/
 }
+else
+{
+	move_cooldown[AT_USPECIAL] = 0;
+	pounce_number = 0;
+}
+
+if (walljump_number = walljump_limit)
+{
+	walljump_number--;
+}
 
 stopVoice();
 

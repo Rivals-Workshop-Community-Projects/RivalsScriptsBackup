@@ -19,19 +19,19 @@ if(state == 1){
     var proj_size = 0;
     var proj_y = 0;
     with(pHitBox){
-        if(type == 2 and player != other.player and !plasma_safe and place_meeting(x, y, other)){
-        	if(orig_player == other.player and attack == AT_NSPECIAL){
-            
-        	} else {
-        		destroyed = true;
-        	}
-        } else if (player == other.player and attack == AT_NSPECIAL and place_meeting(x, y, other) and "upgraded_shadowball" not in self){
+        if(type == 2 and !plasma_safe and place_meeting(x, y, other) and player != other.player){
+        	print("AMONG US")
+
+        	destroyed = true;
+			
+        } else if (player_id == other.player_id and attack == AT_NSPECIAL and place_meeting(x, y, other) and "upgraded_shadowball" not in self and "is_gengar" in self){
             proj_size = hbox_num;
             proj_y = y;
             destroyed = true;
         }
     }
     if(proj_size != 0){
+    	
         sound_play(sound_get("shadowupgrade"));
         with(player_id){
             spawn_hit_fx(floor(other.x), floor(proj_y), curse);
@@ -39,6 +39,8 @@ if(state == 1){
             bunga.upgraded_shadowball = true;
             bunga.length = bunga.length*.7;
             bunga.shadowball_size = proj_size;
+            bunga.is_gengar = true;
+            bunga.hit_priority = 1;
         }
     }
     

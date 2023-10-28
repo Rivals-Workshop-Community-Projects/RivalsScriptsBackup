@@ -5,12 +5,12 @@ set_attack_value(AT_FSPECIAL_AIR, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("fspecial_air_hurt"));
 
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_TYPE, 2);
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GRAVITY, .3)
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, sound_get("disc_throw"));
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 10);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 17);
 
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 11);
@@ -67,8 +67,8 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_MASK, sprite_get("fspecial_air_proj"));
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_ANIM_SPEED, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_HSPEED, 16);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

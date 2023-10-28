@@ -98,8 +98,8 @@ if (motorbike == false)
 					{
 						switch(attack)
 						{
-							case 46:
-							case 45:
+							case AT_UTHROW:
+							case AT_DTHROW:
 								spawn_base_dust(x, y, "dash");
 								spawn_base_dust(x, y, "dash", -spr_dir);
 							break;
@@ -122,7 +122,7 @@ if (motorbike == false)
 							case AT_UTILT:
 								spawn_base_dust(x, y, "walk");
 							break;
-							case 47:
+							case AT_FTHROW:
 								spawn_base_dust(x, y, "dash");
 								spawn_base_dust(x + 30 * spr_dir, y, "dash");
 							break;
@@ -433,6 +433,7 @@ if (motorbike == false)
 			if (window == 1 && window_timer == 1 && !hitpause)
 			{
 				pounce = true;
+				pounce_number++;
 			}
 			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause)
 			{
@@ -480,6 +481,10 @@ if (motorbike == false)
 					has_walljump = false;
 					pounceChange = false;
 					pounce = false;
+					if (pounce_number = max_pounce)
+					{
+						move_cooldown[AT_USPECIAL] = 80;
+					}
 					set_state(PS_WALL_JUMP);
 				}
 			}
@@ -498,7 +503,14 @@ if (motorbike == false)
 			{
 				pounce = false;
 				pounceChange = false;
-				move_cooldown[AT_USPECIAL] = 200;
+				if (pounce_number = max_pounce)
+				{
+					move_cooldown[AT_USPECIAL] = 80;
+				}
+				if (window_timer == 9 && (has_hit || pounce_number != max_pounce))
+				{
+					set_state(free?PS_IDLE_AIR:PS_IDLE);
+				}
 			}
 		break;
 		//Getting on the bike
@@ -848,14 +860,14 @@ else if (motorbike == true)
 		break;
 		
 		//Wheel Sawblade
-		case 45:
+		case AT_DTHROW:
 			if (window == 1 && window_timer == 3)
 			{
 				spawn_base_dust(x, y, "dash_start");
 				spawn_base_dust(x + 30 * spr_dir, y, "jump");
 			}
 		//Claw Combo
-		case AT_EXTRA_3:
+		case AT_NTHROW:
 			if ((window == 3 || window == 6) && has_hit && window_timer >=2)
 			{
 				can_attack = !joy_pad_idle;
@@ -864,7 +876,7 @@ else if (motorbike == true)
 			{
 				set_state(PS_IDLE);
 			}
-		case 46:
+		case AT_UTHROW:
 	        if (right_down and spr_dir == 1) or (left_down and spr_dir == -1)
 	        {
 	            hsp = bike_sp;
@@ -889,7 +901,7 @@ else if (motorbike == true)
 		
         break;
 		//Claw Combo
-        case 47:
+        case AT_FTHROW:
 		//Rev Swipe
         case AT_FSTRONG_2:
 		//Bike Handstand
@@ -1047,9 +1059,9 @@ switch (attack)
 			spawn_base_dust (x, y, "land");		
 		}
 	break;
-	case AT_EXTRA_3:
-	case 47:
-	case 46:
+	case AT_NTHROW:
+	case AT_FTHROW:
+	case AT_UTHROW:
 		var	choose_quote = random_func(16, 15, 1);
 		switch (window)
 		{
@@ -1107,7 +1119,7 @@ switch (attack)
 			break;
 		}
 	break;
-	case 45:
+	case AT_DTHROW:
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause)
 		{
 			var make_quote = random_func(15, 8, 1);
@@ -1282,7 +1294,7 @@ switch (attack)
 			//Move the boost arrow around
 			if (joy_pad_idle) brotation=0;
 			else brotation=joy_dir + ddir;
-			if (window_timer == 6)
+			if (window_timer == 18)
 			{
 				if (joy_pad_idle) dst=spr_dir>0 ? 0 : 180;
 				else dst=round(joy_dir/45)*45;

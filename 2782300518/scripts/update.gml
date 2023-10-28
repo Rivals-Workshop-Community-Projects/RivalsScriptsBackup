@@ -5,7 +5,8 @@ var ct = current_time;
 //Change stats based on whether on bike or not
 char_height = motorbike? 56 : 50;
 walk_speed = motorbike? 6 : 3.25;
-initial_dash_speed = motorbike? 10 : 7;
+initial_dash_speed = motorbike? 7 : 6.7;
+initial_dash_time = motorbike? 16: 14;
 if (has_rune("I"))
 {
 	short_hop_speed = 8;
@@ -16,7 +17,7 @@ else
 	short_hop_speed = 6;
 	jump_speed = motorbike? 9: 11;
 }
-dash_speed = motorbike? 9: 7.5;
+dash_speed = motorbike? 9: 7.2;
 dash_stop_time = motorbike? 12: 4;
 //djump_speed = motorbike? 10: 10;
 //walljump_hsp = motorbike? 0:3;
@@ -354,6 +355,20 @@ if (motorbike == false)
 				tsy=1;
 				bsprite_index=-1;
 			break;
+			case PS_WALL_JUMP:
+				if (!can_wall_jump)
+				{
+					move_cooldown[AT_USPECIAL] = 0;
+				}
+				tsprite_index=-1;
+				trotation=0;
+				tfront=0;
+				tx=0;
+				ty=0;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+			break;
 			case PS_DOUBLE_JUMP:
 			case PS_LAND:
 			case PS_LANDING_LAG:
@@ -673,9 +688,14 @@ if (bikeExplosion == true)
 //Reset Wall jumps and certain cooldowns
 if (!free)
 {
+	pounce_number = 0;
 	if (state !=PS_ATTACK_GROUND)
 	{
 		walljump_number = 0;
+	}
+	if(move_cooldown[AT_USPECIAL] > 15)
+	{
+		move_cooldown[AT_USPECIAL] = 15;
 	}
 }
 else
@@ -755,9 +775,9 @@ with (oPlayer)
 				case AT_USPECIAL:
 				case 43:
 				case 44:
-				case 45:
-				case 47:
-				case AT_EXTRA_3:
+				case AT_DTHROW:
+				case AT_FTHROW:
+				case AT_NTHROW:
 					galaxy_effect_sprite_index = sprite_get("galaxy_right");
 				break;
 				case AT_BAIR:
@@ -773,7 +793,7 @@ with (oPlayer)
 				case AT_DSTRONG:
 				case AT_DSTRONG_2:
 				case 42:
-				case 46:
+				case AT_UTHROW:
 					galaxy_effect_sprite_index = sprite_get("galaxy_up");
 				break;
 				case AT_DAIR:

@@ -13,6 +13,8 @@ sprite_change_offset("dashturn", 150, 182);
 
 sprite_change_offset("jumpstart", 150, 182);
 sprite_change_offset("jump", 150, 182);
+sprite_change_offset("jumpfwd", 150, 182);
+sprite_change_offset("jumpbwd", 150, 182);
 sprite_change_offset("doublejump", 150, 182);
 sprite_change_offset("walljump", 150, 182);
 sprite_change_offset("pratfall", 150, 182);
@@ -47,42 +49,63 @@ sprite_change_offset("taunt", 150, 182);
 
 sprite_change_offset("plat", 150, 182);
 
-sprite_change_offset("hud_axe", 75, 91);
-sprite_change_offset("hud_icon", 75, 91);
-sprite_change_offset("gauge_empty", 75, 91);
-sprite_change_offset("gauge_2", 75, 91);
-sprite_change_offset("gauge_3", 75, 91);
-sprite_change_offset("gauge_4", 75, 91);
-sprite_change_offset("gauge_5", 75, 91);
-sprite_change_offset("gauge_6", 75, 91);
-sprite_change_offset("gauge_7", 75, 91);
-sprite_change_offset("gauge_8", 75, 91);
-sprite_change_offset("gauge_9", 75, 91);
-sprite_change_offset("gauge_10", 75, 91);
-sprite_change_offset("gauge_11", 75, 91);
-sprite_change_offset("gauge_12", 75, 91);
-sprite_change_offset("gauge_full", 75, 91);
+sprite_change_offset("bar0", 75, 91);
+sprite_change_offset("bar1", 75, 91);
+sprite_change_offset("bar2", 75, 91);
+sprite_change_offset("bar3", 75, 91);
+sprite_change_offset("bar4", 75, 91);
+sprite_change_offset("bar5", 75, 91);
+sprite_change_offset("bar6", 75, 91);
+sprite_change_offset("bar7", 75, 91);
+sprite_change_offset("bar8", 75, 91);
+sprite_change_offset("bar9", 75, 91);
+sprite_change_offset("bar10", 75, 91);
+sprite_change_offset("bar11", 75, 91);
+sprite_change_offset("bar12", 75, 91);
+sprite_change_offset("bar13", 75, 91);
+sprite_change_offset("bar14", 75, 91);
+sprite_change_offset("bar15", 75, 91);
 
 sprite_change_offset("fatality", 150, 182);
 sprite_change_offset("fatality2", 150, 182);
 
-sprite_change_offset("fspecial_proj", 150, 182);
+sprite_change_offset("fspecial_air", 150, 182);
+sprite_change_offset("fspecial_clone", 150, 182);
+sprite_change_offset("fspecial_clone_break", 150, 182);
+sprite_change_offset("fspecial_clone_expire", 150, 182);
+sprite_change_offset("fspecial_clone_charge", 150, 182);
 
-sprite_change_offset("nspec_proj1", 150, 182);
-sprite_change_offset("nspec_proj2", 150, 182);
-sprite_change_offset("nspec_proj3", 150, 182);
+sprite_change_offset("ftilt_ice1", 150, 182);
+sprite_change_offset("ftilt_ice2", 150, 182);
+sprite_change_offset("ftilt_ice3", 150, 182);
+sprite_change_offset("ftilt_ice4", 150, 182);
 
-sprite_change_offset("ftilt_proj1", 150, 182);
-sprite_change_offset("ftilt_proj2", 150, 182);
-sprite_change_offset("ftilt_proj3", 150, 182);
-
-sprite_change_offset("dstrong_hit", 150, 182);
+sprite_change_offset("nspecial_air", 150, 182);
+sprite_change_offset("nspecial_2", 150, 182);
+sprite_change_offset("nspecial_2_air", 150, 182);
+sprite_change_offset("nspec_ball", 150, 182);
+sprite_change_offset("nspec_axe", 150, 182);
+sprite_change_offset("nspec_trail", 150, 182);
+sprite_change_offset("nspec_trail2", 150, 182);
 
 sprite_change_offset("dspecial_air", 150, 182);
+sprite_change_offset("spike1", 150, 182);
+sprite_change_offset("spike1_mask", 150, 182);
+sprite_change_offset("spike2", 150, 182);
+sprite_change_offset("spike2_mask", 150, 182);
+sprite_change_offset("spike3", 150, 182);
+sprite_change_offset("spike3_mask", 150, 182);
+sprite_change_offset("spike4", 150, 182);
+sprite_change_offset("spike4_mask", 150, 182);
 
-sprite_change_offset("rune_proj1", 150, 182);
-sprite_change_offset("rune_proj2", 150, 182);
-sprite_change_offset("rune_proj3", 150, 182);
+sprite_change_offset("uspecial_ice", 150, 182);
+sprite_change_offset("uspecial_air", 150, 182);
+
+sprite_change_offset("charge", 150, 182);
+sprite_change_offset("splash", 150, 182);
+sprite_change_offset("dtilt_ice", 150, 182);
+
+
 
 
 

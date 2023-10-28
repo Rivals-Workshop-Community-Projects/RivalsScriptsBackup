@@ -9,16 +9,24 @@ switch (attack)
 			hit_player_obj.orig_knock += 1;	
 			pounce = false;
 		}
+	case 42:
+		can_fast_fall = true;
 	case 39:
 	case 43:
-	case 42:
 	case AT_FSPECIAL_2:
 	case AT_USPECIAL_2:
 		sound_play(sound_get("hit_light"));
 	break;
 	case AT_DAIR:
+		sound_play(sound_get("spring"));
+		can_fast_fall = true;
 		window = 3;
 		window_timer = 0;
+	break;
+	case AT_FAIR:
+	case AT_UAIR:
+	case AT_EXTRA_1:
+		can_fast_fall = true;
 	break;
 	case AT_DSPECIAL_AIR:
 		if (fps_real > 40)

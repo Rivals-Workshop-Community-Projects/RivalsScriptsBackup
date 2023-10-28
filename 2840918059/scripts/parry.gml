@@ -1,6 +1,8 @@
-//Parry Fspecial Charge
-GAUGE_CURRENT += 2;
+//Attack Meter Charge
+if (BAR < 15){
+	BAR += 1;
+}
 
-if (has_rune("B")){
-	GAUGE_CURRENT += 3;
+if (BAR < 14 && has_rune("L")){
+	BAR += 1;
 }

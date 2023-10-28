@@ -2,7 +2,7 @@
 if (tsprite_index!=-1 && tfront==false)
 {
 	init_shader();
-	if (get_player_color(player) == 14)
+	if (alt_cur == 14)
 	{
 		var base = 4*8;
 		static_colorO[base] = 0.137;

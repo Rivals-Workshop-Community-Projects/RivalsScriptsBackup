@@ -20,8 +20,8 @@ walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 14;
-initial_dash_speed = 7;
-dash_speed = 7.5;
+initial_dash_speed = 6.77;
+dash_speed = 7.2;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -32,7 +32,7 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 6;
-djump_speed = 10;
+djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -46,7 +46,7 @@ walljump_hsp = 3;
 walljump_vsp = 11;
 walljump_time = 16;
 walljump_number = 0;
-walljump_limit = 5;
+walljump_limit = 3;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
@@ -54,7 +54,7 @@ hitstun_grav = .5;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 5;
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -98,10 +98,10 @@ roll_backward_max = 9;
 refreshHitbox = false;
 
 //Custom attack indexes names:
-AT_JAB2 = AT_EXTRA_3;
-AT_FTILT2 = 47;
-AT_UTILT2 = 46;
-AT_DTILT2 = 45;
+AT_JAB2 = AT_NTHROW;
+AT_FTILT2 = AT_FTHROW;
+AT_UTILT2 = AT_UTHROW;
+AT_DTILT2 = AT_DTHROW;
 AT_NAIR2 = 44;
 AT_FAIR2 = 43;
 AT_UAIR2 = 42;
@@ -289,6 +289,8 @@ bikeWarp = false;
 bikeExplosion = false;
 small_djumps = true;
 prev_hsp = 0;
+pounce_number = 0;
+max_pounce = 1;
 
 voice = get_synced_var(player);
 alt_cur = get_player_color(player);
@@ -326,7 +328,7 @@ if has_rune("B")
 
 if has_rune("E")
 {
-    max_djumps = 2;
+    max_pounce++;
 }
 
 if has_rune("I")
@@ -336,8 +338,9 @@ if has_rune("I")
 
 if has_rune("J")
 {
-    max_djumps = 3;
+    max_pounce+= 2;
 }
+
 
 if has_rune("O")
 {

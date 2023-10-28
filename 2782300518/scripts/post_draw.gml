@@ -52,7 +52,7 @@ switch (state)
 		if (motorbike == false)
 		{
 			//draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2 + (state_timer*0.75), 2 + (state_timer*0.75), 0, c_white, 1-state_timer*0.1);
+			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number + 2, x+18 * spr_dir, y-80, 2 + (state_timer*0.75), 2 + (state_timer*0.75), 0, c_white, 1-state_timer*0.1);
 		}
 	break;
 	case PS_ATTACK_AIR:
@@ -78,7 +78,7 @@ switch (prev_state)
 	case PS_WALL_JUMP:
 		if (motorbike == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		{
-			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1 - state_timer*0.05);
+			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number +2, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1 - state_timer*0.05);
 		}
 	break;
 	case PS_ATTACK_AIR:
@@ -143,6 +143,60 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        patch_note_title[i] = "2.2"
+        patch_note_text[i++] =  
+
+"Walljump Limit 5 -> 3
+
+You do however get a walljump back if you use them all and get hit.
+
+USpec is restored when you get hit.
+
+USpec goes into Pratfall unless you hit.
+
+Uspec cooldown reduced in light of this change, 200 -> 80.
+
+Off bike Dash Speed 7.5 - 7.2
+
+Off bike Inital Dash Speed 7 - 6.7
+
+On bike Initial Dash Speed 10 -> 7 (I want bike form to be better at killing but not so good at combos, nerfing the initial speed of dash helps with this while also making the acceleration a bit more bike like)
+
+On bike initial Dash time 14 -> 16
+
+Double jump speed 10 -> 9
+
+Bike Fair Knockback 8 -> 7
+
+NSpec (Both) Hitstun Multiplier 2-> 1.5
+
+Prat Land Time 5 -> 10 (Her recovery is a bit better than warrenting a 5 even with some of the nerfs so this is being changed)
+
+Bike can't be thrown through walls anymore
+
+Hopefully fixed not being able to hitfall certain aerials."
+
+        patch_note_title[i] = "2.1"
+        patch_note_text[i++] =  
+
+"Increased startup of FSpecial and FSpecial_Air to 18 to make it easier to aim.
+
+Fixed a bug that set the direction too early.
+
+Fixed a bug that prevented the disc from returning to you when throwing FSpecial and it hits.
+
+Changed Cooldown for USpecial, it now resets recharge when you hit the ground.
+
+After using all 5 Walljumps you can use USpec again.
+
+Runes that give you additional pounces actually give you additional pounces.
+
+Added a secret taunt (off-bike only).
+
+Added three more Miiverse posts.
+
+Added another sound layered to Dair on hit."
+
         patch_note_title[i] = "2.0"
         patch_note_text[i++] =  
         
@@ -152,8 +206,6 @@ Entire moveset tweaked or revamped to some degree with 9 brand new moves, severa
 
 All sprites reshaded and recolourmapped for better alts.
         
-Major tweak made to the pounce move. You can now hold down the button to gain height during the pounce, making up somewhat for Carol's lack of a true double jump and allowing her to reach top plat on the training stage without the jump being too high. The move will also immediately land on platforms rather than slide.
-
 Stats tweaked, Jump height reduced, short hop height aligned better with shorthop, Bike jump height is lower, double jump height standardised.
         
 HUD redesigned, removed excess clutter, previous info that was on the HUD now pops up whenever relevant like the charge in the Wild Kick meter or the number of Wall jumps left.

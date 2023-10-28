@@ -18,19 +18,19 @@ if (motorbike == true)
 	//This looks a bit messy tbh, but there's so many attacks to go over. May clean this up later
 	if (attack = AT_JAB)
 	{
-		attack = AT_EXTRA_3;
+		attack = AT_NTHROW;
 	}
 	if (attack = AT_FTILT)
 	{
-		attack = 47;
+		attack = AT_FTHROW;
 	}
 	if (attack = AT_UTILT)
 	{
-		attack = 46;
+		attack = AT_UTHROW;
 	}
 	if (attack = AT_DTILT)
 	{
-		attack = 45;
+		attack = AT_DTHROW;
 	}
 	if (attack = AT_NAIR)
 	{
@@ -103,3 +103,4 @@ if (motorbike == true)
 		attack = AT_TAUNT_2;
 	}
 }
+else if (attack == AT_TAUNT && down_down) attack = AT_EXTRA_3;

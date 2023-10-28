@@ -1,54 +1,87 @@
-//Ice Axe Icon
-
-var temp_color = c_gray;
-if (move_cooldown[AT_TAUNT] > 99999) temp_color = c_white;
-draw_sprite_ext(sprite_get("hud_axe"), 0, temp_x+178, temp_y+28, 2, 2, 0, temp_color, 1);
-
-
-//Ice Clone Cooldown
+//Attack Charge Meter
 
 var temp_color = c_white;
-if (move_cooldown[AT_FSPECIAL] > 0) temp_color = image_blend;
-draw_sprite_ext(sprite_get("hud_icon"), 0, temp_x+178, temp_y+28, 2, 2, 0, temp_color, 1);
 
 
-//Ice Clone HUD Gauge
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 5) temp_color = image_blend;
-draw_sprite_ext(sprite_get("gauge_empty"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 0){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar0"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 10) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_2"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 1){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar1"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 20) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_3"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 2){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar2"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 30) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_4"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 3){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar3"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 40) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_5"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 4){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar4"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 50) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_6"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 5){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar5"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 60) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_7"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 6){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar6"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 70) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_8"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 7){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar7"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 80) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_9"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 8){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar8"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 90) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_10"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 9){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar9"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 100) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_11"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 10){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar10"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0 && move_cooldown[AT_FSPECIAL] < 110) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_12"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 11){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar11"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
 
-if (move_cooldown[AT_FSPECIAL] > 0) temp_color = c_gray;
-draw_sprite_ext(sprite_get("gauge_full"), 0, temp_x+178, temp_y+30, 2, 2, 0, temp_color, 1);
+if (BAR == 12){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar12"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
+
+if (BAR == 13){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar13"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
+
+if (BAR == 14){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar14"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
+
+if (BAR == 15){
+	var temp_color = c_white;
+	draw_sprite_ext(sprite_get("bar15"), 0, temp_x+184, temp_y+31, 2, 2, 0, temp_color, 1);
+}
+
+
 

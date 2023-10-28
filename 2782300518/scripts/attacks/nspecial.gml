@@ -42,7 +42,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hit_small);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("hit_light"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
