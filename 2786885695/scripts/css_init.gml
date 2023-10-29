@@ -118,7 +118,7 @@ portrait_bounds = [x+10,y+10,x+210,y+151];
 //save voice/damage numbers data
 //if keqing is reloaded it will refresh the values, otherwise it will keep them
 synced_vars = [cur_lang, dmg_nums_active];
-if (get_synced_var(player) != 16 && !init)
+if (get_synced_var(player) != 16 && (!init || room == 114))
 {
     for (var i = 0; i < 2; i++) synced_vars[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
     cur_lang = synced_vars[0];

@@ -233,6 +233,7 @@ move_cooldown[AT_FSPECIAL] = fspec_used+1;
 //  U-SPECIAL
 //electric flash effect pause (applies to both instances of starward sword)
 if (instance_exists(uspec_flash)) if (hitpause) uspec_flash.step_timer --;
+if (uspec_fx_anim[0] <= uspec_fx_anim[1] && !hitpause) uspec_fx_anim[0] ++;
 
 //  D-SPECIAL
 //parried afterimage cooldown

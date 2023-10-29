@@ -165,6 +165,15 @@ if (!debug_keqing)
         draw_sprite_ext(sprite_get("hud_skill_flash"), 0, hud_x, hud_y, hud_anim_timer/2/5+1, hud_anim_timer/2/5+1, 0, c_white, 1-hud_anim_timer/10);
         gpu_set_blendmode(bm_normal);
     }
+
+    if ("url" in self && url != "2786885695" && url != "2681011340")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=2786885695"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=2786885695";
+    }
 }
 
 //stamina gauge rune

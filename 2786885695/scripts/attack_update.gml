@@ -54,8 +54,11 @@ switch(attack)
 		if (attack_down_counter >= 10 && attack_down && window == window_last && window_timer >= window_end-5 && !was_parried) use_charge_attack();
 		break;
 	case AT_FSTRONG: //the effect work for the strongs is on update.gml instead, i can't put window_timer = 0 here
-		if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
-		if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
+		if (!hitstop)
+		{
+			if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
+			if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
+		}
 
 		if (instance_exists(fstrong_hitbox) && fstrong_hitbox != noone) fstrong_hitbox.fx_particles = 1;
 	case AT_DSTRONG: case AT_USTRONG:
@@ -77,8 +80,6 @@ switch(attack)
 
 		//end charge attack
 		if (window == window_last && window_timer == window_end) charge_attack = false;
-
-
 
 		//using different strongs/hitting with F-spec's wave slash will send the enemy in different directions
 		switch (attack)
@@ -125,7 +126,12 @@ switch(attack)
 			case 2: //plunge loop
 				can_wall_jump = true;
 				if (!hitpause) dair_time ++;
-				if (dair_time >= dair_cancel_time) can_shield = true;
+				if (dair_time >= dair_cancel_time)
+				{
+					can_shield = true;
+					can_jump = true;
+					if (up_down) can_special = true;
+				}
 
 				if (dair_fx_y_scale < 2) dair_fx_y_scale += 0.25; //dair smear effect gets longer over time
 				break;
@@ -138,6 +144,12 @@ switch(attack)
 	case AT_DATTACK:
 		var prev_hsp = hsp;
 		if (down_down && !free && !hitpause && !was_parried) hsp = 8*spr_dir;
+
+		if (was_parried && !hitpause && !free)
+		{
+			hsp = 0;
+			set_state(PS_PRATLAND);
+		}
 		break;
 	//specials
 	case AT_NSPECIAL: //stilleto spawn
@@ -446,8 +458,6 @@ switch(attack)
 		//1. special isn't neccesary to be held down to continiue the attack, just a direction (window 4)
 		//2. prev_joy_dir is reset to -1 (window 1, window 3)
 
-		if (uspec_fx_anim[0] <= uspec_fx_anim[1] && !hitpause) uspec_fx_anim[0] ++;
-
 		switch (window)
 		{
 			case 1: //check if the uspec started on the ground or not to see if it should pratfall
@@ -697,7 +707,7 @@ switch(attack)
 		move_cooldown[AT_DSPECIAL_2] = parry_lag;
 		break;
 	//////////////////////////////////////////////
-	case AT_TAUNT_2: //to be the lyre
+	case AT_TAUNT_2: //windblume lyre
 		switch (window)
 		{
 			case 1: //activate
@@ -815,6 +825,15 @@ switch(attack)
 				if (window_timer == window_end-1) if (get_gameplay_time() <= 125) state = PS_SPAWN;
 				break;
 		}
+		break;
+	case 46: //sonic trick
+		iasa_script(); //lets character cancel out of the animation at any point
+		if (vsp > 0 && window == 3) //window 3 is the window specified for the trick hold pose
+		{
+			window ++;
+			window_timer = 0;
+		}
+		if (window > 1 && !free) set_state(PS_LANDING_LAG);
 		break;
 }
 

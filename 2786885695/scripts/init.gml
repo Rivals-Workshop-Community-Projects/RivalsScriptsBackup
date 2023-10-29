@@ -636,6 +636,7 @@ fs_char_chosen_trigger = "custom";
 fs_char_attack_index = AT_BURST;
 fs_hide_meter = true; //it doesn't work for some reason???
 fs_meter_y = 6; //because i can't hide it for some reason
+fs_charge_mult = 0;
 
 //dracula portrait
 dracula_portrait = sprite_get("dracula_portrait");
@@ -653,3 +654,6 @@ mamizou_transform_spr = sprite_get("mamizou_catqing");
 pkmn_stadium_front_img = sprite_get("pokemon_front");
 pkmn_stadium_back_img = sprite_get("pokemon_back");
 pkmn_stadium_name_override = "keqing";
+
+//sonic trick ring
+sonic_rainbowring_atk = 46;

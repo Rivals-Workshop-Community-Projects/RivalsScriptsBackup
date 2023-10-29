@@ -43,11 +43,11 @@ for (var i = 1; i <= 4; i++) {
 	set_hitbox_value(AT_USPECIAL, i, HG_WINDOW, 2);
 	set_hitbox_value(AT_USPECIAL, i, HG_WINDOW_CREATION_FRAME, 0 + (i - 1) * 3);
 	set_hitbox_value(AT_USPECIAL, i, HG_LIFETIME, 3);
-	set_hitbox_value(AT_USPECIAL, i, HG_HITBOX_X, 3);//-25
-	set_hitbox_value(AT_USPECIAL, i, HG_HITBOX_Y, -54);
-	set_hitbox_value(AT_USPECIAL, i, HG_WIDTH, 107);//50
-	set_hitbox_value(AT_USPECIAL, i, HG_HEIGHT, 111);
-	set_hitbox_value(AT_USPECIAL, i, HG_SHAPE, 0);
+	set_hitbox_value(AT_USPECIAL, i, HG_HITBOX_X, 6);//-25
+	set_hitbox_value(AT_USPECIAL, i, HG_HITBOX_Y, -38);
+	set_hitbox_value(AT_USPECIAL, i, HG_WIDTH, 47);//50
+	set_hitbox_value(AT_USPECIAL, i, HG_HEIGHT, 75);
+	set_hitbox_value(AT_USPECIAL, i, HG_SHAPE, 2);
 	set_hitbox_value(AT_USPECIAL, i, HG_PRIORITY, 1);
 	set_hitbox_value(AT_USPECIAL, i, HG_DAMAGE, 2);
 	set_hitbox_value(AT_USPECIAL, i, HG_ANGLE, 90);

@@ -171,5 +171,6 @@ sprite_change_offset("fx_runeK_glider_spawn", 80, 32);
 sprite_change_offset("fx_runeK_glider_despawn", 80, 32);
 sprite_change_offset("fx_runeO_disable", 16, 16);
 
-//workshop
+//workshop compatibilities
 sprite_change_offset("mamizou_catqing", 48, 84);
+sprite_change_offset("sonictrick", 32, 94);

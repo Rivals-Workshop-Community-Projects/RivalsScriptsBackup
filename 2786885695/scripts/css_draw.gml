@@ -1,5 +1,7 @@
 //css_draw.gml
 
+alt_cur = get_player_color(player);
+
 //PORTRAITS OVERLAY
 if (alt_cur == 14) draw_sprite_ext(sprite_get("charselect_ex"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 
@@ -34,7 +36,6 @@ if (css_anim_time < 140)
 }
 init_shader();
 shader_end();
-
 
 
 //ICONS
