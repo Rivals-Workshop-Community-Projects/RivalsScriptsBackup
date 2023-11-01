@@ -26,7 +26,7 @@ hurtbox_spr = sprite_get("hurtbox");
 // STAT NAME		    VALUE                   BASECAST RANGE      NOTES
 
 // Physical size
-char_height             = 70;                   //                  the height of the overhead hud - the arrow with your name and %
+char_height             = 102;                   //                  the height of the overhead hud - the arrow with your name and %
 knockback_adj           = .95;		            // 0.9  -  1.2
 
 // Character specific variables
@@ -376,6 +376,8 @@ current_charge_time = max_charge_time;
 special_charge_interrupted = false; // If we get hit while charging, we lose charge
 strong_charge_interrupted = false; // If we get hit while charging, we lose charge
 this_attack_was_the_result_of_a_cancel = false; // If we were inteh middle of a previous move and cancelled into the current move, this will be true
+draw_indicator_arrow = false;
+indicator_arrow_index = 3;
 
 can_stancle = false;
 stance_speed = 1;

@@ -902,6 +902,15 @@ sonic_rainbowring_atk = 46;
     //  cost_ex         = secoundary skill cost like when light hookshot is fired or bar lands with power smash
     //  cost_min        = what move_cooldown will see to check if we have enough MP to use the skill in the firs place
     //  cost_min2       = specific for some very certain moves if they need another cooldown limiter
+
+    if ("url" in self && url != "2601775097" && url != "2560739972")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097";
+    }
     
     skill[a] = {
         skill_name: name,

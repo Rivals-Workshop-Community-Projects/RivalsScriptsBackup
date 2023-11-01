@@ -145,8 +145,8 @@ switch(attack)
         }
         else if (window >= 3)
         {
-            move_cooldown[AT_NSPECIAL] = 30;
-            move_cooldown[AT_FSPECIAL] = 30;
+            move_cooldown[AT_NSPECIAL] = 60;
+            move_cooldown[AT_FSPECIAL] = 60;
         }
         can_fast_fall = false;
         break;
@@ -214,8 +214,8 @@ switch(attack)
         }
         else if (window >= 2)
         {
-            move_cooldown[AT_FSPECIAL] = 30;
-            move_cooldown[AT_NSPECIAL] = 30;
+            move_cooldown[AT_FSPECIAL] = 60;
+            move_cooldown[AT_NSPECIAL] = 60;
         }
         can_fast_fall = false;
         break;

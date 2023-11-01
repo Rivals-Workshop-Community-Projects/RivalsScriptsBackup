@@ -393,10 +393,10 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		            if ((other.grab_hitbox != noone) && (instance_exists(other.grab_hitbox))) {
 		            	if (fspecial_lerp_window && (fspecial_current_window_timer < fspecial_current_window_length)) {
 							x = ease_linear(x, other.grab_hitbox.x + other.grab_hitbox.spr_dir * 12, fspecial_current_window_timer, fspecial_current_window_length);
-							y = ease_linear(y, other.grab_hitbox.y + 60, fspecial_current_window_timer, fspecial_current_window_length);
+							y = ease_linear(y, other.grab_hitbox.y + 50, fspecial_current_window_timer, fspecial_current_window_length);
 		            	} else {
 		            		x = other.grab_hitbox.x + other.grab_hitbox.spr_dir * 12; // -5
-		            		y = other.grab_hitbox.y + 75; // 55
+		            		y = other.grab_hitbox.y + 50; // 55
 		            	}
 		            }/* else {
 		            	SQUIGLY_HOLDER_ID = noone;

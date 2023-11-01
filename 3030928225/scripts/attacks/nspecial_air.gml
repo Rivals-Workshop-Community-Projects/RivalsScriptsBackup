@@ -30,7 +30,8 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, reduced_gravity);
 
 window_num++; // Charged, can stay in this state by holding button
 nspecial_air_bonus_charging_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, reduced_gravity);

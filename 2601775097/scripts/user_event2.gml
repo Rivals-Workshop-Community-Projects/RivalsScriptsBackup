@@ -486,16 +486,6 @@ switch (skill_script_type)
         }
     }
     else menu_dir = 0;
-
-
-    if ("url" in self && url != "2601775097" && url != "2560739972")
-    {
-        get_string(
-            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
-            "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097"
-        );
-        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=2601775097";
-    }
 }
 //stores button positions for CSS skill select
 #define point_in_rect (px, py, x1, y1, x2, y2)

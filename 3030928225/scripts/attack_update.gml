@@ -1063,6 +1063,7 @@ switch (attack) {
 				sound_play(asset_get("sfx_zetter_fireball_fire"));
 			}
 		} else if (window < nspecial_air_bonus_charging_window) {
+			charge_signalled = false;
 			if (shield_pressed && !must_complete_attack) {
 				// Perform 'stancle' animation, different from stancle
 				smash_charging = false;
@@ -1078,10 +1079,11 @@ switch (attack) {
 			}
 		} else if (window == nspecial_air_bonus_charging_window) {
 			if (fully_charged) {
-				if ((window_timer == 1) && !must_complete_attack) {
+				if ((window_timer == 1) && !must_complete_attack && !charge_signalled) {
 					// Play the 'done charging' sound the first time we reach this part
 					sound_play(charge_sound);
 					charge_flash_cooldown = charge_flash_cooldown_max;
+					charge_signalled = true;
  				}
 			}
 			if (!fully_charged) {

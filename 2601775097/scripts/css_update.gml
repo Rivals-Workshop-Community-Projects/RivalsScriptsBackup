@@ -37,7 +37,7 @@ switch (alt_cur)
 		    set_color_profile_slot(alt_cur, 5, 33, 43, 139); //CLOTHBLACK
 	        set_color_profile_slot(alt_cur, 6, 159, 241, 255); //LIGHT
 	        set_color_profile_slot(alt_cur, 7, 76, 133, 233); //FIRE
-            preview_line_color = $000000
+            preview_line_color = $000000;
         }
         else
         {

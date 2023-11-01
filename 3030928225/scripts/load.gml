@@ -74,6 +74,7 @@ sprite_change_offset("harpoon",         0, 11);
 sprite_change_offset("tailspike",       46, 58);
 sprite_change_offset("tailspike_mask",  46, 58);
 sprite_change_offset("hud_icons",       7, 7);
+sprite_change_offset("indicator_arrow", 7, 7);
 
 sprite_change_offset("hud_tailwhip", 0, 0);
 sprite_change_offset("hud_dragon", 0, 0);

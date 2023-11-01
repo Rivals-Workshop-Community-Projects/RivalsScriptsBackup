@@ -31,12 +31,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
-//non-sandbert stuff
-if (attack == AT_JAB && window == 3 && window_timer == 1){
-    if (was_parried){
-        was_parried = false;
-    }
-}
 
 
 //ustrong stuff
