@@ -69,14 +69,14 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 20+(4*fspecDistanceRune));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -12)
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 42);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 56);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 150);

@@ -126,9 +126,9 @@ if (was_hit_by_fspec){
 } else {
 	was_hit_by_fspec_count = 0;
 }
-
+//print(state);
 //Nspecial Interactions
-if (state > 1 && state < 4){
+if (state > 1 && state < 3){//>
 	with (asset_get("pHitBox")){
 		var MaxAreaVar = 32;
 		if ((place_meeting(x,y,other.id) && effect == 421 && attack == AT_NSPECIAL && player_id == other.player_id)
@@ -142,6 +142,12 @@ if (state > 1 && state < 4){
 			other.throw_direction = other.spr_dir;
 			other.should_change_dir = true;
 			//water tier 3 rune
+			with (other){
+				if (state != 3){
+					instance_destroy(suck_hitbox);
+					instance_destroy(grab_hitbox);
+				}
+			}
 			with(other.player_id){
 				if (nspecialProjDropletRune){
 					var waterDroplet1 = create_hitbox(AT_NSPECIAL, 2, vacuum.x, vacuum.y-10);
@@ -160,8 +166,12 @@ if (state == 0){
 		throw_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y-20);
 	}
 	
-	throw_hitbox.x = x;
-	throw_hitbox.y = y-20;
+	if (instance_exists(throw_hitbox)){
+		throw_hitbox.x = x;
+		throw_hitbox.y = y-20;
+		throw_hitbox.hsp = hsp;
+		throw_hitbox.vsp = vsp;
+	}
 	
 	sprite_index = sprite_get("super_vac_spin");
 	image_index += .3;
@@ -190,7 +200,7 @@ if (state == 0){
 if (state == 1){
 	player_id.move_cooldown[AT_DSPECIAL] = 3;
 	sprite_index = sprite_get("super_vac_land");
-	image_index += .5;
+	image_index += .25;
 	
 	if (image_index > 2){
 		state = 2;
@@ -216,7 +226,6 @@ if (state > 1){
 
 //Idle Ground
 if (state == 2){
-	
 	if (free){
 		sprite_index = sprite_get("super_vac_fall");
 	}
@@ -288,7 +297,6 @@ if (state == 3){
 	if (image_index >= 4 && image_index < 12){
 		image_index += .3;
 	}
-
 	if (image_index == 4.35 || image_index == 4.4){
 		sound_play(player_id.sfx_star_allies_clean_vac_suck);
 		suck_hitbox = create_hitbox(AT_DSPECIAL_2, 1, x+70*spr_dir, y-20);
@@ -368,7 +376,7 @@ if (state == 5){
 	if (!free){
 		//hsp = 0;
 	}
-	print(image_index);
+	//print(image_index);
 	//Opponent is fired forward
 	if (throw_direction == spr_dir){
 		sprite_index = sprite_get("super_vac_fire");

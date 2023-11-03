@@ -47,10 +47,10 @@ set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 140);
 set_hitbox_value(AT_BAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8.5);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.71);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.70);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, crit_effect);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);

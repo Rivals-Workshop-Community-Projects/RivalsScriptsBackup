@@ -262,6 +262,12 @@ if(upbrng == 10){
 	upbrng = 0;
 }
 
+//tdude hi
+if (state == PS_HITSTUN || state == PS_WALL_JUMP || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_RESPAWN){
+    refreshed_djump = false;
+}
+//tdude bye
+
 //skeleton
 if(runeN){
 	//pog

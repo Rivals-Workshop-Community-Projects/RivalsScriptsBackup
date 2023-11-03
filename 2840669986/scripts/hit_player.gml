@@ -21,6 +21,7 @@ if (my_hitboxID.attack == AT_DTILT){
 	}
 }
 
+/*
 if (my_hitboxID.attack == AT_DATTACK){
 	if (my_hitboxID.hbox_num != 5){
 		hit_player_obj.x = x + (12*spr_dir);
@@ -29,6 +30,7 @@ if (my_hitboxID.attack == AT_DATTACK){
 		hit_player_obj.y += 6
 	}
 }
+*/
 
 /*
 if (my_hitboxID.attack == AT_NAIR){
@@ -60,7 +62,7 @@ if (my_hitboxID.attack == AT_DSTRONG){
 if (my_hitboxID.attack == AT_NSPECIAL){
 	if (my_hitboxID.hbox_num == 1){
 		if (my_hitboxID.water_proj_was_charged == false){
-			sound_play(sfx_star_allies_clean_pitch_water);
+			//sound_play(sfx_star_allies_clean_pitch_water);
 		} else if (my_hitboxID.water_proj_was_charged == true){
 			sound_play(sfx_star_allies_clean_pitch_water_charged);
 		}
@@ -118,9 +120,10 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){
 	        if (hit_player_obj == my_hitboxID.player_id){
 				//
 	        	if (my_hitboxID.hbox_num == 2){
+					sprite_index = sprite_get("hurt");
 						vacuum_myself = true;
 						vacuum.vacuum_myself = true;
-						hit_player_obj.invince_time = 300;
+						hit_player_obj.invince_time = 0;
 	        	} else {
 					if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
 						clamp(old_hsp*1.35,-10,10);

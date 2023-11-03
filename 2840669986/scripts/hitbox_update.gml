@@ -27,26 +27,34 @@ if (attack == AT_DSPECIAL_2){
 }
 
 if (attack == AT_NSPECIAL && hbox_num != 5){
+	fall_through = false;
 	water_proj_timer++;
 	proj_angle += (-2 * (spr_dir));
 	clamp(proj_angle, -15, 15)
 	
 	if(hbox_num == 6){
-		x = player_id.waterProjX
-		y = player_id.waterProjY
+		x = player_id.waterProjX;
+		y = player_id.waterProjY;
 	}
 	
 	if (hbox_num == 1){//normal proj
 		if (water_proj_was_charged == false){
-			water_proj_destroy_sfx = player_id.sfx_star_allies_clean_pitch_water
+			water_proj_destroy_sfx = player_id.sfx_star_allies_clean_pitch_water;
 		} else if (water_proj_was_charged == true){
-			water_proj_destroy_sfx = player_id.sfx_star_allies_clean_pitch_water_charged
+			water_proj_destroy_sfx = player_id.sfx_star_allies_clean_pitch_water_charged;
 		}
-	} else if (hbox_num > 1 && hbox_num < 5){//nspec+dpsec projs
+	} else if (hbox_num > 1 && hbox_num < 5){//nspec+dpsec projs >
 		water_proj_was_charged = false;
 		water_proj_destroy_sfx = player_id.sfx_star_allies_clean_pitch_water
 	}
+	//print(proj_angle);
 	
+	if (proj_angle < -60){//>
+		proj_angle = -60;
+	}
+	if (proj_angle > 60){//>
+		proj_angle = 60;
+	}
 	if (hbox_num == 1){//normal proj
 	
 		player_id.waterProjX = x;
@@ -81,9 +89,10 @@ if (attack == AT_NSPECIAL && hbox_num != 5){
 	} else {
 		var destroy_fx_ground_offset = 10;
 	}
-	
-	//Ground
-	if (place_meeting(x+(0*spr_dir),y,(asset_get("par_block")))){
+	//print(string(hbox_num) + " " + string(vsp));
+
+	//Ground. or a platform > 
+	if (place_meeting(x+(0*spr_dir),y,(asset_get("par_block"))) || (place_meeting(x+(0*spr_dir),y + 16,(asset_get("par_jumpthrough")))) && vsp > 6){//>
 		//print("hit ground")
 		if (hbox_num != 5){
 			destroy_fx = player_id.water_proj_land_vfx;

@@ -27,8 +27,9 @@ if(attack == AT_DSPECIAL){
 	        		grabbedid.y = enderman.y-14; //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
 	        }
 	        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-	        grabbedid.wrap_time = 6000;
-	        grabbedid.state = PS_WRAPPED;
+	        if (grabbedid.state == PS_HITSTUN){
+                grabbedid.hitstop = 4;
+	        }
 	        if(endermoving == 0){
 	        	invincible = true;
 				if(up_pressed){//REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
@@ -892,6 +893,15 @@ if(attack == AT_EXTRA_2){
 	if(window == 5){
 		with(noteblock){
 			byebye = true;
+		}
+	}
+}
+
+//tdude land
+if (attack == AT_UAIR){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			sound_play(asset_get("sfx_ori_stomp_spin"));
 		}
 	}
 }

@@ -36,7 +36,7 @@ switch (state){
 	case PS_DASH_START:
 		//
 		if (state_timer == 1){
-			sound_play(sfx_krdl_dashstart);
+			sound_play(sfx_krdl_dashstart, false, noone, 0.5, 1);
 		}
 		break;
 	case PS_DASH:

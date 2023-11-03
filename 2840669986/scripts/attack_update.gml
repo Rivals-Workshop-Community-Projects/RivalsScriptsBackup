@@ -7,7 +7,7 @@ if (attack == AT_JAB){
 		spawn_base_dust( x + (28 * spr_dir), y, "dattack", spr_dir*-1);
 		// windbox rune
 		if(windRune){
-			for (var i = 0; i < 6; i++){
+			for (var i = 0; i < 6; i++){//>
 				spawn_base_dust( (x + (24+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
 				spawn_base_dust( (x + (54+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
 				spawn_base_dust( (x + (84+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
@@ -119,7 +119,7 @@ if (attack == AT_UAIR){
 	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 5)){
 		hud_offset = 46;
 	}
-	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){//>
 		sound_play(asset_get("sfx_jumpground"), false, noone, 0.9, 1.2);
 	}
 }
@@ -151,7 +151,7 @@ if (attack == AT_FSTRONG){
 			hsp = 2.6*spr_dir;
 			
 			if(windRune){
-				for (var i = 0; i < 6; i++){
+				for (var i = 0; i < 6; i++){//>
 					spawn_base_dust( (x + (24+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
 					spawn_base_dust( (x + (54+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
 					spawn_base_dust( (x + (84+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
@@ -175,7 +175,7 @@ if (attack == AT_FSTRONG){
 	}
 	if ((window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 3 || (window == 4 && image_index < 10)){
 		hud_offset = 46;
-	}
+	}//>
 }
 
 //Up Strong
@@ -203,7 +203,7 @@ if (attack == AT_USTRONG){
 	}
 	if ((window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 3 || (window == 4 && image_index < 8)){
 		hud_offset = 38;
-	}
+	}//>
 }
 
 //Down Strong
@@ -261,7 +261,7 @@ if (attack == AT_NSPECIAL){
     if (window == 3){
 		sound_stop(sfx_charge);
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			var water_proj = create_hitbox( AT_NSPECIAL, 1, x+(32*spr_dir), y-42 );
+			var water_proj = create_hitbox( AT_NSPECIAL, 1, x+(24*spr_dir), y-38 );
 			if (nspecial_charged == true){
 				water_proj.hsp *= 1.15
 				water_proj.vsp *= 1.1
@@ -381,7 +381,7 @@ if (attack == AT_USPECIAL){
 	}
     if (window == 1){
 		hsp *= 0.75;
-		vsp *= 0.75;
+		vsp *= 0.6;
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_play(sfx_star_allies_clean_chuchu);
 			sound_play(asset_get("sfx_bird_sidespecial"));
@@ -514,6 +514,8 @@ if (attack == AT_DSPECIAL){
 if (attack == AT_DSPECIAL_2){
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && vacuum.state == 2){
 		vacuum.state = 3;
+		vacuum.state_timer = 0;
+		vacuum.image_index = 0;
 		vacuum.throw_direction = spr_dir;
 	}
 }

@@ -29,7 +29,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DATTACK, 5);
 
-var multihit_base_kb = 4;
+var multihit_base_kb = 6;
 var multihit_hitpause = 4;
 
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);

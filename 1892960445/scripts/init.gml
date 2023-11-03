@@ -153,6 +153,8 @@ teleport2_effect = hit_fx_create(sprite_get("rollparticles"),20);
 smoke_effect = hit_fx_create(sprite_get("smoke"),30);
 smoke2_effect = hit_fx_create(sprite_get("smoke2"),30);
 
+//tdude was here!!!!!!!!!
+refreshed_djump = false;
 
 //intro
 introTimer = -4;

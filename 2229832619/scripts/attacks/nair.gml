@@ -31,12 +31,12 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 6);//7
-set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_NAIR, 6, AG_WINDOW_LENGTH, 8);//16
-set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //nas   naa1  nac1  naa2  nac2  nar
