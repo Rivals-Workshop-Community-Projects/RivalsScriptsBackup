@@ -1,5 +1,304 @@
 if "dx" not in self exit;
 
+var idx = 0;
+
+for (var i = 0; i < array_length(data) && idx == noone; i++) {
+	if data[i].type == 2 && data[i].index == owner.attack {
+		idx = i;
+	}
+}
+
+var item = data[idx];
+
+var page_change_timer = 0;
+var page_change_timer_max = 3;
+var page = 0;
+if idx > 0 {
+	page = times_attack_repeated % (array_length(item.page_starts) + 1);
+	if page == array_length(item.page_starts) {
+		item = data[0];
+	}
+}
+
+
+
+if true {
+	var draw_w = view_get_wview();
+	var draw_h = view_get_hview();
+	var draw_x = view_get_xview() - draw_w * 0; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+	var draw_y = view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+	
+	if false {
+		draw_x -= view_get_xview(); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+		draw_y -= view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+	}
+	
+	// var margin_l = 256;
+	// var margin_r = 32;
+	var margin_l = 112;
+	var margin_r = 112;
+	var margin_t = 32;
+	var margin_b = 20;
+	
+	if true draw_set_alpha(0.75);
+	rectDraw(draw_x, draw_y, draw_w, draw_h, c_black);
+	draw_set_alpha(1);
+	
+	// draw_x -= round(118 * (y / lowered_y));
+	// draw_y -= cursor_change_timer;
+	
+	var app_color = $f0bc27;
+	
+	if true {
+		
+		var text_x = draw_x + margin_l;
+		var text_y = draw_y + margin_t;
+				
+		var this_w = draw_w - margin_l - margin_r;
+		var this_x = text_x + this_w / 2;
+		
+		textDraw(this_x, text_y, "fName", app_color, 18, this_w, fa_center, 1, 0, 1, "- " + item.name + " -", true);
+		
+		text_y += last_text_size[1] + 10;
+		
+		switch(item.type){
+			case 1: // stats
+				
+				var stats_table = [];
+				
+				with owner stats_table = [
+					
+					// grounded
+					"Walk Speed", walk_speed,
+					"Walk Accel", walk_accel,
+					"Dash Speed", dash_speed,
+					"Initial Dash Speed", initial_dash_speed,
+					"Initial Dash Time", initial_dash_time,
+					"Ground Friction", ground_friction,
+					"Waveland Adj", wave_land_adj,
+					"Waveland Friction", wave_friction,
+					
+					// aerial
+					"Max Air Speed", air_max_speed,
+					"Air Accel", air_accel,
+					"Pratfall Accel", prat_fall_accel,
+					"Air Friction", air_friction,
+					"Fall Speed", max_fall,
+					"Fast Fall Speed", fast_fall,
+					"Gravity", gravity_speed,
+					"Hitstun Gravity", hitstun_grav,
+					
+					// jumps
+					"Full Hop", jump_speed,
+					"Short Hop", short_hop_speed,
+					"DJump", djump_speed,
+					"DJump Count", max_djumps,
+					"Walljump HSP", walljump_hsp,
+					"Walljump VSP", walljump_vsp,
+					"Max Jump Speed", max_jump_hsp,
+					"DJump Change", jump_change,
+					
+					// misc
+					"Knockback Adj", knockback_adj,
+					"Jumpsquat Time", jump_start_time,
+					"Leave Ground Max", leave_ground_max,
+					"Prat Land Time", prat_land_time,
+					"Land Time", land_time,
+					"Notes", other.stats_notes,
+				];
+				
+				var orig_y = text_y;
+				text_x += (242 - 112) / 2;
+				
+				for (var i = 0; i < array_length(stats_table); i += 2){
+					textDraw(text_x, text_y, "fName", app_color, 18, 160, fa_left, 1, 0, 1, stats_table[i], true);
+					text_y += last_text_size[1];
+					textDraw(text_x + 16, text_y, "fName", c_white, 18, 100, fa_left, 1, 0, 1, decimalToString(stats_table[i+1]), true);
+					text_y += last_text_size[1];
+					
+					if text_y > draw_y + draw_h - margin_b * 8{
+						text_y = orig_y;
+						text_x += 160;
+					}
+				}
+				break;
+			case 2: // a move
+				// textDraw(draw_x + view_get_wview() - 9 + round(118 * 3), draw_y + 32, "fName", c_white, 1000, 1000, fa_right, 1, 0, 1, "JUMP: Refresh", 1);
+				text_x += (208 - 112) / 2;
+				
+				var orig_x = text_x;
+				var orig_y = text_y;
+				
+				textDraw(text_x, text_y, "fName", app_color, 18, 160, fa_left, 1, 0, 1, "Length (Whiff):", true);
+				text_x += last_text_size[0] + 8;
+				textDraw(text_x, text_y, "fName", c_white, 18, 100, fa_left, 1, 0, 1, item.length, false);
+				text_x = orig_x + 240;
+				textDraw(text_x, text_y, "fName", app_color, 18, 160, fa_left, 1, 0, 1, "Ending Lag (Whiff):", true);
+				text_x += last_text_size[0] + 8;
+				textDraw(text_x, text_y, "fName", c_white, 18, 100, fa_left, 1, 0, 1, item.ending_lag, false);
+				text_x = orig_x + 480;
+				textDraw(text_x, text_y, "fName", app_color, 18, 160, fa_left, 1, 0, 1, "Landing Lag (Whiff):", true);
+				text_x += last_text_size[0] + 8;
+				textDraw(text_x, text_y, "fName", c_white, 18, 100, fa_left, 1, 0, 1, item.landing_lag, false);
+				
+				text_x = orig_x;
+				text_y += last_text_size[1];
+				
+				if item.misc != "-"{
+					textDraw(text_x, text_y, "fName", app_color, 18, 160, fa_left, 1, 0, 1, "Notes:", true);
+					text_x += last_text_size[0] + 8;
+					textDraw(text_x, text_y, "fName", c_white, 18, draw_w - margin_l - margin_r - 64, fa_left, 1, 0, 1, item.misc, true);
+					text_y += last_text_size[1];
+					text_x = orig_x;
+				}
+				
+				if array_length(item.hitboxes){
+					text_y += 10;
+					var add_x = 64;
+					var stats_table = [
+						"Active",
+						"DMG",
+						"BKB",
+						"KBG",
+						"Angle",
+						"Pri.",
+						"BHP",
+						"HPG",
+						];
+					
+					text_x += add_x * 2;
+					
+					for (var i = 0; i < array_length(stats_table); i++){
+						textDraw(text_x, text_y, "fName", app_color, 18, 24, fa_left, 1, 0, 1, stats_table[i], true);
+						text_x += add_x;
+					}
+					
+					text_y += last_text_size[1] + 10;
+					
+					var reached_end = false;
+	
+					text_y += ease_sineIn(0, 240, page_change_timer, page_change_timer_max);
+					
+					for (var i = item.page_starts[page]; i < array_length(item.hitboxes) && !reached_end; i++){
+						text_x = orig_x;
+						var hb = item.hitboxes[i];
+						stats_table = [
+							hb.active,
+							hb.damage,
+							hb.base_kb,
+							hb.kb_scale,
+							hb.angle,
+							hb.priority,
+							hb.base_hitpause,
+							hb.hitpause_scale,
+							];
+						textDraw(text_x, text_y, "fName", app_color, 18, 120, fa_left, 1, 0, 1, item.hitboxes[i].name, false);
+						text_x += add_x * 2;
+					
+						for (var j = 0; j < array_length(stats_table); j++){
+							textDraw(text_x, text_y, "fName", hb.parent_hbox && hb.parent_hbox != i + 1 && j > 0 ? c_gray : c_white, 18, 24, fa_left, 1, 0, 1, stats_table[j], true);
+							text_x += add_x;
+						}
+						
+						text_y += last_text_size[1];
+						
+						if hb.misc != "-"{
+							text_x = orig_x + add_x * 2;
+							textDraw(text_x, text_y, "fName", c_gray, 18, draw_w - margin_l - margin_r - 128, fa_left, 1, 0, 1, hb.misc, true);
+							text_y += last_text_size[1];
+						}
+						
+						text_y += 10;
+						
+						if text_y - ease_sineIn(0, 240, page_change_timer, page_change_timer_max) > draw_y + draw_h - margin_b - 64{
+							reached_end = true;
+							if !array_find_index(item.page_starts, i){
+								array_push(item.page_starts, i);
+							}
+						}
+					}
+				}
+				break;
+		}
+	}
+}
+
+#define rectDraw(x1, y1, width, height, color)
+
+draw_rectangle_color(x1, y1, x1 + width - 1, y1 + height - 1, color, color, color, color, false);
+
+#define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text, get_size)
+
+x1 = round(x1);
+y1 = round(y1);
+
+draw_set_font(asset_get(font));
+draw_set_halign(align);
+
+if outline {
+	for (i = -1; i < 2; i++) {
+		for (j = -1; j < 2; j++) {
+			draw_text_ext_transformed_color(x1 + i * 2, y1 + j * 2, text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
+		}
+	}
+}
+
+if alpha > 0.01 draw_text_ext_transformed_color(x1, y1, text, lineb, linew, scale, scale, 0, color, color, color, color, alpha);
+
+if get_size last_text_size = [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
+
+#define maskHeader
+
+gpu_set_blendenable(false);
+gpu_set_colorwriteenable(false,false,false,true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+draw_set_alpha(1);
+
+#define maskMidder
+
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+
+#define maskFooter
+
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+
+#define decimalToString(input)
+
+if !is_number(input) return(string(input));
+
+input = input % 1000;
+
+input = string(input);
+var last_char = string_char_at(input, string_length(input));
+
+if (string_length(input) > 2){
+	var third_last_char = string_char_at(input, string_length(input) - 2);
+	if (last_char == "0" && third_last_char == ".") input = string_delete(input, string_length(input), 1);
+}
+
+if (string_char_at(input, 1) == "0") input = string_delete(input, 1, 1);
+
+return input;
+
+
+
+
+
+
+
+
+/*
+
+
+
+exit;
+
 var idx = (owner.attack && !(owner.state == PS_CROUCH && owner.state_timer > 30)) ? noone : 0;
 
 for (var i = 0; i < array_length(moves) && idx == noone; i++){

@@ -29,11 +29,12 @@ if (attack == AT_DSPECIAL){
 	&& player_id.whirlwind_myself == false){
 		damage = 10;
 		kb_value = kb_value-2;
-		kb_scale = .8;
 		hitpause = 15;
 		hitpause_growth = 1.5;
 		hit_effect = 143;
 		sound_effect = asset_get("sfx_ell_strong_attack_explosion");
+		if (hbox_num < 3) kb_scale = .8;	
+		else kb_scale = .6;	
 	}
 	//The Launch hitbox can only hit those hit by the initial hitbox
 	if (hbox_num > 1 && hbox_num < 10){

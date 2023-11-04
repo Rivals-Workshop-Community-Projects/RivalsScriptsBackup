@@ -22,7 +22,7 @@ with (asset_get("pHitBox")){
 						other.whirlwind2_active_hitbox.destroyed = true;	
 					}
 				other.state_timer = -24;
-				other.player_id.whirlwind_cooldown = 90;
+				other.player_id.whirlwind_cooldown = 150;
 			//	other.player_id.move_cooldown[AT_DSPECIAL] = 90;
 		    }
 		}
@@ -73,13 +73,13 @@ if (state_timer == -25){
 }
 
 //Idle State
-if (state_timer == -24 || state_timer == 470){
+if (state_timer == -24 || state_timer == 370){
 	state = 1;
 	image_index = 0;
 }
 
 //Should Die
-if (state_timer == -4 || state_timer > 490){
+if (state_timer == -4 || state_timer > 390){
 	shoulddie = true;
 }
 

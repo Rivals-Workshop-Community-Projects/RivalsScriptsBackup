@@ -55,7 +55,7 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 10;
+			ai_attack_time = 5;
 			FallThrough();
 			break;
 		case AS_RECOVER:
@@ -63,7 +63,7 @@ SetAttack();
 			//if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 20;//40
+			ai_attack_time = 10;//40
 			FallThrough();
 			break;
 	}
@@ -77,16 +77,16 @@ SetAttack();
 		{
 			case AT_UTILT:
 				if (has_hit_player){ 
-				jump_pressed = true;
-				DoAttack(AT_UAIR);}
+				//jump_pressed = true;
+				DoAttack(AT_FSPECIAL);}
 				if (!has_hit_player){ 
-				DoAttack(AT_DATTACK);}
+				DoAttack(AT_FTILT);}
 				break;
 			case AT_DATTACK:
-				if (has_hit_player && free) DoAttack(AT_NAIR);
+				if (has_hit_player && free) DoAttack(AT_FSPECIAL);
 				if (has_hit_player){ 
 				jump_pressed = true;
-				DoAttack(AT_UAIR);}
+				DoAttack(AT_FSPECIAL);}
 				break;
 			case AT_JAB:
 				if (has_hit_player) DoAttack(AT_DTILT);
@@ -109,12 +109,18 @@ SetAttack();
 				if (has_hit_player) DoAttack(AT_FAIR);
 				break;
 			case AT_FSPECIAL_AIR:
-				if (ai_state == AS_RECOVER && window == 2) {jump_pressed = true; HoldTowardsStage();DoAttack(AT_DSPECIAL);}
+				special_pressed = true;
+				if (ai_state == AS_RECOVER && window == 1) {jump_pressed = true; HoldTowardsStage();DoAttack(AT_DSPECIAL);}
 				//if (window == 5) {HoldTowardsStage();DoAttack(AT_DSPECIAL);}
 				if (has_hit_player) DoAttack(AT_FAIR);
 				break;
 			case AT_USPECIAL:
 				if (ai_state != AS_RECOVER) {HoldTowardsStage();}
+				break;
+			case AT_NSPECIAL:
+				if (has_hit_player) DoAttack(AT_USTRONG);
+				if (!has_hit_player){ 
+				DoAttack(AT_DATTACK);}
 				break;
 		}
 	}
@@ -149,16 +155,17 @@ SetAttack();
 				if (ai_state == AS_ADVANTAGE && state == PS_FIRST_JUMP && dist < 150 && ydist < 80) jump_down = false;
 				
 				if (xdist > 400 && ydist < 40) DoAttack(AT_NSPECIAL);
-				else if (xdist < 15 && ydist < 80 && ai_target.y < y && free) DoAttack(AT_USPECIAL);
-				else if (xdist < 15 && ydist < 50 && ai_target.y < y && free) DoAttack(AT_UAIR);
+				else if (xdist < 20 && ydist < 80 && ai_target.y < y && free) DoAttack(AT_USPECIAL);
+				else if (xdist < 20 && ydist < 50 && ai_target.y < y && free) DoAttack(AT_UAIR);
 				else if (xdist > 30	&& xdist < 45 && ydist < 20) DoAttack(AT_FSTRONG);
+				else if (xdist < 10 && ydist < 10) DoAttack(AT_DSTRONG);
 				else if (xdist < 20 && ydist < 10) DoAttack(AT_DATTACK);
 				else if (xdist < 15 && ydist < 30) DoAttack(AT_FTILT);
 				else if (xdist < 5 && ydist < 40 && ydist > 20) DoAttack(AT_USTRONG);
 				else if (xdist < 5 && ydist < 5 && state == PS_DASH) DoAttack(AT_FSPECIAL);
 				else if (xdist < 10 && ydist > 20 && ai_target.y < y && free) DoAttack(AT_NAIR);
 				else if (xdist < 80 && ydist < 30 && free) DoAttack(AT_FAIR);
-				else if (xdist < 10 && ydist < 10 && free) DoAttack(AT_NAIR);
+				else if (xdist < 30 && ydist < 10 && free) DoAttack(AT_NAIR);
 			}
 			break;		
 	}

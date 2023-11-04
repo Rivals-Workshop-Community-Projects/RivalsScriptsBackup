@@ -454,25 +454,11 @@ switch (attack)
 				checkMerge = true;
 			}
 		}
-		else if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
+		else if (has_rune("O") && window_timer % 2 == 1)
 		{
-			if (has_rune("O")) with (oPlayer) if (other.player != player && get_player_team(player) != get_player_team(other.player) && state_cat == SC_HITSTUN && point_distance(x, y, other.x, other.y) < other.dspecRadius+32)
-			{
-				var uwu = spawn_hit_fx(x, y-floor(char_height/2), 305); uwu.depth = -10;
-				x = other.x;
-				y = other.y - 95;
-				hsp = 0;
-				vsp = 0;
-				old_hsp = 0;
-				old_vsp = -1;
-				hitpause = true;
-				hitstop = 30;
-				hitstip_full = 30;
-				other.hsp = 0;
-				other.vsp = -4;
-				sound_play(asset_get("mfx_star"));
-				uwu = spawn_hit_fx(x, y-floor(char_height/2), 305); uwu.depth = -10;
-			}
+			var star = instance_create(x, y-30, "obj_article1");
+			star.hsp = hsp;
+			star.vsp = floor(window_timer/2);
 		}
 		break;
 		
@@ -514,7 +500,7 @@ switch (attack)
 		if (aura)
 		{
 			SkipWindow(1, 3);
-			SkipWindow(4, 5);
+			SkipWindow(4, 6);
 		}
 		ConstellationBonus(attack, 1);
 		ConstellationBonus(attack, 2);

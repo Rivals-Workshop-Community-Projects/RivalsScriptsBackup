@@ -36,6 +36,12 @@ closestStarMem = -4;
 maxArticles = 7;
 replacedCount = 0;
 
+constelCol = 0;
+if (get_player_color(player) == 7)
+	constelCol = [GetColourPlayer(1), GetColourPlayer(2), c_white];
+else
+	constelCol = [c_white, GetColourPlayer(3)];
+
 var i = 0;
 with (asset_get("obj_article1")) if (player_id == other.player_id)
 {
@@ -87,4 +93,9 @@ if (!has_rune("M"))
 		}
 	}
 	return star;
+}
+
+#define GetColourPlayer(_index)
+{
+	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
 }

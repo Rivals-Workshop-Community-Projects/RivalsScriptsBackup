@@ -134,7 +134,7 @@ SetAttack();
 						left_down = false;
 						right_down = false;
 					}
-					else if (((x<room_width/2)?x<stage_x-(topStage-y):x>room_width-stage_x+(topStage-y)) && ((x<room_width/2)?x<stage_x-140:x>room_width-stage_x+140))
+					else if (((x<room_width/2)?x<stage_x-(topStage-y):x>room_width-stage_x+(topStage-y)) && ((x<room_width/2)?x<stage_x-100:x>room_width-stage_x+100))
 					{
 						up_down = false;
 						down_down = false;
@@ -148,6 +148,11 @@ SetAttack();
 				}
 				break;
 			case AT_NSPECIAL:
+				if (window == 1 && window_timer == 1 && CloseToAStar())
+				{
+					HoldTowardsTarget();
+					spr_dir = right_down?1:-1;
+				}
 				if (can_jump)
 				{
 					jump_pressed = true;
@@ -234,24 +239,23 @@ SetAttack();
 					DoAttack(StarCount()>=4?AT_UAIR:AT_FSPECIAL);
 				else if (ai_target.state_cat == SC_HITSTUN && dist < 300 && CloseToAStar())
 					DoAttack(AT_NSPECIAL);
-				else if (dist < 70 && state != PS_FIRST_JUMP && !ai_target.was_parried)
-					DoAttack(AT_NSPECIAL);
 				else if (ai_state==AS_NEUTRAL && dist < 100 && !free && state != PS_FIRST_JUMP && !ai_target.was_parried)
 					DoAttack(AT_NSPECIAL);
-				else if (ydist < 30 && xdist < 60)
-					DoAttack(AT_FSPECIAL);
-				else if (!free && ydist < 10 && xdist < 40)
+				else if (!free && ydist < 80 && xdist < 50)
+					DoAttack(AT_USTRONG);
+				else if (!free && ydist < 20 && xdist < 70)
 					DoAttack(AT_DSTRONG);
-				else if (free && ydist < 60 && xdist < 40)
-					DoAttack(ai_target.y>y?AT_DAIR:AT_UAIR);
+				else if (dist < 70 && state != PS_FIRST_JUMP && !ai_target.was_parried)
+					DoAttack(AT_NSPECIAL);
 				else if (ydist < 40)
 				{
-					if (xdist < 60)
+					if (xdist < (sign(ai_target.x-x)!=spr_dir&&free?100:60))
 						DoAttack(free?xdist<30?GroundBelow()?AT_DAIR:AT_NAIR:AT_FAIR:AT_DTILT);
-					else if (xdist < 90)
+					else if (xdist < 100)
 						DoAttack(free?AT_FSPECIAL:AT_DATTACK);
 				}
-				else if (ydist < 80 && xdist < 20 && !free) DoAttack(AT_USTRONG);
+				else if (free && ydist < 60 && xdist < 40)
+					DoAttack(ai_target.y>y?AT_DAIR:AT_UAIR);
 				else if (attack != AT_DSPECIAL && ai_target.y<y-80) DoAttack(AT_DSPECIAL);
 			}
 			break;		
@@ -446,7 +450,7 @@ SetAttack();
 #define CloseToAStar()
 {
 	var close = false;
-	with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && point_distance(x, y, other.x, other.y) < (isBig?128:96)) close = true;
+	with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && !cracked && point_distance(x, y, other.x, other.y) < (isBig?128:96)) close = true;
 	return close;
 }
 
@@ -458,7 +462,7 @@ SetAttack();
 #define DetectCheaters()
 {
 	if (aura) return;
-	with (oPlayer) if (id != other && temp_level!=0)
+	with (oPlayer) if (id != other && temp_level!=0 && (clones_player_id == id || clones_player_id == noone))
 	{
 		if (other.cheatTracker[player].isCheater) other.aura = true;
 		else if (state == PS_PARRY)
@@ -500,12 +504,14 @@ SetAttack();
 	{
 		if (vsp > -1) jump_pressed = true;
 		if ((ai_target.y < y-32)) jump_down = true;
+		
+		if (state == PS_JUMPSQUAT && state_timer == 0) spr_dir = (x < ai_target.x)?-1:1;
 	}
 }
 
 #define Hitfall()
 {
-	if (free && hitpause && hitstop_full > 4 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+64, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+64, asset_get("par_jumpthrough"), 1, 0)))
+	if (free && hitpause && hitstop_full > 3 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+160, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+160, asset_get("par_jumpthrough"), 1, 0)))
 	{
 		do_a_fast_fall = true;
 	}

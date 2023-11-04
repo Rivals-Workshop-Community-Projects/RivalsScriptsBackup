@@ -1,15 +1,3 @@
-if (state == "taunt" && state_timer == 36) {
-	// sound_play(sound_get("taunt"));
-}
-	
-if (state == "idle" && waiting) {
-	spr_dir = 1; // Always face right for this animation
-	// if (state_timer == 45) sound_play(sound_get("wait"));
-	// if (state_timer == 90) sound_play(asset_get("sfx_abyss_spawn"));
-}
-
-
-
 switch(state){
 	case "idle":
 		if state_timer == 0{
@@ -48,14 +36,20 @@ if !frame_data_loaded && get_match_setting(SET_PRACTICE){
 }
 
 if frame_data_loaded{
-	if "prev_attack" in self{
-		if prev_attack != owner.attack{
-			prev_attack = owner.attack;
-			sound_play(sound_get("click"));
-		}
+	if owner.state == PS_RESPAWN && owner.state_timer == 1 {
+		sound_play(sound_get("click"));
+		data = [];
+		loadFrameData();
 	}
-	else{
-		prev_attack = owner.attack;
+	if (owner.state == PS_ATTACK_GROUND || owner.state == PS_ATTACK_AIR) && owner.state_timer == 1 {
+		sound_play(sound_get("click"));
+		if prev_attack == owner.attack {
+			times_attack_repeated += 1;
+		}
+		else {
+			times_attack_repeated = 0;
+			prev_attack = owner.attack;
+		}
 	}
 }
 
@@ -66,6 +60,103 @@ if frame_data_loaded{
 
 
 #define loadFrameData
+
+/*
+
+python to generate the index code:
+
+index_names = [
+    "AG_MUNO_ATTACK_EXCLUDE",
+	"AG_MUNO_ATTACK_NAME",
+	"AG_MUNO_ATTACK_FAF",
+	"AG_MUNO_ATTACK_ENDLAG",
+	"AG_MUNO_ATTACK_LANDING_LAG",
+	"AG_MUNO_ATTACK_MISC",
+	"AG_MUNO_ATTACK_MISC_ADD",
+	"AG_MUNO_WINDOW_EXCLUDE",
+	"AG_MUNO_WINDOW_ROLE",
+	"AG_MUNO_ATTACK_USES_ROLES",
+	"AG_MUNO_ATTACK_COOLDOWN",
+	"AG_MUNO_ATTACK_CD_SPECIAL",
+	"AG_MUNO_WINDOW_CD_SPECIAL",
+	"AG_MUNO_WINDOW_INVUL",
+	"HG_MUNO_HITBOX_EXCLUDE",
+	"HG_MUNO_HITBOX_NAME",
+	"HG_MUNO_HITBOX_ACTIVE",
+	"HG_MUNO_HITBOX_DAMAGE",
+	"HG_MUNO_HITBOX_BKB",
+	"HG_MUNO_HITBOX_KBG",
+	"HG_MUNO_HITBOX_ANGLE",
+	"HG_MUNO_HITBOX_PRIORITY",
+	"HG_MUNO_HITBOX_GROUP",
+	"HG_MUNO_HITBOX_BHP",
+	"HG_MUNO_HITBOX_HPG",
+	"HG_MUNO_HITBOX_MISC",
+	"HG_MUNO_HITBOX_MISC_ADD",
+	"HG_MUNO_OBJECT_LAUNCH_ANGLE",
+]
+
+for s in index_names:
+    print(s + " = noone;\nif \"" + s + "\" in owner " + s + " = owner." + s + ";")
+
+*/
+
+AG_MUNO_ATTACK_EXCLUDE = noone;
+if "AG_MUNO_ATTACK_EXCLUDE" in owner AG_MUNO_ATTACK_EXCLUDE = owner.AG_MUNO_ATTACK_EXCLUDE;
+AG_MUNO_ATTACK_NAME = noone;
+if "AG_MUNO_ATTACK_NAME" in owner AG_MUNO_ATTACK_NAME = owner.AG_MUNO_ATTACK_NAME;
+AG_MUNO_ATTACK_FAF = noone;
+if "AG_MUNO_ATTACK_FAF" in owner AG_MUNO_ATTACK_FAF = owner.AG_MUNO_ATTACK_FAF;
+AG_MUNO_ATTACK_ENDLAG = noone;
+if "AG_MUNO_ATTACK_ENDLAG" in owner AG_MUNO_ATTACK_ENDLAG = owner.AG_MUNO_ATTACK_ENDLAG;
+AG_MUNO_ATTACK_LANDING_LAG = noone;
+if "AG_MUNO_ATTACK_LANDING_LAG" in owner AG_MUNO_ATTACK_LANDING_LAG = owner.AG_MUNO_ATTACK_LANDING_LAG;
+AG_MUNO_ATTACK_MISC = noone;
+if "AG_MUNO_ATTACK_MISC" in owner AG_MUNO_ATTACK_MISC = owner.AG_MUNO_ATTACK_MISC;
+AG_MUNO_ATTACK_MISC_ADD = noone;
+if "AG_MUNO_ATTACK_MISC_ADD" in owner AG_MUNO_ATTACK_MISC_ADD = owner.AG_MUNO_ATTACK_MISC_ADD;
+AG_MUNO_WINDOW_EXCLUDE = noone;
+if "AG_MUNO_WINDOW_EXCLUDE" in owner AG_MUNO_WINDOW_EXCLUDE = owner.AG_MUNO_WINDOW_EXCLUDE;
+AG_MUNO_WINDOW_ROLE = noone;
+if "AG_MUNO_WINDOW_ROLE" in owner AG_MUNO_WINDOW_ROLE = owner.AG_MUNO_WINDOW_ROLE;
+AG_MUNO_ATTACK_USES_ROLES = noone;
+if "AG_MUNO_ATTACK_USES_ROLES" in owner AG_MUNO_ATTACK_USES_ROLES = owner.AG_MUNO_ATTACK_USES_ROLES;
+AG_MUNO_ATTACK_COOLDOWN = noone;
+if "AG_MUNO_ATTACK_COOLDOWN" in owner AG_MUNO_ATTACK_COOLDOWN = owner.AG_MUNO_ATTACK_COOLDOWN;
+AG_MUNO_ATTACK_CD_SPECIAL = noone;
+if "AG_MUNO_ATTACK_CD_SPECIAL" in owner AG_MUNO_ATTACK_CD_SPECIAL = owner.AG_MUNO_ATTACK_CD_SPECIAL;
+AG_MUNO_WINDOW_CD_SPECIAL = noone;
+if "AG_MUNO_WINDOW_CD_SPECIAL" in owner AG_MUNO_WINDOW_CD_SPECIAL = owner.AG_MUNO_WINDOW_CD_SPECIAL;
+AG_MUNO_WINDOW_INVUL = noone;
+if "AG_MUNO_WINDOW_INVUL" in owner AG_MUNO_WINDOW_INVUL = owner.AG_MUNO_WINDOW_INVUL;
+HG_MUNO_HITBOX_EXCLUDE = noone;
+if "HG_MUNO_HITBOX_EXCLUDE" in owner HG_MUNO_HITBOX_EXCLUDE = owner.HG_MUNO_HITBOX_EXCLUDE;
+HG_MUNO_HITBOX_NAME = noone;
+if "HG_MUNO_HITBOX_NAME" in owner HG_MUNO_HITBOX_NAME = owner.HG_MUNO_HITBOX_NAME;
+HG_MUNO_HITBOX_ACTIVE = noone;
+if "HG_MUNO_HITBOX_ACTIVE" in owner HG_MUNO_HITBOX_ACTIVE = owner.HG_MUNO_HITBOX_ACTIVE;
+HG_MUNO_HITBOX_DAMAGE = noone;
+if "HG_MUNO_HITBOX_DAMAGE" in owner HG_MUNO_HITBOX_DAMAGE = owner.HG_MUNO_HITBOX_DAMAGE;
+HG_MUNO_HITBOX_BKB = noone;
+if "HG_MUNO_HITBOX_BKB" in owner HG_MUNO_HITBOX_BKB = owner.HG_MUNO_HITBOX_BKB;
+HG_MUNO_HITBOX_KBG = noone;
+if "HG_MUNO_HITBOX_KBG" in owner HG_MUNO_HITBOX_KBG = owner.HG_MUNO_HITBOX_KBG;
+HG_MUNO_HITBOX_ANGLE = noone;
+if "HG_MUNO_HITBOX_ANGLE" in owner HG_MUNO_HITBOX_ANGLE = owner.HG_MUNO_HITBOX_ANGLE;
+HG_MUNO_HITBOX_PRIORITY = noone;
+if "HG_MUNO_HITBOX_PRIORITY" in owner HG_MUNO_HITBOX_PRIORITY = owner.HG_MUNO_HITBOX_PRIORITY;
+HG_MUNO_HITBOX_GROUP = noone;
+if "HG_MUNO_HITBOX_GROUP" in owner HG_MUNO_HITBOX_GROUP = owner.HG_MUNO_HITBOX_GROUP;
+HG_MUNO_HITBOX_BHP = noone;
+if "HG_MUNO_HITBOX_BHP" in owner HG_MUNO_HITBOX_BHP = owner.HG_MUNO_HITBOX_BHP;
+HG_MUNO_HITBOX_HPG = noone;
+if "HG_MUNO_HITBOX_HPG" in owner HG_MUNO_HITBOX_HPG = owner.HG_MUNO_HITBOX_HPG;
+HG_MUNO_HITBOX_MISC = noone;
+if "HG_MUNO_HITBOX_MISC" in owner HG_MUNO_HITBOX_MISC = owner.HG_MUNO_HITBOX_MISC;
+HG_MUNO_HITBOX_MISC_ADD = noone;
+if "HG_MUNO_HITBOX_MISC_ADD" in owner HG_MUNO_HITBOX_MISC_ADD = owner.HG_MUNO_HITBOX_MISC_ADD;
+HG_MUNO_OBJECT_LAUNCH_ANGLE = noone;
+if "HG_MUNO_OBJECT_LAUNCH_ANGLE" in owner HG_MUNO_OBJECT_LAUNCH_ANGLE = owner.HG_MUNO_OBJECT_LAUNCH_ANGLE;
 
 var move_ordering = [
 	AT_JAB,
@@ -105,10 +196,10 @@ var move_ordering = [
 	AT_EXTRA_3,
 	AT_TAUNT,
 	AT_TAUNT_2,
-	AT_PHONE,
 	2,
 	3,
 	39,
+	40,
 	42,
 	43,
 	44,
@@ -120,7 +211,7 @@ var move_ordering = [
 	50
 ];
 
-var move_names = [
+var attack_names = [
 	"???",
 	"Jab",
 	"???",
@@ -174,35 +265,21 @@ var move_names = [
 	"???"
 ];
 
-i = 0; // i = current spot in the registered move list
-
-stats_notes = "Hold CROUCH to view these stats later!";
+stats_notes = "Attack to change view.
+Self destruct to refresh data.";
 initStats();
 
 for (j = 0; j < array_length_1d(move_ordering); j++){ // j = index in array of ordered attack indexes
 	var current_attack_index = move_ordering[j];
 	if (p_get_window_value(current_attack_index, 1, AG_WINDOW_LENGTH) || p_get_hitbox_value(current_attack_index, 1, HG_HITBOX_TYPE)) && !p_get_attack_value(current_attack_index, AG_MUNO_ATTACK_EXCLUDE){
-		initMove(current_attack_index, move_names[current_attack_index]);
+		initMove(current_attack_index, attack_names[current_attack_index]);
 	}
 }
-
-
-
-#define initStats
-
-moves[i] = {
-	name: "Stats",
-	type: 1, // stats
-	misc: stats_notes
-};
-
-i++;
-
-
 
 #define initMove(atk_index, default_move_name)
 
 var def = "-";
+var n = 0, hh = 0;
 
 var stored_name = pullAttackValue(atk_index, AG_MUNO_ATTACK_NAME, default_move_name);
 
@@ -229,6 +306,7 @@ if is_array(stored_timeline){
 	}
 	stored_length = decimalToString(stored_length) + ((stored_length == stored_length_w) ? "" : " (" + decimalToString(stored_length_w) + ")");
 }
+stored_length = pullAttackValue(atk_index, AG_MUNO_ATTACK_FAF, stored_length);
 
 var stored_ending_lag = def;
 if (is_array(stored_timeline)){
@@ -322,7 +400,7 @@ if (p_get_attack_value(atk_index, AG_MUNO_ATTACK_MISC_ADD) != 0)
 if (p_get_attack_value(atk_index, AG_MUNO_ATTACK_MISC) != 0)
 	stored_misc = p_get_attack_value(atk_index, AG_MUNO_ATTACK_MISC);
 
-moves[i] = {
+array_push(data, {
 	type: 2, // an actual move
 	index: atk_index,
 	name: stored_name,
@@ -330,18 +408,15 @@ moves[i] = {
 	ending_lag: stored_ending_lag,
 	landing_lag: stored_landing_lag,
 	hitboxes: [],
-	num_hitboxes: p_get_num_hitboxes(atk_index),
+	page_starts: [0],
+	num_hitboxes: get_num_hitboxes(atk_index),
 	timeline: stored_timeline,
 	misc: stored_misc
-};
+});
 
-k = 0;
-
-for (l = 1; p_get_hitbox_value(atk_index, l, HG_HITBOX_TYPE); l++){
-	if !p_get_hitbox_value(atk_index, l, HG_MUNO_HITBOX_EXCLUDE) initHitbox(i, l);
+for (var l = 1; p_get_hitbox_value(atk_index, l, HG_HITBOX_TYPE); l++){
+	if !p_get_hitbox_value(atk_index, l, HG_MUNO_HITBOX_EXCLUDE) initHitbox(array_length(data) - 1, l);
 }
-
-i++;
 
 
 
@@ -355,28 +430,29 @@ else return def;
 #define initHitbox(move_index, index)
 
 var def = "-";
+var n = 0;
 
 current_move = move_index;
 
-var atk_index = moves[move_index].index;
-var move = moves[move_index];
+var atk_index = data[move_index].index;
+var move = data[move_index];
 var parent = p_get_hitbox_value(atk_index, index, HG_PARENT_HITBOX);
 if parent == index parent = 0;
 
 var stored_active = def;
-if is_array(moves[i].timeline){
+if is_array(data[move_index].timeline){
 	var win = p_get_hitbox_value(atk_index, index, HG_WINDOW);
 	var w_f = p_get_hitbox_value(atk_index, index, HG_WINDOW_CREATION_FRAME);
 	var lif = p_get_hitbox_value(atk_index, index, HG_LIFETIME);
 	var frames_before = 0;
 	var has_found = false;
-	for (n = 0; n < array_length_1d(moves[i].timeline) && !has_found; n++){
-		if (win == moves[i].timeline[n]){
+	for (n = 0; n < array_length_1d(data[move_index].timeline) && !has_found; n++){
+		if (win == data[move_index].timeline[n]){
 			frames_before += w_f;
 			has_found = true;
 		}
 		else{
-			frames_before += p_get_window_value(atk_index, moves[i].timeline[n], AG_WINDOW_LENGTH);
+			frames_before += p_get_window_value(atk_index, data[move_index].timeline[n], AG_WINDOW_LENGTH);
 		}
 	}
 	if has_found{
@@ -402,9 +478,12 @@ var stored_angle = def;
 if p_get_hitbox_value(atk_index, index, HG_BASE_KNOCKBACK) stored_angle = decimalToString(p_get_hitbox_value(atk_index, index, HG_ANGLE));
 else if p_get_hitbox_value(atk_index, parent, HG_BASE_KNOCKBACK) stored_angle = decimalToString(p_get_hitbox_value(atk_index, parent, HG_ANGLE));
 var flipper = max(p_get_hitbox_value(atk_index, index, HG_ANGLE_FLIPPER), p_get_hitbox_value(atk_index, parent, HG_ANGLE_FLIPPER));
-if flipper stored_angle += "*";
+// if flipper stored_angle += "*";
 
 var stored_priority = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_PRIORITY, pullHitboxValue(atk_index, index, HG_PRIORITY, (move.num_hitboxes > 1) ? "0" : def));
+if p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 2 {
+	stored_priority = "-1";
+}
 
 var stored_group = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_GROUP, pullHitboxValue(atk_index, index, HG_HITBOX_GROUP, (move.num_hitboxes > 1) ? "0" : def));
 
@@ -430,15 +509,19 @@ var effect_desc = ["nothing", "burn", "burn consume", "burn stun", "wrap", "free
 
 var ground_desc = ["woag", "Hits only grounded enemies", "Hits only airborne enemies"];
 
-var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce", "Untechable flag 4 (what)"];
+var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce"];
 
 var flinch_desc = ["woag", "Forces grounded foes to flinch", "Cannot force flinch", "Forces crouching opponents to flinch"];
 
 var rock_desc = ["woag", "Throws rocks", "Ignores rocks"];
 
-
 var stored_misc = def;
-if !parent{
+if (stored_group != def)
+	stored_misc = checkAndAdd(stored_misc, "Group " + stored_group);
+if parent{
+	stored_misc = checkAndAdd(stored_misc, "Parent: Hitbox #" + string(parent));
+}
+else{
 	if (flipper)
 		stored_misc = checkAndAdd(stored_misc, "Flipper " + decimalToString(flipper) + " (" + flipper_desc[flipper] + ")");
 	if (pullHitboxValue(atk_index, index, HG_EFFECT, def) != def)
@@ -458,7 +541,7 @@ if !parent{
 	if (pullHitboxValue(atk_index, index, HG_DRIFT_MULTIPLIER, def) != def)
 		stored_misc = checkAndAdd(stored_misc, decimalToString(p_get_hitbox_value(atk_index, index, HG_DRIFT_MULTIPLIER)) + "x Drift");
 	if (pullHitboxValue(atk_index, index, HG_SDI_MULTIPLIER, def) != def)
-		stored_misc = checkAndAdd(stored_misc, decimalToString(p_get_hitbox_value(atk_index, index, HG_SDI_MULTIPLIER)) + "x SDI");
+		stored_misc = checkAndAdd(stored_misc, decimalToString(p_get_hitbox_value(atk_index, index, HG_SDI_MULTIPLIER) + 1) + "x SDI");
 	if (pullHitboxValue(atk_index, index, HG_TECHABLE, def) != def)
 		stored_misc = checkAndAdd(stored_misc, tech_desc[real(pullHitboxValue(atk_index, index, HG_TECHABLE, def))]);
 	if (pullHitboxValue(atk_index, index, HG_FORCE_FLINCH, def) != def)
@@ -471,6 +554,8 @@ if !parent{
 		stored_misc = checkAndAdd(stored_misc, "Does not reflect on parry");
 	if (pullHitboxValue(atk_index, index, HG_PROJECTILE_IS_TRANSCENDENT, def) != def)
 		stored_misc = checkAndAdd(stored_misc, "Transcendent");
+	if (pullHitboxValue(atk_index, index, HG_PROJECTILE_PLASMA_SAFE, def) != def)
+		stored_misc = checkAndAdd(stored_misc, "Immune to Clairen's plasma field");
 	if (pullHitboxValue(atk_index, index, HG_MUNO_OBJECT_LAUNCH_ANGLE, def) != def)
 		stored_misc = checkAndAdd(stored_misc, decimalToString(p_get_hitbox_value(atk_index, index, HG_MUNO_OBJECT_LAUNCH_ANGLE)) + " Workshop Object launch angle");
 }
@@ -479,100 +564,12 @@ if (p_get_hitbox_value(atk_index, index, HG_MUNO_HITBOX_MISC_ADD) != 0)
 	stored_misc = checkAndAdd(stored_misc, p_get_hitbox_value(atk_index, index, HG_MUNO_HITBOX_MISC_ADD));
 if (p_get_hitbox_value(atk_index, index, HG_MUNO_HITBOX_MISC) != 0)
 	stored_misc = p_get_hitbox_value(atk_index, index, HG_MUNO_HITBOX_MISC);
-	
-// moved to bottom so archy can go wild with his naming algorithm
-/*
-Hitbox purpose can be generalized using the data they have, and having certain qualities.
-Hitbox Naming Scheme:
-Launcher-	Low KBG, high BKB, high angle
-Sour	-	Low KBG, low BKB, higher angle, small size
-Sweet	-	High KBG, high BKB, lower angle, small size
-Linker	-	Very low KBG, low BKB, high angle
-Finisher-	high KBG, high BKB, any angle, after Multihit
-Kill	-	high KBG, high BKB
-Spike	-	angle near -90
-Juggle	-	Med KBG, Med BKB, angle near 90
-Funny	-	angle near -45
-*/
-var hbox_name = (p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 1) ? "Hitbox " : "";
-var larg_bkb_thresh = 6;
-var smol_bkb_thresh = 4;
-var larg_kb_thresh = .8;
-var smol_kb_thresh = .4;
-var tiny_kb_thresh = .1;
 
-switch true { // optimisation
-	default:
-		var _ang_flipper = p_get_hitbox_value(atk_index, index, HG_ANGLE_FLIPPER);
-		if _ang_flipper == 9 break;
-		if _ang_flipper == 8 {
-			hbox_name = "Push ";
-			break;
-		}
-		if _ang_flipper == 1 {
-			hbox_name = "Pull ";
-			break;
-		}
-		if ((p_get_hitbox_value(atk_index, index, HG_ANGLE) + 45) % 360) < 30 {
-			hbox_name = "Funny ";
-			break;
-		}
-		if ((p_get_hitbox_value(atk_index, index, HG_ANGLE) + 90) % 360) < 30 {
-			hbox_name = "Spike ";
-			break;
-		}
-		if p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) <= .1 && p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 1 {
-			hbox_name = "Linker ";
-			break;
-		}
-		if p_get_hitbox_value(atk_index, index, HG_WIDTH) < 16 && p_get_hitbox_value(atk_index, index, HG_HEIGHT) < 16 { //Sweet or Sour
-			if p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) < smol_kb_thresh {
-				hbox_name = "Sour ";
-				break;
-			}
-			if p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) < larg_kb_thresh {
-				hbox_name = "Sweet ";
-				break;
-			}
-		} 
-		if p_get_hitbox_value(atk_index, index, HG_BASE_KNOCKBACK) > larg_bkb_thresh && p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) < smol_kb_thresh {
-			if p_get_hitbox_value(atk_index, index, HG_ANGLE) > 60 && p_get_hitbox_value(atk_index, index, HG_ANGLE) < 120 {
-				hbox_name = "Launcher ";
-				break;
-			}
-		}
-		if p_get_attack_value(atk_index, AG_CATEGORY) != 0 && p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) >= .7 {
-			if (abs(p_get_hitbox_value(atk_index, index, HG_ANGLE) - 90) < 30) {
-				hbox_name = "Juggle ";
-				break;
-			} 
-			hbox_name = "Carry ";
-			break;
-		}
-		if p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) >= larg_kb_thresh {
-			if (abs(p_get_hitbox_value(atk_index, index, HG_ANGLE) - 90) < 30) {
-				hbox_name = "V. Kill ";
-				break;
-			}
-			hbox_name = "H. Kill ";
-			break;
-		}
-		if p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) <= smol_kb_thresh && p_get_hitbox_value(atk_index, index, HG_KNOCKBACK_SCALING) > 0 {
-			hbox_name = "Combo ";
-			break;
-		}
-
-		break;
-}
-
-hbox_name += string(index);
-var stored_name = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_NAME, ((p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 1) ? "" : "Proj. ") + hbox_name);
-
-// var stored_name = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_NAME, ((p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 1) ? "Hitbox " : "Proj. ") + string(index));
+var stored_name = string(index) + ": " + pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_NAME, ((p_get_hitbox_value(atk_index, index, HG_HITBOX_TYPE) == 1) ? "Melee" : "Proj."));
 
 
 
-array_push(moves[current_move].hitboxes, {
+array_push(data[current_move].hitboxes, {
 	name: stored_name,
 	active: stored_active,
 	damage: stored_damage,
@@ -580,7 +577,7 @@ array_push(moves[current_move].hitboxes, {
 	kb_scale: stored_kb_scale,
 	angle: stored_angle,
 	priority: stored_priority,
-	group: stored_group,
+	// group: stored_group,
 	base_hitpause: stored_base_hitpause,
 	hitpause_scale: stored_hitpause_scale,
 	misc: stored_misc,
@@ -612,32 +609,11 @@ else return string(def);
 #define checkAndAdd(orig, add)
 
 if orig == "-" return decimalToString(add);
+if string_height_ext(decimalToString(orig) + "   |   " + decimalToString(add), 10, 560) == string_height_ext(decimalToString(orig), 10, 560){
+	return decimalToString(orig) + "   |   " + decimalToString(add);
+}
 return decimalToString(orig) + "
 " + decimalToString(add);
-
-#define p_get_window_value(attack, window, index)
-
-var ret = 0;
-with owner ret = get_window_value(attack, window, index);
-return ret;
-
-#define p_get_attack_value(attack, index)
-
-var ret = 0;
-with owner ret = get_attack_value(attack, index);
-return ret;
-
-#define p_get_hitbox_value(attack, hitbox, index)
-
-var ret = 0;
-with owner ret = get_hitbox_value(attack, hitbox, index);
-return ret;
-
-#define p_get_num_hitboxes(attack)
-
-var ret = 0;
-with owner ret = get_num_hitboxes(attack);
-return ret;
 
 
 
@@ -658,3 +634,50 @@ if (string_length(input) > 2){
 if (string_char_at(input, 1) == "0") input = string_delete(input, 1, 1);
 
 return input;
+
+
+
+#define initStats
+
+array_push(data, {
+	name: "Stats",
+	type: 1 // stats
+});
+
+
+
+#define p_get_window_value(attack, window, index)
+
+if index == noone {
+	return 0;
+}
+
+var ret = 0;
+with owner ret = get_window_value(attack, window, index);
+return ret;
+
+#define p_get_attack_value(attack, index)
+
+if index == noone {
+	return 0;
+}
+
+var ret = 0;
+with owner ret = get_attack_value(attack, index);
+return ret;
+
+#define p_get_hitbox_value(attack, hitbox, index)
+
+if index == noone {
+	return 0;
+}
+
+var ret = 0;
+with owner ret = get_hitbox_value(attack, hitbox, index);
+return ret;
+
+#define get_num_hitboxes(attack)
+
+var ret = 0;
+with owner ret = get_num_hitboxes(attack);
+return ret;

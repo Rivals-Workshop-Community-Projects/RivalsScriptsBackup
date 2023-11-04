@@ -3,6 +3,30 @@ Waluigi Code
 
 
 */
+//Ledge Snap 
+if (attack == AT_USPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
+    can_fast_fall = false;
+    if (window == 1 && window_timer == 1){
+        moved_up = false;
+        //reset the vspeed to the value in fspecial_air.gml
+        //reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED);
+    }
+    if (window == 2){
+        // MOVE UP AT LEDGE
+        if (!moved_up){
+            if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+                for (var i = 0; i < 40; i++){
+                    if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+                        y -= i;
+                        moved_up = true;
+                        break;
+                    }
+                }
+            }
+        }
+}
+}
+
 if (floor(random_range(0, 3)) == 0) {//19
 	should_use_voice = 0;
 	} 
@@ -138,6 +162,7 @@ switch(attack) {
         //reset the vspeed to the value in fspecial_air.gml
         reset_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED);
     }
+   /*
     if (window == 3){
         // MOVE UP AT LEDGE
         if (!moved_up){
@@ -152,6 +177,7 @@ switch(attack) {
         }
 }
 }
+   */
 	can_move = false;
 	can_fast_fall = false;
 	move_cooldown[AT_FSPECIAL] = 35;
@@ -173,6 +199,8 @@ switch(attack) {
 		if (window == 4){
 			can_wall_jump = true;
 		}
+	   
+	
 	break;
 	case AT_NSPECIAL:
 		if (window == 1 && window_timer == 4){

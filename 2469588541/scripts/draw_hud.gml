@@ -622,6 +622,17 @@ if ("practice" in self)
 						AddText("GEAR: Just a Friend");
 						AddText("FUNGUS: Enby");
 						break;
+					case 32:
+						AddText("v1.31 - 3 Nov 2023");
+						AddText("");
+						AddText("NSpec Star projectiles now have 0.6 Hitstun Mult");
+						AddText("");
+						AddText("UStrong now has more endlag and has whifflag on more parts of endlag");
+						AddText("");
+						AddText("Optimised Constellation drawing code");
+						AddText("");
+						AddText("Reworked Rune O to spawn a trail of stars with DSpec");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

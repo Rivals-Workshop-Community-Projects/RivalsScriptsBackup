@@ -18,16 +18,16 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 11);
 
 //Hitbox
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 9);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 10);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 14);
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HSPEED, 4);
@@ -37,7 +37,7 @@ set_num_hitboxes(AT_FSTRONG,1);
 //SWEETSOPT
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 43);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -45);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 63);

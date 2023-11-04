@@ -142,7 +142,7 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 6, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_FSPECIAL, 6, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(AT_FSPECIAL, 6, HG_EXTRA_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, 196);
 set_hitbox_value(AT_FSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_bird_downspecial"));
 set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
