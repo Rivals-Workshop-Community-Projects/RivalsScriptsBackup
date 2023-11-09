@@ -109,8 +109,7 @@ if(attack == AT_GRAB){
 }
 
 
-
-if(small_sprites > 1 || trainingmode){
+if(small_sprites != 1 || big && size_mult > 1 && size_mult <= 2 || mega && size_mult > 2 || mini && size_mult < 1){
 	if (get_num_hitboxes(attack) && !move_cooldown[attack]){
 	    for(var i = 0; i < get_num_hitboxes(attack); i++){
 	        var num = i + 1;
@@ -124,22 +123,50 @@ if(small_sprites > 1 || trainingmode){
 	        reset_hitbox_value(attack, num, HG_HITBOX_X);
 		    reset_hitbox_value(attack, num, HG_HITBOX_Y);
 	        
-	        if(size_mult > 1){
-	            if (has_rune("K") || runeK) {
+	        if((size_mult > 1 && (big || mega) || size_mult < 1 && mini || phone_cheats[CHEAT_BeegKewtian] > 0) && get_hitbox_value(attack, num, HG_HITBOX_TYPE) != 2){
+	            if (big && size_mult > 1 && size_mult <= 2 || mega && size_mult > 2 || has_rune("K") || runeK) {
 			    	set_hitbox_value(attack, num, HG_DAMAGE, round(get_hitbox_value(attack, num, HG_DAMAGE) * (size_mult*0.65)));
 		            set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * ((size_mult/4)*2.2));
 			    }else{
 			    	set_hitbox_value(attack, num, HG_DAMAGE, get_hitbox_value(attack, num, HG_DAMAGE) * size_mult);
-		            set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * ((size_mult/4)*3));
-		            set_hitbox_value(attack, num, HG_BASE_KNOCKBACK, get_hitbox_value(attack, num, HG_BASE_KNOCKBACK) * ((size_mult/4)*2));
+			    	if (mini) {
+			            set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * (size_mult*1.5));
+			            set_hitbox_value(attack, num, HG_BASE_KNOCKBACK, get_hitbox_value(attack, num, HG_BASE_KNOCKBACK) * (size_mult*1.5));
+			    	}else{
+			            set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * ((size_mult/4)*3));
+			            set_hitbox_value(attack, num, HG_BASE_KNOCKBACK, get_hitbox_value(attack, num, HG_BASE_KNOCKBACK) * ((size_mult/4)*2));
+			    	}
 			    }
-	            set_hitbox_value(attack, num, HG_HITBOX_X, get_hitbox_value(attack, num, HG_HITBOX_X) * ((size_mult/4)*3));
-	            set_hitbox_value(attack, num, HG_HITBOX_Y, get_hitbox_value(attack, num, HG_HITBOX_Y) * ((size_mult/4)*3));
-	            set_hitbox_value(attack, num, HG_HEIGHT, get_hitbox_value(attack, num, HG_HEIGHT) * ((size_mult/4)*3));
-	            set_hitbox_value(attack, num, HG_WIDTH, get_hitbox_value(attack, num, HG_WIDTH) * ((size_mult/4)*3));
+			    if (mega && size_mult > 2) {
+		            set_hitbox_value(attack, num, HG_HITBOX_X, get_hitbox_value(attack, num, HG_HITBOX_X) * ((size_mult/5)*3));
+		            set_hitbox_value(attack, num, HG_HITBOX_Y, get_hitbox_value(attack, num, HG_HITBOX_Y) * ((size_mult/5)*3));
+		            set_hitbox_value(attack, num, HG_HEIGHT, get_hitbox_value(attack, num, HG_HEIGHT) * ((size_mult/5)*3));
+		            set_hitbox_value(attack, num, HG_WIDTH, get_hitbox_value(attack, num, HG_WIDTH) * ((size_mult/5)*3));
+			    }else if(mini && size_mult < 1){
+			    	set_hitbox_value(attack, num, HG_HITBOX_X, get_hitbox_value(attack, num, HG_HITBOX_X) * ((size_mult/2)*3));
+		            set_hitbox_value(attack, num, HG_HITBOX_Y, get_hitbox_value(attack, num, HG_HITBOX_Y) * ((size_mult/2)*3));
+		            set_hitbox_value(attack, num, HG_HEIGHT, get_hitbox_value(attack, num, HG_HEIGHT) * ((size_mult/2)*3));
+		            set_hitbox_value(attack, num, HG_WIDTH, get_hitbox_value(attack, num, HG_WIDTH) * ((size_mult/2)*3));
+			    }else{
+			    	set_hitbox_value(attack, num, HG_HITBOX_X, get_hitbox_value(attack, num, HG_HITBOX_X) * ((size_mult/4)*3));
+		            set_hitbox_value(attack, num, HG_HITBOX_Y, get_hitbox_value(attack, num, HG_HITBOX_Y) * ((size_mult/4)*3));
+		            set_hitbox_value(attack, num, HG_HEIGHT, get_hitbox_value(attack, num, HG_HEIGHT) * ((size_mult/4)*3));
+		            set_hitbox_value(attack, num, HG_WIDTH, get_hitbox_value(attack, num, HG_WIDTH) * ((size_mult/4)*3));
+			    }
 	        }
 	    }
 	}
+}else{
+	for(var i = 0; i < get_num_hitboxes(attack); i++){
+        var num = i + 1;
+        reset_hitbox_value(attack, num, HG_DAMAGE);
+        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
+        reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
+        reset_hitbox_value(attack, num, HG_HITBOX_X);
+        reset_hitbox_value(attack, num, HG_HITBOX_Y);
+        reset_hitbox_value(attack, num, HG_WIDTH);
+        reset_hitbox_value(attack, num, HG_HEIGHT);
+    }
 }
 
 muno_event_type = 2;

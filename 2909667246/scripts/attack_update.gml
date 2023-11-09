@@ -77,7 +77,7 @@ if (attack == AT_NSPECIAL){
             	}
         	}else{
 	        	with(thepocketedprojectile){
-			    	if("state" in self){
+			    	if(other.pocket_handle_state){
 			        	state = 2;
 			    	}
 		    	}
@@ -482,7 +482,8 @@ if (attack == AT_NSPECIAL){
 		            if(type == 2 && self != other){
 		            	if(string_length(string(player_id.url)) > 0 && orig_player != 5){
 			            	var playerurl = real(player_id.url);
-			                if(/*other.url == playerurl || */"MattCanGrab" in self && MattCanGrab || other.url != playerurl && (other.canon || other.op || playerurl < 20)){
+			                if("MattCanGrab" in self && MattCanGrab || other.url != playerurl && (other.canon || other.op || playerurl < 20)
+			                || !transcendent && (("MattCanGrab" in self && MattCanGrab) || "MattCanGrab" not in self)){
 			                	var dist = point_distance(other.x+70*other.spr_dir, other.y-25, x, y); //distance
 		                	    if(dist <= 75 && !other.grabbedobject && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
 		                	        spr_dir = other.spr_dir;player = other.player;
@@ -754,7 +755,10 @@ if (canon || op) {
 	        	playerurl = real(player_id.url);
 	        }*/
 	        var playerurl = real(player_id.url);
-	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite") || other.runeI){
+	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable
+	        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")
+	        && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
+	        || other.runeI){
             	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
             	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
             		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;
@@ -762,7 +766,7 @@ if (canon || op) {
 		        	if("current_player" in self){
 		        		current_player = other.player;
 		        	}
-		        	if("state" in self){
+		        	if(other.pocket_handle_state){
 				    	state = 3;
 					}other.pocket_projectile_sprite_imageindex = image_index;
 			    	other.pocket_projectile_sprite = sprite_index;//sprite_index = asset_get("empty_sprite");
@@ -798,7 +802,15 @@ if (canon || op) {
 			    		other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_original;
 			    		other.pocket_projectile_hud_sprite_imageindex = 0;
 			    	}
-			    	
+			    	//check if villager is gonna mess with the 'state' variable or not
+			    	if("is_KOB" in player_id && player_id.is_KOB){
+			    		other.pocket_handle_state = true;
+			    	}else{
+			    		other.pocket_handle_state = false;
+			    	}
+			    	if("MattPlanet" in self){
+		            	state = 3;
+	            	}
 			    	with(other){
 			    		invincible = true;invince_time = 10;
 			    		sound_play(sound_get("pocket"),false,noone,1);

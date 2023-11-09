@@ -259,6 +259,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.40", "8th November, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Villager pocket no longer messes with the 'state' variable of objects unless it's a KoB character
+(this was planned for a while, but since checking for author doesn't work, this required updating most of the roster)
++ Fixed some other misc Pocket things
++ Fixed a minor issue with taunting on the respawn platform");
+
 initPatch("1.39", "5th October, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed some error SFX when a non-Villager character chops down the tree, and made the tree flip properly if cut by a BAir

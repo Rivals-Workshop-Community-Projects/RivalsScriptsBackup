@@ -72,12 +72,12 @@ if (attack == AT_NSPECIAL){
 			    			damage = 8;kb_value = 7;kb_scale = 0.9;waspocketed2 = true;
 			    		}
 			    	}
-			    	//check if villager is gonna mess with the 'state' variable or not (or i actually would, if this function worked)
-			    	/*if(get_char_info(player, INFO_STR_AUTHOR) == "FelixBlobDev" || get_char_info(player, INFO_STR_AUTHOR) == "DonGT"){
+			    	//check if villager is gonna mess with the 'state' variable or not
+			    	if("is_KOB" in player_id && player_id.is_KOB){
 			    		other.player_id.pocket_handle_state = true;
 			    	}else{
 			    		other.player_id.pocket_handle_state = false;
-			    	}*/
+			    	}
 			    	
 			    	with(other.player_id){
 			    		invincible = true;invince_time = 10;
@@ -196,49 +196,49 @@ if (attack == AT_NSPECIAL){
     	    	if(place_meeting(x,y,other.theotherhitbox)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
-    	    	                other.hitplayertimer -= 10;
-    	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        		if(type <= 1){
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-    	                			player_id.has_hit = true;
-    	                			if(get_player_team(player) != get_player_team(other.player)){
-    	                				other.hp -= round(damage*(1+(player_id.strong_charge/100)));
-    	                			}else{
-    	                				other.hp -= round((damage*(1+(player_id.strong_charge/100)))/4);
-    	                			}
-    	    	        		}else{
-    	    	        			if(get_player_team(player) != get_player_team(other.player)){
-    	    	        				other.hp -= round(damage);
-    	    	        			}else{
-    	    	        				other.hp -= round(damage/4);
-    	    	        			}
-    	    	        		}
-    	    	        		
-    	    	        		other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
-    	    	        		if(other.hp > 0 && (player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-    	    	        		&& kb_value+(kb_scale*6) > 6 || type == 2 && kb_value+(kb_scale*6) > 6)){
-	    	    		            //other.current_player = player;other.player = player;
-	    	    		            knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.hsp += cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*0.025)*spr_dir;
-	    	    		            if(other.hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            other.vsp -= -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*0.025);
-	    	    		            other.can_hit[player] = false;other.lastplayerhit = player;
-    	    	        		}
-    	    	        		other.hit_priority = 4;
-    	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
+	    	                other.hitplayertimer -= 10;
+	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	        		if(type <= 1){
+	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+	    	        			if(other.hitpausehit <= 0){
+	    	        				other.hitpausehit = 5;
+	    	        			}
+	    	        			other.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+	                			player_id.has_hit = true;
+	                			if(get_player_team(player) != get_player_team(other.player)){
+	                				other.hp -= round(damage*(1+(player_id.strong_charge/100)));
+	                			}else{
+	                				other.hp -= round((damage*(1+(player_id.strong_charge/100)))/4);
+	                			}
+	    	        		}else{
+	    	        			if(get_player_team(player) != get_player_team(other.player)){
+	    	        				other.hp -= round(damage);
+	    	        			}else{
+	    	        				other.hp -= round(damage/4);
+	    	        			}
+	    	        		}
+	    	        		
+	    	        		other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	    	        		if(other.hp > 0 && (player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+	    	        		&& kb_value+(kb_scale*6) > 6 || type == 2 && kb_value+(kb_scale*6) > 6)){
+    	    		            //other.current_player = player;other.player = player;
+    	    		            knockback_angle = kb_angle;
+	    	        			other.knockback_power = kb_value;
+    	    		            other.hsp += cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*0.025)*spr_dir;
+    	    		            if(other.hsp > 0){
+    	    		            	other.spr_dir = 1;
+    	    		            }else if(other.hsp < 0){
+    	    		            	other.spr_dir = -1;
+    	    		            }
+    	    		            other.vsp -= -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*0.025);
+    	    		            other.can_hit[player] = false;other.lastplayerhit = player;
+	    	        		}
+	    	        		other.hit_priority = 4;
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);
+	    					sound_play(sound_effect);
+	    	                other.lasthitbox = id;other.hitbox_timer = 0;
     	            	}
     	            }
     	        }

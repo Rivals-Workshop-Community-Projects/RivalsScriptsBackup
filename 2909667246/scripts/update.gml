@@ -34,7 +34,7 @@ if(instance_exists(Pocketed_Projectile)){
             	Pocketed_Projectile.can_hit[1] = true;Pocketed_Projectile.can_hit[2] = true;Pocketed_Projectile.can_hit[3] = true;Pocketed_Projectile.can_hit[4] = true;
         	}else{
 	        	with(Pocketed_Projectile){
-			    	if("state" in self){
+			    	if(other.pocket_handle_state){
 			        	state = 2;
 			    	}
 		    	}
@@ -210,7 +210,7 @@ if(canon){
     init_shader();
     if (small_sprites > 1) {
     	passivesoftarmor = 4*size_mult;
-    }
+    }else{passivesoftarmor = 0;}
     knockback_adj = 1.05/size_mult;
     
     if (has_rune("K") || runeK) {
@@ -503,7 +503,7 @@ if(trainingmode || op || canon || runeK){
     }else if(op || canon || runeK){
     	//small_sprites = phone_cheats[CHEAT_BeegKewtian]*2;
         size_mult = small_sprites;
-    }else{
+    }else if(!big && !mega && normalsize){
         small_sprites = 1;
         size_mult = 1;
     }

@@ -112,9 +112,11 @@ bubble_y = 8;
 
 Villager = true;
 IsKewtian = true;
+is_KOB = true;
 sol = false;
 passivesoftarmor = 0;
 size_mult = 1;
+big = false;mega = false;mini = false;normalsize = true;
 damagebuff = 1;
 canonpress = 0;
 canon = false;
