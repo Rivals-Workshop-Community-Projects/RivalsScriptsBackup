@@ -129,8 +129,8 @@ set_color_profile_slot( 9, 7, 153, 0, 5 ); //feet shading
 // hoo
 set_color_profile_slot( 10, 0, 75, 73, 198 ); //torso
 set_color_profile_slot( 10, 1, 60, 45, 128 ); //torso shading
-set_color_profile_slot( 10, 2, 249, 213, 189 ); //skin
-set_color_profile_slot( 10, 3, 209, 145, 134 ); //skin shading
+set_color_profile_slot( 10, 2, 222, 180, 151 ); //skin
+set_color_profile_slot( 10, 3, 173, 107, 95 ); //skin shading
 set_color_profile_slot( 10, 4, 56, 43, 34 ); //legs
 set_color_profile_slot( 10, 5, 38, 22, 18 ); //legs shading
 set_color_profile_slot( 10, 6, 208, 16, 1 ); //feet
@@ -139,8 +139,8 @@ set_color_profile_slot( 10, 7, 135, 1, 1 ); //feet shading
 // miku
 set_color_profile_slot( 11, 0, 188, 199, 206 ); //torso
 set_color_profile_slot( 11, 1, 99, 107, 130 ); //torso shading
-set_color_profile_slot( 11, 2, 255, 240, 219 ); //skin
-set_color_profile_slot( 11, 3, 214, 165, 137 ); //skin shading
+set_color_profile_slot( 11, 2, 207, 181, 145 ); //skin
+set_color_profile_slot( 11, 3, 166, 123, 95 ); //skin shading
 set_color_profile_slot( 11, 4, 40, 46, 48 ); //legs
 set_color_profile_slot( 11, 5, 15, 20, 28 ); //legs shading
 set_color_profile_slot( 11, 6, 148, 210, 211 ); //feet
@@ -149,8 +149,8 @@ set_color_profile_slot( 11, 7, 87, 126, 168 ); //feet shading
 // levi
 set_color_profile_slot( 12, 0, 161, 121, 96 ); //torso
 set_color_profile_slot( 12, 1, 102, 56, 48 ); //torso shading
-set_color_profile_slot( 12, 2, 244, 217, 187 ); //skin
-set_color_profile_slot( 12, 3, 176, 137, 92 ); //skin shading
+set_color_profile_slot( 12, 2, 219, 184, 145 ); //skin
+set_color_profile_slot( 12, 3, 163, 122, 87 ); //skin shading
 set_color_profile_slot( 12, 4, 54, 40, 35 ); //legs
 set_color_profile_slot( 12, 5, 38, 24, 19 ); //legs shading
 set_color_profile_slot( 12, 6, 208, 207, 205 ); //feet

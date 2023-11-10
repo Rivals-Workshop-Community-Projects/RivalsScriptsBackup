@@ -16,6 +16,10 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 	}
 }
 
+if (state == PS_HITSTUN || state == PS_WALL_JUMP || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_RESPAWN){
+    uspecial_refreshed_djumps = false;
+}
+
 
 //check if an alarm is out
 var alarm_out = false;
@@ -43,19 +47,19 @@ if (alarm_out){
 	
 	with(asset_get("obj_article1")){
         if (player_id == other.id){
-        	
-        	var range_extra = range + 40;
-        	
-            if (x > other_x - range_extra && x < other_x + range_extra && y < other_y + range_extra && y > other_y - range_extra){
-                other.in_alarm_range = true;
-                other.alarm_obj = self;
-                break; 
-                //end loop early so it doesn't check through every alarm article
-            }
-            else{
-                other.in_alarm_range = false;
-                other.alarm_obj = -4;
-            }
+	        	
+	        var col = collision_circle(x, y, range, other, false, true);
+	        	
+	        if (col != noone){
+	            other.in_alarm_range = true;
+	            other.alarm_obj = self;
+	            break; 
+	            //end loop early so it doesn't check through every article
+	        }
+	        else{
+	            other.in_alarm_range = false;
+	            other.alarm_obj = -4;
+	        }
             
         }
     }
@@ -63,6 +67,8 @@ if (alarm_out){
 else{
 	alarm_obj = -4;
 }
+
+
 
 
 /*

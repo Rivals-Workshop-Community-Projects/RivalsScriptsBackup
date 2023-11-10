@@ -94,6 +94,11 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 2){
 
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1){
     grabbed = hit_player_obj;
+    
+    if (!uspecial_refreshed_djumps){
+        djumps = 0;
+        uspecial_refreshed_djumps = true;
+    }
 }
 
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2){

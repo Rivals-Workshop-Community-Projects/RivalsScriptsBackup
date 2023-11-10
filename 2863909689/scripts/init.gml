@@ -46,6 +46,7 @@ uspec_hsp_right = 5;
 
 uspec_alarm_bounce_hsp = -5;
 uspec_alarm_bounce_vsp = -2;
+uspecial_refreshed_djumps = false;
 
 //dream collection kirby support
 TCG_Kirby_Copy = 11;

@@ -45,7 +45,7 @@ land_time_max = 4;
 grav_speed = 0.15;
 fall_speed = 7;
 
-range = 145;
+range = 150;
 
 attack_delay = 30;
 
