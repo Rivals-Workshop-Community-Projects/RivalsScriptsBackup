@@ -13,6 +13,8 @@ switch(state){
         }
         break;
 }
+//draw_debug_text(x, y+16, string(state));
+
 /*
 if get_match_setting(SET_HITBOX_VIS){
     draw_sprite_ext(mask_index,image_index,x,y,1,1,image_angle,c_green,0.5);

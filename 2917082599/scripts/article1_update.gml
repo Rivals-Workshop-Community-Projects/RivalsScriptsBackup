@@ -23,8 +23,8 @@ if (state < 2)
 switch(state)
 {
     case 0: //spawn
-        if(state_timer <= 10 and !hitstop and !hitpause)
-            create_hitbox(AT_NSPECIAL, 5, x, y) 
+        //if(state_timer <= 10 and !hitstop and !hitpause)
+            //create_hitbox(AT_NSPECIAL, 5, x, y) 
         if(state_timer >= 24)
             setState(1)
         break;

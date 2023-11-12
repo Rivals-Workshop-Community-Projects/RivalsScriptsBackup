@@ -55,6 +55,9 @@ switch(my_hitboxID.attack){
 			set_state(PS_PRATLAND);
 			prat_land_time = 10 + point_distance(x, y, hit_player_obj.x, hit_player_obj.y);
 		}
+	    if (hit_player_obj.player == player){
+	        hit_player_obj.invince_time = 0;
+	    }
 		break;
 }
 if my_hitboxID.type == 1 and penny_install{

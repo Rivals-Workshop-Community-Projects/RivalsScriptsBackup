@@ -81,7 +81,7 @@ with(oPlayer){
 		}
 	}
 }
-
+/*
 if get_player_color(player) == 19{
 	pen_arcade_col++;
-}
+}*/

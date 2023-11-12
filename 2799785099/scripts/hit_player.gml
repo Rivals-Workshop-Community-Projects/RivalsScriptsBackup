@@ -21,7 +21,7 @@ if (my_hitboxID.attack == AT_DAIR) {
 }
 
 if (my_hitboxID.attack == AT_DATTACK) {
-	sound_play(asset_get("sfx_blow_medium3"));
+	sound_play(asset_get("sfx_blow_medium2"));
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 7) {

@@ -14,8 +14,8 @@ walk_speed = 3.5;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 12;
-initial_dash_speed = 7;
-dash_speed = 6.25;
+initial_dash_speed = 6.5;
+dash_speed = 6;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -96,7 +96,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 slashy = hit_fx_create(sprite_get("nspecial_proj_smear"),18);
 slashyafter = hit_fx_create(sprite_get("nspecial_projbig_after"),6);
 slashyfaster = hit_fx_create(sprite_get("nspecial_projbig_after"),4);
-slashyAfter2 = hit_fx_create(sprite_get("nspecial_proj_after"),6);
+slashyAfter2 = hit_fx_create(sprite_get("nspecial_proj_after"),4);
 set_victory_theme(sound_get("victory"));
 
 //visual offsets for when you're in Ranno's bubble

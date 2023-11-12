@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 24, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 16 );
 
 // dois
 set_color_profile_slot( 1, 0, 107, 164, 255 ); //Hat
@@ -77,68 +77,95 @@ set_color_profile_slot( 5, 4, 253, 254, 255 ); //Gloves
 set_color_profile_slot( 5, 5, 255, 170, 131 ); //Skin
 set_color_profile_slot( 5, 6, 255, 170, 131 ); //Nose
 
-// aniebl
-set_color_profile_slot( 6, 0, 237, 36, 0 ); //Hat
-set_color_profile_slot( 6, 1, 14, 11, 51 ); //Body
+// red man
+set_color_profile_slot( 6, 0, 40, 207, 0 ); //Hat
+set_color_profile_slot( 6, 1, 237, 36, 0 ); //Body
 set_color_profile_slot( 6, 2, 237, 36, 0 ); //Arms
 set_color_profile_slot( 6, 3, 237, 36, 0 ); //Cape
-set_color_profile_slot( 6, 4, 49, 247, 0 ); //Gloves
-set_color_profile_slot( 6, 5, 49, 247, 0 ); //Skin
-set_color_profile_slot( 6, 6, 45, 227, 0 ); //Nose
+set_color_profile_slot( 6, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 6, 5, 237, 36, 0 ); //Skin
+set_color_profile_slot( 6, 6, 237, 36, 0 ); //Nose
+
+// cheese man
+set_color_profile_slot( 7, 0, 184, 85, 23 ); //Hat
+set_color_profile_slot( 7, 1, 250, 218, 90 ); //Body
+set_color_profile_slot( 7, 2, 250, 218, 90 ); //Arms
+set_color_profile_slot( 7, 3, 184, 85, 23 ); //Cape
+set_color_profile_slot( 7, 4, 184, 85, 23 ); //Gloves
+set_color_profile_slot( 7, 5, 250, 218, 90 ); //Skin
+set_color_profile_slot( 7, 6, 250, 218, 90 ); //Nose
+
+// aniebl
+set_color_profile_slot( 8, 0, 237, 36, 0 ); //Hat
+set_color_profile_slot( 8, 1, 14, 11, 51 ); //Body
+set_color_profile_slot( 8, 2, 237, 36, 0 ); //Arms
+set_color_profile_slot( 8, 3, 237, 36, 0 ); //Cape
+set_color_profile_slot( 8, 4, 49, 247, 0 ); //Gloves
+set_color_profile_slot( 8, 5, 49, 247, 0 ); //Skin
+set_color_profile_slot( 8, 6, 45, 227, 0 ); //Nose
 
 // lugi
-set_color_profile_slot( 7, 0, 112, 201, 69 ); //Hat
-set_color_profile_slot( 7, 1, 40, 92, 222 ); //Body
-set_color_profile_slot( 7, 2, 112, 201, 69 ); //Arms
-set_color_profile_slot( 7, 3, 255, 200, 0 ); //Cape
-set_color_profile_slot( 7, 4, 253, 254, 255 ); //Gloves
-set_color_profile_slot( 7, 5, 255, 170, 131 ); //Skin
-set_color_profile_slot( 7, 6, 255, 170, 131 ); //Nose
-
-// wlugi
-set_color_profile_slot( 8, 0, 173, 58, 201 ); //Hat
-set_color_profile_slot( 8, 1, 105, 47, 163 ); //Body
-set_color_profile_slot( 8, 2, 173, 58, 201 ); //Arms
-set_color_profile_slot( 8, 3, 228, 113, 68 ); //Cape
-set_color_profile_slot( 8, 4, 253, 254, 255 ); //Gloves
-set_color_profile_slot( 8, 5, 255, 170, 131 ); //Skin
-set_color_profile_slot( 8, 6, 255, 145, 242 ); //Nose
-
-// inverted/oldest design
-set_color_profile_slot( 9, 0, 228, 113, 68 ); //Hat
-set_color_profile_slot( 9, 1, 228, 113, 68 ); //Body
-set_color_profile_slot( 9, 2, 228, 113, 68 ); //Arms
-set_color_profile_slot( 9, 3, 248, 198, 99 ); //Cape
+set_color_profile_slot( 9, 0, 112, 201, 69 ); //Hat
+set_color_profile_slot( 9, 1, 40, 92, 222 ); //Body
+set_color_profile_slot( 9, 2, 112, 201, 69 ); //Arms
+set_color_profile_slot( 9, 3, 255, 200, 0 ); //Cape
 set_color_profile_slot( 9, 4, 253, 254, 255 ); //Gloves
 set_color_profile_slot( 9, 5, 255, 170, 131 ); //Skin
 set_color_profile_slot( 9, 6, 255, 170, 131 ); //Nose
 
-// peppino
-set_color_profile_slot( 10, 0, 148, 189, 255 ); //Hat
-set_color_profile_slot( 10, 1, 255, 196, 238 ); //Body
-set_color_profile_slot( 10, 2, 148, 189, 255 ); //Arms
-set_color_profile_slot( 10, 3, 253, 254, 255 ); //Cape
+// wlugi
+set_color_profile_slot( 10, 0, 173, 58, 201 ); //Hat
+set_color_profile_slot( 10, 1, 105, 47, 163 ); //Body
+set_color_profile_slot( 10, 2, 173, 58, 201 ); //Arms
+set_color_profile_slot( 10, 3, 228, 113, 68 ); //Cape
 set_color_profile_slot( 10, 4, 253, 254, 255 ); //Gloves
-set_color_profile_slot( 10, 5, 253, 254, 255 ); //Skin
-set_color_profile_slot( 10, 6, 253, 254, 255 ); //Nose
+set_color_profile_slot( 10, 5, 255, 170, 131 ); //Skin
+set_color_profile_slot( 10, 6, 255, 145, 242 ); //Nose
+
+// inverted/oldest design
+set_color_profile_slot( 11, 0, 228, 113, 68 ); //Hat
+set_color_profile_slot( 11, 1, 228, 113, 68 ); //Body
+set_color_profile_slot( 11, 2, 228, 113, 68 ); //Arms
+set_color_profile_slot( 11, 3, 248, 198, 99 ); //Cape
+set_color_profile_slot( 11, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 11, 5, 255, 170, 131 ); //Skin
+set_color_profile_slot( 11, 6, 255, 170, 131 ); //Nose
+
+// its bo-ver :(
+set_color_profile_slot( 12, 0, 250, 218, 90 ); //Hat
+set_color_profile_slot( 12, 1, 250, 218, 90 ); //Body
+set_color_profile_slot( 12, 2, 250, 218, 90 ); //Arms
+set_color_profile_slot( 12, 3, 199, 130, 25 ); //Cape
+set_color_profile_slot( 12, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 12, 5, 217, 168, 95 ); //Skin
+set_color_profile_slot( 12, 6, 217, 168, 95 ); //Nose
+
+// peppino
+set_color_profile_slot( 13, 0, 148, 189, 255 ); //Hat
+set_color_profile_slot( 13, 1, 255, 196, 238 ); //Body
+set_color_profile_slot( 13, 2, 148, 189, 255 ); //Arms
+set_color_profile_slot( 13, 3, 253, 254, 255 ); //Cape
+set_color_profile_slot( 13, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 13, 5, 253, 254, 255 ); //Skin
+set_color_profile_slot( 13, 6, 253, 254, 255 ); //Nose
 
 // headcanon that noise is gay but noisette wont leave him alone very cool
-set_color_profile_slot( 11, 0, 0, 230, 195 ); //Hat
-set_color_profile_slot( 11, 1, 40, 92, 222 ); //Body
-set_color_profile_slot( 11, 2, 128, 190, 255 ); //Arms
-set_color_profile_slot( 11, 3, 253, 254, 255 ); //Cape
-set_color_profile_slot( 11, 4, 253, 254, 255 ); //Gloves
-set_color_profile_slot( 11, 5, 253, 254, 255 ); //Skin
-set_color_profile_slot( 11, 6, 163, 255, 247 ); //Nose
+set_color_profile_slot( 14, 0, 0, 230, 195 ); //Hat
+set_color_profile_slot( 14, 1, 40, 92, 222 ); //Body
+set_color_profile_slot( 14, 2, 128, 190, 255 ); //Arms
+set_color_profile_slot( 14, 3, 253, 254, 255 ); //Cape
+set_color_profile_slot( 14, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 14, 5, 253, 254, 255 ); //Skin
+set_color_profile_slot( 14, 6, 163, 255, 247 ); //Nose
 
 // mexicano (nois hates italia npeop,e)
-set_color_profile_slot( 12, 0, 39, 158, 30 ); //Hat
-set_color_profile_slot( 12, 1, 237, 36, 0 ); //Body
-set_color_profile_slot( 12, 2, 253, 254, 255 ); //Arms
-set_color_profile_slot( 12, 3, 253, 254, 255 ); //Cape
-set_color_profile_slot( 12, 4, 253, 254, 255 ); //Gloves
-set_color_profile_slot( 12, 5, 253, 254, 255 ); //Skin
-set_color_profile_slot( 12, 6, 253, 254, 255 ); //Nose
+set_color_profile_slot( 15, 0, 39, 158, 30 ); //Hat
+set_color_profile_slot( 15, 1, 237, 36, 0 ); //Body
+set_color_profile_slot( 15, 2, 253, 254, 255 ); //Arms
+set_color_profile_slot( 15, 3, 253, 254, 255 ); //Cape
+set_color_profile_slot( 15, 4, 253, 254, 255 ); //Gloves
+set_color_profile_slot( 15, 5, 253, 254, 255 ); //Skin
+set_color_profile_slot( 15, 6, 253, 254, 255 ); //Nose
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

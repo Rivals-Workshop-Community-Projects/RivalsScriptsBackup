@@ -4,17 +4,15 @@ if (get_gameplay_time() <= 1)
     {
         entered = true;
         set_attack(AT_ENTRANCE);
-        var _nointro_timer = 0
     }
 }
 
 if (attack == AT_ENTRANCE) 
 {
-    _nointro_timer++;
-    if (window == 8) && (window_timer == 7)
+    if (window == 5) && (window_timer == 29)
     {
         set_state(PS_SPAWN);
-        state_timer += _nointro_timer;
+        state_timer = get_gameplay_time();
     }
     
 }

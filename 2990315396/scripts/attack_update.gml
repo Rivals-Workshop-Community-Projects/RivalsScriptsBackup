@@ -47,7 +47,7 @@ switch (attack)
 	{
 			char_height = ease_quadIn(50, 100, window_timer, 2);
         }  
-	if ((window == 3 && window_timer > 12 || window == 4) && !hitpause)
+	if ((window == 3 || window == 4) && !hitpause)
 	{
 		if (easetimer < 5)
 		{

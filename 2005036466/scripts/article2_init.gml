@@ -22,6 +22,13 @@ switch(get_player_color(player)){
         spr_det = sprite_get("mineP_det");
         spr_charge = sprite_get("mineP_charged");
         break;
+    case 19:
+        spr_plant = sprite_get("mineAZ_plant");
+        spr_air = sprite_get("dspecial_projAZ");
+        spr_ground = sprite_get("mineAZ");
+        spr_det = sprite_get("mineAZ_det");
+        spr_charge = sprite_get("mineAZ_charged");
+        break;
     default:
         spr_plant = sprite_get("mine_plant");
         spr_air = sprite_get("dspecial_proj");

@@ -63,6 +63,10 @@ switch(attack){
 								}
 								if (!shield_down and !jump_down and !special_down and !attack_down and !strong_down){
 									switch(get_player_color(player)){
+										case 19:
+											penny_taunt_spr = sprite_get("taunt_az");
+											penny_taunt_spr_white = sprite_get("taunt_az_white");
+											break;
 										case 15:
 											penny_taunt_spr = sprite_get("taunt_hf");
 											penny_taunt_spr_white = sprite_get("taunt_hf_white");

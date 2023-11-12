@@ -6,15 +6,36 @@ if penny_strapped and other_player_id == strapped_id{
     var mine_sprite = asset_get("empty_sprite");
     // With the strapped id
     with strapped_id{
-        var charged_sprite = sprite_get("mine_chargedstrapped")
+        switch(get_player_color(player)){
+            case 19:
+                var charged_sprite = sprite_get("mineAZ_chargedstrapped")
+                break;
+            default:
+                var charged_sprite = sprite_get("mine_chargedstrapped")
+                break;
+        }
         // check if mine is active
         shader_start();
         if mine_active == 1{
             // Okay so now we set the speed
-            mine_sprite = sprite_get("mine_strapped");
+            switch(get_player_color(player)){
+                case 19:
+                    mine_sprite = sprite_get("mineAZ_strapped");
+                    break;
+                default:
+                    mine_sprite = sprite_get("mine_strapped");
+                    break;
+            }
             anim_mine = mineblinktimer;
         } else {
-            mine_sprite = sprite_get("mine_strapped_off");
+            switch(get_player_color(player)){
+                case 19:
+                    mine_sprite = sprite_get("mineAZ_strapped_off");
+                    break;
+                default:
+                    mine_sprite = sprite_get("mine_strapped_off");
+                    break;
+            }
         }
     }
     if strapped_id.mine_active == 1{

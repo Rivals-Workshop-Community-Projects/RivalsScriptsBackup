@@ -54,8 +54,20 @@ if (playerAlt == 0)
         set_character_color_shading( 2, -0.8 );
     }
 
-    //its happy hour!!
+    //peppinisman
     if (playerAlt == 6)
+    {
+        set_character_color_shading( 0, 1.6 );
+    }
+    
+    //shee se
+    if (playerAlt == 7)
+    {
+        set_character_color_shading( 0, 1.6 );
+    }
+
+    //its happy hour!!
+    if (playerAlt == 8)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 2, 2 );
@@ -63,7 +75,7 @@ if (playerAlt == 0)
     }
 
     //its luigi timmer!!
-    if (playerAlt == 7)
+    if (playerAlt == 9)
     {
         set_character_color_shading( 0, 3 );
         set_character_color_shading( 1, -1.5 );
@@ -72,7 +84,7 @@ if (playerAlt == 0)
     }
 
     //its not luigi timmer :(
-    if (playerAlt == 8)
+    if (playerAlt == 10)
     {
         set_character_color_shading( 0, 0.8 );
         set_character_color_shading( 1, 0.7 );
@@ -80,7 +92,7 @@ if (playerAlt == 0)
     }
 
     //ugly noise
-    if (playerAlt == 9)
+    if (playerAlt == 11)
     {
         set_character_color_shading( 0, 0.7 );
         set_character_color_shading( 1, 0.7 );
@@ -88,8 +100,19 @@ if (playerAlt == 0)
         set_character_color_shading( 3, 1.3 );
     }
 
+    //If Bo Noise has a million fans i am one of them. if Bo Noise has ten fans i am one of them. if Bo Noise has only one fan then that is me. if Bo Noise has no fans, that means i am no longer on this earth. if world against Bo Noise, i am against the world. till my ladt breath, i will support Bo Noise.
+    if (playerAlt == 12)
+    {
+        set_character_color_shading( 0, 0.6 );
+        set_character_color_shading( 1, 0.6 );
+        set_character_color_shading( 2, 0.6 );
+        set_character_color_shading( 5, 0.6 );
+        set_character_color_shading( 6, 0.6 );
+    }
+
+
     //see you in 5 years (/th)
-    if (playerAlt == 10)
+    if (playerAlt == 13)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, 1.4 );
@@ -98,7 +121,7 @@ if (playerAlt == 0)
     }
 
     //boy kisser comment redacted: meme creator is very naughty
-    if (playerAlt == 11)
+    if (playerAlt == 14)
     {
         set_character_color_shading( 0, 2 );
         set_character_color_shading( 1, -1.4 );
@@ -107,7 +130,7 @@ if (playerAlt == 0)
     }
 
     //its not the italian flag you nerd the noise is MEXICAN
-    if (playerAlt == 12)
+    if (playerAlt == 15)
     {
         set_character_color_shading( 0, 3 );
         set_character_color_shading( 1, 3 );

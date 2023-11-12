@@ -26,7 +26,7 @@ if (attack == AT_NSPECIAL) {
 		
 
 			if (get_gameplay_time() mod 8 == 0) {
-				spawn_hit_fx(other.x+2*spr_dir, other.y-2, slashyfaster);
+				spawn_hit_fx(other.x, other.y-2, slashyfaster);
 			}
 			
 		} else {
@@ -35,11 +35,11 @@ if (attack == AT_NSPECIAL) {
 		}
 		
 		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
-				spawn_hit_fx(x+8*spr_dir, y-2, player_id.slashyAfter2);
+				spawn_hit_fx(x+8*spr_dir, y-0, player_id.slashyAfter2);
 		}
 		
 		if hitbox_timer == 1 || hitbox_timer mod 6 == 0 {
-				spawn_hit_fx(x-8*spr_dir, y+2, player_id.slashyAfter2);
+				spawn_hit_fx(x-8*spr_dir, y+0, player_id.slashyAfter2);
 		}
 		
 		if boomerstop && 50 > boomercharge {
@@ -133,11 +133,11 @@ if (attack == AT_NSPECIAL) {
 		}
 		
 		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
-				spawn_hit_fx(x-10*spr_dir, y, player_id.slashyafter);
+				spawn_hit_fx(x-10*spr_dir, y-0, player_id.slashyafter);
 		}
 		
 		if hitbox_timer == 1 || hitbox_timer mod 6 == 0 {
-				spawn_hit_fx(x+10*spr_dir, y-2, player_id.slashyAfter2);
+				spawn_hit_fx(x+10*spr_dir, y+0, player_id.slashyafter);
 		}
 		
 		hsp = clamp(hsp, -20, 20);

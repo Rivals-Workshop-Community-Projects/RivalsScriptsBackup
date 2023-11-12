@@ -140,22 +140,10 @@ switch(real_alt){
     	set_character_color_slot( 5, 235, 236, 242, 0.1); //Pants
     	set_character_color_shading( 5, 2 );
     	break;
-    case 19: // Arcade
-    	set_character_color_shading( 4, .5 );
-    	set_character_color_shading( 5, .5 );
-    	if ("pen_arcade_col" in self){
-	    	switch(pen_arcade_col){
-	    		case 0:
-	    			set_character_color_slot( 3, 140, 222, 94 ); //Real Metal Color
-	    			break;
-	    		case 1:
-	    			set_character_color_slot( 3, 217, 135, 205 ); //Real Metal Color
-	    			break;
-	    		case 2:
-	    			set_character_color_slot( 3, 145, 210, 243 ); //Real Metal Color
-	    			break;
-	    	}
-    	}
+    case 19: // Heatwave
+    	set_article_color_slot(0, 96, 2, 2);
+    	set_article_color_slot(4, 136, 171, 124);
+    	set_article_color_slot(6, 101, 50, 49);
     	break;
     case 23: // Lumi
     	set_shading([1, 2, 1, 1, 1, 1, 1, 1, 1])

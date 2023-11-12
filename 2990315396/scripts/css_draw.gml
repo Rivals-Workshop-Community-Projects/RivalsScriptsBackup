@@ -1,7 +1,7 @@
 //var playerAlt = "currAlt" in self ? currAlt : get_player_color(player); whoops wrong script
 var temp_x = x + 8;
 var temp_y = y + 15;
-var numAlts = 13;
+var numAlts = 16;
 
 
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1); 
@@ -32,13 +32,16 @@ alt_name[2]		= "Unhelpful Companion";
 alt_name[3]		= "Avoid The Noise";
 alt_name[4]		= "Crisp Chef Competitor";
 alt_name[5]		= "Baked Blue Brute";
-alt_name[6]		= "Its Happy Hour!";
-alt_name[7]		= "Green Missile";
-alt_name[8]		= "Purple Projectile";
-alt_name[9]		= "Oldest Noise";
-alt_name[10]	= "Transcendence";
-alt_name[11]	= "Man";
-alt_name[12]	= "Sweet and Spicy";
+alt_name[6]		= "Perfect Pepper";
+alt_name[7]		= "Criminals Beware!";
+alt_name[8]		= "Its Happy Hour!";
+alt_name[9]		= "Green Missile";
+alt_name[10]		= "Purple Projectile";
+alt_name[11]		= "Oldest Noise";
+alt_name[12]		= "Salted Crackers";
+alt_name[13]	= "Transcendence";
+alt_name[14]	= "Man";
+alt_name[15]	= "Sweet and Spicy";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 190, temp_y + 24, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

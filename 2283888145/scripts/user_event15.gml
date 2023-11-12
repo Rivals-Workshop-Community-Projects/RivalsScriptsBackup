@@ -336,6 +336,16 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.22", "08 November, 2023");
+initWords("Community Patch: JPEG Warrior
+(again again)");
+initHeader("FStrong - Nerfs");
+initSection("Main hit angle 40 --> 45.");
+initHeader("UStrong - Adjustments");
+initSection("Angle 85 --> 90.
+Base knockback 9.5 --> 9.
+Hitpause scaling 0.5 --> 0.8.");
+
 initPatch("1.21", "14 April, 2023");
 initWords("Advertising");
 

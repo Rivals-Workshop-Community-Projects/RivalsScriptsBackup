@@ -30,10 +30,20 @@ sprite_change_offset("mineP", 100, 100);                // Done
 sprite_change_offset("mineP_det", 100, 100);            // Done
 sprite_change_offset("mineP_charged", 100, 100);        // Done
 
+sprite_change_offset("mineAZ_plant", 100, 100);          // Done
+sprite_change_offset("mineAZ", 100, 100);                // Done
+sprite_change_offset("mineAZ_det", 100, 100);            // Done
+sprite_change_offset("mineAZ_charged", 100, 100);        // Done
+
 sprite_change_offset("mine_chargedstrapped", 100, 100); // Done
 sprite_change_offset("mine_strapped", 100, 100);        // Done
 sprite_change_offset("mine_strapped_off", 100, 100);    // Done
 sprite_change_offset("dspecial_proj", 100, 100);        // Done
+
+sprite_change_offset("mineAZ_chargedstrapped", 100, 100); // Done
+sprite_change_offset("mineAZ_strapped", 100, 100);        // Done
+sprite_change_offset("mineAZ_strapped_off", 100, 100);    // Done
+sprite_change_offset("dspecial_projAZ", 100, 100);        // Done
 
 // Normal Stuff
 sprite_change_offset("idle", xx, yy);                   // Done
@@ -140,6 +150,8 @@ sprite_change_offset("dspecial2", xx, yy, true);        // Done (Detonate)
 sprite_change_offset("taunt", xx, yy, true);            // Done
 sprite_change_offset("taunt_plasma", xx, yy);           // Done
 // Add More Later
+sprite_change_offset("taunt_az", xx, yy);
+sprite_change_offset("taunt_az_white", xx, yy);
 sprite_change_offset("taunt_l", xx, yy);
 sprite_change_offset("taunt_l_white", xx, yy);
 sprite_change_offset("taunt_hf", xx, yy);

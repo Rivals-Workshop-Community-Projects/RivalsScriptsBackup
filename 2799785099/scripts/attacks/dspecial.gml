@@ -66,10 +66,10 @@ set_window_value(AT_DSPECIAL, 8, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5);
 
 set_window_value(AT_DSPECIAL, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 9, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DSPECIAL, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 12);
-set_window_value(AT_DSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 0);
 
 set_num_hitboxes(AT_DSPECIAL, 7);
 

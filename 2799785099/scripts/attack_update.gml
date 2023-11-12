@@ -214,7 +214,7 @@ if (attack == AT_DSPECIAL){
 	hsp = clamp(hsp, -6, 6);
 	
 	if 3 > window {
-	hsp = clamp(hsp, -2, 2);	
+	hsp = clamp(hsp, -3, 3);	
 	}
 	
 	if window == 2 && window_timer == 2 {
@@ -232,10 +232,10 @@ if (attack == AT_DSPECIAL){
 			create_hitbox(AT_DSPECIAL, 1, x, y-22);
 		}
 		if right_down {
-		hsp += .3;
+		hsp += .5;
 		}
 		if left_down {
-		hsp -= .3;
+		hsp -= .5;
 		}
 		if special_down && risestopstupid == 0 {
 		vsp = clamp(vsp, -200, -1.5);
@@ -252,7 +252,12 @@ if (attack == AT_DSPECIAL){
 	}
 }
 
-
+//Taunt
+if (attack == AT_TAUNT) and (window == 3) {
+	if window_timer == 15 && taunt_down {
+	window_timer = 14;
+	}
+}
 
 
 #define spawn_base_dust

@@ -67,6 +67,7 @@ switch(color){
 	case 10:
 	case 15:
 	case 16:
+	case 19:
 		set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
 		set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait"));
 		draw_sprite_ext(sprite_get("cssextras"), 0, css_ex_x, css_ex_y, 1, 1, 0, c_white, 1);
@@ -311,7 +312,7 @@ for(var c = 0; c < 32; c++){
 				break;
 				
 				case 19:
-			name = " 20: Arcade";
+			name = " 20: Heatwave";
 			var position = 19;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];

@@ -13,6 +13,13 @@ if wearing_hat == 1 {
 
 col_penc4 = make_color_rgb(255, col_oth, col_oth);
 
+if penny_charge_r != get_color_profile_slot_r(get_player_color(player), 3){
+	penny_charge_r = get_color_profile_slot_r(get_player_color(player), 3);
+	penny_charge_g = get_color_profile_slot_g(get_player_color(player), 3);
+	penny_charge_b = get_color_profile_slot_b(get_player_color(player), 3);
+	penny_charge_col = make_color_rgb(penny_charge_r, penny_charge_g, penny_charge_b);
+}
+
 if spr_dir == 1{
 	if left_down{
 		backwards_held = true;
@@ -41,38 +48,6 @@ if !left_down and !right_down{
 
 if !opponent_strapped{
 	pen_mine_unstable = false;
-}
-
-if get_player_color(player) == 19{
-	switch(pen_arcade_col){
-		case 0:
-			if penny_charge_r != 140{
-				set_article_color_slot(3, 140, 222, 94);
-				penny_charge_r = 140;
-				penny_charge_g = 222;
-				penny_charge_b = 94;
-				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
-			}
-			break;
-		case 1:
-			if penny_charge_r != 217{
-				set_article_color_slot(3, 217, 135, 205);
-				penny_charge_r = 217;
-				penny_charge_g = 135;
-				penny_charge_b = 205;
-				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
-			}
-			break;
-		case 2:
-			if penny_charge_r != 145{
-				set_article_color_slot(3, 145, 210, 243);
-				penny_charge_r = 145;
-				penny_charge_g = 210;
-				penny_charge_b = 243;
-				penny_charge_col = make_color_rgb(penny_charge_r,penny_charge_g,penny_charge_b);
-			}
-			break;
-	}
 }
 
 // Funny

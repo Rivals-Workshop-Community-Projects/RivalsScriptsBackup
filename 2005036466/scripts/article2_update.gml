@@ -48,6 +48,19 @@ if state != 1{
 }
 
 switch(state){
+	case 10:
+		// plant wait
+		is_hittable = false;
+		sprite_index = spr_plant;
+		pen_c4_interact(1);
+		image_index = 0;
+		
+		if state_timer == 11{
+			sound_play(sfx_active);
+			state = 7;
+			state_timer = 0;
+		}
+		break;
 	case 7:
 		// planted
 		is_hittable = false;
@@ -111,7 +124,7 @@ switch(state){
 				state_timer = 0;
 				image_angle = 0;
 			} else {
-				state = 7;
+				state = 10;
 				state_timer = 0;
 				image_angle = 0;
 				pen_mine_hbox_dead = false;

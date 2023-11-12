@@ -238,16 +238,16 @@ set_color_profile_slot( 18, 6, 44, 50, 51 ); //Belts
 set_color_profile_slot( 18, 7, 85, 89, 107 ); //That Single FUCKING HAIR PARTICLE
 set_color_profile_slot( 18, 8, 245, 119, 29 ); //Real Metal Color
 
-// Arcade
-set_color_profile_slot( 19, 0, 214, 214, 214 ); //Fur
+// Heatwave
+set_color_profile_slot( 19, 0, 255, 229, 55 ); //Fur
 set_color_profile_slot( 19, 1, 214, 214, 214 ); //Fur Light
-set_color_profile_slot( 19, 2, 65, 63, 54 ); //Hair
-set_color_profile_slot( 19, 3, 140, 222, 94 ); //Metaru
-set_color_profile_slot( 19, 4, 65, 63, 54 ); //Shirt
-set_color_profile_slot( 19, 5, 65, 63, 54 ); //Pants
+set_color_profile_slot( 19, 2, 97, 82, 75 ); //Hair
+set_color_profile_slot( 19, 3, 245, 180, 66 ); //Metaru
+set_color_profile_slot( 19, 4, 217, 112, 38 ); //Shirt
+set_color_profile_slot( 19, 5, 49, 40, 135 ); //Pants
 set_color_profile_slot( 19, 6, 214, 214, 214 ); //Belts
-set_color_profile_slot( 19, 7, 13, 11, 10 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 19, 8, 140, 222, 94 ); //Real Metal Color
+set_color_profile_slot( 19, 7, 43, 26, 30 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 19, 8, 159, 5, 5 ); //Real Metal Color
 
 // Sunny
 set_color_profile_slot( 20, 0, 193, 71, 14 ); //Fur

@@ -1,8 +1,10 @@
 if "dx" not in self exit;
 
+draw_set_valign(fa_top);
+
 var idx = 0;
 
-for (var i = 0; i < array_length(data) && idx == noone; i++) {
+for (var i = 0; i < array_length(data) && idx == 0; i++) {
 	if data[i].type == 2 && data[i].index == owner.attack {
 		idx = i;
 	}

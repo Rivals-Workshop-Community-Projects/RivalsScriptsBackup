@@ -11,7 +11,7 @@ switch(attack)
     break;
 
     case AT_TAUNT:
-        if (get_player_color(player) == 10) taunt_index = random_func(1, 18, true)
+        if (get_player_color(player) == 13) taunt_index = random_func(1, 18, true) //initiate gender mode
         else taunt_index = random_func(1, 17, true)
     break;
 
