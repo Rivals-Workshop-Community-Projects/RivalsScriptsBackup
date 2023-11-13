@@ -21,7 +21,6 @@ mask_index = sprite_get("artc_dspec_mask"); // - sets the mask of the article, i
 
 image_index = 0;                            // - sets the current frame of the article
 
-
 //custom article variables for your comfort
 article_width = 64;                         // - the width of the article in pixels
 article_height = 72;                        // - the height of the article in pixels - used for the arrow indicator

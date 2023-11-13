@@ -8,6 +8,9 @@
 //used for custom attack grid functions, for more information check the #define with the same name
 custom_attack_grid();
 
+//used by workshop compatibilities, check the function below if you want to take specific ones
+workshop_compatibilities();
+
 //B-reverse - it allows the character to turn in while using specials
 //it's seperate from the switch statement because switch statements always take the later instance of that case
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
@@ -106,6 +109,10 @@ switch (attack)
 	case AT_USTRONG: //strong charge affecting height
 		can_fast_fall = false; //prevents hitfalling
 		if (was_parried && !free) set_state(PS_PRATLAND); //fixes issue where it won't put us in pratland
+		
+		//prevents ustrong from falling off platforms with a charge by setting the category to grounded only
+		if (window >= 3) set_attack_value(attack, AG_CATEGORY, 2);
+		else reset_attack_value(attack, AG_CATEGORY);
 		
 		if (window == 2)
 		{
@@ -639,55 +646,6 @@ switch (attack)
 		case 1: case 2: vsp = get_window_value(attack, window_num, AG_WINDOW_VSPEED); break; //sets speed for the first frame/the entire window
 	}
 }
-
-//custom attack grid example - Looping window X times (by Bar-Kun)
-#define custom_attack_grid
-{
-    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
-    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
-    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
-
-    //make sure the player isn't in hitpause
-    if (!hitpause)
-    {
-        //make sure the window is in type 9 or 10
-        if (window_type_value == 9 || window_type_value == 10)
-        {
-            //checks the end of the window
-            if (window_timer == window_end)
-            {
-                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
-            }
-
-            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
-            {
-                if (window_timer == 0)
-                {
-                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
-                    window_loops ++; //at the start of the window, count a loop up
-                }
-
-                //when all the loops are over, go to the next window and reset the loop value
-                //if it's window type 10, it should stop the loop prematurely
-                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
-                {
-                    destroy_hitboxes();
-                    if (window < window_last)
-                    {
-                        window += 1;
-                        window_timer = 0;
-                    }
-                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
-                    window_loops = 0;
-                }
-            }
-            else if (window_loop_value == 0) attack_end(attack);
-            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
-            //this is how the game usually treats window type 9
-        }
-    }
-}
-
 #define do_particle
 {
 	var _spr = argument[0], _length = argument[1], _xpos = argument[2], _ypos = argument[3];
@@ -730,4 +688,95 @@ switch (attack)
 		timer: 0
     };
     array_push(fx_part, new_part);
+}
+//custom attack grid example - Looping window X times (by Bar-Kun)
+#define custom_attack_grid
+{
+    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
+    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
+    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
+
+    //make sure the player isn't in hitpause
+    if (!hitpause)
+    {
+        //make sure the window is in type 9 or 10
+        if (window_type_value == 9 || window_type_value == 10)
+        {
+            //checks the end of the window
+            if (window_timer == window_end)
+            {
+                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
+            }
+
+            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
+            {
+                if (window_timer == 0)
+                {
+                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
+                    window_loops ++; //at the start of the window, count a loop up
+                }
+
+                //when all the loops are over, go to the next window and reset the loop value
+                //if it's window type 10, it should stop the loop prematurely
+                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
+                {
+                    destroy_hitboxes();
+                    if (window < window_last)
+                    {
+                        window += 1;
+                        window_timer = 0;
+                    }
+                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
+                    window_loops = 0;
+                }
+            }
+            else if (window_loop_value == 0 && window_loop_can_hit_more) attack_end(attack);
+            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
+            //this is how the game usually treats window type 9
+        }
+    }
+}
+#define workshop_compatibilities
+{
+	//sonic rainbow trick workshop compatibility
+	if (attack == sonic_rainbowring_atk)
+	{
+		iasa_script(); //lets character cancel out of the animation at any point
+		if (vsp > 0 && window == 3) //window 3 is the window specified for the trick hold pose
+		{
+			window ++;
+			window_timer = 0;
+		}
+		if (window > 1 && !free) set_state(PS_LANDING_LAG);
+	}
+
+	//final smash buddy workshop compatibility
+	if (attack == fs_char_attack_index)
+	{
+		can_fast_fall = false; //prevents fastfalling
+		can_move = false; //prevents moving left and right
+		hsp = 0; //stop character on both axis
+		vsp = 0;
+		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+
+		switch (window)
+		{
+			case 1: //moves tester to the proper location (also needs the variables to be set up again)
+				if (window_timer <= 2)
+				{
+					start_y_off = y;
+					end_y_off = y-48;
+				}
+				else y = lerp(start_y_off, end_y_off, window_timer/window_end);
+				break;
+			case 3: //spawns hit fx before projectile is shot
+				if (window_timer == 5) spawn_hit_fx(x + 32 * spr_dir, y - 32, fx_pow_hit[1]);
+			case 2: case 4: //keep tester held up (also includes window 3)
+				y = end_y_off;
+				break;
+			case 5: //move tester back down
+				y = lerp(end_y_off, start_y_off, window_timer/window_end);
+				break;
+		}
+	}
 }

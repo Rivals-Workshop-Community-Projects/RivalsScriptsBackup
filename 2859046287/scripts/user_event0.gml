@@ -3,12 +3,13 @@
 //aswell as not flood other scripts if a lot should go into them
 //to call user events in other scripts we put user_event(#);, with # being a number between 0 to 15 depending the script you need
 
-//NOTE: THIS SCRIPT WILL NOT WORK ON THE RESULTS SCREEN
-
 var shade_slot = 0; //tells the color functions which slot to change (done in the switch statement)
 var mult = 0; //tells the color functions a color offset to go off of, allowing for shading (done in the switch statement)
 
-//rainbow alt shenanigans
+if ("alt_cur" not in self) alt_cur = get_player_color(player);
+
+//rainbow alt shenanigans, it is called in update.gml and css_update.gml
+//to make it work in the results screen, if you want to check for a spefic alt color you need to check with [ get_player_color(player) ]
 switch (alt_cur)
 {
     case 11: //rainbow v1 = seamless color loop
@@ -47,20 +48,21 @@ switch (alt_cur)
         }
         break;
     case 12: //rainbow v2 = specific colors loop
-        if ("color_timer" not in self) //"init" - set anything you want here
+
+        //variable setup - change your colors and timings here
+        //color list to scroll
+        cur_colors[0] = [255, 0, 0];
+        cur_colors[1] = [0, 255, 0];
+        cur_colors[2] = [0, 0, 255];
+
+        color_timer_set[0] = 30; //time a color stays on
+        color_timer_set[1] = 10; //time it takes colors to switch
+
+        if ("color_timer" not in self) //"init" - makes sure the variables exist (note that the variables do get stored between characters)
         {
-            color_timer_set[0] = 30; //time a color stays on
-            color_timer_set[1] = 10; //time it takes colors to switch
-
-            //color list to scroll
-            cur_colors[0] = [255, 0, 0];
-            cur_colors[1] = [0, 255, 0];
-            cur_colors[2] = [0, 0, 255];
-
             cur_color2 = 0; //it's used to see which color is up currently
             color_timer = color_timer_set[0];
-            
-            lerp_array = [255, 0, 0]; //should be the same as the first color to scroll
+            lerp_array = cur_colors[0];
             color_lerp = false;
         }
         else //"update"

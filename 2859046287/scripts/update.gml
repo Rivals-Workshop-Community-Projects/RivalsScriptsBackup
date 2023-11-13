@@ -413,7 +413,7 @@ with (oPlayer) if (temp_level != 0 && state == PS_PARRY && !perfect_dodged)
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
 if (uses_custom_dusts) custom_dust_effects();
-prep_hitboxes();
+if (game_time > 60) prep_hitboxes();
 particle_system();
 
 //custom hitbox colors system (by @SupersonicNK)

@@ -238,6 +238,7 @@ game_time = 0; //checks get_gameplay_time() so we don't need to call the functio
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
 has_intro = true; //change to false if you don't have one/don't want it active
+AG_MUNO_ATTACK_EXCLUDE = 80; //this is used to exclude the intro attack from the framedata woodcock buddy, letting you see the stats of the character instead
 //relevant scripts:
 //  - update
 //  - attack_update (case 2)
@@ -472,35 +473,9 @@ fx_pow_sparks = hit_fx_create(sprite_get("fx_pow_sparks"), 12); //this effect sp
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 
-//greenwood town
-greenwood_cheer = 0;
-//CHEER LIST:
-/*
-    0: Player slot dependant
-    1: Venus
-    2: Liav
-    3: Roy
-    4: Asra
-*/
+//on tester, all compatibilities are in [ user_event1.gml ] but they can run from various places based on the compatibility, usually here in init.gml
+user_event(1);
 
-//kirby copy ability (2022 version)
-TCG_Kirby_Copy = 12;
-//KIRBY ABILITY LIST:
-/*
-    No Ability: 0
-    Fire: 1
-    Beam: 2
-    Ranger: 3
-    Fighter: 4
-    Sword: 5
-    Water: 6
-    Leaf: 7
-    Ice: 8
-    Tornado: 9
-    Bomb: 10
-    Mike: 11
-    Abyss: 12
-    ESP: 13
-    Drill: 14
-    Spark: 15
-*/
+//used by final smash compatibility
+start_y_off = 0;
+end_y_off = 0;

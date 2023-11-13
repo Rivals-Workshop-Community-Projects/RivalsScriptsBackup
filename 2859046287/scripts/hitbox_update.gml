@@ -155,3 +155,36 @@ if (homing_enabled) //original code by DarkDakurai, modified slightly by Bar-Kun
         proj_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp * spr_dir);
     }
 }
+
+
+
+//final smash workshop compatibility
+if (attack == player_id.fs_char_attack_index)
+{
+    //this code allows the projectile to refresh it's hits, similarly to multihits
+    //but instead of applying to all players it applies to players individually
+    for (var i = 0; i < array_length(can_hit); i++)
+    {
+        if (can_hit[i] <= 0) //technecally speaking, everything below 0 (or false) still counts as false
+        {
+            can_hit[i] --;
+            if (can_hit[i] <= -100) can_hit[i] = 1; //if it reaches -100 (100 frames), it refreshes the hit
+        }
+    }
+
+    stop_effect = false; //this lets the hit effect spawn again
+
+    //will force the projectile to disappear if it's offscreen
+    //image_xscale*200 will check the real size width of the projectile and offset it from there (the hitbox image in the game files is 200 x 200, which is why it's checked like it)
+    if ((x + (image_xscale*200) < get_stage_data(SD_LEFT_BLASTZONE_X) || x - (image_xscale*200) > get_stage_data(SD_RIGHT_BLASTZONE_X)) && hitbox_timer < length-1)
+    {
+        hitbox_timer = length;
+    }
+
+    //spawns the hit effect with a sound when the projectile is nearing the end of it's time
+    if (hitbox_timer == length - 1)
+    {
+        sound_play(asset_get("sfx_abyss_despawn"));
+        spawn_hit_fx(x, y, hit_effect);
+    }
+}
