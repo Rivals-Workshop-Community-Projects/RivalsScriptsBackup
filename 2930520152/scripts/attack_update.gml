@@ -562,7 +562,7 @@ switch(attack){
 				super_armor = false;
 			}
 		}
-		if(has_hit_player){
+		if(has_hit_player && uspecial_big_hit){
 			reset_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X);
 			reset_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y);
 			reset_hitbox_value(AT_USPECIAL, 2, HG_WIDTH);
@@ -582,7 +582,22 @@ switch(attack){
 			reset_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y);
 			reset_hitbox_value(AT_USPECIAL, 5, HG_WIDTH);
 			reset_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT);
-		} else {
+			
+			reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE);
+			reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER);
+			reset_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_USPECIAL, 3, HG_ANGLE);
+			reset_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER);
+			reset_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_USPECIAL, 4, HG_ANGLE);
+			reset_hitbox_value(AT_USPECIAL, 4, HG_ANGLE_FLIPPER);
+			reset_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_USPECIAL, 5, HG_ANGLE);
+			reset_hitbox_value(AT_USPECIAL, 5, HG_ANGLE_FLIPPER);
+			reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK);
+			
+			set_num_hitboxes(AT_USPECIAL, 9);
+		} else if(!has_hit_player || uspecial_small_hit){
 			set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 30);
 			set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -40);
 			set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 60);
@@ -602,6 +617,25 @@ switch(attack){
 			set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y, -40);
 			set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 60);
 			set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 90);
+			
+			if(uspecial_small_hit){
+				set_num_hitboxes(AT_USPECIAL, 14);
+			} else {
+				set_num_hitboxes(AT_USPECIAL, 9);
+			}
+			
+			set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 55);
+			set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 9);
+			set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 55);
+			set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER, 9);
+			set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 55);
+			set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE_FLIPPER, 9);
+			set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 55);
+			set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE_FLIPPER, 9);
+			set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 4);
 		}
 		if(window < 2){
 			if((spr_dir == 1 && (joy_dir <= 70 || joy_dir >= 290)) || (spr_dir == -1 && joy_dir >= 110 && joy_dir <= 250)) && !joy_pad_idle {

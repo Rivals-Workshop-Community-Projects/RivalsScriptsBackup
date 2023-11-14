@@ -336,15 +336,15 @@ set_color_profile_slot( 30, 5, 0, 0, 0 ); //Socks
 set_color_profile_slot( 30, 6, 255, 0, 0 ); //Pupil
 set_color_profile_slot( 30, 7, 255, 0, 0 ); //Gas Cloud Outline
 
-// Imposter
-set_color_profile_slot( 31, 0, 197, 17, 18 ); //Body 1
-set_color_profile_slot( 31, 1, 121, 7, 56 ); //Body 2
-set_color_profile_slot( 31, 2, 152, 210, 237 ); //Eye
-set_color_profile_slot( 31, 3, 255, 255, 255 ); //Teeth
-set_color_profile_slot( 31, 4, 197, 17, 18 ); //Shoes
-set_color_profile_slot( 31, 5, 121, 7, 56 ); //Socks
-set_color_profile_slot( 31, 6, 255, 255, 255 ); //Pupil
-set_color_profile_slot( 31, 7, 1, 0, 26 ); //Gas Cloud Outline
+// Gleam
+set_color_profile_slot( 31, 0, 76, 70, 79 ); //Body 1
+set_color_profile_slot( 31, 1, 46, 41, 48 ); //Body 2
+set_color_profile_slot( 31, 2, 0, 255, 0 ); //Eye
+set_color_profile_slot( 31, 3, 0, 255, 0 ); //Teeth
+set_color_profile_slot( 31, 4, 0, 0, 0 ); //Shoes
+set_color_profile_slot( 31, 5, 0, 0, 0 ); //Socks
+set_color_profile_slot( 31, 6, 0, 255, 0 ); //Pupil
+set_color_profile_slot( 31, 7, 0, 0, 0 ); //Gas Cloud Outline
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

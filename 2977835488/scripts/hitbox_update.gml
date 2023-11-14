@@ -132,3 +132,9 @@ if ((attack == AT_NSPECIAL) && (hbox_num == 1)) {
     //print_debug("frac hsp = " + string(frac_hsp) + ", vsp = " + string(frac_vsp));
     //print_debug("summed_remainder hsp = " + string(summed_hsp_remainder) + ", vsp = " + string(summed_vsp_remainder));
 }
+
+if ((attack == AT_DSPECIAL) && (hbox_num == 1)) {
+	if (hitbox_timer == 30) {
+		spawn_hit_fx(x, y, player_id.dspecial_vfx2);
+	}
+}

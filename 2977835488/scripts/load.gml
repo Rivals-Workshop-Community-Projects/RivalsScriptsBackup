@@ -67,6 +67,8 @@ sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("nspecial_proj", 128, 128);
 sprite_change_offset("nspecial_proj_hit", 128, 128);
+sprite_change_offset("dspecial_proj", 128, 128);
+sprite_change_offset("dspecial_vfx2", 128, 128);
 
 sprite_change_offset("curse_a", 128, 128);
 sprite_change_offset("curse_b", 128, 128);

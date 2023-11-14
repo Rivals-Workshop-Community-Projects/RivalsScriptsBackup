@@ -1,0 +1,363 @@
+var alt_cur = get_player_color("alt_fix" in self? alt_fix: player)
+
+init_shader();
+
+//--- ---
+//
+// hyuponia's "ae" css code
+//
+// this is my single most user-UNfriendly code.
+// read my code and suffer, or just simply edit the only things you need to change.
+// feel free to use or edit or redistribute, long as you don't claim the original template as yours.
+// shoutouts to muno for css+ functions.
+//
+// to refresh the custom code proper, you have to temporarily change qe_b value or load another character with this code,
+// for example hyuponia's characters, and then load your character back. sorry, there wasn't really any better way i could find.
+//
+// and just in case, this code goes into css_draw.gml.
+//
+// now, please change this string to your character's name. used for resetting the values after other characters.
+//--- ---
+var qe_b = "Dust & Fidget"
+// ! you can now scroll down until you reach "the primary part you should change."
+ 
+var tmp_cur = 0;
+var tmp_i = [0, 0, 0, 0, 0];
+var tmp_x = [0, 0, 0, 0, 0];
+var tmp_y = [0, 0, 0, 0, 0];
+with(asset_get("cs_playercursor_obj")){
+    tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
+    tmp_i[tmp_cur] = 1
+    tmp_x[tmp_cur] = get_instance_x( self )
+    tmp_y[tmp_cur] = get_instance_y( self )
+}
+var tmp_pt = abs(player-5)-1
+var temp_x = x + 8;
+var temp_y = y + 9;
+var tmp_xl = 9
+var tmp_bw = 32
+var tmp_yl = 151
+var tmp_bh = 20
+var tmp_xl1 = x+tmp_xl
+var tmp_xl2 = tmp_xl1+tmp_bw
+var tmp_yl1 = y+tmp_yl
+var tmp_yl2 = tmp_yl1+tmp_bh
+draw_set_halign(fa_left);
+ 
+var ye = false;
+if (variable_instance_exists(id,"qe")){
+    if (qe != qe_b){
+    ye = true;
+    }
+}
+ 
+if (!variable_instance_exists(id,"ae") || ye == true){
+    qe = qe_b
+    ae = "ae"
+    oe = 0;
+    ue = 0; //cur
+    ne = 0; //tmp
+    ee = 0;
+    ee_m = 60;
+    ie = 0;
+    ye = false;
+    dial_time = 0;
+    dial_max = 8;
+    
+    //--- ---
+    // the primary part you should change.
+    //--- ---
+    altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
+    color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
+    
+    col_max = 0; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    
+    //first array index is for alternate color. second array index is for distinguishing the information in it.
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Dust & Fidget" // the name of the alternate color.
+    ce[col_max,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Village Residents"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Conflicted General"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Humble Farmers"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Distanced Couple"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Mountain Blacksmiths"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Souls Entwined"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "The Prologue"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Plumbing Game"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Cosmic Goddess"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "The Trainer"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Legendary Hero"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Metal Bolts"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Human Rodent"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Wacky Jigsaw"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Fugitive Ninja"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Forest Spirit"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "Looking Cool"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "twitch.tv/Toma_Strims"
+    ce[col_max,2] = ""
+    col_max++;
+    ce[col_max,0] = make_color_rgb(get_color_profile_slot_r(col_max, 1), get_color_profile_slot_g(col_max, 1), get_color_profile_slot_b(col_max, 1));
+    ce[col_max,1] = "twitch.tv/AmberLeaner"
+    ce[col_max,2] = ""
+    // you can add more, by copypasting and changing the first index of the array accordingly.
+    // ! changing part end.
+    // you can ignore the mess below...
+}
+ 
+if (ae == "ae"){
+    ae = "oe";
+}
+if (ae == "oe"){
+    ae = "ue";
+}
+if (ne != ue){
+    ie = (ue == col_max && ne == 0) ? -1 : (ue == 0 && ne == col_max) ? 1 : (ne < ue) ? 1 : -1 
+    ne = ue;
+    ae = "ne";
+    if (altsel!=0){
+    sound_stop(altsel);
+    sound_play(altsel);
+    }
+}
+if (ae == "ne"){
+    ee = ee_m;
+    ae = "ue";
+}
+if (ee > 0){
+    var tw = ease_quartOut(0, 1, ee, ee_m);
+    var tw_b = (ease_quartOut(0, 1, ee, ee_m)/2) - (ease_quartIn(0, 1, ee, ee_m)/2);
+    var tw_c = (ease_quartOut(0, 1, ee, ee_m)/4) - (ease_quartIn(0, 1, ee, ee_m)/4);
+    var tw_d = (ease_quartOut(0, 1, ee, ee_m)/2) + (ease_quartIn(0, 1, ee, ee_m));
+    var tw_e = (ease_quartOut(0, 1, ee, ee_m)/4) + (ease_quartIn(0, 1, ee, ee_m)/2);
+    var tw_f = (ease_quartOut(0, 1, ee, ee_m)/6) + (ease_quartIn(0, 1, ee, ee_m)/4);
+    var tw_g = (ease_quartOut(0, 1, ee, ee_m)) + (ease_quartIn(0, 1, ee, ee_m)/2);
+    var dist = 14;
+    var typ = round(ease_expoIn(0, dist, ee, ee_m-2));
+    //using muno's function;
+    if (ue-2>=0){
+    rectDraw(temp_x + 2, temp_y + 77 +(0-(dist*2)-6+(typ*ie)), temp_x + 16, temp_y + 91 +(0-(dist*2)-6+(typ*ie)),
+    ce[clamp(ue-2,0,col_max),0], c_gray, (ie==-1) ? tw_c : tw_e );
+    }
+    if (ue-1>=0){
+    rectDraw(temp_x + 2, temp_y + 77 +(0-dist-3+(typ*ie)), temp_x + 16, temp_y + 91 +(0-dist-3+(typ*ie)),
+    ce[clamp(ue-1,0,col_max),0], c_gray, (ie==-1) ? tw_b : tw_d );
+    }
+    
+    rectDraw(temp_x + 2, temp_y + 77 +(typ*ie), temp_x + 16, temp_y + 91 +(typ*ie), ce[ue,0], c_white, tw);
+    
+    if (ue+1<=col_max){
+    rectDraw(temp_x + 2, temp_y + 77 +(dist+3+(typ*ie)), temp_x + 16, temp_y + 91 +(dist+3+(typ*ie)),
+    ce[clamp(ue+1,0,col_max),0], c_gray, (ie==1) ? tw_b : tw_d );
+    }
+    if (ue+2<=col_max){
+    rectDraw(temp_x + 2, temp_y + 77 +((dist*2)+6+(typ*ie)), temp_x + 16, temp_y + 91 +((dist*2)+6+(typ*ie)),
+    ce[clamp(ue+2,0,col_max),0], c_gray, (ie==1) ? tw_c : tw_e );
+    }
+    
+    if (ue+(3*-ie)<=col_max && ue+(3*-ie)>=0){
+    rectDraw(temp_x + 2, temp_y + 77 +((((dist*3)+9)*-ie)+(typ*ie)),
+    temp_x + 16, temp_y + 91 +((((dist*3)+9)*-ie)+(typ*ie)),
+    ce[clamp(ue+(3*-ie),0,col_max),0], c_gray, tw_f);
+    }
+    
+textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, tw_g, ce[ue,1]);
+    
+    ee--;
+}
+    ue = get_player_color(player);
+ 
+//this part does button stuff, drawing etc
+ 
+if (color_desc_activate){
+    if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){
+        if (dial_time<dial_max){ dial_time++; }
+    }else{
+        if (dial_time>0){ dial_time--; }
+    }
+    draw_set_alpha(0.3);
+    draw_rectangle_colour(tmp_xl2-1, tmp_yl1+3, tmp_xl2, tmp_yl2, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
+    textDraw(round(tmp_xl1+(tmp_bw/2))-3, round(tmp_yl1+(tmp_bh/2))-4, "fName", c_dkgray, 0, 100, 1, false, 0.3, "?");
+    var dial_ease = ease_linear( 0, 100, dial_time, dial_max )
+    draw_set_alpha(dial_ease/130);
+    draw_rectangle_colour(x+10, y+95-round(dial_ease/30), x+210, y+153, c_black, c_black, c_black, c_black, false);
+    draw_set_alpha(dial_ease/500);
+    draw_rectangle_colour(tmp_xl1, tmp_yl1+3, tmp_xl2, tmp_yl2, c_white, c_white, c_white, c_white, false);
+    draw_set_alpha(1);
+    textDraw(x+14, (y+100)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, "- Color "+string(ue)+": "+ce[ue,1]);
+    textDraw(x+14, (y+120)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, ce[ue,2]);
+}
+ 
+//ae code end
+
+//Muno Button Code start
+var temp_xl = 0;
+var temp_yl = 0;
+// Online Player
+if (player == 0) {
+    temp_xl = 178;
+    temp_yl = 34;
+}
+else {
+    // CPU
+    if (get_player_hud_color(player) == 8421504) {
+        temp_xl = 178;
+        temp_yl = 34;
+    }
+    // Local Player
+    else {
+        temp_xl = 178;
+        temp_yl = 34;
+    }
+}
+
+var temp_bw = 30
+var temp_bh = 26
+var temp_xl1 = x+temp_xl
+var temp_xl2 = temp_xl1+temp_bw
+var temp_yl1 = y+temp_yl
+var temp_yl2 = temp_yl1+temp_bh
+
+draw_set_halign(fa_left);
+
+if get_synced_var("alt_fix" in self? alt_fix: player) > 2 {
+	set_synced_var( "alt_fix" in self? alt_fix: player, 0)
+}
+if("cssframes" not in self){cssframes = 0;}
+if("voiced" not in self){voiced = get_synced_var("alt_fix" in self? alt_fix: player);}
+if("voicebutton" not in self){voicebutton = voiced * 3;}
+if("voicebuttoncurrent" not in self){voicebuttoncurrent =  voiced * 3;}
+if voicebutton == 2 || voicebutton == 5 {
+	if cssframes == 0{
+	sound_stop(sound_get("sfx_cssvoiceselect"));
+		if voicebutton == 2{
+			sound_play(sound_get("sfx_cssvoiceselect"));
+			voiced = 1;
+			voicebuttoncurrent = voicebutton;
+		}
+		if voicebutton == 5{
+			voiced = 0;
+			voicebuttoncurrent = voicebutton;
+		}
+
+	}
+	cssframes++;
+	if cssframes == 5{
+		cssframes = 0;
+		voicebutton += 1;
+		if voicebutton > 5 {
+			voicebutton -= 6;
+		}
+		voicebuttoncurrent = voicebutton;
+	}
+}
+
+var x_temp = get_instance_x(cursor_id);
+var y_temp = get_instance_y(cursor_id);
+if (x_temp>temp_xl1 && x_temp<temp_xl2 && y_temp>temp_yl1 && y_temp<temp_yl2){ 	
+	if voicebutton == voicebuttoncurrent {
+		if voicebutton == 0 || voicebutton == 3 {
+			voicebutton += 1;
+		}
+	}
+}else{
+	if voicebutton == 1 || voicebutton == 4 {
+		voicebutton -= 1;
+	}
+	voicebuttoncurrent = voicebutton;
+}
+if voicebutton == 1 || voicebutton == 4 {
+	if menu_a_pressed{
+		voicebutton += 1;
+		voicebuttoncurrent = voicebutton;
+	}	
+}
+
+set_synced_var("alt_fix" in self? alt_fix: player, voiced)
+draw_sprite_ext(sprite_get("css_voice_button"), 0+voicebutton, x + temp_xl, y + temp_yl, 1, 1, 0, c_white, 1);
+
+//Toma Code end
+ 
+ 
+ 
+//--- ---
+// altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.
+//--- ---
+ 
+#define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
+ 
+draw_set_font(asset_get(argument[2]));
+ 
+if argument[7]{
+    for (i = -1; i < 2; i++){
+        for (j = -1; j < 2; j++){
+            draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, 1);
+        }
+    }
+}
+ 
+draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
+ 
+return string_width_ext(argument[9], argument[4], argument[5]);
+ 
+ 
+#define rectDraw(x1, y1, x2, y2, color, out_color, alpha)
+ 
+draw_set_alpha(argument[6]);
+draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[5], argument[5], argument[5], argument[5], false);
+draw_set_alpha(argument[6]*1.5);
+draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
+draw_set_alpha(1);
+ 

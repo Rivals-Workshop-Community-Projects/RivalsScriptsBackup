@@ -21,7 +21,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 //Endlag
 set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
@@ -86,7 +86,7 @@ set_hitbox_value(AT_FTILT, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, 0);

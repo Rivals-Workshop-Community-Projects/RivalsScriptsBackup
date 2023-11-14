@@ -1,6 +1,6 @@
 if (attack == AT_NSPECIAL) {
     max_seeking_range = 500;
-    max_speed = 2;
+    max_speed = 3;
     acceleration = 0.05; // additive
     decceleration = 0.9; // multiplicative
     // A slight offset from the target's

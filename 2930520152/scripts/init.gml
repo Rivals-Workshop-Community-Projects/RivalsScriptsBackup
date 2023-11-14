@@ -155,6 +155,8 @@ eruption_spawn_y = y;
 eruption_fullcharge = false;
 eruption_type = 1;
 uspecial_pratless = false;
+uspecial_big_hit = false;
+uspecial_small_hit = false;
 infinite_eruptions = false;
 
 quick_draw_charge = 0;

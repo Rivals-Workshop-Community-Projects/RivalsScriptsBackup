@@ -1,0 +1,1 @@
+draw_sprite_ext( sprite_get("star"), 0, x - 0*spr_dir, y - 0, 1, 1, (timer mod 180)*2*spr_dir*-1, -1, 1 - (timer < time_before_grabbable)*0.3 ); 

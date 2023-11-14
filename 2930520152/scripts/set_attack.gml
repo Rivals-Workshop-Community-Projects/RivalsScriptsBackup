@@ -4,8 +4,11 @@ var rof = variable_instance_exists(self, "superTrue");
 
 did_whiff = false;
 uspecial_pratless = false;
+uspecial_big_hit = false;
+uspecial_small_hit = false;
 fstrong_taunted = false;
 earrape = false;
+set_num_hitboxes(AT_USPECIAL, 9);
 
 // gives him grab
 if(special_pressed && attack_pressed /*!free*/ && (rof || has_rune("A"))){

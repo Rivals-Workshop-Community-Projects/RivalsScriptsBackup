@@ -104,13 +104,19 @@ switch(my_hitboxID.attack){
     case AT_USPECIAL:
     {
         if((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 6 || my_hitboxID.hbox_num == 9) && hitstun_check){
+        	if(my_hitboxID.hbox_num == 1){
+        		uspecial_big_hit = true;
+        	}
+        	if(my_hitboxID.hbox_num == 9 && !uspecial_big_hit){
+        		uspecial_small_hit = true;
+        	}
             hit_player_obj.aether_quick_grab = self;
             hit_player_obj.aether_quick_grab_crouch_cancel_prevention_id = my_hitboxID.hbox_num;
             if(my_hitboxID.hbox_num != 9){
             	hit_player_obj.can_wall_tech = false;
             }
         }
-        if(my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 5 && hitstun_check){
+        if(my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 5 && hitstun_check && uspecial_big_hit){
             hit_player_obj.aether_spin_grab = self;
         }
         if(my_hitboxID.hbox_num != 8 && my_hitboxID.hbox_num != 7 && my_hitboxID.hbox_num != 10){

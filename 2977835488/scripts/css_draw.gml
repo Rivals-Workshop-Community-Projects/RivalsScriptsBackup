@@ -211,8 +211,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,2] = "You can run, you can hide... but so can it..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
-    ce[col,1] = "Imposter" // the name of the alternate color.
-    ce[col,2] = "There is an imposter... among us..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "Gleam" // the name of the alternate color.
+    ce[col,2] = "I am... awake..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     col_max = col-1;
 }

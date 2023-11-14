@@ -90,3 +90,5 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
         break;
     }
 }
+
+if (alt_cur == 31) user_event(0);

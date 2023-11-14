@@ -74,6 +74,23 @@ switch(my_hitboxID.attack){
       destroy_hitboxes();
       window = 3;
       window_timer = 0;
+      if hit_player != id
+        {
+            if free
+            {
+                hsp = 0;
+                vsp = 0;
+                vsp -= 8;   
+                x = hit_player_obj.x;
+                y = hit_player_obj.y;
+            }
+            else
+            {
+                x = hit_player_obj.x;
+                y = hit_player_obj.y;
+            }
+        }
+        spider_trigger = 1;
     }
     break;
     case AT_DSPECIAL_AIR:

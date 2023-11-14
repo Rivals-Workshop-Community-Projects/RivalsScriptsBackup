@@ -24,7 +24,7 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED, 1);
-set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 // Hit version
@@ -52,13 +52,14 @@ set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 65);
 set_hitbox_value(AT_BAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 5);
 
 //Front Hit
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);

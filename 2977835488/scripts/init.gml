@@ -45,7 +45,7 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 11;
@@ -101,6 +101,7 @@ bair_vfx = hit_fx_create(sprite_get("bair_vfx"), 15);
 vfx_roll_afterimage = hit_fx_create(sprite_get("vfx_roll_afterimage"), 24);
 nspecial_proj_hit = hit_fx_create(sprite_get("nspecial_proj_hit"), 45);
 dspecial_vfx = hit_fx_create(sprite_get("dspecial_vfx"), 15);
+dspecial_vfx2 = hit_fx_create(sprite_get("dspecial_vfx2"), 24);
 dspecial_air_vfx = hit_fx_create(sprite_get("dspecial_air_vfx"), 15);
 dthrow_vfx = hit_fx_create(sprite_get("dthrow_vfx"), 15);
 curse_vfx = hit_fx_create(sprite_get("curse_vfx"), 18);
@@ -114,6 +115,8 @@ bubble_y = 8;
 //Character Specific Checks
 alt_cur = get_player_color(player);
 clingtime = 0;
+
+spider_trigger = 1;
 
 //Frame timings for curse animation.
 frame_timings = [15,15,15,15,3,3,4,4,4,4,8,8,8,8,8];

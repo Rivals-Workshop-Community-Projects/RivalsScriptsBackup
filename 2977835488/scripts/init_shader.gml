@@ -21,5 +21,7 @@ switch (alt_cur) {
         }
 		outline_color = [255, 0, 0];
     break;
+    //case 31:
+    //break;
 }
    

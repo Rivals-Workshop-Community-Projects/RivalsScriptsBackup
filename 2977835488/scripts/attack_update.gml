@@ -102,6 +102,7 @@ switch(attack){
     break;
 
     case AT_FSPECIAL:
+    	can_wall_jump = 1;
 	    if (free && (window == 3 || window == 4)){ 
         vsp -= vsp*1;
     }
@@ -126,6 +127,11 @@ switch(attack){
     			spawn_base_dust(x +10*spr_dir,y,"dash",1* spr_dir)
         	}
     }
+    //if (window < 4){ //Cannot walljump until they start moving forward
+        //can_wall_jump = 0;
+    //} else {
+        //can_wall_jump = 1;
+    //}
     if (window < 6){ //Cannot fastfall until end of the move
         can_fast_fall = 0;
     } else {
@@ -160,30 +166,31 @@ switch(attack){
 	case AT_DSPECIAL:
 	//Funny Feint Code
 		if (window == 1){
+			spider_trigger = 0;
 			if(window_timer == 2){
 		    	spawn_base_dust(x +1 *spr_dir,y,"dash_start",1* spr_dir)
 			}
-			/*if(window_timer == 8){
+			if(window_timer == 8){
 		    	spawn_base_dust(x +1 *spr_dir,y,"dash",1* spr_dir)
-			}*/
+			}
 		}
-		/*if (window == 2){
+		if (window == 2){
 			if(window_timer == 6){
-		    	spawn_base_dust(x +1 *spr_dir,y,"dash",1* spr_dir)
+		    	spawn_base_dust(x -4 *spr_dir,y,"dash",1* -spr_dir)
 			}
 			if(window_timer == 12){
-		    	spawn_base_dust(x +1 *spr_dir,y,"dash",1* spr_dir)
+		    	spawn_base_dust(x -4 *spr_dir,y,"dash",1* -spr_dir)
 			}
 			if(window_timer == 18){
-		    	spawn_base_dust(x +1 *spr_dir,y,"dash",1* spr_dir)
+		    	spawn_base_dust(x -4 *spr_dir,y,"dash",1* -spr_dir)
 			}
 			if(window_timer == 24){
-		    	spawn_base_dust(x +1 *spr_dir,y,"dash",1* spr_dir)
+		    	spawn_base_dust(x -4 *spr_dir,y,"dash",1* -spr_dir)
 			}
-		}*/
+		}
 		if (window == 3 && window_timer == 8) && !hitpause{
-		    	spawn_hit_fx( x, y, dspecial_vfx );
-		    	if has_hit{
+		    	//spawn_hit_fx( x, y, dspecial_vfx );
+		    	if spider_trigger == 1{
 		    		attack_end(); //call this when you cancel an attack, it resets hitboxes!
 					set_attack(AT_DTHROW);
 					hurtboxID.sprite_index = sprite_get("dthrow_hurt");
@@ -193,6 +200,12 @@ switch(attack){
 	//Feint code end
 		if (window == 5 && window_timer == 1) && !hitpause{
 		    	move_cooldown[AT_DSPECIAL] = 60;
+		}
+			if (window > 1 || window < 5){
+			draw_indicator = false
+		}
+		else{
+			draw_indicator = true
 		}
 	break;
     case AT_DSPECIAL_AIR:
@@ -214,6 +227,12 @@ switch(attack){
 		}
 		if (window == 6 && window_timer == 1) && !hitpause{
 		    	move_cooldown[AT_DSPECIAL_AIR] = 60;
+		}
+			if (window > 1 || window < 5){
+			draw_indicator = false
+		}
+		else{
+			draw_indicator = true
 		}
     break;
     case AT_DTHROW:
@@ -251,7 +270,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

@@ -356,7 +356,7 @@ with(pHitBox){
         
         
         //aether sword
-        if(attack == AT_USPECIAL && (hbox_num == 9 || hbox_num == 11)){
+        if(attack == AT_USPECIAL && hbox_num == 9){
             if(instance_exists(other.aether_sword)){
                 x_pos = -point_distance(other.x + other.hsp, other.y, other.aether_sword.x + other.aether_sword.hsp, other.y) - 5;
                 y_pos = point_distance(other.x, other.y + other.vsp, other.x, other.aether_sword.y + other.aether_sword.vsp);
