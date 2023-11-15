@@ -35,10 +35,10 @@ if (attack==AT_FSPECIAL){
 }
 if (attack==AT_TAUNT){
 	if (attack_down){
-		attack = AT_TAUNT_3
+		attack = AT_TAUNT_4
 	}
 	if (up_down){
-		attack = AT_TAUNT_4
+		attack = AT_TAUNT_3
 	}
 }
 if (attack==AT_USPECIAL){

@@ -17,10 +17,14 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);//5
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 4);//2
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 5);//5
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 3, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DTILT, 3, AG_WINDOW_HSPEED, 3);//2
 
 set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 6);//8
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);

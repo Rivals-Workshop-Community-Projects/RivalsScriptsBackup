@@ -117,7 +117,7 @@ nsp_direction_storage_for_post_draw = 0;
 dsp_free = false;
 dsp_done = false;
 dsp_override = false;
-dsp_qualified = false;
+dsp_qualified = 0;//used to be bool, now numbers for buffer
 dsp_confirmed = false;
 dsp_TESTMODE = 0;
 dsp_test_buffer = 0;
@@ -126,6 +126,7 @@ dsp_test_timer_b = 0;
 dsp_test_max = 50;
 dsp_test_dir = 0;
 dsp_modeii_buffer = false;
+dsp_buffer_amt = 6;//6 as it is the same amount of buffer frames for control inputs
 
 fsp_level = 0;
 fsp_time = 0;

@@ -41,7 +41,11 @@ if (my_hitboxID.attack==AT_USTRONG){
 }
 if (my_hitboxID.attack==AT_UAIR){
 	if (my_hitboxID.hbox_num!=3){
-		sound_play(asset_get("sfx_blow_heavy2"),false,-4,1,1.15);
+		if (my_hitboxID.hbox_num!=5){
+			sound_play(asset_get("sfx_blow_heavy2"),false,-4,1,1.15);
+		}else{
+			sound_play(sound_get("ARSlash"),false,-4,0.7,1.2);
+		}
 	}else{
 		sound_play(asset_get("sfx_holy_lightning"),false,-4,1,1.2);
 	}
@@ -103,7 +107,7 @@ if (my_hitboxID.attack==AT_JAB || my_hitboxID.attack==AT_FTILT || my_hitboxID.at
 	my_hitboxID.attack==AT_DTILT || my_hitboxID.attack==AT_DATTACK ||
 	my_hitboxID.attack==AT_NAIR || my_hitboxID.attack==AT_FAIR || my_hitboxID.attack==AT_BAIR || 
 	my_hitboxID.attack==AT_UAIR || my_hitboxID.attack==AT_DAIR) {
-	dsp_qualified = true;
+	dsp_qualified = dsp_buffer_amt;
 }
 }
 

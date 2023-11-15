@@ -10,7 +10,8 @@ shader_start()
 
 //dspecial buffer vfx
 
-if ( (state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR) && (dsp_confirmed || dsp_modeii_buffer) ){
+//if ( (state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR) && (dsp_confirmed || dsp_modeii_buffer) ){
+if ( (state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR) && dsp_qualified ){
 	draw_sprite_ext( sprite_get("dspecial_indicator"), get_gameplay_time()/3, x, y, 1, 1, 0, -1, 1 ) 
 }
 
@@ -56,6 +57,7 @@ var tmp_colb = get_color_profile_slot_b(tmp_colornum, tmp_colorslot);
 
 var tmp_col = make_color_rgb(tmp_colr, tmp_colg, tmp_colb);
 
+/*//deprecated
 if (attack==AT_TAUNT_3){
 	if (window == 2 || window == 3) {
 		var timeoffset = ease_expoOut( 65, 0, dsp_test_timer, dsp_test_max )
@@ -71,12 +73,12 @@ if (attack==AT_TAUNT_3){
 		draw_debug_text( x-68-190, y-180+14*1, "this doesn't do" )
 		draw_debug_text( x-68-190, y-180+14*2, "anything actually." )
 		draw_debug_text( x-68-190, y-180+14*3, "sorry" )
-		/*
+		
 		draw_debug_text( x-68-190, y-180+14*1, "normal rivals buffer" )
 		draw_debug_text( x-68-190, y-180+14*2, "will account for dspec" )
 		draw_debug_text( x-68-190, y-180+14*3, "input _before_" )
 		draw_debug_text( x-68-190, y-180+14*4, "entering hitpause" )
-		*/
+		
 		
 		draw_debug_text( x-84+190, y-180, "MODE 2:" )
 		draw_debug_text( x-84+190, y-180+14*1, "dspecial can be" )
@@ -102,7 +104,7 @@ if (attack==AT_TAUNT_3){
 		draw_roundrect_colour_ext(x+x_off-box_x-2, y-box_y_t-1, x+x_off+box_x+2, y-box_y_b+1, 6, 6, 0, c_white, true);
 		draw_roundrect_colour_ext(x+x_off-box_x-1, y-box_y_t-2, x+x_off+box_x+1, y-box_y_b+2, 6, 6, 0, c_white, true);
 	}
-}
+}*/
 
 
 
@@ -116,6 +118,7 @@ if (attack==AT_TAUNT_3){
 //       Playtest Changelog Template by hyuponia. change the code as much you'd like
 //       please paste somewhere in "post_draw.gml"!
 //       find it at: https://pastebin.com/uDVTDU6R
+//       hotfix A: it now asset_get's the room id (thanks mr nart!)
 //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
 if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtest screen.
 	if (!variable_instance_exists(id,"pn__init")){//initialization part runs once
@@ -136,10 +139,36 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
-		patch_note_title[i] = "TEST INDICATOR"
+		
+		patch_note_title[i] = "v2.5 - (2023 Nov 15)"
 		patch_note_text[i++] = 
-		"this indicates that i am testing this currently
-		it is currently testing for: asset_get'ing room id"
+		"v2.5
+		changes
+		- made it so you can do the DSPECIAL cancelling for 6 frames after moves hit.
+		--- it's 6 frames because it is the same amount of frames as the control input buffer. the way i implemented this makes it easy to change how many frames it can check for so i can easily make it longer!
+		- because of this above change, v2.3's attack-taunt lost the purpose of setting the experimental stuff, so i made it the up-taunt.
+		- FTILT has slightly updated animation. FTILT's horizontal speed also has been increased, making the effective range slightly further
+		- UAIR has slightly updated animation, and its hitboxes are now larger to fit it.
+		- UAIR also has a new hitbox, sweetspot for KO'ing!
+		- DTILT animation tweaked as well
+		- BAIR animation too, putting emphasis on that back hit is stronger or at least different
+		- added sparkly trails for dspecial
+
+		fixes
+		- fixed an issue where one (two actually) of the FAIR hitboxes have different sound effects (thanks mallow!!!)
+
+		balances
+		-- -- beneficial
+		- FTILT's horizontal speed increased, making effective range slightly further
+		- UAIR's hitboxes are larger
+		- UAIR has a new sweetspot hitbox, uh its beneficial right?
+		- DTILT moves forward a bit now. with horizontal speed.
+		
+		notes
+		i dont remember if theres anything else i changed my brain doesnt work right now
+		ao loves you!
+		open for inputs!"
+		
 		
 		patch_note_title[i] = "v2.4 - (2022 Sep 17)"
 		patch_note_text[i++] = 
@@ -278,7 +307,8 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		pn__select_timer = pn__select_timer_max; //selection transition timer
 		pn__scroll_did = 0; //niche storage for if list has scrolled or not
 			pn__online = false; //set
-		if (room == 113 || room == 72){ //if in online playtest, or in extramode workshop list playtest
+		if (room == asset_get("network_char_select") || room == asset_get("workshop_room")){ //if in online playtest, or in extramode workshop list playtest
+			//thanks to mr nart for heads up on using asset_get for room id's instead!
 			pn__online = true; //switch to online view
 		}
 		
@@ -294,8 +324,8 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//camera reaches the top at y 148, anything higher shifts the camera, so + 61, then 209
 		//playtest canvas is w 200 h 162 at 2x scale.
 		//css playtest is room 69
-		//extramode workshop list playtest is room 72
-		//online playtest is room 113
+		//extramode workshop list playtest is room 72  -  asset_get("workshop_room")
+		//online playtest is room 113  -  asset_get("network_char_select")
 		
 		var bc_x = clamp( x, 100, 860 );//i guess this is the "center", bottom center
 		var bc_y = clamp( (y + 61), 209, room_height-13 );//puzzles of math

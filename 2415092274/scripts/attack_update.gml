@@ -84,6 +84,7 @@ if (attack==AT_TAUNT_3){
 		window = 2;
 		window_timer = 0;
 	}
+	/*//deprecated
 	if (window == 2 || window == 3) {
 		//print(string(dsp_test_buffer))
 		if (left_down){
@@ -121,6 +122,7 @@ if (attack==AT_TAUNT_3){
 			sound_play(sound_get("gui_accept"));
 		}
 	}
+	*/
 }
 
 if (attack==36&&window==2&&taunt_down&&window_timer>=43){window_timer=43}
@@ -134,7 +136,7 @@ if (attack==AT_NAIR && window >= 3 && !was_parried && !hitpause) {
 	can_wall_jump = true;
 }
 
-if (dsp_TESTMODE == 2){
+/*if (dsp_TESTMODE == 2){//deprecated
 	if (attack==AT_JAB || attack==AT_FTILT || attack==AT_UTILT ||
 		attack==AT_DTILT || attack==AT_DATTACK ||
 		attack==AT_NAIR || attack==AT_FAIR || attack==AT_BAIR || 
@@ -143,7 +145,7 @@ if (dsp_TESTMODE == 2){
 			dsp_modeii_buffer = true;
 		}
 	}
-}
+}*/
 
 if (dsp_qualified){
 	if (!was_parried){
@@ -159,6 +161,16 @@ if (dsp_qualified){
 				}
 			}
 		}else{
+			if (is_special_pressed( DIR_DOWN ) || dsp_modeii_buffer){
+				dsp_confirmed = true;
+				
+				if (attack==AT_FTILT&&!ftilt_hit){
+				}else if (attack==AT_UTILT&&!utilt_hit){
+				}else{
+				attack_end() 
+				destroy_hitboxes()
+				}
+			}
 			if (dsp_confirmed){
 				if (attack==AT_FTILT&&!ftilt_hit){
 				}else if (attack==AT_UTILT&&!utilt_hit){
@@ -179,12 +191,13 @@ if (dsp_qualified){
 					dsp_qualified = false;
 				}
 			}else{
-				dsp_qualified = false;
+				dsp_qualified--;//dsp_qualified = false;//used to be bool
 			}
 		}
 	}
 }
-
+//print("dsp_qualified = "+((dsp_qualified)?"!!YES!!":"nah"))
+//print("dsp_confirmed = "+((dsp_confirmed)?"!!YES!!":"nah"))
 
 
 // new Ao code below
@@ -365,6 +378,7 @@ if (attack==AT_DSPECIAL){
 		}else{
 			vsp=-16
 		}
+		spawn_hit_fx( x-8+random_func( 2, 16, true ), y-16-16+random_func( 5, 32, true ), particle1 );
 	}
 	if (window==3&&window_timer==1){
 		if (!dsp_free){
