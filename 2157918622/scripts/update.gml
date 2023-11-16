@@ -55,7 +55,7 @@ with(oPlayer){
         if wraptimer < 48{
         	wraptimer++;
         }
-        if ("temp_level" in self && (get_training_cpu_action() == CPU_FIGHT || get_training_cpu_action() == CPU_EVADE)){
+        if ("temp_level" in self && temp_level > 0 && (get_training_cpu_action() == CPU_FIGHT || get_training_cpu_action() == CPU_EVADE)){
     		if (other.attack == AT_FSPECIAL && other.window == 3 || (other.window == 2 && other.window_timer > 4)){
 				if (place_meeting(other.fspecial_point[0]+other.point_hsp*4,other.fspecial_point[1]+other.point_vsp*4 + 35,hurtboxID)){
 					if (state_cat == SC_GROUND_NEUTRAL || state == PS_DASH_START || state == PS_DASH || state == PS_DASH_STOP || state == PS_DASH_TURN){

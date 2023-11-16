@@ -181,7 +181,7 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-
+is_KOB = true;
 upb = false;
 upbtimer = 0;
 muted = get_synced_var(player);

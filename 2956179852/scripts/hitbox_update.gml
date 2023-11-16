@@ -15,6 +15,8 @@ if(attack == AT_FSTRONG){
         	player_id.peach = noone;
             destroyed = true;
         }
+        transcendent = true;
+        if(Frozen){transcendent = false;}
         if(hitbox_timer > 4){
             if(!Frozen){image_xscale = .2;image_yscale = .3;hsp *= 1.0-(hitbox_timer/250);}
         }else{
@@ -197,8 +199,9 @@ else if(attack == AT_UAIR){
 	    	        		}
 	    	        		other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
 	    	        		
-	    	        		if(type <= 1 && kb_value+(kb_scale*8) > 6 || type == 2 && kb_value+(kb_scale*8) > 6){
-    	    		            //other.current_player = player;other.player = player;
+	    	        		if(type <= 1 && kb_value+(kb_scale*8) >= 3 || type == 2 && kb_value+(kb_scale*8) >= 4){
+    	    		            other.can_hit[player] = false;
+	    	        		}if(type <= 1 && kb_value+(kb_scale*8) >= 4 || type == 2 && kb_value+(kb_scale*8) >= 6){
     	    		            knockback_angle = kb_angle;
 	    	        			other.knockback_power = kb_value;
     	    		            other.hsp += cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*8)*2.5)*spr_dir;
@@ -208,7 +211,10 @@ else if(attack == AT_UAIR){
     	    		            	other.spr_dir = -1;
     	    		            }
     	    		            other.vsp -= -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*8)*2.5);
-    	    		            other.can_hit[player] = false;other.lastplayerhit = player;
+    	    		            other.lastplayerhit = player;
+    	    		            if(other.orig_player != player && kb_value+(kb_scale*8) >= 12){
+    	    		            	other.player = player;
+    	    		            }
 	    	        		}
 	    	        		other.hit_priority = 4;
 	    	                spawn_hit_fx(other.x, other.y, hit_effect);
@@ -235,6 +241,9 @@ else if(attack == AT_UAIR){
 	    if(get_gameplay_time() % 6 == 0){
 	    	var rand_dir = random_func(1, 359, true);
 	    	var sparkle = spawn_hit_fx((x) + round(lengthdir_x(15, rand_dir)), y - 15 + round(lengthdir_y(15, rand_dir)), player_id.fx_shine_small_slow);sparkle.depth = depth-1;
+		}
+		if(y >= room_height+500 || x >= room_width+1000 || x < -1000){
+			destroyed = true;
 		}
         //sick compatibility
         with(oPlayer){
@@ -306,7 +315,7 @@ else if(attack == AT_UAIR){
 			}
 		}
 	}
-	if(hitbox_timer == 4){kb_value = 0;projectile_parry_stun = false;}
+	if(hitbox_timer == 4){kb_value = 0;projectile_parry_stun = false;hit_priority = 0;}
 	var cloud = spawn_hit_fx(x-(25*spr_dir)+random_func(hitbox_timer, 60, true)*spr_dir,y-20+random_func(hitbox_timer, 40, true),player_id.fx_cloud);cloud.spr_dir = -spr_dir;cloud.draw_angle = random_func(0, 360, true);
 }
 

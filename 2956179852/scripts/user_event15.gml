@@ -252,6 +252,16 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.5", "7th October, 2023");
+initHeader("Nerfs");
+initSection("- UAir pig is now slightly easier to knock around with physical attacks, and weaker hits than before will prevent it from hitting you
+- Powerful enough attacks now changes UAir pig's owner (aka letting it hit Hotel Mario back)
+- Freezing Peach in the NSpecial cloud now makes her possible to destroy (yay!)");
+
+initHeader("Fixes / Other Changes");
+initSection("- DAttack fire ball is now marked as a fire hitbox
+- Fixed FStrong poof being freezable");
+
 initPatch("1.4", "7th October, 2023");
 initHeader("Nerfs");
 initSection("- Hotel Mario now loses some dspecial charge on death
@@ -510,6 +520,7 @@ of code.
 
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = 0;
+Toadie_Ability = 3;
 wily_robotmaster_img = sprite_get("Wily_Castle");
 pkmn_stadium_front_img = sprite_get("pkmn");
 pkmn_stadium_back_img = sprite_get("pkmn_back");

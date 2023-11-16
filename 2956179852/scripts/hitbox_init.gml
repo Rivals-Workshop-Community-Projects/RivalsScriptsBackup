@@ -15,14 +15,10 @@ Pocket_hud = sprite_get((alt==0)?"villager_pocket_hud_icons":"villager_pocket_hu
 if(attack == AT_USTRONG){
 	if("toast_type" !in self)toast_type = 0;
 	image_index = toast_type;
-    MattCanGrab = true;
-    MorshuCanGrab = true;
-    CalCanSnack = 1;
-    Pocketable = true;
-	Pocket_hsp = 6;
-	Pocket_vsp = -6;
-	SpikeCanEat = true;
-	SpikeHealPercent = 4;
+    MattCanGrab = true;MorshuCanGrab = true;
+    CalCanSnack = 1;Toadie_Ability = 3;
+    Pocketable = true;Pocket_hsp = 6;Pocket_vsp = -6;
+	SpikeCanEat = true;SpikeHealPercent = 4;
 
     base_dmg = damage;base_kbs = kb_scale;
     Pocket_hud_imageindex = 0+(toast_type+(toast_type>0)*2);
@@ -46,15 +42,14 @@ if(attack == AT_DSTRONG){
 }
 
 if(attack == AT_DSPECIAL){
-	UnReflectable = true;
-	prevhitbox = noone;
-	Pocketable = false;
+	UnReflectable = true;prevhitbox = noone;
+	Pocketable = false;Toadie_Ability = 5;
 }
 if(attack == AT_UAIR){
 	if(hbox_num <= 3){
 		MattCanGrab = true;
 		MorshuCanGrab = true;
-		CalCanSnack = 2;
+		CalCanSnack = 2;Toadie_Ability = 8;
 		Pocketable = hbox_num!=3;
 		Pocket_hsp = 8;
 		Pocket_vsp = -8;	
@@ -99,6 +94,7 @@ if(attack == AT_DATTACK){
 	if(alt == 12 || alt == 18 || alt == 22 || alt == 29 || alt == 31)Pocket_hud = sprite_get("villager_pocket_hud_icons_alts2");
 	if(alt == 4)Pocket_hud = sprite_get("villager_pocket_hud_icons");
     Pocket_hud_imageindex = 2;	
+    FireHitbox = true;Toadie_Ability = 3;
 }
 
 if(attack == AT_USPECIAL){
@@ -142,17 +138,16 @@ if(attack == AT_FSTRONG){
 	    mariohit = false;
 	    if(alt == 2)Pocket_hud = sprite_get("villager_pocket_hud_icons_alts2");
 	    Pocket_hud_imageindex = 7;
+	    Toadie_Ability = 8;
 	}else if(hbox_num == 2){ //poof
-		Pocketable = false;
+		Pocketable = false;Freezable = false;
+		Toadie_Ability = 8;
 	}
 }
 
 if(attack == AT_NSPECIAL){
 	UnReflectable = true;
-	Pocketable = true;
-	Pocket_hsp = 6;
-	Pocket_vsp = -2;
-	Pocketed = false;
-	was_pocketed = false;
-	Pocket_hud_imageindex = 8;
+    MattCanGrab = true;MorshuCanGrab = true;	
+	Pocketable = true;Pocket_hsp = 6;Pocket_vsp = -2;Pocketed = false;was_pocketed = false;Pocket_hud_imageindex = 8;
+	Toadie_Ability = 7;
 }
