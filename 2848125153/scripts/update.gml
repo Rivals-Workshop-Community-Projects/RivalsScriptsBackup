@@ -76,10 +76,29 @@ if(state == PS_WAVELAND && state_timer == 0 && !hitpause){
     }
 }
 
+//gain money on kill. very skillful!
+with(oPlayer){
+    if(id != other.id){
+        if((state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1 && !hitpause){
+            with(other){
+                if(hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self){
+                    sound_play(sound_get("soldsfx"),false,noone,1.5);
+                    current_money += 5000*income_boost;
+                }
+            }
+        }
+    }
+}
+
 //failsafe for uspecial mask not being reset
 if(uspec_mask && ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_USPECIAL || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))){
 	mask_index = asset_get("ex_guy_collision_mask");
 	uspec_mask = false;
+}
+
+//special alt things
+if(detish_alt || sketish_alt){
+	init_shader();
 }
 
 if(!loaded){

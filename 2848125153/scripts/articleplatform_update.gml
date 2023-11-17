@@ -4,13 +4,17 @@ if(!instance_exists(choochoo)){
     exit;
 }else{
 	if(property){
-		if(choochoo.hsp == 0 && choochoo.vsp == 0){
-			if(!plat_on){mask_index = sprite_get("choochoo_plat_collision");plat_on = true;}
-		}else{
-			if(plat_on){mask_index = asset_get("empty_sprite");plat_on = false;}
+		if((abs(choochoo.hsp) <= 0.05 && abs(choochoo.vsp) <= 0.05 || toggleplatform) && plat_on2){
+			if(!plat_on || toggleplatform){mask_index = sprite_get("choochoo_plat_collision");plat_on = true;toggleplatform = false;}
+		}else if(abs(choochoo.hsp) > 0.05 || abs(choochoo.vsp) > 0.05 || !plat_on2 && toggleplatform){
+			mask_index = asset_get("empty_sprite");plat_on = false;if(toggleplatform){toggleplatform = false;}
 		}
+	}else{
+		//if(plat_on){mask_index = sprite_get("choochoo_plat_collision");}
+		//else{mask_index = asset_get("empty_sprite");}
 	}
 	
+	depth = choochoo.depth-1;
 	/*with (oPlayer) {
 	    if (y <= (other.y + 2) && !free && !freemd) {
 	        if (place_meeting(x,y,other.id) && y <= other.y && y > other.y-2 || (y > (other.y - 10) && x >= (other.x - 60) && x <= (other.x + 60))){

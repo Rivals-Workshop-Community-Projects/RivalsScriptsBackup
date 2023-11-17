@@ -28,6 +28,8 @@ crit = false;
 critboost_dmg = 1;
 critboost_kb_scale = 1;
 
+KoB_destroy = false;
+
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
         MattCanGrab = true;
@@ -318,7 +320,7 @@ if(attack == AT_DSPECIAL){
 		depth = -2;
         thedice = instance_create(x,y-40,"obj_article_platform");
         thedice.choochoo = self;thedice.property = true;
-        moneytimer = 0;
+        moneytimer = 0;toggleplatform = false;
         playerdead = false;
         playerurl = player_id.url;
         orig_player = player;
@@ -327,10 +329,7 @@ if(attack == AT_DSPECIAL){
         knockback_angle = 0;
         hitpausehit = 0;
         timer = 0;
-        lasthitbox = noone;
-        lasthitbox_player_id = noone;
-        lasthitbox_group = -1;
-        lasthitbox_attack = -1;
+        lasthitbox = noone;lasthitbox_player_id = noone;lasthitbox_group = -1;lasthitbox_attack = -1;
         hitlockout = 4;
         hitlockout2 = 0;
         hitplayer = false;
@@ -345,7 +344,7 @@ if(attack == AT_DSPECIAL){
 	}else if(hbox_num >= 4){
 		can_hit_self = true;
 	}
-	Pocketable = false;
+	Pocketable = false;Freezable = false;
 }
 
 //money

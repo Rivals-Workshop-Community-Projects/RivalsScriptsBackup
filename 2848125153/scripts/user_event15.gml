@@ -318,6 +318,17 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.28", "16th November, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Hotfix for a bug with the previous update");
+
+initPatch("1.27", "16th November, 2023");
+initHeader("Skillful Buffs");
+initSection("+ Mr. Monopoly now gains 500k when killing an opponent. Very skillful!
++ Mr. Monopoly can now do down taunt (while holding taunt) in front of his property to turn the platform on it on/off. Mostly added as an option to prevent desyncs online, but may also have some use");
+initHeader("Fixes / Other Changes");
+initSection("+ Made dices, tokens, etc function with other KoB characters that have bouncy DAirs
++ Fixed BAir still being throwable when not having enough money to throw a small bag (just a visual fix, as before the bag would disappear despite no bag being thrown)");
 
 initPatch("1.26", "2nd September, 2023");
 initHeader("Skillful Buffs");

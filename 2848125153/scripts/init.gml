@@ -182,6 +182,7 @@ if(alt == 5 || alt == 18 || alt == 23 /*|| alt == 23*/){ //alts that need specia
 bubble_x = 0;
 bubble_y = 8;
 
+is_KOB = true;
 loaded = false;
 muted = false;
 attacking = false;
@@ -279,6 +280,10 @@ TCG_Kirby_Copy = -1;
 if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"){
 	kewtmode = 1;
 }
+detish_alt = false;
+if(alt == 17 && string_lower(get_player_name(player)) == "don")detish_alt = true;
+sketish_alt = false;
+if(alt == 17 && string_lower(get_player_name(player)) == "sky")sketish_alt = true;
 
 fx_dust_sharp_big = hit_fx_create(sprite_get("dust_sharp_big"), 20);
 fx_dust_sharp = hit_fx_create(sprite_get("dust_sharp"), 20);

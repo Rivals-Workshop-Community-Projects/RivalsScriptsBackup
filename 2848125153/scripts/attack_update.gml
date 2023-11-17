@@ -807,7 +807,7 @@ if (attack == AT_NSPECIAL){
 	}
 }else if (attack == AT_BAIR){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
-    	if(BAir_cooldown <= 0 && (attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down || strong_down)){
+    	if(BAir_cooldown <= 0 && (attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down || strong_down) && current_money >= 1500*discount){
     		set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_throw"));set_num_hitboxes(AT_BAIR, 1);
     		if(current_money2 <= 15000){
     			if(current_money >= 1500*discount){
@@ -971,7 +971,15 @@ if (attack == AT_NSPECIAL){
 	    }
     }
     
-    if(window == 5){
+    if(window == 4){
+    	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause && instance_exists(property) && taunt_down){
+	    	with(property){
+		    	if(place_meeting(x,y,other)){
+		    		toggleplatform = true;
+		    	}
+		    }
+	    }
+    }else if(window == 5){
     	if(!taunt_down){
 	    	window = 6;window_timer = 0;
 	    }

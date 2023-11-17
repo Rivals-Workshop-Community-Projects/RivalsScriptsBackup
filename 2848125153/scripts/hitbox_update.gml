@@ -50,9 +50,10 @@ if(attack == AT_NSPECIAL){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
-	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-	                			    player_id.DairBounce = 1;
-	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
 	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
 	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
@@ -305,9 +306,10 @@ if(attack == AT_FSPECIAL){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
-	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-	                			    player_id.DairBounce = 1;
-	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
 	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
 	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
@@ -449,9 +451,10 @@ if(attack == AT_USPECIAL){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
-	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-	                			    player_id.DairBounce = 1;
-	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
 	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
 	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
@@ -528,7 +531,7 @@ if(attack == AT_DSPECIAL){
 		//num = originalnum;
 		//spr_dir = 1;
 		moneytimer += 1;
-		if(hbox_num == 1){
+		if(hbox_num == 1){ //house
 			if(housemoney >= 10000){
 				destroyed = true;
 				player_id.property = create_hitbox(AT_DSPECIAL, 2, round(x), round(y));player_id.property.housemoney2 = housemoney;
@@ -537,7 +540,7 @@ if(attack == AT_DSPECIAL){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 302);
 		    	player_id.current_money += 1000*income_boost;moneytimer = 0;
 			}
-		}else if(hbox_num == 2){
+		}else if(hbox_num == 2){ //hotel
 			if(housemoney >= 30000){
 				destroyed = true;
 				player_id.property = create_hitbox(AT_DSPECIAL, 3, round(x), round(y));player_id.property.housemoney2 = housemoney;
@@ -546,7 +549,7 @@ if(attack == AT_DSPECIAL){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
 		    	player_id.current_money += 2000*income_boost;moneytimer = 0;
 			}
-		}else if(hbox_num == 3){
+		}else if(hbox_num == 3){ //bank
 			if(moneytimer >= 600){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
 		    	housemoney += 500*income_boost;moneytimer = 0;
@@ -590,6 +593,7 @@ if(attack == AT_DSPECIAL){
 			}else if(hbox_num == 3){
 				thedice.y = y-58;
 			}
+			if(toggleplatform){thedice.plat_on = !thedice.plat_on;thedice.plat_on2 = !thedice.plat_on2;thedice.toggleplatform = true;toggleplatform = false;}
 		}
 		if (hp <= 0 || y >= room_height || x >= room_width+1000 || x < -1000) {
 			destroying = true;
@@ -618,14 +622,13 @@ if(attack == AT_DSPECIAL){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
-	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-	                			    player_id.DairBounce = 1;
-	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
-	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-	    					sound_play(sound_effect);
+	    	                spawn_hit_fx(other.x, other.y, hit_effect);sound_play(sound_effect);
 	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
-	    	                //other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
     	            	}
     	            }
     	            if(get_player_team(player) == get_player_team(other.player) && "current_money" in player_id && attack == AT_JAB && hbox_num >= 10 && hbox_num < 12 && !other.destroying){
@@ -988,9 +991,10 @@ if(attack == AT_DATTACK){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
-	                			if(other.playerurl == player_id.url){ //if the hitbox is from any mr monopoly
-	                			    player_id.DairBounce = 1;
-	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
 	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
 	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
@@ -1241,6 +1245,7 @@ if(attack == AT_DSTRONG && hbox_num == 6){
     }
 }
 
+if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
 
 #define random_angle

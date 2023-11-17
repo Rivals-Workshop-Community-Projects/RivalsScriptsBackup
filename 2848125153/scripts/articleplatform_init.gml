@@ -11,5 +11,5 @@ UnReflectable = true;
 Pocketable = false;
 choochoo = noone;
 
-plat_on = true;
+plat_on = true;plat_on2 = true;toggleplatform = false;
 if("property" not in self)property = false;
