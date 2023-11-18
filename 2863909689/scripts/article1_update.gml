@@ -138,7 +138,7 @@ if (state == 1){
 	}
     
     //spawn hitbox on hit player
-    if (state_timer == attack_delay){
+    if (state_timer == attack_delay && player_who_hit != -4){
     	var hitbox_x = player_hit.x;
     	var hitbox_y = player_hit.y;
     	

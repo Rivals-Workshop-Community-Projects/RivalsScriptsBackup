@@ -159,13 +159,15 @@ if(small_sprites != 1 || big && size_mult > 1 && size_mult <= 2 || mega && size_
 }else{
 	for(var i = 0; i < get_num_hitboxes(attack); i++){
         var num = i + 1;
-        reset_hitbox_value(attack, num, HG_DAMAGE);
-        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
-        reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
+        if (attack != AT_UAIR && attack != AT_DAIR || attack == AT_DAIR && num == 2 || attack == AT_UAIR && num == 2){
+	        reset_hitbox_value(attack, num, HG_DAMAGE);
+	        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
+	        reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
+	        reset_hitbox_value(attack, num, HG_WIDTH);
+	        reset_hitbox_value(attack, num, HG_HEIGHT);
+        }
         reset_hitbox_value(attack, num, HG_HITBOX_X);
-        reset_hitbox_value(attack, num, HG_HITBOX_Y);
-        reset_hitbox_value(attack, num, HG_WIDTH);
-        reset_hitbox_value(attack, num, HG_HEIGHT);
+	    reset_hitbox_value(attack, num, HG_HITBOX_Y);
     }
 }
 

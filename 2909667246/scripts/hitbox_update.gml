@@ -212,6 +212,10 @@ if (attack == AT_NSPECIAL){
 	                			}else{
 	                				other.hp -= round((damage*(1+(player_id.strong_charge/100)))/4);
 	                			}
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}else{
 	    	        			if(get_player_team(player) != get_player_team(other.player)){
 	    	        				other.hp -= round(damage);
@@ -411,9 +415,10 @@ if (attack == AT_NSPECIAL){
 	    	                			other.player_id.old_hsp = other.player_id.hsp;other.player_id.old_vsp = other.player_id.vsp;
 	    	                			other.player_id.has_hit = true;
     	                			}
-    	                			if("notmuchtimeleft" in player_id){ //if the hitbox is from any mr monopoly
-    	                			    player_id.DairBounce = 1;
-    	                			}
+    	                			//to make certain characters bounce
+					        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+					   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+					        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
     	    	        		}
     	    	        		other.hp = 0;
     	    	        		
@@ -613,6 +618,10 @@ if (attack == AT_NSPECIAL){
 	    	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	    	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	    	                			player_id.has_hit = true;
+	    	                			//to make certain characters bounce
+						        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+						   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+						        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	                			with(other){
 	    	                				if(player_id.runeG){
 	    	                					var treecounter = create_hitbox(AT_DSPECIAL, 11, x, y-55);treecounter.player = player;

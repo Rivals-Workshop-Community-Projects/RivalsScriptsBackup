@@ -259,6 +259,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.41", "17th November, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug with UAir/DAir where the damage and knockback randomization wouldn't work properly
++ Made other characters able to bounce off Villager's tree, lloid rocket, and balloons with certain moves");
+
 initPatch("1.40", "8th November, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Villager pocket no longer messes with the 'state' variable of objects unless it's a KoB character
