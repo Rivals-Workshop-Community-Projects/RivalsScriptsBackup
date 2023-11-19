@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 15, 16, 45 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 25 );
 
 // Pikachu
 set_color_profile_slot( 1, 0, 242, 214, 121 ); //Ghost Purp
@@ -140,31 +140,31 @@ set_color_profile_slot( 10, 7, 240, 235, 196 ); //Will-O
 set_color_profile_slot( 11, 0, 126, 69, 149 ); //Ghost Purp
 set_color_profile_slot( 11, 1, 241, 238, 157 ); //Body
 set_color_profile_slot( 11, 2, 194, 162, 109 ); //Belly (ColorMap)
-set_color_profile_slot( 11, 3, 82, 82, 78 ); //Shadows
+set_color_profile_slot( 11, 3, 42, 42, 38 ); //Shadows
 set_color_profile_slot( 11, 4, 105, 105, 105 ); //Ears (ColorMap)
 set_color_profile_slot( 11, 5, 194, 162, 109 ); //Tail
 set_color_profile_slot( 11, 6, 234, 173, 182 ); //Cheeks
 set_color_profile_slot( 11, 7, 163, 119, 181 ); //Will-O
 
-// Pikablu
-set_color_profile_slot( 12, 0, 23, 95, 189 ); //Ghost Purp
-set_color_profile_slot( 12, 1, 78, 182, 232 ); //Body
-set_color_profile_slot( 12, 2, 212, 235, 247 ); //Belly (ColorMap)
-set_color_profile_slot( 12, 3, 5, 56, 92 ); //Shadows
-set_color_profile_slot( 12, 4, 216, 96, 71 ); //Ears (ColorMap)
-set_color_profile_slot( 12, 5, 78, 182, 232 ); //Tail
-set_color_profile_slot( 12, 6, 78, 182, 232 ); //Cheeks
-set_color_profile_slot( 12, 7, 74, 149, 201 ); //Will-O
+// Pawmi
+set_color_profile_slot( 12, 0, 231, 155, 22 ); //Ghost Purp
+set_color_profile_slot( 12, 1, 232, 138, 36 ); //Body
+set_color_profile_slot( 12, 2, 250, 235, 193 ); //Belly (ColorMap)
+set_color_profile_slot( 12, 3, 0, 106, 93 ); //Shadows
+set_color_profile_slot( 12, 4, 13, 148, 130 ); //Ears (ColorMap)
+set_color_profile_slot( 12, 5, 236, 219, 177 ); //Tail
+set_color_profile_slot( 12, 6, 245, 213, 86 ); //Cheeks
+set_color_profile_slot( 12, 7, 201, 89, 67 ); //Will-O
 
-// Charizard
-set_color_profile_slot( 13, 0, 230, 66, 16 ); //Ghost Purp
-set_color_profile_slot( 13, 1, 239, 132, 41 ); //Body
-set_color_profile_slot( 13, 2, 239, 222, 123 ); //Belly (ColorMap)
-set_color_profile_slot( 13, 3, 19, 51, 61 ); //Shadows
-set_color_profile_slot( 13, 4, 239, 132, 41 ); //Ears (ColorMap)
-set_color_profile_slot( 13, 5, 237, 56, 0 ); //Tail
-set_color_profile_slot( 13, 6, 239, 132, 41 ); //Cheeks
-set_color_profile_slot( 13, 7, 247, 151, 16 ); //Will-O
+// Pikablu
+set_color_profile_slot( 13, 0, 23, 95, 189 ); //Ghost Purp
+set_color_profile_slot( 13, 1, 78, 182, 232 ); //Body
+set_color_profile_slot( 13, 2, 212, 235, 247 ); //Belly (ColorMap)
+set_color_profile_slot( 13, 3, 5, 56, 92 ); //Shadows
+set_color_profile_slot( 13, 4, 216, 96, 71 ); //Ears (ColorMap)
+set_color_profile_slot( 13, 5, 78, 182, 232 ); //Tail
+set_color_profile_slot( 13, 6, 78, 182, 232 ); //Cheeks
+set_color_profile_slot( 13, 7, 74, 149, 201 ); //Will-O
 
 // Gengar
 set_color_profile_slot( 14, 0, 189, 109, 194 ); //Ghost Purp
@@ -275,16 +275,6 @@ set_color_profile_slot( 24, 4, 101, 188, 255 ); //Ears (ColorMap)
 set_color_profile_slot( 24, 5, 61, 116, 238 ); //Tail
 set_color_profile_slot( 24, 6, 101, 188, 255 ); //Cheeks
 set_color_profile_slot( 24, 7, 61, 116, 238 ); //Will-O
-
-// Deoxys
-set_color_profile_slot( 25, 0, 65, 168, 198 ); //Ghost Purp
-set_color_profile_slot( 25, 1, 255, 115, 74 ); //Body
-set_color_profile_slot( 25, 2, 255, 115, 74 ); //Belly (ColorMap)
-set_color_profile_slot( 25, 3, 39, 81, 120 ); //Shadows
-set_color_profile_slot( 25, 4, 65, 168, 198 ); //Ears (ColorMap)
-set_color_profile_slot( 25, 5, 65, 168, 198 ); //Tail
-set_color_profile_slot( 25, 6, 156, 99, 181 ); //Cheeks
-set_color_profile_slot( 25, 7, 156, 99, 181 ); //Will-O
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

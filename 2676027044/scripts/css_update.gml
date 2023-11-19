@@ -106,12 +106,12 @@ switch(color) {
 		break;
 	
 		case 12: 
-	name = " 13: Pikablu"; 
+	name = " 13: Pawmi"; 
 	position = 12;
 		break;	
 		
 		case 13: 
-	name = " 14: Charizard"; 
+	name = " 14: Pikablu"; 
 	position = 13;
 		break;	
 	
@@ -169,9 +169,4 @@ switch(color) {
 	name = " 25: Ghost/Water"; 
 	position = 24;
 		break;	
-		
-		case 25: 
-	name = " 26: EVENT | Deoxys"; 
-	position = 24;
-		break;
 }

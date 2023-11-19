@@ -1,7 +1,6 @@
 // debug_draw.gml
 // draws debug text/sprites in front of everything
 
-
 if ("mim_wisp" in self && mim_wisp != noone){
 	with (mim_wisp){
 		// If wisp is 

@@ -2,6 +2,14 @@
 // Runs once when the player is created
 // Where most player variables are assigned
 
+//compatibility
+pot_compat_variable = sprite_get("pumbo_compat");
+pot_compat_text = "Big Malasada"
+mamizou_transform_spr = sprite_get("mamizou_compat");
+
+//alt flavor
+aurawheel = false;
+
 atk_ground = false;
 atk_air = false;
 

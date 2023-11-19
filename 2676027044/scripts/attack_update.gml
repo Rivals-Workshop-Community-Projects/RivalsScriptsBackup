@@ -115,6 +115,14 @@ switch(attack){
 				window_timer = 0;
 			}
 		}
+		
+		//morpeko alt
+		if (get_player_color(player) == 11 && window == 1 && window_timer == 1) {
+			if (aurawheel == true)
+				aurawheel = false;
+			else 
+				aurawheel = true;
+		}
 	break;
 	
 	// Forward Special - Normal Multihit

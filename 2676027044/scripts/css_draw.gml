@@ -61,16 +61,18 @@ if (CSS_image_alpha != 0 && position = color){
 
 shader_end();
 
-draw_set_font(1);
-draw_set_halign(fa_left);
-draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 231, "v1.5.0", c_gray, c_gray, c_gray, c_gray, 1);
-
 // Date display_alpha
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 214, "April 13th, 2023", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 214, "November 18th, 2023", c_gray, c_gray, c_gray, c_gray, 1);
+
+if (get_player_color( player ) == 11) {
+	draw_set_font(asset_get("fName"));
+	draw_set_halign(fa_right);
+	draw_set_valign(fa_top);
+	draw_text_color(x + 228, y - 14, "Changes colors with Play Rough!", c_white, c_white, c_white, c_white, 1);
+}
 
 // Initial Name	+ Rectangles
 //if (CSS_image_alpha > 0){

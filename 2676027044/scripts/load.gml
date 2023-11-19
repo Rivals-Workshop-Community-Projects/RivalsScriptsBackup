@@ -112,6 +112,8 @@ sprite_change_offset("plat", 64, 124);
 
 sprite_change_offset("nspecial_proj", 64, 94);
 
+sprite_change_offset("mamizou_compat", 48, 72);
+
 //victory screen
 set_victory_bg( sprite_get( "mimikyu_victorybg" ));
 set_victory_theme( sound_get( "mimikyu_victory" ));
