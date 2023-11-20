@@ -509,7 +509,7 @@ var effect_desc = ["nothing", "burn", "burn consume", "burn stun", "wrap", "free
 
 var ground_desc = ["woag", "Hits only grounded enemies", "Hits only airborne enemies"];
 
-var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce"];
+var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce", "Thru platforms, no bounce"];
 
 var flinch_desc = ["woag", "Forces grounded foes to flinch", "Cannot force flinch", "Forces crouching opponents to flinch"];
 

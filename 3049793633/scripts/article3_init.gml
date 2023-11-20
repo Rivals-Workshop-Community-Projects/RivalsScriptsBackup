@@ -1,3 +1,4 @@
+//Sets the sprite, depth, and other details for the article. 
 sprite_index = sprite_get("wood_plat");
 depth = 29
 image_xscale = 2

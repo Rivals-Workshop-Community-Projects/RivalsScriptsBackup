@@ -1,3 +1,4 @@
+//Sets the sprite, depth, and other details for the article.
 sprite_index = sprite_get("eggmobile");
 if is_aether_stage() {
     sprite_index = sprite_get("eggmobile_a");

@@ -1,4 +1,7 @@
+//Removes a harmless error from appearing in the debug log due to article inits running before init.
 if "wood_mode" not in obj_stage_main exit;
+
+//The following code controls the movement of the moving platform, split between Basic and Aether due to them following different movements/positions.
 
 //Basic Mode - Y
 if (obj_stage_main.wood_mode = 1) {
