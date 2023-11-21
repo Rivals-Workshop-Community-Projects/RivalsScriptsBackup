@@ -286,7 +286,10 @@ if(state == 0){
 if(state != 3 && !Pocketed){
     playerurl = real(player_id.url);
     with(asset_get("pHitBox")){
-        if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && self != other.thehitbox && self != other.thehitbox_flying && get_player_team(player) != get_player_team(other.original_player)){
+        if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+        && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack
+		&& (hbox_group != other.lasthitbox_group || hbox_group == -1)) || player_id != other.lasthitbox_player_id)
+        && self != other.thehitbox && self != other.thehitbox_flying && get_player_team(player) != get_player_team(other.original_player)){
             if(place_meeting(x,y,other)){
             	if(damage > 0 && kb_value > 0 && hit_priority > 0 && throws_rock != 2){
             		if(get_player_team(orig_player) != get_player_team(other.original_player)){
@@ -315,15 +318,19 @@ if(state != 3 && !Pocketed){
 	        			other.hitstop = other.hitpausehit;
 	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
             			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+            			//to make certain characters bounce
+		        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+		   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+		        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	        		}
 	        		if(throws_rock == 0){
 	        			spawn_hit_fx(x, y, hit_effect);
 	        		}
 					sound_play(sound_effect);
-	                other.lasthitbox = id;
+	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;
 	                if(type <= 1 && kb_value+(kb_scale*6) > other.armor || type == 2 && kb_value+(kb_scale*6) > other.armor_projectiles){
 	                	//if (!other.runeL) {
-	                		other.hitstun = 15+damage//)*hitstun_factor;
+	                		other.hitstun = 25+damage//)*hitstun_factor;
 	                	//}
 	                }
 	                if(type <= 1 && kb_value+(kb_scale*6) > other.armor || type == 2 && kb_value+(kb_scale*6) > other.armor_projectiles || other.hp <= 0){
@@ -347,6 +354,9 @@ if(state != 3 && !Pocketed){
             	}
             }
         }
+    }if(instance_exists(lasthitbox_player_id)){
+    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
     }
     if(hitstop <= 0){
     	hitlockout -= 1;

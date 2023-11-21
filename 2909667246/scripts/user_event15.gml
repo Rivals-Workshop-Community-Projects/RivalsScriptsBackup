@@ -259,6 +259,10 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.42", "20th November, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added silly angle 0 galaxy stuff to some moves (DSpecial axe, FAir, BAir, FTilt, FThrow/BThrow)");
+
 initPatch("1.41", "17th November, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug with UAir/DAir where the damage and knockback randomization wouldn't work properly

@@ -267,14 +267,14 @@ if (attack == AT_NSPECIAL){
 				}else{
 					strong_charge += 1;window_timer -= 1;
 				}
-				set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/4));
+				set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/3));
 				set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.05+strong_charge/180);
 				if(strong_charge < 30){
 					reset_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH);reset_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX_FRAME);
 					VillagerTreeCut = 1;
 				}else{
 					set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 12);set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX_FRAME, 11);
-					set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/2.5));
+					set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, round(12+strong_charge/1.75));
 					set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1.05+strong_charge/130);
 					VillagerTreeCut = 2;
 				}

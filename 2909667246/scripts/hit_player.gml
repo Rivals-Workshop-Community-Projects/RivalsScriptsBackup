@@ -148,6 +148,13 @@ if(hit_player_obj.should_make_shockwave){
     }
 }
 
+//hitboxes that trigger the silly angle 0 galaxy thing
+if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 9 || my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_BAIR
+|| my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1|| my_hitboxID.attack == AT_GRAB && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)){
+	//trigger silly angle 0 thing (if galaxy)
+	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;
+}
+
 if(strong_charge >= 10 && my_hitboxID.type != 2 && my_hitboxID.effect != 9){
 	shake_camera(round((12+(round(strong_charge/8))+round(my_hitboxID.damage*2.5))*.8), round((7+(round(strong_charge/20))+(round(my_hitboxID.damage/6)))*0.5));
 }

@@ -101,6 +101,8 @@ fx_explosion = hit_fx_create(sprite_get("explosion"), 30);
 fx_laugh = hit_fx_create(sprite_get("taunt_laugh_fx"), 9);
 
 // Variables
+Eggman = true;
+is_KOB = true;
 alt = get_player_color(player);
 loaded = false;
 attacking = false;

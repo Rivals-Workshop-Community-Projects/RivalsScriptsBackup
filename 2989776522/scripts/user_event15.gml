@@ -260,6 +260,16 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.23", "20th November, 2023");
+initHeader("Buffs");
+initSection("+ Increased eggpawn health slightly (12->14 grounded eggpawn, 6->9 flying eggpawn) as these felt overnerfed");
+initHeader("Nerfs");
+initSection("- Increased base eggpawn hitstun to offset the above slightly (15->25)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added silly angle 0 galaxy stuff to some moves (FTilt, FStrong, mechless kick)
++ Improved the hit code for the eggpawns a bit
++ Added compat with KoB dair bounces on eggpawns");
+
 initPatch("1.22", "9th October, 2023");
 initHeader("Buffs");
 initSection("+ Increased FStrong sweetspot kbs a bit (1.1->1.15) and gave it slightly faster startup (f23->f20)");

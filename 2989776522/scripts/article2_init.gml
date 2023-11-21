@@ -19,7 +19,7 @@ thehitbox_flying = noone;
 destroymonster = false;
 spr_dir = player_id.spr_dir;
 hitboxtimer = 30;
-lasthitbox = noone;
+lasthitbox = noone;lasthitbox_player_id = noone;lasthitbox_group = -1;lasthitbox_attack = -1;
 hitlockout = 0;
 hitlockout2 = 0;
 bouncetimer = 0;
@@ -62,7 +62,7 @@ if(robot == 0){ //egg pawn
 		sprite_index = sprite_get("eggpawn_alts");
 	}
     mask_index = sprite_get("eggpawn_mask");
-    hp = round(12*player_id.eggpawn_health_multiplier);
+    hp = round(14*player_id.eggpawn_health_multiplier);
     can_be_grounded = true;
     ignores_walls = false;
     Pocketable = true;Pocket_hsp = 5;Pocket_vsp = -5;
@@ -74,7 +74,7 @@ if(robot == 0){ //egg pawn
 		sprite_index = sprite_get("eggflapper_alts");
 	}
 	mask_index = sprite_get("eggpawn_mask");
-	hp = round(6*player_id.eggpawn_health_multiplier);
+	hp = round(9*player_id.eggpawn_health_multiplier);
 	attack_cooldown = 90;
     can_be_grounded = false;
     ignores_walls = false;
@@ -98,6 +98,7 @@ MattPlanet = true;
 MattCanGrab = true;
 MorshuCanGrab = true;
 CalCanSnack = 2;
+Toadie_Ability = 5;
 
 /*runeL = false;
 if (has_rune("L") || player_id.runeL) {

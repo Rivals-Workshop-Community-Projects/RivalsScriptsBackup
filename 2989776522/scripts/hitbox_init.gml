@@ -28,7 +28,7 @@ if(attack == AT_FSPECIAL){
 	Pocketable = true;
 	Pocket_hsp = 16;Pocket_vsp = 0;Pocketed = false;waspocketed = false;
     Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;if(player_id.alt != 0)Pocket_hud_imageindex = 1;
-    Blockable = true;
+    Blockable = true;Toadie_Ability = 5;
 }
 
 
