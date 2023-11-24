@@ -228,31 +228,31 @@ if(attack == AT_FTILT && hbox_num >= 4){
     	}
     if(!instance_exists(reflect_target)){
     	with(obj_article1){
-	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable /*|| "UnReflectable" not in self*/)){
 	    		other.reflect_target = self;
 	    	}
     	}
     }if(!instance_exists(reflect_target)){
     	with(obj_article2){
-	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable /*|| "UnReflectable" not in self*/)){
 	    		other.reflect_target = self;
 	    	}
     	}
     }if(!instance_exists(reflect_target)){
     	with(obj_article3){
-	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable /*|| "UnReflectable" not in self*/)){
 	    		other.reflect_target = self;
 	    	}
     	}
     }if(!instance_exists(reflect_target)){
     	with(obj_article_solid){
-	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable /*|| "UnReflectable" not in self*/)){
 	    		other.reflect_target = self;
 	    	}
     	}
     }if(!instance_exists(reflect_target)){
     	with(obj_article_platform){
-	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+	    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable /*|| "UnReflectable" not in self*/)){
 	    		other.reflect_target = self;
 	    	}
     	}

@@ -475,7 +475,8 @@ if(hit_player_obj.should_make_shockwave){
 }
 
 //hitboxes that trigger the silly angle 0 galaxy thing
-if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_FTILT || my_hitboxID.attack == AT_KICK && my_hitboxID.hbox_num == 2){
+if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_FTILT
+|| my_hitboxID.attack == AT_KICK && my_hitboxID.hbox_num == 2 || my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 5){
 	//trigger silly angle 0 thing (if galaxy)
 	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;
 }

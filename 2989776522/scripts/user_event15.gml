@@ -260,6 +260,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.24", "23rd November, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Made Eggman's FTilt reflector work a bit differently from other reflectors by making it not reflect articles by default (it still can, but only if they're marked as reflectable).
+Mainly just to reduce bugs and make him a bit more compatible with certain non-KoB characters
++ Added 5 more Miiverse posts
++ Added silly angle 0 galaxy to tap BAir as well");
+
 initPatch("1.23", "20th November, 2023");
 initHeader("Buffs");
 initSection("+ Increased eggpawn health slightly (12->14 grounded eggpawn, 6->9 flying eggpawn) as these felt overnerfed");
