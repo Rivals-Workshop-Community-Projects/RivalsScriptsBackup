@@ -21,6 +21,8 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_DSPECIAL){
     if(hbox_num == 2){
+    	MudkipPuddle = true;
+    	UnReflectable = true;
         collision_sprite = sprite_get("mudpuddle_collision");
     }
 }
@@ -50,4 +52,8 @@ if(attack == AT_JAB && hbox_num == 3){
 	Pocketable = false;
 	pokeball = 0;
 	pokeball_sfx = sound_get("pokeball");
+}
+
+if (attack == AT_USPECIAL){
+	UnReflectable = true;
 }

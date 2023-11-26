@@ -9,12 +9,13 @@ if (attack == AT_NSPECIAL){
     can_fast_fall = false;can_wall_jump = true;
     if(window == 2){
         if(!special_down && !shield_down){
-            window = 3;window_timer = 0;
+            window = 3;window_timer = 0;if(!free)vsp = -3;
         }else if(shield_down){
             window = 6;window_timer = 0;
         }else{
-            nspecialcharge += 1.5;
-            nspecialcharge = min(nspecialcharge,40);
+            nspecialcharge += 1.5;nspecialcharge = min(nspecialcharge,40);nspec_timer += 1;
+            if(free && vsp > 0 && nspec_timer < 20){vsp *= 0.8;}else if(free && vsp > 0 && nspec_timer < 30){vsp *= 0.87;}
+            hsp *= 0.9;
         }
         if(nspecialcharge >= 40){
             set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, round(40*nspec_multiplier));
@@ -59,7 +60,7 @@ if (attack == AT_NSPECIAL){
 						set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air_muddy"));
 						set_hitbox_value(AT_FSPECIAL, 8, HG_DAMAGE, 8);set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_HITPAUSE, 15);set_hitbox_value(AT_FSPECIAL, 8, HG_ANGLE, 361);
 						set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK, 9);set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, 1.1);
-	                }destroyed = true;		 
+	                }hitbox_timer = length;	
 	        	}
 	    	}
     	}
@@ -131,13 +132,22 @@ if (attack == AT_NSPECIAL){
 			sound_play(sound_get("Mud Sport"));
 			spawn_hit_fx(x+20*spr_dir,y-15,fx_mudsplash);spawn_hit_fx(x-20*spr_dir,y-15,fx_mudsplash);
 			spawn_hit_fx(x+20*spr_dir,y-50,fx_mudsplash);spawn_hit_fx(x-20*spr_dir,y-50,fx_mudsplash);
-			if(instance_exists(dspec_mud)){
-				dspec_mud.destroyed = true;
+			if(ds_grid_get(mud_puddles,ds_grid_width(mud_puddles)-1,0) != 0){
+				ds_grid_get(mud_puddles,0,0).hitbox_timer = ds_grid_get(mud_puddles,0,0).length;	
+				for(var i = 0; i < ds_grid_width(mud_puddles); i++){
+					ds_grid_set(mud_puddles,i-1,0,ds_grid_get(mud_puddles,i,0));ds_grid_set(mud_puddles,i,0,0);
+				}
 			}
 			if(freemd){
-				dspec_mud = create_hitbox(AT_DSPECIAL, 2, x, y);
+				var puddle = create_hitbox(AT_DSPECIAL, 2, x, y);
 			}else{
-				dspec_mud = create_hitbox(AT_DSPECIAL, 2, x, y-10);
+				var puddle = create_hitbox(AT_DSPECIAL, 2, x, y-10);
+			}
+			var pudl = false;
+			for(var i = 0; i < ds_grid_width(mud_puddles); i++){
+				if(ds_grid_get(mud_puddles,i,0) == 0 && !pudl){
+					ds_grid_set(mud_puddles,i,0,puddle);pudl = true;
+				}
 			}
 		}
     }
@@ -161,8 +171,7 @@ if (attack == AT_NSPECIAL){
 			                with(other){
 			                	create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);
 			                	var mud = create_hitbox(AT_DTILT, 4, x-25*spr_dir, y-20);mud.spr_dir = -mud.spr_dir;mud.hsp = -mud.hsp;
-			                }
-			                destroyed = true;		 
+			                }hitbox_timer = length;		 
 			        	}
 			    	}
 		    	}
@@ -171,10 +180,10 @@ if (attack == AT_NSPECIAL){
 	    	}
 	    }
     }else if(window == 3){
-	    if(right_down){
-        	hsp = 3*right_down;
-    	}else if(left_down){
-        	hsp = -3*left_down;
+	    if(right_down && hsp < 3){
+        	hsp += 0.4;
+    	}else if(left_down && hsp > -3){
+        	hsp += -0.4;
     	}
     	dspecialtime += 1;
     	if(dspecialtime >= 90 || dspecialtime >= 30 && special_down || was_parried){
@@ -187,8 +196,7 @@ if (attack == AT_NSPECIAL){
 		                with(other){
 		                	var mud = create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);mud.hsp -= 3*spr_dir;mud.vsp -= 5;
 		                	mud = create_hitbox(AT_DTILT, 4, x-25*spr_dir, y-20);mud.spr_dir = -mud.spr_dir;mud.hsp -= 3*spr_dir;mud.hsp = -mud.hsp;mud.vsp -= 5;
-		                }
-		                destroyed = true;		 
+		                }hitbox_timer = length;		 
 		        	}
 		    	}
 	    	}
@@ -258,8 +266,7 @@ if (attack == AT_NSPECIAL){
 	                with(other){
 		                sound_play(sound_get("Mud Slap"));
 		                var mud = create_hitbox(AT_DTILT, 4, x-25*spr_dir, y-30);mud.hsp -= 5*spr_dir;mud.vsp -= 7;
-		        	}
-	                destroyed = true;
+		        	}hitbox_timer = length;	
 	        	}
 	    	}
     	}
@@ -273,7 +280,7 @@ if (attack == AT_NSPECIAL){
 	        	var dist = point_distance(other.x+35*other.spr_dir, other.y-10, x, y); //distance
 	        	if(dist <= 65){
 	                other.dtiltmud = true;
-	                destroyed = true;
+	                hitbox_timer = length;
 	        	}
 	    	}
     	}
@@ -300,8 +307,7 @@ if (attack == AT_NSPECIAL){
 	                with(other){
 		                var mud = create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);mud.hsp = (10+(strong_charge/10))*spr_dir;mud.vsp -= 2;
 		                mud = create_hitbox(AT_DTILT, 4, x+35*spr_dir, y-20);mud.hsp += (strong_charge/10)*spr_dir;
-		        	}
-	                destroyed = true;
+		        	}hitbox_timer = length;	
 	        	}
 	    	}
     	}
@@ -319,8 +325,7 @@ if (attack == AT_NSPECIAL){
 	        	if(dist <= 50){
 	                with(other){
 		                var mud = create_hitbox(AT_DTILT, 4, x, y-40);mud.hsp = 0;mud.vsp -= 8+(strong_charge/10);
-		        	}
-	                destroyed = true;
+		        	}hitbox_timer = length;	
 	        	}
 	    	}
     	}
@@ -346,8 +351,7 @@ if (attack == AT_NSPECIAL){
 		                create_hitbox(AT_DSPECIAL, 3, other.x, y-20);
 		                spawn_hit_fx(other.x+20,other.y-15,fx_mudsplash);spawn_hit_fx(other.x-20,other.y-15,fx_mudsplash);
 						spawn_hit_fx(other.x+20,other.y-50,fx_mudsplash);spawn_hit_fx(other.x-20,other.y-50,fx_mudsplash);
-		        	}
-	                destroyed = true;
+		        	}hitbox_timer = length;	
 	        	}
 	    	}
     	}

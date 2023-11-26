@@ -260,6 +260,17 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.18", "23rd November, 2023");
+initHeader("Buffs");
+initSection("+ DSpecial mud puddles now affect characters who aren't Mudkip; they will gain more friction and it will slow down their wavedashes etc. It still works the same way on Mudkip himself and other Mudkips
++ Mudkip can now place 3 mud puddles at once
++ Made NSpecial better on the ground by giving it the same movement as in the air (as it was kinda just inferior on the ground)
++ NSpecial now gives a slight float when starting to charge it");
+initHeader("Nerfs");
+initSection("- DSpecial mud puddles now disappear on death
+- Made DSpecial Dive not accelerate as fast when 'underwater', preventing Mudkip from changing directions so quickly (the actual movement speed is the same otherwise)");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed USpecial being reflectable and freezable");
 
 initPatch("1.17", "11th August, 2023");
 initHeader("Fixes / Other Changes");

@@ -11,17 +11,26 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_DSPECIAL){
     if(hbox_num == 2){
-        hitbox_timer = 0;
         if(x > room_width || x < 0 || y >= room_height+65 || y <= -200){
             destroyed = true;
         }
-        if(destroyed){
-            spawn_hit_fx(x+20,y,player_id.fx_mudsplash);
-            spawn_hit_fx(x-20,y,player_id.fx_mudsplash);
+        if(destroyed || hitbox_timer >= length){
+            spawn_hit_fx(x+20,y,player_id.fx_mudsplash);spawn_hit_fx(x-20,y,player_id.fx_mudsplash);
+            for(var i = 0; i < ds_grid_width(player_id.mud_puddles); i++){
+				if(ds_grid_get(player_id.mud_puddles,i,0) == self){
+					ds_grid_set(player_id.mud_puddles,i,0,0);
+				}
+			}destroyed = true;
         }
         depth = player_id.depth+1;
         with(oPlayer){
-            if("amMudkip" in self){
+		    if((!free || other.destroyed)){
+			    var dist = point_distance(other.x, other.y-10, x, y); //distance
+			    if(dist <= 40 && !other.destroyed){
+			    	on_puddle_id = other.orig_player_id;slippery_timer = 10;
+			    }
+		    }
+            /*if("amMudkip" in self){
     		    if((!free || other.destroyed)){
     			    var dist = point_distance(other.x, other.y-10, x, y); //distance
     			    if(dist <= 40 && !other.destroyed){
@@ -32,8 +41,8 @@ if (attack == AT_DSPECIAL){
     		    }else if(free){
     		        //ground_friction = 0.3;wave_friction = 0.1;wave_land_adj = 1.15;
     		    }
-            }
-	    }
+            }*/
+	    }hitbox_timer = 0;
     }
 }
 

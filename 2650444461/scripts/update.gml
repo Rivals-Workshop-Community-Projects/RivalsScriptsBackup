@@ -2,7 +2,7 @@ muno_event_type = 1;
 user_event(14);
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
-   upb = false;move_cooldown[AT_USPECIAL] = 0;fspecialcooldown = false;
+   upb = false;move_cooldown[AT_USPECIAL] = 0;fspecialcooldown = false;nspec_timer = 0;
 }
 
 if(nspecialcharge < 20){
@@ -48,6 +48,29 @@ if(get_gameplay_time() % 10 == 0 || free){
 		ground_friction = 0.3;wave_friction = 0.1;wave_land_adj = 1.15;
 	}else{
 		ground_friction = 0.1;wave_friction = 0.05;wave_land_adj = 1.6;
+	}
+}
+
+with(oPlayer){
+	if(!mudkip_handled_stats && "char_height" in self){
+		ground_friction_or = ground_friction;wave_friction_or = wave_friction;wave_land_adj_or = wave_land_adj;leave_ground_max_or = leave_ground_max;mudkip_handled_stats = true;
+	}
+	if(on_puddle_id == other.id){
+		if("amMudkip" in self){
+		    if(slippery_timer > 0){
+				ground_friction = 0.05;wave_friction = 0;wave_land_adj = 2.0;leave_ground_max = leave_ground_max_or+10;
+				slippery_timer--;
+			}else{
+				ground_friction = ground_friction_or;wave_friction = wave_friction_or;wave_land_adj = wave_land_adj_or;leave_ground_max = leave_ground_max_or;
+			}
+        }else{
+			if(slippery_timer > 0){
+				ground_friction = ground_friction_or+0.6;wave_friction = wave_friction_or+0.6;;wave_land_adj = wave_land_adj_or/2;//leave_ground_max = leave_ground_max_or+6;
+				slippery_timer--;
+			}else{
+				ground_friction = ground_friction_or;wave_friction = wave_friction_or;wave_land_adj = wave_land_adj_or;leave_ground_max = leave_ground_max_or;
+			}
+        }
 	}
 }
 
