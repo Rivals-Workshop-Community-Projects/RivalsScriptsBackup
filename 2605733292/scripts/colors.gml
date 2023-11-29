@@ -99,7 +99,7 @@ set_color_profile_slot( 6, 7, 183, 183, 183 ); //Eye Color
 // Gameboy
 set_color_profile_slot( 7, 0, 211, 226, 154 ); //Body
 set_color_profile_slot( 7, 1, 167, 186, 74 ); //Feet
-set_color_profile_slot( 7, 2, 211, 226, 154 ); //Blush
+set_color_profile_slot( 7, 2, 167, 186, 74 ); //Blush
 set_color_profile_slot( 7, 3, 35, 67, 49 ); //Hat
 set_color_profile_slot( 7, 4, 211, 226, 154 ); //Pattern
 set_color_profile_slot( 7, 5, 167, 186, 74 ); //Pillow Case

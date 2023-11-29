@@ -13,11 +13,12 @@ hitstop = 0;                                        //The frames remaining in hi
 hsp = 0;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
 vsp = 0;                                            //The vertical speed of the article.
 depth = -99;
+spawned_by_ftilt = 0;
 
 fspecial_passed = false;
 
 //Terrain behavior
-can_be_grounded = true;                            //Determines if the article follows platforms when free == false.
+can_be_grounded = false;                            //Determines if the article follows platforms when free == false.
 ignores_walls = true;                               //Determines if the article goes through walls.
 free = false;                                        //Whether the article is in the air or not.
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.

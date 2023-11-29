@@ -21,8 +21,10 @@ sprite_change_offset("landinglag", 64, 108);
 
 sprite_change_offset("parry", 64, 108);
 sprite_change_offset("roll_forward", 64, 108);
+sprite_change_offset("roll_forward_ai", 64, 108);
 sprite_change_offset("roll_backward", 64, 108);
 sprite_change_offset("airdodge", 64, 108);
+sprite_change_offset("airdodge_ai", 64, 108);
 sprite_change_offset("waveland", 64, 108);
 sprite_change_offset("tech", 64, 108);
 
@@ -55,12 +57,15 @@ sprite_change_offset("super_dash_effect", 130, 130);
 sprite_change_offset("super_dash_smalleffect2", 60, 50);
 sprite_change_offset("super_dash_smalleffect3", 60, 50);
 sprite_change_offset("super_dash_smalleffect4", 60, 50);
-sprite_change_offset("uspecial", 64, 94);
+sprite_change_offset("uspecial", 68, 107);
 sprite_change_offset("uspecial2", 72, 396);
 sprite_change_offset("uspecial2_laser", 72, 396);
 sprite_change_offset("uspecial_ground", 64, 158);
 sprite_change_offset("uspecial_ground2", 76, 396);
+sprite_change_offset("uspecial_ground3", 76, 396);
+sprite_change_offset("uspecial_ground4", 76, 396);
 sprite_change_offset("uspecial_ground_followup", 72, 112);
+sprite_change_offset("uspecial_ground_followup2", 72, 112);
 sprite_change_offset("utilt2", 48, 76);
 sprite_change_offset("dspecial", 68, 106);
 sprite_change_offset("dspecial_ground", 64, 114);
@@ -72,8 +77,14 @@ sprite_change_offset("foresight", 64, 108);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("target", 60, 95);
+sprite_change_offset("target_lock", 60, 45);
+sprite_change_offset("target_indicator", 5, 48);
+sprite_change_offset("target_numbers", -14, 49);
 sprite_change_offset("taunt_aura", 0, 14);
 sprite_change_offset("taunt_transform_aura", 270, 94);
+
+sprite_change_offset("boosters", 35, 30);
+sprite_change_offset("booster_startup", 30, 30);
 
 sprite_change_offset("nspecial_gunhit", 40, 15);
 sprite_change_offset("nspecial_gunhit2", 40, 10);
@@ -85,8 +96,11 @@ sprite_change_offset("airdodge_afterimage", 64, 108);
 sprite_change_offset("nspecial_proj", 84, 74);
 sprite_change_offset("nspecial_air_proj", 84, 74);
 sprite_change_offset("uspecial_proj", 64, 64);
+sprite_change_offset("uspecial_proj2", 32, 32); //mini missile
 sprite_change_offset("uspecial2_proj", 64, 34);
 sprite_change_offset("uspecial2_proj2", 64, 34);
+sprite_change_offset("uspecial2_proj3", 18, 22);
+sprite_change_offset("explode", 64, 64);
 sprite_change_offset("unibeam", 90, 90);
 sprite_change_offset("unibeam_stretch", -1, 90);
 sprite_change_offset("unibeam_done", -1, 90);
@@ -94,6 +108,7 @@ sprite_change_offset("ustrong_proj_charge", 58, 235);
 sprite_change_offset("ustrong_proj_blast", 58, 235);
 sprite_change_offset("fstrong_explode", 50, 120);
 sprite_change_offset("fstrong_burst_tail", 0, 80);
+sprite_change_offset("dust", 10, 10);
 
 sprite_change_offset("shockwave", 30, 0);
 sprite_change_offset("harsh_hit2", 20, 300);

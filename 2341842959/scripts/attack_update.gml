@@ -59,7 +59,8 @@ if (attack == AT_FTILT){
 		levei_parry = false;
 	}
 	if (window == 2 && window_timer == 3 && !hitpause){
-		instance_create(x+80*spr_dir,y,"obj_article1");
+		var g = instance_create(x+80*spr_dir,y,"obj_article1");
+		g.spawned_by_ftilt = 1;
 	}
 }
 
@@ -312,10 +313,10 @@ if (attack == AT_NSPECIAL && window == 1){
 
 if (attack == AT_NSPECIAL){
 	if (window == 4 && window_timer >= 3 && special_down && tokens < 3){
-			window = 1;
-			window_timer = 7;
-			tokens += 1.1;
-		}
+		window = 1;
+		window_timer = 7;
+		tokens += 1;
+	}
     fall_through = true;
 }
 
@@ -329,7 +330,7 @@ if (attack == AT_NSPECIAL){
         instance_create(x,y,"obj_article1"); 
     }
     if (window == 1 && window_timer == 1){
-        tokens += 1.1; 
+        tokens += 1;
     }
     if (window == 1 && window_timer > 1 && shield_pressed){
         window = 4;
@@ -389,7 +390,7 @@ if (attack == AT_FSPECIAL){
 		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 0);
 	}
 	if (fspecial_cloud > 1) set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-	if ((window == 2 || window == 3) && special_pressed){
+	if (window == 2 && special_pressed){
 		window = 4;
 		window_timer = 0;
 	}

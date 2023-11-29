@@ -153,7 +153,8 @@ if (attack == AT_FTILT){
 	hurtboxID.sprite_index = sprite_get("ftilt_hurt");
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
+			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir);
+			sound_play(asset_get("sfx_swipe_weak2"), false, noone, 0.85, 1.05);
 		}
 	}
 }
@@ -162,10 +163,9 @@ if (attack == AT_FTILT){
 if (attack == AT_UTILT){
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
-			spawn_base_dust( x + (20 * spr_dir), y, "walk", spr_dir*-1)
+			spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir);
+			spawn_base_dust( x + (20 * spr_dir), y, "walk", spr_dir*-1);
 		}
-
 		if (has_rune("C")){
 			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sfx_smash64_swipe_med);
 			set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sfx_smash64_blow_med);
@@ -335,7 +335,7 @@ if (attack == AT_NAIR){
 	//Hud Offset
 	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){
 		hud_offset = 40;
-	}
+	}//>
 }
 
 //Forward Air
@@ -352,7 +352,7 @@ if (attack == AT_UAIR){
 	//Hud Offset
 	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 6)){
 		hud_offset = 18;
-	}
+	}//>
 }
 
 //Down Air: Spin Drill
@@ -449,7 +449,7 @@ if (attack == AT_USTRONG){
 	//Hud Offset
 	if ((window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 3 || window == 4 || (window == 5 && image_index < 10)){
 		hud_offset = 80;
-	}
+	}//>
 }
 
 //Down Strong
@@ -488,6 +488,7 @@ if (attack == AT_NSPECIAL){
 			burst_bubble_is_charged = false
 			sound_stop(sfx_charge);
 			sound_play(sfx_charge_max);
+			sound_play(asset_get("sfx_frog_nspecial_cast"), false, noone, 0.95, 1.05);
 			spawn_hit_fx( x, y - 12, burst_bubble_charged_vfx );
 			window = 6
 			window_timer = 0
@@ -496,6 +497,9 @@ if (attack == AT_NSPECIAL){
 		if (!free && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (10 * spr_dir), y, "walk", spr_dir*-1)
 			spawn_base_dust( x - (10 * spr_dir), y, "walk", spr_dir)
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			sound_play(asset_get("sfx_frog_nspecial_cast"), false, noone, 0.75, 1.25);
 		}
 	}
     if (window == 2){
@@ -623,6 +627,9 @@ if (attack == AT_FSPECIAL){
     if (window == 3){
         if (window_timer == 20){
 			spawn_hit_fx( x + 50  * spr_dir, y - 12, pillow_hit_fx_sml );
+			sound_play(asset_get("sfx_ell_steam_hit"), false, noone, 1, 0.95);
+			//var hatThrowVisual = create_hitbox(AT_FSPECIAL, 3, x+ (50 * spr_dir), y - 12);
+			//hatThrowVisual.vsp = -10;
 		}
     }
 	if (window == 5){
@@ -688,15 +695,14 @@ if (attack == AT_DSPECIAL){
 			spawn_base_dust( x + (22 * spr_dir), y, "walk", -1)
 		}
 		if (window_timer == 12){
-			if (essences_in_use !=  essences_max_limit){
+			if (currEssence == noone){
 				window = 2
 				window_timer = 0
 				y = y - 26
 				vsp = -7
 				sound_play(sfx_teleport);
 				spawn_base_dust( x + (0 * spr_dir), y + 4, "doublejump", spr_dir)
-				essence_out = true
-				instance_create(x + 0 * spr_dir, y + 18, "obj_article1");
+				currEssence = instance_create(x + 0 * spr_dir, y + 18, "obj_article1");
 			}
 		}
 	}

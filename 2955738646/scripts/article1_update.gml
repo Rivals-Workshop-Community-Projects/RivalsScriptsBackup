@@ -3,38 +3,40 @@
 state_timer++;
 switch (state){
 	
-	case 0: //Foresight
+	case 0: //Foresight spawn
 	sprite_index = asset_get("empty_sprite");
 	mask_index = sprite_get("idle");
 	is_hittable = true;
 	uses_shader = true;
 	
-	if (state_timer > 8){ instance_destroy(); exit; }
+	if (state_timer > 6){ instance_destroy(); exit; }
 	//if (place_meeting( x, y, asset_get("par_block"))){ player_id.cooldowntime = 100; }
-	x = player_id.x;
-	y = player_id.y;
-	hsp = player_id.hsp;
-	vsp = player_id.vsp;
-	
-	if (place_meeting( x, y, asset_get("pHitBox"))){
-		//player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true;
-	}
+	x = player_id.x; //basically 
+	y = player_id.y; //always
+	hsp = player_id.hsp; //on top of
+	vsp = player_id.vsp; //Mecha Sonic's body
 	
 	if (hit_player_obj > 0){
-		player_id.foresight = 50; player_id.move_cooldown[AT_EXTRA_2] = 20; done = true;
+		player_id.foresight = 50;
 		player_id.hitpause = false; player_id.y = player_id.y-1;
-		player_id.state = PS_ATTACK_GROUND; player_id.attack = AT_EXTRA_1;
+		player_id.state = PS_ATTACK_AIR; player_id.attack = AT_EXTRA_1;
 		player_id.window = 1; player_id.window_timer = 0;
+		sound_play(sound_get("instanttransmission"));
+		state = 1; state_timer = 0;
 	}
-	if (done == true && (player_id.state != PS_HITSTUN || player_id.state != PS_HITSTUN_LAND) ){ instance_destroy(); exit; }
+	//if (done == true && (player_id.state != PS_HITSTUN || player_id.state != PS_HITSTUN_LAND) ){ instance_destroy(); exit; }
 	//if (player_id.state == PS_HITSTUN){ player_id.cooldowntime = 10; }
 	break;
 	
 	case 1: //Foresight
+	hsp = 0;
+	vsp = 0;
 	uses_shader = true;
+	//player_id.invincible = true;
+	//player_id.invince_time = 2;
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
-	depth = -100;
+	depth = -20;
 	
 	if (((state_timer mod 3) == 0)){
 		image_index++;
@@ -208,6 +210,13 @@ switch (state){
 	break;
 	
 	case 6:
-	//Somethin'
+	//Teleporting back
+	uses_shader = true;
+	sprite_index = sprite_get("airdodge_ai");
+	image_index = 2;
+	image_alpha = 1;
+	
+	if (teleporting_amount <= -1){ destroyed = true; }
+	if (destroyed == true){ image_speed = 0.1; instance_destroy(); exit; }
 	break;
 }

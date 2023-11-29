@@ -1,9 +1,9 @@
 //hit_player.gml
 
 //hitplayerdamage = get_player_damage( hit_player_obj )
-
+hit_player_obj.hitBySleepingAttack = true; // just in case
 damage_dealt = get_hitbox_value( my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE )
-
+var sleepVFX = pillow_hit_fx_med;
 if (has_rune("H") && hit_player_obj.NotSleepKirby_IsSleeping == true){
 	//take_damage( hit_player_obj, player, (damage_dealt * 2) );
 	//set_player_damage( hit_player_obj, get_player_damage( hit_player_obj ) + (damage_dealt * 2) );
@@ -65,7 +65,7 @@ switch (my_hitboxID.attack){ //lol switch statement
 	*/
 	/*
 	case AT_DAIR:
-		if (my_hitboxID.hbox_num < 3 && my_hitboxID.hbox_num != 6){
+		if (my_hitboxID.hbox_num < 3 && my_hitboxID.hbox_num != 6){//>
 			//hit_player_obj.x = x + 6 * spr_dir
 			//hit_player_obj.y = y + 20
 			
@@ -79,12 +79,18 @@ switch (my_hitboxID.attack){ //lol switch statement
 		break;
 	case AT_NSPECIAL:
 		sound_play(asset_get("sfx_blow_medium3"));
+		/*
 		if (my_hitboxID.burst_bubble_has_ability_star == true){
 			//sound_play(sfx_ability_get);
 			//sound_play(sfx_death);
 			//hit_player_obj.hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = true;
 			create_hitbox(AT_DSPECIAL, 2, hit_player_obj.x, hit_player_obj.y + 4);
 			essence_got_parried = 0
+		}
+		*/
+		if (my_hitboxID.hbox_num >= 6){
+			var instaSleepHB = create_hitbox(AT_DSPECIAL, 1, hit_player_obj.x, hit_player_obj.y - 30);
+			instaSleepHB.hitbox_timer = 14;
 		}
 		break;
 	case AT_FSPECIAL:
@@ -93,46 +99,19 @@ switch (my_hitboxID.attack){ //lol switch statement
 			move_cooldown[AT_FSPECIAL] = 200;
 		}
 		if (my_hitboxID.hbox_num != 3){
+			destroy_hitboxes();
 			move_cooldown[AT_FSPECIAL] = 40;
-			window = 5
-			window_timer = 0
-			y = y - 1
-			hsp = -5 * spr_dir
+			window = 5;
+			window_timer = 0;
+			y = y - 1;
+			hsp = -5 * spr_dir;
 			if (my_hitboxID.hbox_num == 1){
-				if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false
-				&& hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
-					sound_play(sfx_death);
-					if (hit_player_obj.NotSleepKirby_FspecialImmunity == 0){
-						hit_player_obj.NotSleepKirbyID = id;
-						
-						hit_player_obj.SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
-						hit_player_obj.SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
-						hit_player_obj.SleepKirby_enemy_sleep_bar = sprite_get("fspecial_enemy_sleep_bar");
-						
-						hit_player_obj.NotSleepKirby_FspecialImmunity = 40
-						
-						hit_player_obj.NotSleepKirby_Sleep_Hat_Flash = false
-						
-						hit_player_obj.state_timer = -1
-						hit_player_obj.NotSleepKirby_hat_timer = 0
-						hit_player_obj.NotSleepKirby_hat_timer2 = 0
-						hit_player_obj.NotSleepKirby_SleepTimer = 0
-						hit_player_obj.NotSleepKirby_SleepTimerRelease = get_player_damage( player )
-						hit_player_obj.NotSleepKirby_IsSleeping = true
-						hit_player_obj.NotSleepKirby_WasHitBySleepRune = IsSleepKirby_SleepRune
-						//hit_player_obj.NotSleepKirby_SleepTimerRelease = hitplayerdamage + 10
-						if (hit_player_obj.NotSleepKirby_SleepTimer == 0){
-							hit_player_obj.NotSleepKirby_SleepTimer = 1
-						}
-					} else {
-						NotSleepKirby_FspecialImmunity = -9
-					}
-				} else {
-					hit_player_obj.NotSleepKirby_IsSleeping = false
-					hit_player_obj.vsp = -6
-					hit_player_obj.state = PS_IDLE_AIR
-					hit_player_obj.state_timer = 0
+				if (hit_player_obj.isCurrSleeping == false && hit_player_obj.clone == false && hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
+					inflictSleepStatus();
 				}
+			} else if (my_hitboxID.hbox_num == 2){
+				var hatThrowVisual = create_hitbox(AT_FSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 20);
+				hatThrowVisual.vsp = -10;
 			}
 		}
 		break;
@@ -145,32 +124,18 @@ switch (my_hitboxID.attack){ //lol switch statement
 			if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false){
 				sound_play(sfx_ability_get);
 				sound_play(sfx_death);
+				/*
 				if (my_hitboxID.projectile_parry_stun == true){
 					print("Ability Star hit an opponent!")
 				} else if (my_hitboxID.projectile_parry_stun == false){
 					print("Ability Star backfired on Sleep Kirby!")
 				}
+				*/
 				if (my_hitboxID.hbox_num == 1){
 					copy_essence_hit = true
 				}
-				hit_player_obj.NotSleepKirbyID = id;
-				
-				hit_player_obj.SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
-				hit_player_obj.SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
-				hit_player_obj.SleepKirby_enemy_sleep_bar = sprite_get("fspecial_enemy_sleep_bar");
-				
-				hit_player_obj.NotSleepKirby_Sleep_Hat_Flash = false
-				
-				hit_player_obj.state_timer = -1
-				hit_player_obj.NotSleepKirby_hat_timer = 0
-				hit_player_obj.NotSleepKirby_hat_timer2 = 0
-				hit_player_obj.NotSleepKirby_SleepTimer = 0
-				hit_player_obj.NotSleepKirby_SleepTimerRelease = get_player_damage( player )
-				hit_player_obj.NotSleepKirby_IsSleeping = true
-				hit_player_obj.NotSleepKirby_WasHitBySleepRune = IsSleepKirby_SleepRune
-				//hit_player_obj.NotSleepKirby_SleepTimerRelease = hitplayerdamage + 10
-				if (hit_player_obj.NotSleepKirby_SleepTimer == 0){
-					hit_player_obj.NotSleepKirby_SleepTimer = 1
+				if (hit_player_obj.isCurrSleeping == false && hit_player_obj.clone == false && hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
+					inflictSleepStatus();
 				}
 			} else if (hit_player_obj.NotSleepKirby_IsSleeping == true && hit_player_obj.clone == false){
 				hit_player_obj.NotSleepKirby_IsSleeping = false
@@ -214,3 +179,13 @@ if (my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
 	}
 	hit_player_obj.NotSleepKirby_SleepTimer = 0
 }
+
+//--------------------------------------------
+
+#define inflictSleepStatus()
+//print("awake player should now go to sleepy sleepy");
+hit_player_obj.isCurrSleeping = true;
+hit_player_obj.hitBySleepingAttack = false;
+hit_player_obj.damageIncrementTick = 0;
+hit_player_obj.sleepHatSpr = sprite_get("fspecial_enemy_hat");
+hit_player_obj.sleepID = id;

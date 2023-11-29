@@ -32,7 +32,7 @@ sprite_change_offset("uphurt", 52, 106);
 sprite_change_offset("downhurt", 52, 98);
 
 //Jump, Land, Etc.
-sprite_change_offset("jumpstart", 52, 98);
+sprite_change_offset("jumpstart", 100, 130);
 sprite_change_offset("jump", 52, 98);
 sprite_change_offset("doublejump", 52, 98);
 sprite_change_offset("walljump", 52, 98);
@@ -51,9 +51,9 @@ sprite_change_offset("tech", 52, 98);
 //Grounded Normals
 sprite_change_offset("jab", 52, 118);
 sprite_change_offset("dattack", 52, 98);
-sprite_change_offset("ftilt", 52, 98);
+sprite_change_offset("ftilt", 100, 130);
 sprite_change_offset("dtilt", 92, 98);
-sprite_change_offset("utilt", 52, 98);
+sprite_change_offset("utilt", 100, 130);
 
 //Aerials
 sprite_change_offset("nair", 82, 98);
@@ -78,17 +78,19 @@ sprite_change_offset("nspecial_charged_vfx", 52, 98);
 sprite_change_offset("fspecial", 52, 98);
 sprite_change_offset("enemy_sleep_bar", 32, 98);
 sprite_change_offset("fspecial_enemy_hat", 52, 98);
-sprite_change_offset("fspecial_enemy_hat_otherdir", 50, 98);
+sprite_change_offset("fspecial_enemy_hat_spin", 52, 60);
 sprite_change_offset("uspecial", 52, 98);
 sprite_change_offset("uspecial_hand", 52, 98);
 sprite_change_offset("dspecial", 52, 98);
 
 //Copy Essence
 sprite_change_offset("essence_empty", 40, 78);
+sprite_change_offset("essence_empty_spin", 40, 52);
 sprite_change_offset("essence_ability_spawn", 40, 78);
 sprite_change_offset("essence_ability", 40, 78);
 sprite_change_offset("essence_hud_icon", 0, 0);
 sprite_change_offset("essence_hud_icon_cooldown", 0, 0);
+sprite_change_offset("star_trail", 15, 15);
 
 sprite_change_offset("ability_star_spawn", 40, 78);
 sprite_change_offset("ability_star", 40, 78);
@@ -116,6 +118,10 @@ sprite_change_offset("indicator", 7, 10);
 sprite_change_offset("otto", 0, 2);
 
 sprite_change_offset("gfz", 19, 37);
+
+
+//Miiverse
+sprite_change_offset("miiverse", 60, 30);
 
 //Victory Background
 set_victory_bg(sprite_get("victory_background"));

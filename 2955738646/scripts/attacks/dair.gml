@@ -11,7 +11,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("f10420_005_str_se_hit_s"));
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("Dair_swish"));
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);
@@ -48,7 +48,7 @@ set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("ARC_BTL_CMN_Hit_XLarge"));
+set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("Dair_hit"));
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1); //The rest of his arm
@@ -67,5 +67,5 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("ARC_BTL_CMN_Guard_Small-A"));
+set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("Jab_hit2"));
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 6);

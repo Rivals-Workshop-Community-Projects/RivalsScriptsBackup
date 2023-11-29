@@ -53,13 +53,6 @@ if (state == PS_ATTACK_AIR && attack == AT_JAB){
 	//}
 }
 
-if(state == PS_WALK){
-    if(state_timer % 35 == 0)
-    {
-        sound_play(sound_get("ARC_BTL_BRS_Foot_F"));   
-    }
-}
-
 if (state == PS_DASH_STOP) {
     if (state_timer == 1) {
         sound_play(sound_get("dashstop"));
@@ -88,9 +81,12 @@ if (attack == AT_NSPECIAL && state == PS_ATTACK_AIR){
 }
 
 if (attack == AT_DSPECIAL){
-		if (state == PS_ATTACK_GROUND && window == 4){
+	if (window == 3){
 	sprite_index = sprite_get( "dspecial" );
-		}
+	}
+	if (state == PS_ATTACK_GROUND && window == 4){
+	sprite_index = sprite_get( "dspecial" );
+	}
 	if (state == PS_ATTACK_GROUND){
 		if (hitpause == false){
 	//image_index = 6 + 0.1 * window_timer;
@@ -170,13 +166,19 @@ if (state == PS_ATTACK_GROUND && attack == AT_EXTRA_3){
 }
 
 if (attack == AT_EXTRA_1){
-	hurtboxID.sprite_index = sprite_get("mecha_hurt");
+	//hurtboxID.sprite_index = sprite_get("mecha_hurt");
 }
 
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-	//if (attack == AT_DSPECIAL_2 && window == ){
-		
-	//}
+	if (attack == AT_DSPECIAL_2 && window == 3){
+		sprite_index = sprite_get( "dspecial_ground" );
+	}
+}
+
+if (attack == AT_FTILT){
+	if (window == 6 || window == 7){
+		sprite_index = sprite_get( "uspecial_ground_followup2" );
+	}
 }
 
 

@@ -4,10 +4,8 @@ if (attack == AT_DSPECIAL && free == false && window < 2){
     attack = AT_DSPECIAL_2;
     window = 1;
     window_timer = 0;
-    //move_cooldown[AT_DSPECIAL] = 10;
-    //move_cooldown[AT_DSPECIAL_2] = 10;
 }
-if (attack == AT_DSPECIAL && free == false && has_hit == false && (window == 2 || window == 3) ){
+if (attack == AT_DSPECIAL && free == false && has_hit == false && window == 2){
     attack = AT_DSPECIAL_2;
     window = 4;
     window_timer = 0;

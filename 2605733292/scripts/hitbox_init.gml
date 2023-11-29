@@ -7,6 +7,8 @@ burst_bubble_spawned_with_rune_n_type = hbox_num
 burst_bubble_has_ability_star = false;
 burst_bubble_direction_hit_by_side_b = 1
 
+shouldTurnAround = false;
+
 blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);

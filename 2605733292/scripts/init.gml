@@ -1,4 +1,4 @@
-debug = 0
+debug = 0;
 
 small_djump = true;
 
@@ -51,6 +51,22 @@ burst_bubble_hud_thing_timer_counter = 0
 burst_bubble_hud_thing_timer_actual_tick = 0
 burst_bubble_charged_vfx = hit_fx_create(sprite_get("nspecial_charged_vfx"), 18);
 
+
+damageToWakeUp = 0;
+isCurrSleeping = false;
+sleepingTimer = 0;
+damageIncrementTick = 0;
+hitBySleepingAttack = false;
+sleepID = noone;
+sleepHatSpr = noone;
+sleepHatImageTimer = 0;
+sleepHatImageTimer2 = 0;
+shouldWakeUp = false;
+sleepHatShouldFlash = false;
+shouldBounceUpFromBlastzone = false;
+sleepVFX = noone;
+
+/*
 hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = false;
 
 NotSleepKirby_IsSleeping = false
@@ -70,6 +86,7 @@ NotSleepKirby_FspecialImmunity = 0
 sleep_kirby_hat_offset_x = 0;
 sleep_kirby_hat_offset_y = 0;
 sleep_kirby_has_sleep_sprites = false;
+*/
 
 
 NotSleepKirbyID = id
@@ -88,11 +105,7 @@ IsSleepKirby_SleepRune = false
 SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
 SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
 Sleep_Meter = sprite_get("enemy_sleep_bar");
-with (oPlayer){
-	SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
-	SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
-	Sleep_Meter = sprite_get("enemy_sleep_bar");
-}
+
 //i dont know how to code well, send help
 
 SleepKirby_up_b_into_nspec_happened = false
@@ -108,9 +121,12 @@ essence_got_parried = false
 copy_essence_owner = player
 spawn_essence_from_rune_o = 0
 
+currEssence = noone;
+
 mario = 0
 
-shabungus = false
+// i dont remember what this variable does im gonna be honest but im not removing it because idk
+shabungus = false;
 
 hurtbox_spr = sprite_get("sleep_hurtbox");
 crouchbox_spr = sprite_get("sleep_crouchbox");
@@ -344,7 +360,7 @@ switch (get_player_color( player )){
 		break;
 }
 
-diag_portrait=sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
+diag_portrait = sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 //Compatability
 
@@ -374,5 +390,8 @@ fail_text = "Guess you shouldnt have slept on this character.";
 gfzsignspr = sprite_get("gfz")
 
 tcoart = sprite_get("tco_sketch");
+
+sprite_change_offset("miiverse", 60, 30);
+miiverse_post = sprite_get("miiverse");
 
 user_event(7);

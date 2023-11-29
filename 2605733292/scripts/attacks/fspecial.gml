@@ -51,7 +51,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 99);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 1);
@@ -99,6 +99,42 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_TECHABLE, 3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_FORCE_FLINCH, 1);
 */
+
+// visual hitbox that shows the hat get knocked away (ignore this)
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 69);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 999);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("fspecial_enemy_hat_spin"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, 1); // cannot break projectiles
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("there is none"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, -2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 
 //Earthquake
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 1);

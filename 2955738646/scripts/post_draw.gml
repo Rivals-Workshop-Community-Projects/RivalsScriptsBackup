@@ -88,8 +88,8 @@ if (attack == AT_USTRONG){
 
 if (IllCrushYou > 0){
     var crushingelectric = random_func(0, 10, true); //making it look like it has pauses
-    var crushingelectric2 = random_func(0, 100, true); //rortation
-    draw_sprite_ext(sprite_get("electric_effect"), get_gameplay_time()* crushingelectric / 200, x-8, y-20, 1.1, 1.1, 0 + crushingelectric2, c_white, 1);
+    var crushingelectric2 = random_func(0, 100, true); //rotation
+    draw_sprite_ext(sprite_get("electric_effect"), get_gameplay_time() * crushingelectric2 / 250, x-28, y-27 - crushingelectric, 1.5, 1.5, 0, c_white, 1);
 }
 
 //with (asset_get("oPlayer")){

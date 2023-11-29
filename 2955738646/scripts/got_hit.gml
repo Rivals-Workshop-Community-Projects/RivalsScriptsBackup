@@ -11,4 +11,7 @@ if (attack == AT_UTILT && state == PS_ATTACK_GROUND){
 	//hitpause = false;
 }
 
+var dspecial_charge_sound = sound_get("dspecial_charge");
+sound_stop(dspecial_charge_sound);
+
 has_hit_id = noone;

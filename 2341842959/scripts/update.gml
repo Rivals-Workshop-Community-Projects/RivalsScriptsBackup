@@ -77,7 +77,6 @@ if (gas_nspecial_cont > 0){
 if (gas_nspecial_cont > 6){
     gas_nspecial_cont = 0;
 }
-print(tokens)
 
 if (explosion_cont > 0){
     if (explosion_cont >= 3 && explosion_cont < 6){
@@ -127,23 +126,17 @@ if (explosion_cont > 0){
     }
 }
 
-if (tokens != 0){
-	if (tokens > 3 && tokens > 2 && tokens > 1)tokens_hud = tokens - 1;
-	if (tokens > 2 && tokens > 1)tokens_hud = tokens - 1;
-	if (tokens > 1)tokens_hud = tokens - 1;
-}
-
-if (tokens > 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+if (tokens > 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_PRATLAND){
     tokens -= .025;
 }
 
-if (tokens > 3){
+if (tokens > 2){
     move_cooldown[AT_NSPECIAL] = 999;
     if (tokens >= 3.9){
     	tokens = 3.8;
     }
 }
-if (tokens < 3){
+if (tokens <= 2){
     move_cooldown[AT_NSPECIAL] = 0;
 }
 

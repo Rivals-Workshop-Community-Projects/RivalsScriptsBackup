@@ -16,3 +16,9 @@ emerald_grabbed = false;
 
 hitplayer_x = noone;
 hitplayer_y = noone;
+
+last_pos_x = noone;
+last_pos_y = noone;
+
+destroyed = false;
+teleporting_amount = 3;

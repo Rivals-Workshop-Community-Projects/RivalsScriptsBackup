@@ -2,7 +2,7 @@
 
 //intro
 if (state == PS_SPAWN) {
-    if (introTimer < 21 && introTimer >= 0) {
+    if (introTimer < 21 && introTimer >= 0) {//>
         sprite_index = sprite_get("intro");
         image_index = introTimer;
     } else if (introTimer < 0) {
@@ -11,7 +11,7 @@ if (state == PS_SPAWN) {
     } else {
         sprite_index = sprite_get("idle");
     }
-	if (state_timer == 20){
+	if (state_timer == 20){//>
 		sound_play(sfx_inhale);
 	}
 	if (state_timer == 59){
@@ -65,10 +65,11 @@ if (attack == AT_EXTRA_2){
 
 with (oPlayer){
 	if (is_in_playtest == false){
-		if (NotSleepKirby_IsSleeping == true){
+		if (isCurrSleeping == true){
 			if (url == 2284823424){
 				sprite_index = (sprite_get("taunt_2")); image_index = 5;
 			}
+			/*
 			if (url != 2605733292){
 				if (sleep_kirby_has_sleep_sprites == true){
 					if (free){
@@ -78,6 +79,7 @@ with (oPlayer){
 					}
 				}
 			}
+			*/
 		}
 	}
 }

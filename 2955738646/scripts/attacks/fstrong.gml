@@ -9,6 +9,7 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+//set_window_value(AT_FSTRONG, 1, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1); //Sweeping gut punch
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 8);
@@ -17,10 +18,11 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_INVINCIBILITY, 2);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("f3680_002_4"));
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("fstrong_flyforward"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1); //Second hit
@@ -29,6 +31,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_INVINCIBILITY, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 //set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 15);
@@ -40,6 +43,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 19);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 3);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 20);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_INVINCIBILITY, 2);
 
 set_num_hitboxes(AT_FSTRONG, 2);
 
@@ -61,7 +65,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 1);
 //set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 115);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("f15480_039_cmn_grip_L"));
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("fstrong_grab"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
 
@@ -84,6 +88,6 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 25);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, 15);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("f10420_002_str_se_hit_l"));
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("fstrong_hit"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, -1);

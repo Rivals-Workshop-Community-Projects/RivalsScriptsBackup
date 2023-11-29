@@ -36,6 +36,8 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
 
 //Slash Animation
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

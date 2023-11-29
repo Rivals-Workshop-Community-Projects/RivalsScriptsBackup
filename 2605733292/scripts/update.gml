@@ -80,7 +80,7 @@ if (has_rune("O")){
 
 
 //intro
-if (introTimer2 < 4) {
+if (introTimer2 < 4) {//>
     introTimer2++;
 } else {
     introTimer2 = 0;
@@ -88,7 +88,7 @@ if (introTimer2 < 4) {
 }
 //this increments introTimer every few frames, depending on the number entered
 
-if (introTimer < 21) {
+if (introTimer < 21) {//>
     draw_indicator = false;
 } else {
     draw_indicator = true;
@@ -165,21 +165,6 @@ switch (state){
 		if (state_timer == 2){
 			//sound_play(sfx_dashstop);
 		}
-		break;
-	case PS_JUMPSQUAT:
-		//
-		break;
-	case PS_FIRST_JUMP:
-		//
-		break;
-	case PS_DOUBLE_JUMP:
-		//
-		break;
-	case PS_WALL_JUMP:
-		//
-		break;
-	case PS_LANDING_LAG:
-		//
 		break;
 	case PS_AIR_DODGE:
 		//Stopping the Jump Sound Effect if Sleep Kirby Airdodges.
@@ -270,231 +255,95 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 	//sound_play(sfx_ability_star_break);
 }
 
-//Sleep Status Code
-//(i hate this)
-	with (oPlayer){
-		if (is_in_playtest == false){
-			//print(url)
-			//sfx_ability_star_break = sound_get("sfx_ability_star_break");
-			sfx_ability_star_break = asset_get("mfx_unstar");
-			Sleep_Meter = sprite_get("enemy_sleep_bar");
-			//Debug vars
-			//draw_debug_text( x, y - 30, string(NotSleepKirby_IsSleeping))
-			//draw_debug_text( x, y , string(state_timer))
-			//draw_debug_text( x, y + 30, string(NotSleepKirby_SleepTimerRelease))
-			//draw_debug_text( x, y + 60, string(NotSleepKirby_SleepTimer))
-			//draw_debug_text( x, y + 90, string(NotSleepKirby_SleepTick))
-
-			if (NotSleepKirby_IsSleeping){
-			
-					//can_shield = false;
-					can_tech = false;
-					can_wall_tech = false;
-					
-					//Muno Steve Stuffs
-					if (url == 2284823424){
-						//set_attack(AT_TAUNT_2);
-						//window = 2;
-						//window_timer = 0;
-						//bed_timer = 0;
-						
-						//Sleep Kirby Hat Offsets
-						if (free){
-							//Air Hat Offsets
-							sleep_kirby_hat_offset_x = 26*spr_dir; //
-							sleep_kirby_hat_offset_y = 8; //
-							sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
-							sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
-							sleep_kirby_sleep_sprite_air = sprite_get("hurt")
-						} else if (!free){
-							//Grounded Hat Offsets
-							sleep_kirby_hat_offset_x = 26*spr_dir; //
-							sleep_kirby_hat_offset_y = 8; //
-							sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
-							sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
-							sleep_kirby_sleep_sprite_air = sprite_get("hurt")
-						}
-						
-					}
-			
-					if (state_timer == -1){
-						state_timer = 1
-						NotSleepKirby_SleepTick = 1
-					}
-					NotSleepKirby_hat_timer++;
-					if (NotSleepKirby_hat_timer == 4 && NotSleepKirby_hat_timer2 != 6){
-						NotSleepKirby_hat_timer = 0
-						NotSleepKirby_hat_timer2++;
-					}
-					if (!free){
-						if (state_timer == 12){
-							if (NotSleepKirby_SleepTimer != NotSleepKirby_SleepTimerRelease){
-								state_timer = 11
-								NotSleepKirby_SleepTimer++;				
-							} else {
-								NotSleepKirby_SleepTick = 0
-								NotSleepKirby_IsSleeping = false
-								sound_play(asset_get("mfx_unstar"));
-							}
-							if ((NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 22
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 20
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 18
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 16
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 14
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 12
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 10
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 8
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 6
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 4
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 2){
-								if ((NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 2){
-									spawn_hit_fx( x * spr_dir, y - 12, 302 );
-								}
-								NotSleepKirby_Sleep_Hat_Flash = true;
-							} else {
-								NotSleepKirby_Sleep_Hat_Flash = false
-							}
-						}
-					} else { //free
-					
-						if (state_timer == -1){
-							NotSleepKirby_SleepTick = 1
-						}
-						if (state_timer == 1){
-							NotSleepKirby_SleepTick = 1
-						}
-						if (state_timer == 21){
-							if (NotSleepKirby_SleepTimer != NotSleepKirby_SleepTimerRelease){
-								state_timer = 20
-								NotSleepKirby_SleepTimer++;				
-							} else {
-								vsp = -6
-								NotSleepKirby_IsSleeping = false
-								NotSleepKirby_SleepTick = 0
-								sound_play(sfx_ability_star_break);
-								djumps = 0
-								has_airdodge = true
-								has_walljump = true
-								set_state(PS_IDLE_AIR);
-							}
-							
-							
-							/*
-							if ((NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 10
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 8
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 6
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 4
-							|| (NotSleepKirby_SleepTimerRelease - NotSleepKirby_SleepTimer) == 2){
-								NotSleepKirby_Sleep_Hat_Flash = true;
-							} else {
-								NotSleepKirby_Sleep_Hat_Flash = false
-							}
-							*/
-						}
-						//Checking to see if the player hits the bottom blastzone while sleeping.
-						if (y > blastzone_b && NotSleepKirby_WasHitBySleepRune == false){
-							vsp = -12
-							old_vsp = vsp
-							y -= 40
-							NotSleepKirby_SleepTick = 0
-							NotSleepKirby_IsSleeping = false
-							sound_play(sfx_ability_star_break);
-							djumps = 0
-							has_airdodge = true
-							has_walljump = true
-							set_state(PS_IDLE_AIR);
-						}
-					}
-					if (NotSleepKirby_SleepTimer > (NotSleepKirby_SleepTimer + 12)){
-						NotSleepKirby_SleepTimer = 0
-						NotSleepKirby_IsSleeping = false
-						NotSleepKirby_SleepTick = 0
-						sound_play(sfx_ability_star_break);
-					}
-				} else {
-					NotSleepKirby_hat_timer = 0
-				}
-				with (NotSleepKirbyID){
-					with (oPlayer){
-						var SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
-						var SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
-						//var SleepKirby_enemy_sleep_bar = sprite_get("fspecial_enemy_sleep_bar");
-						var sfx_ability_star_break = sound_get("sfx_ability_star_break");
-					}
-				}
-
-			if (NotSleepKirby_FspecialImmunity > 0 && NotSleepKirby_IsSleeping == false){
-				NotSleepKirby_FspecialImmunity--;
-			}
-			
-			if (NotSleepKirby_FspecialImmunity == -9){
-				NotSleepKirby_FspecialImmunity = 0;
-				NotSleepKirby_SleepTick = 0
-				NotSleepKirby_IsSleeping = false
-				sound_play(asset_get("mfx_unstar"));
-				set_state(PS_IDLE_AIR);
-				
-			}
-
-			if (state == PS_RESPAWN && NotSleepKirby_IsSleeping == true){
-				NotSleepKirby_WasHitBySleepRune = false
-				NotSleepKirby_IsSleeping = false
-				state_timer = 2
-				can_move = true
-				can_jump = true
-				NotSleepKirby_SleepTick = 0
-			}
-
-			if (state == PS_HITSTUN){
-				if (state_timer == 0){
-					if (NotSleepKirby_SleepTick == 1){
-						NotSleepKirby_SleepTick = 0
-						NotSleepKirby_IsSleeping = false
-						sound_play(asset_get("mfx_unstar"));
-					}
-				}
-				if (state_timer == -19){
-					NotSleepKirby_SleepTick = 0
-					NotSleepKirby_IsSleeping = false
-					sound_play(asset_get("mfx_unstar"));
-					state = PS_IDLE
-				}
-			}
-
-			if (get_player_damage( player ) > 65){
-				NotSleepKirby_SleepTimerRelease = 65
-			} else {
-				NotSleepKirby_SleepTimerRelease = get_player_damage( player ) - 0
-			}
-			
-			
-			/*
-			if (hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please == true){
-				if (NotSleepKirby_FspecialImmunity == 0){
-					
-					NotSleepKirby_FspecialImmunity = 40
-					
-					SleepKirby_enemy_hat = sprite_get("fspecial_enemy_hat");
-					SleepKirby_enemy_hat_otherdir = sprite_get("fspecial_enemy_hat_otherdir");
-					SleepKirby_enemy_sleep_bar = sprite_get("fspecial_enemy_sleep_bar");
-					
-					NotSleepKirbyID = id;
-					
-					state_timer = -1
-					NotSleepKirby_hat_timer = 0
-					NotSleepKirby_hat_timer2 = 0
-					NotSleepKirby_SleepTimer = 0
-					NotSleepKirby_SleepTimerRelease = get_player_damage( player )
-					NotSleepKirby_IsSleeping = true
-				} else {
-					NotSleepKirby_FspecialImmunity = -9
-				}
-				hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = false;
-			}
-			*/
+// Sleep Status Code
+with (oPlayer){
+	if (isCurrSleeping){
+		// if hit out of sleep
+		if (hitBySleepingAttack){
+			shouldWakeUp = true;
 		}
+		
+		if (y > blastzone_b){
+			shouldBounceUpFromBlastzone = true;
+			shouldWakeUp = true;
+		}
+	
+		// preventing them from escaping
+		can_tech = false;
+		can_wall_tech = false;
+	
+		if (!hitpause){
+			state_timer = floor(state_timer);	// prevents any weird decimal stuff
+			if (sleepHatImageTimer != 6){
+				if (sleepHatImageTimer2 != 3){
+					sleepHatImageTimer2++;
+				} else {
+					sleepHatImageTimer2 = 0;
+					sleepHatImageTimer++;
+				}
+			}
+		}
+	
+		//y -= 1;
+		// sets the initial damage value of the sleeping player
+		if (sleepingTimer == 0){
+			damageToWakeUp = get_player_damage(player);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 75);
+		}
+		sleepingTimer++;
+		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+			if (state_timer == 1){
+				// increasing the time it takes to sleep
+				if (damageIncrementTick != damageToWakeUp && state_timer == 1){
+					damageIncrementTick++;
+					state_timer--;
+				} else {
+					shouldWakeUp = true;
+				}
+				
+				if (damageIncrementTick != 0){
+					if ((damageToWakeUp - damageIncrementTick) <= 16){//>
+						if ((damageToWakeUp - damageIncrementTick) % 3 == 0){
+							sleepHatShouldFlash = true;
+						} else {
+							sleepHatShouldFlash = false;
+						}
+					}
+				} else {
+					sleepHatShouldFlash = false;
+				}
+			}
+		} else {
+			shouldWakeUp = true;
+		}
+		
+		// code for waking up
+		if (shouldWakeUp){
+			if (shouldBounceUpFromBlastzone){
+				shouldBounceUpFromBlastzone = false;
+				djumps = 0;
+				has_airdodge = true;
+				has_walljump = true;
+				vsp = -6.5;
+				set_state(PS_IDLE_AIR);
+			}
+			damageIncrementTick = 0;
+			isCurrSleeping = false;
+			sound_play(asset_get("mfx_unstar"));
+			sleepHatImageTimer = 0;
+			sleepHatImageTimer2 = 0;
+			hitBySleepingAttack = true;
+			sleepHatShouldFlash = false;
+			//print("sleeping player woke up");
+			shouldWakeUp = false;
+		}
+	} else {
+		sleepingTimer = 0;
+		damageIncrementTick = 0;
 	}
-//
+}	
+
+runSleepCodeOnSelf();
 
 if(has_rune("A")
 || has_rune("B")
@@ -515,3 +364,92 @@ if(has_rune("A")
 } else {
 	has_runes_equipped = false;
 }
+
+// -------------
+
+#define runSleepCodeOnSelf()
+
+	if (isCurrSleeping){
+		// if hit out of sleep
+		if (hitBySleepingAttack){
+			shouldWakeUp = true;
+		}
+		
+		if (y > blastzone_b){
+			shouldBounceUpFromBlastzone = true;
+			shouldWakeUp = true;
+		}
+	
+		// preventing them from escaping
+		can_tech = false;
+		can_wall_tech = false;
+	
+		if (!hitpause){
+			state_timer = floor(state_timer);	// prevents any weird decimal stuff
+			if (sleepHatImageTimer != 6){
+				if (sleepHatImageTimer2 != 3){
+					sleepHatImageTimer2++;
+				} else {
+					sleepHatImageTimer2 = 0;
+					sleepHatImageTimer++;
+				}
+			}
+		}
+	
+		//y -= 1;
+		// sets the initial damage value of the sleeping player
+		if (sleepingTimer == 0){
+			damageToWakeUp = get_player_damage(player);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 75);
+		}
+		sleepingTimer++;
+		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+			if (state_timer == 1){
+				// increasing the time it takes to sleep
+				if (damageIncrementTick != damageToWakeUp && state_timer == 1){
+					damageIncrementTick++;
+					state_timer--;
+				} else {
+					shouldWakeUp = true;
+				}
+				
+				if (damageIncrementTick != 0){
+					if ((damageToWakeUp - damageIncrementTick) <= 16){//>
+						if ((damageToWakeUp - damageIncrementTick) % 3 == 0){
+							sleepHatShouldFlash = true;
+						} else {
+							sleepHatShouldFlash = false;
+						}
+					}
+				} else {
+					sleepHatShouldFlash = false;
+				}
+			}
+		} else {
+			shouldWakeUp = true;
+		}
+		
+		// code for waking up
+		if (shouldWakeUp){
+			if (shouldBounceUpFromBlastzone){
+				shouldBounceUpFromBlastzone = false;
+				djumps = 0;
+				has_airdodge = true;
+				has_walljump = true;
+				vsp = -6.5;
+				set_state(PS_IDLE_AIR);
+			}
+			damageIncrementTick = 0;
+			isCurrSleeping = false;
+			sound_play(asset_get("mfx_unstar"));
+			sleepHatImageTimer = 0;
+			sleepHatImageTimer2 = 0;
+			hitBySleepingAttack = true;
+			sleepHatShouldFlash = false;
+			//print("sleeping player woke up");
+			shouldWakeUp = false;
+		}
+	} else {
+		sleepingTimer = 0;
+		damageIncrementTick = 0;
+	}

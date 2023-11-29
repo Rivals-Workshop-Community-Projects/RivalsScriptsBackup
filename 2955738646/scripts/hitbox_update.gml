@@ -52,6 +52,7 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_FAIR){
+	if (hitbox_timer == 1){ sound_play(sound_get("Gun")); }
 	if ((place_meeting( x, y+9, asset_get("par_block"))) || (place_meeting( x, y+1, asset_get("par_jumpthrough"))) ||
 	!(player_id.attack == AT_FAIR)){ destroyed = true; }
 	if (hitbox_timer <= 1 && !(place_meeting( x, y+1, asset_get("par_block")))){
@@ -64,7 +65,7 @@ if (attack == AT_FAIR){
 	if (hitbox_timer <= 2 && hsp == 0){ instance_destroy(); exit; }
 }
 
-
+/*
 if (attack == AT_USPECIAL_2){ //Teleporting attack after lock-on
 	if (hbox_num == 5){
 		if (hitbox_timer < 21){
@@ -76,6 +77,7 @@ if (attack == AT_USPECIAL_2){ //Teleporting attack after lock-on
 		if (hitbox_timer > 21){ hit_priority = 10; }
 	}
 }
+*/
 
 if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 	if (hbox_num == 2){
@@ -138,10 +140,11 @@ if (attack == AT_EXTRA_3){ //Timestop stuff from DSpecial windup
 	}
 }
 
+/*
 if (attack == AT_USPECIAL_2){
-	//if (hbox_num == 3 || hbox_num == 4){
-			if (player_id.move_cooldown[AT_USPECIAL_2] < 1){ destroyed = true; }
-	if (hbox_num == 3){
+	through_platforms = 10;
+	if (hbox_num >= 3 && hbox_num <= 7){
+		
 	    var missileparticle = spawn_hit_fx(x, y, 100);
 	    var mydir = point_direction(hsp,vsp,0,0);
 	    missileparticle.draw_angle = mydir - 80;
@@ -149,6 +152,9 @@ if (attack == AT_USPECIAL_2){
 		var shortest_dist = 9000;
 	    var shortest_id = noone;
 	    
+	    if (spr_dir == 1){ proj_angle = mydir + 180; }
+	    if (spr_dir == -1){ proj_angle = mydir; }
+	    
 	    with (asset_get("oPlayer")) {
 	        if (player != other.player){
 	            var curr_dir = point_distance(x,y,other.x,other.y);
@@ -175,30 +181,47 @@ if (attack == AT_USPECIAL_2){
 			        var curr_dir_speed = point_direction(0,0,other.hsp,other.vsp);
 			        var curr_dist_speed = point_distance(0,0,other.hsp,other.vsp);
 			        
-			        if (other.hitbox_timer > 5){
-	
-	    			if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed + 340; }
-	    			if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed + 190; }
-	    			other.hsp += lengthdir_x(2, curr_dir);
-	    			other.vsp += lengthdir_y(2, curr_dir);
-
-	            var dist_from = y - other.y - (char_height / 1);
-	            if (other.hitbox_timer > 5 && other.hitbox_timer < 10){
-
+			        if (other.hitbox_timer > 20 && other.hitbox_timer % 35 == 1){
+	    			//if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed + 340; }
+	    			//if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed + 190; }
+	    			other.hit_priority = 10;
+	    			other.hsp = lengthdir_x(18, curr_dir);
+	    			other.vsp = lengthdir_y(18, curr_dir);
+	    			spawn_hit_fx(other.x, other.y, 3);
 					}
 				}
 			}
-		}
-	}	
+		}	
+	}
 }
+*/
 
-if (hbox_num == 4){
-	    var missileparticle = spawn_hit_fx(x, y, 100);
+if (attack == AT_USPECIAL_2){
+	through_platforms = 10;
+	if (hbox_num >= 3 && hbox_num <= 6){
+		var fly_dir = point_direction(0,0,hsp,vsp);
+        var fly_dist = point_distance(0,0,hsp,vsp);
+        var max_speed = 30;
+        if (fly_dist > max_speed){
+            hsp = lengthdir_x(max_speed, fly_dir);
+            vsp = lengthdir_y(max_speed, fly_dir);
+        }
+        
+	    //var missileparticle = spawn_hit_fx(x, y, 100);
 	    var mydir = point_direction(hsp,vsp,0,0);
-	    missileparticle.draw_angle = mydir - 80;
+	    //missileparticle.draw_angle = mydir - 80;
 	    
-		var shortest_dist = 900;
+	    if (hitbox_timer > 15){
+	    	sprite_index = sprite_get( "uspecial2_proj3" );
+	    	var missileparticle = spawn_hit_fx(x, y, 100);
+	    	missileparticle.draw_angle = mydir - 80;
+	    }
+	    
+		var shortest_dist = 1000;
 	    var shortest_id = noone;
+	    
+    	if (spr_dir == 1){ proj_angle = mydir + 180; }
+    	if (spr_dir == -1){ proj_angle = mydir; }
 	    
 	    with (asset_get("oPlayer")) {
 	        if (player != other.player){
@@ -226,35 +249,161 @@ if (hbox_num == 4){
 			        var curr_dir_speed = point_direction(0,0,other.hsp,other.vsp);
 			        var curr_dist_speed = point_distance(0,0,other.hsp,other.vsp);
 			        
-			        if (other.hitbox_timer > 5){
-	    			if (other.spr_dir == 1){ other.proj_angle = curr_dir_speed - 1; }
-	    			if (other.spr_dir == -1){ other.proj_angle = curr_dir_speed - 180; }
-
-	    			other.hsp += lengthdir_x(2, curr_dir);
-	    			other.vsp += lengthdir_y(2, curr_dir);
-			        //}
+			        if (other.hitbox_timer > 5 && other.hitbox_timer < 10){
+	    			other.hsp += lengthdir_x(0.3, curr_dir);
+	    			other.vsp += lengthdir_y(0.3, curr_dir);
 	    			
-	            var dist_from = y - other.y - (char_height / 1);
-	            if (other.hitbox_timer > 5 && other.hitbox_timer < 10){
-	            if (other.hitbox_timer > 11){
-	            }
-	            if (y > other.y + (char_height) ) {
-	            	if (other.proj_angle > curr_dir){ }
-
-	            } else if (y < other.y + (char_height) ) {
-	            	if (other.proj_angle < curr_dir){
-	            }
-
-	            } else {
-	                //maintarget = false;
-	            		}
-	        		}
-	        	}
-	        }
-
-	    }
+					}
+					if (other.hitbox_timer >= 15 && other.hitbox_timer < 25){
+	    			other.hsp += lengthdir_x(3, curr_dir);
+	    			other.vsp += lengthdir_y(3, curr_dir);
+					}
+					if (other.hitbox_timer >= 25){
+					other.hit_priority = 10;
+	    			other.hsp += lengthdir_x(10, curr_dir);
+	    			other.vsp += lengthdir_y(10, curr_dir);
+					}
+				}
+			}
+		}	
 	}
-
+	//Mini missile
+	if (hbox_num == 7){
+		var fly_dir = point_direction(0,0,hsp,vsp);
+        var fly_dist = point_distance(0,0,hsp,vsp);
+        var max_speed = 20;
+        if (fly_dist > max_speed){
+            hsp = lengthdir_x(max_speed, fly_dir);
+            vsp = lengthdir_y(max_speed, fly_dir);
+        }
+		
+		image_index = 1;
+		var mydir = point_direction(hsp,vsp,0,0);
+		if (hitbox_timer < 20){
+	    var missileparticle = spawn_hit_fx(x, y, player_id.Dusty);
+		}
+		if (hitbox_timer > 20){
+	    var missileparticle = spawn_hit_fx(x, y, 100);
+	    missileparticle.draw_angle = mydir - 90;
+		}
+	    
+		var shortest_dist = 1000;
+	    var shortest_id = noone;
+	    
+    	if (spr_dir == 1){ proj_angle = mydir + 180; }
+    	if (spr_dir == -1){ proj_angle = mydir; }
+	    
+	    with (asset_get("oPlayer")) {
+	        if (player != other.player){
+	            var curr_dir = point_distance(x,y,other.x,other.y);
+	            var curr_dist = point_distance(x,y,other.x,other.y);
+	            if (targeted == true){
+	            if (curr_dist < shortest_dist) {
+	                shortest_dist = curr_dist;
+	                shortest_id = id;
+	            	}
+	        	}
+	    	}
+	    }
+	    if (shortest_id != noone) {
+	        with (shortest_id) {
+	        	maintarget = true;
+	        	if (maintarget == true){
+	        		
+	        		var curr_dir = point_direction(other.x,other.y,x,y);
+	        		var curr_dist = point_distance(other.x,other.y,x,y);
+	        		
+	        		var past_dir = point_direction(x,y,other.x,other.y);
+			        var past_dist = point_distance(x,y,other.x,other.y);
+			        
+			        var curr_dir_speed = point_direction(0,0,other.hsp,other.vsp);
+			        var curr_dist_speed = point_distance(0,0,other.hsp,other.vsp);
+			        
+			        if (other.hitbox_timer > 3 && other.hitbox_timer < 10){
+	    			other.hsp += lengthdir_x(0.5, curr_dir);
+	    			other.vsp += lengthdir_y(0.5, curr_dir);
+					}
+					if (other.hitbox_timer >= 10 && other.hitbox_timer < 20){
+	    			other.hsp += lengthdir_x(1, curr_dir);
+	    			other.vsp += lengthdir_y(1, curr_dir);
+					}
+					if (other.hitbox_timer >= 20){
+					other.hit_priority = 10;
+	    			other.hsp += lengthdir_x(7, curr_dir);
+	    			other.vsp += lengthdir_y(7, curr_dir);
+					}
+				}
+			}
+		}	
+	}
+	if (hbox_num == 8){
+		var fly_dir = point_direction(0,0,hsp,vsp);
+        var fly_dist = point_distance(0,0,hsp,vsp);
+        var max_speed = 20;
+        if (fly_dist > max_speed){
+            hsp = lengthdir_x(max_speed, fly_dir);
+            vsp = lengthdir_y(max_speed, fly_dir);
+        }
+        
+		image_index = 1;
+		var mydir = point_direction(hsp,vsp,0,0);
+		if (hitbox_timer < 20){
+	    var missileparticle = spawn_hit_fx(x, y, player_id.Dusty);
+		}
+		if (hitbox_timer > 20){
+	    var missileparticle = spawn_hit_fx(x, y, 100);
+	    missileparticle.draw_angle = mydir - 90;
+		}
+	    
+		var shortest_dist = 1000;
+	    var shortest_id = noone;
+	    
+    	if (spr_dir == 1){ proj_angle = mydir + 180; }
+    	if (spr_dir == -1){ proj_angle = mydir; }
+	    
+	    with (asset_get("oPlayer")) {
+	        if (player != other.player){
+	            var curr_dir = point_distance(x,y,other.x,other.y);
+	            var curr_dist = point_distance(x,y,other.x,other.y);
+	            if (targeted == true){
+	            if (curr_dist < shortest_dist) {
+	                shortest_dist = curr_dist;
+	                shortest_id = id;
+	            	}
+	        	}
+	    	}
+	    }
+	    if (shortest_id != noone) {
+	        with (shortest_id) {
+	        	maintarget = true;
+	        	if (maintarget == true){
+	        		
+	        		var curr_dir = point_direction(other.x,other.y,x,y);
+	        		var curr_dist = point_distance(other.x,other.y,x,y);
+	        		
+	        		var past_dir = point_direction(x,y,other.x,other.y);
+			        var past_dist = point_distance(x,y,other.x,other.y);
+			        
+			        var curr_dir_speed = point_direction(0,0,other.hsp,other.vsp);
+			        var curr_dist_speed = point_distance(0,0,other.hsp,other.vsp);
+			        
+			        if (other.hitbox_timer > 3 && other.hitbox_timer < 10){
+	    			other.hsp -= lengthdir_x(500 / curr_dist, curr_dir);
+	    			other.vsp -= lengthdir_y(0.5, curr_dir);
+					}
+					if (other.hitbox_timer >= 10 && other.hitbox_timer < 16){
+	    			other.hsp -= lengthdir_x(1000 / curr_dist, curr_dir);
+	    			//other.hsp += lengthdir_x(2, curr_dir);
+	    			other.vsp += lengthdir_y(1, curr_dir);
+					}
+					if (other.hitbox_timer >= 16){
+					other.hit_priority = 10;
+	    			other.hsp += lengthdir_x(8, curr_dir);
+	    			other.vsp += lengthdir_y(8, curr_dir);
+					}
+				}
+			}
+		}	
 	}
 }
 

@@ -22,6 +22,7 @@ if (attack == AT_NSPECIAL && hbox_num == 1){
 }
 
 if (attack == AT_FSPECIAL && hbox_num == 1){
+	bean_fall_prevention = false;
     if (hitbox_timer == 1){
 	    vsp = -2
 	    hsp = (player_id.hsp/3)+(2*spr_dir)

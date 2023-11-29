@@ -70,8 +70,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(71, 71, 71) // "color preview square" color. can be any color!
-    ce[0,1] = "Default" //
-    ce[0,2] = "Stinker's default color." 
+    ce[0,1] = "Monroe" //
+    ce[0,2] = "Yes, that is his real name." 
     ce[1,0] = make_color_rgb(49, 89, 211)
     ce[1,1] = "The Blue Blur"
     ce[1,2] = "Palette based on Sonic The Hedgehog."

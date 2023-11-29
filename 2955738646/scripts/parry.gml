@@ -8,7 +8,7 @@
 
 //spawn_hit_fx( x, y, 254 );
 //sound_play(sound_get("S3&K_9C"));
-sound_play(sound_get("Too_Slow"));
+sound_play(sound_get("Mecha_heh"));
 
 if (ChaosEmerald <= 6){
 //EmeraldChance = true;

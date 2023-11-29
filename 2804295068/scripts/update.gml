@@ -104,14 +104,16 @@ if get_player_color(player) = 16 {
 
 if (state == PS_PARRY){
 	if (state_timer == 1){
-		sound_play(sound_get("plant"));
-		spawn_hit_fx(x + 20,y,15)
-		spawn_hit_fx(x - 20,y,15)
+		if !hitpause{
+			sound_play(sound_get("plant"));
+			spawn_hit_fx(x + 20,y,15);
+			spawn_hit_fx(x - 20,y,15);
+		}
 	}
 	if (state_timer == 9){
 		sound_play(sound_get("shovel"));
-		spawn_hit_fx(x + 20,y,15)
-		spawn_hit_fx(x - 20,y,15)
+		spawn_hit_fx(x + 20,y,15);
+		spawn_hit_fx(x - 20,y,15);
 	}
 }
 
@@ -143,12 +145,10 @@ if (hover_pratfall){
 	if (state == PS_PRATFALL || state == PS_PRATLAND || state == PS_HITSTUN || state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN){
 		hover_pratfall = false;
 	}
-}
-if (hover_pratfall){
 	if (state_cat == SC_AIR_NEUTRAL){
 		set_state( PS_PRATFALL );
 	}
-	if (state_cat == SC_GROUND_NEUTRAL || state == PS_LANDING_LAG){
+	if (state_cat == SC_GROUND_NEUTRAL || (state_cat == SC_GROUND_COMMITTED && state != PS_WAVELAND)){
 		set_state( PS_PRATLAND );
 	}
 }
@@ -301,7 +301,7 @@ if swallowed {
 
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 15);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 16);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 12);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -20);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 24);
@@ -318,7 +318,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, ability_proj);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 12);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 10);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_EXTENDED_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
@@ -342,7 +342,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_MASK, ability_proj);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED, 12);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED, 11);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_EXTENDED_PARRY_STUN, 1);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

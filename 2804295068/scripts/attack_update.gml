@@ -11,7 +11,10 @@ with (obj_article1){
     }
 }
 
-if (attack == AT_JAB){
+if (attack == AT_FTILT){
+	if (window == 2 || window == 5) && (window_timer == 1){
+		move_cooldown[AT_FTILT] = 30
+	}
 	if (window == 3){
         if (((attack_pressed && left_down) || (left_stick_pressed && !left_strong_pressed)) && spr_dir = 1){
 		    set_attack( AT_EXTRA_1 );
@@ -19,12 +22,6 @@ if (attack == AT_JAB){
         if (((attack_pressed && right_down) || (right_stick_pressed && !right_strong_pressed) ) && spr_dir = -1){
 		    set_attack( AT_EXTRA_1 );
 	    }
-	}
-}
-
-if (attack == AT_FTILT){
-	if (window == 2 || window == 5) && (window_timer == 1){
-		move_cooldown[AT_FTILT] = 30
 	}
 }
 
@@ -432,6 +429,13 @@ if (attack == AT_FSTRONG){
 			window = 0;
 			window_timer = 0;
 			state_timer = 0;
+		}
+	} else {
+		if (window == 1 && strong_charge >= 30){
+			strong_charge = 60;
+		}
+		if (window == 2 && strong_charge > 30){
+			strong_charge = 30;
 		}
 	}
 }

@@ -1,6 +1,10 @@
 //hitbox_update.gml
 
 if (attack == AT_NSPECIAL){
+	if (shouldTurnAround){
+		shouldTurnAround = false;
+		hsp *= -1;
+	}
 	image_alpha = 0.8
 	hsp = 2.8 * spr_dir
 	player_id.mario = burst_bubble_direction_hit_by_side_b
@@ -41,7 +45,7 @@ if (attack == AT_NSPECIAL){
 		if (hbox_num == 1 || hbox_num == 6 || hbox_num == 7){
 			if (vsp > 2){
 				burst_bubble_vspeed_trigger = 1
-			} else if (vsp < -2){
+			} else if (vsp < -2){//>
 				burst_bubble_vspeed_trigger = 2
 			}
 		} else if (hbox_num == 2){
@@ -52,14 +56,14 @@ if (attack == AT_NSPECIAL){
 			fall_through = true;
 		} else if (hbox_num == 6){
 			vsp = 0;
-			if (hsp < 0){
+			if (hsp < 0){//>
 				sprite_get("nspecial_bubble_star_left");
 			} else {
 				sprite_get("nspecial_bubble_star");
 			}
 		}
-		if (hbox_num != 6){
-			if (hsp < 0){
+		if (hbox_num != 6){//>
+			if (hsp < 0){//>
 				sprite_get("nspecial_bubble_left");
 			} else {
 				sprite_get("nspecial_bubble_left");
@@ -81,6 +85,8 @@ if (attack == AT_NSPECIAL){
 		instance_destroy();
 		exit;
 	}
+	
+	/*
 	//Grabbing Ability Star
 	with (asset_get("obj_article1")){
 		if (place_meeting(x, y, other)){
@@ -102,6 +108,7 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 	}
+	*/
 	
 	if (place_meeting( x, y, player_id) ){ //place_meeting( x, y, player_id
 		if ((player_id.attack == AT_USPECIAL && player_id.window != 1) || player_id.state == PS_PRATFALL){
@@ -149,6 +156,11 @@ if (attack == AT_NSPECIAL){
 							player_id.vsp = -3
 							player_id.window = 5
 							player_id.window_timer = 0
+							with(other){
+								var hatThrowVisual = create_hitbox(AT_FSPECIAL, 3, x, y - 20);
+								hatThrowVisual.vsp = -10;
+								hatThrowVisual.spr_dir *= -1;
+							}
 							if (other.spr_dir != player_id.spr_dir){
 								//other.sprite_index = sprite_get("nspecial_bubble_star_left");
 								//other.spr_dir = 1
@@ -186,7 +198,30 @@ if (attack == AT_USPECIAL){
 	}
 }
 
+if (attack == AT_FSPECIAL){
+	if (hbox_num == 3){
+		proj_angle -= (10 * spr_dir);
+		image_index = 1;
+		vsp = clamp(vsp, -10, 8);
+		vsp += 0.6;
+		/*
+		if (hitbox_timer % 2 == 0){
+			sprite_index = sprite_get("fspecial_enemy_hat_spin");
+		} else {
+			sprite_index = sprite_get("empty")
+		}
+		*/
+		if (hitbox_timer == 30){
+			spawn_hit_fx(x, y, player_id.pillow_hit_fx_sml);
+			sound_play(asset_get("sfx_ell_steam_hit"), false, noone, 1, 0.95);
+			instance_destroy();
+			exit;
+		}
+	}
+}
+
 if (attack == AT_DSPECIAL){
+	/*
 	if (player_id.copy_essence_hit == true){
 		player_id.copy_essence_hit = false
 		instance_destroy();
@@ -195,5 +230,24 @@ if (attack == AT_DSPECIAL){
 	if (hitbox_timer == 2){
 		instance_destroy();
 		exit;
+	}
+	*/
+	
+	if (hbox_num == 3){
+		proj_angle -= (10 * spr_dir);
+		image_index += 0.25;
+		vsp = clamp(vsp, -10, 8);
+		vsp += 0.6;
+		if (hitbox_timer % 2 == 0){
+			sprite_index = sprite_get("essence_empty_spin");
+		} else {
+			sprite_index = sprite_get("empty")
+		}
+		if (hitbox_timer == 30){
+			spawn_hit_fx(x, y, player_id.pillow_hit_fx_sml);
+			sound_play(player_id.sfx_ability_star_break, false, noone, 0.95, 1.2);
+			instance_destroy();
+			exit;
+		}
 	}
 }

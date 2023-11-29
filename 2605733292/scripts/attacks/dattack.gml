@@ -78,6 +78,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
+/*
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_LIFETIME, 2);
@@ -98,6 +99,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DATTACK, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_DATTACK, 3, HG_GROUNDEDNESS, 2);
+*/
 
 //Earthquake
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_TYPE, 1);

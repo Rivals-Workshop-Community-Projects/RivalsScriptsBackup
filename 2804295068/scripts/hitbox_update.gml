@@ -59,8 +59,14 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	player_id.bean_x = x;
 	player_id.bean_y = y;
 	if (!free){
+		bean_fall_prevention = true;
 	    hsp *= .97
 	    proj_angle += (hsp*-2)
+	}
+	if (free && bean_fall_prevention == true){
+		bean_fall_prevention = false;
+	    hsp = -1 * spr_dir;
+		vsp = -1;
 	}
 	if (player != orig_player){
 		player = orig_player

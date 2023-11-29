@@ -25,8 +25,9 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_num_hitboxes(AT_DSPECIAL, 3);
 
+// projectile hitbox
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 200000000000000000000);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 20);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 30);
@@ -37,8 +38,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, pillow_hit_fx_sml);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 99);
@@ -52,6 +54,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0);
@@ -59,6 +62,45 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, false);
 
+// hitbox that appears if an opponent in hitstun (that isnt the original sleep kirby) on the essence when idle
+
+// visual hitbox that shows the essence get knocked away (ignore this)
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 69);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 999);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("essence_empty_spin"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_IGNORES_PROJECTILES, 1); // cannot break projectiles
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("there is none"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, -2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, true);
+
+/*
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 0);
@@ -71,8 +113,9 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, pillow_hit_fx_sml);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 99);
@@ -104,8 +147,9 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 1);
-set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, pillow_hit_fx_sml);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 99);
@@ -128,3 +172,5 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 1);
+*/
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 1);

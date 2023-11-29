@@ -1,9 +1,9 @@
 if (move_cooldown[AT_TAUNT_2] > 10){ move_cooldown[AT_TAUNT_2] -= 10; }
 
-if (my_hitboxID.attack == AT_JAB){
-	if (my_hitboxID.hbox_num == 2){ lockon = create_hitbox(AT_JAB, 5, x, y-190); }
-	if (my_hitboxID.hbox_num == 3){ hsp = 11 * spr_dir; }
-	//lockon.hit_player_id = player_id.hit_player_obj;
+if (my_hitboxID.attack == AT_DAIR){
+	if (other.should_make_shockwave == true){
+		sound_play(sound_get("Dair_sweetspot"));
+	}
 }
 
 if (my_hitboxID.attack == AT_USPECIAL){
@@ -14,32 +14,25 @@ if (my_hitboxID.attack == AT_USPECIAL){
 }
 
 if (my_hitboxID.attack == AT_USPECIAL_2){
+	if (my_hitboxID.hbox_num == 1){ sound_play (sound_get ("scouter_located")); }
+	
 	if (my_hitboxID.hbox_num <= 2){
-		sound_play (sound_get ("ScouterFound")); 
 	destroy_hitboxes();
 	//window = 2;
-	window_timer += 2;
+	window_timer += 4;
 	move_cooldown[AT_USPECIAL_2] = 90;
 	marked_id = true;
 	other.should_make_shockwave = false;
 	other.targeted = true;
 	other.target_time = 2;
+	other.timeframe = -20;
+	other.target_number = random_func(0, 7, true);
+	other.target_X_placement = random_func(0, 50, true);
+	other.target_Y_placement = random_func_2(0, 50, true);
 	target_addup += 1;
 	}
-	if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
+	if (my_hitboxID.hbox_num >= 3 && my_hitboxID.hbox_num < 7){
 		other.target_time -= 1;
-		//other.targeted = false;
-		//hsp = -20 * spr_dir;
-		//vsp = -20;
-	}
-	if (my_hitboxID.hbox_num == 5){
-		destroy_hitboxes();
-		x = my_hitboxID.x;
-		y = my_hitboxID.y+35;
-		other.targeted = false;
-		other.maintarget = false;
-		//hsp = -20 * spr_dir;
-		//vsp = -20;
 	}
 }
 
@@ -51,9 +44,17 @@ if (my_hitboxID.attack == AT_UTILT){
 	}
 }
 
+if (my_hitboxID.attack == AT_FTILT){
+	if (my_hitboxID.hbox_num == 1){
+		//hit_player_obj = ftilt_hit_id;
+		ftilt_hit_id = hit_player_obj;
+	}
+}
+
 if (my_hitboxID.attack == AT_DTILT){
 	if (my_hitboxID.hbox_num < 7){
-		hit_player_obj.should_make_shockwave = false;
+		other.should_make_shockwave = false;
+		other.hsp = 0;
 	}
 }
 
@@ -83,7 +84,7 @@ if (my_hitboxID.attack == AT_FSTRONG){
 	if (grabbedid.should_make_shockwave == true){
 	spawn_hit_fx(my_hitboxID.x+6 * spr_dir, my_hitboxID.y-24, (Explosive_Punch));
 	//sound_play(sound_get("f16999_001_str_se_0"));
-	sound_play(sound_get("f15480_054_cmn_other_dokabaki_offset_0"));
+	sound_play(sound_get("fstrong_hardhit"));
 	
 	}
 	if (grabbedid.should_make_shockwave == false){
@@ -104,7 +105,7 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 1 && hit_player_
 if (attack == AT_FSPECIAL){
 	vsp = -9;
 	hsp = -9 * spr_dir;
-	if (random_mecha == 1){ sound_play(sound_get("Mecha_Too_Slow")); random_mecha = 0; }
+	if (random_mecha == 1 && voice_button == true){ sound_play(sound_get("Mecha_Too_Slow")); random_mecha = 0; }
 		//instance_destroy(SuperDash_Particle2);
 		//instance_destroy(SuperDash_Particle3);
 		//instance_destroy(SuperDash_Particle4);
@@ -148,9 +149,9 @@ if (attack == AT_DSPECIAL){
 		destroy_hitboxes();
 	}
 	if (my_hitboxID.hbox_num == 3){
-		dspecial_id = hit_player_obj;
+		//dspecial_id = hit_player_obj;
 		window = 4;
-		window_timer = 1;
+		window_timer = 5;
 	}
 	if (my_hitboxID.hbox_num == 4){
 		hsp = -10 * spr_dir;
@@ -168,12 +169,9 @@ if (attack == AT_EXTRA_2){
 	y = y-0.5 * hit_player_obj.char_height;
 }
 
-
-//SUPER MECHA FUN TIME
-
 if(my_hitboxID.attack == AT_DSPECIAL_2){
 	if (my_hitboxID.hbox_num == 1){
-		if (random_mecha == 1){ sound_play(sound_get("Mecha_NoUseRunning")); random_mecha = 0; }
+		if (random_mecha == 1 && voice_button == true){ sound_play(sound_get("Mecha_NoUseRunning")); random_mecha = 0; }
 	if (window == 2 && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
 	set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 6);
 	window = 4;
@@ -183,7 +181,7 @@ if(my_hitboxID.attack == AT_DSPECIAL_2){
 }
 
 //Timestop hitboxes
-if (timestop == true){
+if (timestop == true && timestop_amount > 0){
 	timestop_amount -= 1;
 	with (other){
 		timestop_damage += enemy_hitboxID.damage; 
@@ -209,8 +207,7 @@ if (my_hitboxID.attack == AT_EXTRA_3){
 	harsh_hitt.draw_angle = harsh_num;
 }
 
-if (timestop == false){
-	//if (attack == AT_EXTRA_3 && hbox_num >= 3){
-	with (other){ timestop_damage -= 1; }
-	//}
+if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 2){
+	fire_hitt = spawn_hit_fx(x+40 * spr_dir,y-75,148);
+	fire_hitt.draw_angle = 400 * spr_dir;
 }

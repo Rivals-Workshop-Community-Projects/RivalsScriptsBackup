@@ -13,7 +13,7 @@ alt_name[3]  = "Green";
 alt_name[4]  = "Monochrome";
 alt_name[5]  = "Purple";
 alt_name[6]  = "Shadow";
-alt_name[7]  = "Gameboy";
+alt_name[7]  = "Early Access";
 alt_name[8]  = "Yellow";
 alt_name[9]  = "Carbon";
 alt_name[10] = "Brown";
@@ -35,7 +35,7 @@ alt_name[23] = "Adventure Ability";
  
 //rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
-for(i = 0; i < num_alts; i++){
+for(i = 0; i < num_alts; i++){//>
     //var draw_color = (i == alt_cur) ? c_white : c_gray;
     //var draw_x = temp_x + 2 + 10 * i;
     //rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
@@ -47,30 +47,27 @@ shader_end();
 
 //Outlines
 if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+	draw_sprite(sprite_get("_css_outlines"),1,x + 8,y + 8);
 }
 if (get_player_color(player) == 17){
-	draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+	draw_sprite(sprite_get("_css_outlines"),2,x + 8,y + 8);
 }
 
 //Special Icons n shit
 if (get_player_color(player) == 6){
-	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
+	draw_sprite(sprite_get("_css_icons"),0,x+10,y+42);
 } else if (get_player_color(player) == 7){
 	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
+	draw_sprite(sprite_get("_css_icons"),1,x+10,y+42);
 } else if (get_player_color(player) == 18){
-	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
+	draw_sprite(sprite_get("_css_icons"),3,x+10,y+42);
 } else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
-	if (get_player_color(player) == 17){
-		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
-	}
-	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
+	draw_sprite(sprite_get("_css_icons"),2,x+10,y+42);
 }
 
 //include alt. name
 //textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + alt_name[alt_cur]);
-textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 

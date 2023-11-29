@@ -36,7 +36,7 @@ set_num_hitboxes(AT_EXTRA_1, 2);
 
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 12);
+set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 13);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_X, -30);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_Y, -37);
 set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 24);
@@ -76,7 +76,7 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_SFX, sound_get("splat2"));
 set_hitbox_value(AT_EXTRA_1, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_HSPEED, -12);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_HSPEED, -13);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITSTUN_MULTIPLIER, 0.5);

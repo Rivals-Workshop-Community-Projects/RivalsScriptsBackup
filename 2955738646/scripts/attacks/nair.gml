@@ -8,10 +8,11 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("se_sonic_attackair_N01"));
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("S3&K_spinout2"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 9);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
@@ -35,7 +36,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_NAIR, 5, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_NAIR, 5, AG_WINDOW_VSPEED, 0);
@@ -47,13 +48,15 @@ set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_NAIR, 6, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_NAIR, 6, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_NAIR, 6, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NAIR, 6, AG_WINDOW_SFX, asset_get("sfx_mobile_gear_jump"));
 
 set_window_value(AT_NAIR, 7, AG_WINDOW_TYPE, 1); //Nair bounce out
-set_window_value(AT_NAIR, 7, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_NAIR, 7, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_NAIR, 7, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_NAIR, 7, AG_WINDOW_VSPEED, -6);
+set_window_value(AT_NAIR, 7, AG_WINDOW_VSPEED, -5);
 
 set_num_hitboxes(AT_NAIR, 6);
 
@@ -72,7 +75,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("se_common_sword_hit_s"));
+set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("Nair_hit"));
 set_hitbox_value(AT_NAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, -1);
 
@@ -126,5 +129,5 @@ set_hitbox_value(AT_NAIR, 6, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT_Y_OFFSET, -20);
-set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, sound_get("ARC_BTL_GBR_SwordShot_Hit"));
+set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, sound_get("Nair_finalhit"));
 set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, -1);

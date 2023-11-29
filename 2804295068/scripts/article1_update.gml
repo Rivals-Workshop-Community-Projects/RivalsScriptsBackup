@@ -52,7 +52,7 @@ if (state != 2){
 	            torched = true;
 				with obj_article1{
 					if (player_id == other.player_id){
-						state_timer += 90
+						state_timer += 120
 					}
 				}
 	    	}
@@ -61,13 +61,6 @@ if (state != 2){
 		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == 49){
 	    	if (!torched){
 	            torched = true;
-				if (hbox_num != 3){
-					with obj_article1{
-						if (player_id == other.player_id){
-							state_timer += 15
-						}
-					}
-				}
 				if (hbox_num == 3){
 					with obj_article1{
 						if (player_id == other.player_id){

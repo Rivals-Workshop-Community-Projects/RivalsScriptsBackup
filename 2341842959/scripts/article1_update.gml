@@ -18,8 +18,8 @@ if (state_timer > 435){
 
 with (asset_get("pHitBox")){
 	
-if (damage > 0 && kb_value > 0 && other.state_timer > 120){
-	if (place_meeting(x,y,other.id) && other.player != player){
+if (damage > 0 && kb_value > 0 && hit_priority && (other.state_timer > 60 || other.spawned_by_ftilt)){
+	if (place_meeting(x,y,other) && other.player != player){
 		if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
 			other.state_timer = 451;
 			other.image_index = 1;
@@ -55,7 +55,7 @@ if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)
 		fspecial_passed = false;
 }
 
-with (asset_get("pHitBox")){
+if state != 3 with (asset_get("pHitBox")){
 	if (attack == AT_DSPECIAL 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) && other.state != 2){
 		other.image_index = 0;
@@ -97,7 +97,7 @@ if (state == 0){
 
 //State 1: Idle
 if (state == 1){
-	if (state_timer <= 180){
+	if (state_timer <= 60 && !spawned_by_ftilt){
 		sprite_index = sprite_get("cloud_inv");
 	}
 	else {

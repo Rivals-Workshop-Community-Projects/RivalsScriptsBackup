@@ -8,7 +8,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("Mecha_Crush"));
+//set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("Mecha_Crush"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 20);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 2);
@@ -18,6 +18,7 @@ set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_ChargeGod_Start"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 3);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_INVINCIBILITY, 1);

@@ -2,7 +2,23 @@
 
 is_in_playtest = (object_index == oTestPlayer)
 
-if (is_in_playtest == false){
+//if (is_in_playtest == false){
+	
+	damageToWakeUp = 0;
+	damageIncrementTick = 0;
+	isCurrSleeping = false;
+	sleepingTimer = 0;
+	hitBySleepingAttack = false;
+	sleepID = noone;
+	sleepHatSpr = noone;
+	sleepHatImageTimer = 0;
+	sleepHatImageTimer2 = 0;
+	shouldWakeUp = false;
+	shouldBounceUpFromBlastzone = false;
+	sleepHatShouldFlash = false;
+	sleepVFX = noone;
+	
+	blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 	
 	hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = false;
 	
@@ -19,25 +35,5 @@ if (is_in_playtest == false){
 	NotSleepKirby_SleepHit = 0
 	NotSleepKirby_WasHitBySleepRune = false
 	NotSleepKirby_FspecialImmunity = 0
-
-	//if (url != 2605733292 && !variable_instance_exists(id, "NotSleepKirby_Hat_Offset_X") && !variable_instance_exists(id, "NotSleepKirby_Hat_Offset_Y") && id != other.id){
-		sleep_kirby_hat_offset_x = 0;
-		sleep_kirby_hat_offset_y = 0;
-		sleep_kirby_has_sleep_sprites = false;
-	//}
-
-
-	NotSleepKirbyID = id
-
-		//SleepKirby_enemy_hat = oPlayer.SleepKirby_enemy_hat
-		//SleepKirby_enemy_hat_otherdir = oPlayer.SleepKirby_enemy_hat_otherdir
-
-	blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
-
-		//IsSleepKirby_enemy_hat = oPlayer.IsSleepKirby_enemy_hat
-		//IsSleepKirby_enemy_hat_otherdir = oPlayer.IsSleepKirby_enemy_hat_otherdir
-		//sfx_ability_star_break = sound_get("sfx_ability_star_break");
-		//sfx_ability_star_break = oPlayer.sfx_ability_star_break
-
-	SleepKirby_enemy_sleep_bar = sprite_get("fspecial_enemy_sleep_bar");
-}
+		
+//}
