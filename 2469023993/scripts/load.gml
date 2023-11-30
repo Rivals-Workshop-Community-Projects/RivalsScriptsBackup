@@ -54,7 +54,7 @@ sprite_change_offset("nspecial_air", 125, 158);
 sprite_change_offset("fspecial_air", 125, 158);
 
 sprite_change_offset("hfx_box", 125, 158);
-sprite_change_offset("hfx_box_small", 62, 75);
+sprite_change_offset("hfx_box_small", 108, 108);
 
 sprite_change_offset("finalsmesh", 125, 158);
 
@@ -62,9 +62,13 @@ sprite_change_offset("finalsmesh_air", 125, 158);
 
 sprite_change_offset("plat", 125, 158);
 
-sprite_change_offset("nspecial_proj", 125, 158);
+sprite_change_offset("nspecial_proj", 132, 122);
 
-sprite_change_offset("nspecial_proj_2", 125, 158);
+sprite_change_offset("fspecial_proj", 125, 158);
+
+sprite_change_offset("fspecial_proj_2", 125, 158);
+
+sprite_change_offset("kirbo_proj", 125, 158);
 
 set_victory_bg( sprite_get("noxground"));
 
@@ -77,3 +81,7 @@ sprite_change_offset("noxgoalpost", 18, 41);
 sprite_change_offset("nox_hug", 32, 70);
 
 sprite_change_offset("amber_hug", 32, 70);
+
+
+//DELTA LOAD.GML stuff
+sprite_change_offset("reticle", 126, 126);

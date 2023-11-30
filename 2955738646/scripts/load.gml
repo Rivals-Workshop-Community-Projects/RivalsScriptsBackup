@@ -83,7 +83,9 @@ sprite_change_offset("target_numbers", -14, 49);
 sprite_change_offset("taunt_aura", 0, 14);
 sprite_change_offset("taunt_transform_aura", 270, 94);
 
+sprite_change_offset("boosters_light", 35, 30);
 sprite_change_offset("boosters", 35, 30);
+sprite_change_offset("booster_startup_light", 30, 30);
 sprite_change_offset("booster_startup", 30, 30);
 
 sprite_change_offset("nspecial_gunhit", 40, 15);

@@ -88,7 +88,8 @@ if (maintarget == true && target_time > 0){
 }
 
 }
+*/
 
 if (timestop_damage > 0){
-draw_debug_text( x-6, y-64 - char_height, string( timestop_damage ) + "%");
+//draw_debug_text( x-6, y-64 - char_height, string( timestop_damage ) + "%");
 }

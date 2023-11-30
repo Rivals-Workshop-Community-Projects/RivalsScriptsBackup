@@ -26,7 +26,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_Charge_Loop_LP"));
+//set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("Charge_Loop"));
 
 set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 3);
 //set_window_value(AT_TAUNT, 4, AG_WINDOW_INVINCIBILITY, 1);

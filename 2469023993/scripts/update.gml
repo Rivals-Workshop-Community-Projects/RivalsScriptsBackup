@@ -1,17 +1,9 @@
-if used_fspecial{
-	move_cooldown[AT_FSPECIAL] = 15;
-}
-
-if !free or state == PS_WALL_JUMP or state == PS_WALL_TECH {
-	used_fspecial = false;
-}
-
 if swift_mode = true{
 	move_cooldown[AT_DSPECIAL] = 300;
 	move_cooldown[AT_TAUNT] = 10;
 	move_cooldown[AT_TAUNT_2] = 10;
 	swift_timer++;
-	walk_speed = 4;
+	walk_speed = 5;
 	walk_anim_speed = .175;
 	wave_land_adj = 1.5;
 	dash_speed = 10;
@@ -20,14 +12,15 @@ if swift_mode = true{
 	air_dodge_speed = 9;
 	air_max_speed = 6;
 	air_accel = 0.45;
-	jump_speed = 9;
-	djump_speed = 8;
+	jump_speed = 9.5;
+	djump_speed = 8.5;
 	leave_ground_max = 7.5;
 	max_jump_hsp = 7.5;
 	short_hop_speed = 5.75;
 	walljump_hsp = 8;
 	walljump_vsp = 9;
 	waveland_sound = asset_get("sfx_waveland_ori");
+	nspecial_reticle_success_sound = sound_get("lock_plus");
 }
 
 if swift_timer > 700{
@@ -52,6 +45,7 @@ if swift_mode = false{
 	walljump_hsp = 7;
 	walljump_vsp = 10;
 	waveland_sound = asset_get("sfx_waveland_fors");
+	nspecial_reticle_success_sound = sound_get("lock_frontier")
 }
 
 if swift_timer = 700{
@@ -102,7 +96,7 @@ if swallowed {
     swallowed = 0
     var ability_spr = sprite_get("kirbothrow");
 	var ability_hurt = sprite_get("kirbothrow_hurt");
-	var box_proj = sprite_get("nspecial_proj");
+	var box_proj = sprite_get("kirbo_proj");
 	var ability_sfx = sound_get("shadowfling");
 	var ability_sfx2 = sound_get("shadowrefresh");
 	var ability_sfx3 = sound_get("kirbocore");
@@ -246,4 +240,114 @@ if (state == PS_SPAWN && state_timer <= 100 && radio == 0 && up_down && shield_d
 	radio = 1;
 	sound_play(sound_get("light_confirm"));
 	sound_play(sound_get("LETSGO"));
+}
+
+
+//!!!!!!!! DELTA CODE STARTS HERE
+
+//Trigger for the reticle to execute
+var is_attacking = (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND);
+var is_in_nspecial = (attack == AT_NSPECIAL and window == 3 and window_timer == 0);
+if (is_attacking and is_in_nspecial)
+{
+	nspecial_storage = []
+	
+	//Look for player
+	var detected_player = detect_player(x);
+	nspecial_use_swift_mode = swift_mode;
+	
+	if (detected_player == noone) {
+		//Failed
+		sound_play(nspecial_reticle_failed_sound);
+	}
+	else {
+		//Succeeded
+		sound_play(nspecial_reticle_success_sound);
+		nspecial_reticle_position.reticle_x = floor(detected_player.x + detected_player.hsp)
+		nspecial_reticle_position.reticle_y = floor(detected_player.y - (detected_player.char_height / 2) + detected_player.vsp)
+		nspecial_reticle_window = 0
+	}
+}
+
+//Reticle is active.
+if (nspecial_reticle_window > -1) {
+	
+	//Advance window timer and window, ending the reticle's animation when it finishes.
+	nspecial_reticle_window_timer += !hitpause;
+	if nspecial_reticle_window_timer >= nspecial_reticle_window_config[nspecial_reticle_window].length[nspecial_use_swift_mode] {
+		nspecial_reticle_window += 1;
+		nspecial_reticle_window_timer = 0;
+		
+		if nspecial_reticle_window >= array_length(nspecial_reticle_window_config) {
+			nspecial_reticle_window = -1;
+			nspecial_reticle_window_timer = 0;
+		}
+	}
+	
+	//Window-specific code
+	switch (nspecial_reticle_window) {
+		case 0:
+			if nspecial_reticle_window_timer == 1 and !hitpause {
+				sound_play(sound_get("explosion_build"), false, noone, 1, nspecial_use_swift_mode ? 1.3 : 1.1)
+			}
+		break;
+		case 1:
+			if nspecial_reticle_window_timer == nspecial_reticle_window_config[1].length[nspecial_use_swift_mode] - 4 and !hitpause {
+				sound_play(asset_get("sfx_mol_flare_shoot"), false, noone, 1, 1.1)
+				sound_play(asset_get("sfx_mol_spark_explode2"), false, noone, 1, 1.1)
+				
+				spawn_hit_fx(nspecial_reticle_position.reticle_x, nspecial_reticle_position.reticle_y, nspecial_projectile_vfx)
+			}
+		break;
+		case 2:
+			if nspecial_reticle_window_timer == 0 and !hitpause {
+				create_hitbox(AT_NSPECIAL, 1, nspecial_reticle_position.reticle_x, nspecial_reticle_position.reticle_y)
+			}
+		break;
+	}
+}
+
+
+#define detect_player
+var x_pos = argument_count > 0 ? argument[0] : 0;;
+
+//For the instance_nearest function to work, we can't detect outselves.
+var xx = x_pos;
+x = -10000;
+
+var player_asset = asset_get("oPlayer");
+var closest_player = instance_nearest(xx,y,player_asset)
+
+//If we are the closest player, fail. There is only one player.
+//If we already visited the closest player, fail. We have already ruled out this option.
+//If the closest player is not within the threshold distance, fail. The other players are disqualified.
+if (closest_player == id or array_find_index(nspecial_storage, closest_player) != -1 or
+	point_distance(xx,y - (char_height/2),closest_player.x,closest_player.y - (closest_player.char_height/2) ) > nspecial_distance_threshold[nspecial_use_swift_mode]) {
+	x = xx;
+	return noone;
+}
+else {
+	//If we are not facing the closest player, move onto next player.
+	if sign(closest_player.x - xx) != spr_dir {
+		var yy = closest_player.y
+		closest_player.y = -100000
+		
+		array_push(nspecial_storage, closest_player)
+		var new_closest = detect_player(xx)
+		
+		closest_player.y = yy;
+		
+		//If the closest player before was the only closest player, fail.
+		if new_closest == noone {
+			x = xx;
+			return noone;
+		}
+		else {
+			closest_player = new_closest
+		}
+	}
+	
+	//Succeeded -- return the closest player
+	x = xx;
+	return closest_player;
 }

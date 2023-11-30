@@ -308,7 +308,7 @@ break;
     		}
     	}
     	if(Nspecial_moves != 0){
-    		if(left_pressed && move_cooldown[AT_NSPECIAL] == 0){
+    		if(left_pressed){
     			Nspecial_moves--;
     			if(spr_dir == 1){
     				window = 3;
@@ -320,7 +320,7 @@ break;
     				hsp = 11 * spr_dir;
     			}
     		}
-    		if(right_pressed && move_cooldown[AT_NSPECIAL] == 0){
+    		if(right_pressed){
     			Nspecial_moves--;
     			if(spr_dir == -1){
     				window = 3;
@@ -333,7 +333,7 @@ break;
     			}
 	    	}
     	}else{
-    	    window = 2;
+    	    window = 5;
     	    window_timer = 0;
     	}
     	if(window_timer == get_window_value( AT_NSPECIAL, 2, AG_WINDOW_LENGTH )){
@@ -547,8 +547,10 @@ break;
 	can_attack = true;
 	can_jump = true;
 	can_shied = true;
+	if (window_timer == 1){ sound_play(sound_get("floating")); }
 	if (free == true && special_down && window_timer >= get_window_value( AT_USPECIAL, 8, AG_WINDOW_LENGTH)){
-		window_timer = 0;
+		sound_play(sound_get("floating"));
+		window_timer = 2;
 		}
 	}
 break;
@@ -703,7 +705,7 @@ break;
 	move_cooldown[AT_DSPECIAL] = 15;
 	if (was_parried == false){
 		if (instance_exists(dspecial_id) == false){ dspecial_id = noone; }
-	if (window == 1){ cling_once = 0; dspecial_id = noone; random_mecha = random_func(0, 3, true); }
+	if (window == 1){ can_move = false; cling_once = 0; dspecial_id = noone; random_mecha = random_func(0, 3, true); }
 	
 	if (dspecial_id > 0 && state_timer == 25 && random_mecha == 1 && voice_button == true){
 		random_mecha = 0; sound_play(sound_get("Mecha_Die2"));
@@ -733,12 +735,17 @@ break;
 			}
 		}
 		if (free == true){
+		if (place_meeting( x + 5 * spr_dir, y - 10, asset_get("par_block"))){
+		window = 6; window_timer = 0;
+		spawn_hit_fx(x+20 * spr_dir, y-25, 193);
+		sound_play(asset_get("sfx_kragg_rock_land"));
+		}
 		if (abs(hsp) < abs(vsp)){ vsp -= 1; hsp -= 1 * spr_dir; }
 		if (abs(hsp) > abs(vsp)){ vsp -= 0.1; hsp -= 0.2 * spr_dir; }
 		} 
 	    if (window_timer == 1){
 	    	if(!free){
-	    		sound_stop(sound_get("Downspecial_Dash"));
+	    		//sound_stop(sound_get("Downspecial_Dash"));
 	    	}
 	    }
 	}
@@ -782,7 +789,7 @@ break;
 		}
 		can_move = false;
 		telepunch = 0;
-		if (cling_once == 1){ can_wall_jump = true; can_jump = true; }
+		if (cling_once == 1){ can_wall_jump = true; can_jump = true; move_cooldown[AT_USPECIAL] = 5; }
 		if (dspecial_id > 0 && instance_exists(dspecial_id) == true && hsp == 0){
 			dspecial_id.y = y-1;
 			dspecial_id.x = x + 5 * spr_dir;
@@ -921,7 +928,10 @@ break;
 break;
 
 	case AT_TAUNT:
+	var charge_loop = (sound_get("Charge_Loop"));
 	if (window == 1 || window == 2 && window_timer < 5){
+		move_cooldown[AT_TAUNT] = 30;
+		can_taunt = false;
 		can_dash = true;
 		can_attack = true;
 		can_special = true;
@@ -929,7 +939,7 @@ break;
 	}
 	if (window == 3){
 		can_dash = false;
-		IllCrushYou = 5; 
+		IllCrushYou = 5;
 		if (voice_button == true && window_timer == 1){ sound_play(sound_get("Mecha_Crush")); }
 	}
 	if(window == 5){
@@ -937,9 +947,10 @@ break;
 	if (window_timer >= get_window_value( AT_TAUNT, 5, AG_WINDOW_LENGTH ) ){
 		if(taunt_down){
 			window = 3;
-			window_timer = 0;
+			window_timer = 2;
 			}
 		}
+	if (window_timer == 9){ sound_stop(charge_loop); sound_play(charge_loop); }
 	}
 break;
 
@@ -957,8 +968,8 @@ break;
 break;
 
 	case AT_EXTRA_1: //Foresight 
-	invincible = true;
-	invincible_time = 15;
+	//invincible = true;
+	//invincible_time = 25;
 	can_move = false;
 	has_airdodge = false;
 	move_cooldown[AT_EXTRA_1] = 50;

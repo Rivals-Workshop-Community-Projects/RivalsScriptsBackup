@@ -490,42 +490,42 @@ if (attack == AT_NSPECIAL){
 			sound_play(sfx_charge_max);
 			sound_play(asset_get("sfx_frog_nspecial_cast"), false, noone, 0.95, 1.05);
 			spawn_hit_fx( x, y - 12, burst_bubble_charged_vfx );
-			window = 6
-			window_timer = 0
+			window = 6;
+			window_timer = 0;
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
 		}
 		if (!free && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x + (10 * spr_dir), y, "walk", spr_dir*-1)
-			spawn_base_dust( x - (10 * spr_dir), y, "walk", spr_dir)
+			spawn_base_dust( x + (10 * spr_dir), y, "walk", spr_dir*-1);
+			spawn_base_dust( x - (10 * spr_dir), y, "walk", spr_dir);
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_play(asset_get("sfx_frog_nspecial_cast"), false, noone, 0.75, 1.25);
 		}
 	}
     if (window == 2){
-		burst_bubble_can_move = true
+		burst_bubble_can_move = true;
 		if (window_timer == 2){
 			if (has_rune("G")){
-				window = 4
-				window_timer = 0
+				window = 4;
+				window_timer = 0;
 				sound_stop(sfx_charge);
 			}
 		}
         if (window_timer == 25){
 			if (burst_bubble_charge_count != 0){		
 				burst_bubble_charge_count++;
-				window_timer = 0
+				window_timer = 0;
 			} else {
-				window = 4
-				window_timer = 0
+				window = 4;
+				window_timer = 0;
 				sound_stop(sfx_charge);
 			}
 	    }
 		if (!special_down){
-			window = 3
-			window_timer = 0
+			window = 3;
+			window_timer = 0;
 			sound_stop(sfx_charge);
-			burst_bubble_charge_count = 0
+			burst_bubble_charge_count = 0;
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
 		}
     }
@@ -539,9 +539,9 @@ if (attack == AT_NSPECIAL){
 		if (window_timer == 6){
 			sound_play(sfx_charge_max);
 			spawn_hit_fx( x, y - 12, burst_bubble_charged_vfx );
-			burst_bubble_is_charged = true
-			window = 5
-			window_timer = 0
+			burst_bubble_is_charged = true;
+			window = 5;
+			window_timer = 0;
 			if (!free){
 				spawn_base_dust( x + (10 * spr_dir), y, "dash", spr_dir*-1)
 				spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
@@ -549,19 +549,19 @@ if (attack == AT_NSPECIAL){
 		}
 	}
 	if (window == 5){
-		burst_bubble_can_move = true
+		burst_bubble_can_move = true;
 		if (!special_down){
-			window = 6
-			window_timer = 0
+			window = 6;
+			window_timer = 0;
 		}
 		if (shield_pressed || shield_down){
-			window = 3
-			window_timer = 0
+			window = 3;
+			window_timer = 0;
 			sound_play(sfx_charge_mid);
 			spawn_hit_fx( x, y - 12, burst_bubble_charged_vfx );
 		}
 		if (window_timer == 25){
-			window_timer = 0
+			window_timer = 0;
 		}
 	}
 	if (window == 6){

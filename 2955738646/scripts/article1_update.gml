@@ -32,8 +32,8 @@ switch (state){
 	hsp = 0;
 	vsp = 0;
 	uses_shader = true;
-	//player_id.invincible = true;
-	//player_id.invince_time = 2;
+	player_id.invincible = true;
+	player_id.invince_time = 20;
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
 	depth = -20;

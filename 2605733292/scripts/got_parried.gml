@@ -6,13 +6,6 @@ if (my_hitboxID.attack == AT_NAIR){
 	sound_stop(sfx_hammer_swipe_spin);
 }
 
-/*
-if (my_hitboxID.attack == AT_NSPECIAL){
-	prat_land_time = 80;
-	set_state(PS_PRATLAND);
-}
-*/
-
 if (my_hitboxID.attack == AT_DSPECIAL){
 	essence_got_parried = true
 	//prat_land_time = 80;
@@ -26,6 +19,15 @@ if (my_hitboxID.attack == AT_DSPECIAL){
         }
     }
 	*/
+}
+
+if (my_hitboxID.attack == AT_NSPECIAL){
+	//print(parry_lag);
+	set_state(PS_PRATLAND);
+	parry_lag = 80;
+	was_parried = true;
+} else {
+	parry_lag = 40;
 }
 
 if (my_hitboxID.attack != AT_NAIR && my_hitboxID.attack != AT_NSPECIAL){

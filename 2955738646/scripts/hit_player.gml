@@ -191,7 +191,6 @@ if (timestop == true && timestop_amount > 0){
 	}
 	if (other.timestop_hit == false){
 		if !(attack == AT_EXTRA_3 && hbox_num > 0){
-		//other.timestop_damage = 1;
 		other.timestop_hit = true;
 		var timestop_hb = create_hitbox(AT_EXTRA_3, 2, other.x+2, other.y-9);
 		timestop_hb.follow = hit_player_obj.id;
@@ -205,6 +204,7 @@ if (my_hitboxID.attack == AT_EXTRA_3){
 	harsh_hitt.y = my_hitboxID.y-30;
 	harsh_num = random_func(0, 120, true);
 	harsh_hitt.draw_angle = harsh_num;
+	other.timestop_damage -= 1;
 }
 
 if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 2){

@@ -111,11 +111,6 @@ can_swift = true;
 swift_mode = false;
 swift_timer = 0;
 training = get_training_cpu_action() != CPU_FIGHT;
-
-grabbed_player_obj = noone;    //the player object currently being grabbed.
-grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
-grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
-
 radio = 0;
 
 kirbyability = 16;
@@ -171,50 +166,100 @@ amber_useSprDirOffset = true;
 amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
 amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
 
-if (get_player_color( player ) == 26){
-	set_victory_theme(sound_get("bowservictory"));
-}
 
-if (get_player_color( player ) == 18){
-	set_victory_theme(sound_get("pepsivictory"));
-}
+//!!!!!!!! DELTA CODE STARTS HERE
 
-if (get_player_color( player ) ==27){
-	set_victory_theme(sound_get("z3ke"));
+//1. Refactored this victory theme code, too many unnecessary calls to get_player_color()
+victory_theme = noone;
+switch (get_player_color(player)) {
+	case 18:
+		victory_theme = sound_get("pepsivictory")
+		break;
+	case 19:
+		victory_theme = sound_get("geometryvictory");
+		break;
+	case 20:
+		victory_theme = sound_get("halland");
+		break;
+	case 21:
+		victory_theme = sound_get("hollow");
+		break;
+	case 22:
+		victory_theme = sound_get("meatvictory2");
+		break;
+	case 23:
+		victory_theme = sound_get("saltvictory");
+		break;
+	case 24:
+		victory_theme = sound_get("mousevictory");
+		break;
+	case 25:
+		victory_theme = sound_get("catvictory");
+		break;
+	case 26:
+		victory_theme = sound_get("bowservictory");
+		break;
+	case 27:
+		victory_theme = sound_get("z3ke");
+		break;
+	case 28:
+		victory_theme = sound_get("yoyoyo");
+		break;
+	default:
+		victory_theme = sound_get("nox_victory");
+		break;
 }
+set_victory_theme(victory_theme);
 
-if (get_player_color( player ) == 21){
-	set_victory_theme(sound_get("hollow"));
-}
+//2. Set up variables for new nspecial.
+//Note: Some of these are configured in the format [a, b] where
+//a is the value used while not in Swift install.
+//b is the value used while in Swift install.
 
-if (get_player_color( player ) == 20){
-	set_victory_theme(sound_get("halland"));
-}
+//"Projectile" sprite
+nspecial_projectile_vfx = hit_fx_create(sprite_get("nspecial_proj"), 39);
 
-if (get_player_color( player ) == 28){
-	set_victory_theme(sound_get("yoyoyo"));
-}
+//Reticle sprite
+nspecial_reticle_sprite = sprite_get("reticle");
 
-if (get_player_color( player ) == 19){
-	set_victory_theme(sound_get("geometryvictory"));
-}
+//Reticle window
+//If -1, do not display the sprite; consider the reticle inactive.
+nspecial_reticle_window = -1;
+nspecial_reticle_window_timer = 0;
 
-if (get_player_color( player ) == 22){
-	set_victory_theme(sound_get("meatvictory2"));
-}
+//Reticle window configuration
+nspecial_reticle_window_config = [
+	{
+		anim_frame_start : 0,
+		anim_frames : 4,
+		length : [12, 8]
+	},
+	{
+		anim_frame_start : 4,
+		anim_frames : 6,
+		length : [24, 18]
+	},
+	{
+		anim_frame_start : 10,
+		anim_frames : 5,
+		length : [18, 14]
+	}
+];
 
-if (get_player_color( player ) == 23){
-	set_victory_theme(sound_get("saltvictory"));
-}
+//Reticle position
+nspecial_reticle_position = { reticle_x : 0, reticle_y : 0 }
 
-if (get_player_color( player ) == 25){
-	set_victory_theme(sound_get("catvictory"));
-}
+//Beyond this distance to the player, nspecial will fail.
+nspecial_distance_threshold = [400, 650];
 
-if (get_player_color( player ) == 24){
-	set_victory_theme(sound_get("mousevictory"));
-}
+//Sound to use when failed
+nspecial_reticle_failed_sound = sound_get("lock_failed")
 
-else if (get_player_color( player ) != 18 && get_player_color( player ) != 19 && get_player_color( player ) != 20 && get_player_color( player ) != 21 && get_player_color( player ) != 22 && get_player_color( player ) != 23 && get_player_color( player ) != 24 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28){
-	set_victory_theme(sound_get("nox_victory"));
-}
+//Sound to use when succeeded
+nspecial_reticle_success_sound = sound_get("lock_frontier")
+
+//Whether to use swift mode for this move.
+nspecial_use_swift_mode = false;
+
+//Helper data structure for determining closest player.
+nspecial_storage = []

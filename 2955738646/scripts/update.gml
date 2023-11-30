@@ -1,6 +1,6 @@
 //updating every frame
 
-/*
+
 if (state == PS_AIR_DODGE && state_timer > 1 && state_timer < 12){
 	var afterimage = spawn_hit_fx(x, y, airdodge_afterimage);
 	afterimage.depth = 5;
@@ -10,6 +10,7 @@ if ((state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer < 14)
 	afterimage.depth = 5;
 }
 
+/*
 if (shield_pressed && instance_exists(teleportback) == false){
 	teleportback = instance_create(x, y-1, "obj_article1");
 	teleportback.state = 6;
@@ -202,8 +203,8 @@ if (nspecial_time < 37 && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 
 //if (cooldowntime == 19){ vanishing = instance_create(x+1 * spr_dir, y-5, "obj_article1"); vanishing.state = 1; 
 //dodgesound = sound_play(sound_get("instanttransmission")); can_jump = true; }
-if (foresight > 1 && invincible == true){ foresight--; }
-if (foresight <= 1 && invincible == true){ invincible = false; }
+//if (foresight > 1 && invincible == true){ foresight--; }
+//if (foresight <= 1 && invincible == true){ invincible = false; }
 
 if (Bullets == 0){ hit_fx_create( sprite_get( "nspecial_gunhit" ),4); }
 if (Bullets == 1){ hit_fx_create( sprite_get( "nspecial_gunhit" ),4); }

@@ -69,7 +69,7 @@ set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("uspecial_throw"));
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_GOTO, 9);
 
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_TYPE, 1); //We got a floater
-set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 31);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 1);

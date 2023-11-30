@@ -223,7 +223,7 @@ switch (get_player_color(player)){ //Player color - Scan color
 booster_color = -1;
 switch (get_player_color(player)){ //Player color - Scan color
     case 0: //Default
-    booster_color = 1030655;
+    booster_color = 1219071;
     break;
     case 1: //Teal
     booster_color = c_orange;
@@ -238,7 +238,7 @@ switch (get_player_color(player)){ //Player color - Scan color
     booster_color = c_orange;
     break;
     case 5: //B&W - White
-    booster_color = c_ltgray;
+    booster_color = c_white;
     break;
     case 6: //Abyss Purple - Blue
     booster_color = c_blue;

@@ -6,35 +6,35 @@ introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
 
-TrailerAssets_IsBeingUsed = false
+TrailerAssets_IsBeingUsed = false;
 
-sleep_kabrbr_index = 0
+sleep_kabrbr_index = 0;
 
-does_exist_in_playtest_SleepKirby = 0
+does_exist_in_playtest_SleepKirby = 0;
 
 is_in_playtest = (object_index == oTestPlayer)
 
-hitplayerdamage = 0
+hitplayerdamage = 0;
 
-idle_sleep_time = 0
-idle_sleep_tick = 0
-idle_sleep_time_specific = 4
+idle_sleep_time = 0;
+idle_sleep_tick = 0;
+idle_sleep_time_specific = 4;
 
-crouch_timer = 0
+crouch_timer = 0;
 
-jab_is_jabbing = false
+jab_is_jabbing = false;
 
-dattack_sfx_timer = 0
+dattack_sfx_timer = 0;
 
-dtilt_started_on_ground = true
+dtilt_started_on_ground = true;
 
-nair_loop = 0
+nair_loop = 0;
 
-fstrong_charge = -4
+fstrong_charge = -4;
 
-ustrong_image_thingy = 0
+ustrong_image_thingy = 0;
 
-damage_dealt = 0
+damage_dealt = 0;
 
 ability_star_hit_fx = hit_fx_create(sprite_get("ability_star_hit_fx"), 27);
 

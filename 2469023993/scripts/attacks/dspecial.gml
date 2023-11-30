@@ -25,6 +25,9 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED, 4);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 8);

@@ -36,7 +36,7 @@ set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX, sound_get("shadowrefresh"));
-set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 20);
 
 set_num_hitboxes(AT_FSPECIAL_2,1);
 
