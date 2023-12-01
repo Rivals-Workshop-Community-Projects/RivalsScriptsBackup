@@ -99,7 +99,7 @@ if (attack == AT_USTRONG){
     if (window == 2 && window_timer == 1){
         if (boosted){
             set_hitbox_value(attack, 1, HG_DAMAGE, get_hitbox_value( attack, 1, HG_DAMAGE ) + 3);
-            set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, get_hitbox_value( attack, 1, HG_BASE_KNOCKBACK ) + 0.5);
+            //set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, get_hitbox_value( attack, 1, HG_BASE_KNOCKBACK ) + 0.5);
             set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, get_hitbox_value( attack, 1, HG_KNOCKBACK_SCALING ) + 0.1);
             
             set_hitbox_value(attack, 2, HG_DAMAGE, get_hitbox_value( attack, 1, HG_DAMAGE ) + 2);
@@ -125,7 +125,7 @@ if (attack == AT_FSTRONG){
     if (window == 2 && window_timer == 1 && !hitpause && !hitstop){
         if (boosted){
             set_hitbox_value(attack, 1, HG_DAMAGE, get_hitbox_value( attack, 1, HG_DAMAGE ) + 2);
-            set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, get_hitbox_value( attack, 1, HG_BASE_KNOCKBACK ) + 0.3);
+            //set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, get_hitbox_value( attack, 1, HG_BASE_KNOCKBACK ) + 0.3);
             set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, get_hitbox_value( attack, 1, HG_KNOCKBACK_SCALING ) + 0.1);
             set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, get_hitbox_value( attack, 1, HG_EXTRA_HITPAUSE ) + 5);
         }
