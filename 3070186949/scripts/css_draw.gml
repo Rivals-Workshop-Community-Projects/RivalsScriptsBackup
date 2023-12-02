@@ -14,13 +14,13 @@ var alt_name = [
     "Spooky",
     "Echo",
     "Cosmic",
-    "Mettaton",
-    "Mad Dummy",
-    "Shuppet",
-    "Dark Matter",
-    "Mad Mew Mew",
-    "Marie",
-    "Palossand"
+    "Showtime!",
+    "#$%@!",
+    "Floaty Ghost",
+    "Darkness",
+    "Possessed Doll",
+    "I forgor",
+    "Guardian of the Sand"
     ]
 
 var current_player = get_player_color(player);

@@ -113,11 +113,17 @@ switch (attack) {
         }
         
         if window == 3 and window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 {
-            if !free {
-                set_state(PS_IDLE)
+            if was_parried {
+                set_state(PS_PRATFALL)
             }
-            else {
-                set_state(has_hit ? PS_IDLE_AIR : PS_PRATFALL)
+            else
+            {
+                if !free {
+                    set_state(PS_IDLE)
+                }
+                else {
+                    set_state(has_hit ? PS_IDLE_AIR : PS_PRATFALL)
+                }
             }
         }
     break;

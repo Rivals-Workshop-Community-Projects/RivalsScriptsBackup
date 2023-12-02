@@ -288,13 +288,13 @@ with (oPlayer){
 		// sets the initial damage value of the sleeping player
 		if (sleepingTimer == 0){
 			damageToWakeUp = get_player_damage(player);
-			damageToWakeUp = clamp(damageToWakeUp, 0, 75);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 70);
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
-			if (state_timer == 1){
+			if (state_timer == 10){
 				// increasing the time it takes to sleep
-				if (damageIncrementTick != damageToWakeUp && state_timer == 1){
+				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
 					damageIncrementTick++;
 					state_timer--;
 				} else {
@@ -336,6 +336,16 @@ with (oPlayer){
 			sleepHatShouldFlash = false;
 			//print("sleeping player woke up");
 			shouldWakeUp = false;
+			if (!hitpause){
+				if (!free){
+					set_state(PS_IDLE);
+				} else {
+					set_state(PS_IDLE_AIR);
+				}
+				with (other){
+					spawn_hit_fx(other.x, other.y - char_height, sleepVFX);
+				}
+			}
 		}
 	} else {
 		sleepingTimer = 0;
@@ -369,6 +379,7 @@ if(has_rune("A")
 
 #define runSleepCodeOnSelf()
 
+// yea im not gonna bother un-indenting this
 	if (isCurrSleeping){
 		// if hit out of sleep
 		if (hitBySleepingAttack){
@@ -400,13 +411,13 @@ if(has_rune("A")
 		// sets the initial damage value of the sleeping player
 		if (sleepingTimer == 0){
 			damageToWakeUp = get_player_damage(player);
-			damageToWakeUp = clamp(damageToWakeUp, 0, 75);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 70);
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
-			if (state_timer == 1){
+			if (state_timer == 10){
 				// increasing the time it takes to sleep
-				if (damageIncrementTick != damageToWakeUp && state_timer == 1){
+				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
 					damageIncrementTick++;
 					state_timer--;
 				} else {
@@ -448,6 +459,16 @@ if(has_rune("A")
 			sleepHatShouldFlash = false;
 			//print("sleeping player woke up");
 			shouldWakeUp = false;
+			if (!hitpause){
+				if (!free){
+					set_state(PS_IDLE);
+				} else {
+					set_state(PS_IDLE_AIR);
+				}
+				with (other){
+					spawn_hit_fx(other.x, other.y - char_height, sleepVFX);
+				}
+			}
 		}
 	} else {
 		sleepingTimer = 0;

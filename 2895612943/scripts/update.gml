@@ -1,5 +1,14 @@
 //crash prevention line
 
+//parry testing lol
+/*with(oPlayer){
+	if(state == PS_IDLE && self != other){
+		set_attack(AT_UTILT);
+		//state_timer = 4;
+		//state_timer--;
+	}
+}//*/
+
 if(get_synced_var(player) == 1 && init_swap){
     swap();
     init_swap = false;

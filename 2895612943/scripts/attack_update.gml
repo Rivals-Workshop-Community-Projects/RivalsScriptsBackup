@@ -159,6 +159,9 @@ if attack == AT_USPECIAL_2 {
             if(place_meeting(x + (15 * sign(hsp)), y, asset_get("par_block"))){
                 vsp = sign(vsp) * 24;
             }
+            if(place_meeting(x, y + 5, asset_get("par_block"))){
+                hsp = sign(hsp) * 24;
+            }
             disk_obj.hitbox_timer--;
             disk_obj.hsp = 0;
             disk_obj.vsp = 0;
@@ -177,6 +180,7 @@ if attack == AT_USPECIAL_2 {
                 destroy_hitboxes();
                 disk_obj.destroyed = 1;
                 disk_obj = noone;
+                move_cooldown[AT_FSPECIAL] = 0;
                 //instance_destroy(bamboo);
             }
         } else {

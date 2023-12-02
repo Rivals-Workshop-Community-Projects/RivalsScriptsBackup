@@ -16,6 +16,7 @@ is_in_playtest = (object_index == oTestPlayer)
 	shouldWakeUp = false;
 	shouldBounceUpFromBlastzone = false;
 	sleepHatShouldFlash = false;
+	sleepFXspr = sprite_get("empty");
 	sleepVFX = noone;
 	
 	blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);

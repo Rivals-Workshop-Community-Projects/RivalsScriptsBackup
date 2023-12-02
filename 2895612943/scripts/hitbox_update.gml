@@ -3,7 +3,7 @@
 if attack == AT_FSPECIAL {
 
 	if(hbox_num == 1){
-		player_id.move_cooldown[AT_FSPECIAL] = 20;
+		player_id.move_cooldown[AT_FSPECIAL] = 40;
 		//swap
 		if(player_id.attack == AT_NSPECIAL && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.state_timer == 1 && swap_cd <= 0 && !was_parried){
 			//go to bite
@@ -78,8 +78,7 @@ if attack == AT_FSPECIAL {
 			        next.vsp = other.vsp;
 			        next.spr_dir = other.spr_dir;
 			        next.player = other.player;
-			        next.can_hit_self = other.was_parried;
-			        next.transcendent = other.was_parried;
+			        next.was_parried = other.was_parried;
 			    }
 			}
 		}
@@ -89,11 +88,24 @@ if attack == AT_FSPECIAL {
 			bounces += 1;
 			//die about it
 			if !(player_id.attack == AT_USPECIAL_2  && player_id.state == PS_ATTACK_AIR) sound_play(asset_get("sfx_kragg_roll_land"));
-		    if(disk_ver == -1){
-		    	if(vsp < 5) vsp = 5;
+			if(disk_ver == -1){
+				if(vsp < 5) vsp = 5;
 				vsp *= -1.0;
-		        hsp *= 0.9;
-		        if(bounces >= 3) { 
+				hsp *= 0.9;
+				if(bounces >= 3) {
+					//spinout
+					if(was_parried){
+						with(player_id){
+							disk_obj = create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
+							//var temp_angle = 30;
+							var new_hsp, new_vsp;
+							new_hsp = other.hsp * 0.8;
+							new_vsp = other.vsp * 0.8;
+							
+							disk_obj.hsp = new_hsp;
+							disk_obj.vsp = new_vsp;
+						}
+					}
                     destroyed = true;
                 }
 
@@ -101,7 +113,22 @@ if attack == AT_FSPECIAL {
 		    	if(vsp == 0) y -= 2;
 		    	original_vsp *= -1;
 		    	vsp = prev_vsp * -1;
-		    	if (phase >= 4) destroyed = true;
+		    	if (phase >= 4){
+		    		//spinout
+		    		if(was_parried){
+						with(player_id){
+							disk_obj = create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
+							//var temp_angle = 30;
+							var new_hsp, new_vsp;
+							new_hsp = other.hsp * 0.8;
+							new_vsp = other.vsp * 0.5;
+							
+							disk_obj.hsp = new_hsp;
+							disk_obj.vsp = new_vsp;
+						}
+					}
+		    		destroyed = true;
+		    	}
 		    }
 		}else if(collision_line(x - 17, y, x+ 17, y, asset_get("par_block"), false, true)){
 			bounces += 1;
@@ -111,6 +138,19 @@ if attack == AT_FSPECIAL {
 		    	if(abs(hsp) < 3) hsp = sign(hsp) * 3;
 				hsp *= -1;
 		        if(bounces >= 3) { 
+		        	//spinout
+		    		if(was_parried){
+						with(player_id){
+							disk_obj = create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
+							//var temp_angle = 30;
+							var new_hsp, new_vsp;
+							new_hsp = other.hsp * 0.8;
+							new_vsp = other.vsp * 0.8;
+							
+							disk_obj.hsp = new_hsp;
+							disk_obj.vsp = new_vsp;
+						}
+					}
                     destroyed = true;
                 }
 
@@ -118,10 +158,23 @@ if attack == AT_FSPECIAL {
 		    	original_hsp *= -1;
 		    	hsp = prev_hsp * -1;
 		    	if (phase >= 4){
+		    		//spinout
+		    		if(was_parried){
+						with(player_id){
+							disk_obj = create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
+							//var temp_angle = 30;
+							var new_hsp, new_vsp;
+							new_hsp = other.hsp * 0.8;
+							new_vsp = other.vsp * 0.5;
+							
+							disk_obj.hsp = new_hsp;
+							disk_obj.vsp = new_vsp;
+						}
+					}
 		    		destroyed = true;
 		    	}
 		    }
-		}//*/
+		}
 		
 		//visuals
 		if(hitbox_timer % 3 == 0){
@@ -138,6 +191,38 @@ if attack == AT_FSPECIAL {
 			}
 		}
 		
+		//spinout when hit
+		//hitbox detection
+		var hbox = collision_circle(x, y, 17, pHitBox, true, true);
+		if(hbox != noone && hbox.hit_priority > 0 && hbox.proj_break == 0 && hbox.player != player){
+			with(player_id){
+				disk_obj = create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
+			}
+			with(hbox.player_id) spawn_hit_fx( other.x, other.y, 301);
+			var temp_angle = get_hitbox_angle(hbox);
+			var new_hsp, new_vsp;
+			new_hsp = lengthdir_x(hbox.kb_value,temp_angle);
+			new_vsp = lengthdir_y(hbox.kb_value,temp_angle);
+			
+			player_id.disk_obj.hsp = new_hsp;
+			player_id.disk_obj.vsp = new_vsp;
+			if(sign(player_id.disk_obj.hsp) == -1){
+				player_id.disk_obj.spr_dir = -1;
+			}else{
+				player_id.disk_obj.spr_dir = 1;
+			}
+			if(hbox.type == 1){
+				hbox.player_id.old_hsp = hbox.player_id.hsp;
+				hbox.player_id.old_vsp = hbox.player_id.vsp;
+				hbox.player_id.has_hit = true;
+				hbox.player_id.hitpause = true;
+				if(hbox.player_id.hitstop < hbox.hitpause) hbox.player_id.hitstop = hbox.hitpause - 2;
+			}
+			destroy_fx = 1;
+			sound_play(asset_get("sfx_shovel_hit_light2"));
+			destroyed = true;
+		}
+		
 		//failsafe
 		if(x < -200 || x > room_width + 200 || y > room_height + 100) { 
 			sound_play(asset_get("sfx_kragg_roll_land"));
@@ -147,6 +232,19 @@ if attack == AT_FSPECIAL {
         prev_vsp = vsp;
         prev_hsp = hsp;
         
+	}else if(hbox_num == 3){
+		player_id.move_cooldown[AT_FSPECIAL] = 5;
+		proj_angle = 90;
+		//visuals
+		if(hitbox_timer % 2 == 0){
+			image_index++;
+		}
+		hsp *= fric;
+		vsp *= fric;
+		if(hitbox_timer >= length){
+			with(player_id) spawn_hit_fx( other.x, other.y, 14);
+			destroyed = true;
+		}
 	}
 	
 

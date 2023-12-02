@@ -110,6 +110,7 @@ if (place_meeting(x, y, asset_get("pHitBox"))) {
 				var essenceThrowVisual = create_hitbox(AT_DSPECIAL, 3, x, y);
 				//essenceThrowVisual.hsp = -2.5 * spr_dir;
 				essenceThrowVisual.vsp = -10;
+				y -= 26;
 			}
 			
 			state = 3;
@@ -244,6 +245,24 @@ if (hitstop <= 0){//>
 if (state == 2){
 	sprite_index = sprite_get("essence_ability");
 	image_index += 0.25;
+	
+	// dying if left idle for too long
+	if (state_timer >= 480){
+		if (state_timer % 30 == 0 && state_timer != 600){
+			//sprite_index = sprite_get("empty");
+			sound_play(player_id.sfx_ability_star_break, false, noone, 0.75, 1.6);
+			spawn_hit_fx(x, y - 26, 305);
+		} else {
+			//sprite_index = sprite_get("essence_ability");
+		}
+		
+		if (state_timer == 600){
+			setState(4);
+			var essenceThrowVisual = create_hitbox(AT_DSPECIAL, 3, x, y);
+			//essenceThrowVisual.hsp = -2.5 * spr_dir;
+			essenceThrowVisual.vsp = -10;
+		}
+	}
 	
 	// spawning a hitbox on any opponent in hitstun if it passes this
 	with (asset_get("oPlayer")){
@@ -385,7 +404,7 @@ if (state == 4){
 	destroyStarHitbox();
 	if (!hitByNSpecBubble){
 		sound_play(player_id.sfx_ability_star_break);
-		spawn_hit_fx( x, y, player_id.pillow_hit_fx_sml );
+		spawn_hit_fx( x, y - 32, player_id.pillow_hit_fx_sml );
 	}
 	instance_destroy();
 	exit;

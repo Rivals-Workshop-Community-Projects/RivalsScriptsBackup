@@ -184,8 +184,11 @@ if (my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
 
 #define inflictSleepStatus()
 //print("awake player should now go to sleepy sleepy");
+sound_play(sfx_death, false, noone, 0.95, 0.9);
 hit_player_obj.isCurrSleeping = true;
 hit_player_obj.hitBySleepingAttack = false;
 hit_player_obj.damageIncrementTick = 0;
 hit_player_obj.sleepHatSpr = sprite_get("fspecial_enemy_hat");
 hit_player_obj.sleepID = id;
+hit_player_obj.sleepFXspr = sprite_get("pillow_hit_fx_sml");
+hit_player_obj.sleepVFX = hit_fx_create(sleepFXspr, 27);

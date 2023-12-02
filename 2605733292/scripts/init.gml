@@ -64,7 +64,8 @@ sleepHatImageTimer2 = 0;
 shouldWakeUp = false;
 sleepHatShouldFlash = false;
 shouldBounceUpFromBlastzone = false;
-sleepVFX = noone;
+sleepFXspr = sprite_get("pillow_hit_fx_sml");
+sleepVFX = pillow_hit_fx_sml;
 
 /*
 hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = false;
@@ -393,5 +394,9 @@ tcoart = sprite_get("tco_sketch");
 
 sprite_change_offset("miiverse", 60, 30);
 miiverse_post = sprite_get("miiverse");
+
+// Po & Gumbo
+pot_compat_variable = sprite_get("gumbo_food");
+pot_compat_text = "Strawberry Shortcake";
 
 user_event(7);

@@ -1,7 +1,14 @@
+
+
 with hit_fx_obj {
     if hit_fx == other.small_hfx or hit_fx == other.big_hfx or hit_fx == other.medium_hfx  {
         depth = other.depth + 1
     }
+}
+
+
+if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND) and attack != AT_TAUNT {
+    sound_stop(tune);
 }
 
 if (instance_exists(record_player_obj) && collision_circle(x, y, 42, record_player_obj, false, false)){
@@ -68,7 +75,7 @@ switch (state) {
     case PS_AIR_DODGE:
         if state_timer == 3 {
             sound_stop(charge_sound)
-            charge_sound = sound_play(sound_get("sfx_ut_ghost_sandwich"), false, noone, 0.8, 1)
+            charge_sound = sound_play(sound_get("sfx_ut_ghost_sandwich"), false, noone, 0.6, 1)
         }
     break;
     case PS_ATTACK_AIR:

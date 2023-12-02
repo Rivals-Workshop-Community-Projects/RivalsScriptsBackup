@@ -46,7 +46,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 14);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 3);
-//set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 
 //multihit
@@ -73,3 +73,27 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, true);
 
 //set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+
+//spinout state
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, -1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 80);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 30);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 30);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 0); //changes to 1 for bite
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 5);
+set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("disc"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("disc"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1); //delta code doesnt like this
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 14);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 3);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, true);
