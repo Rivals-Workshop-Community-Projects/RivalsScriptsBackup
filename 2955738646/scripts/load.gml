@@ -1,4 +1,4 @@
-set_victory_theme( sound_get( "S&K3victory" ));
+set_victory_theme( sound_get( "victory" ));
 
 sprite_change_offset("idle", 64, 108); sprite_change_offset("mecha_hurt", 20, 89);
 sprite_change_offset("hurt", 64, 108);
@@ -110,6 +110,7 @@ sprite_change_offset("ustrong_proj_charge", 58, 235);
 sprite_change_offset("ustrong_proj_blast", 58, 235);
 sprite_change_offset("fstrong_explode", 50, 120);
 sprite_change_offset("fstrong_burst_tail", 0, 80);
+sprite_change_offset("dspecial_burst_tail", 0, 70);
 sprite_change_offset("dust", 10, 10);
 
 sprite_change_offset("shockwave", 30, 0);

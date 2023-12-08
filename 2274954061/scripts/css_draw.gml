@@ -5,7 +5,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 10;
+var num_alts = 11;
 var alt_cur = get_player_color(player);
  
  
@@ -21,7 +21,7 @@ alt_name[6]  = "Abyss";
 alt_name[7]  = "Early Access";
 alt_name[8]  = "Neo";
 alt_name[9]  = "oooo spooky again";
-alt_name[10] = "DJ Yellow";
+alt_name[10] = "Tourney 1";
 alt_name[11] = "Rainbow";
 alt_name[12] = "Rap Women";
 alt_name[13] = "''''Infamous''''";

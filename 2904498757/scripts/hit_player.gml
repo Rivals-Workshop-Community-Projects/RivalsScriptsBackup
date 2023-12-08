@@ -14,13 +14,18 @@ switch hb.attack {
 	case AT_DSTRONG:
 		if hb.hbox_num <= 2 {
 			hpo.can_wall_tech = false;
+			hpo.x = lerp(hpo.x, x, 0.6);
+		}
+		else {
+			hpo.can_wall_tech = true;
+			hpo.can_tech = true;
 		}
 		break;
 }
 
 #define grab_player
 var hpo = hit_player_obj;
-if (hpo.state == PS_HITSTUN || hpo.state == PS_HITSTUN_LAND) && was_parried == false && hpo.clone == false {
+if (hpo.state == PS_HITSTUN || hpo.state == PS_HITSTUN_LAND) && !was_parried && !hpo.clone {
 	var grabbed_struct = {
 	    pid : hpo,
 	    relative_x : hpo.x - x,

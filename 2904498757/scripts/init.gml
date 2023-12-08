@@ -137,6 +137,7 @@ sfx_parry = sound_get("pt_parry");
 sfx_death = sound_get("pt_death");
 sfx_fthrow1 = asset_get("sfx_zetter_downb");
 sfx_fthrow2 = asset_get("sfx_abyss_hazard_hit");
+sfx_dspec_indicator = asset_get("mfx_star");
 
 // VFX
 vfx_cheese_land = hit_fx_create(sprite_get("cheese_land_fx"), 24);

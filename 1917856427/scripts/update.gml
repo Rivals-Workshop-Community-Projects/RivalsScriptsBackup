@@ -2,7 +2,6 @@
 spawnclock --;
 
 
-
 if (window == 1 && window_timer == 1)
 {
 	if(!shield_down && GAUGE_NAME_CURRENT >=55)
@@ -44,20 +43,68 @@ if (window == 1 && window_timer == 1)
         }
 	}
 
+with(oPlayer){
+	if (id != other.id){
+		if (disappearFx){
+			countDownFxAlpha -= fadeSpeed;
+			if (countDownFxAlpha <= 0){
+				countDownFxAlpha = 0;
+				disappearFx = false;
+			}
+		}
+	}
+}
+
+if (ds_list_size(frozenPlayersArray) != 0){
+	for (var i = 0; i < ds_list_size(frozenPlayersArray); i++){
+		with(oPlayer){
+			
+			if (id == ds_list_find_value(other.frozenPlayersArray, i) and frozenInTime){
+				// print(freezeFrames);
+				hitstop = 99999;
+				if (countDownFxFrame < 21){
+					countDownFxFrame += 0.067;
+				}
+				freezeFrames -= 1;
+				outline_color = [ 56, 62, 182 ];
+				if (freezeFrames <= 0){
+					var toClear = ds_list_find_index(other.frozenPlayersArray, id);
+					ds_list_delete(other.frozenPlayersArray, toClear);
+					disappearFx = true;
+					sound_play(other.tick);
+					hitstop = 5;
+					outline_color = [0, 0, 0];
+					frozenInTime = false;
+				}
+			}
+		}
+	}
+}
+
+// if (hit_player_obj != -4){
+// 	if (hit_player_obj.frozenInTime){
+// 		if (hit_player_obj.state != PS_WRAPPED){
+// 			hit_player_obj.state = PS_WRAPPED;
+// 		}
+// 		hit_player_obj.vsp = 0;
+// 		hit_player_obj.hsp = 0;
+// 	}
+// }
+
 if (get_player_color( player ) == 13) {
   outline_color = [ 6, 1, 35 ];
   init_shader();
 }
-if (get_player_color( player ) == 12)
-{
-    set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);
-    large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_specialt"), 30);
-}
-else
-{
-    set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);
-    large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_large"), 30);
-}
+// if (get_player_color( player ) == 12)
+// {
+//     set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);
+//     large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_specialt"), 30);
+// }
+// else
+// {
+//     set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);
+//     large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_large"), 30);
+// }
 if used_aird = true && (state != PS_AIR_DODGE) 
 {
  
@@ -95,26 +142,33 @@ if(grabbedid != noone){
 	}
 }
 
+if (state == PS_PRATLAND){
+	shine_parried = false;
+}
 
 
-if MUS_NOTE = 8 
+if MUS_NOTE == 8
 {
-  if get_player_color( player ) != 12
-  {
-  outline_color = [ 72, 14, 111 ];
-  init_shader();
-  }
-  else
-  {
-    outline_color = [ 72, 76, 114 ];
-    init_shader();      
-  }
+	dash_speed = 7.5;
+	initial_dash_speed = 8;
+	if get_player_color( player ) != 12
+	{
+		outline_color = [ 72, 14, 111 ];
+		init_shader();
+	}
+	else
+	{
+		outline_color = [ 72, 76, 114 ];
+		init_shader();
+	}
 }
 else
 {
-if get_player_color( player ) != 13{
-   outline_color = [ 0, 0, 0 ];   
-}
+	dash_speed = 6.5;
+	initial_dash_speed = 7;
+	if get_player_color( player ) != 13{
+	   outline_color = [ 0, 0, 0 ];   
+	}
 }
 
 //trummel
@@ -232,20 +286,21 @@ if (introTimer < 15) {
     draw_indicator = true;
 }
 
-
-if (introTimer == 0 && introTimer2 == 0)
-{
-    sound_play(asset_get ("sfx_abyss_portal_intro"));
-}
-
-if (introTimer == 8 && introTimer2 == 0)
-{
-    sound_play(asset_get ("sfx_swipe_heavy1"));
-}
-
-if (introTimer == 13 && introTimer2 == 0)
-{
-    sound_play(asset_get ("sfx_abyss_despawn"));
+if (state == PS_SPAWN){
+	if (introTimer == 0 && introTimer2 == 0)
+	{
+	    sound_play(asset_get ("sfx_abyss_portal_intro"));
+	}
+	
+	if (introTimer == 8 && introTimer2 == 0)
+	{
+	    sound_play(asset_get ("sfx_swipe_heavy1"));
+	}
+	
+	if (introTimer == 13 && introTimer2 == 0)
+	{
+	    sound_play(asset_get ("sfx_abyss_despawn"));
+	}
 }
 
 
@@ -392,7 +447,6 @@ set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
 set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
 set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, ability_hurt);
 
-
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 4);
@@ -442,11 +496,11 @@ set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_AIR_FRICTION, 0.20);
 
 ///music player (i wrote this before starting coding this, this is going to be hell)
 
-if currentsong = sprite_get("roatheme") 
+// if currentsong = sprite_get("roatheme") 
 
-  {
+//   {
       
-  }
+//   }
 //if by any chance the player manages to have permanent extra knockack after using an octave, this code should prevent that from happening
 if MUS_NOTE != 8 && GAUGE_NAME_CURRENT >=55
 {

@@ -1,5 +1,6 @@
 // called when the character gets KO'd
  char_height = 52;
+ shine_parried = false;
  GAUGE_NAME_CURRENT = 0;
  MUS_NOTE=0;
  HITD = 0;

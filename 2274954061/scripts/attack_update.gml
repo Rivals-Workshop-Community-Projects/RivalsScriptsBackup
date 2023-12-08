@@ -113,7 +113,7 @@ if (attack == AT_USPECIAL){
             set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
             set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
             if (window_timer == 2 && !hitpause){
-                spawn_hit_fx( x + (spr_dir*0), y - 25, 20 );
+                //spawn_hit_fx( x + (spr_dir*0), y - 25, 20 );
             }
         }
         else{ //hold

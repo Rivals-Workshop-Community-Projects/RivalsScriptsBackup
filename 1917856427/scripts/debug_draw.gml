@@ -1,5 +1,8 @@
 //debug-draw
-
+if HITD = 1
+{
+    draw_sprite(sprite_get("gauge2"), floor(GAUGE_NAME_CURRENT/7.8), x-100,y+10);
+}
 //draw_debug_text(x,y,"window: " + string(window));
 
 

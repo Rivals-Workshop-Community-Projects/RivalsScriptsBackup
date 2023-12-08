@@ -29,12 +29,11 @@ alt_name[9]  = "Extreme Pink";
 alt_name[10] = "Retro";
 alt_name[11] = "Yellow";
 alt_name[12] = "Aqua";
-alt_name[13] = "Snow";
+alt_name[13] = "Shaved Ice";
 alt_name[14] = "Reddy";
 alt_name[15] = "Brazil";
-alt_name[16] = "Matrimelee";
-alt_name[17] = "Yippee";
-alt_name[18] = "DD4";
+alt_name[16] = "Don't Disagree";
+alt_name[17] = "Eat Your Veggies";
  
  
  

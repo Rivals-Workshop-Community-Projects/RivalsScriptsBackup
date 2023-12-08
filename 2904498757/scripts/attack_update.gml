@@ -44,6 +44,12 @@ switch attack {
     case AT_DSTRONG:
 		move_cooldown[attack] = 8;
 		break;
+	case AT_FSTRONG:
+		if state_timer == 1 {
+			sound_play(asset_get("sfx_swipe_weak1"), false, noone, 0.7, 1.1);
+			spawn_base_dust(x - 16*spr_dir, y, "dash_start")
+		}
+		break;
 	case AT_TAUNT:
 		can_jump = free;
 		break;
@@ -117,7 +123,7 @@ switch attack {
 					uspec_charge += 1;
 				}
 				var mult = uspec_charge / 60;
-				set_window_value(attack, 2, AG_WINDOW_VSPEED, -12.5 - 6 * mult);
+				set_window_value(attack, 2, AG_WINDOW_VSPEED, -12.5 - 4.25 * mult);
 				if uspec_charge { strong_flashing = uspec_charge % 10 < 5; }
 				
 				break;
@@ -140,7 +146,7 @@ switch attack {
 				dspec_timer += !hitpause;
 				can_wall_jump = true;
 				
-				if !free { // land
+				if !free && !hitpause { // land
 					window = 3;
 					window_timer = 0;
 					shake_camera(3, 4);
@@ -148,20 +154,34 @@ switch attack {
 					sound_play(asset_get("sfx_blow_heavy1"));
 					destroy_hitboxes();
 					
-					var pizza_vsp = -4 - min(dspec_timer/3, 8);
-					var pizza_hsp = 1 + clamp(dspec_timer/10, 1, 2.5);
-					
-					var pizza = create_hitbox(attack, 3, x + 30*spr_dir, y);
-					pizza.hsp = pizza_hsp * spr_dir;
-					pizza.vsp = pizza_vsp;
-					
-					var pizza = create_hitbox(attack, 3, x - 25*spr_dir, y);
-					pizza.spr_dir = -spr_dir;
-					pizza.draw_x = -spr_dir;
-					pizza.hsp = -pizza_hsp * spr_dir;
-					pizza.vsp = pizza_vsp;
+					// spawn pizza blocks
+					if dspec_timer > 8 {
+						var pizza_vsp = -4 - min(dspec_timer/3, 8);
+						var pizza_hsp = 1 + clamp(dspec_timer/10, 1, 2.5);
+						
+						var pizza = create_hitbox(attack, 3, x + 30*spr_dir, y);
+						pizza.hsp = pizza_hsp * spr_dir;
+						pizza.vsp = pizza_vsp;
+						
+						var pizza = create_hitbox(attack, 3, x - 25*spr_dir, y);
+						pizza.spr_dir = -spr_dir;
+						pizza.draw_x = -spr_dir;
+						pizza.hsp = -pizza_hsp * spr_dir;
+						pizza.vsp = pizza_vsp;
+					}
+				}
+				else if dspec_timer == 8 && !hitpause {
+					// pizza block indicators
+					sound_play(sfx_dspec_indicator);
+					white_flash_timer = 10;
+					hitpause = true;
+					hitstop_full = 2;
+					hitstop = 2;
+					old_hsp = 0;
+					old_vsp = 0;
 				}
 				else if dspec_timer > 28 {
+					// jump cancel
 					can_jump = true;
 				}
 				break;
@@ -280,9 +300,6 @@ switch attack {
 				break;
         }
         break;
-	case AT_NSPECIAL_AIR:
-		
-		break;
 }
 
 if abs(hsp) < 2 && !hitpause {

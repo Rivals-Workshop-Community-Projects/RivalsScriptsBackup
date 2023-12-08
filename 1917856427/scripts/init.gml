@@ -21,9 +21,11 @@ dichal=0
 fast_fallc = 0;
 shine_hit = 0;
 timedpress = 0;
+frozenPlayersArray = ds_list_create();
 setwindowt = 1;
 canbp = false;
 used_aird = false;
+shine_parried = false;
 //trummel support
 trummelcodecneeded = false;
 trummelcodec_id = noone;
@@ -33,7 +35,7 @@ tcoart = sprite_get("tco");
 
 char_height = 52;
 idle_anim_speed = .160;
-walk_anim_speed = .125;
+walk_anim_speed = .165;
 crouch_anim_speed = 1.1;
 dash_anim_speed = .25;
 pratfall_anim_speed = .15;
@@ -79,9 +81,9 @@ wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .13; //grounded deceleration when wavelanding
 //crouch animation frames
-crouch_startup_frames = 2;
+crouch_startup_frames = 1;
 crouch_active_frames = 1;
-crouch_recovery_frames = 2;
+crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -100,17 +102,17 @@ techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
-air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 3;
+air_dodge_active_frames = 1;
+air_dodge_recovery_frames = 2;
 air_dodge_speed = 7.5;
 
 //roll animation frames
-roll_forward_startup_frames = 2;
+roll_forward_startup_frames = 1;
 roll_forward_active_frames = 4;
 roll_forward_recovery_frames = 2;
-roll_back_startup_frames = 2;
+roll_back_startup_frames = 1;
 roll_back_active_frames = 4;
-roll_back_recovery_frames = 1;
+roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -130,7 +132,10 @@ large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_large"), 30);
 bcd = hit_fx_create(sprite_get("hfx_clock_cd"), 20);
 smash_hfx = hit_fx_create(sprite_get("smash"), 60);
 smashmirror_hfx = hit_fx_create(sprite_get("smashmirror"), 60);
-
+timeFreeze_hfx = hit_fx_create(sprite_get("TimeFreezeFX"), 60)
+countClock = sprite_get("timeFreezeCountDownFX");
+tick = sound_get("tick");
+tock = sound_get("tock");
 
 //god of destruction support
 kirbyability = 16;

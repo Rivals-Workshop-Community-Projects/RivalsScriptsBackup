@@ -125,7 +125,7 @@ switch (state){
 	
 	case 4: //Respawning back
 	
-	initial_invince = 1;
+	//initial_invince = 1;
 	uses_shader = true;
 	ChaosEmerald = player_id.ChaosEmerald;
 	//set_article_color_slot(0, 1, 1, 15, 0.1);

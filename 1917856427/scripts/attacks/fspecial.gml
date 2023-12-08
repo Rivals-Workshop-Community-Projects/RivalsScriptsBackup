@@ -4,7 +4,6 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
-
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);

@@ -5,3 +5,9 @@ if (get_player_color(player) == 7){
     }
     outline_color = [35, 67, 49];
 }
+
+//blm alt
+if (get_player_color(player) == 10){
+    set_character_color_shading(0, 0.6);
+
+}

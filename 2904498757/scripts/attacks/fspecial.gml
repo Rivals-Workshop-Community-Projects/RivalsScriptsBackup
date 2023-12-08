@@ -58,3 +58,4 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.95);
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, true);

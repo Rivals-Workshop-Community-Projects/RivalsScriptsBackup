@@ -419,7 +419,6 @@ break;
 		}
         if (nspecial_time <= 0){
         //Can't shoot anymore because no bullets
-        	//sound_play(sound_get("f3056_003_gun_pose"));
         	window = 8;
         	window_timer = 1;
         	move_cooldown[AT_NSPECIAL] = 90;
@@ -432,12 +431,6 @@ break;
     	grav = 1;
     	if (window_timer == 1){
     		vsp = -nspecial_time / 3;
-    	if (hsp > -1 * spr_dir && spr_dir == 1){
-    		spr_dir = -1;
-    	}
-    	if (hsp < 1 * spr_dir && spr_dir == -1){
-    		spr_dir = 1;
-    		}
     	}
     }
     if (window == 10){
@@ -764,14 +757,27 @@ break;
 			if ((get_gameplay_time() mod 5) == 0){ create_hitbox(AT_DSPECIAL, 6, x, y); }
 			if ((get_gameplay_time() mod 1) == 0){ spawn_hit_fx(x+50 * spr_dir, y+20 + randomfire, 100); }
 			}
-			if (state == PS_ATTACK_AIR && state_timer > 30){
+			
+			if (free == true){
+			var mydir = point_direction(hsp,vsp,0,0);
+			var fire_afterimage = spawn_hit_fx(x-30 * spr_dir, y-70, Burst_Tail2);
+			fire_afterimage.draw_angle = mydir - 180;
+			}
+			
+			var floor_distance;
+			for (var i = 0; i < 1; i++;) {
+			floor_distance = y + (100);
+			
+			if (state == PS_ATTACK_AIR && window_timer > 10
+			&& !( place_meeting( x, floor_distance, asset_get("par_block"))) ){
 			window = 5;
 			window_timer = 0;
+					}
 				}
 			}
 		}
 	}
-	if (window == 4 && window_timer > 5 && dspecial_id < 0){
+	if (window == 4 && window_timer > 11 && dspecial_id < 0){
 		window = 5;
 		window_timer = 0;
 	}

@@ -35,8 +35,7 @@ alt_name[15] = "Retro";
 alt_name[16] = "Flame Blue";
 alt_name[17] = "Ting a Bit";
 alt_name[18] = "Metal";
-alt_name[19] = "DD4";
-alt_name[20] = "Orange";
+alt_name[19] = "Orange";
  
  
  

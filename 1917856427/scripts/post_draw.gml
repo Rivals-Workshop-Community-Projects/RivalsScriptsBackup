@@ -1,10 +1,5 @@
 //post-draw
-if HITD = 1
-{
 
-draw_sprite(sprite_get("gauge2"), floor(GAUGE_NAME_CURRENT/7.8), x-100,y+10);
-
-}
 /*if get_player_color(player) == 12 && random_func(4, 2, 1) == 0 {
 shader_start()
 var fs = floor(random_func(0, sprite_height-1, 1)/2)*2

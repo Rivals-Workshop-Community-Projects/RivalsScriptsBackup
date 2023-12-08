@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 12, 5, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 18 );
 
 // Bluey
 set_color_profile_slot( 1, 0, 124, 112, 255 ); //Shoes / Bracelets
@@ -156,15 +156,15 @@ set_color_profile_slot( 12, 5, 145, 255, 240 ); //Socks
 set_color_profile_slot( 12, 6, 0, 89, 232 ); //Hair
 set_color_profile_slot( 12, 7, 41, 175, 254 ); //Wand
 
-// Snow
-set_color_profile_slot( 13, 0, 209, 227, 255 ); //Shoes / Bracelets
-set_color_profile_slot( 13, 1, 209, 227, 255 ); //Headband
-set_color_profile_slot( 13, 2, 209, 227, 255 ); //Shirt
-set_color_profile_slot( 13, 3, 15, 79, 217 ); //Skirt
+// Shaved Ice
+set_color_profile_slot( 13, 0, 255, 209, 221 ); //Shoes / Bracelets
+set_color_profile_slot( 13, 1, 255, 209, 217 ); //Headband
+set_color_profile_slot( 13, 2, 255, 209, 216 ); //Shirt
+set_color_profile_slot( 13, 3, 217, 52, 52 ); //Skirt
 set_color_profile_slot( 13, 4, 245, 129, 43 ); //Skin
-set_color_profile_slot( 13, 5, 28, 68, 156 ); //Socks
+set_color_profile_slot( 13, 5, 232, 63, 63 ); //Socks
 set_color_profile_slot( 13, 6, 55, 28, 9 ); //Hair
-set_color_profile_slot( 13, 7, 170, 226, 240 ); //Wand
+set_color_profile_slot( 13, 7, 240, 170, 180 ); //Wand
 
 // Reddy
 set_color_profile_slot( 14, 0, 240, 89, 14 ); //Shoes / Bracelets
@@ -181,40 +181,30 @@ set_color_profile_slot( 15, 0, 29, 158, 0 ); //Shoes / Bracelets
 set_color_profile_slot( 15, 1, 29, 158, 0 ); //Headband
 set_color_profile_slot( 15, 2, 219, 190, 0 ); //Shirt
 set_color_profile_slot( 15, 3, 0, 12, 173 ); //Skirt
-set_color_profile_slot( 15, 4, 214, 120, 43); //Skin
+set_color_profile_slot( 15, 4, 214, 120, 43 ); //Skin
 set_color_profile_slot( 15, 5, 202, 202, 219 ); //Socks
 set_color_profile_slot( 15, 6, 33, 16, 3 ); //Hair
 set_color_profile_slot( 15, 7, 255, 229, 0 ); //Wand
 
-// Clara
-set_color_profile_slot( 16, 0, 232, 88, 56 ); //Shoes / Bracelets
-set_color_profile_slot( 16, 1, 248, 168, 48 ); //Headband
-set_color_profile_slot( 16, 2, 232, 232, 248 ); //Shirt
-set_color_profile_slot( 16, 3, 232, 88, 56 ); //Skirt
-set_color_profile_slot( 16, 4, 245, 150, 78 ); //Skin
-set_color_profile_slot( 16, 5, 232, 232, 248 ); //Socks
-set_color_profile_slot( 16, 6, 152, 64, 64 ); //Hair
-set_color_profile_slot( 16, 7, 182, 51, 48 ); //Wand
+// Emma
+set_color_profile_slot( 16, 0, 6, 74, 199 ); //Shoes / Bracelets
+set_color_profile_slot( 16, 1, 209, 209, 209 ); //Headband
+set_color_profile_slot( 16, 2, 137, 59, 255 ); //Shirt
+set_color_profile_slot( 16, 3, 50, 22, 104 ); //Skirt
+set_color_profile_slot( 16, 4, 255, 179, 117 ); //Skin
+set_color_profile_slot( 16, 5, 68, 69, 79 ); //Socks
+set_color_profile_slot( 16, 6, 78, 75, 196 ); //Hair
+set_color_profile_slot( 16, 7, 250, 0, 87 ); //Wand
 
-// Yippee
-set_color_profile_slot( 17, 0, 66, 95, 120 ); //Shoes / Bracelets
-set_color_profile_slot( 17, 1, 6, 249, 252 ); //Headband
-set_color_profile_slot( 17, 2, 73, 80, 82 ); //Shirt
-set_color_profile_slot( 17, 3, 96, 120, 151 ); //Skirt
-set_color_profile_slot( 17, 4, 240, 167, 91 ); //Skin
-set_color_profile_slot( 17, 5, 249, 249, 249 ); //Socks
-set_color_profile_slot( 17, 6, 60, 61, 102 ); //Hair
-set_color_profile_slot( 17, 7, 219, 166, 82 ); //Wand
-
-// Dev Derby 4
-set_color_profile_slot( 18, 0, 96, 92, 199 ); //Shoes / Bracelets
-set_color_profile_slot( 18, 1, 161, 155, 150 ); //Headband
-set_color_profile_slot( 18, 2, 195, 36, 58 ); //Shirt
-set_color_profile_slot( 18, 3, 112, 96, 101 ); //Skirt
-set_color_profile_slot( 18, 4, 245, 129, 43 ); //Skin
-set_color_profile_slot( 18, 5, 222, 216, 195 ); //Socks
-set_color_profile_slot( 18, 6, 237, 152, 158 ); //Hair
-set_color_profile_slot( 18, 7, 222, 221, 210 ); //Wand
+// Sara
+set_color_profile_slot( 17, 0, 25, 159, 0 ); //Shoes / Bracelets
+set_color_profile_slot( 17, 1, 25, 159, 0 ); //Headband
+set_color_profile_slot( 17, 2, 238, 241, 243 ); //Shirt
+set_color_profile_slot( 17, 3, 25, 159, 0 ); //Skirt
+set_color_profile_slot( 17, 4, 215, 137, 88 ); //Skin
+set_color_profile_slot( 17, 5, 238, 241, 243 ); //Socks
+set_color_profile_slot( 17, 6, 175, 111, 35 ); //Hair
+set_color_profile_slot( 17, 7, 133, 204, 0 ); //Wand
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

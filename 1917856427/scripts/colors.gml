@@ -127,14 +127,14 @@ set_color_profile_slot( 9, 6, 248, 216, 120 ); //unnamed color row
 set_color_profile_slot( 9, 7, 56, 186, 255 ); //unnamed color row
 
 // 10
-set_color_profile_slot( 10, 0, 255, 176, 39 ); //unnamed color row
-set_color_profile_slot( 10, 1, 217, 106, 43 ); //unnamed color row
-set_color_profile_slot( 10, 2, 224, 157, 119 ); //unnamed color row
-set_color_profile_slot( 10, 3, 176, 67, 90 ); //unnamed color row
-set_color_profile_slot( 10, 4, 255, 140, 52 ); //unnamed color row
-set_color_profile_slot( 10, 5, 210, 72, 43 ); //unnamed color row
-set_color_profile_slot( 10, 6, 255, 182, 54 ); //unnamed color row
-set_color_profile_slot( 10, 7, 56, 186, 255 ); //unnamed color row
+set_color_profile_slot( 10, 0, 255, 236, 31 ); //unnamed color row
+set_color_profile_slot( 10, 1, 143, 92, 61 ); //unnamed color row
+set_color_profile_slot( 10, 2, 207, 140, 101 ); //unnamed color row
+set_color_profile_slot( 10, 3, 143, 91, 71 ); //unnamed color row
+set_color_profile_slot( 10, 4, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 10, 5, 182, 222, 218 ); //unnamed color row
+set_color_profile_slot( 10, 6, 255, 236, 31 ); //unnamed color row
+set_color_profile_slot( 10, 7, 255, 215, 56 ); //unnamed color row
 
 // 11
 set_color_profile_slot( 11, 0, 0, 99, 214 ); //unnamed color row
@@ -186,7 +186,7 @@ set_color_profile_slot( 15, 5, 217, 30, 65 ); //unnamed color row
 set_color_profile_slot( 15, 6, 40, 174, 255 ); //unnamed color row
 set_color_profile_slot( 15, 7, 255, 0, 0 ); //unnamed color row
 
-// Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman 
+// Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman Gay Superman
 set_color_profile_slot( 16, 0, 150, 66, 47 ); //unnamed color row
 set_color_profile_slot( 16, 1, 97, 26, 43 ); //unnamed color row
 set_color_profile_slot( 16, 2, 246, 188, 147 ); //unnamed color row

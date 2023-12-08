@@ -128,10 +128,11 @@ if (attack == AT_DSPECIAL_2) {
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
    if (window == 1 && 35 > wblastcharge) {
+		reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
 		reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
    }
    
-   if (window == 1 && window_timer == 6 && wblastcharge == 35) {
+   if (window == 1 && window_timer == (get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)) && wblastcharge == 35) {
 		window = 5;
 		window_timer = 0;
    }
@@ -159,6 +160,7 @@ if (attack == AT_NSPECIAL){
 					sound_play(sound_get("magicshoot4"), false, noone, .8, .75);	
 					spawn_hit_fx(x-16*spr_dir, y-72, 111);
 					window_timer = 0;
+					set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
 					set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 					}		
 			}

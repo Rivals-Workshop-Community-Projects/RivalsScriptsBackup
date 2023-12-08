@@ -76,9 +76,8 @@ if(get_player_color(player) == 26){
 }
 //================================================================================
 #define maskFooter()
-// Restores normal drawing parameters//================================================================================
-{
-    gpu_set_alphatestenable(false);
-    gpu_set_blendmode(bm_normal);
-    draw_set_alpha(1);
-}
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+gpu_set_blendenable(1);
+gpu_set_colorwriteenable(true,true,true,true);

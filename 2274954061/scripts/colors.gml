@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 6, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 10 );
+set_num_palettes( 11 );
 
 // tempo up!
 set_color_profile_slot( 1, 0, 25, 181, 233 ); //blue
@@ -107,7 +107,7 @@ set_color_profile_slot( 7, 6, 83, 122, 62 ); //cone
 set_color_profile_slot( 7, 7, 211, 226, 154 ); //sign bottom
 
 // neo
-set_color_profile_slot( 8, 0, 255, 251, 222 ); //blue
+set_color_profile_slot( 8, 0, 255, 229, 196 ); //blue
 set_color_profile_slot( 8, 1, 0, 208, 255 ); //cone stripe
 set_color_profile_slot( 8, 2, 0, 109, 199 ); //cone stripe shade
 set_color_profile_slot( 8, 3, 0, 67, 115 ); //purple
@@ -125,6 +125,16 @@ set_color_profile_slot( 9, 4, 121, 122, 119 ); //blue
 set_color_profile_slot( 9, 5, 48, 114, 34 ); //yellow
 set_color_profile_slot( 9, 6, 48, 114, 34 ); //cone
 set_color_profile_slot( 9, 7, 121, 122, 119 ); //sign bottom
+
+// blm
+set_color_profile_slot( 10, 0, 107, 73, 61 ); //blue
+set_color_profile_slot( 10, 1, 252, 252, 252 ); //cone stripe
+set_color_profile_slot( 10, 2, 166, 153, 179 ); //cone stripe shade
+set_color_profile_slot( 10, 3, 255, 203, 31 ); //purple
+set_color_profile_slot( 10, 4, 52, 51, 51 ); //blue
+set_color_profile_slot( 10, 5, 255, 203, 31 ); //yellow
+set_color_profile_slot( 10, 6, 255, 203, 31 ); //cone
+set_color_profile_slot( 10, 7, 97, 97, 97 ); //sign bottom
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

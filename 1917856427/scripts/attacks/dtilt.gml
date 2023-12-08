@@ -12,20 +12,21 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 12); // old 12
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 8); // old 9 
+set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 9); // old 8
 set_window_value(AT_DTILT, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
+set_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4); // OLD 5
 set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
 
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 10);//OLD 7
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 10);//OLD 9
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 set_num_hitboxes(AT_DTILT,1);
 

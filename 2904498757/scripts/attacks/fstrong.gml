@@ -5,7 +5,8 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
 // startup
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 2);
 
 // post-charge
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 7);

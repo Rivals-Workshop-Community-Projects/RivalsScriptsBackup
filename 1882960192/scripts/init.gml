@@ -63,7 +63,7 @@ wait_sprite = sprite_get("idle_wait");
 
 //parry animation frames
 dodge_startup_frames = 2;
-dodge_active_frames = 1;
+dodge_active_frames = 2;
 dodge_recovery_frames = 5;
 
 //tech animation frames

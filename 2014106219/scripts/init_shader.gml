@@ -120,26 +120,19 @@ if (get_player_color( player ) == 16) {
 	set_character_color_shading(0, 1); //shoes/bracelets
 	set_character_color_shading(1, 1.25); //headband
 	set_character_color_shading(2, 3); //shirt
-	set_character_color_shading(4, 1.1); //skin
-	set_character_color_shading(5, 1); //socks
-	set_character_color_shading(6, 3); //hair
+	set_character_color_shading(3, .5); //skirt
+	set_character_color_shading(4, 1.6); //skin
+	set_character_color_shading(5, .65); //socks
+	set_character_color_shading(6, 5); //hair
 	set_character_color_shading(7, 2); //wand
 }
 
 if (get_player_color( player ) == 17) {
 	set_character_color_shading(0, .5); //shoes/bracelets
-	set_character_color_shading(1, 1.25); //headband
-	set_character_color_shading(3, .75); //skirt
-	set_character_color_shading(4, 1.1); //skin
-	set_character_color_shading(6, 2); //hair
-	set_character_color_shading(7, 1.5); //wand
-}
-
-if (get_player_color( player ) == 18) {
-	set_character_color_shading(0, .5); //shoes/bracelets
-	set_character_color_shading(1, .75); //headband
 	set_character_color_shading(2, 3); //shirt
+	set_character_color_shading(1, 1); //headband
 	set_character_color_shading(3, .65); //skirt
-	set_character_color_shading(6, 4); //hair
+	set_character_color_shading(4, 1.1); //skin
+	set_character_color_shading(6, 3); //hair
 	set_character_color_shading(7, 1.5); //wand
 }

@@ -148,17 +148,6 @@ if (get_player_color( player ) == 18) {
 }
 
 if (get_player_color( player ) == 19) {
-	set_character_color_shading(0, 1.2); //cap
-	set_character_color_shading(1, 1.8); //shirt
-	set_character_color_shading(2, .7); //pants
-	set_character_color_shading(3, 1.5); //skin
-	set_character_color_shading(4, 1.5); //gloves / scarf
-	set_character_color_shading(5, 1); //hair
-	set_character_color_shading(6, 1); //shoes / wand1
-	set_character_color_shading(7, 1); //shoes / wand2
-}
-
-if (get_player_color( player ) == 20) {
 	set_character_color_shading(1, 1.5);
 	set_character_color_shading(2, .8);
 	set_character_color_shading(4, 2);

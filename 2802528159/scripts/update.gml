@@ -70,7 +70,7 @@ if((radar_img >= 5 || hit_aw) && aware < 2){
     }
 }else if(aware == 2){
     suppress_stage_music(0.0, 0.05);
-    if !has_rune("O") awareness -= (collision_circle(radx, rady, 200, oPlayer, 1, 1)? 0.5: 1.5);
+    if !has_rune("O") awareness -= (collision_circle(radx, rady, 200, oPlayer, 1, 1)? 1.5: 1.5);
     if awareness <= 0{
     	emmi_cancel = 1;
     	with oPlayer if url = other.url && self != other{
