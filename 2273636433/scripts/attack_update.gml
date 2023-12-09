@@ -72,14 +72,14 @@ if attack == AT_USPECIAL{
 		} else {
 			can_fast_fall = false;
 		}
-		
 		can_wall_jump=true;
 	}
+
 }
 
 if attack == AT_TAUNT{
 	if window_timer == 12{
-		if message == 0 && ( get_synced_var(player) == true) {
+		if message == 0 && ( voice_toggle) {
 			message= (current_second+current_hour+current_minute*2)%7 + 1;		//Chooses a message
 			switch(message){
 				case 1:
@@ -187,8 +187,8 @@ if(attack==AT_DSPECIAL){
 	}
 	if window == 4{
 		can_move = false;
-		if vsp >6 {
-			vsp = 6;
+		if vsp >5.5 {
+			vsp = 5.5;
 		}
 		if window_timer >7 {
 			can_wall_jump = true;
@@ -424,7 +424,6 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 14);
-	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 14);
 	
 	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 270);
 

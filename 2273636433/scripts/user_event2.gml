@@ -22,16 +22,19 @@ if my_hitboxID.attack == AT_FSPECIAL{
 }
 
 if my_hitboxID.attack == AT_DAIR{
-	if my_hitboxID.hbox_num < 10 {
+	if my_hitboxID.hbox_num < 7 {
 		hit_player_obj.should_make_shockwave=false;
-			//hit_player_obj.old_hsp=hsp*1.2;
 	}
 }
 
 if (my_hitboxID.attack == AT_USPECIAL){
-	
-	if (my_hitboxID.hbox_num ==1 ){
+    if my_hitboxID.hbox_num == 3 {
+        sound_play(asset_get("sfx_blow_heavy2"))
+		set_num_hitboxes(AT_USPECIAL,2);
+    }
+	if (my_hitboxID.hbox_num == 1 ){
 		set_num_hitboxes(AT_USPECIAL, 3);
+		sound_play(asset_get("sfx_blow_medium2"))
 		show_flames=true;
 		hit_player_obj.should_make_shockwave = false;									//first hitbox does not galaxy
 	}
@@ -60,22 +63,14 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	if (my_hitboxID.hbox_num < 5){
 		hit_player_obj.should_make_shockwave = false;									//first hitbox does not galaxy
 		attack_end();
+		hit_player_obj.fall_through = true;
 	}
 }
-
-if my_hitboxID.attack == AT_USPECIAL {
-    if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_blow_medium2"))
-    }
-    if my_hitboxID.hbox_num == 3 {
-        sound_play(asset_get("sfx_blow_heavy2"))
-    }
-}
-
 
 if my_hitboxID.attack == AT_FSTRONG {
     if my_hitboxID.hbox_num == 1 {
         shock_hit=1;
+		//spawn_hit_fx( x +70*spr_dir, y-38, 304 );
     }
 }
 
@@ -94,4 +89,3 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 		   take_damage(player, -1, -1);
 	}
 }
-

@@ -1,15 +1,16 @@
 //post-draw
 
-//draw_debug_text(x  ,y, string(hsp));
-//draw_debug_text(x , y-20 , string(doc_score));
+//draw_debug_text(x  ,y, string(view_get_yview()));
+//draw_debug_text(x , y-20 , string(vsp));
 //draw_debug_text(x , y-40 , string(doc_ditto));
 //draw_debug_text(x , y-60 , string(done_reflecting_article));
 //draw_debug_text(x ,y+20, string(previo[0]));
 //draw_debug_text(x , y-80 , string(valido));
 
-/*with pHitBox{ //i was here
+/*
+with pHitBox{ //i was here
 	//draw_debug_text(x +30 , y , string(id%1000));
-	draw_debug_text(x +60 , y , string(damage));
+	draw_debug_text(x +60 , y , string(y));
 	draw_debug_text(x +90 , y , string(kb_value));
 	draw_debug_text(x +120 , y , string(hitstun_factor));
 }*/
@@ -20,134 +21,30 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 
 	if attack == AT_NSPECIAL{
 		if window == 1{
-			switch(order[pill]){
-				case 1: 
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				case 2:
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				case 3:
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				case 4:
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				case 5:
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				case 6: 
-					if window_timer <6 {
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6_pringles"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6"), 1, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);}
-					}else{
-						if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6_pringles"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-						else { draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6"), 1, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1); }
-					}
-					break;
-				default: break;
+			if window_timer <6 {
+				 draw_sprite_ext( sprite_get("nspecial_proj"+string(pill_skin)), pill_color, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);
+			}else{
+				draw_sprite_ext( sprite_get("nspecial_proj"+string(pill_skin)), pill_color, x- 21*spr_dir, y-59, spr_dir, 1, 90, c_white, 1);
 			}
 		
 		}
-	
 	}
 
 	//DRAWING PILL FOR TAUNT - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
 	if attack == AT_TAUNT{
-		switch(order[pill]){
-			case 1: 
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}		
-				break;
-			case 2:
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo2"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}			
-				break;
-			case 3:
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo3"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}			
-				break;
-			case 4:
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}		
-				break;
-			case 5:
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo5"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}		
-				break;
-			case 6: 
-				if window_timer <6 {
-					if pringles == 1{ draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6_pringles"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-					else {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);}
-				} else if window_timer >5 && window_timer <36{
-					 if pringles == 1 {draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6_pringles"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-					 else{draw_sprite_ext( sprite_get("nspecial_proj_colorcombo6"), 1, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);}
-				}			
-				break;
-			default: break;
-		}
+		if window_timer <6 {
+			draw_sprite_ext( sprite_get("nspecial_proj" + string(pill_skin)), pill_color, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);
+		} else if window_timer >5 && window_timer <36{
+			draw_sprite_ext( sprite_get("nspecial_proj"+ string(pill_skin)), pill_color, x+ 25*spr_dir +window_timer*spr_dir/2, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);
+		}		
 	}
+	
 	//DRAWING PILL FOR FINAL SMASH
 	if attack == 49 && window == 1{ 
 		if window_timer <8 {
-			draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x+ 25*spr_dir, y-65, spr_dir , 1, 90 , c_white, 1);
+			draw_sprite_ext(sprite_get("nspecial_proj" ), 4, x + 25 * spr_dir, y - 65, spr_dir, 1, 90, c_white, 1);
 		} else {
-			draw_sprite_ext( sprite_get("nspecial_proj_colorcombo4"), 1, x+ 30*spr_dir +window_timer*spr_dir, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);
+			draw_sprite_ext( sprite_get("nspecial_proj"), 4, x+ 30*spr_dir +window_timer*spr_dir, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);
 		}		
 		if window_timer == (get_window_value(49, 1, AG_WINDOW_LENGTH)-1) {
 			spawn_hit_fx( x +55*spr_dir, y-45, 109 );
@@ -158,8 +55,10 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 		//DUST RECREATED CAUSE GIIK MESSED UP APARENTLY
 		if (window_timer%6==0){ dust_pos1 = x;}
 		if (window_timer%3==0 && window_timer%6!=0  ){ dust_pos2 = x;}
+		shader_start();
 		if (window==2 ){draw_sprite_ext( sprite_get("dust2"), window_timer, dust_pos2- 42*spr_dir, y, spr_dir, 1, 0, c_white, 1);}
-		if ((abs(hsp)> 3  || hitpause) && window> 1 ){draw_sprite_ext( sprite_get("dust1"), window_timer, dust_pos1- 42*spr_dir, y, spr_dir, 1, 0, c_white, 1); }
+		if ((abs(hsp)> 3  || hitpause) && window> 1 ){draw_sprite_ext( sprite_get("dust1"), window_timer, dust_pos1- 42*spr_dir, y, spr_dir, 1, 0, c_white, 1);}
+		shader_end();
 	}
 	
 }
@@ -174,6 +73,19 @@ if pill_counter > 0{
 				if !in_hitpause{show++;}
 				draw_sprite( sprite_get("I_D"), C_dam, x -6, y-28);
 				draw_sprite( sprite_get("I_K"), C_knock, x + 6, y-28);
+			}
+			//Offscreen INDICATORS
+			if y < view_get_yview() {
+				draw_sprite( sprite_get("ownership"), player, x , view_get_yview());
+				draw_sprite_ext( sprite_get("nspecial_proj"+string(other.pill_skin)), image_index, x , view_get_yview()+32,spr_dir,1,proj_angle,c_white,1);
+			}
+			if x < view_get_xview() {
+				draw_sprite_ext( sprite_get("ownership"), player, view_get_xview() , y, spr_dir,1,90,c_white,1 );
+				draw_sprite_ext( sprite_get("nspecial_proj"+string(other.pill_skin)), image_index, view_get_xview() +32 , y,spr_dir,1,proj_angle,c_white,1);
+			}
+			if x > view_get_xview() +960 {
+				draw_sprite_ext( sprite_get("ownership"), player, view_get_xview()+960 , y, spr_dir,1,270,c_white,1 );
+				draw_sprite_ext( sprite_get("nspecial_proj"+string(other.pill_skin)), image_index, view_get_xview() +960 -32 , y,spr_dir,1,proj_angle,c_white,1);
 			}
 		}
 	}

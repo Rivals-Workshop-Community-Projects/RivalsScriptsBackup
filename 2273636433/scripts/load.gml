@@ -52,27 +52,20 @@ sprite_change_offset("intro", 36, 134);
 
 sprite_change_offset("dust1", 33, 22);
 sprite_change_offset("dust2", 33, 22);
+sprite_change_offset("boost", 39, 8);	 
 
-//projectile offsets
-sprite_change_offset("nspecial_proj_colorcombo",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo2",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo3",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo4",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo5",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo6",17, 9);
-
-sprite_change_offset("nspecial_proj_colorcombo_pringles",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo2_pringles",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo3_pringles",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo4_pringles",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo5_pringles",17, 9);
-sprite_change_offset("nspecial_proj_colorcombo6_pringles",17, 9);
+sprite_change_offset("nspecial_proj1",17, 9);
+sprite_change_offset("nspecial_proj2",16, 11);
+sprite_change_offset("nspecial_proj3",17, 9);
+sprite_change_offset("nspecial_proj4",17, 9);
+sprite_change_offset("nspecial_proj5",17, 9);
+sprite_change_offset("nspecial_proj6",17, 9);
+sprite_change_offset("nspecial_proj7",17, 11);
+sprite_change_offset("nspecial_proj8",17, 11);
 
 sprite_change_offset("drmario_smash_proj", 42, 50);
 
 sprite_change_offset("score", 72, 53);
-
-sprite_change_offset("pill_hit",11, 11);
 
 sprite_change_offset("Dr_Hurtbox",22, 68);
 sprite_change_offset("Dr_Crouchbox",22, 68);
@@ -84,6 +77,6 @@ sprite_change_offset("firechungus", 31, 96);
 sprite_change_offset("I_D",5, 44);
 sprite_change_offset("I_K",5, 44);
 
-sprite_change_offset("next_pringles", 0, 2);
+sprite_change_offset("ownership", 23, 0);
 
 sprite_change_offset("FinalSmash", 58, 82);

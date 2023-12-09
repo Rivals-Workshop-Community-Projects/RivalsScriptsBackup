@@ -40,8 +40,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
-//set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
-//set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+
 
 
 
@@ -152,5 +151,5 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, sound_get("melee_wack"));
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 254);
-set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 8);
 

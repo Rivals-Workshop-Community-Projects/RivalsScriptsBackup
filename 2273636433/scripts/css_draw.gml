@@ -2,9 +2,6 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 shader_end();
 
-var alt_cur = get_player_color(player);
- 
-
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 
 for(i = 0; i < num_alts; i++){
@@ -56,10 +53,12 @@ if (get_color_profile_slot_b(9, 0) == 255) {
 }
 
 
-//CSS Button Stuff
+//CSS Indicators
 
-	if get_player_color(player) ==11 || get_player_color(player) ==12 {
-		draw_sprite( sprite_get("sound_toggle"), get_synced_var(player), x + 178, y+112);
-	}
-	//draw_debug_text(x+ 100 ,x+ 100, string(cur_x));
+if get_player_color(player) ==11 || get_player_color(player) ==12 {
+	draw_sprite( sprite_get("sound_toggle"), voice_button, x + 18, y+74);
+}
 
+draw_sprite( sprite_get("pill_select"), pill_button, x + 14, y+48);
+
+  

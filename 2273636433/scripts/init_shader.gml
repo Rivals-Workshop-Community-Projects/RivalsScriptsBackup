@@ -60,11 +60,11 @@ if (get_player_color(player) == 23){
      set_character_color_shading(0, 1.5);
 }
 
-if (get_player_color(player) == 28){
+if (get_player_color(player) == 29){
 	   set_character_color_shading(0, .8);
 }
 
-if (get_player_color(player) == 30){
+if (get_player_color(player) == 31){
      set_character_color_shading(0, .8);
 	 set_character_color_shading(1, .8);
 	 set_character_color_shading(2, 1.25);

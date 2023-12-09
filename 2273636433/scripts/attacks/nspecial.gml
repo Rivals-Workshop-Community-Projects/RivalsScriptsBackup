@@ -45,7 +45,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);																//This will vary
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);

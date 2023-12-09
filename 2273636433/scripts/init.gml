@@ -37,7 +37,7 @@ air_accel = .25;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .05;			//Rainbow says : Only 2 decimal values
 walljump_hsp = 6;
-walljump_vsp = 8;
+walljump_vsp = 9;
 max_fall = 10.5; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .50;			// Doc always has Mario Gravity
@@ -142,6 +142,15 @@ golpeado=9;
 dust_pos1=0;
 dust_pos2=0;
 soundpick = 0;
+pill_color = 0;
+kirby_pill=1;
+//New CSS Stuff
+voice_toggle = 0;
+pill_skin = 1;
+split_var = split_synced_var(1,4);
+voice_toggle =split_var[0];
+pill_skin =split_var[1];
+
 
 //Pill_Hit = hit_fx_create( sprite_get("pill_hit"), 6 );
 next_group = 0;
@@ -265,4 +274,23 @@ phone_blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE)
 phone_blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
 phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 
-user_event(14);
+
+//-------------------------Thanks Supersonic-------------------
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var player = (room == 113) ? 0 : self.player;
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+print(chunk_arr);
+return chunk_arr;
+//pill_skin = abs(get_synced_var(player));
+//pill_prev = get_synced_var(player);

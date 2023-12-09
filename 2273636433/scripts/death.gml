@@ -1,7 +1,7 @@
 // called when the character gets KO'd
 message = 0;
 
-if(get_synced_var(player)==1){
+if(voice_toggle){
 soundpick=random_func( 1, 3, true);			//Chooses a DAMAGE sound
 	if(soundpick==0){
 		sound_play( sound_get("medic8"));

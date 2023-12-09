@@ -22,9 +22,8 @@ if my_hitboxID.attack == AT_FSPECIAL{
 }
 
 if my_hitboxID.attack == AT_DAIR{
-	if my_hitboxID.hbox_num < 10 {
+	if my_hitboxID.hbox_num < 7 {
 		hit_player_obj.should_make_shockwave=false;
-			//hit_player_obj.old_hsp=hsp*1.2;
 	}
 }
 
@@ -64,6 +63,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	if (my_hitboxID.hbox_num < 5){
 		hit_player_obj.should_make_shockwave = false;									//first hitbox does not galaxy
 		attack_end();
+		hit_player_obj.fall_through = true;
 	}
 }
 

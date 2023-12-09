@@ -46,7 +46,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 8);
 
 
 
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 8);
 
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);
@@ -86,7 +86,7 @@ set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FAIR, 3, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FAIR, 3, HG_HIT_LOCKOUT, 8);
 
 
 //set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Early hit (Sourspot)")

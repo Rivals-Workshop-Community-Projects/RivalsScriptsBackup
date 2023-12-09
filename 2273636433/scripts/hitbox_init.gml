@@ -31,8 +31,9 @@ if (attack == AT_NSPECIAL){
 }
 
 if (attack == AT_NSPECIAL){
-
- proj_reflectable = 1 ;
+image_index = player_id.pill_color;
+img_spd=0;
+proj_reflectable = 1 ;
 MattCanGrab = true;
 MorshuCanGrab = true;
 

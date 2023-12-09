@@ -10,13 +10,12 @@ if (timer_intro_2 < 3) {
     timer_intro++;
 }
 
-if  get_player_color(player) == 11 ||  get_player_color(player) == 12 { 
-	set_victory_theme(sound_get("TF2Victory"));
+if abs(pill_skin)==2 {
+	set_victory_theme(sound_get("pringlesvictory"));
 }
 
-if (state == PS_SPAWN && taunt_down )||  get_player_color(player) == 24 {
-	pringles = 1;
-	set_victory_theme(sound_get("pringlesvictory"));
+if  get_player_color(player) == 11 ||  get_player_color(player) == 12 { 
+	set_victory_theme(sound_get("TF2Victory"));
 }
 
 if doc_ditto == 0 {
@@ -91,7 +90,7 @@ if (valido == 1){
 
 if(state==14)&&(state_timer==80){
 	soundpick=random_func( 1, 3, true);			//Chooses a RESPAWN sound
-	if get_synced_var( player) == 1 {
+	if voice_toggle {
 		if(soundpick==0){
 			sound_play( sound_get("medic11"));
 		} 
@@ -106,52 +105,47 @@ if(state==14)&&(state_timer==80){
 
 //---------------------------------------------------CURRENT PILL CODE--------------------------------------------
 //Now pringles compatible
+
 switch(order[pill]){
 		case 1 :			//BLUE BLUE
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo"));}
-
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);
+			pill_color=order[pill];	
 			break;
 		case 2 :			//RED RED
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 120);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
+			pill_color=order[pill];	
 			break;
 		case 3 :			//YELLOW YELLOW
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);
+			pill_color=order[pill];		
 			break;	
 		case 4 :		//RED BLUE
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
+			pill_color=order[pill];	
 			break;
 		case 5 :			//RED YELLOW
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 105);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
+			pill_color=order[pill];	
 			break;	
 		case 6 :			//BLUE YELLOW
-			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6_pringles"));}
-			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
+			pill_color=order[pill];	
 			break;
 		default: break;
 	}
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"+string(pill_skin)));
 
 
 //-------------------------------------------------Variable Resets----------------------------------------------
@@ -418,45 +412,38 @@ if (has_rune ("L"))|| ((has_rune ("N")) )&& (has_rune ("I")) {
 //------------------------------------------------------------------------KIRBY LOGIC --------------------------
 if swallowed { //Kirby ability script starts here
 	swallowed = 0
+	kirby_pill = order[pill];
 	//Define any assets kirby might need to grab from YOUR CHARACTER
 	var ability_spr = sprite_get("kirbyability");
 	var ability_hurt = sprite_get("kirbyability_hurt");
-
+	var ability_icon = sprite_get("nspecial_proj1");
 	var pick_pill = order[pill];
 		switch (pick_pill){
 			case 1: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo"); 
 				var kirby_icon =   sprite_get("icon");
 				break;
 			case 2: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo2"); 
 				var kirby_icon =   sprite_get("icon2");
 				break;
 			case 3: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo3"); 
 				var kirby_icon =   sprite_get("icon3");
 				break;
 			case 4: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo4"); 
 				var kirby_icon =   sprite_get("icon4");
 				break;
 			case 5: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo5"); 
 				var kirby_icon =   sprite_get("icon5");
 				break;
 			case 6: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo6"); 
 				var kirby_icon =   sprite_get("icon6");
 				break;
 			default: 
-				var ability_icon = sprite_get("nspecial_proj_colorcombo4"); 
 				var kirby_icon =   sprite_get("icon4");
 				break;
 		}
 
 	var ability_pill = sound_get("sfx_pill");
 	var ability_chungus = sound_get("pill_hit");
-
 
 	with enemykirby { //Define AT_EXTRA_3 for Kirby, using your asset variables where necessary in place of sprite_get or sound_get
 		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
@@ -506,7 +493,7 @@ if swallowed { //Kirby ability script starts here
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_icon);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, -1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, .2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 3);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -6);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, 0.56);
@@ -562,9 +549,11 @@ if swallowed { //Kirby ability script starts here
 if enemykirby != undefined { //if kirby is in a match & swallowed
 	with oPlayer { //Run through all players
 		if get_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY) == 19 {			//Random value to identify Kirby
+		kirby_pill=other.kirby_pill;
 			with pHitBox {
 				if attack == AT_EXTRA_3 && type == 2 {
 					if hitbox_timer == 1 { floor_pos = 0}
+					image_index = player_id.kirby_pill;
 					//ANIMATION
 					proj_angle = (hitbox_timer*(abs(hsp)+1))*-spr_dir;
 					//BOUNCE

@@ -1,8 +1,8 @@
 // DEFAULT COLOR
 
 // Lab Coat
-set_color_profile_slot( 0, 0, 245, 245, 245 );
-set_color_profile_slot_range( 0, 1, 1, 29 );
+set_color_profile_slot( 0, 0, 249, 249, 249 );
+set_color_profile_slot_range( 0, 1, 1, 31 );
 
 // Pants
 set_color_profile_slot( 0, 1, 69, 69, 69 );
@@ -30,11 +30,11 @@ set_color_profile_slot_range( 6, 2, 4, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Pink
 set_color_profile_slot( 1, 0, 255, 135, 135 ); //Lab Coat
-set_color_profile_slot( 1, 1, 156, 9, 74 ); //Pants
+set_color_profile_slot( 1, 1, 168, 9, 104 ); //Pants
 set_color_profile_slot( 1, 2, 111, 57, 9 ); //Hair / Shoes
 set_color_profile_slot( 1, 3, 237, 86, 176 ); //Gloves
 set_color_profile_slot( 1, 4, 233, 183, 152 ); //Skin
@@ -61,7 +61,7 @@ set_color_profile_slot( 3, 6, 83, 130, 80 ); //HeadBand
 
 // Ligth Blue
 set_color_profile_slot( 4, 0, 163, 231, 231 ); //Lab Coat
-set_color_profile_slot( 4, 1, 90, 90, 90 ); //Pants
+set_color_profile_slot( 4, 1, 88, 67, 125 ); //Pants
 set_color_profile_slot( 4, 2, 111, 57, 9 ); //Hair / Shoes
 set_color_profile_slot( 4, 3, 105, 142, 181 ); //Gloves
 set_color_profile_slot( 4, 4, 233, 183, 152 ); //Skin
@@ -100,7 +100,7 @@ set_color_profile_slot( 8, 0, 40, 99, 237 ); //Lab Coat
 set_color_profile_slot( 8, 1, 44, 39, 138 ); //Pants
 set_color_profile_slot( 8, 2, 84, 43, 14 ); //Hair / Shoes
 set_color_profile_slot( 8, 3, 49, 50, 54 ); //Gloves
-set_color_profile_slot( 8, 4, 245, 141, 64 ); //Skin
+set_color_profile_slot( 8, 4, 230, 166, 118 ); //Skin
 set_color_profile_slot( 8, 5, 44, 39, 138 ); //Tie / Eyes
 set_color_profile_slot( 8, 6, 104, 104, 171 ); //HeadBand
 
@@ -109,7 +109,7 @@ set_color_profile_slot( 9, 0, 20, 187, 255 ); //Lab Coat
 set_color_profile_slot( 9, 1, 11, 89, 148 ); //Pants
 set_color_profile_slot( 9, 2, 50, 95, 135 ); //Hair / Shoes
 set_color_profile_slot( 9, 3, 116, 184, 229 ); //Gloves
-set_color_profile_slot( 9, 4, 255, 236, 222 ); //Skin
+set_color_profile_slot( 9, 4, 255, 217, 189 ); //Skin
 set_color_profile_slot( 9, 5, 25, 182, 151 ); //Tie / Eyes
 set_color_profile_slot( 9, 6, 176, 165, 12 ); //HeadBand
 
@@ -185,7 +185,6 @@ set_color_profile_slot( 17, 4, 134, 189, 136 ); //Skin
 set_color_profile_slot( 17, 5, 238, 97, 83 ); //Tie / Eyes
 set_color_profile_slot( 17, 6, 125, 17, 158 ); //HeadBand
 
-
 // Gold / Silver
 set_color_profile_slot( 18, 0, 207, 174, 86 ); //Lab Coat
 set_color_profile_slot( 18, 1, 80, 75, 66 ); //Pants
@@ -249,7 +248,7 @@ set_color_profile_slot( 24, 4, 233, 183, 152 ); //Skin
 set_color_profile_slot( 24, 5, 191, 73, 227 ); //Tie / Eyes
 set_color_profile_slot( 24, 6, 255, 66, 186 ); //HeadBand
 
-// unnamed alt palette
+// Snolid
 set_color_profile_slot( 25, 0, 156, 204, 67 ); //Lab Coat
 set_color_profile_slot( 25, 1, 61, 122, 0 ); //Pants
 set_color_profile_slot( 25, 2, 89, 158, 0 ); //Hair / Shoes
@@ -258,52 +257,63 @@ set_color_profile_slot( 25, 4, 233, 183, 152 ); //Skin
 set_color_profile_slot( 25, 5, 164, 222, 222 ); //Tie / Eyes
 set_color_profile_slot( 25, 6, 240, 217, 173 ); //HeadBand
 
-// Nauseon Line
-set_color_profile_slot( 26, 0, 247, 216, 104 ); //Lab Coat
-set_color_profile_slot( 26, 1, 121, 121, 121 ); //Pants
-set_color_profile_slot( 26, 2, 170, 214, 232 ); //Hair / Shoes
-set_color_profile_slot( 26, 3, 121, 121, 121 ); //Gloves
-set_color_profile_slot( 26, 4, 227, 175, 227 ); //Skin
-set_color_profile_slot( 26, 5, 106, 0, 255 ); //Tie / Eyes
-set_color_profile_slot( 26, 6, 207, 207, 207 ); //HeadBand
+// Wega
+set_color_profile_slot( 26, 0, 159, 5, 152 ); //Lab Coat
+set_color_profile_slot( 26, 1, 78, 1, 68 ); //Pants
+set_color_profile_slot( 26, 2, 87, 142, 179 ); //Hair / Shoes
+set_color_profile_slot( 26, 3, 219, 188, 120 ); //Gloves
+set_color_profile_slot( 26, 4, 188, 178, 252 ); //Skin
+set_color_profile_slot( 26, 5, 243, 241, 82 ); //Tie / Eyes
+set_color_profile_slot( 26, 6, 34, 66, 216 ); //HeadBand
+
+// Transcendent
+set_color_profile_slot( 27, 0, 245, 147, 165 ); //Lab Coat
+set_color_profile_slot( 27, 1, 240, 240, 240 ); //Pants
+set_color_profile_slot( 27, 2, 173, 14, 83 ); //Hair / Shoes
+set_color_profile_slot( 27, 3, 70, 188, 232 ); //Gloves
+set_color_profile_slot( 27, 4, 233, 183, 152 ); //Skin
+set_color_profile_slot( 27, 5, 199, 199, 199 ); //Tie / Eyes
+set_color_profile_slot( 27, 6, 70, 188, 232 ); //HeadBand
 
 // Dr. Pepper
-set_color_profile_slot( 27, 0, 148, 47, 64 ); //Lab Coat
-set_color_profile_slot( 27, 1, 207, 160, 79 ); //Pants
-set_color_profile_slot( 27, 2, 148, 40, 58 ); //Hair / Shoes
-set_color_profile_slot( 27, 3, 233, 234, 203 ); //Gloves
-set_color_profile_slot( 27, 4, 143, 143, 143 ); //Skin
-set_color_profile_slot( 27, 5, 207, 160, 79 ); //Tie / Eyes
-set_color_profile_slot( 27, 6, 249, 249, 249 ); //HeadBand
+set_color_profile_slot( 28, 0, 148, 47, 64 ); //Lab Coat
+set_color_profile_slot( 28, 1, 207, 160, 79 ); //Pants
+set_color_profile_slot( 28, 2, 148, 40, 58 ); //Hair / Shoes
+set_color_profile_slot( 28, 3, 233, 234, 203 ); //Gloves
+set_color_profile_slot( 28, 4, 143, 143, 143 ); //Skin
+set_color_profile_slot( 28, 5, 207, 160, 79 ); //Tie / Eyes
+set_color_profile_slot( 28, 6, 249, 249, 249 ); //HeadBand
 
 // Dr. E
-set_color_profile_slot( 28, 0, 18, 103, 102 ); //Lab Coat
-set_color_profile_slot( 28, 1, 153, 92, 14 ); //Pants
-set_color_profile_slot( 28, 2, 69, 41, 14 ); //Hair / Shoes
-set_color_profile_slot( 28, 3, 221, 97, 40 ); //Gloves
-set_color_profile_slot( 28, 4, 233, 183, 152 ); //Skin
-set_color_profile_slot( 28, 5, 55, 92, 204 ); //Tie / Eyes
-set_color_profile_slot( 28, 6, 130, 87, 80 ); //HeadBand
+set_color_profile_slot( 29, 0, 18, 103, 102 ); //Lab Coat
+set_color_profile_slot( 29, 1, 153, 92, 14 ); //Pants
+set_color_profile_slot( 29, 2, 69, 41, 14 ); //Hair / Shoes
+set_color_profile_slot( 29, 3, 221, 97, 40 ); //Gloves
+set_color_profile_slot( 29, 4, 212, 166, 138 ); //Skin
+set_color_profile_slot( 29, 5, 55, 92, 204 ); //Tie / Eyes
+set_color_profile_slot( 29, 6, 130, 87, 80 ); //HeadBand
 
 // Dr. Wrecker
-set_color_profile_slot( 29, 0, 203, 161, 89 ); //Lab Coat
-set_color_profile_slot( 29, 1, 151, 24, 41 ); //Pants
-set_color_profile_slot( 29, 2, 95, 56, 52 ); //Hair / Shoes
-set_color_profile_slot( 29, 3, 225, 101, 136 ); //Gloves
-set_color_profile_slot( 29, 4, 194, 194, 194 ); //Skin
-set_color_profile_slot( 29, 5, 36, 36, 36 ); //Tie / Eyes
-set_color_profile_slot( 29, 6, 161, 168, 184 ); //HeadBand
+set_color_profile_slot( 30, 0, 203, 161, 89 ); //Lab Coat
+set_color_profile_slot( 30, 1, 151, 24, 41 ); //Pants
+set_color_profile_slot( 30, 2, 95, 56, 52 ); //Hair / Shoes
+set_color_profile_slot( 30, 3, 225, 101, 136 ); //Gloves
+set_color_profile_slot( 30, 4, 194, 194, 194 ); //Skin
+set_color_profile_slot( 30, 5, 36, 36, 36 ); //Tie / Eyes
+set_color_profile_slot( 30, 6, 161, 168, 184 ); //HeadBand
 
 // Dr. Weird
-set_color_profile_slot( 30, 0, 129, 72, 139 ); //Lab Coat
-set_color_profile_slot( 30, 1, 150, 150, 43 ); //Pants
-set_color_profile_slot( 30, 2, 235, 231, 228 ); //Hair / Shoes
-set_color_profile_slot( 30, 3, 192, 194, 78 ); //Gloves
-set_color_profile_slot( 30, 4, 242, 225, 206 ); //Skin
-set_color_profile_slot( 30, 5, 207, 129, 79 ); //Tie / Eyes
-set_color_profile_slot( 30, 6, 117, 117, 117 ); //HeadBand
+set_color_profile_slot( 31, 0, 129, 72, 139 ); //Lab Coat
+set_color_profile_slot( 31, 1, 150, 150, 43 ); //Pants
+set_color_profile_slot( 31, 2, 235, 231, 228 ); //Hair / Shoes
+set_color_profile_slot( 31, 3, 192, 194, 78 ); //Gloves
+set_color_profile_slot( 31, 4, 242, 225, 206 ); //Skin
+set_color_profile_slot( 31, 5, 207, 129, 79 ); //Tie / Eyes
+set_color_profile_slot( 31, 6, 117, 117, 117 ); //HeadBand
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Lab Coat","colors":[{"r":245,"g":245,"b":245,"main":true},{"r":212,"g":212,"b":212},{"r":174,"g":174,"b":174}]},{"name":"Pants","colors":[{"r":69,"g":69,"b":69,"main":true},{"r":32,"g":32,"b":32},{"r":50,"g":50,"b":50}]},{"name":"Hair / Shoes","colors":[{"r":213,"g":98,"b":16},{"r":180,"g":81,"b":0},{"r":111,"g":57,"b":9,"main":true},{"r":62,"g":32,"b":5},{"r":99,"g":42,"b":3},{"r":139,"g":56,"b":0},{"r":74,"g":24,"b":0},{"r":138,"g":71,"b":25}]},{"name":"Gloves","colors":[{"r":202,"g":229,"b":255,"main":true},{"r":157,"g":197,"b":229},{"r":109,"g":149,"b":181},{"r":58,"g":104,"b":147}]},{"name":"Skin","colors":[{"r":188,"g":97,"b":40},{"r":220,"g":141,"b":96},{"r":226,"g":160,"b":120},{"r":233,"g":183,"b":152,"main":true},{"r":155,"g":79,"b":33},{"r"
+{"formatversion":1,"data":[{"name":"Lab Coat","colors":[{"r":249,"g":249,"b":249,"main":true},{"r":212,"g":212,"b":212},{"r":174,"g":174,"b":174}]},{"name":"Pants","colors":[{"r":69,"g":69,"b":69,"main":true},{"r":32,"g":32,"b":32},{"r":50,"g":50,"b":50}]},{"name":"Hair / Shoes","colors":[{"r":213,"g":98,"b":16},{"r":180,"g":81,"b":0},{"r":111,"g":57,"b":9,"main":true},{"r":62,"g":32,"b":5},{"r":99,"g":42,"b":3},{"r":139,"g":56,"b":0},{"r":74,"g":24,"b":0},{"r":138,"g":71,"b":25}]},{"name":"Gloves","colors":[{"r":202,"g":229,"b":255,"main":true},{"r":157,"g":197,"b":229},{"r":109,"g":149,"b":181},{"r":58,"g":104,"b":147}]},{"name":"Skin","colors":[{"r":188,"g":97,"b":40},{"r":220,"g":141,"b":96},{"r":226,"g":160,"b":120},{"r":233,"g":183,"b":152,"main":true},{"r":155,"g":79,"b":33},{"r":255,"g":164,"b":95},{"r":255,"g":227,"b":147}]},{"name":"Tie / Eyes","colors":[{"r":25,"g":62,"b":182,"main":true},{"r":16,"g":43,"b":120}]},{"name":"HeadBand","colors":[{"r":71,"g":49,"b":46},{"r":130,"g":87,"b":80,"main":true}]}]}
+=== END JSON PALETTE ===
+*/

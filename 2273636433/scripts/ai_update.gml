@@ -9,51 +9,62 @@ if(xdist>=100){
 fs_ai_attempt_use = true;
 }
 
-//CPU MAY CHARGE ITS STRONG ATTACKS
-if(attack==AT_DSTRONG)||(attack==AT_FSTRONG){
-	if(xdist>55 && window<3)&&(!hitstun){
-		strong_down=true;
-	}else{
-		strong_down=false;
-	}
+//PUNISH 
+if(invincible && can_strong && xdist <= 100){
+	set_attack(AT_DSTRONG);
 }
-
-if(attack==AT_FSTRONG){
-	if(xdist>80 && window<3)&&(!hitstun){
-		strong_down=true;
-	}else{
-		strong_down=false;
+//While attacking
+if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
+	//CPU MAY CHARGE ITS STRONG ATTACKS
+	if(attack==AT_DSTRONG)||(attack==AT_FSTRONG){
+		if(xdist>55 && window<3)&&(!hitstun){
+			strong_down=true;
+		}else{
+			strong_down=false;
+		}
 	}
-}
 
-if(attack==AT_USTRONG){
-	if(xdist>45 && window<2 )&&(!hitstun){
-		strong_down=true;
-	}else{
-		strong_down=false;
+	if(attack==AT_FSTRONG){
+		if(xdist>80 && window<3)&&(!hitstun){
+			strong_down=true;
+		}else{
+			strong_down=false;
+		}
 	}
-}
 
-if(attack==AT_DSPECIAL){
-	if((has_hit )|| (free)) && (cyclone < 2){
-		special_down=true;
-	}else{
-		special_down=false;
+	if(attack==AT_USTRONG){
+		if(xdist>45 && window<2 )&&(!hitstun){
+			strong_down=true;
+		}else{
+			strong_down=false;
+		}
 	}
-}
 
-if(attack==AT_JAB){
-	if has_hit {
-		attack_pressed = true;
-	} else {
-		attack_pressed = false;
+	if(attack==AT_DSPECIAL){
+		if((has_hit )|| (free)) && (cyclone < 2){
+			special_down=true;
+		}else{
+			special_down=false;
+		}
 	}
-}
 
-ai_should_hitfall = (collision_line(x,y,x,y + 120,asset_get("par_block"),false,true) || collision_line(x,y,x,y + 120,asset_get("par_jumpthrough"),false,true)) && (hitpause && state_cat != SC_HITSTUN) && can_fast_fall && free;
+	if(attack==AT_JAB){
+		if has_hit {
+			attack_pressed = true;
+		} else {
+			attack_pressed = false;
+		}
+	}
+	if(attack==AT_DATTACK){
+		down_pressed = false;
+		down_down = false;
+	}
 
-if ai_should_hitfall {
-    down_hard_pressed = true;
+	ai_should_hitfall = (collision_line(x,y,x,y + 120,asset_get("par_block"),false,true) || collision_line(x,y,x,y + 120,asset_get("par_jumpthrough"),false,true)) && (hitpause && state_cat != SC_HITSTUN) && can_fast_fall && free;
+
+	if ai_should_hitfall {
+		down_hard_pressed = true;
+	}
 }
 
 if (ai_target.state == PS_RESPAWN && !free){
@@ -75,8 +86,8 @@ if (ai_target.state == PS_RESPAWN && !free){
 // insert custom recovery code here, since the CPU should try to recover regardless of the CPU Action setting
 
 // DSPECIAL RECOVERY
-var stage_x = get_stage_data( SD_X_POS );
-var stage_y = get_stage_data( SD_Y_POS );
+stage_x = get_stage_data( SD_X_POS );
+stage_y = get_stage_data( SD_Y_POS );
 if((x < 150)||((room_width - x)< 150)||(djumps==1 && cyclone==0 && ai_recovering))&&(free)&&(!hitstun)&&(state!=PS_ATTACK_AIR)&&(can_special){
 	if(x < stage_x){spr_dir=1;}
 	if(x > stage_x){spr_dir=-1;}
@@ -84,7 +95,4 @@ if((x < 150)||((room_width - x)< 150)||(djumps==1 && cyclone==0 && ai_recovering
 }
 
 
-//PUNISH 
-if(invincible && can_strong && xdist < 100){
-	set_attack(AT_DSTRONG);
-}
+

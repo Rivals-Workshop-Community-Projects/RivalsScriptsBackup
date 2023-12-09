@@ -6,6 +6,7 @@ ai_should_hitfall = false
 
 far_down_attacks[0] = AT_DAIR;
 far_down_attacks[1] = AT_NAIR;
+far_down_attacks[2] = AT_NSPECIAL;
 
 far_up_attacks[0] = AT_UAIR;
 far_up_attacks[1] = AT_USTRONG;
@@ -25,7 +26,6 @@ mid_up_attacks[2] = AT_UTILT;
 
 mid_down_attacks[0] = AT_DAIR;
 mid_down_attacks[1] = AT_NAIR;
-
 
 close_up_attacks[0] = AT_UAIR;
 close_up_attacks[1] = AT_USTRONG;
