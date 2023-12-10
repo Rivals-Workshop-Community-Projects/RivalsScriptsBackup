@@ -4,7 +4,7 @@
 set_color_profile_slot( 0, 0, 88, 80, 63 );
 set_color_profile_slot_range( 0, 3, 5, 21 );
 
-// Gumb Skin 2
+// Gumbo Skin 2
 set_color_profile_slot( 0, 1, 200, 189, 158 );
 set_color_profile_slot_range( 1, 1, 8, 13 );
 
@@ -34,11 +34,11 @@ set_color_profile_slot_range( 7, 9, 2, 53 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Mud Flats
 set_color_profile_slot( 1, 0, 179, 138, 102 ); //Gumbo Skin 1
-set_color_profile_slot( 1, 1, 240, 213, 190 ); //Gumb Skin 2
+set_color_profile_slot( 1, 1, 240, 213, 190 ); //Gumbo Skin 2
 set_color_profile_slot( 1, 2, 122, 122, 122 ); //Jeans
 set_color_profile_slot( 1, 3, 99, 84, 77 ); //Hoodie
 set_color_profile_slot( 1, 4, 252, 250, 244 ); //Eyes
@@ -48,7 +48,7 @@ set_color_profile_slot( 1, 7, 178, 183, 184 ); //Apron
 
 // Freshwater
 set_color_profile_slot( 2, 0, 64, 156, 56 ); //Gumbo Skin 1
-set_color_profile_slot( 2, 1, 179, 219, 134 ); //Gumb Skin 2
+set_color_profile_slot( 2, 1, 179, 219, 134 ); //Gumbo Skin 2
 set_color_profile_slot( 2, 2, 148, 112, 83 ); //Jeans
 set_color_profile_slot( 2, 3, 75, 114, 156 ); //Hoodie
 set_color_profile_slot( 2, 4, 252, 250, 244 ); //Eyes
@@ -58,7 +58,7 @@ set_color_profile_slot( 2, 7, 244, 251, 252 ); //Apron
 
 // Poisonous
 set_color_profile_slot( 3, 0, 235, 71, 26 ); //Gumbo Skin 1
-set_color_profile_slot( 3, 1, 85, 255, 237 ); //Gumb Skin 2
+set_color_profile_slot( 3, 1, 85, 255, 237 ); //Gumbo Skin 2
 set_color_profile_slot( 3, 2, 255, 255, 255 ); //Jeans
 set_color_profile_slot( 3, 3, 74, 74, 74 ); //Hoodie
 set_color_profile_slot( 3, 4, 255, 229, 0 ); //Eyes
@@ -68,7 +68,7 @@ set_color_profile_slot( 3, 7, 191, 153, 115 ); //Apron
 
 // Albino
 set_color_profile_slot( 4, 0, 255, 255, 255 ); //Gumbo Skin 1
-set_color_profile_slot( 4, 1, 255, 240, 240 ); //Gumb Skin 2
+set_color_profile_slot( 4, 1, 255, 240, 240 ); //Gumbo Skin 2
 set_color_profile_slot( 4, 2, 171, 33, 33 ); //Jeans
 set_color_profile_slot( 4, 3, 255, 186, 228 ); //Hoodie
 set_color_profile_slot( 4, 4, 156, 233, 255 ); //Eyes
@@ -78,7 +78,7 @@ set_color_profile_slot( 4, 7, 199, 171, 171 ); //Apron
 
 // Electric
 set_color_profile_slot( 5, 0, 64, 57, 191 ); //Gumbo Skin 1
-set_color_profile_slot( 5, 1, 83, 224, 222 ); //Gumb Skin 2
+set_color_profile_slot( 5, 1, 83, 224, 222 ); //Gumbo Skin 2
 set_color_profile_slot( 5, 2, 75, 71, 130 ); //Jeans
 set_color_profile_slot( 5, 3, 31, 115, 98 ); //Hoodie
 set_color_profile_slot( 5, 4, 0, 204, 255 ); //Eyes
@@ -88,7 +88,7 @@ set_color_profile_slot( 5, 7, 212, 247, 252 ); //Apron
 
 // Slick with it
 set_color_profile_slot( 6, 0, 121, 64, 156 ); //Gumbo Skin 1
-set_color_profile_slot( 6, 1, 238, 150, 255 ); //Gumb Skin 2
+set_color_profile_slot( 6, 1, 238, 150, 255 ); //Gumbo Skin 2
 set_color_profile_slot( 6, 2, 255, 255, 255 ); //Jeans
 set_color_profile_slot( 6, 3, 87, 56, 107 ); //Hoodie
 set_color_profile_slot( 6, 4, 255, 203, 31 ); //Eyes
@@ -98,7 +98,7 @@ set_color_profile_slot( 6, 7, 255, 189, 246 ); //Apron
 
 // Mardi Gras
 set_color_profile_slot( 7, 0, 255, 203, 54 ); //Gumbo Skin 1
-set_color_profile_slot( 7, 1, 192, 0, 201 ); //Gumb Skin 2
+set_color_profile_slot( 7, 1, 192, 0, 201 ); //Gumbo Skin 2
 set_color_profile_slot( 7, 2, 19, 230, 0 ); //Jeans
 set_color_profile_slot( 7, 3, 156, 156, 156 ); //Hoodie
 set_color_profile_slot( 7, 4, 117, 230, 106 ); //Eyes
@@ -108,7 +108,7 @@ set_color_profile_slot( 7, 7, 244, 251, 252 ); //Apron
 
 // Krookodile
 set_color_profile_slot( 8, 0, 156, 73, 73 ); //Gumbo Skin 1
-set_color_profile_slot( 8, 1, 89, 89, 89 ); //Gumb Skin 2
+set_color_profile_slot( 8, 1, 89, 89, 89 ); //Gumbo Skin 2
 set_color_profile_slot( 8, 2, 110, 98, 98 ); //Jeans
 set_color_profile_slot( 8, 3, 110, 51, 51 ); //Hoodie
 set_color_profile_slot( 8, 4, 145, 145, 145 ); //Eyes
@@ -118,7 +118,7 @@ set_color_profile_slot( 8, 7, 178, 183, 184 ); //Apron
 
 // Kawasaki
 set_color_profile_slot( 9, 0, 255, 151, 71 ); //Gumbo Skin 1
-set_color_profile_slot( 9, 1, 255, 255, 255 ); //Gumb Skin 2
+set_color_profile_slot( 9, 1, 255, 255, 255 ); //Gumbo Skin 2
 set_color_profile_slot( 9, 2, 173, 40, 89 ); //Jeans
 set_color_profile_slot( 9, 3, 232, 100, 0 ); //Hoodie
 set_color_profile_slot( 9, 4, 255, 255, 255 ); //Eyes
@@ -128,7 +128,7 @@ set_color_profile_slot( 9, 7, 247, 252, 255 ); //Apron
 
 // Susie
 set_color_profile_slot( 10, 0, 159, 76, 161 ); //Gumbo Skin 1
-set_color_profile_slot( 10, 1, 74, 35, 56 ); //Gumb Skin 2
+set_color_profile_slot( 10, 1, 74, 35, 56 ); //Gumbo Skin 2
 set_color_profile_slot( 10, 2, 64, 103, 140 ); //Jeans
 set_color_profile_slot( 10, 3, 93, 85, 135 ); //Hoodie
 set_color_profile_slot( 10, 4, 255, 222, 128 ); //Eyes
@@ -138,7 +138,7 @@ set_color_profile_slot( 10, 7, 195, 255, 0 ); //Apron
 
 // Bea
 set_color_profile_slot( 11, 0, 89, 124, 125 ); //Gumbo Skin 1
-set_color_profile_slot( 11, 1, 45, 63, 64 ); //Gumb Skin 2
+set_color_profile_slot( 11, 1, 45, 63, 64 ); //Gumbo Skin 2
 set_color_profile_slot( 11, 2, 67, 88, 89 ); //Jeans
 set_color_profile_slot( 11, 3, 56, 56, 56 ); //Hoodie
 set_color_profile_slot( 11, 4, 219, 173, 54 ); //Eyes
@@ -148,7 +148,7 @@ set_color_profile_slot( 11, 7, 212, 247, 252 ); //Apron
 
 // Kaiman
 set_color_profile_slot( 12, 0, 129, 143, 83 ); //Gumbo Skin 1
-set_color_profile_slot( 12, 1, 227, 231, 187 ); //Gumb Skin 2
+set_color_profile_slot( 12, 1, 227, 231, 187 ); //Gumbo Skin 2
 set_color_profile_slot( 12, 2, 82, 86, 69 ); //Jeans
 set_color_profile_slot( 12, 3, 35, 32, 54 ); //Hoodie
 set_color_profile_slot( 12, 4, 163, 46, 39 ); //Eyes
@@ -158,7 +158,7 @@ set_color_profile_slot( 12, 7, 63, 83, 110 ); //Apron
 
 // BLW
 set_color_profile_slot( 13, 0, 107, 73, 61 ); //Gumbo Skin 1
-set_color_profile_slot( 13, 1, 255, 203, 31 ); //Gumb Skin 2
+set_color_profile_slot( 13, 1, 255, 203, 31 ); //Gumbo Skin 2
 set_color_profile_slot( 13, 2, 77, 77, 77 ); //Jeans
 set_color_profile_slot( 13, 3, 97, 97, 97 ); //Hoodie
 set_color_profile_slot( 13, 4, 252, 250, 244 ); //Eyes
@@ -168,7 +168,7 @@ set_color_profile_slot( 13, 7, 255, 203, 31 ); //Apron
 
 // FTL
 set_color_profile_slot( 14, 0, 48, 161, 201 ); //Gumbo Skin 1
-set_color_profile_slot( 14, 1, 255, 203, 31 ); //Gumb Skin 2
+set_color_profile_slot( 14, 1, 255, 203, 31 ); //Gumbo Skin 2
 set_color_profile_slot( 14, 2, 134, 130, 143 ); //Jeans
 set_color_profile_slot( 14, 3, 110, 110, 110 ); //Hoodie
 set_color_profile_slot( 14, 4, 255, 255, 255 ); //Eyes
@@ -178,7 +178,7 @@ set_color_profile_slot( 14, 7, 49, 222, 198 ); //Apron
 
 // New TAG
 set_color_profile_slot( 15, 0, 149, 202, 116 ); //Gumbo Skin 1
-set_color_profile_slot( 15, 1, 192, 227, 165 ); //Gumb Skin 2
+set_color_profile_slot( 15, 1, 192, 227, 165 ); //Gumbo Skin 2
 set_color_profile_slot( 15, 2, 96, 158, 155 ); //Jeans
 set_color_profile_slot( 15, 3, 255, 147, 94 ); //Hoodie
 set_color_profile_slot( 15, 4, 255, 223, 112 ); //Eyes
@@ -188,7 +188,7 @@ set_color_profile_slot( 15, 7, 248, 229, 151 ); //Apron
 
 // Terry Crews
 set_color_profile_slot( 16, 0, 130, 90, 49 ); //Gumbo Skin 1
-set_color_profile_slot( 16, 1, 107, 107, 107 ); //Gumb Skin 2
+set_color_profile_slot( 16, 1, 107, 107, 107 ); //Gumbo Skin 2
 set_color_profile_slot( 16, 2, 212, 78, 78 ); //Jeans
 set_color_profile_slot( 16, 3, 115, 79, 43 ); //Hoodie
 set_color_profile_slot( 16, 4, 245, 254, 255 ); //Eyes
@@ -198,7 +198,7 @@ set_color_profile_slot( 16, 7, 255, 255, 255 ); //Apron
 
 // Heisnberg
 set_color_profile_slot( 17, 0, 214, 180, 146 ); //Gumbo Skin 1
-set_color_profile_slot( 17, 1, 110, 81, 56 ); //Gumb Skin 2
+set_color_profile_slot( 17, 1, 110, 81, 56 ); //Gumbo Skin 2
 set_color_profile_slot( 17, 2, 108, 105, 115 ); //Jeans
 set_color_profile_slot( 17, 3, 145, 137, 115 ); //Hoodie
 set_color_profile_slot( 17, 4, 255, 255, 255 ); //Eyes
@@ -208,7 +208,7 @@ set_color_profile_slot( 17, 7, 251, 255, 0 ); //Apron
 
 // Vector
 set_color_profile_slot( 18, 0, 107, 184, 59 ); //Gumbo Skin 1
-set_color_profile_slot( 18, 1, 187, 237, 116 ); //Gumb Skin 2
+set_color_profile_slot( 18, 1, 187, 237, 116 ); //Gumbo Skin 2
 set_color_profile_slot( 18, 2, 92, 92, 92 ); //Jeans
 set_color_profile_slot( 18, 3, 156, 120, 6 ); //Hoodie
 set_color_profile_slot( 18, 4, 255, 255, 255 ); //Eyes
@@ -218,7 +218,7 @@ set_color_profile_slot( 18, 7, 215, 237, 185 ); //Apron
 
 // Ice Climbers
 set_color_profile_slot( 19, 0, 101, 68, 212 ); //Gumbo Skin 1
-set_color_profile_slot( 19, 1, 196, 191, 212 ); //Gumb Skin 2
+set_color_profile_slot( 19, 1, 196, 191, 212 ); //Gumbo Skin 2
 set_color_profile_slot( 19, 2, 101, 47, 148 ); //Jeans
 set_color_profile_slot( 19, 3, 70, 47, 148 ); //Hoodie
 set_color_profile_slot( 19, 4, 255, 255, 255 ); //Eyes
@@ -228,7 +228,7 @@ set_color_profile_slot( 19, 7, 255, 255, 255 ); //Apron
 
 // Chef and Sheftu
 set_color_profile_slot( 20, 0, 230, 182, 52 ); //Gumbo Skin 1
-set_color_profile_slot( 20, 1, 88, 88, 95 ); //Gumb Skin 2
+set_color_profile_slot( 20, 1, 88, 88, 95 ); //Gumbo Skin 2
 set_color_profile_slot( 20, 2, 60, 123, 171 ); //Jeans
 set_color_profile_slot( 20, 3, 61, 61, 76 ); //Hoodie
 set_color_profile_slot( 20, 4, 255, 255, 255 ); //Eyes
@@ -238,7 +238,7 @@ set_color_profile_slot( 20, 7, 201, 224, 221 ); //Apron
 
 // S&B
 set_color_profile_slot( 21, 0, 77, 78, 94 ); //Gumbo Skin 1
-set_color_profile_slot( 21, 1, 140, 140, 140 ); //Gumb Skin 2
+set_color_profile_slot( 21, 1, 140, 140, 140 ); //Gumbo Skin 2
 set_color_profile_slot( 21, 2, 239, 217, 70 ); //Jeans
 set_color_profile_slot( 21, 3, 175, 102, 184 ); //Hoodie
 set_color_profile_slot( 21, 4, 243, 242, 160 ); //Eyes
@@ -248,7 +248,7 @@ set_color_profile_slot( 21, 7, 255, 255, 255 ); //Apron
 
 // Smiling Friends
 set_color_profile_slot( 22, 0, 248, 215, 79 ); //Gumbo Skin 1
-set_color_profile_slot( 22, 1, 248, 182, 0 ); //Gumb Skin 2
+set_color_profile_slot( 22, 1, 248, 182, 0 ); //Gumbo Skin 2
 set_color_profile_slot( 22, 2, 101, 103, 166 ); //Jeans
 set_color_profile_slot( 22, 3, 242, 106, 43 ); //Hoodie
 set_color_profile_slot( 22, 4, 255, 255, 255 ); //Eyes
@@ -258,7 +258,7 @@ set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron
 
 // Drip
 set_color_profile_slot( 23, 0, 88, 80, 63 ); //Gumbo Skin 1
-set_color_profile_slot( 23, 1, 200, 189, 158 ); //Gumb Skin 2
+set_color_profile_slot( 23, 1, 200, 189, 158 ); //Gumbo Skin 2
 set_color_profile_slot( 23, 2, 92, 92, 92 ); //Jeans
 set_color_profile_slot( 23, 3, 89, 89, 89 ); //Hoodie
 set_color_profile_slot( 23, 4, 255, 210, 77 ); //Eyes
@@ -268,7 +268,7 @@ set_color_profile_slot( 23, 7, 255, 255, 255 ); //Apron
 
 // Reverse
 set_color_profile_slot( 24, 0, 242, 207, 207 ); //Gumbo Skin 1
-set_color_profile_slot( 24, 1, 211, 120, 120 ); //Gumb Skin 2
+set_color_profile_slot( 24, 1, 211, 120, 120 ); //Gumbo Skin 2
 set_color_profile_slot( 24, 2, 85, 101, 115 ); //Jeans
 set_color_profile_slot( 24, 3, 107, 124, 140 ); //Hoodie
 set_color_profile_slot( 24, 4, 255, 255, 255 ); //Eyes
@@ -278,7 +278,7 @@ set_color_profile_slot( 24, 7, 255, 255, 255 ); //Apron
 
 // Riptide
 set_color_profile_slot( 25, 0, 30, 58, 135 ); //Gumbo Skin 1
-set_color_profile_slot( 25, 1, 0, 200, 255 ); //Gumb Skin 2
+set_color_profile_slot( 25, 1, 0, 200, 255 ); //Gumbo Skin 2
 set_color_profile_slot( 25, 2, 76, 88, 122 ); //Jeans
 set_color_profile_slot( 25, 3, 242, 119, 32 ); //Hoodie
 set_color_profile_slot( 25, 4, 158, 255, 254 ); //Eyes
@@ -288,7 +288,7 @@ set_color_profile_slot( 25, 7, 245, 212, 64 ); //Apron
 
 // lakers/big house
 set_color_profile_slot( 26, 0, 110, 23, 191 ); //Gumbo Skin 1
-set_color_profile_slot( 26, 1, 255, 191, 94 ); //Gumb Skin 2
+set_color_profile_slot( 26, 1, 255, 191, 94 ); //Gumbo Skin 2
 set_color_profile_slot( 26, 2, 134, 136, 227 ); //Jeans
 set_color_profile_slot( 26, 3, 255, 255, 255 ); //Hoodie
 set_color_profile_slot( 26, 4, 255, 255, 255 ); //Eyes
@@ -298,7 +298,7 @@ set_color_profile_slot( 26, 7, 255, 191, 0 ); //Apron
 
 // Genesis
 set_color_profile_slot( 27, 0, 64, 63, 63 ); //Gumbo Skin 1
-set_color_profile_slot( 27, 1, 222, 27, 42 ); //Gumb Skin 2
+set_color_profile_slot( 27, 1, 222, 27, 42 ); //Gumbo Skin 2
 set_color_profile_slot( 27, 2, 191, 4, 13 ); //Jeans
 set_color_profile_slot( 27, 3, 105, 105, 105 ); //Hoodie
 set_color_profile_slot( 27, 4, 255, 255, 255 ); //Eyes
@@ -306,9 +306,19 @@ set_color_profile_slot( 27, 5, 240, 79, 92 ); //Po Skin 1
 set_color_profile_slot( 27, 6, 94, 94, 94 ); //Po Skin 2
 set_color_profile_slot( 27, 7, 255, 255, 255 ); //Apron
 
+// RCS
+set_color_profile_slot( 28, 0, 41, 38, 33 ); //Gumbo Skin 1
+set_color_profile_slot( 28, 1, 178, 255, 208 ); //Gumbo Skin 2
+set_color_profile_slot( 28, 2, 120, 117, 112 ); //Jeans
+set_color_profile_slot( 28, 3, 150, 146, 140 ); //Hoodie
+set_color_profile_slot( 28, 4, 41, 255, 125 ); //Eyes
+set_color_profile_slot( 28, 5, 178, 255, 208 ); //Po Skin 1
+set_color_profile_slot( 28, 6, 41, 255, 125 ); //Po Skin 2
+set_color_profile_slot( 28, 7, 209, 255, 227 ); //Apron
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Gumbo Skin 1","colors":[{"r":88,"g":80,"b":63,"main":true},{"r":62,"g":55,"b":42},{"r":139,"g":128,"b":103}]},{"name":"Gumb Skin 2","colors":[{"r":200,"g":189,"b":158,"main":true},{"r":169,"g":156,"b":121}]},{"name":"Jeans","colors":[{"r":107,"g":124,"b":140,"main":true},{"r":85,"g":101,"b":115},{"r":58,"g":73,"b":86},{"r":40,"g":53,"b":64}]},{"name":"Hoodie","colors":[{"r":86,"g":86,"b":86,"main":true},{"r":62,"g":62,"b":62}]},{"name":"Eyes","colors":[{"r":255,"g":210,"b":77},{"r":255,"g":191,"b":0,"main":true},{"r":255,"g":213,"b":89}]},{"name":"Po Skin 1","colors":[{"r":242,"g":207,"b":207,"main":true},{"r":208,"g":164,"b":164},{"r":191,"g":142,"b":142}]},{"name":"Po Skin 2","colors":[{"r":211,"g":120,"b":120,"main":true},{"r":156,"g":76,"b":76}]},{"name":"Apron","colors":[{"r":244,"g":251,"b":252,"main":true},{"r":171,"g":179,"b":179},{"r":114,"g":119,"b":119},{"r":114,"g":119,"b":119}]}]}
+{"formatversion":1,"data":[{"name":"Gumbo Skin 1","colors":[{"r":88,"g":80,"b":63,"main":true},{"r":62,"g":55,"b":42},{"r":139,"g":128,"b":103}]},{"name":"Gumbo Skin 2","colors":[{"r":200,"g":189,"b":158,"main":true},{"r":169,"g":156,"b":121}]},{"name":"Jeans","colors":[{"r":107,"g":124,"b":140,"main":true},{"r":85,"g":101,"b":115},{"r":58,"g":73,"b":86},{"r":40,"g":53,"b":64}]},{"name":"Hoodie","colors":[{"r":86,"g":86,"b":86,"main":true},{"r":62,"g":62,"b":62}]},{"name":"Eyes","colors":[{"r":255,"g":210,"b":77},{"r":255,"g":191,"b":0,"main":true},{"r":255,"g":213,"b":89}]},{"name":"Po Skin 1","colors":[{"r":242,"g":207,"b":207,"main":true},{"r":208,"g":164,"b":164},{"r":191,"g":142,"b":142}]},{"name":"Po Skin 2","colors":[{"r":211,"g":120,"b":120,"main":true},{"r":156,"g":76,"b":76}]},{"name":"Apron","colors":[{"r":244,"g":251,"b":252,"main":true},{"r":171,"g":179,"b":179},{"r":114,"g":119,"b":119},{"r":114,"g":119,"b":119}]}]}
 === END JSON PALETTE ===
 */

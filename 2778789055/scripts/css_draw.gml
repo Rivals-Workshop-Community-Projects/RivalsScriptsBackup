@@ -47,8 +47,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "19";
-patch_month = "SEP";
+patch_day = "9";
+patch_month = "DEC";
  
 var num_alts = 27;
 var alt_cur = get_player_color(player);
@@ -121,6 +121,7 @@ alt_name[24]  = "Reverse";
 alt_name[25]  = "Riptide"; 
 alt_name[26]  = "Hoops"; 
 alt_name[27]  = "GENESIS"; 
+alt_name[28]  = "Champion"; 
 }else{
 alt_name[12]  = "Mishima"; 
 alt_name[14]  = "Avocado";  
