@@ -81,13 +81,13 @@ if (attack == AT_FSPECIAL_2 && !free){
 
 //Ice Clone Movement
 if (attack == AT_FSPECIAL_2 && player_id.x < x){
-	if place_meeting(x, y, pHitBox) && (pHitBox.player_id == player_id) && (pHitBox.attack != AT_FSPECIAL_2){
+	if place_meeting(x, y, pHitBox) && (pHitBox.player_id == player_id){
 		hsp = 7;
 	}
 }
 
 if (attack == AT_FSPECIAL_2 && player_id.x > x){
-	if place_meeting(x, y, pHitBox) && (pHitBox.player_id == player_id) && (pHitBox.attack != AT_FSPECIAL_2){
+	if place_meeting(x, y, pHitBox) && (pHitBox.player_id == player_id){
 		hsp = -7;
 	}
 }
@@ -129,10 +129,8 @@ if (attack == AT_FSPECIAL_2 && player_id.taunt_pressed && has_rune("M")){
 
 
 //Destroy Projectiles
-if (attack == AT_NSPECIAL){
-	if place_meeting(x, y, pHitBox){
-		destroyed = true;
-	}
+if (attack == AT_NSPECIAL && place_meeting(x, y, pHitBox)){
+	destroyed = true;
 }
 
 if (attack == AT_FTILT && was_parried){
@@ -142,21 +140,33 @@ if (attack == AT_FTILT && was_parried){
 
 //Dspecial Spike Animation
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
-	if (hitbox_timer == 0 || hitbox_timer == 37){
+	if (hitbox_timer == 0 || hitbox_timer == 27){
 		image_index = 0;
 	}
 }
 
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
-	if (hitbox_timer == 3 || hitbox_timer == 34){
+	if (hitbox_timer == 3){
 		image_index = 1;
+		hit_priority = 3;
 	}
 }
 
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
 	if (hitbox_timer == 6){
 		image_index = 2;
-		hit_priority = 3;
+	}
+}
+
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
+	if (hitbox_timer == 24){
+		image_index = 1;
+	}
+}
+
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
+	if (hitbox_timer == 12){
+		hit_priority = -1;
 	}
 }
 
@@ -196,13 +206,6 @@ if (attack == AT_DSPECIAL && x > player_id.x && has_rune("J")){
 	spr_dir = 1;
 }
 
-
-//Dspecial Spike Hitbox Lifetime
-if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
-	if (hitbox_timer == 11){
-		hit_priority = -1;
-	}
-}
 
 
 //Dspecial SFX

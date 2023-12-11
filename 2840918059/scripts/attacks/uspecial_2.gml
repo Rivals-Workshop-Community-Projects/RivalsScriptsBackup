@@ -44,7 +44,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_WIDTH, 40);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_KNOCKBACK, 10);
@@ -52,5 +52,6 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 28);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 

@@ -34,7 +34,7 @@ switch (playerAlt)
 {
 	case 7:  outline_colour =	[15, 56, 15]; break;
 	case 15:  outline_colour =	[37, 11, 45]; break;
-	case 18:  outline_colour =	[108, 24, 50]; break;
+	case 18:  outline_colour =	[48, 0, 0]; break;
 	case 19:  outline_colour =	[102, 28, 15]; break;
 	case 26:  outline_colour =	[47, 38, 61]; break;
 }

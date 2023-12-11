@@ -206,15 +206,15 @@ set_color_profile_slot( 17, 5, 51, 16, 16 ); //Hair2
 set_color_profile_slot( 17, 6, 255, 234, 77 ); //Skin1
 set_color_profile_slot( 17, 7, 227, 153, 50 ); //Skin2
 
-// Fez
-set_color_profile_slot( 18, 0, 186, 59, 80 ); //Dress1
-set_color_profile_slot( 18, 1, 247, 220, 91 ); //Snow1
-set_color_profile_slot( 18, 2, 146, 44, 66 ); //Dress2
-set_color_profile_slot( 18, 3, 180, 103, 51 ); //Snow2
-set_color_profile_slot( 18, 4, 245, 190, 63 ); //Hair1
-set_color_profile_slot( 18, 5, 227, 135, 48 ); //Hair2
-set_color_profile_slot( 18, 6, 234, 139, 138 ); //Skin1
-set_color_profile_slot( 18, 7, 144, 69, 90 ); //Skin2
+// Ketsukane
+set_color_profile_slot( 18, 0, 248, 242, 214 ); //Dress1
+set_color_profile_slot( 18, 1, 254, 211, 84 ); //Snow1
+set_color_profile_slot( 18, 2, 233, 75, 71 ); //Dress2
+set_color_profile_slot( 18, 3, 251, 1, 83 ); //Snow2
+set_color_profile_slot( 18, 4, 237, 140, 36 ); //Hair1
+set_color_profile_slot( 18, 5, 194, 63, 18 ); //Hair2
+set_color_profile_slot( 18, 6, 246, 216, 142 ); //Skin1
+set_color_profile_slot( 18, 7, 213, 149, 91 ); //Skin2
 
 // FluttGir
 set_color_profile_slot( 19, 0, 157, 169, 57 ); //Dress1

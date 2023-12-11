@@ -8,24 +8,46 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 12;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
- 
+
+//Draw overlay
+//draw_sprite(sprite_get("css_overlay"), 0, x + 8, y + 8);
+//draw_sprite_ext(sprite_get("css_overlay"), 0, x + 8, y + 8, 2, 2, 0, c_gray, 1);
+
+if (alt_cur == 7 || alt_cur == 8 || alt_cur == 9 || alt_cur == 10) {
+	set_ui_element( UI_HUD_ICON, sprite_get("hud_ex"));
+} else if (alt_cur == 11) {
+	set_ui_element( UI_HUD_ICON, sprite_get("hud_gb"));
+} else {
+	set_ui_element( UI_HUD_ICON, sprite_get("hud_def"));
+}
+
+if (alt_cur == 7 || alt_cur == 8 || alt_cur == 9 || alt_cur == 10 || alt_cur == 11) {
+	draw_sprite(sprite_get("css_extra"), 0, x + 8, y + 8);
+	if (alt_cur == 11) {
+		draw_sprite(sprite_get("css_gb"), 0, x + 8, y + 8);
+	}
+}
  
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
-alt_name[1]  = "Red";
-alt_name[2]  = "Blue";
-alt_name[3]  = "Green";
-alt_name[4]  = "Black Race";
-alt_name[5]  = "Oyaji";
-alt_name[6]  = "Eggplant Man";
-alt_name[7]  = "Gotcha Wrench";
-alt_name[8]  = "Dogu";
-alt_name[9]  = "Wario";
-alt_name[10] = "DGR Dave";
-alt_name[11] = "Custom, no reference";
+alt_name[1]  = "Movie";
+alt_name[2]  = "Mario";
+alt_name[3]  = "Luigi";
+alt_name[4]  = "Wario";
+alt_name[5]  = "Waluigi";
+alt_name[6]  = "Oyaji";
+alt_name[7]  = "Eggplant Man";
+alt_name[8]  = "Gotcha Wrench";
+alt_name[9]  = "Dogu";
+alt_name[10] = "Abyss";
+alt_name[11] = "Game-boy";
+alt_name[12] = "Custom";
+alt_name[13] = "Black Race";
+alt_name[14] = "DGR Dave";
+alt_name[15] = "Bob the Builder";
 
 
 

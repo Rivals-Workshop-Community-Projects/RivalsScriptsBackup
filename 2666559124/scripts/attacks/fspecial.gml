@@ -42,6 +42,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 253);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("mafia_punch"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("mafia_punch_strong"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 1);

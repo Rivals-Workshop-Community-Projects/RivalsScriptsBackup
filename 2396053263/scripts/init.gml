@@ -71,6 +71,7 @@ brake_timer = 0; //used for mid-attack air brakes
 air_timer = 0; //used for determining whether she has been in the air long enough to brake
 has_brake = 1; //determines if heartbrake has used her brake already
 can_brake = 1; //determines if heartbrake currently meets the requirements to preform a brake
+ground_brake_buffer = 0; //determines if you should buffer a v-brake from grounded taunt
 
 vbrake_timer = 0; //used specifically for heartbrake's infinite vbrakes cheat
 

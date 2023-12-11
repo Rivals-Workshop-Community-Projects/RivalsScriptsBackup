@@ -70,10 +70,13 @@ sprite_change_offset("fatality", 150, 182);
 sprite_change_offset("fatality2", 150, 182);
 
 sprite_change_offset("fspecial_air", 150, 182);
+sprite_change_offset("fspecial2", 150, 182);
+sprite_change_offset("fspecial2_air", 150, 182);
 sprite_change_offset("fspecial_clone", 150, 182);
 sprite_change_offset("fspecial_clone_break", 150, 182);
 sprite_change_offset("fspecial_clone_expire", 150, 182);
 sprite_change_offset("fspecial_clone_charge", 150, 182);
+sprite_change_offset("freeze", 150, 182);
 
 sprite_change_offset("ftilt_ice1", 150, 182);
 sprite_change_offset("ftilt_ice2", 150, 182);
@@ -104,6 +107,11 @@ sprite_change_offset("uspecial_air", 150, 182);
 sprite_change_offset("charge", 150, 182);
 sprite_change_offset("splash", 150, 182);
 sprite_change_offset("dtilt_ice", 150, 182);
+
+sprite_change_offset("hit_particle_1", 150, 182);
+sprite_change_offset("hit_particle_2", 150, 182);
+sprite_change_offset("hit_particle_3", 150, 182);
+
 
 
 

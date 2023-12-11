@@ -38,5 +38,6 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_fspecial_hit_ground"));
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 28);

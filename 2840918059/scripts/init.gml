@@ -114,6 +114,9 @@ air_time = 0;
 purple = 0;
 
 
+//Clone Frozen FX
+freeze = hit_fx_create( sprite_get( "freeze" ), 1 );
+
 //Fatality FX
 fatality = hit_fx_create( sprite_get( "fatality" ), 80 );
 fatality2 = hit_fx_create( sprite_get( "fatality2" ), 80 );
@@ -136,6 +139,10 @@ charge = hit_fx_create( sprite_get( "charge" ), 15 );
 splash = hit_fx_create( sprite_get( "splash" ), 20 );
 dtilt_ice = hit_fx_create( sprite_get( "dtilt_ice" ), 10 );
 
+//Hit FX
+set_hit_particle_sprite( 1, sprite_get( "hit_particle_1" ) );
+set_hit_particle_sprite( 2, sprite_get( "hit_particle_2" ) );
+set_hit_particle_sprite( 3, sprite_get( "hit_particle_3" ) );
 
 
 

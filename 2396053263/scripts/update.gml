@@ -49,6 +49,17 @@ if (free && taunt_down && has_brake = 1 && (state == PS_ATTACK_AIR) && air_timer
     }
     has_brake = 0;
 }
+if(ground_brake_buffer != 0 && free && (taunt_down || taunt_pressed) && (state == PS_ATTACK_AIR) && !hitpause){
+	if ((left_down && spr_dir == -1) || (right_down && spr_dir == 1)){
+        vsp = -1.5;
+		hsp = 6*spr_dir;
+    } else if((left_down && spr_dir == 1) || (right_down && spr_dir == -1)){
+        vsp = -1.5;
+		hsp = -6*spr_dir;
+    }
+    has_brake = 0;
+    ground_brake_buffer = 0;
+}
 
 if (state == PS_WALL_JUMP){
     has_brake = 1;

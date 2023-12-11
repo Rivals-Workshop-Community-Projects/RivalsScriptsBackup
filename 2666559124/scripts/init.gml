@@ -3,7 +3,7 @@ crouchbox_spr = asset_get("ex_guy_hurt_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 52;
+char_height = 60;
 idle_anim_speed = .150;
 crouch_anim_speed = .2;
 walk_anim_speed = .2;
@@ -23,10 +23,10 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .5;
 moonwalk_accel = 1.4;
 
-jump_start_time = 5;
-jump_speed = 11;
+jump_start_time = 6;
+jump_speed = 12;
 short_hop_speed = 6;
-djump_speed = 10;
+djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -41,15 +41,15 @@ walljump_vsp = 8;
 walljump_time = 32;
 max_fall = 14; //maximum fall speed without fastfalling
 fast_fall = 18; //fast fall speed
-gravity_speed = .75;
-hitstun_grav = .5;
+gravity_speed = .7;
+hitstun_grav = .6;
 knockback_adj = 0.7; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 7;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .02; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -62,7 +62,7 @@ dodge_active_frames = 1;
 dodge_recovery_frames = 3;
 
 //tech animation frames
-tech_active_frames = 3;
+tech_active_frames = 2;
 tech_recovery_frames = 3;
 
 //tech roll animation frames
@@ -84,8 +84,8 @@ roll_forward_recovery_frames = 1;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 1;
 roll_back_recovery_frames = 1;
-roll_forward_max = 9; //roll speed
-roll_backward_max = 9;
+roll_forward_max = 8; //roll speed
+roll_backward_max = 8;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
@@ -98,18 +98,43 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+set_victory_bg(sprite_get("victory_bg"))i
+set_victory_theme( sound_get( "victory_theme" ));
+
 canBomb = true;
+
+alt = get_player_color(player);
+
+if (alt == 7 || alt == 8 || alt == 9 || alt == 10 || alt == 11) {
+	use_ex_sprites = true;
+	set_ui_element( UI_HUD_ICON, sprite_get("hud_ex"));
+	set_ui_element( UI_HUDHURT_ICON, sprite_get("hudrt_ex"));
+	set_ui_element( UI_WIN_PORTRAIT, sprite_get("portrait_ex"));
+} else {
+	use_ex_sprites = false;
+	set_ui_element( UI_HUD_ICON, sprite_get("hud_def"));
+	set_ui_element( UI_HUDHURT_ICON, sprite_get("hudrt_def"));
+	set_ui_element( UI_WIN_PORTRAIT, sprite_get("portrait_def"));
+}
 
 //Toonlink Support
 if(get_player_color(player) == 0) {
 	toonlink_photo = sprite_get("toonlink_photo3");
 } else {
-	toonlink_photo = sprite_get("toonlink_photo");
+	if (!use_ex_sprites) {
+		toonlink_photo = sprite_get("toonlink_photo");
+	} else {
+		toonlink_photo = sprite_get("toonlink_photo_ex");
+	}
 }
 toonlink_photo2 = 4
 
 //Dracula support
-dracula_portrait = sprite_get("cutscene_portrait");
+if (!use_ex_sprites) {
+	dracula_portrait = sprite_get("cutscene_portrait");
+} else {
+	dracula_portrait = sprite_get("cutscene_portrait_ex");
+}
 dracula_portrait2 = asset_get("empty_sprite")
 var page = 0;
 
@@ -145,7 +170,7 @@ page++;
 
 //Page 6
 dracula_speaker[page] = 0;
-dracula_text[page] = "You don't even know who I am, do you? I am Dracula, the Prince of Darkness. And I am not going to allow you to destroy my castle.";
+dracula_text[page] = "You don't even know who I am, do you? I am Dracula, the Prince of Darkness. And I'm not allowing anyone to destroy my castle.";
 page++;
 
 //Page 7
@@ -160,12 +185,12 @@ page++;
 
 //Page 9
 dracula_speaker[page] = 0;
-dracula_text[page] = "Your not going anywhere.[glass] I'm not letting a single one of you destruction experts touch my castle with your greasy mallets.";
+dracula_text[page] = "You're not going anywhere.[glass] I'm not letting a single one of you destruction experts touch my castle with your greasy mallets.";
 page++;
 
 //Page 10
 dracula_speaker[page] = 0;
-dracula_text[page] = "I'm going to slay the rest of your team after killing you first.";
+dracula_text[page] = "So allow me to slay the rest of your team after I kill you first.";
 page++;
 
 
@@ -201,7 +226,7 @@ page++;
 
 //Page 5
 daroach_speaker[page] = 1;
-daroach_text[page] = "So, I'm gonna have to ask you to give them back before I make you suffer consequences.";
+daroach_text[page] = "So, I'm gonna have to ask you to give them back before I end up starting any rough events.";
 page++;
 
 //Page 6
@@ -211,7 +236,7 @@ page++;
 
 //Page 7
 daroach_speaker[page] = 0;
-daroach_text[page] = "Well, I'm sure the Squeak Squad will throw you overboard before you can give any consequences!";
+daroach_text[page] = "Well, I'm sure the Squeak Squad will throw you overboard no matter what event you start!";
 page++;
 
 //Page 8
@@ -221,6 +246,6 @@ page++;
 
 //Page 9
 daroach_speaker[page] = 0;
-daroach_text[page] = "You happen to be talking to their leader.";
+daroach_text[page] = "You just so happen to be talking to their leader.";
 page++;
 

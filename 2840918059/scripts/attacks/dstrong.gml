@@ -61,6 +61,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 50);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 28);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ice_shieldup"));
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -79,6 +80,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 199);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ice_back_air"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
 

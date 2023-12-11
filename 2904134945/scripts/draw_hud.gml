@@ -180,14 +180,19 @@ if ("practice" in self)
 						AddText("Pika alt I think: PIKA");
 						AddText("");
 						AddText("Hopefully removed the secondary taunt sfx spam bug");
-						AddText("");
-						AddText("----------------------------------");
+						break;
+					case 8:
 						AddText("v1.6.2 - 24 Aug 2023");
 						AddText("");
 						AddText("Touched up FAir and NSpecial sprites");
 						AddText("Added custom landing FAir animation");
 						AddText("");
 						AddText("DTilt projectiles now have extended parry stun");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.6.3 - 11 Dec 2023");
+						AddText("");
+						AddText("Replaced Fez alt with Ketsukane alt");
 						break;
 				}
 				DrawTutorialBlock();
@@ -293,7 +298,6 @@ if ("practice" in self)
 	draw_rectangle_color(8,temp_y - 24 - (tutLength)*16 + floor(tutAlpha*4)*2-8,length+22,temp_y-14 + floor(tutAlpha*4)*2-8,c_black,c_black,c_black,c_black,false);
 	draw_set_alpha(tutAlpha);
 }
-
 
 #define DrawTutText()
 {

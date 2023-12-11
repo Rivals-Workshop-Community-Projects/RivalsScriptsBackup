@@ -15,6 +15,7 @@ if (attack == AT_USTRONG){
 
 if (attack == AT_TAUNT){
 	if (state_timer >= 3){
+		ground_brake_buffer = 0;
 		if (window < 4 && ((left_down && spr_dir == -1) || (right_down && spr_dir == 1))){ //forwards input
 			has_brake = 0;
 			spawn_hit_fx(x, y, hit_gbrake);
@@ -44,6 +45,7 @@ if (attack == AT_TAUNT){
 			vsp = -2;
 			sound_play(sound_get("vbrake"));
 		}
+		ground_brake_buffer = (right_down - left_down);
 	}
 }
 
@@ -135,7 +137,7 @@ if (attack == AT_USPECIAL){
 			landing_lag = 60;
 		} else {
 			set_state(PS_LANDING_LAG);
-			landing_lag = 4;
+			landing_lag = 6;
 		}
 	}
 }
@@ -422,6 +424,11 @@ if (attack == AT_DSTRONG){
 		if (window_timer == 1 && !hitpause){
 			hsp += 2.5*spr_dir;
 		}
+	}
+	//speed clamp
+	if(has_brake){
+		var speed_clamp = (free? 7 : 10);
+		hsp = clamp(hsp, -speed_clamp, speed_clamp);
 	}
 }
 

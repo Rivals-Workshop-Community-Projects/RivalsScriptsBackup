@@ -2,13 +2,15 @@
 
 aiplaceholder = random_func( 0, 4, true)
 
-if (attack == AT_JAB) {
+if (attack == AT_JAB && state == PS_ATTACK_GROUND) {
+	right_down = false;
+	left_down = false;
+	up_down = false;
+	down_down = false;
 	if (window == 3 && window_timer == 7 && aiplaceholder > 0) {
-		window = 4;
-		window_timer = 0;
+		attack_pressed = true;
 	}
 	if (window == 6 && window_timer == 5 && aiplaceholder > 1) {
-		window = 7;
-		window_timer = 0;
+		attack_pressed = true;
 	}
 }

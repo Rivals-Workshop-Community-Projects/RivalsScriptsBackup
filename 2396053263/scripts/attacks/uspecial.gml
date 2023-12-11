@@ -2,7 +2,7 @@ set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_USPECIAL, AG_LANDING_LAG, 4);
+set_attack_value(AT_USPECIAL, AG_LANDING_LAG, 6);
 set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
@@ -69,6 +69,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1); 
