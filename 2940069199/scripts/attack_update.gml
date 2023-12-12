@@ -151,6 +151,9 @@ if (attack == AT_USPECIAL){
             	clinged_player = false;
             }
 		}
+		//if (jump_pressed && !can_tap_jump()) {
+		//	print("AHHHHHHHHHH")
+		//}
         if(window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH)){
             if(!hitpause){
                 sound_play(asset_get("sfx_swipe_heavy2"))
@@ -301,8 +304,10 @@ if (attack == AT_DSPECIAL){
     	}
     }
     if(window == 3){
-    	vsp = lerp(vsp, 0, .35);
-    	hsp = lerp(hsp, 0, .2);
+		if (!dspecthrow) {
+			vsp = lerp(vsp, 0, .35);
+			hsp = lerp(hsp, 0, .2);
+		}
     	if(window_timer == 1){
     		if(!hitpause){
     			if(left_down){
@@ -343,9 +348,11 @@ if (attack == AT_DSPECIAL){
     		move_cooldown[AT_DSPECIAL] = 35;
     		cur_tetramino = create_hitbox(AT_DSPECIAL, tetrimino + 1, x + 40 * spr_dir,y - 40)
     		tetrimino = 0
+			dspecthrow = true;
     	}
     }
     if(window == 4){
+		print("no stall?")
     	can_jump = true;
     }
     if(shield_pressed and !hitpause and window < 3){

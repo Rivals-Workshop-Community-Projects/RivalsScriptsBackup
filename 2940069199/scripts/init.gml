@@ -176,6 +176,11 @@ nspecial_pop_can = 0; //Don't change this
 
 nspecstall = 0;
 
+
+//Allows one VSP stall per airtime
+dspecstall = 0;
+dspecthrow = false;
+
 #define split_synced_var
 ///args chunk_lengths...
 var num_chunks = argument_count;

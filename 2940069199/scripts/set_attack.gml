@@ -16,6 +16,22 @@ if attack = AT_NSPECIAL && free && !move_cooldown[AT_NSPECIAL] && !nspecstall {
 	}
 }
 
+if (attack == AT_DSPECIAL) {
+	//print(dspecstall)
+	if (dspecstall) {
+		set_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
+		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
+		set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+	} else {
+		set_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, .5);
+		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .5);
+		set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, .5);
+		dspecstall = true;
+	}
+}
+
+//print(["Hi Honey",get_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY)])
+
 if (attack==AT_TAUNT){
 	if (down_down){
 		attack = AT_TAUNT_2

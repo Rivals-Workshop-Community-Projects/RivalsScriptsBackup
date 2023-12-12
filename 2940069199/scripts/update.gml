@@ -29,6 +29,8 @@ if(prev_state == PS_RESPAWN && state_timer == 0){
 
 if (!free || state == PS_WALL_JUMP || state == PS_RESPAWN) {
   nspecstall = false;
+  dspecstall = false;
+  dspecthrow = false;
 }
 /*if(get_gameplay_time()%10=0){
 	spawn_hit_fx(x,y,hfx_index)
