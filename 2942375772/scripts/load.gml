@@ -49,6 +49,8 @@ sprite_change_offset("vfx_nspecial_fire", 38, 16);
 sprite_change_offset("vfx_tamboboom", 172, 178);
 sprite_change_offset("thoughtbubble", 22, 42);
 sprite_change_offset("taunt3", 134, 158);
+sprite_change_offset("mamizou_transformation", 134, 158);
+sprite_change_offset("dangamrompa", 31, 0);
 
 sprite_change_offset("hfx_generic", 80, 80);
 sprite_change_offset("hfx_strong", 100, 100);

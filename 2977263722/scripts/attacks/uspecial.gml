@@ -4,6 +4,7 @@ set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
+set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 // startup
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 8);
@@ -11,17 +12,20 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("sm64_flamethrower"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 // flight
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 // deflate
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
 for (var hbox_num = 0; hbox_num < 12; hbox_num += 1) {
@@ -42,7 +46,7 @@ set_hitbox_value(AT_USPECIAL, hbox_num, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_USPECIAL, hbox_num, HG_EFFECT, 1);
+set_hitbox_value(AT_USPECIAL, hbox_num, HG_BULLY_BURN, 1);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_VISUAL_EFFECT, hfx_fire_1);

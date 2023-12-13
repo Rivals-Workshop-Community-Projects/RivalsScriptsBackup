@@ -1,9 +1,12 @@
-switch get_player_color(player) {
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+var alt_palette = get_player_color( real_player );
+
+switch alt_palette {
     case -1:
-	    set_character_color_slot(0, 17, 73, 255, 1);
+	    set_character_color_slot(0, 19, 73, 255, 1);
 		set_character_color_slot(1, 7, 31, 109, 1);
 	    set_character_color_slot(4, 188, 120, 3, 1);
-		set_article_color_slot(0, 17, 73, 255, 1);
+		set_article_color_slot(0, 19, 73, 255, 1);
 		set_article_color_slot(1, 7, 31, 109, 1);
 	    set_article_color_slot(4, 188, 120, 3, 1);
 	break;
@@ -47,11 +50,11 @@ switch get_player_color(player) {
 	        set_character_color_slot(3, 31, 54, 134, 0.2);
 		}
 	break;
-	case 19:
+	case 17:
     case 21:
 	    set_character_color_shading( 2, 5 );
 	break;
-	case 17:
+	case 19:
 	    set_character_color_shading( 1, 20 );
 	    set_character_color_shading( 2, 20 );
 	    set_character_color_shading( 4, 0 );

@@ -59,7 +59,7 @@ sprite_change_offset("uspecial", 64, 102);
 sprite_change_offset("dspecial", 56, 68);
 sprite_change_offset("dspecial_air", 56, 68);
 sprite_change_offset("dspecial2", 62, 90);
-sprite_change_offset("taunt", 64, 94);
+sprite_change_offset("taunt", 64, 96);
 sprite_change_offset("tauntd", 36, 68);
 sprite_change_offset("tauntd_l", 36, 68);
 

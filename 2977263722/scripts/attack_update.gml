@@ -112,26 +112,31 @@ can_move = false;
 switch window {
 	case 1:
 	    fspecial_hit = 0;
+		fspecial_extra_parrystun = 0;
         if window_timer = 1 && !hitpause sound_play(sound_get("bully_noise_2"));
 	break;
 	
 	case 2:
 	//Sets values for actual attack depending on if you are aerial or grounded
 		
-        if free = true{
-		    shoulderbashair = true;
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, -5);
-        } else {
+        if free = false || phone_cheats[CHEAT_SHMOOVEMENT] = true || has_rune("B") {
 		    shoulderbashair = false;
             set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
             set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
 			if window_timer = 6 && !hitpause spawn_base_dust(x+(32*spr_dir), y, "dash_start", 0);
+        } else {
+			shoulderbashair = true;
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, -5);
         }
 		
 		if window_timer = 6 && !hitpause {
 		    sound_play(sound_get("sm64_swoosh"));
 			if alt = 18 sound_play(sound_get("wario_GOE"));
+			
+			if random_func(0, 4, true) = 0 {
+			    talkingflower_voiceline(13, -1, false);
+			}
 		}
 	break;
 	
@@ -231,7 +236,7 @@ break;
 				break;
 			case 2: // flight
 				vsp -= 1.1;
-				vsp = clamp(vsp, -6, 0);
+				vsp = clamp(vsp, (has_rune("E") ? -9 : -4.5), 0);
 	            u_angle = -hsp*5;
 			break;
 			case 3: // deflate
@@ -249,13 +254,20 @@ break;
 	    switch window {
 		    case 2:
 			    n_charged = false;
-				
+
 				if n_charge_stored {
 				    window = 3;
 				    window_timer = 0;
 				} else if !special_down {
 				    window = 4;
 				    window_timer = 0;
+				}
+				
+				if has_rune("H") {
+				   n_charged = true;
+				   window = 6;
+				   window_timer = 0;
+				   set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 9);
 				}
 			break;
 			case 3:
@@ -273,7 +285,7 @@ break;
 				}
 			break;
 		    case 4:
-			    if !phone_cheats[CHEAT_FIREBALL_SPAM] { move_cooldown[AT_NSPECIAL] = 30; }
+			    if !phone_cheats[CHEAT_FIREBALL_SPAM] && !has_rune("C") { move_cooldown[AT_NSPECIAL] = 30; }
 				
 			    if window_timer = 1 && !hitpause {
 				    sound_play(sound_get("sm64_fire"));
@@ -283,7 +295,7 @@ break;
 					hsp -= 2*spr_dir;
 					
 					if free {
-					    vsp = -5;
+					    vsp = (has_rune("C") ? -4 : -5);
 					    nspeclol_2.proj_angle = spr_dir=-1? 40 : 320;
 					    nspeclol_2.hsp = lengthdir_x(4, 320)*spr_dir;
 					    nspeclol_2.vsp = lengthdir_y(4, 320);
@@ -292,10 +304,10 @@ break;
 				}
 			break;
 		    case 6:
-			    if !phone_cheats[CHEAT_FIREBALL_SPAM] { move_cooldown[AT_NSPECIAL] = 30; }
+			    if !phone_cheats[CHEAT_FIREBALL_SPAM] && !has_rune("C") { move_cooldown[AT_NSPECIAL] = 30; }
 			
 			    if window_timer < 4 && !hitpause {
-				    if free { vsp = -7; hsp -= 0.8*spr_dir; } else { hsp -= 1.5*spr_dir; }
+				    if free { vsp = (has_rune("C") && has_rune("H") ? -4 : -7); hsp -= 0.8*spr_dir; } else { hsp -= 1.5*spr_dir; }
 					
 				    n_charge_stored = false;
 				    sound_play(sound_get("sm64_fire"), false, noone, 1, 0.8 + window_timer*0.1 );
@@ -354,6 +366,7 @@ break;
 			break;
 			
 			case 3:
+			    if window_timer = 1 vsp = 20;
 			case 4:
 			    if has_hit {
 				    if dspec_bounce = false {
@@ -374,6 +387,13 @@ break;
 				}
 				if hitpause vsp = 0; //doesnt work anywhere but here which is so fun and quirky
 			    
+				if has_rune("G") && object_index != oTestPlayer {
+				if y + vsp >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) {
+				    y = get_stage_data(SD_TOP_BLASTZONE_Y) - 64;
+					sound_play(sound_get("sm64_groundpound"), false, noone, 1, 0.5 + ((vsp-20) * 0.01));
+					vsp += 4;
+				}
+				}
 				
 				if hitpause {
 				    annoying_dspec_vsp_buffer_variable_fuck_you_dan = 2;
@@ -381,9 +401,7 @@ break;
 				    annoying_dspec_vsp_buffer_variable_fuck_you_dan--;
 				}
 				
-				if annoying_dspec_vsp_buffer_variable_fuck_you_dan = 0 {
-				    vsp = 20;
-				} else {
+				if annoying_dspec_vsp_buffer_variable_fuck_you_dan != 0 {
 				    vsp = 0;
 				}
 			
@@ -399,6 +417,15 @@ break;
 						spawn_base_dust(x, y, "land", spr_dir);
 					    var fxlol = spawn_hit_fx(x, y, dspecial_fx);
 					    fxlol.depth = depth-1;
+						
+						if has_rune("A") {
+						    var fire1lol = create_hitbox(AT_NSPECIAL, 1, x - 16, y-8);
+						    var fire2lol = create_hitbox(AT_NSPECIAL, 1, x + 16, y-8);
+							fire1lol.spr_dir = -1;
+							fire1lol.hsp = -4;
+							fire2lol.spr_dir = 1;
+							fire2lol.hsp = 4;
+						}
 					}
 				}
 				if dspec_bounce && !hitpause vsp = -5;
@@ -545,7 +572,6 @@ break;
 					    window = 4;
 						window_timer = 6;
 					} else if held_back && !free_var {
-					print_debug("??");
 					    window = 5;
 						window_timer = 0;
 						spr_dir *= -1;
@@ -562,7 +588,7 @@ break;
 	    switch window {
 			case 3:
 			    sound_stop(sound_get("sm64_slidedoor_open"));
-			    if taunt_down {
+			    if taunt_down || state_timer < 45 {
 				    window_timer = 0;
 				}
 			break;
@@ -585,6 +611,39 @@ break;
 
 
 //=================================================================
+
+#define talkingflower_voiceline(type, force_line, interrupt)
+/*
+This is the function for custom voicelines!
+Put it at the bottom of any script where you want to trigger Talking Flower dialogue.
+=====================================================================================
+type: The category of voiceclip to play.
+1  - All lines (A full list can be located above)
+2  - Taunt/Cheer
+3  - Match Start (Ditto)
+4  - Eepy Waking (doesn't include the snoring voiceline)
+5  - Opponent Out Of Stocks/Time Up
+6  - FEAR
+7  - Idle
+8  - Boring (no one hit a move for a while)
+9  - Owner Died 
+10 - Misc Lines (absolute grabbag)
+11 - Choice (intended for menus)
+12 - Rolling
+13 - Speed
+14 - Match Start
+====================
+force_line: Whether or not to force a specific line. Set this to -1 for a random line.
+If you want the order for this, it's best to just look in load.gml or use trial & error.
+The array for lines is all listed in alphabetical order, so it should also be the same as the /sounds folder.
+====================
+interrupt: Whether this line will play right away, or wait for the previous line to finish.
+====================
+*/
+
+talkingflower_voice_trigger = type;
+talkingflower_set_line = force_line;
+talkingflower_interrupt = interrupt;
 
 #define spawn_base_dust // written by supersonic
 /// spawn_base_dust(x, y, name, dir = 0)

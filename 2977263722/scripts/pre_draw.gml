@@ -29,6 +29,27 @@ case 13:
 	var yoffs = y+50;
     pattern = true;
 break;
+
+case 14:
+case 15:
+case 16:
+case 17:
+        for (var i = w_ai_cur; i >= 0; i -= 1) {
+			var ind = (w_ai_tot + w_ai_ind - i) % w_ai_tot;
+			var ind_last = (ind - 1) % w_ai_tot;
+			var ai = w_afterimages[ind];
+			var ai_last = w_afterimages[ind];
+			var alpha = ai.alpha * (1 - i / (w_ai_cur + 1));
+			// draw trail
+			    //draw_sprite_ext(ai.sprite, 0, ai.x, ai.y, ai.width, 1, ai.tilt, c_white, alpha );
+				
+				draw_sprite_pos(sprite_get("trails"), alt - 14, ai.cornerTX, ai.cornerTY, ai.cornerprevTX, ai.cornerprevTY, ai.cornerprevBX, ai.cornerprevBY, ai.cornerBX, ai.cornerBY, alpha);
+				
+			    //gpu_set_blendmode(bm_add);
+                //draw_sprite_ext(ai.sprite, 0, ai.x, ai.y, ai.width, 1, ai.tilt, c_white, alpha );
+				//gpu_set_blendmode(bm_normal);
+        }
+break;
 }
 
 //USPECIAL ROTATION ===========================================================================

@@ -42,9 +42,9 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 	//DRAWING PILL FOR FINAL SMASH
 	if attack == 49 && window == 1{ 
 		if window_timer <8 {
-			draw_sprite_ext(sprite_get("nspecial_proj" ), 4, x + 25 * spr_dir, y - 65, spr_dir, 1, 90, c_white, 1);
+			draw_sprite_ext(sprite_get("nspecial_proj1" ), 4, x + 25 * spr_dir, y - 65, spr_dir, 1, 90, c_white, 1);
 		} else {
-			draw_sprite_ext( sprite_get("nspecial_proj"), 4, x+ 30*spr_dir +window_timer*spr_dir, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);
+			draw_sprite_ext( sprite_get("nspecial_proj1"), 4, x+ 30*spr_dir +window_timer*spr_dir, y-60 - sin(window_timer/10)*35 , spr_dir , 1, 40 + window_timer*10, c_white, 1);
 		}		
 		if window_timer == (get_window_value(49, 1, AG_WINDOW_LENGTH)-1) {
 			spawn_hit_fx( x +55*spr_dir, y-45, 109 );

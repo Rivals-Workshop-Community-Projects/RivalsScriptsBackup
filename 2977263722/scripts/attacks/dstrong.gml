@@ -48,7 +48,7 @@ set_hitbox_value(AT_DSTRONG, hbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, hbox_num, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_DSTRONG, hbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, hbox_num, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_DSTRONG, hbox_num, HG_EFFECT, 1);
+set_hitbox_value(AT_DSTRONG, hbox_num, HG_BULLY_BURN, 1);
 set_hitbox_value(AT_DSTRONG, hbox_num, HG_VISUAL_EFFECT, hfx_fire_1);
 set_hitbox_value(AT_DSTRONG, hbox_num, HG_HIT_PARTICLE_NUM, 4);
 
@@ -183,7 +183,7 @@ set_hitbox_value(AT_DSTRONG, temp_num, HG_WIDTH, 64);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_HEIGHT, 32);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_DAMAGE, 0);
-set_hitbox_value(AT_DSTRONG, temp_num, HG_EFFECT, 1);
+set_hitbox_value(AT_DSTRONG, temp_num, HG_BULLY_BURN, 1);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_DSTRONG, temp_num, HG_VISUAL_EFFECT, empty_fx);

@@ -6,7 +6,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 19;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
  
  
@@ -32,7 +32,8 @@ alt_name[15] = "Detective";
 alt_name[16] = "AR";
 alt_name[17] = "Bluey";
 alt_name[18] = "Genesis";
- 
+alt_name[19] = "Champion";
+
  
  
 //thanks kirby

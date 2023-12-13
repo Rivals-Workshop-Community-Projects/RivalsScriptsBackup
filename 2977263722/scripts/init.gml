@@ -58,7 +58,7 @@ djump_accel         = 0;		// -1.4 -  0        absa's is -1.4, all other chars ar
 djump_accel_end_time = 0;		//                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 7;		// 4    -  7
-walljump_vsp        = 8;		// 7    -  10
+walljump_vsp        = 9;		// 7    -  10
 land_time           = 4;		// 4    -  6
 prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
@@ -163,6 +163,7 @@ bubble_y = 8;
 
 // VFX
 hfx_fire_1 = hit_fx_create(sprite_get("hfx_fire_1"), 18);
+hfx_fire_2 = hit_fx_create(sprite_get("hfx_fire_2"), 24);
 fx_fire_kil = hit_fx_create(sprite_get("hfx_fire_destroy"), 6);
 fx_fire_trail = hit_fx_create(sprite_get("nspecial_proj_trail"), 24);
 funnyhit = hit_fx_create( sprite_get( "ustrong_sweetspotfx" ), 24 );
@@ -170,59 +171,25 @@ smoke_trail = hit_fx_create( sprite_get( "smoke_trail" ), 18 );
 dattack_fx = hit_fx_create( sprite_get( "dattack_fx" ), 10 );
 dspecial_fx = hit_fx_create( sprite_get( "dspecial_fx" ), 15 );
 fspecial_bonk_fx = hit_fx_create( sprite_get( "fspecial_wall_fx" ), 10 );
+fire_fx_1 = hit_fx_create( sprite_get( "fire_fx_1" ), 20 );
+death_coin = hit_fx_create( sprite_get("literally_1_coin_for_your_troubles"), 96 );
 
 empty_fx = hit_fx_create( asset_get( "empty_sprite" ), 1 );
 
 // Variables ================================================================================================
 
-//BURN COLOURS}
-
 alt = get_player_color(player);
 if alt = -1 alt = 31;
-
-switch alt {
-    case 1:
-    case 4:
-    case 8:
-    case 18:
-    case 30:
-        bully_burn_colour = 1;
-	break;
-	case 2:
-	case 13:
-	case 26:
-        bully_burn_colour = 2;
-	break;
-	case 7:
-	case 21:
-	case 24:
-        bully_burn_colour = 3;
-	break;
-	case 9:
-	case 12:
-	case 17:
-	case 27:
-        bully_burn_colour = 4;
-	break;
-	case 5:
-	case 6:
-	case 11:
-	case 14:
-	case 16:
-	case 19:
-        bully_burn_colour = 5;
-	break;
-	default:
-	    bully_burn_colour = 0;
-	break;
-}
 
 switch alt { 
     default:
 	    taunt_type = 0;
 	break;
-	case 17:
+	case 19:
 	    taunt_type = 1;
+		set_hit_particle_sprite( 4, sprite_get("hit_particle_san"));
+		hfx_fire_1 = hit_fx_create(sprite_get("hfx_fire_sans"), 18);
+		hfx_fire_2 = hit_fx_create(sprite_get("hfx_fire_2_sans"), 24);
 	break;
 	case 30:
 	    taunt_type = 2;
@@ -257,6 +224,36 @@ switch alt {
 	    taunt_type = 9;
 		set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("taunt_flag_nb"));
 	break;
+	case 17:
+	    taunt_type = 9;
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("taunt_flag_kirbi"));
+	break;
+}
+
+if alt > 13 && alt <= 17 {
+    // array of afterimages
+        w_ai_tot = 20; // total number of afterimages
+        w_ai_cur = 0; // current number of images to draw
+        w_ai_ind = 0; // which index to replace in the rolling buffer
+        w_afterimages = array_create(w_ai_tot, 0);
+        for (var i = 0; i < w_ai_tot; i += 1) {
+            w_afterimages[i] = {
+			tilt: 0,
+			pattern: 0,
+			alpha: 0.5,
+			prevx: x,
+			prevy: y,
+		    cornerTX: x,
+			cornerTY: y -48,
+			cornerBX: x,
+			cornerBY: y -8,
+			cornerprevTX: x,
+			cornerprevTY: y -48,
+			cornerprevBX: x,
+			cornerprevBY: y -8,
+			
+            }
+        }
 }
 
 introTimer = -4;
@@ -270,7 +267,7 @@ plat_y_offset2 = 0;
 plat_on = 0;
 plat_dir = 0;
 
-if alt = 0 || alt = 31 { plat_sprite = sprite_get("plat_real"); } else if alt = 17 { plat_sprite = sprite_get("plat_san"); } else { plat_sprite = sprite_get("plat_alt"); }
+if alt = 0 || alt = 31 { plat_sprite = sprite_get("plat_real"); } else if alt = 19 { plat_sprite = sprite_get("plat_san"); } else { plat_sprite = sprite_get("plat_alt"); }
 
 fstrong_aim = 0;
 
@@ -283,8 +280,9 @@ u_angle = 0;
 dspec_bounce = false;
 annoying_dspec_vsp_buffer_variable_fuck_you_dan = 0;
 
+HG_BULLY_BURN = 64; //like the mario get it
+
 //COMPATABILITY
-//Dialogue Buddy
 diag_portrait = sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 Hikaru_Title = "Bully";
 tcoart = sprite_get("comp_bully_tcoart");
@@ -297,7 +295,8 @@ resort_portrait = sprite_get("comp_luigi_lore");
 pkmn_stadium_front_img = sprite_get("comp_pkmn_battlefort_front");
 pkmn_stadium_back_img = sprite_get("comp_pkmn_battlefort_back");
 TCG_Kirby_Copy = 1;
-
+poa_pong_custom_paddle_sprite = sprite_get("comp_bully_pong"); poa_pong_custom_paddle_shader = false;
+talkingflower_special_taunt_line = 187;
 
 nspecial_glow_colour = c_red;
 
@@ -355,13 +354,13 @@ switch alt {
 	    nspecial_glow_colour = $0089EB;
 	break;
 	case 17:
-	    nspecial_glow_colour = $F2FF84;
+		nspecial_glow_colour = $C73D00;
 	break;
 	case 18:
 	    nspecial_glow_colour = $FFC265;
 	break;
 	case 19:
-	    nspecial_glow_colour = $C73D00;
+	    nspecial_glow_colour = $F2FF84;
 	break;
 	case 20:
 	    nspecial_glow_colour = $84E1FB;
@@ -379,11 +378,11 @@ switch alt {
 	    nspecial_glow_colour = $00E000;
 	break;
 	case 25:
-	case 26:
-	    nspecial_glow_colour = c_red;
+	    nspecial_glow_colour = $47AAFF;
 	break;
+	case 26:
 	case 27:
-	    nspecial_glow_colour = $00ECFF;
+		nspecial_glow_colour = c_red;
 	break;
 	case 28:
 	    nspecial_glow_colour = $845AFF;

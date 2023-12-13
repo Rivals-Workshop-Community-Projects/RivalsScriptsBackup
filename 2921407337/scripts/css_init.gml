@@ -630,6 +630,16 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for SpykerFX";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Edge";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Furi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Mint";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Furi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
 	// Lore overwrite for screen
 	for(var current_color_slot = 0;current_color_slot < 63;current_color_slot++;){

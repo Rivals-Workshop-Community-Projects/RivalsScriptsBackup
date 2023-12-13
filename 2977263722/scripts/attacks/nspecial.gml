@@ -58,7 +58,7 @@ set_hitbox_value(temp_attack, temp_num, HG_ANGLE, 50);
 set_hitbox_value(temp_attack, temp_num, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(temp_attack, temp_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(temp_attack, temp_num, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(temp_attack, temp_num, HG_EFFECT, 1);
+set_hitbox_value(temp_attack, temp_num, HG_BULLY_BURN, 1);
 set_hitbox_value(temp_attack, temp_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(temp_attack, temp_num, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(temp_attack, temp_num, HG_VISUAL_EFFECT, hfx_fire_1);

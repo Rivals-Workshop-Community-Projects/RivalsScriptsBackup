@@ -22,5 +22,6 @@ switch attack {
 	
     case AT_FSPECIAL:
 	    window = 11;
+		parry_lag = 80;
 	break;
 }

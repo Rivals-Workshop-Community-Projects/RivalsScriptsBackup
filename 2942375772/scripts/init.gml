@@ -162,3 +162,13 @@ dattack_loops = 0;
 dattack_vfx_obj = noone;
 dattack_sfx = [noone, noone];
 set_victory_theme(sound_get("victory"));
+
+//compats yippee yahoo
+mamizou_transform_spr = sprite_get("mamizou_transformation");
+pot_compat_variable = sprite_get("milk_shake");
+pot_compat_text = "Milk Shake";
+guiltySprite = sprite_get("dangamrompa");
+tcoart = sprite_get("tco_drawing");
+arena_title = "The Swingin' Serpent";
+boxing_title = "The Swingin' Serpent";
+greenwood_cheer = 2;

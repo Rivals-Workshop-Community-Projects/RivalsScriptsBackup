@@ -37,6 +37,7 @@ alt_name[19] = "Tan";
 alt_name[20] = "Coral";
 alt_name[21] = "Riptide";
 alt_name[22] = "Genesis";
+alt_name[23] = "Champion";
 
 
 

@@ -30,3 +30,6 @@ if(instance_exists(dspecial_cloud_id)){
 	instance_destroy(dspecial_cloud_id);
 	sound_stop(asset_get( "sfx_absa_boltcloud"))
 }
+
+// Drop Opponent from variable on Trades
+grabbed_player_obj = noone;

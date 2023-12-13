@@ -537,6 +537,26 @@ set_color_profile_slot( 17, 5, 239, 182, 115 ); //Gold
 set_color_profile_slot( 17, 6, 177, 103, 202 ); //SL
 set_color_profile_slot( 17, 7, 171, 88, 192 ); //Lightning
 
+// FuRi's Edge
+set_color_profile_slot( 18, 0, 100, 100, 100 ); //Fur
+set_color_profile_slot( 18, 1, 90, 90, 90 ); //Alt Fur
+set_color_profile_slot( 18, 2, 30, 0, 0 ); //gold2
+set_color_profile_slot( 18, 3, 254, 254, 255 ); //Fabric
+set_color_profile_slot( 18, 4, 70, 70, 70 ); //Pants
+set_color_profile_slot( 18, 5, 115, 0, 0 ); //Gold
+set_color_profile_slot( 18, 6, 252, 254, 255 ); //SL
+set_color_profile_slot( 18, 7, 90, 0, 0 ); //Lightning
+
+// Mint
+set_color_profile_slot( 19, 0, 252, 254, 255 ); //Fur
+set_color_profile_slot( 19, 1, 204, 204, 204 ); //Alt Fur
+set_color_profile_slot( 19, 2, 158, 255, 214 ); //gold2
+set_color_profile_slot( 19, 3, 209, 255, 236 ); //Fabric
+set_color_profile_slot( 19, 4, 50, 50, 60 ); //Pants
+set_color_profile_slot( 19, 5, 199, 248, 255 ); //Gold
+set_color_profile_slot( 19, 6, 100, 100, 110 ); //SL
+set_color_profile_slot( 19, 7, 158, 255, 214 ); //Lightning
+
 //#endregion
 
         break;

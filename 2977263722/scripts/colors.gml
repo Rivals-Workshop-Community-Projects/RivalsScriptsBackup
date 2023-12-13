@@ -196,15 +196,15 @@ set_color_profile_slot( 16, 5, 255, 231, 0 ); //HORNS 1
 set_color_profile_slot( 16, 6, 247, 189, 0 ); //HORNS 2
 set_color_profile_slot( 16, 7, 235, 137, 0 ); //EYE RINGS
 
-// SNOWMANS SANS
-set_color_profile_slot( 17, 0, 255, 255, 255 ); //FEET
-set_color_profile_slot( 17, 1, 255, 255, 255 ); //FEET SHADING
-set_color_profile_slot( 17, 2, 0, 0, 0 ); //BODY 1
-set_color_profile_slot( 17, 3, 0, 0, 0 ); //BODY 2
-set_color_profile_slot( 17, 4, 255, 255, 255 ); //HORN BANDS
-set_color_profile_slot( 17, 5, 255, 255, 255 ); //HORNS 1
-set_color_profile_slot( 17, 6, 0, 0, 0 ); //HORNS 2
-set_color_profile_slot( 17, 7, 255, 255, 255 ); //EYE RINGS
+// KIRBO
+set_color_profile_slot( 17, 0, 254, 22, 93 ); //FEET
+set_color_profile_slot( 17, 1, 170, 8, 74 ); //FEET SHADING
+set_color_profile_slot( 17, 2, 254, 161, 211 ); //BODY 1
+set_color_profile_slot( 17, 3, 230, 90, 149 ); //BODY 2
+set_color_profile_slot( 17, 4, 254, 22, 93 ); //HORN BANDS
+set_color_profile_slot( 17, 5, 247, 51, 155 ); //HORNS 1
+set_color_profile_slot( 17, 6, 139, 48, 235 ); //HORNS 2
+set_color_profile_slot( 17, 7, 0, 61, 199 ); //EYE RINGS
 
 // GOTTA WIN
 set_color_profile_slot( 18, 0, 70, 196, 52 ); //FEET
@@ -216,15 +216,15 @@ set_color_profile_slot( 18, 5, 147, 0, 255 ); //HORNS 1
 set_color_profile_slot( 18, 6, 75, 59, 255 ); //HORNS 2
 set_color_profile_slot( 18, 7, 101, 194, 255 ); //EYE RINGS
 
-// KIRBO
-set_color_profile_slot( 19, 0, 254, 22, 93 ); //FEET
-set_color_profile_slot( 19, 1, 170, 8, 74 ); //FEET SHADING
-set_color_profile_slot( 19, 2, 254, 161, 211 ); //BODY 1
-set_color_profile_slot( 19, 3, 230, 90, 149 ); //BODY 2
-set_color_profile_slot( 19, 4, 254, 22, 93 ); //HORN BANDS
-set_color_profile_slot( 19, 5, 247, 51, 155 ); //HORNS 1
-set_color_profile_slot( 19, 6, 139, 48, 235 ); //HORNS 2
-set_color_profile_slot( 19, 7, 0, 61, 199 ); //EYE RINGS
+// SNOWMANS SANS
+set_color_profile_slot( 19, 0, 255, 255, 255 ); //FEET
+set_color_profile_slot( 19, 1, 255, 255, 255 ); //FEET SHADING
+set_color_profile_slot( 19, 2, 0, 0, 0 ); //BODY 1
+set_color_profile_slot( 19, 3, 0, 0, 0 ); //BODY 2
+set_color_profile_slot( 19, 4, 255, 255, 255 ); //HORN BANDS
+set_color_profile_slot( 19, 5, 255, 255, 255 ); //HORNS 1
+set_color_profile_slot( 19, 6, 0, 0, 0 ); //HORNS 2
+set_color_profile_slot( 19, 7, 255, 255, 255 ); //EYE RINGS
 
 // PRICKLY POKE
 set_color_profile_slot( 20, 0, 102, 161, 114 ); //FEET

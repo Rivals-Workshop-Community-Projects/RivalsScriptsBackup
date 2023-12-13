@@ -84,6 +84,20 @@ if holding_wt {
     }
 }
 
+if attack == AT_TAUNT && holding_wt {
+    var wt = instance_create(x + 30*spr_dir, y - 30, "obj_article1");
+        wt.player_id = id;
+        wt.hsp = 0;
+        wt.vsp = 4;
+        wt.spr_dir = spr_dir;
+        wt.colour = hold_colour;
+        wt.sprite_index = sprite_get("wt_" + hold_colour);
+    holding_wt = false;
+    
+    var hitbox = create_hitbox(AT_DSPECIAL, 1, x + 30*spr_dir, y - 10);
+        hitbox.wt = wt.id;
+}
+
 draw_non = true;
 
 //munophone

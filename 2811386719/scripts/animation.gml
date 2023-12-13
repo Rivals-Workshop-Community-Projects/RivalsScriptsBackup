@@ -45,7 +45,7 @@ switch(state){
         }
       }
       if(attack == AT_NSPECIAL){
-        if(window == 2 or window == 3){
+        if(window == 3){
           image_index += (magnet_timer % 12)/4;
         }
       }

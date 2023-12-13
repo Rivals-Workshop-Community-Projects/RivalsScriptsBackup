@@ -26,7 +26,7 @@ if (years == 0) {
 are you serious", gimmick:0}
 	trummel_codecs[0].pages[11] = {speaker:1, expression:6, text:"I hope Rivals 2 releases soon, I think it will be really cool! It'll be a platform fighting game that serves as a direct sequel to Rivals of Aether (2017). Unlike its predecessor, it is played in 2.5D and utilizes 3D models-additional mechanics are also added, including the ability to shield and grab, while mechanics such as the parry return from Rivals of Aether.", gimmick:0}
 	trummel_codecs[0].pages[12] = {speaker:0, expression:0, text:"and?", gimmick:0}
-	trummel_codecs[0].pages[13] = {speaker:1, expression:6, text:"The game is intended to have improved single-player and casual-oriented content compared to Rivals of Aether, though appealing to competitive players is the primary focus of development-several mechanics were added to make the game feel more familiar to veteran players. The sequel is scheduled for a late 2024 release on \"as many platforms\" as possible.", gimmick:0}
+	trummel_codecs[0].pages[13] = {speaker:1, expression:6, text:'The game is intended to have improved single-player and casual-oriented content compared to Rivals of Aether, though appealing to competitive players is the primary focus of development-several mechanics were added to make the game feel more familiar to veteran players. The sequel is scheduled for a late 2024 release on "as many platforms" as possible.', gimmick:0}
 	trummel_codecs[0].pages[14] = {speaker:0, expression:0, text:"thanks", gimmick:0}
 } else {
 	trummel_codecs[0].pages[7] = {speaker:4, expression:6, text:"... 2024... wait, it got delayed!?", gimmick:0}

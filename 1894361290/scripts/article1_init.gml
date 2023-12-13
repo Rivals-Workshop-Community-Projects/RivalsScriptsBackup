@@ -7,6 +7,7 @@ mask_index = sprite_get("wt_mask")
 image_index = 0;
 
 honk_sfx = undefined;
+harmonica_sfx = sound_get("harmonica_wt")
 
 shockwave_large_vfx = hit_fx_create(sprite_get("shockwave_large"), 24);
 shockwave_small_vfx = hit_fx_create(sprite_get("shockwave_small"), 18);

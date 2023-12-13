@@ -117,14 +117,19 @@ if disabled_timer > 0 {
     disabled_timer--;
 }
 
+var is_taunt = false
+if (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_TAUNT {
+    is_taunt = true
+}
+
 //honk hitboxes
 if disabled_timer == 0 {
     if player_id.holding_wt && player_id.num_wt_article >= 1 { //holding wt and another one exists
-        spawn_shockwave();
+        spawn_shockwave(is_taunt);
     } else if near_player && player_id.num_wt_article >= 2 { //standing near a wt and at least 2 exist
         with obj_article1 {
             if player_id == other.player_id && id != player_id.wt_closest && disabled_timer == 0 {
-                spawn_shockwave();
+                spawn_shockwave(is_taunt);
             }
         }
     }
@@ -138,7 +143,7 @@ if (x > player_id.room_width + 10) || (x < -10) || (y > player_id.room_height + 
     instance_destroy();
     exit;
 }
-#define spawn_shockwave
+#define spawn_shockwave(is_taunt)
 var volume = 0.5;
 if get_player_color(player_id.player) == 10 { //bird up
     volume = 0.3;
@@ -163,6 +168,18 @@ switch player_id.wt_hitbox_size {
     var _fx = spawn_hit_fx(x, y - 5, shockwave_large_vfx);
         _fx.depth = -10
     sound_play(honk_sfx, 0, false, volume + 0.2 + 0.3*(player_id.strong_charge/60));
+    disabled_timer = 60;
+    break;
+    
+    case 3: //taunt
+    var hitbox = create_hitbox(AT_NSPECIAL_2, 2, x, y - 5);
+        hitbox.wt = id;
+    //spawn_hit_fx(x, y - 5, shockwave_small_vfx);
+    var _fx = spawn_hit_fx(x, y, sparks_vfx);
+        //_fx.depth = -10
+    var _fx = spawn_hit_fx(x, y - 5, shockwave_large_vfx);
+        _fx.depth = -10
+    sound_play(harmonica_sfx);
     disabled_timer = 60;
     break;
 }

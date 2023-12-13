@@ -153,6 +153,9 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_FSPECIAL {
+    if window == 1 && window_timer == 2 {
+        sound_play(asset_get("sfx_forsburn_cape_swipe"))
+    }
     move_cooldown[AT_FSPECIAL] = 10000000000;
     can_wall_jump = true;
     
@@ -649,6 +652,12 @@ if attack == AT_TAUNT {
                 window_timer = 0;
                 sound_stop(sound_get("sans_earrape"));
             }
+        }
+    } else {
+        if window == 2 && window_timer == 5 {
+            wt_hitbox_size = 3;
+        } else {
+            wt_hitbox_size = 0;
         }
     }
 }

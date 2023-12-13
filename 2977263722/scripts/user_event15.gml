@@ -271,6 +271,24 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "18 December, 2023");
+initHeader("Aesthetic");
+initSection("-Burn effect is now custom-coded (This means fire now looks nicer, recolours with alts, and screws over Zetterburn specifically!)
+-Added cool pride flag trails to the pride alts
+-Kirby is now bisexual
+-Added Munophone cheat to do the running-on-air version of FSpecial anywhere
+-Added Talking Flower simple and advanced compatability
+-Switched spin effects on DAir");
+initHeader("Balance");
+initSection("-Added a smattering of Abyss Runes
+-USpecial's endlag window now has reduced gravity (0.65 - 0.4)
+-Increased walljump vsp from 8 to 9
+-Parrying FSpecial now gives Bully doubled parrystun");
+initHeader("Fixes");
+initSection("-Fire HFX on the Sans alt are no longer super ugly
+-SMB3 alt no longer has a red glow when charging
+-The SM64 alt on the other hand, now does!");
+
 initPatch("1.8", "30 June, 2023");
 initHeader("Balance");
 initSection("-UAir sweetspot scaling increased from 0.7 to 0.8
@@ -469,7 +487,7 @@ zero".
 
 CHEAT_FIREBALL_SPAM		= initCheat("No Fireball Cooldown", [0, 1], ["Off", "On"], "Self explanatory!");
 CHEAT_BURNLESS          = initCheat("Burn Heal", [0, 1], ["Off", "On"], "Disables Bully giving the Burn effect.");
-
+CHEAT_SHMOOVEMENT		= initCheat("Run On Air", [0, 1], ["Off", "On"], "FSpecial now ALWAYS runs on air, instead of just when starting the move grounded.");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

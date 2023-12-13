@@ -1,6 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 15;
-var numAlts = 20;
+var numAlts = 21;
 
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1); 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)); 
@@ -43,6 +43,7 @@ alt_name[16]	= "Logical Jetstream";
 alt_name[17]	= "Spider";
 alt_name[18]	= "Mungus Go Ham";
 alt_name[19]	= "Blue Again";
+alt_name[20]	= "Deadly Twerp";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 64, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

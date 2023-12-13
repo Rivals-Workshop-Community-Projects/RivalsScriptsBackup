@@ -138,8 +138,11 @@ switch(attack){
 		destroy_hitboxes();
 		attack_end();
 		set_attack(AT_EXTRA_1);
-		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
-    	}
+		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
+    	// Remove opponent from variable in case this trades
+		grabbed_player_obj = noone;
+	 	
+	 }
     break;
     case AT_UTILT:
     	hud_offset = 40;

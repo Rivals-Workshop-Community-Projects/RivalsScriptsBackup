@@ -137,8 +137,8 @@ if attack == AT_NSPECIAL{
 				show = 1;
 				player_id.has_hit = true;
 				player_id.show_flames = true;
-				player_id.hitpause=true;
-				player_id.hitstop = 2;			
+				//player_id.hitpause=true;
+				//player_id.hitstop = 2;			
 			}
 		}
 	}

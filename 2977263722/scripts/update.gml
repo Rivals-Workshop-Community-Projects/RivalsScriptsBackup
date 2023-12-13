@@ -22,8 +22,55 @@ if !((state = PS_ATTACK_AIR || state = PS_ATTACK_GROUND) && attack = AT_FSPECIAL
 	fspecial_hit = 0;
 }
 
+var smoke_fxlol = smoke_trail
+
+
+//CUSTOM BURN ======================================================================
+
+with oPlayer {
+    if "bully_burn" not in self {
+	    bully_burn = false;
+		bully_burn_player = noone;
+	    bully_burn_timer = 0;
+	} else {
+		if bully_burn = true {
+
+			if bully_burn_timer < bully_burn_total - 10 && bully_burn_timer%25 = 0 {
+			    take_damage( player, bully_burn_player, 1 );
+			}
+			if state = PS_RESPAWN || state = PS_DEAD bully_burn_timer = 0;
+			
+			with other {
+			    var fxlol = spawn_hit_fx(other.x - 20 + random_func(1, 40, false), other.y-20 - random_func(2, 40, false), fire_fx_1);
+			    fxlol.grav = -0.1;
+				fxlol.hsp = -1 + random_func(4, 2, false);
+				if random_func(3, 6, true) = 0 fxlol.depth = other.depth - 1;
+			}
+			
+			if other.alt = 14 {
+			    with other other.outline_color = [get_color_profile_slot_r( alt, 7 ), get_color_profile_slot_g( alt, 7 ), get_color_profile_slot_b( alt, 7 )];
+			    init_shader();
+			}
+			
+		    bully_burn_timer--;
+		    if bully_burn_timer <= 0 {
+			    bully_burn = false;
+				outline_color = [0, 0, 0];
+				init_shader();
+				with other sound_play(sound_get("sm64_extinguish"))
+			}
+			
+			//SMOKE TRAIL ======================================================================
+			if get_gameplay_time()%6 = 0 && hitstun > 0 && !hitpause && state_cat = SC_HITSTUN {
+		        with other spawn_hit_fx(other.x, other.y, smoke_fxlol);
+	        }
+	    }
+	}
+}
+
 //RAINBOW ==========================================================================
-if alt = 14 {
+switch alt {
+case 14:
 if !("hue" in self) hue = 0
 	hue+=.5 
 	if hue>255 hue-=255;
@@ -84,6 +131,37 @@ if !("hue" in self) hue = 0
 	nspecial_glow_colour = color_hsv;
 	
 	init_shader();
+case 15:
+case 16:
+case 17:
+    //AFTERIMAGES
+	    w_ai_cur = min(w_ai_cur + 1, w_ai_tot);
+	    w_ai_ind = (w_ai_ind + 1) % w_ai_tot;
+		
+		var w_ai_prev = (w_ai_ind-1 = -1 ? w_afterimages[19] : w_afterimages[w_ai_ind-1])
+		var tiltinit = point_direction(x, y, w_ai_prev.prevx, w_ai_prev.prevy);
+		tiltinit = clamp(tiltinit, (w_ai_prev.tilt - 10) % 360, (w_ai_prev.tilt + 10) % 360 )
+		//var tiltinit = radtodeg( (arctan2((y)+vsp - y, x+hsp - x)) ) * -1;
+		//var length = lengthdir_x(hsp, tiltinit) + lengthdir_y(vsp, tiltinit)
+		
+		
+	    w_afterimages[w_ai_ind] = {
+		
+		tilt: tiltinit,
+		pattern: get_gameplay_time()%8,
+		alpha: 0.5,
+		prevx: x,
+		prevy: y,
+		cornerTX: x + hsp + lengthdir_x(16, tiltinit-90),
+		cornerTY: y-24 + vsp + lengthdir_y(16, tiltinit+90),
+		cornerBX: x + hsp + lengthdir_x(16, tiltinit+90),
+		cornerBY: y-24 + vsp + lengthdir_y(16, tiltinit-90),
+		cornerprevTX: w_ai_prev.cornerTX,
+		cornerprevTY: w_ai_prev.cornerTY,
+		cornerprevBX: w_ai_prev.cornerBX,
+		cornerprevBY: w_ai_prev.cornerBY
+	    }
+break;
 }
 
 
@@ -156,25 +234,6 @@ if introTimer < 21 {
     draw_indicator = true;
 }
 
-//SMOKE TRAIL ======================================================================
-
-var smoke_fxlol = smoke_trail
-var no_thank_you_actually = false;
-if phone_cheats[CHEAT_BURNLESS] no_thank_you_actually = true;
-
-with oPlayer {
-    if get_gameplay_time()%6 = 0 && hitstun > 0 && !hitpause && state_cat = SC_HITSTUN && ( (burnt_id = other && burned) || (last_player = other.player && (last_attack = AT_NSPECIAL || last_attack = AT_DSTRONG || last_attack = AT_FSTRONG || last_attack = AT_NAIR || last_attack = AT_USPECIAL || last_attack = AT_DSTRONG)) ) {
-		with other spawn_hit_fx(other.x, other.y, smoke_fxlol);
-	}
-	
-    if burnt_id = other && burned && no_thank_you_actually {
-	    burn_timer = 150;
-	    burned = false;
-	}
-}
-
-
-
 //RESPAWN PLAT =====================================================================
 if state = PS_RESPAWN || respawn_taunt {
 
@@ -191,7 +250,7 @@ if state = PS_RESPAWN || respawn_taunt {
 	    plat_on = 0;
 	}
 	
-	if alt = 17 { plat_dir = 1 } else if !respawn_taunt { plat_dir = spr_dir; }
+	if alt = 19 { plat_dir = 1 } else if !respawn_taunt { plat_dir = spr_dir; }
 
 	if "article_starticle" not in self {
 	    article_starticle = instance_create(x,y,"obj_article1")

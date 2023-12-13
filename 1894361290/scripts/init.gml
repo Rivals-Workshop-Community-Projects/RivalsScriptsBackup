@@ -13,7 +13,8 @@ mute_dates = [
     [20, 1, 2023], //Genesis 9 dates
     [21, 1, 2023],
     [22, 1, 2023],
-    [19, 2, 2023] //vortex gallery
+    [19, 2, 2023], //vortex gallery
+    [16, 12, 2023] //RCS
 ]
 
 mute_mode = get_synced_var(player);

@@ -14,6 +14,13 @@ if (get_player_color(player) == 12){
     outline_color = [60, 19, 124];
 }
 
+//champion alt
+if (get_player_color(player) == 19){
+    set_character_color_slot(1, 255, 255, 255, .5);
+    set_character_color_slot(4, 255, 255, 255, .5);
+    //set_character_color_slot(1, 176, 146, 157, .5);
+}
+
 /*
 if (get_player_color(player) == 15){
     for(i = 0; i < 8; i++){

@@ -208,7 +208,7 @@ if (attack == AT_FSPECIAL){
 		sound_play(asset_get("sfx_waterwarp_start"));
 	}
 	
-	if(have_armor and state_timer > 11 and window < 3){
+	if(have_armor and state_timer > 6 and window < 3){
 		super_armor = 1;
 	}else{
 		super_armor = 0;
@@ -712,7 +712,7 @@ if(attack == AT_TAUNT){
 		if(col == 5 and modifier == 0){//Genesis
 			if(window_timer == 1){
 				spawn_dust_fx(x,y, G9_lightning_taunt_fx_spr, 16)
-				var dt = spawn_dust_fx(x,y, G9_taunt_fx_spr, 80);
+				var dt = spawn_dust_fx(x,y, G9_taunt_fx_spr, 40);
 				dt.spr_dir = 1
 			}
 			if(window_timer == 4){

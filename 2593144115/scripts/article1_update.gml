@@ -118,7 +118,8 @@ if (state != 5)
                             {
                                 image_index = 16+level*3;
                                 frame_update = 0;
-                                state = 5;   
+                                state = 5; 
+				player_id.move_cooldown[AT_NSPECIAL] = 180;
                             }
                             bubble_hitbyopponent = 1;
                         }
@@ -133,26 +134,27 @@ if (state != 5)
 
                         if (bubble_hitbydspecial) hit_adjuster = 3.6;
                         else hit_adjuster = 2.4;
+			var _bub_kb_value = min(hitbox.kb_value, 8);
 
                         if (hitbox.kb_angle = 361)
                         {
-                        hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, 45)*hitbox.player_id.spr_dir;
-                        vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, 45)*0.8;
+                        hsp = lengthdir_x(hit_adjuster*_bub_kb_value, 45)*hitbox.player_id.spr_dir;
+                        vsp = lengthdir_y(hit_adjuster*_bub_kb_value, 45)*0.8;
                         }
                     
                         else if (hitbox.attack = AT_DSPECIAL && hitbox.hbox_num = 1)
                         {
-                        hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
-                        vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*0.5;
+                        hsp = lengthdir_x(hit_adjuster*_bub_kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
+                        vsp = lengthdir_y(hit_adjuster*_bub_kb_value, hitbox.kb_angle)*0.5;
                         }
 
                         else
                         {
-                        hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
-                        vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*0.72;
+                        hsp = lengthdir_x(hit_adjuster*_bub_kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
+                        vsp = lengthdir_y(hit_adjuster*_bub_kb_value, hitbox.kb_angle)*0.72;
                         }
-                        if (bubble_hitbydspecial) kb_grav = (hitbox.kb_value/5/hit_adjuster*1.5);
-                        else kb_grav = (hitbox.kb_value/5/hit_adjuster);
+                        if (bubble_hitbydspecial) kb_grav = (_bub_kb_value/5/hit_adjuster*1.5);
+                        else kb_grav = (_bub_kb_value/5/hit_adjuster);
                     }
                 }
             }
@@ -297,11 +299,15 @@ switch (state)
 
     //destroy
     case 5:
+    //if ((image_index = 19 || image_index = 22 || image_index = 25) && frame_update >= 5)
+    //{
+//	player_id.move_cooldown[AT_NSPECIAL] = 180;
+    //}
         if (frame_update >= 5)
         {
             if (image_index = 21 || image_index = 24 || image_index = 27)
             {
-                instance_destroy();
+		instance_destroy();
                 exit;
             }
             else

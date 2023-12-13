@@ -1,1 +1,1 @@
-//death.
+//death

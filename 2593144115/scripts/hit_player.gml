@@ -1,7 +1,12 @@
 if (my_hitboxID.attack == AT_DAIR)
 {
-   if (my_hitboxID.hbox_num = 1) old_vsp = -4;
-   if (my_hitboxID.hbox_num > 1) old_vsp = -6;
+   	
+	if (my_hitboxID.hbox_num > 1) old_vsp = -6;
+}
+
+if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4)
+{
+	hit_player_obj.should_make_shockwave = false;
 }
 
 if (my_hitboxID.attack == AT_FTILT) 
@@ -28,7 +33,7 @@ if (my_hitboxID.attack == AT_FTILT)
 	}
 }
 
-if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 0 ||
+if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1 ||
 my_hitboxID.attack == AT_FSTRONG || 
 my_hitboxID.attack == AT_FSPECIAL ||
 my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
@@ -79,7 +84,7 @@ my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
 
 if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(venombubble_ins))
 {
-    venombubble_ins.bubble_has_hit++;
+    venombubble_ins.bubble_has_hit = true;
     if (my_hitboxID.hbox_num > 3) move_cooldown[AT_NSPECIAL] = 270;
 }
 
@@ -104,5 +109,7 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.amaya_venom && hit_playe
                 hit_player_obj.amaya_venom_count = 0;
 	}
 }
+
+
 
 time_since_last_hit = 0;

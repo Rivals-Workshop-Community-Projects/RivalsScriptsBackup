@@ -8,7 +8,7 @@ var alt = get_player_color(player);
 //RESPAWN PLATFORM ============================================================================
 if state = PS_RESPAWN || respawn_taunt {
     shader_start();
-        draw_sprite_ext(plat_sprite, 0, plat_x, plat_y, alt = 17 ? 2 : plat_dir*2, 2, 0, c_white, 1);
+        draw_sprite_ext(plat_sprite, 0, plat_x, plat_y, alt = 19 ? 2 : plat_dir*2, 2, 0, c_white, 1);
 	shader_end();
 }
 

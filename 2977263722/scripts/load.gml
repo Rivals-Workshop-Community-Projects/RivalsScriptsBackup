@@ -89,6 +89,7 @@ sprite_change_offset("taunt_sml2", 33, 47);
 sprite_change_offset("taunt_flag_pride", 33, 47);
 sprite_change_offset("taunt_flag_trans", 33, 47);
 sprite_change_offset("taunt_flag_nb", 33, 47);
+sprite_change_offset("taunt_flag_kirbi", 33, 47);
 sprite_change_offset("phone", 33, 47, true);
 sprite_change_offset("_pho_base", 1, 0);
 
@@ -100,7 +101,11 @@ sprite_change_offset("plat_san", 32, 0);
 sprite_change_offset("plat_track", 8, 730);
 
 sprite_change_offset("hfx_fire_1", 50, 50);
+sprite_change_offset("hfx_fire_2", 144, 144);
+sprite_change_offset("hfx_fire_sans", 50, 50);
+sprite_change_offset("hfx_fire_2_sans", 144, 144);
 sprite_change_offset("hfx_fire_destroy", 32, 32);
+sprite_change_offset("fire_fx_1", 24, 24);
 sprite_change_offset("smoke_trail", 40, 70);
 
 sprite_change_offset("pattern_galoomber", 0, 80);
@@ -130,6 +135,8 @@ sprite_change_offset("uspecial_13", 66, 94, true);
 
 sprite_change_offset("hurtbox", 66, 94);
 sprite_change_offset("crouchbox", 66, 94);
+
+sprite_change_offset("literally_1_coin_for_your_troubles", 16, 16);
 
 //COMPAT
 sprite_change_offset("comp_bully_miiverse", 60, 30);

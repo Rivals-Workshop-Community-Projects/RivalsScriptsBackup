@@ -161,7 +161,7 @@ if num_wt >= num_wt_max && !holding_wt {
 }
 
 if holding_wt {
-    move_cooldown[AT_TAUNT] = 5;
+    //move_cooldown[AT_TAUNT] = 5;
     switch state {
         case PS_IDLE: wt_sprite = sprite_get("idle_wt") break;
         case PS_CROUCH: wt_sprite = sprite_get("crouch_wt") break;
