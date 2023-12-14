@@ -1,8 +1,7 @@
-if (attack == AT_TAUNT && secretpalette){
-    attack = AT_TAUNT_2;
-}
+if (attack == AT_TAUNT && secretpalette) attack = AT_TAUNT_2;
 
-if (attack == AT_FSPECIAL){
+if (attack == AT_FSPECIAL)
+{
     whip_tether = false;
     whip_cancel = false;
     whip_player = false;

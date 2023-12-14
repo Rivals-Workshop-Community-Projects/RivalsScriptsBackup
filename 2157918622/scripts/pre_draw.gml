@@ -2,11 +2,13 @@
 
 shader_start();
 
-if (nspecialused < 18){
+if (nspecialused < 18)
+{
 	draw_sprite_ext(sprite_get("nspecial_effect"), floor(nspecialused / 4), x - (2 * spr_dir), y + 2, spr_dir, 1, 0, c_white, 1);
 }
 
-if (attack == AT_FSPECIAL){
+if (attack == AT_FSPECIAL)
+{
     if (((window == 2 && window_timer > 1) || window == 3 || whip_tether) && state != PS_AIR_DODGE && state != PS_TECH_GROUND && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_PARRY){
         var whip_dir = point_direction(x,y-56,fspecial_point[0],fspecial_point[1]);
         if (spr_dir == -1) whip_dir += 180;

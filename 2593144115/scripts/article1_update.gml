@@ -156,6 +156,11 @@ if (state != 5)
                         if (bubble_hitbydspecial) kb_grav = (_bub_kb_value/5/hit_adjuster*1.5);
                         else kb_grav = (_bub_kb_value/5/hit_adjuster);
                     }
+		    else 
+		    {
+			sound_play(hitbox.sound_effect);
+                        //spawn_hit_fx(x + hitbox.hit_effect_x, y + hitbox.hit_effect_y, hitbox.hit_effect);   
+		    }
                 }
             }
         }
@@ -299,6 +304,12 @@ switch (state)
 
     //destroy
     case 5:
+	if (bubble_hitbox != noone)
+	{
+		bubble_hitbox_out = 0;
+        	bubble_hitbox.destroyed = true;
+        	bubble_hitbox = noone;
+	}
     //if ((image_index = 19 || image_index = 22 || image_index = 25) && frame_update >= 5)
     //{
 //	player_id.move_cooldown[AT_NSPECIAL] = 180;

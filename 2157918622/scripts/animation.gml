@@ -1,11 +1,13 @@
 //animation
-
-if (state == PS_WRAPPED && !free){
-    sprite_index = sprite_get("hurtground");
-}
-if (state == PS_PRATFALL && wrappedfall){
-    sprite_index = sprite_get("wrappedfall");
-}
-if (state == PS_PRATLAND && wrappedfall){
-    sprite_index = sprite_get("wrappedland");
+switch (state)
+{
+	case PS_WRAPPED:
+		if (!free) sprite_index = sprite_get("hurtground");
+		break;
+	case PS_PRATFALL:
+		if (wrappedfall) sprite_index = sprite_get("wrappedfall");
+		break;
+	case PS_PRATLAND:
+		if (wrappedfall) sprite_index = sprite_get("wrappedland");
+		break;
 }

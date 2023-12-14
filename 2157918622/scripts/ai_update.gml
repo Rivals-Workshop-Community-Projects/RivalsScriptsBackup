@@ -116,7 +116,7 @@ SetAttack();
 			break;
 
 		case aistates.AS_NEUTRAL:
-			if (tryParry()) break;
+			if (TryParry()) break;
 			if (point_distance(x,y,ai_target.x,ai_target.y)<20 || ai_target.state == PS_RESPAWN || ai_target.state == PS_DEAD) multishine();
 		case aistates.AS_ADVANTAGE:
 			ai_attack_timer = 2;
@@ -243,79 +243,57 @@ SetAttack();
 	}
 }
 
-#define tryParry()
+#define TryParry
 {
-	if (get_training_cpu_action() == CPU_FIGHT)
+	var _frameAdvance = argument_count > 0 ? argument[0] : 3;
+	if (state == PS_PARRY_START) // no rolls
 	{
-		if (state == PS_PARRY_START) // no rolls
+		left_down = false;
+		right_down = false;
+		joy_pad_idle = true;
+	}
+	else if (!free)
+	{
+		var doParry = false;
+		if (!ai_target.was_parried)
 		{
+			with (pHitBox) if (player != other.player && type == 2 && place_meeting(x+hsp*(_frameAdvance+1),y+vsp*(_frameAdvance+1),other)) // proj
+			{
+				doParry = true;
+				break;
+			}
+			with (oPlayer) if (!doParry && player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) // phys
+			{
+				var numHitboxes = get_num_hitboxes(attack);
+				var numWindows = get_attack_value(attack, AG_NUM_WINDOWS);
+				for (var i = 1; i <= numHitboxes; ++i) if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
+				{
+					var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
+					if (firstwindow == clamp(firstwindow, 1, numWindows))
+					{
+						var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
+						if (abs((x+get_hitbox_value(attack,i,HG_HITBOX_X)*spr_dir)-other.x)<get_hitbox_value(attack,i,HG_WIDTH)
+							&& abs((y+get_hitbox_value(attack,i,HG_HITBOX_Y))-other.y)<get_hitbox_value(attack,i,HG_HEIGHT)
+							&& (firstwindowframe<2)?firstwindow==window+1&&get_window_value(attack,firstwindow-1,AG_WINDOW_LENGTH)==window_timer+_frameAdvance:firstwindow==window&&firstwindowframe==window_timer+_frameAdvance)
+						{
+							doParry = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		if (doParry)
+		{
+			shield_down = true;
+			shield_pressed = true;
 			left_down = false;
 			right_down = false;
-			joy_pad_idle = true;
-			ai_going_left = false;
-			ai_going_right = false;
+			ai_state = AS_ADVANTAGE;
+			return true;
 		}
-		else
-		{
-			var doParry = false;
-			if (!ai_target.was_parried && !doParry)
-			{
-				with (pHitBox) // proj
-				{
-					if (player != other.player && type == 2)
-					{
-						if (place_meeting(x+hsp*4,y+vsp*4,other))
-							doParry = true;
-					}
-				}
-				with (oPlayer) // phys
-				{
-					if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
-					{
-						if ("fspecial_point" in self && attack == AT_FSPECIAL && window == 3){
-							if (place_meeting(fspecial_point[0]+point_hsp*4,fspecial_point[1]+point_vsp*4 + 35,other)){
-								doParry = true;
-							}
-						}
-						for (var i = 1; i <= get_num_hitboxes(attack); ++i)
-						{
-							if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
-							{
-								var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-								if (firstwindow > 0)
-								{
-									var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
-									var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
-									var hboxlength = get_hitbox_value(attack, i, HG_WIDTH);
-									var hboxheight = get_hitbox_value(attack, i, HG_HEIGHT);
-									var hboxx = get_hitbox_value(attack, i, HG_HITBOX_X);
-									var hboxy = get_hitbox_value(attack, i, HG_HITBOX_Y);
-									
-									if (abs((x+hboxx*spr_dir)-other.x)<hboxlength
-										&& abs((y+hboxy)-other.y)<hboxheight
-										&& (firstwindowframe<2)?firstwindow==window+1&&prevwindowlen==window_timer+3:firstwindow==window&&firstwindowframe==window_timer+3)
-									{
-										doParry = true;
-										break;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			if (doParry)
-			{
-				shield_down = true;
-				shield_pressed = true;
-				left_down = false;
-				right_down = false;
-				ai_state = aistates.AS_ADVANTAGE;
-				return true;
-			}
-		}
+		return false;
 	}
-	return false;
 }
 
 #define aiBreadAndButter(xdist, ydist)
