@@ -146,7 +146,8 @@ if (state == 3){
 	// Enemy Player Detection
 	with (asset_get("oPlayer")){
 	    if (place_meeting(x, y, other)){
-	    	if (player != other.player_id.player){
+			var playerTeam = get_player_team( player );
+	    	if (player != other.player_id.player && (playerTeam != other.tailsTeam)){
 	    		other.shouldJump = true;
 	    	}
 	    }

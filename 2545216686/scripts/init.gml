@@ -225,6 +225,7 @@ sfx_jump = sound_get("sfx_jump");
 sfx_land = sound_get("sfx_land");
 sfx_ring = sound_get("sfx_ring");
 sfx_ring_bomb = sound_get("sfx_ring_bomb");
+sfx_ring_total = sound_get("sfx_ring_total");
 sfx_skid = sound_get("sfx_skid");
 sfx_slide = sound_get("sfx_slide");
 sfx_spin = sound_get("sfx_spin");
@@ -244,6 +245,10 @@ sfx_waveland = sound_get("sfx_waveland");
 sfx_krtd_bomb_explode = sound_get("sfx_krtd_bomb_explode");
 sfx_krtd_bomb_prep = sound_get("sfx_krtd_bomb_prep");
 sfx_krtd_grab = sound_get("sfx_krtd_grab");
+
+// Voiced Mode... Voice Clips
+vc_tails_ = sound_get("vc_tails_");
+vc_tails_ = sound_get("vc_tails_");
 
 //Victory
 //victory_theme = sound_get("victory_old");

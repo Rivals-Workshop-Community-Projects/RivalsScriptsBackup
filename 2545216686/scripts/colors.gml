@@ -227,14 +227,14 @@ set_color_profile_slot( 19, 6, 153, 187, 187 ); //"Skin"
 set_color_profile_slot( 19, 7, 140, 140, 140 ); //Eye Color
 
 // Black - Shadow
-set_color_profile_slot( 20, 0, 50, 50, 50 ); //Fur
-set_color_profile_slot( 20, 1, 28, 28, 28 ); //Fur 2
-set_color_profile_slot( 20, 2, 65, 65, 65 ); //Shoe 1
-set_color_profile_slot( 20, 3, 255, 255, 255 ); //Shoe 2
-set_color_profile_slot( 20, 4, 207, 0, 0 ); //Gloves
-set_color_profile_slot( 20, 5, 245, 62, 0 ); //Tail Tips
-set_color_profile_slot( 20, 6, 255, 214, 145 ); //"Skin"
-set_color_profile_slot( 20, 7, 207, 0, 0 ); //Eye Color
+set_color_profile_slot( 20, 0, 45, 54, 79 ); //Fur
+set_color_profile_slot( 20, 1, 19, 24, 36 ); //Fur 2
+set_color_profile_slot( 20, 2, 53, 54, 53 ); //Shoe 1
+set_color_profile_slot( 20, 3, 219, 216, 219 ); //Shoe 2
+set_color_profile_slot( 20, 4, 255, 16, 8 ); //Gloves
+set_color_profile_slot( 20, 5, 255, 16, 8 ); //Tail Tips
+set_color_profile_slot( 20, 6, 255, 155, 52 ); //"Skin"
+set_color_profile_slot( 20, 7, 255, 16, 8 ); //Eye Color
 
 // Red (Again) - Fiona
 set_color_profile_slot( 21, 0, 233, 34, 39 ); //Fur

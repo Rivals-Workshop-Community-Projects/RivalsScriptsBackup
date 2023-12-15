@@ -320,7 +320,7 @@ if (attack == AT_FSPECIAL){
 			hsp = 8.5 * spr_dir;
 			window = 3;
 			window_timer = 0;
-			spawn_base_dust(x-(6*spr_dir), y - 36, "doublejump", spr_dir, -90 * spr_dir);
+			spawn_base_dust(x-(6*spr_dir), y - 28, "doublejump", spr_dir, -55 * spr_dir);
 		}
 	}
 	if (window == 3){
@@ -450,7 +450,7 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 if (attack == AT_FSPECIAL_AIR){
 	if (window == 1){
 		if (window_timer == 1){
-			spawn_base_dust( x, y, "doublejump", spr_dir)
+			spawn_base_dust( x, y, "doublejump", spr_dir);
 		}
 	}
 	if (window == 2){
@@ -488,8 +488,9 @@ if (attack == AT_FSPECIAL_AIR){
 
 //Up Special: Flight
 if (attack == AT_USPECIAL){
-	aerialattack = 0
-	diveloop = 0
+	aerialattack = 0;
+	diveloop = 0;
+	can_fast_fall = false;
 	if (window == 1 && window_timer != 5){
 		vsp = -3
 	} else if (window == 1 && window_timer == 5){
@@ -579,6 +580,7 @@ if (attack == AT_DSPECIAL){
 			if (!instance_exists(remoteRobot)){
 				remoteRobot = instance_create(x + 2 * spr_dir, y - 40, "obj_article1");
 				remoteRobot.robotNumber = 1;
+				remoteRobot.tailsTeam = get_player_team( player );
 			}
 		}
 	}

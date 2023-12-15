@@ -9,7 +9,12 @@ switch (my_hitboxID.attack){
 		//sound_play(asset_get("sfx_blow_weak1"));
 		break;
 	case AT_UTILT:
-		//sound_play(asset_get("sfx_gem_collect"), false, noone, 0.7, 1.1);
+		//steal money
+		if (variable_instance_exists(hit_player_obj.id, "gems") && hit_player_obj.url == CH_SHOVEL_KNIGHT){
+			var amtToTakeAway = 1;
+			hit_player_obj.gems += amtToTakeAway;
+			sound_play(sfx_ring_total, false, noone, 0.6, 1.8);
+		}
 		break;
 	case AT_UAIR:
 		if (window == 4){
@@ -34,7 +39,12 @@ switch (my_hitboxID.attack){
 		}
 		break;
 	case AT_DSTRONG:
-		//sound_play(asset_get("sfx_gem_collect"), false, noone, 0.9, 0.7);
+		//steal money
+		if (variable_instance_exists(hit_player_obj.id, "gems") && hit_player_obj.url == CH_SHOVEL_KNIGHT){
+			var amtToTakeAway = 10;
+			hit_player_obj.gems += amtToTakeAway;
+			sound_play(sfx_ring_total, false, noone, 0.6, 1.8);
+		}
 		break;
 	case AT_FSPECIAL_AIR:
 		my_hitboxID.RemoteRobotThrownWithFspecHitSomeone = true
