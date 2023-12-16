@@ -1,6 +1,6 @@
 // called when the character gets KO'd
 
-if(get_player_stocks(player) == 1 && get_player_color(player) == 14){ 
+if(get_player_stocks(player) == 1 && get_player_color(player) == 10){
 	sound_play(sound_get("dgr_death"));
 }
 

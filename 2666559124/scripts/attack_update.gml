@@ -31,21 +31,24 @@ if (attack == AT_DAIR) {
 
 if (attack == AT_NSPECIAL) {
 	if (window == 1) {
-		if (up_down) {
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
-		} else if (left_down && spr_dir == -1) || (right_down && spr_dir == 1) {
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
+		if (left_down && spr_dir == -1) || (right_down && spr_dir == 1) {
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -9);
 		} else if (left_down && spr_dir == 1) || (right_down && spr_dir == -1) {
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -9);
+		} else if (up_down) {
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
 		} else if (down_down) {
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -7);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -6);
 		} else {
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -11);
+		}
+		if (window_timer == 10 || window_timer == 11) && (special_down) {
+			window_timer = 10;
 		}
 	}
 	move_cooldown[AT_NSPECIAL] = 35;
@@ -55,6 +58,7 @@ if (attack == AT_FSPECIAL) {
 	super_armor = true;
 	if (window == 1) {
 		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_grenade_launch"));
+		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 15);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 13);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 253);
@@ -68,6 +72,7 @@ if (attack == AT_FSPECIAL) {
 	if (window == 2 && window_timer < 42) {
 		if (attack_pressed || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed || special_pressed) {
 			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+			set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 7);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 305);

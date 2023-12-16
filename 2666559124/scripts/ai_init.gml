@@ -12,6 +12,7 @@ far_side_attacks[1] = AT_NSPECIAL;
 mid_side_attacks[0] = AT_DATTACK;
 mid_side_attacks[1] = AT_NSPECIAL;
 mid_side_attacks[2] = AT_FSPECIAL;
+mid_side_attacks[3] = AT_DSPECIAL;
 
 close_up_attacks[0] = AT_UTILT;
 close_up_attacks[1] = AT_UAIR;
@@ -30,3 +31,9 @@ close_side_attacks[3] = AT_FSTRONG;
 
 neutral_attacks[0] = AT_JAB;
 neutral_attacks[1] = AT_NAIR;
+neutral_attacks[2] = AT_FTILT; // Close Side attacks (ai just ignores them)
+neutral_attacks[3] = AT_FAIR;
+neutral_attacks[4] = AT_BAIR;
+neutral_attacks[5] = AT_FSTRONG;
+neutral_attacks[6] = AT_FSTRONG;
+

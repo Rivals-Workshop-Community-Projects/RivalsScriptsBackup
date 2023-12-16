@@ -98,7 +98,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-set_victory_bg(sprite_get("victory_bg"))i
+set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme( sound_get( "victory_theme" ));
 
 canBomb = true;
@@ -119,15 +119,15 @@ if (alt == 7 || alt == 8 || alt == 9 || alt == 10 || alt == 11) {
 
 //Toonlink Support
 if(get_player_color(player) == 0) {
-	toonlink_photo = sprite_get("toonlink_photo3");
+	toonlink_photo = sprite_get("tl_photo_def");
 } else {
 	if (!use_ex_sprites) {
-		toonlink_photo = sprite_get("toonlink_photo");
+		toonlink_photo = sprite_get("tl_photo");
 	} else {
-		toonlink_photo = sprite_get("toonlink_photo_ex");
+		toonlink_photo = sprite_get("tl_photo_ex");
 	}
 }
-toonlink_photo2 = 4
+toonlink_photo2 = 0;
 
 //Dracula support
 if (!use_ex_sprites) {
