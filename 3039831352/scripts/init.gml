@@ -160,7 +160,7 @@ wait_time = normal_wait_time;
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-debug_display = 0 //get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
+debug_display = 0; //get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
 hbox_view = get_match_setting(SET_HITBOX_VIS);
 attack_names = [ //has the names of all the attacks
     "0",
@@ -258,6 +258,8 @@ AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next
 AG_WINDOW_LOOP_REFRESH_HITS = 38;   //if true, it will refresh hitboxes so they can hit again
 window_loops = 0;                   //decides the amount of times to loop
 //usage: set_window_value(attack, window, AG_WINDOW_LOOP_TIMES, #loops)
+
+AG_MUNO_ATTACK_EXCLUDE = 80;
 
 /////////////////////////////////////////////////////// CUSTOM HITBOX COLOR SYSTEM //////////////////////////////////////////////////////
 
@@ -366,7 +368,7 @@ boost_comboend_mult = [20, 30];     //multiplier added on ending a combo (withou
 boost_hitgain_mult = [2, 2];        //multiplier when hitting a single hit                  //3, 4
 boost_parrygain = [60, 80];
 
-boost_decrease_rate = [4, 2];       //passive decrease (divided by 60)
+boost_decrease_rate = [6, 3];       //passive decrease (divided by 60)                      //4, 2
 boost_hitloss_mult = [0, 1];        //multiplier reducing when getting hit                  //2, 4
 boost_parryloss = [20, 40];
 

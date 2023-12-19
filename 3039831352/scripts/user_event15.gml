@@ -32,6 +32,4 @@ else //turn it back to sonic
 {
     static_colorO = temp_O;
     static_colorB = temp_B;
-
-    print (temp_O)
 }

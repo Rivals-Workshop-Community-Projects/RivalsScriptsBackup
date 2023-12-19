@@ -111,6 +111,7 @@ switch (attack)
                 if (window_timer == 1)
                 {
                     bar_hitbox = create_hitbox(AT_USTRONG, 4+burnbuff_active, x+40*spr_dir, y-40);
+
                     if (has_rune("H"))
                     {
                         hook_bar_pos[0] = x+40*spr_dir;
@@ -142,7 +143,9 @@ switch (attack)
 
                     bar_hitbox.proj_angle = spr_dir ? angle_saved : angle_saved-180;
                     bar_hitbox.hsp = ustrong_dir[0];
-                    bar_hitbox.vsp = ustrong_dir[1];  
+                    bar_hitbox.vsp = ustrong_dir[1];
+
+                    if (has_rune("H") && burnbuff_active) bar_hitbox = noone;
                 }
 
                 if (bar_tracking_id == noone && burnbuff_active) burnbuff_active = false;
@@ -539,7 +542,7 @@ switch (attack)
                 if (window == 5 && window_timer == 1) spawn_hit_fx(x, y, fx_skill3);
 
                 //final blast
-                if (window_loops == blast_charge_level) switch (blast_charge_level)
+                if (window_loops == blast_charge_level-1) switch (blast_charge_level)
                 {
                     case 3:
                         set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 9);
@@ -795,6 +798,7 @@ switch (attack)
                 polaris_shot_ids[i].length = 0;
             }
             lightbuff_active = false;
+            polaris_cd = polaris_cd_max;
         }
         break;
     case AT_DSPECIAL_2:                     //  ember fist

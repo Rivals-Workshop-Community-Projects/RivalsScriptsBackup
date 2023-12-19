@@ -7,6 +7,8 @@ switch (attack)
     case AT_USTRONG:
         generate_particles(hbox_num-4); //particles
         if (hbox_num == 5) if (instance_exists(fx)) fx.draw_angle = proj_angle+45*spr_dir;
+
+        if (place_meeting(x, y, asset_get("par_block"))) destroyed = true;
         break;
     //light dagger
     case AT_NTHROW: case AT_NSPECIAL_AIR:

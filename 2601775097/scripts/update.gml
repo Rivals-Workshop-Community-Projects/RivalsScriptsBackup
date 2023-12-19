@@ -500,6 +500,12 @@ if (!menu_active)
                 if (lightbuff_active) skill[7].mp_use_cost = skill[7].mp_cost2;
                 else skill[7].mp_use_cost = polaris_norm_cost;
 
+                if (polaris_cd > 0)
+                {
+                    polaris_cd--;
+                    move_cooldown[skill[7].skill_attack] = polaris_cd + 1;
+                }
+
                 if (lightbuff_active)
                 {
                     //mp burning
@@ -786,7 +792,7 @@ if (get_match_setting(SET_RUNES))
             }
             if (bar_hitbox.hitbox_timer % 2 == 0) hook_chain_amount ++;
 
-            if (bar_hitbox.hitbox_timer >= bar_hitbox.length - 1)
+            if (bar_hitbox.hitbox_timer >= bar_hitbox.length - 1 || bar_hitbox.destroyed)
             {
                 with (obj_article1) if (player_id == other.id && state == "hook_chain")
                 {

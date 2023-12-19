@@ -392,7 +392,7 @@ else //boost mechanic
 
 
     //boost debug
-    if (get_match_setting(SET_PRACTICE) && !free && down_down && taunt_pressed)
+    if (get_match_setting(SET_PRACTICE) && !free && down_down && taunt_pressed && game_time > 130)
     {
         test_boost = !test_boost;
         set_state(prev_state);
@@ -499,34 +499,30 @@ if (is_attacking)
                     ds_grid_resize(multihome_grid, 2, array_length(multihome_targets_temp));
 
                     //set up DS list
-                    tempvar = 0;
-                    repeat (array_length(multihome_targets_temp))
+                    for (var i = 0; i < array_length(multihome_targets_temp); i ++)
                     {
                         ds_grid_set( //player ID
-                            multihome_grid, 0, tempvar,
-                            multihome_targets_temp[tempvar]
+                            multihome_grid, 0, i,
+                            multihome_targets_temp[i]
                         )
                         ds_grid_set( //distance from sonic
-                            multihome_grid, 1, tempvar,
-                            multihome_targets_temp[tempvar] == noone ? undefined : distance_to_object(multihome_targets_temp[tempvar])
+                            multihome_grid, 1, i,
+                            multihome_targets_temp[i] == noone ? undefined : distance_to_object(multihome_targets_temp[i])
                         );
-                        tempvar ++;
                     }
                     ds_grid_sort(multihome_grid, 1, true); //after all the ds_grid values were set, sort them, leaving all the garbage data in the front
 
-                    tempvar = 0;
-                    repeat (min(multihome_limit, array_length(multihome_targets_temp)))
+                    for (var i = 0; i < array_length(multihome_targets_temp); i ++)
                     {
-                        if (multihome_grid[# 0, tempvar] == noone) next_multihome_target ++; //skip garbage data
+                        if (multihome_grid[# 0, i] == noone) next_multihome_target ++; //skip garbage data
                         with (oPlayer) if (get_player_team(player) != get_player_team(other.player)) //spawn reticle + play sound
                         {
-                            if (other.multihome_grid[# 0, tempvar] == self && other.multihome_grid[# 0, tempvar].bar_sonic_reticle_owner == noone)
+                            if (other.multihome_grid[# 0, i] == self && other.multihome_grid[# 0, i].bar_sonic_reticle_owner == noone)
                             {
                                 with (other) sound_play(sound_get("sfx_homingattack_reticle"));
                                 bar_sonic_reticle_owner = other;
                             }
                         }
-                        tempvar ++;
                     }
 
                     if (!special_down) //start homing chain
@@ -912,7 +908,7 @@ if (uses_super_colors && super_glow_intensity != 0) //super glow
 if (super_col_lerp_time != 0 && super_col_lerp_time != super_col_lerp_time_max && super_col_lerp_time != super_col_lerp_time_max*2) init_shader();
 
 //chaos emeralds super form back to normal
-if ("super_form_active" not in self && !has_superform && alt_cur != 20 || "super_form_active" in self && !super_form_active)
+if (("super_form_active" not in self || !super_form_active) && !has_superform && alt_cur != 20)
 {
     if (super_col_lerp_time > 0 + (set_up_super_colors) * 48) super_col_lerp_time -= 3;
     if (uses_super_colors && super_col_lerp_time < super_col_lerp_time_max) uses_super_colors = false;
@@ -1280,7 +1276,12 @@ prep_hitboxes();
                     case PS_WAVELAND:
                         break;
                     case PS_LAND: case PS_LANDING_LAG: case PS_FIRST_JUMP: case PS_PRATLAND:
-                        if (was_free) new_hsp = (hitpause ? old_hsp : hsp);
+                        if (was_free)
+                        {
+                            new_hsp = (hitpause ? old_hsp : hsp);
+                            if (new_hsp < min_walk_spd) walk_speed = min_walk_spd;
+                            if (new_hsp < min_dash_spd) dash_speed = min_dash_spd;
+                        }
                         break;
                     default: //reset code
                         if (prev_prev_state != PS_WAVELAND)
@@ -1295,6 +1296,7 @@ prep_hitboxes();
                                 dash_stop_percent = 0.5;
                             }
                         }
+                        new_hsp = 0;
                         break;
                 }
             }

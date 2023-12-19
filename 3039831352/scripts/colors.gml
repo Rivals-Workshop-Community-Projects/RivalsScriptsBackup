@@ -259,11 +259,11 @@ set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 pal_num ++; // 13 - abyss
 set_color_profile_slot(pal_num, 0, 240, 102, 255); //aura
 set_color_profile_slot(pal_num, 1, 56, 54, 122); //blue
-set_color_profile_slot(pal_num, 2, 169, 74, 184); //green
+set_color_profile_slot(pal_num, 2, 201, 95, 38); //green
 set_color_profile_slot(pal_num, 3, 148, 154, 194); //skin
 set_color_profile_slot(pal_num, 4, 169, 74, 184); //red
 set_color_profile_slot(pal_num, 5, 234, 206, 255); //white - clothes
-set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
+set_color_profile_slot(pal_num, 6, 255, 216, 99); //white - eyes
 set_color_profile_slot(pal_num, 7, 106, 127, 207); //portrait light
 set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
 set_color_profile_slot(pal_num, 9, 999, 999, 999); //blue (super)

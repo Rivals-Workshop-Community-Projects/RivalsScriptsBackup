@@ -58,7 +58,7 @@ if (!bar_handled_victory_quote)
                data.status_emote = 4;
                break;   
             case "2924212592": //childe
-               data.status_quote = "What are these items? Am supposed to use them, somehow?"
+               data.status_quote = "What are these items? Am supposed to use them, somehow?";
                data.status_emote = 0;
                break;
             case "213227551": case "2381606021": //dracula
@@ -96,17 +96,6 @@ if (!bar_handled_victory_quote)
                   data.status_quote = "Had your fun, Jurami? Good, I'll be going home then.";
                   data.status_emote = 1;
                   break;
-               //i wonder if these will ever be used lol
-               /*
-                  case "venus": //venus (placeholder)
-                     data.status_quote = "Y-yeah! We did it. You... Did good there, Venus.";
-                     data.status_emote = 8;
-                     break;
-                  case "asra": //asra (placeholder)
-                     data.status_quote = "Thanks for fighting alongside me, Asra- ...huh? Something's up?";
-                     data.status_emote = 2;
-                     break;
-               */
             }
          }
       }
@@ -163,7 +152,7 @@ if (!bar_handled_victory_quote)
    switch (char_url)
    {
       //////////////////////////// BASECAST ////////////////////////////
-      case CH_ZETTERBURN: 
+      case CH_ZETTERBURN:
          quote = "A lion that uses fire? Sure is something you don't see every day.";
          emote = 0;
          break;
@@ -171,7 +160,7 @@ if (!bar_handled_victory_quote)
          quote = "...Did the orca looking thing just turn into a puddle?";
          emote = 0;
          break;
-      case CH_KRAGG: 
+      case CH_KRAGG:
          quote = "I respect your duty, I'm fighting for something important to me too.";
          emote = 5;
          break;
@@ -183,7 +172,7 @@ if (!bar_handled_victory_quote)
          quote = "Is that a real skull...? That's kind of creepy if you ask me.";
          emote = 0;
          break;
-      case CH_ETALUS: 
+      case CH_ETALUS:
          quote = "Using ice to give yourself more durability? Ice starts sounding useful...";
          emote = 4;
          break;
@@ -195,7 +184,7 @@ if (!bar_handled_victory_quote)
          quote = "Manipulating the weather just to keep treaspassers away? Please don't.";
          emote = 3;
          break;
-      case CH_CLAIREN: 
+      case CH_CLAIREN:
          quote = "The future is corrupt from a mammoth? I'm no Guardian of Time, sorry.";
          emote = 1;
          break;
@@ -281,17 +270,6 @@ if (!bar_handled_victory_quote)
             emote = 0;
          }
          break;
-      //i wonder if these will ever be used lol
-      /*
-         case "venus": //venus (placeholder)
-            quote = "Yes... that was a good sparring match, you are getting stronger!";
-            emote = 8;
-            break;
-         case "asra": //asra (placeholder)
-            quote = "Sahar sure keeps you up on your feet huh? Tell him I said hi.";
-            emote = 7;
-            break;
-      */
       //////////////////////// ORIGINAL CHARACTERS ///////////////////////
       case "jurami": //jurami (placeholder)
          quote = "Try not to be reckless, will you?";
@@ -307,6 +285,10 @@ if (!bar_handled_victory_quote)
          break;
       case "2965700442": //anthem
          quote = "Let me destroy that sword of yours, it doesn't look like it's doing you favors.";
+         emote = 6;
+         break;
+      case "3079776883": //kumaki
+         quote = "Control yourself, or I will be forced to stop you! Don't make me do this!";
          emote = 6;
          break;
       case "2605377553": //mal
@@ -325,18 +307,23 @@ if (!bar_handled_victory_quote)
          quote = "Sorry, I'm not a private tutor.";
          emote = 1;
          break;
-      case "2396061657": //Callie
+      case "2396061657": //callie
 	      quote = "No hard feelings, right?";
          emote = 7;
 	      break;
-      case "2490060793": //Barr
+      case "2490060793": //barr
 	      quote = "Nice name.";
          emote = 2;
          break;
       //N/A, gatekeeper, abyss hime, abyss cheese wheel, abyssant
-      case "2229832619": case "2004962115": case "1968648848": case "2620579353": case "2886663444":
+      case "2229832619": case "2004962115": case "1968648848": case "2620579353": case "2886663444": case "3084983341":
          quote = "There's no end to these freaks.";
          emote = 6;
+	      break;
+      //luminance, tamat, segerak
+      case "3067741766": case "2273328517": case "2390163800":
+         quote = "Fighting a street sign is not something I expected to do today.";
+         emote = 0;
 	      break;
       /////////////////////////// IP CHARACTERS //////////////////////////
       case "2924948563": //knuckles
@@ -380,7 +367,7 @@ if (!bar_handled_victory_quote)
          emote = 7;
          break;
       case "2995463890": //hol horse
-	      quote = "I REALLY don't like that gun!";
+	      quote = "What the hell is shooting me?!";
          emote = 6;
 	      break;
       case "3042615374": case "3030928225": case "3021608896": //nemesis, squigly, mako

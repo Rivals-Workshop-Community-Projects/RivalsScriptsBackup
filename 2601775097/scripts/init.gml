@@ -208,6 +208,8 @@ AT_INTRO = 2;
 AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next to it is the amount to loop
 window_loops = 0;                   //decides the amount of times to loop
 
+AG_MUNO_ATTACK_EXCLUDE = 80;
+
 /*
 //attack names
 attack_index = [
@@ -668,6 +670,9 @@ polaris_norm_cost = skill[7].mp_use_cost;
 last_hitstop = 0;
 last_kb = [0, 0, 0, 0, 0];
 last_hitstun = 0;
+
+polaris_cd_max = 60;
+polaris_cd = 0;
 
 lightbuff_alpha = 0.1;
 lightbuff_rate = 0.02;

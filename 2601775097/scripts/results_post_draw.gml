@@ -92,7 +92,7 @@ if (winner == player)
     quotes[i++] = "Glad it's over already, I have places to be.";
     quotes[i++] = "I don't think you knew what you were dealing with here.";
     quotes[i++] = "If this didn't teach you - next time you won't be so lucky, mark my words.";
-    quotes[i++] = "I will put to the demons' terror, one way or another!";
+    quotes[i++] = "I will put an end to the demons' terror, one way or another!";
     return quotes[(current_time) % array_length(quotes)];
 }
 

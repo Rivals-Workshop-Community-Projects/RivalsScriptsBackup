@@ -34,7 +34,7 @@ if ("super_theme_player" not in self) exit;
 
 if (super_theme_player)
 {
-    var volume = get_local_setting(3) * 2;
+    var volume = get_local_setting(3) * 2.5;
 
     //compatibility with bar's theikos music and other super sonics
     with (oPlayer)
@@ -47,7 +47,7 @@ if (super_theme_player)
         {
             sound_volume(super_theme, (bar_ss_array[0] == self) * volume, 0);
 
-            if ((state == PS_RESPAWN || state == PS_DEAD) && super_theme_playing)
+            if ((state == PS_RESPAWN || state == PS_DEAD || rings_cur <= 0) && super_theme_playing)
             {
                 super_theme_loop_start = super_theme_loop_start_set;
                 super_theme_loop_started = false;
@@ -71,7 +71,6 @@ if (super_theme_player)
         player_id.super_theme_playing = true;
 
         player_id.super_theme = sound_play(sound_get("mus_super_intro")); //play music
-        //sound_volume(player_id.super_theme, volume, 0);
     }
 
     if (player_id.super_theme_loop_start != player_id.super_theme_loop_start_set && player_id.bar_ss_array[0] == noone) sound_stop(player_id.super_theme);
@@ -81,7 +80,7 @@ if (super_theme_player)
     if (player_id.super_theme_loop_start <= 0 && !player_id.super_theme_loop_started)
     {
         sound_stop(player_id.super_theme);
-        player_id.super_theme = sound_play(sound_get("mus_super_loop"));
+        player_id.super_theme = sound_play(sound_get("mus_super_loop"), true);
         player_id.super_theme_loop_started = true;
     }
 }

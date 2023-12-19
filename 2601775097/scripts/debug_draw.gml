@@ -2,8 +2,6 @@
 
 //draw_debug_text(floor(x), floor(y)+16*0, "variable = " + string(variable));
 
-
-
 //old test code
 /*
     for (var i = 0; i <= 3; ++i)

@@ -76,13 +76,14 @@ if (attack == skill[7].skill_attack && lightbuff_active)
 }
 
 //if the move is lacking MP, put up notice
-if (notice_time == -1 && move_cooldown[attack] > 0)
+if (notice_time == -1 && (move_cooldown[attack] > 0 || attack == skill[7].skill_attack && polaris_cd > 0))
 {
     notice_type = (
         dagger_spam_cd > 0 && (attack == skill[0].skill_attack || attack == skill[0].skill_attack_air) ||
         leap_used && attack == skill[2].skill_attack ||
         blast_used && attack == skill[3].skill_attack ||
-        accel_used && attack == skill[6].skill_attack
+        accel_used && attack == skill[6].skill_attack ||
+        attack == skill[7].skill_attack && polaris_cd > 0
     );
     notice_time = notice_time_max;
 }
