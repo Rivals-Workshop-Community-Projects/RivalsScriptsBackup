@@ -1,0 +1,1 @@
+sound_stop(sfx_wren_whirlpool_loop);

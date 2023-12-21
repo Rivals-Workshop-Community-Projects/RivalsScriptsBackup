@@ -1,0 +1,1 @@
+coins_in_bag = clamp(coins_in_bag+1, 0, max_coins_in_bag);
