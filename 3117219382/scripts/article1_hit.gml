@@ -15,24 +15,24 @@ if (is_hittable)
 
     //check is the hitbox' owner is not the owner of the article or a teammate of the owner of the article
     //alternatively, check if it is owner of the article and if they are using fspec on it
-    if (hit_player_obj == player_id && (enemy_hitboxID.attack == AT_DSPECIAL and enemy_hitboxID.hbox_num == 1) )
+    if ((hit_player_obj.url == "3117219382") && (enemy_hitboxID.attack == AT_DSPECIAL and enemy_hitboxID.hbox_num == 1) )
     {
       if (hit_player_obj == player_id) //player interaction
       {
-        if (player_id.attack == AT_DSPECIAL)
-        {
-        	var change = max(0,(lvl))
-        	if(player_id.coins_in_bag <	player_id.max_coins_in_bag){
-						player_id.coins_in_bag = clamp(player_id.coins_in_bag+change, 0, player_id.max_coins_in_bag)
-						player_id.coin_fade_in_timer = player_id.coin_fade_in_time;
-					}
-        	spawn_hit_fx(x,y, player_id.fstrong_explosion_hfx)
-        	sound_play(asset_get("sfx_shovel_hit_med2"))
-        	sound_play(asset_get("sfx_rag_plant_ready"))
-          instance_destroy(self);
-        }
-          
       }
+      if (hit_player_obj.attack == AT_DSPECIAL)
+      {
+      	var change = max(0,(lvl))
+      	if(hit_player_obj.coins_in_bag <	hit_player_obj.max_coins_in_bag){
+					hit_player_obj.coins_in_bag = clamp(hit_player_obj.coins_in_bag+change, 0, hit_player_obj.max_coins_in_bag)
+					hit_player_obj.coin_fade_in_timer = hit_player_obj.coin_fade_in_time;
+				}
+      	spawn_hit_fx(x,y, hit_player_obj.fstrong_explosion_hfx)
+      	sound_play(asset_get("sfx_shovel_hit_med2"))
+      	sound_play(asset_get("sfx_rag_plant_ready"))
+        instance_destroy(self);
+      }
+          
     }
   }
 }

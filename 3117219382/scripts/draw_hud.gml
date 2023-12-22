@@ -46,7 +46,19 @@ shader_start()
 draw_sprite_ext(coins_hud_spr, coins_img, temp_x + 200, temp_y, 2, 2, 0, c_white, 1);
 
 var fspecial_hud_img = 0;
-fspecial_hud_img  = ((fspecial_hud_time - fspecial_hud_timer)*8/fspecial_hud_time) + (lvl-1)*8;
+var moving_part = 0;
+if(fspecial_hud_timer >= fspecial_hud_goaway_time+fspecial_hud_stay_time){
+	var start_timer = 0;
+	moving_part = start_timer + ((fspecial_hud_time - fspecial_hud_timer)*4)/fspecial_hud_enter_time
+}else if(fspecial_hud_timer >= fspecial_hud_goaway_time){
+	var start_timer = 4;
+	moving_part = start_timer + (((fspecial_hud_goaway_time+fspecial_hud_stay_time) - fspecial_hud_timer))*1/fspecial_hud_stay_time
+}else{
+	var start_timer = 5;
+	moving_part = start_timer + ((fspecial_hud_goaway_time - fspecial_hud_timer))*3/fspecial_hud_goaway_time
+}
+
+fspecial_hud_img  = moving_part + (lvl-1)*8;
 draw_sprite_ext(fspecial_hud_spr, fspecial_hud_img, temp_x + 50, temp_y, 2, 2, 0, c_white, 1);
 shader_end()
 

@@ -242,7 +242,10 @@ fspecial_lvl3_anim_speed = 0.33;
 fspecial_lvl3_fx_spr = sprite_get("fspecial_lvl3_fx");
 fspecial_hud_spr = sprite_get("level_hud");
 fspecial_hud_timer = 0;
-fspecial_hud_time = 30;
+fspecial_hud_enter_time = 10;
+fspecial_hud_stay_time = 30;
+fspecial_hud_goaway_time = 12;
+fspecial_hud_time = fspecial_hud_enter_time+fspecial_hud_stay_time+fspecial_hud_goaway_time;
 
 //POS -> 0 = up forward, 1 = forward, 2 = down forward 
 // mist_pos_x = [[150, 300, 450], [75, 150, 300], [150, 300, 450]];
