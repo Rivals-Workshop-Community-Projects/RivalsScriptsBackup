@@ -2,7 +2,7 @@
 if (attack == AT_UTILT && (window == 2 || window == 3 || window == 4)){
 	hud_offset = lerp(hud_offset, 80, 0.5);
 }
-if (attack == AT_USTRONG && (window == 2 || window == 3 || window == 4)){
+if (attack == AT_USTRONG && (window == 3)){
 	hud_offset = lerp(hud_offset, 80, 0.5);
 }
 

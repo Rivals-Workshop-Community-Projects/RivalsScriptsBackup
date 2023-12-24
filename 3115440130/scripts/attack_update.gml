@@ -98,7 +98,7 @@ if attack == AT_USTRONG {
 }
 
 if attack == AT_NSPECIAL {
-    move_cooldown[AT_NSPECIAL] = 32
+    move_cooldown[AT_NSPECIAL] = 40
     if window == 1 && window_timer == window_length && !hitpause {
         sound_play(asset_get("sfx_swipe_medium1"))
         if free {

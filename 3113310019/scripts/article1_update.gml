@@ -263,9 +263,9 @@ if (state != 2 && state != 5){
 		}
 		// glider
 		if collision_rectangle(
-		other.x - 24, 
-		other.y - 48, 
-		other.x + 24, 
+		other.x - 32, 
+		other.y - 56, 
+		other.x + 32, 
 		other.y - 0, 
 		self, true, false) 
 		&& (player_id == other.player_id){
@@ -373,17 +373,53 @@ if (state != 2 && state != 5){
 			}
 		}
 	}
+	with (player_id){
+		if collision_rectangle(
+		other.x - 32, 
+		other.y - 56, 
+		other.x + 32, 
+		other.y - 0, 
+		self, true, false) {
+			if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) 
+			&& (attack == AT_USPECIAL) && (window == 2) && !(hitstop){
+				destroy_hitboxes();
+				attack_end();
+				attack = AT_USPECIAL_2;
+				window = 1;
+				window_timer = 0;
+				sound_play (sound_get ("floop"));
+				
+				hitpause = true;
+				hitstop_full = hitpause;
+				hitstop = 6;
+				old_hsp = hsp;
+				old_vsp = vsp;
+				with other{
+					player_id.melonpult_uspecial_grabbed = id;
+					sound_play (sound_get ("dissipate"));
+					x = player_id.x + (26 * player_id.spr_dir);
+					y = player_id.y - 18;
+					new_sprite = sprite_get("umbrellaleaf_open");
+					hsp = 0;
+					state = 4;
+					state_timer = 0;
+					image_index = 0;
+					spr_dir = player_id.spr_dir;
+				}
+			}
+		}
+	}
 	// throws
 	if (player_id.melonpult_fspecial_grabbed == id)
 	&& (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR){
 		free = true;
 		if (player_id.attack == AT_FTHROW) && (player_id.window == 2) && (player_id.window_timer == 1){
 			hsp = 2.5*spr_dir;
-			vsp = -2;
+			vsp = -2.5;
 		}
 		if (player_id.attack == AT_NTHROW) && (player_id.window == 2) && (player_id.window_timer == 1){
 			hsp = -2.5*spr_dir;
-			vsp = -2;
+			vsp = -2.5;
 		}
 	}
 }

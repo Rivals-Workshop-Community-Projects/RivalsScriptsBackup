@@ -1,9 +1,21 @@
 // Updates every frame of the game
 #region // DEBUG MODE
-if get_match_setting(SET_PRACTICE){
-    if get_gameplay_time() <= 120 and taunt_down{
-        wren_debug = true;
-    }
+if get_gameplay_time() <= 120{
+	if get_match_setting(SET_PRACTICE) and taunt_down{
+		wren_debug = true;
+	}
+	if shield_pressed{
+		clear_button_buffer(PC_SHIELD_PRESSED);
+		sound_play(asset_get("mfx_coin"));
+		switch(wren_tidecall_toggle){
+			case 0: // Default - Special + Attack
+				wren_tidecall_toggle = 1;
+				break;
+			case 1:	// Rivals 1 Mode
+				wren_tidecall_toggle = 0;
+				break;
+		}
+	}
 }
 #endregion
 

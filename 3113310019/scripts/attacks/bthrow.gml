@@ -44,6 +44,5 @@ set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0.4);
-set_hitbox_value(AT_NTHROW, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_GROUP, 1);

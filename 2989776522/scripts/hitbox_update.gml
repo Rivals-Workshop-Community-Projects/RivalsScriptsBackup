@@ -329,7 +329,7 @@ draw_xscale = spr_dir;
 			with(oPlayer){
 				if(get_player_team(player) == get_player_team(other.player)){
 			    	other.can_hit[player] = false;
-				}
+				}else{other.can_hit[player] = true;}
 			}
     	}
     	spawn_hit_fx(target.x, target.y, 302);

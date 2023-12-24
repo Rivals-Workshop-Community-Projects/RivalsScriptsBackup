@@ -37,13 +37,13 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // tethergrab whiff
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 10);
 
 // grab whiff
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 15);
 
@@ -97,7 +97,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_X, 128);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y, -18);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, 1);

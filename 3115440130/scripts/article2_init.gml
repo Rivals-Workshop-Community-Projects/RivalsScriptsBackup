@@ -10,6 +10,7 @@ crack_timer = 0
 vfx_explode = hit_fx_create(sprite_get("dspecial_explosion_vfx_small"), 24)
 
 sprite_index = sprite_get("nspecial_proj_grounded")
+mask_index = sprite_get("nspecial_proj_grounded")
 image_index = 0
 depth = -10
 
@@ -25,6 +26,8 @@ surface_offset_y = 0
 
 surface_prev_x = 0
 surface_prev_y = 0
+
+has_hit = false
 
 //surface collision
 var block_check = position_meeting(x, y, asset_get("par_block"))

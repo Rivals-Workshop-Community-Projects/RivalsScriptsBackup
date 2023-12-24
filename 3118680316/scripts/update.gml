@@ -110,7 +110,7 @@ else if(in_bubble)
 
 // Double jumps are ILLEGAL if you're near a bubble
 max_djumps = 0;
-if(jump_pressed)
+if(jump_pressed || (tap_jump_pressed && can_tap_jump()))
 {
 	if(in_bubble)
 	{
@@ -892,7 +892,14 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		var NewLocationY = bubble.y + bubble.vsp;
 		
 		// Update sprite
-		bubble.image_index += bubble.image_speed;
+		if(bubble.hitpause == 0)
+		{
+			bubble.image_index += bubble.image_speed;
+			if(bubble.image_index > BubbleSpriteNumber) 
+			{
+				bubble.image_index -= BubbleSpriteNumber;
+			}
+		}
 		
 		// Update lockout timer
 		if(bubble.lockout_timer > 0)

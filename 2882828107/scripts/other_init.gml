@@ -1,4 +1,4 @@
 //other_init
-dattack_drag = 0;
-dattack_flick = 0;
+dattack_drag = false;
+dattack_flick = false;
 puffshroom_timer = 0;

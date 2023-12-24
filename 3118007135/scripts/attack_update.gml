@@ -306,6 +306,7 @@ if !hitpause{
     		        	move_cooldown[AT_FSPECIAL] = 0;
     		        	wren_nostall++;
     		        }
+    		        sound_play(sound_get("sfx_whirlpool_loop"), true);
     		        destroy_hitboxes();
     		        set_window(5);
     		        wren_yoyo.state = 6;
@@ -360,7 +361,7 @@ if !hitpause{
                 case 4: // Falling
 					can_wall_jump = true;
     				if !free{
-    					if has_bounced || was_parried{
+    					if ((has_bounced and !special_down) or was_parried){
     						attack_end();
     						set_state(was_parried ? PS_PRATLAND : PS_LAND);
     					} else {
@@ -392,6 +393,7 @@ if !hitpause{
 	                		wren_yoyo.state = 7;
 	                		wren_yoyo.state_timer = 0;
                 		}
+                		sound_stop(sound_get("sfx_whirlpool_loop"));
                 		set_window(6);
                 	}
                 	
@@ -460,10 +462,26 @@ if !hitpause{
 	                        reset_window_value(attack, 2, AG_WINDOW_HSPEED);
 	                        reset_window_value(attack, 2, AG_WINDOW_VSPEED);
 	                }
-	                if window_timer < 6 and attack_pressed and instance_exists(wren_yoyo){
-	                	attack_end();
-	                	destroy_hitboxes();
-	                	set_attack(AT_USPECIAL_2);
+	                if instance_exists(wren_yoyo){
+	                	switch(wren_tidecall_toggle){
+	                		case 0: // Default
+	                			if window_timer < 6 and attack_pressed{
+				                	attack_end();
+				                	destroy_hitboxes();
+				                	set_attack(AT_USPECIAL_2);
+	                			}
+	                			break;
+	                		case 1:	// Tap/Hold
+				                if (window_timer == 1){
+				                	clear_button_buffer(PC_SPECIAL_PRESSED);
+				                }
+	                			if window_timer == 5 and special_down{
+				                	attack_end();
+				                	destroy_hitboxes();
+				                	set_attack(AT_USPECIAL_2);
+	                			}
+	                			break;
+	                	}
 	                }
 	                /*
 	                if ((window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1)){
@@ -595,6 +613,9 @@ if !hitpause{
         			}
         			wren_yoyo_old_x = wren_yoyo.x;
         			wren_yoyo_old_y = wren_yoyo.y;
+        			if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1{
+        				sound_play(asset_get("sfx_spin_longer"));
+        			}
         			break;
         		case 2:
         			// i hate this fucking  move
@@ -614,6 +635,7 @@ if !hitpause{
         			if (point_distance(x, y, wren_yoyo_old_x, wren_yoyo_old_y) <= 60){
         				window = 3;
         				window_timer = 0;
+        				sound_stop(asset_get("sfx_spin_longer"));
         				sound_stop(sfx_wren_whirlpool_loop)
         				instance_destroy(wren_yoyo);
         			} else {

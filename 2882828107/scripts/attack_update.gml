@@ -272,6 +272,10 @@ if (attack == AT_DSPECIAL){
 			    sound_play (sound_get ("buzzer"));
 			}
         }
+		if (window_timer == 12) && (!jackolantern_exists){
+			window = 3;
+			window_timer = 0;
+		}
     }
 }
 

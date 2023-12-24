@@ -351,7 +351,7 @@ if(attack == AT_UTILT)
 if(attack == AT_USTRONG)
 {
 	// Adjust the funky HUD offset because this move is LONG
-	if(window == 2 || window == 3 || (window == 4 && window_timer < 6))
+	if(window == 3 || window == 4 || (window == 5 && window_timer < 6))
 	{
 		hud_offset+=50;
 	}
@@ -364,7 +364,7 @@ if(attack == AT_USTRONG)
 	}
 	
 	// Create tiny bubble (again!)
-	if(window == 2 && window_timer == 6 && !hitpause)
+	if(window == 3 && window_timer == 4 && !hitpause)
 	{
 		var Bubble = CreateNewBubble(x + (-5 * spr_dir), y-22,TINY,-4*spr_dir,-6);
 		Bubble.lockout_timer = 10;

@@ -17,11 +17,6 @@ for (i = 0; i < bubble_list_size; i++)
 	if(!bubble.flag_delete)
 	{
 		draw_sprite_ext( bubble.sprite_index,bubble.image_index,bubble.x,bubble.y,bubble.image_xscale,1,0,c_white,player_id.bubble_opacity);
-	
-		if(bubble.hitpause == 0)
-		{
-			if(bubble.image_index > sprite_get_number(bubble.sprite_index)) bubble.image_index = 0;
-		}
 	}
 }
 //#endregion Drawing Bubbles

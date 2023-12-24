@@ -169,6 +169,8 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
 
 // Endlag 2
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 8);

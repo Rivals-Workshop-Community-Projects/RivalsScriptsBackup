@@ -193,7 +193,7 @@ if (attack == AT_DAIR){
 
 if (attack == AT_FSTRONG){
 	if (window == 2 && window_timer == 12){
-		spawn_hit_fx(floor(x + 86*spr_dir),floor(y),splat_effect);
+		spawn_hit_fx(floor(x + 100*spr_dir),floor(y),splat_effect);
 		sound_play (sound_get ("melonimpact"));
 	}
 }
@@ -544,22 +544,25 @@ if (attack == AT_USPECIAL){
 		if free{
 			vsp = min(vsp, 1.5);
 		}
-		/*
-		if (window_timer == 8) && (special_down){
-			if (umbrellaleaf_recharge >= 300){
-				if (exists){
-					with (obj_article1){
-						if (player_id == other.id){
-							shovel = true
+		if (window_timer == 8){
+			hsp = clamp(hsp, -1, 1);
+			/*
+			if (special_down){
+				if (umbrellaleaf_recharge >= 300){
+					if (exists){
+						with (obj_article1){
+							if (player_id == other.id){
+								shovel = true
+							}
 						}
 					}
+					instance_create(x + (spr_dir*60),y - 0,"obj_article1");
+					sound_play (sound_get ("plant"));
+					umbrellaleaf_recharge = 0
 				}
-				instance_create(x + (spr_dir*60),y - 0,"obj_article1");
-				sound_play (sound_get ("plant"));
-				umbrellaleaf_recharge = 0
 			}
-        }
-		*/
+			*/
+		}
     } else {
 		can_wall_jump = true;
 	}

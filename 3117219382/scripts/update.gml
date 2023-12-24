@@ -263,6 +263,7 @@ if(bd_has_custom_rail_grind_sprite){
 
 
 #define slide_init()
+if("bd_has_custom_rail_grind_sprite" in self and bd_has_custom_rail_grind_sprite) return;
 
 _bd_init = false
 bd_has_custom_rail_grind_sprite = false;
@@ -270,10 +271,10 @@ bd_rail_grind_startup_frames = 0;
 bd_rail_grind_active_frames = 1;
 bd_rail_grind_endlag_frames = 0;
 bd_rail_grind_anim_speed = 0.15;
-if("url" not in self){
-	bd_rail_grind_forward_spr = sprite_get("waveland");
-}else{
 switch(url){
+	default:
+		bd_rail_grind_forward_spr = sprite_get("waveland");
+	break;
 	case CH_ZETTERBURN:
 		bd_rail_grind_forward_spr =  asset_get("zet_waveland");
 	break;
@@ -313,12 +314,9 @@ switch(url){
 	case CH_MAYPUL:
 		bd_rail_grind_forward_spr = asset_get("fer_waveland");
 	break;
-	default:
-		bd_rail_grind_forward_spr = sprite_get("waveland");
-	break;
-}
 }
 bd_rail_grind_backwards_spr = bd_rail_grind_forward_spr;
+
 
 //collision_line() but it returns the point it collided with.
 //Function written by YellowAfterLife

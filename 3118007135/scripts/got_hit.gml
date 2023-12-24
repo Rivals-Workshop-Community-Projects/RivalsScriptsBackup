@@ -15,6 +15,7 @@ switch(state){
                 wren_charge_lvl = 0;
                 break;
             case AT_FSPECIAL:
+            	sound_stop(sound_get("sfx_whirlpool_loop"));
 				if instance_exists(wren_yoyo.hbox){
 					wren_yoyo.state = 1;
 					wren_yoyo.state_timer = 0;

@@ -20,6 +20,34 @@ if surface_prev_x != surface_x || surface_prev_y != surface_y {
 surface_prev_x = surface_x
 surface_prev_y = surface_y
 
+//hitbox detection
+var hitbox = instance_place(x, y, pHitBox);
+if hitbox != noone && hitbox.type == 1 && hitbox.player_id != player_id && !has_hit {
+    var hitvfx = hitbox.hit_effect
+    var hitsfx = hitbox.sound_effect
+
+    shake_camera(4, 3)
+    spawn_hit_fx(x, y - 20, hitvfx)
+    sound_play(hitsfx)
+    
+    hitbox.player_id.has_hit = true
+    hitbox.player_id.hitpause = true
+    hitbox.player_id.hitstop = 4
+    hitbox.player_id.hitstop_full = 4
+    hitbox.player_id.old_hsp = hitbox.player_id.hsp
+    hitbox.player_id.hsp = 0
+    hitbox.player_id.old_vsp = hitbox.player_id.vsp
+    hitbox.player_id.vsp = 0
+    
+    hitstop = hitbox.hitpause
+    has_hit = true
+}
+
+if hitstop == 0 && has_hit {
+    die = true
+    on_fault = true
+}
+
 if timer == 2 {
     with obj_article1 if player_id == other.player_id {
         for (var i = 0; i < array_length(segment_array); i++) {
@@ -38,7 +66,7 @@ if timer == 2 {
     }
 }
 //crack
-if timer >= 20 {
+if timer >= 30 {
     if crack_timer == 0 {
         sound_play(asset_get("sfx_syl_dstrong"))
         spawn_shards_ellipse(id, 6, 10, 2, 0, x, y, 10, 0)
@@ -48,7 +76,7 @@ if timer >= 20 {
 }
 
 
-if timer > 40 || die {
+if (timer > 50 || die) && !hitstop {
     spawn_shards_ellipse(id, 12, 20, 20, 0, x, y - 10, 8, 0)
     /*
     var fault = get_nearest_fault()

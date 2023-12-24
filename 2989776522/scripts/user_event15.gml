@@ -260,6 +260,10 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.25", "23rd December, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug where Eggman could rarely take less horizontal knockback than he should while mechless");
+
 initPatch("1.24", "23rd November, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Made Eggman's FTilt reflector work a bit differently from other reflectors by making it not reflect articles by default (it still can, but only if they're marked as reflectable).

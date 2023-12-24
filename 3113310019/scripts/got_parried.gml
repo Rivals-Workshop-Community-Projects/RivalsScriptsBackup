@@ -2,12 +2,14 @@
 if (my_hitboxID.attack == AT_FTILT){
 	if (my_hitboxID.hbox_num == 1){
 		window = 5;
-		window_timer = 4;
+		if (has_hit) window_timer = 4;
+		else window_timer = 6;
 		destroy_hitboxes();
 	}
 	if (my_hitboxID.hbox_num == 2){
 		window = 5;
-		window_timer = 2;
+		if (has_hit) window_timer = 2;
+		else window_timer = 3;
 		destroy_hitboxes();
 	}
 	if (my_hitboxID.hbox_num == 3){
@@ -26,12 +28,12 @@ if (my_hitboxID.attack == AT_DAIR){
 if (my_hitboxID.attack == AT_FSPECIAL){
 	if (my_hitboxID.hbox_num == 2){
 		window = 5;
-		window_timer = 8;
+		window_timer = 6;
 		destroy_hitboxes();
 	}
 	if (my_hitboxID.hbox_num == 3){
 		window = 5;
-		window_timer = 4;
+		window_timer = 3;
 		destroy_hitboxes();
 	}
 	if (my_hitboxID.hbox_num == 4){

@@ -32,14 +32,16 @@ if (wall_phase == true){
 
 if (state == PS_PARRY){
 	if (state_timer == 1){
-		sound_play(sound_get("plant"));
-		spawn_hit_fx(floor(x + 16),floor(y),15)
-		spawn_hit_fx(floor(x - 16),floor(y),15)
+		if !hitpause{
+			sound_play(sound_get("plant"));
+			spawn_hit_fx(floor(x + 16),floor(y),15);
+			spawn_hit_fx(floor(x - 16),floor(y),15);
+		}
 	}
 	if (state_timer == 9){
 		sound_play(sound_get("shovel"));
-		spawn_hit_fx(floor(x + 16),floor(y),15)
-		spawn_hit_fx(floor(x - 16),floor(y),15)
+		spawn_hit_fx(floor(x + 16),floor(y),15);
+		spawn_hit_fx(floor(x - 16),floor(y),15);
 	}
 }
 

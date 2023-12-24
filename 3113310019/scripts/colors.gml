@@ -111,16 +111,16 @@ set_color_profile_slot( 8, 0, 170, 8, 74 ); //fruit
 set_color_profile_slot( 8, 1, 255, 200, 240 ); //highlight
 set_color_profile_slot( 8, 2, 248, 160, 216 ); //body 1
 set_color_profile_slot( 8, 3, 243, 134, 182 ); //stripe 1
-set_color_profile_slot( 8, 4, 240, 112, 160 ); //body 2
+set_color_profile_slot( 8, 4, 229, 103, 147 ); //body 2
 set_color_profile_slot( 8, 5, 216, 72, 112 ); //stripe 2
 set_color_profile_slot( 8, 6, 248, 24, 128 ); //foliage 1
 set_color_profile_slot( 8, 7, 176, 0, 40 ); //foliage 2
 
 // bob-omb
-set_color_profile_slot( 9, 0, 128, 128, 128 ); //fruit
+set_color_profile_slot( 9, 0, 143, 121, 102 ); //fruit
 set_color_profile_slot( 9, 1, 137, 211, 245 ); //highlight
 set_color_profile_slot( 9, 2, 91, 158, 181 ); //body 1
-set_color_profile_slot( 9, 3, 45, 105, 117 ); //stripe 1
+set_color_profile_slot( 9, 3, 57, 118, 133 ); //stripe 1
 set_color_profile_slot( 9, 4, 34, 80, 89 ); //body 2
 set_color_profile_slot( 9, 5, 23, 54, 61 ); //stripe 2
 set_color_profile_slot( 9, 6, 255, 170, 71 ); //foliage 1

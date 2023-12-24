@@ -184,7 +184,6 @@ if(inside_mech){
 	    		hsp = clamp(((10 + abs(hsp/2)) * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
 	    	}
 	    }
-	    //print(hsp);
 	}else if(state == PS_DASH_TURN){
 		if(state_timer == 0 && !hitpause){
 			sound_play(sound_get("skid"),false,noone,1.0);
@@ -203,7 +202,7 @@ if(inside_mech){
 		}
 	}
 	dash_speed = abs(hsp);
-	hsp = clamp(hsp,-maxspd,maxspd);
+	if(state != PS_HITSTUN && state != PS_HITSTUN_LAND && !hitpause)hsp = clamp(hsp,-maxspd,maxspd);
 	walk_anim_speed = 0.05+abs(hsp/5);
 	dash_anim_speed = 0.2+abs(hsp/5);
 }

@@ -15,8 +15,12 @@ if instance_exists(wren_yoyo){
             break;
         case AT_USPECIAL:
             if move_cooldown[AT_USPECIAL] == 0{
-                if attack_down and special_down and instance_exists(wren_yoyo){
-                    attack = AT_USPECIAL_2
+                switch(wren_tidecall_toggle){
+                    case 0:
+                        if attack_down and special_down and instance_exists(wren_yoyo){
+                            attack = AT_USPECIAL_2
+                        }
+                        break;
                 }
             }
             break;

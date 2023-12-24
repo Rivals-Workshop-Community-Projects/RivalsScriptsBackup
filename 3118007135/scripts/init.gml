@@ -60,7 +60,7 @@ knockback_adj = 1.15;    //the multiplier to KB dealt to you. 1 = default, >1 = 
 #endregion
 
 #region // Landing Variables
-prat_land_time = 3;
+prat_land_time = 11;
 wave_land_time = 8;
 wave_land_adj = 1.35;   //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .13;    //grounded deceleration when wavelanding
@@ -150,6 +150,8 @@ wren_dtiltwo_buffer = false;
 wren_dtiltwo_hitfall = false;
 wren_noloop = 0;
 wren_noloop_max = 73;
+
+wren_tidecall_toggle = 0;
 
 #region // Gimmick Stuff
 wren_riptide_id = noone;    // Checking for the owner of the status effect, who applied it most recently.

@@ -3,7 +3,7 @@ with(oPlayer){
     if other.id != id{
         if wren_riptide_id == other.id{
             wren_caught = false;
-            set_state(PS_TUMBLE);
+            //set_state(PS_TUMBLE);
             wren_riptide_id = noone;
         }
     }
