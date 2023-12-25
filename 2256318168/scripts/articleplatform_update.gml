@@ -1,21 +1,10 @@
-//article1_update
+//article1_update.gml: platform version
 
-if (free)
-{
-    if (article_timer < player_id.noz_fspecial_airtime)
-    {
-        with (player_id) 
-        {
-           var new = instance_create(other.x, floor(other.y), "obj_article_platform");
-           new.article_timer = other.article_timer;
-           new.spr_dir = other.spr_dir;
-        }
-        instance_destroy(self); exit;
-    }
-    else should_die = true;
-}
-
-if (article_timer > player_id.noz_fspecial_lifetime) || should_die
+if (article_timer > player_id.noz_fspecial_airtime) || should_die
+//also test for collision with any platforms overlapping yourself (after a grace period)
+//prevents being "picked up" by stationary ice platform while moving with something else
+|| ((article_timer > 15) && (place_meeting(x, y, asset_get("par_jumpthrough"))
+                          || place_meeting(x, y, asset_get("par_block")) ))
 {
     //delete self
     //take time to unhook the neighbors tho, to be nice
@@ -24,55 +13,27 @@ if (article_timer > player_id.noz_fspecial_lifetime) || should_die
     if instance_exists(right_segment) 
         right_segment.left_segment = noone;
     
-    var k = spawn_hit_fx(x, y, despawn_vfx);
-    k.spr_dir = spr_dir;
+    //!? DAN WHY ARE ARTICLE PLATFORMS FAILING AT THIS
+    with (player_id)
+    {
+        var k = spawn_hit_fx(other.x, other.y, other.despawn_vfx);
+        k.spr_dir = other.spr_dir;
+    }
     instance_destroy(self); exit;
 }
 
 //test existence of neighbors
 var neighborflags = 3; //1 front, 2 back. depends on spr_dir
 
-//if moved, doublecheck surrounding articles
-var has_moved = (prev_x != x);
-prev_x = x;
-
 if !instance_exists(right_segment)
 {
     neighborflags -= (spr_dir ? 1 : 2);
-    right_segment = noone;
-    if (has_moved)
-    {
-        right_segment = find_neighbor_platform(x+16, y);
-        if instance_exists(right_segment)
-            right_segment.left_segment = self;
-    }
-}
-else if (has_moved) 
-     && ((abs(right_segment.x - (x+16)) > 2) || (right_segment.y - y) > 2)
-{
-    //lose neighbor if too distant
-    neighborflags -= (spr_dir ? 1 : 2);
-    right_segment.left_segment = noone;
     right_segment = noone;
 }
 
 if !instance_exists(left_segment)
 {
     neighborflags -= (spr_dir ? 2 : 1);
-    left_segment = noone;
-    if (has_moved)
-    {
-        left_segment = find_neighbor_platform(x-16, y);
-        if instance_exists(left_segment)
-            left_segment.right_segment = self;
-    }
-}
-else if (has_moved) 
-     && ((abs(left_segment.x - (x-16)) > 2) || (left_segment.y - y) > 2)
-{
-    //lose neighbor if too distant
-    neighborflags -= (spr_dir ? 2 : 1);
-    left_segment.right_segment = noone;
     left_segment = noone;
 }
 
@@ -126,31 +87,11 @@ if (player_id.anim_do_draw_twinkle &&
 }
 
 //======================================================================
-#define find_neighbor_platform(xpos, ypos)
-{
-    var found = noone;
-
-    with (asset_get("obj_article1"))
-    if (self != other) && (player_id == other.player_id)
-    && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
-    {
-        found = self; break;
-    }
-    if (found == noone) with (asset_get("obj_article_platform"))
-                        if (self != other) && (player_id == other.player_id)
-                        && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
-    {
-        found = self; break;
-    }
-
-    return found;
-}
-//======================================================================
 #define spawn_twinkle(vfx, pos_x, pos_y, radius)
 with (player_id)
 {
     var kx = pos_x - (radius / 2) + anim_rand_x * radius;
     var ky = pos_y - (radius / 2) + anim_rand_y * radius;
-
+    
     var k = spawn_hit_fx(kx, ky, vfx);
 }

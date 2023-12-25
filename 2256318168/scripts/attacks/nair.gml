@@ -9,15 +9,14 @@ set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_VSPEED, -1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_NAIR, 2, AG_WINDOW_VSPEED, -1);
+set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 set_window_value(AT_NAIR, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH, 10);
@@ -85,6 +84,7 @@ set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NAIR, 4, HG_MUNO_OBJECT_LAUNCH_ANGLE, -1);
 
 //Feet hitboxes
 //Should mirror hitboxes 1 through 3; with a higher angle
