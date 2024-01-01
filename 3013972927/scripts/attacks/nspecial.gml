@@ -8,7 +8,7 @@ set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hurt"));
 set_attack_value(atk, AG_OFF_LEDGE, 1);
 
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 27);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 55);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 
 window_num ++; //windup 2
@@ -60,17 +60,18 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);
+//set_hitbox_value(atk, hitbox_num, HG_EFFECT, 11);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 
 hitbox_num ++; //tether grab hitbox
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 12);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 11);
 //set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0); //spawns manually on attack_update.gml
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 40);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 30);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 35);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 33);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 0);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);

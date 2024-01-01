@@ -152,9 +152,9 @@ switch(assist_index)
     case 0: 
     if(is_beathit)
     {
-        sound_play(assist_pep_start_sfx[fxindex],0,0,.7);
+        sound_play(assist_pep_start_sfx[fxindex],0,0,.3);
     }
-        if(player_id.vo != 0)
+        if(player_id.vo != 0 && (random_func( 1, 4, true ) < 2))
         {
         sound_play(pep_vo_sfx[vo_index]);
         }
@@ -162,7 +162,7 @@ switch(assist_index)
     break;
     
     case 1:
-        if(player_id.vo != 0)
+        if(player_id.vo != 0  && (random_func( 1, 4, true ) < 2))
         {
         sound_play(mac_vo_sfx[vo_index]);
         }
@@ -170,7 +170,7 @@ switch(assist_index)
     break;
     
     case 2:
-        if(player_id.vo != 0)
+        if(player_id.vo != 0  && (random_func( 1, 4, true ) < 2))
         {
         sound_play(kor_vo_sfx[vo_index]);
         }

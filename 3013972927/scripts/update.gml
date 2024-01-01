@@ -296,6 +296,15 @@ if (is_attacking)
                 var final_col_dist = total_dist;
                 var final_col = [-4, end_x, end_y];
                 
+                if(player_col[0] != noone)
+                {
+                	nspec_on_target = true;
+                }
+                	else
+                		{
+                			nspec_on_target = false;
+                		}
+                
                 for (var i = 0; i < array_length(collisions); i++) 
                 {
                     var col = collisions[i]; // The current collision. (putting this in its own local (var) variable is a micro optimization)

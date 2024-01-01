@@ -212,7 +212,7 @@ switch (attack){
 		spawn_hit_fx(x - 70 * spr_dir, y-70, note_effect[0]);
 		set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 3);
 		set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
-		set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 5);
+		set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 3);
 		set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
 		set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, 0.6);
 		set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 8);
@@ -302,9 +302,9 @@ switch (attack){
 		sound_play(sound_get("chai_clap3"));
 		sound_play(beat_hit_sfx[attacksfxindex],0,0,.4);
 		spawn_hit_fx(x - 70 * spr_dir, y-70, note_effect[0]);
-		set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);
+		set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 11);
 	//	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 11);
-		set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
+		set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, .9);
 		set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 8);
 		set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.4);
 		}

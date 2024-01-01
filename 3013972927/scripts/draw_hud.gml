@@ -105,7 +105,7 @@ draw_sprite_ext(
 if(hit_onBeat)
 {
     draw_sprite_ext(
-        sprite_get("note1v"),
+        sprite_get("note1v2"),
         3, 
         temp_x + 110 ,   
         temp_y - 36,

@@ -152,9 +152,9 @@ switch (attack)
 					dspec_smackbox = create_hitbox(attack, 2, x, y);
 				}
 				break;
-			case 7:
-				if (special_pressed) set_window(1);
-				break;
+			//case 7:
+			//	if (special_pressed) set_window(1);
+			//	break;
 		}
 		break;
 	case AT_DSPECIAL_AIR: //air dk smack
@@ -188,13 +188,13 @@ switch (attack)
 }
 
 if attack == AT_DSPECIAL {
-    if window == 1 && window_timer == 5{
+    if window == 1 && window_timer == 9{
         sound_play(asset_get("sfx_zetter_downb"));
     }
 }
 
 if attack == AT_DSPECIAL {
-    if window == 4 && window_timer == 4{
+    if window == 4 && window_timer == 2{
         sound_play(asset_get("sfx_zetter_downb"));
     }
 }

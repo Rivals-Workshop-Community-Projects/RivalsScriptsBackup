@@ -60,17 +60,49 @@ if (is_attacking) switch (attack)
             //draw indicator
 			if (window == 1 && window_timer > 0 || window > 1 && window < 4)
             {
+
+				spawn_base_dust(x-20*spr_dir, y, "dash_start", 0, 0, 3, 3);	
+					
+            	if(nspec_on_target)
+            		{
                 draw_sprite_ext(
-                    sprite_get("fx_crosshair"),
+                    sprite_get("fx_crosshair_true"),
                     0,
                     nspec_tether_pos[0], //these are the recorded coordinates of fspec, stored in an array
                     nspec_tether_pos[1], //0 is X and 1 is Y, we also use them later for the tether "rope" distance
-                    2,
-                    2,
+                    1,
+                    1,
                     game_time * 2, //rotates indicator based on the game_time, so it always rotates
                     c_white,
                     1
                 );
+            		} else
+            			{
+			                draw_sprite_ext(
+			                    sprite_get("fx_crosshair"),
+			                    0,
+			                    nspec_tether_pos[0], //these are the recorded coordinates of fspec, stored in an array
+			                    nspec_tether_pos[1], //0 is X and 1 is Y, we also use them later for the tether "rope" distance
+			                    1,
+			                    1,
+			                    game_time * 2, //rotates indicator based on the game_time, so it always rotates
+			                    c_white,
+			                    1
+			                );
+            			}
+            			
+            	draw_sprite_ext(
+                    sprite_get("fx_fspec_tether"),
+                    window_timer * 0.4,
+                    x+44*spr_dir,
+                    y-char_height/2,
+                    point_distance(x+48*spr_dir, y-char_height/2, nspec_tether_pos[0], nspec_tether_pos[1]) / sprite_get_width(sprite_get("fx_fspec_tether")),
+                    1,
+                    point_direction(x+48*spr_dir, y-char_height/2, nspec_tether_pos[0], nspec_tether_pos[1]), //returns an angle number between these 2 points
+                    c_white,
+                    .5);	
+                    
+                
             }
             if (window == 4) //draw tether "rope"
             {
@@ -158,9 +190,15 @@ if (is_attacking) switch (attack)
     case AT_FSPECIAL:
     	switch(window)
     	{
-    		case 3:
+    		case 2:
+    		//	draw_sprite_ext(sprite_get("chai_fspecial_follow"), 0, x+5*spr_dir, y-char_height/2, point_distance(x+5*spr_dir, y-char_height/2, fspec_charge, y-char_height/2), 1, 0, c_white, .3);
     			spawn_base_dust(x - 8 * spr_dir, y, "dash_start", 0, 0, 3, 0);
-    		//	draw_sprite_ext(sprite_get("chai_fspecial_follow"), 0, x+34*spr_dir, y-char_height/2, 1, 1, 0, c_white, .6);
+    		
+    			break;
+    		
+    		case 3:
+    			glowEffect2();
+    			spawn_base_dust(x - 8 * spr_dir, y, "dash_start", 0, 0, 3, 0);
     			break;
     		case 4: case 5:
     			spawn_base_dust(x - 8 * spr_dir, y, "dash_stop", 0, 0, 4, 0);
@@ -268,6 +306,17 @@ gpu_set_blendmode(bm_normal);
 	shader_end();
 }
 //written by muno
+
+#define glowEffect2
+{
+	shader_start();
+	gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x , y - get_gameplay_time() % 10  , spr_dir*2, 2, 0 , -1 , .6 - (get_gameplay_time() % 10/20));
+        draw_sprite_ext(sprite_index, image_index , x , y   , spr_dir*2, 2, 0 , -1 , 0.6);
+gpu_set_blendmode(bm_normal);
+	shader_end();
+}
+
 #define rectDraw(x1, y1, width, height, color)
 {
     draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);
@@ -370,6 +419,102 @@ var win_time = argument_count > 6 ? argument[6] : 0;
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        
+        patch_note_title[i] = "Version 2.0 NEW UPDATE - 12/26/2023"
+        patch_note_text[i++] = 
+        "Version 2.0 12/26/2023
+---
+
+Surprise Holiday update! Thanks a lot to all of you that played Chai! Back from my dev break so here's some Chai fixes and changes that I really wanted to improve on but couldn't before.
+
+Taking in all the feedback I've been seeing over the past few months, I've tried to incorporate and adjust as much as I could in this brand new update with the intent to fix all the issues that have been brought up with the character!
+
+Balance Changes:
+
+FStrong:
+	- Knockback decreased from 9 to 6
+	- Beat hit damage decreased by 1 (12 to 11)
+	- Beat hit knockback decreased by 2
+
+Ftilt:
+	- First and Second hit knockback reduced by 1
+	- Final hit knockback reduced from 6 to 5
+Dtilt:
+	- Decreased distance moved (HSpeed from 3 to 2)
+	- Knockback angle changed from 110 to 90
+	- Knockback reduced from 5 to 4
+UpAir:
+	- Active frames increased from 4 to 5
+	- Increased hitbox X position (0 to -7)
+	- Increased hitbox Y position (-68 to -75)
+	- Increased height from 47 to 49
+
+Nair:
+	- Adjusted vertical height when canceling hits into a jump (VSP changed from -5 to -3)
+Fair:
+	- Decreased damage on first and second hit by 1
+	- Decreased damage on final hit by 2
+
+DAttack:
+
+NSpecial:
+	- ** Added a transparent tether chain while aiming to help visualize where the magnet hand will go! 
+	- ** Added new fixed crosshair sprite to address mixel issue
+	- ** Added new sprite to show when crosshair is locked onto opponent
+
+	- ** Added falling momentum when activating special
+	- ** Added function where when Chai latches onto an enemy but hits a wall, instead of being sent into pratfall he wall techs
+	- Lowered aiming sensitivity slightly for easier aiming
+	- Moved starting position of Magnet Hand closer to Chai (Moved by 6 pixels closer)
+	- Increased cooldown slightly (120 > 125)
+	- Increased time duration (wind-up) before shooting projectile (from 27 frames to 55 frames) 
+	- Decreased height Chai jumps when flying towards enemy (-9 to -7)
+	- Increased hitpause on 2nd landing hitbox from 10 to 13
+	- Increased hitbox on crosshair and projectile to make latching onto opponents much easier
+	- Adjusted projectile distance range so it doesn't exceed past its crosshair
+
+FSpecial:
+	- ** When inputting attacks for the follow-up, Chai now faces backwards to attack enemies behind him
+	- ** Inputting the Down + Attack follow-up now uses the last hit of Chai's Ftilt
+	- ** Now if FSpecial isn't charged to a certain point (2 bell clicks), Chai will only strike once
+
+	- Increased start up time from 10 frames to 13 frames
+	- Increased hitpause on final hit from 15 to 18
+	- Decreased active hitbox time by 4 frames (15 to 11)
+	- Decreased damage on first two hits by 3
+	- Decreased damage on final hit by 3 (7 to 4)
+	- Additional horizontal speed given by Beat Hit version decreased from 3 to 2
+
+DSpecial:
+	- Lowered frequency of voice lines so it doesn't get too overbearing when spamming attacks
+	- Lowered volume of overall SFX
+	- Adjusted activation hitbox to actually match the sprite
+	- Decreased hitpause on Macaron attack (from 10 to 8)
+	- Decreased knockback on Macaron attack (from 7 to 5)
+	- Decreased knockback on Korsica wind projectiles (from 6 to 4)
+
+Adjusted hitboxes for attacks to better match their animations:
+	- Jab: 
+	- FTilt
+	- FStrong:
+		First hitbox increased and placed closer to Chai
+		Second hitbox moved closer to Chai and increased width slightly (70 to 73)
+	- FSpecial:
+		Hitbox y-position lowered by 8 pixels
+=============================
+
+Bug / Aesthetic changes:
+
+Upscaled Assist HUD to clean up the remaining mixel issues
+
+Added dust cloud effects for using NSpecial (in Air) and FSpecial (Charging)
+
+Adjusted offsets for sprites that seemed off to better match their animations
+
+**Fixed mixels on most if not all sprites (HUD, Projectiles, USpecial Beam, etc)
+
+===========================
+"
         
         patch_note_title[i] = "8/8/2023 - Music BPM Hot Fix"
         patch_note_text[i++] = 

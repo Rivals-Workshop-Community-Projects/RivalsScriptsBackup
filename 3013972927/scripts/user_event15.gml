@@ -397,6 +397,96 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.0 NEW BIG UPDATE", "12/26/2023");
+initHeader("Version 2.0 NEW BIG UPDATE");
+initSection("** = Major change
+Surprise Holiday update! Thanks a lot to all of you that played Chai! Back from my dev break so here's some Chai fixes and changes that I really wanted to improve on but couldn't before.
+
+Taking in all the feedback I've been seeing over the past few months, I've tried to incorporate and adjust as much as I could in this brand new update with the intent to fix all the issues that have been brought up with the character!");
+
+initHeader("Balance Changes:");
+initSection("
+NSpecial:
+	- ** Added a transparent tether chain while aiming to help visualize where the magnet hand will go! 
+	- ** Added new fixed crosshair sprite to address mixel issue
+	- ** Added new sprite to show when crosshair is locked onto opponent
+
+	- ** Added falling momentum when activating special
+	- ** Added function where when Chai latches onto an enemy but hits a wall, instead of being sent into pratfall he wall techs
+	- Moved starting position of Magnet Hand closer to Chai (Moved by 6 pixels closer)
+	- Increased cooldown slightly (120 > 125)
+	- Increased time duration (wind-up) before shooting projectile (from 27 frames to 55 frames) 
+	- Decreased height Chai jumps when flying towards enemy (-9 to -7)
+	- Increased hitpause on 2nd landing hitbox from 10 to 13
+	- Increased hitbox on crosshair and projectile to make latching onto opponents much easier
+	- Adjusted projectile distance range so it doesn't exceed past its crosshair
+
+FSpecial:
+	- ** When inputting attacks for the follow-up, Chai now faces backwards to attack enemies behind him
+	- ** Inputting the Down + Attack follow-up now uses the last hit of Chai's Ftilt
+	- ** Now if FSpecial isn't charged to a certain point (2 bell clicks), Chai will only strike once
+
+	- Increased hitpause on final hit from 15 to 18
+	- Decreased active hitbox time by 4 frames (15 to 11)
+	- Decreased damage on first two hits by 3
+	- Decreased damage on final hit by 3 (7 to 4)
+	- Additional horizontal speed given by Beat Hit version decreased from 3 to 2
+
+DSpecial:
+	- Lowered frequency of voice lines so it doesn't get too overbearing when spamming attacks
+	- Lowered volume of overall SFX
+	- Adjusted activation hitbox to actually match the sprite
+	- Decreased hitpause on Macaron attack (from 10 to 8)
+	- Decreased knockback on Macaron attack (from 7 to 5)
+	- Decreased knockback on Korsica wind projectiles (from 6 to 4)
+
+Adjusted hitboxes for attacks to better match their animations:
+	- Jab: 
+	- FTilt
+	- FStrong:
+		First hitbox increased and placed closer to Chai
+		Second hitbox moved closer to Chai and increased width slightly (70 to 73)
+	- FSpecial:
+		Hitbox y-position lowered by 8 pixels
+=============================");
+
+initHeader("Balance Changes:");
+initSection("
+FStrong:
+	- Knockback decreased from 9 to 6
+	- Beat hit damage decreased by 1 (12 to 11)
+	- Beat hit knockback decreased by 2
+
+Ftilt:
+	- First and Second hit knockback reduced by 1
+	- Final hit knockback reduced from 6 to 5
+Dtilt:
+	- Decreased distance moved (HSpeed from 3 to 2)
+	- Knockback angle changed from 110 to 90
+	- Knockback reduced from 5 to 4
+UpAir:
+	- Active frames increased from 4 to 5
+	- Increased hitbox X position (0 to -7)
+	- Increased hitbox Y position (-68 to -75)
+	- Increased height from 47 to 49
+
+Nair:
+	- Adjusted vertical height when canceling hits into a jump (VSP changed from -5 to -3)
+Fair:
+	- Decreased damage on first and second hit by 1
+	- Decreased damage on final hit by 2");
+
+initHeader("Bug / Aesthetic fixes:");
+initSection("** = Major change
+
+Upscaled Assist HUD to clean up the remaining mixel issues
+
+Adjusted offsets for sprites that seemed off to better match their animations
+
+**Fixed mixels on most if not all sprites (HUD, Projectiles, USpecial Beam, etc)
+
+===========================");
+
 initPatch("1.9", "8/20/2023");
 initHeader("Another UPDATE (Small but Big)");
 initSection("*** = Major change

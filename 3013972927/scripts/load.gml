@@ -14,25 +14,25 @@ sprite_change_offset("dashstop",        25, 37);
 sprite_change_offset("dashturn",        25, 37);
 
 //air movement
-sprite_change_offset("jumpstart",       25, 37);
-sprite_change_offset("jump",            25, 37);
-sprite_change_offset("doublejump",      25, 37);
-sprite_change_offset("walljump",        25, 37);
-sprite_change_offset("pratfall",        25, 37);
-sprite_change_offset("land",            25, 37);
-sprite_change_offset("landinglag",      25, 37);
+sprite_change_offset("jumpstart",       22, 37);
+sprite_change_offset("jump",            22, 37);
+sprite_change_offset("doublejump",      22, 37);
+sprite_change_offset("walljump",        22, 37);
+sprite_change_offset("pratfall",        19, 37);
+sprite_change_offset("land",            29, 37);
+sprite_change_offset("landinglag",      29, 37);
 sprite_change_offset("airdodge_back",      25, 37);
 sprite_change_offset("airdodge_up",      25, 37);
 sprite_change_offset("airdodge_down",      25, 37);
 sprite_change_offset("airdodge",      25, 37);
 
 //parry button
-sprite_change_offset("parry",           25, 37);
+sprite_change_offset("parry",           20, 37);
 sprite_change_offset("roll_forward",    25, 37);
 sprite_change_offset("roll_backward",   25, 37);
 sprite_change_offset("airdodge",        25, 37);
-sprite_change_offset("waveland",        25, 37);
-sprite_change_offset("tech",            25, 37);
+sprite_change_offset("waveland",        27, 37);
+sprite_change_offset("tech",            27, 37);
 
 //hurt
 sprite_change_offset("hurt",            25, 37); //default hurt names: bighurt, hurt, downhurt, bouncehurt, uphurt, hurtground
@@ -54,7 +54,7 @@ sprite_change_offset("ustrong",         25, 59, true);
 sprite_change_offset("fstrong",         29, 45, true);
 sprite_change_offset("dstrong",         29, 59, true);
 sprite_change_offset("nair",            25, 49, true);
-sprite_change_offset("uair",            35, 49, true);
+sprite_change_offset("uair",            35, 53, true);
 sprite_change_offset("fair",            23, 47, true);
 sprite_change_offset("bair",            40, 47, true);
 sprite_change_offset("dair",            25, 49, true);
@@ -95,7 +95,7 @@ sprite_change_offset("ustrong_hurt",         50, 118, true);
 sprite_change_offset("fstrong_hurt",         58, 90, true);
 sprite_change_offset("dstrong_hurt",         58, 118, true);
 sprite_change_offset("nair_hurt",            50, 98, true);
-sprite_change_offset("uair_hurt",            70, 98, true);
+sprite_change_offset("uair_hurt",            70, 106, true);
 sprite_change_offset("fair_hurt",            46, 94, true);
 sprite_change_offset("bair_hurt",            80, 94, true);
 sprite_change_offset("dair_hurt",            50, 98, true);
@@ -107,8 +107,8 @@ sprite_change_offset("nspecial_air_hurt",    50, 118, true);
 sprite_change_offset("uspecial_hurt",        50, 115, true);
 sprite_change_offset("fspecial_hurt",        50, 118, true);
 sprite_change_offset("fspecial_air_hurt",    50, 118, true);
-sprite_change_offset("dspecial_hurt",        50, 114, true);
-sprite_change_offset("dspecial_air_hurt",    50, 114, true);
+sprite_change_offset("dspecial_hurt",        50, 105, true);
+sprite_change_offset("dspecial_air_hurt",    50, 105, true);
 
 //effects
 sprite_change_offset("fx_pow_hit1",         64, 64);
@@ -120,15 +120,16 @@ sprite_change_offset("fx_nspec_proj1",      64, 32);
 sprite_change_offset("fx_nspec_proj2",      96, 48);
 sprite_change_offset("fx_nspec_proj3",      96, 64);
 sprite_change_offset("nspec_proj3_mask",    32, 32);
-sprite_change_offset("fx_crosshair",  15, 15);
+sprite_change_offset("fx_crosshair",  31, 31);
+sprite_change_offset("fx_crosshair_true",  31, 31);
+sprite_change_offset("note1v2",  0, 0);
 sprite_change_offset("fx_fspec_tether",     0, 26);
 sprite_change_offset("nspecial_proj",     0, 26);
 sprite_change_offset("fx_dspec_spawn",      64, 64);
 
 sprite_change_offset("fx_grapple_meter_back",      0, 0);
 sprite_change_offset("fx_grapple_meter_mask",      0, 0);
-sprite_change_offset("chai_assist_hud_mask",      0, 0);
-sprite_change_offset("chai_assist_hud_mask",      0, 0);
+sprite_change_offset("chai_assist_hud_mask_2",      -3, 0);
 sprite_change_offset("beat_center",      0, 0);
 sprite_change_offset("beat_waves",      0, 0);
 sprite_change_offset("beat_meter",      0, 0);

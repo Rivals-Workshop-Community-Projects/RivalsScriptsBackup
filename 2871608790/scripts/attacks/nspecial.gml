@@ -252,7 +252,7 @@ hitbox_num ++; { //scissors
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
     set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
     set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
     set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_ARSlash"));
@@ -337,7 +337,7 @@ hitbox_num ++; { //soap blast (it's just the bomb explosion copied)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 9);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9);
@@ -361,7 +361,7 @@ hitbox_num ++; { //car hit detection (still the banana one)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 32);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 1);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60); //this value doesn't matter because it grabs players up
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 1); //this value doesn't matter because it has a constant speed for the grab
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
@@ -382,7 +382,7 @@ hitbox_num ++; { //car blast (it's just the bomb explosion copied)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 60);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 60);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 3);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);

@@ -68,7 +68,7 @@ switch (attack)
 						    spawn_hit_fx(x + 30,y-7, 303)
 						    sound_play(sound_get("chai_cymbal_2"));
 						    set_state(PS_DOUBLE_JUMP);
-						    vsp = -5;
+						    vsp = -3;
 						    hsp = hsp * 0.25;
 						    destroy_hitboxes();
 						    jump_canceled_nair = true;
@@ -163,7 +163,7 @@ switch (attack)
 				if (window_timer == 1) sound_stop(cur_loop_sound); // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				break;
 			case 4:
-				if (window_timer == window_end) spawn_hit_fx(x + 84 * spr_dir, y - 17, fx_pow_hit[0]); //last hit // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+				if (window_timer == window_end) spawn_hit_fx(x + 69 * spr_dir, y - 17, fx_pow_hit[0]); //last hit // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				break;
 		}
 		break;
@@ -320,7 +320,7 @@ switch (attack)
 				{
 				window = 2;
 				startMove = false;
-				print("Instant shot");
+				// print("Instant shot");
 				}
 			}
 			
@@ -347,7 +347,7 @@ switch (attack)
 	                    spr_dir = 1;
 	                }
 	                
-	                nspec_angle_new += 0.66*angle_difference(joy_dir, nspec_angle_new);
+	                nspec_angle_new += 0.33*angle_difference(joy_dir, nspec_angle_new);
 				}
 			real_angle = nspec_angle_new;               
 			nspec_angle = real_angle;
@@ -365,8 +365,9 @@ switch (attack)
 							fspec_aim = 1;
 						}
 					}
-				hsp =0; 
-				vsp =0;
+			if vsp > 0 vsp /= 1.3
+			    vsp /= 1.25
+			    hsp /= 1.2
 				break;
 			case 3: //throw windup (check is on update.gml)
 				vsp = 0;
@@ -375,7 +376,7 @@ switch (attack)
 			case 4: //throwing tether
 				vsp = 0;
 				hsp = 0;
-				move_cooldown[attack] = 120;
+				move_cooldown[attack] = 125;
 				if (window_timer == 1)  // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 					{
 						var grab_offset = 0;
@@ -384,7 +385,7 @@ switch (attack)
 							grab_offset  = -30;
 						}
 						
-						var grapplehook = create_hitbox(attack, 2, x + (34*spr_dir)+grab_offset, y - 40); //spawn hitbox on the recorded position
+						var grapplehook = create_hitbox(attack, 2, x + (26*spr_dir)+grab_offset, y - 38); //spawn hitbox on the recorded position
 						var grapple_spd = 26;
 						var grapple_ang = real_angle;
 						grapplehook.hsp = lengthdir_x(grapple_spd,grapple_ang);
@@ -448,7 +449,7 @@ switch (attack)
 							spawn_hit_fx(x + hsp, y - char_height / 2, get_hitbox_value(attack, 1, HG_VISUAL_EFFECT));
 						}
 						
-						set_state(!has_hit ? PS_PRATFALL : PS_IDLE_AIR);
+						set_state(!has_hit ? PS_WALL_TECH: PS_IDLE_AIR);
 
 						if (my_grab_id != noone)
 						{
@@ -459,7 +460,7 @@ switch (attack)
 					else if ((spr_dir && x > nspec_tether_pos[0] || -spr_dir && x < nspec_tether_pos[0]) && free) //used for below platform tethering mostly
 					{
 						hsp /= 8;
-						vsp = -9;
+						vsp = -7;
 						set_state(PS_IDLE_AIR);
 					}
 				}
@@ -495,6 +496,7 @@ switch (attack)
 				can_move = false;
 				hsp = 0;
 				vsp = clamp(vsp, vsp, 0);
+
 				
 				if (!joy_pad_idle) 
 				{
@@ -662,15 +664,16 @@ switch (attack)
 			can_jump = true;
 			//charge sfx	
 			if window_timer == 1 && !hitpause {
-				sound_play(sound_get("chai_cymbal1"),false,noone,1.2);
+				sound_play(sound_get("chai_cymbal1"),false,noone,1.4);
 			}
 		        if (special_down && chargeAmount < 50 && !shield_pressed)
 			    {
 			    chargeAmount += 1;
+			    fspec_charge = chargeAmount;
 		        }
 			else
 			{
-			    set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6 + (chargeAmount / 10));
+			    set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 3 + (chargeAmount / 10));
 			    
 			    /*
 			    if chargeAmount < 30 {
@@ -686,13 +689,18 @@ switch (attack)
 					hit_onBeat = true;
 					sound_play(sound_get("chai_clap2"));
 					sound_play(beat_hit_sfx[4],0,0,1);
-					additionHSP = 3;
-					set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 10);
+					additionHSP = 2;
+					set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 4);
 					set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 18);
 					set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 320);
 					}
-					
+				
 			    window = 3;
+			    
+			    if(chargeAmount < 25)
+				{
+					window = 4;
+				}
 		        window_timer = 0;
 		        hsp = (13 + (chargeAmount / 3))*spr_dir+additionHSP;
 			}
@@ -717,6 +725,7 @@ switch (attack)
 		    	if has_hit && window == 4 && window_timer > 2 && !hitpause {
 		    		if up_down && !down_down {
 		    			attack_end()
+		    			spr_dir = -spr_dir;
 		    			set_attack(AT_UTILT)
 		    			window = 1
 		    			window_timer = 0
@@ -724,13 +733,15 @@ switch (attack)
 		    		if down_down && !up_down  {
 		    			attack_end()
 		    			if !free {
-		    			hsp = 2*spr_dir 
+		    			hsp = 2*spr_dir
+		    			spr_dir = -spr_dir;
 		    			set_attack(AT_FTILT)
-		    			window = 1
+		    			window = 7
 		    			window_timer = 0
 		    			} else {
 		    			vsp = -4
-		    			hsp = 2*spr_dir 
+		    			hsp = 2*spr_dir
+		    			spr_dir = -spr_dir;
 		    			set_attack(AT_DAIR)
 		    			window = 1
 		    			window_timer = 6	

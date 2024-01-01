@@ -654,9 +654,9 @@ if !array_equals(phone_offscreen, []){
 				else if off_d idx = 6;
 				
 				if idx != noone{
-					draw_sprite_ext(spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, get_player_hud_color(player), 1); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+					draw_sprite_ext(spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, get_player_hud_color(player), 1); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
 					with other shader_start();
-					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, c_white, 1); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 2, 2, 0, c_white, 1); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
 					with other shader_end();
 				}
 			}

@@ -70,7 +70,7 @@ if(window_timer >= 0 )
                                             swing2.spr_dir = spr_dir;
                                             swing2.draw_xscale = spr_dir;
                                             swing2.hsp = 27 * spr_dir;
-                                            sound_play(pep_atk_sfx_1[1]);
+                                            sound_play(pep_atk_sfx_1[1],0,0,.3,1);
 
     
     
@@ -88,7 +88,7 @@ if(window_timer >= 0 )
                                             swing2.spr_dir = spr_dir;
                                             swing2.draw_xscale = spr_dir;
                                             swing2.hsp = 23 * spr_dir;
-                                            sound_play(pep_atk_sfx_1[0]);
+                                            sound_play(pep_atk_sfx_1[0],0,0,.3,1);
                                     }
                                 }
                                 break;
@@ -109,7 +109,7 @@ if(window_timer >= 0 )
                                             swing2.spr_dir = spr_dir;
                                             swing2.draw_xscale = spr_dir;
                                             swing2.hsp = 27 * spr_dir;
-                                            sound_play(pep_atk_sfx_1[1]);
+                                            sound_play(pep_atk_sfx_1[1],0,0,.3,1);
     
                                     }
                                 }
@@ -125,7 +125,7 @@ if(window_timer >= 0 )
                                             swing2.spr_dir = spr_dir;
                                             swing2.draw_xscale = spr_dir;
                                             swing2.hsp = 23 * spr_dir;
-                                            sound_play(pep_atk_sfx_1[0]);
+                                            sound_play(pep_atk_sfx_1[0],0,0,.3,1);
     
                                     }
                                 }
@@ -217,11 +217,11 @@ if(window_timer >= 0 )
                                     switch(fxindex)
                                     {
                                         case 0:
-                                        sound_play(mac_atk_sfx_1[0]);
+                                        sound_play(mac_atk_sfx_1[0],0,0,.3,1);
                                         break;
                                         
                                         case 1:
-                                        sound_play(mac_atk_sfx_2[0]);
+                                        sound_play(mac_atk_sfx_2[0],0,0,.3,1);
                                         break;
                                     }
                                     
@@ -249,11 +249,11 @@ if(window_timer >= 0 )
                                     switch(fxindex)
                                     {
                                         case 0:
-                                        sound_play(mac_atk_sfx_1[1]);
+                                        sound_play(mac_atk_sfx_1[1],0,0,.3,1);
                                         break;
                                         
                                         case 1:
-                                        sound_play(mac_atk_sfx_2[1]);
+                                        sound_play(mac_atk_sfx_2[1],0,0,.3,1);
                                         break;
                                     }
                                     }
@@ -361,12 +361,12 @@ if(window_timer >= 0 )
                                         switch(fxindex)
                                         {
                                             case 0:
-                                            sound_play(kor_atk_sfx_1[0]);
+                                            sound_play(kor_atk_sfx_1[0],0,0,.3,1);
                                             swing.hsp = 20 * spr_dir;
                                             break;
                                             
                                             case 1:
-                                            sound_play(kor_atk_sfx_2[0]);
+                                            sound_play(kor_atk_sfx_2[0],0,0,.3,1);
                                             swing.hsp = 20 * spr_dir;
                                             break;
                                         }
@@ -394,12 +394,12 @@ if(window_timer >= 0 )
                                         switch(fxindex)
                                         {
                                             case 0:
-                                            sound_play(kor_atk_sfx_1[1]);
+                                            sound_play(kor_atk_sfx_1[1],0,0,.3,1);
                                             swing.hsp = 20 * spr_dir;
                                             break;
                                             
                                             case 1:
-                                            sound_play(kor_atk_sfx_2[1]);
+                                            sound_play(kor_atk_sfx_2[1],0,0,.3,1);
                                             swing.hsp = 20 * spr_dir;
                                             break;
                                         }

@@ -35,8 +35,15 @@ if (!chai_handled_victory_quote)
         }
         else if ("chai_victory_quote" in self)
         {
-            data.priority = 2;
-            data.quote = chai_victory_quote;
+            var builtin_quote = try_get_quote(url);
+          //  var builtin_icon = try_get_icon(url);
+          //  data.icon = builtin_icon;
+            if (string_length(builtin_quote) > 0)
+            {
+                data.priority = 1;
+                data.quote = builtin_quote;
+            }
+            init_shader();
         }
         else
         {
@@ -71,15 +78,19 @@ if (!chai_handled_victory_quote)
     switch (char_url)
     {
         case "2815765061": // Scott Pilgrim
-	    quote = "I feel like we always seem to get mixed up with one another";
+	    quote = "You once were a rockstar, now you've just took off!";
 	    break;
 	    
 	    case "2843521167": // Pastelle
-	    quote = "Looks like she didn't get... the point! Eh?";
+	    quote = "Looks like she didn't get... the point! Eh? Eh??";
 	    break;
 	    
 	    case "2983344228": // Kiku
 	    quote = "With those boxing skills, I think you and Rekka would get along just fine! ...If she was still here that is.";
+	    break;
+	    
+	    case "3018305948": // Android 17
+	    quote = "So are there really like 17 of you or is that number just for show?";
 	    break;
 	    
         default: break;

@@ -323,53 +323,52 @@ if instance_exists(self){
     }
 }
 #define stronginteraction()
-var detected_object = instance_place(x, y, pHitBox);
 
-if (detected_object != noone and detected_object.player_id.url == player_id.url){
-	if ((detected_object.attack == AT_FSTRONG and detected_object.hbox_num == 5) or (detected_object.attack == AT_USTRONG and detected_object.hbox_num == 2) or (detected_object.attack == AT_DSTRONG and (detected_object.hbox_num == 2 or detected_object.hbox_num == 5))){
+if (place_meeting(x, y, pHitBox) and pHitBox.player_id.url == player_id.url){
+	if ((pHitBox.attack == AT_FSTRONG and pHitBox.hbox_num == 5) or (pHitBox.attack == AT_USTRONG and pHitBox.hbox_num == 2) or (pHitBox.attack == AT_DSTRONG and (pHitBox.hbox_num == 2 or pHitBox.hbox_num == 5))){
 	    // Detect which strong
-	    if ((detected_object.attack == AT_FSTRONG)){
-	        x = detected_object.player_id.x + (detected_object.x_pos);
-	        y = detected_object.player_id.y + detected_object.y_pos;
+	    if ((pHitBox.attack == AT_FSTRONG)){
+	        x = pHitBox.player_id.x + (pHitBox.x_pos);
+	        y = pHitBox.player_id.y + pHitBox.y_pos;
 	    }
-	    if ((detected_object.attack == AT_DSTRONG)){
-	        if detected_object.hbox_num == 2{
-	            x = detected_object.player_id.x + (detected_object.x_pos);
+	    if ((pHitBox.attack == AT_DSTRONG)){
+	        if pHitBox.hbox_num == 2{
+	            x = pHitBox.player_id.x + (pHitBox.x_pos);
 	        } else {
-	            x = detected_object.player_id.x + (detected_object.x_pos);
+	            x = pHitBox.player_id.x + (pHitBox.x_pos);
 	        }
-	        y = detected_object.player_id.y + detected_object.y_pos;
+	        y = pHitBox.player_id.y + pHitBox.y_pos;
 	    }
-	    if ((detected_object.attack == AT_USTRONG)){
-	        x = detected_object.player_id.x + (detected_object.x_pos);
-	        y = detected_object.player_id.y + detected_object.y_pos;
+	    if ((pHitBox.attack == AT_USTRONG)){
+	        x = pHitBox.player_id.x + (pHitBox.x_pos);
+	        y = pHitBox.player_id.y + pHitBox.y_pos;
 	    }
 	    // See if it's polite
-	    if detected_object.effect != 9{
-	        if detected_object.player_id.has_hit_player == false{
-	            hitstop = ceil((get_hitstop_formula(0, detected_object.damage, detected_object.hitpause, 0, 0)));
+	    if pHitBox.effect != 9{
+	        if pHitBox.player_id.has_hit_player == false{
+	            hitstop = ceil((get_hitstop_formula(0, pHitBox.damage, pHitBox.hitpause, 0, 0)));
 	        }
 	    } else {
 	        hitstop = 0;
 	    }
 	    // play sound and effect
-	    sound_play(detected_object.sound_effect);
+	    sound_play(pHitBox.sound_effect);
 	    // check the hit lockout
-	    if detected_object.no_other_hit != 0{
-	        hit_cool = detected_object.no_other_hit;
+	    if pHitBox.no_other_hit != 0{
+	        hit_cool = pHitBox.no_other_hit;
 	    } else {
-	        hit_cool = ((detected_object.length - detected_object.hitbox_timer));
+	        hit_cool = ((pHitBox.length - pHitBox.hitbox_timer));
 	    }
 	    // check the attack
-	    player_attack = detected_object.attack;
+	    player_attack = pHitBox.attack;
 	    // sprite
 	    sprite_index = spr_bubble_pop;
 	    state = 4;
 	    state_timer = 0;
 	    // make changes :)
-	    player_id.last_player = detected_object.player;
-	    player_id.last_attack = detected_object.attack;
-	    player_id.last_hbox_num = detected_object.hbox_num;
+	    player_id.last_player = pHitBox.player;
+	    player_id.last_attack = pHitBox.attack;
+	    player_id.last_hbox_num = pHitBox.hbox_num;
 	}
 }
 

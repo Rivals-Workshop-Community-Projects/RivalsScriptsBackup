@@ -274,6 +274,7 @@ var uspec_speed = 10;
 fspec_beat_hit = false;
 fspec_init_x = 0;
 fspec_init_y = 0;
+fspec_charge = 0;
 
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
@@ -355,7 +356,7 @@ dust_effect = [
 ];
 
 note_effect = [
-    hit_fx_create(sprite_get("note1v"), 20)
+    hit_fx_create(sprite_get("note1v2"), 20)
     ];
     
 beat_hit_sfx = [
@@ -471,6 +472,7 @@ fspec_aim = 0; //-1 = up | 0 = mid | 1 = down
 fspec_speed = 0;
 nspec_angle = 20;
 nspec_found_target = false;
+nspec_on_target = false;
 nspec_tether_pos = [0, 0]; //x, y - should be used for the drawing stuf, as well as the positions the hitbox should spawn
 test_angle = 0;
 real_angle = 0;
