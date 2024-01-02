@@ -98,6 +98,7 @@ set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_FTILT, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FTILT, 3, HG_THROWS_ROCK, 0);
 
 // Wave Final
@@ -128,7 +129,8 @@ set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_PLASMA_SAFE, true);
-//set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FTILT, 4, HG_THROWS_ROCK, 0);
 set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_FTILT, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

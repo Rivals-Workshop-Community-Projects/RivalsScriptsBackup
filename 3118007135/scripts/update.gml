@@ -21,7 +21,7 @@ if get_gameplay_time() <= 120{
 
 #region // cringe ass hfx stuff
 with hit_fx_obj if player_id == other {
-	if hit_fx == other.hfx_waves_small or hit_fx == other.hfx_yoyo_small or hit_fx == other.hfx_yoyo_big or hit_fx == other.hfx_yoyo_huge or hit_fx == other.hfx_waves_big or hit_fx == other.hfx_waves_huge{
+	if hit_fx == other.vfx_sweetspot or hit_fx == other.hfx_waves_small or hit_fx == other.hfx_yoyo_small or hit_fx == other.hfx_yoyo_big or hit_fx == other.hfx_yoyo_huge or hit_fx == other.hfx_waves_big or hit_fx == other.hfx_waves_huge{
 		depth = player_id.depth-1;
 	}
 }
