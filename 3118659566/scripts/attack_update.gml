@@ -122,7 +122,7 @@ switch(attack){
 		can_fast_fall = false;
 		
 			if window == 4 {
-			if (strong_down || (left_strong_pressed || right_strong_pressed)) {
+			if (strong_down || (left_strong_pressed || right_strong_pressed) || attack_down || special_down) {
 			window = 5;
 			window_timer = 0;
 			}
@@ -137,7 +137,9 @@ switch(attack){
 			if window_timer == 15 {
 				vsp = -6;
 				hsp = -4 * spr_dir;
-				airletterID = create_hitbox(AT_NSPECIAL_AIR, 1, x + (spr_dir * 18), y - 40);
+				airletter3ID = create_hitbox(AT_NSPECIAL_AIR, 3, x + (spr_dir * 42), y - 46);
+				sound_play(sound_get("lettertoss"))
+				sound_play(asset_get("sfx_swipe_heavy2"))
 			}
 			
 			if window_timer == 36 {
@@ -148,25 +150,101 @@ switch(attack){
 	break;
 	
 	case AT_NSPECIAL:
-		if window == 2 && window_timer == 1 {
-			letterID = create_hitbox(AT_NSPECIAL, 1, x + (spr_dir * 40), y - 40);
+		if window == 1 {
+			if window_timer == 1 {
+				nspec_timer = 0;
+				nspec_charge = 1;
+			}
+		}
+		
+		if window == 2 {
+			nspec_timer++;
+			if nspec_timer == 1 && special_down {
+				nspec_charge = 1;
+			} else if nspec_timer == 10 && special_down {
+				nspec_charge = 2;
+	         sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));	
+			} else if nspec_timer == 20 && special_down {
+				nspec_charge = 3;
+	         sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));	
+			}
+		
+			if (window_timer > 4 && !special_down) || window_timer == 31 {
+				window = 3;
+				window_timer = 1;
+				switch(nspec_charge){
+					case 1:
+						letter1ID = create_hitbox(AT_NSPECIAL, 1, x + (spr_dir * 40), y - 40);
+					break;
+					case 2:
+						letter2ID = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 44), y - 44);
+					break;
+					case 3:
+						letter3ID = create_hitbox(AT_NSPECIAL, 3, x + (spr_dir * 48), y - 48);
+					break;
+				}
+			}
+		}
+
+		if window == 3 && window_timer == 1 {
+			sound_play(sound_get("lettertoss"))
+			sound_play(asset_get("sfx_swipe_heavy2"))
 		    move_cooldown[AT_NSPECIAL] = 45;
    		    move_cooldown[AT_NSPECIAL_AIR] = 45;
 		}
 	break;
 	
 	case AT_NSPECIAL_AIR:
+		if window == 1 {
+			if window_timer == 1 {
+				nspec_timer = 0;
+				nspec_charge = 1;
+			}
+		}
+		
+		if window == 2 {
+			nspec_timer++;
+			if nspec_timer == 4 && special_down {
+				nspec_charge = 1;
+			} else if nspec_timer == 19 && special_down {
+				nspec_charge = 2;
+	         sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));	
+			} else if nspec_timer == 29 && special_down {
+				nspec_charge = 3;
+	         sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));	
+			}
+		
+			if (window_timer > 4 && !special_down) || window_timer == 31 {
+				window = 3;
+				window_timer = 1;
+				switch(nspec_charge){
+					case 1:
+						airletter1ID = create_hitbox(AT_NSPECIAL_AIR, 1, x + (spr_dir * 40), y - 40);
+					break;
+					case 2:
+						airletter2ID = create_hitbox(AT_NSPECIAL_AIR, 2, x + (spr_dir * 44), y - 44);
+					break;
+					case 3:
+						airletter3ID = create_hitbox(AT_NSPECIAL_AIR, 3, x + (spr_dir * 48), y - 48);
+						vsp = -6;
+						hsp = -4 * spr_dir;					
+					break;
+				}
+			}
+		}
 
-		if window == 1 || window == 2 {
+		if window == 3 && window_timer == 1 {
+			sound_play(sound_get("lettertoss"))
+			sound_play(asset_get("sfx_swipe_heavy2"))
+		    move_cooldown[AT_NSPECIAL] = 45;
+   		    move_cooldown[AT_NSPECIAL_AIR] = 45;
+		}
+		if window == 1 || window == 2 || window == 3 {
 			if vsp > 4.5 {
 				vsp = 4.5;
 			}
 		}
-		if window == 2 && window_timer == 1 {
-			airletterID = create_hitbox(AT_NSPECIAL_AIR, 1, x + (spr_dir * 50), y - 40);
-		    move_cooldown[AT_NSPECIAL] = 45;
-		    move_cooldown[AT_NSPECIAL_AIR] = 45;
-		}
+
 		if attack == AT_NSPECIAL_AIR && attack != AT_NSPECIAL && !free {
 			var temp_window_timer = window_timer; 
 			attack = AT_NSPECIAL;
@@ -680,19 +758,18 @@ switch(attack){
 		can_jump = false;
 		mb_spin_hit = false;
 		mb_spinning = true;
-	
+
 		x = lerp(mailboxID.x, x + spr_dir * 0, .35);
 		y = lerp(mailboxID.y, y + 30, .35);
 
 		if window == 1 {
-
-			if (window_timer <= 5 || window_timer > 16) {
+			if (window_timer <= 4 || window_timer > 14) {
 				mailboxID.depth = depth + 1;
-			} else if (window_timer > 5 && window_timer <= 16) {
+			} else if (window_timer > 4 && window_timer <= 14) {
 				mailboxID.depth = depth - 1;
 			}
 
-		if window_timer == 16 {
+		if window_timer == 14 {
 			if !special_down {
 					if ((spr_dir = 1 && left_down) || (spr_dir = -1 && right_down)) {
 					spr_dir = spr_dir * -1;
@@ -756,7 +833,7 @@ switch(attack){
 					} 	
 				}
 			
-		if window_timer == 30 {
+		if window_timer == 27 {
 			if special_down {
 					window_timer = 1;
 						switch mailboxID.letters {
@@ -1002,6 +1079,7 @@ switch(attack){
 		if window == 1 {
 			can_move = false;
 			can_jump = false;
+			can_fast_fall = false;
 			can_shield = false;
 			can_wall_jump = false;
 
@@ -1009,16 +1087,16 @@ switch(attack){
 				if window_timer == 1 {
 					vault_letters = mailboxID.letters;
 				}
+			
+				if window_timer < 8 {
+					x = lerp(mailboxID.x, x, .45);
+					y = lerp(mailboxID.y, y - 64, .45);
+				} else if window_timer >= 8 {
+					x = mailboxID.x;
+					y = mailboxID.y - 55;
+				}
 			}
 			
-			if window_timer < 8 {
-				x = lerp(mailboxID.x, x, .45);
-				y = lerp(mailboxID.y, y - 64, .45);
-			} else if state_timer >= 8 {
-				x = mailboxID.x;
-				y = mailboxID.y - 55;
-			}
-		
 			switch (vault_letters){
 				case 0:
 					set_window_value(AT_VAULT, 2, AG_WINDOW_VSPEED, -8.5);
@@ -1030,7 +1108,7 @@ switch(attack){
 					set_window_value(AT_VAULT, 2, AG_WINDOW_VSPEED, -9.5);
 				break;
 				case 3:
-					set_window_value(AT_VAULT, 2, AG_WINDOW_VSPEED, -10);
+					set_window_value(AT_VAULT, 2, AG_WINDOW_VSPEED, -11.5);
 				break;
 			}
 			

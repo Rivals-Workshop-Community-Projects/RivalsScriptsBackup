@@ -168,9 +168,14 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 
 
 killarticles = false;
-letterID = 0;
-airletterID = 0;
-strongletterID = 0;
+nspec_timer = 0;
+nspec_charge = 0;
+letter1ID = 0;
+letter2ID = 0;
+letter3ID = 0;
+airletter1ID = 0;
+airletter2ID = 0;
+airletter3ID = 0;
 mailboxID = 0;
 lvl1projID = 0;
 lvl1proj_exploded = false;
@@ -202,12 +207,12 @@ vault_letters = 0;
 fspec_letter_timer = 0;
 
 //VFX
-feather_small_vfx = hit_fx_create( sprite_get( "feather_small_vfx" ), 20 );
+feather_small_vfx = hit_fx_create( sprite_get( "feather_small_vfx" ), 15 );
 stamp_vfx = hit_fx_create( sprite_get( "hammer_stamp_vfx" ), 48 );
 letter_vfx = hit_fx_create( sprite_get( "nspecial_proj_break" ), 35 );
 letter_big_vfx = hit_fx_create( sprite_get( "letter_big_vfx" ), 32 );
 letter_small_vfx = hit_fx_create( sprite_get( "letter_small_vfx" ), 22 );
-bag_big_vfx = hit_fx_create( sprite_get( "bag_big_vfx" ), 32 );
+bag_big_vfx = hit_fx_create( sprite_get( "bag_big_vfx" ), 24 );
 letter_add_vfx = hit_fx_create( sprite_get( "letter_add_vfx" ), 35 );
 feather_big_vfx = hit_fx_create( sprite_get( "feather_big_vfx" ), 40 );
 prop_destroy_vfx = hit_fx_create( sprite_get( "mb_air_propeller_destruct" ), 12 );
@@ -250,6 +255,7 @@ joy_pad_timer = 0;
 window_joy_pad = 0;
 tap_jumped = false;
 tap_djump = true;
+taptoggle = 0;
 //=============================================================
 // gravity flipfield variables
 

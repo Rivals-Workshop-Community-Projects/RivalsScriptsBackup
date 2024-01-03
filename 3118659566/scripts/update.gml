@@ -40,7 +40,7 @@ if state == PS_JUMPSQUAT || state == PS_FIRST_JUMP {
 
 if state == PS_DOUBLE_JUMP {
 	if state_timer == 1 {
-		if tap_jump_pressed {
+		if tap_jump_pressed && !(get_synced_var(player)) {
 			tap_jumped = true;	
 		}	
 	}

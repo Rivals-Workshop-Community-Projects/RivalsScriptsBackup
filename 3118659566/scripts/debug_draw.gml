@@ -13,4 +13,4 @@
 //draw_debug_text(x, y + 35, "explo1:" +string(explo1.player));
 //draw_debug_text(x, y + 35, "timer" +string(joy_pad_timer));
 //draw_debug_text(x, y + 55, "pad" +string(window_joy_pad));
-//draw_debug_text(x, y + 55, "tapjumped" +string(tap_jumped));
+//draw_debug_text(x, y + 35, "charge " +string(nspec_charge));

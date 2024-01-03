@@ -123,8 +123,12 @@ sprite_change_offset("mb_offscreen", 34, 17);
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_behind", 128, 190);
 
-sprite_change_offset("nspecial_proj", 128, 128);
-sprite_change_offset("nspecial_proj_angle", 128, 128);
+sprite_change_offset("nspecial_proj_lv1", 128, 128);
+sprite_change_offset("nspecial_proj_lv2", 128, 128);
+sprite_change_offset("nspecial_proj_lv3", 128, 128);
+sprite_change_offset("nspecial_proj_lv1_angle", 128, 128);
+sprite_change_offset("nspecial_proj_lv2_angle", 128, 128);
+sprite_change_offset("nspecial_proj_lv3_angle", 128, 128);
 sprite_change_offset("nspecial_proj_destroy", 128, 128);
 sprite_change_offset("nspecial_proj_break", 128, 128);
 sprite_change_offset("strongs_proj", 128, 128);
@@ -141,3 +145,4 @@ sprite_change_offset("letter_add_vfx", 126, 190);
 sprite_change_offset("prop_destroy_vfx", 160, 160);
 sprite_change_offset("fspecial_wind_vfx", 160, 160);
 sprite_change_offset("fspecial_letter_vfx", 160, 160);
+

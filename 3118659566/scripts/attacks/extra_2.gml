@@ -8,7 +8,7 @@ set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, asset_get("fspecial_turn_hurt"))
 
 
 //
-set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 31);
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_VSPEED_TYPE, 2);

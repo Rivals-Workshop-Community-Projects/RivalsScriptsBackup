@@ -8,11 +8,11 @@ set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("uspecial_air_hurt"));
 
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 14);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HSPEED, 0.2);
@@ -108,7 +108,7 @@ set_hitbox_value(AT_USPECIAL_2, 3, HG_DAMAGE, 5);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_ANGLE, 90); //292 
 //set_hitbox_value(AT_USPECIAL_2, 3, HG_ANGLE_FLIPPER, 9); //292 
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_BASE_KNOCKBACK, 8); //7
+set_hitbox_value(AT_USPECIAL_2, 3, HG_BASE_KNOCKBACK, 7); //7
 set_hitbox_value(AT_USPECIAL_2, 3, HG_KNOCKBACK_SCALING, .7); //7
 set_hitbox_value(AT_USPECIAL_2, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITPAUSE_SCALING, .6);
@@ -129,7 +129,7 @@ set_hitbox_value(AT_USPECIAL_2, 4, HG_DAMAGE, 5);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_ANGLE, 90); //292 
 //set_hitbox_value(AT_USPECIAL_2, 4, HG_ANGLE_FLIPPER, 9); //292 
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_BASE_KNOCKBACK, 8); //7
+set_hitbox_value(AT_USPECIAL_2, 4, HG_BASE_KNOCKBACK, 7); //7
 set_hitbox_value(AT_USPECIAL_2, 4, HG_KNOCKBACK_SCALING, .7); //7
 set_hitbox_value(AT_USPECIAL_2, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITPAUSE_SCALING, .6);

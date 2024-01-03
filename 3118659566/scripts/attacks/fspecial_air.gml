@@ -21,7 +21,7 @@ set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 12);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_VSPEED, -5);
 
-set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

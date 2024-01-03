@@ -1,29 +1,37 @@
 if (attack == AT_NSPECIAL || AT_NSPECIAL_AIR) && hbox_num == 1 {
     if !free {
         destroyed = true;
-        player_id.letterID = 0;
-        player_id.airletterID = 0;
+        player_id.letter1ID = 0;
+        player_id.letter2ID = 0;
+        player_id.letter3ID = 0;
+        player_id.airletter1ID = 0;
+        player_id.airletter2ID = 0;
+        player_id.airletter3ID = 0;
     }
 }
 
-if (attack == AT_NSPECIAL) && hbox_num == 1 {
+if (attack == AT_NSPECIAL) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) {
     hsp = hsp * 0.935;
     
     if (hitbox_timer == 29 || destroyed = true || !free ) {
         destroyed = true;
-        player_id.letterID = 0;
+        player_id.letter1ID = 0;
+        player_id.letter2ID = 0;
+        player_id.letter3ID = 0;
         var k = spawn_hit_fx( x- (0 * spr_dir), y , player_id.letter_vfx );
     	k.depth = depth + 1;
     }    
 }
 
-if (attack == AT_NSPECIAL_AIR) && hbox_num == 1 {
+if (attack == AT_NSPECIAL_AIR) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) {
     hsp = hsp * 0.95;
     vsp = vsp * 0.925;
     
     if (hitbox_timer == 29 || destroyed = true || !free) {
         destroyed = true;
-        player_id.airletterID = 0;
+        player_id.airletter1ID = 0;
+        player_id.airletter2ID = 0;
+        player_id.airletter3ID = 0;
         var k = spawn_hit_fx( x- (0 * spr_dir), y , player_id.letter_vfx );
     	k.depth = depth + 1;
     }    

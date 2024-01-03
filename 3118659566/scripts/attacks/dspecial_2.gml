@@ -6,10 +6,10 @@ set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("dspecial_act"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_act_hurt"));
 
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 11);
 //set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("whistle"));
 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 5);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_DAMAGE, 11);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 11);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITPAUSE_SCALING, 1);

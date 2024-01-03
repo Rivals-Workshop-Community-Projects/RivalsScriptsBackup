@@ -48,22 +48,52 @@ if (my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.id = lvl2projID) {
 	}
 }
 
-if letterID != 0 {
-	if letterID.has_hit {
-		letterID = 0;
-	}
-}
-
-if airletterID != 0 {
-	if airletterID.has_hit {
-		airletterID = 0;
-	}
-}
-
 
 //LETTER SMALL
- if (attack == AT_NSPECIAL) || (attack == AT_NSPECIAL_AIR || attack == AT_USTRONG) { 
-	if (letterID.has_hit || airletterID.has_hit) {
+if letter1ID != 0 {
+	if letter1ID.has_hit {
+		letter1ID = 0;
+		sound_play(sound_get("paperhith"));
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
+		k.depth = depth + 1;
+	}
+}
+if letter2ID != 0 {
+	if letter2ID.has_hit {
+		letter2ID = 0;
+		sound_play(sound_get("paperhith"));
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
+		k.depth = depth + 1;
+	}
+}
+if letter3ID != 0 {
+	if letter3ID.has_hit {
+		letter3ID = 0;
+		sound_play(sound_get("paperhith"));
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
+		k.depth = depth + 1;
+	}
+}
+if airletter1ID != 0 {
+	if airletter1ID.has_hit {
+		airletter1ID = 0;
+		sound_play(sound_get("paperhith"));
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
+		k.depth = depth + 1;
+	}
+}
+if airletter2ID != 0 {
+	if airletter2ID.has_hit {
+		airletter2ID = 0;
+		sound_play(sound_get("paperhith"));
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
+		k.depth = depth + 1;
+	}
+}
+if airletter3ID != 0 {
+	if airletter3ID.has_hit {
+		airletter3ID = 0;
+		sound_play(sound_get("paperhith"));
 		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 15), my_hitboxID.y - 25, letter_small_vfx);
 		k.depth = depth + 1;
 	}

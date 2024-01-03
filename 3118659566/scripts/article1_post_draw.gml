@@ -7,7 +7,7 @@ if get_match_setting(SET_HITBOX_VIS) {
     }
 }
 
-if ((state == 0 && letters = 0) || state == 8) && free {
+if (state == 8) && free {
     if spr_dir = 1 {
         draw_sprite_ext( sprite_get("mb_air_propeller"), propframes, x, y, 1, 1, 0, c_black, 0.5 );
     } else if spr_dir = -1 {
@@ -15,6 +15,6 @@ if ((state == 0 && letters = 0) || state == 8) && free {
     }
 }
 
-if ((state == 0 && letters = 0) || state == 8 || state == 1) {
+if (state == 8 || state == 1) {
     draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_black, 0.5);
 }
