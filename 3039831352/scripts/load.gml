@@ -71,7 +71,8 @@ sprite_change_offset("knux_dunk",       54, 32);
 sprite_change_offset("runeC",           24, 45, true);
 sprite_change_offset("runeH",           24, 47, true);
 
-sprite_change_offset("outtahere", 31, 50);
+sprite_change_offset("wait", 24, 47);
+sprite_change_offset("outtahere", 24, 47);
 
 
 sprite_change_offset("plat_windy", 40, 47);

@@ -109,6 +109,9 @@ explode_owner = player;
 
 galaxy_prevention = false;
 
+last_hit = 0;
+last_hit_group = -4;
+
 
 /* README - Basic Article Usage
 

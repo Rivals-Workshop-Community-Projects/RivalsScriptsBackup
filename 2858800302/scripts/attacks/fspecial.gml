@@ -48,7 +48,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //bounce on hit
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 5);
 

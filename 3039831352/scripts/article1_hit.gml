@@ -7,7 +7,7 @@ if (enemy_hitboxID.hit_priority > 0)
         //owner set
         trick_ring_player = enemy_hitboxID.player;
         trick_ring_player_id = enemy_hitboxID.player_id; //i have no idea if this will work with parried projectiles
-        hud_owner_col = get_match_setting(SET_TEAMS) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
+        hud_owner_col = (trick_ring_player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
 
         //set state and timing
         state = 4;

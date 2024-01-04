@@ -70,7 +70,7 @@ if (super_theme_player)
         player_id.bar_ss_array[0] = player_id;
         player_id.super_theme_playing = true;
 
-        player_id.super_theme = sound_play(sound_get("mus_super_intro")); //play music
+        player_id.super_theme = sound_play(sound_get("mus_super_intro"), false, 0, volume); //play music
     }
 
     if (player_id.super_theme_loop_start != player_id.super_theme_loop_start_set && player_id.bar_ss_array[0] == noone) sound_stop(player_id.super_theme);
@@ -80,7 +80,7 @@ if (super_theme_player)
     if (player_id.super_theme_loop_start <= 0 && !player_id.super_theme_loop_started)
     {
         sound_stop(player_id.super_theme);
-        player_id.super_theme = sound_play(sound_get("mus_super_loop"), true);
+        player_id.super_theme = sound_play(sound_get("mus_super_loop"), true, 0, volume);
         player_id.super_theme_loop_started = true;
     }
 }

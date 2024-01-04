@@ -113,6 +113,8 @@ with (player_id){
 
 if(hitstop < 0){
 	hitstop = 0;
+}else{
+	last_hit_group = -4;
 }
 
 if(explode_timer = 120){
@@ -154,8 +156,8 @@ it all. Heed my warning.
 	//Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit) { //makes the pot hittable when can_get_hit is true
     	with (asset_get("pHitBox")){
-    		if (player != other.player_id.player){
-    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0 && other.hitbox_hit != other.pot_hitbox_id){
+    		if (player != other.player_id.player && get_player_hud_color(player) != get_player_hud_color(other.player_id.player)){
+    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0 && other.hitbox_hit != other.pot_hitbox_id && id != other.last_hit && hbox_group != other.last_hit_group){
     				other.hitbox_hit = self;
     				if(type != 2 and other.hitbox_hit != other.pot_hitbox_id){
     				player_id.hitpause = true;
@@ -168,7 +170,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     	}
     	if (hitbox_hit != noone){
     		if(hitbox_hit != pot_hitbox_id){
-    		if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0 && hitbox_hit.player_id != gumbo_is_me){
+    		if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0 && hitbox_hit.player_id != gumbo_is_me && hitbox_hit.id != last_hit && hitbox_hit.hbox_group != last_hit_group){
     				//if(hitbox_hit.hbox_group != pot_hitbox_group){    			
     			
     			
@@ -186,6 +188,10 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
     			}
+    			last_hit = hitbox_hit.id;
+    			last_hit_group = hitbox_hit.hbox_group;
+    			print(hitbox_hit.id);
+    			
     			no_hitbox = false;
     		    can_be_hit = false;
     		    pot_turn_off_lockout = false;
@@ -256,10 +262,10 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     			state_timer = 0;
     			flipper_mult = 0;
         }
-    			print(hitbox_hit)
+    			//print(hitbox_hit)
     			pot_hitbox_id = hitbox_hit;
     			//hitbox_hit.player_id.attack = pot_attack_id;
-    			pot_hitbox_group = hitbox_hit.hbox_group;
+    			//pot_hitbox_group = hitbox_hit.hbox_group;
     			
     			if(explode_timer == 120){
     				explode_timer -= 50;
@@ -276,7 +282,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot hittable when can_get_hit is true
     	with (pHitBox){
     		if (player == other.player_id.player){
-    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0 && other.hitbox_hit != other.pot_hitbox_id){
+    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0 && other.hitbox_hit != other.pot_hitbox_id && id != other.last_hit && hbox_group != other.last_hit_group){
     				other.hitbox_hit = self;
     				if(type != 2){
     				player_id.hitpause = true;
@@ -289,7 +295,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     	}
     	if (hitbox_hit != noone && hitbox_hit.player_id == player_id){
     		if(hitbox_hit.attack != AT_FSPECIAL){
-    			if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0 && hitbox_hit.player_id = gumbo_is_me){
+    			if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0 && hitbox_hit.player_id = gumbo_is_me && hitbox_hit.id != last_hit && hitbox_hit.hbox_group != last_hit_group){
     				//if(hitbox_hit != pot_hitbox_id){
     				//if(hitbox_hit.hbox_group != pot_hitbox_group){	
     					
@@ -307,6 +313,11 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
     			}
+    			
+    			last_hit = hitbox_hit.id;
+    			last_hit_group = hitbox_hit.hbox_group;
+    			print(hitbox_hit.id);
+    			
     			no_hitbox = false;
     		    can_be_hit = false;
     		    sweet_baby_dont_go = false;
@@ -373,7 +384,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			state_timer = 0;
         }
     			
-    			print(hitbox_hit)
+    			//print(hitbox_hit)
     			pot_hitbox_id = hitbox_hit;
     			//hitbox_hit.player_id.attack = pot_attack_id;
     			//pot_hitbox_group = hitbox_hit.hbox_group;

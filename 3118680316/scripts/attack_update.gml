@@ -16,7 +16,7 @@ if (attack == AT_NSPECIAL)
 	can_fast_fall = false;
 	
 	//#region Switch to other specials
-	if(window == 1 && window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH))
+	if(window == 1 && window_timer == get_window_value(AT_NSPECIAL,1,AG_WINDOW_LENGTH))
 	{
 		//#region Transition to Fspecial
 		if(right_down || left_down)
@@ -36,6 +36,9 @@ if (attack == AT_NSPECIAL)
 		//#region Transition to Dspecial
 		if(down_down)
 		{
+			// Clear dspecial cooldown
+			move_cooldown[AT_DSPECIAL] = 0;
+			
 			window = 0;
 			window_timer = 0;
 			explosive_special = true;
@@ -132,6 +135,13 @@ if (attack == AT_USPECIAL){
     var BSpeedTableY = [-22, 8, -14, 16, -8, 10];
     var BSpeedTableSize = [TINY, TINY, TINY, TINY, TINY, TINY];
     var BExplosiveTable = [false, true, false, true, true, true];
+    
+    // Rune bubble tables
+    var HasUSpecRune = has_rune("B");
+    var RuneBSpeedTableX = [18, -18, 12, -2, 10, 12, 12, -18, 12, -2, 10, 12];
+    var RuneBSpeedTableY = [-22, 8, -14, 22, -18, 10, -22, 8, -14, 16, -8, 10];
+    var RuneBSpeedTableSize = [TINY, TINY, TINY, TINY, TINY, TINY, TINY, TINY, TINY, TINY, TINY, TINY];
+    var RuneBExplosiveTable = [false, true, false, true, true, true, false, true, false, true, true, true];
 	
 	// Set to landing lag when fastfalling onto ground
 	if(!free && can_fast_fall)
@@ -170,12 +180,20 @@ if (attack == AT_USPECIAL){
 		}
 
 		// Create bubble		
-		if(window == 2 && window_timer % 2 == 0)
+		if(window == 2 && (window_timer % 2 == 0 || HasUSpecRune))
 		{
-			var ThisIndex = round(window_timer / 2) - 1;
-			if(ThisIndex < array_length(BSpeedTableSize))
+			var ThisIndex = (HasUSpecRune ? window_timer : round(window_timer / 2)) - 1;
+			if(ThisIndex < array_length(HasUSpecRune ? RuneBSpeedTableSize : BSpeedTableSize))
 			{
-	            var Bubble = CreateNewBubble(x, y-(char_height*0.5), BSpeedTableSize[ThisIndex], dcos(uspec_angle) * BubbleSpeed + (BSpeedTableX[ThisIndex]*spr_dir), dsin(uspec_angle) * BubbleSpeed + BSpeedTableY[ThisIndex]);
+	            var Bubble = noone;
+	            if(HasUSpecRune)
+	            {
+	            	Bubble = CreateNewBubble(x, y-(char_height*0.5), RuneBSpeedTableSize[ThisIndex], dcos(uspec_angle) * BubbleSpeed + (RuneBSpeedTableX[ThisIndex]*spr_dir), dsin(uspec_angle) * BubbleSpeed + RuneBSpeedTableY[ThisIndex]);
+	            }
+	            else
+	            {
+	            	Bubble = CreateNewBubble(x, y-(char_height*0.5), BSpeedTableSize[ThisIndex], dcos(uspec_angle) * BubbleSpeed + (BSpeedTableX[ThisIndex]*spr_dir), dsin(uspec_angle) * BubbleSpeed + BSpeedTableY[ThisIndex]);
+	            }
 	            
 	            if(explosive_special)
 	            {
@@ -283,6 +301,10 @@ if (attack == AT_DSPECIAL){
         	Bubble.image_speed = 0.2;
         	
         	//#endregion DSpecial Explosion Unique Logic
+        }
+        else
+        {
+        	move_cooldown[AT_DSPECIAL] = 60;
         }
         
         air_max_speed = original_air_max_speed;
@@ -568,6 +590,11 @@ with(hit_fx_obj)
 
 #define CreateNewBubble(_x, _y, _size, _hsp, _vsp)
 {
+	if(has_size_increase_rune)
+	{
+		_size = min(_size + 1, BIG);
+	}
+	
     var newbubble = 
     {
         sprite_index : _size == TINY ? sprite_get("tiny_bubble") : _size == SMALL ? sprite_get("small_bubble") : sprite_get("big_bubble") ,

@@ -43,6 +43,10 @@ switch (state)
             image_index = taunt_index;
             char_height = 64;
         }
+        if (attack = AT_NSPECIAL && window = 2)
+        {
+            spr_dir = nspecial_dir;
+        }
     break;
 
 

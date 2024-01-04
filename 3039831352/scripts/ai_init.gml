@@ -11,6 +11,7 @@ stage_right = room_width - get_stage_data(SD_X_POS);
 stage_top = get_stage_data(SD_Y_POS);
 blastzone_left = stage_left - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_right = stage_right + get_stage_data(SD_SIDE_BLASTZONE);
+blastzone_bottom = stage_top + get_stage_data(SD_BOTTOM_BLASTZONE);
 
 which_dir_is_stage = "";
 which_dir_is_ring = "";

@@ -8,9 +8,7 @@ if (was_parried) draw_xscale = spr_dir;
 switch (attack)
 {
     case AT_DSTRONG:
-        if (hitbox_timer == 34) loopsound = sound_play(sound_get("sfx_bluetornado_loop"), true);
-
-        if (hitbox_timer >= length-30)
+        if (hitbox_timer >= length-20)
         {
             image_yscale = 0;
             sound_volume(loopsound, 0, 200);

@@ -90,6 +90,17 @@ if (attack == AT_TAUNT){
 var ustrong_startup = get_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH);
 
 if (attack == AT_USTRONG){
+    if (window == 1){
+        if (boosted){
+            set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+            set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+        }
+        else{
+            reset_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION);
+            reset_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+        }
+    }
+    
     if (window == 2){
         if (window_timer == ustrong_startup){
             sound_play(asset_get("sfx_leafy_hit2"));
@@ -114,6 +125,17 @@ if (attack == AT_USTRONG){
 }
 
 if (attack == AT_FSTRONG){
+    if (window == 1){
+        if (boosted){
+            set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+            set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+        }
+        else{
+            reset_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION);
+            reset_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+        }
+    }
+    
     if (window == 2){
         if (window_timer == 4 && !hitpause && !hitstop){
             spawn_base_dust( x + (24 * spr_dir), y, "dash", spr_dir);
@@ -126,7 +148,7 @@ if (attack == AT_FSTRONG){
         if (boosted){
             set_hitbox_value(attack, 1, HG_DAMAGE, get_hitbox_value( attack, 1, HG_DAMAGE ) + 2);
             //set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, get_hitbox_value( attack, 1, HG_BASE_KNOCKBACK ) + 0.3);
-            set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, get_hitbox_value( attack, 1, HG_KNOCKBACK_SCALING ) + 0.1);
+            set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, get_hitbox_value( attack, 1, HG_KNOCKBACK_SCALING ) + 0.05);
             set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, get_hitbox_value( attack, 1, HG_EXTRA_HITPAUSE ) + 5);
         }
     }
@@ -137,6 +159,17 @@ if (attack == AT_FSTRONG){
 }
 
 if (attack == AT_DSTRONG){
+    if (window == 1){
+        if (boosted){
+            set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+            set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+        }
+        else{
+            reset_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION);
+            reset_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+        }
+    }
+    
     if (window == 2){
         if (window_timer == 4){
             spawn_base_dust( x + (0 * spr_dir), y, "dash_start", spr_dir);
@@ -358,6 +391,8 @@ if (attack == AT_FSPECIAL){
     //charge window
     if (window == 2){
         if (special_down){
+            
+            can_jump = true;
             
             if (!shield_pressed){ //charging
                 window_timer = 0;

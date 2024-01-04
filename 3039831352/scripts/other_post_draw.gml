@@ -5,7 +5,7 @@ if (instance_exists(bar_sonic_reticle_owner)) with (bar_sonic_reticle_owner)
     static_colorO[4] = cur_colors[1][0]/255;
     static_colorO[5] = cur_colors[1][1]/255;
     static_colorO[6] = cur_colors[1][2]/255;
-    static_colorB[4] = shading_data[alt_cur][1];
+    static_colorB[4] = alt_cur > array_length(shading_data) ? 1 : shading_data[alt_cur][1];
 
     //outline
     var pos = 4*4 //shoes

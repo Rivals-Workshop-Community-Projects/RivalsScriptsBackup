@@ -26,7 +26,7 @@ was_free = false;
 noisefire_ins = noone;
 
 nspecial_turned = false;
-nspecial_accel = 0.5; //peppino's is 0.3, noises is faster so comboes are harder to set up with his slower speed (i think)
+nspecial_accel = 0.5; //peppino's is 0.3, noises is faster so combos are harder to set up with his slower speed (i think)
 nspecial_max_hsp = 8; //peppino's is 10
 nspecial_loops = -1;
 nspecial_dash_charge = 0;
@@ -37,6 +37,7 @@ nspecial_mach_sound = noone;
 nspecial_mach_jump_hsp = nspecial_max_hsp * 0.75;
 nspecial_mach_frict_mult = 0.5;
 nspecial_jump_timer = 0; // allows noise to cancel mach boost so he doesnt just die offstage
+nspecial_dir = 0;
 
 ai_freq = 5; //counts for mach mode, uspecial and dair
 
@@ -162,3 +163,5 @@ bubble_y = 8;
 
 AT_ENTRANCE = 40;
 entered = false;
+
+miiverse_post = sprite_get("miiverse");

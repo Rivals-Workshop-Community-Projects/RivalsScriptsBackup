@@ -51,32 +51,6 @@ switch (alt_cur)
         temp_outline_color = [15, 56, 15];
         break;
     case 16: //seasonals
-        if (current_month == 6) //classic
-        {
-            cur_colors = [
-                [87, 101, 222], //aura
-                [82, 82, 189], //blue
-                [48, 48, 48], //green
-                [219, 157, 134], //skin
-                [222, 0, 0], //red
-                [222, 222, 222], //white - clothes
-                [222, 222, 222], //white - eyes
-                [150, 160, 255],  //portrait light
-                [240, 240, 62], //aura (super)
-                [240, 240, 62], //blue (super)
-                [48, 48, 48], //green (super)
-                [219, 157, 134], //skin (super)
-                [222, 0, 0], //red (super)
-                [222, 222, 222], //white - clothes (super)
-                [222, 222, 222], //white - eyes (super)
-                [255, 255, 250] //portrait light (super)
-            ];
-
-            shading_data[alt_cur] = [
-                1, 1, 1, 1, 1, 1, 1, 1,
-                1, -2, 1, 1, 1, 1, 1, 1
-            ];
-        }
         if (get_match_setting(SET_SEASON) == 3) //lord X
         {
             if ("is_fake_x" in self && !is_fake_x && object_index != 327 && object_index != 4) //real form
@@ -139,14 +113,17 @@ switch (alt_cur)
             else
             {
                 //fake sonic shade data
-                shading_data[alt_cur] = [
-                    1, 1, 1, 1, 1, 1, 1, 1,
-                    1, -2, 1, 1, 1, 1, 1, 1
-                ];
+                if (alt_cur < 32) 
+                {
+                    shading_data[alt_cur] = [
+                        1, 1, 1, 1, 1, 1, 1, 1,
+                        1, -2, 1, 1, 1, 1, 1, 1
+                    ];
+                }
             }
         }
         break;
-    case 21: //snick
+    case 22: //snick
             if (current_day == 31 && current_month == 10) //snick.exe
             {
                 cur_colors[2] = [255, 255, 255]; //green
@@ -157,7 +134,7 @@ switch (alt_cur)
                 cur_colors[14] = cur_colors[6]; //white - eyes (super)
             }
             break;
-    case 26: //hud color
+    case 27: //hud color
         var hud_r = color_get_red(get_player_hud_color(player));
         var hud_g = color_get_green(get_player_hud_color(player));
         var hud_b = color_get_blue(get_player_hud_color(player));
@@ -171,6 +148,32 @@ switch (alt_cur)
         cur_colors[12] = cur_colors[4] //red (super)
         cur_colors[13] = cur_colors[5]; //white - clothes (super)
         break;
+}
+
+if (get_player_name(player) == "461225") //set secret alt to overwrite every alt
+{
+    alt_cur = 1993;
+
+    //base form
+    cur_colors[0] = [96, 64, 162];
+    cur_colors[1] = [1, 1, 128];
+    cur_colors[2] = [0, 0, 0];
+    cur_colors[3] = [96, 64, 162];
+    cur_colors[4] = [1, 1, 128];
+    cur_colors[5] = [96, 64, 162];
+    cur_colors[6] = [0, 0, 0];
+    cur_colors[7] = [96, 64, 162];
+    cur_colors[8] = cur_colors[0]; //just in case
+
+    temp_outline_color = [
+        floor(lerp(1, 94, 0.5)),
+        floor(lerp(1, 64, 0.5)),
+        floor(lerp(128, 162, 0.5))
+    ];
+
+    for (var i = 0; i < 8; i ++) set_character_color_shading(i, 1);
+
+    cur_alpha = [1, 1, 1, 1, 1, 1, 1, 1]
 }
 
 
@@ -197,7 +200,7 @@ else
 
             set_character_color_slot(i, cur_colors[i + pos][0], cur_colors[i + pos][1], cur_colors[i + pos][2], cur_alpha[i]);
             set_article_color_slot(i, cur_colors[i + pos][0], cur_colors[i + pos][1], cur_colors[i + pos][2], cur_alpha[i]);
-            set_character_color_shading(i, shading_data[alt_cur][i + pos]);
+            if (alt_cur < 32) set_character_color_shading(i, shading_data[alt_cur][i + pos]);
         }
     }
     else
@@ -207,7 +210,7 @@ else
         {
             set_character_color_slot(i, cur_colors[i][0], cur_colors[i][1], cur_colors[i][2], cur_alpha[i]);
             set_article_color_slot(i, cur_colors[i][0], cur_colors[i][1], cur_colors[i][2], 1);
-            set_character_color_shading(i, shading_data[alt_cur][i]);
+            if (alt_cur < 32) set_character_color_shading(i, shading_data[alt_cur][i]);
         }
 
         if ("uses_super_colors" in self && uses_super_colors)
@@ -224,7 +227,12 @@ else
 }
 
 //range setups
-if (alt_cur == 15)
+if (alt_cur != 15 && alt_cur != 14)
+{
+    set_color_profile_slot_range(3, 16, 17, 31);
+    set_color_profile_slot_range(6, 1, 1, 20);
+}
+else if (alt_cur == 15)
 {
     set_color_profile_slot_range(3, 21, 55, 31); //include buckle
     set_color_profile_slot_range(6, 1, 1, 20);
@@ -233,11 +241,6 @@ else if (alt_cur == 14)
 {
     set_color_profile_slot_range(3, 21, 55, 31); //include buckle
     set_color_profile_slot_range(6, 155, 10, 20); //include whites
-}
-else
-{
-    set_color_profile_slot_range(3, 16, 17, 31);
-    set_color_profile_slot_range(6, 1, 1, 20);
 }
 
 //results screen color correction
@@ -303,12 +306,6 @@ if (object_index == asset_get("draw_result_screen") || object_index == asset_get
             colorO[30] = 255/255;
         }
     }
-}
-
-if (alt_cur == 5 && object_index == asset_get("result_screen_box"))
-{
-    for (var i = 0; i < array_length(colorI); i++) colorI[i] = 0;
-    for (var i = 0; i < array_length(colorT); i++) colorT[i] = 0;
 }
 
 
@@ -385,8 +382,8 @@ if (alt_cur == 5 && object_index == asset_get("result_screen_box"))
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //amy
         [1, 1, 0, 1, 1, 1, 1, 1,        -5, -1, 0, 1, 1, 1, 1, 1], //chaos
         [-5, 0.5, 1, 1, 1, 1, 1, 1,     -1, -1, 1, 1, 1, 1, 1, 1], //shadow
-        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //silver
-        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //blaze
+        [1, 1, 1.5, 1, 1, 0.3, 1, 1,    1, -1, 1, 1, 1, 1, 1, 1], //rouge
+        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //cream
         [1, 1, 1, 1, 1, 0.75, 1, 1,     1, -1, 1, 1, 1, 0.75, 1, 1], //scourge
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //mario
         [1, 1, 1, 1, 1, 1, 1, 1,        -5, -1, 1, 1, 1, 1, 1, 1], //spark
@@ -397,13 +394,14 @@ if (alt_cur == 5 && object_index == asset_get("result_screen_box"))
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //seasonal (should use a different method)
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //infamous
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //gold rank
-        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //the flash
+        [1, 1, 1, 1, 1, 1, 1, 1,        1, -2, 1, 1, 1, 1, 1, 1], //sonic 1
         [1, 0.75, 1, 1, 1, 1, 1, 1,     1, 1, 0, 1, 1, 1, 1, 1], //dark sonic
+        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //the flash
         [1, 0, 0, 0, 0, 0, 0, 0,        1, 0, 0, 0, 0, 0, 0, 1], //snick
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //maypul
         [1, 1, 1, 1, 1, 0.5, 1, 1,      -5, -1, 1, 1, 1, 0.5, 1, 1], //bar
         [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //keqing
-        [1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //rumia
+        [1, 1, 1, 1, 1, 0.5, 1, 1,      1, -1, 1, 1, 1, 0.5, 1, 1], //rumia
         [1, 1, 1, 1, 1, 1, 1, 1,        -5, -1, 1, 1, 1, 1, 1, 1] //player color
     ];
 

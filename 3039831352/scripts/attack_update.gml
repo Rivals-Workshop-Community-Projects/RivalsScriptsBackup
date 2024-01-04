@@ -17,6 +17,20 @@ switch (attack)
     //
 	case AT_FTILT:
 		if (window == 3 && window_timer == 1) new_hsp = hsp * 0.6; //using ftilt loses some speed
+		
+		if (window == 1 && window_timer == 1)
+		{
+			var min_spd = get_window_value(attack, window, AG_WINDOW_HSPEED);
+			var cur_spd = abs(hsp) + ground_friction;
+			var endlag_min = 12;
+
+			set_window_value(
+				attack,
+				window_last,
+				AG_WINDOW_LENGTH,
+				floor(clamp(cur_spd - min_spd + endlag_min, endlag_min, 20))
+			);
+		}
 		break;
 	case AT_JAB:
 		switch (window)
@@ -105,6 +119,7 @@ switch (attack)
 					{
 						create_hitbox(attack, 1, x, y);
 						hsp = (dstrong_hsp[1]/dstrong_hsp[0]) * spr_dir;
+						sound_play(sound_get("sfx_bluetornado_start"));
 					}
 				}
 				break;
@@ -119,7 +134,7 @@ switch (attack)
 						floor((dstrong_tornado_xscale[0] + dstrong_tornado_xscale[1]) / 2),
 						y + get_hitbox_value(attack, 2, HG_HITBOX_Y)
 					);
-					dstrong_tornado_hbox.length = dstrong_tornado_hbox.length + strong_charge/2; //duration changes based on charge
+					//dstrong_tornado_hbox.length = dstrong_tornado_hbox.length + strong_charge/2; //duration changes based on charge
 					move_cooldown[attack] = dstrong_tornado_hbox.length + 20; //can't dstrong if tornado is out
 				}
 
@@ -229,6 +244,12 @@ switch (attack)
 		switch (window)
 		{
 			case 1: //value setup
+				if (window_timer == window_end - 5)
+				{
+					spawn_hit_fx(x, y - 40, fx_windhit[0]);
+					sound_play(asset_get("sfx_spin"))
+				}
+
 				if (!is_super) can_nspec = false; //super sonic has no cooldown on homing attacks :troll:
 				
 				homing_values = [0, 0];
@@ -245,7 +266,7 @@ switch (attack)
 					next_multihome_target = 0;
 
 				}
-				break
+				break;
 			case 4: case 5: case 6: //maybe should put sonic in_pratfall?
 				can_wall_jump = true;
 
@@ -461,6 +482,9 @@ switch (attack)
 
 		switch (window)
 		{
+			case 1:
+				if (window_timer == 1) sound_play(jump_sound);
+				break;
 			case 3:
 				vsp = fast_fall/0.75 + ((fast_fall/0.75) * fast_falling);
 				add_blue_blur(x, y - 32); //smear effect
@@ -826,7 +850,7 @@ switch (attack)
 		if (window == 2 && window_timer == window_end) spawn_hit_fx(x, y-32, fx_trickring_circspark);
 		if (window == 4)
 		{
-			super_col_lerp_time ++;
+			if (!secret_active) super_col_lerp_time ++;
 			sound_stop(sound_get("sfx_emeralds_idle"));
 
 			var fx = spawn_hit_fx(
@@ -840,7 +864,7 @@ switch (attack)
 
 		if (super_transform_time >= 78)
 		{
-			uses_super_colors = set_up_super_colors || "super_form_active" in self && super_form_active;
+			uses_super_colors = (set_up_super_colors || "super_form_active" in self && super_form_active) && !secret_active;
 			if (!set_up_super_colors &&
 				("super_form_active" not in self || //regular super sonic rune
 				(super_form_active && super_col_lerp_time > super_col_lerp_time_max || //chaos emeralds if sonic used them already
@@ -854,6 +878,17 @@ switch (attack)
 		{
 			if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); //put hud away
 			if (window == window_last && window_timer == window_end-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
+		}
+		break;
+	case 3: //outta here
+		can_move = false;
+		if (free)
+		{
+			mask_index = asset_get("empty_sprite");
+			fall_through = true;
+
+			if (window == 16 && y < get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE)) set_state(PS_HITSTUN); //super sonic killing
+			if (window == 11) grav = 0.2;
 		}
 		break;
 }

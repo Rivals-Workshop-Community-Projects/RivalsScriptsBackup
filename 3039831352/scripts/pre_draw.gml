@@ -20,7 +20,7 @@ if (instance_exists(dstrong_tornado_hbox))
         dstrong_tornado_hbox.x,
         dstrong_tornado_hbox.y+44,
         (dstrong_tornado_hbox.image_xscale * dstrong_drawn_size_offset) * dstrong_tornado_hbox.spr_dir,
-        1, 0, c_white, lerp(2, 0, dstrong_tornado_hbox.hitbox_timer/dstrong_tornado_hbox.length)
+        1, 0, c_white, lerp(1, 0, dstrong_tornado_hbox.hitbox_timer/dstrong_tornado_hbox.length)
     );
 }
 
@@ -78,7 +78,7 @@ if (boost_mode || is_super)
 }
 
 //chaos mask
-if (alt_cur == 5 && cur_alpha[1] < 1)
+if (alt_cur == 5 && cur_alpha[1] < 1 && !secret_active)
 {
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2 * spr_dir, 2, spr_angle, c_white, 1);

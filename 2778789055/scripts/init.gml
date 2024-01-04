@@ -40,7 +40,7 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 7;		// 4    -  8
-air_max_speed       = 4.75;  		// 3    -  7
+air_max_speed       = 4; 		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 1.00;		// 0.25 -  1.5
@@ -258,6 +258,7 @@ pot_skin = 1;
 set_victory_portrait(sprite_get("summer_portrait"));
 }if(alt == 26){ //lakers
 pot_skin = 2;
+set_victory_portrait(sprite_get("portrait_balling"));
 }
 
 if(get_player_color(player) == 22){//dave land

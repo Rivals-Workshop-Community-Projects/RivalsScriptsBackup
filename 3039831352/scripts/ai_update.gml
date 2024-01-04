@@ -11,16 +11,17 @@ target_angle = point_direction(x, y-char_height/2, ai_target.x, ai_target.y-ai_t
 
 which_dir_is_stage = (point_distance(x, 0, stage_left, 0) < point_distance(x, 0, stage_right, 0)) ? "go right" : "go left";
 
-
-
 //recovery logic
 if (ai_recovering)
 {
-    if (state_cat == SC_HITSTUN && state_timer == 1) //reset on hitstun
+    if (state_cat == SC_HITSTUN && state_timer == 1 || state == PS_WALL_JUMP) //reset on hitstun
     {
         ring_rng = -1;
         recovery_rng = -1;
     }
+
+    can_wall_jump = (recovery_rng == 0);
+    
 
     switch (recovery_rng)
     {
@@ -36,13 +37,22 @@ if (ai_recovering)
                     switch (ring_rng)
                     {
                         case -1: //undefined
-                            ring_rng = random_func(0, 5, true);
+                            if (y > blastzone_bottom - 300 && has_walljump) ring_rng = random_func(0, 2, true);
+                            else if (y > blastzone_bottom - 200) ring_rng = 1;
+                            else
+                            {
+                                ring_rng = random_func(0, 5, true);
+                                
+                                //if sonic is too close to the blastzone filter that out
+                                if (ring_rng == 3 && (x - 150 < blastzone_left || x + 150 > blastzone_right)) ring_rng = random_func(0, 2, true);
+                                if (ring_rng == 4 && !has_airdodge) ring_rng = random_func(0, 4, true); //if sonic has not airdodge he rerolls without it
+                            }
                             break;
                         case 0: case 1: //0 = dspecial (1 = +fastfall)
                             jump_pressed = false;
                             left_down = false;
                             right_down = false;
-                            if (!is_attacking) set_attack(AT_DSPECIAL);
+                            if (state_cat == SC_AIR_NEUTRAL) set_attack(AT_DSPECIAL);
                             else if (is_attacking && attack == AT_DSPECIAL && ring_rng == 1) fast_falling = true;
                             break;
                         case 2: //fastfall
@@ -51,25 +61,30 @@ if (ai_recovering)
                             right_down = false;
                             down_hard_pressed = true;
                             break;
-                        case 3: //fspec into ring
+                        case 3: //fspec/fair into ring
                             jump_pressed = false;
+                            shield_pressed = false;
 
-                            if (is_attacking && attack == AT_USPECIAL)
+                            if (attack == AT_USPECIAL)
                             {
-                                right_down = (which_dir_is_stage == "go left" && x > blastzone_left);
-                                left_down = (which_dir_is_stage == "go right" && x < blastzone_right);
+                                if (is_attacking)
+                                {
+                                    right_down = (which_dir_is_stage == "go left" && x > blastzone_left);
+                                    left_down = (which_dir_is_stage == "go right" && x < blastzone_right);
 
-                                if (x <= blastzone_left - 1 || x >= blastzone_right) hsp = 0;
+                                    if (x <= blastzone_left - 1 || x >= blastzone_right) hsp = 0;
+                                }
+                                else
+                                {
+                                    spr_dir = (x < artc_trickring.x) ? 1 : -1
+                                    state = PS_ATTACK_AIR;
+                                    attack = can_fspec ? AT_FSPECIAL : AT_FAIR;
+                                    window = 1;
+                                    window_timer = 0;
+                                }
                             }
-                            else if (state_cat == SC_AIR_NEUTRAL && attack == AT_USPECIAL)
-                            {
-                                right_down = false;
-                                left_down = false;
-                                spr_dir = x < artc_trickring.x ? 1 : -1;
-                                set_attack(AT_FSPECIAL);
-                                jump_counter = 2;
-                            }
-                            else if (is_attacking && attack == AT_FSPECIAL)
+
+                            if (is_attacking && attack == AT_FSPECIAL)
                             {
                                 if (window < 4)
                                 {
@@ -89,7 +104,7 @@ if (ai_recovering)
                                 right_down = (which_dir_is_stage == "go left");
                                 left_down = (which_dir_is_stage == "go right");
                             }
-                            else if (!is_attacking && state != PS_AIR_DODGE && point_distance(x, y, artc_trickring.x, artc_trickring.y) < 110 && has_airdodge) shield_pressed = true;
+                            else if (state_cat == SC_AIR_NEUTRAL && state != PS_AIR_DODGE && point_distance(x, y, artc_trickring.x, artc_trickring.y) < 110 && has_airdodge) shield_pressed = true;
                             else if (state == PS_AIR_DODGE) joy_dir = -point_distance(x, y, artc_trickring.x, artc_trickring.y) + 90;
                             break;
                     }
@@ -100,7 +115,7 @@ if (ai_recovering)
                 if (y < ai_target.y && point_distance(x, 0, ai_target.x, 0) < 80 && point_distance(ai_target.x, ai_target.y, artc_trickring.x, artc_trickring.y) < 120)
                 {
                     if (ring_rng != -2) ring_rng = -2;
-                    if (state_cat != SC_HITSTUN && !is_attacking) set_attack(AT_DSPECIAL);
+                    if (state_cat != SC_HITSTUN && state_cat == SC_AIR_NEUTRAL) set_attack(AT_DSPECIAL);
                 }
                 if (ring_rng == -2)
                 {
@@ -129,7 +144,7 @@ if (ai_recovering)
             spr_dir = (which_dir_is_stage == "go right") ? 1 : -1;
             up_down = false;
             attack_pressed = false;
-            jump_pressed = false;
+            jump_pressed = true;
 
             if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
             {
@@ -145,7 +160,7 @@ if (ai_recovering)
             break;
         case 3: //using nspec to get closer to the wall
             spr_dir = (which_dir_is_stage == "go right") ? 1 : -1;
-            if (!is_attacking)
+            if (state_cat == SC_AIR_NEUTRAL)
             {
                 right_down = false;
                 left_down = false;
@@ -157,7 +172,7 @@ if (ai_recovering)
                 left_down = (which_dir_is_stage == "go left");
                 recovery_rng = 0; //use uspec next
             }
-            up_down = false;
+            up_pressed = false;
             break;
     }
 

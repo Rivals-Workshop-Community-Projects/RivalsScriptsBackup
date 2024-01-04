@@ -41,6 +41,40 @@ if(state == PS_SPAWN)
 }
 //#endregion Intro
 
+//#region Rune Code
+
+// Passive bubble generation
+if(has_rune("A"))
+{
+	if(rune_passive_bubble_timer <= 0)
+	{
+		CreateNewBubble(x-(5*spr_dir),y-10,TINY,-4*spr_dir,-2);
+		rune_passive_bubble_timer = rune_original_passive_bubble_timer;
+	}
+	else
+	{
+		rune_passive_bubble_timer--;
+	}
+}
+
+// Tech off bubbles
+if(has_rune("N"))
+{
+	if(state_cat == SC_HITSTUN && shield_pressed)
+	{
+		if(closest_jumpable_bubble != noone && in_bubble)
+		{
+			if(closest_jumpable_bubble.size > TINY && closest_jumpable_bubble.explosive == false)
+			{
+				PopBubble(closest_jumpable_bubble);
+				closest_jumpable_bubble.flag_delete = true;
+				RuneSplitBubble(closest_jumpable_bubble);
+				set_state(PS_WALL_TECH);
+			}
+		}
+	}
+}
+//#endregion Rune Code
 
 //#region USpec grab code
 if(attack == AT_USPECIAL && state == PS_ATTACK_AIR)
@@ -112,6 +146,23 @@ else if(in_bubble)
 max_djumps = 0;
 if(jump_pressed || (tap_jump_pressed && can_tap_jump()))
 {
+	var RuneFootstoolPlayer = noone;
+	var HasFootstoolRune = has_rune("F");
+	
+	if(HasFootstoolRune)
+	{
+		with(oPlayer)
+		{
+			if(self != Soap)
+			{
+				if(point_distance(x,y-(char_height*0.5),other.x,other.y-(other.char_height*0.5)) < 80)
+				{
+					RuneFootstoolPlayer = self;
+				}
+			}
+		}
+	}
+	
 	if(in_bubble)
 	{
 		if(closest_jumpable_bubble != noone)
@@ -131,6 +182,18 @@ if(jump_pressed || (tap_jump_pressed && can_tap_jump()))
 			}
 		}
 	}
+	else if(RuneFootstoolPlayer != noone && !in_bubble_jumpsquat && state_cat == SC_AIR_NEUTRAL && bubble_jump_ignore_timer == 0)
+	{
+		set_state(PS_JUMPSQUAT);
+		clear_button_buffer(PC_JUMP_PRESSED);
+		vsp = 0;
+		hsp = 0;
+		
+		x = RuneFootstoolPlayer.x;
+		y = RuneFootstoolPlayer.y-RuneFootstoolPlayer.char_height;
+		
+		create_hitbox(AT_TAUNT,1,x,y);
+	}
 	else
 	{
 		max_djumps = 1;
@@ -149,6 +212,18 @@ if(in_bubble_jumpsquat)
 {
 	var BubbleYOffet = last_bubble.size == BIG ? 25 : 20;
 	
+	// Prevent bubble from Lerping into the stage
+	var MaxLoops = 50;
+	var LoopCounter = 0;
+	while(place_meeting(x,y+BubbleYOffet,asset_get("solid_32_obj")))
+	{
+		BubbleYOffet--;
+		
+		// Failsafe
+		LoopCounter++;
+		if(LoopCounter >= MaxLoops) break;
+	}
+
 	last_bubble.x = lerp(last_bubble.x,x,0.5);
 	last_bubble.y = lerp(last_bubble.y,y + BubbleYOffet,0.5);
 }
@@ -248,6 +323,64 @@ with(oPlayer)
 //#endregion Other Player Resets
 //#endregion Player Bubble Logic
 
+//#region Amber Compatability
+//Amber hug compatibility
+if (amber_startHug == true) //Amber will set this bool to true when this player accepts the hug
+{
+	var BubbleCreateSound = sound_get("soap_bubble_create_med");
+	var BubblePopSound = sound_get("soap_bubble_pop_med");
+	with (amber_herObj) //Access Amber's player object and set the values
+	{
+		//Set the window values for Amber's hugging. DO NOT change Amber's sprites
+		//in the attack_values
+	    set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+	    set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+	    set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, asset_get("hurtbox"));
+	    
+	    //Enter
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 60);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 10);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, BubbleCreateSound); 
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 8);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 0);
+	    
+	    //Loop
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 48);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 8);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 10);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 0);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 0);
+	    
+	    //Exit
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 18);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 3);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 18);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 0);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, BubblePopSound); 
+	    
+	    //Important. Puts Amber in startup hug state (2).
+	    //Editing this variable not recommended
+	    amberHugState = 2; 
+	}
+	//Important. Puts this character in startup hug state (2).
+    //Editing this variable not recommended
+	oPlayerHugAmberState = 2;
+	
+	//Set this bool back to false so that this doesn't loop
+    amber_startHug = false;
+}
+//#endregion Amber Compatability
+
 
 //#region Bubble logic
 
@@ -299,6 +432,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		{
 			PopBubble(bubble);
 			bubble.flag_delete = true;
+			RuneSplitBubble(bubble);
 		}
 	}
 	//#endregion Projectile Hitbox Deletion Handling
@@ -388,6 +522,12 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 			ExplodeBubble(bubble);
 			bubble.image_index = 1;
 		}
+		
+		// Explode bubble if rune is equipped
+		if(has_rune("H"))
+		{
+			ExplodeBubble(bubble);
+		}
 	}
 	//#endregion Reset Bubble Sprites
 	
@@ -473,10 +613,24 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		{
 			bubble.image_speed = 0.3;
 			sound_play(bubble.size == TINY ? sound_get("soap_bubble_explode_sml") : bubble.size == SMALL ? sound_get("soap_bubble_explode_med") : sound_get("soap_bubble_explode_lrg"));
-			bubble.linked_hitbox = create_hitbox(AT_EXTRA_2, bubble.size, floor(bubble.x), floor(bubble.y));
+			bubble.linked_hitbox = create_hitbox(AT_EXTRA_2, has_rune("M") ? min(bubble.size+1,BIG) : bubble.size, floor(bubble.x), floor(bubble.y));
 			bubble.linked_hitbox.player = bubble.player;
 			bubble.linked_hitbox.can_hit[bubble.player] = false;
 			bubble.spawned_explosion = true;
+			
+			if(has_rune("M"))
+			{
+				bubble.sprite_index = RuneGetBubbleExplosionSprite(bubble);
+			}
+		}
+		
+		// Rune to explode all bubbles onstage
+		if(has_rune("I"))
+		{
+			for (i = 0; i < bubble_list_size; i++) 
+			{
+				ExplodeBubble(soap_bubbles[|i]);
+			}
 		}
 	}
 	
@@ -486,7 +640,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 	if(!bubble.exploding && !bubble.flag_delete)
 	{
 		//#region Bubble Movement
-		
+
 		if(is_permitted_bubble || bubble.was_parried)
 		{
 			array_clear(close_bubbles, 0);
@@ -496,6 +650,42 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 			var close_bubble_number = 0;
 			var i = 0;
 			var MaxDistance = 800;
+			var RuneMaxDistance = 200;
+			var BubblesNeededToMerge = has_rune("J") ? 1 : 2;
+			
+			//#region Rune Player Movement
+			if(has_rune("D"))
+			{
+				with(oPlayer)
+				{
+					if(self != Soap && get_player_team(player) != get_player_team(Soap.player))
+					{
+						var runedist = point_distance(x, y-(char_height*0.5), bubble.x, bubble.y);
+						if(runedist < RuneMaxDistance)
+						{
+							
+							// Get the vector difference
+							var runexdiff = x - bubble.x;
+							var runeydiff = (y-(char_height*0.5)) - bubble.y;
+							
+							// Get the magnitude of the vector
+							var runemagnitude = sqrt(max( (runexdiff*runexdiff) + (runeydiff * runeydiff), 1 ));
+							
+							// Get the normalized vector
+							var runexnorm = runexdiff / runemagnitude;
+							var runeynorm = runeydiff / runemagnitude;
+							
+							// Apply speed
+							var runeNewHsp = (runexnorm * max(0.25-runedist*0.0001,0))*bubble.speed_scale;
+							var runeNewVsp = (runeynorm * max(0.25-runedist*0.0001,0))*bubble.speed_scale;
+							
+							bubble.hsp += runeNewHsp;
+							bubble.vsp += runeNewVsp;
+						}
+					}
+				}
+			}
+			//#endregion Rune Player Movement
 			
 			for (i = 0; i < bubble_list_size; i++) 
 			{
@@ -580,14 +770,13 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 					bubble.last_permitted_hsp += NewHsp;
 					bubble.last_permitted_vsp += NewVsp;
 				}
-			
 				//#endregion Move Towards Other Bubbles
 				
 			
 				// Queue up bubble merges
 				var BubbleMergeRadius = bubble.size == TINY ? 30 : 40;
 				
-				if(dist <= BubbleMergeRadius * bubble.speed_scale && close_bubble_number < 2)
+				if(dist <= BubbleMergeRadius * bubble.speed_scale && close_bubble_number < BubblesNeededToMerge && otherbubble.lockout_timer == 0)
 				{
 					// Push bubbles to array
 					if(otherbubble.size == bubble.size && otherbubble.flag_delete == false) 
@@ -600,7 +789,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		
 			//#region Bubble Merging
 			// If 3 close bubbles, should merge
-			if(close_bubble_number >= 2 && bubble.size < BIG)
+			if(close_bubble_number >= BubblesNeededToMerge && bubble.size < BIG)
 			{
 				// Get average position between the three
 				var xavg = 0;
@@ -641,7 +830,13 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 				yavg /= close_bubble_number;
 				
 				// Create new bubble
+				var HasSizeIncreaseRune = has_size_increase_rune;
+				has_size_increase_rune = false;
+				
 				var newbubble = CreateNewBubble(floor(xavg),floor(yavg),bubble.size + 1,0,0);
+				
+				has_size_increase_rune = HasSizeIncreaseRune;
+				
 				newbubble.merging = true;
 				newbubble.lockout_timer = 10;
 			
@@ -704,7 +899,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 				var height = image_yscale * 100;
 				var PointsDistance = point_distance(x,y,bubble.x,bubble.y);
 				var OverlapDistance = max(0,PointsDistance - OverlapRadius - ((width+height)*0.5))
-				
+
 				if(OverlapDistance == 0 && variable_instance_exists(self, "player_id"))
 				{
 					if(player_id == Soap)
@@ -717,7 +912,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 								{
 									with(Soap)
 									{
-										if(bubble.last_hitbox_window != get_hitbox_value(other.attack,other.hbox_num,HG_WINDOW))
+										if(bubble.last_hitbox_window != get_hitbox_value(other.attack,other.hbox_num,HG_WINDOW) || !instance_exists(bubble.last_hitbox))
 										{
 											last_hit_bubble = bubble;
 											bubble.last_hitbox_window = get_hitbox_value(other.attack,other.hbox_num,HG_WINDOW);
@@ -772,9 +967,16 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 												{
 													bubble.lockout_timer = 9;
 												}
+												
+												// Explode on hit rune
+												if(has_rune("O") && bubble.size > TINY)
+												{
+													bubble.explosive = true;
+												}
+												
 		
 												// Launch bubble
-												LaunchBubble(bubble, get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * dcos(Angle), get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * -dsin(Angle),false, other.kb_angle,other.kb_value);
+												LaunchBubble(bubble, get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * dcos(Angle), get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * -dsin(Angle),bubble.explosive, other.kb_angle,other.kb_value);
 												
 												//#endregion Bubble Knock Hitbox Creation
 											}
@@ -813,7 +1015,11 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 						    	hitpause = true;
 							}
 						}
-				    	with(Soap){PopBubble(bubble);}
+				    	with(Soap)
+				    	{
+				    		PopBubble(bubble);
+				    		RuneSplitBubble(bubble);
+				    	}
 					}
 				}
 			}
@@ -859,8 +1065,22 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 	//#endregion Core Bubble Logic
 	
 	//#region Nair movement
-	if(attack == AT_NAIR && window <= 6)
+	if(attack == AT_NAIR && window <= 6 && state == PS_ATTACK_AIR)
 	{
+		// Nair attraction rune
+		var HasNairRune = has_rune("E");
+		if(HasNairRune)
+		{
+			var RuneNairDistance = point_distance(bubble.x,bubble.y,x,y-(char_height * 0.5));
+			if(RuneNairDistance < 200)
+			{
+				var RuneAngle = point_direction(bubble.x,bubble.y,x,y-(char_height * 0.5));
+				bubble.hsp = dcos(RuneAngle) * (RuneNairDistance*0.1);
+				bubble.vsp = -dsin(RuneAngle) * (RuneNairDistance*0.1);
+			}
+		}
+		
+		// Nair sticky values
 		if(instance_exists(bubble.last_hitbox))
 		{
 			if(bubble.last_hitbox.attack == AT_NAIR)
@@ -883,6 +1103,13 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		{
 			BubbleFriction*=0.7;
 		}
+		
+		// Funny low friction via rune
+		if(has_rune("G"))
+		{
+			BubbleFriction*=1.05;
+		}
+		
 		var BubbleBounceSpeedLoss = 0.2;
 		
 		bubble.hsp *= BubbleFriction;
@@ -982,6 +1209,11 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 
 #define CreateNewBubble(_x, _y, _size, _hsp, _vsp)
 {
+	if(has_size_increase_rune)
+	{
+		_size = min(_size + 1, BIG);
+	}
+	
     var newbubble = 
     {
         sprite_index : _size == TINY ? sprite_get("tiny_bubble") : _size == SMALL ? sprite_get("small_bubble") : sprite_get("big_bubble") ,
@@ -1186,6 +1418,24 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		sound_play(sound_get("soap_crackle" + string((random_func(12,9,true)+1))));
 	}
 }
+#define RuneSplitBubble(_bubble)
+{
+	// Split bubble rune
+	if(has_rune("K") && _bubble.size > TINY)
+	{
+		var HasSizeIncreaseRune = has_size_increase_rune;
+
+		has_size_increase_rune = false;
+		
+		var RuneBubble1 = CreateNewBubble(_bubble.x,_bubble.y,_bubble.size-1,-8,0);
+		var RuneBubble2 = CreateNewBubble(_bubble.x,_bubble.y,_bubble.size-1,8,0);
+		
+		RuneBubble1.lockout_timer = 6;
+		RuneBubble2.lockout_timer = 6;
+		
+		has_size_increase_rune = HasSizeIncreaseRune;
+	}
+}
 
 #define GetBubbleSpriteName(_bubble)
 {
@@ -1204,4 +1454,8 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 #define GetBubbleExplosionSprite(_bubble)
 {
 	return _bubble.size == TINY ? tiny_bubble_explosion_sprite : _bubble.size == SMALL ? small_bubble_explosion_sprite : big_bubble_explosion_sprite;
+}
+#define RuneGetBubbleExplosionSprite(_bubble)
+{
+	return _bubble.size == TINY ? small_bubble_explosion_sprite : big_bubble_explosion_sprite;
 }

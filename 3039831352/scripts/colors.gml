@@ -148,41 +148,41 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 255, 255, 255); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 235, 153, 153); //portrait light (super)
 
-pal_num ++; //7 - silver (super silver)
-set_color_profile_slot(pal_num, 0, 83, 224, 168); //aura
-set_color_profile_slot(pal_num, 1, 243, 251, 252); //blue
-set_color_profile_slot(pal_num, 2, 230, 177, 74); //green
-set_color_profile_slot(pal_num, 3, 245, 215, 180); //skin
-set_color_profile_slot(pal_num, 4, 0, 207, 148); //red
-set_color_profile_slot(pal_num, 5, 30, 106, 156); //white - clothes
+pal_num ++ //7 - rouge
+set_color_profile_slot(pal_num, 0, 240, 130, 234); //aura
+set_color_profile_slot(pal_num, 1, 255, 245, 250); //blue
+set_color_profile_slot(pal_num, 2, 0, 255, 200); //green
+set_color_profile_slot(pal_num, 3, 235, 144, 70); //skin
+set_color_profile_slot(pal_num, 4, 255, 48, 200); //red
+set_color_profile_slot(pal_num, 5, 26, 12, 41); //white - clothes
 set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
 set_color_profile_slot(pal_num, 7, 255, 255, 255); //portrait light
-set_color_profile_slot(pal_num, 8, 152, 242, 220); //aura (super)
-set_color_profile_slot(pal_num, 9, 166, 147, 82); //blue (super)
-set_color_profile_slot(pal_num, 10, 255, 0, 0); //green (super)
+set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
+set_color_profile_slot(pal_num, 9, 194, 151, 171); //blue (super)
+set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
 set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
 set_color_profile_slot(pal_num, 12, 999, 999, 999); //red (super)
 set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
-set_color_profile_slot(pal_num, 15, 255, 255, 255); //portrait light (super)
+set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 
-pal_num ++; //8 - blaze (burning blaze)
-set_color_profile_slot(pal_num, 0, 237, 95, 168); //aura
-set_color_profile_slot(pal_num, 1, 203, 129, 222); //blue
-set_color_profile_slot(pal_num, 2, 255, 184, 79); //green
-set_color_profile_slot(pal_num, 3, 245, 245, 245); //skin
-set_color_profile_slot(pal_num, 4, 237, 39, 142); //red
-set_color_profile_slot(pal_num, 5, 255, 255, 255); //white - clothes
+pal_num ++; //8 - cream
+set_color_profile_slot(pal_num, 0, 255, 220, 176); //aura
+set_color_profile_slot(pal_num, 1, 255, 207, 143); //blue
+set_color_profile_slot(pal_num, 2, 219, 88, 27); //green
+set_color_profile_slot(pal_num, 3, 255, 252, 242); //skin
+set_color_profile_slot(pal_num, 4, 255, 123, 0); //red
+set_color_profile_slot(pal_num, 5, 54, 174, 255); //white - clothes
 set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
-set_color_profile_slot(pal_num, 7, 240, 194, 233); //portrait light
+set_color_profile_slot(pal_num, 7, 255, 244, 235); //portrait light
 set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
-set_color_profile_slot(pal_num, 9, 217, 100, 107); //blue (super)
+set_color_profile_slot(pal_num, 9, 212, 153, 98); //blue (super)
 set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
 set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
-set_color_profile_slot(pal_num, 12, 207, 47, 23); //red (super)
+set_color_profile_slot(pal_num, 12, 999, 999, 999); //red (super)
 set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
-set_color_profile_slot(pal_num, 15, 252, 230, 230); //portrait light (super)
+set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 
 pal_num ++; //9 - scourge (super scourge)
 set_color_profile_slot(pal_num, 0, 0, 255, 0); //aura
@@ -424,23 +424,23 @@ set_color_profile_slot(pal_num, 13, 247, 210, 111); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 255, 249, 214); //portrait light (super)
 
-pal_num ++; // 19 - the flash
-set_color_profile_slot(pal_num, 0, 242, 62, 48); //aura
-set_color_profile_slot(pal_num, 1, 242, 62, 48); //blue
-set_color_profile_slot(pal_num, 2, 14, 152, 232); //green
-set_color_profile_slot(pal_num, 3, 250, 187, 144); //skin
-set_color_profile_slot(pal_num, 4, 255, 191, 0); //red
-set_color_profile_slot(pal_num, 5, 255, 191, 0); //white - clothes
-set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
-set_color_profile_slot(pal_num, 7, 247, 179, 91); //portrait light
-set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
-set_color_profile_slot(pal_num, 9, 999, 999, 999); //blue (super)
-set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
-set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
-set_color_profile_slot(pal_num, 12, 999, 999, 999); //red (super)
-set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
-set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
-set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
+pal_num ++; // 19 - so blast processing
+set_color_profile_slot(pal_num, 0, 87, 101, 222); //aura
+set_color_profile_slot(pal_num, 1, 82, 82, 189); //blue
+set_color_profile_slot(pal_num, 2, 48, 48, 48); //green
+set_color_profile_slot(pal_num, 3, 219, 157, 134); //skin
+set_color_profile_slot(pal_num, 4, 222, 0, 0); //red
+set_color_profile_slot(pal_num, 5, 222, 222, 222); //white - clothes
+set_color_profile_slot(pal_num, 6, 222, 222, 222); //white - eyes
+set_color_profile_slot(pal_num, 7, 150, 160, 255); //portrait light
+set_color_profile_slot(pal_num, 8, 240, 240, 62); //aura (super)
+set_color_profile_slot(pal_num, 9, 240, 240, 62); //blue (super)
+set_color_profile_slot(pal_num, 10, 48, 48, 48); //green (super)
+set_color_profile_slot(pal_num, 11, 219, 157, 134); //skin (super)
+set_color_profile_slot(pal_num, 12, 222, 0, 0); //red (super)
+set_color_profile_slot(pal_num, 13, 222, 222, 222); //white - clothes (super)
+set_color_profile_slot(pal_num, 14, 222, 222, 222); //white - eyes (super)
+set_color_profile_slot(pal_num, 15, 255, 255, 250); //portrait light (super)
 
 pal_num ++; // 20 - dark sonic (dark super sonic)
 set_color_profile_slot(pal_num, 0, 38, 58, 246); //aura
@@ -460,7 +460,25 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 48, 48, 74); //portrait light (super)
 
-pal_num ++; // 21 - snick (& snick.exe) (super snick)
+pal_num ++; // 21 - the flash
+set_color_profile_slot(pal_num, 0, 242, 62, 48); //aura
+set_color_profile_slot(pal_num, 1, 242, 62, 48); //blue
+set_color_profile_slot(pal_num, 2, 14, 152, 232); //green
+set_color_profile_slot(pal_num, 3, 250, 187, 144); //skin
+set_color_profile_slot(pal_num, 4, 255, 191, 0); //red
+set_color_profile_slot(pal_num, 5, 255, 191, 0); //white - clothes
+set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
+set_color_profile_slot(pal_num, 7, 247, 179, 91); //portrait light
+set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
+set_color_profile_slot(pal_num, 9, 999, 999, 999); //blue (super)
+set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
+set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
+set_color_profile_slot(pal_num, 12, 999, 999, 999); //red (super)
+set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
+set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
+set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
+
+pal_num ++; // 22 - snick (& snick.exe) (super snick)
 set_color_profile_slot(pal_num, 0, 163, 81, 245); //aura
 set_color_profile_slot(pal_num, 1, 152, 80, 248); //blue
 set_color_profile_slot(pal_num, 2, 0, 0, 0); //green
@@ -478,7 +496,7 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 255, 255, 255); //portrait light (super)
 
-pal_num ++; // 22 - maypul
+pal_num ++; // 23 - maypul
 set_color_profile_slot(pal_num, 0, 169, 245, 124); //aura
 set_color_profile_slot(pal_num, 1, 108, 155, 113); //blue
 set_color_profile_slot(pal_num, 2, 37, 141, 172); //green
@@ -496,7 +514,7 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 
-pal_num ++; // 23 - bar (theikos state bar)
+pal_num ++; // 24 - bar (theikos state bar)
 set_color_profile_slot(pal_num, 0, 38, 153, 255); //aura
 set_color_profile_slot(pal_num, 1, 245, 117, 50); //blue
 set_color_profile_slot(pal_num, 2, 84, 47, 0); //green
@@ -514,7 +532,7 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 204, 255, 255); //portrait light (super)
 
-pal_num ++; // 24 - keqing
+pal_num ++; // 25 - keqing
 set_color_profile_slot(pal_num, 0, 223, 128, 255); //aura
 set_color_profile_slot(pal_num, 1, 200, 132, 227); //blue
 set_color_profile_slot(pal_num, 2, 214, 66, 202); //green
@@ -532,15 +550,15 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 
-pal_num ++; // 25 - rumia
+pal_num ++; // 26 - rumia
 set_color_profile_slot(pal_num, 0, 78, 23, 133); //aura
-set_color_profile_slot(pal_num, 1, 240, 187, 62); //blue
+set_color_profile_slot(pal_num, 1, 227, 193, 100); //blue
 set_color_profile_slot(pal_num, 2, 214, 0, 0); //green
 set_color_profile_slot(pal_num, 3, 247, 214, 165); //skin
-set_color_profile_slot(pal_num, 4, 26, 28, 31); //red
-set_color_profile_slot(pal_num, 5, 255, 255, 255); //white - clothes
+set_color_profile_slot(pal_num, 4, 255, 237, 237); //red
+set_color_profile_slot(pal_num, 5, 36, 32, 29); //white - clothes
 set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
-set_color_profile_slot(pal_num, 7, 255, 243, 110); //portrait light
+set_color_profile_slot(pal_num, 7, 242, 226, 184); //portrait light
 set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
 set_color_profile_slot(pal_num, 9, 999, 999, 999); //blue (super)
 set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
@@ -550,7 +568,7 @@ set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 999, 999, 999); //portrait light (super)
 
-pal_num ++; // 26 - hud color (uses default as a base)
+pal_num ++; // 27 - hud color (uses default as a base)
 set_color_profile_slot(pal_num, 0, 61, 206, 255); //aura
 set_color_profile_slot(pal_num, 1, 38, 58, 246); //blue
 set_color_profile_slot(pal_num, 2, 2, 149, 2); //green
@@ -590,3 +608,42 @@ set_color_profile_slot(pal_num, 13, 255, 255, 255); //white - clothes (super)
 set_color_profile_slot(pal_num, 14, 255, 255, 255); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 255, 164, 99); //portrait light (super)
 //shading data: [1, -1, 1, 1, 1, 1, 1, 1]
+
+
+pal_num ++; //7 - silver (super silver)
+set_color_profile_slot(pal_num, 0, 83, 224, 168); //aura
+set_color_profile_slot(pal_num, 1, 243, 251, 252); //blue
+set_color_profile_slot(pal_num, 2, 230, 177, 74); //green
+set_color_profile_slot(pal_num, 3, 245, 215, 180); //skin
+set_color_profile_slot(pal_num, 4, 0, 207, 148); //red
+set_color_profile_slot(pal_num, 5, 30, 106, 156); //white - clothes
+set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
+set_color_profile_slot(pal_num, 7, 255, 255, 255); //portrait light
+set_color_profile_slot(pal_num, 8, 152, 242, 220); //aura (super)
+set_color_profile_slot(pal_num, 9, 166, 147, 82); //blue (super)
+set_color_profile_slot(pal_num, 10, 255, 0, 0); //green (super)
+set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
+set_color_profile_slot(pal_num, 12, 999, 999, 999); //red (super)
+set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
+set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
+set_color_profile_slot(pal_num, 15, 255, 255, 255); //portrait light (super)
+[1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //silver
+
+pal_num ++; //8 - blaze (burning blaze)
+set_color_profile_slot(pal_num, 0, 237, 95, 168); //aura
+set_color_profile_slot(pal_num, 1, 203, 129, 222); //blue
+set_color_profile_slot(pal_num, 2, 255, 184, 79); //green
+set_color_profile_slot(pal_num, 3, 245, 245, 245); //skin
+set_color_profile_slot(pal_num, 4, 237, 39, 142); //red
+set_color_profile_slot(pal_num, 5, 255, 255, 255); //white - clothes
+set_color_profile_slot(pal_num, 6, 255, 255, 255); //white - eyes
+set_color_profile_slot(pal_num, 7, 240, 194, 233); //portrait light
+set_color_profile_slot(pal_num, 8, 999, 999, 999); //aura (super)
+set_color_profile_slot(pal_num, 9, 217, 100, 107); //blue (super)
+set_color_profile_slot(pal_num, 10, 999, 999, 999); //green (super)
+set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
+set_color_profile_slot(pal_num, 12, 207, 47, 23); //red (super)
+set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
+set_color_profile_slot(pal_num, 14, 999, 999, 999); //white - eyes (super)
+set_color_profile_slot(pal_num, 15, 252, 230, 230); //portrait light (super)
+[1, 1, 1, 1, 1, 1, 1, 1,        1, -1, 1, 1, 1, 1, 1, 1], //blaze

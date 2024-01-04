@@ -75,7 +75,7 @@ set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 hitbox_num ++; //blue tornado
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 60);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 40);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -44);
 //set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 96);

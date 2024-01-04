@@ -27,6 +27,8 @@ if (alt_prev != alt_cur || prev_spr_set != cur_spr_set)
     }
     if (prev_spr_set != cur_spr_set) prev_spr_set = cur_spr_set;
 }
+secret_active = get_player_name(player) == "461225";
+
 
 //button stuff
 var is_cpu = (get_player_hud_color(player) == 8421504);
@@ -118,8 +120,8 @@ if (instance_exists(cursor_id))
 
             update_sync_var();
 
-            sound_stop(sound_get(alt_cur == 20 || has_rune("M") ? "mfx_denied" : "mfx_voice"))
-            sound_play(sound_get(alt_cur == 20 || has_rune("M") ? "mfx_denied" : "mfx_voice"))
+            sound_stop(sound_get("mfx_voice"))
+            sound_play(sound_get("mfx_voice"))
 
             press_delay = 3;
             spr_set_button_state = 2;

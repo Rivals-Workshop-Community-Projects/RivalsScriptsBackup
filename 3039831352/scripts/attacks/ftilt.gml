@@ -30,9 +30,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7); //0.5
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
-//because we set num windows in the end and not the start of the file we need to put all window goto values here
-set_window_value(atk, 3, AG_WINDOW_GOTO, get_attack_value(atk, AG_NUM_WINDOWS)+1);
-
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 
 hitbox_num = 1; //high hitbox

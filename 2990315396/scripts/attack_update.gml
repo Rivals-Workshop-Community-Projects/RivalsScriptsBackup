@@ -5,10 +5,13 @@
 switch (attack)
 {
 	case AT_NSPECIAL:
-	case AT_FSPECIAL:
 	case AT_USPECIAL:
-	case AT_DSPECIAL:
 		trigger_b_reverse();
+		break;
+
+	case AT_FSPECIAL:
+	case AT_DSPECIAL:
+		if (!move_cooldown[AT_DSPECIAL]) trigger_b_reverse();
 		break;
 
       case AT_JAB:
@@ -47,7 +50,7 @@ switch (attack)
 	{
 			char_height = ease_quadIn(50, 100, window_timer, 2);
         }  
-	if ((window == 3 || window == 4) && !hitpause)
+	if (((window == 3 && window_timer > 10) || window == 4) && !hitpause)
 	{
 		if (easetimer < 5)
 		{
@@ -186,7 +189,7 @@ switch (attack)
       break;
 
 	case AT_NAIR:
-	if (window = 1 && window_timer = 5 && !hitpause)
+	if (window = 1 && window_timer = 7 && !hitpause)
 	{
 		sound_play(asset_get("sfx_spin"))
 	}
@@ -327,6 +330,18 @@ switch (attack)
       {
           iasa_script();
           set_state(PS_LANDING_LAG);
+      }
+
+      if (window != 5)
+      {
+		if (window = 1)
+		{
+			hsp = clamp(hsp, -6 +(window_timer/6), 6-(window_timer/6))
+		}
+		else
+		{
+			hsp = clamp(hsp, -3, 3)
+		}
       }
       break;
 
@@ -577,9 +592,11 @@ switch (attack)
 		    hsp = nspecial_accel * spr_dir * window_timer;
 		    vsp = min(vsp, 3);
                 nspecial_jump_timer = 0;
+		nspecial_dir = spr_dir;
             }
             if (window = 2)
             {
+			spr_dir = nspecial_dir;
 		    hsp = nspecial_max_hsp * spr_dir;
 		    vsp = min(vsp, max_fall * 0.75);
 		    nspecial_mach_timer = nspecial_mach_duration + 1;
@@ -629,7 +646,7 @@ switch (attack)
                         //soft_armor = 10; i though peppino's had super armor haha
 				nspecial_mach_timer = 0;
                         nspecial_jump_timer++
-                        if (nspecial_jump_timer > 40)
+                        if (nspecial_jump_timer > 40 && !was_parried)
                         {
                             can_jump = true;
                             can_shield = true;
@@ -639,9 +656,12 @@ switch (attack)
             }
             if (window = 6)
             {
-				nspecial_mach_timer = 0;
+			nspecial_mach_timer = 0;
+			if (!was_parried)
+			{
 				can_fast_fall = (window_timer >= 15 + has_hit*7);
 				can_wall_jump = true;
+			}
 			      super_armor = false;
                         //soft_armor = 0;
                         hsp = clamp(hsp, -3, 3)
@@ -668,7 +688,8 @@ switch (attack)
             vsp = min(-4, vsp);
             hsp = -2*spr_dir;
         }
-        move_cooldown[AT_FSPECIAL] = 24;
+        //move_cooldown[AT_FSPECIAL] = 24;
+        move_cooldown[AT_FSPECIAL] = 90;
         break;
 
 
@@ -745,7 +766,7 @@ switch (attack)
             if (free) vsp = min(-3, vsp);
             hsp = clamp(hsp,-4,4);
         }
-        move_cooldown[AT_DSPECIAL] = 60;
+        move_cooldown[AT_DSPECIAL] = 120;
         break;
 }
 

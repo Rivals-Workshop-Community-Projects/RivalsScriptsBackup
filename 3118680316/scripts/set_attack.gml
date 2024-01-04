@@ -15,3 +15,11 @@ if(attack == AT_DSPECIAL)
 {
     if(!can_dspecial_air && !explosive_special) move_cooldown[AT_DSPECIAL] = 1;
 }
+
+if(attack == AT_NSPECIAL)
+{
+    if(has_rune("C"))
+    {
+        set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);
+    }
+}

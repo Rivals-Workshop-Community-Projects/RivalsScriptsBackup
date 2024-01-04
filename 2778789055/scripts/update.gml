@@ -141,6 +141,7 @@ if (get_gameplay_time() < 120){
     set_color_profile_slot( 14, 6, 145, 85, 59 );
     set_color_profile_slot( 14, 7, 212, 40, 40 ); 
     	pot_skin = 3;
+    	set_victory_portrait(sprite_get("portrait_michigan"));
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_kfc"));
 	set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_kfc"));
 		avocado = true;
@@ -161,6 +162,7 @@ if (get_gameplay_time() < 120){
     set_color_profile_slot( 14, 6, 145, 85, 59 );
     set_color_profile_slot( 14, 7, 212, 40, 40 ); 
     	pot_skin = 3;
+    	set_victory_portrait(sprite_get("portrait_michigan"));
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_kfc"));
 	set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_kfc"));
 		secret_alt_num = 2;

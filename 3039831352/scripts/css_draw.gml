@@ -3,7 +3,7 @@
 alt_cur = get_player_color(player);
 
 //setting up super sonic button disable
-spr_set_button_available = (alt_cur != 20 && !has_rune("M"))
+spr_set_button_available = (alt_cur != 20 && !has_rune("M") && !secret_active)
 if (!spr_set_button_available && cur_spr_set != 0) cur_spr_set = 0;
 else if (spr_set_button_available && stored_spr_set == 1) cur_spr_set = stored_spr_set;
 
@@ -13,47 +13,67 @@ shader_end();
 prepare_shader();
 
 //outline colors - different function but works like the outline_color array
-switch (alt_cur)
+if (!secret_active)
 {
-    case 14: set_outline(15, 56, 15); break; //early access / gameboy
-    default:
-        set_outline(
-            cur_spr_set ? cur_colors[8][0]-200 : 0,
-            cur_spr_set ? cur_colors[8][1]-200 : 0,
-            cur_spr_set ? cur_colors[8][2]-200 : 0
-        );
+    switch (alt_cur)
+    {
+        case 14: set_outline(15, 56, 15); break; //early access / gameboy
+        default:
+            set_outline(
+                cur_spr_set ? cur_colors[8][0]-200 : 0,
+                cur_spr_set ? cur_colors[8][1]-200 : 0,
+                cur_spr_set ? cur_colors[8][2]-200 : 0
+            );
 
-        if (alt_cur == 5 && cur_spr_set == 0) set_outline(10, 36, 107); //chaos 0 alt
-        break;
+            if (alt_cur == 5 && cur_spr_set == 0) set_outline(10, 36, 107); //chaos 0 alt
+            break;
+    }
+}
+else
+{
+    set_outline(temp_outline_color[0], temp_outline_color[1], temp_outline_color[2]);
 }
 
 
 shader_start();
 
 //draw portrait again to prevent fuckups
-draw_sprite_ext(get_skin_sprite("charselect"), 0, x+8, y+8, 2, 2, 0, c_white, 1);
-
-//show idles
-if (alt_cur == 5)
+if (!secret_active)
 {
-    if (cur_spr_set == 0)
+    draw_sprite_ext(get_skin_sprite("charselect"), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+    if (alt_cur == 5)
     {
-        maskHeader();
-        draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-        maskMidder();
-        draw_sprite_tiled(sprite_get("alt_chaos"), css_anim_time * 0.15, x, y + (-css_anim_time/8));
-        maskFooter();
-        draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+        if (cur_spr_set == 0)
+        {
+            maskHeader();
+            draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+            maskMidder();
+            draw_sprite_tiled(sprite_get("alt_chaos"), css_anim_time * 0.15, x, y + (-css_anim_time/8));
+            maskFooter();
+            draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+        }
+        draw_sprite_ext(get_skin_sprite("charselect_ex"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
     }
-    draw_sprite_ext(get_skin_sprite("charselect_ex"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    if (alt_cur == 14) draw_sprite_ext(get_skin_sprite("charselect_ex"), 1, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    if (alt_cur == 15) draw_sprite_ext(get_skin_sprite("charselect_ex"), 3, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
+    {
+        shader_end();
+        prepare_shader();
+        draw_sprite_ext(get_skin_sprite("charselect_ex"), 2, x + 8, y + 8, 2, 2, 0, c_white, 1);
+        shader_start();
+    }
 }
-if (alt_cur == 14) draw_sprite_ext(get_skin_sprite("charselect_ex"), 1, x + 8, y + 8, 2, 2, 0, c_white, 1);
-if (alt_cur == 15) draw_sprite_ext(get_skin_sprite("charselect_ex"), 3, x + 8, y + 8, 2, 2, 0, c_white, 1);
-if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
+else
 {
     shader_end();
-    prepare_shader();
-    draw_sprite_ext(get_skin_sprite("charselect_ex"), 2, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("461225_bg"), 0, x+10, y+10, 2, 2, 0, c_white, 1);
+    //draw_sprite_ext(sprite_get("461225_charselect"), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+    draw_debug_text(floor(x) + 40, floor(y) + 72, "Fun is infinite");
+    draw_debug_text(floor(x) + 40, floor(y) + 88, "with Rivals Workshop");
+
+    draw_debug_text(floor(x) + 160, floor(y) + 120, "- Bar");
     shader_start();
 }
 
@@ -89,40 +109,48 @@ if (spr_set_button_available)
     );
 }
 
-//alt icons
-if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
-
-//alt boxes
+//alt boxes + icons
 draw_set_halign(fa_left);
-var thin = alt_total > 16;
 rectDraw(x+78, y+9, 132, 6, c_black);
-for (i = 0; i < alt_total; i++)
-{
-	var draw_color = (i == alt_cur) ? c_white : c_gray * 0.5;
-	var draw_x = x + 78 + (thin ? 4 : 8) * i;
-	rectDraw(draw_x, y + 9, thin ? 1 : 5, 4, draw_color);
-}
-var txt = "#" + string(alt_cur);
 rectDraw(x + 76, y + 15, 42, 20, c_black);
-textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt, false);
 
-//animation - alt name text
-if (css_anim_time < 140)
+if (secret_active)
 {
-    textDraw(
-        floor(x) + (css_anim_time < 10 ? 10 + floor(css_anim_time) : 20 + floor(css_anim_time / 10)),
-        floor(y) + 43,
-        "fName",
-        c_white,
-        0,
-        1000,
-        fa_left,
-        1,
-        true,
-        css_anim_time < 10 ? css_anim_time * 0.1 : css_anim_time*-0.05+7,
-        string(alt_name[alt_cur]),
-        false
-    );
+    draw_sprite_ext(sprite_get("461225"), 1, x + 80, y + 16, 2, 2, 0, c_white, 1);
+    //draw_sprite_ext(sprite_get("461225"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1);
+}
+else
+{
+    var thin = alt_total > 16;
+    for (i = 0; i < alt_total; i++)
+    {
+        var draw_color = (i == alt_cur) ? c_white : c_gray * 0.5;
+        var draw_x = x + 78 + (thin ? 4 : 8) * i;
+        rectDraw(draw_x, y + 9, thin ? 1 : 5, 4, draw_color);
+    }
+    var txt = "#" + string(alt_cur);
+    textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt, false);
+
+    if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
+
+    //animation - alt name text
+    if (css_anim_time < 140 && alt_cur < alt_total)
+    {
+        textDraw(
+            floor(x) + (css_anim_time < 10 ? 10 + floor(css_anim_time) : 20 + floor(css_anim_time / 10)),
+            floor(y) + 43,
+            "fName",
+            c_white,
+            0,
+            1000,
+            fa_left,
+            1,
+            true,
+            css_anim_time < 10 ? css_anim_time * 0.1 : css_anim_time*-0.05+7,
+            string(alt_name[alt_cur]),
+            false
+        );
+    }
 }
 
 //supersonics CPU detection - displays outline

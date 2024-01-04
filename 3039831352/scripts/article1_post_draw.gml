@@ -60,7 +60,7 @@ if (offscreen_arrow_enabled)
 
         draw_sprite_ext(sprite_get("hud_offscreen_arrow"), offscreen_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, offscreen_col, 1);
         draw_sprite_ext(sprite_get("hud_offscreen_image"), 0, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, 0, c_white, 1); //ring
-        draw_sprite_ext(sprite_get("hud_offscreen_image"), 1, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, image_angle, c_white, 1); //arrow
+        //draw_sprite_ext(sprite_get("hud_offscreen_image"), 1, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, image_angle, c_white, 1); //arrow
     }
     else depth = orig_depth;
 }

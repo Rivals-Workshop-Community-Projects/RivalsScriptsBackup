@@ -29,7 +29,7 @@ char_height             = 56;                   //                  the height o
 //knockback_adj         = 1.2;		            // 0.9  -  1.2
 
 // Ground movement
-walk_speed              = 1;		            // 3    -  4.5      value is dynamic for sonic (1 - 5)
+//walk_speed            = 1;		            // 3    -  4.5      value is dynamic for sonic (1 - 5)
 //walk_accel            = 0.2;		            // 0.2  -  0.5
 walk_turn_time          = 6;		            // 6
 initial_dash_time       = 10;		            // 8    -  16       zetterburn's is 14
@@ -151,12 +151,12 @@ bubble_y = 8;
 
 small_djump = false;                // setting this to true gives characters the smaller double jump vfx from wrastor
 
-normal_wait_time = 0;               // if wait_time is over 0, staying in idle for the amount of frames specified the character will do a wait animation
-wait_length = 0;                    // this values sets how long the character is animated for in the wait animation
+normal_wait_time = 300;             // if wait_time is over 0, staying in idle for the amount of frames specified the character will do a wait animation
+wait_length = 286;                  // this values sets how long the character is animated for in the wait animation
 wait_sprite = sprite_get("wait");   // sets the wait animation sprite strip
 wait_time = normal_wait_time;
-
-
+match_time = [0, 0];
+waiting_time = 0;
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
@@ -216,7 +216,6 @@ attack_names = [ //has the names of all the attacks
 ];
 
 tempvar = 0; //repeat loops var
-
 window_end = 0; //the last frame (including whifflag if it's there)
 window_last = 0; //AG_NUM_WINDOWS
 window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
@@ -301,18 +300,25 @@ repeat (2)
     synced_vars[tempvar] = tmp_sync_vars >> shift & 15;
     tempvar ++;
 }
-temp_O = static_colorO;
-temp_B = static_colorB;
+
+temp_O = array_create(array_length(static_colorO), 0);
+temp_B = array_create(array_length(static_colorB), 0);
 
 was_free = free;
 is_bar_sonic = true;
-attack_down_timer = 0;
 force_vfx_depth = 0;
 hugging_wall = false;
 exist_timer = 0;
 hit_player_lock = 0;
 
-set_up_super_colors = synced_vars[1] && alt_cur != 20; //if true, it will let sonic set up the super form colors instead
+sonic_suicide = false; //outta here check
+total_players = 0;
+active_player_slots = [];
+
+//fun alt
+secret_active = (get_player_name(player) == "461225");
+
+set_up_super_colors = synced_vars[1] && alt_cur != 20 && !secret_active; //if true, it will let sonic set up the super form colors instead
 uses_super_sprites = false; //applies the super skin
 used_super_sprites = false; //checks if the super sprites apply or not so it checks for 1 frame
 uses_super_colors = set_up_super_colors && (was_reloaded || playtest_active); //applies the super sonic colors regardless of if sonic has a super form or not
@@ -372,8 +378,14 @@ boost_decrease_rate = [6, 3];       //passive decrease (divided by 60)          
 boost_hitloss_mult = [0, 1];        //multiplier reducing when getting hit                  //2, 4
 boost_parryloss = [20, 40];
 
+
+walk_spd_mult = 0; //acceleration on walk
+dash_spd_mult = 0; //acceleration on dash
+min_walk_spd = 0; //slowest walk speed
+min_dash_spd = 0; //speed where sonic transitions from walk to dash
+max_dash_spd = 0; //maximum dash speed
 //keep in mind some of the stats that change also change based on sonic's speed
-//      variable        norm    boost   super
+//      variable                norm    boost   super
 boost_stat_changes = [
     ["knockback_adj",           1.1,    1.2,    0.9],
     ["walk_accel",              0.2,    1,      "B"],
@@ -391,7 +403,13 @@ boost_stat_changes = [
     ["walljump_vsp",            9,      "",     12],
     ["walljump_time",           20,     "",     24],
     ["max_fall",                9,      "",     11],
-    ["wave_land_adj",           1.3,    "",     1.8]
+    ["wave_land_adj",           1.3,    "",     1.8],
+    //acceleration mechanic
+    ["walk_spd_mult",           1.014,  1.022,  1.026],
+    ["dash_spd_mult",           1.017,  1.025,  1.03],
+    ["min_walk_spd",            1.5,    2,      3],
+    ["min_dash_spd",            5,      7,      9],
+    ["max_dash_spd",            9,      11,     15]
 ];
 tempvar = 0;
 repeat(array_length(boost_stat_changes)) //stat translator
@@ -403,7 +421,6 @@ repeat(array_length(boost_stat_changes)) //stat translator
 
     tempvar ++;
 }
-
 
 afterimage = {
     spr: sprite_index,
@@ -491,6 +508,19 @@ runeB_bolting = false;
 runeB_hbox = noone;
 runeB_hitlock = 0
 runeB_hitlock_set = 10;
+if (has_rune("B")) //rune B stat changes
+{
+    tempvar = 0;
+    repeat (array_length(boost_stat_changes))
+    {
+        if (boost_stat_changes[tempvar][@ 0] == "walk_spd_mult") boost_stat_changes[tempvar][@ 1] = boost_stat_changes[tempvar][@ 2];
+        if (boost_stat_changes[tempvar][@ 0] == "dash_spd_mult") boost_stat_changes[tempvar][@ 1] = boost_stat_changes[tempvar][@ 2];
+        if (boost_stat_changes[tempvar][@ 0] == "min_walk_spd") boost_stat_changes[tempvar][@ 1] = boost_stat_changes[tempvar][@ 2];
+        if (boost_stat_changes[tempvar][@ 0] == "min_dash_spd") boost_stat_changes[tempvar][@ 1] = boost_stat_changes[tempvar][@ 2];
+        if (boost_stat_changes[tempvar][@ 0] == "max_dash_spd") boost_stat_changes[tempvar][@ 1] = boost_stat_changes[tempvar][@ 2];
+        tempvar ++;
+    }
+}
 
 //spin jump
 runeC_spinjump = false;
@@ -602,14 +632,10 @@ rings_cur = 0;
 rings_max = 999;
 //ring_life_caps_reached = [false, false, false, false, false, false, false, false, false];
 
-//old
-super_theme_time = 0;
-
 super_theme_loop_started = false;
 super_theme_loop_start_set = 2.835;
 super_theme_loop_start = super_theme_loop_start_set;
 super_theme_playing = false;
-
 
 ring_col = [$ffffff, $8281fd];
 ring_col_output = $ffffff;
@@ -645,7 +671,7 @@ fx_airdash_aura = [
 airdash_stats = [1, 0, 0, -1]; //type, x offset, y offset, time
 
 tornado_spr = sprite_get("fx_dstrong_tornado");
-switch (alt_cur) //swaps tornado's color to a different color for certain alts
+if (!secret_active) switch (alt_cur) //swaps tornado's color to a different color for certain alts
 {
     case 6: case 7: case 8: case 11: case 12: case 13: case 14: case 22:
         tornado_spr = sprite_get("fx_dstrong_tornado_alt");
@@ -700,7 +726,7 @@ plat_stat = [
 cur_plat = random_func(2, array_length(plat_stat), true); //random respawn platform
 
 //lord X alt
-is_fake_x = (my_alt == 16 && get_match_setting(SET_SEASON) == 3 && !playtest_active);
+is_fake_x = (my_alt == 16 && get_match_setting(SET_SEASON) == 3 && !playtest_active && !secret_active);
 is_lord_x = is_fake_x;
 if (is_lord_x) super_glow_intensity = 0;
 
@@ -733,6 +759,9 @@ if (is_fake_x)
     lord_x_decay_time = 0;
 }
 
+//dark sonic alt
+is_darksonic = my_alt == 20 && !secret_active;
+
 //UI setup
 set_ui_element(UI_HUD_ICON, sprite_get("hud_sonic_norm"));
 set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_sonic_hurt"));
@@ -762,6 +791,11 @@ switch (alt_cur)
             set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_ex3"));
 		}
 		break;
+}
+if (secret_active)
+{
+    set_ui_element(UI_WIN_PORTRAIT, sprite_get("461225_portrait"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("461225_result_small"));
 }
 
 //voice clips
@@ -847,6 +881,9 @@ fs_charge_mult = 0;
 
 //green flower zone
 gfzsignspr = sprite_get("gfz_signpost");
+
+//Miiverse posts
+miiverse_post = sprite_get("miiverse");
 
 //steve death messeges
 steve_death_message = "Steve underestimated sonic speed.";

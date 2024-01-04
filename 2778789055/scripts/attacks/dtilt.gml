@@ -3,7 +3,7 @@ set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 //startup
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_orcane_fspecial"));
@@ -16,7 +16,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //endlag
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

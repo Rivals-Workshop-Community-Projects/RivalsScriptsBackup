@@ -4,8 +4,7 @@
 
 if (destroy_fx == 0) destroy_fx = hit_effect;
 
-if (attack == AT_DSTRONG && hbox_num == 2) sound_play(sound_get("sfx_bluetornado_start"));
-loopsound = noone;
+if (attack == AT_DSTRONG && hbox_num == 2) loopsound = sound_play(sound_get("sfx_bluetornado_loop"), true);
 
 if (attack == 0) //stray hitboxes
 {

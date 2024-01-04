@@ -22,10 +22,12 @@ pers_fx.real_player = player;
 pers_fx.persistent = true;
 pers_fx.is_sonic_persist = true;
 pers_fx.is_hyper = super_col_lerp_time >= super_col_lerp_time_max*2 && (alt_cur == 0 || alt_cur == 26)
+pers_fx.secret_active = secret_active;
 for (var i = 0; i < 8; i ++)
 {
     pers_fx.colors[i] = cur_colors[i + 8 * uses_super_colors];
-    pers_fx.shades[i] = shading_data[alt_cur][i + 8 * uses_super_colors];
+    if (!secret_active) pers_fx.shades[i] = shading_data[alt_cur][i + 8 * uses_super_colors];
+    else pers_fx.shades[i] = 1;
 }
 
 if ("multihome_grid" in self && ds_grid_valid(multihome_grid)) ds_grid_destroy(multihome_grid);

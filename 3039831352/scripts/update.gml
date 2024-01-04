@@ -11,13 +11,11 @@ game_time = get_gameplay_time();
 exist_timer ++;
 if (hit_player_lock > 0) hit_player_lock = 0;
 
-if (attack_down) attack_down_timer ++;
-else attack_down_timer = 0;
-
 if (!playtest_active)
 {
-    with (oPlayer) //add enemies to invincibility check array, this is used to stop the boost mode gauge if every enemy is respawning or dead
+    with (oPlayer)
     {
+        //add enemies to invincibility check array, this is used to stop the boost mode gauge if every enemy is respawning or dead
         if (other.enemy_invince_check[player-1] == 99 && (is_player_on(player) && !clone && !custom_clone || player == 5))
         {
             //this also creates the slot for the player to use
@@ -33,6 +31,13 @@ if (!playtest_active)
         {
             other.enemy_count --;
             other.enemy_invince_check[player-1] = -1; //-1 means to ignore it completely
+        }
+
+        //checks total amount of players in general
+        if (other.exist_timer == 1 && is_player_on(player) && !clone && !custom_clone && player != 5)
+        {
+            other.total_players ++;
+            if (player != other.player) array_push(other.active_player_slots, player);
         }
     }
 }
@@ -93,13 +98,7 @@ if (game_time == 5 && state == PS_SPAWN && set_up_super_colors) //force super sp
 //////////////////////////////////////////////////////// CHARACTER SPECIFIC UPDATE /////////////////////////////////////////////////////////
 
 //sonic gradual speed up mechanic
-do_sonic_physics(
-    (boost_mode || is_super) ? 1.022 : 1.014,   //walk speed multiplyer         //old base mult: 1.012
-    (boost_mode || is_super) ? 1.025 : 1.017,   //dash speed multiplyer         //old base mult: 1.015
-    (boost_mode || is_super) ? 2 : 1,           //min walk speed
-    (boost_mode || is_super) ? 7 : 5,           //max walk/min dash speed
-    (boost_mode || is_super) ? 11 : 9           //max dash speed
-);
+do_sonic_physics();
 
 tempvar = 0;
 repeat (array_length(boost_stat_changes))
@@ -298,14 +297,17 @@ if (has_superform)
         }
 
         super_time ++;
-        if (super_time % 30 == 0) rings_cur --;
-        if (rings_cur <= 0)
+        if (!is_attacking || attack != 3)
         {
-            if (is_super)
+            if (super_time % 30 == 0) rings_cur --;
+            if (rings_cur <= 0)
             {
-                if (lang != 0 && state != PS_DEAD && state != PS_RESPAWN) voice_array(8); //super sonic end voiceclip
-                is_super = false;
-                outline_color = temp_outline_color;
+                if (is_super)
+                {
+                    if (lang != 0 && state != PS_DEAD && state != PS_RESPAWN) voice_array(8); //super sonic end voiceclip
+                    is_super = false;
+                    outline_color = temp_outline_color;
+                }
             }
         }
     }
@@ -336,7 +338,7 @@ else //boost mechanic
 
         white_flash_timer = 20 + (hitstop * hitpause);
         boost_mode = true;
-        if (my_alt == 20 && "super_form_active" not in self)
+        if (is_darksonic && "super_form_active" not in self)
         {
             uses_super_colors = true;
             super_col_lerp_time = super_col_lerp_time_max;
@@ -345,11 +347,11 @@ else //boost mechanic
     }
     else if (boost_cur <= 0 && boost_mode)
     {
-        if (my_alt == 20 && "super_form_active" not in self) uses_super_colors = false;
+        if (is_darksonic && "super_form_active" not in self) uses_super_colors = false;
         boost_mode = false;
     }
 
-    if (my_alt == 20 && !boost_mode && "super_form_active" not in self) //fade back to normal form (dark sonic alt)
+    if (is_darksonic && !boost_mode && "super_form_active" not in self) //fade back to normal form (dark sonic alt)
     {
         if (super_col_lerp_time > 0) super_col_lerp_time -= 3;
         else if (super_col_lerp_time < 0) super_col_lerp_time = 0;
@@ -676,7 +678,7 @@ if (has_rune("B"))
     }
     else if (is_super)
     {
-        if (state == PS_DASH && abs(hitpause ? old_hsp : hsp) == dash_speed && abs(hitpause ? old_hsp : hsp) > 7) runeB_bolting = true;
+        if (state == PS_DASH && abs(hitpause ? old_hsp : hsp) > min_dash_spd) runeB_bolting = true;
         else
         {
             if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && state_timer == 0) airdash_stats[3] = -1;
@@ -884,7 +886,11 @@ if (lang != 0)
         }
     }
 
-    if (lang != 0 && attack == 48 && window == 1 && window_timer == window_end-1) voice_array(8); //super sonic transformation
+    if (is_attacking && window_timer == window_end-1)
+    {
+        if (attack == 48 && window == 1) voice_array(8); //super sonic transformation
+        if (attack == 3 && (window == 3 || window == 11)) voice_array(10); //outta here
+    }
 }
 
 //super transformation animation
@@ -908,7 +914,7 @@ if (uses_super_colors && super_glow_intensity != 0) //super glow
 if (super_col_lerp_time != 0 && super_col_lerp_time != super_col_lerp_time_max && super_col_lerp_time != super_col_lerp_time_max*2) init_shader();
 
 //chaos emeralds super form back to normal
-if (("super_form_active" not in self || !super_form_active) && !has_superform && alt_cur != 20)
+if (("super_form_active" not in self || !super_form_active) && !has_superform && !is_darksonic)
 {
     if (super_col_lerp_time > 0 + (set_up_super_colors) * 48) super_col_lerp_time -= 3;
     if (uses_super_colors && super_col_lerp_time < super_col_lerp_time_max) uses_super_colors = false;
@@ -917,11 +923,9 @@ if (("super_form_active" not in self || !super_form_active) && !has_superform &&
 //lord X faking it
 if (is_fake_x)
 {
-    wait_time = 0;
     if (state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
     {
         is_fake_x = false;
-        wait_time = normal_wait_time;
         var fx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("lordX_jumpscare"), 40));
         fx.depth = depth - 1;
         fx.uses_shader = false;
@@ -936,6 +940,47 @@ if (is_fake_x)
     }
 }
 if ("lord_x_decaying" in self) lord_x_decaying = (get_match_setting(SET_TIMER) > 0 && !get_match_setting(SET_PRACTICE) && !is_super);
+
+//waiting animation setup
+if (is_fake_x) wait_time = 0;
+else if (uses_super_sprites) wait_time = 0;
+else
+{
+    wait_time = normal_wait_time;
+
+    match_time = [
+        floor( ( (get_match_setting(SET_TIMER) == 0 || get_match_setting(SET_PRACTICE)) ? waiting_time : get_game_timer())/60/60),
+        floor( ( (get_match_setting(SET_TIMER) == 0 || get_match_setting(SET_PRACTICE)) ? waiting_time : get_game_timer())/60)%60,
+    ];
+    if (state == PS_IDLE || state == PS_RESPAWN || state == PS_IDLE_AIR) waiting_time ++;
+    else waiting_time = 0;
+}
+
+//i'm outta here - sonic will jump off after 2 minutes and 57 seconds
+if (!get_match_setting(SET_PRACTICE) && !playtest_active)
+{
+    if (waiting_time >= 10620 && attack != 3) //set the attack
+    {
+        set_attack(3);
+        if (uses_super_sprites) window = 10;
+    }
+    if (get_match_setting(SET_STOCKS) == 0 && sonic_suicide) //suicide check
+    {
+        if (total_players == 2) end_match(active_player_slots[0]);
+        set_state(PS_DEAD);
+    }
+}
+if (is_attacking && attack == 3) //may be unused but lets sonic do the animation off respawning
+{
+    if ((window == 8 || window == 11) && window_timer == 0)
+	{
+		if (invince_time > 0) invince_time = 0;
+		respawn_taunt = false;
+		hsp = get_window_value(attack, window, AG_WINDOW_HSPEED) * spr_dir;
+		vsp = get_window_value(attack, window, AG_WINDOW_VSPEED);
+	}
+}
+
 
 //having knuckles or tails in the same team as sonic has a unique interraction
 if (get_match_setting(SET_TEAMS))
@@ -1128,7 +1173,6 @@ with (pHitBox) if (orig_player == other.player)
     //if ("uses_shader" not in self) uses_shader = true;
 }
 
-chao_uses_alts = false;
 
 /////////////////////////////////////////////////////////////// WORKSHOP COMPAT ///////////////////////////////////////////////////////////////
 
@@ -1169,7 +1213,7 @@ custom_attack_grid();
 prep_hitboxes();
 
 //sonic physics
-#define do_sonic_physics(walk_spd_mult, dash_spd_mult, min_walk_spd, min_dash_spd, max_dash_spd)
+#define do_sonic_physics
 {
     //original code by rioku, modified by bar-kun
 
@@ -1490,7 +1534,7 @@ prep_hitboxes();
 		}
 	}
 }
-#define voice_array (num)
+#define voice_array(num)
 {
     if (lang != 0)
     {
@@ -1541,6 +1585,9 @@ prep_hitboxes();
             case 9: //taunt
                 var number = random_func_2(current_second, 3, true)+1;
                 cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_taunt" + string(number)));
+                break;
+            case 10: //outta here
+                cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_outtahere"));
                 break;
         }
         if (num != 7) voice_cooldown = voice_cooldown_set;

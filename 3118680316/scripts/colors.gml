@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Ranno
 set_color_profile_slot( 1, 0, 40, 124, 134 ); //Coat
@@ -220,6 +220,24 @@ set_color_profile_slot( 21, 3, 191, 179, 175 ); //Undercoat
 set_color_profile_slot( 21, 4, 242, 220, 214 ); //Undercoat2
 set_color_profile_slot( 21, 5, 17, 99, 85 ); //Detail
 set_color_profile_slot( 21, 6, 44, 156, 137 ); //Detail2
+
+// Syrcub
+set_color_profile_slot( 22, 0, 151, 23, 43 ); //Coat
+set_color_profile_slot( 22, 1, 215, 43, 43 ); //Coat2
+set_color_profile_slot( 22, 2, 255, 124, 0 ); //Coat3
+set_color_profile_slot( 22, 3, 208, 176, 136 ); //Undercoat
+set_color_profile_slot( 22, 4, 241, 223, 171 ); //Undercoat2
+set_color_profile_slot( 22, 5, 220, 60, 126 ); //Detail
+set_color_profile_slot( 22, 6, 255, 110, 183 ); //Detail2
+
+// TAG
+set_color_profile_slot( 23, 0, 255, 80, 74 ); //Coat
+set_color_profile_slot( 23, 1, 255, 147, 94 ); //Coat2
+set_color_profile_slot( 23, 2, 248, 187, 126 ); //Coat3
+set_color_profile_slot( 23, 3, 248, 229, 151 ); //Undercoat
+set_color_profile_slot( 23, 4, 247, 245, 218 ); //Undercoat2
+set_color_profile_slot( 23, 5, 71, 181, 67 ); //Detail
+set_color_profile_slot( 23, 6, 126, 239, 154 ); //Detail2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

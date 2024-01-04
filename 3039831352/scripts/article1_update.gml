@@ -77,7 +77,17 @@ switch (state)
             {
                 trick_ring_player = other.player;
                 trick_ring_player_id = other;
+                hud_owner_col = (trick_ring_player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
+
+                //spawn vfx
+                var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 18);
+                newdust.x = floor(x);
+                newdust.y = floor(y);
+                newdust.dust_fx = 9;
+                newdust.player = trick_ring_player;
+                sound_play(sound_get("sfx_rainbowring_swap"));
                 sound_play(asset_get("sfx_parry_success"));
+
                 ring_stun_start_time = 0;
                 set_artc_state(4);
 
@@ -106,7 +116,7 @@ switch (state)
                     else //a teammate without compatibility
                     {
                         other.launching_player = player;
-                        if (state == PS_HITSTUN && !hitpause) set_state(PS_IDLE_AIR);
+                        if (!hitpause) set_state(PS_IDLE_AIR);
                     }
                 }
                 else //enemy behaviour
@@ -158,6 +168,7 @@ switch (state)
                     y = other.y;
                     free = true;
                     other.ring_launch_speed = other.ring_base_spd + (point_distance(x, y, x + hsp, y + vsp/2) / 2);
+                    if (other.ring_launch_speed > other.ring_spd_limit) other.ring_launch_speed = other.ring_spd_limit;
 
                     //launch player up
                     if (state_cat != SC_HITSTUN && "is_bar_sonic" not in self) other.ring_launch_speed *= (gravity_speed/4+1);

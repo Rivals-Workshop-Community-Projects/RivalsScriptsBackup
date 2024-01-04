@@ -1,5 +1,13 @@
 //death.gml
 
+if (attack == 3) //kill sonic
+{
+    set_player_stocks(player, 1);
+    if (get_match_setting(SET_STOCKS) == 0) set_player_stocks(player, -999); //for stockless matches sonic just gets -999 so he's always losing
+    sonic_suicide = true;
+}
+mask_index = 6;
+
 boost_cur = 0;
 can_nspec = true;
 can_spawn_trick_ring = true;
@@ -42,7 +50,7 @@ if (has_superform)
     rings_cur = 0;
 }
 
-if (lang != 0)
+if (lang != 0 && attack != 3)
 {
     var number = random_func(6, 4, true)+1;
     if (number < 3) cur_voiceclip[0] = sound_play(sound_get("va_" + string(lang) + "_hurt_strong" + string(number)));

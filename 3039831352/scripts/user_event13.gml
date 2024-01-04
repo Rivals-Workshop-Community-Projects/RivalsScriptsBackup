@@ -129,7 +129,7 @@ if (has_superform)
         ring.ring_player = player;
     }
 
-    if (is_super) take_damage(hit_player_obj.player, player, floor(true_damage * 0.5)); //super sonic has a 1.5 damage multiplier
+    if (is_super) take_damage(hit_player_obj.player, player, floor(true_damage * 1)); //super sonic has a 1.5 damage multiplier
 }
 
 

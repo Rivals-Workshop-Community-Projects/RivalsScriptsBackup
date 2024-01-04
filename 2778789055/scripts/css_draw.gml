@@ -31,11 +31,23 @@ if (cursor_x > alt_button_pos[0] && cursor_x < alt_button_pos[2] && cursor_y > a
 //set_synced_var( player, secret_alt_on)
 //secret_alt_on = get_synced_var(player)
 if(!secret_alt_on){
-if (get_player_color(player)==23){
-        draw_sprite(sprite_get("drip_charselect"),0,x+8,y+8);
-}if (get_player_color(player)==25){
-        draw_sprite(sprite_get("charselect_summer"),0,x+8,y+8);
+switch (get_player_color(player)){
+	default:
+	set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
+    break;
+	
+    case 25:
+	set_ui_element(UI_CHARSELECT, sprite_get("charselect_summer"));
+    break;
+    case 26:
+	set_ui_element(UI_CHARSELECT, sprite_get("charselect4"));
+    break;
+    case 23:
+	set_ui_element(UI_CHARSELECT, sprite_get("drip_charselect"));
+    break;
 }
+}else{
+	set_ui_element(UI_CHARSELECT, sprite_get("charselect"));	
 }
 draw_sprite(sprite_get("stockicon"),0,x+156,y+34);
 if(is_alt_changeable){
@@ -47,8 +59,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "9";
-patch_month = "DEC";
+patch_day = "3";
+patch_month = "JAN";
  
 var num_alts = 27;
 var alt_cur = get_player_color(player);

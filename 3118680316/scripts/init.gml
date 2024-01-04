@@ -130,6 +130,29 @@ idleState = 0;
 set_victory_bg( sprite_get( "resultsbackground" ));
 set_victory_theme( sound_get( "soap_victory" ));
 
+//Amber interaction variables
+amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
+amber_thisHugSprite = sprite_get("awatsu_hug");
+amber_herHugSprite = sprite_get("amber_hug");
+amber_startHug = false; //This variable is set true from Amber's scripts
+amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite
+amber_autoTurnToHer = true; //This character will automatically face towards Amber upon hug activatation when true
+
+amber_hugStartPos[0] = 62; //The x target offset point (from Amber's pos) where the player should hug Amber at. 
+amber_hugStartPos[1] = 0; //The y target offset point. Recommended to keep this at 0 for grounded interaction
+
+amber_hugExitPos[0] = 62; //The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
+amber_hugExitPos[1] = 0; //The y target offset point.
+
+//The x target offset positions will inherit the character's spr_dir when this is true.
+//Set this to true for character interactions that face toward each other such as hugging
+//Set this to false for centered interaction animations
+amber_useSprDirOffset = true; 
+
+amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
+amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
+
+plushForAmber = sprite_get("plushie");
 
 // Intro
 introTimer = -4;
@@ -164,6 +187,12 @@ bubble_opacity = 0.9;
 bubble_list_size = 0;
 bubble_jumps = -1;
 close_bubbles = array_create(0);
+
+//#region Rune Variables
+rune_original_passive_bubble_timer = 120;
+rune_passive_bubble_timer = rune_original_passive_bubble_timer;
+has_size_increase_rune = has_rune("L");
+//#endregion Rune Variables
 
 //#region Bubble sprites
 

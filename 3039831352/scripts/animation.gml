@@ -12,6 +12,9 @@ if (sprite_index == sprite_get("idle") && is_fake_x)
 
 switch (state)
 {
+	case PS_IDLE:
+		if (sprite_index == sprite_get("wait") && image_index >= 36 && image_index < 41) hud_offset = 40;
+		break;
 	case PS_IDLE_AIR:
 		if (tails_grabbed_sonic)
 		{
@@ -27,8 +30,7 @@ switch (state)
 		}
 		break;
 	case PS_DASH:
-		var max_dash = boost_mode || is_super ? 11 : 9;
-		if (dash_speed == max_dash)
+		if (dash_speed == max_dash_spd)
 		{
 			sprite_index = sprite_get("dash_max");
 			image_index = state_timer * dash_anim_speed;
@@ -151,6 +153,31 @@ switch (state)
 
 					intro_plane_x += 6 * spr_dir;
 					intro_plane_y -= 11 + accel;
+				}
+				break;
+			case 3: //i'm outta here
+				switch (window)
+				{
+					case 6: case 7: //jump windup
+						sprite_index = sprite_get("jumpstart");
+						image_index = lerp(
+							get_window_value(3, window, AG_WINDOW_ANIM_FRAME_START),
+							get_window_value(3, window, AG_WINDOW_ANIM_FRAMES),
+							window_timer/window_end
+						);
+						break;
+					case 8: case 9: //jump off
+						sprite_index = sprite_get("jump");
+						image_index = lerp(0, image_number-0.0001, (vsp + jump_speed) / (jump_speed + max_fall));
+						if (image_index >= 5) image_index = (state_timer % 8 >= 4) + 5;
+						break;
+					case 16: //super sonic flying up
+						sprite_index = sprite_get("dash_max");
+						image_index = lerp(0, image_number, window_timer/window_end);
+						spr_angle = 90;
+						draw_x = 32;
+						draw_y = -40;
+						break;
 				}
 				break;
 		}

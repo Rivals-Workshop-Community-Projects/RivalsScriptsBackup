@@ -12,13 +12,27 @@ else
     {
         if (winner_name = "Sonic (TEST) WINS!") winner_name = "Sonic Wins!";
 
-        if (!get_match_setting(SET_TEAMS) && get_match_setting(SET_STOCKS) > 0)
+        if (get_match_setting(SET_STOCKS) > 0)
         {
             if (real_time == 0.5)
             {
-                stocks = round(get_player_stocks(player)/get_match_setting(SET_STOCKS)*3);
-                damage = (get_player_damage(player) < 100);
-                rank = stocks*2 - 1 - !damage * (stocks != 1);
+                if (get_match_setting(SET_TEAMS))
+                {
+                    team_count = 0;
+                    team_stocks = 0;
+                    for (var i = 1; i <= 4; i++) if (is_player_on(i) && get_player_team(i) == get_player_team(player))
+                    {
+                        team_count ++;
+                        team_stocks += get_player_stocks(i);
+                    }
+                    rank = round(team_stocks/(get_match_setting(SET_STOCKS)*team_count)*5);
+                }
+                else
+                {
+                    stocks = round(get_player_stocks(player)/get_match_setting(SET_STOCKS)*3);
+                    damage = (get_player_damage(player) < 100);
+                    rank = stocks*2 - 1 - !damage * (stocks != 1);
+                }
 
                 rank_timing = 20;
                 rank_offset_time = 220;

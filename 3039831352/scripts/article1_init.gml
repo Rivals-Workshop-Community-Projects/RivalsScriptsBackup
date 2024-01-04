@@ -18,6 +18,7 @@ player_used_ring = false;
 launching_player = 0; //player port
 ring_launch_speed = 0;
 ring_base_spd = 12;
+ring_spd_limit = 40;
 ring_air_fric = 0.6;
 ring_is_useable = false;
 
@@ -28,10 +29,10 @@ ring_collect_time = 60;
 ring_despawn_time = 20;
 
 trick_ring_player = player;
-trick_ring_player_id = self;
+trick_ring_player_id = player_id;
 
 hud_col_sel = [$ffffff, $241ced, $efb700, $b1a3ff, $1de6a8, $808080];
-hud_owner_col = get_match_setting(SET_TEAMS) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
+hud_owner_col = (trick_ring_player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
 
 offscreen_col = get_player_hud_color(player);
 offscreen_arrow_enabled = true;

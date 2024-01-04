@@ -160,3 +160,7 @@ sprite_change_offset("explosion_hit_small", 128, 128);
 sprite_change_offset("explosive_crackle_small", 64, 64);
 sprite_change_offset("explosive_crackle_medium", 64, 64);
 sprite_change_offset("explosive_crackle_large", 64, 64);
+
+// Amber
+sprite_change_offset("awatsu_hug", 32, 95);
+sprite_change_offset("amber_hug", 32, 95);
