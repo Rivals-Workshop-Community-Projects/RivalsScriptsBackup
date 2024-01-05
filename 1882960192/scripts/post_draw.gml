@@ -1,9 +1,9 @@
 //post_draw
 
-/*
-draw_debug_text( x, y + 60, string(wblastcharge));
-*/
 
+/*
+draw_debug_text( x, y + 40, string(wblastcharge));
+*/
 
 shader_start();
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL {

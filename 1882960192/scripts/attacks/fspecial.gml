@@ -39,7 +39,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 80);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 58);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 37);
@@ -66,7 +66,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("fspecial_proj_mask"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 5.5);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .0075);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0.01);

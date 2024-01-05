@@ -137,7 +137,7 @@ if(variable_instance_exists(id,"diag"))
     diagchoice = [
     "(Alright, Cinna, you can do this!)",
     "Is it battle time already...?",
-    "Let's do our best, okay?",
+    "Let's do our best, alright?",
     "Heya!"]
 
 //  Specific Character Interactions
@@ -160,7 +160,7 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "1882960192" && diag != "") 
     {
-        diag = "Blu?? But I don't want to fight you...";
+        diag = "Aw, do we really gotta fight, Blu...?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2007375819" && diag != "") 

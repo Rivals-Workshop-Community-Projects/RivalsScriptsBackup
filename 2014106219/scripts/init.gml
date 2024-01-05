@@ -28,7 +28,7 @@ jump_speed = 11;
 short_hop_speed = 5;
 djump_speed = 9;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
@@ -135,22 +135,22 @@ dracula_portrait = sprite_get("dracportrait1");
 dracula_portrait2 = sprite_get("dracportrait2");
 var page = 0;
 dracula_speaker[page] = 0;
-dracula_text[page] = "And what brings this little girl into my castle?";
+dracula_text[page] = "And what brings this young lady into my castle?";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh wow, is this your house? It's huge! Me and my bro just HAD to check it out. Have you met him? He's, like, a REALLY blue guy. And I mean the color.";
+dracula_text[page] = "Oh wow, is this your house? Me and my bro just HAD to check it out. What a huge and pretty place, though there's a little too many skeletons and zombies for my taste...";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "I have met many people in this room lately, but I don't take too kind to intruders in my domain of night monsters. Not even children such as you!";
+dracula_text[page] = "Hmph... Few humans have come here and lived to admire the architecture of this place. And nonetheless, you're still a trespasser in my domain of night monsters!";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Ohhh... I see what's going on here... You're that Count Dracula, aren't you? The one who gets beaten into a pulp by burly dudes with whips and crosses?";
+dracula_text[page] = "...Oh, I see what's going on here. You're that Count Dracula, aren't you? The one who's really weak to crosses and whips?";
 page++;
 dracula_speaker[page] = 2;
-dracula_text[page] = "Well, guess what! I don't have a whip or a cross, but I'm not afraid of you!";
+dracula_text[page] = "Well, I may not have a whip or a cross, but I'm not afraid of you!";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "Hmph. You're a brave one, little girl, but undisciplined children must be punished! [glass]";
+dracula_text[page] = "You're a brave one, little girl. But undisciplined children must be punished! [glass]";
 page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "Oh yeah? And old geezers like you must be...uh...retired! Yeah, that's it!";

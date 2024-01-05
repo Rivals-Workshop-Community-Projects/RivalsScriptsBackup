@@ -15,7 +15,9 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_wall_jump = true;
 	can_fast_fall = false;
-	can_move = false;
+	if 5 > window {
+		can_move = false;
+	}
 	if window == 2 && window_timer == 2 {
 		spawn_base_dust(x, y, "dash_start");
 	}
@@ -25,12 +27,20 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 			shaboingboing = 1;
 		}
 	}
+	/*
 	if shaboingboing && !has_hit {
 		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
-		/*set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE, 7);*/
 		} else {
 		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
-		/*reset_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_TYPE);*/
+	}
+	*/
+	
+	if window == 2 && window_timer == 6 && free {
+			set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 17);
+			set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 23);
+	} else {
+			reset_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED);
+			reset_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED);	
 	}
 	
 	if window == 4 && window_timer == 3 {
@@ -44,6 +54,10 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	
 	if window == 5 && 5 > window_timer {
 		vsp = clamp(vsp, -100, 0);	
+	}
+	
+	if 2 >= window {
+		vsp = clamp(vsp, -100, 1);		
 	}
 	
 	if window == 2 || window == 3 || window == 4 {
@@ -126,10 +140,11 @@ if (attack == AT_DSPECIAL_2) {
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
    if (window == 1 && 35 > wblastcharge) {
+		reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
 		reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
    }
    
-   if (window == 1 && window_timer == 6 && wblastcharge == 35) {
+   if (window == 1 && window_timer == (get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)) && wblastcharge == 35) {
 		window = 5;
 		window_timer = 0;
    }
@@ -157,6 +172,8 @@ if (attack == AT_NSPECIAL){
 					sound_play(sound_get("magicshoot3"), false, noone, .8, .75);	
 					spawn_hit_fx(x-32*spr_dir, y-68, 109);
 					window_timer = 0;
+					set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+					set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 					set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 					}		
 			}
@@ -171,6 +188,7 @@ if (attack == AT_NSPECIAL){
 						window_timer = 0;
 					}
 				reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
+				reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES);
 				}
 			}
 	if (window == 3 || window == 4 || window == 5) {
@@ -180,6 +198,9 @@ if (attack == AT_NSPECIAL){
 			wblastcharge = 0;
 			if !hitpause {
 				spawn_hit_fx(x+54*spr_dir, y-28, 109);
+				if window == 5 {
+					hsp -= 4*spr_dir;
+				}
 			}
 		}
 		if (window == 3 && window_timer == (get_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH)) ) ||
@@ -717,10 +738,10 @@ if (attack == AT_USTRONG_2) && !hitpause {
 //Hud thingies
 if 	(attack == AT_NSPECIAL && window == 2 && window_timer > 0) {
 	showHUD = true;
-	}
-	else { 
+}
+else { 
 	showHUD = false;
-	}
+}
 	
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)

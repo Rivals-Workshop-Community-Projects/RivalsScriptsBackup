@@ -207,7 +207,7 @@ if(variable_instance_exists(id,"diag"))
     "Another day, another opponent... Let's do it!",
     "Heyo.",
     "Nothing to do but fight, I guess...",
-    "(Honestly dunno why I am doing this.)"]
+    "(Honestly, I dunno why I am doing this.)"]
 
 //  Specific Character Interactions
 
@@ -234,7 +234,7 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "2014106219" && diag != "") 
     {
-        diag = "Uhm... hey, Sis. Hope you don't hold back!";
+        diag = "Hope you don't hold back, Sis!";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2007375819" && diag != "") 

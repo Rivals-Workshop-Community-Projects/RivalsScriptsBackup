@@ -40,7 +40,7 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 7;		// 4    -  8
-air_max_speed       = 4; 		// 3    -  7
+air_max_speed       = 4.5; 		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 1.00;		// 0.25 -  1.5
@@ -186,6 +186,8 @@ food_id = 0;
 shrimpsplosion = false;
 shrimp_proj = 0;
 dspecial_ledge_cancel = 0;
+
+dspec_fall_speed = 0;
 
 able_to_grab_pot = false;
 //dspecial_spr_var = false;

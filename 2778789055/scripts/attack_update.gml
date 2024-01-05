@@ -240,6 +240,10 @@ if(attack == AT_USPECIAL_2){
 if(attack == AT_DSPECIAL){
 	can_fast_fall = false;
 	can_wall_jump = true;
+	
+	if(window == 1 && window_timer == 1){
+		dspec_fall_speed = 0;
+	}
 	if(window != 2){
 		can_move = false;
 	}if(window == 2){
@@ -292,6 +296,12 @@ if(window == 2 && window_timer = 2){
             }
         }
     }
+    
+    if(window == 5){
+    dspec_fall_speed += 0.25;
+    vsp = clamp(vsp,-8.5,0 + dspec_fall_speed);
+    
+    }
 }
 
 if(attack == AT_DSPECIAL_2){
@@ -301,6 +311,7 @@ if(attack == AT_DSPECIAL_2){
 if(window == 1 && window_timer = 1){
 	move_cooldown[AT_DSPECIAL] = 99999;
 	move_cooldown[AT_DSPECIAL_2] = 99999;
+	dspec_fall_speed = 0;
 	}
 	if(window == 1 && free){
 		set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 7);
@@ -333,6 +344,11 @@ if(window == 1 && window_timer = 1){
                 break;
             }
         }
+    }
+    
+    if(window == 3){
+    dspec_fall_speed += 0.25;
+    vsp = clamp(vsp,-8.5,0 + dspec_fall_speed);
     }
 }
 

@@ -113,7 +113,7 @@ if (attack == AT_FSPECIAL) {
 					other.old_hsp = .5 * (spr_dir);
 					other.grounds = 0;
 					other.frict -= .05;
-					other.hitbox_timer =+ 50;
+					other.hitbox_timer =+ 70;
 				}			
 				if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 					if 5 > hbox_num {

@@ -6,8 +6,6 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 	my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 2 ||
 	my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 9) {
 	
-	var stung = hit_fx_create(sprite_get("nspecial_proj_after"), 28);
-	var stung2 = hit_fx_create(sprite_get("nspecial_proj3_after"), 34);
 	spawn_hit_fx(other.x-40*other.spr_dir, other.y+6, stung2);
 	spawn_hit_fx(other.x+30*other.spr_dir, other.y-60, stung2);
 	spawn_hit_fx(other.x+24*other.spr_dir, other.y-30, stung);
