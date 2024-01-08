@@ -98,7 +98,7 @@ if attack == AT_USTRONG {
 }
 
 if attack == AT_NSPECIAL {
-    move_cooldown[AT_NSPECIAL] = 40
+    move_cooldown[AT_NSPECIAL] = 50
     if window == 1 && window_timer == window_length && !hitpause {
         sound_play(asset_get("sfx_swipe_medium1"))
         if free {
@@ -134,6 +134,7 @@ if attack == AT_FSPECIAL {
     if window > 1 && window < 5 can_move = false 
     
     if window == 1 && window_timer == window_length && !hitpause {
+        holo_num = 0
         fspec_hit = false
         fspec_empowered = false
         sound_play(asset_get("sfx_ori_stomp_spin"))
@@ -171,6 +172,8 @@ if attack == AT_FSPECIAL {
             set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 0);
             set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
             set_hitbox_value(AT_FSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 4);
+            
+            set_hitbox_value(AT_FSPECIAL, 3, HG_TECHABLE, 1);
             sound_play(asset_get("sfx_forsburn_consume_full"))
             //super_armor = true
             //soft_armor = 12
@@ -183,8 +186,14 @@ if attack == AT_FSPECIAL {
         soft_armor = 0
     }
     
-    if window == 2 && (shield_down || shield_pressed) && window_timer >= 6 {
-        
+    if (window == 2 || window == 3) && fspec_empowered {
+        if window_timer mod 3 == 1 {
+            holo_col_1 = get_slot_colour(0)
+            holo_col_2 = get_slot_colour(1)
+            var col = merge_color(holo_col_1, holo_col_2, holo_num*0.3)
+            array_push(fspec_holograms, [x, y, 12, sprite_index, image_index, col])
+            holo_num++
+        }
     }
     
     if (window == 2 && window_timer >= 6) || (window == 3) {
@@ -219,6 +228,10 @@ if attack == AT_FSPECIAL {
                 set_state(PS_PRATFALL)
             }
         }
+    }
+    
+    if window >= 4 {
+        can_move = true
     }
     
     if window == 5 && window_timer == window_length && !has_hit && free && !fspec_empowered {
@@ -285,6 +298,7 @@ if attack == AT_USPECIAL {
 
 if attack == AT_DSPECIAL {
     if window == 1 && window_timer == 1 {
+        holo_num = 0
         vsp += free ? -4 : -8
         vsp = clamp(vsp, -10, 8)
         if !free {
@@ -308,15 +322,16 @@ if attack == AT_DSPECIAL {
             }
         }
         if faults_count >= dspec_fault_threshold_large {
+            set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 12);
             dspec_explosion_size = 2
             do_dspec_explode = true
             sound_play(asset_get("sfx_forsburn_consume_full"))
-            super_armor = true
+            
         } else if faults_count >= dspec_fault_threshold_small {
+            set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 10);
             dspec_explosion_size = 1
             do_dspec_explode = true
             sound_play(asset_get("sfx_mol_flare_shoot"))
-            soft_armor = 12
         } else {
             do_dspec_explode = false
         }
@@ -332,9 +347,37 @@ if attack == AT_DSPECIAL {
         iasa_script()
     }
     
+    if window == 2 {
+        if do_dspec_explode {
+            if dspec_explosion_size == 2 {
+                super_armor = true
+            } else if dspec_explosion_size == 1 {
+                soft_armor = 12
+            }
+        }
+    }
+    
     
     //dive
     if window == 3 || window == 4 {
+        
+        if do_dspec_explode && !hitpause {
+            if window_timer mod 3 == 1 {
+                if dspec_explosion_size == 1 {
+                    var _alpha = 6
+                    holo_col_1 = get_slot_colour(0)
+                    holo_col_2 = get_slot_colour(0)
+                }
+                if dspec_explosion_size == 2 {
+                    var _alpha = 10
+                    holo_col_1 = get_slot_colour(0)
+                    holo_col_2 = get_slot_colour(1)
+                }
+                var col = merge_color(holo_col_1, holo_col_2, clamp(holo_num*0.3, 0, 1))
+                array_push(fspec_holograms, [x, y, _alpha, sprite_index, image_index, col])
+                holo_num++
+            }
+        }
         /*
         if state_timer mod 2 == 0 {
             var fx = spawn_hit_fx(x, y - 80, vfx_dspec_rock)
@@ -557,3 +600,11 @@ return {
     ID: cur_id,
     dist: cur_dist
 };
+
+#define get_slot_colour(slot)
+var p_col = get_player_color(player)
+var col_r = get_color_profile_slot_r(p_col, slot)
+var col_g = get_color_profile_slot_g(p_col, slot)
+var col_b = get_color_profile_slot_b(p_col, slot)
+var col_final = make_color_rgb(col_r, col_g, col_b);
+return col_final

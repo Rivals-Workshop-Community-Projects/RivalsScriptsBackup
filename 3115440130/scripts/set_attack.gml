@@ -6,6 +6,8 @@ if attack == AT_FSPECIAL {
     reset_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW);
     reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_FSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK);
+    
+    reset_hitbox_value(AT_FSPECIAL, 3, HG_TECHABLE);
 }
 
 if attack == AT_USPECIAL {
@@ -14,4 +16,5 @@ if attack == AT_USPECIAL {
 
 if attack == AT_DSPECIAL {
     dspec_explosion_timer = -1
+    reset_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH);
 }

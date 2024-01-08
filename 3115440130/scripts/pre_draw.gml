@@ -1,6 +1,6 @@
 // pre-draw
 
-/*
+
 //fspec holograms
 gpu_set_alphatestenable(true);
 
@@ -11,16 +11,16 @@ for (var i = 0; i < array_length(fspec_holograms); i++) {
     var _alpha = hologram[2]/10
     var spr = hologram[3]
     var spr_index = hologram[4]
-    var _angle = hologram[5]
-    var col = hologram[6]
+    //var _angle = hologram[5]
+    var col = hologram[5]
     
     gpu_set_fog(1, col, 0, 1);
-    draw_sprite_ext(spr, spr_index, _x, _y, image_xscale, image_yscale, _angle, c_white, _alpha)
+    draw_sprite_ext(spr, spr_index, _x, _y, image_xscale, image_yscale, 0, c_white, _alpha)
 }
 
 gpu_set_fog(0, c_white, 0, 0);
 gpu_set_alphatestenable(false);
-*/
+
 shader_start()
 if dspec_explosion_timer >= 0 {
     var spr = asset_get("empty_sprite")
