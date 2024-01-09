@@ -185,8 +185,6 @@ if (player_id.was_parried){
 //State 3: Quick Target
 
 if (state == 3){
-	hit_detection();
-	
 	visible = true;
 	
 	//initializing stuff
@@ -222,6 +220,7 @@ if (state == 3){
 				sound_play(sound_get("kotsuzumi"));
 				warn_timer = warn_time_base;
 			}
+			hit_detection();
 		}
 	}
 	
@@ -320,6 +319,7 @@ if (state == 4){
 				
 				warn_timer = warn_time_base;
 			}
+			hit_detection();
 		}
 	}
 	

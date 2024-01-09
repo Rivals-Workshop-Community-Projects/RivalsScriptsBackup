@@ -35,7 +35,7 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
 // set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
 // set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.85); //non-resource based projectiles usually have a 0.5 hitstun multiplier so players hit by it can act sooner
 
@@ -46,7 +46,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GRAVITY, 0.65);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_FRICTION, 0.04);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 
 set_num_hitboxes(atk, hitbox_num);

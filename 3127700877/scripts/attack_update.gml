@@ -190,6 +190,7 @@ switch(attack){
             sludge_geyser_id = instance_create(geyser_spawn_x, geyser_spawn_y, "obj_article2");
         }
         if(window_timer == window_end && geyser_fail && !hitpause){
+        	vsp = -4 * free;
         	window = 5;
         	window_timer = 0;
         }
@@ -282,16 +283,27 @@ switch(attack){
     case AT_USPECIAL:
     can_wall_jump = true;
     can_fast_fall = (hitpause ? old_vsp >= 0 : vsp >= 0);
-       if (window == 1 && window_timer == 1 && !hitpause) {
-           sound_play(asset_get("sfx_orca_absorb"), false, false, 1, .6);
-       }
-       if(window == 3 && !hitpause){
-           if(window_timer == 5) set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE_FLIPPER, 10);
-           if(!free){
-                window = 4;
-                window_timer = 0;
-                destroy_hitboxes();
-                sound_play(sound_get("sfx_sludgehit_heavy"));
+    	if (window == 1 && window_timer == 1 && !hitpause) {
+    	    sound_play(asset_get("sfx_orca_absorb"), false, false, 1, .6);
+    	}
+    	if(window == 2 && window_timer >= 20){
+			// if(shield_pressed){
+			// 	y -= 40;
+			// 	vsp = -6;
+			// 	spawn_hit_fx(x, y, vfx_sludge_small);
+			// 	sound_play(asset_get("sfx_frog_dstrong"));
+			// 	set_state(PS_PRATFALL);
+			// 	hud_offset = 0;
+			// 	hsp = clamp(hsp, -4, 4);
+			// }
+    	}
+    	if(window == 3 && !hitpause){
+			if(window_timer == 8) set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE_FLIPPER, 10);
+			if(!free){
+				window = 4;
+				window_timer = 0;
+				destroy_hitboxes();
+				sound_play(sound_get("sfx_sludgehit_heavy"));
                 
                 if(!has_rune("B") && instance_exists(sludge_puddle_id) && point_distance(x, y, x, sludge_puddle_id.y) < 2 && point_distance(x, y, sludge_puddle_id.x, y) <= 64){
                     sludge_puddle_id.state = 69;

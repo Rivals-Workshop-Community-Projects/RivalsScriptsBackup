@@ -20,7 +20,7 @@ draw_set_halign(fa_right);
   
 //include alt. name
 is_mod = is_array(alt_name[alt_cur])
-textDraw(preview_x + 204, preview_y + 124, "fName", c_white, 0, 1000, 1, true, 1,
+textDraw(preview_x + 204, preview_y + 116, "fName", c_white, 0, 1000, 1, true, 1,
 `Alt. ${(alt_cur < 10 ? "0" : "")}${alt_cur}${is_mod ? chr(modifier + 97): ""}: ${(!is_mod ? alt_name[alt_cur] : alt_name[@alt_cur][@modifier])}`);
 
 //exclude alt. name

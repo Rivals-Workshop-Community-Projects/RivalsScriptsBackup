@@ -277,17 +277,23 @@ if (attack == AT_USPECIAL) {
 	if window < 3 {
 		vsp = clamp(vsp, -100, 2);
 	}
+	if window < 4 {
+		hsp = clamp(hsp, -2, 2);
+	}
 	
 	if window == 2 {
 		if special_down && 10 > eggcharge {
 			eggcharge++;
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18-(eggcharge*.25));
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15-(eggcharge*.25));
 			set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7+(eggcharge*.5));
 			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6+(eggcharge*.4));
 			
 			if window_timer == 4 {
 				window_timer = 0;
 			}
+		} else {
+			window_timer = 5;
+			sound_play( sound_get("smw2_boing"));
 		}
 	}	
 	if window == 3 {

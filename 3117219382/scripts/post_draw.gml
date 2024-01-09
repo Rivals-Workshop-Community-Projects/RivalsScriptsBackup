@@ -4,11 +4,8 @@ with pHitBox{
 		if(player == other.player and attack == AT_FSPECIAL){
 			draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,0.5);
 		}
-		if(player == other.player and attack == AT_NSPECIAL){
-			draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,0.5);
-		}
 	}
-	if(player == other.player and attack == AT_FSPECIAL){
+	if(player == other.player and attack == AT_FSPECIAL and hbox_num == 1){
 		draw_sprite_ext(sprite_get("slash_active"),image_index,x,y,spr_dir/(4-lvl),1,image_angle,c_white,1);
 	}
 }

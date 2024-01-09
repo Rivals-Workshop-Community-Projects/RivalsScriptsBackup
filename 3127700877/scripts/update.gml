@@ -2,8 +2,18 @@
 // https://rivalslib.com/workshop_guide/programming/reference/scripts/event_scripts.html#every-frame
 // Code here is run every frame for your character.
 
+if(get_match_setting(SET_PRACTICE) && !has_recolored_hitboxes){
+	for(var i = 0; i <= 42; i++){
+	    for(var j = 0; j <= 10; j++){
+	        if get_hitbox_value(i, j, HG_SLUDGE_EFFECT) > 0 {
+	            set_hitbox_value(i, j, HG_HITBOX_COLOR, sludge_hbox_color);
+	        }
+	    }
+	}
+	has_recolored_hitboxes = true;
+}
 
-// sound_play(sound_get("pipe"), true, false, 200)
+prep_hitboxes();
 
 if(get_player_color(player) == 14 && outline_color[@0] == 0 && outline_color[@1] == 0 && outline_color[@2] == 0){
 	outline_color = [35, 67, 49];
@@ -250,11 +260,35 @@ for(var i = 0; i < array_length(disease_bubble_vfx_list); i++){
 
 with(pHitBox){
 	if(player_id != other && player_id.diseased_id == other && "disease_reduced" not in self){
-		if(damage >= 8 && round(damage*.7) < 8){
+		if(damage >= 8 && round(damage*.7) < 8 && force_flinch == 0){
 			force_flinch = 2;
 		} 
 		damage *= .7;
 		damage = round(damage);
 		disease_reduced = true;
 	}
+}
+
+//Put this at the very bottom of the script, with the rest of your #defines.
+#define prep_hitboxes
+//Applies the hitbox sprites and prepares them to be drawn (with color!)
+with (pHitBox) if player_id == other {
+    if ("col" not in self && "dont_color" not in self) {
+        with other {
+        	var hit_num = other.hbox_num;
+        	var parent_hbox = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX);
+        	if parent_hbox > 0 && parent_hbox != other.hbox_num hit_num = parent_hbox;
+            other.col = get_hitbox_value(other.attack, hit_num, HG_HITBOX_COLOR);
+            if other.col == 0 other.col = c_red;
+            other.shape = get_hitbox_value(other.attack, hit_num, HG_SHAPE)
+            other.draw_colored = true;
+            if other.type == 1
+                other.sprite_index = __hb_hd_spr[other.shape];
+            else if get_hitbox_value(other.attack, hit_num, HG_PROJECTILE_MASK) == -1
+                other.mask_index = __hb_hd_spr[other.shape];
+            else 
+                other.draw_colored = false;
+            other.draw_spr = __hb_draw_spr;
+        }
+    }
 }

@@ -153,3 +153,34 @@ repeat(4){
 }
 
 set_num_hitboxes(atk, hitbox_num);
+
+hitbox_num++;
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 75);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -30);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 165);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 165);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 11);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.75);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 4);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

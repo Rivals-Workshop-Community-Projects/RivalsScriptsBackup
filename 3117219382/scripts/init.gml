@@ -256,11 +256,12 @@ mist_angles = [35, 0, -35];
 mist_distance = [120, 300, 450];
 
 lvl = 1;
+max_lvl = 3;
 grind_article = noone;
 bd_waveland_sprite = sprite_get("waveland");
 
 coins_in_bag = 5;
-max_coins_in_bag = 9;
+max_coins_in_bag = 8;
 
 coin_atk = AT_NSPECIAL;
 
@@ -301,13 +302,29 @@ slash_break_fx = noone;
 taunt_bird_hfx = hit_fx_create(sprite_get("taunt_bird_fx"), 20);
 taunt_bird_fx = noone;
 
-gold_speckles_0_hfx = hit_fx_create(sprite_get("gold_speckles_0"), 20);
-gold_speckles_1_hfx = hit_fx_create(sprite_get("gold_speckles_1"), 20);
-gold_speckles_2_hfx = hit_fx_create(sprite_get("gold_speckles_2"), 20);
-gold_speckles_3_hfx = hit_fx_create(sprite_get("gold_speckles_3"), 20);
-gold_speckles_4_hfx = hit_fx_create(sprite_get("gold_speckles_4"), 20);
-gold_speckles = [gold_speckles_0_hfx, gold_speckles_1_hfx, gold_speckles_2_hfx, gold_speckles_3_hfx, gold_speckles_4_hfx];
+gold_speckles = [	hit_fx_create(sprite_get("gold_speckles_0"), 20), 
+									hit_fx_create(sprite_get("gold_speckles_1"), 20), 
+									hit_fx_create(sprite_get("gold_speckles_2"), 20), 
+									hit_fx_create(sprite_get("gold_speckles_3"), 20), 
+									hit_fx_create(sprite_get("gold_speckles_4"), 20)	];
 
 sparkle_fx_hfx = hit_fx_create(sprite_get("sparkle_fx"), 20);
+sparkle_trail_fx_hfx = hit_fx_create(sprite_get("sparkle_fx"), 35);
 coin_gain_fx_hfx = hit_fx_create(sprite_get("coin_gain_fx"), 60);
+
+slash_ground_big_hfx = hit_fx_create(sprite_get("slash_ground_hitfx_big"), 15);
+
+gs_spr = sprite_get("gold_sigil")
+gs = [0,0, 0, 0, 0, 0, 0, 1];
+gs_spr_dir = 1;
+gs_anim_frame_start = [0, 3, 4, 6];
+gs_anim_frames = [3, 1, 2, 1];
+gs_state_end = [7, 150, 6, 30];
+gs_state_th = [gs_state_end[0], gs_state_end[0]+gs_state_end[1], gs_state_end[0]+gs_state_end[1]+gs_state_end[2], gs_state_end[0]+gs_state_end[1]+gs_state_end[2]+gs_state_end[3]];
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
+
+fx_ko_space = asset_get("fx_ko_space");
+gold_profile = [get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)];
+gold_profile_out = [get_color_profile_slot_r(alt_cur, 0)-26, get_color_profile_slot_g(alt_cur, 0)-60, get_color_profile_slot_b(alt_cur, 0)-20];
+
+trail_kill_effect_source = noone

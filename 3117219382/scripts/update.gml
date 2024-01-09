@@ -50,7 +50,7 @@ if(state == PS_FIRST_JUMP){
 	}
 }
 
-if(state == PS_PARRY_START){
+if(state == PS_PARRY_START or ((state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD) and window == 0 and window_timer == 0) or (state == PS_AIR_DODGE and window == 0 and !used_mf_dash_air)){
 	if(special_down and (right_down or left_down)){
 		print("KARA")
 		set_attack(AT_FSPECIAL)
@@ -98,7 +98,7 @@ with oPlayer {
 				bd_grind_fx = b;
 				bd_grind_fx.spr_dir = grind_id.grind_hsp >= 0 ? 1 : -1;
 				
-				grind_id.timer_for_destruction += 15
+				if(grind_id.timer_for_destruction > 0) grind_id.timer_for_destruction += 30
 				
 				//Vector rotate
 				var vec_x = x - grind_id.x
@@ -177,6 +177,46 @@ with oPlayer {
 	if(state == PS_WAVELAND){
 		// bd_waveland_sprite = sprite_index
 	}
+
+	if(trail_kill_effect_source == other.id and trail_kill_effect_source != noone){
+
+	  if(state_cat == SC_HITSTUN and (hit_attack == AT_FSPECIAL or hit_attack == AT_USPECIAL or hit_attack == AT_DSPECIAL)){
+	  	
+	    if(activated_kill_effect){
+				if(floor(hitstop) == floor(activated_kill_effect ? 20 : hitstop_full)){
+					// with other{
+					// 	var i=0;
+					// 	repeat(8){
+					// 		i+=45;
+					// 		var fx = spawn_hit_fx(other.x, other.y - 30, sparkle_fx_hfx);
+					// 		fx.hsp = lengthdir_x(11, i);
+	  		// 			fx.vsp = lengthdir_y(11, i);
+					// 	}
+					// }
+					sound_play(asset_get("sfx_icehit_medium1"), false, noone, 1, 0.8)
+					sound_play(asset_get("sfx_ice_hammerstart"))
+					// sound_play(asset_get("sfx_ice_uspecial_start"))
+				}
+	      with other{
+	        var variance = 5
+	    		var rd_x = random_func(0, variance*2, true)-variance
+	    		var rd_y = random_func(1, variance*2, true)-variance
+	    		var rd_a = random_func(2, 360, true)
+	    		
+	  			var fx = spawn_hit_fx(other.x + rd_x, other.y - 30 + rd_y, sparkle_trail_fx_hfx)
+	  			fx.hsp = lengthdir_x(1, rd_a)
+	  			fx.vsp = lengthdir_y(1, rd_a)
+	      }
+	    }else{
+	    	trail_kill_effect_source = noone;
+	    }
+	  }else{
+	  	trail_kill_effect_source = noone;
+	  	if(state != PS_DEAD or state != PS_RESPAWN) sound_play(asset_get("sfx_ice_shatter"));
+	  	init_shader()
+	  }
+	}
+ 
 }
 
 // move_cooldown[AT_DSPECIAL] = 2
@@ -226,6 +266,33 @@ with(taunt_bird_fx){
 	}
 }
 
+
+if(gs[GS_EXISTS]){
+	gs[GS_TIMER] += 1;
+	gs[GS_STATE_TIMER] += 1;
+	
+	if(gs[GS_STATE_TIMER] == gs_state_end[gs[GS_STATE]]){
+		gs[GS_STATE] += 1;
+		gs[GS_STATE_TIMER] = 0;
+	}
+	if(gs[GS_STATE] == 2 and gs[GS_STATE_TIMER] == 0){
+		create_hitbox(AT_USPECIAL, 6, gs[GS_X], gs[GS_Y]);
+		sound_play(asset_get("sfx_ice_shieldup"));
+		gs[GS_USES]++;
+	}
+	if(gs[GS_STATE] == 3 and gs[GS_STATE_TIMER] == 9){
+		if(gs[GS_USES] < gs[GS_MAX_USES]){
+			gs[GS_STATE] = 1;
+			gs[GS_STATE_TIMER] = 100;
+		}
+	}
+	if(gs[GS_STATE] >= 4){
+		gs[GS_STATE] = 0;
+		gs[GS_STATE_TIMER] = 0;
+		gs[GS_EXISTS] = false;
+	}
+}
+
 if(coin_fade_in_timer > 0){
 	coin_fade_in_timer--;
 }
@@ -263,7 +330,7 @@ if(bd_has_custom_rail_grind_sprite){
 
 
 #define slide_init()
-if("bd_has_custom_rail_grind_sprite" in self and bd_has_custom_rail_grind_sprite) return;
+if("url" not in self or ("bd_has_custom_rail_grind_sprite" in self and bd_has_custom_rail_grind_sprite)) return;
 
 _bd_init = false
 bd_has_custom_rail_grind_sprite = false;
@@ -294,7 +361,7 @@ switch(url){
 		bd_rail_grind_forward_spr = asset_get("goat_waveland");
 	break;
 	case CH_ETALUS:
-		bd_rail_grind_forward_spr = asset_get("bear_waveland");
+		bd_rail_grind_forward_spr = asset_get("bear_land");
 	break;
 	case CH_ORI:
 		bd_rail_grind_forward_spr = asset_get("cat_waveland");
@@ -309,11 +376,24 @@ switch(url){
 		bd_rail_grind_forward_spr = asset_get("wolf_waveland");
 	break;
 	case CH_ELLIANA:
-		bd_rail_grind_forward_spr = asset_get("fer_waveland");
+		bd_rail_grind_forward_spr = asset_get("mech_waveland");
 	break;
-	case CH_MAYPUL:
-		bd_rail_grind_forward_spr = asset_get("fer_waveland");
+	case CH_SHOVEL_KNIGHT:
+		bd_rail_grind_forward_spr = asset_get("gus_waveland");
 	break;
+	case CH_MOLLO:
+		bd_rail_grind_forward_spr = asset_get("moth_waveland");
+	break;
+	case CH_HODAN:
+		bd_rail_grind_forward_spr = asset_get("stinky_waveland");
+	break;
+	case CH_POMME:
+		bd_rail_grind_forward_spr = asset_get("mouse_waveland");
+	break;
+	case CH_OLYMPIA:
+		bd_rail_grind_forward_spr = asset_get("punch_waveland");
+	break;
+	
 }
 bd_rail_grind_backwards_spr = bd_rail_grind_forward_spr;
 
@@ -392,3 +472,12 @@ bd_rail_grind_backwards_spr = bd_rail_grind_forward_spr;
 #macro AS_SPAWN 0
 #macro AS_IDLE 1
 #macro AS_BREAK 2
+
+#macro GS_X 0
+#macro GS_Y 1
+#macro GS_TIMER 2
+#macro GS_EXISTS 3
+#macro GS_STATE 4
+#macro GS_STATE_TIMER 5
+#macro GS_USES 6
+#macro GS_MAX_USES 7

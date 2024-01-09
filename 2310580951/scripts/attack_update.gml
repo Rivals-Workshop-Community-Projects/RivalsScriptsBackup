@@ -75,9 +75,9 @@ if attack == AT_FSPECIAL {
 	can_wall_jump = true;
 
 	if (spr_dir == 1) {
-		hsp = clamp(hsp, -air_max_speed-3, leave_ground_max+1.5);
+		hsp = clamp(hsp, -100, leave_ground_max+1.5);
 	} else if (spr_dir == -1) {
-		hsp = clamp(hsp, -leave_ground_max-1.5, air_max_speed+3);
+		hsp = clamp(hsp, -leave_ground_max-1.5, 100);
 	}
 	if window == 1 && free {
 		set_state(PS_IDLE_AIR);
@@ -98,8 +98,9 @@ if attack == AT_FSPECIAL {
 		}
 	}
 	
-	if window == 2 {
-		if window_timer == 1 {
+	if window == 1 {
+		if window_timer == 6 {
+			hsp += 1*spr_dir;
 			hsp *= 1.5;
 		}
 	}

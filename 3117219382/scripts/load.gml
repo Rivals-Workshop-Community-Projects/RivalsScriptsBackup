@@ -91,8 +91,11 @@ sprite_change_offset("slash_break_big_fx",		250/2, 20/2);
 sprite_change_offset("mist_finer_mask", 			100, 100);
 sprite_change_collision_mask( "mist_finer_mask", true, 0, 0, 0, 0, 0, 0 );
 
-sprite_change_offset("grind_mask", 250, 14);
+sprite_change_offset("grind_mask", 263, 14);
 sprite_change_collision_mask( "grind_mask", true, 0, 0, 0, 0, 0, 0 );
+
+sprite_change_offset("gold_expand_mask", 100, 100);
+sprite_change_collision_mask( "gold_expand_mask", true, 0, 0, 0, 0, 0, 0 );
 
 sprite_change_offset("rail_grind_forward",					24, 35);
 sprite_change_offset("rail_grind_backwards",				24, 35);
@@ -121,3 +124,8 @@ sprite_change_offset("gold_speckles_3",     		14, 14);
 sprite_change_offset("gold_speckles_4",     		14, 14);
 sprite_change_offset("sparkle_fx",     					2*2, 4*2);
 sprite_change_offset("coin_gain_fx",     				4*2, 40*2);
+sprite_change_offset("slash_ground_gold_stuck",	1, 32);
+sprite_change_offset("slash_ground_hitfx_big",	0*2, 13*2);
+sprite_change_offset("gold_sigil",							57, 50);
+sprite_change_offset("gold_expand_bg",					171, 34);
+sprite_change_offset("gold_expand_fg",					171, 34);

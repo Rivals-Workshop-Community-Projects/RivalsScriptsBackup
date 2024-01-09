@@ -62,6 +62,7 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("uair_proj"));
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uair_proj_mask"));
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_ANIM_SPEED, .4);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_HSPEED, 8);

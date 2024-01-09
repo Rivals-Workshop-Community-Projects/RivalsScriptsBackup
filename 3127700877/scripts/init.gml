@@ -7,7 +7,7 @@
 
 // Basecast frame data: docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
 
-char_height = 70 // 36 – 74. Purely aesthetic. Used for centering things on the character, placing the overhead HUD, etc
+char_height = 64 // 36 – 74. Purely aesthetic. Used for centering things on the character, placing the overhead HUD, etc
 
 knockback_adj = .9 //.9 – 1.2. The multiplier to knockback dealt to you: 1 = default value higher values = lighter character lower values = heavier character
 
@@ -36,7 +36,7 @@ techroll_speed = 10 // 8 – 11. The speed during techroll’s movement
 
 // Landing
 land_time = 4 // 4 – 6. The number of frames in your normal landing state
-prat_land_time = 12 // 3 – 24. The number of frames in your prat land state
+prat_land_time = 18 // 3 – 24. The number of frames in your prat land state
 wave_land_time = 12 // 6 – 12 usually 8. The number of frames your waveland state lasts
 wave_land_adj = 1.25 // 1.2 – 1.5. The multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .15 // 0 – .15. Grounded deceleration when wavelanding
@@ -188,6 +188,7 @@ spawn_index = 0;
 var alt = get_player_color(player);
 sludge_color = make_color_rgb(get_color_profile_slot_r(alt, 2), get_color_profile_slot_g(alt, 2), get_color_profile_slot_b(alt, 2));
 disease_color = make_color_rgb(get_color_profile_slot_r(alt, 7), get_color_profile_slot_g(alt, 7), get_color_profile_slot_b(alt, 7));
+sludge_hbox_color = make_color_rgb(get_color_profile_slot_r(0, 2), get_color_profile_slot_g(0, 2), get_color_profile_slot_b(0, 2));
 
 ustrong_charge_sound = noone;
 sludge_puddle_id = noone;
@@ -213,3 +214,27 @@ stored_percent = 0;
 nair_spins = 0;
 nair_spins_max = 8;
 rune_respawn = has_rune("O");
+
+//Custom Hitbox Colors System (by @SupersonicNK)
+HG_HITBOX_COLOR = 79; //This can be any number above 57 and below 100. It is recommended that you put this number below Munophone's starting_hg_index value, to prevent conflicts.
+
+//Sprite Setup
+//knockback arrow sprite
+__kb_arrow_spr = asset_get("knock_back_arrow_spr")
+//actual hitbox sprites
+var w = 100
+__hb_circle_t = sprite_get("hitbox_circle_trans");
+    sprite_change_offset("hitbox_circle_trans",w,w);
+    sprite_change_collision_mask("hitbox_circle_trans",false,0,0,0,0,0,0);
+__hb_rect_t = sprite_get("hitbox_square_trans");
+    sprite_change_offset("hitbox_square_trans",w,w);
+    sprite_change_collision_mask("hitbox_square_trans",false,0,0,0,0,0,0);
+__hb_r_rect_t = sprite_get("hitbox_rounded_rectangle_trans");
+    sprite_change_offset("hitbox_rounded_rectangle_trans",w,w);
+    sprite_change_collision_mask("hitbox_rounded_rectangle_trans",false,0,0,0,0,0,0);
+__hb_hd_spr = [__hb_circle_t, __hb_rect_t, __hb_r_rect_t];
+//drawn hitbox sprite
+__hb_draw_spr = sprite_get("hitbox_shapes");
+    sprite_change_offset("hitbox_shapes",w,w);
+
+has_recolored_hitboxes = false;

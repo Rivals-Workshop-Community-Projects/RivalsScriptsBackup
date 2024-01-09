@@ -15,13 +15,6 @@ if(attack == AT_FTILT){
 	if(window == 1){
 		if(abs(hsp) < 4) hsp = 4*spr_dir
 		else hsp += 0.4*spr_dir
-		// print(abs(special_counter-attack_counter))
-		// if(window_timer == 1 and special_pressed and abs(special_counter-attack_counter) <= 2){
-		// 	if(!move_cooldown[AT_FSPECIAL]){
-		// 		set_attack(AT_FSPECIAL);
-		// 		attack_counter = 0;
-		// 	}
-		// }
 	}
 }
 
@@ -93,11 +86,13 @@ if(attack == AT_USPECIAL){
 	}
 	
 	if(window == 1 or window == 2){
+		can_fast_fall = false;
 		grav = 0.3;
 	}
 	if(window == 3){
 		hsp = 0
 		vsp = 0
+		can_fast_fall = false;
 		if(window_timer == window_end){
 			
 			hat_falling = spawn_hit_fx(x,y-char_height, hat_fall_hfx);
@@ -112,13 +107,13 @@ if(attack == AT_USPECIAL){
 			var test_y = lengthdir_y(tp_dist, ubp_dir);
 			
 			if(test_y > 0 or position_meeting(x + test_x, y + test_y - 2, solids)){
-				var v_off = 118;
+				var v_off = 96;
 				var posa = collision_line_point(x + test_x, y + test_y - v_off, x + test_x, y + test_y, solids, false, true);
 				// spawn_hit_fx(posa[1], posa[2], HFX_GEN_OMNI);
 				if(!position_meeting(posa[1], posa[2]-2, solids)){
 					tp_to(posa[1], posa[2])
 				}else{
-					var posa2 = collision_line_point( x, y, x + test_x, y + test_y - v_off, solids, false, true);
+					var posa2 = collision_line_point( x, y-char_height, x + test_x, y + test_y - v_off, solids, false, true);
 					tp_to(posa2[1], posa2[2])
 					// spawn_hit_fx(posa2[1], posa2[2], HFX_ZET_SHINE_FG);
 				}
@@ -131,10 +126,14 @@ if(attack == AT_USPECIAL){
 	
 	var float_a_lil = -0.5
 	if(window == 4){
+		can_fast_fall = false;
 		can_move = false
 		vsp = float_a_lil
 		if(window_timer == 4){
 			sound_play(asset_get("sfx_pom_dattack_snap"))
+		}
+		if(window_timer == window_end){
+			user_event(1);
 		}
 	}
 	if(window == 5){
@@ -169,19 +168,20 @@ if(attack == AT_NSPECIAL){
 if(attack == AT_FSPECIAL){
 	
 	if(window == 1 and window_timer == 1){ //VERTICAL SPEED FREEZE
-		if(!used_mf_air and vsp > 0) vsp *= 0.2
+		if(!used_mf_air and vsp > 0) vsp *= 0.2;
 		next_window = 3
 		if(lvl == 2){
 			sound_play(asset_get("sfx_zetter_shine"), false, noone, 1, 1)
 		}
-		if(lvl == 3){
+		if(lvl >= 3){
 			sound_play(asset_get("sfx_zetter_shine_charged"), false, noone, 1, 1)
 		}
 	}
-	if(window == 1 or window == 2){ //MOVEMENT
+	if(window == 1 or window == 2){ //MOVEMENT CONSTRAINS
 		
-		if(!used_mf_air) if(vsp > -1) grav = clamp(grav*(vsp/10), 0.15, gravity_speed)
-		if(!free) can_move = false
+		if(!used_mf_air) if(vsp > -1) grav = clamp(grav*(vsp/10), 0.25, gravity_speed)
+		if(!free) can_move = false;
+		else if (abs(hsp) > air_max_speed) hsp *= 0.9;
 	}
 	
 	if(window == 2){
@@ -216,9 +216,21 @@ if(attack == AT_FSPECIAL){
 			}
 		}
 	}
-	if(window == 2 and attack_pressed){ // STANCE CANCEL
+	var strong_stick_any = up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed
+	var strong_pressed_any = up_strong_pressed + down_strong_pressed + left_strong_pressed + right_strong_pressed
+	if(window == 2 and (attack_pressed or strong_stick_any or strong_pressed_any)){ // STANCE CANCEL
 		used_mf_air = true;
-		clear_button_buffer(PC_ATTACK_PRESSED)
+		if(attack_pressed) clear_button_buffer(PC_ATTACK_PRESSED)
+		
+		if(strong_stick_any){
+			clear_button_buffer(PC_LEFT_STICK_PRESSED)
+			clear_button_buffer(PC_RIGHT_STICK_PRESSED)
+			clear_button_buffer(PC_UP_STICK_PRESSED)
+			clear_button_buffer(PC_DOWN_STICK_PRESSED)
+		}
+		if(strong_pressed_any){
+			clear_button_buffer(PC_STRONG_PRESSED)
+		}
 		clear_button_buffer(PC_SPECIAL_PRESSED)
 		window = 29;
 	}
@@ -226,7 +238,7 @@ if(attack == AT_FSPECIAL){
 		set_window(0);
 	}
 	
-	if(window == 3){
+	if(window == 3){ // SLASH
 		used_mf_air = true;
 		if(window_timer == window_end){
 			var v_dir = down_down - up_down;
@@ -238,7 +250,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}else{
 				if(v_dir != 0){
-					ma = v_dir > 0 ? -15 : 35;
+					ma = v_dir > 0 ? -20 : 35;
 				}
 			}
 			
@@ -265,18 +277,18 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	
-	if(window == 4 or window == 6 or window == 8){
+	if(window == 4 or window == 6 or window == 8){ // SLASH WINDOW
 		grav = 0
 		if(window_timer == 1 and !hitpause){
 			// hsp += free*spr_dir*-0.5
 			// print("used_mf_air: " + string(used_mf_air_vboost))
-			vsp = free*(-5 + 4*!used_mf_air_vboost)
+			vsp = free*(-6 + 5*!used_mf_air_vboost)
 			lvl = 1
 		}
 		move_cooldown[attack] = 44;
 	}
 	
-	if(window == 5 or window == 7 or window == 9){
+	if(window == 5 or window == 7 or window == 9){ // SLASH ENDLAG
 		grav = 0.35
 		used_mf_air_vboost = false
 	}
@@ -333,19 +345,10 @@ if(attack == AT_TAUNT){
 
 #define grabs()
 
-//Grab template by Mawral
-if (attack == AT_DSPECIAL) {
-	//reset 'grabbed_player' variables on the first frame when performing a grab.
-    if (window == 1 && window_timer == 1) {  
-    	grabbed_player_obj = noone; 
-    	grabbed_player_relative_x = 0;
-    	grabbed_player_relative_y = 0;
-    }
-}
 
 if(attack == AT_DSPECIAL){
 	if(window == 3 and window_end){
-		if(has_hit_player){
+		if(grabbed_player_obj != noone){
 			vsp = 0
 			grav = 0
 			hsp = 0
@@ -400,11 +403,21 @@ if(attack == AT_DSPECIAL){
 	}
 }
 
+//Grab template by Mawral
+if (attack == AT_DSPECIAL) {
+	//reset 'grabbed_player' variables on the first frame when performing a grab.
+    if (window == 1 && window_timer == 1) {  
+    	grabbed_player_obj = noone; 
+    	grabbed_player_relative_x = 0;
+    	grabbed_player_relative_y = 0;
+    }
+}
+
 if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
 	if(instance_exists(grabbed_player_obj)){
-		if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+		if (window >= 11) { grabbed_player_obj = noone; }
 		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
 		else {
 			//keep the grabbed player in hitstop until the grab is complete.
@@ -555,3 +568,10 @@ var x1 = argument0, y1 = argument1, x2 = argument2, y2 = argument3, obj = argume
     r[2] = ry;
     return r;
 }
+
+#macro GS_X 0
+#macro GS_Y 1
+#macro GS_TIMER 2
+#macro GS_EXISTS 3
+#macro GS_STATE 4
+#macro GS_STATE_TIMER 5

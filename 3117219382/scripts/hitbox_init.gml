@@ -5,36 +5,14 @@
 if (destroy_fx == 0) destroy_fx = hit_effect;
 
 //PROJECTILE WITH MELEE HITBOX BEHAVIOUR
-psuedo_melee_hitbox = false;
+pseudo_melee_hitbox = false;
 hbox_width = 1
 hbox_height = 1
-
-//MULTIHIT PROJECTILE
-proj_hit_count = 0; //counts up the hits
-proj_gap_timer = 0; //timer that counts down when hits should connect
-hitbox_hitstop = 0; //hitbox is affected by hitpause
-proj_multihit_final = false; //if true, it will stop the multihit code and remove the projectile
-multihit_hit_player = noone; //records hit player
-multihit_escape_time = 0; //when it reaches 5, the multihit_hit_player will stop being affected by the projectile
-additional_radius = 10; //exta threshhold for the multihit projectile's collision
-
-//hitbox grid stuff
-multihit_amount = 0; //sets amount of hits
-multihit_gap = 0; //sets time between hits
-multihit_damage = 0;
-multihit_vfx = 0; //sets the hit effect for when a multihit hits
-multihit_sfx = 0;
-
-//HOMING PROJECTILE
-homing_enabled = false;
-home_target = noone; //the player to target with the homing
-home_max_speed = abs(point_distance(0, 0, hsp, vsp)); //speed limiter, it prevents the projectile from going faster than what you put as HG_PROJECTILE_HSPEED and _VSPEED
-home_turn_speed = 0.1; //turning speed
 
 //stores hitbox grid varuables
 with (player_id)
 {
-  other.psuedo_melee_hitbox = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MELEE);
+  other.pseudo_melee_hitbox = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MELEE);
   other.hbox_width = get_hitbox_value(other.attack, other.hbox_num, HG_WIDTH);
   other.hbox_height = get_hitbox_value(other.attack, other.hbox_num, HG_HEIGHT);
   
@@ -43,11 +21,11 @@ with (player_id)
 
 }
 
-if(psuedo_melee_hitbox == 1){
+if(pseudo_melee_hitbox == 1){
 	if(owner == noone) owner = player_id
 	
-  x = owner.x + abs(x_pos)*owner.spr_dir + owner.hsp
-  y = owner.y + y_pos + owner.vsp
+  x = floor(owner.x + abs(x_pos)*owner.spr_dir + owner.hsp)
+	y = floor(owner.y + y_pos + owner.vsp)
   
   transcendent = true
   // projectile_parry_stun = true
@@ -66,17 +44,19 @@ if("lvl" not in self){
 	lvl = 0
 }
 
-
+hitbox_hitstop = 0;
 solids = asset_get("par_block");
 plats = asset_get("par_jumpthrough");
 
 if(attack == player_id.coin_atk){
-	max_bounces = 1
-	bounces = max_bounces
-	bounced = false
-	bounced_player_id = noone
-	bounced_hit_delay = 35
+	max_bounces = 1;
+	bounces = max_bounces;
+	bounced = false;
+	bounced_player_id = noone;
+	bounced_hit_delay = 35;
 	bounced_hit_timer = 0;
+	hit_gs = false;
+	upgrade_cooldown = 5;
 	
   if((place_meeting(x, y+2, solids) or place_meeting(x, y+2, plats)) and vsp >= 0){
   	if(old_vsp > 0.5){

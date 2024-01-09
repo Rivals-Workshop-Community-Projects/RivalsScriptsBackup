@@ -17,13 +17,15 @@ is_hittable = true;                         // - if true, it allows the article 
 hittable_hitpause_mult = 0;
 depth = 3;                                  // - sets the layer it draws the article on, positive numbers go further back
 
-
+if("entry_point" not in self) entry_point = [noone,0,0,0];
+if("exit_point" not in self) exit_point = [noone,0,0,0];
+spr_ground = sprite_get("slash_ground_gold_stuck");
+point_img = 0;
 
 image_index = 0;                            // - sets the current frame of the article
 
 if("lvl" not in self){
 	 lvl = 1;
-	 //print("HEY")
 }
 
 spr_ind = lvl == 1 ? sprite_get("slash_frozen_small") : sprite_get("slash_frozen");    // - sets the sprite of the article, can also be changed dynamically in article#_update.gml
@@ -33,11 +35,8 @@ mask_index = sprite_get("grind_mask"); // - sets the mask of the article, it dec
 //if you don't have a mask index, remove the code from line 68 in article1_post_draw.gml
 
 break_spr = noone
-
-//custom article variables for your comfort
-if("article_width" not in self) article_width = 150;   // - the width of the article in pixels
-if("article_height" not in self) article_height = 40;  // - the height of the article in pixels
-if("article_angle" not in self) article_angle = 0;
+gold_expand_bg_spr = sprite_get("gold_expand_bg");
+gold_expand_fg_spr = sprite_get("gold_expand_fg");
 
 state = AS_SPAWN;                                  // - state check in case the article has multiple states
 state_timer = 0;                            // - state timer to check how long an article has been in a state
@@ -51,11 +50,21 @@ artc_hp = artc_hp_max;                      // - current article health
 damage_inc = 32;                            // - simulated % for hitpause
 
 timer_for_destruction = 0
-
-image_xscale = article_width
-image_yscale = article_height/200
-image_angle = article_angle
 // print("SET")
+
+mist_distance = player_id.mist_distance;
+
+expand_time = 16;
+expand_timer = expand_time;
+
+//custom article variables for your comfort
+if("article_width" not in self) article_width = mist_distance[lvl-1];   // - the width of the article in pixels
+if("article_height" not in self) article_height = 28;  // - the height of the article in pixels
+if("article_angle" not in self) article_angle = 0;
+
+image_xscale = article_width/450;
+image_yscale = 1;
+image_angle = spr_dir*point_direction(0,0, dcos(article_angle), -dsin(article_angle))
 
 _init = true
 

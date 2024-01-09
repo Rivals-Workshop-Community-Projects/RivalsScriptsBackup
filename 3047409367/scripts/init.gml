@@ -15,8 +15,8 @@ daruma_parry_hit_cooldown = 180;
 daruma_parry_initial_cooldown = 160;
 
 daruma_quick_speed = 19;
-daruma_slow_speed = 30;
-daruma_parry_speed = 30;
+daruma_slow_speed = 36;
+daruma_parry_speed = 36;
 
 fspecial_cooldown = 80;
 fspecial_cooldown_main = 100;

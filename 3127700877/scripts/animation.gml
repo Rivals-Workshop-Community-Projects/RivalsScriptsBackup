@@ -9,6 +9,11 @@ if(has_rune("M") && (visible == false || grabbed_invisible)){
     draw_indicator = false;
 }
 
+if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_USPECIAL && (window == 2 || window == 3) {
+    // offset_hud = lerp(0, 40, 1);
+    hud_offset = 40;
+}
+
 if(get_gameplay_time() == 3){
     with(oPlayer){
         if(self != other){

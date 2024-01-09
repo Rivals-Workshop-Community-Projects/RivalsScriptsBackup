@@ -10,6 +10,7 @@ if(!hitstop) state_timer++;
 if (state == AS_SPAWN){
 	var spawn_time = 15
   img_ind = (state_timer*3)/spawn_time;
+  point_ind = (state_timer*4)/spawn_time;
   
   if(state_timer > spawn_time){
   	state = AS_IDLE;
@@ -17,12 +18,14 @@ if (state == AS_SPAWN){
   }
 }
 if (state == AS_IDLE){
-	var active_time = 5*60;
+	var active_time = 6*60;
+	
 	
 	// Timers
 	if(!hitstop){
 		if(timer_for_destruction > 0) timer_for_destruction += 1
 	}
+	point_ind = (state_timer%90) < 30 ? (4 + (state_timer%90)*5/30) : 9;
 	
   img_ind = 3 + timer_for_destruction*5/active_time;
   
@@ -44,10 +47,15 @@ if(state == AS_BREAK){
 	}
 }
 
+article_width = mist_distance[lvl-1];
 
-image_xscale = article_width
+image_xscale = article_width/450;
 image_yscale = 1
-image_angle = article_angle
+image_angle = spr_dir*point_direction(0,0, dcos(article_angle), -dsin(article_angle))
+
+if(expand_timer < expand_time){
+	expand_timer++;
+}
 
 // print(num)
 

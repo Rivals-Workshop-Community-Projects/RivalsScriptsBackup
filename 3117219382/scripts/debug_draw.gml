@@ -3,8 +3,10 @@
 //the commented line below is used to draw debug text right under the player character
 
 //draw_debug_text(x, y, "text = " + string(variable));
-if(hbox_view){
-	
+
+if(debug_display){
+	draw_debug_text(gs[0], gs[1], string(gs[4]))
+	draw_debug_text(gs[0], gs[1]+15, string(gs[5]))
 }
 // with obj_article1{
 // 	draw_circle_color(x,y, 5, c_green, c_green, false)

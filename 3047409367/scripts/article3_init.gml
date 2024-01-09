@@ -1,6 +1,6 @@
 //article1_init - runs once, when the article is created
 picked_up = false;
-timer = 360; //time until it disappears automatically
+timer = 420; //time until it disappears automatically
 
 sound_play(asset_get("sfx_spin"));
 

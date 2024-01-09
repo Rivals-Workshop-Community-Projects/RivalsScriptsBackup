@@ -10,3 +10,5 @@ stored_djumps = 0
 bd_grind_fx = noone;
 _bd_init = true;
 
+should_make_shockwave = false;
+trail_kill_effect_source = noone;

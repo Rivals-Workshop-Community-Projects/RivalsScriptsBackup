@@ -20,9 +20,6 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("smw2_boing"));
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX_FRAME, 4);
 
 //Something
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
@@ -30,7 +27,9 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 0);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("smw2_boing"));
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 5);

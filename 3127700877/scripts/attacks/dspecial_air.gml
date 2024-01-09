@@ -32,7 +32,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 130);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
@@ -53,7 +53,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, vfx_sludge_smallest);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, vfx_sludge_smallest )
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SLUDGE_EFFECT, 30);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SLUDGE_EFFECT, 20);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_PARTICLE_NUM, 1);
 
 if(has_rune("A")){

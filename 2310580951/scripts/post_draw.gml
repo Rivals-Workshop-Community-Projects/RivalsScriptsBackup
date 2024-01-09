@@ -4,6 +4,7 @@
 //Debug stuff
 draw_debug_text( x, y + 20, string(window));
 draw_debug_text( x, y + 40, string(window_timer));
+draw_debug_text( x, y + 20, string(hsp));
 */
 
 //thanks muno
