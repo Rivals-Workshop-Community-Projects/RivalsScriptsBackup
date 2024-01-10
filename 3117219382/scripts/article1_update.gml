@@ -1,8 +1,8 @@
-if(_init){
-	spr_ind = lvl == 1 ? sprite_get("slash_frozen_small") : sprite_get("slash_frozen");
-	break_spr = lvl == 1 ? sprite_get("slash_break_small_fx") : sprite_get("slash_break_big_fx");
-	_init = false;
-}
+// if(_init){
+// 	_init = false;
+// }
+
+spr_ind = lvl == 1 ? frozen_small_spr : frozen_spr;
 
 //article1_update.gml
 if(!hitstop) state_timer++;
@@ -31,6 +31,7 @@ if (state == AS_IDLE){
   
   if(timer_for_destruction >= active_time){
   	// spawn_hit_fx(x,y,player_id.slash_break_hfx)
+  	break_spr = lvl == 1 ? sprite_get("slash_break_small_fx") : sprite_get("slash_break_big_fx");
   	state = AS_BREAK;
   	state_timer = 0;
   }

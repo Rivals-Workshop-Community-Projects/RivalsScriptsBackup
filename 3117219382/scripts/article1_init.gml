@@ -20,6 +20,8 @@ depth = 3;                                  // - sets the layer it draws the art
 if("entry_point" not in self) entry_point = [noone,0,0,0];
 if("exit_point" not in self) exit_point = [noone,0,0,0];
 spr_ground = sprite_get("slash_ground_gold_stuck");
+frozen_small_spr = sprite_get("slash_frozen_small");
+frozen_spr = sprite_get("slash_frozen");
 point_img = 0;
 
 image_index = 0;                            // - sets the current frame of the article

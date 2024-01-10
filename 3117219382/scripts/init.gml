@@ -256,6 +256,7 @@ mist_angles = [35, 0, -35];
 mist_distance = [120, 300, 450];
 
 lvl = 1;
+mid_attack_lvl = lvl;
 max_lvl = 3;
 grind_article = noone;
 bd_waveland_sprite = sprite_get("waveland");

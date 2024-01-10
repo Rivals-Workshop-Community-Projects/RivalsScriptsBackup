@@ -40,6 +40,7 @@ switch (my_hitboxID.attack)
 	break;
 	case AT_FSPECIAL:
 		if(my_hitboxID.hbox_num == 1) hit_player_obj.trail_kill_effect_source = self;
+		if(my_hitboxID.hbox_num == 2) sound_play(asset_get("sfx_ice_nspecial_armor"), false, noone, 1, 1.3);
 	break;
 	case AT_USPECIAL:
 		if(my_hitboxID.hbox_num >= 2) sound_play(asset_get("sfx_ori_spirit_flame_hit_1"), false, noone, 1, 1);
@@ -133,6 +134,7 @@ if(my_hitboxID.type == 2 and my_hitboxID.pseudo_melee_hitbox){
   
   hitpause = true;
 }
+
 
 
 // if (my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num < 4) {

@@ -13,6 +13,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -1);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 3);
 
 window_num ++; //attack itself
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);

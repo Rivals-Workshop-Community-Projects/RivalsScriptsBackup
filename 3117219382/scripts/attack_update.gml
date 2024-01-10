@@ -236,6 +236,8 @@ if(attack == AT_FSPECIAL){
 	}
 	if(window == 2 and !special_down){
 		set_window(0);
+		mid_attack_lvl = lvl;
+		lvl = 1;
 	}
 	
 	if(window == 3){ // SLASH
@@ -262,7 +264,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}
 			
-			var wid = mist_distance[lvl-1];
+			var wid = mist_distance[mid_attack_lvl-1];
 			var pos_x = (wid/2)*dcos(ma) + 40*dcos(ma);
 			var pos_y = (wid/2)*-dsin(ma) + 30*-dsin(ma) - 30;
 			set_hitbox_value(attack, 1, HG_HITBOX_X, pos_x)
@@ -273,7 +275,7 @@ if(attack == AT_FSPECIAL){
 			hb.mist_angle = ma
 			hb.tangent_angle = point_direction(0,0, spr_dir*dcos(ma), -dsin(ma))
 			// print(hb.tangent_angle)
-			hb.lvl = lvl
+			hb.lvl = mid_attack_lvl
 		}
 	}
 	
@@ -282,8 +284,7 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 1 and !hitpause){
 			// hsp += free*spr_dir*-0.5
 			// print("used_mf_air: " + string(used_mf_air_vboost))
-			vsp = free*(-6 + 5*!used_mf_air_vboost)
-			lvl = 1
+			vsp = free*(-5 + 4*!used_mf_air_vboost)
 		}
 		move_cooldown[attack] = 44;
 	}

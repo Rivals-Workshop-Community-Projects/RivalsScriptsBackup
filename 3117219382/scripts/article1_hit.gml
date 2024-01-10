@@ -24,8 +24,10 @@ if (is_hittable)
       	if(lvl < player_id.max_lvl and enemy_hitboxID.upgrade_cooldown <= 0){
       		variable_instance_set(enemy_hitboxID, hit_var_name, true);
       		
-      		enemy_hitboxID.hitbox_hitstop = 5;
+      		enemy_hitboxID.hitbox_hitstop = 3;
+      		enemy_hitboxID.in_hitpause = true;
       		enemy_hitboxID.damage = max(1, enemy_hitboxID.damage-1);
+      		enemy_hitboxID.vsp = min(enemy_hitboxID.vsp-2, -4);
       		
       		lvl++;
       		article_width = mist_distance[lvl-1];
