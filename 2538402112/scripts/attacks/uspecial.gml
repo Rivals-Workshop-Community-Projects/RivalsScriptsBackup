@@ -58,7 +58,7 @@ if has_rune("I"){
     set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 }
 
-if has_rune("M"){
+if has_rune("J"){
     set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
     set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 }

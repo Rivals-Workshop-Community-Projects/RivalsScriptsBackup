@@ -6,6 +6,7 @@
 if (state == PS_SPAWN) {
 	if (playIntroAnim){
 		if (!shouldPlayLandingIntroAnim){
+			hud_offset = 9999;
 			sprite_index = sprite_get("empty_sprite");
 		} else {
 			sprite_index = sprite_get("intro");

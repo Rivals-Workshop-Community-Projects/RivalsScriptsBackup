@@ -77,6 +77,9 @@ switch(state){
         }
     } else if(self_enhanced && state_timer == 1){
         create_hitbox(AT_FSPECIAL, 1, x - 8, y - 110);
+        if("destroyed_puddle" in self && instance_exists(destroyed_puddle)){
+            create_hitbox(AT_FSPECIAL, 2, destroyed_puddle.x, destroyed_puddle.y - 32);
+        }
     }
     
     if(state_timer >= 150 || was_parried || (!position_meeting(x, y + 1, asset_get("par_block")) && !position_meeting(x, y + 1, asset_get("par_jumpthrough")))){

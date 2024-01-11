@@ -201,6 +201,7 @@ instance_create(x, y, "obj_article2")
 
 //wii stage
 wiimote_stage_sprite = sprite_get("guardian_wiimote");
+wiimote_compat_sprite = sprite_get("guardian_remote");
 
 //#endregion
 

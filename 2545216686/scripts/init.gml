@@ -285,6 +285,19 @@ if (get_player_color( player ) == 7){
 	}
 }
 
+// compatability
+
+TCG_Kirby_Copy = 9; // Tornado
+steve_death_message = "Steve got outfoxed";
+Hikaru_Title = "Twin-Tailed Tornado";
+arena_title = "The Twin-Tailed Genius";
+arena_short_name = "Tails";
+miiverse_post = sprite_get("miiverse");
+
+// Po & Gumbo
+pot_compat_variable = sprite_get("gumbo_food");
+pot_compat_text = "Mint Candy";
+
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;

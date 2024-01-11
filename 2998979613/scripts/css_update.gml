@@ -70,10 +70,11 @@ var tmp_xl2 = tmp_xl1+tmp_bw
 var tmp_yl1 = y+tmp_yl
 var tmp_yl2 = tmp_yl1+tmp_bh
 draw_set_halign(fa_left);
+print(get_synced_var(player))
 if get_synced_var(onlpl) > 1{
 	set_synced_var(onlpl, 0);
+	voiced = 0;
 }
-
 if voicebutton == 2 || voicebutton == 5{
 	if cssframes == 0{
 	sound_stop(sound_get("voice_toggle"));

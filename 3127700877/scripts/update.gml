@@ -160,7 +160,7 @@ with(oPlayer){
             if(fucking_dying_timer >= 300){
             	if(fucking_dying_timer == 300){
 	        		with(other) {
-	        			create_deathbox(other.x, other.y - other.char_height/2, 20, 20, other.player, true, 0, 2, 2);
+	        			create_deathbox(round(other.x), round(other.y - other.char_height/2), 20, 20, other.player, true, 0, 2, 2);
 	        			spawn_hit_fx(other.x, other.y-other.char_height/2, HFX_MOL_BOOM_FINISH);
 	    				sound_play(asset_get("sfx_blow_heavy2"))
 				        sound_play(asset_get("sfx_mol_huge_explode"))
@@ -207,7 +207,7 @@ with(oPlayer){
         	if(fucking_dying_timer >= 60){
         		if(fucking_dying_timer == 60){
 	        		with(other) {
-	        			create_deathbox(other.x, other.y - other.char_height/2, 20, 20, other.player, true, 0, 2, 2);
+	        			create_deathbox(round(other.x), round(other.y - other.char_height/2), 20, 20, other.player, true, 0, 2, 2);
 	        			spawn_hit_fx(other.x, other.y-other.char_height/2, vfx_sludge_large_2);
 	    				sound_play(asset_get("sfx_blow_heavy2"))
 				        sound_play(asset_get("sfx_mol_huge_explode"))

@@ -27,7 +27,7 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 10.5;
+jump_speed = 11;
 short_hop_speed = 6.5;
 djump_speed = 10;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
@@ -75,8 +75,8 @@ techroll_recovery_frames = 2;
 techroll_speed = 10;
 
 //airdodge animation frames
-air_dodge_startup_frames = 1;
-air_dodge_active_frames = 3;
+air_dodge_startup_frames = 2;
+air_dodge_active_frames = 2;
 air_dodge_recovery_frames = 3;
 air_dodge_speed = 7.5;
 
@@ -111,8 +111,8 @@ grov_wandangle = 0;
 grov_dspecial_loops = 0;
 grov_fspecial_cooldown = 0;
 grov_fspecial_airuse = false;
-grov_char_height = char_height;
 grov_emeratimer = 0;
+grov_emera_land = false;
 grov_gen3 = false;
 grov_hasruneO = false; // Added to prevent draw_hud from crashing when f5ing with runes on.
 
@@ -158,8 +158,6 @@ amber_hugExitPos[1] = 0; //The y target offset point.
 amber_useSprDirOffset = true; 
 amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
 amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
-
-// other_name = null;
 
 //RUNES
 if has_rune("A"){

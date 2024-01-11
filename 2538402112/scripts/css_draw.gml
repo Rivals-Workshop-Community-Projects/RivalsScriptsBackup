@@ -20,6 +20,7 @@ if fade_timer > 50 custom_alpha = max((50 - (fade_timer - 50))/50,0);
 //Alt
 draw_set_halign(fa_left);
 draw_set_alpha(1);
+init_shader();
 shader_end();
 
 //include alt. name
@@ -43,10 +44,10 @@ switch (get_player_color(player))
 		draw_sprite_ext(sprite_get("css_icons"), 0, x+176, y+110, 2, 2, 0, c_white, custom_alpha);
 		break;
 	case 12:
-		draw_sprite_ext(sprite_get("css_icons"), 6, x+176, y+110, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(asset_get("prem_skin_spr"), 2, x+208, y+144, 2, 2, 0, c_white, 1);
 		break;
 	case 13:
-		draw_sprite_ext(sprite_get("css_icons"), 5, x+176, y+110, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(asset_get("prem_skin_spr"), 3, x+208, y+144, 2, 2, 0, c_white, 1);
 		break;
 	case 14:
 	case 15:
@@ -55,7 +56,7 @@ switch (get_player_color(player))
 		draw_sprite_ext(sprite_get("css_icons"), 2, x+176, y+110, 2, 2, 0, c_white, custom_alpha);
 		break;
 	case 18:
-		draw_sprite_ext(sprite_get("css_icons"), 7, x+176, y+110, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(asset_get("prem_skin_spr"), 5, x+208, y+144, 2, 2, 0, c_white, 1);
 		break;
 	case 19:
 		draw_sprite_ext(sprite_get("css_icons"), 4, x+176, y+110, 2, 2, 0, c_white, custom_alpha);

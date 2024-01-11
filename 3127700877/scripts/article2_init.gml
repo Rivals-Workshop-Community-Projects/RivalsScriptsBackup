@@ -33,6 +33,7 @@ if(left_check xor right_check){
 }
 if(!has_rune("H") && instance_exists(player_id.sludge_puddle_id) && point_distance(x, y, x, player_id.sludge_puddle_id.y) < 2 && point_distance(x, y, player_id.sludge_puddle_id.x, y) <= 64){
     self_enhanced = true;
+    destroyed_puddle = player_id.sludge_puddle_id;
     player_id.sludge_puddle_id.state = 69;
     player_id.sludge_puddle_id.state_timer = 0;
     player_id.sludge_puddle_id = noone;

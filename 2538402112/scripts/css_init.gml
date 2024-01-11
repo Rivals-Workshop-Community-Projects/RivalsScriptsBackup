@@ -11,7 +11,7 @@ custom_alpha = 1;
 test_online = player == 0 ? true : false;
 test_team = false;
 //Alt name init. var doesn't work with arrays lol
-alt_name[0]  = "Default";
+alt_name[0]  = "Grovyle";
 alt_name[1]  = "Celebi";
 alt_name[2]  = "Dusknoir";
 alt_name[3]  = "Wigglytuff";

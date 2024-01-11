@@ -17,7 +17,7 @@ STATE LIST
 */
 
 // Special Synergy
-//if (state <= 4 && gotHitCounter == 0){//>
+if (state <= 4){//>
 	if (place_meeting(x, y, asset_get("pHitBox"))) {
 		with (asset_get("pHitBox")){
 			if (place_meeting(x, y, other)){
@@ -49,7 +49,7 @@ STATE LIST
 			}
 		}
 	}
-//}
+}
 
 if (gotHitByEnemyAttack && state != 9){
 	setState(9);

@@ -33,7 +33,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 
 
 
-set_num_hitboxes(AT_FSPECIAL, 1);
+set_num_hitboxes(AT_FSPECIAL, 2);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 99);
@@ -43,7 +43,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 220);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
@@ -69,6 +69,43 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, vfx_sludge_small );
 set_hitbox_value(AT_FSPECIAL, 1, HG_SLUDGE_EFFECT, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 1);
+
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 99);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 140);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 64);
+set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 12);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.25);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_THROWS_ROCK, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, vfx_sludge_small );
+set_hitbox_value(AT_FSPECIAL, 2, HG_SLUDGE_EFFECT, 40);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 1);
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.

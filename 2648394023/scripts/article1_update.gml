@@ -186,9 +186,9 @@ if h != noone{
 	
 	sound_play(asset_get("sfx_ori_ustrong_charge"));
 	
-	window = 1;
-	state_timer = 0;
-	ir_loops_left = 2;
+	// window = 1;
+	// state_timer = 0;
+	// ir_loops_left = 2;
 	photon_charge++;
 	if photon_charge == 4{
 		spawn_hit_fx(x, y, player_id.vfx_wavelengths[player_id.ir]);
@@ -390,6 +390,8 @@ return target;
 
 state = n_s;
 state_timer = 0;
+window = 1;
+ir_loops_left = 2;
 
 if state == PS_IDLE{
 	anim_timer = 0;

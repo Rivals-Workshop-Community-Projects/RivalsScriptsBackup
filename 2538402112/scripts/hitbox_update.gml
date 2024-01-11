@@ -1,113 +1,121 @@
 //hitbox_update
-
-if (attack == AT_FTILT){
-    if get_player_color(player) == 13 image_index = 1
-    if get_player_color(player) == 12 image_index = 2
-}
 if (attack == AT_FTHROW){
-	if hitbox_timer == 1 && !has_rune("O"){
-		player_id.move_cooldown[AT_FTHROW] = 210;
-		proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
-		// print(proj_angle)
+	if !free sound_play(asset_get("sfx_blow_weak1"), false, noone, 0.5);
+	if !free sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.65);
+	if hitbox_timer == 1{
+		if !was_reflected{
+			proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
+			if !has_rune("O") player_id.move_cooldown[AT_FTHROW] = 210;
+		}
 	}
-    if !free destroyed = true;
-    
-    if get_player_color(player) == 13 image_index = 1
-    if get_player_color(player) == 12 image_index = 2
+	// through_platforms = hitbox_timer <= 5 ? 10:0;
+	// Reflect stuff
+    if player != old_owner{//Relect correctly without parries.
+        if !was_reflected hitbox_timer = 0; //Limits total lifetime
+        was_reflected = true;
+        draw_xscale = spr_dir;
+        if !bashed{//Ori bash speed is it's own thing, it seems.
+            hsp *= 1.5;
+            vsp *= 1.5;
+        }
+        else{
+            proj_angle = point_direction(0,0,hsp,vsp);
+        }
+    }
+    old_owner = player; //Reflect code needs to run only once or game will die.
+    // if !free destroyed = true;
 }
 if (attack == AT_UTHROW){
-	if hitbox_timer == 1 && !has_rune("O") player_id.move_cooldown[AT_UTHROW] = 150;
-	// through_platforms = 10
-    if !free destroyed = true;
-    
-    if get_player_color(player) == 13 image_index = 1
-    if get_player_color(player) == 12 image_index = 2
+	if !free sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.7);
+	if hitbox_timer == 1 && !was_reflected && !has_rune("O") player_id.move_cooldown[AT_UTHROW] = 150;
+	// Reflect stuff
+    if player != old_owner{//Relect correctly without parries.
+        if !was_reflected hitbox_timer = 0; //Limits total lifetime
+        was_reflected = true;
+        draw_xscale = spr_dir;
+        if !bashed{//Ori bash speed is it's own thing, it seems.
+            hsp = 3.25*spr_dir;
+            vsp = -7;
+        }
+    }
+    old_owner = player; //Reflect code needs to run only once or game will die.
+    // if !free destroyed = true;
 }
 if (attack == AT_DTHROW){
 	if hitbox_timer == 1 && !has_rune("O") player_id.move_cooldown[AT_DTHROW] = 60;
+	if player != orig_player{
+		destroyed = true;
+		if !has_rune("O") player_id.move_cooldown[AT_DTHROW] = 150;
+		exit;
+	}
     if !free{
-    	destroyed = true;
-    	if player == orig_player{
-    		with asset_get("obj_article1"){
-    			if player_id == other.player_id life_timer = 0
-    		}
-    		sound_play(sound_get("Glass_Break"))
-    		sound_play(asset_get("sfx_blow_weak2"))
-	    	instance_create(x,y+9,"obj_article1")
-	    	instance_create(x+40,y+9,"obj_article1")
-	    	instance_create(x-40,y+9,"obj_article1")
-    	}
+		var eff = spawn_hit_fx(x,y,HFX_OLY_SHINE_SMALL);
+		if get_player_color(player) == 12 eff.uses_shader = -1;
+		destroyed = true;
+		with asset_get("obj_article1"){
+			if player_id == other.player_id life_timer = 0;
+		}
+		sound_play(sound_get("Glass_Break"));
+		sound_play(asset_get("sfx_blow_weak2"));
+		instance_create(x,y+9,"obj_article1");
+		instance_create(x+40,y+9,"obj_article1");
+		instance_create(x-40,y+9,"obj_article1");
+		if has_rune("M"){
+			instance_create(x+80,y+9,"obj_article1");
+			instance_create(x-80,y+9,"obj_article1");
+			instance_create(x+120,y+9,"obj_article1");
+			instance_create(x-120,y+9,"obj_article1");
+		}
     }
-    if get_player_color(player) == 13 image_index = 1
-    if get_player_color(player) == 12 image_index = 2
 }
 
 if (attack == AT_FSPECIAL){
 	image_index = (hitbox_timer/2)%2 + (get_player_color(player) == 13)*2 + (get_player_color(player) == 12)*4;
-	// image_index = hitbox_timer/2 + (get_player_color(player) == 13) + (get_player_color(player) == 12)*2;
+	through_platforms = hitbox_timer <= 5 ? 10:0;
 	if player == orig_player{ //Allows Ori to Bash it
-	    hsp = lengthdir_x(14, player_id.grov_wandangle);
-	    vsp = lengthdir_y(14, player_id.grov_wandangle);
-	    player_id.grov_pounce_foe_id = null
+		hsp = lengthdir_x(14, player_id.grov_wandangle);
+		vsp = lengthdir_y(14, player_id.grov_wandangle);
+		player_id.grov_pounce_foe_id = null;
 	}
     if !free{
-        destroyed = true;
+        should_pounce = true;
+        destroyed_next = true;
     }
-    if !has_rune("G"){ // Hitstun rune
-	    with asset_get("pHurtBox"){
-	    	if player != other.orig_player{
-	    		if place_meeting(x,y,other){
-	    			other.has_hit = true
-	    			other.player_id.grov_pouncex = playerID.x;
-	    			other.player_id.grov_pouncey = playerID.y;
-	    			if other.player_id.free other.player_id.grov_pouncey -= 32;
-	    			other.player_id.grov_fspecial_airuse = false;
-	    			other.player_id.grov_pounce_foe_id = playerID;
-	    		}
-	    	}
-	    }
-    }
-    if has_hit{
-        destroyed = true;
-    }
-    var rune_check = false
     with(player_id){
-	    if has_rune("N") && special_pressed == true{
-	    	rune_check = true
-	    	other.destroyed = true
-	    }
+		if has_rune("N") && special_pressed{
+			other.should_pounce = true;
+			other.destroyed_next = true;
+		}
+	}
+	if destroyed{//Walls
+		should_pounce = true;
+		destroyed = false;
+		destroyed_next = true;
+	}
+    if should_pounce{
+        if !bashed{
+			player_id.grov_pounce_foe = has_hit;
+			with(player_id){
+				if state != PS_HITSTUN{
+					if !other.has_hit{
+						grov_pouncex = other.x + 18;
+						grov_pouncey = other.y + 7;
+						if !free && (y-grov_pouncey <= 18) && (y-grov_pouncey > 0) grov_pouncey = y;
+					}
+					window = 4;
+					window_timer = 0;
+				}
+			}
+        }
+        sound_play(asset_get("sfx_absa_singlezap2"));
+        if !has_hit && !destroyed destroyed_next = true;
+        else destroyed = true;
     }
-    if destroyed{
+    if player_id.state_cat == SC_HITSTUN destroyed_next = true;
+    if destroyed_next spawn_hit_fx(x, y, HFX_ABS_SWEET);
+    if hitbox_timer == 25{//Afterwards for unique effect
+        player_id.move_cooldown[AT_FSPECIAL] = 0;
+        destroyed_next = true;
         spawn_hit_fx(x, y, HFX_ABS_ZAP_SMALL);
     }
-    if (destroyed && was_parried == false && player == orig_player) || rune_check = true{
-        // if !has_hit {
-        sound_play(asset_get("sfx_absa_singlezap2"));
-            
-        // }
-        player_id.grov_pounce_foe = has_hit
-        with(player_id){
-            if state != PS_HITSTUN{
-                var target_dis = (x - other.x);
-                var pounce_speed = sqrt(abs(target_dis))*sign(target_dis);
-                hsp = pounce_speed*-1;
-                if free {hsp *= 0.5}
-                
-                if !other.has_hit{
-                    grov_pouncex = other.x + 18
-                    grov_pouncey = other.y + 7
-                    // if (y - other.y) < 38 && (y - other.y) > -38 grov_pouncey = y
-                }
-                
-                window = 4
-                window_timer = 0
-                
-            }
-        }
-    }
-    if hitbox_timer == 60{
-        player_id.move_cooldown[AT_FSPECIAL] = 0
-    }
-    if player_id.state_cat == SC_HITSTUN destroyed = true
-    
 }

@@ -254,6 +254,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "10 January, 2024");
+initHeader("FSpecial - Bugfixes");
+initSection("Prism state duration no longer resets when the prism is attacked (removes an infinite stall).");
+initWords("Removed advertising");
+
 initPatch("1.6", "14 April, 2023");
 initWords("Advertising");
 
