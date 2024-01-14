@@ -1,5 +1,4 @@
 switch(attack){
-    
     case AT_FTILT:
         switch(hbox_num){
             case 3:

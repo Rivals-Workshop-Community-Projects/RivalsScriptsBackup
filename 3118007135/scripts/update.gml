@@ -20,9 +20,32 @@ if get_gameplay_time() <= 120{
 #endregion
 
 #region // cringe ass hfx stuff
+if instance_exists(pHitBox){
+	with pHitBox{
+		if player_id == other.id and attack == AT_DSPECIAL_2 and player_id.wren_angl_chk == false{
+			player_id.wren_hb_angl = get_hitbox_angle(self);
+			print("Angle: " + string(player_id.wren_hb_angl));
+		}
+	}
+} else {
+	if wren_angl_chk{
+		wren_angl_chk = false;
+	}
+}
+
+var desired_angle = wren_hb_angl;
+var real_angle = (spr_dir == 1) ? desired_angle : desired_angle - 180
+// use real_angle as your sprite's angle.
+
 with hit_fx_obj if player_id == other {
 	if hit_fx == other.vfx_sweetspot or hit_fx == other.hfx_waves_small or hit_fx == other.hfx_yoyo_small or hit_fx == other.hfx_yoyo_big or hit_fx == other.hfx_yoyo_huge or hit_fx == other.hfx_waves_big or hit_fx == other.hfx_waves_huge{
 		depth = player_id.depth-1;
+	}
+	if hit_fx == other.vfx_riptide_ichi or hit_fx == other.vfx_riptide_ni or hit_fx == other.vfx_riptide_daiichi or hit_fx == other.vfx_riptide_daini{
+		// Change Depth
+		depth = player_id.depth-1;
+		// Angle the hit effect towards the direction that the player will be sent
+			draw_angle = real_angle;
 	}
 }
 #endregion
@@ -77,6 +100,7 @@ switch(state){
 		                    if special_pressed and joy_pad_idle and wren_yoyo.state == 1{
 		                        wren_yoyo.state = 3;
 		                        wren_yoyo.state_timer = 0;
+		                        sound_play(asset_get("mfx_star"));
 		                        move_cooldown[AT_NSPECIAL] = 15;
 		                    }
 		                }

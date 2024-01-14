@@ -172,6 +172,12 @@ switch(state){
 
 #define wave_sprites(_anim)
 // Variables
+if get_player_color(player) == 26{
+    gpu_push_state();
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(wren_wave_spr[_anim,4], image_index, x, y, spr_dir * 2, 2, 0, c_red, 1);
+    gpu_pop_state();
+}
 draw_sprite_ext(wren_wave_spr[_anim,0], image_index, x, y, spr_dir * 2, 2, 0, wren_wave_col[0], 1);
 draw_sprite_ext(wren_wave_spr[_anim,1], image_index, x, y, spr_dir * 2, 2, 0, wren_wave_col[1], 1);
 draw_sprite_ext(wren_wave_spr[_anim,2], image_index, x, y, spr_dir * 2, 2, 0, wren_wave_col[2], 1);

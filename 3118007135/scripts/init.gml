@@ -151,6 +151,9 @@ wren_dtiltwo_hitfall = false;
 wren_noloop = 0;
 wren_noloop_max = 73;
 
+wren_hb_angl = 0;
+wren_angl_chk = false;
+
 wren_tidecall_toggle = 0;
 
 #region // Gimmick Stuff
@@ -206,6 +209,12 @@ hfx_yoyo_huge   = hit_fx_create(sprite_get("hfx_yoyo_huge"), 28);
 hfx_waves_small = hit_fx_create(sprite_get("hfx_waves_small"), 18);
 hfx_waves_big   = hit_fx_create(sprite_get("hfx_waves_big"), 21);
 hfx_waves_huge  = hit_fx_create(sprite_get("hfx_waves_huge"), 28);
+
+vfx_riptide_ichi= hit_fx_create(sprite_get("vfx_riptide_ichi"), 28);
+
+vfx_riptide_ni  = hit_fx_create(sprite_get("vfx_riptide_ichi"), 28);
+vfx_riptide_daiichi= hit_fx_create(sprite_get("vfx_riptide_ichi"), 28);
+vfx_riptide_daini  = hit_fx_create(sprite_get("vfx_riptide_ichi"), 28);
 #endregion
 
 #region // Wave Sprites
@@ -239,83 +248,97 @@ wren_wave_spr[0,0] = sprite_get("dashstart_wave3");
 wren_wave_spr[0,1] = sprite_get("dashstart_wave2");
 wren_wave_spr[0,2] = sprite_get("dashstart_wave1");
 wren_wave_spr[0,3] = sprite_get("dashstart_wavetop");
+wren_wave_spr[0,4] = sprite_get("dashstart_wavegen");
 #endregion
 #region // Dash
 wren_wave_spr[1,0] = sprite_get("dash_wave3");
 wren_wave_spr[1,1] = sprite_get("dash_wave2");
 wren_wave_spr[1,2] = sprite_get("dash_wave1");
 wren_wave_spr[1,3] = sprite_get("dash_wavetop");
+wren_wave_spr[1,4] = sprite_get("dash_wavegen");
 #endregion
 #region // Dash Turn
 wren_wave_spr[2,0] = sprite_get("dashturn_wave3");
 wren_wave_spr[2,1] = sprite_get("dashturn_wave2");
 wren_wave_spr[2,2] = sprite_get("dashturn_wave1");
 wren_wave_spr[2,3] = sprite_get("dashturn_wavetop");
+wren_wave_spr[2,4] = sprite_get("dashturn_wavegen");
 #endregion
 #region // Dash Stop
 wren_wave_spr[3,0] = sprite_get("dashstop_wave3");
 wren_wave_spr[3,1] = sprite_get("dashstop_wave2");
 wren_wave_spr[3,2] = sprite_get("dashstop_wave1");
 wren_wave_spr[3,3] = sprite_get("dashstop_wavetop");
+wren_wave_spr[3,4] = sprite_get("dashstop_wavegen");
 #endregion
 #region // Tech
 wren_wave_spr[4,0] = sprite_get("tech_wave3");
 wren_wave_spr[4,1] = sprite_get("tech_wave2");
 wren_wave_spr[4,2] = sprite_get("tech_wave1");
 wren_wave_spr[4,3] = sprite_get("tech_wavetop");
+wren_wave_spr[4,4] = sprite_get("tech_wavegen");
 #endregion
 #region // Roll
 wren_wave_spr[5,0] = sprite_get("roll_wave3");
 wren_wave_spr[5,1] = sprite_get("roll_wave2");
 wren_wave_spr[5,2] = sprite_get("roll_wave1");
 wren_wave_spr[5,3] = sprite_get("roll_wavetop");
+wren_wave_spr[5,4] = sprite_get("roll_wavegen");
 #endregion
 #region // DAttack
 wren_wave_spr[6,0] = sprite_get("dattack_wave3");
 wren_wave_spr[6,1] = sprite_get("dattack_wave2");
 wren_wave_spr[6,2] = sprite_get("dattack_wave1");
 wren_wave_spr[6,3] = sprite_get("dattack_wavetop");
+wren_wave_spr[6,4] = sprite_get("dattack_wavegen");
 #endregion
 #region // FTilt
 wren_wave_spr[7,0] = sprite_get("ftilt_wave3");
 wren_wave_spr[7,1] = sprite_get("ftilt_wave2");
 wren_wave_spr[7,2] = sprite_get("ftilt_wave1");
 wren_wave_spr[7,3] = sprite_get("ftilt_wavetop");
+wren_wave_spr[7,4] = sprite_get("ftilt_wavegen");
 #endregion
 #region // DTilt
 wren_wave_spr[8,0] = sprite_get("dtilt_wave3");
 wren_wave_spr[8,1] = sprite_get("dtilt_wave2");
 wren_wave_spr[8,2] = sprite_get("dtilt_wave1");
 wren_wave_spr[8,3] = sprite_get("dtilt_wavetop");
+wren_wave_spr[8,4] = sprite_get("dtilt_wavegen");
 #endregion
 #region // UAir
 wren_wave_spr[9,0] = sprite_get("uair_wave3");
 wren_wave_spr[9,1] = sprite_get("uair_wave2");
 wren_wave_spr[9,2] = sprite_get("uair_wave1");
 wren_wave_spr[9,3] = sprite_get("uair_wavetop");
+wren_wave_spr[9,4] = sprite_get("uair_wavegen");
 #endregion
 #region // FSpecial
 wren_wave_spr[10,0] = sprite_get("fspecial_wave3");
 wren_wave_spr[10,1] = sprite_get("fspecial_wave2");
 wren_wave_spr[10,2] = sprite_get("fspecial_wave1");
 wren_wave_spr[10,3] = sprite_get("fspecial_wavetop");
+wren_wave_spr[10,4] = sprite_get("fspecial_wavegen");
 #endregion
 #region // USpecial
 wren_wave_spr[11,0] = sprite_get("uspecial_wave3");
 wren_wave_spr[11,1] = sprite_get("uspecial_wave2");
 wren_wave_spr[11,2] = sprite_get("uspecial_wave1");
 wren_wave_spr[11,3] = sprite_get("uspecial_wavetop");
+wren_wave_spr[11,4] = sprite_get("uspecial_wavegen");
 #endregion
 #region // USpecial EX
 wren_wave_spr[12,0] = sprite_get("uspecialex_wave3");
 wren_wave_spr[12,1] = sprite_get("uspecialex_wave2");
 wren_wave_spr[12,2] = sprite_get("uspecialex_wave1");
 wren_wave_spr[12,3] = sprite_get("uspecialex_wavetop");
+wren_wave_spr[12,4] = sprite_get("uspecialex_wavegen");
 #endregion
 #region // Taunt
 wren_wave_spr[13,0] = sprite_get("taunt_wave3");
 wren_wave_spr[13,1] = sprite_get("taunt_wave2");
 wren_wave_spr[13,2] = sprite_get("taunt_wave1");
 wren_wave_spr[13,3] = sprite_get("taunt_wavetop");
+wren_wave_spr[13,4] = sprite_get("taunt_wavegen");
 #endregion
 #endregion

@@ -3,6 +3,9 @@ spr_wave = sprite_get("wave");
 spr_wave_death = sprite_get("wave_death");
 spr_wave_final = sprite_get("wave_final");
 
+spr_wave_gen = sprite_get("wave_gen");
+spr_wave_death_gen = sprite_get("wave_death_gen");
+spr_wave_final_gen = sprite_get("wave_final_gen");
 #endregion
 
 #region // Animation 

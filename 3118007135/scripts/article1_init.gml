@@ -8,6 +8,14 @@ spr_bubble_whirlstart = sprite_get("bubble_whirlstart");
 spr_bubble_whirl = sprite_get("bubble_whirl");
 spr_bubble_whirlend = sprite_get("bubble_whirlend");
 
+spr_bubble_idle_gen = sprite_get("bubble_gen");
+spr_bubble_spawn_gen = sprite_get("bubble_init_gen");
+spr_bubble_recall_gen = sprite_get("bubble_recall_gen");
+spr_bubble_pop_gen = sprite_get("bubble_pop_gen");
+spr_bubble_whirlstart_gen = sprite_get("bubble_whirlstart_gen");
+spr_bubble_whirl_gen = sprite_get("bubble_whirl_gen");
+spr_bubble_whirlend_gen = sprite_get("bubble_whirlend_gen");
+
 spr_bubble_mask = sprite_get("bubble_mask");
 #endregion
 

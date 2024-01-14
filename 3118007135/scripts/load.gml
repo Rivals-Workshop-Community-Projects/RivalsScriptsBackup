@@ -24,24 +24,28 @@ sprite_change_offset("dash_wavetop", xx, yy);       // DONE
 sprite_change_offset("dash_wave1", xx, yy);         // DONE
 sprite_change_offset("dash_wave2", xx, yy);         // DONE
 sprite_change_offset("dash_wave3", xx, yy);         // DONE
+sprite_change_offset("dash_wavegen", xx, yy);         // DONE
 
 sprite_change_offset("dashstart", xx, yy);          // DONE
 sprite_change_offset("dashstart_wavetop", xx, yy);  // DONE
 sprite_change_offset("dashstart_wave1", xx, yy);    // DONE
 sprite_change_offset("dashstart_wave2", xx, yy);    // DONE
 sprite_change_offset("dashstart_wave3", xx, yy);    // DONE
+sprite_change_offset("dashstart_wavegen", xx, yy);    // DONE
 
 sprite_change_offset("dashstop", xx, yy);           // DONE
 sprite_change_offset("dashstop_wavetop", xx, yy);   // DONE
 sprite_change_offset("dashstop_wave1", xx, yy);     // DONE
 sprite_change_offset("dashstop_wave2", xx, yy);     // DONE
 sprite_change_offset("dashstop_wave3", xx, yy);     // DONE
+sprite_change_offset("dashstop_wavegen", xx, yy);     // DONE
 
 sprite_change_offset("dashturn", xx, yy);           // DONE
 sprite_change_offset("dashturn_wavetop", xx, yy);   // DONE
 sprite_change_offset("dashturn_wave1", xx, yy);     // DONE
 sprite_change_offset("dashturn_wave2", xx, yy);     // DONE
 sprite_change_offset("dashturn_wave3", xx, yy);     // DONE
+sprite_change_offset("dashturn_wavegen", xx, yy);     // DONE
 #endregion
 
 #region // Hurt Animations [7/7]
@@ -73,6 +77,7 @@ sprite_change_offset("roll_wavetop", xx, yy);       // DONE
 sprite_change_offset("roll_wave1", xx, yy);         // DONE
 sprite_change_offset("roll_wave2", xx, yy);         // DONE
 sprite_change_offset("roll_wave3", xx, yy);         // DONE
+sprite_change_offset("roll_wavegen", xx, yy);         // DONE
 
 sprite_change_offset("airdodge", xx, yy);           // DONE
 sprite_change_offset("airdodge_yoyo", xx, yy);      // DONE
@@ -88,6 +93,7 @@ sprite_change_offset("tech_wavetop", xx, yy);       // DONE
 sprite_change_offset("tech_wave1", xx, yy);         // DONE
 sprite_change_offset("tech_wave2", xx, yy);         // DONE
 sprite_change_offset("tech_wave3", xx, yy);         // DONE
+sprite_change_offset("tech_wavegen", xx, yy);         // DONE
 #endregion
 
 #region // Attack Animations [22/22]
@@ -101,6 +107,7 @@ sprite_change_offset("dattack_wavetop", xx, yy);    // DONE
 sprite_change_offset("dattack_wave1", xx, yy);      // DONE
 sprite_change_offset("dattack_wave2", xx, yy);      // DONE
 sprite_change_offset("dattack_wave3", xx, yy);      // DONE
+sprite_change_offset("dattack_wavegen", xx, yy);      // DONE
 
 sprite_change_offset("ftilt", xx, yy, true);        // DONE
 sprite_change_offset("ftilt_yoyo", xx, yy);         // DONE
@@ -108,12 +115,14 @@ sprite_change_offset("ftilt_wavetop", xx, yy);      // DONE
 sprite_change_offset("ftilt_wave1", xx, yy);        // DONE
 sprite_change_offset("ftilt_wave2", xx, yy);        // DONE
 sprite_change_offset("ftilt_wave3", xx, yy);        // DONE
+sprite_change_offset("ftilt_wavegen", xx, yy);        // DONE
 
 sprite_change_offset("dtilt", xx, yy, true);        // DONE
 sprite_change_offset("dtilt_wavetop", xx, yy);      // DONE
 sprite_change_offset("dtilt_wave1", xx, yy);        // DONE
 sprite_change_offset("dtilt_wave2", xx, yy);        // DONE
 sprite_change_offset("dtilt_wave3", xx, yy);        // DONE
+sprite_change_offset("dtilt_wavegen", xx, yy);        // DONE
 sprite_change_offset("dtilt_yoyo", xx, yy);         // DONE
 
 sprite_change_offset("utilt", xx, yy, true);        // DONE
@@ -131,6 +140,7 @@ sprite_change_offset("uair_wavetop", xx, yy);      // DONE
 sprite_change_offset("uair_wave1", xx, yy);        // DONE
 sprite_change_offset("uair_wave2", xx, yy);        // DONE
 sprite_change_offset("uair_wave3", xx, yy);        // DONE
+sprite_change_offset("uair_wavegen", xx, yy);        // DONE
 
 sprite_change_offset("dair", xx, yy, true);         // DONE
 #endregion
@@ -149,16 +159,18 @@ sprite_change_offset("nspecial2", xx, yy, true);        // DONE
 //sprite_change_offset("nspecial2_air", xx, yy, true);    // beta
 
 sprite_change_offset("fspecial", xx, yy, true);         // DONE
-sprite_change_offset("fspecial_wavetop", xx, yy, true); // DONE
-sprite_change_offset("fspecial_wave1", xx, yy, true);   // DONE
-sprite_change_offset("fspecial_wave2", xx, yy, true);   // DONE
-sprite_change_offset("fspecial_wave3", xx, yy, true);   // DONE
+sprite_change_offset("fspecial_wavetop", xx, yy); // DONE
+sprite_change_offset("fspecial_wave1", xx, yy);   // DONE
+sprite_change_offset("fspecial_wave2", xx, yy);   // DONE
+sprite_change_offset("fspecial_wave3", xx, yy);   // DONE
+sprite_change_offset("fspecial_wavegen", xx, yy);   // DONE
 
 sprite_change_offset("uspecial", xx, yy, true);         // DONE
 sprite_change_offset("uspecial_wavetop", xx, yy);       // DONE
 sprite_change_offset("uspecial_wave1", xx, yy);         // DONE
 sprite_change_offset("uspecial_wave2", xx, yy);         // DONE
 sprite_change_offset("uspecial_wave3", xx, yy);         // DONE
+sprite_change_offset("uspecial_wavegen", xx, yy);         // DONE
 sprite_change_offset("uspecial_yoyo", xx, yy);          // DONE
 
 sprite_change_offset("uspecialex", xx, yy, true);       // DONE
@@ -166,6 +178,7 @@ sprite_change_offset("uspecialex_wavetop", xx, yy);     // DONE
 sprite_change_offset("uspecialex_wave1", xx, yy);       // DONE
 sprite_change_offset("uspecialex_wave2", xx, yy);       // DONE
 sprite_change_offset("uspecialex_wave3", xx, yy);       // DONE
+sprite_change_offset("uspecialex_wavegen", xx, yy);       // DONE
 sprite_change_offset("uspecialex_yoyo", xx, yy);        // DONE
 
 sprite_change_offset("uspecial2", xx, yy, true);        // DONE
@@ -181,6 +194,7 @@ sprite_change_offset("taunt_wavetop", xx, yy);          // DONE
 sprite_change_offset("taunt_wave1", xx, yy);            // DONE
 sprite_change_offset("taunt_wave2", xx, yy);            // DONE
 sprite_change_offset("taunt_wave3", xx, yy);            // DONE
+sprite_change_offset("taunt_wavegen", xx, yy);            // DONE
 sprite_change_offset("taunt_yoyo", xx, yy);             // DONE
 #endregion
 
@@ -207,6 +221,17 @@ sprite_change_offset("bubble_return", vfxx, vfyy);
 sprite_change_offset("bubble_recall", vfxx, vfyy);
 sprite_change_offset("bubble_pop", vfxx, vfyy);
 sprite_change_offset("bubble_pull", vfxx, vfyy);
+
+sprite_change_offset("bubble_gen", vfxx, vfyy);
+sprite_change_offset("bubble_whirl_gen", vfxx, vfyy);
+sprite_change_offset("bubble_whirlstart_gen", vfxx, vfyy);
+sprite_change_offset("bubble_whirlend_gen", vfxx, vfyy);
+sprite_change_offset("bubble_init_gen", vfxx, vfyy);
+sprite_change_offset("bubble_return_gen", vfxx, vfyy);
+sprite_change_offset("bubble_recall_gen", vfxx, vfyy);
+sprite_change_offset("bubble_pop_gen", vfxx, vfyy);
+sprite_change_offset("bubble_pull_gen", vfxx, vfyy);
+
 sprite_change_offset("string", 0, 2);
 sprite_change_offset("article_offscreen", 33, 33);
 #endregion
@@ -216,6 +241,10 @@ sprite_change_offset("wave", xx*2, yy*2);
 sprite_change_offset("wave_mask", xx*2, yy*2);
 sprite_change_offset("wave_death", xx*2, yy*2);
 sprite_change_offset("wave_final", xx*2, yy*2);
+
+sprite_change_offset("wave_gen", xx*2, yy*2);
+sprite_change_offset("wave_death_gen", xx*2, yy*2);
+sprite_change_offset("wave_final_gen", xx*2, yy*2);
 #endregion
 
 #region // Mark Sprites (Hello everyone my name is-)
@@ -236,6 +265,7 @@ sprite_change_offset("marklargeC_back",  96, 96);
 #region // VFX
 sprite_change_offset("vfx_sweetspot", vfxx, vfyy);
 sprite_change_offset("vfx_uspecialfinal", vfxx, vfyy);
+sprite_change_offset("vfx_riptide_ichi", 0, 80);
 
 sprite_change_offset("hfx_yoyo_small", 80, 80); // Jab 2, DAir, NAir
 sprite_change_offset("hfx_yoyo_big", 128, 128); // FAir

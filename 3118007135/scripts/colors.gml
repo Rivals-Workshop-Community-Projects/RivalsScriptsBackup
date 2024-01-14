@@ -46,7 +46,7 @@ set_color_profile_slot_range( 10, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 27 );
 
 // Blue (Inverse)
 set_color_profile_slot( 1, 0, 132, 216, 228 ); //Orange
@@ -372,6 +372,19 @@ set_color_profile_slot( 25, 7, 153, 65, 24 ); //Cyan Dark
 set_color_profile_slot( 25, 8, 97, 78, 61 ); //Water Light
 set_color_profile_slot( 25, 9, 54, 31, 24 ); //Water
 set_color_profile_slot( 25, 10, 36, 14, 12 ); //Water Dark
+
+// Genesis
+set_color_profile_slot( 26, 0, 255, 41, 76 ); //Orange
+set_color_profile_slot( 26, 1, 212, 19, 112 ); //Dark Orange
+set_color_profile_slot( 26, 2, 128, 0, 125 ); //Dark Dark Orange
+set_color_profile_slot( 26, 3, 45, 49, 56 ); //Fur
+set_color_profile_slot( 26, 4, 212, 19, 112 ); //Darks
+set_color_profile_slot( 26, 5, 255, 247, 247 ); //Cyan Light
+set_color_profile_slot( 26, 6, 202, 211, 232 ); //Cyan
+set_color_profile_slot( 26, 7, 105, 116, 163 ); //Cyan Dark
+set_color_profile_slot( 26, 8, 255, 41, 76 ); //Water Light
+set_color_profile_slot( 26, 9, 212, 19, 112 ); //Water
+set_color_profile_slot( 26, 10, 128, 0, 125 ); //Water Dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

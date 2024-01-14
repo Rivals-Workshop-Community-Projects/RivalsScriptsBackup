@@ -16,4 +16,7 @@ switch(color){
 	case 14:
 		draw_sprite_ext(sprite_get("css_icons"), 3, css_ex_x, css_ex_y, 1, 1, 0, c_white, 1);
 		break;
+	case 26:
+		draw_sprite_ext(sprite_get("css_icons"), 0, css_ex_x, css_ex_y, 1, 1, 0, c_white, 1);
+		break;
 }
