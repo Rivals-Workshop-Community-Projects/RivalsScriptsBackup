@@ -236,7 +236,7 @@ if(state != PS_JUMPSQUAT && in_bubble_jumpsquat && last_bubble != noone)
 	
 	sound_play(sound_get(last_bubble.size == SMALL ? "soap_bounce_mediumBubble" : "soap_bounce_largeBubble"),false,noone);
 	last_bubble.merging = false;
-	LaunchBubble(last_bubble, last_bubble.hsp * 10, last_bubble.vsp + original_jump_speed,false, 270, get_hitbox_value(AT_EXTRA_1,last_bubble.size,HG_BASE_KNOCKBACK));
+	LaunchBubble(last_bubble, last_bubble.hsp * 10, last_bubble.vsp + original_jump_speed,false, 270, 3, get_hitbox_value(AT_EXTRA_1,last_bubble.size,HG_KNOCKBACK_SCALING), 4);
 	
 	// Jump degredation
 	bubble_jumps++;
@@ -318,6 +318,11 @@ with(oPlayer)
 	if(!hitpause)
 	{
 		last_hit_bubble_size = 0;
+		bubble_hit_count = 0;
+		bubble_knockback = 0;
+		bubble_knockback_scale = 0;
+		bubble_damage = 0;
+		last_knockback = 0;
 	}
 }
 //#endregion Other Player Resets
@@ -587,7 +592,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 				// Launch bubble towards Awatsu
 				var Angle = point_direction(bubble.x,bubble.y,Soap.x,Soap.y-(Soap.char_height*0.5));
 				var LaunchStrength = point_distance(bubble.x,bubble.y,Soap.x,Soap.y)*0.2;
-				LaunchBubble(bubble, LaunchStrength * dcos(Angle), LaunchStrength * -dsin(Angle),true,Angle,get_hitbox_value(AT_EXTRA_1,bubble.size,HG_BASE_KNOCKBACK));
+				LaunchBubble(bubble, LaunchStrength * dcos(Angle), LaunchStrength * -dsin(Angle),true,Angle,get_hitbox_value(AT_EXTRA_1,bubble.size,HG_BASE_KNOCKBACK),get_hitbox_value(AT_EXTRA_1,bubble.size,HG_KNOCKBACK_SCALING), 4);
 			}
 		}
 		//#endregion Parrying
@@ -615,6 +620,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 			sound_play(bubble.size == TINY ? sound_get("soap_bubble_explode_sml") : bubble.size == SMALL ? sound_get("soap_bubble_explode_med") : sound_get("soap_bubble_explode_lrg"));
 			bubble.linked_hitbox = create_hitbox(AT_EXTRA_2, has_rune("M") ? min(bubble.size+1,BIG) : bubble.size, floor(bubble.x), floor(bubble.y));
 			bubble.linked_hitbox.player = bubble.player;
+			bubble.linked_hitbox.bubbledamage = bubble.linked_hitbox.damage;
 			bubble.linked_hitbox.can_hit[bubble.player] = false;
 			bubble.spawned_explosion = true;
 			
@@ -888,10 +894,10 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		//#endregion Bubble Movement
 		
 		//#region Hitbox Collision
-		var HitpauseTime = bubble.size == TINY ? 0 : bubble.size == SMALL ? 2 : 3;
+		var HitpauseTime = bubble.size == TINY ? 0 : bubble.size == SMALL ? 3 : 6;
 		if(!hitpause)
 		{
-			var OverlapRadius = bubble.size == BIG ? 40 : bubble.size == SMALL ? 20 : 10;
+			var OverlapRadius = bubble.size == BIG ? 50 : bubble.size == SMALL ? 30 : 20;
 			with(pHitBox)
 			{
 				// Custom collision code (hopefully a bit more effecient), just treats everything like circles
@@ -963,7 +969,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 												bubble.image_index = 0;
 												bubble.last_hitbox = other;
 
-												if(!(other.attack == AT_USTRONG && other.hbox_num == 2) && !(other.attack == AT_FSTRONG && other.hbox_num < 3))
+												if(!(other.attack == AT_USTRONG && other.hbox_num > 1) && !(other.attack == AT_FSTRONG && other.hbox_num < 3))
 												{
 													bubble.lockout_timer = 9;
 												}
@@ -976,7 +982,19 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 												
 		
 												// Launch bubble
-												LaunchBubble(bubble, get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * dcos(Angle), get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * -dsin(Angle),bubble.explosive, other.kb_angle,other.kb_value);
+												var LaunchAngle = other.kb_angle;
+												
+												// Dstrong angle flipper
+												if(other.attack == AT_DSTRONG)
+												{
+													if( ((bubble.x < other.x) && spr_dir == 1) || ((bubble.x > other.x) && spr_dir == -1))
+													{
+														LaunchAngle = 180 - LaunchAngle;
+														Angle = 180 - Angle;
+													}
+												}
+												
+												LaunchBubble(bubble, get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * dcos(Angle), get_hitbox_value(other.attack, other.hbox_num, HG_BUBBLE_KNOCKBACK) * -dsin(Angle),bubble.explosive, LaunchAngle, other.kb_value, other.kb_scale, other.damage);
 												
 												//#endregion Bubble Knock Hitbox Creation
 											}
@@ -1307,7 +1325,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 }
 
 
-#define LaunchBubble(_bubble, _hsp, _vsp, _explosive, _angle, _knockback)
+#define LaunchBubble(_bubble, _hsp, _vsp, _explosive, _angle, _knockback, _knockbackscale, _damage)
 {
 	if(!_bubble.flag_delete)
 	{
@@ -1352,12 +1370,19 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		_bubble.linked_hitbox = noone;
 	}
 
+	var DamageValueMultiplier = 			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
+	var KnockbackValueMultiplier =			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
+	var KnockbackScalingValueMultiplier =	_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
+	
 	_bubble.linked_hitbox = create_hitbox(AT_EXTRA_1,_bubble.size, floor(_bubble.x), floor(_bubble.y));
 	_bubble.linked_hitbox.player = _bubble.player;
 	_bubble.linked_hitbox.was_parried = _bubble.was_parried;
 	_bubble.linked_hitbox.kb_angle = _angle;
-	_bubble.linked_hitbox.kb_value = _bubble.size == BIG ? _knockback : _bubble.size == SMALL ? _knockback*0.75 : 0;
+	_bubble.linked_hitbox.kb_value = floor(_knockback * KnockbackValueMultiplier);
+	_bubble.linked_hitbox.kb_scale = min(_knockbackscale * KnockbackScalingValueMultiplier,1.1);
+	_bubble.linked_hitbox.bubbledamage = floor(_damage * DamageValueMultiplier);
 	_bubble.linked_hitbox.transcendent = _explosive;
+
 	}
 }
 #define ExplodeBubble(_bubble)

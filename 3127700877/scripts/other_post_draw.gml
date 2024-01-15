@@ -20,11 +20,12 @@ if(instance_exists(other_player_id) && sludged_id == other_player_id && !fucking
 }
 
 if(instance_exists(other_player_id) && diseased_id == other_player_id && !fucking_dying_timer){
+	with(other_player_id) var smog = sprite_get("smog_tile");
+	createMask(smog)
     gpu_set_alphatestenable(true);
 	gpu_set_fog(1, other_player_id.disease_color, 0, 1);
 	
 	if(diseased_timer > diseased_timer_max - 30){
-		
 		var a_scale = ease_linear(10, 5, diseased_timer_max - diseased_timer, 30);
 		a_scale /= 10;
 		var a = clamp(a_scale, .5, 1);
@@ -106,4 +107,53 @@ if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && !o
 		gpu_set_fog(0, c_white, 0, 0);
 		gpu_set_alphatestenable(false);
 		
+}
+
+#define maskHeader()
+// Mask renderer utility: disables Normal draw.
+// Draw shapes or sprites to be used as the stencil(s) by maskMidder.
+//================================================================================
+{
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false,false,false,true);
+    
+}
+//================================================================================
+#define maskMidder()
+// Reenables draw but only within the region drawn between maskHeader and maskMidder.
+// Lasts until maskFooter is called.
+//================================================================================
+{
+    gpu_set_blendenable(true);
+    gpu_set_colorwriteenable(true,true,true,true);
+    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+}
+//================================================================================
+#define maskFooter()
+// Restores normal drawing parameters//================================================================================
+{
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
+}
+
+//================================================================================
+#define createMask(the_image)
+// creates the masking//================================================================================
+{
+    maskHeader();
+    maskMidder();
+    maskFooter();
+    shader_start();
+    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * 2, 2, spr_angle, c_white, 1);
+    shader_end();
+    maskHeader();
+    draw_set_alpha(0);
+    draw_rectangle_color(0, 0, room_width, room_height, c_white, c_white, c_white, c_white, 0);
+    draw_set_alpha(1);
+    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * 2, 2, spr_angle, c_white, .5);
+    maskMidder();
+    draw_sprite_tiled_ext(the_image, 0, x + 75, y - get_gameplay_time()%300, .5, .5, c_white, 1);
+    maskFooter();    
 }

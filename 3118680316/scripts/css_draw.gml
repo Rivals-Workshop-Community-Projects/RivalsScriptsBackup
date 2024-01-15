@@ -1,5 +1,5 @@
 // css_draw
-var num_alts = 24;
+var num_alts = 25;
 
 // Version
 

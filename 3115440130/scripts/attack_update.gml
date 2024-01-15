@@ -190,7 +190,7 @@ if attack == AT_FSPECIAL {
         if window_timer mod 3 == 1 {
             holo_col_1 = get_slot_colour(0)
             holo_col_2 = get_slot_colour(1)
-            var col = merge_color(holo_col_1, holo_col_2, holo_num*0.3)
+            var col = merge_color(holo_col_1, holo_col_2, clamp(holo_num*0.3, 0, 1))
             array_push(fspec_holograms, [x, y, 12, sprite_index, image_index, col])
             holo_num++
         }
@@ -204,7 +204,7 @@ if attack == AT_FSPECIAL {
         }
         */
         
-        if (shield_down || shield_pressed) {
+        if (shield_down || shield_pressed || special_pressed) {
             window = 6
             window_timer = 0
             hsp *= 0.9

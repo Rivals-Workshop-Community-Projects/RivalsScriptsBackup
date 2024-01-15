@@ -95,7 +95,7 @@ if (attack == AT_FSPECIAL){
 	if(window == 1 && window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH))
 	{
 		var Bubble = CreateNewBubble(x + (50*spr_dir),y-char_height+60,SMALL,0,0);
-		LaunchBubble(Bubble,BubbleHsp*spr_dir,BubbleVsp,explosive_special, 361);
+		LaunchBubble(Bubble,BubbleHsp*spr_dir,BubbleVsp,explosive_special, 361, 4);
 		if(explosive_special)
 		{
 			Bubble.friction_multiplier = 0.96;
@@ -252,8 +252,8 @@ if (attack == AT_DSPECIAL){
     can_fast_fall = false;
     can_move = false
     
-    var BubbleHsp = 5;
-	var BubbleVsp = 0;
+    var BubbleHsp = 4;
+	var BubbleVsp = .5;
 	
 	var AirBubbleHsp = 0;
 	var AirBubbleVsp = 3;
@@ -312,7 +312,7 @@ if (attack == AT_DSPECIAL){
         
         if(free)
         {
-        	vsp = -8;
+        	vsp = -6;
         	hsp = 0;
         	
         	can_dspecial_air = false;
@@ -343,7 +343,7 @@ if(attack == AT_FTILT)
 		var Bubble = CreateNewBubble(x + (90 * spr_dir), y-40,TINY,10*spr_dir,0);
 		Bubble.lockout_timer = 5;
 	}
-}
+}//
 //#endregion FTilt
 
 //#region UTilt
@@ -385,12 +385,12 @@ if(attack == AT_USTRONG)
 		Bubble.lockout_timer = 10;
 	}
 	
-	// Create tiny bubble (again!)
-	if(window == 3 && window_timer == 4 && !hitpause)
-	{
-		var Bubble = CreateNewBubble(x + (-5 * spr_dir), y-22,TINY,-4*spr_dir,-6);
-		Bubble.lockout_timer = 10;
-	}
+	// // Create tiny bubble (again!)
+	// if(window == 3 && window_timer == 4 && !hitpause)
+	// {
+	// 	var Bubble = CreateNewBubble(x + (-5 * spr_dir), y-22,TINY,-4*spr_dir,-6);
+	// 	Bubble.lockout_timer = 10;
+	// }
 }
 
 //#endregion UStrong
@@ -456,12 +456,12 @@ if(attack == AT_FAIR)
 		Bubble.lockout_timer = 5;
 	}
 	
-	// Create tiny bubble (again!!)
-	if(window == 2 && window_timer == 2 && !hitpause)
-	{
-		var Bubble = CreateNewBubble(x +  (20 * spr_dir), y-110,TINY,2*spr_dir,-10);
-		Bubble.lockout_timer = 5;
-	}
+	// // Create tiny bubble (again!!)
+	// if(window == 2 && window_timer == 2 && !hitpause)
+	// {
+	// 	var Bubble = CreateNewBubble(x +  (20 * spr_dir), y-110,TINY,2*spr_dir,-10);
+	// 	Bubble.lockout_timer = 5;
+	// }
 }
 //#endregion FAir
 
@@ -518,12 +518,12 @@ if(attack == AT_DAIR)
 //#region NAir
 if(attack == AT_NAIR)
 {
-	// Create tiny bubbles
-	if(window == 2 && window_timer == 4 && !hitpause)
-	{
-		var Bubble = CreateNewBubble(x + (10 * spr_dir), y-20,TINY,6*spr_dir,2);
-		Bubble.lockout_timer = 5;
-	}
+	// // Create tiny bubbles
+	// if(window == 2 && window_timer == 4 && !hitpause)
+	// {
+	// 	var Bubble = CreateNewBubble(x + (10 * spr_dir), y-20,TINY,6*spr_dir,2);
+	// 	Bubble.lockout_timer = 5;
+	// }
 	
 	// Create tiny bubbles (again!)
 	if(window == 6 && window_timer == 2 && !hitpause)
@@ -636,7 +636,7 @@ with(hit_fx_obj)
 
 
 
-#define LaunchBubble(_bubble, _hsp, _vsp, _explosive, _angle)
+#define LaunchBubble(_bubble, _hsp, _vsp, _explosive, _angle, _damage)
 {
 	if(!_bubble.flag_delete)
 	{
@@ -686,6 +686,7 @@ with(hit_fx_obj)
 	_bubble.linked_hitbox.was_parried = _bubble.was_parried;
 	_bubble.linked_hitbox.kb_angle = _angle;
 	_bubble.linked_hitbox.transcendent = _explosive;
+	_bubble.linked_hitbox.bubbledamage = _damage;
 	}
 }
 #define ExplodeBubble(_bubble)

@@ -34,7 +34,7 @@ alt_name[18] = "Liquid Gold";
 alt_name[19] = "Penguin Juice";
 alt_name[20] = "Trench";
 alt_name[21] = "Madame";
-
+alt_name[22] = "Witch";
 
 alt_cur = 0;
 alt_prev = 0;

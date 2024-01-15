@@ -2,7 +2,7 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 // First startup
@@ -97,7 +97,7 @@ set_hitbox_value(AT_NAIR, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 120);
 set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 60);
 set_hitbox_value(AT_NAIR, 3, HG_PRIORITY, 1);
-set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 5);
+set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 70);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, .2);

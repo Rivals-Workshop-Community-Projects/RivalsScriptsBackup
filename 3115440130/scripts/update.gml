@@ -73,7 +73,7 @@ if dspec_explosion_timer >= 0 {
 
 //bouncehurt shenanigans
 var rhy_id = id
-with oPlayer if id != other.id && last_player == other.player && state == PS_HITSTUN && hurt_img == 3 {
+with oPlayer if id != other.id && ("last_player" in self) && last_player == other.player && state == PS_HITSTUN && hurt_img == 3 {
 	if rhyolis_bounce_timer == 0 {
         with obj_article1 if player_id == rhy_id {
             for (var i = 0; i < array_length(segment_array); i++) {
