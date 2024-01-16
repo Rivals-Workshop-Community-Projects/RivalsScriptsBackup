@@ -10,13 +10,11 @@ set_attack_value(atk, AG_NUM_WINDOWS, 5);
 set_attack_value(atk, AG_OFF_LEDGE, 1);
 
 var window_num = 1; //windup 1
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 
 window_num++; //windup 2
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -25,7 +23,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 
 window_num++; //punch
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -35,7 +32,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_upbmove"));
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[8].mp_cost1);
 
 window_num ++; //fire stream
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20); //14
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
@@ -45,11 +41,9 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(atk, 3);
 
@@ -67,9 +61,7 @@ set_hitbox_value(atk, hitbox_num, HG_ANGLE, 30);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.05);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_medium);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
@@ -119,8 +111,6 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.05);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);

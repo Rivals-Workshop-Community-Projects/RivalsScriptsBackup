@@ -73,7 +73,7 @@ short_hop_speed     		= 7;		                // 4    -  7.4
 normal_djump_speed 			= 5;		                // 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         		= -1;		                // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time		= 10;		                //                  the amount of time that   djump_accel   is applied for
-normal_max_djumps 			= 2 + 3 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
+normal_max_djumps 			= 3 + 2 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        		= 5;		                // 4    -  7
 walljump_vsp        		= 11;		                // 7    -  10
 land_time           		= 4;		                // 4    -  6
@@ -562,6 +562,17 @@ fx_part_fire = hit_fx_create(sprite_get("fx_part_fire"), 16);
 fx_light_follow = hit_fx_create(sprite_get("fx_light_follow"), 9);
 fx_burn = hit_fx_create(sprite_get("fx_burn"), 18);
 
+//hit fx
+fx_hit_small = hit_fx_create(asset_get("empty_sprite"), 1);
+fx_hit_small_fg = hit_fx_create(sprite_get("fx_hit_small_fg"), 16);
+fx_hit_small_bg = hit_fx_create(sprite_get("fx_hit_small_bg"), 16);
+fx_hit_medium = hit_fx_create(asset_get("empty_sprite"), 1);
+fx_hit_medium_fg = hit_fx_create(sprite_get("fx_hit_medium_fg"), 20);
+fx_hit_medium_bg = hit_fx_create(sprite_get("fx_hit_medium_bg"), 20);
+fx_hit_big = hit_fx_create(asset_get("empty_sprite"), 1);
+fx_hit_big_fg = hit_fx_create(sprite_get("fx_hit_big_fg"), 24);
+fx_hit_big_bg = hit_fx_create(sprite_get("fx_hit_big_bg"), 24);
+
 fx_lightblow = [
     hit_fx_create(sprite_get("fx_lightblow1"), 15),
     hit_fx_create(sprite_get("fx_lightblow2"), 25),
@@ -574,29 +585,24 @@ fx_fireblow = [
 ];
 fx_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
 
+//specifc fx
 fx_intro_back = sprite_get("fx_introlight_back");
 fx_intro = hit_fx_create(sprite_get("fx_intro"), 22);
-
 fx_dstrong_blast = hit_fx_create(sprite_get("fx_dstrong_blast"), 40);
 fx_dstrong_quake = hit_fx_create(sprite_get("fx_dstrong_quake"), 27);
-
 fx_skill3 = hit_fx_create(sprite_get("fx_skill3"), 20);
-
 fx_skill4_smear = hit_fx_create(sprite_get("fx_skill4_smear"), 20);
 fx_skill4_smear_burn = hit_fx_create(sprite_get("fx_skill4_smear_burn"), 15);
-
 fx_skill6 = hit_fx_create(sprite_get("fx_skill6"), 18);
 fx_skill7_afterimage = hit_fx_create(sprite_get("fx_skill7_afterimage"), 16);
 fx_skill8 = hit_fx_create(sprite_get("fx_skill8"), 30);
 fx_skill11_burst = hit_fx_create(sprite_get("fx_skill11_burst"), 18);
 fx_skill11_chasm = hit_fx_create(sprite_get("fx_skill11_chasm"), 180);
-
 fx_fstrong2 = hit_fx_create(sprite_get("fx_fstrong2"), 20);
 fx_dstrong2_smear = hit_fx_create(sprite_get("fx_dstrong2_smear"), 20);
 //fx_dstrong2_groundfire = hit_fx_create(sprite_get("fx_dstrong2_groundfire"), 90);
 
 sfx_charge = sound_get("sfx_charge");
-
 fx_theikos_aura = hit_fx_create(sprite_get("fx_theikos_aura"), 24);
 
 

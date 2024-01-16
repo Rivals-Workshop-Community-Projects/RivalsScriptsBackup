@@ -37,11 +37,59 @@ if (got_gameplay_time == 4 && !bibical && attack != AT_INTRO)
     set_attack(has_theikos ? AT_THEIKOS : AT_INTRO);
 }
 
+//unique hit fx
+with (pHitBox) if (orig_player == other.player) if (hit_effect == other.fx_hit_small || hit_effect == other.fx_hit_medium || hit_effect == other.fx_hit_big) fx_particles = 6;
+with (hit_fx_obj)
+{
+    if ("spawned_effects" not in self && player == other.player) //there HAS to be a better way to do this
+    {
+        if (hit_fx == other.fx_hit_small) with (other)
+        {
+            var fg_fx = spawn_hit_fx(other.x, other.y, fx_hit_small_fg);
+            fg_fx.depth = depth + 1;
+            fg_fx.draw_angle = random_func(0, 30, true)*12;
+            fg_fx.uses_shader = false;
 
-//renders effects in front of you
-//credit to supersonic for the help
-//effects default depth when they spawn is 3, so this will make it so it won't overwrite values if i add them manually
-//with (hit_fx_obj) if (player == other.player && depth == 3) depth = player_id.depth-2;
+            var bg_fx = spawn_hit_fx(other.x, other.y, fx_hit_small_bg);
+            bg_fx.depth = depth + 3;
+            if ("manual_angle_control" not in other || !other.manual_angle_control) bg_fx.draw_angle = other.kb_dir * spr_dir;
+            else bg_fx.draw_angle = other.draw_angle;
+            bg_fx.uses_shader = false;
+
+            other.spawned_effects = true;
+        }
+        if (hit_fx == other.fx_hit_medium) with (other)
+        {
+            var fg_fx = spawn_hit_fx(other.x, other.y, fx_hit_medium_fg);
+            fg_fx.depth = depth + 1;
+            fg_fx.draw_angle = random_func(0, 30, true)*12;
+            fg_fx.uses_shader = false;
+
+            var bg_fx = spawn_hit_fx(other.x, other.y, fx_hit_medium_bg);
+            bg_fx.depth = depth + 3;
+            if ("manual_angle_control" not in other || !other.manual_angle_control) bg_fx.draw_angle = other.kb_dir * spr_dir;
+            else bg_fx.draw_angle = other.draw_angle;
+            bg_fx.uses_shader = false;
+
+            other.spawned_effects = true;
+        }
+        if (hit_fx == other.fx_hit_big) with (other)
+        {
+            var fg_fx = spawn_hit_fx(other.x, other.y, fx_hit_big_fg);
+            fg_fx.depth = depth + 1;
+            fg_fx.draw_angle = random_func(0, 30, true)*12;
+            fg_fx.uses_shader = false;
+
+            var bg_fx = spawn_hit_fx(other.x, other.y, fx_hit_big_bg);
+            bg_fx.depth = depth + 3;
+            if ("manual_angle_control" not in other || !other.manual_angle_control) bg_fx.draw_angle = other.kb_dir * spr_dir;
+            else bg_fx.draw_angle = other.draw_angle;
+            bg_fx.uses_shader = false;
+
+            other.spawned_effects = true;
+        }
+    }
+}
 
 //this custom setup will let me control any hitbox i want
 if (instance_exists(bar_hitbox))
@@ -81,13 +129,16 @@ if (!free)
         if (accel_used && (state == PS_LAND || state == PS_LANDING_LAG) && (prev_state == PS_ATTACK_AIR || prev_state == PS_IDLE_AIR) && !has_hit) state = PS_PRATLAND;
     }
 }
-// DO STUFF IN THE AIR
-else { // free
+else
+{
     if (can_glide) //check if bar can glide
     {
         if (state_cat == SC_AIR_NEUTRAL && state != PS_FIRST_JUMP && state != PS_GLIDE && vsp > 1 && jump_down) set_state(PS_GLIDE);
     }
     
+    if (glide_stamina > 0) djumps = 0;
+    else djumps = max_djumps;
+
     switch (state)
     {
         // RESET VARIABLES ON WALLJUMP
@@ -134,13 +185,20 @@ else { // free
         
         // DOUBLE JUMP MECHANICS
         case PS_DOUBLE_JUMP:
-            //reduce height on each double jump bar does
-            if (state_timer == 1 && theikos_type == 0) djump_speed = (has_rune("B")) ? djump_speed / 1.22 : djump_speed / 1.56;
+            if (state_timer == 1 && theikos_type == 0) //reduce height on each double jump bar does
+            {
+                //djump_speed = (has_rune("B")) ? djump_speed / 1.22 : djump_speed / 1.56;
+                vsp = lerp(-2, -djump_speed, clamp(glide_stamina/glide_stamina_max, 0, 1));
+            }
         
             //midair turning
             var turn_timeframe = 5; //decides how much time bar has to turn around
-            if (state_timer == 0) djump_turn = false;
-            if (state_timer <= turn_timeframe && prev_djumps != djumps && !djump_turn)
+            if (state_timer == 0)
+            {
+                djump_turn = false;
+                glide_stamina -= has_rune("B") ? 30 : 40;
+            }
+            if (state_timer <= turn_timeframe && !djump_turn)
             {
                 if (right_down && -spr_dir)
                 {
@@ -152,7 +210,6 @@ else { // free
                     spr_dir = -1;
                     djump_turn = true;
                 }
-                if (state_timer > turn_timeframe) prev_djumps = djumps;
             }
             break;
                 
@@ -163,7 +220,6 @@ else { // free
 //GLIDE UI
 if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && prev_state != PS_PRATFALL && theikos_type == 0) glide_ui = true; //show glide UI
 else glide_ui = false;
-
 
 //MP MECHANIC
 //thanks delta parallax
@@ -257,55 +313,60 @@ if (lightstun_active)
     {
         if ("lightstun_type" not in self) lightstun_type = 0; //playtesting shenaningans: blinding boogaloo
 
-        if (lightstun_timer > -1) lightstun_timer --;
-        if (lightstun_timer <= -1 || state == PS_DEAD || state == PS_RESPAWN)
+        if (lightstun_type > 0 && lightstunner_id == other)
         {
-            lightstun_type = 0;
-            lightstun_timer = -1;
+            if (lightstun_timer > -1) lightstun_timer --;
+            if (lightstun_timer <= -1 || state == PS_DEAD || state == PS_RESPAWN)
+            {
+                lightstun_type = 0;
+                lightstun_timer = -1;
+            }
+
+            switch (lightstun_type)
+            {
+                case 1: //pre-timer
+
+                    //vfx
+                    if (lightstun_timer % 3 == 0) with (other) //sparkles effect
+                    {
+                        var fx_sparkles = spawn_hit_fx(other.x, other.y-other.char_height/2, fx_part_light);
+                        fx_sparkles.hsp = (random_func(751, 5, true)-2)*2;
+                        fx_sparkles.vsp = (random_func(752, 5, true)-2)*2;
+                    }
+                    if (lightstun_timer % 60 == 0) //indicator
+                    {
+                        sound_play(asset_get("sfx_frog_fspecial_cancel"));
+                        with (other) spawn_hit_fx(other.x, other.y-24, fx_lightblow[0]);
+                    }
+
+
+                    //spawn the funny freeze hitbox
+                    if (lightstun_timer == 0) with (other)
+                    {
+                        var lightstunner = create_hitbox(48, 1, other.x, other.y-char_height/2);
+                        lightstunner.fx_particles = 1;
+                    }
+                    break;
+                case 2: //frozen
+                    hitpause = true;
+                    hitstop = 2;
+                    set_state(PS_HITSTUN);
+                    break;
+            }
+
+            //extra mp gain from mechanics
+            if (lightstun_type > 0 && lightstun_timer % 15 == 0) with (other) if (mp_current < mp_max && has_rune("J")) mp_current += 1;
+
+            with (other) if (lightstun_last_attack > 0)
+            {
+                lightstun_last_attack_timer --;
+                if (lightstun_last_attack_timer <= 0) lightstun_last_attack = 0;
+            }
         }
-
-        switch (lightstun_type)
+        else if (lightstun_type == 0)
         {
-            case 0:
-                lightstun_timer = 0;
-                break;
-            case 1: //pre-timer
-
-                //vfx
-                if (lightstun_timer % 3 == 0) with (other) //sparkles effect
-                {
-                    var fx_sparkles = spawn_hit_fx(other.x, other.y-other.char_height/2, fx_part_light);
-                    fx_sparkles.hsp = (random_func(751, 5, true)-2)*2;
-                    fx_sparkles.vsp = (random_func(752, 5, true)-2)*2;
-                }
-                if (lightstun_timer % 60 == 0) //indicator
-                {
-                    sound_play(asset_get("sfx_frog_fspecial_cancel"));
-                    with (other) spawn_hit_fx(other.x, other.y-24, fx_lightblow[0]);
-                }
-
-
-                //spawn the funny freeze hitbox
-                if (lightstun_timer == 0) with (other)
-                {
-                    var lightstunner = create_hitbox(48, 1, other.x, other.y-char_height/2);
-                    lightstunner.fx_particles = 1;
-                }
-                break;
-            case 2: //frozen
-                hitpause = true;
-                hitstop = 2;
-                set_state(PS_HITSTUN);
-                break;
-        }
-
-        //extra mp gain from mechanics
-        if (lightstun_type > 0 && lightstun_timer % 15 == 0) with (other) if (mp_current < mp_max && has_rune("J")) mp_current += 1;
-
-        with (other) if (lightstun_last_attack > 0)
-        {
-            lightstun_last_attack_timer --;
-            if (lightstun_last_attack_timer <= 0) lightstun_last_attack = 0;
+            lightstunner_id = noone;
+            lightstun_timer = 0;
         }
     }
 }
@@ -462,10 +523,16 @@ if (!menu_active)
                 {
                     if (accel_vulnerable)
                     {
-                        hitstop = accel_flashed_time;
                         accel_vulnerable = false;
+                        accel_flashed_time = 0;
                     }
                     if (accel_flashed_time > 0) accel_flashed_time --;
+                }
+
+                if (state == PS_PRATFALL || state == PS_PRATLAND || state_cat == SC_HITSTUN
+                    || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
+                {
+                    apply_motion_trail = false;
                 }
                 
                 //gives bar time to act out of the attack, only if he isn't on the theikos state
@@ -478,12 +545,6 @@ if (!menu_active)
                 }
                 else
                 {
-                    if (state == PS_PRATFALL || state == PS_PRATLAND
-                    || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
-                    {
-                        apply_motion_trail = false;
-                    }
-
                     if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking) set_state(PS_PRATFALL);
                 }
                 break;
@@ -1240,7 +1301,7 @@ user_event(7);
     mp_time = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TIME);
     mp_type = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TYPE);
 
-    if (mp_amount != 0 && is_attacking && !infinite_mp_mode)
+    if (mp_amount != 0 && is_attacking && !infinite_mp_mode && !hitpause)
     {
         switch (mp_type)
         {

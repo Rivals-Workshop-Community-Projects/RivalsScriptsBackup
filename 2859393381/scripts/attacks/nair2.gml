@@ -53,7 +53,7 @@ set_hitbox_value(AT_NAIR2, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_NAIR2, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_NAIR2, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR2, 1, HG_HIT_LOCKOUT, 15);
-//set_hitbox_value(AT_NAIR2, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_NAIR2, 1, HG_VISUAL_EFFECT, shock);
 
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_MASK, -1);
@@ -66,7 +66,7 @@ set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NAIR2, 1, HG_PROJECTILE_PLASMA_SAFE, true);

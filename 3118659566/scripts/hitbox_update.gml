@@ -13,7 +13,7 @@ if (attack == AT_NSPECIAL || AT_NSPECIAL_AIR) && hbox_num == 1 {
 if (attack == AT_NSPECIAL) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) {
     hsp = hsp * 0.935;
     
-    if (hitbox_timer == 29 || destroyed = true || !free ) {
+    if (hitbox_timer == 29 || destroyed = true || !free || (place_meeting(x, y, asset_get("pHitBox")))) {
         destroyed = true;
         player_id.letter1ID = 0;
         player_id.letter2ID = 0;
@@ -27,7 +27,7 @@ if (attack == AT_NSPECIAL_AIR) && (hbox_num == 1 || hbox_num == 2 || hbox_num ==
     hsp = hsp * 0.95;
     vsp = vsp * 0.925;
     
-    if (hitbox_timer == 29 || destroyed = true || !free) {
+    if (hitbox_timer == 29 || destroyed = true || !free || (place_meeting(x, y, asset_get("pHitBox")))) {
         destroyed = true;
         player_id.airletter1ID = 0;
         player_id.airletter2ID = 0;
@@ -73,8 +73,6 @@ if player_id.lvl2projID != 0  {
     }
 }
 
-
-
 if player_id.lvl1projID != 0 {
     player_id.lvl1projID.through_platforms = 100;
 }
@@ -107,13 +105,13 @@ if player_id.planeID != 0 {
 }
 
 if player_id.exploID != 0 {
-    if (player_id.exploID.hitbox_timer < 16)  {
+    if (player_id.exploID.hitbox_timer < 15)  {
         player_id.exploID.image_xscale = 0;
         player_id.exploID.image_yscale = 0;
-    } else if player_id.exploID.hitbox_timer >= 17 {
+    } else if player_id.exploID.hitbox_timer >= 16 {
 		shake_camera( 12, 8 )
-	    player_id.exploID.image_xscale = 0.7;
-        player_id.exploID.image_yscale = 0.7;
+	    player_id.exploID.image_xscale = 0.95;
+        player_id.exploID.image_yscale = 0.95;
         player_id.exploID = 0;
         player_id.explo1 = 0;
         player_id.explo_owner = noone;
@@ -123,13 +121,13 @@ if player_id.exploID != 0 {
 }
 
 if player_id.explo1 != 0 {
-    if (player_id.explo1.hitbox_timer < 16)  {
+    if (player_id.explo1.hitbox_timer < 15)  {
         player_id.explo1.image_xscale = 0;
         player_id.explo1.image_yscale = 0;
-    } else if player_id.explo1.hitbox_timer >= 17 {
+    } else if player_id.explo1.hitbox_timer >= 16 {
 		shake_camera( 12, 8 )
-    	player_id.explo1.image_xscale = 0.7;
-        player_id.explo1.image_yscale = 0.7;
+    	player_id.explo1.image_xscale = 1;
+        player_id.explo1.image_yscale = 1;
         player_id.exploID = 0;
         player_id.explo1 = 0;
         player_id.explo_owner = noone;

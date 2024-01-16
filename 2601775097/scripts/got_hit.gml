@@ -20,6 +20,14 @@ switch (attack)
         break;
 }
 
+if (accel_vulnerable)
+{
+    hitstop = accel_flashed_time;
+    hitstop_full = hitstop;
+    old_hsp = 0;
+    old_vsp = -12;
+}
+
 /*
 if (lightbuff_active)
 {

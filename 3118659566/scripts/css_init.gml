@@ -25,11 +25,22 @@ alt_name[4] = "Grey";
 alt_name[5] = "Purple";
 alt_name[6] = "Abyss";
 alt_name[7] = "Early Access";
-alt_name[8] = "Guild";
-alt_name[9] = "Legendary";
-alt_name[10] = "Lookout";
-alt_name[11] = "TAG";
-
+alt_name[8] = "Legendary";
+alt_name[9] = "Marketable";
+alt_name[10] = "Love Letter";
+alt_name[11] = "Holiday Delivery";
+alt_name[12] = "Trick or Treater";
+alt_name[13] = "Summertime";
+alt_name[14] = "Guild";
+alt_name[15] = "Armada";
+alt_name[16] = "Swiftwing";
+alt_name[17] = "Fizzing Frenzy";
+alt_name[18] = "Lookout";
+alt_name[19] = "TAG";
+alt_name[20] = "Tehend";
+alt_name[21] = "Color-Me Yono";
+alt_name[22] = "NB";
+alt_name[23] = "Transcendent";
 
 alt_cur = 0; //checks current alt
 alt_prev = 0; //checks previous alt
@@ -38,7 +49,7 @@ alt_total = array_length(alt_name); //sets the alt total depending on the amount
 
 
 //ANIMATION VARS
-sprite_change_offset("idle", 128, 190);
+sprite_change_offset("idle", 110, 176);
 
 preview_idle = sprite_get("idle");
 preview_scale = 1; //depends on if we have small sprites on, if we do, type 2, if not type 1

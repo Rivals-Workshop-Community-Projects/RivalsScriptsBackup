@@ -57,6 +57,8 @@ if(state == PS_PARRY_START or ((state == PS_ROLL_BACKWARD or state == PS_ROLL_FO
 	}
 }
 
+
+//other_update.gml
 with oPlayer {
 	if(player != other.player and _bd_init ){
 		slide_init()
@@ -209,11 +211,12 @@ with oPlayer {
 	      }
 	    }else{
 	    	trail_kill_effect_source = noone;
+	    	init_shader();
 	    }
 	  }else{
 	  	trail_kill_effect_source = noone;
 	  	if(state != PS_DEAD or state != PS_RESPAWN) sound_play(asset_get("sfx_ice_shatter"));
-	  	init_shader()
+	  	init_shader();
 	  }
 	}
  
@@ -235,7 +238,6 @@ with oPlayer {
 //     window_timer = 0;
 //     perfect_dodging = true;
 // }
-
 
 with(hat_falling){
 	if(step_timer == hit_length-1 and loops < max_loops){
@@ -265,7 +267,6 @@ with(taunt_bird_fx){
 		}
 	}
 }
-
 
 if(gs[GS_EXISTS]){
 	gs[GS_TIMER] += 1;

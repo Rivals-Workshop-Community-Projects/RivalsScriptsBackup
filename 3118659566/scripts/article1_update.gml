@@ -24,13 +24,13 @@ if (replacedcount > maxarticles){
 ignores_walls = false;
 
 //print(letters)
-//print(mbhp)
 //print(state)
 //print(mbopacity)
 
-
 //#region getting hit
 //Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
+
+/*
 if (place_meeting(x, y, player_id.id)) {
 	if player_id.attack == AT_EXTRA_1 && player_id.state == PS_ATTACK_AIR && player_id.window == 2 {
 		if player_id.mb_vault_hit = false && state == 0 && state != 12 {
@@ -41,10 +41,28 @@ if (place_meeting(x, y, player_id.id)) {
 	}
 
 }
-
+*/
+/*
+if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt && state != 8 && state != 15) {
+    with (asset_get("pHitBox")){
+    	if player != other.player_id.player {
+		 		if other.letters > 0{
+		 			//print("test");
+		 			other.state = 8;
+		 			other.state_timer = 0;
+		 			other.letters -= 1;
+		 		} else if other.letters = 0{
+		 			sound_play(asset_get("sfx_shovel_hit_med1"));
+		            other.state = 1;
+		            other.state_timer = 0;
+		 	}
+		}
+	}
+}
+*/
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summon hittable
         with (asset_get("pHitBox")){
-            if ((player == other.player_id.player && (id = player_id.letter1ID || id = player_id.letter2ID || id = player_id.letter3ID || id = player_id.airletter1ID || id = player_id.airletter2ID|| id = player_id.airletter3ID))){
+            if ((player == other.player_id.player && (id = player_id.letter1ID || id = player_id.letter2ID || id = player_id.letter3ID || id = player_id.airletter1ID || id = player_id.airletter2ID|| id = player_id.airletter3ID))) || player != other.player_id.player {
                 if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0){
                     other.hitbox_hit = self;
                     if(type != 2){
@@ -56,13 +74,13 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
             }
         }
      
-    if state == 0 && state != 9 && state != 2 && state != 3 && state != 4 && state != 10 {   
+    if (state == 0 || state == 2 || state == 3 || state == 4) && state != 9 && state != 10 && state != 8 && state != 15 && can_be_hurt = true {   
         with (pHitBox){
     		if (place_meeting(x,y,other.id) and player_id == other.player_id and 
     			((attack == AT_FSPECIAL_AIR and ((hbox_num == 2 || hbox_num == 4 || hbox_num == 6)) || 
     			(attack == AT_FSPECIAL and (hbox_num == 1 || hbox_num == 2)) ||
     			(attack == AT_FSPECIAL_2 and (hbox_num == 1)))
-    			&& player_id.mb_spin_hit = false)) {
+    			&& player_id.mb_spin_hit = false && player_id.spin_cooldown = 0)) {
        		    	player_id.mb_spin_hit = true;
        		    	other.state = 9;
        		    	other.state_timer = 0;
@@ -71,6 +89,15 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
        		    	player_id.mb_hammer_hit = true;
        		    	other.state = 11;
        		    	other.state_timer = 0;
+    		} else if (place_meeting(x,y,other.id) and player_id == other.player_id and 
+    			((attack == AT_DAIR) and (hbox_num == 1))) {
+       		    	player_id.mb_dair_hit = true;
+       		    	other.state = 13;
+       		    	other.state_timer = 0;
+                    player_id.hitpause = true;
+                    player_id.hitstop = hitpause;
+                    sound_play(sound_get("catch"));
+   		 			sound_play(asset_get("sfx_shovel_hit_med2"));
     		} 
         }
     } 
@@ -106,8 +133,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 2;
 		                    	state_timer = 0;
 		                    	letters += 1;
-		                    	mbhp += 1;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
 		        				k.depth = depth - 1;
 		        				k.spr_dir = 1;
@@ -117,8 +143,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 3;
 		                    	state_timer = 0;
 		                    	letters += 1;
-		                    	mbhp += 1;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
 		        				k.depth = depth - 1;
 		        				k.spr_dir = 1;
@@ -129,8 +154,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 4;
 		                    	state_timer = 0;
 		                    	letters += 1;
-		                    	mbhp += 1;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
 		        				k.depth = depth - 1;
 		        				k.spr_dir = 1;
@@ -139,14 +163,16 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	sound_stop(sound_get("mblvlup1"));
 		                    	sound_stop(sound_get("mblvlup2"));
 		                    }   else if letters = 3 {
-		                    	state = 7;
-		                    	state_timer = 0;
-						    	var k = spawn_hit_fx(x + (0 * spr_dir), y + 15, player_id.stamp_vfx);
-								k.depth = depth + 1;
-		                    	sound_play(sound_get("bigwhistle"), 0, noone, 2, 1);
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
 		                    	sound_stop(sound_get("mblvlup1"));
 		                    	sound_stop(sound_get("mblvlup2"));                    	
 		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit;
 		                    }
 	        		 	} else if hitbox_hit.id = player_id.letter2ID || hitbox_hit.id = player_id.airletter2ID {
         		 			player_id.letter2ID = 0;
@@ -155,8 +181,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 3;
 		                    	state_timer = 0;
 		                    	letters += 2;
-		                    	mbhp += 2;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
 		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
 		        				k.depth = depth - 1;
@@ -169,8 +194,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 4;
 		                    	state_timer = 0;
 		                    	letters += 2;
-		                    	mbhp += 2;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
 		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
 		        				k.depth = depth - 1;
@@ -181,14 +205,16 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
 		                    	sound_stop(sound_get("mblvlup1"));
 		                    }   else if letters = 2 || letters = 3 {
-		                    	state = 7;
-		                    	state_timer = 0;
-						    	var k = spawn_hit_fx(x + (0 * spr_dir), y + 15, player_id.stamp_vfx);
-								k.depth = depth + 1;
-		                    	sound_play(sound_get("bigwhistle"), 0, noone, 2, 1);
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
 		                    	sound_stop(sound_get("mblvlup1"));
 		                    	sound_stop(sound_get("mblvlup2"));                    	
-		                    	sound_stop(sound_get("mblvlup3"));   
+		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit;
 		                    }
         		 	} else if hitbox_hit.id = player_id.letter3ID || hitbox_hit.id = player_id.airletter3ID {
         		 			player_id.letter3ID = 0;
@@ -197,8 +223,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		                    	state = 4;
 		                    	state_timer = 0;
 		                    	letters += 3;
-		                    	mbhp += 3;
-		                    	var k = spawn_hit_fx(x + (spr_dir * 1), y - 0, player_id.letter_add_vfx);
+
 		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
 		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
 		        				var m = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
@@ -211,37 +236,34 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 		        				mbopacity = 1;
 		                    	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
 		                    }	else if letters = 1 || letters = 2 || letters = 3 {
-		                    	state = 7;
-		                    	state_timer = 0;
-						    	var k = spawn_hit_fx(x + (0 * spr_dir), y + 15, player_id.stamp_vfx);
-								k.depth = depth + 1;
-		                    	sound_play(sound_get("bigwhistle"), 0, noone, 2, 1);
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
 		                    	sound_stop(sound_get("mblvlup1"));
 		                    	sound_stop(sound_get("mblvlup2"));                    	
-		                    	sound_stop(sound_get("mblvlup3"));   
+		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit; 
 		                    }
         		 	}
-
-        		 } else {
-        		 	if letters > 0 {
-        		 		if mbhp > 1 && letters > 1{
-        		 			//print("test");
-        		 			state = 8;
-        		 			state_timer = 0;
-        		 			mbhp -= 1;
-        		 			letters -= 1;
-        		 		} else if letters = 1 {
-        		 			sound_play(asset_get("sfx_shovel_hit_med2"));
-    		                state = 1;
-	        	            state_timer = 0;
-        		 		}
-        		 	}	
+        		} else if hitbox_hit.player != player_id.player {
+        			if letters > 0{
+			 			//print("test");
+			 			state = 8;
+			 			state_timer = 0;
+			 			letters -= 1;
+			 		} else if letters = 0{
+			 			sound_play(asset_get("sfx_shovel_hit_med1"));
+			            state = 1;
+			            state_timer = 0;
+			 	}
                 }
-        		
+            }
                     can_be_hurt = false;
                     idle_anim_rate = 4; 
                     depth = 0;
-            }
         }
     }
     else{
@@ -265,8 +287,10 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 			propframes = 1;
 		}
 	
-		if state != 12 {
-			vsp = airmovevsp;
+		if state != 12 && state != 13 {
+			if state != 2 && state != 3 && state != 4 {
+				vsp = airmovevsp;
+			}
 			airmovetimer++;
 			if airmovetimer % 20 = 0 {
 				airmovevsp = airmovevsp * -1;
@@ -326,7 +350,7 @@ if (state == 0){
 	}
 
 		
-	if mbopacity > 0 {
+	if player_id.mb_spinning = false && mbopacity > 0 {
 		mbopacity -= 0.025;
 	}
    
@@ -381,6 +405,8 @@ if (state == 1){
 	
     if (state_timer == die_time){
         player_id.killarticles = false;
+        player_id.an = 0;
+        player_id.dair_letters = 0;
         player_id.mailboxID = 0;
         instance_destroy();
         exit;
@@ -392,7 +418,14 @@ if (state == 1){
 //State 2 lvl 1 upgrade
 
 if (state == 2){
+    idle_anim_rate = 4; 
+
+	if state_timer > 15 {
 	can_be_hurt = true;
+	} else {
+		can_be_hurt = false;
+	}
+	vsp = 0;
 	
 	if state_timer == 24 {
 		state = 0;
@@ -406,7 +439,14 @@ if (state == 2){
 //State 3 lvl 2 upgrade
 
 if (state == 3){
+	idle_anim_rate = 4; 
+
+	if state_timer > 15 {
 	can_be_hurt = true;
+	} else {
+		can_be_hurt = false;
+	}
+	vsp = 0;
 
 	if state_timer == 27 {
 		state = 0;
@@ -419,7 +459,14 @@ if (state == 3){
 //State 4 Lvl 3 upgrade
 
 if (state == 4){
+    idle_anim_rate = 4; 
+
+	if state_timer > 15 {
 	can_be_hurt = true;
+	} else {
+		can_be_hurt = false;
+	}
+	vsp = 0;
 
 	if state_timer == 30 {
 		state = 0;
@@ -508,7 +555,7 @@ if (state == 8){
    }
    
    if state_timer == 45 {
-   		state = 0;
+   		state = 15;
    		state_timer = 0;
    }
 }
@@ -553,7 +600,7 @@ if (state == 11){
  
 	if state_timer == 1 {
     	var k = spawn_hit_fx(x + (0 * spr_dir), y + 15, player_id.stamp_vfx);
-        k.depth = depth + 1;		
+        k.depth = player_id.depth + 1;		
 	}
     if (state_timer == 10){
         player_id.killarticles = false;
@@ -566,7 +613,7 @@ if (state == 11){
 
 
 //State 12 Vault
-
+/*
 if (state == 12){
     can_be_hurt = false;
 	
@@ -583,57 +630,225 @@ if (state == 12){
 		hsp = 0;
 	}
 	
-	if state_timer == 15 {
+	if player_id.vault_jump = true {
+		player_id.vault_jump = false;
+
+        		 	if player_id.vault_letters = 1 {
+		        		 	if letters = 0 {
+		                    	state = 2;
+		                    	state_timer = 0;
+		                    	letters += 1;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
+		        				k.depth = depth - 1;
+		        				k.spr_dir = 1;
+		        				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
+		                    }	else if letters = 1 {
+		                    	state = 3;
+		                    	state_timer = 0;
+		                    	letters += 1;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
+		        				k.depth = depth - 1;
+		        				k.spr_dir = 1;
+			       				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    }   else if letters = 2 {
+		                    	state = 4;
+		                    	state_timer = 0;
+		                    	letters += 1;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
+		        				k.depth = depth - 1;
+		        				k.spr_dir = 1;
+			       				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup3"), 0, noone, 2, 1);
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    	sound_stop(sound_get("mblvlup2"));
+		                    }   else if letters = 3 {
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    	sound_stop(sound_get("mblvlup2"));                    	
+		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit;
+		                    }
+	        		 	} else if player_id.vault_letters = 2 {
+        		 			if letters = 0 {
+		                    	state = 3;
+		                    	state_timer = 0;
+		                    	letters += 2;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
+		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
+		        				k.depth = depth - 1;
+		        				l.depth = depth - 1;
+		        				k.spr_dir = 1;
+		        				l.spr_dir = 1;
+		        				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
+		                    }	else if letters = 1 {
+		                    	state = 4;
+		                    	state_timer = 0;
+		                    	letters += 2;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
+		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
+		        				k.depth = depth - 1;
+		        				l.depth = depth - 1;
+		        				k.spr_dir = 1;
+		        				l.spr_dir = 1;
+			       				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    }   else if letters = 2 || letters = 3 {
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    	sound_stop(sound_get("mblvlup2"));                    	
+		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit;
+		                    }
+        		 	} else if player_id.vault_letters = 3 {
+            		 		if letters = 0 {
+		                    	state = 4;
+		                    	state_timer = 0;
+		                    	letters += 3;
+
+		        				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
+		        				var l = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
+		        				var m = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
+		        				k.depth = depth - 1;
+		        				l.depth = depth - 1;
+		        				m.depth = depth - 1;
+		        				k.spr_dir = 1;
+		        				l.spr_dir = 1;
+		        				m.spr_dir = 1;
+		        				mbopacity = 1;
+		                    	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
+		                    }	else if letters = 1 || letters = 2 || letters = 3 {
+						    	player_id.instant_explo_x = x;
+						    	player_id.instant_explo_y = y;
+					   	        player_id.instant_explo_start = true;
+						    	player_id.killarticles = false;
+							    player_id.mailboxID = 0;
+		                    	sound_stop(sound_get("mblvlup1"));
+		                    	sound_stop(sound_get("mblvlup2"));                    	
+		                    	sound_stop(sound_get("mblvlup3"));                    	
+					        	instance_destroy();
+					   	        exit; 
+		                    }
+        		 	} else if player_id.vault_letters = 4 {
+					    	player_id.instant_explo_x = x;
+					    	player_id.instant_explo_y = y;
+				   	        player_id.instant_explo_start = true;
+					    	player_id.killarticles = false;
+						    player_id.mailboxID = 0;
+	                    	sound_stop(sound_get("mblvlup1"));
+	                    	sound_stop(sound_get("mblvlup2"));                    	
+	                    	sound_stop(sound_get("mblvlup3"));                    	
+				        	instance_destroy();
+				   	        exit; 
+		                    }
+    		 	}
+}
+*/
+
+if (state == 13) {
+	can_be_hurt = false;
+	
+	if (state_timer <= 8) {
+		x = lerp(x, player_id.x+player_id.spr_dir * 20, .45);
+		y = lerp(y, player_id.y + 25, .35);
+	} else if(state_timer > 8 && state_timer <= 12){
+		x = lerp(x, player_id.x+player_id.spr_dir * 60, .45);
+		y = lerp(y, player_id.y - 10, .35);
+	} else if(state_timer > 12 && state_timer <= 20){
+		x = lerp(x, player_id.x+player_id.spr_dir * 65, .45);
+		y = lerp(y, player_id.y - 85, .35);
+	}
+	
+	if state_timer == 1 {
+  		var k = spawn_hit_fx(x + (10 * spr_dir), y + 35, player_id.stamp_vfx);
+		k.depth = player_id.depth + 1;
+		sound_play(asset_get("sfx_shovel_hit_med2"));
+		player_id.dair_letters = letters;
+        player_id.killarticles = false;
+        player_id.mailboxID = 0;
+        instance_destroy();
+        exit;
+	}
+	
+}
+
+if (state == 14) {
+	can_be_hurt = false;
+	letters = player_id.dair_letters;
+
+	if state_timer == 1 {
+		player_id.dair_letters = 0;
 	 	if letters = 0 {
-	    	state = 2;
-	    	state_timer = 0;
-	    	letters += 1;
-	    	mbhp += 1;
-	    	var k = spawn_hit_fx(x - 0, y - 0, player_id.letter_add_vfx);
-			k.depth = depth + 1;
+        	state = 2;
+        	state_timer = 0;
+        	letters += 1;
 			var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
-			k.depth = depth + 1;
+			k.depth = depth - 1;
 			k.spr_dir = 1;
 			mbopacity = 1;
-	    	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
-	    }	else if letters = 1 {
-	    	state = 3;
-	    	state_timer = 0;
-	    	letters += 1;
-	    	mbhp += 1;
-	    	var k = spawn_hit_fx(x - 0, y - 0, player_id.letter_add_vfx);
-			k.depth = depth + 1;
+        	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
+        }	else if letters = 1 {
+        	state = 3;
+        	state_timer = 0;
+        	letters += 1;
 			var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
-			k.depth = depth + 1;
+			k.depth = depth - 1;
 			k.spr_dir = 1;
-	   		mbopacity = 1;
-	    	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
-	    }   else if letters = 2 {
-	    	state = 4;
-	    	state_timer = 0;
-	    	letters += 1;
-	    	mbhp += 1;
-	    	var k = spawn_hit_fx(x - 0, y - 0, player_id.letter_add_vfx);
-			k.depth = depth + 1;
+   			mbopacity = 1;
+        	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
+        	sound_stop(sound_get("mblvlup1"));
+        }   else if letters = 2 {
+        	state = 4;
+        	state_timer = 0;
+        	letters += 1;
 			var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
-			k.depth = depth + 1;
+			k.depth = depth - 1;
 			k.spr_dir = 1;
-	   		mbopacity = 1;
-	    	sound_play(sound_get("mblvlup3"), 0, noone, 2, 1);
-	    }   else if letters = 3 {
+   			mbopacity = 1;
+        	sound_play(sound_get("mblvlup3"), 0, noone, 2, 1);
+        	sound_stop(sound_get("mblvlup1"));
+        	sound_stop(sound_get("mblvlup2"));
+        }   else if letters = 3 {
 	    	player_id.instant_explo_x = x;
 	    	player_id.instant_explo_y = y;
    	        player_id.instant_explo_start = true;
 	    	player_id.killarticles = false;
 		    player_id.mailboxID = 0;
         	instance_destroy();
-   	        exit;
-	    }
+   	        exit;                   	
+        }
 	}
 }
 
+//State 15: Mailbox Hold
 
-
+if (state == 15){
+   can_be_hurt = false;
+   
+   if state_timer == 45 {
+   		state = 0;
+   		state_timer = 0;
+   }
+}
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 
@@ -761,6 +976,50 @@ switch(state){
     	animation_type = 0;
     	mask_index = sprite_get("mb_hurt"); 
     break;
+    case 13:
+        new_sprite = sprite_get("mb_idlelv0");
+        mask_index = sprite_get("mb_hurt"); 
+        animation_type = 0;
+        break;
+    case 14:
+    switch letters {
+    	case 0:
+    	new_sprite = sprite_get("mb_idlelv0");
+    	break;
+    	case 1:
+    	new_sprite = sprite_get("mb_idlelv1");
+    	break;
+    	case 2:
+    	new_sprite = sprite_get("mb_idlelv2");
+    	break;
+    	case 3:
+    	new_sprite = sprite_get("mb_idlelv3");
+    	break;
+    }   
+    	animation_type = 0;
+    	mask_index = sprite_get("mb_hurt"); 
+    break;
+    case 15:
+    switch letters {
+    	case 0:
+    	new_sprite = sprite_get("mb_idlelv0");
+        animation_type = 2;
+    	break;
+    	case 1:
+    	new_sprite = sprite_get("mb_idlelv1");
+        animation_type = 2;
+    	break;
+    	case 2:
+    	new_sprite = sprite_get("mb_idlelv2");
+        animation_type = 2;
+    	break;
+    	case 3:
+    	new_sprite = sprite_get("mb_idlelv3");
+        animation_type = 2;
+    	break;
+    }
+        mask_index = sprite_get("mb_hurt"); 
+        break;
 }
 
 //Increment image_index based on the animation type assigned, above, to the state

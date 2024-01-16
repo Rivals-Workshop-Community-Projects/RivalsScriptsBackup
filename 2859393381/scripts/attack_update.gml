@@ -61,6 +61,7 @@ switch (attack)
             ustrong_launch_dir = 45;
             easetimer = 0;
             char_height = 60;
+            ustrong_move = false;
         }
         key_dir = (right_down - left_down) * spr_dir;
         if (key_dir != 0) ustrong_launch_dir = 90 - (key_dir * 55);
@@ -450,6 +451,12 @@ sound_play(sound_get("phone"));
             vsp = 0;
             turnabout = true;
             turnabout_timer = turnabout_timer_max;
+            if (window = 2 && window_timer = 11){
+                sound_play(sound_get("finger_shine"), false, noone, 0.5, 1);
+            } if (window = 2 && window_timer = 13){
+                var turnabout_shine = spawn_hit_fx(x + (6*spr_dir), y-42, shine);
+                turnabout_shine.depth = depth-1;
+            }
             if (window < 5)
             { 
                 hit_player_obj.hitpause = true;
@@ -482,6 +489,8 @@ sound_play(sound_get("phone"));
         { 
             move_cooldown[AT_JAB2] = 2; 
             can_attack = true; 
+        } if (was_parried && window == 3 && window_timer >= 10){
+            set_state(PS_IDLE);
         }
         break;
 
@@ -1054,6 +1063,7 @@ if (voice)
 
 
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
 var dlen;
 var dfx;
 var dfg;

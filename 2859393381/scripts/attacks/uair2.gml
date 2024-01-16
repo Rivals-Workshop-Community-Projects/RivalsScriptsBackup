@@ -69,5 +69,6 @@ set_hitbox_value(AT_UAIR2, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UAIR2, 2, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_UAIR2, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR2, 2, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_UAIR2, 2, HG_VISUAL_EFFECT, shock_big);
 set_hitbox_value(AT_UAIR2, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

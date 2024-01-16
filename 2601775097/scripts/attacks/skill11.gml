@@ -9,7 +9,6 @@ set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("skill11_air_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 6);
 
 var window_num = 1; //windup 1
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -20,7 +19,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, ground_frict
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[11].mp_cost1);
 
 window_num ++; //windup 2
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -41,7 +39,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, ground_friction);
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -50,13 +47,11 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_kragg_spike"));
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[11].mp_cost2);
 
 window_num ++; //bursts window
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 
 window_num ++; //endlag 2
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14); //10
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
@@ -75,7 +70,7 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 hitbox_num ++; //chasms bursting

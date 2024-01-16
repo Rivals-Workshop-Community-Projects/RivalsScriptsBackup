@@ -17,7 +17,7 @@ set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX, asset_get("sfx_blow_medium1"));
-set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX_FRAME, 13);
 
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 5);

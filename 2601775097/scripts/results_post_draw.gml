@@ -77,9 +77,10 @@ if (winner == player)
         }
     }
     //white text
-    draw_text_ext_transformed_color
-    (posx, posy, quote, line_spacing, max_line_length, 
-     half_scale, half_scale, 0, c_white, c_white, c_white, c_white, 1);
+    draw_text_ext_transformed_color(
+        posx, posy, quote, line_spacing, max_line_length, 
+        half_scale, half_scale, 0, c_white, c_white, c_white, c_white, 1
+    );
 }
 
 //====================================================

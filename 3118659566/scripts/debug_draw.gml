@@ -1,4 +1,4 @@
-//draw_debug_text(x, y + 75, "vault:" +string(mb_vault_hit));
+//draw_debug_text(x, y + 75, "vault:" +string(vault_letters));
 //draw_debug_text(x, y + 55, "attack:" +string(attack));
 //draw_debug_text(x, y + 95, "spinning:" +string(mb_spinning));
 //draw_debug_text(x, y + 35, "mbID:" +string(mailboxID));
@@ -9,7 +9,7 @@
 //draw_debug_text(x, y + 55, "id:" +string(lvl1projID));
 //draw_debug_text(x, y + 55, "id:" +string(letterID));
 //draw_debug_text(x, y + 55, "explo timer:" +string(explo_timer));
-//draw_debug_text(x, y + 35, "explo id:" +string(exploID));
+//draw_debug_text(x, y + 35, "dairid:" +string(dairprojID));
 //draw_debug_text(x, y + 35, "explo1:" +string(explo1.player));
 //draw_debug_text(x, y + 35, "timer" +string(joy_pad_timer));
 //draw_debug_text(x, y + 55, "pad" +string(window_joy_pad));

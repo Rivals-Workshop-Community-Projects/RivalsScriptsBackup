@@ -24,6 +24,21 @@ switch (my_hitboxID.attack)
 	case AT_DTILT:
 		if(my_hitboxID.hbox_num == 2) sound_play(asset_get("mfx_mm_coin_all"), false, noone, 1, 1);
 	break;
+	case AT_UTILT:
+		if(my_hitboxID.hbox_num == 1){
+			var s = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35, leaf_small_hfx);
+			s.depth = depth-1
+		}
+	break;
+	case AT_FAIR:
+		if(my_hitboxID.hbox_num == 1){
+			var s = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35, leaf_small_hfx);
+			s.depth = depth-1
+		}else{
+			var s = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35, leaf_big_hfx);
+			s.depth = depth-1
+		}
+	break;
 	case AT_DAIR:
 		if(my_hitboxID.hbox_num == 1) {
 			sound_play(asset_get("sfx_ori_spirit_flame_hit_1"), false, noone, 1, 1);
@@ -43,8 +58,10 @@ switch (my_hitboxID.attack)
 		if(my_hitboxID.hbox_num == 2) sound_play(asset_get("sfx_ice_nspecial_armor"), false, noone, 1, 1.3);
 	break;
 	case AT_USPECIAL:
-		if(my_hitboxID.hbox_num >= 2) sound_play(asset_get("sfx_ori_spirit_flame_hit_1"), false, noone, 1, 1);
-		hit_player_obj.trail_kill_effect_source = self;
+		if(my_hitboxID.hbox_num >= 2){
+			sound_play(asset_get("sfx_ori_spirit_flame_hit_1"), false, noone, 1, 1);
+			hit_player_obj.trail_kill_effect_source = self;
+		}
 	break;
 	case AT_DSPECIAL:
 		//Before grabbing the opponent, first make sure that:
@@ -87,7 +104,22 @@ if(my_hitboxID.attack == coin_atk){
 	// print("WOW")
 	if(player == my_hitboxID.player){
 		lvl++;
+		if(lvl == 2){
+			
+		}
 	  lvl = clamp(lvl, 1, max_lvl);
+		if(lvl == 2){ 
+			var s = sound_play(sound_get("bell"), false, noone, 1, 1);
+			sound_volume(s, 0, 120*10);
+			spawn_hit_fx(x,y-40,level2_vfx_hfx);
+		}
+		if(lvl == 3){
+			var s = sound_play(sound_get("bell"), false, noone, 1, 1.2);
+			sound_volume(s, 0, 120*10);
+			spawn_hit_fx(x,y-40,level3_vfx_hfx);
+		}
+		
+		
 	  fspecial_hud_timer = fspecial_hud_time;
 	}
   if(my_hitboxID.bounces < my_hitboxID.max_bounces){

@@ -11,6 +11,8 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) 
     burnbuff_active = false;
 }
 
+if (lightbuff_active) lightbuff_active = false;
+
 if (instance_exists(hook_chain_artc))
 {
     with (obj_article1) if (player_id == other.id && state == "hook_chain")

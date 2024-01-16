@@ -7,9 +7,10 @@ if free && state != 1 {
     } 
 }
 if (state == 2) || (state == 3) || (state == 4)   {
-    draw_sprite_ext( sprite_get("mb_hud"), (letters), x + (0 * spr_dir), y + 70, 1, 1, 0, -1, 1 );
+    var k = draw_sprite_ext( sprite_get("mb_hud"), (letters), x + (0 * spr_dir), y + 70, 1, 1, 0, -1, 1 );
+    k.depth = depth - 5;
 }  
 
 if state == 0 && state != 10 {
-    draw_sprite_ext( sprite_get("mb_hud"), (letters), x + (0 * spr_dir), y + 70, 1, 1, 0, -1, mbopacity );
+    var l = draw_sprite_ext( sprite_get("mb_hud"), (letters), x + (0 * spr_dir), y + 70, 1, 1, 0, -1, mbopacity );
 }

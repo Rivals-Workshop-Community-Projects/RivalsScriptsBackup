@@ -40,7 +40,7 @@ bad_evidence_count = (evidence1_status = 2)+(evidence2_status = 2)+(evidence3_st
 if (good_evidence_count = 0) strong_notif_timer = 120;
 if (good_evidence_count > 0) strong_notif_timer--;
 
-if (!invincible && get_gameplay_time() >= 240)
+if (!initial_invince && get_gameplay_time() >= 240)
 {
     //umvc3 percentages (g 6/9, b 2/9, f 1/9)
     //good_evidence_percent = (6-good_evidence_count) / (9-evidence_count);
@@ -214,8 +214,6 @@ if (voice)
     }
 }
 
-
-
 // update afterimage array
 var newArray = 0;
 for (var i = 0; i < array_length_1d(afterimage_array); ++i)
@@ -224,3 +222,11 @@ for (var i = 0; i < array_length_1d(afterimage_array); ++i)
     if (++obj.timer <= obj.timerMax) newArray[array_length_1d(newArray)] = obj;
 }
 afterimage_array = newArray;
+
+//vfx
+with (hit_fx_obj) if (player_id == other) {
+    if (hit_fx == other.shock_big || hit_fx == other.shock) {
+        depth = player_id.depth+1;
+        //spr_dir = 1;
+    }
+}

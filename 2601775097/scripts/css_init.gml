@@ -26,14 +26,14 @@ bday_name = "Reminiscence";
 alt_name = [
     "Elemental Guardian",
     "Inverted",
-    "The Cupid Heroine",
+    "Cupids' Resolve",
     "Spark of Lightning",
     "Scientific Prodigy",
     "Umbra Princess",
     "Chief Demon Hunter",
     "The Previous Guardian",
     "Ultimate Lifeform",
-    "REANIMATION", //alt name: smoking savage.
+    "Demon Strikedown",
     "Nuclear Raven",
     "Lofty",
     "11th Fatui Harbinger",

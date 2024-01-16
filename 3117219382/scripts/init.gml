@@ -253,7 +253,7 @@ fspecial_hud_time = fspecial_hud_enter_time+fspecial_hud_stay_time+fspecial_hud_
 mist_angles = [35, 0, -35];
 
 //DIST -> PER LEVEL 1, 2, 3;
-mist_distance = [120, 300, 450];
+mist_distance = [130, 300, 450];
 
 lvl = 1;
 mid_attack_lvl = lvl;
@@ -288,11 +288,16 @@ fstrong_sound_played = false
 fstrong_explosion_hfx = hit_fx_create(sprite_get("fstrong_explosion_hfx"), 32);
 dstrong_explosion_hfx = hit_fx_create(sprite_get("dstrong_explosion_hfx"), 28);
 
+leaf_small_hfx = hit_fx_create(sprite_get("leaf_small_hfx"), 16);
+leaf_big_hfx = hit_fx_create(sprite_get("leaf_big_hfx"), 28);
+
 dair_fx = hit_fx_create(sprite_get("dair_fx"), 18);
 dair_fx_id = noone;
 dair_fx_spawned = false;
 
 bag_hfx = hit_fx_create(sprite_get("bag_hfx"), 30);
+level2_vfx_hfx = hit_fx_create(sprite_get("level2_vfx"), 30);
+level3_vfx_hfx = hit_fx_create(sprite_get("level3_vfx"), 30);
 
 grind_hfx = hit_fx_create(sprite_get("grind_fx"), 35);
 bd_grind_fx = noone;

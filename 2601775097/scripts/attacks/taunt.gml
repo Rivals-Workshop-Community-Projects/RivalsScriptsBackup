@@ -84,29 +84,25 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 19);
 
 set_num_hitboxes(atk, 1);
 
-var hitbox_num = 1; //actuall taunt attack
-set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 1);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7); //at which window from the above the attack is created
+var hitbox_num = 1; //actual taunt attack
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2); //hitbox duration in frames
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -16);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -42);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 24);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
-set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1); //1 = low priority over other moves || 10 = highest
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 15);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 100); //hitstun
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 100);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_big);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_tauntattack"));
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
-set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);

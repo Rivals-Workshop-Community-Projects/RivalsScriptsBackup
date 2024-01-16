@@ -12,7 +12,6 @@ set_attack_value(atk, AG_OFF_LEDGE, 1);
 
 
 var window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -25,7 +24,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[9].mp_cost1);
 
 window_num ++; //charge
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -37,7 +35,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 2);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 window_num++; //throw
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
@@ -49,7 +46,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[9].mp_cost2);
 
 window_num ++; //throw hold
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 9); //loop untill bar hits someone
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
@@ -60,7 +57,6 @@ set_window_value(atk, window_num, AG_WINDOW_VSPEED, -0.1*free);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, -0.1*free);
 
 window_num++; //bar throws himself here
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
@@ -68,14 +64,12 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_forceleap_jump"));
 
 window_num++; //flinging in the air, can act out of this
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 32);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //grab fail
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);

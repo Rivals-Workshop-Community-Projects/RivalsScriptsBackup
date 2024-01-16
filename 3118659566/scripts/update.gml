@@ -6,27 +6,39 @@ if(attack == AT_FSPECIAL_AIR && state == PS_ATTACK_AIR){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
-if state == PS_HITSTUN || state == PS_AIR_DODGE {
+if state == PS_HITSTUN {
+	spin_cooldown = 0;
+	if vault_letters > 0 && dairprojID = 0 {
+		vault_letters = 0;
+	}
+}
+
+if state == PS_AIR_DODGE || state == PS_HITSTUN {
 	sound_stop(sound_get("rapidjab"));	
 	sound_stop(sound_get("dashcharge"));
 	tap_jumped = false;
 	tap_djump = false;
 	if grabbed_player_obj != noone {	
+   		grabbed_player_obj.hitpause = false;
+		grabbed_player_obj.hitstop = 0;
+		grabbed_player_obj.hitstun = false;
 		grabbed_player_obj = noone;
-		grabbed_player_obj.hitpause = true;
-		grabbed_player_obj.hitstop = 2;
-		grabbed_player_obj.hitstun = true;
 	}
 }	
+
+
+if spin_cooldown > 0 {
+	spin_cooldown--;
+}
 
 if !free {
     move_cooldown[AT_DAIR] = 0;
 }
 
-if packageID != 0 || lvl1projID != 0 || lvl2projID != 0 {
+if packageID != 0 || lvl1projID != 0 || lvl2projID != 0 || dairprojID != 0 {
 	move_cooldown[AT_DSPECIAL] = 999;
     move_cooldown[AT_DSPECIAL_2] = 999;
-} else if packageID = 0 && lvl1projID = 0 && mailboxID = 0 {
+} else if packageID = 0 && lvl1projID = 0 && mailboxID = 0 && dairprojID = 0 {
     move_cooldown[AT_DSPECIAL] = 0;
 	move_cooldown[AT_DSPECIAL_AIR] = 0;
 }
@@ -80,6 +92,12 @@ if joy_pad_idle {
 
 if mb_spin_hit = true {
 //	if mailboxID.letters != 3 {
+	if grabbed_player_obj != noone {
+   		grabbed_player_obj.hitpause = false;
+		grabbed_player_obj.hitstop = 0;
+		grabbed_player_obj.hitstun = false;
+		grabbed_player_obj = noone;
+	}
 		destroy_hitboxes();
 	    mb_spin_hit = false;
 		has_hit = false;
@@ -92,6 +110,7 @@ if mb_spin_hit = true {
 		vsp = 0;
 }
 
+/*
 if mb_vault_hit = true {
 	mb_vault_hit = false;
 	destroy_hitboxes();
@@ -103,6 +122,7 @@ if mb_vault_hit = true {
 	hsp = 0;
 	vsp = 0;	
 }
+*/
 
 if mb_hammer_hit = true {
 	destroy_hitboxes();
@@ -113,12 +133,34 @@ if mb_hammer_hit = true {
     mailboxID.state_timer = 0;
 	hurtboxID.sprite_index = sprite_get("uspecial_hammer_hurt");
 	sound_play(sound_get("catch"))
+	sound_play(asset_get("sfx_shovel_hit_med2"));
 	window = 1;
 	window_timer = 0;
 	hsp = 0;
 	vsp = 0;
 }
 
+if dairprojID != 0 {
+    dairprojID.hsp = dairprojID.hsp * 0.965;
+
+	if dairprojID.vsp < 0 {
+	    dairprojID.vsp = dairprojID.vsp * 0.9;
+	}
+	if dairprojID.vsp > 0 && dairprojID.vsp < 12 {
+		dairprojID.vsp = dairprojID.vsp * 1.1;
+	}
+    
+    if dairprojID.free = false || dairprojID.hitbox_timer == 35 || place_meeting(x + (0 * spr_dir), y, asset_get("par_block"))  {
+    	dairprojID.destroyed = true;
+	    move_cooldown[AT_DSPECIAL] = 20;
+		move_cooldown[AT_DSPECIAL_AIR] = 20;
+		sound_play(asset_get("sfx_shovel_hit_med2"));
+		mailboxID = instance_create(dairprojID.x, dairprojID.y + 40 , ("obj_article1"));
+		mailboxID.state = 14;
+		mailboxID.state_timer = 0;
+    	dairprojID = 0;
+    }
+}
 
 if packageID != 0 {
     if packageID.has_hit = true || packageID.free = false || (packageID.hitbox_timer > 40 && packageID.vsp = 0) {
@@ -127,7 +169,6 @@ if packageID != 0 {
    		k.depth = depth + 1;
    		if (explo_owner == noone) {
    			exploID = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
-			//exploID.player = player_id.packageID;
    		} else if explo_owner != noone {
    			explo1 = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
 			explo1.player = explo_owner;
@@ -150,7 +191,7 @@ if package_exploded = true || instant_exploding = true{
 	explo_timer++
 } 
 
-if explo_timer == 16 {
+if explo_timer == 15 {
 	sound_play(sound_get("lvl3explo"), 0, noone, 1, 1)
 	sound_play(asset_get("sfx_ell_strong_attack_explosion"), 0, noone, 1, 1)
 	sound_play(asset_get("sfx_ell_fist_explode"), 0, noone, 1, 1)
@@ -159,9 +200,11 @@ if explo_timer == 16 {
 }
 
 if instant_explo_start = true {
-    var k = spawn_hit_fx(instant_explo_x, instant_explo_y + 15, mb_proj_lv3_explo_vfx);
+    var k = spawn_hit_fx(instant_explo_x, instant_explo_y + 15, instant_explo_vfx);
     k.depth = depth + 1;
     exploID = create_hitbox(AT_DSPECIAL_2, 2, instant_explo_x, instant_explo_y - 45);
+    vault_letters = 0;
+    dair_letters = 0;
 	instant_explo_start = false;
 	instant_exploding = true;
 }

@@ -50,7 +50,7 @@ shoulddie = false;                                  //If this is set to true, th
 
 prev_window = false;
 summon = 0;
-can_be_hurt = true;
+can_be_hurt = false;
 article_got_parried = false;
 ground = false;
 turn_off_hitboxes = false;
@@ -59,13 +59,20 @@ type = 0;
 
 
 //Article Vars
-letters = 0;
+if player_id.vault_letters != 0 {
+    letters = player_id.vault_letters;
+} else if player_id.dair_letters != 0 {
+    letters = player_id.dair_letters;
+} else {
+    letters = 0;
+}
+
+
 packages = 0;
 airmovetimer = 0;
 airmovevsp = 0.25;
 propframes = 0;
 mbopacity = 0;
-mbhp = 1;
 
 //hitbox stuff
 hitby = noone;

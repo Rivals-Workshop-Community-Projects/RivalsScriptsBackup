@@ -31,7 +31,7 @@ if(attacking){
 		}
 		break;
 		case AT_DSPECIAL:
-		sprite_index = spr_dir > 0 ? sprite_get("dspecial_right") : sprite_get("dspecial_left")
+		if(window >= 4 and window < 10) image_index +=  (spr_dir < 0)*44
 		break;
 		case AT_USTRONG:
 		if(smash_charging){

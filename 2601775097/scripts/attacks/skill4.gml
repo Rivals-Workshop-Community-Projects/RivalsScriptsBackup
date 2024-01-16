@@ -86,12 +86,11 @@ set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 0.1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_EXTRA_HITPAUSE, 10);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num ++; //flashbang
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1)
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
@@ -113,7 +112,6 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
 hitbox_num ++; //flashbang - burning ver
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
-set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1)
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);

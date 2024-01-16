@@ -10,12 +10,10 @@ set_attack_value(atk, AG_LANDING_LAG, 10);
 var charge_time = 40;
 
 var window_num = 1; //windup 1
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 
 window_num ++; //charge 1 (window 2)
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, charge_time);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -24,7 +22,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[3].mp_cost1);
 
 window_num ++; //charge 2 (window 3)
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, charge_time*0.75); //30
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -33,7 +30,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[3].mp_cost2);
 
 window_num ++; //charge 3 (window 4)
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, charge_time*0.5); //20
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -52,7 +48,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial
 set_window_value(atk, window_num, AG_WINDOW_LOOP_TIMES, 1);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);

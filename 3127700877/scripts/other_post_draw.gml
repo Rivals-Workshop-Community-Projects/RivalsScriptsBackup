@@ -146,13 +146,13 @@ if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && !o
     maskMidder();
     maskFooter();
     shader_start();
-    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * 2, 2, spr_angle, c_white, 1);
+    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, 1);
     shader_end();
     maskHeader();
     draw_set_alpha(0);
     draw_rectangle_color(0, 0, room_width, room_height, c_white, c_white, c_white, c_white, 0);
     draw_set_alpha(1);
-    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * 2, 2, spr_angle, c_white, .5);
+    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, .5);
     maskMidder();
     draw_sprite_tiled_ext(the_image, 0, x + 75, y - get_gameplay_time()%300, .5, .5, c_white, 1);
     maskFooter();    

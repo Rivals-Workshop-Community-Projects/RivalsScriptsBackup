@@ -107,12 +107,16 @@ sprite_change_offset("mb_upgradelv2", 128, 188);
 sprite_change_offset("mb_upgradelv3", 128, 188);
 sprite_change_offset("mb_air_propeller", 128, 188);
 sprite_change_offset("mb_air_propeller_destruct", 128, 188);
+sprite_change_offset("mb_dair_proj", 128, 148);
 sprite_change_offset("mb_proj_lv1", 128, 128);
 sprite_change_offset("mb_proj_lv1_destroy", 128, 188);
 sprite_change_offset("mb_proj_lv2", 128, 128)
 sprite_change_offset("mb_proj_lv2_destroy", 128, 128)
+sprite_change_offset("mb_proj_lv2_break", 128, 128)
 sprite_change_offset("mb_proj_lv3", 128, 188);
 sprite_change_offset("mb_proj_lv3_explo", 128, 188);
+sprite_change_offset("mb_lv3_explo", 128, 188);
+sprite_change_offset("mb_super_explo", 128, 188);
 sprite_change_offset("mb_hud", 128, 190);
 sprite_change_offset("mb_hud_icon", 0, 0);
 sprite_change_offset("mb_hud_lvup1", 128, 190);
@@ -122,7 +126,6 @@ sprite_change_offset("mb_offscreen", 34, 17);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_behind", 128, 190);
-
 sprite_change_offset("nspecial_proj_lv1", 128, 128);
 sprite_change_offset("nspecial_proj_lv2", 128, 128);
 sprite_change_offset("nspecial_proj_lv3", 128, 128);

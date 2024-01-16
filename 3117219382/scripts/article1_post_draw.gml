@@ -12,7 +12,7 @@ if(exit_point[0] != noone){
 	draw_sprite_ext(spr_ground, point_ind, exit_point[1], exit_point[2], 2, 2, exit_point[3], c_white, 1);
 }
 
-// if (player_id.hbox_view) draw_sprite_ext(mask_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.5);
+if (player_id.hbox_view) draw_sprite_ext(mask_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 0.5);
 if(player_id.debug_display){
 	draw_set_font(asset_get("roaLBLFont")); 
 	draw_set_color(c_white);

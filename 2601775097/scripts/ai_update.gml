@@ -61,7 +61,16 @@ if (ai_recovering)
             use_skill(1);
         }
         //disable polaris if offstage
-        if (skill[cur_skills[i]].skill_id == 7) lightbuff_active = false;
+        if (skill[cur_skills[i]].skill_id == 7)
+        {
+            for (var j = 0; j < polaris_shots_left; j++)
+            {
+                spawn_hit_fx(polaris_shot_ids[j].x, polaris_shot_ids[j].y, fx_skill7_afterimage);
+                polaris_shot_ids[j].length = 0;
+            }
+
+            lightbuff_active = false;
+        }
     }
 
     switch (cpu_cur_skill)

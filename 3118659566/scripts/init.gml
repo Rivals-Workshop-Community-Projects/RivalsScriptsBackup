@@ -195,20 +195,26 @@ explo_timer = 0;
 exploID = 0;
 letter_move = false;
 mb_shoot = false;
+dspec_cancel = false;
 
+dairprojID = 0;
+mb_dair_hit = false;
+dair_letters = 0;
+spin_cooldown = 0;
 mb_spin_hit = false;
 mb_spinning = false;
 AT_HAMMER = 43;
 mb_hammer_hit = false;
 AT_VAULT = 42;
 mb_vault_hit = false;
+vault_jump = false;
 vault_letters = 0;
 
 fspec_letter_timer = 0;
 
 //VFX
 feather_small_vfx = hit_fx_create( sprite_get( "feather_small_vfx" ), 15 );
-stamp_vfx = hit_fx_create( sprite_get( "hammer_stamp_vfx" ), 48 );
+stamp_vfx = hit_fx_create( sprite_get( "hammer_stamp_vfx" ), 30 );
 letter_vfx = hit_fx_create( sprite_get( "nspecial_proj_break" ), 35 );
 letter_big_vfx = hit_fx_create( sprite_get( "letter_big_vfx" ), 32 );
 letter_small_vfx = hit_fx_create( sprite_get( "letter_small_vfx" ), 22 );
@@ -216,6 +222,7 @@ bag_big_vfx = hit_fx_create( sprite_get( "bag_big_vfx" ), 24 );
 letter_add_vfx = hit_fx_create( sprite_get( "letter_add_vfx" ), 35 );
 feather_big_vfx = hit_fx_create( sprite_get( "feather_big_vfx" ), 40 );
 prop_destroy_vfx = hit_fx_create( sprite_get( "mb_air_propeller_destruct" ), 12 );
+mb_destruct_vfx = hit_fx_create( sprite_get( "mb_destruct" ), 16 );
 nspecial_destroy_vfx = hit_fx_create( sprite_get( "nspecial_proj_destroy" ), 8 );
 fspecial_wind_vfx = hit_fx_create( sprite_get( "fspecial_wind_vfx" ), 16 );
 fspecial_letter_vfx1 = hit_fx_create( sprite_get( "fspecial_letter_vfx" ), 32 );
@@ -223,7 +230,9 @@ fspecial_letter_vfx2 = hit_fx_create( sprite_get( "fspecial_letter_vfx" ), 38 );
 fspecial_letter_vfx3 = hit_fx_create( sprite_get( "fspecial_letter_vfx" ), 46 );
 mb_proj_lv1_destroy_vfx = hit_fx_create( sprite_get( "mb_proj_lv1_destroy"), 24);
 mb_proj_lv2_destroy_vfx = hit_fx_create( sprite_get( "mb_proj_lv2_destroy"), 30);
+mb_proj_lv2_break_vfx = hit_fx_create( sprite_get( "mb_proj_lv2_break"), 12);
 mb_proj_lv3_explo_vfx = hit_fx_create( sprite_get( "mb_proj_lv3_explo"), 44);
+instant_explo_vfx = hit_fx_create( sprite_get( "mb_super_explo"), 44);
 mb_hud_lvup1_vfx = hit_fx_create( sprite_get( "mb_hud_lvup1"), 17);
 mb_hud_lvup2_vfx = hit_fx_create( sprite_get( "mb_hud_lvup2"), 17);
 mb_hud_lvup3_vfx = hit_fx_create( sprite_get( "mb_hud_lvup3"), 17);

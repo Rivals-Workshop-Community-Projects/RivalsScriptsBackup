@@ -47,10 +47,6 @@ turnaboutID = noone;
 cornered_sound = noone;
 song_type = 0;
 
-shocked_vfx = hit_fx_create(sprite_get("vfx_shock"), 9);
-shock_lines_vfx = hit_fx_create(sprite_get("vfx_shocklines"), 42);
-set_hit_particle_sprite(1, sprite_get("vfx_sweat_drop"));
-
 strong_notif_timer = 120;
 special_error_cooldown = 0; //60
 
@@ -162,6 +158,9 @@ bubble_y = 8;
 //ustrong_gavel_slam_fx = hit_fx_create(sprite_get("ustrong_gavel_slam_fx"), 36);
 uspecial_explosion = hit_fx_create(sprite_get("uspecial_explosion"), 32);
 nair2_explosion = hit_fx_create(sprite_get("nair2_explosion"), 15);
+shock = hit_fx_create(sprite_get("vfx_shock"), 21);
+shock_big = hit_fx_create(sprite_get("vfx_shock_big"), 21);
+shine = hit_fx_create(sprite_get("vfx_turnabout_shine"), 15);
 
 // afterimages (thanks karu :3)
 afterimage_array = 0;

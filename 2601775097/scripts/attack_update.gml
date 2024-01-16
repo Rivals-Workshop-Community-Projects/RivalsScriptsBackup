@@ -362,7 +362,7 @@ switch (attack)
                 burnbuff_active = false;
                 break;
             case 9: //do the stun attack
-                if (window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES) && (attack_down || special_down))
+                if (window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1 && (attack_down || special_down))
                 {
                     set_window(13);
                     window_loops = 0;
@@ -1107,7 +1107,11 @@ switch (attack)
                     shake_camera(6, 8); //power, time
                     bar_hitbox = create_hitbox(attack, 1+burnbuff_active*2, x, y);
 
-                    spawn_hit_fx(x+32*spr_dir, y, 301);
+                    if (chasm_limit == 0)
+                    {
+                        var fg_fx = spawn_hit_fx(x+32*spr_dir, y, fx_skill11_chasm);
+                        fg_fx.depth = depth - 1;
+                    }
                 }
             case 5: //set timer
                 if (window_timer == 1) chasm_burst_timer = 60;
@@ -1448,6 +1452,13 @@ switch (attack)
             window_timer = 0;
         }
         if (window > 1 && !free) set_state(PS_LANDING_LAG);
+
+        if (window <= 2)
+        {
+            apply_motion_trail = (alt_cur == 25);
+            is_accel_trail = false;
+        }
+        else if (apply_motion_trail) apply_motion_trail = false;
         break;
 }
 

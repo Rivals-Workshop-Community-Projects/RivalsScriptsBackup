@@ -14,7 +14,7 @@ if (holyburn_active) holyburn_apply();
 if (lightstun_active)
 {
     if (lightstun_last_attack != my_hitboxID.attack) lightstun_apply();
-    else if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_USTRONG_2) //exceptions
+    else if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_USTRONG_2 || my_hitboxID.attack == skill[4].skill_attack) //exceptions
     {
         if (lightstun_last_hbox != my_hitboxID.hbox_num) lightstun_apply();
     }
@@ -105,6 +105,18 @@ switch (my_hitboxID.attack)
         }
         break;
     /////////////
+    case AT_FSTRONG_2:
+        if (my_hitboxID.hbox_num <= 2)
+        {
+            var temp_fx = spawn_hit_fx(
+                hit_player_obj.x + (random_func(1, 8, true)-4)*4,
+                hit_player_obj.y - 16 - random_func(1, 8, true)*4,
+                fx_hit_small
+            );
+            temp_fx.manual_angle_control = true;
+            temp_fx.draw_angle = 30 * spr_dir;
+        }
+        break;
     case AT_DSTRONG_2:
         if (my_hitboxID.hbox_num == 1)
         {
@@ -182,7 +194,6 @@ if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(true_dama
 
 mp_current = clamp(mp_current, 0, mp_max);
 
-
 #define drain_mp
 {
     var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
@@ -201,39 +212,40 @@ mp_current = clamp(mp_current, 0, mp_max);
 }
 #define lightstun_apply
 {
-    if (lightstun_active)
+    //check light based hitboxes
+    if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2])
     {
-        //check light based hitboxes
-        if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2])
+        with (hit_player_obj)
         {
-            with (hit_player_obj)
+            //timers setup
+            //the lightstunner hit will always make the foe freeze
+            if (lightstun_type == 0)
             {
-                //timers setup
-                //the lightstunner hit will always make the foe freeze
-                if (lightstun_type == 0) lightstun_timer = other.lightstun_pre_set;
-                else if (lightstun_type == 1 || other.my_hitboxID.attack == 48)
+                lightstunner_id = other;
+                lightstun_timer = other.lightstun_pre_set;
+            }
+            else if (lightstun_type == 1 || other.my_hitboxID.attack == 48)
+            {
+                lightstun_timer = other.lightstun_active_set;
+                with (other)
                 {
-                    lightstun_timer = other.lightstun_active_set;
-                    with (other)
-                    {
-                        var hitfx = spawn_hit_fx(other.x, other.y-other.char_height/2-4, fx_lightblow[2]);
-                        hitfx.depth = other.depth-1;
-                    }
-                    sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+                    var hitfx = spawn_hit_fx(other.x, other.y-other.char_height/2-4, fx_lightblow[2]);
+                    hitfx.depth = other.depth-1;
                 }
+                sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+            }
 
-                //change the type on hit, but only after it updates the timer
-                if (lightstun_type < 2) lightstun_type ++;
-            }
+            //change the type on hit, but only after it updates the timer
+            if (lightstun_type < 2) lightstun_type ++;
         }
-        else
+    }
+    else
+    {
+        //on the frozen state, using any hitbox that isn't the light based hitboxes will kick the enemy out of the frozen state
+        if (hit_player_obj.lightstun_type == 2)
         {
-            //on the frozen state, using any hitbox that isn't the light based hitboxes will kick the enemy out of the frozen state
-            if (hit_player_obj.lightstun_type == 2)
-            {
-                hit_player_obj.lightstun_type = 0;
-                hit_player_obj.lightstun_timer = 0;
-            }
+            hit_player_obj.lightstun_type = 0;
+            hit_player_obj.lightstun_timer = 0;
         }
     }
 }

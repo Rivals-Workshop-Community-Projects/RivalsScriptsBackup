@@ -12,8 +12,9 @@ with pHitBox{
 
 if(attacking){
 	if(attack == AT_DSPECIAL){
-		var i_img_index = 5;
-		if(image_index >= i_img_index and image_index < 30 and image_index > 6){
+		var off = (spr_dir < 0 and image_index > 50)*44;
+		var i_img_index = 5+off;
+		if(image_index >= i_img_index and (image_index < 30+off and image_index > 6+off)){
 			draw_sprite_ext((spr_dir > 0)?sprite_get("multislash_fx_right") : sprite_get("multislash_fx_left"), image_index - i_img_index, x, y, 4*(spr_dir > 0)-2, 2, 0, c_white, 1);
 		}
 	}

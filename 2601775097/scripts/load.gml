@@ -78,6 +78,13 @@ sprite_change_offset("fx_intro_back", 24, 16);
 //sprite_change_offset("fx_part_light", 8, 8);
 //sprite_change_offset("fx_part_fire", 8, 8);
 
+sprite_change_offset("fx_hit_small_fg", 64, 64);
+sprite_change_offset("fx_hit_small_bg", 0, 64);
+sprite_change_offset("fx_hit_medium_fg", 96, 96);
+sprite_change_offset("fx_hit_medium_bg", 32, 96);
+sprite_change_offset("fx_hit_big_fg", 128, 128);
+sprite_change_offset("fx_hit_big_bg", -16, 128);
+
 sprite_change_offset("fx_light_follow", 9, 9);
 sprite_change_offset("fx_lightblow1", 48, 48);
 sprite_change_offset("fx_lightslash", 64, 56);

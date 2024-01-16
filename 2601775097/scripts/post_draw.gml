@@ -8,7 +8,7 @@ if (glide_ui)
     draw_sprite_stretched_ext(spr_pixel, 0, floor(x-35), floor(y-char_height-30), ceil(glide_stamina/(1.53*(glide_stamina_max/100))), 2, $78ff5f, 1); //full
 }
 
-if (!hitstop)
+if (!hitpause)
 {
     //dust effects
     if (is_attacking)

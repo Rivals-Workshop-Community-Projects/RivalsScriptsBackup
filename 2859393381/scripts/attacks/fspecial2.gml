@@ -41,8 +41,9 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, shock);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_PARTICLE_NUM, 1);
+//set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial2_proj"));
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_MASK, -1);

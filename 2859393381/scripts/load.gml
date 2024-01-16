@@ -106,4 +106,6 @@ sprite_change_offset("nspecial_objection", 64, 48);
 
 sprite_change_offset("ustrong_gavel_slam_fx", 96, 94);
 
-sprite_change_offset("vfx_shock", 28, 64,);
+sprite_change_offset("vfx_shock", 80, 80);
+sprite_change_offset("vfx_shock_big", 128, 128);
+sprite_change_offset("vfx_turnabout_shine", 24, 27);

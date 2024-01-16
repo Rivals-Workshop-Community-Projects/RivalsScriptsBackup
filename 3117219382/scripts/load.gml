@@ -67,9 +67,9 @@ sprite_change_offset("nspecial_air",    32, 47, true);
 sprite_change_offset("uspecial",        32, 65, true);
 sprite_change_offset("fspecial",        30, 47, true);
 sprite_change_offset("fspecial_air",    27, 41, true);
+sprite_change_offset("dspecial",    		44, 64, true);
 sprite_change_offset("dspecial_right",	44, 83, true);
 sprite_change_offset("dspecial_left",		44, 83, true);
-sprite_change_offset("dspecial_air",    23, 35, true);
 
 //misc
 sprite_change_offset("taunt",           22, 47, true);
@@ -110,6 +110,8 @@ sprite_change_offset("hat_fall",  							40, 32);
 sprite_change_offset("fstrong_hfx", 						14*2, 32*2);
 sprite_change_offset("fstrong_explosion_hfx",		128, 128);
 sprite_change_offset("dstrong_explosion_hfx",		64, 64);
+sprite_change_offset("leaf_small_hfx",					33, 33);
+sprite_change_offset("leaf_big_hfx",					104, 100);
 sprite_change_offset("dair_fx", 								24*2, 22*2);
 sprite_change_offset("bag_hfx", 								26*2, 31*2);
 sprite_change_offset("nspecial_mask",     			8, 10);
@@ -129,3 +131,5 @@ sprite_change_offset("slash_ground_hitfx_big",	0*2, 13*2);
 sprite_change_offset("gold_sigil",							57, 50);
 sprite_change_offset("gold_expand_bg",					171, 34);
 sprite_change_offset("gold_expand_fg",					171, 34);
+sprite_change_offset("level2_vfx",							78, 54);
+sprite_change_offset("level3_vfx",							108, 108);

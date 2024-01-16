@@ -9,12 +9,10 @@ set_attack_value(atk, AG_NUM_WINDOWS, 5);
 set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 1);
 
 var window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 
 window_num ++; //hold
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 1);
@@ -24,7 +22,6 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[6].mp_cost1);
 
 window_num ++; //movement buffer (3)
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -32,17 +29,14 @@ set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 
 window_num ++; //casting
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 
 window_num ++; //casting end
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(atk, 2)
 

@@ -181,7 +181,7 @@ if(attack == AT_FSPECIAL){
 		
 		if(!used_mf_air) if(vsp > -1) grav = clamp(grav*(vsp/10), 0.25, gravity_speed)
 		if(!free) can_move = false;
-		else if (abs(hsp) > air_max_speed) hsp *= 0.9;
+		else if (abs(hsp) > air_max_speed) hsp *= 0.95;
 	}
 	
 	if(window == 2){
@@ -265,7 +265,7 @@ if(attack == AT_FSPECIAL){
 			}
 			
 			var wid = mist_distance[mid_attack_lvl-1];
-			var pos_x = (wid/2)*dcos(ma) + 40*dcos(ma);
+			var pos_x = (wid/2)*dcos(ma) + 20*dcos(ma);
 			var pos_y = (wid/2)*-dsin(ma) + 30*-dsin(ma) - 30;
 			set_hitbox_value(attack, 1, HG_HITBOX_X, pos_x)
 			set_hitbox_value(attack, 1, HG_HITBOX_Y, pos_y)

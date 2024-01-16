@@ -45,15 +45,34 @@ if packageID != 0 {
     }
 }
 
+if lvl1projID != 0 {
+    lvl1projID.destroyed = true;
+    var k = spawn_hit_fx(lvl1projID.x, lvl1projID.y + 55, mb_proj_lv1_destroy_vfx);
+    var explo_x = lvl1projID.x;
+    var explo_y = lvl1projID.y;
+	sound_play(asset_get("sfx_zetter_downb"))
+    k.depth = depth + 1;
+    lvl1proj_timer = 0;
+    lvl1proj_exploded = true;
+    lvl1projID = 0;
+}
+
+if lvl2projID != 0 {
+    lvl2projID.destroyed = true;
+    lvl2projID = 0;
+    planeID = 0;
+    var k = spawn_hit_fx( x- (0 * spr_dir), y , mb_proj_lv2_break_vfx);
+	k.depth = depth + 1;        
+}
+
+if dairprojID != 0 {
+	var k = spawn_hit_fx(dairprojID.x, dairprojID.y - 0, mb_destruct_vfx);
+	var l = spawn_hit_fx(dairprojID.x, dairprojID.y - 0, prop_destroy_vfx);
+    dairprojID.destroyed = true;
+    dairprojID = 0;
+}
+
 if mailboxID != 0 {
-    if mailboxID.state == 0 {
-        if mailboxID.letters > 0 {    
-            mailboxID.state = 8;
-            mailboxID.state_timer = 0;
-            mailboxID.letters -= 1;
-        } else {
-            mailboxID.state = 1;
-            mailboxID.state_timer = 0;
-        }
-    } 
+    mailboxID.state = 1;
+    mailboxID.state_timer = 0;
 }

@@ -1,3 +1,11 @@
+if mailboxID != 0 {
+	if(((my_hitboxID.attack != AT_DSPECIAL) || (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2)) && mailboxID.letters != 0){
+		if(my_hitboxID.type == 1){
+		dspec_cancel = true;
+		}
+	}
+}
+
 //Dair Grab
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num = 1) {
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
@@ -198,6 +206,12 @@ if (attack == AT_DAIR) {
 	} 
 }
 if (attack == AT_FSTRONG && state == PS_ATTACK_GROUND) {
+	if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && has_hit) {
+		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 16), my_hitboxID.y - 40, bag_big_vfx);
+		k.depth = depth + 1;
+	}
+}
+if ((attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
 	if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && has_hit) {
 		var k = spawn_hit_fx(my_hitboxID.x - (spr_dir * 16), my_hitboxID.y - 40, bag_big_vfx);
 		k.depth = depth + 1;
