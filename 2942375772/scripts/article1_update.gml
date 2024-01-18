@@ -61,7 +61,7 @@ if visible {
     
     with (oPlayer)
     {
-        if y == clamp(y, other.y - 35, other.y - 15) and place_meeting(x,y+vsp,other) and free and vsp > 0 and state != PS_AIR_DODGE and !hitpause
+        if y == clamp(y, other.y - 35, other.y - 15) and place_meeting(x,y+vsp,other) and free and vsp > 0 and state != PS_AIR_DODGE and state != PS_RESPAWN and state != PS_DEAD and !hitpause
         {
             with other.player_id
             {
