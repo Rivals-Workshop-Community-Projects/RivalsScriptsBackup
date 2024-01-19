@@ -22,7 +22,24 @@ if(instance_exists(other_player_id) && sludged_id == other_player_id && !fucking
 if(instance_exists(other_player_id) && diseased_id == other_player_id && !fucking_dying_timer){
 	with(other_player_id) var smog = sprite_get("smog_tile");
 	createMask(smog)
+	
     gpu_set_alphatestenable(true);
+    
+    if strong_flashing {
+    	gpu_set_fog(1, c_yellow, 0, 1);
+    	draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, c_yellow, .5);
+    }
+    
+    if invincible || hurtboxID.sprite_index == asset_get("empty_sprite") {
+    	gpu_set_fog(1, c_white, 0, 1);
+    	draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, c_white, .5);
+    }
+    
+    if state == PS_PRATFALL || state == PS_PRATLAND {
+    	gpu_set_fog(1, c_black, 0, 1);
+    	draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, c_black, .5);
+    }
+    
 	gpu_set_fog(1, other_player_id.disease_color, 0, 1);
 	
 	if(diseased_timer > diseased_timer_max - 30){
@@ -32,7 +49,7 @@ if(instance_exists(other_player_id) && diseased_id == other_player_id && !fuckin
 		
 		draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, other_player_id.disease_color, a);
 	} else {
-		draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, other_player_id.disease_color, .5);
+		draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, s * spr_dir, s, spr_angle, other_player_id.disease_color, .4);
 	}
     
 	gpu_set_fog(0, c_white, 0, 0);

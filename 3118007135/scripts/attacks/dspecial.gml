@@ -207,7 +207,7 @@ set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 
 set_num_hitboxes(AT_DSPECIAL_2, 2);
 
-#region // Hit
+#region // 1 Stack
 make_hitbox(AT_DSPECIAL_2, 1,
     HG_PARENT_HITBOX, 1,
     HG_HITBOX_TYPE, 2,
@@ -242,7 +242,7 @@ make_hitbox(AT_DSPECIAL_2, 1,
 )
 #endregion
 
-#region // Hit Pull
+#region // 2 Stack
 make_hitbox(AT_DSPECIAL_2, 2,
     HG_PARENT_HITBOX, 2,
     HG_HITBOX_TYPE, 2,
@@ -254,7 +254,7 @@ make_hitbox(AT_DSPECIAL_2, 2,
     HG_HEIGHT, 65,
     HG_PRIORITY, 3,
     HG_DAMAGE, 1,
-    HG_ANGLE, 90,
+    HG_ANGLE, 45,
     HG_ANGLE_FLIPPER, 2,
     HG_BASE_KNOCKBACK, 6,
     HG_KNOCKBACK_SCALING, 0.3,
@@ -262,7 +262,6 @@ make_hitbox(AT_DSPECIAL_2, 2,
     HG_HITPAUSE_SCALING, 0,
     HG_EXTRA_HITPAUSE, 4,
     HG_HITSTUN_MULTIPLIER, .75,
-    HG_TECHABLE, 1,
     HG_VISUAL_EFFECT, vfx_riptide_ichi,
     HG_HIT_PARTICLE_NUM, 2,
     HG_HIT_SFX, asset_get("sfx_waterhit_weak"),
@@ -278,7 +277,7 @@ make_hitbox(AT_DSPECIAL_2, 2,
 )
 #endregion
 
-#region // Hit Pull 2
+#region // Stacks Full
 make_hitbox(AT_DSPECIAL_2, 3,
     HG_PARENT_HITBOX, 3,
     HG_HITBOX_TYPE, 2,
@@ -298,6 +297,7 @@ make_hitbox(AT_DSPECIAL_2, 3,
     HG_HITPAUSE_SCALING, 0,
     HG_EXTRA_HITPAUSE, 2,
     HG_HITSTUN_MULTIPLIER, 1,
+    HG_TECHABLE, 1,
     HG_VISUAL_EFFECT, vfx_riptide_ichi,
     HG_HIT_PARTICLE_NUM, 2,
     HG_HIT_SFX, asset_get("sfx_waterhit_weak"),

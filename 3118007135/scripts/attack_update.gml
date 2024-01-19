@@ -804,9 +804,19 @@ if !hitpause{
 	            			if other.id != id{
 			            		if wren_riptide_id == other.id{
 			            			switch(wren_stacks){
-			            				default:
+			            				case 1:
 					            			with(wren_riptide_id){
 					            				create_hitbox(AT_DSPECIAL_2, 1, other.x, other.y);
+					            			}
+			            					break;
+			            				case 2:
+					            			with(wren_riptide_id){
+					            				create_hitbox(AT_DSPECIAL_2, 2, other.x, other.y);
+					            			}
+			            					break;
+			            				default:
+					            			with(wren_riptide_id){
+					            				create_hitbox(AT_DSPECIAL_2, 3, other.x, other.y);
 					            			}
 			            					break;
 			            			}
