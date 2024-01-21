@@ -66,7 +66,7 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 //Show Ownership projectiles
 if pill_counter > 0{
 	with pHitBox {
-		if attack == AT_NSPECIAL && type ==2 && player == orig_player &&  player_id.url == 2273636433{
+		if attack == AT_NSPECIAL && type ==2 && player == orig_player &&  player_id.url == 2273636433 && player_id.player = other.player{
 			if player_id.doc_ditto == 1 {draw_sprite(sprite_get("owner"), player , x - 7, y-30);}
 			//DRAWING DAMAGE AND KNOCKBACK INDICATORS FOR PROJECITLES
 			if (C_dam + C_knock) >1  && show < 30 {
@@ -90,8 +90,6 @@ if pill_counter > 0{
 		}
 	}
 }
-
-
 
 // This variable gets triggered when  Doc Score is 
 if doc_score > 0{

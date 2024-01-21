@@ -1,5 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
+
 shader_end();
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
@@ -60,5 +61,3 @@ if get_player_color(player) ==11 || get_player_color(player) ==12 {
 }
 
 draw_sprite( sprite_get("pill_select"), pill_button, x + 14, y+48);
-
-  

@@ -300,6 +300,14 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 							   C_dam += 1;
 							   forced = 1;
 							}
+							if variable_instance_exists(self, "pill_state"){
+								if pill_state == 2{
+									pill_state = 9;
+								}
+								if pill_state == 3{
+									pill_state = 0;
+								}
+							}
 						}
 						//Movement For Articles
 						if other.done_reflecting_article == 0 {		//1 reflect per article

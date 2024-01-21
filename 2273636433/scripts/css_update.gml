@@ -19,7 +19,7 @@ if instance_exists(cursor_id){
 		voice_button = 0;
 	}
 	//Pill Logic
-	if (cur_x > 12 + x )&& (cur_x <=  50  + x )&& (cur_y > 46 + y )&& (cur_y <=  66  + y ){		//Button Coordinates
+	if (cur_x > 12 + x )&& (cur_x <=  52  + x )&& (cur_y > 44 + y )&& (cur_y <=  70  + y ){		//Button Coordinates
 		suppress_cursor = true;
 		if menu_a_pressed  {
 			pill_button = pill_button+1;

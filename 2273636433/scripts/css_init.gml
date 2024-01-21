@@ -77,5 +77,4 @@ pill_prev=1;
 num_alts = 32;
 //Alt
 
-
 //CSS Button Stuff

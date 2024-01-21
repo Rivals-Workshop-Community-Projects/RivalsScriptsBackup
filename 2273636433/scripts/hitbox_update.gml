@@ -118,10 +118,10 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH USPECIAL (RECOVERY)
 	if (hitbox_timer > 6)  && player_id.attack == AT_USPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {
-		if abs(x -( player_id.x +28*player_id.spr_dir))<52{
+		if abs(x -( player_id.x +28*player_id.spr_dir))<48{
 			if abs(y - (player_id.y - 25))<48{
-				x = player_id.x +26*player_id.spr_dir;
-				y = player_id.y - 26;
+				x = player_id.x +28*player_id.spr_dir;
+				y = player_id.y - 25;
 				vsp = -15;
 				hsp = 2.25*player_id.spr_dir;
 				length = 200;
