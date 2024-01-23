@@ -125,6 +125,7 @@ else //lyre menu is active
     }
 }
 
+/*
 //debug stuff
 if (debug_keqing)
 {
@@ -150,7 +151,11 @@ if (debug_keqing)
     draw_debug_text(temp_x, temp_y - 16, "hsp = " + string(hsp));
     draw_debug_text(temp_x + 112, temp_y - 16, "vsp = " + string(vsp));
 }
-
+*/
+if (get_match_setting(SET_PRACTICE))
+{
+    draw_debug_text(temp_x + 16, temp_y, debug_keqing ? "Test mode active" : "UP + TAUNT = Test mode");
+}
 
 
 #define rectDraw(x1, y1, width, height, color)

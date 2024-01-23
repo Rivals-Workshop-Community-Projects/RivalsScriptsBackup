@@ -78,14 +78,14 @@ set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, 1);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 52);							//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 28);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 3);						//UPDATED
+set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 3);						    //UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 8);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .2);				//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE,6);					//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .2);				//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);						//UPDATED
+set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);						    //UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DAIR, 1, HG_THROWS_ROCK, 2);
@@ -95,14 +95,14 @@ set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 4);						//UPDATED
-set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 2);						//UPDATED
+set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 2);						    //UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, -12);						//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_X, 0);						//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 90);							//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 30);						//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 5);						//UPDATED
-set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 80);						//UPDATED
+set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 5);						    //UPDATED
+set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 80);						    //UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 8);						//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, .7);				//UPDATED
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 10);					//UPDATED

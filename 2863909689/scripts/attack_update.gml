@@ -521,9 +521,9 @@ if (attack == AT_USPECIAL){
 	
 	//land
 	if (window == 6 && window_timer < uspec_window_6_length - 1){
-		if (!free || (y > room_height - 50 && grabbed != -4)){
+		if (!free || (y > room_height - 100 && grabbed != -4)){
 			destroy_hitboxes();
-			if (grabbed != -4 && !(y > room_height - 50)){
+			if (grabbed != -4 && !(y > room_height - 100)){
 				create_hitbox(AT_USPECIAL, 3, x, y);
 			}
 			spawn_base_dust( x + (0 * spr_dir), y, "dash_start", spr_dir);

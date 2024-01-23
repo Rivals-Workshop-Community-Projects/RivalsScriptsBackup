@@ -2,6 +2,9 @@
 //the real hit_player.gml
 
 if (my_hitboxID.orig_player_id != self) exit;
+
+var true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
+
 turbo_attack_hit = attack;
 turbo_attack_window = window;
 
@@ -17,7 +20,7 @@ switch (my_hitboxID.attack)
         break;
     case AT_NSPECIAL:
         //nspecial projectile
-        if (my_hitboxID.hbox_num == 2 && stilleto_id == noone)
+        if (my_hitboxID.hbox_num == 2 && stilleto_id == noone && get_player_team(hit_player_obj.player) != get_player_team(player))
         {
             if (!instance_exists(artc_marker))
             {
@@ -44,7 +47,7 @@ switch (my_hitboxID.attack)
         }
         break;
     case AT_DSPECIAL: //dspecial's afterimage puts an active lightning stilleto on people hit by it and resets it's duration
-        if (my_hitboxID.hbox_num == 1 && stilleto_id == noone)
+        if (my_hitboxID.hbox_num == 1 && stilleto_id == noone && get_player_team(hit_player_obj.player) != get_player_team(player))
         {
             if (instance_exists(artc_marker) && artc_marker.state == 1)
             {
@@ -153,11 +156,14 @@ if (instance_exists(artc_marker) && artc_marker.state == 1 && my_hitboxID.attack
 //crits
 if (has_rune("I") && crit_val >= crit_rate)
 {
-    my_hitboxID.damage = my_hitboxID.damage*crit_damage;
-    my_hitboxID.kb_value = my_hitboxID.kb_value*crit_damage;
-    my_hitboxID.kb_scale = my_hitboxID.kb_scale*crit_damage;
-    my_hitboxID.hitpause = my_hitboxID.hitpause*crit_damage;
-    my_hitboxID.hitpause_growth = my_hitboxID.hitpause_growth*crit_damage;
+    take_damage(hit_player_obj.player, player, floor(true_dmg * (crit_damage-1)));
+
+    hit_player_obj.orig_knock *= crit_damage*0.75;
+    hit_player_obj.hitstop_full *= crit_damage*0.75;
+    hit_player_obj.hitstop *= crit_damage*0.75;
+
+    hitstop_full *= crit_damage*0.75;
+    hitstop *= crit_damage*0.75;
 }
 
 //damage text
@@ -166,7 +172,7 @@ if (display_damage_numbers)
 {
     artc_damage = instance_create(hit_player_obj.x, hit_player_obj.y, "obj_article3");
     {
-        artc_damage.damage = my_hitboxID.damage * artc_damage.damage_mult;
+        artc_damage.damage = floor(true_dmg * artc_damage.damage_mult * (crit_val >= crit_rate ? crit_damage : 1));
         if (artc_damage.damage > power(10, 7)-1) artc_damage.damage = power(10, 7)-1;
         artc_damage.y = hit_player_obj.y - char_height*1.5;
         artc_damage.depth = artc_damage.depth --;
@@ -183,7 +189,7 @@ if (display_damage_numbers)
 
 //elemental burst stuff (without final smash)
 if (("fs_char_initialized" not in self && has_burst || has_resolve_mechanic && !vhd_effect)
-&& particle_cd == 0 && my_hitboxID.damage > 0 && my_hitboxID.attack != AT_BURST)
+&& particle_cd == 0 && true_dmg > 0 && my_hitboxID.attack != AT_BURST)
 {
     //should spawn elemental particles (article), which fly into keqing and fill up her burst meter
     //there's 2 types of particles: small particles and big orbs
@@ -192,13 +198,13 @@ if (("fs_char_initialized" not in self && has_burst || has_resolve_mechanic && !
     //the amount of particles will either be 1 per attack or 1 per 1%
 
     var fly_power = 2.5;
-    repeat ((my_hitboxID.damage >= 10) ? 1 : 3)
+    repeat ((true_dmg >= 10) ? 1 : 3)
     {
         particle_amount ++;
 
         artc_part = instance_create(hit_player_obj.x, hit_player_obj.y-hit_player_obj.char_height/2, "obj_article3");
         artc_part.state = 1;
-        if (my_hitboxID.damage >= 10) artc_part.is_orb = true;
+        if (true_dmg >= 10) artc_part.is_orb = true;
         artc_part.hsp = lengthdir_x((random_func(particle_amount, 4, true) - 4) * fly_power, get_hitbox_angle(my_hitboxID))*-1;
         artc_part.vsp = lengthdir_y((random_func(particle_amount, 5, true)) * fly_power, get_hitbox_angle(my_hitboxID));
         artc_part.part_angle = get_hitbox_angle(my_hitboxID);
@@ -206,3 +212,5 @@ if (("fs_char_initialized" not in self && has_burst || has_resolve_mechanic && !
 
     particle_cd = 40;
 }
+
+if ("fs_char_initialized" in self && attack != AT_BURST) fs_charge += true_dmg * (crit_val >= crit_rate ? crit_damage : 1);

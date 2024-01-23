@@ -22,10 +22,6 @@ switch(attack){
 	case AT_JAB:
 		was_parried = false; // easy method for single-hit jabs
 		break;
-	case AT_FTILT:
-		break;
-	case AT_DTILT:
-		break;
 
 	case AT_DAIR:
 			can_fast_fall = false;
@@ -111,7 +107,10 @@ switch(attack){
 		if window==2 && window_timer ==1 {
 			sound_play(sound_get("Withdraw"));
 		}
-
+		if free && window==2 && window_timer == get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)-1 {
+			set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
+			set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 7);
+		}
 		if window == 4 && free {
 			move_cooldown[AT_FSTRONG]= 12;
 		}
@@ -120,6 +119,11 @@ switch(attack){
 	case AT_USTRONG:
 		if window == 4 && free {
 			move_cooldown[AT_USTRONG]= 12;
+		}
+
+		if free && window==2 && window_timer == get_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH)-1 {
+			set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 7.5);
+			set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7);
 		}
 
 		if window == 3 && window_timer == 1 && runeI && !hitpause {
@@ -188,6 +192,8 @@ switch(attack){
 				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 				set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
+						
+				sound_play(asset_get("mfx_star"));
 				window = 4;
 				window_timer = 0;
 			}
@@ -284,6 +290,9 @@ switch(attack){
 					max_charge=2;
 					set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_charged"));
 					set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_charged"));
+				}
+				if state_timer == 34  && window_timer == 9{
+					sound_play(asset_get("mfx_star"));
 				}
 
 				if window_timer == 9 && max_charge != 2{
@@ -391,6 +400,9 @@ switch(attack){
 					}
 					if special_down && window_timer ==8 && state_timer <=14{
 						window_timer =7;
+					}
+					if state_timer == 15  && window_timer == 8{
+						sound_play(asset_get("mfx_star"));
 					}
 				} 
 
@@ -530,8 +542,8 @@ switch(attack){
 		if window<4{
 			if runeA { super_armor=1;}						// RUNE
 		} else{
-			//can_jump = (Fcancel==1);
-			//can_shield = (Fcancel==1);
+			can_jump = (Fcancel==1);
+			can_shield = (Fcancel==1);
 		}
 		
 		can_fast_fall = false;
@@ -626,6 +638,7 @@ if attack == AT_DSTRONG  {
 		destroy_hitboxes();
 		attack = AT_DSTRONG_2;
 		hurtboxID.sprite_index = get_attack_value(AT_DSTRONG_2, AG_HURTBOX_SPRITE);
+
 	}
 
 	
@@ -729,6 +742,14 @@ hud_offset = 24;
 if (attack == AT_DSPECIAL)|| attack == AT_NSPECIAL   {
 hud_offset = 44;
 }
+
+//STRONG CHARGE SOUND EFFECT
+if ((attack == AT_FSTRONG|| attack == AT_DSTRONG || attack == AT_USTRONG) && window == 1) {
+	if strong_charge ==1 {
+		sound_play(sound_get("strong_charge"));
+	}
+}
+
 
 //----------------------------------------------------RUNE LOGIC PART 2----------------------------------------------
 

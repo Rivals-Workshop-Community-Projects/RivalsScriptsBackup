@@ -62,6 +62,9 @@ switch(SL_mode_active){
 }
 */
 // Set Attack
+if(attack == AT_FSPECIAL){
+	moved_up = false; // For ledge snap
+}
 if(attack == AT_FSPECIAL && free){
     attack = AT_FSPECIAL_AIR;
 }
@@ -70,6 +73,7 @@ if(attack == AT_FSPECIAL && free){
 if(attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR || attack == AT_EXTRA_3){
     draw_y = -1 * (122 - 90); // Set draw cause the sprite roation messed with y drawing
 }
+else{draw_y = 0} // Should fix bug where Fspec messes 
 
 // SL Power Geiser
 if(attack == AT_DSPECIAL && SL_mode_active){

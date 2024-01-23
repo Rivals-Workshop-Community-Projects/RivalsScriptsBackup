@@ -1,11 +1,13 @@
 atk = AT_DATTACK;
 
-set_attack_value(atk, AG_CATEGORY, 2);
+set_attack_value(atk, AG_CATEGORY, has_rune("F") ? 2 : 0);
 set_attack_value(atk, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(atk, AG_NUM_WINDOWS, 5);
 set_attack_value(atk, AG_OFF_LEDGE, 1);
 set_attack_value(atk, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
+set_attack_value(atk, AG_LANDING_LAG, 12);
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);

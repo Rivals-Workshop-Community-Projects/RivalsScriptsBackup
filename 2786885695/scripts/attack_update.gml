@@ -54,7 +54,7 @@ switch(attack)
 		if (attack_down_counter >= 10 && attack_down && window == window_last && window_timer >= window_end-5 && !was_parried) use_charge_attack();
 		break;
 	case AT_FSTRONG: //the effect work for the strongs is on update.gml instead, i can't put window_timer = 0 here
-		if (!hitstop)
+		if (!hitpause)
 		{
 			if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
 			if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
@@ -145,10 +145,21 @@ switch(attack)
 		var prev_hsp = hsp;
 		if (down_down && !free && !hitpause && !was_parried) hsp = 8*spr_dir;
 
-		if (was_parried && !hitpause && !free)
+		if (window == 2 && !has_rune("F")) set_attack_value(attack, AG_CATEGORY, 2);
+		if (has_rune("F")) coyote_time = coyote_time_max;
+
+		if (!free && window >= 4)
 		{
-			hsp = 0;
-			set_state(PS_PRATLAND);
+			if (was_parried && !hitpause)
+			{
+				hsp = 0;
+				set_state(PS_PRATLAND);
+			}
+			else
+			{
+				landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+				set_state(PS_LANDING_LAG);
+			}
 		}
 		break;
 	//specials

@@ -386,6 +386,21 @@ if(attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR){
                 spr_angle = 0;
                 destroy_hitboxes();
             }
+                
+            // Guadua Ledge Snap Code MOVE UP AT LEDGE Code
+        	if (moved_up == false)
+        	{
+            	if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+                	for (var i = 0; i < 50; i++){
+                		//print("i: " + string(i) + "y: " + string(place_meeting(x+hsp,y-(i+1),asset_get("par_block"))));
+                		if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+	                		y -= i;
+	            			moved_up = true;
+	                	    break;
+                    	}
+                	}
+            	}
+        	}
         break;
         
         case 5: // Tranisiton to endlag

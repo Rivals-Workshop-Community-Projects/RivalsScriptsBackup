@@ -1,5 +1,7 @@
-if attack == AT_NSPECIAL {
-	//player_id.attack_cooldown[AT_NSPECIAL] = 90
+if attack == AT_NSPECIAL && hbox_num == 5{
+	if was_parried{
+		player_id.kill_smoke = 1;
+	}
 }
 
 //MULTI HITTING PROJECITILES
@@ -12,6 +14,9 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			image_index=0;
 		}
 	}
+	//Spawn PARRYBOX
+	create_hitbox( AT_NSPECIAL, 5, x , y );
+
 	if hitbox_timer <= (45 + extra_trans) && !player_id.runeJ{
 		transcendent=true;
 		sprite_index = sprite_get("nspecial_smoke2");
@@ -23,7 +28,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 	if player_id.runeJ { transcendent=true; }
 	//proj_angle = 90*smoke_num;
 
-	if state == 1{							//SMOKE IDLE
+	if smoke_state == 1{							//SMOKE IDLE
 		//MULTIHIT
 		refresh_time = 22;
 		if (hitbox_timer % refresh_time == 0) for ( var i =1; i<20; i++) {
@@ -39,7 +44,8 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 					if attack == AT_USPECIAL  && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && special_down{
 						if abs(x - (other.x ))<=52 {
 							if abs(other.y - (y - 32))<=52{
-								if absorb == 0 {absorb = 3; other.destroyed = true;}							
+								if absorb == 0 {absorb = 3; other.destroyed = true;}	
+								sound_play(asset_get("mfx_star"));					
 							}
 						}
 					}
@@ -52,7 +58,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if ( player_id.attack == AT_NAIR) && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {			//WILL O WISP
 			if abs(x - (player_id.x ))<=72{
 				if abs(y - (player_id.y - 36))<=72{
-					state = 2;
+					smoke_state = 2;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					player_id.Fcancel = 4;
@@ -66,7 +72,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if player_id.attack == AT_TAUNT  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {			//EXPLOTION
 			if abs(x - (player_id.x ))<=112{
 				if abs(y - (player_id.y - 32))<=112{
-					state = 2;
+					smoke_state = 2;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					player_id.Fcancel = 4;
@@ -80,7 +86,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if player_id.attack == AT_FSPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {			//FLAMETHROWER
 			if abs(x - (player_id.x + 50*player_id.spr_dir))<=68{
 				if abs(y - (player_id.y - 37))<=68{
-					state = 3;
+					smoke_state = 3;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					player_id.Fcancel = 4;
@@ -94,7 +100,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 3 {			//FIRE BLAST
 			if abs(x - (player_id.x))<=100{
 				if abs(y - (player_id.y - 16))<=56{
-					state = 3;
+					smoke_state = 3;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					player_id.Fcancel = 4;
@@ -108,7 +114,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if player_id.attack == AT_DSTRONG_2  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 3 {			//FIRE BLAST
 			if abs(x - (player_id.x))<=56{
 				if abs(y - (player_id.y - 8))<=70{
-					state = 3;
+					smoke_state = 3;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					player_id.Fcancel = 4;
@@ -122,10 +128,10 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if player_id.attack == AT_DSPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 4 {			//EXPLOTION
 			if abs(x - (player_id.x ))<=128{
 				if abs(y - (player_id.y - 32))<=128{
-					state = 4;
+					smoke_state = 4;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
-					//player_id.Fcancel = 4;
+					//player_id.Fcancel = 6;
 					//sound_play(sound_get("jingle"));
 				}
 			}
@@ -134,8 +140,8 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		with pHitBox {
 			if abs(x - (other.x ))<=136{
 				if abs(y - (other.y - 32))<=136{
-					if player_id.url == other.player_url && attack == AT_NSPECIAL && hbox_num != 1 && type == 2  {
-						other.state = hbox_num;
+					if player_id.url == other.player_url && attack == AT_NSPECIAL && hbox_num != 1 && hbox_num != 5 && type == 2  {
+						other.smoke_state = hbox_num;
 						sound_stop(asset_get("sfx_forsburn_reappear"));
 						sound_play(asset_get("sfx_forsburn_reappear"));
 					}
@@ -146,7 +152,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 
 		//RUNE DETECTION
 		if (player_id.runeK && player_id.state== PS_ATTACK_GROUND && player_id.attack ==AT_TAUNT && player_id.window ==2 ){
-			state = 2;
+			smoke_state = 2;
 			sound_stop(asset_get("sfx_forsburn_reappear"));
 			sound_play(asset_get("sfx_forsburn_reappear"));
 			sound_stop(sound_get("jingle"));
@@ -155,8 +161,8 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 
 		//RUNE EXPLOSION
 
-		if state >1 && player_id.runeM{
-			state =4;
+		if smoke_state >1 && player_id.runeM{
+			smoke_state =4;
 		}
 
 		/*			//No funciona :'v
@@ -181,8 +187,13 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		}
 
 		//DESTROYING
-		if was_parried ||  player_id.was_parried ||  player_id.state = PS_RESPAWN || (hitbox_timer == length -1) {
+		if  player_id.was_parried ||  player_id.state = PS_RESPAWN || (hitbox_timer == length -1) || player_id.kill_smoke == 1 {
 			destroyed = true;
+		}
+
+		//Being parried
+		if was_parried{
+			player_id.kill_smoke = 1; 
 		}
 
 	} else{																//SMOKE DETONATE
@@ -194,11 +205,10 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			sound_stop(asset_get("sfx_ell_uspecial_explode"));
 			sound_play(asset_get("sfx_ell_uspecial_explode"));
 			if !was_parried  {spawn_hit_fx( x, y, 143 );}
-			create_hitbox( AT_NSPECIAL, state, x , y );
+			create_hitbox( AT_NSPECIAL, smoke_state, x , y );
 			destroy_fx = 1;
 			destroyed = true;
 		}
 	}
 
-	
 }

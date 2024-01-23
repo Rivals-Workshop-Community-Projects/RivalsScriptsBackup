@@ -156,7 +156,7 @@ set_victory_bg(sprite_get("Victory_BG")); // victory_background.png
 
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
-landing_lag_sound   = asset_get("sfx_land_med");
+landing_lag_sound   = asset_get("sfx_land_abs");
 waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = asset_get("sfx_jumpground");
 djump_sound         = asset_get("sfx_jumpair");
@@ -179,6 +179,7 @@ boost_timer = 0;
 prat_alt = 0;
 arrow_cooldown = 0;
 Fcancel=0;
+kill_smoke = 0;
 
 kirbyability = 6;
 

@@ -166,6 +166,8 @@ ai_fight_time = 0;
 hbox_view = get_match_setting(SET_HITBOX_VIS);
 debug_keqing = false; //just in case i wanna see some basic variables
 
+AG_MUNO_ATTACK_EXCLUDE = 80;
+
 has_intro = true;
 AT_INTRO = 2;
 
@@ -251,7 +253,7 @@ uspec_count = 0;
 uspec_max = 1;
 uspec_points =[[x, y], [x, y]];
 uspec_fx_anim = [0, 7]; //current time, length
-uspec_travel_dist = 30; //40
+uspec_travel_dist = 20; //30
 uspec_dist_mult = 0; //set up in set_attack
 uspec_to_nspec_cancel = false;
 uspec_started_grounded = true;
@@ -528,6 +530,11 @@ fx_runeE_afterimage = hit_fx_create(sprite_get("fx_runeE_afterimage"), 12);
 //rune E (ayaka/mona dash) (old = F)
 runeE_special_dash = false;
 
+//rune F (dattack off ledge)
+coyote_time = 0;
+coyote_time_max = 6;
+start_coyote_time = false;
+
 //rune G (lisa)
 spawn_blast_attack = false;
 
@@ -556,7 +563,7 @@ crit_damage = 1.5; //it actually also increases knockback and hitpause
 //rune L (vision hunt decree) (old = O)
 has_resolve_mechanic = has_rune("L");
 resolve_max = 600;
-resolve_cur = 600;
+resolve_cur = 0;
 vhd_attack = false; //applies attack invince to taunt
 vhd_effect = false;
 vhd_effect_time_max = 60*8;

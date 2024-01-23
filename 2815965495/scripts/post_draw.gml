@@ -1,5 +1,5 @@
 //draw_debug_text( x +80 , y - 20, string(joy_dir));
-//draw_debug_text( x +80 , y - 20, string(prat_land_time));
+//draw_debug_text( x +80 , y - 20, string(my_hitboxID.kb_value));
 
 //Draws Smoke
 if state != PS_HITSTUN && state != PS_PRATFALL && state != PS_SPAWN{
@@ -67,8 +67,8 @@ if state == PS_ATTACK_AIR || state ==PS_ATTACK_GROUND{
 //Show Ownership projectiles
 if smoke_counter>0{
 	with pHitBox {
-	//draw_debug_text( x + 60, y - 40, string(kb_scale));
-		if attack == AT_NSPECIAL && hbox_num ==1 && state ==1 && orig_player == other.player &&(player_id.url == other.url) && !was_parried{
+	//draw_debug_text( x + 60, y - 40, string(hitbox_timer));
+		if attack == AT_NSPECIAL && hbox_num ==1 && smoke_state ==1 && orig_player == other.player &&(player_id.url == other.url) && !was_parried{
 				draw_sprite(sprite_get("owner"), player , x, y-34);			
 		}
 	}
@@ -82,8 +82,8 @@ with pHitBox {
 		if   player_id.url == other.url &&  orig_player == other.player{
 			//draw_debug_text(x + 60, y - 35, string(abs(x - (player_id.x ))));
 			//draw_debug_text(x + 90, y - 35, string(smoke_num));
-			if attack == AT_NSPECIAL && hbox_num == 1 && state != 1{
-				draw_sprite(sprite_get("notice"), state-2 , x  , y - 36);
+			if attack == AT_NSPECIAL && hbox_num == 1 && smoke_state != 1{
+				draw_sprite(sprite_get("notice"), smoke_state-2 , x  , y - 36);
 			}
 		}
 }

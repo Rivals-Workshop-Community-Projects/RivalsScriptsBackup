@@ -1,5 +1,11 @@
 //set_attack
 
+if (attack == AT_DATTACK && !has_rune("F")) reset_attack_value(attack, AG_CATEGORY);
+if (has_rune("F") && free && (is_attack_pressed(DIR_LEFT) && spr_dir == -1 || is_attack_pressed(DIR_RIGHT) && spr_dir == 1) && coyote_time < coyote_time_max)
+{
+	attack = AT_DATTACK;
+}
+
 if (attack == AT_USPECIAL) uspec_dist_mult = get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH) + 1;
 
 if (attack == AT_NSPECIAL && burst_charge < 200 || burst_charge >= 200 && free)
@@ -38,7 +44,7 @@ if (burst_charge >= 200 && special_pressed && joy_pad_idle && !free)
 }
 
 //special dash attack
-if (has_rune("F") && attack == AT_DATTACK)
+if (has_rune("E") && attack == AT_DATTACK)
 {
 	window = 2;
 	window_timer = window_end;

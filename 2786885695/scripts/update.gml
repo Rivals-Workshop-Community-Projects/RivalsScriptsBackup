@@ -1,29 +1,27 @@
 //update
 
-
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
 //debug mode
-/*
 if (get_match_setting(SET_PRACTICE))
 {
-    if (!free && taunt_down && shield_pressed && shield_counter == 1)
+    if (!free && taunt_pressed && up_down)
     {
         debug_keqing = !debug_keqing;
         set_state(PS_IDLE);
+        clear_button_buffer(PC_TAUNT_PRESSED);
     }
-}
-*/
 
-if (debug_keqing)
-{
-    nspec_cd = 0; //nspec has no cooldown on debug mode
+    if (debug_keqing)
+    {
+        nspec_cd = 0; //nspec has no cooldown on debug mode
 
-	if (instance_exists(artc_marker) && artc_marker.state == 2 && artc_marker.state_timer == 1)
-	{
-	    hud_anim_timer = 0;
-	    hud_anim_start = true;
-	}
+        if (instance_exists(artc_marker) && artc_marker.state == 2 && artc_marker.state_timer == 1)
+        {
+            hud_anim_timer = 0;
+            hud_anim_start = true;
+        }
+    }
 }
 
 
@@ -245,8 +243,6 @@ if (get_match_setting(SET_RUNES))
 {
     for (var i = 0; i < 15; ++i)
     {
-        has_rune(rune_active[i]);
-
         if (has_rune(rune_active[i]))
         {
             switch (rune_active[i])
@@ -367,6 +363,21 @@ if (get_match_setting(SET_RUNES))
                         set_state(PS_IDLE_AIR);
                     }
                     break;
+                case "F": //dattack off ledge
+                    if ((prev_state == PS_DASH || prev_state == PS_DASH_START) && free) start_coyote_time = true;
+
+                    if (start_coyote_time)
+                    {
+                        coyote_time ++;
+                        if (coyote_time >= coyote_time_max) coyote_time = coyote_time_max;
+                    }
+
+                    if (coyote_time > 0 && !free)
+                    {
+                        coyote_time = 0;
+                        start_coyote_time = false;
+                    }
+                    break;
                 /////////////////////////////////////////////////// TIER 2 ///////////////////////////////////////////////////
                 case "G": //lisa C2
                     if (is_attacking) switch (attack)
@@ -427,31 +438,8 @@ if (get_match_setting(SET_RUNES))
 
                         with (oPlayer) if (player != other.player && get_player_team(other.player) != get_player_team(player))
                         {
-                            move_cooldown[AT_NSPECIAL] = 2;
-                            move_cooldown[AT_FSPECIAL] = 2;
-                            move_cooldown[AT_USPECIAL] = 2;
-                            move_cooldown[AT_DSPECIAL] = 2;
-
-                            //bar is not immune to this
-                            //i might need more conditions for other characters i don't know
-                            if (url == 2601775097)
-                            {
-                                move_cooldown[AT_NTHROW] = 2;
-                                move_cooldown[AT_NSPECIAL_AIR] = 2;
-                                move_cooldown[AT_FTHROW] = 2;
-                                move_cooldown[AT_FSPECIAL_AIR] = 2;
-                                move_cooldown[AT_UTHROW] = 2;
-                                move_cooldown[AT_DTHROW] = 2;
-                                move_cooldown[39] = 2;
-                                move_cooldown[AT_FSPECIAL_2] = 2;
-                                move_cooldown[AT_NSPECIAL_2] = 2;
-                                move_cooldown[AT_USPECIAL_2] = 2;
-                                move_cooldown[AT_DSPECIAL_2] = 2;
-                                move_cooldown[AT_EXTRA_2] = 2;
-                                move_cooldown[AT_EXTRA_3] = 2;
-                                move_cooldown[AT_EXTRA_1] = 2;
-                            }
-                            else break;
+                            can_special_timer = 6;
+                            break;
                         }
                     }
                     break;

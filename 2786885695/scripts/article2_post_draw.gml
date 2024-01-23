@@ -4,7 +4,7 @@
 
 if (!afterimage_offscreen)
 {
-    draw_sprite_ext(sprite_get("hud_player_arrow"), 0, x, y-player_id.char_height+10, 2, 2, 0, p_col, 1);
+    draw_sprite_ext(asset_get("triangle_spr"), 0, x + 1, y - 58, 1, 1, 0, p_col, 1);
 }
 
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////
@@ -51,12 +51,19 @@ if (afterimage_offscreen && state == 1 && !player_id.playtest_active)
     }
 
     //drawing the sprites
-    draw_sprite_ext(sprite_get("offscreen_arrow"), arrow_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, p_col, 1);
+    draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), arrow_image, offscreen_x_pos, offscreen_y_pos, 1, 1, 0, p_col, 1);
     draw_sprite_ext(sprite_get("offscreen_icons"), 1, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, c_white, 1);
 }
 
 ///////////////////////////////////////////////////// UNUSED & DEBUGGING /////////////////////////////////////////////////////
 
+if (!afterimage_offscreen && player_id.debug_keqing)
+{
+    draw_debug_text(x-32, y+32, "time:");
+    draw_debug_text(x-32, y+48, string(state_timer) + " / " + string(despawn_time));
+}
+
+/*
 if (!afterimage_offscreen && player_id.debug_keqing)
 {
     //debug

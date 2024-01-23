@@ -1,5 +1,3 @@
-//VARIABLES RESET
-smoke_counter = 0;
 
 if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){dust_pos3 = -69; Fcancel=0;}
 
@@ -15,6 +13,15 @@ if anim_timer > 60{
 	anim_timer = 0;
 	pick*=-1;
 }
+
+//Smoke Parry Punish
+if kill_smoke == 1 && smoke_counter == 0{
+	kill_smoke = 0;
+}
+
+//VARIABLES RESET
+smoke_counter = 0;
+
 // ----------------------------------------RUNES PART 1------------------------------
 
 if runeC {
@@ -94,3 +101,14 @@ if state == PS_ATTACK_AIR && state_timer == 0  {
 	if down_strong_pressed set_attack(AT_DSTRONG);
 }
 
+
+// -----------------------------DIALOGUE BUDDY ------------------------
+if(variable_instance_exists(id,"diag"))
+{
+//  ADDING REGULAR DIALOGUE
+    diagchoice = [
+    "KOFFING!",
+    "DOGARS",
+    "KOF-KOFFING!",
+	"DO-DOGARS!"]
+}

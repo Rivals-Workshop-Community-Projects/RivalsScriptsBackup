@@ -4,7 +4,7 @@
 
 if (state == 1 && player_id.stilleto_id == noone && !stilleto_offscreen && player_id.attack != player_id.AT_INTRO)
 {
-    draw_sprite_ext(sprite_get("hud_player_arrow"), 0, x, y-player_id.char_height+24, 2, 2, 0, p_col, 1);
+    draw_sprite_ext(asset_get("triangle_spr"), 0, x + 1, y - 44, 1, 1, 0, p_col, 1);
 }
 
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////
@@ -53,33 +53,41 @@ if (stilleto_offscreen && state == 1 && !player_id.playtest_active)
     //drawing the sprites
     if (player_id.stilleto_id == noone)
     {
-        draw_sprite_ext(sprite_get("offscreen_arrow"), arrow_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, p_col, 1);
+        draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), arrow_image, offscreen_x_pos, offscreen_y_pos, 1, 1, 0, p_col, 1);
         draw_sprite_ext(sprite_get("offscreen_icons"), 0, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, c_white, 1);
     }
+}
+
+if (state == 1 && !stilleto_offscreen && player_id.debug_keqing)
+{
+    draw_debug_text(x-32, y+32, "time:");
+    draw_debug_text(x-32, y+48, string(active_time) + " / " + string(despawn_time));
 }
 
 
 ///////////////////////////////////////////////////// UNUSED & DEBUGGING /////////////////////////////////////////////////////
 
-if (state == 1 && !stilleto_offscreen && player_id.debug_keqing)
-{
-    //debug
-    draw_debug_text(x-32, y+32, "state = " + string(state));
-    draw_debug_text(x-32, y+48, "timer = " + string(active_time));
-    draw_debug_text(x-32, y+64, "x,y = " + string(x) + "," + string(y));
-}
+/*
+    if (state == 1 && !stilleto_offscreen && player_id.debug_keqing)
+    {
+        //debug
+        draw_debug_text(x-32, y+32, "state = " + string(state));
+        draw_debug_text(x-32, y+48, "timer = " + string(active_time));
+        draw_debug_text(x-32, y+64, "x,y = " + string(x) + "," + string(y));
+    }
 
 
-//center of the screen, i don't really need it but it's nice to know how to do it
-//var view_center_x = view_get_xview() + view_get_wview()/2;
-//var view_center_y = view_get_yview() + view_get_hview()/2;
+    //center of the screen, i don't really need it but it's nice to know how to do it
+    //var view_center_x = view_get_xview() + view_get_wview()/2;
+    //var view_center_y = view_get_yview() + view_get_hview()/2;
 
-//rectDraw(x, y, 1, 1, c_red);
-//rectDraw(view_left, view_up, 1, 1, $00ffff);
-//rectDraw(view_right, view_up, 1, 1, $00ffff);
-//rectDraw(view_left, view_down, 1, 1, $00ffff);
-//rectDraw(view_right, view_down, 1, 1, $00ffff);
-//rectDraw(view_get_xview() + view_get_wview()/2, view_get_yview() + view_get_hview()/2, 1, 1, c_red);
+    //rectDraw(x, y, 1, 1, c_red);
+    //rectDraw(view_left, view_up, 1, 1, $00ffff);
+    //rectDraw(view_right, view_up, 1, 1, $00ffff);
+    //rectDraw(view_left, view_down, 1, 1, $00ffff);
+    //rectDraw(view_right, view_down, 1, 1, $00ffff);
+    //rectDraw(view_get_xview() + view_get_wview()/2, view_get_yview() + view_get_hview()/2, 1, 1, c_red);
 
-#define rectDraw(x1, y1, width, height, color)
-draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);
+    #define rectDraw(x1, y1, width, height, color)
+    draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);
+*/

@@ -4,6 +4,7 @@ set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("nspecial"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(atk, AG_AIR_SPRITE, sprite_get("nspecial_air"));
+set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 7);
 set_attack_value(atk, AG_OFF_LEDGE, 1);
 

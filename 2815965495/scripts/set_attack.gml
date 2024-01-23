@@ -57,3 +57,12 @@ if attack == AT_BAIR{
 	set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, 7);
 }
 
+if attack == AT_USTRONG{
+	set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8.5);
+	set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 8);
+}
+
+if attack == AT_FSTRONG{
+	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
+}

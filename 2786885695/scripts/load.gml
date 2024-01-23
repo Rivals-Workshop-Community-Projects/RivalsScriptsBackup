@@ -138,9 +138,7 @@ sprite_change_offset("hud_skill_timer", 16, 16);
 sprite_change_offset("hud_skill_flash", 32, 32);
 sprite_change_offset("hud_burst_mask", 16, 16);
 
-sprite_change_offset("hud_player_arrow", 3, 2);
-
-sprite_change_offset("offscreen_icons", 16, 16);
+sprite_change_offset("offscreen_icons", 16, 17);
 sprite_change_offset("offscreen_arrow", 16, 16);
 
 sprite_change_offset("qiqi_idle", 16, 16);

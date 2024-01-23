@@ -144,6 +144,11 @@ switch (state)
 					if (spr_dir) image_index = ceil((marker_angle-22.5)/45);
 					else image_index = ceil((marker_angle-180-22.5)/45)*spr_dir;
 				}
+				if (window >= 3)
+				{
+					if (!free) hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+					else hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_AIR_SPRITE);
+				}
 				break;
 			case AT_USPECIAL:
 				if (window == 3)

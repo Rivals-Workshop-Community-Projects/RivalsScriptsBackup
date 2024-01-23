@@ -132,8 +132,8 @@ if (vhd_effect)
         floor(view_get_xview()+144-get_match_setting(SET_TEAMS)*16),
         floor(view_get_yview()+80),
         get_match_setting(SET_TEAMS) ?
-        "The Vision Hunt Decree is in force. Exept " + string(get_player_name(player)) + "'s team, characters cannot use special moves..." :
-        "The Vision Hunt Decree is in force. Exept " + string(get_player_name(player)) + ", characters cannot use special moves..."
+        "The Vision Hunt Decree is in force. Except " + string(get_player_name(player)) + "'s team, characters cannot use special moves..." :
+        "The Vision Hunt Decree is in force. Except " + string(get_player_name(player)) + ", characters cannot use special moves..."
     );
     //it's supposed to put up the player's tagname, so people know who is immune, but i can't do that
 
