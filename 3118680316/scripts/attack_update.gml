@@ -571,9 +571,17 @@ if(attack == AT_DATTACK){
 //#region Taunt
 if(attack == AT_TAUNT)
 {
-	if(window == 3 && window_timer == 22)
+	// Genesis glitch
+	if(get_player_color(player) == 25 && window == 1 && window_timer == 1)
 	{
-		sound_play(sound_get("soap_yawn_0"+ string(1+random_func(1,2,true))));
+		sound_play(sound_get("soap_glitchtaunt"));
+	}
+	else
+	{
+		if(window == 3 && window_timer == 22)
+		{
+			sound_play(sound_get("soap_yawn_0"+ string(1+random_func(1,2,true))));
+		}
 	}
 }
 //#endregion Taunt

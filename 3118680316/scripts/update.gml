@@ -1395,6 +1395,11 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		_bubble.exploding = true;
 		_bubble.explosive = true;
 		
+		if(get_player_color(player) == 25)
+		{
+			sound_play(sound_get("soap_glitch_explosion_large"),false,noone,0.5,_bubble.size == TINY ? 2 : _bubble.size == SMALL ? 1.5	: 1.0);
+		}
+		
 		if(instance_exists(_bubble.linked_hitbox))
 		{
 			_bubble.linked_hitbox.destroyed = true;

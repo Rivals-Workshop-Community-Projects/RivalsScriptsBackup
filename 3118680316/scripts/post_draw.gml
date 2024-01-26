@@ -19,5 +19,11 @@ if(state == PS_PARRY && image_index > 0)
 	draw_sprite_ext( sprite_get("parry_bubble"),image_index-1,x,y,spr_dir,1,0,c_white,bubble_opacity);
 }
 
+// Genesis glitch code
+if get_player_color(player) == 25 && random_func(4, 40, 1) == 0  && !(state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND){
+    var fs = random_func(0, sprite_height -1, 1);
+    draw_sprite_part_ext(sprite_index,image_index,0,fs, abs(sprite_width), random_func(1, 20, 1)+1, (x+(random_func(2, 3, 1)-1)*7)  - sprite_get_xoffset(sprite_index)*spr_dir*2, y+fs*2 - sprite_get_yoffset(sprite_index)*2, spr_dir*2, 2, image_blend, 0.8);
+}
+
 shader_end();
 

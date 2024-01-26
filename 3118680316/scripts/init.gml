@@ -200,9 +200,9 @@ tiny_bubble_sprite = sprite_get("tiny_bubble");
 small_bubble_sprite = sprite_get("small_bubble");
 big_bubble_sprite = sprite_get("big_bubble");
 
-tiny_bubble_explosion_sprite = sprite_get("tiny_bubble_explosion");
-small_bubble_explosion_sprite = sprite_get("small_bubble_explosion");
-big_bubble_explosion_sprite = sprite_get("big_bubble_explosion");
+tiny_bubble_explosion_sprite = get_player_color(player) == 25 ? sprite_get("tiny_bubble_explosion_glitch") : sprite_get("tiny_bubble_explosion");
+small_bubble_explosion_sprite = get_player_color(player) == 25 ? sprite_get("small_bubble_explosion_glitch") : sprite_get("small_bubble_explosion");
+big_bubble_explosion_sprite = get_player_color(player) == 25 ? sprite_get("big_bubble_explosion_glitch") : sprite_get("big_bubble_explosion");
 
 tiny_bubble_pop = hit_fx_create(sprite_get("tiny_bubble_pop"),30);
 small_bubble_pop = hit_fx_create(sprite_get("small_bubble_pop"),30);

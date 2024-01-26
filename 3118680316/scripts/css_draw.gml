@@ -1,5 +1,5 @@
 // css_draw
-var num_alts = 25;
+var num_alts = 26;
 
 // Version
 
@@ -22,7 +22,19 @@ var txt = "#" + string(alt_cur);
 
 rectDraw(x + 76, y + 15, 41, 20, c_black);
 
-textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
+textDraw(x + 82, y + 19, "fName", alt_cur == 25 ? (random_func(5, 24, 1) == 0 ? c_blue : c_red) : c_white, 20, 1000, fa_left, 1, false, 1, txt);
+
+// Genesis glitch code
+if alt_cur == 25 
+{
+    if(random_func(4+i, 6, 1) == 0)
+    {
+        var fs = random_func(0, 256 -1, 1);
+        draw_sprite_part_ext(sprite_index,image_index,0,fs, abs(256), random_func(1, 60, 1)+1, (x+(random_func(2, 3, 1)-1)*7)  - sprite_get_xoffset(sprite_index), y+fs - sprite_get_yoffset(sprite_index), 1, 1, random_func(5+i, 2, 1) == 0 ? c_red : c_blue, 0.8);
+    }
+    draw_sprite_ext(sprite_get("soap_GX"),1,x-4,y+128,2,2,0,c_white,1);
+}
+
 
 
 #define rectDraw(x1, y1, width, height, color)

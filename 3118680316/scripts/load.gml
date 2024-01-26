@@ -64,6 +64,7 @@ sprite_change_offset("dspecial_explosive", 64, 127);
 sprite_change_offset("dspecial_explosive_air", 64, 75);
 sprite_change_offset("dspecial_air", 64, 75);
 sprite_change_offset("taunt", 152, 127);
+sprite_change_offset("taunt_glitch", 152, 127);
 
 // Hurts
 sprite_change_offset("idle_hitbox", 64, 126);
@@ -139,8 +140,11 @@ sprite_change_offset("dspecial_bubble_explosive", 128, 254);
 sprite_change_offset("dspecial_bubble_explosive_air", 128, 172);
 sprite_change_offset("dspecial_bubble_air", 128, 172);
 sprite_change_offset("tiny_bubble_explosion", 128, 128);
+sprite_change_offset("tiny_bubble_explosion_glitch", 128, 128);
 sprite_change_offset("small_bubble_explosion", 128, 128);
+sprite_change_offset("small_bubble_explosion_glitch", 128, 128);
 sprite_change_offset("big_bubble_explosion", 128, 128);
+sprite_change_offset("big_bubble_explosion_glitch", 128, 128);
 sprite_change_offset("dspecial_bubble_explosion", 128, 128);
 sprite_change_offset("dspecial_air_bubble_explosion", 128, 128);
 

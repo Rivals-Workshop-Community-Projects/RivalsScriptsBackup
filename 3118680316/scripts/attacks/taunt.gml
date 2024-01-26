@@ -1,4 +1,4 @@
-set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+set_attack_value(AT_TAUNT, AG_SPRITE,  get_player_color(player) == 25 ? sprite_get("taunt_glitch") : sprite_get("taunt"));
 set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, sprite_get("taunt_hurt"));
 set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_TAUNT, AG_HAS_LANDING_LAG, 3);
