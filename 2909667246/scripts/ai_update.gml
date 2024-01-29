@@ -64,7 +64,8 @@ if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 		}
 	}
 	with(oPlayer) if self != other{
-		if(point_distance(x,y,other.x,other.y) < 400 && state == PS_PRATFALL){
+		if(point_distance(x,y,other.x,other.y) < 400
+		&& (state == PS_PRATFALL || djumps == max_djumps || !has_airdodge || move_cooldown[AT_USPECIAL] > 0 || !bear_uspecial)){
 			with(other){
 				if(ai_attack_time == 0 && move_cooldown[AT_EXTRA_1] <= 0 && !ai_recovering && can_attack && (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)){
 					if(!free)jump_pressed = true;

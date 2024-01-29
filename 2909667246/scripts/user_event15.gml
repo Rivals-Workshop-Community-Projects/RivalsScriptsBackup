@@ -259,6 +259,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.43", "28th January, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed Toad compatibility
++ Made Villager's AI use watering can in a few more cases (ex: no djumps, no airdodge, etc)
++ Small fix to bury status effect to not clash with unique bury sprites (ex: Christmas Morshu)");
+
 initPatch("1.42", "20th November, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Added silly angle 0 galaxy stuff to some moves (DSpecial axe, FAir, BAir, FTilt, FThrow/BThrow)");

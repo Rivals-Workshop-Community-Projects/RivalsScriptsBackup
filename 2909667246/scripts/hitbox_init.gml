@@ -4,8 +4,9 @@ VillagerHitbox = true;
 originalplayer = player_id;
 num = 0;
 timer = 0;
-KoB_grabbed = false;
+if("KoB_grabbed" not in self)KoB_grabbed = false;
 KoB_was_grabbed = false;
+KoB_destroy = false;
 
 if (player_id.runeE) {
 	VillagerTreeCut = 1;

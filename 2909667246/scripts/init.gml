@@ -70,8 +70,8 @@ tech_recovery_frames = 2;
 
 //tech roll animation frames
 techroll_startup_frames = 2;
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
+techroll_active_frames = 4;
+techroll_recovery_frames = 3;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -236,6 +236,7 @@ fx_sharphit_big2 = hit_fx_create(sprite_get("fx_sharphitbig2"), 15);
 
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
+toad_mushrooms_ignore_moves = true;
 miiverse_post = sprite_get("miiverse_post");
 gfzsignspr = sprite_get("greenflowerzone");
 gfzsignsfx = sound_get("fspecial_spawn");

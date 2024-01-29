@@ -1,5 +1,5 @@
 //hitbox_update
-if("VillagerHitbox" in self){
+if("VillagerHitbox" in self && player_id.player == orig_player){
 if (attack == AT_NSPECIAL){
 	depth = 4;
 	x = player_id.x+55*player_id.spr_dir;y = player_id.y-25;
@@ -1140,5 +1140,9 @@ if(attack == AT_TAUNT){
 	    }
     }
 }
-}
+
+stop_effect = false;
+if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
+
+}
