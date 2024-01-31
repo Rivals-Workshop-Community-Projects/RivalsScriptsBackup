@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 10, 21 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // magma
 set_color_profile_slot( 1, 0, 245, 215, 45 ); //scepter/boots
@@ -196,65 +196,75 @@ set_color_profile_slot( 16, 5, 202, 69, 255 ); //hair
 set_color_profile_slot( 16, 6, 86, 83, 170 ); //tongue
 set_color_profile_slot( 16, 7, 189, 46, 186 ); //sludge dark
 
-// rune connoisseur (alt of krispy, the rune guy, and coder, please fix abyss pomme)
-set_color_profile_slot( 17, 0, 0, 200, 255 ); //scepter/boots
-set_color_profile_slot( 17, 1, 0, 80, 185 ); //dress
-set_color_profile_slot( 17, 2, 0, 0, 225 ); //sludge light
-set_color_profile_slot( 17, 3, 120, 120, 140 ); //skin
-set_color_profile_slot( 17, 4, 70, 70, 80 ); //accents
-set_color_profile_slot( 17, 5, 0, 0, 200 ); //hair
-set_color_profile_slot( 17, 6, 0, 0, 180 ); //tongue
-set_color_profile_slot( 17, 7, 0, 0, 160 ); //sludge dark
+// genesis
+set_color_profile_slot( 17, 0, 250, 247, 247 ); //scepter/boots
+set_color_profile_slot( 17, 1, 52, 53, 55 ); //dress
+set_color_profile_slot( 17, 2, 255, 57, 65 ); //sludge light
+set_color_profile_slot( 17, 3, 130, 132, 138 ); //skin
+set_color_profile_slot( 17, 4, 250, 247, 247 ); //accents
+set_color_profile_slot( 17, 5, 255, 57, 65 ); //hair
+set_color_profile_slot( 17, 6, 158, 35, 23 ); //tongue
+set_color_profile_slot( 17, 7, 158, 35, 23 ); //sludge dark
 
 // liquid gold
 set_color_profile_slot( 18, 0, 236, 236, 249 ); //scepter/boots
 set_color_profile_slot( 18, 1, 255, 221, 30 ); //dress
-set_color_profile_slot( 18, 2, 220, 198, 63 ); //sludge light
+set_color_profile_slot( 18, 2, 251, 212, 52 ); //sludge light
 set_color_profile_slot( 18, 3, 247, 247, 247 ); //skin
 set_color_profile_slot( 18, 4, 236, 236, 249 ); //accents
 set_color_profile_slot( 18, 5, 236, 236, 249 ); //hair
 set_color_profile_slot( 18, 6, 219, 192, 19 ); //tongue
-set_color_profile_slot( 18, 7, 207, 189, 27 ); //sludge dark
+set_color_profile_slot( 18, 7, 211, 136, 16 ); //sludge dark
+
+// rune connoisseur (alt of krispy, the rune guy, and coder, please fix abyss pomme)
+set_color_profile_slot( 19, 0, 0, 200, 255 ); //scepter/boots
+set_color_profile_slot( 19, 1, 0, 80, 185 ); //dress
+set_color_profile_slot( 19, 2, 0, 0, 225 ); //sludge light
+set_color_profile_slot( 19, 3, 120, 120, 140 ); //skin
+set_color_profile_slot( 19, 4, 70, 70, 80 ); //accents
+set_color_profile_slot( 19, 5, 0, 0, 200 ); //hair
+set_color_profile_slot( 19, 6, 0, 0, 180 ); //tongue
+set_color_profile_slot( 19, 7, 0, 0, 160 ); //sludge dark
 
 // penguin juice
-set_color_profile_slot( 19, 0, 245, 215, 45 ); //scepter/boots
-set_color_profile_slot( 19, 1, 237, 60, 50 ); //dress
-set_color_profile_slot( 19, 2, 255, 221, 0 ); //sludge light
-set_color_profile_slot( 19, 3, 66, 157, 255 ); //skin
-set_color_profile_slot( 19, 4, 252, 252, 194 ); //accents
-set_color_profile_slot( 19, 5, 252, 252, 194 ); //hair
-set_color_profile_slot( 19, 6, 218, 91, 91 ); //tongue
-set_color_profile_slot( 19, 7, 186, 127, 0 ); //sludge dark
+set_color_profile_slot( 20, 0, 245, 215, 45 ); //scepter/boots
+set_color_profile_slot( 20, 1, 237, 60, 50 ); //dress
+set_color_profile_slot( 20, 2, 255, 221, 0 ); //sludge light
+set_color_profile_slot( 20, 3, 66, 157, 255 ); //skin
+set_color_profile_slot( 20, 4, 252, 252, 194 ); //accents
+set_color_profile_slot( 20, 5, 252, 252, 194 ); //hair
+set_color_profile_slot( 20, 6, 218, 91, 91 ); //tongue
+set_color_profile_slot( 20, 7, 186, 127, 0 ); //sludge dark
 
 // trench
-set_color_profile_slot( 20, 0, 250, 193, 28 ); //scepter/boots
-set_color_profile_slot( 20, 1, 110, 41, 67 ); //dress
-set_color_profile_slot( 20, 2, 115, 255, 244 ); //sludge light
-set_color_profile_slot( 20, 3, 173, 255, 193 ); //skin
-set_color_profile_slot( 20, 4, 78, 102, 105 ); //accents
-set_color_profile_slot( 20, 5, 72, 90, 97 ); //hair
-set_color_profile_slot( 20, 6, 232, 129, 141 ); //tongue
-set_color_profile_slot( 20, 7, 93, 240, 200 ); //sludge dark
+set_color_profile_slot( 21, 0, 250, 193, 28 ); //scepter/boots
+set_color_profile_slot( 21, 1, 110, 41, 67 ); //dress
+set_color_profile_slot( 21, 2, 115, 255, 244 ); //sludge light
+set_color_profile_slot( 21, 3, 173, 255, 193 ); //skin
+set_color_profile_slot( 21, 4, 78, 102, 105 ); //accents
+set_color_profile_slot( 21, 5, 72, 90, 97 ); //hair
+set_color_profile_slot( 21, 6, 232, 129, 141 ); //tongue
+set_color_profile_slot( 21, 7, 93, 240, 200 ); //sludge dark
 
 // madame
-set_color_profile_slot( 21, 0, 165, 173, 194 ); //scepter/boots
-set_color_profile_slot( 21, 1, 201, 37, 81 ); //dress
-set_color_profile_slot( 21, 2, 251, 234, 58 ); //sludge light
-set_color_profile_slot( 21, 3, 255, 251, 250 ); //skin
-set_color_profile_slot( 21, 4, 143, 42, 69 ); //accents
-set_color_profile_slot( 21, 5, 53, 140, 120 ); //hair
-set_color_profile_slot( 21, 6, 54, 28, 34 ); //tongue
-set_color_profile_slot( 21, 7, 222, 207, 51 ); //sludge dark
+set_color_profile_slot( 22, 0, 165, 173, 194 ); //scepter/boots
+set_color_profile_slot( 22, 1, 201, 37, 81 ); //dress
+set_color_profile_slot( 22, 2, 251, 234, 58 ); //sludge light
+set_color_profile_slot( 22, 3, 255, 251, 250 ); //skin
+set_color_profile_slot( 22, 4, 143, 42, 69 ); //accents
+set_color_profile_slot( 22, 5, 53, 140, 120 ); //hair
+set_color_profile_slot( 22, 6, 54, 28, 34 ); //tongue
+set_color_profile_slot( 22, 7, 255, 216, 61 ); //sludge dark
 
 // witch
-set_color_profile_slot( 22, 0, 156, 102, 5 ); //scepter/boots
-set_color_profile_slot( 22, 1, 66, 59, 73 ); //dress
-set_color_profile_slot( 22, 2, 198, 6, 194 ); //sludge light
-set_color_profile_slot( 22, 3, 162, 219, 60 ); //skin
-set_color_profile_slot( 22, 4, 224, 161, 222 ); //accents
-set_color_profile_slot( 22, 5, 56, 56, 56 ); //hair
-set_color_profile_slot( 22, 6, 150, 22, 0 ); //tongue
-set_color_profile_slot( 22, 7, 173, 6, 170 ); //sludge dark
+set_color_profile_slot( 23, 0, 156, 102, 5 ); //scepter/boots
+set_color_profile_slot( 23, 1, 66, 59, 73 ); //dress
+set_color_profile_slot( 23, 2, 198, 6, 194 ); //sludge light
+set_color_profile_slot( 23, 3, 162, 219, 60 ); //skin
+set_color_profile_slot( 23, 4, 224, 161, 222 ); //accents
+set_color_profile_slot( 23, 5, 56, 56, 56 ); //hair
+set_color_profile_slot( 23, 6, 150, 22, 0 ); //tongue
+set_color_profile_slot( 23, 7, 173, 6, 170 ); //sludge dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
@@ -262,3 +272,5 @@ set_color_profile_slot( 22, 7, 173, 6, 170 ); //sludge dark
 {"formatversion":1,"data":[{"name":"scepter/boots","colors":[{"r":245,"g":215,"b":45,"main":true},{"r":151,"g":85,"b":12},{"r":254,"g":242,"b":161},{"r":251,"g":247,"b":206},{"r":97,"g":50,"b":32},{"r":51,"g":29,"b":19}]},{"name":"dress","colors":[{"r":1,"g":52,"b":44},{"r":35,"g":164,"b":127},{"r":2,"g":102,"b":95,"main":true},{"r":99,"g":226,"b":189}]},{"name":"sludge light","colors":[{"r":132,"g":66,"b":186},{"r":195,"g":104,"b":251,"main":true},{"r":218,"g":167,"b":252}]},{"name":"skin","colors":[{"r":225,"g":248,"b":64,"main":true},{"r":72,"g":90,"b":13},{"r":173,"g":205,"b":65},{"r":118,"g":145,"b":32},{"r":172,"g":204,"b":65}]},{"name":"accents","colors":[{"r":200,"g":223,"b":108},{"r":227,"g":244,"b":162},{"r":243,"g":252,"b":194,"main":true}]},{"name":"hair","colors":[{"r":255,"g":165,"b":32},{"r":175,"g":66,"b":8},{"r":130,"g":36,"b":2},{"r":255,"g":198,"b":79,"main":true}]},{"name":"tongue","colors":[{"r":218,"g":91,"b":91,"main":true},{"r":255,"g":152,"b":152},{"r":146,"g":38,"b":38}]},{"name":"sludge dark","colors":[{"r":31,"g":9,"b":85},{"r":58,"g":27,"b":134,"main":true}]}]}
 === END JSON PALETTE ===
 */
+
+

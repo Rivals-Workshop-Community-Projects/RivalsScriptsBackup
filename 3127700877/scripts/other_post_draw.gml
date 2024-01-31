@@ -54,6 +54,18 @@ if(instance_exists(other_player_id) && diseased_id == other_player_id && !fuckin
     
 	gpu_set_fog(0, c_white, 0, 0);
 	gpu_set_alphatestenable(false);
+	
+    if other_player_id.genesis && (random_func_2(4, 4, 1) == 3 || state == PS_HITSTUN || state == PS_TUMBLE){
+		var smallSprites = small_sprites + 1
+		var size_mod = 1;
+		
+		shader_start();
+	
+		var fs = random_func(0, sprite_height -1, 1);
+		draw_sprite_part_ext(sprite_index,image_index,0,fs, abs(sprite_width), random_func_2(20, char_height - 20, 1)+1, (x+(random_func_2(2, 3, 1)-1)*7) - sprite_get_xoffset(sprite_index)*spr_dir*smallSprites*size_mod, y+fs*smallSprites - sprite_get_yoffset(sprite_index)*smallSprites*size_mod, spr_dir*smallSprites*size_mod, smallSprites*size_mod, other_player_id.glitch_color, 1);
+		
+		shader_end();
+    }
 }
 
 if(instance_exists(other_player_id) && undiseased_id == other_player_id && !fucking_dying_timer){
@@ -69,6 +81,7 @@ if(instance_exists(other_player_id) && undiseased_id == other_player_id && !fuck
 	gpu_set_fog(0, c_white, 0, 0);
 	gpu_set_alphatestenable(false);
 }
+
 
 if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && other_player_id.kill_goof){
 	shader_start();
@@ -106,23 +119,23 @@ if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && ot
 
 if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && !other_player_id.kill_goof && fucking_dying_timer){
 	
-		var x_scale = s + random_func_2(floor(abs(x%200)), floor((fucking_dying_timer)/(10/s)), true);
-		var y_scale = s*2 + random_func_2(floor(abs(y%200)), floor((fucking_dying_timer)/(10/s)), true);
-		var rot_scale = random_func_2(floor(abs((x+y)%200)), 360, true);
-		var a_scale = .5 + ((fucking_dying_timer - 10)/90);
-		var a_scale = clamp(a_scale, .5, 1);
-		
-		draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, x_scale, y_scale/2, rot_scale, c_white, true);
-		
-		shader_end();
-		
-		gpu_set_alphatestenable(true);
-		gpu_set_fog(1, other_player_id.disease_color, 0, 1);
-		
-		draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, x_scale, y_scale/2, rot_scale, other_player_id.disease_color, a_scale);
-		
-		gpu_set_fog(0, c_white, 0, 0);
-		gpu_set_alphatestenable(false);
+	var x_scale = s + random_func_2(floor(abs(x%200)), floor((fucking_dying_timer)/(10/s)), true);
+	var y_scale = s*2 + random_func_2(floor(abs(y%200)), floor((fucking_dying_timer)/(10/s)), true);
+	var rot_scale = random_func_2(floor(abs((x+y)%200)), 360, true);
+	var a_scale = .5 + ((fucking_dying_timer - 10)/90);
+	var a_scale = clamp(a_scale, .5, 1);
+	
+	draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, x_scale, y_scale/2, rot_scale, c_white, true);
+	
+	shader_end();
+	
+	gpu_set_alphatestenable(true);
+	gpu_set_fog(1, other_player_id.disease_color, 0, 1);
+	
+	draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, x_scale, y_scale/2, rot_scale, other_player_id.disease_color, a_scale);
+	
+	gpu_set_fog(0, c_white, 0, 0);
+	gpu_set_alphatestenable(false);
 		
 }
 
@@ -163,14 +176,18 @@ if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && !o
     maskMidder();
     maskFooter();
     shader_start();
-    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, 1);
+    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, 1);
     shader_end();
     maskHeader();
     draw_set_alpha(0);
     draw_rectangle_color(0, 0, room_width, room_height, c_white, c_white, c_white, c_white, 0);
     draw_set_alpha(1);
-    draw_sprite_ext(sprite_index, image_index, x,y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, .5);
+    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, spr_dir * (small_sprites + 1), (small_sprites + 1), spr_angle, c_white, .5);
     maskMidder();
-    draw_sprite_tiled_ext(the_image, 0, x + 75, y - get_gameplay_time()%300, .5, .5, c_white, 1);
-    maskFooter();    
+    with other_player_id {
+    	shader_start();
+    	draw_sprite_tiled_ext(the_image, 0, other.x + 75, other.y - get_gameplay_time()%300, .5, .5, c_white, 1);
+    	shader_end();
+    }
+    maskFooter();
 }

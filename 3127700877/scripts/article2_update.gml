@@ -100,3 +100,4 @@ switch(state){
 }
 
 state_timer++;
+total_lifetime++;

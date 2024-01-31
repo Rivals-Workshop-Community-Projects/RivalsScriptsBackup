@@ -6,6 +6,7 @@ state_timer = 0;
 depth = -1;
 can_be_grounded = true;
 self_enhanced = false;
+total_lifetime = -20;
 if "was_parried" not in self was_parried = false;
 var offset = 57;
 var right_check = position_meeting(x + offset, y + 2, asset_get("par_block")) || position_meeting(x + offset, y + 2, asset_get("par_jumpthrough"));

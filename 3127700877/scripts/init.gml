@@ -215,6 +215,26 @@ nair_spins = 0;
 nair_spins_max = 8;
 rune_respawn = has_rune("O");
 
+genesis = false;
+
+if(get_player_color(player) == 17 || get_player_name(player) == "GLITCH"){
+	genesis = true;
+	
+	var col_r = get_color_profile_slot_r( get_player_color(player), 2);
+	var col_g = get_color_profile_slot_g( get_player_color(player), 2);
+	var col_b = get_color_profile_slot_b( get_player_color(player), 2);
+	
+	var col_final = make_color_rgb(col_r, col_g, col_b);
+	
+	glitch_color = col_final;
+}
+
+if(get_player_color(player) == 17){
+	glitch_color = c_red;
+}
+
+gX_glitch_sound = noone;
+
 //Custom Hitbox Colors System (by @SupersonicNK)
 HG_HITBOX_COLOR = 79; //This can be any number above 57 and below 100. It is recommended that you put this number below Munophone's starting_hg_index value, to prevent conflicts.
 

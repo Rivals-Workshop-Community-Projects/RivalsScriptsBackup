@@ -46,6 +46,8 @@ var runeJ = has_rune("J");
 var runeL = has_rune("L");
 var runeM = has_rune("M");
 
+var gX_glitching = false;
+
 with(oPlayer){
     if(self != other && get_player_team(player) != get_player_team(other.player)){
     	if(runeM && state != PS_RESPAWN && state != PS_DEAD && diseased_id == noone && fucking_dying_id == noone){
@@ -106,7 +108,12 @@ with(oPlayer){
             if(diseased_timer == diseased_timer_max - 1){
         		sound_play(asset_get("sfx_frog_ustrong"), false, false, 1.6, .8);
         		sound_play(asset_get("sfx_frog_gong_hit"), false, false, 1.6);
+        		with other sound_play(sound_get("g10glitch_2"));
         	}
+        	if(other.genesis && diseased_id == other){
+    			gX_glitching = true;
+				if other.gX_glitch_sound == noone other.gX_glitch_sound = sound_play(asset_get("sfx_plasma_field_loop"), true, false, 200, .5);
+    		}
             if(diseased_timer > 0){
             	if (runeJ && state_cat != SC_HITSTUN && state != PS_TUMBLE) && (abs(hsp)>1) x -= round(hsp/2);
                 diseased_timer--;
@@ -231,6 +238,13 @@ with(oPlayer){
             }
         }
     }
+}
+
+if(genesis){
+	if(!gX_glitching){
+		sound_stop(gX_glitch_sound);
+		gX_glitch_sound = noone
+	}
 }
 
 for(var i = 0; i < array_length(sludge_bubble_vfx_list); i++){

@@ -5,3 +5,4 @@
 
 sound_stop(asset_get("sfx_orcane_water_loop"))
 sound_stop(asset_get("sfx_bubblemouth"))
+sound_stop(asset_get("sfx_plasma_field_loop"))

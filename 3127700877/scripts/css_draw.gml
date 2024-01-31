@@ -19,6 +19,15 @@ shader_start();
 //draw portrait again to prevent fuckups
 draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
 
+var gX = (get_player_color(player) == 17 || get_player_name(player) == "GLITCH")
+
+if(gX){
+    if random_func(4, 2, 1) == 0 {
+        var fs = random_func(0, sprite_height -1, 1);
+        draw_sprite_part_ext(sprite_get("character_select"),0,0,fs, abs(sprite_width), random_func(25, 60, 1)+1, (x+(random_func(2, 3, 1))*7), y+fs*2 - sprite_get_yoffset(sprite_index)*2, 2, 2, image_blend, 1);
+    }
+}
+
 //animation - character
 if (css_anim_time < 140)
 {
