@@ -284,5 +284,5 @@ if(runeE){
 	//Plays SFX
 	//if(!muted){
 		sound_stop(voice);
-		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
 	//}

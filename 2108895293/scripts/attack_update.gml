@@ -452,7 +452,7 @@ if (attack == AT_USPECIAL){
 		draw_indicator = false;
 		invincible = true;
 		invince_time = 1;
-		if (get_player_color( player ) == 14) { //lalala
+		if (get_player_color( player ) == 14) { //ki
 		sound_play(sound_get("teleend_magolor"), false, noone, 0.8);
 		}else{
 		sound_play(sound_get("teleend"));

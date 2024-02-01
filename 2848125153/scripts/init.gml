@@ -35,7 +35,7 @@ air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal ae
 jump_change = 2; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.27;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .06;
+air_friction = .05;
 max_djumps = 1;
 double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
@@ -186,7 +186,7 @@ is_KOB = true;
 loaded = false;
 muted = false;
 attacking = false;
-voice = noone;
+voice = noone;voicepitch = 1.0;
 thedice1 = noone;
 thedice2 = noone;
 previousdice = -1;

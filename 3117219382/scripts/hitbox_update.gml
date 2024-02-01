@@ -13,12 +13,14 @@ if (pseudo_melee_hitbox)
   }
   
   if !(instance_exists(owner) and owner != noone) or !(owner.state == PS_ATTACK_AIR or owner.state == PS_ATTACK_GROUND){
+  	if(attack == AT_FSPECIAL and hbox_num == 1){
+  		spawn_rail();
+  	}
     instance_destroy()
     exit
   }
- // x = floor(owner.x + abs(x_pos)*owner.spr_dir + owner.hsp)
+	// x = floor(owner.x + abs(x_pos)*owner.spr_dir + owner.hsp)
 	// y = floor(owner.y + y_pos + owner.vsp)
-  
   
 	in_hitpause = owner.hitstop > 0
   
@@ -45,51 +47,7 @@ switch (attack)
 			draw_yscale = image_yscale
 	
 			if(hitbox_timer == length and lvl > 0){
-				with player_id {
-					if(instance_exists(grind_article)) instance_destroy(grind_article);
-					grind_article = instance_create(other.x, other.y, "obj_article1");
-					var grind = grind_article;
-				}
-				
-				var closest_point_x = x+ -spr_dir*hbox_width*dcos(proj_angle)/2;
-				var closest_point_y = y+ spr_dir*hbox_width*dsin(proj_angle)/2;
-				
-				var farthest_point_x = x+ spr_dir*hbox_width*dcos(proj_angle)/2;
-				var farthest_point_y = y+ -spr_dir*hbox_width*dsin(proj_angle)/2;
-				
-				if(!position_meeting(closest_point_x, closest_point_y, solids)){
-					var close_to_far = collision_line_point(closest_point_x, closest_point_y, farthest_point_x, farthest_point_y, solids, false, true);
-					if(close_to_far[0] != noone){
-						var normal_dir = get_normal_dir(close_to_far[1], close_to_far[2]);
-						close_to_far[3] = normal_dir
-						spawn_ground_gold(close_to_far[1], close_to_far[2], close_to_far[3])
-						// grind.entry_point = close_to_far;
-					}
-				}
-				if(!position_meeting(farthest_point_x, farthest_point_y, solids)){
-					
-					var far_to_close = collision_line_point(farthest_point_x, farthest_point_y, closest_point_x, closest_point_y, solids, false, true);
-					if(far_to_close[0] != noone){
-						var normal_dir = get_normal_dir(far_to_close[1], far_to_close[2]);
-						far_to_close[3] = normal_dir
-						spawn_ground_gold(far_to_close[1], far_to_close[2], far_to_close[3])
-						// grind.exit_point = far_to_close;
-					}
-				}
-				// spawn_hit_fx(closest_point_x, closest_point_y, HFX_GEN_OMNI)
-				// spawn_hit_fx(farthest_point_x, farthest_point_y, HFX_GEN_SPIN)
-				
-				grind.spr_dir = spr_dir;
-				grind.lvl = lvl;
-				grind.tangent_angle = tangent_angle;
-				grind.normal_ang = image_angle-90;
-				grind.article_angle = mist_angle;
-				grind.image_angle = image_angle;
-				grind.article_width = player_id.mist_distance[lvl-1];
-				grind.article_height = 28;
-				
-				grind.image_xscale = grind.article_width/450;
-				grind.image_yscale = 1;
+				spawn_rail();
 			}
     }
     if(hbox_num == 2){
@@ -129,7 +87,7 @@ if(attack == player_id.coin_atk){
 	if(bounced){
 		bounced_hit_timer++
 		if(bounced_hit_timer == bounced_hit_delay){
-			can_hit[bounced_player_id.player] = 1;
+			if(instance_exists(bounced_player_id)) can_hit[bounced_player_id.player] = 1;
 			fx_created = false
 		}
 	}
@@ -246,3 +204,51 @@ if(!position_meeting(x1, y1+1, solids)){
 	rr_y += 1;
 }
 return point_direction(0,0,rr_x, rr_y);
+
+#define spawn_rail()
+
+with player_id {
+	if(instance_exists(grind_article)) instance_destroy(grind_article);
+	grind_article = instance_create(other.x, other.y, "obj_article1");
+	var grind = grind_article;
+}
+
+var closest_point_x = x+ -spr_dir*hbox_width*dcos(proj_angle)/2;
+var closest_point_y = y+ spr_dir*hbox_width*dsin(proj_angle)/2;
+
+var farthest_point_x = x+ spr_dir*hbox_width*dcos(proj_angle)/2;
+var farthest_point_y = y+ -spr_dir*hbox_width*dsin(proj_angle)/2;
+
+if(!position_meeting(closest_point_x, closest_point_y, solids)){
+	var close_to_far = collision_line_point(closest_point_x, closest_point_y, farthest_point_x, farthest_point_y, solids, false, true);
+	if(close_to_far[0] != noone){
+		var normal_dir = get_normal_dir(close_to_far[1], close_to_far[2]);
+		close_to_far[3] = normal_dir
+		spawn_ground_gold(close_to_far[1], close_to_far[2], close_to_far[3])
+		// grind.entry_point = close_to_far;
+	}
+}
+if(!position_meeting(farthest_point_x, farthest_point_y, solids)){
+	
+	var far_to_close = collision_line_point(farthest_point_x, farthest_point_y, closest_point_x, closest_point_y, solids, false, true);
+	if(far_to_close[0] != noone){
+		var normal_dir = get_normal_dir(far_to_close[1], far_to_close[2]);
+		far_to_close[3] = normal_dir
+		spawn_ground_gold(far_to_close[1], far_to_close[2], far_to_close[3])
+		// grind.exit_point = far_to_close;
+	}
+}
+// spawn_hit_fx(closest_point_x, closest_point_y, HFX_GEN_OMNI)
+// spawn_hit_fx(farthest_point_x, farthest_point_y, HFX_GEN_SPIN)
+
+grind.spr_dir = spr_dir;
+grind.lvl = lvl;
+grind.tangent_angle = tangent_angle;
+grind.normal_ang = image_angle-90;
+grind.article_angle = mist_angle;
+grind.image_angle = image_angle;
+grind.article_width = player_id.mist_distance[lvl-1];
+grind.article_height = 28;
+
+grind.image_xscale = grind.article_width/450;
+grind.image_yscale = 1;

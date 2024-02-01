@@ -35,6 +35,26 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v2.5 - (2024 Jan 30)"
+		patch_note_text[i++] = 
+		"v2.5 - (2023 Jan 30)
+		[b]additions[/b]
+		- new alt added: Infamous (she's been around since that time....)
+
+		[b]changes[/b]
+		- one of the secret alts have been changed! if you're the creator of the color, you've already been informed of this.
+
+		[b]balances[/b]
+		-- -- beneficial
+		- dtilt angle is now 50. (40 -> 50)
+		-- -- counterplay
+		- removed hitstun multiplier from dtilt. (1.1 -> 1)
+
+		[b]notes[/b]
+		how long has it been...?
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v2.4 - (2023 Apr 07)"
 		patch_note_text[i++] = 
 		"v2.4 - (2023 Apr 07)

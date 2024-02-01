@@ -142,12 +142,6 @@ if attack == AT_FSPECIAL {
         if !free {
             //spawn_base_dust(x, y, "dash_start", spr_dir)
             spawn_hit_fx(x, y, vfx_fspec_launch)
-            /*
-            var fault = get_nearest_fault()
-            if fault.ID != noone && fault.dist <= 64 {
-                fault.ID.eruption = true
-            }
-            */
         }
         
         var on_fault = false
@@ -274,26 +268,6 @@ if attack == AT_USPECIAL {
     if window == 3 && window_timer == window_length && !uspec_grounded {
         set_state(PS_PRATFALL)
     }
-    /*
-    var colliding_id = noone
-    
-    with pHitBox if attack == AT_USPECIAL && hbox_num == 2 {
-        colliding_id = id
-    }
-    
-    if colliding_id != noone && !hitpause {
-        with obj_article1 if player_id == other.id && distance_to_object(colliding_id) < 20 {
-            eruption = true
-            eruption_timer = -round(abs(x - colliding_id.x)/32)*8
-        }
-        
-        for (var i = 0; i < array_length(terrain_array); i++) {
-            var fault = terrain_array[i]
-            fault.eruption = true
-        }
-        
-    }
-    */
 }
 
 if attack == AT_DSPECIAL {

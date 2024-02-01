@@ -28,42 +28,31 @@ crit = false;
 critboost_dmg = 1;
 critboost_kb_scale = 1;
 
+if("KoB_grabbed" not in self)KoB_grabbed = false;
+KoB_was_grabbed = false;
 KoB_destroy = false;
 
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
-        MattCanGrab = true;
-        MorshuCanGrab = true;
-        CalCanSnack = 2;
-        AriaCantAbsorb = true;
+        MattCanGrab = true;MorshuCanGrab = true;
+        CalCanSnack = 2;AriaCantAbsorb = true;Toadie_Ability = -1;
         Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;Pocketed = false;
 	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;
         
         dice_has_hit = false;
-        
         playerurl = player_id.url;
-            orig_player = player;
-            current_player = player;
-            knockback_power = 0;
-            knockback_angle = 0;
-            hitpausehit = 0;
-            timer = 0;
-            lasthitbox = noone;
-            lasthitbox_player_id = noone;
-		    lasthitbox_group = -1;
-		    lasthitbox_attack = -1;
-            hitlockout = 4;
-            hitlockout2 = 0;
-            hitplayer = false;
-            hitplayertimer = 0;
-            with(asset_get("pHitBox")){
-    			if(place_meeting(x,y,other)){
-    		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
-    		        	other.thedice = self;
-    		    	}
-    			}
-            }
-            
+        orig_player = player;current_player = player;
+        knockback_power = 0;knockback_angle = 0;hitpausehit = 0;timer = 0;
+        lasthitbox = noone;lasthitbox_player_id = noone;lasthitbox_group = -1;lasthitbox_attack = -1;
+        hitlockout = 4;hitlockout2 = 0;
+        hitplayer = false;hitplayertimer = 0;
+        with(asset_get("pHitBox")){
+			if(place_meeting(x,y,other)){
+		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
+		        	other.thedice = self;
+		    	}
+			}
+        }
         dicenum = random_func(0, 6, true);
         if(player_id.runeL){
         	var extra_rng = random_func(1, 6, true);
@@ -98,31 +87,25 @@ if(attack == AT_NSPECIAL){
 		    	hurtboxID.sprite_index = sprite_get("uspecial_hurt");
             }
         }
-        image_index = dicenum;
-        originalnum = dicenum;
+        image_index = dicenum;originalnum = dicenum;
         if(dicenum == 0){
             kb_value = 0;kb_scale = 0;
-            hitstun_factor = -1;damage = 1;kb_angle = 361;
-            sound_effect = asset_get("sfx_blow_weak1");
+            hitstun_factor = -1;damage = 1;kb_angle = 361;sound_effect = asset_get("sfx_blow_weak1");
             create_hitbox(AT_NSPECIAL, 3, player_id.x, player_id.y-35);create_hitbox(AT_NSPECIAL, 4, player_id.x, player_id.y-35);
         }else if(dicenum == 1){
             kb_value = 3;kb_scale = 0.2;
-            hitstun_factor = 0.5;damage = 3;kb_angle = 361;
-            sound_effect = asset_get("sfx_blow_weak1");
+            hitstun_factor = 0.5;damage = 3;kb_angle = 361;sound_effect = asset_get("sfx_blow_weak1");
         }else if(dicenum == 2){
             kb_value = 5;kb_scale = 0.4;
-            hitstun_factor = 0.9;damage = 6;kb_angle = 361;
-            sound_effect = asset_get("sfx_blow_medium1");
+            hitstun_factor = 0.9;damage = 6;kb_angle = 361;sound_effect = asset_get("sfx_blow_medium1");
         }else if(dicenum == 3){
             kb_value = 10;kb_scale = 0.6;
-            hitstun_factor = 1;damage = 7;kb_angle = 90;
-            extra_hitpause = 5;hit_effect = 304;
+            hitstun_factor = 1;damage = 7;kb_angle = 90;extra_hitpause = 5;hit_effect = 304;
         }else if(dicenum == 4){
-            kb_value = 8;kb_scale = 0.9;
-            hitstun_factor = 1;damage = 10;kb_angle = 361;
-            sound_effect = asset_get("sfx_blow_heavy2");hit_effect = 304;
+            kb_value = 8;kb_scale = 0.85;
+            hitstun_factor = 1;damage = 10;kb_angle = 361;sound_effect = asset_get("sfx_blow_heavy2");hit_effect = 304;
         }else if(dicenum == 5){
-            kb_value = 10;kb_scale = 0.9;
+            kb_value = 9;kb_scale = 0.8;
             hitstun_factor = 1;damage = 15;kb_angle = 270;
             hitpause = 15;hitpause_growth = 2;extra_hitpause = 5;
             sound_effect = player_id.sfx_rest;hit_effect = 304;
@@ -145,7 +128,7 @@ if(attack == AT_NSPECIAL){
         if(player_id.runeI){
         	damage *= 1.5;kb_scale *= 1.2;dicearmor = 99999;dicearmor2 = 99999;
         }
-        
+        originaldamage = damage;originalkb_value = kb_value;originalkb_scale = kb_scale;
         player_id.previousdice = dicenum;
     }else if(hbox_num == 2){ //hit collision
         playerurl = player_id.url;
@@ -156,13 +139,9 @@ if(attack == AT_NSPECIAL){
 		        	other.thedice = self;thedice = other;
 		    	}
 			}
-		}
-		UnReflectable = true;AriaCantAbsorb = true;
-		Pocketable = false;
-		Untargetable = true;
+		}UnReflectable = true;AriaCantAbsorb = true;Pocketable = false;Untargetable = true;
 	}else if(hbox_num == 3){
-    	can_hit_self = true;
-    	Pocketable = false;
+    	can_hit_self = true;Pocketable = false;
 	}
 }
 

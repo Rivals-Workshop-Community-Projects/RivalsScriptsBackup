@@ -5,6 +5,11 @@ timer++;
 window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
 state_attacking = (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 
+//ditto detection
+with oPlayer if id != other.id && ("is_rhyolis" in self) && is_rhyolis {
+	other.in_ditto = true
+}
+
 //check practice mode
 if (get_training_cpu_action() != CPU_FIGHT && object_index != oTestPlayer) {
 	practice_mode = true;

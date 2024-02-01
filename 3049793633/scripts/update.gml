@@ -6,7 +6,7 @@ music_play_file("music_track" + string(cur_song));
 //Secret trigger to select the Sunset Hill Edit, added for a friend
 if (get_gameplay_time() < 120){
   with (oPlayer) {
-    if (taunt_down) {
+    if (taunt_down && !up_down && !right_down && !left_down && !down_down) {
       with (other) {
         cur_song = 4
         }

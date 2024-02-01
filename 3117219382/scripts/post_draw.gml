@@ -1,11 +1,11 @@
 shader_start()
 with pHitBox{
 	if other.hbox_view {
-		if(player == other.player and attack == AT_FSPECIAL){
+		if(player_id == other.id and attack == AT_FSPECIAL){
 			draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,0.5);
 		}
 	}
-	if(player == other.player and attack == AT_FSPECIAL and hbox_num == 1){
+	if(player_id == other.id and attack == AT_FSPECIAL and hbox_num == 1){
 		draw_sprite_ext(sprite_get("slash_active"),image_index,x,y,spr_dir/(4-lvl),1,image_angle,c_white,1);
 	}
 }
@@ -18,7 +18,7 @@ if(attacking){
 			draw_sprite_ext((spr_dir > 0)?sprite_get("multislash_fx_right") : sprite_get("multislash_fx_left"), image_index - i_img_index, x, y, 4*(spr_dir > 0)-2, 2, 0, c_white, 1);
 		}
 	}
-	if(attack == AT_FSPECIAL and lvl > 2 and (window == 1 or window == 2)){
+	if(attack == AT_FSPECIAL and (lvl > 2 or mid_attack_lvl > 2) and (window == 1 or window == 2 or window == 3)){
 		var ini_frames = 10;
 		if(state_timer <= ini_frames){ 
 			var img = state_timer*9/ini_frames;
@@ -54,6 +54,47 @@ with oPlayer{
 	}
 	var endlag_length = 10;
 }
+
+// if(temp_level > 0 and debug_display){
+// 	draw_sprite(1, 0, mouse_x, mouse_y)
+// }
+
+// if(temp_level > 0){
+//   var len = ds_list_size(ai_draw);
+//   for(var i = 0; i < len; i++){
+//     var type_draw = ai_draw[| i].type;
+    
+//     switch(type_draw){
+//       case "rectOutlineCenter":
+          
+//         draw_rectangle_color(ai_draw[| i].x - ai_draw[| i].width/2,
+//           ai_draw[| i].y - ai_draw[| i].height/2,
+//           ai_draw[| i].x + ai_draw[| i].width/2,
+//           ai_draw[| i].y + ai_draw[| i].height/2,
+//           ai_draw[| i].color, ai_draw[| i].color,
+//           ai_draw[| i].color, ai_draw[| i].color, true );
+//         break;
+//       case "rectOutline":
+          
+//         draw_rectangle_color(ai_draw[| i].left,
+//           ai_draw[| i].top,
+//           ai_draw[| i].right,
+//           ai_draw[| i].bottom,
+//           ai_draw[| i].color, ai_draw[| i].color,
+//           ai_draw[| i].color, ai_draw[| i].color, true );
+//         break;
+          
+//       case "line":
+//         draw_line_color(ai_draw[| i].x1,
+//           ai_draw[| i].y1,
+//           ai_draw[| i].x2,
+//           ai_draw[| i].y2,
+//           ai_draw[| i].color, ai_draw[| i].color);
+//         break; 
+//     }
+    
+//   }
+// }
 //written by muno
 #define rectDraw(x1, y1, width, height, color)
 {

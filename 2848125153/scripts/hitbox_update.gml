@@ -1,21 +1,11 @@
-//hitbox_update
+if(player_id.player == orig_player){
 
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
     	dicenum = originalnum;
-        if(hit_priority > 0){
-            proj_angle -= 5*spr_dir;
-        }else{
-            proj_angle -= 15*spr_dir;
-        }
-        if(hsp > 0){
-        	spr_dir = 1;
-        }else if(hsp < 0){
-        	spr_dir = -1;
-        }
-        if(num2 == 1){
-            
-        }else if(num2 == 2){
+        if(!KoB_grabbed){if(hit_priority > 0){proj_angle -= 5*spr_dir;}else{proj_angle -= 15*spr_dir;}}else{proj_angle = 0;}
+        if(hsp > 0){spr_dir = 1;}else if(hsp < 0){spr_dir = -1;}
+        if(num2 == 2){
             if(get_gameplay_time() % 2 == 0){
 	            var rand_dir = random_func(1, 359, true);
 	            fire = spawn_hit_fx((x) + round(lengthdir_x(15, rand_dir)), y + round(lengthdir_y(15, rand_dir)), player_id.fx_fire);fire.depth = depth-1;
@@ -27,9 +17,7 @@ if(attack == AT_NSPECIAL){
         	landtimer = 6;dicearmor = round(dicearmororig/4);
         }landtimer -= 1;
         
-	    if(instance_exists(thedice)){
-	    	thedice.x = x; thedice.y = y;
-	    }
+	    if(instance_exists(thedice)){thedice.x = x; thedice.y = y;}
 	    if(instance_exists(thedice) && hit_priority > 0){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.thedice)){
@@ -89,11 +77,7 @@ if(attack == AT_NSPECIAL){
 		}
 	    if(hitstop <= 0){
 	    	in_hitpause = false;hitlockout -= 1;
-	    	if (instance_exists(lasthitbox)) {
-	    		hitlockout2 -= 1;
-	    	}else{
-	    		hitlockout2 = 0;
-	    	}
+	    	if (instance_exists(lasthitbox)) {hitlockout2 -= 1;}else{hitlockout2 = 0;}
 	    }else{
 	    	hitstop -= 1;
 	    }
@@ -103,24 +87,14 @@ if(attack == AT_NSPECIAL){
 		    	thedice.destroyed = true;
 		    }
 		}
-		hitbox_timer = min(hitbox_timer,10);
-		dicetimer += 1;
+		hitbox_timer = min(hitbox_timer,10);dicetimer += 1;
 		if(dicetimer >= 240){
-			if(player_id.thedice1 == self){
-				player_id.thedice1 = noone;
-			}if(player_id.thedice2 == self){
-				player_id.thedice2 = noone;
-			}
+			if(player_id.thedice1 == self){player_id.thedice1 = noone;}
+			if(player_id.thedice2 == self){player_id.thedice2 = noone;}
 		}
-		if(hit_priority <= 0){
-			grounds = 1;walls = 1;
-		}else{
-			grounds = 2;walls = 2;
-		}
+		if(hit_priority <= 0){grounds = 1;walls = 1;}else{grounds = 2;walls = 2;}
     }else if(hbox_num == 2){
-        if(!instance_exists(thedice)){
-			destroyed = true;
-		}
+        if(!instance_exists(thedice)){destroyed = true;}
 		hitbox_timer = min(hitbox_timer,10);
     }
 }
@@ -911,6 +885,10 @@ if(attack == AT_JAB){
                 if("current_money" in self){
                     current_money += other.value;
                 }
+                if("IsToad" in self || "IsToadette" in self || "IsToadsworth" in self){
+                	coins += ceil(other.value/10000);if("current_coins" in self)current_coins += ceil(other.value/10000);
+                	sound_play(sound_get("coin"),false,noone,1);
+                }
             }
         }    
     }
@@ -1245,8 +1223,11 @@ if(attack == AT_DSTRONG && hbox_num == 6){
     }
 }
 
+stop_effect = false;
 if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
+
+}
 
 #define random_angle
 	kb_angle = random_func(0, 360, true);

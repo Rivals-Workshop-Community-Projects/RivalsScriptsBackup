@@ -59,7 +59,7 @@ idle_anim_speed         = 0.15;
 crouch_anim_speed       = 0.15;
 walk_anim_speed         = 0.3;
 dash_anim_speed         = 0.2;
-pratfall_anim_speed     = 0.33;
+pratfall_anim_speed     = 0.1;
 
 // Crouch
 crouch_startup_frames   = 3;
@@ -321,6 +321,8 @@ coin_gain_fx_hfx = hit_fx_create(sprite_get("coin_gain_fx"), 60);
 slash_ground_big_hfx = hit_fx_create(sprite_get("slash_ground_hitfx_big"), 15);
 
 gs_spr = sprite_get("gold_sigil")
+
+// [GS_X, GS_Y, GS_TIMER, GS_EXISTS, GS_STATE, GS_STATE_TIMER, GS_USES, GS_MAX_USES]
 gs = [0,0, 0, 0, 0, 0, 0, 1];
 gs_spr_dir = 1;
 gs_anim_frame_start = [0, 3, 4, 6];

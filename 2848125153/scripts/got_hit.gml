@@ -52,12 +52,19 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	        rand = random_func(0, 2, true);
 	    }
 	    if(rand == 0){
-		    sound_play(sound_get("ow"));
+		    PlayVoiceClip("ow", 1.0);
 	    }else if(rand == 1){
-		    sound_play(sound_get("ouch"));
+		    PlayVoiceClip("ouch", 1.0);
 	    }
 	}
 	
 	takearideontherailroad = false;
-
 }
+
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
+	//}

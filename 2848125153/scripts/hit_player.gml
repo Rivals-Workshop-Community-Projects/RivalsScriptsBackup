@@ -16,7 +16,7 @@ if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 	    }
     }
     if(instance_exists(my_hitboxID.thedice)){
-		my_hitboxID.thedice.destroyed = true;
+		//my_hitboxID.thedice.destroyed = true;
 	}
 }
 
@@ -102,7 +102,7 @@ if(my_hitboxID.type == 1 && crit || my_hitboxID.type == 2 && "crit" in my_hitbox
 	spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-25,304);
 }
 
-if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1){
+if(hit_player_obj.should_make_shockwave && hit_player_obj != self || my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1){
 	if(alt == 26){ //toadsworth
 		rand = random_func(0, 2, true);
 	    if(rand == 0){
@@ -113,58 +113,58 @@ if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_DAIR && my_h
     }else{
 		rand = random_func(0, 20, true);
 	    if(rand == 0){
-	    	sound_stop(voice);voice = sound_play(sound_get("very skillful"));
+	    	PlayVoiceClip("very skillful", 1.0);
 	    }else if(rand == 1){
-	    	sound_stop(voice);voice = sound_play(sound_get("monopoly byebyenow"));
+	    	PlayVoiceClip("monopoly byebyenow", 1.0);
 	    }else if(rand == 2){
-	    	sound_stop(voice);voice = sound_play(sound_get("gottem"));
+	    	PlayVoiceClip("gottem", 1.0);
 	    }else if(rand == 3){
-	    	sound_stop(voice);voice = sound_play(sound_get("thats more like it"));
+	    	PlayVoiceClip("thats more like it", 1.0);
 	    }else if(rand == 4){
-	    	sound_stop(voice);voice = sound_play(sound_get("thats the big time"));
+	    	PlayVoiceClip("thats the big time", 1.0);
 	    }else if(rand == 5){
-	    	sound_stop(voice);voice = sound_play(sound_get("youre playing like a million bucks"));
+	    	PlayVoiceClip("youre playing like a million bucks", 1.0);
 	    }else if(rand == 6){
-	    	sound_stop(voice);voice = sound_play(sound_get("wow"));
+	    	PlayVoiceClip("wow", 1.0);
 	    }else if(rand == 7){
-	    	sound_stop(voice);voice = sound_play(sound_get("lets go"));
+	    	PlayVoiceClip("lets go", 1.0);
 	    }else if(rand == 8 || rand == 9){
 	    	rand = random_func(1, 4, true);
 	    	if(rand == 0){
-		    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh"));
+		    	PlayVoiceClip("monopoly laugh", 1.0);
 		    }else if(rand == 1){
-		    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 2"));
+		    	PlayVoiceClip("monopoly laugh 2", 1.0);
 		    }else if(rand == 2){
-		    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 3"));
+		    	PlayVoiceClip("monopoly laugh 3", 1.0);
 		    }else if(rand == 3){
-		    	sound_stop(voice);voice = sound_play(sound_get("monopoly laugh 4"));
+		    	PlayVoiceClip("monopoly laugh 4", 1.0);
 		    }
 	    }else if(rand == 10){
-	    	sound_stop(voice);voice = sound_play(sound_get("youre all wet"));
+	    	PlayVoiceClip("youre all wet", 1.0);
 	    }else if(rand == 11){
-	    	sound_stop(voice);voice = sound_play(sound_get("come on baby"));
+	    	PlayVoiceClip("come on baby", 1.0);
 	    }else if(rand == 12){
-	    	sound_stop(voice);voice = sound_play(sound_get("couldnt have done it better myself"));
+	    	PlayVoiceClip("couldnt have done it better myself", 1.0);
 	    }else if(rand == 13){
-	    	sound_stop(voice);voice = sound_play(sound_get("not bad"));
+	    	PlayVoiceClip("not bad", 1.0);
 	    }else if(rand == 14){
-	    	sound_stop(voice);voice = sound_play(sound_get("way to go"));
+	    	PlayVoiceClip("way to go", 1.0);
 	    }else if(rand == 15){
-	    	sound_stop(voice);voice = sound_play(sound_get("you want more"));
+	    	PlayVoiceClip("you want more", 1.0);
 	    }else if(rand == 16){
-	    	sound_stop(voice);voice = sound_play(sound_get("die"));
+	    	PlayVoiceClip("die", 1.0);
 	    }else if(rand == 17){
-	    	sound_stop(voice);voice = sound_play(sound_get("die die now"));
+	    	PlayVoiceClip("die die now", 1.0);
 	    }else if(rand == 18){
-	    	sound_stop(voice);voice = sound_play(sound_get("nicely done"));
+	    	PlayVoiceClip("nicely done", 1.0);
 	    }else if(rand == 19){
-	    	sound_stop(voice);voice = sound_play(sound_get("skill"));
+	    	PlayVoiceClip("skill", 1.0);
 	    }
 	    
 	    if(my_hitboxID.type == 2){
 	    	rand = random_func(1, 10, true);
 	    	if(rand <= 3){
-		    	sound_stop(voice);voice = sound_play(sound_get("good shot"));
+		    	PlayVoiceClip("good shot", 1.0);
 		    }
 	    }
     }
@@ -198,3 +198,11 @@ if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_NSPECIAL && 
 if("fs_charge" in self && my_hitboxID.type == 2 && finalsmashtimer <= 0){
     fs_charge += my_hitboxID.damage;
 }
+
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
+	//}

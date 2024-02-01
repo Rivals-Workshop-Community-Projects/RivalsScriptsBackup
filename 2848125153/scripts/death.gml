@@ -9,17 +9,17 @@ current_money2 = current_money;
 if(get_player_stocks(player) <= 1){ //last stock
 	current_money = 0;
     if(alt == 19){
-        sound_play(sound_get("wario_death2"),false,noone,1);
+        PlayVoiceClip("wario_death2", 1.0);
     }else{
 	    rand = random_func(0, 4, true);
     	if(rand == 0){
-			sound_play(sound_get("im too young to go to jail"));
+			PlayVoiceClip("im too young to go to jail", 1.0);
 		}else if(rand == 1){
-			sound_play(sound_get("you got the wrong tycoon"));
+			PlayVoiceClip("you got the wrong tycoon", 1.0);
 		}else if(rand == 2){
-			sound_play(sound_get("lucky"));
+			PlayVoiceClip("lucky", 1.0);
 		}else if(rand == 3){
-			sound_play(sound_get("monopoly scream"));
+			PlayVoiceClip("monopoly scream", 1.0);
 		}
 	}
 	with(pHitBox){
@@ -39,31 +39,39 @@ if(get_player_stocks(player) <= 1){ //last stock
 		if(alt == 19){
         	rand = random_func(1, 3, true);
         	if(rand == 0){
-    			sound_play(sound_get("wario_missed"),false,noone,1);
+    			PlayVoiceClip("wario_missed", 1.0);
     		}else if(rand == 1){
-    			sound_play(sound_get("wario_death"),false,noone,1);
+    			PlayVoiceClip("wario_death", 1.0);
     		}else if(rand == 2){
-    			sound_play(sound_get("wario_death2"),false,noone,1);
+    			PlayVoiceClip("wario_death2", 1.0);
     		}
     	}else{
 	    	rand = random_func(1, 7, true);
         	if(rand == 0){
-    			sound_play(sound_get("ow"),false,noone,0.75);
+    			PlayVoiceClip("ow", 0.75);
     		}else if(rand == 1){
-    			sound_play(sound_get("ouch"),false,noone,0.75);
+    			PlayVoiceClip("ouch", 0.75);
     		}else if(rand == 2){
-    			sound_play(sound_get("ripoff"));
+    			PlayVoiceClip("ripoff", 1.0);
     		}else if(rand == 3){
-    			sound_play(sound_get("ill get you"));
+    			PlayVoiceClip("ill get you", 1.0);
     		}else if(rand == 4){
-				sound_play(sound_get("monopoly scream"));
+				PlayVoiceClip("monopoly scream", 1.0);
 			}else if(rand == 5){
-				sound_play(sound_get("uh oh"));
+				PlayVoiceClip("uh oh", 1.0);
 			}else if(rand == 6){
-				sound_play(sound_get("lucky"));
+				PlayVoiceClip("lucky", 1.0);
 			}
 	    }
 	}
 }
 
 mask_index = asset_get("ex_guy_collision_mask");
+
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
+	//}

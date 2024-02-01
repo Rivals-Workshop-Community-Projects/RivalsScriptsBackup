@@ -264,10 +264,61 @@ with phone{
 	//
 	
 	
+	initPatch("2.5", "2024-01-30 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- new alt added: Infamous (she's been around since that time....)");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- one of the secret alts have been changed! if you're the creator of the color, you've already been informed of this.")
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- beneficial", fa_left, c_olive, 1, 0);
+	initPatchWords("- dtilt angle is now 50. (40 -> 50)")
+	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);
+	initPatchWords("- removed hitstun multiplier from dtilt. (1.1 -> 1)")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("are you proud of me muno im still updating munophone changelog
+	how long has it been...?
+	open for inputs!");
+	
+	
+	//
+	
+	
+	initPatch("2.4", "2023-04-07 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- you can now reverse your direction when your fspecial-field-enhanced dspecial kick starts.
+	- you can now turnaround dair again, but you have to hold parry button for it
+	- you can now turnaround nspecial charged blast too, but with parry button
+	- new secret alts added. if you're the creator of the color, you've already been informed of its inputs.
+	- added the playtest changelog");
+	
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed an issue where nspecial charged bullet doesn't flip direction
+	- fixed an issue where when your fspecial field hits your nspecial charged bullet that has been parried by the opponent, it doesn't launch the hit towards you nor could it hit you.")
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- idk", fa_left, c_olive, 1, 0);
+	initPatchWords("- tweaked jab hitboxes. some hitboxes are gone even")
+	initPatchWords_ext("-- -- beneficial", fa_left, c_olive, 1, 0);
+	initPatchWords("- jab attack window length decreased by 8 (48 -> 40), meaning it's shorter and the hitboxes come out more rapidly
+	- jab hitboxes coming out more rapidly also means hitboxes connect slightly more reliably maybe ")
+	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);
+	initPatchWords("- jab total damage reduced from 10? to like 8 (2,1,1,1,1,1,1,3,1 -> 1,1,1,1,1,1,-,2,-)")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("i loathe parry interactions,,,
+	open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.3", "2022-06-10 (YMD)");
 	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
 	initPatchWords("- hitting the strongs within the fspecial field now shatters the field in a new way, with the field shatter bullets all hitting the opponent. it does 16 extra damage!
-- you can now walljump-cancel uncharged nspecial. idk how much difference this makes, but here it is anyway");
+	- you can now walljump-cancel uncharged nspecial. idk how much difference this makes, but here it is anyway");
 	
 	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
 	initPatchWords("- removed turnaround thing from dair.")
@@ -659,12 +710,12 @@ with self{
 	// you which files reference it.
 	
 	// post_draw.gml
-	initCheat("Eternal Cloud", "cheat_cloud", [0, 1], ["Off", "On"], "once on, raincloud temporarily disables despawn timer. setup practice of sorts.");
+	/*initCheat("Eternal Cloud", "cheat_cloud", [0, 1], ["Off", "On"], "once on, raincloud temporarily disables despawn timer. setup practice of sorts.");
 	initCheat("Cloud Charge", "cheat_charge", [0, 1, 2], ["0", "1", "Max"], "newly spawned raincloud will be charged this much.");
 	initCheat("SHIfT-JIS", "cheat_jis", [0, 1], ["-> to toggle", "On"], "channel more of my JIS power. dashstart speed drastically increases.");
 	initCheat("Mado Knife", "cheat_mado", [0, 1, 2], ["Automatic", "Off", "On"], "enables mado knife without mado alt.");
 	initCheat("010138CD", "cheat_test", [0, 1], ["Off", "On"], "broken hack. not compatible within this world.
-	and besides im sure this version of the cheat doesnt even let you go out of bounds");
+	and besides im sure this version of the cheat doesnt even let you go out of bounds");*/
 	
 }
 

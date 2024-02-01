@@ -108,12 +108,12 @@ if(attack == AT_USPECIAL){
 			
 			if(test_y > 0 or position_meeting(x + test_x, y + test_y - 2, solids)){
 				var v_off = 96;
-				var posa = collision_line_point(x + test_x, y + test_y - v_off, x + test_x, y + test_y, solids, false, true);
+				var posa = collision_line_point(x + test_x, y + test_y - v_off - 2, x + test_x, y + test_y, solids, false, true);
 				// spawn_hit_fx(posa[1], posa[2], HFX_GEN_OMNI);
 				if(!position_meeting(posa[1], posa[2]-2, solids)){
 					tp_to(posa[1], posa[2])
 				}else{
-					var posa2 = collision_line_point( x, y-char_height, x + test_x, y + test_y - v_off, solids, false, true);
+					var posa2 = collision_line_point( x, y-char_height, x + test_x, y + test_y - v_off - 2, solids, false, true);
 					tp_to(posa2[1], posa2[2])
 					// spawn_hit_fx(posa2[1], posa2[2], HFX_ZET_SHINE_FG);
 				}
@@ -198,6 +198,8 @@ if(attack == AT_FSPECIAL){
 		}
 		
 		if(shield_pressed){
+			shield_counter = 7;
+			clear_button_buffer(PC_SHIELD_PRESSED);
 			if(free and used_mf_dash_air < 1){
 				var dir = floor(point_direction(0,0, dcos(joy_dir), -dsin(joy_dir))/45 + .5)%8;
 				if(joy_pad_idle) dir = spr_dir ? 0 : 4;
@@ -220,7 +222,7 @@ if(attack == AT_FSPECIAL){
 	var strong_pressed_any = up_strong_pressed + down_strong_pressed + left_strong_pressed + right_strong_pressed
 	if(window == 2 and (attack_pressed or strong_stick_any or strong_pressed_any)){ // STANCE CANCEL
 		used_mf_air = true;
-		if(attack_pressed) clear_button_buffer(PC_ATTACK_PRESSED)
+		if(attack_pressed){ attack_counter = 7; clear_button_buffer(PC_ATTACK_PRESSED); }
 		
 		if(strong_stick_any){
 			clear_button_buffer(PC_LEFT_STICK_PRESSED)
@@ -276,6 +278,7 @@ if(attack == AT_FSPECIAL){
 			hb.tangent_angle = point_direction(0,0, spr_dir*dcos(ma), -dsin(ma))
 			// print(hb.tangent_angle)
 			hb.lvl = mid_attack_lvl
+			mid_attack_lvl = 1;
 		}
 	}
 	
@@ -284,19 +287,20 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 1 and !hitpause){
 			// hsp += free*spr_dir*-0.5
 			// print("used_mf_air: " + string(used_mf_air_vboost))
-			vsp = free*(-5 + 4*!used_mf_air_vboost)
+			vsp = free*(-5 + 4*used_mf_air_vboost)
 		}
 		move_cooldown[attack] = 44;
 	}
 	
 	if(window == 5 or window == 7 or window == 9){ // SLASH ENDLAG
 		grav = 0.35
-		used_mf_air_vboost = false
+		used_mf_air_vboost = true
 	}
 	
 	if(window == 10){ //DASH CANCEL
 		grav = 0;
 		can_wall_jump = true;
+		ledge_snap();
 		if(window_timer == 1){
 			sound_play(asset_get("sfx_waveland_pom"), false, noone, 1, 1.2)
 		}
@@ -569,6 +573,29 @@ var x1 = argument0, y1 = argument1, x2 = argument2, y2 = argument3, obj = argume
     r[2] = ry;
     return r;
 }
+
+#define ledge_snap
+//allows a moving attack to snap onto and over the ledge without getting caught, 
+// similar to Maypul and Orcane's Forward-Specials.
+// returns 'true' when the attack successfully snaps over a ledge
+//code example by Mawral - free to use without credit.
+
+var step = 32; //the maximum distance to move up from the ledge. must be a power of 2. '16' or '32' is recommended.
+var xx = x + hsp; //use 'xx = x - spr_dir' if the attack moves backwards.
+
+//check if there is a ledge ahead. if there is not, return 'false' and end the script.
+var par_block = asset_get("par_block");
+if (!place_meeting(xx, y, par_block) || place_meeting(xx, y - step, par_block)) return false;
+
+//move the player onto and above the ledge.
+x = xx;
+y -= step;
+//then, move downwards as far as possible without cutting into the stage.
+for (step /= 2; step >= 1; step /= 2) {
+    if (!place_meeting(x, y + step, par_block))  y += step; 
+}
+//ledge snap successful. return 'true'.
+return true;
 
 #macro GS_X 0
 #macro GS_Y 1

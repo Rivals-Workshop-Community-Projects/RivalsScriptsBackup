@@ -8,12 +8,18 @@
 //draw_rectangle_color(x_left, y, x_right, y + 10, c_black,c_black,c_black,c_black, true)
 
 var offset_index = (((surface_offset_x - 16) mod 128) / 32)
+var player_col = get_player_hud_color(player_id.player)
 
 for (var i = 0; i < array_length(segment_array); i++) {
     if segment_array[i] != undefined && segment_array[i] != 0 {
         var seg = segment_array[i]
         var seg_timer = seg.timer
         var seg_state = seg.state
+        
+        if player_id.in_ditto {
+            draw_sprite_general(sprite_get("fault"), 2, (i*32) mod 128, 0, 32, 64, surface_x + (i*32), y - 64 - 2, 1, 1, 0, player_col,player_col,player_col,player_col, 1)
+        }
+        
         draw_sprite_general(sprite_get("fault"), 0, (i*32) mod 128, 0, 32, 128, surface_x + (i*32), y - 64, 1, 1, 0, c_white,c_white,c_white,c_white, 1)
         //draw_debug_text(surface_x + i*32, y - 20, string(seg_timer))
         //draw_debug_text(surface_x + i*32, y + 20, string(i))
@@ -26,11 +32,6 @@ for (var i = 0; i < array_length(segment_array); i++) {
 
 
 //draw_sprite_general(sprite_get("fault"), 0, offset_index*32, 0, 32, 128, x - 16, y - 64, 1, 1, 0, c_white,c_white,c_white,c_white, 1)
-
-if eruption_timer > 0 {
-    draw_sprite_general(sprite_get("fault"), 1, offset_index*32, 0, 32, 128, x - 16, y - 64, 1, 1, 0, c_white,c_white,c_white,c_white, 0.6 + eruption_timer/30)
-    draw_sprite_general(sprite_get("fault"), 2, offset_index*32, 0, 32, 128, x - 16, y - 64, 1, 1, 0, c_white,c_white,c_white,c_white, -0.5 + eruption_timer/30)
-}
 /*
 if timer <= 20 {
     draw_sprite_general(sprite_get("fault"), 1, offset_index*32, 0, 32, 128, x - 16, y - 64, 1, 1, 0, c_white,c_white,c_white,c_white, (20-timer)/20)

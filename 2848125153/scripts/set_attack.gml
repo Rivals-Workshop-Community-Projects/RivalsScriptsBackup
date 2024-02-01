@@ -37,19 +37,19 @@ if (attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] <= 0){
     	rand = random_func(0, 9, true);
     	//if(alt == 23){
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("time to roll the dice"));
+    			PlayVoiceClip("time to roll the dice", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("lets roll"));
+    			PlayVoiceClip("lets roll", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("time to roll"));
+    			PlayVoiceClip("time to roll", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
+    			PlayVoiceClip("i hope this is a good one", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+    			PlayVoiceClip("im feeling lucky today", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+    			PlayVoiceClip("feeling lucky", 1.0);
     		}else if(rand == 7){
-    			sound_stop(voice);voice = sound_play(sound_get("take a chance"));
+    			PlayVoiceClip("take a chance", 1.0);
     		}
 	//}
 }
@@ -60,19 +60,19 @@ if (attack == AT_FSPECIAL && move_cooldown[AT_FSPECIAL] <= 0){
     	rand = random_func(0, 11, true);
     	//if(alt == 23){
     		if(rand <= 1){
-    			sound_stop(voice);voice = sound_play(sound_get("advance to go"));
+    			PlayVoiceClip("advance to go", 1.0);
     		}else if(rand <= 3){
-    			sound_stop(voice);voice = sound_play(sound_get("move your token"));
+    			PlayVoiceClip("move your token", 1.0);
     		}else if(rand <= 5){
-    			sound_stop(voice);voice = sound_play(sound_get("you move 11 spaces"));
+    			PlayVoiceClip("you move 11 spaces", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
+    			PlayVoiceClip("i hope this is a good one", 1.0);
     		}else if(rand == 7){
-    			sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+    			PlayVoiceClip("im feeling lucky today", 1.0);
     		}else if(rand == 8){
-    			sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+    			PlayVoiceClip("feeling lucky", 1.0);
     		}else if(rand == 9){
-    			sound_stop(voice);voice = sound_play(sound_get("take a chance"));
+    			PlayVoiceClip("take a chance", 1.0);
     		}
 		//}
 		fspec_charge = 0;
@@ -86,13 +86,13 @@ if (attack == AT_FSPECIAL && move_cooldown[AT_FSPECIAL] <= 0){
 if (attack == AT_USPECIAL && move_cooldown[AT_USPECIAL] <= 0){
 	rand = random_func(0, 9, true);
 	if(rand == 1){
-		sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
+		PlayVoiceClip("i hope this is a good one", 1.0);
 	}else if(rand == 2){
-		sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+		PlayVoiceClip("im feeling lucky today", 1.0);
 	}else if(rand == 3){
-		sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+		PlayVoiceClip("feeling lucky", 1.0);
 	}else if(rand <= 6){
-		sound_stop(voice);voice = sound_play(sound_get("take a chance"));
+		PlayVoiceClip("take a chance", 1.0);
 	}
 	jaildice1 = 0;jaildice2 = 0;jaildicetimer = 0;jaildiceattempts = 0;
 	if(window == 20){
@@ -134,15 +134,15 @@ if (attack == AT_USTRONG){
     	}else if(current_money >= 30000){
     		rand = random_func(0, 4, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("more power"));
+    			PlayVoiceClip("more power", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("look at all that cash"));
+    			PlayVoiceClip("look at all that cash", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("were swimming in it now"));
+    			PlayVoiceClip("were swimming in it now", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("power on"));
+    			PlayVoiceClip("power on", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("feel the power"));
+    			PlayVoiceClip("feel the power", 1.0);
     		}
     	}
 	//}
@@ -231,31 +231,32 @@ if (attack == AT_DATTACK){
     	if(alt == 19){
     		rand = random_func(0, 3, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("wario go"));
+    			PlayVoiceClip("wario go", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("wario here we go"),false,noone,1.5);
+    			//sound_stop(voice);voice = sound_play(sound_get("wario here we go"),false,noone,1.5);
+    			PlayVoiceClip("wario here we go", 1.5);
     		}
 		}else if(alt == 21){
     		rand = random_func(0, 2, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("squadala"));
+    			PlayVoiceClip("squadala", 1.0);
     		}
 		}else{
     		rand = random_func(0, 8, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("choo choo"));
+    			PlayVoiceClip("choo choo", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("i love my choo choo"));
+    			PlayVoiceClip("i love my choo choo", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("take a ride on the railroad"));
+    			PlayVoiceClip("take a ride on the railroad", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("were on the right track"));
+    			PlayVoiceClip("were on the right track", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("lets go"));
+    			PlayVoiceClip("lets go", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("lets take a ride"));
+    			PlayVoiceClip("lets take a ride", 1.0);
     		}else if(rand == 7){
-    			sound_stop(voice);voice = sound_play(sound_get("yeehaw"));
+    			PlayVoiceClip("yeehaw", 1.0);
     		}
 		}
 	}else{
@@ -268,22 +269,22 @@ if (attack == AT_BAIR){
     	if(current_money >= 15000 && current_money <= 30000){
     		rand = random_func(0, 3, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("woo"));
+    			PlayVoiceClip("woo", 1.0);
     		}
     	}else if(current_money >= 30000){
     		rand = random_func(0, 5, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("woo"));
+    			PlayVoiceClip("woo", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("more power"));
+    			PlayVoiceClip("more power", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("look at all that cash"));
+    			PlayVoiceClip("look at all that cash", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("were swimming in it now"));
+    			PlayVoiceClip("were swimming in it now", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("power on"));
+    			PlayVoiceClip("power on", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("feel the power"));
+    			PlayVoiceClip("feel the power", 1.0);
     		}
     	}
 	//}
@@ -340,16 +341,16 @@ if (attack == AT_TAUNT){
 		sound_stop(voice);
 		rand = random_func(0, 2, true);
 		if(rand == 0){
-			voice = sound_play(sound_get("i see you"));
+			PlayVoiceClip("i see you", 1.0);
 		}else if(rand == 1){
-			voice = sound_play(sound_get("i see you2"));
+			PlayVoiceClip("i see you2", 1.0);
 		}
 	}else if((right_down || left_down) && current_money >= 10000 && !up_down){
 		attack = AT_FSPECIAL;window = 4;set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);move_cooldown[AT_FSPECIAL] = 0;
 		if(attack_down && current_money >= 40000){
-			sound_stop(voice);voice = sound_play(sound_get("four million"));tauntmoney = 1;
+			PlayVoiceClip("four million", 1.0);tauntmoney = 1;
 		}else{
-			sound_stop(voice);voice = sound_play(sound_get("one million"));tauntmoney = 0;
+			PlayVoiceClip("one million", 1.0);tauntmoney = 0;
 		}
 	}else{
 		reset_attack_value(AT_TAUNT, AG_NUM_WINDOWS);
@@ -378,3 +379,11 @@ if(runeJ){
 
 muno_event_type = 2;
 	user_event(14);
+	
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
+	//}

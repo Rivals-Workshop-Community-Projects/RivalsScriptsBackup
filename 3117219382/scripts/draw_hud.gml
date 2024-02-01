@@ -26,7 +26,7 @@ if (debug_display)
     draw_debug_text(temp_x+mul*5, temp_y+mul*-2, "hsp = " + string(hsp));
     draw_debug_text(temp_x+mul*5, temp_y+mul*-1, "vsp = " + string(vsp));
     
-    draw_debug_text(temp_x+mul*10, temp_y+mul*-1, "img = " + string(image_index));
+    draw_debug_text(temp_x+mul*10, temp_y+mul*-1, "frict = " + string(frict));
 }
 
 //image index explanation: if the charge is equal or over the max charge value, the sprite flashes

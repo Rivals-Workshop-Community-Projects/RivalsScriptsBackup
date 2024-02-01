@@ -110,6 +110,7 @@ set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, sprite_get("mist_finer_mask"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

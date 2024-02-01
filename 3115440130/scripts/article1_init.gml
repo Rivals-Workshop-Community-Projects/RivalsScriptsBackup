@@ -31,9 +31,6 @@ surface_grid_offset_x = 0 //offset from 32 pixel grid
 
 timer = 0
 
-eruption = false
-eruption_timer = 0
-
 absorb = false
 absorb_timer = 0
 

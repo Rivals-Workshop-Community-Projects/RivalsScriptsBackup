@@ -102,7 +102,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 19;
+	col_max = 20;
 	
 	ce[0,0] = make_color_rgb(255, 214, 0)
 	ce[0,1] = "Flowlight"
@@ -158,12 +158,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[17,0] = make_color_rgb(68, 78, 148)
 	ce[17,1] = "Berry Berry"
 	ce[17,2] = "Blueberry Bout colors as thanks to Sparx21!"
-	ce[18,0] = make_color_rgb(255, 220, 23)
-	ce[18,1] = "Ranked Gold"
-	ce[18,2] = "Ranked Gold. Press jump + left/right on countdown!?"
-	ce[19,0] = make_color_rgb(196, 43, 152)
-	ce[19,1] = "Mix"
-	ce[19,2] = "Colors made by Trail Mix, who helped code attacks!"
+	ce[18,0] = make_color_rgb(209, 84, 247)
+	ce[18,1] = "Infamous"
+	ce[18,2] = "How long has it been...?"
+	ce[19,0] = make_color_rgb(255, 220, 23)
+	ce[19,1] = "Ranked Gold"
+	ce[19,2] = "Ranked Gold. Press jump + left/right on countdown!?"
+	ce[20,0] = make_color_rgb(196, 43, 152)
+	ce[20,1] = "Mix"
+	ce[20,2] = "Colors made by Trail Mix, who helped code attacks!"
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...
@@ -198,6 +201,18 @@ if (ee > 0){
 	var tw_g = (ease_quartOut(0, 1, ee, ee_m)) + (ease_quartIn(0, 1, ee, ee_m)/2);
 	var dist = 14;
 	var typ = round(ease_expoIn(0, dist, ee, ee_m-2));
+	
+	/*
+	//bgshadowthing
+	rectDraw(temp_x, temp_y, temp_x + 42 - (10 - (tw*10)), temp_y + 130, c_black, c_black, tw/4 );
+	rectDraw(temp_x, temp_y, temp_x + 38 - (14 - (tw*14)), temp_y + 130, c_black, c_black, tw/4 );
+	//what a math
+	//charthing
+	var idlespeed = 11
+	draw_sprite_ext(sprite_get("idle"), get_gameplay_time() / idlespeed, temp_x - 38, temp_y + 17+((typ*(ie*-1))/2), 1, 1, 0, c_gray, (typ/dist)/1.5);
+	draw_sprite_ext(sprite_get("idle"), get_gameplay_time() / idlespeed, temp_x - 38, temp_y + 17+((typ*(ie))/4), 1, 1, 0, c_white, tw);
+	*/
+	
 	//using muno's function;
 	if (ue-2>=0){
 	rectDraw(temp_x + 2, temp_y + 77 +(0-(dist*2)-6+(typ*ie)), temp_x + 16, temp_y + 91 +(0-(dist*2)-6+(typ*ie)),

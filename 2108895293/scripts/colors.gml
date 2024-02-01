@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
 // blue 2
 set_color_profile_slot( 1, 0, 59, 75, 214 ); //blue
@@ -210,25 +210,35 @@ set_color_profile_slot( 17, 5, 201, 237, 208 ); //light
 set_color_profile_slot( 17, 6, 237, 92, 130 ); //ori_replace
 set_color_profile_slot( 17, 7, 79, 176, 97 ); //yellow.2
 
+// infamous
+set_color_profile_slot( 18, 0, 73, 74, 140 ); //blue
+set_color_profile_slot( 18, 1, 255, 208, 191 ); //skin
+set_color_profile_slot( 18, 2, 0, 237, 130 ); //yellow
+set_color_profile_slot( 18, 3, 209, 84, 247 ); //orange
+set_color_profile_slot( 18, 4, 95, 222, 161 ); //blush
+set_color_profile_slot( 18, 5, 77, 195, 255 ); //light
+set_color_profile_slot( 18, 6, 66, 220, 255 ); //ori_replace
+set_color_profile_slot( 18, 7, 0, 163, 171 ); //yellow.2
+
 // ranked gold
-set_color_profile_slot( 18, 0, 232, 235, 255 ); //blue
-set_color_profile_slot( 18, 1, 255, 239, 232 ); //skin
-set_color_profile_slot( 18, 2, 255, 220, 23 ); //yellow
-set_color_profile_slot( 18, 3, 160, 151, 204 ); //orange
-set_color_profile_slot( 18, 4, 160, 151, 204 ); //blush
-set_color_profile_slot( 18, 5, 255, 212, 156 ); //light
-set_color_profile_slot( 18, 6, 255, 166, 23 ); //ori_replace
-set_color_profile_slot( 18, 7, 230, 138, 18 ); //yellow.2
+set_color_profile_slot( 19, 0, 232, 235, 255 ); //blue
+set_color_profile_slot( 19, 1, 255, 239, 232 ); //skin
+set_color_profile_slot( 19, 2, 255, 220, 23 ); //yellow
+set_color_profile_slot( 19, 3, 160, 151, 204 ); //orange
+set_color_profile_slot( 19, 4, 160, 151, 204 ); //blush
+set_color_profile_slot( 19, 5, 255, 212, 156 ); //light
+set_color_profile_slot( 19, 6, 255, 166, 23 ); //ori_replace
+set_color_profile_slot( 19, 7, 230, 138, 18 ); //yellow.2
 
 // mix
-set_color_profile_slot( 19, 0, 215, 204, 234 ); //blue
-set_color_profile_slot( 19, 1, 107, 88, 188 ); //skin
-set_color_profile_slot( 19, 2, 196, 43, 152 ); //yellow
-set_color_profile_slot( 19, 3, 61, 52, 86 ); //orange
-set_color_profile_slot( 19, 4, 206, 103, 185 ); //blush
-set_color_profile_slot( 19, 5, 247, 135, 224 ); //light
-set_color_profile_slot( 19, 6, 206, 103, 185 ); //ori_replace
-set_color_profile_slot( 19, 7, 135, 26, 131 ); //yellow.2
+set_color_profile_slot( 20, 0, 215, 204, 234 ); //blue
+set_color_profile_slot( 20, 1, 107, 88, 188 ); //skin
+set_color_profile_slot( 20, 2, 196, 43, 152 ); //yellow
+set_color_profile_slot( 20, 3, 61, 52, 86 ); //orange
+set_color_profile_slot( 20, 4, 206, 103, 185 ); //blush
+set_color_profile_slot( 20, 5, 247, 135, 224 ); //light
+set_color_profile_slot( 20, 6, 206, 103, 185 ); //ori_replace
+set_color_profile_slot( 20, 7, 135, 26, 131 ); //yellow.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

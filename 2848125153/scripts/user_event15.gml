@@ -318,6 +318,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.29", ", 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed an obscure bug with DAttack where cancelling out and getting hit afterwards before doing another attack could spawn the choo choo
++ Made Mr. Monopoly compatible with Toad, Toadette, and Toadsworth! If they pick up a pile of money, they will gain 1 coin for it (or 1 coin for each million in case of bigger money piles)
++ Added voice pitch functionality");
+
 initPatch("1.28", "16th November, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Hotfix for a bug with the previous update");

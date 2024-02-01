@@ -1,7 +1,11 @@
+is_rhyolis = true
+in_ditto = false
+
 window_length = 0
 timer = 0
 practice_mode = false
 state_attacking = false
+
 
 vfx_airdodge_shard = hit_fx_create(sprite_get("airdodge_shard"), 15)
 vfx_fault = hit_fx_create(sprite_get("fault_vfx"), 15)

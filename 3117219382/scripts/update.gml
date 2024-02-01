@@ -31,7 +31,7 @@ if(!free){
 	}
 	used_cuts = 0
 	used_mf_air = 0
-	used_mf_air_vboost = true
+	used_mf_air_vboost = 0
 }
 
 
@@ -57,12 +57,20 @@ if(state == PS_PARRY_START or ((state == PS_ROLL_BACKWARD or state == PS_ROLL_FO
 	}
 }
 
+// if(mouse_button == 1){
+// 	x = mouse_x
+// 	y = mouse_y
+// }
+// if(mouse_button == 2){
+// 	spawn_rail(mouse_x, mouse_y);
+// }
 
 //other_update.gml
 with oPlayer {
 	if(player != other.player and _bd_init ){
 		slide_init()
 	}
+	
 	if(state == PS_AIR_DODGE and state_timer > 0 and abs(hsp)+abs(vsp) >= gravity_speed+0.1 and window < 2){
 		var a = instance_position(x, y, other.grind_article)
 		if(a and a.state < AS_BREAK){
@@ -155,7 +163,7 @@ with oPlayer {
 				check_fast_fall = true
 			}
 			
-			// slide_animation();
+			ledge_snap();
 			
 			if(bd_grind_fx.step_timer == bd_grind_fx.hit_length-1){
 				// print(loops)
@@ -166,7 +174,7 @@ with oPlayer {
 			bd_grind_fx.y = y;
 		}else{
 			if(!my_grind_exists){
-				if(other_grind_exists and grind_id.player == other.grind_article.player){
+				if(other_grind_exists and other.player == other.grind_article.player){
 					grind_id = other.grind_article;
 				}else{
 					slide_release()
@@ -280,6 +288,8 @@ if(gs[GS_EXISTS]){
 		create_hitbox(AT_USPECIAL, 6, gs[GS_X], gs[GS_Y]);
 		sound_play(asset_get("sfx_ice_shieldup"));
 		gs[GS_USES]++;
+		print(gs[GS_USES])
+		print(gs[GS_MAX_USES])
 	}
 	if(gs[GS_STATE] == 3 and gs[GS_STATE_TIMER] == 9){
 		if(gs[GS_USES] < gs[GS_MAX_USES]){
@@ -467,6 +477,75 @@ bd_rail_grind_backwards_spr = bd_rail_grind_forward_spr;
         }
     }
 }
+
+#define spawn_ground_gold(x1, y1, dir)
+{
+	var hhfx = spawn_hit_fx(x1, y1, player_id.slash_ground_big_hfx);
+	hhfx.draw_angle = dir;
+	hhfx.spr_dir = 1;
+}
+
+#define get_normal_dir(x1, y1)
+
+var rr_x = 0;
+var rr_y = 0;
+if(!position_meeting(x1-1, y1, solids)){
+	rr_x += -1;
+}
+if(!position_meeting(x1+1, y1, solids)){
+	rr_x += 1;
+}
+if(!position_meeting(x1, y1-1, solids)){
+	rr_y += -1;
+}
+if(!position_meeting(x1, y1+1, solids)){
+	rr_y += 1;
+}
+return point_direction(0,0,rr_x, rr_y);
+
+#define spawn_rail(_x, _y)
+
+if(instance_exists(grind_article)) instance_destroy(grind_article);
+grind_article = instance_create(_x, _y, "obj_article1");
+var grind = grind_article;
+
+// spawn_hit_fx(closest_point_x, closest_point_y, HFX_GEN_OMNI)
+// spawn_hit_fx(farthest_point_x, farthest_point_y, HFX_GEN_SPIN)
+
+grind.spr_dir = spr_dir;
+grind.lvl = lvl;
+grind.tangent_angle = 0;
+grind.normal_ang = -90;
+grind.article_angle = 0;
+grind.image_angle = 0;
+grind.article_width = mist_distance[lvl-1];
+grind.article_height = 28;
+
+grind.image_xscale = grind.article_width/450;
+grind.image_yscale = 1;
+
+#define ledge_snap
+//allows a moving attack to snap onto and over the ledge without getting caught, 
+// similar to Maypul and Orcane's Forward-Specials.
+// returns 'true' when the attack successfully snaps over a ledge
+//code example by Mawral - free to use without credit.
+
+var step = 16; //the maximum distance to move up from the ledge. must be a power of 2. '16' or '32' is recommended.
+var xx = x + hsp; //use 'xx = x - spr_dir' if the attack moves backwards.
+
+//check if there is a ledge ahead. if there is not, return 'false' and end the script.
+var par_block = asset_get("par_block");
+if (!place_meeting(xx, y, par_block) || place_meeting(xx, y - step, par_block)) return false;
+
+//move the player onto and above the ledge.
+x = xx;
+y -= step;
+//then, move downwards as far as possible without cutting into the stage.
+for (step /= 2; step >= 1; step /= 2) {
+    if (!place_meeting(x, y + step, par_block))  y += step; 
+}
+//ledge snap successful. return 'true'.
+return true;
 
 #macro PS_SLIDE 69
 

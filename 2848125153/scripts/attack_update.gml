@@ -79,7 +79,7 @@ if (attack == AT_NSPECIAL){
     }
     if(window == 4 && !hitpause){
     	if(attack_down && current_money >= 40000 && window_timer < 5 && tauntmoney == 0){
-			sound_stop(voice);voice = sound_play(sound_get("four million"));tauntmoney = 1;
+			PlayVoiceClip("four million", 1.0);tauntmoney = 1;
 		}
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	sound_play(asset_get("sfx_swipe_medium1"));
@@ -154,9 +154,9 @@ if (attack == AT_NSPECIAL){
 				jailcard = true;sound_play(asset_get("mfx_coin"),false,noone,3);sound_play(sound_get("soldsfx"));
 				rand = random_func(0, 3, true);
 				if(rand == 0){
-					sound_stop(voice);voice = sound_play(sound_get("break the jail"));
+					PlayVoiceClip("break the jail", 1.0);
 				}else if(rand <= 2){
-					sound_stop(voice);voice = sound_play(sound_get("free jailbreak"));
+					PlayVoiceClip("free jailbreak", 1.0);
 				}
 			}
 		}
@@ -265,13 +265,13 @@ if (attack == AT_NSPECIAL){
     			}else{
 	    			rand = random_func(0, 4, true);
 			    	if(rand == 0){
-						voice = sound_play(sound_get("im too young to go to jail"));
+						PlayVoiceClip("im too young to go to jail", 1.0);
 					}else if(rand == 1){
-						voice = sound_play(sound_get("jail"));
+						PlayVoiceClip("jail", 1.0);
 					}else if(rand == 2){
-						voice = sound_play(sound_get("monopoly scream"));
+						PlayVoiceClip("monopoly scream", 1.0);
 					}else if(rand == 3){
-						voice = sound_play(sound_get("get me out of jail"));
+						PlayVoiceClip("get me out of jail", 1.0);
 					}
     			}
     		}
@@ -377,7 +377,7 @@ if (attack == AT_NSPECIAL){
 	    			}
 	    			rand = random_func(0, 2, true);
 		    		if(rand == 1){
-		    			sound_stop(voice);voice = sound_play(sound_get("jailbreak"));
+		    			PlayVoiceClip("jailbreak", 1.0);
 		    		}
 	    		}
 	    	}else if(window == 26){
@@ -441,34 +441,34 @@ if (attack == AT_NSPECIAL){
         		if(property.hbox_num <= 2){ //house and hotel sfx
 	        		rand = random_func(0, 8, true);
 		    		if(rand <= 1){
-		    			sound_stop(voice);voice = sound_play(sound_get("i love building houses"));
+		    			PlayVoiceClip("i love building houses", 1.0);
 		    		}else if(rand == 2){
-		    			sound_stop(voice);voice = sound_play(sound_get("free property"));
+		    			PlayVoiceClip("free property", 1.0);
 		    		}else if(rand == 3){
-		    			sound_stop(voice);voice = sound_play(sound_get("lets buy some property"));
+		    			PlayVoiceClip("lets buy some property", 1.0);
 		    		}else if(rand == 4){
-		    			sound_stop(voice);voice = sound_play(sound_get("lets collect that rent now"));
+		    			PlayVoiceClip("lets collect that rent now", 1.0);
 		    		}else if(rand == 5){
-		    			sound_stop(voice);voice = sound_play(sound_get("time to raise the rent"));
+		    			PlayVoiceClip("time to raise the rent", 1.0);
 		    		}else if(rand == 6){
-		    			sound_stop(voice);voice = sound_play(sound_get("owning property never goes out of style"));
+		    			PlayVoiceClip("owning property never goes out of style", 1.0);
 		    		}else if(rand == 7){
-		    			sound_stop(voice);voice = sound_play(sound_get("its time for landgrab"));
+		    			PlayVoiceClip("its time for landgrab", 1.0);
 		    		}
         		}else{ //bank sfx
         			rand = random_func(0, 6, true);
 		    		if(rand == 0){
-		    			sound_stop(voice);voice = sound_play(sound_get("you can take that to the bank"));
+		    			PlayVoiceClip("you can take that to the bank", 1.0);
 		    		}else if(rand == 1){
-		    			sound_stop(voice);voice = sound_play(sound_get("bank"));
+		    			PlayVoiceClip("bank", 1.0);
 		    		}else if(rand == 2){
-		    			sound_stop(voice);voice = sound_play(sound_get("bank2"));
+		    			PlayVoiceClip("bank2", 1.0);
 		    		}else if(rand == 3){
-		    			sound_stop(voice);voice = sound_play(sound_get("bank3"));
+		    			PlayVoiceClip("bank3", 1.0);
 		    		}else if(rand == 4){
-		    			sound_stop(voice);voice = sound_play(sound_get("owning property never goes out of style"));
+		    			PlayVoiceClip("owning property never goes out of style", 1.0);
 		    		}else if(rand == 5){
-		    			sound_stop(voice);voice = sound_play(sound_get("its time for landgrab"));
+		    			PlayVoiceClip("its time for landgrab", 1.0);
 		    		}
         		}
         	}
@@ -482,47 +482,47 @@ if (attack == AT_NSPECIAL){
         	if(property.housemoney >= 30000){
 	        	rand = random_func(0, 10, true);
 	    		if(rand <= 1){
-	    			sound_stop(voice);voice = sound_play(sound_get("its a housing boom"));
+	    			PlayVoiceClip("its a housing boom", 1.0);
 	    		}else if(rand == 2){
-	    			sound_stop(voice);voice = sound_play(sound_get("we need high numbers here"));
+	    			PlayVoiceClip("we need high numbers here", 1.0);
 	    		}else if(rand == 3){
-	    			sound_stop(voice);voice = sound_play(sound_get("were swimming in it now"));
+	    			PlayVoiceClip("were swimming in it now", 1.0);
 	    		}else if(rand == 4){
-	    			sound_stop(voice);voice = sound_play(sound_get("welcome to the tycoon club"));
+	    			PlayVoiceClip("welcome to the tycoon club", 1.0);
 	    		}else if(rand == 5){
-	    			sound_stop(voice);voice = sound_play(sound_get("a tax refund"));
+	    			PlayVoiceClip("a tax refund", 1.0);
 	    		}else if(rand == 6){
-	    			sound_stop(voice);voice = sound_play(sound_get("cash grab"));
+	    			PlayVoiceClip("cash grab", 1.0);
 	    		}else if(rand == 7){
-	    			sound_stop(voice);voice = sound_play(sound_get("break the bank"));
+	    			PlayVoiceClip("break the bank", 1.0);
 	    		}else if(rand == 8){
-	    			sound_stop(voice);voice = sound_play(sound_get("you broke the bank"));
+	    			PlayVoiceClip("you broke the bank", 1.0);
 	    		}else if(rand == 9){
-	    			sound_stop(voice);voice = sound_play(sound_get("quite a haul"));
+	    			PlayVoiceClip("quite a haul", 1.0);
 	    		}
         	}else if(property.housemoney >= 15000){
 	        	rand = random_func(0, 8, true);
 	    		if(rand <= 1){
-	    			sound_stop(voice);voice = sound_play(sound_get("its a housing boom"));
+	    			PlayVoiceClip("its a housing boom", 1.0);
 	    		}else if(rand == 2){
-	    			sound_stop(voice);voice = sound_play(sound_get("we need high numbers here"));
+	    			PlayVoiceClip("we need high numbers here", 1.0);
 	    		}else if(rand == 3){
-	    			sound_stop(voice);voice = sound_play(sound_get("were swimming in it now"));
+	    			PlayVoiceClip("were swimming in it now", 1.0);
 	    		}else if(rand == 4){
-	    			sound_stop(voice);voice = sound_play(sound_get("welcome to the tycoon club"));
+	    			PlayVoiceClip("welcome to the tycoon club", 1.0);
 	    		}else if(rand == 5){
-	    			sound_stop(voice);voice = sound_play(sound_get("a tax refund"));
+	    			PlayVoiceClip("a tax refund", 1.0);
 	    		}else if(rand == 6){
-	    			sound_stop(voice);voice = sound_play(sound_get("cash grab"));
+	    			PlayVoiceClip("cash grab", 1.0);
 	    		}else if(rand == 7){
-	    			sound_stop(voice);voice = sound_play(sound_get("quite a haul"));
+	    			PlayVoiceClip("quite a haul", 1.0);
 	    		}
         	}else{
 	        	rand = random_func(0, 3, true);
 	    		if(rand <= 1){
-	    			sound_stop(voice);voice = sound_play(sound_get("its a housing boom"));
+	    			PlayVoiceClip("its a housing boom", 1.0);
 	    		}else if(rand == 2){
-	    			sound_stop(voice);voice = sound_play(sound_get("cash grab"));
+	    			PlayVoiceClip("cash grab", 1.0);
 	    		}
         	}
         	}
@@ -530,14 +530,11 @@ if (attack == AT_NSPECIAL){
     }
 }else if(attack == AT_JAB){
 	if(window == 1 && window_timer == 1 && !hitpause){
-		sound_stop(voice);
-		sound_stop(voice);sound_play(sound_get("you want more1"),false,noone,1);
+		PlayVoiceClip("you want more1", 1.0);
 	}if(window == 4 && window_timer == 1 && !hitpause){
-		sound_stop(voice);
-		sound_stop(voice);sound_play(sound_get("you want more2"),false,noone,1);
+		PlayVoiceClip("you want more2", 1.0);
 	}if(window == 7 && window_timer == 1 && !hitpause && current_money2 < 500){
-		sound_stop(voice);
-		sound_stop(voice);sound_play(sound_get("you want more3"),false,noone,1.1);
+		PlayVoiceClip("you want more3", 1.1);
 	}
 	
 	if(window == 7 && !hitpause){
@@ -880,7 +877,7 @@ if (attack == AT_NSPECIAL){
 	}
 	if((window == 2 || window == 3) && vsp >= -4 && DairBounce <= 0){
 		with(pHitBox){
-	    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && player_id != other /*|| player_id == other && type == 2 && attack == AT_NSPECIAL && hbox_num == 2*/){
+	    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && player_id != other){
 		    	if(place_meeting(x,y,other.dairhitbox)){
 		    		other.DairBounce = 2;
 		    	}
@@ -888,23 +885,19 @@ if (attack == AT_NSPECIAL){
 	    }
 	}
 	if(window == 1){
-		if (window_timer == 10 && !hitpause){
-			dairhitbox = create_hitbox(AT_DAIR, 1, x, y);
-		}
+		if (window_timer == 10 && !hitpause)dairhitbox = create_hitbox(AT_DAIR, 1, x, y);
 	}else if(window == 2){
 		if (window_timer < 6 && !hitpause && !shield_down && 
 		(position_meeting(x,y+20,asset_get("par_block")) || position_meeting(x-10*spr_dir,y+20,asset_get("par_block")) || position_meeting(x+10*spr_dir,y+20,asset_get("par_block"))
 		|| position_meeting(x,y+20,asset_get("par_jumpthrough")) || position_meeting(x-10*spr_dir,y+20,asset_get("par_jumpthrough")) || position_meeting(x+10*spr_dir,y+20,asset_get("par_jumpthrough")))
 		|| DairBounce){
-			vsp = -13;old_vsp = vsp;//shake_camera(100, 30);sound_play(sound_get("bombexplode"));
+			vsp = -13;old_vsp = vsp;
 			if(DairBounce == 2){
     			spawn_hit_fx(x,y,304);sound_play(asset_get("sfx_blow_heavy1"));
     		}sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
 			DairBounce = 0;move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
 		}
-    	if(window_timer == 12 && !attack_down && !hitpause){
-	    	window = 4;window_timer = 0;
-	    }
+    	if(window_timer == 12 && !attack_down && !hitpause){window = 4;window_timer = 0;}
     }else if(window == 3){
     	if(vsp <= 2){
     		can_fast_fall = false;
@@ -916,11 +909,7 @@ if (attack == AT_NSPECIAL){
     	}else if(vsp < 0){
     		destroy_hitboxes();
     	}
-    	//free = true;
-    	/*if (vsp <= 0 && (position_meeting(x,y,asset_get("par_block")) || position_meeting(x-20*spr_dir,y,asset_get("par_block")) || position_meeting(x+20*spr_dir,y,asset_get("par_block"))
-		|| (!shield_down && (position_meeting(x,y+1,asset_get("par_jumpthrough")) || position_meeting(x-18*spr_dir,y+1,asset_get("par_jumpthrough")) || position_meeting(x+18*spr_dir,y+1,asset_get("par_jumpthrough")))
-		&& !position_meeting(x,y-5,asset_get("par_jumpthrough")) && !position_meeting(x-18*spr_dir,y-5,asset_get("par_jumpthrough")) && !position_meeting(x+18*spr_dir,y-5,asset_get("par_jumpthrough"))))){*/
-		if(!free){
+    	if(!free){
 			DairBounce = 1;sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
 		}
     	if(DairBounce > 0){
@@ -928,32 +917,26 @@ if (attack == AT_NSPECIAL){
     			spawn_hit_fx(x,y,303);sound_play(asset_get("sfx_blow_medium1"));
     		}
     		DairBounce = 0;
-    		if(!up_down && !down_down){
-	    		vsp = -9;old_vsp = vsp;
-    		}else if(up_down){
-	    		vsp = -12;old_vsp = vsp;
-    		}else if(down_down){
-	    		vsp = -7;old_vsp = vsp;
-    		}//shake_camera(100, 30);sound_play(sound_get("bombexplode"));
+    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}
+    		else if(up_down){vsp = -12;old_vsp = vsp;}
+    		else if(down_down){vsp = -7;old_vsp = vsp;}
 	    }
 	    free = true;
-    	if(!attack_down && !hitpause || was_parried){
-	    	window = 4;window_timer = 0;destroy_hitboxes();
-	    }
+    	if(!attack_down && !hitpause || was_parried){window = 4;window_timer = 0;destroy_hitboxes();}
     }
 }else if (attack == AT_TAUNT){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         rand = random_func(0, 7, true);
 	    if(rand <= 2){
-	    	sound_stop(voice);voice = sound_play(sound_get("very skillful"));
+	    	PlayVoiceClip("very skillful", 1.0);
 	    }else if(rand == 3){
-	    	sound_stop(voice);voice = sound_play(sound_get("monopoly byebyenow"));
+	    	PlayVoiceClip("monopoly byebyenow", 1.0);
 	    }else if(rand == 4){
-	    	sound_stop(voice);voice = sound_play(sound_get("lets go"));
+	    	PlayVoiceClip("lets go", 1.0);
 	    }else if(rand == 5){
-	    	sound_stop(voice);voice = sound_play(sound_get("youre all wet"));
+	    	PlayVoiceClip("youre all wet", 1.0);
 	    }else if(rand == 6){
-	    	sound_stop(voice);voice = sound_play(sound_get("you want more"));
+	    	PlayVoiceClip("you want more", 1.0);
 	    }
 	    if(instance_exists(property) && taunt_down){
 	    	with(property){
@@ -999,36 +982,36 @@ if (attack == AT_NSPECIAL){
     	if(finalsmashnum == 0){ //dices
 	        rand = random_func(0, 9, true);
     		if(rand == 1){
-    			sound_stop(voice);voice = sound_play(sound_get("time to roll the dice"));
+    			PlayVoiceClip("time to roll the dice", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("lets roll"));
+    			PlayVoiceClip("lets roll", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("time to roll"));
+    			PlayVoiceClip("time to roll", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("i hope this is a good one"));
+    			PlayVoiceClip("i hope this is a good one", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+    			PlayVoiceClip("im feeling lucky today", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+    			PlayVoiceClip("feeling lucky", 1.0);
     		}else if(rand == 7){
-    			sound_stop(voice);voice = sound_play(sound_get("take a chance"));
+    			PlayVoiceClip("take a chance", 1.0);
     		}
     	}else if(finalsmashnum == 1){ //tokens
-    		sound_stop(voice);voice = sound_play(sound_get("move your token"));
+    		PlayVoiceClip("move your token", 1.0);
     	}else if(finalsmashnum == 2){ //property
     		rand = random_func(0, 7, true);
     		if(rand <= 1){
-    			sound_stop(voice);voice = sound_play(sound_get("i love building houses"));
+    			PlayVoiceClip("i love building houses", 1.0);
     		}else if(rand == 2){
-    			sound_stop(voice);voice = sound_play(sound_get("free property"));
+    			PlayVoiceClip("free property", 1.0);
     		}else if(rand == 3){
-    			sound_stop(voice);voice = sound_play(sound_get("lets collect that rent now"));
+    			PlayVoiceClip("lets collect that rent now", 1.0);
     		}else if(rand == 4){
-    			sound_stop(voice);voice = sound_play(sound_get("time to raise the rent"));
+    			PlayVoiceClip("time to raise the rent", 1.0);
     		}else if(rand == 5){
-    			sound_stop(voice);voice = sound_play(sound_get("owning property never goes out of style"));
+    			PlayVoiceClip("owning property never goes out of style", 1.0);
     		}else if(rand == 6){
-    			sound_stop(voice);voice = sound_play(sound_get("its time for landgrab"));
+    			PlayVoiceClip("its time for landgrab", 1.0);
     		}
     	}
     }
@@ -1050,7 +1033,7 @@ if (attack == AT_NSPECIAL){
 			if(current_money >= 3000*discount){
     			money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 3000;money.hitbox_timer = 20;money.hit_priority = 0;
     			current_money -= 3000*discount;
-    		}
+    		}takearideontherailroad = false;
 		}
 	}
 	
@@ -1070,5 +1053,13 @@ if (attack == AT_NSPECIAL){
 	
 #define moneysfx
     rand = random_func(0, 5, true);
-    sound_stop(voice);
-	voice = sound_play(sound_get("money"+string(rand+1)),false,noone,2)
+	//voice = sound_play(sound_get("money"+string(rand+1)),false,noone,2);
+	PlayVoiceClip("money"+string(rand+1), 1.0);
+	
+#define PlayVoiceClip
+	/// PlayVoiceClip(name,?volume)
+	//Plays SFX
+	//if(!muted){
+		sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1, voicepitch);
+	//}

@@ -58,6 +58,10 @@ switch (my_hitboxID.attack)
 		if(my_hitboxID.hbox_num == 2) sound_play(asset_get("sfx_ice_nspecial_armor"), false, noone, 1, 1.3);
 	break;
 	case AT_USPECIAL:
+		if(my_hitboxID.hbox_num == 1){
+			var s = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35, leaf_small_hfx);
+			s.depth = depth-1
+		}
 		if(my_hitboxID.hbox_num >= 2){
 			sound_play(asset_get("sfx_ori_spirit_flame_hit_1"), false, noone, 1, 1);
 			hit_player_obj.trail_kill_effect_source = self;
@@ -138,7 +142,7 @@ if(my_hitboxID.attack == coin_atk){
 		  bounced_hit_timer = 0
 		  if(instance_exists(other.hit_player_obj)){
 
-		  	var dest_y = -150
+		  	var dest_y = -200
 		  	var s = other.hit_player_obj.y + dest_y - other.hit_player_obj.char_height;
 				var so = y;
 				var v_final = 0;

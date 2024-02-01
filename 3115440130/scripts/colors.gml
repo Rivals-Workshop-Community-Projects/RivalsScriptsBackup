@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 40 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 16 );
 
 // blue
 set_color_profile_slot( 1, 0, 61, 162, 235 ); //Orange
@@ -51,12 +51,12 @@ set_color_profile_slot( 2, 5, 35, 46, 33 ); //Body blacks
 set_color_profile_slot( 2, 6, 253, 253, 253 ); //Whites
 
 // red
-set_color_profile_slot( 3, 0, 255, 97, 97 ); //Orange
+set_color_profile_slot( 3, 0, 255, 108, 97 ); //Orange
 set_color_profile_slot( 3, 1, 255, 227, 227 ); //Yellow
-set_color_profile_slot( 3, 2, 204, 36, 36 ); //Red light
+set_color_profile_slot( 3, 2, 204, 47, 36 ); //Red light
 set_color_profile_slot( 3, 3, 140, 0, 0 ); //Red dark
-set_color_profile_slot( 3, 4, 69, 53, 50 ); //Browns
-set_color_profile_slot( 3, 5, 46, 40, 39 ); //Body blacks
+set_color_profile_slot( 3, 4, 102, 78, 73 ); //Browns
+set_color_profile_slot( 3, 5, 64, 56, 54 ); //Body blacks
 set_color_profile_slot( 3, 6, 253, 253, 253 ); //Whites
 
 // purple
@@ -148,6 +148,24 @@ set_color_profile_slot( 13, 3, 97, 122, 0 ); //Red dark
 set_color_profile_slot( 13, 4, 102, 115, 70 ); //Browns
 set_color_profile_slot( 13, 5, 57, 82, 43 ); //Body blacks
 set_color_profile_slot( 13, 6, 240, 255, 160 ); //Whites
+
+// Waga Baga Bobo
+set_color_profile_slot( 14, 0, 60, 240, 93 ); //Orange
+set_color_profile_slot( 14, 1, 105, 255, 115 ); //Yellow
+set_color_profile_slot( 14, 2, 22, 189, 111 ); //Red light
+set_color_profile_slot( 14, 3, 3, 133, 100 ); //Red dark
+set_color_profile_slot( 14, 4, 150, 176, 162 ); //Browns
+set_color_profile_slot( 14, 5, 49, 92, 84 ); //Body blacks
+set_color_profile_slot( 14, 6, 253, 253, 253 ); //Whites
+
+// Genesis
+set_color_profile_slot( 15, 0, 255, 0, 0 ); //Orange
+set_color_profile_slot( 15, 1, 253, 253, 253 ); //Yellow
+set_color_profile_slot( 15, 2, 125, 0, 0 ); //Red light
+set_color_profile_slot( 15, 3, 92, 0, 0 ); //Red dark
+set_color_profile_slot( 15, 4, 37, 35, 46 ); //Browns
+set_color_profile_slot( 15, 5, 51, 51, 56 ); //Body blacks
+set_color_profile_slot( 15, 6, 253, 253, 253 ); //Whites
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

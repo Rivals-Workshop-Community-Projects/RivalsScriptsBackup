@@ -42,11 +42,11 @@ set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 69);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 29);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 40); //40
+set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 50); //40
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.25);
-set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1.1);
+//set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1);//1.1
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));

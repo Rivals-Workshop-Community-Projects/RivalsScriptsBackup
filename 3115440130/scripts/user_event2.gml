@@ -19,7 +19,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 14;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
@@ -38,6 +38,8 @@ alt_name[10]  = "Kadachi";
 alt_name[11]  = "Crystal";
 alt_name[12]  = "Morro";
 alt_name[13]  = "Early Access";
+alt_name[14]  = "Champion";
+alt_name[15]  = "Genesis";
  
  
 //Patch
