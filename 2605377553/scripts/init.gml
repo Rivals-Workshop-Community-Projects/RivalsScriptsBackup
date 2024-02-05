@@ -216,6 +216,9 @@ bluehairandpronouns = false;
 pot_compat_variable = sprite_get("pumbo_compat");
 pot_compat_text = "Authentic Canadian Poutine"
 
+//tas alt
+hue_offset=0;
+hue_speed=1; //change this to change the speed of the hueshift
 
 //sweet victory
 //Quote

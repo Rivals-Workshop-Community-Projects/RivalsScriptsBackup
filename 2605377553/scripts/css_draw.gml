@@ -13,6 +13,9 @@ switch (get_player_color( player ) ){
     case 23:
         draw_sprite_ext(sprite_get("genesis_charselect"),1,x+8,y+8,2,2,0,-1,1);
     break;
+    case 25:
+        draw_sprite_ext(sprite_get("css_hopes"),1,x+8,y+8,2,2,0,-1,1);
+    break;
 }
 
 //special icons
@@ -27,7 +30,10 @@ switch (get_player_color(player)){
 	    draw_sprite(sprite_get("css_icon_riptide"),0,x+176,y+110);
 	break;
     case 23:
-	    draw_sprite(sprite_get("css_icon_genny"),0,x+176,y+110);	   
+	    draw_sprite(sprite_get("css_icon_genny"),0,x+176,y+110);
+	break;
+	case 25:
+	    draw_sprite(sprite_get("css_icon_hopes"),0,x+176,y+110);
 } 
 
 //--- ---
@@ -46,7 +52,7 @@ switch (get_player_color(player)){
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "mallowy"
+var qe_b = "mal"
 // ! you can now scroll down until you reach "the primary part you should change."
  
 var tmp_cur = 0;
@@ -176,6 +182,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[24,0] = make_color_rgb(179, 255, 209)
     ce[24,1] = "Champion's Key"
     ce[24,2] = "For true champions. Your handle is your key."      
+    ce[25,0] = make_color_rgb(32, 32, 32)
+    ce[25,1] = "Hopes & Dreams"
+    ce[25,2] = "Color scheme based on the Hopes & Dreams Major logo."    
 
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
@@ -287,6 +296,39 @@ hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.
 //--- ---
 
+//aesthetics
+if (!variable_instance_exists(id, "hue_offset")){
+
+hue_offset=0; }
+
+hue_speed=0.4; //change this to change the speed of the hueshift
+
+hue_offset+=hue_speed;
+hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+if (get_player_color( player ) == 25) { //THE RAINBOW FOR THE LGBTQ?
+
+    hue_offset+=hue_speed;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    color_rgb=make_color_rgb(249, 74, 255); //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+ 
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+
+    
+    set_color_profile_slot( 25, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 25, 5, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 25, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    
+    set_article_color_slot( 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 5, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    
+    init_shader();
+}
+//
 
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)

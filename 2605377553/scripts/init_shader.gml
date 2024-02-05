@@ -69,7 +69,11 @@ if (get_player_color( player ) == 23){
 	set_character_color_shading(6, 0.7);
 }
 
-
+//TAS
+if (get_player_color( player ) == 25){ 
+	outline_color=[32, 32, 32]
+	set_character_color_shading(6, 0);
+}
 
 
 

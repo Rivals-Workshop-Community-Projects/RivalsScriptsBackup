@@ -278,6 +278,37 @@ if (get_gameplay_time() == 1 && get_player_color( player ) == 24){
 //congrats, your diligence reading through dumbass code has earned you: the passwords for a few secret alts! you probably wont use them, but check them out by changing your in-game tag to the keys!
 
 
+//TAS
+if (get_player_color( player ) == 25) { //THE RAINBOW FOR THE LGBTQ?
+
+    hue_offset+=hue_speed;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    color_rgb=make_color_rgb(249, 74, 255); //input rgb values here, uses rgb to create a gamemaker colour variable
+    color_rgb2=make_color_rgb(74, 255, 143); //input rgb values here, uses rgb to create a gamemaker colour variable
+    color_rgb3=make_color_rgb(74, 158, 255); //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    
+    hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    hue2=(color_get_hue(color_rgb2)+hue_offset) mod 255; //finds the hue and shifts it
+    hue3=(color_get_hue(color_rgb3)+hue_offset) mod 255; //finds the hue and shifts it
+    
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    
+    
+    set_color_profile_slot( 25, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 25, 5, color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 25, 7, color_get_red(color_hsv3),color_get_green(color_hsv3),color_get_blue(color_hsv3)); //uses that variable to set the slot's new colours
+    
+    set_article_color_slot( 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 5, color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 7, color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2)); //uses that variable to set the slot's new colours
+    
+    init_shader();
+}
+
 //smoke consume (airdog)
 if state == PS_AIR_DODGE
 {
@@ -370,6 +401,9 @@ if (get_player_color(player) == 10){
 }
 if (get_player_color(player) == 23){
 	set_victory_portrait( sprite_get( "portrait_genny" ));
+}
+if (get_player_color(player) == 25){
+	set_victory_portrait( sprite_get( "portrait_hopes" ));
 }
 
 //handle death and strongs

@@ -1,0 +1,11 @@
+//draw_debug_text(x, y + 35, "dstrong" +string(dstrong_charged));
+//draw_debug_text(x, y + 35, "attack" +string(fspecialattack));
+//draw_debug_text(x, y + 55, "attack2" +string(fspecial2attack));
+//draw_debug_text(x, y + 75, "bubble" +string(bubbleexists));
+//draw_debug_text(x, y + 55, "tap" +string(nspecialtap));
+//draw_debug_text(x, y + 75, "tap2" +string(nspecialtap2));
+//draw_debug_text(x, y + 35, "fspecialgrab" +string(fspecialgrab));
+//draw_debug_text(x, y + 55, "uspecgrab" +string(uspecialgrabbed));
+//draw_debug_text(x, y + 75, "grab" +string(grabbed_player_obj));
+//draw_debug_text(x, y + 55, "grabtimer:" +string(grabtimer));
+//draw_debug_text(x, y + 55, "fspecdirection:" +string(bubbledamage));

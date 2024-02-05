@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_get("drone_out"), image_index, x, y, spr_dir, 1, image_angle, make_color_rgb(player_id.static_colorO[32]*255, player_id.static_colorO[33]*255, player_id.static_colorO[34]*255), 1);

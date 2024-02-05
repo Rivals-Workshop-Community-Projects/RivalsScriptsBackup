@@ -1,0 +1,1 @@
+sound_stop(float_sfx);
