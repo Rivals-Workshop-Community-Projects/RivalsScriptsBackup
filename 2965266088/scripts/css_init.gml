@@ -8,7 +8,7 @@ icon_y_pos = y + 108;
 preview_x = floor(x+10);
 preview_y = floor(y+10);
 
-
+alt_name = []; //refresh name array in case other characters use the same system
 
 //ALT NAMES
 //seasonal alt names
@@ -41,15 +41,16 @@ alt_name[15] = "Champion";
 alt_name[16] = season_name[get_match_setting(SET_SEASON)];
 alt_name[17] = "Infamous";
 alt_name[18] = "Ranked Gold"; //has the shiny effect
+alt_name[19] = "Hopes & Dreams";
 
-alt_name[19] = "Totsugeki!!!"; // has voicelines of the announcer from guilty gear strive
-alt_name[20] = "Emergence of Evil";
-alt_name[21] = "Triforce of Power";
-alt_name[22] = "Paimonial Rage (Lunch)";
-alt_name[23] = "Skyp'd Racer";
-alt_name[24] = "Elemental Guardian";
-alt_name[25] = "Driving Thunder";
-alt_name[26] = "Joyous Team Player";
+alt_name[20] = "Totsugeki!!!"; // has voicelines of the announcer from guilty gear strive
+alt_name[21] = "Emergence of Evil";
+alt_name[22] = "Triforce of Power";
+alt_name[23] = "Paimonial Rage (Lunch)";
+alt_name[24] = "Skyp'd Racer";
+alt_name[25] = "Elemental Guardian";
+alt_name[26] = "Driving Thunder";
+alt_name[27] = "Joyous Team Player";
 
 
 

@@ -1,3 +1,4 @@
+
 inputpressed = 0
 contrib = 0
 if init != 0 {

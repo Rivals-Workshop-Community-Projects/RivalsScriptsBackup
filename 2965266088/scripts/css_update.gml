@@ -18,4 +18,4 @@ if (alt_prev != alt_cur)
 }
 
 //alts with rainbows attatched
-if (alt_cur == 2 || alt_cur == 6 || alt_cur == 8) user_event(0);
+if (alt_cur == 2 || alt_cur == 6 || alt_cur == 8 || alt_cur == 19) user_event(0);

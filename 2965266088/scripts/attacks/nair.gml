@@ -7,26 +7,22 @@ set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 4);
 
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 window_num ++; //flail loop 1
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
 window_num ++; //flail loop 2 + endlag
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);

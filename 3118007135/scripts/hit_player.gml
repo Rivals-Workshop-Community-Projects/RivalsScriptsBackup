@@ -151,7 +151,7 @@ switch(hitmove){
         break;
     case AT_DSPECIAL_2:
         hit_player_obj.should_make_shockwave = false;
-        if hit_player_obj.wren_caught_cooldown == 0 and hit_player_obj.wren_stacks > 2{
+        if hit_player_obj.wren_caught_cooldown == 0 and hit_player_obj.wren_stacks > 2 and hit_player_obj.super_armor == false{
             hit_player_obj.wren_caught = true;
         }
         break;

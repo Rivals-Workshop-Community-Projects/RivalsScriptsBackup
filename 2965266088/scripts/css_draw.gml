@@ -7,12 +7,7 @@ alt_cur = get_player_color(player);
 shader_end();
 prepare_shader();
 
-//outline colors - different function but works like the outline_color array
-switch (alt_cur)
-{
-    case 14: set_outline(15, 56, 15); break; //early access / gameboy
-    default: set_outline(0, 0, 0); break;
-}
+
 
 shader_start();
 //draw portrait again to prevent fuckups
@@ -40,7 +35,16 @@ prepare_shader(); //resets shader
 //everything below this point shouldn't use shaders
 
 //alt icons
-if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
+switch (alt_cur)
+{
+    case 13: draw_sprite_ext(asset_get("prem_skin_spr"), 3, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //abyss
+    case 14: draw_sprite_ext(asset_get("prem_skin_spr"), 2, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //early access
+    case 15: draw_sprite_ext(asset_get("prem_skin_spr"), 8, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //milestone
+    case 16: draw_sprite_ext(asset_get("prem_skin_spr"), 7, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //seasonal
+    case 17: draw_sprite_ext(asset_get("prem_skin_spr"), 0, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //infamous/premium
+    case 18: draw_sprite_ext(asset_get("prem_skin_spr"), 5, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //gold rank
+    case 19: draw_sprite(sprite_get("css_icon_hopes"), 0, icon_x_pos, icon_y_pos); break; //TAS
+}
 
 //alt boxes
 draw_set_halign(fa_left);
@@ -88,14 +92,6 @@ if (css_anim_time < 140)
     static_colorT = colorT;
     static_colorI = colorI;
     init_shader();
-}
-#define set_outline(r, g, b)
-{
-    //we use this function to add custom outlines to our character's portrait
-    var start = 8*4; //outline
-    static_colorO[start] = r/255;
-    static_colorO[start+1] = g/255;
-    static_colorO[start+2] = b/255;
 }
 
 //functions by muno

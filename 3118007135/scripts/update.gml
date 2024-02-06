@@ -70,6 +70,7 @@ switch(wren_charge){
 #region // Wren Yo-Yo
 if !free or state == PS_WALL_JUMP{
     move_cooldown[AT_FSPECIAL] = 0;
+    move_cooldown[AT_USPECIAL] = 0;
     wren_nostall = 0;
 }
 

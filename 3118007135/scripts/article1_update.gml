@@ -273,7 +273,21 @@ switch(state){
             hbox = create_hitbox(AT_NSPECIAL_2, 2, floor(x + (-1 * spr_dir) + hsp), floor((y) + vsp));
         }
     	break;
+    case 15: // cooldown
+        sprite_index = spr_bubble_pull;
+        //is_hittable = true;
+        ignores_walls = true;
+        unbashable = 1;
+        // Return to owner
         
+        if instance_exists(hbox){
+        	instance_destroy(hbox);
+        }
+        
+        if state_timer >= 160{
+        	setState(5);
+        }
+    	break;
 }
 
 #region // Animation Handling
@@ -312,6 +326,7 @@ if instance_exists(self){
         	}
             break;
         case 5:
+        case 15:
             image_index = floor(state_timer / 8);
             break;
         case 11:
@@ -323,7 +338,6 @@ if instance_exists(self){
     }
 }
 #define stronginteraction()
-
 if (place_meeting(x, y, pHitBox) and pHitBox.player_id.url == player_id.url){
 	if ((pHitBox.attack == AT_FSTRONG and pHitBox.hbox_num == 5) or (pHitBox.attack == AT_USTRONG and pHitBox.hbox_num == 2) or (pHitBox.attack == AT_DSTRONG and (pHitBox.hbox_num == 2 or pHitBox.hbox_num == 5))){
 	    // Detect which strong

@@ -188,6 +188,8 @@ AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next
 window_loops = 0;                   //decides the amount of times to loop
 //usage: set_window_value(attack, window, AG_WINDOW_LOOP_TIMES, #loops)
 
+AG_MUNO_ATTACK_EXCLUDE = 80;
+
 /////////////////////////////////////////////////////// CUSTOM HITBOX COLOR SYSTEM //////////////////////////////////////////////////////
 
 //Custom Hitbox Colors System (by @SupersonicNK)
@@ -354,6 +356,19 @@ fx_fs_charge = hit_fx_create(sprite_get("fx_fs_charge"), 60);
 fx_fs_release = hit_fx_create(sprite_get("fx_fs_release"), 48);
 fx_fs_bighit = hit_fx_create(sprite_get("fx_fs_bighit"), 32);
 
+runeN_ignore_val = 0;
+if (has_rune("N"))
+{
+    for (var i = 0; i < array_length(dark_rec_vars); i++)
+    {
+        if (dark_rec_vars[i][0] == "dark_kb_mult")
+        {
+            runeN_ignore_val = i;
+            break;
+        }
+    }
+}
+
 
 //effects
 msg_counter = hit_fx_create(sprite_get("hud_msg1"), 60);
@@ -411,8 +426,12 @@ if (alt_cur == 14)
 koa_hat = (alt_cur == 16 && get_match_setting(SET_SEASON) == 3);
 
 //guilty gear VA enabled for may alt
-guilty_gear_va = (alt_cur == 19 && !playtest_active);
+guilty_gear_va = (alt_cur == 20 && !playtest_active);
 if (guilty_gear_va) sound_play(sound_get("ggsfx_intro1"));
+
+//TAS alt
+is_tas_alt = (alt_cur == 19);
+if (is_tas_alt) darkness_col = make_color_rgb(255, 255, 255);
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 
@@ -453,3 +472,6 @@ pkmn_stadium_name_override = "rumia";
 
 //sonic rainbow ring trick
 sonic_rainbowring_atk = 46;
+
+//Miiverse posts
+miiverse_post = sprite_get("miiverse");

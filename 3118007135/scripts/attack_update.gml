@@ -369,7 +369,10 @@ if !hitpause{
 	    						vsp = -6;
 	    						has_bounced = true;
     						} else {
-    							iasa_script();
+    							destroy_hitboxes();
+    							attack_end();
+    							set_state(PS_LANDING_LAG);
+    							move_cooldown[AT_FSPECIAL] = 30;
     						}
     						spawn_base_dust(x, y, "land");
     						sound_play(landing_lag_sound);
@@ -465,9 +468,10 @@ if !hitpause{
 	                if instance_exists(wren_yoyo){
 	                	switch(wren_tidecall_toggle){
 	                		case 0: // Default
-	                			if window_timer < 6 and attack_pressed{
-				                	attack_end();
+	                			if window_timer < 8 and attack_pressed and wren_yoyo.state != 15{
 				                	destroy_hitboxes();
+				                	attack_end();
+				                	set_state(PS_IDLE);
 				                	set_attack(AT_USPECIAL_2);
 	                			}
 	                			break;
@@ -476,8 +480,9 @@ if !hitpause{
 				                	clear_button_buffer(PC_SPECIAL_PRESSED);
 				                }
 	                			if window_timer == 5 and special_down{
+	                				destroy_hitboxes();
 				                	attack_end();
-				                	destroy_hitboxes();
+				                	set_state(PS_IDLE);
 				                	set_attack(AT_USPECIAL_2);
 	                			}
 	                			break;
@@ -587,6 +592,7 @@ if !hitpause{
         	can_wall_jump = true;
         	can_move = false;
         	can_fast_fall = false;
+        	move_cooldown[AT_USPECIAL] = 9999;
         	
 	        if window < 3{
 	            if (!moved_up){
@@ -628,9 +634,13 @@ if !hitpause{
 						hsp = clamp(hsp, -(air_max_speed*2.5), air_max_speed*2.5)
 						vsp = clamp(vsp, -djump_speed, max_fall)
     					_timesthrough = 0;
+    					move_cooldown[AT_NSPECIAL] = 60;
+    					move_cooldown[AT_DSPECIAL] = 60;
     				}
     				if shield_pressed{
     					_timesthrough = 0;
+    					move_cooldown[AT_NSPECIAL] = 60;
+    					move_cooldown[AT_DSPECIAL] = 60;
     				}
         			if (point_distance(x, y, wren_yoyo_old_x, wren_yoyo_old_y) <= 60){
         				window = 3;
@@ -660,8 +670,8 @@ if !hitpause{
         			}
         			break;
         		case 3:
-        			hsp = clamp(hsp, -4, 4)
-					vsp = clamp(vsp, -4, 4)
+        			hsp = clamp(hsp, -3, 3)
+					vsp = clamp(vsp, -3, 3)
         			break;
         	}
         	break;

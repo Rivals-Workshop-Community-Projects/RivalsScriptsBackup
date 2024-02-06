@@ -225,6 +225,15 @@ set_color_profile_slot( alt_cur, 4, 222, 216, 206 ); //black
 set_color_profile_slot( alt_cur, 5, 224, 149, 61 ); //white
 set_color_profile_slot( alt_cur, 6, 151, 179, 174 ); //red
 
+alt_cur ++; // TAS - hopes and dreams
+set_color_profile_slot( alt_cur, 0, 230, 231, 232 ); //darkness
+set_color_profile_slot( alt_cur, 1, 230, 231, 232 ); //darkness 2
+set_color_profile_slot( alt_cur, 2, 167, 168, 173 ); //hair
+set_color_profile_slot( alt_cur, 3, 210, 211, 217 ); //skin
+set_color_profile_slot( alt_cur, 4, 135, 135, 140 ); //black
+set_color_profile_slot( alt_cur, 5, 37, 37, 43 ); //white
+set_color_profile_slot( alt_cur, 6, 255, 0, 0 ); //red
+
 alt_cur ++; // may + GG strive announcer
 set_color_profile_slot( alt_cur, 0, 93, 164, 227 ); //darkness
 set_color_profile_slot( alt_cur, 1, 93, 164, 227 ); //darkness 2

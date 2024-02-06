@@ -24,3 +24,8 @@ if my_hitboxID.attack == AT_DSPECIAL_2{
     parry_lag = 10 + _dis;
     move_cooldown[AT_NSPECIAL] = 10;
 }
+
+if instance_exists(wren_yoyo) and my_hitboxID.type == 1{
+    wren_yoyo.state = 15;
+    wren_yoyo.state_timer = 0;
+}

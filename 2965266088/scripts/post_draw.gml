@@ -16,7 +16,8 @@ if (self_darkness && dark_shield_hp > 0 || is_attacking && attack == AT_DSPECIAL
     text_draw(
         x,
         y - char_height - 78 + 16 * (get_player_name(player) == `P${player}` || playtest_active) - hud_offset,
-        `${self_darkness ? dark_shield_hp : floor(temp_dark_shield_hp)}%`, darkness_col, "fName", fa_center, 1, true, 1, hud_frame_col
+        `${self_darkness ? dark_shield_hp : floor(temp_dark_shield_hp)}%`, darkness_col, "fName", fa_center, 1, true, 1,
+        !is_tas_alt ? hud_frame_col : make_color_rgb(static_colorO[6*4+0]*255, static_colorO[6*4+1]*255, static_colorO[6*4+2]*255)
     );
 }
 

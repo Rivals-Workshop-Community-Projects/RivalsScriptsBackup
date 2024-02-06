@@ -39,7 +39,12 @@ switch (alt_cur)
         break;
     case 14: //gameboy
         for (var i = 0; i < 7; i++) set_character_color_shading(i, 0);
-        outline_color = [15, 56, 15];
+        colorO[8*4 + 0] = 15/255;
+        colorO[8*4 + 1] = 56/255;
+        colorO[8*4 + 2] = 15/255;
+        static_colorO[8*4 + 0] = 15/255;
+        static_colorO[8*4 + 1] = 56/255;
+        static_colorO[8*4 + 2] = 15/255;
         break;
     case 16: //seasonals
         switch(get_match_setting(SET_SEASON))
@@ -56,16 +61,16 @@ switch (alt_cur)
     case 20: //dark matter
         set_character_color_shading(5, 0.75);
         break;
-    case 12: case 19: //laby elsword, may guilty gear
+    case 12: case 20: //laby elsword, may guilty gear
         set_character_color_shading(0, -2);
         set_character_color_shading(4, 1.5);
         break;
-    case 23: //bar
+    case 24: //bar
         set_character_color_shading(0, -1.5);
         set_character_color_shading(1, 3);
         set_character_color_shading(4, 2.5);
         break;
-    case 26: //player color
+    case 27: //player color
         var hud_r = color_get_red(get_player_hud_color(player));
         var hud_g = color_get_green(get_player_hud_color(player));
         var hud_b = color_get_blue(get_player_hud_color(player));
@@ -77,6 +82,15 @@ switch (alt_cur)
 
         //set_article_color_slot(0, floor(hud_r/4), floor(hud_g/4), floor(hud_b/4)); //darkness
         //set_article_color_slot(1, floor(hud_r), floor(hud_g), floor(hud_b)); //darkness 2
+        break;
+    case 19: //TAS - hopes and dreams
+        colorO[8*4 + 0] = 32/255;
+        colorO[8*4 + 1] = 32/255;
+        colorO[8*4 + 2] = 32/255;
+
+        static_colorO[8*4 + 0] = 32/255;
+        static_colorO[8*4 + 1] = 32/255;
+        static_colorO[8*4 + 2] = 32/255;
         break;
 }
 

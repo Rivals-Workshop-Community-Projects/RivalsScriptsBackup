@@ -6,6 +6,10 @@ add his portrait (not fixed) css_draw, or one of his preview sprites (located in
 all of aurs secret alts (which will be named) will show up at the bottom of the list, past the alts normally accessible in game.
 sorry if this is more work than just going in game and taking a picture, but i dont want his player alts to be accessible by others easily, so this is the option im going with.
 the current list of secret alts, for reference (this will hopefully be updated when i add them):
--mallow
--trail mix
+-mallow (pure gold)
+-tehend (sonic/super sonic)
+
+if you're using aurs portrait to make a roster graphic or otherwise:
+USE HIS FUCKING FIXED PORTRAIT GHRAHHRHHGHGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH THE SHINE ISNT ON HIS BODY NORMALLY JUST USE IT PLEASE
+thanks
 */

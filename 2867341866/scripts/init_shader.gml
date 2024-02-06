@@ -20,7 +20,7 @@ if real_alt == 0 {
 }
 //print(real_alt)
 if real_alt == 23 {
-      outline_color = [129, 87, 1];
+      //outline_color = [129, 87, 1];
 }
 
 if real_alt == 29 {
@@ -84,6 +84,9 @@ if get_gameplay_time() != 0 {
   }
 }
 
+if get_player_color( player ) == 22 {
+    outline_color = [20, 20, 20]
+}
 
 
 switch (get_match_setting(SET_SEASON)) {

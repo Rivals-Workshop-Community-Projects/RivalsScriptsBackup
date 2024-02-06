@@ -12,6 +12,9 @@ mod_dash_anim_speed = .1;
 
 pratfall_anim_speed = .25;
 
+hue_offset=0;
+hue_speed=2; //change this to change the speed of the hueshift
+
 base_walk_speed = 2; //default walk speed
 mod_walk_speed = 0.25; //amount to change by during adrenaline
 walk_speed = base_walk_speed;

@@ -59,8 +59,8 @@ set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 2);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -57);
-set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 63);
-set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 87); // was that the bite
+set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 53);
+set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 77); // was that the bite
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 85);

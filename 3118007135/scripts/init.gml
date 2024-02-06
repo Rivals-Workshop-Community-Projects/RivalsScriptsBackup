@@ -15,7 +15,7 @@ pratfall_anim_speed = .25;
 #endregion
 
 #region // Ground Movement
-walk_speed = 4.25;
+walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;         // DO NOT TOUCH
 initial_dash_time = 14;

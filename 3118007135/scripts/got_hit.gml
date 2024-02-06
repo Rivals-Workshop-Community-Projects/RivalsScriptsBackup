@@ -78,4 +78,5 @@ if wren_rivaltwo_mode{
 #endregion
 
 move_cooldown[AT_FSPECIAL] = 0;
+move_cooldown[AT_USPECIAL] = 0;
 wren_nostall = 0;

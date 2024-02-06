@@ -11,11 +11,11 @@ else
     else if (darkness_owner.dark_shield_hp > 0 && dark_state > -1) with (darkness_owner)
     {
         //average of darkness_col's color values to check if it's brighter than the most mid gray
-        var average = ((color_get_red(darkness_col) + color_get_green(darkness_col) + color_get_blue(darkness_col)) / 3);
         text_draw(
             other.x,
             other.y - other.char_height - 78 + 16 * (get_player_name(other.player) == `P${other.player}` || playtest_active) - other.hud_offset,
-            `${dark_shield_hp}%`, darkness_col, "fName", fa_center, 1, true, 1, average > 128 ? c_black : c_white
+            `${dark_shield_hp}%`, darkness_col, "fName", fa_center, 1, true, 1,
+            !is_tas_alt ? hud_frame_col : make_color_rgb(static_colorO[6*4+0]*255, static_colorO[6*4+1]*255, static_colorO[6*4+2]*255)
         );
     }
 }

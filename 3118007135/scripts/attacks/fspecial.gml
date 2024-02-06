@@ -3,17 +3,18 @@ make_attack(AT_FSPECIAL,
     AG_SPRITE, sprite_get("fspecial"),
     AG_NUM_WINDOWS, 6,
     AG_AIR_SPRITE, sprite_get("fspecial"),
-    AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt")
+    AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"),
+    AG_LANDING_LAG, 10
 )
 
 // Start-Up
 make_window(AT_FSPECIAL, 1,
     AG_WINDOW_TYPE, 1,
-    AG_WINDOW_LENGTH, 16,
+    AG_WINDOW_LENGTH, 19,
     AG_WINDOW_ANIM_FRAMES, 3,
     AG_WINDOW_HAS_SFX, 1,
     AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"),
-    AG_WINDOW_SFX_FRAME, 15
+    AG_WINDOW_SFX_FRAME, 18
 )
 
 // Leap

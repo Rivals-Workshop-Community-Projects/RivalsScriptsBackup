@@ -5,6 +5,7 @@ if state == PS_WALL_JUMP {
     move_cooldown[AT_DSPECIAL] = 0
 }
 
+
 //#region Adrenaline grind
 if (state == PS_WAVELAND && state_timer == 2 && !hitpause) {
     
@@ -69,6 +70,7 @@ if adrenaline_timer == 1 && !hitpause{
     sound_play(asset_get("sfx_abyss_despawn"))
 }
 if adrenaline_timer > 0 { 
+    hue_speed = 4
     if (state == PS_AIR_DODGE) {
         if (state_timer % 2 == 1) spawn_sparkle();
         // if (state_timer % 6 == 1) add_afterimage(20);
@@ -76,6 +78,8 @@ if adrenaline_timer > 0 {
     if (state == PS_WAVELAND) {
         spawn_sparkle();
     }
+} else {
+    hue_speed = 2
 }
 //#endregion
 
@@ -114,6 +118,38 @@ color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(col
 set_color_profile_slot( 3, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
 init_shader();
 */
+    //Rainbow
+
+    //Run once
+    hue_offset+=hue_speed;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    //Run for each color slot you're changing. If you're using different hues (EG Liz shading), make sure they're actually different - The colors still use the original colors saturation/value.
+    color_rgb = make_color_rgb (46, 61, 74 ); //pickdark //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+
+    set_color_profile_slot( 22, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+
+    //Repeat for each color slot.
+    color_rgb = make_color_rgb (96, 129, 156); //pickmid //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    set_color_profile_slot( 22, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+
+    //Repeat for each color slot.
+    color_rgb = make_color_rgb (142, 190, 230 ); //picklight //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    set_color_profile_slot( 22, 5, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+
+    init_shader();
+
+
+
 //print(ssnk_tagpal.active_clr)
 
 

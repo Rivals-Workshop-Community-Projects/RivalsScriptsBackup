@@ -1,3 +1,7 @@
+
+can_be_hit[player] = 999; // avoid self-hits
+if (hitstop > 0) exit;
+
 switch state {
     //falling
     case 0:

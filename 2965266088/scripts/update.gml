@@ -223,7 +223,6 @@ if (!has_rune("N")) for (var i = 0; i < array_length(dark_rec_vars); i++)
 {
     if (string_pos("sound", dark_rec_vars[i][0]) == 0)
     {
-        //variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness * !has_rune("N")]);
         variable_instance_set(
             self,
             dark_rec_vars[i][0],
@@ -235,6 +234,26 @@ if (!has_rune("N")) for (var i = 0; i < array_length(dark_rec_vars); i++)
     }
     else variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness]);
 }
+else for (var i = 0; i < array_length(dark_rec_vars); i++)
+{
+    if (i < runeN_ignore_val) variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1]);
+    else
+    {
+        if (string_pos("sound", dark_rec_vars[i][0]) == 0)
+        {
+            variable_instance_set(
+                self,
+                dark_rec_vars[i][0],
+                lerp(
+                    dark_rec_vars[i][1],
+                    dark_rec_vars[i][2],
+                    (dark_shield_hp/max_dark_shield_hp) * self_darkness)
+            );
+        }
+        else variable_instance_set(self, dark_rec_vars[i][0], dark_rec_vars[i][1 + self_darkness]);
+    }
+}
+
 
 if (self_darkness)
 {
@@ -613,7 +632,7 @@ if (state != PS_DEAD && guilty_gear_va)
 if (spawn_timer == 100 && guilty_gear_va) sound_play(sound_get("ggsfx_intro2"))
 
 //alts with rainbows attatched
-if (alt_cur == 2 || alt_cur == 6 || alt_cur == 8) user_event(0);
+if (alt_cur == 2 || alt_cur == 6 || alt_cur == 8 || is_tas_alt) user_event(0);
 
 //halloween hat effect
 if (koa_hat)

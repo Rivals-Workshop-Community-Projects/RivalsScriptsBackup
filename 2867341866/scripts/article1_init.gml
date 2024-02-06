@@ -19,3 +19,6 @@ lifetime = 150;
 state = 0;
 state_timer = 0;
 exist_timer = 0;
+
+is_hittable = true;
+can_be_hit[player] = 999; // avoid self-hits
