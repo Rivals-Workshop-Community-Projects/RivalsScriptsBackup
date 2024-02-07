@@ -28,6 +28,7 @@ switch(attack){
 		            y = y+vsp-i;
 		            hsp = 0;
 		            vsp = 0;
+		            ledge_snap = true;
 		            break;
 		        }
 		    }
@@ -46,6 +47,7 @@ switch(attack){
             attack = AT_EXTRA_1;
         }*/
         if(window == 1){
+        	fspec_start = free;
         	vsp = clamp(vsp, -6, 2);
         	/*if(special_down and window_timer == 4 and fspecial_stall_time < 20){
         		window_timer--;
@@ -140,7 +142,7 @@ switch(attack){
         		if(!free){
         			hsp = clamp(hsp, -5, 5);
         		} else if(fspecial_direction == 1){
-        			hsp = clamp(hsp, -6.5, 6.5);
+        			hsp = clamp(hsp, -5, 5);
         		}
         	}
         	if(free and (hsp > 5 or hsp < -5)){
@@ -154,6 +156,11 @@ switch(attack){
         }
         
         prev_fspecial_free = free;
+        
+        if(!free and fspec_start or ledge_snap){
+        	hsp *=.9;
+        	hsp = clamp(hsp, -14, 14);
+        }
         
         break;
     case AT_FSPECIAL_2:
@@ -288,7 +295,7 @@ switch(attack){
         		}
         	}
         	
-        	if(has_hit and (window == 2 or window == 3)){
+        	if(has_hit and !hitpause and (window == 2 or window == 3 or window == 1)){
         		can_jump = true;
         	}
         	if(window == 3){
@@ -440,9 +447,12 @@ switch(attack){
     		
 }
 
-if(has_hit and attack != AT_DSPECIAL and !uspecial_pratfall_go_brr and !nspecial_used){
+if(has_wisp_cancel and wisp_lockout == 0 and has_hit and attack != AT_FSPECIAL_2 and attack != AT_FSPECIAL and attack != AT_DSPECIAL and attack != AT_DSTRONG and attack != AT_FSTRONG and attack != AT_USTRONG and !uspecial_pratfall_go_brr and !nspecial_used){
 	
 	if(down_down and special_pressed){
+		sound_play(asset_get("sfx_ell_cooldown"), 0, noone, .6, 1.2);
+		spawn_hit_fx(x, y-36, 112)
+		has_wisp_cancel = false;
 			hitpause = 0;
 			attack_end();
 			destroy_hitboxes();
@@ -465,7 +475,7 @@ if uspecial_pratfall_go_brr and (attack == AT_UAIR or attack == AT_NAIR or attac
 if(uspecial_pratfall_go_brr and !free){
 	attack_end();
 	set_state(PS_LANDING_LAG);
-	landing_lag_time = 24;
+	landing_lag_time = 30;
 	uspecial_pratfall_go_brr = false;
 }
 

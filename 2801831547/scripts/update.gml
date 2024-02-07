@@ -14,8 +14,16 @@ if(!free){
 if(state == PS_JUMPSQUAT and down_down and special_pressed){
     set_attack(AT_DSPECIAL);
 }
-
-
+if(wisp_lockout > 0){
+	wisp_lockout--;
+}
+wisp_alpha+=wisp_change;
+if(wisp_alpha < .1){
+	wisp_change = .02;
+} else if (wisp_alpha > .5){
+	wisp_change = -.02;
+	
+}
 
 if(state == PS_WALL_JUMP){
 	invincible = false;

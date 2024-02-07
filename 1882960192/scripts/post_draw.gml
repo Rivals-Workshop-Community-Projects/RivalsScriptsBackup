@@ -11,10 +11,10 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 	if (get_player_color( player ) == 14) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} 
-/*	else 
-	if (get_player_color( player ) == 9) {
+	else 
+	if (get_player_color( player ) == 20) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_gen"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else 
+	} /* else 
 	if (get_player_color( player ) == 16) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} 
@@ -39,10 +39,10 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 	if (get_player_color( player ) == 14) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} 
-/*	else 
-	if (get_player_color( player ) == 9) {
+	else 
+	if (get_player_color( player ) == 20) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_gen"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
-	} else
+	} /* else
 	if (get_player_color( player ) == 16) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	}

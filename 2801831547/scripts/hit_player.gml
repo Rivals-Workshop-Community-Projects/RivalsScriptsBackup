@@ -13,6 +13,12 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 
 switch(my_hitboxID.attack){
     case AT_FSPECIAL:
+
+        if(!has_wisp_cancel){
+        wisp_lockout = 12;
+        has_wisp_cancel = true;
+        sound_play(asset_get("sfx_zetter_shine_charged"), 0, noone, 1, 1);
+        }
     /*
         var wisp = instance_create(hit_player_obj.x, hit_player_obj.y- hit_player_obj.char_height/2, "obj_article1");
         wisp.hsp = hsp;
@@ -36,6 +42,11 @@ switch(my_hitboxID.attack){
         if(my_hitboxID.hbox_num == 2){
             old_vsp = 0;
             old_hsp = 0;
+            if(!has_wisp_cancel){
+                wisp_lockout = 12;
+                has_wisp_cancel = true;
+                sound_play(asset_get("sfx_zetter_shine_charged"), 0, noone, 1, 1);
+            }
             set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
             set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .9);
             set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 12);

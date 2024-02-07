@@ -719,12 +719,12 @@ if attack == AT_FSPECIAL && window == 1 && window_timer == 1 {
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_socc2"));
 	}
 
-/*
-	if (get_player_color( player ) == 9) {
+
+	if (get_player_color( player ) == 20) {
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen"));
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen2"));
 	}
-
+/*
 	if (get_player_color( player ) == 16) {
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll"));
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll2"));

@@ -16,6 +16,11 @@ can_wall_cling = true;
 rainbow_color = c_white;
 rainbow_color2 = c_white;
 
+has_wisp_cancel = false;
+wisp_alpha = 0;
+wisp_change = .05;
+wisp_lockout = 0;
+
 dodge_trail_size = 8;
 dodge_trail_color = make_color_rgb(get_color_profile_slot_r(get_player_color(player), 0), get_color_profile_slot_g(get_player_color(player), 0), get_color_profile_slot_b(get_player_color(player), 0));
 for(var i = 0; i < dodge_trail_size; i++){
@@ -75,7 +80,7 @@ hitstun_grav = .48;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 15;
 wave_land_time = 8;
 wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding

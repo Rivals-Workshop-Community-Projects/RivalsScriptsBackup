@@ -152,3 +152,11 @@ if (get_player_color( player ) == 19) {
 	set_character_color_shading(2, .8);
 	set_character_color_shading(4, 2);
 }
+
+if (get_player_color( player ) == 20) {
+	set_character_color_shading(0, .5);
+	set_character_color_shading(1, .5);
+	set_character_color_shading(4, 2);
+	set_character_color_shading(5, 1.5);
+	set_character_color_shading(6, 1.5);
+}

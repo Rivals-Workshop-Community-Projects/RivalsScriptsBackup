@@ -36,7 +36,7 @@ alt_name[16] = "Flame Blue";
 alt_name[17] = "Ting a Bit";
 alt_name[18] = "Metal";
 alt_name[19] = "Orange";
- 
+alt_name[20] = "Genesis";
  
  
 //Alt

@@ -8,6 +8,7 @@ switch(attack){
     break;
     case AT_FSPECIAL:
         set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
+        ledge_snap = false;
         fspecial_direction = 0;
         fspecial_stall_time = 0;
         if(set_extra){
