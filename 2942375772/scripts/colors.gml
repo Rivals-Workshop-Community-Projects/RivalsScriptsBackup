@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 24, 17 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 25 );
 
 // Blue
 set_color_profile_slot( 1, 0, 50, 85, 194 ); //body blue
@@ -195,6 +195,30 @@ set_color_profile_slot( 21, 2, 55, 101, 212 ); //hat black
 set_color_profile_slot( 21, 3, 196, 223, 255 ); //hat white
 set_color_profile_slot( 21, 4, 255, 232, 156 ); //tamb white
 set_color_profile_slot( 21, 5, 55, 101, 212 ); //tamb black
+
+// Genesis
+set_color_profile_slot( 22, 0, 68, 67, 67 ); //body blue
+set_color_profile_slot( 22, 1, 184, 35, 58 ); //body white
+set_color_profile_slot( 22, 2, 56, 55, 55 ); //hat black
+set_color_profile_slot( 22, 3, 189, 189, 189 ); //hat white
+set_color_profile_slot( 22, 4, 184, 35, 58 ); //tamb white
+set_color_profile_slot( 22, 5, 56, 55, 55 ); //tamb black
+
+// Hopes & Dreams
+set_color_profile_slot( 23, 0, 98, 100, 105 ); //body blue
+set_color_profile_slot( 23, 1, 185, 187, 194 ); //body white
+set_color_profile_slot( 23, 2, 66, 67, 69 ); //hat black
+set_color_profile_slot( 23, 3, 185, 187, 194 ); //hat white
+set_color_profile_slot( 23, 4, 185, 187, 194 ); //tamb white
+set_color_profile_slot( 23, 5, 66, 67, 69 ); //tamb black
+
+// Unity
+set_color_profile_slot( 24, 0, 45, 145, 66 ); //body blue
+set_color_profile_slot( 24, 1, 222, 67, 67 ); //body white
+set_color_profile_slot( 24, 2, 50, 50, 51 ); //hat black
+set_color_profile_slot( 24, 3, 222, 67, 67 ); //hat white
+set_color_profile_slot( 24, 4, 222, 67, 67 ); //tamb white
+set_color_profile_slot( 24, 5, 50, 50, 51 ); //tamb black
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

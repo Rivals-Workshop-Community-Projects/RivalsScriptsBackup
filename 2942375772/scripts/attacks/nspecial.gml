@@ -20,12 +20,12 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("sfx_tambo_nspecial"));
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);

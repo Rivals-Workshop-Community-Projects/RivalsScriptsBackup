@@ -243,6 +243,38 @@ if state == PS_AIR_DODGE and window < 2 {
     }
 }
 
+//rainbow alt code (thanks mallow)
+
+//Rainbow
+
+if (get_player_color(player) == 23){
+    //Run once
+    hue_offset+=hue_speed;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    //Run for each color slot you're changing. If you're using different hues (EG Liz shading), make sure they're actually different - The colors still use the original colors saturation/value.
+    rainbow_alt();
+
+    set_color_profile_slot( 23, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+
+    //Repeat for each color slot.
+    rainbow_alt();
+    
+    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+    
+    //tambo
+    rainbow_alt();
+    
+    set_article_color_slot( 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+    
+    //vfx
+    rainbow_alt();
+    
+    set_article_color_slot( 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+    
+    init_shader();
+}
+
 #define spawn_colored_notes()
 var yy;
 yy = random_func(4, 40, false)-20
@@ -261,6 +293,7 @@ switch random_func( (x+y) mod 8, 3, true ) {
 spawn_hit_fx(x,y-20+yy,vfx)
 
 #define random_range()
+/// random_range(minimum, maximum)
 var minimum = argument0, maximum = argument1;
 
 var key = floor( abs(x - y + hsp - vsp) mod 10 );  
@@ -270,6 +303,7 @@ var range = (maximum - minimum)*100
 return  (random_func(key, range, false)/100) + minimum
 
 #define pop_note
+/// pop_note(ele)
 var ele = argument0;
 
 var val = notes[ele]
@@ -293,3 +327,8 @@ while i != array_length(notes) and notes[i] != -1 {
 }
 
 return i
+#define rainbow_alt()
+
+color_rgb = make_color_rgb (48, 147, 230 );
+hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue

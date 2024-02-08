@@ -14,9 +14,14 @@ if visible {
     
     with (obj_article3) {
         if (player_id == other.player_id and x == clamp(x, other.x-72, other.x + 72) and y == clamp(y, other.y-40, other.y + 40)) {
+            
             sound_play(asset_get("sfx_ori_grenade_hit_ground"))
             sound_play(asset_get("sfx_mol_norm_explode"))
             sound_play(asset_get("sfx_mol_flare_explode"))
+            if (get_player_color(player_id.player) == 21){
+                    sound_stop(asset_get("sfx_mol_flare_explode"))
+                    sound_play(sound_get("sfx_trampoline_pop_rt"))
+                }
             
             with other append_note(other.projectile_number);
             
@@ -84,14 +89,16 @@ if visible {
             with other spawn_hit_fx(other.x,other.y-20,player_id.tambo_vfx)
             
             if other.player_id == self and state == PS_ATTACK_AIR and attack == AT_FSPECIAL and (window > 1) {
-                if (get_player_color(player) == 21){
-                    sound_stop(asset_get("sfx_mol_flare_explode"))
-                    sound_play(sound_get("sfx_trampoline_pop_rt"))
+                if (get_player_color(player) != 21){
+
+                    sound_play(asset_get("sfx_ori_grenade_hit_ground"))
+                    sound_play(asset_get("sfx_mol_norm_explode"))
+                    sound_play(asset_get("sfx_mol_flare_explode"))
                 }
                 else {
                     sound_play(asset_get("sfx_ori_grenade_hit_ground"))
                     sound_play(asset_get("sfx_mol_norm_explode"))
-                    sound_play(asset_get("sfx_mol_flare_explode"))
+                    sound_play(sound_get("sfx_trampoline_pop_rt"))
                 }
                 
                 vsp = -10;

@@ -172,3 +172,7 @@ tcoart = sprite_get("tco_drawing");
 arena_title = "The Swingin' Serpent";
 boxing_title = "The Swingin' Serpent";
 greenwood_cheer = 2;
+
+//TAS alt
+hue_offset = 0;
+hue_speed = 0.5; //change this to change the speed of the hueshift
