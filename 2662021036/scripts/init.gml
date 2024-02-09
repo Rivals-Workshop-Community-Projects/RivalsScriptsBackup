@@ -51,7 +51,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 6;		// 4    -  7
 walljump_vsp        = 9;		// 7    -  10
 land_time           = 5;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 14;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.05;		// 0    -  0.15
@@ -77,7 +77,7 @@ leechseed_despawn = hit_fx_create( sprite_get( "leechseed_parried" ), 24 );
 leechseed_heal_effect = hit_fx_create( sprite_get( "leechseed_heal_effect" ), 20 );
 grassknot_right_fx = hit_fx_create( sprite_get( "grassknot_travel_effect_right" ), 36 );
 grassknot_left_fx = hit_fx_create( sprite_get( "grassknot_travel_effect_left" ), 36 );
-
+grassknot_activate_fx = hit_fx_create( sprite_get( "grassknot_activate" ), 14 );
 fstrong_hit_fx = hit_fx_create( sprite_get( "fstrong_hfx" ), 28 );
 dattack_hit_fx = hit_fx_create( sprite_get( "dattack_small_hfx" ), 12 );
 dattack_hit_fx_big = hit_fx_create( sprite_get( "dattack_big_hfx" ), 20 );
@@ -203,6 +203,8 @@ grassknot_exists = 0;
 spawn_y = y;
 spawn_x = x;
 can_spawn = false;
+
+knot_opacity = 0;
 
 secret_v = 99;
 

@@ -34,6 +34,10 @@ if (in_grassknot_loop = 0){
 sound_stop(grassknot_travel_SFX);
 }
 
+if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
+	knot_opacity = 0;
+}
+
 // poison status
 
 with (asset_get("oPlayer")){
@@ -41,7 +45,6 @@ with (asset_get("oPlayer")){
         vileplume_poison_effect = false;
     }
 }
-
 
 
 
@@ -88,8 +91,10 @@ with (asset_get("oPlayer")) {
 		
 
 		if (vileplume_poison_effect_timer == 20){
+			if initial_invince = 0{
 		    take_damage(player, other.player, 1);
 		    sound_play(other.poison_tick_sound);
+			}
 		    vileplume_poison_effect_timer = 0;
 		} 
 		
@@ -97,6 +102,5 @@ with (asset_get("oPlayer")) {
 	}
 
 }
-
 
 

@@ -5,9 +5,11 @@ if (instance_exists(myChair)){
   with myChair{
     if gethit_grabbed != noone && gethit_grabbed != player_id {
       with gethit_grabbed {
-        window = 19; window_timer = 0; attack_end();
-        if instance_exists(grab_victim) {
-          grab_victim.wrap_time = 0; grab_victim = noone;
+        if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
+          window = 19; window_timer = 0; attack_end();
+          if instance_exists(grab_victim) {
+            grab_victim.wrap_time = 0; grab_victim = noone;
+          }
         }
       }
     }

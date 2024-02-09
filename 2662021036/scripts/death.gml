@@ -14,3 +14,14 @@ sound_play(asset_get("sfx_syl_dspecial_plantaway"));
   leechseed = 0;
 }
 
+if grassknot_exists = 1{
+	
+if grassknot_article.state != PS_IDLE{
+	instance_destroy(grassknot_article)
+	grassknot_exists = 0;
+	sound_stop(grassknot_travel_SFX);
+	grassknot_travel_SFX = 0;
+	in_grassknot_loop = 0;
+}
+
+}

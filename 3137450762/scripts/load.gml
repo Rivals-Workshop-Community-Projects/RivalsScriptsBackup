@@ -65,7 +65,7 @@ sprite_change_offset("hitfx_crown_bigland", 94, 200);
 sprite_change_offset("hitfx_crown_medland", 114, 100);
 
 sprite_change_offset("lareinaring", 100, 200);
-sprite_change_offset("lareinaring2", 100, 200);
+sprite_change_offset("lareinaring_gx", 100, 200);
 sprite_change_offset("loyaltable_fragment_left", 60, 60);
 sprite_change_offset("loyaltable_fragment_right", 60, 60);
 

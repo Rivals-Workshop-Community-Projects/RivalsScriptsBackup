@@ -12,23 +12,23 @@ set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 //Hold
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 9);
 
 //Attack
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 2);
 
 
 //End
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 10);
@@ -38,7 +38,7 @@ set_num_hitboxes(AT_DSTRONG, 3);
 // sourspot, in center
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, -2);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -36);
@@ -60,7 +60,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 // main hit, on ends
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 40 + 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -35);
@@ -83,7 +83,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, -40 + 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -35);

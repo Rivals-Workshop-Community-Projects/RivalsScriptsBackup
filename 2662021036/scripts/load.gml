@@ -97,5 +97,6 @@ sprite_change_offset("grassknot_rise", 93, 110);
 sprite_change_offset("grassknot_lower", 93, 110);
 sprite_change_offset("grassknot_attack", 93, 150);
 sprite_change_offset("grassknot_attack_seed", 93, 270);
+sprite_change_offset("grassknot_activate", 93, 110);
 
 sprite_change_offset("miiverse_post", 60, 30);

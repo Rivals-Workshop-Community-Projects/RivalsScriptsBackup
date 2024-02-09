@@ -143,6 +143,11 @@ switch(state){
         if (image_index != 5){
         image_index = state_timer / 2;
         }
+        if state_timer = 1{
+        	activate_front = spawn_hit_fx( x, y, player_id.grassknot_activate_fx );
+        activate_front.depth = depth - 5;
+        	
+        }
      
          break;   
          

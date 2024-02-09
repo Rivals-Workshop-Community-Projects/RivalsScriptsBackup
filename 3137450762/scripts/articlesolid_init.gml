@@ -6,6 +6,16 @@ platform_width = 184;
 fans_sprite_index = sprite_get("lareinaring");
 fans_mask_index = sprite_get("lareinaring_mask");
 
+// replace the ring sprite for skins
+alt_palette = 0;
+with player_id {
+  var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+  other.alt_palette = get_player_color( real_player );
+}
+if alt_palette == 12 { // Genesis X
+  fans_sprite_index = sprite_get("lareinaring_gx");
+}
+
 table_sprite_index = sprite_get("loyaltable");
 table_cracked_sprite_index = sprite_get("loyaltable_cracked");
 table_empty_sprite_index = sprite_get("trustytable_empty");

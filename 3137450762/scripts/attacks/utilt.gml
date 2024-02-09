@@ -26,6 +26,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 10);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(edit_attack, e_window, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 e_window = 4; //Recovery
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
