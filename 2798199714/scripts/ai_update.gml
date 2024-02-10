@@ -1,6 +1,6 @@
 //ai_update - called every frame for this character as a CPU
 
-if(temp_level == 9){
+if((temp_level == 1 || temp_level == 2 || temp_level == 3 || temp_level == 9) && FinalSmash <= 0 && bossattack != 1 && bossattack != 3){
 	ai_attack_time = 0;
 }
 

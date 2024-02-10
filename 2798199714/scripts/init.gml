@@ -18,17 +18,17 @@ walk_accel = .3;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 7.5;
-dash_speed = 6.5;
+dash_speed = 7;
 dash_turn_time = 10;
 dash_turn_accel = 2;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .6;
+ground_friction = .4;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 9.5;
-short_hop_speed = 6;
+short_hop_speed = 5.5;
 djump_speed = 8;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
@@ -48,11 +48,11 @@ gravity_speed = .37;
 hitstun_grav = .45;
 knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 6; //normal landing frames
+land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 10;
-wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .1; //grounded deceleration when wavelanding
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .08; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -105,6 +105,7 @@ alt = get_player_color(player);
 bubble_x = 0;
 bubble_y = 8;
 
+is_KOB = true;
 upbground = false;
 upbtimer = 0;
 nspec_angle = 0;
@@ -143,6 +144,9 @@ laser_sfx = sound_get("laser2");
 laserboom_sfx = sound_get("laserboom");
 laserboom2_sfx = sound_get("laserboom2");
 contacthitbox = noone;
+size_mult = 1;big = false;mega = false;mini = false;normalsize = true;
+bosspress = 0;superop = false;op = false;superboss = false;hyperboss = false;BossMode = false;boss_hp = 300;boss_display_hp = 0;
+bossdead = false;bossdeadtimer = 0;bossmusic = noone;bossattack = false;
 lookuptime = 0;
 windowtiming = 0;
 loaded = false;
@@ -158,7 +162,10 @@ runeC_charge_multiplier2 = 1.0;
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
 //toonlink_randomizephoto = false;
-//miiverse_post = sprite_get("miiverse_post");
+miiverse_post = sprite_get("miiverse_post");
+kf_custom_icon = sprite_get("kf_icon");copy_ability_id = 6;kf_hud_offset = 0;
+arena_title = "Aeon Hero";
+boxing_title = "Aeon Hero";
 FinalSmash = 0;
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 220;

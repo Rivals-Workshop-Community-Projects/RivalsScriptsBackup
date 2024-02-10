@@ -121,6 +121,24 @@ if (attack == AT_BAIR){
 	}
 }
 
+/*
+if (attack == AT_USTRONG){
+	if (window == 1){
+		if (window_timer > ceil((get_window_value(attack, window, AG_WINDOW_LENGTH)) / 2) + 3){
+			if (strong_charge <= 2){//>
+				image_index = 1;
+			} else if (strong_charge > 2 && strong_charge < 8){//>
+				image_index = 2 + strong_charge/4;
+			} else {
+				image_index = 3;
+			}
+		} else {
+			image_index = 0;
+		}
+	}
+}
+*/
+
 if (attack == AT_NSPECIAL){
 	if (wings_out == true){
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_wings"));

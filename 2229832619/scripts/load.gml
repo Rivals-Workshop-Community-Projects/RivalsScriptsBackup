@@ -82,11 +82,13 @@ sprite_change_offset("hfx2", 100, 128);
 sprite_change_offset("hfx3", 100, 128);
 sprite_change_offset("hfx4", 128, 100);
 
+sprite_change_offset("idle_csschop", 74, 134);
 sprite_change_offset("na_codec", 52, 14);
 sprite_change_offset("na_halo", -10, 70);
 
 sprite_change_offset("na_feri", 84, 114);
 
 sprite_change_offset("sweetspot_circle", 100, 100);
+sprite_change_offset("na_square_what_is_this_for", 1, 1);
 
 

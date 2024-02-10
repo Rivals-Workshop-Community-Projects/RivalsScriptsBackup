@@ -26,6 +26,29 @@ if("alt_with_mods" in self) {
 	else switcher()
 }
 
+//Rainbow
+if(alt_cur == 5 and modifier == 1){
+	//Run once
+	hue_offset+=hue_speed;
+	hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+	
+	//Run for each color slot you're changing. If you're using different hues (EG Liz shading), make sure they're actually different - The colors still use the original colors saturation/value.
+	color_rgb = make_color_rgb (220, 210, 131); //pickdark //input rgb values here, uses rgb to create a gamemaker colour variable
+	hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+	color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+	
+	set_color_profile_slot( 5, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+	//Repeat for each color slot.
+	color_rgb = make_color_rgb (220, 210, 131); //pickmid //input rgb values here, uses rgb to create a gamemaker colour variable
+	
+	hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+	color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+	set_color_profile_slot( 5, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+	
+	init_shader();
+}
+
 alt_old = alt_cur
 
 #define bet(val, low, high)

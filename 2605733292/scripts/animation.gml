@@ -40,17 +40,18 @@ if (TrailerAssets_IsBeingUsed == true){
 	}
 }
 
+/*
 if (state == PS_WAVELAND){
 	sprite_index = sprite_get("crouch")
 	if (state_timer == 0 || state_timer == 1 || state_timer == 2 || state_timer == 3){
-		image_index = 2
+		image_index = 2;
 	} else if (state_timer == 4 || state_timer == 5){
-		image_index = 3
+		image_index = 3;
 	} else if (state_timer == 6 || state_timer == 7){
-		image_index = 4
+		image_index = 4;
 	}
 }
-
+*/
 if (attack == AT_EXTRA_2){
 	if (attack == AT_EXTRA_2 && window == 1){
 		//image_index = 4

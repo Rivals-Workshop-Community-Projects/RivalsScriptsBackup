@@ -27,7 +27,7 @@ if (attack == AT_NSPECIAL){
         	}
     	}
     }else if(window >= 6){
-    	can_wall_jump = true;
+    	if(FinalSmash <= 0)can_wall_jump = true;
     	if(window_timer >= 16){
         	fspec_stall = 1;
     	}
@@ -159,7 +159,7 @@ if (attack == AT_NSPECIAL){
                 if(y < -500){
 					x = round(room_width/2);y = -500;
 					window = 4;window_timer = 0;
-					sound_play(sound_get("finalsmashmusic"),false,noone,1.25);
+					if(!BossMode)sound_play(sound_get("finalsmashmusic"),false,noone,1.25);
 				}
             }
         }else if(window == 4){
@@ -526,7 +526,7 @@ if (attack == AT_NSPECIAL){
     	}else{
     		vsp *= 0.9;
     	}
-    	if(window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+    	if(window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	    	ustrongstall = true;
 	    	if(FinalSmash > 0){
 	        	FinalSmash += 1;
@@ -581,7 +581,7 @@ if (attack == AT_NSPECIAL){
     		//}
 	    }
     }
-    if(!dstrong_free && has_hit && window == 3){
+    if((!dstrong_free && has_hit || BossMode) && window == 3){
     	cancelattack();
     }
 }else if (attack == AT_DATTACK){
@@ -643,6 +643,13 @@ if (attack == AT_NSPECIAL){
 			laserscale = 0;
 			laserangle = 90;laseranglespeed = 0;
 			lasersound = sound_play(laser_sfx);sound_play(laserboom_sfx);sound_play(laserboom2_sfx);
+			if(FinalSmash > 0){
+				set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PARRY_STUN, false);
+				set_hitbox_value(AT_TAUNT, 1, HG_EXTENDED_PARRY_STUN, false);
+			}else{
+				reset_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PARRY_STUN);
+				reset_hitbox_value(AT_TAUNT, 1, HG_EXTENDED_PARRY_STUN);
+			}
 		}
 	}else if(window == 10){
 		set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 5);
@@ -651,6 +658,9 @@ if (attack == AT_NSPECIAL){
 		set_window_value(AT_TAUNT, 10, AG_WINDOW_LENGTH, 22+(player*5));
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			window = 11;window_timer = 0;
+		}
+		if(bossdead){
+			window_timer = 0;
 		}
 	}else if(window == 11){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
@@ -684,14 +694,16 @@ if (attack == AT_NSPECIAL){
 			laseranglespeed *= 0.9;shake_camera(1,2);
 			if(lasernum2 == 3){lasernum2 = 4;}
 		}else{
-			window = 9;window_timer = 0;sound_stop(lasersound);mask_index = asset_get("ex_guy_collision_mask");
-			if(FinalSmash > 0){
-	        	FinalSmash += 1;
-	        	if(FinalSmash > 9)FinalSmash = 0;
-	        	if("fs_using_final_smash" in self && fs_using_final_smash){
-                	fs_using_final_smash = false;fs_force_fs = false;fs_charge = 0;
-            	}
-		    }
+			if(!hitpause){
+				window = 9;window_timer = 0;sound_stop(lasersound);mask_index = asset_get("ex_guy_collision_mask");
+				if(FinalSmash > 0){
+		        	FinalSmash += 1;
+		        	if(FinalSmash > 9)FinalSmash = 0;
+		        	if("fs_using_final_smash" in self && fs_using_final_smash){
+	                	fs_using_final_smash = false;fs_force_fs = false;fs_charge = 0;
+	            	}
+			    }
+			}
 		}laserangle += 1*laseranglespeed;
 		
 		var radians = laserangle * pi / 180;
@@ -772,10 +784,10 @@ if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
 	        hsp = 0;vsp = 0;
 	    }
 	    if(strong_charge == round(30*runeC_charge_multiplier)){
-	        sound_play(sound_get("charge"));
+	        sound_play(sound_get("charge"),false,noone,0.75);
 	    }
 	    if(strong_charge == round(60*runeC_charge_multiplier)){
-	        sound_play(sound_get("charge2"));
+	        sound_play(sound_get("charge2"),false,noone,0.75);
 	    }
     }
 }

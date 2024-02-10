@@ -1,3 +1,23 @@
+
+//Genesis Glitch effect by Giik
+
+if genesis && random_func_2(69, 4, 1) == 1 {
+    // var col = ((random_func_2(49, 6, 1) == 3) ? c_red : c_white); // random red glitches
+    var col = c_white; // glitch particles always match flowey's base color
+    shader_start();
+    var fs = random_func(0, sprite_height -1, 1);
+    draw_sprite_part_ext(sprite_index,image_index,0,fs, abs(sprite_width), random_func(1, 20, 1)+1, (x+(random_func(2, 3, 1)-1)*7)  - sprite_get_xoffset(sprite_index)*spr_dir*2, y+fs*2 - sprite_get_yoffset(sprite_index)*2, spr_dir*2, 2, col, 1);
+    shader_end();
+}
+
+//Genesis shockwaveVFX
+
+if("genesis_shockwave_vfx" in self && genesis_shockwave_vfx && genesis){
+    shader_start();
+    draw_sprite_ext(sprite_index, image_index, x, y + ((char_height/2 - 0) * random_func_2((sprite_index%200), 2, false) * (attack == AT_UAIR || attack == AT_FAIR)), image_xscale + (0.5 + random_func_2((sprite_index%200), 2, false)) * spr_dir, image_yscale + 0.5 + random_func_2((sprite_index%200), 2, false), image_angle, c_red, 1 - (hitstop_full-hitstop)/hitstop_full/2);
+    shader_end();
+}
+
 //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
 //       Playtest Changelog Template by hyuponia. change the code as much you'd like
 //       please paste somewhere in "post_draw.gml"!
@@ -28,7 +48,7 @@ Main spriter and creative director: Soka
 Main coder: Reaver of Souls
 Main sound source: Undertale
 Additional spriters: Rosar78, Zard, Delta Parallax, Camostar34
-Additional coders: Delta Parallax, DarkDakurai, V_force
+Additional coders: Delta Parallax, DarkDakurai, V_force, Krispy Korpse
 Victory theme musician: lock_wisp"
         
         patch_note_title[i] = "Version 1.0"
@@ -77,6 +97,39 @@ Victory theme musician: lock_wisp"
 + Pratland does not occur if Flowey is hit or dies before landing.
 - Friendliness Pellet no longer gives Flowey parry invincibility.
 + Fixed alt customizer."
+
+        patch_note_title[i] = "Version 1.7"
+        patch_note_text[i++] = 
+        "Version 1.7
+General:
+= Genesis alt added
+= Added intro animation
++ Increased waveland adj 1.1 -> 1.3
+= Potentially fixed issue keeping update from running
+= Fixed issue where selecting the custom color alt in the CSS then switching to the true form alt changed the alt’s face to a random color
+Jab:
+- Increased jab 1 end lag 9 -> 14
++ Jab 1 hitstun multiplier normalized .85 -> 1
+== Changes made to keep jab 1 from true comboing into itself
+Fair:
+= Spike hitpause adjusted 18/.9 -> 14/1.4
++ Extra camera shake added to spike
+Ftilt:
++ Hitstun mult normalized .8 -> 1
+== V_fork why did you leave this in here
+- Kb decreased to compensate 7/.75 -> 7/.7
+Ustrong:
+== Fixed issue where grab code was applied to the launcher rather than the scoop hit
+Dstrong:
+== Hitbox shape adjusted to better fit the animation
+Dair:
+== Adjusted whiff sfx timing
+Nspecial:
+== Fixed issue where pellet homed onto dead opponents
+Dspecial:
+- Aerial start up increased 18 -> 20
++ Aerial fall speed increased 10 -> 16
+= Adjusted sfx"
         
         //these are optional things that you can change if you'd like, but probably best to keep as-is
         pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.

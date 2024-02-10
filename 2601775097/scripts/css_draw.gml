@@ -11,10 +11,10 @@ switch (alt_cur)
     case 15: //NES CSS outline
         draw_sprite_ext(sprite_get("css_overlay"), 1, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
-    case 25: //Helel CSS outline
+    case 26: //Helel CSS outline
         draw_sprite_ext(sprite_get("css_overlay"), 2, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
-    case 26: //Theikos Bar
+    case 27: //Theikos Bar
         draw_sprite_ext(sprite_get("css_overlay"), 3, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
 }
@@ -55,7 +55,8 @@ shader_end();
 
 //ICONS
 if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
-if (alt_cur >= 25 && alt_cur <= 26) draw_sprite(sprite_get("css_icons"), alt_cur+5, icon_x_pos, icon_y_pos);
+if (alt_cur >= 26 && alt_cur <= 27) draw_sprite(sprite_get("css_icons"), alt_cur+4, icon_x_pos, icon_y_pos);
+if (alt_cur == 19) draw_sprite(sprite_get("css_icon_genesis"), 0, icon_x_pos, icon_y_pos);
 
 
 //alt boxes

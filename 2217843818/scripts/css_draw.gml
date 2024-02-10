@@ -38,6 +38,35 @@ alt_name[20] = "Coral";
 alt_name[21] = "Riptide";
 alt_name[22] = "Genesis";
 alt_name[23] = "Champion";
+alt_name[24] = "Hopes and Dreams";
+
+
+//tas5 alt
+if !("hue_offset" in self) hue_offset = 0
+if (get_player_color(player) == 24){
+    //Run once
+    hue_offset+=0.7;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    //Run for each color slot you're changing. If you're using different hues (EG Liz shading), make sure they're actually different - The colors still use the original colors saturation/value.
+    color_rgb = make_color_rgb (220, 141, 141 ); //pickdark //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+
+    set_color_profile_slot( 24, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+    set_article_color_slot( 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv), 1); //Set color alt/slot to the new color.
+
+    //Repeat for each color slot.
+    color_rgb = make_color_rgb (163, 86, 86); //pickmid //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    set_color_profile_slot( 24, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+    set_article_color_slot( 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv), 1); //Set color alt/slot to the new color.
+
+    init_shader();
+}
 
 
 

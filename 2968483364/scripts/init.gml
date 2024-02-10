@@ -100,9 +100,6 @@ bubble_y = 8;
 
 small_sprite = true;
 
-hue = 7;
-hue_speed = 1; //change this to change the speed of the hueshift
-
 stored_dmg = 0;             //current self damage
 storedmg_max = 30;          //max self damage before install change
 selfdmg_val = [1, 2, 3];    //self damage values, small/medium/heavy
@@ -119,6 +116,13 @@ fire_col = [[get_color_profile_slot_r(col_num, 2), get_color_profile_slot_g(col_
 fireblue_col = [[get_color_profile_slot_r(col_num, 8), get_color_profile_slot_g(col_num, 8), get_color_profile_slot_b(col_num, 8)],
                 [get_color_profile_slot_r(col_num, 9), get_color_profile_slot_g(col_num, 9), get_color_profile_slot_b(col_num, 9)],
                 [get_color_profile_slot_r(col_num, 10), get_color_profile_slot_g(col_num, 10), get_color_profile_slot_b(col_num, 10)]];
+
+hue = 7;
+hue_speed = col_num==12? 4:1; //change this to change the speed of the hueshift
+if(col_num == 12){
+    set_victory_portrait(sprite_get("portrait hope"));
+    set_victory_sidebar( sprite_get("result_small_hope"));
+}
 
 //install movement stats
 blue_init_dash = [initial_dash_speed, 9];

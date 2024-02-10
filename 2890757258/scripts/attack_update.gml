@@ -248,27 +248,19 @@ if (attack == AT_DSPECIAL)
 
 if (attack == AT_DSPECIAL_AIR)
 {
-	can_wall_jump = true;
-	can_fast_fall = false;
+	can_wall_jump 	= true;
+	can_move 		= false;
+	can_fast_fall 	= false;	
 	
 	if (window == 1)
 	{
 		reset_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS);
-		
-		can_move 		= false;
 		
 		ele_loop 		= 0;
 		ele_ouch 		= false;
 		
 		vsp 			= -1;
 		hsp 			= 0;		
-		
-		//	Again, away with you
-		/*if (window_timer > 1 && window_timer < 18)
-		{
-			invincible 		= true;
-			//invince_time 	= 14;
-		}*/
 		
 		if (window_timer == 2 && !hitpause)
 		{
@@ -353,9 +345,30 @@ if (attack == AT_DSPECIAL_AIR)
 		}
 	}
 	
+	//	And here's the cancellation prize~
+	//	Part 1
+	if (window == 6 && window_timer > 5)
+	{	
+		if (ele_ouch == true)
+		{
+			//	Forcing the transform VFX to play once and not overlap with the other ones
+			if (attack_pressed || strong_down || special_pressed || 
+			shield_pressed || jump_pressed || left_down || right_down)
+			{
+				iasa_script();
+				
+				if (!hitpause)
+				{
+					transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
+				}
+			}			
+		}
+	}
+	
+	//	And here's the cancellation prize~
+	//	Part 2
 	if (window == 7)
 	{
-		//	And here's the cancellation prize~
 		if (ele_ouch == true)
 		{
 			iasa_script();
@@ -366,9 +379,12 @@ if (attack == AT_DSPECIAL_AIR)
 			}
 		}
 		
-		if (window_timer == 6 && !has_hit_player && !hitpause)
-		{
-			transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
+		else
+		{		
+			if (window_timer == 6 && !hitpause)
+			{
+				transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
+			}
 		}
 	}
 }
@@ -441,11 +457,14 @@ if (attack == AT_USPECIAL)
 	{
 		vsp = -12;
 	}
+
+	if (window == 4 && window_timer > 7 || window == 5 || window == 6)
+	{
+		can_move 	= true;
+	}
 	
 	if (window == 6)
-	{
-		can_move 	= true
-		
+	{		
 		if (window_timer == 5 && !hitpause)
 		{
 			transform_effect = spawn_hit_fx(x-76*spr_dir, y-104, vfx_transform);

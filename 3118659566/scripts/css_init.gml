@@ -41,7 +41,10 @@ alt_name[20] = "Tehend";
 alt_name[21] = "Color-Me Yono";
 alt_name[22] = "NB";
 alt_name[23] = "Transcendent";
-
+alt_name[24] = "Umbra I";
+alt_name[25] = "Umbra II";
+alt_name[26] = "Umbra III";
+alt_name[27] = "GENESIS";
 alt_cur = 0; //checks current alt
 alt_prev = 0; //checks previous alt
 alt_total = array_length(alt_name); //sets the alt total depending on the amount of alt names provided

@@ -6,6 +6,9 @@ if !hitstop{
 }
 flowey_savecooldown--;
 
+//play intro
+if (has_intro && get_gameplay_time() == 4) { set_attack(2); has_intro = false; }
+
 with oPlayer{
     if id != other.id && url == other.url{
         other.flowey_morefloweys = 1;
@@ -109,6 +112,25 @@ else{
     set_ui_element(UI_OFFSCREEN, sprite_get("offscreen"));
 }
 
+// genesis vfx
+if(genesis){
+	if(!hitpause){
+		genesis_shockwave_vfx = false;
+	}
+	var reset_glitch_sound = true;
+	with(oPlayer){
+		if(self != other){
+			if(hit_player_obj == other && (state_cat == SC_HITSTUN || state == PS_TUMBLE)){
+				reset_glitch_sound = false;
+			}
+		}
+	}
+	if(reset_glitch_sound && genesis_sound_enabled){
+		sound_volume(genesis_glitch_sound, 0, 1);
+		genesis_sound_enabled = false;
+	}
+}
+
 //dialogue buddy
 
 diagchoice = [
@@ -116,6 +138,7 @@ diagchoice = [
     "Fighting me? You really are an idiot.",
     "You aren't afraid of a few friendliness pellets, are you?"]
     
+if("otherUrl" in self){
 
 if(otherUrl == 2802388684) 
     {
@@ -781,3 +804,6 @@ if(otherUrl == 2802388684)
             }
         }
     }
+
+
+}

@@ -142,6 +142,36 @@ if(static >= 100){
 
 pullFactor()
 
+//Rainbow
+if(col == 5 and modifier == 1){
+	//Run once
+	hue_offset+=hue_speed;
+	hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+	
+	//Run for each color slot you're changing. If you're using different hues (EG Liz shading), make sure they're actually different - The colors still use the original colors saturation/value.
+	color_rgb = make_color_rgb (220, 210, 131); //pickdark //input rgb values here, uses rgb to create a gamemaker colour variable
+	hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+	color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+	
+	set_color_profile_slot( 5, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+	static_colorO[@3*4] = color_get_red(color_hsv)/255
+	static_colorO[@3*4 + 1] = color_get_green(color_hsv)/255
+	static_colorO[@3*4 + 2] = color_get_blue(color_hsv)/255
+	
+	//Repeat for each color slot.
+	color_rgb = make_color_rgb (220, 210, 131); //pickmid //input rgb values here, uses rgb to create a gamemaker colour variable
+	
+	hue = (color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+	color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+	set_color_profile_slot( 5, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //Set color alt/slot to the new color.
+	
+	static_colorO[@0*4] = color_get_red(color_hsv)/255
+	static_colorO[@0*4 + 1] = color_get_green(color_hsv)/255
+	static_colorO[@0*4 + 2] = color_get_blue(color_hsv)/255
+	
+	init_shader();
+}
 // var print_input = 'f'; //Change this to change what keyboard input prints your variables.
 // //Capital letters require shift to be held (e.g. 'F' as Shift + F, just like typing normally) 
 // if string_pos(print_input, keyboard_string) {
@@ -151,6 +181,7 @@ pullFactor()
 //alternatively, if you can otherwise ensure it only runs for a frame, just call print_vars();
 
 #define print_vars
+/// @param instance = self
 /// print_vars(instance = self)
 //prints the variables in the given instance, or in whatever instance ran the function.
 var instance = argument_count > 0 ? argument[0] : self;

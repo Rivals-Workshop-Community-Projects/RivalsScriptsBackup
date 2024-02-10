@@ -101,8 +101,8 @@ set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_X, 18);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_Y, -90);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_WIDTH, 60);
-set_hitbox_value(AT_USPECIAL_2, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_WIDTH, 70);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_HEIGHT, 70);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_DAMAGE, 5);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_ANGLE, 90); //292 
@@ -122,8 +122,8 @@ set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_X, 2);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_WIDTH, 80);
-set_hitbox_value(AT_USPECIAL_2, 4, HG_HEIGHT, 60);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_WIDTH, 85);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HEIGHT, 65);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_DAMAGE, 5);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_ANGLE, 90); //292 

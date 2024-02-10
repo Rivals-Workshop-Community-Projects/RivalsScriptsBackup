@@ -187,6 +187,7 @@ col_timer = 0;
 col_timer_max = 30;
 col_phase = 0;
 ea_init = 0;
+s_init = 0;
 giy_timer = 0;
 giy_max = 192;
 giy_speed = 0.3;
@@ -222,6 +223,8 @@ na_bh = false;
 
 v_fstrong = false;
 eyechecker = false;
+
+laseroverlay_init = false;
 
 practice = false;
 

@@ -236,35 +236,35 @@ set_color_profile_slot( 20, 5, 255, 172, 68 ); //Pillow Case
 set_color_profile_slot( 20, 6, 220, 241, 243 ); //Pillow White
 set_color_profile_slot( 20, 7, 9, 78, 183 ); //Eye Color
 
-// Emerald Kirby
-set_color_profile_slot( 21, 0, 107, 252, 187 ); //Body
-set_color_profile_slot( 21, 1, 242, 164, 97 ); //Feet
-set_color_profile_slot( 21, 2, 80, 187, 108 ); //Blush
+// Snow Kirby
+set_color_profile_slot( 21, 0, 255, 255, 255 ); //Body
+set_color_profile_slot( 21, 1, 228, 83, 107 ); //Feet
+set_color_profile_slot( 21, 2, 186, 143, 142 ); //Blush
 set_color_profile_slot( 21, 3, 185, 107, 252 ); //Hat
 set_color_profile_slot( 21, 4, 255, 255, 0 ); //Pattern
 set_color_profile_slot( 21, 5, 255, 172, 68 ); //Pillow Case
 set_color_profile_slot( 21, 6, 220, 241, 243 ); //Pillow White
 set_color_profile_slot( 21, 7, 9, 78, 183 ); //Eye Color
 
-// Snow Kirby
-set_color_profile_slot( 22, 0, 255, 255, 255 ); //Body
-set_color_profile_slot( 22, 1, 228, 83, 107 ); //Feet
-set_color_profile_slot( 22, 2, 186, 143, 142 ); //Blush
-set_color_profile_slot( 22, 3, 185, 107, 252 ); //Hat
-set_color_profile_slot( 22, 4, 255, 255, 0 ); //Pattern
-set_color_profile_slot( 22, 5, 255, 172, 68 ); //Pillow Case
-set_color_profile_slot( 22, 6, 220, 241, 243 ); //Pillow White
-set_color_profile_slot( 22, 7, 9, 78, 183 ); //Eye Color
-
 // Ability (Adventure)
-set_color_profile_slot( 23, 0, 252, 202, 196 ); //Body
-set_color_profile_slot( 23, 1, 252, 130, 116 ); //Feet
-set_color_profile_slot( 23, 2, 252, 130, 116 ); //Blush
-set_color_profile_slot( 23, 3, 156, 78, 4 ); //Hat
-set_color_profile_slot( 23, 4, 244, 214, 164 ); //Pattern
-set_color_profile_slot( 23, 5, 170, 154, 3 ); //Pillow Case
-set_color_profile_slot( 23, 6, 244, 214, 164 ); //Pillow White
-set_color_profile_slot( 23, 7, 0, 0, 0 ); //Eye Color
+set_color_profile_slot( 22, 0, 252, 202, 196 ); //Body
+set_color_profile_slot( 22, 1, 252, 130, 116 ); //Feet
+set_color_profile_slot( 22, 2, 252, 130, 116 ); //Blush
+set_color_profile_slot( 22, 3, 156, 78, 4 ); //Hat
+set_color_profile_slot( 22, 4, 244, 214, 164 ); //Pattern
+set_color_profile_slot( 22, 5, 170, 154, 3 ); //Pillow Case
+set_color_profile_slot( 22, 6, 244, 214, 164 ); //Pillow White
+set_color_profile_slot( 22, 7, 0, 0, 0 ); //Eye Color
+
+// Hope - TAS5 Hopes and Dreams
+set_color_profile_slot( 23, 0, 140, 140, 143 ); //Body
+set_color_profile_slot( 23, 1, 99, 99, 99 ); //Feet
+set_color_profile_slot( 23, 2, 255, 145, 208 ); //Blush
+set_color_profile_slot( 23, 3, 75, 75, 99 ); //Hat
+set_color_profile_slot( 23, 4, 255, 145, 208 ); //Pattern
+set_color_profile_slot( 23, 5, 84, 84, 105 ); //Pillow Case
+set_color_profile_slot( 23, 6, 108, 108, 112 ); //Pillow White
+set_color_profile_slot( 23, 7, 255, 145, 208 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -106,14 +106,14 @@ set_color_profile_slot( 7, 5, 186, 186, 186 ); //Black
 set_color_profile_slot( 7, 6, 115, 50, 0 ); //Eyes
 set_color_profile_slot( 7, 7, 0, 255, 0 ); //Table
 
-// Ciclope
-set_color_profile_slot( 8, 0, 219, 127, 98 ); //Light Fur
-set_color_profile_slot( 8, 1, 28, 24, 18 ); //Dark Fur
-set_color_profile_slot( 8, 2, 43, 43, 43 ); //Red Tights
-set_color_profile_slot( 8, 3, 156, 62, 33 ); //Yellow Tights
-set_color_profile_slot( 8, 4, 38, 38, 38 ); //Kneepads
-set_color_profile_slot( 8, 5, 41, 41, 41 ); //Black
-set_color_profile_slot( 8, 6, 120, 120, 120 ); //Eyes
+// Valentine's
+set_color_profile_slot( 8, 0, 219, 175, 203 ); //Light Fur
+set_color_profile_slot( 8, 1, 38, 0, 22 ); //Dark Fur
+set_color_profile_slot( 8, 2, 163, 36, 104 ); //Red Tights
+set_color_profile_slot( 8, 3, 135, 17, 17 ); //Yellow Tights
+set_color_profile_slot( 8, 4, 242, 242, 242 ); //Kneepads
+set_color_profile_slot( 8, 5, 36, 36, 36 ); //Black
+set_color_profile_slot( 8, 6, 209, 96, 164 ); //Eyes
 set_color_profile_slot( 8, 7, 0, 255, 0 ); //Table
 
 // Akira Taue
@@ -186,14 +186,14 @@ set_color_profile_slot( 15, 5, 26, 26, 26 ); //Black
 set_color_profile_slot( 15, 6, 201, 123, 164 ); //Eyes
 set_color_profile_slot( 15, 7, 0, 255, 0 ); //Table
 
-// Tizoc (D Palette)
-set_color_profile_slot( 16, 0, 114, 122, 140 ); //Light Fur
-set_color_profile_slot( 16, 1, 21, 22, 26 ); //Dark Fur
-set_color_profile_slot( 16, 2, 25, 31, 33 ); //Red Tights
-set_color_profile_slot( 16, 3, 51, 6, 6 ); //Yellow Tights
-set_color_profile_slot( 16, 4, 36, 59, 66 ); //Kneepads
-set_color_profile_slot( 16, 5, 48, 60, 64 ); //Black
-set_color_profile_slot( 16, 6, 129, 199, 199 ); //Eyes
+// Becky Lynch (WM 35)
+set_color_profile_slot( 16, 0, 209, 104, 46 ); //Light Fur
+set_color_profile_slot( 16, 1, 54, 25, 11 ); //Dark Fur
+set_color_profile_slot( 16, 2, 15, 11, 15 ); //Red Tights
+set_color_profile_slot( 16, 3, 145, 122, 3 ); //Yellow Tights
+set_color_profile_slot( 16, 4, 28, 28, 28 ); //Kneepads
+set_color_profile_slot( 16, 5, 33, 33, 33 ); //Black
+set_color_profile_slot( 16, 6, 82, 48, 28 ); //Eyes
 set_color_profile_slot( 16, 7, 0, 255, 0 ); //Table
 
 // Beowulf
@@ -250,7 +250,7 @@ set_color_profile_slot( 21, 7, 15, 31, 112 ); //Table
 set_color_profile_slot( 22, 0, 184, 128, 83 ); //Light Fur
 set_color_profile_slot( 22, 1, 219, 70, 201 ); //Dark Fur
 set_color_profile_slot( 22, 2, 242, 233, 224 ); //Red Tights
-set_color_profile_slot( 22, 3, 158, 142, 142 ); //Yellow Tights
+set_color_profile_slot( 22, 3, 23, 21, 21 ); //Yellow Tights
 set_color_profile_slot( 22, 4, 26, 26, 26 ); //Kneepads
 set_color_profile_slot( 22, 5, 201, 134, 64 ); //Black
 set_color_profile_slot( 22, 6, 0, 88, 150 ); //Eyes

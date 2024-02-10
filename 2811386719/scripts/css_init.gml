@@ -40,6 +40,8 @@ flags_open = false
 flags_spr = sprite_get("flags")
 flag_button_spr = sprite_get("flag_button")
 
+hue_speed = 1;
+hue_offset = 0;
  
 //Alt name init. var doesn't work with arrays lol
  
@@ -48,7 +50,7 @@ alt_name[1]  = "Red"
 alt_name[2]  = "Green"
 alt_name[3]  = "Grey"
 alt_name[4]  = "Blue"
-alt_name[5]  = ["Genesis", "Riptide", "Big House"]
+alt_name[5]  = ["Genesis", "TAS", "RCS", "Riptide", "Big House"]
 alt_name[6]  = "Killer Whale"
 alt_name[7]  = "Green Meany"
 alt_name[8]  = "Abyss"

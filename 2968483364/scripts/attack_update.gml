@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL  || attack == AT_NSPECIAL_2|| attack == AT_FSPECIAL ||
 
 switch(attack){
     
-    //This one's for all the trans folk in chat, and Reiga.
+    //This one's for all the trans people in chat, and Reiga.
     case AT_JAB:
         if((window == 1 || window == 4) && (window_timer == 1)){
             clear_button_buffer(PC_ATTACK_PRESSED);

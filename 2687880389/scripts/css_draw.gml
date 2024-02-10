@@ -153,7 +153,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 27; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(111, 0, 255) // "color preview square" color. can be any color!
@@ -234,9 +234,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[25,0] = make_color_rgb(243, 130, 88)
 	ce[25,1] = "Possession"
 	ce[25,2] = "It likes to wreak havoc in electronic devices."
-	ce[26,0] = make_color_rgb(255, 106, 0)
-	ce[26,1] = "Riptide"
-	ce[26,2] = "Retroblast is leagal in Riptide?!"
+	ce[26,0] = make_color_rgb(255, 155, 84)
+	ce[26,1] = "TAS"
+	ce[26,2] = "Retroblast is leagal in TAS?!"
+	ce[27,0] = make_color_rgb(102, 102, 102)
+	ce[27,1] = "Genesis"
+	ce[27,2] = "Retroblast is leagal in Genesis?!"
+//	ce[26,0] = make_color_rgb(255, 106, 0)
+//	ce[26,1] = "Riptide"
+//	ce[26,2] = "Retroblast is leagal in Riptide?!"
 //	ce[26,0] = make_color_rgb(0, 163, 248)
 //	ce[26,1] = "Vortex Gallery"
 //	ce[26,2] = "Retroblast is leagal in Vortex Gallery?!"

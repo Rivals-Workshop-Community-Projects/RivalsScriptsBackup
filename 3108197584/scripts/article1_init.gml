@@ -26,3 +26,13 @@ discharge_sfx = noone;
 boom = 1;
 sprite_index = sprite_get("drone");
 mask_index = sprite_get("drone_mask1");
+
+gen_string = "";
+master_str = "013456789"
+g = 0;
+repeat 80{
+	if g && g%20 = 0 gen_string += chr(10);
+	gen_string += string_char_at(master_str, random_func(g, 2, 1)+1);
+	g++;
+}
+

@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 10, 10, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 28 );
 
 // Blue
 set_color_profile_slot( 1, 0, 58, 71, 142 ); //feathers purple
@@ -203,7 +203,6 @@ set_color_profile_slot( 19, 4, 47, 92, 37 ); //bag
 set_color_profile_slot( 19, 5, 247, 247, 247 ); //letters
 set_color_profile_slot( 19, 6, 102, 110, 102 ); //legs
 
-
 // TehEnd
 set_color_profile_slot( 20, 0, 56, 56, 56 ); //feathers purple
 set_color_profile_slot( 20, 1, 115, 49, 122 ); //outfit
@@ -239,6 +238,42 @@ set_color_profile_slot( 23, 3, 218, 160, 222 ); //scarf
 set_color_profile_slot( 23, 4, 132, 165, 207 ); //bag
 set_color_profile_slot( 23, 5, 255, 255, 255 ); //letters
 set_color_profile_slot( 23, 6, 255, 191, 241 ); //legs
+
+// Umbra I
+set_color_profile_slot( 24, 0, 46, 26, 26 ); //feathers purple
+set_color_profile_slot( 24, 1, 56, 33, 33 ); //outfit
+set_color_profile_slot( 24, 2, 133, 0, 38 ); //feathers green
+set_color_profile_slot( 24, 3, 184, 24, 89 ); //scarf
+set_color_profile_slot( 24, 4, 150, 100, 73 ); //bag
+set_color_profile_slot( 24, 5, 232, 19, 62 ); //letters
+set_color_profile_slot( 24, 6, 209, 186, 186 ); //legs
+
+// Umbra II
+set_color_profile_slot( 25, 0, 34, 26, 46 ); //feathers purple
+set_color_profile_slot( 25, 1, 26, 39, 64 ); //outfit
+set_color_profile_slot( 25, 2, 0, 5, 189 ); //feathers green
+set_color_profile_slot( 25, 3, 72, 96, 217 ); //scarf
+set_color_profile_slot( 25, 4, 150, 100, 73 ); //bag
+set_color_profile_slot( 25, 5, 63, 129, 255 ); //letters
+set_color_profile_slot( 25, 6, 198, 207, 222 ); //legs
+
+// Umbra III
+set_color_profile_slot( 26, 0, 45, 26, 46 ); //feathers purple
+set_color_profile_slot( 26, 1, 56, 26, 64 ); //outfit
+set_color_profile_slot( 26, 2, 176, 11, 110 ); //feathers green
+set_color_profile_slot( 26, 3, 199, 0, 63 ); //scarf
+set_color_profile_slot( 26, 4, 150, 100, 73 ); //bag
+set_color_profile_slot( 26, 5, 230, 41, 219 ); //letters
+set_color_profile_slot( 26, 6, 205, 188, 214 ); //legs
+
+// GENESIS
+set_color_profile_slot( 27, 0, 48, 48, 48 ); //feathers purple
+set_color_profile_slot( 27, 1, 222, 8, 8 ); //outfit
+set_color_profile_slot( 27, 2, 217, 217, 217 ); //feathers green
+set_color_profile_slot( 27, 3, 204, 10, 10 ); //scarf
+set_color_profile_slot( 27, 4, 235, 235, 235 ); //bag
+set_color_profile_slot( 27, 5, 247, 247, 247 ); //letters
+set_color_profile_slot( 27, 6, 255, 51, 51 ); //legs
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

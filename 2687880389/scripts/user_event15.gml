@@ -449,6 +449,19 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
 
+
+initPatch("2.18", "07 Feb, 2024");
+initHeader("Presentation");
+initSection("- Added Genesis alt");
+
+initPatch("2.17", "07 Feb, 2024");
+initHeader("Presentation");
+initSection("- Replaced Riptide alt with TAS alt");
+
+initPatch("2.16", "26 Aug, 2023");
+initHeader("Bugs");
+initSection("- utilt would sometimes do slightly less damage than intended, now consistent at 8");
+
 initPatch("2.15", "20 Aug, 2023");
 initHeader("Presentation");
 initSection("- Temporarily disabled alt-specific details, as well as down+taunt for Riptide

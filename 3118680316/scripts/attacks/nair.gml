@@ -68,13 +68,13 @@ set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 55);
+set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 4)
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, .7);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, small_hit1);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("soap_tail_hit_sml"));
-set_hitbox_value(AT_NAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_BUBBLE_ANGLE, 90)
 set_hitbox_value(AT_NAIR, 1, HG_BUBBLE_KNOCKBACK, 5)
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, -1);

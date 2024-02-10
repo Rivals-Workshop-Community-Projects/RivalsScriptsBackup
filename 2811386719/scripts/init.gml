@@ -293,6 +293,8 @@ col = get_player_color(player)
 alt_update_index = col
 user_event(4)
 alt_with_mods = 0
+hue_speed = 1;
+hue_offset = 0;
 
 //AI stuff
 showing_thoughts = false;

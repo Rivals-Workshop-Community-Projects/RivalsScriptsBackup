@@ -49,7 +49,7 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0.05; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -151,6 +151,16 @@ flowey_morefloweys = 0;
 flowey_specialeffects = 1;
 
 flowey_last_grunt = 180;
+
+// genesis related shenanigens
+genesis = get_player_color(player) == 22;
+genesis_shockwave_vfx = false;
+genesis_glitch_sound = sound_play(asset_get("sfx_plasma_field_loop"), true, false, 0, .5);
+sound_volume(genesis_glitch_sound, 0, 1);
+genesis_sound_enabled = false;
+
+//has an intro
+has_intro = true;
 
 // Runes
 if has_rune("G"){

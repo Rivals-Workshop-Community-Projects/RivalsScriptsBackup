@@ -45,8 +45,8 @@ switch (alt_cur)
             else preview_line_color = $000000;
         }
         break;
-    case 25: preview_line_color = $343434; break; //helel
-    case 26: preview_line_color = $022d61; break; //theikos
+    case 26: preview_line_color = $343434; break; //helel
+    case 27: preview_line_color = $022d61; break; //theikos
     default: preview_line_color = $000000; break;
 }
 

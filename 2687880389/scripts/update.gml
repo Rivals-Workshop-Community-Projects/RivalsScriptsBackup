@@ -31,6 +31,16 @@ if (enable_munophone) {
 }
 // End of Muno code
 
+if (codename_tas_active) {
+	// Similar to party mode, but with slightly washed-out colors
+	rainbow_color = make_color_hsv((get_gameplay_time() % 255), 128, 255);
+	rainbow_opposite = make_color_hsv(((get_gameplay_time() + 128) % 255), 128, 255);
+	set_character_color_slot(0, color_get_red(rainbow_opposite), color_get_green(rainbow_opposite), color_get_blue(rainbow_opposite));
+	set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
+	set_article_color_slot(0, color_get_red(rainbow_opposite), color_get_green(rainbow_opposite), color_get_blue(rainbow_opposite));
+	set_article_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
+}
+// If party mode active, overwrite colors
 if (party_mode_active) {
 	rainbow_color = make_color_hsv((get_gameplay_time() % 255) * 1, 255, 255);
 	set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));

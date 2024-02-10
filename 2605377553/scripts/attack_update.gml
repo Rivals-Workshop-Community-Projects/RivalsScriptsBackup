@@ -163,6 +163,11 @@ if (attack == AT_DAIR) {
 	
 }
 
+if (attack == AT_NTHROW) {
+	if (window == 3) {
+		can_move = false;
+	}
+}
 if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 	can_fast_fall = false;
 	hurtboxID.sprite_index = sprite_get("dair_grab_hurt");
@@ -204,6 +209,8 @@ if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 		}
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+	
+		
 	}
 }
 
@@ -451,7 +458,7 @@ if (attack == AT_NAIR) {
     	sound_play(sound_get("heavyswing"), 0, noone, 0.8, 0.8)
     }
 	
-}
+} 
 
 if (attack == AT_UTILT) {
 

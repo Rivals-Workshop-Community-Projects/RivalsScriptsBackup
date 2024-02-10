@@ -8,7 +8,7 @@ if free && state != 1 {
 }
 if (state == 2) || (state == 3) || (state == 4)   {
     var k = draw_sprite_ext( sprite_get("mb_hud"), (letters), x + (0 * spr_dir), y + 70, 1, 1, 0, -1, 1 );
-    k.depth = depth - 5;
+    //k.depth = depth - 5;
 }  
 
 if state == 0 && state != 10 {

@@ -83,6 +83,53 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.1b - (2024 Feb 08)"
+		patch_note_text[i++] = 
+		"v3.1 ~ the hotfix 2 - (2024 Feb 08)
+		[b]fixes[/b]
+		- fspecial bubble effects for alts doomsday and genesis was broken and i didnt notice... fixed this now
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
+		patch_note_title[i] = "v3.1 - (2024 Feb 05)"
+		patch_note_text[i++] = 
+		"v3.1 ~ the hotfix - (2024 Feb 05)
+		[b]fixes[/b]
+		- i reduced laser charge to 3 ticks for showcasing laser change in a video AND I FORGOT TO REVERT IT, fixed this now
+
+		[b]additions[/b]
+		- added to playlist changelog cause i forget somtimes
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
+		patch_note_title[i] = "v3.0 - (2024 Feb 05)"
+		patch_note_text[i++] = 
+		"v3.0 - (2024 Feb 05)
+		[b]additions[/b]
+		- new alt added: -Save-
+		- fullscreen transparent darkness effect on depths behind players/stage ground layer for laser
+
+		[b]notes[/b]
+		open for inputs!
+		stay tuned.
+		sorry for making yall tuned in for so long iknow i have been makign everyone wait on actual n/a patches holy heck"
+		
+		
+		patch_note_title[i] = "v2.9 - (2023 Nov 02)"
+		patch_note_text[i++] = 
+		"v2.9 - (2023 Nov 02)
+		[b]changes[/b]
+		- nair animation timings adjusted, windows have not been altered at all
+
+		[b]balances[/b]
+		-- -- beneficial
+		- ustrong final hit hitbox size has been reverted back, now it can hit standing grounded opponents again. dang this hitbox change was made in v1.9 huh. how long ago was this"
+		
+		
 		patch_note_title[i] = "v2.8 - (2023 Apr 25)"
 		patch_note_text[i++] = 
 		"v2.8 - (2023 Apr 25)

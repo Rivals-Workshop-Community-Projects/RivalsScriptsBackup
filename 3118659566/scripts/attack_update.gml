@@ -17,8 +17,8 @@ if(window == 1 && window_timer = 1 && attack != AT_DSPECIAL_2){
 
 if mailboxID != 0 {
 	if dspec_cancel = true {
-		if ((((attack != AT_DSPECIAL && attack != AT_DSTRONG && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DAIR && attack != AT_BAIR && attack != AT_UTILT && attack != AT_USPECIAL && attack != AT_USPECIAL_2 && attack != AT_FSPECIAL) || ((attack == AT_FSPECIAL && window == 4 && window_timer >= 12) || (attack == AT_DAIR && window == 5)  || (attack == AT_BAIR || attack == AT_UTILT || attack == AT_USPECIAL || attack == AT_USPECIAL_2) && window == 3))) && mailboxID.letters != 0) {
-			if(!hitpause){
+		if ((((attack != AT_DSPECIAL && attack != AT_DAIR && attack != AT_BAIR && attack != AT_UTILT && attack != AT_USPECIAL && attack != AT_USPECIAL_2 && attack != AT_FSPECIAL) || ((attack == AT_FSPECIAL && window == 4 && window_timer >= 12) || (attack == AT_DAIR && window == 5)  || (attack == AT_BAIR || attack == AT_UTILT || attack == AT_USPECIAL || attack == AT_USPECIAL_2) && window == 3))) && mailboxID.letters != 0) {
+			if(hitpause){
 		    	if(special_pressed || special_down) && (down_pressed ||down_down) {
 		            attack_end();
 		            destroy_hitboxes();
@@ -491,7 +491,7 @@ switch(attack){
 			}
 		}
 		
-		if (window == 2 || (window == 3 && window_timer < 6)) {
+		if (window == 2 || (window == 3 && window_timer < 6) || window == 6 && window_timer < 6) {
 
 				if place_meeting(x + (40 * spr_dir), y, asset_get("par_block")) {
 					var k = spawn_hit_fx(x, y - 0, vfx_fspecial_air_bonk);
@@ -531,6 +531,11 @@ switch(attack){
 		if window == 3 {
 			hsp = (hsp * 0.925);
 			
+			if window_timer == 1 && !has_hit {
+				window = 6;
+				window_timer = 0;
+			}
+			
 			if !free {
 				window = 4;
 				window_timer = 0;
@@ -542,6 +547,15 @@ switch(attack){
 		if window == 5 {
 			hsp = hsp * 0.95;
 			vsp = vsp * 0.95;
+		}
+		
+		if window == 6 {
+			hsp = (hsp * 0.9);
+			if !free {
+				window = 4;
+				window_timer = 0;
+				spawn_base_dust(x, y, "land");
+			}
 		}
 		
 	break;
@@ -1030,6 +1044,13 @@ switch(attack){
 		mb_spin_hit = false;
 		mb_spinning = false;
 		can_wall_jump = true;
+	
+		if window == 2 || window == 3 && free {
+			super_armor = true;
+		} else {
+			super_armor = false;
+		}
+		
 
 		if window == 1 && window_timer == 1 {
 			var timer1 = random_func(1, 9, true);

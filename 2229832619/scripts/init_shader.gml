@@ -11,6 +11,9 @@ for (var slot_num = 0; slot_num < 8; slot_num++) {
 set_character_color_shading( slot_num, 0 );
 }
 }
+if (get_player_color( player ) == 20) { //-save-
+set_character_color_shading( 3, 0.3 );
+}
 
 
 /*
@@ -83,6 +86,64 @@ if (get_player_color( player ) == 10) { //astralbirth
 					colour_get_red(tmp_col[slot_num]),
 					colour_get_green(tmp_col[slot_num]),
 					colour_get_blue(tmp_col[slot_num])
+				);
+			}
+		}
+	}
+	
+	
+	
+	//astralbirth++;
+}
+//guess what boysengirls im doing it again
+//WITNESS.
+if (get_player_color( player ) == 20) { //-save-
+	if (!variable_instance_exists(id, "ahyper")){
+		ahyper = true;
+		s_tmp_col_orig = [0, 0, 0, 0, 0, 0, 0, 0];
+		s_tmp_col = [0, 0, 0, 0, 0, 0, 0, 0];
+		s_tmp_add = 0;
+		for (var slot_num = 0; slot_num < 8; slot_num++) {
+			if (slot_num > 3){
+				s_tmp_col_orig[slot_num] = make_colour_rgb(
+					get_color_profile_slot_r( 20, slot_num ),
+					get_color_profile_slot_g( 20, slot_num ),
+					get_color_profile_slot_b( 20, slot_num )
+				);
+			}
+		}
+	}
+	if (variable_instance_exists(id, "ahyper")){
+		for (var slot_num = 0; slot_num < 8; slot_num++) {
+			if (slot_num > 3){
+				var tmp_h = colour_get_hue(s_tmp_col_orig[slot_num]);
+				var tmp_s = colour_get_saturation(s_tmp_col_orig[slot_num]);
+				var tmp_v = colour_get_value(s_tmp_col_orig[slot_num]);
+				/*
+				print_debug( "---" )
+				print_debug( "h "+string(tmp_h) )
+				print_debug( "s "+string(tmp_s) )
+				print_debug( "v "+string(tmp_v) )
+				print_debug( "---" )
+				*/
+				s_tmp_add+=0.2;
+				if (s_tmp_add >= 255){s_tmp_add = 0}
+				//print(string(s_tmp_add));
+				//print("the thing is : "+string((tmp_h+s_tmp_add)%255));
+				s_tmp_col[slot_num] = make_colour_hsv(
+					(tmp_h+s_tmp_add)%255,
+					tmp_s,
+					tmp_v
+				);
+				set_character_color_slot( slot_num,
+					colour_get_red(s_tmp_col[slot_num]),
+					colour_get_green(s_tmp_col[slot_num]),
+					colour_get_blue(s_tmp_col[slot_num])
+				);
+				set_article_color_slot( slot_num,
+					colour_get_red(s_tmp_col[slot_num]),
+					colour_get_green(s_tmp_col[slot_num]),
+					colour_get_blue(s_tmp_col[slot_num])
 				);
 			}
 		}
@@ -350,7 +411,7 @@ if (variable_instance_exists(id, "extra_col")){
 			get_color_profile_slot_b( altnum, 3 )
 		)
 	}
-	if (get_player_color( player ) != 7 && get_player_color( player ) != 19) { //NOT early
+	if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
 		set_character_color_shading( 3, 1 );
 	}
 	}
@@ -371,7 +432,7 @@ if (variable_instance_exists(id, "extra_col")){
 			get_color_profile_slot_b( altnum, 3 )
 		)
 	}
-	if (get_player_color( player ) != 7 && get_player_color( player ) != 19) { //NOT early
+	if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
 		set_character_color_shading( 3, 1 );
 	}
 	}
@@ -389,6 +450,11 @@ if  (get_player_color(player) == 19) {
 	//print("yeah")
 }
 if  (get_player_color(player) == 11) {
+    //set_character_color_slot( 6, 50, 50, 50, 0);
+    set_article_color_slot( 6, 50, 50, 50, 0);
+	//print("yeah")
+}
+if  (get_player_color(player) == 20) {
     //set_character_color_slot( 6, 50, 50, 50, 0);
     set_article_color_slot( 6, 50, 50, 50, 0);
 	//print("yeah")

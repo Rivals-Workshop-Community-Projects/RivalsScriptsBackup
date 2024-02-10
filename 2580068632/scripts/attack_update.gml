@@ -257,7 +257,7 @@ if (attack == AT_NAIR){
 	    hud_offset = 62;
 	}
 	if (has_rune("B")){
-		for (var i = 0; i < 9; i++){
+		for (var i = 0; i < 9; i++){//>
 			set_hitbox_value(AT_NAIR, i, HG_ANGLE_FLIPPER, 10);
 		}
 		if (window == 3){
@@ -275,7 +275,7 @@ if (attack == AT_NAIR){
 
 //Uair
 if (attack == AT_UAIR){
-	if (window == 2 || (window == 1 && window_timer > 3) || (window == 3 && window_timer < 4)){
+	if (window == 2 || (window == 1 && window_timer > 3) || (window == 3 && window_timer < 4)){//>
 	    hud_offset = 62;
 	}
 }
@@ -316,14 +316,14 @@ if (attack == AT_USTRONG){
 		if (hsp > 8 && spr_dir == 1){
 			hsp = 7
 		}
-		if (hsp < -8 && spr_dir == -1){
+		if (hsp < -8 && spr_dir == -1){//>
 			hsp = -7
 		}
 	}
 	if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		spawn_base_dust( x + (0 * spr_dir), y, "jump", spr_dir*-1)
 	}
-	if (window > 2 && window < 7 || (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+	if (window > 2 && window < 7 || (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {//>
 		//hud_offset = 72;
 		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (voiced){
@@ -351,12 +351,12 @@ if (attack == AT_USTRONG){
 //Dstrong
 if (attack == AT_DSTRONG){
 	if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x + (75 * spr_dir), y, "dash", spr_dir*-1)
+		spawn_base_dust( x + (45 * spr_dir), y, "dattack", spr_dir*-1)
 		if (voiced){
 			sound_play(vc_mk_grunt_7)
 		}
 	} else if (window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (75 * spr_dir), y, "dash", spr_dir)
+		spawn_base_dust( x - (45 * spr_dir), y, "dattack", spr_dir)
 	}
 }
 
@@ -531,17 +531,16 @@ if(attack == AT_FSPECIAL) {
 					//Is on ground or platfrom???
 					if !free &&(place_meeting(x + (0*spr_dir), y + 65, asset_get("par_block")) && !place_meeting(x + (0*spr_dir), y + 65, asset_get("par_jumpthrough"))){
 						//On Ground
-						if (left_down && !right_down && tp_angle > 180 && tp_angle < 240){
+						if (left_down && !right_down && tp_angle > 180 && tp_angle < 240){//>
 							//print_debug("personally i think that mario");	
 							tp_angle = 179
 						}
-						if (!left_down && right_down && tp_angle > 300 && tp_angle < 360){
+						if (!left_down && right_down && tp_angle > 300 && tp_angle < 360){//>
 							//print_debug("personally i think that mario");	
 							tp_angle = 1
 						}
 					} else if !free && (!place_meeting(x + (0*spr_dir), y + 65, asset_get("par_block")) && place_meeting(x + (0*spr_dir), y + 65, asset_get("par_jumpthrough"))){
 						//On Plat
-						//print_debug("personally i think that mario");	
 					}
 				} else {
 					tp_angle = 0
@@ -588,8 +587,7 @@ if(attack == AT_FSPECIAL) {
 							//print_debug("personally i think that mario");	
 							tp_angle = 179
 						}
-						if (!left_down && right_down && tp_angle > 300 && tp_angle < 360){
-							//print_debug("personally i think that mario");	
+						if (!left_down && right_down && tp_angle > 300 && tp_angle < 360){//>
 							tp_angle = 1
 						}
 						if (down_down && !left_down && !right_down && tp_angle == 270){
@@ -643,7 +641,7 @@ if(attack == AT_FSPECIAL) {
 	}
 	if (window == 4){
 		vsp = -0.4
-		if (window_timer < 3){
+		if (window_timer < 3){//>
 			if (left_down && !right_down){
 				spr_dir = -1
 			}
@@ -659,7 +657,7 @@ if(attack == AT_FSPECIAL) {
 	}
 	if (window == 7){
 		vsp = -0.4
-		if (window_timer < 3){
+		if (window_timer < 3){//>
 			if (left_down && !right_down){
 				spr_dir = -1
 			}
@@ -848,7 +846,8 @@ if (attack == AT_USPECIAL){
 		if (place_meeting(x + 6 * spr_dir, y, asset_get("par_block"))){
 			sound_play(landing_lag_sound);
 			set_state(PS_IDLE_AIR);
-			spawn_base_dust(x+(24*spr_dir), y, "walljump", spr_dir * -1);
+			//spawn_base_dust(x+(24*spr_dir), y, "walljump", spr_dir * -1);
+			spawn_base_dust( x + (24 * spr_dir), y - 16, "land", spr_dir, 90 * spr_dir);
 			move_cooldown[AT_USPECIAL] = 9999999;
 			hsp = -4 * spr_dir
 			vsp = -8
@@ -910,6 +909,9 @@ if (attack == AT_DSPECIAL){
 	}
 	if (window == 1){
 		condor_dive_timer = 0
+		if (window_timer == 1){
+			spawn_base_dust( x + (-2 * spr_dir), y - 16, "doublejump", spr_dir, -24 * spr_dir);
+		}
 		if (window_timer < 3){
 			vsp -= 10
 			hsp = 3 * spr_dir
@@ -919,7 +921,7 @@ if (attack == AT_DSPECIAL){
 		} else if (window_timer > 4){
 			vsp += 0.4
 		}
-		if (vsp < -12){
+		if (vsp < -12){//>
 			vsp = -12
 		}
 		if (window_timer == 1){
@@ -951,9 +953,13 @@ if (attack == AT_DSPECIAL){
 			sound_stop(sfx_condor_dive);
 			//
 		}
-		if (condor_dive_timer > 28){
+		if (condor_dive_timer >= 26){
 			can_jump = true;
 			can_shield = true;
+			if (condor_dive_timer == 26){
+				sound_play(sfx_jump, false, noone, 1, 1.45);
+				spawn_hit_fx(x, y, 305);
+			}
 		} else if (condor_dive_timer < 28){
 			can_jump = false;
 			can_shield = false;
@@ -1082,10 +1088,10 @@ if (attack == AT_TAUNT){
 var dlen; //dust_length value
 var dfx; //dust_fx value
 var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
 var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
 switch (name) {
     default: 
@@ -1099,11 +1105,22 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
+newdust.draw_angle = angle;
 return newdust;

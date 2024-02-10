@@ -6,7 +6,7 @@
 if (init == 0){
     init = 1;
     
-	if (get_player_color( player_id.player ) == 19||get_player_color( player_id.player ) == 11){
+	if (get_player_color( player_id.player ) == 19||get_player_color( player_id.player ) == 11||get_player_color( player_id.player ) == 20){
 		sprite_index = sprite_get("na_bubble_g");
 		uses_shader = true;
 	}

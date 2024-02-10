@@ -7,6 +7,15 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL){
 // NOTE2: Make fspecial able to be attack canceled on the ground into other attacks (rather than its current popup)
 
 switch(attack){
+	case 2: // intro
+		if window < get_attack_value(2, AG_NUM_WINDOWS) && window_timer == 1 && !hitpause {
+			sound_play(asset_get("sfx_kragg_roll_end"), false, noone, true, 1.2)
+		} else if window == get_attack_value(2, AG_NUM_WINDOWS) && window_timer == 1 && !hitpause {
+			sound_play(asset_get("sfx_syl_dstrong"), false, noone, true, .9)
+		}
+		if (window <= get_attack_value(2, AG_NUM_WINDOWS)) hud_offset = 2000; // put hud away
+		if (window == get_attack_value(2, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
+	break;
     case AT_FTILT:
         if (window == 1 && window_timer == (has_rune("L")?4:6)) {
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.7, 1.15);
@@ -138,7 +147,7 @@ switch(attack){
             sound_play(asset_get("sfx_ori_glide_featherout"), false, noone, 0.9, 0.9);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.2, 1.15);
         }
-        if window == 3 && window_timer == 2{
+        if window == 3 && window_timer == 5{
             sound_play(asset_get("sfx_ori_glide_featherout"), false, noone, 0.9, 1.1);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.2, 1.2);
         }
@@ -271,14 +280,16 @@ switch(attack){
             case 1:
                 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 16);
                 can_jump = false;
+                if(window_timer == 8) sound_play(asset_get("sfx_kragg_rock_shatter"))
             break;
             case 2:
 				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 16);
                 can_jump = false;
                 hsp = (spr_dir * (has_rune("B")? 8:5)) + ((has_rune("B")? 3:2) * (right_down - left_down));
-                if special_pressed{
+                if special_pressed && window_timer > 1 {
                     window = 3;
                     window_timer = 0;
+                    // sound_play(asset_get(""))
                 }
                 if shield_pressed || (!place_meeting(x + (spr_dir * 60), y + 10, (asset_get("par_block"))) && !place_meeting(x + (spr_dir * 60), y + 10, (asset_get("par_jumpthrough")))) || place_meeting(x + (spr_dir * 35), y, (asset_get("par_block"))){
                     window = 4;
@@ -288,6 +299,7 @@ switch(attack){
             case 3:
 				hud_offset = round(lerp(hud_offset, 180, 0.5));
                 hsp *= 0.975;
+                if(window_timer == 7) sound_play(asset_get("sfx_oly_uspecial_kick"))
                 if has_rune("M"){
                     hsp = 0;
                     switch window_timer{
@@ -328,6 +340,7 @@ switch(attack){
 			vsp *= 0.85;
 		}
 		if window == 3{
+			if(window_timer == 1 && !hitpause) sound_play(asset_get("sfx_kragg_rock_shatter"))
 			attack_end();
 			destroy_hitboxes();
 			if window_timer = 12{
@@ -422,6 +435,13 @@ switch(attack){
         if window == 2 && state_timer >= 50 && !taunt_down{
             window = 3;
             window_timer = 0;
+        }
+        if(window == 3 && genesis){
+        	if(window_timer == 8 && !hitpause){
+        		spawn_hit_fx(x + 25 * spr_dir, y - 5, HFX_ELL_FSPEC_HIT);
+        		sound_play(asset_get("sfx_mol_norm_explode"));
+        		create_hitbox(AT_TAUNT_2, 1, x + 25 * spr_dir, y - 5);
+        	}
         }
     break;
 	case 49:

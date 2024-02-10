@@ -61,7 +61,7 @@ if (state == 2)
 		var thunder1 = create_hitbox(AT_DSPECIAL, 1, x-46, y+30);		//	Regular
 		var thunder2 = create_hitbox(AT_DSPECIAL, 2, x-46, y+94);		//	SweetSpot
 		
-		var zappy = random_func(0, 3, true);		
+		var zappy = random_func(0, 2, true);		
 		switch(zappy) 
 		{
 			case 0:

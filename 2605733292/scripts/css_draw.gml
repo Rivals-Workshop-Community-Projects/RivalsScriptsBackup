@@ -27,9 +27,9 @@ alt_name[17] = "Pure Gold";
 alt_name[18] = "Ranked Gold";
 alt_name[19] = "Champion";
 alt_name[20] = "Orange";
-alt_name[21] = "Emerald";
-alt_name[22] = "Snow";
-alt_name[23] = "Adventure Ability";
+alt_name[21] = "Snow";
+alt_name[22] = "Adventure Ability";
+alt_name[23] = "Hope";
  
 //Alt
  
@@ -52,6 +52,9 @@ if (get_player_color(player) == 7){
 if (get_player_color(player) == 17){
 	draw_sprite(sprite_get("_css_outlines"),2,x + 8,y + 8);
 }
+if (get_player_color(player) == 23){
+	draw_sprite(sprite_get("_css_outlines"),3,x + 8,y + 8);
+}
 
 //Special Icons n shit
 if (get_player_color(player) == 6){
@@ -61,8 +64,47 @@ if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("_css_icons"),1,x+10,y+42);
 } else if (get_player_color(player) == 18){
 	draw_sprite(sprite_get("_css_icons"),3,x+10,y+42);
+} else if (get_player_color(player) == 23){
+	draw_sprite(sprite_get("_css_icons"),5,x+10,y+42);
 } else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
 	draw_sprite(sprite_get("_css_icons"),2,x+10,y+42);
+}
+
+// Alt 24: Hope (the rainbow color stuff)
+if (get_player_color( player ) == 23) {
+
+    hue_offset+=hue_speed;
+    hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+    color_rgb=make_color_rgb(249, 74, 255); //input rgb values here, uses rgb to create a gamemaker colour variable
+    color_rgb2=make_color_rgb(74, 255, 143); //input rgb values here, uses rgb to create a gamemaker colour variable
+    color_rgb3=make_color_rgb(74, 158, 255); //input rgb values here, uses rgb to create a gamemaker colour variable
+
+    
+    hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+    hue2=(color_get_hue(color_rgb2)+hue_offset) mod 255; //finds the hue and shifts it
+    hue3=(color_get_hue(color_rgb3)+hue_offset) mod 255; //finds the hue and shifts it
+    
+    color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    color_hsv2=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+    
+    
+    set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    
+	set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    
+	
+    set_article_color_slot( 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_article_color_slot( 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    
+	
+    init_shader();
 }
 
 //include alt. name

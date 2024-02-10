@@ -1,9 +1,18 @@
-shader_end();
+//shader_end();
 
 //test
 
 
 draw_sprite_ext(sprite_get("aaa_vernum"),1,x+146,y+118,2,2,0,-1,1);
+
+if (get_player_color( player ) == 10) {
+init_shader();
+}
+if (get_player_color( player ) == 20) {
+init_shader();
+}
+
+shader_end();
 
 var icon_x = 176
 var icon_y = 112
@@ -20,6 +29,10 @@ switch(get_player_color( player )){
 	break;
 	case 19:
 	draw_sprite_ext(sprite_get("na_css_icons"),4,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	case 20:
+	draw_sprite_ext(sprite_get("na_s_outline"),1,x+8,y+8,2,2,0,-1,1);
+	draw_sprite_ext(sprite_get("na_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
 	break;
     default: break;
 }
@@ -79,7 +92,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ie = 0;
 	ye = false;
 	
-	col_max = 19; //max colors
+	col_max = 20; //max colors
 	ce[0,0] = make_color_rgb(71, 49, 87)
 	ce[0,1] = "Void Melanoid"
 	ce[1,0] = make_color_rgb(58, 154, 228)
@@ -120,6 +133,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[18,1] = "Ranked Gold"
 	ce[19,0] = make_color_rgb(87, 10, 33)
 	ce[19,1] = "Genesis"
+	ce[20,0] = make_color_rgb(217, 113, 255)
+	ce[20,1] = "-Save-"
 }
 
 if (ae == "ae"){
@@ -149,6 +164,18 @@ if (ee > 0){
 	var tw_g = (ease_quartOut(0, 1, ee, ee_m)) + (ease_quartIn(0, 1, ee, ee_m)/2);
 	var dist = 14;
 	var typ = round(ease_expoIn(0, dist, ee, ee_m-2));
+	
+	/*
+	//bgshadowthing
+	rectDraw(temp_x, temp_y, temp_x + 42 - (10 - (tw*10)), temp_y + 130, c_black, c_black, tw/4 );
+	rectDraw(temp_x, temp_y, temp_x + 38 - (14 - (tw*14)), temp_y + 130, c_black, c_black, tw/4 );
+	//what a math
+	//charthing
+	var idlespeed = 12
+	draw_sprite_ext(sprite_get("idle_csschop"), get_gameplay_time() / idlespeed, temp_x - 54, temp_y - 3+((typ*(ie*-1))/2), 1, 1, 0, c_gray, (typ/dist)/1.5);
+	draw_sprite_ext(sprite_get("idle_csschop"), get_gameplay_time() / idlespeed, temp_x - 54, temp_y - 3+((typ*(ie))/4), 1, 1, 0, c_white, tw);
+	*/
+	
 	//using muno's function;
 	if (ue-2>=0){
 	rectDraw(temp_x + 2, temp_y + 77 +(0-(dist*2)-6+(typ*ie)), temp_x + 16, temp_y + 91 +(0-(dist*2)-6+(typ*ie)),
@@ -188,9 +215,6 @@ textDraw(temp_x + 2 + txtdisp_x, temp_y + 130, "fName", c_white, 0, 1000, 1, tru
 
 
 
-if (get_player_color( player ) == 10) {
-init_shader();
-}
 
 
 

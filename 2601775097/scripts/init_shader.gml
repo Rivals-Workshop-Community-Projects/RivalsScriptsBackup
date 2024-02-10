@@ -82,19 +82,32 @@ switch (alt_cur)
 		set_character_color_shading(6, -3); //LIGHT
 		set_character_color_shading(7, -1.5); //FIRE
 		break;
-	case 19: //nero reverse fire and light shading
+	case 19: //genesis alt
+		set_character_color_shading(1, 0.7); //white
+		set_character_color_shading(2, 1.7); //hair
+		set_character_color_shading(3, 1.6); //light blue
+		set_character_color_shading(5, 2.5); //black
+		break;
+	case 20: //nero reverse fire and light shading
 		set_character_color_shading(6, -2); //LIGHT
 		set_character_color_shading(7, -1); //FIRE
 		break;
-	case 20: case 21: //jurami and baysen alts reverse shading for fire
+	case 21: case 22: //jurami and baysen alts reverse shading for fire
 		set_character_color_shading(7, -1); //FIRE
 		break;
-	case 23: //splatracer's alt
+	case 24: //splatracer's alt
 		set_character_color_shading(3, 1.5); //CLOTHLIGHTBLUE
 		set_character_color_shading(6, -3); //LIGHT
 		set_character_color_shading(7, 2); //FIRE
 		break;
-	case 25: //helel alt shading tweaking and color swapping
+	case 25: //lakers
+		set_character_color_shading(0, 1.5); //dark blue
+		set_character_color_shading(1, -3.5); //cloth white
+		set_character_color_shading(5, -1.5); //black
+		set_character_color_shading(6, 2); //holy light
+		set_character_color_shading(7, 2); //holy fire
+		break;
+	case 26: //helel alt shading tweaking and color swapping
 		set_character_color_shading(6, 4); //LIGHT
 		set_character_color_shading(7, -2); //FIRE
 
@@ -122,10 +135,10 @@ switch (alt_cur)
 	case 18: //gold alt shading tweak
 		set_character_color_shading(5, 2); //CLOTHBLACK
 		break;
-	case 26: //theikos alt hair color changing
+	case 27: //theikos alt hair color changing
 		set_character_color_shading(2, 1.5); //hair shading
 		break;
-	case 27: //player color
+	case 28: //player color
 		var hud_r = color_get_red(get_player_hud_color(player));
         var hud_g = color_get_green(get_player_hud_color(player));
         var hud_b = color_get_blue(get_player_hud_color(player));
@@ -133,15 +146,10 @@ switch (alt_cur)
 		set_color_profile_slot(alt_cur, 4, floor(hud_r), floor(hud_g), floor(hud_b)); //CLOTHLIGHTBLUE
 		set_color_profile_slot(alt_cur, 0, floor(hud_r/2), floor(hud_g/2), floor(hud_b/2)); //CLOTHDARKBLUE
 		set_color_profile_slot(alt_cur, 5, floor(hud_r/4), floor(hud_g/4), floor(hud_b/4)); //CLOTHBLACK
-		//set_color_profile_slot(alt_cur, 6, floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))); //LIGHT
-		//set_color_profile_slot(alt_cur, 7, floor(max(0, hud_r - 50)), floor(max(0, hud_g - 50)), floor(max(0, hud_b - 50))); //FIRE
-
-		//set_article_color_slot(6, floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))); //LIGHT
-		//set_article_color_slot(7, floor(max(0, hud_r - 50)), floor(max(0, hud_g - 50)), floor(max(0, hud_b - 50))); //FIRE
 		break;
 }
 
-if (alt_cur == 26 || "theikos_type" not in self || theikos_type > 0 && (alt_cur == 0 || alt_cur == 27)) user_event(1); //theikos color stuff
+if (alt_cur == 27 || "theikos_type" not in self || theikos_type > 0 && (alt_cur == 0 || alt_cur == 27)) user_event(1); //theikos color stuff
 
 if (object_index == asset_get("draw_result_screen")) set_endgame_stuff(); //old portrait setup code lol
 

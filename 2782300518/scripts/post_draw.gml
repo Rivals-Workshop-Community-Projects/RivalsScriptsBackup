@@ -143,6 +143,21 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        
+        patch_note_title[i] = "2.3"
+        patch_note_text[i++] =  
+"Fixed online voice button changing alts.
+
+Recoded the Claw Combo system on Jab, Ftilt, Utilt and Dtilt, it is now easier to cancel into other moves rather than requiring exact timing.
+
+Only the first hit of a Claw Combo is now actually untechable, cancelling into a different move makes more techable hits. This should hopefully help ease frustrations for opponents stuck in a claw combo.
+
+Fixed a bug where Carol can heal all her health when hitting herself with her own bike, health now remains as it was before.
+
+Both NSpecials no longer have super armor, they have Soft Armor 6 instead, (sprites haven't been adjusted on that one yet, will look to fix that one next time). This also goes away on hit.
+
+Fixed Dracula compatibility not working properly and also ensured it was the right one."
+        
         patch_note_title[i] = "2.2"
         patch_note_text[i++] =  
 

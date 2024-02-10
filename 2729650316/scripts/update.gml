@@ -35,7 +35,7 @@ if(instance_exists(crowdVictim))
     {
         if(crowdHype >= 15)
         {
-            sound_play(sound_get("crowd_awesome"), false, noone, 0.7, 1.1)
+            sound_play(sound_get("crowd_awesome"), false, noone, 0.7, 1.0)
             crowdHype = 0;
         }
         else

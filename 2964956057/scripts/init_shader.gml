@@ -1,5 +1,8 @@
 var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
 
+//weird true form alt glitch fix
+set_color_profile_slot( 1, 0, 255, 255, 255 ); 
+
 if "champ_color_array" not in self{
     champ_color_array = [ // each array is a nested array of rgbs for each slot of the alt
         [ // seesaw
@@ -100,7 +103,7 @@ switch get_player_color(real_player){
         set_character_color_shading(6, 1);
         set_character_color_shading(7, 1);
     break;
-    case 22:
+    case 23:
         set_character_color_shading(0, 1);
         set_character_color_shading(1, 1);
         set_character_color_shading(2, 1);
@@ -117,7 +120,7 @@ switch get_player_color(real_player){
         }
         set_synced_var(real_player, champ_cur);
     break;
-    case 23:
+    case 24:
         set_character_color_slot(0, custom_color_array[face_color][0][0], custom_color_array[face_color][0][1], custom_color_array[face_color][0][2]);
         set_character_color_slot(1, custom_color_array[petals_color][0][0], custom_color_array[petals_color][0][1], custom_color_array[petals_color][0][2]);
         set_character_color_slot(2, custom_color_array[stem_color][0][0], custom_color_array[stem_color][0][1], custom_color_array[stem_color][0][2]);
@@ -160,7 +163,7 @@ if "attack" not in self{
     attack = 0;
 }
 
-if get_player_color(real_player) == 3 || get_player_color(real_player) >= 22 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
+if get_player_color(real_player) == 3 || get_player_color(real_player) >= 23 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
 //remember rivals starts with 0
 
     color_rgb = make_color_rgb(240, 72, 72);
@@ -172,31 +175,39 @@ if get_player_color(real_player) == 3 || get_player_color(real_player) >= 22 || 
     if get_player_color(real_player) == 3 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
         set_character_color_slot(1, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
     }
-    else if get_player_color(real_player) == 23{
+    else if get_player_color(real_player) == 24{
         set_color_profile_slot(1, 0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         if face_color == 0{
             set_character_color_slot(0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if petals_color == 0{
             set_character_color_slot(1, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(1, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if stem_color == 0{
             set_character_color_slot(2, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(2, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if thorns_color == 0{
             set_character_color_slot(3, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(3, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if soul_color == 0{
             set_character_color_slot(4, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(4, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if lefteye_color == 0{
             set_character_color_slot(5, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(5, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if righteye_color == 0{
             set_character_color_slot(6, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(6, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
         if mouth_color == 0{
             set_character_color_slot(7, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+            set_article_color_slot(6, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
         }
     }
     //set the new color using rgb values from the gamemaker color

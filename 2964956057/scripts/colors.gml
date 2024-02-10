@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 25 );
 
 // True Form
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //face
@@ -246,17 +246,17 @@ set_color_profile_slot( 21, 5, 219, 202, 147 ); //eye blue
 set_color_profile_slot( 21, 6, 219, 202, 147 ); //eye red
 set_color_profile_slot( 21, 7, 255, 255, 255 ); //mouth
 
-// Champions
-set_color_profile_slot( 22, 0, 0, 255, 0 ); //face
-set_color_profile_slot( 22, 1, 0, 255, 0 ); //petals
-set_color_profile_slot( 22, 2, 0, 255, 0 ); //roots
-set_color_profile_slot( 22, 3, 0, 255, 0 ); //thorns
-set_color_profile_slot( 22, 4, 0, 255, 0 ); //soul
-set_color_profile_slot( 22, 5, 0, 255, 0 ); //eye blue
-set_color_profile_slot( 22, 6, 0, 255, 0 ); //eye red
-set_color_profile_slot( 22, 7, 0, 255, 0 ); //mouth
+// Glitchanous
+set_color_profile_slot( 22, 0, 250, 247, 247 ); //face
+set_color_profile_slot( 22, 1, 158, 35, 23 ); //petals
+set_color_profile_slot( 22, 2, 75, 77, 82 ); //roots
+set_color_profile_slot( 22, 3, 255, 57, 65 ); //thorns
+set_color_profile_slot( 22, 4, 255, 57, 65 ); //soul
+set_color_profile_slot( 22, 5, 255, 57, 65 ); //eye blue
+set_color_profile_slot( 22, 6, 255, 57, 65 ); //eye red
+set_color_profile_slot( 22, 7, 255, 255, 255 ); //mouth
 
-// Custom
+// Champions
 set_color_profile_slot( 23, 0, 0, 255, 0 ); //face
 set_color_profile_slot( 23, 1, 0, 255, 0 ); //petals
 set_color_profile_slot( 23, 2, 0, 255, 0 ); //roots
@@ -266,9 +266,20 @@ set_color_profile_slot( 23, 5, 0, 255, 0 ); //eye blue
 set_color_profile_slot( 23, 6, 0, 255, 0 ); //eye red
 set_color_profile_slot( 23, 7, 0, 255, 0 ); //mouth
 
+// Custom
+set_color_profile_slot( 24, 0, 0, 255, 0 ); //face
+set_color_profile_slot( 24, 1, 0, 255, 0 ); //petals
+set_color_profile_slot( 24, 2, 0, 255, 0 ); //roots
+set_color_profile_slot( 24, 3, 0, 255, 0 ); //thorns
+set_color_profile_slot( 24, 4, 0, 255, 0 ); //soul
+set_color_profile_slot( 24, 5, 0, 255, 0 ); //eye blue
+set_color_profile_slot( 24, 6, 0, 255, 0 ); //eye red
+set_color_profile_slot( 24, 7, 0, 255, 0 ); //mouth
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"face","colors":[{"r":255,"g":255,"b":255,"main":true},{"r":211,"g":211,"b":211},{"r":146,"g":146,"b":146}]},{"name":"petals","colors":[{"r":247,"g":210,"b":27,"main":true},{"r":219,"g":154,"b":14},{"r":169,"g":99,"b":5}]},{"name":"roots","colors":[{"r":55,"g":150,"b":45,"main":true},{"r":29,"g":116,"b":31},{"r":15,"g":89,"b":30}]},{"name":"thorns","colors":[{"r":238,"g":109,"b":98,"main":true},{"r":191,"g":62,"b":72}]},{"name":"soul","colors":[{"r":224,"g":15,"b":0,"main":true},{"r":146,"g":10,"b":0},{"r":247,"g":70,"b":58}]},{"name":"eye blue","colors":[{"r":25,"g":0,"b":255,"main":true}]},{"name":"eye red","colors":[{"r":224,"g":0,"b":46,"main":true}]},{"name":"mouth","colors":[{"r":18,"g":237,"b":0,"main":true}]}]}
 === END JSON PALETTE ===
 */
+

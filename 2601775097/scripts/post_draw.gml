@@ -204,6 +204,51 @@ if (playtesting)
     */
 }
 
+
+
+if (alt_cur == 19)
+{
+    if (genesis_window_timer > 0) //genesis alt stopped responding wait anim
+    {
+        gpu_set_fog(1, c_white, 0, 1);
+        draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, spr_angle, c_white, 0.5);
+        gpu_set_fog(0, c_white, 0, 0);
+
+        //genesis wait animation stops responding
+        draw_sprite_ext(sprite_get("fx_genesis_window"), lerp(0, 3, genesis_window_timer/genesis_window_timer_max), x - 32, y - 48, 2, 2, 0, c_white, 1);
+        if (genesis_window_timer >= genesis_window_timer_max && genesis_window_timer <= genesis_window_timer_max+2)
+        {
+            draw_sprite_ext(spr_pixel, 0, x - 24, y - 32, lerp(0, 48, genesis_load_tracker/wait_length), 6, 0, $3ded5d, 1);
+        }
+    }
+
+    if (state == PS_HITSTUN || hitpause && (!is_attacking || attack != 3) || is_attacking && attack == AT_INTRO && window == 6 || notice_time > -1)
+    {
+        gpu_set_blendmode(bm_add);
+        static_colorO[8*4+0] = 255;
+        static_colorO[8*4+1] = 0;
+        static_colorO[8*4+2] = 0;
+        shader_start();
+        draw_sprite_ext(
+            sprite_index,
+            image_index,
+            x + draw_x + (random_func(0, 3, true)-1)*(2 + abs(hitpause ? old_hsp : hsp)),
+            y + draw_y + (random_func(1, 3, true)-1)*(2 + abs(hitpause ? old_vsp : vsp)),
+            2 * spr_dir,
+            2,
+            spr_angle,
+            c_white,
+            state == PS_HITSTUN ? lerp(1, 0, state_timer/hitstun_full) : (notice_time > -1 ? 0.5 : 1)
+        );
+        static_colorO[8*4+0] = colorO[8*4+0];
+        static_colorO[8*4+1] = colorO[8*4+1];
+        static_colorO[8*4+2] = colorO[8*4+2];
+        shader_end();
+        gpu_set_blendmode(bm_normal);
+    }
+}
+
+
 #define textDraw
 /// textDraw(x, y, string, color = c_white, font = "fname", align = fa_center, outline = false, alpha = 1)
 {

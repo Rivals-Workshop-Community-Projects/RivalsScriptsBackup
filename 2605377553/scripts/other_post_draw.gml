@@ -10,7 +10,12 @@ with (other_player_id)
     	{
     		var charname = get_char_info(other.player,INFO_STR_NAME)
         	textDraw(other.x,other.y+8, "fName", c_white, 0, 1000, 1, true, a, charname);
-        	textDraw(other.x,other.y+24, "fName", c_white, 0, 1000, 1, true, a, "was Hexed with Nausea!");
+        	if (get_char_info( other.player, INFO_PLURAL) == true
+        	|| get_char_info(other.player,INFO_STR_NAME) == "Ori & Sein") {
+        		textDraw(other.x,other.y+24, "fName", c_white, 0, 1000, 1, true, a, "were Hexed with Nausea!");
+        	} else {
+        		textDraw(other.x,other.y+24, "fName", c_white, 0, 1000, 1, true, a, "was Hexed with Nausea!");
+        	}
     	}
     }
 }

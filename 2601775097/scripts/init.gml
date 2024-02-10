@@ -113,7 +113,7 @@ wait_length                 = 100;         //amount of frames the wait animation
 wait_sprite                 = sprite_get("wait");
 
 wait_time                   = normal_wait_time;
-
+waiting = false;
 
 // Jumps
 double_jump_time    		= 33;		// 24   -  40
@@ -307,10 +307,10 @@ switch (alt_cur)
         if (bibical) no_effect_line_color = [75, 43, 43];   
         else no_effect_line_color = [0, 0, 0];
         break;    
-    case 25: //helel
+    case 26: //helel
         no_effect_line_color = [52, 52, 52];    
         break;
-    case 26: //theikos
+    case 27: //theikos
         no_effect_line_color = [97, 45, 2];
         break;
 }
@@ -605,6 +605,10 @@ fx_dstrong2_smear = hit_fx_create(sprite_get("fx_dstrong2_smear"), 20);
 sfx_charge = sound_get("sfx_charge");
 fx_theikos_aura = hit_fx_create(sprite_get("fx_theikos_aura"), 24);
 
+genesis_window_timer = 0;
+genesis_window_timer_max = 8;
+genesis_load_tracker = 0;
+
 
 //////////////////////////////////////////////////////////// ATTACK SPECIFIC ////////////////////////////////////////////////////////////
 
@@ -806,8 +810,8 @@ resort_portrait = sprite_get("last_resort");
 battle_text = (theikos_type > 0) ? "* The guardian's true face revealed." : "* Bar braces himself!";
 
 //dracula portrait
-dracula_portrait = sprite_get("dracula_port" + string(1 + 2 * (has_theikos || alt_cur == 26)));
-dracula_portrait2 = sprite_get("dracula_port" + string(2 + 2 * (has_theikos || alt_cur == 26)));
+dracula_portrait = sprite_get("dracula_port" + string(1 + 2 * (has_theikos || alt_cur == 27)));
+dracula_portrait2 = sprite_get("dracula_port" + string(2 + 2 * (has_theikos || alt_cur == 27)));
 
 //RC car
 kart_sprite = sprite_get("car");
@@ -831,7 +835,7 @@ user_event(8);
 
 //the chosen one - art
 tcoart = sprite_get("tcoart1");
-if (has_theikos || alt_cur == 26) tcoart = sprite_get("tcoart2");
+if (has_theikos || alt_cur == 27) tcoart = sprite_get("tcoart2");
 
 //moonchild - music
 childsupport = 1;

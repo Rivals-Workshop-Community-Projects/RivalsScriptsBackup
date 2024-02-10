@@ -596,6 +596,26 @@ set_color_profile_slot( 56, 5, 101, 103, 112 ); //Pants
 set_color_profile_slot( 56, 6, 67, 57, 71 ); //gloves
 set_color_profile_slot( 56, 7, 63, 5, 179 ); //slippers/mouth/heart
 
+// RCS
+set_color_profile_slot( 57, 0, 205, 250, 221 ); //Horn/static
+set_color_profile_slot( 57, 1, 55, 58, 65 ); //Shirt
+set_color_profile_slot( 57, 2, 110, 110, 133 ); //Coat
+set_color_profile_slot( 57, 3, 182, 255, 208 ); //water
+set_color_profile_slot( 57, 4, 109, 111, 120 ); //skin
+set_color_profile_slot( 57, 5, 57, 57, 59 ); //Pants
+set_color_profile_slot( 57, 6, 196, 255, 239 ); //gloves
+set_color_profile_slot( 57, 7, 182, 255, 208 ); //slippers/mouth/heart
+
+// TAS
+set_color_profile_slot( 58, 0, 205, 250, 221 ); //Horn/static
+set_color_profile_slot( 58, 1, 55, 58, 65 ); //Shirt
+set_color_profile_slot( 58, 2, 110, 110, 133 ); //Coat
+set_color_profile_slot( 58, 3, 182, 255, 208 ); //water
+set_color_profile_slot( 58, 4, 109, 111, 120 ); //skin
+set_color_profile_slot( 58, 5, 57, 57, 59 ); //Pants
+set_color_profile_slot( 58, 6, 235, 235, 235 ); //gloves
+set_color_profile_slot( 58, 7, 230, 230, 230 ); //slippers/mouth/heart
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

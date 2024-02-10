@@ -18,6 +18,9 @@ otto_bobblehead_sprite = sprite_get("bobblehead");
 pkmn_stadium_front_img = sprite_get("pkmn_front");
 pkmn_stadium_back_img = sprite_get("pkmn_back");
 
+hue_offset = 0;
+hue_speed = 0.7; //change this to change the speed of the hueshift
+
 hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;

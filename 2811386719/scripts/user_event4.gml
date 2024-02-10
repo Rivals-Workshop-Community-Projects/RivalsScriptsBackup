@@ -34,7 +34,29 @@ switch(modifier%alt_mods_amounts){
     set_color_profile_slot( i, 6, 209, 29, 29 ); //gloves
     set_color_profile_slot( i, 7, 238, 245, 238 ); //slippers/mouth/heart
   break;
-  case 1:
+	case 1:
+		// TAS
+		set_color_profile_slot( i, 0, 205, 250, 221 ); //Horn/static
+		set_color_profile_slot( i, 1, 55, 58, 65 ); //Shirt
+		set_color_profile_slot( i, 2, 110, 110, 133 ); //Coat
+		set_color_profile_slot( i, 3, 182, 255, 208 ); //water
+		set_color_profile_slot( i, 4, 109, 111, 120 ); //skin
+		set_color_profile_slot( i, 5, 57, 57, 59 ); //Pants
+		set_color_profile_slot( i, 6, 235, 235, 235 ); //gloves
+		set_color_profile_slot( i, 7, 230, 230, 230 ); //slippers/mouth/heart
+	break;
+  case 2:
+	  // RCS
+		set_color_profile_slot( i, 0, 205, 250, 221 ); //Horn/static
+		set_color_profile_slot( i, 1, 55, 58, 65 ); //Shirt
+		set_color_profile_slot( i, 2, 110, 110, 133 ); //Coat
+		set_color_profile_slot( i, 3, 182, 255, 208 ); //water
+		set_color_profile_slot( i, 4, 109, 111, 120 ); //skin
+		set_color_profile_slot( i, 5, 57, 57, 59 ); //Pants
+		set_color_profile_slot( i, 6, 196, 255, 239 ); //gloves
+		set_color_profile_slot( i, 7, 182, 255, 208 ); //slippers/mouth/heart
+	break;
+  case 3:
     // Torbulha
     set_color_profile_slot( i, 0, 254, 183, 0 ); //Horn/static
     set_color_profile_slot( i, 1, 150, 102, 18 ); //Shirt
@@ -44,8 +66,8 @@ switch(modifier%alt_mods_amounts){
     set_color_profile_slot( i, 5, 13, 36, 61 ); //Pants
     set_color_profile_slot( i, 6, 254, 183, 0 ); //gloves
     set_color_profile_slot( i, 7, 12, 25, 58 ); //slippers/mouth/heart
-    break;
-  case 2:
+  break;
+  case 4:
     // BigHouse
     set_color_profile_slot( i, 0, 255, 202, 6 ); //Horn/static
     set_color_profile_slot( i, 1, 188, 210, 255 ); //Shirt
@@ -55,7 +77,7 @@ switch(modifier%alt_mods_amounts){
     set_color_profile_slot( i, 5, 50, 77, 187 ); //Pants
     set_color_profile_slot( i, 6, 255, 202, 6 ); //gloves
     set_color_profile_slot( i, 7, 249, 251, 253 ); //slippers/mouth/heart
-    break;
+  break;
 }
 
 #define color_10

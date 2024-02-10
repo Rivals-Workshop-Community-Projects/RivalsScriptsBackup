@@ -676,6 +676,7 @@ if (attack == AT_DSPECIAL){//22%
 		}else{
 			sound_play(sound_get("charge"), false, noone, 0.6, 1);
 			sound_play(sound_get("charge2"), false, noone, 0.8, 1);
+			if (get_player_color(player) == 19){ sound_play(sound_get("genesis_extra_elec"), false, noone, 1, 1); };
 		}
 	}
 	if (window<=4){
@@ -728,6 +729,7 @@ if (attack == AT_DSPECIAL){//22%
 			window_timer = 0;
 			sound_stop(sound_get("charge"));
 			sound_stop(sound_get("charge2"));
+			if (get_player_color(player) == 19){ sound_stop(sound_get("genesis_extra_elec")); };
 			}else if (special_down){
 				white_flash_timer = 6;
 				sound_play(sound_get("tic"));
@@ -744,6 +746,9 @@ if (attack == AT_DSPECIAL){//22%
 			dsp_hsp_storage = hsp;
 			dsp_vsp_storage = vsp;
 			sound_play(sound_get("scream3"), false, noone, 1.2, 1);
+			if (get_player_color(player) == 19){//genesis
+				sound_play(sound_get("genesis_extra_loudr"), false, noone, 1, 1);
+			};
 		}
 		can_move = false;
 		can_fast_fall = false;

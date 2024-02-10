@@ -46,7 +46,7 @@ set_color_profile_slot_range( 10, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 12 );
+set_num_palettes( 13 );
 
 // green
 set_color_profile_slot( 1, 0, 38, 191, 148 ); //clothes red
@@ -190,6 +190,19 @@ set_color_profile_slot( 11, 7, 255, 231, 201 ); //skin
 set_color_profile_slot( 11, 8, 255, 255, 255 ); //fire2 light
 set_color_profile_slot( 11, 9, 74, 201, 255 ); //fire2 mid
 set_color_profile_slot( 11, 10, 56, 87, 194 ); //fire2 dark
+
+// hopes and dreams
+set_color_profile_slot( 12, 0, 75, 75, 77 ); //clothes red
+set_color_profile_slot( 12, 1, 163, 163, 163 ); //clothes white
+set_color_profile_slot( 12, 2, 255, 255, 255 ); //fire light
+set_color_profile_slot( 12, 3, 250, 140, 140 ); //fire mid
+set_color_profile_slot( 12, 4, 32, 32, 33 ); //fire dark
+set_color_profile_slot( 12, 5, 121, 122, 122 ); //hair
+set_color_profile_slot( 12, 6, 188, 189, 189 ); //hair light
+set_color_profile_slot( 12, 7, 187, 187, 189 ); //skin
+set_color_profile_slot( 12, 8, 255, 255, 255 ); //fire2 light
+set_color_profile_slot( 12, 9, 255, 217, 0 ); //fire2 mid
+set_color_profile_slot( 12, 10, 0, 255, 0 ); //fire2 dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

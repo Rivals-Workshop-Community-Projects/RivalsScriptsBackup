@@ -67,29 +67,6 @@ shouldBounceUpFromBlastzone = false;
 sleepFXspr = sprite_get("pillow_hit_fx_sml");
 sleepVFX = pillow_hit_fx_sml;
 
-/*
-hey_person_who_just_got_hit_by_burst_bubble_with_star_fall_asleep_please = false;
-
-NotSleepKirby_IsSleeping = false
-NotSleepKirby_SleepTimer = 0
-NotSleepKirby_SleepTimerRelease = get_player_damage( player )
-NotSleepKirby_Sleep_Hat_Flash = false
-NotSleepKirby_hat_timer = 0
-NotSleepKirby_hat_timer2 = 0
-NotSleepKirbyX = x
-NotSleepKirbyY = y
-NotSleepKirbyCurrencyForMario = 0
-NotSleepKirby_SleepTick = 0
-NotSleepKirby_SleepHit = 0
-NotSleepKirby_WasHitBySleepRune = false
-NotSleepKirby_FspecialImmunity = 0
-
-sleep_kirby_hat_offset_x = 0;
-sleep_kirby_hat_offset_y = 0;
-sleep_kirby_has_sleep_sprites = false;
-*/
-
-
 NotSleepKirbyID = id
 
 //SleepKirby_enemy_hat = oPlayer.SleepKirby_enemy_hat
@@ -124,7 +101,12 @@ spawn_essence_from_rune_o = 0
 
 currEssence = noone;
 
-mario = 0
+mario = 0;
+
+hue_offset=0;
+hue_speed=0.75; //change this to change the speed of the hueshift
+
+//---------------------------------------------------------------------
 
 // i dont remember what this variable does im gonna be honest but im not removing it because idk
 shabungus = false;
@@ -296,24 +278,6 @@ if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
 }
 
 switch (get_player_color( player )){
-	case 0:
-	
-		break;
-	case 1:
-	
-		break;
-	case 2:
-	
-		break;
-	case 3:
-	
-		break;
-	case 4:
-	
-		break;
-	case 5:
-	
-		break;
 	case 6:
 		set_victory_theme(sound_get("victory_shadow"));
 		break;
@@ -322,42 +286,13 @@ switch (get_player_color( player )){
 		set_victory_portrait( sprite_get( "portrait_ea" ));
 		set_victory_sidebar( sprite_get( "result_small_ea" ));
 		break;
-	case 8:
-	
-		break;
-	case 9:
-	
-		break;
-	case 10:
-	
-		break;
-	case 11:
-	
-		break;
-	case 12:
-	
-		break;
-	case 13:
-	
-		break;
-	case 14:
-	
-		break;
-	case 15:
-	
-		break;
-	case 16:
-	
-		break;
 	case 17:
 		set_victory_portrait( sprite_get( "portrait_gold" ));
 		set_victory_sidebar( sprite_get( "result_small_gold" ));
 		break;
-	case 18:
-	
-		break;
-	case 19:
-	
+	case 23:
+		set_victory_portrait( sprite_get( "portrait_tas" ));
+		set_victory_sidebar( sprite_get( "result_small_tas" ));
 		break;
 }
 
@@ -395,7 +330,7 @@ tcoart = sprite_get("tco_sketch");
 sprite_change_offset("miiverse", 60, 30);
 miiverse_post = sprite_get("miiverse");
 
-// Po & Gumbo
+// Po & Gumbo Food
 pot_compat_variable = sprite_get("gumbo_food");
 pot_compat_text = "Strawberry Shortcake";
 

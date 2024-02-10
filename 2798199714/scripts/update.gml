@@ -41,6 +41,10 @@ if(state_timer == 5 && state == PS_DOUBLE_JUMP){
     }
 }
 
+if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if(op || superop || BossMode){soft_armor = 99999;}
+}
+
 with (asset_get("pHitBox")){
 	if (player_id == other && type == 2 && attack == AT_DSPECIAL){
 		//if (hbox_num == 1){
@@ -120,6 +124,101 @@ if(runeK){
 	}
 }
 
+if(get_gameplay_time() <= 120 || !loaded){
+	if(!attack_down){
+		with(asset_get("oPlayer")){
+			if ("url" in self){
+			if (url != ""){ //detects op characters. credit to sai for some of the logic here
+				if(
+				//exclude these characters	
+				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274
+				//op characters
+				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646/*|| url ==  && "temp_level" in self*/
+				|| (string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				//or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				//or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("duane", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				))){
+					other.superop = true;other.superboss = true;
+					other.runeA = true;other.runeB = true;other.runeC = true;other.runeD = true;other.runeE = true;other.runeF = true;
+					other.runeG = true;other.runeH = true;other.runeI = true;other.runeJ = true;
+					other.runeL = true;other.runeM = true;other.runeN = true;other.runeO = true;
+					other.runesUpdated = true;other.small_sprites = 4;
+					if(url == 2179072217 /*|| url == 1877715009 && "temp_level" in self*/){
+						other.hyperboss = true;
+						with oPlayer{
+	                        if id != other.id{
+	                            player=0;
+	                        }
+	                    }
+	                    end_match(player);
+					}
+				}
+			}
+			}
+		}
+	}
+	if(hyperboss){
+		with oPlayer{
+	        if id != other.id{
+	            player=0;
+	        }
+	    }
+	    player = 1;
+	    end_match(player);
+	}
+	
+	with(oPlayer){
+		if(id != other.id){
+			if(!jump_down && ("temp_level" in self && temp_level <= 0 || "temp_level" not in self)){
+				other.otherplayersblock = true;
+			}else {
+				other.otherplayersblock = false;
+			}
+		}
+    }
+	if(shield_down && attack_pressed && !otherplayersblock || "temp_level" in self && (temp_level == 1 || temp_level == 2 || temp_level == 3)){
+		bosspress += 1;
+		if("temp_level" in self && (temp_level == 1 || temp_level == 2 || temp_level == 3)){
+			BossMode = true;
+			boss_hp = temp_level==2?600:temp_level==3?900:300;
+		}
+		if(bosspress == 15 || BossMode){
+			op = true;
+			runeA = true;runeB = true;runeC = true;runeD = true;runeE = true;runeF = true;
+			runeG = true;runeH = true;runeI = true;runeJ = true;//runeK = true;
+			/*runeL = true;*/runeM = true;runeN = true;runeO = true;
+			runesUpdated = true;
+		}else if(bosspress == 40){
+			superop = true;
+			runeA = true;runeB = true;runeC = true;runeD = true;runeE = true;runeF = true;
+			runeG = true;runeH = true;runeI = true;runeJ = true;runeK = true;
+			runeL = true;runeM = true;runeN = true;runeO = true;
+			runesUpdated = true;
+		}
+	}
+}if((get_gameplay_time() == 120 || (bossattack == 1 || bossattack == 3 || bossattack == 5) && (state == PS_IDLE || state == PS_IDLE_AIR)) && BossMode){
+	FinalSmash = 1;set_attack(AT_USPECIAL);
+	if(get_gameplay_time() == 120){bossmusic = sound_play(sound_get("bossmusic"),true,noone,1.0);}
+	if(bossattack == 1 || bossattack == 3 || bossattack == 5)bossattack += 1;
+}
+if(BossMode){
+	if(get_gameplay_time() >= 60 && get_gameplay_time() <= 120){
+		boss_display_hp = ease_expoIn(round(boss_display_hp), 300, get_gameplay_time()-60, 60);
+		if(get_gameplay_time() % 3 == 0){
+	    	sound_play(sound_get("hpbar"),false,noone,0.75);
+		}
+	}else if(get_gameplay_time() > 120){
+		var hp = boss_hp-get_player_damage(player);hp = max(0,hp);
+		boss_display_hp = (hp/boss_hp)*300;
+	}
+}
 
 if(!loaded){
 	if(get_player_color(player) != 0){
@@ -146,8 +245,8 @@ if(!loaded){
 }
 
 //final smash stuff
-if(FinalSmash > 0){
-	soft_armor = 9999;strong_charge = 90;
+if(FinalSmash > 0 && !bossdead){
+	soft_armor = 99999;strong_charge = 90;
 	was_parried = false;suppress_stage_music(0.25,120);
 	fall_through = 1;
 	if(FinalSmash > 1){
@@ -156,13 +255,15 @@ if(FinalSmash > 0){
 		if(FinalSmash >= 9){
 			up_down = true;
 		}
-		if(state != PS_ATTACK_AIR){
+		if(state != PS_ATTACK_AIR && !hitpause){
 			if(FinalSmash == 2 || FinalSmash == 3){
 				set_attack(AT_NSPECIAL);
 			}else if(FinalSmash == 4 || FinalSmash == 5 || FinalSmash == 6 || FinalSmash == 7 || FinalSmash == 8){
 				set_attack(AT_USTRONG);
 			}else if(FinalSmash == 9){
 				set_attack(AT_TAUNT);
+			}else if(FinalSmash > 9){
+				FinalSmash = 0;
 			}
 		}
 		if(get_gameplay_time() % 20 == 0){
@@ -173,5 +274,96 @@ if(FinalSmash > 0){
 	}
 	if("fs_charge" in self){
 		fs_charge = 0;
+	}
+}
+
+//silly angle 0 code (part 2)
+if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
+if(instance_exists(killtarget)){
+	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
+		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
+		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
+		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
+		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
+	}else{killtarget = noone;}
+}if(instance_exists(killtarget2)){
+	if(killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
+		killtarget2.old_vsp = 0;killtarget2.vsp = 0;//killtarget2.y = killtarget_y;
+		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_tech = 1;killtarget2.fall_through = true;
+	}if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
+	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
+}
+
+//boss and anti cheapie stuff
+if(superop || BossMode){
+	if(state != PS_HITSTUN || get_player_damage(player) < 300 || BossMode){
+	    if(x+hsp > room_width){
+	    	x = 10;
+	    	//sound_play( sound_get("pocket_throw") );
+		} 
+		if(x+hsp < 0){
+	    	x = room_width - 10;
+	    	//sound_play( sound_get("pocket_throw") );
+		} 
+		if(y+vsp > room_height){
+			y = 10;
+			//sound_play( sound_get("pocket_throw") );
+		}
+		if(y+vsp < 0 && FinalSmash <= 0){
+			y = room_height - 30;vsp = -20;
+			x = room_width/2 + 500*spr_dir;hsp = -10*spr_dir;
+			//sound_play( sound_get("pocket_throw") );
+		} 
+	}if(BossMode){suppress_stage_music(0,120);set_player_stocks(player,1);}
+}
+if(superop){
+    outline_color = [outline_timer, outline_timer/2, 0];
+	if (outline_timer > 100) outline_rev = true;
+	if (outline_timer < 5) outline_rev = false;
+	if (outline_rev) outline_timer -= 6;
+	else outline_timer += 12;
+	init_shader();
+    max_djumps = 999;soft_armor = 999;knockback_adj = 0;
+    move_cooldown[attack] = 0;
+    can_move = true;can_jump = true;can_attack = true;
+    can_strong = true;can_ustrong = true;can_special = true;can_shield = true;
+    set_player_damage(player, 0);
+}else if(op){
+    outline_color = [outline_timer, outline_timer/2, 0];
+	if (outline_timer > 100) outline_rev = true;
+	if (outline_timer < 5) outline_rev = false;
+	if (outline_rev) outline_timer -= 6;
+	else outline_timer += 6;
+	init_shader();
+    knockback_adj = .1;
+    if(BossMode){
+		max_djumps = 999;soft_armor = 99999;
+		/*move_cooldown[attack] = 0;can_move = true;can_jump = true;can_attack = true;
+		can_strong = true;can_ustrong = true;can_special = true;can_shield = true;*/
+    }
+}
+if(bossdead){
+	x = ease_expoIn(round(x), round(room_width/2), 5, 20);
+	y = ease_expoIn(round(y), round(room_height/2)-30, 5, 20);
+	initial_invince = 2;bossdeadtimer += 1;hsp = 0;vsp = 0;
+	can_tech = false;can_bounce = false;off_edge = true;
+	can_wall_jump = false;can_wall_tech = false;can_be_grounded = false;
+	if(bossdeadtimer < 180){set_state(PS_HITSTUN);hitstun = 20;hitstun_full = 20;shake_camera(3,5);}
+	if(bossdeadtimer == 180){
+		sound_play(sound_get("taunt_crystal"));shake_camera(20,30);
+		var lightbeams = spawn_hit_fx(x,y-40,fx_lightbeams_fast);lightbeams.draw_angle = random_func(0, 360, true);
+        lightbeams = spawn_hit_fx(x,y-40,fx_lightbeams_fast);lightbeams.draw_angle = random_func(1, 720, true);
+        lightbeams = spawn_hit_fx(x,y-40,fx_lightbeams_fast);lightbeams.draw_angle = random_func(2, 360, true);
+        lightbeams = spawn_hit_fx(x,y-40,fx_lightbeams_fast);lightbeams.draw_angle = random_func(3, 720, true);
+		set_attack(AT_TAUNT);window = 10;
+	}
+	if(bossdeadtimer == 300){
+		//sound_play(sound_get("death"));//set_player_stocks(player,0);
+		/*with oPlayer{
+	        if id != other.id{
+	            player=0;
+	        }
+	    }*/
+	    end_match(last_player);
 	}
 }

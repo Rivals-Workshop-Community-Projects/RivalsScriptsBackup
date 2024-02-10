@@ -14,7 +14,7 @@ with (oPlayer) if (player != other.player && "url" in self && url != 2396061657)
 Chatting = true;
 
 //he has a random chance to appear with glasses (unless he is on his theikos state/alt)
-DG_portrait = (theikos_type > 0 || alt_cur == 26) ? sprite_get("DG_port_theikos") : ( random_func(0, 5, true) == 0 ? sprite_get("DG_port_glasses") : sprite_get("DG_port") );
+DG_portrait = (theikos_type > 0 || alt_cur == 27) ? sprite_get("DG_port_theikos") : ( random_func(0, 5, true) == 0 ? sprite_get("DG_port_glasses") : sprite_get("DG_port") );
 
 
 var DG_page = 0;

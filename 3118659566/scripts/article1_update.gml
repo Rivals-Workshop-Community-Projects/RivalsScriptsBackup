@@ -258,6 +258,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hurt) { //makes the summ
 			 			sound_play(asset_get("sfx_shovel_hit_med1"));
 			            state = 1;
 			            state_timer = 0;
+			            player_id.mb_cooldown = 120;
 			 	}
                 }
             }
@@ -914,8 +915,20 @@ switch(state){
         animation_type = 3;
         break;
     case 8:
-        new_sprite = sprite_get("mb_dmg");
-        animation_type = 4;
+    switch letters {
+    	case 0:
+    	new_sprite = sprite_get("mb_dmg");
+    	break;
+    	case 1:
+    	new_sprite = sprite_get("mb_dmg_lv1");
+    	break;
+    	case 2:
+    	new_sprite = sprite_get("mb_dmg_lv2");
+    	break;
+    	case 3:
+    	new_sprite = sprite_get("mb_dmg_lv3");
+    	break;
+    }           animation_type = 4;
         break;
     case 9:
     switch letters {

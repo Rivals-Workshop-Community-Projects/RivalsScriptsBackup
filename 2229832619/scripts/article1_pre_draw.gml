@@ -14,7 +14,7 @@
 //copy and paste this anywhere in the file, but make sure the code past "#define" is at the end of the file. 
 //Also, make sure to use "shader_end();" before you start the code, and "shader_start(); if you want to put more code after.
 
-if (get_player_color(player) == 19||get_player_color(player) == 11){
+if (get_player_color(player) == 19||get_player_color(player) == 11||get_player_color(player) == 20){
 
 shader_end();
 maskHeader();
@@ -22,9 +22,13 @@ draw_self();
 maskMidder();
 
 if (get_player_color(player) == 11){
-draw_sprite_tiled_ext(sprite_get("genesisfield_g"), 1, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
-}else{
-draw_sprite_tiled_ext(sprite_get("genesisfield"), 1, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
+draw_sprite_tiled_ext(sprite_get("genesisfield_g"), 0, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
+}
+if (get_player_color(player) == 19){
+draw_sprite_tiled_ext(sprite_get("genesisfield"), 0, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
+}
+if (get_player_color(player) == 20){
+draw_sprite_tiled_ext(sprite_get("genesisfield_s"), 0, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
 }
 
 //draw_sprite_tiled_ext(sprite_get("genesisfield"), 1, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)

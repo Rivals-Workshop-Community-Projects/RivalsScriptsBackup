@@ -1,5 +1,5 @@
 shader_start();
-if mailboxID = 0 || (mailboxID != 0 && mailboxID.letters = 0) {
+if (mailboxID = 0 || (mailboxID != 0 && mailboxID.letters = 0)) && mb_cooldown < 1 {
     draw_sprite(sprite_get("mb_hud_icon"), 0, temp_x + 180, temp_y - 22);
 } else {
     draw_sprite(sprite_get("mb_hud_icon"), 1, temp_x + 180, temp_y - 22);

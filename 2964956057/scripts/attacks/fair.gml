@@ -39,10 +39,11 @@ set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 18);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .9);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 1.4);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, xlarge_wood_hfx);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_FAIR, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 
 // first frame's sourspot
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);

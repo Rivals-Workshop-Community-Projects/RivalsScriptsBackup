@@ -87,7 +87,7 @@ if (my_hitboxID.attack == AT_UTILT){
 if (my_hitboxID.attack == AT_FSPECIAL){
 	if (my_hitboxID.hbox_num<=3){
 		if (na_dsp_charge < dspmax){
-			print(string(ceil((4-my_hitboxID.hbox_num)*1.5)))
+			//print(string(ceil((4-my_hitboxID.hbox_num)*1.5)))
 			na_dsp_charge += ceil((4-my_hitboxID.hbox_num)*1.5);
 			white_flash_timer = 6;
 			sound_play(sound_get("tic"));

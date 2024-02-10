@@ -2,6 +2,16 @@ var real_player = (room == asset_get("network_char_select") && object_index != o
 
 var currently_hovering = false;
 
+if "alt_changed" in self {
+    if(alt_changed != get_player_color(player)){
+        if(get_player_color(player) == 22){
+            sound_play(sound_get("glitch_select"));
+        }
+    }
+    alt_changed = get_player_color(player);
+}
+
+
 if "customizer_active" not in self{
     customizer_active = 0;
 }
@@ -9,7 +19,7 @@ if "hovering" not in self{
     hovering = 0;
 }
 
-if get_player_color(real_player) == 22{
+if get_player_color(real_player) == 23{
     if get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer){
         currently_hovering = true;
         if hovering != 40{
@@ -37,7 +47,7 @@ if get_player_color(real_player) == 22{
     set_synced_var(player, champ_cur);
 }
 
-else if !customizer_active && get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer) && get_player_color(real_player) == 23{
+else if !customizer_active && get_instance_x(cursor_id) > x + 180 && get_instance_x(cursor_id) < x + 210 && get_instance_y(cursor_id) > y + 102 + runes_mode && get_instance_y(cursor_id) < y + 132 + runes_mode && !instance_exists(oTestPlayer) && get_player_color(real_player) == 24 {
     currently_hovering = true;
     if hovering != 40{
         hovering = 40;

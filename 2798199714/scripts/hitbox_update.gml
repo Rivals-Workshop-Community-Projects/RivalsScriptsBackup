@@ -1,3 +1,4 @@
+if(player_id.player == orig_player){
 
 if(attack == AT_NSPECIAL){
 	if(hbox_num == 1){
@@ -352,4 +353,8 @@ if(attack == AT_FTILT){
     }
 }
 
+stop_effect = false;
+if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
+
+}

@@ -53,6 +53,7 @@ special_alt_number = synced_var >> 2;
 #macro codename_queen_number        23
 #macro codename_cabinet_number      24
 #macro codename_rotom_number        25
+#macro codename_tas_number          26
 // Have a bool that can be queried for each alt
 codename_default_active    = false;
 codename_mega_active       = false;
@@ -72,6 +73,7 @@ codename_mettaton_active   = false;
 codename_queen_active      = false;
 codename_cabinet_active    = false;
 codename_rotom_active      = false;
+codename_tas_active        = false;
 
 recolor_default = false;
 recolor_queen   = false;
@@ -88,6 +90,9 @@ switch (selected_player_color) {
         break;
     case codename_rotom_number :
         recolor_rotom = true;
+        break;
+    case codename_tas_number : // tournament legal
+        codename_tas_active = true;
         break;
     default :
         break;
@@ -233,7 +238,8 @@ techroll_speed      = 10;       // 8    -  11
 //vfx_example = hit_fx_create(spr_example, 54);
 
 // Variables
-rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
+rainbow_color = c_white; // (used for rainbow mode)
+rainbow_opposite = c_black;
 rainbow_activate = false;
 infinite_energy = false; // Used for Sandbert phone cheat
 

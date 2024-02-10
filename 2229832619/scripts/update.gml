@@ -10,6 +10,9 @@ na_hsp_h[1]=hsp;
 if (get_player_color( player ) == 10) {
 	init_shader();
 }
+if (get_player_color( player ) == 20) {
+	init_shader();
+}
 
 if (get_player_color( player ) == 7){ //towerofheaven
 	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
@@ -21,13 +24,22 @@ if (get_player_color( player ) == 7){ //towerofheaven
 		ea_init = true;
 	}
 }
+if (get_player_color( player ) == 20){ //towerofheaven
+	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+		outline_color=[30, 30, 30]
+	}
+	if (!s_init){
+		
+		s_init = true;
+	}
+}
 
 if (was_reloaded){
 	sound_play(sound_get("altsel"))
 	was_reloaded = false;
 }
 
-if (get_player_color( player ) == 19||get_player_color( player ) == 11) { //genesis
+if (get_player_color( player ) == 19||get_player_color( player ) == 11||get_player_color( player ) == 20) { //genesis
 	if ((state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)&&attack==AT_DSPECIAL&&window==3){
 		giy_speed = clamp(giy_speed+giy_tr_speed, giy_speed_n, giy_speed_f)
 	}else{
@@ -84,6 +96,10 @@ if (na_bh){
 		}
 	}
 	na_bh = false;
+}
+if (!laseroverlay_init){
+	instance_create( round(room_width/2), round(room_height/2), "obj_article_platform" )
+	laseroverlay_init = true;
 }
 /*
 if (state==PS_HITSTUN){
@@ -185,6 +201,7 @@ if (attack==AT_FSTRONG&&state!=PS_ATTACK_GROUND){
 if (attack==AT_DSPECIAL&&state!=PS_ATTACK_GROUND&&state!=PS_ATTACK_AIR){
 	sound_stop(sound_get("charge"));
 	sound_stop(sound_get("charge2"));
+	if (get_player_color(player) == 19){ sound_stop(sound_get("genesis_extra_elec")); };
 }
 
 with (oPlayer){

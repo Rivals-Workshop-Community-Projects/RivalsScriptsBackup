@@ -25,7 +25,7 @@ draw_vertex_color(x, y, c_white, radar_alpha/3);
 draw_vertex_color(x + 8*len, y + len*30, c_white, 0);
 draw_primitive_end();
 maskMidder();
-draw_sprite_tiled_ext(sprite_get("vfx_drone_reticle"), 0, 0, get_gameplay_time(), 2, 2, (col = c_black? c_dkgray: col), 1);
+draw_sprite_tiled_ext(sprite_get(player_id.alt_cur = 28? "vfx_gen_reticle": "vfx_drone_reticle"), 0, 0, get_gameplay_time(), 2, 2, (col = c_black? c_dkgray: col), 1);
 maskFooter();
 
 #define maskHeader()

@@ -45,7 +45,7 @@ sprite_change_offset("parry", 52, 98);
 sprite_change_offset("roll_forward", 52, 98);
 sprite_change_offset("roll_backward", 52, 98);
 sprite_change_offset("airdodge", 52, 98);
-//sprite_change_offset("waveland", 32, 62); you have been trolled!
+sprite_change_offset("waveland", 52, 98);
 sprite_change_offset("tech", 52, 98);
 
 //Grounded Normals

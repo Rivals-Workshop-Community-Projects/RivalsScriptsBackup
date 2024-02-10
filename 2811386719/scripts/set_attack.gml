@@ -1,3 +1,5 @@
+/// set_attack.gml(_attack)
+
 if(attack == AT_NSPECIAL){
     reset_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING);
 }

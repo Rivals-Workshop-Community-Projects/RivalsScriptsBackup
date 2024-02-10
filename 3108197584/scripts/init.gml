@@ -239,5 +239,8 @@ rune_cancel = 0;
 multi_missile = 1;
 knockback_scaling = 1 - 0.3*has_rune("I");
 
+//anti cheapie
+target_practice_mode = 0;
+
 //compats
 wiimote_compat_sprite = sprite_get("wiimote");

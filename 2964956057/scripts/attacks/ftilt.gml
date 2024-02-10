@@ -32,10 +32,10 @@ set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 361);
-set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.75);
+set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7); //.7
+set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.7); //.75
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .55);
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+// set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8); // v_fork you little stupid
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, vfx_ftilt_energy_hit);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));

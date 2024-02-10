@@ -33,6 +33,10 @@ if instance_exists(uair_shot){
     if hitpause uair_shot.step_timer--;
 }
 
+if target_practice_mode{
+    hurtboxID.sprite_index = sprite_get("empty");
+}
+
 #define offset_hud
 /// offset_hud(val, am = .3;)
 var val = argument[0];

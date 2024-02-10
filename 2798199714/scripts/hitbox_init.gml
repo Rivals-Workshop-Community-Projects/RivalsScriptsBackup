@@ -7,6 +7,10 @@ MorshuCanGrab = false;
 UnReflectable = false;
 AriaCantAbsorb = true;
 Pocketable = false;
+SpikeCanEat = false;
+if("KoB_grabbed" not in self)KoB_grabbed = false;
+KoB_was_grabbed = false;
+KoB_destroy = false;
 
 num = 0;
 tornadosfx = noone;

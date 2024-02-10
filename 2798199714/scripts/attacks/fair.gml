@@ -49,7 +49,7 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.95);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 1.85);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 

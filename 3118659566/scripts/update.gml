@@ -6,10 +6,17 @@ if(attack == AT_FSPECIAL_AIR && state == PS_ATTACK_AIR){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
+if !free {
+	has_airdashed = false;
+}
+
 if state == PS_HITSTUN {
 	spin_cooldown = 0;
 	if vault_letters > 0 && dairprojID = 0 {
 		vault_letters = 0;
+	}
+	if dair_letters > 0 && dairprojID = 0 {
+		dair_letters = 0;
 	}
 }
 
@@ -35,12 +42,19 @@ if !free {
     move_cooldown[AT_DAIR] = 0;
 }
 
-if packageID != 0 || lvl1projID != 0 || lvl2projID != 0 || dairprojID != 0 {
+if packageID != 0 || lvl1projID != 0 || lvl2projID != 0 || dairprojID != 0 || mb_cooldown > 0 {
 	move_cooldown[AT_DSPECIAL] = 999;
     move_cooldown[AT_DSPECIAL_2] = 999;
-} else if packageID = 0 && lvl1projID = 0 && mailboxID = 0 && dairprojID = 0 {
+} else if packageID = 0 && lvl1projID = 0 && lvl2projID = 0 && mailboxID = 0 && dairprojID = 0 && mb_cooldown < 1 {
     move_cooldown[AT_DSPECIAL] = 0;
 	move_cooldown[AT_DSPECIAL_AIR] = 0;
+}
+
+//print(mb_cooldown)
+
+
+if mb_cooldown > 0 {
+	mb_cooldown--;
 }
 
 if state == PS_JUMPSQUAT || state == PS_FIRST_JUMP {
@@ -52,7 +66,7 @@ if state == PS_JUMPSQUAT || state == PS_FIRST_JUMP {
 
 if state == PS_DOUBLE_JUMP {
 	if state_timer == 1 {
-		if tap_jump_pressed && !(get_synced_var(player)) {
+		if tap_jump_pressed && (get_synced_var(player)) {
 			tap_jumped = true;	
 		}	
 	}
@@ -69,7 +83,7 @@ if state == PS_DOUBLE_JUMP {
 	if state_timer == 1 {
 		snapped_angle = 90;
 	}
-	if state_timer == 8 {
+	if state_timer == 8 && has_airdashed = false {
 		if jump_down {
 			attack_end();
 	    	set_attack( AT_EXTRA_1 )
@@ -78,6 +92,48 @@ if state == PS_DOUBLE_JUMP {
 			attack_end();
 	    	set_attack( AT_EXTRA_1 )
 	    	tap_djump = true;
+	    } else {
+			tap_jumped = false;
+		}
+	}
+}
+
+if joy_pad_idle {
+	joy_pad_timer++;
+} else {
+	joy_pad_timer = 0;
+}
+
+if state == PS_FIRST_JUMP {
+	if state_timer == 1 {
+		if tap_jump_pressed && (get_synced_var(player)) {
+			tap_jumped = true;	
+		}	
+	}
+	if tap_jumped = false {
+		if !joy_pad_idle {
+			snapped_angle = floor((joy_dir * 8/360) + 0.5) * 45
+		} else if joy_pad_idle && joy_pad_timer > 6 {
+			snapped_angle = 90;
+		}
+	} else if tap_jumped = true {
+		snapped_angle = floor((joy_dir * 8/360) + 0.5) * 45
+	}
+	
+	if state_timer == 1 {
+		snapped_angle = 90;
+	}
+	if free && vsp = 0 {
+		if jump_down {
+			attack_end();
+	    	set_attack( AT_EXTRA_1 )
+	    	has_airdashed = true;
+		}
+		if tap_jumped = true && up_down {
+			attack_end();
+	    	set_attack( AT_EXTRA_1 )
+	    	tap_djump = true;
+	    	has_airdashed = true;
 	    } else {
 			tap_jumped = false;
 		}
@@ -163,24 +219,32 @@ if dairprojID != 0 {
 }
 
 if packageID != 0 {
-    if packageID.has_hit = true || packageID.free = false || (packageID.hitbox_timer > 40 && packageID.vsp = 0) {
-        packageID.destroyed = true;
-        var k = spawn_hit_fx(packageID.x, packageID.y + 55, mb_proj_lv3_explo_vfx);
-   		k.depth = depth + 1;
-   		if (explo_owner == noone) {
-   			exploID = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
-   		} else if explo_owner != noone {
-   			explo1 = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
-			explo1.player = explo_owner;
-			//print("test2")
-   		}
-		sound_play(asset_get("sfx_zetter_downb"))
-        k.depth = depth + 1;
-        explo_timer = 0;
-        package_exploded = true;
-        packageID = 0;
-    }
-
+	if (explo_owner == noone) {
+	    if packageID.has_hit = true || packageID.free = false || (packageID.hitbox_timer > 40 && packageID.vsp = 0) {
+	        packageID.destroyed = true;
+	        var k = spawn_hit_fx(packageID.x, packageID.y + 55, mb_proj_lv3_explo_vfx);
+	   		k.depth = depth + 1;
+			exploID = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
+			sound_play(asset_get("sfx_zetter_downb"))
+	        k.depth = depth + 1;
+	        explo_timer = 0;
+	        package_exploded = true;
+	        packageID = 0;	
+	    }
+	} else if explo_owner != noone {
+	    if packageID.has_hit = true || packageID.free = false || (packageID.vsp = 0) {
+	        packageID.destroyed = true;
+	        var k = spawn_hit_fx(packageID.x, packageID.y + 55, mb_proj_lv3_explo_vfx);
+	   		k.depth = depth + 1;
+			exploID = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
+			sound_play(asset_get("sfx_zetter_downb"))
+	        k.depth = depth + 1;
+	        explo_timer = 0;
+	        package_exploded = true;
+	        packageID = 0;	
+	    }
+	}
+	
 	if (packageID.free && packageID.y >= room_height - 0){
 	    packageID.destroyed = true;
 	    packageID = 0;

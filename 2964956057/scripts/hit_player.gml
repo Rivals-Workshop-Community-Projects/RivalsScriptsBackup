@@ -3,10 +3,25 @@ if my_hitboxID.orig_player_id != self{
     exit;
 }
 
+//genesis vfx
+if(genesis){
+	if(hit_player_obj.should_make_shockwave && my_hitboxID.type == 1){
+		genesis_shockwave_vfx = true;
+		sound_play(sound_get("glitch"));
+	}
+	if(!genesis_sound_enabled){
+	    genesis_sound_enabled = true;
+	    sound_volume(genesis_glitch_sound, 2, 1);
+	}
+}
+
 // checks if you would beat soft armor use this
 var check_kb = get_kb_formula(get_player_damage( hit_player_obj.player ), hit_player_obj.knockback_adj, 1.0, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale);
 
 switch(my_hitboxID.attack){
+	case AT_TAUNT_2:
+		hit_player_obj.should_make_shockwave = true;
+	break;
     case AT_FTILT:
         sound_play(asset_get("sfx_clairen_hit_med"), false, noone, 0.8, 1.2);
         sound_play(asset_get("sfx_propeller_dagger_draw"), false, noone, 1, 1.3);
@@ -40,11 +55,11 @@ switch(my_hitboxID.attack){
             case 1: // Main
                 sound_play(asset_get("sfx_plant_eat"), false, noone, 1, 1);
                 sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 0.9);
-                hit_player_obj.flowey_ustrong_quick_grab = self;
+                hit_player_obj.flowey_ustrong_quick_grab = noone;
             break;
             case 2: case 3: // Catchers
                 sound_play(asset_get("sfx_leafy_hit1"), false, noone, 0.7, 1.15);
-                hit_player_obj.flowey_ustrong_quick_grab = noone;
+                hit_player_obj.flowey_ustrong_quick_grab = self;
                 if instance_exists(hit_player_obj) && !hit_player_obj.clone && !hit_player_obj.super_armor && hit_player_obj.soft_armor < check_kb{
                     hit_player_obj.x = lerp(hit_player_obj.x, x, 0.15);
                 }

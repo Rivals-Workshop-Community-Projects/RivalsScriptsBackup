@@ -256,6 +256,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.88", "9th February, 2024");
+initHeader("Buffs");
+initSection("+ Increased some movement stats (dash 6.5->7) and made wavedash slightly better
++ Made UTilt slightly faster (startup f11->f8, endlag -2f). The endlag change is mostly compensated for by the whifflag fix though");
+initHeader("Fixes / Other Changes");
+initSection("+ Added boss mode if you set a Galacta Knight CPU to level 1, 2, or 3! The different levels determine the difficulty of the boss, which changes the fight a little bit. Boss mode + difficulty level is also displayed on the css to make all this clear, and the boss functions with a health bar like in the Kirby games
++ Added Miiverse compatibility (4 posts for now), and Kirby Fighters Buddy compatibility
++ Added silly angle 0 galaxy thing on several moves
++ Fixed some misc things (ex: Jab3 having too much whifflag, UTilt lacking whifflag, etc)");
 
 initPatch("1.87", "24th September, 2023");
 initHeader("Fixes / Other Changes");
@@ -371,7 +380,7 @@ initSection("Galacta Knight is a Kirby character who debuted in Kirby Super Star
 initHeader("Character by");
 initSection("FelixBlobDev");
 initHeader("Compatible with");
-initSection("Toon Link, Villager, Steve, Link");
+initSection("Toon Link, Villager, Kirby Fighters Buddy, Miiverse, Mt. Dedede Stadium, Boxing Ring, Steve, Link");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 

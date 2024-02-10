@@ -9,6 +9,7 @@ champ_cur = 0;
 prev_champ = champ_cur;
 runes_mode = get_match_setting(SET_RUNES) == true? -16:0;
 prev_alt = 0;  
+alt_changed = false;
 
 customizer_active = 0;
 

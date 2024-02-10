@@ -1,5 +1,6 @@
 //update.gml
 
+/*
 //Sleep Kirby Hat Offsets
 if (free){
 	//Air Hat Offsets
@@ -16,6 +17,7 @@ if (free){
 	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
+*/
 
 //print(get_synced_var( player ));
 voiced = get_synced_var( player );
@@ -29,6 +31,38 @@ if (normal_voiced_toggle == 1){
 }
 */
 
+// voiced mode stuff
+if (state_cat == SC_HITSTUN && state_timer == 1 && !hitpause && voicelineHurtCD == 0){
+	voicelineHurtCD = 40;
+	if (get_player_damage( player ) < 100){//>
+		var hurtVC = random_func( 1, 4, true ) + 1;
+		sound_stop(vc_mk_hurt1);
+		sound_stop(vc_mk_hurt2);
+		sound_stop(vc_mk_hurt3);
+		if (hurtVC == 1){
+			sound_play(vc_mk_hurt1);
+		} else if (hurtVC == 2){
+			sound_play(vc_mk_hurt2);
+		} else if (hurtVC == 3){
+			sound_play(vc_mk_hurt3);
+		}
+	} else if (get_player_damage( player ) >= 100){
+		var hurtVC = random_func( 1, 4, true ) + 1;
+		if (hurtVC == 1){
+			sound_play(vc_mk_hurt_big1);
+		} else if (hurtVC == 2){
+			sound_play(vc_mk_hurt_big2);
+		}
+	}
+}
+if (!free){
+	voicelineHurtCD = 0;
+}
+
+if (voicelineHurtCD != 0){
+	voicelineHurtCD--;
+}
+
 switch (state){
 	case PS_SPAWN:
 		/*
@@ -39,6 +73,9 @@ switch (state){
 			sound_play(vc_mk_taunt_1);
 		}
 		*/
+		if (state_timer == 6 && isAnimeAlt){
+			sound_play(music_animeAppear);
+		}
 		if (state_timer == 100 && taunt_down && get_player_color(player) == 15){
 			NESalt_shouldAddBackShading = true;
 			sound_play(asset_get("mfx_star"));
@@ -51,26 +88,11 @@ switch (state){
 			sound_play(asset_get("mfx_star"));//>
 		}
 		break;
-	case PS_IDLE:
-		//
-		break;
 	case PS_CROUCH:
 		//Crouch Sound Effect.
 		if (state_timer == 2){
 			sound_play(sfx_crouch);
 		}
-		break;
-	case PS_WALK:
-		//
-		break;
-	case PS_DASH_START:
-		//
-		break;
-	case PS_DASH_STOP:
-		//
-		break;
-	case PS_DASH_TURN:
-		//
 		break;
 	case PS_JUMPSQUAT:
 		//
@@ -84,11 +106,6 @@ switch (state){
 				}
 			}
 		}
-		break;
-	case PS_FIRST_JUMP:
-		//
-		break;
-	case PS_DOUBLE_JUMP:
 		break;
 	case PS_WALL_JUMP:
 		//
@@ -204,7 +221,7 @@ if (get_player_color( player ) != 7 && get_player_color( player ) != 17){
 
 //this increments introTimer every few frames, depending on the number entered
 
-if (introTimer < 19) {
+if (introTimer < 19 && !is_in_playtest) {//>
     hud_offset = 1000;
 } 
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.

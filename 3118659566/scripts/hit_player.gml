@@ -56,6 +56,17 @@ if (my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.id = lvl2projID) {
 	}
 }
 
+//Bair Lerp
+if (my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num >= 2) {
+	var lerpam
+	lerpam = [0.5, 0.5]
+	
+
+	hit_player_obj.x = lerp(floor(hit_player_obj.x), x + hsp - 50*my_hitboxID.player_id.spr_dir, lerpam[0])
+	hit_player_obj.y = lerp(floor(hit_player_obj.y), y + 10 + vsp, lerpam[1])
+	
+}
+
 
 //LETTER SMALL
 if letter1ID != 0 {

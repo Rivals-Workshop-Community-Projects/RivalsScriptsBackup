@@ -107,7 +107,7 @@ if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == AT_FSPE
     	hit_player_obj.hitstop_full = 0;
     	hit_player_obj.hsp = 0;
     	hit_player_obj.vsp = 0;
-    	take_damage( player, -1, -999)
+    	take_damage( player, -1, -5)
     	hit_player_obj.tsprite_index = -1;
 		thrownBike = noone;
     	set_attack(AT_DSPECIAL);

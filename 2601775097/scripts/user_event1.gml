@@ -3,7 +3,7 @@
 
 if ("theikos_color_time" not in self) exit;
 
-var theikos_alt = 26;
+var theikos_alt = 27;
 
 set_character_color_slot( //hair
     2,

@@ -22,6 +22,7 @@ else             //regular gameplay UI
     {
         draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 2, temp_y - 6, 204, 6, $e9973e, 1); // background
         for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_current-100)*2 + 2, 2, mp_color_ex, 1); // fill
+        
     }
     draw_sprite_ext(sprite_get("hud_mp"), 0, temp_x - 24, temp_y - 20, 2, 2, 0, c_white, 1); //frame
     draw_debug_text(temp_x - 0, temp_y - 20, "MP " + (theikos_type == 2 ? "999999999" : string(floor(mp_current)) + "/100") ); //text

@@ -500,6 +500,60 @@ if(variable_instance_exists(id,"diag"))
             }
         }
     }
+
+    //	Masky
+	if(otherUrl == 2987065763)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Why do I sense such an... Angry vibe for you?",
+                "I didn't come here for a chat. Put up your dukes.",
+                "If that's how you wanna play. Let's go!"]
+            }
+        }
+    }
+
+    //	Spark
+	if(otherUrl == 3040171673)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "You have got to be the weirdest clown I've seen in a long time.",
+                "Look who's talking! What are you some sort Purple Wigged Space Elf?",
+                "HEY! You got some nerve with that wild take!"]
+            }
+        }
+    }
+
+    //	Bowsette
+	if(otherUrl == 3122481848)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "I'm sensing all sorts of wrong with you.",
+                "Ohohohoho... Is it because of wicked beauty~?",
+                "...Yeah, sure. Let's go with that."]
+            }
+        }
+    }
 	
 	//	Roger 
     if(otherUrl == 2304745302)

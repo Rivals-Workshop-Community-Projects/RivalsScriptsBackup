@@ -231,6 +231,11 @@ assistATIndex = 29; //46 is a bike move, changing this so that Carol can use her
 boris_intro_sfx = sound_get("carol_grounded");
 boris_intro_loop = 14;
 
+dracula_portrait = sprite_get("dracula_port1");
+dracula_portrait2 = sprite_get("dracula_port2");
+dracula_check = false;
+
+
 //Howzit Compatibility
 howzitisthebestshopowner123 = true //activates the compatibility
 

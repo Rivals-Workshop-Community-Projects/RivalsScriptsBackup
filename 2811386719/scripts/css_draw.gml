@@ -14,19 +14,19 @@
 // 	rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
 // }
 
-if("alt_name" in self){
-  draw_set_halign(fa_right);
+if("alt_name" not in self) exit;
+
+draw_set_halign(fa_right);
   
-  //include alt. name
-  is_mod = is_array(alt_name[alt_cur])
-  textDraw(temp_x + 204, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1,
-  `Alt. ${(alt_cur < 10 ? "0" : "")}${alt_cur}${is_mod ? chr(modifier + 97): ""}: ${(!is_mod ? alt_name[alt_cur] : alt_name[@alt_cur][@modifier])}`);
-  
-  //exclude alt. name
-  //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
-  
-  if(show_switcher != -1) draw_changer()
-}
+//include alt. name
+is_mod = is_array(alt_name[alt_cur])
+textDraw(temp_x + 204, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1,
+`Alt. ${(alt_cur < 10 ? "0" : "")}${alt_cur}${is_mod ? chr(modifier + 97): ""}: ${(!is_mod ? alt_name[alt_cur] : alt_name[@alt_cur][@modifier])}`);
+
+//exclude alt. name
+//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+
+if(show_switcher != -1) draw_changer()
 #define draw_changer
 
 // draw_rectangle_color(changer.x, changer.y, changer.x + changer.width, changer.y + changer.height, c_fuchsia,c_fuchsia,c_fuchsia,c_fuchsia,true)

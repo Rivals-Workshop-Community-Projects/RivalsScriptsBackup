@@ -29,6 +29,31 @@ if ((sprite_index == sprite_get("theikos_idle") || sprite_index == sprite_get("i
 	image_index = state_timer * idle_anim_speed;
 }
 
+if (state == PS_IDLE && state_timer == 0)
+{
+	if (sprite_index == wait_sprite) waiting = true;
+	else waiting = false;
+}
+else if (state != PS_IDLE) waiting = false;
+
+//genesis wait animation "stops responding"
+if (alt_cur == 19)
+{
+	if (waiting)
+	{
+		sprite_index = sprite_get("idle");
+		image_index = 0;
+		if (genesis_window_timer < genesis_window_timer_max) genesis_window_timer ++;
+
+		genesis_load_tracker = state_timer;
+	}
+	else
+	{
+		if (genesis_window_timer < genesis_window_timer_max*2 && genesis_window_timer > 0) genesis_window_timer ++;
+		if (genesis_window_timer >= genesis_window_timer_max*2) genesis_window_timer = 0;
+	}
+}
+
 switch (state) {
 	// ATTACK ANIMATIONS
 	case PS_ATTACK_AIR: case PS_ATTACK_GROUND:

@@ -14,6 +14,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
+
 var qe_b = "mokou"
 // ! you can now scroll down until you reach "the primary part you should change."
 
@@ -67,7 +68,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     color_name_activate = false; // when "false", disables the color names
     
-    col_max = 11; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 12; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(249, 49, 83) // "color preview square" color. can be any color!
@@ -106,6 +107,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[11,0] = make_color_rgb(66, 80, 179)
     ce[11,1] = "Looking Blue"
     ce[11,2] = "Shion Yorigami"
+    ce[12,0] = make_color_rgb(187, 187, 189)
+    ce[12,1] = "Hopes & Dreams"
+    ce[12,2] = "This is the end."
     
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
@@ -131,6 +135,7 @@ if (ae == "ne"){
     ee = ee_m;
     ae = "ue";
 }
+if(get_player_color(player) == 12) draw_sprite_ext(sprite_get("css_outline_hope"), 0, temp_x, temp_y - 1, 2, 2, 0, c_white, 1);
 if (ee > 0){
     var tw = ease_quartOut(0, 1, ee, ee_m);
     var tw_b = (ease_quartOut(0, 1, ee, ee_m)/2) - (ease_quartIn(0, 1, ee, ee_m)/2);
@@ -196,8 +201,7 @@ if (color_desc_activate){
 }
 
 //ae code end
-
-
+if(ue = 12) draw_sprite_ext(sprite_get("css_icons"), 7, temp_x + 168, temp_y + 102, 2, 2, 0, c_white, 1);
 
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

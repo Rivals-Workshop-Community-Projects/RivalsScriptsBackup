@@ -244,6 +244,28 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.12", "03 February, 2024");
+initHeader("General:");
+initSection("GENERAL:
+* Updated the localization files
+
+FTILT:
+* Updated the Hurtbox sprites
+
+FSTRONG:
+* Updated the Hurtbox sprites
+(all hitboxes)
+- BKB reduced from 7.5 -> 7
++ KBS increased from 1 -> 1.10
+
+FAIR:
+* Updated the Hurtbox sprites");
+initHeader("Specials:");
+initSection("USPECIAL:
+* Adjusted the moveability");
+initHeader("~BONUS~:");
+initSection("* Updated the Dialogue Buddy lines with Masky, Spark & Bowsette");
+
 initPatch("1.11", "08 August, 2023");
 initHeader("General:");
 initSection("Updated the localization files");

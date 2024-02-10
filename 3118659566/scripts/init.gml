@@ -20,15 +20,15 @@
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = 1.05;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3.25;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 8;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 7.25;		// 4    -  9
-dash_speed          = 6.75;		// 5    -  9
+initial_dash_speed  = 7.5;		// 4    -  9
+dash_speed          = 6.85;		// 5    -  9
 dash_turn_time      = 10;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6        zetterburn's is 4
@@ -60,7 +60,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 12;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 18;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -196,6 +196,7 @@ exploID = 0;
 letter_move = false;
 mb_shoot = false;
 dspec_cancel = false;
+mb_cooldown = false;
 
 dairprojID = 0;
 mb_dair_hit = false;
@@ -265,6 +266,7 @@ window_joy_pad = 0;
 tap_jumped = false;
 tap_djump = true;
 taptoggle = 0;
+has_airdashed = false;
 //=============================================================
 // gravity flipfield variables
 

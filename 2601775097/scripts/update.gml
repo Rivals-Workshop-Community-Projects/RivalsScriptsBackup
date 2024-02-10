@@ -530,7 +530,7 @@ if (!menu_active)
                 }
 
                 if (state == PS_PRATFALL || state == PS_PRATLAND || state_cat == SC_HITSTUN
-                    || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
+                    || !free && alt_cur != 26 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
                 {
                     apply_motion_trail = false;
                 }
@@ -545,7 +545,7 @@ if (!menu_active)
                 }
                 else
                 {
-                    if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking) set_state(PS_PRATFALL);
+                    if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking && state_cat != SC_HITSTUN) set_state(PS_PRATFALL);
                 }
                 break;
             case 10: //searing descent
@@ -1012,7 +1012,7 @@ if ("fs_char_initialized" in self || "superTrue" in self || can_overdrive)
 }
 
 //theia evlogia
-if (theikos_type > 0 && (alt_cur == 0 || alt_cur == 27) || alt_cur == 26)
+if (theikos_type > 0 && (alt_cur == 0 || alt_cur == 27) || alt_cur == 27)
 {
     theikos_color_time += theikos_color_increase ? 1 : -1;
     if (theikos_color_increase && theikos_color_time >= theikos_color_time_max || theikos_color_time <= 0) theikos_color_increase = !theikos_color_increase;
@@ -1081,7 +1081,7 @@ if (apply_motion_trail)
 }
 
 //trail effects
-if (alt_cur == 25) 
+if (alt_cur == 26) 
 {
     switch (state)
     {
@@ -1410,10 +1410,10 @@ user_event(7);
                 case 16: //seasonal-halloween
                     if (bibical) no_effect_line_color = [75, 43, 43];    
                     break;    
-                case 25: //helel
+                case 26: //helel
                     no_effect_line_color = [52, 52, 52];    
                     break;
-                case 26: //theikos
+                case 27: //theikos
                     no_effect_line_color = [97, 45, 2];
                     break;
             }

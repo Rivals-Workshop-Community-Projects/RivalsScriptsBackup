@@ -22,6 +22,7 @@ season_name = [
 ];
 bday_name = "Reminiscence";
 
+alt_name = []; //refresh name array in case other characters use the same system
 //alt names
 alt_name = [
     "Elemental Guardian",
@@ -43,12 +44,13 @@ alt_name = [
     current_day = b_day && current_month == b_month ? bday_name : season_name[get_match_setting(SET_SEASON)-1],
     "Infamous",
     "Ranked Gold",
+    "Genesis",
     "Son of the Omega",
     "Crimson Eclipse",
     "Stellar Traveller",
     "Sun God",
     "Fiery Racing Spirit",
-    "Ultraviolet",
+    "Ballin'",
     "Broken Prism",
     "Theía Evlogía",
     "Reluctant Team Player"

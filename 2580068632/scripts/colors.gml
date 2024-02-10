@@ -86,7 +86,7 @@ set_color_profile_slot( 5, 5, 217, 102, 236 ); //Eye Color
 set_color_profile_slot( 5, 6, 205, 82, 225 ); //Galaxia
 set_color_profile_slot( 5, 7, 255, 0, 0 ); //Gem
 
-// Abyss 
+// Abyss
 set_color_profile_slot( 6, 0, 78, 23, 141 ); //Body
 set_color_profile_slot( 6, 1, 228, 210, 244 ); //Mask
 set_color_profile_slot( 6, 2, 125, 22, 130 ); //Shoes
@@ -226,35 +226,35 @@ set_color_profile_slot( 19, 5, 242, 255, 0 ); //Eye Color
 set_color_profile_slot( 19, 6, 74, 240, 96 ); //Galaxia
 set_color_profile_slot( 19, 7, 255, 0, 0 ); //Gem
 
-// Ice Blue - Fransisca
-set_color_profile_slot( 20, 0, 121, 69, 136 ); //Body
-set_color_profile_slot( 20, 1, 222, 241, 255 ); //Mask
-set_color_profile_slot( 20, 2, 62, 66, 74 ); //Shoes
-set_color_profile_slot( 20, 3, 90, 102, 105 ); //Armor Pads + Cape
-set_color_profile_slot( 20, 4, 72, 207, 248 ); //Lining
-set_color_profile_slot( 20, 5, 86, 81, 153 ); //Eye Color
-set_color_profile_slot( 20, 6, 140, 205, 255 ); //Galaxia
-set_color_profile_slot( 20, 7, 255, 255, 255 ); //Gem
+// Sword Knight
+set_color_profile_slot( 20, 0, 105, 81, 176 ); //Body
+set_color_profile_slot( 20, 1, 187, 175, 227 ); //Mask
+set_color_profile_slot( 20, 2, 105, 81, 176 ); //Shoes
+set_color_profile_slot( 20, 3, 105, 81, 176 ); //Armor Pads + Cape
+set_color_profile_slot( 20, 4, 56, 44, 94 ); //Lining
+set_color_profile_slot( 20, 5, 243, 233, 57 ); //Eye Color
+set_color_profile_slot( 20, 6, 211, 235, 249 ); //Galaxia
+set_color_profile_slot( 20, 7, 238, 211, 82 ); //Gem
 
-// Fire Red - Flamberge
-set_color_profile_slot( 21, 0, 121, 69, 136 ); //Body
-set_color_profile_slot( 21, 1, 255, 222, 222 ); //Mask
-set_color_profile_slot( 21, 2, 74, 53, 53 ); //Shoes
-set_color_profile_slot( 21, 3, 105, 93, 90 ); //Armor Pads + Cape
-set_color_profile_slot( 21, 4, 255, 92, 90 ); //Lining
-set_color_profile_slot( 21, 5, 86, 81, 153 ); //Eye Color
-set_color_profile_slot( 21, 6, 255, 92, 90 ); //Galaxia
-set_color_profile_slot( 21, 7, 255, 255, 255 ); //Gem
+// Captain Vul
+set_color_profile_slot( 21, 0, 232, 176, 96 ); //Body
+set_color_profile_slot( 21, 1, 238, 248, 255 ); //Mask
+set_color_profile_slot( 21, 2, 232, 176, 96 ); //Shoes
+set_color_profile_slot( 21, 3, 255, 240, 207 ); //Armor Pads + Cape
+set_color_profile_slot( 21, 4, 248, 0, 0 ); //Lining
+set_color_profile_slot( 21, 5, 0, 116, 255 ); //Eye Color
+set_color_profile_slot( 21, 6, 243, 233, 57 ); //Galaxia
+set_color_profile_slot( 21, 7, 255, 0, 0 ); //Gem
 
-// Lightning Yellow - Zan Partizanne (?)
-set_color_profile_slot( 22, 0, 121, 69, 136 ); //Body
-set_color_profile_slot( 22, 1, 248, 255, 222 ); //Mask
-set_color_profile_slot( 22, 2, 70, 74, 62 ); //Shoes
-set_color_profile_slot( 22, 3, 105, 105, 90 ); //Armor Pads + Cape
-set_color_profile_slot( 22, 4, 235, 217, 73 ); //Lining
-set_color_profile_slot( 22, 5, 86, 81, 153 ); //Eye Color
-set_color_profile_slot( 22, 6, 255, 252, 107 ); //Galaxia
-set_color_profile_slot( 22, 7, 255, 255, 255 ); //Gem
+// Anime - Right Back at ya
+set_color_profile_slot( 22, 0, 73, 97, 167 ); //Body
+set_color_profile_slot( 22, 1, 214, 233, 252 ); //Mask
+set_color_profile_slot( 22, 2, 122, 84, 196 ); //Shoes
+set_color_profile_slot( 22, 3, 31, 66, 134 ); //Armor Pads + Cape
+set_color_profile_slot( 22, 4, 212, 178, 91 ); //Lining
+set_color_profile_slot( 22, 5, 237, 237, 12 ); //Eye Color
+set_color_profile_slot( 22, 6, 250, 208, 40 ); //Galaxia
+set_color_profile_slot( 22, 7, 214, 45, 42 ); //Gem
 
 // Monochrome - Novel Appearance
 set_color_profile_slot( 23, 0, 81, 81, 81 ); //Body
@@ -305,6 +305,36 @@ set_color_profile_slot( 27, 4, 255, 171, 230 ); //Lining
 set_color_profile_slot( 27, 5, 255, 171, 230 ); //Eye Color
 set_color_profile_slot( 27, 6, 255, 171, 230 ); //Galaxia
 set_color_profile_slot( 27, 7, 52, 53, 82 ); //Gem
+
+// Ice Blue - Fransisca
+set_color_profile_slot( 28, 0, 121, 69, 136 ); //Body
+set_color_profile_slot( 28, 1, 222, 241, 255 ); //Mask
+set_color_profile_slot( 28, 2, 62, 66, 74 ); //Shoes
+set_color_profile_slot( 28, 3, 90, 102, 105 ); //Armor Pads + Cape
+set_color_profile_slot( 28, 4, 72, 207, 248 ); //Lining
+set_color_profile_slot( 28, 5, 86, 81, 153 ); //Eye Color
+set_color_profile_slot( 28, 6, 140, 205, 255 ); //Galaxia
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //Gem
+
+// Fire Red - Flamberge
+set_color_profile_slot( 29, 0, 121, 69, 136 ); //Body
+set_color_profile_slot( 29, 1, 255, 222, 222 ); //Mask
+set_color_profile_slot( 29, 2, 74, 53, 53 ); //Shoes
+set_color_profile_slot( 29, 3, 105, 93, 90 ); //Armor Pads + Cape
+set_color_profile_slot( 29, 4, 255, 92, 90 ); //Lining
+set_color_profile_slot( 29, 5, 86, 81, 153 ); //Eye Color
+set_color_profile_slot( 29, 6, 255, 92, 90 ); //Galaxia
+set_color_profile_slot( 29, 7, 255, 255, 255 ); //Gem
+
+// Lightning Yellow - Zan Partizanne (?)
+set_color_profile_slot( 30, 0, 121, 69, 136 ); //Body
+set_color_profile_slot( 30, 1, 248, 255, 222 ); //Mask
+set_color_profile_slot( 30, 2, 70, 74, 62 ); //Shoes
+set_color_profile_slot( 30, 3, 105, 105, 90 ); //Armor Pads + Cape
+set_color_profile_slot( 30, 4, 235, 217, 73 ); //Lining
+set_color_profile_slot( 30, 5, 86, 81, 153 ); //Eye Color
+set_color_profile_slot( 30, 6, 255, 252, 107 ); //Galaxia
+set_color_profile_slot( 30, 7, 255, 255, 255 ); //Gem
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

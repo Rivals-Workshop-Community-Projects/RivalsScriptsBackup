@@ -135,13 +135,18 @@ if (motorbike == false)
 					can_jump = has_hit && window_timer >=3;
 					can_special = has_hit && window_timer >=3;
 					can_strong = has_hit && window_timer >=3;
-					if (window_timer >= 3 && attack_pressed)
+					ClawCombo();
+					if (!can_attack && window_timer >= 3 && attack_pressed)
 					{
 						window = 4;
 						window_timer = 0;
 					}
 					else if (window_timer == 15)
 					{
+						set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
 						set_state(PS_IDLE);
 						attack_end();
 					}
@@ -150,115 +155,31 @@ if (motorbike == false)
 					can_jump = has_hit && window_timer >=3;
 					can_special = has_hit && window_timer >=3;
 					can_strong = has_hit && window_timer >=3;
-					if (window_timer >= 3 && attack_pressed)
+					ClawCombo();
+					if (!can_attack && window_timer >= 3 && attack_pressed)
 					{
 						window = 7;
 						window_timer = 0;
 					}
 					else if (window_timer == 15)
 					{
+						set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
 						set_state(PS_IDLE);
 						attack_end();
 					}
 				break;
-			}
-			//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
-			var maxCombo = 2;
-			if has_rune ("K")
-			{
-				maxCombo = 3;
-			}
-			if (comboCounter < maxCombo )
-			{
-				if ((window == 3 || window == 6) && window_timer == 2)
-				{
-					
-					//If a direction is pressed when attacking, cancel to the specificed jab
-					if (attack == AT_JAB)
+				case 9:
+					if (window_timer == 15)
 					{
-						can_attack=(has_hit && !joy_pad_idle);			
-					}
-					else if (attack == AT_FTILT)
-					{
-						can_attack=(has_hit && !right_pressed && !right_down && !left_pressed && !left_down);			
-					}
-					else if (attack == AT_UTILT)
-					{
-						can_attack=(has_hit && !up_pressed && !up_down);			
-					}
-					else if (attack == AT_DTILT)
-					{
-						can_attack=(has_hit && !down_pressed && !down_down);			
-					}
-					//This code is here to help cancel the multi hit tilts into each other for comboing
-					if (can_attack)
-					{
-						if (attack != AT_JAB)
-						{
-							if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-							&& !up_down && !down_pressed && !down_down && attack_pressed)	
-							{
-								comboCounter++;
-								set_attack(AT_JAB);
-							}
-						}
-						if (attack != AT_FTILT)
-						{
-							if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
-							{
-								comboCounter++;
-								set_attack(AT_FTILT);
-							}
-							else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
-							{
-								comboCounter++;
-								set_attack(AT_FTILT);
-							}
-						}
-						if (attack !=AT_UTILT)
-						{
-							if ((up_pressed || up_down) && attack_pressed )
-							{
-								comboCounter++;
-								set_attack(AT_UTILT);
-							}
-						}
-						if (attack !=AT_DTILT)
-						{
-							if ((down_pressed || down_down ) && attack_pressed )
-							{
-								comboCounter++;
-								set_attack(AT_DTILT);
-							}
-						}
-					}
-				}
-			}
-			//Add small cooldown if attack plays out fully, for balancing reasons
-			else if (comboCounter == 2)
-			{
-				if (window == 9 && window_timer == 1)
-				{
-					if (voice == 1)
-					{
-						stopVoice();
-						var finisher_quote = random_func(17, 15, 1);
-						if (finisher_quote < 8)
-						{
-							sound_stop(sound_get ("pow_pow"));
-							sound_play(sound_get ("pow_pow"));
-						}
-						else if (finisher_quote >7)
-						{
-							sound_stop(sound_get("sweet"));
-							sound_play(sound_get("sweet"));
-						}
-					}
-					move_cooldown[AT_JAB] = 10;
-					move_cooldown[AT_FTILT] = 10;
-					move_cooldown[AT_UTILT] = 10;
-					move_cooldown[AT_DTILT] = 10;
-				}
+						set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
+						set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
+					}				
+				break;
 			}
 			
 			if (window == 9 && window_timer == 15 && attack == AT_DTILT)
@@ -1164,7 +1085,7 @@ switch (attack)
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_2:
 		trigger_b_reverse();
-		super_armor=window < 3;
+		soft_armor = window < 3 && !has_hit? 6:0;
 		if (attack == AT_NSPECIAL)
 		{
 		 	tsprite_index=sprite_get("tail_idle");
@@ -1562,4 +1483,109 @@ var win_time = argument_count > 6 ? argument[6] : 0;
         newdust.draw_angle = angle; //sets the angle of the dust sprite
         return newdust;
     }
+}
+#define ClawCombo
+
+//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
+var maxCombo = 2;
+if has_rune ("K")
+{
+	maxCombo = 3;
+}
+if (comboCounter < maxCombo )
+{
+	if ((window == 3 || window == 6) && window_timer >= 3)
+	{
+				
+		//If a direction is pressed when attacking, cancel to the specificed jab
+		if (attack == AT_JAB)
+		{
+			can_attack=(has_hit && !joy_pad_idle);			
+		}
+		else if (attack == AT_FTILT)
+		{
+			can_attack=(has_hit && !right_pressed && !right_down && !left_pressed && !left_down);			
+		}
+		else if (attack == AT_UTILT)
+		{
+			can_attack=(has_hit && !up_pressed && !up_down);			
+		}
+		else if (attack == AT_DTILT)
+		{
+			can_attack=(has_hit && !down_pressed && !down_down);			
+		}
+		//This code is here to help cancel the multi hit tilts into each other for comboing
+		if (can_attack)
+		{
+			if (attack != AT_JAB)
+			{
+				if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
+				&& !up_down && !down_pressed && !down_down && attack_pressed)	
+				{
+					comboCounter++;
+					set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 0);
+					set_attack(AT_JAB);
+				}
+			}
+			if (attack != AT_FTILT)
+			{
+				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+				{
+					comboCounter++;
+					set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
+					set_attack(AT_FTILT);
+				}
+				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+				{
+					comboCounter++;
+					set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
+					set_attack(AT_FTILT);
+				}
+			}
+			if (attack !=AT_UTILT)
+			{
+				if ((up_pressed || up_down) && attack_pressed )
+				{
+					comboCounter++;
+					set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 0);
+					set_attack(AT_UTILT);
+				}
+			}
+			if (attack !=AT_DTILT)
+			{
+				if ((down_pressed || down_down ) && attack_pressed )
+				{
+					comboCounter++;
+					set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 0);
+					set_attack(AT_DTILT);
+				}
+			}
+		}
+	}
+}
+//Add small cooldown if attack plays out fully, for balancing reasons
+else if (comboCounter == 2)
+{
+	if (window == 9 && window_timer == 1)
+	{
+		if (voice == 1)
+		{
+			stopVoice();
+			var finisher_quote = random_func(17, 15, 1);
+			if (finisher_quote < 8)
+			{
+				sound_stop(sound_get ("pow_pow"));
+				sound_play(sound_get ("pow_pow"));
+			}
+			else if (finisher_quote >7)
+			{
+				sound_stop(sound_get("sweet"));
+				sound_play(sound_get("sweet"));
+			}
+		}
+		move_cooldown[AT_JAB] = 10;
+		move_cooldown[AT_FTILT] = 10;
+		move_cooldown[AT_UTILT] = 10;
+		move_cooldown[AT_DTILT] = 10;
+	}
 }

@@ -68,6 +68,13 @@ if(state == PS_RESPAWN || respawn_taunt > 0){
     }
 }
 
+//hopes and dreams
+if (get_player_color( player ) == 12){
+	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+		outline_color = [32, 32, 32];
+	}
+	init_shader();
+}
 #define self_damage(dmg_val)
 
 

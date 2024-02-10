@@ -45,6 +45,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_medium);

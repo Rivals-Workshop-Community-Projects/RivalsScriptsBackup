@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
 // water
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //main
@@ -229,6 +229,16 @@ set_color_profile_slot( 19, 4, 224, 40, 40 ); //white_eye
 set_color_profile_slot( 19, 5, 222, 222, 222 ); //abyss_eye
 set_color_profile_slot( 19, 6, 222, 222, 222 ); //blade
 set_color_profile_slot( 19, 7, 171, 107, 107 ); //blade.2
+
+// save
+set_color_profile_slot( 20, 0, 132, 139, 150 ); //main
+set_color_profile_slot( 20, 1, 100, 102, 117 ); //main.2
+set_color_profile_slot( 20, 2, 63, 68, 87 ); //main.3
+set_color_profile_slot( 20, 3, 58, 60, 71 ); //purple
+set_color_profile_slot( 20, 4, 125, 45, 207 ); //white_eye
+set_color_profile_slot( 20, 5, 217, 113, 255 ); //abyss_eye
+set_color_profile_slot( 20, 6, 119, 43, 197 ); //blade
+set_color_profile_slot( 20, 7, 94, 34, 156 ); //blade.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

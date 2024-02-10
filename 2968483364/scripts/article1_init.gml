@@ -46,7 +46,7 @@ with(asset_get("obj_article1")){
 owner = player_id.player;
 orig_owner = owner;
 grav = 0.4;
-max_fall = 8;
+max_fall = 10;
 fric = 0.98;
 hitstop = 0;
 mok_bomb_ang = player_id.HG_MOKOU_BOMB_ANGLE;       //hitboxes with the custom hitbox grid of 94 (same one used by Muno for hitting stuff like Otto ball) can have custom angles

@@ -148,7 +148,7 @@ if (state == 1){
 	    		case 0: //normal
 			    	if (player != other.player_id.player){
 			    		if (distance_to_object(other) < other.help){
-				    		if ((hitstop == 0 && hitpause == 0 && (state == PS_HITSTUN && state_timer > 12 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN && invincible == false && super_armor == false){
+				    		if ((hitstop == 0 && hitpause == 0 && invince_time <= 0 && (state == PS_HITSTUN && state_timer > 12 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN && invincible == false && super_armor == false){
 				    			vsp = 0;
 				    			hsp = 0;
 				    			has_walljump = true;
@@ -163,7 +163,7 @@ if (state == 1){
 			    case 1: //someone else
 			    	if (player != other.hit_button_player){
 			    		if (distance_to_object(other) < other.help){
-				    		if ((hitstop == 0 && hitpause == 0 && (state == PS_HITSTUN && state_timer > 12 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN && invincible == false && super_armor == false){
+				    		if ((hitstop == 0 && hitpause == 0 && invince_time <= 0 && (state == PS_HITSTUN && state_timer > 12 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN && invincible == false && super_armor == false){
 				    			vsp = 0;
 				    			hsp = 0;
 				    			has_walljump = true;

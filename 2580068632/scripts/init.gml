@@ -50,6 +50,14 @@ brawl_mode = has_rune("O");
 
 NESalt_shouldAddBackShading = false;
 
+is_in_playtest = (object_index == oTestPlayer);
+
+if (get_player_color( player ) == 22){
+	isAnimeAlt = true;
+} else {
+	isAnimeAlt = false;
+}
+
 //Kirby Ability
 kirbyability = 4
 
@@ -150,6 +158,7 @@ roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
 //SFX Init
+music_animeAppear = sound_get("music_animeAppear");
 sfx_airdodge = sound_get("sfx_airdodge");
 sfx_bair_1 = sound_get("sfx_bair_1");
 sfx_bair_2 = sound_get("sfx_bair_2");
@@ -216,6 +225,7 @@ sfx_waveland = sound_get("sfx_waveland");
 vc_mk_cape = sound_get("vc_mk_cape");
 vc_mk_death_1 = sound_get("vc_mk_death_1");
 vc_mk_death_2 = sound_get("vc_mk_death_2");
+vc_mk_death_3 = sound_get("vc_mk_death_2");
 vc_mk_grunt_1 = sound_get("vc_mk_grunt_1");
 vc_mk_grunt_2 = sound_get("vc_mk_grunt_2");
 vc_mk_grunt_3 = sound_get("vc_mk_grunt_3");
@@ -223,12 +233,19 @@ vc_mk_grunt_4 = sound_get("vc_mk_grunt_4");
 vc_mk_grunt_5 = sound_get("vc_mk_grunt_5");
 vc_mk_grunt_6 = sound_get("vc_mk_grunt_6");
 vc_mk_grunt_7 = sound_get("vc_mk_grunt_7");
+vc_mk_hurt_big1 = sound_get("vc_mk_hurt_big1");
+vc_mk_hurt_big2 = sound_get("vc_mk_hurt_big2");
+vc_mk_hurt1 = sound_get("vc_mk_hurt1");
+vc_mk_hurt2 = sound_get("vc_mk_hurt2");
+vc_mk_hurt3 = sound_get("vc_mk_hurt3");
 vc_mk_jab = sound_get("vc_mk_jab");
 vc_mk_jump = sound_get("vc_mk_jump");
 vc_mk_shuttle_loop = sound_get("vc_mk_shuttle_loop");
 vc_mk_taunt_1 = sound_get("vc_mk_taunt_1");
 vc_mk_taunt_2 = sound_get("vc_mk_taunt_2");
 vc_mk_taunt_3 = sound_get("vc_mk_taunt_3");
+
+voicelineHurtCD = 0;
 
 land_sound = sfx_land
 landing_lag_sound = sfx_landinglag
@@ -307,14 +324,8 @@ switch (get_player_color( player )){
 		set_victory_portrait( sprite_get( "portrait_gold" ));
 		set_victory_sidebar( sprite_get( "result_small_gold" ));
 		break;
-	case 20:
-		set_victory_theme(sound_get("victory_mage"));
-		break;
-	case 21:
-		set_victory_theme(sound_get("victory_mage"));
-		break;
 	case 22:
-		set_victory_theme(sound_get("victory_mage"));
+		set_victory_theme(sound_get("music_animeAppear"));
 		break;
 }
 
@@ -335,6 +346,7 @@ ncode3 = "Keep your guard up.";
 arena_title = "The Lone Swordsman";
 arena_short_name = "Meta Knight";
 battle_text = "* You begin to feel tense just by looking at the masked swordsman.";
+miiverse_post = sprite_get("miiverse");
 
 //
 boxing_title = "The Lone 
@@ -347,15 +359,14 @@ pkmn_stadium_back_img = sprite_get("metaknight_back")
 //Trial grounds
 guiltySprite = sprite_get("metaknight_trial")
 
-//po and gumbo
- pot_compat_text = "Meta Knight Chocolate Fondant"
+//Po and Gumbo
+pot_compat_text = "Meta Knight Chocolate Fondant"
 pot_compat_variable = sprite_get("Meta_knight_food");
 
 //Feri
 feri_costume = sprite_get("Feri_meta_cosplay");
 
 //Adventure Mode lol
-
 pronouns = ["he","him",];
 
 in_adventure = false;

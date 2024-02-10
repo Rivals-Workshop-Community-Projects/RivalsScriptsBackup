@@ -33,6 +33,7 @@ alt_name = [
 'The Jester who Knew' + chr(10) + 'true LOVE',
 'VAE',
 'BLW',
+'Genesis',
 'Champions',
 '"Make It Yourself"'
 ];
@@ -84,12 +85,15 @@ switch get_player_color(real_player){
         draw_sprite_ext(sprite_get("css_icons"), 9, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 1);
     break;
     case 22:
+        draw_sprite_ext(sprite_get("css_icons"), 12, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 1);
+    break;
+    case 23:
         draw_sprite_ext(sprite_get("css_champ"), 0, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 1);
         if hovering == 40{
             draw_sprite_ext(sprite_get("css_champ_flash"), 0, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 0.8 + (sin(hovering_timer / 20) * -0.8));
         }
     break;
-    case 23:
+    case 24:
         draw_sprite_ext(sprite_get("css_customizer"), 0, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 1 - (customizer_timer / 20));
         if hovering == 40{
             draw_sprite_ext(sprite_get("css_customizer_flash"), 0, temp_x + 180, temp_y + 102 + runes_mode, 1, 1, 0, c_white, 0.8 + (sin(hovering_timer / 20) * -0.8));
@@ -123,15 +127,24 @@ switch get_player_color(real_player){
     break;
 }
 
+// genesis css glitch
+if(get_player_color(player) == 22){
+    if random_func_2(69, 2, 1) == 0 {
+        var fs = random_func(0, sprite_height -1, 1);
+        draw_sprite_part_ext(sprite_get("charselect"),0,0,fs, abs(sprite_width), random_func(25, 60, 1)+1, (x+(random_func(2, 3, 1))*7), y+fs*2 - sprite_get_yoffset(sprite_index)*2, 2, 2, image_blend, 1);
+    }
+}
+
+
 //alt name
-var color = get_player_color(real_player) >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
-var colorgroup = get_player_color(real_player) >= 22? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
+var color = get_player_color(real_player) >= 23? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
+var colorgroup = get_player_color(real_player) >= 23? color_hsv:make_color_rgb(get_color_profile_slot_r(get_player_color(real_player), 0), get_color_profile_slot_g(get_player_color(real_player), 0), get_color_profile_slot_b(get_player_color(real_player), 0));
 textDraw(temp_x + 12, temp_y + 125 + runes_mode, "fName", color, 14, 200, 1, 1, alpher_alt, alt_name[get_player_color(real_player)], c_black);
-if get_player_color(real_player) == 22{
+if get_player_color(real_player) == 23{
     textDraw(temp_x + 12, temp_y + 112 + runes_mode, "fName", color, 14, 200, 1, 1, alpher_alt, champ_name[champ_cur], c_black);
     textDraw(temp_x + 118, temp_y + 36, "fName", colorgroup, 14, 120, 1, 1, alpher_alt, "Press A/B on icon to swap", c_black);
 }
-else if get_player_color(real_player) == 23{
+else if get_player_color(real_player) == 24{
     textDraw(temp_x + 100, temp_y + 36, "fName", colorgroup, 14, 120, 1, 1, alpher_alt, "Press A on icon to customize", c_black);
 }
 

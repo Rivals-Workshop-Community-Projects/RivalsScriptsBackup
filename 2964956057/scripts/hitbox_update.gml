@@ -39,7 +39,7 @@ if attack == AT_NSPECIAL{
 				target_id = player_id;
 			}
 			else{
-				target_id = instance_nearest(x, y, asset_get("oPlayer"));
+				target_id = locate_nearest_player();
 			}
 			//print_debug(target_id);
 			
@@ -127,3 +127,19 @@ if attack == AT_DSPECIAL{
 		y += 2;
 	}
 }
+
+#define locate_nearest_player
+var shortest_dist = 9999;
+var shortest_id = noone;
+
+with (oPlayer) {
+	if (player != other.player_id.player) {
+		var curr_dist = point_distance(x,y,other.x,other.y);
+		if (curr_dist < shortest_dist && state != PS_DEAD && state != PS_RESPAWN && !clone) {
+			shortest_dist = curr_dist;
+			shortest_id = id;
+		}
+	}
+}
+
+return shortest_id;

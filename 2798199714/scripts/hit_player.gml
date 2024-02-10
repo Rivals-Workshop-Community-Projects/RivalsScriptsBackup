@@ -86,7 +86,14 @@ if(my_hitboxID.attack == AT_DSTRONG){
 	}
 }
 
-if(hit_player_obj.should_make_shockwave){
+//hitboxes that trigger the silly angle 0 galaxy thing
+if(my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 2 || my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 4
+|| my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 2){
+	//trigger silly angle 0 thing (if galaxy)
+	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;
+}
+
+if(hit_player_obj.should_make_shockwave && hit_player_obj != self){
 	if(alt == 30){
 		sound_play(sound_get("iron knuckle die"));
 	}
@@ -96,3 +103,4 @@ if(hit_player_obj.should_make_shockwave){
 if("fs_charge" in self && my_hitboxID.type == 2){
     fs_charge += my_hitboxID.damage;
 }
+

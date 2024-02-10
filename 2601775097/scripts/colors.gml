@@ -176,7 +176,7 @@ set_color_profile_slot(pal_num, 5, 23, 19, 25); //black
 set_color_profile_slot(pal_num, 6, 173, 80, 203); //holy light
 set_color_profile_slot(pal_num, 7, 173, 80, 203); //holy fire
 
-pal_num ++; //14 - early acpal_nums
+pal_num ++; //14 - early access
 set_color_profile_slot(pal_num, 0, 83, 122, 62); //dark blue
 set_color_profile_slot(pal_num, 1, 211, 226, 154); //cloth white
 set_color_profile_slot(pal_num, 2, 167, 186, 74); //hair
@@ -262,7 +262,17 @@ set_color_profile_slot(pal_num, 5, 125, 76, 43); //black
 set_color_profile_slot(pal_num, 6, 255, 230, 181); //holy light
 set_color_profile_slot(pal_num, 7, 196, 216, 235); //holy fire
 
-pal_num ++; //19 - nero
+pal_num ++; //19 - genesis
+set_color_profile_slot(pal_num, 0, 186, 0, 0); //dark blue
+set_color_profile_slot(pal_num, 1, 20, 20, 20); //cloth white
+set_color_profile_slot(pal_num, 2, 191, 0, 0); //hair
+set_color_profile_slot(pal_num, 3, 242, 235, 235); //skin
+set_color_profile_slot(pal_num, 4, 214, 0, 0); //light blue
+set_color_profile_slot(pal_num, 5, 217, 197, 197); //black
+set_color_profile_slot(pal_num, 6, 247, 168, 168); //holy light
+set_color_profile_slot(pal_num, 7, 107, 0, 0); //holy fire
+
+pal_num ++; //20 - nero
 set_color_profile_slot(pal_num, 0, 28, 29, 84); //dark blue
 set_color_profile_slot(pal_num, 1, 108, 16, 35); //cloth white
 set_color_profile_slot(pal_num, 2, 137, 143, 166); //hair
@@ -272,7 +282,7 @@ set_color_profile_slot(pal_num, 5, 24, 22, 29); //black
 set_color_profile_slot(pal_num, 6, 231, 133, 41); //holy light
 set_color_profile_slot(pal_num, 7, 46, 129, 208); //holy fire
 
-pal_num ++; //20 - jurami
+pal_num ++; //21 - jurami
 set_color_profile_slot(pal_num, 0, 32, 25, 45); //dark blue
 set_color_profile_slot(pal_num, 1, 227, 212, 206); //cloth white
 set_color_profile_slot(pal_num, 2, 196, 7, 0); //hair
@@ -282,7 +292,7 @@ set_color_profile_slot(pal_num, 5, 32, 25, 45); //black
 set_color_profile_slot(pal_num, 6, 255, 200, 132); //holy light
 set_color_profile_slot(pal_num, 7, 94, 10, 0); //holy fire
 
-pal_num ++; //21 - baysen
+pal_num ++; //22 - baysen
 set_color_profile_slot(pal_num, 0, 35, 47, 104); //dark blue
 set_color_profile_slot(pal_num, 1, 26, 26, 53); //cloth white
 set_color_profile_slot(pal_num, 2, 156, 28, 45); //hair
@@ -292,7 +302,7 @@ set_color_profile_slot(pal_num, 5, 42, 31, 51); //black
 set_color_profile_slot(pal_num, 6, 255, 226, 168); //holy light
 set_color_profile_slot(pal_num, 7, 50, 18, 147); //holy fire
 
-pal_num ++; //22 - amatsu
+pal_num ++; //23 - amatsu
 set_color_profile_slot(pal_num, 0, 189, 28, 73); //dark blue
 set_color_profile_slot(pal_num, 1, 227, 217, 206); //cloth white
 set_color_profile_slot(pal_num, 2, 179, 164, 155); //hair
@@ -302,7 +312,7 @@ set_color_profile_slot(pal_num, 5, 100, 79, 79); //black
 set_color_profile_slot(pal_num, 6, 234, 175, 44); //holy light
 set_color_profile_slot(pal_num, 7, 181, 25, 18); //holy fire
 
-pal_num ++; //23 - splatracer's alt
+pal_num ++; //24 - splatracer's alt
 set_color_profile_slot(pal_num, 0, 13, 86, 44); //dark blue
 set_color_profile_slot(pal_num, 1, 207, 227, 206); //cloth white
 set_color_profile_slot(pal_num, 2, 100, 110, 108); //hair
@@ -312,17 +322,17 @@ set_color_profile_slot(pal_num, 5, 16, 21, 24); //black
 set_color_profile_slot(pal_num, 6, 0, 66, 37); //holy light
 set_color_profile_slot(pal_num, 7, 191, 255, 0); //holy fire
 
-pal_num ++; //24 - trailmix's alt
-set_color_profile_slot(pal_num, 0, 61, 28, 71); //dark blue
-set_color_profile_slot(pal_num, 1, 220, 180, 230); //cloth white
-set_color_profile_slot(pal_num, 2, 48, 17, 44); //hair
-set_color_profile_slot(pal_num, 3, 161, 114, 152); //skin
-set_color_profile_slot(pal_num, 4, 92, 65, 69); //light blue
-set_color_profile_slot(pal_num, 5, 48, 24, 32); //black
-set_color_profile_slot(pal_num, 6, 142, 54, 224); //holy light
-set_color_profile_slot(pal_num, 7, 192, 94, 186); //holy fire
+pal_num ++; //25 - LA lakers
+set_color_profile_slot(pal_num, 0, 85, 51, 145); //dark blue
+set_color_profile_slot(pal_num, 1, 255, 164, 31); //cloth white
+set_color_profile_slot(pal_num, 2, 123, 78, 176); //hair
+set_color_profile_slot(pal_num, 3, 219, 137, 99); //skin
+set_color_profile_slot(pal_num, 4, 182, 150, 212); //light blue
+set_color_profile_slot(pal_num, 5, 68, 10, 115); //black
+set_color_profile_slot(pal_num, 6, 255, 229, 189); //holy light
+set_color_profile_slot(pal_num, 7, 183, 99, 255); //holy fire
 
-pal_num ++; //25 - helel nekrochroma
+pal_num ++; //26 - helel nekrochroma
 set_color_profile_slot(pal_num, 0, 103, 103, 103); //dark blue
 set_color_profile_slot(pal_num, 1, 221, 221, 221); //cloth white
 set_color_profile_slot(pal_num, 2, 192, 192, 192); //hair
@@ -332,7 +342,7 @@ set_color_profile_slot(pal_num, 5, 66, 66, 66); //black
 set_color_profile_slot(pal_num, 6, 0, 0, 0); //holy light
 set_color_profile_slot(pal_num, 7, 0, 0, 0); //holy fire
 
-pal_num ++; //26 - theikos
+pal_num ++; //27 - theikos
 set_color_profile_slot(pal_num, 0, 197, 188, 172); //dark blue
 set_color_profile_slot(pal_num, 1, 218, 214, 186); //cloth white
 set_color_profile_slot(pal_num, 2, 66, 207, 227); //hair
@@ -342,7 +352,7 @@ set_color_profile_slot(pal_num, 5, 54, 40, 29); //black
 set_color_profile_slot(pal_num, 6, 255, 246, 207); //holy light
 set_color_profile_slot(pal_num, 7, 240, 205, 110); //holy fire
 
-pal_num ++; //27 - hud color (uses default as base)
+pal_num ++; //28 - hud color (uses default as base)
 set_color_profile_slot(pal_num, 0, 43, 60, 140); //dark blue
 set_color_profile_slot(pal_num, 1, 206, 216, 227); //cloth white
 set_color_profile_slot(pal_num, 2, 182, 88, 61); //hair
@@ -378,6 +388,17 @@ set_color_profile_slot(pal_num, 0, 113, 111, 137); //CLOTHDARKBLUE
 set_color_profile_slot(pal_num, 5, 15, 21, 17); //CLOTHBLACK
 set_color_profile_slot(pal_num, 6, 162, 255, 10);//LIGHT
 set_color_profile_slot(pal_num, 7, 36, 47, 37); //FIRE
+
+pal_num ++;
+//P?? - trailmix' alt
+set_color_profile_slot(pal_num, 0, 61, 28, 71); //dark blue
+set_color_profile_slot(pal_num, 1, 220, 180, 230); //cloth white
+set_color_profile_slot(pal_num, 2, 48, 17, 44); //hair
+set_color_profile_slot(pal_num, 3, 161, 114, 152); //skin
+set_color_profile_slot(pal_num, 4, 92, 65, 69); //light blue
+set_color_profile_slot(pal_num, 5, 48, 24, 32); //black
+set_color_profile_slot(pal_num, 6, 142, 54, 224); //holy light
+set_color_profile_slot(pal_num, 7, 192, 94, 186); //holy fire
 
 pal_num ++;
 //P?? - TEMPLATE

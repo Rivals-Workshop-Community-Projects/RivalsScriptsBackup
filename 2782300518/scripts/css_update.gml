@@ -52,75 +52,77 @@ if ("alttime" in self && "css_timer" in self && "alt_checker" in self && alt_cur
     sound_play(sound_get("motorbike_uppercut"));
 }
 
-drawtime += 1;
-alttime += 1;
+if("drawtime" in self) drawtime += 1;
+if ("alttime" in self) alttime += 1;
 
-//Voice selection with new global variables - A fusion of code from Dr;Flux with adjustments made by myself
-if voicebutton == 2 || voicebutton == 5 
+if ("voicebutton" in self)
 {
-    if cssframes == 0
-    {
-	    sound_stop(sound_get("intro"));
-		switch (voicebutton)
-		{
-			case 2:
+	//Voice selection with new global variables - A fusion of code from Dr;Flux with adjustments made by myself
+	if voicebutton == 2 || voicebutton == 5 
+	{
+	    if cssframes == 0
+	    {
+		    sound_stop(sound_get("intro"));
+			switch (voicebutton)
+			{
+				case 2:
+					sound_play(asset_get("mfx_forward"));
+					set_synced_var(player, 1);
+					sound_play(sound_get("intro"));
+				break;
+				case 5:
 				sound_play(asset_get("mfx_forward"));
-				set_synced_var(player, 1);
-				sound_play(sound_get("intro"));
-			break;
-			case 5:
-			sound_play(asset_get("mfx_forward"));
-				set_synced_var(player, 0);
-			break;
-		}
-
-    }
-    cssframes++;
-    if cssframes == 5
-    {
-        cssframes = 0;
-        voicebutton += 1;
-        if voicebutton > 5 
-        {
-            voicebutton -= 6;
-        }
-        voicebuttoncurrent = voicebutton;
-    }
+					set_synced_var(player, 0);
+				break;
+			}
+	
+	    }
+	    cssframes++;
+	    if cssframes == 5
+	    {
+	        cssframes = 0;
+	        voicebutton += 1;
+	        if voicebutton > 5 
+	        {
+	            voicebutton -= 6;
+	        }
+	        voicebuttoncurrent = voicebutton;
+	    }
+	}
+	
+	if (get_instance_x(cursor_id) >= voice_button_position_x && get_instance_x(cursor_id) <= voice_button_position_x + 30 
+	&& get_instance_y(cursor_id) >= voice_button_position_y && get_instance_y(cursor_id) <= voice_button_position_y + 26)
+	{
+	    if voicebutton == voicebuttoncurrent 
+	    {
+	        if voicebutton == 0 || voicebutton == 3
+	        {
+	            voicebutton += 1;
+	        }
+	    }
+	}
+	else
+	{
+	    if voicebutton == 1 || voicebutton == 4 
+	    {
+	        voicebutton -= 1;
+	    }
+	    voicebuttoncurrent = voicebutton;
+	}
+	if (voicebutton == 1 || voicebutton == 4)
+	{
+		suppress_cursor = true;
+	    if menu_a_pressed
+	    {
+	        voicebutton += 1;
+	        voicebuttoncurrent = voicebutton;
+	    }
+	}
+	else
+	{
+		suppress_cursor = false
+	}
 }
-
-if (get_instance_x(cursor_id) >= voice_button_position_x && get_instance_x(cursor_id) <= voice_button_position_x + 30 
-&& get_instance_y(cursor_id) >= voice_button_position_y && get_instance_y(cursor_id) <= voice_button_position_y + 26)
-{
-    if voicebutton == voicebuttoncurrent 
-    {
-        if voicebutton == 0 || voicebutton == 3
-        {
-            voicebutton += 1;
-        }
-    }
-}
-else
-{
-    if voicebutton == 1 || voicebutton == 4 
-    {
-        voicebutton -= 1;
-    }
-    voicebuttoncurrent = voicebutton;
-}
-if voicebutton == 1 || voicebutton == 4 
-{
-	suppress_cursor = false
-    if menu_a_pressed
-    {
-        voicebutton += 1;
-        voicebuttoncurrent = voicebutton;
-    }
-}
-else
-{
-	suppress_cursor = false
-}
-
 #define cpu_hover_update()
 var p = player;
 var is_cpu = (get_player_hud_color(p) == 8421504);

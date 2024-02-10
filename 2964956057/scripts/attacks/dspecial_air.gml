@@ -6,8 +6,11 @@ set_attack_value(AT_DSPECIAL_AIR, AG_AIR_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));
 
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial_start"));
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 19);
 
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 10);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 4);
@@ -15,7 +18,7 @@ set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED, 10);
+set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED, 16);
 
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 12);

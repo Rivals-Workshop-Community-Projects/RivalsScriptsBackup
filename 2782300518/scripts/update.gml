@@ -913,6 +913,9 @@ if (get_match_setting(SET_PRACTICE) == true)
 	practice_hud_clearance++;
 }
 
+//Dracula compatibility
+user_event(6);
+
 //print_debug(string(hsp));
 prev_hsp = hsp;
 //print_debug("Time:" + string(current_time-ct));

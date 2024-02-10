@@ -90,3 +90,4 @@ sprite_change_offset("dust_sharp_big", 60, 80);
 sprite_change_offset("dust_sharp", 30, 40);
 sprite_change_offset("fx_lightbeams", 400, 400);
 sprite_change_offset("explosion_ball3", 100, 100);
+sprite_change_offset("boss_hp_meter", 2, 18);
