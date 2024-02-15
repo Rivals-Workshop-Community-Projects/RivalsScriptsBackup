@@ -178,7 +178,7 @@ for(var i=0; i < instance_number(oPlayer); i++)
 		init_shader();
   }
 }
-    combo_cooldown = 600;
+    combo_cooldown = 480;
     hud_combo_cooldown = 0;
     hud_cooldown_mult = 2;
 combo_timer = 0;

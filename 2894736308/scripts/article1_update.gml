@@ -4,10 +4,10 @@
 
 - 0 Freshly spawned
 - 1 Idle
-- 2 
-- 3 
-- 4 
-- 5 
+- 2 On cooldown
+- 3 Alpha
+- 4 Omega
+- 5 Epsilon
 - 6 
 - 7 
 - 8 
@@ -23,9 +23,12 @@ if (replacedcount > maxarticles){
     shoulddie = true;
 }
 
-
-player_id.move_cooldown[AT_FSPECIAL] = 2;
-player_id.move_cooldown[AT_DSPECIAL] = 2;
+if(state != 2){
+	player_id.move_cooldown[AT_FSPECIAL] = 2;
+	player_id.move_cooldown[AT_DSPECIAL] = 2;
+	player_id.ring_cd[type] = die_time;
+    player_id.ring_cd_max[type] = die_time;
+}
 //Nspec hit
 //this code sucks im rushing okay
 if(nspec_hit == 0 && state < 2){
@@ -65,8 +68,8 @@ if(nspec_hit > 0){
 	}
 	
 	//spawn projectile
-	new_hsp = player_id.spr_dir*lengthdir_x(35 + (5 * (nspec_hit-1)),orig_angle);
-	new_vsp = lengthdir_y(35 + (5 * (nspec_hit-1)),orig_angle);
+	new_hsp = player_id.spr_dir*lengthdir_x(25 + (10 * (nspec_hit-1)),orig_angle);
+	new_vsp = lengthdir_y(25 + (10 * (nspec_hit-1)),orig_angle);
 	var ball = create_hitbox(AT_NSPECIAL_2, type + 1, floor(x), floor(y-30));
 	if(nspec_hit == 2){
 		ball.damage = 9;
@@ -80,7 +83,6 @@ if(nspec_hit > 0){
 	ball.vsp = new_vsp;
 	ball.proj_angle = orig_angle * ball.spr_dir + (180 * (ball.spr_dir - 1));
 	player_id.ring_out = noone;
-	player_id.move_cooldown[AT_FSPECIAL] = 90;
 	instance_destroy();
 	exit;
 }
@@ -98,9 +100,10 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 
 //Set killarticles to true in death.gml and all your articles will despawn. Gets reset to the false at the end of state 2
 
-if (player_id.killarticles && state != 2){
+if (player_id.killarticles && ((state != 2) || (state == 2 && state_timer < die_time - 15))){
     state = 2;
     state_timer = die_time - 15;
+    player_id.ring_cd[type] = 0;
 }
 
 
@@ -166,8 +169,8 @@ case 0:
 		}
 		if (state_timer == die_time){
 			player_id.killarticles = false;
-			player_id.ring_out = noone;
-			sound_play(asset_get("mfx_player_ready"), false, noone, 0.8, 1.0);
+			if(player_id.ring_out == self) player_id.ring_out = noone;
+			//sound_play(asset_get("mfx_player_ready"), false, noone, 0.8, 1.0);
 			instance_destroy();
 			exit;
 		}

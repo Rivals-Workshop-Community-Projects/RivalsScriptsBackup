@@ -3,7 +3,7 @@ set_attack_value(3, AG_NUM_WINDOWS, 3);
 set_attack_value(3, AG_OFF_LEDGE, 1);
 set_attack_value(3, AG_AIR_SPRITE, sprite_get("dattack2"));
 set_attack_value(3, AG_HURTBOX_SPRITE, sprite_get("dattack2_hurt"));
-//set_attack_value(3, AG_MUNO_ATTACK_NAME, "DAttack2");
+set_attack_value(3, AG_MUNO_ATTACK_NAME, "DAttack2 (Bike Roll)");
 
 set_window_value(3, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(3, 1, AG_WINDOW_ANIM_FRAMES, 2);

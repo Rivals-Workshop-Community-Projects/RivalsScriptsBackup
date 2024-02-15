@@ -1,3 +1,5 @@
+with (ai_target) if ("char_height" not in self) exit; //prevents annoying error message
+
 //DACUS
 DACUSpercent = (2 - ai_target.knockback_adj) * 100;
 

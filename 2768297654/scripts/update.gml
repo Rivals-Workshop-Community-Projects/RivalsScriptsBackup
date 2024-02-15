@@ -3,14 +3,38 @@
 /*muno_event_type = 1;
 user_event(14);
 */
+
+if(curr_enemy == 0){
+	duster_player_ids[player-1] = true;
+		with(oPlayer){
+			if (id != other.id) {
+				if(player_that_exists == true){
+					other.duster_player_ids[player-1] = true;
+				}
+			}
+		}
+	print(duster_player_ids);
+	
+	if(duster_player_ids[3] == true && player != 4){
+		curr_enemy = 4;
+	}if(duster_player_ids[2] == true && player != 3){
+		curr_enemy = 3;
+	}if(duster_player_ids[1] == true && player != 2){
+		curr_enemy = 2;
+	}if(duster_player_ids[0] == true && player != 1){
+		curr_enemy = 1;
+	}
+	print(curr_enemy);
+}
+
 if(combo_num == 15){
-	print("lol")
+	//print("lol")
 	outline_color = [ 255, 204, 0 ];
 	init_shader();
     activate_crit();
 }
 
-if(combo_cooldown == 600){
+if(combo_cooldown == 480){
     outline_color = [ 0, 0, 0 ];
 	init_shader();
     deactivate_crit();
@@ -30,6 +54,7 @@ for(var i=0; i < instance_number(oPlayer); i++)
   var p = instance_find(oPlayer,i);
   if p != self
   {
+  	
   	if (combo_timer == 1)
 	{
 	    combo_num = 0;
@@ -47,6 +72,25 @@ for(var i=0; i < instance_number(oPlayer); i++)
 		deactivate_crit();
 	}
   }
+}
+
+with(oPlayer){
+	if(state = PS_DEAD || state = PS_RESPAWN){
+	if(other_combo_marked){
+		other.combo_num = 0;
+		other.hud_combo_num = 0;
+		other_combo_num = 0;
+		other_combo_marked = false;
+		other.combo_timer = 0;
+		with(other){
+		sound_play(sound_get("sfx_hit"), false, noone, 2);
+		sound_play(sound_get("sfx_defeat"), false, noone, 0.5);
+		outline_color = [ 0, 0, 0 ];
+		init_shader();
+		deactivate_crit();
+		}
+		}
+	}
 }
 
 if(combo_cooldown == 1){
@@ -67,20 +111,12 @@ if(bomb_state = true){
 if(bomb_state = true){
 if(bomb_timer == 1){
 	bomb_missfire = true;
+	bomb_owner = curr_enemy;
 	instance_create(x, y-38, ("obj_article1"));
 	bomb_timer = 0;
 	bomb_state = false;
 	move_cooldown[AT_DSPECIAL] = 360;
 }
-}
-
-if (get_gameplay_time() < 120){
-	if(get_gameplay_time() == 119){
-	if(taunt_down){
-		sound_play(sound_get("dusterbass_miss"), false, noone, 1.5);
-		duster_muted = true;
-		}
-	}
 }
 
 if(state == PS_PARRY){
@@ -180,7 +216,7 @@ if (get_gameplay_time() < 120){
 			  white_flash_timer = 18;
 			  sound_play(asset_get("mfx_levelup"));
 set_color_profile_slot( 20, 0, 71, 71, 71 ); //Shirt
-set_color_profile_slot( 20, 1, 214, 169, 141 ); //Skin
+set_color_profile_slot( 20, 1, 191, 140, 109 ); //Skin
 set_color_profile_slot( 20, 2, 99, 67, 48 ); //Hair1
 set_color_profile_slot( 20, 3, 99, 67, 48 ); //Hair2
 set_color_profile_slot( 20, 4, 71, 54, 54 ); //Pants
@@ -195,7 +231,7 @@ set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
 				if(!seinfeld){
 		white_flash_timer = 24;
 set_color_profile_slot( 20, 0, 71, 71, 71 ); //Shirt
-set_color_profile_slot( 20, 1, 214, 169, 141 ); //Skin
+set_color_profile_slot( 20, 1, 191, 140, 109 ); //Skin
 set_color_profile_slot( 20, 2, 99, 67, 48 ); //Hair1
 set_color_profile_slot( 20, 3, 99, 67, 48 ); //Hair2
 set_color_profile_slot( 20, 4, 71, 54, 54 ); //Pants
@@ -212,6 +248,19 @@ set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
 //check practice mode
 if (get_training_cpu_action() != CPU_FIGHT && object_index != oTestPlayer) {
     practice_mode = true;
+}
+
+//turn voice off
+with(oPlayer){
+if (get_gameplay_time() < 100){
+	if(get_gameplay_time() == 99){
+			if(taunt_down){
+			    with(other){
+		sound_play(sound_get("dusterbass_miss"), false, noone, 1.5);
+		}other.duster_muted = true;	
+				}
+			}
+		}
 }
 
 #define activate_crit()

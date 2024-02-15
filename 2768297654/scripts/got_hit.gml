@@ -4,3 +4,7 @@ if(bomb_state = true){
 	bomb_timer -= 60;
 	}
 }
+
+curr_enemy = last_player;
+
+//print(curr_enemy);

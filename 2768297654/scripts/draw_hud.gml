@@ -1,7 +1,7 @@
 // debug
 /*
-draw_debug_text(temp_x + 200, temp_y - 32, string(combo_num));
-draw_debug_text(temp_x + 100, temp_y - 32, string("combo_num"));
+draw_debug_text(temp_x + 200, temp_y - 32, string(curr_enemy));
+draw_debug_text(temp_x + 100, temp_y - 32, string(bomb_owner));
 draw_debug_text(temp_x + 200, temp_y - 52, string(instrum_num));
 draw_debug_text(temp_x + 100, temp_y - 52, string("inst_num"));
 if(combo_cooldown > 0){
@@ -21,7 +21,7 @@ draw_sprite_ext(sprite_get("combometer_bar3"), 0, temp_x + 24, temp_y + -18, (co
 }
 }
 if(combo_cooldown > 0){
-draw_sprite_ext(sprite_get("combometer_bar2"), 0, temp_x + 24, temp_y + -18, (hud_combo_cooldown/ (300*hud_cooldown_mult)), 1, 0, c_white, 1);
+draw_sprite_ext(sprite_get("combometer_bar2"), 0, temp_x + 24, temp_y + -18, (hud_combo_cooldown/ (240*hud_cooldown_mult)), 1, 0, c_white, 1);
 }
 
 if(bomb_state = true){
@@ -33,7 +33,7 @@ if(bomb_state = true){
 if(duster_muted = true){
   draw_sprite(sprite_get("muted_hud"), 0, temp_x + 66, temp_y + 6);  
 }
-if (get_gameplay_time() < 120){
+if (get_gameplay_time() < 100){
     if(duster_muted = false){
     draw_debug_text(temp_x+0, temp_y-48,string("Hold [TAUNT] to mute Duster"));
     }

@@ -4,7 +4,7 @@ set_attack_value(43, AG_NUM_WINDOWS, 5);
 set_attack_value(43, AG_HAS_LANDING_LAG, 1);
 set_attack_value(43, AG_LANDING_LAG, 11);
 set_attack_value(43, AG_HURTBOX_SPRITE, sprite_get("fair2_hurt"));
-//set_attack_value(43, AG_MUNO_ATTACK_NAME, "FAir2");
+set_attack_value(43, AG_MUNO_ATTACK_NAME, "FAir2 (Bike Swing)");
 
 set_window_value(43, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(43, 1, AG_WINDOW_ANIM_FRAMES, 3);

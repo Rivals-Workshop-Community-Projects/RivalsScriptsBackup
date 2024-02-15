@@ -32,6 +32,7 @@ switch(attack){
             attack_end();
             attack = AT_USPECIAL_2;
             ring_cd[ring_equipped] = ring_time_cd;
+            ring_cd_max[ring_equipped] = ring_time_cd;
             ring_equipped = -1;
             ring_timer = -1;
             ring_follow = -1;

@@ -38,7 +38,7 @@ switch(attack){
             player_id.ring_out = instance_create(floor(spawn_x), floor(spawn_y + 14), "obj_article1");
             player_id.ring_out.spr_dir = 1;
             player_id.ring_out.state = 2;
-            player_id.ring_out.state_timer = 68;
+            player_id.ring_out.state_timer = 83;
             destroy_fx = 1;
             destroyed = true;
         }

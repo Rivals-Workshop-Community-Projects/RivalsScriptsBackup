@@ -3,6 +3,8 @@ set_attack_value(AT_FSPECIAL_2, AG_OFF_LEDGE, 0);
 set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecial2"));
 set_attack_value(AT_FSPECIAL_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("fspecial2_hurt"));
+set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_NAME, "FSpecial2 (Nitro Boost)");
+set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_MISC, "Can attack, jump, shield and strong cancel on hit or after 24 active frames.");
 
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH, 18);

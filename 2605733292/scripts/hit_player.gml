@@ -124,34 +124,32 @@ switch (my_hitboxID.attack){ //lol switch statement
 			if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false){
 				sound_play(sfx_ability_get);
 				sound_play(sfx_death);
-				/*
-				if (my_hitboxID.projectile_parry_stun == true){
-					print("Ability Star hit an opponent!")
-				} else if (my_hitboxID.projectile_parry_stun == false){
-					print("Ability Star backfired on Sleep Kirby!")
-				}
-				*/
 				if (my_hitboxID.hbox_num == 1){
 					copy_essence_hit = true
 				}
 				if (hit_player_obj.isCurrSleeping == false && hit_player_obj.clone == false && hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
 					inflictSleepStatus();
+					with (currEssence){
+						starHitSomeone = true;
+						state = 3;
+						state_timer = 261;
+					}
 				}
 			} else if (hit_player_obj.NotSleepKirby_IsSleeping == true && hit_player_obj.clone == false){
-				hit_player_obj.NotSleepKirby_IsSleeping = false
-				hit_player_obj.NotSleepKirby_SleepTick = 0
-				copy_essence_hit = true
-				hit_player_obj.state_timer = -4
+				hit_player_obj.NotSleepKirby_IsSleeping = false;
+				hit_player_obj.NotSleepKirby_SleepTick = 0;
+				copy_essence_hit = true;
+				hit_player_obj.state_timer = -4;
 			}
 		} else if (my_hitboxID.hbox_num == 2){
-			hit_player_obj.x = my_hitboxID.x
-			hit_player_obj.y = my_hitboxID.y
+			hit_player_obj.x = my_hitboxID.x;
+			hit_player_obj.y = my_hitboxID.y;
 		} else if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3) && (hit_player_obj.super_armor != false || hit_player_obj.soft_armor != 0)){
 			if (my_hitboxID.hbox_num == 1){
-				copy_essence_hit = true
+				copy_essence_hit = true;
 			}
 		}
-		essence_got_parried = false
+		essence_got_parried = false;
 		break;
 }
 

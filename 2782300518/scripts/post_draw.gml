@@ -143,7 +143,36 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
-        
+
+        patch_note_title[i] = "2.5"
+        patch_note_text[i++] =  
+
+"Hotfix:
+
+Disabled the ability to perform the secret taunt during respawn state due to a very Sans Boss Fight like movement which allowed you to move about on the platform.
+
+Fixed the jitter on the HUD.
+
+There is a known issue when selecting multiple Carols on the CSS, this is a Rivals bug. For now make sure the selected Carol isn't on the default alt to avoid game freezing."
+
+        patch_note_title[i] = "2.4"
+        patch_note_text[i++] =  
+
+"Fixed the Wild Claw recolouring on alts.
+Added Frame Data Woodcock support so that all attacks are correctly named and her cancels are properly documented along with how DSpecial_Air works.
+Fixed a bunch of jank left over from the old version of Carol such as a hitbox spawning on double jump.
+Changed the eye colour on all sprites for better contrast in shading on the eyes for the sake of the new portrait.
+Altered base shading for certain alts, namely so that the boots, gloves and ear edges now all take the lighter shade as default.
+New Bighurt frames.
+Added death animation inspired by Freedom Planet where Carol bursts into feathers on death.
+Added Christmas alt and also added Spade alt for Bendy.
+Brand new portrait courtesy of Firehead Engine.
+Brand new victory themes commissioned by BobTheGuyyy
+Added Rivals RC compatibility
+Added Wiimote compatibility
+Updated unique dialogue with Lilac in Dialogue Buddy to be more interactive.
+Victory screen has an extra flourish for the Stage Clear banner."
+
         patch_note_title[i] = "2.3"
         patch_note_text[i++] =  
 "Fixed online voice button changing alts.
@@ -154,10 +183,10 @@ Only the first hit of a Claw Combo is now actually untechable, cancelling into a
 
 Fixed a bug where Carol can heal all her health when hitting herself with her own bike, health now remains as it was before.
 
-Both NSpecials no longer have super armor, they have Soft Armor 6 instead, (sprites haven't been adjusted on that one yet, will look to fix that one next time). This also goes away on hit.
+Both NSpecials no longer have super armor, they have Soft Armor 6 instead, (sprites haven't been adjusted on that one yet, will look to fix that one next time)
 
 Fixed Dracula compatibility not working properly and also ensured it was the right one."
-        
+
         patch_note_title[i] = "2.2"
         patch_note_text[i++] =  
 

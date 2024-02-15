@@ -1,6 +1,8 @@
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, asset_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_NAME, "DSpecial (Motorbike)");
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "Changes stance to motorbike.");
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 8);
@@ -11,7 +13,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 8);
 
-set_num_hitboxes(AT_DSPECIAL, 2)
+/*set_num_hitboxes(AT_DSPECIAL, 2)
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 3);

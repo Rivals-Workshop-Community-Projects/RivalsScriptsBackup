@@ -4,7 +4,7 @@ set_attack_value(39, AG_NUM_WINDOWS, 3);
 set_attack_value(39, AG_HAS_LANDING_LAG, 1);
 set_attack_value(39, AG_LANDING_LAG, 7);
 set_attack_value(39, AG_HURTBOX_SPRITE, sprite_get("bair2_hurt"));
-//set_attack_value(39, AG_MUNO_ATTACK_NAME, "BAir2");
+set_attack_value(39, AG_MUNO_ATTACK_NAME, "BAir2 (Bike Back Kick)");
 
 set_window_value(39, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(39, 1, AG_WINDOW_ANIM_FRAMES, 2);

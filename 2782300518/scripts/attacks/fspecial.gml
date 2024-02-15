@@ -4,6 +4,8 @@ set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial (Jump Disc)");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC, "If a bike is stored, pressing Shield will warp to the disc and get on the bike instead. Otherwise pressing or holding Special will warp to the disc while doing nothing will result in the disc coming backwards.");
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 18);
@@ -76,6 +78,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("hit_deep"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "On contact with parked bike will pick the bike up and turn into a spinning bike. Can hit Carol in this mode from active frame 27 onwards. Being hit in this mode will cause DSpecial to automatically be activated.");
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 4);

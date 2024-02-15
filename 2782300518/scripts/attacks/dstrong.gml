@@ -2,6 +2,7 @@ set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_NAME, "DStrong (Splits Kick)");
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);

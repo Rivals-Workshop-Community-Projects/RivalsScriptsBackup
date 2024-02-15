@@ -610,6 +610,7 @@ if !hitpause{
         	
         	switch(window){
         		case 1:
+        			_wren_spin_antistall = 0;
         			_timesthrough = 0;
         			moved_up = false;
         			if wren_yoyo.x <= x{
@@ -641,6 +642,14 @@ if !hitpause{
     					_timesthrough = 0;
     					move_cooldown[AT_NSPECIAL] = 60;
     					move_cooldown[AT_DSPECIAL] = 60;
+    				}
+    				print(string(_wren_spin_antistall));
+    				if _wren_spin_antistall >= 180{
+    					destroy_hitboxes();
+    					attack_end();
+    					set_state(PS_PRATFALL);
+    				} else {
+    					_wren_spin_antistall++;
     				}
         			if (point_distance(x, y, wren_yoyo_old_x, wren_yoyo_old_y) <= 60){
         				window = 3;

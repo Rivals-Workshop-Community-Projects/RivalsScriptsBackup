@@ -22,6 +22,11 @@ if (state != 3){
 
 if (!hitpause){
 	state_timer++;
+} else if (hitpause){
+	if (starHitSomeone){
+		destroyStarHitbox();
+		setState(4);
+	}
 }
 
 // State 0: Spawning

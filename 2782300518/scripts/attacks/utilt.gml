@@ -1,6 +1,8 @@
 set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
+set_attack_value(AT_UTILT, AG_MUNO_ATTACK_NAME, "UTilt (Claw Combo)");
+set_attack_value(AT_UTILT, AG_MUNO_ATTACK_MISC, "Cancels into Hit 2 on frame 10 and Hit 3 on frame 30. Can be cancelled into Jab, FTilt and UTilt on frames 10 and 30 provided this and the others haven't been cancelled twice before. Maximum 7 hit combo.");
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
@@ -66,6 +68,7 @@ set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.5)
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, hit_small);
 set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("hit_light"));
+set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_MISC_ADD, "Becomes techable if the move is cancelled into.");
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 5);

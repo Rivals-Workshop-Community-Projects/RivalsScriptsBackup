@@ -23,6 +23,10 @@ if (motorbike == false)
 				window_timer = 1;
 			}
      	break;
+     	//:O
+     	case AT_EXTRA_3:
+			can_move = false; //Prevents a bug with the respawn platform.
+     	break;
 		//Claw Combo
 		case AT_JAB:
 		case AT_FTILT:
@@ -329,7 +333,7 @@ if (motorbike == false)
 			can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 			can_special = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 		break;
-		//Voice clip for Nair
+		//Wild Claw (Voice clip for Nair)
 		case AT_NAIR:
 			can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 			if (voice == 1 && window == 1 && window_timer == 5)
@@ -1055,7 +1059,9 @@ switch (attack)
 			}
 		}
 	break;
+	//Bike Swing
 	case 43:
+	//Bike Hammer
 	case AT_EXTRA_1:
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause)
 		{
@@ -1085,7 +1091,7 @@ switch (attack)
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_2:
 		trigger_b_reverse();
-		soft_armor = window < 3 && !has_hit? 6:0;
+		soft_armor =window < 3 && !has_hit? 6:0;
 		if (attack == AT_NSPECIAL)
 		{
 		 	tsprite_index=sprite_get("tail_idle");
@@ -1484,6 +1490,7 @@ var win_time = argument_count > 6 ? argument[6] : 0;
         return newdust;
     }
 }
+
 #define ClawCombo
 
 //In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab

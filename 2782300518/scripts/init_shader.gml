@@ -6,12 +6,14 @@ switch (alt_cur)
 {
     case 0:
         if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || "state" in self && state == 40) exit;
-        set_character_color_slot(1, 0, 0, 0, 1);
-        set_article_color_slot(1, 0, 0, 0);
+        set_character_color_slot(1, 37, 37, 37, 1);
+        set_article_color_slot(1, 37, 37, 37);
         set_character_color_slot(5, 64, 124, 48, 1); 
         set_article_color_slot(5, 64, 124, 48);
         set_character_color_slot(6, 33, 87, 18, 1);
         set_article_color_slot(6, 33, 87, 18);
+        set_character_color_slot(7, 248, 252, 0, 1);
+        set_article_color_slot(7, 248, 252, 0);
     break;
     case 14:
         for (var i = 0; i < 8; i++) set_character_color_shading(i, 0);

@@ -5,7 +5,7 @@
 sound_play(sfx_death);
 
 if (burst_bubble_is_charged == true){
-	burst_bubble_is_charged = false
+	burst_bubble_is_charged = false;
 	sound_play(sfx_canvas_curse_balloon_pop);
 }
 
@@ -17,6 +17,12 @@ if (get_player_stocks( player ) == 1) {
 	}
 }
 
+if (isCurrSleeping){
+	isCurrSleeping = false;
+	shouldWakeUp = true;
+}
+
+/*
 NotSleepKirby_IsSleeping = false
 NotSleepKirby_SleepTimer = 0
 NotSleepKirby_SleepTimerRelease = get_player_damage( player )
@@ -28,3 +34,4 @@ NotSleepKirbyCurrencyForMario = 0
 NotSleepKirby_SleepTick = 0
 NotSleepKirby_SleepHit = 0
 NotSleepKirby_WasHitBySleepRune = false
+*/

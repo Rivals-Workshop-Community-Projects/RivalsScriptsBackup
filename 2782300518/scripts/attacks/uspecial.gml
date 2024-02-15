@@ -3,6 +3,8 @@ set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_NAME, "USpecial (Pounce)");
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC, "Can attack, shield and strong cancel on hit after 15 frames, special cancel on hit after 15 frames except into another pounce, shield and strong cancel on hit or after 24 active frames. Cancelling into NAir will increase the potency of NAir. Pouncing on a parked bike will cause it to spin into the air.");
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 7);
@@ -81,6 +83,8 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "This hitbox is applied to parked bikes only. Multihit that refreshes every 10 frames for the stated value, hitbox size is the bike itself.");
+
 
 if has_rune ("O")
 {

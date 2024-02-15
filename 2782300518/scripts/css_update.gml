@@ -1,7 +1,6 @@
 cpu_hover_update();
 
 if !(instance_exists(cursor_id)) exit;
-if ("temp_y" not in self) exit;
 
 if ("css_timer" in self)
 {
@@ -24,22 +23,25 @@ if get_synced_var(player) > 1
     set_synced_var( player, 0)
 }
 
-if (player == 0)
+if ("temp_y" in self && "voice_button_position_x" in self && "voice_button_position_y" in self)
 {
-	voice_button_position_x = x + 180;
-	voice_button_position_y = temp_y + 30;
-}
-else
-{
-	if (get_player_hud_color(player) == 8421504)
+	if (player == 0)
 	{
-		voice_button_position_x = x + 60;
-		voice_button_position_y = temp_y + 169;
+		voice_button_position_x = x + 180;
+		voice_button_position_y = temp_y + 30;
 	}
 	else
 	{
-		voice_button_position_x = x + 75;
-		voice_button_position_y = temp_y + 169;
+		if (get_player_hud_color(player) == 8421504)
+		{
+			voice_button_position_x = x + 60;
+			voice_button_position_y = temp_y + 169;
+		}
+		else
+		{
+			voice_button_position_x = x + 75;
+			voice_button_position_y = temp_y + 169;
+		}
 	}
 }
 if ("alttime" in self && "css_timer" in self && "alt_checker" in self && alt_cur != alt_checker)
@@ -123,6 +125,7 @@ if ("voicebutton" in self)
 		suppress_cursor = false
 	}
 }
+
 #define cpu_hover_update()
 var p = player;
 var is_cpu = (get_player_hud_color(p) == 8421504);

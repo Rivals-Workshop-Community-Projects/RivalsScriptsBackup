@@ -5,6 +5,9 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial (Wild Kick)");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC, "Lasts for as long as the pop up meter is active as long as Special is held down. Can be jump cancelled on hit.");
+
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
@@ -45,6 +48,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("hit_light"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Spawns every 3 frames from frame 11 onwards. On contact with parked bike will drain the bike's fuel.");
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
@@ -95,6 +99,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 270);
+set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_MISC_ADD, "Explosion hitbox that only spawns from destroying the bike with Wild Kick.");
+
 
 if has_rune ("O")
 {

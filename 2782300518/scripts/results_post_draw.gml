@@ -134,6 +134,8 @@ if (results_timer >=49)
     sparkling5 = false;
 }
 
+if (results_timer <=24) draw_sprite_ext(sprite_get("banner_unfurl"), results_timer/4, x + 198, y -94, 2, 2, 0, c_white, 1);
+
 draw_sprite_ext(sprite_get("csssparkle"), frame, x + 349, y - 140, 4, 4, 0, c_white, sparkling1);
 draw_sprite_ext(sprite_get("csssparkle"), frame2, x + 34, y - 129, 4, 4, 0, c_white, sparkling2); 
 draw_sprite_ext(sprite_get("csssparkle"), frame3, x + 474, y - 143, 4, 4, 0, c_white, sparkling3);

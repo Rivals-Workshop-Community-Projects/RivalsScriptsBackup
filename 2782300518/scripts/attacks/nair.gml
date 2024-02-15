@@ -4,6 +4,8 @@ set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
+set_attack_value(AT_NAIR, AG_MUNO_ATTACK_NAME, "NAir (Wild Claw)");
+set_attack_value(AT_NAIR, AG_MUNO_ATTACK_MISC, "Can be jump cancelled on hit between frames 12 and 17");
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
@@ -38,3 +40,4 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, hit_medium);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("hit"));
+set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Does 7 damage instead of 6 if cancelled into from USpecial");

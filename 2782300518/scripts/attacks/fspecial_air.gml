@@ -3,6 +3,9 @@ set_attack_value(AT_FSPECIAL_AIR, AG_SPRITE, sprite_get("fspecial_air"));
 set_attack_value(AT_FSPECIAL_AIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSPECIAL_AIR, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("fspecial_air_hurt"));
+set_attack_value(AT_FSPECIAL_AIR, AG_MUNO_ATTACK_NAME, "FSpecial3 (Bike Throw)");
+set_attack_value(AT_FSPECIAL_AIR, AG_MUNO_ATTACK_MISC, "Pressing Shield will warp to the bike and get on the bike instead. Otherwise pressing or holding Special will turn it back into a disc, storing the bike for future use. Doing nothing will result in the bike coming backwards and go into storage.");
+
 
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 18);

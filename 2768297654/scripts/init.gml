@@ -217,6 +217,10 @@ seinfeld = false;
 
 practice_mode = false;
 
+curr_enemy = 0;
+player_that_exists = true;
+duster_player_ids = [false,false,false,false];
+
 beta_voice_mode = false;
 alt = get_player_color(player);
 if(alt == 11){

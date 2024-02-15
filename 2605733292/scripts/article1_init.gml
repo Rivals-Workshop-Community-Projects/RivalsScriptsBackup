@@ -48,6 +48,8 @@ hitByNSpecBubble = false;
 bubbleX = 0;
 bubbleY = 0;
 
+starHitSomeone = false;
+
 // ------------------------------------------------
 // hitbox stuff
 can_get_hit = true;

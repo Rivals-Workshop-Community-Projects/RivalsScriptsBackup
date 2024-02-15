@@ -4,6 +4,8 @@ set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_UAIR, AG_LANDING_LAG, 6); //4
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
+set_attack_value(AT_UAIR, AG_MUNO_ATTACK_NAME, "UAir (High Kick)");
+set_attack_value(AT_UAIR, AG_MUNO_ATTACK_MISC, "This attack has a vertical boost of speed once per airtime. The boost is reset when you touch the ground. Using this move a second time in the air will not result in vertical speed.");
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5); //6
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);

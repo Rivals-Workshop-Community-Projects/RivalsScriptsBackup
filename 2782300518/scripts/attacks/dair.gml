@@ -4,6 +4,8 @@ set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 0);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 7);
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_NAME, "DAir (Bubble Bounce)");
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_MISC, "Shield cancellable on decent from Frame 29 onwards. Special cancellable on hit. Jump cancellable on hit. Cancellabe into any other aerial except DAir on hit.");
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
@@ -62,6 +64,7 @@ set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("hit_heavy"));
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, hit_large);
+set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "On hit will bounce on opponents and move upwards instead.");
 
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
@@ -81,6 +84,8 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, hit_large);
+set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_MISC_ADD, "On hit will bounce on opponents and move upwards instead.");
+
 
 if has_rune ("O")
 {

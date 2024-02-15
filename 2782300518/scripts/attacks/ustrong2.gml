@@ -2,6 +2,7 @@ set_attack_value(AT_USTRONG_2, AG_SPRITE, sprite_get("ustrong2"));
 set_attack_value(AT_USTRONG_2, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_USTRONG_2, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_USTRONG_2, AG_HURTBOX_SPRITE, sprite_get("ustrong2_hurt"));
+set_attack_value(AT_USTRONG_2, AG_MUNO_ATTACK_NAME, "UStrong2 (Bike Handstand)");
 
 set_window_value(AT_USTRONG_2, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG_2, 1, AG_WINDOW_ANIM_FRAMES, 4);

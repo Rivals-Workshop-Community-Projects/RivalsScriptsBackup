@@ -4,6 +4,7 @@ set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
+set_attack_value(AT_BAIR, AG_MUNO_ATTACK_NAME, "BAir (Back Kick)");
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);

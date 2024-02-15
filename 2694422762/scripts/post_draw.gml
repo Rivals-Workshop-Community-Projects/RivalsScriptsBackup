@@ -5,7 +5,6 @@ var bar_height = 2;
 
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
 	if (attack == AT_TAUNT_2) {
-		hud_offset = 999;
 		draw_set_halign(fa_center);
 		draw_debug_text(x - 64 + (16 * spr_dir), y - 144, game_message);
 		draw_set_halign(fa_left);

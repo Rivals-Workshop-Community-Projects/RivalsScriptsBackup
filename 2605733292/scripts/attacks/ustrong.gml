@@ -60,6 +60,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, pillow_hit_fx_lrg);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
+// hehe ahah
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2);
@@ -72,7 +73,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 240);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, pillow_hit_fx_sml);

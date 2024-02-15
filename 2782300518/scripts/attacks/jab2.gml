@@ -1,8 +1,9 @@
 set_attack_value(AT_NTHROW, AG_SPRITE, sprite_get("jab2"));
 set_attack_value(AT_NTHROW, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE, sprite_get("jab2_hurt"));
-//set_attack_value(AT_NTHROW, AG_MUNO_ATTACK_NAME, "Jab2");
+set_attack_value(AT_NTHROW, AG_MUNO_ATTACK_NAME, "Jab2 (Claw Combo)");
 set_attack_value(AT_NTHROW, AG_NO_PARRY_STUN, 1);
+set_attack_value(AT_NTHROW, AG_MUNO_ATTACK_MISC, "Cancels into Hit 2 on frame 10 and Hit 3 on frame 30.");
 
 
 set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 4);

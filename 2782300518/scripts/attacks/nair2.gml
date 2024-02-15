@@ -4,7 +4,8 @@ set_attack_value(44, AG_NUM_WINDOWS, 3);
 set_attack_value(44, AG_HAS_LANDING_LAG, 1);
 set_attack_value(44, AG_LANDING_LAG, 7);
 set_attack_value(44, AG_HURTBOX_SPRITE, sprite_get("nair2_hurt"));
-//set_attack_value(44, AG_MUNO_ATTACK_NAME, "NAir2");
+set_attack_value(44, AG_MUNO_ATTACK_NAME, "NAir2 (Bike Fu)");
+
 
 set_window_value(44, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(44, 1, AG_WINDOW_ANIM_FRAMES, 4);

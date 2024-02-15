@@ -3,6 +3,8 @@ set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial2"));
 set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial2_hurt"));
+set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_NAME, "NSpecial2 (Bike Fu Wild Kick)");
+set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_MISC, "Lasts for as long as the pop up meter is active as long as Special is held down. Can be jump cancelled on hit.");
 
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 13);

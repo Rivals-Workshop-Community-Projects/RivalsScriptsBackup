@@ -4,7 +4,9 @@ set_attack_value(42, AG_NUM_WINDOWS, 3);
 set_attack_value(42, AG_HAS_LANDING_LAG, 1);
 set_attack_value(42, AG_LANDING_LAG, 6); //4
 set_attack_value(42, AG_HURTBOX_SPRITE, sprite_get("uair2_hurt"));
-//set_attack_value(42, AG_MUNO_ATTACK_NAME, "UAir2");
+set_attack_value(42, AG_MUNO_ATTACK_NAME, "UAir2 (Bike High Kick)");
+set_attack_value(42, AG_MUNO_ATTACK_MISC, "This attack has a vertical boost of speed once per airtime. The boost is reset when you touch the ground. Using this move a second time in the air will not result in vertical speed.");
+
 
 set_window_value(42, 1, AG_WINDOW_LENGTH, 7); //10
 set_window_value(42, 1, AG_WINDOW_ANIM_FRAMES, 1);

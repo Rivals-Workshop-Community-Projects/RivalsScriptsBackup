@@ -1,7 +1,7 @@
 set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get("ftilt2"));
 set_attack_value(AT_FTHROW, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("ftilt2_hurt"));
-//set_attack_value(AT_FTHROW, AG_MUNO_ATTACK_NAME, "FTilt2");
+set_attack_value(AT_FTHROW, AG_MUNO_ATTACK_NAME, "FTilt2 (Claw Swipe)");
 
 set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 2);

@@ -8,15 +8,15 @@ for(var i = 0; i < 3; i++){
         //cooldown visual
         if(ring_cd[i] > 0){
             var h = 0;
-            var h2 = 22;
+            var h2 = 24;
             if(i == 0){
                 h = 4;
-                h2 = 18;
+                h2 = 20;
             }
-            draw_sprite_part(sprite_get("hud_cd"), i, 0, h, 24, (ring_cd[i]/ring_time_cd) * h2, temp_x + 6 + (26 * i), temp_y - 20 + h);
+            draw_sprite_part(sprite_get("hud_cd"), i, 0, h, 24, (ring_cd[i]/ring_cd_max[i]) * h2, temp_x + 6 + (26 * i), temp_y - 20 + h);
         }
         //darken out ones not selected
-        if(i != add_on || (ring_out != noone && ring_out.type == i) || suppress_hud){
+        if(i != add_on /*|| (ring_out != noone && ring_out.type == i) || suppress_hud*/){
             draw_sprite_ext(sprite_get("hud_light"), i, temp_x + 6 + (26 * i), temp_y - 20, 1, 1, 0, c_black, 0.5);
         }
         //light flash when off cd

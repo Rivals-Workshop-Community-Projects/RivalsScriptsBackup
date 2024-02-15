@@ -10,8 +10,8 @@ alt_name[5]  = "Corazon";
 alt_name[6]  = "Lilac";
 alt_name[7]  = "Milla";
 alt_name[8]  = "Neera";
-alt_name[9]  = "Mayor Zhao";
-alt_name[10] = "Garfield";
+alt_name[9]  = "Spade";
+alt_name[10]  = "Mayor Zhao";
 alt_name[11] = "Ratchet";
 alt_name[12] = "Rivet";
 alt_name[13] = "Abyss";
@@ -30,7 +30,9 @@ alt_name[25] = "Trans Rights";
 alt_name[26] = "Carrie";
 alt_name[27] = "Wes";
 alt_name[28] = "Valentino Rossi";
-alt_name[29] = "Nanashi Mumei";
+alt_name[29] = "Christmas";
+alt_name[30] = "Garfield";
+alt_name[31] = "Nanashi Mumei";
 
 //Patch
 

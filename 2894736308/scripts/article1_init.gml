@@ -46,14 +46,14 @@ buffertimer = 0;                                    //The current amount of fram
 idle_anim_rate = 6;                                 //Example animation speed value 1. The animation in question will increment every 8 frames in this case
 die_anim_rate = 4;                                  //Example animation speed value 2.
 anim_rate = 3;
-die_time = 75;                                      //Example variable used in this case to determine how long the article should take to die (state 2). 
+die_time = 300;                                      //Example variable used in this case to determine how long the article should take to die (state 2). 
 despawn_timer = 900;
 animation_type = 1;                                 //This variable is part of the animation handling found in article1_update. It determines when, or how frequently, the image_index should increment
 new_sprite = sprite_get("your_sprite");             //This is another part of the animation handling. It tells the game "this is the sprite this article should be using; if it's not already, switch it over please"
 
 //Limit on number of articles
 replacedcount = 0;                                  //This gets incremented whenever a new article is created. If this reaches maxarticles, the article is destroyed
-maxarticles = 1;                                    //The maximum number of this article that should exist at once.
+maxarticles = 3;                                    //The maximum number of this article that should exist at once.
 
 with(asset_get("obj_article1")){
     if (player_id == other.player_id){

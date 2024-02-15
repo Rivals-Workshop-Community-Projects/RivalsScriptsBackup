@@ -4,7 +4,7 @@ set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_EXTRA_1, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_EXTRA_1, AG_LANDING_LAG, 9);
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("dair2_hurt"));
-//set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "DAir2");
+set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "DAir2 (Bike Hammer)");
 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 3);

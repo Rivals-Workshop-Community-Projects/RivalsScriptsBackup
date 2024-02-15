@@ -90,6 +90,7 @@ if(ring_equipped > -1){
     if(ring_timer >= ring_time_max){
         sound_play(asset_get("mfx_unstar"), 0, noone, 1.0, 1.1);
         ring_cd[ring_equipped] = ring_time_cd;
+        ring_cd_max[ring_equipped] = ring_time_cd;
         ring_equipped = -1;
         ring_timer = -1;
         ring_follow = -1;
@@ -107,7 +108,6 @@ wave_land_adj = omega_wave_land_adj[obuff];
 leave_ground_max = omega_leave_ground_max[obuff];
 max_jump_hsp = omega_max_jump_hsp[obuff];
 air_max_speed = omega_air_max_speed[obuff];
-
 
 if(ring_follow != -1){
     if(ring_follow.life_timer < 8){

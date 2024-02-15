@@ -6,6 +6,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //Taunts
 if (attack == AT_TAUNT_2) {
+	hud_offset = 999;
     user_event(0);
     
     if (!place_meet(bbox_right - 160, bbox_bottom + 4)) {
@@ -228,15 +229,18 @@ if (attack == AT_NSPECIAL){
     }
     //Storing card charges
     if (window == 2 && window_timer == 16) {
-        sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+        sound_play(asset_get("sfx_pom_note1") ,false, noone, 0.8, 1.1);
+        sound_play(asset_get("mfx_coin"));
         card_charge = 1;
     }
     if (window == 3 && window_timer == 16) {
-        sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+        sound_play(asset_get("sfx_pom_note2"), false, noone, 0.8, 1);
+        sound_play(asset_get("mfx_coin"), false, noone, 1, 0.9);
         card_charge = 2;
     }
     if (window == 4 && window_timer == 16) {
-        sound_play(asset_get("sfx_frog_fspecial_charge_full"));
+        sound_play(asset_get("sfx_pom_note4"), false, noone, 0.8, 1);
+        sound_play(asset_get("sfx_gem_collect"));
         card_charge = 3;
     }
     
@@ -360,7 +364,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR ){
     can_fast_fall = false;
     if (window == 1 && window_timer == 1) {
         fspecial_hit = false;
-        if (instance_exists(lucy_card_id) && distance_to_point(lucy_card_id.x, lucy_card_id.y) <= 44 && sign (lucy_card_id.x - x) == spr_dir) {
+        if (instance_exists(lucy_card_id) && distance_to_point(lucy_card_id.x, lucy_card_id.y) <= 56 && sign (lucy_card_id.x - x) == spr_dir) {
             if (left_down)
                 lucy_card_id.spr_dir = -1
             if (right_down)
@@ -498,7 +502,7 @@ if (attack == AT_USPECIAL) {
         
         //Card interaction
         
-        if (window_timer >= 8 && !hitpause && (special_down || attack_down)) {
+        if (window_timer >= 8 && !hitpause && (special_down || attack_down) && !was_parried) {
             destroy_hitboxes();
             window = 7;
             window_timer =  0;

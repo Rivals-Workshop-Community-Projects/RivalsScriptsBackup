@@ -3,6 +3,8 @@ set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2)
 set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, sprite_get("carol_hurtbox_standing"));
 set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+set_attack_value(AT_EXTRA_3, AG_MUNO_ATTACK_NAME, ":O");
+set_attack_value(AT_EXTRA_3, AG_MUNO_ATTACK_MISC, "This is the most powerful move in Carol's moveset.");
 
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 150);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 1);

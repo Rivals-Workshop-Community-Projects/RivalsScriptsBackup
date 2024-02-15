@@ -27,7 +27,7 @@ switch (attack) {
     
     case AT_DAIR:
         if window == 1 && window_timer == 1 {
-             sound_play(asset_get("sfx_shovel_swing_med2"), false, noone, 0.55, 1.1);
+            sound_play(asset_get("sfx_shovel_swing_med2"), false, noone, 0.55, 1.1);
         }
         break;
     
@@ -74,6 +74,7 @@ switch (attack) {
             ring_out = instance_create(floor(x + (40 * spr_dir)), floor(y + 14), "obj_article1");
             ring_out.spr_dir = 1;
             ring_cd[ring_equipped] = ring_time_cd;
+            ring_cd_max[ring_equipped] = ring_time_cd;
             ring_equipped = -1;
             ring_timer = -1;
             ring_follow = -1;
@@ -83,12 +84,14 @@ switch (attack) {
     
     case AT_FSPECIAL:
         can_fast_fall = false;
+        if(window == 1 && window_timer == 1) sound_play(asset_get("sfx_swipe_weak2"), false, noone, 0.9, 0.8);
         if(window == 1 && window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)){
             if(ring_cd[add_on] <= 0){
                 var ring = create_hitbox(AT_FSPECIAL, add_on + 1, floor(x) + (spr_dir * 38), floor(y) - 32);
                 if(free) vsp = -4;
                 if(ring_equipped > -1){
                     ring_cd[ring_equipped] = ring_time_cd;
+                    ring_cd_max[ring_equipped] = ring_time_cd;
                     ring_equipped = -1;
                     ring_timer = -1;
                     ring_follow = -1;
@@ -187,6 +190,7 @@ switch (attack) {
                 if(ring_equipped != -1){
                     sound_play(asset_get("mfx_unstar"), 0, noone, 1.0, 1.1);
                     ring_cd[ring_equipped] = ring_time_cd;
+                    ring_cd_max[ring_equipped] = ring_time_cd;
                     ring_equipped = -1;
                     ring_timer = -1;
                     ring_follow = -1;

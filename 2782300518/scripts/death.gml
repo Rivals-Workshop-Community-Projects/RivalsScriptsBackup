@@ -12,6 +12,36 @@ chargeUpVoiceLine = true;
 fuel = fuel / 2;
 bike_stored = false;
 instance_destroy(bike);
+var stageleft = get_stage_data(SD_LEFT_BLASTZONE_X)
+var stageright = get_stage_data(SD_RIGHT_BLASTZONE_X)
+var stagetop = get_stage_data(SD_TOP_BLASTZONE_Y)
+var stagebottom = get_stage_data(SD_BOTTOM_BLASTZONE_Y)
+if (x < stageleft)
+{
+    var feathers = spawn_hit_fx(stageleft + 140, y - 40, feather_death);
+    feathers.depth = -150;
+}
+else if (x > stageright)
+{
+    var feathers = spawn_hit_fx(stageright - 180, y - 40, feather_death);
+    feathers.depth = -150;
+}
+else if (y < stagetop)
+{
+    var feathers = spawn_hit_fx(x, stagetop + 140, feather_death);
+    feathers.depth = -50;
+}
+else if (y > stagebottom)
+{
+    var feathers = spawn_hit_fx(x, stagebottom - 220, feather_death);
+    feathers.depth = -50;
+}
+else
+{
+    var feathers = spawn_hit_fx(x, y - 40, feather_death);
+    feathers.depth = -50;
+}
+
 
 if (kickTime > 0)
 {
@@ -37,8 +67,8 @@ if (motorbike == true)
 	short_hop_speed = 5;
 	jump_speed = 11.5;
 	max_djumps = 1;
-	hurtbox_spr = asset_get("ex_guy_hurt_box");
-	crouchbox_spr = asset_get("ex_guy_crouch_box");
+	hurtbox_spr = sprite_get("carol_hurtbox_standing");
+	crouchbox_spr = sprite_get("carol_hurtbox_crouch");
 	jump_sound = sound_get("jump");
 	djump_sound = asset_get("sfx_jumpair");
 	
@@ -67,6 +97,9 @@ if (motorbike == true)
     	dash_turn_accel = 1.5;
 	}
 }
+
+
+
 #define stopVoice
 
 sound_stop(sound_get("aw_yeah"));

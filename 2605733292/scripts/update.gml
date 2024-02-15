@@ -292,6 +292,10 @@ with (oPlayer){
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+			if (should_make_shockwave){
+				//print("force a wake up");
+				shouldWakeUp = true;
+			}
 			if (state_timer == 10){
 				// increasing the time it takes to sleep
 				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
@@ -337,11 +341,13 @@ with (oPlayer){
 			//print("sleeping player woke up");
 			shouldWakeUp = false;
 			if (!hitpause){
-				if (!free){
-					set_state(PS_IDLE);
-				} else {
-					set_state(PS_IDLE_AIR);
-				}
+				//if (state != PS_DEAD){
+					if (!free){
+						set_state(PS_IDLE);
+					} else {
+						set_state(PS_IDLE_AIR);
+					}
+				//}
 				with (other){
 					spawn_hit_fx(other.x, other.y - char_height, sleepVFX);
 				}
@@ -352,6 +358,10 @@ with (oPlayer){
 		damageIncrementTick = 0;
 	}
 }	
+
+if (state == PS_DEAD || state == PS_RESPAWN){
+	//print("yeah i think im there");
+}
 
 runSleepCodeOnSelf();
 
@@ -453,6 +463,10 @@ if (get_player_color( player ) == 23) {
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+			if (should_make_shockwave){
+				//print("force a wake up");
+				shouldWakeUp = true;
+			}
 			if (state_timer == 10){
 				// increasing the time it takes to sleep
 				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
@@ -498,11 +512,13 @@ if (get_player_color( player ) == 23) {
 			//print("sleeping player woke up");
 			shouldWakeUp = false;
 			if (!hitpause){
-				if (!free){
-					set_state(PS_IDLE);
-				} else {
-					set_state(PS_IDLE_AIR);
-				}
+				//if (state != PS_DEAD){
+					if (!free){
+						set_state(PS_IDLE);
+					} else {
+						set_state(PS_IDLE_AIR);
+					}
+				//}
 				with (other){
 					spawn_hit_fx(other.x, other.y - char_height, sleepVFX);
 				}

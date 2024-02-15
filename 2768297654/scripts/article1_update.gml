@@ -48,7 +48,8 @@ if (state == 0){
 		sound_play(sound_get("sfx_smokebomb"), false, noone, 2);
 		//smoke_owner = player;
 		if(player_id.bomb_missfire = true){
-with (oPlayer){
+			/*
+	with (oPlayer){
 	if (place_meeting(x, y, other)){
 		if (id != other.player_id && url != other.player_id.url){
 			//dodoofart
@@ -57,6 +58,12 @@ with (oPlayer){
 		}
 	}
 }
+*/
+
+	if(player_id.bomb_owner != 0){
+	smoke_owner	= player_id.bomb_owner;
+	player_id.bomb_owner = 0;
+	}
 }
 state_timer = 14;
 	}

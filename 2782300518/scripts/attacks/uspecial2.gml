@@ -4,6 +4,8 @@ set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("uspecial2_hurt"));
 set_attack_value(AT_USPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(AT_USPECIAL_2, AG_MUNO_ATTACK_NAME, "USpecial2 (Rising Wild Claw)");
+set_attack_value(AT_USPECIAL_2, AG_MUNO_ATTACK_MISC, "Can wall jump cancel after 12 frames.");
 
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);

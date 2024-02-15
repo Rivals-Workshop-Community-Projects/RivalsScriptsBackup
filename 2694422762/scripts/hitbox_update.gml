@@ -64,20 +64,17 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
             hsp *= 0.91;
             vsp *= 0.91;
         }
+        
+        if (wall_stuck) {
+            destroyed = true;
+        }
     }
     else {
-        wall_stuck_time++;
+        wall_stuck_time = 0;
         hitbox_timer = 0;
         hsp = 0;
         vsp = 0;
         grav = 0;
-        //sprite_index = sprite_get("card_proj_ground");
-        if (wall_stuck_time > 5) {
-            mask_index = asset_get("empty_sprite");
-        }
-        if (wall_stuck_time > 30) {
-            destroyed = true;
-        }
     }
     image_index = round(ease_linear(0, 16, round(stuck_dir), 360));
     

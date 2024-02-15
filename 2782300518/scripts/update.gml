@@ -1,6 +1,7 @@
 //update
 
 var ct = current_time;
+hud_offset = floor(hud_offset);
 
 //Change stats based on whether on bike or not
 char_height = motorbike? 56 : 50;
@@ -23,7 +24,12 @@ dash_stop_time = motorbike? 12: 4;
 //walljump_hsp = motorbike? 0:3;
 //walljump_vsp = motorbike? 7:11;
 //walljump_time = motorbike? 64:16;
-
+if ("speed_changed" in pet_obj)
+{
+	walk_speed *=1.5
+	initial_dash_speed *=1.5
+	dash_speed *=1.5;
+}
 
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 was_attacking = (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR);
@@ -208,8 +214,15 @@ if (motorbike == false)
 	{
 		comboCounter = 0;
 		hitConfirm = false;
+		set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
+		set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+		set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
+		set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
 		switch (state)
 		{
+			case PS_RESPAWN:
+				move_cooldown[AT_EXTRA_3] = 5;
+			break;
 			case PS_IDLE:
 				tsprite_index=-1;
 				trotation=0;
@@ -557,13 +570,13 @@ else if (motorbike == true)
 			sound_stop(sound_get("motorbike_idle"));
 			sound_stop(sound_get("motorbike_stop"));
 			break;
-		case PS_DOUBLE_JUMP:
+		/*case PS_DOUBLE_JUMP:
 			create_hitbox( AT_EXTRA_1, 2, x, y);
 			if (state_timer == 30)
 			{
 				attack_end(AT_EXTRA_1);
 			}
-		break;
+		break;*/
 		case PS_HITSTUN:
 			if (prev_state == PS_WALL_JUMP && state_timer == 0)
 			{
@@ -906,14 +919,16 @@ if (move_cooldown[3] > 0)
 	move_cooldown[3] = move_cooldown[3] - 1;
 }
 
-//Check for Practicse mode
+//Check for Practice mode
 if (get_match_setting(SET_PRACTICE) == true)
 {
 	practice = true;
 	practice_hud_clearance++;
 }
 
-//Dracula compatibility
+print_debug(char_height);
+
+//Dracula compat
 user_event(6);
 
 //print_debug(string(hsp));
@@ -950,27 +965,6 @@ if(variable_instance_exists(id,"diag"))
 //  Specific Character Interactions
 
 //  Regular dialogue
-	//Lilac
-    if(otherUrl == "2697174282" && diag != "") //Change the url into a specific character's
-    {
-        diag = "Can't you be Little Miss Heropants some other time?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == "1870616155" && diag != "") //Change the url into a specific character's
-    {
-        diag = "Can't you be Little Miss Heropants some other time?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == "1897152603" && diag != "") //Change the url into a specific character's
-    {
-        diag = "Can't you be Little Miss Heropants some other time?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-	if(otherUrl == "2972048421" && diag != "")
-	{
-        diag = "Can't you be Little Miss Heropants some other time?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-	}
 	//Neera
 	if ((otherUrl == "2972347375"))
 	{
@@ -1077,13 +1071,6 @@ if(variable_instance_exists(id,"diag"))
 		diag_index = 0;		
 	}
 	
-	//Carol
-	if ((otherUrl == "2782300518"))
-	{
-		diag = "Hey look Lilac it's my identical twin sister!";
-		diag_index = 0;
-	}
-		
 	if (otherUrl == CH_ELLIANA && diag != "")
 	{
         diag = "A snake in a machine huh? That reminds me of someone...";
@@ -1091,7 +1078,26 @@ if(variable_instance_exists(id,"diag"))
 	}
    
 //  NRS/3-Part dialogue
-    if(otherUrl == url) //Change the url into a specific character's
+   	//Lilac
+    if(otherUrl == 2697174282 || otherUrl == 1870616155|| otherUrl = 1897152603 || otherUrl = 2972048421) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Can't you be Little Miss Heropants some other time?",
+                "CAROL YOU STUPID FURBALL GO TAKE YOUR FLEA BATH SOME OTHER TIME I'VE GOTTA GO CHECK ON THESE CIVILIANS",
+                "Fine, I'll go by myself... yipee..."]
+            }
+            
+			diag_index = 0;
+        }
+    }
+    //Carol
+    if(otherUrl == 2782300518 || otherUrl == 3047206937) //Change the url into a specific character's
     {
         with(pet_obj)
         {
@@ -1102,7 +1108,7 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs_diag = [
                 "Cory? What are you doing here and why do you look different?",
                 "Hey look Lilac it's my identical twin sister!",
-                "Didn't know Pangu's holograms could be this realistic!"]
+                "Oh I... didn't know Pangu's holograms could be this realistic!"]
             }
             
 			diag_index = 0;

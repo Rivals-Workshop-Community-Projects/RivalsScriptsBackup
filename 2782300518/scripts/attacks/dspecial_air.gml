@@ -4,6 +4,9 @@ set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_DSPECIAL_AIR, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL_AIR, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_NAME, "DSpecial_Air (Abandon Bike)");
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC, "Changes stance to off bike. Bike spins downwards as a result.");
+
 
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);
@@ -53,6 +56,8 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_VSPEED, 9);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 //set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, nitro_boost);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, 270);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_MUNO_HITBOX_MISC_ADD, "This move's power is variable. It is entirely dependant on how much fuel is left, with it being most potent when the fuel is nearly out. The exact formula is 20 damage minus fuel remaining divided by 3.");
+
 
 if has_rune ("O")
 {

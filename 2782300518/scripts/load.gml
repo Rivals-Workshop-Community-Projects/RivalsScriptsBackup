@@ -12,7 +12,7 @@ sprite_change_offset("hurt_bike_crystalised", 20, 41);
 sprite_change_offset("hurtground", 40, 78);
 sprite_change_offset("hurtground_bike", 40, 82);
 sprite_change_offset("bighurt", 40, 78);
-sprite_change_offset("bighurt_bike", 40, 82);
+sprite_change_offset("bighurt_bike", 52, 82);
 sprite_change_offset("uphurt", 40, 78);
 sprite_change_offset("uphurt_bike", 40, 82);
 sprite_change_offset("downhurt", 40, 78);
@@ -148,6 +148,7 @@ sprite_change_offset("bike_mask", 38, 78);
 sprite_change_offset("bike_spin", 40, 60);
 sprite_change_offset("bike_mask_spin", 40, 60);
 sprite_change_offset("bike_break", 78, 118);
+sprite_change_offset("death", 86, 76);
 
 //Set victory theme based on alt
 if (get_player_color(player) == 5)
