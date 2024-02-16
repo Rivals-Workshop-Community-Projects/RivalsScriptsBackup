@@ -312,7 +312,7 @@ if (attack == AT_NSPECIAL && window == 1){
 }
 
 if (attack == AT_NSPECIAL){
-	if (window == 4 && window_timer >= 3 && special_down && tokens < 3){
+	if (window == 4 && window_timer >= 3 && special_down && tokens <= 2){
 		window = 1;
 		window_timer = 7;
 		tokens += 1;

@@ -5,6 +5,7 @@ sprite_change_offset("hurtground", 32, 60);
 sprite_change_offset("bighurt", 25, 40);
 sprite_change_offset("uphurt", 25, 60);
 sprite_change_offset("downhurt", 39, 70);
+sprite_change_offset("bouncehurt", 39, 70);
 sprite_change_offset("crouch", 54, 94);
 sprite_change_offset("crouch_hurtbox", 54, 94);
 sprite_change_offset("walk", 40, 86);

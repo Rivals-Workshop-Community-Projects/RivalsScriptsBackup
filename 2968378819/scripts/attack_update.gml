@@ -3,6 +3,34 @@ if (attack == AT_FSPECIAL || attack == AT_NSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_UTILT){
+    if window == 1{
+        if uptilt_buffed{
+            set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 10);
+            set_hitbox_value(AT_UTILT, 1, HG_EFFECT, 11);
+            set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);
+            set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 4);
+            set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .5);
+            set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
+            set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 12);
+            set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .6);
+            set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("HitHard"));
+        }
+        else{
+            set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 5);
+            set_hitbox_value(AT_UTILT, 1, HG_EFFECT, 0);
+            set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 80);
+            set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
+            set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .6);
+            set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 5);
+            set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 0);
+            set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .5);
+            set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("HitMed"));
+        }
+        attack_end();
+    }
+}
+
 if (attack == AT_FSPECIAL){
     can_fast_fall = false;
     if (window == 1){
@@ -100,7 +128,14 @@ if (attack == AT_FSPECIAL){
             set_window_value(AT_FSPECIAL, 8, AG_WINDOW_GOTO, 13);
             nspecial_direction2 = 8;
         }
- 
+        set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HSPEED_TYPE, 1);
+        set_window_value(AT_FSPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 1);
+    }
+    else if window == 8 && !has_hit{
+        set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HSPEED_TYPE, 0);
+        set_window_value(AT_FSPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 0);
+        hsp *= 0.75;
+        vsp *= 0.75;
     }
     
     if (has_hit){
@@ -129,11 +164,14 @@ if (attack == AT_FSPECIAL){
         else {
             set_window_value(AT_FSPECIAL, 14, AG_WINDOW_TYPE, 7);
         }
+        hsp *= 0.75;
+        vsp *= 0.75;
     }
 
     
     if (window > 1 && !free){
         window = 20;
+        //hsp /= 2;
     }
 }
 

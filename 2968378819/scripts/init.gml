@@ -161,6 +161,9 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+uptilt_buffed = false;
+uptilt_buff_window = 2;
+
 nspecial_direction = 0;
 nspecial_direction2 = 0;
 

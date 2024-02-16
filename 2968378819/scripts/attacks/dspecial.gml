@@ -10,7 +10,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_fspecial_dash"));
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_grenade_launch"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
 
 //Active (Sweetspot)
