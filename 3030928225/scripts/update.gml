@@ -146,6 +146,11 @@ if (stun_counter > 0) {
     }
 }
 
+if (!free) {
+	// Restore ability to stall slightly with nspecial once per airtime
+	nspecial_air_stall_available = true;
+}
+
 // TODO temporary dspecial solution
 /*if (dspecial_tail_countdown > 0) {
 	dspecial_tail_countdown--;
@@ -594,7 +599,7 @@ holding_someone = false;
 /// print_vars(instance = self)
 {
     //prints the variables in the given instance, or in whatever instance ran the function.
-    var instance; if (argument_count > 0) instance = argument[0]; else instance = self;
+    var instance = argument_count > 0 ? argument[0] : self;
     with (instance) {
         var names = variable_instance_get_names(self);
         var str = "";

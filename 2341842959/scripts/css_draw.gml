@@ -66,24 +66,24 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 28; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(71, 71, 71) // "color preview square" color. can be any color!
     ce[0,1] = "Monroe" //
     ce[0,2] = "Yes, that is his real name." 
     ce[1,0] = make_color_rgb(49, 89, 211)
-    ce[1,1] = "The Blue Blur"
-    ce[1,2] = "Palette based on Sonic The Hedgehog."
+    ce[1,1] = "Blue"
+    ce[1,2] = "ITS BLUE DABBA DEE DABBA DIE"
     ce[2,0] = make_color_rgb(194, 15, 36)
-    ce[2,1] = "Spriting Stars"
-    ce[2,2] = "Based on the color scheme of the creator Sprite Star."
+    ce[2,1] = "Red"
+    ce[2,2] = "aw look he's embarrassed"
     ce[3,0] = make_color_rgb(166, 184, 101)
-    ce[3,1] = "That's a Dragon?"
-    ce[3,2] = "Based on the color of the Dragon from Disgaea."
+    ce[3,1] = "Green"
+    ce[3,2] = "stink colored"
     ce[4,0] = make_color_rgb(255, 182, 82)
-    ce[4,1] = "Autumn Falls"
-    ce[4,2] = "''just a random alt i came up with'' Slep16."
+    ce[4,1] = "Monochrome"
+    ce[4,2] = "is this a skeleton"
     ce[5,0] = make_color_rgb(229, 104, 232)
     ce[5,1] = "Pride"
     ce[5,2] = "Trans rights are human rights!"
@@ -150,6 +150,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[26,0] = make_color_rgb(71, 71, 71 )
     ce[26,1] = "Stardust"
     ce[26,2] = "Alt based of Iggy from Jojo Bizarre Adventures"
+    ce[27,0] = make_color_rgb(71, 71, 71 )
+    ce[27,1] = "Camilla"
+    ce[27,2] = "OC Palette (MatchesYashi)"
+    ce[28,0] = make_color_rgb(71, 71, 71 )
+    ce[28,1] = "Sweet"
+    ce[28,2] = "OC Palette (MatchesYashi)"
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

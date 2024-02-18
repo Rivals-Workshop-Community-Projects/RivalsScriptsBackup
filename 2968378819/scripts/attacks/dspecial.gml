@@ -17,7 +17,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 9);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, has_rune("H")? 13:9);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -25,7 +25,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 9);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, has_rune("H")? 13:9);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -33,7 +33,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED, has_rune("H")? 7:5);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_GOTO, 5);

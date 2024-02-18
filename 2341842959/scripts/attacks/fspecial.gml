@@ -5,7 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 
 //Startup
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -22,7 +22,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_fspecial_dash"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 24);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 18);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
 
 //Dash ("Loop")
@@ -31,7 +31,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 24);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 18);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
 
 //Slash Animation

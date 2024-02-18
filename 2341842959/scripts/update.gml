@@ -1,7 +1,5 @@
 //update
 
-
-
 /*
 if (state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 1 && window_timer == 5){
     with (oPlayer){
@@ -14,21 +12,6 @@ if (state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 1 && window_tim
     }
 }
 */
-
-if (charge == 3){
-
-if (get_player_color(player) == 16){
-	set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
-	set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
-	set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
-}
-else {
-    set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("skunkburst"));
-    set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("skunkburst"));
-    set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("skunkburst"));
-}
-
-}
 
 //Resets the USpecial cooldown
 if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){

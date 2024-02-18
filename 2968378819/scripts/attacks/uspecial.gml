@@ -41,6 +41,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 70);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 11);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sound_get("HitLight"));

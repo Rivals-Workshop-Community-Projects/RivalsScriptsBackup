@@ -43,8 +43,8 @@ sprite_change_offset("dair", 60, 82);
 sprite_change_offset("fstrong", 40, 96);
 sprite_change_offset("ustrong", 58, 108);
 sprite_change_offset("dstrong", 65, 94);
-sprite_change_offset("nspecial", 63, 100);
-sprite_change_offset("fspecial", 39, 96);
+sprite_change_offset("nspecial", 39, 96);
+sprite_change_offset("fspecial", 63, 96);
 sprite_change_offset("uspecial", 61, 118);
 sprite_change_offset("dspecial", 58, 104);
 sprite_change_offset("dspecial_air", 59, 100);
@@ -52,4 +52,6 @@ sprite_change_offset("taunt", 38, 80);
 
 sprite_change_offset("plat_draw", 84, -1);
 
+sprite_change_offset("ewgf_vfx", 55, 108);
 sprite_change_offset("nspecial_proj", 150, 135);
+sprite_change_offset("nspecial_proj_rune", 86, 70);

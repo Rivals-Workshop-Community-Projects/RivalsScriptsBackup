@@ -34,47 +34,47 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 29 );
 
-// Blue Blur
-set_color_profile_slot( 1, 0, 49, 89, 211 ); //Black Fur
-set_color_profile_slot( 1, 1, 42, 77, 183 ); //Black Fur Shading
-set_color_profile_slot( 1, 2, 218, 38, 61 ); //Green Bracelet
-set_color_profile_slot( 1, 3, 255, 255, 255 ); //White Hair
-set_color_profile_slot( 1, 4, 211, 211, 211 ); //White Hair Shading
-set_color_profile_slot( 1, 5, 122, 90, 82 ); //Green Mask
-set_color_profile_slot( 1, 6, 255, 255, 255 ); //Brown Claw
-set_color_profile_slot( 1, 7, 233, 233, 233 ); //White Eye
+// Blue
+set_color_profile_slot( 1, 0, 62, 79, 92 ); //Black Fur
+set_color_profile_slot( 1, 1, 40, 50, 54 ); //Black Fur Shading
+set_color_profile_slot( 1, 2, 38, 98, 218 ); //Green Bracelet
+set_color_profile_slot( 1, 3, 117, 150, 255 ); //White Hair
+set_color_profile_slot( 1, 4, 115, 101, 214 ); //White Hair Shading
+set_color_profile_slot( 1, 5, 78, 140, 221 ); //Green Mask
+set_color_profile_slot( 1, 6, 255, 250, 115 ); //Brown Claw
+set_color_profile_slot( 1, 7, 193, 219, 233 ); //White Eye
 
-// Spriting Stars
-set_color_profile_slot( 2, 0, 194, 15, 36 ); //Black Fur
-set_color_profile_slot( 2, 1, 98, 23, 23 ); //Black Fur Shading
-set_color_profile_slot( 2, 2, 38, 33, 33 ); //Green Bracelet
-set_color_profile_slot( 2, 3, 79, 52, 42 ); //White Hair
-set_color_profile_slot( 2, 4, 53, 40, 35 ); //White Hair Shading
-set_color_profile_slot( 2, 5, 151, 37, 191 ); //Green Mask
-set_color_profile_slot( 2, 6, 224, 219, 219 ); //Brown Claw
-set_color_profile_slot( 2, 7, 233, 233, 233 ); //White Eye
+// Red
+set_color_profile_slot( 2, 0, 92, 62, 62 ); //Black Fur
+set_color_profile_slot( 2, 1, 54, 40, 42 ); //Black Fur Shading
+set_color_profile_slot( 2, 2, 218, 38, 38 ); //Green Bracelet
+set_color_profile_slot( 2, 3, 150, 32, 16 ); //White Hair
+set_color_profile_slot( 2, 4, 99, 11, 45 ); //White Hair Shading
+set_color_profile_slot( 2, 5, 221, 78, 83 ); //Green Mask
+set_color_profile_slot( 2, 6, 207, 207, 207 ); //Brown Claw
+set_color_profile_slot( 2, 7, 233, 189, 189 ); //White Eye
 
-// Is that a Dragon?
-set_color_profile_slot( 3, 0, 166, 184, 101 ); //Black Fur
-set_color_profile_slot( 3, 1, 128, 142, 78 ); //Black Fur Shading
-set_color_profile_slot( 3, 2, 235, 225, 189 ); //Green Bracelet
-set_color_profile_slot( 3, 3, 237, 223, 190 ); //White Hair
-set_color_profile_slot( 3, 4, 170, 160, 138 ); //White Hair Shading
-set_color_profile_slot( 3, 5, 245, 224, 114 ); //Green Mask
-set_color_profile_slot( 3, 6, 103, 84, 76 ); //Brown Claw
-set_color_profile_slot( 3, 7, 233, 233, 233 ); //White Eye
+// Green
+set_color_profile_slot( 3, 0, 62, 92, 76 ); //Black Fur
+set_color_profile_slot( 3, 1, 46, 54, 40 ); //Black Fur Shading
+set_color_profile_slot( 3, 2, 131, 218, 122 ); //Green Bracelet
+set_color_profile_slot( 3, 3, 41, 150, 16 ); //White Hair
+set_color_profile_slot( 3, 4, 11, 99, 58 ); //White Hair Shading
+set_color_profile_slot( 3, 5, 172, 221, 172 ); //Green Mask
+set_color_profile_slot( 3, 6, 194, 194, 68 ); //Brown Claw
+set_color_profile_slot( 3, 7, 187, 233, 163 ); //White Eye
 
-// Autumn Falls
-set_color_profile_slot( 4, 0, 57, 89, 95 ); //Black Fur
-set_color_profile_slot( 4, 1, 38, 58, 62 ); //Black Fur Shading
-set_color_profile_slot( 4, 2, 255, 182, 82 ); //Green Bracelet
+// BlackWhite
+set_color_profile_slot( 4, 0, 176, 176, 176 ); //Black Fur
+set_color_profile_slot( 4, 1, 120, 125, 140 ); //Black Fur Shading
+set_color_profile_slot( 4, 2, 100, 100, 120 ); //Green Bracelet
 set_color_profile_slot( 4, 3, 255, 255, 255 ); //White Hair
-set_color_profile_slot( 4, 4, 180, 198, 211 ); //White Hair Shading
-set_color_profile_slot( 4, 5, 255, 182, 82 ); //Green Mask
+set_color_profile_slot( 4, 4, 158, 163, 211 ); //White Hair Shading
+set_color_profile_slot( 4, 5, 53, 58, 74 ); //Green Mask
 set_color_profile_slot( 4, 6, 255, 255, 255 ); //Brown Claw
-set_color_profile_slot( 4, 7, 233, 233, 233 ); //White Eye
+set_color_profile_slot( 4, 7, 114, 120, 214 ); //White Eye
 
 // Pride
 set_color_profile_slot( 5, 0, 229, 104, 232 ); //Black Fur
@@ -126,7 +126,7 @@ set_color_profile_slot( 9, 5, 210, 57, 39 ); //Green Mask
 set_color_profile_slot( 9, 6, 225, 115, 44 ); //Brown Claw
 set_color_profile_slot( 9, 7, 233, 233, 233 ); //White Eye
 
-// Kindling Wrath
+// Kindling Wrath REMOVE
 set_color_profile_slot( 10, 0, 171, 106, 152 ); //Black Fur
 set_color_profile_slot( 10, 1, 102, 58, 94 ); //Black Fur Shading
 set_color_profile_slot( 10, 2, 255, 220, 66 ); //Green Bracelet
@@ -136,7 +136,7 @@ set_color_profile_slot( 10, 5, 135, 49, 49 ); //Green Mask
 set_color_profile_slot( 10, 6, 244, 212, 173 ); //Brown Claw
 set_color_profile_slot( 10, 7, 233, 233, 233 ); //White Eye
 
-// Cruising Serpent
+// Cruising Serpent REMOVE
 set_color_profile_slot( 11, 0, 246, 199, 47 ); //Black Fur
 set_color_profile_slot( 11, 1, 193, 129, 25 ); //Black Fur Shading
 set_color_profile_slot( 11, 2, 194, 47, 24 ); //Green Bracelet
@@ -216,7 +216,7 @@ set_color_profile_slot( 18, 5, 149, 53, 201 ); //Green Mask
 set_color_profile_slot( 18, 6, 255, 238, 190 ); //Brown Claw
 set_color_profile_slot( 18, 7, 233, 233, 233 ); //White Eye
 
-// Taokaka
+// Taokaka REMOVE
 set_color_profile_slot( 19, 0, 229, 175, 66 ); //Black Fur
 set_color_profile_slot( 19, 1, 155, 93, 38 ); //Black Fur Shading
 set_color_profile_slot( 19, 2, 168, 50, 13 ); //Green Bracelet
@@ -226,7 +226,7 @@ set_color_profile_slot( 19, 5, 31, 30, 29 ); //Green Mask
 set_color_profile_slot( 19, 6, 248, 245, 245 ); //Brown Claw
 set_color_profile_slot( 19, 7, 203, 2, 2 ); //White Eye
 
-// Sabretooth
+// Sabretooth REMOVE
 set_color_profile_slot( 20, 0, 94, 48, 31 ); //Black Fur
 set_color_profile_slot( 20, 1, 48, 27, 25 ); //Black Fur Shading
 set_color_profile_slot( 20, 2, 211, 133, 19 ); //Green Bracelet
@@ -236,7 +236,7 @@ set_color_profile_slot( 20, 5, 247, 246, 245 ); //Green Mask
 set_color_profile_slot( 20, 6, 66, 66, 56 ); //Brown Claw
 set_color_profile_slot( 20, 7, 233, 233, 233 ); //White Eye
 
-// Inosuke
+// Inosuke REMOVE
 set_color_profile_slot( 21, 0, 194, 165, 123 ); //Black Fur
 set_color_profile_slot( 21, 1, 120, 96, 79 ); //Black Fur Shading
 set_color_profile_slot( 21, 2, 55, 64, 163 ); //Green Bracelet
@@ -246,7 +246,7 @@ set_color_profile_slot( 21, 5, 226, 207, 173 ); //Green Mask
 set_color_profile_slot( 21, 6, 225, 226, 231 ); //Brown Claw
 set_color_profile_slot( 21, 7, 233, 233, 233 ); //White Eye
 
-// Great Ape
+// Great Ape MAYBE
 set_color_profile_slot( 22, 0, 62, 54, 50 ); //Black Fur
 set_color_profile_slot( 22, 1, 44, 40, 38 ); //Black Fur Shading
 set_color_profile_slot( 22, 2, 143, 138, 106 ); //Green Bracelet
@@ -256,7 +256,7 @@ set_color_profile_slot( 22, 5, 143, 138, 106 ); //Green Mask
 set_color_profile_slot( 22, 6, 77, 73, 70 ); //Brown Claw
 set_color_profile_slot( 22, 7, 205, 25, 20 ); //White Eye
 
-// Boo
+// Boo REMOVE
 set_color_profile_slot( 23, 0, 242, 240, 238 ); //Black Fur
 set_color_profile_slot( 23, 1, 172, 166, 160 ); //Black Fur Shading
 set_color_profile_slot( 23, 2, 156, 153, 150 ); //Green Bracelet
@@ -266,7 +266,7 @@ set_color_profile_slot( 23, 5, 254, 246, 239 ); //Green Mask
 set_color_profile_slot( 23, 6, 44, 42, 40 ); //Brown Claw
 set_color_profile_slot( 23, 7, 20, 49, 205 ); //White Eye
 
-// Boney
+// Boney REMOVE
 set_color_profile_slot( 24, 0, 135, 88, 62 ); //Black Fur
 set_color_profile_slot( 24, 1, 94, 50, 42 ); //Black Fur Shading
 set_color_profile_slot( 24, 2, 30, 164, 19 ); //Green Bracelet
@@ -276,7 +276,7 @@ set_color_profile_slot( 24, 5, 246, 31, 107 ); //Green Mask
 set_color_profile_slot( 24, 6, 42, 44, 42 ); //Brown Claw
 set_color_profile_slot( 24, 7, 233, 233, 233 ); //White Eye
 
-// Olympia
+// Olympia REMOVE
 set_color_profile_slot( 25, 0, 154, 109, 80 ); //Black Fur
 set_color_profile_slot( 25, 1, 92, 62, 53 ); //Black Fur Shading
 set_color_profile_slot( 25, 2, 218, 63, 188 ); //Green Bracelet
@@ -295,6 +295,26 @@ set_color_profile_slot( 26, 4, 155, 160, 163 ); //White Hair Shading
 set_color_profile_slot( 26, 5, 198, 180, 136 ); //Green Mask
 set_color_profile_slot( 26, 6, 223, 227, 229 ); //Brown Claw
 set_color_profile_slot( 26, 7, 40, 165, 227 ); //White Eye
+
+// Camilla
+set_color_profile_slot( 27, 0, 255, 149, 74 ); //Black Fur
+set_color_profile_slot( 27, 1, 166, 45, 0 ); //Black Fur Shading
+set_color_profile_slot( 27, 2, 49, 78, 158 ); //Green Bracelet
+set_color_profile_slot( 27, 3, 89, 203, 255 ); //White Hair
+set_color_profile_slot( 27, 4, 23, 93, 255 ); //White Hair Shading
+set_color_profile_slot( 27, 5, 0, 26, 110 ); //Green Mask
+set_color_profile_slot( 27, 6, 33, 50, 82 ); //Brown Claw
+set_color_profile_slot( 27, 7, 27, 240, 247 ); //White Eye
+
+// Sweet
+set_color_profile_slot( 28, 0, 130, 203, 255 ); //Black Fur
+set_color_profile_slot( 28, 1, 89, 108, 255 ); //Black Fur Shading
+set_color_profile_slot( 28, 2, 255, 255, 133 ); //Green Bracelet
+set_color_profile_slot( 28, 3, 232, 255, 148 ); //White Hair
+set_color_profile_slot( 28, 4, 255, 167, 130 ); //White Hair Shading
+set_color_profile_slot( 28, 5, 237, 246, 255 ); //Green Mask
+set_color_profile_slot( 28, 6, 255, 255, 255 ); //Brown Claw
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //White Eye
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

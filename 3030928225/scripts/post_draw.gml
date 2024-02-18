@@ -21,57 +21,59 @@ if (special_charge >= special_full_charge_time) {
 }
 draw_indicator_arrow = false;
 indicator_arrow_index = 3;
-switch (attack) {
-	case AT_FSTRONG :
-		if (window == fstrong_charging_window) || (window == fstrong_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 1;
-		}
-		break;
-	case AT_USTRONG :
-		if (window == ustrong_charging_window) || (window == ustrong_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 0;
-		}
-		break;
-	case AT_DSTRONG :
-		if (window == dstrong_charging_window) || (window == dstrong_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 2;
-		}
-		break;
-	case AT_NSPECIAL :
-		if (window == nspecial_charging_window) || (window == nspecial_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 3;
-		}
-		break;
-	case AT_NSPECIAL_AIR :
-		if (window == nspecial_air_charging_window) || (window == nspecial_air_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 3;
-		}
-		break;
-	case AT_FSPECIAL :
-		if (window == fspecial_charging_window) || (window == fspecial_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 1;
-		}
-		break;
-	case AT_DSPECIAL :
-		if (window == dspecial_charging_window) || (window == dspecial_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 2;
-		}
-		break;
-	case AT_USPECIAL_GROUND :
-		if (window == uspecial_charging_window) || (window == uspecial_bonus_charging_window) {
-			draw_indicator_arrow = true;
-			indicator_arrow_index = 0;
-		}
-		break;
-	default :
-		break;
+if (is_attacking) {
+	switch (attack) {
+		case AT_FSTRONG :
+			if (window == fstrong_charging_window) || (window == fstrong_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 1;
+			}
+			break;
+		case AT_USTRONG :
+			if (window == ustrong_charging_window) || (window == ustrong_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 0;
+			}
+			break;
+		case AT_DSTRONG :
+			if (window == dstrong_charging_window) || (window == dstrong_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 2;
+			}
+			break;
+		case AT_NSPECIAL :
+			if (window == nspecial_charging_window) || (window == nspecial_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 3;
+			}
+			break;
+		case AT_NSPECIAL_AIR :
+			if (window == nspecial_air_charging_window) || (window == nspecial_air_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 3;
+			}
+			break;
+		case AT_FSPECIAL :
+			if (window == fspecial_charging_window) || (window == fspecial_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 1;
+			}
+			break;
+		case AT_DSPECIAL :
+			if (window == dspecial_charging_window) || (window == dspecial_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 2;
+			}
+			break;
+		case AT_USPECIAL_GROUND :
+			if (window == uspecial_charging_window) || (window == uspecial_bonus_charging_window) {
+				draw_indicator_arrow = true;
+				indicator_arrow_index = 0;
+			}
+			break;
+		default :
+			break;
+	}
 }
 if (draw_indicator_arrow) {
     draw_sprite_ext(sprite_get("indicator_arrow"),
@@ -228,10 +230,10 @@ if (get_match_setting(SET_RUNES))
     var dfg; //fg_sprite value
     var dust_color = 0;
     var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
-var angle; if (argument_count > 4) angle = argument[4]; else angle = 0;
-var win; if (argument_count > 5) win = argument[5]; else win = -10;
-var win_time; if (argument_count > 6) win_time = argument[6]; else win_time = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
+var win = argument_count > 5 ? argument[5] : -10;
+var win_time = argument_count > 6 ? argument[6] : 0;
 
     if (!hitpause && (win > 0 && win == window && win_time == window_timer || win == -10) ) //spawns it whenever we want for 1 frame
     {

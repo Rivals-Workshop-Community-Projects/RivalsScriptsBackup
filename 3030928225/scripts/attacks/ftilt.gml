@@ -102,7 +102,7 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_hit4"));
-set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[1]);
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);

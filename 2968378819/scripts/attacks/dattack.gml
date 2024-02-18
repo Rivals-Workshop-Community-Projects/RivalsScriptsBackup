@@ -1,11 +1,15 @@
+set_attack_value(AT_DATTACK, AG_CATEGORY, has_rune("C")? 2:0);
 set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+set_attack_value(AT_DATTACK, AG_USES_CUSTOM_GRAVITY, has_rune("C")? 1:0);
 
 //Startup
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 2);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_VSPEED, has_rune("C")? -2.5:0);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GRAVITY, has_rune("C")? 0.4:1);
 
 //First Spin
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 10);
@@ -15,6 +19,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GRAVITY, has_rune("C")? 0:1);
 
 //Second Spin
 set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 9);
@@ -24,6 +29,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GRAVITY, has_rune("C")? 0.1:1);
 
 //Endlag
 set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 15);
@@ -31,6 +37,7 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GRAVITY, has_rune("C")? 0.6:1);
 
 set_num_hitboxes(AT_DATTACK, 2);
 

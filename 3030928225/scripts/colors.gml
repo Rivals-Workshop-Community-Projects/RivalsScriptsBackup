@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 76, 71 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 30 );
 
 // Skullgirl
 set_color_profile_slot( 1, 0, 241, 234, 210 ); //hair
@@ -342,6 +342,16 @@ set_color_profile_slot( 28, 4, 131, 61, 168 ); //dress
 set_color_profile_slot( 28, 5, 255, 0, 161 ); //red
 set_color_profile_slot( 28, 6, 218, 140, 237 ); //white
 set_color_profile_slot( 28, 7, 175, 138, 255 ); //fire
+
+// Waga Bobaga
+set_color_profile_slot( 29, 0, 44, 46, 46 ); //hair
+set_color_profile_slot( 29, 1, 197, 103, 234 ); //lev 
+set_color_profile_slot( 29, 2, 224, 222, 237 ); //skirt
+set_color_profile_slot( 29, 3, 248, 242, 252 ); //skin
+set_color_profile_slot( 29, 4, 105, 105, 105 ); //dress
+set_color_profile_slot( 29, 5, 102, 102, 102 ); //red
+set_color_profile_slot( 29, 6, 203, 143, 255 ); //white
+set_color_profile_slot( 29, 7, 243, 192, 255 ); //fire
 //shading data: [1, 1, 1, 0.5, 1, 1, 1, 1]
 
 

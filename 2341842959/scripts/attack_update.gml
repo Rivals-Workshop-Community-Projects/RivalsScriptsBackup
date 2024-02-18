@@ -252,7 +252,7 @@ if (attack == AT_DAIR){
 		destroy_hitboxes();
 		has_hit = false;
 	}
-	if (window == 7 && !attack_down){
+	if ((window == 7 || (window == 6 && window_timer == 18)) && !attack_down){
 		window = 4;
 		window_timer = 0;
 		destroy_hitboxes();
@@ -324,10 +324,10 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_NSPECIAL){
     levei_parry = false;
     if (window == 2 && window_timer == 4){
-        instance_create(x,y,"obj_article1"); 
+        instance_create(x, y, "obj_article1"); 
     }
     if (window == 3 && window_timer == 3){
-        instance_create(x,y,"obj_article1"); 
+        instance_create(x, y, "obj_article1"); 
     }
     if (window == 1 && window_timer == 1){
         tokens += 1;
@@ -345,7 +345,7 @@ if (attack == AT_DSPECIAL && window == 1){
        explosion_cont = 0; 
     }
     if (window_timer == 5){
-       spawn_hit_fx( x, y, claw_effect); 
+       spawn_hit_fx(x, y, claw_effect); 
     }
 }
 
@@ -354,21 +354,14 @@ if (attack == AT_USPECIAL){
 //    tokens = 3.1;
 	can_fast_fall = false;
 	can_wall_jump = true;
-	if (window == 1){
-		set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("fart"));
-    	set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("fart"));
-    	set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("fart"));
-	}
 
 	if (window < 6){
 		
-	if (window == 3 && window_timer == 1){
-		spawn_hit_fx( x, y-25, 116 ); 
-	}
+		if (window == 3 && window_timer == 1){
+			spawn_hit_fx(x, y - 25, 116 ); 
+		}
 	
 	}
-
-	
 }
 
 if (attack == AT_FSPECIAL){
@@ -379,6 +372,8 @@ if (attack == AT_FSPECIAL){
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5*fspecial_cloud);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9*fspecial_cloud);
 	if (window == 1){
+		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 		if (free){
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
 		}
@@ -414,6 +409,8 @@ if (attack == AT_FSPECIAL){
     }
 	if (has_hit){
 		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 0);
+		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 	}
 }
 

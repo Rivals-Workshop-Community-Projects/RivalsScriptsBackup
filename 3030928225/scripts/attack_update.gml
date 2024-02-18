@@ -1009,6 +1009,13 @@ switch (attack) {
 		if ((window == nspecial_air_windup_window)
 			&& (window_timer == 1))
 		{
+			// Stalling is weaker if used multiple times in airtime
+			if (nspecial_air_stall_available) {
+				vsp = -2;
+				nspecial_air_stall_available = false;
+			} else {
+					vsp = 1;
+			}
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
 			if (special_charge >= special_full_charge_time) {
@@ -1352,6 +1359,7 @@ switch (attack) {
 		{
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
+			dspecial_charge_time = 0;
 			begin_reeling = false;
 			begin_return = false;
 			//tail_active = false;
@@ -1377,6 +1385,7 @@ switch (attack) {
 			&& (window == dspecial_charging_window))
 		{
 			special_charge++;
+			dspecial_charge_time = special_charge;
 		}
 		
 		fully_charged = (special_charge == special_full_charge_time);
@@ -1588,8 +1597,10 @@ switch (attack) {
     			white_flash_cooldown = charge_flash_cooldown_max;
     			sound_play(asset_get("sfx_burnend"));
     		}
-	        can_jump = true
-	        can_shield = true
+    		if (!was_parried) {
+	        	can_jump = true
+	        	can_shield = true
+    		}
         }
 		break;
 	case AT_USPECIAL :
@@ -1797,13 +1808,20 @@ if (attack == AT_FSPECIAL) {
 	}
 }
 
-// Section just for fspecial projectile/grab management
+// Section just for dspecial article management
 if (attack == AT_DSPECIAL) {
 	can_move = false;
 	if ((window == dspecial_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		// Based on charge time, find where we would like to place dspecial
+		//print_debug("Current charge percent = " + string(floor(100*(dspecial_charge_time / special_full_charge_time))) + "%");
+		var picked_spot = floor(max_space_between_parts + (max_space_between_parts * 4 * (dspecial_charge_time / special_full_charge_time))); //((1 - (current_charge_time / max_charge_time)) * 5);
+		//if (picked_spot < 0) {
+		//	picked_spot = max_space_between_parts;
+		//}
 		// Find the best place to put the first segment
 		spot_found = false;
-		space_between_parts = max_space_between_parts;
+		space_between_parts = picked_spot;
+		//space_between_parts = max_space_between_parts;
 		num_placement_options = floor(space_between_parts / 10);
 		placement_option = num_placement_options;
 		dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");

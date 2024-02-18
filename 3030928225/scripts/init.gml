@@ -388,6 +388,7 @@ stance_frames_length = 5;
 // Nspecial
 super_armor_available = false;
 nspecial_use_air = false;
+nspecial_air_stall_available = true;
 // Fspecial
 charge_signalled = false;
 grab_hitbox = noone;
@@ -431,6 +432,7 @@ placement_option = num_placement_options;
 spot_found = false;
 begin_reeling = false;
 begin_return = false;
+dspecial_charge_time = 0;
 // Dspecial air
 non_grab_hitbox = noone;
 dspecial_caught_one = false;

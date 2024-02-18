@@ -14,7 +14,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 10);
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -36,7 +36,7 @@ set_num_hitboxes(atk, 2);
 hitbox_num = 2;  
 set_hitbox_value(atk, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, 1, HG_WINDOW, 2);
-set_hitbox_value(atk, 1, HG_LIFETIME, 4);
+set_hitbox_value(atk, 1, HG_LIFETIME, 3);
 set_hitbox_value(atk, 1, HG_HITBOX_X, -60);
 set_hitbox_value(atk, 1, HG_HITBOX_Y, -56);
 set_hitbox_value(atk, 1, HG_WIDTH, 80);
@@ -55,7 +55,7 @@ set_hitbox_value(atk, 1, HG_HIT_SFX, sound_get("sfx_hit4"));
 hitbox_num ++; //spike
 set_hitbox_value(atk, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, 2, HG_WINDOW, 2);
-set_hitbox_value(atk, 2, HG_LIFETIME, 4);
+set_hitbox_value(atk, 2, HG_LIFETIME, 3);
 set_hitbox_value(atk, 2, HG_HITBOX_X, -60);
 set_hitbox_value(atk, 2, HG_HITBOX_Y, 5);
 set_hitbox_value(atk, 2, HG_WIDTH, 50);
