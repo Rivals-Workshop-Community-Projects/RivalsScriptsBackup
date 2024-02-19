@@ -15,7 +15,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) && my_hitboxID.type == 1{
         old_hsp = -2 * spr_dir;
         old_vsp = -8;
     }
-}  
+}
     
 //if (attack == AT_DATTACK){
 //    window_timer = 1;

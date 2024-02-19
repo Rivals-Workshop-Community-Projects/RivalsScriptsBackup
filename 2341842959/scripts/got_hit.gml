@@ -1,1 +1,1 @@
-with obj_article1 if player_id = other spawned_by_ftilt = 1;
+with obj_article1 if player_id == other && !has_rune("K") spawned_by_ftilt = 1;

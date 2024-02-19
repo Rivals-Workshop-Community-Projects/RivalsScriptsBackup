@@ -13,10 +13,10 @@ miiverse_post = sprite_get("miiverse");
 
 //fx
 sword = hit_fx_create( sprite_get( "hfx_sword" ), 30 );
-bigsmoke = hit_fx_create( sprite_get( "hfx_bigsmoke" ), 50 );
-midsmoke = hit_fx_create( sprite_get( "hfx_midsmoke" ), 50 );
+bigsmoke = hit_fx_create( sprite_get( "hfx_bigsmoke" ), 30 );
+midsmoke = hit_fx_create( sprite_get( "hfx_midsmoke" ), 30 );
 smokeball = hit_fx_create( sprite_get( "hfx_smokeball" ), 15 );
-nothing = hit_fx_create( sprite_get( "nothing" ), 30 );
+nothing = hit_fx_create( sprite_get( "nothing" ), 25 );
 hexspark_alt1 = hit_fx_create( sprite_get( "fx_hex_alt1" ), 15 );
 hexspark_alt2 = hit_fx_create( sprite_get( "fx_hex_alt2" ), 15 );
 set_hit_particle_sprite( 1, sprite_get( "particle_1" ) );

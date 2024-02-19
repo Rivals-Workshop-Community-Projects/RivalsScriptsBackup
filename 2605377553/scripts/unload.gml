@@ -100,7 +100,7 @@ if (!mal_handled_victory_quote)
         case "2802423078": // Kaiero
         case "2456124960": // Nate
         case "2348671555": // Nate
-            quote = "Was that the power of a Curse? But they weren't from Ambrosia..."; 
+            quote = "Was that the power of a Hex Gift? But they weren't from Ambrosia..."; 
             break;
             
         case "2396061657": // Callie
@@ -136,14 +136,9 @@ if (!mal_handled_victory_quote)
         case "1894194148": //AR
             quote = "Was that girl even real? Wow, my head hurts."
             break;
-        
-        case "2105839293": // Yuuto
-        case "2626409326":
-            quote = "I know I just beat you up but you need a therapist or something?";
-            break;
             
         case "2802300675": // Valley
-            quote = "You feel like someone I would NEVER get along with. Cool smoke."; 
+            quote = "You seem like someone I would NEVER get along with. Cool smoke."; 
             break;
             
         case "2843521167": // Pastelle
@@ -163,15 +158,15 @@ if (!mal_handled_victory_quote)
         break;
         
         case "2601775097": //Bar Reygard
-        quote = "So, angels exist? Eh, I've seen stranger things. Probably."
+        quote = "So, angels exist? Eh, I've seen odder things. Probably."
         break;
         
         case "2254931693": //Bonby
-        quote = "Best friends with a frog... I guess there's companionship for everyone."
+        quote = "Best friends with a frog... I guess there's companionship for everyone!"
         break;
         
         case "2867341866": //Aur (honorary human)
-        quote = "Curse of Gold? Seems there's things like that in any world."
+        quote = "Greed lead to a curse? Seems there's things like that in any world."
         break;
         
         case "2415092274": //Ao (honorary human)
@@ -180,6 +175,18 @@ if (!mal_handled_victory_quote)
         
         case "2817605804": //Jerma (honorary human)
         quote = "That was close, that guy was like if you compiled all serial killers into one dude."
+        break;
+        
+        case "3079776883": //Kumaki
+        quote = "Upchucking your entire bloodstream with a farming tool only gets you so far. Also ew."
+        break;
+        
+        case "3039085407": //Larry
+        quote = "All this old grease smell is AWFUL. How much chicken is in that crockpot anyways??"
+        break;
+        
+        case "3115049167": //Saelukune
+        quote = "They were so carefree, but I could tell some sort of melancholy... I'm taking that hat."
         break;
 
         default: break;
@@ -202,6 +209,8 @@ return quote
         case "2823291685": // SSL Mal
         case "2802300675": // Valley
         case "2817605804": //Jerma (honorary human)
+        case "3079776883": //Kumaki
+        case "3039085407": //Larry
             icon = 0;
             break;
             
@@ -209,6 +218,7 @@ return quote
         case "2802423078": // Kaiero
         case "2456124960": // Nate
         case "2348671555": // Nate
+        case "3115049167": //Saelukune
             icon = 1;
             break;
         
@@ -226,8 +236,6 @@ return quote
         //anxious
         case "2885762133": // Brook
         case "2396061657": // Callie
-        case "2105839293": // Yuuto
-        case "2626409326": // Yuuto
         case "2843521167": // Pastelle
         case "2965700442": // Humanthem
             icon = 3;

@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 28; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 29; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(71, 71, 71) // "color preview square" color. can be any color!
@@ -100,11 +100,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[9,1] = "Keeper of Memory"
     ce[9,2] = "Palette based on the missing but not forgotten Draziw."
     ce[10,0] = make_color_rgb(171, 106, 152)
-    ce[10,1] = "Kindling Wrath"
-    ce[10,2] = "Palette based on the Workshop OG: Mollo."
+    ce[10,1] = "Skunky Skylander"
+    ce[10,2] = "Palette based on Stinkbomb from Skylanders."
     ce[11,0] = make_color_rgb(246, 199, 47)
-    ce[11,1] = "Cruising Serpent"
-    ce[11,2] = "Palette based on the wacky car fighter Venom SST."
+    ce[11,1] = "Shoe Shiner"
+    ce[11,2] = "Palette based on Kicks from Animal Crossing."
     ce[12,0] = make_color_rgb(170, 149, 58)
     ce[12,1] = "Exiled Flame"
     ce[12,2] = "Palette based on Rivals very own Forsburn."
@@ -127,26 +127,26 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[18,1] = "Night Warrior"
     ce[18,2] = "Alt based of Jon Talbain from Darkstalkers."
     ce[19,0] = make_color_rgb(229, 175, 66)
-    ce[19,1] = "Innocence"
-    ce[19,2] = "Alt based of Taokaka from BlazBlue."
+    ce[19,1] = "Prehistoric Stench"
+    ce[19,2] = "Alt based on Kunka from the Gon series."
     ce[20,0] = make_color_rgb( 94, 48, 31)
-    ce[20,1] = "Berserker Claw"
-    ce[20,2] = "Alt based of Sabretooth from Marvel (vs Capcom)."
+    ce[20,1] = "Rough and Tumble"
+    ce[20,2] = "Alt based on Rough from the Sonic IDW comics."
     ce[21,0] = make_color_rgb(194, 165, 123)
-    ce[21,1] = "Ninth Fang"
-    ce[21,2] = "Alt based of Inosuke from Demon Slayer."
+    ce[21,1] = "In the Dark"
+    ce[21,2] = "(Original Alt)"
     ce[22,0] = make_color_rgb(62, 54, 50 )
-    ce[22,1] = "Full Moon"
-    ce[22,2] = "Alt based of Great Ape from Dragon Ball Z."
+    ce[22,1] = "Otherworld"
+    ce[22,2] = "???"
     ce[23,0] = make_color_rgb(242, 240, 238)
-    ce[23,1] = "Spooky"
-    ce[23,2] = "Alt based on the Boo enemies from Super Mario."
+    ce[23,1] = "STINKER.EXE"
+    ce[23,2] = "I SEE YOU"
     ce[24,0] = make_color_rgb(135, 88, 62)
-    ce[24,1] = "Tazmily"
-    ce[24,2] = "Alt based of Boney from Mother 3."
+    ce[24,1] = "Acid Doggo"
+    ce[24,2] = "Alt based on Acrid from Risk of Rain."
     ce[25,0] = make_color_rgb(154, 109, 80)
-    ce[25,1] = "Amethyst Fist"
-    ce[25,2] = "Alt based of the Workshop original Olympia."
+    ce[25,1] = "Prehistoric Nuisance"
+    ce[25,2] = "Alt based on Gon from the Gon series."
     ce[26,0] = make_color_rgb(71, 71, 71 )
     ce[26,1] = "Stardust"
     ce[26,2] = "Alt based of Iggy from Jojo Bizarre Adventures"
@@ -156,6 +156,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[28,0] = make_color_rgb(71, 71, 71 )
     ce[28,1] = "Sweet"
     ce[28,2] = "OC Palette (MatchesYashi)"
+    ce[29,0] = make_color_rgb(71, 71, 71 )
+    ce[29,1] = "Rat Thief"
+    ce[29,2] = "Alt based on Daroach from the Kirby series."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

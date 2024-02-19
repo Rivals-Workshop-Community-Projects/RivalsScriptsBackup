@@ -39,7 +39,7 @@ if (winner == player /* && uhc_batteries */)
                     mal_quote_current_pos_x, quote_pos_y);
         draw_sprite_ext(sprite_get("stockicon"), victoryicon_subimg, 
                     mal_quote_current_pos_x + 46, quote_pos_y + 10, 1.5, 1.5, 0, c_white, 1);
-        draw_win_quote(mal_quote_current_pos_x+135, quote_pos_y+15, 
+        draw_win_quote(mal_quote_current_pos_x+135, quote_pos_y+6, 
                         mal_victory_quote);
     }
 }

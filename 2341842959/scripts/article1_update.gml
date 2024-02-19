@@ -97,7 +97,7 @@ if (state == 0){
 
 //State 1: Idle
 if (state == 1){
-	if (state_timer <= 60 && !spawned_by_ftilt){
+	if ((state_timer <= 60 && !has_rune("K")) || state_timer <= 120) && !spawned_by_ftilt{
 		sprite_index = sprite_get("cloud_inv");
 	}
 	else {
@@ -106,6 +106,15 @@ if (state == 1){
 	image_index += .1;	
     hsp = 0;
 	vsp = 0;
+	
+	if has_rune("O"){
+		with oPlayer{
+			if url != "2341842959" && place_meeting(x, y, other) && poison_exposure_frame != get_gameplay_time(){
+				poison_exposure += 2;
+				poison_exposure_frame = get_gameplay_time();
+			}
+		}
+	}
 }
 
 //State 2: Blow up
@@ -114,7 +123,7 @@ if (state == 2){
 	image_index += .15;	
     hsp = 0;
 	vsp = 0;
-	if (state_timer == 9){
+	if state_timer == 9 || (has_rune("J") && state_timer == 1){
 		player_id.explosion_cont += 3;
 		sound_play(asset_get("sfx_ell_fist_explode"));
 		create_hitbox( AT_DSPECIAL, 2, x, y-30);

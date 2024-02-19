@@ -47,7 +47,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, 0);
 
 //Endlag
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, has_rune("E")? 1:7);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 10);

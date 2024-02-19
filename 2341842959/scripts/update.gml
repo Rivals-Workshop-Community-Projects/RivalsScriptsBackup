@@ -22,6 +22,11 @@ if (state == PS_DOUBLE_JUMP && state_timer == 1){
     gas_djumpx = x;
     gas_djumpy = y;
     gas_djump = 1;
+    
+    if has_rune("L") && !hitpause{
+		var g = instance_create(x, y + 20,"obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
 }
 
 if (gas_djump == 1){
@@ -109,7 +114,7 @@ if (explosion_cont > 0){
     }
 }
 
-if (tokens > 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_PRATLAND){
+if tokens > 0 && (!free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_PRATLAND || has_rune("M")){
     tokens -= .025;
 }
 
@@ -121,6 +126,22 @@ if (tokens > 2){
 }
 if (tokens <= 2){
     move_cooldown[AT_NSPECIAL] = 0;
+}
+
+if has_rune("O"){
+	with oPlayer{
+		poison_exposure = clamp(poison_exposure, 0, 60);
+		if poison_exposure >= 60 && state != PS_PARRY && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_AIR_DODGE && state != PS_TECH_GROUND && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH{
+			if state != PS_HITSTUN{
+				set_state(PS_HITSTUN);
+				hitstop = 3;
+				hitstun_full = 5;
+				hitstun = 5;
+			}
+			take_damage(player, other, 2);
+			poison_exposure = 30;
+		}
+	}
 }
 
 if (introTimer2 < 2) {

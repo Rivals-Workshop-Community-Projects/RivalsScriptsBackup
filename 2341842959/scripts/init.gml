@@ -137,7 +137,7 @@ explosion_cont = 0;
 levei_parry = false;
 
 uspecial_rot = 0;
-charge = 0;
+uspecial_charge = 0;
 
 fspecial_cloud = 1;
 
@@ -149,6 +149,9 @@ ring_y = 0;
 
 tokens = 0;
 tokens_hud = 0;
+
+poison_exposure = 0;
+poison_exposure_frame = get_gameplay_time();
 
 cor_dir = 1;
 corR = 255;

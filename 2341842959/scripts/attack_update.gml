@@ -59,12 +59,16 @@ if (attack == AT_FTILT){
 		levei_parry = false;
 	}
 	if (window == 2 && window_timer == 3 && !hitpause){
-		var g = instance_create(x+80*spr_dir,y,"obj_article1");
+		var g = instance_create(x + (80 * spr_dir), y, "obj_article1");
 		g.spawned_by_ftilt = 1;
 	}
 }
 
 if (attack == AT_DTILT){
+	if has_rune("L") && (window == 2 && window_timer == 1 && !hitpause){
+		var g = instance_create(x, y + 10,"obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
 	if (has_hit && window == 2){
 		window = 3;
 		window_timer = 2;
@@ -93,23 +97,26 @@ if (attack == AT_DTILT && window > 1){
 }
 
 //UStrong Visual Effect
-if (attack == AT_USTRONG && window == 1){
-    gas_ustrong_cont = 0;
-    var gas_used = false;
-    if gas_used == false
-    {
-        gas_used = true;
-        if (spr_dir == 1){
-                gas_ustrong_posx = x; 
-            }
-        if (spr_dir == -1){
-                gas_ustrong_posx = x-20; 
-            }
-    }
-    gas_ustrong_posy = y;
-}
-
-if (attack == AT_USTRONG && window > 2){
+if attack == AT_USTRONG{
+	if window == 1{
+    	gas_ustrong_cont = 0;
+    	var gas_used = false;
+    	if gas_used == false
+    	{
+        	gas_used = true;
+        	if (spr_dir == 1){
+        	        gas_ustrong_posx = x; 
+        	    }
+        	if (spr_dir == -1){
+        	        gas_ustrong_posx = x-20; 
+        	    }
+    	}
+    	gas_ustrong_posy = y;
+	}
+    if has_rune("L") && (window == 3 && window_timer == 3 && !hitpause){
+		var g = instance_create(x + (6 * spr_dir), y - 76,"obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
     if (window == 3 && window_timer == 1){
         if (spr_dir == 1){
             gas_ustrong_posx = x; 
@@ -144,6 +151,10 @@ if (attack == AT_FAIR && window > 1){
         gas_fair_posy = y;
         gas_fair_cont = 0.01;
     }
+    if has_rune("L") && (window == 2 && window_timer == 1 && !hitpause){
+		var g = instance_create(x + (56 * spr_dir), y - 24,"obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
 }
 
 //DAir Visual Effect
@@ -186,6 +197,10 @@ if (attack == AT_BAIR && window > 1){
         gas_bair_posy = y;
         gas_bair_cont = 0.01;
     }
+    if has_rune("L") && (window == 2 && window_timer == 1 && !hitpause){
+		var g = instance_create(x + (-36 * spr_dir), y, "obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
 }
 
 //NSpecial 2 Visual Effect
@@ -212,6 +227,16 @@ if (attack == AT_USPECIAL && window > 5){
         gas_nspecial_cont += .01;  
     }
     
+    if has_rune("L") && (window == 6 && window_timer == 1 && !hitpause){
+		var g = instance_create(x, y + 10, "obj_article1");
+		g.spawned_by_ftilt = 1;
+		var g = instance_create(x + 60, y + 10, "obj_article1");
+		g.spawned_by_ftilt = 1;
+		var g = instance_create(x - 60, y + 10, "obj_article1");
+		g.spawned_by_ftilt = 1;
+		var g = instance_create(x, y - 50, "obj_article1");
+		g.spawned_by_ftilt = 1;
+	}
 }
 
 
@@ -235,18 +260,50 @@ if (attack == AT_DATTACK && window == 3 && !hitpause && (!attack_down || dattack
 */
 
 if (attack == AT_DATTACK){
-    if (window == 3 && window_timer == 12 && attack_down){
-        window_timer = 0;
+    if window == 3{
+    	if window_timer == 12 && attack_down{
+        	window_timer = 0;
+    	}
+    	if has_rune("A") && right_down - left_down != 0{
+    		spr_dir = right_down - left_down;
+    	}
+    	if has_rune("G") && special_pressed{
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		attack_end();
+    		destroy_hitboxes();
+    		sound_play(sound_get("fart"));
+    		gas_direction();
+    		gas_bair_posx = x;
+        	gas_bair_posy = y;
+        	gas_bair_cont = 0.01;
+    		window = 2;
+    		window_timer = 0;
+    		create_hitbox(AT_BAIR, 2, x + (-32 * spr_dir), y - 28);
+    		if has_rune("L") && !hitpause{
+				var g = instance_create(x + (-36 * spr_dir), y,"obj_article1");
+				g.spawned_by_ftilt = 1;
+			}
+    	}
     }
 }
 
+if attack == AT_NAIR{
+	if has_rune("B") && window == 2 && window_timer == 15 && attack_down{
+		attack_end();
+		window_timer = 0;
+	}
+}
+
 if (attack == AT_DAIR){
+	if has_rune("C"){
+		set_attack_value(AT_DAIR, AG_CATEGORY, 2);
+	}
 	if (window == 3 && window_timer >= 12 && !attack_down){
 		window = 4;
 		window_timer = 0;
 		destroy_hitboxes();
 	}
-	if (window < 4 && has_hit){
+	if (window < 4 && (has_hit || has_rune("C") && !free)){
 		window = 5;
 		window_timer = 0;
 		destroy_hitboxes();
@@ -257,11 +314,27 @@ if (attack == AT_DAIR){
 		window_timer = 0;
 		destroy_hitboxes();
 	}
-	if (window == 7 && has_hit){
+	if (window == 7 && (has_hit || has_rune("C") && !free)){
 		window = 5;
 		window_timer = 0;
 		destroy_hitboxes();
 		has_hit = false;
+	}
+}
+
+if attack == AT_UAIR{
+	if has_rune("D") && window == 2 && state_timer >= 20{
+		if attack_down{
+			vsp += -0.3;
+			if window_timer == 12{
+				attack_end();
+				window_timer = 0;
+			}
+		}
+		else{
+			window = 3;
+			window_timer = 0;
+		}
 	}
 }
 
@@ -355,8 +428,32 @@ if (attack == AT_USPECIAL){
 	can_fast_fall = false;
 	can_wall_jump = true;
 
+	if has_rune("F") && window <= 5{
+		super_armor = 1;
+	}
+	else{
+		super_armor = 0;
+	}
+	
+	if has_rune("H"){
+		if window == 1{
+			uspecial_charge = 0;
+		}
+		if window == 2 && window_timer == 30 && special_down && tokens < 3{
+			window_timer--;
+			if (state_timer - 45) % 15 == 0{
+				uspecial_charge += 1;
+				tokens += 1;
+				sound_play(asset_get("sfx_frog_dspecial_swallow"), false, false, 1, 1 + (uspecial_charge / 2));
+			}
+		}
+		set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, -12 + (uspecial_charge * -2));
+		set_hitbox_value(AT_USPECIAL, 7, HG_DAMAGE, 15 + (uspecial_charge * 3));
+		set_hitbox_value(AT_USPECIAL, 7, HG_BASE_KNOCKBACK, 15 + uspecial_charge);
+		set_hitbox_value(AT_USPECIAL, 7, HG_KNOCKBACK_SCALING, .7 + (uspecial_charge * 0.1));
+	}
+
 	if (window < 6){
-		
 		if (window == 3 && window_timer == 1){
 			spawn_hit_fx(x, y - 25, 116 ); 
 		}
@@ -374,7 +471,7 @@ if (attack == AT_FSPECIAL){
 	if (window == 1){
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
 		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
-		if (free){
+		if (free) && !has_rune("E"){
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
 		}
 		else {

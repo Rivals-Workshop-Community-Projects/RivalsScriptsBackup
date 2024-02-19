@@ -8,7 +8,7 @@ switch(attack)
     	break;
     	
     case AT_UTILT:
-    	if (window == 1 && get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH)-1 )
+    	if (window == 2 && window_timer == 1 && get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH)-1 )
     		spawn_base_dust(x+(12*-spr_dir),y, "dash", spr_dir);
     	break;
     	
@@ -289,7 +289,7 @@ if (attack == AT_FSPECIAL){
 	can_attack = true;
 	}
 	
-	if (window == 5 && get_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH)-1 ) 
+	if (window == 5 && get_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH)-1 && !free) 
 	{
 		window = 6;
 		window_timer = 0;
