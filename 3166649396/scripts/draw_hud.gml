@@ -12,13 +12,13 @@ if !("timer" in self) {
 	exit;
 }
 
-shader_start()
+
 var w = 162*clamp(essence_cur/essence_max, 0, 1)
 var col = essence_consume_timer < 0 ? c_white : essence_col
 draw_sprite_ext(sprite_get("meter_frame"), 0, temp_x, temp_y - 6, 1, 1, 0, c_white, 1)
 
-//draw_sprite_part_ext(sprite_get("meter_inside"), 0, 0, 0, w, 64, temp_x + 14, temp_y - 38, 1, 1, col, 1)
-
+draw_sprite_part_ext(sprite_get("meter_inside"), 0, 0, 0, w, 64, temp_x + 14, temp_y - 38, 1, 1, col, 1)
+/*
 maskHeader();
 
 draw_sprite_part_ext(sprite_get("meter_inside"), 0, 0, 0, w, 64, temp_x + 14, temp_y - 38, 1, 1, col, 1)
@@ -28,9 +28,12 @@ maskMidder();
 draw_sprite_tiled_ext(sprite_get("meter_overlay"), floor(timer/10), temp_x + 14 + timer*3, temp_y - 30, 1, 1, c_white, 1)
 
 maskFooter();
-
+*/
+shader_start()
 
 draw_sprite_ext(sprite_get("meter_flame"), timer/6, temp_x + 8, temp_y - 16, 1, 1, 0, c_white, 1)
+
+shader_end()
 
 if orb_id != noone {
     var orb_col = get_spirit_col(orb_id.element)
@@ -58,7 +61,7 @@ if loadout[3] != DEFAULT {
     draw_rectangle_color(temp_x + 190, temp_y + 2, temp_x + 193, temp_y - 3, col,col,col,col, false)        
 }
 
-shader_end()
+
 
 
 if ("practice_mode" in self) && practice_mode && !trailer_mode {

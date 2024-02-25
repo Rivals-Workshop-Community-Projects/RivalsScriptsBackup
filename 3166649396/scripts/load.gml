@@ -77,6 +77,7 @@ sprite_change_offset("bolt_lightning_vfx", 45, 45);
 sprite_change_offset("bolt_shadow", 32, 32);
 
 sprite_change_offset("orb_hurt", 128, 128);
+sprite_change_offset("orb_behind", 128, 128);
 sprite_change_offset("orb_wolf", 128, 128);
 sprite_change_offset("orb_fire", 128, 128);
 sprite_change_offset("orb_earth", 128, 128);

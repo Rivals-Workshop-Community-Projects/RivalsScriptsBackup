@@ -17,6 +17,11 @@ timer++;
 window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
 state_attacking = (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 
+//ditto detection
+with oPlayer if id != other.id && ("is_omenforged" in self) && is_omenforged {
+	other.in_ditto = true
+}
+
 with oPlayer if id != other.id && ("omen_cur_spr_dir" in self) {
 	omen_prev_prev_spr_dir = omen_prev_spr_dir
 	omen_prev_spr_dir = omen_cur_spr_dir

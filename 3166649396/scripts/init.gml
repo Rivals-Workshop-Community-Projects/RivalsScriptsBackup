@@ -7,6 +7,9 @@
 #macro LIGHTNING    6
 #macro SHADOW       7
 
+is_omenforged = true
+in_ditto = false
+
 omen_fspec_owner = noone
 omen_lerp_pos = undefined
 omen_frozen_id = noone
@@ -21,6 +24,7 @@ omen_prev_prev_spr_dir = spr_dir
 omen_drenched_id = noone
 omen_drenched_timer = 0
 
+proj_parried = false 
 trailer_mode = false
 
 window_length = 0

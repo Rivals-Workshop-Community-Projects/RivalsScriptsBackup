@@ -207,7 +207,7 @@ switch my_hitboxID.attack {
     break;
     
     case AT_USTRONG:
-    if my_hitboxID.hbox_num == 1 {
+    if my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 {
         sound_play(sound_get("DefaultBoltHit"))
         sound_play(asset_get("sfx_blow_medium1"))
         //sound_play(asset_get("sfx_ori_energyhit_weak"))

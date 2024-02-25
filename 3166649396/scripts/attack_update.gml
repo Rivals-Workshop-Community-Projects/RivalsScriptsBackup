@@ -175,7 +175,7 @@ if attack == AT_USPECIAL {
             window_timer = window_length
         }
         if (was_free || angle_index >= 5) && !free {
-            set_state(PS_LANDING_LAG)
+            set_state(proj_parried ? PS_PRATLAND : PS_LANDING_LAG)
             sound_stop(sound_get("BearDashSound"))
         }
         hsp *= 0.95
@@ -244,6 +244,10 @@ if attack == AT_USPECIAL {
                 set_state(PS_PRATFALL)
             }
         }
+    }
+    
+    if proj_parried {
+    	was_parried = true
     }
 }
 
@@ -314,6 +318,11 @@ if attack == AT_NSPECIAL {
                 create_hitbox(AT_NSPECIAL, 4, x + 180*spr_dir, y - 45)
             }
         }
+        
+        if window == 3 && window_timer == window_length && proj_parried {
+        	was_parried = true
+        }
+        
         break;
         
         case EARTH:
@@ -498,7 +507,7 @@ if attack == AT_FSPECIAL {
             sound_play(asset_get("sfx_ell_utilt_retract"))
         }
         
-        if fspec_has_hit {
+        if fspec_has_hit && window_timer >= 6 {
             iasa_script()
         }
     }
@@ -787,10 +796,21 @@ if attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 {
             dspec_stance = !dspec_stance
             attack = AT_DSPECIAL_2
             switched_stances = true
+            var _angle = 0
+            if up_down && !down_down {
+            	_angle = 30
+            } else if down_down && !up_down && free {
+            	_angle = -30
+            }
             var scythe = instance_create(x + 80*spr_dir, y - 40, "obj_article2")
                 scythe.spr_dir = spr_dir
                 scythe.element = loadout[3]
+                scythe.launch_angle = _angle
         }
+    }
+    
+    if window == 6 && window_timer == window_length && proj_parried {
+    	was_parried = true
     }
 }
 

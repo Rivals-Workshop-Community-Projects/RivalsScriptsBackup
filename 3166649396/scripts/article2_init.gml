@@ -29,3 +29,5 @@ vfx_alpha = 1
 switch_stance = false
 
 element = DEFAULT
+
+launch_angle = 0

@@ -11,6 +11,8 @@
 
 var moon_crit = random_func(0, 4, true) == 0
 
+proj_parried = false
+
 //var force_update_loadout = false
 if stored_spirit != DEFAULT { //reset all non-move elements to previous value
     switch attack {
@@ -179,7 +181,7 @@ if loadout[0] == MOON {
 	if moon_crit {
 		set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 20)
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 10)
-		set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.7)
+		set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9)
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 18)
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, vfx_moon_crit)
 		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 12)
@@ -196,7 +198,7 @@ if loadout[1] == MOON {
 	if moon_crit {
 		set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, 20)
 		set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9)
-		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9)
+		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.0)
 		set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 16)
 		set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, vfx_moon_crit)
 		set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 12)
@@ -241,7 +243,7 @@ if loadout[3] == MOON {
 	if moon_crit {
 		set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 20)
 		set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10)
-		set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.9)
+		set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.0)
 		set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 20)
 		set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, vfx_moon_crit)
 		set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 16)

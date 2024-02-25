@@ -65,7 +65,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 30);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
@@ -93,6 +93,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 0);
 
 //rush

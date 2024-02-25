@@ -56,10 +56,19 @@ if switch_stance {
 with pHitBox if player_id == other.player_id && attack == AT_DSPECIAL_2 && hbox_num == 1 {
     if place_meeting(x, y, other) {
         other.launch = true
+
+        if player_id.up_down && !player_id.down_down {
+        	other.launch_angle = 30
+        } else if player_id.down_down && !player_id.up_down {
+        	other.launch_angle = -30
+        } else {
+            other.launch_angle = 0
+        }
     }
 }
 
 if launch {
+    
     launch_timer++
     if launch_timer == 1 {
         spr_dir = player_id.spr_dir
@@ -67,17 +76,19 @@ if launch {
         sound_play(sound_get("ScytheHeadBounce"))
         sound_play(sound_get("ScytheAttackHit"))
     }
-    vsp = 0
-    hsp = 12*spr_dir
+    vsp = -12*dsin(launch_angle)
+    hsp = 12*spr_dir*dcos(launch_angle)
     if launch_timer >= 12 {
         launch = false
         launch_timer = 0
     }
 }
-
+if position_meeting(x, y + 30*sign(vsp), asset_get("par_block")) {
+    vsp *= -1
+}
 if position_meeting(x + 30*sign(hsp), y, asset_get("par_block")) {
-    spr_dir *= -1
     hsp *= -1
+    spr_dir *= -1
 }
 /*
 if die_timer >= 120 {
