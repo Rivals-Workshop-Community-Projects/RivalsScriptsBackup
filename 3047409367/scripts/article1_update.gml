@@ -124,7 +124,7 @@ if (state == 2){
 if (state != 1 && state != 2 && state != 9){
 	if (state != 3){
 		with (player_id){
-			move_cooldown[AT_FSPECIAL] = fspecial_cooldown_main;
+			move_cooldown[AT_FSPECIAL] = round(fspecial_cooldown_main/2);
 		}
 	}
 	else{ //lower cooldown for quick version
@@ -220,8 +220,8 @@ if (state == 3){
 				sound_play(sound_get("kotsuzumi"));
 				warn_timer = warn_time_base;
 			}
-			hit_detection();
 		}
+		hit_detection();
 	}
 	
 	//spawn hitbox
@@ -319,8 +319,8 @@ if (state == 4){
 				
 				warn_timer = warn_time_base;
 			}
-			hit_detection();
 		}
+		hit_detection();
 	}
 	
 	//spawn hitbox

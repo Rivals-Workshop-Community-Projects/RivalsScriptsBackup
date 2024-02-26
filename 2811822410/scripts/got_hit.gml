@@ -2,7 +2,9 @@
 if (custom_clone) {
 	should_make_shockwave = false;
 	set_player_damage(player, ceil(clamp(get_player_damage(player) - enemy_hitboxID.damage, 0, 999)));
-	hit_player_obj.hitstop = get_hitstop_formula(0, enemy_hitboxID.damage, enemy_hitboxID.hitpause, enemy_hitboxID.hitpause_growth, enemy_hitboxID.extra_hitpause);
+	if (enemy_hitboxID.type == 1) {
+		hit_player_obj.hitstop = get_hitstop_formula(0, enemy_hitboxID.damage, enemy_hitboxID.hitpause, enemy_hitboxID.hitpause_growth, enemy_hitboxID.extra_hitpause);
+	}
 	//print(hit_player_obj.hitstop)
 	if (!rune_indestructible) {
 		//instance_destroy(clone_owner.miku_clone)

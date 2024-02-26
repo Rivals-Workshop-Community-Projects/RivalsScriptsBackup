@@ -19,7 +19,7 @@ daruma_slow_speed = 36;
 daruma_parry_speed = 36;
 
 fspecial_cooldown = 80;
-fspecial_cooldown_main = 100;
+fspecial_cooldown_main = 200;
 fspecial_cooldown_quick = 50;
 
 hitbox_rate = 14;

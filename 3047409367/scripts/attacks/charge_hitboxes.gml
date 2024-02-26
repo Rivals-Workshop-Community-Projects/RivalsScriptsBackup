@@ -22,7 +22,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_SDI_MULTIPLIER, 1.25);
+set_hitbox_value(AT_EXTRA_1, 1, HG_SDI_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_WINDOW, 2);
@@ -41,7 +41,7 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_EXTRA_1, 2, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_1, 2, HG_SDI_MULTIPLIER, 1.25);
+set_hitbox_value(AT_EXTRA_1, 2, HG_SDI_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_WINDOW, 2);
@@ -60,4 +60,4 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_EXTRA_1, 3, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_1, 3, HG_SDI_MULTIPLIER, 1.25);
+set_hitbox_value(AT_EXTRA_1, 3, HG_SDI_MULTIPLIER, 1.5);
