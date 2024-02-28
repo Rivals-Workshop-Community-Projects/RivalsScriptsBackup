@@ -7,6 +7,8 @@ set_color_profile_slot(0, 4, 128, 0, 0);//BODY S
 set_color_profile_slot(0, 5, 168, 120, 168);//SCULPTURE
 set_color_profile_slot(0, 6, 80, 32, 80);//SCULPTURE S
 
+set_num_palettes( 11 );
+
 //Orange Color
 set_color_profile_slot(1, 0, 48, 168, 248);
 set_color_profile_slot(1, 1, 248, 112, 24);
@@ -51,3 +53,48 @@ set_color_profile_slot(5, 3, 255, 255, 255);
 set_color_profile_slot(5, 4, 202, 24, 24);
 set_color_profile_slot(5, 5, 195, 13, 13);
 set_color_profile_slot(5, 6, 232, 80, 80);
+
+//Blue Color
+set_color_profile_slot(6, 0, 225, 166, 255);
+set_color_profile_slot(6, 1, 0, 187, 255);
+set_color_profile_slot(6, 2, 25, 74, 148);
+set_color_profile_slot(6, 3, 255, 255, 255);
+set_color_profile_slot(6, 4, 0, 124, 168);
+set_color_profile_slot(6, 5, 175, 112, 219);
+set_color_profile_slot(6, 6, 100, 63, 125);
+
+//green Color
+set_color_profile_slot(7, 0, 255, 196, 0);
+set_color_profile_slot(7, 1, 75, 255, 51);
+set_color_profile_slot(7, 2, 0, 230, 222);
+set_color_profile_slot(7, 3, 255, 255, 255);
+set_color_profile_slot(7, 4, 0, 128, 6);
+set_color_profile_slot(7, 5, 86, 179, 107);
+set_color_profile_slot(7, 6, 32, 49, 79);
+
+//white Color
+set_color_profile_slot(8, 0, 170, 166, 255);
+set_color_profile_slot(8, 1, 255, 255, 255);
+set_color_profile_slot(8, 2, 122, 230, 108);
+set_color_profile_slot(8, 3, 255, 255, 255);
+set_color_profile_slot(8, 4, 80, 149, 163);
+set_color_profile_slot(8, 5, 255, 255, 255);
+set_color_profile_slot(8, 6, 88, 163, 163);
+
+//golden Color
+set_color_profile_slot(9, 0, 255, 166, 0);
+set_color_profile_slot(9, 1, 255, 178, 0);
+set_color_profile_slot(9, 2, 255, 200, 71);
+set_color_profile_slot(9, 3, 255, 244, 207);
+set_color_profile_slot(9, 4, 255, 119, 56);
+set_color_profile_slot(9, 5, 250, 207, 32);
+set_color_profile_slot(9, 6, 255, 89, 0);
+
+//snick Color
+set_color_profile_slot(10, 0, 224, 48, 0);
+set_color_profile_slot(10, 1, 152, 80, 248);
+set_color_profile_slot(10, 2, 224, 48, 0);
+set_color_profile_slot(10, 3, 255, 244, 207);
+set_color_profile_slot(10, 4, 88, 0, 184);
+set_color_profile_slot(10, 5, 247, 79, 79);
+set_color_profile_slot(10, 6, 184, 0, 67);

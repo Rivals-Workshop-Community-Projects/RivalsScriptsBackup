@@ -14,6 +14,11 @@ if (attack == AT_DAIR){
     }
 }
 
+if (attack == AT_DTILT){
+    move_cooldown[AT_DTILT] = 10;
+}
+
+
 if (attack == AT_UTILT){
     if (window >= 2){ 
         hud_offset = 70;
@@ -35,7 +40,6 @@ if (attack == AT_USTRONG){
         }
     }
 }
-print_debug(ustrong_walk);
 
 if (attack == AT_DSTRONG){
     if (window == 3){ 
@@ -56,7 +60,8 @@ if (attack == AT_DATTACK){
     }
 }
 
-if (attack == AT_JAB){
+if (attack == AT_FTILT){
+    move_cooldown[AT_FTILT] = 20;
     if (window == 3 && window_timer > 6){ 
         if (special_down){
             set_attack(AT_FSPECIAL);
@@ -69,7 +74,8 @@ if (attack == AT_JAB){
         window_timer = 0;
         destroy_hitboxes();
     }
-    if (has_hit && window == 2){
+    if ((has_hit || was_parried == true) && window == 2){
+        old_vsp = 0
         old_hsp = -10 * spr_dir
         window = 4;
         window_timer = 0;
@@ -77,22 +83,30 @@ if (attack == AT_JAB){
         sound_stop(sound_get("grabdash"));
         pepperpose = random_func_2(1, 3, 1);
         if (pepperpose == 1){
-            set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 11);
+            set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 11);
         }
         else if (pepperpose == 2){
-            set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 12);
+            set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 12);
         }
         else {
-            set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 13);
+            set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 13);
         }
 
     }
 }
-
 if (attack == AT_NSPECIAL){
+    if (window == 1 && window_timer == 6){
+        if (!free){
+            shake_camera(4, 5);
+            sound_play(sound_get("slam"));
+        }
+        else {
+            sound_play(asset_get("sfx_kragg_rock_shatter"));
+        }        
+    }
     if (window == 2 && window_timer == 1){
         if !instance_exists(my_player_article) {
-            my_player_article = instance_create(x+30*spr_dir, y-5,"obj_article1");
+            my_player_article = instance_create(x+30*spr_dir, y-70,"obj_article1");
         }
     }
 }
@@ -105,7 +119,7 @@ if (attack == AT_FSPECIAL){
             destroy_hitboxes();
             sound_stop(sound_get("dash"));
         }
-        var holding_back = (right_down - left_down == -1 * sign(spr_dir)); // holding back var from mr nart
+        var holding_back = (right_down - left_down == -1 * sign(spr_dir)); // holding back var from mr nart cuz im bad
         if (special_pressed && holding_back && window == 2 && !has_hit){
             window = 3;
             window_timer = 0;
@@ -114,7 +128,7 @@ if (attack == AT_FSPECIAL){
             sound_stop(sound_get("dash"));
             sound_play(sound_get("pepperturn"));
         }
-        if (has_hit) || (place_meeting( x+10 * spr_dir, y-1, asset_get("par_block"))){
+        if (has_hit) || (place_meeting( x+10 * spr_dir, y-1, asset_get("par_block")) || was_parried == true){
             window = 5;
             window_timer = 0;
             destroy_hitboxes();
@@ -145,6 +159,7 @@ if (attack == AT_USPECIAL){
     if (window == 3 && window_timer < 3){ 
         sound_stop(sound_get("uspec"));
         shake_camera(5, 5);
+        destroy_hitboxes();
     }
 }
 

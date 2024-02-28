@@ -1,1 +1,2 @@
-draw_sprite_ext(sprite_get("sign"), sign(move_cooldown[AT_DSPECIAL]), temp_x , temp_y - 75, 2, 2, 0, c_white, 1)
+draw_sprite_ext(sprite_get("sign1"), sign(move_cooldown[AT_DSPECIAL]), temp_x - 20, temp_y - 75, 2, 2, 0, c_white, 1)
+draw_sprite_ext(sprite_get("sign2"), sign(move_cooldown[AT_NSPECIAL]), temp_x + 20 , temp_y - 75, 2, 2, 0, c_white, 1)

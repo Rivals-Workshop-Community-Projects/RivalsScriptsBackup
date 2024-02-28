@@ -88,11 +88,12 @@ roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
 ustrong_walk = 1;
-
-bro_owns_article = 0;
-
-my_player_article = noone;
+move = 0;
 sculpture_hp = 0;
+article_speed = 0;
+my_player_article = noone;
+article_exises = 0;
+sculpture_hp2 = 0;
 
 set_victory_theme(sound_get("peppervictory"));
 

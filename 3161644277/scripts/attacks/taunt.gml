@@ -14,5 +14,5 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 2);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 55);
-set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 13);
+set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 15);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 2);

@@ -14,15 +14,7 @@ afterimage_array = newArray;
 if (instance_exists(my_player_article)) {
     move_cooldown[AT_NSPECIAL] = 120;
 }
-else {
-    move_cooldown[AT_NSPECIAL] = 0;
-}
-
-with (obj_article1) {
-    if (player_id == other.id) {
-        bro_owns_article = 1;
-    }
-    else {
-        bro_owns_article = 0;
-    }
+else if (article_exises == 0){
+    move_cooldown[AT_NSPECIAL] = 120;
+    article_exises = 2;
 }
