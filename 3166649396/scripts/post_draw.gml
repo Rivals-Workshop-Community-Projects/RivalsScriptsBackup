@@ -24,7 +24,7 @@ if state_attacking && attack == AT_USPECIAL {
     switch loadout[2] {
         case MOON:
         if state_timer >= 4 {
-            draw_sprite_ext(sprite_get("dash_moon_vfx"), (state_timer - 4)/4, x, y - 30, 1, 1, angle_index*45, c_white, 1)
+            draw_sprite_ext(sprite_get("dash_moon_vfx"), (state_timer - 6)/4, x, y - 30, 1, 1, angle_index*45, c_white, 1)
         }
         break;
         

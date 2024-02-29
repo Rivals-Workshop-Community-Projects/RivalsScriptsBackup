@@ -38,7 +38,7 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 1, HG_FORCE_FLINCH, 0);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.3);
+set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_UAIR, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("BladesAttackHit"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 80);

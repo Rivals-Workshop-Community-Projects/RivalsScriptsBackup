@@ -56,6 +56,11 @@ if stored_spirit != DEFAULT { //reset all non-move elements to previous value
 
 if move_cooldown[attack] == 0 scythe_cancel = false
 
+reset_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE)
+reset_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER);
+
 if update_loadout {
 	if !debug_reset_loadout {
 	    loadout_apply_timer = 20
@@ -130,7 +135,6 @@ if update_loadout {
 	reset_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING)
 	reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE)
 	reset_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT)
-	reset_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE)
 	
 	switch loadout[1] {
 		case FIRE:

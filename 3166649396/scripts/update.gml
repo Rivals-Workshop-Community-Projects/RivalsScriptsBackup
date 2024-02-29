@@ -69,10 +69,13 @@ with pHitBox if player_id == other.id && ("has_bolt_trail" in self) && has_bolt_
     bolt_trail_index = (bolt_trail_index + 1) mod bolt_trail_segments
 }
 
-if !state_attacking && attack == AT_FSPECIAL {
-	fspec_has_hit = false
-	fspec_hit_player = noone
+if !state_attacking && fspec_has_hit {
+    fspec_hit_player.hitpause = false
+    fspec_hit_player.hitstop = 0
+    fspec_has_hit = false
+    fspec_hit_player = noone
 }
+
 /*
 with hit_fx_obj if sprite_index == sprite_get("dash_moon_vfx") && player_id == other.id {
 	hsp = other.hsp
@@ -353,6 +356,7 @@ if trailer_mode {
 	
 	//if timer == 100 spawn_orb()
 }
+
 
 //set_view_position(room_width/2, 350)
 #define orb_active()

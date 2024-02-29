@@ -66,4 +66,4 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_LOCKOUT, 2);

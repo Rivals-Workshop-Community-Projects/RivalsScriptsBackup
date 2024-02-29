@@ -287,6 +287,10 @@ if attack == AT_NSPECIAL {
             create_hitbox(AT_NSPECIAL, 2, x, y - 25)
         }
         
+        if window == 3 && window_timer == window_length && proj_parried {
+        	was_parried = true
+        }
+        
         break;
         
         case FIRE:

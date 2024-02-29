@@ -64,8 +64,9 @@ if attack == AT_NSPECIAL && hbox_num == 6 {
     }
     
     
-    if spawn_explosion {
-        sound_play(sound_get("BearBolt_AOE"))
+    if was_parried || spawn_explosion {
+    	with player_id var icesfx = sound_get("BearBolt_AOE") 
+        sound_play(icesfx)
         spawn_hit_fx(x, y, player_id.vfx_bolt_ice)
         create_hitbox(AT_NSPECIAL, 7, x, y)
         destroyed = true
@@ -94,6 +95,7 @@ if attack == AT_NSPECIAL && hbox_num == 10 {
     }
 }
 
+//blade proj
 if attack == AT_FSPECIAL && hbox_num == 1 {
     switch state {
         //throw

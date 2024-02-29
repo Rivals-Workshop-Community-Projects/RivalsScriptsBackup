@@ -47,8 +47,8 @@ if hit_player_obj != other.id && hit_player_obj.omen_lerp_pos != undefined && hi
     hit_player_obj.omen_lerp_pos = undefined
 }
 
-if hit_player_obj != id && hit_player_obj.omen_frozen_id != noone {
-    hit_player_obj.omen_frozen_timer += my_hitboxID.damage*6
+if hit_player_obj != id && hit_player_obj.omen_frozen_id != noone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+    hit_player_obj.omen_frozen_timer += my_hitboxID.damage*9
     //sound_play(sound_get("BearAvalancheSound"))
     sound_play(asset_get("sfx_ice_fspecial_hit_ground"))
     spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, HFX_ETA_ICEPOP_BIG)
@@ -91,6 +91,15 @@ switch my_hitboxID.attack {
                 sound_play(asset_get("sfx_ice_fspecial_hit_ground"))
                 break;
             }
+            
+            if hit_player_obj.omen_drenched_id != noone {
+            	set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, -75);
+            	set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
+            	set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.7);
+            }
+        } else {
+        	hit_player_obj.hitstop = 6
+        	hit_player_obj.hitstop_full = 6
         }
     }
     if my_hitboxID.hbox_num == 2 {

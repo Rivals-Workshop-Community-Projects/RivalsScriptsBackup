@@ -39,26 +39,26 @@ if state_attacking {
         if window == 2 {
             switch angle_index {
                 case 2:
-                image_index = 1
+                image_index = 2
                 break;
                 
                 case 1:
                 case 3:
-                image_index = 2
+                image_index = 3
                 break;
                 
                 case 0:
                 case 4:
-                image_index = 3
+                image_index = 4
                 break;
                 
                 case 5:
                 case 7:
-                image_index = 4
+                image_index = 5
                 break;
                 
                 case 6:
-                image_index = 5
+                image_index = 6
                 break;
             }
         }
