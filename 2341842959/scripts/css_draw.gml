@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 29; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 31; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(71, 71, 71) // "color preview square" color. can be any color!
@@ -127,7 +127,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[18,1] = "Night Warrior"
     ce[18,2] = "Alt based of Jon Talbain from Darkstalkers."
     ce[19,0] = make_color_rgb(229, 175, 66)
-    ce[19,1] = "Prehistoric Stench"
+    ce[19,1] = "Prehistoric Stink"
     ce[19,2] = "Alt based on Kunka from the Gon series."
     ce[20,0] = make_color_rgb( 94, 48, 31)
     ce[20,1] = "Rough and Tumble"
@@ -145,7 +145,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[24,1] = "Acid Doggo"
     ce[24,2] = "Alt based on Acrid from Risk of Rain."
     ce[25,0] = make_color_rgb(154, 109, 80)
-    ce[25,1] = "Prehistoric Nuisance"
+    ce[25,1] = "Prehistoric Pest"
     ce[25,2] = "Alt based on Gon from the Gon series."
     ce[26,0] = make_color_rgb(71, 71, 71 )
     ce[26,1] = "Stardust"
@@ -159,6 +159,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[29,0] = make_color_rgb(71, 71, 71 )
     ce[29,1] = "Rat Thief"
     ce[29,2] = "Alt based on Daroach from the Kirby series."
+    ce[30,0] = make_color_rgb(71, 71, 71 )
+    ce[30,1] = "The Poison Wind"
+    ce[30,2] = "Alt based on Knell by GrenadesInSpades."
+    ce[31,0] = make_color_rgb(71, 71, 71 )
+    ce[31,1] = "Ghostly"
+    ce[31,2] = "Never able to move on..."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 32 );
 
 // Blue
 set_color_profile_slot( 1, 0, 62, 79, 92 ); //Black Fur
@@ -216,7 +216,7 @@ set_color_profile_slot( 18, 5, 255, 255, 255 ); //Green Mask
 set_color_profile_slot( 18, 6, 255, 211, 87 ); //Brown Claw
 set_color_profile_slot( 18, 7, 233, 233, 233 ); //White Eye
 
-// Prehistoric Stench
+// Prehistoric Stink
 set_color_profile_slot( 19, 0, 87, 42, 194 ); //Black Fur
 set_color_profile_slot( 19, 1, 64, 31, 143 ); //Black Fur Shading
 set_color_profile_slot( 19, 2, 87, 42, 194 ); //Green Bracelet
@@ -276,7 +276,7 @@ set_color_profile_slot( 24, 5, 61, 255, 61 ); //Green Mask
 set_color_profile_slot( 24, 6, 61, 255, 61 ); //Brown Claw
 set_color_profile_slot( 24, 7, 61, 255, 61 ); //White Eye
 
-// Prehistoric Nuisance
+// Prehistoric Pest
 set_color_profile_slot( 25, 0, 224, 199, 67 ); //Black Fur
 set_color_profile_slot( 25, 1, 158, 140, 48 ); //Black Fur Shading
 set_color_profile_slot( 25, 2, 224, 199, 67 ); //Green Bracelet
@@ -325,6 +325,26 @@ set_color_profile_slot( 29, 4, 148, 148, 148 ); //White Hair Shading
 set_color_profile_slot( 29, 5, 217, 0, 0 ); //Green Mask
 set_color_profile_slot( 29, 6, 255, 214, 48 ); //Brown Claw
 set_color_profile_slot( 29, 7, 255, 255, 255 ); //White Eye
+
+// The Poison Wind
+set_color_profile_slot( 30, 0, 122, 90, 78 ); //Black Fur
+set_color_profile_slot( 30, 1, 94, 69, 60 ); //Black Fur Shading
+set_color_profile_slot( 30, 2, 117, 116, 116 ); //Green Bracelet
+set_color_profile_slot( 30, 3, 85, 73, 73 ); //White Hair
+set_color_profile_slot( 30, 4, 49, 47, 47 ); //White Hair Shading
+set_color_profile_slot( 30, 5, 149, 217, 135 ); //Green Mask
+set_color_profile_slot( 30, 6, 194, 190, 180 ); //Brown Claw
+set_color_profile_slot( 30, 7, 22, 201, 94 ); //White Eye
+
+// Ghost
+set_color_profile_slot( 31, 0, 255, 255, 255 ); //Black Fur
+set_color_profile_slot( 31, 1, 179, 179, 179 ); //Black Fur Shading
+set_color_profile_slot( 31, 2, 255, 255, 255 ); //Green Bracelet
+set_color_profile_slot( 31, 3, 255, 255, 255 ); //White Hair
+set_color_profile_slot( 31, 4, 179, 179, 179 ); //White Hair Shading
+set_color_profile_slot( 31, 5, 250, 255, 252 ); //Green Mask
+set_color_profile_slot( 31, 6, 255, 255, 255 ); //Brown Claw
+set_color_profile_slot( 31, 7, 0, 0, 0 ); //White Eye
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
