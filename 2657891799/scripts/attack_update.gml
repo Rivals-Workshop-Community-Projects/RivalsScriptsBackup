@@ -51,7 +51,7 @@ switch attack {
         can_shield = true
     }
     
-    if window == 4 && window_timer >= 12 {
+    if window == 4 && window_timer >= 9 {
         iasa_script()
     }
     break;
@@ -280,7 +280,7 @@ switch attack {
         
         if !free && (window == 4 || (uspec_dir != 0 && uspec_dir != 180)) {
             set_state(PS_LANDING_LAG)
-            landing_lag_time = 20
+            landing_lag_time = 28
             hsp*=0.5
             move_cooldown[AT_USPECIAL] = 20
         }

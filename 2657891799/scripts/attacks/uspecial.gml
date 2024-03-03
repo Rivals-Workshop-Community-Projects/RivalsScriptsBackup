@@ -79,6 +79,8 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, vfx_water_large);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);

@@ -53,9 +53,9 @@ set_hitbox_value(at, num, HG_WIDTH, 50);
 set_hitbox_value(at, num, HG_HEIGHT, 110);
 set_hitbox_value(at, num, HG_PRIORITY, 3);
 set_hitbox_value(at, num, HG_DAMAGE, 2);
-set_hitbox_value(at, num, HG_ANGLE, 80);
+set_hitbox_value(at, num, HG_ANGLE, 85);
 set_hitbox_value(at, num, HG_ANGLE_FLIPPER, 4);
-set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(at, num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(at, num, HG_HIT_SFX, sfx_tip_med);
 
@@ -71,9 +71,9 @@ set_hitbox_value(at, num, HG_WIDTH, 50);
 set_hitbox_value(at, num, HG_HEIGHT, 110);
 set_hitbox_value(at, num, HG_PRIORITY, 3);
 set_hitbox_value(at, num, HG_DAMAGE, 2);
-set_hitbox_value(at, num, HG_ANGLE, 80);
+set_hitbox_value(at, num, HG_ANGLE, 85);
 set_hitbox_value(at, num, HG_ANGLE_FLIPPER, 4);
-set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(at, num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(at, num, HG_HIT_SFX, sfx_tip_med);
 
@@ -89,9 +89,9 @@ set_hitbox_value(at, num, HG_WIDTH, 50);
 set_hitbox_value(at, num, HG_HEIGHT, 110);
 set_hitbox_value(at, num, HG_PRIORITY, 3);
 set_hitbox_value(at, num, HG_DAMAGE, 2);
-set_hitbox_value(at, num, HG_ANGLE, 80);
+set_hitbox_value(at, num, HG_ANGLE, 85);
 set_hitbox_value(at, num, HG_ANGLE_FLIPPER, 4);
-set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(at, num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(at, num, HG_HIT_SFX, sfx_tip_med);
 
@@ -107,9 +107,9 @@ set_hitbox_value(at, num, HG_WIDTH, 50);
 set_hitbox_value(at, num, HG_HEIGHT, 110);
 set_hitbox_value(at, num, HG_PRIORITY, 3);
 set_hitbox_value(at, num, HG_DAMAGE, 2);
-set_hitbox_value(at, num, HG_ANGLE, 80);
+set_hitbox_value(at, num, HG_ANGLE, 85);
 set_hitbox_value(at, num, HG_ANGLE_FLIPPER, 4);
-set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(at, num, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(at, num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(at, num, HG_HIT_SFX, sfx_tip_med);
 

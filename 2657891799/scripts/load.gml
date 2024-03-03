@@ -19,6 +19,7 @@ sprite_change_offset("jumpstart", 100, 130);
 sprite_change_offset("jump", 100, 130);
 sprite_change_offset("doublejump", 100, 130);
 sprite_change_offset("walljump", 100, 130);
+sprite_change_offset("wallcling", 100, 130);
 sprite_change_offset("pratfall", 100, 130);
 sprite_change_offset("land", 100, 130);
 sprite_change_offset("landinglag", 100, 130);

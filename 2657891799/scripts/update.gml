@@ -241,3 +241,5 @@ if intro_time == 27 || intro_time == 24 {
             smokefx.depth = -10
     }
 }
+
+print(get_color_profile_slot_range(7, 1))

@@ -30,9 +30,10 @@ alt_name = [
 	"Glow In The Dark",
 	"Dune Rider",
 	"Brand New Animal",
-	"Domestivated Ingot"+chr(10)+"(MatchesDraco)",
+	"Domesticated Ingot"+chr(10)+"(MatchesDraco)",
 	"Future Slayer"+chr(10)+"(VVizard)",
 	"Relentless Hunter"+chr(10)+"(VAE)",
+	"Samsara",
 ];
 
 
