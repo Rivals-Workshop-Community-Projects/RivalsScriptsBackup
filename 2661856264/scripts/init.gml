@@ -67,7 +67,7 @@ techroll_speed      = 9;		// 8    -  11
 // Character-specific assets init
 
 //Sprites
-spr_nspecial_proj = sprite_get("nspecial_proj");
+spr_nspecial_proj = sprite_get("fspecial_proj");
 spr_example = sprite_get("example"); // sprites/example_stripX.png
 
 // SFX
@@ -177,6 +177,8 @@ fspecial_speed = 3;
 
 stealth_rock = 0;
 stealth_rock_aux = 0;
+
+punch_charge = 0;
 
 point_1 = make_colour_rgb(255, 255, 0); 
 point_2 = make_colour_rgb(242, 101, 34); 

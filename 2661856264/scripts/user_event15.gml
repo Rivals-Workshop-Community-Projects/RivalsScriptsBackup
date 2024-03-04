@@ -41,21 +41,22 @@ alt_ui_recolor = noone;
 
 // The list of names for the alts, if enabled.
 alt_names = [
-	"Default",
-	"Shellfish",
-	"Shiny",
-	"Continent",
-	"Gleam Eyes",
-	"Yep, that's yellow",
-	"Abyssal Poison",
-	"Genwunner",
-	"Galvanizer",
-	"Fluffy Sheep",
-	"Earth's Bastion",
-	"Kremling Kommander",
-	"Cocomero",
-	"Halo of Void"
-	"Megaton",
+	"1. Default",
+	"2. Flaming Salamander",
+	"3. Rare Shine",
+	"4. Walking Land",
+	"5. Gleam Eyes",
+	"6. Yep, that's yellow",
+	"7. Abyssal Poison",
+	"8. Past Blast",
+	"9. Galvanizer",
+	"10. Fluffy Sheep",
+	"11. Earth's Bastion",
+	"12. Kremling Kommander",
+	"13. Cocomero",
+	"14. Everlastin Nightmare",
+	"15. Megaton",
+	"16. Salty Gargantuan"
 	];
 
 
@@ -186,36 +187,32 @@ initWords("Golem will summon a ring of rocks around himself to attack, that will
 initWords("You can stack up to 4, and you can consume them to enhance each of the moves described in this Phone.");
 initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Enhanced Normals: DTilt, UTilt and NAir");
-initWords("Normally, only DTilt has access to Sturdy Armor among Golem's normals.");
-initImage_ext(sprite_get("dtilt"), 4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("With Rocks, UTilt and NAir also get that.");
-initImage_ext(sprite_get("utilt"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("nair"), 4, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initWords("On top of that, if you have rocks, you can jump-cancel your Dash Attack.");
+initTip("Enhanced Normal: Dash Attack");
+initWords("Normally, Dash Attack is a regular move: you dash, you attack, and therefore you dashattack.");
+initImage_ext(sprite_get("dattack"), 4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("On top of that, if you have rocks, you can jump-cancel your Dash Attack. This will use 1 rock.");
 initImage_ext(sprite_get("dattack"), 8, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("jump"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Armored Strongs");
 initWords("Normally, only FStrong has access to Sturdy Armor among Golem's strongs.");
 initImage_ext(sprite_get("fstrong_complete"), 9, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("With Rocks, DStrong also gets that, while FStrong will get super armor during the initial window.");
-initImage_ext(sprite_get("dstrong"), 4, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initWords("With Rocks, DStrong and UStrong also get that, while FStrong will get super armor during the initial window.");
+initImage_ext(sprite_get("dstrong"), 4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("ustrong"), 2, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("NSpecial: Rock Throw/SOS Battle");
+initTip("NSpecial: Mega Punch");
+initWords("Pressing B once will make you charge a punch. The further the charge, the more Mega the Punch");
+initImage_ext(sprite_get("nspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("As usual with chargeable moves, while charging you can either jump or parry cancel the thing.");
+initWords("Most importantly, you can consume 1 rock to get Sturdy armor on not fully charge versions, or Super Armor on the fully charged version.");
+
+initTip("FSpecial: Rock Throw/SOS Battle");
 initWords("If you tap the move, Golem will throw a rock that will slowly roll on the ground. It has low knockback when hitting, allowing for followups.");
-initImage_ext(sprite_get("nspecial_proj"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initImage_ext(sprite_get("fspecial_proj"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("HOWEVER, if you hold the move, Golem will 'call for help' by throwing its Geodude companion to the opponent! Geodude likes to bounce rather than roll, and also has much higher knockback and damage than the stone.");
-initImage_ext(sprite_get("nspec_proj_alt"), 0, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("Normally the move would have a 1.5 seconds cooldown, unless you use rocks, in which case it has only 1 second.");
-
-initTip("FSpecial: Rollout");
-initWords("Pretty straight forward: Golem will initially cover themselves in rocks, and then start rolling like a mad... Golem I guess.");
-initImage_ext(sprite_get("fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("The initial jump and the rolling part have different hit properties. You can cancel the move with the Special Button, but you'll enter pratfall. Finally, the rolling itself is projectile-immune.");
-initWords("PLUS: if you have rocks, you can cancel it into jumps if it hits people and dodges/rolls whenever. Yes I really wanted to make this move viable.");
-initImage_ext(sprite_get("fspecial"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("jump"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("fspec_proj_alt"), 0, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("The move will have a 1.5 seconds cooldown, but you can hit the projectile to gain rocks.");
 
 initTip("USpecial: Explosion");
 initWords("It detonates its own body. The power from that explosion can propel it up steep mountain paths with amazing speed.");
@@ -259,6 +256,45 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.12", "24/03/03");
+initHeader("Twelfth Patch: The Big one (thank you Zard)");
+initSection("Reworks");
+initWords("UTilt and NAir now don't use rocks, therefore never get armored;");
+initWords("Reworked FStrong's knockback formula (base 9.5, scaling 1.1 > base 9, scaling 1.15);");
+initWords("Old NSpecial is now FSpecial, replacing Rollout. It also won't consume rocks anymore, therefore will always have a 1.5 seconds cooldown (90 frames);");
+initWords("New NSpecial is now Mega Punch, functioning as a chargeable strong melee move that gains Sturdy Armor if you use rocks and Super Armor if it's also fully charged;");
+initWords("DSpecial is now a single-hit move with an early stronger hit (damage: 8, base knockback: 6, scaling: 0.8) and a late weaker hit, active for the rest of the move (damage: 6, base knockback: 5, scaling: 0.5). HOWEVER, it can now absorb both Geodude and regular rocks to gain extra Stealth Rocks. (Thank you Zard);");
+initWords("UStrong now absorbs the rocks, but gains Sturdy Armor.");
+initSection("Nerfs");
+initWords("DTilt doesn't have armor anymore;");
+initWords("Geodude isn't transcendent anymore.");
+initSection("Others");
+initWords("All hit sfx is now Rivals stock sounds (notable changes: Jab, FAir, UAir, FStrong, DStrong, FSpecial, DSpecial);");
+initWords("...except for the sound used for meteors (USpecial and BAir). I changed that one and now it's funnier. Lmao;");
+initWords("Edited the Blue Alt to reference Charizard (thank you Zard);");
+initWords("Removed the Voidfox alt;");
+initWords("Added another White Alt (thank you Gargana-I mean Zard).");
+
+initPatch("1.11", "22/08/12");
+initHeader("Eleventh Patch");
+initSection("Others");
+initWords("Added a charselect.ogg: the game will play Golem's cry when selected;");
+initWords("Changed the selection icon into one that's not .jpg quality.");
+
+initPatch("1.10", "22/05/30");
+initHeader("Tenth Patch");
+initSection("Reworks");
+initWords("Changed the angle to each of Nair's early hitboxes (earliest: 50 > 90, late: 65 > 85).");
+initSection("Buffs");
+initWords("Reduced Fair's landing lag (9 > 8 frames, not counting whifflag).");
+initSection("Nerfs");
+initWords("Reduced knockback scaling on BAir's early hit (1.1 > 1.0) and late hit (1.0 > 0.9);");
+initWords("Reduced knockback scaling on NSpecial's Melee hit (0.9 > 0.45);");
+initWords("Reduced knockback scaling on USpecial's 2nd hit (1.0 > 0.8) and meteor hit (1.1 > 0.7).");
+initSection("Others");
+initWords("Golem will do Wooloo's cry when being KOed on Wooloo's alt.");
+
 initPatch("1.9", "22/02/22");
 initHeader("Ninth Patch");
 initSection("Nerfs");
@@ -783,7 +819,7 @@ initCodecPagePit(SPK_VIR,	5,	6,	"Silly Pit!");
 initCodecPagePit(SPK_VIR,	1,	1,	"I'd NEVER let anyone from my army to battle on the field of Aether before me, not even Phosphora!");
 initCodecPagePit(SPK_PALU,	0,	3,	"Do not let the similar appearance confuse you, Pit! This is Golem, the Megaton Pokemon, after his ability to cause and resist explosions.");
 initCodecPagePit(SPK_PIT,	3,	0,	"I already dealt with bombs before. This should be no problem!");
-initCodecPagePit(SPK_VIR,	0,	3,	"That's just one of their abilities. This one seems to be focusing on using rocks to protect himself.");
+initCodecPagePit(SPK_VIR,	0,	3,	"That's just one of their abilities. This one seems to be focusing on using rocks to protect itself.");
 initCodecPagePit(SPK_PALU,	0,	4,	"Exactly: it uses Stealth Rocks to create layers of armor. This way its attacks will go through yours and it'll gain the upper hand.");
 initCodecPagePit(SPK_PIT,	6,	7,	"Armor to go through my attacks you say? That sounds oddly familiar.");
 initCodecPagePit(SPK_VIR,	2,	2,	"Wait IS IT THROWING A GEODUDE???");

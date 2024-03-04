@@ -36,4 +36,4 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("cut_hit_s"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

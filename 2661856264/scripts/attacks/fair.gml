@@ -36,4 +36,4 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 7.5);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("cut_hit_l"));
+set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

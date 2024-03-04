@@ -51,7 +51,7 @@ set_hitbox_value(AT_JAB, 1, HG_ANGLE, 0);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("cut_hit_s"));
+set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Jab2");
@@ -68,7 +68,7 @@ set_hitbox_value(AT_JAB, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("cut_hit_l"));
+set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 
 set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Jab2 doesn't ignore parry stun.");

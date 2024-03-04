@@ -3,6 +3,13 @@
 muno_event_type = 1;
 user_event(14);
 
+if (punch_charge == 4){
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 3);
+}
+else {
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 2);
+}
+
 //Plays the "Supereffective!" sound when it galaxies someone
 if instance_number(oPlayer) == 2 {
     if move_cooldown[AT_TAUNT] == 0 && hitstop{

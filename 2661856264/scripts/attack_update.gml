@@ -17,9 +17,6 @@ if (attack == AT_DATTACK){
 
 //Rockless Armor Stuff
 if (stealth_rock == 0){
-    if (attack == AT_DTILT) && (window == 2 || window == 3){
-        soft_armor = 13; 
-    }
     if (attack == AT_FSTRONG){
         if (window == 1 && window_timer > 4){
             soft_armor = 13;
@@ -43,22 +40,6 @@ if (stealth_rock >= 1){
         }
     }
     
-    if (attack == AT_NAIR){
-        if (window == 1){
-            if (window_timer = 1){
-                sound_play(sound_get("special"));
-            }
-            if (window_timer > 3){
-                soft_armor = 13;
-            }
-        }
-        if (window == 2){
-            if (window_timer == 2){
-                stealth_rock -= 1;
-            }
-        }
-    }
-    
     if (attack == AT_DSTRONG){ 
         if (window == 1 && window_timer = 1){
             sound_play(sound_get("special"));
@@ -71,23 +52,23 @@ if (stealth_rock >= 1){
         }
     }
     
-    if (attack == AT_UTILT){ 
-        if (window == 1 && window_timer = 1){
-            sound_play(sound_get("special"));
-        }
-        if (window == 2 || window == 3){
+    if (attack == AT_USTRONG){ 
+        if (window == 1){
             soft_armor = 13;
-        }
-        if (window == 4 && window_timer == 1){
-            stealth_rock -= 1;
+            if (window_timer = 1){
+                sound_play(sound_get("special"));
+                stealth_rock -= 1;
+            }
         }
     }
     
     if (attack == AT_FSTRONG){
-        if (window == 1 && window_timer > 4){
-            super_armor = true;
+        if (window == 1){
             if (window_timer = 1){
                 sound_play(sound_get("special"));
+            }
+            if (window_timer > 4){
+            super_armor = true;
             }
         }
         if (window == 2 && window_timer == 1){
@@ -95,17 +76,23 @@ if (stealth_rock >= 1){
             super_armor = false;
         }
     }
-    if (attack == AT_FSPECIAL){
-        can_shield = true;
-        if (shield_pressed && has_airdodge = true){
-            stealth_rock -= 1;
+    
+    if (attack == AT_NSPECIAL){ 
+        if (window == 3 && window_timer = 1){
             sound_play(sound_get("special"));
         }
-        if (has_hit){
-            can_jump = true;
-            if (jump_pressed || up_strong_pressed){
+        if (stealth_rock == 4 && punch_charge == 4){
+            if (window == 1 || window == 3 || window == 4){
+                super_armor = true;
+            }
+        }
+        else {
+            if (window == 3){
+                soft_armor = 13;
+            }
+            if (window == 4 && window_timer == 1){
                 stealth_rock -= 1;
-                sound_play(sound_get("special"));
+                soft_armor = 0;
             }
         }
     }
@@ -144,19 +131,96 @@ if (attack = AT_FSTRONG){
     }    
 }
 
-//NSpecial 
+//NSpecial
 if (attack == AT_NSPECIAL){
+    if (window == 2){
+        can_jump = true;
+        can_shield = true;
+        //Releases the Punch earlier
+        if (special_pressed){
+            window = 3;
+            window_timer = 0;
+        }
+        //Each Loop adds a level of charge
+        if (window_timer == 19){
+            //Reaches full charge
+            if (punch_charge == 3){
+                punch_charge++;
+                spawn_hit_fx(x, y-25, 192);
+                sound_play(sound_get("charge"));   
+            }
+            //Adds charge
+            if (punch_charge < 3){
+                punch_charge++;
+                spawn_hit_fx(x, y-25, 193);
+                sound_play(sound_get("pokkencharge"));   
+            }
+            else {
+                window = 9;
+                window_timer = 0;
+            }
+        }    
+    }
+    //Switches each hitbox depending on the charge level
+    if (window == 3){
+        switch(punch_charge){
+            case 0:
+    		    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 5);
+    		    set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 0);
+    		break;
+    		case 1:
+    		    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 5);
+    		    set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 0);
+    		break;
+    		case 2:
+    		    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 5);
+    		    set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 0);
+    		break;
+    		case 3:
+    		    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 5);
+    		    set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 0);
+    		break;
+    		case 4:
+    		    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 0);
+    		    set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 5);
+    		break;
+        }
+    }
+    //Resets charge and armor (if has 4 Stealth Rocks)
+    if (window == 4){
+        if (stealth_rock == 4 && window_timer == 5){
+            stealth_rock = 0;
+            super_armor = false;
+        }   
+        punch_charge = 0;
+    }
+}
+
+//FSpecial 
+if (attack == AT_FSPECIAL){
     attack_end();
     //Resets the variable
     if (window == 1){
-        nspecial_charge = 0;
-        if (window_timer = 1 && stealth_rock >= 1){
-            sound_play(sound_get("special"));
-        }
+        fspecial_charge = 0;
     }
     //Charging the move
     if (window == 2){
-        nspecial_charge++
+        fspecial_charge++
         //You can let go and launch immediately after startup
         if (!special_down){
             window = 3;
@@ -165,110 +229,21 @@ if (attack == AT_NSPECIAL){
     }
     //Decide what's thrown based on the charge
     if (window == 3){
-        if (nspecial_charge < 22){
-            set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 240);
-            set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 0);
+        if (fspecial_charge < 22){
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 240);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
         }
-        if (nspecial_charge == 22) {
-            set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0);
-            set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 140);
+        if (fspecial_charge == 22) {
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 140);
         }
     }
-    //Rock & cooldown
+    //Cooldown
     if (window == 4) {
         if (window_timer == 1){
-            move_cooldown[AT_NSPECIAL] = 90;
-            if (nspecial_charge < 22 && stealth_rock >= 1){
-                stealth_rock -= 1;
-                move_cooldown[AT_NSPECIAL] = 60;
-            }
-            if (nspecial_charge == 22 && stealth_rock >= 2){
-                stealth_rock -= 2;
-                move_cooldown[AT_NSPECIAL] = 60;
-            }
+            move_cooldown[AT_FSPECIAL] = 90;
         }
    }
-}
-
-//FSpecial
-if (attack == AT_FSPECIAL){
-    if (was_parried){
-        set_state(PS_PRATFALL);
-    }
-    attack_end();
-    //Resets the variables
-    if (window == 1){
-        fspecial_charge = 0;
-        fspecial_cont = 0;
-        can_fastfall = false;
-    }
-    //Launching
-    if (window == 3){
-        fspecial_speed = 8;
-        set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, fspecial_speed);
-        can_wall_jump = true;
-        can_fastfall = false;
-        if (window_timer == 1){
-            spawn_base_dust(x, y, "djump", -1);
-        }
-        if (special_pressed){
-            window = 7;
-            window_timer = 1;
-            destroy_hitboxes();
-            fspecial_cont = 0;
-        }
-    }
-    if (window == 4){
-        can_wall_jump = true;
-        if (special_pressed){
-            window = 7;
-            window_timer = 1;
-            destroy_hitboxes();
-            fspecial_cont = 0;
-        }
-    }
-        
-    //Rolling
-    if (window == 5){
-        fspecial_cont++;
-        //Destroys the previous hitbox
-        if (window_timer == 0){
-            destroy_hitboxes();
-        }
-        //Increases the speed bit by bit
-        if ((window_timer == 7 || window_timer == 15) && fspecial_speed < 8.01){
-            fspecial_speed += 1.5;
-            set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, fspecial_speed);
-        }
-        //Going to the turning window
-        if ((spr_dir == 1 && left_pressed) || (spr_dir == -1 && right_pressed)){
-            window = 6;
-            window_timer = 1;
-            destroy_hitboxes();
-        }
-        //Cont exceding 120 frames or pressing special stops the attack
-        if (fspecial_cont >= 120 || special_pressed){
-            window = 7;
-            window_timer = 1;
-            destroy_hitboxes();
-            fspecial_cont = 0;
-        }
-    }
-    //Turning Animation
-    if (window == 6 && window_timer == 1){
-        spr_dir *= -1;
-        sound_stop(asset_get("sfx_kragg_roll_loop"));
-        spawn_base_dust(x, y, "dash_start");
-        fspecial_speed = 3;
-        set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, fspecial_speed);
-    }
-    //Endlag
-    if (window == 7){
-        sound_stop(asset_get("sfx_kragg_roll_loop"));
-        if (window_timer == 24 && free){
-            set_state(PS_PRATFALL);
-        }
-    }
 }
 
 //USpecial
@@ -331,35 +306,3 @@ if (attack == AT_TAUNT){
         }
     }
 }
-
-#define spawn_base_dust
-///spawn_base_dust(x, y, name, ?dir)
-//This function spawns base cast dusts. Names can be found below.
-var dlen; //dust_length value
-var dfx; //dust_fx value
-var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
-var dust_color = 0;
-var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
-
-switch (name) {
-    default: 
-    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-    case "doublejump": 
-    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
-}
-var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-newdust.dust_fx = dfx; //set the fx id
-if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
-newdust.dust_color = dust_color; //set the dust color
-if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
-return newdust;

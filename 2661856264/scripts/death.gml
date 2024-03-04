@@ -8,3 +8,4 @@ if (get_player_color( player ) == 9) {
 }
 
 stealth_rock = 0;
+punch_charge = 0;

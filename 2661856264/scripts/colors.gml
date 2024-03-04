@@ -30,18 +30,18 @@ set_color_profile_slot_range( 6, 1, 6, 31 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 16 );
 
-// Blue
-set_color_profile_slot( 1, 0, 148, 172, 230 ); //Light Shell
-set_color_profile_slot( 1, 1, 32, 98, 172 ); //Dark Shell
-set_color_profile_slot( 1, 2, 230, 197, 115 ); //Light Skin
-set_color_profile_slot( 1, 3, 139, 98, 65 ); //Dark Skin
+// Blue/Charizard
+set_color_profile_slot( 1, 0, 80, 165, 230 ); //Light Shell
+set_color_profile_slot( 1, 1, 54, 96, 219 ); //Dark Shell
+set_color_profile_slot( 1, 2, 250, 148, 35 ); //Light Skin
+set_color_profile_slot( 1, 3, 133, 38, 0 ); //Dark Skin
 set_color_profile_slot( 1, 4, 255, 255, 255 ); //Sclera & Claws1
 set_color_profile_slot( 1, 5, 176, 208, 208 ); //Sclera & Claws2
-set_color_profile_slot( 1, 6, 213, 172, 74 ); //Iris
+set_color_profile_slot( 1, 6, 26, 138, 118 ); //Iris
 
-// Red
+// Red/Shiny
 set_color_profile_slot( 2, 0, 208, 144, 80 ); //Light Shell
 set_color_profile_slot( 2, 1, 128, 64, 0 ); //Dark Shell
 set_color_profile_slot( 2, 2, 224, 168, 136 ); //Light Skin
@@ -50,7 +50,7 @@ set_color_profile_slot( 2, 4, 255, 255, 255 ); //Sclera & Claws1
 set_color_profile_slot( 2, 5, 176, 208, 208 ); //Sclera & Claws2
 set_color_profile_slot( 2, 6, 237, 28, 36 ); //Iris
 
-// Green
+// Green/Torterra
 set_color_profile_slot( 3, 0, 65, 172, 65 ); //Light Shell
 set_color_profile_slot( 3, 1, 57, 90, 41 ); //Dark Shell
 set_color_profile_slot( 3, 2, 180, 131, 82 ); //Light Skin
@@ -59,7 +59,7 @@ set_color_profile_slot( 3, 4, 230, 230, 230 ); //Sclera & Claws1
 set_color_profile_slot( 3, 5, 189, 189, 189 ); //Sclera & Claws2
 set_color_profile_slot( 3, 6, 139, 106, 65 ); //Iris
 
-// Black
+// Black/Luxray
 set_color_profile_slot( 4, 0, 98, 98, 123 ); //Light Shell
 set_color_profile_slot( 4, 1, 49, 49, 65 ); //Dark Shell
 set_color_profile_slot( 4, 2, 123, 172, 246 ); //Light Skin
@@ -68,7 +68,7 @@ set_color_profile_slot( 4, 4, 230, 74, 80 ); //Sclera & Claws1
 set_color_profile_slot( 4, 5, 148, 57, 82 ); //Sclera & Claws2
 set_color_profile_slot( 4, 6, 255, 230, 90 ); //Iris
 
-// Yellow
+// Yellow/Blastoise
 set_color_profile_slot( 5, 0, 255, 197, 57 ); //Light Shell
 set_color_profile_slot( 5, 1, 164, 123, 32 ); //Dark Shell
 set_color_profile_slot( 5, 2, 51, 82, 210 ); //Light Skin
@@ -140,14 +140,14 @@ set_color_profile_slot( 12, 4, 255, 255, 255 ); //Sclera & Claws1
 set_color_profile_slot( 12, 5, 176, 208, 208 ); //Sclera & Claws2
 set_color_profile_slot( 12, 6, 69, 0, 0 ); //Iris
 
-// Void
-set_color_profile_slot( 13, 0, 84, 84, 84 ); //Light Shell
-set_color_profile_slot( 13, 1, 56, 56, 56 ); //Dark Shell
-set_color_profile_slot( 13, 2, 248, 248, 248 ); //Light Skin
-set_color_profile_slot( 13, 3, 181, 248, 187 ); //Dark Skin
-set_color_profile_slot( 13, 4, 109, 154, 94 ); //Sclera & Claws1
-set_color_profile_slot( 13, 5, 67, 94, 58 ); //Sclera & Claws2
-set_color_profile_slot( 13, 6, 162, 255, 10 ); //Iris
+// Darkrai
+set_color_profile_slot( 13, 0, 75, 75, 100 ); //Light Shell
+set_color_profile_slot( 13, 1, 61, 55, 73 ); //Dark Shell
+set_color_profile_slot( 13, 2, 232, 240, 243 ); //Light Skin
+set_color_profile_slot( 13, 3, 157, 170, 183 ); //Dark Skin
+set_color_profile_slot( 13, 4, 214, 37, 57 ); //Sclera & Claws1
+set_color_profile_slot( 13, 5, 140, 15, 39 ); //Sclera & Claws2
+set_color_profile_slot( 13, 6, 25, 124, 230 ); //Iris
 
 // In-Game
 set_color_profile_slot( 14, 0, 176, 184, 104 ); //Light Shell
@@ -157,6 +157,15 @@ set_color_profile_slot( 14, 3, 105, 76, 38 ); //Dark Skin
 set_color_profile_slot( 14, 4, 255, 255, 255 ); //Sclera & Claws1
 set_color_profile_slot( 14, 5, 176, 208, 208 ); //Sclera & Claws2
 set_color_profile_slot( 14, 6, 237, 28, 36 ); //Iris
+
+// Salty much?
+set_color_profile_slot( 15, 0, 255, 255, 255 ); //Light Shell
+set_color_profile_slot( 15, 1, 202, 222, 222 ); //Dark Shell
+set_color_profile_slot( 15, 2, 171, 121, 104 ); //Light Skin
+set_color_profile_slot( 15, 3, 120, 55, 50 ); //Dark Skin
+set_color_profile_slot( 15, 4, 255, 255, 255 ); //Sclera & Claws1
+set_color_profile_slot( 15, 5, 176, 208, 208 ); //Sclera & Claws2
+set_color_profile_slot( 15, 6, 248, 184, 72 ); //Iris
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -42,8 +42,8 @@ sprite_change_offset("fstrong", 48, 140);
 sprite_change_offset("fstrong_proj", 48, 140);
 sprite_change_offset("ustrong", 84, 150);
 sprite_change_offset("dstrong", 44, 62);
-sprite_change_offset("nspecial", 60, 76);
-sprite_change_offset("fspecial", 46, 76);
+sprite_change_offset("nspecial", 142, 72);
+sprite_change_offset("fspecial", 60, 76);
 sprite_change_offset("uspecial", 70, 110);
 sprite_change_offset("uspecial_smoke", 70, 110);
 sprite_change_offset("dspecial", 74, 62);
@@ -52,18 +52,14 @@ sprite_change_offset("phone_open", 50, 62);
 
 sprite_change_offset("hurtbox", 42, 64);
 sprite_change_offset("hurtbox_crouch", 42, 62);
-sprite_change_offset("dattack_armor", 40, 72);
-sprite_change_offset("dtilt_armor", 60, 66);
-sprite_change_offset("utilt_armor", 64, 86);
-sprite_change_offset("nair_armor", 62, 88);
 sprite_change_offset("fstrong_armor", 48, 140);
 sprite_change_offset("ustrong_armor", 84, 150);
 sprite_change_offset("dstrong_armor", 44, 62);
 
 sprite_change_offset("plat", 43, 0);
 
-sprite_change_offset("nspecial_proj", 16, 30);
-sprite_change_offset("nspec_proj_alt", 31, 25);
+sprite_change_offset("fspecial_proj", 16, 30);
+sprite_change_offset("fspec_proj_alt", 31, 25);
 
 sprite_change_offset("hfx_rock_small", 64, 64);
 sprite_change_offset("hfx_rock_large", 128, 128);
