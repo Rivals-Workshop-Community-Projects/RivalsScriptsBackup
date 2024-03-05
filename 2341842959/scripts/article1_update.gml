@@ -64,7 +64,7 @@ if state != 3 with (asset_get("pHitBox")){
 	}
 	if (attack == AT_FSPECIAL 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) 
-	&& other.state == 1	&& other.fspecial_passed == false){
+	&& other.state == 1	&& other.fspecial_passed == false && orig_player_id.has_hit == false){
 		if (other.player_id.state_timer > 12){
 			other.player_id.window = 2;
 			other.player_id.window_timer = 1;
