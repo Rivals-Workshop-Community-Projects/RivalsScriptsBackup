@@ -25,11 +25,11 @@ set_color_profile_slot( 0, 5, 71, 106, 31 );
 set_color_profile_slot_range( 5, 1, 1, 1 );
 
 // foliage 1
-set_color_profile_slot( 0, 6, 85, 126, 41 );
+set_color_profile_slot( 0, 6, 76, 116, 47 );
 set_color_profile_slot_range( 6, 1, 1, 1 );
 
 // foliage 2
-set_color_profile_slot( 0, 7, 56, 88, 13 );
+set_color_profile_slot( 0, 7, 45, 79, 18 );
 set_color_profile_slot_range( 7, 1, 1, 1 );
 
 

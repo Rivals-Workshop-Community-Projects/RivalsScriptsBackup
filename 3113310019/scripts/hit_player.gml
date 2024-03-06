@@ -27,16 +27,16 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 		window = 1;
 		if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
 			window_timer = 4;
-			melonpult_fspecial_grabbed.x = x + (62 * spr_dir);
-			melonpult_fspecial_grabbed.y = y - 16;
+			melonpult_fspecial_grabbed.x = floor(x) + (62 * spr_dir);
+			melonpult_fspecial_grabbed.y = floor(y) - 16;
 		} else if (my_hitboxID.hbox_num == 3){
 			window_timer = 2;
-			melonpult_fspecial_grabbed.x = x + (94 * spr_dir);
-			melonpult_fspecial_grabbed.y = y - 16;
+			melonpult_fspecial_grabbed.x = floor(x) + (94 * spr_dir);
+			melonpult_fspecial_grabbed.y = floor(y) - 16;
 		} else if (my_hitboxID.hbox_num == 4){
 			window_timer = 0;
-			melonpult_fspecial_grabbed.x = x + (130 * spr_dir);
-			melonpult_fspecial_grabbed.y = y - 16;
+			melonpult_fspecial_grabbed.x = floor(x) + (130 * spr_dir);
+			melonpult_fspecial_grabbed.y = floor(y) - 16;
 		}
 	}
 }

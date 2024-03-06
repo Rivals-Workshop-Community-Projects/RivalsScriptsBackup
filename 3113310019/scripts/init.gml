@@ -104,6 +104,7 @@ umbrellaleaf_recharge = 0;
 swing_throw_type = 1;
 dair_fall_timer = 0;
 umbrellaleaf_dair_bounces = 0;
+umbrellaleaf_glide_used = false;
 pult_di = 0;
 fspecial_charge = 0;
 melonpult_fspecial_grabbed = 0;

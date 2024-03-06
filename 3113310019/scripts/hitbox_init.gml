@@ -5,6 +5,16 @@ melon_powerdecay = false;
 if (attack == AT_EXTRA_2 && player_id.swing_throw_type == 2){
 	if (hbox_num == 5){
 		damage = 6;
+
+		melon_powerdecay = true;
+		image_xscale = 0.2;
+		image_yscale = 0.2;
+		kb_value = 6;
+		kb_scale = 0.4;
+		kb_angle = 55;
+		hitpause = 8;
+		hitpause_growth = 0.5;
+		hitstun_factor = 0.5;
 	}
 	if (hbox_num == 6 || hbox_num == 7){
 		damage = 3;

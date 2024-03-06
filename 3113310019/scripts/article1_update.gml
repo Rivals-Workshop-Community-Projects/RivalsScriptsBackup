@@ -43,6 +43,7 @@
 							was_parried = true;
 							reflected = true;
 							spr_dir *= -1;
+							draw_xscale *= -1;
 							hsp *= -1;
 							vsp = -abs(vsp);
 							//length *= 2;
@@ -59,7 +60,7 @@
 	y - 48, 
 	x + 24, 
 	y - 0, 
-	asset_get("pHitBox"), true, false) && state != 2) {
+	asset_get("pHitBox"), true, false) && state != 2 && state != 4) {
 		with (asset_get("pHitBox")){
     		if (get_player_team(player) != get_player_team(other.player)){
     			if collision_rectangle(
@@ -130,6 +131,7 @@ if (state != 2 && state != 5){
 					hsp = (-10 * (abs(hsp)/hsp));
 					vsp = -8;
 					length *= 2;
+					draw_xscale *= -1;
 					sound_play (sound_get ("deflect"));
 					with obj_article1{
 						if (player_id == other.player_id){
@@ -153,16 +155,17 @@ if (state != 2 && state != 5){
 							closest_player = self;
 						}
 					}
-					if (umbrellaleaf_bounces < 4){
+					if (umbrellaleaf_bounces < 5){
 						vsp = -14;
 						hsp = other.hsp;
 					} else {
 						vsp = -8;
 						if (closest_player == noone) hsp = 12 * spr_dir;
-						else hsp = 12 * ((closest_player.x - x) / abs((closest_player.x - x)));
+						else hsp = 12 * ((closest_player.x - x) / abs(closest_player.x - x));
 						umbrellaleaf_bounces = 1;
 					}
 					length *= 2;
+					if (closest_player != noone) draw_xscale = (closest_player.x - x) / abs(closest_player.x - x);
 					sound_play (sound_get ("deflect"));
 					with obj_article1{
 						if (player_id == other.player_id){
@@ -203,8 +206,8 @@ if (state != 2 && state != 5){
 						
 						hitpause = true;
 						hitstop_full = hitpause;
-						hitstop = other.hitpause;
-						old_vsp = -12 + min(umbrellaleaf_dair_bounces, 6);
+						hitstop = 4;
+						old_vsp = -12 + min(umbrellaleaf_dair_bounces*2, 6);
 						old_hsp = clamp(hsp, -5, 5);
 						
 						umbrellaleaf_dair_bounces++;
@@ -263,9 +266,9 @@ if (state != 2 && state != 5){
 		}
 		// glider
 		if collision_rectangle(
-		other.x - 32, 
+		other.x - 36, 
 		other.y - 56, 
-		other.x + 32, 
+		other.x + 36, 
 		other.y - 0, 
 		self, true, false) 
 		&& (player_id == other.player_id){
@@ -280,13 +283,19 @@ if (state != 2 && state != 5){
 					hitpause = true;
 					hitstop_full = hitpause;
 					hitstop = other.hitpause;
-					old_vsp = -5;
+					if (umbrellaleaf_glide_used == false){
+						old_vsp = -5;
+						umbrellaleaf_glide_used = true;
+					} else {
+						old_vsp = 0;
+					}
 					//old_hsp = ((obj_article1.x - x) / 40) + (4 * spr_dir);
 				}
 				with obj_article1{
 					if (player_id == other.player_id){
 						player_id.melonpult_fspecial_grabbed = id;
 						sound_play (sound_get ("dissipate"));
+						spawn_hit_fx(floor(x), floor(y) - 24, 301);
 						state = 0;
 						state_timer = 5;
 						image_index = 1;
@@ -301,30 +310,30 @@ if (state != 2 && state != 5){
 					}
 					with obj_article1{
 						if (player_id == other.player_id){
-							x = player_id.x + (62 * player_id.spr_dir);
-							y = player_id.y - 16;
+							x = floor(player_id.x) + (62 * player_id.spr_dir);
+							y = floor(player_id.y) - 16;
 						}
 					}
 				} else if (hbox_num == 2){
 					with player_id{
 						window_timer = 4;
-						old_hsp = 7.5 * spr_dir;
+						old_hsp = 8 * spr_dir;
 					}
 					with obj_article1{
 						if (player_id == other.player_id){
-							x = player_id.x + (62 * player_id.spr_dir);
-							y = player_id.y - 16;
+							x = floor(player_id.x) + (62 * player_id.spr_dir);
+							y = floor(player_id.y) - 16;
 						}
 					}
 				} else if (hbox_num == 3){
 					with player_id{
 						window_timer = 2;
-						old_hsp = 8.5 * spr_dir;
+						old_hsp = 9 * spr_dir;
 					}
 					with obj_article1{
 						if (player_id == other.player_id){
-							x = player_id.x + (94 * player_id.spr_dir);
-							y = player_id.y - 16;
+							x = floor(player_id.x) + (94 * player_id.spr_dir);
+							y = floor(player_id.y) - 16;
 						}
 					}
 				} else if (hbox_num == 4){
@@ -334,8 +343,8 @@ if (state != 2 && state != 5){
 					}
 					with obj_article1{
 						if (player_id == other.player_id){
-							x = player_id.x + (130 * player_id.spr_dir);
-							y = player_id.y - 16;
+							x = floor(player_id.x) + (130 * player_id.spr_dir);
+							y = floor(player_id.y) - 16;
 						}
 					}
 				}
@@ -360,8 +369,13 @@ if (state != 2 && state != 5){
 					if (player_id == other.player_id){
 						player_id.melonpult_uspecial_grabbed = id;
 						sound_play (sound_get ("dissipate"));
-						x = player_id.x + (26 * player_id.spr_dir);
-						y = player_id.y - 18;
+						spawn_hit_fx(floor(x), floor(y) - 24, 301);
+						x = floor(player_id.x) + (26 * player_id.spr_dir);
+						if (y < player_id.y - 18){
+							player_id.y = floor(y) + 26;
+						} else {
+							y = floor(player_id.y) - 18;
+						}
 						new_sprite = sprite_get("umbrellaleaf_open");
 						hsp = 0;
 						state = 4;
@@ -375,13 +389,13 @@ if (state != 2 && state != 5){
 	}
 	with (player_id){
 		if collision_rectangle(
-		other.x - 32, 
+		other.x - 36, 
 		other.y - 56, 
-		other.x + 32, 
+		other.x + 36, 
 		other.y - 0, 
 		self, true, false) {
 			if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) 
-			&& (attack == AT_USPECIAL) && (window == 2) && !(hitstop){
+			&& (attack == AT_USPECIAL) && (window >= 2) && !(hitstop){
 				destroy_hitboxes();
 				attack_end();
 				attack = AT_USPECIAL_2;
@@ -397,8 +411,13 @@ if (state != 2 && state != 5){
 				with other{
 					player_id.melonpult_uspecial_grabbed = id;
 					sound_play (sound_get ("dissipate"));
-					x = player_id.x + (26 * player_id.spr_dir);
-					y = player_id.y - 18;
+					spawn_hit_fx(floor(x), floor(y) - 24, 301);
+					x = floor(player_id.x) + (26 * player_id.spr_dir);
+					if (y < player_id.y - 18){
+						player_id.y = floor(y) + 26;
+					} else {
+						y = floor(player_id.y) - 18;
+					}
 					new_sprite = sprite_get("umbrellaleaf_open");
 					hsp = 0;
 					state = 4;
@@ -414,12 +433,14 @@ if (state != 2 && state != 5){
 	&& (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR){
 		free = true;
 		if (player_id.attack == AT_FTHROW) && (player_id.window == 2) && (player_id.window_timer == 1){
-			hsp = 2.5*spr_dir;
-			vsp = -2.5;
+			spawn_hit_fx(floor(x), floor(y) - 24, 301);
+			hsp = 5.5*spr_dir;
+			vsp = -2;
 		}
 		if (player_id.attack == AT_NTHROW) && (player_id.window == 2) && (player_id.window_timer == 1){
-			hsp = -2.5*spr_dir;
-			vsp = -2.5;
+			spawn_hit_fx(floor(x), floor(y) - 24, 301);
+			hsp = -5.5*spr_dir;
+			vsp = -2;
 		}
 	}
 }
@@ -443,7 +464,7 @@ if (buffertimer < 20){
 //gravity
 if (grav_on){
 	var grav_speed = .1
-	var grav_max = 6;
+	var grav_max = 4;
 	
 	if (free){
 		
@@ -461,7 +482,9 @@ if (grav_on){
 		}
 	}
 }
-if (!free){
+if (free){
+	hsp *= 0.985; // jerma
+} else {
 	hsp = 0;
 }
 
@@ -486,6 +509,16 @@ if (state == 1){
 
 //State 2: Dying
 if (state == 2){
+	with (player_id){
+		if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+			if (melonpult_fspecial_grabbed == other.id && attack == AT_FSPECIAL_2) 
+			|| (melonpult_uspecial_grabbed == other.id && attack == AT_USPECIAL_2){
+				if (window != 4) && free{
+					set_state( PS_PRATFALL );
+				}
+			}
+		}
+	}
 	if (state_timer == 32){
 		spawn_hit_fx(x,y - 16,17)
 		instance_destroy();
@@ -501,8 +534,7 @@ if (state == 3){
 	}
 	if (free){
 		if (state_timer <= 10){
-			vsp = -1.5;
-			hsp *= 0.97;
+			vsp = -1;
 		}
 	}
 }
@@ -578,6 +610,7 @@ if (player_id.melonpult_fspecial_grabbed == id
 switch(state){
     case 0:
         new_sprite = sprite_get("umbrellaleaf_open");
+		image_angle = lerp(image_angle, 0, 0.25);
         animation_type = 0;
         break;
     case 1:
@@ -599,6 +632,7 @@ switch(state){
         break;
     case 2:
         new_sprite = sprite_get("umbrellaleaf_close");
+		image_angle = lerp(image_angle, 0, 0.25);
         animation_type = 1;
         break;
     case 3:
@@ -607,10 +641,12 @@ switch(state){
         break;
     case 4: //Since all of these guys are just kinda
         animation_type = 3;
+		image_angle = lerp(image_angle, 0, 0.25);
         break;
     case 5: //in a row, without any "break;" lines to
 		new_sprite = sprite_get("umbrellaleaf_open");
         animation_type = 3;
+		image_angle = lerp(image_angle, 0, 0.25);
         break;
     case 6: //stop their execution, they'll all default
     case 7: //to state 9's behavior. Read up on those

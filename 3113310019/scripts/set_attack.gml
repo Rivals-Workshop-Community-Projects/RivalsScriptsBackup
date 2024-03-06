@@ -1,19 +1,19 @@
 //set_attack
 pult_di = 0;
 fspecial_charge = 0;
-if !(attack == AT_FSPECIAL_2){ 
+if !(attack == AT_FSPECIAL_2 || attack == AT_USPECIAL){ 
 	if !(attack == AT_FTHROW || attack == AT_NTHROW){
 		melonpult_fspecial_grabbed = 0;
 	}
 }
 if (melonpult_fspecial_grabbed != 0){
 	if (attack == AT_FTHROW){
-		melonpult_fspecial_grabbed.x = x - (42 * spr_dir);
-		melonpult_fspecial_grabbed.y = y - 36;
+		melonpult_fspecial_grabbed.x = floor(x) - (42 * spr_dir);
+		melonpult_fspecial_grabbed.y = floor(y) - 36;
 	}
 	if (attack == AT_NTHROW){
-		melonpult_fspecial_grabbed.x = x - (44 * spr_dir);
-		melonpult_fspecial_grabbed.y = y - 44;
+		melonpult_fspecial_grabbed.x = floor(x) - (44 * spr_dir);
+		melonpult_fspecial_grabbed.y = floor(y) - 44;
 	}
 }
 if (attack == AT_USPECIAL_2){

@@ -19,7 +19,7 @@ set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 20);
 
 // grab hold
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 22);
 

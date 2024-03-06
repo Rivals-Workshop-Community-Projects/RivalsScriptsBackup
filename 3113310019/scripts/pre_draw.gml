@@ -26,7 +26,7 @@ if (state == PS_ATTACK_GROUND && attack == AT_EXTRA_2){
 
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if (attack == AT_FSPECIAL){
-		if (window == 1) && (fspecial_charge == 24){
+		if (window == 1) && (fspecial_charge == 19){
 			spawn_hit_fx(floor(x), floor(y) - 16, 301);
 		}
 	}

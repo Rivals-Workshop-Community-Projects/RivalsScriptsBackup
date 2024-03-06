@@ -27,8 +27,11 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_FTILT){
-	if (window == 1 && window_timer == 16) && (!free){
-		spawn_base_dust(x - 16*spr_dir, y, "dash", spr_dir);
+	if (window == 1 && window_timer == 18){
+		if (!free){
+			spawn_base_dust(x - 16*spr_dir, y, "dash", spr_dir);
+		}
+		hsp = max(hsp*spr_dir, 5)*spr_dir;
 	}
 	if !(window == 1 && window_timer < 2){
 		if (has_rune("G")){
@@ -146,13 +149,24 @@ if (attack == AT_DAIR){
 	if (window == 1){ 
 		dair_fall_timer = 0;
 	}
+	if (window == 2 && window_timer == 8){
+        vsp = 12;
+		hsp = 6*spr_dir;
+	}
 	if (window == 3){
 		if (!hitpause && !hitstop){
 			dair_fall_timer++;
+            vsp += 0.2;
+            hsp = (vsp/2)*spr_dir;
 		}
 		can_wall_jump = true;
 		can_fast_fall = false;
 		can_move = false;
+		if (has_hit) && (has_rune("B")){
+			window = 5;
+			window_timer = 0;
+			old_vsp = -5;
+		}
 		if (dair_fall_timer >= 30){
 			can_jump = true;
 			if (has_airdodge) && (shield_pressed){
@@ -177,6 +191,7 @@ if (attack == AT_DAIR){
 	}
 	if (window == 4){
 		can_fast_fall = true;
+		hsp = clamp(hsp, -6, 6);
 		if (window_timer == 4){ 
 			vsp = -3;
 			//shake_camera( 1, 3 );
@@ -192,8 +207,12 @@ if (attack == AT_DAIR){
 }
 
 if (attack == AT_FSTRONG){
+	if (window == 2 && window_timer == 9){
+		spawn_base_dust(x - 16*spr_dir, y, "dash", spr_dir);
+		hsp = 5*spr_dir;
+	}
 	if (window == 2 && window_timer == 12){
-		spawn_hit_fx(floor(x + 100*spr_dir),floor(y),splat_effect);
+		spawn_hit_fx(floor(x + 98*spr_dir),floor(y-8),splat_effect);
 		sound_play (sound_get ("melonimpact"));
 	}
 }
@@ -283,7 +302,7 @@ if (attack == AT_FSPECIAL){
 				window_timer = 0;
 			}
 		}
-		if (fspecial_charge == 24){
+		if (fspecial_charge == 20){
 			sound_stop(sound_get("sfx_charge"));
 			sound_play(sound_get("sfx_charge_max"));
 		}
@@ -299,7 +318,7 @@ if (attack == AT_FSPECIAL){
 		}
 	}
 	if (window == 2 && window_timer == 3){
-		if (fspecial_charge >= 24){
+		if (fspecial_charge >= 20){
 			window = 4;
 			window_timer = 0;
 			fspecial_charge = 0;
@@ -357,17 +376,19 @@ if (attack == AT_FSPECIAL_2){
 				}
 				if (up_down && special_pressed) && (melonpult_fspecial_grabbed.melonpult_grabbed_type == 2){
 					if !(left_down && spr_dir == 1) && !(right_down && spr_dir == -1){
-						melonpult_fspecial_grabbed.x = x + (54 * spr_dir);
+						melonpult_fspecial_grabbed.x = floor(x) + (54 * spr_dir);
 					}
 					set_attack( AT_USPECIAL );
 					window_timer = 0;
 					window = 1;
-				} else if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1 || special_down){
+				} else if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1) 
+				|| (melonpult_fspecial_grabbed.melonpult_grabbed_type == 2 && special_pressed){
 					if (left_down && spr_dir == 1) || (right_down && spr_dir == -1){
 						set_attack( AT_NTHROW );
 						window_timer = 0;
 						window = 1;
-					} else if (left_down && spr_dir == -1) || (right_down && spr_dir == 1) || (special_down){
+					} else if (left_down && spr_dir == -1) || (right_down && spr_dir == 1) 
+					|| (special_pressed){
 						set_attack( AT_FTHROW );
 						window_timer = 0;
 						window = 1;
@@ -376,48 +397,55 @@ if (attack == AT_FSPECIAL_2){
 			}
 		}
 		if (window != 4){
-			if free{
-				// glider
-				if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 2){
-					vsp -= gravity_speed * 2 / 3; 
-					vsp = clamp(vsp, -4, 1); 
-					if (window == 3){
-						can_attack = true;
-						can_jump = true;
-						if (has_airdodge) && (shield_pressed){
-							set_state( PS_AIR_DODGE );
-							state_timer = 0;
-						}
-						if (window_timer mod 12 == 1){
-							sound_play (sound_get ("float"));
-						}
-					}
-					if (!exists){
-						set_state( PS_PRATFALL );
-					}
-				} else if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1){
+			if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1){
+				melonpult_fspecial_grabbed.hitstop = 2;
+				if free{
 					can_move = false;
 					hsp = clamp(hsp, -1, 1);
 					vsp -= gravity_speed * 2 / 3;
 					vsp = clamp(vsp, -4, 1.5);
+					can_fast_fall = false;
 				}
-				can_fast_fall = false;
 			}
-			if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1){
-				melonpult_fspecial_grabbed.hitstop = 2;
+			// glider
+			if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 2){
+				if free{
+					vsp -= gravity_speed * 2 / 3; 
+					vsp = clamp(vsp, -4, 1); 
+					can_fast_fall = false;
+					if (window == 3){
+						if (window_timer mod 12 == 1){
+							sound_play (sound_get ("float"));
+						}
+						if (has_airdodge) && (shield_pressed){
+							set_state( PS_AIR_DODGE );
+							state_timer = 0;
+						}
+					}
+				}
+				if (window == 3){
+					can_attack = true;
+					can_jump = true;
+					can_wall_jump = true;
+				}
+				if (!exists){
+					set_state( PS_PRATFALL );
+				}
 			}
 		} else {
 			if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 2){
+				hsp = clamp(hsp, -6, 6);
 				iasa_script();
 			}
 		}
 	}
 }
 if (attack == AT_FTHROW){
-	move_cooldown[AT_FSPECIAL] = 60;
+	move_cooldown[AT_FSPECIAL] = 30;
 	hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
 	if (melonpult_fspecial_grabbed != 0){
 		if (window == 1){
+			hsp = clamp(hsp, -6, 6);
 			if (melonpult_fspecial_grabbed.melonpult_grabbed_type == 1){
 				soft_armor = 999;
 				melonpult_fspecial_grabbed.hitstop = 2;
@@ -445,8 +473,8 @@ if (attack == AT_FTHROW){
 				melonpult_fspecial_grabbed.y = lerp(melonpult_fspecial_grabbed.y, y - 54, 0.5);
 			}
 			if (window_timer == 12){
-				melonpult_fspecial_grabbed.x = x + (24 * spr_dir);
-				melonpult_fspecial_grabbed.y = y - 60;
+				melonpult_fspecial_grabbed.x = floor(x) + (24 * spr_dir);
+				melonpult_fspecial_grabbed.y = floor(y) - 60;
 			}
 		} else {
 			can_fast_fall = true;
@@ -460,7 +488,7 @@ if (attack == AT_FTHROW){
 	}
 }
 if (attack == AT_NTHROW){
-	move_cooldown[AT_FSPECIAL] = 60;
+	move_cooldown[AT_FSPECIAL] = 30;
 	hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);
 	if (melonpult_fspecial_grabbed != 0){
 		if (window == 1){
@@ -524,8 +552,8 @@ if (attack == AT_NTHROW){
 				melonpult_fspecial_grabbed.y = lerp(melonpult_fspecial_grabbed.y, y - 66, 0.5);
 			}
 			if (window_timer == 21){
-				melonpult_fspecial_grabbed.x = x + (48 * spr_dir);
-				melonpult_fspecial_grabbed.y = y - 54;
+				melonpult_fspecial_grabbed.x = floor(x) + (48 * spr_dir);
+				melonpult_fspecial_grabbed.y = floor(y) - 54;
 			}
 		} else {
 			can_fast_fall = true;
@@ -577,19 +605,19 @@ if (attack == AT_USPECIAL_2){
 	if (melonpult_uspecial_grabbed.melonpult_grabbed_type == 2){
 		if (window == 1){
 			if (window_timer < 4){
-				melonpult_uspecial_grabbed.x = x + (24 * spr_dir);
-				melonpult_uspecial_grabbed.y = y - 18;
+				melonpult_uspecial_grabbed.x = floor(x) + (24 * spr_dir);
+				melonpult_uspecial_grabbed.y = floor(y) - 18;
 			}
 			if (window_timer == 4){
-				melonpult_uspecial_grabbed.x = x + (28 * spr_dir);
-				melonpult_uspecial_grabbed.y = y - 64;
+				melonpult_uspecial_grabbed.x = floor(x) + (28 * spr_dir);
+				melonpult_uspecial_grabbed.y = floor(y) - 64;
 			}
 		} else {
 			can_wall_jump = true;
 		}
 		if (window == 2) || (window == 3){
-			melonpult_uspecial_grabbed.x = x + (32 * spr_dir);
-			melonpult_uspecial_grabbed.y = y - 64;
+			melonpult_uspecial_grabbed.x = floor(x) + (30 * spr_dir);
+			melonpult_uspecial_grabbed.y = floor(y) - 58;
 		}
 		if (window != 4){
 			if free{
@@ -625,14 +653,12 @@ if (attack == AT_DSPECIAL){
 				}
 			}
 			if (umbrellaleaf_recharge >= 300){
-				instance_create(x + (spr_dir*60),y - 0,"obj_article1");
+				instance_create(x + (spr_dir*64),y - 0,"obj_article1");
 				sound_play (sound_get ("plant"));
 				umbrellaleaf_recharge = 0
-				/*
 				if (free){
-					vsp = -6;
+					vsp = min(vsp, -4);
 				}
-				*/
 			} else if (!exists){
 			    sound_play (sound_get ("buzzer"));
 			}

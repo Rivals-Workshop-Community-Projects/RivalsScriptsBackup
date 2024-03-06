@@ -1,3 +1,3 @@
-//there is no fair
-//look at you
-//absolutely foolish
+// there is no fair
+// look at you
+// absolutely foolish

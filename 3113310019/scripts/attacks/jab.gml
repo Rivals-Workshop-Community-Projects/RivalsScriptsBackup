@@ -142,7 +142,7 @@ set_hitbox_value(AT_JAB, 3, HG_HITSTUN_MULTIPLIER, 0.8);
 // splash on hit
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_JAB, 4, HG_LIFETIME, 2);
-set_hitbox_value(AT_JAB, 4, HG_WIDTH, 120);
+set_hitbox_value(AT_JAB, 4, HG_WIDTH, 160);
 set_hitbox_value(AT_JAB, 4, HG_HEIGHT, 120);
 set_hitbox_value(AT_JAB, 4, HG_SHAPE, 2);
 set_hitbox_value(AT_JAB, 4, HG_PRIORITY, 1);
@@ -165,13 +165,13 @@ set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_JAB, 4, HG_HITSTUN_MULTIPLIER, 0.6);
+set_hitbox_value(AT_JAB, 4, HG_HITSTUN_MULTIPLIER, 0.5);
 
 // splash on terrain collision
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_JAB, 5, HG_LIFETIME, 2);
-set_hitbox_value(AT_JAB, 5, HG_WIDTH, 96);
-set_hitbox_value(AT_JAB, 5, HG_HEIGHT, 48);
+set_hitbox_value(AT_JAB, 5, HG_WIDTH, 100);
+set_hitbox_value(AT_JAB, 5, HG_HEIGHT, 40);
 set_hitbox_value(AT_JAB, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_JAB, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_JAB, 5, HG_DAMAGE, 3);

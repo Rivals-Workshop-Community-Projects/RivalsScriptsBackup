@@ -18,7 +18,7 @@ if (state == PS_PARRY){
 }
 
 //uhh idk if being able to input attacks during dashstop is illegal or not sorry in advance
-if (state == PS_DASH_STOP){
+if (state == PS_DASH || state == PS_DASH_STOP){
 	if (up_down && attack_pressed){
 		set_attack( AT_EXTRA_2 );
 		swing_throw_type = 1;
@@ -27,17 +27,18 @@ if (state == PS_DASH_STOP){
 
 if (attack == AT_DAIR){
 	if (window == 4 && window_timer == 0){ 
-		if (has_hit){
-			spawn_hit_fx(floor(x + 30*spr_dir),floor(y),splat_effect);
-		} else {
-			spawn_hit_fx(floor(x + 30*spr_dir),floor(y + 8),splat_effect2);
-		}
+		spawn_hit_fx(floor(x + 30*spr_dir),floor(y),splat_effect);
 	}
 }
 
 if (umbrellaleaf_dair_bounces != 0 && !free) 
 && !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DAIR){
 	umbrellaleaf_dair_bounces = 0;
+}
+
+if (umbrellaleaf_glide_used == true && !free) 
+&& !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL_2){
+	umbrellaleaf_glide_used = false;
 }
 
 //practice mode
@@ -166,4 +167,15 @@ if (get_player_color(player) == 14){
 //runes
 if (has_rune("E")){
 	set_attack_value(AT_DTILT, AG_OFF_LEDGE, 1);
+}
+
+if (has_rune("B")){
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 8);
+	set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1);
+	set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 0);
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("melonimpact"));
+	set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, splat_effect);
+	set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
+	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 4);
 }
