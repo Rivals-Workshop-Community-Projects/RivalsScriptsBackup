@@ -1,7 +1,9 @@
- /* Maw's Code
-## `hit_player.gml` - 'Grab' Opponents On Hit, Transition to 'Throw'
-```GML
-//hit_player.gml */
+// Dash Attack Code to make it more consistent by canceling a tad earlier on 1st hit
+if(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1 && window == 2){
+	destroy_hitboxes();
+	window = 3;
+	window_timer = 0;
+}
 
 //#region Element Build Up and Flag Logic
 // This Section needs to come before the grab set due to it affecting which attack it goes into.
@@ -461,13 +463,19 @@ switch(my_hitboxID.attack){
 // Water FX
 switch(my_hitboxID.attack){
 	case AT_FTILT:
-	case AT_DATTACK:
 		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_water);
 		hitfx_water_object.depth = depth - 1;
 		sound_play(asset_get( "sfx_waterhit_heavy" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
-		break;
+	break;
+	case AT_DATTACK:
+	if(my_hitboxID.hbox_num > 1){
+		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_water);
+		hitfx_water_object.depth = depth - 1;
+		sound_play(asset_get( "sfx_waterhit_heavy" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
+	}
+	break;
 	default:
-		break;
+	break;
 }
 //#endregion
 

@@ -162,7 +162,7 @@ set_color_profile_slot( 13, 1, 111, 61, 130 ); //Black Fur Shading
 set_color_profile_slot( 13, 2, 243, 214, 150 ); //Green Bracelet
 set_color_profile_slot( 13, 3, 255, 237, 195 ); //White Hair
 set_color_profile_slot( 13, 4, 211, 182, 134 ); //White Hair Shading
-set_color_profile_slot( 13, 5, 89, 89, 89 ); //Green Mask
+set_color_profile_slot( 13, 5, 194, 56, 180 ); //Green Mask
 set_color_profile_slot( 13, 6, 255, 255, 255 ); //Brown Claw
 set_color_profile_slot( 13, 7, 233, 233, 233 ); //White Eye
 
@@ -212,7 +212,7 @@ set_color_profile_slot( 18, 1, 57, 85, 122 ); //Black Fur Shading
 set_color_profile_slot( 18, 2, 149, 53, 201 ); //Green Bracelet
 set_color_profile_slot( 18, 3, 255, 255, 255 ); //White Hair
 set_color_profile_slot( 18, 4, 181, 188, 192 ); //White Hair Shading
-set_color_profile_slot( 18, 5, 255, 255, 255 ); //Green Mask
+set_color_profile_slot( 18, 5, 247, 249, 255 ); //Green Mask
 set_color_profile_slot( 18, 6, 255, 211, 87 ); //Brown Claw
 set_color_profile_slot( 18, 7, 233, 233, 233 ); //White Eye
 
@@ -236,15 +236,15 @@ set_color_profile_slot( 20, 5, 162, 140, 119 ); //Green Mask
 set_color_profile_slot( 20, 6, 246, 241, 212 ); //Brown Claw
 set_color_profile_slot( 20, 7, 254, 253, 25 ); //White Eye
 
-// In the Dark
-set_color_profile_slot( 21, 0, 84, 84, 84 ); //Black Fur
-set_color_profile_slot( 21, 1, 51, 51, 51 ); //Black Fur Shading
-set_color_profile_slot( 21, 2, 170, 51, 165 ); //Green Bracelet
-set_color_profile_slot( 21, 3, 84, 84, 84 ); //White Hair
-set_color_profile_slot( 21, 4, 51, 51, 51 ); //White Hair Shading
-set_color_profile_slot( 21, 5, 170, 51, 165 ); //Green Mask
-set_color_profile_slot( 21, 6, 225, 226, 231 ); //Brown Claw
-set_color_profile_slot( 21, 7, 233, 233, 233 ); //White Eye
+// Acrid
+set_color_profile_slot( 21, 0, 90, 90, 105 ); //Black Fur
+set_color_profile_slot( 21, 1, 52, 52, 61 ); //Black Fur Shading
+set_color_profile_slot( 21, 2, 129, 111, 94 ); //Green Bracelet
+set_color_profile_slot( 21, 3, 198, 194, 209 ); //White Hair
+set_color_profile_slot( 21, 4, 159, 156, 168 ); //White Hair Shading
+set_color_profile_slot( 21, 5, 120, 148, 110 ); //Green Mask
+set_color_profile_slot( 21, 6, 209, 217, 230 ); //Brown Claw
+set_color_profile_slot( 21, 7, 100, 193, 103 ); //White Eye
 
 // Otherworld
 set_color_profile_slot( 22, 0, 99, 80, 72 ); //Black Fur

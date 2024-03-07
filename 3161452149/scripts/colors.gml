@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 24 );
 
 // Blue
 set_color_profile_slot( 1, 0, 32, 0, 196 ); //fire shading
@@ -157,7 +157,7 @@ set_color_profile_slot( 12, 6, 93, 93, 93 ); //coat
 set_color_profile_slot( 12, 7, 40, 166, 69 ); //pants
 
 // Yellow
-set_color_profile_slot( 13, 0, 163, 110, 50 ); //fire shading
+set_color_profile_slot( 13, 0, 159, 163, 50 ); //fire shading
 set_color_profile_slot( 13, 1, 249, 255, 79 ); //fire
 set_color_profile_slot( 13, 2, 249, 255, 189 ); //mask
 set_color_profile_slot( 13, 3, 255, 238, 89 ); //hair
@@ -265,16 +265,6 @@ set_color_profile_slot( 23, 4, 92, 83, 83 ); //tail
 set_color_profile_slot( 23, 5, 99, 31, 44 ); //collar
 set_color_profile_slot( 23, 6, 161, 146, 146 ); //coat
 set_color_profile_slot( 23, 7, 99, 31, 44 ); //pants
-
-// Samsara
-set_color_profile_slot( 24, 0, 121, 23, 176 ); //fire shading
-set_color_profile_slot( 24, 1, 176, 33, 255 ); //fire
-set_color_profile_slot( 24, 2, 234, 196, 255 ); //mask
-set_color_profile_slot( 24, 3, 201, 201, 201 ); //hair
-set_color_profile_slot( 24, 4, 117, 117, 117 ); //tail
-set_color_profile_slot( 24, 5, 166, 150, 145 ); //collar
-set_color_profile_slot( 24, 6, 92, 92, 92 ); //coat
-set_color_profile_slot( 24, 7, 235, 235, 235 ); //pants
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

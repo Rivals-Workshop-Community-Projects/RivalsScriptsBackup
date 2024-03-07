@@ -101,7 +101,7 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2){
 	can_wall_jump = true; // Wall Jump out of the attack
 	if((attack == AT_FTHROW ) && window > 2){
 		//can_shield = true;
-		soft_armor = 99;} // Can shield or dodge after landing with the opponent to avoid other people from attacking in free for alls.
+		soft_armor = 99;} 
 	move_cooldown[AT_FSPECIAL] = 60;
 }
 if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
@@ -937,8 +937,13 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || a
 
 // Other Misc Code Switch 1
 switch(attack){
-	case AT_USTRONG:  // On sucessfult hit, don't send her into praftfall
+	case AT_USTRONG:  
+		// On sucessfult hit, don't send her into praftfall
 		if(has_hit == true){set_window_value(AT_USTRONG,get_attack_value(AT_USTRONG,AG_NUM_WINDOWS),AG_WINDOW_TYPE,1);}
+		// Prevent frame perfect ustrongs start ups off ledge. This will set her into air idle if she goes off ledge with it.
+		if(window < 5 && free){
+			set_state(PS_IDLE_AIR);
+		}
 	break;
 	
 	// Destroy Hitboxes upon Landing with Fspecial
@@ -958,6 +963,14 @@ switch(attack){
 	// Set Air Nspecial into Landing lag state
 	case AT_NSPECIAL_AIR:
 		if(!free){set_state(PS_LANDING_LAG);}
+	break;
+	
+	// Switch to Dspec air to prevent grounded Fspec frame perfect being used off plats
+	case AT_DSPECIAL:
+		if((window == 1 || window == 2) && free){
+			attack = AT_DSPECIAL_AIR;
+			hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
+		}
 	break;
 	
 	case AT_DSPECIAL_AIR:

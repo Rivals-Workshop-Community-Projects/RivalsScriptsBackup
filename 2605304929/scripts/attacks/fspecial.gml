@@ -14,8 +14,7 @@ set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
 set_attack_value(attack, 87, 
 "- Forced into diving window until landing.
-- Can emergency cancel a small distance below the ground with airdodge or jump.
-- Hold Down on Joystick to go through platforms.");//AG_MUNO_ATTACK_MISC_ADD 
+- Can emergency cancel a small distance below the ground with airdodge or jump.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;

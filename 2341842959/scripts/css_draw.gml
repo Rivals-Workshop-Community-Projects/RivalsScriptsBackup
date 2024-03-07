@@ -133,8 +133,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,1] = "Rough and Tumble"
     ce[20,2] = "Alt based on Rough from the Sonic IDW comics."
     ce[21,0] = make_color_rgb(194, 165, 123)
-    ce[21,1] = "In the Dark"
-    ce[21,2] = "(Original Alt)"
+    ce[21,1] = "Acrid"
+    ce[21,2] = "Acrid (Azelinuu)"
     ce[22,0] = make_color_rgb(62, 54, 50 )
     ce[22,1] = "Otherworld"
     ce[22,2] = "???"

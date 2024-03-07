@@ -1,13 +1,13 @@
 //article1_update
 if !hitstop timer++;
-if !place_meeting(x, y+1, asset_get("par_block")) vsp = 10*free;
+if state vsp = 10*free;
 
 switch state{
 	case 0: //seed
 	can_attack = 0;
 	vsp = 10;
 	image_index = (free? (timer/4)%3: 3);
-	if place_meeting(x, y+1, asset_get("par_block")){
+	if !free{
 		vsp = 0;
 		state = 7;
 		timer = 0;
@@ -47,7 +47,7 @@ switch state{
 	break;
 	
 	case 3: //taunt
-	if !place_meeting(x, y+1, asset_get("par_block")) && !place_meeting(x, y+1, asset_get("par_jumpthrough")) die_timer++;
+	if free die_timer++;
 	else die_timer = 0;
 	can_attack = 1;
 	image_index = 10 + (timer/4)%11;
@@ -149,7 +149,7 @@ switch state{
 	can_attack = 0;
 	sprite_index = sprite_get("Venus");
 	image_index = 40 + (timer/5)%3;
-	if timer >= 159{
+	if timer >= 99{
 		state = 10;
 		timer = 0;
 	}

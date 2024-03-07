@@ -73,23 +73,23 @@ switch attack{
 			}
 		}
 		var g = 0;
-		if !free && !ground_at_pos(x, y){
+		if !free && !ground_at_pos(x - 10*spr_dir, y){
 			var dir = 2;
 			repeat(80){
 				dir = (g%2)*2 -1;
-				if ground_at_pos(x + floor(g/2)*dir, y){
+				if ground_at_pos(x - 10*spr_dir + floor(g/2)*dir, y){
 					g += 30
 					break;
 				}
 				g++;
 			}
 		}
-		venus = instance_create(x + floor(g/2)*dir, y + 9*free + 1, "obj_article1");
+		venus = instance_create(x - 10*spr_dir + floor(g/2)*dir, y + 10*free, "obj_article1");
 		venus.state = 7*(!free);
 		venus.sprite_index = sprite_get(free? "dspecialseed": "Venus");
 		if !free{
 			sound_play(asset_get("sfx_blow_weak1"), 0, noone, 1);
-			spawn_hit_fx(x + floor(g/2)*dir, y, 301);
+			spawn_hit_fx(x - 10*spr_dir + floor(g/2)*dir, y, 301);
 		}
 	}
 	break;
