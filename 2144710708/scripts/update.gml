@@ -1,5 +1,8 @@
 // the dreaded... UPDATE AHHHH
 
+//super_armor = true;
+//take_damage( player, player, -99 );
+
 // check for copyright 
 if (get_gameplay_time() < 127) || (get_player_color( player ) == 24) { // just so it doesn't check for this every frame
 	if (no_copyright == true) {

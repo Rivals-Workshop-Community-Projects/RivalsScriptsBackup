@@ -149,7 +149,7 @@ if (player_id.propertyWidthRune){
 
 // decay stuff
 if (numberOfHouses == 0){
-	decayTimer = 600;
+	decayTimer = decayTimerMax;
 } else {
 	if (decayTimer != 0){
 		decayTimer--;
@@ -200,7 +200,7 @@ if (state == 1){
 						//print("luigi");
 					}
 				}
-				if (state == PS_HITSTUN	|| state == PS_HITSTUN_LAND){
+				if (state == PS_HITSTUN	|| state == PS_HITSTUN_LAND){//>
 					if (collision_rectangle(x-(36+other.offsetBoostRune), y - 6, x+(36+other.offsetBoostRune), y+60, other, 0, 1)){
 						if (player != other.player_id.player){//im too lazy to remove this part
 							if (other.player_id.propertyAutoAttackRune == true){//rune

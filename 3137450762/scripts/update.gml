@@ -147,14 +147,16 @@ move_cooldown[AT_NSPECIAL] = max(secret_nspecial_cooldown, move_cooldown[AT_NSPE
 //Rolling Girl once per airtime
 if (instance_exists(myChair)){
   if (free && has_rolling_girl){
-    move_cooldown[AT_DSPECIAL] = 2;
+    move_cooldown[AT_DSPECIAL] = max(move_cooldown[AT_DSPECIAL], 2);
   }
   else if (!free){
-  //  move_cooldown[AT_DSPECIAL] = 0;
+    move_cooldown[AT_DSPECIAL] = max(0, move_cooldown[AT_NSPECIAL]);
     has_rolling_girl = false;
   }
 }
 else{
-  move_cooldown[AT_DSPECIAL] = max(0, move_cooldown[AT_NSPECIAL]);
+  var dspecial_target_cooldown = move_cooldown[AT_DSPECIAL];
+  if !free {dspecial_target_cooldown = 0;}
+  move_cooldown[AT_DSPECIAL] = max(dspecial_target_cooldown, move_cooldown[AT_NSPECIAL]);
   has_rolling_girl = false;
 }

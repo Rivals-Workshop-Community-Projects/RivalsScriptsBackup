@@ -75,7 +75,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, money_hit_fx_sml);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 3);

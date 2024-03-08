@@ -32,7 +32,7 @@ switch attack{
                 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
                 set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 12);
                 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .6);
-                set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("HitHard"));
+                set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"? sound_get("HitHardDBZ1"):sound_get("HitHard"));
                 
                 if window_timer == 2{
                     sound_play(asset_get("sfx_absa_whip"));
@@ -47,7 +47,7 @@ switch attack{
                 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 5);
                 set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, 0);
                 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .5);
-                set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("HitMed"));
+                set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"? sound_get("HitMedDBZ1"):sound_get("HitMed"));
             }
             attack_end();
         }

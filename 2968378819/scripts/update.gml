@@ -82,3 +82,42 @@ afterimage_timer--;
 init_shader();
 
 prev_spr_dir = spr_dir;
+
+var combo = false;
+with oPlayer{
+    if monk_comboing{
+        if state == PS_TUMBLE || bounced || (monk_combo_hspcheck / hsp < -0.95 && abs(hsp) > 1){
+            monk_bluecombo = true;
+        }
+        if state_cat != SC_HITSTUN && state != PS_TUMBLE{
+            monk_comboing = false;
+            monk_bluecombo = false;
+        }
+        else{
+            combo = true;
+        }
+    }
+    monk_combo_hspcheck = hsp;
+    monk_combo_statecheck = state;
+    //if state == PS_TUMBLE print_debug("Tumble")
+    //if bounced print_debug("Groundbounce")
+    //if (monk_combo_hspcheck / hsp < -0.95 && abs(hsp) > 1) print_debug("Wallbounce")
+}
+if combo == false{
+    combo_counter = 0;
+    combo_type = "RED";
+}
+
+if (get_player_color(player) == 19 || get_player_name(player) == "TANIA") && state == PS_PARRY{
+    if parry_success{
+        sound_stop(asset_get("sfx_parry_success"));
+        music_timer = 50;
+        sound_play(asset_get("sfx_parry_success"), false, false, 0.75);
+    }
+    parry_success = false;
+}
+
+if music_timer{
+    suppress_stage_music(1 - (music_timer / 100), 1);
+    music_timer--;
+}

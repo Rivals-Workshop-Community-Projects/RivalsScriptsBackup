@@ -57,6 +57,7 @@ alt_names = [
 	"14. Everlastin Nightmare",
 	"15. Megaton",
 	"16. Salty Gargantuan"
+	"17. Lovely Coral"
 	];
 
 
@@ -256,6 +257,28 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.13", "24/03/03");
+initHeader("Thirteenth Patch: Golem is now a teenager");
+initSection("Reworks");
+initWords("NeutralSpecial:");
+initWords_ext("Now every charge of Mega Punch consumes 1 rock to gain Sturdy Armor;", fa_left, c_white, 1, false);
+initWords_ext("Only at Full Charge, you gain Super Armor by using all 4 Rocks.", fa_left, c_white, 1, false);
+initWords("ForwardSpecial;");
+initWords_ext("Now Geodude has Air Friction, meaning it will slowly decrease its speed while bouncing around.", fa_left, c_white, 1, false);
+initSection("Nerfs");
+initWords("Nerfed NeutralAir's damage overall (Earliest: 12 > 10, Earlier: 10 > 8, Late: 7 > 6). Changed the hitstop accordingly;");
+initWords("ForwardStrong is now not Sturdy Armored. It's still Super Armored if enhanced;");
+initWords("Corrected a programming error that made the time you charged Enhanced UpStrong armored (therefore it's now only armored during the first 7 frames);");
+initWords("Corrected a programming error that made the entire endlag of DownStrong armored you charged Enhanced UpStrong armored (therefore it's now only armored during the active frames);");
+initWords("Canceling NSpecial into a Parry (and therefore Rolls and Dodges) will have 6 frames of delay before the action is taken;");
+initWords("DownSpecial:");
+initWords_ext("Increased startup (7f > 9f);", fa_left, c_white, 1, false);
+initWords_ext("Changed angle on both hitboxes (Sakurai > 45);", fa_left, c_white, 1, false);
+initWords_ext("Fixed a bug that gave you a rock if the move was parried.", fa_left, c_white, 1, false);
+initSection("Others");
+initWords("Added a DARKRAI Alt (actually last patch lmao);");
+initWords("Added a CORAL Alt (Pink shell and clear blue skin, based on Corsola, thanks Zard for the suggestion.");
 
 initPatch("1.12", "24/03/03");
 initHeader("Twelfth Patch: The Big one (thank you Zard)");

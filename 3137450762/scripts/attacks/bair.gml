@@ -90,6 +90,7 @@ set_hitbox_value(edit_attack, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(edit_attack, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(edit_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(edit_attack, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
 
 //upper grab box
 set_hitbox_value(edit_attack, 2, HG_HITBOX_TYPE, 1);
@@ -114,6 +115,7 @@ set_hitbox_value(edit_attack, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(edit_attack, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(edit_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(edit_attack, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, 2, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
 
 //YEET
 set_hitbox_value(edit_attack, 3, HG_HITBOX_TYPE, 1);

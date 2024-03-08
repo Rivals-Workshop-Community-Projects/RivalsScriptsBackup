@@ -44,7 +44,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 150);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, -10);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, -7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("mfx_hp_spawn"));
 
 //DSpecial Club

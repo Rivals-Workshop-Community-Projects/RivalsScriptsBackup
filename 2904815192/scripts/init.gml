@@ -58,6 +58,8 @@ inJail = false;
 diceParried = 0;
 diceAfterimages = 0;
 diceAfterimagesMaxTimer = 5;
+dice1 = noone;
+dice2 = noone;
 
 //doubles stats
 doublesWalkSpeedInc = 0;

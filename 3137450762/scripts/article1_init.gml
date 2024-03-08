@@ -95,6 +95,7 @@ gethit_knockback = 10;
 gethit_grabbed = noone;
 gethit_postgrab = false;
 gethit_hitlockouts = [0,0,0,0];
+gethit_hitpause_countdown = 0;
 recently_hit = false;
 most_recent_hitbox = noone;
 

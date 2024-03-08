@@ -144,6 +144,21 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.6"
+        patch_note_text[i++] =  
+
+"Fair speed 8->7
+
+Fair hitbox made smaller, 44 height to 34
+
+Experimental change, Angle Flipper 6 added to all hits of Bike Nair.
+
+Attempted to fix a bug where the bike would remain spinning on the stage by making it no longer possible to hit the bike if it isn't in idle state
+
+Fixed a bug where Carol's Wild Kick NSpecial meter doesn't recharge after getting hit.
+
+Re-enabled the ability to perform the secret taunt while in respawn state, the new solution will make her exit the respawn state if she moves."
+
         patch_note_title[i] = "2.5"
         patch_note_text[i++] =  
 

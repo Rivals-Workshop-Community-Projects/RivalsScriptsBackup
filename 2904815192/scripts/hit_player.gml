@@ -131,6 +131,22 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 			}
 		}
 	}
+	var propertyBelongingToHitbox = my_hitboxID.propertyNumber;
+	if (propertyBelongingToHitbox == 1){
+		with(property1){
+			decayTimer = decayTimerMax;
+		}
+	}
+	if (propertyBelongingToHitbox == 2){
+		with(property2){
+			decayTimer = decayTimerMax;
+		}
+	}
+	if (propertyBelongingToHitbox == 3){
+		with(property3){
+			decayTimer = decayTimerMax;
+		}
+	}
 }
 
 if (doublesBoostTimer != 0){

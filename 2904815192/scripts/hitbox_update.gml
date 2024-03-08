@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL){
 	
 	grounds = 0;
 	//walls = 0;	
-	if (dice_number < 1){
+	if (dice_number < 1){//>
 		dice_number = 1;
 	}
 	if (diceState == 1){
@@ -17,7 +17,7 @@ if (attack == AT_NSPECIAL){
 		if (hitbox_timer == 1){
 			//print(dice_number);
 		}
-		if (hitbox_timer < 1){
+		if (hitbox_timer < 1){//>
 			width = 0;
 			height = 0;
 		} else {

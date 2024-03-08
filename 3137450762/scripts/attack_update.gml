@@ -300,6 +300,8 @@ if (attack == AT_FSTRONG){
       spawn_base_dust(x, y-(vsp-2), "jump"); // spawn some dust
       vsp = -4;
       hsp = -3 * spr_dir;
+    } else {
+      if sign(hsp) != sign(spr_dir) { hsp *= 0.95; } // reduce drift
     }
     //Bthrow enemy position
     if (window_timer < 4){
@@ -324,6 +326,7 @@ if (attack == AT_FSTRONG){
   }
   //Fall loop
   if (window == 6){
+      if sign(hsp) != sign(spr_dir) { hsp *= 0.91; } // reduce drift
       grab_victim.x = x - 40 * spr_dir;
       grab_victim.y = y + 5;
 
@@ -778,7 +781,7 @@ if (attack == AT_UAIR){
 
   //Cause pratfall if La Reina has summoned the LOYAL FANS twice without touching different ground.
   if (window == 8){
-    if (ring_summon_count > 1){
+    if (ring_summon_count > 1) && (y > get_stage_data( SD_Y_POS )) {
       attack_end()
       set_attack( AT_USPECIAL );
       hurtboxID.sprite_index = sprite_get("uspecial_hurt");
@@ -836,11 +839,10 @@ if (attack == AT_DAIR){
 //Rolling girl, currently on down special
 if (attack == AT_NSPECIAL_2){
 
-  move_cooldown[AT_DSPECIAL] = 30;
-
   //put aerial roll on cooldown until landing if La Reina successfully makes it through the startup
   if (window == 1 && window_timer == (get_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH))){
       has_rolling_girl = true;
+      move_cooldown[AT_DSPECIAL] = max(70, move_cooldown[AT_DSPECIAL]);
       if instance_exists(myChair) {myChair.shine_timer = myChair.shine_timer_max;}
   }
 
@@ -932,9 +934,7 @@ if (attack == AT_FSPECIAL){
 
   // Adjust Speeds
   if (window == 1){
-    /* if (window_timer == 1){
-      spr_dir = spr_dir * -1;
-    } */
+    fspecial_can_edgecancel = false;
 
     //Reset ability to use the LOYAL FANS & Fthrow angle
     if (window_timer == 1){
@@ -1002,8 +1002,11 @@ if (attack == AT_FSPECIAL){
   if (window == 4) {
     if (free) {
       set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
+      if fspecial_can_edgecancel {window = 19; attack_end();}
     } else {
       set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
+      if !fspecial_can_edgecancel {spawn_base_dust(x, y, "land");}
+      fspecial_can_edgecancel = true;
     }
   }
 
@@ -1076,8 +1079,8 @@ if instance_exists(grab_victim) {
     } else if window == 2 {
       if window_timer <= 1 { hsp = 4*spr_dir; vsp = -8; }
       else {
-        if vsp > 0 { vsp = vsp + 0.5;}
-        hsp *= 0.9;
+        if vsp > 0 { vsp += 1.5;}
+        hsp *= 0.92;
       }
       if (window_timer > 5 && vsp >= 0 && !free){
         window = 3; window_timer = 0;
@@ -1094,7 +1097,7 @@ if instance_exists(grab_victim) {
         vsp = -(9);
       }
       //Cause pratfall if La Reina has summoned the LOYAL FANS twice without touching different ground.
-      if (ring_summon_count > 1){
+      if (ring_summon_count > 1) && (y > get_stage_data( SD_Y_POS )) {
           set_window_value(attack, window, AG_WINDOW_TYPE, 7);
       }
     }
@@ -1137,7 +1140,7 @@ if instance_exists(grab_victim) {
         vsp = -(9);
       }
       //Cause pratfall if La Reina has summoned the LOYAL FANS twice without touching different ground.
-      if (ring_summon_count > 1){
+      if (ring_summon_count > 1) && (y > get_stage_data( SD_Y_POS )) {
           set_window_value(attack, window, AG_WINDOW_TYPE, 7);
       }
     }
@@ -1286,8 +1289,11 @@ if (attack == AT_USPECIAL){
     //increment window when landing and adjust power
     if (vsp >= 0 && !free){
       // spin speed ranges from about 15 (slow) to 9 (very fast)
-      //formula will produce values from 1.2 to 1.8
-      var kb_formula = max(1.2, 1 + ((0.7 - (uspecial_spin_speed - 9.5)/7)));
+      //formula will produce values from 1.15 to 1.88
+      var kb_formula = max(1.15, 1.81 - (uspecial_spin_speed - 9.5)/7);
+
+      // exponential version (if desired)
+      //var kb_formula = max(1.15, power(1.73 - (uspecial_spin_speed - 9.5)/7, 1.34));
 
       set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, kb_formula);
       set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, kb_formula);
@@ -1350,7 +1356,7 @@ if (attack == AT_USPECIAL){
       vsp = -(6+(min(victim_damage, 120)/24));
     }
     //Cause pratfall if La Reina has summoned the LOYAL FANS twice without touching different ground.
-    if (ring_summon_count > 1){
+    if (ring_summon_count > 1) && (y > get_stage_data( SD_Y_POS )) {
         set_window_value(attack, window, AG_WINDOW_TYPE, 7);
     }
   }
@@ -1459,8 +1465,15 @@ if (attack == AT_DSPECIAL_2){
 
 }//End of Dspecial 2
 
-// Spawn magnet hitfx and manage hitfx
+// Soft armor during grabs during multiplayer matches
+// Also spawn magnet hitfx and manage hitfx
 if instance_exists(grab_victim) {
+  if (total_player_count > 2) && grab_valid && !grab_victim.is_a_La_Reina_chair {
+    soft_armor = 13.8; // Breaks if Kragg Fair hits you at 70% or above.
+  } else {
+    soft_armor = 0;
+  }
+
   if grab_valid && !old_grab_valid {
     if attack == AT_USTRONG {
       active_magnet_fx = spawn_hit_fx(x, y, hitfx_magnet_inward_slow);

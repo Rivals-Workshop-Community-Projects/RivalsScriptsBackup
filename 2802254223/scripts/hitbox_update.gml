@@ -42,7 +42,7 @@ if(attack == AT_FSPECIAL)
                 spawn_hit_fx(x-(8*spr_dir), y, heartFX);
             }
             
-            if(!free || was_parried)
+            if(!free)
                 destroyed = true;
             if(!variable_instance_exists(id,"tempTarget"))
             {
@@ -50,36 +50,38 @@ if(attack == AT_FSPECIAL)
                 tempAngle = 0;
             }
             //find player nearby >:)
-            with(oPlayer)
-            {
-                if(point_distance(x,y-40, other.x, other.y) < 500 && other.orig_player != player)
-                    other.tempTarget = id;
+            if (!was_parried){
+                with(oPlayer)
+                {
+                    if(point_distance(x,y-char_height/2, other.x, other.y) < 800 && other.orig_player != player)
+                        other.tempTarget = id;
+                }
             }
             if(tempTarget != noone)
             {
-                tempAngle = abs(darccos((x-tempTarget.x)/point_distance(x,y,tempTarget.x,tempTarget.y))-180*(spr_dir?1:0));
+                tempAngle = abs(darccos((x-tempTarget.x)/point_distance(x,y,tempTarget.x,tempTarget.y-(tempTarget.char_height/2)))-180*(spr_dir?1:0));
                 with(tempTarget)
                 {
-                    if(point_distance(x,y-40, other.x, other.y) > 500 || abs(other.tempAngle) > 90)
+                    if(point_distance(x,y-(other.tempTarget.char_height/2), other.x, other.y) > 800 || abs(other.tempAngle) > 100)
                     {
                         other.tempTarget = noone;
                         break;
                     }
                     with(other)
-                        proj_angle = (point_direction(x,y,tempTarget.x,tempTarget.y-40));
+                        proj_angle = (point_direction(x,y,tempTarget.x,tempTarget.y-(tempTarget.char_height/2)));
                 }
             }
-                hsp += lengthdir_x(.6, proj_angle)*(tempTarget != noone? 1 : spr_dir);
-                vsp += lengthdir_y(.6, proj_angle)*(tempTarget != noone? 1 : spr_dir);
-                
+            if (!was_parried){
+                hsp += lengthdir_x(0.6, proj_angle)*(tempTarget != noone? 1 : spr_dir);
+                vsp += lengthdir_y(0.6, proj_angle)*(tempTarget != noone? 1 : spr_dir);
+                hsp = clamp(hsp, -8, 8);
+                vsp = clamp(vsp, -8, 8);
+            }    
             if(tempTarget != noone) 
             {
-                proj_angle = (point_direction(x,y,x+hsp,y+vsp));
+                proj_angle = point_direction(x,y,x+hsp,y+vsp);
                 if(spr_dir == -1) proj_angle -= 180;
             }
-
-            hsp = clamp(hsp, -9, 9);
-            vsp = clamp(vsp, -9, 9);
             break;
     }
 
@@ -87,4 +89,8 @@ if(attack == AT_FSPECIAL)
         destroyed = true;
 
     //player_id.move_cooldown[AT_FSPECIAL] = 4;
+}
+
+if (attack == AT_NSPECIAL && hbox_num == 3 && was_parried){
+    destroyed = true;
 }

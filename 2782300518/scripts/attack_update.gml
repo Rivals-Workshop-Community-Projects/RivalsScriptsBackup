@@ -26,6 +26,14 @@ if (motorbike == false)
      	//:O
      	case AT_EXTRA_3:
 			can_move = false; //Prevents a bug with the respawn platform.
+			//Allow Carol to remove the respawn platform in secret taunt.
+			if (window == 1 && window_timer == 150 && respawn_taunt > 0)
+			{
+				invince_time = 0;
+				respawn_taunt = 0;
+				hsp = get_window_value(AT_EXTRA_3, 2, AG_WINDOW_HSPEED);
+				vsp = get_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED);
+			}
      	break;
 		//Claw Combo
 		case AT_JAB:

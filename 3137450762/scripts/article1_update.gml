@@ -139,14 +139,25 @@ if (window == 3){
   can_be_grounded = false; can_land = true;
   outline_opacity = min(1, outline_opacity + 0.1);
 
+  // detect if La Reina's hand is inside a wall
+  var hand_inside_wall = place_meeting(flytoward_x, flytoward_y, asset_get("par_block"));
+
   //Catching the chair
   if (instance_exists(hitboxlock)){
-    var margin = 10;
-    if (x < (flytoward_x + margin) && x > (flytoward_x - margin) &&
-        y < (flytoward_y + margin) && y > (flytoward_y - margin) &&
+    // set catching margin and adjust if the target is inside a wall
+    var xmargin = 10; ymargin = xmargin;
+    if hand_inside_wall {
+      if (x <= stage_left && x >= player_id.x-5)
+      || (x >= stage_left && x <= player_id.x+5)
+      || (x >= stage_left && x <= stage_right) {
+        xmargin = 76; ymargin = 18;
+      }
+    }
+
+    if (x < (flytoward_x + xmargin) && x > (flytoward_x - xmargin) &&
+        y < (flytoward_y + ymargin) && y > (flytoward_y - ymargin) &&
         player_id.special_down) {
-      window = 8;
-      window_timer = 0;
+      window = 8; window_timer = 0;
 
       with (player_id) {
         window = 6; //Transition to chair catch hit.
@@ -314,6 +325,12 @@ if (window == 10){
 } else {
   recently_hit = false;
 }//End of window 10
+
+if gethit_hitpause_countdown <= 0 {
+  hittable_hitpause_mult = 1;
+} else {
+  gethit_hitpause_countdown -= 1;
+}
 
 //11: Got grabbed
 if (window == 11){

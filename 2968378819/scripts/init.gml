@@ -176,6 +176,81 @@ particles = [];
 stock_number = 0;
 i_died = false;
 
+combo_counter = 0;
+combo_shake = 0;
+combo_type = "RED";
+
+monk_comboing = false;
+monk_bluecombo = false;
+monk_combo_hspcheck = hsp;
+monk_combo_statecheck = state;
+
+if get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"{
+    if get_player_color(player) == 19 || get_player_name(player) == "TANIA"{
+        ui_parry = 0;
+        parry_success = 0;
+        music_timer = 0;
+    }
+    
+    set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("HitLightDBZ2"));
+    set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("HitLightDBZ1"));
+    set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("HitLightDBZ1"));
+    
+    set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("HitHardDBZ1"));
+    
+    set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("HitLightDBZ2"));
+    set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    
+    
+    set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("HitHardDBZ1"));
+    
+    set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    
+    set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, sound_get("HitHardDBZ2"));
+    set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, sound_get("HitHardDBZ1"));
+    
+    
+    set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("HitLightDBZ1"));
+    set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    
+    set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("HitHardDBZ2"));
+    set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("HitLightDBZ2"));
+    
+    set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("HitHardDBZ2"));
+    set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    
+    set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    
+    set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    for (var f = 1; f <= 5; f++;){
+        set_hitbox_value(AT_FSPECIAL, f, HG_HIT_SFX, sound_get("HitLightDBZ" + string((f % 2) + 1)));
+    }
+    
+    set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    
+    set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, sound_get("HitMedDBZ2"));
+    set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HIT_SFX, sound_get("HitMedDBZ1"));
+    
+    for (var u = 1; u <= 4; u++;){
+        set_hitbox_value(AT_USPECIAL, u, HG_HIT_SFX, sound_get("HitLightDBZ1"));
+    }
+    set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("HitHardDBZ1"));
+}
+
 // Runes
 if has_rune("I"){
     upspecial_charged = false;
@@ -188,5 +263,3 @@ if has_rune("J"){
 //Kirby Copy Ability
 
 TCG_Kirby_Copy = 4;
-
-

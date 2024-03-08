@@ -396,8 +396,8 @@ if (attack == AT_NSPECIAL){
         if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_stop(sfx_monopoly_ds_dice_shake);
 			
-			var dice1 = create_hitbox( AT_NSPECIAL, 1, x+(36*spr_dir), y-42 );
-			var dice2 = create_hitbox( AT_NSPECIAL, 1, x+(36*spr_dir), y-42 );
+			dice1 = create_hitbox( AT_NSPECIAL, 1, x+(36*spr_dir), y-42 );
+			dice2 = create_hitbox( AT_NSPECIAL, 1, x+(36*spr_dir), y-42 );
 			dice1.hsp += 1.1*spr_dir;dice1.vsp += 1.5;
 			dice2.hsp -= 1.9*spr_dir;dice2.vsp -= 1.5;	   
 		   
@@ -511,7 +511,9 @@ if (attack == AT_USPECIAL){
 	if (window == 1){
 		dontSpawnUSpecWJvfx = false;
 		dontSpawnUSpecADvfx = false;
-		vsp *= 0.95;
+		if (vsp > 0){
+			vsp *= 0.875;
+		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_play(sfx_smash_ult_snake_uspec_2);
 			spawn_base_dust( x, y + 20, "doublejump", spr_dir);
@@ -519,6 +521,7 @@ if (attack == AT_USPECIAL){
 				vsp = -1.5;
 			}
 		}
+		vsp = clamp(vsp, -999999, 7)
 	}
 	if (window == 2){
 		if (attack_pressed || (left_stick_pressed || right_stick_pressed || up_stick_pressed || down_stick_pressed)){
@@ -538,7 +541,7 @@ if (attack == AT_USPECIAL){
 			vsp = -4;
 		}
 		if (vsp > (-4 - (uspecialBoostRune * 5))){
-			vsp -= .5 + (uspecialBoostRune * .25);
+			vsp -= .65 + (uspecialBoostRune * .25);
 		}
 		if (vsp > 9){
 			vsp -= 3.5;
@@ -835,18 +838,18 @@ if (thrown == 0){
 
 if (propertyNumber == 1){
 	property1.numberOfHouses += 1;
-	property1.decayTimer = 900;
+	property1.decayTimer = 1020;
 }
 
 if (propertyNumber == 2){
 	property2.numberOfHouses += 1;
-	property2.decayTimer = 900;
+	property2.decayTimer = 1020;
 }
 
 
 if (propertyNumber == 3){
 	property3.numberOfHouses += 1;
-	property3.decayTimer = 900;
+	property3.decayTimer = 1020;
 }
 
 sound_play(sfx_monopoly_pc_property_improve);

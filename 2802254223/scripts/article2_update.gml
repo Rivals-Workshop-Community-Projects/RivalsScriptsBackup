@@ -18,7 +18,11 @@ switch(state)
     case 0:// spawn
         if(!hitstop)
         {
-            hit_detection();
+            if (!justParried)
+            	hit_detection();
+            else
+            	justParried = false;
+
             if (get_gameplay_time() % 4 == 0 && hbox_owner != -1)
             {   
                 fx = spawn_hit_fx(x, y, diceFX);

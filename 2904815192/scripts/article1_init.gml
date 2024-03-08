@@ -46,7 +46,8 @@ numberOfHouses = 0;
 
 attackCooldown = 60;
 
-decayTimer = 900;
+decayTimer = 13908128903218903;
+decayTimerMax = 1020;
 decayWhiteVisual = 20;
 
 opponentIsTouching = false;

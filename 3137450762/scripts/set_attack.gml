@@ -10,6 +10,9 @@ if attack == AT_NSPECIAL {
   }
 } else if attack == AT_DSPECIAL {
   if instance_exists(myChair) {
+    if move_cooldown[AT_NSPECIAL_2] > 0 {
+      attack_end();
+    }
     if move_cooldown[AT_NSPECIAL] > 0 || !can_create_air_chair {
       attack_end();
     }

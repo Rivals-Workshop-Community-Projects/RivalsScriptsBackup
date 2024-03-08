@@ -8,4 +8,4 @@ if (state_timer >= 20){
     instance_destroy();
 }
 
-Pocketable = false;
+//Pocketable = false;

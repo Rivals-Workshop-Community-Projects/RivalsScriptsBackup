@@ -17,10 +17,10 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 6);
+set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DTILT, 1);
 

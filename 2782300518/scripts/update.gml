@@ -221,7 +221,7 @@ if (motorbike == false)
 		switch (state)
 		{
 			case PS_RESPAWN:
-				move_cooldown[AT_EXTRA_3] = 5;
+				//move_cooldown[AT_EXTRA_3] = 5;
 			break;
 			case PS_IDLE:
 				tsprite_index=-1;

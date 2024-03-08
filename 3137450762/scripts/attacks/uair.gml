@@ -82,6 +82,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_UAIR, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
 
 //Back-breaker
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);

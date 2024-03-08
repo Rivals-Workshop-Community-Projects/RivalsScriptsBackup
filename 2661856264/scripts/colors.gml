@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 6, 31 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Blue/Charizard
 set_color_profile_slot( 1, 0, 80, 165, 230 ); //Light Shell
@@ -166,6 +166,15 @@ set_color_profile_slot( 15, 3, 120, 55, 50 ); //Dark Skin
 set_color_profile_slot( 15, 4, 255, 255, 255 ); //Sclera & Claws1
 set_color_profile_slot( 15, 5, 176, 208, 208 ); //Sclera & Claws2
 set_color_profile_slot( 15, 6, 248, 184, 72 ); //Iris
+
+// Coral
+set_color_profile_slot( 16, 0, 255, 164, 197 ); //Light Shell
+set_color_profile_slot( 16, 1, 246, 123, 180 ); //Dark Shell
+set_color_profile_slot( 16, 2, 172, 197, 222 ); //Light Skin
+set_color_profile_slot( 16, 3, 90, 123, 172 ); //Dark Skin
+set_color_profile_slot( 16, 4, 255, 255, 255 ); //Sclera & Claws1
+set_color_profile_slot( 16, 5, 176, 208, 208 ); //Sclera & Claws2
+set_color_profile_slot( 16, 6, 45, 35, 45 ); //Iris
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

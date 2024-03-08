@@ -87,7 +87,7 @@ set_hitbox_value(AT_NSPECIAL, box, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_NSPECIAL, box, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL, box, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.87);
+set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.93);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, box, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, box, HG_HITSTUN_MULTIPLIER, 1.1);
@@ -108,7 +108,7 @@ set_hitbox_value(AT_NSPECIAL, box, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_NSPECIAL, box, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL, box, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.87);
+set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.93);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, box, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, box, HG_HITSTUN_MULTIPLIER, 1.1);
@@ -129,7 +129,7 @@ set_hitbox_value(AT_NSPECIAL, box, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_NSPECIAL, box, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL, box, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.87);
+set_hitbox_value(AT_NSPECIAL, box, HG_KNOCKBACK_SCALING, 0.93);
 set_hitbox_value(AT_NSPECIAL, box, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, box, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, box, HG_HITSTUN_MULTIPLIER, 1.1);
@@ -151,12 +151,13 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 361); //45 vs air opponents, 40 vs grounded
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE_FLIPPER, 5); //Horizontal knockback is reversed
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_shovel_hit_med1"));
 
+// Unused?
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW, 9);
@@ -196,7 +197,7 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 6);
-set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 0.9); // originally 1.1
+set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 0.8); // originally 1.1
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("chair_invisible"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_MASK, sprite_get("chair_hitbox"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_WALL_BEHAVIOR, 1);

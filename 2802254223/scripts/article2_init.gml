@@ -44,6 +44,7 @@ hit_timer = 0;
 hbox_owner = -1;
 oldvsp = 0;
 oldhsp = 0;
+justParried = false;
 
 //make hbox_group array (the old version was really bad because the array actually affected all players no matter what lol)
 hbox_group = array_create(4,0);

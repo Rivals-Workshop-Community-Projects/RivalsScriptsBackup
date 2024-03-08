@@ -38,6 +38,11 @@ set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 
+//Endlag
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 18);
+
 set_num_hitboxes(AT_NSPECIAL, 5);
 
 //Level 0 Charge

@@ -1,4 +1,4 @@
-set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open"));
+/*set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open"));
 set_attack_value(AT_PHONE, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_PHONE, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_PHONE, AG_CATEGORY, 2);

@@ -374,6 +374,15 @@ set_color_profile_slot( 30, 5, 87, 208, 87 ); //crowbar edges
 set_color_profile_slot( 30, 6, 71, 71, 71 ); //body shading
 set_color_profile_slot( 30, 7, 33, 69, 48 ); //hair shading
 
+// funny vortex galley alt
+set_color_profile_slot( 31, 0, 255, 221, 145 ); //body
+set_color_profile_slot( 31, 1, 255, 227, 102 ); //hair
+set_color_profile_slot( 31, 2, 0, 194, 253 ); //shirt
+set_color_profile_slot( 31, 3, 37, 50, 73 ); //shorts
+set_color_profile_slot( 31, 4, 59, 45, 52 ); //crowbar
+set_color_profile_slot( 31, 5, 255, 71, 174 ); //crowbar edges
+set_color_profile_slot( 31, 6, 229, 167, 112 ); //body shading
+set_color_profile_slot( 31, 7, 224, 151, 62 ); //hair shading
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

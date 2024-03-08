@@ -4,6 +4,8 @@ spawnChair = false;
 set_victory_bg( sprite_get( "victory_bg" ) );
 set_victory_portrait( sprite_get( "portrait_actual" ));
 
+total_player_count = 1;
+
 hurtbox_spr = asset_get("bug_hurtbox");
 crouchbox_spr = asset_get("bug_crouchbox");
 air_hurtbox_spr = -1;
@@ -194,6 +196,8 @@ afterimage_colour_array = [
   make_colour_rgb(40,  125, 50), // dakota
   make_colour_rgb(0,  120, 200), // toma
   make_colour_rgb(255, 50, 50), // genesis
+  make_colour_rgb(0,  120, 255), // gracefulknight
+  make_colour_rgb(250, 30, 255), // ETDT
 ]
 afterimage_colour = afterimage_colour_array[get_player_color( player )];
 
@@ -205,6 +209,7 @@ throw_direction = 1;
 fspecial_was_grounded = true;
 fspecial_dash_loops = 0;
 fspecial_max_dash_loops = 5;
+fspecial_can_edgecancel = false;
 ropes_standalone = hit_fx_create(sprite_get("ropes_standalone"), 26);
 
 //Rolling Girl

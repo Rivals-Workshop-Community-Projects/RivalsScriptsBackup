@@ -1,1 +1,1 @@
-//draw_debug_text(x, y+12,string(randomizeSFX));
+//draw_debug_text(x, y+12,string(id));

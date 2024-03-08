@@ -3,6 +3,24 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+// Ledge snapping for Fspec / Fspec 2
+if(attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_FSPECIAL_AIR){
+	// Guadua Ledge Snap Code MOVE UP AT LEDGE Code
+	if (moved_up == false)
+	{
+    	if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+        	for (var i = 0; i < 50; i++){
+        		//print("i: " + string(i) + "y: " + string(place_meeting(x+hsp,y-(i+1),asset_get("par_block"))));
+        		if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+            		y -= i;
+        			moved_up = true;
+            	    break;
+            	}
+        	}
+    	}
+	}
+}
+
 //Small Gameplay Effects
 switch(attack){
 	/*

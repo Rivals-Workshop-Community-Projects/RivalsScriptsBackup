@@ -105,7 +105,7 @@ if (motorbike == true)
 }
 else if (attack == AT_TAUNT && down_down) 
 {
-	if (move_cooldown[AT_EXTRA_3] > 0) exit;
+	//if (move_cooldown[AT_EXTRA_3] > 0) exit;
 	//if (prev_prev_state == PS_RESPAWN) exit;
 	attack = AT_EXTRA_3;
 }

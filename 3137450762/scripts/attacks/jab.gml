@@ -77,9 +77,9 @@ set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_TYPE, 1);
 set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW, 2);
 set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(edit_attack, e_hitbox, HG_LIFETIME, 2);
-set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 51);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 53);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_Y, -43);
-set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 86);
+set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 76);
 set_hitbox_value(edit_attack, e_hitbox, HG_HEIGHT, 64);
 set_hitbox_value(edit_attack, e_hitbox, HG_PRIORITY, 2);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_GROUP, 1);
@@ -96,11 +96,11 @@ set_hitbox_value(edit_attack, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_medium2"
 e_hitbox = 2; //Jab 2
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_TYPE, 1);
 set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW, 4);
-set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 5);
+set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(edit_attack, e_hitbox, HG_LIFETIME, 2);
-set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 56);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 49);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_Y, -43);
-set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 76);
+set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 62);
 set_hitbox_value(edit_attack, e_hitbox, HG_HEIGHT, 64);
 set_hitbox_value(edit_attack, e_hitbox, HG_PRIORITY, 2);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_GROUP, 2);
@@ -117,11 +117,11 @@ set_hitbox_value(edit_attack, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_medium3"
 e_hitbox = 3; //Jab 3
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_TYPE, 1);
 set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW, 6);
-set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 5);
+set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(edit_attack, e_hitbox, HG_LIFETIME, 2);
-set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 56);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 49);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_Y, -43);
-set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 76);
+set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 62);
 set_hitbox_value(edit_attack, e_hitbox, HG_HEIGHT, 64);
 set_hitbox_value(edit_attack, e_hitbox, HG_PRIORITY, 2);
 set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_GROUP, 3);

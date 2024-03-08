@@ -15,18 +15,6 @@ if (attack == AT_DATTACK){
     }
 }
 
-//Rockless Armor Stuff
-if (stealth_rock == 0){
-    if (attack == AT_FSTRONG){
-        if (window == 1 && window_timer > 4){
-            soft_armor = 13;
-        }
-        if (window >= 2){
-            soft_armor = 0;
-        }
-    }
-}
-
 //Rock Stuff
 if (stealth_rock >= 1){
     
@@ -49,6 +37,7 @@ if (stealth_rock >= 1){
         }
         if (window == 4 && window_timer == 1){
             stealth_rock -= 1;
+            soft_armor = 0;
         }
     }
     
@@ -57,8 +46,11 @@ if (stealth_rock >= 1){
             soft_armor = 13;
             if (window_timer = 1){
                 sound_play(sound_get("special"));
-                stealth_rock -= 1;
             }
+        }
+        if (window == 2 && window_timer = 1){
+            soft_armor = 0;
+            stealth_rock -= 1;
         }
     }
     
@@ -106,7 +98,7 @@ switch (attack)
             sound_stop(sound_get("strong_charge"));
         break;
     case AT_USTRONG:
-        if (window == 2)
+        if (window == 3)
             sound_stop(sound_get("strong_charge"));
         break;
     case AT_DSTRONG:
@@ -135,7 +127,13 @@ if (attack = AT_FSTRONG){
 if (attack == AT_NSPECIAL){
     if (window == 2){
         can_jump = true;
-        can_shield = true;
+        if (shield_pressed = true){
+            window = 6;
+            window_timer = 0;
+            if (window_timer == 6){
+                set_state(PS_PARRY);
+            }
+        }
         //Releases the Punch earlier
         if (special_pressed){
             window = 3;
@@ -282,11 +280,15 @@ if (attack == AT_USPECIAL){
 //DSpecial
 if (attack == AT_DSPECIAL){
     if (window == 3 && window_timer == 1){
-        sound_play(sound_get("special"));
         if (has_hit){
+            sound_play(sound_get("special"));
             stealth_rock += 2;
         }
+        else if (was_parried){
+            stealth_rock = 0;
+        }
         else{
+            sound_play(sound_get("special"));
             stealth_rock += 1;
         }
         stealth_rock_aux = stealth_rock;

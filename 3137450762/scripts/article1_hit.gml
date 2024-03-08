@@ -84,13 +84,12 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
         } else if ( // Check every individual grab hitbox to see if it hit the chair
 
             // Strongs
-           (hID.attack == AT_USTRONG && hID.hbox_num == 1)
-        || (hID.attack == AT_USTRONG && hID.hbox_num == 3)    // Ustrong
+           (hID.attack == AT_USTRONG && hID.hbox_num != 2) // Ustrong
         || (hID.attack == AT_FSTRONG && hID.hbox_num == 1) // Fstrong
 
             // Aerials
         || (hID.attack == AT_BAIR && hID.hbox_num < 3) // Bair
-        || (hID.attack == AT_DAIR && hID.hbox_num == 1) // Dair
+        || (hID.attack == AT_DAIR && hID.hbox_num != 2) // Dair
         || (hID.attack == AT_UAIR && hID.hbox_num == 1) // Uair
 
             // Specials
@@ -135,6 +134,8 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
 } else {
   hittable_hitpause_mult = 0;
 }
+
+gethit_hitpause_countdown = 1;
 
 if (hit_player_obj != player_id) || (hID.attack != AT_NSPECIAL) && hID.hit_priority > 0 {
   most_recent_hitbox = hID;

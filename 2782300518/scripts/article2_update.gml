@@ -14,7 +14,7 @@ image_yscale = article_yscale;
 
 var e = place_meeting(x, y, pHitBox);
 
-if (e)
+if (e && state == 0)
 {
 	if (pHitBox.player_id != player_id && get_player_team(pHitBox.player_id) != get_player_team(player_id) && !pHitBox.has_hit)
 	{
@@ -117,7 +117,7 @@ switch (state)
         {
         	vsp++;
         }
-        if (!free && vsp > 0)
+        if (!free && vsp > 0 && state_timer >2 && !hitpause)
         {
         	hsp = 0;
         	vsp = 0;

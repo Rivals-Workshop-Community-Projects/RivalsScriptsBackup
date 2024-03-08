@@ -115,6 +115,7 @@ djump_given_back_flag = false;
 emergency_fspec_given_back_flag = false;
 uspecial_stall_lockout_flag = false;
 uspecial_stall_counter = 0;
+moved_up = false;
 
 // Idle 2
 idle_2_game_frames_per_anim_frame = 20;

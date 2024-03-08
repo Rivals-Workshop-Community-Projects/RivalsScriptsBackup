@@ -1,5 +1,10 @@
 //if(clone_active == true){
 
+// Reset Ledge Snap Variable
+if(attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_FSPECIAL_AIR){
+    moved_up = false; // For ledge snap
+}
+
 //Swap button code:
 if(swap_nspec_dspec_input == true){
     switch(attack){

@@ -40,6 +40,14 @@ else
 	pounce_number = 0;
 }
 
+if (multikick_energy < 200)
+{
+	feline_power = false;
+	move_cooldown[AT_NSPECIAL]= 200;
+	move_cooldown[AT_NSPECIAL_2]= 200;
+	sound_stop(sound_get ("wild_kick"));
+}
+
 if (walljump_number = walljump_limit)
 {
 	walljump_number--;

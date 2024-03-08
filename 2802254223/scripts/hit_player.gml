@@ -21,11 +21,11 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 6) {
-    set_player_damage( player, clamp(get_player_damage(player)-7,0,999));
+    set_player_damage( my_hitboxID.player, clamp(get_player_damage(my_hitboxID.player)-4,0,999));
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 5) {
-    set_player_damage( my_hitboxID.hbox_owner, clamp(get_player_damage(my_hitboxID.hbox_owner)-7,0,999));
+    set_player_damage( my_hitboxID.hbox_owner, clamp(get_player_damage(my_hitboxID.hbox_owner)-4,0,999));
 }
 if (get_player_color(player) == 29 && my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
     

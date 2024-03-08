@@ -1,5 +1,5 @@
 //La Reina colors.gml
-set_num_palettes( 13 );
+set_num_palettes( 15 );
 
 // La Reina (Default)
 var edit_color = 0;
@@ -97,7 +97,7 @@ set_color_profile_slot(edit_color, 0, 29, 31, 33 );
 set_color_profile_slot(edit_color, 1, 0, 120, 200 );
 set_color_profile_slot(edit_color, 2, 55, 234, 255 );
 set_color_profile_slot(edit_color, 3, 0, 255, 168 );
-set_color_profile_slot(edit_color, 4, 73, 87, 94 );
+set_color_profile_slot(edit_color, 4, 63, 78, 78 );
 
 edit_color = 12; // Genesis
 set_color_profile_slot(edit_color, 0, 45, 35, 35);
@@ -106,9 +106,29 @@ set_color_profile_slot(edit_color, 2, 214, 218, 220);
 set_color_profile_slot(edit_color, 3, 300, 80, 100);
 set_color_profile_slot(edit_color, 4, 250, 60, 40);
 
-/* edit_color = 12; // Genesis
-set_color_profile_slot(edit_color, 0, 48, 215, 72);
-set_color_profile_slot(edit_color, 1, 52,  55, 60);
-set_color_profile_slot(edit_color, 2, 113, 113, 113);
-set_color_profile_slot(edit_color, 3, 217, 255, 206);
-set_color_profile_slot(edit_color, 4, 211, 226, 154); */
+edit_color = 13; // gracefulknight
+set_color_profile_slot(edit_color, 0, 10, 112, 212);
+set_color_profile_slot(edit_color, 1, 40, 47, 52);
+set_color_profile_slot(edit_color, 2, 245, 253, 255);
+set_color_profile_slot(edit_color, 3, 245, 253, 255);
+set_color_profile_slot(edit_color, 4, 121, 121, 140);
+
+/* edit_color = 15; // Honorless
+set_color_profile_slot(edit_color, 0, 205, 205, 205);
+set_color_profile_slot(edit_color, 1, 260, 260, 260);
+set_color_profile_slot(edit_color, 2, 214, 218, 220);
+set_color_profile_slot(edit_color, 3, 300, 80, 100);
+set_color_profile_slot(edit_color, 4, 250, 60, 40); */
+
+edit_color = 14; // DT
+set_color_profile_slot(edit_color, 0, 254, 180, 10);
+set_color_profile_slot(edit_color, 1, 60, 6, 90);
+set_color_profile_slot(edit_color, 2, 255, 255, 199);
+set_color_profile_slot(edit_color, 3, 275, 100, 335);
+set_color_profile_slot(edit_color, 4, 320, 300, 180);
+
+/* set_color_profile_slot(edit_color, 0, 110, 10, 230);
+set_color_profile_slot(edit_color, 1, 254, 224, 25);
+set_color_profile_slot(edit_color, 2, 255, 255, 199);
+set_color_profile_slot(edit_color, 3, 280, 150, 30);
+set_color_profile_slot(edit_color, 4, 160, 50, 230); */

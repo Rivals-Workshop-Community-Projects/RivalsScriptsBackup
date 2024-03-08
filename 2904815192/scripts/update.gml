@@ -306,6 +306,23 @@ if (doublesBoostTimer == 1){
 	}
 }
 
+
+if (instance_exists(dice1) || instance_exists(dice2)){
+	if ((instance_exists(dice1) && !instance_exists(dice2)) || (!instance_exists(dice1) && instance_exists(dice2))){
+		if (instance_exists(dice1)){
+			with (dice1){
+				destroyed = true;
+			}
+		}
+		if (instance_exists(dice2)){
+			with (dice2){
+				destroyed = true;
+			}
+		}
+		move_cooldown[AT_NSPECIAL] = 10;
+	}
+}
+
 //-----------------
 //Property Stuff
 if (instance_exists(property1)){
