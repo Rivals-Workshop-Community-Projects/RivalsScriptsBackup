@@ -7,6 +7,7 @@ if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
 }
 
 var window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+var window_last = get_attack_value(attack, AG_NUM_WINDOWS);
 switch attack{
 	case AT_UTILT:
 	if window < 4 offset_hud(100);
@@ -28,9 +29,23 @@ switch attack{
 	case AT_DSTRONG:
 	if window = 1 fakeout();
 	if window = 2 && window_timer = window_end-1 sound_play(asset_get("sfx_burnapplied"), 0, noone, 1, 1);
+	if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
+		hitstop_full = max(hitstop_full, 20);
+		hitstop = max(hitstop, 20);
+		hitpause = 1;
+		old_hsp = hsp;
+		old_vsp = vsp;
+	}
 	break;
 	
 	case AT_USTRONG:
+	if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
+		hitstop_full = max(hitstop_full, 20);
+		hitstop = max(hitstop, 20);
+		hitpause = 1;
+		old_hsp = hsp;
+		old_vsp = vsp;
+	}
 	if window = 1 fakeout();
 	if window >= 2 offset_hud(200);
 	break;
@@ -73,23 +88,23 @@ switch attack{
 			}
 		}
 		var g = 0;
-		if !free && !ground_at_pos(x - 10*spr_dir, y){
+		if !free && !ground_at_pos(x, y){
 			var dir = 2;
 			repeat(80){
 				dir = (g%2)*2 -1;
-				if ground_at_pos(x - 10*spr_dir + floor(g/2)*dir, y){
+				if ground_at_pos(x + floor(g/2)*dir, y){
 					g += 30
 					break;
 				}
 				g++;
 			}
 		}
-		venus = instance_create(x - 10*spr_dir + floor(g/2)*dir, y + 10*free, "obj_article1");
+		venus = instance_create(x + floor(g/2)*dir, y + 9*free + 1, "obj_article1");
 		venus.state = 7*(!free);
 		venus.sprite_index = sprite_get(free? "dspecialseed": "Venus");
 		if !free{
 			sound_play(asset_get("sfx_blow_weak1"), 0, noone, 1);
-			spawn_hit_fx(x - 10*spr_dir + floor(g/2)*dir, y, 301);
+			spawn_hit_fx(x + floor(g/2)*dir, y, 301);
 		}
 	}
 	break;
@@ -193,7 +208,6 @@ array_push(clone_inputs, inputs);
 
 #define fakeout()
 if shield_pressed && !hitpause{
-	move_cooldown[attack] = 60 + 80*(attack = AT_FSTRONG || attack = AT_DSTRONG || attack = AT_USTRONG);
 	var temp_pl = instance_create(x + 70*spr_dir, y - 10, (object_index = oPlayer? "oPlayer": "oTestPlayer"));
 	temp_pl.state = state;
 	temp_pl.state_timer = state_timer;

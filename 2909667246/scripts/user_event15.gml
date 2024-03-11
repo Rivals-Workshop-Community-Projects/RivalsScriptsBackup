@@ -259,6 +259,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.44", "8th March, 2024");
+initHeader("Buffs");
+initSection("+ DTilt sweetspot is a bit bigger");
+initHeader("Fixes / Other Changes");
+initSection("+ Added extra impact to powerful hits, and made hits in general feel better with a custom shaky hitpause effect");
+
 initPatch("1.43", "28th January, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed Toad compatibility

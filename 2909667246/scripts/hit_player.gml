@@ -1,5 +1,9 @@
 //
 
+//extra hitpause and shake code
+extrahitpauseon = my_hitboxID.type==1?true:false;
+shaketarget = hit_player_obj;hitpausesetpos = true;hitpausecap = 40;shakecap = 50;
+
 if (my_hitboxID.attack == AT_FSPECIAL){
     if(my_hitboxID.hbox_num == 1){
         my_hitboxID.hashitplayer = true;
@@ -149,7 +153,7 @@ if(hit_player_obj.should_make_shockwave){
 }
 
 //hitboxes that trigger the silly angle 0 galaxy thing
-if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 9 || my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_BAIR
+if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 9 || my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_BAIR || my_hitboxID.attack == AT_JAB
 || my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1|| my_hitboxID.attack == AT_GRAB && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)){
 	//trigger silly angle 0 thing (if galaxy)
 	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;

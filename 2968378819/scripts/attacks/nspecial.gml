@@ -9,7 +9,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, has_rune("F")? 6:12);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_zetter_fireball_fire"));
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_combust"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, has_rune("F")? 5:11);
 
 //Throwing

@@ -13,6 +13,25 @@ if (state == PS_SPAWN) {
     	sound_play( sound_get("teleport"));
     }
     
+    if taunt_pressed && jestermode == false{
+        jestermode = true;
+        sound_play(asset_get("mfx_coin"));
+    }
+}
+
+if state == PS_HITSTUN && hurt_img == 0 && !hitpause && jestermode == true{
+    draw_x = 0;
+    draw_y = -32;
+	sprite_index = sprite_get("jestermodebighurt");
+	if (state_timer == 0){
+		spr_angle = 0;
+	}
+    else{
+        spr_angle = (state_timer * 50 * spr_dir) % 360; 
+    }
+}
+else{
+    spr_angle = 0;
 }
 
 //var vict = sound_get("TAKWIN");

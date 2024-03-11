@@ -42,8 +42,8 @@ set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_GOTO, 7);
 
 //Landing lag 
-set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));

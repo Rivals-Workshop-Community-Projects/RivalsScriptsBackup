@@ -185,12 +185,11 @@ monk_bluecombo = false;
 monk_combo_hspcheck = hsp;
 monk_combo_statecheck = state;
 
+ui_parry = 0;
+parry_success = 0;
+music_timer = 0;
+
 if get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"{
-    if get_player_color(player) == 19 || get_player_name(player) == "TANIA"{
-        ui_parry = 0;
-        parry_success = 0;
-        music_timer = 0;
-    }
     
     set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("HitLightDBZ2"));
     set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("HitLightDBZ1"));
@@ -263,3 +262,11 @@ if has_rune("J"){
 //Kirby Copy Ability
 
 TCG_Kirby_Copy = 4;
+
+//Reiga's The Knight
+knight_compat_dream = 
+    [
+        "...",
+        "...",
+        "STOP DAWDLING AND FIGHT!"
+    ]

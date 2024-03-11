@@ -119,22 +119,29 @@ switch attack{
         }
         
         if (window == 7){
-            can_wall_jump = true;
-            if window_timer = 5{
-				if !has_hit{
-					if !has_rune("M"){
-						state = PS_PRATFALL;
-						hurtboxID.sprite_index = sprite_get("idle_hurtbox");
-					}
-					else{
-						fspecial_used = 999;
-					}
-				}
-				else if special_down && !move_cooldown[AT_FSPECIAL]{
+			if has_hit{
+				if special_down && !move_cooldown[AT_FSPECIAL]{
 					window = 1;
 					window_timer = 0;
 					has_hit = false;
 					attack_end();
+				}
+				else{
+					attack_end();
+					destroy_hitboxes();
+					set_state(PS_IDLE_AIR);
+					hsp *= 0.45;
+					vsp *= 0.45;
+				}
+			}
+            can_wall_jump = true;
+            if window_timer = 12{
+				if !has_rune("M"){
+					state = PS_PRATFALL;
+					hurtboxID.sprite_index = sprite_get("idle_hurtbox");
+				}
+				else{
+					fspecial_used = 999;
 				}
             }
             hsp *= 0.75;
@@ -144,11 +151,14 @@ switch attack{
         if (window > 1  && window < 7 && !free){
             if has_hit{
                 sound_play(asset_get("sfx_land_light"));
-                window = 9;
+                attack_end();
+                destroy_hitboxes();
+                set_state(PS_IDLE);
             }
             else{
                 sound_play(asset_get("sfx_land_med"));
-                set_state(PS_LANDING_LAG);
+                window = 8;
+            	window_timer = 0;
             }
         }
         afterimage_timer = 1;
@@ -156,12 +166,10 @@ switch attack{
 
     case AT_DSPECIAL:
         can_fast_fall = false;
-        if (window == 1){
-            set_window_value(AT_DSPECIAL, 4, AG_WINDOW_GOTO, 5);
-        }
-        if (window == 4 && free){
-            set_window_value(AT_DSPECIAL, 4, AG_WINDOW_GOTO, 7);
-        }
+		if window < 5{
+			set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, free? 0:1);
+		}
+        set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, free? 11:15);
     break;
 
     case AT_DSPECIAL_AIR:

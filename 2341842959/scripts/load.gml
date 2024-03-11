@@ -58,6 +58,7 @@ sprite_change_offset("bouncehurt", 63, 94);
 sprite_change_offset("uphurt", 63, 94);
 sprite_change_offset("downhurt", 63, 94);
 sprite_change_offset("spinhurt", 63, 94);
+sprite_change_offset("jestermodebighurt", 63, 63);
 
 sprite_change_offset("gas_DTILT", 74, 86);
 sprite_change_offset("gas_USTRONG", 64, 151);

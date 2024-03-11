@@ -6,8 +6,10 @@ if my_hitboxID.attack = AT_DSPECIAL && clone_pl != self{
 }
 
 if clone_pl == self{
-	if main_pl.state = PS_ATTACK_GROUND || main_pl.state == PS_ATTACK_AIR main_pl.was_parried = 1;
-	else with main_pl{
+	if main_pl.state = PS_ATTACK_GROUND || main_pl.state == PS_ATTACK_AIR{
+		main_pl.was_parried = 1;
+		main_pl.parry_lag = 60;
+	}else with main_pl{
 		set_state(PS_PRATLAND);
 		parry_lag = 40;
 	}

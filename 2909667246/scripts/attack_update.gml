@@ -749,12 +749,9 @@ if (canon || op) {
 
 #define pocket_article_if_valid
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
-    	if(string_length(string(player_id.url)) >= 0){
-	        /*var playerurl = 0;
-	        if("url" in player_id && string_length(string(player_id.url)) >= 0){
-	        	playerurl = real(player_id.url);
-	        }*/
-	        var playerurl = real(player_id.url);
+    	var playerurl = 21;
+    	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
+    	//if(string_length(string(player_id.url)) > 0){
 	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable
 	        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")
 	        && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
@@ -821,14 +818,15 @@ if (canon || op) {
 			    	}
             	}
         	}
-    	}
+    	//}
     }
     
 #define grab_article_if_valid
     //contributed by Floral qua Floral <3
     if(!other.grabbedobject){
-		if(string_length(string(player_id.url)) > 0 && orig_player != 5){
-    		var playerurl = real(player_id.url);
+    	var playerurl = 21;
+    	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
+		if(orig_player != 5){
     		var GrabRangeModifier = 0;
     		if("MattGrabRangeModifier" in self){
     			GrabRangeModifier = real(MattGrabRangeModifier);
