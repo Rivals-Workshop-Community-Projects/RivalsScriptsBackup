@@ -1,20 +1,4 @@
-
-
-//someone_pressed = false;
-//end_charselect = false;
-//go_to_charselect = false;
-//results_timer = 3;
-//with asset_get("result_screen_box")
-//{
-    //can_input = false;
-//}
-
 if (results_timer < 5) exit;
-
-////Broken return to charselect
-//someone_pressed = false;
-//end_charselect = false;
-
 
 if (results_timer == 5) 
 {

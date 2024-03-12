@@ -38,7 +38,10 @@ use_alt_names = true;
 // (you can also change it to different values depending on the alt, by using
 // get_player_color(player))
 alt_ui_recolor = 0;
-
+alt = get_player_color(player);
+if(alt == 7 || alt == 8 || alt == 12 || alt == 24 || alt == 31)alt_ui_recolor = 1;
+if(alt == 2 || alt == 4 || alt == 6 || alt == 26 || alt == 27 || alt == 28)alt_ui_recolor = 2;
+if(alt == 26)alt_ui_recolor = 3;
 // The list of names for the alts, if enabled.
 alt_names = [
 	"Default",
@@ -256,6 +259,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.89", "16th February, 2024");
+initHeader("Buffs");
+initSection("+ Made UStrong spawning a single lightning bolt while aerial happen at half-charge and above, instead of only full charge like before");
+initHeader("Fixes / Other Changes");
+initSection("+ Made a lot of the alt names much easier to read on CSS, as many of them were still stuck with very dark text color
++ Added freeze and sleep animations
++ Fixed respawn platform recoloring partially in a weird way
++ Tweaked walk animation speed a bit to be slower");
+
 initPatch("1.88", "9th February, 2024");
 initHeader("Buffs");
 initSection("+ Increased some movement stats (dash 6.5->7) and made wavedash slightly better

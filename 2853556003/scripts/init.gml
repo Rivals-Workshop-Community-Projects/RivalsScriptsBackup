@@ -254,6 +254,7 @@ bypass_sounds = false
 sounds_changed = false
 bomb_hurricane = false
 uspecial_charge = 0
+bubble_bounce_potential = 0
 
 thump = 0
 bomb_thump = 0

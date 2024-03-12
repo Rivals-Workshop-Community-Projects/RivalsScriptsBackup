@@ -4,6 +4,9 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
+//frame-perfect ability to slip off a platform just before an attack begins
+set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+
 //Presets all attacks to have a hidden precharge window
 //either it already has one, or it will get overwritten later in its proper attack file
 for (var a = 0; a < 50; a++)

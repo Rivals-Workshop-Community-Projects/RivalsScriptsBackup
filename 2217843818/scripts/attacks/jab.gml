@@ -22,7 +22,7 @@ set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_HSPEED, 2);
 
 set_window_value(AT_JAB, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 4, AG_WINDOW_CANCEL_TYPE, 1);

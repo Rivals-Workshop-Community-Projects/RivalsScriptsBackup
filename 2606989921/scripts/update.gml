@@ -98,10 +98,14 @@ if (at_fresh_special_down)
 
     if (!special_down)
     {
-        //released: save self's last move
-        target = self;
-        saved_move = target.attack;
         at_fresh_special_down = false;
+
+        //released: save self's last move
+        if (!special_pressed) //tolerates tap: does not remove bspec
+        {
+            target = self;
+            saved_move = target.attack;
+        }
     }
     else if (!counts_as_hitpause && at_was_in_hitpause)
     {
@@ -114,7 +118,8 @@ if (at_fresh_special_down)
     //save move info
     if instance_exists(target) && ( (msg_bspecial_last_move.target != target) 
                                  || (msg_bspecial_last_move.move != saved_move) )
-                               && !(saved_move == AT_DSPECIAL_2 && target == self)
+                               && ! (target == self && 
+                                      (saved_move == AT_DSPECIAL_2 || msg_is_bspecial) )
     {
         msg_bspecial_last_move.target = target;
         msg_bspecial_last_move.move = saved_move;
@@ -397,6 +402,16 @@ if (msg_uspecial_wraparound)
         vsp = 0;
         msg_uspecial_wraparound_require_pratfall = true;
         attack_end();
+
+        //any melee hitboxes that belong to me should be set to hit again
+        with (pHitBox) if (player == other.player) && (type == 1)
+        {
+            for (var p = 0; p < array_length(can_hit); p++)
+            { 
+                can_hit[p] = true; 
+            }
+        }
+
         sound_play(asset_get("sfx_genesis_tv_static"));
         msg_uspecial_wraparound = false;
     }
@@ -430,4 +445,15 @@ if (gfx_glitch_death_stack > 0)
             end_match();
         }
     }
+}
+
+//=========================================================
+//banishment (can't be done in init sadly)
+if (msg_can_banish_cheater)
+   && msg_is_online && !get_match_setting(SET_TEAMS)
+   && ((is_player_on(1) + is_player_on(2) + is_player_on(3) + is_player_on(4)) == 2)
+   && taunt_down && shield_down && (get_gameplay_time() < 5) //implied but you never know
+{
+    msg_banish_cheater_to_purgatory = true;
+    msg_alt_startup = 153;
 }

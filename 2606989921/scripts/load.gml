@@ -78,6 +78,8 @@ sprite_change_collision_mask("proj_payday_broken", false, 2, 12, 12, 20, 20, 1);
 sprite_change_offset("orca_fsmash_puddle", 20, 20);
 sprite_change_offset("orca_fsmash_puddle_hurt", 20, 20);
 
+sprite_change_offset("banish", 28, 52);
+
 set_victory_theme(sound_get("victory"));
 
 sprite_change_offset("glitch_bg", 17, 37);

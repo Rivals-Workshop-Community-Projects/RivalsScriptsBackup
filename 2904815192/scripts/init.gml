@@ -284,3 +284,17 @@ has_fail = true;
 fail_text = "Of course you had to land on Boardwalk!";
 //gfzsignspr = sprite_get("gfz")
 user_event(7); //Palutena's Guidance Codec
+
+// home stage stuff
+isOnMonopolyCity = false;
+if (get_stage_data( SD_ID ) == 2904815440){
+	isOnMonopolyCity = true;
+}
+
+// The Knight (Reiga) Dream Nail Dialogue
+knight_compat_dream = 
+    [
+        "This filthy bug needs to go! It's lowering my property rent!",
+        "You'll make a fine investment on my lands...",
+        "Don't think you can just waltz away without giving me some rent for seeing me!"
+    ]

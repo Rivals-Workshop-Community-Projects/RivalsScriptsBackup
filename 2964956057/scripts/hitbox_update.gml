@@ -43,8 +43,8 @@ if attack == AT_NSPECIAL{
 			}
 			//print_debug(target_id);
 			
-			//Make sure we aren't targeting ourselves!
-			if (target_id != get_pID){
+			//Make sure we aren't targeting ourselves or someone who doesn't exist!
+			if (target_id != get_pID && instance_exists(target_id)){
 				var dir, point_y, new_hsp, new_vsp;
 				dir = point_direction(x, y, floor(target_id.x), floor(target_id.y - (target_id.char_height / 2)));
 				//point_x = lengthdir_x(max_speed,dir);
@@ -135,7 +135,7 @@ var shortest_id = noone;
 with (oPlayer) {
 	if (player != other.player_id.player) {
 		var curr_dist = point_distance(x,y,other.x,other.y);
-		if (curr_dist < shortest_dist && state != PS_DEAD && state != PS_RESPAWN && !clone) {
+		if (curr_dist < shortest_dist && state != PS_DEAD && state != PS_RESPAWN && !clone && !respawn_taunt) {
 			shortest_dist = curr_dist;
 			shortest_id = id;
 		}

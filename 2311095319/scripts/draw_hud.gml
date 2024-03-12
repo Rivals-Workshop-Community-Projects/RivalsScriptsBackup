@@ -15,7 +15,9 @@ if (hasfirebrand == true){
 }
 
 
+/*
 if (state == PS_SPAWN && state_timer <= 100 && voiced == 0){
 	draw_debug_text( temp_x + 50, temp_y - 20, string( "Taunt: Voiced" ));
 	voiced_in_vs = true;
 }
+*/

@@ -266,7 +266,7 @@ TCG_Kirby_Copy = 4;
 //Reiga's The Knight
 knight_compat_dream = 
     [
-        "...",
-        "...",
+        "......",
+        "......",
         "STOP DAWDLING AND FIGHT!"
     ]

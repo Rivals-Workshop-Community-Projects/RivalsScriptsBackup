@@ -43,7 +43,8 @@ sprite_change_offset("dattack", 24, 62);
 sprite_change_offset("dattack_muno", 24, 62);
 sprite_change_offset("dattack_slideeffect", 22, 24);
 sprite_change_offset("ftilt", 62, 80);
-sprite_change_offset("dtilt", 28, 64);
+sprite_change_offset("dtilt", 18, 64);
+//sprite_change_offset("dtilt", 28, 64);
 sprite_change_offset("utilt", 44, 88);
 
 //Aerials

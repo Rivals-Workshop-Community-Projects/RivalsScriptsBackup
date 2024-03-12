@@ -207,6 +207,7 @@ attack_pressed, attack_down, special_pressed, special_down, jump_pressed, jump_d
 array_push(clone_inputs, inputs);
 
 #define fakeout()
+return;
 if shield_pressed && !hitpause{
 	var temp_pl = instance_create(x + 70*spr_dir, y - 10, (object_index = oPlayer? "oPlayer": "oTestPlayer"));
 	temp_pl.state = state;

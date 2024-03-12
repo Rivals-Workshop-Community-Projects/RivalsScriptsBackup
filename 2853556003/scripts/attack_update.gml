@@ -1,6 +1,6 @@
  //B - Reversals
 
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -1200,6 +1200,14 @@ if(attack == AT_FSPECIAL){
                 }
             }      
         }
+        
+        if(state_timer <= 7){
+        	if(left_down){
+        		spr_dir = -1
+        	}else if(right_down){
+        		spr_dir = 1
+        	}
+        }
 	}
 	//move_cooldown[AT_FSPECIAL] = 40
 	can_fast_fall = false
@@ -1557,4 +1565,9 @@ if(has_rune("O") || all_runes){
 		can_shield = true 
 		can_ustrong = true
 	}
+}
+
+//Bubblebounce
+if(state == PS_LAND && prev_state == PS_DOUBLE_JUMP && !free){
+	set_state(PS_JUMPSQUAT)
 }

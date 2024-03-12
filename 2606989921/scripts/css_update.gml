@@ -49,10 +49,21 @@ if instance_exists(cursor_id)
 
 //persistent rewards
 var taunt_control = false;
+var banish_control = false;
 if !instance_exists(msg_persistence)
     msg_persistence = msg_get_persistent_article();
 else
+{
+    if (0x04E50188 == scromble(get_player_name(player)))
+    {
+        msg_persistence.achievement_status[0] = true;
+        msg_persistence.achievement_status[1] = true;
+        msg_persistence.achievement_status[2] = true;
+    }
+
     taunt_control = msg_persistence.achievement_hall_of_fame;
+    banish_control = msg_persistence.achievement_fatal_error;
+}
 
 //error spoof
 if (msg_error_active)
@@ -71,9 +82,25 @@ if (msg_error_active)
 var syncdata = (taunt_control)
              + (msg_yellow_mode << 1)
              + (msg_stage_stable << 2)
+             + (banish_control << 3)
              + ( (floor(os_version / 65536)%16) << 4)
              + ( (floor(os_version % 65536)%16) << 8);
 set_synced_var(player, syncdata);
+
+
+//===================================================
+#define scromble(text)
+{
+    //thx adlr
+    var A = 1; var B = 0;
+    for (var i = 0; i < string_length(text); i++) 
+    {
+        A += string_ord_at(text, i+1); A %= 0xFFF1;
+        B += A;                        B %= 0xFFF1;
+
+    }
+    return A + (B << 16);
+}
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.

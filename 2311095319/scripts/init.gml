@@ -117,7 +117,7 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier >
 
 //Landing Variables
 land_time = 4; //normal landing frames
@@ -206,6 +206,7 @@ vc_mario_grunt = sound_get("vc_mario_grunt");
 vc_mario_haha = sound_get("vc_mario_haha");
 vc_mario_herewego = sound_get("vc_mario_herewego");
 vc_mario_hooh = sound_get("vc_mario_hooh");
+vc_mario_itsame = sound_get("vc_mario_itsame");
 vc_mario_jump = sound_get("vc_mario_jump");
 vc_mario_letsago = sound_get("cssvoice");
 vc_mario_oof = sound_get("vc_mario_oof");
@@ -271,3 +272,11 @@ arena_short_name = "Mario";
 battle_text = "* Mario leaps into sight!";
 has_fail = true;
 fail_text = "Looks like you needed one of those extra lives.";
+
+// The Knight (Reiga) Dream Nail Dialogue
+knight_compat_dream = 
+    [
+        "Ah, Spaghetti... Ah, Ravioli...",
+        "It's-a-me, Mario!",
+        "Wahoo! Let's-a-go!"
+    ]

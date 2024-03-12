@@ -188,6 +188,14 @@ tcoart = sprite_get("tcoskunk");
 toonlink_photo = sprite_get("tinkphoto");
 toonlink_photo2 = 2;
 
+//Reiga's The Knight
+knight_compat_dream = 
+    [
+        "This is such a pain...",
+        "What is this thing anyway?",
+        "Could be sleeping right now..."
+    ]
+
 //Dracula support (yadda yadda you don't belong in this world)
 {
 dracula_portrait = sprite_get("draculaportrait");

@@ -8,10 +8,12 @@ if (get_player_color(player) != 0){
 	draw_sprite(sprite_get("SLEEVES_BUT_RED"),0,x + 8,y + 8);
 }
 
+/*
 if (get_color_profile_slot_r(0, 0) == 238) {
     sound_play(sound_get("cssvoice"));
     set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
 }
+*/
 
 var temp_x = x + 8;
 var temp_y = y + 9;
@@ -91,6 +93,9 @@ if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
 }
 
+
+// CSS button
+draw_sprite_ext(sprite_get("css_voicedMode_button"), 0 + buttonShouldHighlight + (css_voicedMode_enabled * 3) + buttonPressed, temp_x + 174 - 4, temp_y + 26, 1, 1, 0, c_white, 1);
 
 //include alt. name
 //textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + alt_name[alt_cur]);

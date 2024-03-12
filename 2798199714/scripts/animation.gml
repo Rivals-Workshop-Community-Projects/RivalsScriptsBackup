@@ -6,7 +6,7 @@ switch (state){
     break;
     
     case PS_WALK:
-        image_index = floor(image_number*state_timer/(image_number*5));
+        image_index = floor(image_number*state_timer/(image_number*7));
     break;
 }
 

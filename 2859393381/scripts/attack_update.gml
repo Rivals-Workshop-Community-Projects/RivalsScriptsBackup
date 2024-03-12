@@ -442,25 +442,41 @@ sound_play(sound_get("phone"));
 //turnabout moves
 
         case AT_EXTRA_1:
-            if (window = 1 && window_timer = 1 && !cornered_disabled)
+            if (window = 1 && window_timer = 1)
             {
-                with (oPlayer) if ("turnaboutID" in self) turnaboutID = other; 
+		if (!cornered_disabled)
+		{
+               		with (oPlayer) if ("turnaboutID" in self) turnaboutID = other; 
+			if (get_player_color(player) == 15) 
+			{
+				just_a_theory = true;
+				theory_length = 0;
+				theorx = x;
+				theory = y-38;
+				if (get_local_setting(3) <= 0.2) sound_play(sound_get("matpat_intro_short"));
+			}
+		}
+		//else if (get_player_color(player) == 15) sound_play(sound_get("matpat_intro_short"));
             }
             hurtboxID.sprite_index = sprite_get("hurtbox");
             hsp = 0;
             vsp = 0;
             turnabout = true;
             turnabout_timer = turnabout_timer_max;
-            if (window = 2 && window_timer = 11){
-                sound_play(sound_get("finger_shine"), false, noone, 0.5, 1);
-            } if (window = 2 && window_timer = 13){
-                var turnabout_shine = spawn_hit_fx(x + (6*spr_dir), y-42, shine);
-                turnabout_shine.depth = depth-1;
-            }
+	    if (get_player_color(player) != 15)
+            {
+            	if (window = 2 && window_timer = 11){
+             	   sound_play(sound_get("finger_shine"), false, noone, 0.5, 1);
+            	} if (window = 2 && window_timer = 13){
+                	var turnabout_shine = spawn_hit_fx(x + (6*spr_dir), y-42, shine);
+                	turnabout_shine.depth = depth-1;
+            	}
+	    }
             if (window < 5)
             { 
                 hit_player_obj.hitpause = true;
                 hit_player_obj.hitstop = 2; 
+                //hit_player_obj.depth = depth-2; 
             }
             can_move = false;
             can_jump = false;

@@ -28,6 +28,9 @@ if (attack == AT_DATTACK){
 				sound_play(vc_mario_yah);
 			}
 		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (11 * spr_dir), y, "dattack", spr_dir);
+		}
 	}
 	if (da_cheat_active = false){
 		if (window == 3){
@@ -43,12 +46,12 @@ if (attack == AT_DATTACK){
 	
 	if (window == 2 || window == 3){
 		if (!hitpause && !free){
-			if (window_timer == 1
-			|| window_timer == 3
-			|| window_timer == 5
-			|| window_timer == 7
-			|| window_timer == 9){
-				spawn_base_dust( x, y, "dash", spr_dir);
+			if (window_timer mod 2 == 0){
+				if (window == 3 && window_timer > 4){
+					spawn_base_dust( x, y, "walk", spr_dir);
+				} else {
+					spawn_base_dust( x, y, "dash", spr_dir);
+				}
 			}
 		}
 	}
@@ -97,10 +100,8 @@ if (attack == AT_DTILT){
 			//sound_play(sfx_tanooki_equip)
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			sound_stop(sfx_tanooki_equip)
-			sound_play(sfx_tanooki_swipe)
-			window = 2;
-			window_timer = 0;
+			//sound_stop(sfx_tanooki_equip)
+			//sound_play(sfx_tanooki_swipe)
 			spawn_base_dust( x - (6 * spr_dir), y, "dash", spr_dir);
 		}
 	}
@@ -627,7 +628,7 @@ if (attack == AT_DSPECIAL){
 			}
 		}
 	}
-	if (window != 1 && tornadoair == true && !free){
+	if (window != 1 && tornadoair == true && !free && !was_parried){
 		set_state(PS_LANDING_LAG);
 		tornadoair = false
 	}
@@ -712,16 +713,16 @@ if (attack == AT_DSPECIAL){
 }
 
 //Taunt
-//This is mainly for debug stuff (and also ripping the base game vfx lmao)
 if (attack == AT_TAUNT){
 	if (window == 1){
-		if (window_timer == 3){
-			//spawn_hit_fx( x + 190, y - 50, 148 );
-			//also 148
-		}
 		if (window_timer == 18){
 			if (voiced == 1){
-				sound_play(vc_mario_herewego);
+				var whichTauntVoice = random_func(0,2,true)+1;
+				if (whichTauntVoice == 1){
+					sound_play(vc_mario_herewego);
+				} else {
+					sound_play(vc_mario_itsame);
+				}
 			}
 		}
 	}
@@ -736,10 +737,10 @@ if (attack == AT_TAUNT){
 var dlen; //dust_length value
 var dfx; //dust_fx value
 var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
 var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
 switch (name) {
     default: 
@@ -753,11 +754,22 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
+newdust.draw_angle = angle;
 return newdust;

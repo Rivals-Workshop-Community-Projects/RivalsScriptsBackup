@@ -462,6 +462,10 @@ if (attack == AT_NSPECIAL){
 		    		if(FinalSmash == 7)lightning.extra_delay = 60;
 		    		if(FinalSmash == 8)lightning.extra_delay = 40;
     			}
+    			//single lightning if in the air
+    			if(!position_meeting(x, y+30,asset_get("par_block")) && !position_meeting(x, y+30,asset_get("par_jumpthrough")) && FinalSmash <= 0){
+		    		var lightning = create_hitbox(AT_USTRONG, 6, x, y-160+offset_y);spawnlightning = true;
+	    		}
 		    	if(strong_charge >= 60*runeC_charge_multiplier){
 		    		if(position_meeting(x+160*spr_dir, y+30,asset_get("par_block")) || position_meeting(x+160*spr_dir, y+30,asset_get("par_jumpthrough")) || FinalSmash > 0){
 		    			if(FinalSmash == 4 || FinalSmash == 7)offset_x = 100;
@@ -480,9 +484,7 @@ if (attack == AT_NSPECIAL){
 			    		if(FinalSmash > 0)lightning = create_hitbox(AT_USTRONG, 4, x-(260+offset_x)*spr_dir, y-150+offset_y);
 			    		if(FinalSmash == 7)lightning.extra_delay = 100;
 		    		}
-		    		if(!position_meeting(x, y+30,asset_get("par_block")) && !position_meeting(x, y+30,asset_get("par_jumpthrough")) && FinalSmash <= 0){
-			    		var lightning = create_hitbox(AT_USTRONG, 6, x, y-160+offset_y);spawnlightning = true;
-		    		}if(FinalSmash == 6 || FinalSmash == 8){
+		    		if(FinalSmash == 6 || FinalSmash == 8){
 			    		var lightning = create_hitbox(AT_USTRONG, 4, x, y-160+offset_y);spawnlightning = true;
 			    		if(FinalSmash == 8)lightning.extra_delay = 60;
 		    		}

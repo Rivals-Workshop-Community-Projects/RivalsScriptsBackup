@@ -148,9 +148,12 @@ switch (state)
     case PS_TECH_BACKWARD:
     case PS_AIR_DODGE:
     {
-        if (state_timer == 0) && !msg_is_local && !get_match_setting(SET_PRACTICE)
-        { 
-            msg_gaslight_dodge.active = (GET_RNG(6, 0x0D) == 0);
+        if (state_timer == 4) && !msg_is_local
+        {
+            var movement_angle = (state == PS_AIR_DODGE) ? ((360+135) - 45*(air_dodge_dir)) % 360
+                                                         : (90 + 90*spr_dir);
+
+            msg_gaslight_dodge.active = (100 < abs(angle_difference(movement_angle, joy_dir)));
             if (msg_gaslight_dodge.active)
             {
                 msg_gaslight_dodge.x = 0;
@@ -158,7 +161,7 @@ switch (state)
             }
         }
 
-        if (msg_gaslight_dodge.active) && window < 2
+        if (msg_gaslight_dodge.active) && (window < 2) && (state_timer >= 4)
         {
             msg_gaslight_dodge.x -= 2 * hsp;
             msg_gaslight_dodge.y -= 2 * vsp;
@@ -527,6 +530,69 @@ switch (state)
                     msg_unsafe_effects.bad_vsync.impulse = 8;
                     msg_unsafe_effects.bad_vsync.horz_max = 12;
                     sound_play(sound_get("clicker_static"), false, noone, 1, state_timer / 100);
+                }
+            } break;
+            //==================================================================================
+            case 0x99: //Banish
+            {
+                sprite_index = sprite_get("banish");
+                if (state_timer < 24)
+                {
+                    image_index = 0 + max((state_timer / 5)-1, 0);
+                }
+                else if (state_timer < 60)
+                {
+                    image_index = 3 + ((state_timer - 22) / 11);
+                    shake_camera(30 - floor(state_timer/2), 8);
+                }
+                else if (state_timer < 72)
+                {
+                    image_index = 7;
+                    x -= spr_dir;
+                    old_vsp += 0.1; //vsp doesnt work somehow
+                    y += old_vsp;
+                    mask_index = asset_get("empty_sprite");
+                }
+                else if (state_timer >= 72)
+                {
+                    do_glitch_trail = true;
+                    state_timer = 99;
+                    msg_unsafe_effects.crt.impulse = 1;
+                    msg_unsafe_effects.crt.maximum = 5;
+                    image_index = (current_time % 3) + 8;
+                    x -= spr_dir;
+                    old_vsp += 0.3; //vsp doesnt work somehow
+                    y += old_vsp;
+                    mask_index = asset_get("empty_sprite");
+
+                    if (get_gameplay_time() > 290) end_match(); exit;
+                }
+
+                switch (state_timer)
+                {
+                    case 12: 
+                        msg_unsafe_effects.quadrant.freq = 2;
+                        msg_unsafe_effects.quadrant.gameplay_timer = 15;
+                        msg_unsafe_effects.bad_vsync.freq = 3;
+                        msg_unsafe_effects.bad_vsync.horz_max = 12;
+                        msg_unsafe_effects.bad_vsync.gameplay_timer = 23;
+                        break;
+                    case 20:
+                        msg_unsafe_effects.shudder.freq = 12;
+                        msg_unsafe_effects.shudder.horz_max = 20;
+                        msg_unsafe_effects.shudder.gameplay_timer = 23;
+                        msg_unsafe_effects.bad_vsync.impulse = 8;
+                        msg_unsafe_effects.bad_vsync.horz_max = 12;
+                        msg_unsafe_effects.bad_vsync.gameplay_timer = 20;
+                        msg_unsafe_effects.crt.freq = 12;
+                        msg_unsafe_effects.crt.maximum = 21;
+                        msg_unsafe_effects.crt.gameplay_timer = 90;
+                        sound_play(sound_get("banish"), false, noone, 1.18);
+                        break;
+                    case 32:
+                        msg_unsafe_effects.bad_vsync.horz_max = 5;
+                        msg_unsafe_effects.crt.maximum = 16;
+                        break;
                 }
             } break;
         }

@@ -48,6 +48,10 @@ stage_is_broken = false; //0 is normal, 1 is broken
 stage_broken_kind = 0;
 dust_object_asset = asset_get("new_dust_fx_obj");
 
+//curse a cheater to the shadow realm
+request_results_banishment = false; //banished results for Missingno
+request_banish_local_player = false; //banish effect for cheater
+
 //if any missingno is stable, prevent breakage
 stage_stability_mode = false;
 

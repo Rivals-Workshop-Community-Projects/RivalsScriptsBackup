@@ -147,6 +147,13 @@ if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_RESPAW
 {
     //turnabout_timer += 210; 
     turnabout_timer_pause = 1;
+	//if (get_player_color(player) == 15 && voice) sound_play(sound_get("matpat_KO"));
+}
+
+if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_DEAD && theory_length != -74)
+{
+	if (get_player_color(player) == 15) sound_play(sound_get("matpat_KO"), false, noone, 0.8);
+	theory_length = -74;
 }
 
 //if (turnabout && instance_exists(hit_player_obj) && hit_player_obj.state = PS_RESPAWN && hit_player_obj.state_timer = 1)
@@ -155,7 +162,7 @@ if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_RESPAW
 //    turnabout_timer_pause = 1;
 //}
 
-move_cooldown[AT_NSPECIAL_2_AIR]--; //why cant you program your game properly dan you shithead
+move_cooldown[AT_NSPECIAL_2_AIR]--;
 
 if (special_error_cooldown > 0) special_error_cooldown--;
 

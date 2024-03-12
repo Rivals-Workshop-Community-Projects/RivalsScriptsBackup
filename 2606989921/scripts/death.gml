@@ -12,6 +12,17 @@ msg_persistence.stage_request_breaking = GET_RNG(16, 0x01) * noone;
 msg_persistence.music_request_breaking = GET_RNG(17, 0x01) * noone;
 msg_persistence.sound_request_breaking = GET_RNG(18, 0x01) * noone;
 
+//banishment
+if (msg_banish_cheater_to_purgatory)
+{
+    set_player_stocks(player, -7);
+
+    msg_persistence.request_results_banishment = msg_is_local;
+    msg_persistence.request_banish_local_player = !msg_is_local;
+
+    end_match();  exit;
+}
+
 //cannot execute this glitch on deathboxes, teleporting back doesnt guarantee a death
 var beyond_blastzone = (x > get_stage_data(SD_RIGHT_BLASTZONE_X))
                     || (x < get_stage_data(SD_LEFT_BLASTZONE_X))

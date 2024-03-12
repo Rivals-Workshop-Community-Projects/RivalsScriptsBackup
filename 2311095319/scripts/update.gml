@@ -17,12 +17,17 @@ if (free){
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
 
+/*
 //Voiced Mode
 if (normal_voiced_toggle == 1){
 	voiced = 1
 } else if (normal_voiced_toggle == 0){
 	voiced = 0
 }
+*/
+
+voiced = get_synced_var( player );
+
 /*
 if (state == PS_DOUBLE_JUMP && state_timer == 0){
 	sound_play(sound_get("sfx_jump"), false, noone, 1, 1.35);
@@ -90,14 +95,16 @@ if (!free){
 deathvoiceline = random_func( 0, 5, true );
 
 switch (state){
+	/*
 	case PS_SPAWN:
 		//Turning on Voiced Mode Normally.
-		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){
+		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){//>
 			normal_voiced_toggle = 1
 			sound_play(sfx_coin);
 			sound_play(vc_mario_herewego);
 		}
 		break;
+	*/
 	case PS_CROUCH:
 		//Crouch Sound Effect.
 		if (state_timer == 2){
@@ -188,6 +195,33 @@ if (shadowmario == true){
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sfx_hammer_hit_spike);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
+}
+
+// hurt sounds
+if (voiced){
+	if ((state == PS_HITSTUN && free)){
+		// basic hurt sounds
+		if (state_timer == 1){
+			var shouldPlayHurtVoice = random_func( 0, 5, true );
+			if (shouldPlayHurtVoice >= 2){
+				sound_stop(vc_mario_uhh);
+				sound_stop(vc_mario_grunt);
+				sound_stop(vc_mario_doh);
+				sound_stop(vc_mario_oof);
+				var whichHurtVoice = random_func( 0, 4, true ) + 1;
+				print(whichHurtVoice);
+				if (whichHurtVoice == 1){
+					sound_play(vc_mario_uhh);
+				} else if (whichHurtVoice == 2){
+					sound_play(vc_mario_doh);
+				} else if (whichHurtVoice == 3){
+					sound_play(vc_mario_grunt);
+				} else {
+					sound_play(vc_mario_oof);
+				}
+			}
+		}
+	}
 }
 /*
 //Dialogue Buddy

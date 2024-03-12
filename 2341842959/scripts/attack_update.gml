@@ -295,6 +295,12 @@ if attack == AT_NAIR{
 }
 
 if (attack == AT_DAIR){
+	if jestermode = true{
+		set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("JMDairHitHard"));	
+		set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, sound_get("JMDairHitWeak"));	
+		set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("JMDairHitWeak"));	
+		set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, sound_get("JMDairHitWeak"));	
+	}
 	if has_rune("C"){
 		set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 	}

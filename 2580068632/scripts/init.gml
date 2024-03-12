@@ -333,6 +333,12 @@ if (brawl_mode){
 	set_victory_theme(sound_get("victory_brawl"));
 }
 
+// home stage stuff
+isOnHalberd = false;
+if (get_stage_data( SD_ID ) == 2580068913){
+	isOnHalberd = true;
+}
+
 //Compatability
 otto_bobblehead_sprite = sprite_get("otto");
 steve_death_message = "Steve had a Meta Knightmare";
@@ -347,6 +353,14 @@ arena_title = "The Lone Swordsman";
 arena_short_name = "Meta Knight";
 battle_text = "* You begin to feel tense just by looking at the masked swordsman.";
 miiverse_post = sprite_get("miiverse");
+
+// The Knight (Reiga) Dream Nail Dialogue
+knight_compat_dream = 
+    [
+        "Victory is my destiny.",
+        "Pick up your sword, and let us duel.",
+        "Another Knight... hmph."
+    ]
 
 //
 boxing_title = "The Lone 

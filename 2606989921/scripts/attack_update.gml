@@ -19,6 +19,13 @@ if (msg_is_bspecial) switch (attack)
         strong_down = special_down;
         strong_pressed = special_pressed;
     break;
+    case AT_DSPECIAL_2:
+        strong_down = special_down;
+        strong_pressed = special_pressed;
+        attack_down = special_down;
+        attack_pressed = special_pressed;
+        window_attack_pressed = attack_pressed; //for jab combos
+    break;
 }
 
 switch (attack)
@@ -181,10 +188,12 @@ switch (attack)
         {
             if (window_timer < 3 && attack_pressed) && (hsp*spr_dir < 0)
             {
-                window = 2; 
-                window_timer = 1; 
-                vsp = -7; 
-                hsp += spr_dir * -7;
+                window = 3; 
+                window_timer = 13;
+                attack_end();
+                vsp = -1.3; 
+                hsp += spr_dir * sign(hsp*spr_dir - 0.1) * 7;
+                hsp *= 1.05;
             }
             else if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1) && !free
             {
@@ -198,7 +207,13 @@ switch (attack)
     {
         if (window == 1 && strong_charge > 0)
         {
-            //fstrong's bug potentially active, check for collisions with projectiles?
+            //fstrong's bug potentially active, check for collisions with own projectiles
+            with (pHitBox) if (hit_priority > 0)
+            && (player == other.player)
+            && place_meeting(x, y, other.hurtboxID)
+            {
+                can_hit_self = true;
+            }
         }
     } break;
 //=============================================================
@@ -864,7 +879,7 @@ at_prev_free = free;
 
 //==============================================================
 //passive charge glitch
-if (msg_fstrong_interrupted_timer > 0)
+if (msg_fstrong_interrupted_timer > 0) && (attack != AT_TAUNT)
 {
     strong_charge = msg_fstrong_interrupted_timer;
     msg_fstrong_interrupted_timer = 0;

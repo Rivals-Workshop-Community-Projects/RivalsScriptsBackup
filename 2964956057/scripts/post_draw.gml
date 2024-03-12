@@ -130,6 +130,12 @@ Dspecial:
 - Aerial start up increased 18 -> 20
 + Aerial fall speed increased 10 -> 16
 = Adjusted sfx"
+
+        patch_note_title[i] = "Version 1.7.1"
+        patch_note_text[i++] = 
+        "Version 1.7.1
+= Fixed issue where nspecial instantly obliterated everyone if it didn't have a homing target.
+= Fixed issue where nspecial still homed on players taunting on respawn plat."
         
         //these are optional things that you can change if you'd like, but probably best to keep as-is
         pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.

@@ -34,7 +34,7 @@ sprite_change_offset("nair", 63, 94);
 sprite_change_offset("fair", 63, 94);
 sprite_change_offset("bair", 63, 94);
 sprite_change_offset("uair", 63, 94);
-sprite_change_offset("dair", 44, 89);
+sprite_change_offset("dair", 34, 89);
 sprite_change_offset("fstrong", 54, 75);
 sprite_change_offset("ustrong", 63, 134);
 sprite_change_offset("dstrong", 63, 94);
@@ -52,12 +52,12 @@ sprite_change_offset("FX_teleport", 62, 87);
 sprite_change_offset("intro", 62, 94);
 
 sprite_change_offset("hurtground", 63, 94);
-sprite_change_offset("bighurt", 63, 94);
-sprite_change_offset("hurt", 63, 94);
-sprite_change_offset("bouncehurt", 63, 94);
+sprite_change_offset("bighurt", 57, 94);
+sprite_change_offset("hurt", 57, 94);
+sprite_change_offset("bouncehurt", 59, 94);
 sprite_change_offset("uphurt", 63, 94);
-sprite_change_offset("downhurt", 63, 94);
-sprite_change_offset("spinhurt", 63, 94);
+sprite_change_offset("downhurt", 57, 94);
+sprite_change_offset("spinhurt", 59, 94);
 sprite_change_offset("jestermodebighurt", 63, 63);
 
 sprite_change_offset("gas_DTILT", 74, 86);

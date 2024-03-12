@@ -164,6 +164,9 @@ else with (oPlayer) //attempt creation
     stage_request_breaking = false;
     stage_stability_mode = false;
 
+    request_results_banishment = false;
+    request_banish_local_player = false;
+
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

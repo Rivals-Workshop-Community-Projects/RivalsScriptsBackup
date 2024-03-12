@@ -55,6 +55,12 @@ player_i_hit = noone;
 camera_x = 0;
 camera_y = 0;
 
+just_a_theory = false; //if game theory fx exists
+theory_length = 0;
+theory_sprite = sprite_get("matpat_tribute");
+theorx = x;
+theory = y; 
+
 hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = sprite_get("crouchbox");
 air_hurtbox_spr = -1;

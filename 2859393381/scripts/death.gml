@@ -26,3 +26,6 @@ ustrong_launch_dir = 0;
 uspecial_angle = 90;
 uspecial_old_hsp = hsp;
 uspecial_old_vsp = vsp;
+
+just_a_theory = false;
+theory_length = 0;

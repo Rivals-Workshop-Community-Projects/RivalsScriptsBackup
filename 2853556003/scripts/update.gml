@@ -496,6 +496,24 @@ if(state == PS_DOUBLE_JUMP && state_timer < 2){
     if(right_down){
         doublejumpVar = 1
     }
+	bubble_bounce_potential = 7
+}
+
+if(state == PS_LAND || state == PS_JUMPSQUAT){
+	if(bubble_bounce_potential > 0 && state_timer == 1){
+		set_state(PS_JUMPSQUAT)
+		var splash = spawn_hit_fx(x, y, vfx_dattack_jumpfx)
+		sound_play(asset_get("sfx_waterwarp_start"))
+		sound_play(asset_get("sfx_springgo"))
+		sound_stop(asset_get("sfx_bubblemouth"))
+		splash.depth = -5
+		if(hsp > 0){
+			splash.spr_dir = 1
+		}else{
+			splash.spr_dir = -1
+		}
+		bubble_bounce_potential = 0
+	}
 }
 
 if(vsp > 0 || state == PS_IDLE || state == PS_IDLE_AIR){
@@ -802,3 +820,4 @@ set_color_profile_slot( 13, 4, 255, 214, 214 ); //Beads
 set_color_profile_slot( 13, 5, 143, 135, 96 ); //Book
 }
 switch_timer--
+bubble_bounce_potential--

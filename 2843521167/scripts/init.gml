@@ -30,6 +30,14 @@ arena_title = "The Cute and Colorful";
 //Boxing Ring
 boxing_title = "The Cute and Colorful";
 
+//Hollow Knight
+knight_compat_dream = 
+    [
+        "Aww... this bug is kinda cute... I should draw them!",
+        "Wait... something's wrong here...",
+        "Waaaaahhh! I only brought one ink color with me!"
+    ]
+
 char_height = 52;
 idle_anim_speed = .13;
 crouch_anim_speed = .17;

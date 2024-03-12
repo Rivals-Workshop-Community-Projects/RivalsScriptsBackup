@@ -19,6 +19,16 @@ if (free){
 }
 */
 
+// altering Dream Nail Dialogue for The Knight (Reiga) if MK is on The Halberd.
+if (isOnHalberd){
+	knight_compat_dream = 
+		[
+			"My battleship has no needs for Knights like you.",
+			"Another Knight... hmph.",
+			"Know my power."
+		]
+}
+
 //print(get_synced_var( player ));
 voiced = get_synced_var( player );
 
@@ -32,7 +42,7 @@ if (normal_voiced_toggle == 1){
 */
 
 // voiced mode stuff
-if (state_cat == SC_HITSTUN && state_timer == 1 && !hitpause && voicelineHurtCD == 0){
+if (state_cat == SC_HITSTUN && state_timer == 1 && !hitpause && voicelineHurtCD == 0 && voiced){
 	voicelineHurtCD = 40;
 	if (get_player_damage( player ) < 100){//>
 		var hurtVC = random_func( 1, 4, true ) + 1;

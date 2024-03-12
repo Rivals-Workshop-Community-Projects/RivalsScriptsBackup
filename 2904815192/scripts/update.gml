@@ -7,6 +7,16 @@ if (get_match_setting(SET_PRACTICE)){
 	}
 }
 
+// altering Dream Nail Dialogue for The Knight (Reiga) if Mr Monopoly is on Monopoly City
+if (isOnMonopolyCity){
+	knight_compat_dream = 
+		[
+			"This filthy bug needs to go! It's lowering my property rent!",
+			"You're in my city now! I've invested lots into the buildings here, and once that... thing goes there... hohoho, I'll be swimming in cash!",
+			"Don't think you can just waltz away without giving me some rent for seeing me!"
+		]
+}
+
 if (fspecialNoCashTextTimer != 0){
 	fspecialNoCashTextTimer -= 1;
 }

@@ -109,3 +109,5 @@ sprite_change_offset("ustrong_gavel_slam_fx", 96, 94);
 sprite_change_offset("vfx_shock", 80, 80);
 sprite_change_offset("vfx_shock_big", 128, 128);
 sprite_change_offset("vfx_turnabout_shine", 24, 27);
+
+sprite_change_offset("matpat_tribute", 64, 64);

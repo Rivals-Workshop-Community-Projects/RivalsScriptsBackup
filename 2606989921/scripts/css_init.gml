@@ -68,7 +68,9 @@ if (current_time % 3 == 0) && (room == asset_get("network_char_select"))
               "* エラー *"+nl+"アイテムの URLが ふせいです。",
               "ZZWZZnZZgZZ"+nl+"ZZyZZiZZsZZnZZhZZuZZoZZeZZdZZeZZoZZ ZZiZZ ZZeZZoZZsZZpZZtZZ ZZ ZZeZZ ZZrZZhZZ ZZlZZbZZaZZoZZtZZaZZyZZeZZtZZ.",
               "- Error -"+nl+"Bad Response due to a Parse failure, missing field, etc.",
-              "- Warning -"+nl+"Once deleted, the stage data cannot be recovered. Really delete the stage?"
+              "- Warning -"+nl+"Once deleted, the stage data cannot be recovered. Really delete the stage?",
+              "BANANA ERROR #5!"+nl+"Error de desbordamiento del platano!"
+              "ERR://23¤Y%/"
            ];
         break;
     }

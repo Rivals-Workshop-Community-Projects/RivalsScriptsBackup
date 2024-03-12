@@ -27,7 +27,7 @@ if state == PS_HITSTUN && hurt_img == 0 && !hitpause && jestermode == true{
 		spr_angle = 0;
 	}
     else{
-        spr_angle = (state_timer * 50 * spr_dir) % 360; 
+        spr_angle = (state_timer * 45 * spr_dir) % 360; 
     }
 }
 else{
