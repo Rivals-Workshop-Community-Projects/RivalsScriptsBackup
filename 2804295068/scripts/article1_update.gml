@@ -13,7 +13,7 @@
     if (place_meeting(x, y, asset_get("pHitBox")) && state != 2) {
     	with (asset_get("pHitBox")){
     		if (player != other.player_id.player){
-    			if (place_meeting(x, y, other)){
+    			if (place_meeting(x, y, other)) && (type != 2){
     				other.hitbox_hit = self;
     				player_id.hitpause = true;
                     player_id.hitstop = hitpause;
@@ -24,6 +24,7 @@
     	if (hitbox_hit != noone){
 				state = 2;
 				state_timer = 0;
+				player_id.torchwood_recharge = 0;
 				if (has_rune("J")){
 					create_hitbox( AT_DSPECIAL, 1, (x),(y - 30) );
 				}
@@ -52,7 +53,7 @@ if (state != 2){
 	            torched = true;
 				with obj_article1{
 					if (player_id == other.player_id){
-						state_timer += 120
+						state_timer += 180
 					}
 				}
 	    	}

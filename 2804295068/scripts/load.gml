@@ -62,7 +62,7 @@ sprite_change_offset("taunt_costume", 64, 158);
 sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("pea", 64, 64);
-sprite_change_offset("firepea", 64, 64);
+sprite_change_offset("pea_torched", 64, 64);
 sprite_change_offset("bean_bomb", 64, 64);
 sprite_change_offset("bean_bomb_flashing", 64, 64);
 sprite_change_offset("torchwood", 64, 94);
@@ -71,7 +71,9 @@ sprite_change_offset("torchwood_exhaust", 64, 94);
 
 sprite_change_offset("final_smash", 64, 94);
 sprite_change_offset("pea_big", 64, 64);
-sprite_change_offset("firepea_big", 64, 64);
+sprite_change_offset("pea_torched_big", 64, 64);
+sprite_change_offset("wrench", 64, 64);
+sprite_change_offset("wrench_torched", 64, 64);
 
 sprite_change_offset("peashooter_hurtbox", 64, 94);
 sprite_change_offset("crouchbox", 64, 94);

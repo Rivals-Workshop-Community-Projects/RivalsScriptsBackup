@@ -6,7 +6,7 @@ set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 9);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 8.5);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));

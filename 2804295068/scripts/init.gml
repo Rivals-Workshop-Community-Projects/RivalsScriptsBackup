@@ -98,6 +98,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 0;
 
+firepea_sprite = sprite_get("pea_torched");
 nspecial_charge = 0;
 boom = false;
 bean_x = 0;
@@ -127,3 +128,5 @@ pot_compat_text = "Roasted Sugar Snap Peas"
 arena_title = "The Garden's First Defender";
 swallowed = 0;
 enemykirby = 0;
+
+user_event(0);

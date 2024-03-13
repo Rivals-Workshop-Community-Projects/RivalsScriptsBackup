@@ -56,7 +56,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_HSPEED, -12);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 2, HG_WINDOW, 4);
@@ -79,4 +79,4 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_HSPEED, -13);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(AT_EXTRA_1, 2, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_EXTRA_1, 2, HG_HITSTUN_MULTIPLIER, 0.6);

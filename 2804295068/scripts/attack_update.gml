@@ -388,7 +388,7 @@ if (attack == AT_DSPECIAL){
 					}
 				}
 			}
-			if (torchwood_recharge >= 450){
+			if (torchwood_recharge >= 300){
 				if (!free){
                     instance_create(x + (spr_dir*60),y - 0,"obj_article1");
 				} else if (free){

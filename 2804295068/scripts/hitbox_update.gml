@@ -1,12 +1,18 @@
 //firepea stuff
-if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49 && hbox_num != 3){
+if (attack == AT_FTILT 
+|| attack == AT_EXTRA_1 
+|| (attack == AT_NAIR && hbox_num == 4) 
+|| attack == AT_FAIR 
+|| attack == AT_BAIR 
+|| attack == AT_FSTRONG 
+|| attack == AT_NSPECIAL 
+|| attack == 49 && hbox_num != 3){
 	if was_parried{
 		instance_destroy();
 		exit;
 	}
 	if torched{
-		sprite_index = sprite_get("firepea");
-		collision = sprite_get("pea");
+		sprite_index = player_id.firepea_sprite;
 		hit_effect = 4
 		if (sound_effect == sound_get("splat3")){
 		    sound_effect = sound_get("ignite");
@@ -23,7 +29,13 @@ if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num
 	}
 }
 if (has_rune("G")){
-	if (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
+	if (attack == AT_FTILT 
+	|| attack == AT_EXTRA_1 
+	|| (attack == AT_NAIR && hbox_num == 4) 
+	|| attack == AT_FAIR 
+	|| attack == AT_BAIR 
+	|| attack == AT_FSTRONG 
+	|| attack == AT_NSPECIAL){
 		if torched{
 			extra_hitpause = 12
 		}
@@ -36,7 +48,7 @@ if (attack == 49 && hbox_num == 3){
 		exit;
 	}
 	if torched{
-		sprite_index = sprite_get("firepea_big");
+		sprite_index = sprite_get("pea_torched_big");
 		collision = sprite_get("pea_big");
 		hit_effect = 148
 		sound_effect = asset_get("sfx_burnconsume");

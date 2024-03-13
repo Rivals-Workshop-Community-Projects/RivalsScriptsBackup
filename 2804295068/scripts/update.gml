@@ -2,7 +2,7 @@
 timer++;
 bean_bomb_recharge = clamp(bean_bomb_recharge, 0, 450);
 bean_bomb_recharge++;
-torchwood_recharge = clamp(torchwood_recharge, 0, 450);
+torchwood_recharge = clamp(torchwood_recharge, 0, 300);
 torchwood_recharge++;
 
 //heatwave alt
@@ -220,8 +220,8 @@ if (has_rune("M")){
 	if (bean_bomb_recharge < 450){
 		bean_bomb_recharge = 450;
 	}
-	if (torchwood_recharge < 450){
-		torchwood_recharge = 450;
+	if (torchwood_recharge < 300){
+		torchwood_recharge = 300;
 	}
 }
 
@@ -236,7 +236,7 @@ if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
 }
 if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
     bean_bomb_recharge = 450;
-	torchwood_recharge = 450;
+	torchwood_recharge = 300;
 }
 
 //copy ability
