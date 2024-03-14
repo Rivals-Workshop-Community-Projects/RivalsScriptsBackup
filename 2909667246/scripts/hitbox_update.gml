@@ -1116,8 +1116,8 @@ if (attack == AT_DSPECIAL && hbox_num == 2){
     with(asset_get("pHitBox")){
 	    if(place_meeting(x,y,other)){
 	    	if((player == other.player || "Villager" in player_id || other.player_id.op) && other != self && other.attack != attack && abs(hsp) < 10){
-	            hsp += cos(degtorad(other.kb_angle))*((other.kb_value+(other.kb_scale*6))*0.075)*other.spr_dir;
-	            vsp -= -sin(degtorad(-other.kb_angle))*((other.kb_value+(other.kb_scale*6))*0.075);
+	            hsp += cos(degtorad(other.kb_angle))*((6+(3.6))*0.075)*other.spr_dir;
+	            vsp -= -sin(degtorad(-other.kb_angle))*((6+(3.6))*0.075);
 	            
 	            if("Villager" in player_id){
 	            	if (attack == AT_FSTRONG){

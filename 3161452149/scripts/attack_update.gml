@@ -134,8 +134,8 @@ switch attack{
 	break;
 	
 	case AT_FSPECIAL:
-	if window_timer = 3{
-		if (shield_down || shield_pressed) window = 1;
+	if window_timer = 4{
+		if (!special_down) window = 1;
 		else if instance_exists(venus) && venus.can_attack{
 			window = 2;
 			venus.state = 5;

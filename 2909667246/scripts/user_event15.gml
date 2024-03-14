@@ -259,6 +259,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.46", "14th March, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a thing from last patch about the watering can changes");
+
+initPatch("1.45", "13th March, 2024");
+initHeader("Nerfs");
+initSection("- Made the DSpecial watering can affect players differently (and be somewhat weaker) by overhauling it a bit. Should also fix the issue where it would stop vertical momentum and kill certain recoveries very easily");
+
 initPatch("1.44", "8th March, 2024");
 initHeader("Buffs");
 initSection("+ DTilt sweetspot is a bit bigger");

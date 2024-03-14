@@ -14,12 +14,12 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 
 //first hit
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, sound_get("blast2"));
-set_window_value(AT_NAIR, 2, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_NAIR, 2, AG_WINDOW_SFX_FRAME, 8);
 
 //second hit
 set_window_value(AT_NAIR, 3, AG_WINDOW_TYPE, 1);
@@ -28,14 +28,14 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_window_value(AT_NAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 4);
 
 //hold pose
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 4);
@@ -62,7 +62,7 @@ set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 4);
+//set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);

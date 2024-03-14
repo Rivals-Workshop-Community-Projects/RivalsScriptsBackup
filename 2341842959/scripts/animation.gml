@@ -43,3 +43,17 @@ if (get_player_color(player) == 16){
 //        set_victory_theme(vict);
 }
 
+//parry code
+if state == PS_PARRY && jestermode == true{
+    if state_timer == 0 and parry_spam_cancel == false{
+        sound_play(sound_get("JMparry"));
+        rand_parry_sprite = random_func( 0, 15, true);
+        parry_spam_cancel = true;
+    }
+    	
+	sprite_index = sprite_get("jestermodeparry")
+	image_index = rand_parry_sprite;
+		
+} else{
+    parry_spam_cancel = false;
+}

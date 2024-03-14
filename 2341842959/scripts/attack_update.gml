@@ -1,4 +1,6 @@
 // attack_update
+draw_x = 0;
+draw_y = 0;
 
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){

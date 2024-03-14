@@ -19,6 +19,7 @@ sprite_change_offset("land", 63, 94);
 sprite_change_offset("landinglag", 63, 94);
 
 sprite_change_offset("parry", 63, 94);
+sprite_change_offset("jestermodeparry", 63, 94);
 sprite_change_offset("roll_forward", 63, 94);
 sprite_change_offset("roll_backward", 63, 94);
 sprite_change_offset("airdodge", 63, 94);

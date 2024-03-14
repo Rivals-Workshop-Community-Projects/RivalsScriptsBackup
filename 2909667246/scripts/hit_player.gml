@@ -1,4 +1,4 @@
-//
+if(my_hitboxID.hitstun_factor < 0)hit_player_obj.should_make_shockwave = false;
 
 //extra hitpause and shake code
 extrahitpauseon = my_hitboxID.type==1?true:false;
@@ -28,9 +28,11 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 			my_hitboxID.PocketableByOwner = my_hitboxID.player;
 		}
 	}else if(my_hitboxID.hbox_num == 2){ //wadr
-		if(!hit_player_obj.free){
-			hit_player_obj.vsp = 0;
-		}
+		var playerdmg = get_player_damage(hit_player_obj.player);
+		if(hit_player_obj.hsp > -0.4 && my_hitboxID.spr_dir == 1 || hit_player_obj.hsp < 0.4 && my_hitboxID.spr_dir == -1)hit_player_obj.hsp = 0.4*my_hitboxID.spr_dir;
+		hit_player_obj.hsp += (2+(playerdmg/15))*my_hitboxID.spr_dir;
+		if(hit_player_obj.free){hit_player_obj.vsp -= 0.05+(playerdmg/100);}else{hit_player_obj.vsp = 0;}
+			
 		if(runeH){
 			if(hit_player_obj.free && hit_player_obj.state != PS_ATTACK_AIR){
 				hit_player_obj.state = PS_PRATFALL;hit_player_obj.state_timer = 0;

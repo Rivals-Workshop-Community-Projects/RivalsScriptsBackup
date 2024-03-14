@@ -36,3 +36,6 @@ if (gas_djump == 1){
 
 shader_end();
 
+if state == PS_PARRY && jestermode == true{
+    flash = draw_sprite_ext(sprite_get("jestermodeparryfx"), state_timer/6, x - 110, y - 150, 1, 1, 0, c_white, 1);
+}
