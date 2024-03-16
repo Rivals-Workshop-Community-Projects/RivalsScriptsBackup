@@ -29,7 +29,7 @@ switch attack{
 	case AT_DSTRONG:
 	if window = 1 fakeout();
 	if window = 2 && window_timer = window_end-1 sound_play(asset_get("sfx_burnapplied"), 0, noone, 1, 1);
-	if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
+	if 0 if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
 		hitstop_full = max(hitstop_full, 20);
 		hitstop = max(hitstop, 20);
 		hitpause = 1;
@@ -39,7 +39,7 @@ switch attack{
 	break;
 	
 	case AT_USTRONG:
-	if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
+	if 0 if main_pl != self && instance_exists(main_pl) && window = window_last && window_timer = window_last && !has_hit with main_pl{
 		hitstop_full = max(hitstop_full, 20);
 		hitstop = max(hitstop, 20);
 		hitpause = 1;

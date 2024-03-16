@@ -214,7 +214,7 @@ set_color_profile_slot( 18, 3, 255, 255, 255 ); //White Hair
 set_color_profile_slot( 18, 4, 181, 188, 192 ); //White Hair Shading
 set_color_profile_slot( 18, 5, 247, 249, 255 ); //Green Mask
 set_color_profile_slot( 18, 6, 255, 211, 87 ); //Brown Claw
-set_color_profile_slot( 18, 7, 233, 233, 233 ); //White Eye
+set_color_profile_slot( 18, 7, 254, 253, 25 ); //White Eye
 
 // Prehistoric Stink
 set_color_profile_slot( 19, 0, 87, 42, 194 ); //Black Fur

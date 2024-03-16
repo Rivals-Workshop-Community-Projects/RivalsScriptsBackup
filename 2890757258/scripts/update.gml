@@ -549,7 +549,7 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "I'm sensing all sorts of wrong with you.",
-                "Ohohohoho... Is it because of wicked beauty~?",
+                "Ohohohoho... Is it because of my wicked beauty~?",
                 "...Yeah, sure. Let's go with that."]
             }
         }

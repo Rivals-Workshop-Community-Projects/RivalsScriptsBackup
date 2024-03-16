@@ -107,18 +107,19 @@ if (attack == AT_DTILT){
 	}
 }
 
-//Air Voices lol
+//Voices lol
 if (attack == AT_NAIR
 	|| attack == AT_DAIR
 	|| attack == AT_UAIR
 	|| attack == AT_BAIR
 	|| attack == AT_FTILT
 	|| attack == AT_DTILT
-	|| attack == AT_UTILT){
+	|| attack == AT_UTILT
+	|| attack == AT_FSPECIAL){
 		if (window == 1){
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 				if (voiced == true){
-					var gaming = random_func( 1, 9, true );
+					var gaming = random_func( 1, 7, true );
 					switch (gaming){
 						case 1:
 							sound_play(vc_mario_hooh);

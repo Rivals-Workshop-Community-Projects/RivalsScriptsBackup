@@ -27,14 +27,24 @@ if (state == 0)
 //	Idle
 if (state == 1)
 {
-	vsp 			= 0;
+	sprite_index  	= sprite_get("stormpuff_idle");	
+	puff_anim 		= 0;
+	image_index 	= puff_anim;
 	
+	vsp 			= 0;	
 	can_be_hit 		-= 1;
-	
-	sprite_index  	= sprite_get("stormpuff_idle");
-	
-	puff_anim = 0;
-	image_index = puff_anim;
+
+	with (pHitBox)
+	{
+		//	Stopping teammates from harming the Cloud
+		if (player == other.player_id.player || player != other.player_id.player)
+		{
+			if (get_player_team(player) == get_player_team(other.player))
+			{	
+				other.can_be_hit 	= 10;
+			}
+		}
+	}
 	
 	if (state_timer == 70)
 	{				
@@ -48,12 +58,24 @@ if (state == 2)
 {
 	sprite_index  	= sprite_get("stormpuff_attack");
 	
-	can_be_hit 		-= 1;
-	
 	if (get_gameplay_time() mod 6 == 0)
 	{
-		puff_anim += 0.74;
+		puff_anim 	+= 0.74;
 		image_index = puff_anim;
+	}
+	
+	can_be_hit 		-= 1;
+
+	with (pHitBox)
+	{
+		//	Stopping teammates from harming the Cloud
+		if (player == other.player_id.player || player != other.player_id.player)
+		{
+			if (get_player_team(player) == get_player_team(other.player))
+			{	
+				other.can_be_hit 	= 10;
+			}
+		}
 	}
 	
 	if (state_timer > 14)
@@ -86,6 +108,12 @@ if (state == 2)
 		state_timer 	= 0;
 		
 		zap_count += 1;
+
+		with (player_id)
+		{
+			set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
+			set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
+		}
 	}
 	
 	if (zap_count == 3)

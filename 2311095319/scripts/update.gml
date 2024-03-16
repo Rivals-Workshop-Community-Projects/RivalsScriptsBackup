@@ -1,5 +1,6 @@
 //update.gml
 
+/*
 //Sleep Kirby Hat Offsets
 if (free){
 	//Air Hat Offsets
@@ -16,6 +17,7 @@ if (free){
 	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
+*/
 
 /*
 //Voiced Mode
@@ -28,11 +30,12 @@ if (normal_voiced_toggle == 1){
 
 voiced = get_synced_var( player );
 
-/*
+
 if (state == PS_DOUBLE_JUMP && state_timer == 0){
 	sound_play(sound_get("sfx_jump"), false, noone, 1, 1.35);
 }
-*/
+
+
 if (fair_cheat_active == true){
 
 	//very funy

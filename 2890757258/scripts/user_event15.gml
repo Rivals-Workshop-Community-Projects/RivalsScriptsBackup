@@ -244,10 +244,19 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.13", "03 March, 2024");
+initHeader("General:");
+initSection("* Updated the localisation files.");
+initHeader("DSPECIAL:");
+initSection("(related to the Stormpuff)
+* The Extended Parry Stun is only active on the Stormpuff's second and third electric strikes.
+* In team matches, the Stormpuff can no longer be destroyed by teammates.");
+initHeader("~BONUS~:");
+initSection("+ Added Dream Nail Dialogue for The Knight (Reiga).");
+
 initPatch("1.12", "03 February, 2024");
 initHeader("General:");
-initSection("GENERAL:
-* Updated the localization files
+initSection("* Updated the localization files
 
 FTILT:
 * Updated the Hurtbox sprites

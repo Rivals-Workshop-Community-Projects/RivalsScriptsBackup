@@ -250,6 +250,14 @@ sna_interrogated_line_03 = "T-Transform!";
 //	Kirby Copy Ability
 TCG_Kirby_Copy = 1;
 
+//	Reiga's The Knight
+knight_compat_dream = 
+[
+    "Can you dance through the danger...?",
+    "The Guardian Genie.",
+    "Ret-2-Go!"
+]
+
 //----------------------------------------------------------------------------
 
 // MunoPhone Touch code - don't touch

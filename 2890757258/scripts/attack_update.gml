@@ -228,6 +228,12 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_DSPECIAL)
 {
+	if (window == 1)
+	{
+		reset_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN);
+		reset_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN);
+	}
+	
 	if (window == 2)
 	{
 		if (magic_meter > 24)
