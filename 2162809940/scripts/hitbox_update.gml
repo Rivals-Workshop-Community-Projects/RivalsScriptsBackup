@@ -3,8 +3,8 @@ if (attack == AT_DSPECIAL){
 		if (player_id.player == other.player){
 	    	if (place_meeting(x, y, other)){
 	            if (state < 1 && player_id == other.player_id){
-	            	var proj_hsp = other.hsp/3;
-					var proj_vsp = other.vsp/3;
+	            	var proj_hsp = other.hsp/2;
+					var proj_vsp = other.vsp/2;
 	                //sound_play ( sound_get ( "shoot" ));
 					spawn_hit_fx( floor(x), floor(y), 0 );
 					hsp = proj_hsp;
@@ -112,6 +112,7 @@ if (attack == AT_DSPECIAL){
 							}
 						}
 						sound_play(asset_get("sfx_blow_heavy1"));
+						sound_stop(sound_get("bat"));
 						sound_play(sound_get("bat"));
 						other.y = player_id.y - 25;
 						other.hsp = 17*player_id.spr_dir;

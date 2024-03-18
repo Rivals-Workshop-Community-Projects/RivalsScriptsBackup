@@ -1,3 +1,5 @@
+// css_draw.gml
+
 var temp_x = x + 8;
 var temp_y = y + 9;
  
@@ -47,6 +49,8 @@ if get_player_color(player) = 11 {
 	set_color_profile_slot(11,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	//set the new color using rgb values from the gamemaker color
 	set_color_profile_slot(11,2,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+	set_color_profile_slot(11,3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 }
 init_shader();
 

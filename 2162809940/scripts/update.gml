@@ -87,7 +87,7 @@ if (has_rune("J")){
 
 
 
-
+// update.gml
 if (has_rune("M")){
 	if (state == PS_LANDING_LAG && state_timer == 0){
 	    if (!hitstop && !hitpause){
@@ -107,8 +107,14 @@ color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(co
 set_color_profile_slot( 11, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 init_shader();
 
-color_rgb=make_color_rgb( 23, 230, 129 ); 
+color_rgb=make_color_rgb( 5, 143, 75 ); 
 hue2=(color_get_hue(color_rgb)+hue) mod 255;
 color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 set_color_profile_slot( 11, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+init_shader();
+
+color_rgb=make_color_rgb( 23, 230, 129 ); 
+hue2=(color_get_hue(color_rgb)+hue) mod 255;
+color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+set_color_profile_slot( 11, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 init_shader();

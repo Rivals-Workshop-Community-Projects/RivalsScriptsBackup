@@ -1,0 +1,1 @@
+install_timer = min(install_timer, 1); // 1 instead of 0 so update.gml can handle all the important ending stuff

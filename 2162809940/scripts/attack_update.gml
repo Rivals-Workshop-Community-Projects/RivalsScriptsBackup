@@ -201,3 +201,147 @@ if (has_rune("E")){
         }
     }
 }
+
+
+
+//dust vfx
+if (attack == AT_USPECIAL){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_USPECIAL, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                if (free){
+                    spawn_base_dust( x + (0 * spr_dir), y, "djump", spr_dir);
+                }
+                else{
+                    spawn_base_dust( x + (0 * spr_dir), y, "jump", spr_dir);
+                }
+            }
+        }
+    }
+}
+
+if (attack == AT_FSTRONG){
+    if (window == 3){
+        if (window_timer == get_window_value( AT_FSTRONG, 3, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (10 * spr_dir), y, "dash_start", spr_dir*1);
+            }
+        }
+    }
+}
+
+if (attack == AT_DSTRONG){
+    if (window == 2){
+        if (window_timer == get_window_value( AT_DSTRONG, 2, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (10 * spr_dir), y, "dash_start", spr_dir*-1);
+                spawn_base_dust( x + (-10 * spr_dir), y, "dash_start", spr_dir*1);
+            }
+        }
+    }
+}
+
+if (attack == AT_USTRONG){
+    if (window == 2){
+        if (window_timer == get_window_value( AT_DSTRONG, 2, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (0 * spr_dir), y, "waveland", spr_dir*1);
+            }
+        }
+    }
+}
+
+if (attack == AT_FTILT){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_FTILT, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (0 * spr_dir), y, "dash", spr_dir*1);
+            }
+        }
+    }
+}
+
+if (attack == AT_DTILT){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_DTILT, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (60 * spr_dir), y, "dash", spr_dir*-1);
+            }
+        }
+    }
+}
+
+if (attack == AT_UTILT){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_UTILT, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (16 * spr_dir), y, "dash", spr_dir*-1);
+                spawn_base_dust( x + (-16 * spr_dir), y, "dash", spr_dir*1);
+            }
+        }
+    }
+}
+
+if (attack == AT_DATTACK){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_DATTACK, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (30 * spr_dir), y, "dash_start", spr_dir*-1);
+            }
+        }
+    }
+}
+
+if (attack == AT_JAB){
+    if (window == 1){
+        if (window_timer == get_window_value( AT_JAB, 1, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (36 * spr_dir), y, "dash", spr_dir*-1);
+            }
+        }
+    }
+    if (window == 5){
+        if (window_timer == get_window_value( AT_JAB, 5, AG_WINDOW_LENGTH )){
+            if (!hitpause && !hitstop){
+                spawn_base_dust( x + (36 * spr_dir), y, "dash", spr_dir*-1);
+            }
+        }
+    }
+}
+
+
+//--------------------------------------------
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

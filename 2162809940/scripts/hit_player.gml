@@ -1,4 +1,5 @@
 if (my_hitboxID.attack == AT_FSTRONG){
+    sound_stop(sound_get("bat"));
     sound_play(sound_get("bat"));
 }
 
