@@ -48,8 +48,8 @@ alt_total = array_length(alt_name); //sets the alt total depending on the amount
 
 
 //ANIMATION VARS
-sprite_change_offset("css_idle", 88, -142);
+sprite_change_offset("idle", 128, 190);
 
-preview_idle = sprite_get("css_idle");
+preview_idle = sprite_get("idle");
 preview_scale = 1; //depends on if we have small sprites on, if we do, type 2, if not type 1
 preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprites animation speed

@@ -47,6 +47,14 @@ set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_VSPEED, -9.5);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_VSPEED_TYPE, 1);
 
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_VSPEED, -6);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_VSPEED_TYPE, 1);
+
 set_num_hitboxes(AT_DSPECIAL_AIR, 3); 
 
 //spike

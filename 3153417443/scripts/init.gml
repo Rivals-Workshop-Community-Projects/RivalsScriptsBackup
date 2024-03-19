@@ -164,6 +164,7 @@ fspecialgrabconfirm = false;
 uspecialgrab = false;
 uspecialgrabbing = false;
 uspecialgrabbed = false;
+uspecialhasgrabbed = false;
 uspecialattack = false;
 uspecialgrabbubble = false;
 uspecialgrabconfirm = false;
@@ -171,6 +172,9 @@ grabtimer = 0;
 bubbledamage = 0;
 hasdamaged = false;
 blastzonedestroy = false;
+canID = 0;
+cantap = false;
+mau_hitstun_scale = false;
 
 mau_grabbed_da_bubble = false;
 

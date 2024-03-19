@@ -40,7 +40,7 @@ if (buffertimer < 20){
 }
 
 //got hit code -----------------------------------------------------------------------------------------------------------
-
+//print(bubble_kb_scale)
 if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the article hittable when can_get_hit is true
     	with (asset_get("pHitBox")){
     			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0 && id != other.last_hit && hbox_group != other.last_hit_group){
@@ -85,6 +85,11 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     			
     			bubble_kb = hitbox_hit.kb_value;
     			
+    			if hitbox_hit.kb_scale > 0 {
+    				bubble_kb_scale = true;
+    			} else if hitbox_hit.kb_scale = 0 {
+    				bubble_kb_scale = false;
+    			}
     			
     			//state = 0;
     			//state_timer = 0;
@@ -168,7 +173,7 @@ if(state == 1){
     vsp = vsp * 0.95;
     hsp = hsp * 0.95;
 	}
-       	
+    ignores_walls = false;
 	//lifetime
     if lifetime_timer > 1000 {
     	state = 2;
@@ -228,20 +233,44 @@ if(state == 1){
 			}
 		}
 		
-		if(attack == AT_DSPECIAL_AIR && (hbox_num == 1 || hbox_num == 2)){
-			//enter bubble
-			//print("entered bubble");
-			other.state = 5;
-			other.state_timer = 0;
-			//other.grabbed_id = player_id;
-			with(player_id){
-				clear_button_buffer( PC_SPECIAL_PRESSED );
-				set_attack(AT_USPECIAL_2);
-				hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE);
-				destroy_hitboxes();
+			if((attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL) && (hbox_num == 1 || hbox_num == 2)) {
+				vsp = 0;
+				hsp = 0;
+				if !player_id.special_down {
+					//enter bubble
+					//print("entered bubble");
+					other.state = 5;
+					other.state_timer = 0;
+					//other.grabbed_id = player_id;
+						with(player_id){
+							clear_button_buffer( PC_SPECIAL_PRESSED );
+							set_attack(AT_USPECIAL_2);
+							hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE);
+							destroy_hitboxes();
+						}
+				} else if player_id.special_down {
+					print("test")
+					with(player_id){
+						if attack == AT_DSPECIAL {
+							attack_end();
+							clear_button_buffer( PC_SPECIAL_PRESSED );
+							set_attack(AT_DSPECIAL);
+							window = 4;
+							window_timer = 0;
+							hurtboxID.sprite_index = sprite_get("dspecial_hurt");
+							destroy_hitboxes();
+						} else if attack == AT_DSPECIAL_AIR {
+							attack_end();
+							clear_button_buffer( PC_SPECIAL_PRESSED );
+							set_attack(AT_DSPECIAL_AIR);
+							window = 6;
+							window_timer = 0;
+							hurtboxID.sprite_index = sprite_get("dspecialair_hurt");
+							destroy_hitboxes();							
+						}
+					}
+				} 
 			}
-		}
-		
 		
 		}
 	}
@@ -283,6 +312,18 @@ if (state == 3){
 		}
 	}
 	
+	if grabbed_id.id = player_id.id {
+		if bubble_kb_scale = false {
+			state = 2;
+			state_timer = 0;
+			grabbed_id.hsp = 0;
+			grabbed_id.vsp = 0;
+			grabbed_id.old_hsp = 0;
+			grabbed_id.old_vsp = -6;
+			grabbed_id = 0;
+		}
+	}
+	
 	if(bubble_can_move){
 	with(grabbed_id){
     	if(!joy_pad_idle){
@@ -306,7 +347,7 @@ if (state == 3){
     }
 	}
 	
-	if(state_timer >= trap_lifetime){
+	if(state_timer >= trap_lifetime) || (state_timer >= 150) {
     	state = 4;
     	state_timer = 0;
 	}
@@ -506,9 +547,10 @@ if (state == 7){
 		if(window == 6 && window_timer == 23){
 		other.grabbed_by_mau = false;
 		other.x = x + 50 * spr_dir;
-		other.y = y-0;
+		other.y = y- 40;
 		other.state = 1;
 		other.state_timer = 0;
+		other.ignores_walls = true;
 			}
 		}
 		
@@ -616,7 +658,7 @@ state_timer++;
 #define bubble_trap
 with (oPlayer){
 	if (place_meeting(x, y, other)){
-		//if (id != other.player_id){
+//		if (id != other.player_id){
 			if(state == PS_HITSTUN){
 				hitstop = 2;
 				hitpause = true;
@@ -625,10 +667,21 @@ with (oPlayer){
 				other.state_timer = 0;
 				other.hsp = hsp * .9;
 				other.vsp = vsp * .9;
-				other.trap_lifetime = 60 + (get_player_damage( player ) * 1);
+				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
 			}
-		//}
-	}
+		} /*else if (id == other.player_id){
+			if(state == PS_HITSTUN && other.player_id.mau_hitstun_scale = true){
+				hitstop = 2;
+				hitpause = true;
+				other.grabbed_id = self;
+				other.state = 3;
+				other.state_timer = 0;
+				other.hsp = hsp * .9;
+				other.vsp = vsp * .9;
+				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
+			}			
+		} */
+	//}
 }
 #define bubble_grabbed
 

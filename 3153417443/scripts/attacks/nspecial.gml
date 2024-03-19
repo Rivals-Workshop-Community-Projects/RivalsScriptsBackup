@@ -21,7 +21,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
-set_num_hitboxes(AT_NSPECIAL, 1);
+set_num_hitboxes(AT_NSPECIAL, 0);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
@@ -44,7 +44,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.55);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .25);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
@@ -52,5 +52,4 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 

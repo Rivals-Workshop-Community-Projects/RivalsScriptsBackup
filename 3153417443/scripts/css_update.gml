@@ -8,7 +8,6 @@ alt_fix = player; //keep this line, on the online css the player is actually pla
 
 set_synced_var(player, css_port_select)
 
-
 //if the current alt isn't the same as the previous one, reset the animation timer and update the previous alt
 if (alt_prev != alt_cur)
 {
@@ -23,8 +22,14 @@ if (alt_prev != alt_cur)
     alt_prev = alt_cur;
 }
 
+//these values need to be updated every frame because when you come back to the CSS the window kinda pops up
+icon_x_pos = x + 174;
+icon_y_pos = y + 108;
+preview_x = floor(x+10);
+preview_y = floor(y+10);
 
-
+//rainbow alt stuff
+if (alt_cur == 11 || alt_cur == 12) user_event(0);
 //rainbow alt stuff
 if (alt_cur == 11 || alt_cur == 12) user_event(0);
 

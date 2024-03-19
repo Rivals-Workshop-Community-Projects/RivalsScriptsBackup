@@ -8,4 +8,4 @@
 //draw_debug_text(x, y + 55, "uspecgrab" +string(uspecialgrabbed));
 //draw_debug_text(x, y + 75, "grab" +string(grabbed_player_obj));
 //draw_debug_text(x, y + 55, "grabtimer:" +string(grabtimer));
-//draw_debug_text(x, y + 55, "fspecdirection:" +string(bubbledamage));
+//draw_debug_text(x, y + 55, "id" +string(cantap));

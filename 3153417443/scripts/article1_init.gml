@@ -60,6 +60,7 @@ grabbed_id = noone;
 bubble_can_move = false;
 trap_lifetime = 0;
 should_die = false;
+bubble_kb_scale = true;
 
 lifetime_timer = 0;
 grabbed_by_mau = true;

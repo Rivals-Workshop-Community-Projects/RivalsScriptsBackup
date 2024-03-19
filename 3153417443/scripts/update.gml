@@ -1,3 +1,5 @@
+//print(mau_hitstun_scale)
+
 if state == PS_HITSTUN {
 	outline_color = [ 0, 0, 0];
 }
@@ -6,9 +8,20 @@ if state == PS_SPAWN {
 	can_move = false;
 }
 
+if uspecialhasgrabbed = true && (!free || state == PS_HITSTUN) {
+	uspecialhasgrabbed = false;
+}
+
 if uspecialgrabbed = true && (!free || state == PS_WALL_JUMP) {
 	uspecialgrabbed = false;
 }
+
+if attack == AT_FSPECIAL && state == PS_ATTACK_AIR {
+    move_cooldown[AT_FSPECIAL] = 999;
+} else if !free || state == PS_HITSTUN || state == PS_WALL_JUMP || has_hit {
+	move_cooldown[AT_FSPECIAL] = 0;
+}
+
 
 if attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 1 || (window == 5){
         move_cooldown[AT_DSPECIAL_AIR] = 35;

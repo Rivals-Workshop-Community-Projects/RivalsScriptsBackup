@@ -1,3 +1,4 @@
+sprite_change_offset("css_idle", 88, -142);
 sprite_change_offset("idle", 128, 190);
 sprite_change_offset("crouch", 128, 190);;
 sprite_change_offset("walk", 128, 190);

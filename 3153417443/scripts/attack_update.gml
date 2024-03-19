@@ -167,15 +167,23 @@ if (attack == AT_NSPECIAL || attack == AT_DSTRONG) && window == 1 && window_time
 }
 
 if(attack == AT_NSPECIAL && window == 1 && special_down){
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -12);
-} else {
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 2);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -8);
+	cantap = true;
+} else if AT_NSPECIAL && window == 1 && !special_down {
+	cantap = false;
 }
 
 
 if attack == AT_NSPECIAL {
+	if window == 2 && window_timer == 1 {
+		canID = create_hitbox(AT_NSPECIAL, 1, x + (30 * spr_dir), y - 80);
+		if cantap = true {
+			canID.hsp = 3 * canID.spr_dir;
+			canID.vsp = -12;
+		} else if cantap = false {
+			canID.hsp = 2 * canID.spr_dir;
+			canID.vsp = -8;
+		}
+	}
 		if vsp > 3 {
 			vsp = 3;
 		}
@@ -255,22 +263,30 @@ if (attack == AT_FSPECIAL){
     	}
 			
     	if window_timer == 2 {
+    					grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitstun = true;
 	       var k = spawn_hit_fx(grabbed_player_obj.x + (spr_dir * 50), grabbed_player_obj.y - 30, grab_vfx);
     	    k.depth = depth + 1;
     	}
     	
 		if(window_timer < 2){
 			if(grabbed_player_obj != noone){
+							grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitstun = true;
 				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x + spr_dir * 20, .15);
     			grabbed_player_obj.y = y-8;
 			}
 		} else if (window_timer < 15){
 			if(grabbed_player_obj != noone){
+							grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitstun = true;
 				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x + spr_dir * 75, .15);
 			grabbed_player_obj.y = y;
 			}
 		} else if (window_timer == 15){
 			if(grabbed_player_obj != noone){
+							grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitstun = true;
 			grabbed_player_obj.x = x + spr_dir*45;
 			grabbed_player_obj.y = y;
 			}
@@ -282,7 +298,8 @@ if (attack == AT_FSPECIAL){
 }
 
     if(window == 5 && (grabbed_player_obj != noone or mau_grabbed_da_bubble) and !hitpause) {
-   
+   			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitstun = true;
    if(grabbed_player_obj != noone){
    		grabbed_player_obj.hitpause = true;
 			grabbed_player_obj.hitstop = 2;
@@ -554,7 +571,7 @@ if window == 1 && window_timer == 1 {
 	}
 	
 
-	if dspec_timer > 20 && jump_pressed{
+	if dspec_timer > 20 && (jump_pressed || (has_airdodge && shield_pressed)) {
 		djumps = 0;
 		set_state( PS_DOUBLE_JUMP );
 	}
@@ -668,6 +685,15 @@ switch(attack){
 			set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, 0.8);
 			uspecialgrabbubble = false;
     	}
+    	
+    	if window == 6 && window_timer == 17 {
+    		if uspecialhasgrabbed = false {
+    			uspecialhasgrabbed = true;
+    		}else if uspecialhasgrabbed = true {
+    			window = 4;
+    			window_timer = 0;
+    		}
+		}
 		
 			
 		break;
