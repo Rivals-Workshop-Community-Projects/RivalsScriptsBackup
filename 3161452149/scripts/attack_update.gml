@@ -135,7 +135,7 @@ switch attack{
 	
 	case AT_FSPECIAL:
 	if window_timer = 4{
-		if (!special_down) window = 1;
+		if !special_down window = 1;
 		else if instance_exists(venus) && venus.can_attack{
 			window = 2;
 			venus.state = 5;
@@ -165,6 +165,7 @@ switch attack{
 	case AT_EXTRA_2:
 	can_move = 0;
 	can_fast_fall = 0;
+	smash_charging = 0;
 	if window_timer = window_end{
 		if !projection && instance_exists(main_pl) main_pl.move_cooldown[AT_FSPECIAL] = 60;
 		instance_destroy(self);

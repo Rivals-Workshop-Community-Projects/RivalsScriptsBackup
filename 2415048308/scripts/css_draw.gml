@@ -15,7 +15,7 @@ var alt_gre = get_color_profile_slot_g(alt_cur, 0);
 var alt_blu = get_color_profile_slot_b(alt_cur, 0);
 var alt_col = make_color_rgb(alt_red, alt_gre, alt_blu);
 
-var num_alts = 17;
+var num_alts = 18;
 
 
 
@@ -38,6 +38,7 @@ alt_name[13]  = "Bottom Left";
 alt_name[14]  = "Dark Stalking Bonehead";
 alt_name[15]  = "Pettan";
 alt_name[16]  = "Equality. Equality! EQUALITY!";
+alt_name[17]  = "Transcendance";
 
 
 

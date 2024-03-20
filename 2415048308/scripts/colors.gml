@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 49 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 18 );
 
 // Elmo
 set_color_profile_slot( 1, 0, 255, 90, 82 ); //Body
@@ -114,7 +114,13 @@ set_color_profile_slot( 15, 3, 173, 245, 202 ); //White
 set_color_profile_slot( 16, 0, 135, 86, 54 ); //Body
 set_color_profile_slot( 16, 1, 255, 217, 0 ); //Bot
 set_color_profile_slot( 16, 2, 255, 255, 255 ); //Eyes
-set_color_profile_slot( 16, 3, 94, 94, 94 ); //White
+set_color_profile_slot( 16, 3, 140, 122, 35 ); //White
+
+// Trans Rights
+set_color_profile_slot( 17, 0, 150, 229, 255 ); //Body
+set_color_profile_slot( 17, 1, 255, 214, 214 ); //Bot
+set_color_profile_slot( 17, 2, 87, 96, 255 ); //Eyes
+set_color_profile_slot( 17, 3, 255, 186, 213 ); //White
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

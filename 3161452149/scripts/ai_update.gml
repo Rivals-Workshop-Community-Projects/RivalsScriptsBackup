@@ -1,4 +1,4 @@
-if exitscript exit;
+if !exitscript{
 if clone_pl != self && !special_state exit;
 if !draw_proj draw_proj = 1;
 go_through = 1;
@@ -78,4 +78,4 @@ if projection{
 			g++;
 		}
 	}
-}
+}}

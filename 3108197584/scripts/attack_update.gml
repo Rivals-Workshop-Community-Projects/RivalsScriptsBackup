@@ -320,6 +320,7 @@ switch attack{
 				var box = 1 + (window == 6) + 2*h;
 				set_hitbox_value(AT_FSPECIAL, box, HG_HITBOX_X, floor(hit_pos[0 + h*2] - x)*spr_dir);
 				set_hitbox_value(AT_FSPECIAL, box, HG_HITBOX_Y, floor(hit_pos[1 + h*2] - y));
+				set_hitbox_value(AT_FSPECIAL, box, HG_DAMAGE, get_hitbox_value(AT_FSPECIAL_AIR, box, HG_DAMAGE) + floor(point_distance(x, y - 50, hit_pos[0 + h*2], hit_pos[1 + h*2])/150));
 				h++;
 			}
 			set_num_hitboxes(AT_FSPECIAL, 2*h);
@@ -430,6 +431,7 @@ switch attack{
 				var box = 1 + 2*h;
 				set_hitbox_value(AT_FSPECIAL_AIR, box, HG_HITBOX_X, floor(hit_pos[0 + h*2] - x)*spr_dir);
 				set_hitbox_value(AT_FSPECIAL_AIR, box, HG_HITBOX_Y, floor(hit_pos[1 + h*2] - y));
+				set_hitbox_value(AT_FSPECIAL_AIR, box, HG_DAMAGE, get_hitbox_value(AT_FSPECIAL_AIR, box, HG_DAMAGE) + floor(point_distance(x, y - 50, hit_pos[0 + h*2], hit_pos[1 + h*2])/150));
 				h++;
 			}
 			set_num_hitboxes(AT_FSPECIAL_AIR, h);

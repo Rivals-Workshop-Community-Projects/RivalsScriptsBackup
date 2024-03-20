@@ -170,11 +170,3 @@ up_stick_pressed, up_stick_down, right_stick_pressed, right_stick_down, left_sti
 up_hard_pressed, right_hard_pressed, left_hard_pressed, down_hard_pressed,
 attack_pressed, attack_down, special_pressed, special_down, jump_pressed, jump_down, tap_jump_pressed, shield_pressed, shield_down, taunt_pressed, taunt_down]
 */
-
-//Reiga's The Knight
-knight_compat_dream = 
-    [
-        "Damn Ayala and her damn workshop...",
-        "Bringing in these freaks from god knows where...",
-        "And this #%$@ing ghost thing trying to read my mind!"
-    ]

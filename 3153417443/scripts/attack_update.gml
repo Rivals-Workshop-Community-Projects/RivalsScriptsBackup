@@ -298,10 +298,10 @@ if (attack == AT_FSPECIAL){
 }
 
     if(window == 5 && (grabbed_player_obj != noone or mau_grabbed_da_bubble) and !hitpause) {
-   			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitstun = true;
+   		//	grabbed_player_obj.hitstop = 2;
+		//	grabbed_player_obj.hitstun = true;
    if(grabbed_player_obj != noone){
-   		grabbed_player_obj.hitpause = true;
+   		//grabbed_player_obj.hitpause = true;
 			grabbed_player_obj.hitstop = 2;
 				grabbed_player_obj.hitstun = true;
 

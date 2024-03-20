@@ -19,7 +19,7 @@ if state != PS_DASH_START && state != PS_DASH && state != PS_DASH_TURN && !(stat
 //target anim
 with oPlayer if self != other && targeted[other.player-1]{
     targeted[@other.player-1]--;
-    if state == PS_DEAD || state == PS_RESPAWN || !(x > get_stage_data(SD_LEFT_BLASTZONE_X) + 200 && x < get_stage_data(SD_RIGHT_BLASTZONE_X) - 200) targeted[@other.player-1] = 0;
+    if state == PS_DEAD || state == PS_RESPAWN /*|| !(x > get_stage_data(SD_LEFT_BLASTZONE_X) + 200 && x < get_stage_data(SD_RIGHT_BLASTZONE_X) - 200)*/ targeted[@other.player-1] = 0;
     if targeted[@other.player-1] = 0 with other sound_play(sound_get("sfx_drone_disengage"), 0, noone, 0.8);
 }
 

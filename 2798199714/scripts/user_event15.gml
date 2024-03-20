@@ -259,6 +259,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.90", "16th March, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Added extra impact to powerful hits, and made hits in general feel better with a custom shaky hitpause effect
++ Some fixes to anti-cheapie");
+
 initPatch("1.89", "16th February, 2024");
 initHeader("Buffs");
 initSection("+ Made UStrong spawning a single lightning bolt while aerial happen at half-charge and above, instead of only full charge like before");

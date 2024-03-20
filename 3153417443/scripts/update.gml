@@ -28,7 +28,7 @@ if attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 1 || (window == 5
 }
 
 if attack == AT_NSPECIAL && window == 3 && window_timer == 1{
-	move_cooldown[AT_NSPECIAL] = 70;
+	move_cooldown[AT_NSPECIAL] = 250;
 }
 
 if(attack == AT_DSPECIAL_AIR && state == PS_ATTACK_AIR){

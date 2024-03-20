@@ -6,7 +6,7 @@ sprite_change_offset("drone_mask2", 32 -3*spr_dir, 32);
 var radar_condition = state == clamp(state, 2, 4) && !(state == 3 || anim_bleed);
 radar_alpha = lerp(radar_alpha, radar_condition, 0.2 + !radar_condition);
 targets = [];
-if state = clamp(state, 2, 4) with oPlayer if !invincible && state != PS_DEAD && state != PS_RESPAWN && (x > get_stage_data(SD_LEFT_BLASTZONE_X) + 200 && x < get_stage_data(SD_RIGHT_BLASTZONE_X) - 200) && self != other.player_id{
+if state = clamp(state, 2, 4) with oPlayer if !invincible && state != PS_DEAD && state != PS_RESPAWN && /*(x > get_stage_data(SD_LEFT_BLASTZONE_X) + 200 && x < get_stage_data(SD_RIGHT_BLASTZONE_X) - 200) &&*/ self != other.player_id{
     var j = 0;
     with other repeat(floor(point_distance(0, y, 0, room_height)/30) + 1){
         if collision_rectangle(x - j*8 - 4, y + j*30, x + j*8 + 4, y + 30 + j*30, other, 1, 1){
@@ -216,7 +216,7 @@ timer = 0;
 
 #define set_snipe_strength()
 with player_id{
-    set_hitbox_value(AT_FSPECIAL, 6, HG_DAMAGE, 15 - 14*has_rune("C") + 15*has_rune("E")*!has_rune("C"));
+    set_hitbox_value(AT_FSPECIAL, 6, HG_DAMAGE, 15 - 14*has_rune("C") + 15*has_rune("E")*!has_rune("C") + floor(point_distance(x, y, fire_end[0], fire_end[1])/150));
     set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 10);
     set_hitbox_value(AT_FSPECIAL, 6, HG_KNOCKBACK_SCALING, 1.2);
     set_hitbox_value(AT_FSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1);

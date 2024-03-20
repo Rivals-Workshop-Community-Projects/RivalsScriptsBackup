@@ -46,7 +46,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9.3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 20);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_syl_nspecial_flowerhit"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);

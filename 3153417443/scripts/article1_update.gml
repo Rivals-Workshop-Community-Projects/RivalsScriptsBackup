@@ -312,7 +312,7 @@ if (state == 3){
 		}
 	}
 	
-	if grabbed_id.id = player_id.id {
+/*	if grabbed_id.id = player_id.id {
 		if bubble_kb_scale = false {
 			state = 2;
 			state_timer = 0;
@@ -323,7 +323,7 @@ if (state == 3){
 			grabbed_id = 0;
 		}
 	}
-	
+*/	
 	if(bubble_can_move){
 	with(grabbed_id){
     	if(!joy_pad_idle){
@@ -658,7 +658,7 @@ state_timer++;
 #define bubble_trap
 with (oPlayer){
 	if (place_meeting(x, y, other)){
-//		if (id != other.player_id){
+		if (id != other.player_id){
 			if(state == PS_HITSTUN){
 				hitstop = 2;
 				hitpause = true;
@@ -669,7 +669,7 @@ with (oPlayer){
 				other.vsp = vsp * .9;
 				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
 			}
-		} /*else if (id == other.player_id){
+		} else if (id == other.player_id){
 			if(state == PS_HITSTUN && other.player_id.mau_hitstun_scale = true){
 				hitstop = 2;
 				hitpause = true;
@@ -680,8 +680,8 @@ with (oPlayer){
 				other.vsp = vsp * .9;
 				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
 			}			
-		} */
-	//}
+		} 
+	}
 }
 #define bubble_grabbed
 

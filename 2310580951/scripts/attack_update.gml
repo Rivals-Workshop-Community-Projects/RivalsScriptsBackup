@@ -330,6 +330,21 @@ if attack == AT_USPECIAL {
 				hsp += .125*spr_dir;
 			}
 		}
+		if free && ( spr_dir == 1 && (place_meeting(x + 12, y, asset_get("par_block"))) || spr_dir == -1 && (place_meeting(x - 12, y, asset_get("par_block"))) ) {
+			destroy_hitboxes();
+			attack_end();
+			set_attack(AT_EXTRA_1);
+			hsp = -7*spr_dir;
+			vsp += 1;
+			move_cooldown[AT_USPECIAL] = 45;
+			spawn_hit_fx(x+26*spr_dir, y-6, 301);
+			sound_play(asset_get("sfx_blow_weak1"));
+			if ItsAMeMario {
+				sound_play(ugh);
+				sound_stop(woohoo);
+				sound_stop(sound_get("wind"));
+			}
+		}
 	}
 	if window > 5 || !free {
 		sound_stop(sound_get("wind"));

@@ -10,10 +10,10 @@ if !move_cooldown[attack] switch attack{
 	break;
 	
 	case AT_NSPECIAL:
-	if clone_pl = self{
+	if main_pl != self{
 		move_cooldown[attack] = 8;
 		break;
-	}else if instance_exists(clone_pl) && (clone_pl.can_swap || (clone_pl = self && special_clone_swap)){
+	}else if instance_exists(clone_pl) && (clone_pl.can_swap || (main_pl != self && special_clone_swap)){
 		move_cooldown[attack] = 8;
 		if clone_pl != self clone_pl.can_swap = 0;
 		else special_clone_swap = 0;
@@ -94,14 +94,14 @@ if !move_cooldown[attack] switch attack{
 	break;
 	
 	case AT_DSPECIAL:
-	if clone_pl = self{
+	if main_pl != self{
 		move_cooldown[attack] = 8;
 		break;
 	}
 	break;
 	
 	case AT_FSPECIAL:
-	if clone_pl = self{
+	if main_pl != self{
 		move_cooldown[attack] = 8;
 		break;
 	}
@@ -136,7 +136,7 @@ if !move_cooldown[attack] switch attack{
 				var g = spawn_hit_fx(0, 0, 0);
 				g.white = other;
 			}
-		}else if clone_pl.can_swap || (clone_pl = self && special_clone_swap){
+		}else if clone_pl.can_swap || (main_pl != self && special_clone_swap){
 			move_cooldown[AT_NSPECIAL] = 8;
 			move_cooldown[attack] = 8;
 			if clone_pl != self clone_pl.can_swap = 0;

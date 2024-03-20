@@ -26,8 +26,12 @@ if exitscript{
 	close_down_attacks = [AT_DTILT, AT_NAIR, AT_DAIR];
 	exit;
 }
-main_pl = noone;
-clone_pl = self;
+main_pl = self;
+clone_pl = noone;
+with oPlayer if self != other if player = other.player && url = other.url{
+	other.main_pl = noone;
+	other.clone_pl = other;
+}
 clone_inputs = [];
 can_swap = 1;
 cur_spr = sprite_index;

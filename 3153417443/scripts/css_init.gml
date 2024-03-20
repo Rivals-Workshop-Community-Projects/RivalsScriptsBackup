@@ -41,6 +41,7 @@ alt_name[20] = "Transcendant";
 alt_name[21] = "LETS GO LESBIANS";
 alt_name[22] = "Pierce the Heavens";
 alt_name[23] = "Wog";
+alt_name[24] = "Medicinal Spices";
 alt_cur = 0; //checks current alt
 alt_prev = 0; //checks previous alt
 alt_total = array_length(alt_name); //sets the alt total depending on the amount of alt names provided

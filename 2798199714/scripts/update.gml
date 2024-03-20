@@ -131,7 +131,7 @@ if(get_gameplay_time() <= 120 || !loaded){
 			if (url != ""){ //detects op characters. credit to sai for some of the logic here
 				if(
 				//exclude these characters	
-				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274
+				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274 && url != 1928599994
 				//op characters
 				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646/*|| url ==  && "temp_level" in self*/
 				|| (string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
@@ -149,7 +149,7 @@ if(get_gameplay_time() <= 120 || !loaded){
 					other.runeA = true;other.runeB = true;other.runeC = true;other.runeD = true;other.runeE = true;other.runeF = true;
 					other.runeG = true;other.runeH = true;other.runeI = true;other.runeJ = true;
 					other.runeL = true;other.runeM = true;other.runeN = true;other.runeO = true;
-					other.runesUpdated = true;other.small_sprites = 4;
+					other.runesUpdated = true;
 					if(url == 2179072217 /*|| url == 1877715009 && "temp_level" in self*/){
 						other.hyperboss = true;
 						with oPlayer{
@@ -275,6 +275,37 @@ if(FinalSmash > 0 && !bossdead){
 	if("fs_charge" in self){
 		fs_charge = 0;
 	}
+}
+
+//shake hitpause code
+with(oPlayer){
+    if ("state" in self){
+	with(other){
+		if("shaketarget" not in self)shaketarget = noone;
+		if("extrahitpauseon" not in self)extrahitpauseon = true;
+		if("hitpausesetpos" not in self)hitpausesetpos = true;
+		if("hitpausecap" not in self)hitpausecap = 40;
+		if("shakecap" not in self)shakecap = 50;
+		if(instance_exists(shaketarget) && extrahitpauseon){
+			if(shaketarget.should_make_shockwave){
+				with(shaketarget){hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);}
+				hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);
+			}if(shaketarget.activated_kill_effect){
+				var maxhitpause = min(hitpausecap,round(shaketarget.hitstop*2));
+				if(hitpause){hitstop = maxhitpause;hitstop_full = maxhitpause;}
+				shaketarget.hitstop = maxhitpause;shaketarget.hitstop_full = maxhitpause;shake_camera(35, 5);
+			}if(hitpausesetpos){shaketarget.prev_x = shaketarget.x;shaketarget.prev_y = shaketarget.y;}shaketarget = noone;
+		}
+	}
+	if(hitpause && state_cat == SC_HITSTUN && last_player == other.player){
+		var shake = activated_kill_effect?round(hitstop*3):should_make_shockwave?round(hitstop*2):round(hitstop);shake = min(other.shakecap,shake);
+		var dir = random_func(0, 359, true);var new_x = prev_x + round(lengthdir_x(shake/2, dir));var new_y = prev_y + round(lengthdir_y(shake/2, dir));
+		x = round(new_x);y = round(new_y);
+	}else if(!hitpause){
+		prev_x = x;prev_y = y;
+	}
+	
+    }
 }
 
 //silly angle 0 code (part 2)

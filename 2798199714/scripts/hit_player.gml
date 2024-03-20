@@ -1,4 +1,7 @@
 
+//extra hitpause and shake code
+extrahitpauseon = my_hitboxID.type==1?true:false;
+shaketarget = hit_player_obj;hitpausesetpos = true;hitpausecap = 40;shakecap = 50;
 
 if(my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num  == 2 || my_hitboxID.attack == AT_FSTRONG && my_hitboxID.type <= 1 || my_hitboxID.attack == AT_USTRONG
 || my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.type <= 1 && my_hitboxID.hbox_num != 5 || my_hitboxID.hbox_num == 11)
@@ -24,6 +27,7 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 	}else if(my_hitboxID.hbox_num == 2){
 		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-35, 304);
 	}
+	hitpausesetpos = false;
 }
 
 if(my_hitboxID.attack == AT_NAIR){
