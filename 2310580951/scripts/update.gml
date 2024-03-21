@@ -27,8 +27,8 @@ if state == PS_PARRY && state_timer == 0 {
 	sound_play(sound_get("metal1"));
 }
 
-if state == PS_WALL_JUMP && state_timer == 0 && flyingTime < 70 {
-	flyingTime = 70;
+if state == PS_WALL_JUMP && state_timer == 0 && flyingTime <= 0 {
+	flyingTime = 1;
 }
 
 if !free {

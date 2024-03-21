@@ -330,12 +330,15 @@ if attack == AT_USPECIAL {
 				hsp += .125*spr_dir;
 			}
 		}
-		if free && ( spr_dir == 1 && (place_meeting(x + 12, y, asset_get("par_block"))) || spr_dir == -1 && (place_meeting(x - 12, y, asset_get("par_block"))) ) {
+		if window_timer > 1 && free && ( spr_dir == 1 && (place_meeting(x + 2, y, asset_get("par_block"))) || spr_dir == -1 && (place_meeting(x - 12, y, asset_get("par_block"))) ) {
 			destroy_hitboxes();
 			attack_end();
 			set_attack(AT_EXTRA_1);
-			hsp = -7*spr_dir;
-			vsp += 1;
+			hsp = -4*spr_dir;
+			if flyingTime > 0 {
+				flyingTime = 1;
+			}
+			vsp = clamp(vsp, -5, 5);
 			move_cooldown[AT_USPECIAL] = 45;
 			spawn_hit_fx(x+26*spr_dir, y-6, 301);
 			sound_play(asset_get("sfx_blow_weak1"));
@@ -348,6 +351,17 @@ if attack == AT_USPECIAL {
 	}
 	if window > 5 || !free {
 		sound_stop(sound_get("wind"));
+	}
+}
+
+//the bound when you hit a wall during dive or wing cap glide
+if (attack == AT_EXTRA_1) {
+	can_wall_jump = true;
+	if window == 1 && window_timer > 12 {
+		can_attack = true;
+		can_special = true;
+		can_jump = true;
+		can_shield = true;
 	}
 }
 
