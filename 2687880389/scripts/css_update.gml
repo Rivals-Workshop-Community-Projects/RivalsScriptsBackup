@@ -23,6 +23,10 @@ switch (name) {
 		special_color_available = true;
 		selected_special_color = 4;
 		break;
+	case "BENDY": // BendyJW
+		special_color_available = true;
+		selected_special_color = 5;
+		break;
 	default:
 		special_mode_active = false;
 		break;

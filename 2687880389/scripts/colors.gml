@@ -77,14 +77,14 @@ set_color_profile_slot( 4, 6, 158, 158, 158 ); //connectors
 set_color_profile_slot( 4, 7, 0, 132, 255 ); //feet
 
 // Revoke Control
-set_color_profile_slot( 5, 0, 0, 255, 247 ); //energy
-set_color_profile_slot( 5, 1, 255, 255, 255 ); //helmet
-set_color_profile_slot( 5, 2, 0, 255, 247 ); //visor
-set_color_profile_slot( 5, 3, 255, 255, 255 ); //flesh
-set_color_profile_slot( 5, 4, 253, 110, 255 ); //torso
-set_color_profile_slot( 5, 5, 253, 110, 255 ); //hands
-set_color_profile_slot( 5, 6, 255, 255, 255 ); //connectors
-set_color_profile_slot( 5, 7, 255, 255, 255 ); //feet
+set_color_profile_slot( 5, 0, 0, 255, 0 ); //energy
+set_color_profile_slot( 5, 1, 255, 0, 0 ); //helmet
+set_color_profile_slot( 5, 2, 130, 209, 130 ); //visor
+set_color_profile_slot( 5, 3, 222, 222, 222 ); //flesh
+set_color_profile_slot( 5, 4, 222, 222, 222 ); //torso
+set_color_profile_slot( 5, 5, 115, 115, 115 ); //hands
+set_color_profile_slot( 5, 6, 115, 115, 115 ); //connectors
+set_color_profile_slot( 5, 7, 115, 115, 115 ); //feet
 
 // Construction Crew
 set_color_profile_slot( 6, 0, 111, 0, 255 ); //energy
@@ -455,6 +455,16 @@ set_color_profile_slot( 42, 4, 115, 69, 83 ); //torso
 set_color_profile_slot( 42, 5, 115, 69, 83 ); //hands
 set_color_profile_slot( 42, 6, 146, 25, 78 ); //connectors
 set_color_profile_slot( 42, 7, 115, 69, 83 ); //feet
+
+// Challenger (Bendy)
+set_color_profile_slot( 43, 0, 0, 255, 0 ); //energy
+set_color_profile_slot( 43, 1, 255, 0, 0 ); //helmet
+set_color_profile_slot( 43, 2, 130, 209, 130 ); //visor
+set_color_profile_slot( 43, 3, 222, 222, 222 ); //flesh
+set_color_profile_slot( 43, 4, 222, 222, 222 ); //torso
+set_color_profile_slot( 43, 5, 115, 115, 115 ); //hands
+set_color_profile_slot( 43, 6, 115, 115, 115 ); //connectors
+set_color_profile_slot( 43, 7, 115, 115, 115 ); //feet
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

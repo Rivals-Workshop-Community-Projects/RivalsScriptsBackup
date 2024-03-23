@@ -721,6 +721,15 @@ switch (special_alt_number) {
         special_color_profile_slot_5 = make_color_rgb(209, 76, 148); //hands
         special_color_profile_slot_6 = make_color_rgb(159, 0, 237); //connectors
         special_color_profile_slot_7 = make_color_rgb(46, 74, 255); //feet
+    case 5: // BendyJW
+        special_color_profile_slot_0 = make_color_rgb(0, 255, 0); //energy
+        special_color_profile_slot_1 = make_color_rgb(255, 0, 0); //helmet
+        special_color_profile_slot_2 = make_color_rgb(130, 209, 130); //visor
+        special_color_profile_slot_3 = make_color_rgb(222, 222, 222); //flesh
+        special_color_profile_slot_4 = make_color_rgb(222, 222, 222); //torso
+        special_color_profile_slot_5 = make_color_rgb(115, 115, 115); //hands
+        special_color_profile_slot_6 = make_color_rgb(115, 115, 115); //connectors
+        special_color_profile_slot_7 = make_color_rgb(115, 115, 115); //feet
         break;
     default: // 0 falls here
         break;

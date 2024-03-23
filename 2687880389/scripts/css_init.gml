@@ -1,5 +1,5 @@
 //set_synced_var(player, 0);
-tournament_legal_mode_active = true;
+tournament_legal_mode_active = false;
 special_color_available = false;
 
 party_button_origin_x = 14;//110;//92;
@@ -40,6 +40,9 @@ if (local_synced_var != 0) {
 				legal = true;
 				break;
 			case "PIKA": // Pikakip
+				legal = true;
+				break;
+			case "BENDY": // BendyJW
 				legal = true;
 				break;
 			default:

@@ -450,6 +450,10 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 */
 
 
+initPatch("2.19", "07 Feb, 2024");
+initHeader("Presentation");
+initSection("- Re-enable down-taunt functionality");
+
 initPatch("2.18", "07 Feb, 2024");
 initHeader("Presentation");
 initSection("- Added Genesis alt");
