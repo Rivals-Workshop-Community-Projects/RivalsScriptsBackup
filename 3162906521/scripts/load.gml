@@ -147,5 +147,5 @@ sprite_change_offset("sentry_lv3_idle", 38, 0);
 sprite_change_offset("sentry_lv3_shoot_0", 38, 0);
 sprite_change_offset("sentry_lv3_shoot_45", 38, 0);
 sprite_change_offset("sentry_lv3_shoot_90", 38, 0);
-sprite_change_offset("sentry_range_mask", 120, 0);
+sprite_change_offset("sentry_range_mask", 240, 120);
 sprite_change_offset("sentry_crosshair", 20, 20); //I don't think I ended up using this

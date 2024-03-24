@@ -3,6 +3,7 @@ switch(attack){
 	case AT_NSPECIAL:
 	case AT_FSPECIAL:
 	case AT_DSPECIAL:
+	case AT_DSPECIAL_AIR:
 	case AT_USPECIAL:
 		trigger_b_reverse();
 		break;
@@ -14,6 +15,7 @@ if (attack == AT_NSPECIAL){
 	// if tp_alive == true and tp.tp_hit == 2{
 	// 	set_window_value(AT_NSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 	// }
+	// move_cooldown[AT_NSPECIAL] = 2;
 }else{
 	wrench = false;
 }
@@ -201,10 +203,11 @@ if (attack == AT_USPECIAL){
 			x = tp.x - 10 * spr_dir;
 			y = tp.y + 70;
 		}
-		snd_rng = random_func(0, 4, true)
-		if snd_rng == 0{ //Question. What's your question soldier? I teleported Bread. what.
+	}
+	if (window == 5 && window_timer == 14){
+		if metal_drop_counter == 2{ //Question. What's your question soldier? I teleported Bread. what.
 			sound_play(sound_get("demoman_grenade"));
-			iteleportedbread = instance_create(hit_player_obj.x - 70,hit_player_obj.y-80,"obj_article2");
+			iteleportedbread = instance_create(x - 70,y-80,"obj_article2");
 			breadtype_rng = random_func(0, 9, true);
 			iteleportedbread.hsp = -3 * spr_dir;
 			iteleportedbread.vsp = -5;
@@ -212,6 +215,7 @@ if (attack == AT_USPECIAL){
 			iteleportedbread.ammo_amount = 0;
 			iteleportedbread.ammo_type = 4;
 			iteleportedbread.image_index = breadtype_rng;
+			iteleportedbread.sprite_index = sprite_get("bread");
 		}
 	}
 }
@@ -269,6 +273,7 @@ if attack == AT_EXTRA_1{
 			wrangle_rockets.lifetime = 90;
 			wrangle_rockets.kb_angle = 125;
 			sound_play(sound_get("sentry_rocket"));
+			window_timer = 4;
 		}
 	}
 } else{

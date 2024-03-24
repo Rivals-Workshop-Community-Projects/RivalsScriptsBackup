@@ -80,19 +80,19 @@ if (ammostate == 1){
 
     if ammo_type == 3{
 		if (life_timer == 1){
-			debrit_front = create_hitbox(AT_NSPECIAL, 2, x -52*player_id.spr_dir+52, y+50);
+			debrit_front = create_hitbox(AT_NSPECIAL, 3, x -52*player_id.spr_dir+52, y+50);
 			debrit_front.hsp = 2 * spr_dir;
 		}
 		if (life_timer == 2){
-			debrit_back = create_hitbox(AT_NSPECIAL, 2, x - 30 * player_id.spr_dir + 28, y);
+			debrit_back = create_hitbox(AT_NSPECIAL, 3, x - 30 * player_id.spr_dir + 28, y);
 			debrit_back.hsp = -2 * spr_dir;
 		}
 		if (life_timer == 3){
-			debrit_front = create_hitbox(AT_NSPECIAL, 2, x-52*player_id.spr_dir+52, y);
+			debrit_front = create_hitbox(AT_NSPECIAL, 3, x-52*player_id.spr_dir+52, y);
 			debrit_front.hsp = 0.5 * spr_dir;
 		}
 		if (life_timer == 4){
-			debrit_back = create_hitbox(AT_NSPECIAL, 2, x - 28 * player_id.spr_dir + 28, y+50);
+			debrit_back = create_hitbox(AT_NSPECIAL, 3, x - 28 * player_id.spr_dir + 28, y+50);
 			debrit_back.hsp = -2 * spr_dir;
 		}
    	}
@@ -144,7 +144,7 @@ if (ammostate == 3){
 		sound_play(asset_get("sfx_land"));
 	}
     if (life_timer == 30){
-    	ammostate = 2;
+		ammostate = 2;
         life_timer = 0;
         despawn_timer ++;
     }

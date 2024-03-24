@@ -3,7 +3,7 @@
 // }
 
 //makes the cosmetic scrap come out of destroyed buildings do stuff, has nothing to do with his wrench or nspecial
-if attack == AT_NSPECIAL && hbox_num == 2{
+if attack == AT_NSPECIAL && hbox_num == 3{
 	if hitbox_timer == 1{
 		if spr_dir == -1{
 			proj.x = proj.x + 200

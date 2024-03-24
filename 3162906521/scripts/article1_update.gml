@@ -275,13 +275,10 @@ if building_type == 2{
 		
 	if building_state == 1 or building_state == 4{
 		//maybe try some kind of check to see if there's more than 2 players fighting
-		
-		
-		
 		with (oPlayer) if player != other.player{
-			var radius = 120;
+			var radius = 180;
 			if (point_distance(x, y, other.x, other.y + 90 ) <= radius){
-				if y < other.y + 120{
+				if y < other.y + 180{
 					if other.more_than_2_players == true{ //this is if there's >2 players, otherwise the sentry breaks the code and your ears
 						if other.building_state == 1{
 							if other.still_fire_anyways_loop_prevent == true{
@@ -319,8 +316,8 @@ if building_type == 2{
 							other.spr_dir = -1;	
 						}
 					//shoot angle
-					if y < other.y +60{
-						if y < other.y +25{
+					if y < other.y +30{
+						if y < other.y -10{
 							other.shoot_angle = 90;
 						} else{
 							other.shoot_angle = 45;
@@ -373,7 +370,7 @@ if building_type == 2{
 				life_timer = 10;
 			}
 			if life_timer == 2{ //hitbox spawn
-				create_hitbox(AT_USPECIAL, 3, x + 6, y - 24);
+				create_hitbox(AT_USPECIAL, 3, x, y - 26);
 				if(get_synced_var (player) == 2){
 					sound_play(sound_get("cd_pea"), false, noone, 1.7);
 				}
@@ -407,7 +404,7 @@ if building_type == 2{
 			}
 			//timer stuff
 			if life_timer == 2{ //shoot bullets code
-				create_hitbox(AT_USPECIAL, 3, x + 6, y - 24);
+				create_hitbox(AT_USPECIAL, 3, x, y - 26);
 				if(get_synced_var (player) == 2){
 					sound_play(sound_get("cd_pea"), false, noone, 1.7);
 				} 
@@ -448,7 +445,7 @@ if building_type == 2{
 			}
 			//timer stuff
 			if life_timer == 2{
-				create_hitbox(AT_USPECIAL, 3, x + 6, y - 24);
+				create_hitbox(AT_USPECIAL, 3, x, y - 26);
 				if(get_synced_var (player) == 2){
 					sound_play(sound_get("cd_pea"), false, noone, 1.7);
 				}
@@ -492,6 +489,9 @@ if building_type == 2{
 							}
 						}
 					}
+				}
+				if rocket_timer == 6{ //warning
+					sound_play(sound_get("dispenser_generate_metal"));
 				}
 				if still_fire_anyways == true{
 					still_fire_anyways = false;

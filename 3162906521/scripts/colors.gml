@@ -86,7 +86,7 @@ set_color_profile_slot( 5, 5, 198, 89, 97 ); //Helmet brim
 set_color_profile_slot( 5, 6, 207, 212, 224 ); //Gun
 set_color_profile_slot( 5, 7, 189, 100, 100 ); //Buildings(green)
 
-// Kitty3407
+// Kitty0706
 set_color_profile_slot( 6, 0, 255, 252, 226 ); //Helmet
 set_color_profile_slot( 6, 1, 199, 42, 49 ); //Shirt
 set_color_profile_slot( 6, 2, 66, 35, 49 ); //Overalls

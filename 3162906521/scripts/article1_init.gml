@@ -2,7 +2,7 @@
 life_timer = 0;
 telesprite = "teleporter_opening";
 hurtbox_spr = sprite_get("teleporter_cooldown");
-mask_index = sprite_get("teleporter_cooldown")
+mask_index = sprite_get("sentry_lv1_idle")
 sprite_index = sprite_get("teleporter_opening");
 //mask_index = sprite_get("tele_hurt");
 image_index = 0;

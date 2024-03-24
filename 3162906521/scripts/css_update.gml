@@ -21,16 +21,14 @@ if instance_exists(cursor_id){
                     }else if (snd_rng == 3) {
 					sound_play(sound_get("v_texasstyle"));
 					}
-					print("I found that making an error causes it to work. Don't question it, Dan moment. -TinMines");
-					cursor_id.x = cursor_id.x - 200; //so this creates an error, but allows it to work? I think it's a Dan moment, but it makes it work so I can't complain
-				}
-				if get_synced_var (player) > 1{
+					// print("I found that making an error causes it to work. Don't question it, Dan moment. -TinMines");
+					// cursor_id.x = cursor_id.x - 200; //so this creates an error, but allows it to work? I think it's a Dan moment, but it makes it work so I can't complain
+				} else if get_synced_var (player) > 1{
 					set_synced_var (player, 0);
 					sound_play(asset_get("mfx_option"));
-					print("I found that making an error causes it to work. Don't question it, Dan moment. -TinMines");
-					cursor_id.x = cursor_id.x - 200;
-				}
-				if get_synced_var (player) == 1{
+					// print("I found that making an error causes it to work. Don't question it, Dan moment. -TinMines");
+					// cursor_id.x = cursor_id.x - 200;
+				} else if get_synced_var (player) == 1{
 					if get_player_color(player) == 7{ //crazy dave alt
 						set_synced_var (player, 2);
 						sound_play(sound_get("cd_sun"), false, noone, 0.8);

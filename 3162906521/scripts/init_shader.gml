@@ -23,7 +23,7 @@ if alt == 4{//TFC
 if alt == 5{//Robot
     set_article_color_slot( 1, 189, 100, 100, 1); //main reds 
 }
-if alt == 6{//Kitty3407
+if alt == 6{//Kitty0706
     set_article_color_slot( 1, 13, 62, 189, 1); //main reds 
 }
 if alt == 7{//Garden Warfare

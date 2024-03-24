@@ -27,7 +27,7 @@ with (asset_get("obj_article2")){
 				}else{
 					spawn_hit_fx( x+36, y+90, 144);
 				}
-			} else if ammo_type < 3{
+			} else if ammo_type < 3 && despawn_timer < 2{
 				vsp = -7;
 				sound_play(asset_get("sfx_waveland_fors"));
 				if despawn_timer < 2{
@@ -93,7 +93,7 @@ if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD{
     // sound_stop(sound_get("tp_ready"));
 }
 
-if (state != PS_ATTACK_AIR) and (state != PS_ATTACK_GROUND){ //when the sentry is shooting, it will not count that as attacking with the wrench
+if (state != PS_ATTACK_AIR) and (state != PS_ATTACK_GROUND) and (wrench != false){ //when the sentry is shooting, it will not count that as attacking with the wrench
     wrench = false;
 }
 
@@ -185,9 +185,9 @@ if(get_training_cpu_action() != CPU_FIGHT){
 	}
 }
 
-if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR{
-	// print("howdy")
-}
+// if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR{
+// 	// print("howdy")
+// }
 
 //Voiceline code beyond this point -----------------------------------
 if(state == PS_HITSTUN){

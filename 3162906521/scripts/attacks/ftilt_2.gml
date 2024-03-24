@@ -1,6 +1,6 @@
 set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("ftilt2"));
 set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 12);
-set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
+set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("ftilt2_hurt"));
 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 1);
