@@ -1,4 +1,10 @@
 
+switch (get_player_color( player ) ){
+    case 21:
+        draw_sprite_ext(sprite_get("charselect_ea"),1,x+8,y+8,2,2,0,-1,1);
+    break;
+}
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -15,7 +21,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "The Knight."
+var qe_b = "The Knight"
 
 // ! you can now scroll down until you reach "the primary part you should change."
 
@@ -131,6 +137,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[19,0] = make_color_rgb(245, 235, 235)
 	ce[19,1] = "Absolute Radiance"
 	ce[19,2] = ""
+	ce[20,0] = make_color_rgb(184, 244, 131)
+	ce[20,1] = "The Agendered Child"
+	ce[20,2] = ""
+	ce[21,0] = make_color_rgb(167, 186, 74)
+	ce[21,1] = "Early Access"
+	ce[21,2] = ""
+	ce[22,0] = make_color_rgb(144, 99, 184)
+	ce[22,1] = "Abyss"
+	ce[22,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

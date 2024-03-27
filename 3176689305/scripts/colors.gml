@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 23 );
 
 // City of Tears
 set_color_profile_slot( 1, 0, 179, 201, 227 ); //Mask
@@ -225,6 +225,36 @@ set_color_profile_slot( 19, 4, 236, 193, 116 ); //Eyes 2
 set_color_profile_slot( 19, 5, 245, 235, 235 ); //Eyes Fix
 set_color_profile_slot( 19, 6, 255, 255, 255 ); //Trail1
 set_color_profile_slot( 19, 7, 236, 217, 181 ); //Trail2
+
+// Agendered
+set_color_profile_slot( 20, 0, 241, 250, 235 ); //Mask
+set_color_profile_slot( 20, 1, 77, 87, 81 ); //Cloak
+set_color_profile_slot( 20, 2, 185, 185, 185 ); //Nail
+set_color_profile_slot( 20, 3, 184, 244, 131 ); //Eyes1
+set_color_profile_slot( 20, 4, 185, 185, 185 ); //Eyes 2
+set_color_profile_slot( 20, 5, 241, 250, 235 ); //Eyes Fix
+set_color_profile_slot( 20, 6, 241, 250, 235 ); //Trail1
+set_color_profile_slot( 20, 7, 184, 244, 131 ); //Trail2
+
+// EA
+set_color_profile_slot( 21, 0, 211, 226, 154 ); //Mask
+set_color_profile_slot( 21, 1, 83, 122, 62 ); //Cloak
+set_color_profile_slot( 21, 2, 167, 186, 74 ); //Nail
+set_color_profile_slot( 21, 3, 35, 67, 49 ); //Eyes1
+set_color_profile_slot( 21, 4, 35, 67, 49 ); //Eyes 2
+set_color_profile_slot( 21, 5, 211, 226, 154 ); //Eyes Fix
+set_color_profile_slot( 21, 6, 211, 226, 154 ); //Trail1
+set_color_profile_slot( 21, 7, 211, 226, 154 ); //Trail2
+
+// Abyss
+set_color_profile_slot( 22, 0, 166, 172, 214 ); //Mask
+set_color_profile_slot( 22, 1, 80, 63, 94 ); //Cloak
+set_color_profile_slot( 22, 2, 68, 53, 152 ); //Nail
+set_color_profile_slot( 22, 3, 220, 113, 255 ); //Eyes1
+set_color_profile_slot( 22, 4, 144, 99, 184 ); //Eyes 2
+set_color_profile_slot( 22, 5, 220, 113, 255 ); //Eyes Fix
+set_color_profile_slot( 22, 6, 146, 59, 206 ); //Trail1
+set_color_profile_slot( 22, 7, 123, 40, 153 ); //Trail2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

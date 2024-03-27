@@ -5,11 +5,11 @@ set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("hero_charge_init"));
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 4);
@@ -139,7 +139,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, 6);
 set_hitbox_value(AT_DSTRONG, 5, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSTRONG, 5, HG_ANGLE, 50);
 set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, 5, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_DSTRONG, 5, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 304);
