@@ -1,5 +1,6 @@
 // attack_update
 
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
     trigger_b_reverse();
@@ -271,7 +272,7 @@ switch(attack)
         	if (window_timer == time)
         	{
         		sound_stop(asset_get("sfx_troupple_swipe"))
-            	instance_create(x + 14 * spr_dir ,y - 10,"obj_article2")
+            	instance_create(x + 14 * spr_dir ,y + 5,"obj_article2")
         	}
         }
     

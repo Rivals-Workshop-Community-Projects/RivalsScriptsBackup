@@ -44,7 +44,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 13; fast_fall_ref = fast_fall  //fast fall speed
 gravity_speed = .7;
 hitstun_grav = .53;
-knockback_adj = 0.9; // THE touhou heavy     the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 0.95; // THE touhou heavy     the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
 prat_land_time = 8;

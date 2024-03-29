@@ -2,6 +2,9 @@
 
 switch(my_hitboxID.attack)
 {
+	case AT_FTILT:
+		sound_play(asset_get("sfx_ell_eject"));
+	break;
 	case AT_DSPECIAL:
 		with (obj_article3)
         {
