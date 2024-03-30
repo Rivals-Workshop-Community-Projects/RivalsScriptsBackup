@@ -144,13 +144,20 @@ dust_pos2=0;
 soundpick = 0;
 pill_color = 0;
 kirby_pill=1;
+
 //New CSS Stuff
 voice_toggle = 0;
-pill_skin = 1;
 split_var = split_synced_var(1,4);
 voice_toggle =split_var[0];
 pill_skin =split_var[1];
 
+if pill_skin == 0{
+  pill_skin = 1;
+}
+
+//Koffing compatibility
+neutralized_ability = "Pills";
+koffing_gas_active=0;
 
 //Pill_Hit = hit_fx_create( sprite_get("pill_hit"), 6 );
 next_group = 0;

@@ -19,7 +19,7 @@ with pHitBox{ //i was here
 //DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
 if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 
-	if attack == AT_NSPECIAL{
+	if attack == AT_NSPECIAL && !koffing_gas_active{
 		if window == 1{
 			if window_timer <6 {
 				 draw_sprite_ext( sprite_get("nspecial_proj"+string(pill_skin)), pill_color, x- 36*spr_dir, y-54, spr_dir, 1, 90, c_white, 1);

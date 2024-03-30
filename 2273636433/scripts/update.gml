@@ -1,7 +1,6 @@
 //update
 //user_event(14);
 
-
 //--------------------------------------------INTRO ANIMATION-----------------------------------------------
 if (timer_intro_2 < 3) {
     timer_intro_2++;
@@ -226,6 +225,11 @@ if state == PS_WALL_JUMP  && state_timer == 1 {
 
 
 //----------------------------------------------COMPATIBILITY STUFF-------------------------------------------------
+
+if koffing_gas_active == 1{
+	set_num_hitboxes(AT_NSPECIAL, 0)
+}
+
 if trummelcodecneeded{
     trummelcodec = 17;
     trummelcodecmax = 7;
