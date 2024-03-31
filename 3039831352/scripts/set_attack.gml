@@ -27,10 +27,6 @@ if (attack == AT_DSPECIAL && !free && !boost_mode && has_rune("D")) attack = AT_
 
 if (attack == AT_TAUNT && has_superform && rings_cur >= 50 && !is_super) attack = 48;
 
-
-
-
-
 //outta here input ver, aka ragequit button
 if (taunt_pressed && special_down && shield_down && !get_match_setting(SET_PRACTICE) && !playtest_active)
 {

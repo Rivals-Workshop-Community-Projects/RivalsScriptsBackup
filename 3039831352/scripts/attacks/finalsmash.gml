@@ -58,6 +58,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 17);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
+for (var i = 1; i <= window_num; i++) set_window_value(atk, i, AG_WINDOW_INVINCIBILITY, 1);
 
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 

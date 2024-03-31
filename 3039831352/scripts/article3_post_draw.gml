@@ -52,11 +52,15 @@ if (super_theme_player)
                 super_theme_loop_start = super_theme_loop_start_set;
                 super_theme_loop_started = false;
                 sound_volume(super_theme, 0, 0);
-                bar_ss_array[0] = bar_ss_array[1];
-                bar_ss_array[1] = noone;
+                if (bar_ss_array[1] == self) bar_ss_array[1] = -4;
+                if (bar_ss_array[0] == self)
+                {
+                    bar_ss_array[0] = bar_ss_array[1];
+                    bar_ss_array[1] = noone;
+                }
                 super_theme_playing = false;
             }
-            if (bar_ss_array[0] == noone) sound_stop(super_theme);
+            if (!super_theme_playing) sound_stop(super_theme);
         }
 
         if ("super_theme_playing" in self && super_theme_playing) suppress_stage_music(0, 1); //check

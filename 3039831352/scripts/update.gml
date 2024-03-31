@@ -11,6 +11,7 @@ game_time = get_gameplay_time();
 exist_timer ++;
 if (hit_player_lock > 0) hit_player_lock = 0;
 
+//Initialization
 if (!playtest_active)
 {
     with (oPlayer)
@@ -52,8 +53,6 @@ if (is_attacking)
 }
 else
 {
-    if (my_grab_id != noone) my_grab_id = noone;
-
     if (state_timer == 0) //force reset manual offsets / rotations on new state
     {
         if (spr_angle != 0) spr_angle = 0;
@@ -64,30 +63,8 @@ else
     if (trick_rune_active && prev_trick != -1) prev_trick = -1; //reset trick combos
 }
 
-//grab logic
-if (my_grab_id != noone) //if you have grabbed someone
-{
-	grab_time ++;
-
-    with (my_grab_id)
-	{
-		hitstop = 2; //freeze grabbed foe
-		if (last_player_hit_me != other.player) //if another player hits the grabbed player stop the grab sequence
-		{
-			hitstop = 0;
-			with (other)
-			{
-				my_grab_id = noone;
-				if (!free) hsp = spr_dir*-6; //push back for some extra effect (ground only)
-				set_state(free ? PS_IDLE_AIR : PS_IDLE);
-			}
-		}
-    }
-}
-else grab_time = 0;
-
 //play intro
-if (game_time == 4 && has_intro && !is_fake_x) set_attack(set_up_super_colors ? 48 : AT_INTRO);
+if (game_time == 4 && !is_fake_x) set_attack(set_up_super_colors ? 48 : AT_INTRO);
 if (game_time == 5 && state == PS_SPAWN && set_up_super_colors) //force super sprites and colors if it should be active and the intro didn't start
 {
     uses_super_colors = true;
@@ -100,15 +77,26 @@ if (game_time == 5 && state == PS_SPAWN && set_up_super_colors) //force super sp
 //sonic gradual speed up mechanic
 do_sonic_physics();
 
-tempvar = 0;
-repeat (array_length(boost_stat_changes))
+stats_cur = (is_super || boost_mode);
+if(stats_old != stats_cur) 
 {
-    if (boost_stat_changes[tempvar][0] != "air_max_speed") //filter out air_max_speed
+    stats_old = stats_cur;
+    stats_state = 1;
+}
+
+if(stats_state == 1)
+{
+    tempvar = 0;
+    repeat (array_length(boost_stat_changes))
     {
-        variable_instance_set(self, boost_stat_changes[tempvar][0], boost_stat_changes[tempvar][(is_super || boost_mode) + 1]);
-        if (is_super) variable_instance_set(self, boost_stat_changes[tempvar][0], boost_stat_changes[tempvar][is_super + 2]);
+        if (boost_stat_changes[tempvar][0] != "air_max_speed") //filter out air_max_speed
+        {
+            variable_instance_set(self, boost_stat_changes[tempvar][0], boost_stat_changes[tempvar][(is_super || boost_mode) + 1]);
+            if (is_super) variable_instance_set(self, boost_stat_changes[tempvar][0], boost_stat_changes[tempvar][is_super + 2]);
+        }
+        tempvar ++;
     }
-    tempvar ++;
+    stats_state = 0;
 }
 
 hugging_wall = (position_meeting(x + (spr_dir ? 19 : -20), y - 16, asset_get("par_block")) || "touching_childe_wall" in self && touching_childe_wall);
@@ -234,17 +222,22 @@ else
 }
 
 //boost count add timer management
+var clear_array = 0;
 tempvar = 0;
 repeat (array_length(combo_display_time))
 {
-    if (combo_display_time[tempvar] > 0) combo_display_time[tempvar] --;
+    if (combo_display_time[tempvar] > 0) 
+        combo_display_time[tempvar] --;
     else
     {
         combo_boost_display[tempvar] = noone;
         combo_display_time[tempvar] = noone;
+        clear_array ++;
     }
     tempvar ++;
 }
+if(clear_array == array_length(combo_display_time)) combo_display_time = [];
+
 
 if (combo_text_display_time > 0) combo_text_display_time --;
 else cur_combo_text = -1;
@@ -318,7 +311,7 @@ if (has_superform)
     }
 
     //transformation
-    if (rings_cur >= 50 && !is_super && !is_attacking && taunt_pressed) set_attack(48);
+    if (rings_cur >= 50 && !is_super && !is_attacking && taunt_pressed && state_cat != SC_HITSTUN && state != PS_DEAD && state != PS_RESPAWN) set_attack(48);
 
     //the button will not work if the super sonic rune is equipped
     if ("super_form_active" not in self || !super_form_active) uses_super_colors = is_super;
@@ -362,17 +355,11 @@ else //boost mechanic
     {
         if (!playtest_active)
         {
+            var invince_count = 0;
             //checks how many players are curently respawning unless they are either teammates or they are dead
             with (oPlayer) if (other.enemy_invince_check[player-1] != -1 && (!clone && !custom_clone || player == 5))
             {
-                other.enemy_invince_check[player-1] = (state == PS_RESPAWN || invince_time > 0);
-            }
-            var invince_count = 0;
-            tempvar = 0;
-            repeat (array_length(enemy_invince_check))
-            {
-                if (enemy_invince_check[tempvar] == 1) invince_count ++;
-                tempvar ++;
+                invince_count += (state == PS_RESPAWN || invince_time > 0);
             }
         }
 
@@ -386,7 +373,7 @@ else //boost mechanic
         if (
             (boost_mode || !comboing) && (invince_count < enemy_count || playtest_active) &&
             (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0
-        )
+            )
         {
             boost_cur -= 1/boost_decrease_rate[boost_mode];
         }
@@ -433,7 +420,9 @@ if (is_attacking)
                     if (special_pressed && window_timer > 0) //early release
                     {
                         nspec_early = true;
-                        window_timer = window_end;
+                        window_timer = 0;
+                        window = 3;
+                        set_attack_value(attack, AG_LANDING_LAG, 4);
                     }
 
                     prev_homing_target = homing_target;
@@ -453,34 +442,26 @@ if (is_attacking)
                         sound_play(homing_target != noone ? sound_get("sfx_homingattack_reticle") : sound_get("sfx_homingattack_reticle_gone"));
                     }
                 }
-                if (window == 3 && window_timer == 0)
+                if (window == 3 && window_timer == 0 && !nspec_early)
                 {
                     if (instance_exists(homing_target))
                     {
                         var home_speed = floor(point_distance(x, y, homing_target.x, homing_target.y)/50)
                         set_window_value(attack, 7, AG_WINDOW_LENGTH, 8 + home_speed);
+
                         homing_values[0] = point_distance(x, y, homing_target.x, homing_target.y)/get_window_value(attack, 7, AG_WINDOW_LENGTH);
                         homing_values[1] = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
-
-                        if (nspec_early)
-                        {
-                            set_hitbox_value(attack, 2, HG_ANGLE_FLIPPER, 0);
-                            set_hitbox_value(attack, 2, HG_BASE_KNOCKBACK, 4);
-                            set_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING, 0.2);
-                            set_hitbox_value(attack, 2, HG_BASE_HITPAUSE, 6);
-                            set_hitbox_value(attack, 2, HG_HITPAUSE_SCALING, 0.2);
-                        }
-                        else
-                        {
-                            reset_hitbox_value(attack, 2, HG_ANGLE_FLIPPER);
-                            reset_hitbox_value(attack, 2, HG_BASE_KNOCKBACK);
-                            reset_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING);
-                            reset_hitbox_value(attack, 2, HG_BASE_HITPAUSE);
-                            reset_hitbox_value(attack, 2, HG_HITPAUSE_SCALING);
-                        }
+                        
+                        reset_hitbox_value(attack, 2, HG_ANGLE_FLIPPER);
+                        reset_hitbox_value(attack, 2, HG_BASE_KNOCKBACK);
+                        reset_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING);
+                        reset_hitbox_value(attack, 2, HG_BASE_HITPAUSE);
+                        reset_hitbox_value(attack, 2, HG_HITPAUSE_SCALING);
+                        reset_attack_value(attack, AG_LANDING_LAG);
 
                         window = 7;
                         window_timer = -1;
+                        sound_play(sound_get("sfx_charge_release"));
                     }
                 }
             }
@@ -540,10 +521,8 @@ if (is_attacking)
                         var next_target = multihome_grid[# 0, next_multihome_target];
                         if (!instance_exists(next_target)) exit;
 
-                        var home_speed = floor(point_distance(x, y, next_target.x, next_target.y)/50)
-                        set_window_value(attack, 7, AG_WINDOW_LENGTH, 8 + home_speed);
                         homing_values[0] = point_distance(x, y, next_target.x, next_target.y)/get_window_value(attack, 7, AG_WINDOW_LENGTH);
-                        homing_values[1] = point_direction(x, y-char_height/1.75, next_target.x, next_target.y-next_target.char_height/1.75);
+                        homing_values[1] = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
 
                         //reset hit values if it's the last homing attack in the chair
                         if (next_multihome_target == min(multihome_limit, array_length(multihome_targets_temp))-1)
@@ -556,6 +535,7 @@ if (is_attacking)
                         //start homing attack chain
                         window = 7;
                         window_timer = -1;
+                        sound_play(sound_get("sfx_charge_release"));
                     }
                 }
             }
@@ -576,7 +556,6 @@ else
     sound_stop(sound_get("sfx_charge_lightspeed_start"));
     sound_stop(sound_get("sfx_charge_lightspeed_loop"));
 
-    with (oPlayer) if ("bar_sonic_reticle_owner" in self) bar_sonic_reticle_owner = noone;
     if (!runeB_bolting) airdash_stats = [1, 0, 0, -1];
 
     if (attack == AT_TAUNT_2 && state == PS_LANDING_LAG && state_timer == 0)
@@ -586,7 +565,10 @@ else
         combo_timer = 0;
     }
 }
-if (!is_attacking || attack != AT_NSPECIAL) with (oPlayer) if ("bar_sonic_reticle_owner" in self) bar_sonic_reticle_owner = noone;
+if ((!is_attacking || attack != AT_NSPECIAL) && homing_target != noone)
+{
+    with (oPlayer) if (other.homing_target == self) bar_sonic_reticle_owner = noone;
+}
 
 
 //airdash vfx spawn
@@ -628,6 +610,8 @@ if (fspec_supercharge > 0) fspec_supercharge --;
 if (!is_attacking || attack != AT_NSPECIAL) nspec_early = false;
 if (!is_attacking || attack != AT_DSPECIAL) dspec_jumps = 0;
 
+
+
 //reset vars (maybe should be at the bottom)
 if (state == PS_WALL_JUMP || state == PS_HITSTUN || was_free && !free)
 {
@@ -640,11 +624,13 @@ if (state == PS_WALL_JUMP || state == PS_HITSTUN || was_free && !free)
     attack_should_pratfall = false;
     can_fspec = true;
 }
+//else if (instance_exists(artc_trickring)) can_spawn_trick_ring = get_player_team(artc_trickring.trick_ring_player) == get_player_team(player);
+
 if (was_free != free) was_free = free;
 
 
 /////////////////////////////////////////////////////////////// ABYSS RUNES ///////////////////////////////////////////////////////////////
-
+#region Abyss
 //sonic wave projectile
 if (has_rune("A"))
 {
@@ -782,6 +768,7 @@ if (has_blast)
 
     if (fs_blast[4] > 0) fs_blast[4]--; //blast vfx at the end of the move
 }
+#endregion
 
 ////////////////////////////////////////////////////////////////// MISC. //////////////////////////////////////////////////////////////////
 
@@ -942,8 +929,7 @@ if (is_fake_x)
 if ("lord_x_decaying" in self) lord_x_decaying = (get_match_setting(SET_TIMER) > 0 && !get_match_setting(SET_PRACTICE) && !is_super);
 
 //waiting animation setup
-if (is_fake_x) wait_time = 0;
-else if (uses_super_sprites) wait_time = 0;
+if (is_fake_x || uses_super_sprites) wait_time = 0;
 else
 {
     wait_time = normal_wait_time;
@@ -980,7 +966,6 @@ if (is_attacking && attack == 3) //may be unused but lets sonic do the animation
 		vsp = get_window_value(attack, window, AG_WINDOW_VSPEED);
 	}
 }
-
 
 //having knuckles or tails in the same team as sonic has a unique interraction
 if (get_match_setting(SET_TEAMS))
@@ -1120,8 +1105,7 @@ with (hit_fx_obj) if (player == other.player)
         if (step_timer == 0) depth = other.force_vfx_depth == 0 ? 5 : other.force_vfx_depth;
         real_vfx_pause();
     }
-
-    if (hit_fx == other.fx_airdash_aura[0] || hit_fx == other.fx_airdash_aura[1] || hit_fx == other.fx_airdash_aura[2])
+    else if (hit_fx == other.fx_airdash_aura[0] || hit_fx == other.fx_airdash_aura[1] || hit_fx == other.fx_airdash_aura[2])
     {
         if (other.airdash_stats[3] > 0)
         {
@@ -1137,15 +1121,13 @@ with (hit_fx_obj) if (player == other.player)
             vsp = 0;
         }
     }
-
-    if (hit_fx == other.fx_fair && step_timer == 0)
+    else if (hit_fx == other.fx_fair && step_timer == 0)
     {
         hsp = 3 * other.spr_dir;
         vsp = 0.5;
         depth = other.depth - 1;
     }
-
-    if (hit_fx == other.fx_fs_charge || hit_fx == other.fx_runeD_charge)
+    else if (hit_fx == other.fx_fs_charge || hit_fx == other.fx_runeD_charge)
     {
         var angle = point_direction(x, y, other.x, other.y - 32);
         var dist = point_distance(x, y, other.x, other.y - 32);
@@ -1154,8 +1136,7 @@ with (hit_fx_obj) if (player == other.player)
 
         with (other) spawn_hit_fx(other.x, other.y, other.hit_fx == fx_fs_charge ? fx_fs_charge_afterimage : fx_runeD_charge_afterimage);
     }
-
-    if (hit_fx == other.fx_emeralds)
+    else if (hit_fx == other.fx_emeralds)
     {
         depth = other.depth - 1;
         x = other.x;
@@ -1207,16 +1188,20 @@ user_event(6);
 //bar reygard burning outline update
 if ("holyburning" in self && outline_check != outline_color) outline_check = outline_color;
 
+//mushroom gourge trick compatibility
+if ("sonic_mushroom_trick" in self && sonic_mushroom_trick && (!is_attacking || attack != AT_TAUNT_2)) sonic_mushroom_trick = false;
+
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
 custom_attack_grid();
 prep_hitboxes();
 
+
+/////////////////////////////////////////////////////////////// DEFINE FUNCTIONS ///////////////////////////////////////////////////////////////
 //sonic physics
 #define do_sonic_physics
 {
     //original code by rioku, modified by bar-kun
-
     if (hugging_wall) //basically if sonic is walking towards a wall
     {
         new_hsp = 0;
@@ -1242,7 +1227,7 @@ prep_hitboxes();
             walk_speed = clamp(abs(new_hsp), min_walk_spd, min_dash_spd);
             dash_speed = clamp(abs(new_hsp), min_dash_spd, max_dash_spd);
         }
-
+        
         if (state == PS_RESPAWN)
         {
             new_hsp = 0;

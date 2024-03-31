@@ -13,6 +13,8 @@ times_attacked = 0;
 wriggle_was_hit = false;
 hitter = noone;
 
+timer = 0;
+
 //State
 state = 0;                                          //The behavior state the article should start in.
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)

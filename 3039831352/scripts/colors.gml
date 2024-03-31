@@ -1,5 +1,4 @@
 //colors.gml
-
 //details
 //  sonic's colors are a little funky
 //  all of his alts and the //init_shader code are in [user_event15.gml]

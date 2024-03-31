@@ -3,17 +3,17 @@
 //fix weird jittering that can happen when it tries to return to 0
 if (abs(hud_offset) < 1) hud_offset = 0;
 
-//lord X idle
-if (sprite_index == sprite_get("idle") && is_fake_x)
-{
-	sprite_index = sprite_get("lordX_idle");
-	image_index = state_timer * fake_x_idle_speed;
-}
 
 switch (state)
 {
 	case PS_IDLE:
 		if (sprite_index == sprite_get("wait") && image_index >= 36 && image_index < 41) hud_offset = 40;
+		//lord X idle
+		if (sprite_index == sprite_get("idle") && is_fake_x)
+		{
+			sprite_index = sprite_get("lordX_idle");
+			image_index = state_timer * fake_x_idle_speed;
+		}
 		break;
 	case PS_IDLE_AIR:
 		if (tails_grabbed_sonic)

@@ -1,6 +1,6 @@
 //hit_player.gml
 
-if (my_hitboxID.attack == 0 && my_hitboxID.hbox_num == 1) exit;
+if (my_hitboxID.orig_player_id != self && my_hitboxID.attack == 0 && my_hitboxID.hbox_num == 1) exit; //this line makes sure that the hitboxes belong to us and not someone like kragg
 
 var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
 
@@ -11,7 +11,7 @@ if (hit_player_lock <= 1)
     if (free) trick_input_time = trick_input_set;
 
     //boost gain
-    boost_cur += true_damage * boost_hitgain_mult[boost_mode];
+    boost_cur += (true_damage * boost_hitgain_mult[boost_mode] + get_player_damage(hit_player_obj.player)/2) / (total_players <= 0 ? 1 : (total_players - 1)*1.5);
     if (boost_cur >= boost_max) boost_cur = boost_max;
 
     //combo counter
@@ -20,7 +20,6 @@ if (hit_player_lock <= 1)
     combo_timer_full = combo_timer;
     comboing = true;
 }
-
 
 if ((my_hitboxID.hit_effect == fx_windhit[0] && my_hitboxID.attack == AT_FSPECIAL ||
     my_hitboxID.hit_effect == fx_windhit[1]) && my_hitboxID.attack != AT_DSTRONG)
@@ -47,7 +46,7 @@ switch (my_hitboxID.attack)
         old_hsp /= 2;
         break;
     case AT_FAIR:
-        if (my_hitboxID.hbox_num < get_num_hitboxes(attack) && old_vsp > 0) old_vsp = 0;
+        if (my_hitboxID.hbox_num < get_num_hitboxes(attack) && old_vsp > 0 && state_cat != SC_HITSTUN) old_vsp = 0;
         break;
     case AT_EXTRA_1: //knuckles fire dunk
         if (my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_blow_heavy2"));
@@ -130,13 +129,4 @@ if (has_superform)
     }
 
     if (is_super) take_damage(hit_player_obj.player, player, floor(true_damage * 1)); //super sonic has a 1.5 damage multiplier
-}
-
-
-#define set_grab_id
-{
-    if (my_grab_id == noone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
-    {
-        my_grab_id = hit_player_obj;
-    }
 }

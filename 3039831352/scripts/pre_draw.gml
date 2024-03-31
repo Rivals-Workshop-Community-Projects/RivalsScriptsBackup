@@ -40,7 +40,6 @@ if (fs_blast[4] > 0)
 
 shader_end();
 
-
 //boost mode afterimages
 if (boost_mode || is_super)
 {

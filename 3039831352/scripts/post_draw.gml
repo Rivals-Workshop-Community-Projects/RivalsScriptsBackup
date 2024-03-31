@@ -1,55 +1,5 @@
 //post_draw.gml
 
-if (perfect_dodging) //bypassing color code shenanigans for parry
-{
-    tempvar = 1;
-    repeat (7)
-    {
-        var pos = tempvar*4;
-        static_colorO[pos] = 165 / 255;
-        static_colorO[pos + 1] = 155 / 255;
-        static_colorO[pos + 2] = 205 / 255;
-        static_colorB[pos] = 0;
-        tempvar ++;
-    }
-    shader_start();
-    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2 * spr_dir, 2, spr_angle, c_white, 1); //yes im drawing the sprite over itself
-    shader_end();
-
-    if (invince_time > 0) //invincibility effect lol
-    {
-        gpu_set_fog(1, c_white, 0, 1)
-        draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2 * spr_dir, 2, spr_angle, c_white, 0.5);
-        gpu_set_fog(0, c_white, 0, 0);
-    }
-}
-else if (hitpause_flash) //bypassing colors for hitpause
-{
-    tempvar = 1;
-    repeat (7)
-    {
-        var pos = tempvar*4;
-        if (hitpause_shock)
-        {
-            static_colorO[pos] = 1;
-            static_colorO[pos + 1] = 1;
-            static_colorO[pos + 2] = 1;
-            static_colorB[pos] = 0;
-        }
-        else
-        {
-            static_colorO[pos] = (cur_colors[tempvar + uses_super_colors * 8][0] + 255)/2 / 255;
-            static_colorO[pos + 1] = (cur_colors[tempvar + uses_super_colors * 8][1] + 255)/2 / 255;
-            static_colorO[pos + 2] = (cur_colors[tempvar + uses_super_colors * 8][2] + 255)/2 / 255;
-        }
-        tempvar ++;
-    }
-    shader_start();
-    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2 * spr_dir, 2, spr_angle, c_white, 1); //yes im drawing the sprite over itself x 2
-    shader_end();
-}
-set_colors_back();
-
 //chao color compatibility
 if (instance_exists(pet_obj) && "chao_type" in pet_obj)
 {
@@ -95,6 +45,8 @@ if (is_attacking) switch (attack)
         break;
 }
 
+if (runeC_spinjump && state == PS_FIRST_JUMP) draw_sprite_ext(sprite_get("fx_runeC_ball"), image_index, x, y, 2 * spr_dir, 2, 0, c_white, 0.3);
+
 shader_end();
 
 //rainbow ring color
@@ -108,7 +60,7 @@ with (pHitBox) if (player_id == other && attack == AT_DSTRONG && hbox_num == 2 &
 }
 
 //tornado dust spawn on enemy like those rings on sonic heroes when players are shot up from the tornados
-if (hit_player_obj != noone) with (hit_player_obj)
+with (oPlayer) if (hit_player_obj == other)
 {
     if (state == PS_HITSTUN && state_timer % 5 == 0 && vsp < -2 && orig_knock > 13 && last_player == other.player && last_attack == AT_DSTRONG && last_hbox_num == 2)
     {
@@ -253,10 +205,6 @@ if (sprite_index == sprite_get("wait") && image_index >= 36 && image_index < 41)
     }
 }
 
-shader_start();
-if (runeC_spinjump && state == PS_FIRST_JUMP) draw_sprite_ext(sprite_get("fx_runeC_ball"), image_index, x, y, 2 * spr_dir, 2, 0, c_white, 0.3);
-shader_end();
-
 //final smash effects
 if (is_attacking && attack == 49 && window == 5) draw_sprite_ext(sprite_get("fx_fs_ball"), state_timer * 0.5, x, y, 2 * spr_dir, 2, 0, c_white, 0.8);
 with (oPlayer) if (other.fs_trapped_player[player]) with (other) //stun
@@ -318,37 +266,5 @@ with (oPlayer) if (other.fs_trapped_player[player]) with (other) //stun
 
         newdust.draw_angle = angle; //sets the angle of the dust sprite
         return newdust;
-    }
-}
-#define set_colors_back
-{
-    if (static_colorO[0] != temp_O[1])
-    {
-        for (var i = 0; i < 8; i++) //update sonic's colors for drawing
-        {
-            if (alt_cur < 32 && get_color_profile_slot_r(alt_cur, i + 8) != 999)
-            {
-                temp_O[i*4 + 0] = cur_colors[i + uses_super_colors*8][0]/255;
-                temp_O[i*4 + 1] = cur_colors[i + uses_super_colors*8][1]/255;
-                temp_O[i*4 + 2] = cur_colors[i + uses_super_colors*8][2]/255;
-                temp_O[i*4 + 3] = cur_alpha[i];
-            }
-            else
-            {
-                temp_O[i*4 + 0] = cur_colors[i][0]/255;
-                temp_O[i*4 + 1] = cur_colors[i][1]/255;
-                temp_O[i*4 + 2] = cur_colors[i][2]/255;
-                temp_O[i*4 + 3] = cur_alpha[i];
-            }
-
-            temp_B[i*4] = alt_cur > 32 ? 1 : shading_data[alt_cur][i + uses_super_colors * 8];
-        }
-        temp_O[8*4 + 0] = temp_outline_color[0]/255;
-        temp_O[8*4 + 1] = temp_outline_color[1]/255;
-        temp_O[8*4 + 2] = temp_outline_color[2]/255;
-        temp_O[8*4 + 3] = 1;
-
-        static_colorO = temp_O;
-        static_colorB = temp_B;
     }
 }

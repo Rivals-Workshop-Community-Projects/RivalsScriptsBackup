@@ -8,6 +8,8 @@ icon_y_pos = y + 108;
 preview_x = floor(x+10);
 preview_y = floor(y+10);
 
+alt_name = []; //refresh name array in case other characters use the same system
+
 //ALT NAMES
 //seasonal alt names
 season_name[1] = "Marriage? NO WAY!";

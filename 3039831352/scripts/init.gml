@@ -234,19 +234,6 @@ game_time = 0; //checks get_gameplay_time() so we don't need to call the functio
 
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
-has_intro = true; //change to false if you don't have one
-//relevant scripts:
-//  - update
-//  - attack_update (case 2)
-
-//grab code
-my_grab_id = noone; //grabbed player ID, the game has it's own way of setting up the grabs but this is easier
-grab_time = 0; //timer for grabbing, works as a state_timer of sorts
-//relevant scripts:
-//  - attack_update (case AT_FTILT)
-//  - hit_player
-//  - got_hit
-//  - got_parried
 
 cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
 
@@ -351,7 +338,7 @@ trick_input_set = 30;
 prev_trick = -1;
 cur_trick = -1;
 next_trick = -1;
-//0 = tap = random / hold = neutral (or just neutral in both cases, we'll see)
+//0 = neutral
 //1 = up
 //2 = right
 //3 = down
@@ -361,8 +348,6 @@ next_trick = -1;
 boost_cur = 0;
 boost_max = 300;
 boost_mode = false;
-boost_loss_cd = 0;
-boost_loss_cd_set = 120;
 
 test_boost = false; //debug boost
 boost_trick_delay = 0;
@@ -493,8 +478,6 @@ can_fspec = true;
 
 dspec_jumps = 0;
 dspec_jumps_max = 3;
-
-
 
 //rune stuff
 //sonic wave shot
@@ -812,6 +795,12 @@ voice_cooldown_set = 40; //cooldown for regular voiceclips
 voice_cooldown_set_100 = 120; //cooldown for high % lines
 combo_voiceline = 0;
 
+//Ducky Stuff
+load_shade = true; //This var will decide if the init should run, so you dont lag as much.
+stats_old = 1; //HOLD STATE
+stats_cur = 0; // CHECK IF BOOST OR SUPER :3
+stats_state = 0; //IF 1 CHANGE STATS, IF NOT DONT RUN
+
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 
 //compatibility with other characters
@@ -842,6 +831,9 @@ draw_hud_event = 14;
 
 //greenwood stage compatibility
 greenwood_cheer = 2;
+
+//demon horde overwrite (USE WITH DRAW_HUD REDIRECT)
+demonhorde_hud_overwrite = true;
 
 //mamizou compat
 var eyewhite_col = make_color_rgb(cur_colors[6][@ 0], cur_colors[6][@ 1], cur_colors[6][@ 2]);
@@ -914,3 +906,6 @@ super_form_aura = make_color_rgb(
     clamp(cur_colors[8][1] + super_glow_intensity, 0, 255),
     clamp(cur_colors[8][2] + super_glow_intensity, 0, 255)
 );
+
+//wiimote
+wiimote_compat_sprite = sprite_get("wiimote_sonic");

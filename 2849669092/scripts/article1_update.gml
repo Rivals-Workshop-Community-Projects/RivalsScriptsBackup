@@ -16,7 +16,7 @@
 */
 
 
-
+timer++;
 
 
 
@@ -49,6 +49,20 @@ if (state == 0){
             }
         }
     }
+    
+    //disappear after a set time
+    if (timer == 6.5 * 60){
+    	spawn_hit_fx( floor(x), floor(y) - 20, 144 );
+    	sound_play(asset_get("sfx_ell_steam_hit"));
+    	
+    	state = 2;
+    	state_timer = 0;
+    }
+    
+    if (timer > 6.5 * 60 - 60){
+		var flash_time = 5;
+		visible = !(flash_time && timer % 10 < 5);
+	}
     
     //attack if touched while player is in hitstun
     with (oPlayer){
@@ -90,6 +104,8 @@ if (state == 1){
 	    }
     }
     
+    visible = true;
+    
 }
 
 
@@ -126,6 +142,9 @@ if (state == 3){
 	        }
 	    }
 	}
+	
+	visible = true;
+	
 }
 
 
@@ -169,6 +188,9 @@ if (state == 4){
         }
         
     }
+    
+    visible = true;
+    
 }
 
 if ((x < 0 || x > room_width) || (state > 2 && hit_wall)){

@@ -16,12 +16,9 @@ trick_attack_buffered = 0;
 attack_should_pratfall = false;
 
 combo_timer = 0;
-
-if (my_grab_id != noone)
-{
-    my_grab_id.hitstop = 0;
-    my_grab_id = noone;
-}
+combo_hits = 0;
+comboing = false;
+trick_combo_end = false;
 
 blast_cur = 0;
 blast_meter_ready_img = 1;

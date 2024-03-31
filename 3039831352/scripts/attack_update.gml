@@ -78,7 +78,7 @@ switch (attack)
 		break;
 	case AT_DSTRONG:
 		//smear effect
-		if (window >= 4 && window <= 5 || window == 6 && window_timer < window_end/4) add_blue_blur(x, y - 24);
+		if ((window >= 4 && window <= 5 && get_gameplay_time() % 2 == 0 || window == 6 && window_timer < window_end/4  && get_gameplay_time() % 3 == 0)) add_blue_blur(x, y - 24);
 		if (window == 4) force_vfx_depth = depth - 1;
 		else force_vfx_depth = 0;
 
@@ -275,10 +275,21 @@ switch (attack)
 					landing_lag_time = get_attack_value(attack, AG_LANDING_LAG) * (!has_hit ? 1.5 : 1);
 					set_state(PS_LANDING_LAG);
 				}
+				else
+				{
+					can_attack = true;
+					if (attack_pressed)
+					{
+						airdash_stats[0] = 0;
+						airdash_stats[3] = -1;
+					}
+				}
 				break;
-			case 7:
+			case 7: //homing attack
 				if (!hitpause) //movement
 				{
+					var dir = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
+					homing_values[1] += sin(degtorad(dir - homing_values[1])) * 20;
 					hsp = lengthdir_x(homing_values[0], homing_values[1]);
 					vsp = lengthdir_y(homing_values[0], homing_values[1]);
 				}
@@ -299,7 +310,7 @@ switch (attack)
 						set_window_value(attack, 9, AG_WINDOW_TYPE, 7);
 						set_window(0);
 					}
-					else if (window_timer == window_end && !has_hit)
+					else if (window_timer == window_end && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES) && !has_hit)
 					{
 						hsp /= 5;
 						set_window(10);
@@ -339,7 +350,7 @@ switch (attack)
 					if (can_spawn_trick_ring && (!instance_exists(artc_trickring) || artc_trickring.state == 2)) artc_trickring = instance_create(x, y-32, "obj_article1");
 				}
 
-				if (instance_exists(artc_trickring) && artc_trickring.state == 1) if (can_spawn_trick_ring)
+				if (instance_exists(artc_trickring) && artc_trickring.state == 1 && can_spawn_trick_ring)
 				{
 					artc_trickring.state = 2;
 					artc_trickring.state_timer = 0;
@@ -522,6 +533,53 @@ switch (attack)
 	case AT_TAUNT_2: //tricks
 		if (state_timer > 2 && !free) manual_landing_lag();
 
+		if (has_rune("I") && (!trick_rune_active || trick_rune_count == 1)) //directional boosting tricks rune
+		{
+			if (window = 1)
+			{
+				if ("sonic_mushroom_trick" not in self || !sonic_mushroom_trick)
+				{
+					hsp = 0;
+					vsp = 0;
+				}
+
+				if (window_timer == window_end)
+				{
+					var boost = 13;
+					switch (cur_trick)
+					{
+						case 0: //neutral
+							hsp = 0;
+							vsp = -2;
+							break;
+						case 1: //up
+							hsp = 0;
+							vsp = -boost;
+							break;
+						case 2: //right
+							hsp = boost;
+							vsp = -2;
+							break;
+						case 3: //down
+							hsp = 0;
+							vsp = boost;
+							break;
+						case 4: //left
+							hsp = -boost;
+							vsp = -2;
+							break;
+					}
+				}
+			}
+		}
+		if (has_rune("J") && window > 1) //attack cancel
+		{
+			can_attack = true;
+			can_special = true;
+			can_strong = true;
+			can_ustrong = true;
+		}
+
 		if (window == 1 && window_timer == window_end)
 		{
 			//boost gain setup
@@ -529,7 +587,7 @@ switch (attack)
 			{
 				//visual stuff
 				spawn_hit_fx(x, y - char_height / 1.75, 304);
-				sound_play(alt_cur != 21 ? asset_get("mfx_star") : sound_get("sfx_snicktrick"));
+				sound_play(alt_cur != 22 ? asset_get("mfx_star") : sound_get("sfx_snicktrick"));
 				for (var i = 0; i < 7; i ++)
 				{
 					var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 24);
@@ -573,6 +631,9 @@ switch (attack)
 			if (!trick_rune_active) prev_trick = -1;
 			can_fast_fall = true;
 		}
+
+		//let sonic cancel his attacks like the rainbow ring trick compatibility
+		if ("sonic_mushroom_trick" in self && sonic_mushroom_trick && state_timer > 2) iasa_script();
 		break;
 	case AT_EXTRA_1: //tails partner action
 		if (window == 1)
@@ -689,7 +750,6 @@ switch (attack)
 		}
 		break;
 	case 49: //final smash - sonic overdrive
-		super_armor = true;
 		can_move = false;
 
 		if ("fs_char_initialized" in self)
@@ -791,6 +851,19 @@ switch (attack)
 		}
 		else if (window < 5)
 		{
+			//stop enemies in place
+			with (oPlayer) if (player != other.player)
+			{
+				if (!hitpause)
+				{
+					old_hsp = hsp;
+					old_vsp = vsp;
+				}
+				hitpause = true;
+				hitstop = 2;
+				hitstop_full = 2;
+			}
+
 			//lightspeed particle effects
 			if (state_timer % 3 == 0 && window < 4) //red
 			{

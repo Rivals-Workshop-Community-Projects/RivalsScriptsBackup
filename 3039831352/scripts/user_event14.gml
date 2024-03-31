@@ -1,3 +1,4 @@
+
 //draw_hud.gml
 
 if (debug_display)
@@ -26,7 +27,29 @@ if (debug_display)
 }
 
 shader_start();
-if ("draw_hud_type" in self && draw_hud_type == "childe") draw_sprite(sprite_get_skinned("hud_sonic_offscreen"), 0, temp_x + 30, temp_y + 30)
+if ("draw_hud_type" in self)
+{
+    if (draw_hud_type == "childe") draw_sprite(sprite_get_skinned("hud_sonic_offscreen"), 0, temp_x + 30, temp_y + 30);
+    if (draw_hud_type == "gw_demonhorde")
+    {
+        //player icon
+        shader_end();
+        gpu_set_fog(true, get_player_hud_color(player), 1, 0);
+        draw_sprite(sprite_get_skinned("hud_sonic_norm"), 0, temp_x + 24, temp_y + 2);
+        gpu_set_fog(false, c_white, 1, 0);
+
+        static_colorO[4*8 + 0] = outline_color[0]/255;
+        static_colorO[4*8 + 1] = outline_color[1]/255;
+        static_colorO[4*8 + 2] = outline_color[2]/255;
+        shader_start();
+        draw_sprite(sprite_get_skinned("hud_sonic_norm"), 0, temp_x + 16, temp_y + 2);
+        shader_end();
+        static_colorO[4*8 + 0] = 0;
+        static_colorO[4*8 + 1] = 0;
+        static_colorO[4*8 + 2] = 0;
+        shader_start();
+    }
+}
 shader_end();
 
 //boost mode meter

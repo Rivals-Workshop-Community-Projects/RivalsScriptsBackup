@@ -7,7 +7,7 @@ set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 8); //12
 
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10); //10
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));

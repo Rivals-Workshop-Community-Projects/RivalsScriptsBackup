@@ -41,14 +41,6 @@ if (!instance_exists(nspec_clash_id))
     trick_combo_end = false;
 }
 
-if (my_grab_id != noone)
-{
-    my_grab_id.hitstop = 0;
-    my_grab_id = noone;
-
-    if (enemy_hitboxID.kb_value == 0) set_state(PS_IDLE);
-}
-
 //knuckles tag team action
 if (get_match_setting(SET_TEAMS) && get_match_setting(SET_TEAMATTACK))
 {
@@ -103,18 +95,15 @@ if (has_superform)
 
     for (var i = 0; i < amount; i ++) //ring drops
     {
-        if ("is_bar_sonic" not in hit_player_obj) 
-        {
-            var ring = create_hitbox(
-                0, 1,
-                floor(x),
-                floor(y - char_height / 1.75)
-            );
-            var ring_angle = ( (random_func(i, 20, true)*2) - 20) + 90 - old_hsp;
-            ring.hsp = lengthdir_x(9 + random_func(i, 4, true)/2, ring_angle);
-            ring.vsp = -7 - random_func(i+amount, 4, true)/2;
-            ring.ring_player = hit_player_obj.player;
-        }
+        var ring = create_hitbox(
+            0, 1,
+            floor(x),
+            floor(y - char_height / 1.75)
+        );
+        var ring_angle = ( (random_func(i, 20, true)*2) - 20) + 90 - old_hsp;
+        ring.hsp = lengthdir_x(9 + random_func(i, 4, true)/2, ring_angle);
+        ring.vsp = -7 - random_func(i+amount, 4, true)/2;
+        ring.ring_player = hit_player_obj.player;
     }
 
     if (!is_super) rings_cur -= clamp(rings_cur, 0, i);

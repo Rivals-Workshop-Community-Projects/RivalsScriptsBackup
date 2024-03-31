@@ -36,7 +36,7 @@ else
 
 
 shader_start();
-
+load_shade = true;
 //draw portrait again to prevent fuckups
 if (!secret_active)
 {
