@@ -42,7 +42,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-//set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, -1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("proj_fspecial"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.25);

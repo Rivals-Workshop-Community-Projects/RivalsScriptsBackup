@@ -56,6 +56,13 @@ if attack == AT_FSPECIAL {
     }
 }
 
+if (attack == AT_NSPECIAL) {
+    if (window == 1 && window_timer == window_length) {
+        present_should_exist = true;
+    }
+}
+
+
 if attack == AT_TAUNT {
     if window == 1 && window_timer == 1 {
         sound_play(sfx_padoru_short);

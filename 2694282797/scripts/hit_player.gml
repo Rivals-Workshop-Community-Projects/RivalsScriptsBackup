@@ -8,6 +8,7 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID
         var explodebox = create_hitbox(AT_NSPECIAL,2,my_hitboxID.x,my_hitboxID.y);
         explodebox.player = my_hitboxID.player;
         my_hitboxID.destroyed = true;
+        present_should_exist = false;
     }
 }
 
@@ -175,8 +176,15 @@ switch(my_hitboxID.attack){
     case AT_DSPECIAL:
         sound_play(sfx_spiral_hitsoft,false,noone,0.35,1.1);
         sound_play(sfx_spiral_snowball,false,noone,0.45,1.1);
-        var jj = spawn_hit_fx((hit_player_obj.x + my_hitboxID.x)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_X_OFFSET)*spr_dir,(hit_player_obj.y + my_hitboxID.y)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_Y_OFFSET) - 25, 
-        hfx_small);
+        if (my_hitboxID.hbox_num == 1) {
+            var jj = spawn_hit_fx((hit_player_obj.x + my_hitboxID.x)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_X_OFFSET)*spr_dir,(hit_player_obj.y + my_hitboxID.y)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_Y_OFFSET) - 25, 
+            hfx_small);
+        } else {
+            var jj = spawn_hit_fx((hit_player_obj.x + my_hitboxID.x)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_X_OFFSET)*spr_dir,(hit_player_obj.y + my_hitboxID.y)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_Y_OFFSET) - 25, 
+            hfx_medium);
+        }
+        //var jj = spawn_hit_fx((hit_player_obj.x + my_hitboxID.x)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_X_OFFSET)*spr_dir,(hit_player_obj.y + my_hitboxID.y)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_Y_OFFSET) - 25, 
+        //hfx_small);
         jj.depth = depth +1
         break;
     case AT_DSPECIAL_AIR:

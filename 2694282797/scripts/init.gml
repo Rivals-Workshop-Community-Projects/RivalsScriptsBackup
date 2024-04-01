@@ -46,6 +46,7 @@ sfx_vineboom = sound_get("sfx_vineboom");
 //funny
 holding_present = false;
 present_id = noone;
+present_should_exist = false;
 tree_id = noone;
 
 //other

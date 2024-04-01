@@ -35,6 +35,10 @@ with(obj_article1) { //small correction code cause when the tree projectile land
 }
 if !instance_exists(present_id) {
     present_id = noone;
+    if (present_should_exist) { // means it got destroyed, thus goes into cooldown
+        move_cooldown[AT_NSPECIAL] = 140;
+        present_should_exist = false;
+    }
 }
 
 do_a_glide_toss();

@@ -31,7 +31,9 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
     }
     if (player_id.state == PS_DEAD) or (player_id.state == PS_RESPAWN) or (((x > room_width) or (x < 0) or (y > room_height) or (y < 0)) && !being_held) {
         destroyed = true;
+        player_id.present_should_exist = false;
     }
+    
 }
 
 if attack == AT_DSPECIAL && hbox_num == 2 { 
@@ -75,3 +77,5 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
         spawn_hit_fx(x,y,301)
     }
 }
+
+
