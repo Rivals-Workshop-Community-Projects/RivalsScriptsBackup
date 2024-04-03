@@ -34,13 +34,17 @@ else{
     spr_angle = 0;
 }
 
-//var vict = sound_get("TAKWIN");
+if state == PS_HITSTUN && hurt_img == 4 && !hitpause && jestermode == true{
+    draw_x = 0;
+    draw_y = 0;
+	sprite_index = sprite_get("jestermodeuphurt");
+	image_index = state_timer/3
+}
 
-if (get_player_color(player) == 16){
+if (get_player_color(player) == 15){
         set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("fart_old"));
-    //    set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("fart_old"));
         set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("fart_old"));
-//        set_victory_theme(vict);
+        set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
 }
 
 //parry code
