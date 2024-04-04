@@ -819,6 +819,57 @@ set_color_profile_slot( 18, 5, 134, 228, 230 ); //kimono wave
 set_color_profile_slot( 18, 6, 127, 148, 217 ); //kimono bottom
 set_color_profile_slot( 18, 7, 255, 234, 115 ); //kimono accents
 
+// Daora the Explora
+set_color_profile_slot( 19, 0, 255, 173, 153 ); //fur
+set_color_profile_slot( 19, 1, 255, 179, 153 ); //fur tip
+set_color_profile_slot( 19, 2, 105, 71, 49 ); //hair
+set_color_profile_slot( 19, 3, 153, 106, 72 ); //horns + accents
+set_color_profile_slot( 19, 4, 255, 145, 200 ); //kimono top
+set_color_profile_slot( 19, 5, 230, 230, 230 ); //kimono wave
+set_color_profile_slot( 19, 6, 255, 149, 0 ); //kimono bottom
+set_color_profile_slot( 19, 7, 195, 128, 255 ); //kimono accents
+
+// Whisper
+set_color_profile_slot( 20, 0, 219, 187, 81 ); //fur
+set_color_profile_slot( 20, 1, 161, 112, 87 ); //fur tip
+set_color_profile_slot( 20, 2, 242, 242, 242 ); //hair
+set_color_profile_slot( 20, 3, 41, 230, 223 ); //horns + accents
+set_color_profile_slot( 20, 4, 212, 204, 157 ); //kimono top
+set_color_profile_slot( 20, 5, 87, 87, 87 ); //kimono wave
+set_color_profile_slot( 20, 6, 87, 87, 87 ); //kimono bottom
+set_color_profile_slot( 20, 7, 41, 230, 223 ); //kimono accents
+
+// Flower Of Iron
+set_color_profile_slot( 21, 0, 112, 0, 0 ); //fur
+set_color_profile_slot( 21, 1, 105, 64, 29 ); //fur tip
+set_color_profile_slot( 21, 2, 77, 41, 0 ); //hair
+set_color_profile_slot( 21, 3, 145, 109, 0 ); //horns + accents
+set_color_profile_slot( 21, 4, 128, 0, 0 ); //kimono top
+set_color_profile_slot( 21, 5, 204, 178, 0 ); //kimono wave
+set_color_profile_slot( 21, 6, 82, 0, 0 ); //kimono bottom
+set_color_profile_slot( 21, 7, 255, 94, 0 ); //kimono accents
+
+// Broken Moon (Suika)
+set_color_profile_slot( 22, 0, 176, 30, 30 ); //fur
+set_color_profile_slot( 22, 1, 201, 96, 117 ); //fur tip
+set_color_profile_slot( 22, 2, 255, 152, 48 ); //hair
+set_color_profile_slot( 22, 3, 227, 193, 39 ); //horns + accents
+set_color_profile_slot( 22, 4, 240, 240, 240 ); //kimono top
+set_color_profile_slot( 22, 5, 252, 30, 38 ); //kimono wave
+set_color_profile_slot( 22, 6, 58, 24, 161 ); //kimono bottom
+set_color_profile_slot( 22, 7, 212, 38, 38 ); //kimono accents
+
+// Incredible Strength
+set_color_profile_slot( 23, 0, 95, 198, 129 ); //fur
+set_color_profile_slot( 23, 1, 221, 222, 188 ); //fur tip
+set_color_profile_slot( 23, 2, 48, 100, 65 ); //hair
+set_color_profile_slot( 23, 3, 196, 99, 203 ); //horns + accents
+set_color_profile_slot( 23, 4, 146, 236, 149 ); //kimono top
+set_color_profile_slot( 23, 5, 41, 36, 81 ); //kimono wave
+set_color_profile_slot( 23, 6, 58, 176, 87 ); //kimono bottom
+set_color_profile_slot( 23, 7, 136, 44, 176 ); //kimono accents
+
+
 //#endregion
     }
     

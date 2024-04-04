@@ -26,6 +26,14 @@ if (custom_clone) {
 	}
 	hurtboxID.x = x;
 	hurtboxID.y = y;
+	if (current_month == 4 && current_day == 1 && !clone_owner.clone_attack_hold) { //April Fools day only
+		if (state == PS_IDLE_AIR && !is_oc && state_timer >= fspecial_once_cooldown * 2) {
+			sprite_index = sprite_get("old_idle");
+			image_index = ((state_timer * idle_anim_speed) % 8);
+			//sprite_change_offset("old_idle", 162, 192 + (state_timer - fspecial_once_cooldown * 2));
+			//y -= state_timer;
+		}	
+	}
 } else {
 	if (instance_exists(leak_proj) && is_oc) {
 		switch(state) {

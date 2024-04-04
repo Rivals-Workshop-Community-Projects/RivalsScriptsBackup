@@ -39,7 +39,7 @@ switch(state)
         
         with (pHurtBox)
         {
-            if (self != other.player_id)
+            if (self != other.player_id.hurtboxID)
             {
                 if (collision_circle(other.x,other.y,20,self,false,false)) //(place_meeting(x,y,other))
                 {

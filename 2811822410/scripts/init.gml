@@ -42,7 +42,11 @@ if (is_oc) {
 		set_victory_theme( sound_get( "old_victory" ));
 	}
 } else {
+	if (current_month == 4 && current_day == 1) {
+		set_victory_theme( sound_get( "victory2" )); //Just for april fools day
+	} else {
 		set_victory_theme( sound_get( "victory" ));
+	}
 	//pot_compat_variable = sprite_get("food");
 	//pot_compat_text = "X";
 }
@@ -62,7 +66,11 @@ fspecial_reset = 0; //Clone Throw Rune
 //Fspecial Speed - Note that ground will be higher than air due to friction
 fspecial_speed_air = 8;
 fspecial_speed_ground = 12;
-fspecial_once_cooldown = 3600;
+if (current_month == 4 && current_day == 1) { //April Fools day only
+	fspecial_once_cooldown = 30;
+} else {
+	fspecial_once_cooldown = 3600;
+}
 //Uspecial turnaround on hit
 uspecial_dir = -4;
 uspecial_can_turn = false;

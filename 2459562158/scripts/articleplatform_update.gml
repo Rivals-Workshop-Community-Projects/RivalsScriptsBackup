@@ -92,7 +92,7 @@ with(oPlayer)
            }
        }
         
-        if ((url == nitori_url) and ((down_down) or (!free))) or (state == PS_AIR_DODGE) or (state == PS_RESPAWN) or (invincible)
+        if ((url == nitori_url) and ((down_down) or (!free))) or (state == PS_AIR_DODGE) or (state == PS_RESPAWN) or (initial_invince)
         {
             
         }

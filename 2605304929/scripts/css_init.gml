@@ -799,10 +799,34 @@ return chunk_arr;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Astra";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Wishdream";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The stars guided me home many nights when I lost my way.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Charactrer by Wishdream";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "The Explorer";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Watt";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Whisper";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Anvil";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Flower of Iron";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Suss";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Broken Moon";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for Renecup";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Incredi. Stength";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for MGAM";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
 		num_of_shifted_alts = color_slot - 96;
 		
