@@ -1,5 +1,5 @@
 //post_draw
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	with (obj_article1) if (orig_player == other.player)
 	{

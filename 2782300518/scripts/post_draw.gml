@@ -144,7 +144,27 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
-        patch_note_title[i] = "2.6"
+        patch_note_title[i] = "2.9"
+        patch_note_text[i++] =  
+
+"Fixed the walk sprite on bike being the wrong eye colours.
+
+Added Wily Castle compatibility
+
+Added Dialogue Buddy interaction with Ruby Rose by Nintenbro.
+
+Added Neutralizing Gas compatibility. With the buddy equpped, Carol will be unable to use her bike."
+
+        patch_note_title[i] = "2.8"
+        patch_note_text[i++] =  
+
+"Added Dream Nail compatibility
+
+Added special quote on the character select screen if left idle with voice on for an extended period of time.
+
+Carol can now sit on the bench in Shenlin Park by ATalksToSelf. Up taunt while not riding the bike next to the bench to do so."
+
+        patch_note_title[i] = "2.7"
         patch_note_text[i++] =  
 
 "Fair speed 8->7
@@ -329,79 +349,6 @@ In light of the revamped moveset added two new Abyss Runes to replace the now re
 
 Changed the size of the portrait and Char select so that the lines are proper and so that she's the same height as Lilac on the win screen."
 
-        patch_note_title[i] = "1.72"
-        patch_note_text[i++] = 
-		"If this patch doesn't fix all the issues that occur from wall riding and getting hit I don't know what will. Added an extra variable to prevent Carol from flying off into space when getting hit.
-		
-		Made a small tweak to Wild Kick so that super armour is applied during startup and in the move itself, but not endlag. This move will be reworked in 2.0 to be a move that you hold down the button instead of shield cancelling.
-		
-		Added Dracula compatibility"
-
-        patch_note_title[i] = "1.71"
-        patch_note_text[i++] = 
-		"Quick bug fix so that the CSS works correctly"
-
-        patch_note_title[i] = "1.70"
-        patch_note_text[i++] = 
-		"These changes were intended for V2 but I brought them forward a bit to improve overall gamefeel.
-
-		Jab, Ftilt, Utilt and Dtilt all now have hitboxes that last 3 frames, also on bike too.
-
-		Startup for all these moves is now 4 frames. However on bike, Utilt and Dtilt are still 6 frames.
-		
-		Endlag has increased slightly from 17 to 20 and the cancel windows have all been moved 3 frames back.
-		
-		It is now easier to cancel Jabs and tilts on hit and they no longer require precise timing to do so.
-		
-		The first hit of all of these are untechable, normally these would have Force Flinch on first hit but due to the way the combo system works I can't really do that.
-		
-		FStrong is 3 frames shorter but is a bit faster to make up for it.
-		
-		NSpecial Endlag 27 -> 14.
-		
-		Dash Attack is back to no longer halting your speed on hit, you still lose all speed when parried however.
-		
-		Dash Attack can also be cancelled on hit at any time, not just in endlag.
-		
-		Reduced the height gained by Dair as it was overtuned, also upward vertical momentum as well as horizonal momentum is killed during startup
-		
-		Dair has been nerfed from 7/.4 Knockback to 5/.3 and has a hitstun multplier of 0.5.
-		
-		Dair cancels have been improved to be more responsive but you can only jump cancel after the hitbox comes out. In fact, you can only cancel in general after the hitbox comes out.
-
-		Dair has a more distinctive startup pose to make it different from Nair (will probably make a new pose entirely for 2.0)
-		
-		Bike Nair Endlag reduced from 10 to 7 frames.
-		
-		Bair Endlag reduced from 15 frames to 7 frames.
-		
-		Bike Bair Endlag reduced from 17 to 12 frames.
-		
-		Both Uairs Endlag reduced from 17 to 10 and 9 frames respectively.
-		
-		Fair Startup 15 -> 10
-		
-		Fair Endlag reduced to 9 Endlag.
-		
-		Revamped Nair2 hitbox, now split into 5 that each linger for 2 frames but are all the same angle, which is now 65, no Angle Flippers anymore.
-		
-		FSpecial2 can only be jump cancelled after the hitbox comes out.
-		
-		Corrected the properites of the bike double jump hitbox so that it now behaves like Lilac's Cyclone
-		
-		Fixed bugs regarding hurt sprite during crystalisation doubling Carol's height.
-		
-		Fixed bug regarding the CSS loading.
-		"		
-		
-        patch_note_title[i] = "1.69"
-        patch_note_text[i++] = 
-		"Increased the vertical height gained on Dair after hit, to give Carol an easier time to get to higher platforms.
-		
-		Added a flag that changes the assist attack index so that it doesn't interfere with Carol's on bike moveset.
-		
-		Implemented Hyuponia's Changelog Template so that you can view patchnotes in playtest."
-		
 		
 		//these are optional things that you can change if you'd like, but probably best to keep as-is
         pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.

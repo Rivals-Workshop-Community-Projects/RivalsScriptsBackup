@@ -48,5 +48,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, note_strong_hfx);
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Adds drumbeat note");
 
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);

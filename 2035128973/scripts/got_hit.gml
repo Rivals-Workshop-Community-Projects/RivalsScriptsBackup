@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	orig_knock *= 0.8;
 	var damage_takenn = get_player_damage(player) - counter_dmg;

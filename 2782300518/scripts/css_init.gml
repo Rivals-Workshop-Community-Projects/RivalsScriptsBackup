@@ -11,6 +11,7 @@ voicebutton = get_synced_var(player) * 3;
 voicebuttoncurrent = get_synced_var(player) *3;
 cssframes = 0;
 css_timer = 0;
+voice_timer = 0;
 drawing = 0;
 drawtime = 0;
 alttime = 0;

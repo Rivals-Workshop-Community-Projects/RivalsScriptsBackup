@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 set_attack_value(AT_FSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL_2, AG_NUM_WINDOWS, 9);

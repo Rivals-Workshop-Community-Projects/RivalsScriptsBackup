@@ -1,4 +1,4 @@
-if ("player" in self && get_synced_var(player))
+if ("player" in self && get_synced_var(player) == 15005)
 {
 	sprite_change_offset("idleAcc", 39, 49);
 	sprite_change_offset("hurtAcc", 39, 49);

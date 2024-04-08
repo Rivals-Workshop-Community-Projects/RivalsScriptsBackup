@@ -2,7 +2,7 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
 
@@ -51,6 +51,7 @@ set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, note_hfx);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Adds shake note");
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);

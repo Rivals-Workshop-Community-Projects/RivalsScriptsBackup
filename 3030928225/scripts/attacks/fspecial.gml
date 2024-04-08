@@ -155,6 +155,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[0]);
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 
 
 //set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, fspecial_lockout_time);

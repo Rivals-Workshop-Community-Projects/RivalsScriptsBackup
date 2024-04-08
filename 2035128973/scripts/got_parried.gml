@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 
 asCharge = 0;
 

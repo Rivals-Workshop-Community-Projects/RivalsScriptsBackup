@@ -6,6 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC, "Melee hit can become active as soon as frame 18.");
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
@@ -46,7 +47,7 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 
-set_num_hitboxes(AT_NSPECIAL, 4);
+set_num_hitboxes(AT_NSPECIAL, 5);
 
 //physical hit
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
@@ -65,6 +66,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_ACTIVE, "18-")
 
 //purple
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -88,6 +90,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, purple_nspec_vfx);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Rimshot / Purple");
 
 //green multihit
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -109,6 +112,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Shake / Green Multihit");
 
 //green finisher
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -130,6 +134,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Shake / Green Finisher");
 
 //red
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -152,3 +157,4 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_NSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Drumbeat / Red");

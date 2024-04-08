@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongAcc"));
 	set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 3);

@@ -103,9 +103,14 @@ if (motorbike == true)
 		attack = AT_TAUNT_2;
 	}
 }
-else if (attack == AT_TAUNT && down_down) 
+else if (attack == AT_TAUNT)
 {
-	//if (move_cooldown[AT_EXTRA_3] > 0) exit;
-	//if (prev_prev_state == PS_RESPAWN) exit;
-	attack = AT_EXTRA_3;
+	if (up_down && get_stage_data(SD_ID) == "3104498030" && (x >= 390 && x <= 460) && y == 416)
+	{
+		attack = 45;
+	}	
+	if (down_down)
+	{
+		attack = AT_EXTRA_3;
+	}
 }

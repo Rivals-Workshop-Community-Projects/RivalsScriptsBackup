@@ -13,8 +13,6 @@ introTimer = -4;
 introTimer2 = 0;
 
 caleb = 0;
-machina = 0;
-lcie = 0;
 gaming = 0;
 bloodborne = 0;
 switcher = 0;

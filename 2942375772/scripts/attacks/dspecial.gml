@@ -5,6 +5,7 @@ set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "Tamb-poline is spawned on frame 8.");
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 6);
@@ -48,6 +49,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, note_hfx);
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, -1);
@@ -73,3 +75,4 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, note_strong_hfx);
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Tamb-poline Explosion");

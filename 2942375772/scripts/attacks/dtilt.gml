@@ -3,6 +3,7 @@ set_attack_value(AT_DTILT, AG_CATEGORY, 2);
 set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 set_attack_value(AT_DTILT, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(AT_DTILT, AG_MUNO_ATTACK_ENDLAG, "12 (18)");
 
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
@@ -58,3 +59,4 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DTILT, 1, HG_MUNO_HITBOX_MISC_ADD, "Adds rimshot note");

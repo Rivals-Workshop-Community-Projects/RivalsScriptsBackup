@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 switch (attack)
 {
 	case AT_DSPECIAL:

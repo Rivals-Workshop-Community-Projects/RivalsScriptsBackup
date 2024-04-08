@@ -54,6 +54,7 @@ set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Adds rimshot note");
 
 
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -71,5 +72,6 @@ set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .55);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_MISC_ADD, "Adds shake note");
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

@@ -68,12 +68,12 @@ if ("voicebutton" in self)
 			switch (voicebutton)
 			{
 				case 2:
-					sound_play(asset_get("mfx_forward"));
+					sound_play(asset_get("mfx_option"));
 					set_synced_var(player, 1);
 					sound_play(sound_get("intro"));
 				break;
 				case 5:
-				sound_play(asset_get("mfx_forward"));
+				sound_play(asset_get("mfx_option"));
 					set_synced_var(player, 0);
 				break;
 			}
@@ -90,6 +90,7 @@ if ("voicebutton" in self)
 	        }
 	        voicebuttoncurrent = voicebutton;
 	    }
+	    voice_timer = 0;
 	}
 	
 	if (get_instance_x(cursor_id) >= voice_button_position_x && get_instance_x(cursor_id) <= voice_button_position_x + 30 
@@ -124,6 +125,19 @@ if ("voicebutton" in self)
 	{
 		suppress_cursor = false
 	}
+}
+
+if ("voice_timer" in self)
+{
+	if (voice_timer == 2000)
+	{
+		var current_voice = get_synced_var(player);
+		if (current_voice = 1)
+		{
+			sound_play(sound_get("five_minutes"));
+		}
+	}
+	voice_timer++;
 }
 
 #define cpu_hover_update()

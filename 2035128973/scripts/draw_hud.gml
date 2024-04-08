@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 if ("rollArray" in self)
 {
 	if (killCard.timer > 0 && killCard.attackPlayer != -4 && killCard.deadPlayer != -4)
@@ -356,6 +356,11 @@ if ("rollArray" in self)
 						AddText("Input Delay: Lukaru, Karu");
 						AddText("Surprising!: Night");
 						AddText("Aurora: Aurora, Auro<3");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.4.1 - 6 Apr 2024");
+						AddText("");
+						AddText("Removed the ability to select 100% mode online");
 						break;
 				}
 				DrawTutorialBlock();

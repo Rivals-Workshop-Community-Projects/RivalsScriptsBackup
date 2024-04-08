@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 	

@@ -8,7 +8,7 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("claw4"));
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);

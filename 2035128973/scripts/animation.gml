@@ -1,4 +1,4 @@
-if (get_synced_var(player)) AccurateSprites();
+if (get_synced_var(player) == 15005) AccurateSprites();
 else
 {
 	if (!hasBone) BoneSprites();

@@ -223,7 +223,7 @@ if (pistols == 1){
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 18);
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
-	//set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 38);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 38);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 155);
@@ -232,7 +232,7 @@ if (pistols == 1){
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 20);
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 0);
-	//set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	
 	//FORWARD AIR ROCK
@@ -343,14 +343,14 @@ if (ice == 1){
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
-	//set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-	//set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 35);
 	
 	//FORWARD AIR ICE
@@ -449,19 +449,19 @@ if thunder == 1{
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 130);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.6);
+	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
-	//set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 11);
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 127);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 20);
-	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.0);
+	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 9);
-	//set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 40);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 40);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 35);
 	
 	//FORWARD AIR PLASMA
@@ -516,7 +516,7 @@ if fire == 1{
 	
 	set_num_hitboxes(AT_NSPECIAL, 6);
 	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 12);
@@ -531,7 +531,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bulletF"));
 	
-	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 16);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 20);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, -1);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 1);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 3);
@@ -539,7 +539,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .5);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bulletF"));
 	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 13);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 15);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 2);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 1);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 3);
@@ -580,7 +580,7 @@ if fire == 1{
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
-	//set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 3);
@@ -590,7 +590,7 @@ if fire == 1{
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 38);
-	//set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
+	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 16);
 	
 	//FORWARD AIR FIRE
@@ -644,7 +644,7 @@ if genesis == 1{
 	}
 }
 
-if (taunt_pressed) && switcher == 1{
+if (taunt_pressed){
 	if down_down && (element_change == 5){
 	fire = 0
 	ice = 0
@@ -725,14 +725,6 @@ if (attack == 49){
 //if get_player_color(player) == 2{
 	//set_victory_theme(sound_get("caleb_victory"));
 //}
-
-//SERVANT OF THE CRYSTAL
-
-if get_gameplay_time() <= 120 && switcher == 0 and shield_pressed{
-	switcher = 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
-	//sound_play(sound_get("machina_intro"));
-}
 
 //if get_player_color(player) == 12{
 	//set_victory_theme(sound_get("machina_victory"));

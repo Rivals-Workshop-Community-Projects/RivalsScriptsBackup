@@ -499,7 +499,21 @@ if (motorbike == false)
 				bike = instance_create(x, y, "obj_article2");
 			}
 		break;
-			
+		case 45:
+	    	x = lerp(x, 430, 0.5);
+			if (window == 1 && window_timer == 1)
+			{
+				spr_dir = 1;
+			}
+			if (window == 2) 
+			{
+				if (jump_pressed || attack_pressed || shield_pressed || taunt_pressed) 
+				{
+					window = 3	
+					window_timer = 0;
+				}
+			}
+		break;
 		default:
 		break;
 	}

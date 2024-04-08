@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 // states
 #macro AS_NEUTRAL 0
 #macro AS_ADVANTAGE 1

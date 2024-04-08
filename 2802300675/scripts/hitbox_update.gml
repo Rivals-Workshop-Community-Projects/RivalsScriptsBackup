@@ -74,7 +74,7 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_USPECIAL){
-        if(hitbox_timer == 38 && free){
+        if(hitbox_timer == 20 && free){
             if(hit_priority == 4){
             sound_play(asset_get("sfx_absa_cloud_place"));
             player_id.smog_cloud = instance_create(x, y-8, ("obj_article1"));

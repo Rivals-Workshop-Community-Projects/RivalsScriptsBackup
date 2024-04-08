@@ -21,7 +21,7 @@ set_color_profile_slot_range(7, 1, 1, 1);
 set_num_palettes(32);
 
 //Yellow Scarf
-set_color_profile_slot(1, 0, 64, 124, 48);
+set_color_profile_slot(1, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(1, 1, 37, 37, 37);
 set_color_profile_slot(1, 2, 216, 184, 0);
 set_color_profile_slot(1, 3, 248, 252, 0);
@@ -31,7 +31,7 @@ set_color_profile_slot(1, 6, 33, 87, 18);
 set_color_profile_slot(1, 7, 248, 252, 6);
 
 //Pink Scarf
-set_color_profile_slot(2, 0, 64, 124, 48);
+set_color_profile_slot(2, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(2, 1, 37, 37, 37);
 set_color_profile_slot(2, 2, 216, 184, 0);
 set_color_profile_slot(2, 3, 248, 100, 248);
@@ -41,7 +41,7 @@ set_color_profile_slot(2, 6, 33, 87, 18);
 set_color_profile_slot(2, 7, 248, 252, 6);
 
 //Blue Scarf
-set_color_profile_slot(3, 0, 64, 124, 48);
+set_color_profile_slot(3, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(3, 1, 37, 37, 37);
 set_color_profile_slot(3, 2, 216, 184, 0);
 set_color_profile_slot(3, 3, 98, 116, 248);
@@ -51,7 +51,7 @@ set_color_profile_slot(3, 6, 33, 87, 18);
 set_color_profile_slot(3, 7, 248, 252, 6);
 
 //White Scarf
-set_color_profile_slot(4, 0, 64, 124, 48);
+set_color_profile_slot(4, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(4, 1, 37, 37, 37);
 set_color_profile_slot(4, 2, 216, 184, 0);
 set_color_profile_slot(4, 3, 232, 232, 232);
@@ -61,7 +61,7 @@ set_color_profile_slot(4, 6, 33, 87, 18);
 set_color_profile_slot(4, 7, 248, 252, 6);
 
 //Corazon
-set_color_profile_slot(5, 0, 64, 124, 48);
+set_color_profile_slot(5, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(5, 1, 37, 37, 37);
 set_color_profile_slot(5, 2, 216, 184, 0);
 set_color_profile_slot(5, 3, 125, 0, 0);
@@ -201,13 +201,13 @@ set_color_profile_slot(18, 6, 255, 162, 29 );
 set_color_profile_slot(18, 7, 248, 252, 6);
 
 //Litten
-set_color_profile_slot(19, 0, 30, 30, 30);
-set_color_profile_slot(19, 1, 155, 155, 255);
-set_color_profile_slot(19, 2, 30, 30, 30);
-set_color_profile_slot(19, 3, 30, 30, 30);
-set_color_profile_slot(19, 4, 255, 0, 0);
-set_color_profile_slot(19, 5, 255, 255, 0);
-set_color_profile_slot(19, 6, 30, 30, 30);
+set_color_profile_slot(19, 0, 30, 30, 30); //Stripes
+set_color_profile_slot(19, 1, 178, 168, 168);
+set_color_profile_slot(19, 2, 47, 47, 51);
+set_color_profile_slot(19, 3, 47, 47, 51);
+set_color_profile_slot(19, 4, 204, 42, 42);
+set_color_profile_slot(19, 5, 244, 216, 5);
+set_color_profile_slot(19, 6, 47, 47, 51);
 set_color_profile_slot(19, 7, 248, 252, 6);
 
 //Sprigatito

@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 	set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uairAcc"));

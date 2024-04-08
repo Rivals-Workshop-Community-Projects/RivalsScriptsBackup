@@ -5,6 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC, "Falling portion of the move can be airdodge / jump cancelled 36 frames after startup.");
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);

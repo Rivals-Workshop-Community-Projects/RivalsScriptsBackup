@@ -297,6 +297,17 @@ wiimote_compat_sprite = sprite_get("carol_wiimote");
 assistATIndex = 29; //46 is a bike move, changing this so that Carol can use her moveset
 boris_intro_sfx = sound_get("carol_grounded");
 boris_intro_loop = 14;
+wily_robotmaster_img = sprite_get("wily_castle_sprite"); 
+wily_flicker_col = /*#*/$b838a0;
+neutralized_ability = "Bike"
+koffing_gas_active = 0;
+
+knight_compat_dream = 
+    [
+        "And so the world famous Carol Tea claims yet another prize!",
+        "Ugh this stupid insect is really bugging me",
+        "Maybe if I get myself a new engine for my bike I can outspeed Lilac!"
+    ]
 
 dracula_portrait = sprite_get("dracula_port1");
 dracula_portrait2 = sprite_get("dracula_port2");

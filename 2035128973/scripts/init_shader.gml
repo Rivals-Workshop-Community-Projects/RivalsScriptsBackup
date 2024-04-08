@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
     if (object_index == asset_get("draw_result_screen") && get_synced_var(player)) winner_name = "100% Accurate Lucario Win!";
 }

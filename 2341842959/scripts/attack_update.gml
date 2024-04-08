@@ -421,11 +421,11 @@ if (attack == AT_NSPECIAL){
 
 
 //Cloud Detonate
-if (attack == AT_DSPECIAL && window == 1){
+if (attack == AT_DSPECIAL && window == 2){
     if (window_timer == 1){
        explosion_cont = 0; 
     }
-    if (window_timer == 5){
+    if (window_timer == 1){
        spawn_hit_fx(x, y, claw_effect); 
     }
 }

@@ -81,7 +81,7 @@ set_num_hitboxes(AT_FSPECIAL, 5);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, has_rune("L")? 3:6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, has_rune("L")? 3:8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 45);
@@ -96,7 +96,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, has_rune("L")? 3:6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, has_rune("L")? 3:8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 60);
@@ -111,7 +111,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 4);
-set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, has_rune("L")? 3:6);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, has_rune("L")? 3:8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 6);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 70);
@@ -126,7 +126,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 5);
-set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, has_rune("L")? 3:6);
+set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, has_rune("L")? 3:8);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_X, 5);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WIDTH, 60);
@@ -141,7 +141,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 6);
-set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, has_rune("L")? 3:6);
+set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, has_rune("L")? 3:8);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_X, -2);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WIDTH, 40);

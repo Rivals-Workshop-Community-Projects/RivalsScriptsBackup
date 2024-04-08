@@ -176,3 +176,30 @@ greenwood_cheer = 2;
 //TAS alt
 hue_offset = 0;
 hue_speed = 0.5; //change this to change the speed of the hueshift
+
+//woodcock support indices
+i = 80;
+
+AG_MUNO_ATTACK_NAME = 70;
+AG_MUNO_ATTACK_MISC = 71;		        // Enter a string for info
+
+AG_MUNO_ATTACK_ENDLAG = 72;
+AG_MUNO_WINDOW_EXCLUDE = 73;
+AG_MUNO_ATTACK_FAF = 74;
+
+HG_MUNO_HITBOX_EXCLUDE = i; i++;		// Set to 1 to exclude this hitbox from the frame data guide
+HG_MUNO_HITBOX_NAME = i; i++;			// Enter a string to override hitbox name
+
+HG_MUNO_HITBOX_ACTIVE = i; i++;			// Enter a string to override active frames
+HG_MUNO_HITBOX_DAMAGE = i; i++;			// Enter a string to override damage
+HG_MUNO_HITBOX_BKB = i; i++;			// Enter a string to override base knockback
+HG_MUNO_HITBOX_KBG = i; i++;			// Enter a string to override knockback growth
+HG_MUNO_HITBOX_ANGLE = i; i++;			// Enter a string to override angle
+HG_MUNO_HITBOX_PRIORITY = i; i++;		// Enter a string to override priority
+HG_MUNO_HITBOX_GROUP = i; i++;			// Enter a string to override group
+HG_MUNO_HITBOX_BHP = i; i++;			// Enter a string to override base hitpause
+HG_MUNO_HITBOX_HPG = i; i++;			// Enter a string to override hitpause scaling
+HG_MUNO_HITBOX_MISC = i; i++;			// Enter a string to override the auto-generated misc notes (which include misc properties like angle flipper or elemental effect)
+HG_MUNO_HITBOX_MISC_ADD = i; i++;		// Enter a string to ADD TO the auto-generated misc notes, not override (line break will be auto-inserted)
+
+set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "Taunt 3");

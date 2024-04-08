@@ -264,7 +264,6 @@ switch (attack)
 				{
 					multihome_targets_temp = [];
 					next_multihome_target = 0;
-
 				}
 				break;
 			case 4: case 5: case 6: //maybe should put sonic in_pratfall?
@@ -288,8 +287,11 @@ switch (attack)
 			case 7: //homing attack
 				if (!hitpause) //movement
 				{
-					var dir = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
-					homing_values[1] += sin(degtorad(dir - homing_values[1])) * 20;
+					if (!has_multihome_rune)
+					{
+						var dir = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
+						homing_values[1] += sin(degtorad(dir - homing_values[1])) * 20;
+					}
 					hsp = lengthdir_x(homing_values[0], homing_values[1]);
 					vsp = lengthdir_y(homing_values[0], homing_values[1]);
 				}

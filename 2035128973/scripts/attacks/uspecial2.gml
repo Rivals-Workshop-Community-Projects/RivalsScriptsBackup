@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 set_attack_value(AT_USPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecial_boneless"));
 set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 4);

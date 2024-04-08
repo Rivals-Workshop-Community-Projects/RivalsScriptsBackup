@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	hurtbox_spr = asset_get("ex_guy_hurt_box");
 	crouchbox_spr = asset_get("ex_guy_crouch_box");

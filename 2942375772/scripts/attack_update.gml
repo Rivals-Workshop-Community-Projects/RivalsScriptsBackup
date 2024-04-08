@@ -233,6 +233,7 @@ switch (attack)
     break;
     case AT_DTILT:
     can_move = false;
+
         switch (window)
         {
             case 2:
@@ -242,10 +243,11 @@ switch (attack)
                 {
                     window = 4;
                     window_timer = 0;
+                    destroy_hitboxes();
                 }
             break;
             case 3:
-                if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 and !hitpause)
+                if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) and !hitpause)
                 {
                     attack_end()
                     set_state(was_parried ? PS_PRATLAND : PS_IDLE);

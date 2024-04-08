@@ -88,15 +88,18 @@ if attack == AT_USPECIAL {
             case 0:
                 fspecial_distance = -18
                 reset_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE);
+                reset_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE);
                 vfx = note_trail_purple
             break;
             case 1:
                 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 10);
+                set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 6);
             break;
             case 2:
                 fspecial_distance = -20
                 vfx = note_trail_orange
                 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 12);
+                set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 7);
             break;
         }
         
@@ -110,6 +113,7 @@ if attack == AT_USPECIAL {
     }
     else {
         reset_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE);
+        reset_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE);
     }
     
     note_pointer = -1;

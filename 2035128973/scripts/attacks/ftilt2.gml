@@ -1,4 +1,4 @@
-if (get_synced_var(player)) exit;
+if (get_synced_var(player) == 15005) exit;
 set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get("ftilt_boneless"));
 set_attack_value(AT_FTHROW, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("ftilt_boneless_hurt"));

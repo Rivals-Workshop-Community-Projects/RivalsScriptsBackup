@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	sprite_change_offset("hudAcc", 0, -2);
 	sprite_change_offset("hurtHudAcc", 0, -2);

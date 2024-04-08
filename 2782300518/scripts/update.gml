@@ -109,6 +109,11 @@ if (motorbike == false)
 	//Bike doesn't have idle fidget, this gives the fidget back
 	wait_time = 400;
 	
+	if (koffing_gas_active == 1)
+	{
+		move_cooldown[AT_DSPECIAL] = 5;
+	}
+	
 	if (fuel < 40 && !bike_stored && !instance_exists(bike))
 	{
 		move_cooldown[AT_DSPECIAL] = 2;
@@ -764,113 +769,98 @@ if (dodgeTaunt == true)
 	}
 }
 
-with (oPlayer) 
-{
 	//Custon Galaxy Effect
-	if (player != other.player && activated_kill_effect && last_player == other.player && state_timer == 0)
+with (oPlayer) 	if (player != other.player && activated_kill_effect && last_player == other.player && state_timer == 0)
+{
+	with (other)
 	{
-		with (other)
+		switch (attack)
 		{
-			switch (attack)
+			case AT_JAB:
+			case AT_FTILT:
+			case AT_FAIR:
+			case AT_NAIR:
+			case AT_DTILT:
+			case AT_FSTRONG:
+			case AT_FSTRONG_2:
+			case AT_NSPECIAL:
+			case AT_NSPECIAL_2:
+			case AT_FSPECIAL:
+			case AT_FSPECIAL_2:
+			case AT_EXTRA_1:
+			case AT_USPECIAL:
+			case 43:
+			case 44:
+			case AT_DTHROW:
+			case AT_FTHROW:
+			case AT_NTHROW:
+				galaxy_effect_sprite_index = sprite_get("galaxy_right");
+			break;
+			case AT_BAIR:
+			case 39:
+				galaxy_effect_sprite_index = sprite_get("galaxy_left");
+			break;
+			case AT_UTILT:
+			case AT_UAIR:
+			case AT_USTRONG:
+			case AT_USTRONG_2:
+			case AT_USPECIAL:
+			case AT_USPECIAL_2:
+			case AT_DSTRONG:
+			case AT_DSTRONG_2:
+			case 42:
+			case AT_UTHROW:
+				galaxy_effect_sprite_index = sprite_get("galaxy_up");
+			break;
+			case AT_DAIR:
+			case AT_DSPECIAL_AIR:
+			case 40:
+				galaxy_effect_sprite_index = sprite_get("galaxy_down");
+			break;
+			default:
+			break;
+		}
+		if (!instance_exists(galaxy_effect))
+		{
+			var top_left_x = floor(view_get_xview());
+			var top_right_x = floor(view_get_xview()) + floor(view_get_wview());
+			var top_left_y = floor(view_get_yview());
+			if (spr_dir = 1)
 			{
-				case AT_JAB:
-				case AT_FTILT:
-				case AT_FAIR:
-				case AT_NAIR:
-				case AT_DTILT:
-				case AT_FSTRONG:
-				case AT_FSTRONG_2:
-				case AT_NSPECIAL:
-				case AT_NSPECIAL_2:
-				case AT_FSPECIAL:
-				case AT_FSPECIAL_2:
-				case AT_EXTRA_1:
-				case AT_USPECIAL:
-				case 43:
-				case 44:
-				case AT_DTHROW:
-				case AT_FTHROW:
-				case AT_NTHROW:
-					galaxy_effect_sprite_index = sprite_get("galaxy_right");
-				break;
-				case AT_BAIR:
-				case 39:
-					galaxy_effect_sprite_index = sprite_get("galaxy_left");
-				break;
-				case AT_UTILT:
-				case AT_UAIR:
-				case AT_USTRONG:
-				case AT_USTRONG_2:
-				case AT_USPECIAL:
-				case AT_USPECIAL_2:
-				case AT_DSTRONG:
-				case AT_DSTRONG_2:
-				case 42:
-				case AT_UTHROW:
-					galaxy_effect_sprite_index = sprite_get("galaxy_up");
-				break;
-				case AT_DAIR:
-				case AT_DSPECIAL_AIR:
-				case 40:
-					galaxy_effect_sprite_index = sprite_get("galaxy_down");
-				break;
-				default:
-				break;
+				galaxy_effect = instance_create(top_left_x - 52, top_left_y - 100, "obj_article1");
 			}
-			if (!instance_exists(galaxy_effect))
+			else
 			{
-				var top_left_x = floor(view_get_xview());
-				var top_right_x = floor(view_get_xview()) + floor(view_get_wview());
-				var top_left_y = floor(view_get_yview());
-				if (spr_dir = 1)
-				{
-					galaxy_effect = instance_create(top_left_x - 52, top_left_y - 100, "obj_article1");
-				}
-				else
-				{
-					galaxy_effect = instance_create(top_right_x + 52, top_left_y - 100, "obj_article1");
-				}
+				galaxy_effect = instance_create(top_right_x + 52, top_left_y - 100, "obj_article1");
 			}
 		}
 	}
+}
 	//Unique quote if Lilac is KO'd as teammate or if Neera is KO'd
-	if (player != other.player && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) 
+with (oPlayer) if (player != other.player && "teammate_is_lilac" in self && teammate_is_lilac = true)
+{
+	if ((state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) 
 	{
-		switch (url)
+		sound_stop(sound_get ("hold_on_lilac"));
+		sound_play(sound_get ("hold_on_lilac"));
+	}
+}
+with (oPlayer) if ("scary_lady" in self && scary_lady == true && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
+{
+	if (voice == 1)
+	{
+		sound_stop(sound_get ("that_stupid_panda"));
+		sound_play(sound_get ("that_stupid_panda"));
+	}
+}
+with (oPlayer) if ("teammate_is_lilac" in self && "scary_lady" in self && teammate_is_lilac == false && scary_lady == false  && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
+{
+	with (other)
+	{
+		if (voice == 1)
 		{
-			case "2697174282"://Lilac
-			case "1870616155":
-			case "1897152603":
-			case "2972048421":
-				with (other)
-				{
-					if (get_player_team(player) == get_player_team(other.player) && voice == 1)
-					{
-						sound_stop(sound_get ("hold_on_lilac"));
-						sound_play(sound_get ("hold_on_lilac"));
-					}
-				}
-			break;
-			case "2972347375": //Neera
-				with (other)
-				{
-					if (voice == 1)
-					{
-						sound_stop(sound_get ("that_stupid_panda"));
-						sound_play(sound_get ("that_stupid_panda"));
-					}
-				}	 			
-			break;
-			default:
-				with (other)
-				{
-					if (voice == 1)
-					{
-						sound_stop(sound_get ("did_you_see_that"));
-						sound_play(sound_get ("did_you_see_that"));
-					}
-				}
-			break;
+			sound_stop(sound_get ("did_you_see_that"));
+			sound_play(sound_get ("did_you_see_that"));
 		}
 	}
 }
@@ -925,8 +915,6 @@ if (get_match_setting(SET_PRACTICE) == true)
 	practice = true;
 	practice_hud_clearance++;
 }
-
-print_debug(char_height);
 
 //Dracula compat
 user_event(6);
@@ -1068,6 +1056,13 @@ if(variable_instance_exists(id,"diag"))
 	if (otherUrl == "2217843818" && diag != "")
 	{
 		diag = "Something seems kind of sus here!";
+		diag_index = 0;		
+	}
+
+	//Ruby Rose (Context: Lindsay Jones, Ruby's voice actress, also voices Corazon in FP2)
+	if (otherUrl == "3191926359" && diag != "")
+	{
+		diag = "Why do you sound almost exactly like my sister?";
 		diag_index = 0;		
 	}
 	

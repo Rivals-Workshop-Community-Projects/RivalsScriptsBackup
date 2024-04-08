@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	if (state_cat != SC_HITSTUN) counter_dmg = get_player_damage(player);
 	switch (state)

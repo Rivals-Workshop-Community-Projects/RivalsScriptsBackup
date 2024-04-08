@@ -1,4 +1,4 @@
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	hit_player_obj.orig_knock *= 1 + (get_player_damage(player)/200);
 	if (my_hitboxID.attack == AT_USPECIAL) set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);

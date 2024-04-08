@@ -13,7 +13,10 @@ if (state == PS_SPAWN) {
     	sound_play( sound_get("teleport"));
     }
     
-    if taunt_pressed && jestermode == false{
+}
+
+if get_match_setting(SET_PRACTICE){
+    if up_down && taunt_pressed && jestermode == false{
         jestermode = true;
         sound_play(asset_get("mfx_coin"));
     }

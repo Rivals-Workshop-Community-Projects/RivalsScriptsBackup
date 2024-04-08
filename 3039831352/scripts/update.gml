@@ -521,8 +521,10 @@ if (is_attacking)
                         var next_target = multihome_grid[# 0, next_multihome_target];
                         if (!instance_exists(next_target)) exit;
 
+                        var home_speed = floor(point_distance(x, y, next_target.x, next_target.y)/50)
+                        set_window_value(attack, 7, AG_WINDOW_LENGTH, 8 + home_speed);
                         homing_values[0] = point_distance(x, y, next_target.x, next_target.y)/get_window_value(attack, 7, AG_WINDOW_LENGTH);
-                        homing_values[1] = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
+                        homing_values[1] = point_direction(x, y-char_height/1.75, next_target.x, next_target.y-next_target.char_height/1.75);
 
                         //reset hit values if it's the last homing attack in the chair
                         if (next_multihome_target == min(multihome_limit, array_length(multihome_targets_temp))-1)

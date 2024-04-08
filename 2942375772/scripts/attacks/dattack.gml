@@ -5,6 +5,7 @@ set_attack_value(AT_DATTACK, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+set_attack_value(AT_DATTACK, AG_MUNO_ATTACK_MISC, "Initial hit copies the last note you have gained in your staff.");
 
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 12);
@@ -95,3 +96,4 @@ set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_DATTACK, 2, HG_MUNO_HITBOX_MISC_ADD, "Adds rimshot note");

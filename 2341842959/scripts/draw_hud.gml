@@ -13,6 +13,11 @@ shader_end();
 if jestermode == true && state == PS_SPAWN{
     textDraw(temp_x + 100, temp_y - 4, "fName", c_white, 14, 400, 1, true, 1, "Samsara looms, watching its jester.", c_black);
 }
+
+if jestermode == false && (state == PS_SPAWN && get_match_setting(SET_PRACTICE)){
+    textDraw(temp_x + 100, temp_y - 4, "fName", c_white, 14, 400, 1, true, 1, "PRESS TAUNT + UP FOR JESTER MODE", c_black);
+}
+
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string, outline_c)
 
 draw_set_font(asset_get(argument[2]));

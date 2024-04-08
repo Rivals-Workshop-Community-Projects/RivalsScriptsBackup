@@ -93,10 +93,10 @@ switch (my_hitboxID.attack)
             sound_play(sound_get("sfx_tambo_slap1"), false, noone, 1, pitch)
         }
     break;
-    case AT_DTILT:
+    /*case AT_DTILT:
         old_vsp = -14;
         old_hsp = hsp / 5
-    break;
+    break;*/
     case AT_DATTACK:
         off_edge = false;
     break;

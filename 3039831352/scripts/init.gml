@@ -360,7 +360,7 @@ boost_hitgain_mult = [2, 2];        //multiplier when hitting a single hit      
 boost_parrygain = [60, 80];
 
 boost_decrease_rate = [6, 3];       //passive decrease (divided by 60)                      //4, 2
-boost_hitloss_mult = [0, 1];        //multiplier reducing when getting hit                  //2, 4
+boost_hitloss_mult = [0.5, 1.5];        //multiplier reducing when getting hit                //0, 1
 boost_parryloss = [20, 40];
 
 

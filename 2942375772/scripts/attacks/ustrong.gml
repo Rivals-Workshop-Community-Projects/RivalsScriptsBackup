@@ -52,6 +52,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, note_hfx);
+set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Adds shake note");
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 4);
@@ -70,4 +71,5 @@ set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_MISC_ADD, "Adds drumbeat note");
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, note_strong_hfx);

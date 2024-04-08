@@ -66,11 +66,11 @@ if (attack == AT_FSPECIAL){
 
 
 
-if (attack == AT_JAB) && switcher == 1{
-    if taunt_down{
+if (attack == AT_TAUNT){
+    if shield_down{
         attack = AT_TAUNT_2;
     }
-}
+}/*
 if (attack == AT_TAUNT) && switcher == 0{
         attack = AT_TAUNT_2;
 }

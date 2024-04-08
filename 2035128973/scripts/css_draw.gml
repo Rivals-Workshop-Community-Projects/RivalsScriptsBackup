@@ -32,7 +32,7 @@ else if (alt_new != currAlt)
 }
 
 alt_name = 0;
-if (get_synced_var(player))
+if (get_synced_var(player) == 15005)
 {
 	alt_name[0]  = "100% Accurate";
 	alt_name[1]  = "Shiny";
@@ -103,7 +103,7 @@ else
 
 var num_alts = array_length_1d(alt_name);
 
-if (!get_synced_var(player) && max((eyeShine/6)-6, 0) < 9) draw_sprite_ext(sprite_get("eyeshine"),max((eyeShine/6)-6, 0),temp_x,temp_y-1,2,2,0,c_white,1);
+if (get_synced_var(player) != 15005 && max((eyeShine/6)-6, 0) < 9) draw_sprite_ext(sprite_get("eyeshine"),max((eyeShine/6)-6, 0),temp_x,temp_y-1,2,2,0,c_white,1);
 shader_end();
 
 //draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
@@ -116,7 +116,7 @@ shader_end();
 
 //draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
-if ("syncUID" in id && syncUID == 15005 && instance_exists(cursor_id))
+if ("syncUID" in id && syncUID == 15005 && instance_exists(cursor_id) && player != 0)
 {
 	draw_sprite_ext(sprite_get("accButton"), buttonInfo.hover?1+menu_a_down:0, temp_x + buttonInfo.x, temp_y + buttonInfo.y, 2, 2, 0, c_white, 1);
 	draw_sprite_ext(sprite_get("accIcon"), isAccurate, temp_x + buttonInfo.x + 6, temp_y + buttonInfo.y + 4, 2, 2, 0, c_white, 1);
