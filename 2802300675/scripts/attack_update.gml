@@ -157,7 +157,7 @@ if(attack == AT_NSPECIAL){
 		
 		if (window >= 3 && window != 7){
 			if (window_timer == 4){
-				move_cooldown[AT_NSPECIAL] = 50;
+				move_cooldown[AT_NSPECIAL] = 100;
 				nspec_charge = 0;
            
         }
@@ -190,7 +190,7 @@ if(attack == AT_NSPECIAL){
         }
         }
         
-        if(jump_pressed){
+        if(jump_pressed ||tap_jump_pressed){
         	if(free && djumps = 0){
         		nspecial_charge_amount = 0;
             set_state(PS_DOUBLE_JUMP);   
