@@ -60,6 +60,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.50);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.50);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Late Strike");
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 2);
@@ -79,3 +80,4 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.40);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.40);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);

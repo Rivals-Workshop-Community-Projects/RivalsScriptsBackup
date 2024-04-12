@@ -244,6 +244,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.14", "12 April, 2024");
+initHeader("General:");
+initSection("* Updated the localisation files.");
+initHeader("FSPECIAL:");
+initSection("+ If used in the air and not hit anyone, Shantae will now go into pratfall.
+* Hitboxes no longer break projectiles.
+* Re-adjusted the ledge snap stuff.");
+
 initPatch("1.13", "03 March, 2024");
 initHeader("General:");
 initSection("* Updated the localisation files.");

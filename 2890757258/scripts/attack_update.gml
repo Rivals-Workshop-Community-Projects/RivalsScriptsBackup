@@ -151,12 +151,7 @@ if (attack == AT_FSPECIAL)
 		hsp 		= 0;		
 		moved_up 	= false;
 		
-		//	Away with you
-		/*if (window_timer > 1 && window_timer < 15)
-		{
-			invincible 		= true;
-			//invince_time 	= 10;
-		}*/
+		reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE);
 		
 		if (window_timer == 2 && !hitpause)
 		{
@@ -175,7 +170,7 @@ if (attack == AT_FSPECIAL)
         //	Ledge Snap
 		if (!was_parried && !hitpause) 
 		{        
-            if (place_meeting(x + hsp, y, asset_get("par_block")) && free)
+            if (place_meeting(x + hsp, y+12, asset_get("par_block")) && free)
 			{
                 for (var i = 1; i < 40; i++)
 				{
@@ -217,6 +212,16 @@ if (attack == AT_FSPECIAL)
 	
 	if (window == 5)
 	{
+		if (free && !has_hit_player)
+		{
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
+		}
+
+		if (!free)
+		{
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
+		}
+		
 		if (window_timer == 9 && !hitpause)
 		{
 			transform_effect = spawn_hit_fx(x-76*spr_dir, y-98, vfx_transform);
