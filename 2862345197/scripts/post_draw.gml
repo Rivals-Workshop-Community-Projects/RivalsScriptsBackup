@@ -6,7 +6,9 @@ user_event(14);
 switch (state) {
     case PS_IDLE:
 	    if pshoot_carry {
+		    shader_start();
             draw_sprite_ext(sprite_get("jab_gun"), image_index, x, y, 2*spr_dir, 2, 0, c_white, 1);
+			shader_end();
         }		
 	break;
     case PS_ATTACK_AIR: 

@@ -16,3 +16,7 @@ outline_color = [ 255, 205, 21 ];
 if (get_player_color( player ) == 13) {
 outline_color = [ 255, 255, 255 ];
 }
+
+static_colorO[4*8] = colorO[4*8];
+static_colorO[4*8+1] = colorO[4*8+1];
+static_colorO[4*8+2] = colorO[4*8+2];

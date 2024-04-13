@@ -259,7 +259,7 @@ switch (state)
 			pshooter_firing--;
 			}
 			if pshooter_limit == 3 {
-			pcool = 20;
+			pcool = 25;
 			}
 			if pcool > 0{
 			pcool--;
@@ -463,12 +463,14 @@ if(variable_instance_exists(id,"diag"))
 if introTimer >= 14 && cheapdetected = 1 {
 if annoyingplaying = false {
 annoyingplaying = true;
-sound_play(sound_get("AnnoyingRageGameMusic_bad"), true, 0, 1, 1);
+sound_play(sound_get("AnnoyingRageGameMusic"), true, 0, 1, 1);
 }
+/*
 create_hitbox(AT_EXTRA_1, 1, x, y - 10);
 create_hitbox(AT_EXTRA_1, 1, cheapx, cheapy);
 set_player_damage( player, 0 );
 set_player_stocks( player, get_player_stocks( player )+1 );
+*/
 }
 
 with oPlayer {

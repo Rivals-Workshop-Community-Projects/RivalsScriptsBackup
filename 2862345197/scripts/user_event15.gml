@@ -301,6 +301,16 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.3", "12 April 2024");
+initHeader("Balance");
+initSection("-Increased pratland time from 20 to 30
+-Increased Jab/FTilt/NAir cooldown from 20 to 25
+-Added a 0.8x hitstun multiplier to DAir");
+initHeader("Fixes");
+initSection("-Fixed attacking P-Shooter sprites not having a recoloured outline on alts
+-Fixed P-Shooter not being recoloured for 1 frame after landing from NAir
+-Removed lag machine and invincibility from the anticheap, and made it use the undistorted version of the song");
+
 initPatch("1.2", "21 August 2023");
 initHeader("Balance");
 initSection("-FTilt movement speed reduced from 4 to 2.5

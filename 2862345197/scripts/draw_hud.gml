@@ -21,7 +21,9 @@ if (move_cooldown[AT_FSPECIAL] == 0) {
 }
 shader_end();
 
+
 //FINAL SMASH
+
 if fs_start > 0 {
     if fs_start > 15 && fs_start <= 20 {
 		draw_sprite(sprite_get("nestedsim_start"), 0, 0, 0 );
@@ -42,7 +44,7 @@ if cutscene > 0 {
     	draw_sprite_ext(sprite_get("nestedsim"), nested_anim, 0, 0, 1, 1, 0, c_white, 0.5  );
 	}
 	else {
-		draw_sprite(sprite_get("nestedsim"), nested_anim, 0, 0 );
+		draw_sprite_ext(sprite_get("nestedsim"), nested_anim, 0, 0, 1, 1, 0, c_white, 1  );
 	}
 	
 	draw_face();

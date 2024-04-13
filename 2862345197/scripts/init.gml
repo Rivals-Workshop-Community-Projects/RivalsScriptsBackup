@@ -60,7 +60,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 4;		// 4    -  7
 walljump_vsp        = 10;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 20;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 40;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.1;		// 0    -  0.15
@@ -395,8 +395,32 @@ fs_start = 0;
 cheapdetected = 0;
 cheapx = 0;
 cheapy = 0;
-cheapies = ["1890617624", "1879683632", "1867634411", "1867713261", "1901470136", "2127652847", "1871153050", "1970731843", "1877253352", "1871281672", "1993556113", "1870688282", "2020372134", "1892707606", "2508425343", "2709464147", "2063121680", "2190448871", "2048893131", "1935008125", "1954841174", "2605435443", "2801790612"]
-
+cheapies = [
+"1890617624", //ronald
+"1879683632", //rock kragg
+"1867634411", //duane
+"1867713261", //mighty tnt 
+"1901470136", //pissing 1
+"2127652847", //super paper
+"1871153050", //100 fox
+"1970731843", //100 metaknight
+"1877253352", //200 falco
+"1871281672", //squidward
+"1993556113", //100 cloud
+"1870688282", //Obama
+"2020372134", //mighty TNT
+"1892707606", //emolga?
+"2508425343", //big shitter
+"2709464147", //chuckster
+"2063121680", //speed link
+"2190448871", //speed mario
+"2048893131", //spamus
+"1935008125", //weegee
+"1954841174", //tetris
+"2605435443", //big band
+"2801790612"  //pepsi man
+]
+                                          
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 

@@ -52,6 +52,7 @@ set_hitbox_value(AT_DAIR, temp_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DAIR, temp_num, HG_SDI_MULTIPLIER, 2.0);
 set_hitbox_value(AT_DAIR, temp_num, HG_FORCE_FLINCH, 0);
 set_hitbox_value(AT_DAIR, temp_num, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(AT_DAIR, temp_num, HG_HITSTUN_MULTIPLIER, 0.8);
 
 set_hitbox_value(AT_DAIR, temp_num, HG_PROJECTILE_SPRITE, sprite_get("pshooter_proj_v"));
 set_hitbox_value(AT_DAIR, temp_num, HG_PROJECTILE_MASK, sprite_get("pshooter_mask"));

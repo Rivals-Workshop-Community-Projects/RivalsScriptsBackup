@@ -8,36 +8,37 @@ num_alts = 32;
 temp_x = x + 8;
 temp_y = y + 9;
 
-//this should prob be an array now but idk how those work enough to fuck with this code that much sooo
-alt_name[0]  = "Shelly";
-alt_name[1]  = "Visualizer";
-alt_name[2] = "Winter Demo";
-alt_name[3] = "Human Rider";
-alt_name[4] = "Dapper";
-alt_name[5] = "Go Go Unicorn Go";
-alt_name[6]  = "Abyss";
-alt_name[7]  = "Gameboy";
-alt_name[8]  = "Infamous";
-alt_name[9] = "Did You Snail?";
-alt_name[10]  = "Sounds Of Space";
-alt_name[11]  = "Sounds Of Life";
-alt_name[12] = "Sounds Of Growth";
-alt_name[13] = "Sounds Of Computation";
-alt_name[14]  = "Robosnail";
-alt_name[15]  = "Robosnail MKII";
-alt_name[16] = "Better Snail";
-alt_name[17] = "Best Snail";
-alt_name[18] = "Godly Snail";
-alt_name[19] = "God Snail";
-alt_name[20]  = "Squid";
-alt_name[21]  = "Levelselect";
-alt_name[22]  = "Waterpump";
-alt_name[23] = ":ShellyJonas:";
-alt_name[24] = "Laser Show";
-alt_name[25] = "Transnail";
-alt_name[26] = "Hexidecimal";
-alt_name[27] = "woag";
-alt_name[28] = "Uh, meow?";
-alt_name[29] = "Gastropod Robert";
-alt_name[30] = "Snail Shaman";
-alt_name[31] = "Lord Helix";
+alt_name = [
+"Shelly",
+"Visualizer",
+"Winter Demo",
+"Human Rider",
+"Dapper",
+"Go Go Unicorn Go",
+"Abyss",
+"Gameboy",
+"Infamous",
+"Did You Snail?",
+"Sounds Of Space",
+"Sounds Of Life",
+"Sounds Of Growth",
+"Sounds Of Computation",
+"Robosnail",
+"Robosnail MKII",
+"Better Snail",
+"Best Snail",
+"Godly Snail",
+"God Snail",
+"Squid",
+"Levelselect",
+"Waterpump",
+":ShellyJonas:",
+"Laser Show",
+"Transnail",
+"Hexidecimal",
+"woag",
+"Uh, meow?",
+"Gastropod Robert",
+"Snail Shaman",
+"Lord Helix"
+];
