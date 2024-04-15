@@ -728,6 +728,8 @@ if (attack == AT_USPECIAL){
                 uspec_land_cancel = true;
             }
         }
+        
+        can_fast_fall = false;
     }
     
     if (window == 4){

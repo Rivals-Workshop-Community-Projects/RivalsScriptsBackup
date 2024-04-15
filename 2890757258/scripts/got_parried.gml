@@ -6,7 +6,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2)
     //	reset the projectile's lifetime
     
 	my_hitboxID.hitbox_timer 	= 0;
-	my_hitboxID.hsp 			*= 1.2;
+	my_hitboxID.hsp 			*= 1.5;
     my_hitboxID.length 			/= 1.5;
 }
 
