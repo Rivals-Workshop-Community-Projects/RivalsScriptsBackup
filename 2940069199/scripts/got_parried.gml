@@ -8,3 +8,8 @@ if(my_hitboxID.attack == AT_DSPECIAL){
     my_hitboxID.hsp *= 1.5;
     my_hitboxID.proj_angle += 180;
 }
+
+if(attack != AT_JAB){
+    tetrimino = 0;
+    cur_tetramino = 0;
+}

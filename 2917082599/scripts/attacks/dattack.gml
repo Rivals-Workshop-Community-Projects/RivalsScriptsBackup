@@ -28,7 +28,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.15);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 14);
 //set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 //set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.15);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 2);

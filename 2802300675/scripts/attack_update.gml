@@ -59,6 +59,19 @@ if attack == AT_FAIR {
 		sound_play(asset_get("sfx_bird_sidespecial_start"));
 	}
 }
+
+if attack == AT_JAB {
+	if window == 2 && window_timer == 1 {
+		sound_play(asset_get("sfx_forsburn_consume_fail"));
+	}
+}
+
+if attack == AT_JAB {
+	if window == 4 && window_timer == 1 {
+		sound_play(asset_get("sfx_forsburn_consume_fail"));
+	}
+}
+
 if attack == AT_BAIR {
 	if window == 1 && window_timer == 6 {
 		sound_play(asset_get("sfx_forsburn_reappear"));
@@ -190,7 +203,7 @@ if(attack == AT_NSPECIAL){
         }
         }
         
-        if(jump_pressed ||tap_jump_pressed){
+ /*       if(jump_pressed ||tap_jump_pressed){
         	if(free && djumps = 0){
         		nspecial_charge_amount = 0;
             set_state(PS_DOUBLE_JUMP);   
@@ -198,7 +211,7 @@ if(attack == AT_NSPECIAL){
         		nspecial_charge_amount = 0;
             set_state(PS_FIRST_JUMP);   
         	}
-        }
+        }*/
     }
     /*
     if(window = 1 && window_timer = 1){

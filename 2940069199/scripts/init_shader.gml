@@ -782,205 +782,205 @@ set_color_profile_slot( 9, 5, 246, 108, 170 ); //Axe Blade
 set_color_profile_slot( 9, 6, 246, 153, 195 ); //Legging 1
 set_color_profile_slot( 9, 7, 165, 138, 130 ); //Legging 2
 
-// Succubus-in-Training
-set_color_profile_slot( 10, 0, 207, 102, 159 ); //Hair
-set_color_profile_slot( 10, 1, 88, 188, 118 ); //Eyes
-set_color_profile_slot( 10, 2, 181, 64, 119 ); //Bows
-set_color_profile_slot( 10, 3, 102, 58, 98 ); //Shirt
+// #1 Badass
+set_color_profile_slot( 10, 0, 201, 171, 167 ); //Hair
+set_color_profile_slot( 10, 1, 46, 65, 144 ); //Eyes
+set_color_profile_slot( 10, 2, 169, 164, 251 ); //Bows
+set_color_profile_slot( 10, 3, 199, 193, 224 ); //Shirt
 set_color_profile_slot( 10, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 10, 5, 51, 43, 54 ); //Axe Blade
-set_color_profile_slot( 10, 6, 97, 61, 63 ); //Legging 1
-set_color_profile_slot( 10, 7, 140, 48, 89 ); //Legging 2
+set_color_profile_slot( 10, 5, 135, 120, 173 ); //Axe Blade
+set_color_profile_slot( 10, 6, 229, 191, 252 ); //Legging 1
+set_color_profile_slot( 10, 7, 229, 191, 252 ); //Legging 2
+
+// Secret Otaku
+set_color_profile_slot( 11, 0, 13, 34, 74 ); //Hair
+set_color_profile_slot( 11, 1, 69, 155, 207 ); //Eyes
+set_color_profile_slot( 11, 2, 52, 82, 145 ); //Bows
+set_color_profile_slot( 11, 3, 45, 50, 56 ); //Shirt
+set_color_profile_slot( 11, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 11, 5, 202, 165, 91 ); //Axe Blade
+set_color_profile_slot( 11, 6, 45, 50, 56 ); //Legging 1
+set_color_profile_slot( 11, 7, 45, 50, 56 ); //Legging 2
+
+// Aspiring Musician
+set_color_profile_slot( 12, 0, 222, 204, 163 ); //Hair
+set_color_profile_slot( 12, 1, 164, 79, 75 ); //Eyes
+set_color_profile_slot( 12, 2, 166, 46, 47 ); //Bows
+set_color_profile_slot( 12, 3, 215, 183, 165 ); //Shirt
+set_color_profile_slot( 12, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 12, 5, 224, 129, 88 ); //Axe Blade
+set_color_profile_slot( 12, 6, 88, 62, 47 ); //Legging 1
+set_color_profile_slot( 12, 7, 88, 62, 47 ); //Legging 2
+
+// Genius Entrepreneur
+set_color_profile_slot( 13, 0, 211, 105, 101 ); //Hair
+set_color_profile_slot( 13, 1, 178, 51, 56 ); //Eyes
+set_color_profile_slot( 13, 2, 161, 119, 170 ); //Bows
+set_color_profile_slot( 13, 3, 189, 120, 131 ); //Shirt
+set_color_profile_slot( 13, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 13, 5, 62, 61, 75 ); //Axe Blade
+set_color_profile_slot( 13, 6, 229, 224, 226 ); //Legging 1
+set_color_profile_slot( 13, 7, 229, 224, 226 ); //Legging 2
+
+// Masked Smoker
+set_color_profile_slot( 14, 0, 69, 60, 71 ); //Hair
+set_color_profile_slot( 14, 1, 56, 85, 143 ); //Eyes
+set_color_profile_slot( 14, 2, 175, 94, 76 ); //Bows
+set_color_profile_slot( 14, 3, 57, 82, 64 ); //Shirt
+set_color_profile_slot( 14, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 14, 5, 45, 50, 56 ); //Axe Blade
+set_color_profile_slot( 14, 6, 183, 180, 193 ); //Legging 1
+set_color_profile_slot( 14, 7, 183, 180, 193 ); //Legging 2
+
+// Succubus-in-Training
+set_color_profile_slot( 15, 0, 207, 102, 159 ); //Hair
+set_color_profile_slot( 15, 1, 88, 188, 118 ); //Eyes
+set_color_profile_slot( 15, 2, 181, 64, 119 ); //Bows
+set_color_profile_slot( 15, 3, 102, 58, 98 ); //Shirt
+set_color_profile_slot( 15, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 15, 5, 51, 43, 54 ); //Axe Blade
+set_color_profile_slot( 15, 6, 97, 61, 63 ); //Legging 1
+set_color_profile_slot( 15, 7, 140, 48, 89 ); //Legging 2
 
 // MaFia
-set_color_profile_slot( 11, 0, 36, 36, 36 ); //Hair
-set_color_profile_slot( 11, 1, 55, 132, 15 ); //Eyes
-set_color_profile_slot( 11, 2, 36, 36, 36 ); //Bows
-set_color_profile_slot( 11, 3, 105, 134, 41 ); //Shirt
-set_color_profile_slot( 11, 4, 140, 99, 80 ); //Skin
-set_color_profile_slot( 11, 5, 107, 102, 97 ); //Axe Blade
-set_color_profile_slot( 11, 6, 55, 132, 15 ); //Legging 1
-set_color_profile_slot( 11, 7, 36, 36, 36 ); //Legging 2
+set_color_profile_slot( 16, 0, 36, 36, 36 ); //Hair
+set_color_profile_slot( 16, 1, 55, 132, 15 ); //Eyes
+set_color_profile_slot( 16, 2, 36, 36, 36 ); //Bows
+set_color_profile_slot( 16, 3, 105, 134, 41 ); //Shirt
+set_color_profile_slot( 16, 4, 140, 99, 80 ); //Skin
+set_color_profile_slot( 16, 5, 107, 102, 97 ); //Axe Blade
+set_color_profile_slot( 16, 6, 55, 132, 15 ); //Legging 1
+set_color_profile_slot( 16, 7, 36, 36, 36 ); //Legging 2
 
 // Space Seaweed
-set_color_profile_slot( 12, 0, 28, 42, 111 ); //Hair
-set_color_profile_slot( 12, 1, 40, 102, 90 ); //Eyes
-set_color_profile_slot( 12, 2, 32, 52, 80 ); //Bows
-set_color_profile_slot( 12, 3, 173, 86, 0 ); //Shirt
-set_color_profile_slot( 12, 4, 247, 198, 147 ); //Skin
-set_color_profile_slot( 12, 5, 93, 177, 197 ); //Axe Blade
-set_color_profile_slot( 12, 6, 35, 35, 66 ); //Legging 1
-set_color_profile_slot( 12, 7, 35, 35, 66 ); //Legging 2
+set_color_profile_slot( 17, 0, 28, 42, 111 ); //Hair
+set_color_profile_slot( 17, 1, 40, 102, 90 ); //Eyes
+set_color_profile_slot( 17, 2, 32, 52, 80 ); //Bows
+set_color_profile_slot( 17, 3, 173, 86, 0 ); //Shirt
+set_color_profile_slot( 17, 4, 247, 198, 147 ); //Skin
+set_color_profile_slot( 17, 5, 93, 177, 197 ); //Axe Blade
+set_color_profile_slot( 17, 6, 35, 35, 66 ); //Legging 1
+set_color_profile_slot( 17, 7, 35, 35, 66 ); //Legging 2
 
 // Electric Kettle
-set_color_profile_slot( 13, 0, 201, 186, 129 ); //Hair
-set_color_profile_slot( 13, 1, 41, 151, 137 ); //Eyes
-set_color_profile_slot( 13, 2, 74, 148, 141 ); //Bows
-set_color_profile_slot( 13, 3, 158, 145, 44 ); //Shirt
-set_color_profile_slot( 13, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 13, 5, 253, 235, 178 ); //Axe Blade
-set_color_profile_slot( 13, 6, 235, 220, 220 ); //Legging 1
-set_color_profile_slot( 13, 7, 235, 220, 220 ); //Legging 2
+set_color_profile_slot( 18, 0, 201, 186, 129 ); //Hair
+set_color_profile_slot( 18, 1, 41, 151, 137 ); //Eyes
+set_color_profile_slot( 18, 2, 74, 148, 141 ); //Bows
+set_color_profile_slot( 18, 3, 158, 145, 44 ); //Shirt
+set_color_profile_slot( 18, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 18, 5, 253, 235, 178 ); //Axe Blade
+set_color_profile_slot( 18, 6, 235, 220, 220 ); //Legging 1
+set_color_profile_slot( 18, 7, 235, 220, 220 ); //Legging 2
 
 // Tokotaya
-set_color_profile_slot( 14, 0, 48, 31, 41 ); //Hair
-set_color_profile_slot( 14, 1, 151, 50, 52 ); //Eyes
-set_color_profile_slot( 14, 2, 100, 21, 31 ); //Bows
-set_color_profile_slot( 14, 3, 67, 48, 57 ); //Shirt
-set_color_profile_slot( 14, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 14, 5, 111, 136, 164 ); //Axe Blade
-set_color_profile_slot( 14, 6, 78, 35, 36 ); //Legging 1
-set_color_profile_slot( 14, 7, 78, 35, 36 ); //Legging 2
+set_color_profile_slot( 19, 0, 48, 31, 41 ); //Hair
+set_color_profile_slot( 19, 1, 151, 50, 52 ); //Eyes
+set_color_profile_slot( 19, 2, 100, 21, 31 ); //Bows
+set_color_profile_slot( 19, 3, 67, 48, 57 ); //Shirt
+set_color_profile_slot( 19, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 19, 5, 111, 136, 164 ); //Axe Blade
+set_color_profile_slot( 19, 6, 78, 35, 36 ); //Legging 1
+set_color_profile_slot( 19, 7, 78, 35, 36 ); //Legging 2
 
 // Solar Dragon
-set_color_profile_slot( 15, 0, 139, 177, 196 ); //Hair
-set_color_profile_slot( 15, 1, 141, 216, 193 ); //Eyes
-set_color_profile_slot( 15, 2, 124, 27, 140 ); //Bows
-set_color_profile_slot( 15, 3, 135, 128, 133 ); //Shirt
-set_color_profile_slot( 15, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 15, 5, 40, 0, 59 ); //Axe Blade
-set_color_profile_slot( 15, 6, 190, 180, 186 ); //Legging 1
-set_color_profile_slot( 15, 7, 190, 180, 186 ); //Legging 2
+set_color_profile_slot( 20, 0, 139, 177, 196 ); //Hair
+set_color_profile_slot( 20, 1, 141, 216, 193 ); //Eyes
+set_color_profile_slot( 20, 2, 124, 27, 140 ); //Bows
+set_color_profile_slot( 20, 3, 135, 128, 133 ); //Shirt
+set_color_profile_slot( 20, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 20, 5, 40, 0, 59 ); //Axe Blade
+set_color_profile_slot( 20, 6, 190, 180, 186 ); //Legging 1
+set_color_profile_slot( 20, 7, 190, 180, 186 ); //Legging 2
 
 // What the Feesh
-set_color_profile_slot( 16, 0, 83, 169, 158 ); //Hair
-set_color_profile_slot( 16, 1, 174, 94, 166 ); //Eyes
-set_color_profile_slot( 16, 2, 120, 183, 205 ); //Bows
-set_color_profile_slot( 16, 3, 18, 12, 64 ); //Shirt
-set_color_profile_slot( 16, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 16, 5, 101, 71, 158 ); //Axe Blade
-set_color_profile_slot( 16, 6, 18, 12, 64 ); //Legging 1
-set_color_profile_slot( 16, 7, 18, 12, 64 ); //Legging 2
+set_color_profile_slot( 21, 0, 83, 169, 158 ); //Hair
+set_color_profile_slot( 21, 1, 174, 94, 166 ); //Eyes
+set_color_profile_slot( 21, 2, 120, 183, 205 ); //Bows
+set_color_profile_slot( 21, 3, 18, 12, 64 ); //Shirt
+set_color_profile_slot( 21, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 21, 5, 101, 71, 158 ); //Axe Blade
+set_color_profile_slot( 21, 6, 18, 12, 64 ); //Legging 1
+set_color_profile_slot( 21, 7, 18, 12, 64 ); //Legging 2
 
 // Pomu
-set_color_profile_slot( 17, 0, 217, 174, 100 ); //Hair
-set_color_profile_slot( 17, 1, 159, 51, 74 ); //Eyes
-set_color_profile_slot( 17, 2, 61, 59, 69 ); //Bows
-set_color_profile_slot( 17, 3, 46, 133, 113 ); //Shirt
-set_color_profile_slot( 17, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 17, 5, 23, 110, 90 ); //Axe Blade
-set_color_profile_slot( 17, 6, 218, 239, 211 ); //Legging 1
-set_color_profile_slot( 17, 7, 44, 20, 26 ); //Legging 2
+set_color_profile_slot( 22, 0, 217, 174, 100 ); //Hair
+set_color_profile_slot( 22, 1, 159, 51, 74 ); //Eyes
+set_color_profile_slot( 22, 2, 61, 59, 69 ); //Bows
+set_color_profile_slot( 22, 3, 46, 133, 113 ); //Shirt
+set_color_profile_slot( 22, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 22, 5, 23, 110, 90 ); //Axe Blade
+set_color_profile_slot( 22, 6, 218, 239, 211 ); //Legging 1
+set_color_profile_slot( 22, 7, 44, 20, 26 ); //Legging 2
 
 // Lunar Dragon
-set_color_profile_slot( 18, 0, 96, 79, 185 ); //Hair
-set_color_profile_slot( 18, 1, 201, 54, 171 ); //Eyes
-set_color_profile_slot( 18, 2, 115, 95, 186 ); //Bows
-set_color_profile_slot( 18, 3, 67, 115, 171 ); //Shirt
-set_color_profile_slot( 18, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 18, 5, 78, 53, 111 ); //Axe Blade
-set_color_profile_slot( 18, 6, 189, 169, 206 ); //Legging 1
-set_color_profile_slot( 18, 7, 189, 169, 206 ); //Legging 2
+set_color_profile_slot( 23, 0, 96, 79, 185 ); //Hair
+set_color_profile_slot( 23, 1, 201, 54, 171 ); //Eyes
+set_color_profile_slot( 23, 2, 115, 95, 186 ); //Bows
+set_color_profile_slot( 23, 3, 67, 115, 171 ); //Shirt
+set_color_profile_slot( 23, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 23, 5, 78, 53, 111 ); //Axe Blade
+set_color_profile_slot( 23, 6, 189, 169, 206 ); //Legging 1
+set_color_profile_slot( 23, 7, 189, 169, 206 ); //Legging 2
 
 // Peto
-set_color_profile_slot( 19, 0, 62, 59, 74 ); //Hair
-set_color_profile_slot( 19, 1, 158, 187, 218 ); //Eyes
-set_color_profile_slot( 19, 2, 198, 117, 42 ); //Bows
-set_color_profile_slot( 19, 3, 150, 150, 150 ); //Shirt
-set_color_profile_slot( 19, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 19, 5, 106, 147, 160 ); //Axe Blade
-set_color_profile_slot( 19, 6, 229, 224, 226 ); //Legging 1
-set_color_profile_slot( 19, 7, 79, 77, 78 ); //Legging 2
+set_color_profile_slot( 24, 0, 62, 59, 74 ); //Hair
+set_color_profile_slot( 24, 1, 158, 187, 218 ); //Eyes
+set_color_profile_slot( 24, 2, 198, 117, 42 ); //Bows
+set_color_profile_slot( 24, 3, 150, 150, 150 ); //Shirt
+set_color_profile_slot( 24, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 24, 5, 106, 147, 160 ); //Axe Blade
+set_color_profile_slot( 24, 6, 229, 224, 226 ); //Legging 1
+set_color_profile_slot( 24, 7, 79, 77, 78 ); //Legging 2
 
 // Rose Maiden
-set_color_profile_slot( 20, 0, 255, 150, 189 ); //Hair
-set_color_profile_slot( 20, 1, 143, 21, 82 ); //Eyes
-set_color_profile_slot( 20, 2, 89, 0, 21 ); //Bows
-set_color_profile_slot( 20, 3, 94, 14, 38 ); //Shirt
-set_color_profile_slot( 20, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 20, 5, 245, 81, 81 ); //Axe Blade
-set_color_profile_slot( 20, 6, 74, 19, 19 ); //Legging 1
-set_color_profile_slot( 20, 7, 109, 148, 109 ); //Legging 2
+set_color_profile_slot( 25, 0, 255, 150, 189 ); //Hair
+set_color_profile_slot( 25, 1, 143, 21, 82 ); //Eyes
+set_color_profile_slot( 25, 2, 89, 0, 21 ); //Bows
+set_color_profile_slot( 25, 3, 94, 14, 38 ); //Shirt
+set_color_profile_slot( 25, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 25, 5, 245, 81, 81 ); //Axe Blade
+set_color_profile_slot( 25, 6, 74, 19, 19 ); //Legging 1
+set_color_profile_slot( 25, 7, 109, 148, 109 ); //Legging 2
 
 // Golden SUISEI
-set_color_profile_slot( 21, 0, 199, 155, 79 ); //Hair
-set_color_profile_slot( 21, 1, 145, 113, 58 ); //Eyes
-set_color_profile_slot( 21, 2, 166, 109, 12 ); //Bows
-set_color_profile_slot( 21, 3, 173, 135, 69 ); //Shirt
-set_color_profile_slot( 21, 4, 242, 161, 27 ); //Skin
-set_color_profile_slot( 21, 5, 237, 184, 94 ); //Axe Blade
-set_color_profile_slot( 21, 6, 237, 184, 94 ); //Legging 1
-set_color_profile_slot( 21, 7, 237, 184, 94 ); //Legging 2
+set_color_profile_slot( 26, 0, 199, 155, 79 ); //Hair
+set_color_profile_slot( 26, 1, 145, 113, 58 ); //Eyes
+set_color_profile_slot( 26, 2, 166, 109, 12 ); //Bows
+set_color_profile_slot( 26, 3, 173, 135, 69 ); //Shirt
+set_color_profile_slot( 26, 4, 242, 161, 27 ); //Skin
+set_color_profile_slot( 26, 5, 237, 184, 94 ); //Axe Blade
+set_color_profile_slot( 26, 6, 237, 184, 94 ); //Legging 1
+set_color_profile_slot( 26, 7, 237, 184, 94 ); //Legging 2
 
 // Japanese Goblin
-set_color_profile_slot( 22, 0, 212, 122, 74 ); //Hair
-set_color_profile_slot( 22, 1, 191, 72, 60 ); //Eyes
-set_color_profile_slot( 22, 2, 199, 33, 40 ); //Bows
-set_color_profile_slot( 22, 3, 105, 56, 150 ); //Shirt
-set_color_profile_slot( 22, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 22, 5, 125, 131, 222 ); //Axe Blade
-set_color_profile_slot( 22, 6, 254, 178, 185 ); //Legging 1
-set_color_profile_slot( 22, 7, 254, 178, 185 ); //Legging 2
-
-// Vampire Knight
-set_color_profile_slot( 23, 0, 36, 36, 36 ); //Hair
-set_color_profile_slot( 23, 1, 114, 46, 33 ); //Eyes
-set_color_profile_slot( 23, 2, 158, 128, 68 ); //Bows
-set_color_profile_slot( 23, 3, 15, 30, 56 ); //Shirt
-set_color_profile_slot( 23, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 23, 5, 46, 46, 46 ); //Axe Blade
-set_color_profile_slot( 23, 6, 46, 46, 46 ); //Legging 1
-set_color_profile_slot( 23, 7, 46, 46, 46 ); //Legging 2
-
-// B Komachi's Star
-set_color_profile_slot( 24, 0, 73, 42, 132 ); //Hair
-set_color_profile_slot( 24, 1, 205, 63, 136 ); //Eyes
-set_color_profile_slot( 24, 2, 217, 169, 100 ); //Bows
-set_color_profile_slot( 24, 3, 166, 72, 114 ); //Shirt
-set_color_profile_slot( 24, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 24, 5, 55, 193, 201 ); //Axe Blade
-set_color_profile_slot( 24, 6, 251, 68, 155 ); //Legging 1
-set_color_profile_slot( 24, 7, 251, 68, 155 ); //Legging 2
+set_color_profile_slot( 27, 0, 212, 122, 74 ); //Hair
+set_color_profile_slot( 27, 1, 191, 72, 60 ); //Eyes
+set_color_profile_slot( 27, 2, 199, 33, 40 ); //Bows
+set_color_profile_slot( 27, 3, 105, 56, 150 ); //Shirt
+set_color_profile_slot( 27, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 27, 5, 125, 131, 222 ); //Axe Blade
+set_color_profile_slot( 27, 6, 254, 178, 185 ); //Legging 1
+set_color_profile_slot( 27, 7, 254, 178, 185 ); //Legging 2
 
 // Melty Blood
-set_color_profile_slot( 25, 0, 168, 107, 175 ); //Hair
-set_color_profile_slot( 25, 1, 175, 92, 221 ); //Eyes
-set_color_profile_slot( 25, 2, 186, 140, 49 ); //Bows
-set_color_profile_slot( 25, 3, 86, 15, 59 ); //Shirt
-set_color_profile_slot( 25, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 25, 5, 237, 184, 94 ); //Axe Blade
-set_color_profile_slot( 25, 6, 86, 15, 59 ); //Legging 1
-set_color_profile_slot( 25, 7, 86, 15, 59 ); //Legging 2
-
-// Elite Four
-set_color_profile_slot( 26, 0, 47, 95, 99 ); //Hair
-set_color_profile_slot( 26, 1, 158, 48, 48 ); //Eyes
-set_color_profile_slot( 26, 2, 42, 49, 55 ); //Bows
-set_color_profile_slot( 26, 3, 112, 111, 111 ); //Shirt
-set_color_profile_slot( 26, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 26, 5, 212, 70, 98 ); //Axe Blade
-set_color_profile_slot( 26, 6, 56, 56, 56 ); //Legging 1
-set_color_profile_slot( 26, 7, 56, 56, 56 ); //Legging 2
+set_color_profile_slot( 28, 0, 168, 107, 175 ); //Hair
+set_color_profile_slot( 28, 1, 175, 92, 221 ); //Eyes
+set_color_profile_slot( 28, 2, 186, 140, 49 ); //Bows
+set_color_profile_slot( 28, 3, 86, 15, 59 ); //Shirt
+set_color_profile_slot( 28, 4, 229, 176, 145 ); //Skin
+set_color_profile_slot( 28, 5, 237, 184, 94 ); //Axe Blade
+set_color_profile_slot( 28, 6, 86, 15, 59 ); //Legging 1
+set_color_profile_slot( 28, 7, 86, 15, 59 ); //Legging 2
 
 // Needy Girl
-set_color_profile_slot( 27, 0, 43, 42, 56 ); //Hair
-set_color_profile_slot( 27, 1, 39, 29, 48 ); //Eyes
-set_color_profile_slot( 27, 2, 156, 48, 74 ); //Bows
-set_color_profile_slot( 27, 3, 45, 45, 66 ); //Shirt
-set_color_profile_slot( 27, 4, 227, 179, 207 ); //Skin
-set_color_profile_slot( 27, 5, 129, 36, 38 ); //Axe Blade
-set_color_profile_slot( 27, 6, 70, 70, 70 ); //Legging 1
-set_color_profile_slot( 27, 7, 70, 70, 70 ); //Legging 2
-
-// IQ 999
-set_color_profile_slot( 28, 0, 206, 183, 233 ); //Hair
-set_color_profile_slot( 28, 1, 90, 181, 241 ); //Eyes
-set_color_profile_slot( 28, 2, 161, 63, 150 ); //Bows
-set_color_profile_slot( 28, 3, 67, 56, 106 ); //Shirt
-set_color_profile_slot( 28, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 28, 5, 161, 80, 228 ); //Axe Blade
-set_color_profile_slot( 28, 6, 222, 181, 77 ); //Legging 1
-set_color_profile_slot( 28, 7, 222, 181, 77 ); //Legging 2
-
-// Christmas
-set_color_profile_slot( 29, 0, 99, 163, 230 ); //Hair
-set_color_profile_slot( 29, 1, 45, 45, 151 ); //Eyes
-set_color_profile_slot( 29, 2, 184, 180, 181 ); //Bows
-set_color_profile_slot( 29, 3, 153, 5, 16 ); //Shirt
-set_color_profile_slot( 29, 4, 229, 176, 145 ); //Skin
-set_color_profile_slot( 29, 5, 38, 140, 28 ); //Axe Blade
-set_color_profile_slot( 29, 6, 184, 180, 181 ); //Legging 1
-set_color_profile_slot( 29, 7, 38, 140, 28 ); //Legging 2
+set_color_profile_slot( 29, 0, 43, 42, 56 ); //Hair
+set_color_profile_slot( 29, 1, 39, 29, 48 ); //Eyes
+set_color_profile_slot( 29, 2, 156, 48, 74 ); //Bows
+set_color_profile_slot( 29, 3, 45, 45, 66 ); //Shirt
+set_color_profile_slot( 29, 4, 227, 179, 207 ); //Skin
+set_color_profile_slot( 29, 5, 129, 36, 38 ); //Axe Blade
+set_color_profile_slot( 29, 6, 70, 70, 70 ); //Legging 1
+set_color_profile_slot( 29, 7, 70, 70, 70 ); //Legging 2
 
 // RDJ
 set_color_profile_slot( 30, 0, 135, 0, 138 ); //Hair

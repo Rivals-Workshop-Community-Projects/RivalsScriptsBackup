@@ -11,7 +11,7 @@ switch(attack){
 		insert_sfx_on_hit("slice-hit",1,.8,1.1,false);
 		insert_sfx_on_hit("slice-hit",2,.8,1.1,false);
 		insert_sfx_on_hit("slice-hit",3,.8,1.1,false);
-		insert_sfx_on_hit("slice-hit",4,.8,1.1,false);
+		insert_sfx_on_hit("slice-hit",4,.8,1.3,false);
 	break;
 		case AT_DAIR:
 		insert_sfx_on_hit("slice-hit",1,.7,0.9,false);

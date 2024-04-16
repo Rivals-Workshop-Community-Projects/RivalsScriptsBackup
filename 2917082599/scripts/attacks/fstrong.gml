@@ -6,7 +6,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_LANDING_LAG, 8);//4
 
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
@@ -34,7 +34,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 6);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 69);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 111);

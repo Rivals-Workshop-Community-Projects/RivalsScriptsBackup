@@ -443,7 +443,7 @@ with (pHitBox){
 	    			}
 	    }
 	}
-		if(!collision_circle(x , y - 40, 90, self, false, false)){
+		if(!collision_circle(x , y - 40, 40, self, false, false)){
 			player_id.player_in_smog = false;
 			//init_shader();
 	}
@@ -542,7 +542,7 @@ if (sprite_index != new_sprite){
 }
 
 //delete if out of bounds
-if (y > room_height){
+/*if (y > room_height){
     instance_destroy();
     exit;
 }
@@ -550,7 +550,7 @@ if (y > room_height){
 if (x < 0 || x > room_width){
     instance_destroy();
     exit;
-}
+}*/
 
 
 
