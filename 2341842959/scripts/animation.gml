@@ -54,7 +54,7 @@ if (get_player_color(player) == 15){
 if state == PS_PARRY && jestermode == true{
     if state_timer == 0 and parry_spam_cancel == false{
         sound_play(sound_get("JMparry"));
-        rand_parry_sprite = random_func( 0, 20, true);
+        rand_parry_sprite = random_func( 0, 22, true);
         parry_spam_cancel = true;
     }
     	

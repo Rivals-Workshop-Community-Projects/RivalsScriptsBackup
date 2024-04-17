@@ -56,3 +56,5 @@ sprite_change_offset("plat_draw", 84, -1);
 sprite_change_offset("ewgf_vfx", 55, 108);
 sprite_change_offset("nspecial_proj", 150, 135);
 sprite_change_offset("nspecial_proj_rune", 86, 70);
+
+set_victory_theme( sound_get( "music_win_fight" ));
