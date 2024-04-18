@@ -19,7 +19,7 @@ if (get_synced_var(player) == 15005)
 					hsp *= -1.3;
 				}
 			}
-			if (window == 2)
+			else if (window == 2)
 			{
 			    can_jump = !was_parried;
 				can_shield = free && !was_parried;

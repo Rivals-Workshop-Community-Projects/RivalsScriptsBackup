@@ -66,6 +66,13 @@ TCG_Kirby_Copy = 7;
 //steve death message
 steve_death_message = "Steve became toast";
 
+//mt dedede support
+arena_title = "The Gentle Gardener";
+
+//pumbo support
+pot_compat_variable = sprite_get("pumbodish");
+pot_compat_text = "BASIL'S GARDEN SALAD";
+
 petal_small = hit_fx_create( sprite_get("hfx_petal_small"), 24 );
 petal_big = hit_fx_create( sprite_get("hfx_petal_big"), 24 );
 petal_tipper = hit_fx_create( sprite_get("hfx_petal_bigtip"), 24 );

@@ -25,9 +25,9 @@ else
 {
 	//uspecBan = false;
 	
-	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+	if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)
 	{
-		if (attack == AT_NSPECIAL && state == 2)
+		if (attack == AT_NSPECIAL)
 			asCharge = 0;
 	}
 	

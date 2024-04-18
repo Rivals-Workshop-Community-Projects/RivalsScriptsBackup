@@ -11,6 +11,13 @@ tcoart = sprite_get("TCOart");
 pkmn_stadium_front_img = sprite_get("ps1_omori_front");
 pkmn_stadium_back_img = sprite_get("ps1_omori_back");
 
+//mt dedede support
+arena_title = "The Desolate Dreamer";
+
+//pumbo support
+pot_compat_variable = sprite_get("pumbodish");
+pot_compat_text = "MICROWAVED STEAK";
+
 //actual init
 
 vsp_thing = -4;

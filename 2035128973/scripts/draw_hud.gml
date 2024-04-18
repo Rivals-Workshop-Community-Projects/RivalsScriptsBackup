@@ -361,6 +361,11 @@ if ("rollArray" in self)
 						AddText("v3.4.1 - 6 Apr 2024");
 						AddText("");
 						AddText("Removed the ability to select 100% mode online");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.4.2 - 17 Apr 2024");
+						AddText("");
+						AddText("Fixed bugged code for Aura Sphere not losing charge on getting hit during the move");
 						break;
 				}
 				DrawTutorialBlock();
