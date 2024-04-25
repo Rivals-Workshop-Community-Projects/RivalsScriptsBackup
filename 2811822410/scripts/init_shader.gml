@@ -1,3 +1,4 @@
+exit;
 var is_oc = false;
 if (!is_oc) {
 	switch(get_player_color(player)) { 

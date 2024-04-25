@@ -3,7 +3,56 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.player_id == id) {
 
 }
 */
+switch(my_hitboxID.attack){
+	case AT_FTILT:
+		ftilt_hit[hit_player_obj.player] = 1;// = [0, 0, 0, 0, 0];
+		if (my_hitboxID.player_id == self && my_hitboxID.type == 2) {
+			var _player_damage = get_player_damage(hit_player_obj.player);
+			with my_hitboxID {
+				if ("proj_hitpause" in self) {
+					proj_hitpause = get_hitstop_formula(_player_damage, damage, hitpause, hitpause_growth, extra_hitpause);
+					print(proj_hitpause);
+					old_hsp = hsp;
+					old_vsp = vsp;
+					hsp = 0;
+					vsp = 0;
+				}
+			}
+		}
+	break;
+	case AT_FSPECIAL:
+		var _disc_vfx = 301; //Change
+		if (my_hitboxID.player_id == self && my_hitboxID.type == 2) {
+			spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - (hit_player_obj.char_height / 2) , _disc_vfx );
+			//Scanned
+			if (hit_player_obj.scanned) {
+				my_hitboxID.disc_hit_player = hit_player_obj;
+				hit_player_obj.scanned = false;
+			}
+		}
+	break;
+	case AT_NSPECIAL:
+		//scanned_opponents[hit_player_obj.player] = 600; //10 Seconds of Scan
+		hit_player_obj.scanned = 600;
+		hit_player_obj.scanned_id = self;
+	break;
+	case AT_FSTRONG:
+		if (my_hitboxID.type == 2) {
+			var _hit_player = hit_player_obj.player
+			print("fstrong")
+			with pHitBox {
+				if (type == 2 && attack == AT_FSTRONG && "rise_proj" in self) {
+					print("yes")
+					can_hit[_hit_player] = false;
+				}
+			}
+		}
+	break;
+}
 
+
+
+exit;
 //#region Hit SFX Controller
 var window_timer_last_frame = (get_window_value(attack,window,AG_WINDOW_LENGTH) - 1);
 switch(my_hitboxID.attack){
@@ -78,7 +127,7 @@ switch(my_hitboxID.attack){
 			insert_sfx_on_hit(sfx_veg_light2,4,0.7,1.1,true);
 		break;
 		case AT_DATTACK:
-		case 48:
+		case 48: //Clone Dash Attack
 			insert_sfx_on_hit(sfx_veg_light2,1,0.8,0.8,true)
 		break;
 		case AT_USPECIAL:
