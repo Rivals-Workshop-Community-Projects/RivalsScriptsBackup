@@ -15,10 +15,10 @@ if (state_timer > 435){
 	image_index = 1;
 	state = 3;
 }
-
-with (asset_get("pHitBox")){
+print([state_timer, spawned_by_ftilt])
+if state_timer > 60 + 60*!has_rune("K") || spawned_by_ftilt with pHitBox{
 	
-if (damage > 0 && kb_value > 0 && hit_priority && (other.state_timer > 60 || other.spawned_by_ftilt)){
+if (damage > 0 && kb_value > 0 && hit_priority){
 	if (place_meeting(x,y,other) && other.player != player){
 		if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
 			other.state_timer = 451;
@@ -55,7 +55,7 @@ if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)
 		fspecial_passed = false;
 }
 
-if state != 3 with (asset_get("pHitBox")){
+if state != 3 with pHitBox{
 	if (attack == AT_DSPECIAL 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) && other.state != 2){
 		other.image_index = 0;

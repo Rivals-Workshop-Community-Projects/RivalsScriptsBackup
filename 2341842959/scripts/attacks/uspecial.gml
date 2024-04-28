@@ -124,6 +124,9 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -146,6 +149,9 @@ set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -168,6 +174,9 @@ set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));
 
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -190,6 +199,9 @@ set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
 
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -212,6 +224,9 @@ set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
 
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_TYPE, 2);
@@ -234,6 +249,9 @@ set_hitbox_value(AT_USPECIAL, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 6, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_HIT_SFX, asset_get("sfx_poison_hit_med"));
 
 set_hitbox_value(AT_USPECIAL, 7, HG_HITBOX_TYPE, 2);
@@ -256,6 +274,9 @@ set_hitbox_value(AT_USPECIAL, 7, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_USPECIAL, 7, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 7, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 7, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 7, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 7, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 7, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 7, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 
 set_hitbox_value(AT_USPECIAL, 8, HG_HITBOX_TYPE, 2);
@@ -278,6 +299,9 @@ set_hitbox_value(AT_USPECIAL, 8, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_USPECIAL, 8, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 8, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 8, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 8, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 8, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 8, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 8, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 
 set_hitbox_value(AT_USPECIAL, 9, HG_HITBOX_TYPE, 2);
@@ -300,4 +324,7 @@ set_hitbox_value(AT_USPECIAL, 9, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_USPECIAL, 9, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USPECIAL, 9, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));

@@ -50,6 +50,10 @@ if (get_player_color(player) == 15){
         set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
 }
 
+if (get_player_color(player) == 19){
+	set_victory_theme(sound_get("music_win_smog"));
+}
+
 //parry code
 if state == PS_PARRY && jestermode == true{
     if state_timer == 0 and parry_spam_cancel == false{

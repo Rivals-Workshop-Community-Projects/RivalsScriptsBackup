@@ -35,7 +35,7 @@ if ((my_hitboxID.attack == AT_BAIR) && my_hitboxID.type == 2) {
 }
 
 
-if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(vigiGhost)){
+if (instance_exists(vigiGhost)){
     vigiGhost.state = "fade";
     vigiGhost.state_timer = 0;
 }
@@ -57,6 +57,13 @@ if (my_hitboxID.attack == AT_FSPECIAL && instance_exists(vigiWeenie)){
     window_timer = 0;
     hurtboxID.sprite_index = hurtbox_spr;
 
+    destroy_hitboxes();
+
+    vigiWeenie.state = 6;
+    vigiWeenie.state_timer = 0;
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2 && instance_exists(vigiWeenie)){
     destroy_hitboxes();
 
     vigiWeenie.state = 6;

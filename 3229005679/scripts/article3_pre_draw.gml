@@ -9,7 +9,7 @@ for (var i = 0; i < array_length_1d(afterimage_array); ++i)
 
 }
 
-if (get_local_setting(SET_HUD_SIZE) != 0 && (state == 4 || state == 5)){
+if (get_local_setting(SET_HUD_SIZE) != 0 && (state == 4 || state == 5 || state == 7)){
     shader_end();
 	draw_sprite_ext(asset_get("triangle_spr"), 0, x, y - 90, 1, 1, 0, get_player_hud_color(player_id.player), 1);
     with (player_id) shader_start();

@@ -203,6 +203,7 @@ if (window == 4){
   pre_draw_index = 8;
   hsp = 0; vsp = 0;
   destroy_self = true;
+  player_id.can_create_air_chair = true; player_id.air_chair_died = false;
 }
 
 //5: Hold still for Down B dash
@@ -414,6 +415,9 @@ if (destroy_self) {
   if spawn_death_effect {
     var effect = spawn_hit_fx(x, y, chair_death_effect);
     effect.depth = depth; effect.spr_dir = spr_dir;
+  }
+  if player_id.can_create_air_chair == false {
+    player_id.air_chair_died = true;
   }
   instance_destroy();
 }

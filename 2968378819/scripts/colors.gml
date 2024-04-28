@@ -87,8 +87,8 @@ set_color_profile_slot( 5, 6, 153, 172, 204 ); //Bandages/Claws 1
 set_color_profile_slot( 5, 7, 83, 95, 171 ); //Claws 2
 
 // Darkstalker
-set_color_profile_slot( 6, 0, 112, 136, 184 ); //Fur 1
-set_color_profile_slot( 6, 1, 51, 62, 84 ); //Fur 2
+set_color_profile_slot( 6, 0, 155, 189, 255 ); //Fur 1
+set_color_profile_slot( 6, 1, 75, 90, 122 ); //Fur 2
 set_color_profile_slot( 6, 2, 255, 205, 71 ); //Belt 1
 set_color_profile_slot( 6, 3, 152, 100, 0 ); //Belt 2
 set_color_profile_slot( 6, 4, 136, 48, 216 ); //Pants
@@ -193,8 +193,8 @@ set_color_profile_slot( 16, 2, 89, 89, 114 ); //Belt 1
 set_color_profile_slot( 16, 3, 40, 40, 51 ); //Belt 2
 set_color_profile_slot( 16, 4, 213, 60, 83 ); //Pants
 set_color_profile_slot( 16, 5, 144, 194, 222 ); //Eyes
-set_color_profile_slot( 16, 6, 158, 82, 171 ); //Bandages/Claws 1
-set_color_profile_slot( 16, 7, 87, 45, 94 ); //Claws 2
+set_color_profile_slot( 16, 6, 217, 113, 235 ); //Bandages/Claws 1
+set_color_profile_slot( 16, 7, 151, 78, 163 ); //Claws 2
 
 // Thunderous Howl
 set_color_profile_slot( 17, 0, 201, 200, 240 ); //Fur 1
@@ -320,7 +320,7 @@ set_color_profile_slot( 28, 7, 166, 166, 166 ); //Claws 2
 set_color_profile_slot( 29, 0, 159, 174, 183 ); //Fur 1
 set_color_profile_slot( 29, 1, 75, 82, 87 ); //Fur 2
 set_color_profile_slot( 29, 2, 240, 240, 46 ); //Belt 1
-set_color_profile_slot( 29, 3, 84, 78, 122 ); //Belt 2
+set_color_profile_slot( 29, 3, 138, 138, 26 ); //Belt 2
 set_color_profile_slot( 29, 4, 204, 166, 143 ); //Pants
 set_color_profile_slot( 29, 5, 200, 69, 87 ); //Eyes
 set_color_profile_slot( 29, 6, 255, 255, 255 ); //Bandages/Claws 1

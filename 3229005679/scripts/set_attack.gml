@@ -1,17 +1,23 @@
 
-if (attack == AT_FSPECIAL && instance_exists(vigiWeenie) && place_meeting(x + hsp, y + vsp, vigiWeenie) && vigiWeenie.state != 6){
-    window = 2;
-    window_timer = 0;
-    vigiWeenie.spr_dir = spr_dir;
-    vigiWeenie.x = x;
-    y = vigiWeenie.y;
+if (attack == AT_FSPECIAL && instance_exists(vigiWeenie) && vigiWeenie.state != 6 && vigiWeenie.destroyed == false){
 
-    hsp = round(hsp) + (ground_friction * spr_dir);
-    vigiWeenie.hsp = hsp;
+    if (place_meeting(x + (hsp * 2), y + (vsp * 2), vigiWeenie) || place_meeting(x + hsp, y + vsp, vigiWeenie)){
+        window = 2;
+        window_timer = 0;
+        vigiWeenie.spr_dir = spr_dir;
+        vigiWeenie.x = x;
+        y = vigiWeenie.y;
 
-            
-    move_cooldown[AT_FSPECIAL] = 0;
-    clear_button_buffer(PC_SPECIAL_PRESSED);
+        hsp = round(hsp) + (ground_friction * spr_dir);
+        vigiWeenie.hsp = hsp;
+
+
+        move_cooldown[AT_FSPECIAL] = 0;
+        clear_button_buffer(PC_SPECIAL_PRESSED);
+    } else {
+        attack = AT_FSPECIAL_2;
+        vigiWeenie.spr_dir = spr_dir;
+    }
 }
 
 //Everyting needs to stop if it is on cooldown, except for AT_FSPECIAL.

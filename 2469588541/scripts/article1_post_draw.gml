@@ -7,8 +7,15 @@ if ("state" in self)
 		DrawStarLine(GetClosestStar(0))
 		DrawStarLine(GetClosestStar(1))
 		if (randomIndex == 0) DrawStarLine(GetFarthestStar())
-		with (asset_get("obj_article1")) if (player_id == other.player_id)
-			draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
+		with (asset_get("obj_article1")) if (player_id == other.player_id){
+			// draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
+			with(player_id){
+				shader_start();
+				draw_sprite_ext(other.sprite_index, other.image_index, other.x, other.y, other.spr_dir*2, 2, 0, c_white, 1);
+				shader_end();
+			}
+			
+		}
 	}
 }
 

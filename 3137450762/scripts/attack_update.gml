@@ -745,6 +745,8 @@ if (attack == AT_UAIR){
     grab_victim.y = base_y - 50;
 
     if (window_timer >= uair_window_length){ window = 6; window_timer = 0;}
+    uair_acceleration = 0.1;
+    uair_acceleration_acceleration = 0.038;
   }
 
   //Falling
@@ -753,7 +755,11 @@ if (attack == AT_UAIR){
       grab_victim.x = base_x - 20*spr_dir;
       grab_victim.y = base_y - 50;
 
-      if (window_timer >= uair_window_length){
+      vsp += uair_acceleration;
+      uair_acceleration += uair_acceleration_acceleration;
+      uair_acceleration_acceleration += 0.001;
+
+      if (window_timer >= uair_window_length*0.8){
         //Scale back breaker damage
         backbreaker_damage = min(backbreaker_damage+1, 12);
         set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, backbreaker_damage);
@@ -1289,8 +1295,8 @@ if (attack == AT_USPECIAL){
     //increment window when landing and adjust power
     if (vsp >= 0 && !free){
       // spin speed ranges from about 15 (slow) to 9 (very fast)
-      //formula will produce values from 1.15 to 1.88
-      var kb_formula = max(1.15, 1.81 - (uspecial_spin_speed - 9.5)/7);
+      //formula will produce values from 1 to 1.88
+      var kb_formula = max(1, 1.81 - (uspecial_spin_speed - 9.5)/7);
 
       // exponential version (if desired)
       //var kb_formula = max(1.15, power(1.73 - (uspecial_spin_speed - 9.5)/7, 1.34));

@@ -51,6 +51,9 @@ sprite_change_offset("dspecial", 58, 104);
 sprite_change_offset("dspecial_air", 59, 100);
 sprite_change_offset("taunt", 38, 80);
 
+sprite_change_offset("jestermodeuphurt", 39, 73);
+sprite_change_offset("jestermodeparry", 82, 122);
+
 sprite_change_offset("plat_draw", 84, -1);
 
 sprite_change_offset("ewgf_vfx", 55, 108);

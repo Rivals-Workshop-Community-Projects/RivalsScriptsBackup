@@ -44,4 +44,7 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));

@@ -14,8 +14,8 @@ draw_sprite_ext(sprite_get("target"), 0, has_hit_id.x-70, has_hit_id.y - has_hit
 if (target_time > 0){
 if (targeted == true && maintarget == false){
     with (other_player_id){
-        draw_sprite_ext(sprite_get("target_lock"), 0, other.x, other.y - other.char_height, 1.3, 1.3, 0, scanner_color, 1);
-        draw_sprite_ext(other.sprite_index, other.image_index, other.x, other.y, (1 + other.small_sprites) * other.spr_dir, 1 + other.small_sprites, 0, scanner_color, 1);
+        draw_sprite_ext(sprite_get("target_lock"), 0, other.x, other.y - other.char_height, 1.3, 1.3, 0, scanner_color, 0.3);
+        draw_sprite_ext(other.sprite_index, other.image_index, other.x, other.y, (1 + other.small_sprites) * other.spr_dir, 1 + other.small_sprites, 0, scanner_color, uspecial_scantime);
         }
     }
 }
@@ -24,14 +24,14 @@ if (maintarget == true){
     with (other_player_id){
         draw_sprite_ext(sprite_get("target"), 0, other.x, other.y, 1, 1, 0, scanner_color, 0.9);
                 
-        draw_sprite_ext(sprite_get("target_indicator"), 0, other.x-35 + other.target_X_placement, other.y+40 - other.target_Y_placement, 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number, other.x-34 + other.target_X_placement, other.y+40 - other.target_Y_placement, 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number + other.target_Y_placement, other.x-29 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number * other.target_Y_placement, other.x-24 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number / other.target_Y_placement / 2, other.x-19 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number + other.target_X_placement, other.x-14 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number * other.target_X_placement, other.x-9 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
-        draw_sprite_ext(sprite_get("target_numbers"), other.target_number / other.target_X_placement, other.x-4 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        draw_sprite_ext(sprite_get("target_indicator"), 0, other.x-35 + other.target_X_placement, other.y+40 - other.target_Y_placement, 2, 2, 0, scanner_color, 0.9);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number, other.x-34 + other.target_X_placement, other.y+40 - other.target_Y_placement, 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number + other.target_Y_placement, other.x-29 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number * other.target_Y_placement, other.x-24 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number / other.target_Y_placement / 2, other.x-19 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number + other.target_X_placement, other.x-14 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number * other.target_X_placement, other.x-9 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
+        //draw_sprite_ext(sprite_get("target_numbers"), other.target_number / other.target_X_placement, other.x-4 + other.target_X_placement, other.y+50 - (other.target_Y_placement / other.char_height), 2, 2, 0, scanner_color, 1);
     }
 }
 

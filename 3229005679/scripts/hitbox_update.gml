@@ -11,7 +11,7 @@ case AT_NAIR:
 
     small_sprites = 0;
 
-    if ((attack == AT_JAB && hbox_num == 2) || (attack == AT_NAIR && hbox_num == 1)){
+    if (hbox_num == 2){
 
         if (hitbox_timer > 6 && image_index < 3){
             image_index = 3;

@@ -161,7 +161,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[29,2] = "Giest (Azelinuu)"
     ce[30,0] = make_color_rgb(112, 112, 112)
     ce[30,1] = "Black Pants"
-    ce[30,2] = "(Original Palette)"
+    ce[30,2] = "The best alt Monk has."
     ce[31,0] = make_color_rgb(129, 140, 150)
     ce[31,1] = "Rayhan"
     ce[31,2] = "Rayhan (Azelinuu)"
@@ -256,8 +256,10 @@ if (color_desc_activate){
 }
  
 //ae code end
- 
- 
+
+if "jestermode" not in self jestermode = false;
+
+draw_sprite_ext(sprite_get("JesterModeCSButton"), 0, x + 170, y + 40, 1, 1, 0, !jestermode? c_gray:c_white, 1); 
  
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

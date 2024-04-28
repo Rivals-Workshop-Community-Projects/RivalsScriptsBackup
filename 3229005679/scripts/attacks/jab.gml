@@ -21,7 +21,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 
 //Postcharge
 set_window_value(AT_JAB, 3, AG_WINDOW_TYPE, 0);
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, round(12 / (has_rune("G") + 1)));
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, round(15 / (has_rune("G") + 1)));
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 18);
 
@@ -79,7 +79,7 @@ set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 20);
 set_hitbox_value(AT_JAB, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 6.123);
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_JAB, 2, HG_ANGLE, 50);
+set_hitbox_value(AT_JAB, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 4);

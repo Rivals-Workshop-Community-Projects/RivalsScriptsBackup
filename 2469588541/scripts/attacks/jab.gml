@@ -73,7 +73,7 @@ set_hitbox_value(AT_JAB, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6);
+// set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6); //7axel7
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, smallstar_effect);
 
@@ -90,7 +90,7 @@ set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
+// set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6); //7axel7
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, smallstar_effect);
@@ -105,7 +105,7 @@ set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 50);
 set_hitbox_value(AT_JAB, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_JAB, 3, HG_ANGLE, 361);
-set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 6);
+// set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 6); //7axel7
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_JAB, 3, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 6);

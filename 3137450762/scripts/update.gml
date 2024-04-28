@@ -103,7 +103,6 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
   //Reset the LOYAL FANS if La Reina lands on something other than her ring
 
 if (!free){
-  can_create_air_chair = true;
   reset_fans = max(0, reset_fans-1);
   if (instance_exists(ring_object)) {
     // Check if player is on the platform
@@ -138,8 +137,14 @@ if (!free){
     ring_object.sprite_index = ring_object.table_empty_sprite_index;
     ring_object.destroy_self = true;
   }
+
+  if air_chair_died {
+    move_cooldown[AT_NSPECIAL] = max(2, move_cooldown[AT_NSPECIAL]);
+    move_cooldown[AT_DSPECIAL] = max(2, move_cooldown[AT_DSPECIAL]);
+  }
 }
 if reset_fans <= 0 { ring_summon_count = 0; ring_height_decay = 0; }
+if (!free && ring_summon_count = 0) {can_create_air_chair = true; air_chair_died = false;}
 
 secret_nspecial_cooldown = max(0, secret_nspecial_cooldown - 1);
 move_cooldown[AT_NSPECIAL] = max(secret_nspecial_cooldown, move_cooldown[AT_NSPECIAL]);
@@ -157,6 +162,7 @@ if (instance_exists(myChair)){
 else{
   var dspecial_target_cooldown = move_cooldown[AT_DSPECIAL];
   if !free {dspecial_target_cooldown = 0;}
-  move_cooldown[AT_DSPECIAL] = max(dspecial_target_cooldown, move_cooldown[AT_NSPECIAL]);
+  //move_cooldown[AT_DSPECIAL] = max(dspecial_target_cooldown, move_cooldown[AT_NSPECIAL]);
   has_rolling_girl = false;
 }
+print(air_chair_died)

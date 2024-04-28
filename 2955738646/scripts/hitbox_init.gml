@@ -1,11 +1,13 @@
 //Updating initializer
 
-moved = false;
 spark = false;
 spark_rng = random_func(0, 3, true);
 spark_dist = random_func(0, 20, false);
 
-hit_player_id = noone;
+if (attack == AT_DTILT){
+	force_depth = true;
+	depth = depth+5;
+}
 
 if (attack == AT_USPECIAL_2 ){
 	if (hbox_num >= 3 && hbox_num <= 6){ 

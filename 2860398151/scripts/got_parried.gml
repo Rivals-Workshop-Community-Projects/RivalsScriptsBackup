@@ -66,12 +66,12 @@ if (attack == AT_DSPECIAL_2)
 	}
 }
 
-// Reset DAIR's projectile
+// Reset AT_NSPECIAL_2's projectile
 if (my_hitboxID.attack == AT_NSPECIAL_2 && my_hitboxID.type == 2) 
 {
     //reset the projectile's lifetime
     
 	my_hitboxID.hitbox_timer 	= 0;
-	my_hitboxID.hsp 			*= 1.4;
+	my_hitboxID.hsp 			*= 1.5;
     my_hitboxID.length 			/= 1.5;
 }

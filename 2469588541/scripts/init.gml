@@ -184,6 +184,25 @@ afterImageTimer = 0;
 afterImageMax = 16;
 afterImage = array_create(afterImageMax, -1);
 
+// 7axel7 waveshine training
+waveshineTimer = 0;
+shineReleaseFrame = 0;
+jumpSquatFrame = 0;
+airDodgeFrame = 0;
+shieldPressFrame = 0;
+shineHitPlayer = false;
+waveShineScore = 0;
+releaSuccess = "!";
+squatSuccess = "!";
+dodgeSuccess = "!";
+pressSuccess = "!";
+latehSuccess = "!";
+hideBlurb = false;
+techChaseTrainingTimer = 0;
+techTimer = 0;
+techInPlaceCatchFrame = 0;
+techCatchSuccess = "!";
+
 // Support
 Hikaru_Title = "Starry Fox";
 personaQuips[10] = "Go back to space!";

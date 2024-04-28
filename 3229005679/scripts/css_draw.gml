@@ -89,7 +89,6 @@ switch (alt_palette){
 	case 27:
 		draw_debug_text(xL, yL, "Completely Normal Cheese");
 	break;
-
 }
 
 

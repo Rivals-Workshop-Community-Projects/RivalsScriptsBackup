@@ -67,34 +67,37 @@ if (my_hitboxID.attack == AT_DATTACK)
 
 if (my_hitboxID.attack == AT_FSTRONG)
 {
-	if (my_hitboxID.hbox_num == 1)
+	if (!muted)
 	{
-		var smash_bash = random_func(0, 6, true);		
-		switch(smash_bash) 
+		if (my_hitboxID.hbox_num == 1)
 		{
-			case 0:
-			sound_play(sound_get("explosion 1"), false, noone, 2);
-			break;
-			
-			case 1:
-			sound_play(sound_get("explosion 2"), false, noone, 2);
-			break;
+			var smash_bash = random_func(0, 6, true);		
+			switch(smash_bash) 
+			{
+				case 0:
+				sound_play(sound_get("explosion 1"), false, noone, 2);
+				break;
 				
-			case 2:
-			sound_play(sound_get("explosion 3"), false, noone, 2);
-			break;
-				
-			case 3:
-			sound_play(sound_get("explosion 4"), false, noone, 2);
-			break;
+				case 1:
+				sound_play(sound_get("explosion 2"), false, noone, 2);
+				break;
+					
+				case 2:
+				sound_play(sound_get("explosion 3"), false, noone, 2);
+				break;
+					
+				case 3:
+				sound_play(sound_get("explosion 4"), false, noone, 2);
+				break;
 
-			case 4:
-			sound_play(sound_get("explosion 5"), false, noone, 2);
-			break;
-				
-			case 5:
-			sound_play(asset_get("explosion 6"), false, noone, 2);
-			break;			
+				case 4:
+				sound_play(sound_get("explosion 5"), false, noone, 2);
+				break;
+					
+				case 5:
+				sound_play(asset_get("explosion 6"), false, noone, 2);
+				break;			
+			}
 		}
 	}
 }
@@ -131,68 +134,74 @@ if (my_hitboxID.attack == AT_UAIR)
 
 if (my_hitboxID.attack == AT_FAIR) 
 {	
-	if (my_hitboxID.hbox_num == 2)
-	{		
-		var spike1 = random_func(0, 6, true);		
-		switch(spike1) 
-		{
-			case 0:
-			sound_play(sound_get("spike 1"), false, noone, 1.25);
-			break;
-			
-			case 1:
-			sound_play(sound_get("spike 2"), false, noone, 1.25);
-			break;
+	if (!muted)
+	{
+		if (my_hitboxID.hbox_num == 2)
+		{		
+			var spike1 = random_func(0, 6, true);		
+			switch(spike1) 
+			{
+				case 0:
+				sound_play(sound_get("spike 1"), false, noone, 1.25);
+				break;
 				
-			case 2:
-			sound_play(sound_get("spike 3"), false, noone, 1.25);
-			break;
-				
-			case 3:
-			sound_play(sound_get("spike 4"), false, noone, 1.25);
-			break;
+				case 1:
+				sound_play(sound_get("spike 2"), false, noone, 1.25);
+				break;
+					
+				case 2:
+				sound_play(sound_get("spike 3"), false, noone, 1.25);
+				break;
+					
+				case 3:
+				sound_play(sound_get("spike 4"), false, noone, 1.25);
+				break;
 
-			case 4:
-			sound_play(sound_get("spike 5"), false, noone, 1.25);
-			break;
+				case 4:
+				sound_play(sound_get("spike 5"), false, noone, 1.25);
+				break;
 
-			case 5:
-			sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
-			break;				
+				case 5:
+				sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
+				break;				
+			}
 		}
 	}
 }
 
 if (my_hitboxID.attack == AT_BAIR) 
 {	
-	if (my_hitboxID.hbox_num == 2)
-	{		
-		var spike2 = random_func(0, 6, true);		
-		switch(spike2) 
-		{
-			case 0:
-			sound_play(sound_get("spike 1"), false, noone, 1.25);
-			break;
-			
-			case 1:
-			sound_play(sound_get("spike 2"), false, noone, 1.25);
-			break;
+	if (!muted)
+	{
+		if (my_hitboxID.hbox_num == 2)
+		{		
+			var spike2 = random_func(0, 6, true);		
+			switch(spike2) 
+			{
+				case 0:
+				sound_play(sound_get("spike 1"), false, noone, 1.25);
+				break;
 				
-			case 2:
-			sound_play(sound_get("spike 3"), false, noone, 1.25);
-			break;
-				
-			case 3:
-			sound_play(sound_get("spike 4"), false, noone, 1.25);
-			break;
+				case 1:
+				sound_play(sound_get("spike 2"), false, noone, 1.25);
+				break;
+					
+				case 2:
+				sound_play(sound_get("spike 3"), false, noone, 1.25);
+				break;
+					
+				case 3:
+				sound_play(sound_get("spike 4"), false, noone, 1.25);
+				break;
 
-			case 4:
-			sound_play(sound_get("spike 5"), false, noone, 1.25);
-			break;
+				case 4:
+				sound_play(sound_get("spike 5"), false, noone, 1.25);
+				break;
 
-			case 5:
-			sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
-			break;	
+				case 5:
+				sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
+				break;	
+			}
 		}
 	}
 }
@@ -212,32 +221,35 @@ if (my_hitboxID.attack == AT_DAIR)
 		move_cooldown[AT_DAIR] 	= 26;
 		move_cooldown[AT_DTILT] = 26;		//	Rune mayhem
 		
-		var spike3 = random_func(0, 6, true);		
-		switch(spike3) 
+		if (!muted)
 		{
-			case 0:
-			sound_play(sound_get("spike 1"), false, noone, 1.25);
-			break;
-			
-			case 1:
-			sound_play(sound_get("spike 2"), false, noone, 1.25);
-			break;
+			var spike3 = random_func(0, 6, true);		
+			switch(spike3) 
+			{
+				case 0:
+				sound_play(sound_get("spike 1"), false, noone, 1.25);
+				break;
 				
-			case 2:
-			sound_play(sound_get("spike 3"), false, noone, 1.25);
-			break;
-				
-			case 3:
-			sound_play(sound_get("spike 4"), false, noone, 1.25);
-			break;
+				case 1:
+				sound_play(sound_get("spike 2"), false, noone, 1.25);
+				break;
+					
+				case 2:
+				sound_play(sound_get("spike 3"), false, noone, 1.25);
+				break;
+					
+				case 3:
+				sound_play(sound_get("spike 4"), false, noone, 1.25);
+				break;
 
-			case 4:
-			sound_play(sound_get("spike 5"), false, noone, 1.25);
-			break;
+				case 4:
+				sound_play(sound_get("spike 5"), false, noone, 1.25);
+				break;
 
-			case 5:
-			sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
-			break;		
+				case 5:
+				sound_play(sound_get("sfx_meteor"), false, noone, 0.75);
+				break;		
+			}
 		}
 	}
 }
@@ -281,32 +293,35 @@ if (my_hitboxID.attack == AT_DSPECIAL_2)
 	{		
 		sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.80);
 		
-		var smash_bash2 = random_func(0, 6, true);		
-		switch(smash_bash2) 
+		if (!muted)
 		{
-			case 0:
-			sound_play(sound_get("explosion 1"), false, noone, 2);
-			break;
-			
-			case 1:
-			sound_play(sound_get("explosion 2"), false, noone, 2);
-			break;
+			var smash_bash2 = random_func(0, 6, true);		
+			switch(smash_bash2) 
+			{
+				case 0:
+				sound_play(sound_get("explosion 1"), false, noone, 2);
+				break;
 				
-			case 2:
-			sound_play(sound_get("explosion 3"), false, noone, 2);
-			break;
-				
-			case 3:
-			sound_play(sound_get("explosion 4"), false, noone, 2);
-			break;
+				case 1:
+				sound_play(sound_get("explosion 2"), false, noone, 2);
+				break;
+					
+				case 2:
+				sound_play(sound_get("explosion 3"), false, noone, 2);
+				break;
+					
+				case 3:
+				sound_play(sound_get("explosion 4"), false, noone, 2);
+				break;
 
-			case 4:
-			sound_play(sound_get("explosion 5"), false, noone, 2);
-			break;
-				
-			case 5:
-			sound_play(asset_get("explosion 6"), false, noone, 2);
-			break;			
+				case 4:
+				sound_play(sound_get("explosion 5"), false, noone, 2);
+				break;
+					
+				case 5:
+				sound_play(asset_get("explosion 6"), false, noone, 2);
+				break;			
+			}
 		}
 	}
 }

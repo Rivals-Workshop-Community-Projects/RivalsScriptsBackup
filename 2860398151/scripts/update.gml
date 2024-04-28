@@ -22,6 +22,21 @@ spr_dir = phone_cheats[CHEAT_WIDE] * sign(spr_dir);
 if phone_cheats[CHEAT_RECOIL] with pHitBox if player_id == other can_hit_self = 1;
 
 //===============================================================================================
+//  Mute city
+
+//	CSS Button Toggle Control
+if (get_synced_var(player) == 1)
+{
+	muted = true;
+}
+
+if (get_synced_var(player) == 0)
+{
+	muted = false;
+}
+
+//===============================================================================================
+//  General Stuff
 
 if (state == PS_SPAWN)
 {
@@ -68,8 +83,13 @@ else if (energy_meter > 24)
 	move_cooldown[AT_DSPECIAL] 	= 0;
 }
 
-//===============================================================================================
+//	Grab Reset Zone
+if (state_cat == SC_HITSTUN || (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND))
+{
+    grabbed_player_obj 	= noone;
+}
 
+//===============================================================================================
 //------------------------Dialogue Buddy-------------------------------------
 
 if(variable_instance_exists(id,"diag"))
@@ -272,7 +292,7 @@ if(variable_instance_exists(id,"diag"))
 				diag_nrs_diag = [
                 "Ladies must love playing strip poker with you friend.",
                 "Sir! I am a professional.",
-                "Oh, I'm bad I'm purpose I don't need any tips."]
+                "Oh, my bad. I guess I don't need any tips."]
             }
         }
     }
@@ -306,9 +326,117 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "If you don't ask for help you won't get any, it's just that simple. ",
+                "If you don't ask for help you won't get any, it's just that simple.",
                 "I'LL HELP YOU TO YOUR GRAVE!",
                 "That ain't gonna be simple."]
+            }
+        }
+    }	
+
+    //	Shantae 
+    if(otherUrl == 2890757258)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "If I wish for a pizza do you want a slice?",
+                "Of course!  I could always go for some pizza.",
+                "Sexcellent!"]
+            }
+        }
+    }	
+
+    //	Disco 
+    if(otherUrl == 2941534514)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Left Left right right spin and turn and great big smile!",
+                "Okaaay... Here I go! Bom-para-para... Bom-pah-pah... Raise the cave... Respect the beat!",
+                "Walk without rhythm, it won't attract the worm."]
+            }
+        }
+    }	
+
+    //	Masky 
+    if(otherUrl == 2987065763)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Is that your real voice or did you swallow a gravel truck for breakfast?",
+                "Speak for yourself, you grease loving gremlin.",
+                "..."]
+            }
+        }
+    }	
+
+    //	Spark 
+    if(otherUrl == 3040171673)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Sorry, we're not hiring clowns.",
+                "I'm not a clown. I'm a street performer!",
+                "There's a difference?"]
+            }
+        }
+    }	
+
+    //	Bowsette 
+    if(otherUrl == 3122481848)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Sorry, but your princess is in another workshop.",
+                "What does that even mean?",
+                "The Suits are watching."]
+            }
+        }
+    }	
+
+    //	RyeGuy & Beaky 
+    if(otherUrl == 3203302945)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "A Sword, a Bird, an Egg, birdhouses and even a slingshot. But you're missing one thing...",
+                "Beaky: We have pizza and we're not sharing!",
+                "#&$@?!"]
             }
         }
     }	
@@ -360,36 +488,42 @@ if (state == PS_SPAWN)
 	}	
 }
 
-if (state == PS_RESPAWN && state_timer == 2)
+if (!muted)
 {
-	if (get_player_stocks( player ) == 1) 
-	{
-		sound_play(sound_get("Kodiak final stock"));
-	}
-}	
+    if (state == PS_RESPAWN && state_timer == 2)
+    {
+        if (get_player_stocks( player ) == 1) 
+        {
+            sound_play(sound_get("Kodiak final stock"));
+        }
+    }	
 
-//	Anime
-if (attack == AT_USTRONG || attack == AT_FSTRONG || attack == AT_DSTRONG)
-{
-	if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
-	{
-		sound_play(sound_get("Kodiak This is it"), false, noone, 2);	
-	}
-}
+    //	Anime
+    if (attack == AT_USTRONG || attack == AT_FSTRONG || attack == AT_DSTRONG)
+    {
+        if (instance_exists(hit_player_obj))
+        {
+            if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+            {
+                sound_play(sound_get("Kodiak This is it"), false, noone, 2);	
+            }
+        }
+    }
 
 
-if (attack == AT_DSPECIAL)
-{
-	if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
-	{
-		sound_play(sound_get("Kodiak Down Special final connect"), false, noone, 2);	
-	}
-}
+    if (attack == AT_DSPECIAL)
+    {
+        if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+        {
+            sound_play(sound_get("Kodiak Down Special final connect"), false, noone, 2);	
+        }
+    }
 
-if (attack == AT_DSPECIAL_2)
-{
-	if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
-	{
-		sound_play(sound_get("Kodiak Bear Down Special final connect"), false, noone, 2);	
-	}
+    if (attack == AT_DSPECIAL_2)
+    {
+        if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+        {
+            sound_play(sound_get("Kodiak Bear Down Special final connect"), false, noone, 2);	
+        }
+    }
 }

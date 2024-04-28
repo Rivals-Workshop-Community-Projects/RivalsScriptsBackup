@@ -344,7 +344,7 @@ case AT_BAIR:
 
         } else {
 
-            if ((window_timer >= 3 && window_timer < 6) || (window_timer > 8)){
+            if (floor(window_timer / 4) % 2 == 0){
                 strong_flashing = true;
             }
 
@@ -589,6 +589,21 @@ case AT_FSPECIAL:
 
 break;
 
+case AT_FSPECIAL_2:
+
+    if (instance_exists(vigiWeenie) && window == 1 && window_timer == get_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH)){
+        vigiWeenie.hsp = 15 * spr_dir
+
+        vigiWeenie.sprite_index = sprite_get("weenieDash");
+        vigiWeenie.image_index = 5;
+
+        vigiWeenie.state = 7;
+        vigiWeenie.state_timer = 0;
+
+        sound_play(sound_get("sfx_killingblow"), false, noone, 1, 1);
+    }
+
+break;
 
 case AT_DTILT:
 

@@ -26,6 +26,7 @@ if ("practice" in self)
 				AddText("Lore / Story");
 				AddText("Spawn Star");
 				AddText("Final Smash");
+				AddText("Waveshine Training");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -633,6 +634,23 @@ if ("practice" in self)
 						AddText("");
 						AddText("Reworked Rune O to spawn a trail of stars with DSpec");
 						break;
+					case 33:
+						AddText("v2.0 - 22 Apr 2024");
+						AddText("The @7axel7 Patch");
+						AddText("");
+						AddText("Removed angle flipper 6 from FAir, and Jab");
+						AddText("BAir sourspot longer hitpause 6+0.7 -> 8+0.9");
+						AddText("Made DAttack1 connect better, gave DAttack 2 frames more endlag and 3 frames more whifflag");
+						AddText("");
+						AddText("Added flinch normalization code for Jab1 and start of DAir, now flinch ignores weight variable.");
+						AddText("(Very slight nerf against light characters and very slight buff against heavies)");
+						AddText("");
+						AddText("Shine release consistency (buffered jump makes shine activate)");
+						AddText("Removed paw particles hurtbox from bair");
+						AddText("");
+						AddText("Added waveshine training mode in practice tool, which gives an explanation, information about the inputs, and a few scenarios");
+						AddText("Fixed the color of constellation stars on non base alts");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -748,12 +766,35 @@ if ("practice" in self)
 				DrawTutorialBlock();
 				DrawTutorialText();
 				break;
+			case 9:
+				AddText("Waveshine Info");
+				AddText("Hit Training");
+				AddText("RNG Hit Training");
+				AddText("Techchase Training");
+				DrawTutBlock();
+				DrawTutText();
+				break;
+			case 10:
+				if(!hideBlurb && tutPrevMenu == 0)
+				{
+					AddText("Right after using Nspecial, you can cancel it into a jump");
+					AddText("Then airdodge to the ground or a platform repeatedly to 'Waveshine'");
+					AddText("You need to time the airdodge to have it buffered");
+					AddText("after hitpause is over if you hit an enemy");
+					AddText("This can be used to cover multiple tech options");
+					AddText("The text below gives you additional information about your waveshining");
+				}
+				DrawWaveshineGuide();
+				DrawTutorialBlock();
+				DrawTutorialText();
+				break;
 		}
 		draw_set_alpha(1);
 	}
 	else if (aura)
 		draw_debug_text(temp_x + 128, temp_y - 10, "Galaxy Fox");
 }
+
 
 #define DrawText(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {
@@ -835,4 +876,107 @@ if ("practice" in self)
 #define LineBreak()
 {
 	AddText("-----------------");
+}
+
+#define DrawWaveshineGuide()
+{
+	if (waveshineTimer == 1)
+	{
+		releaSuccess = "!";
+		squatSuccess = "!";
+		dodgeSuccess = "!";
+		pressSuccess = "!";
+		latehSuccess = "!";
+		waveShineScore = 0;
+	}
+	if (!shineHitPlayer)
+	{
+		if (jumpSquatFrame == 4 && squatSuccess == "!")
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+		if (airDodgeFrame == 9 && dodgeSuccess == "!")
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+		//check for aerial shine cancel
+		if (airDodgeFrame == 4 && dodgeSuccess == "!")
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+		if (airDodgeFrame == 4 && squatSuccess == "!")
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+	}
+	else
+	{
+		if (jumpSquatFrame == 9 && squatSuccess == "!")
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+		if (airDodgeFrame == 14 && dodgeSuccess == "!")
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+		//check for aerial shine cancel
+		if (airDodgeFrame == 9 && dodgeSuccess == "!")
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+		if (airDodgeFrame == 9 && squatSuccess == "!")
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+	}
+	if ((shineReleaseFrame == 0 || shineReleaseFrame == 1) && releaSuccess == "!")
+	{
+		releaSuccess = "|";
+		waveShineScore++;
+	}
+	if (2 <= shieldPressFrame && shieldPressFrame <= 9 && pressSuccess == "!")
+	{
+		pressSuccess = "|";
+		waveShineScore++;
+	}
+	if (7 <= shieldPressFrame && shieldPressFrame <= 14 && latehSuccess == "!")
+	{
+		latehSuccess = "|";
+		waveShineScore++;
+	}
+
+	if (techCatchSuccess == "!")
+	{
+		if (techInPlaceCatchFrame >= 13 && techInPlaceCatchFrame <= 18)
+			techCatchSuccess = "|";
+	}
+	var frameShow = shineHitPlayer?min(waveshineTimer,14):min(waveshineTimer,9);
+
+	if (waveShineScore == 5 && waveshineTimer > 9 && (tutPrevMenu != 3 || techCatchSuccess = "|"))
+	{
+		waveShineScore = 0;
+		sound_play(sound_get("sfx_cursor"),0,-4, 0.45);
+		hideBlurb = true;
+	}
+
+	AddText("-------------------------");
+	AddText("Shine Release Frame (0 to 1)    " + releaSuccess + string(shineReleaseFrame));
+	AddText("Jump Squat Frame   (4 or 9)    " + squatSuccess + string(jumpSquatFrame));
+	AddText("Air Dodge Frame:     (9 or 14).  " + dodgeSuccess + string(airDodgeFrame));
+	AddText("Miss Shield Frame:   (2 to 9)    " + pressSuccess + string(shieldPressFrame));
+	AddText("Hit Shield Frame:     (7 to 14).  " + latehSuccess + string(shieldPressFrame));
+	AddText("Current Frame:                    " + "|"          + string(frameShow));
+	if(tutPrevMenu == 3){
+		AddText("Ground Tech Frame:  (13 to 18) " + techCatchSuccess + string(techInPlaceCatchFrame));
+		AddText("techTimer:.                         " + "|" + string(techTimer));
+	}
+	// AddText("Score: " + string(waveShineScore));
 }

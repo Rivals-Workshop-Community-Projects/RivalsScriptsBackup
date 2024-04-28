@@ -42,10 +42,16 @@ SetAttack();
 		{
 		    ai_recovering2 = true;
 		}
-		else if (free && (point_distance(x,y,(x>room_width/2?room_width:0),room_height)<((stage_y >= 800)?point_distance((x>room_width/2?room_width:0),room_height, ((x>room_width/2)?3:1)*floor(room_width/4), topcustom):point_distance((x>room_width/2?room_width:0),room_height, (x>room_width/2?room_width-stage_x:stage_x), stage_y))))
-		{
-			ai_recovering2 = true;
-			ai_state = AS_RECOVER;
+		else if (free) {
+			var blast_zone_x = (x>room_width/2?room_width:0);
+			var dist_to_bottom_corner = point_distance(x,y,blast_zone_x,room_height);
+			var guess_dist_offstage_diagonal = point_distance(blast_zone_x,room_height, ((x>room_width/2)?3:1)*floor(room_width/4), topcustom);
+			var dist_offstage_diagonal = point_distance(blast_zone_x,room_height, (x>room_width/2?room_width-stage_x:stage_x), stage_y);
+			if (dist_to_bottom_corner<((stage_y >= 800)?guess_dist_offstage_diagonal:dist_offstage_diagonal))
+			{
+				ai_recovering2 = true;
+				ai_state = AS_RECOVER;
+			}
 		}
 		
 		ai_recovering = ai_recovering2;
@@ -239,8 +245,8 @@ SetAttack();
 					DoAttack(StarCount()>=4?AT_UAIR:AT_FSPECIAL);
 				else if (ai_target.state_cat == SC_HITSTUN && dist < 300 && CloseToAStar())
 					DoAttack(AT_NSPECIAL);
-				else if (ai_state==AS_NEUTRAL && dist < 100 && !free && state != PS_FIRST_JUMP && !ai_target.was_parried)
-					DoAttack(AT_NSPECIAL);
+				// else if (ai_state==AS_NEUTRAL && dist < 100 && !free && state != PS_FIRST_JUMP && !ai_target.was_parried)
+				// 	DoAttack(AT_NSPECIAL);
 				else if (!free && ydist < 80 && xdist < 50)
 					DoAttack(AT_USTRONG);
 				else if (!free && ydist < 20 && xdist < 70)
@@ -256,7 +262,7 @@ SetAttack();
 				}
 				else if (free && ydist < 60 && xdist < 40)
 					DoAttack(ai_target.y>y?AT_DAIR:AT_UAIR);
-				else if (attack != AT_DSPECIAL && ai_target.y<y-80) DoAttack(AT_DSPECIAL);
+				else if (attack != AT_DSPECIAL && ai_target.y<y-80 && move_cooldown[AT_DSPECIAL] == 0) DoAttack(AT_DSPECIAL);
 			}
 			break;		
 	}
@@ -333,6 +339,7 @@ SetAttack();
 			break;
 		case AT_UTILT:
 			HoldTowardsTarget();
+			ReverseHold();
 		case AT_UAIR:
 			up_down = true;
 			attack_pressed = true;
@@ -387,6 +394,7 @@ SetAttack();
 			down_strong_down = true;
 			break;
 		case AT_USTRONG:
+			HoldTowardsTarget();
 			up_strong_pressed = true;
 			up_strong_down = true;
 			break;

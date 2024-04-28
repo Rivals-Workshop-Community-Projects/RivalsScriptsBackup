@@ -13,6 +13,15 @@ switch combo_shake{
 }
 if combo_counter > 1 textDraw(temp_x + 116 + (shake), temp_y - 26, "fName", combo_type == "RED"? c_orange:c_aqua, 14, 400, 2, true, 1, (combo_counter > 999? "A LOT OF":string(combo_counter)) + " HITS", combo_type == "RED"? c_red:c_blue);
 combo_shake = clamp(combo_shake - 1, 0, 2);
+
+if jestermode == true && state == PS_SPAWN{
+    textDraw(temp_x + 100, temp_y - 4, "fName", c_white, 14, 400, 1, true, 1, "Samsara looms, watching its jester.", c_black);
+}
+
+if jestermode == false && (state == PS_SPAWN && get_match_setting(SET_PRACTICE)){
+    textDraw(temp_x + 100, temp_y - 4, "fName", c_white, 14, 400, 1, true, 1, "PRESS TAUNT + UP FOR JESTER MODE", c_black);
+}
+
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string, outline_c)
 
 draw_set_font(asset_get(argument[2]));

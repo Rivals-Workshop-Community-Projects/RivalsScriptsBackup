@@ -1,10 +1,10 @@
 //La Reina colors.gml
-set_num_palettes( 15 );
+set_num_palettes( 16 );
 
 // La Reina (Default)
 var edit_color = 0;
-set_color_profile_slot(edit_color, 0, 159, 68, 120); //COLOR SLOT 1: Clothes
-set_color_profile_slot(edit_color, 1, 122, 32,  39 ); //COLOR SLOT 0: Body
+set_color_profile_slot(edit_color, 0, 159, 68, 120); //COLOR SLOT 0: Clothes
+set_color_profile_slot(edit_color, 1, 122, 32,  39 ); //COLOR SLOT 1: Body
 set_color_profile_slot(edit_color, 2, 230, 165,  167); //COLOR SLOT 2: Antennae
 set_color_profile_slot(edit_color, 3, 92, 179, 195); //COLOR SLOT 3: Claws
 set_color_profile_slot(edit_color, 4, 133, 162, 168); //COLOR SLOT 4: Steel
@@ -57,7 +57,7 @@ set_color_profile_slot(edit_color, 2, 154, 72, 31);
 set_color_profile_slot(edit_color, 3, 214, 198, 177);
 set_color_profile_slot(edit_color, 4, 200, 150, 85);
 
-edit_color = 6; // Ironclad Faith (Potemkin)
+edit_color = 6; // Ironclad (Potemkin)
 set_color_profile_slot(edit_color, 0, 88, 85, 87);
 set_color_profile_slot(edit_color, 1, 62, 91, 45);
 set_color_profile_slot(edit_color, 2, 214, 198, 177);
@@ -113,22 +113,16 @@ set_color_profile_slot(edit_color, 2, 245, 253, 255);
 set_color_profile_slot(edit_color, 3, 245, 253, 255);
 set_color_profile_slot(edit_color, 4, 121, 121, 140);
 
-/* edit_color = 15; // Honorless
-set_color_profile_slot(edit_color, 0, 205, 205, 205);
-set_color_profile_slot(edit_color, 1, 260, 260, 260);
-set_color_profile_slot(edit_color, 2, 214, 218, 220);
-set_color_profile_slot(edit_color, 3, 300, 80, 100);
-set_color_profile_slot(edit_color, 4, 250, 60, 40); */
-
-edit_color = 14; // DT
+edit_color = 14; // Champion
 set_color_profile_slot(edit_color, 0, 254, 180, 10);
 set_color_profile_slot(edit_color, 1, 60, 6, 90);
 set_color_profile_slot(edit_color, 2, 255, 255, 199);
 set_color_profile_slot(edit_color, 3, 275, 100, 335);
 set_color_profile_slot(edit_color, 4, 320, 300, 180);
 
-/* set_color_profile_slot(edit_color, 0, 110, 10, 230);
-set_color_profile_slot(edit_color, 1, 254, 224, 25);
-set_color_profile_slot(edit_color, 2, 255, 255, 199);
-set_color_profile_slot(edit_color, 3, 280, 150, 30);
-set_color_profile_slot(edit_color, 4, 160, 50, 230); */
+edit_color = 15; // Honorless
+set_color_profile_slot(edit_color, 0, 205, 205, 205);
+set_color_profile_slot(edit_color, 1, 75, 120, 160);
+set_color_profile_slot(edit_color, 2, 185, 20, 20);
+set_color_profile_slot(edit_color, 3, 250, 220, 180);
+set_color_profile_slot(edit_color, 4, 150, 45, 70);

@@ -27,7 +27,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USTRONG, 2);
 
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 9);
@@ -35,6 +35,15 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -89);
 set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 62);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 51);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 6);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_USTRONG, 1, HG_EFFECT, has_rune("N")? 10:0);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);

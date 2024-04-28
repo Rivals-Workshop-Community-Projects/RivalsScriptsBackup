@@ -186,10 +186,9 @@ if (state == 4){
 	image_angle += 35*spr_dir;
 }
 
-//State 4: It's dying
+//State 5: It's dying
 if (state == 5){
 	sprite_index = asset_get("empty_sprite");
-
 }
 
 

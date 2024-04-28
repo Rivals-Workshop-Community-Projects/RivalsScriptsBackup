@@ -61,12 +61,12 @@ if (state == 0){
 		grapple_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y-20);
 	}
 	sprite_index = sprite_get("grapple_hook");
-	hsp = 30*spr_dir;
+	hsp = 20*spr_dir;
 }
 
 //State 1: Going Back
 if (state == 1){
-	hsp = -60*spr_dir;
+	hsp = -40*spr_dir;
 }
 
 if (player_id.grapple_pull_back > 0){

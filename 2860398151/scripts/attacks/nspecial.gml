@@ -43,7 +43,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.40);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.40);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.50);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.65);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("sfx_kiIMPACT"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_ki_impact);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));

@@ -388,7 +388,72 @@ if (color_desc_activate){
 
 //ae code end
 
+//----------------------------CSS Button stuff
 
+if (player == 0)
+{ 
+	//	player online
+	var posX = 16;
+	var posY = 48;
+}
+
+else
+{
+	if (get_player_hud_color(player) == 8421504)
+	{ 
+		//	if CPU offline
+		var posX = 58;
+		var posY = 178;
+	}
+	
+	else
+	{ 
+		//	if player offline
+		var posX = 74;
+		var posY = 178;
+	}
+}
+
+var cursedBW 	= 30;
+var cursedBH 	= 26;
+var cursedXLim 	= x + posX;
+var cursedYLim 	= y + posY;
+
+if (get_synced_var(player) > 2) 
+{
+	set_synced_var(player, 0);
+}
+
+draw_sprite_ext(sprite_get("mutebuttons"), sound_cycle, x + posX, y + posY, 1, 1, 0, c_white, 1);
+
+if (sound_control > 0)
+{
+	draw_sprite_ext(sprite_get("mutestatus"), get_synced_var(player), 
+	temp_x + 164, temp_y + 50 + floor(sound_control*1.5), 1, 1, 0, 
+	c_white, sound_control > 20 ? 1 : (1 - (20-sound_control)/20));
+}
+
+//	Credit goes to Supersonic for these CSS scripts
+
+cpu_hover_draw(); 
+//	you can put this anywhere above your #defines.
+//	i would recommend ending the shader first (shader_end();)
+
+//	as always, #defines go at the bottom of the script.
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) 
+{
+    var prog 		= min(cpu_hover_time/10, 1);
+    var colprog 	= min(cpu_color_swap_time/5, 1);
+    var col 		= merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    
+	draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
+}
+
+//----------------------------
 
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

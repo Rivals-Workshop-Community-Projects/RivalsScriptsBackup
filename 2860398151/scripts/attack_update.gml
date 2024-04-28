@@ -192,6 +192,12 @@ if (attack == AT_DAIR)
 		{
 			dairad = 0;
 		}
+
+		if (window_timer == 12 && !hitpause)
+		{
+			sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.80);
+			sound_play(asset_get("sfx_swipe_medium2"), false, noone, 0.80);
+		}
 	}
 	
 	if (window == 3)
@@ -206,6 +212,8 @@ if (attack == AT_DAIR)
 			
 			sound_play(asset_get("sfx_land_heavy"));
 			sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.40);
+
+			array_push(phone_dust_query, [x, y, "land", spr_dir]);
 		}
 	}
 	
@@ -638,6 +646,11 @@ if (attack == AT_USPECIAL)
 		{
 			vsp = -16.5;
 		}		
+	}
+
+	if (window == 3 && window_timer > 2)
+	{
+		can_move = true;
 	}
 	
 	if (window == 4)

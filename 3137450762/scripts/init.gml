@@ -127,6 +127,7 @@ active_landing_fx = noone;
 
 //BAH GAWHD, SHE'S PULLING OUT THE STEEL CHAIR!
 can_create_air_chair = true;
+air_chair_died = false;
 myChair = noone;
 magnet_dash_x = 0;
 magnet_dash_y = 0;
@@ -198,6 +199,7 @@ afterimage_colour_array = [
   make_colour_rgb(255, 50, 50), // genesis
   make_colour_rgb(0,  120, 255), // gracefulknight
   make_colour_rgb(250, 30, 255), // ETDT
+  make_colour_rgb(150, 40, 63), // honorless
 ]
 afterimage_colour = afterimage_colour_array[get_player_color( player )];
 
@@ -220,8 +222,10 @@ rolling_hit_sfx = asset_get("sfx_boss_shine");
 //Dash attack variable
 dattack_starting_y = 0;
 
-//Uair variable
+//Uair variables
 backbreaker_damage = 4;
+uair_acceleration = 0.1;
+uair_acceleration_acceleration = 0.038;
 
 //Taunt variables
 selected_taunt = noone;

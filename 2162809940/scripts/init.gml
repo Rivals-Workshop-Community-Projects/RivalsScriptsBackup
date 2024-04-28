@@ -16,6 +16,13 @@ otto_bobblehead_sprite = sprite_get("bobblehead");
 pkmn_stadium_front_img = sprite_get("pkmn_front");
 pkmn_stadium_back_img = sprite_get("pkmn_back");
 
+//mt dedede support
+arena_title = "The Space-Bound Slugger";
+
+//pumbo support
+pot_compat_variable = sprite_get("pumbodish");
+pot_compat_text = "Rice Ball";
+
 //rainbow alt
 hue = 0;
 timermod = 35;

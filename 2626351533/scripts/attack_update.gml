@@ -92,6 +92,10 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_FSPECIAL){
     can_fast_fall = false;
     //About to shoot the grapple on the ground/air
+    if (window == 1 && window_timer >= 8 && free){
+    	vsp = 0;
+    	hsp *= 0.5;
+    }
     if (window == 2){
     	fspecial_hit = false;
         grapple_cont = 0;

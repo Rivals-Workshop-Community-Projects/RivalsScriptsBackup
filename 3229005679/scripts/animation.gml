@@ -24,7 +24,10 @@ if (attack == AT_TAUNT && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
 
     if (instance_exists(vigiWeenie)){
-        vigiWeenie.state = window;
+
+        if (!was_parried){
+            vigiWeenie.state = window;
+        }
 
         if (window == 1){
             sprite_index = sprite_get("fspecialSpawn");
@@ -48,7 +51,6 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 
         if (window == 4){
             sprite_index = sprite_get("fspecialJump");
-            vigiWeenie.sprite_index = sprite_get("weenieIdle");
         }
     }
 

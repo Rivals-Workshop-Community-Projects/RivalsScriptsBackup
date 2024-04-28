@@ -193,8 +193,14 @@ switch (attack)
 				}
 				break;
 			case 2:
-				if (!special_down)
+				if (!special_down || jump_pressed) // 7axel7
 				{
+					if (menuState == 10) // waveshine training code
+					{
+						shineReleaseFrame = window_timer;
+						if (!shineHeldLastFrame)
+							shineReleaseFrame--;
+					}
 					if (window_timer != get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)-1) sound_play(get_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX));
 					window_timer = 0;
 					window = 3;

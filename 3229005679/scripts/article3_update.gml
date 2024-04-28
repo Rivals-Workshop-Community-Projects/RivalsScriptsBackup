@@ -59,7 +59,6 @@ if (state == 2){
                 weenieBox.sound_effect = asset_get("sfx_blow_heavy1");
             }
         }
-       
     }
 }
 
@@ -97,7 +96,43 @@ if (state == 6 || destroyed == true){
     sprite_index = sprite_get("weenieDie");
     ignores_walls = true;
     is_hittable = false;
+
+    if (state_timer > 120){
+        instance_destroy();
+        exit;
+    }
 }
+
+//Ram
+if (state == 7){
+    sprite_index = sprite_get("weenieDash");
+    image_index = 5 + (state_timer / 3);
+
+    if (abs(hsp) > 1){
+        if (!instance_exists(weenieBox2)){
+            weenieBox2 = create_hitbox(AT_FSPECIAL_2, 1, x + (10 + hsp) * spr_dir, y - 20);
+
+        } else {
+
+            weenieBox2.x = x + (10 + hsp) * spr_dir;
+            weenieBox2.y = y - 20;
+            weenieBox2.length += 1;
+
+        }
+    }
+
+    if (state_timer == 20){
+        state = 4;
+        state_timer = 0;
+    }
+
+    print(hsp)
+
+    if (floor(hsp) > article_friction && free == false) then hsp -= article_friction * 2
+    if (floor(hsp) < -article_friction && free == false) then hsp += article_friction * 2;
+    if (floor(hsp) < article_friction && floor(hsp) > -article_friction) then hsp = 0;
+}
+
 
 
 var newArray = 0;

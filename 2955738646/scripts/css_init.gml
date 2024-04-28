@@ -1,6 +1,6 @@
 num_alts = 32;
-temp_x = x - 158;
-temp_y = y + 26;
+temp_x = x - 100;
+temp_y = y + 84;
 
 fade_time = 6;
 voice_button = !get_synced_var(player);

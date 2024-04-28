@@ -107,7 +107,6 @@ if (state == "cow"){
 
             ignores_walls = false;
         }
-        print(hitstop)
     }
 }
 

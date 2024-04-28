@@ -254,6 +254,42 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.04", "25 April, 2024");
+initHeader("GENERAL:");
+initSection("* Updated the localisation files.
+* Fixed a few minor error debug messages.
++ Added a Mute Button");
+initHeader("NORMALS:");
+initSection("USTRONG:
+(hitbox 1, sour)
+* Changed the Angle from 85 -> 90.
++ DMG increased from 7 -> 9
++ KBS increased from 0.80 -> 1.00.
+
+(hitbox 2, sweetspot)
++ DMG increased from 9 -> 11.
++ BKB increased from 7 -> 8.
++ KBS increased from 1.00 -> 1.10.
+
+DATTACK:
+* Repositioned and readjusted all hitboxes
+
+FAIR:
+(hitbox 2, spike box)
+* Repositioned the hitbox away from Kodiak and readjusted the size
+
+BAIR:
+(hitbox 1, normal)
++ DMG increased from 6 -> 7
+
+(hitbox 2, spike)
+* This hitbox only hurts airborne enemies.");
+initHeader("SPECIALS:");
+initSection("* Adjusted the moveability after launching into the air");
+initHeader("~BONUS~:");
+initSection("+ Added Dream Nail Dialogue against The Knight (Reiga)
+* Updated the Dialogue Buddy lines against Shantae, Disco, Masky, Spark, Bowsette and RyeGuy & Beaky");
+
 initPatch("1.03", "21 December, 2022");
 initHeader("MISC:");
 initSection("Fixed a bug where Kodiak gained meter on activating a Parry instead of gaining meter on a successful Parry");

@@ -40,12 +40,11 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -29);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("Jab_hit1"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("Jab_hit2"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1); //Sweetspot legs
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
-//set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, 10);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -60);
@@ -61,4 +60,3 @@ set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_ori_ustrong_launch"));
-//set_hitbox_value(AT_UAIR, 2, HG_ANGLE_FLIPPER, 6);

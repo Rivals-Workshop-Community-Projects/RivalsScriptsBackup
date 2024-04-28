@@ -39,3 +39,4 @@ article_friction = 0.5;
 can_be_hit[player_id.player] = 2;
 afterimage_array = 0;
 weenieBox = noone;
+weenieBox2 = noone;

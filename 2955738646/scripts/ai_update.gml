@@ -1,6 +1,6 @@
 //Ai updating stuff
 
-//temp_level = 9;
+temp_level = 9;
 ai_attack_time = 2;
 
 var encouragement = 0;
@@ -149,7 +149,7 @@ if (ai_recovering == true){
     }
     
     if (state == PS_PRATFALL && hsp == 0 && has_walljump){ jump_pressed = true; can_wall_jump = true; } 
-    if (attack == AT_DSPECIAL && window == 6 && window_timer > 30){ jump_pressed = true; }
+    if (attack == AT_DSPECIAL && window == 6 && window_timer > 40){ jump_pressed = true; }
 }
 
 if (get_training_cpu_action() == CPU_FIGHT) {

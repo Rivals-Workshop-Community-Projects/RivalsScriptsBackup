@@ -9,6 +9,11 @@ switch (state){
 	is_hittable = true;
 	uses_shader = true;
 	
+	if (hit_player_obj < 0){
+	prev_hsp = player_id.hsp;
+	prev_vsp = player_id.vsp;
+	}
+	
 	if (state_timer > 6){ instance_destroy(); exit; }
 	//if (place_meeting( x, y, asset_get("par_block"))){ player_id.cooldowntime = 100; }
 	x = player_id.x; //basically 
@@ -17,12 +22,16 @@ switch (state){
 	vsp = player_id.vsp; //Mecha Sonic's body
 	
 	if (hit_player_obj > 0){
-		player_id.foresight = 50;
+		player_id.foresight = 50; player_id.invincible = true;
 		player_id.hitpause = false; player_id.y = player_id.y-1;
 		player_id.state = PS_ATTACK_AIR; player_id.attack = AT_EXTRA_1;
 		player_id.window = 1; player_id.window_timer = 0;
+		//hsp = player_id.hsp; 
+		//vsp = player_id.vsp; 
 		sound_play(sound_get("instanttransmission"));
 		state = 1; state_timer = 0;
+		player_id.hsp = prev_hsp * 3; 
+		player_id.vsp = prev_vsp * 3;
 	}
 	//if (done == true && (player_id.state != PS_HITSTUN || player_id.state != PS_HITSTUN_LAND) ){ instance_destroy(); exit; }
 	//if (player_id.state == PS_HITSTUN){ player_id.cooldowntime = 10; }
@@ -33,7 +42,7 @@ switch (state){
 	vsp = 0;
 	uses_shader = true;
 	player_id.invincible = true;
-	player_id.invince_time = 20;
+	player_id.invince_time = 5;
 	sprite_index = sprite_get("foresight");
 	mask_index = sprite_get("idle");
 	depth = -20;
@@ -48,10 +57,14 @@ switch (state){
 	break;
 	
 	case 2:
-	//Spawn platform emerald 
+	//Spawn platform emerald
 	mask_index = asset_get("empty_sprite");
-	if (player_id.state == PS_RESPAWN){ sprite_index = asset_get("empty_sprite"); } else {  sprite_index = sprite_get("plat"); }
-	if (state_timer > 20 || state_timer > 2 && !(player_id.state == PS_IDLE)){ vsp -= 0.005 * state_timer; }
+	if (player_id.state == PS_RESPAWN){ sprite_index = asset_get("empty_sprite"); }
+	else
+	{ sprite_index = sprite_get("plat"); }
+	if (state_timer > 20 || state_timer > 2 && !(player_id.state == PS_RESPAWN)){
+		vsp -= 0.001 * state_timer;
+	}
 	if (state_timer > 150){ instance_destroy(); exit; }
 	break;
 	
@@ -124,8 +137,10 @@ switch (state){
 	break;
 	
 	case 4: //Respawning back
-	
+	//if (player_id.state == PS_IDLE || player_id.hsp > abs(hsp) ){ instance_destroy(); exit; }
 	//initial_invince = 1;
+	//sprite_index = sprite_get("hurt");
+	//mask_index = asset_get("empty_sprite");
 	uses_shader = true;
 	ChaosEmerald = player_id.ChaosEmerald;
 	//set_article_color_slot(0, 1, 1, 15, 0.1);
@@ -144,37 +159,41 @@ switch (state){
 	}
 	
 	spr_dir = player_id.spr_dir;
-	if (player_id.state != PS_RESPAWN){
-	sprite_index = asset_get("empty_sprite");
-	
-	x = player_id.x+15;
-	y = player_id.y-20;
+	if (instance_exists(player_id) && !(player_id.state == PS_DEAD || player_id.state == PS_SPAWN 
+	|| player_id.state == PS_RESPAWN)){
+	//sprite_index = asset_get("empty_sprite");
+	x = player_id.x;
+	y = player_id.y;
+	//hsp = player_id.hsp;
+	//vsp = player_id.vsp;
 	}
-	
-	if (player_id.state == PS_RESPAWN){
-		if (player_id.state_timer < 122 ){
+
+	if (player_id.state == PS_RESPAWN && player_id.state_timer < 120){
 	sprite_index = sprite_get("hurt");
-	mask_index = sprite_get("hurt");
-	var fly_speed = 0.5;
-	var mecha_dir = point_direction(player_id.x, player_id.y, x, y);
-	var mecha_dist = point_distance(player_id.x, player_id.y, x, y);
-	var drag_speed = max(sqrt(mecha_dist) * fly_speed / 1, fly_speed);
-	hsp = lengthdir_x(drag_speed, mecha_dir + 180);
-	vsp = lengthdir_y(drag_speed, mecha_dir + 180);
+	mask_index = asset_get("empty_sprite");
+	x = lerp(x, player_id.x, 0.05);
+	y = lerp(y, player_id.y, 0.05);
+	
+	//var fly_speed = 0.5;
+	//var mecha_dir = point_direction(player_id.x, player_id.y, x, y);
+	//var mecha_dist = point_distance(player_id.x, player_id.y, x, y);
+	//var drag_speed = max(sqrt(mecha_dist) * fly_speed / 1, fly_speed);
+	//hsp = lengthdir_x(drag_speed, mecha_dir + 180);
+	//vsp = lengthdir_y(drag_speed, mecha_dir + 180);
+	
 	ignores_walls = true;
 	through_platforms = 2;
-		}
-	if (player_id.state_timer >= 122 || player_id.state_timer > 122 && mecha_dist < 20 && place_meeting(x, y, player_id) ){
+	}
+	if (player_id.state_timer >= 120 && player_id.state == PS_RESPAWN
+	|| !(player_id.state == PS_RESPAWN) ){
 	sprite_index = asset_get("empty_sprite");
-	
-	x = player_id.x+5;
-	y = player_id.y-10;
-		}
+	//x = player_id.x+5;
+	//y = player_id.y-10;
 	}
 	
 	break;
 	
-	case 5:
+	case 5: //Timestop background
 
 		if (state_timer < 3){ depth = depth+16; }
 		if (instance_exists(asset_get("camera_obj"))){

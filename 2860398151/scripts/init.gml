@@ -96,14 +96,16 @@ vfx_ki_trail 			= hit_fx_create(sprite_get("nspecial_proj_trail"), 16);
 vfx_ki_uspecial			= hit_fx_create(sprite_get("uspecial_proj"), 24);
 
 //	Variables
-energy_meter 		= 0;		//	The gimmick
+muted 					= false;    //  For those who hate the extra SFXs
+sfx_time 				= 0;		//	Dash Attack Reflect Sound checker
+energy_meter 			= 0;		//	The gimmick
 
-direction_flipper 	= false;	//	FSPECIAL
+direction_flipper 		= false;	//	FSPECIAL related
 
-dairdj 				= 0;		//	DAIR
-dairad 				= 0;
+dairdj 					= 0;		//	DAIR related
+dairad 					= 0;
 
-taunt_time			= 0;		//	Taunt3 Related
+taunt_time				= 0;		//	Taunt3 Related
 
 // Animation Info
 
@@ -263,6 +265,14 @@ sna_interrogated_line_03 = "No.";
 
 //	Kirby Copy Ability
 TCG_Kirby_Copy = 2;
+
+//	Reiga's The Knight
+knight_compat_dream = 
+[
+    "Pizza time.",
+    "Always on patrol.",
+    "Always got the time do prevent the crime."
+]
 
 //----------------------------------------------------------------------------------------------
 

@@ -41,7 +41,7 @@ set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6);
+// set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6); //7axel7
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, smallstar_effect);
 

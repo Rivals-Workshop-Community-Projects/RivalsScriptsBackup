@@ -189,6 +189,8 @@ ui_parry = 0;
 parry_success = 0;
 music_timer = 0;
 
+jestermode = get_synced_var(player);
+
 if get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"{
     
     set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("HitLightDBZ2"));

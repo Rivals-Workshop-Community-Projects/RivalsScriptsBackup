@@ -27,7 +27,7 @@ set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1); //Endlag miss
 set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FTILT, 4, AG_WINDOW_GOTO, 10);
+set_window_value(AT_FTILT, 4, AG_WINDOW_GOTO, 6);
 
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1); //Turn around and kick, with endlag
 set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 30);
@@ -40,7 +40,7 @@ set_window_value(AT_FTILT, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
 set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 5, AG_WINDOW_SFX, sound_get("Ftilt_Turnaround"));
 set_window_value(AT_FTILT, 5, AG_WINDOW_SFX_FRAME, 2);
-set_window_value(AT_FTILT, 5, AG_WINDOW_GOTO, 10);
+set_window_value(AT_FTILT, 5, AG_WINDOW_GOTO, 6);
 
 set_num_hitboxes(AT_FTILT, 3);
 
