@@ -4,7 +4,8 @@
 
 if(!has_rune("A")){
     with(my_hitboxID){
-        if((attack == AT_BAIR || attack == AT_FTILT || attack == AT_UAIR || attack == AT_FAIR || attack == AT_NAIR || attack == AT_NSPECIAL_AIR) && type == 2){
+        if((attack == AT_BAIR || attack == AT_FTILT || attack == AT_UAIR || attack == AT_FAIR || attack == AT_NAIR || attack == AT_NSPECIAL_AIR) && type == 2
+        && !does_not_reflect){
             if "parry_count" not in self parry_count = 1;
             else parry_count++;
             if(attack == AT_UAIR || attack == AT_FAIR) proj_angle += 180;
@@ -31,8 +32,12 @@ if(!has_rune("A")){
     }
 }
 
-if(my_hitboxID.attack == AT_NSPECIAL && has_rune("K")){
-    my_hitboxID.destroyed = true;
+if(my_hitboxID.attack == AT_NSPECIAL){
+    if(has_rune("K") || my_hitboxID.was_parried){
+        my_hitboxID.destroyed = true;
+    } else {
+        my_hitboxID.hsp *= 3;
+    }
 }
 
 if(my_hitboxID.attack == AT_DSPECIAL){

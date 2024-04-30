@@ -19,7 +19,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 15);//13
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_AIR_FRICTION, .3);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_GROUND_FRICTION, .25);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, false);
+set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("fx_sludge_sm"));
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, vfx_sludge_small );
@@ -78,6 +78,8 @@ set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, vfx_sludge_smallest);
 set_hitbox_value(AT_BAIR, 2, HG_SLUDGE_EFFECT, 35);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_BAIR, 2, HG_EXTENDED_PARRY_STUN, true);
 
 if(has_rune("A")){
     set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);

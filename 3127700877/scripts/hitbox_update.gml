@@ -96,7 +96,16 @@ if(attack == AT_BAIR){
     hit_priority = (image_index > 10 ? 0 : prev_priority);
 }
 
-
+if(attack == AT_FSPECIAL && hbox_num == 3){
+	for(var i = 0; i < 20; i++){
+		can_hit[i] = false;
+	}
+	with(oPlayer){
+		if self != other.player_id {
+			other.can_hit[player] = perfect_dodging;
+		}
+	}
+}
 
 #define playSoundFx(sound, looping, panning, volume, pitch) 
     sound_play(asset_get(sound), looping, panning, volume, pitch);

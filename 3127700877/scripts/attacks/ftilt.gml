@@ -49,7 +49,7 @@ set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -85,6 +85,9 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, vfx_sludge_small);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, vfx_sludge_smallest);
 set_hitbox_value(AT_FTILT, 2, HG_SLUDGE_EFFECT, 35);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_FTILT, 2, HG_EXTENDED_PARRY_STUN, true);
 
 if(has_rune("A")){
     set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);

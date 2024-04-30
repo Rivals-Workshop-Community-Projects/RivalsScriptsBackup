@@ -3,7 +3,7 @@
 set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 5);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 5);
 
@@ -124,6 +124,7 @@ set_hitbox_value(AT_NAIR, 4, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_SPRITE, sprite_get("uair_proj"));
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uair_proj_mask"));
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_MASK, -1);
@@ -175,6 +176,7 @@ set_hitbox_value(AT_NAIR, 7, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_NAIR, 7, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 7, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_NAIR, 7, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_NAIR, 7, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_NAIR, 7, HG_PROJECTILE_SPRITE, sprite_get("fair_proj_old"));
 set_hitbox_value(AT_NAIR, 7, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("fair_proj_old_mask"));
 set_hitbox_value(AT_NAIR, 7, HG_PROJECTILE_MASK, -1);

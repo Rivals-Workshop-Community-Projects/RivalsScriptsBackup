@@ -104,7 +104,7 @@ set_hitbox_value(AT_UTILT, 4, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UTILT, 4, HG_ANGLE, 90);
 set_hitbox_value(AT_UTILT, 4, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UTILT, 4, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_UTILT, 4, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_UTILT, 4, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_UTILT, 4, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_UTILT, 4, HG_SLUDGE_EFFECT, 12);
 

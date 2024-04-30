@@ -108,7 +108,7 @@ with(oPlayer){
             if(diseased_timer == diseased_timer_max - 1){
         		sound_play(asset_get("sfx_frog_ustrong"), false, false, 1.6, .8);
         		sound_play(asset_get("sfx_frog_gong_hit"), false, false, 1.6);
-        		with other sound_play(sound_get("g10glitch_2"));
+        		with other if genesis sound_play(sound_get("g10glitch_2"));
         	}
         	if(other.genesis && diseased_id == other){
     			gX_glitching = true;

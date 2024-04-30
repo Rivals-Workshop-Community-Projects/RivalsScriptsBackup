@@ -30,6 +30,8 @@ if(attack == AT_BAIR || attack == AT_FTILT || attack == AT_UAIR || attack == AT_
 
 if(attack == AT_DSPECIAL_AIR){
     sound_play(asset_get("sfx_ori_dsmash_skitter_sein"), false, false, true, .9);
+    x = player_id.x;
+    y = get_stage_data(SD_TOP_BLASTZONE_Y) - 20;
 }
 
 #define locate_nearest_player

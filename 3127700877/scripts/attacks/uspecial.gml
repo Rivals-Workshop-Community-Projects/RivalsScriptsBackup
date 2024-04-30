@@ -157,6 +157,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 60);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE_FLIPPER, 6);

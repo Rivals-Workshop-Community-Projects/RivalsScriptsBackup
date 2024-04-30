@@ -66,7 +66,7 @@ sprite_change_offset("dstrong", 96, 146)
 
 sprite_change_offset("nspecial", 48, 98)
 
-sprite_change_offset("nspecial_air", 60, 96)
+sprite_change_offset("nspecial_air", 48, 98)
 
 sprite_change_offset("fspecial", 68, 112)
 sprite_change_offset("fspecial_proj", 57, 250)

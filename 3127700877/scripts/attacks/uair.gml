@@ -4,7 +4,7 @@ set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
     
@@ -60,19 +60,21 @@ set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 set_hitbox_value(AT_UAIR, 2, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_FAIR, 2, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("uair_proj"));
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uair_proj_mask"));
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_ANIM_SPEED, .4);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_HSPEED, 8);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_VSPEED, -8);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_GRAVITY, .25);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_GROUND_FRICTION, .25);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_AIR_FRICTION, .25);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_HSPEED, 6);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_VSPEED, -6);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_GRAVITY, .18);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_GROUND_FRICTION, .18);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_AIR_FRICTION, .18);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, false);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("fx_sludge_smallest"));
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, vfx_sludge_small );
@@ -80,6 +82,8 @@ set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, vfx_sludge_smallest);
 set_hitbox_value(AT_UAIR, 2, HG_SLUDGE_EFFECT, 35);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_UAIR, 2, HG_EXTENDED_PARRY_STUN, true);
 
 if(has_rune("A")){
     set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
@@ -94,6 +98,7 @@ if(has_rune("G")){
     set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 10);
     set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 1);
+    set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, 1);
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

@@ -35,6 +35,7 @@ switch(attack){
     break;
     
     case AT_DAIR:
+    set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 130 - 30 * !has_hit);
     can_fast_fall = false;
     if(window == 1){
         if(vsp > 0){
@@ -89,9 +90,19 @@ switch(attack){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause){
             sound_play(asset_get("sfx_syl_fspecial_bite"), false, false, true, 0.85);
         }
+        if(window_timer == window_end && !hitpause){
+        	if right_strong_down || (right_down && strong_down) spr_dir = 1;
+        	if left_strong_down || (left_down && strong_down) spr_dir = -1;
+        }
         // if(dstrong_mobile && window_timer == window_end && !hitpause){
         //     sludge_puddle_id = instance_create(x, y, "obj_article1");
         // }
+    }
+    if(window == 4  && window_timer == window_end && !hitpause){
+    	hsp = 7 * spr_dir;
+    }
+    if(window == 7  && window_timer == window_end/2 && !hitpause){
+    	hsp = -6.75 * spr_dir;
     }
     break;
     
@@ -170,7 +181,7 @@ switch(attack){
                     geyser_spawn_y++;
                 }
                 if((position_meeting(geyser_spawn_x, geyser_spawn_y, asset_get("par_block")) || position_meeting(geyser_spawn_x, geyser_spawn_y, asset_get("par_jumpthrough"))) && window_timer >= 10){
-                    geyser_spawn_x += 8 * spr_dir;
+                    geyser_spawn_x += 7 * spr_dir;
                 }
                 if(geyser_spawn_y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y)){
                     geyser_spawn_x = prev_g_x;
@@ -346,9 +357,9 @@ switch(attack){
     // if(window == 1 && window_time_is(1)){
     //     sound_play(asset_get("sfx_ori_dsmash_skitter_sein"), false, false, true, .9);
     // }
-    if(window == 2 && window_timer == 1 && !hitpause){
-        create_hitbox(AT_DSPECIAL_AIR, 1, x, get_stage_data(SD_TOP_BLASTZONE_Y) - 20);
-    }
+    // if(window == 2 && window_timer == 1 && !hitpause){
+    //     create_hitbox(AT_DSPECIAL_AIR, 1, x, get_stage_data(SD_TOP_BLASTZONE_Y) - 20);
+    // }
     break;
     case AT_TAUNT:
     if(window == 1 && window_time_is(1)){

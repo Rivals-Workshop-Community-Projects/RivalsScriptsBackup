@@ -63,7 +63,7 @@ djump_accel = 0 // 0 (-1 for Absa). Requires djump_accel_end_time to be set
 djump_accel_end_time= 0 // The duration that djump_accel is applied.
 
 leave_ground_max = 7 // 4 – 8. The maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5 // 4 – 8. The maximum hsp you can have when jumping from the ground
+max_jump_hsp = 4.5 // 4 – 8. The maximum hsp you can have when jumping from the ground
 air_max_speed = 4 //3 – 7. The maximum hsp you can accelerate to when in a normal aerial state
 
 jump_start_time = 5 // 5 for all characters. The number of frames of jumpsquat minus one

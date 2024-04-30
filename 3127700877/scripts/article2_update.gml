@@ -19,7 +19,7 @@ switch(state){
     
     // if(state_timer%10 == 1) create_hitbox(AT_FSPECIAL, 1, x - 8, y - 110);
     
-    if(!self_enhanced || self_enhanced && state_timer > 4){
+    if((state_timer > 4 && self_enhanced) || (state_timer > 2 && !self_enhanced)){
         var p_list = [];
         var runeM = has_rune("M");
         var runeN = has_rune("N");
@@ -54,7 +54,7 @@ switch(state){
                         }
                     }
                 }
-                if(other.state_timer%10 == 1 && !hitpause && !invincible && !attack_invince && !hurtboxID.dodging){
+                if(other.state_timer%10 == 3 && !hitpause && !invincible && !attack_invince && !hurtboxID.dodging){
                     take_damage(player, other.player_id.player, 1);
                     if(diseased_id == noone && sludge_amount < sludge_max){
                         sludged_id = other.player_id;
@@ -75,10 +75,14 @@ switch(state){
                 sound_play(asset_get("sfx_waterhit_medium"));
             }
         }
-    } else if(self_enhanced && state_timer == 1){
-        create_hitbox(AT_FSPECIAL, 1, x - 8, y - 110);
-        if("destroyed_puddle" in self && instance_exists(destroyed_puddle)){
-            create_hitbox(AT_FSPECIAL, 2, destroyed_puddle.x, destroyed_puddle.y - 32);
+    } else if(state_timer == 1){
+        if(self_enhanced){
+            create_hitbox(AT_FSPECIAL, 1, x - 8, y - 110);
+            if("destroyed_puddle" in self && instance_exists(destroyed_puddle)){
+                create_hitbox(AT_FSPECIAL, 2, destroyed_puddle.x, destroyed_puddle.y - 32);
+            }
+        } else {
+            create_hitbox(AT_FSPECIAL, 3, x - 8, y - 110);
         }
     }
     

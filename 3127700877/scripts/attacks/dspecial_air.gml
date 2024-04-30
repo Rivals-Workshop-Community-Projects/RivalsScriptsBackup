@@ -24,7 +24,7 @@ set_num_hitboxes(AT_DSPECIAL_AIR, 1);
 
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 200);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, 0);
@@ -39,6 +39,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_med")
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .02);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -68,4 +69,5 @@ if(has_rune("G")){
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 10);
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 4);
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .9);
+    set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .7);
 }
