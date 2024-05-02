@@ -144,6 +144,12 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.10"
+        patch_note_text[i++] =  
+"Quality of life change, when Carol says one of her voicelines during idle animation, that voiceline will no longer play for the rest of the duration that you remain in idle.
+
+(I basically didn't know this was something that Freedom Planet 2 actually did until I heard the developer mention it)"
+
         patch_note_title[i] = "2.9"
         patch_note_text[i++] =  
 

@@ -331,7 +331,7 @@ switch attack {
         doll_id.vsp = -spd*dsin(doll_angle)
         doll_id.spr_dir = -spr_dir
         doll_id.recent_player = id
-        //take_damage(player, -1, 2)
+        take_damage(player, -1, 4)
         if free vsp -= 10
         
         if left_down && !right_down doll_id.hsp -= 6

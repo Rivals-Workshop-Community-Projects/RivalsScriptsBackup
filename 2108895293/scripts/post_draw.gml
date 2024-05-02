@@ -35,9 +35,29 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v2.6 - (2024 Apr 29)"
+		patch_note_text[i++] = 
+		"v2.6 - (2024 Apr 29)
+		[b]changes[/b]
+		- nspecial turnaround-on-release thing input moved to Attack (formerly on parry button).
+		- parrying nspecial makes it even faster than previous versions
+		- parrying fspecial field shatter lightbullets now makes it faster
+		
+		[b]balances[/b]
+		-- -- beneficial
+		- you can now cancel nspecial charging with parry (what!?)
+		- ftilt 1st hit hitbox extended by like 8 pixels forward
+		- also ftilt hurtbox trimmed sliiiightly so that ftilt 1st hit's weird extended arm isnt hurtbox
+		-- -- idk
+		- fair hitpause has been scaled (hitpause scaling 0.5 -> 0.8)
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v2.5 - (2024 Jan 30)"
 		patch_note_text[i++] = 
-		"v2.5 - (2023 Jan 30)
+		"v2.5 - (2024 Jan 30)
 		[b]additions[/b]
 		- new alt added: Infamous (she's been around since that time....)
 

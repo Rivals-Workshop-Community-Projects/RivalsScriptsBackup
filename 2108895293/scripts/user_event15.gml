@@ -264,6 +264,27 @@ with phone{
 	//
 	
 	
+	initPatch("2.6", "2024-04-29 (YMD)");
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- nspecial turnaround-on-release thing input moved to Attack (formerly on parry button).
+	- parrying nspecial makes it even faster than previous versions
+	- parrying fspecial field shatter lightbullets now makes it faster")
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- beneficial", fa_left, c_olive, 1, 0);
+	initPatchWords("- you can now cancel nspecial charging with parry (what!?)
+	- ftilt 1st hit hitbox extended by like 8 pixels forward
+	- also ftilt hurtbox trimmed sliiiightly so that ftilt 1st hit's weird extended arm isnt hurtbox")
+	initPatchWords_ext("-- -- idk", fa_left, c_olive, 1, 0);
+	initPatchWords("- fair hitpause has been scaled (hitpause scaling 0.5 -> 0.8)")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.5", "2024-01-30 (YMD)");
 	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
 	initPatchWords("- new alt added: Infamous (she's been around since that time....)");

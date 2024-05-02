@@ -79,6 +79,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, vfx_water_medium);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_USTRONG, 3, HG_PARENT_HITBOX, 2);

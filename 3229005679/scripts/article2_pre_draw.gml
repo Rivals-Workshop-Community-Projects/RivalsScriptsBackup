@@ -9,7 +9,7 @@ for (var i = 0; i < array_length_1d(afterimage_array); ++i)
 
 }
 
-if (get_local_setting(SET_HUD_SIZE) != 0){
+if (get_local_setting(SET_HUD_SIZE) != 0 && bounceCount != bounceMax){
     shader_end();
 	draw_sprite_ext(asset_get("triangle_spr"), 0, x, y - 90 -((state == "cow") * 35), 1, 1, 0, get_player_hud_color(crateParriedPlayer), 1);
     with (player_id) shader_start();

@@ -110,12 +110,12 @@ if (state == 7){
 
     if (abs(hsp) > 1){
         if (!instance_exists(weenieBox2)){
-            weenieBox2 = create_hitbox(AT_FSPECIAL_2, 1, x + (10 + hsp) * spr_dir, y - 20);
+            weenieBox2 = create_hitbox(AT_FSPECIAL_2, 1, x + hsp + 10 * spr_dir, y - 18);
 
         } else {
 
-            weenieBox2.x = x + (10 + hsp) * spr_dir;
-            weenieBox2.y = y - 20;
+            weenieBox2.x = x + hsp + 10 * spr_dir;
+            weenieBox2.y = y - 18;
             weenieBox2.length += 1;
 
         }
@@ -126,10 +126,9 @@ if (state == 7){
         state_timer = 0;
     }
 
-    print(hsp)
 
-    if (floor(hsp) > article_friction && free == false) then hsp -= article_friction * 2
-    if (floor(hsp) < -article_friction && free == false) then hsp += article_friction * 2;
+    if (floor(hsp) > article_friction) then hsp -= article_friction * 2
+    if (floor(hsp) < -article_friction) then hsp += article_friction * 2;
     if (floor(hsp) < article_friction && floor(hsp) > -article_friction) then hsp = 0;
 }
 

@@ -135,6 +135,18 @@ if (attack == AT_NSPECIAL){
 		nsp_snd_timer = 0;
 	}
 	if (window == 2){
+		if (shield_down){
+				sound_play(sound_get("cant_2"),false,noone,0.8,1.3);
+			if (free){
+				if (has_airdodge){
+					attack_end();
+					set_state(PS_AIR_DODGE);
+				}
+			}else{
+				landing_lag_time = 10;
+				set_state( PS_LANDING_LAG );
+			}
+		}
 		if (nsp_charge <= max_nsp){
 			nsp_charge++;
 		}else{
@@ -155,7 +167,7 @@ if (attack == AT_NSPECIAL){
 	if ((window == 2||window==3) && !special_down){
 		white_flash_timer = 0;
 		if (nsp_charge > max_nsp){
-			if (!free || shield_down){
+			if (!free || attack_down){
 				if (left_down && spr_dir == 1){
 					spr_dir = -1;
 				}

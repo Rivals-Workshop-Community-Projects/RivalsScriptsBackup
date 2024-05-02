@@ -86,7 +86,7 @@ default_shade_slot = 3; //shade slot used for if a color is not defined in an al
 //add each alt here! in order from top to bottom.
 add_alt("Rokesha"); 
 add_alt("Hime");
-add_alt("Sprite Star");
+add_alt("Auric Flame");
 add_alt("Gummy");
 add_alt("Santiana");
 add_alt("Misato");

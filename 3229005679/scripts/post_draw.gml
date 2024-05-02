@@ -50,6 +50,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 
 if (get_match_setting(SET_HITBOX_VIS)){
 	if (instance_exists(vigiGhost) && vigiGhost.state == "idle") then draw_sprite_ext(sprite_get("johnCheese_hurt"), 0, vigiGhost.x, vigiGhost.y, 2*vigiGhost.spr_dir, 2, 0, -1, 0.5);
+    if (instance_exists(vigiWeenie) && vigiWeenie.state != 6) then draw_sprite_ext(sprite_get("weenieMask"), 0, vigiWeenie.x, vigiWeenie.y, 2*vigiWeenie.spr_dir, 2, 0, -1, 0.5);
 }
 
 

@@ -5,13 +5,14 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 11){
 	my_hitboxID.hitbox_timer = 0;
 	//my_hitboxID.spr_dir = my_hitboxID.spr_dir * -1
 	my_hitboxID.draw_xscale = my_hitboxID.draw_xscale * -1
-	my_hitboxID.hsp = (abs(my_hitboxID.hsp) + 1) * my_hitboxID.spr_dir;
+	my_hitboxID.hsp = (abs(my_hitboxID.hsp) + 2) * my_hitboxID.spr_dir;//+1
 	/*my_hitboxID.can_hit[hit_player] = 0;
 	my_hitboxID.can_hit_self = true;*/
 	
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
+	sound_play(sound_get("antici_1"),false,noone,1,1.2)
 	for (var tmp_num = 1; tmp_num <= 8; tmp_num += 1){
 		my_hitboxID.leader_hb.hblist[tmp_num].hsp = my_hitboxID.leader_hb.hblist[tmp_num].hsp * -1
 		my_hitboxID.leader_hb.hblist[tmp_num].spr_dir = my_hitboxID.leader_hb.hblist[tmp_num].spr_dir * -1
@@ -19,7 +20,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 		my_hitboxID.leader_hb.hblist[tmp_num].can_hit_self = true;
 		my_hitboxID.leader_hb.hblist[tmp_num].was_parried = true;
 		my_hitboxID.leader_hb.hblist[tmp_num].hitbox_timer = 0;
-		my_hitboxID.leader_hb.hblist[tmp_num].hsp = my_hitboxID.leader_hb.hblist[tmp_num].hsp * 1.5;
+		my_hitboxID.leader_hb.hblist[tmp_num].hsp = my_hitboxID.leader_hb.hblist[tmp_num].hsp * 1.5;//1.5
 		switch (tmp_num){
 			case 5:
 				my_hitboxID.leader_hb.hblist[tmp_num].vsp = 1.8

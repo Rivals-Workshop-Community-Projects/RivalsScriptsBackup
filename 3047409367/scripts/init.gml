@@ -63,6 +63,13 @@ set_victory_theme(sound_get("hyadainnokakakatakataomoi-c")); //Victory BGMusic
 //tdc kirby ability
 TCG_Kirby_Copy = 9;
 
+//mt dedede support
+arena_title = "The Ordinary Android";
+
+//pumbo support
+pot_compat_variable = sprite_get("pumbodish");
+pot_compat_text = "Roll Cake";
+
 hurtbox_spr = sprite_get("1_idlehbox"); //i stole this hurtbox from yuuko!!!!!!!! ahh
 crouchbox_spr = sprite_get("crouchhurt");
 air_hurtbox_spr = -1;

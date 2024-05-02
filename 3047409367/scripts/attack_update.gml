@@ -292,11 +292,11 @@ if (attack == AT_UTILT){
 }
 
 //dtilt
-var dtilt_startup = get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH);
+var dtilt_startup = get_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH);
 
 if (attack == AT_DTILT){
     if (window == 1){
-        if (window_timer == utilt_startup){
+        if (window_timer == dtilt_startup){
             if (!hitpause && !hitstop){
                 spawn_base_dust( x + (60)*spr_dir, y, "dash_start", spr_dir*-1);
                 sound_play(asset_get("sfx_crunch"));

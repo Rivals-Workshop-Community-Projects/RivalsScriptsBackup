@@ -83,7 +83,7 @@ if (attack==AT_FSPECIAL && hbox_num==1){
 		}else if (vsp < 0){
 		vsp = vsp * (0.98);   //+ 0.04;
 		}
-		hsp = clamp( hsp + (0.4 * spr_dir), -10, 10 );
+		hsp = clamp( hsp + (0.4 * spr_dir), -10-(was_parried*4), 10+(was_parried*4) );
 		if (sign(hsp) == spr_dir){
 			hit_priority = 1;
 		}

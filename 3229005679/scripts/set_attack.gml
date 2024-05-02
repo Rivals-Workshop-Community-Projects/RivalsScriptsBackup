@@ -16,6 +16,7 @@ if (attack == AT_FSPECIAL && instance_exists(vigiWeenie) && vigiWeenie.state != 
         clear_button_buffer(PC_SPECIAL_PRESSED);
     } else {
         attack = AT_FSPECIAL_2;
+        vsp *= 0.5;
         vigiWeenie.spr_dir = spr_dir;
     }
 }

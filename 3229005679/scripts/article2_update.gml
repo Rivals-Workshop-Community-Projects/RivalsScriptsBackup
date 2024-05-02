@@ -70,6 +70,7 @@ if (state == "cow"){
         hitstop = 3;
         free = true;
         bounceCount += 1;
+        originalSprDir = spr_dir;
 
         sound_play(sound_get("vigicowstomp"));
         spawn_hit_fx(x, y + 25, player_id.stompVFX);
@@ -85,6 +86,17 @@ if (state == "cow"){
 
         ignores_walls = true;
         hsp = 0;
+
+        if (vsp > 0){
+            image_angle = 180;
+
+            if (spr_dir != originalSprDir * -1){
+                spr_dir = originalSprDir * -1;
+                y -= 100;
+            }
+            
+            
+        }
 
     } else {
 

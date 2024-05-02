@@ -14,6 +14,9 @@ wait_length = 80;
 wait_sprite = sprite_get("wait");
 wait_idle_pick = 0;
 voice_protection = false;
+wait_anti_voice1 = false;
+wait_anti_voice2 = false;
+wait_anti_voice3 = false;
 idle_index = 36;
 
 walk_speed = 3.25;

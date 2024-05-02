@@ -244,6 +244,18 @@ if (motorbike == false)
 					if (voice > 0)
 					{
 						wait_idle_pick = random_func(idle_index, 5, 1);
+						if (wait_idle_pick == 2 && wait_anti_voice1 == true)
+						{
+							wait_idle_pick = 0;
+						}
+						else if (wait_idle_pick == 3 && wait_anti_voice2 == true)
+						{
+							wait_idle_pick = 0;
+						}
+						else if (wait_idle_pick == 4 && wait_anti_voice3 == true)
+						{
+							wait_idle_pick = 1;
+						}
 					}
 					else
 					{
@@ -283,30 +295,36 @@ if (motorbike == false)
 					{
 						stopVoice();
 						sound_play(sound_get("im_bored"));
+						wait_anti_voice1 = true;
 						voice_protection = false;
 					}
 					else if (wait_idle_pick == 3 && state_timer == 20 && voice_protection = true)
 					{	
 						stopVoice();
 						sound_play(sound_get("why_are_we_stopping"));
+						wait_anti_voice2 = true;
 						voice_protection = false;
 					}
 					else if (wait_idle_pick == 4 && state_timer == 20 && voice_protection = true)
 					{
 						stopVoice();
 						sound_play(sound_get("what_you_doing"));
+						wait_anti_voice3 = true;
 						voice_protection = false;
 					}
 				}
 			break;
-	  		case PS_PARRY:
-		  		//Custom Parry Effect
-		  		if (state_timer == 0)
-		  		{
-		  			sound_play(sound_get("guard"));
-		  		}
-		  		tsprite_index=-1;
-    			bsprite_index=-1;
+			case PS_PARRY:
+				//Custom Parry Effect
+				if (state_timer == 0)
+				{
+					sound_play(sound_get("guard"));
+				}
+				tsprite_index=-1;
+				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 				if (thrownBike != noone && state_timer = 0)
 				{
 					set_state(PS_IDLE);
@@ -319,7 +337,7 @@ if (motorbike == false)
 				//{
 				//	y = y + 10;
 				//}
-	    		tsprite_index=sprite_get("tail_walk");
+				tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
 				timage_speed=0.25;
@@ -329,6 +347,9 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 			break;
 			case PS_DASH_START:
 			case PS_DASH:
@@ -337,7 +358,7 @@ if (motorbike == false)
 				//{
 			//		y = y - 10;
 				//}
-		 		tsprite_index=sprite_get("tail_walk");
+				tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
 				timage_speed=0.25;
@@ -347,10 +368,13 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
-    		break;
-    		case PS_DASH_STOP:
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
+			break;
+			case PS_DASH_STOP:
 			case PS_DASH_TURN:
-	    	    tsprite_index=sprite_get("tail_walk");
+				tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
 				timage_speed=0.25;
@@ -360,9 +384,12 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
-	 		break;
-    		case PS_CROUCH:
-    			tsprite_index=sprite_get("tail_walk");
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
+			break;
+			case PS_CROUCH:
+				tsprite_index=sprite_get("tail_walk");
 				trotation=0;
 				timage_number=7;
 				timage_speed=0.25;
@@ -372,6 +399,9 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 			break;
 			case PS_WALL_JUMP:
 				if (!can_wall_jump)
@@ -386,6 +416,9 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 			break;
 			case PS_DOUBLE_JUMP:
 			case PS_LAND:
@@ -400,6 +433,9 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 			break;
 			default:
 				tsprite_index=-1;
@@ -410,6 +446,9 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				wait_anti_voice1 = false;
+				wait_anti_voice2 = false;
+				wait_anti_voice3 = false;
 			break;
     	}
 	}
@@ -426,7 +465,10 @@ else if (motorbike == true)
 	wait_time = 100000;
 	wait_length = 16;
 	wait_sprite = sprite_get("idle2");
-	
+	wait_anti_voice1 = false;
+	wait_anti_voice2 = false;
+	wait_anti_voice3 = false;
+
 	//Increase this timer for a prompt for FSpecial2.
 	nBoostReadyTimer++;
 	

@@ -327,7 +327,7 @@ break;
 case AT_BAIR:
 
     if (window == 2){
-        if (!attack_down && !left_stick_down && !right_stick_down){
+        if (!attack_down && !left_stick_down && !right_stick_down && !strong_down){
             window = 3;
             window_timer = 0;
 
@@ -590,6 +590,8 @@ case AT_FSPECIAL:
 break;
 
 case AT_FSPECIAL_2:
+
+    can_wall_jump = true;
 
     if (instance_exists(vigiWeenie) && window == 1 && window_timer == get_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH)){
         vigiWeenie.hsp = 15 * spr_dir

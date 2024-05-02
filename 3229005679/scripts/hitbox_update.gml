@@ -96,24 +96,26 @@ case AT_DSTRONG:
             tempDstrong.draw_xscale = draw_xscale;
 
             var groundBoom = create_hitbox(AT_DSTRONG, 2, x, y - 20);
+            groundBoom.player = player;
             sound_play(sound_get("sfx_explosion"));
 
             destroyed_next = true;
         }
 
         //Air Explosion
-        if (free && ((hitbox_timer == length - 1 && free) || (place_meeting(x, y, pHurtBox) && instance_place(x, y, pHurtBox) != player_id.hurtboxID && !has_rune("B")) || destroyed == true)){
+        if (free && ((hitbox_timer == length - 1 && free) || (place_meeting(x, y, pHurtBox) && instance_place(x, y, pHurtBox).player != player && !has_rune("B")) && !getting_bashed || destroyed == true)){
             var tempDstrong = spawn_hit_fx(x, y + 10, player_id.uairExplosion);
             tempDstrong.spr_dir = spr_dir;
             tempDstrong.draw_xscale = draw_xscale;
 
             var airBoom = create_hitbox(AT_DSTRONG, 3, x + 2 * spr_dir, y);
+            airBoom.player = player;
             sound_play(sound_get("sfx_explosion"));
 
             destroyed_next = true;
         }
     }
-
+    
 break;
 
 case AT_USPECIAL:
@@ -128,17 +130,19 @@ case AT_USPECIAL:
             tempUspecial.draw_xscale = draw_xscale;
 
             var groundBoom = create_hitbox(AT_USPECIAL, 3, x, y + 2);
+            groundBoom.player = player;
             sound_play(sound_get("sfx_explosion"));
 
             destroyed_next = true;
         }
 
-        if (free && ((hitbox_timer == length - 1 && free) || (place_meeting(x, y, pHurtBox) && instance_place(x, y, pHurtBox) != player_id.hurtboxID) || destroyed == true)){
+        if (free && ((hitbox_timer == length - 1 && free) || (place_meeting(x, y, pHurtBox) && instance_place(x, y, pHurtBox).player != player && !getting_bashed) || destroyed == true)){
             var tempUspecialBoom = spawn_hit_fx(floor(x + hsp), floor(y + vsp), player_id.crateExplosion);
             tempUspecialBoom.spr_dir = spr_dir;
             tempUspecialBoom.draw_xscale = draw_xscale;
 
             var airBoom = create_hitbox(AT_USPECIAL, 3, floor(x + hsp + 2 * spr_dir), floor(y + vsp));
+            airBoom.player = player;
             airBoom.num_bounces = 100;
             sound_play(sound_get("sfx_explosion"));
 
@@ -163,6 +167,7 @@ case AT_USPECIAL:
                 tempRight.draw_xscale = draw_xscale;
 
                 var groundBoomRight = create_hitbox(AT_USPECIAL, 2, x + 34, y);
+                groundBoomRight.player = player;
                 groundBoomRight.move_dir = 1;
                 groundBoomRight.num_bounces = num_bounces + 1;
                 sound_play(asset_get("sfx_ell_dspecial_explosion_2"));
@@ -177,6 +182,7 @@ case AT_USPECIAL:
                 tempRight.draw_xscale = draw_xscale;
 
                 var groundBoomLeft = create_hitbox(AT_USPECIAL, 2, x - 34, y);
+                groundBoomLeft.player = player;
                 groundBoomLeft.move_dir = -1;
                 groundBoomLeft.num_bounces = num_bounces + 1;
                 sound_play(asset_get("sfx_ell_dspecial_explosion_2"));

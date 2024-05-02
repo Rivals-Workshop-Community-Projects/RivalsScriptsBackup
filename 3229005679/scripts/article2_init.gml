@@ -39,3 +39,4 @@ afterimage_array = 0;
 bounceCount = 0;
 bounceMax = 1 + (has_rune("C") * 2);
 crateParriedPlayer = player_id.player;
+originalSprDir = spr_dir;
