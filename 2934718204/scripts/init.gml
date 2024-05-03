@@ -8,6 +8,8 @@ on_keyboard = true
 
 taunt_attack = false
 
+silk_refresh_timer = 0
+
 is_hornet = true
 manual_hit = false //manual var for triggering fake on-hit stuff
 has_snapped = false

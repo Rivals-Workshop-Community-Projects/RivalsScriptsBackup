@@ -24,6 +24,9 @@ if my_hitboxID.effect == 31 {
     sound_play(sound_get("hero_shade_dash_charge_pt_2"))
 }
 
+//silk timer refresh
+hit_player_obj.hornet_silk_timer = 0
+
 //wrap
 if my_hitboxID.effect == 29 {
     if hit_player_obj.hornet_silked_id != noone {

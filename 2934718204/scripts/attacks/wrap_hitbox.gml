@@ -15,7 +15,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_FORCE_FLINCH, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 34);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_may_wrap2"));

@@ -54,6 +54,15 @@ with oPlayer if id != other.id {
         }
     }
     
+    if hornet_silked_id == other.id {
+        hornet_silk_timer++
+        
+        if hornet_silk_timer >= 300 {
+            hornet_silk_timer = 0
+            hornet_silked_id = noone
+        }
+    }
+    
     if state == PS_DEAD || state == PS_RESPAWN {
         hornet_silked_id = noone
         hornet_wrapped_id = noone
