@@ -70,7 +70,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 82);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .4);
@@ -91,3 +91,4 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3)
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.75);

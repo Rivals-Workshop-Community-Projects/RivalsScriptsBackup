@@ -1,6 +1,7 @@
 ustrong_vsp = -8;
 
 dspec_cooldown = 80;
+dspec_destroyed_cooldown = 60;
 hitter = noone;
 bruh = noone;
 
@@ -28,7 +29,12 @@ hue_speed = .2; //change this to change the speed of the hueshift
 TCG_Kirby_Copy = 15;
 
 //steve death message
-steve_death_message = "Steve was kicked too hard";
+steve_death_message = "Steve didn't wait until the day";
+
+//pokemon stadium support
+pkmn_stadium_front_img = sprite_get("pokestadiumfront");
+pkmn_stadium_back_img = sprite_get("pokestadiumback");
+pkmn_stadium_name_override = "Wriggle";
 
 explosion_effect = hit_fx_create( sprite_get("explosion"), 45 );
 
@@ -66,7 +72,7 @@ max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 2;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
