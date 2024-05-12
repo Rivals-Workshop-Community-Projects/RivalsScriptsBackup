@@ -725,9 +725,8 @@ if (canon || op) {
 }
 
 #define KoB_reverse
-	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && b_reversed == false){
-    	hsp *= -1;spr_dir *= -1;
-		b_reversed = true;
+	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && !b_reversed){
+    	hsp = -hsp;spr_dir = -spr_dir;b_reversed = true;
 	}
 
 #define cancelattack

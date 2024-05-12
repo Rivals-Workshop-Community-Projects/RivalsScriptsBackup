@@ -259,6 +259,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.47", "6th May, 2024");
+initHeader("Buffs");
+initSection("+ Added more Miiverse posts
++ Added Nintendo Wii Wiimote compatibility");
+
 initPatch("1.46", "14th March, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a thing from last patch about the watering can changes");

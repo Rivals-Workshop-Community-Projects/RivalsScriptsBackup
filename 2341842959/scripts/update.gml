@@ -19,6 +19,7 @@ if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
 }
 
 if (state == PS_DOUBLE_JUMP && state_timer == 1){
+    gas_dir = spr_dir;
     gas_djumpx = x;
     gas_djumpy = y;
     gas_djump = 1;

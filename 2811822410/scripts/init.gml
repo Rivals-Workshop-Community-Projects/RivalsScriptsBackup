@@ -25,7 +25,9 @@ pg_make_timer = pg_make_timer_max;
 pg_make_timer_curr = pg_make_timer_max;
 
 
-
+pipe_strong = false;
+pipe_strong_was_last = false;
+taunt_used = false;
 
 //
 user_event(8);

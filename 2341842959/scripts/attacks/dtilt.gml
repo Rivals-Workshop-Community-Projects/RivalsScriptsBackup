@@ -30,7 +30,7 @@ set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, -1);
+set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, -6);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, 4);
 set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 123);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 46);

@@ -1,3 +1,5 @@
+if("should_make_shockwave" not in hit_player_obj)hit_player_obj.should_make_shockwave = false;
+if("activated_kill_effect" not in hit_player_obj)hit_player_obj.activated_kill_effect = false;
 if(my_hitboxID.hitstun_factor < 0)hit_player_obj.should_make_shockwave = false;
 
 //extra hitpause and shake code
@@ -30,7 +32,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	}else if(my_hitboxID.hbox_num == 2){ //wadr
 		var playerdmg = get_player_damage(hit_player_obj.player);
 		if(hit_player_obj.hsp > -0.4 && my_hitboxID.spr_dir == 1 || hit_player_obj.hsp < 0.4 && my_hitboxID.spr_dir == -1)hit_player_obj.hsp = 0.4*my_hitboxID.spr_dir;
-		hit_player_obj.hsp += (2+(playerdmg/15))*my_hitboxID.spr_dir;
+		hit_player_obj.hsp += (2+(playerdmg/12))*my_hitboxID.spr_dir;
 		if(hit_player_obj.free){hit_player_obj.vsp -= 0.05+(playerdmg/100);}else{hit_player_obj.vsp = 0;}
 			
 		if(runeH){

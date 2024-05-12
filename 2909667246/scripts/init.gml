@@ -251,6 +251,7 @@ wily_robotmaster_img = sprite_get("Wily_Castle");
 ncode1 = "Mayor of a small town";
 ncode2 = "Seemingly has endless pockets";
 ncode3 = "Whatever you do, don't turn your back to him";
+wiimote_compat_sprite = sprite_get("wiimote");if(kewtmode>=1)wiimote_compat_sprite = sprite_get("wiimote_kewt");
 
 TCG_Kirby_Copy = 7;
 

@@ -1,4 +1,8 @@
 //
+if (attack == AT_TAUNT) {
+	taunt_used = true;
+}
+//
 if(strong_down and strong_buffer <= 0 and !strong_was_pressed){
 	strong_buffer = 6;
 	strong_pressed = true;
@@ -24,6 +28,7 @@ with oPlayer {
 }
 */
 b_reversed_nspecial = false;
+
 
 if (instance_exists(leak_proj) && !rune_attack) {
 	if !(attack == AT_TAUNT || attack == AT_FSPECIAL || attack == AT_DSPECIAL) {
@@ -273,4 +278,24 @@ if !(attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || a
 	grabbed_player = -4;
 }
 
+
+//Pipe
+if (!is_oc && (attack == AT_FSTRONG || attack == AT_FTHROW)) { //Oh I'm sorry
+	//10% Chance to hit someone with a metal pipe
+	if (random_func(16, 10, true) == 0 || taunt_used) {
+		taunt_used = false;
+		print("Bonk")
+		pipe_strong = true;
+		//sprite_index = sprite_get("pipe_fstrong");
+		set_attack_value(attack, AG_SPRITE, sprite_get("pipe_fstrong"));
+		set_hitbox_value(attack, 1, HG_VISUAL_EFFECT, 306);
+		set_hitbox_value(attack, 2, HG_VISUAL_EFFECT, 306);
+	} else {
+		pipe_strong = false;
+		//sprite_index = sprite_get("fstrong");
+		set_attack_value(attack, AG_SPRITE, sprite_get("fstrong"));
+		set_hitbox_value(attack, 1, HG_VISUAL_EFFECT, leak_vfx_huge);
+		set_hitbox_value(attack, 2, HG_VISUAL_EFFECT, leak_vfx_huge);
+	}
+} 
 //test_var = false;

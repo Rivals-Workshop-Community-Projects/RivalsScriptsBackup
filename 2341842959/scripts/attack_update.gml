@@ -61,14 +61,14 @@ if (attack == AT_FTILT){
 		levei_parry = false;
 	}
 	if (window == 2 && window_timer == 3 && !hitpause){
-		var g = instance_create(x + (80 * spr_dir), y, "obj_article1");
+		var g = instance_create(x + (60 * spr_dir), y, "obj_article1");
 		g.spawned_by_ftilt = 1;
 	}
 }
 
 if (attack == AT_DTILT){
 	if has_rune("L") && (window == 2 && window_timer == 1 && !hitpause){
-		var g = instance_create(x, y + 10,"obj_article1");
+		var g = instance_create(x, y + 10, "obj_article1");
 		g.spawned_by_ftilt = 1;
 	}
 	if (has_hit && window == 2){
@@ -81,6 +81,7 @@ if (attack == AT_DTILT){
 {
 //DTilt Visual Effect
 if (attack == AT_DTILT && window == 1){
+	gas_direction();
 	set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 3);
     gas_dtilt_cont = 0;
     gas_dtilt_posx = x;
@@ -101,31 +102,22 @@ if (attack == AT_DTILT && window > 1){
 //UStrong Visual Effect
 if attack == AT_USTRONG{
 	if window == 1{
+		gas_direction();
     	gas_ustrong_cont = 0;
     	var gas_used = false;
     	if gas_used == false
     	{
         	gas_used = true;
-        	if (spr_dir == 1){
-        	        gas_ustrong_posx = x; 
-        	    }
-        	if (spr_dir == -1){
-        	        gas_ustrong_posx = x-20; 
-        	    }
+        	gas_ustrong_posx = x; 
     	}
     	gas_ustrong_posy = y;
 	}
     if has_rune("L") && (window == 3 && window_timer == 3 && !hitpause){
-		var g = instance_create(x + (6 * spr_dir), y - 76,"obj_article1");
+		var g = instance_create(x, y - 76, "obj_article1");
 		g.spawned_by_ftilt = 1;
 	}
     if (window == 3 && window_timer == 1){
-        if (spr_dir == 1){
-            gas_ustrong_posx = x; 
-        }
-        if (spr_dir == -1){
-            gas_ustrong_posx = x-20; 
-        }
+        gas_ustrong_posx = x; 
         gas_ustrong_posy = y;
     }
     if (!hitpause){
@@ -154,7 +146,7 @@ if (attack == AT_FAIR && window > 1){
         gas_fair_cont = 0.01;
     }
     if has_rune("L") && (window == 2 && window_timer == 1 && !hitpause){
-		var g = instance_create(x + (56 * spr_dir), y - 24,"obj_article1");
+		var g = instance_create(x + (56 * spr_dir), y - 24, "obj_article1");
 		g.spawned_by_ftilt = 1;
 	}
 }
@@ -207,6 +199,7 @@ if (attack == AT_BAIR && window > 1){
 
 //NSpecial 2 Visual Effect
 if (attack == AT_USPECIAL && window == 1){
+	gas_direction();
     gas_nspecial_cont = 0;
     gas_nspecial_posx = x;
     gas_nspecial_posy = y;
@@ -270,6 +263,7 @@ if (attack == AT_DATTACK){
     		spr_dir = right_down - left_down;
     	}
     	if has_rune("G") && special_pressed{
+    		gas_direction();
     		clear_button_buffer(PC_SPECIAL_PRESSED);
     		attack_end();
     		destroy_hitboxes();
@@ -282,7 +276,7 @@ if (attack == AT_DATTACK){
     		window_timer = 0;
     		create_hitbox(AT_BAIR, 2, x + (-32 * spr_dir), y - 28);
     		if has_rune("L") && !hitpause{
-				var g = instance_create(x + (-36 * spr_dir), y,"obj_article1");
+				var g = instance_create(x + (-36 * spr_dir), y, "obj_article1");
 				g.spawned_by_ftilt = 1;
 			}
     	}

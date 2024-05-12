@@ -3,6 +3,11 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.player_id == id) {
 
 }
 */
+if ((my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_FTHROW) && pipe_strong) {
+	pipe_strong_was_last = true;
+} else {
+	pipe_strong_was_last = false;
+}
 
 //#region Hit SFX Controller
 var window_timer_last_frame = (get_window_value(attack,window,AG_WINDOW_LENGTH) - 1);
@@ -10,8 +15,15 @@ switch(my_hitboxID.attack){
 		//Strong
 		case AT_FSTRONG:
 		case AT_FTHROW:
-			insert_sfx_on_hit(sfx_veg_heavy2,1,1,0.9,true);
-			insert_sfx_on_hit(sfx_veg_heavy2,2,1,0.9,true);
+			if (pipe_strong) {
+				insert_sfx_on_hit(sound_get("pipe_hit"),1,1,0.9,true);
+				insert_sfx_on_hit(sound_get("pipe_hit"),2,1,0.9,true);
+				sound_play(sound_get("pipe_sorry"))
+			} else {
+				insert_sfx_on_hit(sfx_veg_heavy2,1,1,0.9,true);
+				insert_sfx_on_hit(sfx_veg_heavy2,2,1,0.9,true);
+
+			}
 		break;
 	
 		case AT_DSTRONG:

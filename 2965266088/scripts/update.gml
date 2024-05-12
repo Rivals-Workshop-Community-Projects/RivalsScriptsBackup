@@ -532,7 +532,11 @@ with (hit_fx_obj) if (player == other.player)
         }
         depth = other.depth - 1 + 2 * (other.attack == AT_NSPECIAL);
 
-        if (other.is_attacking) real_vfx_pause();
+        if (other.is_attacking)
+        {
+            real_vfx_pause();
+            if (other.hitpause && step_timer < 4) step_timer = 4; //force the frame of the splash to appear instead
+        }
     }
 
     //dstrong vfx

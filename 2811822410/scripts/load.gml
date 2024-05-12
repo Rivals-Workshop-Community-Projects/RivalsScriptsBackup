@@ -51,6 +51,7 @@
 
 	sprite_change_offset("dstrong", 162, 192);
 	sprite_change_offset("fstrong",  162, 192);
+	sprite_change_offset("pipe_fstrong",  162, 192);
 	sprite_change_offset("ustrong", 162, 192);
 	
 	sprite_change_offset("bair", 162, 192);

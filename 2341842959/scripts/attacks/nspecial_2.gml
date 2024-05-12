@@ -34,7 +34,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_X, -1);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_X, -9);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WIDTH, 155);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HEIGHT, 73);
