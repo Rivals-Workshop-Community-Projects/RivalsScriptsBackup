@@ -425,8 +425,8 @@ if (has_rune("I")){
 	set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 8);
 	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -1);
 	
-	set_hitbox_value(AT_USPECIAL_2, 5, HG_BASE_KNOCKBACK, 9);
-	set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -3.5);
+	set_hitbox_value(AT_USPECIAL_2, 5, HG_BASE_KNOCKBACK, 8);
+	set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -1);
 }
 
 

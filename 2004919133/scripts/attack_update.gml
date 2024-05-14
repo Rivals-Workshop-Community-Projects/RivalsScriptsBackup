@@ -179,6 +179,8 @@ var fast_range = 50;
 //homing attack rune
 if (has_rune("N")){
 	var shortest_dist = 600;
+	fast_range = 100;
+	additional_speed = 0.25;
 }
 
 /*
