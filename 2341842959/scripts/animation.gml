@@ -68,3 +68,17 @@ if state == PS_PARRY && jestermode == true{
 } else{
     parry_spam_cancel = false;
 }
+
+switch state{
+    case PS_FROZEN:
+        spr_dir = prev_spr_dir;
+        sprite_index = prev_sprite;
+        image_index = prev_frame;
+    break;
+}
+
+prev_spr_dir = spr_dir;
+prev_sprite = sprite_index;
+prev_frame = image_index;
+
+init_shader();

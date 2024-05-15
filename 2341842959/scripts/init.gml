@@ -106,7 +106,8 @@ introTimer = -30;
 //setting it to -4 should prevent the first few frames of the animation 
 //from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
-jestermode = get_synced_var(player);
+jestermode = floor(get_synced_var(player) / 10);
+shadelessmode = get_synced_var(player) % 10;
 hidetokens = false;
 
 //ftilt_back = false;
