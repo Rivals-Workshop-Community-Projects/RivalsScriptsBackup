@@ -22,7 +22,7 @@ shader_end();
 
 if(alt_cur == 6) draw_sprite_ext(sprite_get("css_icons"), 2, x + 174, y + 108, 1, 1, 0, c_white, 1);
 if(alt_cur == 7) draw_sprite_ext(sprite_get("css_icons"), 3, x + 174, y + 108, 1, 1, 0, c_white, 1);
-if(alt_cur == 15) draw_sprite_ext(sprite_get("css_icons"), 10, x + 174, y + 108, 1, 1, 0, c_white, 1);
+if(alt_cur == 17) draw_sprite_ext(sprite_get("css_icons"), 10, x + 174, y + 108, 1, 1, 0, c_white, 1);
 draw_set_halign(fa_left);
 textDraw(x + 14, y + 44, "fName", c_white, 14, 400, 1, 1, alpha_alt, alt_name[alt_cur], c_black);
 

@@ -1,5 +1,5 @@
 if(attacking){
-	if(attack == AT_FSPECIAL and (lvl > 1 or mid_attack_lvl > 1)){
+	if(attack == AT_FSPECIAL and lvl > 1){
 		if(window == 1 or window == 2 or window == 3){
 			shader_start()
 			var img = window == 1 ? (window_timer*5/window_end) : (5 + (game_time*fspecial_lvl2_anim_speed)%16);

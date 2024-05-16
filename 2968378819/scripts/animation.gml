@@ -12,6 +12,18 @@ if state == PS_HITSTUN && hurt_img == 4 && !hitpause && jestermode == true{
 	image_index = state_timer/4
 }
 
+if state == PS_HITSTUN && hurt_img == 0 && !hitpause && jestermode == true{
+    draw_x = 0;
+    draw_y = 0;
+	sprite_index = sprite_get("jestermodebighurt");
+}
+
+if state == PS_HITSTUN && hurt_img == 2 && !hitpause && jestermode == true{
+    draw_x = 0;
+    draw_y = 0;
+	sprite_index = sprite_get("jestermodedownhurt");
+}
+
 //parry code
 if state == PS_PARRY && jestermode == true{
     if state_timer == 0 and parry_spam_cancel == false{
@@ -26,3 +38,16 @@ if state == PS_PARRY && jestermode == true{
 } else{
     parry_spam_cancel = false;
 }
+
+switch state{
+    case PS_FROZEN:
+        spr_dir = prev_spr_dir;
+        sprite_index = prev_sprite;
+        image_index = prev_frame;
+    break;
+}
+
+prev_sprite = sprite_index;
+prev_frame = image_index;
+
+init_shader();

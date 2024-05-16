@@ -71,21 +71,30 @@ with (oPlayer){
 		if (has_hit_player && player != other.player && state != PS_HITSTUN){
 			    if (hit_player_obj.in_daruma_range || in_daruma_range){
 			            if (hit_player_obj.state == PS_HITSTUN){
-			                with (obj_article1){
-			                    if (player_id == nano_id){
-			                        if (state == 1){
-			                        	target_id = other.hit_player_obj;
-			                            targetter_id = other;
-			                            state = 4;
-			                            state_timer = 0;
-			                            break;
-			                            //end loop early to not loop through every daruma
-			                        }
-			                    }
-			                }
+			            	if (hit_player_obj.player_id != nano_id){
+				                with (obj_article1){
+				                    if (player_id == nano_id){
+				                        if (state == 1){
+				                        	target_id = other.hit_player_obj;
+				                            targetter_id = other;
+				                            state = 4;
+				                            state_timer = 0;
+				                            break;
+				                            //end loop early to not loop through every daruma
+				                        }
+				                    }
+				                }
+			            	}
 			            }
 			    }
 		}
 	}
 }
+}
+
+//vfx
+with hit_fx_obj if player_id == other{
+  if (hit_fx == other.slapstick_dust || hit_fx == other.slapstick_dust_small || hit_fx == other.petal_small){
+    depth = player_id.depth+1
+  }
 }

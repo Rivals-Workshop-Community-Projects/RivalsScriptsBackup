@@ -36,7 +36,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 2);
 
 //recovery.
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 2);
 

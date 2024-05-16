@@ -55,6 +55,8 @@ if (is_hittable)
 					hb.spr_dir = spr_dir;
 					hb.mist_angle = article_angle;
 					hb.lvl = lvl;
+					hb.player = enemy_hitboxID.player;
+					hb.was_parried = enemy_hitboxID.was_parried;
 					
 					with hb{
 						pseudo_melee_hitbox = false;

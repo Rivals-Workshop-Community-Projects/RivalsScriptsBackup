@@ -523,6 +523,7 @@ switch (attack) { //open switch(attack)
 		
 			case 1:
 				epinel_is_armored = 0;
+				epinel_fspecial_kb_soaked = 0;
 				
 				if (window_timer == 1) { 
 					//allow this move to slide off ledges.
@@ -621,7 +622,7 @@ switch (attack) { //open switch(attack)
 				
 				if (window_timer == 1) {
 					//set extra cooldown for this move
-					set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 1 + max(1, floor((epinel_charge_timer - 15) * 0.5) ));
+					set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 1 + max(1, floor((epinel_charge_timer - 15) * 0.5 +  + epinel_fspecial_kb_soaked) ));
 					
 					//store start position
 					epinel_fspecial_start_position_x = x;
@@ -632,6 +633,12 @@ switch (attack) { //open switch(attack)
 						epinel_sideb_platform_id = epinel_other_standing_on_platform_id;
 						epinel_sideb_platform_relative_x = (epinel_sideb_platform_id.x - x);
 						epinel_sideb_platform_id.draw_glow += 5;
+						
+						//also damage the platform
+						if epinel_sideb_platform_id.hp > 0 {
+							epinel_sideb_platform_id.hp--;
+							sound_play(asset_get("sfx_pillar_crumble"));
+						}
 					}
 				}
 			break;
@@ -738,7 +745,7 @@ switch (attack) { //open switch(attack)
 					hsp = holding_dir * 0.5;
 				}
 				//if in heavy state, transition to heavy state
-				else if (window == 10) transition_to_heavy_state_recovery_at_end_of_window();
+				//else if (window == 10) transition_to_heavy_state_recovery_at_end_of_window();
 			break;
 		} //close switch(window)
 	break;
@@ -950,7 +957,9 @@ switch (attack) { //open switch(attack)
 						spawn_hit_fx(round(x+hsp/2), round(y+vsp/2), epinel_fx_afterimage_air);
 					}
 					
-					scr_epinel_nspecial_air_break_platforms();
+					
+						scr_epinel_nspecial_air_break_platforms();
+					
 				}
 				else {
 					//prevent hitpause from causing an instant SD.
@@ -1089,11 +1098,20 @@ switch (attack) { //open switch(attack)
 				
 			break;
 			
-			
+			case 5:
+				//spawn platform - warning fx
+				if window_timer == 1 {
+					spawn_hit_fx(x - spr_dir * 10, y, 14);
+				}
+				else if window_timer == 3 { 
+					spawn_hit_fx(x - spr_dir * 40, y, 14);
+					spawn_hit_fx(x + spr_dir * 20, y, 14);
+				}
+			break;
 			
 			case 4: //loop surfing
-				//end the attack if player lets go of special
-				if (!special_down) {
+				//end the attack if player lets go of special, or if epinel turns around
+				if (!special_down || (left_down - right_down) = sign(spr_dir)) {
 					window = 10;
 					window_timer = 0;
 				}
@@ -1108,6 +1126,11 @@ switch (attack) { //open switch(attack)
 				//the player can jump-cancel  or drop-cancel at any of these points
 				if (!was_parried && state_timer >= 5) {
 					can_jump = true;
+					can_attack = true;
+					can_special = true;
+					can_strong = true;
+					can_ustrong = true;
+					//can_airdodge = true;
 					if (jump_down == false && down_hard_pressed == true && instance_exists(epinel_other_standing_on_platform_id)) {
 						set_state(PS_IDLE);
 						apply_short_ground_cooldowns();
@@ -1127,7 +1150,12 @@ switch (attack) { //open switch(attack)
 				if (was_parried) break;
 				can_jump = true;
 				//can also cancel into another down special
-				if (is_special_pressed( DIR_DOWN )) {
+				if (is_special_pressed( DIR_DOWN ) 
+				//also cancel into down-special if epinel is holding the opposite direction and doing absolutely nothing else
+					|| ( !free && special_down //(left_down - right_down) = sign(spr_dir) && 
+							&& !is_attack_pressed(DIR_ANY) && !is_strong_pressed(DIR_ANY) && !is_special_pressed(DIR_ANY) 
+							&& !shield_pressed && !down_hard_pressed)
+				) {
 					window = 1;
 					window_timer = 0;
 					//turn the character around if the player is holding backwards
@@ -1363,7 +1391,7 @@ switch (attack) { //open switch(attack)
 					old_jump = false;
 				
 					if (window_timer < 10) {
-						if ((shield_down || shield_pressed) && (up_down == false || down_down == true)) scr_epinel_dspecial_air_snap_to_platforms();
+						if ((shield_down || shield_pressed || prev_state == PS_RESPAWN) && (up_down == false || down_down == true)) scr_epinel_dspecial_air_snap_to_platforms();
 					}
 				}
 			break;
@@ -2114,11 +2142,13 @@ switch (attack) { //open switch(attack)
 		if (!has_hit) trigger_b_reverse();
 		can_wall_jump = true;
 		can_fast_fall = false;
-		if (window <= 7) can_move = false; 
+		var end_of_window = get_window_value( attack, window, AG_WINDOW_LENGTH);
+		var is_at_end_of_window = (window_timer >= end_of_window - 1);
+		if (window <= 7) can_move = false;
 		else if (!hitpause) hsp = clamp(hsp, -3, 3);
 		if (window == 1) {
 			epinel_charge_timer = 0;
-			if (window_timer == 1) {
+			if (window_timer == end_of_window) {
 				invincible = true;
 				invince_time = max(0, invince_time);
 				if (free && !hitpause) {
@@ -2126,15 +2156,32 @@ switch (attack) { //open switch(attack)
 				}
 			}
 		}
+		else if (window == 2 && is_at_end_of_window) {
+			spawn_hit_fx(x + 20 * spr_dir, y - 28, epinel_fx_narrowcut);
+		}
+		else if (window == 3 && is_at_end_of_window && (!has_hit_player || was_parried)) {
+			//go to whiff attack animation
+			attack = AT_NSPECIAL_2;
+			window = 1;
+			window_timer = 0;
+			destroy_hitboxes();
+			if (free) set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 1);
+			else set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
+		}
 		else if (!hitpause && window < 6 && window > 3 && epinel_charge_timer >= 1) {window = 6; window_timer = 0; }
 		else if ((window == 8 || window == 9) && window_timer == 1) {
 			//change whifflag depending on if epinel is in the air or not
 			var has_not_hit_and_is_free = (!has_hit && free);
-			set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_LENGTH, 8 + (4 * has_not_hit_and_is_free)); 
-			set_window_value(AT_NSPECIAL_2, 9, AG_WINDOW_LENGTH, 8 + (4 * has_not_hit_and_is_free)); 
+			//set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_LENGTH, 8 + (4 * has_not_hit_and_is_free)); 
+			//set_window_value(AT_NSPECIAL_2, 9, AG_WINDOW_LENGTH, 8 + (4 * has_not_hit_and_is_free)); 
 		}
 	break;
 	
+	case AT_NSPECIAL_2:
+		can_wall_jump = true;
+		can_fast_fall = false;
+		can_move = false;
+	break;
 	
 	case AT_EXTRA_1:
 		//this move can be cancelled with anything else.
@@ -2458,6 +2505,10 @@ if (found_plat != noone) {
 		soft_armor = 0;
 		epinel_platform_ricochet = true;
 		
+		//spawn fspecial hitboxes
+		create_hitbox(AT_FSPECIAL_AIR, 1, x, y).length = 0;
+		create_hitbox(AT_FSPECIAL_AIR, 2, x, y).length = 0;
+		
 		var launch_angle = 55 - ((right_down - left_down) * spr_dir * 10);
 		old_hsp = lengthdir_x(9, launch_angle) * spr_dir;
 		old_vsp = lengthdir_y(9, launch_angle);
@@ -2481,7 +2532,6 @@ if (found_plat != noone) {
 }
 
 return;
-
 
 
 
@@ -2569,6 +2619,8 @@ if (found_plat == noone) {
 		}
 	}
 }
+
+
 
 if (found_plat == noone) return;
 

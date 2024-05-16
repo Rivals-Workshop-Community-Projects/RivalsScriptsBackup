@@ -1,5 +1,9 @@
 //Sets the sprite, depth, and other details for the article. 
-sprite_index = sprite_get("aluba_small");
+if is_aether_stage() {
+    sprite_index = sprite_get("a_aluba_small");
+}else{
+    sprite_index = sprite_get("aluba_small");
+}
 depth = 33
 image_xscale = 2
 image_yscale = 2

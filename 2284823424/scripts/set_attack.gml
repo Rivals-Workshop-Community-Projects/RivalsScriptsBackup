@@ -78,12 +78,12 @@ if has_rune("N"){
 
 stopped_sounds = [];
 
-if (attack == AT_TAUNT && shield_down){
-    for (i = 0; i < array_length_1d(containers); i++){
-        containers[i].spent_items = [0,0,0];
-        restock_alpha = 10;
-    }
-}
+// if (attack == AT_TAUNT && shield_down){
+//     for (i = 0; i < array_length_1d(containers); i++){
+//         containers[i].spent_items = [0,0,0];
+//         restock_alpha = 10;
+//     }
+// }
 
 if (attack == AT_TAUNT && down_down && !free) attack = AT_TAUNT_2;
 if (attack == AT_TAUNT && up_down && !free && !phone_online){

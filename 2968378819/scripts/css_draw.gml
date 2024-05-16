@@ -257,9 +257,11 @@ if (color_desc_activate){
  
 //ae code end
 
-if "jestermode" not in self jestermode = false;
+jestermode = floor(get_synced_var(player) / 10);
+shadelessmode = get_synced_var(player) % 10;
 
 draw_sprite_ext(sprite_get("JesterModeCSButton"), 0, x + 170, y + 40, 1, 1, 0, !jestermode? c_gray:c_white, 1); 
+//draw_sprite_ext(sprite_get("ShadelessModeCSButton"), 0, x + 170, y + 90, 1, 1, 0, !shadelessmode? c_gray:c_white, 1); 
  
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

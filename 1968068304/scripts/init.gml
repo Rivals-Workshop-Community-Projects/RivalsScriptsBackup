@@ -127,6 +127,7 @@ epinel_consecutive_dair_jumps = 0;
 epinel_fspecial_start_position_x = 0;
 epinel_fspecial_start_position_y = 0;
 epinel_fspecial_hit_player = false;
+epinel_fspecial_kb_soaked = 0;
 epinel_platform_ricochet = false;
 epinel_weightless_logic_article = instance_create(round(room_width / 2), -20000, "obj_article_solid");
 epinel_weightless_logic_article.player_id = id;

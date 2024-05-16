@@ -100,8 +100,9 @@ sprite_change_collision_mask( "gold_expand_mask", true, 0, 0, 0, 0, 0, 0 );
 sprite_change_offset("rail_grind_forward",					24, 35);
 sprite_change_offset("rail_grind_backwards",				24, 35);
 
-sprite_change_offset("coins_hud",				27, 12);
-sprite_change_offset("level_hud",				44, 9);
+sprite_change_offset("coins_hud",					27, 12);
+sprite_change_offset("coin_head_display",	6, 3);
+sprite_change_offset("level_hud",					44, 9);
 
 //effects
 sprite_change_offset("multislash_fx_right", 		55, 97);

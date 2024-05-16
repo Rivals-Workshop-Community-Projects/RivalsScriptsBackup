@@ -189,7 +189,8 @@ ui_parry = 0;
 parry_success = 0;
 music_timer = 0;
 
-jestermode = get_synced_var(player);
+jestermode = floor(get_synced_var(player) / 10);
+shadelessmode = get_synced_var(player) % 10;
 
 if get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"{
     

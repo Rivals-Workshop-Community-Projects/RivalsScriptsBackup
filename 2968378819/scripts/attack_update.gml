@@ -118,6 +118,16 @@ switch attack{
             can_shield = true;
         }
         
+	if window == 4 && (place_meeting(x + hsp, y + free, asset_get("par_block"))){
+            height_limit = 32;
+            for (var i = 0; i <= height_limit; i++){
+                if (!place_meeting(x + hsp, y + free - i, asset_get("par_block"))){
+                    y -= i;
+                    break;
+                }
+            }
+        }
+
         if (window == 7){
 			if has_hit{
 				if special_down && !move_cooldown[AT_FSPECIAL]{
@@ -233,3 +243,4 @@ switch attack{
         }
     break;
 }
+

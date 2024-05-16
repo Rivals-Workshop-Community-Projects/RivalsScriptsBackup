@@ -22,7 +22,7 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 // set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_charged_flame_release"));
 
 window_num ++; //endlag 1
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);

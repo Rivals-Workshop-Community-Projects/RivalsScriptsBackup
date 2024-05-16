@@ -18,7 +18,7 @@ if(attacking){
 			draw_sprite_ext((spr_dir > 0)?sprite_get("multislash_fx_right") : sprite_get("multislash_fx_left"), image_index - i_img_index, x, y, 4*(spr_dir > 0)-2, 2, 0, c_white, 1);
 		}
 	}
-	if(attack == AT_FSPECIAL and (lvl > 2 or mid_attack_lvl > 2) and (window == 1 or window == 2 or window == 3)){
+	if(attack == AT_FSPECIAL and lvl > 2 and (window == 1 or window == 2 or window == 3)){
 		var ini_frames = 10;
 		if(state_timer <= ini_frames){ 
 			var img = state_timer*9/ini_frames;
@@ -33,6 +33,8 @@ if(attacking){
 // var fspecial_hud_img = 0;
 // fspecial_hud_img  = ((fspecial_hud_time - fspecial_hud_timer)*8/fspecial_hud_time) + (lvl-1)*8;
 // draw_sprite_ext(fspecial_hud_spr, fspecial_hud_img, x, y + 20, 2, 2, 0, c_white, 1);
+
+if(lvl-1) draw_sprite_ext(sprite_get("coin_head_display"), lvl-1, x + -1 + -1*(lvl>2), y - char_height - 14 - hud_offset, 2, 2, 0, c_white, 1);
 
 shader_end()
 

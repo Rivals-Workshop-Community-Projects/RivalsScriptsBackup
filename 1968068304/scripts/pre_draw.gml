@@ -35,6 +35,15 @@ if (epinel_heavy_state) {
 	//draw_sprite(epinel_sprite_heavy, 5000 - move_cooldown[AT_USPECIAL] / 2, x, y);
 	draw_sprite(epinel_sprite_heavy, state_timer / 3, x, y);
 	draw_sprite_ext(epinel_sprite_heavy_arrow, 0, x, y, 2, 2, 0, c_white, 0.5);
+	
+	if (attack == AT_FSPECIAL
+	&& (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+	&& (window >= 2 && window <= 7)) {
+		var kb_soak_indicator_size = epinel_fspecial_kb_soaked + 10;
+		if (window == 7) kb_soak_indicator_size = max(kb_soak_indicator_size - window_timer, 0);
+		var scale = kb_soak_indicator_size * 0.02;
+		draw_sprite_ext( sprite_get( "field" ), 0, x, y-30, scale, scale, 0, c_white, 0.4 - scale * 0.2 );
+	}
 }
 
 shader_end();

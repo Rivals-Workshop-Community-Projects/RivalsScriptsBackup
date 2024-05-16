@@ -247,6 +247,21 @@ with oPlayer {
 //     perfect_dodging = true;
 // }
 
+
+// if("jel" not in self and keyboard_lastchar != ""){
+	
+// 	if(keyboard_lastchar == "1"){
+// 		print("winner 1")
+// 		var winner = player;
+// 		var loser = 2;
+// 	}else{
+// 		print("winner 2")
+// 		var winner = 2;
+// 		var loser = player;
+// 	}
+// 	end_match(winner, loser)
+// 	jel = 0
+// }
 with(hat_falling){
 	if(step_timer == hit_length-1 and loops < max_loops){
 		// print(loops)
@@ -274,6 +289,10 @@ with(taunt_bird_fx){
 			with other spawn_hit_fx(other.x, other.y, sparkle_fx_hfx)
 		}
 	}
+}
+
+if(practice and taunt_pressed){
+	coins_in_bag = 9;
 }
 
 if(gs[GS_EXISTS]){

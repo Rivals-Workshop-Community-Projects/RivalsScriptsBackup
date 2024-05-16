@@ -63,11 +63,17 @@ else if ((super_armor >= 1 || soft_armor >= 1)
 		with (enemy_hitboxID) {
 			if ((type == 2 && damage < 8 && transcendent == false)) break;
 			with (other) {
-				if (calculate_hitbox_kb() < 12) break;
+				var kb_dealt = calculate_hitbox_kb();
+				//print("kb soaked: " + string(kb_dealt));
+				if (kb_dealt < 12) break;
 				sound_play(sound_get("glass_bottle_edited_freesounds_dasebr"));
 				spawn_hit_fx(x, round(y - char_height / 2), epinel_fx_armorbreak);
 				epinel_heavy_state = max(epinel_heavy_state, 1);
 				inflicted_heavy_state = true;
+				//increase endlag by the strongest hit that epinel soaks
+				var soak_amount = power((kb_dealt - 12) * 2, 1);
+				epinel_fspecial_kb_soaked = clamp(soak_amount, epinel_fspecial_kb_soaked, 50);
+				//print("stun suffered: " + string(epinel_fspecial_kb_soaked));
 			}
 			
 		}

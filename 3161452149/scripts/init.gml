@@ -178,3 +178,7 @@ knight_compat_dream =
         "Bringing in these freaks from god knows where...",
         "And this #%$@ing ghost thing trying to read my mind!"
     ]
+
+//Kirby Copy Ability
+
+TCG_Kirby_Copy = 7;

@@ -32,10 +32,12 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //raise platform startup
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_SFX, asset_get("sfx_syl_dspecial_growth"));
 
 //raise platform pause frame
 //set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 9);
@@ -88,9 +90,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 7);
 //knockback
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5); //KOs at high percents.
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6); //hit away from epinel
 //stun
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 11);

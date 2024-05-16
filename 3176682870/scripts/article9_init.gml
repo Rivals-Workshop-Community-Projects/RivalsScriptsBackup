@@ -1,5 +1,9 @@
 //Sets the sprite, depth, and other details for the article. 
-sprite_index = sprite_get("wall");
+if is_aether_stage() {
+    sprite_index = sprite_get("a_wall");
+}else{
+    sprite_index = sprite_get("wall");
+}
 depth = 34
 image_xscale = 2
 image_yscale = 2

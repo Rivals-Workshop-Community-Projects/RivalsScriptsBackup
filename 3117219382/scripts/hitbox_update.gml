@@ -65,6 +65,12 @@ switch (attack)
 }
 if(attack == player_id.coin_atk){
 	
+	if(player_id.state_cat == SC_HITSTUN and !switched_owner){
+		switched_owner = true;
+		was_parried = true;
+		player = player_id.last_player;
+	}
+	
 	if(upgrade_cooldown > 0) upgrade_cooldown--;
 	if(!upgrade_cooldown and player_id.gs[3] and !hit_gs and player_id.gs[6] < player_id.gs[7]){
 		var me = collision_circle(player_id.gs[0], player_id.gs[1], 70, self, false, false);
@@ -82,7 +88,7 @@ if(attack == player_id.coin_atk){
 			damage = max(1, damage-1);
 		}
 	}
-	if(vsp < 5) through_platforms = 2
+	if(vsp < 1) through_platforms = 2
 	
 	if(bounced){
 		bounced_hit_timer++
@@ -94,10 +100,11 @@ if(attack == player_id.coin_atk){
 	
 	// print_vars()
 	var plt = instance_place(x, y, plats)
-  if((place_meeting(x, y+2, solids) or (through_platforms != 2 and plt and get_instance_y(plt) >= y))){
+  if (place_meeting(x, y+2, solids) or (through_platforms != 2 and plt and (get_instance_y(plt)+5 >= (y - vsp*(vsp>0)) ))){
 
 
-	  vsp = old_vsp*-1*0.85;
+	  vsp = min(old_vsp*-1*0.85, -2);
+	  if(plt) y = get_instance_y(plt)-8
   	var vol = clamp(abs(vsp/20), 0, 0.15);
   	var pitch = clamp(1/vol, 1, 2);
   	sound_play(asset_get("sfx_absa_cloud_placepop"), false, noone, vol, 1/vol)

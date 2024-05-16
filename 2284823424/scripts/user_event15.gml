@@ -403,6 +403,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.12", "12 May, 2024");
+initHeader("UStrong - Nerfs");
+initWords("Endlag 18 --> 20.");
+initHeader("NSpecial - Bugfixes");
+initWords("Sticky Piston hitpause adjusted to not cause softlocks when playing with turbo mode.");
+initWords("Items can no longer be restocked by taunting while holding shield. Shoutouts to this not being fixed for at least 1 year");
+initWords("Removed Advertising");
+initWords("Removed Herobrine");
+
 initPatch("2.11", "21 August, 2023");
 initHeader("Abyss Runes - Adjustments");
 initWords("Rune M now disables the Star item.");

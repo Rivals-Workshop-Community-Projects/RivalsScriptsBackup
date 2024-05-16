@@ -30,7 +30,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 12);
 
 set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 12);
@@ -52,7 +52,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .65);
+set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .95);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));

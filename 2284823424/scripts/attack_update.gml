@@ -945,9 +945,11 @@ switch(attack){
                 piston_out = true;
                 if was_parried pist_type = 2;
                 
-                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
-                    hitpause = max(hitpause, 3);
-                }
+				if state_timer < 180 { // lol
+					with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
+						hitpause = max(hitpause, 3);
+					}
+				}
                 break;
             case 3: //Extended
                 if (window_timer == window_end && pist_type == 2) setWindow(7);
@@ -955,20 +957,24 @@ switch(attack){
                 
                 piston_out = true;
                 
-                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
-                    hitpause = max(hitpause, 3);
-                }
+				if state_timer < 180 { // lol
+					with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
+						hitpause = max(hitpause, 3);
+					}
+				}
                 break;
             case 4: //Retracting foe or whiff
                 var current_pos = ease_quartIn(pist_last_x, pist_orig_x, window_timer, window_end);
                 pist_x = current_pos;
                 
-                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
-                    x = current_pos;
-                    y = lerp(y, other.y, 0.3);
-                    hitpause = max(hitpause, 3);
-                }
-                
+				if state_timer < 180 { // lol
+					with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
+						x = current_pos;
+						y = lerp(y, other.y, 0.3);
+						hitpause = max(hitpause, 3);
+					}
+				}
+				
                 piston_out = true;
                 break;
             case 5: //Final hit

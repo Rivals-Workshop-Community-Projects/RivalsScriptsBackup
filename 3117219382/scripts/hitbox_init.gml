@@ -57,6 +57,7 @@ if(attack == player_id.coin_atk){
 	bounced_hit_timer = 0;
 	hit_gs = false;
 	upgrade_cooldown = 5;
+	switched_owner = false;
 	
   if((place_meeting(x, y+2, solids) or place_meeting(x, y+2, plats)) and vsp >= 0){
   	if(old_vsp > 0.5){

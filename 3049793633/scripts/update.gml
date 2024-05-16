@@ -97,6 +97,3 @@ if (cameos_timer = 12020) {
     cameos_timer = 1
     chase += 1
 }
-    
-print(cameos_state)
-print(cameos_timer)

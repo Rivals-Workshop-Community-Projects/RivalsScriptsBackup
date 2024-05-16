@@ -40,7 +40,7 @@ max_djumps              = 1;		            // 0    -  3        the 0 is elliana b
 walljump_hsp            = 6;		            // 4    -  7
 walljump_vsp            = 8;		            // 7    -  10
 land_time               = 4;		            // 4    -  6
-prat_land_time          = 16;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time          = 18;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction           = 0.12;		            // 0    -  0.15
@@ -336,3 +336,4 @@ gold_profile = [get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(a
 gold_profile_out = [get_color_profile_slot_r(alt_cur, 0)-26, get_color_profile_slot_g(alt_cur, 0)-60, get_color_profile_slot_b(alt_cur, 0)-20];
 
 trail_kill_effect_source = noone
+keyboard_lastchar = ""

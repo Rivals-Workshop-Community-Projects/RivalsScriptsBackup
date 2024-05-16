@@ -1,12 +1,12 @@
 sprite_change_offset("idle", 40, 86);
-sprite_change_offset("idle_hurtbox", 40, 86);
+sprite_change_offset("idle_hurtbox", 41, 86);
 sprite_change_offset("hurt", 23, 66);
 sprite_change_offset("hurtground", 32, 60);
 sprite_change_offset("bighurt", 20, 50);
-sprite_change_offset("uphurt", 21, 62);
+sprite_change_offset("uphurt", 39, 76);
 sprite_change_offset("downhurt", 39, 76);
 sprite_change_offset("bouncehurt", 39, 70);
-sprite_change_offset("spinhurt", 42, 85);
+sprite_change_offset("spinhurt", 45, 80);
 sprite_change_offset("crouch", 54, 94);
 sprite_change_offset("crouch_hurtbox", 54, 94);
 sprite_change_offset("walk", 40, 86);
@@ -52,6 +52,8 @@ sprite_change_offset("dspecial_air", 59, 100);
 sprite_change_offset("taunt", 38, 80);
 
 sprite_change_offset("jestermodeuphurt", 39, 73);
+sprite_change_offset("jestermodebighurt", 39, 86);
+sprite_change_offset("jestermodedownhurt", 45, 82);
 sprite_change_offset("jestermodeparry", 82, 122);
 
 sprite_change_offset("plat_draw", 84, -1);

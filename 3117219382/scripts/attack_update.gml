@@ -142,7 +142,7 @@ if(attack == AT_USPECIAL){
 	}
 	if(window == 6){
 		can_wall_jump = true;
-		if(window_timer > 12){
+		if(window_timer > 17){
 			if(!free){
 				set_state(PS_PRATFALL)
 			}
@@ -161,7 +161,7 @@ if(attack == AT_NSPECIAL){
 	}
 	if(window == 2){
 		if(window_timer == 1) coins_in_bag--;
-		if(window_timer == 7) move_cooldown[attack] = 32
+		if(window_timer == 7) move_cooldown[attack] = 42
 	}
 }
 
@@ -234,12 +234,10 @@ if(attack == AT_FSPECIAL){
 			clear_button_buffer(PC_STRONG_PRESSED)
 		}
 		clear_button_buffer(PC_SPECIAL_PRESSED)
-		window = 29;
+		set_window(11);
 	}
 	if(window == 2 and !special_down){
 		set_window(0);
-		mid_attack_lvl = lvl;
-		lvl = 1;
 	}
 	
 	if(window == 3){ // SLASH
@@ -266,7 +264,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}
 			
-			var wid = mist_distance[mid_attack_lvl-1];
+			var wid = mist_distance[lvl-1];
 			var pos_x = (wid/2)*dcos(ma) + 20*dcos(ma);
 			var pos_y = (wid/2)*-dsin(ma) + 30*-dsin(ma) - 30;
 			set_hitbox_value(attack, 1, HG_HITBOX_X, pos_x)
@@ -277,8 +275,8 @@ if(attack == AT_FSPECIAL){
 			hb.mist_angle = ma
 			hb.tangent_angle = point_direction(0,0, spr_dir*dcos(ma), -dsin(ma))
 			// print(hb.tangent_angle)
-			hb.lvl = mid_attack_lvl
-			mid_attack_lvl = 1;
+			hb.lvl = lvl
+			lvl = 1;
 		}
 	}
 	
@@ -304,12 +302,12 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 1){
 			sound_play(asset_get("sfx_waveland_pom"), false, noone, 1, 1.2)
 		}
-		if(attack_pressed and next_window != 29){
-			next_window = 29;
+		if(attack_pressed and next_window != 11){
+			next_window = 11;
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 		if(window_timer == window_end){
-			if(next_window == 29){
+			if(next_window == 11){
 				hsp *= 0.7 - 0.2*(free)
 				vsp *= 0.7
 				set_window(next_window)
@@ -317,7 +315,7 @@ if(attack == AT_FSPECIAL){
 				hsp *= 0.4
 				vsp *= 0.4
 				if(special_down){ set_window(2) }
-				else{ set_window(3) }
+				else{ set_window(3);}
 			}
 		}
 	}

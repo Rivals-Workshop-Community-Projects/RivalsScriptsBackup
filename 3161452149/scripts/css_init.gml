@@ -20,6 +20,8 @@ alt_name = [
 	"Father",
 	"Mom",
 	"That bitch...",
+	"Auntie Mayreed",
+	"Claiyen",
 	"Yellow",
 	"Rubium",
 	"Dune Rider",
@@ -38,6 +40,7 @@ alt_name = [
 	"Unstoppable Peace"+chr(10)+"(Goomboo)",
 	"Molten Hermit"+chr(10)+"(ArtistOfSeer)",
 	"Poison Wind"+chr(10)+"(GrenadesinSpades)",
+	"The Renegade"+chr(10)+"(Opengunner)",
 ];
 
 

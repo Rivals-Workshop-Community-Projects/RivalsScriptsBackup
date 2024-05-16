@@ -403,6 +403,10 @@ if (attack == AT_USTRONG){
     if (window == 1){
         if (window_timer == 1){
             ustrong_sfx_played = false;
+            
+            if (!hitpause && !hitstop){
+                sound_play(sound_get("cri_se_machinegun_set"), false, noone, 0.7, 1.1);
+            }
         }
     }
     if (window == 2){

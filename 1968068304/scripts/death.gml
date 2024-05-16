@@ -4,10 +4,18 @@
 with (obj_article_platform) {
 	if (player_id != other.id) continue;
 	
-	hp = min(hp, 0);
-	time_until_crumble = min(time_until_crumble, 0);
+	if (hp == 1) { hp = 0; sound_play(asset_get("sfx_kragg_roll_end")); }
+	else { hp = min(hp, 1); sound_play(asset_get("sfx_pillar_crumble")); }
+	//time_until_crumble = min(time_until_crumble, 0);
 	sound_play(asset_get("sfx_kragg_roll_end"));
-	break_when_not_stood_on = true;
+	//break_when_not_stood_on = true;
+	
+	//if the platform is offstage, destroy it
+	var image_yscale_prev = image_yscale
+	image_yscale = 100;
+	var plat_is_on_stage = place_meeting(x, y, asset_get("par_block"));
+	image_yscale = image_yscale_prev;
+	if (!plat_is_on_stage) break_when_not_stood_on = true;
 }
 
 //insta-destroy the rising platforms
