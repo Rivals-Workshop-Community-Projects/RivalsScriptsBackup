@@ -37,12 +37,45 @@ if (crystalized_damage_remaining > 0 || state == PS_CRYSTALIZED)
 else small_sprites = 0;
 if (state == PS_FLASHED || state == PS_FROZEN || state == PS_BURIED) sprite_index = sprite_get_skinned("hurt");
 
+if(state == PS_SPAWN && !hitpause && !has_spawned){
+	if(cur_skin != 1){
+		if(state_timer < 30){
+			sprite_index = asset_get("empty_sprite");
+			hud_offset = 99999;
+		}
+		if(state_timer > 50 && state_timer < 85 && state_timer%10 == 5){
+			sound_play(sound_get("sfx_sans_click"));
+		}
+		if(state_timer >= 50 && state_timer < 85 && state_timer%10 >= 5 &&  state_timer%10 <= 7){
+			sprite_index = (cur_skin == 1 ? sprite_get("f_fspecial") : sprite_get("fspecial"));
+			image_index = 2;
+			hud_offset = 99999;
+		} else if(state_timer >= 30 && state_timer < 85){
+			sprite_index = asset_get("empty_sprite");
+			hud_offset = 99999;
+		}
+	} else {
+		if(state_timer < 85){
+			sprite_index = asset_get("empty_sprite");
+			hud_offset = 99999;
+		}
+	}
+	if(state_timer == 85){
+		spawn_hit_fx(x, y - char_height/2, fx_load);
+		sound_play(asset_get("mfx_star"))
+		if juiced_up sound_play(sound_get("sfx_strong_hit"))
+	}
+	if(state_timer >= 85 && state_timer <= 98){
+		sprite_index = (cur_skin == 1 ? sprite_get("f_dspecial") : sprite_get("dspecial"));
+		image_index = 11 + (state_timer-85)/5;
+	}
+}
 
 
 #define sprite_get_skinned()
 {
 	var sprite = argument[0];
-	var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 
 	///Gets a skinned sprite based on its name.
 	var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
@@ -88,7 +121,7 @@ if (state == PS_FLASHED || state == PS_FROZEN || state == PS_BURIED) sprite_inde
 #define skin_sprite()
 {
 	var spr_index = argument[0];
-	var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 
 	///Gets a skinned sprite by its unskinned sprite index.
 	var str = `${spr_index}`;

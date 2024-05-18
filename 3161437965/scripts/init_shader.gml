@@ -14,7 +14,7 @@ switch (alt_cur)
         set_article_color_slot(6, 89, 33, 14); // Pants 2
         break;
         
-    case 29: //EA
+    case 30: //EA
         for(var i = 0; i < 8; i++){
             set_character_color_shading(i, 0);
         }
@@ -33,7 +33,7 @@ switch (alt_cur)
 }
 
 
-if (get_synced_var(player) == 1) //colormap to frisk alts
+if (get_synced_var(player) == 1 || get_synced_var(player) == 420) //colormap to frisk alts
 {
     user_event(2);
     for (var frisk_alt = 0; frisk_alt < array_length(frisk_colors); frisk_alt ++) if (alt_cur == frisk_colors[frisk_alt][0])

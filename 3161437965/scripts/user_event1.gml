@@ -8,4 +8,5 @@ set_ui_element(UI_OFFSCREEN, get_synced_var(player) == 1 ? sprite_get("f_offscre
 sprite_change_offset("f_offscreen", 16, 18);
 set_ui_element(UI_CHARSELECT, get_synced_var(player) == 1 ? sprite_get("f_charselect") : get_char_info(player, INFO_CHARSELECT));
 set_ui_element(UI_WIN_SIDEBAR, get_synced_var(player) == 1 ? sprite_get("f_result_small") : get_char_info(player, INFO_SIDEBAR));
+if(get_player_color(player) == 0 && get_synced_var(player) == 1) set_ui_element(UI_WIN_SIDEBAR, sprite_get("f_result_small_alt_fix"));
 set_ui_element(UI_WIN_PORTRAIT, get_synced_var(player) == 1 ? sprite_get("f_portrait") : get_char_info(player, INFO_PORTRAIT));

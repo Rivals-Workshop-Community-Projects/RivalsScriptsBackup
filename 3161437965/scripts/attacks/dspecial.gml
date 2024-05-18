@@ -55,3 +55,15 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 set_num_hitboxes(atk, 0);
+
+if(has_rune("E")){
+    set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 3);
+    set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 8);
+    
+    set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL, 8, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL, 8, AG_WINDOW_TYPE, 1);
+}

@@ -79,10 +79,20 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 270);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2")); // asset_get("sfx_clairen_hit_weak") asset_get("sfx_leafy_hit3"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.3);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, -1);
+
+if(has_rune("F")){
+    set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+    set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, -.1);
+    set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, -.1);
+    
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, -.1);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, -.1);
+}

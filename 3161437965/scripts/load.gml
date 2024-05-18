@@ -39,11 +39,12 @@ sprite_change_offset("dair", 100, 120);
 sprite_change_offset("fstrong", 90, 122);
 sprite_change_offset("ustrong", 80, 114);
 sprite_change_offset("dstrong", 106, 134);
-sprite_change_offset("nspecial", 64, 94);
+sprite_change_offset("nspecial", 116, 108);
 sprite_change_offset("fspecial", 116, 108);
 sprite_change_offset("uspecial", 116, 132);
 sprite_change_offset("dspecial", 48, 94);
 sprite_change_offset("taunt", 78, 102);
+sprite_change_offset("dance", 18, 60);
 
 sprite_change_offset("plat", 90, 110);
 
@@ -57,7 +58,16 @@ sprite_change_offset("fx_dspec_teleport", 92, 106);
 sprite_change_offset("fx_savestate", 64, 64);
 sprite_change_offset("fx_strike", 20, 71);
 sprite_change_offset("fx_strike_up", 51, 90);
+sprite_change_offset("fx_strike_down", 51, 30);
 sprite_change_offset("fx_gouge", 45, 64);
+sprite_change_offset("vfx_strike", 0, 71);
+sprite_change_offset("nspec_proj", 150, 110);
+sprite_change_offset("rune_proj", sprite_get_xoffset(asset_get("sword_fsmash_proj_loop")), sprite_get_yoffset(asset_get("sword_fsmash_proj_loop")) - 70);
+sprite_change_offset("rune_proj_end", sprite_get_xoffset(asset_get("sword_fsmash_proj_end")), sprite_get_yoffset(asset_get("sword_fsmash_proj_end")) - 70);
+
+for(var i = 1; i <= 8; i++){
+    sprite_change_offset("portrait_frame_" + string(i), -80, -3);
+}
 
 set_victory_bg(sprite_get("victorybg"));
 set_victory_theme(sound_get("charavictory"));

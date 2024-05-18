@@ -1,0 +1,1 @@
+sound_stop(sound_get("lobotomy"))

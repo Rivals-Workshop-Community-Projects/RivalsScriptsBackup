@@ -6,7 +6,7 @@ hitstun_hurtbox_spr = -1;
 char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
-walk_anim_speed = .125;
+walk_anim_speed = .2; //.2
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
@@ -100,10 +100,43 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+//knife child speed go brrr
+if(has_rune("H")){
+    knockback_adj = 1.1;
+    hitstun_grav = .45;
+    
+    initial_dash_time = 10;
+    initial_dash_speed = 9;
+    dash_speed = 11;
+    dash_turn_time = 3;
+    dash_turn_accel = 2;
+    moonwalk_accel = 2;
+    
+    jump_speed = 12;
+    short_hop_speed = 6.5;
+    djump_speed = 12;
+    leave_ground_max = 12; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+    air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
+    jump_change = 5; //maximum hsp when double jumping. If already going faster, it will not slow you down
+    air_accel = 0.60;
+    
+    air_friction = .02;
+    max_djumps = 2;
+    
+    fast_fall = 16; //fast fall speed
+    
+    wave_land_adj = 1.5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+    wave_friction = .15; //grounded deceleration when wavelanding
+    
+    air_dodge_speed = 7.5;
+}
+
 
 ////////////////////////// Chara Specific //////////////////////////
 
 cur_skin = get_synced_var(player);
+i_am_in_the_game = true;
 user_event(1);
 
 
@@ -165,7 +198,9 @@ window_end_time = 0;
 last_window = 0;
 
 //dstrong
+dstrong_fast_vsp = false;
 dstrong_initial_vsp = -7.5; //upwards vsp for dstrong
+dstrong_fast_initial_vsp = -17.5;
 dstrong_post_charge_vsp = 0; //vsp for dstrong right before you start falling
 dstrong_falling_vsp = 13.5; //downwards vsp for dstrong
 max_charge_hsp = 0.5; //max hsp you can have while charging the move
@@ -204,6 +239,15 @@ fspec_max_charge = 60;
 //dspec
 artc_savepoint = noone;
 
+//spawn
+has_spawned = false;
+
+//goofy ah down taunt
+lobotomy = noone;
+lobotomy_timer = 0;
+lobotomy_victory = false;
+rainbow_color = 0;
+
 //afterimage trails
 uses_afterimage_trail = false; //if you want chara to have an afterimage, toggle this, the code will do the rest
 
@@ -224,10 +268,94 @@ repeat (trail_size) //afterimage data setup
     trail_cycle ++;
 }
 
+fs_char_portrait_y = 86;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "custom";
+fs_char_attack_index = 49;
+
 //vfx
 fx_load = hit_fx_create(sprite_get("fx_dspec_star"), 24 );
 fx_savestate = hit_fx_create(sprite_get("fx_savestate"), 18 );
 fx_dspec_teleport = hit_fx_create(sprite_get("fx_dspec_teleport"), 16 );
 fx_strike = hit_fx_create( sprite_get("fx_strike"), 24 );
 fx_strike_up = hit_fx_create( sprite_get("fx_strike_up"), 24 );
+fx_strike_down = hit_fx_create( sprite_get("fx_strike_down"), 24 );
 fx_gouge = hit_fx_create( sprite_get("fx_gouge"), 22 );
+fx_proj = hit_fx_create( sprite_get("rune_proj_end"), 22 );
+
+//rune variables
+rune_save_cancel_buffer = 0;
+murder_mode_target = noone;
+nine_x_off = 0;
+nine_y_off = 0;
+murder_vfx_array = 0;
+genocided = 0;
+
+//cheating
+faq_u_timer = 0;
+fucking_message = "";
+orig_self = self;
+cringer_player = "";
+cringer_character = "";
+strong_character = false;
+
+//stealing from flop
+sai_urls = [
+1916799945,
+1997619532,
+2047413648,
+2069283406,
+2085832560,
+2108469290,
+2136624834,
+2210322072,
+2245933402,
+2257020796,
+2294523795,
+2300438860,
+2397072983,
+2397076037,
+2397076826,
+2397078941,
+2435343136,
+2438249735,
+2485539286,
+2496614768,
+2557400455,
+2626146260,
+2642791979,
+2812701743,
+2825430715,
+2860421116,
+2608735064, 
+2613831695,
+2616801621, 
+2619953629, 
+2630841948, 
+2646910723, 
+2815453471, 
+2820949807]
+
+felix_urls=[
+2164231403,
+2195328853,
+2325366840,
+2426856576,
+2426863058,
+2442944606,
+2481375972,
+2500535242,
+2650444461,
+2775288890,
+2787891650,
+2798199714,
+2848125153,
+2909667246,
+2909668071,
+2909668306,
+2956179852,
+2956181122,
+2989776522,
+3018630828,
+3071141132]
+juiced_up = false;

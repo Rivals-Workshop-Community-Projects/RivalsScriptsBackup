@@ -39,6 +39,7 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_FTILT, 1, HG_SDI_MULTIPLIER, .5); //added
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
+set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, fx_gouge);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
@@ -59,4 +60,5 @@ set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .50);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
+set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, fx_gouge);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));

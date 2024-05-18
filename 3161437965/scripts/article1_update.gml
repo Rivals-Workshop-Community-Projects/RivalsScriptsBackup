@@ -5,9 +5,10 @@ hitbox_view = get_match_setting(SET_HITBOX_VIS);
 
 //if enemy players fly into it with hitstun they get recorded
 var check_col = collision_circle(x - 1, y - 33, collision_radius, oPlayer, true, true);
+var runeI = has_rune("I");
 if (check_col != noone && check_col != player_id) with (oPlayer)
 {
-    if (get_player_team(player) != get_player_team(other.player) && state == PS_HITSTUN && !hitpause && other.saved_player == other.player_id)
+    if (get_player_team(player) != get_player_team(other.player) && (state == PS_HITSTUN || runeI) && !hitpause && other.saved_player == other.player_id)
     {
         //they only get recorded if the recorded player is the owner chara
         other.saved_player = self;
@@ -31,6 +32,14 @@ if (saved_player != player_id)
     {
         saved_player.x = x;
         saved_player.y = y;
+        if has_rune("J") with(saved_player){
+            free = true;
+            set_state(PS_PRATFALL);
+            hsp = 0;
+            vsp = -3;
+			was_parried = true;
+			parry_lag = 60;
+        }
     }
 }
 

@@ -22,7 +22,7 @@ add_sprites("airdodge","crouch","dash","dashstart","dashstop","dashturn","double
 
 //================Attacks================
 //  Base Attacks
-add_sprites("bair","dair","dattack","dspecial","dstrong","dtilt","fair","fspecial","fstrong",
+add_sprites("bair","dair","dance","dattack","dspecial","dstrong","dtilt","fair","fspecial","fstrong",
             "ftilt","jab","nair","nspecial","taunt","uair","uspecial","ustrong","utilt");
 
 //=================OTHER=================

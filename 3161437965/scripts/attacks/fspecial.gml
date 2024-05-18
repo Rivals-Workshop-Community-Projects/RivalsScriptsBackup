@@ -54,3 +54,30 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, fx_strike);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+
+if(has_rune("B")){
+    set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
+    set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 10);
+    set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX_FRAME, 7);
+    set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HITPAUSE_FRAME, 6);
+    
+    set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 13);
+    set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 55);
+}
+
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, -10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -26);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 25);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 70);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 0);               //these values are all set in attack_update.gml
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, fx_strike);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));

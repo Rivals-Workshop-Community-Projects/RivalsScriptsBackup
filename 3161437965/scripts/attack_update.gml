@@ -1,15 +1,30 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == 49){
     trigger_b_reverse();
+}
+
+if has_rune("A") && has_saved_state && using_stored_attack && special_pressed {
+    save_flash_time = 15;
+    sound_play(asset_get("sfx_ell_arc_taunt_end"));
+    spawn_hit_fx(x, y - 32, fx_savestate);
+    has_saved_state = false;
+}
+
+if(has_rune("G") && using_stored_attack){
+    if(window == last_window && window_timer > window_end_time/2){
+        super_armor = false;
+    }
 }
 
 switch (attack)
 {
     case AT_DSTRONG:
+    can_wall_jump = window == 4;
         switch (window)
         {
             case 1: //pre-jump
                 //reset some stuff
+                dstrong_fast_vsp = up_down;
                 if (window_timer == 1) dstrong_fall_time = dstrong_cancel_time;  
                 if (!hitpause && !hitstop)
                 {
@@ -25,18 +40,18 @@ switch (attack)
                 if (!hitpause && !hitstop)
                 {
                     //go up if not charging the move
-                    if (strong_charge <= 0) vsp = dstrong_initial_vsp;
+                    if (strong_charge <= 0) vsp = (dstrong_fast_vsp ? dstrong_fast_initial_vsp : dstrong_initial_vsp);
                     else
                     {
                         vsp = 0;
-                        hsp = clamp(hsp, -max_charge_hsp, max_charge_hsp);
+                        if !has_rune("F") hsp = clamp(hsp, -max_charge_hsp, max_charge_hsp);
                     }
                 }
                 break;
             case 3: //post-charge startup
                 //fully prevent horizontal movement
-                hsp = 0;
-                can_move = false;
+                if !has_rune("F") hsp = 0;
+                if !has_rune("F") can_move = false;
                 
                 if (!hitpause && !hitstop) vsp = dstrong_post_charge_vsp;
                 if (window_timer == window_end_time) sound_play(asset_get("sfx_swipe_heavy1")); //sfx
@@ -50,7 +65,7 @@ switch (attack)
                 {
                     vsp = dstrong_falling_vsp;
                     //allow for jump cancelling if falling for long enough
-                    if (dstrong_fall_time <= 0) can_jump = true;
+                    if (dstrong_fall_time <= 0) { can_jump = true; can_shield = true; }
                 }
                 
                 //loop
@@ -84,7 +99,7 @@ switch (attack)
                         create_hitbox(AT_DSTRONG, 1, floor(x), floor(y));
                         
                         //landing sfx
-                        sound_play( asset_get("sfx_blow_medium2"), false, noone, 0.7, 1.1 );
+                        sound_play( asset_get("sfx_zetter_downb"), false, noone, 0.7, 1.1 ); //asset_get("sfx_blow_medium2")
                     }
                 }
                 
@@ -98,11 +113,28 @@ switch (attack)
         can_fast_fall = false;
         break;
     case AT_FSPECIAL:
+        if has_rune("L") && fspec_charge == fspec_max_charge {
+            set_num_hitboxes(AT_FSPECIAL, 2);
+            if has_rune("B") set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 0);
+        } else{
+            set_num_hitboxes(AT_FSPECIAL, 1);
+            reset_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY);
+        }
+        
         can_fast_fall = false;
+        if window > 2 can_wall_jump = true;
         switch (window)
         {
             case 1: //reset charge
-                if (window_timer == 1) fspec_charge = 0;
+                if (window_timer == 1) { 
+                    if !juiced_up fspec_charge = 0; 
+                    set_hitbox_value(attack, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+                    set_hitbox_value(attack, 1, HG_DAMAGE, 7);
+                    set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 7);
+                    set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, 0.7);
+                    set_hitbox_value(attack, 1, HG_BASE_HITPAUSE, 8);
+                    set_hitbox_value(attack, 1, HG_HITPAUSE_SCALING, 0.6);
+                }
                 break;
             case 2: //charge
                 hsp = clamp(hsp, -2, 2);
@@ -113,6 +145,7 @@ switch (attack)
                 {
                     window_timer = 0; //the charge is only active for the first frame of the attack
                     fspec_charge ++;
+                    if has_rune("C") fspec_charge++;
 
                     //variable tweaking for the hitbox (min, max)
                     set_hitbox_value(attack, 1, HG_DAMAGE, lerp(7, 13, fspec_charge/fspec_max_charge));
@@ -120,8 +153,12 @@ switch (attack)
                     set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, lerp(0.7, 0.9, fspec_charge/fspec_max_charge));
                     set_hitbox_value(attack, 1, HG_BASE_HITPAUSE, lerp(8, 11, fspec_charge/fspec_max_charge));
                     set_hitbox_value(attack, 1, HG_HITPAUSE_SCALING, lerp(0.6, 0.8, fspec_charge/fspec_max_charge));
-
-                    if (fspec_charge % 8 == 0 && !hitpause) spawn_base_dust(x, y, "land");
+                    if(fspec_charge > 50){
+                        set_hitbox_value(attack, 1, HG_HIT_SFX, asset_get("sfx_icehit_heavy2"));
+                    } else {
+                        set_hitbox_value(attack, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+                    }
+                    if (fspec_charge % (8 * (1 + has_rune("C"))) == 0 && !hitpause) spawn_base_dust(x, y, "land");
                 }
                 break;
             case 3: //dash
@@ -139,6 +176,13 @@ switch (attack)
                             }
                         }
                     }
+                if(has_rune("B") && hitpause && has_hit){
+                    window = 4;
+                    window_timer = 0;
+                    destroy_hitboxes();
+                    sound_play(asset_get("sfx_shovel_swing_heavy1"));
+                    old_hsp = get_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED) * spr_dir;
+                }
                 break;
             case 4:
                 uses_afterimage_trail = false;
@@ -149,6 +193,9 @@ switch (attack)
                 if (window_timer == window_end_time-1 && free) set_state(PS_PRATFALL);
                 break;
         }
+        break;
+    case AT_USPECIAL:
+        can_wall_jump = true;
         break;
     case AT_DSPECIAL:
         switch (window)
@@ -176,8 +223,197 @@ switch (attack)
                 break;
         }
         break;
+    case AT_TAUNT:
+        if(window == 2 && window_timer == 26){
+            take_damage(player, player, 1);
+            take_damage(player, player, -1)
+        }
+        break;
+    case AT_TAUNT_2:
+        has_hit_player = true;
+        lobotomy_timer++;
+        if window != 1 window = 1
+        suppress_stage_music(0, 1);
+    	if(!taunt_down && !special_down){
+    		if loaded_off_uspec set_state(PS_PRATFALL) else set_state(PS_IDLE);
+    	}
+    	can_fast_fall = false;
+    	can_move = !free;
+    	if vsp > 0 vsp *= .8;
+    	if free hsp *= .98;
+    	if(lobotomy_timer == 360 && !hitpause){
+    	    spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
+    	}
+        break;
+    case AT_NSPECIAL:
+        move_cooldown[AT_NSPECIAL] = 30;
+        // if(window == 1){
+        //     if(special_down){
+        //         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
+        //         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
+        //         set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
+        //         set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME, 8);
+        //     } else {
+        //         reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
+        //         reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME);
+        //         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
+        //         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
+        //     }
+        // }
+        break;
+    case AT_FSPECIAL_2:
+        var screen_center_x = view_get_xview() + view_get_wview()/2;
+        var screen_center_y = view_get_yview() + view_get_hview()/2;
+        if(!faq_u_timer){
+            hitpause = false;
+            hitstop = 0;
+            hitstop_full = 0;
+        }
+        nine_x_off += .5;
+        nine_y_off += .5;
+        if nine_x_off > 36 nine_x_off -= 36;
+        if nine_y_off > 36 nine_y_off -= 36;    
+        hsp = 0;
+        vsp = 0;
+        can_move = false;
+        can_fast_fall = false;
+        if(window < 5){
+            suppress_stage_music(.4, .01)
+            if(!instance_exists(murder_mode_target)){
+                set_state(PS_PRATFALL);
+            } else {
+                with(murder_mode_target){
+                    hsp = 0;
+                    vsp = 0;
+                    hitpause = true;
+                    hitstop = 2;
+                    hitstop_full = 100;
+                    hitstun = 4;
+                    hitstun_full = 4;
+                    state_timer = 2;
+                    state = PS_HITSTUN;
+                    hurtboxID.sprite_index = hurtbox_spr;
+                    invincible = false;
+                    invince_time = 0;
+                    attack_invince = 0;
+                    super_armor = false;
+                    soft_armor = 0;
+                    initial_invince = 0;
+                    can_be_hit[other.player] = 0;
+                    damage_scaling = min(1, damage_scaling);
+                }
+            }
+            with(oPlayer) if self != other && self != other.murder_mode_target {
+                hitpause = true;
+                hitstop = 2;
+                hitstop_full = 100;
+                old_hsp = genocide_hsp_store;
+                old_vsp = genocide_vsp_store;
+            }
+            with(pHitBox) {
+                hitpause = true;
+                hitpause_timer = 2;
+            }
+            with(obj_article1) {
+                hitpause = true;
+            }
+            with(obj_article2) {
+                hitpause = true;
+            }
+            with(obj_article3) {
+                hitpause = true;
+            }
+            with(obj_article_platform) {
+                hitpause = true;
+            }
+            with(obj_article_solid) {
+                hitpause = true;
+            }
+        }
+        if(window == 5 && instance_exists(murder_mode_target)){
+            suppress_stage_music(.1 - (.1 * genocided), 1)
+            with(murder_mode_target){
+                hitpause = true;
+                hitstop = 2;
+                hitstop_full = 100;
+                state_timer = 0;
+                state = PS_HITSTUN;
+                hurtboxID.sprite_index = hurtbox_spr;
+                invincible = false;
+                invince_time = 0;
+                attack_invince = 0;
+                super_armor = false;
+                soft_armor = 0;
+                damage_scaling = min(1, damage_scaling);
+            }
+            with(oPlayer) if self != other && self != other.murder_mode_target {
+                hitpause = true;
+                hitstop = 2;
+                hitstop_full = 100;
+                old_hsp = genocide_hsp_store;
+                old_vsp = genocide_vsp_store;
+            }
+            with(pHitBox) {
+                hitpause = true;
+                hitpause_timer = 2;
+            }
+            with(obj_article1) {
+                hitpause = true;
+            }
+            with(obj_article2) {
+                hitpause = true;
+            }
+            with(obj_article3) {
+                hitpause = true;
+            }
+            with(obj_article_platform) {
+                hitpause = true;
+            }
+            with(obj_article_solid) {
+                hitpause = true;
+            }
+        }
+        if(window == 1 || window == 2){
+            hsp = .9 * spr_dir;
+        } else if(window < 6){
+            x = murder_mode_target.x + 40 * spr_dir;
+            y = murder_mode_target.y;
+        }
+        if(window == 3){
+            if(window_timer%6 == 1){
+                create_hitbox(AT_FSPECIAL_2, 1, x, y);
+            }
+        }
+        if(window == 4){
+            if(window_timer == 30){
+                murder_vfx_array[array_length_1d(murder_vfx_array)] = {
+                    x:screen_center_x, 
+                    y:screen_center_y - (murder_mode_target.char_height/2), 
+                    spr_dir:spr_dir, 
+                    scale:2, 
+                    sprite_index:sprite_get("fx_dspec_teleport"), 
+                    anim_speed:.25, 
+                    rot:0, 
+                    col:c_white, 
+                    timer:0, 
+                    timerMax:15
+                };
+                sound_play(asset_get("mfx_star"))
+                // sprite_get("fx_dspec_teleport")
+                // sound_play(sound_get("sfx_hurt_strong"))
+                // sound_play(sound_get("sfx_rudebuster"))
+            }
+        }
+        break;
+        case 49:
+            fs_force_fs = false;
+            vsp = 0;
+            can_fast_fall = false;
+            can_move = false;
+            if(window == 4 && window_timer == 5 && !hitpause) spr_dir *= -1;
+            if(window == 3 || window == 5) uses_afterimage_trail = true else uses_afterimage_trail = false
+        break;
 }
-
 
 //--------------------------------------------
 
@@ -206,6 +442,7 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
