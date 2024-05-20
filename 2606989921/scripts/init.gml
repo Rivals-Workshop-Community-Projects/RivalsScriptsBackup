@@ -346,6 +346,12 @@ msg_init_locality();
 msg_player_to_hud_positions = [noone, noone, noone, noone, noone];
 msg_do_hud_position_check = true;
 
+//pseudoclones spawn effect
+msg_spawn_clone_gravity = 0.4;
+msg_spawn_clone_ball_time = 30;
+msg_spawn_clone_active_time = 50;
+msg_spawn_clone_effects[0] = { vsp:0, x:0, y:0, tx:0, ty:0, state:noone, timer:0 };
+
 
 //removes special rendering shenanigans
 msg_low_fps_mode = false; //pointless?

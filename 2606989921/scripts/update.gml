@@ -432,6 +432,8 @@ if (gfx_glitch_death_stack > 0)
 {
     if (gfx_glitch_death_stack <= gfx_glitch_death_stack_max)
     {
+        hsp = sign(gfx_glitch_death_position.x - x);
+        vsp = sign(gfx_glitch_death_position.y - y);
         x = gfx_glitch_death_position.x;
         y = gfx_glitch_death_position.y;
         hitstun_full = 7;

@@ -262,12 +262,14 @@ switch (attack)
     {
         can_move = (window == 1 || window == 6);
         can_fast_fall = false;
+        
+        var allowed_to_jumpcancel = (djumps < max_djumps) || !msg_dair_cooldown_override;
+
         if (window == 1) && (window_timer <= 1)
         {
             msg_dair_earthquake_counter = 0;
             msg_dair_startup_has_jumped = false;
             clear_button_buffer( PC_JUMP_PRESSED );
-            msg_dair_cooldown_override = true; //once per airtime only
             reset_hitbox_value(AT_DAIR, 2, HG_DAMAGE);
         }
 
@@ -282,7 +284,7 @@ switch (attack)
                     window = 4; window_timer = 0;
                     sound_play(get_window_value(attack, 4, AG_WINDOW_SFX));
                 }
-                else if (msg_dair_startup_has_jumped)
+                else if (msg_dair_startup_has_jumped) && allowed_to_jumpcancel
                 {
                     window = 3; window_timer = 0;
                 }
@@ -302,13 +304,16 @@ switch (attack)
             }
             else if (!was_parried && !hitpause)
             {
-                if (jump_pressed || msg_dair_startup_has_jumped) 
+                if (jump_pressed || msg_dair_startup_has_jumped) && allowed_to_jumpcancel
                 {
                     window = 6;
                     window_timer = 0;
                     vsp = get_window_value(attack, 6, AG_WINDOW_VSPEED);
                     hsp += (right_down - left_down) * get_window_value(attack, 6, AG_WINDOW_HSPEED);
                     clear_button_buffer( PC_JUMP_PRESSED );
+
+                    if (msg_dair_cooldown_override) djumps++; //BSPEC clause: lose a djump
+                    else msg_dair_cooldown_override = true; //once per airtime only
 
                     //transfer hittability to projectile
                     var proj = create_hitbox(AT_DAIR, 3, x, y - 20);

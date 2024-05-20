@@ -121,7 +121,8 @@ set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_VSPEED, get_window_value(AT_DAIR, 2, 
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_PARRY_STUN, 0);
+set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DAIR, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);

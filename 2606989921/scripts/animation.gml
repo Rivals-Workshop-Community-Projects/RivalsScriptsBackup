@@ -511,7 +511,66 @@ switch (state)
             } break;
             case 2: //Clone spam
             {
-                //requires: pseudoclones solution
+                if (state_timer == 1) //remaining logic is below
+                {
+                    var psc_origin_x = (x - view_get_xview() < (view_get_wview()/2)) ? (view_get_xview() - x - 80) 
+                                                                                    : (view_get_xview() + view_get_wview() - x + 80);
+                    var psc_origin_y = (msg_unsafe_random & 0xFF) - 64;
+
+                    //3 fixed steps towards true spawn (2 -> 1 -> 0)
+                    //1 RNG step towards middle of path + 2 furhter RNG steps around it + another 3 after
+                    //step 2 target spawns one, step 1 target spawns two 
+
+                    msg_spawn_clone_effects[7] = 0; //prealloc
+                    var extra_balls = [1, 2, 2, 3, 3, 3]; //weighted chances of adding balls to these chains
+                    var rng_index = 0; //to scromble better
+                    for (var k = 0; k < array_length(msg_spawn_clone_effects); k++)
+                    {
+                        msg_spawn_clone_effects[k] = { vsp:0, x:0, y:0, tx:0, ty:0, state:0, timer:0 }
+                        var psck = msg_spawn_clone_effects[k]
+                        switch (k)
+                        {
+                            case 0: //true spawn
+                                psck.tx = 0; psck.ty = 0; 
+                                psck.x = psc_origin_x/3; psck.y = ((msg_unsafe_random >> 9) & 0x7F) - 64;
+                                psck.timer = 2 * (msg_spawn_clone_ball_time + 5);
+                            break;
+                            case 1: //1 step before spawn
+                                psck.tx = psc_origin_x/3; psck.ty = msg_spawn_clone_effects[0].y; 
+                                psck.x = 2*psc_origin_x/3; psck.y = (psc_origin_y + psck.ty) / 2 + ((msg_unsafe_random >> 11) & 0xF);
+                                psck.timer = msg_spawn_clone_ball_time + 10;
+                            break;
+                            case 2: //first ball tossed
+                                psck.tx = 2*psc_origin_x/3; psck.ty = msg_spawn_clone_effects[1].y; 
+                                psck.x = psc_origin_x; psck.y = psc_origin_y;
+                                psck.timer = 0; //immediate
+                            break;
+                            case 3: //extra ball
+                                psck.tx = psc_origin_x/2; psck.ty = ((msg_unsafe_random >> 9) & 0x7F) - 64; 
+                                psck.x = psc_origin_x; psck.y = psc_origin_y;
+                                psck.timer = 7 + (msg_unsafe_random % 13); //early
+                            break;
+                            default:
+                                //pick a starting ball
+                                var chainball = random_func(rng_index, array_length(extra_balls), true);
+                                chainball = msg_spawn_clone_effects[extra_balls[chainball]];
+
+                                //inherit position and starting delay
+                                psck.x = chainball.tx; psck.y = chainball.ty;
+                                psck.timer = chainball.timer + msg_spawn_clone_ball_time + ((msg_unsafe_random >> k + k) % (2*k));
+
+                                //aim own target towards 0,0 with high deviation
+                                psck.tx = psck.x - floor(psc_origin_x * random_func(rng_index+1, 1, false)/2);
+                                psck.ty = psck.y + 4*random_func(rng_index+2, 32, true) - 64;
+
+                                rng_index = (rng_index + 3) % 24;
+                            break;
+                        }
+
+                        psck.y -= 30; //better center for spawning
+                        psck.vsp = (psck.ty - psck.y)/msg_spawn_clone_ball_time - msg_spawn_clone_ball_time*msg_spawn_clone_gravity/2;
+                    }
+                }
             } break;
             case 3: //Fakeout dash
             {
@@ -599,6 +658,57 @@ switch (state)
     } break;
 //==================================================================
     default: break;
+}
+
+//==================================================================
+//special clonespam startup logic
+if (get_gameplay_time() < 300) && (msg_alt_startup == 2)
+{
+    for (var k = 0; k < array_length(msg_spawn_clone_effects); k++)
+    {
+        var psck = msg_spawn_clone_effects[k];
+        psck.timer--;
+        switch (psck.state)
+        {
+            case 0: //wait
+                if (psck.timer < 0)
+                {
+                    psck.state = 1;
+                    psck.timer = msg_spawn_clone_ball_time;
+                }
+                break;
+            case 1: //ball
+                psck.y += psck.vsp;
+                psck.vsp += msg_spawn_clone_gravity;
+
+                psck.x += (psck.tx - psck.x)/psck.timer; //division by zero, lmao idc
+
+                if (psck.timer <= 0)
+                {
+                    psck.state = 2;
+                    psck.timer = msg_spawn_clone_active_time;
+
+                    var fx = spawn_hit_fx(x+psck.tx, y+psck.ty-20, hfx_ball_open);
+                    fx.depth -= 2; 
+                    sound_play(sound_get("ball_explode"),false, noone, 0.5, 1);
+                }
+                break;
+        }
+
+        if (k == 0)
+        { 
+            if !((psck.state == 2) && (psck.timer < 35))
+            {
+                draw_y = 10000;
+                draw_indicator = false;
+            }
+            else
+            {
+                psck.timer = 0;
+            }
+        }
+
+    }
 }
 
 //==================================================================

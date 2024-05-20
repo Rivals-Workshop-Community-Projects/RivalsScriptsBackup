@@ -16,6 +16,20 @@ if (msg_last_known_damage < 0) && (get_player_damage(player) == 0)
     set_player_damage(player, new_damage);
     msg_last_known_damage = new_damage;
 }
+if (msg_last_known_damage < -100)
+{
+    //being able to heal by getting hit is too strong
+    //therefore Missingno gains a damage resistance proportional to its percent
+    //up to and including wrapping back to "negative" damage (max -50%)
+
+    var current_damage = get_player_damage(player);
+    var resistance = clamp((current_damage > -150) ? 2 + current_damage/100.0 : 1 + current_damage/300.0, -0.5, 1);
+    
+    var damage_untaken = (1 - resistance) * damage_scaling * enemy_hitboxID.damage;
+    new_damage = floor(current_damage - round(damage_untaken));
+    set_player_damage(player, new_damage);
+    msg_last_known_damage = new_damage;
+}
 //==========================================================
 
 if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)

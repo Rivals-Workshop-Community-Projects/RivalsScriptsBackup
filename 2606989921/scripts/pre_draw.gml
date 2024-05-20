@@ -33,6 +33,8 @@ for (var i = 0; i < msg_leechseed_particle_number; i++)
         draw_sprite(vfx_healing, 9 + (i % 6), temp_part.x, temp_part.y);
     }
 }
+//special clonespam spawn
+if (get_gameplay_time() < 300) msg_draw_spawneffect_clones();
 
 // DAIR requires sprite changes to leave hurtboxes intact
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
@@ -380,6 +382,13 @@ if (vfx_yoyo_snap.timer > 0)
     with (obj_article2) if ("is_missingno_copy" in self)
                         && (client_id == other)
     {
+        var has_gaslit_dodge = ("msg_gaslight_dodge" in other) && other.msg_gaslight_dodge.active
+        if (has_gaslit_dodge)
+        {
+            other.draw_x -= other.msg_gaslight_dodge.x;
+            other.draw_y -= other.msg_gaslight_dodge.y;
+        }
+
         var cl_scale = (1 + other.small_sprites);
         var cl_alpha = (state == 2 ? 0.5 : 1);
         if (state == 0)
@@ -402,6 +411,12 @@ if (vfx_yoyo_snap.timer > 0)
             draw_x -= other.client_offset_x;
             draw_y -= other.client_offset_y;
         }
+
+        if (has_gaslit_dodge)
+        {
+            other.draw_x += other.msg_gaslight_dodge.x;
+            other.draw_y += other.msg_gaslight_dodge.y;
+        }
     }
 
 #define msg_gpu_push_state // Version 0
@@ -412,6 +427,25 @@ if (vfx_yoyo_snap.timer > 0)
     {
         gpu_pop_state(); msg_unsafe_gpu_stack_level--;
     }
+
+#define msg_draw_spawneffect_clones // Version 0
+    // Draws every spawnclone you own
+    shader_start();
+    for (var i = 0; i < array_length(msg_spawn_clone_effects); i++)
+    {
+        var psck = msg_spawn_clone_effects[i];
+        if (psck.state == 1) //ball
+        {
+            draw_sprite(sprite_get("proj_pokeball"), psck.timer/5, x + psck.x, y + psck.y)
+        }
+        else if (psck.state == 2) && (psck.timer > 0) //active
+        {
+            var cl_alpha = (psck.timer < 20 ? 0.5 : 1);
+            var cl_scale = (1 + small_sprites) * floor(min(msg_spawn_clone_active_time - psck.timer, 16)/4) * 0.25;
+            draw_sprite_ext(sprite_index, image_index, x + psck.tx, y + psck.ty, cl_scale*spr_dir, cl_scale, 0, c_white, cl_alpha)
+        }
+    }
+    shader_end();
 
 #define msg_copy_params(source, target, limiter) // Version 0
     // Usage: for all variables in LIMITER: copy value from SOURCE to TARGET

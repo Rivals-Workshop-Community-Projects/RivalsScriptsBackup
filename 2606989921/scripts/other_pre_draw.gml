@@ -221,6 +221,13 @@ if ("msg_unsafe_handler_id" in self && other_player_id == msg_unsafe_handler_id)
     with (obj_article2) if ("is_missingno_copy" in self)
                         && (client_id == other)
     {
+        var has_gaslit_dodge = ("msg_gaslight_dodge" in other) && other.msg_gaslight_dodge.active
+        if (has_gaslit_dodge)
+        {
+            other.draw_x -= other.msg_gaslight_dodge.x;
+            other.draw_y -= other.msg_gaslight_dodge.y;
+        }
+
         var cl_scale = (1 + other.small_sprites);
         var cl_alpha = (state == 2 ? 0.5 : 1);
         if (state == 0)
@@ -242,6 +249,12 @@ if ("msg_unsafe_handler_id" in self && other_player_id == msg_unsafe_handler_id)
             msg_unsafe_effects.quadrant.timer = temp;
             draw_x -= other.client_offset_x;
             draw_y -= other.client_offset_y;
+        }
+
+        if (has_gaslit_dodge)
+        {
+            other.draw_x += other.msg_gaslight_dodge.x;
+            other.draw_y += other.msg_gaslight_dodge.y;
         }
     }
 
