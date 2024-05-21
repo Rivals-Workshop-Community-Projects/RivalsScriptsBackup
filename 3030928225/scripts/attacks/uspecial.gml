@@ -61,7 +61,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 
 window_num ++; // Burrow into the ground
 uspecial_air_burrowed_ground_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);
@@ -74,7 +74,7 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 window_num ++; // Burrow into the wall
 uspecial_air_burrowed_wall_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);

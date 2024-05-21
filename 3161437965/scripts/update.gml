@@ -77,7 +77,9 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             else uses_afterimage_trail = false;
             if(saved_state.attack == AT_TAUNT_2 && lobotomy == noone) lobotomy = sound_play(sound_get("lobotomy"), true);
             
+            attack_end();
             set_attack(saved_state.attack);
+            
             if (saved_state.strong_window == 0)
             {
                 window_timer = floor(get_window_value(saved_state.attack, 1, AG_WINDOW_LENGTH)/2);

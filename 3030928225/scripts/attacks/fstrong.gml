@@ -6,7 +6,7 @@ set_attack_value(atk, AG_OFF_LEDGE, 0);
 
 window_num = 1; // Windup
 fstrong_windup_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 
@@ -57,10 +57,11 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 window_num++; // Stance-cancel window, not normally taken
 fstrong_stancel_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, stancle_length);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 

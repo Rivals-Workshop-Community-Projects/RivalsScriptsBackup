@@ -14,6 +14,9 @@ if (attack == AT_DSPECIAL && instance_exists(artc_savepoint)) window = 5; //redi
 if attack == AT_TAUNT && down_down {
     attack = AT_TAUNT_2
     if !lobotomy_victory lobotomy = sound_play(sound_get("lobotomy"), true);
+    if(move_cooldown[AT_TAUNT_2] <= 0 && (!using_stored_attack && loaded_off_uspec)){
+    	loaded_off_uspec = false;
+    }
     // spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
 }
 

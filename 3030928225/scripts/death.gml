@@ -8,6 +8,8 @@ strong_charge = 0;
 special_charge = 0;
 fully_charged = false;
 was_fully_charged = false;
+// Reset nspecial air stall
+nspecial_air_stall_available = true;
 
 // Release anyone we may have grabbed
 with (asset_get("oPlayer")) {

@@ -1,6 +1,10 @@
 //got_hit.gml
 //this script runs when the player gets hit, can be useful to stop certain effects or apply certain effects on your player
 
+can_stancle = false;
+// Reset nspecial air stall
+nspecial_air_stall_available = true;
+
 // Release anyone we may have grabbed
 with (asset_get("oPlayer")) {
     if (SQUIGLY_HOLDER_ID == other.id) {

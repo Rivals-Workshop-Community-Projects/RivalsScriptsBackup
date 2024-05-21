@@ -226,16 +226,17 @@ switch (attack)
     case AT_TAUNT:
         if(window == 2 && window_timer == 26){
             take_damage(player, player, 1);
-            take_damage(player, player, -1)
+            take_damage(player, player, -2)
         }
         break;
     case AT_TAUNT_2:
         has_hit_player = true;
         lobotomy_timer++;
         if window != 1 window = 1
-        suppress_stage_music(0, 1);
+        suppress_stage_music(0, .05)
     	if(!taunt_down && !special_down){
     		if loaded_off_uspec set_state(PS_PRATFALL) else set_state(PS_IDLE);
+    		loaded_off_uspec = false;
     	}
     	can_fast_fall = false;
     	can_move = !free;

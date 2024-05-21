@@ -36,9 +36,9 @@ prepare_shader(); //resets shader
 //alt icons
 switch (alt_cur)
 {
-    case 27: draw_sprite_ext(sprite_get("css_icons_ex"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //VAE
-    case 28: draw_sprite_ext(asset_get("prem_skin_spr"), 3, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //abyss
-    case 29: draw_sprite_ext(asset_get("prem_skin_spr"), 2, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //early access
+    case 28: draw_sprite_ext(sprite_get("css_icons_ex"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //VAE
+    case 29: draw_sprite_ext(asset_get("prem_skin_spr"), 3, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //abyss
+    case 30: draw_sprite_ext(asset_get("prem_skin_spr"), 2, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //early access
 }
 
 

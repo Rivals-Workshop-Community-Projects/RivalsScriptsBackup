@@ -384,6 +384,7 @@ stance_speed = 1;
 stance_image_timer = 0;
 stance_frames = 4;
 stance_frames_length = 5;
+stancle_length = 11;
 
 // Nspecial
 super_armor_available = false;

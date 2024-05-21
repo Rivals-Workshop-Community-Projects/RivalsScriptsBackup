@@ -16,6 +16,72 @@ is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack c
 is_dodging = (hurtboxID.dodging); //dodge check - becomes true if the character is invincible when dodging/teching
 game_time = get_gameplay_time(); //get_gameplay_time() is a timer that counts up every frame of the match
 
+if ((state == PS_LANDING_LAG) && can_stancle) {
+	if (special_pressed)  {
+		// Set this true if the previous attack didn't actually end
+		//this_attack_was_the_result_of_a_cancel = can_stancle;
+		// Reset our ability to stancle - is set true on hit
+		can_stancle = true;
+		//Reset charge detection state
+		//fully_charged = false;
+		//was_fully_charged = false;
+		
+		state = PS_ATTACK_GROUND;
+		state_timer = 0;
+		window_timer = 0;
+		if (up_down) {
+			attack = AT_USPECIAL_GROUND;
+			window = uspecial_windup_window;
+		} else if (down_down) {
+			attack = AT_DSPECIAL;
+			window = dspecial_windup_window;
+		} else if (left_down || right_down) {
+			attack = AT_FSPECIAL;
+			window = fspecial_windup_window;
+			if (right_down) {
+				spr_dir = 1;
+			} else if (left_down) {
+				spr_dir = -1;
+			}
+		} else {
+			attack = AT_NSPECIAL;
+			window = nspecial_windup_window;
+		}
+	} else {
+		if ((up_strong_down) || (strong_down && up_down)) {
+			can_stancle = true;
+			state = PS_ATTACK_GROUND;
+			state_timer = 0;
+			window_timer = 0;
+			attack = AT_USTRONG;
+			window = ustrong_windup_window;
+		} else if ((down_strong_down) || (strong_down && down_down)) {
+			can_stancle = true;
+			state = PS_ATTACK_GROUND;
+			state_timer = 0;
+			window_timer = 0;
+			attack = AT_DSTRONG;
+			window = dstrong_windup_window;
+		} else if ((right_strong_down) || (strong_down && right_down)) {
+			can_stancle = true;
+			state = PS_ATTACK_GROUND;
+			state_timer = 0;
+			window_timer = 0;
+			attack = AT_FSTRONG;
+			window = fstrong_windup_window;
+			spr_dir = 1;
+		} else if ((left_strong_down) || (strong_down && left_down)) {
+			can_stancle = true;
+			state = PS_ATTACK_GROUND;
+			state_timer = 0;
+			window_timer = 0;
+			attack = AT_FSTRONG;
+			window = fstrong_windup_window;
+			spr_dir = -1;
+		}
+	}
+}
+
 if (is_attacking)
 {
     window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
@@ -42,7 +108,9 @@ else
     // Don't want to lose charge if not currently charging
     charge_interrupted = false;
     // Don't want to mark just any attack as a stancle
-	can_stancle = false;
+    if (state != PS_LANDING_LAG) {
+		can_stancle = false;
+    }
 }
 
 //grab logic

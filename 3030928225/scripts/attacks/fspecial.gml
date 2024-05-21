@@ -116,7 +116,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 
 window_num++; // Stance-cancel window, not normally taken
 fspecial_stancel_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, stancle_length);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -155,7 +155,6 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[0]);
-set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 
 
 //set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, fspecial_lockout_time);
