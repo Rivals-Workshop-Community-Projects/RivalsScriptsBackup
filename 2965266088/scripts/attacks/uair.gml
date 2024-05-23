@@ -34,15 +34,16 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 hitbox_num = 1; //blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //2
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -80);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -2); //added
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -88); //-80
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64); //80
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64); //80
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10); //5 
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1); //0.7
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9); //1
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_EXTRA_CAMERA_SHAKE, -1);

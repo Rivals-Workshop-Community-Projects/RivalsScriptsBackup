@@ -24,26 +24,26 @@
 
 // Physical size
 char_height             = 50;                   //                  the height of the overhead hud - the arrow with your name and %
-knockback_adj           = 0.97;		            // 0.9  -  1.2
+knockback_adj           = 0.94; //0.97		    // 0.9  -  1.2
 
 // Ground movement
-//walk_speed              = 0;		            // 3    -  4.5
-//walk_accel              = 0;		            // 0.2  -  0.5
+walk_speed              = 3;		            // 3    -  4.5
+walk_accel              = 0.2;		            // 0.2  -  0.5
 walk_turn_time          = 6;		            // 6
 initial_dash_time       = 12;		            // 8    -  16       zetterburn's is 14
-//initial_dash_speed      = 0;		            // 4    -  9
-//dash_speed              = 0;		            // 5    -  9
+initial_dash_speed      = 5.5;		            // 4    -  9
+dash_speed              = 5;		            // 5    -  9
 dash_turn_time          = 14;		            // 8    -  20
 dash_turn_accel         = 1;		            // 0.1  -  2
 dash_stop_time          = 8;		            // 4    -  6        zetterburn's is 4
 dash_stop_percent       = 0.5;		            // 0.25 -  0.5
 ground_friction         = 0.3;		            // 0.3  -  1
-//moonwalk_accel          = 0;		            // 1.2  -  1.4
+moonwalk_accel          = 1.2;		            // 1.2  -  1.4
 
 // Air movement
-//leave_ground_max        = 0;		            // 4    -  8
-//max_jump_hsp            = 0;		            // 4    -  8
-//air_max_speed           = 0;  		            // 3    -  7
+leave_ground_max        = 5;		            // 4    -  8
+max_jump_hsp            = 5;		            // 4    -  8
+air_max_speed           = 3.5;  		        // 3    -  7
 jump_change             = 3;		            // 3
 air_accel               = 0.2;		            // 0.2  -  0.4
 prat_fall_accel         = 0.85;		            // 0.25 -  1.5
@@ -67,9 +67,9 @@ land_time               = 6;		            // 4    -  6
 prat_land_time          = 12;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
-//wave_friction           = 0;		            // 0    -  0.15
+wave_friction           = 0.09;		            // 0    -  0.15
 wave_land_time          = 6;		            // 6    -  12
-//wave_land_adj           = 0;		            // 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj           = 1.15;		            // 1.2  -  1.5      idk what zetterburn's is
 roll_forward_max        = 8;		            // 7    -  11
 roll_backward_max       = roll_forward_max;		// 7    -  11       always the same as forward
 air_dodge_speed         = 7.5;		            // 7.5  -  8
@@ -81,8 +81,8 @@ techroll_speed          = 8;		            // 8    -  11
 // Misc. animation speeds
 idle_anim_speed         = 0.1;
 crouch_anim_speed       = 0.1;
-//walk_anim_speed         = 0;
-//dash_anim_speed         = 0;
+walk_anim_speed         = 0.15;
+dash_anim_speed         = 0.2;
 pratfall_anim_speed     = 0.35;
 
 // Crouch
@@ -128,7 +128,7 @@ techroll_recovery_frames    = roll_forward_recovery_frames;
 hurtbox_spr         = sprite_get("rumia_hurtbox");
 crouchbox_spr       = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
-hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
+hitstun_hurtbox_spr = sprite_get("rumia_hurtbox_hit"); // -1 = use hurtbox_spr
 
 
 // Victory
@@ -217,17 +217,19 @@ __hb_draw_spr = sprite_get("hitbox_shapes");
 //this array is for the hitbox color setup
 hb_color[0] = 0;        //0 makes it the default red
 hb_color[1] = $FF00FF;  //darkness transfer
-hb_color[2] = $FF0066;  //darkness transfer + consume
+hb_color[2] = $FF0019;  //darkness transfer + consume
 
 ////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
 
-practice_darkness = get_match_setting(SET_PRACTICE);
+is_rumia = true;
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 rumia_debug_view = 0;
 hud_color = [
     color_get_red(get_player_hud_color(player)),
     color_get_green(get_player_hud_color(player)),
     color_get_blue(get_player_hud_color(player))
 ];
+true_dmg = 0;
 
 //crawl stuff
 crawl_time = 0;
@@ -236,104 +238,104 @@ crawl_anim_speed = 0.15;
 crawl_sound = noone;
 fake_img = 0;
 
-has_darkness = false;
-darkness_id = noone;
-darkness_owner = noone;
-dark_state = -1;
-prev_dark_state = -1;
+//dark orb mechanic
+dark_state = -1; //-1 = inactive | 0 = activating | 1 = active | 2 = deactivate | 3 = transfer | 4 = dark consume
+dark_state_prev = -1;
+dark_timer = 0;
+dark_img = 0;
+dark_target = noone; //the player affected
+dark_target_prev = noone; //used by the transfer animation to know who to transfer from
+dark_owner = noone; //the player that owns the darkness (should also locks other rumias from overwriting darkness)
+dark_last_coords = [x, y];
 
-max_dark_shield_hp = 30 + 20 * has_rune("G");
-dark_shield_hp = 0;
-self_darkness = false; //if true, it means rumia has darkness on herself
-dark_shield_gain_counter = 0; //15
-dark_shield_gain_graze = !has_rune("G") ? 15 : 25;
-dark_shield_gain_parry = !has_rune("G") ? 15 : 25;
+dark_hp_cur = 0;
+dark_hp_max = 30 + 20 * has_rune("G");
+dark_hp_temp = 0; //used by dspec
+dark_hp_prev = -1; //used for stats changing
+dark_hp_redc_time = 0; //having darkness on enemies now makes it deplete over time
+dark_hp_redc_inc = 60; //1% per 60 frames
+dark_cd = 0;
+dark_cd_set = 180;
 
-dark_air_max_speed = 3; //also used for dspec
+dark_spr[0] = {spr: sprite_get("fx_darkorb_start"), anim_type: "lerp", anim_spd: 12};
+dark_spr[1] = {spr: sprite_get("fx_darkorb_loop"), anim_type: "loop", anim_spd: 0.2};
+dark_spr[3] = {spr: sprite_get("fx_darkorb_transfer"), anim_type: "lerp", anim_spd: 20};
+dark_alpha = {cur: 0, min: 0.25, max: 0.75, time: 0, time_max: 30, increment: true};
+darkness_col = $7b1837;
+hud_frame_col = c_white;
 
-//records all the variables to change back to them
+dark_kb_mult = 0;
+dark_hit_angle = 0;
+dark_hit_dir = 0;
+dark_consume_kb_mult = 0;
+dark_consume_kb = 0;
 //format: [var name, normal, darkness]
 dark_rec_vars = [
-    ["walk_speed", 3, 1.75], //=, 2.25
-    ["walk_accel", 0.3, 0.12], //=, 0.2
-    ["initial_dash_speed", 6, 4.5],
-    ["dash_speed", 5.5, 4], //=, 4.5
-    ["moonwalk_accel", 1.3, 1],
-    ["max_jump_hsp", 6, 4], //5, =
-    ["leave_ground_max", 6, 4],
-    ["air_max_speed", 4, dark_air_max_speed],
-    ["max_fall", 9, 11.5],
-    ["fast_fall", 14, 17],
-    ["gravity_speed", 0.5, 0.7],
-    ["jump_speed", 11, 13],
+    ["max_fall", 9, 13],
+    ["fast_fall", 14, 18],
+    ["gravity_speed", 0.5, 0.8],
+    ["jump_speed", 10.5, 14],
     ["short_hop_speed", 6, 8],
     ["djump_speed", 10, 12],
-    ["wave_friction", 0.07, 0.15],
-    ["wave_land_adj", 1.3, 1],
-    ["walk_anim_speed", 0.15, 0.1],
-    ["dash_anim_speed", 0.2, 0.15],
     ["dark_kb_mult", 1, 0.75], //wasn't dynamic - 0.85
     ["dark_consume_kb_mult", 1, 1.2], //wasn't dynamic - 1.1
     ["land_sound", asset_get("sfx_land_light"), asset_get("sfx_land_med")],
     ["landing_lag_sound", asset_get("sfx_land_med"), asset_get("sfx_land_heavy")],
     ["waveland_sound", asset_get("sfx_waveland_may"), asset_get("sfx_waveland_ran")]
 ];
-//dark_kb_mult = 0.85; //multiplies final knockback with this value
+update_stats = was_reloaded;
 
-darkness_cd_set = 180;
-darkness_cd = 0;
-dark_hit_angle = 0;
-dark_hit_dir = 0;
-//dark_consume_kb_mult = 1.1; //basically extra knockback scaling
-dark_consume_kb = 0;
+//grazing
+graze_state = 0; //0 = can graze | 1 = grazing | can't graze = 2
+graze_pos = [0, 0];
+grazing_time = 0;
+grazing_time_max = 30;
+graze_lockout_max = 30;
+graze_lockout = 0;
 
-darkness_col = make_color_rgb(
-    get_color_profile_slot_r(get_player_color(player), 0),
-    get_color_profile_slot_g(get_player_color(player), 0),
-    get_color_profile_slot_b(get_player_color(player), 0)
-);
-dark_timer = 0; //state_timer for darkness
-dark_sprite = [
-    [sprite_get("fx_darkorb_start"), 12],
-    [sprite_get("fx_darkorb_loop"), 0.2], //different format lol
-    [sprite_get("fx_darkorb_transfer1"), 16],
-    [sprite_get("fx_darkorb_transfer2"), 16],
-    [asset_get("empty_sprite"), 0]
-];
-dark_image = 0;
-dark_alpha_limits = [0.25, 0.75, 0, 30, true]; //min, max, timer cur, timer max, alpha up/down
-dark_alpha = dark_alpha_limits[0];
+graze_dist_min = 48; //the actual graze range
+graze_dist_max = 200; //how far away the graze range can be seen
+graze_alpha = 0;
+graze_disable_redc_alpha = 0.05;
+graze_sound = noone;
 
-//average of darkness_col's color values to check if it's brighter than the most mid gray
-var average = ((color_get_red(darkness_col) + color_get_green(darkness_col) + color_get_blue(darkness_col)) / 3);
-hud_frame_col = (average > 128 ? c_black : c_white);
+grazable_condition = true; //used by the debug draw lol
 
-can_graze = true;
-graze_delay = 0; //counts down from 5, if it hits 0 it counts as a successful graze
-graze_delay_set = 30;
-graze_failed = false;
-in_graze_range = false;
-graze_hbox_type = 0;
-graze_range = [32, 16]; //normal / dodging
-graze_stats = [0, 0, graze_range[0]]; //center x, center y, graze range
-hbox_view = get_match_setting(SET_HITBOX_VIS);
-counter_hitpause_mult = 1.75;
 
+//attack specific
 uair_hbox_pos = [0, 0];
 uair_vfx = noone;
 uair_sfx = noone;
+spec_stall_hsp = 3;
 nspec_turned = false;
+dspec_done = false; //when true, it will not let rumia charge up anymore
+dspec_rate = !has_rune("G") ? 10 : 5; //smaller number = faster
 taunt_pose = 0;
-
-fx_dspec2_pos = [0, 0];
-temp_dark_shield_hp = 0;
-dspec2_done = false;
-dspec2_rate = !has_rune("G") ? 10 : 5; //smaller number = faster
 
 intro_land_start = 0;
 
+//runes
+taunt_charge_rune = has_rune("D");
+dark_blast_rune = has_rune("E");
+flutter_nair_rune = has_rune("F");
+all_dark_consume_rune = has_rune("K");
+
 has_misfired = false;
 fx_runeM = HFX_WRA_WIND_HUGE;
+
+stats_rune = has_rune("J");
+runeN_ignore_val = 0;
+if (stats_rune)
+{
+    for (var i = 0; i < array_length(dark_rec_vars); i++)
+    {
+        if (dark_rec_vars[i][0] == "dark_kb_mult")
+        {
+            runeN_ignore_val = i;
+            break;
+        }
+    }
+}
 
 //final smash/strong stuff
 PS_TEMP_PRATFALL = 52;
@@ -356,18 +358,6 @@ fx_fs_charge = hit_fx_create(sprite_get("fx_fs_charge"), 60);
 fx_fs_release = hit_fx_create(sprite_get("fx_fs_release"), 48);
 fx_fs_bighit = hit_fx_create(sprite_get("fx_fs_bighit"), 32);
 
-runeN_ignore_val = 0;
-if (has_rune("N"))
-{
-    for (var i = 0; i < array_length(dark_rec_vars); i++)
-    {
-        if (dark_rec_vars[i][0] == "dark_kb_mult")
-        {
-            runeN_ignore_val = i;
-            break;
-        }
-    }
-}
 
 
 //effects

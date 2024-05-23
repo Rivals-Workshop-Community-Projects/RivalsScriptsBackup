@@ -4,8 +4,6 @@
 //set_attack.gml
 if (attack == AT_TAUNT) taunt_pose = 0;
 
-if (attack == AT_DSPECIAL && move_cooldown[AT_DSPECIAL] > 0) attack = AT_DSPECIAL_2;
-
 if (attack == AT_DATTACK && has_rune("H")) //dattack misfire rune (commented out)
 {
     has_misfired = false;
@@ -32,6 +30,8 @@ if (attack == AT_DATTACK && has_rune("H")) //dattack misfire rune (commented out
     }
 }
 
+//do the darkness transition to rumia
+if (attack == AT_DSPECIAL && dark_target != self && dark_target != noone) attack = AT_DSPECIAL_2;
 
 
 if (can_superspell && attack == AT_NSPECIAL)

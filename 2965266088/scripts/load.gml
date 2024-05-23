@@ -28,7 +28,7 @@ sprite_change_offset("waveland",        24, 47);
 sprite_change_offset("tech",            24, 47);
 
 //hurt
-sprite_change_offset("hurt",            24, 47); //default hurt names: bighurt, hurt, downhurt, bouncehurt, uphurt, hurtground
+sprite_change_offset("hurt",            24, 44); //default hurt names: bighurt, hurt, downhurt, bouncehurt, uphurt, hurtground
 sprite_change_offset("hurt_tumble",     24, 47); //normally called "spinhurt"
 
 //normals
@@ -63,15 +63,17 @@ sprite_change_offset("finalstrong_pratfall",    24, 47, true);
 sprite_change_offset("taunt",           24, 47, true);
 sprite_change_offset("taunt2",          24, 47, true);
 sprite_change_offset("intro",           24, 47, true);
+sprite_change_offset("runeK_dspec",     24, 41, true);
 sprite_change_offset("crawl",           24, 31);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player
 
-sprite_change_offset("rumia_hurtbox",   16, 54);
-sprite_change_offset("hud_player_arrow",3, 2);
-sprite_change_offset("hud_msg1",        16, 48);
-sprite_change_offset("hud_msg2",        16, 48);
+sprite_change_offset("rumia_hurtbox",       16, 54);
+sprite_change_offset("rumia_hurtbox_hit",   23, 49);
+sprite_change_offset("hud_msg1",        48, 48);
+sprite_change_offset("hud_msg2",        48, 48);
+sprite_change_offset("fx_graze_range",  24, 24);
 
 sprite_change_offset("koakuma_idle",    24, 47);
 sprite_change_offset("koakuma_gone",    64, 94);
@@ -86,8 +88,7 @@ sprite_change_offset("fx_graze_part",       16, 16);
 
 sprite_change_offset("fx_darkorb_start",    32, 32);
 sprite_change_offset("fx_darkorb_loop",     32, 32);
-sprite_change_offset("fx_darkorb_transfer1",32, 32);
-sprite_change_offset("fx_darkorb_transfer2",32, 32);
+sprite_change_offset("fx_darkorb_transfer", 32, 32);
 sprite_change_offset("fx_darkorb_end",      64, 72);
 sprite_change_offset("fx_darkorb_travel",   64, 32);
 sprite_change_offset("fx_darkorb_consume",  160, 160);
@@ -119,6 +120,13 @@ sprite_change_offset("fx_death_p3",         16, 16);
 sprite_change_offset("fx_death_p4",         16, 16);
 
 sprite_change_offset("fx_lancer",           48, 110);
+
+if ("colorO" in self)
+{
+    darkness_col = make_color_rgb(colorO[0]*255, colorO[1]*255, colorO[2]*255);
+    var average = ( (colorO[0]*255 + colorO[1]*255 + colorO[2]*255) / 3); //average of darkness_col's color values to check if it's brighter than the most mid gray
+    hud_frame_col = (average > 128 ? c_black : c_white);
+}
 
 //WORKSHOP COMPATIBILITIES
 sprite_change_offset("mamizou_le_fishe", 16, 40);

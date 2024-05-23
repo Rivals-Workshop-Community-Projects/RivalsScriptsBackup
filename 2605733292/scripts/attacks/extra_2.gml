@@ -13,7 +13,7 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAMES, -6);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 

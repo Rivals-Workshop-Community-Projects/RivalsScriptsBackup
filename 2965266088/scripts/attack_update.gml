@@ -83,6 +83,22 @@ switch (attack)
 			fx.depth = depth - 2;
 		}
 		break;
+	case AT_NAIR:
+		if (flutter_nair_rune && attack_down && !hitpause)
+		{
+			switch (window)
+			{
+				case 2:
+					if (window_timer == 1 && vsp > -1) vsp = -1;
+				case 3:
+					vsp -= 0.75;
+					var cd_math = floor(abs(vsp) * 5 - gravity_speed * 10) + 10;
+
+					if (move_cooldown[attack] < cd_math) move_cooldown[attack] = cd_math;
+					break;
+			}
+		}
+		break;
 	case AT_DAIR:
 		if (my_grab_id != noone)
 		{
@@ -212,35 +228,12 @@ switch (attack)
 			}
 		}
 		break;
-	case AT_DSPECIAL:
-		//limit air speed
-		//set_attack_value(AT_DSPECIAL, AG_USES_CUSTOM_GRAVITY, (vsp > 0));
-		//for (var i = 1; i <= window_last; i++) set_window_value(AT_DSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
-		
-		if (vsp > 0)
-		{
-			vsp = clamp(vsp, vsp, 3);
-			hsp = clamp(hsp, -dark_air_max_speed, dark_air_max_speed);
-		}
-
-		if (window == 3 && darkness_id != darkness_owner && darkness_id != self)
-		{
-			dark_state = 3;
-			darkness_id.dark_state = 2;
-			
-			darkness_owner = self;
-		}
-		break;
-	case AT_DSPECIAL_2: //orbless dspec
+	case AT_DSPECIAL: //darkness charge
 		can_fast_fall = false;
 		if (window <= 2)
 		{
-			hsp = free ? clamp(hsp, -dark_air_max_speed, dark_air_max_speed) : 0;
+			hsp = free ? clamp(hsp, -spec_stall_hsp, spec_stall_hsp) : 0;
 			set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, (vsp > 0)); // && window < 3
-
-			//vsp = clamp(vsp, vsp, max_fall);
-			if (floor(temp_dark_shield_hp) == 0) darkness_cd = 40;
-			else darkness_cd = 1;
 		}
 		else if (window > 2)
 		{
@@ -252,52 +245,70 @@ switch (attack)
 		switch (window)
 		{
 			case 1: //reset vars
-				temp_dark_shield_hp = 0;
-				dspec2_done = false;
+				dspec_done = false;
+				dark_hp_temp = 0;
 				if (window_timer == 1) sfx_dspec_charge = sound_play(asset_get("sfx_abyss_portal_intro"), false, 0, 1, 0.25);
 				break;
 			case 2: //charge
 				var startup = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH);
-
-				if (!dspec2_done)
+				if (!dspec_done)
 				{
-					if (!special_down || temp_dark_shield_hp >= max_dark_shield_hp) dspec2_done = true;
+					//set charge to stop
+					if (!special_down || dark_hp_temp >= dark_hp_max) dspec_done = true;
 
+					//vfx
 					if (state_timer % 2 == 0)
 					{
 						var fx = spawn_hit_fx(x, y - char_height / 2, fx_dspec_part);
 						fx.draw_angle = random_func(5, 30, true) * 12; 
 					}
-					if (state_timer % dspec2_rate == dspec2_rate-1) //heal
+
+					//actual function
+					if (state_timer % dspec_rate == dspec_rate-1)
 					{
 						var fx = spawn_hit_fx(x, y - char_height / 2, fx_dspec_indc);
 						fx.draw_angle = random_func(5, 30, true) * 12; 
 						fx.depth = depth + 1;
-						sound_play(asset_get("sfx_holy_textbox"), false, 0, 0.5, 5 + temp_dark_shield_hp/10);
-						temp_dark_shield_hp ++;
+						sound_play(asset_get("sfx_holy_textbox"), false, 0, 0.5, 5 + dark_hp_temp/10);
+						dark_hp_temp ++;
 
 						if (has_superspell && superspell_cur < superspell_max) superspell_cur ++;
 					}
 				}
 				else
 				{
-					if (floor(temp_dark_shield_hp) > 0) set_window(4); //form dark orb
-					else if (floor(temp_dark_shield_hp) == 0 && window_timer == window_end-1) set_window(3); //don't form
+					if (floor(dark_hp_temp) > 0) set_window(4); //form dark orb
+					else if (floor(dark_hp_temp) == 0 && window_timer == window_end-1) set_window(3); //don't form
 
 					sound_stop(sfx_dspec_charge);
-					if (temp_dark_shield_hp >= max_dark_shield_hp) sound_play(asset_get("sfx_boss_shine"), false, 0, 1, 0.5)
+					if (dark_hp_temp >= dark_hp_max) sound_play(asset_get("sfx_boss_shine"), false, 0, 1, 0.5)
 				}
 				break;
 			case 4: //give darkorb
-				if (window_timer == 1 && darkness_owner == noone && floor(temp_dark_shield_hp) > 0)
+				if (window_timer == 1 && dark_owner == noone && floor(dark_hp_temp) > 0)
 				{
-					dark_shield_hp = floor(temp_dark_shield_hp);
-					temp_dark_shield_hp = 0;
-					darkness_id = self;
-					darkness_owner = self;
+					if (dark_hp_temp >= dark_hp_max) dark_hp_temp = dark_hp_max;
+					dark_hp_cur = floor(dark_hp_temp);
+					dark_hp_temp = 0;
+					dark_target = self;
+					dark_owner = dark_target;
 					dark_state = 0;
 				}
 				break;
+		}
+		break;
+	case AT_DSPECIAL_2: //swap darkness + collect darkness particles
+		hsp = clamp(hsp, -spec_stall_hsp, spec_stall_hsp);
+		if (vsp > 0) vsp = clamp(vsp, vsp, 3);
+
+		if (window == 3 && dark_target != self && dark_target != noone)
+		{
+			dark_state = 3;
+			dark_timer = 0;
+			dark_target_prev = dark_target;
+			dark_target.dark_owner = noone;
+			dark_target = self;
+			dark_owner = self;
 		}
 		break;
 	///////////////////////////////////////////////// OTHER ////////////////////////////////////////////////
@@ -322,6 +333,8 @@ switch (attack)
 				set_window(1);
 			}
 		}
+
+		if (taunt_charge_rune && taunt_pose % 2 == 1 && window == 1 && window_timer == 8 && dark_state == 1 && dark_hp_cur < dark_hp_max) dark_hp_cur ++;
 		break;
 	case 2: //intro
 		if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); //put hud away
@@ -353,6 +366,20 @@ switch (attack)
 					fx.depth = depth - 1;
 				}
 			}
+		}
+		break;
+	case AT_EXTRA_1: //dspec blast rune
+		if (window == 2 && window_timer == 1 && !hitpause && dark_state > -1)
+		{
+			spawn_hit_fx(x, y - 32, fx_darkness_consume);
+        	var chaos_blast = create_hitbox(attack, 1, x, y);
+			chaos_blast.damage = lerp(chaos_blast.damage, 14, dark_hp_cur/30);
+			chaos_blast.kb_value = lerp(chaos_blast.kb_value, 9, dark_hp_cur/30);
+			chaos_blast.kb_scale = lerp(chaos_blast.kb_scale, 1, dark_hp_cur/30);
+			chaos_blast.hitpause = lerp(chaos_blast.hitpause, 12, dark_hp_cur/30);
+			chaos_blast.hitpause_growth = lerp(chaos_blast.hitpause_growth, 1, dark_hp_cur/30);
+
+			dark_state = -1;
 		}
 		break;
 	case 49: //final strong

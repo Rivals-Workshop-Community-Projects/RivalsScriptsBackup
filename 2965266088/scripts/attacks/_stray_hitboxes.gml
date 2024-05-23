@@ -8,6 +8,7 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 30);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_darkness_consume);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));

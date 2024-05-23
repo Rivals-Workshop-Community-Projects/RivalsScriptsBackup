@@ -40,12 +40,14 @@ switch (my_hitboxID.attack){ //lol switch statement
 		//hit_player_obj.x = x + 42 * spr_dir
 		//hit_player_obj.y = y - 14
 		//spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 30, 302 );
+		/*
 		attack_end();
 		set_attack( AT_EXTRA_2 );
 		window_timer = 0
 		window = 1
 		destroy_hitboxes();
 		sound_play(sfx_bounce);
+		*/
 		break;
 	case AT_FAIR:
 		//sound_play(sfx_fighter_blow1);

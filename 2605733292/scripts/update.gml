@@ -148,13 +148,13 @@ switch (state){
 		break;
 	case PS_DASH_START:
 		if (state_timer == 0){
-			sound_play(sfx_dashstart);
+			sound_play(sfx_dashstart, false, noone, 0.85, 1);
 		}	
 		break;
 	case PS_DASH_STOP:
 		//Dash Stop Sound Effect.
 		if (state_timer == 2){
-			sound_play(sfx_dashstop);
+			sound_play(sfx_dashstop, false, noone, 0.85, 1);
 		}
 		if (state_timer == 3){
 			hsp *= 0.5

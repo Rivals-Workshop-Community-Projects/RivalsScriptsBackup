@@ -9,6 +9,13 @@ move_cooldown[AT_FSPECIAL] = 0;
 
 spawn_essence_from_rune_o = random_func( 0, 4, true );
 
+if (isCurrSleeping){
+	//print("was hit by a sleeping attack: " + string(hitBySleepingAttack));
+	//print("is curr sleeping: " + string(isCurrSleeping));
+	
+	shouldWakeUp = true;
+}
+
 //helltroll
 if (has_rune("O")){
 	if (spawn_essence_from_rune_o == 1){

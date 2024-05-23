@@ -334,4 +334,12 @@ miiverse_post = sprite_get("miiverse");
 pot_compat_variable = sprite_get("gumbo_food");
 pot_compat_text = "Strawberry Shortcake";
 
+// The Knight (Reiga) Dream Nail Dialogue
+knight_compat_dream = 
+    [
+        "...zzzZZZzzz...",
+        "...Please... ...Let me sleep... ...A little more... ...Please...",	// Kirby's Adventure flavor text for Sleep
+        "Just...five more...minutes. Please..."	// Kirby's Return to Dream Land flavor text for Sleep
+    ]
+
 user_event(7);

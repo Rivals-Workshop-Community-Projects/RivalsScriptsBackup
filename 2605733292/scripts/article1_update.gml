@@ -276,6 +276,8 @@ if (state == 2){
 				with(other){
 					var contactHitbox = create_hitbox(AT_DSPECIAL, 1, x, y);
 					contactHitbox.hitbox_timer = 18;
+					contactHitbox.image_xscale *= 6.25;
+					contactHitbox.image_yscale *= 6.25;
 					
 					state = 4;
 					state_timer = 0;

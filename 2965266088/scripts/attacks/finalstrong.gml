@@ -123,7 +123,6 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
 hitbox_num ++; //explosion
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -144,6 +143,5 @@ set_hitbox_value(atk, hitbox_num, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(atk, hitbox_num, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
 set_num_hitboxes(atk, hitbox_num);

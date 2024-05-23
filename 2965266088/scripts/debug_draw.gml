@@ -4,38 +4,35 @@
 
 if (rumia_debug_view)
 {
-    with (oPlayer) if ("has_darkness" in self)
-    {
-        var _x = floor(view_get_xview()) + 128 * (player - 1) + 16;
-        var _y = floor(view_get_yview() + 128);
+    var _x = floor(view_get_xview()) + 16;
+    var _y = floor(view_get_yview()) + 128;
 
-        draw_debug_text(_x, _y + 16 * 0, "PLAYER " + string(player));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 0, "d_state = " + string(dark_state));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 1, "d_time = " + string(dark_timer));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 2, "shield = " + string(dark_hp_cur));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 3, "cooldown = " + string(dark_cd) + " / " + string(dark_cd_set));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 4, "target / owner = " + string(dark_target) + " / " + string(dark_owner));
 
-        if (self == other) 
-        {
-            draw_debug_text(_x, _y + 16 * 2, "active = " + string(has_darkness));
-            draw_debug_text(_x, _y + 16 * 3, "id = " + string(darkness_id));
-            draw_debug_text(_x, _y + 16 * 4, "owner = " + string(darkness_owner));
-            draw_debug_text(_x, _y + 16 * 5, "self_dark = " + string(self_darkness));
-            draw_debug_text(_x, _y + 16 * 6, "shield = " + string(dark_shield_hp));
-            draw_debug_text(_x, _y + 16 * 7, "cooldown = " + string(darkness_cd));
-            draw_debug_text(_x, _y + 16 * 8, "d_state = " + string(dark_state));
-            draw_debug_text(_x, _y + 16 * 9, "d_time = " + string(dark_timer));
-        }
-        else if ("self_darkness" not in self)
-        {
-            draw_debug_text(_x, _y + 16 * 2, "active = " + string(has_darkness));
-            draw_debug_text(_x, _y + 16 * 3, "owner = " + string(darkness_owner));
-            draw_debug_text(_x, _y + 16 * 4, "d_state = " + string(dark_state));
-            draw_debug_text(_x, _y + 16 * 5, "dark_blast = " + string(do_dark_blast));
-        }
-    }
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 5, "state = " + string(get_state_name(state)));
+    draw_debug_text(_x + 256 * (player-1), _y + 16 * 6, "state_timer = " + string(state_timer));
 }
 
-if (hbox_view && can_graze)
+//% view
+if (dark_state > -1 && dark_hp_cur > 0 || dark_hp_temp > 0)
+{
+    var checkID = dark_target == noone ? self : dark_target;
+    text_draw(
+        checkID.x,
+        checkID.y - checkID.char_height - 78 + 16 * (get_player_name(checkID.player) == `P${checkID.player}` || playtest_active) - checkID.hud_offset,
+        `${dark_hp_temp > 0 ? floor(dark_hp_temp) : dark_hp_cur}%`, darkness_col, "fName", fa_center, 1, true, 1,
+        !is_tas_alt ? hud_frame_col : make_color_rgb(static_colorO[6*4+0]*255, static_colorO[6*4+1]*255, static_colorO[6*4+2]*255)
+    );
+}
+
+if (hbox_view && grazable_condition)
 {
     draw_set_alpha(0.2);
-    draw_circle_color(graze_stats[0], graze_stats[1], graze_stats[2], c_aqua, c_aqua, false);
+    draw_circle_color(graze_pos[0], graze_pos[1], graze_dist_min, c_aqua, c_aqua, false);
     draw_set_alpha(1);
 }
 
@@ -83,4 +80,32 @@ draw_colored_hitboxes();
             arr[@jmin] = store;
         }
     }
+}
+
+#define text_draw
+{
+    var x = argument[0];
+    var y = argument[1];
+    var string = argument[2];
+    var color = argument[3];
+    var font = argument[4];
+    var align = argument[5];
+    var alpha = argument_count > 6 ? argument[6] : 1;
+    var outline = argument_count > 7 ? argument[7] : false;
+    var line_alpha = argument_count > 8 ? argument[8] : 1;
+    var line_col = argument_count > 9 ? argument[9] : c_black;
+
+    
+    draw_set_font(asset_get(font));
+    draw_set_halign(align);
+
+    if (outline && line_alpha > 0)
+    {
+        for (var i_x = -1; i_x < 2; ++i_x) for (var i_y = -1; i_y < 2; ++i_y)
+        {
+            draw_text_color(x + i_x * 2, y + i_y * 2, string, line_col, line_col, line_col, line_col, line_alpha * alpha);
+        }
+    }
+
+    draw_text_color(x, y, string, color, color, color, color, alpha);
 }

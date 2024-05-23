@@ -47,14 +47,14 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 
-hitbox_num = 1 //blast (sour)
+hitbox_num = 1 //blast (sweet)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 5);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 64);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 72); //64
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80); //64
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
@@ -67,13 +67,13 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_dark_hit[2]);            
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));    //swapped   v
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
-hitbox_num ++; //punch (sweet)
+hitbox_num ++; //punch (sour)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 5);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 16); //0
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -30); //-32
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);

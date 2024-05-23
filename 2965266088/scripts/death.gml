@@ -24,27 +24,7 @@ if (my_grab_id != noone)
     my_grab_id = noone;
 }
 
+dark_cd = 0;
 
-spell_bg = false;
-superspell_cur = 0;
-
-
-//darkness reset
-has_darkness = false;
-darkness_cd = 0;
-dark_state = -1;
-
-//if rumia dies and is the owner of a darkness orb that's on the field
-if (darkness_id != noone) 
-{
-    darkness_id.dark_state = 4;
-    darkness_id = noone;
-}
-
-//if rumia has an owner that died, for some reason the code in update doesn't wanna run for her too
-if (darkness_owner != noone)
-{
-    darkness_owner.darkness_id = noone;
-    dark_state = -1;
-    darkness_owner = noone;
-}
+if (spell_bg) spell_bg = false;
+if (has_superspell) superspell_cur /= 2;

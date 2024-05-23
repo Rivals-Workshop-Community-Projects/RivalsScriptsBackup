@@ -1,33 +1,6 @@
 //got_hit.gml
 
-if (self_darkness)
-{
-    dark_shield_hp -= enemy_hitboxID.damage;
-    //sound_play(sound_get("sfx_absorb"));
-    var fx = spawn_hit_fx(x, y - 32, hit_fx_create(sprite_get("fx_darkorb_hit"), 16));
-    fx.depth = depth - 2;
-    fx.draw_angle = point_direction(0, 0, old_hsp, old_vsp);
-    fx.hsp = old_hsp;
-    fx.vsp = old_vsp;
-    if (has_rune("C")) take_damage(player, player, floor(enemy_hitboxID.damage/2) * -1);
-}
-if (enemy_hitboxID.player_id == darkness_id) dark_shield_hp -= ceil(enemy_hitboxID.damage/2);
-
-if (graze_delay > 0)
-{
-    graze_failed = true;
-    sound_stop(sound_get("sfx_graze"));
-    with (hit_fx_obj) if (player == other.player && hit_fx == other.fx_graze || hit_fx == other.msg_graze) step_timer = hit_length;
-}
-
-if (temp_dark_shield_hp > 0)
-{
-    dark_shield_hp = floor(temp_dark_shield_hp);
-	darkness_id = self;
-	darkness_owner = self;
-	dark_state = 0;
-    temp_dark_shield_hp = 0;
-}
+true_dmg = enemy_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
 
 //uspec wings disrupt
 with (hit_fx_obj) if (hit_fx == other.fx_uspec_wings[0])
@@ -39,6 +12,33 @@ with (hit_fx_obj) if (hit_fx == other.fx_uspec_wings[0])
     }
     step_timer = hit_length;
 }
+
+if (dark_hp_cur > 0) //hit with darkness
+{
+    dark_hp_cur -= floor(true_dmg);
+    if (dark_hp_cur <= 0) dark_hp_cur = 0;
+
+    if (dark_target == self)
+    {
+        if (has_rune("C")) take_damage(player, hit_player_obj.player, floor(true_dmg/2) * -1);
+
+        var fx = spawn_hit_fx(floor(x), floor(y) - 32, hit_fx_create(sprite_get("fx_darkorb_hit"), 16));
+        fx.depth = depth - 2;
+        fx.draw_angle = point_direction(0, 0, old_hsp, old_vsp);
+        fx.hsp = old_hsp;
+        fx.vsp = old_vsp;
+    }
+}
+
+if (graze_state != 2) //can't graze
+{
+    graze_state = 2;
+    grazing_time = grazing_time_max;
+    sound_stop(graze_sound);
+}
+
+graze_lockout = graze_lockout_max + floor(hitstop_full);
+
 
 if (state_cat == SC_HITSTUN)
 {

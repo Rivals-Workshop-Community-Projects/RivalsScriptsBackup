@@ -21,7 +21,11 @@ if (burst_bubble_is_charged == true){
 
 shader_end();
 
-if (move_cooldown[AT_DSPECIAL] != 0){
+if (move_cooldown[AT_DSPECIAL] != 0 && (move_cooldown[AT_DSPECIAL] != 4
+	&& move_cooldown[AT_DSPECIAL] != 8
+	&& move_cooldown[AT_DSPECIAL] != 12
+	&& move_cooldown[AT_DSPECIAL] != 16
+	&& move_cooldown[AT_DSPECIAL] != 20)){
 	draw_sprite(sprite_get("essence_hud_icon_cooldown"), 0, temp_x - 4, temp_y - 34);
 } else {
 	draw_sprite(sprite_get("essence_hud_icon"), 0, temp_x - 4, temp_y - 34);

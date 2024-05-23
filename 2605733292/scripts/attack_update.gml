@@ -182,7 +182,7 @@ if (attack == AT_UTILT){
 	}
 	
 	//Hud Offset
-	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){//>
 		hud_offset = 32;
 	}
 }
@@ -215,11 +215,16 @@ if (attack == AT_DTILT){
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (20 * spr_dir), y, "dash_start", spr_dir)
+			spawn_base_dust( x - (20 * spr_dir), y, "dash_start", spr_dir);
 		}
 	}
-	if (has_hit == true && was_parried == false){
-		//can_jump = true;
+	if (window == 2){
+		if (window_timer mod 2 == 0 && !hitpause){
+			spawn_base_dust( x - (12 * spr_dir), y, "dash", spr_dir);
+		}
+		if (window_timer == 1){
+			spawn_base_dust( x - (8 * spr_dir), y, "dattack", spr_dir);
+		}
 	}
 	if (was_parried == true){
 		hsp = 0
@@ -234,6 +239,15 @@ if (attack == AT_DTILT){
 			//spawn_base_dust( x - (15 * spr_dir), y, "walk", spr_dir)
 		}
 		
+	}
+	
+	if (has_hit && state_cat != SC_HITSTUN && !hitpause){
+		attack_end();
+		set_attack( AT_EXTRA_2 );
+		window_timer = 0
+		window = 1
+		destroy_hitboxes();
+		sound_play(sfx_bounce);
 	}
 }
 
