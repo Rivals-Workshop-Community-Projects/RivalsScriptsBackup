@@ -34,3 +34,7 @@ else if (my_hitboxID.attack == AT_JAB or my_hitboxID.attack == AT_NAIR) and !hit
     shadowball_hit_timer = 0;
 }
 
+
+if(shadowball_hit_player = hit_player_obj and shadowball_hit_timer > 0){
+	shadowball_hit_timer += 5;
+}

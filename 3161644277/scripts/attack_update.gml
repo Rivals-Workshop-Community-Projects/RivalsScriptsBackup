@@ -3,6 +3,11 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_JAB){
+    was_parried = false;
+}
+
+
 if (attack == AT_DAIR){
     can_wall_jump = true;
     if (window == 2){
@@ -111,9 +116,16 @@ if (attack == AT_NSPECIAL){
     }
 }
 if (attack == AT_FSPECIAL){
+    if (window == 1){
+        dash_time = 0;
+    }
     if (window == 2 || window == 4){
         hsp = 10 * spr_dir;
-        if (special_pressed && !right_down && !left_down || special_pressed && up_down){
+        if (dash_time > 7){
+            can_jump = true;
+        }
+        dash_time++;
+        if (special_pressed && !right_down && !left_down && move_cooldown[AT_NSPECIAL] == 0 || special_pressed && up_down || special_pressed && down_down ){
             set_state(PS_IDLE);
             window_timer = 0;
             destroy_hitboxes();
@@ -121,6 +133,7 @@ if (attack == AT_FSPECIAL){
         }
         var holding_back = (right_down - left_down == -1 * sign(spr_dir)); // holding back var from mr nart cuz im bad
         if (special_pressed && holding_back && window == 2 && !has_hit){
+            dash_time = 0;
             window = 3;
             window_timer = 0;
             spr_dir *= -1;
@@ -129,9 +142,11 @@ if (attack == AT_FSPECIAL){
             sound_play(sound_get("pepperturn"));
         }
         if (has_hit) || (place_meeting( x+10 * spr_dir, y-1, asset_get("par_block")) || was_parried == true){
+            dash_time = 0;
             window = 5;
             window_timer = 0;
             destroy_hitboxes();
+            can_jump = false;
             if (has_hit){
                 old_hsp = -5 * spr_dir;
                 old_vsp = -5;
@@ -160,6 +175,10 @@ if (attack == AT_USPECIAL){
         sound_stop(sound_get("uspec"));
         shake_camera(5, 5);
         destroy_hitboxes();
+    }
+    
+    if (window == 4){
+        can_move = false;
     }
 }
 

@@ -5,11 +5,11 @@ set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -23,9 +23,10 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 8);
 
 set_num_hitboxes(AT_USTRONG,2);
 

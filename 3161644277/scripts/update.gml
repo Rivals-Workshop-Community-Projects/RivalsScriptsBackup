@@ -18,3 +18,6 @@ else if (article_exises == 0){
     move_cooldown[AT_NSPECIAL] = 120;
     article_exises = 2;
 }
+if ((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) || attack != AT_FSPECIAL){
+    sound_stop(sound_get("dash"));
+}

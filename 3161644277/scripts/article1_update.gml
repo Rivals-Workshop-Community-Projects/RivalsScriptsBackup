@@ -8,7 +8,7 @@ else if (hsp < 0){
 }
 
 if (player_id.sculpture_hp < 40) {
-    image_index = 3 - (player_id.sculpture_hp / 10);
+    image_index = 3 - (player_id.sculpture_hp / 6);
 }
 with pHitBox {
     if (place_meeting(x, y, other.id) && self != other && player_id == other.player_id && !player_id.has_hit && !has_hit && 40 > player_id.sculpture_hp > 0
@@ -44,6 +44,7 @@ if (player_id.sculpture_hp == 40 || player_id.sculpture_hp ==  50){
 }
 
 if (player_id.sculpture_hp < 1) {
+    player_id.has_hit = true;
     sound_play(asset_get("mfx_star"));
     image_index = 3;
     player_id.sculpture_hp = 40;
@@ -75,6 +76,9 @@ with pHitBox {
 }
 if (player_id.sculpture_hp == 45){
     spr_dir = player_id.spr_dir;
+    if (player_id.attack == AT_BAIR) {
+        spr_dir = player_id.spr_dir * -1;
+    }
     player_id.sculpture_hp = 50;
 }
 if (player_id.sculpture_hp == 50){
