@@ -41,9 +41,13 @@ if (attack == AT_FSPECIAL){
 			window_timer = 0;
 			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 40);
-			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
+			if(shelled = true){
+				set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+			} else {
+				set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+			}
 		}
 		if(window == 3){
 			if(!hitpause){
