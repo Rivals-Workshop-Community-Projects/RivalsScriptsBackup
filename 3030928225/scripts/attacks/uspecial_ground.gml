@@ -49,7 +49,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 1);
 
 window_num++; // Uncharged hide
 uspecial_uncharged_hide_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -81,7 +81,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 1);
 
 window_num++; // Charged hide
 uspecial_charged_hide_window = window_num;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 

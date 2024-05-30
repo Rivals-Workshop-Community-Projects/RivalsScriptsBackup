@@ -125,7 +125,7 @@ if (attack == AT_FSPECIAL){
             can_jump = true;
         }
         dash_time++;
-        if (special_pressed && !right_down && !left_down && move_cooldown[AT_NSPECIAL] == 0 || special_pressed && up_down || special_pressed && down_down ){
+        if (special_pressed && !right_down && !left_down && !down_down && move_cooldown[AT_NSPECIAL] == 0 || special_pressed && up_down || special_pressed && down_down && move_cooldown[AT_DSPECIAL] == 0){
             set_state(PS_IDLE);
             window_timer = 0;
             destroy_hitboxes();

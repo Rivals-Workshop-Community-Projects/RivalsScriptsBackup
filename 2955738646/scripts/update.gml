@@ -11,10 +11,12 @@ switch(state){
 if (state == PS_AIR_DODGE && state_timer > 1 && state_timer < 12){
 	var afterimage = spawn_hit_fx(x, y, airdodge_afterimage);
 	afterimage.depth = 5;
+	random_mecha = random_func(0, 3, true);
 }
 if ((state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer < 14){
 	var afterimage = spawn_hit_fx(x, y, roll_afterimage);
 	afterimage.depth = 5;
+	random_mecha = random_func(0, 3, true);
 }
 
 /* //Teleporting air dodge and roll
@@ -133,12 +135,14 @@ if !(state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL){
 } else {
 	air_special = false;
 	if (move_cooldown[AT_USPECIAL] > 5){ move_cooldown[AT_USPECIAL] = 5; }
+	if (move_cooldown[AT_FSPECIAL] > 5){ move_cooldown[AT_FSPECIAL] = 15; }
 	if (move_cooldown[AT_FSPECIAL_2] > 5){ move_cooldown[AT_FSPECIAL_2] = 5; }
 	if (move_cooldown[AT_DSPECIAL] > 5){ move_cooldown[AT_DSPECIAL] = 5; }	
 }
 
 if (state == PS_WALL_JUMP){
 	if (move_cooldown[AT_USPECIAL] > 5){ move_cooldown[AT_USPECIAL] = 5; }
+	if (move_cooldown[AT_FSPECIAL] > 5){ move_cooldown[AT_FSPECIAL_2] = 15; }	
 	if (move_cooldown[AT_FSPECIAL_2] > 5){ move_cooldown[AT_FSPECIAL_2] = 5; }	
 	if (move_cooldown[AT_DSPECIAL] > 5){ move_cooldown[AT_DSPECIAL] = 5; }	
 }

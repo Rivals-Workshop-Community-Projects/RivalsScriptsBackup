@@ -90,6 +90,7 @@ sprite_change_offset("dspecial_wall", 54, 102);
 sprite_change_offset("dspecial_burst_tail", 0, 70);
 sprite_change_offset("dspecial_burst_trail_end", 160, 160);
 sprite_change_offset("taunt", 64, 108);
+sprite_change_offset("taunt1", 64, 108);
 
 sprite_change_offset("shockwave", 30, 0);
 sprite_change_offset("taunt_aura", 0, 14);

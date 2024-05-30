@@ -1,6 +1,10 @@
 if (move_cooldown[AT_TAUNT_2] > 10){ move_cooldown[AT_TAUNT_2] -= 10; }
 
 if (my_hitboxID.attack == AT_DAIR){
+	if (my_hitboxID.hbox_num == 1 && random_mecha == 1){
+		sound_play(sound_get("Mecha_Fool"));
+		random_mecha = 0;
+	}
 	if (other.should_make_shockwave == true){
 		sound_play(sound_get("Dair_sweetspot"));
 	}
@@ -38,11 +42,11 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 }
 
 if (my_hitboxID.attack == AT_UTILT){
-	if (my_hitboxID.hbox_num == 1){
-	//destroy_hitboxes();
-	flyforward = false;
-	//spr_dir = hit_player_obj.spr_dir * -1;
+	if (random_mecha == 1){
+		sound_play(sound_get("Mecha_Insolent"));
+		random_mecha = 0;
 	}
+	flyforward = false;
 }
 
 if (my_hitboxID.attack == AT_FTILT){
@@ -217,7 +221,7 @@ if (timestop == true && timestop_amount > 0){
 }
 if (my_hitboxID.attack == AT_DSPECIAL_2){ //Down Special lightspeed attack hitting
 	if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
-	harsh_hitt2 = spawn_hit_fx(x,y+60,Harsh_Hit2);
+	harsh_hitt2 = spawn_hit_fx(x,y+50,Harsh_Hit2);
 	harsh_hitt2.x = my_hitboxID.x-10;
 	harsh_hitt2.y = my_hitboxID.y-20;
 	harsh_num = random_func(0, 120, true);

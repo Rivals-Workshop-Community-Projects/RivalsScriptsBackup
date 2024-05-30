@@ -524,9 +524,10 @@ if (attack == AT_FSPECIAL){
         if (window_timer < 3){
             can_fast_fall = false;
         }
-        else{
-            can_fast_fall = true;
-        }
+    }
+    
+    if (window == 7){
+        can_fast_fall = true;
     }
     
     //cancel sfx

@@ -53,7 +53,7 @@ set_hitbox_value(atk, 1, HG_VISUAL_EFFECT, fx_pow_sparks);
 hitbox_num ++; //sour
 set_hitbox_value(atk, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, 2, HG_WINDOW, 2);
-set_hitbox_value(atk, 2, HG_LIFETIME, 5);
+set_hitbox_value(atk, 2, HG_LIFETIME, 7);
 set_hitbox_value(atk, 2, HG_HITBOX_X, 50);
 set_hitbox_value(atk, 2, HG_HITBOX_Y, -20);
 set_hitbox_value(atk, 2, HG_WIDTH, 90);

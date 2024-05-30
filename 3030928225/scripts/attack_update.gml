@@ -472,7 +472,7 @@ if (((attack == AT_USPECIAL_GROUND)
 	spot_found = false;
 	uspecial_dig_distance = uspecial_dig_distance_max;
 	//space_between_parts = max_space_between_parts;
-	num_placement_options = floor(uspecial_dig_distance / 10);
+	num_placement_options = floor(uspecial_dig_distance / 30);
 	placement_option = num_placement_options;
 	// Check if we're holding a direction
 	chosen_dir = 0;
@@ -534,6 +534,12 @@ if(attack == AT_USPECIAL){
 var any_strong_down = strong_down || up_strong_down || down_strong_down || left_strong_down  || right_strong_down;
 switch (attack) {
 	case AT_FSTRONG :
+		// Lose charge if you complete the attack mid charge
+		if ((window > fstrong_bonus_charging_window) && (window != fstrong_stancel_window)) {
+			strong_charge = 0;
+			stored_strong_charge = 0;
+		}
+
 		off_edge = false;
 		//print("strong charge = " + string(strong_charge));
 		if (stored_strong_charge > strong_charge) {
@@ -543,7 +549,7 @@ switch (attack) {
 		}
 		// Skip initial charge window if charge is ready
 		if ((window == fstrong_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			if (strong_charge >= strong_full_charge_time) {
@@ -636,6 +642,8 @@ switch (attack) {
 		}
 		break;
 	case AT_USTRONG :
+		// Don't have to reset charge here - do it in ustrong2
+
 		off_edge = false;
 		//print("strong charge = " + string(strong_charge));
 		if (stored_strong_charge > strong_charge) {
@@ -645,7 +653,7 @@ switch (attack) {
 		}
 		// Skip initial charge window if charge is ready
 		if ((window == ustrong_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			if (strong_charge >= strong_full_charge_time) {
@@ -738,6 +746,11 @@ switch (attack) {
 		}
 		break;
 	case AT_USTRONG_2 :
+		// Lose charge if you complete the attack mid charge
+		// Always lose charge because there's no way we'd want to preserve it in this stage
+		strong_charge = 0;
+		stored_strong_charge = 0;
+	
 		// If in the air, allow wall-jump cancel
 		if (free) {
 			can_wall_jump = true;
@@ -754,6 +767,12 @@ switch (attack) {
 		}
 		break;
 	case AT_DSTRONG :
+		// Lose charge if you complete the attack mid charge
+		if ((window > dstrong_bonus_charging_window) && (window != dstrong_stancel_window)) {
+			strong_charge = 0;
+			stored_strong_charge = 0;
+		}
+
 		off_edge = false;
 		//print("strong charge = " + string(strong_charge));
 		if (stored_strong_charge > strong_charge) {
@@ -763,7 +782,7 @@ switch (attack) {
 		}
 		// Skip initial charge window if charge is ready
 		if ((window == dstrong_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			if (strong_charge >= strong_full_charge_time) {
@@ -856,6 +875,11 @@ switch (attack) {
 		}
 		break;
 	case AT_NSPECIAL :
+		// Lose charge if you complete the attack mid charge
+		if ((window > nspecial_bonus_charging_window) && (window != nspecial_stancel_window)) {
+			special_charge = 0;
+		}
+
 		// Lose charge if you stancel out of charged
 		if ((window == nspecial_stancel_window)
 			&& (window_timer == 0)
@@ -866,7 +890,7 @@ switch (attack) {
 		off_edge = false;
 		// Skip initial charge window if charge is ready
 		if ((window == nspecial_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
@@ -1011,6 +1035,11 @@ switch (attack) {
 		}
 		break;
 	case AT_NSPECIAL_AIR :
+		// Lose charge if you complete the attack mid charge
+		if ((window > nspecial_air_bonus_charging_window) && (window != nspecial_air_stancel_window)) {
+			special_charge = 0;
+		}
+
 		// Lose charge if you stancel out of charged
 		if ((window == nspecial_air_stancel_window)
 			&& (window_timer == 0)
@@ -1021,7 +1050,7 @@ switch (attack) {
 		off_edge = false;
 		// Skip initial charge window if charge is ready
 		if ((window == nspecial_air_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			// Stalling is weaker if used multiple times in airtime
 			if (nspecial_air_stall_available) {
@@ -1172,6 +1201,11 @@ switch (attack) {
 		}
 		break;
 	case AT_FSPECIAL :
+		// Lose charge if you complete the attack mid charge
+		if ((window > fspecial_bonus_charging_window) && (window != fspecial_stancel_window)) {
+			special_charge = 0;
+		}
+
 		//print_debug("state_timer in fspecial = " + string(state_timer));
 		off_edge = false;
 		stun_counter = fspecial_stun_time;
@@ -1367,6 +1401,11 @@ switch (attack) {
 
 		break;
 	case AT_DSPECIAL :
+		// Lose charge if you complete the attack mid charge
+		if ((window > dspecial_bonus_charging_window) && (window != dspecial_stancel_window)) {
+			special_charge = 0;
+		}
+
 		// Lose charge if you stancel out of charged
 		if ((window == dspecial_stancel_window)
 			&& (window_timer == 0)
@@ -1376,7 +1415,7 @@ switch (attack) {
 		}
 		// Skip initial charge window if charge is ready
 		if ((window == dspecial_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
@@ -1565,7 +1604,7 @@ switch (attack) {
 		stun_counter = fspecial_stun_time;
 		
 		if ((window == dspecial_air_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			must_complete_attack = false;
 			dspecial_caught_one = false;
@@ -1574,11 +1613,13 @@ switch (attack) {
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
 				charge_flash_cooldown = charge_flash_cooldown_max;
-				special_charge = 0;
+				//special_charge = 0;
 			} else {
 				// Don't do this on uncharged version or you end the 'stunned' state
 				let_everyone_go();
 			}
+			// Always lose charge
+			special_charge = 0;
 		}
 	
 		// Loop until you touch the ground
@@ -1628,7 +1669,7 @@ switch (attack) {
 	case AT_USPECIAL :
 		// Cannot stancel this move
 		if ((window == uspecial_start_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 					can_fast_fall = false;
 		{
 			current_charge_time = max_charge_time;
@@ -1679,7 +1720,7 @@ switch (attack) {
 		off_edge = false;
 		// Skip initial charge window if charge is ready
 		if ((window == uspecial_windup_window)
-			&& ((window_timer == 0) || (window_timer == 1)))
+			&& (window_timer == 1))
 		{
 			current_charge_time = max_charge_time;
 			//special_charge = 0;

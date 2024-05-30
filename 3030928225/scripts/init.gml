@@ -417,7 +417,7 @@ fspecial_whip_spin_sound_curr = noone;
 // Uspecial
 uspecial_dig_distance_max = 100;
 uspecial_dig_distance = uspecial_dig_distance_max;
-uspecial_dig_wall_default_offset = uspecial_dig_distance_max + 60;
+uspecial_dig_wall_default_offset = uspecial_dig_distance_max + 85;
 uspecial_original_x = x;
 uspecial_hold_to_consume = true;
 // Dspecial

@@ -23,11 +23,11 @@ switch (state){
 	
 	if (hit_player_obj > 0){
 		player_id.foresight = 50; player_id.invincible = true;
-		player_id.hitpause = false; player_id.y = player_id.y-1;
-		player_id.state = PS_ATTACK_AIR; player_id.attack = AT_EXTRA_1;
+		player_id.hitpause = false; player_id.hitstop = false;
+		//player_id.y = player_id.y-2;
+		player_id.state = PS_ATTACK_GROUND; player_id.attack = AT_EXTRA_1;
 		player_id.window = 1; player_id.window_timer = 0;
-		//hsp = player_id.hsp; 
-		//vsp = player_id.vsp; 
+		//other.go_through = true;
 		sound_play(sound_get("instanttransmission"));
 		state = 1; state_timer = 0;
 		player_id.hsp = prev_hsp * 3; 

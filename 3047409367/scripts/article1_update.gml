@@ -491,7 +491,7 @@ hit_player_num = hbox.player;
  
 //make sure player is the one being targeted
 
-if ((player_id != hbox.player_id && (hbox.type == 1 || (hbox.type == 2 && target_id == hbox.player_id))) || (target_id != player_id && hbox.player_id == player_id && hbox.attack == AT_DSPECIAL && hbox.hbox_num == 1)){
+if ((player_id != hbox.player_id && (hbox.type == 1 || (hbox.type == 2))) || (target_id != player_id && hbox.player_id == player_id && hbox.attack == AT_DSPECIAL && hbox.hbox_num == 1)){
 	//Default Hitpause Calculation
 	//You probably want this stuff because it makes the hit feel good.
 	if (hbox.player_id != player_id || state < 2){

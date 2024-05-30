@@ -48,7 +48,8 @@ break;
 	}
 break;
 
-	case AT_UTILT: //Nothin'
+	case AT_UTILT:
+	if (window == 1){ random_mecha = random_func(0, 2, true); }
 break;
 	
 	case AT_FTILT:
@@ -87,16 +88,23 @@ break;
 	can_fast_fall = false;
 	can_jump = false;
 	if (was_parried == false){
-	if (window == 1){ set_attack_value(AT_USTRONG, AG_OFF_LEDGE, 0); }
+	if (window == 1){
+		random_mecha = random_func(0, 2, true);
+		set_attack_value(AT_USTRONG, AG_OFF_LEDGE, 0);
+	}
 	if (window > 1){ set_attack_value(AT_USTRONG, AG_OFF_LEDGE, 1); }
 	if (window == 2){
+		if (has_hit && random_mecha == 1 && voice_button == true){
+			random_mecha = 0;
+			sound_play(sound_get("Mecha_Aagh"));
+		}
 		if (free == false){ spawn_hit_fx(x, y-1, 102); }
 		if (window_timer == 1 && has_hit_player == false){
 			vsp = -8 - (strong_charge / 10);
 		}
 	}
 	if (window == 3 && window_timer > 3){
-		if(has_hit_player == true){
+		if (has_hit_player == true){
 			can_special = true;
 			can_attack = true;
 		}
@@ -119,7 +127,7 @@ break;
 		set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 		}
 	}
-	if(window == 1){ grabbedid = noone; random_mecha = random_func(0, 3, true);
+	if(window == 1){ grabbedid = noone; random_mecha = random_func(0, 2, true);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1); }
 	if(window == 2 && window_timer < 3){ hsp = -5 * spr_dir + (0.1 * strong_charge * spr_dir); } //fly back
 	if(window == 2 && window_timer > 3 && window_timer < 6){ hsp = 12 * spr_dir + (0.2 * strong_charge * spr_dir); }
@@ -195,10 +203,10 @@ break;
 	force_depth = 0;
 	grabbedid = noone;
     }
-    if (window < 3){ random_mecha = random_func(0, 3, true); }
+    //if (window < 3){ random_mecha = random_func(0, 2, true); }
     if (window == 3 && window_timer == 18 && random_mecha == 1 && voice_button == true){ sound_play(sound_get("Mecha_Useless")); }
-	if (window == 2 || window == 3){
-		random_mecha = random_func(0, 3, true);
+	if (window == 1 || window == 2 || window == 3){
+		random_mecha = random_func(0, 2, true);
 		if (grabbedid != noone){
 			if(!instance_exists(grabbedid)){
 				grabbedid = noone;
@@ -214,26 +222,18 @@ break;
 					if (window_timer > 1){ force_depth = 1; depth = -1; }
 					
 					if (window_timer < 6){
-					//grabbedid.x = x + 45 * spr_dir; 
-					//grabbedid.y = y - 1;
 					grabbedid.x = lerp(grabbedid.x, x+45 * spr_dir, 0.2);
 					grabbedid.y = lerp(grabbedid.y, y-1, 0.2);
 					}
 					if (window_timer >= 6 && window_timer < 7){
-					//grabbedid.x = x + 40 * spr_dir; 
-					//grabbedid.y = y - 1;
 					grabbedid.x = lerp(grabbedid.x, x+40 * spr_dir, 0.3);
 					grabbedid.y = lerp(grabbedid.y, y-1, 0.3);
 					}
 					if (window_timer >= 7 && window_timer < 11){
-					//grabbedid.x = x + 30 * spr_dir; 
-					//grabbedid.y = y - 3;
 					grabbedid.x = lerp(grabbedid.x, x+30 * spr_dir, 0.5);
 					grabbedid.y = lerp(grabbedid.y, y-4, 0.5);
 					}
 					if (window_timer >= 11 && window_timer < 14){
-					//grabbedid.x = x + 25 * spr_dir; 
-					//grabbedid.y = y - 5;
 					grabbedid.x = lerp(grabbedid.x, x+25 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-5, 0.9);
 					}
@@ -241,33 +241,23 @@ break;
 				if(window == 3){
 					force_depth = 1;
 					if (window_timer <= 5){
-					//grabbedid.x = x + 7 * spr_dir; 
-					//grabbedid.y = y - 15;
 					grabbedid.x = lerp(grabbedid.x, x+7 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-15, 0.9);
 					}
 					if (window_timer >= 5){
 					force_depth = 0;
-					//grabbedid.x = x + 30 * spr_dir; 
-					//grabbedid.y = y - 17;
 					grabbedid.x = lerp(grabbedid.x, x+30 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-17, 0.9);
 					}
 					if (window_timer >= 10){
-					//grabbedid.x = x + 50 * spr_dir; 
-					//grabbedid.y = y - 20;
 					grabbedid.x = lerp(grabbedid.x, x+50 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-20, 0.9);
 					}
 					if (window_timer >= 15){
-					//grabbedid.x = x + 48 * spr_dir; 
-					//grabbedid.y = y - 22;
 					grabbedid.x = lerp(grabbedid.x, x+48 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-22, 0.9);
 					}
 					if (window_timer >= 20){
-					//grabbedid.x = x + 42 * spr_dir; 
-					//grabbedid.y = y - 30;
 					grabbedid.x = lerp(grabbedid.x, x+42 * spr_dir, 0.9);
 					grabbedid.y = lerp(grabbedid.y, y-30, 0.9);
 					}
@@ -295,10 +285,15 @@ break;
 			}
 		}
 	}
-		if (window_timer >= 5 && grabbedid == noone){ window = 7; window_timer = 0; }
+		if (window_timer >= 5 && grabbedid == noone){window = 7; window_timer = 0; }
 		if (window_timer >= 25 && grabbedid != noone){ window = 4; window_timer = 0; }
 	}
 }
+	if (random_mecha == 1 && voice_button == true){
+		random_mecha = 0;
+		if (window == 5){ sound_play(sound_get("Mecha_There")); }
+		if (window == 6){ sound_play(sound_get("Mecha_Hhuh")); }
+	}
 break;
 	
 	case AT_NAIR:
@@ -327,6 +322,9 @@ break;
 	}
 break;
 	case AT_DAIR:
+	if (window == 1){
+	random_mecha = random_func(0, 3, true);
+	}
 break;
 	case AT_BAIR:
 	if (has_hit_player == true){
@@ -347,10 +345,10 @@ break;
 	window_timer = 0;
 	air_special = false;
 	hsp = hsp * 1.1;
-	//Bullets = random_func(0, 3, true);
 	}
 	if (window == 1){
 		air_special = false;
+		random_mecha = random_func(0, 2, true);
 		if (window_timer == 1){ Nspecial_moves = 1000; }
 	}
     if (window == 2){
@@ -400,25 +398,23 @@ break;
     	    }
     	}
     	if (nspecial_time <= 0){
+    		//No more bullets
     		window = 5;
     	    window_timer = 1;
     	    move_cooldown[AT_NSPECIAL] = 90;
+    	    if (random_mecha == 1 && voice_button == true){
+        	sound_play(sound_get("Mecha_Is_That_Your_Best"));
+        	}
     	}
     }
     if (window == 3){
     	move_cooldown[AT_NSPECIAL] = 25;
-    	//can_jump = true;
-    	//can_attack = true;
-    	//can_strong = true;
     	if (window_timer == get_window_value( AT_NSPECIAL, 3, AG_WINDOW_LENGTH )){
 	        if (special_down){ window = 2; window_timer = 0; }else{ window = 5; window_timer = 0; }
     	}
     }
     if (window == 4){
-    	move_cooldown[AT_NSPECIAL] = 25;
-    	//can_jump = true;
-    	//can_attack = true;
-    	//can_strong = true;
+    	move_cooldown[AT_NSPECIAL] = 25
     	if(window_timer == get_window_value( AT_NSPECIAL, 4, AG_WINDOW_LENGTH )){
 	        if (special_down){
     	        window = 2;
@@ -430,10 +426,10 @@ break;
     	}
     }
     if (window == 5){
-    	//move_cooldown[AT_NSPECIAL] = 5;
     	if (state == PS_ATTACK_AIR){ window = 8; window_timer = 2; vsp = -8; sound_play(sound_get("Gun_unload")); }
     }
     if (window == 6){
+    	random_mecha = random_func(0, 1, true);
     	air_special = true;
     	nspecial_air_time = 100;
     	can_move = false;
@@ -475,6 +471,9 @@ break;
         	window = 8;
         	window_timer = 0;
         	move_cooldown[AT_NSPECIAL] = 90;
+        	if (random_mecha == 1 && voice_button == true){
+        	sound_play(sound_get("Mecha_Is_That_Your_Best"));
+        	}
 		}
     	if (window_timer >= 6 && special_down){ window_timer = 0; window = 7; } else if (window_timer >= 6){ window = 8; window_timer = 0; }
     }
@@ -557,8 +556,8 @@ break;
 	if (window == 5){ //Nothing window
 		can_fast_fall = false;
 		if (window_timer == 1){
-			var doomed = random_func(0, 3, true);
-			if (doomed == 2 && voice_button == true){ sound_play(sound_get("Mecha_Doomed")); }
+			random_mecha = random_func(0, 2, true);
+			if (random_mecha == 2 && voice_button == true){ sound_play(sound_get("Mecha_Doomed")); }
 		}
 		if (window_timer < 3){
 		vsp = (hit_player_obj.old_vsp * 1.2) / 1;
@@ -632,7 +631,7 @@ break;
 		
 	if (window == 1){
 		can_move = true;
-		random_mecha = random_func(0, 3, true);
+		random_mecha = random_func(0, 2, true);
 	if (window_timer < 3){
 		marked_id = false;
 		target_addup = 0;
@@ -645,8 +644,6 @@ break;
 	}
 	
 	if (window == 2){
-		//move_cooldown[AT_USPECIAL_2] = 90;
-		//move_cooldown[AT_USPECIAL] = 90;
 		with (asset_get("oPlayer")) {
         	if (player != other.player) {
         		if ((state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD
@@ -657,19 +654,26 @@ break;
 			}
 		}
 	}
-	
-	if (window == 3 && marked_id > 0){ window = 4; window_timer = 0; }
+
+	if (window == 3){
+		if (window_timer == 20 && voice_button == true){ sound_play(sound_get("Mecha_Where_Are_You")); }
+		if (marked_id > 0){ window = 4; window_timer = 0; }
+	}
 	if (window == 4 && marked_id > 0 && hit_player_obj.free == true){ window = 6; window_timer = 0; }
 	if (window == 4 &&
 	window_timer >= get_window_value( AT_USPECIAL_2, 4, AG_WINDOW_LENGTH) &&
 	marked_id > 0 && hit_player_obj.free == false){ window = 5; window_timer = 0; }
+	
+	if ((window == 5 || window == 6) && window_timer == 2){
+	if (random_mecha == 1 && voice_button == true){ sound_play(sound_get("Mecha_SeeYou")); }
+	}
 	
 	if (window == 7 && window_timer == 14){ sound_play(sound_get("uspecial_reloadgun")); }
 	
 	/*
 	if (window == 1){
 		can_move = true;
-		random_mecha = random_func(0, 3, true);
+		random_mecha = random_func(0, 2, true);
 	if (window_timer < 3){
 		marked_id = false;
 		target_addup = 0;
@@ -755,14 +759,12 @@ break;
 	}
 	*/
 break;
-	case AT_FSPECIAL:
+	case AT_FSPECIAL: //Aerial
 	trigger_b_reverse();
 	can_move = false;
-	//move_cooldown[AT_FSPECIAL] = 190;
 	can_fast_fall = false;
 	if (window == 1){
-		random_mecha = random_func(0, 3, true);
-		//if (window_timer == 2 && telepunch == 2){ sound_play(dash_sound); }
+		random_mecha = random_func(0, 2, true);
 		if (window_timer == 2){ spawn_hit_fx(x-20 * spr_dir, y-70, Shockwave); }
 	}
 	if (window == 2 && special_down && window_timer >= get_window_value( AT_FSPECIAL, 2, AG_WINDOW_LENGTH )){
@@ -772,16 +774,20 @@ break;
 	if (window == 3 || window == 5){ move_cooldown[AT_FSPECIAL] = 200; }
 break;
 	
-	case AT_FSPECIAL_2:
+	case AT_FSPECIAL_2: //Ground
 	trigger_b_reverse();
 	can_move = false;
 	can_fast_fall = false;
 	if (window == 1){
 		grabbed_id = noone;
+		random_mecha = random_func(0, 3, true);
 		if (window_timer == 1){
 		var fspecial_particle spawn_hit_fx(x, y, FSpecial_particle);
 		fspecial_particle.force_depth = true;
 		fspecial_particle.depth = depth-5;
+		}
+		if (window_timer == 2 && voice_button == true && random_mecha == 1){
+			random_mecha = 0; sound_play(sound_get("Mecha_Die"));
 		}
 		if (window_timer == 26){
 			white_flash_timer = 10;
@@ -853,7 +859,7 @@ break;
 		if (instance_exists(dspecial_id) == false){ dspecial_id = noone; }
 	if (window == 1){
 	can_move = false; cling_once = 0; dspecial_id = noone;
-	random_mecha = random_func(0, 3, true); move_cooldown[AT_DSPECIAL] = 100; }
+	random_mecha = random_func(0, 2, true); move_cooldown[AT_DSPECIAL] = 100; }
 	
 	if (dspecial_id > 0 && state_timer == 25 && random_mecha == 1 && voice_button == true){
 		random_mecha = 0; sound_play(sound_get("Mecha_Die2"));
@@ -1014,12 +1020,21 @@ break;
 	can_fast_fall = false;
 	var dspecial_charge_sound = sound_get("dspecial_charge");
 		if (window == 1){
+			random_mecha = random_func(0, 3, true);
 			set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 1);
 			if (window_timer == 2){
 				sound_play(dspecial_charge_sound);
 			}
 			dspecial_charge = 0;
 			can_shield = false;
+			
+			//Mecha changes his voice line when over 100%:
+			if (get_player_damage( player ) >= 100) {
+			set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_SFX, sound_get("Mecha_LiveLongEnough"));
+			} else {
+			set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_SFX, sound_get("Mecha_EAUH"));
+			}
+			
 		}
 		if (window > 2){ sound_stop(dspecial_charge_sound); }
 		if (window == 2 && window_timer > 10 && free == true){
@@ -1041,7 +1056,6 @@ break;
 	        }
 		}
 		if (window == 3){
-			random_mecha = random_func(0, 3, true);
 			if (dspecial_charge > 0){ dspecial_charge -= 1; }
 			if (free == false && ((window_timer mod 3) == 0)) { spawn_hit_fx( x-25 * spr_dir, y-52, Skrt); }
 		}
@@ -1171,26 +1185,25 @@ break;
 	go_through = true;
 	move_cooldown[AT_EXTRA_1] = 50;
 	draw_indicator = false;
+	
+	if (down_down){ fall_through = true; }
 	if (window == 1){
+	if (random_mecha == 1 && voice_button == true){
+	sound_play(sound_get("Mecha_heh"));
+	random_mecha = 0;
+	}
 	//hsp = lengthdir_x(18, fly_dir);
     //vsp = lengthdir_y(18, fly_dir);
-	var fly_dir = point_direction(0,0,hsp,vsp);
-    var fly_dist = point_distance(0,0,hsp,vsp);
-    var max_speed = 20;
-    	if (fly_dist > max_speed){
-    	hsp = lengthdir_x(max_speed, fly_dir)
-    	vsp = lengthdir_y(max_speed, fly_dir);
-		}
+    	hsp = lengthdir_x(30, joy_dir)
+    	vsp = lengthdir_y(30, joy_dir);
 	}
     
     if (window == 2){
-	var fly_dir2 = point_direction(0,0,hsp,vsp);
-    var fly_dist2 = point_distance(0,0,hsp,vsp);
-    var max_speed2 = 5;
-    	if (fly_dist2 > max_speed2){
-    	hsp = lengthdir_x(max_speed2, fly_dir2)
-    	vsp = lengthdir_y(max_speed2, fly_dir2);
-		}
+	var fly_dir = point_direction(0,0,hsp,vsp);
+    var fly_dist = point_distance(0,0,hsp,vsp);
+    var max_speed = 4;
+    	hsp = lengthdir_x(max_speed, fly_dir)
+    	vsp = lengthdir_y(max_speed, fly_dir);
     }
 break;
 	

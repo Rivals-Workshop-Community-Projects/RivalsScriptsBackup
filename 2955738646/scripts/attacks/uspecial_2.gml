@@ -22,7 +22,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, sound_get("scouter_locating"));
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 1); //Missed
+set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 1); //No scan
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 55);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 12);
