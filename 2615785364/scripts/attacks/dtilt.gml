@@ -1,7 +1,6 @@
 set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("ftilt"));
 set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 3);
-set_attack_value(AT_DTILT, AG_OFF_LEDGE, 1);
-set_attack_value(AT_DTILT, AG_CATEGORY, 2);
+set_attack_value(AT_DTILT, AG_CATEGORY, 1);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);

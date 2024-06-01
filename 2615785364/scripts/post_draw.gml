@@ -1,3 +1,5 @@
+shader_start();
+
 if (attack == AT_DTILT || attack == AT_DAIR){
         if (sonicSpinSpeed >= 2){
 			draw_sprite(sprite_get("sonic_hud2"),0,x-95,y-82);
@@ -15,3 +17,5 @@ if (attack == AT_DTILT || attack == AT_DAIR){
 			draw_sprite(sprite_get("sonic_hud2"),4,x-95,y-82);
         }
 }
+
+shader_end();
