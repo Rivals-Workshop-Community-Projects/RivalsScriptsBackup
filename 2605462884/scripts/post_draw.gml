@@ -243,6 +243,11 @@ with(asset_get("oPlayer")){
 					case 13: var crouch = asset_get("wolf_bair_spr"); var c_img = 17; break; //sylvanos
 					case 14: var crouch = asset_get("snake_walljump"); var c_img = 1; break; //elliana
 					case 15: var crouch = asset_get("gus_dspecial_spr"); var c_img = 4; break; //shovel
+					
+					case 16: var crouch = asset_get("moth_dair"); var c_img = 2; break; //mollo
+					case 17: var crouch = asset_get("stinky_dspecial_2"); var c_img = 17; break; //hodan
+					case 18: var crouch = asset_get("mouse_tech"); var c_img = 2; break; //pomme
+					case 19: var crouch = asset_get("punch_dspecial"); var c_img = 28; break; //olympia
 					case 2605462884: var crouch = body var c_img = 11; break; //explorer
 					default: if (url == other.url){var crouch = body var c_img = 12; break; }else{ //explorer
 					var crouch = sprite_get("crouch"); var c_img = crouch_startup_frames;} break; //else/ws
