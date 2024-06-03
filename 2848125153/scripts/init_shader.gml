@@ -35,6 +35,20 @@ if(detish_alt){
 }
 
 
+//change w ability if on default 
+if ("golden_skill_suit" not in self)golden_skill_suit = false;
+if (golden_skill_suit){
+    if(alt_cur == 12 || alt_cur == 13 || alt_cur == 17 || alt_cur == 18 || alt_cur == 21 || alt_cur == 23 || alt_cur == 25 || alt_cur == 27){
+        set_character_color_slot(0, 255, 220, 44);set_article_color_slot(0, 255, 220, 44);
+    }
+    if(alt_cur <= 2 || alt_cur == 16 || alt_cur == 22 || alt_cur == 24){
+        set_character_color_slot(1, 255, 189, 44);set_article_color_slot(1, 255, 189, 44);
+    }
+	set_character_color_slot(2, 255, 189, 44);set_article_color_slot(2, 255, 189, 44);
+	set_character_color_slot(4, 255, 163, 44);set_article_color_slot(4, 255, 163, 44);
+    set_character_color_slot(5, 255, 189, 44);set_article_color_slot(5, 255, 189, 44);
+}
+
 if("state" in self){
     if(state == PS_DEAD){
         //set_victory_sidebar(sprite_get("very unskillful"));

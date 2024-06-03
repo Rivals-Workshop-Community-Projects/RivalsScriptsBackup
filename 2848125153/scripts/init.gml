@@ -32,7 +32,7 @@ djump_speed = 10;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 2; //maximum hsp when double jumping. If already going faster, it will not slow you down
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.27;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .05;
@@ -45,7 +45,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .45;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.10935; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -235,11 +235,9 @@ discount = 1;
 discount_stocks = 0;
 tauntmoney = 0;
 notmuchtimeleft = 0;
-diedienow = 0;
-diedienowP1 = false;
-diedienowP2 = false;
-diedienowP3 = false;
-diedienowP4 = false;
+diedienow = 0;diedienowP1 = false;
+diedienowP2 = false;diedienowP3 = false;diedienowP4 = false;
+golden_skill_suit = false;
 playercount = 0;
 lookuptime = 0;
 
@@ -261,6 +259,10 @@ runesUpdated2 = false;
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = 7;
 toonlink_randomizephoto = false;
+kob_sleep_sprite = sprite_get("sleep_none");
+kob_sleep_sprite_air = sprite_get("downhurt");
+kob_sleep = false;
+weegeefied_sprite = sprite_get("weegeefied");
 miiverse_post = sprite_get("miiverse_post");
 wily_robotmaster_img = sprite_get("Wily_Castle");
 //guiltySprite = sprite_get("trialgrounds");
@@ -301,6 +303,9 @@ fx_explosion_huge = hit_fx_create(sprite_get("explosion_huge"), 40);
 fx_explosion_huge_slow = hit_fx_create(sprite_get("explosion_huge"), 80);
 fx_explosion_nuke = hit_fx_create(sprite_get("explosion_nuke"), 60);
 fx_shine_small = hit_fx_create(sprite_get("shine_small"), 10);
+fx_shine_smallslow = hit_fx_create(sprite_get("shine_small"), 20);
+fx_projectile_trail = hit_fx_create(sprite_get("projectile_trail"), 20);
+fx_projectile_trail2 = hit_fx_create(sprite_get("projectile_trail2"), 20);
 
 muno_event_type = 0;
 	user_event(14);

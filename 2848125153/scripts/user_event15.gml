@@ -318,7 +318,39 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.29", ", 2024");
+initPatch("1.31", "2nd June, 2024");
+initHeader("Skillful Buffs");
+initSection("+ If Mr. Monopoly reaches 15 million money total, he gets a skillful golden suit! He loses it on death, but can regain it if he hits 15 million again
++ Added a sleep animation, which scales with how much money Mr. Monopoly has (credit to DonGT for making it)
++ If Mr. Monopoly has 15 million in the bank and he dies, an extra stock will be bought with the bank money
++ Added a skillful money sound on galaxy
++ Added more Weegee compatibility; if Mr. Monopoly has enough money when weegeefied then his sprite will be different
++ Added Rune N, making Mr. Monopoly heavier the more money he has
++ DAttack Double Choo Choo tech is a bit easier to perform and more consistent
++ NAir now throws 2 dust projectiles instead of 1 if Mr. Monopoly has very low money
++ Added 8 more Miiverse posts (now 30 total)");
+initHeader("Unskillful Nerfs");
+initSection("- Changed Mr. Monopoly's weight 1.0->1.10935 (technically 1.11, but it's an epic reference)
+- DStrong doesn't reach as far behind Mr. Monopoly anymore
+- UStrong now has a bit more endlag on light and medium versions, and drops more money on whiff
+- BAir now has a bit more endlag on light and medium versions, and drops more money on whiff
+- DTilt sends less inward on the sweetspot
+- Doing the DAttack double Choo Choo tech now drops some money, to balance it a bit more but also as a tradeoff for the tech being easier to do
+- Dust is less active (dust nerf real)");
+initHeader("Fixes / Other Changes");
+initSection("+ Some hitpause tweaks");
+
+initPatch("1.30", "30th May, 2024");
+initHeader("Skillful Buffs");
+initSection("+ Added b-reverse to NSpecial, FSpecial, and DSpecial
++ Added a proper sourspot to DAir, so that it won't weirdly whiff inbetween sweetspot and holding it");
+initHeader("Fixes / Other Changes");
+initSection("+ Added shaky hitpause effect
++ Added angle 0 to some moves
++ Added trail effects to some projectiles
++ Added 1 more Miiverse post");
+
+initPatch("1.29", "28th January, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed an obscure bug with DAttack where cancelling out and getting hit afterwards before doing another attack could spawn the choo choo
 + Made Mr. Monopoly compatible with Toad, Toadette, and Toadsworth! If they pick up a pile of money, they will gain 1 coin for it (or 1 coin for each million in case of bigger money piles)

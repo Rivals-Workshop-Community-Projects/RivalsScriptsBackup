@@ -1,6 +1,14 @@
 
+if("should_make_shockwave" not in hit_player_obj)hit_player_obj.should_make_shockwave = false;
+if("activated_kill_effect" not in hit_player_obj)hit_player_obj.activated_kill_effect = false;
+if(my_hitboxID.hitstun_factor < 0)hit_player_obj.should_make_shockwave = false;
+
+//extra hitpause and shake code
+extrahitpauseon = my_hitboxID.type==1?true:false;
+shaketarget = hit_player_obj;hitpausesetpos = true;hitpausecap = 40;shakecap = 50;
+
 if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
-    my_hitboxID.hsp = -1*spr_dir;my_hitboxID.spr_dir = -my_hitboxID.spr_dir;
+    my_hitboxID.hsp = -1*my_hitboxID.spr_dir;my_hitboxID.spr_dir = -my_hitboxID.spr_dir;
     my_hitboxID.vsp = -10;
     my_hitboxID.hit_priority = 0;my_hitboxID.grounds = 1;my_hitboxID.walls = 1;my_hitboxID.dice_has_hit = true;
     if(my_hitboxID.dicenum == 0){
@@ -28,7 +36,7 @@ if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num <= 2){
     		my_hitboxID.vsp = -10;
     	}my_hitboxID.hittimer = 30;
     }else if(my_hitboxID.num == 5){ //rubber duck
-    	my_hitboxID.hsp = 0.5*spr_dir;
+    	my_hitboxID.hsp = 0.5*my_hitboxID.spr_dir;
     	my_hitboxID.vsp = -my_hitboxID.vsp;
     }else if(my_hitboxID.num == 6){ //iron
     	my_hitboxID.hsp = 0.5*my_hitboxID.spr_dir;
@@ -88,7 +96,7 @@ if(my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 5 || my_hitboxID.atta
 
 if((attack == AT_JAB && my_hitboxID.hbox_num < 10 && my_hitboxID.hbox_num != 5 || attack != AT_JAB) && (attack == AT_UAIR && my_hitboxID.hbox_num == 1 || attack != AT_UAIR) && attack != AT_DSPECIAL
 && hit_player_obj != self && my_hitboxID.type <= 1){
-	if("url" in hit_player_obj && hit_player_obj.url == url){ //if opponent is monopoly
+	if("orly" in hit_player_obj || "VerySkillful" in hit_player_obj){ //if opponent is certain other characters
 		current_money += floor(((my_hitboxID.damage*150)*(1+(strong_charge/100)))*income_boost);
 	}else{ //anyone else
 		current_money += floor(((my_hitboxID.damage*175)*(1+(strong_charge/100)))*income_boost);
@@ -192,6 +200,12 @@ if(hit_player_obj.should_make_shockwave || my_hitboxID.attack == AT_NSPECIAL && 
 	if(alt == 29){
 		sound_play(sound_get("dbzhit2"));
 	}
+}
+
+//hitboxes that trigger the silly angle 0 galaxy thing
+if(my_hitboxID.attack == AT_JAB || my_hitboxID.attack == AT_DTILT || my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num < 8){
+	//trigger silly angle 0 thing (if galaxy)
+	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;
 }
 
 //charge final smash when projectiles hit

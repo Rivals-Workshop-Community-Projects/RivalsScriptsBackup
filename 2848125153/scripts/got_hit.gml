@@ -59,6 +59,12 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	}
 	
 	takearideontherailroad = false;
+	
+	if("weegeefied" in self){
+		propertymoney = 0;
+		if(instance_exists(property))if("housemoney" in property)propertymoney = property.housemoney;
+		weegeefied_sprite = current_money+propertymoney<(30000-discount_stocks)?sprite_get("weegeefied"):sprite_get("weegeefied skill");
+	}
 }
 
 #define PlayVoiceClip

@@ -88,12 +88,46 @@ with(oPlayer){
             }
         }
     }
+    
+    //shake hitpause code
+	with(other){
+		if("shaketarget" not in self)shaketarget = noone;
+		if("extrahitpauseon" not in self)extrahitpauseon = true;
+		if("hitpausesetpos" not in self)hitpausesetpos = true;
+		if("hitpausecap" not in self)hitpausecap = 40;
+		if("shakecap" not in self)shakecap = 50;
+		if(instance_exists(shaketarget) && extrahitpauseon){
+			if(shaketarget.should_make_shockwave){
+				with(shaketarget){hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);}
+				hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);
+			}if(shaketarget.activated_kill_effect){
+				var maxhitpause = min(hitpausecap,round(shaketarget.hitstop*2));
+				if(hitpause){hitstop = maxhitpause;hitstop_full = maxhitpause;}
+				shaketarget.hitstop = maxhitpause;shaketarget.hitstop_full = maxhitpause;shake_camera(35, 5);sound_play(sound_get("soldsfx big loud"),false,noone,1.0, 0.95+((random_func(0,10,true)/100)));
+			}if(hitpausesetpos){shaketarget.prev_x = shaketarget.x;shaketarget.prev_y = shaketarget.y;}shaketarget = noone;
+		}
+	}
+	if(hitpause && state_cat == SC_HITSTUN && last_player == other.player){
+		var shake = activated_kill_effect?round(hitstop*3):should_make_shockwave?round(hitstop*2):round(hitstop);shake = min(other.shakecap,shake);
+		var dir = random_func(0, 359, true);var new_x = prev_x + round(lengthdir_x(shake/2, dir));var new_y = prev_y + round(lengthdir_y(shake/2, dir));
+		x = round(new_x);y = round(new_y);
+	}else if(!hitpause){
+		prev_x = x;prev_y = y;
+	}
 }
 
 //failsafe for uspecial mask not being reset
 if(uspec_mask && ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_USPECIAL || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))){
 	mask_index = asset_get("ex_guy_collision_mask");
 	uspec_mask = false;
+}
+
+//for based sleep things
+if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+	if(kob_sleep && "kob_sleep_sfx" in self && kob_sleep_sfx && !hitpause){
+		kob_sleep_sprite = sprite_get("sleep_"+(current_money<=5000?"none":current_money<=15000?"light":current_money<=30000?"medium":"heavy"));
+		kob_sleep_sfx = false;
+	}
 }
 
 //special alt things
@@ -267,6 +301,8 @@ if ((runesUpdated || get_match_setting(SET_RUNES)) && !runesUpdated2) {
 	}if (has_rune("M") || runeM) {
 		runeM = true;
 		discount_stocks = 50000;
+	}if (has_rune("N") || runeN) {
+		runeN = true;
 	}
 	
 	runesUpdated = false;
@@ -277,6 +313,69 @@ if(runeE){
 		sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
     	current_money += 3000*income_boost;
 	}
+}
+if(runeN){
+	//skillful weight rune
+	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.2,1.10935);
+}
+
+//silly angle 0 code (part 2)
+if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
+if(instance_exists(killtarget)){
+	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
+		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
+		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
+		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
+		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
+	}else{killtarget = noone;}
+}if(instance_exists(killtarget2)){
+	if(killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
+		killtarget2.old_vsp = 0;killtarget2.vsp = 0;//killtarget2.y = killtarget_y;
+		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_tech = 1;killtarget2.fall_through = true;
+	}if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
+	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
+}
+
+//absolute peak code
+if(instance_exists(property) && check_offscreen(-150-(abs(hsp*5)-abs(vsp*5))) && state == PS_HITSTUN){
+    with(property){
+        if(housemoney >= 150000-other.discount_stocks){
+            housemoney -= 150000-other.discount_stocks;
+            sound_play(sound_get("soldsfx"),false,noone,2);
+            set_player_stocks(other.player,get_player_stocks(other.player)+1);
+        }
+    }
+}
+//shiny effect for gold alt
+if(golden_skill_suit){
+	if (state != PS_RESPAWN && state != PS_DEAD){
+    	if(get_gameplay_time() % 20 == 0){
+			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_smallslow);eff.depth = depth-1;
+        }if(get_gameplay_time() % 10 == 0){
+			var eff = spawn_hit_fx(round(x-25+random_func(0, 50, true)),round(y-random_func(0, 50, true)),fx_shine_small);eff.depth = depth-1;
+        }
+	}
+	init_shader();
+}else{
+	propertymoney = 0;
+	if(instance_exists(property))if("housemoney" in property)propertymoney = property.housemoney;
+	if(current_money+propertymoney >= 150000-discount_stocks){
+		golden_skill_suit = true;sound_play(sound_get("soldsfx big"),false,noone,2);
+		rand = random_func(0, 4, true);
+		if(rand <= 1){
+			PlayVoiceClip("gold_never_goes_out_of_style", 1.0);
+		}else if(rand <= 3){
+			PlayVoiceClip("im_feeling_golden_today", 1.0);
+		}else if(rand == 4){
+			PlayVoiceClip("lets upgrade", 1.0);
+		}
+	}
+}
+
+#define check_offscreen(offset) //Got this function from Bar-Kun, seems to be useful. Thanks - Don
+{
+    if (x < get_stage_data(7) - offset || x > get_stage_data(8) + offset || y < get_stage_data(9) - offset || y > get_stage_data(10) + offset) return true;
+    else return false;
 }
 
 #define PlayVoiceClip

@@ -12,7 +12,7 @@ if (attack == AT_NSPECIAL){
     if(window == 1 && !hitpause){
     	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-8 && special_down){
     		window_timer -= 1;
-    	}
+    	}else{KoB_reverse();}
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	if(!instance_exists(thedice1) || !instance_exists(thedice2)){
         		sound_play(asset_get("sfx_swipe_medium1"));
@@ -101,7 +101,7 @@ if (attack == AT_NSPECIAL){
 	if(window == 1){
 		if(window_timer == 1){
 			move_cooldown[AT_USPECIAL] = 999;uspectime = 0;
-		}
+		}KoB_reverse();
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			//if(!jailcard){
 				uspecnum = random_func(0, 100, true);
@@ -391,7 +391,7 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
     if(window == 1){
-        
+        KoB_reverse();
     }else if(window == 2 && !hitpause){
     	dspec_charge += 1;
     	if(dspec_charge < 30 && current_money >= 5000 || current_money < 10000){
@@ -600,6 +600,9 @@ if (attack == AT_NSPECIAL){
 			}else{
 				vsp = -7.5;hsp = 3*spr_dir;
 			}
+			if(attack_pressed || right_stick_pressed || left_stick_pressed){
+				set_attack(AT_DATTACK);
+			}
 			takearideontherailroad = false;
 		}
 	}
@@ -754,11 +757,11 @@ if (attack == AT_NSPECIAL){
 			}else if(current_money2 <= 30000){
 			}else{
 				if(!has_hit){
-					if(current_money2 >= 1500*discount){
+					if(current_money2 >= 6000*discount){
 						sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
-		    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-25));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 750;
-		    			var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-25));money.hsp *= -0.9;money.vsp *= 1;money.value = 750;
-		    			current_money -= 1500*discount;
+		    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-25));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 1000;
+		    			var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-25));money.hsp *= -0.9;money.vsp *= 1;money.value = 1000;
+		    			current_money -= 6000*discount;
 					}
 				}
 			}
@@ -798,7 +801,10 @@ if (attack == AT_NSPECIAL){
 		    		}
 	    		}
 			}else{
-				var dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-65));dust.hsp *= 0.5;dust.vsp *= 1.75;
+				var dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-55));dust.hsp *= 0.5;dust.vsp *= 1.75;
+				dust = create_hitbox(AT_JAB, 12, round(x-50*spr_dir), round(y-55));dust.hsp *= -0.5;dust.vsp *= 1.75;
+				dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-35));dust.hsp *= 0.75;dust.vsp *= 0.75;
+				dust = create_hitbox(AT_JAB, 12, round(x-50*spr_dir), round(y-35));dust.hsp *= -0.75;dust.vsp *= 0.75;
 			}
     	}
 	}
@@ -830,11 +836,11 @@ if (attack == AT_NSPECIAL){
 		}else if(current_money2 <= 30000){
 		}else{
 			if(!has_hit){
-				if(current_money2 >= 1500*discount){
+				if(current_money2 >= 4000*discount){
 					sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 		    		var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-55));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 750;money.hit_priority = 0;
 		    		var money = create_hitbox(AT_JAB, 10, round(x-45*spr_dir), round(y-85));money.hsp *= -0.9;money.vsp *= 1;money.value = 750;money.hit_priority = 0;
-		    		current_money -= 1500*discount;
+		    		current_money -= 4000*discount;
 				}
 			}
 		}
@@ -897,7 +903,7 @@ if (attack == AT_NSPECIAL){
     		}sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
 			DairBounce = 0;move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
 		}
-    	if(window_timer == 12 && !attack_down && !hitpause){window = 4;window_timer = 0;}
+    	if(window_timer == 12 && !attack_down && !hitpause){window = 4;window_timer = 0;destroy_hitboxes();}
     }else if(window == 3){
     	if(vsp <= 2){
     		can_fast_fall = false;
@@ -1022,6 +1028,11 @@ if (attack == AT_NSPECIAL){
 	    }
     }
 }
+
+#define KoB_reverse
+	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && !b_reversed){
+    	hsp = -hsp;spr_dir = -spr_dir;b_reversed = true;
+	}
 
 #define cancelattack
     if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed

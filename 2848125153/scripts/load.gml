@@ -74,6 +74,12 @@ sprite_change_offset("_phone", 20, 43, true);
 
 sprite_change_offset("plat", round(31/2), 12);
 sprite_change_offset("lookup", 20, 43, true);
+sprite_change_offset("sleep_none", 30, 29, true);
+sprite_change_offset("sleep_light", 30, 29, true);
+sprite_change_offset("sleep_medium", 30, 29, true);
+sprite_change_offset("sleep_heavy", 30, 29, true);
+sprite_change_offset("weegeefied", 20, 43, true);
+sprite_change_offset("weegeefied skill", 20, 43, true);
 
 sprite_change_offset("nspecial_dice", 20, 20);
 sprite_change_offset("nspecial_dice_alts", 20, 20);
@@ -134,6 +140,8 @@ sprite_change_offset("explosion_big", 225, 225);
 sprite_change_offset("explosion_huge", 300, 300);
 sprite_change_offset("explosion_nuke", 300, 150);
 sprite_change_offset("shine_small", 20, 20);
+sprite_change_offset("projectile_trail", 55, 40);
+sprite_change_offset("projectile_trail2", 25, 40);
 sprite_change_offset("playerarrow", 7, 0);
 
 sprite_change_offset("miiverse_post", 60, 30);

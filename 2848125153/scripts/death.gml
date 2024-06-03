@@ -6,6 +6,9 @@ diceluck = 0;takearideontherailroad = false;
 
 current_money2 = current_money;
 
+golden_skill_suit = false;
+init_shader();
+
 if(get_player_stocks(player) <= 1){ //last stock
 	current_money = 0;
     if(alt == 19){

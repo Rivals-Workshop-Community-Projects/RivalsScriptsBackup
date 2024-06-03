@@ -3,7 +3,7 @@ if(player_id.player == orig_player){
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
     	dicenum = originalnum;
-        if(!KoB_grabbed){if(hit_priority > 0){proj_angle -= 5*spr_dir;}else{proj_angle -= 15*spr_dir;}}else{proj_angle = 0;}
+        if(!KoB_grabbed){if(hit_priority > 0){projectile_trail();proj_angle -= 5*spr_dir;}else{proj_angle -= 15*spr_dir;}}else{proj_angle = 0;}
         if(hsp > 0){spr_dir = 1;}else if(hsp < 0){spr_dir = -1;}
         if(num2 == 2){
             if(get_gameplay_time() % 2 == 0){
@@ -106,6 +106,7 @@ if(attack == AT_FSPECIAL){
         }else if(hsp < 0){
         	spr_dir = -1;
         }
+        if(!KoB_grabbed)projectile_trail();
         if(hbox_num == 2){
             if(get_gameplay_time() % 4 == 0){
 	            var rand_dir = random_func(1, 359, true);
@@ -544,6 +545,7 @@ if(attack == AT_DSPECIAL){
 				hit_priority = 0;
 			}num2 = 0;
 			Bounceable = true;
+			if(!KoB_grabbed)projectile_trail();
 		}else{
 			depth = -1;
 			hit_priority = 0;
@@ -800,7 +802,8 @@ if(attack == AT_JAB){
 	through_platforms = 999;
     fall_through = true;
 	if(hbox_num == 10){
-		hsp *= 0.95;vsp *= 0.95;
+		hsp *= 0.95;vsp *= 0.95;spr_dir = hsp>0?1:-1;
+		if(!KoB_grabbed && hit_priority > 0)projectile_trail();
 		if(hitbox_timer >= 10){
 			hit_priority = 0;image_xscale = 0.2;image_yscale = 0.2;
 		}if(hitbox_timer >= 100)depth = -2;
@@ -892,13 +895,17 @@ if(attack == AT_JAB){
             }
         }    
     }
+    if(hbox_num == 20){
+		if(hitbox_timer >= 8)hit_priority = 0;
+		spr_dir = hsp>0?1:-1;
+	}
 }
 
 if(attack == AT_DATTACK){
 	if("Pocketed" not in self){Pocketed = false;}
 	if(hbox_num == 4 && !Pocketed){
 		hitbox_timer = 0;
-		
+		if(!KoB_grabbed)projectile_trail();
 		with(player_id){
 			move_cooldown[AT_DATTACK] = 30;
 		}
@@ -1090,7 +1097,7 @@ if(attack == AT_DATTACK){
 if(attack == AT_BAIR){
 	if(hbox_num >= 3){
 		angle = darctan2(-vsp * spr_dir, hsp * spr_dir);proj_angle = angle;
-		
+		if(!KoB_grabbed)projectile_trail();
 		if(vsp > 5){ //spike
 			kb_angle = 270;if(player_id.runeJ){random_angle();}
 	    	if(hbox_num == 3){
@@ -1228,6 +1235,20 @@ if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
 
 }
+
+#define projectile_trail
+	var traileff = noone;var traileff2 = noone;var the_hsp = 0;var the_vsp = 0;
+	traileff = player_id.fx_projectile_trail;traileff2 = player_id.fx_projectile_trail2;
+	if(the_hsp == 0 && the_vsp == 0){the_hsp = hsp;the_vsp = vsp;}
+    angle = darctan2(-the_vsp * spr_dir, the_hsp * spr_dir);
+	var particletiming = round(6-((abs(the_hsp)+abs(the_vsp))/4));particletiming = max(2,particletiming);
+	if(get_gameplay_time() % particletiming == 0){
+        if(abs(the_hsp) > 7 || abs(the_vsp) > 7){
+        	var trail = spawn_hit_fx(x, y, traileff);trail.spr_dir = spr_dir;trail.draw_angle = angle;
+        }else{
+        	var trail = spawn_hit_fx(x, y, traileff2);trail.spr_dir = spr_dir;trail.draw_angle = angle;
+        }
+    }
 
 #define random_angle
 	kb_angle = random_func(0, 360, true);
