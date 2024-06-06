@@ -45,7 +45,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 290);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 285);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6 + (brawl_mode * 3));
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .4 + (brawl_mode * 0.2));
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);

@@ -10,7 +10,7 @@ shadowball_hit_player = noone;
 shadowball_hit_timer = 0;
 display_level = 0;
 
-
+fast_fall_lockout = 0;
 char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;

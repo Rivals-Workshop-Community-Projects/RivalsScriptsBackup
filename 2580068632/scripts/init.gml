@@ -42,6 +42,7 @@ shuttle_loop_vsp_lost = 0
 shuttle_loop_is_rising = false
 attacking_out_of_shuttle_loop = false;
 airdodging_out_of_shuttle_loop = false;
+dspecial_out_of_shuttle_loop = false;
 
 condor_dive_timer = 0;
 condor_dive_dust_startup_timer = 0;

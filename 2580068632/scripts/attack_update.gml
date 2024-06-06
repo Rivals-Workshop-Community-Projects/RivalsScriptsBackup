@@ -373,6 +373,13 @@ if (attack == AT_NSPECIAL){
 		can_shield = true;
 		can_attack = true;
 	}
+	if (window == 1){
+		clear_button_buffer(PC_JUMP_PRESSED);
+		clear_button_buffer(PC_SPECIAL_PRESSED);
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x, y, "doublejump", spr_dir);
+		}
+	}
 	if (window != 5){
 		if (!brawl_mode){
 			if (vsp < -2.5){
@@ -397,11 +404,25 @@ if (attack == AT_NSPECIAL){
 			if (hsp > 7.5){
 				hsp = 7.5
 			}
-			if (hsp < -7.5){
+			if (hsp < -7.5){//>
 				hsp = -7.5
 			}
 		}
 	}
+	
+	if (window == 3 || window == 4){
+		if (window_timer mod 4 == 0){
+			if (!free){
+				spawn_base_dust( x - 18, y, "dash", 1);
+				spawn_base_dust( x + 18, y, "dash", -1);
+				spawn_base_dust( x, y, "land", spr_dir);
+			} else {
+				spawn_base_dust( x, y - 12, "doublejump_small", spr_dir);
+				spawn_base_dust( x, y - 22, "doublejump", spr_dir);
+			}
+		}
+	}
+	
     if (window == 1){
         mach_tornado_loop_count = 0;
 		vsp = -3
@@ -409,7 +430,7 @@ if (attack == AT_NSPECIAL){
 	if (window == 2 || window == 3 || window == 4){
 		if (!hitpause){
 			can_move = true;
-			if (special_pressed || special_down){
+			if ((special_pressed || special_down) || (jump_pressed || jump_down)){
 				vsp = vsp - 0.75
 			}
 			if (left_down){
@@ -679,6 +700,7 @@ if (attack == AT_USPECIAL){
 	can_move = false;
 	wings_out = true;
 	move_cooldown[AT_USPECIAL] = 9999999;
+	dspecial_out_of_shuttle_loop = false;
 	if (window == 1){
 		airdodging_out_of_shuttle_loop = false;
 		if (window_timer == 1){
@@ -838,7 +860,7 @@ if (attack == AT_USPECIAL){
 			spr_angle = spr_angle + (1 * spr_dir)
 		}
 		*/
-		if (shuttle_loop_timer < 10){
+		if (shuttle_loop_timer < 10){//>
 			set_state(PS_PRATFALL);
 			//set_state(PS_IDLE_AIR);
 		}
@@ -875,6 +897,7 @@ if (attack == AT_USPECIAL){
 					//hsp *= -1
 				} else if ((!up_down || !up_pressed) && (down_down || down_pressed)){
 					set_attack(AT_DSPECIAL);
+					dspecial_out_of_shuttle_loop = true;
 				}
 			}
 		} else if (brawl_mode){
@@ -960,7 +983,7 @@ if (attack == AT_DSPECIAL){
 				sound_play(sfx_jump, false, noone, 1, 1.45);
 				spawn_hit_fx(x, y, 305);
 			}
-		} else if (condor_dive_timer < 28){
+		} else if (condor_dive_timer < 28){//>
 			can_jump = false;
 			can_shield = false;
 		}
@@ -973,7 +996,7 @@ if (attack == AT_DSPECIAL){
 			//spawn_base_dust( x + 16, y, "dash_start", -1)
 			//spawn_base_dust( x - 16, y, "dash_start", 1)
 		}
-		if (window_timer < 4){
+		if (window_timer < 4){//>
 			vsp = 0
 			hsp = 0
 		}
@@ -991,7 +1014,7 @@ if (attack == AT_DSPECIAL){
 			spawn_base_dust( x + 16, y, "dash_start", -1)
 			spawn_base_dust( x - 16, y, "dash_start", 1)
 		}
-		if (window_timer < 4){
+		if (window_timer < 4){//>
 			vsp = 0
 			hsp = 0
 		}
@@ -1000,6 +1023,15 @@ if (attack == AT_DSPECIAL){
 			hsp = 5 * spr_dir
 		}
 		move_cooldown[AT_DSPECIAL] = 9999999;
+	}
+	
+	if (window == 3 || window == 4){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if (dspecial_out_of_shuttle_loop && !has_hit){
+				set_state(PS_PRATFALL)
+				dspecial_out_of_shuttle_loop = false;
+			}
+		}
 	}
 }
 

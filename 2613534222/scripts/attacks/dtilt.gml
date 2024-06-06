@@ -10,7 +10,7 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("whoosh"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .25);
+set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 4);

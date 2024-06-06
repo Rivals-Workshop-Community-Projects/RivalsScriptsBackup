@@ -55,7 +55,18 @@ if(strong_down and strong_buffer <= 0 and !strong_was_pressed){
 
 //---------------------------- END SSL TEMPLATE --------------------------------
 
-if(free and state != PS_RESPAWN and state_cat != SC_HITSTUN and down_pressed and !fast_falling and !(state == PS_DOUBLE_JUMP and state_timer < 9) and state != PS_PRATFALL){
+if(fast_fall_lockout > 0){
+	fast_fall_lockout--;
+}
+
+
+
+if(djumps > 0 and jump_pressed){
+	fast_fall_lockout = 1;
+	
+}
+
+if(free and state != PS_RESPAWN and state_cat != SC_HITSTUN and down_pressed and !fast_falling and fast_fall_lockout <= 0 and state != PS_PRATFALL){
 	vsp = 0;
 	do_a_fast_fall = true;
 }
