@@ -1,7 +1,7 @@
 //other-init
 compacted = false;
 walle_taunt_playing = false;
-
+has_hit_cube = false
 /*
 switch(select-1){
     case 1:

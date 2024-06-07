@@ -46,15 +46,14 @@ if getting_bashed {
         var hitboxOwner = hitbox.player_id;
         if hitbox.kb_value > 0 && !(hitbox.player_id == player_id && hitbox.attack == AT_NSPECIAL && hitbox.hbox_num == 1) {
             with hitboxOwner {
-                if !has_hit {
+                if !has_hit_cube {
                     if hitbox.type == 1 {
                         hitpause = true;
                         hitstop = 10;
                         hitstop_full = 10;
+                        has_hit = true;
                     }
-                    has_hit = true;
-                    old_hsp = hsp;
-                    old_vsp = vsp;
+                    has_hit_cube = true
                     other.was_hit = true;
                     sound_play(hitbox.sound_effect);
                     var vfx = hitbox.hit_effect;
@@ -77,7 +76,7 @@ if getting_bashed {
             instance_destroy()
             exit;
         }
-        if hitboxOwner.has_hit {
+        if hitboxOwner.has_hit_cube {
             if (variable_instance_exists(hitboxOwner, "isWalle") && hitbox.attack == AT_FSPECIAL && hitbox.hbox_num == 1) { //fspecial proj explosion
                 hitbox.destroyed = true;
                 sound_play(asset_get("sfx_ell_fist_explode"));

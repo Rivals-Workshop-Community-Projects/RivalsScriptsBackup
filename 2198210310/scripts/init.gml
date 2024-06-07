@@ -1,6 +1,7 @@
 crouch_counter = 0;
 isWalle = true; //for other walle players to detect
 fspecCooldown = 0;
+has_hit_cube = false
 
 spam_ad = sprite_get("spam_ad")
 

@@ -26,7 +26,11 @@ if (attack == AT_FSPECIAL) && (hbox_num == 2) {
     if hitbox_timer == 31 {
         sound_play(sound_get("cannon_shoot"))
         hsp = spr_dir*-5;
-        create_hitbox(AT_FSPECIAL, 1, x + spr_dir*50, y - 40);
+        var old_spr_dir = player_id.spr_dir
+        player_id.spr_dir = spr_dir
+        var plasmabox = create_hitbox(AT_FSPECIAL, 1, x + spr_dir*50, y - 40);
+        player_id.spr_dir = old_spr_dir
+        
     }
     
     if hitbox_timer == 54 {

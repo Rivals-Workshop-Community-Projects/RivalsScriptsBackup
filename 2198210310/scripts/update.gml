@@ -386,6 +386,9 @@ if holdingCube {
     cubeCounter++;
 }
 
+with oPlayer if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window <= 1 && window_timer <= 2 {
+	has_hit_cube = false
+}
 
 
 //find nearest cube
