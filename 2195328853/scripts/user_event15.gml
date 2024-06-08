@@ -233,6 +233,22 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.82", "June 6th 2024");
+initHeader("Buffs");
+initSection("+ Hold DSpecial is stronger overall and does more damage and knockback, and also has less startup
++ BAir has a bit less startup (f18->f14)
++ FStrong does a bit more damage (10->12) and has less startup (f16->f13)
++ UStrong does a bit more damage (11->12), has less startup (f17->f15), and a bit more knockback scaling (1.0->1.05). It also goes higher up with charge
++ UAir, FStrong, and UStrong are a bit more consistent on hit");
+initHeader("Nerfs");
+initSection("- Hold USpecial does a bit less base knockback (8->7) to be a bit less crazy
+- UStrong goes a bit less high up when uncharged
+- Adjusted some hitboxes that were very large to be a bit more reasonable (DTilt dragdown, DAir)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added extra impact to powerful hits, and made hits in general feel better with a custom shaky hitpause effect
++ Added silly angle 0 to some moves
++ Misc compatibility fixes
++ Fixed Rune O not working correctly when facing left (apparently), and added SFX to the laser");
 
 initPatch("1.81", "23rd July 2023");
 initHeader("Buffs");

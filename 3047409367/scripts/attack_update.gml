@@ -35,7 +35,7 @@ if (attack == AT_TAUNT){
 }
 
 //forward air
-var fair_startup = get_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH);
+var fair_startup = get_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH);
 
 if (attack == AT_FAIR){
     if (window == 1){
@@ -45,14 +45,14 @@ if (attack == AT_FAIR){
             }
         }
     }
-    if (window == 1){
+    if (window == 2){
         if (window_timer == fair_startup){
             if (!hitpause && !hitstop){
                 sound_play(asset_get("sfx_shovel_swing_heavy1"), false, noone, 0.5, 1.2);
             }
         }
     }
-    if (window == 2){
+    if (window == 3){
         if (window_timer == 1){
             sound_stop(sound_get("poing2"));
         }

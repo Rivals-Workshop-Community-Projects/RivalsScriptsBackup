@@ -58,7 +58,7 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
 		init_shader();
 	}
 }
-//print_debug(string(0.4+(hsp/10*spr_dir)));
+
 if(steam_cooldown > 0)steam_cooldown -= 1;
 
 if(state_timer == 5 && state == PS_DOUBLE_JUMP){
@@ -106,6 +106,44 @@ if (attack != AT_NSPECIAL && state != PS_HITSTUN && special_pressed && joy_pad_i
 	nspecialcharge = 0;
 }
 
+//shake hitpause code
+with(oPlayer){
+	if ("state" in self){
+	if(other.TLinmatch){
+	    if("pictophotoload" in self && pictophotoload){
+	    	other.toonlink_randomizephoto = true;
+	    }
+	}
+	
+	//shake hitpause code
+	with(other){
+		if("shaketarget" not in self)shaketarget = noone;
+		if("extrahitpauseon" not in self)extrahitpauseon = true;
+		if("hitpausesetpos" not in self)hitpausesetpos = true;
+		if("hitpausecap" not in self)hitpausecap = 40;
+		if("shakecap" not in self)shakecap = 50;
+		if(instance_exists(shaketarget) && extrahitpauseon){
+			if(shaketarget.should_make_shockwave){
+				with(shaketarget){hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);}
+				hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);
+			}if(shaketarget.activated_kill_effect){
+				var maxhitpause = min(hitpausecap,round(shaketarget.hitstop*2));
+				if(hitpause){hitstop = maxhitpause;hitstop_full = maxhitpause;}
+				shaketarget.hitstop = maxhitpause;shaketarget.hitstop_full = maxhitpause;shake_camera(35, 5);
+			}if(hitpausesetpos){shaketarget.prev_x = shaketarget.x;shaketarget.prev_y = shaketarget.y;}shaketarget = noone;
+		}
+	}
+	if(hitpause && state_cat == SC_HITSTUN && last_player == other.player){
+		var shake = activated_kill_effect?round(hitstop*3):should_make_shockwave?round(hitstop*2):round(hitstop);shake = min(other.shakecap,shake);
+		var dir = random_func(0, 359, true);var new_x = prev_x + round(lengthdir_x(shake/2, dir));var new_y = prev_y + round(lengthdir_y(shake/2, dir));
+		x = round(new_x);y = round(new_y);
+	}else if(!hitpause){
+		prev_x = x;prev_y = y;
+	}
+	
+	}
+}
+
 //Crawl
 if(state == PS_CROUCH){
     can_move = true;
@@ -127,6 +165,10 @@ if(state == PS_CROUCH){
 
 if(get_gameplay_time() <= 120){
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
+}if(get_gameplay_time() <= 2){
+	with(asset_get("oPlayer")){
+	    if("amtoonlink" in self && amtoonlink)other.TLinmatch = true;
+	}
 }
 
 if (get_match_setting(SET_RUNES)) {
@@ -157,24 +199,57 @@ if (get_match_setting(SET_RUNES)) {
 	}
 }
 
+//silly angle 0 code (part 2)
+if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
+if(instance_exists(killtarget)){
+	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
+		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
+		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
+		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
+		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
+	}else{killtarget = noone;}
+}if(instance_exists(killtarget2)){
+	if(killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
+		killtarget2.old_vsp = 0;killtarget2.vsp = 0;//killtarget2.y = killtarget_y;
+		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_tech = 1;killtarget2.fall_through = true;
+	}if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
+	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
+}
+
+//uncanon things!
+if(get_gameplay_time() % 30 == 0 || hitpause){
+	poison = 0;
+	if("infection_timer" in self){ //nemesis
+		infection_timer = 0;blood_tick = 0;is_infected = false;
+	}if("has_bleeding" in self){ //hassan
+		has_bleeding = false;bleeding_time = 0;has_bleed_timer = 0;has_bleed_stacks = 0;
+	}if("filia_bleed" in self && "timer_nspecial" in self){ //filia
+		filia_bleed = 0;timer_nspecial = 0;filia_tempid = -1;filia_id = -1;outline_color = [ 0, 0, 0 ];init_shader();
+	}if("test_status_timer" in self){ //yor
+		test_status_timer = 0;
+	}if("amaya_venom" in self){ //amaya
+		amaya_venom = false;amaya_venom_count = 0;amaya_venom_id = 0;
+	}if ("croagpoison" in self){ //croagunk
+        croagpoison = 0;
+	}if ("malsick" in self){ //mal
+		malsick = false;sickTimer = 0;sickAfterGrace = sickAfterGraceMax;sickGrace = 0;resetOutline = true;
+	}
+}
+
 //randomize TL photo when TL uses the taunt
-with(asset_get("oPlayer")){
-    if("pictophotoload" in self){
-    	if(pictophotoload){
-        	other.toonlink_randomizephoto = true;
-    	}
-    }
-}if(toonlink_randomizephoto){
-	toonlink_randomizephoto = false;
-	var random_photo = random_func(0, 3, true);
-	if(random_photo == 0){
-		toonlink_photo = sprite_get("toonlink_photo3");
-		toonlink_photo2 = 1;
-	}else if(random_photo == 1){
-		toonlink_photo = sprite_get("toonlink_photo2");
-		toonlink_photo2 = sprite_get("toonlink_photo_TL2");
-	}else if(random_photo == 2){
-		toonlink_photo = sprite_get("toonlink_photo");
-		toonlink_photo2 = 5;
+if(TLinmatch){
+	if(toonlink_randomizephoto){
+		toonlink_randomizephoto = false;
+		var random_photo = random_func(0, 3, true);
+		if(random_photo == 0){
+			toonlink_photo = sprite_get("toonlink_photo3");
+			toonlink_photo2 = 1;
+		}else if(random_photo == 1){
+			toonlink_photo = sprite_get("toonlink_photo2");
+			toonlink_photo2 = sprite_get("toonlink_photo_TL2");
+		}else if(random_photo == 2){
+			toonlink_photo = sprite_get("toonlink_photo");
+			toonlink_photo2 = 5;
+		}
 	}
 }

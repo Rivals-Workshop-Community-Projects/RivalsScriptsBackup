@@ -84,7 +84,7 @@ set_hitbox_value(AT_JAB, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_JAB, 1, HG_HEIGHT, 51);
 set_hitbox_value(AT_JAB, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_JAB, 1, HG_ANGLE, 75);
+set_hitbox_value(AT_JAB, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

@@ -69,7 +69,7 @@ if(phone_attacking && attack == AT_FSPECIAL){
 	}
 }
 
-if (get_training_cpu_action() == CPU_FIGHT){
+if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 	//to make the AI jump a bit more
 	with(ai_target){
 		if(point_distance(x, y, other.x, other.y) < 125 && random_func(0,3,true) == 0){

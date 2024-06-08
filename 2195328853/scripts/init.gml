@@ -28,7 +28,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 9;
-short_hop_speed = 6;
+short_hop_speed = 5;
 djump_speed = 7.25;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
@@ -111,6 +111,8 @@ if(alt == 27){ //cube
 bubble_x = 0;
 bubble_y = 8;
 
+is_KOB = true;
+BlueBlob = true;
 crawling = false;
 upb = false;
 upbtime = 0;
@@ -142,6 +144,7 @@ runeO = false;
 outline_timer = 0;
 outline_rev = false;
 lookuptime = 0;
+TLinmatch = false;
 KewtFriend = true;
 
 intro = (state == PS_SPAWN);
@@ -163,6 +166,8 @@ damagebuff = 1;
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
 toonlink_randomizephoto = false;
+Toadie_Ability = 6;
+TCG_Kirby_Copy = 6;
 otto_bobblehead_sprite = sprite_get("otto_bobblehead");
 otto_bobblehead_body_sprite = sprite_get("otto_bobblehead_body");
 feri_costume = sprite_get("feri_costume");

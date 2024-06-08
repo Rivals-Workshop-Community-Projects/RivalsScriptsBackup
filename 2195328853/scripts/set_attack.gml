@@ -1,5 +1,19 @@
 //set_attack
 
+if (attack == AT_FSTRONG){
+	reset_hitbox_value(AT_FSTRONG, 1, HG_WIDTH);reset_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT);
+	reset_hitbox_value(AT_FSTRONG, 2, HG_WIDTH);reset_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT);
+}
+
+if (attack == AT_USTRONG){
+	reset_hitbox_value(AT_USTRONG, 1, HG_WIDTH);reset_hitbox_value(AT_USTRONG, 1, HG_HEIGHT);
+	reset_hitbox_value(AT_USTRONG, 2, HG_WIDTH);reset_hitbox_value(AT_USTRONG, 2, HG_HEIGHT);
+}
+
+if (attack == AT_UAIR){
+	reset_hitbox_value(AT_UAIR, 2, HG_WIDTH);reset_hitbox_value(AT_UAIR, 2, HG_HEIGHT);
+}
+
 if (attack == AT_TAUNT){
 	//taunt_timer = 0;
 	reset_attack_value(AT_TAUNT, AG_NUM_WINDOWS);reset_attack_value(AT_TAUNT, AG_USES_CUSTOM_GRAVITY);

@@ -140,7 +140,7 @@ if (attack == AT_NSPECIAL){
         	if(fspecialcharge < 180 && runeO || !runeO){
         		window = 6;window_timer = 0;
         	}else if(fspecialcharge >= 180 && runeO){
-        		window = 8;window_timer = 0;
+        		window = 8;window_timer = 0;sound_play(sound_get("marx laser"));
         	}
         }else{
         	window = 10;window_timer = 0;
@@ -181,21 +181,21 @@ if (attack == AT_NSPECIAL){
     	vsp = 0;hsp = -2.5*spr_dir;
         if(window_timer <= 1 || window_timer == 4 || window_timer == 8 || window_timer == 12 || window_timer == 16 || window_timer == 20 || window_timer == 24 || window_timer == 28){
         	if(!runeI){
-        		create_hitbox(AT_FSPECIAL,4,round(x+620)*spr_dir,round(y-25));
+        		create_hitbox(AT_FSPECIAL,4,round(x+620*spr_dir),round(y-25));
         	}else if(runeI){
-        		create_hitbox(AT_FSPECIAL,4,round(x+610)*spr_dir,round(y-35));
-        		create_hitbox(AT_FSPECIAL,4,round(x+610)*spr_dir,round(y-20));
-        		create_hitbox(AT_FSPECIAL,4,round(x+630)*spr_dir,round(y-5));
-        		create_hitbox(AT_FSPECIAL,4,round(x+630)*spr_dir,round(y-45));
+        		create_hitbox(AT_FSPECIAL,4,round(x+610*spr_dir),round(y-35));
+        		create_hitbox(AT_FSPECIAL,4,round(x+610*spr_dir),round(y-20));
+        		create_hitbox(AT_FSPECIAL,4,round(x+630*spr_dir),round(y-5));
+        		create_hitbox(AT_FSPECIAL,4,round(x+630*spr_dir),round(y-45));
         	}
 	    }else if(window_timer == 32){
         	if(!runeI){
-        		create_hitbox(AT_FSPECIAL,5,round(x+620)*spr_dir,round(y-25));
+        		create_hitbox(AT_FSPECIAL,5,round(x+620*spr_dir),round(y-25));
         	}else if(runeI){
-        		create_hitbox(AT_FSPECIAL,5,round(x+610)*spr_dir,round(y-35));
-        		create_hitbox(AT_FSPECIAL,5,round(x+610)*spr_dir,round(y-20));
-        		create_hitbox(AT_FSPECIAL,5,round(x+630)*spr_dir,round(y-5));
-        		create_hitbox(AT_FSPECIAL,5,round(x+630)*spr_dir,round(y-45));
+        		create_hitbox(AT_FSPECIAL,5,round(x+610*spr_dir),round(y-35));
+        		create_hitbox(AT_FSPECIAL,5,round(x+610*spr_dir),round(y-20));
+        		create_hitbox(AT_FSPECIAL,5,round(x+630*spr_dir),round(y-5));
+        		create_hitbox(AT_FSPECIAL,5,round(x+630*spr_dir),round(y-45));
         	}
         }else if(window_timer == 44){
         	window = 9;window_timer = 0;
@@ -263,7 +263,7 @@ if (attack == AT_NSPECIAL){
     can_fast_fall = false;
     if(window == 1){
     	dspecialtimer = 0;dspecialkbhsp = 0;dspecialkbvsp = 0;
-        if(window_timer == 10){
+        if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	        if(!special_down){
 	        	
 	        }else{
@@ -283,16 +283,16 @@ if (attack == AT_NSPECIAL){
 			}
 	    }
     }else if(window == 4){
-        if(window_timer == 1){
+        if(window_timer == 1 && !hitpause){
 	        vsp = -6;hsp *= 0.7;
-	    }else if(window_timer == 19 || !free){
+	    }else if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause || !free){
 	        window = 5;window_timer = 0;
 	    }
     }else if(window == 5){
         can_move = false;soft_armor = 20;
-        if(window_timer == 1){
+        if(window_timer == 1 && !hitpause){
 	        vsp = 8;
-	    }else if(window_timer == 7 || !free){
+	    }else if((window_timer == 7 || !free) && !hitpause){
 	       window = 6;window_timer = 0;
 	    }
     }else if(window == 6 || window == 7){
@@ -406,20 +406,21 @@ if (attack == AT_NSPECIAL){
     	spawn_hit_fx((x) + round(lengthdir_x(45, rand_dir)), (y - 30) + round(lengthdir_y(45, rand_dir)), fx_bluetrail2slow);
     }
 }else if (attack == AT_USTRONG){
-    if(window == 1 && window_timer == 1){
+    if(window == 1){
         ustrongloop = 0;
-    }else if(window == 3){
+        set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9-(strong_charge/20));
+    }else if(window == 3 && !hitpause){
         hsp *= 0.95;
     }else if(window == 4){
-        if(window_timer == 1){
+        if(window_timer == 1 && !hitpause){
 	        if(vsp > -7){
 	           vsp = -7; 
 	        }
 	    }hsp *= 0.9;
-    }else if(window == 5){
+    }else if(window == 5 && !hitpause){
         hsp *= 0.85;
     }
-    if(window == 3 && window_timer >= 6){
+    if(window == 3 && window_timer >= 6 && !hitpause){
         if(ustrongloop < 5){
             ustrongloop += 1;
             window = 3;window_timer = 0;
