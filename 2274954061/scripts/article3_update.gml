@@ -25,7 +25,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_get_hit) { //makes the pot 
 	}
 	if (hitbox_hit != noone){
 		
-		if (hitbox_hit.damage > 2 && state != 3){
+		if (hitbox_hit.damage > 2 && state != 3 && hitbox_hit.groundedness != 1){
 			
 			if (hitbox_hit.player_id.url != player_id.url){
 						
