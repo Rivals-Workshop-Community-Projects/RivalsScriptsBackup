@@ -16,11 +16,10 @@ with (oPlayer) if (get_player_team(player) != get_player_team(other.player))
 //recovery logic
 if (ai_recovering)
 {
-    if (darkness_active && state_cat != SC_AIR_COMMITTED && state_cat != SC_GROUND_COMMITTED &&
+    if (dark_target == self && dark_owner == self && state_cat != SC_AIR_COMMITTED && state_cat != SC_GROUND_COMMITTED &&
         (y < room_width/2 && point_distance(stage_left, stage_top, x, y) >= 200 || y > room_width/2 && point_distance(stage_right, stage_top, x, y) >= 200))
     {
-        dark_state = 4;
-        sound_play(asset_get("sfx_abyss_despawn"));
+        dark_state = 2;
     }
 
     if (can_attack) if (x < stage_left - 200 || x > stage_right + 200) set_attack(AT_NSPECIAL);

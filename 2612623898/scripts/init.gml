@@ -144,6 +144,38 @@ prat_land_time = 12; // Normal range is 10-15, more if your character rarely ent
 ssl_debug_enabled = true; //togles template debug messages.
 ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
 
+//#region Bar-Kun Dust--------------------------------------------------------
+bigfx = hit_fx_create( sprite_get("bigfx"), 30);
+smallfx = hit_fx_create( sprite_get("smallfx"), 30);
+//set_hit_particle_sprite( 1, sprite_get( "particle" ));
+dust_effect = [
+    hit_fx_create(sprite_get("dust_land"), 24),         //0  = land
+    1,                                                  //1  = bigger landing
+    hit_fx_create(sprite_get("dust_djump"), 22),        //2  = djump
+    -1,                                                 //3  = dash start (uses walk)
+    -1,                                                 //4  = dash (uses walk)
+    hit_fx_create(sprite_get("dust_walk"), 12),         //5  = walk
+    1,                                                  //6  = tech
+    1,                                                  //7  = hit bounce - back
+    hit_fx_create(sprite_get("dust_hitbounce"), 12),    //8  = hit bounce - front
+    1,                                                  //9  = parry shockwave
+    1,                                                  //10 = "fx_parry_bg"
+    hit_fx_create(sprite_get("dust_jump"), 12),         //11 = jump
+    1,                                                  //12 = dash attack dust
+    hit_fx_create(sprite_get("dust_knock"), 16),        //13 = knockback smoke
+    1,                                                  //14 = bigger knockback smoke
+    1,                                                  //15 = dash turn
+    1,                                                  //16 = wrastor djump
+    hit_fx_create(sprite_get("dust_fastfall"), 12),     //17 = fastfall
+    1,                                                  //18 = small hit bounce - back
+    -1,                                                 //19 = small hit bounce - front (uses bounce-front)
+    1,                                                  //20 = tech big
+    hit_fx_create(sprite_get("dust_killspark"), 30),    //21 = kill spark
+    hit_fx_create(sprite_get("dust_killspeed"), 20),    //22 = kill speedlines
+    hit_fx_create(sprite_get("dust_killslash"), 24),    //23 = kill "slash"
+    hit_fx_create(sprite_get("dust_killstar"), 34)      //24 = kill star particles
+];
+//#endregion--------------------------------------------------------------------
 
 
 /*

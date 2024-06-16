@@ -61,13 +61,8 @@ if (CSS_image_alpha != 0 && position = color){
 
 shader_end();
 
-// Date display_alpha
-draw_set_font(asset_get("tinyFont"));
-draw_set_halign(fa_right);
-draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 214, "November 18th, 2023", c_gray, c_gray, c_gray, c_gray, 1);
 
-if (get_player_color( player ) == 11) {
+if (get_player_color( player ) == 12) {
 	draw_set_font(asset_get("fName"));
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_top);

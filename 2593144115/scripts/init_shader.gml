@@ -128,8 +128,8 @@ if (get_player_color(player) == 19) {
 }
 
 if (get_player_color(player) == 20) {
-    set_character_color_shading( 1, -8 );
-    set_character_color_shading( 3, -8 );
+    //set_character_color_shading( 1, -8 );
+    //set_character_color_shading( 3, -8 );
     set_character_color_shading( 4, 1.3 );
 }
 

@@ -18,6 +18,13 @@ otto_bobblehead_sprite = sprite_get("bobblehead");
 pkmn_stadium_front_img = sprite_get("pkmn_front");
 pkmn_stadium_back_img = sprite_get("pkmn_back");
 
+//mt dedede support
+arena_title = "The Suspect Spaceman";
+
+//pumbo support
+pot_compat_variable = sprite_get("pumbodish");
+pot_compat_text = "Suspicious Chicken Nugget";
+
 hue_offset = 0;
 hue_speed = 0.7; //change this to change the speed of the hueshift
 
@@ -69,7 +76,7 @@ hitstun_grav = .45;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 14;
+prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding

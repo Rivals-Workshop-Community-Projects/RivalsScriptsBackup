@@ -43,7 +43,7 @@ alt_name[16]	= "Logical Jetstream";
 alt_name[17]	= "Spider";
 alt_name[18]	= "Mungus Go Ham";
 alt_name[19]	= "Blue Again";
-alt_name[20]	= "Deadly Twerp";
+alt_name[20]	= "Candid Competitor";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 64, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

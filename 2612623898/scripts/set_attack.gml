@@ -127,7 +127,7 @@ if(strong_down and !(down_down or up_down or left_down or right_down)){
 */
 
 
-if (attack == AT_UTILT || attack == AT_UAIR)
+if (attack == AT_UAIR)
 attack = AT_USPECIAL
 
 //YOUR CODE SHOULD BE ABOVE THIS COMMENT----------------------------------------

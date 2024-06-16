@@ -159,6 +159,25 @@ if (attack == AT_DAIR) {
 	}
 }
 
+if (attack == AT_UTILT) {
+	if (window == 2 && !hitpause) {
+		if (window_timer % 10 == 1) {
+			var spawn_x = round(x + 64 * spr_dir)
+			var spawn_y = round(y)
+			
+			if (place_meeting(spawn_x, spawn_y + 2, asset_get("par_block"))) {
+				var hit_fx = spawn_hit_fx(spawn_x, spawn_y, dust_effect[0]);
+				hit_fx.spr_dir = spr_dir 
+			}
+				
+			sound_play(sound_get("wheesh"),false,noone,0.6,1.2 + (window_timer/40))
+		}
+	}
+	if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
+		shake_camera(10, 4);
+	}
+}
+
 #define create_smoke(_x, _y, _amount, _length, _dir_min, _dir_max, _spd_min, _spd_max, _frict)
    for (var i = 0; i < _amount; i++) {
 	var smoke = create_hitbox(AT_JAB, 2, _x, _y);

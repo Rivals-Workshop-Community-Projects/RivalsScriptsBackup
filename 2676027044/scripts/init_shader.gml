@@ -7,10 +7,12 @@
 if (get_player_color(player) == 0) {
 	set_character_color_slot(2, 226, 217, 175 ); //Belly (ColorMap)
 	set_character_color_slot(4, 42, 41, 39 ); //Ears (ColorMap)
+	set_character_color_slot(7, 165, 132, 135 ); //Flame extra color (just felt like changing it)
+	set_article_color_slot(7, 215, 151, 247 ); //Flame extra color (just felt like changing it)
 }
 
 if (variable_instance_exists(id, "aurawheel")){
-if (get_player_color(player) == 11 && aurawheel == false) {
+if (get_player_color(player) == 12 && aurawheel == false) {
 	set_character_color_slot( 0, 126, 69, 149 ); //Ghost Purp
 	set_character_color_slot( 1, 241, 238, 157 ); //Body
 	set_character_color_slot( 2, 194, 162, 109 ); //Belly (ColorMap)
@@ -20,7 +22,7 @@ if (get_player_color(player) == 11 && aurawheel == false) {
 	set_character_color_slot( 6, 234, 173, 182 ); //Cheeks
 	set_character_color_slot( 7, 163, 119, 181 ); //Will-O
 }
-else if (get_player_color(player) == 11 && aurawheel == true) {
+else if (get_player_color(player) == 12 && aurawheel == true) {
 	set_character_color_slot( 0, 241, 238, 157 ); //Ghost Purp
 	set_character_color_slot( 1, 124, 123, 128 ); //Body
 	set_character_color_slot( 2, 171, 97, 199 ); //Belly (ColorMap)

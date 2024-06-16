@@ -49,94 +49,94 @@ switch(color) {
 	set_character_color_slot(2, 226, 217, 175 ); //Belly (ColorMap)
 	set_character_color_slot(3, 42, 41, 39 ); //Ears (ColorMap)
 		break;
-	
+
 		case 1: 
-	name = " 2: Pika"; 
+	name = " 2: Shiny"; 
 	position = 1;
 		break;
-	
+		
 		case 2: 
-	name = " 3: Raichu"; 
+	name = " 3: Pikachu"; 
 	position = 2;
 		break;
 	
 		case 3: 
-	name = " 4: Alolan Raichu"; 
+	name = " 4: Raichu"; 
 	position = 3;
 		break;
-		
+	
 		case 4: 
-	name = " 5: Pichu"; 
+	name = " 5: Alolan Raichu"; 
 	position = 4;
 		break;
-	
+		
 		case 5: 
-	name = " 6: Plusle"; 
+	name = " 6: Pichu"; 
 	position = 5;
 		break;
 	
 		case 6: 
-	name = " 7: Minun"; 
+	name = " 7: Plusle"; 
 	position = 6;
 		break;
 	
-		case 7:
-	name = " 8: Pachirisu"; 	
+		case 7: 
+	name = " 8: Minun"; 
 	position = 7;
 		break;
 	
-		case 8: 
-	name = " 9: Emolga"; 
+		case 8:
+	name = " 9: Pachirisu"; 	
 	position = 8;
 		break;
 	
 		case 9: 
-	name = " 10: Dedenne"; 
+	name = " 10: Emolga"; 
 	position = 9;
 		break;
 	
 		case 10: 
-	name = " 11: Togedemaru"; 
+	name = " 11: Dedenne"; 
 	position = 10;
-		break;	
+		break;
 	
 		case 11: 
-	name = " 12: Morpeko"; 
+	name = " 12: Togedemaru"; 
 	position = 11;
-		break;
+		break;	
 	
 		case 12: 
-	name = " 13: Pawmi"; 
+	name = " 13: Morpeko"; 
 	position = 12;
-		break;	
-		
+		break;
+	
 		case 13: 
-	name = " 14: Pikablu"; 
+	name = " 14: Pawmi"; 
 	position = 13;
 		break;	
-	
+		
 		case 14: 
-	name = " 15: Gengar"; 
+	name = " 15: Pikablu"; 
 	position = 14;
 		break;	
-		
+	
 		case 15: 
-	name = " 16: Banette"; 
+	name = " 16: Gengar"; 
 	position = 15;
-		break;
+		break;	
 		
 		case 16: 
-	name = " 17: Rotom"; 
+	name = " 17: Banette"; 
 	position = 16;
-		break;	
-	
+		break;
+		
 		case 17: 
-	name = " 18: Cofagrigus"; 
+	name = " 18: Rotom"; 
 	position = 17;
 		break;	
-		
+	
 		case 18: 
-	name = " 19: Shiny"; 
+	name = " 19: Cofagrigus"; 
 	position = 18;
 		break;	
 		
@@ -154,19 +154,34 @@ switch(color) {
 	name = " 22: Marshadow"; 
 	position = 21;
 		break;	
-		
+
 		case 22: 
-	name = " 23: BLW"; 
+	name = " 23: Polteageist"; 
 	position = 22;
 		break;	
 		
 		case 23: 
-	name = " 24: Grass/Steel"; 
+	name = " 24: Sinistcha"; 
 	position = 23;
 		break;	
 		
 		case 24: 
-	name = " 25: Ghost/Water"; 
+	name = " 25: Flutter Mane"; 
 	position = 24;
+		break;	
+		
+		case 25: 
+	name = " 26: BLW"; 
+	position = 25;
+		break;	
+		
+		case 26: 
+	name = " 27: Grass/Steel"; 
+	position = 26;
+		break;	
+		
+		case 27: 
+	name = " 28: Ghost/Water"; 
+	position = 27;
 		break;	
 }
