@@ -110,6 +110,7 @@ switch (attack)
 		break;
 		
 	case AT_NSPECIAL_2:
+			move_cooldown[AT_NSPECIAL_2] = 30
 		if (window_timer == 1)
 		{
 			puul.spr_dir = spr_dir;
