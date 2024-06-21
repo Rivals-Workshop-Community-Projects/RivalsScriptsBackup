@@ -1,4 +1,4 @@
-for (var s = 0; s < 8; s++;){
+/*for (var s = 0; s < 8; s++;){
     set_character_color_shading(s, 1 - shadelessmode);
     if s == 1 || s == 4{
         set_character_color_slot(
@@ -8,7 +8,7 @@ for (var s = 0; s < 8; s++;){
             get_color_profile_slot_b(get_player_color(player), s - shadelessmode)
         );
     }
-}
+}*/
 
 //EA
 if (get_player_color(player) == 7){

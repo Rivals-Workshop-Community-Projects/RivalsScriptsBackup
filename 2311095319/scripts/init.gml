@@ -20,6 +20,11 @@ deathvoiceline = 0
 
 voicelinework = 0
 
+playedVoiceClip = noone;
+hasRecentlyHitsSomeoneTimer = 0;
+
+hurtVoiceClipAlreadyPlayed = false;
+
 phone_voiced_toggle = 0
 
 //Dash Attack Slide Visual Effect
@@ -200,6 +205,14 @@ sfx_walljump = sound_get("sfx_walljump");
 sfx_waveland = sound_get("sfx_waveland");
 
 //Voice Clips
+vc_mario_attack_1 = sound_get("vc_mario_attack_1");
+vc_mario_attack_2 = sound_get("vc_mario_attack_2");
+vc_mario_attack_3 = sound_get("vc_mario_attack_3");
+vc_mario_attack_4 = sound_get("vc_mario_attack_4");
+vc_mario_attack_5 = sound_get("vc_mario_attack_5");
+vc_mario_attack_6 = sound_get("vc_mario_attack_6");
+vc_mario_attack_7 = sound_get("vc_mario_attack_7");
+vc_mario_attack_8 = sound_get("vc_mario_attack_8");
 vc_mario_doh = sound_get("vc_mario_doh");
 vc_mario_doublejump = sound_get("vc_mario_doublejump");
 vc_mario_grunt = sound_get("vc_mario_grunt");
@@ -207,18 +220,33 @@ vc_mario_haha = sound_get("vc_mario_haha");
 vc_mario_herewego = sound_get("vc_mario_herewego");
 vc_mario_hooh = sound_get("vc_mario_hooh");
 vc_mario_itsame = sound_get("vc_mario_itsame");
-vc_mario_jump = sound_get("vc_mario_jump");
+vc_mario_jump_1 = sound_get("vc_mario_jump_1");
+vc_mario_jump_2 = sound_get("vc_mario_jump_2");
+vc_mario_jump_3 = sound_get("vc_mario_jump_3");
 vc_mario_letsago = sound_get("cssvoice");
+vc_mario_oh = sound_get("vc_mario_oh");
+vc_mario_ohyeah = sound_get("vc_mario_ohyeah");
+vc_mario_ooaah = sound_get("vc_mario_ooaah");
 vc_mario_oof = sound_get("vc_mario_oof");
 vc_mario_sleep1 = sound_get("vc_mario_sleep1");
 vc_mario_sleep2 = sound_get("vc_mario_sleep2");
 vc_mario_starko = sound_get("vc_mario_starko");
+vc_mario_strong_1 = sound_get("vc_mario_strong_1");
+vc_mario_strong_2 = sound_get("vc_mario_strong_2");
+vc_mario_strong_3 = sound_get("vc_mario_strong_3");
+vc_mario_strong_charge_1 = sound_get("vc_mario_strong_charge_1");
 vc_mario_tired = sound_get("vc_mario_tired");
 vc_mario_uhh = sound_get("vc_mario_uhh");
 vc_mario_wah = sound_get("vc_mario_wah");
 vc_mario_wahah = sound_get("vc_mario_wahah");
+vc_mario_wahoo_1 = sound_get("vc_mario_wahoo_1");
+vc_mario_wahoo_2 = sound_get("vc_mario_wahoo_2");
 vc_mario_woah = sound_get("vc_mario_woah");
 vc_mario_yah = sound_get("vc_mario_yah");
+vc_mario_yah_short = sound_get("vc_mario_yah_short");
+vc_mario_yahoo = sound_get("vc_mario_yahoo");
+vc_mario_yaowow = sound_get("vc_mario_yaowow");
+vc_mario_yeah = sound_get("vc_mario_yeah");
 vc_mario_yeehaw = sound_get("vc_mario_yeehaw");
 
 //ok these are base game sfx but this is for easy use for changing shit with shadow mario fstrong.
@@ -244,6 +272,8 @@ if (get_player_color( player ) == 4){
 	set_victory_theme(sound_get("victory_galaxy"));
 } else if (get_player_color( player ) == 15){
 	set_victory_theme(sound_get("victory_smb3"));
+} else if (get_player_color( player ) == 27){
+	set_victory_theme(sound_get("victory_retro"));
 } else {
 	set_victory_theme(sound_get("victory"));
 }

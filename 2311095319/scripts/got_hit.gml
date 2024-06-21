@@ -5,7 +5,9 @@ tornadoused  = false
 
 
 
-
+if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+	hurtVoiceClipAlreadyPlayed = false;
+}
 
 
 

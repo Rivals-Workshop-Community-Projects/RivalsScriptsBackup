@@ -126,9 +126,11 @@ switch (state){
 		}	
 		break;
 	case PS_JUMPSQUAT:
+		/*
 		if (state_timer == 3 && voiced == 1){
 			sound_play(vc_mario_jump);
 		}
+		*/
 		break;
 	case PS_FIRST_JUMP:
 		//
@@ -137,12 +139,6 @@ switch (state){
 		//Stopping the Dash Attack Sound Effect
 		if (state == PS_DOUBLE_JUMP){
 			sound_stop(sfx_dattack);
-		}
-		if (state_timer == 0){
-			if (voiced == 1){
-				sound_stop(vc_mario_doublejump);
-				sound_play(vc_mario_doublejump);
-			}
 		}
 		break;
 	case PS_WALL_JUMP:
@@ -200,32 +196,159 @@ if (shadowmario == true){
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 }
 
-// hurt sounds
 if (voiced){
-	if ((state == PS_HITSTUN && free)){
-		// basic hurt sounds
+
+// sometimes makes a voice clip not play.
+var voiceDudDet = (random_func( 1, 9, true ) + 1);
+if (voiceDudDet >= 8){
+	var denyVoiceClip = true;
+} else {
+	var denyVoiceClip = false;
+}
+
+// jump grunts
+if (state == PS_JUMPSQUAT && state_timer == 3){
+	var voiceClip = (random_func( 1, 3, true ) + 1);
+	playVoiceClip("jump_" + string(voiceClip), denyVoiceClip);
+	// print(string(voiceClip) + " " + string(denyVoiceClip))
+}
+if (state == PS_DOUBLE_JUMP && state_timer == 0){
+	var voiceClip = (random_func( 1, 2, true ) + 1);
+	playVoiceClip("doublejump_" + string(voiceClip), denyVoiceClip);
+	// print(string(voiceClip) + " " + string(denyVoiceClip))
+}
+
+// attack voices
+
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hitpause){
+	// jab specific voice lines (these are special)
+	if (attack == AT_JAB){
+		if ((window == 1 || window == 4 || window == 7) && window_timer == 1){
+			if (denyVoiceClip == false){
+				if (window == 1){
+					sound_play(vc_mario_yah_short);
+				} else if (window == 4){
+					sound_play(vc_mario_wah);
+				} else if (window == 7){
+					sound_play(vc_mario_hooh);
+				}
+			}
+		}
+	} else {
+		//
+		
+		// normals
+		if (attack == AT_DATTACK
+			|| attack == AT_FTILT
+			|| attack == AT_UTILT
+			|| attack == AT_DTILT
+			|| attack == AT_NAIR
+			|| attack == AT_FAIR
+			|| attack == AT_UAIR
+			|| attack == AT_DAIR
+			|| attack == AT_BAIR
+			|| attack == AT_FSPECIAL
+			){
+			if (state_timer == 1){
+				var voiceClip = (random_func( 1, 8, true ) + 1);
+				playVoiceClip("attack_" + string(voiceClip), denyVoiceClip);
+				//print(string(voiceClip) + " " + string(denyVoiceClip))
+			}
+		}
+		
+		// uspec and dspec
+		if (attack == AT_USPECIAL || attack == AT_DSPECIAL){
+			if (window == 1 && window_timer == 4){
+				var voiceClip = (random_func( 1, 5, true ) + 1);
+				if (voiceClip == 1){
+					playVoiceClip("yeehaw", denyVoiceClip);
+				} else if (voiceClip == 2){
+					playVoiceClip("ooaah", denyVoiceClip);
+				} else if (voiceClip == 3){
+					playVoiceClip("wahoo_1", denyVoiceClip);
+				} else if (voiceClip == 4){
+					playVoiceClip("wahoo_2", denyVoiceClip);
+				}
+			}
+		}
+		
+		// strongs
 		if (state_timer == 1){
-			var shouldPlayHurtVoice = random_func( 0, 5, true );
-			if (shouldPlayHurtVoice >= 2){
-				sound_stop(vc_mario_uhh);
-				sound_stop(vc_mario_grunt);
-				sound_stop(vc_mario_doh);
-				sound_stop(vc_mario_oof);
-				var whichHurtVoice = random_func( 0, 4, true ) + 1;
-				print(whichHurtVoice);
-				if (whichHurtVoice == 1){
-					sound_play(vc_mario_uhh);
-				} else if (whichHurtVoice == 2){
-					sound_play(vc_mario_doh);
-				} else if (whichHurtVoice == 3){
-					sound_play(vc_mario_grunt);
+			var playStrongVC = denyVoiceClip;
+		}
+		if (attack == AT_FSTRONG || attack == AT_FSTRONG_2 || attack == AT_USTRONG || attack == AT_DSTRONG){
+			var randomStrongChangeVC = (random_func( 1, 5, true ) + 1);
+			if (window == 1 && window_timer == 1){
+				var voiceClip = 1;
+				playVoiceClip("strong_charge_" + string(voiceClip), playStrongVC);
+			}
+			if (window == (2 + ((attack==AT_FSTRONG_2)?1:0)) && window_timer == 1){
+				sound_stop(vc_mario_strong_charge_1);
+				if (randomStrongChangeVC <= 3){//>
+					var voiceClip = (random_func( 1, 4, true ) + 1);
+					playVoiceClip("strong_" + string(voiceClip), playStrongVC);
 				} else {
-					sound_play(vc_mario_oof);
+					if (attack == AT_FSTRONG || attack == AT_FSTRONG_2){
+						playVoiceClip("hooh", playStrongVC);
+					} else if (attack == AT_USTRONG){
+						playVoiceClip("yah", playStrongVC);
+					} else if (attack == AT_DSTRONG){
+						playVoiceClip("haha", playStrongVC);
+					}
+				}
+			}
+		}
+		
+		// taunt
+		if (attack == AT_TAUNT){
+			if (window == 1 && window_timer == 18){
+				var voiceClip = (random_func( 1, 5, true ) + 1);
+				if (voiceClip == 1){
+					playVoiceClip("yeah", denyVoiceClip);
+				} else if (voiceClip == 2){
+					playVoiceClip("itsame", denyVoiceClip);
+				} else if (voiceClip == 3){
+					playVoiceClip("herewego", denyVoiceClip);
+				} else if (voiceClip == 4){
+					playVoiceClip("yahoo", denyVoiceClip);
+				} else if (voiceClip == 5){
+					playVoiceClip("ohyeah", denyVoiceClip);
 				}
 			}
 		}
 	}
 }
+
+
+// hurt sounds
+if ((state == PS_HITSTUN && free) || (state == PS_HITSTUN_LAND && !free)){
+	// basic hurt sounds
+	if (state_timer == 1 && hurtVoiceClipAlreadyPlayed == false){
+		if (sprite_index == sprite_get("hurt") || sprite_index == sprite_get("hurtground")){
+			var voiceClip = (random_func( 1, 3, true ) + 1);
+			playVoiceClip("hurt_" + string(voiceClip), denyVoiceClip);
+			hurtVoiceClipAlreadyPlayed = true;
+		} else if (sprite_get("bighurt") || sprite_index == sprite_get("uphurt") || sprite_index == sprite_get("downhurt")){	// big hurt sounds
+			var voiceClip = (random_func( 1, 7, true ) + 1);
+			//playVoiceClip("bighurt_" + string(voiceClip), denyVoiceClip);
+			if (voiceClip <= 3){//>
+				playVoiceClip("hurt_" + string(voiceClip), denyVoiceClip);
+			} else if (voiceClip == 4){
+				playVoiceClip("yaowow", denyVoiceClip);
+			} else if (voiceClip == 5){
+				playVoiceClip("oh", denyVoiceClip);
+			} else if (voiceClip == 6){
+				playVoiceClip("uhh", denyVoiceClip);
+			} else if (voiceClip == 7){
+				playVoiceClip("oh", denyVoiceClip);
+			}
+			hurtVoiceClipAlreadyPlayed = true;
+		}
+	}
+}
+
+}
+
 /*
 //Dialogue Buddy
 
@@ -367,3 +490,17 @@ if(variable_instance_exists(id,"diag"))
 
 //MunoPhone
 user_event(14);
+
+// ----------------------------------------------------------------
+
+// Voice Play Clip
+
+#define playVoiceClip(voiceID, voiceDud)
+if (voiced){
+	if (voiceDud == false){	// this sometimes prevents mario from saying something. this is so he isn't talking all the time whenever he does something.
+		if (playedVoiceClip != noone){
+			sound_stop(playedVoiceClip);
+		}
+		playedVoiceClip = sound_play(sound_get("vc_mario_" + voiceID), false, noone, 1, 1);
+	}
+}

@@ -50,7 +50,7 @@ alt_name[23] = "Pelee Pablo";
 alt_name[24] = "Teal";
 alt_name[25] = "Princess Peach";
 alt_name[26] = "Evil Mario";
-alt_name[27] = "SMBZ";
+alt_name[27] = "Retro";
  
 //Alt
  

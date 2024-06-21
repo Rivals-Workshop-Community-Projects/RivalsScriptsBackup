@@ -6,11 +6,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 //Jab
 if (attack == AT_JAB){
 	if (window == 7){
-		if (window_timer == 2){
-			if (voiced == 1){
-				sound_play(vc_mario_wah);
-			}
-		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (12 * spr_dir), y, "dash_start", -spr_dir);
 		}
@@ -24,9 +19,6 @@ if (attack == AT_DATTACK){
 		can_ustrong = true
 		if (window_timer == 5 && !free){
 			//spawn_hit_fx( x, y, 204 );
-			if (voiced == 1){
-				sound_play(vc_mario_yah);
-			}
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (11 * spr_dir), y, "dattack", spr_dir);
@@ -107,6 +99,7 @@ if (attack == AT_DTILT){
 	}
 }
 
+/*
 //Voices lol
 if (attack == AT_NAIR
 	|| attack == AT_DAIR
@@ -135,18 +128,7 @@ if (attack == AT_NAIR
 			}
 		}
 	}
-
-
-//Forward Air: Forward Knuckle
-if (attack == AT_FAIR){
-	if (window == 1){
-		if (window_timer == 8){
-			if (voiced == 1){
-				sound_play(vc_mario_yah);
-			}
-		}
-	}
-}
+*/
 
 //Up Air: Air Slash
 if (attack == AT_UAIR){
@@ -163,11 +145,6 @@ if (attack == AT_UAIR){
 //Forward Strong (Hammer)
 if (attack == AT_FSTRONG){
 	if (window == 2){
-		if (window_timer == 4){
-			if (voiced == 1){
-				sound_play(vc_mario_yah);
-			}
-		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (50 * spr_dir), y, "land", spr_dir);
 			shake_camera( 8, 4 )
@@ -223,9 +200,6 @@ if (attack == AT_USTRONG){
 	if (window == 2){
 		if (window_timer == 1){
 			set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5 + ustrong_charge);
-			if (voiced == 1){
-				sound_play(vc_mario_wah);
-			}
 		}
 		if (window_timer == 3){
 			window = 3
@@ -253,11 +227,6 @@ if (attack == AT_USTRONG){
 //Down Strong: Sweep Kick
 if (attack == AT_DSTRONG){
 	if (window == 2){
-		if (window_timer == 2){
-			if (voiced == 1){
-				sound_play(vc_mario_haha);
-			}
-		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (20 * spr_dir), y, "dash_start", -spr_dir);
 		}
@@ -494,6 +463,7 @@ if (attack == AT_USPECIAL){
 			if(free){
 				spawn_base_dust( x, y, "doublejump", spr_dir);
 			}
+			/*
 			if (voiced == true){
 					var gaming = random_func( 1, 8, true );
 					switch (gaming){
@@ -505,6 +475,7 @@ if (attack == AT_USPECIAL){
 							break;
 					}
 				}
+			*/
 		}
 	}
 	if (window != 4){
@@ -622,12 +593,6 @@ if (attack == AT_DSPECIAL){
 			set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 			set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.85);
 		}
-		if (window_timer == 4){
-			voicelinework = random_func( 0, 2, true );
-			if (voiced == 1 && voicelinework == 1){
-				sound_play(vc_mario_yeehaw);
-			}
-		}
 	}
 	if (window != 1 && tornadoair == true && !free && !was_parried){
 		set_state(PS_LANDING_LAG);
@@ -717,6 +682,7 @@ if (attack == AT_DSPECIAL){
 if (attack == AT_TAUNT){
 	if (window == 1){
 		if (window_timer == 18){
+			/*
 			if (voiced == 1){
 				var whichTauntVoice = random_func(0,2,true)+1;
 				if (whichTauntVoice == 1){
@@ -725,6 +691,7 @@ if (attack == AT_TAUNT){
 					sound_play(vc_mario_itsame);
 				}
 			}
+			*/
 		}
 	}
 }

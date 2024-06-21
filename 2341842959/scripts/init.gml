@@ -75,7 +75,7 @@ techroll_speed = 10;
 //airdodge animation frames
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 2;
+air_dodge_recovery_frames = 3;
 air_dodge_speed = 7.5;
 
 //roll animation frames
@@ -106,8 +106,9 @@ introTimer = -30;
 //setting it to -4 should prevent the first few frames of the animation 
 //from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
-jestermode = floor(get_synced_var(player) / 10);
-shadelessmode = get_synced_var(player) % 10;
+//jestermode = floor(get_synced_var(player) / 10);
+//shadelessmode = get_synced_var(player) % 10;
+jestermode = get_synced_var(player);
 hidetokens = false;
 
 //ftilt_back = false;

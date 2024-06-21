@@ -1,5 +1,7 @@
-jestermode = floor(get_synced_var(player) / 10);
-shadelessmode = get_synced_var(player) % 10;
+//jestermode = floor(get_synced_var(player) / 10);
+//shadelessmode = get_synced_var(player) % 10;
+
+jestermode = get_synced_var(player);
 
 if get_instance_x(cursor_id) > x + 170 && get_instance_x(cursor_id) < x + 202 && get_instance_y(cursor_id) > y + 44 && get_instance_y(cursor_id) < y + 76 && !instance_exists(oTestPlayer){
     suppress_cursor = true;
@@ -15,7 +17,7 @@ if get_instance_x(cursor_id) > x + 170 && get_instance_x(cursor_id) < x + 202 &&
     }
 }
 
-if get_instance_x(cursor_id) > x + 20 && get_instance_x(cursor_id) < x + 52 && get_instance_y(cursor_id) > y + 44 && get_instance_y(cursor_id) < y + 76 && !instance_exists(oTestPlayer){
+/*if get_instance_x(cursor_id) > x + 20 && get_instance_x(cursor_id) < x + 52 && get_instance_y(cursor_id) > y + 44 && get_instance_y(cursor_id) < y + 76 && !instance_exists(oTestPlayer){
     suppress_cursor = true;
     if menu_a_pressed{
         if shadelessmode = false{
@@ -27,7 +29,8 @@ if get_instance_x(cursor_id) > x + 20 && get_instance_x(cursor_id) < x + 52 && g
             sound_play(asset_get("mfx_back"));
         }
     }
-}
+}*/
 
-set_synced_var(player, (jestermode * 10) + shadelessmode);
+//set_synced_var(player, (jestermode * 10) + shadelessmode);
+set_synced_var(player, jestermode);
 init_shader();

@@ -296,15 +296,15 @@ set_color_profile_slot( 26, 5, 208, 78, 52 ); //Button
 set_color_profile_slot( 26, 6, 96, 42, 36 ); //Shoes
 set_color_profile_slot( 26, 7, 0, 0, 0 ); //Eye Color
 
-// Yellow - SMBZ
-set_color_profile_slot( 27, 0, 255, 242, 0 ); //Hat
-set_color_profile_slot( 27, 1, 255, 242, 0 ); //Undershirt
-set_color_profile_slot( 27, 2, 255, 255, 255 ); //Overalls
-set_color_profile_slot( 27, 3, 255, 205, 133 ); //Skin
-set_color_profile_slot( 27, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 27, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 27, 6, 101, 56, 35 ); //Shoes
-set_color_profile_slot( 27, 7, 4, 122, 213 ); //Eye Color
+// So Retro...
+set_color_profile_slot( 27, 0, 181, 49, 32 ); //Hat
+set_color_profile_slot( 27, 1, 107, 109, 0 ); //Undershirt
+set_color_profile_slot( 27, 2, 181, 49, 32 ); //Overalls
+set_color_profile_slot( 27, 3, 234, 158, 34 ); //Skin
+set_color_profile_slot( 27, 4, 234, 158, 34 ); //Gloves
+set_color_profile_slot( 27, 5, 234, 158, 34 ); //Button
+set_color_profile_slot( 27, 6, 107, 109, 0 ); //Shoes
+set_color_profile_slot( 27, 7, 107, 109, 0 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
