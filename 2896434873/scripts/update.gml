@@ -185,8 +185,8 @@ if (reticule_state > -1)
 
 var xx = x;
 x=1000000
-reticule_lockedplayer = instance_nearest(xx,y,asset_get("oPlayer"));
 
+reticule_lockedplayer = instance_exists(scapegoat_obj) ? scapegoat_obj : instance_nearest(xx,y,asset_get("oPlayer"));
 follow_cooldown = max(follow_cooldown-1,0);
 
 if reticule_lockedplayer != self and gun and follow_cooldown == 0 and reticule_state != -1 and reticule_state != 2
@@ -205,8 +205,8 @@ if reticule_lockedplayer != self and gun and follow_cooldown == 0 and reticule_s
 	
 	
 	var tarhit, cursed, ret_close
-	tarhit = (reticule_lockedplayer.state_cat == SC_HITSTUN)
-	cursed = (reticule_lockedplayer.fspecial_curse_player == id)
+	tarhit = reticule_lockedplayer == scapegoat_obj ? true : (reticule_lockedplayer.state_cat == SC_HITSTUN)
+	cursed = reticule_lockedplayer == scapegoat_obj ? true : (reticule_lockedplayer.fspecial_curse_player == id)
 	ret_close = (reticule_state == 2)
 	
 	var amount;
@@ -304,32 +304,32 @@ if (gun)
 				var i = spawn_hit_fx(gunshot_position[0],gunshot_position[1],gun_stance_vfx[2]);
 				i.depth = depth - 4
 				
-				for (var i = 0; i < ds_list_size(positions_list); i++)
-				{
-					var found = false; 
-					 var position_data = positions_list[| i];
-					 //print(string(position_data.at_index) + " ?= " +string(sprite_index));
-					 if sprite_index == position_data.at_index
-					 {
-					 	//print("found")
+				// for (var i = 0; i < ds_list_size(positions_list); i++)
+				// {
+				// 	var found = false; 
+				// 	 var position_data = positions_list[| i];
+				// 	 //print(string(position_data.at_index) + " ?= " +string(sprite_index));
+				// 	 if sprite_index == position_data.at_index
+				// 	 {
+				// 	 	//print("found")
 					 	
-					 	var frame_data = position_data.data
+				// 	 	var frame_data = position_data.data
 					 	
-					 	for (var j = 0; j < array_length_1d(frame_data)-1; j+=2)
-					 	{
-					 		//print(floor(image_index mod image_number))
+				// 	 	for (var j = 0; j < array_length_1d(frame_data)-1; j+=2)
+				// 	 	{
+				// 	 		//print(floor(image_index mod image_number))
 					 		
-					 		if frame_data[j] == floor(image_index mod image_number)
-					 		{
-					 			var array_to_access = frame_data[j+1];
-					 			with (spawn_hit_fx(x+(array_to_access[0]*spr_dir),y+array_to_access[1],gunshot_vfx)) depth = other.depth - 3;
-					 			found = true;
-					 		}
-					 	}
-					 }
+				// 	 		if frame_data[j] == floor(image_index mod image_number)
+				// 	 		{
+				// 	 			var array_to_access = frame_data[j+1];
+				// 	 			with (spawn_hit_fx(x+(array_to_access[0]*spr_dir),y+array_to_access[1],gunshot_vfx)) depth = other.depth - 3;
+				// 	 			found = true;
+				// 	 		}
+				// 	 	}
+				// 	 }
 					 
-					 if found break;
-				}
+				// 	 if found break;
+				// }
 				
 				
 				ammo--;

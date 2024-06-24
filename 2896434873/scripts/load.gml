@@ -109,6 +109,7 @@ sprite_change_offset("scapegoat_pose6",  130, 154);
 sprite_change_offset("scapegoat_pose7",  130, 154);
 sprite_change_offset("scapegoat_pose8",  130, 154);
 sprite_change_offset("scapegoat_death",  130, 154);
+sprite_change_offset("scapegoat_spin",  130, 154);
 sprite_change_offset("scapegoat_mask",  130, 150);
 
 //Plat/Hurtboxes

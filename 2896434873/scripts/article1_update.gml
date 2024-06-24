@@ -1,5 +1,6 @@
-var destroy = false;
+destroy = false;
 
+hitpause = max(hitpause - 1, -1)
 if (is_uspecial_scapegoat)
 {
     switch (state)
@@ -49,7 +50,7 @@ if (is_uspecial_scapegoat)
             create_hitbox(AT_USPECIAL, 1, x, y-24);
             spawn_hit_fx(x,y-24,player_id.uspecialburst_vfx);
             sound_play(asset_get("sfx_ori_ustrong_launch"))
-            sound_play(asset_get("sfx_hod_nspecial"),false,noone,.9)
+            sound_play(asset_get("sfx_hod_nspecial"),false,noone,0.9)
             destroy = true;
         break;
         
@@ -177,22 +178,54 @@ else
                     
                     with pHitBox
                     {
-                        if player_id == other.player_id and attack == AT_FSPECIAL and place_meeting(x,y,other) and other.dspecial_wait != 0
+                        if player_id == other.player_id and place_meeting(x,y,other)
                         {
-                            other.dspecial_wait = other.dspecial_wait_lit;
-                            with (other)
+                            switch (attack)
                             {
-                                sound_play(sound_get("glucky_waterhit"))
+                                case AT_FSPECIAL:
+                                    if other.dspecial_wait != 0 {
+                                        other.dspecial_wait = other.dspecial_wait_lit;
+                                        with (other)
+                                        {
+                                            sound_play(sound_get("glucky_waterhit"))
+                                        }
+                                        other.dspecial_lit = true;
+                                        destroyed = true;   
+                                    }
+                                    break;
+                                case AT_NSPECIAL:
+                                    other.state = PS_CRYSTALIZED;
+                                    other.old_vsp = -10;
+                                    other.hitpause = 6;
+                                    other.vsp = 0;
+                                    other.state_timer = 0;
+                                    other.old_hsp = sign(x-player_id.x) * 2;
+                                    other.hsp =0;
+                                break;
+                                case AT_NSPECIAL_2:
+                                    if hbox_num == 1 {
+                                        other.state = PS_CRYSTALIZED;
+                                        other.old_vsp = -16;
+                                        other.hitpause = 6;
+                                        other.vsp = 0;
+                                        other.state_timer = 0;
+                                        other.old_hsp = sign(x-player_id.x) * 2;
+                                        other.hsp = 0;
+                                    }
+                                break;
                             }
-                            other.dspecial_lit = true;
-                            destroyed = true;
                         }
                         
-                        if player_id != other.player_id and place_meeting(x,y,other)
+                        if player_id != other.player_id and place_meeting(x,y,other)    
                         {
                             if type == 2
                             {
-                                destroyed = true;
+                                if (!plasma_safe or !transcendent) destroyed = true;
+                            }
+                            else if (other.dspecial_lit = true)
+                            {  
+                               if other.dspecial_lit other.dspecial_wait = 15;
+                               with other sound_play(asset_get("sfx_ori_ustrong_charge"),false,noone,.8);
                             }
                             else
                             {
@@ -207,6 +240,7 @@ else
             
         break;
         case PS_DEAD:
+            hsp = 0;
             sprite_index = sprite_get("scapegoat_death")
             image_index += (image_number/dspecial_death_frames)
             if (image_index >= image_number)
@@ -215,6 +249,86 @@ else
                 destroy = true;
             }
         break;
+        case PS_CRYSTALIZED: //hit with shit
+            if state_timer == 1 {
+                hitbox = create_hitbox(AT_DSPECIAL, 2, x, y-(char_height / 2))    
+            }
+            if hitpause == 0 {
+                vsp = old_vsp
+                hsp = old_hsp
+            }
+            if hitpause != -1 break;
+            
+            vsp = free ? vsp + (scapegoat_gravity/1.2) : 0;
+            with pHitBox
+            {
+                if player_id == other.player_id and place_meeting(x,y,other)
+                {
+                    switch (attack)
+                    {
+                        case AT_FSPECIAL:
+                            if other.dspecial_wait != 0 {
+                                other.dspecial_wait = other.dspecial_wait_lit;
+                                with (other)
+                                {
+                                    sound_play(sound_get("glucky_waterhit"))
+                                }
+                                other.dspecial_lit = true;
+                                destroyed = true;   
+                            }
+                            break;
+                        case AT_NSPECIAL:
+                            other.state = PS_CRYSTALIZED;
+                            other.old_vsp = -10;
+                            other.old_hsp = sign(x-player_id.x) * 2;
+                            other.hitpause = 6;
+                            other.vsp = 0;
+                            other.hsp = 0;
+                        break;
+                        case AT_NSPECIAL_2:
+                            if hbox_num == 1 {
+                                other.state = PS_CRYSTALIZED;
+                                other.old_vsp = -16;
+                                other.old_hsp = sign(x-player_id.x) * 2;
+                                other.hitpause = 6;
+                                other.vsp = 0;
+                                other.hsp = 0;
+                            }
+                        break;
+                    }
+                }
+            }
+            
+            if instance_exists(hitbox)
+            {
+                hitbox.x = x + hsp;
+                hitbox.y = y - (char_height / 2) + vsp;
+                hitbox.hitbox_timer = 1;
+                
+                if !free {
+                    instance_destroy(hitbox);
+                    if dspecial_lit == true
+                    {
+                        destroy_self();
+                    }
+                    else {
+                        state = PS_DEAD;
+                        state_timer = 0;
+                    }
+                }
+            }
+            else {
+                state = PS_DEAD;
+                state_timer = 0;
+            }
+        break;
+        case PS_BURIED:
+            if state_timer == 0 and instance_exists(hitbox) instance_destroy(hitbox);
+            
+            destroy = true;
+            hsp = 0;
+            vsp = 0;
+        break;
     }
 }
 
@@ -222,3 +336,12 @@ state_timer++;
 if (y > room_height) destroy = true;
 
 if destroy instance_destroy();
+
+#define destroy_self
+
+sprite_index = asset_get("empty_sprite");
+create_hitbox(AT_DSPECIAL, 1, x, y-24);
+spawn_hit_fx(x,y-24,player_id.uspecialburst_vfx);
+sound_play(asset_get("sfx_ori_ustrong_launch"))
+sound_play(asset_get("sfx_hod_nspecial"),false,noone,.9)
+destroy = true;

@@ -21,3 +21,7 @@ switch state{
     }
     break;
 }
+
+if(state == PS_PRATLAND){
+	sprite_index = sprite_get("pratland");
+}

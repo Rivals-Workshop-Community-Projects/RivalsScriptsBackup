@@ -27,4 +27,5 @@ if (gun)
 if my_hitboxID.attack == AT_FSPECIAL
 {
     my_hitboxID.draw_xscale *= -1;
+    my_hitboxID.hitbox_timer = 0;
 }

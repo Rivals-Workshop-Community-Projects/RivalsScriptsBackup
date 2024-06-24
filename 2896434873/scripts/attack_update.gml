@@ -5,18 +5,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 switch(attack){
-	case AT_BAIR:
-		if (window == 1 and window_timer == 11)
-		{
-			sound_play(sound_get("glucky_swipe2b"),false,noone,0.35,0.73)
-		}
-	break;
-	case AT_FTILT:
-		if (window == 1 and window_timer == 4)
-		{
-			sound_play(sound_get("glucky_swipe2b"),false,noone,0.4,1)
-		}
-	break;
 	case AT_EXTRA_1:
 	parry_cooldown = 10;
 		if (window == 1 and window_timer == 1)
@@ -187,7 +175,7 @@ switch(attack){
     case AT_FSPECIAL:
     	can_move = (window > 3 and !was_parried);
     	can_fast_fall = false;
-    	move_cooldown[AT_FSPECIAL] = 30;
+    	move_cooldown[AT_FSPECIAL] = 50;
     	
     	if window == 3
     	{
@@ -198,7 +186,6 @@ switch(attack){
     	}
     break;
     case AT_DSPECIAL:
-    	can_move = false;
     	can_fast_fall = false;
     	switch (window)
     	{

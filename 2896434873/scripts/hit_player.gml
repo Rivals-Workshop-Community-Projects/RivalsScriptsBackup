@@ -1,8 +1,24 @@
 switch (my_hitboxID.attack)
 {
     case AT_DSPECIAL:
-        hit_player_obj.fspecial_curse_timer = 240;
-        hit_player_obj.fspecial_curse_player = id;    
+        if my_hitboxID.hbox_num == 1 {
+	        hit_player_obj.fspecial_curse_timer = 240;
+	        hit_player_obj.fspecial_curse_player = id;
+        }
+        else {
+    		with scapegoat_obj {
+    		    if (!dspecial_lit and (other.hit_player_obj.fspecial_curse_player != id) ) or state == PS_BURIED break;
+    		    
+    		    print("fuck")
+    		    state = PS_BURIED;
+    		    state_timer = 0;
+				sprite_index = asset_get("empty_sprite");
+				create_hitbox(AT_DSPECIAL, 1, x, y-24);
+				spawn_hit_fx(x,y-24,player_id.uspecialburst_vfx);
+				sound_play(asset_get("sfx_ori_ustrong_launch"))
+				sound_play(asset_get("sfx_hod_nspecial"),false,noone,.9)
+    		}
+        }
     break;
     case AT_USPECIAL:
         switch my_hitboxID.hbox_num

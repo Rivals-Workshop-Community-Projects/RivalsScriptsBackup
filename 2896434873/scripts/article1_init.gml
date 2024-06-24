@@ -1,5 +1,7 @@
 is_uspecial_scapegoat = true;
 
+char_height = 66;
+
 can_be_grounded = true;
 ignores_walls = false;
 
@@ -25,9 +27,14 @@ sprite_index = sprite_get("uspecial_proj_fall");
 mask_index = sprite_get("uspecial_proj_mask");
 
 dspecial_variant = -1;
-dspecial_wait = 180;
-dspecial_wait_lit = 180;
+dspecial_wait = 600;
+dspecial_wait_lit = 420;
 dspecial_lit = false;
 dspecial_disappear_frames = 21;
 dspecial_death_frames = 36;
 depth = player_id.depth + 10;
+
+hitpause = -1;
+destroy = false;
+old_vsp = 0;
+old_hsp = 0;

@@ -293,14 +293,9 @@ var positions = [
     ];
 
 //[sprite_index, [ image_index, [coordx,coordy], image_index2, [coordx,coordy]...  ] ]
-positions_list = ds_list_create();
+// positions_list = ds_map_create()
 
-for (var i = 0; i <= array_length(positions)-2; i+=2)
-{
-    var data = {
-      at_index : positions[i],
-      data : positions[i+1]
-    };
-    
-    ds_list_add(positions_list,data);
-}
+// for (var i = 0; i < array_length(positions); i+=1)
+// {
+//     positions_list[? ]
+// }
