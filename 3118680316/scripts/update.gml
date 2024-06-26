@@ -910,9 +910,9 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 				{
 					if(player_id == Soap)
 					{
-						if(attack != AT_EXTRA_1 && attack != AT_USPECIAL)
+						if(attack != AT_EXTRA_1 && attack != AT_USPECIAL && (attack != AT_USTRONG || hbox_num != 3))
 						{
-							if(!bubble.exploding && !bubble.explosive && !bubble.merging && !bubble.flag_delete && bubble.lockout_timer == 0)
+							if(!bubble.exploding && !bubble.explosive && !bubble.flag_delete && bubble.lockout_timer == 0)
 							{
 								if(self != bubble.last_hitbox)
 								{
@@ -946,6 +946,9 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 													hitstop_full = HitpauseTime;
 											    	hitstop = HitpauseTime;
 											    	hitpause = true;
+											    	bubble.merging = false;
+											    	
+											    	with(pHitBox)if(player_id == Soap) hitbox_timer++;
 											    	
 											    	if(bubble.size == TINY) 
 											    	{
@@ -1128,7 +1131,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 			BubbleFriction*=1.05;
 		}
 		
-		var BubbleBounceSpeedLoss = 0.2;
+		var BubbleBounceSpeedLoss = .6;
 		
 		bubble.hsp *= BubbleFriction;
 		bubble.vsp *= BubbleFriction;
@@ -1181,6 +1184,16 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		{
 			// Always reflect vspeed
 			bubble.vsp *= -BubbleBounceSpeedLoss;
+			if(instance_exists(bubble.linked_hitbox)) 
+			{
+				if(instance_exists(bubble.last_hitbox))
+				{
+					if(bubble.last_hitbox.attack == AT_DAIR && bubble.last_hitbox.hbox_num == 1)
+					{
+						bubble.linked_hitbox.kb_angle = 90;
+					}
+				}
+			}
 			
 			NewLocationY = bubble.y + bubble.vsp;
 			

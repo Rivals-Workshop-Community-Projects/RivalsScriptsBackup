@@ -158,95 +158,95 @@ set_color_profile_slot( 14, 4, 245, 157, 175 ); //Undercoat2
 set_color_profile_slot( 14, 5, 249, 204, 211 ); //Detail
 set_color_profile_slot( 14, 6, 245, 233, 235 ); //Detail2
 
-// Vanda
-set_color_profile_slot( 15, 0, 33, 27, 46 ); //Coat
-set_color_profile_slot( 15, 1, 46, 40, 59 ); //Coat2
-set_color_profile_slot( 15, 2, 57, 51, 71 ); //Coat3
-set_color_profile_slot( 15, 3, 168, 168, 143 ); //Undercoat
-set_color_profile_slot( 15, 4, 214, 214, 191 ); //Undercoat2
-set_color_profile_slot( 15, 5, 0, 185, 190 ); //Detail
-set_color_profile_slot( 15, 6, 159, 244, 229 ); //Detail2
-
 // Abyss
-set_color_profile_slot( 16, 0, 75, 0, 148 ); //Coat
-set_color_profile_slot( 16, 1, 101, 7, 175 ); //Coat2
-set_color_profile_slot( 16, 2, 136, 20, 204 ); //Coat3
-set_color_profile_slot( 16, 3, 67, 53, 89 ); //Undercoat
-set_color_profile_slot( 16, 4, 96, 75, 128 ); //Undercoat2
-set_color_profile_slot( 16, 5, 177, 90, 204 ); //Detail
-set_color_profile_slot( 16, 6, 220, 113, 255 ); //Detail2
+set_color_profile_slot( 15, 0, 75, 0, 148 ); //Coat
+set_color_profile_slot( 15, 1, 101, 7, 175 ); //Coat2
+set_color_profile_slot( 15, 2, 136, 20, 204 ); //Coat3
+set_color_profile_slot( 15, 3, 67, 53, 89 ); //Undercoat
+set_color_profile_slot( 15, 4, 96, 75, 128 ); //Undercoat2
+set_color_profile_slot( 15, 5, 177, 90, 204 ); //Detail
+set_color_profile_slot( 15, 6, 220, 113, 255 ); //Detail2
 
 // Worm
-set_color_profile_slot( 17, 0, 184, 86, 135 ); //Coat
-set_color_profile_slot( 17, 1, 209, 130, 169 ); //Coat2
-set_color_profile_slot( 17, 2, 227, 193, 210 ); //Coat3
-set_color_profile_slot( 17, 3, 255, 186, 221 ); //Undercoat
-set_color_profile_slot( 17, 4, 255, 219, 237 ); //Undercoat2
-set_color_profile_slot( 17, 5, 255, 186, 221 ); //Detail
-set_color_profile_slot( 17, 6, 255, 219, 237 ); //Detail2
+set_color_profile_slot( 16, 0, 184, 86, 135 ); //Coat
+set_color_profile_slot( 16, 1, 209, 130, 169 ); //Coat2
+set_color_profile_slot( 16, 2, 227, 193, 210 ); //Coat3
+set_color_profile_slot( 16, 3, 255, 186, 221 ); //Undercoat
+set_color_profile_slot( 16, 4, 255, 219, 237 ); //Undercoat2
+set_color_profile_slot( 16, 5, 255, 186, 221 ); //Detail
+set_color_profile_slot( 16, 6, 255, 219, 237 ); //Detail2
 
 // Trilogy
-set_color_profile_slot( 18, 0, 101, 52, 143 ); //Coat
-set_color_profile_slot( 18, 1, 129, 85, 166 ); //Coat2
-set_color_profile_slot( 18, 2, 172, 120, 196 ); //Coat3
-set_color_profile_slot( 18, 3, 204, 170, 86 ); //Undercoat
-set_color_profile_slot( 18, 4, 230, 211, 101 ); //Undercoat2
-set_color_profile_slot( 18, 5, 224, 167, 52 ); //Detail
-set_color_profile_slot( 18, 6, 255, 242, 99 ); //Detail2
+set_color_profile_slot( 17, 0, 101, 52, 143 ); //Coat
+set_color_profile_slot( 17, 1, 129, 85, 166 ); //Coat2
+set_color_profile_slot( 17, 2, 172, 120, 196 ); //Coat3
+set_color_profile_slot( 17, 3, 204, 170, 86 ); //Undercoat
+set_color_profile_slot( 17, 4, 230, 211, 101 ); //Undercoat2
+set_color_profile_slot( 17, 5, 224, 167, 52 ); //Detail
+set_color_profile_slot( 17, 6, 255, 242, 99 ); //Detail2
 
 // Trans
-set_color_profile_slot( 19, 0, 235, 132, 153 ); //Coat
-set_color_profile_slot( 19, 1, 252, 162, 180 ); //Coat2
-set_color_profile_slot( 19, 2, 255, 203, 213 ); //Coat3
-set_color_profile_slot( 19, 3, 221, 216, 231 ); //Undercoat
-set_color_profile_slot( 19, 4, 255, 246, 248 ); //Undercoat2
-set_color_profile_slot( 19, 5, 97, 207, 248 ); //Detail
-set_color_profile_slot( 19, 6, 199, 240, 255 ); //Detail2
+set_color_profile_slot( 18, 0, 235, 132, 153 ); //Coat
+set_color_profile_slot( 18, 1, 252, 162, 180 ); //Coat2
+set_color_profile_slot( 18, 2, 255, 203, 213 ); //Coat3
+set_color_profile_slot( 18, 3, 221, 216, 231 ); //Undercoat
+set_color_profile_slot( 18, 4, 255, 246, 248 ); //Undercoat2
+set_color_profile_slot( 18, 5, 97, 207, 248 ); //Detail
+set_color_profile_slot( 18, 6, 199, 240, 255 ); //Detail2
 
 // Sunset
-set_color_profile_slot( 20, 0, 254, 142, 44 ); //Coat
-set_color_profile_slot( 20, 1, 255, 176, 32 ); //Coat2
-set_color_profile_slot( 20, 2, 240, 209, 9 ); //Coat3
-set_color_profile_slot( 20, 3, 206, 190, 226 ); //Undercoat
-set_color_profile_slot( 20, 4, 248, 245, 252 ); //Undercoat2
-set_color_profile_slot( 20, 5, 43, 165, 247 ); //Detail
-set_color_profile_slot( 20, 6, 21, 243, 255 ); //Detail2
+set_color_profile_slot( 19, 0, 254, 142, 44 ); //Coat
+set_color_profile_slot( 19, 1, 255, 176, 32 ); //Coat2
+set_color_profile_slot( 19, 2, 240, 209, 9 ); //Coat3
+set_color_profile_slot( 19, 3, 206, 190, 226 ); //Undercoat
+set_color_profile_slot( 19, 4, 248, 245, 252 ); //Undercoat2
+set_color_profile_slot( 19, 5, 43, 165, 247 ); //Detail
+set_color_profile_slot( 19, 6, 21, 243, 255 ); //Detail2
 
 // Señor
-set_color_profile_slot( 21, 0, 110, 29, 12 ); //Coat
-set_color_profile_slot( 21, 1, 161, 59, 37 ); //Coat2
-set_color_profile_slot( 21, 2, 227, 92, 75 ); //Coat3
-set_color_profile_slot( 21, 3, 191, 179, 175 ); //Undercoat
-set_color_profile_slot( 21, 4, 242, 220, 214 ); //Undercoat2
-set_color_profile_slot( 21, 5, 17, 99, 85 ); //Detail
-set_color_profile_slot( 21, 6, 44, 156, 137 ); //Detail2
+set_color_profile_slot( 20, 0, 110, 29, 12 ); //Coat
+set_color_profile_slot( 20, 1, 161, 59, 37 ); //Coat2
+set_color_profile_slot( 20, 2, 227, 92, 75 ); //Coat3
+set_color_profile_slot( 20, 3, 191, 179, 175 ); //Undercoat
+set_color_profile_slot( 20, 4, 242, 220, 214 ); //Undercoat2
+set_color_profile_slot( 20, 5, 17, 99, 85 ); //Detail
+set_color_profile_slot( 20, 6, 44, 156, 137 ); //Detail2
 
 // Syrcub
-set_color_profile_slot( 22, 0, 151, 23, 43 ); //Coat
-set_color_profile_slot( 22, 1, 215, 43, 43 ); //Coat2
-set_color_profile_slot( 22, 2, 255, 124, 0 ); //Coat3
-set_color_profile_slot( 22, 3, 208, 176, 136 ); //Undercoat
-set_color_profile_slot( 22, 4, 241, 223, 171 ); //Undercoat2
-set_color_profile_slot( 22, 5, 220, 60, 126 ); //Detail
-set_color_profile_slot( 22, 6, 255, 110, 183 ); //Detail2
+set_color_profile_slot( 21, 0, 151, 23, 43 ); //Coat
+set_color_profile_slot( 21, 1, 215, 43, 43 ); //Coat2
+set_color_profile_slot( 21, 2, 255, 124, 0 ); //Coat3
+set_color_profile_slot( 21, 3, 208, 176, 136 ); //Undercoat
+set_color_profile_slot( 21, 4, 241, 223, 171 ); //Undercoat2
+set_color_profile_slot( 21, 5, 220, 60, 126 ); //Detail
+set_color_profile_slot( 21, 6, 255, 110, 183 ); //Detail2
 
 // TAG
-set_color_profile_slot( 23, 0, 255, 80, 74 ); //Coat
-set_color_profile_slot( 23, 1, 255, 147, 94 ); //Coat2
-set_color_profile_slot( 23, 2, 248, 187, 126 ); //Coat3
-set_color_profile_slot( 23, 3, 248, 229, 151 ); //Undercoat
-set_color_profile_slot( 23, 4, 247, 245, 218 ); //Undercoat2
-set_color_profile_slot( 23, 5, 71, 181, 67 ); //Detail
-set_color_profile_slot( 23, 6, 126, 239, 154 ); //Detail2
+set_color_profile_slot( 22, 0, 255, 80, 74 ); //Coat
+set_color_profile_slot( 22, 1, 255, 147, 94 ); //Coat2
+set_color_profile_slot( 22, 2, 248, 187, 126 ); //Coat3
+set_color_profile_slot( 22, 3, 248, 229, 151 ); //Undercoat
+set_color_profile_slot( 22, 4, 247, 245, 218 ); //Undercoat2
+set_color_profile_slot( 22, 5, 71, 181, 67 ); //Detail
+set_color_profile_slot( 22, 6, 126, 239, 154 ); //Detail2
 
 // Cirra
-set_color_profile_slot( 24, 0, 80, 20, 64 ); //Coat
-set_color_profile_slot( 24, 1, 105, 43, 71 ); //Coat2
-set_color_profile_slot( 24, 2, 140, 54, 83 ); //Coat3
-set_color_profile_slot( 24, 3, 178, 180, 213 ); //Undercoat
-set_color_profile_slot( 24, 4, 238, 246, 255 ); //Undercoat2
-set_color_profile_slot( 24, 5, 41, 179, 224 ); //Detail
-set_color_profile_slot( 24, 6, 73, 255, 246 ); //Detail2
+set_color_profile_slot( 23, 0, 80, 20, 64 ); //Coat
+set_color_profile_slot( 23, 1, 105, 43, 71 ); //Coat2
+set_color_profile_slot( 23, 2, 140, 54, 83 ); //Coat3
+set_color_profile_slot( 23, 3, 178, 180, 213 ); //Undercoat
+set_color_profile_slot( 23, 4, 238, 246, 255 ); //Undercoat2
+set_color_profile_slot( 23, 5, 41, 179, 224 ); //Detail
+set_color_profile_slot( 23, 6, 73, 255, 246 ); //Detail2
+
+// Vanda
+set_color_profile_slot( 24, 0, 33, 27, 46 ); //Coat
+set_color_profile_slot( 24, 1, 46, 40, 59 ); //Coat2
+set_color_profile_slot( 24, 2, 57, 51, 71 ); //Coat3
+set_color_profile_slot( 24, 3, 168, 168, 143 ); //Undercoat
+set_color_profile_slot( 24, 4, 214, 214, 191 ); //Undercoat2
+set_color_profile_slot( 24, 5, 0, 185, 190 ); //Detail
+set_color_profile_slot( 24, 6, 159, 244, 229 ); //Detail2
 
 // Genesis
 set_color_profile_slot( 25, 0, 19, 21, 22 ); //Coat

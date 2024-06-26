@@ -58,11 +58,11 @@ set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 110);
 set_hitbox_value(AT_UAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 5);
-set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 70);
+set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_UAIR, 2, HG_BUBBLE_KNOCKBACK, 18);
-set_hitbox_value(AT_UAIR, 2, HG_BUBBLE_ANGLE, 80)
+set_hitbox_value(AT_UAIR, 2, HG_BUBBLE_ANGLE, 100)
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 6);
