@@ -38,6 +38,6 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, bigfx);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, hfx_ssl_bigger);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX,  sound_get("slam2"));
 set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 1);

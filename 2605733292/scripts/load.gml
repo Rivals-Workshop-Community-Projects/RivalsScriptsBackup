@@ -57,7 +57,7 @@ sprite_change_offset("utilt", 100, 130);
 
 //Aerials
 sprite_change_offset("nair", 82, 98);
-sprite_change_offset("fair", 52, 98);
+sprite_change_offset("fair", 100, 130);
 sprite_change_offset("bair", 112, 98);
 sprite_change_offset("uair", 52, 98);
 sprite_change_offset("dair", 52, 98);
@@ -70,10 +70,10 @@ sprite_change_offset("dstrong", 92, 98);
 //Special Attacks
 sprite_change_offset("nspecial", 52, 98);
 sprite_change_offset("nspecial_bubble_hud", 2, 28);
-sprite_change_offset("nspecial_bubble", 52, 98);
-sprite_change_offset("nspecial_bubble_left", 52, 98);
-sprite_change_offset("nspecial_bubble_star", 52, 98);
-sprite_change_offset("nspecial_bubble_star_left", 52, 98);
+sprite_change_offset("nspecial_bubble", 52, 66);
+sprite_change_offset("nspecial_bubble_left", 52, 66);
+sprite_change_offset("nspecial_bubble_star", 52, 66);
+sprite_change_offset("nspecial_bubble_star_left", 52, 66);
 sprite_change_offset("nspecial_charged_vfx", 52, 98);
 sprite_change_offset("fspecial", 52, 98);
 sprite_change_offset("enemy_sleep_bar", 32, 98);

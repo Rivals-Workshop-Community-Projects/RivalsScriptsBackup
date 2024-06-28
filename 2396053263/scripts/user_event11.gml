@@ -60,8 +60,8 @@ if phone.state{
 		var curs_h = 0;
 		
 		with player_id.codec_handler.active_codecs[cursor].player_object{
-			var true_x = x - view_get_xview();
-			var true_y = y - view_get_yview();
+			var true_x = x - view_get_xview(); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+			var true_y = y - view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 			curs_x = true_x - 40;
 			curs_y = true_y - char_height - 20;
 			curs_w = 80;
@@ -1238,22 +1238,3 @@ if alpha draw_text_ext_transformed_color(x1, y1, text, lineb, linew, scale, scal
 
 if array_bool return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
 else return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

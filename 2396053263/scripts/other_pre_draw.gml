@@ -21,8 +21,8 @@ with (other_player_id)
 		//Loop through all particles and draw them if there are any to draw.
 	    var i, part, len; 
 	    i = 0;
-	    part = nspecial_particles;
-	    len = array_length_1d(part);
+	    part = nspecial_particles; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+	    len = array_length_1d(part); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 	    if len != 0
 	    {
 	        for (var i = 0; i < len; i++)
@@ -32,7 +32,7 @@ with (other_player_id)
 			    {
 			    	var color, scaleup;
 			    	color = make_color_rgb(p.color[0],p.color[1],p.color[2]);
-			    	scaleup = ("small_sprites" in self and small_sprites == 1) ? 2 : 1;
+			    	scaleup = ("small_sprites" in self and small_sprites == 1) ? 2 : 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 			    	
 			    	gpu_set_fog(1, color, 0,1)
 			    	draw_sprite_ext(p.sprite,p.frame,p.position[@ 0],p.position[@ 1],p.scale[@ 0] * scaleup, p.scale[@ 1] * scaleup, 0, c_white, p.alpha);

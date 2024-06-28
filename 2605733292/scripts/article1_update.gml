@@ -73,6 +73,7 @@ if (place_meeting(x, y, asset_get("pHitBox"))) {
 								other.hitByNSpecBubble = true;
 								other.bubbleX = x;
 								other.bubbleY = y;
+								other.bubbleSprDir = spr_dir;
 								destroy_fx = 1;
 								destroyed = true;
 								spawn_hit_fx(x, y - 12, other.player_id.burst_bubble_charged_vfx);
@@ -88,9 +89,11 @@ if (place_meeting(x, y, asset_get("pHitBox"))) {
 								}
 							} else {
 								other.hitbox_hit = self;
+								other.starWasHitByOwner = true;
 							}
 						} else {
 							other.hitbox_hit = self;
+							other.starWasHitByOwner = false;
 						}
 					}
 				//}
@@ -138,7 +141,7 @@ if (place_meeting(x, y, asset_get("pHitBox"))) {
 			
 			//gonna use this to set the hitbox owner to be whoever hit it
 			hit_by = hitbox_hit.player;
-			
+			//print(hit_by)
 			spr_dir = 1;
 			
 			//y = y - 12;
@@ -299,6 +302,10 @@ if (state == 3){
 	if (state_timer == 0 && cur_hitbox == noone && !hitpause){
 		cur_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y + 2);
 	}
+	
+	if (state_timer >= 0 && cur_hitbox == noone && !hitpause){
+		cur_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y + 2);
+	}
 
 	// moves hitbox
 	if (instance_exists(cur_hitbox) && !hitpause){
@@ -307,14 +314,28 @@ if (state == 3){
 		cur_hitbox.hsp = hsp;
 		cur_hitbox.vsp = vsp;
 		cur_hitbox.hitbox_timer = 2;
-		cur_hitbox.player = hit_by;	// sets who has current ownership of the star
-		
+		if (starWasHitByOwner == false){
+			if (starWasParriedAtLeastOnce == false){
+				cur_hitbox.player = hit_by;	// sets who has current ownership of the star
+			} else {
+				cur_hitbox.player = personWhoParriedStar;	// sets who has current ownership of the star
+			}
+		} else if (starWasHitByOwner == true){
+			cur_hitbox.player = player_id.player;
+		}
 		// if the hitbox hits someone...
 		if (cur_hitbox.has_hit){
 			//print("hitbox hit!");
 			destroyStarHitbox();
 			setState(4);
 		}
+	}
+	
+	if (wasStarParried == true){
+		hsp *= -1;
+		vsp *= -1;
+		state_timer = 5;
+		wasStarParried = false;
 	}
 	
 	if (state_timer > 1 && !instance_exists(cur_hitbox)){

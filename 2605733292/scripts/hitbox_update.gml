@@ -11,9 +11,9 @@ if (attack == AT_NSPECIAL){
 	if (burst_bubble_has_ability_star == true || hbox_num > 5){
 		burst_bubble_has_ability_star = true
 		if (hbox_num == 6 || sprite_index == sprite_get("nspecial_bubble_star_left")){
-			hsp = 2.8 * burst_bubble_direction_hit_by_side_b
+			hsp = 2.8 * burst_bubble_direction_hit_by_side_b;
 		} else if (hbox_num == 7){
-			hsp = -2.8 * burst_bubble_direction_hit_by_side_b
+			hsp = -2.8 * burst_bubble_direction_hit_by_side_b;
 		}
 	} else if (burst_bubble_has_ability_star == false){
 		sprite_index = sprite_get("nspecial_bubble");
@@ -110,9 +110,9 @@ if (attack == AT_NSPECIAL){
 	}
 	*/
 	
-	if (place_meeting( x, y, player_id) ){ //place_meeting( x, y, player_id
+	if (place_meeting( x, y, player_id) && player_id.was_parried == false){ //place_meeting( x, y, player_id
 		if ((player_id.attack == AT_USPECIAL && player_id.window != 1) || player_id.state == PS_PRATFALL){
-			player_id.SleepKirby_up_b_into_nspec_happened = true
+			player_id.SleepKirby_up_b_into_nspec_happened = true;
 			spawn_hit_fx( x, y - 32, 304 );
 			sound_play(player_id.sfx_canvas_curse_balloon_pop);
 			instance_destroy();

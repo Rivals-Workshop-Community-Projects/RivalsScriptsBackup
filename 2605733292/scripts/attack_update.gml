@@ -580,10 +580,11 @@ if (attack == AT_NSPECIAL){
 	}
 	if (window == 6){
 		burst_bubble_can_move = false
-		if (window_timer == 3){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			window++;
 			window_timer = 0
 			hsp = -2.5 * spr_dir
+			create_hitbox(AT_NSPECIAL, 1, x+ (50 * spr_dir), y - 36);
 		}
 	}
 	if (window == 7){

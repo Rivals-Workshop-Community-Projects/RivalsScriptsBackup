@@ -69,7 +69,7 @@ if(instance_exists(disk_obj) && !snb_playtest){
 		
         draw_sprite_ext(sprite_get("hud_offscreen_arrow"), disk_obj.offscreen_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, get_player_hud_color(player), 1);
         shader_start();
-        draw_sprite_ext(sprite_get("disc"), 0 + (is_bite * 7), offscreen_x_pos + 1, offscreen_y_pos + 1, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("disc"), 0 + (is_bite * 7), offscreen_x_pos, offscreen_y_pos, 1, 1, 0, c_white, 1);
         shader_end();
     }
     else depth = orig_depth; //reset depth back to normal when it's on screen

@@ -134,17 +134,17 @@ set_color_profile_slot( 19, 1, 60, 39, 63 ); //Dark 1
 set_color_profile_slot( 19, 2, 81, 66, 83 ); //Light 2
 set_color_profile_slot( 19, 3, 212, 169, 142 ); //Light 1
 
-// Primary
-set_color_profile_slot( 20, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 20, 1, 0, 75, 255 ); //Dark 1
-set_color_profile_slot( 20, 2, 255, 0, 0 ); //Light 2
-set_color_profile_slot( 20, 3, 247, 255, 0 ); //Light 1
+// Cold
+set_color_profile_slot( 20, 0, 40, 29, 84 ); //Dark 2
+set_color_profile_slot( 20, 1, 59, 73, 133 ); //Dark 1
+set_color_profile_slot( 20, 2, 96, 158, 181 ); //Light 2
+set_color_profile_slot( 20, 3, 214, 254, 255 ); //Light 1
 
-// Secondary
-set_color_profile_slot( 21, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 21, 1, 255, 123, 0 ); //Dark 1
-set_color_profile_slot( 21, 2, 170, 0, 255 ); //Light 2
-set_color_profile_slot( 21, 3, 0, 255, 0 ); //Light 1
+// Hot
+set_color_profile_slot( 21, 0, 77, 14, 29 ); //Dark 2
+set_color_profile_slot( 21, 1, 128, 41, 41 ); //Dark 1
+set_color_profile_slot( 21, 2, 201, 88, 30 ); //Light 2
+set_color_profile_slot( 21, 3, 255, 145, 64 ); //Light 1
 
 // Colorful
 set_color_profile_slot( 22, 0, 4, 2, 4 ); //Dark 2
@@ -200,3 +200,15 @@ set_color_profile_slot( 29, 3, 231, 247, 169 ); //Light 1
 {"formatversion":1,"data":[{"name":"Dark 2","colors":[{"r":35,"g":67,"b":49,"main":true}]},{"name":"Dark 1","colors":[{"r":83,"g":122,"b":62,"main":true}]},{"name":"Light 2","colors":[{"r":167,"g":186,"b":74,"main":true}]},{"name":"Light 1","colors":[{"r":211,"g":226,"b":154,"main":true}]}]}
 === END JSON PALETTE ===
 */
+
+
+//Set Dust
+set_color_profile_slot( 0, 4, 255, 255, 255 );
+set_color_profile_slot_range( 4, 1, 1, 33 );
+
+for(var _i = 1; _i < 30; _i++){
+    var _r = get_color_profile_slot_r(_i, 2);
+    var _g = get_color_profile_slot_g(_i, 2);
+    var _b = get_color_profile_slot_b(_i, 2);
+    set_color_profile_slot(_i, 4, _r, _g, _b);
+}

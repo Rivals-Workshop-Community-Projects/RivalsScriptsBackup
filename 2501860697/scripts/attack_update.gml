@@ -9,6 +9,8 @@ if (attack == AT_JAB && was_parried = true) {
 
 if (attack == AT_FSPECIAL_AIR) {
 	can_fast_fall = window >= 2;
+	move_cooldown[AT_FSPECIAL_AIR] = 40;
+
 }
 
 if attack == AT_FSPECIAL_AIR && window == 1 && venom_timer > 0 {
@@ -179,13 +181,13 @@ if (attack == AT_DSPECIAL && window == 2 && window_timer == 1 && venom > 0 && sh
 
 
 if (attack == AT_DSTRONG){
-    if window == 2 && window_timer == (2) {
+    if window == 3 && window_timer == (2) {
             sound_play(asset_get("sfx_absa_uair"));
     }
 }
 
 if (attack == AT_FSTRONG){
-    if ((window == 2 && window_timer == 6)  || (window == 3 && window_timer == 8)) && !has_hit {
+    if ((window == 2 && window_timer == 6)  || (window == 3 && window_timer == 7)) && !has_hit {
             sound_play(asset_get("sfx_absa_new_whip1"));
     }
 }

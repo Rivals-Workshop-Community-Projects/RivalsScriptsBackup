@@ -28,7 +28,7 @@ if state == PS_HITSTUN && hurt_img == 2 && !hitpause && jestermode == true{
 if state == PS_PARRY && jestermode == true{
     if state_timer == 0 and parry_spam_cancel == false{
         sound_play(sound_get("JMparry"));
-        rand_parry_sprite = random_func( 0, 3, true);
+        rand_parry_sprite = random_func( 0, 5, true);
         parry_spam_cancel = true;
     }
     	

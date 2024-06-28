@@ -485,7 +485,7 @@ SetAttack();
 	if (ai_target.y < y-64)
 	{
 		if (vsp > -1) jump_pressed = true;
-		if ((ai_target.y < y-32)) jump_down = true;
+		if (ai_target.y < y-112) jump_down = true;
 	}
 }
 

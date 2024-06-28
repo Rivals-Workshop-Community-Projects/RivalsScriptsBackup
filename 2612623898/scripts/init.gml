@@ -99,7 +99,7 @@ ground_friction = .5; //0.3 - 1 | How much you slide on the ground, lower is sli
 ** if you have lower gravity these should be lower numbers
 ** higher for higher gravity. 
 ** Try to make sure your character can double jump just barely to top platform on battlefield stages*/
-gravity_speed = .5; //average .3 - .6
+gravity_speed = .6; //average .3 - .6
 jump_speed = 12;  //value depends on gravity
 short_hop_speed = 7.4; //value depends on gravity
 djump_speed = 10.5; //value depends on gravity
@@ -138,44 +138,11 @@ prat_land_time = 12; // Normal range is 10-15, more if your character rarely ent
 
 //#endregion--------------------------------------------------------------------
 
-
 //------------------------------------------------------------------------------
 //Template Debug Messages Toggles-----------------------------------------------
 ssl_debug_enabled = true; //togles template debug messages.
 ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
 
-//#region Bar-Kun Dust--------------------------------------------------------
-bigfx = hit_fx_create( sprite_get("bigfx"), 30);
-smallfx = hit_fx_create( sprite_get("smallfx"), 30);
-//set_hit_particle_sprite( 1, sprite_get( "particle" ));
-dust_effect = [
-    hit_fx_create(sprite_get("dust_land"), 24),         //0  = land
-    1,                                                  //1  = bigger landing
-    hit_fx_create(sprite_get("dust_djump"), 22),        //2  = djump
-    -1,                                                 //3  = dash start (uses walk)
-    -1,                                                 //4  = dash (uses walk)
-    hit_fx_create(sprite_get("dust_walk"), 12),         //5  = walk
-    1,                                                  //6  = tech
-    1,                                                  //7  = hit bounce - back
-    hit_fx_create(sprite_get("dust_hitbounce"), 12),    //8  = hit bounce - front
-    1,                                                  //9  = parry shockwave
-    1,                                                  //10 = "fx_parry_bg"
-    hit_fx_create(sprite_get("dust_jump"), 12),         //11 = jump
-    1,                                                  //12 = dash attack dust
-    hit_fx_create(sprite_get("dust_knock"), 16),        //13 = knockback smoke
-    1,                                                  //14 = bigger knockback smoke
-    1,                                                  //15 = dash turn
-    1,                                                  //16 = wrastor djump
-    hit_fx_create(sprite_get("dust_fastfall"), 12),     //17 = fastfall
-    1,                                                  //18 = small hit bounce - back
-    -1,                                                 //19 = small hit bounce - front (uses bounce-front)
-    1,                                                  //20 = tech big
-    hit_fx_create(sprite_get("dust_killspark"), 30),    //21 = kill spark
-    hit_fx_create(sprite_get("dust_killspeed"), 20),    //22 = kill speedlines
-    hit_fx_create(sprite_get("dust_killslash"), 24),    //23 = kill "slash"
-    hit_fx_create(sprite_get("dust_killstar"), 34)      //24 = kill star particles
-];
-//#endregion--------------------------------------------------------------------
 
 
 /*
@@ -193,6 +160,91 @@ dust_effect = [
 */
 //------------------------------------------------------------------------------
 //#region  Do not Change for Smash Land ----------------------------------------
+
+
+//#region Dust FX --------------------------------------------------------------
+
+dust_trail_size = 12;
+for(var _i = 0; _i < dust_trail_size; _i++){
+    dust_trail[_i] = 
+    {x:x, y:y, sprite_index:sprite_get("dust_fly_large"), image_index:0, depth:depth, image_alpha:1, draw_angle:0, life:0}
+}
+dust_max_life = 16;
+dust_trail_position = 0;
+
+dust_effect = [
+    hit_fx_create(sprite_get("dust_land"), 24),         //0  = land
+    1,                                                  //1  = bigger landing
+    hit_fx_create(sprite_get("dust_djump"), 22),        //2  = djump
+    -1,                                                 //3  = dash start (uses walk)
+    -1,                                                 //4  = dash (uses walk)
+    hit_fx_create(sprite_get("dust_walk"), 12),         //5  = walk
+    1,                                                  //6  = tech
+    1,                                                  //7  = hit bounce - back
+    hit_fx_create(sprite_get("dust_hitbounce"), 12),    //8  = hit bounce - front
+    1,                                                  //9  = parry shockwave
+    1,                                                  //10 = "fx_parry_bg"
+    hit_fx_create(sprite_get("dust_jump"), 12),         //11 = jump
+    1,                                                  //12 = dash attack dust
+    hit_fx_create(sprite_get("dust_fly"), 16),        //13 = knockback smoke
+    1,                                                  //14 = bigger knockback smoke
+    1,                                                  //15 = dash turn
+    1,                                                  //16 = wrastor djump
+    hit_fx_create(sprite_get("dust_fastfall"), 12),     //17 = fastfall
+    1,                                                  //18 = small hit bounce - back
+    -1,                                                 //19 = small hit bounce - front (uses bounce-front)
+    1,                                                  //20 = tech big
+    hit_fx_create(sprite_get("dust_killspark"), 30),    //21 = kill spark
+    hit_fx_create(sprite_get("dust_killspeed"), 20),    //22 = kill speedlines
+    hit_fx_create(sprite_get("dust_killslash"), 24),    //23 = kill "slash"
+    hit_fx_create(sprite_get("dust_killstar"), 34)      //24 = kill star particles
+];
+
+//#endregion
+
+//Hud Variables
+ssl_hud_camera_x = -4;
+ssl_hud_camera_y = -4;
+ssl_hud_toggle = get_synced_var(player);
+
+ssl_hud_colors = [];
+for (var i = 0; i <= 3; i++) {
+    var col_R = get_color_profile_slot_r( get_player_color(player), i);
+    var col_G = get_color_profile_slot_g( get_player_color(player), i);
+    var col_B = get_color_profile_slot_b( get_player_color(player), i);
+    
+    array_insert(ssl_hud_colors, array_length(ssl_hud_colors),make_color_rgb(col_R, col_G , col_B));
+}
+
+x_pos_array = [
+    0,
+    377,
+    258,
+    139,
+    20
+]
+device_player = -4;
+
+player_count = 0;
+for (var i = 1; i <= 4; i++) {
+    if (is_player_on(i)) {
+        player_count++;
+    }
+}
+
+//------------------------------------------------------------------------------
+//#region Secret Alts-----------------------------------------------------------
+//These variables are used for the secret alt code.
+SecretColor = 0; //Current secret color
+ColorLock = 0;
+ColorLocked = false;
+
+//#endregion--------------------------------------------------------------------
+
+
+//rivals sfx
+waveland_sound = sound_get("nothing");
+air_dodge_sound = sound_get("nothing");
 
 //movement stats that you shouldn't change for smash land but can if you want
 walk_accel = 1; //only change if you want a walk and run which smash land shouldnt have
@@ -245,7 +297,7 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-//Tap Jump Protection System by @Danilo-PJ#3122
+//Tap Jump Protection System by @lamenor
 old_djumps = 0;
 dj_state_timer = 0;
 is_double_jump = false;
@@ -255,5 +307,8 @@ is_jumpsquat = false;
 strong_buffer = 0;
 strong_pressed = false;
 strong_was_pressed = false;
+
+//pokemon template values
+display_level = 0;
 
 //#endregion

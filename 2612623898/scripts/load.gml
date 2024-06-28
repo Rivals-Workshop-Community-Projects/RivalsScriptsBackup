@@ -38,9 +38,9 @@ sprite_change_offset("ustrong", 64, 158);
 sprite_change_offset("dstrong", 64, 96);
 sprite_change_offset("nspecial", 64, 96);
 sprite_change_offset("fspecial", 64, 96);
-sprite_change_offset("uspecial", 64, 126);
+sprite_change_offset("uspecial", 64, 128);
 sprite_change_offset("dspecial", 64, 96);
-sprite_change_offset("taunt", 64, 126);
+sprite_change_offset("taunt", 64, 128);
 
 sprite_change_offset("plat", 64, 96);
 
@@ -55,19 +55,21 @@ sprite_change_offset("hfx_medium", 96, 96);
 sprite_change_offset("hfx_big", 96, 96);
 sprite_change_offset("hfx_bigger", 128, 128);
 
-// Bar-Kun Dust
+// dust effects
 sprite_change_offset("dust_walk", 16, 32);
 sprite_change_offset("dust_land", 48, 32);
 sprite_change_offset("dust_jump", 36, 32);
 sprite_change_offset("dust_djump", 48, 16);
 sprite_change_offset("dust_fastfall", 14, 14);
-sprite_change_offset("dust_knock", 24, 24);
+sprite_change_offset("dust_fly_color", 40, 40);
+sprite_change_offset("dust_fly_large", 40, 40);
 sprite_change_offset("dust_hitbounce", 48, 96);
 sprite_change_offset("dust_killspark", 188, 202);
 sprite_change_offset("dust_killslash", 480, 32);
 sprite_change_offset("dust_killstar", 24, 24);
 sprite_change_offset("dust_killspeed", 960, 548);
 sprite_change_offset("dust_stage_explosion", 0, 256);
+
 sprite_change_offset("bigfx", 128, 164); 
 sprite_change_offset("smallfx", 128, 128); 
 sprite_change_offset("particle", 128, 128); 

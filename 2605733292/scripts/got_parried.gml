@@ -19,8 +19,32 @@ if (my_hitboxID.attack == AT_DSPECIAL){
         }
     }
 	*/
-}
 
+	if (instance_exists(currEssence)){
+		with(currEssence){
+			//hsp *= 0;
+			//vsp *= 0;
+			//hitbox_owner = player_id.hit_player;
+			wasStarParried = true;
+			starWasParriedAtLeastOnce = true;
+			
+			// checking to see who parried
+			if (player_id.hit_player != player_id.player){
+				//print("someone else parried")
+				personWhoParriedStar = player_id.hit_player;
+				//print(player_id.hit_player);
+				starWasHitByOwner = false;
+			} else {
+				//print("sleep kirby parried")
+				personWhoParriedStar = player_id.hit_player;
+				//print(player_id.hit_player);
+				starWasHitByOwner = true;
+				player_id.invince_time = 0; // prevents sleep kirby from getting parry invince from parrying his own star
+			}
+			//personWhoParriedStar = player_id.hit_player;
+		}
+	}
+}
 if (my_hitboxID.attack == AT_NSPECIAL){
 	//print(parry_lag);
 	set_state(PS_PRATLAND);

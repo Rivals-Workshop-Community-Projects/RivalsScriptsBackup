@@ -10,7 +10,7 @@
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 
 // Physical size
-char_height         = 56;       //                  not zetterburn's. this is just cosmetic anyway
+char_height         = 60;       //                  not zetterburn's. this is just cosmetic anyway
 knockback_adj       = 1;		// 0.9  -  1.2
 
 // Ground movement

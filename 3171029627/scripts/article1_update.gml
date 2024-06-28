@@ -34,7 +34,7 @@ if (shoulddie == true){
 state_timer++;
 
 //Adding potential % damage
-if(state_timer >= 60/(state+1)){
+if(state_timer >= 90/(state+1)){
 	state_timer = 0;
 	if(number_ones >= 9){
         if(number_tens >= 9){
@@ -44,12 +44,12 @@ if(state_timer >= 60/(state+1)){
             number_tens = 9;
         } else {
         	number_ones = 0;
-        	if (!player_id.dspecial_grab){
+        	if (!player_id.dspecial_grab && number_tens < 2){
             number_tens++;
         	}
         }
     } else {
-    	if (!player_id.dspecial_grab){
+    	if (!player_id.dspecial_grab && number_tens < 2){
         number_ones++;
     	}
     }

@@ -42,7 +42,7 @@ air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal ae
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .2; 
 prat_fall_accel = 1.2; //multiplier of air_accel while in pratfall
-air_friction = .03;
+air_friction = .04; //04
 max_djumps = 1;
 double_jump_time = 20; //the number of frames to play the djump animation. Can't be less than 31.
 wall_frames = 2;
@@ -52,8 +52,8 @@ walljump_time = 8;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .5;
-hitstun_grav = .5;
-knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+hitstun_grav = .52; //52
+knockback_adj = 1.18; //1.18 //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -65,7 +65,7 @@ set_victory_theme(sound_get("victory")); //Victory theme
 
 //heartbrake specific variables
 
-fspecial_cooldown = 45; //cooldown for fspecial. timer starts on move end, not on move start.
+fspecial_cooldown = 60; //cooldown for fspecial. timer starts on move end, not on move start.
 
 brake_timer = 0; //used for mid-attack air brakes
 air_timer = 0; //used for determining whether she has been in the air long enough to brake
@@ -224,10 +224,10 @@ heartBreakInProgress = false;
 //NOTE: to edit hitbox properties, go to extra_1.gml in the attacks folder.
 
 //heartBreakRadius: the radius of the split.
-heartBreakRadius = 60;
+heartBreakRadius = 50;
 
 //heartBreakDelay: how long the article waits until coming back together.
-heartBreakDelay = 300;
+heartBreakDelay = 12;
 
 //heartReassembleDelay: how long the heart will last reassembled
 heartReassembleDelay = 2;
@@ -236,20 +236,20 @@ heartReassembleDelay = 2;
 heartShakeMult = 3;
 
 //heartDistanceThreshold: if the heart is this far from the opponent it will move towards them.
-heartDistanceThreshold = 220;
+heartDistanceThreshold = 250;
 
 //heartTension: A lower number means less tension on the heart.  
 heartTension = (1/30)
 
 //heartFriction: The friction when slowing down
 // heartFriction = .5
-heartFriction = .6
+heartFriction = 0.9
 
 //heartLerpVal: Between 0 and 1. The lower this number is, the more smoothly (but slowly???) the heart will change direction.  
-heartLerpVal = 0.07
+heartLerpVal = 0.04
 
 //heartBreakMaxTimer: How long the break and the reformation take (respectively), in frames
-heartBreakMaxTimer = [25, 15];
+heartBreakMaxTimer = [14, 12];
 
 //heartBreakDetectSelf: Whether to detect yourself.
 heartBreakDetectSelf = false;

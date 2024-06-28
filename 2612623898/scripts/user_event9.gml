@@ -15,6 +15,28 @@ if(state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD)
 
 old_spr_dir = spr_dir;
 
+//Hud Variables ---------------------------------------------------------------
+if (!hitpause) {
+    ssl_hud_camera_x = view_get_xview();
+    ssl_hud_camera_y = view_get_yview();
+}
+with oPlayer {
+    if ("ssl_hud_toggle" in self and "temp_x" in self && temp_x == other.x_pos_array[other.player_count]) {
+        other.device_player = self;
+    }
+}
+if ("device_player" in self && instance_exists(device_player) && device_player.player == player) {
+  with oPlayer {
+    if ("ssl_hud_toggle" in self) {
+      ssl_hud_toggle = other.ssl_hud_toggle;
+    }
+  }
+}
+
+if (ssl_hud_toggle) {
+    draw_indicator = false;
+}
+
 #region //Tap Jump Protection Buffer-----------------------------------------
 if(state == PS_DOUBLE_JUMP){
     dj_state_timer = state_timer;
@@ -44,12 +66,13 @@ if(state == PS_JUMPSQUAT){
 
 #region //Strong Buffer for neutral strong input-----------------------------
 if(strong_down and strong_buffer <= 0 and !strong_was_pressed){
-    strong_buffer = 6;
+    strong_buffer = 10;//6
     strong_pressed = true;
     strong_was_pressed = true;
 } else if(!strong_down){
     strong_was_pressed = false;
-} else if (strong_buffer > 0){
+} 
+if (strong_buffer > 0){
     strong_buffer--;
     if(strong_buffer <= 0){
         strong_pressed = false;
@@ -105,3 +128,126 @@ with(oPlayer){
     }
 }
 #endregion
+
+//#region Secret alt color code //////////
+
+/* if (state == PS_PARRY && state_timer < 6){ // Turns off secret color during parry
+	ColorLocked = false;
+}
+else {
+	if (!ColorLocked && ColorLock = 1){
+		ColorLocked = true;
+	}
+} */
+
+if (!ColorLocked && ColorLock = 1){
+	ColorLocked = true;
+}
+
+if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice mode reload
+	if (spawn_timer < 100 && ColorLock == 0){
+
+		if (get_player_color(player) == 22){ // Colorful Secret Alt
+
+			// Brown - Alt Color Up + Taunt
+			if (up_down && !down_down && !left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 1;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+		    
+			// Pastel - Alt color Down + Taunt
+			if (!up_down && down_down && !left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 2;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+			
+			// Blue - Alt color Left + Taunt
+			if (!up_down && !down_down && left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Green & Red - Alt color Right + Taunt
+			if (!up_down && !down_down && !left_down && right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 4;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Red - Alt Color Up + Taunt + Jump
+			if (up_down && !down_down && !left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Yellow & Red - Alt Color Down + Taunt + Jump
+			if (!up_down && down_down && !left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Dark Blue - Alt Color Left + Taunt + Jump
+			if (!up_down && !down_down && left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 7;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Green & Blue - Alt Color Right + Taunt + Jump
+			if (!up_down && !down_down && !left_down && right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 8;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Sepia - Alt Color Up + Taunt + Attack
+			if (up_down && !down_down && !left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 9;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Yellow & Brown - Alt Color Down + Taunt + Attack
+			if (!up_down && down_down && !left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 10;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Grayscale - Alt Color Left + Taunt + Attack
+			if (!up_down && !down_down && left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 11;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Inverted - Alt Color Right + Taunt + Attack
+			if (!up_down && !down_down && !left_down && right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 12;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}		
+		
+		if (ColorLocked){
+			sound_play(asset_get("mfx_confirm"));
+		}
+	}
+}//#endregion

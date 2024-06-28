@@ -69,6 +69,10 @@ if state == PS_PARRY && jestermode == true{
     parry_spam_cancel = false;
 }
 
+if(state == PS_PRATLAND){
+	sprite_index = sprite_get("pratland");
+}
+
 switch state{
     case PS_FROZEN:
         spr_dir = prev_spr_dir;

@@ -1,12 +1,12 @@
-//Scratch and Bite by Trail Mix, Gnome and Spider Boi
+//Scratch and Bite by Mixmaw, Mallow and Spider Boi
 //Entry for the Black History Month workshop jam
 //Based on breakdancing, also known as "B-Boying/Girling" or "Breaking", dance and hip hop culture
 
 /* code credits:
 supersonic for skin handler template
-gnome and delta for most of the character specific specials code
+mallow and delta for most of the character specific specials code
 jpeg for awesome code help and swag feedback
-trail for normals/strongs
+mixmaw for normals/strongs
 */
 
 hurtbox_spr = sprite_get("sb_hurtbox");
@@ -153,7 +153,9 @@ vscratch = hit_fx_create( sprite_get("vfx_scratch"), 35 )
 uspec_stall = 4;        //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
 
 disk_speed = 10;        //fspec initial speed, bite's is 2 lower
-disk_uspeed = 15;       //uspec initial speed
+disk_uspeed = 14.5;       //uspec initial speed
+disk_uspeed_scratch = 14.5; //target uspec initial speed for scratch
+disk_uspeed_bite = 13;  //target uspec initial speed for bite
 disk_grav = 0.5;        //bite disk gravity
 //the following are all the time FROM THE START, not from eachother
 disk_timer_start = 20;  //time until scratch disc starts to go get backwards speed. acts normally until.

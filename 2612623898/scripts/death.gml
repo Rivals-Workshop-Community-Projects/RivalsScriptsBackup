@@ -1,11 +1,18 @@
 // ------------- death.gml -------------------
 // this file runs for one frame on death
 
+//#region // Local ---------------------------------------------------
+
+//#endregion
+
 
 sound_play(ssl_death_sound); //this plays when you die, change it in init for a different sound!
 
-//#region Bar-Kun Dust----------------------------------------------------------
-commit_asset_murder(instance_nearest(x, y, asset_get("stage_explosion_obj")));
+// This handles the blastzone death effect, switching the default for the SSL one, courtesy of Bar-kun
+var stage_explosion_obj = instance_nearest(x, y, asset_get("stage_explosion_obj"));
+var _x = get_instance_x(stage_explosion_obj)
+var _y = get_instance_y(stage_explosion_obj)
+commit_asset_murder(stage_explosion_obj);
 var check_x = 0;
 if (x > room_width) check_x = 1;
 else if (x < 0) check_x = -1;
@@ -42,10 +49,11 @@ switch (check_x)
         break;
 }
 
-var blast_fx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("dust_stage_explosion"), 32));
+var blast_fx = spawn_hit_fx(_x, _y, hit_fx_create(sprite_get("dust_stage_explosion"), 32));
 blast_fx.spr_dir = 1;
-blast_fx.x += lengthdir_x(90, fx_angle*45);
-blast_fx.y += lengthdir_y(90, fx_angle*45);
+// blast_fx.x += lengthdir_x(114, fx_angle*45);
+// blast_fx.y += lengthdir_y(114, fx_angle*45);
+print(fx_angle*45)
 blast_fx.draw_angle = fx_angle*45;
 
 #define commit_asset_murder(asset)
@@ -60,4 +68,3 @@ blast_fx.draw_angle = fx_angle*45;
         }
     }
 }
-//#endregion Bar-Kun Dust----------------------------------------------------------

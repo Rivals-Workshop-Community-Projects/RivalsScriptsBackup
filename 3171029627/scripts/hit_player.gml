@@ -117,6 +117,9 @@ switch(my_hitboxID.attack){
         	sound_play(sound_get("sfx_hit2"),false,noone,0.4);
     	}
     break;
+    case AT_UAIR:
+    	sound_play(asset_get("sfx_shovel_hit_heavy1"), false, noone, 0.5, 1);
+    break;
     case AT_DAIR:
 		if my_hitboxID.hbox_num == 1 {
         	sound_play(sound_get("sfx_hit1"),false,noone,0.5);

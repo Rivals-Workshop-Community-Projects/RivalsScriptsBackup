@@ -33,7 +33,7 @@ set_num_hitboxes(AT_FSPECIAL, 0);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2); 
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 18);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("needle"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
@@ -58,7 +58,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2); 
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 18);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 15);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("needle"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 24);

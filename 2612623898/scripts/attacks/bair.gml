@@ -24,7 +24,7 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_BAIR, 2);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -56);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 58);
@@ -42,7 +42,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 5);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -16);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 37);

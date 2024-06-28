@@ -188,7 +188,7 @@ switch (state){
 if (SleepKirby_up_b_into_nspec_happened == true){
 	SleepKirby_up_b_into_nspec_happened = false
 	set_state(PS_IDLE_AIR);
-	vsp = -12.5
+	vsp = -11.5;
 }
 
 //Nspecial Hud Image Index Stuff

@@ -68,7 +68,7 @@ sprite_change_offset("ohno", 32, 63);
 sprite_change_offset("bite_ohno", 32, 63);
 sprite_change_offset("dspec_mask", 64, 126);
 
-sprite_change_offset("disc", 15, 15);
+sprite_change_offset("disc", 14, 14);
 
 sprite_change_offset("vfx_scratch", 128, 128);
 sprite_change_offset("vfx_bite", 128, 128);

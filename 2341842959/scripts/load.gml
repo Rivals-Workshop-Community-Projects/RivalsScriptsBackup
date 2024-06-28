@@ -17,6 +17,7 @@ sprite_change_offset("walljump", 71, 94);
 sprite_change_offset("pratfall", 71, 94);
 sprite_change_offset("land", 71, 94);
 sprite_change_offset("landinglag", 71, 94);
+sprite_change_offset("pratland", 71, 94);
 
 sprite_change_offset("parry", 71, 94);
 sprite_change_offset("jestermodeparry", 71, 94);

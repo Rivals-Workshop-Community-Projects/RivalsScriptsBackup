@@ -50,6 +50,14 @@ bubbleY = 0;
 
 starHitSomeone = false;
 
+starWasParried = false;
+starWasParriedAtLeastOnce = false;
+wasStarParried = false;
+personWhoParriedStar = noone;
+whoActuallyControlsStar = player_id;
+
+starWasHitByOwner = false;
+
 // ------------------------------------------------
 // hitbox stuff
 can_get_hit = true;

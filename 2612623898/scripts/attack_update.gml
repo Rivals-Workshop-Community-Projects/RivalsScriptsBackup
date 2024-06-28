@@ -112,6 +112,7 @@ if (attack == AT_DAIR) {
 	    else {
 	    		//keep the grabbed player in hitstop until the grab is complete.
 	    		grabbed_player_obj.hitstop = 2;
+	    		grabbed_player_obj.hitstop_full = 4;
 	    		grabbed_player_obj.hitpause = true;
 	    		
 	    		//if this is the first frame of a window, store the grabbed player's relative position.
@@ -155,6 +156,7 @@ if (attack == AT_DAIR) {
 	if (window == 6) { 	
 		if (window_timer == 1 && !hitpause) {
 			vsp = -9;
+			hsp = -2 * spr_dir
 		}
 	}
 }
@@ -165,7 +167,7 @@ if (attack == AT_UTILT) {
 			var spawn_x = round(x + 64 * spr_dir)
 			var spawn_y = round(y)
 			
-			if (place_meeting(spawn_x, spawn_y + 2, asset_get("par_block"))) {
+			if (place_meeting(spawn_x, spawn_y + 2, asset_get("par_block")) || place_meeting(spawn_x, spawn_y + 2, asset_get("par_jumpthrough"))) {
 				var hit_fx = spawn_hit_fx(spawn_x, spawn_y, dust_effect[0]);
 				hit_fx.spr_dir = spr_dir 
 			}
@@ -197,4 +199,6 @@ if (attack == AT_UTILT) {
 	smoke.fade_offset = random_func(i+3, 7, true);
 	smoke.float_offset = -90 + random_func(i+4, 180, true);
 	smoke.hit = false;
+	if (has_hit_player && instance_exists(hit_player_obj))
+	smoke.can_hit[hit_player_obj.player] = false;
 }

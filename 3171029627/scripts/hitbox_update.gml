@@ -1,7 +1,10 @@
 //
 
 if (attack == AT_NSPECIAL){
-    if (was_parried) draw_xscale = spr_dir;
+    if (was_parried){ 
+        destroyed = true;
+        //draw_xscale = spr_dir;
+    }
     if (place_meeting(x+10*spr_dir,y-20,asset_get("par_block"))){
         destroyed = true;
     }

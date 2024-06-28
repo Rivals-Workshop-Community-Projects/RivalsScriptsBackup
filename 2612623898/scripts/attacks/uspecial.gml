@@ -31,7 +31,6 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.35);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
@@ -158,7 +157,7 @@ set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE, 361);
 set_hitbox_value(AT_USPECIAL, 6, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USPECIAL, 6, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_USPECIAL, 6, HG_BASE_HITPAUSE, 18);
-set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, bigfx);
+set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, hfx_ssl_bigger);
 set_hitbox_value(AT_USPECIAL, 6, HG_HIT_SFX, sound_get("smoke"));
 set_hitbox_value(AT_USPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_GROUP, 2);

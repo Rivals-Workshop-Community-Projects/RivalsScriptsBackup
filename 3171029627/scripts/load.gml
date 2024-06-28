@@ -64,7 +64,7 @@ sprite_change_offset("hfx_torment_tiny", 200, 200);
 sprite_change_offset("hfx_torment_small", 200, 200);
 sprite_change_offset("hfx_torment_large", 200, 200);
 
-sprite_change_offset("spear", 100, 6);
+sprite_change_offset("spear", 110, 6);
 sprite_change_offset("spear_fragment_1", 38, 4);
 sprite_change_offset("spear_fragment_2", 26, 4);
 sprite_change_offset("torment_spears", 150, 150);

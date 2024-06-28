@@ -76,7 +76,7 @@ if (attack == AT_EXTRA_1){
 	}
 	
 	if (window == 4){
-		if (window_timer == 1){
+		if (window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			vsp = -1.5;
 			hsp = 6*spr_dir;
 			spawn_hit_fx(x, y+4, hit_vbrake);
@@ -85,7 +85,7 @@ if (attack == AT_EXTRA_1){
 	}
 	
 	if (window == 5){
-		if (window_timer == 1){
+		if (window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			vsp = -1.5;
 			hsp = -6*spr_dir;
 			spawn_hit_fx(x, y+4, hit_vbrake);
@@ -108,7 +108,7 @@ if (attack == AT_USPECIAL){
 		hsp = 2.5*spr_dir;
 	}
 	
-	if (window == 2 && window_timer == 1){
+	if (window == 2 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		if (!hitpause && uspecial_loops == 0){
 			free = true;
 			vsp = -12;
@@ -496,3 +496,12 @@ if (len != 0)
 		}
 	}
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

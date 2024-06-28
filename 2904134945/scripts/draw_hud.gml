@@ -193,6 +193,16 @@ if ("practice" in self)
 						AddText("v1.6.3 - 11 Dec 2023");
 						AddText("");
 						AddText("Replaced Fez alt with Ketsukane alt");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.6.4 - 11 Jun 2024");
+						AddText("");
+						AddText("Optimized sprite file sizes");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.6.5 - 26 Jun 2024");
+						AddText("");
+						AddText("Upgraded flag outline system");
 						break;
 				}
 				DrawTutorialBlock();

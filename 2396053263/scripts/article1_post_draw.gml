@@ -6,8 +6,8 @@ if (player_id.heartDebug)
     if (instance_exists(heartDetectedPlayer))
     {
         var heart_threshold, xx, yy, heartx, hearty;
-        xx = clamp(x, heartDetectedPlayer.bbox_left, heartDetectedPlayer.bbox_right);
-        yy = clamp(y, heartDetectedPlayer.bbox_top, heartDetectedPlayer.bbox_bottom);
+        xx = clamp(x, heartDetectedPlayer.bbox_left, heartDetectedPlayer.bbox_right); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        yy = clamp(y, heartDetectedPlayer.bbox_top, heartDetectedPlayer.bbox_bottom); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         // diff = sqrt(sqr(xx-x) + sqr(yy-y))
         
         //val = [heartDetectedPlayer.x, heartDetectedPlayer.y - (heartDetectedPlayer.char_height * .5) ]
@@ -16,8 +16,8 @@ if (player_id.heartDebug)
         // xx = clamp(x, val[0] - threshold[0], val[0] + threshold[0])
         // yy = clamp(y, val[1] - threshold[1], val[1] + threshold[1])
         
-        heartx = [x - heart_threshold[0], x + heart_threshold[0]]
-        hearty = [y - heart_threshold[1], y + heart_threshold[1]]
+        heartx = [x - heart_threshold[0], x + heart_threshold[0]] // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        hearty = [y - heart_threshold[1], y + heart_threshold[1]] // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         
         //heartShouldClose = findPoint(xx,yy,heartx[0],hearty[0],heartx[1],hearty[1]);
         

@@ -67,9 +67,11 @@ heartHitPlayer();
 // }
 
 //Check conditions
-var found;
+var found, hasMikuCloneVariable, isMiku;
 found = array_find_index(heartAttacks, my_hitboxID.attack);
-if (!my_hitboxID.was_parried and !hit_player_obj.clone and hit_player_obj.heartChainPlayer == noone and found != -1 and (array_find_index(heartAttackNumbers[found], my_hitboxID.hbox_num) != -1 or heartAttackNumbers[found][0] == -1) and !heartBreakInProgress)
+hasMikuCloneVariable = ("custom_clone" in hit_player_obj);
+mikuHandler = !hasMikuCloneVariable or (hasMikuCloneVariable and !hit_player_obj.custom_clone);
+if (!my_hitboxID.was_parried and !hit_player_obj.clone and mikuHandler and hit_player_obj.heartChainPlayer == noone and found != -1 and (array_find_index(heartAttackNumbers[found], my_hitboxID.hbox_num) != -1 or heartAttackNumbers[found][0] == -1) and !heartBreakInProgress)
 {
     //play a sound
     sound_play(sound_get("heart_applied"))
@@ -138,4 +140,3 @@ for (var t = 0; t < array_length_1d(heartChains); t++)
 }
 
 return t;
-

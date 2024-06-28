@@ -15,14 +15,16 @@ if (attack == AT_FSPECIAL)
         case 0:
             damage = 3;
             kb_value = 6;
+            effect = 12;
             break;
         case 1:
             damage = 2;
-            kb_value = 2;
+            kb_value = 1;
+            effect = 12;
             break;
         case 2:
             damage = 1;
-            kb_value = 0.1;
+            kb_value = 0;
             effect = 9; //polite
             break;
     }

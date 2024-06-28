@@ -1,14 +1,5 @@
 //crash prevention line
 
-//parry testing lol
-/*with(oPlayer){
-	if(state == PS_IDLE && self != other){
-		set_attack(AT_UTILT);
-		//state_timer = 4;
-		//state_timer--;
-	}
-}//*/
-
 if(get_synced_var(player) == 1 && init_swap){
     swap();
     init_swap = false;
@@ -20,6 +11,11 @@ currentimage = image_index
 //check if scratch or bite
 is_bite = has_skin();
 
+if (is_bite){
+    disk_uspeed = disk_uspeed_bite;
+} else {
+    disk_uspeed = disk_uspeed_scratch;
+}
 
 if(assist != noone && assist.state != 3 && state_cat == SC_HITSTUN){
     assist.shoulddie = true;

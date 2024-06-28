@@ -125,4 +125,3 @@ set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 5, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-

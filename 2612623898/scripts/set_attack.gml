@@ -1,7 +1,7 @@
 //Modify this file if you want to change what buttons send to what attacks.
 //This file runes frame 0 of an attack and is used to make everything go to one button for smash land.
 //Any edits you want to do should go at the marked section at the bottom of this file.
-#region //Air Attacks
+//#region //Air Attacks
 if (free){
   
     switch (attack){
@@ -23,24 +23,25 @@ if (free){
             
             break;
         case AT_UAIR:
-        case AT_USPECIAL:
-        	if(tap_jump_protection_enabled){
-                if((is_double_jump //catches frame 1+ doublejumps
-                    or (prev_state != PS_JUMPSQUAT and (jump_down and !jump_counter) and old_djumps == djumps and djumps != max_djumps) ) //catches frame 0 doublejumps
-                     and dj_state_timer < 5) //limits to the first 5 frames
+            if(tap_jump_protection_enabled and move_cooldown[AT_UAIR] == 0){
+                if((is_double_jump and dj_state_timer < 5 //catches frame 1+ doublejumps
+                    or (prev_state != PS_JUMPSQUAT and jump_down and !jump_counter and !jump_pressed and djumps != max_djumps))) //catches frame 0 doublejumps
                 {
-                    if(ssl_debug_enabled) {print("Double jump refunded.")}
-                    djumps--;
+                        if(ssl_debug_enabled) {print("Double jump refunded.")}
+                        djumps--;
                 }else{
-                    tap_jump_debug()
+                    tap_jump_debug();
                 }
-            } else {
-                if((is_double_jump //catches frame 1+ doublejumps
-                    or (prev_state != PS_JUMPSQUAT and (jump_down and !jump_counter) and old_djumps == djumps and djumps != max_djumps) ) //catches frame 0 doublejumps
-                     and dj_state_timer < 5) //limits to the first 5 frames
+            }
+        case AT_USPECIAL:
+            if (!tap_jump_protection_enabled){
+            if((is_double_jump and dj_state_timer < 5 //catches frame 1+ doublejumps
+                    or (prev_state != PS_JUMPSQUAT and jump_down and !jump_counter and !jump_pressed and djumps != max_djumps))) //catches frame 0 doublejumps
                 {
-                    if(ssl_debug_enabled) {print("Double jump removed.")}
-                    djumps++;
+                    if(special_pressed){
+                        if(ssl_debug_enabled) {print("Double jump removed.")}
+                        djumps++;
+                    }
                 }else{
                     tap_jump_debug();
                 }
@@ -57,14 +58,11 @@ if (free){
             
             break;
         case AT_FAIR:
-            if(!(left_pressed or left_down) and !(right_pressed or right_down) and !(right_stick_down or left_stick_down)){//Srong Neutral Press
-                attack = AT_NAIR;
-            }
             break;
     }
-    #endregion
+//#endregion
     
-#region //Grounded Attacks
+//#region //Grounded Attacks
 }else{
     switch (attack){
         case AT_FSPECIAL:
@@ -95,17 +93,13 @@ if (free){
             attack = AT_FTILT;
             break;
         case AT_FSTRONG:
-            if(!(left_pressed or left_down) and !(right_pressed or right_down) and !(right_stick_down or left_stick_down)){//Srong Neutral Press
-                attack = AT_JAB;
-            }else{
-                attack = AT_FTILT;
-            }
+            attack = AT_FTILT;
             break;
     }
 }
-#endregion
+//#endregion
 
-#region //Srong Neutral Press
+//#region //Srong Neutral Press
 if(strong_down and !(down_down or up_down or left_down or right_down)){
     if(free){
         attack = AT_NAIR;
@@ -113,7 +107,7 @@ if(strong_down and !(down_down or up_down or left_down or right_down)){
         attack = AT_JAB;
     }
 }
-#endregion
+//#endregion
 
 //IF YOU WANT TO CHANGE ATTACKS IN OR SET VALUES FOR FRAME 0 OF AN ATTACK DO IT
 //BELOW THIS COMMENT------------------------------------------------------------
