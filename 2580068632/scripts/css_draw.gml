@@ -30,13 +30,13 @@ alt_name[17] = "Pure Gold";
 alt_name[18] = "Ranked Gold";
 alt_name[19] = "Champion";
 alt_name[20] = "Sword Knight";
-alt_name[21] = "Captain Vul";
-alt_name[22] = "Right Back at Ya";
-alt_name[23] = "Novel";
-alt_name[24] = "Phantom";
-alt_name[25] = "Parallel";
-alt_name[26] = "Game Colors";
-alt_name[27] = "Tournament";
+alt_name[21] = "Right Back at Ya";
+alt_name[22] = "Novel";
+alt_name[23] = "Phantom";
+alt_name[24] = "Parallel";
+alt_name[25] = "Game Colors";
+alt_name[26] = "Tournament A";
+alt_name[27] = "Tournament B";
  
 //Alt
  

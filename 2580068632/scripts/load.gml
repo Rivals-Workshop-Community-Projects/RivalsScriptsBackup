@@ -56,8 +56,8 @@ sprite_change_offset("utilt", 92, 138);
 //Aerials
 sprite_change_offset("nair", 92, 138);
 sprite_change_offset("nair_wings", 92, 138);
-sprite_change_offset("fair", 92, 138);
-sprite_change_offset("fair_wings", 92, 138);
+sprite_change_offset("fair", 98, 130);
+sprite_change_offset("fair_wings", 98, 130);
 sprite_change_offset("bair", 92, 138);
 sprite_change_offset("bair_wings", 92, 138);
 sprite_change_offset("uair", 92, 138);

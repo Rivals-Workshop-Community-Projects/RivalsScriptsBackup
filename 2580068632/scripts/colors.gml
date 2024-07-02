@@ -236,75 +236,75 @@ set_color_profile_slot( 20, 5, 243, 233, 57 ); //Eye Color
 set_color_profile_slot( 20, 6, 211, 235, 249 ); //Galaxia
 set_color_profile_slot( 20, 7, 238, 211, 82 ); //Gem
 
-// Captain Vul
-set_color_profile_slot( 21, 0, 232, 176, 96 ); //Body
-set_color_profile_slot( 21, 1, 238, 248, 255 ); //Mask
-set_color_profile_slot( 21, 2, 232, 176, 96 ); //Shoes
-set_color_profile_slot( 21, 3, 255, 240, 207 ); //Armor Pads + Cape
-set_color_profile_slot( 21, 4, 248, 0, 0 ); //Lining
-set_color_profile_slot( 21, 5, 0, 116, 255 ); //Eye Color
-set_color_profile_slot( 21, 6, 243, 233, 57 ); //Galaxia
-set_color_profile_slot( 21, 7, 255, 0, 0 ); //Gem
-
 // Anime - Right Back at ya
-set_color_profile_slot( 22, 0, 73, 97, 167 ); //Body
-set_color_profile_slot( 22, 1, 214, 233, 252 ); //Mask
-set_color_profile_slot( 22, 2, 122, 84, 196 ); //Shoes
-set_color_profile_slot( 22, 3, 31, 66, 134 ); //Armor Pads + Cape
-set_color_profile_slot( 22, 4, 212, 178, 91 ); //Lining
-set_color_profile_slot( 22, 5, 237, 237, 12 ); //Eye Color
-set_color_profile_slot( 22, 6, 250, 208, 40 ); //Galaxia
-set_color_profile_slot( 22, 7, 214, 45, 42 ); //Gem
+set_color_profile_slot( 21, 0, 73, 97, 167 ); //Body
+set_color_profile_slot( 21, 1, 214, 233, 252 ); //Mask
+set_color_profile_slot( 21, 2, 122, 84, 196 ); //Shoes
+set_color_profile_slot( 21, 3, 31, 66, 134 ); //Armor Pads + Cape
+set_color_profile_slot( 21, 4, 212, 178, 91 ); //Lining
+set_color_profile_slot( 21, 5, 237, 237, 12 ); //Eye Color
+set_color_profile_slot( 21, 6, 250, 208, 40 ); //Galaxia
+set_color_profile_slot( 21, 7, 214, 45, 42 ); //Gem
 
 // Monochrome - Novel Appearance
-set_color_profile_slot( 23, 0, 81, 81, 81 ); //Body
-set_color_profile_slot( 23, 1, 241, 241, 241 ); //Mask
-set_color_profile_slot( 23, 2, 98, 98, 98 ); //Shoes
-set_color_profile_slot( 23, 3, 123, 123, 123 ); //Armor Pads + Cape
-set_color_profile_slot( 23, 4, 222, 222, 222 ); //Lining
-set_color_profile_slot( 23, 5, 255, 255, 255 ); //Eye Color
-set_color_profile_slot( 23, 6, 246, 246, 246 ); //Galaxia
-set_color_profile_slot( 23, 7, 125, 125, 125 ); //Gem
+set_color_profile_slot( 22, 0, 81, 81, 81 ); //Body
+set_color_profile_slot( 22, 1, 241, 241, 241 ); //Mask
+set_color_profile_slot( 22, 2, 98, 98, 98 ); //Shoes
+set_color_profile_slot( 22, 3, 123, 123, 123 ); //Armor Pads + Cape
+set_color_profile_slot( 22, 4, 222, 222, 222 ); //Lining
+set_color_profile_slot( 22, 5, 255, 255, 255 ); //Eye Color
+set_color_profile_slot( 22, 6, 246, 246, 246 ); //Galaxia
+set_color_profile_slot( 22, 7, 125, 125, 125 ); //Gem
 
 // Lime - Phantom
-set_color_profile_slot( 24, 0, 115, 215, 155 ); //Body
-set_color_profile_slot( 24, 1, 255, 214, 222 ); //Mask
-set_color_profile_slot( 24, 2, 145, 82, 138 ); //Shoes
-set_color_profile_slot( 24, 3, 43, 204, 138 ); //Armor Pads + Cape
-set_color_profile_slot( 24, 4, 255, 117, 248 ); //Lining
-set_color_profile_slot( 24, 5, 255, 117, 248 ); //Eye Color
-set_color_profile_slot( 24, 6, 231, 232, 111 ); //Galaxia
-set_color_profile_slot( 24, 7, 231, 96, 98 ); //Gem
+set_color_profile_slot( 23, 0, 115, 215, 155 ); //Body
+set_color_profile_slot( 23, 1, 255, 214, 222 ); //Mask
+set_color_profile_slot( 23, 2, 145, 82, 138 ); //Shoes
+set_color_profile_slot( 23, 3, 43, 204, 138 ); //Armor Pads + Cape
+set_color_profile_slot( 23, 4, 255, 117, 248 ); //Lining
+set_color_profile_slot( 23, 5, 255, 117, 248 ); //Eye Color
+set_color_profile_slot( 23, 6, 231, 232, 111 ); //Galaxia
+set_color_profile_slot( 23, 7, 231, 96, 98 ); //Gem
 
 // Black - Parallel
-set_color_profile_slot( 25, 0, 0, 0, 0 ); //Body
-set_color_profile_slot( 25, 1, 200, 163, 87 ); //Mask
-set_color_profile_slot( 25, 2, 127, 84, 40 ); //Shoes
-set_color_profile_slot( 25, 3, 144, 84, 59 ); //Armor Pads + Cape
-set_color_profile_slot( 25, 4, 255, 242, 0 ); //Lining
-set_color_profile_slot( 25, 5, 255, 1, 1 ); //Eye Color
-set_color_profile_slot( 25, 6, 219, 142, 3 ); //Galaxia
-set_color_profile_slot( 25, 7, 241, 2, 1 ); //Gem
+set_color_profile_slot( 24, 0, 0, 0, 0 ); //Body
+set_color_profile_slot( 24, 1, 200, 163, 87 ); //Mask
+set_color_profile_slot( 24, 2, 127, 84, 40 ); //Shoes
+set_color_profile_slot( 24, 3, 144, 84, 59 ); //Armor Pads + Cape
+set_color_profile_slot( 24, 4, 255, 242, 0 ); //Lining
+set_color_profile_slot( 24, 5, 255, 1, 1 ); //Eye Color
+set_color_profile_slot( 24, 6, 219, 142, 3 ); //Galaxia
+set_color_profile_slot( 24, 7, 241, 2, 1 ); //Gem
 
 // Navy - Game Colors
-set_color_profile_slot( 26, 0, 25, 35, 113 ); //Body
-set_color_profile_slot( 26, 1, 245, 249, 255 ); //Mask
-set_color_profile_slot( 26, 2, 118, 57, 123 ); //Shoes
-set_color_profile_slot( 26, 3, 124, 110, 172 ); //Armor Pads + Cape
-set_color_profile_slot( 26, 4, 187, 159, 71 ); //Lining
-set_color_profile_slot( 26, 5, 251, 243, 0 ); //Eye Color
-set_color_profile_slot( 26, 6, 255, 253, 40 ); //Galaxia
-set_color_profile_slot( 26, 7, 231, 31, 30 ); //Gem
+set_color_profile_slot( 25, 0, 25, 35, 113 ); //Body
+set_color_profile_slot( 25, 1, 245, 249, 255 ); //Mask
+set_color_profile_slot( 25, 2, 118, 57, 123 ); //Shoes
+set_color_profile_slot( 25, 3, 124, 110, 172 ); //Armor Pads + Cape
+set_color_profile_slot( 25, 4, 187, 159, 71 ); //Lining
+set_color_profile_slot( 25, 5, 251, 243, 0 ); //Eye Color
+set_color_profile_slot( 25, 6, 255, 253, 40 ); //Galaxia
+set_color_profile_slot( 25, 7, 231, 31, 30 ); //Gem
 
 // Tourney - Landkon
-set_color_profile_slot( 27, 0, 52, 53, 82 ); //Body
-set_color_profile_slot( 27, 1, 255, 245, 238 ); //Mask
-set_color_profile_slot( 27, 2, 73, 52, 82 ); //Shoes
-set_color_profile_slot( 27, 3, 52, 53, 82 ); //Armor Pads + Cape
-set_color_profile_slot( 27, 4, 255, 171, 230 ); //Lining
-set_color_profile_slot( 27, 5, 255, 171, 230 ); //Eye Color
-set_color_profile_slot( 27, 6, 255, 171, 230 ); //Galaxia
-set_color_profile_slot( 27, 7, 52, 53, 82 ); //Gem
+set_color_profile_slot( 26, 0, 52, 53, 82 ); //Body
+set_color_profile_slot( 26, 1, 255, 245, 238 ); //Mask
+set_color_profile_slot( 26, 2, 73, 52, 82 ); //Shoes
+set_color_profile_slot( 26, 3, 52, 53, 82 ); //Armor Pads + Cape
+set_color_profile_slot( 26, 4, 255, 171, 230 ); //Lining
+set_color_profile_slot( 26, 5, 255, 171, 230 ); //Eye Color
+set_color_profile_slot( 26, 6, 255, 171, 230 ); //Galaxia
+set_color_profile_slot( 26, 7, 52, 53, 82 ); //Gem
+
+// Waga Baga Bobo
+set_color_profile_slot( 27, 0, 0, 0, 0 ); //Body
+set_color_profile_slot( 27, 1, 253, 200, 246 ); //Mask
+set_color_profile_slot( 27, 2, 134, 12, 187 ); //Shoes
+set_color_profile_slot( 27, 3, 134, 12, 187 ); //Armor Pads + Cape
+set_color_profile_slot( 27, 4, 134, 12, 187 ); //Lining
+set_color_profile_slot( 27, 5, 0, 0, 0 ); //Eye Color
+set_color_profile_slot( 27, 6, 244, 237, 249 ); //Galaxia
+set_color_profile_slot( 27, 7, 183, 142, 249 ); //Gem
 
 // Ice Blue - Fransisca
 set_color_profile_slot( 28, 0, 121, 69, 136 ); //Body

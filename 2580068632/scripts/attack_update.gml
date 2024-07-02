@@ -460,6 +460,7 @@ if (attack == AT_NSPECIAL){
 		}
 	}
 	if (window == 5){
+		//can_move = false;
 		if (window_timer < 4 && vsp > -4){
 			//vsp = -4
 		}

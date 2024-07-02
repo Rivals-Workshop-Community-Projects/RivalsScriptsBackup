@@ -56,3 +56,9 @@ if (get_player_color(player) == 21){
 if (get_player_color(player) == 22){
 	set_character_color_shading( 0, 0.5 );
 }
+
+if (get_player_color(player) == 23){
+	set_character_color_shading( 0, 1.15 );
+	set_character_color_shading( 1, 1.075 );
+	set_character_color_shading( 3, 1.075 );
+}
