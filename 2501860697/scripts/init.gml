@@ -196,7 +196,7 @@ short_timer_min = 0;
 venom_recharge = 0;
 venom_recharge_active = false;
 venom_recharge_rate = 0.1;
-venom_recharge_max = 300;
+venom_recharge_max = 200;
 venom_recharge_min = 0;
 venom_stack = 0;
 
@@ -238,7 +238,7 @@ lasercharged = false;
 //Uspecial
 ztc_uspecial_angle = 90; //current direction
 ztc_uspecial_hits_max = 2; //Number of consecutive hits possible
-ztc_uspecial_speed = 14; //speed of launch
+ztc_uspecial_speed = 13; //speed of launch
 ztc_uspecial_angling = 3; //speed at which angling changes
 
 footcharge_vfx = hit_fx_create( sprite_get( "vfx_footcharge" ), 9 );

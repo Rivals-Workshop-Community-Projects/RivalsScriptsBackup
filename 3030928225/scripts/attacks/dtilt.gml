@@ -4,7 +4,7 @@ set_attack_value(atk, AG_SPRITE, sprite_get("dtilt"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 7);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));

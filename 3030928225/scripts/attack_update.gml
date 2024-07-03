@@ -1057,7 +1057,7 @@ switch (attack) {
 				vsp = -2;
 				nspecial_air_stall_available = false;
 			} else {
-					vsp = 1;
+					vsp = 2;
 			}
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
