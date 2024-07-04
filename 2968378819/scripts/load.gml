@@ -54,7 +54,7 @@ sprite_change_offset("taunt", 38, 80);
 sprite_change_offset("jestermodeuphurt", 39, 73);
 sprite_change_offset("jestermodebighurt", 39, 86);
 sprite_change_offset("jestermodedownhurt", 45, 82);
-sprite_change_offset("jestermodeparry", 82, 122);
+sprite_change_offset("jestermodeparry", 80, 126);
 
 sprite_change_offset("plat_draw", 84, -1);
 
