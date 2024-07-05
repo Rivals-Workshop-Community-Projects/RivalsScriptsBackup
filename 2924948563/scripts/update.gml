@@ -64,11 +64,6 @@ if (attacking && !hitpause) {
             sound_playing = noone;
         }
         
-        if (window == 4) {
-        	vsp = 0;
-        } else if (window == 7) {
-        	vsp = 0;
-        }
     break;
     case AT_FSPECIAL:
     	// Put here so it immediately gets grounded, rather than a frame after touching ground
@@ -86,7 +81,7 @@ if (attacking && !hitpause) {
     		case 6:
     			if (window != 6) {
     				if (has_walljump) {
-    					if (position_meeting(x + (spr_dir == 1 ? 19 : -20), y - 20, asset_get("par_block"))) {
+    					if (position_meeting(x + (19 * spr_dir), y - 20, asset_get("par_block"))) {
     						spr_dir *= -1;
     						set_state(PS_WALL_JUMP);
     						sound_play(land_sound);
@@ -105,8 +100,15 @@ if (attacking && !hitpause) {
     		break;
     		case 4:
     			if (!free && free_time > 0) {
+    				print(was_parried);
     				landing_lag_time = glide_landing_lag_time;
-    				set_state(PS_LANDING_LAG);
+    				if (was_parried) {
+    					var land_dust = spawn_dust_fx(x, y, asset_get("fx_land_bg"), 24);
+			            land_dust.dust_color = 0;
+			            land_dust.fg_index = asset_get("fx_land_fg");
+			            sound_play(landing_lag_sound);
+    				}
+    				set_state(was_parried ? PS_PRATLAND : PS_LANDING_LAG);
     			}
     		break;
     		case 5:
@@ -117,43 +119,29 @@ if (attacking && !hitpause) {
     	}
     break;
 	case AT_DSPECIAL:
+		var landing = false;
 		if (window == 1 && (free || !freemd)) {
 			set_attack(AT_DSPECIAL_AIR);
-		} else if (window == 1 && window_timer == 0) {
-			mound_1 = noone;
-			mound_2 = noone;
+		}
+		if (window == 2 && dig_timer == 0) {
+			var current_mound = instance_create(x,y,"obj_article1");
 			if (instance_exists(orig_mound1)) {
-				orig_mound1.state = 2;
+				orig_mound1.state = 2;	
 				orig_mound1.state_timer = 0;
 			}
+			mound_1 = current_mound;orig_mound1 = current_mound;
 			if (instance_exists(orig_mound2)) {
 				orig_mound2.state = 2;
 				orig_mound2.state_timer = 0;
 			}
-		}
-		if (window == 2 && dig_timer == 0) {
-			var current_mound = instance_create(x,y,"obj_article1");
-			mound_1 = current_mound;
-			orig_mound1 = current_mound;
 		} else if (window == 3 && window_timer == 0) {
-            if (instance_exists(mound_1)) {
-                if (place_meeting(x, y, mound_1)) {
-                	x = mound_1.x + (spr_dir != mound_1.spr_dir ? 10 : 0) * spr_dir;
-                }
-            }
-            if (instance_exists(mound_2)) {
-                if (place_meeting(x, y, mound_2)) {
-                    x = mound_2.x - (spr_dir != mound_2.spr_dir ? 6 : 17) * spr_dir;
-                }   
-            }
 			if (state_timer != 0) {
 				var current_mound = instance_create(x,y,"obj_article1");
 				if (instance_exists(orig_mound2)) {
 					orig_mound2.state = 2;
 					orig_mound2.state_timer = 0;
 				}
-				mound_2 = current_mound;
-				orig_mound2 = current_mound;
+				mound_2 = current_mound;orig_mound2 = current_mound;
 			}
 		} else if (window == 4 && window_timer == 0) {
 			if (instance_exists(mound_1)) {
@@ -169,31 +157,42 @@ if (attacking && !hitpause) {
 				}
 			}
 			
+		} else if (window == 5) {
+			if (!free) {
+				if (was_parried) {
+					var land_dust = spawn_dust_fx(x, y, asset_get("fx_land_bg"), 24);
+		            land_dust.dust_color = 0;
+		            land_dust.fg_index = asset_get("fx_land_fg");
+		            sound_play(landing_lag_sound);
+				}
+				set_state(was_parried ? PS_PRATLAND : PS_LANDING_LAG);
+	            landing = true;
+			}
 		}
-		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		if (!landing) {
+			hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		} else {
+			hurtboxID.sprite_index = hurtbox_spr;
+		}
 	break;
 	case AT_DSPECIAL_AIR:
 		fall_through = true;
 		if (window == 2 && !free && freemd) {
 			window = 3;
 			window_timer = 0;
-			if (!(place_meeting(x, y, mound_1) && abs(x - mound_1.x) <= mound_closeness) && !(place_meeting(x, y, mound_2) && abs(x - mound_2.x) <= mound_closeness)) {
-				mound_1 = noone;
-				mound_2 = noone;
-				if (instance_exists(orig_mound1)) {
-					orig_mound1.state = 2;
-					orig_mound1.state_timer = 0;
-				}
-				if (instance_exists(orig_mound2)) {
-					orig_mound2.state = 2;
-					orig_mound2.state_timer = 0;
-				}
-			}
 		}
 		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 	break;
 	case AT_DSPECIAL_2:
 		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		if window == 1 && window_timer == 1{
+        		with pHitBox {
+                    if player_id == other and attack == AT_DSPECIAL_AIR and type == 1 {
+                        destroyed = true;
+                        instance_destroy();
+                    }
+                }
+    		}
 	break;
     }
 } else if (sound_playing != noone) {
@@ -209,6 +208,9 @@ if (state != PS_WALL_JUMP) {
 	cling_timer = 0;
 	wall_climbing = false;
 	wall_climb_timer = 0;
+	if (ledge_getup && (state == PS_LAND || state == PS_LANDING_LAG || state == PS_PRATLAND)) {
+		hurtboxID.sprite_index = hurtbox_spr;
+	}
 	ledge_getup = false;
 	ledge_snapped = false;
 	ledge_getup_timer = 0;
@@ -274,12 +276,13 @@ if (state == PS_CROUCH || (attacking && ((attack == AT_DSPECIAL && window == 1 &
 }
 
 with (asset_get("obj_article1"))
-if (player_id.url == other.url && place_meeting(x, y, other.id) && abs(other.x - x) <= other.mound_closeness && !other.free && !other.attacking) {
+if (player_id.url == other.url && place_meeting(x, y, other.id) && !other.free && !other.attacking){
 	other.mound_1 = player_id.orig_mound1;
 	other.mound_2 = player_id.orig_mound2;
 }
     
 if (state == PS_WALL_JUMP && ledge_getup) {
+	var landed = false;
 	wall_jump_timer = 0;
 	if (ledge_snapped) {
 		if (!hitpause) {
@@ -289,7 +292,8 @@ if (state == PS_WALL_JUMP && ledge_getup) {
 			spr_dir *= -1;
 			x += 30 * spr_dir;
 			y -= max_climb_height - 6;
-			set_state(PS_LAND);
+			set_state(was_parried ? PS_PRATLAND : PS_LAND);
+			var landed = true;
 		}
 	} else {
 		var y_point_of_block = max_climb_height;
@@ -302,30 +306,29 @@ if (state == PS_WALL_JUMP && ledge_getup) {
 		y -= (y_point_of_block - max_climb_height);
 		ledge_snapped = true;
 	}
+	if (!landed) {
+		var percentage = ((ledge_getup_timer%ledge_getup_frames)/ledge_getup_frames);
+		var cur_frame = floor(ledge_getup_anim_frames * percentage) + 1;
+		hurtboxID.sprite_index = sprite_get("ledgegetup_" + string(cur_frame) + "_hurt");
+	} else {
+		hurtboxID.sprite_index = hurtbox_spr;
+	}
 }
 
 if (!attacking || (attack != AT_DSPECIAL && attack != AT_DSPECIAL_2)) {
-	if (instance_exists(orig_mound1) && instance_exists(orig_mound2)) {
-		if (orig_mound1.y != orig_mound2.y) {
-			if (orig_mound1.state != 2) {
-				orig_mound1.state = 2;
-				orig_mound1.state_timer = 0;
-			}
-			if (orig_mound2.state != 2) {
-				orig_mound2.state = 2;
-				orig_mound2.state_timer = 0;
-			}
+	if (instance_exists(mound_1) && instance_exists(mound_2)) {
+		if (mound_1.y != mound_2.y) {
+			mound_1.state = 1;
+			mound_1.state_timer = 0;
+			mound_2.state = 2;
+			mound_2.state_timer = 0;
 		}
-	} else if (instance_exists(orig_mound2) && !instance_exists(orig_mound1)) {
-		if (orig_mound2.state != 2) {
-			orig_mound2.state = 2;
-			orig_mound2.state_timer = 0;
-		}
-	} else if (instance_exists(orig_mound1) && !instance_exists(orig_mound2)) {
-		if (orig_mound1.state != 2) {
-			orig_mound1.state = 2;
-			orig_mound1.state_timer = 0;
-		}
+	} else if (instance_exists(mound_2) && !instance_exists(mound_1)) {
+		mound_2.state = 2;
+		mound_2.state_timer = 0;
+	} else if (instance_exists(mound_1) && !instance_exists(mound_2)) {
+		mound_1.state = 2;
+		mound_1.state_timer = 0;
 	}
 }
 
@@ -340,19 +343,6 @@ if (fspecial_aerial) {
 	}
 }
 */
-
-/* --- UNCOMMENT FOR NO OUTLINES IN DITTOS ---
-if (!ditto_checked) {
-	var ditto = false;
-	with (oPlayer) if self != other {
-		if (variable_instance_exists(self, "url")) {
-			if (url == other.url) {
-				ditto = true;
-			}
-		}
-	}
-	mound_outline = ditto;
-}*/
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
     move_cooldown[AT_NSPECIAL] = 0;

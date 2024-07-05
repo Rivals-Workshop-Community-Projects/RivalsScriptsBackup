@@ -120,6 +120,7 @@ walljumping_frames = 0;
 cling_timer = 0;
 wall_climbing = false;
 wall_climb_timer = 0;
+ledge_getup = false;
 ledge_snapped = false;
 ledge_getup_timer = 0;
 dig_timer = 0;
@@ -127,6 +128,7 @@ drill_timer = 0;
 mound_1 = noone;
 mound_2 = noone;
 entered_mound = 0;
+mound_outline = true;
 
 //**** CHANGEABLE VARIABLES
 knuckles_soft_armor = 6;
@@ -148,8 +150,8 @@ ledge_getup_frames = 16; // In game frames
 getup_distance = 20; // How far, horizontally, knuckles appears after ledge getup
 climb_dust_frequency = 9; // How often (in frames) the dust appears while climbing
 meter_visible = true; // Whether or not the wallclimb meter should show up
-dig_speed = 8;
-dig_max_time = 40; // How long knuckles can dig for
+dig_speed = 12;
+dig_max_time = 25; // How long knuckles can dig for
 drill_cancel_time = 30; // How many frames until the drill can be cancelled
 mound_speed = 17; // How fast you travel between mounds
 mound_closeness = 40; // How close you need to be to a mound to get in it
@@ -235,10 +237,10 @@ resort_portrait = sprite_get("portrait_knuckles")
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
-waveland_sound = sfx_waveland
-jump_sound = sfx_jump
+waveland_sound      = sfx_waveland
+jump_sound          = sfx_jump
 djump_sound         = sfx_djump;
-air_dodge_sound = sfx_airdodge
+air_dodge_sound     = sfx_airdodge
 
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

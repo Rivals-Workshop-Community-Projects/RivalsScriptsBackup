@@ -209,7 +209,7 @@ if(has_rune("F")){
 }
 
 screen_wrapped = false;
-kill_goof = false;
+kill_goof = true;
 stored_percent = 0;
 nair_spins = 0;
 nair_spins_max = 8;

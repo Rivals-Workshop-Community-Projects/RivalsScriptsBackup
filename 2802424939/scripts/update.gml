@@ -24,4 +24,3 @@ if (state == PS_PRATFALL or state == PS_PRATLAND)
 }
 
 
-print(string(cooldown))

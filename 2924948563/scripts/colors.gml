@@ -276,75 +276,75 @@ set_color_profile_slot( 24, 5, 231, 121, 185 ); //Shoes 2
 set_color_profile_slot( 24, 6, 200, 1, 1 ); //Shoes 3
 set_color_profile_slot( 24, 7, 200, 1, 1 ); //Gloves/Shoe Legos
 
-// Patricia
-set_color_profile_slot( 25, 0, 186, 82, 86 ); //Body
-set_color_profile_slot( 25, 1, 112, 35, 38 ); //Body Dark
-set_color_profile_slot( 25, 2, 213, 128, 87 ); //Muzzle
-set_color_profile_slot( 25, 3, 62, 90, 133 ); //Shoes 1
-set_color_profile_slot( 25, 4, 30, 44, 87 ); //Shoes 1 Dark
-set_color_profile_slot( 25, 5, 106, 71, 78 ); //Shoes 2
-set_color_profile_slot( 25, 6, 1, 198, 98 ); //Shoes 3
-set_color_profile_slot( 25, 7, 143, 96, 105 ); //Gloves/Shoe Legos
-
 // Kraig
-set_color_profile_slot( 26, 0, 187, 155, 143 ); //Body
-set_color_profile_slot( 26, 1, 99, 70, 61 ); //Body Dark
-set_color_profile_slot( 26, 2, 121, 173, 100 ); //Muzzle
-set_color_profile_slot( 26, 3, 187, 155, 143 ); //Shoes 1
-set_color_profile_slot( 26, 4, 99, 70, 61 ); //Shoes 1 Dark
-set_color_profile_slot( 26, 5, 213, 216, 221 ); //Shoes 2
-set_color_profile_slot( 26, 6, 213, 216, 221 ); //Shoes 3
-set_color_profile_slot( 26, 7, 121, 173, 100 ); //Gloves/Shoe Legos
+set_color_profile_slot( 25, 0, 187, 155, 143 ); //Body
+set_color_profile_slot( 25, 1, 99, 70, 61 ); //Body Dark
+set_color_profile_slot( 25, 2, 121, 173, 100 ); //Muzzle
+set_color_profile_slot( 25, 3, 187, 155, 143 ); //Shoes 1
+set_color_profile_slot( 25, 4, 99, 70, 61 ); //Shoes 1 Dark
+set_color_profile_slot( 25, 5, 213, 216, 221 ); //Shoes 2
+set_color_profile_slot( 25, 6, 213, 216, 221 ); //Shoes 3
+set_color_profile_slot( 25, 7, 121, 173, 100 ); //Gloves/Shoe Legos
 
 // Gale Gah
-set_color_profile_slot( 27, 0, 164, 150, 148 ); //Body
-set_color_profile_slot( 27, 1, 89, 73, 72 ); //Body Dark
-set_color_profile_slot( 27, 2, 92, 86, 74 ); //Muzzle
-set_color_profile_slot( 27, 3, 143, 149, 220 ); //Shoes 1
-set_color_profile_slot( 27, 4, 90, 99, 182 ); //Shoes 1 Dark
-set_color_profile_slot( 27, 5, 184, 190, 251 ); //Shoes 2
-set_color_profile_slot( 27, 6, 91, 85, 73 ); //Shoes 3
-set_color_profile_slot( 27, 7, 109, 117, 141 ); //Gloves/Shoe Legos
+set_color_profile_slot( 26, 0, 164, 150, 148 ); //Body
+set_color_profile_slot( 26, 1, 89, 73, 72 ); //Body Dark
+set_color_profile_slot( 26, 2, 92, 86, 74 ); //Muzzle
+set_color_profile_slot( 26, 3, 143, 149, 220 ); //Shoes 1
+set_color_profile_slot( 26, 4, 90, 99, 182 ); //Shoes 1 Dark
+set_color_profile_slot( 26, 5, 184, 190, 251 ); //Shoes 2
+set_color_profile_slot( 26, 6, 91, 85, 73 ); //Shoes 3
+set_color_profile_slot( 26, 7, 109, 117, 141 ); //Gloves/Shoe Legos
 
 // Epi Nel
-set_color_profile_slot( 28, 0, 211, 187, 107 ); //Body
-set_color_profile_slot( 28, 1, 150, 107, 65 ); //Body Dark
-set_color_profile_slot( 28, 2, 211, 187, 107 ); //Muzzle
-set_color_profile_slot( 28, 3, 75, 102, 188 ); //Shoes 1
-set_color_profile_slot( 28, 4, 52, 64, 153 ); //Shoes 1 Dark
-set_color_profile_slot( 28, 5, 174, 172, 189 ); //Shoes 2
-set_color_profile_slot( 28, 6, 210, 207, 227 ); //Shoes 3
-set_color_profile_slot( 28, 7, 213, 199, 239 ); //Gloves/Shoe Legos
+set_color_profile_slot( 27, 0, 211, 187, 107 ); //Body
+set_color_profile_slot( 27, 1, 150, 107, 65 ); //Body Dark
+set_color_profile_slot( 27, 2, 211, 187, 107 ); //Muzzle
+set_color_profile_slot( 27, 3, 75, 102, 188 ); //Shoes 1
+set_color_profile_slot( 27, 4, 52, 64, 153 ); //Shoes 1 Dark
+set_color_profile_slot( 27, 5, 174, 172, 189 ); //Shoes 2
+set_color_profile_slot( 27, 6, 210, 207, 227 ); //Shoes 3
+set_color_profile_slot( 27, 7, 213, 199, 239 ); //Gloves/Shoe Legos
 
 // Donkey Knuckles
-set_color_profile_slot( 29, 0, 166, 86, 61 ); //Body
-set_color_profile_slot( 29, 1, 107, 21, 14 ); //Body Dark
-set_color_profile_slot( 29, 2, 245, 186, 145 ); //Muzzle
-set_color_profile_slot( 29, 3, 222, 38, 20 ); //Shoes 1
-set_color_profile_slot( 29, 4, 143, 24, 29 ); //Shoes 1 Dark
-set_color_profile_slot( 29, 5, 255, 217, 0 ); //Shoes 2
-set_color_profile_slot( 29, 6, 143, 24, 29 ); //Shoes 3
-set_color_profile_slot( 29, 7, 255, 255, 255 ); //Gloves/Shoe Legos
+set_color_profile_slot( 28, 0, 166, 86, 61 ); //Body
+set_color_profile_slot( 28, 1, 107, 21, 14 ); //Body Dark
+set_color_profile_slot( 28, 2, 245, 186, 145 ); //Muzzle
+set_color_profile_slot( 28, 3, 222, 38, 20 ); //Shoes 1
+set_color_profile_slot( 28, 4, 143, 24, 29 ); //Shoes 1 Dark
+set_color_profile_slot( 28, 5, 255, 217, 0 ); //Shoes 2
+set_color_profile_slot( 28, 6, 143, 24, 29 ); //Shoes 3
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //Gloves/Shoe Legos
 
 // Chronicled Echidna
-set_color_profile_slot( 30, 0, 242, 101, 89 ); //Body
-set_color_profile_slot( 30, 1, 171, 63, 121 ); //Body Dark
-set_color_profile_slot( 30, 2, 245, 186, 145 ); //Muzzle
-set_color_profile_slot( 30, 3, 106, 101, 125 ); //Shoes 1
-set_color_profile_slot( 30, 4, 58, 54, 74 ); //Shoes 1 Dark
-set_color_profile_slot( 30, 5, 250, 142, 218 ); //Shoes 2
-set_color_profile_slot( 30, 6, 106, 101, 125 ); //Shoes 3
-set_color_profile_slot( 30, 7, 237, 217, 255 ); //Gloves/Shoe Legos
+set_color_profile_slot( 29, 0, 242, 101, 89 ); //Body
+set_color_profile_slot( 29, 1, 171, 63, 121 ); //Body Dark
+set_color_profile_slot( 29, 2, 245, 186, 145 ); //Muzzle
+set_color_profile_slot( 29, 3, 106, 101, 125 ); //Shoes 1
+set_color_profile_slot( 29, 4, 58, 54, 74 ); //Shoes 1 Dark
+set_color_profile_slot( 29, 5, 250, 142, 218 ); //Shoes 2
+set_color_profile_slot( 29, 6, 106, 101, 125 ); //Shoes 3
+set_color_profile_slot( 29, 7, 237, 217, 255 ); //Gloves/Shoe Legos
 
 // Hyper Knuckles
-set_color_profile_slot( 31, 0, 247, 111, 173 ); //Body
-set_color_profile_slot( 31, 1, 179, 57, 148 ); //Body Dark
+set_color_profile_slot( 30, 0, 247, 111, 173 ); //Body
+set_color_profile_slot( 30, 1, 179, 57, 148 ); //Body Dark
+set_color_profile_slot( 30, 2, 245, 186, 145 ); //Muzzle
+set_color_profile_slot( 30, 3, 236, 78, 149 ); //Shoes 1
+set_color_profile_slot( 30, 4, 143, 24, 109 ); //Shoes 1 Dark
+set_color_profile_slot( 30, 5, 255, 182, 26 ); //Shoes 2
+set_color_profile_slot( 30, 6, 54, 247, 164 ); //Shoes 3
+set_color_profile_slot( 30, 7, 246, 248, 252 ); //Gloves/Shoe Legos
+
+// Spectral Theif
+set_color_profile_slot( 31, 0, 59, 49, 66 ); //Body
+set_color_profile_slot( 31, 1, 40, 31, 41 ); //Body Dark
 set_color_profile_slot( 31, 2, 245, 186, 145 ); //Muzzle
-set_color_profile_slot( 31, 3, 236, 78, 149 ); //Shoes 1
-set_color_profile_slot( 31, 4, 143, 24, 109 ); //Shoes 1 Dark
-set_color_profile_slot( 31, 5, 255, 182, 26 ); //Shoes 2
-set_color_profile_slot( 31, 6, 54, 247, 164 ); //Shoes 3
-set_color_profile_slot( 31, 7, 246, 248, 252 ); //Gloves/Shoe Legos
+set_color_profile_slot( 31, 3, 55, 93, 105 ); //Shoes 1
+set_color_profile_slot( 31, 4, 32, 78, 92 ); //Shoes 1 Dark
+set_color_profile_slot( 31, 5, 50, 84, 94 ); //Shoes 2
+set_color_profile_slot( 31, 6, 45, 75, 84 ); //Shoes 3
+set_color_profile_slot( 31, 7, 40, 88, 102 ); //Gloves/Shoe Legos
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

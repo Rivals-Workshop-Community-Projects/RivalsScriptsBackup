@@ -65,58 +65,43 @@ shader_end();
 
 paused = true;
 
-if (mound_outline) {
-	with(asset_get("obj_article1")) {
-		if (state != 2) {
-			var touching;
-		    if((other.mound_1 == self || other.mound_2 == self)){
-		    	with(other){
-		    		touching = place_meeting(x, y, other) && abs(x - other.x) <= mound_closeness;
-		    		if (attacking) {
-		    			if (attack == AT_DSPECIAL_2 || (attack == AT_DSPECIAL && (window == 6 || window == 2))) {
-		    				touching = true;
-		    			} else if (attack == AT_DSPECIAL && window != 6 && window != 2) {
-		    				touching = false;
-		    			}
-		    		}
-		    	}
-		    	if(touching){//This code is awful, I hate it, but it works. - Don (The dumbass who wrote this shit)
+with(asset_get("obj_article1")){
+	var touching;
+    if((other.mound_1 == self || other.mound_2 == self)){
+    	with(other){
+    		touching = place_meeting(x, y, other);
+    	}
+    	if(touching){//This code is awful, I hate it, but it works. - Don (The dumbass who wrote this shit)
+	        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
+	    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, image_angle, c_white, 1);
+	    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, image_angle, c_white, 1);
+	    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, image_angle, c_white, 1);
+	    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, image_angle, c_white, 1);
+	    	gpu_set_fog(false, c_white, 1, 1);
+	    	if(other.mound_1 == self){
+	    		with(other.mound_2){
 			        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
-			        depth = depth-10;
 			    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, image_angle, c_white, 1);
 			    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, image_angle, c_white, 1);
 			    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, image_angle, c_white, 1);
 			    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, image_angle, c_white, 1);
 			    	gpu_set_fog(false, c_white, 1, 1);
-			    	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, image_angle, c_white, 1);
-			    	if(other.mound_1 == self){
-			    		with(other.mound_2){
-					        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, image_angle, c_white, 1);
-					    	gpu_set_fog(false, c_white, 1, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, image_angle, c_white, 1);
-			    		}
-			    	}
-			    	if(other.mound_2 == self){
-			    		with(other.mound_1){
-					        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, image_angle, c_white, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, image_angle, c_white, 1);
-					    	gpu_set_fog(false, c_white, 1, 1);
-					    	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, image_angle, c_white, 1);
-			    		}
-			    	}
-			    	depth = depth+10;
-		    	}
-		    }
-		}
-	}
+	    		}
+	    	}
+	    	if(other.mound_2 == self){
+	    		with(other.mound_1){
+			        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
+			    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, image_angle, c_white, 1);
+			    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, image_angle, c_white, 1);
+			    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, image_angle, c_white, 1);
+			    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, image_angle, c_white, 1);
+			    	gpu_set_fog(false, c_white, 1, 1);
+	    		}
+	    	}	    	
+    	}
+    }
 }
+
 
 #define update_trail_pos(trail_pos, gone)
 

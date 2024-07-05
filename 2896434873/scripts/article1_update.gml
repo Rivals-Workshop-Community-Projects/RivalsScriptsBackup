@@ -152,6 +152,7 @@ else
                                 {
                                     if (fspecial_curse_player == other.player_id) other.dspecial_lit = true;
                                     if other.dspecial_lit other.dspecial_wait = 0;
+                                    
                                 }
                                 else
                                 {
@@ -220,7 +221,7 @@ else
                         {
                             if type == 2
                             {
-                                if (!plasma_safe or !transcendent) destroyed = true;
+                                destroyed = true;
                             }
                             else if (other.dspecial_lit = true)
                             {  
@@ -250,6 +251,7 @@ else
             }
         break;
         case PS_CRYSTALIZED: //hit with shit
+            sprite_index = sprite_get("scapegoat_spin")
             if state_timer == 1 {
                 hitbox = create_hitbox(AT_DSPECIAL, 2, x, y-(char_height / 2))    
             }
@@ -258,6 +260,7 @@ else
                 hsp = old_hsp
             }
             if hitpause != -1 break;
+            image_index += 0.25
             
             vsp = free ? vsp + (scapegoat_gravity/1.2) : 0;
             with pHitBox
@@ -312,8 +315,8 @@ else
                         destroy_self();
                     }
                     else {
-                        state = PS_DEAD;
-                        state_timer = 0;
+                        destroy = true;
+                        spawn_hit_fx(x,y,HFX_GEN_SPIN)
                     }
                 }
             }

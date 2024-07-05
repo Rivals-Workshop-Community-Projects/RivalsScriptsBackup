@@ -35,7 +35,7 @@ alt_name[17] = "Yumeko";
  
 draw_set_halign(fa_left);
  
-//Butonn
+/*/Butonn
 if ((get_instance_x(cursor_id) >= x + 136 && get_instance_x(cursor_id) <= x + 136 + 30) && (get_instance_y(cursor_id) >= y + 36 && get_instance_y(cursor_id) <= y + 36 + 26)) {
 	suppress_cursor = true;
 	if (mode_draw mod 2 = 0)
@@ -60,7 +60,7 @@ if ((get_instance_x(cursor_id) >= x + 170 && get_instance_x(cursor_id) <= x + 17
     else
     draw_sprite_ext(sprite_get("css_knife"), 2, x + 170, y + 36, 1, 1, 0, c_white, 1);
 }
-
+*/
 
  
  

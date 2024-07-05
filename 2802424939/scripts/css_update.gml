@@ -1,4 +1,5 @@
 //
+/*
 if ((get_instance_x(cursor_id) >= x + 136 && get_instance_x(cursor_id) <= x + 136 + 30) && (get_instance_y(cursor_id) >= y + 36 && get_instance_y(cursor_id) <= y + 36 + 26)) {
 	suppress_cursor = true;
 	if (menu_a_pressed) {
@@ -31,11 +32,11 @@ generated_var = 0;
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
 2. Dino's button - Should Switch - 1 bit
 3. Results portrait - Awesome -  1 bit
-*/
+
 
 generated_var = generate_synced_var(mode,1,bair_mode,1)
 set_synced_var(player, real(generated_var));
-
+*/
 //#endregion
 #define generate_synced_var
 ///args chunks...

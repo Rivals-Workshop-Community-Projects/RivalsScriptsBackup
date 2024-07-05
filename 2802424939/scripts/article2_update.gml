@@ -33,7 +33,7 @@ with(pHitBox)
                     other.player_id.move_cooldown[AT_DSPECIAL_2] = 120;
                 }
             }
-        }  
+        } 
     }
 }
 
@@ -45,6 +45,17 @@ if (disable == 1)
         hit.pause = 8;
         sound_play(asset_get("sfx_shovel_hit_light2"));
         sound = 0;
+    }
+    with(pHitBox)
+    {
+        if (player_id == other.player_id)
+        {
+            if (type == 2)
+            {
+                if (frozen == 1 )
+                destroyed = 1;
+            }
+        }
     }
     disable = 0;
 }

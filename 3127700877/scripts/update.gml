@@ -146,13 +146,12 @@ with(oPlayer){
                 undiseased_id = noone;
             }
         }
-        if(fucking_dying_id == other && other.kill_goof){
+        if(fucking_dying_id == other && other.kill_goof && get_player_stocks(player) == 1){
         	if(fucking_dying_timer > 0){
                 fucking_dying_timer++;
             }
             if(fucking_dying_timer == 2){
-            	// add death.ogg later
-                // with(other) sound_play(sound_get("death"), false, noone, 2, 1);
+                with(other) sound_play(sound_get("death"), false, noone, 2, 1);
             }
             if(fucking_dying_timer > 0  && fucking_dying_timer < 300){
                 state = PS_HITSTUN;
@@ -168,9 +167,13 @@ with(oPlayer){
             	if(fucking_dying_timer == 300){
 	        		with(other) {
 	        			create_deathbox(round(other.x), round(other.y - other.char_height/2), 20, 20, other.player, true, 0, 2, 2);
-	        			spawn_hit_fx(other.x, other.y-other.char_height/2, HFX_MOL_BOOM_FINISH);
+	        			spawn_hit_fx(other.x, other.y-other.char_height/2, vfx_sludge_large_2);
 	    				sound_play(asset_get("sfx_blow_heavy2"))
 				        sound_play(asset_get("sfx_mol_huge_explode"))
+				        sound_play(sound_get("sfx_sludgehit_heavy"))
+	        // 			spawn_hit_fx(other.x, other.y-other.char_height/2, HFX_MOL_BOOM_FINISH);
+	    				// sound_play(asset_get("sfx_blow_heavy2"))
+				     //   sound_play(asset_get("sfx_mol_huge_explode"))
 	        		}
 	            }
             	spr_dir = 1;
@@ -197,7 +200,7 @@ with(oPlayer){
                 fucking_dying_id = noone;
                 hurtboxID.dodging = false;
             }
-        } else if(fucking_dying_id == other && !other.kill_goof){
+        } else if(fucking_dying_id == other && (!other.kill_goof || get_player_stocks(player) > 1)){
         	if(fucking_dying_timer > 0){
                 fucking_dying_timer++;
             }

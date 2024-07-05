@@ -83,7 +83,7 @@ if(instance_exists(other_player_id) && undiseased_id == other_player_id && !fuck
 }
 
 
-if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && other_player_id.kill_goof){
+if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && other_player_id.kill_goof && get_player_stocks(player) == 1){
 	shader_start();
 	
 	if(fucking_dying_timer >= 250){ 
@@ -117,7 +117,7 @@ if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && ot
 	shader_end();
 }
 
-if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && !other_player_id.kill_goof && fucking_dying_timer){
+if(instance_exists(other_player_id) && fucking_dying_id == other_player_id && (!other_player_id.kill_goof || get_player_stocks(player) > 1) && fucking_dying_timer){
 	
 	var x_scale = s + random_func_2(floor(abs(x%200)), floor((fucking_dying_timer)/(10/s)), true);
 	var y_scale = s*2 + random_func_2(floor(abs(y%200)), floor((fucking_dying_timer)/(10/s)), true);

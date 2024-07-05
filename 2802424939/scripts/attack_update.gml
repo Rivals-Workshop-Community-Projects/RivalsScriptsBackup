@@ -42,22 +42,17 @@ switch(attack)
             }
             if (window_timer == get_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH))
             {
-                if (mode == 0)
-                var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
-                else
-                {
-                    if (instance_exists(stopwatch))
-                    stopwatch.unfreeze = 0;
-                    with(pHitBox)
-                    {
-                        if (player = other.player)
-                        {
-                            frozen = 2;
-                            if (freeze_lockout == 1)
-                            freeze_lockout += 1;
-                        }
-                    }
-                }
+	            if (instance_exists(stopwatch))
+	            stopwatch.unfreeze = 0;
+	            with(pHitBox)
+	            {
+	                if (player = other.player)
+	                {
+	                    frozen = 2;
+	                    if (freeze_lockout == 1)
+	                    freeze_lockout += 1;
+	                }
+	            }
             } 
             else if (window_timer == get_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH) - 2)
             {
@@ -117,19 +112,14 @@ switch(attack)
             {
                 if (instance_exists(stopwatch) and stopwatch.cooldown != 1)
                 {
-                    if (mode = 0)
-                    var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
-                    else
+                    stopwatch.unfreeze = 0;
+                    with(pHitBox)
                     {
-                        stopwatch.unfreeze = 0;
-                        with(pHitBox)
+                        if (player = other.player)
                         {
-                            if (player = other.player)
-                            {
-                                frozen = 2;
-                                if (freeze_lockout == 1)
-                                freeze_lockout += 1;
-                            }
+                            frozen = 2;
+                            if (freeze_lockout == 1)
+                            freeze_lockout += 1;
                         }
                     }
                 }
@@ -194,19 +184,14 @@ switch(attack)
             {
                 if (instance_exists(stopwatch) and stopwatch.cooldown != 1)
                 {
-                    if (mode = 0)
-                    var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
-                    else
+                    stopwatch.unfreeze = 0;
+                    with(pHitBox)
                     {
-                        stopwatch.unfreeze = 0;
-                        with(pHitBox)
+                        if (player = other.player)
                         {
-                            if (player = other.player)
-                            {
-                                frozen = 2;
-                                if (freeze_lockout == 1)
-                                freeze_lockout += 1;
-                            }
+                            frozen = 2;
+                            if (freeze_lockout == 1)
+                            freeze_lockout += 1;
                         }
                     }
                 }
@@ -340,7 +325,6 @@ switch(attack)
             {
                 stopwatch = instance_create(x - 4, y + 20, "obj_article1");
                 stopwatch2 = instance_create(x - 4, y + 20, "obj_article2");
-                stopwatch.mode = mode;
             }
         }
         else if (window == 3 and window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH))
@@ -365,7 +349,7 @@ switch(attack)
                 stopwatch2.x = x - 4;
                 stopwatch.y = y - 40;
                 stopwatch2.y = y - 40;
-                spawn_hit_fx(stopwatch.x - 2, stopwatch.y, 301)
+                spawn_hit_fx(stopwatch.x + 2, stopwatch.y, 301)
             }
         }
         if (window >= 2)

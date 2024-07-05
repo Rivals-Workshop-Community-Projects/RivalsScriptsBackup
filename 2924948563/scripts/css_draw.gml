@@ -143,26 +143,26 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[24,0] = make_color_rgb(0, 166, 166)
     ce[24,1] = "Angaga"
 
-    ce[25,0] = make_color_rgb(186, 82, 86 )
-    ce[25,1] = "Patricia"
+    ce[25,0] = make_color_rgb(187, 155, 143)
+    ce[25,1] = "Kraig"
 
-    ce[26,0] = make_color_rgb(187, 155, 143)
-    ce[26,1] = "Kraig"
+    ce[26,0] = make_color_rgb(164, 150, 148)
+    ce[26,1] = "Gale Gah"
 
     ce[27,0] = make_color_rgb(164, 150, 148)
-    ce[27,1] = "Gale Gah"
+    ce[27,1] = "Epi Nel"
 
-    ce[28,0] = make_color_rgb(164, 150, 148)
-    ce[28,1] = "Epi Nel"
+    ce[28,0] = make_color_rgb(166, 86, 61)
+    ce[28,1] = "Donkey Knuckles"
 
     ce[29,0] = make_color_rgb(166, 86, 61)
-    ce[29,1] = "Donkey Knuckles"
+    ce[29,1] = "Chronicled Echidna"
 
-    ce[30,0] = make_color_rgb(166, 86, 61)
-    ce[30,1] = "Chronicled Echidna"
-
+    ce[30,0] = make_color_rgb(247, 111, 173)
+    ce[30,1] = "HYPER KNUCKLES"
+    
     ce[31,0] = make_color_rgb(247, 111, 173)
-    ce[31,1] = "HYPER KNUCKLES"
+    ce[31,1] = "Spectral Theif"
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
