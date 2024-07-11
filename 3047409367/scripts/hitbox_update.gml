@@ -88,6 +88,11 @@ if (attack == AT_NSPECIAL){
             	        
                         sound_play(asset_get("sfx_blow_medium1"));
                         spawn_hit_fx( x + 0*spr_dir, y, 144 );
+                        
+                        //if it gets parried and hits the ground it goes very high
+	                    if (was_parried && other.hit_player_obj == player_id){
+	                        fist.vsp *= 4;
+	                    }
             	        
                         instance_destroy();
                         exit;

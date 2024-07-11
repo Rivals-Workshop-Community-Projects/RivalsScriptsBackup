@@ -1,13 +1,11 @@
 set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt"));
-set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
+set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 7);
 
-set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 for(i = 2; i <= 6; i++){
-    set_window_value(AT_FTILT, i, AG_WINDOW_TYPE, 1);
     set_window_value(AT_FTILT, i, AG_WINDOW_LENGTH, 3);
     set_window_value(AT_FTILT, i, AG_WINDOW_ANIM_FRAMES, 1);
     set_window_value(AT_FTILT, i, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -19,7 +17,6 @@ set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_window_value(AT_FTILT, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 5);
@@ -41,7 +38,7 @@ for(i = 1; i <= 5; i++){
     set_hitbox_value(AT_FTILT, i, HG_ANGLE, 361);
     set_hitbox_value(AT_FTILT, i, HG_BASE_KNOCKBACK, 3);
     set_hitbox_value(AT_FTILT, i, HG_BASE_HITPAUSE, 5);
-    set_hitbox_value(AT_FTILT, i, HG_HITPAUSE_SCALING, .6);
+    set_hitbox_value(AT_FTILT, i, HG_HITPAUSE_SCALING, 0.6);
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT, HFX_MAY_LEAF_SMALL);
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT_Y_OFFSET, 18);
     set_hitbox_value(AT_FTILT, i, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
@@ -52,6 +49,8 @@ for(i = 1; i <= 5; i++){
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_SPRITE, sprite_get("bullet_seed"));
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_MASK, -1);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_DESTROY_EFFECT, 1);
+    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_PLASMA_SAFE, true);
+    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_UNBASHABLE, true);
 }
 
 set_hitbox_value(AT_FTILT, 5, HG_DAMAGE, 3);

@@ -6,7 +6,6 @@ if my_hitboxID.attack = AT_FSPECIAL{
     grov_fspecial_airuse = false;
     grov_pounce_foe_id = hit_player_obj;
     my_hitboxID.should_pounce = true;
-    // destroyed_next = true;
 }
 
 if my_hitboxID.attack = AT_DAIR && my_hitboxID.hbox_num < 6{

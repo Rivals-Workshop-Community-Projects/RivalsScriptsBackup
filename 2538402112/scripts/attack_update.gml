@@ -11,6 +11,9 @@ switch(attack)
         if (window == 4 && window_timer == 1 && !hitpause)       hsp += (0*spr_dir);
         else if (window == 7 && window_timer == 1 && !hitpause)  hsp += (6*spr_dir);
         break;
+    case AT_DTILT:
+        if window == 1 && window_timer == 4 && !hitpause sound_play(asset_get("sfx_waveland_may"),false,noone,0.7);
+        break;
     case AT_DATTACK:
         can_move = false;
         can_fast_fall = false;
@@ -32,6 +35,11 @@ switch(attack)
             window = 5;
             window_timer = 0;
         }
+        break;
+    case AT_UAIR:
+        if window == 1 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) hud_offset = 25;
+        if window == 2 hud_offset = 25;
+        if window == 3 && window_timer < 5 hud_offset = 25;
         break;
     case AT_FSTRONG:
         if window == 2 && window_timer == 5 && !hitpause sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 1.4, 1.1);
@@ -85,7 +93,8 @@ switch(attack)
             boom.effect_num = 1;
             boom.sprite_index = sprite_get("blastseed_explosion");
             if !has_rune("O") move_cooldown[AT_NTHROW] = 300;
-            if vsp > 0 vsp = 0;
+            // if vsp > 0 vsp = 0;
+            if free && vsp > -2 vsp = -2;
             if has_rune("M"){
                 boom.x = x+(35*spr_dir);
                 boom.boom_xoff = 35;
@@ -179,10 +188,13 @@ switch(attack)
     case AT_USPECIAL:
         move_cooldown[AT_USPECIAL] = 9999;
         can_fast_fall = false;
-        if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-            reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
-            if down_down    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9);
-            else if up_down set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -15);
+        if window == 1{
+            if window_timer == 13 && !hitpause sound_play(asset_get("sfx_swipe_medium2"));
+            if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH){
+                reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
+                if down_down    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9);
+                else if up_down set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -15);
+            }
         }
         if window == 3 can_wall_jump = true;
         break;

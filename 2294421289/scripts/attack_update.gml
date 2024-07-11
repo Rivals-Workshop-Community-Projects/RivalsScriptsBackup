@@ -85,7 +85,7 @@ if (attack == AT_FSPECIAL)
         	strong_flashing = (floor(get_gameplay_time()/8) % 2) == 0;
             fspec_charge_timer++;
             window_timer = 10;
-            set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7 + (fspec_charge_timer/6));
+            set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7 + (fspec_charge_timer/9));
             //set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8 + (fspec_charge_timer/7));
             set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5 + (fspec_charge_timer/6));
             set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 10 + (fspec_charge_timer/12));

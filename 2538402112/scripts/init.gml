@@ -140,6 +140,8 @@ mamizou_transform_spr = get_player_color(player) == 0 ? sprite_get("mamizou_tran
 Hikaru_Title = "Time Gear Theif";
 pot_compat_variable = sprite_get("po_gumbo_dish");
 pot_compat_text = "Four-Leaf Cookie";
+wiimote_compat_sprite = sprite_get("wiimote");
+greenwood_cheer = 2;
 
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated

@@ -28,6 +28,18 @@ if get_gameplay_time() == 1 && shield_down && get_player_color(player) == 0{
     grov_gen3 = true;
 }
 
+with(pHitBox){//Projectile destroy sounds. Yay script order
+    if orig_player_id == other{
+        if attack == AT_UTHROW && destroyed && !has_hit{
+            sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.7);
+        }
+        if attack == AT_FTHROW && destroyed && !has_hit{
+            sound_play(asset_get("sfx_blow_weak1"), false, noone, 0.5);
+            sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.65);
+        }
+    }
+}
+
 //Amber hug compatibility
 if (amber_startHug == true) //Amber will set this bool to true when this player accepts the hug
 {

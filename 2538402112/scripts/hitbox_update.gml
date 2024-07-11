@@ -1,13 +1,6 @@
 //hitbox_update
 if (attack == AT_FTHROW){
-	if !free sound_play(asset_get("sfx_blow_weak1"), false, noone, 0.5);
-	if !free sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.65);
-	if hitbox_timer == 1{
-		if !was_reflected{
-			proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
-			if !has_rune("O") player_id.move_cooldown[AT_FTHROW] = 210;
-		}
-	}
+	if hitbox_timer == 1 && !was_reflected && !has_rune("O") player_id.move_cooldown[AT_FTHROW] = 210;
 	// through_platforms = hitbox_timer <= 5 ? 10:0;
 	// Reflect stuff
     if player != old_owner{//Relect correctly without parries.
@@ -18,15 +11,13 @@ if (attack == AT_FTHROW){
             hsp *= 1.5;
             vsp *= 1.5;
         }
-        else{
-            proj_angle = point_direction(0,0,hsp,vsp);
-        }
     }
+    proj_angle = point_direction(0,0,abs(hsp),spr_dir*vsp);
     old_owner = player; //Reflect code needs to run only once or game will die.
-    // if !free destroyed = true;
 }
 if (attack == AT_UTHROW){
-	if !free sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 0.7);
+	through_platforms = vsp <= 3 ? 10:0;
+	if !free destroyed = true;
 	if hitbox_timer == 1 && !was_reflected && !has_rune("O") player_id.move_cooldown[AT_UTHROW] = 150;
 	// Reflect stuff
     if player != old_owner{//Relect correctly without parries.
@@ -39,7 +30,6 @@ if (attack == AT_UTHROW){
         }
     }
     old_owner = player; //Reflect code needs to run only once or game will die.
-    // if !free destroyed = true;
 }
 if (attack == AT_DTHROW){
 	if hitbox_timer == 1 && !has_rune("O") player_id.move_cooldown[AT_DTHROW] = 60;

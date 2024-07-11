@@ -12,10 +12,9 @@ with asset_get("plasma_field_obj"){//Clairen
 
 // Check if still on ground
 if free{
-    if (position_meeting(x,y,asset_get("par_jumpthrough"))){
+    if (collision_line(x-16,y,x+16,y,asset_get("par_jumpthrough"),false,false) && !collision_line(x-16,y-4,x+16,y-4,asset_get("par_jumpthrough"),false,false)){
         if vsp >= 0{//Not rising through
             y -= floor(vsp); //should push it up faster than it can fall.
-            vsp = 0; //Horizontal platforms need this for some reason.
             free = false;
         }
     }
@@ -29,12 +28,12 @@ if life_timer <= 0{
 }
 else if cooldown player_id.move_cooldown[AT_DTHROW] = 150;
 
-with (oPlayer){
+with(oPlayer){
     grov_emerashard = false; // Reset shard stepping
     if self != other.player_id && !free{
         if (get_player_team(player) != get_player_team(other.player_id.player) || get_match_setting(SET_TEAMATTACK) == 1){//Check Teams
             if place_meeting(x,y,other) && !place_meeting(x,y-8,other){//If overlapping at the bottom.
-                if !invincible && grov_emeratimer == 0 && clone == false && state_cat != SC_HITSTUN{//If can take damage
+                if !invincible && !attack_invince && !initial_invince && grov_emeratimer == 0 && clone == false && state_cat != SC_HITSTUN{//If can take damage
                     if state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD{//Help how do I shorten this?
                         if (hsp != 0 || grov_emera_land) && !grov_emerashard{
                             grov_emerashard = true;

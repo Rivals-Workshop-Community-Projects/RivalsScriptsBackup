@@ -154,7 +154,7 @@ if (attack == AT_BAIR){
     if (window == 2){
         if (window_timer == 1){
             if (!hitpause && !hitstop){
-                hsp = 7*spr_dir;
+                hsp = 6*spr_dir;
             }
         }
     }

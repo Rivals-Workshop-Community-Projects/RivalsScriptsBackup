@@ -31,7 +31,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //endlag
 set_window_value(AT_DAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
@@ -84,3 +84,4 @@ set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 3);
+set_hitbox_value(AT_DAIR, 2, HG_IGNORES_PROJECTILES, 1);
