@@ -11,15 +11,6 @@
 	4: Dying
 */
 
-if (state != 3){
-	hud_color = get_player_hud_color(player_id.player);
-	hud_y_var_thing = 56
-	spawned_by_rune_o = false
-} else {
-	hud_color = get_player_hud_color(hitbox_owner.player);
-	hud_y_var_thing = 40
-}
-
 if (!hitpause){
 	state_timer++;
 } else if (hitpause){
@@ -292,6 +283,20 @@ if (state == 2){
 
 //print(state);
 //print(state_timer);
+
+// hud color stuff
+if (state != 3){
+	hud_color = get_player_hud_color(player_id.player);
+	hud_y_var_thing = 56;
+	spawned_by_rune_o = false;
+} else {
+	if (instance_exists(cur_hitbox)){
+		hud_color = get_player_hud_color(cur_hitbox.player);
+	} else {
+		hud_color = get_player_hud_color(hitbox_owner.player);
+	}
+	hud_y_var_thing = 40;
+}
 
 // State 3: Moving (the active frames lol)
 if (state == 3){

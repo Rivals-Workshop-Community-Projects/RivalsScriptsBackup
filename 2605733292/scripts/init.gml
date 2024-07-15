@@ -56,6 +56,9 @@ damageToWakeUp = 0;
 isCurrSleeping = false;
 sleepingTimer = 0;
 damageIncrementTick = 0;
+damageFlipVar = false;
+sleepIncrementAdvCounter = 0;
+sleepIncrementAdvCounterMax = 2;
 hitBySleepingAttack = false;
 sleepID = noone;
 sleepHatSpr = noone;
@@ -290,7 +293,7 @@ switch (get_player_color( player )){
 		set_victory_portrait( sprite_get( "portrait_gold" ));
 		set_victory_sidebar( sprite_get( "result_small_gold" ));
 		break;
-	case 23:
+	case 27:
 		set_victory_portrait( sprite_get( "portrait_tas" ));
 		set_victory_sidebar( sprite_get( "result_small_tas" ));
 		break;

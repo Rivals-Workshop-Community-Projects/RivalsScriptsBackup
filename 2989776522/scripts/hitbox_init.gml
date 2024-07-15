@@ -6,6 +6,9 @@ CalCanSnack = false;
 UnReflectable = false;
 Pocketable = false;
 SpikeCanEat = false;
+if("KoB_grabbed" not in self)KoB_grabbed = false;
+KoB_was_grabbed = false;
+KoB_destroy = false;
 
 if(attack == AT_NSPECIAL){
 	UnReflectable = true;

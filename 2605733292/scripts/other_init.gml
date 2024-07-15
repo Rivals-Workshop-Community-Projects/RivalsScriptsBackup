@@ -6,6 +6,9 @@ is_in_playtest = (object_index == oTestPlayer)
 	
 	damageToWakeUp = 0;
 	damageIncrementTick = 0;
+	damageFlipVar = false;
+	sleepIncrementAdvCounter = 0;
+	sleepIncrementAdvCounterMax = 2;
 	isCurrSleeping = false;
 	sleepingTimer = 0;
 	hitBySleepingAttack = false;

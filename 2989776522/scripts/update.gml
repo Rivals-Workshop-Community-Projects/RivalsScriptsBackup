@@ -113,7 +113,7 @@ if(inside_mech){
 	    floating = true;
 	    air_max_speed = 3.25;
 	    if(hsp*spr_dir < 0)hsp *= 0.95;
-	    if (state == PS_DOUBLE_JUMP && state_timer < 9){
+	    if (state == PS_DOUBLE_JUMP && state_timer < 9 /*&& !jump_pressed*/){
 	    	set_state(PS_IDLE_AIR);clear_button_buffer(PC_JUMP_PRESSED);
 	    	if(djumpfloat < 1){
 	    		djumps = 0;djumpfloat += 1;
@@ -227,7 +227,7 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	}
 }
 
-//custom burn status effect stuff
+//custom status effect stuff
 with (asset_get("oPlayer")){
     if (state == PS_RESPAWN || state == PS_DEAD){
         sol_burn = false;
@@ -255,6 +255,32 @@ with (asset_get("oPlayer")){
 		/*if(other.runeA && get_gameplay_time() % 10 == 0){
 			take_damage(player, -1, 1);
 		}*/
+	}
+	
+	//shake hitpause code
+	with(other){
+		if("shaketarget" not in self)shaketarget = noone;
+		if("extrahitpauseon" not in self)extrahitpauseon = true;
+		if("hitpausesetpos" not in self)hitpausesetpos = true;
+		if("hitpausecap" not in self)hitpausecap = 40;
+		if("shakecap" not in self)shakecap = 50;
+		if(instance_exists(shaketarget) && extrahitpauseon){
+			if(shaketarget.should_make_shockwave){
+				with(shaketarget){hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);}
+				hitstop = round(hitstop*1.5);hitstop_full = round(hitstop_full*1.5);
+			}if(shaketarget.activated_kill_effect){
+				var maxhitpause = min(hitpausecap,round(shaketarget.hitstop*2));
+				if(hitpause){hitstop = maxhitpause;hitstop_full = maxhitpause;}
+				shaketarget.hitstop = maxhitpause;shaketarget.hitstop_full = maxhitpause;shake_camera(35, 5);
+			}if(hitpausesetpos){shaketarget.prev_x = shaketarget.x;shaketarget.prev_y = shaketarget.y;}shaketarget = noone;
+		}
+	}
+	if(hitpause && state_cat == SC_HITSTUN && last_player == other.player){
+		var shake = activated_kill_effect?round(hitstop*3):should_make_shockwave?round(hitstop*2):round(hitstop);shake = min(other.shakecap,shake);
+		var dir = random_func(0, 359, true);var new_x = prev_x + round(lengthdir_x(shake/2, dir));var new_y = prev_y + round(lengthdir_y(shake/2, dir));
+		x = round(new_x);y = round(new_y);
+	}else if(!hitpause){
+		prev_x = x;prev_y = y;
 	}
 }
 

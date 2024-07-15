@@ -1,4 +1,5 @@
-//hitbox_update
+if(player_id.player == orig_player){
+	
 if(attack == AT_FSPECIAL){
 	if(!Pocketed){
 		if(instance_exists(target) && player == orig_player && (!fspec_target_player || fspec_target_player && target.state != PS_DEAD && target.state != PS_RESPAWN)){
@@ -270,7 +271,11 @@ if(attack == AT_FTILT && hbox_num >= 4){
 	}
 }
 
+stop_effect = false;
+if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
+
+}
 
 #define add_reflect_target(target)
 	if(!instance_exists(reflect_target)){

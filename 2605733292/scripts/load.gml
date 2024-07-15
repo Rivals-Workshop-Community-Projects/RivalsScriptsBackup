@@ -23,13 +23,13 @@ sprite_change_offset("idle_special", 52, 98);
 sprite_change_offset("walk_special", 52, 98);
 
 //Hurts
-sprite_change_offset("hurt", 52, 102);
+sprite_change_offset("hurt", 100, 130);
 sprite_change_offset("bighurt", 52, 98);
-sprite_change_offset("hurtground", 52, 96);
-sprite_change_offset("bouncehurt", 52, 98);
+sprite_change_offset("hurtground", 100, 130);
+sprite_change_offset("bouncehurt", 100, 130);
 sprite_change_offset("spinhurt", 52, 98);
-sprite_change_offset("uphurt", 52, 106);
-sprite_change_offset("downhurt", 52, 98);
+sprite_change_offset("uphurt", 100, 130);
+sprite_change_offset("downhurt", 100, 130);
 
 //Jump, Land, Etc.
 sprite_change_offset("jumpstart", 100, 130);
@@ -60,11 +60,11 @@ sprite_change_offset("nair", 82, 98);
 sprite_change_offset("fair", 100, 130);
 sprite_change_offset("bair", 112, 98);
 sprite_change_offset("uair", 52, 98);
-sprite_change_offset("dair", 52, 98);
+sprite_change_offset("dair", 100, 130);
 
 //Strong Attacks
 sprite_change_offset("fstrong", 92, 98);
-sprite_change_offset("ustrong", 52, 138);
+sprite_change_offset("ustrong", 100, 130);
 sprite_change_offset("dstrong", 92, 98);
 
 //Special Attacks
@@ -108,7 +108,7 @@ sprite_change_offset("plat_behind", 122, 188);
 sprite_change_offset("ability_star_hit_fx", 100, 100);
 sprite_change_offset("pillow_hit_fx_sml", 100, 100);
 sprite_change_offset("pillow_hit_fx_med", 100, 100);
-sprite_change_offset("pillow_hit_fx_lrg", 100, 100);
+sprite_change_offset("pillow_hit_fx_lrg", 150, 150);
 
 //Others.
 sprite_change_offset("nspecial_proj", 64, 94);

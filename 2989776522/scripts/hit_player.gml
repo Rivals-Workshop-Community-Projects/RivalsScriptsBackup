@@ -1,3 +1,8 @@
+
+if("should_make_shockwave" not in hit_player_obj)hit_player_obj.should_make_shockwave = false;
+if("activated_kill_effect" not in hit_player_obj)hit_player_obj.activated_kill_effect = false;
+if(my_hitboxID.hitstun_factor < 0)hit_player_obj.should_make_shockwave = false;
+
 //hitboxes that cause custom fire status effect
 if(my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num != 7 || my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2){
 	if(!hit_player_obj.sol_burn){
@@ -476,7 +481,8 @@ if(hit_player_obj.should_make_shockwave){
 
 //hitboxes that trigger the silly angle 0 galaxy thing
 if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_FTILT
-|| my_hitboxID.attack == AT_KICK && my_hitboxID.hbox_num == 2 || my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 5){
+|| my_hitboxID.attack == AT_KICK && my_hitboxID.hbox_num == 2 || my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 5
+|| my_hitboxID.attack == AT_JAB){
 	//trigger silly angle 0 thing (if galaxy)
 	if(hit_player_obj.should_make_shockwave)killtarget = hit_player_obj;
 }

@@ -379,6 +379,14 @@ if (attack == AT_DAIR){
 			clear_button_buffer(PC_SHIELD_PRESSED);
 			set_attack(AT_DTILT);
 		}
+		
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			//spawn_base_dust( x + (4 * spr_dir), y , "doublejump", spr_dir, 22.5 * spr_dir);
+		}
+	}
+	
+	if (window == 2 && window_timer mod 4 == 0 && !hitpause){
+		//spawn_base_dust( x + (4 * spr_dir), y , "doublejump_small", spr_dir, 22.5 * spr_dir);
 	}
 }
 
@@ -442,6 +450,7 @@ if (attack == AT_USTRONG){
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (18 * spr_dir), y, "jump", spr_dir * -1)
+			//sound_play(asset_get("sfx_spin"), false, noone, 0.55, 1.15);
 		}
 	}
 	if (window == 4){
@@ -647,6 +656,9 @@ if (attack == AT_FSPECIAL){
 			//hatThrowVisual.vsp = -10;
 		}
     }
+	if (window == 4){
+		move_cooldown[AT_FSPECIAL] = 25;
+	}
 	if (window == 5){
 		if (window_timer == 6){
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 2);

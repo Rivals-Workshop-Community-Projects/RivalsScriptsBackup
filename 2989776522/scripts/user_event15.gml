@@ -260,6 +260,17 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.27", "13th July, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Added a new CSS (1/10 chance normally, 1/2 chance with Alfred voice on). Credit to DonGT for making it!
++ Added shaky hitpause effect
++ Added 5 more Miiverse posts (now 24 total)");
+
+initPatch("1.26", "7th January, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Small fix to bury status effect to not clash with unique bury sprites (ex: Christmas Morshu)
++ Misc code improvements");
+
 initPatch("1.25", "23rd December, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug where Eggman could rarely take less horizontal knockback than he should while mechless");

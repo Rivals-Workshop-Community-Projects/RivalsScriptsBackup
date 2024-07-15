@@ -842,9 +842,8 @@ if (attack = AT_FSTRONG || attack = AT_USTRONG || attack = AT_DSTRONG){
 
 #define KoB_reverse
 	// Does a sick and based reverse
-	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && b_reversed == false){
-    	hsp *= -1;spr_dir *= -1;
-		b_reversed = true;
+	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && !b_reversed){
+    	hsp = -hsp;spr_dir = -spr_dir;b_reversed = true;
 	}
 	
 #define PlayAttackVoiceClip

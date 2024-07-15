@@ -260,6 +260,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.19", "13th July, 2024");
+initHeader("Buffs");
+initSection("+ Increased some stats when going from grounded to aerial, allowing momentum to be kept better");
+initHeader("Fixes / Other Changes");
+initSection("+ Added shaky hitpause effect
++ Added silly angle 0 to some moves");
+
 initPatch("1.18", "23rd November, 2023");
 initHeader("Buffs");
 initSection("+ DSpecial mud puddles now affect characters who aren't Mudkip; they will gain more friction and it will slow down their wavedashes etc. It still works the same way on Mudkip himself and other Mudkips

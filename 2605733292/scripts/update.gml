@@ -288,7 +288,7 @@ with (oPlayer){
 		// sets the initial damage value of the sleeping player
 		if (sleepingTimer == 0){
 			damageToWakeUp = get_player_damage(player);
-			damageToWakeUp = clamp(damageToWakeUp, 0, 70);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 50);	// the second value of this determines the max length of sleep status
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
@@ -298,8 +298,31 @@ with (oPlayer){
 			}
 			if (state_timer == 10){
 				// increasing the time it takes to sleep
-				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
+				if (damageIncrementTick < damageToWakeUp && state_timer == 10){//>
 					damageIncrementTick++;
+					
+					if (sleepIncrementAdvCounter != sleepIncrementAdvCounterMax){
+						sleepIncrementAdvCounter++;
+					} else {
+						sleepIncrementAdvCounter = 0;
+						damageIncrementTick++;
+					}
+					
+					/*
+					if (damageIncrementTick mod 2 == 0 && damageFlipVar){
+						//print("this is odd do something ok im increasing thing");
+						damageIncrementTick++;
+						//print("flip back");
+						damageFlipVar = false;
+					} else {
+						//print("not odd");
+						
+						if (damageFlipVar == false){
+							damageFlipVar = true;
+							//print("flip");
+						}
+					}
+					*/
 					state_timer--;
 				} else {
 					shouldWakeUp = true;
@@ -307,7 +330,14 @@ with (oPlayer){
 				
 				if (damageIncrementTick != 0){
 					if ((damageToWakeUp - damageIncrementTick) <= 16){//>
-						if ((damageToWakeUp - damageIncrementTick) % 3 == 0){
+						/*
+						if ((damageToWakeUp - damageIncrementTick) % 2 == 0){
+							sleepHatShouldFlash = true;
+						} else {
+							sleepHatShouldFlash = false;
+						}
+						*/
+						if (sleepingTimer mod 2 == 0){
 							sleepHatShouldFlash = true;
 						} else {
 							sleepHatShouldFlash = false;
@@ -331,6 +361,7 @@ with (oPlayer){
 				vsp = -6.5;
 				set_state(PS_IDLE_AIR);
 			}
+			sleepIncrementAdvCounter = 0;
 			damageIncrementTick = 0;
 			isCurrSleeping = false;
 			sound_play(asset_get("mfx_unstar"));
@@ -386,8 +417,8 @@ if(has_rune("A")
 }
 
 
-// Alt 24: Hope (the rainbow color stuff)
-if (get_player_color( player ) == 23) {
+// Alt 28: Hope (the rainbow color stuff)
+if (get_player_color( player ) == 27) {
 
     hue_offset+=hue_speed;
     hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
@@ -406,13 +437,13 @@ if (get_player_color( player ) == 23) {
     color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
     
     
-    set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
     
-	set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+	set_color_profile_slot( 27, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
     
 	
     set_article_color_slot( 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
@@ -459,7 +490,7 @@ if (get_player_color( player ) == 23) {
 		// sets the initial damage value of the sleeping player
 		if (sleepingTimer == 0){
 			damageToWakeUp = get_player_damage(player);
-			damageToWakeUp = clamp(damageToWakeUp, 0, 70);
+			damageToWakeUp = clamp(damageToWakeUp, 0, 50);	// the second value of this determines the max length of sleep status
 		}
 		sleepingTimer++;
 		if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
@@ -469,8 +500,31 @@ if (get_player_color( player ) == 23) {
 			}
 			if (state_timer == 10){
 				// increasing the time it takes to sleep
-				if (damageIncrementTick != damageToWakeUp && state_timer == 10){
+				if (damageIncrementTick < damageToWakeUp && state_timer == 10){//>
 					damageIncrementTick++;
+					
+					if (sleepIncrementAdvCounter != sleepIncrementAdvCounterMax){
+						sleepIncrementAdvCounter++;
+					} else {
+						sleepIncrementAdvCounter = 0;
+						damageIncrementTick++;
+					}
+					
+					/*
+					if (damageIncrementTick mod 2 == 0 && damageFlipVar){
+						//print("this is odd do something ok im increasing thing");
+						damageIncrementTick++;
+						//print("flip back");
+						damageFlipVar = false;
+					} else {
+						//print("not odd");
+						
+						if (damageFlipVar == false){
+							damageFlipVar = true;
+							//print("flip");
+						}
+					}
+					*/
 					state_timer--;
 				} else {
 					shouldWakeUp = true;
@@ -478,7 +532,14 @@ if (get_player_color( player ) == 23) {
 				
 				if (damageIncrementTick != 0){
 					if ((damageToWakeUp - damageIncrementTick) <= 16){//>
-						if ((damageToWakeUp - damageIncrementTick) % 3 == 0){
+						/*
+						if ((damageToWakeUp - damageIncrementTick) % 2 == 0){
+							sleepHatShouldFlash = true;
+						} else {
+							sleepHatShouldFlash = false;
+						}
+						*/
+						if (sleepingTimer mod 2 == 0){
 							sleepHatShouldFlash = true;
 						} else {
 							sleepHatShouldFlash = false;
@@ -502,6 +563,7 @@ if (get_player_color( player ) == 23) {
 				vsp = -6.5;
 				set_state(PS_IDLE_AIR);
 			}
+			sleepIncrementAdvCounter = 0;
 			damageIncrementTick = 0;
 			isCurrSleeping = false;
 			sound_play(asset_get("mfx_unstar"));

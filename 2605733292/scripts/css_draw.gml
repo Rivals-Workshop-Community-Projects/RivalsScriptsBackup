@@ -28,8 +28,12 @@ alt_name[18] = "Ranked Gold";
 alt_name[19] = "Champion";
 alt_name[20] = "Orange";
 alt_name[21] = "Snow";
-alt_name[22] = "Adventure Ability";
-alt_name[23] = "Hope";
+alt_name[22] = "Lavender";
+alt_name[23] = "Chocolate";
+alt_name[24] = "Citrus";
+alt_name[25] = "Adventure Ability";
+alt_name[26] = "Android Dreams";
+alt_name[27] = "Hope";
  
 //Alt
  
@@ -52,7 +56,7 @@ if (get_player_color(player) == 7){
 if (get_player_color(player) == 17){
 	draw_sprite(sprite_get("_css_outlines"),2,x + 8,y + 8);
 }
-if (get_player_color(player) == 23){
+if (get_player_color(player) == 27){
 	draw_sprite(sprite_get("_css_outlines"),3,x + 8,y + 8);
 }
 
@@ -64,14 +68,14 @@ if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("_css_icons"),1,x+10,y+42);
 } else if (get_player_color(player) == 18){
 	draw_sprite(sprite_get("_css_icons"),3,x+10,y+42);
-} else if (get_player_color(player) == 23){
+} else if (get_player_color(player) == 27){
 	draw_sprite(sprite_get("_css_icons"),5,x+10,y+42);
-} else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
+} else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19 || get_player_color(player) == 26){
 	draw_sprite(sprite_get("_css_icons"),2,x+10,y+42);
 }
 
-// Alt 24: Hope (the rainbow color stuff)
-if (get_player_color( player ) == 23) {
+// Alt 28: Hope (the rainbow color stuff)
+if (get_player_color( player ) == 27) {
 
     hue_offset+=hue_speed;
     hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
@@ -90,13 +94,13 @@ if (get_player_color( player ) == 23) {
     color_hsv3=make_color_hsv(hue3,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
     
     
-    set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
     
-	set_color_profile_slot( 23, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
-    set_color_profile_slot( 23, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+	set_color_profile_slot( 27, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));//uses that variable to set the slot's new colours
+    set_color_profile_slot( 27, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
     
 	
     set_article_color_slot( 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours

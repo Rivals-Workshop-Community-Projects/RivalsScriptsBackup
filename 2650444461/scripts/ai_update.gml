@@ -1,7 +1,7 @@
 //ai_update - called every frame for this character as a CPU
 
 if(ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN && ai_target != self){
-	if(temp_level == 1 || temp_level == 2 || temp_level == 9){
+	if(temp_level == 9){
 		ai_attack_time = 0;
 	}
 	silly = 0;
