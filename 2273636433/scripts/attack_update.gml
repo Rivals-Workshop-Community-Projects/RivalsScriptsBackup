@@ -288,6 +288,7 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 							other.hitstop_full=3;
 							other.old_vsp=other.vsp;
 							other.old_hsp=other.hsp;
+							player = other.player;
 							can_hit_self = true;
 							can_hit[other.player] = false;
 							if does_not_reflect == false && hit_check == noone {hitbox_timer =0;}

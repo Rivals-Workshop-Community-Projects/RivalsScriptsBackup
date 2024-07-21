@@ -57,7 +57,7 @@ switch(attack){
 				can_wall_jump = true;
 				if left_down{hsp-=0.2;}
 				if right_down{hsp+=0.2;}
-				if state_timer == 30 {
+				if state_timer == 32 {
 					Fcancel=4;
 					sound_stop(sound_get("jingle"));
 					sound_play(sound_get("jingle"));
@@ -398,10 +398,10 @@ switch(attack){
 					if arrow_cooldown >0 {
 						arrow_cooldown-=1;
 					}
-					if special_down && window_timer ==8 && state_timer <=14{
+					if special_down && window_timer ==8 && state_timer <=13{
 						window_timer =7;
 					}
-					if state_timer == 15  && window_timer == 8{
+					if state_timer == 14  && window_timer == 8{
 						sound_play(asset_get("mfx_star"));
 					}
 				} 
@@ -423,7 +423,6 @@ switch(attack){
 					if absorb ==2 {
 						set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED)*1.45); 
 						set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED)*1.45); 
-
 						absorb = 1;
 					}
 				

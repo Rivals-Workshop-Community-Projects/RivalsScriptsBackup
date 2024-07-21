@@ -7,7 +7,7 @@ if instance_exists(cursor_id){
 	
 	//Voice Logic
 	if get_player_color(player) ==11 || get_player_color(player) ==12 {	
-		if (cur_x > 16  + x )&& (cur_x <=  48 + x )&& (cur_y > 74 + y )&& (cur_y <=  100 + y ){		//Button Coordinates
+		if (cur_x > 16  + x )&& (cur_x <=  48 + x )&& (cur_y > 86 + y )&& (cur_y <=  112 + y ){		//Button Coordinates
 			suppress_cursor = true;
 			if menu_a_pressed  {
 				voice_button = !voice_button;

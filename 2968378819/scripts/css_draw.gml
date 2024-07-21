@@ -159,12 +159,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[29,0] = make_color_rgb(159, 174, 183)
     ce[29,1] = "Giest"
     ce[29,2] = "Giest (Azelinuu)"
-    ce[30,0] = make_color_rgb(112, 112, 112)
-    ce[30,1] = "Black Pants"
-    ce[30,2] = "The best alt Monk has."
-    ce[31,0] = make_color_rgb(129, 140, 150)
-    ce[31,1] = "Rayhan"
-    ce[31,2] = "Rayhan (Azelinuu)"
+    ce[30,0] = make_color_rgb(129, 140, 150)
+    ce[30,1] = "Rayhan"
+    ce[30,2] = "Rayhan (Azelinuu)"
+    ce[31,0] = make_color_rgb(112, 112, 112)
+    ce[31,1] = "Black Pants"
+    ce[31,2] = "The best alt Monk has."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

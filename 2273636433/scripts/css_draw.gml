@@ -20,6 +20,16 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
 
+//CSS Indicators
+
+if get_player_color(player) ==11 || get_player_color(player) ==12 {
+	draw_sprite( sprite_get("sound_toggle"), voice_button, x + 18, y+86);
+}
+
+draw_sprite( sprite_get("pill_select"), pill_button, x + 14, y+48);
+textDraw(x+17, y+72, "fName",c_white, 0, 1000, 1, true, 1,"Pill " + string(pill_button))
+
+
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
@@ -54,10 +64,4 @@ if (get_color_profile_slot_b(9, 0) == 255) {
 }
 
 
-//CSS Indicators
 
-if get_player_color(player) ==11 || get_player_color(player) ==12 {
-	draw_sprite( sprite_get("sound_toggle"), voice_button, x + 18, y+74);
-}
-
-draw_sprite( sprite_get("pill_select"), pill_button, x + 14, y+48);

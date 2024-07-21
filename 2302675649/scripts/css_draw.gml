@@ -118,5 +118,6 @@ init_shader();
 		case "AURO<3": return "Aurora";
 		case "MAKO":
 		case "4MAKO": return "Endless Now";
+		case "BLUE": return "Blue Dragon";
 	}
 }

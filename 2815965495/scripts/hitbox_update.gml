@@ -44,8 +44,14 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 					if attack == AT_USPECIAL  && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && special_down{
 						if abs(x - (other.x ))<=52 {
 							if abs(other.y - (y - 32))<=52{
-								if absorb == 0 {absorb = 3; other.destroyed = true;}	
-								sound_play(asset_get("mfx_star"));					
+								if absorb == 0 {
+									absorb = 3; 
+									other.destroyed = true;
+									if "ding" in self {
+										sound_stop(ding)
+									}
+									ding = sound_play(asset_get("mfx_star"));	
+								}	
 							}
 						}
 					}

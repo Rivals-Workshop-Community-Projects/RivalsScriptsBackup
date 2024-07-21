@@ -37,4 +37,15 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 31, 6, 189, 167, 161 ); //skin2
 		set_color_profile_slot( 31, 7, 43, 58, 84 ); //hair
 		break;
+	case "BLUE":
+		// Blue Dragon
+		set_color_profile_slot( 31, 0, 78, 238, 245 ); //sword
+		set_color_profile_slot( 31, 1, 255, 255, 170 ); //shirt
+		set_color_profile_slot( 31, 2, 230, 184, 131 ); //shirt2
+		set_color_profile_slot( 31, 3, 55, 97, 181 ); //pants
+		set_color_profile_slot( 31, 4, 49, 36, 158 ); //pants2
+		set_color_profile_slot( 31, 5, 55, 97, 181 ); //skin
+		set_color_profile_slot( 31, 6, 49, 36, 158 ); //skin2
+		set_color_profile_slot( 31, 7, 243, 36, 76 ); //hair
+		break;
 }

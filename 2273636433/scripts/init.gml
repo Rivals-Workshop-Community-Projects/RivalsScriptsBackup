@@ -189,6 +189,7 @@ repeat(7)
 
 // --------------------------------------COMPATIBILITY VARIABLES--------------------
 arena_title = "The Pain Prescriber"
+boxing_title = "The Pain Prescriber"
 Hikaru_Title = "Dr"
 pkmn_stadium_name_override = "DR.MARIO";
 

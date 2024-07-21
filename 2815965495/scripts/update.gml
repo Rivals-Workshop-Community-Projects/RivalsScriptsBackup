@@ -71,7 +71,6 @@ sprite_change_offset("dashturn", 21, 60 +floor( sin(anim_timer/10)*6));
 sprite_change_offset("dash", 21, 60 +floor( sin(anim_timer/10)*6)); 
 sprite_change_offset("dashstop", 20, 60 +floor( sin(anim_timer/10)*6)); 
 
-
 sprite_change_offset("smoke0", 4,4);
 sprite_change_offset("smoke1", 8,8); 
 sprite_change_offset("smoke2", 7,6); 

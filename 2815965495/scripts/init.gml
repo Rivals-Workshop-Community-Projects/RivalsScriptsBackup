@@ -189,6 +189,7 @@ pkmn_stadium_back_img = sprite_get("PSB");
 //Compatibility
 Hikaru_Title = "Dogars lover";
 arena_title = "The Poison Gas Pokemon";
+boxing_title = "Volatile Fellow ";
 battle_text = "*A wild Koffing has appeared!";
 
 guiltySprite = sprite_get("Monokuma")

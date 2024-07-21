@@ -192,6 +192,12 @@ music_timer = 0;
 jestermode = floor(get_synced_var(player) / 10);
 shadelessmode = get_synced_var(player) % 10;
 
+buddy_starko_sfx = sound_get("buddy_starko");
+buddy_screenko_sprite = sprite_get("buddy_screenko");
+// buddy_screenko_sfx = sound_get("buddy_screenko");
+// buddy_screenko_voice_sfx = sound_get("buddy_screenko_voice");
+// buddy_starko_sprite = sprite_get("buddy_starko");
+
 if get_player_color(player) == 19 || get_player_color(player) == 22 || get_player_name(player) == "TANIA"{
     
     set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("HitLightDBZ2"));

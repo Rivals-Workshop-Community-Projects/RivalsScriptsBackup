@@ -66,6 +66,7 @@ sprite_change_offset("nspecial_proj8",17, 11);
 sprite_change_offset("drmario_smash_proj", 42, 50);
 
 sprite_change_offset("score", 72, 53);
+sprite_change_offset("Tracker", 7, 0);
 
 sprite_change_offset("Dr_Hurtbox",22, 68);
 sprite_change_offset("Dr_Crouchbox",22, 68);

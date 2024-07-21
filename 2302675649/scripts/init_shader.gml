@@ -106,6 +106,11 @@ switch (playerAlt)
 						AltOpacity(i, 1);
 				}
 				break;
+			case "BLUE":
+				if ("hue" not in self) hue = 0;
+				var colorRGB=make_color_rgb(78, 238, 245);
+				AltColour(0, make_color_hsv((color_get_hue(colorRGB)+hue)%255,color_get_saturation(colorRGB),color_get_value(colorRGB)));
+				break;
 		}
 	}
 	break;

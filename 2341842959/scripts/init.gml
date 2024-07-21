@@ -199,6 +199,12 @@ knight_compat_dream =
         "Could be sleeping right now..."
     ]
 
+buddy_starko_sfx = sound_get("buddy_starko");
+buddy_screenko_sprite = sprite_get("buddy_screenko");
+// buddy_screenko_sfx = sound_get("buddy_screenko");
+// buddy_screenko_voice_sfx = sound_get("buddy_screenko_voice");
+// buddy_starko_sprite = sprite_get("buddy_starko");
+
 //Dracula support (yadda yadda you don't belong in this world)
 {
 dracula_portrait = sprite_get("draculaportrait");

@@ -27,7 +27,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -4.5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //MAX CHARGE
@@ -62,7 +62,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 70);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1190);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);

@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 17, 86, 34 );
 
 // Bandages/Claws 1
 set_color_profile_slot( 0, 6, 235, 235, 235 );
-set_color_profile_slot_range( 6, 1, 8, 64 );
+set_color_profile_slot_range( 6, 1, 50, 64 );
 
 // Claws 2
 set_color_profile_slot( 0, 7, 155, 149, 178 );
@@ -326,29 +326,29 @@ set_color_profile_slot( 29, 5, 200, 69, 87 ); //Eyes
 set_color_profile_slot( 29, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 29, 7, 191, 191, 191 ); //Claws 2
 
-// Black Pants
-set_color_profile_slot( 30, 0, 152, 163, 255 ); //Fur 1
-set_color_profile_slot( 30, 1, 73, 65, 122 ); //Fur 2
-set_color_profile_slot( 30, 2, 156, 164, 237 ); //Belt 1
-set_color_profile_slot( 30, 3, 84, 78, 122 ); //Belt 2
-set_color_profile_slot( 30, 4, 112, 112, 112 ); //Pants
-set_color_profile_slot( 30, 5, 0, 228, 255 ); //Eyes
-set_color_profile_slot( 30, 6, 235, 235, 235 ); //Bandages/Claws 1
-set_color_profile_slot( 30, 7, 155, 149, 178 ); //Claws 2
-
 // Rayhan
-set_color_profile_slot( 31, 0, 129, 140, 150 ); //Fur 1
-set_color_profile_slot( 31, 1, 48, 52, 56 ); //Fur 2
-set_color_profile_slot( 31, 2, 200, 222, 147 ); //Belt 1
-set_color_profile_slot( 31, 3, 138, 153, 101 ); //Belt 2
-set_color_profile_slot( 31, 4, 234, 240, 240 ); //Pants
-set_color_profile_slot( 31, 5, 255, 255, 255 ); //Eyes
-set_color_profile_slot( 31, 6, 222, 222, 222 ); //Bandages/Claws 1
-set_color_profile_slot( 31, 7, 171, 171, 171 ); //Claws 2
+set_color_profile_slot( 30, 0, 129, 140, 150 ); //Fur 1
+set_color_profile_slot( 30, 1, 48, 52, 56 ); //Fur 2
+set_color_profile_slot( 30, 2, 200, 222, 147 ); //Belt 1
+set_color_profile_slot( 30, 3, 138, 153, 101 ); //Belt 2
+set_color_profile_slot( 30, 4, 234, 240, 240 ); //Pants
+set_color_profile_slot( 30, 5, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 30, 6, 222, 222, 222 ); //Bandages/Claws 1
+set_color_profile_slot( 30, 7, 171, 171, 171 ); //Claws 2
+
+// Black Pants
+set_color_profile_slot( 31, 0, 152, 163, 255 ); //Fur 1
+set_color_profile_slot( 31, 1, 73, 65, 122 ); //Fur 2
+set_color_profile_slot( 31, 2, 156, 164, 237 ); //Belt 1
+set_color_profile_slot( 31, 3, 84, 78, 122 ); //Belt 2
+set_color_profile_slot( 31, 4, 112, 112, 112 ); //Pants
+set_color_profile_slot( 31, 5, 0, 228, 255 ); //Eyes
+set_color_profile_slot( 31, 6, 235, 235, 235 ); //Bandages/Claws 1
+set_color_profile_slot( 31, 7, 155, 149, 178 ); //Claws 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Fur 1","colors":[{"r":152,"g":163,"b":255,"main":true},{"r":106,"g":115,"b":196}]},{"name":"Fur 2","colors":[{"r":73,"g":65,"b":122,"main":true}]},{"name":"Belt 1","colors":[{"r":156,"g":164,"b":237,"main":true},{"r":120,"g":127,"b":194}]},{"name":"Belt 2","colors":[{"r":84,"g":78,"b":122,"main":true}]},{"name":"Pants","colors":[{"r":91,"g":191,"b":115,"main":true},{"r":46,"g":112,"b":67},{"r":68,"g":130,"b":83},{"r":35,"g":84,"b":47}]},{"name":"Eyes","colors":[{"r":0,"g":228,"b":255,"main":true},{"r":182,"g":247,"b":255},{"r":0,"g":153,"b":171},{"r":160,"g":255,"b":255},{"r":58,"g":173,"b":238},{"r":217,"g":255,"b":249}]},{"name":"Bandages/Claws 1","colors":[{"r":235,"g":235,"b":235,"main":true},{"r":196,"g":184,"b":184},{"r":255,"g":237,"b":237},{"r":74,"g":74,"b":74}]},{"name":"Claws 2","colors":[{"r":155,"g":149,"b":178,"main":true},{"r":157,"g":151,"b":181},{"r":180,"g":176,"b":196}]}]}
+{"formatversion":1,"data":[{"name":"Fur 1","colors":[{"r":152,"g":163,"b":255,"main":true},{"r":106,"g":115,"b":196}]},{"name":"Fur 2","colors":[{"r":73,"g":65,"b":122,"main":true}]},{"name":"Belt 1","colors":[{"r":156,"g":164,"b":237,"main":true},{"r":120,"g":127,"b":194}]},{"name":"Belt 2","colors":[{"r":84,"g":78,"b":122,"main":true}]},{"name":"Pants","colors":[{"r":91,"g":191,"b":115,"main":true},{"r":46,"g":112,"b":67},{"r":68,"g":130,"b":83},{"r":35,"g":84,"b":47}]},{"name":"Eyes","colors":[{"r":0,"g":228,"b":255,"main":true},{"r":182,"g":247,"b":255},{"r":0,"g":153,"b":171},{"r":160,"g":255,"b":255},{"r":58,"g":173,"b":238},{"r":217,"g":255,"b":249}]},{"name":"Bandages/Claws 1","colors":[{"r":235,"g":235,"b":235,"main":true},{"r":196,"g":184,"b":184},{"r":255,"g":237,"b":237},{"r":74,"g":74,"b":74},{"r":238,"g":170,"b":170},{"r":130,"g":66,"b":66}]},{"name":"Claws 2","colors":[{"r":155,"g":149,"b":178,"main":true},{"r":157,"g":151,"b":181},{"r":180,"g":176,"b":196}]}]}
 === END JSON PALETTE ===
 */

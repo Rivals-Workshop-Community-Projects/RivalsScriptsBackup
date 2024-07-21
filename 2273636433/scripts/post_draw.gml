@@ -5,7 +5,7 @@
 //draw_debug_text(x , y-40 , string(doc_ditto));
 //draw_debug_text(x , y-60 , string(done_reflecting_article));
 //draw_debug_text(x ,y+20, string(previo[0]));
-//draw_debug_text(x , y-80 , string(valido));
+//draw_debug_text(x , y-80 , string(phone_blastzone_r));
 
 /*
 with pHitBox{ //i was here

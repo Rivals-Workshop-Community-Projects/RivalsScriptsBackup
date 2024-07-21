@@ -880,6 +880,12 @@ if ("rollArray" in self)
 						AddText("Fixed a bug where the alternate taunt is set every frame in practice mode");
 						AddText("Fixed a bug where Rainbow alts don't work on the results screen");
 						AddText("Lower CPU levels now have weaker ai to match its proper level");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.52.1 - 16 Jul 2024");
+						AddText("");
+						AddText("Optimised sprites' file sizes");
+						AddText("Updated song list");
 						break;
 				}
 				DrawTutorialBlock();
@@ -1118,6 +1124,8 @@ if ("rollArray" in self)
 			return "Tactical Evolution EX ~ Creatures Medley";
 		case 37:
 			return "To Pure Horizons ~ Dungeons Medley";
+		case 38:
+			return "Indignant Divinity EX";
 		default:
 			if ("loninMusicName" in obj_stage_main) return string(obj_stage_main.loninMusicName);
 			else if (CheckStageUrl(2061009621))	return "Derek Fiechter - Night at the Castle";
@@ -1131,6 +1139,9 @@ if ("rollArray" in self)
 			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
 			else if (CheckStageUrl(2809646591))	return "Answearing Machine - Shattered Shrine of Light";
 			else if (CheckStageUrl(2823202747))	return "SSBM - Final Destination (GSV Remix)";
+			else if (CheckStageUrl(2980985092))	return "Answearing Machine - BLACK MOON RISING";
+			else if (CheckStageUrl(3060571016))	return "Answearing Machine - Theme of That F***in Bird That I Hate";
+			else if (CheckStageUrl(3138841252))	return "Vulpes Borealis - Pneumatic Prowess";
 			return "Darude - Sandstorm";
 	}
 }
