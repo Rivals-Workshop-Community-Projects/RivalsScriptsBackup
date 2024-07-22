@@ -49,7 +49,7 @@ set_num_hitboxes(AT_FSPECIAL_AIR, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_LIFETIME, 47);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_X, 30);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_Y, -55);

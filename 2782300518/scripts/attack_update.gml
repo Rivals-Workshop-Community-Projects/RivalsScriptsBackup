@@ -246,14 +246,14 @@ if (motorbike == false)
 			can_attack = window > 1 && has_hit && !down_pressed && !down_down;
 			can_jump = window > 1 && has_hit;
 			
-			if (window == 1)
+			/*if (window == 1)
 			{
 				vsp= clamp(vsp, 0, 1)
 				/*if (window_timer == 10 && !hitpause)
 				{
 					create_hitbox(AT_DAIR, 1, x - 4 * spr_dir, y - 4)
 				}*/
-			}
+			//}
 			if ((window == 2 || window == 4) && !hitpause)
 			{
 				switch (window_timer)
@@ -292,8 +292,8 @@ if (motorbike == false)
 			}
 			if (!free)
 			{
-				spawn_base_dust(x, y, "jump");
-				spawn_base_dust(x, y, "land");
+				if (window == 3 && window_timer == 3) spawn_base_dust(x, y, "jump");
+				if (window == 3 && window_timer == 1) spawn_base_dust(x, y, "land");
 			}
 			if (((can_shield && (shield_pressed || shield_down)) 
 			|| (can_jump && (jump_pressed || (tap_jump_pressed && can_tap_jump()))) 

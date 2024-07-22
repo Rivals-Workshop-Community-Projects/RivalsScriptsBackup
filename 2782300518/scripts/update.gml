@@ -268,7 +268,7 @@ if (motorbike == false)
 							wait_sprite = sprite_get("wait");
 						break;
 						case 1:
-							wait_length = 60;
+							wait_length = 40;
 							wait_sprite = sprite_get("waitb");
 						break;
 						case 2:
@@ -1107,6 +1107,14 @@ if(variable_instance_exists(id,"diag"))
 		diag = "Why do you sound almost exactly like my sister?";
 		diag_index = 0;		
 	}
+	
+	//Scoop
+	if (otherUrl == "3293338995" && diag != "")
+	{
+		diag = "Mmmmmmmmmmm.... ice cream..... *glowing anime eyes*";
+		diag_index = 0;		
+	}	
+	
 	
 	if (otherUrl == CH_ELLIANA && diag != "")
 	{

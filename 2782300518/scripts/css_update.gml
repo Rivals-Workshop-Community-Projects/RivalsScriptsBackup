@@ -23,6 +23,16 @@ if get_synced_var(player) > 1
     set_synced_var( player, 0)
 }
 
+if (css_timer < 5)
+{
+	title_alpha+=0.2
+}
+
+if (css_timer > 100 && title_alpha >= -1)
+{
+	title_alpha-=0.1;
+}
+
 if ("temp_y" in self && "voice_button_position_x" in self && "voice_button_position_y" in self)
 {
 	if (player == 0)
@@ -50,6 +60,7 @@ if ("alttime" in self && "css_timer" in self && "alt_checker" in self && alt_cur
 	css_timer = 0;
     drawing = floor(alttime % 8);
     drawtime = 0;
+   	title_alpha = 0;
 	sound_stop(sound_get("motorbike_uppercut"));
     sound_play(sound_get("motorbike_uppercut"));
 }

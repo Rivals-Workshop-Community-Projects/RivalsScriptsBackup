@@ -304,6 +304,8 @@ wily_robotmaster_img = sprite_get("wily_castle_sprite");
 wily_flicker_col = /*#*/$b838a0;
 neutralized_ability = "Bike"
 koffing_gas_active = 0;
+scoop_personalized_flavour_name = "Green Tea"
+scoop_personalized_flavour_sprite = sprite_get("green_tea_ice_cream")
 
 knight_compat_dream = 
     [

@@ -144,6 +144,23 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.11"
+        patch_note_text[i++] =  
+
+"Revamped the CSS to use Freedom Planet textboxes.
+
+Shrunk the head on the second wait sprite and sped it up for better smoothness and less animation jank.
+
+Altered DStrong 2, Tilts, Jab and USpecial not to use Hitbox Group -1 to avoid some article shenanigans.
+
+Fixed the constant dust spawning on bouncing during Bikeless Dair.
+
+Altered momentum to not clamp your speed during the startup of Bikeless Dair
+
+Added Dialogue Buddy compatibility for Scoop
+
+Added Scoop compatibility"
+
         patch_note_title[i] = "2.10"
         patch_note_text[i++] =  
 "Quality of life change, when Carol says one of her voicelines during idle animation, that voiceline will no longer play for the rest of the duration that you remain in idle.

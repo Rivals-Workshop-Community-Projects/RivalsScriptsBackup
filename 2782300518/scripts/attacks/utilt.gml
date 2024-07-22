@@ -53,7 +53,7 @@ set_num_hitboxes(AT_UTILT, 3);
 
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 36);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -36);
@@ -72,7 +72,7 @@ set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_MISC_ADD, "Becomes techable if the 
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 36);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -36);
@@ -90,7 +90,7 @@ set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("hit_light"));
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 3);
-set_hitbox_value(AT_UTILT, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_X, 40);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_UTILT, 3, HG_WIDTH, 72);

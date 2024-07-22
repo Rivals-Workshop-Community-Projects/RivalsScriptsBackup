@@ -53,7 +53,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Spawns every 3 frames
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, 16);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -38);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 36);

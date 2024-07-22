@@ -52,7 +52,7 @@ shader_end();
 
 draw_set_halign(fa_left);
 
-//This code is a mishmash of code made by Muno, Sai and Bar-Kun, mainly taken from Keqing's CSS
+//This code is a mishmash of code made by Muno, Sai and Bar-Kun with my own flairs, mainly taken from Keqing's CSS
 
 rectDraw(x+78, y+9, 132, 6, c_black);
 for (i = 0; i < num_alts; i++)
@@ -62,9 +62,10 @@ for (i = 0; i < num_alts; i++)
 	rectDraw(draw_x, y + 9, thin ? 1 : 5, 4, draw_color);
 }
 
-rectDraw(x + 76, y + 15, 42, 20, c_black);
+//rectDraw(x + 76, y + 15, 42, 20, c_black);
 
-textDraw(x + 82, y + 19, "fName", col, 20, 1000, fa_left, 1, false, 1, txt, false);
+//textDraw(x + 82, y + 19, "fName", col, 20, 1000, fa_left, 1, false, 1, txt, false);
+
 
 //ANIMATION VARIABLES
 //original code was made by SAI
@@ -72,7 +73,12 @@ textDraw(x + 82, y + 19, "fName", col, 20, 1000, fa_left, 1, false, 1, txt, fals
 var temp_x = floor(x+10);
 var temp_y = floor(y+10);
 
-textDraw(floor(x) + 10, floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, 1, string(alt_name[alt_cur]), false);
+draw_sprite_ext(sprite_get("alt_number"), alt_cur, x + 10, y + 42, 2, 2, 0, c_white, 1);
+
+draw_sprite_ext(sprite_get("alt_name_text"), alt_cur, temp_x + 2, temp_y + 122, 2, 2, 0, c_white, title_alpha);
+
+
+//textDraw(floor(x) + 10, floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, 1, string(alt_name[alt_cur]), false);
 
 shader_start();
 if (css_timer < 140)
@@ -81,7 +87,7 @@ if (css_timer < 140)
         preview_idle,
         css_timer * preview_anim_speed,
         preview_x + 10 + (css_timer < 60 ?  + 24 + (css_timer / 20) : 16 + (css_timer / 5)), //if css_anim time is under 60 it positions the character differently
-        preview_y + 128,
+        preview_y + 122,
         preview_scale, //so it is affected by small_sprites aswell
         preview_scale,
         0,

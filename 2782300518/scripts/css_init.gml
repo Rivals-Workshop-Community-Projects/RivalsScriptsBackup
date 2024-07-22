@@ -21,6 +21,8 @@ is_css = true;
 preview_x = 0; //preview char
 preview_y = 0;
 
+title_alpha = 0;
+
 txt = "#" + string(alt_cur);
 
 voice_button_position_x = 0;
