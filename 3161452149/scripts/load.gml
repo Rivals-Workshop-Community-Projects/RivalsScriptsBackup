@@ -55,6 +55,8 @@ sprite_change_offset("tauntalt", 59, 71, 1);
 sprite_change_offset("clonespawn", 59, 71, 1);
 sprite_change_offset("clonespawn_air", 59, 71, 1);
 
+sprite_change_offset("buddy_screenko", 59, 71, 1);
+
 sprite_change_offset("plat", 32, 47);
 
 sprite_change_offset("crouchbox", 21, 48);

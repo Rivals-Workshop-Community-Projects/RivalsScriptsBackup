@@ -26,7 +26,7 @@ if (url == "2085832560" && attack == AT_TAUNT && state == PS_ATTACK_GROUND) {
 if (blue && blue_time > 0) {
     if (instance_exists(blue_id)) {
         gpu_set_fog(1, c_blue, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale, image_yscale, spr_angle, c_white, 0.25)
+            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale * ( small_sprites ? 2 : 1), image_yscale * ( small_sprites ? 2 : 1), spr_angle, c_white, 0.35);
         gpu_set_fog(0, c_blue, 0, 1);
     }
 }

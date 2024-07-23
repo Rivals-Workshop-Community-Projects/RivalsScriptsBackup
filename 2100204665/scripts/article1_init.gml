@@ -1,8 +1,8 @@
 // article1_init
 
 init = 0;
-
-sprite_index = sprite_get("boneslow");
+shader = get_player_color( player_id.player );
+sprite_index = sprite_get( (shader == 0 ? "unshaded_" : "") + "trap");
 state = 0;
 state_timer = 0;
 life_timer = 0;
@@ -11,11 +11,10 @@ ignores_walls = false;
 free = false;
 uses_shader = true;
 offset = 0;
+should_die = false;
+busy = false;
 
 hsp = 0;
-
-
-hitbox = noone;
 
 while(!position_meeting(x,bbox_bottom+1,asset_get("par_block")) && !position_meeting(x,bbox_bottom+1,asset_get("par_jumpthrough"))){
     y++;
@@ -36,7 +35,7 @@ if (state == 0) { //code borrowed from Mycolich DTilt
     
         if (!position_meeting(x+of,bbox_bottom+1,asset_get("par_block")) && !position_meeting(x+of,bbox_bottom+1,asset_get("par_jumpthrough"))){
             repeat(30){
-                x -= player_id.spr_dir;
+                x *= player_id.spr_dir;
                 if (position_meeting(x+of,bbox_bottom+1,asset_get("par_block")) or position_meeting(x+of,bbox_bottom+1,asset_get("par_jumpthrough"))) break;
             }
             break;

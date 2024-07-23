@@ -62,7 +62,7 @@ sprite_change_offset("downhurt", 65, 94);
 sprite_change_offset("spinhurt", 67, 94);
 sprite_change_offset("jestermodebighurt", 68, 63);
 sprite_change_offset("jestermodeuphurt", 71, 94);
-sprite_change_offset("buddy_screenko", 71, 94);
+sprite_change_offset("buddy_screenko", 61, 94);
 
 sprite_change_offset("gas_DTILT", 82, 86);
 sprite_change_offset("gas_USTRONG", 72, 151);

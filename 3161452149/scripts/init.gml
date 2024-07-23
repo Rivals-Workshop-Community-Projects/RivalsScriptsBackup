@@ -134,9 +134,9 @@ set_victory_bg(sprite_get("winscreen")); // sprites\winscreen.png - name doesn't
 alt_cur = get_player_color(player);
 
 buddy_starko_sfx = sound_get("buddy_starko");
-// buddy_screenko_sprite = sprite_get("buddy_screenko");
+buddy_screenko_sprite = sprite_get("buddy_screenko");
 // buddy_screenko_sfx = sound_get("buddy_screenko");
-// buddy_screenko_voice_sfx = sound_get("buddy_screenko_voice");
+buddy_screenko_voice_sfx = sound_get("buddy_screenko_voice");
 // buddy_starko_sprite = sprite_get("buddy_starko");
 
 //sfx list

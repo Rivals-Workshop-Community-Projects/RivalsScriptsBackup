@@ -6,7 +6,7 @@ target_id = -4;
 targetter_id = -4;
 target_time = 10;
 
-range = 115;
+range = 100;
 
 warn_timer = 0;
 warn_time_base = 8;
