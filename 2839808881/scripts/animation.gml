@@ -1,14 +1,10 @@
 
 
 // fix weird jittering that can happen when it tries to return to 0
-if abs(hud_offset) < 1{
+if abs(hud_offset) < 1{//>
 	hud_offset = 0;
 }
-if (jet_charge_stored) { //Fully charged
-	outline_color = [ 0, 200, 255 ];
-} else {
-	outline_color = [ 0, 0, 0 ];
-}
+
 //uspecial
 if (sprite_index != sprite_get("uspecial")){
 	jet_flight_dir = 0;
@@ -50,7 +46,7 @@ if (sprite_index != sprite_get("uspecial")){
 //ranger
 if (attack == AT_COPY_RANGER){
 	if (ranger_aim > 209 && ranger_aim < 331){
-		if (image_index > 5 && image_index < 11){
+		if (image_index > 5 && image_index < 11){//>
 			ranger_aim_hand_shoot_offset = -6;
 		} else {
 			ranger_aim_hand_shoot_offset = 0;
@@ -73,7 +69,7 @@ if (nspec_grabbed == true && ds_map_exists(kirb_chonk_spr_map, sprite_index)){
 }
 
 if (attack == AT_TAUNT){
-	if (window < 7){
+	if (window < 7){//>
 		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
 	} else {
 		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt2"));

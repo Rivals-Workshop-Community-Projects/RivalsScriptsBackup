@@ -157,7 +157,7 @@ of the standing-up animation.
 hurtbox_spr         = sprite_get("idle_hurt");
 crouchbox_spr       = sprite_get("crouch_hurt");
 air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
-hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
+hitstun_hurtbox_spr = sprite_get("hurt_hurtbox"); // -1 = use hurtbox_spr
 
 // Victory
 set_victory_bg(sprite_get("victory_background")); // victory_background.png
@@ -180,6 +180,13 @@ Hikaru_Title = "Star Warrior";
 arena_title = "Twinkle Star Traveler";
 battle_text = "Kirby rushes into action!"
 otto_bobblehead_sprite = sprite_get("kirby_bobble_head"); 
+
+// --------------------------------
+
+// idle fidget
+wait_time = 360;	// changes in update to prevent kirby who has an opponent inhaled from doing this
+wait_length = 266;
+wait_sprite = sprite_get("idle_wait"); 
 
 //taunt ability select
 tauntAbilitySelectMenuCurr = 0;

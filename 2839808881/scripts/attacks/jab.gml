@@ -97,7 +97,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 1, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 1, HG_SDI_MULTIPLIER, 1.0);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 
@@ -117,11 +117,12 @@ set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, 1.0);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 
 var rapidJabHitpause = 2;
 var rapidJabBKB = 3;
+var rapidJabSDI = 1.15;
 
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 8);
@@ -140,7 +141,7 @@ set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 3, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 3, HG_SDI_MULTIPLIER, rapidJabSDI);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 1);
@@ -161,7 +162,7 @@ set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 4, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 4, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 4, HG_SDI_MULTIPLIER, rapidJabSDI);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_TYPE, 1);
@@ -182,7 +183,7 @@ set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 5, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 5, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 5, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 5, HG_SDI_MULTIPLIER, rapidJabSDI);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_TYPE, 1);
@@ -203,7 +204,7 @@ set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 6, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_JAB, 6, HG_SDI_MULTIPLIER, 2.0);
+set_hitbox_value(AT_JAB, 6, HG_SDI_MULTIPLIER, rapidJabSDI);
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_JAB, 7, HG_HITBOX_TYPE, 1);

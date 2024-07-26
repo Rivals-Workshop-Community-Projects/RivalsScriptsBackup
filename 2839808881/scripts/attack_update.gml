@@ -40,42 +40,8 @@ if attack == AT_UAIR && window > 1 && window != 3{
 switch(attack){
 	case AT_JAB:
 		was_parried = false; // easy method for single-hit jabs
-		/*
-		switch(window){
-			case 1:
-				times_through = 0;
-			break;
-			case 4:
-			break;
-			case 8:
-				if(window_time_is_div(5)){
-				    create_hitbox(AT_JAB,3,x+24*spr_dir,y-25);
-				}
-				if(window_time_is_div(3)){
-				    sound_play(asset_get("sfx_swipe_weak2"));
-				    hsp+= 1*spr_dir;
-				}			
-				if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				    times_through+=1;
-				}
-				if(times_through >= 3){
-					window = 9;
-					window_timer = 0;
-				}
-				if(window_timer == 8){
-					spawn_base_dust( x, y, "dash", spr_dir);
-				}
-			break;
-			case 9:
-				if(window_timer == 1){
-					spawn_base_dust( x, y, "dash_start", spr_dir);
-					hsp+=4*spr_dir;
-				}
-			break;
-		}
-		*/
 		if (window == 1||window == 4){
-			if (window_timer < 3){
+			if (window_timer < 3){//>
 				clear_button_buffer(PC_ATTACK_PRESSED);
 				times_through = 0;
 			}
@@ -103,20 +69,39 @@ switch(attack){
 				spawn_base_dust( x + (8 * spr_dir), y, "dash_start", spr_dir);
 			}
 		}
+	case AT_DATTACK:
+		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (10 * spr_dir), y, "dash", spr_dir);
+		}
+		if ((window == 2 || window == 3) && !hitpause && state_timer mod 4 == 0){
+			spawn_base_dust( x + (8 * spr_dir), y, "walk", spr_dir);
+		}
+		break;
 	case AT_FTILT:
-		//there is nothing here
-		//go home
+		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (32 * spr_dir), y, "dattack", -spr_dir);
+		}
 		break;
 	case AT_DTILT:
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x, y, "dash_start", spr_dir);
+			spawn_base_dust( x + (10 * spr_dir), y, "dattack", spr_dir);
 			sound_play(sound_get("sfx_kfl_slide"));
-			spawn_hit_fx(x,y,fx_dust_cloud);
+			//spawn_hit_fx(x,y,fx_dust_cloud);
 		}
 		if (window > 1 && has_hit && !hitpause && slideRune){
 			can_attack = true;
 			can_jump = true;
 			can_strong = true;
+		}
+		if (window == 2 && !hitpause){
+			if (window_timer mod 2 == 0){
+				spawn_base_dust( x + (-6 * spr_dir), y - 2, "walk", spr_dir);
+			}
+		}
+		if (window == 3 && !hitpause){
+			if (window_timer mod 2 == 0 && window_timer < 7){//>
+				//spawn_base_dust( x + (-6 * spr_dir), y - 2, "walk", spr_dir);
+			}
 		}
 		break;
 	case AT_UTILT:
@@ -133,7 +118,8 @@ switch(attack){
 		}
 		if (window == 1){
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				sound_play(sound_get("sfx_smash_64_kirby_uair"), false, noone, 1, 1);
+				//sound_play(sound_get("sfx_smash_64_kirby_uair"), false, noone, 1, 1);
+				sound_play(asset_get("sfx_ori_stomp_spin"), false, noone, 1, 1.15);
 			}
 		}
 		break;
@@ -175,7 +161,7 @@ switch(attack){
 		
 		if (window == 2){
 			if (window_timer == 1){
-				if (strong_charge < 55){
+				if (strong_charge < 55){//>
 					sound_stop(sound_get("sfx_krdl_hammer_flip_startup"));
 				}
 				sound_play(sound_get("sfx_krdl_hammer_flip_swipe"));
@@ -191,7 +177,7 @@ switch(attack){
 			}
 		}
 		
-		if (image_index > 5 && image_index < 13){
+		if (image_index > 5 && image_index < 13){//>
 			if (attack == AT_FSTRONG){//additional check
 				hud_offset = 62;
 			}
@@ -233,7 +219,7 @@ switch(attack){
 				if(special_down){
 					inhale_sound_timer++;
 				}
-				if(inhale_sound_timer <= 125){
+				if(inhale_sound_timer <= 125){//>
 					if(inhale_sound_timer == 1){
 						inhale_sound = sound_play(sound_get("inhale"));
 					}
@@ -243,6 +229,10 @@ switch(attack){
 						sound_stop(inhale_sound);
 						inhale_sound = sound_play(sound_get("inhale_loop"));
 					}
+				}
+				
+				if (state_timer mod 8 == 0 && !free){
+					spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir);
 				}
 				
 				//Projectile sucking 
@@ -283,6 +273,10 @@ switch(attack){
 			case 5:
 				clear_button_buffer(PC_ATTACK_PRESSED);
 				move_cooldown[AT_NSPECIAL] = 25;
+				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+					window = 7;
+					window_timer = 0;
+				}
 			break;
 			case 9:
 				if (window_timer == 4 && !hitpause) {
@@ -306,11 +300,12 @@ switch(attack){
 		can_jump = false;
 		can_move = false;
 		can_fast_fall = false;
+		/*
 		if was_parried {
 			attack_end();
 			set_state(PS_PRATFALL)
 		}
-	
+		*/
 		if (window != 1 && window != 7 &&
 			( ( place_meeting(x + 5, y, asset_get("par_block")) 
              || place_meeting(x - 5, y, asset_get("par_block"))) 
@@ -323,24 +318,25 @@ switch(attack){
 
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 		   var hbox = create_hitbox( AT_FSPECIAL, 1, x, y);
+		   spawn_base_dust( x + (18 * spr_dir), y, "dattack", spr_dir);
 		}
 		
-		if ((window > 1 && window < 5) && !hitpause && !free){
+		if ((window > 1 && window < 5) && !hitpause && !free){//>
 			if (state_timer%5 == 0){
 				spawn_hit_fx(x,y,wheelspark);
 			}
 		}
 		
 		//Trail Stuff
-    if ((window > 1 && window < 6) && !hitpause){
+    if ((window > 1 && window < 6) && !hitpause){//>
         if (state_timer%3 == 0){
-        	if (draw1 <= 0){
+        	if (draw1 <= 0){//>
         		draw1_x = x;
         		draw1_y = y;
         		draw1 = 1;
         		draw1_index = image_index;
         	}
-        	else if (draw2 <= 0){
+        	else if (draw2 <= 0){//>
         		draw2_x = x;
         		draw2_y = y;
         		draw2 = 1;
@@ -369,7 +365,7 @@ switch(attack){
 
 		switch(window){
 			case 1:
-			if window_timer < 9 {
+			if window_timer < 9 {//>
 				hsp *= 0.5;
 				vsp *= 0.5;
 			} else {
@@ -381,7 +377,7 @@ switch(attack){
 			
 			//print(zoom);
 			
-				if zoom < 9 {
+				if zoom < 9 {//>
 				 zoom += 1;
 				}
 				hsp = spr_dir * zoom;
@@ -394,25 +390,33 @@ switch(attack){
 					destroy_hitboxes();
 				}
 				
+				// pressing jump while grounded
 				if (jump_pressed || (tap_jump_pressed && can_tap_jump())) && !free && window == 2  {
 					window = 4;
 					window_timer = 0;
 				} 
 				
+				// pressing jump while airborne (canceling the move entirely into endlag)
 				if window == 2 && free && (jump_pressed || (tap_jump_pressed && can_tap_jump())) && djumps != 3 {
-					//print("mario");
 					//zoom = 2;
 					window = 8;
 					window_timer = 0;
 					vsp = -7;
 					hsp = clamp(hsp, -5, 5);
 					move_cooldown[AT_FSPECIAL] = 999999999;
+					spawn_base_dust( x - (0 * spr_dir), y - 8, "doublejump_small", spr_dir);
 					destroy_hitboxes();
 				}
-					
+				
+				// going into endlag manually
 				if special_pressed || shield_pressed {
 					window = 6;
 					window_timer = 0;
+					if (!free){
+						spawn_base_dust( x + (floor(18 + hsp*3.25) * spr_dir), y, "dattack", -spr_dir);
+					} else if (free){
+						spawn_base_dust( x + (12 * spr_dir), y - 10, "doublejump", spr_dir, (180+32)*spr_dir);
+					}
 				}
 			
 				break;
@@ -580,8 +584,10 @@ switch(attack){
 					y -= 20;
 				}
 				jet_charge_stored = false;
+				/*
 				var chargeVFX = spawn_hit_fx(x, y, uspec_charge);
 				chargeVFX.depth = depth + 1;
+				*/
 			} else if (special_down){
 				//loop window if special is held
 				jet_charge_stored = false;
@@ -602,6 +608,19 @@ switch(attack){
 							sound_play(sound_get("sfx_kssu_jet_full_charge"));
 							var chargeVFX = spawn_hit_fx(x-(16*spr_dir), y - 20, uspec_charge);
 							chargeVFX.depth = depth + 1;
+						}
+						if (!free){
+							if (jet_charge_count == 1){
+								spawn_base_dust( x - 20, y, "dash", 1, 0);
+								spawn_base_dust( x + 20, y, "dash", -1, 0);
+							} else if (jet_charge_count == 2){
+								spawn_base_dust( x - -2, y, "dattack", 1, 0);
+								spawn_base_dust( x + -2, y, "dattack", -1, 0);
+							} else if (jet_charge_count == 4){
+								spawn_base_dust( x, y, "land", spr_dir, 0);
+								spawn_base_dust( x - 8, y, "dash_start", 1, 0);
+								spawn_base_dust( x + 8, y, "dash_start", -1, 0);
+							}
 						}
 					}
 				}
@@ -635,44 +654,80 @@ switch(attack){
 					//spr_angle = 0;
 					hsp = (jet_movement_base + (jet_movement_add))*spr_dir;
 					vsp = 0;
+					if (window_timer == 0){
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "jump", spr_dir, -90);
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "doublejump", spr_dir, -90);
+					}
 				} else if (jet_flight_dir == 1){
 					//spr_angle = 90*spr_dir;
 					hsp = 0;
 					vsp = -(jet_movement_base + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (0 * spr_dir), y + 12, "jump", spr_dir, 0);
+						spawn_base_dust( x - (0 * spr_dir), y + 12, "doublejump", spr_dir, 0);
+					}
 				} else if (jet_flight_dir == 2){
 					//spr_angle = 45*spr_dir;
 					spr_dir = 1;
 					hsp = (jet_movement_base_diag + (jet_movement_add))*spr_dir;
 					vsp = -(jet_movement_base_diag + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (13 * spr_dir), y + 8, "jump", spr_dir, -45);
+						spawn_base_dust( x - (13 * spr_dir), y + 8, "doublejump", spr_dir, -45);
+					}
 				} else if (jet_flight_dir == 3){
 					//spr_angle = 0*spr_dir;
 					spr_dir = 1;
 					hsp = (jet_movement_base + (jet_movement_add));
 					vsp = 0;
+					if (window_timer == 0){
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "jump", spr_dir, -90);
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "doublejump", spr_dir, -90);
+					}
 				} else if (jet_flight_dir == 4){
 					//spr_angle = -45*spr_dir;
 					spr_dir = 1;
 					hsp = (jet_movement_base_diag + (jet_movement_add))*spr_dir;
 					vsp = (jet_movement_base_diag + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (13 * spr_dir), y - 24, "jump", spr_dir, -135);
+						spawn_base_dust( x - (13 * spr_dir), y - 24, "doublejump", spr_dir, -135);
+					}
 				} else if (jet_flight_dir == 5){
 					//spr_angle = -90*spr_dir;
 					hsp = 0;
 					vsp = (jet_movement_base + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (0 * spr_dir), y - 32, "jump", spr_dir, -180);
+						spawn_base_dust( x - (0 * spr_dir), y - 32, "doublejump", spr_dir, -180);
+					}
 				} else if (jet_flight_dir == 6){
 					//spr_angle = 45;
 					spr_dir = -1;
 					hsp = (jet_movement_base_diag + (jet_movement_add))*spr_dir;
 					vsp = (jet_movement_base_diag + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (13 * spr_dir), y - 24, "jump", spr_dir, -225);
+						spawn_base_dust( x - (13 * spr_dir), y - 24, "doublejump", spr_dir, -225);
+					}
 				} else if (jet_flight_dir == 7){
 					//spr_angle = 0
 					spr_dir = -1;
 					hsp = -(jet_movement_base + (jet_movement_add));
 					vsp = 0;
+					if (window_timer == 0){
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "jump", spr_dir, 90);
+						spawn_base_dust( x - (26 * spr_dir), y - 12, "doublejump", spr_dir, 90);
+					}
 				} else if (jet_flight_dir == 8){
 					//spr_angle = -45;
 					spr_dir = -1;
 					hsp = (jet_movement_base_diag + (jet_movement_add))*spr_dir;
 					vsp = -(jet_movement_base_diag + (jet_movement_add));
+					if (window_timer == 0){
+						spawn_base_dust( x - (13 * spr_dir), y + 8, "jump", spr_dir, -315);
+						spawn_base_dust( x - (13 * spr_dir), y + 8, "doublejump", spr_dir, -315);
+					}
 				}
 				
 				//wall interaction
@@ -775,12 +830,14 @@ switch(attack){
 	
 	
 	
-	case AT_DSPECIAL_AIR: {
+	case AT_DSPECIAL_AIR: { //>
 	
 		if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2){
 			soft_armor = stone_soft_armor_amt;
 		}
-	
+		if (window == 5){
+			soft_armor = 0;
+		}
 		if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || window == 3 || window == 4){
 			switch (stonevar) {
 				case 2:
@@ -825,6 +882,9 @@ switch(attack){
 				case 19:
 				hud_offset = 20;
 				break;
+				case 20:
+				hud_offset = 20;
+				break;
 			}
 		}
 		if (window == 1) {
@@ -857,7 +917,7 @@ switch(attack){
 				set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 3);
 			}
 		}
-		if window == 2 && special_down && state_timer < 160{
+		if window == 2 && special_down && state_timer < 160{//>
 			set_window_value( AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 9 )
 		} else {
 			set_window_value( AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 0 )
@@ -908,7 +968,7 @@ switch(attack){
 				var additionalStoneTime = 0;
 			}
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
-				if (special_down && stonelandhold < (120+additionalStoneTime)){
+				if (special_down && stonelandhold < (120+additionalStoneTime)){//>
 					window_timer--;
 					stonelandhold++;
 				}
@@ -1395,8 +1455,14 @@ if (attack == AT_COPY_WATER){
 		vsp = -6;
 		hsp = -3 * spr_dir;
 	}
-	if(window == 2){
+	if (!free && window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+		spawn_base_dust( x + (12 * spr_dir), y, "dattack", spr_dir);
+	}
+	if (window == 2){
 		vsp = clamp(vsp, -999, 3.5);
+		if (!free && state_timer mod 5 == 0){
+			spawn_base_dust( x + (8 * spr_dir), y, "dash", spr_dir);
+		}
 	}
 	if(was_parried){
 		waterJumpCancel = false;
@@ -1921,6 +1987,8 @@ if (attack == AT_COPY_DRILL){
 			sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 0.6, 0.65);
 			sound_play(asset_get("sfx_kragg_rock_shatter"), false, noone, 0.8, 0.7);
 			spawn_base_dust( x, y, "land", spr_dir);
+			spawn_base_dust( x, y, "dattack", 1);
+			spawn_base_dust( x, y, "dattack", -1);
 			destroy_hitboxes();
 		}
 		if (!hitpause){
@@ -2002,6 +2070,8 @@ if (attack == AT_COPY_DRILL){
 			spawn_hit_fx(x, y, drill_dirt_emerge);
 			sound_play(asset_get("sfx_kragg_rock_shatter"), false, noone, 0.8, 1.2);
 			spawn_base_dust( x, y, "jump", spr_dir);
+			spawn_base_dust( x, y, "dash_start", 1);
+			spawn_base_dust( x, y, "dash_start", -1);
 			y -= 12;
 		}
 	}
@@ -2155,17 +2225,20 @@ return dsid;
 
 //--------------------------------------------
 
+//spawn_base_dust(x+(0*spr_dir),y, "dust name", spr_dir, angle);
+
 //Supersonic's Base Cast Dust Function
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)
+// use this to be awesome
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
 var dfx; //dust_fx value
 var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
 switch (name) {
     default: 
@@ -2179,11 +2252,21 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
-return newdust;
+newdust.draw_angle = angle;

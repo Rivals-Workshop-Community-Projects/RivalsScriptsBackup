@@ -48,4 +48,3 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_COPY_I
 }
 
 shader_end();
-

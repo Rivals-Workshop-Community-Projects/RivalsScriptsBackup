@@ -5,14 +5,20 @@ if (attack == AT_NSPECIAL){
 		with (oPlayer) 
 		if (id != other.player_id) {
 		    if (place_meeting(x, y, other)) {
-		        x -= 2*other.spr_dir;
+				// statement to prevent people who are in tech situtaions be pulled by this
+				if (state != PS_TECH_GROUND
+				&& state != PS_TECH_BACKWARD
+				&& state != PS_TECH_FORWARD
+				&& state != PS_WALL_TECH){
+					x -= 2*other.spr_dir;
+				}
 		    }
 		}
 		
 		x = player_id.x + 50*spr_dir
 		y = player_id.y - 26
 		
-		if (player_id.window == 3){
+		if (player_id.window != 2){
 			destroyed = true;
 		}
 	}
@@ -140,13 +146,12 @@ if (hbox_num == 1){
 		if (esp_state == 3){
 			hsp = 0;
 			vsp = 0;
-			if(image_index < 8){
+			if(image_index < 8){//>
 				image_index += 0.125;
 			} else {
 				image_index += 0.25;
 			}
 			if (image_index == 8){
-				//print("Hello World");
 				create_hitbox(AT_COPY_ESP, 3, x, y);
 				sound_play(sound_get("sfx_star_allies_esp_psychokinesis"));
 			}
@@ -189,7 +194,7 @@ if (hbox_num == 4){
 		if (esp_state == 3){
 			hsp = 0;
 			vsp = 0;
-			if(image_index < 8){
+			if(image_index < 8){//>
 				image_index += 0.125;
 			} else {
 				image_index += 0.25;
@@ -230,34 +235,34 @@ if (hbox_num == 1 || hbox_num == 4){
 	player_id.esp_y = y;
 	
 	
-	if (player_id.right_down && hsp <= 3.5){
+	if (player_id.right_down && hsp <= 3.5){//>
 			hsp += 0.45;
 		}
 		if (player_id.left_down && hsp >= -3.5){
-			hsp -= 0.45;
+			hsp -= 0.45;//>
 		}
-		if (player_id.down_down && vsp <= 3.5){
+		if (player_id.down_down && vsp <= 3.5){//>
 			vsp += 0.45;
 		}
-		if (player_id.up_down && vsp >= -3.5){
+		if (player_id.up_down && vsp >= -3.5){//>
 			vsp -= 0.45;
 		}
 			if (player_id.down_down == false && vsp > 0){
 				vsp -= 0.35;
 			}
-			if (player_id.up_down == false && vsp < 0){
+			if (player_id.up_down == false && vsp < 0){//>
 				vsp += 0.35;
 			}
-			if (player_id.right_down == false && hsp > 0){
+			if (player_id.right_down == false && hsp > 0){//>
 				hsp -= 0.35;
 			}
-			if (player_id.left_down == false && hsp < 0){
+			if (player_id.left_down == false && hsp < 0){//>
 				hsp += 0.35;
 			}
 	}
 
 
-if (hbox_num != 1 || hbox_num != 4){
+if (hbox_num != 1 || hbox_num != 4){//>
 	x = player_id.esp_x;
 	y = player_id.esp_y;
 }

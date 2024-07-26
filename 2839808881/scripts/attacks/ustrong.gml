@@ -45,7 +45,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .6); // .5
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
-//Soursop (Left)
+//Sourspot (Left)
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 3);
@@ -87,10 +87,10 @@ set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_LIFETIME, 3);
-set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_X, 1);
-set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_Y, -120);
-set_hitbox_value(AT_USTRONG, 4, HG_WIDTH, 32);
-set_hitbox_value(AT_USTRONG, 4, HG_HEIGHT, 50);
+set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_X, 0);
+set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_Y, -104);
+set_hitbox_value(AT_USTRONG, 4, HG_WIDTH, 46);
+set_hitbox_value(AT_USTRONG, 4, HG_HEIGHT, 72);
 set_hitbox_value(AT_USTRONG, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 4, HG_PRIORITY, 4);
 set_hitbox_value(AT_USTRONG, 4, HG_DAMAGE, 13);

@@ -10,6 +10,9 @@ if (abilityStolenTracker != 0){
 	}
 }
 
+// changes wait timer thing to prevent kirby from going into the idle fidget if he has an opponent inhaled (although i doubt it would happen anyway lol)
+wait_time = ((nspec_grabbed)?99999:360);
+
 if((!hitpause && mixCurrTotalTimer < 3) || mixCurrTotalTimer > 2){
 	if(TCG_Kirby_Copy == -1){
 		move_cooldown[AT_NSPECIAL] = 5;
@@ -48,11 +51,6 @@ with asset_get("oPlayer"){
 	var realURL = string(url)
 	if (realURL == "" && id != other.id){
 		url = -1;
-	}
-}
-if (state == PS_LANDING_LAG){
-	if(attack == AT_NAIR){
-		sound_stop(sound_get("sfx_smash_64_kirby_uair"));
 	}
 }
 //parry sound
@@ -345,6 +343,17 @@ if (TCG_Kirby_Copy != 11){
 	}
 }
 
+// drill stuff
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if (attack == AT_COPY_DRILL){
+		if (window == 3 || window == 4 || window == 5){
+			soft_armor = 4;
+		} else {
+			soft_armor = 0;
+		}
+	}
+}
+
 //Dropping ability on air
 
 if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP) {
@@ -353,7 +362,7 @@ if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP) {
 
 	if (taunt_down) {air_drop_ability++;}
 
-	if (air_drop_ability == 2*((get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH)) + (get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH)))){
+	if (air_drop_ability == floor(1.35*((get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH))) + (get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH)))){
 		if (taunt_down && TCG_Kirby_Copy != 0){
 			TCG_Kirby_Copy = 0;
 			sound_play(sound_get("sfx_krdl_ability_drop"));
@@ -362,6 +371,34 @@ if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP) {
 	}
 } else air_drop_ability = 0;
 
+// changing outline col for storing jet charge
+if (sprite_index != sprite_get("uspecial") && jet_charge_stored && jet_charge_store_count != 0){
+	if (jet_charge_store_count == 0){
+		var amtToScaleOutlineColShiftBy = 1;
+	} else {
+		var amtToScaleOutlineColShiftBy = (jet_charge_store_count + 1) * 0.45;
+	}
+	var outlineCol = (sin(get_gameplay_time() * (0.1 * amtToScaleOutlineColShiftBy)) * -50) + 50;
+	var maxThreshholdForColsThatChangeOutline = 50;
+	if (get_player_color(player) != 12 && get_player_color(player) != 31){
+		outline_color = [0, outlineCol * 1.25, outlineCol * 1.8];
+	} else if (get_player_color(player) == 12){
+		outline_color = [54 - (outlineCol), 0 + (outlineCol * 1.8), 181 +  + (outlineCol * 1.8)];
+	} else if (get_player_color(player) == 31){
+		outline_color = [63, 30 + (outlineCol * 1.25), 27 + (outlineCol * 1.8)];
+	}
+} else {
+	if (get_player_color(player) == 12){//>
+		outline_color = [54, 0, 181];
+	} else if (get_player_color(player) == 31){
+		outline_color = [63, 30, 27];
+	} else {
+		outline_color = [0, 0, 0];
+	}
+}
+init_shader();
+
+/*
 if get_player_color(player) = 19 {
 hue_offset+=hue_speed;
 hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
@@ -373,6 +410,7 @@ set_color_profile_slot( 19, 4, color_get_red(color_hsv),color_get_green(color_hs
 
 init_shader();
 }
+*/
 
 #define window_time_is_div(modulo) // Version 0
     // Returns if the current window_timer matches the frame AND the attack is not in hitpause

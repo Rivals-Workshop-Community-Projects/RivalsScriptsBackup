@@ -98,14 +98,25 @@ if (attack == AT_USPECIAL){
 		}
 	}
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_AIR && (window == 2 || window == 4)) {
+	/*
 	if (stonevar != 0){
 		shader_start();
 		shader_end();
 		draw_sprite(sprite_get("stone"), stonevar, x-2, y+2);
 	} else if (stonevar == 0){
 		shader_start();
-		draw_sprite_ext(sprite_get("stone"), stonevar, x-2, y+2, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("stone"), stonevar, x-2 + ((spr_dir==-1)?4:0), y+2, spr_dir, 1, 0, c_white, 1);
 		shader_end();
+	}
+	*/
+	if (stonevar == 0 || stonevar == 7){
+		shader_start();
+		draw_sprite_ext(sprite_get("stone"), stonevar, x-2 + ((spr_dir==-1)?4:0), y+2, spr_dir, 1, 0, c_white, 1);
+		shader_end();
+	} else {
+		shader_start();
+		shader_end();
+		draw_sprite(sprite_get("stone"), stonevar, x-2, y+2);
 	}
 }
 shader_end();

@@ -23,6 +23,7 @@ set_window_value(AT_COPY_DRILL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_COPY_DRILL, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_COPY_DRILL, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_COPY_DRILL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_COPY_DRILL, 3, AG_WINDOW_INVINCIBILITY, 2);
 
 //Dig
 set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_TYPE, 9);
@@ -31,6 +32,7 @@ set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_COPY_DRILL, 4, AG_WINDOW_INVINCIBILITY, 2);
 
 //Startup for Un-Burrowing
 set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_TYPE, 1);
@@ -40,6 +42,7 @@ set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_SFX, sound_get("sfx_kfl_drill_emerge"));
 set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_COPY_DRILL, 5, AG_WINDOW_INVINCIBILITY, 2);
 
 //Hitbox for Rising
 set_window_value(AT_COPY_DRILL, 6, AG_WINDOW_TYPE, 1);

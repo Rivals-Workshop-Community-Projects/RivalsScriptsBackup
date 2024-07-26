@@ -130,7 +130,7 @@ max_fall = 7; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .35;
 hitstun_grav = .40;
-knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 meteor_kb_adj = knockback_adj;
 core_kb_adj = 1.1;
 

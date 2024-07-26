@@ -27,7 +27,7 @@ set_window_value(AT_COPY_WATER, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_COPY_WATER, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_COPY_WATER, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_COPY_WATER, 3, AG_WINDOW_ANIM_FRAME_START, 12);
-set_window_value(AT_COPY_WATER, 3, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_COPY_WATER, 3, AG_WINDOW_HSPEED, 5.5);
 set_window_value(AT_COPY_WATER, 3, AG_WINDOW_HSPEED_TYPE, 2);
 
 set_num_hitboxes(AT_COPY_WATER, 5);

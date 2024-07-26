@@ -158,27 +158,21 @@ if (attack == AT_DSPECIAL){
 //strongs armor
 if attack == AT_FSTRONG {
     if meteor_armor {
-        if window == 2 {
-            soft_armor = 12;
+        if window <= 2 {
+            soft_armor = 7;
+        } else {
+            soft_armor = 0;
         }
-        if window == 3 or window == 4 {
-            soft_armor = 6;
-        }
-    } else if !meteor_armor or window > 4 {
-        soft_armor = 0;
     }
 }
 
 if attack == AT_USTRONG {
     if meteor_armor {
-        if window == 2 {
-            soft_armor = 12;
+        if window <= 2 {
+            soft_armor = 7;
+        } else {
+            soft_armor = 0;
         }
-        if window == 3 or window == 4 {
-            soft_armor = 6;
-        }
-    } else if !meteor_armor or window > 4 {
-        soft_armor = 0;
     }
 }
 
@@ -191,7 +185,7 @@ if attack == AT_DSTRONG {
         if !hitpause {
             hsp += (right_down - left_down) * 2;
         }
-        hsp = clamp(hsp,-1.2*dstrong_loop_num_max,1.2*dstrong_loop_num_max);
+        hsp = clamp(hsp,-6,6);
         vsp = clamp(vsp,-5,2);
         if window_timer mod 7 == 0 && !hitpause{
             spawn_base_dust(x,y,hsp!=0?"dash":"land",hsp>0?-1:1);
@@ -207,14 +201,11 @@ if attack == AT_DSTRONG {
         can_wall_jump = true;
     }
     if meteor_armor {
-        if window == 2 {
-            soft_armor = 12;
+        if window <= 2 {
+            soft_armor = 7;
+        } else {
+            soft_armor = 0;
         }
-        if window == 3 or window == 4 {
-            soft_armor = 6;
-        }
-    } else if !meteor_armor or window > 4 {
-        soft_armor = 0;
     }
 }
 

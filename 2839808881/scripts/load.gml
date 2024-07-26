@@ -1,5 +1,6 @@
 kirb_chonk_spr_map = ds_map_create();
 sprite_change_offset_chonk("idle", 96, 114);
+sprite_change_offset_chonk("idle_wait", 96, 114);
 
 sprite_change_offset_chonk("bighurt", 96, 114);
 sprite_change_offset_chonk("hurt", 96, 114);
@@ -23,6 +24,8 @@ sprite_change_offset("doublejump", 96, 114);
 sprite_change_offset("walljump", 96, 114);
 
 sprite_change_offset("pratfall", 96, 114);
+
+sprite_change_offset("hurt_hurtbox", 96, 114);
 
 sprite_change_offset_chonk("land", 96, 114);
 sprite_change_offset("landinglag", 96, 114);

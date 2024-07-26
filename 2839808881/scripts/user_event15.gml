@@ -277,7 +277,7 @@ While charging, you can also change the direction Kirby is facing.");
 initImage_ext(spr_ability_beam, -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Copy Ability: Ranger");
-initWords("With the Ranger Copy Ability, Kirby uses a gu- er, I mean, a blunderbuss to fire projectiles at his opponents.
+initWords("With the Ranger Copy Ability, Kirby uses a gun- er, I mean, a blunderbuss to fire projectiles at his opponents.
 Here, Kirby will shoot star projectiles out of his firearm. You can hold the Special button down to freely aim at whatever angle you desire.
 Also, the projectile that Kirby shoots can be made more powerful as you charge the move. There are 4 kinds of projeciles: each of which depending on how long the move is charged. Try each of them out!");
 initImage_ext(spr_ability_ranger, -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
@@ -288,7 +288,7 @@ Here, Kirby will perform the Rising Break technique that Fighter has. This is a 
 initImage_ext(spr_ability_fighter, -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Copy Ability: Sword");
-initWords("With the Sword Copy Ability, Kirby can wield a sword and use a Spin Attack, just like a certain legendary hero.
+initWords("With the Sword Copy Ability, Kirby can wield a sword and use a Spin Attack, similar to a certain legendary hero.
 You can hold the Special button to charge the move. This will not affect the moves stats, but you can use this to delay the Spin Attack to bait parries among other things.
 When performing the Spin Attack, you can move left and right.
 Hold Up during startup while grounded to jump upwards while spinning, performing Twister Slash!");
