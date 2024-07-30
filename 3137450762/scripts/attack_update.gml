@@ -815,9 +815,11 @@ if (attack == AT_DAIR){
     set_attack_value( AT_DAIR, AG_CATEGORY, 2);
 
     //GRAB ZONE
-    grab_victim.x = x + 20 * spr_dir;
-    grab_victim.y = y + 30;
-  }
+  grab_victim.x = x + 20 * spr_dir;
+  grab_victim.y = y + 30;
+  grab_victim.wrap_time = 9001;
+  grab_victim.state = PS_WRAPPED;
+}
 
   if (window == 4) && grab_valid {
 

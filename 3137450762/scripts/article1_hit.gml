@@ -1,7 +1,7 @@
 //La Reina article1_hit.gml
 
 var hID = enemy_hitboxID;
-if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority > 0 {
+if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority > 0 && window != 4 {
   hittable_hitpause_mult = 1;
 
     // We're gonna use this variable a lot so here's a shortened reference.

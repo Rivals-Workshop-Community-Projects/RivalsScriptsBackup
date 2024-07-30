@@ -1,14 +1,14 @@
 //La Reina hit_player.gml
 
 // Grabs and valid windows
-if ((attack == AT_USTRONG && window == 2)
-||  (attack == AT_FSTRONG && window < 4)
-||  (attack == AT_BAIR && window == 2)
-||  (attack == AT_DAIR && window == 3)
-||  (attack == AT_UAIR && window == 2)
-||  (attack == AT_UAIR && window == 3)
-||  (attack == AT_FSPECIAL) // all fspecial windows are valid
-||  (attack == AT_USPECIAL && window == 3))
+if ((my_hitboxID.attack == AT_USTRONG && window == 2)
+||  (my_hitboxID.attack == AT_FSTRONG && window < 4)
+||  (my_hitboxID.attack == AT_BAIR && window == 2)
+||  (my_hitboxID.attack == AT_DAIR && window == 3)
+||  (my_hitboxID.attack == AT_UAIR && window == 2)
+||  (my_hitboxID.attack == AT_UAIR && window == 3)
+||  (my_hitboxID.attack == AT_FSPECIAL) // all fspecial windows are valid
+||  (my_hitboxID.attack == AT_USPECIAL && window == 3))
 &&  (hit_player_obj.super_armor != true) { // don't grab armored opponents
   if attack != AT_DAIR {destroy_hitboxes();}
   if attack == AT_UAIR {sound_play(asset_get("sfx_clairen_swing_strong"), false, noone, 0.7, 0.9);}

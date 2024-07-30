@@ -165,4 +165,4 @@ else{
   //move_cooldown[AT_DSPECIAL] = max(dspecial_target_cooldown, move_cooldown[AT_NSPECIAL]);
   has_rolling_girl = false;
 }
-print(air_chair_died)
+//print(air_chair_died)

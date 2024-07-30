@@ -26,6 +26,8 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
         save_flash_time = 15;
         sound_play(sound_get("sfx_load"));
         spawn_hit_fx(x, y - 32, fx_savestate);
+        
+        if !get_match_setting(SET_RUNES) && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
 
         if (saved_state.attack > 0)
         {
@@ -79,6 +81,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             
             attack_end();
             set_attack(saved_state.attack);
+            hurtboxID.dodging = false;
             
             if (saved_state.strong_window == 0)
             {
@@ -113,6 +116,8 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             save_flash_time = 15;
             sound_play(sound_get("sfx_save"));
             spawn_hit_fx(x, y - 32, fx_savestate);
+            
+            if !get_match_setting(SET_RUNES) && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
 
             saved_state.free = free;
             saved_state.attack = attack;
