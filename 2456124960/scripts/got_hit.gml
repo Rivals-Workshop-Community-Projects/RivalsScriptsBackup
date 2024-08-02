@@ -25,3 +25,7 @@ if (actionMeterFill < 0) {
 	actionMeterFill = 0;
 	actionMeterStatus = 0;
 }
+if ((prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR) && (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_USPECIAL_GROUND || attack == AT_NSPECIAL ||  attack == AT_NSPECIAL_2 ||  attack == AT_NSPECIAL_AIR)) {
+	actionMeterFill = 0;
+	actionMeterStatus = 0;
+}

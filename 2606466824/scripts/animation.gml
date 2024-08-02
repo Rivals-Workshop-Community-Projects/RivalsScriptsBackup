@@ -90,6 +90,10 @@ if (attack == AT_NTHROW && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	hurtboxID.sprite_index = sprite_get("bthrow_hurt");
 }
 
+if (attack == 49 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
+	hurtboxID.sprite_index = sprite_get("idleh_hurt");
+}
+
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
 	if (dattackBounce < 5) {
 		hurtboxID.sprite_index = sprite_get("fspecial_hurt");	

@@ -14,6 +14,7 @@ hitPlayer = 0;
 totalLifetime = 0;
 hitCrystal = 0;
 frostbolt = 0;
+specialPower = 0;
 
 gotParried = 0;
 parriedPlayer = noone;
@@ -53,7 +54,7 @@ new_sprite = sprite_get("your_sprite");             //This is another part of th
 replacedcount = 0;                                  //This gets incremented whenever a new article is created. If this reaches maxarticles, the article is destroyed
 maxarticles = 1;                                    //The maximum number of this article that should exist at once.
 
-with(asset_get("obj_article1")){
+with(asset_get("obj_article3")){
     if (player_id == other.player_id){
         replacedcount++;                            //If there are any other article1s owned by the same person, tell them to increment their replacedcount by 1
     }

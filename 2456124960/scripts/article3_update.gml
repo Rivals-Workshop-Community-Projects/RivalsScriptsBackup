@@ -93,11 +93,13 @@ if (state == 1){
 	
 	if(myHSpeed < 15) {
 		if (frostbolt == 1) {
-			myHSpeed -= 0.2;
+			myHSpeed -= (0.25 - (specialPower * 0.001));
 		} else {
 			myHSpeed += 0.5;
 		}
 	}
+	
+	if (myHSpeed < 0) {myHSpeed = 0;}
 	
     if (lifetime < 0) {
 		shoulddie = true;
@@ -116,7 +118,11 @@ if (state == 1){
     } else {
 		state = 4;
 		if (frostbolt == 1) {
-			state_timer = 14;
+			if (specialPower > 60) {
+				state_timer = 8;
+			} else {
+				state_timer = 14;
+			}
 		} else {
 			state_timer = 0;
 		}
@@ -128,6 +134,8 @@ if (state == 1){
 	}
 	
 	if (gotParried == 1) {
+        
+        print (string(parriedPlayer));
 		instance_destroy(hb);
 		state_timer = 0;
 		state = 1;
@@ -197,6 +205,7 @@ if (state == 4){
 	
 	if (state_timer > 22) {
 		instance_destroy();
+        exit;
 	}
 }
 

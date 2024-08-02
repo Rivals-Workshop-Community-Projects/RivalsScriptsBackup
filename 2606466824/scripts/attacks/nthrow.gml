@@ -61,6 +61,6 @@ set_hitbox_value(AT_NTHROW, 2, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(AT_NTHROW, 2, HG_HIT_SFX, sound_get("punch_heavy"));
 set_hitbox_value(AT_NTHROW, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NTHROW, 2, HG_REVENGE_KB_MULTIPLIER, 1.2);
-set_hitbox_value(AT_NTHROW, 2, HG_MUNO_HITBOX_MISC_ADD, "Against airborne foes: KB 8+.8");
+set_hitbox_value(AT_NTHROW, 2, HG_MUNO_HITBOX_MISC_ADD, "Grounded KB: 7+.9, Airborne KB: KB 6+.8");
 set_hitbox_value(AT_NTHROW, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT, 304);

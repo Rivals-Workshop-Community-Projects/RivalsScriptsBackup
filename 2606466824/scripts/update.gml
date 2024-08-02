@@ -94,7 +94,13 @@ if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
 		revengeBuffer--;
 	}
 }
-revengeMult = clamp(revengeMult, 1, 4);
+if (!has_rune("H")) {
+    revengeMult = clamp(revengeMult, 1, 4);
+} else {
+    if (revengeMult < 1) {
+        revengeMult = 1;
+    }
+}
 
 if (!free || state == PS_WALL_JUMP) {
 	move_cooldown[AT_USPECIAL] = 0;
@@ -152,7 +158,6 @@ if (hue>255) {
 	hue-=255; 
 }
 for (i = 0; i < 4; i++) {
-	//color_rgb=make_color_rgb( 255, 0, 255 ); 
 	//hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	var col_R = get_color_profile_slot_r( 2, 3+i);
 	var col_G = get_color_profile_slot_g( 2, 3+i);
@@ -160,6 +165,9 @@ for (i = 0; i < 4; i++) {
 	color_rgb=make_color_rgb( col_R, col_G, col_B ); 
 	color_hsv=make_color_hsv(hue - (10 * i),color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	set_color_profile_slot( 24, 3+i ,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+    if (get_player_color(player) == 24) {
+        set_article_color_slot(3+i, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv), 1);
+    }
 }
 init_shader();
 

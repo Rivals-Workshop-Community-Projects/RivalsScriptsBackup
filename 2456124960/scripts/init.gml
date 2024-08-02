@@ -9,6 +9,7 @@ actionMeterStatus = 0;
 actionMeterFill = 0;
 actionMeterAnimTimer = 0;
 playedMeterSfx = 0;
+specialPower = 0;
 
 activeBuff = 0;
 activeBuffUses = 0;
@@ -27,6 +28,7 @@ crystalOffset = 0;
 crystalOffset2 = 0;
 airCrystalSpawnX = 0;
 airCrystalSpawnY = 0;
+crystalReticleMomentum = 0;
 
 dattackCancelPower = 0;
 
@@ -72,10 +74,15 @@ timeUntilFlow = 0;
 
 fastFSpec = false;
 
+spikeGlowTimer = 0;
+
 buffFX = 0;
 buffFXTimer = 0;
 buffFXPosX = 0;
 buffFXPosY = 0;
+
+onPlatform = false;
+taunt_cancel_available = false;
 
 HG_HITBOX_COLOR = 69;
 hboxShape = -2;
@@ -153,17 +160,17 @@ techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
-air_dodge_active_frames = 1;
-air_dodge_recovery_frames = 2;
+air_dodge_active_frames = 3;
+air_dodge_recovery_frames = 3;
 air_dodge_speed = 7.5;
 
 //roll animation frames
-roll_forward_startup_frames = 1;
-roll_forward_active_frames = 1;
-roll_forward_recovery_frames = 1;
-roll_back_startup_frames = 1;
-roll_back_active_frames = 1;
-roll_back_recovery_frames = 1;
+roll_forward_startup_frames = 2;
+roll_forward_active_frames = 3;
+roll_forward_recovery_frames = 3;
+roll_back_startup_frames = 2;
+roll_back_active_frames = 3;
+roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -181,6 +188,13 @@ bubble_y = 8;
 hitA = hit_fx_create( sprite_get( "illidrium_hfx_sml" ), 18 );
 hitB = hit_fx_create( sprite_get( "illidrium_hfx_med" ), 18 );
 hitC = hit_fx_create( sprite_get( "illidrium_hfx_lrg" ), 18 );
+
+hitA2 = hit_fx_create( sprite_get( "ice_hfx_sml" ), 18 );
+hitB2 = hit_fx_create( sprite_get( "ice_hfx_sml2" ), 21 );
+hitC2 = hit_fx_create( sprite_get( "ice_hfx_sml3" ), 21 );
+
+hitB3 = hit_fx_create( sprite_get( "ice_hfx_bair" ), 21 );
+hitC3 = hit_fx_create( sprite_get( "ice_hfx_lrg" ), 26 );
 
 empoweredFX = hit_fx_create( sprite_get( "fxEmpowered" ), 28 );
 powerhit = hit_fx_create( sprite_get( "vfx_powerhit" ), 18 );
@@ -206,6 +220,17 @@ buffChargeSwirl2 = hit_fx_create( sprite_get( "dspec_charge_swirl2" ), 14 );
 buffChargeSwirl3 = hit_fx_create( sprite_get( "dspec_charge_swirl3" ), 14 );
 buffChargeSwirl4 = hit_fx_create( sprite_get( "dspec_charge_swirl4" ), 14 );
 buffChargeRing = hit_fx_create( sprite_get( "dspec_charge_ring" ),  20);
+
+crystalRing = hit_fx_create( sprite_get( "crystal_detonatechargering" ),  21);
+
+healReleaseSparkle = hit_fx_create( sprite_get( "taunt2_release_sparkle" ),  15);
+healAuraSparkle = hit_fx_create( sprite_get( "taunt2_aura" ),  30);
+healNum = hit_fx_create( sprite_get( "healnum" ),  60);
+healTarget = noone;
+healTimer = 0;
+healOffsetX = 0;
+healOffsetXDir = 0;
+healOffsetY = 0;
 
 swordFX = hit_fx_create( sprite_get( "dspec_sword" ),  40);
 shieldFX = hit_fx_create( sprite_get( "dspec_shield" ),  40);

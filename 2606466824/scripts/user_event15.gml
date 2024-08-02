@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 26;
+num_alts = 31;
 
 // Whether or not to display a name for each alt.
 use_alt_names = false;
@@ -403,6 +403,36 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 // Recommended template for non-Sandbert characters:
 
+initPatch("1.2", "August 1st, 2024");
+initSection("Hey, it's been a while! I think Incin's in a pretty good spot right now, but there was still room for minor tweaks and bugfixes, as well as some fun non-competitive additions!");
+initHeader("General");
+initSection("* Added an alt inspired by King from Tekken for Aether's Asylum, who placed Top 8 in multiple brackets with Incineroar!");
+initSection("* Added extra alts based on Garfield and Zangief.");
+initSection("* Shiny alt adjusted to be more accurate to source material.");
+initSection("* Added compatibility with the Pokemon Stadium stage.");
+initSection("* Added compatibility with Final Smash Buddy.");
+initSection("* Added a few runes for use in Abyss Versus!");
+initSection("      > Rune A: Can spawn as many ropes as you like.");
+initSection("      > Rune B: Taunting gives a weak Revenge stack.");
+initSection("      > Rune G: UThrow becomes 'Incin Buster', dealing heavy damage and carrying opponents into the air");
+initSection("      > Rune H: Revenge has no upper limit on how high it can be stacked! (possible epilepsy warning with the outline at extremely high stacks!)");
+initHeader("BAir");
+initSection("- Knockback reduced (7+1 -> 7+.9)");
+initHeader("DAttack");
+initSection("- Main Hit Knockback reduced (8+1 -> 8+.9)");
+initSection("- Late Hit Knockback reduced (7+.8 -> 6+.7)");
+initHeader("DSpecial");
+initSection("* Minorly adjusted the momentum during the active frames and endlag to reduce movement and falling.");
+initSection("* Failed Counter endlag increased (27f -> 30f)");
+initSection("// This is experimental. My hope is that by doing this, the move will feel similar to Clairen counter, and will be similarly punishable and vulnerable");
+initHeader("FSpecial");
+initSection("- BThrow Knockback reduced (7+1 -> 7+.9 grounded, 6+.9 -> 6+.8 airborne)");
+initSection("- Endlag (whiff) increased (25f -> 30f)");
+initSection("+ Fixed a bug in which opponents could airdodge out of the FThrow");
+initHeader("NAir");
+initSection("- Main Hit Knockback reduced (8+.6 -> 7.5+.6)");
+initHeader("UAir");
+initSection("* Knockback adjusted (8+.5 -> 7+.65)");
 
 initPatch("1.1", "December 11th, 2022");
 initSection("It's been over a year since the last Incineroar patch! I've been very busy with school and other IRL obligations, so I haven't had time to work on Rivals stuff basically at all.");

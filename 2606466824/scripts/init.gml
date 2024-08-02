@@ -161,6 +161,7 @@ trailR = hit_fx_create( sprite_get( "uspecial_rainbowtrail" ), 28 );
 burstR = hit_fx_create( sprite_get( "uspecial_rainbowburst" ), 22 );
 firehfxR = hit_fx_create( sprite_get( "fire_rainbowhfx" ), 18 );
 gleam = hit_fx_create( sprite_get( "dspec_gleam" ), 14 );
+firehfx2 = hit_fx_create( sprite_get( "fire_hfx2" ), 16 );
 
 burstMain = hit_fx_create( sprite_get( "burst_main" ), 18 );
 burstRingsA = hit_fx_create( sprite_get( "burst_ringsA" ), 18 );
@@ -177,14 +178,29 @@ empoweredFX = hit_fx_create( sprite_get( "fxEmpowered" ), 28 );
 
 revArrow = hit_fx_create( sprite_get( "arrow" ), 15 );
 
+fs_aura1 = hit_fx_create( sprite_get( "finalsmash_muzzleaura1" ), 16 );
+fs_aura2 = hit_fx_create( sprite_get( "finalsmash_muzzleaura2" ), 16 );
+fs_aura3 = hit_fx_create( sprite_get( "finalsmash_muzzleaura3" ), 16 );
+fs_aura4 = hit_fx_create( sprite_get( "finalsmash_muzzleaura4" ), 16 );
+
 set_victory_portrait(sprite_get("portrait_real"));
 
+runeActiveA = has_rune("A");
 
 arena_title = "The Ring's Raging Flame";
 boxing_title = "The Ring's 
 Raging Flame";
 boxing_short_name = "Incineroar";
 battle_text = "* Incineroar's not stuck in here with you....";
+
+fs_char_chosen_final_smash = "custom"
+fs_char_portrait_y = 80;
+fs_char_portrait_override = sprite_get("portrait_real");
+finalSmashLoops = 0;
+
+pkmn_stadium_front_img = sprite_get("pokestadium_front");
+pkmn_stadium_back_img = sprite_get("pokestadium_back");
+pkmn_stadium_name_override = "INCINROAR"; //ravyn PLEASE why are pokestadium names not 10 letters like they are in RBY :(((((
 
 muno_event_type = 0;
 user_event(14);

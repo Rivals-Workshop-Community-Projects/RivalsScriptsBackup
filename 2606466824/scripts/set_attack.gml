@@ -5,7 +5,13 @@ if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
 		revengeBuffer -= 10;
 	}
 }
-revengeMult = clamp(revengeMult, 1, 4);
+if (!has_rune("H")) {
+    revengeMult = clamp(revengeMult, 1, 4);
+} else {
+    if (revengeMult < 1) {
+        revengeMult = 1;
+    }
+}
 
 if  (prev_state != PS_SPAWN) {
 	muno_event_type = 2;

@@ -69,7 +69,7 @@ if (state == 0){
 
 if (state == 1){   
    if (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) {
-		if (player_id.attack == AT_NSPECIAL && player_id.window == 2 && player_id.window_timer == 1 && player_id.phone_cheats[player_id.CHEAT_MORE] == 0) {
+		if (player_id.attack == AT_NSPECIAL && player_id.window == 2 && player_id.window_timer == 1 && player_id.phone_cheats[player_id.CHEAT_MORE] == 0 && !player_id.runeActiveA) {
 			state = 2;
 			state_timer = 20;
 		}

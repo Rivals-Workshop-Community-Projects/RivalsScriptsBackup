@@ -1,10 +1,13 @@
-//draw_debug_text(x, y, string(introTimer));
+//draw_debug_text(x, y, string(onPlatform));
 //draw_debug_text(x, y+20, string(state_timer));
 with (obj_article1) {
 	//draw_debug_text(x, y - 20, ("decay: " + string(obj_timer)));
 }
 //draw_sprite(sprite_get("indG"), 0, x + crystalOffset, y + 40);
-//draw_debug_text(x, y - 20, (string(crystalOut)));
+if ("crystal" in self) {
+    //draw_debug_text(x, y - 200, (string(crystal.parriedPlayer)));
+    //draw_debug_text(x, y - 220, (string(crystal.parryTarget)));
+}
 
 shader_start();
 if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL) {
@@ -56,10 +59,55 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_NSPECI
 }
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECIAL) {
 	if (window == 2 && window_timer > 2) {
+		draw_sprite(sprite_get("dspec_charge_lv" + string(round((window_timer+6) / 12))), window_timer / 2, x, y - 30);	
+	}
+}
+
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_DSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND)) {
+	draw_sprite_ext(sprite_get("hud" + string(usesAltHud+1) + "smol"), min(actionMeterFill, min((actionMeterFill / 200) * 26, 25)), x - 40, y + 20, 1, 1, 0, -1, 1);
+}
+
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_EXTRA_1) {
+	if (window == 2 && window_timer > 2) {
 			draw_sprite(sprite_get("dspec_charge_lv" + string(round((window_timer+6) / 12))), window_timer / 2, x, y - 30);	
 	}
 }
+
+with (obj_article_platform) {
+	if (player_id == other.id) {
+        //print("hi");
+		if (juice <= 40) {
+            draw_sprite_ext(sprite_get("platform"), 8, x, y, 1, 1, 0, c_black, ((40 - (max(juice, 0))) / 60));
+        }
+        if (hsp > 7) {
+            draw_sprite_ext(sprite_get("platformburst"), juice / 4, x, y, 1, 1, 0, -1, 1);        
+        }  
+        if (hsp < -7) {
+            draw_sprite_ext(sprite_get("platformburst"), juice / 4, x, y, -1, 1, 0, -1, 1);        
+        }   
+	}
+}
+
 shader_end();
+
+with (oPlayer) {
+    if ("frozenByNate" in self && frozenByNate > 0) {
+        gpu_set_fog(true,c_white,0,0);
+        if (frozenByNate > 10) {
+            draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.4);
+            draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.4);
+            draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.4);
+            draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.4);
+        } else {
+            draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.04 * frozenByNate);
+            draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.04 * frozenByNate);
+            draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.04 * frozenByNate);
+            draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 0.04 * frozenByNate);        
+        }
+        gpu_set_fog(false,c_black,0,0);
+        break;
+    }
+}
 
 var value = 0;
 var value_h = 0;
@@ -84,16 +132,6 @@ if (get_match_setting(SET_HITBOX_VIS)) {
 				draw_text_color(x, y-20-value_h, string(value), c_white, c_white, c_white, c_white, 1);
 			}
 		}
-	}
-}
-
-if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL) {
-	switch(window) {
-		case 2:
-			draw_sprite(sprite_get("fspec_charge_lv" + string(round((actionMeterFill+25)/50))), window_timer / 2, x + (10 * spr_dir), y - 85);	
-			break;
-		default:
-			break;
 	}
 }
 

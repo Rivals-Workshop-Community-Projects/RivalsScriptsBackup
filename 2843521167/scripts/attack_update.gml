@@ -185,7 +185,7 @@ if (attack == AT_DSPECIAL)
     }
     if (!free && window >= 2)
     {
-    move_cooldown[AT_DSPECIAL] = 240;
+    move_cooldown[AT_DSPECIAL] = 120;
     }
     can_fast_fall = false;
     if (window == 3 && window_timer == 7)

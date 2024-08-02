@@ -60,6 +60,7 @@ sprite_change_offset("flame", 17, 17);
 sprite_change_offset("flameR", 17, 17);
 sprite_change_offset("flameR2", 17, 17);
 sprite_change_offset("fire_hfx", 76, 78);
+sprite_change_offset("fire_hfx2", 80, 80);
 sprite_change_offset("fire_rainbowhfx", 76, 78);
 sprite_change_offset("dspecial", 66, 106);
 sprite_change_offset("dspec_gleam", 66, 106);
@@ -101,3 +102,9 @@ sprite_change_offset("bouncehurt", 66, 106);
 
 set_victory_theme( sound_get( "Victory!Incineroar" ));
 
+sprite_change_offset("finalsmash", 96, 138);
+sprite_change_offset("finalsmash_beam", 50, 124);
+sprite_change_offset("finalsmash_muzzleaura1", 96, 138);
+sprite_change_offset("finalsmash_muzzleaura2", 96, 138);
+sprite_change_offset("finalsmash_muzzleaura3", 96, 138);
+sprite_change_offset("finalsmash_muzzleaura4", 96, 138);

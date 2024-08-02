@@ -2,12 +2,12 @@ sprite_change_offset("idle", 108, 154);
 sprite_change_offset("crouch", 108, 154);
 sprite_change_offset("walk", 108, 154);
 sprite_change_offset("walkturn", 118, 154);
-sprite_change_offset("dash", 122, 154);
+sprite_change_offset("dash", 112, 154);
 sprite_change_offset("dashhurtbox", 33, 57);
-sprite_change_offset("dashstart", 122, 154);
-sprite_change_offset("dashstop", 122, 154);
-sprite_change_offset("dashturn", 122, 154);
-sprite_change_offset("dashturn_block", 126, 154);
+sprite_change_offset("dashstart", 112, 154);
+sprite_change_offset("dashstop", 112, 154);
+sprite_change_offset("dashturn", 112, 154);
+sprite_change_offset("dashturn_block", 116, 154);
 sprite_change_offset("idlefromdashstop", 108, 154);
 
 sprite_change_offset("jumpstart", 108, 154);
@@ -20,18 +20,9 @@ sprite_change_offset("landinglag", 108, 154);
 sprite_change_offset("idlefromland", 108, 154);
 
 sprite_change_offset("parry", 108, 154);
-sprite_change_offset("roll_forward", 108, 154);
+sprite_change_offset("roll_forward", 132, 154);
 sprite_change_offset("roll_backward", 108, 154);
 sprite_change_offset("airdodge", 108, 154);
-sprite_change_offset("airdodge_up", 108, 154);
-sprite_change_offset("airdodge_down", 108, 154);
-sprite_change_offset("airdodge_forward", 108, 154);
-sprite_change_offset("airdodge_upforward", 108, 154);
-sprite_change_offset("airdodge_downforward", 108, 154);
-sprite_change_offset("airdodge_back", 108, 154);
-sprite_change_offset("airdodge_upback", 108, 154);
-sprite_change_offset("airdodge_downback", 108, 154);
-sprite_change_offset("airdodge_glider", 64, 76);
 sprite_change_offset("waveland", 108, 154);
 sprite_change_offset("tech", 108, 154);
 
@@ -70,7 +61,10 @@ sprite_change_offset("nspecial_beam_small", 60, 18);
 sprite_change_offset("nspecial_beam_medium", 110, 18);
 sprite_change_offset("nspecial_beam_large", 160, 18);
 sprite_change_offset("uspecial", 108, 154);
+sprite_change_offset("uspecialground", 108, 154);
+sprite_change_offset("uspecialground2", 108, 154);
 sprite_change_offset("platform", 108, 154);
+sprite_change_offset("platformburst", 108, 154);
 sprite_change_offset("platform_mask", 108, 156);
 sprite_change_offset("dspecial", 108, 154);
 sprite_change_offset("dspec_charge_lv1", 32, 32);
@@ -86,7 +80,12 @@ sprite_change_offset("dspec_charge_swirl4", 32, 32);
 sprite_change_offset("dspec_charge_ring", 32, 32);
 sprite_change_offset("dspec_sword", 16, 16);
 sprite_change_offset("dspec_shield", 16, 16);
+sprite_change_offset("caltrop", 25, 18);
 sprite_change_offset("taunt", 108, 154);
+sprite_change_offset("taunt2", 108, 154);
+sprite_change_offset("taunt2_release_sparkle", 108, 154);
+sprite_change_offset("taunt2_aura", 21, 21);
+sprite_change_offset("taunt2_healnum", 10, 10);
 
 sprite_change_offset("hurt", 108, 154);
 sprite_change_offset("hurtground", 108, 154);
@@ -101,13 +100,40 @@ sprite_change_offset("introstructure", 1600, 400);
 sprite_change_offset("introstructuredecay", 1600, 400);
 
 sprite_change_offset("nspecial_proj", 64, 94);
+sprite_change_offset("crystalfade_small", 49, 49);
 sprite_change_offset("crystalexp_small", 49, 49);
+sprite_change_offset("crystalfade_large", 99, 99);
 sprite_change_offset("crystalexp_large", 99, 99);
+sprite_change_offset("crystaloutline_small", 49, 49);
+sprite_change_offset("crystaloutline_large", 99, 99);
 sprite_change_offset("crystal_mask", 49, 49);
 sprite_change_offset("crystal_mask_large", 99, 99);
 sprite_change_offset("usmash_chargeglow", 108, 154);
 sprite_change_offset("usmash_chargelaunch", 108, 154);
+sprite_change_offset("crystal_detonatechargering", 64, 64);
 sprite_change_offset("indG", 16, 16);
+
+sprite_change_offset("crystal_shards_small_u", 15, 15);
+sprite_change_offset("crystal_shards_small_ur", 15, 15);
+sprite_change_offset("crystal_shards_small_r", 15, 15);
+sprite_change_offset("crystal_shards_small_dr", 15, 15);
+sprite_change_offset("crystal_shards_small_d", 15, 15);
+sprite_change_offset("crystal_shards_small_dl", 15, 15);
+sprite_change_offset("crystal_shards_small_l", 15, 15);
+sprite_change_offset("crystal_shards_small_ul", 15, 15);
+
+sprite_change_offset("crystal_shards_large_ul", 15, 15);
+sprite_change_offset("crystal_shards_large_ulu", 15, 15);
+sprite_change_offset("crystal_shards_large_uru", 15, 15);
+sprite_change_offset("crystal_shards_large_ur", 15, 15);
+sprite_change_offset("crystal_shards_large_urr", 15, 15);
+sprite_change_offset("crystal_shards_large_drr", 15, 15);
+sprite_change_offset("crystal_shards_large_dr", 15, 15);
+sprite_change_offset("crystal_shards_large_drd", 15, 15);
+sprite_change_offset("crystal_shards_large_dld", 15, 15);
+sprite_change_offset("crystal_shards_large_dl", 15, 15);
+sprite_change_offset("crystal_shards_large_dll", 15, 15);
+sprite_change_offset("crystal_shards_large_ull", 15, 15);
 
 sprite_change_offset("fxEmpowered", 60, 60);
 
@@ -134,11 +160,19 @@ sprite_change_offset("effect_ustrong", 108, 154);
 sprite_change_offset("effect_dstrong", 140, 154);
 sprite_change_offset("effect_dattack", 122, 154);
 sprite_change_offset("effect_dattack2", 122, 154);
+sprite_change_offset("effect_uspecial", 112, 154);
+sprite_change_offset("effect_uspecial2", 112, 154);
 sprite_change_offset("effect_taunt", 108, 154);
 
 sprite_change_offset("illidrium_hfx_sml", 65, 65);
 sprite_change_offset("illidrium_hfx_med", 65, 65);
 sprite_change_offset("illidrium_hfx_lrg", 95, 95);
+
+sprite_change_offset("ice_hfx_sml", 65, 65);
+sprite_change_offset("ice_hfx_sml2", 65, 65);
+sprite_change_offset("ice_hfx_sml3", 65, 65);
+sprite_change_offset("ice_hfx_lrg", 65, 65);
+sprite_change_offset("ice_hfx_bair", 40, 60);
 
 sprite_change_offset("vfx_powerhit", 60, 60);
 sprite_change_offset("vfx_armorblock", 60, 60);
@@ -148,6 +182,8 @@ sprite_change_offset("dodge_effect", 32, 40);
 set_victory_theme( sound_get( "Victory!Nate" ));
 
 sprite_change_offset("miiverse", 60, 30);
+
+sprite_change_offset("buff_move", 108, 154);
 
 sprite_change_collision_mask("hitbox_circle", 0, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("hitbox_rect", 0, 0, 0, 0, 0, 0, 0);

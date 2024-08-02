@@ -9,7 +9,10 @@ if (displayFront == 1) {
 }
 
 lifetime--;
-if (lifetime <= 0) {instance_destroy();}
+if (lifetime <= 0) {
+    instance_destroy();
+    exit;
+}
 
 switch (displayMove) {
 	case 0:
@@ -112,7 +115,7 @@ switch (displayMove) {
 		obj_timer++;
 		if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_DATTACK) {
 		} else {
-			print_debug("disconnecting");
+			//print_debug("disconnecting");
 			connected = false;
 		}
 		if (obj_timer % 6 == 0) {
@@ -130,7 +133,7 @@ switch (displayMove) {
 		obj_timer++;
 		if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_DATTACK) {
 		} else {
-			print_debug("disconnecting");
+			//print_debug("disconnecting");
 			connected = false;
 		}
 		if (obj_timer % 6 == 0) {
@@ -164,9 +167,80 @@ switch (displayMove) {
 			y = player_id.y + player_id.vsp;
 		}
 		break;
+	case 7:
+		my_max = 10;
+		sprite_index = sprite_get("effect_uspecial");
+		
+        
+        if (connected == false || player_id.strong_charge == 0) {
+            obj_timer++;
+        } else {
+            lifetime++;
+        }
+		if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_USPECIAL_GROUND) {
+		} else {
+			//print_debug("disconnecting");
+			connected = false;
+		}
+        if (image_index < 4) {
+            if (obj_timer % 7 == 0) {
+                if (fall_forward == true || connected == true) {
+                    image_index++;
+                } else {
+                    image_index--;
+                }
+            }
+        } else {
+            if (obj_timer % 5 == 0) {
+                if (fall_forward == true || connected == true) {
+                    image_index++;
+                } else {
+                    image_index--;
+                }
+            }
+        }
+		break;
+	case 8:
+		my_max = 10;
+		sprite_index = sprite_get("effect_uspecial2");
+		
+		
+        if (connected == false || player_id.strong_charge == 0) {
+            obj_timer++;
+        } else {
+            lifetime++;
+        }
+		if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_USPECIAL_GROUND) {
+		} else {
+			//print_debug("disconnecting");
+			connected = false;
+		}
+        if (image_index < 4) {
+            if (obj_timer % 7 == 0) {
+                if (fall_forward == true || connected == true) {
+                    image_index++;
+                } else {
+                    image_index--;
+                }
+            }
+        } else {
+            if (obj_timer % 5 == 0) {
+                if (fall_forward == true || connected == true) {
+                    image_index++;
+                } else {
+                    image_index--;
+                }
+            }
+        }
+		break;
 }
 
-if (image_index < 0 || image_index > my_max) {
+if (connected && player_id.hitpause == true) {
+    obj_timer--;
+}
+
+if ((image_index < 0 && obj_timer > 10) || image_index > my_max) {
 	player_id.construct = noone;
 	instance_destroy();
+    exit;
 }

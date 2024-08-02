@@ -95,6 +95,12 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 
 
 
+if (my_hitboxID.attack == 49 && my_hitboxID.hbox_num > 9 ) {
+	hitstop += (5 + hitstop_full);
+	hit_player_obj.hitstop += (5 + hit_player_obj.hitstop_full);
+	sound_play(sound_get("hit_supereffective"));
+	revengeHitShakeFrames = hitstop;
+}
 if (my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_UAIR ) {
 	sound_play(asset_get("sfx_blow_medium1"), false, noone, 1, 1);
 }
@@ -147,4 +153,26 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num > 2) {
 	myArrow = spawn_hit_fx (hit_player_obj.x, hit_player_obj.y - 40, revArrow);	
 	myArrow.draw_angle = radtodeg(arctan2(hit_player_obj.old_hsp, hit_player_obj.old_vsp)) + 180;
 	myArrow.spr_dir = 1;
+}
+
+//finalsmash lol
+if (my_hitboxID.attack == 49) {
+	//print("hi");
+	if (my_hitboxID.hbox_num == 1 ) {
+		hit_player_obj.should_make_shockwave = false;
+		target = hit_player_obj;
+		target.spr_dir = spr_dir * -1;
+		set_window_value(49, 2, AG_WINDOW_GOTO, 4);
+		window_timer = 18;
+		grabHeightOffset = round(target.char_height);
+		grabHeightOffset -= 50;
+		grabHeightOffset = clamp (grabHeightOffset, -18, 18);
+	} else {
+		target = hit_player_obj;
+        if (my_hitboxID.hbox_num > 3) {
+            var fs_hfx = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, firehfx2)
+            fs_hfx.depth = depth - 10;
+        }
+	}
+	move_cooldown[AT_USPECIAL] = 0;
 }

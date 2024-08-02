@@ -1,13 +1,37 @@
 test1 = lengthdir_x(2, joy_dir);
 test2 = lengthdir_y(2, joy_dir);
 
+spikeGlowTimer++;
+if (spikeGlowTimer > 180) {
+    with (obj_article1) {
+        if (player_id == other.id && objectType == 1) {
+            print("hi");
+            if (size == 0) {
+                var tempFX = spawn_hit_fx(x - 4, y - 5, other.buffChargeSparkle1);  
+            } else {
+                var tempFX = spawn_hit_fx(x - 2, y - 10, other.beamChargeSparkle1);              
+            }
+            tempFX.depth = depth - 1;
+        }
+    }
+    spikeGlowTimer = 0;
+}
+
 //print(string(strong_charge));
 
-if (actionMeterStatus == 1) {
-	if (activeBuffUses > 0) {
-		actionMeterFill+= 0.08;	
-	} else {
-		actionMeterFill+= 0.15;
+if (actionMeterStatus > 0) {
+	actionMeterFill += max (4, actionMeterStatus / 3);
+	actionMeterStatus -= max (4, actionMeterStatus / 3);
+	if (actionMeterStatus < 4) {
+		actionMeterStatus = 0;
+	}
+}
+if (actionMeterStatus < 0) {
+	actionMeterFill -= max (4, actionMeterStatus / -3);
+	actionMeterStatus += max (4, actionMeterStatus / -3);
+	if (actionMeterStatus > -4) {
+		actionMeterStatus = 0;
+		actionMeterFill = 0;
 	}
 }
 actionMeterFill = clamp(actionMeterFill, 0, 200);
@@ -88,7 +112,29 @@ if (state == PS_SPAWN && should_do_intro == true) {
 	}
 }
 
+if (taunt_cancel_available == true && ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || attack != AT_TAUNT)) {
+    spawn_hit_fx(x - (5*spr_dir), y - 40, empoweredFX);
+	sound_play(asset_get("mfx_confirm"), false, noone, 0.3, 0.6);	
+	sound_play(asset_get("mfx_confirm"), false, noone, 0.4, 0.8);	
+	sound_play(asset_get("mfx_confirm"), false, noone, 0.4, 1);	
+	actionMeterFill = 198;
+    actionMeterStatus = actionMeterFill * -1; 
+    taunt_cancel_available = false;
+    if (free) {vsp = -3;}
+}
+
 if (state == PS_ATTACK_GROUND && taunt_down && shield_down) {state = PS_IDLE;}
+
+if (state == PS_RESPAWN && state_timer == 90) {
+	myPlatform = instance_create(x, y - 1, "obj_article_platform");
+	myPlatform.y = floor(myPlatform.y);
+	canMakePlat = 0;
+	myPlatform.juice = 60;
+    state = PS_IDLE;
+    free = false;
+    invincible = true;
+    invince_time = 120;
+}
 
 if (state == PS_AIR_DODGE) {
 	//set_state (PS_SPAWN);
@@ -104,7 +150,7 @@ if (state == PS_AIR_DODGE) {
 	if (last_dodge_dir == 1 || last_dodge_dir == 5 || last_dodge_dir == 9) {gliderOffset *= spr_dir;}
 	
 	if (window == 2 && window_timer < 2) {
-		spawn_hit_fx(x+gliderOffset, y-25, glider);
+		//spawn_hit_fx(x+gliderOffset, y-25, glider);
 	}
 }
 
@@ -116,7 +162,7 @@ if (state == PS_WAVELAND) {
 	spawn_hit_fx(x, y+2, slide)
 }
 if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD) {
-	spawn_hit_fx(x-3*spr_dir, y+2, slide)
+	//spawn_hit_fx(x-3*spr_dir, y+2, slide)
 }
 
 if (state == PS_WALL_JUMP && state_timer < 16 && state_timer > 2) {
@@ -131,16 +177,16 @@ if (!free && (place_meeting(x, y + 12, asset_get("par_block")) || place_meeting(
 if (state == PS_SPAWN && should_do_intro == true) {
 	if ("room_manager" in self) {in_adventure = true;}
 	if (state_timer == 1) {
-		set_color_profile_slot( 9, 3, 120, 21, 114 ); //Shorts
-		set_color_profile_slot( 9, 4, 255, 130, 213 ); //N+M Light
-		set_color_profile_slot( 9, 5, 241, 39, 227 ); //Necklace+Magic
-		set_color_profile_slot( 9, 6, 171, 10, 168 ); //N+M Dark
+		set_color_profile_slot( 9, 2, 120, 21, 114 ); //Shorts
+		set_color_profile_slot( 9, 3, 255, 130, 213 ); //N+M Light
+		set_color_profile_slot( 9, 4, 241, 39, 227 ); //Necklace+Magic
+		set_color_profile_slot( 9, 5, 171, 10, 168 ); //N+M Dark
 	}
 	if (get_player_color(player) == 9 && shield_down) {
-		set_color_profile_slot( 9, 3, 19, 82, 14 ); //Shorts
-		set_color_profile_slot( 9, 4, 171, 255, 175 ); //N+M Light
-		set_color_profile_slot( 9, 5, 39, 241, 49 ); //Necklace+Magic
-		set_color_profile_slot( 9, 6, 10, 171, 18 ); //N+M Dark
+		set_color_profile_slot( 9, 2, 19, 82, 14 ); //Shorts
+		set_color_profile_slot( 9, 3, 171, 255, 175 ); //N+M Light
+		set_color_profile_slot( 9, 4, 39, 241, 49 ); //Necklace+Magic
+		set_color_profile_slot( 9, 5, 10, 171, 18 ); //N+M Dark
 	}
 	
 	if (introTimer < 0) {
@@ -177,6 +223,11 @@ if (instance_exists(buffFX) && buffFXTimer > 0) {
 	}
 }
 
+with (oPlayer) {
+    if ("frozenByNate" in self && frozenByNate > 0) {
+        frozenByNate--;
+    }
+}
 
 with (pHitBox) {
     if (player_id == other.id) {
@@ -203,6 +254,29 @@ with (pHitBox) {
     }
 }
 
+if (healTarget != noone) {
+    healTimer--;
+    if (healTimer > 60) {
+        if (healTimer % 5 == 2) {
+            fx = spawn_hit_fx(healTarget.x + healOffsetX, (healTarget.y - 30) + healOffsetY, healAuraSparkle);
+            fx.depth = healTarget.depth - healOffsetXDir;
+        }
+        healOffsetY -= 0.8;
+        if (healOffsetXDir == 1) {
+            healOffsetX += 6;
+        } else {
+            healOffsetX -= 6;
+        }
+        if (healOffsetX > 35) {healOffsetXDir = -1;}
+        if (healOffsetX < -35) {healOffsetXDir = 1;}
+    }
+    if (healTimer == 60) {
+        take_damage(healTarget.player, player, -1);
+    }
+    if (healTimer < 0) {
+        healTarget = noone;
+    }
+}
 
 
 if(variable_instance_exists(id,"diag")) {

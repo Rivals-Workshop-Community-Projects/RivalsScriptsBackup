@@ -1,4 +1,7 @@
 //hi
+//sprite_index = sprite_get("dspecial");
+//image_index = 4;
+
 if (state == PS_SPAWN && should_do_intro == true) {
 	if (introTimer < 8 && introTimer >= 0) {
         sprite_index = sprite_get("intro");
@@ -50,6 +53,12 @@ if (state == PS_IDLE && prev_state == PS_LAND) {
 		image_index = 0;
 	}
 }
+if (state == PS_IDLE_AIR && prev_state == PS_AIR_DODGE) {
+	if (state_timer < 3) {
+		sprite_index = sprite_get("airdodge");
+		image_index = 7;
+	}
+}
 if (state == PS_IDLE && prev_state == PS_DASH_STOP) {
 	if (state_timer < 5) {
 		sprite_index = sprite_get("idlefromdashstop");
@@ -75,20 +84,26 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECI
 	hurtboxID.sprite_index = asset_get("ex_guy_crouch_box");	
 }
 
-/////////////////////////////////////////////////////////
-//////CUSTOM LANDING LAG ANIMATIONS//////
-/////////////////////////////////////////////////////////
-//////     Warning: May appear cursed.     //////
-//////        AFAIK, no other character        //////
-//////      does landing lag animations      //////
-//////       anywhere near as in-depth      //////
-//////                      as this.                      //////
-////////////////////////////////////////////////////////
-//////            If you are a veteran            //////
-//////      programmer, I apologize in       //////
-//////         advance for what you're        //////
-//////                about to read.                 //////
-/////////////////////////////////////////////////////////
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSTRONG) {
+	if (window == 1 && strong_charge > 0) {
+        image_index = 12;
+    }
+}
+
+//////////////////////////////////////////////
+//////	CUSTOM LANDING LAG ANIMATIONS	//////
+//////////////////////////////////////////////
+//////	Warning: May appear cursed.		//////
+//////	AFAIK, no other character		//////
+//////	does landing lag animations		//////
+//////	anywhere near as in-depth		//////
+//////	as this.						//////
+//////////////////////////////////////////////
+//////	If you are a veteran 			//////
+//////	programmer, I apologize in		//////
+//////	advance for what you're			//////
+//////	about to read.					//////
+//////////////////////////////////////////////
 
 if (state == PS_LANDING_LAG) {
 	var maxFrames = get_attack_value( attack, AG_LANDING_LAG );

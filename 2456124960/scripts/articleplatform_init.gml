@@ -13,4 +13,11 @@ fake_vsp = 0;
 
 madeHigh = 0;
 
-adventure_timer = 300;
+adventure_timer = 1500;
+
+juice = 30;
+
+can_make_hb_left = 1;
+can_make_hb_right = 1;
+hb = noone;
+hb2 = noone;

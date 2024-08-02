@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 4, 10, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 31 );
 
 // blue
 set_color_profile_slot( 1, 0, 74, 84, 176 ); //red fur
@@ -207,8 +207,8 @@ set_color_profile_slot( 17, 6, 0, 92, 61 ); //fire outline
 set_color_profile_slot( 17, 7, 244, 216, 5 ); //eyes
 
 // shiny
-set_color_profile_slot( 18, 0, 210, 52, 80 ); //red fur
-set_color_profile_slot( 18, 1, 160, 140, 160 ); //black fur
+set_color_profile_slot( 18, 0, 210, 71, 96 ); //red fur
+set_color_profile_slot( 18, 1, 245, 218, 226 ); //black fur
 set_color_profile_slot( 18, 2, 54, 54, 57 ); //grey fur
 set_color_profile_slot( 18, 3, 247, 242, 197 ); //fire light
 set_color_profile_slot( 18, 4, 224, 244, 76 ); //fire med
@@ -305,6 +305,36 @@ set_color_profile_slot( 27, 4, 244, 184, 5 ); //fire med
 set_color_profile_slot( 27, 5, 244, 57, 5 ); //fire dark
 set_color_profile_slot( 27, 6, 143, 31, 9 ); //fire outline
 set_color_profile_slot( 27, 7, 222, 174, 31 ); //eyes
+
+// Asylum
+set_color_profile_slot( 28, 0, 211, 165, 61 ); //red fur
+set_color_profile_slot( 28, 1, 133, 76, 44 ); //black fur
+set_color_profile_slot( 28, 2, 244, 202, 165 ); //grey fur
+set_color_profile_slot( 28, 3, 115, 250, 255 ); //fire light
+set_color_profile_slot( 28, 4, 81, 175, 179 ); //fire med
+set_color_profile_slot( 28, 5, 66, 115, 145 ); //fire dark
+set_color_profile_slot( 28, 6, 189, 28, 189 ); //fire outline
+set_color_profile_slot( 28, 7, 200, 210, 92 ); //eyes
+
+// Lasagna
+set_color_profile_slot( 29, 0, 237, 132, 6 ); //red fur
+set_color_profile_slot( 29, 1, 46, 46, 56 ); //black fur
+set_color_profile_slot( 29, 2, 245, 192, 118 ); //grey fur
+set_color_profile_slot( 29, 3, 247, 247, 128 ); //fire light
+set_color_profile_slot( 29, 4, 244, 206, 83 ); //fire med
+set_color_profile_slot( 29, 5, 230, 127, 39 ); //fire dark
+set_color_profile_slot( 29, 6, 209, 98, 14 ); //fire outline
+set_color_profile_slot( 29, 7, 255, 255, 255 ); //eyes
+
+// Cyclone
+set_color_profile_slot( 30, 0, 255, 182, 128 ); //red fur
+set_color_profile_slot( 30, 1, 173, 75, 54 ); //black fur
+set_color_profile_slot( 30, 2, 51, 26, 17 ); //grey fur
+set_color_profile_slot( 30, 3, 240, 98, 98 ); //fire light
+set_color_profile_slot( 30, 4, 240, 34, 34 ); //fire med
+set_color_profile_slot( 30, 5, 166, 24, 24 ); //fire dark
+set_color_profile_slot( 30, 6, 184, 129, 0 ); //fire outline
+set_color_profile_slot( 30, 7, 240, 232, 228 ); //eyes
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

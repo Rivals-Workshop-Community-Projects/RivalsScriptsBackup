@@ -12,6 +12,9 @@ if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
 	}
 }
 revengeMult = clamp(revengeMult, 1, 4);
+if (has_rune("H")) {
+    revengeMult = 1;
+}
 
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECIAL) {
 	incomingDamage = enemy_hitboxID.damage * (1 + (hit_player_obj.strong_charge/120));
@@ -26,7 +29,9 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECI
 	}
 	//print_debug ("lol revenge");
 	revengeMult += 0.3 + (incomingDamage * 0.12);
-	revengeMult = clamp(revengeMult, 1, 3);
+    if (!has_rune("H")) {
+        revengeMult = clamp(revengeMult, 1, 3);
+    }
 	revengeBuffer = 120;
 	revengeAnchor = get_player_damage(player);
 	plasma_pause = false;

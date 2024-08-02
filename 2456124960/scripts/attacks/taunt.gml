@@ -40,13 +40,13 @@ set_hitbox_value(AT_TAUNT, 1, HG_WINDOW_CREATION_FRAME, 10);
 set_hitbox_value(AT_TAUNT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_X, -3);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_Y, -10);
-set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 110); //this shouldn't be problematic right
+set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 110);
 set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 25);
 set_hitbox_value(AT_TAUNT, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_TAUNT, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 

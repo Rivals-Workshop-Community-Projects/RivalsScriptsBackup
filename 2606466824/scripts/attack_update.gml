@@ -42,7 +42,7 @@ if (attack == AT_TAUNT) {
 			if (!hitpause) {
 				take_damage(player, player, 1 + round(2 * (revengeMult - 1)));
 				if (revengeMult > 1) {
-					if (phone_cheats[CHEAT_PERSIST] < 2) {
+					if (phone_cheats[CHEAT_PERSIST] < 2 && !has_rune("H")) {
 						revengeMult = 1;
 					}
 					hitpause = true;
@@ -50,6 +50,13 @@ if (attack == AT_TAUNT) {
 					sound_play(sound_get("hit_supereffective"));
 					revengeHitShakeFrames = hitstop;
 				}
+                
+                if (has_rune("B")) {
+                    revengeMult += 0.5;
+                    if (!has_rune("H")) {
+                        revengeMult = clamp(revengeMult, 1, 3);
+                    }
+                }
 			}
 		}
 		if (window_timer == 17) {
@@ -492,8 +499,13 @@ if (attack == AT_FTHROW) {
 			set_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING) * get_hitbox_value(attack, 2, HG_REVENGE_KB_MULTIPLIER));
 		}
 	} else if (window == 2 && target != noone) {
-		target.x = x + 24 * spr_dir;
-		target.y = y - 20 + grabHeightOffset;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
+		} else {
+			target.state = PS_HITSTUN;
+            target.x = x + 24 * spr_dir;
+            target.y = y - 20 + grabHeightOffset;
+        }
 	}
 	if (window != 3) {soft_armor = 999;}
 }
@@ -538,10 +550,55 @@ if (attack == AT_UTHROW) {
 		
 		if (window_timer == 1) {
 			array_push(phone_dust_query, [x + 15*spr_dir, y, "dash", spr_dir * -1]);
+            set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED, 0);
 		}
+        if (has_rune("G") && window_timer > 9) {
+            window_timer -= 0.5;
+        }
 		if (window_timer == 9) {
 			array_push(phone_dust_query, [x, y, "jump", spr_dir]);
+            if (has_rune("G")) {
+                set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED, -32);
+            }
 		}
+		if (window_timer == 12) {
+            if (has_rune("G")) {
+                set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED, -12);
+            }
+		}
+		if (window_timer >= 14) {
+            if (has_rune("G")) {
+                set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED, 22);
+                set_hitbox_value(AT_UTHROW, 2, HG_DAMAGE, 40);
+                set_hitbox_value(AT_UTHROW, 2, HG_HIT_SFX, sound_get("strong_heavy"));
+                
+                if (!free && window_timer < 19) {
+                    window_timer = 19;
+                }
+                phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE); // && y > phone_blastzone_b - 200
+                if (free) {
+                    window_timer = 15;
+                }
+            } else {
+                set_hitbox_value(AT_UTHROW, 2, HG_DAMAGE, 12);
+                set_hitbox_value(AT_UTHROW, 2, HG_HIT_SFX, sound_get("strong_light"));
+            }
+		}
+        
+		if (!hitpause && window_timer > 9 && window_timer % 1 == 0 && has_rune("G")) {
+			if (get_player_color(player) == 24) {
+				myFX = spawn_hit_fx(x, y-30, trailR);					
+			} else {
+				myFX = spawn_hit_fx(x, y-30, trail);
+			}
+			if (spr_dir == -1) {
+				myFX.draw_angle = 90;
+			} else {
+				myFX.draw_angle = 270;
+			}
+			myFX.depth = depth + 1;
+		}
+        
 		if (window_timer >= 20) {
 			array_push(phone_dust_query, [x - 15*spr_dir, y, "land", spr_dir]);
 			array_push(phone_dust_query, [x + 20*spr_dir, y, "land", -1 * spr_dir]);
@@ -662,10 +719,10 @@ if (attack == AT_NTHROW) {
 		
 		if (free) {
 			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, .8);
 		} else {
 			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 7);
-			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 1);	
+			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, .9);	
 		}
 		if (revengeMult > 1 && get_hitbox_value(attack, 2, HG_REVENGE_KB_MULTIPLIER) != 0) {
 			set_hitbox_value(attack, 2, HG_BASE_KNOCKBACK, get_hitbox_value(attack, 2, HG_BASE_KNOCKBACK) * get_hitbox_value(attack, 2, HG_REVENGE_KB_MULTIPLIER));
@@ -838,6 +895,7 @@ if (attack == AT_DSPECIAL){
 		clear_button_buffer(PC_SPECIAL_PRESSED);
 	 }
     if ((window == 2 && window_timer < 15) || (window == 1 && window_timer == 5)) {
+        vsp = 0.75;
 		super_armor = true;
 		if (hitpause == true ||(phone_cheats[CHEAT_BUFF] == 1 && (attack_pressed || special_pressed || taunt_pressed))) {
 			window = 4;
@@ -852,7 +910,9 @@ if (attack == AT_DSPECIAL){
 		if (phone_cheats[CHEAT_BUFF] > 0 && move_cooldown[AT_DSPECIAL_2] < 1) {
 			if (attack_pressed) {
 				revengeMult += 1;
-				revengeMult = clamp(revengeMult, 1, 3);
+				if (!has_rune("H")) {
+                    revengeMult = clamp(revengeMult, 1, 3);
+                }
 				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
@@ -863,7 +923,9 @@ if (attack == AT_DSPECIAL){
 				}
 			} else if (special_pressed) {
 				revengeMult += 1.6;
-				revengeMult = clamp(revengeMult, 1, 3);
+				if (!has_rune("H")) {
+                    revengeMult = clamp(revengeMult, 1, 3);
+                }
 				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
@@ -874,7 +936,9 @@ if (attack == AT_DSPECIAL){
 				}
 			} else if (taunt_pressed) {
 				revengeMult += 0.4;
-				revengeMult = clamp(revengeMult, 1, 3);
+				if (!has_rune("H")) {
+                    revengeMult = clamp(revengeMult, 1, 3);
+                }
 				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
@@ -894,7 +958,13 @@ if (attack == AT_DSPECIAL){
     if (window == 3 || (window == 2 && window_timer == 15)) {
 		super_armor = false;
     } else {
-		vsp = clamp(vsp, -1, 4);
+        if (free) {
+            vsp -= 0.15;
+            if (window_timer < 10) {
+            vsp -= 0.1;
+            }
+        }
+		vsp = clamp(vsp, -1, 3.5);
 	}
     if (window > 3 && window < 7) {
 		invincible = true;
@@ -937,7 +1007,7 @@ if (attack == AT_DSPECIAL){
 			
 	can_fast_fall = false;
 	if (free) {
-		hsp = clamp(hsp, -2, 2);
+		hsp = clamp(hsp, -1, 1);
 	}
 }
 
@@ -960,3 +1030,186 @@ if (get_player_color(player) == 24) {
 	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, firehfx);
 	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, burst);
 }	
+
+
+
+
+
+if (attack == 49){
+	can_wall_jump = true;
+	can_fast_fall = false;
+	can_move = false;
+    hue += 5;
+    if (window == 1) {
+		if (window_timer == 1) {
+			set_window_value(49, 2, AG_WINDOW_HSPEED, 22);
+			set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("null"));
+			dattackBounce = 0;
+		}
+		move_cooldown[AT_USPECIAL] = 0;
+		move_cooldown[AT_FSPECIAL] = 0;
+		set_window_value(49, 2, AG_WINDOW_GOTO, 17);
+		fspecmode = 0;
+		target = noone;
+		grabHeightOffset = 0;
+		if (window_timer == phone_window_end) {
+			array_push(phone_dust_query, [x - 5*spr_dir, y, "dash_start", spr_dir]);
+		}
+		finalSmashLoops = 0;
+	}
+	
+	if (dattackBounce > 0 && dattackBounce < 10) {
+		destroy_hitboxes();
+		window = 1;
+		window_timer = 21;
+		set_window_value(49, 2, AG_WINDOW_HSPEED, 26);
+		if (dattackBounce == 1) {
+			sound_play(sound_get("nspec_grab"));
+		}
+		if (dattackBounce == 9) {
+			sound_play(sound_get("nspec_launch"));
+		}
+		dattackBounce++;
+	}
+	
+	if (window == 3) {
+		if (window_timer == 1 && !free) {
+			array_push(phone_dust_query, [x + 15*spr_dir, y, "dash", spr_dir * -1]);			
+		}
+		if (dattackBounce > 5) {
+			vsp = clamp (vsp, -3, 3);
+		} else {
+			vsp = vsp * 0.95;
+		}
+        hsp = 0.5 * hsp;
+	}
+	
+	if (!instance_exists(target) || target == noone) {
+		if (window > 3) {
+			print("failsafe time");
+			window = 3;
+			window_timer = 0;
+			target = noone;
+		}
+	} else {
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
+		} else {
+			target.state = PS_HITSTUN;
+			
+			if (window == 4) {
+				target.x = ease_linear(target.x, x + (42 * spr_dir), window_timer, 4);
+				target.y = ease_linear(target.y, y - 10 + grabHeightOffset, window_timer, 4);
+				target.hsp = 0;
+				target.vsp = -2;
+				target.state = PS_HITSTUN;
+			}
+			if (window == 5) {
+				target.x = x + (42 * spr_dir);
+				target.y = y - 10 + grabHeightOffset;
+				target.hsp = 0;
+				target.vsp = -2;
+				target.state = PS_HITSTUN;
+			}
+			if (window == 6) {
+				target.x = x + ((42 + (window_timer * 2)) * spr_dir);
+				target.y = y - (10 - window_timer) + grabHeightOffset;
+				target.hsp = 0;
+				target.vsp = -2;
+				target.state = PS_HITSTUN;
+			}
+			if (window >= 6) {
+				target.fall_through = true;
+			}
+		}
+	}
+	
+	if (window == 12) {
+		if (window_timer == 1) {
+			attack_end();
+			create_hitbox(49, 4, x, y);
+			create_hitbox(49, 5, x, y);
+			create_hitbox(49, 6, x, y);
+            
+			myBurst = spawn_hit_fx (x, y, fs_aura1);	
+			myBurst.depth = depth - 1;	
+			myBurst = spawn_hit_fx (x, y, fs_aura2);	
+			myBurst.depth = depth - 1;	
+			myBurst = spawn_hit_fx (x, y, fs_aura3);	
+			myBurst.depth = depth - 1;	
+			myBurst = spawn_hit_fx (x, y, fs_aura4);	
+			myBurst.depth = depth - 1;	
+		}
+	}
+	
+	if (window == 13) {
+		if (window_timer >= 6) {
+			if (finalSmashLoops < 12) {
+				window_timer = 0;
+				attack_end();
+                finalSmashLoops++;
+                create_hitbox(49, 7, x, y);
+                create_hitbox(49, 8, x, y);
+                create_hitbox(49, 9, x, y);
+			} else if (finalSmashLoops == 12) {
+				window_timer = 0;
+				attack_end();
+                finalSmashLoops++;
+                create_hitbox(49, 10, x, y);
+                create_hitbox(49, 11, x, y);
+                create_hitbox(49, 12, x, y);
+			}
+            
+            var myRNG = random_func( 2, 4, true );
+            if (myRNG == 0) {
+                myBurst = spawn_hit_fx (x, y, fs_aura1);                
+            } else if (myRNG == 1) {
+                myBurst = spawn_hit_fx (x, y, fs_aura2);                
+            } else if (myRNG == 2) {
+                myBurst = spawn_hit_fx (x, y, fs_aura3);                
+            } else {
+                myBurst = spawn_hit_fx (x, y, fs_aura4);                
+            }	
+			myBurst.depth = depth - 1;	
+            
+            var myRNG2 = random_func( 2, 4, true );
+            if (myRNG2 == 0) {
+                myBurst = spawn_hit_fx (x, y, fs_aura1);                
+            } else if (myRNG2 == 1) {
+                myBurst = spawn_hit_fx (x, y, fs_aura2);                
+            } else if (myRNG2 == 2) {
+                myBurst = spawn_hit_fx (x, y, fs_aura3);                
+            } else {
+                myBurst = spawn_hit_fx (x, y, fs_aura4);                
+            }	
+			myBurst.depth = depth - 1;	
+		}
+	}
+	
+	if(window == 2){
+        //ledge snap
+        if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+            for (var i = 1; i < 40; i++){
+                if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
+                    y -= i;
+					break;
+                }
+            }      
+        }
+    }
+	
+	if (revengeMult > 1 && window == 2 && !has_hit && !has_hit_player && false) {
+		if (jump_pressed) {
+			revengeMult = 1;
+			state = PS_DOUBLE_JUMP;
+			state_timer = 0;
+			fx = spawn_hit_fx(x, y, firehfx);
+			fx.depth = depth - 1;
+			hsp *= (0.8 - (window_timer * 0.012));
+			vsp = -9.5;
+			destroy_hitboxes();
+		}
+	}
+} else {
+	move_cooldown[AT_FSPECIAL_2] = 0;
+}

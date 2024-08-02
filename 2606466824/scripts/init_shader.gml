@@ -76,7 +76,7 @@ switch (get_player_color(player)) {
 		set_character_color_shading(2, 0.8);	
 		break;		
 	case 18:
-		set_character_color_shading(1, 2.5);
+		set_character_color_shading(1, 4);
 		set_character_color_shading(2, 0.6);
 		break;	
 	case 19:
@@ -126,5 +126,20 @@ switch (get_player_color(player)) {
 		set_character_color_shading(0, 0.6);
 		set_character_color_shading(1, 1.9);		
 		set_character_color_shading(2, 0.9);	
+		break;				
+	case 28:			
+		set_character_color_shading(1, 2);		
+		set_character_color_shading(2, 1.5);
+		set_character_color_shading(4, -3);
+		set_character_color_shading(5, -3);	
+		break;				
+	case 29:			
+		set_character_color_shading(1, 1.2);		
+		set_character_color_shading(2, 1.2);
+		set_character_color_shading(7, 0.5);
+		break;				
+	case 30:			
+		set_character_color_shading(1, 2);		
+		set_character_color_shading(2, 0.5);
 		break;		
 }
