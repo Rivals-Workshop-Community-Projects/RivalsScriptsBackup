@@ -1,11 +1,18 @@
-if (!free || state == PS_WALL_JUMP) {
+if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_DEAD || state == PS_RESPAWN) {
     move_cooldown[AT_FSPECIAL] = 0;
 }
 
-if (state == PS_DASH && (state_timer % 10 == 0 or state_timer == 1))  {
-    sound_stop(dash_sound)
+// if (state == PS_DASH && (state_timer % 10 == 0 or state_timer == 1))  {
+//     sound_stop(dash_sound)
 
-    dash_sound = sound_play(sound_get("dash_sound"),false,noone,1, 1 + random_func(1,30,true)/100)
+//     dash_sound = sound_play(sound_get("dash_sound"),false,noone,1, 1 + random_func(1,30,true)/100)
+// }
+
+if(state == PS_DASH && dashing == noone && !hitpause){
+    dashing = sound_play(asset_get("sfx_kragg_roll_loop"), true, false, 200);
+} else if(state != PS_DASH && dashing != noone){
+    sound_stop(dashing);
+    dashing = noone;
 }
 
 //intro anim
@@ -27,6 +34,35 @@ if (introTimer < 14) {
 if(instance_exists(fireball)){
     move_cooldown[AT_NSPECIAL] = 20;
 
+}
+
+
+if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+    if (attack == AT_USTRONG) {
+        if(window == 3) soft_armor = 14;
+        else soft_armor = 0;
+    }
+}
+
+
+with(oPlayer){
+    if(!clone && self != other){
+        if(bowser_dattack_grabbed_id == other){
+        // 	x = ease_quadIn(floor(other.x + 60 * other.spr_dir), floor(bowser_dattack_grabbed_x), floor(hitstop), floor(hitstop_full));
+        	y = ease_quadIn(floor(other.y - 10), floor(bowser_dattack_grabbed_y), floor(hitstop), floor(hitstop_full));
+            var _xx = other.x+60*other.spr_dir;
+            var _yy = other.y-10;
+            var hsped = lengthdir_x(point_distance(x,y,_xx,_yy)/8,point_direction(x,y,_xx,_yy));
+    // 		var vsped = lengthdir_y(point_distance(x,y,_xx,_yy)/8,point_direction(x,y,_xx,_yy));
+    		x += hsped;
+    // 		y += vsped;
+        }
+        if(hit_player_obj != other || !hitpause || (other.state != PS_ATTACK_GROUND && other.state != PS_ATTACK_AIR) || state_cat != SC_HITSTUN){
+            if(bowser_dattack_grabbed_id == other){
+                 bowser_dattack_grabbed_id = noone;
+            }
+        }
+    }
 }
 
 
@@ -60,7 +96,7 @@ diagchoice = [
     "You're gonna step to the Koopa king?",
     "GWAHAHA, you want to fight me?"]
     
-
+if "otherUrl" in self {
 if(otherUrl == 2802388684) 
     {
         with(pet_obj)
@@ -696,3 +732,5 @@ if(otherUrl == 2802388684)
             }
         }
     }
+    
+}

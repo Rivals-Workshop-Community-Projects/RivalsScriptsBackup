@@ -33,7 +33,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
-set_num_hitboxes(AT_NSPECIAL, 2);
+set_num_hitboxes(AT_NSPECIAL, 1);
 
 //small hitbox
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
@@ -51,7 +51,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
+// set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_small"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
@@ -59,6 +60,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
 
 
 //mouth hitbox

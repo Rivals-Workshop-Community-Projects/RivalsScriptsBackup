@@ -49,7 +49,7 @@ air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
 fast_fall           = 14;		// 11   -  16
 gravity_speed       = 0.5;		// 0.3  -  0.6
-hitstun_grav        = 0.5;		// 0.45 -  0.53
+hitstun_grav        = 0.53;		// 0.45 -  0.53
 
 // Jumps
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
@@ -62,7 +62,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 14;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.10;		// 0    -  0.15
@@ -407,7 +407,7 @@ set_victory_theme(sound_get("victory_theme")); // victory_theme.ogg
 // Movement SFX
 land_sound          = sound_get("bowser_land");
 landing_lag_sound   = asset_get("sfx_land_heavy");
-waveland_sound      = asset_get("sfx_waveland_zet"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+waveland_sound      = asset_get("sfx_waveland_fors"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = sound_get("bowser_jump");
 djump_sound         = sound_get("bowser_jump");
 air_dodge_sound     = asset_get("sfx_quick_dodge");
@@ -421,3 +421,8 @@ bubble_y = 8;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
+
+
+
+// i added more things lol idk
+dashing = noone;

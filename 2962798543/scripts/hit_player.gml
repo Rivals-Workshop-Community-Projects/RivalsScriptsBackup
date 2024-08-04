@@ -41,3 +41,15 @@ if (my_hitboxID.attack == AT_DSPECIAL) {
 		}
 	}
 }
+
+if(my_hitboxID.attack == AT_DSPECIAL_2 && grabbed_player_obj == hit_player_obj){
+	grabbed_player_obj = noone;
+}
+
+if(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1 && hit_player_obj.state_cat == SC_HITSTUN){
+	hit_player_obj.bowser_dattack_grabbed_id = self;
+	hit_player_obj.bowser_dattack_grabbed_x = hit_player_obj.x;
+	hit_player_obj.bowser_dattack_grabbed_y = hit_player_obj.y;
+} else {
+	hit_player_obj.bowser_dattack_grabbed_id = noone;
+}

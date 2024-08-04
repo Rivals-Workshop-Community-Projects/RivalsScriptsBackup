@@ -91,8 +91,11 @@ break;
 		move_cooldown[AT_FSPECIAL] = 9999;
 		can_wall_jump = true;
 		}
-		if window == 2 && has_hit = true {
-		window = 4 
+		if window == 2 && has_hit == true {
+			window = 4 
+			destroy_hitboxes();
+			if hitpause { old_vsp = -10; old_hsp = spr_dir; }
+			else { vsp = -10; hsp = spr_dir } 
 		}
     	break;
 	
@@ -104,51 +107,51 @@ break;
 	}
 	break;
 
-	case AT_DSPECIAL: {
-if (free){
-		can_move = false
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
+// 	case AT_DSPECIAL: {
+// if (free){
+// 		can_move = false
+// set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED, 1);
+// set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
 
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 1);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 1);
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 	
 
 
-}
-}
-if (!free){
-	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED, 1);
-    set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
+// }
+// }
+// if (!free){
+// 	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED, 1);
+//     set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
 	
-	set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 1);
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 0);
+// 	set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 1);
+//     set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 0);
 
-}
-break;
+// }
+// break;
 
-	case AT_DSPECIAL_2: {
-if (free){
-	can_move = false
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED, 1);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 2);
+// 	case AT_DSPECIAL_2: {
+// if (free){
+// 	can_move = false
+// set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED, 1);
+// set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 2);
 
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 2);
+// set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
+// set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 2);
 	
 
 
-}
-}
-if (!free){
-	set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED, 1);
-    set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 2);
+// }
+// }
+// if (!free){
+// 	set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED, 1);
+//     set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 2);
 	
-	set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
-    set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 0);
+// 	set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
+//     set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 0);
 
-}
-break;
+// }
+// break;
 
 case AT_NSPECIAL:
 if (window == 2){
@@ -172,9 +175,9 @@ if (window == 2){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10); 
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .75); 
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+		// set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_big"));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
@@ -197,9 +200,9 @@ if (window == 2){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 7);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 89);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+		// set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_small"));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 		
@@ -225,20 +228,44 @@ break;
 
 if attack == AT_DSPECIAL_2{
 	if window == 1{
-		if window_timer == 1{
+		if window_timer == 1 {
 
 			set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_GOTO, 2);
-			set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 7);
-		}
-
-		if (spr_dir == 1 && left_down == true) || (spr_dir == -1 && right_down == true){
-			set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_GOTO, 5);
+			set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 16);
 		}
 		
-		else{
-
-			set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_GOTO, 2);
+		if(window_timer >= 8){
+		
+			if(spr_dir == 1 && left_down || spr_dir == -1 && right_down){
+				window = 5;
+				window_timer = 0;
+			}
+			
+			if(spr_dir == -1 && left_down || spr_dir == 1 && right_down){
+				window = 8;
+				window_timer = 0;
+			}
+			
+			if(down_down){
+				window = 2;
+				window_timer = 0;
+			}
+			
+			if(up_down){
+				window = 11;
+				window_timer = 0;
+			}
+		
 		}
+
+		// if (spr_dir == 1 && left_down == true) || (spr_dir == -1 && right_down == true){
+		// 	set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_GOTO, 5);
+		// }
+		
+		// else{
+
+		// 	set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_GOTO, 2);
+		// }
 	}
 	
 	if window == 2{
@@ -246,9 +273,14 @@ if attack == AT_DSPECIAL_2{
 		set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 4);
 	}
 	
-	if window == 5{
+	if window == 5 {
 
 		set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 7);
+	}
+	
+	if window == 8 {
+
+		set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 10);
 	}
 	
 }
@@ -264,7 +296,27 @@ if (attack == AT_DSPECIAL) {
     }
 }
 
+if(attack == AT_DSPECIAL_2){
+	if(window == 15) shake_camera(6, 2);
+	if free{
+		set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .8);
+		set_hitbox_value(AT_DSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .8);
+	} else {
+		reset_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_DSPECIAL_2, 3, HG_KNOCKBACK_SCALING);
+	}
+}
+
 if (attack == AT_DSPECIAL_2 && instance_exists(grabbed_player_obj)) {
+	can_move = (window == 13 || window == 14);
+	
+	if(window == 13 || window == 14) && free && vsp >= max_fall && !hitpause vsp += gravity_speed * get_window_value(AT_DSPECIAL_2, 14, AG_WINDOW_CUSTOM_GRAVITY);
+	
+	if(window == 13 || window == 14) && !free && !hitpause {
+		window = 15;
+		window_timer = 0;
+		sound_play(asset_get("sfx_kragg_rock_shatter"))
+	}
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
 	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
@@ -273,7 +325,11 @@ if (attack == AT_DSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 	else {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
+		grabbed_player_obj.hitstop_full = 2;
 		grabbed_player_obj.hitpause = true;
+		var grav_num = (.5 + grabbed_player_obj.hitstun_grav);
+		grabbed_player_obj.hitstun = 20 + (get_player_damage(grabbed_player_obj.player)/6) * (grav_num + (1 - grav_num) * 3);
+		grabbed_player_obj.hitstun_full = grabbed_player_obj.hitstun;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -302,9 +358,51 @@ if (attack == AT_DSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		}
 		
 		//Forward Throw
-		if image_index >= 14{
+		if image_index >= 14 && image_index <= 17 {
 			grabbed_player_obj.x = x+48*spr_dir;
 			grabbed_player_obj.y = y-16;
+		}
+		
+		switch(image_index){
+			//uthrow
+			case 22:
+			grabbed_player_obj.x = x+48*spr_dir;
+			grabbed_player_obj.y = y;
+			break;
+			case 23:
+			grabbed_player_obj.x = x+48*spr_dir;
+			grabbed_player_obj.y = y-10;
+			break;
+			case 24:
+			grabbed_player_obj.x = x+20*spr_dir;
+			grabbed_player_obj.y = y-40;
+			break;			
+			case 25:
+			grabbed_player_obj.x = x+2*spr_dir;
+			grabbed_player_obj.y = y-70;
+			break;
+			case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+			grabbed_player_obj.x = x+18*spr_dir;
+			grabbed_player_obj.y = y-50+vsp;
+			break;
+			
+			//fthrow
+			case 36:
+			grabbed_player_obj.x = x+48*spr_dir;
+			grabbed_player_obj.y = y-16;
+			break;
+			case 37: case 38: case 39:
+			grabbed_player_obj.x = x-48*spr_dir;
+			grabbed_player_obj.y = y-36;
+			break;
+			case 40:
+			grabbed_player_obj.x = x;
+			grabbed_player_obj.y = y-50;
+			break;
+			case 41: case 42:
+			grabbed_player_obj.x = x+48*spr_dir;
+			grabbed_player_obj.y = y-16;
+			break;
 		}
 		
 		//the above block can be copied for as many windows as necessary.
