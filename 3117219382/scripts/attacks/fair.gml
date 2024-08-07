@@ -26,7 +26,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -56,6 +56,18 @@ set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 // set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, leaf_small_hfx);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+// set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("coin"));
+// set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("nspecial_mask"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("coin"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("nspecial_mask"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.4);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GRAVITY, 0.65);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_FRICTION, 0.04);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 
 hitbox_num++;
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
@@ -74,6 +86,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.85);
 // set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, leaf_big_hfx);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_leafy_hit1"));
 

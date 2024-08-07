@@ -1,12 +1,6 @@
 //attack_update.gml
-//when we want to program in more complex attacks than what the basic attack scripts do, we come here
-//this script runs every frame when the player is in an attack state (PS_ATTACK_GROUND, PS_ATTACK_AIR)
-
-//NOTE: to reffer to a window's window_timer == 0, we must take the last frame of the window before
-//		example: if (window == 3 && window_timer == window_end) will reffer to window 4, window_timer 0
 
 //B-reverse - it allows the character to turn in while using specials
-//it's seperate from the switch statement because switch statements always take the later instance of that case
 if (attack == coin_atk || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
 grabs()
@@ -21,7 +15,12 @@ if(attack == AT_FTILT){
 if(attack == AT_FAIR){
 	if(window == 2){
 		if(window_timer%2 == 0 and !hitpause and window_timer != 8){
-			create_hitbox(attack, 1, x, y)
+			var proj = create_hitbox(attack, 1, x, y)
+		}
+	}
+	if(window == 3){
+		if(window_timer == window_end and has_hit){
+			hsp *= 0.8
 		}
 	}
 }
@@ -78,6 +77,12 @@ if(attack == AT_USTRONG){
 	}
 }
 
+// if(attack == AT_USPECIAL){
+// 	if(window == 1){
+// 		vsp = min(vsp, 0)
+// 	}
+// }
+
 if(attack == AT_USPECIAL){
 	if(window == 1 and window_timer == 1){
 		hsp *= 0.5;
@@ -110,7 +115,7 @@ if(attack == AT_USPECIAL){
 				var v_off = 96;
 				var posa = collision_line_point(x + test_x, y + test_y - v_off - 2, x + test_x, y + test_y, solids, false, true);
 				// spawn_hit_fx(posa[1], posa[2], HFX_GEN_OMNI);
-				if(!position_meeting(posa[1], posa[2]-2, solids)){
+				if(!position_meeting(posa[1], posa[2]-2, solids) and point_distance(x + test_x, y + test_y - v_off - 2, x + test_x, y + test_y) < 225){
 					tp_to(posa[1], posa[2])
 				}else{
 					var posa2 = collision_line_point( x, y-char_height, x + test_x, y + test_y - v_off - 2, solids, false, true);
@@ -177,7 +182,7 @@ if(attack == AT_FSPECIAL){
 			sound_play(asset_get("sfx_zetter_shine_charged"), false, noone, 1, 1)
 		}
 	}
-	if(window == 1 or window == 2){ //MOVEMENT CONSTRAINS
+	if(window == 1 or window == 2){ //MOVEMENT CONSTRAINTS
 		
 		if(!used_mf_air) if(vsp > -1) grav = clamp(grav*(vsp/10), 0.25, gravity_speed)
 		if(!free) can_move = false;
@@ -203,16 +208,16 @@ if(attack == AT_FSPECIAL){
 			if(free and used_mf_dash_air < 1){
 				var dir = floor(point_direction(0,0, dcos(joy_dir), -dsin(joy_dir))/45 + .5)%8;
 				if(joy_pad_idle) dir = spr_dir ? 0 : 4;
-				hsp = lengthdir_x(10, dir*45);
-				vsp = lengthdir_y(10, dir*45);
+				hsp = lengthdir_x(9, dir*45);
+				vsp = lengthdir_y(9, dir*45);
 				used_mf_dash_air++;
 				set_window(10);
 			}
 			if(!free and used_mf_dash_ground < 4){
 				var dir = floor(point_direction(0,0, dcos(joy_dir), -dsin(joy_dir))/45 + .5)%8;
 				if(joy_pad_idle) dir = spr_dir ? 0 : 4;
-				hsp = lengthdir_x(10 - used_mf_dash_ground*1.5, dir*45);
-				vsp = lengthdir_y(10 - used_mf_dash_ground*1.5, dir*45);
+				hsp = lengthdir_x(9 - used_mf_dash_ground*1.25, dir*45);
+				vsp = lengthdir_y(9 - used_mf_dash_ground*1.25, dir*45);
 				used_mf_dash_ground++;
 				set_window(10);
 			}
@@ -220,7 +225,8 @@ if(attack == AT_FSPECIAL){
 	}
 	var strong_stick_any = up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed
 	var strong_pressed_any = up_strong_pressed + down_strong_pressed + left_strong_pressed + right_strong_pressed
-	if(window == 2 and (attack_pressed or strong_stick_any or strong_pressed_any)){ // STANCE CANCEL
+	
+	if((window == 2 or window == 11) and (attack_pressed or strong_stick_any or strong_pressed_any)){ // STANCE CANCEL
 		used_mf_air = true;
 		if(attack_pressed){ attack_counter = 7; clear_button_buffer(PC_ATTACK_PRESSED); }
 		
@@ -234,7 +240,7 @@ if(attack == AT_FSPECIAL){
 			clear_button_buffer(PC_STRONG_PRESSED)
 		}
 		clear_button_buffer(PC_SPECIAL_PRESSED)
-		set_window(11);
+		set_window(12);
 	}
 	if(window == 2 and !special_down){
 		set_window(0);
@@ -285,7 +291,7 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 1 and !hitpause){
 			// hsp += free*spr_dir*-0.5
 			// print("used_mf_air: " + string(used_mf_air_vboost))
-			vsp = free*(-5 + 4*used_mf_air_vboost)
+			vsp = free*(-5 + 5*used_mf_air_vboost)
 		}
 		move_cooldown[attack] = 44;
 	}
@@ -302,21 +308,29 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 1){
 			sound_play(asset_get("sfx_waveland_pom"), false, noone, 1, 1.2)
 		}
-		if(attack_pressed and next_window != 11){
-			next_window = 11;
+		if(attack_pressed and next_window != 12){
+			next_window = 12;
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 		if(window_timer == window_end){
-			if(next_window == 11){
+			if(next_window == 12){
 				hsp *= 0.7 - 0.2*(free)
 				vsp *= 0.7
 				set_window(next_window)
 			}else{
 				hsp *= 0.4
 				vsp *= 0.4
-				if(special_down){ set_window(2) }
-				else{ set_window(3);}
+				if(special_down){ next_window = 2; }
+				else{ next_window = 3; }
+				set_window(0)
 			}
+		}
+	}
+	if(window == 11){
+		grav = 0.1;
+		can_wall_jump = true;
+		if(window_timer == window_end){
+			set_window(next_window)
 		}
 	}
 }
@@ -370,7 +384,7 @@ if(attack == AT_DSPECIAL){
 		if(window_timer == 1 and !hitpause){
 			create_hitbox(AT_DSPECIAL, 2, x, y)
 		}
-		if(window%2==1 and window_timer == 2 and !hitpause){
+		if(window%3==2 and window_timer == 2 and !hitpause){
 			if(coins_in_bag < max_coins_in_bag){
 				coins_in_bag++;
 				coin_fade_in_timer = coin_fade_in_time;
@@ -393,10 +407,12 @@ if(attack == AT_DSPECIAL){
 	}
 	
 	if(window == 13){
+		grav = 0.4
+		if(vsp >= 6) vsp *= 0.95
 		if(window_timer == 10){
 			sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.6, 0.7)
 		}
-		if(window_timer > 28){
+		if(window_timer > 40){
 			if(was_parried){
 				window = 29;
 			}else{

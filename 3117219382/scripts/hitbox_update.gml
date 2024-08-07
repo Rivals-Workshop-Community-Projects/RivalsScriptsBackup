@@ -88,7 +88,7 @@ if(attack == player_id.coin_atk){
 			damage = max(1, damage-1);
 		}
 	}
-	if(vsp < 1) through_platforms = 2
+	if(vsp < 1 and !through_platforms) through_platforms = 1
 	
 	if(bounced){
 		bounced_hit_timer++
@@ -100,7 +100,7 @@ if(attack == player_id.coin_atk){
 	
 	// print_vars()
 	var plt = instance_place(x, y, plats)
-  if (place_meeting(x, y+2, solids) or (through_platforms != 2 and plt and (get_instance_y(plt)+5 >= (y - vsp*(vsp>0)) ))){
+  if (place_meeting(x, y+2, solids) or (!through_platforms and plt and (get_instance_y(plt)+5 >= (y - vsp*(vsp>0)) ))){
 
 
 	  vsp = min(old_vsp*-1*0.85, -2);

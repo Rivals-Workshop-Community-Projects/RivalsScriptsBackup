@@ -25,7 +25,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
 window_num ++; //startup
 set_window_value(atk, window_num, AG_WINDOW_GOTO, window_num+1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -76,12 +76,20 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 15);
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 window_num ++; //dash
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 35);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
+
+window_num ++; //dash endlag
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 18);
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.07);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
 window_num ++; //cancel
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
@@ -92,7 +100,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 51);
 
 set_num_hitboxes(atk, 0);
 
-hitbox_num = 1; //LV1
+hitbox_num = 1; //slash
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MELEE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
@@ -119,14 +127,14 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+// set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 
-hitbox_num++;
+hitbox_num++; // extend
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 75);

@@ -22,7 +22,7 @@ max_jump_hsp            = 6;		            // 4    -  8
 air_max_speed           = 3.5;  		            // 3    -  7
 jump_change             = 3;		            // 3
 air_accel               = 0.3;		            // 0.2  -  0.4
-prat_fall_accel         = 0.85;		            // 0.25 -  1.5
+prat_fall_accel         = 0.4;		            // 0.25 -  1.5
 air_friction            = 0.04;		            // 0.02 -  0.07
 max_fall                = 8.5;		            // 6    -  11
 fast_fall               = 12;		            // 11   -  16
@@ -46,7 +46,7 @@ prat_land_time          = 18;		            // 3    -  24       zetterburn's is 3
 wave_friction           = 0.12;		            // 0    -  0.15
 wave_land_time          = 8;		            // 6    -  12
 wave_land_adj           = 1.3;		            // 1.2  -  1.5      idk what zetterburn's is
-roll_forward_max        = 9;		            // 7    -  11
+roll_forward_max        = 8;		            // 7    -  11
 roll_backward_max       = roll_forward_max;		// 7    -  11       always the same as forward
 air_dodge_speed         = 8;		            // 7.5  -  8
 techroll_speed          = 10;		            // 8    -  11
@@ -85,7 +85,7 @@ air_dodge_recovery_frames   = 2;
 // Roll
 roll_forward_startup_frames     = 1;
 roll_forward_active_frames      = 4;
-roll_forward_recovery_frames    = 3;
+roll_forward_recovery_frames    = 2;
 roll_back_startup_frames        = roll_forward_startup_frames;
 roll_back_active_frames         = roll_forward_active_frames;
 roll_back_recovery_frames       = roll_forward_recovery_frames;
@@ -125,7 +125,7 @@ bubble_y = 8;
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-debug_display = 0;
+debug_display = 1;
 practice = get_match_setting(SET_PRACTICE);
 // debug_display = get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
 hbox_view = get_match_setting(SET_HITBOX_VIS);
@@ -210,6 +210,8 @@ has_intro = true; //change to false if you don't have one/don't want it active
 //projectile with melee hitbox behaviour
 HG_PROJECTILE_MELEE = 65;               //if true, it makes it so the projectile applies hitpause and sets off hit player flags
 
+draw_hud_event = 3;
+hit_player_event = 4;
 
 ////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
 
@@ -253,7 +255,7 @@ fspecial_hud_time = fspecial_hud_enter_time+fspecial_hud_stay_time+fspecial_hud_
 mist_angles = [35, 0, -35];
 
 //DIST -> PER LEVEL 1, 2, 3;
-mist_distance = [130, 300, 450];
+mist_distance = [120, 300, 450];
 
 lvl = 1;
 mid_attack_lvl = lvl;
@@ -261,8 +263,8 @@ max_lvl = 3;
 grind_article = noone;
 bd_waveland_sprite = sprite_get("waveland");
 
-coins_in_bag = 5;
-max_coins_in_bag = 8;
+coins_in_bag = 3;
+max_coins_in_bag = 6;
 
 coin_atk = AT_NSPECIAL;
 

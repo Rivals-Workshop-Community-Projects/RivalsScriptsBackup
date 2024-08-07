@@ -4,7 +4,7 @@
 if(attacking){
 	switch(attack){
 		case AT_FSPECIAL:
-		if(window == 2){
+		if(window == 2 or window == 11){
 			
 			var dir = -left_down+right_down
 			var loop_length = free ? 7 : 8;

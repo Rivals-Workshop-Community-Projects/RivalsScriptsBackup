@@ -52,7 +52,7 @@ if(state == PS_FIRST_JUMP){
 
 if(state == PS_PARRY_START or ((state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD) and window == 0 and window_timer == 0) or (state == PS_AIR_DODGE and window == 0 and !used_mf_dash_air)){
 	if(special_down and (right_down or left_down)){
-		print("KARA")
+		// print("KARA")
 		set_attack(AT_FSPECIAL)
 	}
 }
@@ -291,8 +291,12 @@ with(taunt_bird_fx){
 	}
 }
 
-if(practice and taunt_pressed){
-	coins_in_bag = 9;
+if(practice){
+	if(taunt_down){ 
+		coins_in_bag = 9;
+		if(up_pressed) if(lvl < 3) lvl++;
+		if(down_pressed) if(lvl > 1) lvl--;
+	}
 }
 
 if(gs[GS_EXISTS]){
@@ -307,8 +311,8 @@ if(gs[GS_EXISTS]){
 		create_hitbox(AT_USPECIAL, 6, gs[GS_X], gs[GS_Y]);
 		sound_play(asset_get("sfx_ice_shieldup"));
 		gs[GS_USES]++;
-		print(gs[GS_USES])
-		print(gs[GS_MAX_USES])
+		// print(gs[GS_USES])
+		// print(gs[GS_MAX_USES])
 	}
 	if(gs[GS_STATE] == 3 and gs[GS_STATE_TIMER] == 9){
 		if(gs[GS_USES] < gs[GS_MAX_USES]){
@@ -334,7 +338,7 @@ if(fspecial_hud_timer > 0){
 
 if(vsp > 0) vsp = -3
 hsp = clamp(hsp, -leave_ground_max, leave_ground_max)
-print("NOT COLLIDING")
+// print("NOT COLLIDING")
 if(free) set_state(PS_IDLE_AIR)
 else set_state(PS_IDLE)
  

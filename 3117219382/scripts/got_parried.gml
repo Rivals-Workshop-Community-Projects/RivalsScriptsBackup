@@ -1,6 +1,8 @@
 var m = my_hitboxID
 var nm = m.hbox_num;
 if (m.attack == AT_FSPECIAL && nm == 1){
+	// print(get_state_name(state))
+	was_parried = true;
 	m.can_hit[player] = false
 }
 if (m.attack == AT_NSPECIAL && nm == 1){
@@ -12,11 +14,13 @@ if (m.attack == AT_NSPECIAL && nm == 1){
 		
 		var hhsp = sign(m.hsp)*20;
 		var t = dx/hhsp;
-		print(t)
+		
 		var delta = dy/t - m.grav*t/2
-		print(delta)
+		// print(delta)
 		m.hsp = hhsp;
-		m.vsp = delta
+		m.vsp = delta;
+		
+		m.through_platforms = 5;
 	}else{
 		if(m.vsp > 0) m.vsp *= -1
 	}

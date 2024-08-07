@@ -43,8 +43,8 @@ else{
 	}
 }
 
-if(attack_pressed) print("attack_pressed")
-if(shield_pressed) print("shield_pressed")
+// if(attack_pressed) print("attack_pressed")
+// if(shield_pressed) print("shield_pressed")
 
 // print(ct)
 
@@ -165,7 +165,7 @@ if(state_cat != SC_HITSTUN){
 		}else{
 			clear_ai_inputs();
 			perform_attack(chosenAttack, true);
-			print(get_attack_name(chosenAttack));
+			// print(get_attack_name(chosenAttack));
 			delay_time = (180 - temp_level*20) + 5
 		}
 	}else{
@@ -335,7 +335,7 @@ if(strategy != STRAT_OFFENSE and (ai_target.state_cat == SC_HITSTUN)){
 
 #define set_strategy(new_strat)
 
-print(new_strat)
+// print(new_strat)
 strategy = new_strat;
 strategy_timer = 0;
 
@@ -442,13 +442,13 @@ if(!attacking){
 				if(!move_cooldown[AT_FSPECIAL] and random_func(45, 1000, true) < 50){
 					perform_attack(AT_FSPECIAL, false);
 					if(strategy != STRAT_OFFENSE) hold_toward_center();
-					print("WOW22")
+					// print("WOW22")
 				}
 			}else{
 				if(!move_cooldown[AT_FSPECIAL] and (!used_mf_dash_air) and random_func(123, 100, true) < 80){
 					perform_attack(AT_FSPECIAL, false);
 					if(strategy != STRAT_OFFENSE) hold_toward_center();
-					print("HUH?11")
+					// print("HUH?11")
 				}
 			}
 		}else{
@@ -493,7 +493,7 @@ if(state == PS_JUMPSQUAT or (state == PS_FIRST_JUMP and state_timer <= 1)){
 	//Fullhop if needed
 	if(ai_recovering){
 		press_jump(true)
-		print(state_timer)
+		// print(state_timer)
 	}
 }
 
@@ -533,7 +533,7 @@ if(attacking){
 	case AT_NSPECIAL:case AT_DSPECIAL:
 		if(state_timer < 5){
 			if(xdisp*spr_dir < 0){
-				print("help man stop turning around on recovery")
+				// print("help man stop turning around on recovery")
 				hold_towards_target_8way(ai_target);
 				tap_current_horizontal_direction();
 			}
@@ -554,7 +554,7 @@ if(attacking){
 						if(y < stagey){ // above stage
 							hold_toward_center();
 						}else{
-							print(get_direction(point_direction(x,y,closest_wall_x + sign(x-stage_center)*28, closest_wall_y)))
+							// print(get_direction(point_direction(x,y,closest_wall_x + sign(x-stage_center)*28, closest_wall_y)))
 							hold_toward_direction_8way(get_direction(point_direction(x,y,closest_wall_x + sign(x-stage_center)*28, closest_wall_y)));
 						}
 					}
@@ -572,7 +572,7 @@ if(attacking){
 			}else{
 				if (window == 10 and window_timer == window_end-1 and (random_func(102, 100, true) < 50 or used_mf_air_vboost) and next_window != 29) attack_pressed = true;
 				if vsp > 5-( clamp(5-abs(hsp), 0, 5) ){
-					print("its this")
+					// print("its this")
 					special_down = false;
 				}
 			}
@@ -616,7 +616,7 @@ if(attacking){
 				}
 				saved_mf_angle = joy_dir
 			}else{
-				if(window == 10 and window_timer >= window_end-1 and next_window != 29 and random_func(754, 100, true) < 50){ attack_pressed = true; print("this is a test");}
+				if(window == 10 and window_timer >= window_end-1 and next_window != 29 and random_func(754, 100, true) < 50){ attack_pressed = true;}
 			}
 			
 			var dash_chance = 60+(dist*0.7 > (mist_distance[lvl-1]+30))*40;
@@ -780,7 +780,7 @@ switch(type){
 		break;
 	case HBL_DACUS:
 		var attacke = [AT_USTRONG];
-		print("trying DACUUUUUUS")
+		// print("trying DACUUUUUUS")
 		break;
 }
 
@@ -1297,8 +1297,8 @@ var do_buffer = argument_count > 1 ? argument[1] : false;
 #define perform_attack(_attack, do_buffer)
 	
 	if(state == PS_SLIDE){
-		print("SLIDE CANCEL")
-		print("with: " + get_attack_name(_attack))
+		// print("SLIDE CANCEL")
+		// print("with: " + get_attack_name(_attack))
 	}
 	
 	switch _attack {
@@ -1307,7 +1307,7 @@ var do_buffer = argument_count > 1 ? argument[1] : false;
 		case AT_UTILT:
 		case AT_DTILT:
 			if(state == PS_DASH_START or state == PS_DASH){
-				print("BABY DASH")
+				// print("BABY DASH")
 				hold_neutral()
 				return;
 			}
