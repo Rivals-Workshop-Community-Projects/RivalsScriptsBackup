@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -257,14 +257,15 @@ if (attack == AT_NSPECIAL){
     if (window == 1 && window_timer == 1) {
         crystalOffset = 0;
         crystalReticleMomentum = 0;
+        nspecPowerChange = 0;
     }
     if (window == 1 && strong_charge > 0) {
 		if (left_down) {
-            crystalOffset-= 1;
+            crystalOffset-= 2;
             crystalReticleMomentum -= 6;
         }
 		if (right_down) {
-            crystalOffset+= 1;
+            crystalOffset+= 2;
             crystalReticleMomentum += 6;
         }
         crystalReticleMomentum = clamp(crystalReticleMomentum, -80, 80);
@@ -295,6 +296,12 @@ if (attack == AT_NSPECIAL){
 		
 		if (crystalOffset > 180) crystalOffset = 180;
 		if (crystalOffset < -180) crystalOffset = -180;
+        
+        if (nspecPowerChange == 0 && strong_charge > 45) {
+            nspecPowerChange = 1;
+            sound_play(asset_get("mfx_star"), false, noone, 0.8, 1);
+            spawn_hit_fx( x + (5*spr_dir), y - 30, crystalPower );
+        }
     }
     if (window == 2 && window_timer == 4){
 	if (crystalOut == 0) {
@@ -768,6 +775,7 @@ if (attack == AT_DSPECIAL){
 		}
 	}
 	if (window == 2 && window_timer == 3) {
+        if (right_down - left_down != 0) {spr_dir = sign(right_down - left_down);}
 		strong_charge = 0;
 		specialPower = actionMeterFill / 2;
 		if (actionMeterFill > 199) {

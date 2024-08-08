@@ -84,6 +84,8 @@ buffFXPosY = 0;
 onPlatform = false;
 taunt_cancel_available = false;
 
+nspecPowerChange = 0;
+
 HG_HITBOX_COLOR = 69;
 hboxShape = -2;
 shape_circle = sprite_get("hitbox_circle")
@@ -154,8 +156,8 @@ tech_recovery_frames = 1;
 
 //tech roll animation frames
 techroll_startup_frames = 2
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
+techroll_active_frames = 3;
+techroll_recovery_frames = 3;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -222,6 +224,7 @@ buffChargeSwirl4 = hit_fx_create( sprite_get( "dspec_charge_swirl4" ), 14 );
 buffChargeRing = hit_fx_create( sprite_get( "dspec_charge_ring" ),  20);
 
 crystalRing = hit_fx_create( sprite_get( "crystal_detonatechargering" ),  21);
+crystalPower = hit_fx_create( sprite_get( "crystal_powerring" ),  18);
 
 healReleaseSparkle = hit_fx_create( sprite_get( "taunt2_release_sparkle" ),  15);
 healAuraSparkle = hit_fx_create( sprite_get( "taunt2_aura" ),  30);

@@ -72,9 +72,30 @@ with (hit_fx_obj){
 	}
 }
 
+//Uspecial vfx
+
+with (hit_fx_obj){
+	if (hit_fx == other.ramp){
+		spr_dir = other.ramp_dir;
+	}
+}
+
+if (attack == AT_USPECIAL && state == PS_ATTACK_AIR && window_timer == 0 && window == 1){
+	ramp_x = x + 10;
+	ramp_y = y - 10;
+	spawn_hit_fx(ramp_x, ramp_y, ramp);
+}
+
+with (hit_fx_obj){
+	if (hit_fx == other.chain_gone){
+		spr_dir = other.spr_dir;
+	}
+}
+
 if (attack == AT_FAIR && prev_state == PS_ATTACK_AIR && state == PS_LANDING_LAG && state_timer == 0){
 	spawn_hit_fx(chomp_x, chomp_y, chain_gone);
 }
+
 
 //Lakitu sfx 
 
@@ -102,14 +123,13 @@ if (attack == AT_FAIR && prev_state == PS_ATTACK_AIR && state == PS_LANDING_LAG 
 
 //Dash sfx 
 
-	if (state == PS_DASH_START && idle_state_timer > 10){
+	if (state == PS_DASH_START && ((idle_state_timer > 10)||(prev_state == PS_WALK))){
 		if (state_timer == 1){
 			sound_stop (sound_get("Dash"));
-			sound_play (sound_get("Dash"));
+			sound_play (sound_get("Dash"), false, noone, 1, 0.9+0.01*random_func(10,20,false));
 			idle_state_timer = 0;
  		}
 	}
-
 
 //Turn sfx
 
@@ -220,8 +240,6 @@ if (state == PS_WAVELAND) {
 
 with (oPlayer){
 
-
-
 	if (self!= other){
 		//inked
 		if (state == PS_RESPAWN || debuff_timer = 0){
@@ -263,11 +281,30 @@ with (oPlayer){
 		}
 	
 		if (abs(hsp) < 5 && hsp != 0 && !free){
-			hsp = spr_dir*5
+			if (hsp > 0){
+				hsp = 5
+				//hsp = spr_dir*5
+			}
+
+			if (hsp < 0){
+				hsp = -5
+			}
 		}
 	}
 	if (!bananed){
 		ground_friction = default_friction;
+	}
+}
+
+if (move_cooldown[AT_DSPECIAL] == 0 && banana_hud_timer == 999){
+	banana_hud_timer_active = 1;
+	banana_hud_timer = banana_hud_timer_default;
+}
+	
+if (banana_hud_timer_active == 1){
+	banana_hud_timer--;
+	if (banana_hud_timer == 0){
+		banana_hud_timer_active = 0;
 	}
 }
 
@@ -358,6 +395,16 @@ with (oPlayer){
 			lightning_timer_start = 0;
 			lightning_timer = lightning_recharge;
 			lightning_cooldown_active = 0;
+			set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
+			lightning_hud_timer_active = 1;
+		}
+	}
+
+	if (lightning_hud_timer_active == 1){
+		lightning_hud_timer--;
+		if (lightning_hud_timer == 0){
+			lightning_hud_timer = lightning_hud_timer_default;
+			lightning_hud_timer_active = 0;
 		}
 	}
 

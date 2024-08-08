@@ -9,6 +9,7 @@ sprite_change_offset("bighurt", 51, 58);
 sprite_change_offset("spinhurt", 51, 58);
 sprite_change_offset("crouch", 51, 58);
 sprite_change_offset("walk", 51, 58);
+sprite_change_offset("walkstart", 51, 58);
 sprite_change_offset("walkturn", 51, 58);
 sprite_change_offset("dash", 51, 58);
 sprite_change_offset("dashstart", 51, 58);
@@ -47,6 +48,7 @@ sprite_change_offset("nair", 51, 58, true);
 sprite_change_offset("fair", 27, 58, true);
 sprite_change_offset("bair", 75, 58, true);
 sprite_change_offset("uair", 51, 58, true);
+sprite_change_offset("uair_weak", 51, 58, true);
 sprite_change_offset("dair", 51, 58, true);
 sprite_change_offset("dair_left", 51, 58, true);
 sprite_change_offset("fstrong", 51, 58, true);
@@ -92,6 +94,9 @@ sprite_change_offset("glider_platform", 64, 0);
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("lakitu_spawn", 113, 98);
 
+sprite_change_offset("hud_banana", 28, 5);
+sprite_change_offset("hud_lightning", 28, 5);
+
 //Shyguyless kart
 
 sprite_change_offset("kart_idle", 51, 58);
@@ -100,6 +105,7 @@ sprite_change_offset("kart_bighurt", 51, 58);
 sprite_change_offset("kart_spinhurt", 51, 58);
 sprite_change_offset("kart_crouch", 51, 58);
 sprite_change_offset("kart_walk", 51, 58);
+sprite_change_offset("kart_walkstart", 51, 58);
 sprite_change_offset("kart_walkturn", 51, 58);
 sprite_change_offset("kart_dash", 51, 58);
 sprite_change_offset("kart_dashstart", 51, 58);
@@ -138,6 +144,7 @@ sprite_change_offset("kart_nair", 51, 58, true);
 sprite_change_offset("kart_fair", 27, 58, true);
 sprite_change_offset("kart_bair", 75, 58, true);
 sprite_change_offset("kart_uair", 51, 58, true);
+sprite_change_offset("kart_uair_weak", 51, 58, true);
 sprite_change_offset("kart_dair", 51, 58, true);
 sprite_change_offset("kart_dair_left", 51, 58, true);
 sprite_change_offset("kart_fstrong", 51, 58, true);

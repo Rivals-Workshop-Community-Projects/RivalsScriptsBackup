@@ -66,6 +66,9 @@ with (oPlayer){
         if (blue_time > 0){
         blue_time --;
         }
+        if (blue_time > 600){
+            blue_time = 600;
+        }
                 if (state_cat == SC_AIR_NEUTRAL){
                 can_djump = false;
                 }
@@ -102,7 +105,7 @@ if (!hitpause){
 }
 
 if (!can_bone && !free){
-    if (!instance_exists(bone_spire) || !collision_rectangle(x + 4, y + 2, x - 4, y, bone_spire, false, true)){
+    if (!instance_exists(bone_spire) || !collision_rectangle(x + 32, y + 8, x - 32, y, bone_spire, false, true)){
         can_bone = true;
     }
 }

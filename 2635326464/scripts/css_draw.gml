@@ -37,12 +37,11 @@ alt_name[12] = "Abyss";
 alt_name[13] = "Boo Guy";
 alt_name[14] = "Ghoul Guy";
 alt_name[15] = "Shy Soul";
-alt_name[16] = "Shuichi Saihara";
-alt_name[17] = "Shy Guy (Ninja)";
-alt_name[18] = "Shy Guy (Pastry Chef)";
-alt_name[19] = "Shy Guy (Golden)";
-alt_name[20] = "Red Kart";
-alt_name[21] = "Black Kart";
+alt_name[16] = "Shy Guy (Ninja)";
+alt_name[17] = "Shy Guy (Pastry Chef)";
+alt_name[18] = "Shy Guy (Golden)";
+alt_name[19] = "Red Kart";
+alt_name[20] = "Black Kart";
 
  
 //Patch

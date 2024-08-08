@@ -15,6 +15,7 @@ should_die = false;
 busy = false;
 
 hsp = 0;
+owner = player_id.player;
 
 while(!position_meeting(x,bbox_bottom+1,asset_get("par_block")) && !position_meeting(x,bbox_bottom+1,asset_get("par_jumpthrough"))){
     y++;

@@ -34,7 +34,7 @@ sprite_change_offset("tech", 50, 96);
 sprite_change_offset("jab", 46, 94);
 sprite_change_offset("dattack", 51, 88);
 sprite_change_offset("ftilt", 46, 94);
-sprite_change_offset("dtilt", 40, 68);
+sprite_change_offset("dtilt", 75, 94);
 sprite_change_offset("utilt", 55, 108);
 sprite_change_offset("nair", 47, 80);
 sprite_change_offset("fair", 47, 80);
@@ -64,3 +64,5 @@ sprite_change_offset("nspecial_proj", 150, 135);
 sprite_change_offset("nspecial_proj_rune", 86, 70);
 
 set_victory_theme( sound_get( "music_win_fight" ));
+
+// sprite_change_offset("dtiltold", 40, 68);

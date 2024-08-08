@@ -125,7 +125,7 @@ bubble_y = 8;
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-debug_display = 1;
+debug_display = 0 * get_match_setting(SET_PRACTICE);
 practice = get_match_setting(SET_PRACTICE);
 // debug_display = get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
 hbox_view = get_match_setting(SET_HITBOX_VIS);

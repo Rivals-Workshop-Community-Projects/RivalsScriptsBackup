@@ -1,6 +1,5 @@
 banana_timer++;
 
-
 if (banana_timer >= banana_lifetime || x > room_width || x < 0 || y > room_height || y < 0){
 	state = 2;
 	banana_timer_2 = 99;
@@ -29,15 +28,28 @@ switch(state){
 	//Dropped
 	case 1:
 	{	
-		collision = create_hitbox( AT_DSPECIAL, 1, x, y);
+		collision = create_hitbox(AT_DSPECIAL, 1, x, y);
 		collision.x = x;
 		collision.y = y;
 
-		vsp = 10;
 		can_be_grounded = true;
 		ignores_walls = false;
 
-		if (player_id.hsp > 3 || player_id.hsp < -3){
+		if(!free){
+			hsp = 0;
+		} 
+
+		if (hit_wall){
+			dir = -dir
+		} else if (free) {
+			hsp = dir*10*(1-(banana_timer/(banana_timer+30)));
+		}
+
+		if(vsp < 10){
+			vsp = vsp + 1
+		} else vsp = 10
+
+		if ((player_id.hsp > 3 || player_id.hsp < -3) && banana_timer > 10){
 			collision.can_hit_self = 1;
 		}
 
@@ -57,11 +69,15 @@ switch(state){
 		//spr_dir
 		if (banana_timer_2 == 1){
 			if (place_meeting(x,y,pHurtBox)){
-				nearest1 = instance_nearest(x,y,pHurtBox);
+				nearest1 = instance_nearest(x,y,oPlayer);
 				start_sliding = 1;
 				if (nearest1.x < x){
 					spr_dir = 1;
 				} else spr_dir = -1;
+
+				if(nearest1.hsp == 0){
+					touched_something_standing_still = true
+				}
 			} else
 
 			if (place_meeting(x,y,asset_get("pHitBox"))){
@@ -74,15 +90,22 @@ switch(state){
 
 		//sliding
 			if (start_sliding = 1){
-				if(!free){
-					hsp = spr_dir*4;
-				}
+				if (touched_something_standing_still != true){
+					if(!free){
+						hsp = spr_dir*4
+					}
+				} else hsp = 0;
+
+				vsp = 10;
 			}
-		
-		//regular cooldown
+
+		//normal cooldown
 		if (player_id.disable_banana_cooldown == 1){
 			player_id.move_cooldown[AT_DSPECIAL] = 0;
-		}	else player_id.move_cooldown[AT_DSPECIAL] = 180;
+		} else {
+			player_id.move_cooldown[AT_DSPECIAL] = 180;
+			player_id.banana_hud_timer = 999; //this prevents the hud from looping infinitely
+		}
 
 		if (banana_timer_2 >= 16){
 			instance_destroy(collision);

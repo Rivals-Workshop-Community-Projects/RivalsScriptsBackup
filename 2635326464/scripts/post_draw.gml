@@ -26,7 +26,18 @@ if (attack == AT_NSPECIAL_2){
 	}
 }
 
-//Beeg rune
+
+// Nair glow thingy
+
+if ("has_tricked" in self){
+	if ( (has_tricked == 1) || (has_charged_countdown) || (attack == AT_DATTACK && (window == 2 || window == 3) && has_hit && get_gameplay_time() > 1 && state == PS_ATTACK_GROUND)){
+		gpu_set_fog(true, c_white, 0, 0);
+		draw_sprite_ext(sprite_index, image_index, x, y ,2*spr_dir,2,0,c_white,0.35);
+		gpu_set_fog(false, c_black, 0, 0);
+	}
+}
+
+// Beeg rune
 
 
 if has_rune("L") {

@@ -4,13 +4,13 @@ far_side_attacks[0] = AT_NSPECIAL;
 far_side_attacks[1] = AT_FSPECIAL;
 far_side_attacks[2] = AT_FSTRONG;
 far_side_attacks[3] = AT_USTRONG;
-far_side_attacks[3] = AT_FAIR;
+far_side_attacks[4] = AT_FAIR;
 
 mid_side_attacks[0] = AT_FSTRONG;
 mid_side_attacks[1] = AT_DATTACK;
 mid_side_attacks[2] = AT_FSPECIAL;
 mid_side_attacks[3] = AT_FTILT;
-mid_side_attacks[3] = AT_USTRONG;
+mid_side_attacks[4] = AT_USTRONG;
 
 close_up_attacks[0] = AT_UAIR;
 close_up_attacks[1] = AT_UTILT;

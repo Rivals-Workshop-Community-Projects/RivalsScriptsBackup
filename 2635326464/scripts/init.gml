@@ -167,8 +167,8 @@ air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
-set_victory_bg(sprite_get("victory_background")); // victory_background.png
-set_victory_theme(sound_get("Victory")); // victory_theme.ogg
+set_victory_bg(sprite_get("victorybg"));
+set_victory_theme(sound_get("Victory"));
 
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
@@ -213,6 +213,9 @@ small_sprites = 1;
 idle_state_timer = 0;
 
 air_speed = 0;
+
+//engine sfx
+engine_timer = 0; 
 
 //bomb spr_dir
 bomb_spr_dir = 0;
@@ -269,6 +272,10 @@ lightning_recharge = 90;
 lightning_timer = lightning_recharge;
 lightning_cooldown_active = 0;
 
+lightning_hud_timer_active = 0;
+lightning_hud_timer_default = 10;
+lightning_hud_timer = 10;
+
 //Fstrong check
 shell_spawned = 0;
 
@@ -305,19 +312,19 @@ blur2 = array_create(8);
 blur = array_create(10);
 
 //Uspecial
-ramp_timer = 0;
-ramp_index = 0;
-uspecial_x = 0;
-uspecial_y = 0;
-ramp_start = 0;
-ramp_spr_dir = 1;
 djump_lock_timer_default = 30;
 djump_lock_timer = 30;
 djump_lock_start = 0;
 
 //Dspecial banana_stuff;
+//maybe putting it here solves stuff
 banana_present = 0;
 banana_cooldown_start = 0;
+
+banana_hud_timer_active = 0;
+banana_hud_timer_default = lightning_hud_timer_default;
+banana_hud_timer = lightning_hud_timer
+banana_cooldown_active = 0;
 
 if has_rune("B") {
 	disable_banana_cooldown = 1
@@ -350,12 +357,21 @@ chain_gone = hit_fx_create(sprite_get("chain_gone"), 9);
 chomp_x = 0;
 chomp_y = 0;
 
+//Ramp vfx
+ramp = hit_fx_create(sprite_get("uspecial_ramp"), 36);
+ramp_x = 0;
+ramp_y = 0;
+ramp_dir = 1;
+
 //Spiny shell config
 winner = false;
 winner_x = 0;
 winner_y = 0;
 spiny_launched = 0;
 winner_exists = 0;
+
+sploosh_x = 0;
+sploosh_y = 0;
 
 //Super move
 superTrue = 0;
@@ -454,6 +470,15 @@ steve_death_message = "Mario Kart failed the ultra shortcut";
 
 // Link spear. (determines which spear your char will drop the first time)
 link_spear_drop = 7;
+
+//Yooka & Laylee
+laylee_win_quote = "You used items and still lost? Should've stayed in your own genre!";
+
+//Princess Shroob
+princess_shroob_compat_dialogue = ["Where are you going with such haste?","Those tires and bananas of yours left quite a mess around here.","CLEAN IT OR PERISH!"]
+
+//Miiverse
+ miiverse_post = sprite_get("miiverse");
 
 dracula_speaker[page] = 0;
 dracula_text[page] = "Who is it that dares to enter the unholy realm of...";

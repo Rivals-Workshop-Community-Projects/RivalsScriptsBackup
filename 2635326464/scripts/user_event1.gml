@@ -17,13 +17,13 @@ init_variables(); //this is required. don't touch it.
 //
 add_sprites("airdodge","airdodge_forward","airdodge_backward","airdodge_up","airdodge_back","airdodge_downback","airdodge_downforward","airdodge_upback","airdodge_upforward","crouch","dash","dashstart","dashstop","dashturn","doublejump",
             "idle","jump","jumpstart","land","landinglag","pratfall","parry",
-            "roll_backward","roll_forward","tech","walkturn","walljump","waveland",
+            "roll_backward","roll_forward","tech","walkturn","walkstart","walljump","waveland",
             "walk","phone_open");
 
 //================Attacks================
 //  Base Attacks
 add_sprites("bair","dair","dair_left","dattack","dspecial","dstrong","dtilt","fair","fspecial","fspecial_air","fstrong","fstrong_2",
-            "ftilt","jab","nair","nspecial","nspecial_air","nspecial_stop","nspecial_stop_2","taunt","taunt_walk","uair","uspecial","uspecialair","ustrong","utilt","final_smash");
+            "ftilt","jab","nair","nspecial","nspecial_air","nspecial_stop","nspecial_stop_2","taunt","taunt_walk","uair","uair_weak","uspecial","uspecialair","ustrong","utilt","final_smash");
 
 //=================OTHER=================
 //  hurt sprites

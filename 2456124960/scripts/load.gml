@@ -109,8 +109,11 @@ sprite_change_offset("crystaloutline_large", 99, 99);
 sprite_change_offset("crystal_mask", 49, 49);
 sprite_change_offset("crystal_mask_large", 99, 99);
 sprite_change_offset("usmash_chargeglow", 108, 154);
+sprite_change_offset("usmash_chargeglow_large", 108, 154);
+sprite_change_offset("usmash_chargeglow_power", 108, 154);
 sprite_change_offset("usmash_chargelaunch", 108, 154);
 sprite_change_offset("crystal_detonatechargering", 64, 64);
+sprite_change_offset("crystal_powerring", 64, 64);
 sprite_change_offset("indG", 16, 16);
 
 sprite_change_offset("crystal_shards_small_u", 15, 15);

@@ -16,6 +16,17 @@ if (state == 0){
 }
 
 if (state == 1){
+    if (place_meeting(x, y, asset_get("oPlayer"))){
+        with oPlayer{
+            if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD || state == PS_AIR_DODGE){
+                with other{
+                    if (other.player != owner){
+                    life_timer = 301;
+                    }
+                }
+            }
+        }
+    }
     busy = false;
     create_hitbox(AT_DSPECIAL, 1, x, y + 12);
     life_timer ++;

@@ -4,9 +4,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.0";
+patch_ver = "2.02";
 patch_day = "AUG";
-patch_month = "1";
+patch_month = "4";
  
 var num_alts = 26;
 var alt_cur = get_player_color(player);
@@ -39,7 +39,7 @@ alt_name[20] = "Vaporwave";
 alt_name[21] = "Golden Fool";
 alt_name[22] = "White Mage";
 alt_name[23] = "Riptide";
-alt_name[24] = "Chill Crisp";
+alt_name[24] = "ricE gaming";
 alt_name[25] = "Sunset";
  
  

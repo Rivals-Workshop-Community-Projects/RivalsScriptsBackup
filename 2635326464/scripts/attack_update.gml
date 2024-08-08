@@ -169,6 +169,14 @@ switch(attack){
 	case AT_BAIR:
 	{
 
+		if (image_index == 0){
+			set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 6);
+		}	
+
+		if (image_index == 14){
+			set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 7);
+		}		
+
 		if has_rune("G") {
 			set_attack_value(AT_BAIR, AG_CATEGORY, 2);
 		}
@@ -183,6 +191,10 @@ switch(attack){
 
 	case AT_FAIR:
 	{
+		
+		if (prev_state == PS_ATTACK_AIR && state == PS_LANDING_LAG && state_timer == 0){
+			spawn_hit_fx(chomp_x, chomp_y, chain_gone);
+		}
 
 		if (window == 1){ 
 			set_attack_value(AT_FAIR, AG_LANDING_LAG, 22);
@@ -260,6 +272,12 @@ switch(attack){
 
 	case AT_UAIR:
 	{
+
+		if (window == 1 && window_timer == 1 && lightning_cooldown_active == 1){
+			lightning_timer = lightning_recharge;
+			set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair_weak"));
+		}
+
 		if (window == 2){
 			if (window_timer == 1){
 				take_damage( player, -1, 3 );
@@ -273,18 +291,17 @@ switch(attack){
 			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 		}
 
-		if (window == 3 && window_timer == 1){
+		if (window == 2 && window_timer == 12){
 			lightning_timer_start = 1;
 		}
 
-		if (window == 1 && window_timer == 1 && lightning_cooldown_active == 1){
-			lightning_timer = lightning_recharge;
-
+		if (window == 4){
+			can_wall_jump = true;
 		}
 
 		if (lightning_cooldown_active == 1){
-			set_num_hitboxes(AT_UAIR,1);
-		} else set_num_hitboxes(AT_UAIR,2);
+			set_num_hitboxes(AT_UAIR,2);
+		} else set_num_hitboxes(AT_UAIR,3);
 	}
 	break;
 
@@ -645,6 +662,12 @@ switch(attack){
 			}
 		}
 
+		//dust
+
+		if (((window >= 1 && window <= 7) || (window >= 12 && window <= 14)) && window_timer == 1){
+			spawn_base_dust(x-20*spr_dir, y, "dash")
+		}
+
 		
 	}
 	break;
@@ -670,7 +693,7 @@ switch(attack){
 		if (window == 1 || window == 3 || window == 4 || window == 5 || window == 6){
 
 			if (window_timer == 3){
-				spawn_base_dust(x-20*spr_dir, y, "dash_start")
+				spawn_base_dust(x-22*spr_dir, y, "dash_start")
 				golden_index = golden_index+1;
 			}
 
@@ -814,6 +837,11 @@ switch(attack){
 			iasa_script();
 		}
 
+		if (window_timer mod 2 = 0){
+			spawn_base_dust(x-spr_dir*22, y, "dash")	
+		}
+
+
 		
 	}
 	break;
@@ -829,7 +857,19 @@ switch(attack){
 				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
 			}
 		}
+
+		if (window == 2){
+			if(window_timer mod 4 = 0){
+				spawn_base_dust(x-spr_dir*22, y, "dash")
+			}
+		}
+
+		if (window == 3 && window_timer <= 8 && window_timer mod 4 = 0){
+			spawn_base_dust(x-spr_dir*22, y, "dash")	
+		}
+
 		if (window == 3 && !was_parried){
+
 			if(window_timer == 14){
 				set_state(PS_DASH);
 			}
@@ -876,6 +916,11 @@ switch(attack){
 		if has_rune("C") {
 			set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 13);
 			set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -13);
+		}
+
+		// vfx
+		if (window == 1) {
+			ramp_dir = spr_dir;
 		}
 		
 		can_fast_fall = false;
@@ -1059,6 +1104,7 @@ switch(attack){
 
 		if (window == 1){
 			if (window_timer == 1){
+
 				if (banana_present == 1){
 					window = 2;
 				}
@@ -1066,7 +1112,7 @@ switch(attack){
 
 			if (window_timer == 15){
 				banana_present = 1;
-				banana = instance_create(x-spr_dir*50,y+2,"obj_article1");
+				banana = instance_create(x-spr_dir*60,y-24,"obj_article1");
 			}
 		}
 
@@ -1089,6 +1135,16 @@ switch(attack){
 
 		if has_rune("O") {
 			set_num_hitboxes(AT_TAUNT, 1);
+		}
+
+		if (window == 1){
+			if (hsp == 0) {
+				set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+				set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, sprite_get("taunt_hurt"));
+			} else {
+				set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_walk"));
+				set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, sprite_get("taunt_walk_hurt"));
+			}
 		}
 
 		if (window == 2){
@@ -1117,8 +1173,7 @@ switch(attack){
 		}
 
 
-		if (window = 3 && window_timer == 3) {
-			set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));	
+		if (window = 3 && window_timer == 3) {	
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 9);
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 300);
 

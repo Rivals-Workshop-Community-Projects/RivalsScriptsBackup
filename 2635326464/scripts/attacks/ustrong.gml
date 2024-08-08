@@ -34,7 +34,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_USTRONG, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bob_omb"));
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_MASK, sprite_get("bob_omb_hurt"));
-set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_HSPEED, 6);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_VSPEED, -18);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_GRAVITY, 1);
@@ -45,7 +44,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("bob_omb_hurt"));
-set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.25);
 
 //Explosion
 

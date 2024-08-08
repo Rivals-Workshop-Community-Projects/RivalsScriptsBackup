@@ -68,4 +68,4 @@ set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_SFX, sound_get("Mushroom2"));
 set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_SFX_FRAME, 2);
 
-set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Keep pressing special before the mushroom runs out to increase the charge. Skip the charging by using FSpecial or pressing the attack button. The attack is actually at Extra 1 (The sprite sheet was getting too big).");
+set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Keep pressing special before the mushroom runs out to increase the charge. Skip the charging by using FSpecial or pressing the attack button. The attack is actually at Extra_1 (The sprite sheet was getting too big).");

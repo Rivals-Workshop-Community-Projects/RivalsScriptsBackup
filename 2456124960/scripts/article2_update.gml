@@ -239,7 +239,7 @@ if (connected && player_id.hitpause == true) {
     obj_timer--;
 }
 
-if ((image_index < 0 && obj_timer > 10) || image_index > my_max) {
+if ((image_index < 0 && obj_timer > 2) || image_index > my_max) {
 	player_id.construct = noone;
 	instance_destroy();
     exit;

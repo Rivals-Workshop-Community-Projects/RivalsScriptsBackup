@@ -1,6 +1,11 @@
 test1 = lengthdir_x(2, joy_dir);
 test2 = lengthdir_y(2, joy_dir);
 
+if (shield_pressed && false) {//testing for bg blocks
+    y -= 50;
+    state = PS_IDLE_AIR;
+}
+
 spikeGlowTimer++;
 if (spikeGlowTimer > 180) {
     with (obj_article1) {
@@ -125,15 +130,15 @@ if (taunt_cancel_available == true && ((state != PS_ATTACK_GROUND && state != PS
 
 if (state == PS_ATTACK_GROUND && taunt_down && shield_down) {state = PS_IDLE;}
 
-if (state == PS_RESPAWN && state_timer == 90) {
+if (state == PS_RESPAWN && state_timer == 90 && (has_rune("C"))) {
 	myPlatform = instance_create(x, y - 1, "obj_article_platform");
 	myPlatform.y = floor(myPlatform.y);
 	canMakePlat = 0;
-	myPlatform.juice = 60;
+	myPlatform.juice = 160;
     state = PS_IDLE;
     free = false;
     invincible = true;
-    invince_time = 120;
+    invince_time = 180;
 }
 
 if (state == PS_AIR_DODGE) {

@@ -90,6 +90,9 @@ if (attack == AT_USTRONG)  {
 		if (player_id.bomb_bounced == 1){
 			hit_flipper = 3;
 		}
+		if (hitbox_timer == 2){
+			spawn_hit_fx( x, y, 260);
+		}
 	}
 }
 
@@ -104,6 +107,8 @@ if (attack == AT_NSPECIAL_AIR || attack == AT_USPECIAL_2){
 			hsp = 8;
 		} else if (hsp < 0 && hsp > -8){
 			hsp = -8;
+		} else if ((player_id.hsp < 0 && hsp > 0) || (player_id.hsp > 0 && hsp < 0)){
+			hsp = spr_dir*6
 		} else hsp = spr_dir*8 + player_id.hsp;
 	}
 
@@ -234,6 +239,9 @@ if (attack == AT_FSTRONG_2){
 
 	if (hbox_num == 2){
 		can_hit_self = 1;
+		if (hitbox_timer == 2){
+			spawn_hit_fx(x, y, 143);
+		}
 	}
 }
 

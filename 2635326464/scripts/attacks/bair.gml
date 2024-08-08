@@ -180,5 +180,5 @@ set_hitbox_value(AT_BAIR, 16, HG_HITBOX_X, -52);
 set_hitbox_value(AT_BAIR, 16, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_BAIR, 16, HG_HITBOX_GROUP, 6);
 
-set_attack_value(AT_BAIR, AG_MUNO_ATTACK_MISC_ADD, "Multihit. Also, not a projectile.");
+set_attack_value(AT_BAIR, AG_MUNO_ATTACK_MISC_ADD, "Multihit. The boomerang (which is not a projectile) brings opponents closer to you on its way back.");
 set_attack_value(AT_BAIR, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH)));

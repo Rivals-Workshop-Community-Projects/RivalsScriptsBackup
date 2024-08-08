@@ -13,7 +13,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_jumpair"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 0);

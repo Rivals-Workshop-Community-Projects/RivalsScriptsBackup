@@ -429,6 +429,15 @@ if (objectType == 0) {
             exit;
         }
     }
+    
+    if (player_id.state == PS_RESPAWN || player_id.was_parried == true) {
+        var tempFX = spawn_hit_fx(x, y, player_id.buffChargeSparkle1);  
+        tempFX.vsp = -4;
+        player_id.crystalOut = 0;
+        instance_destroy(hb);
+        instance_destroy();
+        exit;
+    }
 } else if (objectType == 1) {
     obj_timer++;
     hit_lockout--;

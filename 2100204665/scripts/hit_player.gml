@@ -1,7 +1,13 @@
-if (my_hitboxID.attack == AT_NSPECIAL && !hit_player_obj.clone && !hit_player_obj.blue){
+if (my_hitboxID.attack == AT_NSPECIAL && !hit_player_obj.clone && !hit_player_obj.blue && !hit_player_obj.orbd){
     hit_player_obj.blue = true;
     hit_player_obj.blue_time = 600;
     hit_player_obj.blue_id = id;
+}
+
+if (my_hitboxID.attack == AT_NSPECIAL && !hit_player_obj.clone && hit_player_obj.blue && !hit_player_obj.orbd){
+    if (hit_player_obj.blue_time < 600){
+    hit_player_obj.blue_time += 180;
+    }
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL){

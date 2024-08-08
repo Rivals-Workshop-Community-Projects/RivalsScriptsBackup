@@ -765,6 +765,21 @@ switch (attack) {
 			stored_strong_charge = 0;
 			window_timer = 0;
 		}
+		
+		if ((((window >= ustrong_uncharged_hitbox_window)
+			  && (window <= ustrong_uncharged_final_window))
+			 || (window >= ustrong_charged_hitbox_window))
+			&& (!free) && (!was_parried))
+		{
+			// Enter landing lag on contact with the ground
+			set_state(PS_LANDING_LAG);
+			state_timer = 0;
+			hurtboxID.sprite_index = hurtbox_spr;
+			landing_lag_time = 14;
+			window = 0;
+			window_timer = 0;
+			attack_end();
+		}
 		break;
 	case AT_DSTRONG :
 		// Lose charge if you complete the attack mid charge

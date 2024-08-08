@@ -75,7 +75,7 @@ if (attack == AT_NSPECIAL_2){
 //Fspecial trail
 
 shader_start();
-if (attack == AT_FSPECIAL && window > 1){
+if (attack == AT_FSPECIAL && window > 1 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) ){
 for(var m = 0; m < array_length_1d(blur); m++) {
             var _img = blur[m];
             var _percent = 1 - (m / array_length_1d(blur));
@@ -97,26 +97,6 @@ for(var m = 0; m < array_length_1d(blur2); m++) {
 shader_end();
 
 
-//Uspecial ramp
-
-if(ramp_start == 1){
-	ramp_timer++;
-	if((ramp_timer mod 2) == 0){
-		ramp_index++
-	}
-
-
-	if (ramp_spr_dir == 1){
-		draw_sprite(sprite_get("uspecial_ramp"), ramp_index, uspecial_x, uspecial_y);
-	} else draw_sprite(sprite_get("uspecial_ramp2"), ramp_index, uspecial_x, uspecial_y);
-
-	if(ramp_timer == 33){
-		ramp_start = 0;
-		ramp_timer = 0;
-		ramp_index = 0;
-	}
-}
-
 // Uair lightning
 
 if (attack == AT_UAIR && state == PS_ATTACK_AIR && lightning_cooldown_active == 0){
@@ -125,6 +105,3 @@ if (attack == AT_UAIR && state == PS_ATTACK_AIR && lightning_cooldown_active == 
 		draw_sprite(sprite_get("lightning"), lightning_index, x, y-60);
 	}
 }
-
-
-user_event(12);

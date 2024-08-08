@@ -11,13 +11,14 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("ItemBehind"));
 
+//this one's not a thing anymore
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("ItemBehind"));
 
-set_num_hitboxes(AT_DSPECIAL, 0);
+set_num_hitboxes(AT_DSPECIAL, 0); //we don't use that anymore
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 1);
@@ -43,4 +44,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 
-set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Press DSpecial again to drop the banana on the ground. You can't summon a banana for 3 seconds after the previous one despawned. It blocks attacks and trips opponents (and you). Stepping on it while moving causes a slide.");
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "You can't summon a banana for 3 seconds after the previous one despawned. It blocks attacks and trips opponents (and you). Stepping on it while moving causes a slide.");
