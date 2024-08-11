@@ -56,7 +56,7 @@ set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-//set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 2);
+set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 2);
 
 // Swing Hit 2
 
@@ -78,7 +78,7 @@ set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-//set_hitbox_value(AT_DAIR, 2, HG_TECHABLE, 2);
+set_hitbox_value(AT_DAIR, 2, HG_TECHABLE, 2);
 
 // Swing Hit 3
 
@@ -100,7 +100,7 @@ set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-//set_hitbox_value(AT_DAIR, 3, HG_TECHABLE, 2);
+set_hitbox_value(AT_DAIR, 3, HG_TECHABLE, 2);
 
 // Swing Hit 4
 
@@ -122,7 +122,7 @@ set_hitbox_value(AT_DAIR, 4, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DAIR, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-//set_hitbox_value(AT_DAIR, 4, HG_TECHABLE, 2);
+set_hitbox_value(AT_DAIR, 4, HG_TECHABLE, 2);
 
 // Final Hit
 

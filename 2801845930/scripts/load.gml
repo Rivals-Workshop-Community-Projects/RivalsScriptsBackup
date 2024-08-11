@@ -78,7 +78,6 @@ sprite_change_offset("pipishud", 15, 18);
 sprite_change_offset("spamhead", 18, 18);
 sprite_change_offset("spamheadgreen", 18, 18);
 sprite_change_offset("shrinking", 75, 75);
-
 // Other Sprites
 
 sprite_change_offset("spark", 17, 17);
@@ -90,5 +89,3 @@ sprite_change_offset("intro", 92, 114);
 sprite_change_offset("eyepink", 9, 13);
 sprite_change_offset("eyeyellow", 9, 13);
 sprite_change_offset("textbox", 58, 68);
-
-sprite_change_offset("new_meter", 35, 32);

@@ -149,7 +149,8 @@ Hikaru_Title = "Overgrown Reaper";
 arena_title = "The Overgrown Reaper";
 //Soulbound Conflict
 battle_text = "* Vines prevents you from going further."
-
+//Adventure Mode
+hit_player_event = 0;
 //Feri
 sprite_change_offset("costume_anthem", 84, 114);
 feri_costume = sprite_get("costume_anthem");

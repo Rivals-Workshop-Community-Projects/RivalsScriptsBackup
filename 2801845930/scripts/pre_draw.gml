@@ -1,6 +1,6 @@
 // pre-draw
 
-if (SpamNeoPlayerCount <= 2) {
+//if (SpamNeoPlayerCount <= 2) {
 	if (SpamNeoPlaytest) {
 	} else {
 		switch (SpamNeoColor) {
@@ -874,4 +874,4 @@ if (SpamNeoPlayerCount <= 2) {
 		}
 		
 	}
-}
+//}

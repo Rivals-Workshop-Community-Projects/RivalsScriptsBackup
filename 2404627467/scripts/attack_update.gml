@@ -43,7 +43,7 @@ if (attack == AT_UTILT) {
     	else {
     		//keep the grabbed player in hitstop until the grab is complete.
     		grabbed_player_obj.hitstop = 2;
-    		grabbed_player_obj.hitpause = true;
+    		grabbed_player_obj.hitpause = grabbed_player_obj.object_index == obj_stage_article ? 3 : true;
     		
     		//if this is the first frame of a window, store the grabbed player's relative position.
     		if (hitstop <= hitstop_full) {
@@ -240,7 +240,7 @@ if (attack == AT_DAIR) {
 			}
 			//keep the grabbed player in hitstop until the grab is complete.
 			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitpause = true;
+			grabbed_player_obj.hitpause = grabbed_player_obj.object_index == obj_stage_article ? 3 :true;
 			
 			//if this is the first frame of a window, store the grabbed player's relative position.
 			if (window_timer <= 1) {
