@@ -72,7 +72,7 @@ hitstun_grav = .51;
 knockback_adj = 1.05;//1.09 //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 11;
+prat_land_time = 13;//11
 wave_land_time = 6;
 wave_land_adj = 1.18; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .3; //grounded deceleration when wavelanding
@@ -121,9 +121,9 @@ land_sound = asset_get("sfx_land_med2");
 landing_lag_sound = asset_get("sfx_land_heavy");
 waveland_sound = asset_get("sfx_waveland_fors");
 //jump_sound = asset_get("sfx_jumpground");
-jump_sound = sound_get("na_jump2");
+jump_sound = sound_get("na_jump3");
 //djump_sound = asset_get("sfx_jumpair");
-djump_sound = sound_get("na_doublejump2");
+djump_sound = sound_get("na_doublejump3");
 //air_dodge_sound = asset_get("sfx_quick_dodge");
 air_dodge_sound = asset_get("sfx_boss_shine");
 

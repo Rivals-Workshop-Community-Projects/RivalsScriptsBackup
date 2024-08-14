@@ -7,6 +7,10 @@ na_hsp_h[0]=na_hsp_h[1];
 na_hsp_h[1]=hsp;
 */
 
+/*if (place_meeting(x+(50*spr_dir), y-18, asset_get("par_block"))){
+	print("yea")
+}*/
+
 if (get_player_color( player ) == 10) {
 	init_shader();
 }

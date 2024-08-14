@@ -70,7 +70,7 @@ if (state == 0){
 	
 	
     if (state_timer == state_end){
-		cooldown = 18;//35//25
+		cooldown = 12;//35//25
         state = 1;
         state_timer = 0;
 		mode = 1;

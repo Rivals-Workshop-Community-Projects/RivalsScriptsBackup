@@ -10,15 +10,15 @@ set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 2);
 //window 2 is a buffer 
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);//8
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED, -4.5);//-5.5
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED, -2.5);//-5.5//-4.5
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 3);//2
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 
 

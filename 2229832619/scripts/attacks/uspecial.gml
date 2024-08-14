@@ -20,8 +20,8 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 26);//32
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
-//ready
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 10);//3
+//ready (angle is locked)
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 12);//3//10
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);

@@ -18,6 +18,20 @@ if (attack==AT_DTILT||
 
 if (attack==AT_JAB){
 	was_parried = false;
+	if (window==1 && !hitpause){
+		if (window_timer==3){
+			sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.4)
+		}
+	}
+}
+
+if (attack==AT_FAIR){
+	if (window==1 && !hitpause){
+		if (window_timer==9){
+			sound_play(asset_get("sfx_ice_on_player"),false,noone,0.6,1.5)
+			sound_play(asset_get("mfx_result_expand"),false,noone,0.5,1.5)
+		}
+	}
 }
 
 if (attack==AT_DAIR){
@@ -62,7 +76,12 @@ if (attack==AT_DAIR){
 			sound_stop(sound_get("swing2"));
 			sound_play(sound_get("EnemySword"));
 			sound_play(sound_get("metalhit"));
-			spawn_hit_fx( x+(60*spr_dir), y-14, 151 );
+			if (instance_number(oTestPlayer) > 0) {//if playtest
+				spawn_hit_fx( x+(60*spr_dir), y-14, 13 );
+				//print("yeah")
+			}else{
+				spawn_hit_fx( x+(60*spr_dir), y-14, 153 );
+			}
 			destroy_hitboxes();
 		}
 	}
@@ -73,6 +92,7 @@ if (attack==AT_DAIR){
 				hsp = 6*spr_dir;//-3.5
 				vsp = dairvsp/1.5;
 				sound_stop(sound_get("metalhit"));
+				sound_play(sound_get("metalhit"),false,noone,0.7);
 				sound_play(sound_get("bounce"));
 				dair_mark = true;
 			}else if (((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down))&&!free){
@@ -80,6 +100,7 @@ if (attack==AT_DAIR){
 				hsp = -5*spr_dir;//-3.5
 				vsp = dairvsp/1.3;
 				sound_stop(sound_get("metalhit"));
+				sound_play(sound_get("metalhit"),false,noone,0.7);
 				sound_play(sound_get("bounce"));
 				//dair_mark = true;
 			}else{
@@ -248,7 +269,7 @@ if (attack == AT_NSPECIAL){
 		if (window_timer==1){
 			hsp = hsp/1.75;
 			nsp_hsp_storage = hsp;
-			nsp_vsp_storage = (free)?vsp:-7;
+			nsp_vsp_storage = (free)?vsp:-7;//-7
 		}
 	}
 	/*
@@ -302,7 +323,7 @@ if (attack == AT_NSPECIAL_AIR){
 		hsp=nsp_hsp_storage;
 		vsp=nsp_vsp_storage;
 		if (!free){
-			nsp_vsp_storage = -8;
+			nsp_vsp_storage = -4;//-8
 		}
 	}else{
 		can_wall_jump = true;
@@ -383,6 +404,9 @@ if (attack == AT_FSPECIAL){
 		*/
 	}
 	if (window==7){
+		if (window_timer==1){
+			move_cooldown[AT_FSPECIAL] = 8;
+		}
 		iasa_script()
 	}
 }
@@ -535,7 +559,7 @@ if (attack == AT_USPECIAL){
 			}
 			*/
 		}
-		if (window_timer==9){
+		if (window_timer==11){
 			sound_stop(sound_get("dimensional"));
 			sound_play(sound_get("fastslash"), false, noone, 0.9, 1.3);
 			hsp_decide = 0;
@@ -583,7 +607,7 @@ if (attack == AT_USPECIAL){
 	if (window==5&&!hitpause){
 		if (window_timer==1){
 			var usp_angle_e = ((usp_angle + ((spr_dir)?0:180))*spr_dir) / 180 * -3.14;
-			var disp_y = 38;
+			var disp_y = 32;//38
 			var hbdisp = 0;
 			var hbtx = 0;
 			var hbty = 0;

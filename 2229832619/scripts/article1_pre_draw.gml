@@ -20,6 +20,10 @@ shader_end();
 maskHeader();
 draw_self();
 maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
 
 if (get_player_color(player) == 11){
 draw_sprite_tiled_ext(sprite_get("genesisfield_g"), 0, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
@@ -30,6 +34,8 @@ draw_sprite_tiled_ext(sprite_get("genesisfield"), 0, view_get_xview()+player_id.
 if (get_player_color(player) == 20){
 draw_sprite_tiled_ext(sprite_get("genesisfield_s"), 0, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
 }
+
+		}
 
 //draw_sprite_tiled_ext(sprite_get("genesisfield"), 1, view_get_xview()+player_id.giy_timer, view_get_yview()+player_id.giy_timer, 2, 2, c_white, 1)
 
@@ -66,7 +72,14 @@ with(player_id){shader_start();}
 // Restores normal drawing parameters
 //================================================================================
 {
-    gpu_set_alphatestenable(false);
-    gpu_set_blendmode(bm_normal);
-    draw_set_alpha(1);
+if instance_number(oTestPlayer) > 0 {
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false, false, false, true);
+    draw_rectangle_color(0, 0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+}
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+gpu_set_blendenable(1);
+gpu_set_colorwriteenable(true,true,true,true);
 }

@@ -75,8 +75,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 60);
 set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 77);
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 12);//8//10
-set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 63);
-set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 90);//63??????????
+set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 6);//obsolete
 set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8.2);//6//7.8
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);//0.7

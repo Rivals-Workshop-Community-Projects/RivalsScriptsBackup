@@ -83,6 +83,45 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.2 - (2024 Aug 14)"
+		patch_note_text[i++] = 
+		"v3.2 - (2024 Aug 14)
+		[b]additions[/b]
+		- nothin...sorry
+
+		[b]changes[/b]
+		- NSPECIAL vertical jump is much, much lower now. animation timings has been kinda adjusted to fit this.
+		- surprise change... jump and doublejump sfx has been re-mixed. i just listened to it now and i felt it was kinda goofy? so i made it a bit more serious, while still being mostly the same.
+		- FAIR and JAB swing now has some sound effects mixed in
+
+		[b]fixes[/b]
+		- FIXED THE ISSUE WHERE SPECIAL ALT COLOR BUBBLES BROKE PLAYTEST VISUALS, YEA BABEY!!!!!!
+		- FIXED THE ISSUE WHERE SPECIAL ALT COLOR BUBBLES WOULD DISPLAY THE PATTERN FOR LIKE 1 FRAME ON SPAWN, YEA BABEY!!!!!!
+		- FIXED THE ISSUE WHERE USING N/A DAIR ON ''BIG'' PLAYTEST LIKE ONLINE PLAYTEST CRASHES THE GAME!!!!! YEA BABEY!!!!!!!!!!!
+		-- i always thought it had something to do with the collision, but apparently some shovel knight HFX just crashes on spawn.
+		-- i just made it spawn a different HFX when in big playtest. not perfect, but it works
+
+		[b]balances[/b]
+		-- -- idk
+		- DSTRONG ... middle hitbox angle is now 90 (63???????? -> 90)
+		- USPECIAL ... dash hitbox location is vertically higher ?? dunno... it behaves weird
+		-- -- beneficial
+		- DATTACK ... in accordance to the other change in counterplay section, dattack main hit is now larger in body's direction, by like 10 pixels (60 -> 70)
+		- JAB ... endlag reduced by 3 frames
+		- UAIR ... landinglag value reduced by 3 (10 -> 7)
+		- DAIR ... did you know that the endlag on bounce was much faster if you held forward or back? well, i've decided to make it consistent thru all versions. the normal bounce version is now faster by a whole 5 frames!!
+		-- -- counterplay
+		- UAIR ... main hit (aerial opponent) knockback growth decreased (0.78 -> 0.65)
+		- DATTACK ... hitbox creation frame delayed by 2 frames, it now spawns frame 5 (3 -> 5)
+		- DAIR ... the massive circular hitbox after bouncing is now smaller by like 12 pixels (116 -> 104)
+		- USPECIAL ... the startup right before you do the big recovery dash has been increased by 2 (10 -> 12)
+		- pratland duration increased by 2 frames (11 -> 13)
+
+		[b]notes[/b]
+		thanks for all the players especially spiderboi for the feedback!
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v3.1b - (2024 Feb 08)"
 		patch_note_text[i++] = 
 		"v3.1 ~ the hotfix 2 - (2024 Feb 08)

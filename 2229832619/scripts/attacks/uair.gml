@@ -1,7 +1,7 @@
 set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);//10
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
@@ -47,7 +47,7 @@ set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8);//6//5
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 64);//67
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5.5); //5//4
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.78); //0.9
+set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.65); //0.9//0.78
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8.5); //8
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.7);//0.6
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 301);
@@ -77,7 +77,7 @@ set_hitbox_value(AT_UAIR, 2, HG_GROUNDEDNESS, 1);
 set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("hit4"));
 
-//aerial
+//body hit
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 3);

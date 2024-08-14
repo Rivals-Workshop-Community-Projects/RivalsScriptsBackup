@@ -18,6 +18,8 @@ hbox_got_hit = -4;
 void_range = 0;
 disable_range = 0;
 
+mask_wait = 2;
+
 free = false;
 can_be_grounded = false;
 ignores_walls = false;

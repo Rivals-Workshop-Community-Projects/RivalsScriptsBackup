@@ -1,5 +1,17 @@
 // pre-draw
 
+/*
+if (state==PS_AIR_DODGE||state==PS_ROLL_BACKWARD||state==PS_ROLL_FORWARD||state==PS_TECH_BACKWARD||state==PS_TECH_FORWARD){
+	var fog_save = gpu_get_fog();
+		var make_color_a = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3), get_color_profile_slot_g( get_player_color(player), 3), get_color_profile_slot_b( get_player_color(player), 3));
+		var make_color_b = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 2), get_color_profile_slot_g( get_player_color(player), 2), get_color_profile_slot_b( get_player_color(player), 2));
+	gpu_set_fog(true, make_color_b, 0, 1);
+		draw_sprite_ext(sprite_index,image_index,x-hsp*2,y-vsp*2,spr_dir,1,0,-1,1)
+	gpu_set_fog(true, make_color_a, 0, 1);
+		draw_sprite_ext(sprite_index,image_index,x-hsp*1,y-vsp*1,spr_dir,1,0,-1,1)
+	gpu_set_fog(fog_save[0],fog_save[1],fog_save[2],fog_save[3]);
+}*/
+
 
 
 if (attack == AT_USPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
