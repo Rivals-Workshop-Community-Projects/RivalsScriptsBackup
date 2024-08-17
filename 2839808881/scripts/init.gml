@@ -241,6 +241,24 @@ grab_timer = 0;
 grab_par = 0;
 grab_tres = 0;
 
+copyAbilityNames = ["None",
+"Fire",
+"Beam",
+"Ranger",
+"Fighter",
+"Sword",
+"Water",
+"Leaf",
+"Ice",
+"Tornado",
+"Bomb",
+"Mike",
+"Abyss",
+"ESP",
+"Drill",
+"Spark"];
+copyAbilityActuallyHasTimer = 0;
+
 ability_get_fx = hit_fx_create(sprite_get("fx_ability_get"), 27);
 ability_get_fx_fast = hit_fx_create(sprite_get("fx_ability_get"), 18);
 spit_fx = hit_fx_create(sprite_get("fx_nspecial_fire"), 12);

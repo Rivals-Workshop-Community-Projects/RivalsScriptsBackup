@@ -1,68 +1,9 @@
 //update.gml
 
-/*
-//Sleep Kirby Hat Offsets
-if (free){
-	//Air Hat Offsets
-	sleep_kirby_hat_offset_x = 0; //
-	sleep_kirby_hat_offset_y = -8; //
-	sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
-	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
-	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
-} else if (!free){
-	//Grounded Hat Offsets
-	sleep_kirby_hat_offset_x = 2; //
-	sleep_kirby_hat_offset_y = -6; //
-	sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
-	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
-	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
-}
-*/
-
-/*
-//Voiced Mode
-if (normal_voiced_toggle == 1){
-	voiced = 1
-} else if (normal_voiced_toggle == 0){
-	voiced = 0
-}
-*/
-
 voiced = get_synced_var( player );
-
 
 if (state == PS_DOUBLE_JUMP && state_timer == 0){
 	sound_play(sound_get("sfx_jump"), false, noone, 1, 1.35);
-}
-
-
-if (fair_cheat_active == true){
-
-	//very funy
-
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 12);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 270);
-	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.9);
-	
-	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 12);
-	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 270);
-	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, 0.9);	
-} else {
-
-	//not very funy (big sad)
-
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 60);
-	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.65);	
-	
-	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 70);
-	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, 0.7);	
-	
 }
 
 //Setting Victory Background

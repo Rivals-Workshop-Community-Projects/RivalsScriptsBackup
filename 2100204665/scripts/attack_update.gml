@@ -157,6 +157,7 @@ switch (attack){
         if (instance_exists(bone_spire)){
             bone_spire.state = 3;
             bone_spire.state_timer = 0;
+            bone_spire.hitpause_time = 0;
         }
         if (!can_bone && window_timer == 11){
             set_state(PS_PRATFALL);

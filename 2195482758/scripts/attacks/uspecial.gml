@@ -63,7 +63,7 @@ set_window_value(AT_USPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_CUSTOM_AIR_FRICTION, .2);
 
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -147,7 +147,7 @@ set_hitbox_value(AT_USPECIAL, 6, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE, 83);
 set_hitbox_value(AT_USPECIAL, 6, HG_BASE_KNOCKBACK, 11.5);
-set_hitbox_value(AT_USPECIAL, 6, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_USPECIAL, 6, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(AT_USPECIAL, 6, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

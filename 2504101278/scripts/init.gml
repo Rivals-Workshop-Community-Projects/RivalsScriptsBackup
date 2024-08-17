@@ -3,7 +3,7 @@ crouchbox_spr = sprite_get("void_crouch_hurtbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = sprite_get("void_hitstun_hurtbox");
 
-char_height = 70;
+char_height = 76;
 idle_anim_speed = .23;
 crouch_anim_speed = .1;
 walk_anim_speed = .23;
@@ -43,10 +43,10 @@ max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .2;
 hitstun_grav = .51
-knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 14;
+prat_land_time = 20;
 wave_land_time = 9;
 wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .06; //grounded deceleration when wavelanding
@@ -148,6 +148,8 @@ ncode2 = " Gentle breezes? Treats? He may even dream again... "
 ncode3 = " a dream of friends reunited! "
 has_fail = true;
 fail_text = "Your efforts were null and Void";
+kf_custom_icon = sprite_get("ability_void");
+kf_hud_name = "Astral Birth Void";
 
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.

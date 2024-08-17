@@ -1064,7 +1064,7 @@ switch(attack){
 		}
 		
 		if (window == 5){
-		
+			hud_offset = 106;
 			if (tauntAbilitySelectMenuCurr < 0){
 				tauntAbilitySelectMenuCurr = 15
 			}

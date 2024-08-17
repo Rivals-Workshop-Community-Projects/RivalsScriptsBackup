@@ -11,14 +11,15 @@ draw_sprite(spr_hud_plusminus, species_id, temp_x + 166, temp_y - 16);
 draw_sprite(spr_hud_baton, !nspecial_can_use_baton, temp_x + 186, temp_y - 14);
 
 if (is_solo_player) {
+    if (!visual_low_quality) {
+        draw_sprite(spr_active_hud_back, 0, inner_hud_x, inner_hud_y);
+        draw_sprite_part(spr_active_hud, species_id + 2 * visual_hud_icon_hurt, -visual_hud_icon_offset_x, 4, 48, 32, inner_hud_x, inner_hud_y);
+    }
     shader_end();
     exit;
 }
 
 var teammate_exists = instance_exists(teammate_player_id);
-
-
-
 
 if (instance_exists(teammate_player_id)) {
     with (teammate_player_id) {
@@ -41,3 +42,5 @@ else if (!visual_low_quality) {
 }
 shader_end();
 //draw_sprite_part(spr_active_hud, (!species_id) + 2 * (teammate_hurt >= 1), -teammate_offset_x, 2 * (teammate_hurt != 2), 48, 32, inner_hud_x, inner_hud_y);
+
+

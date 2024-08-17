@@ -7,6 +7,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_NSPECIAL){
 	
 	can_fast_fall = window > 1 && window < 3;
+	fall_through = from_dspecial && window < 2;
 	
 	// Cap fall speed
 	vsp = min(vsp,3);
@@ -75,7 +76,7 @@ if (attack == AT_NSPECIAL){
 	// Reset angle
 	if(window == 1 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	{
-		firecracker_angle = default_firecracker_angle;
+		firecracker_angle = free ? aerial_default_firecracker_angle : default_firecracker_angle;
 		fc_count = 1;
 		fc_smoketimer = 6;
 		fc_backspin = false;
@@ -104,6 +105,11 @@ if (attack == AT_NSPECIAL){
 		if(window < 2)
 		{
 		firecracker_angle = joy_dir;
+		// Clamp launch angle
+		var AngleIncrement = 15;
+		
+		firecracker_angle = round(firecracker_angle/AngleIncrement);
+		firecracker_angle *= AngleIncrement;
 	   
 	   // Manage facing left and pulling back
 		if(firecracker_angle > 80 && firecracker_angle < 270 && spr_dir == -1)
@@ -336,6 +342,10 @@ if (attack == AT_NSPECIAL){
 		//throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
 		throw_speed = firecracker_speed;
 		
+
+		
+
+		
 		// Set firecracker speed
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.4) + (vsp* 0.5)); //(fc_bunt ? 1.4 : 0.5
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, throw_speed * dcos(firecracker_angle));
@@ -381,6 +391,8 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_FSPECIAL){
 	
+	fall_through = from_dspecial && !has_hit && window < 5;
+	
 	if(window == 1)
 	{
 		should_set_sprite_to_spin = false;
@@ -390,6 +402,16 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
+			
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 12);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, 6);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 8);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 6);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
+			
 			fspec_yoff = 75;
 			fspec_xoff = -10;
 		}
@@ -397,6 +419,16 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
+			
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, free?-12:0);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, free?-6:0);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 8);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 6);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
+			
 			fspec_yoff = -55;
 			fspec_xoff = -15;
 		}
@@ -404,6 +436,27 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air"));
+			
+			var holding_back = ( ((joy_dir > 135 && joy_dir < 225 || left_stick_down) && spr_dir == 1) || ((joy_dir > 315 || joy_dir < 45 || right_stick_down) && spr_dir == -1) )
+			// temp
+			holding_back = false;
+
+			if(holding_back)
+			{
+				set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 4);
+				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 3);
+			}
+			else
+			{
+				reset_window_value(AT_FSPECIAL,3,AG_WINDOW_HSPEED);
+				reset_window_value(AT_FSPECIAL,4,AG_WINDOW_HSPEED);
+			}
+			reset_window_value(AT_FSPECIAL,4,AG_WINDOW_VSPEED);
+			reset_window_value(AT_FSPECIAL,3,AG_WINDOW_VSPEED);
+			reset_window_value(AT_FSPECIAL,3,AG_WINDOW_VSPEED_TYPE);
+			reset_window_value(AT_FSPECIAL,4,AG_WINDOW_VSPEED_TYPE);
+			reset_window_value(AT_FSPECIAL,3,AG_WINDOW_HSPEED_TYPE);
+			reset_window_value(AT_FSPECIAL,4,AG_WINDOW_HSPEED_TYPE);
 		}
 		
 		// Whiff hitboxes
@@ -636,8 +689,8 @@ if (attack == AT_FSPECIAL){
 	
 					 // Play sound and hitpause
 					 sound_play(sound_get("tenru_grab"));
-					 hitstop_full = 6;
-			    	 hitstop = 6;
+					 hitstop_full = 2;
+			    	 hitstop = 2;
 			    	 hitpause = true;
 					 
 					 // Set window
@@ -653,11 +706,10 @@ if (attack == AT_FSPECIAL){
 			tempProj = noone;
 		}
 	}
-
+	// Cracker boost
 	if(grabbedProj != noone && caught_projectile)
 	{
-		
-		if((shield_down || special_down ) && !hitpause)
+		if(!hitpause)
 		 {
 		 	// Temp properties while grabbed
 			SetTempFirecrackerVariables(grabbedProj,true);
@@ -837,7 +889,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	// the game throws a million error messages when a hitbox that is grabbed
     	// is destroyed. So, I'd rather have an ugly back end than an ugly front end.
     	
-    	
+    	hsp=0;
+    	vsp=0;
     	
     	// Variables needed for grabs
     	break_grab = false;
@@ -848,12 +901,25 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	
     	// Grabbed player properties
     	if(!grabbed_solid)
-    	with(grabbedid)
     	{
-			ungrab = 0;
-        	invincible = false;
+    		djumps = 0;
+	    	with(grabbedid)
+	    	{
+				ungrab = 0;
+	        	invincible = false;
+	    	}
     	}
      
+    	// Reset movement windows
+        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 0);
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 0);
+		
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 0);
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, 0);
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 0);
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 0);
 
         
         
@@ -1320,6 +1386,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 // Uspecial main
 if (attack == AT_USPECIAL){
 	
+	fall_through = from_dspecial && !has_hit;
+	
     // Ground attributes
 	if(state == PS_ATTACK_GROUND && window_timer == 1 && window == 2)
 	{
@@ -1683,7 +1751,7 @@ if (attack == AT_USPECIAL){
 		true,
 		true );
 		
-    	if(tempSolid == noone || (special_down || shield_down)) 
+    	if(tempSolid == noone) 
     	{
     		create_hitbox( AT_USPECIAL, 5, floor(x), floor(y));
     		create_hitbox( AT_USPECIAL, 7, floor(x), floor(y));
@@ -2023,6 +2091,8 @@ if (attack == AT_DSPECIAL){
 		hsp *= 0.5;
 		djump_speed = original_djump_speed * 1.2;
 	}
+	
+	// Attack cancel
 	if((window > 2 || (window == 2 && window_timer > cancelwindow)) && (attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
 	{
 		window = 4;
@@ -2045,24 +2115,24 @@ if (attack == AT_DSPECIAL){
     }
     
     // Double hop
-	if(!free && window > 2 && special_down && dspec_big_flip == 0)
-	{	
-		// Reverse
-		if(left_down) spr_dir = -1;
-		if(right_down) spr_dir = 1;
+	// if(!free && window > 2 && special_down && dspec_big_flip == 0)
+	// {	
+	// 	// Reverse
+	// 	if(left_down) spr_dir = -1;
+	// 	if(right_down) spr_dir = 1;
 		
-		// Reverse w/ joystick
-		if(!joy_pad_idle)
-		{
-			if(joy_dir > 90 && joy_dir < 270) spr_dir = -1;
-			if(joy_dir < 90 || joy_dir > 270) spr_dir = 1;
-		}
+	// 	// Reverse w/ joystick
+	// 	if(!joy_pad_idle)
+	// 	{
+	// 		if(joy_dir > 90 && joy_dir < 270) spr_dir = -1;
+	// 		if(joy_dir < 90 || joy_dir > 270) spr_dir = 1;
+	// 	}
 		
-		move_cooldown[AT_DSPECIAL] = 0;
-		dspec_big_flip = 1;
-		window = 1;
-		window_timer = get_window_value(AT_DSPECIAL,1,AG_WINDOW_LENGTH)-3;
-	}
+	// 	move_cooldown[AT_DSPECIAL] = 0;
+	// 	dspec_big_flip = 1;
+	// 	window = 1;
+	// 	window_timer = get_window_value(AT_DSPECIAL,1,AG_WINDOW_LENGTH)-3;
+	// }
     
     // // Super armor
     // if(window == 2 && window_timer <= 5)
@@ -2101,6 +2171,7 @@ if (attack == AT_AIR_DSPECIAL){
 		ignoring_projectiles = false;
 	}
 	
+
 	
 	// Wrastor momentum stop
 	if(window == 2 && window_timer == 1 || (window == 1 && (from_dspecial || from_uspecial)))
@@ -2173,7 +2244,8 @@ if (attack == AT_AIR_DSPECIAL){
 	
 	can_wall_jump = (window == 2 && window_timer >= CancelWindow);
 	
-	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed)) || (special_pressed && !(down_down))) && (window == 2 && window_timer >= CancelWindow))
+	
+	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed)) || (special_pressed && !(down_down)) || (attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down)) && (window == 2 && window_timer >= CancelWindow))
 	{
 		if(shield_pressed && !has_airdodge)
 		{
@@ -2200,7 +2272,7 @@ if (attack == AT_AIR_DSPECIAL){
 	
 	
 	 // Grabbing projectile
-	if(grabbedProj == noone && (window == 2) && !shield_down && !ignoring_projectiles)
+	if(grabbedProj == noone && (window == 2) && !ignoring_projectiles)
 	{
 		
 		// First, get nearby hitboxes
@@ -2811,76 +2883,76 @@ if(attack == AT_UTILT){
 	}
 	
 	// 1st cancel
-	if((window == 3 || (window == 2 && window_timer == 4)) && (attack_down || up_stick_down) && window_timer < 6 && !was_parried)
-	{
-		window = 4;
-		window_timer = 0;
-		clear_button_buffer( PC_ATTACK_PRESSED );
-		has_hit = 0;
-		jump_queue = 0;
-	}
+	// if((window == 3 || (window == 2 && window_timer == 4)) && (attack_down || up_stick_down) && window_timer < 6 && !was_parried)
+	// {
+	// 	window = 4;
+	// 	window_timer = 0;
+	// 	clear_button_buffer( PC_ATTACK_PRESSED );
+	// 	has_hit = 0;
+	// 	jump_queue = 0;
+	// }
 	
-	// Loop spin
-	if(window == 8 && (attack_down || up_stick_down) && window_timer > 0 && has_hit == false && !was_parried)
-	{
-		window = 6;
-		window_timer = 0;
-		uptilt_loop = true;
-		spins++;
-	}
+	// // Loop spin
+	// if(window == 8 && (attack_down || up_stick_down) && window_timer > 0 && has_hit == false && !was_parried)
+	// {
+	// 	window = 6;
+	// 	window_timer = 0;
+	// 	uptilt_loop = true;
+	// 	spins++;
+	// }
 	
-	// Loop finisher
-	if(uptilt_loop && has_hit)
-	{
-		uptilt_loop = false;
-		window = 6;
-		window_timer = 0;
-	}
+	// // Loop finisher
+	// if(uptilt_loop && has_hit)
+	// {
+	// 	uptilt_loop = false;
+	// 	window = 6;
+	// 	window_timer = 0;
+	// }
 	
-	// 2nd cancel
-	if((!hitpause && window < 10 && window > 3 && (attack_pressed || (!utilt_stick && up_stick_down) ) && window_timer < 15) || (has_hit != false && window == 9 && window_timer > 0))
-	{
-		window = 10;
-		window_timer = 0;
-		sound_play(asset_get("sfx_swipe_medium1"));
-	}
+	// // 2nd cancel
+	// if((!hitpause && window < 10 && window > 3 && (attack_pressed || (!utilt_stick && up_stick_down) ) && window_timer < 15) || (has_hit != false && window == 9 && window_timer > 0))
+	// {
+	// 	window = 10;
+	// 	window_timer = 0;
+	// 	sound_play(asset_get("sfx_swipe_medium1"));
+	// }
 	
-	if(window >= 9 && window <= 10 && has_hit && jump_queue)
-	{
-		jump_pressed = true;
-		jump_down = true;
-		set_state(PS_JUMPSQUAT);
-	}
+	// if(window >= 9 && window <= 10 && has_hit && jump_queue)
+	// {
+	// 	jump_pressed = true;
+	// 	jump_down = true;
+	// 	set_state(PS_JUMPSQUAT);
+	// }
 	
-	// Jump cancel
-	if(has_hit && jump_pressed && window > 3)
-	{
-		jump_queue = 1;
-		if(window < 9)
-		{
-			window = 9;
-			window_timer = 1;
-			create_hitbox(AT_UTILT,9,x,y);
-		}
-	}
+	// // Jump cancel
+	// if(has_hit && jump_pressed && window > 3)
+	// {
+	// 	jump_queue = 1;
+	// 	if(window < 9)
+	// 	{
+	// 		window = 9;
+	// 		window_timer = 1;
+	// 		create_hitbox(AT_UTILT,9,x,y);
+	// 	}
+	// }
 	
 
 	
 
 	
 	// 1st reset
-	if(window == 3 && window_timer == get_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH) * whifflag_offset)
-	{
-		window = 12;
-		window_timer = 99;
-	}
+	// if(window == 3 && window_timer == get_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH) * whifflag_offset)
+	// {
+	// 	window = 12;
+	// 	window_timer = 99;
+	// }
 	
-	// 2nd reset
-	if(window == 9 && window_timer == get_window_value(AT_UTILT, 9, AG_WINDOW_LENGTH) * whifflag_offset)
-	{
-		window = 12;
-		window_timer = 99;
-	}
+	// // 2nd reset
+	// if(window == 9 && window_timer == get_window_value(AT_UTILT, 9, AG_WINDOW_LENGTH) * whifflag_offset)
+	// {
+	// 	window = 12;
+	// 	window_timer = 99;
+	// }
 	
 	// Stick storage
 	utilt_stick = up_stick_down;
@@ -2892,7 +2964,7 @@ if(attack == AT_UTILT){
 //Dair code
 if(attack == AT_DAIR){
 
-	fall_through = from_dspecial;
+	fall_through = from_dspecial && !has_hit;
 
 	if(window == 1)
 		bounce = 1;
@@ -2931,7 +3003,7 @@ if(attack == AT_USTRONG){
 #region Uair
 //Uair code
 if(attack == AT_UAIR){
-	fall_through = from_dspecial && window < 5;
+	fall_through = from_dspecial && !has_hit;
 	
 	// Wall jump
 	can_wall_jump = window == 5 || window == 3;
@@ -2943,11 +3015,11 @@ if(attack == AT_UAIR){
 	if(window < 3 && has_hit_player) set_attack_value(AT_UAIR, AG_LANDING_LAG, 0);
 	else reset_attack_value(AT_UAIR, AG_LANDING_LAG);
 	
-	if(window == 3 && jump_pressed && djumps == 0)
-	{
-		window = 5;
-		window_timer = 99;
-	}
+	// if(window == 3 && jump_pressed && djumps == 0)
+	// {
+	// 	window = 5;
+	// 	window_timer = 99;
+	// }
 }
 #endregion
 
@@ -2955,7 +3027,7 @@ if(attack == AT_UAIR){
 //Bair code
 if(attack == AT_BAIR){
 
-	fall_through = from_dspecial && window < 7;
+	fall_through = from_dspecial && !has_hit;
 
 	can_wall_jump = window == 3 || window == 5 || window == 7;
 	
@@ -2969,7 +3041,7 @@ if(attack == AT_BAIR){
 
 if(attack == AT_NAIR)
 {
-	fall_through = from_dspecial && window < 5;
+	fall_through = from_dspecial && !has_hit;
 }
 
 #endregion
@@ -2978,7 +3050,7 @@ if(attack == AT_NAIR)
 
 if(attack == AT_FAIR)
 {
-	fall_through = from_dspecial && window < 4;
+	fall_through = from_dspecial && !has_hit;
 }
 
 #endregion
@@ -3053,7 +3125,7 @@ if(attack == AT_FSTRONG){
 	// }
 	
 	// Endlag movement
-	if(!free)
+	if(!free && !was_parried)
 	{
 		if(((window == 5 && window_timer > 10) || window > 5))
 		{

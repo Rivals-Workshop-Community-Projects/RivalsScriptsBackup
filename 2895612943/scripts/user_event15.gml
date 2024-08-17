@@ -61,8 +61,9 @@ set_skin("bite");
 
 //COPY START
 #define sprite_get_skinned
+/// sprite_get_skinned(sprite, skin = _ssnksprites.skin_active)
 var sprite = argument[0];
-var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin; if (argument_count > 1) skin = argument[1]; else skin = _ssnksprites.skin_active;
 
 ///Gets a skinned sprite based on its name.
 var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
@@ -106,8 +107,9 @@ with obj if (_ssnksprites.skin_active != -1 || argument_count > 1)  {
 return sprite_get(sprite);
 
 #define skin_sprite
+/// skin_sprite(spr_index, skin = _ssnksprites.skin_active)
 var spr_index = argument[0];
-var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin; if (argument_count > 1) skin = argument[1]; else skin = _ssnksprites.skin_active;
 
 ///Gets a skinned sprite by its unskinned sprite index.
 var str = `${spr_index}`;
@@ -292,5 +294,5 @@ repeat(sprites_len) {
         variable_instance_set(cur_cache,str,skinned_spr); //cache by index (for skin_sprite)
     }
 }
-print(`[SKIN SYSTEM] precache took ${current_time-ctime}ms.`)//set_attack.gml
+//print(`[SKIN SYSTEM] precache took ${current_time-ctime}ms.`)//set_attack.gml
 

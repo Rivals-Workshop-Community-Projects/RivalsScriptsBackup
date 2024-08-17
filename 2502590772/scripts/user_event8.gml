@@ -52,6 +52,7 @@ else {
 	i = 0;
 	repeat (50) {
 		n = 1;
+		
 		//choose which unit to take move data from.
 		//if the move has no hitboxes in plusle's data, check minun's data instead.
 		var unit_to_check = 0;

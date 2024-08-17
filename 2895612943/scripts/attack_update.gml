@@ -4,10 +4,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     //temperature_drain_timer = 0;
 }
 
-
-
-
-
+//no swap if you get parried. live with your consequences
+if(was_parried && (attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL)){
+    move_cooldown[AT_NSPECIAL] = 2;
+}
 
 //-------------------- Normals ----------------------
 
@@ -148,15 +148,17 @@ if attack == AT_USPECIAL_2 {
             //disk_obj.phase = 5;
             disk_obj.hit_priority = 0;
             //disk_obj.grav = 0;
+        }else{
         }
     }
     if (window == 2 && !hitpause){
+        move_cooldown[AT_USPECIAL_2] = 9990;
         if (instance_exists(disk_obj)){
-            //zoom toward the bamboo
+            //zoom toward the DISC its not bamboo its not bamboo its not guadrua
             disk_dir = point_direction(x, y-char_height*.5, disk_obj.x, disk_obj.y);
             vsp = lengthdir_y(24, disk_dir);
             hsp = lengthdir_x(24, disk_dir);
-            if(place_meeting(x + (15 * sign(hsp)), y, asset_get("par_block"))){
+            if(place_meeting(x + (20 * sign(hsp)), y+5, asset_get("par_block"))){
                 vsp = sign(vsp) * 24;
             }
             disk_obj.hitbox_timer--;
@@ -180,6 +182,10 @@ if attack == AT_USPECIAL_2 {
                 //instance_destroy(bamboo);
             }
         } else {
+            //if the disk is destroyed immediately, dont go on cooldown
+            if(state_timer <= get_window_value(attack, 1, AG_WINDOW_LENGTH) + 2){
+               move_cooldown[AT_USPECIAL_2] = 0;
+            }
             attack = AT_USPECIAL;
             window = 6;
             window_timer = 0;
@@ -189,7 +195,6 @@ if attack == AT_USPECIAL_2 {
             //disk_obj.destroyed = 1;
             //disk_obj = noone;
         }
-        move_cooldown[AT_USPECIAL_2] = 9990;
     }
 }
 
@@ -218,6 +223,9 @@ if attack == AT_DSPECIAL {
 
 if(attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR || attack == AT_DAIR){
     set_attack_value(attack, AG_CATEGORY, 1); 
+}else if(attack == AT_JAB || attack == AT_DATTACK || attack == AT_UTILT || attack == AT_FTILT || attack == AT_DTILT ||
+attack == AT_USTRONG || attack == AT_FSTRONG || attack == AT_DSTRONG){
+    set_attack_value(attack, AG_CATEGORY, 0); 
 }
 
 //------------------------------------- Attack storage / NSpecial --------------------------------------------

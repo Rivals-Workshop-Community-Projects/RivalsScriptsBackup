@@ -7,7 +7,7 @@ if (!free || (free && (state = PS_WALL_JUMP || state = PS_WALL_TECH || state = P
     move_cooldown[AT_USPECIAL] = 0;
 }
 if grov_fspecial_cooldown > 0 grov_fspecial_cooldown--;
-if has_rune("H") grov_fspecial_airuse = false;
+if has_rune("H") || ("no_more_stage" in self) grov_fspecial_airuse = false;
 if grov_fspecial_cooldown == 0 && grov_fspecial_airuse == false move_cooldown[AT_FSPECIAL] = 0;
 else                                                            move_cooldown[AT_FSPECIAL] = 10;
 

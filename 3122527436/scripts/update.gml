@@ -68,7 +68,7 @@ switch(state){
 		break;
 }
 
-//Nspecial/Fspecial Grab Stuff
+/*Nspecial/Fspecial Grab Stuff
 // Grab timer ended
 if (grab_timer < 0){
 	nspec_grabbed = false;
@@ -88,31 +88,17 @@ if (grab_timer < 0){
 	grabbedtarget = noone;
 	max_djumps = 3;
 }
-if (nspec_grabbed == false){
-	if(state_timer ==1){
-		inhale_sound_timer = 0;
-	}
-	can_wall_jump = true;
-	initial_dash_speed  = 7;
-	dash_speed          = 6.5;
-	dash_turn_time      = 10;	
-	dash_turn_accel     = 1.5;
-	depth = -4;
-	max_djumps = 3;
-	consumed_proj = false;
-	if(instance_exists(grabbedtarget))
-		grabbedtarget.visible = true;
-	grabbedtarget = noone;
-}
 
 if(state == PS_HITSTUN && state_timer == 0 && nspec_grabbed == true){
-	grab_timer = 0;
+	grab_timer = 1000;
+	grabbedtarget.visible = true;
+	nspec_grabbed = false
 } else {
 	if (nspec_grabbed == true && !instance_exists(grabbedtarget)){
 		if(free){
-			grab_timer = 0;
+			grab_timer = grab_timer + 1;
 		} else {
-			grab_timer = 0;
+			grab_timer = grab_timer + .5;
 		}
 	}
 }
@@ -166,7 +152,7 @@ if (nspec_grabbed == true && grab_timer >= 0){
 		}
 	}
 	*/
-}
+//}
 
 var intro_time = get_gameplay_time()-12;
 if intro_time == 1 sound_play(sound_get("warpstar_travel"))

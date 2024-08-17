@@ -53,6 +53,7 @@ with asset_get("oPlayer"){
 		url = -1;
 	}
 }
+
 //parry sound
 if(state == PS_PARRY && state_timer == 0){
 	sound_play(sound_get("sfx_parry"));
@@ -66,31 +67,21 @@ if (!free || state == PS_WALL_JUMP){
 	}
 }
 
+if (TCG_Kirby_Copy > 0){
+	copyAbilityActuallyHasTimer++;
+} else {
+	copyAbilityActuallyHasTimer = 0;
+}
+
+// fspecial cooldown
 if (attack == AT_FSPECIAL && (window == 6 || window == 7 || window == 2)){
 	//move_cooldown[AT_FSPECIAL] = 40;
 }
 
 // Grab timer ended
-if (grab_timer < 0){
-	nspec_grabbed = false;
-	hsp -= 5*spr_dir;
-	vsp -= 3;
-	spr_dir *= 1;
-	state = PS_LANDING_LAG;
-	djumps = 0;
-	grab_timer = 0;
-	
-	can_wall_jump = true;
-	initial_dash_speed  = 7;
-	dash_speed          = 6.5;
-	dash_turn_time      = 10;	
-	dash_turn_accel     =10.5;
-	depth = -4;
-	consumed_proj = false;
-	if(instance_exists(grabbedtarget))
-		grabbedtarget.visible = true;
-	grabbedtarget = noone;
-	max_djumps = 3;
+if (grab_timer < 0){//>
+	//
+	releaseSwallowedPlayer()
 }
 if (nspec_grabbed == false){
 	if(state_timer ==1){
@@ -111,7 +102,9 @@ if (nspec_grabbed == false){
 
 if(state == PS_HITSTUN && state_timer == 0 && nspec_grabbed == true){
 	grab_timer = grab_timer + 1;
+	//print("kirby's in hitstun while grabbing someone???");
 } else {
+	//print("kirby's NOT in hitstun i think");
 	if (nspec_grabbed == true && !instance_exists(grabbedtarget)){
 		if(free){
 			grab_timer = grab_timer + 1;
@@ -121,6 +114,17 @@ if(state == PS_HITSTUN && state_timer == 0 && nspec_grabbed == true){
 	}
 }
 
+// checks for if kirby traded with someone else with inhale
+if ((state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
+	if (instance_exists(grabbedtarget) && nspec_grabbed){
+		//print("yeah ok he grabbed someone on a trade with inhale");
+		releaseSwallowedPlayer();
+	} else {
+		//print("no he didnt");
+	}
+} else {
+	//print("no he didnt");
+}
 
 // Grabbing state
 if (nspec_grabbed == true && grab_timer >= 0){
@@ -411,11 +415,38 @@ set_color_profile_slot( 19, 4, color_get_red(color_hsv),color_get_green(color_hs
 init_shader();
 }
 */
-
+//--------------------------------------------
 #define window_time_is_div(modulo) // Version 0
     // Returns if the current window_timer matches the frame AND the attack is not in hitpause
     return window_timer % modulo == 0 and !hitpause
+//--------------------------------------------
 #define CorrectHurtboxes()
 {
     hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
 }
+//--------------------------------------------
+#define releaseSwallowedPlayer()
+
+	// yeah
+	nspec_grabbed = false;
+	hsp -= 5*spr_dir;
+	vsp -= 3;
+	spr_dir *= 1;
+	// check to make sure that kirby can't instantly get out of hitstun if he trades
+	if (state != PS_HITSTUN && state != PS_HITSTUN_LAND){
+		state = PS_LANDING_LAG;
+	}
+	djumps = 0;
+	grab_timer = 0;
+	
+	can_wall_jump = true;
+	initial_dash_speed  = 7;
+	dash_speed          = 6.5;
+	dash_turn_time      = 10;	
+	dash_turn_accel     =10.5;
+	depth = -4;
+	consumed_proj = false;
+	if(instance_exists(grabbedtarget))
+		grabbedtarget.visible = true;
+	grabbedtarget = noone;
+	max_djumps = 3;

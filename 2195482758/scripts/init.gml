@@ -53,7 +53,7 @@ walljump_hsp = 5;
 walljump_vsp = 10;
 walljump_time = 32;
 max_fall = 7.5; //10 //maximum fall speed without fastfalling
-fast_fall = 15; //fast fall speed
+fast_fall = 16; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
@@ -61,7 +61,7 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 10; // was 8
-base_wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+base_wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_land_adj = base_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .10; //grounded deceleration when wavelanding
 
@@ -122,7 +122,8 @@ introResetBool = false;
 can_throw = false;
 NSFC = noone;
 firecracker_speed = 10; // 13
-default_firecracker_angle = 15;
+default_firecracker_angle = 10;
+aerial_default_firecracker_angle = 70;
 firecracker_angle = 65;
 fc_bounce_timer = 34;
 fc_max_hold_time = 48;
@@ -133,8 +134,9 @@ fc_base_y = -40;
 fc_base_x = 0;
 fc_backspin = false;
 fc_bunt = false;
-fc_standardized_bounce_speed = -10;
+fc_standardized_bounce_speed = -8;
 fc_standardized_min_bounce_speed = -5;
+hit_fc = 0;
 
 fc_trail = hit_fx_create( sprite_get( "smoketrail" ), 15 );
 fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
@@ -189,8 +191,8 @@ can_grab_plat_fspec = true;
 can_grab_solid_uspec = true;
 can_grab_plat_uspec = true;
 should_set_sprite_to_spin = false;
-base_uspecial_vsp = -10;
-varying_uspecial_vsp = -10;
+base_uspecial_vsp = -12;
+varying_uspecial_vsp = -14;
 fspec_yoff = 0;
 uspecial_ground = false;
 KRAGG = false;
@@ -199,7 +201,7 @@ first_uspec = false;
 uspec_grab_cooldown_max = 60;
 uspec_grab_cooldown = 0;
 ignoring_projectiles = false;
-stage_grab_hitpause = 2;
+stage_grab_hitpause = 1;
 
 // Air dspecial
 AT_AIR_DSPECIAL = AT_DSPECIAL_2;

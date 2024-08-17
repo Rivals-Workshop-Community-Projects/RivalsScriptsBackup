@@ -124,6 +124,10 @@ if state == PS_SPAWN
     }
 }
 
+if instance_exists(puddle_obj) {
+    puddle_cooldown = 180;
+}
+
 puddle_cooldown = max(puddle_cooldown-1,0)
 
 // if (puddle_cooldown > 0) {

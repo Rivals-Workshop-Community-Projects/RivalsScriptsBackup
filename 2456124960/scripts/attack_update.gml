@@ -297,7 +297,7 @@ if (attack == AT_NSPECIAL){
 		if (crystalOffset > 180) crystalOffset = 180;
 		if (crystalOffset < -180) crystalOffset = -180;
         
-        if (nspecPowerChange == 0 && strong_charge > 45) {
+        if (nspecPowerChange == 0 && strong_charge > 35) {
             nspecPowerChange = 1;
             sound_play(asset_get("mfx_star"), false, noone, 0.8, 1);
             spawn_hit_fx( x + (5*spr_dir), y - 30, crystalPower );
@@ -309,17 +309,17 @@ if (attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 30);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 20);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 20);
-		if (strong_charge > 45) {
+		if (strong_charge > 35) {
 			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 50);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 50);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 30);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 30);
+			set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 40);
+			set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 40);
 		}
 		crystal = instance_create(x + (5 * spr_dir) + crystalOffset, y - 20, "obj_article1");
 		crystal.fake_vsp = -8 - (0.1 * strong_charge)
 		crystalOut = 1;
 		set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 69);
-		if (strong_charge > 45) {
+		if (strong_charge > 35) {
 			crystal.size = 1;
 		}
 	} else if (crystalOut == 1) {

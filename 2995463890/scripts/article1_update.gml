@@ -106,18 +106,21 @@ switch (state) {
             break;
         }
         
-        for (var p = 0; p < instance_number(asset_get("oPlayer")); p++)
-        {
-            var other_player = instance_find(asset_get("oPlayer"), p)
-            if other_player == noone or other_player == player_id or "hurtboxID" not in other_player or other_player.hurtboxID == noone continue;
-            
-            var box = info.collision_box;
-            with other_player
+        if (player_id.state_cat != SC_HITSTUN or (player_id.state_cat == SC_HITSTUN and player_id.state == PS_TUMBLE)) {
+            for (var p = 0; p < instance_number(asset_get("oPlayer")); p++)
             {
-                if (free and state_cat != SC_HITSTUN) continue; 
+                var other_player = instance_find(asset_get("oPlayer"), p)
+                if other_player == noone or other_player == player_id or "hurtboxID" not in other_player or other_player.hurtboxID == noone continue;
                 
-                if bbox_left + hsp < other.x + box.x2 and bbox_right + hsp > other.x + box.x1 and bbox_top + vsp < other.y + box.y2 and bbox_bottom + vsp > other.y + box.y1 {
-                    with other changeState(PS_ATTACK_GROUND);
+                var box = info.collision_box;
+                
+                with other_player
+                {
+                    if (free and state_cat != SC_HITSTUN) continue; 
+                    
+                    if bbox_left + hsp < other.x + box.x2 and bbox_right + hsp > other.x + box.x1 and bbox_top + vsp < other.y + box.y2 and bbox_bottom + vsp > other.y + box.y1 {
+                        with other changeState(PS_ATTACK_GROUND);
+                    }
                 }
             }
         }

@@ -1,4 +1,4 @@
-if (is_master_player || species_id == 1) exit; //efficiency: don't load attacks on master player
+if (is_master_player || species_id == 1) && !is_solo_player exit; //efficiency: don't load attacks on master player
 
 var fspecial_fx_proj_destroy = hit_fx_create(sprite_get("fxstaticminus"), 21);
 

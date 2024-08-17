@@ -183,7 +183,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "Desparabo" // the name of the alternate color.
     ce[col,2] = "A righteous bullet from an undead ranger" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
-    col++;
+    //col++;
     /*ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 0), get_color_profile_slot_g(col, 0), get_color_profile_slot_b(col, 0));
     ce[col,1] = "..." // the name of the alternate color.
     ce[col,2] = "..." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.

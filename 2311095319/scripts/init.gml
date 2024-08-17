@@ -62,12 +62,12 @@ divelandtimesfx = 0
 uspecGrabbedPlayer = noone;
 
 //Down Special: Mario Tornado
-tornadospin = 0
-tornadoboost = false
-tornadoboosttimes = 0
-tornadoused = false
-tornadoair = false
-tornado_cheat_active = false
+tornadospin = 0;
+tornadoboost = false;
+tornadoboosttimes = 0;
+tornadoused = false;
+tornadoair = false;
+tornado_cheat_active = false;
 
 //is mario shadow
 shadowmario = false;

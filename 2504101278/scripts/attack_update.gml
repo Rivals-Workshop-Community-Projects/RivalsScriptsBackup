@@ -62,6 +62,11 @@ switch(attack){
         }
         
     break;
+   case AT_DTILT:
+	if (window == 1 and window_timer == 4 and !hitpause) {
+		sound_play(sound_get("SWE2"))
+	}
+   break;
    case AT_DATTACK: 
    
 		switch window{
@@ -365,7 +370,7 @@ switch(attack){
     case AT_TAUNT:
         if clamp(window, 2, 10) == window
         {
-            if window == 10 and window_timer > 2 break;
+            if window == 10 and window_timer > 20 break;
             hud_offset = floor(lerp(hud_offset, 160, .1));
         }
         

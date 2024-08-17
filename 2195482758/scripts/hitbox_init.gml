@@ -39,10 +39,10 @@ sprite_index == sprite_get("firecracker_single_spin_nooutline") || sprite_index 
     with(player_id) sound_play( sound_get( "tenru_fc_spin" ) );
 } 
 
-if(is_bunt) 
-{
-    through_platforms = 9999999;
-}
+// if(is_bunt) 
+// {
+//     through_platforms = 9999999;
+// }
 
 if(is_bunt && num_fc > 0) with(player_id) sound_play( sound_get( "tenru_fc_bunt" ) );
 

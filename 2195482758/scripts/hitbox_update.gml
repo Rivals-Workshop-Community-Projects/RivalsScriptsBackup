@@ -15,6 +15,47 @@ if(was_parried)
     // }
 }
 
+// if(attack == AT_NSPECIAL && hbox_num == 1 && hitbox_timer < player_id.fc_lifetime-1)
+// {
+// 	var OverlapRadius = 40;
+// 	var hitfc = num_fc;
+// 		with(pHitBox)
+// 		{
+// 		    if(player_id == other.player_id)
+//     		{
+//     		    if(attack == AT_DATTACK || attack == AT_FSTRONG || attack == AT_JAB || attack == AT_FTILT || attack == AT_DTILT || attack == AT_UTILT || attack == AT_DSTRONG || attack == AT_USTRONG || attack == AT_FAIR || attack == AT_BAIR ||
+//     		    attack == AT_DAIR || attack == AT_UAIR || attack == AT_NAIR)
+//     		    {
+//         			// Custom collision code (hopefully a bit more effecient), just treats everything like circles
+//         			var width = image_xscale * 100;
+//         			var height = image_yscale * 100;
+//         			var PointsDistance = point_distance(x,y,other.x,other.y);
+//         			var OverlapDistance = max(0,PointsDistance - OverlapRadius - ((width+height)*0.5))
+        
+//         			if(OverlapDistance == 0 && variable_instance_exists(self, "player_id"))
+//         			{
+//         			    other.hitbox_timer = player_id.fc_lifetime-1;
+        			    
+//         			    with(player_id)
+//         			    {
+//                 			// Artificial hit
+//                 			sound_play( asset_get("sfx_blow_heavy1") );
+//                             spawn_hit_fx( x, y, 301 );
+                            
+//             	    		prev_vsp = vsp;
+//             	    		prev_hsp = hsp;
+//                             hitstop_full = 3;
+//             	    		hitstop = 3;
+//             	    		hitpause = true;
+//             	    		hit_fc = hitfc;
+              			
+//         			    }
+//         			}
+//     		    }
+// 		    }
+// 		}
+// }
+
 
 // if(set_transcendent)
 // {

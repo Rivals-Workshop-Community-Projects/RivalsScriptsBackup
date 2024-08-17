@@ -1,14 +1,14 @@
-//debug
-
 //check if otestplayer
 is_test_player = (object_index == asset_get("oTestPlayer"));
 //check if solo/co-op player
-is_solo_player = (get_player_color(player) >= 30) //get_synced_var() > 0;
+is_solo_player = is_test_player || (get_player_color(player) >= 30) //get_synced_var() > 0;
+//establish a unique variable name to pair up solo characters
+this_character_is_plusle_and_minun = 1;
+
 
 if (!custom_clone) {
     is_master_player = true;
     initialize_unit_players = false;
-    
     unit_player_id_array[0] = noone;
     unit_player_id_array[1] = noone;
     unit_current_leader_index = noone;
@@ -81,8 +81,10 @@ user_event(2);
 if (species_id == 1) user_event(6);
 
 //shift starting position.
-spr_dir = clones_player_id.spr_dir;
-x += spr_dir * (1 - species_id * 2) * 21;
+if (!is_solo_player) {
+    spr_dir = clones_player_id.spr_dir;
+    x += spr_dir * (1 - species_id * 2) * 21;
+}
 
 //below are variables which don't need to be edited.
 

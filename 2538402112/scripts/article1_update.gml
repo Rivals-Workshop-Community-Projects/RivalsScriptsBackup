@@ -6,6 +6,7 @@ with asset_get("plasma_field_obj"){//Clairen
     if place_meeting(get_instance_x(self),get_instance_y(self),other){//If touching plasma field
         if get_player_team(get_instance_player(self)) != get_player_team(other.player){//If not on same team
             other.life_timer = 0;
+            sound_play(asset_get("sfx_clairen_hit_med"));
         }
     }
 }

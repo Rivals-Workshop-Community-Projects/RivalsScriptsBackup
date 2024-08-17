@@ -310,7 +310,7 @@ switch(attack){
 				        bullet_obj.vsp = 0;
 				        
 				        bullet_obj.enemies = 0;
-				        bullet_obj.damage = 3;
+				        //bullet_obj.damage = 3;
 				        bullet_obj.hitpause = 7;
 				        bullet_obj.hitpause_growth = 0.2;
 				        for (var p = 0; p < 20; p++)
@@ -345,13 +345,14 @@ switch(attack){
 				}
 			break;
 			case 3:
-			move_cooldown[AT_NSPECIAL] = 15;
+			move_cooldown[AT_NSPECIAL] = 30;
 			break;
         }
     break;
 
     case AT_FSPECIAL:
     can_wall_jump = true;
+    	vsp *= (vsp > 0 ? 0.9 : 1)
     	if window == 1 && window_timer == 6 && should_mj_sound() and !hitpause{
     		sound_play(sound_get("voice_mj_shchk"), false, noone, 1, calc_mj_pitch(0.04));
     	}
@@ -378,7 +379,9 @@ switch(attack){
         }
     break;
     case AT_FSPECIAL_2:
+    vsp *= (vsp > 0 ? 0.93 : 1)
         if window == 1 && window_timer == 2 and !hitpause{
+        	vsp = max(-5, vsp)
             sound_play(asset_get("sfx_ori_bash_use"),false,noone,0.7,1.1);
             sound_play(sound_get("sfx_gun_click"),false,noone, 0.8, 1);
             	if should_mj_sound() {

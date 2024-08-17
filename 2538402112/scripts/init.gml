@@ -70,8 +70,8 @@ tech_recovery_frames = 1;
 
 //tech roll animation frames
 techroll_startup_frames = 1;
-techroll_active_frames = 1;
-techroll_recovery_frames = 2;
+techroll_active_frames = 3;
+techroll_recovery_frames = 3;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -82,11 +82,11 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 2;
-roll_forward_recovery_frames = 2;
+roll_forward_active_frames = 3;
+roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 2;
-roll_back_recovery_frames = 2;
+roll_back_active_frames = 3;
+roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -128,7 +128,6 @@ if get_player_color(player) == 13 resort_portrait = resort_portrait2;
 arena_title = "Temporal Escapee";
 boxing_title = "Temporal Escapee";
 steve_death_message = "Steve fainted!";
-feri_costume = sprite_get("feri_costume_grovyle");
 gfzsignspr = sprite_get("GFZ_Grovyle");
 miiverse_post = sprite_get("miiverse_grovyle");
 pkmn_stadium_front_img = sprite_get("gen1_grovyle");
@@ -141,7 +140,10 @@ Hikaru_Title = "Time Gear Theif";
 pot_compat_variable = sprite_get("po_gumbo_dish");
 pot_compat_text = "Four-Leaf Cookie";
 wiimote_compat_sprite = sprite_get("wiimote");
+buddy_screenko_sprite = get_player_color(player) == 0 ? sprite_get("screen_ko_alt1"):sprite_get("screen_ko");
 greenwood_cheer = 2;
+scoop_personalized_flavour_name = "Icicle Forest Berry";
+scoop_personalized_flavour_sprite = sprite_get("scoop_icecream");
 
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated

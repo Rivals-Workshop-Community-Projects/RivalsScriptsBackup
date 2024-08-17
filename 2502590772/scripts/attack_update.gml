@@ -414,7 +414,7 @@ case AT_DSPECIAL:
     //fall slowly
     vsp = clamp(vsp, -4, 2);
     
-    
+    //activate hh buff after a short amount of time
     if (state_timer == 35 && !hitpause && instance_exists(teammate_player_id)) {
     	with (teammate_player_id) { helping_hand_buff_activate(); }
     }
@@ -468,7 +468,7 @@ case AT_DSPECIAL:
 	    	sound_play(sound_get("hh"), 0, noone, volume, pitch);
 	    }
 	    
-	    if (is_solo_player && window >= 2 && window <= 8) {
+	    if ((is_solo_player || is_test_player) && window >= 2 && window <= 8) {
 	    	var teammate_exists = instance_exists(teammate_player_id);
 	    	
 	    	if (teammate_exists) with (teammate_player_id) {

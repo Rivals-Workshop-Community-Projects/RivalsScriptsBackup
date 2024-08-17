@@ -7,6 +7,12 @@ tornadoused  = false
 
 if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
 	hurtVoiceClipAlreadyPlayed = false;
+	
+	// ftilt stuff
+	if (sprite_index == sprite_get("ftilt")){
+		//print("yes");
+		sound_stop(sfx_cappy_toss);
+	}	
 }
 
 

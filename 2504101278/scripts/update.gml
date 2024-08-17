@@ -104,7 +104,7 @@ else if(state == PS_SPAWN)
 }
 //this increments introTimer every few frames, depending on the number entered
 
-if (introTimer < 37) {
+if (introTimer < 37 && state == PS_SPAWN) {
     draw_indicator = false;
 } else {
     draw_indicator = true;

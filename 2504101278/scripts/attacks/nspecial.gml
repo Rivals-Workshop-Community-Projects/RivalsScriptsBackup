@@ -48,7 +48,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 180);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
@@ -66,7 +66,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, -1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 180);
+set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 90);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 90);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);

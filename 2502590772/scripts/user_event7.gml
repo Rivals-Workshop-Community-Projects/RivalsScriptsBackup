@@ -1,57 +1,83 @@
 //user_event7.gml
 //for solo plusle/minun
+
+
+
+
+
+
 //checks whether there is one other solo plusle/minun on the same team, and assigns them as a teammate.
 if (!get_match_setting(SET_TEAMS) || instance_exists(teammate_player_id)) exit;
 var this_player_team = get_player_team(player);
 var found_player_id = noone;
 var found_player_counter = 0;
+
+
+
 with (oPlayer) {
-    if (id == other.id || get_player_team(player) != this_player_team || custom_clone || url != other.url || get_player_color(player) < 30) continue;
+	
+    if (id == other.id || get_player_team(player) != this_player_team || custom_clone || ("this_character_is_plusle_and_minun" in other) == false || get_player_color(player) < 30) continue; //url != other.url 
+    //("this_character_is_plusle_and_minun" in other) == false ||
+     
     found_player_id = id;
     found_player_counter++;
 }
+
+
+
 //print("found " + string(found_player_counter) + " players")
 if (found_player_counter != 1) exit;
 
+
+
+
 //found exactly one teammate; go ahead and add them
 teammate_player_id = found_player_id;
-//spawn a hitbox on the new teammate, which will permanently hit-lockout them for the rest of the game
-var fren_hitbox = create_hitbox(AT_EXTRA_3, 1, teammate_player_id.x, teammate_player_id.y - 4);
-//make sure this hitbox can only hit the new teammate
-
-var i = 1;
-repeat (4) {
-   fren_hitbox.can_hit[i] = (i == teammate_player_id.player);
-   i++;
-}
 
 
 //set helping hand damage arrays (it's a copypaste from the one in update.gml, with small edits)
 set_hh_arrays();
+
+//undo master player id
+is_master_player = false;
 
 //do the same thing with the teammate
 with (teammate_player_id) {
     
     teammate_player_id = other.id;
     
-    fren_hitbox = create_hitbox(AT_EXTRA_3, 1, teammate_player_id.x, teammate_player_id.y - 4);
+    //fren_hitbox = create_hitbox(AT_EXTRA_3, 1, teammate_player_id.x, teammate_player_id.y - 4);
     
-    i = 1;
-    repeat (4) {
-       fren_hitbox.can_hit[i] = (i == teammate_player_id.player);
-       i++;
-    }
+    //i = 1;
+    //repeat (4) {
+    //   fren_hitbox.can_hit[i] = (i == teammate_player_id.player);
+    //   i++;
+    //}
     
-    attack_base_damage = other.attack_base_damage;
-	attack_base_hitpause = other.attack_base_hitpause;
-	attack_base_damage_boosted = other.attack_base_damage_boosted;
-	attack_base_hitpause_boosted = other.attack_base_hitpause_boosted;
+    //attack_base_damage = other.attack_base_damage;
+	//attack_base_hitpause = other.attack_base_hitpause;
+	//attack_base_damage_boosted = other.attack_base_damage_boosted;
+	//attack_base_hitpause_boosted = other.attack_base_hitpause_boosted;
+	
+	//undo master player id
+	is_master_player = false;
 }
 
+//spawn a hitbox on the new teammate, which will permanently hit-lockout them for the rest of the game
+//var fren_hitbox = create_hitbox(AT_EXTRA_3, 1, teammate_player_id.x, teammate_player_id.y - 4);
+//make sure this hitbox can only hit the new teammate
+//
+//var i = 1;
+//repeat (4) {
+//   fren_hitbox.can_hit[i] = (i == teammate_player_id.player);
+//   i++;
+//}
 
 
 
 #define set_hh_arrays
+
+return;
 
 var i = 0;
 var n = 0;
@@ -72,6 +98,8 @@ repeat (50) {
 i = 0;
 repeat (50) {
 	n = 1;
+	
+	print("testing [i=" + string(i) + ", n = " + string(n) + "]")
 	//choose which unit to take move data from.
 	//if the move has no hitboxes in plusle's data, check minun's data instead.
 	var unit_to_check = 0;

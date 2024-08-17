@@ -123,7 +123,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("null"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, hitC3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 20);
-set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 20);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_icehit_heavy2"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);

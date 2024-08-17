@@ -2,8 +2,8 @@
 
 //Ability Select Stuff
 if(attack == AT_TAUNT && window == 5){
-	draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x+(45), y-56, 1, 1, 90, c_white, 1 )
-	draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x+(-45), y-70, 1, 1, -90, c_white, 1 )
+	draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x+(50 + ((right_pressed || right_down) * 5)), y-56, 1, 1, 90, c_white, 1 )
+	draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x+(-50 - ((left_pressed|| left_down) * 5)), y-70, 1, 1, -90, c_white, 1 )
 	
 }
 shader_start();

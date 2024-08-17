@@ -32,7 +32,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_meg
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 17);

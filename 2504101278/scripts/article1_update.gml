@@ -33,7 +33,7 @@ switch (state)
     
     //NORMAL
     case 0:
-        if split_baby and !homing
+        if split_baby
         {
             sprite_index = sprite_get("nspecial_proj_diagonal")
             image_index = sign(vsp) == -1;
@@ -73,21 +73,21 @@ switch (state)
         }
         
         
-        var inst = find_instance();
+        // var inst = find_instance();
         
-        if inst != noone and can_manual_move_count == 0
-        {
-            xx = clamp(x, inst.bbox_left, inst.bbox_right);
-            yy = clamp(y, inst.bbox_top, inst.bbox_bottom);
-            diff = sqrt(sqr(xx-x) + sqr(yy-y))
-            if diff <= homing_threshold
-            {
-                x = abs(xx-x) > 2 ? x + (max(10, abs(xx-x)/14)*sign(xx-x)) : xx;
-                y = abs( (inst.y - inst.char_height/2) -y) > 2 ? y + ((inst.y - inst.char_height/2)-y)/14 : (inst.y - inst.char_height/2);
-                homing = true;
-                sprite_index = FLOAT_SPRITE;
-            }
-        }
+        // if inst != noone and can_manual_move_count == 0
+        // {
+        //     xx = clamp(x, inst.bbox_left, inst.bbox_right);
+        //     yy = clamp(y, inst.bbox_top, inst.bbox_bottom);
+        //     diff = sqrt(sqr(xx-x) + sqr(yy-y))
+        //     if diff <= homing_threshold
+        //     {
+        //         x = abs(xx-x) > 2 ? x + (max(10, abs(xx-x)/14)*sign(xx-x)) : xx;
+        //         y = abs( (inst.y - inst.char_height/2) -y) > 2 ? y + ((inst.y - inst.char_height/2)-y)/14 : (inst.y - inst.char_height/2);
+        //         homing = true;
+        //         sprite_index = FLOAT_SPRITE;
+        //     }
+        // }
     
         if player_id.nspecial_projectile != self and !split_baby
         {
@@ -179,12 +179,12 @@ switch (state)
         var n = 4;
         sprite_index = ATTACK_SPRITE
         image_index += 0.4
-        if state_timer mod n == 0 and !hitpause
+        if state_timer mod n == 0
         {
             if state_timer == 0 spr_dir = player_id.spr_dir
             var num;
             num = state_timer > (n*3) ? 3 : 2;
-            create_hitbox(AT_NSPECIAL,num,x,y);
+            create_hitbox(AT_NSPECIAL,num,x,y+10);
         }
         
         if state_timer >= (n*4)+1

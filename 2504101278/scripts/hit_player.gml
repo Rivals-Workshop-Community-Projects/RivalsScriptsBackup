@@ -46,8 +46,10 @@ switch my_hitboxID.attack {
         spawn = (my_hitboxID.hbox_num == 1) ? "big" : "med";
     break;
     case AT_FAIR:
+    spawn = (my_hitboxID.hbox_num == 3) ? "big" : "med";
+    break;
     case AT_UAIR:
-        spawn = (my_hitboxID.hbox_num == 3) ? "big" : "med";
+      spawn = (my_hitboxID.hbox_num == 2) ? "big" : "med";  
     break;
     case AT_NSPECIAL:
         if my_hitboxID.hbox_num == 1

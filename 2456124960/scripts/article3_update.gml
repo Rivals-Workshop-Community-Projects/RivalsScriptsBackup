@@ -135,14 +135,16 @@ if (state == 1){
 	
 	if (gotParried == 1) {
         
-        print (string(parriedPlayer));
+        //print (string(parriedPlayer));
 		instance_destroy(hb);
 		state_timer = 0;
 		state = 1;
 		detonating = false;
 		detonatePossible = false;
 		spr_dir *= -1;
-		myHSpeed *= 2;	
+		//myHSpeed *= 3;
+        //if (myHSpeed < 9) {myHSpeed = 9;}
+        myHSpeed = 15;
 		lifetime = 26;
 		hb = create_hitbox(AT_FSPECIAL, 1 + (5 * frostbolt), x, y);
 		hb.player = parriedPlayer;

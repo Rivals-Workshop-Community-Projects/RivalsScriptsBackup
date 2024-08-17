@@ -59,7 +59,8 @@ if (attack == AT_FTILT){
 			sound_play(sfx_cappy_toss)
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x + (52 * spr_dir), y, "wavedash", -spr_dir);
+			spawn_base_dust( x + (38 * spr_dir), y, "dattack", -spr_dir);
+			spawn_base_dust( x + (-6 * spr_dir), y, "walk", spr_dir);
 		}
 	}
 	if (window == 4){
@@ -561,10 +562,15 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	if (window == 1 || window == 2){
-		if (!hitpause && !free){
+		if (!hitpause){
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				spawn_base_dust( x-8, y, "dash", 1);
-				spawn_base_dust( x+8, y, "dash", -1);
+				if (!free){
+					spawn_base_dust( x-8, y, "dash", 1);
+					spawn_base_dust( x+8, y, "dash", -1);
+				} else {
+					spawn_base_dust( x-4, y, "walk", 1);
+					spawn_base_dust( x+4, y, "walk", -1);
+				}
 			}
 		}
 	}
@@ -596,17 +602,24 @@ if (attack == AT_DSPECIAL){
 	}
 	if (window != 1 && tornadoair == true && !free && !was_parried){
 		set_state(PS_LANDING_LAG);
-		tornadoair = false
+		tornadoair = false;
+		
+		if (hasfirebrand){
+			firecharge = 6 - (((tornadospin + 1) * 2) - 1);
+			//print(firecharge);
+			hasfirebrand = false;
+		}
 	}
 	if (window == 2){//Multi Hits
 		//has_hit = false;
 		//idk why this is there lol
 		can_move = true
 		if (window_timer == 6 && tornadospin != 2){//This segment of code resets Mario to window 2 of the move.
-			window_timer = 0
+			window_timer = 0;
 			//clear_button_buffer(PC_SPECIAL_PRESSED);
 			tornadospin++;
-			tornadoboost = true
+			tornadoboost = true;
+			//print(tornadospin);
 		}
 		if (tornadoboost == true && special_pressed && tornadoused == false){
 			//This checks if attack is pressed during the move. If it is pressed, Mario will gain some height.
@@ -627,9 +640,9 @@ if (attack == AT_DSPECIAL){
 		}
 		if (right_down){
 			if (tornadoair == true){
-				hsp = hsp + 0.4
+				hsp = hsp + 0.4;
 			} else if (tornadoair == false){
-				hsp = hsp + 1
+				hsp = hsp + 1;
 			}
 		}
 		if (vsp < -9){//>
@@ -652,6 +665,14 @@ if (attack == AT_DSPECIAL){
 		if (hasfirebrand == true){
 			hasfirebrand = false
 			firecharge = 0
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if (!free){
+				spawn_base_dust( x-8, y, "dattack", 1);
+				spawn_base_dust( x+8, y, "dattack", -1);
+			} else {
+				spawn_base_dust( x, y, "doublejump_small", spr_dir);
+			}
 		}
 	}
 	if (window == 4){//Final Hit

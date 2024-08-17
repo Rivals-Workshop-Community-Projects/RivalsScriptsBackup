@@ -30,7 +30,7 @@ set_color_profile_slot_range(6,15,71,29);
 
 
 // ALTERNATE COLORS
-set_num_palettes(25);
+set_num_palettes(26);
 
 // Celebi
 set_color_profile_slot(1,0,219,142,192); //Green
@@ -239,14 +239,23 @@ set_color_profile_slot(23,4,196,94,111); //Mouth
 set_color_profile_slot(23,5,64,64,64); //EyeBlack
 set_color_profile_slot(23,6,18,149,173); //Orb/Gear
 
-// Shiny
-set_color_profile_slot(24,0,76,194,189); //Green
-set_color_profile_slot(24,1,196,155,162); //Red
+// Rescue Team
+set_color_profile_slot(24,0,90,128,128); //Green
+set_color_profile_slot(24,1,163,22,22); //Red
 set_color_profile_slot(24,2,255,255,85); //Eye
-set_color_profile_slot(24,3,219,71,87); //Leaf
+set_color_profile_slot(24,3,90,128,112); //Leaf
 set_color_profile_slot(24,4,196,94,111); //Mouth
 set_color_profile_slot(24,5,0,0,0); //EyeBlack
 set_color_profile_slot(24,6,18,149,173); //Orb/Gear
+
+// Shiny
+set_color_profile_slot(25,0,76,194,189); //Green
+set_color_profile_slot(25,1,196,155,162); //Red
+set_color_profile_slot(25,2,255,255,85); //Eye
+set_color_profile_slot(25,3,219,71,87); //Leaf
+set_color_profile_slot(25,4,196,94,111); //Mouth
+set_color_profile_slot(25,5,0,0,0); //EyeBlack
+set_color_profile_slot(25,6,18,149,173); //Orb/Gear
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

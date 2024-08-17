@@ -8,7 +8,7 @@ set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
 
 //STARTUP
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
@@ -38,15 +38,15 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_SFX_FRAME, 4);
 
 //ACTIVE
 set_window_value(AT_DAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //ENDLAG
 set_window_value(AT_DAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 5);
 set_window_value(AT_DAIR, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -77,10 +77,10 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 6);
+set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, -45);
-set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 127);
-set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 132);
+set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 114);
+set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 120);
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);

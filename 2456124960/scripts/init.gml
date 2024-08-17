@@ -86,6 +86,8 @@ taunt_cancel_available = false;
 
 nspecPowerChange = 0;
 
+target = noone;
+
 HG_HITBOX_COLOR = 69;
 hboxShape = -2;
 shape_circle = sprite_get("hitbox_circle")

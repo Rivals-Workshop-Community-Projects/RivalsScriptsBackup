@@ -325,18 +325,7 @@ if(last_grabbedid != noone && (state != PS_ATTACK_GROUND && state != PS_ATTACK_A
 // Ground resets
 if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN)
 {
-	// 1 Firecracker on screen at a time
-	var can_can_throw = true;
-	
-	// MOVE COOLDOWN TEST TEST TEST
-	// with (pHitBox) 
-	// 	if (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1) 
-	// 		if("ungrab" in self)
-	// 			other.move_cooldown[AT_NSPECIAL] = max(other.move_cooldown[AT_NSPECIAL],1);
-				
-				
-	can_throw = can_can_throw;
-	
+
 	can_grab_solid_fspec = true;
 	can_grab_plat_fspec = true;
 	can_grab_solid_uspec = true;
@@ -351,6 +340,13 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESP
 	// Intent is to stop air comboing, don't need it when already on ground
 	uspec_grab_cooldown = 0;
 }
+
+// Ground resets not counting getting hit
+if(!free || state == PS_WALL_JUMP)
+{
+	can_throw = true;
+}
+
 
 // Particles
 if (land_dust_started == true) {
@@ -420,9 +416,17 @@ if (state_cat == SC_HITSTUN) {
 }
 
 // Ignore projectiles for the duraction of grab moves if parry is pressed
-if(shield_pressed)
+// if(shield_pressed)
+// {
+// 	ignoring_projectiles = true;
+// }
+if(hit_fc > 0 && !hitpause)
 {
-	ignoring_projectiles = true;
+	hsp = clamp(prev_hsp * 2,-10,10);
+	vsp = -6 - (hit_fc);
+	
+	set_state(PS_IDLE_AIR);
+	hit_fc = 0;
 }
 
 // Reset double jump modifiers
@@ -603,8 +607,11 @@ with(pHitBox){
          //hitbox_timer = bounced == 2 ? other.fc_lifetime-1 : hitbox_timer;
 
 
-		vsp = max(vsp,other.fc_standardized_bounce_speed);
-		vsp = min(vsp,other.fc_standardized_min_bounce_speed);
+		//vsp = max(vsp,other.fc_standardized_bounce_speed);
+		//vsp = min(vsp,other.fc_standardized_min_bounce_speed);
+		
+		// Standardized bounce speed
+		vsp = other.fc_standardized_bounce_speed;
 
 
          // Increment bounce counter
@@ -632,7 +639,7 @@ with(pHitBox){
 
 			with(Tenru)
 			{
-				other.sprite_index = other.num_fc == 1 ? sprite_get("firecracker_single_spin") : num_fc == 2 ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
+				other.sprite_index = other.num_fc == 1 ? sprite_get("firecracker_single_spin") : other.num_fc == 2 ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
 			}
          }
          

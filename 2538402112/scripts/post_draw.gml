@@ -1,6 +1,4 @@
 //post-draw
-// shader_start();
-
 switch (state){
     case PS_ATTACK_GROUND:
     case PS_ATTACK_AIR:
@@ -9,11 +7,12 @@ switch (state){
                 if      get_player_color(player) == 12 draw_sprite_ext(sprite_get("fspecial_wand"), image_index+8, x, y, 2*spr_dir,2,0,c_white,1);
                 else if get_player_color(player) == 13 draw_sprite_ext(sprite_get("fspecial_wand"), image_index, x, y, 2*spr_dir,2,0,c_white,1);
             }
+            var sparkle_color = get_player_color(player) == 12 ? /*#*/$9ae2d3:c_white;
             if (window == 2){
-                draw_sprite_ext(sprite_get("fspecial_sparkle"), 0, x, y, 2*spr_dir,2,0,c_white,1);
+                draw_sprite_ext(sprite_get("fspecial_sparkle"), 0, x, y, 2*spr_dir,2,0,sparkle_color,1);
             }
             if (window == 3 && window_timer < 10){
-                draw_sprite_ext(sprite_get("fspecial_sparkle"), (window_timer/5)+1, x, y, 2*spr_dir,2,0,c_white,1);
+                draw_sprite_ext(sprite_get("fspecial_sparkle"), (window_timer/5)+1, x, y, 2*spr_dir,2,0,sparkle_color,1);
             }
         }
         if (attack == AT_USPECIAL){
@@ -58,8 +57,6 @@ switch (state){
         }
     break;
 }
-
-// shader_end();
 
 #define draw_nspecial_ui(draw_x, draw_y, nattack, nindex, nalpha)
 var draw_color = c_white;

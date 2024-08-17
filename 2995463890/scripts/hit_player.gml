@@ -36,7 +36,7 @@ switch (my_hitboxID.attack) {
         sound_play(sound_get("sfx_bottle_break"))
         sound_play(sound_get("sfx_water_hit"))
         
-        if !my_hitboxID.was_parried instance_create(my_hitboxID.x,my_hitboxID.y-10, "obj_article1")
+        if !my_hitboxID.was_parried and my_hitboxID.can_create_puddle instance_create(my_hitboxID.x,my_hitboxID.y-10, "obj_article1")
     }
     break;
     case AT_DSPECIAL:

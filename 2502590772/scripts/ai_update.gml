@@ -1,5 +1,4 @@
 //uses some aspects of Fudgepop's AI Framework as a base. (twitter.com/fudgepop01)
-//good luck salvaging anything out of this, a lot of it is really bespoke for P+M. Hopefully the way it's arranged makes it clear enough to follow. Credit Mawral if you borrow anything.
 
 if (is_master_player) exit;
 if (!custom_clone) {
@@ -120,7 +119,9 @@ process_inputs();
     var b 
     var leader_x;
     with (teammate_player_id) {
-        b = (buffer_counter);
+        //if (master_player_id.special_held) b = (buffer_counter + partner_input_buffer_delay - 1) mod (partner_input_buffer_delay);
+        if (master_player_id.special_held) b = (buffer_counter + partner_input_buffer_delay - 1 - species_id) mod (partner_input_buffer_delay);
+        else b = (buffer_counter + !species_id) mod (partner_input_buffer_delay);
         leader_x = buffer_x_position[b];// + round(hsp * 6 - spr_dir * (40 * (state != PS_WALK_TURN && state != PS_DASH_TURN)));
         
     }
@@ -160,32 +161,7 @@ process_inputs();
     var run_recovery_routine = false;
     var master_special_held = master_player_id.special_held;
     
-    /*
-    var made_an_attack_input = 
-    (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL)
-    && (attack_pressed || shield_pressed || (taunt_pressed && !free)
-    || up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed 
-    || up_stick_pressed || down_stick_pressed || left_stick_pressed || right_stick_pressed);
-    */
-    
-    //to be tested
-    /*
-    var made_an_attack_input = 
-    //(state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL)
-     (shield_pressed //|| (taunt_pressed && !free)
-    ||  (is_attack_pressed(DIR_ANY) )//&& can_attack)
-    || (is_strong_pressed(DIR_ANY) && (
-        (is_strong_pressed(DIR_UP) && can_ustrong) 
-        || ((is_strong_pressed(DIR_LEFT) || is_strong_pressed(DIR_RIGHT) || is_strong_pressed(DIR_DOWN)) && can_strong) ) ) );
-    */
-    
-    //don't attack unless master_special_held equals true or the leader is close to the partner
-    //if (!master_special_held && leader_x_distance > 300) {
-     //   ai_inputs &= ~(INP_ATTACK | INP_ATTACK_PRESSED | INP_JUMP | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
-     //   ai_inputs_raw &= ~(INP_ATTACK | INP_JUMP | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
-     //   //ai_inputs_raw &= ~(INP_ATTACK_PRESSED | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
-    //}
-    
+    //check if the ai has made any attack input (that it can actually perform)
     var made_an_attack_input = 
      ( ((ai_inputs & INP_SHIELD_PRESSED) != 0) //|| ((ai_inputs |= INP_TAUNT) != 0 && !free)
     || (can_attack && (ai_inputs & INP_ATTACK_PRESSED) != 0)
@@ -211,7 +187,6 @@ process_inputs();
     }
     
 
-    
     if ((made_an_attack_input || jump_pressed) && state != PS_PRATFALL && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) {
         run_predicted_routine = false;
         //face the right direction when jumping off of the ground
@@ -342,7 +317,7 @@ process_inputs();
                      && !teammate_player_id.free 
                      && teammate_player_id.buffer_y_position[b]< y 
                      && teammate_player_id.y < y - 100 ) {
-                         ai_inputs |= INP_JUMP_PRESSED;
+                        ai_inputs |= INP_JUMP_PRESSED;
                      }
                 }
                     
@@ -449,7 +424,7 @@ process_inputs();
                     break;
                     
                     case AT_EXTRA_3:
-                        //the partner is ko'd; this script shouldn't be doing anything anyway in this case, but just in case it is, do nothing.
+                        //the partner is ko'd; this script shouldn't be running in this case, but just in case it is, do nothing.
                     break;
                     
                     //all the other non-ground inputs:    
@@ -461,8 +436,6 @@ process_inputs();
             break;
             
 
-                
-            
             default: //catch-all for general recovering
                 run_recovery_routine = true;
                 
@@ -492,7 +465,7 @@ process_inputs();
             if (djumps > 0 && y > teammate_player_id.y + 200) {
                 if (recover_dir < 0) ai_inputs |= INP_LEFT;
                 if (recover_dir > 0) ai_inputs |= INP_RIGHT;
-                ai_inputs |= INP_JUMP_PRESSED;
+                //ai_inputs |= INP_JUMP_PRESSED;
             }
             
             //if double-jump has been used but they're still in trouble, recover with uspecial and airdodge
@@ -574,12 +547,12 @@ process_inputs();
                 break;
             }
             else if (leader_target_x_distance > 10) {
-                //go to the player
+                //go to the leader
                 move_towards_x_position(leader_x, false);
                 if (state == PS_WALK_TURN && sign(hsp) != leader_x_direction) hsp *= 0.5;
             }
             else if (spr_dir != teammate_player_id.spr_dir && !master_player_id.special_down && teammate_player_id.state != PS_WALK_TURN) {
-                //face the same direction as the player
+                //face the same direction as the leader
                 move_in_x_direction(-spr_dir, false);
             }
             
@@ -596,7 +569,7 @@ process_inputs();
                 if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN) ai_inputs &= ~(INP_LEFT | INP_RIGHT);
                 artificial_dash = -2;
             }
-            //check if this a cpu dash and not a player dash
+            //check if this a cpu-decided dash and not a player-inputted dash
             //if ((ai_inputs & INP_RIGHT_HARD != 0) - (ai_inputs & INP_LEFT_HARD != 0) != spr_dir) {
             //    artificial_dash = 2;
             //}

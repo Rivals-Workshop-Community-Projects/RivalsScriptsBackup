@@ -102,7 +102,10 @@ switch(get_player_color(real_player)){//0 Green|1 Red|2 Eye|3 Leaf|4 Mouth|5 Eye
     case 23://Krookodile
         set_character_color_shading(5,10.0);
         break;
-    case 24://Shiny
+    case 24://Rescue Team
+        set_character_color_shading(0,1.25);
+        break;
+    case 25://Shiny
         set_character_color_shading(3,1.75);
         break;
 }

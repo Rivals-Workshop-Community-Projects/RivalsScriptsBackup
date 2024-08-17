@@ -33,3 +33,8 @@ if(my_hitboxID.type == 2 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.att
     assist_aerial_parrystun = true;
     
 }
+
+//no swap if you get parried. live with your consequences
+if(my_hitboxID.type == 1){
+	move_cooldown[AT_NSPECIAL] = 30;
+}

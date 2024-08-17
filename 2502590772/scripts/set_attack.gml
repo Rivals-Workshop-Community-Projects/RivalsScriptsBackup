@@ -39,31 +39,14 @@ switch (attack) {
     break;
     
     case AT_FSTRONG:
-        //there's some weird code I can't find that keeps flipping fstrong's direction to the right. therefore:
+        //there's some weird strnge code I can't find that keeps flipping fstrong's direction to the right for no reason. therefore:
         
-        /*
-        if (is_strong_pressed(DIR_LEFT) - is_strong_pressed(DIR_RIGHT) == 0) {
-           // if (species_id == 1 &&  !master_player_id.special_held) {
-                var raw_input_dir = (ai_inputs_raw & INP_RIGHT != 0) - (ai_inputs_raw & INP_LEFT != 0);
-                if (raw_input_dir != 0) {
-                    dir_correct = raw_input_dir;
-                    print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - raw_input_dir");
-                }
-                else print(string(species_id) + "-- dir_correct = none - raw_input_dir");
-                //else dir_correct = spr_dir;
-            //}
-            //else dir_correct = spr_dir;
-        }
-        
-        else*/ if (is_strong_pressed(DIR_LEFT)) { dir_correct = -1; }// print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - left stick"); }
+        if (is_strong_pressed(DIR_LEFT)) { dir_correct = -1; }// print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - left stick"); }
         else if (is_strong_pressed(DIR_RIGHT)) { dir_correct = 1;  }// print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - right stick"); }
         else if (is_strong_pressed(DIR_ANY) && right_down - left_down != 0) {
             dir_correct = right_down - left_down;
-            //print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - right minus left"); 
         }
-        
         else {
-            
             dir_correct = spr_dir;
         }
         
@@ -81,56 +64,6 @@ switch (attack) {
         else if (custom_clone) attack = AT_DTHROW;
     break;
     
-    /*
-    case AT_FAIR:
-    case AT_BAIR:
-        //correct to a different aerial if required
-        if (custom_clone && !(master_player_id.special_held)) {
-            var dir_front, dir_back;
-            if (spr_dir == 1)   { dir_front = DIR_RIGHT; dir_back = DIR_LEFT; }
-                else            { dir_front = DIR_LEFT;  dir_back = DIR_RIGHT; }
-            if ((attack == AT_FAIR && is_attack_pressed(dir_front)) ){// || (attack == AT_BAIR && is_attack_pressed(dir_back))) {
-                //do nothing
-            }
-            else {
-                var raw_input_front, raw_input_back;
-                if (spr_dir == 1)   { raw_input_front = ai_inputs_raw & INP_RIGHT != 0; raw_input_back = ai_inputs_raw & INP_LEFT != 0;  }
-                else                { raw_input_front = ai_inputs_raw & INP_LEFT != 0;  raw_input_back = ai_inputs_raw & INP_RIGHT != 0; }
-                
-                if (raw_input_front) {attack = AT_FAIR; print("corrected fair") }
-                else if (raw_input_back) {attack = AT_BAIR; print("corrected bair") }
-            }
-        }
-        
-        if (species_id == 1) attack = get_minun_attack(attack);
-    
-    break;
-    
-    
-    case AT_FAIR:
-        //correct to bair if required
-        if (custom_clone 
-        && !(master_player_id.special_held) 
-        && !check_attack_input_forward() //check_attack_input()//
-        && check_raw_input_backward()) {
-            attack = AT_BAIR;
-            print("corrected to bair")
-        }
-    if (species_id == 1) attack = get_minun_attack(attack);
-    break;
-        
-    case AT_BAIR:
-        //correct to fair if required
-        if (custom_clone 
-        && !(master_player_id.special_held) 
-        && !check_attack_input_backward() //not a typo
-        && check_raw_input_forward()) {
-            attack = AT_FAIR;
-            print("corrected to fair")
-        }
-    if (species_id == 1) attack = get_minun_attack(attack);
-    break;
-    */
     
     case AT_NAIR:
         //correct to a different aerial if required
@@ -168,8 +101,6 @@ switch (attack) {
             }
             */
             
-            
-            
            //the partner should always use jab towards the teammate UNLESS the player is forcing a desync with the special button
             if (instance_exists(teammate_player_id) && prev_state != PS_ATTACK_GROUND) {
                 var teammate_dir = sign(teammate_player_id.x - x);
@@ -181,7 +112,6 @@ switch (attack) {
     
     case AT_DATTACK:
         //if (custom_clone) print(string(get_gameplay_time()) + "artificial dash: " + string(artificial_dash > 0));
-        
         
         if (custom_clone && !(master_player_id.special_held) 
            && buffer_sync_state[buffer_counter] != PS_DASH && buffer_sync_state[buffer_counter] != PS_DASH_START
@@ -214,7 +144,7 @@ switch (attack) {
     case AT_UTILT:
     case AT_DTILT:
         if (custom_clone && !(master_player_id.special_held)) {
-            //correct for dashing
+            //correct for dashing - in cases where the AI teammate decided not to dash when the player inputted one
             if (artificial_dash < 0) { //(buffer_sync_state[buffer_counter] == PS_DASH_START) {
             //if (instance_exists(teammate_player_id) && sync_next_predicted_state == PS_ATTACK_GROUND && (teammate_player_id.attack == AT_DATTACK || teammate_player_id.attack == AT_MINUN_DATTACK)) {
                 attack = AT_DATTACK;

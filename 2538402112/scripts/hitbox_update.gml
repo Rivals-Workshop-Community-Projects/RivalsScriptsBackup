@@ -65,13 +65,13 @@ if (attack == AT_FSPECIAL){
 	if player == orig_player{ //Allows Ori to Bash it
 		hsp = lengthdir_x(14, player_id.grov_wandangle);
 		vsp = lengthdir_y(14, player_id.grov_wandangle);
-		player_id.grov_pounce_foe_id = null;
 	}
+	else player_id.grov_pounce_foe_id = null;
     if !free{
         should_pounce = true;
         destroyed_next = true;
     }
-    with(player_id){
+    if !bashed with(player_id){
 		if has_rune("N") && special_pressed{
 			other.should_pounce = true;
 			other.destroyed_next = true;
@@ -84,11 +84,10 @@ if (attack == AT_FSPECIAL){
 	}
     if should_pounce{
         if !bashed{
-			player_id.grov_pounce_foe = has_hit;
 			with(player_id){
 				if state != PS_HITSTUN{
 					if !other.has_hit{
-						grov_pouncex = other.x + 18;
+						grov_pouncex = other.x;
 						grov_pouncey = other.y + 7;
 						if !free && (y-grov_pouncey <= 18) && (y-grov_pouncey > 0) grov_pouncey = y;
 					}

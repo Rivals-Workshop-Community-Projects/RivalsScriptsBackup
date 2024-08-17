@@ -566,7 +566,7 @@ buffer_joy_pad_idle[buffer_counter] = joy_pad_idle;
 
 //states are synced in animation.gml.
 
-buffer_counter = (buffer_counter + 1) mod partner_input_buffer_delay;
+buffer_counter = (buffer_counter + 1) mod (partner_input_buffer_delay);
 
 
 

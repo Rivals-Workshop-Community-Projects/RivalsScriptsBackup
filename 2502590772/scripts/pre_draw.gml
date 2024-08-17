@@ -1,6 +1,7 @@
 //pre_draw
 
 
+
 if (is_master_player) exit;
 
 
@@ -57,6 +58,16 @@ else {
     shader_end();
 }
 
+//var xx = x + 150 * (species_id * 2 - 1);
+//draw_debug_text(xx, y - 180, "species_id: " + string(species_id));
+//draw_debug_text(xx, y - 200, "hh_charge_expiry_timer: " + string(hh_charge_expiry_timer));
+//draw_debug_text(xx, y - 220, "window: " + string(window));
+//draw_debug_text(xx, y - 240, "hh_charge_level: " + string(hh_charge_level));
+//draw_debug_text(xx, y - 260, "state: " + get_state_name(state));
+//draw_debug_text(xx, y - 280, "custom_clone: " + string(custom_clone));
+//draw_debug_text(xx, y - 300, "id: " + string(id));
+//draw_debug_text(xx, y - 320, "teammate_player_id: " + string(teammate_player_id));
+
 
    
 //remnants of debug hell, c. 2021 commentized
@@ -77,12 +88,13 @@ else {
 //draw_debug_text(x, y - char_height - 128, "should_not_be_running: " + string(should_not_be_dashing));
 //draw_debug_text(x, y - char_height - 96, "should_be_running: " + string(should_be_dashing));
 
+
 //with (obj_article3) draw_debug_text(x, y - 100, string(state))
-//var xx = x + 150 * (species_id * 2 - 1);
-//draw_debug_text(xx, y - 200, "hh_charge_expiry_timer: " + string(hh_charge_expiry_timer));
-//draw_debug_text(xx, y - 220, "hh_charge_level: " + string(hh_charge_level));
-//draw_debug_text(xx, y - 200, "window: " + string(window));
-//draw_debug_text(xx, y - 240, "state: " + get_state_name(state));
+
+
+
+
+
 //var i = -300;
 //var n = 16;
 //var xx = x + 150 * (species_id * 2 - 1);

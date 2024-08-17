@@ -11,6 +11,12 @@ switch(attack)
         if (window == 4 && window_timer == 1 && !hitpause)       hsp += (0*spr_dir);
         else if (window == 7 && window_timer == 1 && !hitpause)  hsp += (6*spr_dir);
         break;
+    case AT_UTILT:
+        if window == 1 && window_timer == 6 && !hitpause sound_play(asset_get("sfx_swipe_medium2"));
+        if window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) hud_offset = 45;
+        if window == 2 hud_offset = 45;
+        if window == 3 && window_timer < 8 hud_offset = 45;
+        break;
     case AT_DTILT:
         if window == 1 && window_timer == 4 && !hitpause sound_play(asset_get("sfx_waveland_may"),false,noone,0.7);
         break;
@@ -145,8 +151,6 @@ switch(attack)
             can_wall_jump = true;
             set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,1);
             
-            fall_through = true;
-            
             if grov_pounce_foe_id != null{
                 grov_pouncex = grov_pounce_foe_id.x;
                 grov_pouncey = grov_pounce_foe_id.y;
@@ -182,11 +186,13 @@ switch(attack)
                 else if vsp > 0 vsp = 0;
                 else vsp = max(-4, vsp);
             }
+            
+            if vsp > 0 fall_through = true; //Down here so vsp is already applied
         }
         else set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,0);
         break;
     case AT_USPECIAL:
-        move_cooldown[AT_USPECIAL] = 9999;
+        if has_rune("J") && !("no_more_stage" in self) move_cooldown[AT_USPECIAL] = 9999;
         can_fast_fall = false;
         if window == 1{
             if window_timer == 13 && !hitpause sound_play(asset_get("sfx_swipe_medium2"));

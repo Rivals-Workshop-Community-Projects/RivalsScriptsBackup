@@ -27,6 +27,10 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 
 if (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num > 2) {
 	hit_player_obj.frozenByNate = hit_player_obj.hitstop_full * 2;
+    if (my_hitboxID.hbox_num > 6 && my_hitboxID.hbox_num < 9) {
+        target = hit_player_obj;
+		create_hitbox(AT_JAB, 9, x, y);
+    }
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL) {

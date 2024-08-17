@@ -140,7 +140,7 @@ yellow_color = make_color_rgb(get_color_profile_slot_r(color, 3),get_color_profi
 //Support
 Hikaru_Title = "Something About";
 arena_title = "Something About";
-battle_text = "Do you kow where you're going when you die?"
+battle_text = "Do you know where you're going when you die?"
 ncode1 = "First you draw a circle, then you dot the eyes,"
 ncode2 = "Add a great big smile and Presto!"
 ncode3 = "Its Kirbo!"

@@ -1,5 +1,4 @@
-//draw_hud - the x position of your HUD element is 48*(i-1)
-
+//draw_hud
 if ("grov_hasruneO" in self) && !grov_hasruneO{
     var x_pos = 186;
     var temp_color = move_cooldown[AT_FTHROW] <= 0 ? c_white:c_gray;

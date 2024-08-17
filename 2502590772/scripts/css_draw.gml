@@ -61,8 +61,8 @@ alt_name[26] = "Sweet Stuff";
 alt_name[27] = "Nana & Popo";
 alt_name[28] = "Alto & Trummel";
 alt_name[29] = "MO & Astray";
-alt_name[30] = "Just Plusle (Co-Op/2v1)";
-alt_name[31] = "Just Minun (Co-Op/2v1)";
+alt_name[30] = "Solo Plusle (Co-Op/2v1)";
+alt_name[31] = "Solo Minun (Co-Op/2v1)";
  
  
 

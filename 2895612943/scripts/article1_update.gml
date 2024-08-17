@@ -221,7 +221,7 @@ if (state == 1){
 				//set_hitbox_value(atk, i, HG_PROJECTILE_PARRY_STUN, 1);
 				//set_hitbox_value(atk, i, HG_EXTENDED_PARRY_STUN, 1);
 				
-				var hbox = create_hitbox(atk, i, floor(other.x + (get_hitbox_value(atk, i, HG_HITBOX_X) * spr_dir)),
+				var hbox = create_hitbox(atk, i, floor(other.x + (get_hitbox_value(atk, i, HG_HITBOX_X) * other.spr_dir)),
 				    floor(other.y + get_hitbox_value(atk, i, HG_HITBOX_Y)));
 				
 				//properly set direction and speed

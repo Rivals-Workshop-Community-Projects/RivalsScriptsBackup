@@ -75,7 +75,10 @@ with (oPlayer){
                 if (can_djump == false){
                 	djumps = 3;
                 }
-                if (state_cat == SC_AIR_COMMITTED or state_cat == SC_HITSTUN){
+                if (can_djump == true){
+                    djumps = 0;
+                }
+                if (state_cat == SC_AIR_COMMITTED || state_cat == SC_HITSTUN){
                 	can_djump = true;
                 }
                 if (state == PS_FIRST_JUMP){

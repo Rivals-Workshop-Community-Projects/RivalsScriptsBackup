@@ -21,6 +21,12 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 46;
 }
 
+if (my_hitboxID.type == 1) {
+    if (firecharge != 0){
+		firecharge = 0;
+	}
+} 
+
 if my_hitboxID.type == 2 {
     my_hitboxID.hitbox_timer = 0;
 } 
