@@ -148,7 +148,7 @@ switch(attack){
                 }
                 break;
             case 3:
-                if !hitpause vsp = -lerp(12, 20, strong_charge / 60);
+                if !hitpause&&!was_parried vsp = -lerp(12, 20, strong_charge / 60);
                 break;
             case 4:
             case 5:
