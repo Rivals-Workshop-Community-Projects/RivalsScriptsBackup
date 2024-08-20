@@ -47,28 +47,12 @@ switch my_hitboxID.attack
 		fspecial_used = false;
 		move_cooldown[AT_FSPECIAL] = 30;
 	break;
-	case AT_UAIR:
-		old_vsp -= 0.5;
-		if (my_hitboxID.hbox_num == 1)
-		{
-			hit_player_obj.x = lerp(hit_player_obj.x,my_hitboxID.x+hsp,0.05)
-			hit_player_obj.y = lerp(hit_player_obj.y,my_hitboxID.y+vsp,0.05)
-		}
-		break;
 	case AT_FTILT:
 		if (my_hitboxID.hbox_num != 4)
 		{
 			hit_player_obj.x = lerp(hit_player_obj.x,my_hitboxID.x+hsp,0.2)
 			hit_player_obj.y = lerp(hit_player_obj.y,my_hitboxID.y+vsp,0.2)
 		}
-	break;
-	case AT_BAIR:
-		var extra_boost = (my_hitboxID.hbox_num == 3)*1 //If you are on the finisher, add 2 to final old_vsp
-		
-		old_vsp -= (1 + extra_boost);
-		
-		hit_player_obj.x = lerp(hit_player_obj.x,my_hitboxID.x,0.1)
-		hit_player_obj.y = lerp(hit_player_obj.y,my_hitboxID.y,0.1)
 	break;
 	case AT_DAIR:
 	if my_hitboxID.hbox_num == 1 {

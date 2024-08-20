@@ -64,6 +64,7 @@ sprite_change_offset("miiverse_post", 60, 30);
 sprite_change_offset("otto_bobblehead", 4, 4);
 sprite_change_offset("trialgrounds", 31, 0);
 sprite_change_offset("lastresort", 27, 39);
+sprite_change_offset("greenflowerzone", 18, 41, true);
 
 sprite_change_offset("blob_ball", 18, 18);
 sprite_change_offset("blob_ball_box", 18, 18);

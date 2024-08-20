@@ -1,13 +1,6 @@
 if attack == AT_NSPECIAL and instance_exists(voltorb_obj)
 {
     attack = AT_NSPECIAL_2;
-    
-    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DASH or voltorb_obj.state == PS_PRATFALL or voltorb_obj.state == PS_DEAD) and (voltorb_obj.inactive_timer == 0)
-    {
-        voltorb_obj.state = PS_DASH;
-        voltorb_obj.state_timer = 0;
-        voltorb_obj.lock_state = true;
-    }
 }
 
 if (attack == AT_TAUNT && (down_down)){
@@ -79,6 +72,7 @@ if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG or atta
             case AT_DSTRONG:
                 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong_2"));
                 set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 15);
+                set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
                 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.3);
                 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 143);
                 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));

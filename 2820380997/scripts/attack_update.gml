@@ -525,7 +525,7 @@ switch(attack){
 	// Set into extra 1 for controlling the clone	
 	case AT_NSPECIAL_2:
 	//if(window == 1 && window_timer == 1){clear_button_buffer(PC_SPECIAL_PRESSED)}
-	if(window == 1 && window_timer == get_window_value(AT_EXTRA_1,window,AG_WINDOW_LENGTH) && special_down){ // Set into beckon mod if held down
+	if(window == 1 && window_timer == get_window_value(AT_NSPECIAL_2,window,AG_WINDOW_LENGTH) && special_down){ // Set into beckon mod if held down
 		set_attack(AT_EXTRA_1);
 		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox
 		window = 2;

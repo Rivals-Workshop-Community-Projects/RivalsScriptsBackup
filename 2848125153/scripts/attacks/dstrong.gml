@@ -130,7 +130,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_IGNORES_PROJECTILES, true);
 //reflect
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 6, HG_WINDOW, 3);
-set_hitbox_value(AT_DSTRONG, 6, HG_LIFETIME, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_LIFETIME, 8);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_X, 45);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_DSTRONG, 6, HG_WIDTH, 95);

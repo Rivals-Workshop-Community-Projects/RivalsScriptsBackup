@@ -1,3 +1,5 @@
+print(move_cooldown[AT_NSPECIAL_2])
+
 if (galaxy_timer == 0 and instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect)
 {
     galaxy_timer = 90;
@@ -228,7 +230,7 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
                 
                 if !hitpause
                 {
-                    var joy_angle = !joy_pad_idle ? clamp(joy_dir,60,120) : 90;
+                    var joy_angle = 90-((right_down-left_down)*30)
                     var activated = false;
                     
                     if !uspec_parry_pressed and ((instance_exists(voltorb_obj) and voltorb_obj.state != PS_DEAD and voltorb_obj.state != PS_ATTACK_AIR) and uspec_held > 12)
@@ -369,6 +371,23 @@ if (instance_exists(thunderfx_obj))
 {
     thunderfx_obj.x = x + hsp;
     thunderfx_obj.y = y + vsp;
+}
+
+if (get_player_stocks(player) == max_stocks && get_player_damage(player) == 0) {
+	var foes = 0;
+	var foes_dead = 0;
+	for (var p = 0; p < array_length(player_refs); p++) {
+		if player_refs[p].friend or get_player_stocks(player_refs[p].player) != 0 continue;
+		
+		foes += 1;
+		if get_player_stocks(player_refs[p].player) == 0 {
+			foes_dead += 1;
+		}
+	}
+	if foes_dead == foes {
+		set_victory_portrait(sprite_get("portrait_lfg"))
+		set_victory_sidebar(sprite_get("result_small_lfg"))
+	}
 }
 
 #define spawn_base_dust

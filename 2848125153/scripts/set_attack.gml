@@ -307,12 +307,12 @@ if (attack == AT_BAIR){
 		
 		set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
 		set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
-		set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 10);set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .7);
+		set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .7);
 		set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 		
 		set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
 		set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .5);
-		set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 10);set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .7);
+		set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 5);set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .7);
 		set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	}else if(current_money <= 30000){
 		reset_attack_value(AT_BAIR, AG_SPRITE);
@@ -335,12 +335,12 @@ if (attack == AT_BAIR){
 		
 		set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 12);
 		set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1.1);
-		reset_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE,);reset_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE);reset_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING);
 		set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 		
 		set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 13);
 		set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 8);set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 1.15);
-		reset_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE,);reset_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE);reset_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING);
 		set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	}
 }

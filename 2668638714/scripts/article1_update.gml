@@ -40,8 +40,7 @@ lock_state = false;
 var next_anim = PS_WALK;
 var should_die = false;
 
-// if hitstop == 0
-// {
+print(get_state_name(state))
     switch (state)
     {
         case PS_WALK:
@@ -118,18 +117,6 @@ var should_die = false;
         //Electrification
         case PS_ATTACK_AIR:
         	
-    		with player_id
-    		{
-	            var xx = x;
-	            x = -200000;
-	            
-	            var nearest = instance_nearest(other.x,other.y,oPlayer);
-	            var nearestdist = point_distance(other.x,other.y,nearest.x + nearest.hsp,nearest.y + nearest.vsp - (nearest.char_height/2));
-	            //print(nearestdir)
-	            //print(nearestdist);
-	            
-	            x = xx;
-    		}
         
         	if state_timer == 0 and !instance_exists(electrify_hitbox)
         	{
@@ -150,6 +137,8 @@ var should_die = false;
         	
         	next_anim = PS_DEAD;
         	sprite_index = sprite_get("voltorb_attack")
+        	player_id.move_cooldown[AT_NSPECIAL_2] = 4;
+        	player_id.move_cooldown[AT_NSPECIAL] = 4;
         	image_index = (state_timer / elec_anim_frames) * sprite_get_number(sprite_index);
         	if (floor(image_index) >= sprite_get_number(sprite_index))
             {
@@ -160,6 +149,8 @@ var should_die = false;
         case PS_PRATFALL:
         case PS_DEAD:
         	if instance_exists(electrify_hitbox) instance_destroy(electrify_hitbox)
+        	player_id.move_cooldown[AT_NSPECIAL_2] = 4;
+        	player_id.move_cooldown[AT_NSPECIAL] = 4;
         	
         	sprite_index = sprite_get(state == PS_PRATFALL ? "voltorb_explode_endlag" : "voltorb_death")
         	var anim_frames = state == PS_PRATFALL ? nspec_death_anim_frames : death_anim_frames; 

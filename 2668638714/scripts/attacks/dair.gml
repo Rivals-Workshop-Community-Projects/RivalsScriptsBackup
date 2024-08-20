@@ -36,17 +36,17 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 //Landing Hitbox
 set_window_value(AT_DAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 5, AG_WINDOW_SFX, asset_get("sfx_ice_shatter"));
 
 //Landing Endlag
 set_window_value(AT_DAIR, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 22);
+set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 21);
 set_window_value(AT_DAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 5);
 set_window_value(AT_DAIR, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 6, AG_WINDOW_SFX, asset_get("sfx_waveland_eta"));

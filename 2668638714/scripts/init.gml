@@ -167,6 +167,15 @@ hit_sprites[2] = hit_fx_create(sprite_get("vfx_shatter_large"), 24);
 hit_sprites[3] = hit_fx_create(sprite_get("vfx_star_medium"), 24);
 electricvfx = hit_fx_create(sprite_get("electricvfx"), 28);
 electricvfx2 = hit_fx_create(sprite_get("electricvfx2"), 18);
+fstrong_dissipation = hit_fx_create(sprite_get("fstrong_proj1_die"), 16);
+max_stocks = get_player_stocks(player)
+
+player_refs = []
+with (oPlayer) {
+    if (array_find_index(other.player_refs, player) != -1) continue;
+	
+	array_push(other.player_refs, {player : player, friend : get_player_team(player) == get_player_team(other.player)})
+}
 
 uspec_held = 0;
 uspec_parry_pressed = false;

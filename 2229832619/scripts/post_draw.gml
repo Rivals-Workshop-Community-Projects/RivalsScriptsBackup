@@ -83,6 +83,18 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.3 - (2024 Aug 19)"
+		patch_note_text[i++] = 
+		"v3.3 (2024 Aug 19)
+		[b]fixes[/b]
+		- fixed the issue where n/a slicing the bubble and player at the same time overrides player-hit hitpause and sometimes lets n/a act much quicker than the opponent thats been hit
+
+		[b]notes[/b]
+		forgot this in last patch. thankfully it was easy enough
+		my personal thanks to the jpeg warrior
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v3.2 - (2024 Aug 14)"
 		patch_note_text[i++] = 
 		"v3.2 - (2024 Aug 14)

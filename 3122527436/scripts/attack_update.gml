@@ -67,6 +67,7 @@ case AT_DSTRONG:
 break;
 
 case AT_NSPECIAL:
+	move_cooldown[AT_NSPECIAL] = 20;
 	if window == 1{
 		nspecial_hold = 0
 		nspec_grabbed = false;
@@ -112,7 +113,7 @@ case AT_NSPECIAL:
 	if window == 4{
 		sound_stop(sound_get("inhale"));
 		if window_timer == 2{
-			divine_charge = divine_charge + 60;
+			divine_charge = divine_charge + 120;
 		}
 		if window_timer == 15{
 			sound_play(sound_get("nspecial_spit"));

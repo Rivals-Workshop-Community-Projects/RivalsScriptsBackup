@@ -14,6 +14,7 @@ set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_BAIR, 2, AG_WINDOW_VSPEED, -2);
 
 set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);

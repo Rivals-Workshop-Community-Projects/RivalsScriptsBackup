@@ -14,6 +14,8 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_weak"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 16);
@@ -24,6 +26,8 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_weak"));
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 14);
@@ -33,6 +37,8 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_ori_dsmash_skitter_alone"));
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
 
 set_num_hitboxes(AT_DSPECIAL, 2);
 

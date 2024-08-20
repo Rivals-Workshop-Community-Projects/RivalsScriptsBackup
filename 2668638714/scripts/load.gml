@@ -44,6 +44,7 @@ sprite_change_offset("dair_shatter", 100,124);
 sprite_change_offset("fstrong", 100,124);
 sprite_change_offset("fstrong_enhance", 100,124);
 sprite_change_offset("fstrong_proj1", 100,100);
+sprite_change_offset("fstrong_proj1_die", 100,100);
 sprite_change_offset("fstrong_proj2", 100,100);
 sprite_change_offset("ustrong", 100,198);
 sprite_change_offset("ustrong_bolt", 100,198);

@@ -188,6 +188,9 @@ switch(attack){
 		    	spawn_base_dust(x -4 *spr_dir,y,"dash",1* -spr_dir)
 			}
 		}
+		if window == 3 && spider_trigger == 1{
+    		super_armor = true;
+    	}
 		if (window == 3 && window_timer == 8) && !hitpause{
 		    	//spawn_hit_fx( x, y, dspecial_vfx );
 		    	if spider_trigger == 1{
@@ -210,6 +213,9 @@ switch(attack){
 	break;
     case AT_DSPECIAL_AIR:
     //Funny Feint Code
+    	if window == 4 && has_hit{
+    		super_armor = true;
+    	}
 		if (window == 4 && window_timer == 8) && !hitpause{
 		    	spawn_hit_fx( x, y, dspecial_air_vfx );
 		    	if has_hit{

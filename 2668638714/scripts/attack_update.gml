@@ -166,6 +166,15 @@ switch (attack)
     break;
     case AT_NSPECIAL_2:
         can_jump = has_hit;
+        
+        if window == 1 and window_timer == 1 {
+		    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DASH or voltorb_obj.state == PS_PRATFALL or voltorb_obj.state == PS_DEAD) and (voltorb_obj.inactive_timer == 0)
+		    {
+		        voltorb_obj.state = PS_DASH;
+		        voltorb_obj.state_timer = 0;
+		        voltorb_obj.lock_state = true;
+		    }        	
+        }
     break;
     case AT_DAIR:
         if window == 3
@@ -216,7 +225,11 @@ switch (attack)
         {
             hud_offset = round(lerp(hud_offset,160,0.2))
             if window_timer == 4 and !hitpause sound_play(asset_get("sfx_ori_uptilt_single"))
-            if window_timer == 7 and !hitpause sound_play(asset_get("sfx_ori_spirit_flame_1"))
+            if window_timer == 7 and !hitpause 
+            {
+            	vsp -= 3
+            	sound_play(asset_get("sfx_ori_spirit_flame_1"))
+            }
         }
     break;
     case AT_USPECIAL:

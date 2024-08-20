@@ -509,7 +509,7 @@ if(attack == AT_DSPECIAL){
 		if(hbox_num == 1){ //house
 			if(housemoney >= 10000){
 				destroyed = true;
-				player_id.property = create_hitbox(AT_DSPECIAL, 2, round(x), round(y));player_id.property.housemoney2 = housemoney;
+				player_id.property = spawn_hitbox(AT_DSPECIAL, 2, round(x), round(y));player_id.property.housemoney2 = housemoney;
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 302);
@@ -518,7 +518,7 @@ if(attack == AT_DSPECIAL){
 		}else if(hbox_num == 2){ //hotel
 			if(housemoney >= 30000){
 				destroyed = true;
-				player_id.property = create_hitbox(AT_DSPECIAL, 3, round(x), round(y));player_id.property.housemoney2 = housemoney;
+				player_id.property = spawn_hitbox(AT_DSPECIAL, 3, round(x), round(y));player_id.property.housemoney2 = housemoney;
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
@@ -592,7 +592,7 @@ if(attack == AT_DSPECIAL){
 	    	        		if(type <= 1){
 	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
 	    	        			if(other.hitpausehit <= 0){
-	    	        				other.hitpausehit = 5;
+	    	        				other.hitpausehit = 3;
 	    	        			}
 	    	        			other.hitstop = other.hitpausehit;
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
@@ -705,7 +705,7 @@ if(attack == AT_DSPECIAL){
 	    		sound_play(player_id.moneysfx1,false,noone,2);
 				sound_play(player_id.moneysfx2,false,noone,2);
 	    		if(housemoney >= 600){
-					var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+					var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
 					if(housemoney >= 3600 && housemoney >= 20000){
 						money.value = 3600;housemoney -= 3600;
 					}else if(housemoney >= 3000 && housemoney >= 15000){
@@ -720,7 +720,7 @@ if(attack == AT_DSPECIAL){
 						money.value = 600;housemoney -= 600;
 					}
 					if(housemoney >= 600){
-						var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+						var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
 						if(housemoney >= 3600 && housemoney >= 20000){
 							money.value = 3600;housemoney -= 3600;
 						}else if(housemoney >= 3000 && housemoney >= 15000){
@@ -735,7 +735,7 @@ if(attack == AT_DSPECIAL){
 							money.value = 600;housemoney -= 600;
 						}
 						if(housemoney >= 600){
-							var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+							var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
 							if(housemoney >= 3600 && housemoney >= 20000){
 								money.value = 3600;housemoney -= 3600;
 							}else if(housemoney >= 3000 && housemoney >= 15000){
@@ -750,7 +750,7 @@ if(attack == AT_DSPECIAL){
 								money.value = 600;housemoney -= 600;
 							}
 							if(housemoney >= 600){
-								var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(3, 10, true);money.vsp = -2-random_func(4, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+								var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(3, 10, true);money.vsp = -2-random_func(4, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
 								if(housemoney >= 3600 && housemoney >= 20000){
 									money.value = 3600;housemoney -= 3600;
 								}else if(housemoney >= 3000 && housemoney >= 15000){
@@ -768,7 +768,7 @@ if(attack == AT_DSPECIAL){
 						}
 					}
 	    		}else{
-	    			var money = create_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+	    			var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-25));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
 	    			money.value = housemoney;housemoney = 0;
 	    		}
 			}else{
@@ -778,17 +778,17 @@ if(attack == AT_DSPECIAL){
 					if(hbox_num == 1){
 						var explode = spawn_hit_fx(round(x) , round(y), player_id.fx_explosion);explode.draw_angle = random_func(0, 360, true);spawn_hit_fx(round(x) , round(y), 304);
 						sound_play(sound_get("explosion"));sound_play(player_id.moneybaghitsfx2,false,noone,1);shake_camera(12, 7);
-						create_hitbox(AT_DSPECIAL, 4, round(x), round(y));
+						spawn_hitbox(AT_DSPECIAL, 4, round(x), round(y));
 					}else if(hbox_num == 2){
 						var explode = spawn_hit_fx(round(x) , round(y-20), player_id.fx_explosion);explode.draw_angle = random_func(0, 360, true);spawn_hit_fx(round(x) , round(y-20), 304);
 						sound_play(sound_get("explosion"));sound_play(player_id.moneybaghitsfx2,false,noone,1);shake_camera(15, 10);
-						create_hitbox(AT_DSPECIAL, 5, round(x), round(y-20));
+						spawn_hitbox(AT_DSPECIAL, 5, round(x), round(y-20));
 					}else if(hbox_num == 3){
 						var explode = spawn_hit_fx(round(x) , round(y-45), player_id.fx_explosion_big);explode.draw_angle = random_func(0, 360, true);spawn_hit_fx(round(x) , round(y-45), 304);
 						sound_play(sound_get("explosion"));sound_play(player_id.moneybaghitsfx2,false,noone,1);shake_camera(20, 12);
-						create_hitbox(AT_DSPECIAL, 6, round(x), round(y-45));
+						spawn_hitbox(AT_DSPECIAL, 6, round(x), round(y-45));
 						if(y < room_height && !was_parried2){
-							player_id.current_money += housemoney;
+							player_id.current_money += housemoney;housemoney = 0;
 							sound_play(player_id.moneysfx1,false,noone,2);sound_play(player_id.soldsfx,false,noone,3);
 						}
 					}
@@ -809,8 +809,8 @@ if(attack == AT_JAB){
 		}if(hitbox_timer >= 100)depth = -2;
 		if(!free){
 			destroyed = true;
-			//create_hitbox(AT_JAB, 11, round(x), round(y+8));
-			var pile = create_hitbox(AT_JAB, 11, round(x), round(y+8));
+			//spawn_hitbox(AT_JAB, 11, round(x), round(y+8));
+			var pile = spawn_hitbox(AT_JAB, 11, round(x), round(y+8));
             pile.value = value;pile.hitbox_timer = hitbox_timer;
 			sound_play(sound_get("money_land"),false,noone,2);
 		}
@@ -829,7 +829,7 @@ if(attack == AT_JAB){
 		if(free){
 			num += 1;
 			if(num >= 10 && !destroyed){
-				var money = create_hitbox(AT_JAB, 10, round(x), round(y-8));
+				var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-8));
 				money.hsp = hsp*0.5;money.vsp = vsp*0.25;money.hitbox_timer = 90;money.hit_priority = 0;money.value = value;
 				destroyed = true;
 			}
@@ -942,7 +942,7 @@ if(attack == AT_DATTACK){
 			if(instance_exists(thedice)){
 				thedice.destroyed = true;
 			}
-			thedice = create_hitbox(AT_DATTACK, num+4, x, y);
+			thedice = spawn_hitbox(AT_DATTACK, num+4, x, y);
 		}*/
 		if(instance_exists(thedice)){
 			thedice.x = x;thedice.y = y-16;thedice.spr_dir = spr_dir;
@@ -1140,15 +1140,15 @@ if(attack == AT_BAIR){
         	if(hbox_num >= 3){
         		sound_play(player_id.moneysfx1,false,noone,2)
 				sound_play(player_id.moneysfx2,false,noone,2)
-				var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
-				money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+				var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+				money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
 				if(hbox_num >= 4){
-					var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
-					money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+					var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+					money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
 					if(hbox_num >= 5){
-						var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(4, 10, true);money.vsp = -2-random_func(5, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
-						money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(5, 10, true);money.vsp = -2-random_func(6, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
-						money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(6, 10, true);money.vsp = -2-random_func(7, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+						var money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(4, 10, true);money.vsp = -2-random_func(5, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+						money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(5, 10, true);money.vsp = -2-random_func(6, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
+						money = spawn_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(6, 10, true);money.vsp = -2-random_func(7, 12, true);money.hitbox_timer = 20;money.hit_priority = 0;
 		        	}
 	        	}
 	        	if(hbox_num == 3){
@@ -1235,6 +1235,9 @@ if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
 
 }
+
+#define spawn_hitbox(attack,index,x,y)
+	var hbx = create_hitbox(attack,index,x,y);hbx.init = false;
 
 #define projectile_trail
 	var traileff = noone;var traileff2 = noone;var the_hsp = 0;var the_vsp = 0;

@@ -1,4 +1,4 @@
-var attack = AT_NSPECIAL_2; // Walking commands
+var attack = AT_NSPECIAL_2; // Detonate Recall Clone
 
 //Attack Values-----------------------------------------------------------------------------
 set_attack_value(attack, AG_CATEGORY, 2);

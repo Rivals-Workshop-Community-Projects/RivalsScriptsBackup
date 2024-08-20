@@ -91,7 +91,10 @@ if(attack == AT_NSPECIAL){
         if(dicenum == 0){
             kb_value = 0;kb_scale = 0;
             hitstun_factor = -1;damage = 1;kb_angle = 361;sound_effect = asset_get("sfx_blow_weak1");
-            create_hitbox(AT_NSPECIAL, 3, player_id.x, player_id.y-35);create_hitbox(AT_NSPECIAL, 4, player_id.x, player_id.y-35);
+            var selfdmg = create_hitbox(AT_NSPECIAL, 3, player_id.x, player_id.y-35);create_hitbox(AT_NSPECIAL, 4, player_id.x, player_id.y-35);
+            if(instance_exists(selfdmg)){
+            	with(selfdmg)damage += 5*player_id.diceluck;
+            }
         }else if(dicenum == 1){
             kb_value = 3;kb_scale = 0.2;
             hitstun_factor = 0.5;damage = 3;kb_angle = 361;sound_effect = asset_get("sfx_blow_weak1");

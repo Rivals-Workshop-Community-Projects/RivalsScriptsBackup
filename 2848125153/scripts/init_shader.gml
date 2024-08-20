@@ -35,7 +35,7 @@ if(detish_alt){
 }
 
 
-//change w ability if on default 
+//skill
 if ("golden_skill_suit" not in self)golden_skill_suit = false;
 if (golden_skill_suit){
     if(alt_cur == 12 || alt_cur == 13 || alt_cur == 17 || alt_cur == 18 || alt_cur == 21 || alt_cur == 23 || alt_cur == 25 || alt_cur == 27){

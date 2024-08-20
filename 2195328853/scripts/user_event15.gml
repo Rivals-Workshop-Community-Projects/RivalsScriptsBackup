@@ -233,6 +233,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.83", "16th August 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Added Green Flower Zone compat
++ Removed old Feri compat");
+
 initPatch("1.82", "June 6th 2024");
 initHeader("Buffs");
 initSection("+ Hold DSpecial is stronger overall and does more damage and knockback, and also has less startup
@@ -369,7 +374,7 @@ initSection("");
 initHeader("Character by");
 initSection("FelixBlobDev");
 initHeader("Compatible with");
-initSection("Toon Link, Miiverse, Dracula, TCO, Wily Castle, Trial Grounds, Pkmn Stadium, Last Resort, Mt. Dedede, Boxing Ring, Agent N, Otto, Steve, Link");
+initSection("Toon Link, Miiverse, Green Flower Zone, Dracula, TCO, Wily Castle, Trial Grounds, Pkmn Stadium, Last Resort, Mt. Dedede, Boxing Ring, Agent N, Otto, Steve, Link");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 

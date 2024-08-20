@@ -191,7 +191,7 @@ thedice1 = noone;
 thedice2 = noone;
 previousdice = -1;
 fspec_charge = 0;
-dicecooldown = 0;
+dicecooldown = 0;dice_skill = true;
 tokencooldown = 0;
 thetoken = noone;
 uspecnum = 0;

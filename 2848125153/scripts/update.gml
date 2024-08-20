@@ -7,14 +7,14 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
 }
 
 if(instance_exists(thedice1) && instance_exists(thedice2)){
-    move_cooldown[AT_NSPECIAL] = 9999;
+    move_cooldown[AT_NSPECIAL] = 9999;dice_skill = false;
 }else{
-	if(!instance_exists(thedice1) && !instance_exists(thedice2)){
+	if(!instance_exists(thedice1) && !instance_exists(thedice2) || dice_skill){
 		dicecooldown--;
 		dicecooldown = max(0,dicecooldown);
 	}
 	if(dicecooldown <= 0){
-    	move_cooldown[AT_NSPECIAL] = 0;
+    	move_cooldown[AT_NSPECIAL] = 0;dice_skill = true;
 	}
 }
 if(instance_exists(thetoken)){
@@ -346,7 +346,7 @@ if(instance_exists(property) && check_offscreen(-150-(abs(hsp*5)-abs(vsp*5))) &&
         }
     }
 }
-//shiny effect for gold alt
+//peak gold mechanic
 if(golden_skill_suit){
 	if (state != PS_RESPAWN && state != PS_DEAD){
     	if(get_gameplay_time() % 20 == 0){
@@ -359,7 +359,7 @@ if(golden_skill_suit){
 }else{
 	propertymoney = 0;
 	if(instance_exists(property))if("housemoney" in property)propertymoney = property.housemoney;
-	if(current_money+propertymoney >= 150000-discount_stocks){
+	if(current_money+propertymoney >= 150000-discount){
 		golden_skill_suit = true;sound_play(sound_get("soldsfx big"),false,noone,2);
 		rand = random_func(0, 4, true);
 		if(rand <= 1){

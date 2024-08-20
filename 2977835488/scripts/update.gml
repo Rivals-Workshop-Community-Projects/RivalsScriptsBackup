@@ -51,7 +51,7 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
             case 2:
                 if !hitpause
                 {
-                    var joy_angle = !joy_pad_idle ? clamp(joy_dir,60,120) : 90;
+                    var joy_angle = 90-((right_down-left_down)*30)
                     var activated = false;
                     
                     

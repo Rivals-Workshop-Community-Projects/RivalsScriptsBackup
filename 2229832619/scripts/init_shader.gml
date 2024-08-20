@@ -237,7 +237,7 @@ base_col = make_colour_rgb(255, 64, 246 );
 }
 if (extra_col==5){//spiderboi "tiny"
 // shade, r, g, b, alpha
-set_character_color_slot(0, 53, 44, 222 ); //main
+/*set_character_color_slot(0, 53, 44, 222 ); //main
 set_character_color_slot(1, 43, 33, 176 ); //main.2
 set_character_color_slot(2, 39, 20, 135 ); //main.3
 set_character_color_slot(3, 53, 222, 181 ); //purple
@@ -252,8 +252,25 @@ set_article_color_slot(3, 53, 222, 181 ); //purple
 set_article_color_slot(4, 53, 222, 181 ); //white_eye
 set_article_color_slot(5, 224, 0, 0 ); //abyss_eye
 set_article_color_slot(6, 115, 97, 232 ); //blade
-set_article_color_slot(7, 87, 66, 156 ); //blade.2
-base_col = make_colour_rgb(53, 222, 181 );
+set_article_color_slot(7, 87, 66, 156 ); //blade.2*/
+
+set_character_color_slot( 0, 32, 69, 184 ); //main
+set_character_color_slot( 1, 28, 43, 176 ); //main.2
+set_character_color_slot( 2, 18, 28, 122 ); //main.3
+set_character_color_slot( 3, 53, 222, 211 ); //purple
+set_character_color_slot( 4, 111, 222, 211 ); //white_eye
+set_character_color_slot( 5, 111, 222, 211 ); //abyss_eye
+set_character_color_slot( 6, 91, 84, 232 ); //blade
+set_character_color_slot( 7, 47, 52, 173 ); //blade.2
+set_article_color_slot( 0, 32, 69, 184 ); //main
+set_article_color_slot( 1, 28, 43, 176 ); //main.2
+set_article_color_slot( 2, 18, 28, 122 ); //main.3
+set_article_color_slot( 3, 53, 222, 211 ); //purple
+set_article_color_slot( 4, 111, 222, 211 ); //white_eye
+set_article_color_slot( 5, 111, 222, 211 ); //abyss_eye
+set_article_color_slot( 6, 91, 84, 232 ); //blade
+set_article_color_slot( 7, 47, 52, 173 ); //blade.2
+base_col = make_colour_rgb(32, 69, 184 ); 
 }
 if (extra_col==6){//j4c "sunset"
 // shade, r, g, b, alpha

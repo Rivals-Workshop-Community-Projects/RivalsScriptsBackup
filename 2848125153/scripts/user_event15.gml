@@ -318,6 +318,18 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.32", "16th August, 2024");
+initHeader("Skillful Buffs");
+initSection("+ DStrong reflect now lasts 2f longer
++ The cooldown for overusing dices is slightly smaller (60f->30f) due to a general cooldown being added");
+initHeader("Unskillful Nerfs");
+initSection("- NSpecial punishes you more for rolling a 1 by doing 1% more self-dmg, having slight kbs, and doing a bit more stun. The self-dmg also scales up on yellow and red dices (I considered just nerfing the better dices like 6, but I think just making 1 worse is more fun)
+- Dices now have a slight general cooldown, just to make them a bit less spammy
+- FTilt spinning hitbox is a tiny bit smaller and does less hitstun");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed bug where if Mr. Monopoly destroyed his own bank it could grant him the golden suit unintentionally (it could sometimes count as 15 million for 1 frame due to the bank amount and his own amount)
++ Some misc fixes, mostly fixing some more obscure bugs (ex: reflecting Mr. Monopoly's property on frame 1 could break it)");
+
 initPatch("1.31", "2nd June, 2024");
 initHeader("Skillful Buffs");
 initSection("+ If Mr. Monopoly reaches 15 million money total, he gets a skillful golden suit! He loses it on death, but can regain it if he hits 15 million again
@@ -332,8 +344,8 @@ initSection("+ If Mr. Monopoly reaches 15 million money total, he gets a skillfu
 initHeader("Unskillful Nerfs");
 initSection("- Changed Mr. Monopoly's weight 1.0->1.10935 (technically 1.11, but it's an epic reference)
 - DStrong doesn't reach as far behind Mr. Monopoly anymore
-- UStrong now has a bit more endlag on light and medium versions, and drops more money on whiff
-- BAir now has a bit more endlag on light and medium versions, and drops more money on whiff
+- UStrong now has a bit more endlag on light and heavy versions, and drops more money on whiff
+- BAir now has a bit more endlag on light and heavy versions, and drops more money on whiff
 - DTilt sends less inward on the sweetspot
 - Doing the DAttack double Choo Choo tech now drops some money, to balance it a bit more but also as a tradeoff for the tech being easier to do
 - Dust is less active (dust nerf real)");

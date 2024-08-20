@@ -318,9 +318,13 @@ if (state == 1){
 					tmp_id.hitpause = true;
 				}
 				//note: this is n/a slashing
-				tmp_id.hitstop = 6;//9
+				/*tmp_id.hitstop = 6;//9
 				tmp_id.hitstop_full = 6;//9
-				hitstop = 6;//9
+				hitstop = 6;//9*/
+				//hitpause recode
+				tmp_id.hitstop = max(tmp_id.hitstop,6);
+				tmp_id.hitstop_full = max(tmp_id.hitstop,6);
+				hitstop = max(tmp_id.hitstop,6);
 				hbox_got_hit = tmp_hb_id;
 			}
 			}

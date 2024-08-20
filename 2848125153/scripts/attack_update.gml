@@ -35,10 +35,12 @@ if (attack == AT_NSPECIAL){
 	        	}else if(!instance_exists(thedice2)){
 	        		thedice2 = dice;
 	        	}
+	        	move_cooldown[AT_NSPECIAL] = 9999;move_cooldown[AT_FSPECIAL] = 9999;
+	        	dicecooldown += 60;tokencooldown += 60;
 	        	if(instance_exists(thedice1) && instance_exists(thedice2) && (instance_exists(thetoken) || tokencooldown > 0)){
-		        	dicecooldown += 90;
+		        	dicecooldown += 60;
 		        	if(tokencooldown > 0){
-		        		dicecooldown += 90;
+		        		dicecooldown += 60;
 		        	}
 	        	}
         	}
@@ -68,10 +70,12 @@ if (attack == AT_NSPECIAL){
 	        	}else{
 					create_hitbox(AT_JAB, 12, round(x+55*spr_dir), round(y-35));
 				}
+				/*move_cooldown[AT_NSPECIAL] = 9999;move_cooldown[AT_FSPECIAL] = 9999;
+	        	dicecooldown += 60;tokencooldown += 60;*/
 	        	if(instance_exists(thetoken) && (dicecooldown > 0 || instance_exists(thedice1) && instance_exists(thedice2))){
 		        	tokencooldown += 60;
 		        	if(dicecooldown > 0){
-		        		tokencooldown += 90;
+		        		tokencooldown += 60;
 		        	}
 	        	}
         	}
