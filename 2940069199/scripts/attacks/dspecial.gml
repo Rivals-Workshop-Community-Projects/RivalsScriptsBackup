@@ -56,6 +56,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("tetrinos1"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
