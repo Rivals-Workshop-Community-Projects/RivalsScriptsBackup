@@ -25,11 +25,26 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 	hit_player_obj.frozenByNate = hit_player_obj.hitstop_full * 2;
 }
 
-if (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num > 2) {
+if (my_hitboxID.attack == AT_JAB) {
+    set_hitbox_value(AT_JAB, 3, HG_WIDTH, 55);
+    set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 55);
+    set_hitbox_value(AT_JAB, 4, HG_WIDTH, 50);
+    set_hitbox_value(AT_JAB, 4, HG_HEIGHT, 40);
+    set_hitbox_value(AT_JAB, 5, HG_WIDTH, 55);
+    set_hitbox_value(AT_JAB, 5, HG_HEIGHT, 55);
+    set_hitbox_value(AT_JAB, 6, HG_WIDTH, 50);
+    set_hitbox_value(AT_JAB, 6, HG_HEIGHT, 40);
+    set_hitbox_value(AT_JAB, 7, HG_WIDTH, 60);
+    set_hitbox_value(AT_JAB, 7, HG_HEIGHT, 60);
+    set_hitbox_value(AT_JAB, 8, HG_WIDTH, 55);
+    set_hitbox_value(AT_JAB, 8, HG_HEIGHT, 45);
+}
+
+if (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num > 2 && my_hitboxID.hbox_num != 9) {
 	hit_player_obj.frozenByNate = hit_player_obj.hitstop_full * 2;
     if (my_hitboxID.hbox_num > 6 && my_hitboxID.hbox_num < 9) {
         target = hit_player_obj;
-		create_hitbox(AT_JAB, 9, x, y);
+		create_hitbox(AT_JAB, 10, x, y);
     }
 }
 

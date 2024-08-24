@@ -8,7 +8,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1) {
     }
 }
 
-if (attack == AT_JAB && hbox_num == 9) {
+if (attack == AT_JAB && hbox_num == 10) {
 	if (hitbox_timer > 2) {
 		hsp *= 0.75;
 		vsp *= 0.75;

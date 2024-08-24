@@ -21,7 +21,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -56,12 +56,12 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("null"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, hitA);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

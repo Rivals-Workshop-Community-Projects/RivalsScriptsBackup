@@ -59,7 +59,24 @@ if (attack == AT_TAUNT){
 if (attack == AT_FSTRONG && window == 2 && window_timer == 5) {sound_play(asset_get("sfx_bird_sidespecial_start"));}
 
 if (attack == AT_JAB) {
-	if (window == 4 && window_timer == 6) {spawn_base_dust(x + (40 * spr_dir), y, "dash", spr_dir * -1);}
+	if (window == 4 && window_timer == 6) {
+        spawn_base_dust(x + (40 * spr_dir), y, "dash", spr_dir * -1);
+            set_hitbox_value(AT_JAB, 3, HG_WIDTH, 45);
+            set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 45);
+            set_hitbox_value(AT_JAB, 4, HG_WIDTH, 40);
+            set_hitbox_value(AT_JAB, 4, HG_HEIGHT, 30);
+            set_hitbox_value(AT_JAB, 5, HG_WIDTH, 45);
+            set_hitbox_value(AT_JAB, 5, HG_HEIGHT, 45);
+            set_hitbox_value(AT_JAB, 6, HG_WIDTH, 40);
+            set_hitbox_value(AT_JAB, 6, HG_HEIGHT, 30);
+            set_hitbox_value(AT_JAB, 7, HG_WIDTH, 50);
+            set_hitbox_value(AT_JAB, 7, HG_HEIGHT, 50);
+            set_hitbox_value(AT_JAB, 8, HG_WIDTH, 45);
+            set_hitbox_value(AT_JAB, 8, HG_HEIGHT, 35);
+    }
+	if (window == 6) {
+        move_cooldown[AT_JAB] = 20;
+    }
 	if (window == 7 && window_timer == 8) {
         sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.8, 0.8);
         spawn_base_dust(x + (20 * spr_dir), y, "dash", spr_dir * -1);
@@ -745,7 +762,7 @@ if (attack == AT_DSPECIAL){
 		strong_down = special_down;
 		if (strong_charge == 1) {state_timer = 0;}
 		if (strong_charge > 0) {
-			if (state_timer % 15 = 0) {
+			if (state_timer % 19 == 15 || state_timer == 0) {
 				if (actionMeterFill < 40) {
 					sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"), false, noone, 0.3, 0.9);					
 				} else {
@@ -774,7 +791,7 @@ if (attack == AT_DSPECIAL){
 			strong_charge = (actionMeterFill / 200) * 60;
 		}
 	}
-	if (window == 2 && window_timer == 3) {
+	if (window == 2 && window_timer == 1) {
         if (right_down - left_down != 0) {spr_dir = sign(right_down - left_down);}
 		strong_charge = 0;
 		specialPower = actionMeterFill / 2;
@@ -787,13 +804,13 @@ if (attack == AT_DSPECIAL){
 		}
 		actionMeterStatus = actionMeterFill * -1;
         
-        for (i = 0; i < 1 + (floor(specialPower / 24)); i++) {
+        for (i = 0; i < 3 + (floor(specialPower / 27)); i++) {
             var spike = instance_create(x + (5 * spr_dir), y - 20, "obj_article1");
             spike.objectType = 1;
             spike.fake_vsp = -3 - (0.2 * i);
             spike.fake_hsp = spr_dir * (6 + i);
             
-            if (i == 4) {
+            if (specialPower == 100) {
                 spike.size = 1;
             }
             
