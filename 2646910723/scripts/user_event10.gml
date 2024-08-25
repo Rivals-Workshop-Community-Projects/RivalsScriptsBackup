@@ -95,6 +95,87 @@ if (slot == 5){
 	SSLtextDraw(temp_x+178, temp_y+10, "fName", col4, 20, 1000, fa_left, 1, 1, 1, "P" + string(slot));
 }
 
+
+if Gear = 1{
+	if GearX == -1 {
+	  draw_sprite_ext(sprite_get("Gear"), 0, temp_x-50, temp_y-64,4,4,0,-1,1); 
+	} else {
+	  draw_sprite_ext(sprite_get("Gear"), 1, temp_x-50, temp_y-64,4,4,0,-1,1); 	
+	}
+
+	if GearXlv == 1{
+        draw_sprite_ext(sprite_get("Gear"), 2, temp_x-50, temp_y-64,4,4,0,-1,abs(1 - (get_gameplay_time()%120)/60)); 
+	}
+	else if GearXlv == 2{
+        draw_sprite_ext(sprite_get("Gear"), 3, temp_x-50, temp_y-64,4,4,0,-1,abs(1 - (get_gameplay_time()%60)/30)); 
+	}
+	else if GearXlv == 3{
+        draw_sprite_ext(sprite_get("Gear"), 4, temp_x-50, temp_y-64,4,4,0,-1,abs(1 - (get_gameplay_time()%40)/20)); 
+	}
+	if GearX == 0 {
+	  draw_sprite_ext(sprite_get("Gear"), 0, temp_x-50, temp_y-64,4,4,0,-1,1); 
+	}
+}
+
+if Gear = 2{
+	draw_sprite_ext(sprite_get("Gear"), 6, temp_x-46, temp_y-68,4,4,0,-1,1); 
+	if GearB == 1{
+		draw_sprite_ext(sprite_get("Gear"), 7, temp_x-46, temp_y-68,4,4,0,-1,0.3); 
+	} else if GearB == 2{
+	    draw_sprite_ext(sprite_get("Gear"), 7, temp_x-46, temp_y-68,4,4,0,-1,0.6); 
+	} else if GearB >= 3{
+	    draw_sprite_ext(sprite_get("Gear"), 7, temp_x-46, temp_y-68,4,4,0,-1,1); 
+	}
+	if GearB == 4{
+		draw_sprite_ext(sprite_get("Gear"), 8, temp_x-46, temp_y-68,4,4,0,-1,0.3); 
+	} else if GearB == 5{
+	    draw_sprite_ext(sprite_get("Gear"), 8, temp_x-46, temp_y-68,4,4,0,-1,0.6); 
+	} else if GearB >= 6{
+	    draw_sprite_ext(sprite_get("Gear"), 8, temp_x-46, temp_y-68,4,4,0,-1,1); 
+	}
+}
+
+if Gear = 3{
+	if GearAir != 0{
+		draw_sprite_ext(sprite_get("Gear"), 10, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	} else {
+		draw_sprite_ext(sprite_get("Gear"), 9, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	}
+}
+if Gear = 4{
+	draw_sprite_ext(sprite_get("Gear"), 11, temp_x-48, temp_y-64,4,4,0,-1,1); 
+	if hitstop && get_gameplay_time() % 4 >= 1 && GearOcd <= 0{
+		draw_sprite_ext(sprite_get("Gear"), 15, temp_x-48, temp_y-68,4,4,0,-1,1); 
+	}
+	if !hitstop && (state_cat == SC_HITSTUN or hit_player_obj.state_cat == SC_HITSTUN) && GearOcd <= 0 && get_gameplay_time() % 20 >= 10{
+		draw_sprite_ext(sprite_get("Gear"), 15, temp_x-48, temp_y-68,4,4,0,-1,1); 
+	}
+	if GearO <= 30{
+		draw_sprite_ext(sprite_get("Gear"), 11, temp_x-48, temp_y-64,4,4,0,-1,1); 
+		if GearO > 15 && get_gameplay_time() % 10 >= 5{
+			draw_sprite_ext(sprite_get("Gear"), 12, temp_x-48, temp_y-64,4,4,0,-1,0.5);
+		}
+	} else if GearO <= 60{
+		draw_sprite_ext(sprite_get("Gear"), 12, temp_x-48, temp_y-64,4,4,0,-1,1); 
+		if GearO > 45 && get_gameplay_time() % 10 >= 5{
+			draw_sprite_ext(sprite_get("Gear"), 13, temp_x-48, temp_y-64,4,4,0,-1,0.5);
+		}
+	} else if GearO <= 90{
+		draw_sprite_ext(sprite_get("Gear"), 13, temp_x-48, temp_y-64,4,4,0,-1,1); 
+		if GearO > 75 && get_gameplay_time() % 10 >= 5{
+			draw_sprite_ext(sprite_get("Gear"), 14, temp_x-48, temp_y-64,4,4,0,-1,0.5);
+		}
+	} else if GearO <= 100{
+		draw_sprite_ext(sprite_get("Gear"), 14, temp_x-48, temp_y-64,4,4,0,-1,1); 
+	} else {
+		draw_sprite_ext(sprite_get("Gear"), 14, temp_x-48, temp_y-64,4,4,0,-1,1); 
+		if get_gameplay_time() % 10 >= 5{
+		draw_sprite_ext(sprite_get("Gear"), 15, temp_x-48, temp_y-64,4,4,0,-1,1); 	
+		}
+	}
+}
+
+
 //Damage Taken
 SSLtextDraw(temp_x+130, temp_y+10, "fName", col4, 20, 1000, fa_center, 1, 1, 1, string(damage) + "%");
 

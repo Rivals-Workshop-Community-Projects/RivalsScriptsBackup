@@ -60,6 +60,7 @@ sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);
 sprite_change_offset("taunt", 80, 158);
 sprite_change_offset("taunt_2", 80, 158);
+sprite_change_offset("final_smash", 208, 346);
 
 sprite_change_offset("plat", 80, 100);
 sprite_change_offset("ryk_hurtbox", 48, 126);

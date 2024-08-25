@@ -70,17 +70,16 @@ fast_fall 					= normal_fast_fall;
 jump_start_time     		= 5;		                // 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
 jump_speed 					= 11.5;		                // 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     		= 7;		                // 4    -  7.4
-normal_djump_speed 			= 5;		                // 6    -  12       absa's is -1 because of her floaty djump
+normal_djump_speed 			= 6;		                // 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         		= -1;		                // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time		= 10;		                //                  the amount of time that   djump_accel   is applied for
-normal_max_djumps 			= 3 + 2 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
+max_djumps 			        = 2;                        // 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        		= 5;		                // 4    -  7
 walljump_vsp        		= 11;		                // 7    -  10
 land_time           		= 4;		                // 4    -  6
 normal_prat_land_time		= 12;		                // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 djump_speed                 = normal_djump_speed;
-max_djumps 					= normal_max_djumps;
 prat_land_time				= normal_prat_land_time;
 
 // Shield-button actions
@@ -669,6 +668,7 @@ accel_flashed_time = 0;
 
 //polaris
 lightbuff_active = false;
+cancel_polaris = false;
 polaris_shot = false;
 polaris_id = noone;
 mp_cost_light_rate = 3; //used for polaris
@@ -815,8 +815,8 @@ dracula_portrait2 = sprite_get("dracula_port" + string(2 + 2 * (has_theikos || a
 
 //RC car
 kart_sprite = sprite_get("car");
-kart_frames = 4;
-kart_anim_speed = 0.1;
+kart_frames = 2;
+kart_anim_speed = 0;
 kart_anim_speed_scaling = 0.3;
 kart_engine_sound = 3;
 kart_drift_spr = 3;
@@ -880,6 +880,7 @@ fs_char_chosen_final_smash = "custom";
 fs_char_chosen_trigger = "custom";
 fs_char_attack_index = AT_OVERDRIVE;
 fs_hide_meter = true; //so i can make it use the OD gauge instead
+fs_meter_y = 10000;
 fs_charge_mult = 0;
 
 //put [fs_charge] in hit_player.gml and parry.gml so it will work like the rune version
@@ -894,13 +895,20 @@ pot_compat_variable = sprite_get("gumbo_schnitzel");
 pot_compat_text = "Holy Schnitzel";
 
 //Quote
-bar_victory_quote = "No problem.";
+victory_quote = "No problem.";
 emote = 2;
-bar_handled_victory_quote = false;
-bar_was_in_stage = get_stage_data(SD_ID);
+handled_victory_quote = false;
+was_in_stage = get_stage_data(SD_ID);
 
 //sonic rainbow ring trick
 sonic_rainbowring_atk = 46;
+
+//reiga knight compat (from hollow knight)
+knight_compat_dream = [
+    "I have to keep being a guardian... To keep the gauntlet...",
+    "The demons... They will never take anything from me again...",
+    "I wonder what's Venus doing now..."
+];
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 

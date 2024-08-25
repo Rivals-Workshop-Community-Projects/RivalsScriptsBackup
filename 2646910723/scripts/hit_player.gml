@@ -3,7 +3,17 @@ if (my_hitboxID.type == 1 && hit_player_obj.free == false) {
      hit_player_obj.y -= 1;
 }
 
-
+if GearX > 0 && my_hitboxID.damage >= 3{ 
+    if GearXlv == 1 take_damage(player,-1, floor(my_hitboxID.damage * -0.25))
+    if GearXlv == 2 take_damage(player,-1, floor(my_hitboxID.damage * -0.5))
+    if GearXlv == 3 take_damage(player,-1, floor(my_hitboxID.damage * -1))
+    with hit_player_obj {
+       take_damage(player,-1, floor(other.my_hitboxID.damage * other.GearXlv/2) )
+    }   
+    sound_play(sound_get("hextra"),false,noone,1,0.65)
+    hitstop += 3 + GearXlv*2
+    hit_player_obj.hitstop += 6 + GearXlv*2
+}
 
 var dmdamge = floor(my_hitboxID.damage/3)
 

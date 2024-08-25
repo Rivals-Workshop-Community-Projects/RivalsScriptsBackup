@@ -213,8 +213,8 @@ switch (skill_script_type)
         draw_sprite_ext(sprite_get("hud_menu"), menu_type == 0, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
 
         //buttons
-        if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), 0, menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
-        else draw_sprite_ext(sprite_get("hud_menu_buttons"), 1, menu_x, menu_y - 152, 2, 2, 0, c_white, 1);
+        if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), (menu_type == 2), menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
+        else draw_sprite_ext(sprite_get("hud_menu_buttons"), 2, menu_x, menu_y - 152, 2, 2, 0, c_white, 1);
 
         //practice text
         if (menu_type == 1)
@@ -399,20 +399,7 @@ switch (skill_script_type)
             }
 
             burnbuff_active = false;
-            if (array_length(polaris_shot_ids) > 0)
-            {
-                var i = 0;
-                repeat (polaris_shots_left)
-                {
-                    if (instance_exists(polaris_shot_ids[i]))
-                    {
-                        spawn_hit_fx(polaris_shot_ids[i].x, polaris_shot_ids[i].y, fx_skill7_afterimage);
-                        polaris_shot_ids[i].length = 0;
-                    }
-                    i ++;
-                }
-            }
-            lightbuff_active = false;
+            if (lightbuff_active) cancel_polaris = true;
         }
         else
         {
@@ -520,7 +507,7 @@ switch (skill_script_type)
 }
 #define update_sync_var()
 {
-    var player = (room == 114) ? 0 : self.player; //online css player is 0, this will sync the player 0 with the actual player slot
+    var player = (room == asset_get("network_char_select")) ? 0 : self.player; //online css player is 0, this will sync the player 0 with the actual player slot
     //room 114 is the online CSS room btw
 
     for (var i = 0; i <= 3; ++i)

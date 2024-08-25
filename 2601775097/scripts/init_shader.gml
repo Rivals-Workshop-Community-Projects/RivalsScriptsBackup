@@ -162,8 +162,8 @@ if (object_index == asset_get("draw_result_screen")) set_endgame_stuff(); //old 
 		default: var cur_pos = 0; break;
 		case 14: cur_pos = 1; break;
 		case 15: cur_pos = 2; break;
-		case 25: cur_pos = 3; break;
-		case 26: cur_pos = 4; break;
+		case 26: cur_pos = 3; break;
+		case 27: cur_pos = 4; break;
 	}
 
 	//results portrait

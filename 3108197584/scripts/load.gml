@@ -101,3 +101,22 @@ sprite_change_offset("vfx_missile_explosion", 89, 69);
 sprite_change_offset("crouch_hurt", 22, 50);
 sprite_change_offset("air_hurt", 18, 72);
 sprite_change_offset("uair_shell", 112, 250);
+
+sprite_change_offset("pointer", 15, 15);
+
+//super metroid compat
+sprite_change_offset("super_metroid_ship_cutscene", 121, 22);
+sprite_change_offset("super_metroid_ship", 94, 57);
+sprite_change_offset("super_metroid_ship_lights", 94, 57);
+sprite_change_offset("super_metroid_ship_hatch", 28, 72);
+sprite_change_offset("super_metroid_ship_col", 94, 57);
+sprite_change_collision_mask("super_metroid_ship_col", 0, 0, 0, 0, 0, 0, 0);
+sprite_change_offset("super_metroid_morph_ball", 8, 14);
+sprite_change_offset("super_metroid_map_icon", 0, -2);
+sprite_change_offset("super_metroid_map_ship", 4, 0);
+
+sprite_change_offset("super_metroid_save_pose", 35, 47);
+sprite_change_offset("super_metroid_save_sparks", 12, 48);
+sprite_change_offset("super_metroid_pause_cool_name", 24, 7);
+sprite_change_offset("super_metroid_pause_character", 30, 131);
+sprite_change_offset("super_metroid_bomb_guide_icon", 104, 24);

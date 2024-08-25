@@ -266,8 +266,8 @@ if !hitpause{
                         if instance_exists(wren_yoyo){
                             sound_play(asset_get("mfx_star"));
                             if wren_yoyo.state == 1{
-                                wren_yoyo.state = 2;
-                                wren_yoyo.state_timer = 0;
+		                    	wren_yoyo_timer = 0;
+		                    	wren_yoyo_recall = true;
                             }
                         }
                     }
@@ -285,6 +285,10 @@ if !hitpause{
         case AT_FSPECIAL:
     		if was_parried{
     		    can_move = false;
+    		} else {
+    			if has_hit{
+    				can_attack = true;
+    			}
     		}
     		check_for_bounce = true;
     		
@@ -319,13 +323,13 @@ if !hitpause{
                 	move_cooldown[AT_FSPECIAL] = 99999;
     				if window_timer == 1{
     					if up_down and !down_down{
-	    					hsp = 6 * spr_dir;
+	    					hsp = 4 * spr_dir;
 	    					vsp = -10;
     					} else if down_down and !up_down{
-	    					hsp = 10 * spr_dir;
+	    					hsp = 8 * spr_dir;
 	    					vsp = -6;
     					} else {
-	    					hsp = 8 * spr_dir;
+	    					hsp = 6 * spr_dir;
 	    					vsp = -8;
     					}
     					free = true;
@@ -350,8 +354,6 @@ if !hitpause{
     						spawn_base_dust(x, y, "land");
     						sound_play(landing_lag_sound);
     					}
-    				} else {
-    					can_attack = true;
     				}
     				vsp -= gravity_speed * 0.5;
                     break;
@@ -377,9 +379,10 @@ if !hitpause{
     						spawn_base_dust(x, y, "land");
     						sound_play(landing_lag_sound);
     					}
-    				}
-    				else if !was_parried{
-    				    iasa_script();
+    				} else {
+    					if window_timer >= 30{
+    						can_shield = true;
+    					}
     				}
                     break;
                 case 5:	// Riding the wave
@@ -473,6 +476,8 @@ if !hitpause{
 				                	attack_end();
 				                	set_state(PS_IDLE);
 				                	set_attack(AT_USPECIAL_2);
+				                	wren_yoyo.state = 8;
+				                	wren_yoyo.state_timer = 0;
 	                			}
 	                			break;
 	                		case 1:	// Tap/Hold
@@ -655,7 +660,12 @@ if !hitpause{
         				window = 3;
         				window_timer = 0;
         				sound_stop(asset_get("sfx_spin_longer"));
-        				sound_stop(sfx_wren_whirlpool_loop)
+        				sound_stop(sfx_wren_whirlpool_loop);
+        				with wren_yoyo{
+        					if instance_exists(hbox){
+        						instance_destroy(hbox);
+        					}
+        				}
         				instance_destroy(wren_yoyo);
         			} else {
         				var _wren_dir = point_direction(x,y,wren_yoyo_old_x,wren_yoyo_old_y);
@@ -697,7 +707,7 @@ if !hitpause{
             		if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
 	            		with(oPlayer){
 	            			if other.id != id{
-			            		if wren_riptide_id == other.id{
+			            		if (wren_riptide_id == other.id and (point_distance(x,y,other.x,other.y) <= wren_riptide_id.wren_riptide_dist)){
 			            			switch(wren_stacks){
 			            				case 1:
 					            			with(wren_riptide_id){
@@ -821,7 +831,7 @@ if !hitpause{
             		if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
 	            		with(oPlayer){
 	            			if other.id != id{
-			            		if wren_riptide_id == other.id{
+			            		if wren_riptide_id == other.id and (point_distance(x,y,other.x,other.y) <= wren_riptide_id.wren_riptide_dist){
 			            			switch(wren_stacks){
 			            				case 1:
 					            			with(wren_riptide_id){
@@ -948,6 +958,13 @@ if !hitpause{
         
         #region // RIVALS 2 MODE
         //////////////////////////
+        if wren_rivaltwo_mode{
+        	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+        		if vsp < 0{
+        			can_wall_jump = false;
+        		}
+        	}
+        }
         #region // Knockdown
         case AT_EXTRA_1:
         	switch(window){
@@ -1102,13 +1119,16 @@ if !hitpause{
         #region // Ledge
         case AT_EXTRA_3:
         	can_move = false;
+        	if window < 3{
+        		if (down_pressed or ((spr_dir == 1 and left_pressed) or (spr_dir == -1 and right_pressed))){
+        			wren_hasgrabbedledge = false;
+        			set_window(13);
+        		}
+        	}
         	switch(window){
         		case 1:	// Grabbed Ledge
         			vsp = 0;
         			hsp = 0;
-        			if window_timer >= 1{
-        				invincible = true;
-        			}
         			break;
         		case 2: // Hanging from Ledge
         			vsp = 0;
@@ -1127,27 +1147,34 @@ if !hitpause{
         			}
         			if jump_pressed{
         				set_state(PS_FIRST_JUMP);
+        				wren_hasgrabbedledge = false;
         			}
         			break;
         		case 3: // Normal Get-up
+        			if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1{
+        				wren_hasgrabbedledge = false;
+        			}
         			break;
         		case 4:	// Get-up Attack (Start-Up)
         			break;
         		case 5: // Get-up Attack (Active)
         			break;
         		case 6: // Get-up Attack (Recovery)
+        			wren_hasgrabbedledge = false;
         			break;
         		case 7:	// Get-up Special (Start-Up)
         			break;
         		case 8: // Get-up Special (Active)
         			break;
         		case 9: // Get-up Special (Recovery)
+        			wren_hasgrabbedledge = false;
         			break;
         		case 10: // Get-up Roll (Start)
         			break;
         		case 11: // Get-up Roll (Active)
         			break;
         		case 12: // Get-up Roll (Recovery)
+        			wren_hasgrabbedledge = false;
         			break;
         	}
         	break;
@@ -1175,7 +1202,7 @@ if !instance_exists(wren_yoyo){
 #define remove_riptide
 with(oPlayer){
 	if other.id != id{
-		if wren_riptide_id == other.id{
+		if wren_riptide_id == other.id and point_distance(x,y,wren_riptide_id.x,wren_riptide_id.y) <= wren_riptide_id.wren_riptide_dist{
 			if wren_caught_cooldown == 0{
 				hitstop = 0;
 				hitpause = false;

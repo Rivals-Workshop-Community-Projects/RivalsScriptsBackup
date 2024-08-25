@@ -16,27 +16,12 @@ switch(hitmove){
                 wren_wave.hitstop = floor(get_hitstop_formula(get_player_damage(hit_player_obj.player),
                 my_hitboxID.damage, my_hitboxID.hitpause, my_hitboxID.hitpause_growth,
                 my_hitboxID.extra_hitpause));
-                //hit_player_obj.x = wren_wave.x + hsp;
-                //hit_player_obj.y = wren_wave.y;
+                hit_player_obj.x = wren_wave.x + hsp;
+                hit_player_obj.y = wren_wave.y;
                 wren_wave.wave_hitplayer = true;
                 hit_player_obj.wren_riptide_id = id;
                 wren_enemy_riptide_id = hit_player_obj.id;
                 hit_player_obj.should_make_shockwave = false;
-                break;
-            case 4:
-                hit_player_obj.wren_riptide_id = id;
-                wren_enemy_riptide_id = hit_player_obj.id;
-                hit_player_obj.wren_stacks += 1;
-                break;
-        }
-        break;
-    case AT_DTILT:
-        switch(hitmove_box){
-            case 2:
-            case 3:
-                hit_player_obj.wren_riptide_id = id;
-                wren_enemy_riptide_id = hit_player_obj.id;
-                hit_player_obj.wren_stacks += 1;
                 break;
         }
         break;
@@ -81,27 +66,14 @@ switch(hitmove){
                 }
                 hit_player_obj.should_make_shockwave = false;
                 break;
-            case 5:
-                hit_player_obj.wren_riptide_id = id;
-                wren_enemy_riptide_id = hit_player_obj.id;
-                hit_player_obj.wren_stacks += 1;
-                break;
         }
         break;
-    case AT_NSPECIAL_2:
-        hit_player_obj.wren_riptide_id = id;
-        wren_enemy_riptide_id = hit_player_obj.id;
-        hit_player_obj.wren_stacks += 1;
-        break;
     case AT_USPECIAL:
-        hit_player_obj.wren_riptide_id = id;
-        wren_enemy_riptide_id = hit_player_obj.id;
         switch(hitmove_box){
             default:
                 hit_player_obj.should_make_shockwave = false;
                 break;
             case 5:
-                hit_player_obj.wren_stacks += 1;
                 break;
         }
         if hitmove_box < 5 and hit_player_obj.hitpause{
@@ -111,8 +83,6 @@ switch(hitmove){
         }
         break;
     case AT_USPECIAL_GROUND:
-        hit_player_obj.wren_riptide_id = id;
-        wren_enemy_riptide_id = hit_player_obj.id;
         switch(hitmove_box){
             default:
                 hit_player_obj.should_make_shockwave = false;
@@ -138,12 +108,6 @@ switch(hitmove){
                 hit_player_obj.y = wren_yoyo.y;
                 hit_player_obj.should_make_shockwave = false;
                 break;
-            case 2:
-                hit_player_obj.wren_riptide_id = id;
-                hit_player_obj.wren_caught_cooldown = 20;
-                hit_player_obj.wren_stacks += 1;
-                wren_enemy_riptide_id = hit_player_obj.id;
-                break;
         }
         if instance_exists(wren_yoyo){
             wren_yoyo.hitstop = ext_sweet_hitstop(hitmove_box);
@@ -151,11 +115,10 @@ switch(hitmove){
         break;
     case AT_DSPECIAL_2:
         hit_player_obj.should_make_shockwave = false;
-        if hit_player_obj.wren_caught_cooldown == 0 and hit_player_obj.wren_stacks > 2 and hit_player_obj.super_armor == false{
-            hit_player_obj.wren_caught = true;
-        }
         break;
 }
+
+print(string(hit_player_obj.wren_stacks))
 
 #define ext_sweet_hitstop(_hitbox)
 get_hitstop_formula(get_player_damage(hit_player_obj.player),

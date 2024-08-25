@@ -162,6 +162,12 @@ wren_riptide = false;       // Are you caught in the riptide?
 wren_caught = false;
 wren_caught_cooldown = 0;
 wren_enemy_riptide_id = noone;  // to see who is in your whirlspool
+
+wren_riptide_dist = 360;
+
+wren_yoyo_recall = false;
+wren_yoyo_timer = 0;
+wren_yoyo_timer_max = 16;
 #endregion
 
 #region//DEBUG
@@ -169,7 +175,7 @@ wren_debug = false;
 #endregion
 
 #region//Rivals 2 Mode?
-wren_rivaltwo_mode = false;
+wren_rivaltwo_mode = true;
 wren_rtwo_was_hit = false;
 wren_rtwo_stopparry = true;
 wren_rtwo_cangrabledge = true;
@@ -178,6 +184,21 @@ wren_parry_cool_max = 20;
 wren_shield_health_max = 180; // 3 Seconds roughly holding shield to pop.
 wren_shield_health = wren_shield_health_max;
 wren_shield_anim = 0;
+wren_rtwo_buffer = 0;
+wren_rtwo_buffer_max = 4;
+
+wren_ledgetimer = 0;
+wren_hasgrabbedledge = false;
+wren_ledgeautodrop_timer = 0;
+wren_ledgecount = 0;
+wren_ledgecount_max = 2;
+
+wren_riptide_id = noone;    // Checking for the owner of the status effect, who applied it most recently.
+wren_riptide = false;       // Are you caught in the riptide?
+wren_stacks = 0;            // 1 - Just a hitbox that sends towards, 2 - Half pull duration, 3 - Full Duration
+wren_stack_max = 3;
+wren_caught = false;        // Hit by DSpecial pull
+wren_caught_cooldown = 0;
 #endregion
 
 #endregion

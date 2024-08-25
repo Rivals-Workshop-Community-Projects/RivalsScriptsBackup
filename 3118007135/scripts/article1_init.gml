@@ -69,13 +69,15 @@ is_wren_yoyo = true;
 player_attack = AT_JAB;
 player_hitbox = 1;
 
-wren_recall_spd = 15;
+wren_recall_spd = 13;
 yoyo_charge_lvl = 0;
 
 whirlspool_cool = 60;
 whirlspool_cool_max = 60;
 
 riptide_stacks_opp = 0;
+whirl_storelastplayer = noone;
+whirl_shouldhitowner = false;
 
 hbox = noone;
 #endregion

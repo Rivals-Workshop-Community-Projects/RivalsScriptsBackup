@@ -37,6 +37,16 @@ if target_practice_mode{
     hurtboxID.sprite_index = sprite_get("empty");
 }
 
+if "metroid_room" in obj_stage_main{
+    if !obj_stage_main.pause_world morph_ball_time += spr_dir;
+    morph_ball_time %= 40;
+    if morph_ball_time < 0 morph_ball_time = 39;
+    super_metroid_morph_ball_r_anim = morph_ball_time*.2;
+    super_metroid_morph_ball_l_anim = super_metroid_morph_ball_r_anim;
+}
+
+//move_cooldown[AT_FSPECIAL] = 0;
+
 #define offset_hud
 /// offset_hud(val, am = .3;)
 var val = argument[0];

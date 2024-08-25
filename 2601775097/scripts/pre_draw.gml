@@ -24,7 +24,7 @@ if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && fr
 
 
 //lightstunning effect
-if (lightstun_active) with (oPlayer) if ("lightstun_type" in self && lightstun_type == 2) with (other)
+if (lightstun_active) with (all) if ("lightstun_type" in self && lightstun_type == 2) with (other)
 {
 	draw_sprite_ext(sprite_get("fx_lightstunned"), other.lightstun_timer*-0.25, other.x, other.y-other.char_height/2-4, 1, 1, -other.lightstun_timer*5, c_white, 0.6);
 }

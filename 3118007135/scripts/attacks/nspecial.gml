@@ -99,7 +99,7 @@ AG_WINDOW_ANIM_FRAME_START, 2
 #endregion
 
 #region // | HITBOXES |
-set_num_hitboxes(AT_NSPECIAL_2, 2);
+set_num_hitboxes(AT_NSPECIAL_2, 3);
 
 #region // Recall Hitbox - No Charge Default
 make_hitbox(AT_NSPECIAL_2, 1,
@@ -108,10 +108,10 @@ make_hitbox(AT_NSPECIAL_2, 1,
     HG_LIFETIME, 999,
     HG_HITBOX_X, 0,
     HG_HITBOX_Y, 0,
-    HG_WIDTH, 65,
-    HG_HEIGHT, 65,
+    HG_WIDTH, 55,
+    HG_HEIGHT, 55,
     HG_PRIORITY, 3,
-    HG_DAMAGE, 8,
+    HG_DAMAGE, 7,
     HG_ANGLE, 70,
     HG_ANGLE_FLIPPER, 7,
     HG_BASE_KNOCKBACK, 8,
@@ -144,10 +144,10 @@ make_hitbox(AT_NSPECIAL_2, 2,
     HG_LIFETIME, 999,
     HG_HITBOX_X, 0,
     HG_HITBOX_Y, 0,
-    HG_WIDTH, 65,
-    HG_HEIGHT, 65,
+    HG_WIDTH, 55,
+    HG_HEIGHT, 55,
     HG_PRIORITY, 3,
-    HG_DAMAGE, 8,
+    HG_DAMAGE, 7,
     HG_ANGLE, 70,
     HG_ANGLE_FLIPPER, 0,
     HG_BASE_KNOCKBACK, 8,
@@ -169,6 +169,40 @@ make_hitbox(AT_NSPECIAL_2, 2,
     HG_PROJECTILE_WALL_BEHAVIOR, 1,
     HG_PROJECTILE_GROUND_BEHAVIOR, 1,
     HG_TECHABLE, 2,
+    HG_PROJECTILE_DOES_NOT_REFLECT, 1
+)
+#endregion
+
+#region // lmao no knockback or damage! Just there for parry.
+make_hitbox(AT_NSPECIAL_2, 3,
+    HG_HITBOX_TYPE, 2,
+    HG_WINDOW, 6,
+    HG_LIFETIME, 999,
+    HG_HITBOX_X, 0,
+    HG_HITBOX_Y, 0,
+    HG_WIDTH, 65,
+    HG_HEIGHT, 65,
+    HG_PRIORITY, 3,
+    HG_DAMAGE, 0,
+    HG_ANGLE, 70,
+    HG_ANGLE_FLIPPER, 0,
+    HG_BASE_KNOCKBACK, 0,
+    HG_KNOCKBACK_SCALING, 0,
+    HG_BASE_HITPAUSE, 0,
+    HG_HITPAUSE_SCALING, 0,
+    HG_HITSTUN_MULTIPLIER, 0,
+    HG_SDI_MULTIPLIER, 0,
+    HG_VISUAL_EFFECT, asset_get("empty_sprite"),
+    HG_HIT_SFX, asset_get("sfx_waterhit_heavy"),
+    HG_PROJECTILE_SPRITE, asset_get("empty_sprite"),
+    HG_PROJECTILE_MASK, -1,
+    HG_PROJECTILE_IS_TRANSCENDENT, 1,
+    HG_PROJECTILE_PARRY_STUN, 1,
+    HG_PROJECTILE_ENEMY_BEHAVIOR, 1,
+    HG_PROJECTILE_UNBASHABLE, true,
+    HG_PROJECTILE_PLASMA_SAFE, true,
+    HG_PROJECTILE_WALL_BEHAVIOR, 1,
+    HG_PROJECTILE_GROUND_BEHAVIOR, 1,
     HG_PROJECTILE_DOES_NOT_REFLECT, 1
 )
 #endregion

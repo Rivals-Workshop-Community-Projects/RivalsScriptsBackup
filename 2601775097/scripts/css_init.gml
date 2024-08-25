@@ -106,11 +106,11 @@ for (var i = 0; i <= 3; ++i)
     }
 }
 
-if (init && room != 114) set_synced_var(player, 0);
+if (init && room != asset_get("network_char_select")) set_synced_var(player, 0);
 
 //saves skill data in case it's needed
 //if not, set it to [12816], which is the default kit
-if (get_synced_var(player) >= 4228 && (!init || room == 114)) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+if (get_synced_var(player) >= 4228 && (!init || room == asset_get("network_char_select"))) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
 else set_synced_var(player, 12816);
 
 //put this in user_event2 ^ because it needs to run on css and ingame

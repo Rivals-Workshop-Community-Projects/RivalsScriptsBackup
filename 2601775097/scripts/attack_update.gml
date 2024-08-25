@@ -17,8 +17,14 @@ switch (attack)
         if (has_hit && !hitpause) can_dash = true;
         break;
     case AT_UTILT:
-        can_fast_fall = false;
         hsp = clamp(hsp, -3, 3);
+        if (was_parried && vsp < 0) vsp = 0; //momentum cancel if he got parried
+
+        if (window > 2 && !free)
+		{
+			landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+			set_state(!was_parried ? PS_LANDING_LAG : PS_PRATLAND);
+		}
         break;
     case AT_NAIR:
         var nair_cancel_time = 18; //smaller number means the delay is bigger
@@ -118,15 +124,13 @@ switch (attack)
                         hook_bar_pos[1] = y-32-6*spr_dir;
                     }
 
-                    if (bar_tracking_id != noone) //track target
+                    if (instance_exists(bar_tracking_id) && bar_tracking_id != noone) //track target
                     {
                         angle_saved = point_direction(bar_hitbox.x, bar_hitbox.y, bar_tracking_id.x, bar_tracking_id.y);
                         if (angle_saved < 50 || angle_saved > 270) angle_saved = 50;
                         else if (angle_saved > 140) angle_saved = 140;
-
-                        bar_tracking_id = noone;
                     }
-                    else //check bar's inputs
+                    else if (!instance_exists(bar_tracking_id) || bar_tracking_id == noone) //check bar's inputs
                     {
                         if (joy_pad_idle) angle_saved = 90;
                         else
@@ -146,6 +150,7 @@ switch (attack)
                     bar_hitbox.vsp = ustrong_dir[1];
 
                     if (has_rune("H") && burnbuff_active) bar_hitbox = noone;
+                    bar_tracking_id = noone;
                 }
 
                 if (bar_tracking_id == noone && burnbuff_active) burnbuff_active = false;
@@ -379,8 +384,8 @@ switch (attack)
                 var foe_y = free ? y+16 : y-8;
                 if (bar_grab_time < 7)
                 {
-                    bar_grabbed_id.x = ease_sineInOut(bar_grabbed_id.x, foe_x, bar_grab_time, 7);
-                    bar_grabbed_id.y = ease_sineInOut(bar_grabbed_id.y, foe_y, bar_grab_time, 7);
+                    bar_grabbed_id.x = ease_sineInOut(floor(bar_grabbed_id.x), floor(foe_x), bar_grab_time, 7);
+                    bar_grabbed_id.y = ease_sineInOut(floor(bar_grabbed_id.y), floor(foe_y), bar_grab_time, 7);
                 }
                 else
                 {
@@ -585,8 +590,8 @@ switch (attack)
 
                 if (hitpause) //bring the grabbed foe to bar
                 {
-                    x = ease_sineInOut(x, other.x-40*spr_dir, other.bar_grab_time, 7);
-                    y = ease_sineInOut(y, other.y-24, other.bar_grab_time, 7);
+                    x = ease_sineInOut(floor(x), floor(other.x-40*spr_dir), other.bar_grab_time, 7);
+                    y = ease_sineInOut(floor(y), floor(other.y-24), other.bar_grab_time, 7);
                 }
 
                 switch (other.window)
@@ -789,15 +794,9 @@ switch (attack)
         if (window == 6 && lightbuff_active)
         {
             spawn_hit_fx(x, y-32, fx_lightblow[1]);
-            sound_play(asset_get("sfx_abyss_despawn"));
             sound_play(asset_get("sfx_holy_lightning"));
 
-            for (var i = 0; i < polaris_shots_left; i++)
-            {
-                spawn_hit_fx(polaris_shot_ids[i].x, polaris_shot_ids[i].y, fx_skill7_afterimage);
-                polaris_shot_ids[i].length = 0;
-            }
-            lightbuff_active = false;
+            cancel_polaris = true;
             polaris_cd = polaris_cd_max;
         }
         break;
@@ -1128,14 +1127,11 @@ switch (attack)
         switch (window)
         {
             case 1: //var reset
-                strong2_charge = 0;
                 ustrong2_pillar_end_timer = 1;
                 if (window_timer == window_end) sound_play(sfx_charge);
                 break;
             case 2: //loop setup while charging
-                if (strong_charge % 4 == 0 && strong_charge != 60 && strong_charge != 0) strong2_charge ++;
-
-                set_window_value(attack, 4, AG_WINDOW_LOOP_TIMES, strong2_charge+1);
+                set_window_value(attack, 4, AG_WINDOW_LOOP_TIMES, floor(lerp(4, 15, strong_charge/60)));
                 set_hitbox_value(attack, 1, HG_WIDTH, 50+strong_charge*2);
                 set_hitbox_value(attack, 2, HG_WIDTH, 70+strong_charge*2);
 
@@ -1159,6 +1155,7 @@ switch (attack)
         {
             case 1: //var reset
                 strong2_charge = 0;
+                if (window_timer == 1) hsp = -8 * spr_dir;
                 break;
             case 2: //loop setup while charging
                 if (strong_charge % 15 == 0 && strong_charge != 60) strong2_charge ++;
@@ -1241,9 +1238,9 @@ switch (attack)
         {
             od_bg_alpha = 1;
 
-            with (oPlayer) if (player != other.player) //time slow (freeze)
+            with (all) if ("object_index" in self && object_index == oPlayer && player != other.player || "enemy_stage_article" in self) //time slow (freeze)
             {
-                if (hurtboxID.dodging) hurtboxID.dodging = false;
+                if ("dodging" in hurtboxID && hurtboxID.dodging) hurtboxID.dodging = false;
                 hitpause = true;
                 hitstop_full = 60;
                 hitstop = 2;
@@ -1251,6 +1248,7 @@ switch (attack)
                 vsp = 0;
                 old_hsp = 0;
                 old_vsp = 0.001;
+                if (other.theikos_type == 2 && object_index == oPlayer && state != PS_DEAD && state != PS_RESPAWN) set_state(PS_PRATFALL);
 
                 if (holyburning) holyburning = false; //lord's punishment disables bar's mechanics
                 if (lightstun_type != 0) lightstun_type = 0;
@@ -1266,7 +1264,7 @@ switch (attack)
         {
             case 1:                                         //var setup
                 burnbuff_active = false;
-                lightbuff_active = false;
+                if (lightbuff_active) cancel_polaris = true;
                 super_armor = true;
                 hsp = 0;
                 vsp = 0;
@@ -1477,21 +1475,24 @@ if (theikos_type > 0 && attack != AT_OVERDRIVE) allow_turbo();
     var fx_hsp = argument_count > 7 ? argument[7] : 0;
     var fx_vsp = argument_count > 8 ? argument[8] : 0;
 
-    var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
-    var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
-
-    fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
-    fx_name.spr_dir = -spr_dir;
-    if (depth != 0) fx_name.depth = fx_depth;
-    else fx_name.depth = 3;
-    if (fx_angle == -1)
+    if (visible)
     {
-        var random_angle = random_func(6, 360,true);
-        fx_name.draw_angle = random_angle;
+        var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
+        var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
+
+        fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
+        fx_name.spr_dir = -spr_dir;
+        if (depth != 0) fx_name.depth = fx_depth;
+        else fx_name.depth = 3;
+        if (fx_angle == -1)
+        {
+            var random_angle = random_func(6, 360,true);
+            fx_name.draw_angle = random_angle;
+        }
+        else if (fx_angle >= 0) fx_name.draw_angle = fx_angle;
+        fx_name.hsp = fx_hsp;
+        fx_name.vsp = fx_vsp;
     }
-    else if (fx_angle >= 0) fx_name.draw_angle = fx_angle;
-    fx_name.hsp = fx_hsp;
-    fx_name.vsp = fx_vsp;
 }
 #define set_window(window_num)
 {

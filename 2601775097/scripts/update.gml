@@ -131,13 +131,11 @@ if (!free)
 }
 else
 {
+    if (glide_stamina <= 0) can_glide = false; //if stamina reaches 0 stop gliding
     if (can_glide) //check if bar can glide
     {
         if (state_cat == SC_AIR_NEUTRAL && state != PS_FIRST_JUMP && state != PS_GLIDE && vsp > 1 && jump_down) set_state(PS_GLIDE);
     }
-    
-    if (glide_stamina > 0) djumps = 0;
-    else djumps = max_djumps;
 
     switch (state)
     {
@@ -164,11 +162,7 @@ else
             if (fast_falling) vsp = glide_fastfall_vsp;
         
             glide_stamina --;
-            if (glide_stamina <= 0) //if stamina reaches 0 stop gliding
-            {
-                can_glide = false;
-                set_state(PS_IDLE_AIR);
-            }
+            if (glide_stamina <= 0) set_state(PS_IDLE_AIR); //if stamina reaches 0 stop gliding
             if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp); //turn bar around if he goes fast enough
         
             //anim stuff
@@ -176,7 +170,7 @@ else
             image_index += glide_anim_speed;
             
             //show glide ui
-            glide_ui = true;
+            glide_ui = draw_indicator;
         
             //exit glide
             if (!jump_down) set_state(PS_IDLE_AIR);
@@ -193,11 +187,7 @@ else
         
             //midair turning
             var turn_timeframe = 5; //decides how much time bar has to turn around
-            if (state_timer == 0)
-            {
-                djump_turn = false;
-                glide_stamina -= has_rune("B") ? 30 : 40;
-            }
+            if (state_timer == 0) djump_turn = false;
             if (state_timer <= turn_timeframe && !djump_turn)
             {
                 if (right_down && -spr_dir)
@@ -212,13 +202,14 @@ else
                 }
             }
             break;
-                
-    
     }
+
+    if (djumps > 0 && djumps < max_djumps) glide_stamina -= has_rune("B") ? 30 : 40;
+    djumps = max_djumps * (glide_stamina <= 0);
 }
 
 //GLIDE UI
-if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && prev_state != PS_PRATFALL && theikos_type == 0) glide_ui = true; //show glide UI
+if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && prev_state != PS_PRATFALL && theikos_type == 0) glide_ui = draw_indicator; //show glide UI
 else glide_ui = false;
 
 //MP MECHANIC
@@ -257,23 +248,18 @@ if (mp_mini_timer > 0) mp_mini_timer --;
 //HOLY BURNING MECHANIC
 if (holyburn_active)
 {
-    with (oPlayer)
+    with (all) if ("holyburning" in self)
     {
-        if ("holyburning" not in self) holyburning = false; //playtesting shenaningans
-
-        if (state == PS_DEAD || state == PS_RESPAWN) //set player to stop burning if they are dead
-        {
-            holyburning = false;
-            holyburn_timer = 0;
-        }
-
         if (holyburning && holyburner_id == other)
         {
             if (!hitpause || hitpause && lightstun_type == 2) //only damage if the player isn't in hitpause
             {
                 holyburn_timer --;
-
-                if (holyburn_timer % 30 == 0) take_damage(player, other.player, 1); //DoT
+                if (holyburn_timer % 30 == 0) //DoT
+                {
+                    if (object_index == oPlayer) take_damage(player, holyburner_id.player, 1);
+                    else if ("enemy_stage_article" in self) hp --;
+                }
                 if (holyburn_timer <= 0 && lightstun_type != 2) holyburning = false;
 
                 //extra mp gain from mechanics
@@ -298,6 +284,12 @@ if (holyburn_active)
             outline_color = outline_check;
             init_shader();
         }
+
+        if (object_index == oPlayer) if (state == PS_DEAD || state == PS_RESPAWN) //set player to stop burning if they are dead
+        {
+            holyburning = false;
+            holyburn_timer = 0;
+        }
     }
 }
 if (!burned && !activate_outline && !holyburning)
@@ -309,10 +301,8 @@ if (!burned && !activate_outline && !holyburning)
 //LIGHT STUNNING MECHANIC
 if (lightstun_active)
 {
-    with (oPlayer)
+    with (all) if ("lightstun_type" in self) 
     {
-        if ("lightstun_type" not in self) lightstun_type = 0; //playtesting shenaningans: blinding boogaloo
-
         if (lightstun_type > 0 && lightstunner_id == other)
         {
             if (lightstun_timer > -1) lightstun_timer --;
@@ -350,7 +340,21 @@ if (lightstun_active)
                 case 2: //frozen
                     hitpause = true;
                     hitstop = 2;
-                    set_state(PS_HITSTUN);
+                    if (object_index == oPlayer) set_state(PS_HITSTUN);
+                    else if ("enemy_stage_article" in self)
+                    {
+                        state = 6;
+                        state_timer = 0;
+                        window = 0;
+                        window_timer = 0;
+                        if (has_hit_player) has_hit_player = false;
+                        if ("loops_done" in self) loops_done = 0;
+                        if ("grab_id" in self)
+                        {
+                            grab_id = noone;
+                            grab_time = 0;
+                        }
+                    }
                     break;
             }
 
@@ -423,6 +427,18 @@ else bar_grab_time = 0;
 //allows bar to act out of certain skills
 if (skill_cancel_timer <= 0) start_skill_cancel = false;
 else if (start_skill_cancel && !hitpause) skill_cancel_timer --;
+
+if (cancel_polaris)
+{
+    sound_play(asset_get("sfx_abyss_despawn"));
+    for (var j = 0; j < polaris_shots_left; j++)
+    {
+        spawn_hit_fx(polaris_shot_ids[j].x, polaris_shot_ids[j].y, fx_skill7_afterimage);
+        polaris_shot_ids[j].length = 0;
+    }
+    lightbuff_active = false;
+    cancel_polaris = false;
+}
 
 //skill/strongs cost (special cooldowns are done inside the skills themselves) + skill logic
 if (!menu_active)
@@ -571,16 +587,7 @@ if (!menu_active)
                 {
                     //mp burning
                     if (!infinite_mp_mode) mp_current -= (mp_cost_light_rate * polaris_shots_left)/60;
-                    if (mp_current <= 0)
-                    {
-                        lightbuff_active = false;
-                        sound_play(asset_get("sfx_abyss_despawn"));
-                        for (var j = 0; j < polaris_shots_left; j++)
-                        {
-                            spawn_hit_fx(polaris_shot_ids[j].x, polaris_shot_ids[j].y, fx_skill7_afterimage);
-                            polaris_shot_ids[j].length = 0;
-                        }
-                    }
+                    if (mp_current <= 0) cancel_polaris = false;
 
                     //internal cooldown stuff
                     if (polaris_shot) polaris_shot = false;
@@ -612,8 +619,7 @@ if (!menu_active)
                         {
                             spawn_hit_fx(x, y-32, fx_lightblow[1]);
                             sound_play(asset_get("sfx_abyss_despawn"));
-
-                            lightbuff_active = false;
+                            cancel_polaris = true;
                         }
                     }
 
@@ -1036,7 +1042,7 @@ if (has_theikos && (was_reloaded || theikos_type == 0 && got_gameplay_time > 100
 if (bibical)
 {
     wait_time = 0; //prevents bar from sticking out of the bibically accurate angel costume
-    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
+    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE || is_attacking)
     {
         bibical = false;
         wait_time = normal_wait_time;
@@ -1123,6 +1129,9 @@ if (alt_cur == 26)
     }
 }
 
+//anti-cheapie no stunlock
+if (theikos_type == 2 && !hitpause) orig_knock = 0;
+
 ////////////////////////////////////////////////////////// VALUE STORAGE /////////////////////////////////////////////////////////////////
 if (was_free != free) was_free = free;
 
@@ -1141,24 +1150,35 @@ user_event(6);
 //steve death messages / pit codec
 user_event(7);
 
+if (got_gameplay_time == 2) //dream nail arc redirect
+{
+    if ("is_arc" in my_pet) knight_compat_dream = [
+        "Trying to read his mind~? Too bad! It's your friendly ghost girl instead~!",
+        "Testing, testing, 1 2 3! Oh, it seems that you see me?",
+        "I live rent free in his mind, isn't that cool~?"
+    ];
+}
+
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if player_id == other && "dont_color" not in self {
-        if "col" not in self {
-            with other {
-                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
-                if other.col == 0 other.col = c_red;
-                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+    with (pHitBox) if (player_id == other && "dont_color" not in self)
+    {
+        if ("col" not in self)
+        {
+            with (other)
+            {
+                var parent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX)
+                var true_hbox_num = parent ? parent : other.hbox_num
+                other.col = get_hitbox_value(other.attack, true_hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, true_hbox_num, HG_SHAPE)
                 other.draw_colored = true;
-                if other.type == 1
-                    other.sprite_index = __hb_hd_spr[other.shape];
-                else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
-                    other.mask_index = __hb_hd_spr[other.shape];
-                else 
-                    other.draw_colored = false;
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, true_hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
                 other.draw_spr = __hb_draw_spr;
             }
         }
@@ -1266,30 +1286,33 @@ user_event(7);
     var fx_vsp = argument_count > 8 ? argument[8] : 0;
     var fx_dir = argument_count > 9 ? argument[9] : 0;
 
-    var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
-    var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
-    var random_fx = random_func(26, 3, true);
-
-    fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
-    fx_name.spr_dir = -spr_dir;
-    if (depth != 0) fx_name.depth = fx_depth;
-    else fx_name.depth = 3;
-    if (fx_angle == -1)
+    if (visible)
     {
-        var random_angle = random_func(6, 360,true);
-        fx_name.draw_angle = random_angle;
-    }
-    else if (fx_angle >= 0) fx_name.draw_angle = fx_angle;
-    fx_name.hsp = fx_hsp;
-    fx_name.vsp = fx_vsp;
-    if (fx_dir == 0)
-    {
-        var random_dir = random_func(7, 2, true);
-        if (random_dir == 0) random_dir = -1;
+        var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
+        var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
+        var random_fx = random_func(26, 3, true);
 
-        fx_name.spr_dir = random_dir;
+        fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
+        fx_name.spr_dir = -spr_dir;
+        if (depth != 0) fx_name.depth = fx_depth;
+        else fx_name.depth = 3;
+        if (fx_angle == -1)
+        {
+            var random_angle = random_func(6, 360,true);
+            fx_name.draw_angle = random_angle;
+        }
+        else if (fx_angle >= 0) fx_name.draw_angle = fx_angle;
+        fx_name.hsp = fx_hsp;
+        fx_name.vsp = fx_vsp;
+        if (fx_dir == 0)
+        {
+            var random_dir = random_func(7, 2, true);
+            if (random_dir == 0) random_dir = -1;
+
+            fx_name.spr_dir = random_dir;
+        }
+        else fx_name.spr_dir = fx_dir;
     }
-    else fx_name.spr_dir = fx_dir;
     
 }
 #define mp_consume_check()
@@ -1448,6 +1471,9 @@ user_event(7);
     	case "2443363942":
     	case "2159023588":
     	case "1980469422":
+        case "3139883935":
+        case "3143553390":
+        case "1892907972":
     		break;
     	default:
     		if (

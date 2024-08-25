@@ -92,7 +92,7 @@ set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 // Shield Drop
 set_window_value(AT_EXTRA_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_2, 3, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_EXTRA_2, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_2, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_EXTRA_2, 3, AG_WINDOW_GOTO, 12);
@@ -120,7 +120,7 @@ set_window_value(AT_EXTRA_2, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 
 // Spot Dodge (Active)
 set_window_value(AT_EXTRA_2, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_2, 7, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_EXTRA_2, 7, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_EXTRA_2, 7, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_EXTRA_2, 7, AG_WINDOW_SFX, asset_get("sfx_quick_dodge"));
 set_window_value(AT_EXTRA_2, 7, AG_WINDOW_ANIM_FRAMES, 1);

@@ -53,7 +53,11 @@ switch (state)
             }
         }
 
-        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) do_destroy();
+        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN)
+        {
+            do_destroy();
+            exit;
+        }
         break;
     case "power_crater":        //power smash burning ground
         apply_base_logic(1, 0, sprite_get("fx_skill5"), sprite_get("hitbox_skill5"), player_id.hb_color[3]);
@@ -72,7 +76,11 @@ switch (state)
                 switch (window_timer)
                 {
                     case 2:
-                        if (free) do_destroy();
+                        if (free)
+                        {
+                            do_destroy();
+                            exit;
+                        }
                         break;
                 }
                 break;
@@ -114,6 +122,22 @@ switch (state)
                         holyburn_timer = other.player_id.holyburn_timer_set;
                         holyburner_id = other.player_id;
                     }
+                }
+                with (obj_stage_article) if ("enemy_stage_article" in self && place_meeting(x, y, other))
+                {
+                    if ("holyburn_timer" not in self)
+                    {
+                        lightstunner_id = noone;
+                        lightstun_type = 0;
+                        lightstun_timer = 0;
+                    
+                        holyburning = false;
+                        holyburner_id = noone;
+                        holyburn_timer = 0;
+                    }
+                    holyburning = true;
+                    holyburn_timer = other.player_id.holyburn_timer_set;
+                    holyburner_id = other.player_id;
                 }
             }
 
@@ -234,7 +258,11 @@ switch (state)
 if (last_window > 0)
 {
     artc_image_index = lerp(window_frame_start, window_frame_start+window_frames, window_timer/window_length);
-    if (window_timer >= window_length) do_destroy();
+    if (window_timer >= window_length)
+    {
+        do_destroy();
+        exit;
+    }
 }
 
 

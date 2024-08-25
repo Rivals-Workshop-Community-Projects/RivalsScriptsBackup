@@ -64,3 +64,20 @@ if (instance_exists(hook_chain_artc))
         window_timer = 0;
     }
 }
+
+//anti-cheapie no stunlock
+if (theikos_type == 2 && (orig_knock < soft_armor || super_armor) && state_cat != SC_HITSTUN)
+{
+    if (state == PS_PRATFALL)
+    {
+        set_state(PS_IDLE_AIR);
+        has_walljump = true;
+    }
+    if (state == PS_PRATLAND)
+    {
+        set_state(PS_IDLE);
+    }
+    hitpause = false;
+    hitstop = 0;
+    hitstop_full = 0;
+}

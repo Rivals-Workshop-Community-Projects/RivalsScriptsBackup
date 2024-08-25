@@ -32,7 +32,6 @@ set_color_profile_slot_range( 6, 1, 21, 56 );
 set_color_profile_slot( 0, 7, 102, 114, 118 );
 set_color_profile_slot_range( 7, 6, 14, 25 );
 
-
 // ALTERNATE COLORS
 set_num_palettes( 33 );
 

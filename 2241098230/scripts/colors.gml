@@ -230,14 +230,14 @@ set_color_profile_slot( 22, 4, 250, 241, 192 ); //White
 set_color_profile_slot( 22, 5, 255, 223, 18 ); //Fire Outline
 set_color_profile_slot( 22, 6, 255, 211, 117 ); //Smoke
 
-//Galactic
-set_color_profile_slot( 23, 0, 123, 0, 255 ); //Skin
+// Galactic
+set_color_profile_slot( 23, 0, 93, 76, 186 ); //Skin
 set_color_profile_slot( 23, 1, 98, 0, 189 ); //Hair
-set_color_profile_slot( 23, 2, 71, 0, 214 ); //Fire/Gold
-set_color_profile_slot( 23, 3, 50, 0, 150 ); //Pants
-set_color_profile_slot( 23, 4, 244, 222, 255 ); //White
-set_color_profile_slot( 23, 5, 83, 0, 250 ); //Fire Outline
-set_color_profile_slot( 23, 6, 83, 0, 250 ); //Smoke
+set_color_profile_slot( 23, 2, 52, 110, 247 ); //Fire/Gold
+set_color_profile_slot( 23, 3, 18, 22, 87 ); //Pants
+set_color_profile_slot( 23, 4, 234, 191, 255 ); //White
+set_color_profile_slot( 23, 5, 62, 0, 191 ); //Fire Outline
+set_color_profile_slot( 23, 6, 109, 71, 184 ); //Smoke
 
 // Regismolder
 set_color_profile_slot( 24, 0, 150, 158, 158 ); //Skin

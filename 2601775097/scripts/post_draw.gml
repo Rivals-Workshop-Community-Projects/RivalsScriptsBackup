@@ -1,7 +1,7 @@
 //post-draw
 
 //gliding UI
-if (glide_ui)
+if (glide_ui && draw_indicator)
 {
     draw_sprite_stretched_ext(spr_pixel, 0, floor(x-37), floor(y-char_height-32), 69, 6, c_black, 1); //outline
     draw_sprite_stretched_ext(spr_pixel, 0, floor(x-35), floor(y-char_height-30), 65, 2, $316f09, 1); //empty
@@ -10,46 +10,6 @@ if (glide_ui)
 
 if (!hitpause)
 {
-    //dust effects
-    if (is_attacking)
-    {
-        switch (attack)
-        {
-            case AT_UTILT:
-                if (window == 3 && window_timer == 0) spawn_base_dust(x, y+10, "jump");
-                break;
-            case AT_FTILT:
-                if (window == 3 && window_timer == 0) spawn_base_dust(x+(48*spr_dir), y, "dash_start", -1*spr_dir);
-                break;
-            case AT_FSTRONG:
-                if (window == 3 && window_timer == 1) spawn_base_dust(x-(16*spr_dir), y, "dash_start");
-                break;
-            case AT_UTHROW: //force leap
-                if (window == 4 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, angle_saved-90);
-                break;
-            case AT_EXTRA_2: //light hookshot
-                if (window == 5 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, -80*spr_dir);
-                break;
-            case AT_EXTRA_1: //chasm burster
-                if (window_timer == 0)
-                {
-                    switch (window)
-                    {
-                        case 1:
-                            if (free) spawn_base_dust(x, y, "djump");
-                            break;
-                        case 4:
-                            spawn_base_dust(x-(16*spr_dir), y, "dash_start");
-                            break;
-                    }
-                }
-                break;
-            case AT_FSTRONG_2:
-                if ((window == 3 && window_timer == 0 || window == 7 && window_timer == 4) && !free) spawn_base_dust(x, y, "dash_start");
-                break;
-        }
-    }
-
     //accel blitz effect
     if (accel_act_time > 0)
     {
@@ -62,9 +22,6 @@ if (!hitpause)
             gpu_set_blendmode(bm_normal);
         }
     }
-
-    //rune A airdash dust
-    if (rune_A_active && state == PS_AIRDASH && state_timer == 1) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -85*spr_dir);
 }
 
 shader_start();
@@ -132,7 +89,7 @@ if (is_attacking) switch (attack)
 shader_end();
 
 //small MP guage
-if (mp_mini_timer > 0)
+if (mp_mini_timer > 0 && draw_indicator)
 {
     var mp_x = floor(x) - 24;
     var mp_y = floor(y) + 16;
@@ -162,23 +119,29 @@ if (mp_mini_timer > 0)
 //skill select (playtest mode)
 if (playtesting)
 {
-    menu_x = floor(x)-104;
-    menu_y = floor(y)+16;
+    if (room != asset_get("network_char_select") && room != asset_get("workshop_room"))
+    {
+        var small_meter_x = floor(x)-104;
+        var small_meter_y = floor(y)+16;
+        if (x < 100) small_meter_x = 100-104;
+        if (x > 860) small_meter_x = 860-104;
+        if (y > 466) small_meter_y = 466+16;
+        if (y < 148) small_meter_y = 148+16;
+    }
+    else
+    {
+        var small_meter_x = 4;
+        var small_meter_y = clamp(floor(y)+24, 168, 440);
+    }
 
-    if (x < 100) menu_x = 100-104;
-    if (x > 860) menu_x = 860-104;
-    if (y > 466) menu_y = 466+16;
-    if (y < 148) menu_y = 148+16;
-
-    draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, 1); // background
-    //for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
+    draw_sprite_stretched_ext(spr_pixel, 0, small_meter_x + 14, small_meter_y - 104, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, 1); // background
 
     for (var i = 0; i <= 2; ++i) //fill
     {
         draw_sprite_stretched_ext(
             spr_pixel, 0,
-            menu_x + 12 + i * 2,
-            menu_y - 102 - i * 2,
+            small_meter_x + 12 + i * 2,
+            small_meter_y - 102 - i * 2,
             floor(mp_current)/2 + 2 - 50 * (mp_current > 100),
             2,
             mp_current <= 100 ? mp_color : mp_color_ex,
@@ -187,21 +150,8 @@ if (playtesting)
     }
 
 
-    draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
-    draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
-    
-    /*
-    //just in case online CSS messes up again
-    if (room == 114)
-    {
-        if (menu_active) //skill select
-        {
-            skill_script_type = 2;
-            user_event(2);
-        }
-        else draw_debug_text(menu_x + 16, menu_y + 32, "UP + TAUNT = skill select"); //text
-    }
-    */
+    draw_sprite_ext(sprite_get("hud_mp_small"), 0, small_meter_x + 8, small_meter_y - 118, 2, 2, 0, c_white, 1); //frame
+    draw_debug_text(small_meter_x + 12, small_meter_y - 90, "MP: " + string(floor(mp_current))); //text
 }
 
 
@@ -273,38 +223,4 @@ if (alt_cur == 19)
     if (alpha != 1) alpha = alpha;
 
     draw_text_color(x, y, string, color, color, color, color, alpha);
-}
-#define spawn_base_dust
-{
-    /// spawn_base_dust(x, y, name, dir = 0, angle = 0)
-    ///spawn_base_dust(x, y, name, ?dir, ?angle)
-
-    //This function spawns base cast dusts. Names can be found below.
-    var dlen; //dust_length value
-    var dfx; //dust_fx value
-    var dfg; //fg_sprite value
-    var dust_color = 0;
-    var x = argument[0], y = argument[1], name = argument[2];
-    var dir = argument_count > 3 ? argument[3] : 0;
-    var angle = argument_count > 4 ? argument[4] : 0;
-
-    switch (name) {
-        default: 
-        case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-        case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-        case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-        case "doublejump": 
-        case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-        case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-        case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-        case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-        case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
-    }
-    var newdust = spawn_dust_fx(floor(x),floor(y),asset_get("empty_sprite"),dlen);
-    newdust.dust_fx = dfx; //set the fx id
-    if (dfg != -1) newdust.fg_sprite = dfg; //set the foreground sprite
-    newdust.dust_color = dust_color; //set the dust color
-    if (dir != 0) newdust.spr_dir = dir; //set the spr_dir
-    newdust.draw_angle = angle; //sets the angle of the dust sprite
-    return newdust;
 }

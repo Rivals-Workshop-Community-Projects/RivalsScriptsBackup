@@ -6,7 +6,7 @@ cpu_fight_time = 0;
 cur_skills = [0, 1, 2, 3];
 
 cpu_skill_pool = ds_list_create();
-for (var i = 0; i < 12 i ++) ds_list_insert(cpu_skill_pool, i, i);
+for (var i = 0; i < 12; i ++) ds_list_insert(cpu_skill_pool, i, i);
 
 menu_active = false;
 menu_type = 1;
@@ -21,6 +21,7 @@ bar_should_parry = 0; //decides if bar should attempt to parry
 
 //attack specific stuff
 cpu_cur_skill = -1;
+ai_tried_to_recover = false;
 
 daggers_used = 0; //limits light dagger spam
 burnbuff_time = 0;

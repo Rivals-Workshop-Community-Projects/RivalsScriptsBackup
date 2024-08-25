@@ -99,9 +99,6 @@ if (!menu_active)
         );
     }
 
-    //just in case online CSS messes up again
-    //if (room == 113) draw_debug_text(floor(x) + 24, floor(y) - 16, "Go to playtest for skill select");
-
     //animation - text
     if (css_anim_time < 140)
     {

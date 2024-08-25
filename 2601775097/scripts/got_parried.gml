@@ -11,7 +11,10 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) 
     burnbuff_active = false;
 }
 
-if (lightbuff_active) lightbuff_active = false;
+if (attack == skill[8].skill_attack) was_parried = true;
+
+
+if (lightbuff_active) cancel_polaris = true;
 
 if (instance_exists(hook_chain_artc))
 {

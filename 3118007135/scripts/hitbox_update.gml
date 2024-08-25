@@ -40,13 +40,4 @@ switch(attack){
                 break;
         }
         break;
-    case AT_DSPECIAL:
-        // check if they were caught in the riptide
-        /*
-        if instance_exists(player_id.wren_enemy_riptide_id){
-            if player_id.wren_caught_cooldown == 0 and player_id.wren_enemy_riptide_id.wren_stacks > 2 and player_id.wren_enemy_riptide_id != noone{
-                can_hit[player_id.wren_enemy_riptide_id.player] = false;
-            }
-        }*/
-        break;
 }

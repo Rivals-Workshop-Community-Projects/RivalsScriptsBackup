@@ -132,10 +132,11 @@ fspecial_hit_timer = 0;
 
 set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(sound_get("victory_theme"));
+set_victory_portrait( get_synced_var(player) ? sprite_get( "portrait_o" ) : sprite_get( "portrait" ));
 
 //Attacks with status effects
 hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_EXTRA_1, 2], [AT_EXTRA_1, 3], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2],[AT_DSPECIAL_AIR, 1], [AT_DSPECIAL_AIR, 2], [AT_DSPECIAL_AIR, 3]];
-hbox_apply_smoke_consume = [[AT_UAIR, 3], [AT_FTHROW, 2], [AT_UTHROW, 2], [AT_FSPECIAL, 5], [AT_USPECIAL, 6]];
+hbox_apply_smoke_consume = [[AT_UAIR, 3], [AT_FTHROW, 2], [AT_UTHROW, 2], [AT_FSPECIAL, 5], [AT_USPECIAL, 6], [49, 2]];
 hbox_throws = [[AT_UAIR, 2], [AT_UAIR, 3], [AT_FTHROW, 1], [AT_FTHROW, 2], [AT_UTHROW, 1], [AT_UTHROW, 2],
 [AT_FSPECIAL, 3],
 [AT_FSPECIAL, 4],
@@ -225,6 +226,14 @@ pot_compat_text = "Big Beef"
 
 //Mamizou
 mamizou_transform_spr = sprite_get("mamizou");
+
+//Final Smash
+superTrue = false;
+fs_char_portrait_y = 96;
+fs_char_chosen_final_smash = "custom";
+fs_mask_index = mask_index;
+fs_xstart = x;
+fs_ystart = y;
 initIndexes();
 
 //Below code from MunoPhone API.

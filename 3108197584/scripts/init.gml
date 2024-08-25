@@ -244,3 +244,41 @@ target_practice_mode = 0;
 
 //compats
 wiimote_compat_sprite = sprite_get("wiimote");
+
+//super metroid compat
+super_metroid_intro_ship_sprite = sprite_get("super_metroid_ship_cutscene");
+super_metroid_zebes_ship_sprite = sprite_get("super_metroid_ship");
+super_metroid_zebes_ship_lights = sprite_get("super_metroid_ship_lights");
+super_metroid_zebes_ship_hatch = sprite_get("super_metroid_ship_hatch");
+super_metroid_zebes_ship_hatch_lights = asset_get("empty_sprite");
+super_metroid_zebes_ship_collider = sprite_get("super_metroid_ship_col");
+super_metroid_zebes_ship_slopes = [
+	[-91*2 +1, -13*2, -55*2 +1, -49*2],
+	[-44*2, -49*2, -36*2, -57*2],
+	[-22*2, -57*2, -13*2, -48*2],
+	[91*2 +1, -13*2, 55*2 +1, -49*2],
+	[44*2, -49*2, 36*2, -57*2],
+	[22*2, -57*2, 13*2, -48*2],
+];
+
+super_metroid_zebes_map_icon = sprite_get("super_metroid_map_icon");
+super_metroid_zebes_map_ship = sprite_get("super_metroid_map_ship");
+
+super_metroid_save_pose = sprite_get("super_metroid_save_pose");
+super_metroid_zebes_save_sparks = sprite_get("super_metroid_save_sparks");
+super_metroid_zebes_save_sparks_shade = 1;
+//super_metroid_zebes_intro_fanfare = sound_get("super_metroid_intro_fanfare");
+var cur = (alt_cur? alt_cur: 32);
+super_metroid_zebes_save_flash_colors = [make_color_rgb(get_color_profile_slot_r(cur, 1)*.7, get_color_profile_slot_g(cur, 1)*.7, get_color_profile_slot_b(cur, 1)*.7), make_color_rgb(0, 27, 137)];
+
+super_metroid_morph_ball_r = sprite_get("super_metroid_morph_ball");
+super_metroid_morph_ball_l = sprite_get("super_metroid_morph_ball");
+super_metroid_morph_ball_r_anim = 0;
+super_metroid_morph_ball_l_anim = 0;
+morph_ball_time = 0;
+
+super_metroid_zebes_bomb_icon_guide = sprite_get("super_metroid_bomb_guide_icon");
+super_metroid_pause_menu_box_name = sprite_get("super_metroid_pause_box");
+super_metroid_pause_menu_cool_name = sprite_get("super_metroid_pause_cool_name");
+super_metroid_pause_menu_larger_cool_name = 0;
+super_metroid_pause_menu_character = sprite_get("super_metroid_pause_character");

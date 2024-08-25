@@ -3,27 +3,27 @@
 // Note: draws in front of portraits, but behind the side boxes
 if (results_timer < 5) exit;
 
-if ("bar_initialized_victory_screen" not in self)
+if ("initialized_victory_screen" not in self)
 {
-    bar_initialized_victory_screen = true;
+    initialized_victory_screen = true;
     //defaults to prevent errors
-    bar_victory_quote = "You... Didn't code this properly, did you?";
+    victory_quote = "You... Didn't code this properly, did you?";
+    emote = 3;
     stage_id = noone;
-    emote = -1;
     
     //magic happens in there
     get_victory_screen_data();
 }
 
-//...only do the following with the frontmost bar
+//...only do the following with the frontmost char
 if (winner == player)
 {
     //panel constants
     if (results_timer == 5)
     {
-        quote_pos_y =    320;
+        quote_pos_y =   320;
         quote_pos_x =   0;
-        hide_pos_x  = -1200;
+        hide_pos_x  =   -1200;
         quote_time  =   240;
         a_player_skipped = false;
     }
@@ -36,20 +36,20 @@ if (winner == player)
 
 
     //Animate panel
-    if ("bar_quote_current_pos_x" not in self) bar_quote_current_pos_x = hide_pos_x;
+    if ("quote_current_pos_x" not in self) quote_current_pos_x = hide_pos_x;
     
     //Must check with timing or if result boxes are open
-    var diff = ((results_timer > quote_time) ? quote_pos_x : hide_pos_x) - bar_quote_current_pos_x;
+    var diff = ((results_timer > quote_time) ? quote_pos_x : hide_pos_x) - quote_current_pos_x;
     
-    bar_quote_current_pos_x += sign(diff) * max(min(abs(diff), 5), abs(diff) * 0.25);
+    quote_current_pos_x += sign(diff) * max(min(abs(diff), 5), abs(diff) * 0.25);
     
     //Draw panel
-    if (bar_quote_current_pos_x > hide_pos_x)
+    if (quote_current_pos_x > hide_pos_x)
     {
-        draw_sprite(sprite_get("win_quote_bg"), 0, bar_quote_current_pos_x, quote_pos_y);
-        draw_win_quote(bar_quote_current_pos_x+117, quote_pos_y+7, bar_victory_quote);
+        draw_sprite(sprite_get("win_quote_bg"), 0, quote_current_pos_x, quote_pos_y);
+        draw_win_quote(quote_current_pos_x+117, quote_pos_y+7, victory_quote);
 
-        draw_sprite(sprite_get("win_quote_emote"), emote, bar_quote_current_pos_x+12, quote_pos_y+9)
+        draw_sprite(sprite_get("win_quote_emote"), emote, quote_current_pos_x+12, quote_pos_y+9)
     }
 }
 
@@ -88,12 +88,12 @@ if (winner == player)
 {
     var quotes = [];
     var i = 0;
-    quotes[i++] = "Maybe don't try to tick me off next time!";
-    quotes[i++] = "Are we done here?";
-    quotes[i++] = "Glad it's over already, I have places to be.";
-    quotes[i++] = "I don't think you knew what you were dealing with here.";
-    quotes[i++] = "If this didn't teach you - next time you won't be so lucky, mark my words.";
-    quotes[i++] = "I will put an end to the demons' terror, one way or another!";
+    quotes[i++] = {quote: "Maybe don't try to tick me off next time!", emote: 1};
+    quotes[i++] = {quote: "Are we done here?", emote: 0};
+    quotes[i++] = {quote: "Glad it's over already, I have places to be.", emote: 3};
+    quotes[i++] = {quote: "I don't think you knew what you were dealing with here.", emote: 3};
+    quotes[i++] = {quote: "If this didn't teach you - next time you won't be so lucky, mark my words.", emote: 6};
+    quotes[i++] = {quote: "I will put an end to the demons' terror, one way or another!", emote: 6};
     return quotes[(current_time) % array_length(quotes)];
 }
 
@@ -129,7 +129,7 @@ if (winner == player)
     if (string_length(data_array[winner].status_quote) > 1)
     {
         //Status messages always take precedence for winner bar
-        bar_victory_quote = data_array[winner].status_quote;
+        victory_quote = data_array[winner].status_quote;
         emote = data_array[winner].status_emote;
     }
     else
@@ -157,10 +157,13 @@ if (winner == player)
             }
         }
 
-        bar_victory_quote = data_array[best_player].quote;
-        if (string_length(bar_victory_quote) < 1) bar_victory_quote = get_random_quote();
-
+        victory_quote = data_array[best_player].quote;
         emote = data_array[best_player].emote;
+
+        if (string_length(victory_quote) < 1)
+        {
+            victory_quote = get_random_quote().quote;
+            emote = get_random_quote().emote;
+        }
     }
 }
-

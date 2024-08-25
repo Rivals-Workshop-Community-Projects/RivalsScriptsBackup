@@ -4,6 +4,10 @@ shieldBreak = 0
 
 Drak_icecream = 0
 
+strong_buffer = 0;
+strong_pressed = false;
+strong_was_pressed = false;
+
 pre_tech_vsp = 0
 pre_tech_hsp = 0
 
@@ -130,6 +134,8 @@ waveland_sound = sound_get("nothing");
 jump_sound = sound_get("jumpcrunch");
 djump_sound = sound_get("jumpcrunch2");
 air_dodge_sound = sound_get("nothing");
+ssl_death_sound = sound_get("ssl_death");
+wall_jump_sound = sound_get("jumpcrunch");
 
 sf1 = hit_fx_create( sprite_get( "swordfx1" ), 20 );
 sf2 = hit_fx_create( sprite_get( "swordfx2" ), 20 );

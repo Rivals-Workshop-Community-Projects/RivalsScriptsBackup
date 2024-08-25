@@ -18,8 +18,8 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_zetter_shine_cha
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
-set_window_value(atk, window_num, AG_WINDOW_HSPEED, -8);
-set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
+//set_window_value(atk, window_num, AG_WINDOW_HSPEED, -8);      //done in attack_update
+//set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
 window_num ++; //windup 2 (charge window)

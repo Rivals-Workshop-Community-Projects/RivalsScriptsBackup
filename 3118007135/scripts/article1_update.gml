@@ -34,6 +34,21 @@ if ((y > (room_height + 100)) || x > room_width || x < 0){
 	instance_destroy();
 }
 
+if (state == 1 or state == 3 or (state >= 10 and state <= 13)){
+	if place_meeting(x, y, pHitBox) and pHitBox.player_id != player_id{
+		if pHitBox.type == 1{
+			switch(state){
+				case 3:
+					setState(5);
+					break;
+				default:
+					setState(15);
+					break;
+			}
+		}
+	}
+}
+
 switch(state){
     case 0: // Forming
         //is_hittable = false;
@@ -66,6 +81,10 @@ switch(state){
         	whirlspool_cool--;
         }
         
+        if instance_exists(hbox){
+        	instance_destroy(hbox);
+        }
+        
         stronginteraction();
 
         if point_distance(x, y, player_id.x, player_id.y) > 480{
@@ -86,6 +105,19 @@ switch(state){
 				        	wren_stacks = 0;
 				        }
 	        		}
+	        	}
+	        	// Wren is hit into it
+	        	if id == other.player_id and last_player != 0{
+			        if point_distance(x + hsp, y + vsp, other.x, other.y) <= 70 and state_cat == SC_HITSTUN{
+			        	other.whirl_storelastplayer = other.player_id.last_player;
+			        	other.riptide_stacks_opp = wren_stacks;
+			        	with other{
+			        		whirlspool_cool = whirlspool_cool_max;
+			        		whirl_shouldhitowner = true;
+			        		setState(10);
+			        	}
+			        	wren_stacks = 0;
+			        }
 	        	}
 	        }
 		}
@@ -195,6 +227,13 @@ switch(state){
         //is_hittable = true;
         unbashable = 1;
         
+        if instance_exists(hbox){
+            hbox.hsp = hsp;
+            hbox.vsp = vsp;
+        } else {
+            hbox = create_hitbox(AT_NSPECIAL_2, 3, floor(x + (-1 * spr_dir) + hsp), floor((y) + vsp));
+        }
+        
         break;
     case 9: // Pop
         //is_hittable = false;
@@ -222,6 +261,10 @@ switch(state){
         } else {
             sound_play(asset_get("sfx_swish_weak"));
             hbox = create_hitbox(AT_DSPECIAL, 1, floor(x + (-1 * spr_dir) + hsp), floor((y) + vsp));
+            if whirl_shouldhitowner{
+            	hbox.can_hit_self = true;
+            	hbox.can_hit[whirl_storelastplayer] = false;
+            }
         }
         if state_timer == 27 + (9 * riptide_stacks_opp){
         	setState(12);
@@ -239,6 +282,10 @@ switch(state){
             } else {
                 sound_play(asset_get("sfx_swish_medium"));
                 hbox = create_hitbox(AT_DSPECIAL, 2, floor(x + (-1 * spr_dir) + hsp), floor((y) + vsp));
+                if whirl_shouldhitowner{
+                	hbox.can_hit_self = true;
+                	hbox.can_hit[whirl_storelastplayer] = false;
+                }
             }
         } else {
             if state_timer >= 4{
@@ -255,6 +302,7 @@ switch(state){
         unbashable = 0;
         sprite_index = spr_bubble_whirlend;
         if state_timer == 8{
+        	whirl_shouldhitowner = false;
             yoyo_charge_lvl = 0;
             setState(1);
         }
@@ -299,6 +347,7 @@ if instance_exists(self){
         case 6:
         case 7:
         case 1:
+        case 8:
             image_index = get_gameplay_time() / 8;
             break;
         case 3:

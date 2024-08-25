@@ -5,7 +5,7 @@ set_attack_value(atk, AG_NUM_WINDOWS, 4);
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 4);
+set_attack_value(atk, AG_LANDING_LAG, 6);
 
 var window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);

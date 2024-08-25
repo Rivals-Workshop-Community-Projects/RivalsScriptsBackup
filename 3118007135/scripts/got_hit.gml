@@ -30,7 +30,7 @@ switch(state){
 #endregion
 
 #region // Stop the Yo-Yo
-if instance_exists(wren_yoyo){
+if instance_exists(wren_yoyo) and wren_yoyo.whirl_shouldhitowner == false{
     if wren_yoyo.state != 1 and wren_yoyo.state != 8 and wren_yoyo.state < 10{
         wren_yoyo.state = 1;
         wren_yoyo.state_timer = 0;

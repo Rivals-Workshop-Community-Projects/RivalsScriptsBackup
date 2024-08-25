@@ -3,7 +3,7 @@
 pseudo_grab = [];
 
 if target_practice_mode && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL move_cooldown[attack] = 10;
-
+//if attack = AT_NSPECIAL attack = AT_FSPECIAL
 if !move_cooldown[attack] switch attack{
     case AT_FSTRONG:
     double_fire = 0;

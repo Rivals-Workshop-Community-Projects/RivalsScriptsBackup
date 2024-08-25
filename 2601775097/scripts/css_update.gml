@@ -94,9 +94,6 @@ skill_button_pos = [
 
 //SKILL SELECT CONTROL
 
-//just in case online CSS messes up again
-//if (room == 113) exit; //stop skill select (room 113 is the online CSS room)
-
 //button stuff
 var cur_x = get_instance_x(cursor_id);
 var cur_y = get_instance_y(cursor_id);

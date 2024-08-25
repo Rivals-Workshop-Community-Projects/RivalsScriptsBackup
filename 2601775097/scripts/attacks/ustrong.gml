@@ -34,8 +34,8 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_frictio
 window_num ++; //attack 1 windup
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_clairen_uspecial_swing"));
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);

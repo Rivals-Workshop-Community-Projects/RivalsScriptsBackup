@@ -3,32 +3,49 @@ with (ai_target) if ("char_height" not in self) exit; //prevents annoying error 
 
 if (get_training_cpu_action() == CPU_FIGHT)
 {
-    //get bar to te menu select instantly
+    //old selection code
+    /*
+        //get bar to te menu select instantly
+        if (cpu_fight_time == 0)
+        {
+            menu_active = true;
+            set_state(PS_SPAWN);
+        }
+        cpu_fight_time ++;
+        
+        //skill select right off the bat
+        if (menu_active)
+        {
+            if (cpu_fight_time % 5 == 0)
+            {
+                var cur_index = random_func((training ? current_second % 24 : 0), ds_list_size(cpu_skill_pool), true); //find a random index from the current list
+                cur_value = ds_list_find_value(cpu_skill_pool, cur_index); //check the value of said index
+
+                cur_skill_hover = cur_value;
+            }
+            if (cpu_fight_time % cpu_select_time == 0)
+            {
+                menu_dir = -1;
+                ds_list_delete(cpu_skill_pool, cur_index); //delete the index from the list, making the list one element shorter
+
+                if (cur_select == 4) ds_list_destroy(cpu_skill_pool);
+            }
+        }
+    */
+    
     if (cpu_fight_time == 0)
     {
-        menu_active = true;
-        set_state(PS_SPAWN);
+        if (ds_list_valid(cpu_skill_pool))
+        {
+            for (var i = 0; i < 4; i ++)
+            {
+                var cur_index = random_func((training ? current_second % 24 : i), ds_list_size(cpu_skill_pool), true); //find a random index from the current list
+                cur_skills[i] = ds_list_find_value(cpu_skill_pool, cur_index);
+                ds_list_delete(cpu_skill_pool, cur_index);
+            }
+        }
     }
     cpu_fight_time ++;
-    
-    //skill select right off the bat
-    if (menu_active)
-    {
-        if (cpu_fight_time % 5 == 0)
-        {
-            var cur_index = random_func(current_second, ds_list_size(cpu_skill_pool), true); //find a random index from the current list
-            cur_value = ds_list_find_value(cpu_skill_pool, cur_index); //check the value of said index
-
-            cur_skill_hover = cur_value;
-        }
-        if (cpu_fight_time % cpu_select_time == 0)
-        {
-            menu_dir = -1;
-            ds_list_delete(cpu_skill_pool, cur_index); //delete the index from the list, making the list one element shorter
-
-            if (cur_select == 4) ds_list_destroy(cpu_skill_pool);
-        }
-    }
 }
 else
 {
@@ -43,25 +60,40 @@ if (ai_recovering)
 {
     skill_check();
 
+    if (glide_stamina >= 0 && ai_can_djump && vsp > 2) jump_pressed = true;
+
     for (var i = 0; i < 4; i++)
     {
+        if ((cur_skills[i] == 2 || cur_skills[i] == 6 || cur_skills[i] == 10) && ai_tried_to_recover)
+        {
+            switch (i)
+            {
+                case 0: set_attack(AT_NSPECIAL); break;
+                case 1: set_attack(AT_FSPECIAL); break;
+                case 2: set_attack(AT_USPECIAL); break;
+                case 3: set_attack(AT_DSPECIAL); break;
+            }
+            ai_tried_to_recover = false;
+            break;
+        }
+
         //if bar has burning fury on he lets it rip, doesn't happen if he has searing descent since he automatically uses it
         if (burnbuff_active && mp_current < 30 && skill[cur_skills[i]].skill_id != 10)
         {
             up_down = false;
             if (x < surface_left) right_down = true;
             if (x > surface_right) left_down = true;
-            use_skill(1);
+            use_skill(i);
         }
         //light hookshot off stage (might need to check if there's actually a wall in front of him lmao)
         if (skill[cur_skills[i]].skill_id == 9 && mp_current >= skill[9].mp_use_cost && y - char_height > surface_top)
         {
             if (x < surface_left - 300) right_down = true;
             if (x > surface_right + 300) left_down = true;
-            use_skill(1);
+            use_skill(i);
         }
         //disable polaris if offstage
-        if (skill[cur_skills[i]].skill_id == 7)
+        if (skill[cur_skills[i]].skill_id == 7 && lightbuff_active)
         {
             for (var j = 0; j < polaris_shots_left; j++)
             {
@@ -69,7 +101,7 @@ if (ai_recovering)
                 polaris_shot_ids[j].length = 0;
             }
 
-            lightbuff_active = false;
+            if (lightbuff_active) cancel_polaris = true;
         }
     }
 
@@ -308,19 +340,19 @@ if (cpu_fight_time > 0)
                     if ((target_dist < 350 || target_dist < 500 && burnbuff_active) && target_dist > 160)
                     {
                         if (cpu_cur_skill == 0 && (window == 1 || window == 4) && window_timer == 0) daggers_used ++;
-                        use_skill(0);
+                        use_skill(i);
                     }
                 }
                 break;
             case 4: //flashbang
-                if (mp_current >= skill[4].mp_use_cost && target_dist <= 40 && facing_target) use_skill(0);
+                if (mp_current >= skill[4].mp_use_cost && target_dist <= 40 && facing_target) use_skill(i);
                 break;
             case 8: //ember fist
                 if (mp_current >= skill[8].mp_use_cost && (!burnbuff_active && target_dist < 120 &&
                 (y > ai_target.y + ai_target.char_height/2 - 32 || y < ai_target.y - ai_target.char_height/2 + 32) || burnbuff_active && target_dist < 70)
                 && facing_target)
                 {
-                    use_skill(0);
+                    use_skill(i);
                 }
                 if (attack == skill[8].skill_attack && window == 3)
                 {
@@ -334,7 +366,7 @@ if (cpu_fight_time > 0)
                     burnbuff_end_time = random_func(924, 120, true);
 
                     //the input keeps going back to nspec because i'm forcing it out of fspec, overwriting the code above
-                    if (mp_current >= skill[1].mp_use_cost && target_dist < 250) use_skill(1);
+                    if (mp_current >= skill[1].mp_use_cost && target_dist < 250) use_skill(i);
                 }
                 else
                 {
@@ -343,17 +375,17 @@ if (cpu_fight_time > 0)
                     {
                         if (mp_current >= skill[1].mp_cost2 && facing_target && (y == ai_target.y && !free || y < ai_target.y && free))
                         {
-                            if (target_dist < 200) use_skill(1);
+                            if (target_dist < 200) use_skill(i);
                         }
                     }
                 }
             case 5: //power smash
-                if (mp_current >= skill[5].mp_use_cost && target_dist < 180 && facing_target) use_skill(1);
+                if (mp_current >= skill[5].mp_use_cost && target_dist < 180 && facing_target) use_skill(i);
                 break;
             case 9: //light hookshot
                 if (mp_current >= skill[9].mp_use_cost && target_dist < 600 && target_dist > 300 && (ai_target.y > y + 32 || ai_target.y < y - 32))
                 {
-                    use_skill(1);
+                    use_skill(i);
                     if (attack == skill[9].skill_attack && window == 2)
                     {
                         if (hook_charge < target_dist/100 && facing_target) special_down = true;
@@ -364,7 +396,7 @@ if (cpu_fight_time > 0)
             case 2: //force leap
                 if (mp_current >= skill[2].mp_use_cost && target_dist < 250 && y > ai_target.y && !ai_recovering)
                 {
-                    use_skill(2);
+                    use_skill(i);
 
                     //turn to player
                     if (x > ai_target.x && spr_dir) left_pressed = true;
@@ -387,14 +419,14 @@ if (cpu_fight_time > 0)
                     angle_limier(6, false);
                 }
             case 10: //searing descent
-                if (mp_current >= skill[10].mp_use_cost && ai_target.y - 64 < y && (ai_target.x > x + 60 || ai_target.x < x - 60)) use_skill(2);
+                if (mp_current >= skill[10].mp_use_cost && ai_target.y - 64 < y && (ai_target.x > x + 60 || ai_target.x < x - 60)) use_skill(i);
                 if (mp_current >= skill[10].mp_cost2 && ai_target.y + 64 > y && (ai_target.x > x + 60 || ai_target.x < x - 60) && (window == 3 || window == 4) && !ai_recovering)
                 {
                     special_down = true;
                 }
                 break;
             case 3: //photon blast
-                if (mp_current >= skill[3].mp_use_cost && target_dist < 140 && !burnbuff_active) use_skill(3);
+                if (mp_current >= skill[3].mp_use_cost && target_dist < 140 && !burnbuff_active) use_skill(i);
                 break;
             case 7: //polaris
                 if (!lightbuff_active && !burnbuff_active)
@@ -402,7 +434,7 @@ if (cpu_fight_time > 0)
                     lightbuff_time = 0;
                     if (mp_current >= skill[7].mp_use_cost && target_dist < 1000)
                     {
-                        use_skill(3);
+                        use_skill(i);
                     }
                 }
                 else
@@ -416,7 +448,7 @@ if (cpu_fight_time > 0)
                 }
                 break;
             case 11: //chasm burster
-                if (mp_current >= skill[11].mp_use_cost && target_dist < 200 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target) use_skill(3);
+                if (mp_current >= skill[11].mp_use_cost && target_dist < 200 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target) use_skill(i);
                 break;
         }
     }
@@ -464,11 +496,13 @@ if (cpu_fight_time > 0)
     }
     else cpu_cur_skill = -1;
 }
-#define use_skill(input)
+#define use_skill()
 {
+    var input = argument[0];
+
     var maybe_use_skill = random_func_2(current_second, 100-temp_level*5, true);
-    if (state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED && state_cat != SC_HITSTUN && maybe_use_skill == input
-    && ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN)
+    if (maybe_use_skill == input && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED
+        && state_cat != SC_HITSTUN && ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN)
     {
         switch (input)
         {

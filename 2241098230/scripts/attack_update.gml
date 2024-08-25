@@ -79,10 +79,6 @@ for (var i = 0; i < array_length(hbox_apply_smoke_consume); i++) {
 }
 
 //Tilts
-if (attack == AT_JAB) {
-    was_parried = false;
-}
-
 if (attack == AT_DATTACK) {
 	if (window >= 3) {
 		can_ustrong = true;
@@ -678,6 +674,7 @@ if (attack == AT_FSPECIAL){
 	if (window == 1 && window_timer == 1) { 
     	grabbedid = noone; 
     	fspecial_hit = 0;
+    	moved_up = false;
     }
 	if (window == 3) {
         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
@@ -797,12 +794,25 @@ if (attack == AT_FSPECIAL){
             attack_end();
             djumps = 0;
             clear_button_buffer(PC_SHIELD_PRESSED);
+			grab_timer = 0;
+    		smoke_consumed = noone;
     	}
     } 
     else {
     	can_wall_jump = true;
     }
     can_fast_fall = false;
+    
+			// MOVE UP AT LEDGE
+    if ((window == 2) && !moved_up && free && place_meeting(x+hsp,y,asset_get("par_block"))) {
+        for (var i = 0; i < 40; i++){
+            if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))) {
+                y -= i;
+                moved_up = true;
+                break;
+            }
+        }
+    }
 }
 
 if (attack == AT_USPECIAL){
@@ -979,6 +989,71 @@ if (attack == AT_TAUNT_2) {
 		}
 	}
 }
+
+if (attack == 49) {
+	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+	can_move = false;
+	can_fast_fall = false;
+	
+	//Freeze players briefly
+	if (window == 1 && window_timer == 2) {
+			fs_xstart = x;
+			fs_ystart = y;
+			fs_mask_index = mask_index;
+	}
+	
+	if (window == 1 || window == 2) {
+		with (oPlayer) {
+			if (id != other.id) {
+				if (!hitpause) {
+					old_hsp = hsp;
+					old_vsp = vsp;
+				}
+				hitstop += 1;
+				hitstop_full += 1;
+				hitpause = true;
+				attack_invince = true;
+				invince_time += 1;
+			}
+		}
+	}
+	
+	if (window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		shake_camera(12, 12);
+	}
+	
+	if (window == 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		shake_camera(12, 12);
+	}
+	
+	if (window >= 3 && window <= 8)
+		hud_offset = 208;
+	
+	if ((window == 7 || window == 8) && !hitpause) {
+		frict = 0;
+		hsp = 32 * spr_dir;
+		if (get_gameplay_time() % 4 == 0) {
+			var rand_x = x + (-200 + random_func(0, 400, true));
+			var rand_y = y - random_func(1, 160, true);
+			spawn_hit_fx(round(rand_x), round(rand_y), 148);
+		}
+		mask_index = asset_get("empty_sprite");
+		if (x < 12 || x > room_width - 12) {
+			window ++;
+			window_timer = 0;
+			destroy_hitboxes();
+		}
+	}
+	else {
+		mask_index = fs_mask_index;
+	}
+	
+	if (window == 9 && window_timer == 1 && !hitpause) {
+		x = fs_xstart;
+		y = fs_ystart;
+	}
+}
+
 
 #define create_smoke(_x, _y, _amount, _length, _dir_min, _dir_max, _spd_min, _spd_max, _frict)
 var smoke = instance_create(_x, _y, "obj_article1");

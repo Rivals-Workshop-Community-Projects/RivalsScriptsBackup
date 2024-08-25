@@ -173,25 +173,53 @@ if !wren_rtwo_cangrabledge{
         }
     }
 }
-if free and wren_rtwo_cangrabledge{
-	// Check to see if you are off-stage
-	var stage_x = get_stage_data(SD_X_POS);
-	var stage_blast = (get_stage_data(SD_BOTTOM_BLASTZONE));
-
-	if (x < stage_x or x > room_width - stage_x){
-		if place_meeting(x + (32 * spr_dir), y , asset_get("par_block")) and !place_meeting(x + (32 * spr_dir), y - 32, asset_get("par_block")){
-			// If you are within range, snap to it and move to attack EXTRA_3
-			if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
-				destroy_hitboxes();
-				attack_end();
-			}
-			set_attack(AT_EXTRA_3);
-			// Set your X and Y position
-			
-			y = stage_blast;
-			print("Y: " + string(stage_blast));
-			wren_rtwo_cangrabledge = false;
-		}
+//LEDGE
+if ((y > get_stage_data(SD_Y_POS) + 30 && y < get_stage_data(SD_Y_POS) + 60) && vsp >= 0 && ((attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (state != PS_ATTACK_AIR && state != PS_AIR_DODGE && state != PS_HITSTUN && state != PS_TUMBLE && state != PS_PRATFALL && state != PS_PARRY_START))){
+	// Assuming you are off-stage
+	// Right Side:
+	if (x < -(get_stage_data(SD_X_POS) - 30 - room_width) and x > -(get_stage_data(SD_X_POS) - room_width)){
+		//print("RIGHT SIDE");
+		rivals2_ledge(-1);
+	}
+	// Left Side:
+	if (x > get_stage_data(SD_X_POS) - 30 && x < get_stage_data(SD_X_POS)){
+		//print("LEFT SIDE");
+		rivals2_ledge(1);
 	}
 }
+
+if (attack != AT_EXTRA_3){
+	wren_hasgrabbedledge = false;	
+}
+
+if !free{
+	wren_ledgecount = 0;
+}
+
+if (wren_ledgetimer > 0 and wren_hasgrabbedledge == false)
+{
+	wren_ledgetimer--;
+}
 #endregion
+#define rivals2_ledge(_sprdir)
+//
+if (wren_ledgetimer == 0 && wren_hasgrabbedledge == false){
+	//sound_play(sound_get("ledge"));
+	sound_play(asset_get("sfx_land"));
+	set_state(PS_IDLE);
+	set_attack(AT_EXTRA_3);
+	window = 1;
+	wren_ledgecount++;
+	wren_ledgetimer = 29;
+	spr_dir = _sprdir;
+	wren_hasgrabbedledge = true;
+	djumps = 0;
+	has_airdodge = true;
+	if wren_ledgecount <= wren_ledgecount_max{
+		invincible = true;
+		invince_time = 30;
+	}
+	wren_ledgeautodrop_timer = 90;
+	vsp = 0;
+	hsp = 0;
+}

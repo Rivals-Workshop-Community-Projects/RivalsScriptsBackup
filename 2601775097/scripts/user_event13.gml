@@ -1,6 +1,19 @@
 //user_event 13
 
+if (attack == AT_FSTRONG) barsonic_clash_homeatks = true;
+
 var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
+
+if ("holyburn_timer" not in hit_player_obj)
+{
+    hit_player_obj.lightstunner_id = noone;
+    hit_player_obj.lightstun_type = 0;
+    hit_player_obj.lightstun_timer = 0;
+    
+    hit_player_obj.holyburning = false;
+    hit_player_obj.holyburner_id = noone;
+    hit_player_obj.holyburn_timer = 0;
+}
 
 //mana
 if (mp_gainable)
@@ -91,18 +104,10 @@ switch (my_hitboxID.attack)
         break;
     //bar_grabbed_id setup
     case AT_FTHROW: case AT_FSPECIAL_AIR:
-        if (my_hitboxID.hbox_num == 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)) 
-        {
-            bar_grabbed_id = hit_player_obj;
-            bar_grab_time = 0;
-        }
+        if (my_hitboxID.hbox_num == 2) set_grab_id();
         break;
     case 39:
-        if (my_hitboxID.hbox_num == 1 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
-        {
-            bar_grabbed_id = hit_player_obj;
-            bar_grab_time = 0;
-        }
+        if (my_hitboxID.hbox_num == 1) set_grab_id();
         break;
     /////////////
     case AT_FSTRONG_2:
@@ -298,5 +303,14 @@ mp_current = clamp(mp_current, 0, mp_max);
         vsp = -9;
         rune_G_warp_lag = 10;
         set_state(PS_IDLE_AIR);
+    }
+}
+
+#define set_grab_id
+{
+    if (bar_grabbed_id == noone && (hit_player_obj.object_index != oPlayer || (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)))
+    {
+        bar_grabbed_id = hit_player_obj;
+        bar_grab_time = 0;
     }
 }

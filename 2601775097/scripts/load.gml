@@ -170,7 +170,7 @@ set_victory_bg(sprite_get("winscreen"));
 sprite_change_offset("miiverse", 60, 30);       //miiverse
 sprite_change_offset("last_resort", 27, 39);    //the last resort
 sprite_change_offset("GFZ_signpost", 18, 41);   //green flower zone
-sprite_change_offset("car", 6, 6);              //RC car
+sprite_change_offset("car", 9, 4);              //RC car
 sprite_change_offset("mamizou_angelhog", 30, 44);
 sprite_change_offset("mamizou_shadow", 30, 44);
 sprite_change_offset("sonictrick", 24, 47);

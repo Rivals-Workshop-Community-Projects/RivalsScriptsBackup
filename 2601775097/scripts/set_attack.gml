@@ -29,6 +29,8 @@ switch (attack)
         if (skill[cur_skills[2]].skill_attack_air == -1) attack = skill[cur_skills[2]].skill_attack;
 
         cur_skill_used = cur_skills[2];
+
+        if ("ai_tried_to_recover" in self && ai_recovering) ai_tried_to_recover = true;
         break;
     case AT_DSPECIAL:
         attack = free ? skill[cur_skills[3]].skill_attack_air : skill[cur_skills[3]].skill_attack;
@@ -38,7 +40,7 @@ switch (attack)
         break;
     //practice mode shenanigans
     case AT_TAUNT:
-        if (training && !playtesting) // || room == 113 && playtesting (just in case online CSS messes up again)
+        if (training && !playtesting) // || room == asset_get("network_char_select") && playtesting (just in case online CSS messes up again)
         {
             if (up_down) //skill select
             {
@@ -91,20 +93,20 @@ if (notice_time == -1 && (move_cooldown[attack] > 0 || attack == skill[7].skill_
 //theikos bar can do strongs in the air
 if (theikos_type > 0)
 { 
-    if (up_strong_pressed) attack = AT_USTRONG;
+    if (up_strong_pressed || up_stick_pressed) attack = AT_USTRONG;
 
-    if (left_strong_pressed)
+    if (left_strong_pressed || left_stick_pressed)
     {
         attack = AT_FSTRONG;
         spr_dir = -1;
     }
-    else if (right_strong_pressed)
+    else if (right_strong_pressed || right_stick_pressed)
     {
         attack = AT_FSTRONG;
         spr_dir = 1;
     }
 
-    if (down_strong_pressed) attack = AT_DSTRONG;
+    if (down_strong_pressed || down_stick_pressed) attack = AT_DSTRONG;
 }
 
 //theikos strongs / rune K strongs swap

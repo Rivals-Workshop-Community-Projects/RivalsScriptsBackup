@@ -108,6 +108,19 @@ with (oPlayer){
 	}
 }
 
+//Rivals of Fighter compatibility
+if ("superTrue" in self) {
+	if (superTrue == 1) {
+		superTrue = 0
+		
+		if (instance_exists(hit_player_obj))
+			hit_player_obj.canUseCounterTimer = 300
+		
+		set_attack(49);
+		/// X is roughly how many frames until your super finish if it's an attack, it's unessessary for status effect supers
+		
+		}
+}
 
 //Lore Accuracy
 // if (get_gameplay_time() < 120 && can_racism) {

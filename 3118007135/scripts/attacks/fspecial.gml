@@ -79,7 +79,8 @@ make_hitbox(AT_FSPECIAL, 1,
     HG_KNOCKBACK_SCALING, .5,
     HG_BASE_HITPAUSE, 9,
     HG_HITPAUSE_SCALING, 0.6,
-    HG_HIT_SFX, asset_get("sfx_blow_medium3")
+    HG_HIT_SFX, asset_get("sfx_blow_medium3"),
+    HG_IGNORES_PROJECTILES, 1
 )
 
 // Falling Hit
@@ -98,7 +99,8 @@ make_hitbox(AT_FSPECIAL, 2,
     HG_KNOCKBACK_SCALING, .3,
     HG_BASE_HITPAUSE, 7,
     HG_HITPAUSE_SCALING, 0.4,
-    HG_HIT_SFX, asset_get("sfx_blow_weak2")
+    HG_HIT_SFX, asset_get("sfx_blow_weak2"),
+    HG_IGNORES_PROJECTILES, 1
 )
 
 

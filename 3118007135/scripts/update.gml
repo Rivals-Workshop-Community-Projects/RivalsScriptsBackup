@@ -75,8 +75,23 @@ if !free or state == PS_WALL_JUMP{
 }
 
 if instance_exists(wren_yoyo){
+	if wren_yoyo_recall{
+		wren_yoyo_timer++;
+	}
+	if wren_yoyo_timer >= wren_yoyo_timer_max{
+		wren_yoyo_timer = 0;
+		wren_yoyo_recall = false;
+        wren_yoyo.state = 2;
+        wren_yoyo.state_timer = 0;
+	}
     if wren_yoyo.state >= 10{
         move_cooldown[AT_DSPECIAL] = 45;
+    }
+    if wren_yoyo.state == 8{
+    	if ((state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND) or ((state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and attack != AT_USPECIAL_2)){
+    		wren_yoyo.state = 1;
+    		wren_yoyo.state_timer = 0;
+    	}
     }
 }
 
@@ -99,10 +114,11 @@ switch(state){
 		            default:
 		                if attack != AT_NSPECIAL and attack != AT_NSPECIAL_2 and attack != AT_FSPECIAL and attack != AT_DSPECIAL and attack != AT_DSPECIAL_2 and attack != AT_USPECIAL and attack != AT_USPECIAL_2{
 		                    if special_pressed and joy_pad_idle and wren_yoyo.state == 1{
-		                        wren_yoyo.state = 3;
-		                        wren_yoyo.state_timer = 0;
+		                    	wren_yoyo_timer = 0;
+		                    	wren_yoyo_recall = true;
+		                    	clear_button_buffer(PC_SPECIAL_PRESSED);
 		                        sound_play(asset_get("mfx_star"));
-		                        move_cooldown[AT_NSPECIAL] = 15;
+		                        move_cooldown[AT_NSPECIAL] = 30;
 		                    }
 		                }
 		                break;
@@ -124,6 +140,12 @@ if instance_exists(wren_wave){
 #endregion
 
 #region // RIVALS 2 MODE
+if get_synced_var(player) == 1{
+	wren_rivaltwo_mode = true;
+} else {
+	wren_rivaltwo_mode = false;
+}
+
 if wren_rivaltwo_mode{
 	user_event(1);
 }
@@ -132,7 +154,6 @@ if wren_rivaltwo_mode{
 #region // Status
 with(oPlayer){
     if other.id != id{
-        
         if wren_stacks <= 0{
             wren_riptide_id = noone;
         }

@@ -20,6 +20,8 @@ if instance_exists(wren_yoyo){
                         case 0:
                             if attack_down and special_down and instance_exists(wren_yoyo){
                                 attack = AT_USPECIAL_2
+                                wren_yoyo.state = 8;
+                                wren_yoyo.state_timer = 0;
                             }
                             break;
                     }

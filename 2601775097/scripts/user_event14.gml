@@ -2,6 +2,7 @@
 
 // skill select menu
 if !("char_height" in self) exit;
+shader_end();
 
 if (menu_active) //skill select
 {

@@ -11,12 +11,12 @@ with (asset_get("new_dust_fx_obj")) {
 }
 */
 
+user_event(12)
 
-
-if state_cat == SC_HITSTUN {
-    sound_stop(sound_get("hcine"))
-    sound_stop(sound_get("fspec3"))
-}
+// if state_cat == SC_HITSTUN {
+//     sound_stop(sound_get("hcine"))
+//     sound_stop(sound_get("fspec3"))
+// }
 
 if ragemode == 0 {
 switch state {

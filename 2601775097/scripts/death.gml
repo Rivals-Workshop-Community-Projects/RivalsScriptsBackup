@@ -15,11 +15,11 @@ burnbuff_active = false;
 leap_used = false;
 blast_used = false;
 accel_used = false;
-lightbuff_active = false;
+if (lightbuff_active) for (var i = 0; i < polaris_shots_left; i++) if (skill[cur_skills[i]].skill_id == 7) cancel_polaris = true;
 
 if (od_cast <= 1) od_current /= 2;
 else od_current = 0;
 od_cast = 0;
 
 //sets bibically accurate bar to appear on respawn
-if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3) bibical = true;
+if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3 && get_player_stocks(player) > 1) bibical = true;

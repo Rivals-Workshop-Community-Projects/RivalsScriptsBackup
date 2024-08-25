@@ -19,3 +19,13 @@ ragemode = 0
         }
     }
     
+    
+
+GearX = -1
+GearXlv = 1
+GearB = 6
+GearBcd = 0
+GearBcd2 = 0
+GearAir = 0
+GearO = 0
+GearOcd = 0    

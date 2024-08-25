@@ -44,7 +44,7 @@ set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 
 // Endlag
 set_window_value(AT_UAIR, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_UAIR, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_UAIR, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_UAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 4);
@@ -135,7 +135,7 @@ set_hitbox_value(AT_UAIR, 5, HG_HEIGHT, 87);
 set_hitbox_value(AT_UAIR, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 5, HG_DAMAGE, 4);
 set_hitbox_value(AT_UAIR, 5, HG_ANGLE, 90);
-set_hitbox_value(AT_UAIR, 5, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_UAIR, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UAIR, 5, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_UAIR, 5, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 5, HG_HITPAUSE_SCALING, .6);

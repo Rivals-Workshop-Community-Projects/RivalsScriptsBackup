@@ -1,5 +1,8 @@
 if has_rune("O") rune_cancel = 1;
 hit_player_obj.frozen = 0;
+
+//can_special = 1;
+
 switch my_hitboxID.attack{
     case AT_JAB:
     sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .7, .9);

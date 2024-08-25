@@ -66,7 +66,9 @@ if attack == AT_DTILT && hbox_num == 1 {
           }
           other.destroyed = true  
         }
-        
+        if (state == PS_ATTACK_GROUND or state == state == PS_ATTACK_AIR) && attack == AT_TAUNT{
+        	other.destroyed = true  
+        }
     }
     
     player_id.famix = x
