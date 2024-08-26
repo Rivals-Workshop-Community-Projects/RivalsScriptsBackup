@@ -5,7 +5,7 @@ var temp_y = y + 9;
 
 
 
-var num_alts = 15;
+var num_alts = 26;
 var alt_cur = get_player_color(player);
 
 alt_name[0]  = "Classic";
@@ -23,6 +23,17 @@ alt_name[11]  = "Cofagrigus";
 alt_name[12]  = "Spiritomb";
 alt_name[13]  = "Dusclops";
 alt_name[14]  = "Shiny";
+alt_name[15]  = "Aegislash";
+alt_name[16]  = "Green ghastly";
+alt_name[17]  = "Blazing emerald";
+alt_name[18]  = "Old school";
+alt_name[19]  = "Alolan marowak";
+alt_name[20]  = "Skeleridge";
+alt_name[21]  = "Ceruledge";
+alt_name[22]  = "Froslass";
+alt_name[23]  = "Dhelmise";
+alt_name[24]  = "Weavile";
+alt_name[25]  = "Cacturne";
 
 
 //Patch

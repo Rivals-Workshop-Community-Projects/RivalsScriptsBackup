@@ -14,7 +14,7 @@ set_color_profile_slot_range( 2, 10, 30, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 26 );
 
 // Ruby
 set_color_profile_slot( 1, 0, 214, 40, 40 ); //Skin
@@ -85,6 +85,61 @@ set_color_profile_slot( 13, 2, 214, 214, 197 ); //jewel
 set_color_profile_slot( 14, 0, 213, 148, 82 ); //Skin
 set_color_profile_slot( 14, 1, 255, 255, 131 ); //Eyes
 set_color_profile_slot( 14, 2, 0, 214, 0 ); //jewel
+
+// Aegislash
+set_color_profile_slot( 15, 0, 235, 222, 123 ); //Skin
+set_color_profile_slot( 15, 1, 39, 39, 39 ); //Eyes
+set_color_profile_slot( 15, 2, 137, 113, 159 ); //jewel
+
+// Green ghastly
+set_color_profile_slot( 16, 0, 46, 122, 61 ); //Skin
+set_color_profile_slot( 16, 1, 26, 255, 131 ); //Eyes
+set_color_profile_slot( 16, 2, 86, 35, 108 ); //jewel
+
+// Blazing emerald
+set_color_profile_slot( 17, 0, 118, 112, 160 ); //Skin
+set_color_profile_slot( 17, 1, 213, 146, 58 ); //Eyes
+set_color_profile_slot( 17, 2, 191, 191, 200 ); //jewel
+
+// Old school
+set_color_profile_slot( 18, 0, 192, 120, 184 ); //Skin
+set_color_profile_slot( 18, 1, 192, 216, 248 ); //Eyes
+set_color_profile_slot( 18, 2, 248, 80, 72 ); //jewel
+
+// Alolan marowak
+set_color_profile_slot( 19, 0, 72, 59, 75 ); //Skin
+set_color_profile_slot( 19, 1, 191, 191, 191 ); //Eyes
+set_color_profile_slot( 19, 2, 119, 217, 184 ); //jewel
+
+// Skeleridge
+set_color_profile_slot( 20, 0, 177, 37, 37 ); //Skin
+set_color_profile_slot( 20, 1, 255, 163, 0 ); //Eyes
+set_color_profile_slot( 20, 2, 225, 225, 225 ); //jewel
+
+// ceruledge
+set_color_profile_slot( 21, 0, 68, 68, 131 ); //Skin
+set_color_profile_slot( 21, 1, 176, 90, 155 ); //Eyes
+set_color_profile_slot( 21, 2, 27, 71, 153 ); //jewel
+
+// Froslass
+set_color_profile_slot( 22, 0, 197, 205, 222 ); //Skin
+set_color_profile_slot( 22, 1, 97, 49, 142 ); //Eyes
+set_color_profile_slot( 22, 2, 74, 105, 161 ); //jewel
+
+// Dhelmise
+set_color_profile_slot( 23, 0, 55, 137, 147 ); //Skin
+set_color_profile_slot( 23, 1, 212, 192, 71 ); //Eyes
+set_color_profile_slot( 23, 2, 117, 75, 52 ); //jewel
+
+// Weavile
+set_color_profile_slot( 24, 0, 106, 106, 172 ); //Skin
+set_color_profile_slot( 24, 1, 246, 82, 115 ); //Eyes
+set_color_profile_slot( 24, 2, 255, 213, 65 ); //jewel
+
+// Cacturne
+set_color_profile_slot( 25, 0, 49, 148, 82 ); //Skin
+set_color_profile_slot( 25, 1, 255, 213, 65 ); //Eyes
+set_color_profile_slot( 25, 2, 139, 189, 98 ); //jewel
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
