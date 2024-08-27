@@ -1,5 +1,5 @@
 muno_event_type = 1;
-	user_event(14);
+user_event(14);
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
    upb = false;move_cooldown[AT_USPECIAL] = 0;
@@ -13,18 +13,14 @@ if(instance_exists(thedice1) && instance_exists(thedice2)){
 		dicecooldown--;
 		dicecooldown = max(0,dicecooldown);
 	}
-	if(dicecooldown <= 0){
-    	move_cooldown[AT_NSPECIAL] = 0;dice_skill = true;
-	}
+	if(dicecooldown <= 0)move_cooldown[AT_NSPECIAL] = 0;dice_skill = true;
 }
 if(instance_exists(thetoken)){
     move_cooldown[AT_FSPECIAL] = 9999;
 }else{
 	tokencooldown--;
 	tokencooldown = max(0,tokencooldown);
-	if(tokencooldown <= 0){
-    	move_cooldown[AT_FSPECIAL] = 0;
-	}
+	if(tokencooldown <= 0)move_cooldown[AT_FSPECIAL] = 0;
 }
 
 BAir_cooldown--;

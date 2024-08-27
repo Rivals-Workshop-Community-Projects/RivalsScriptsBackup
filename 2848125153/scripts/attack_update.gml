@@ -250,9 +250,7 @@ if (attack == AT_NSPECIAL){
     	can_move = false;can_fast_fall = false;
     	soft_armor = 24;
     	jailpropertymoney = 0;
-		if(instance_exists(property)){
-    		jailpropertymoney = property.housemoney;
-    	}
+		if(instance_exists(property))if("housemoney" in property)jailpropertymoney = property.housemoney;
     	if(window == 20){ //enters jail
     		if(window_timer == 1 && !hitpause){
     			jailcost = floor((current_money+jailpropertymoney)/3)*discount;
@@ -481,54 +479,54 @@ if (attack == AT_NSPECIAL){
     	set_attack_value(AT_DSPECIAL, AG_CATEGORY, 1);
     }else if(window == 6 && !hitpause){
     	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-        if(instance_exists(property)){
-        	property.destroying = true;
-        	if(property.housemoney >= 30000){
-	        	rand = random_func(0, 10, true);
-	    		if(rand <= 1){
-	    			PlayVoiceClip("its a housing boom", 1.0);
-	    		}else if(rand == 2){
-	    			PlayVoiceClip("we need high numbers here", 1.0);
-	    		}else if(rand == 3){
-	    			PlayVoiceClip("were swimming in it now", 1.0);
-	    		}else if(rand == 4){
-	    			PlayVoiceClip("welcome to the tycoon club", 1.0);
-	    		}else if(rand == 5){
-	    			PlayVoiceClip("a tax refund", 1.0);
-	    		}else if(rand == 6){
-	    			PlayVoiceClip("cash grab", 1.0);
-	    		}else if(rand == 7){
-	    			PlayVoiceClip("break the bank", 1.0);
-	    		}else if(rand == 8){
-	    			PlayVoiceClip("you broke the bank", 1.0);
-	    		}else if(rand == 9){
-	    			PlayVoiceClip("quite a haul", 1.0);
-	    		}
-        	}else if(property.housemoney >= 15000){
-	        	rand = random_func(0, 8, true);
-	    		if(rand <= 1){
-	    			PlayVoiceClip("its a housing boom", 1.0);
-	    		}else if(rand == 2){
-	    			PlayVoiceClip("we need high numbers here", 1.0);
-	    		}else if(rand == 3){
-	    			PlayVoiceClip("were swimming in it now", 1.0);
-	    		}else if(rand == 4){
-	    			PlayVoiceClip("welcome to the tycoon club", 1.0);
-	    		}else if(rand == 5){
-	    			PlayVoiceClip("a tax refund", 1.0);
-	    		}else if(rand == 6){
-	    			PlayVoiceClip("cash grab", 1.0);
-	    		}else if(rand == 7){
-	    			PlayVoiceClip("quite a haul", 1.0);
-	    		}
-        	}else{
-	        	rand = random_func(0, 3, true);
-	    		if(rand <= 1){
-	    			PlayVoiceClip("its a housing boom", 1.0);
-	    		}else if(rand == 2){
-	    			PlayVoiceClip("cash grab", 1.0);
-	    		}
-        	}
+	        if(instance_exists(property)){
+	        	if(property.housemoney >= 30000){
+		        	rand = random_func(0, 10, true);
+		    		if(rand <= 1){
+		    			PlayVoiceClip("its a housing boom", 1.0);
+		    		}else if(rand == 2){
+		    			PlayVoiceClip("we need high numbers here", 1.0);
+		    		}else if(rand == 3){
+		    			PlayVoiceClip("were swimming in it now", 1.0);
+		    		}else if(rand == 4){
+		    			PlayVoiceClip("welcome to the tycoon club", 1.0);
+		    		}else if(rand == 5){
+		    			PlayVoiceClip("a tax refund", 1.0);
+		    		}else if(rand == 6){
+		    			PlayVoiceClip("cash grab", 1.0);
+		    		}else if(rand == 7){
+		    			PlayVoiceClip("break the bank", 1.0);
+		    		}else if(rand == 8){
+		    			PlayVoiceClip("you broke the bank", 1.0);
+		    		}else if(rand == 9){
+		    			PlayVoiceClip("quite a haul", 1.0);
+		    		}
+	        	}else if(property.housemoney >= 15000){
+		        	rand = random_func(0, 8, true);
+		    		if(rand <= 1){
+		    			PlayVoiceClip("its a housing boom", 1.0);
+		    		}else if(rand == 2){
+		    			PlayVoiceClip("we need high numbers here", 1.0);
+		    		}else if(rand == 3){
+		    			PlayVoiceClip("were swimming in it now", 1.0);
+		    		}else if(rand == 4){
+		    			PlayVoiceClip("welcome to the tycoon club", 1.0);
+		    		}else if(rand == 5){
+		    			PlayVoiceClip("a tax refund", 1.0);
+		    		}else if(rand == 6){
+		    			PlayVoiceClip("cash grab", 1.0);
+		    		}else if(rand == 7){
+		    			PlayVoiceClip("quite a haul", 1.0);
+		    		}
+	        	}else{
+		        	rand = random_func(0, 3, true);
+		    		if(rand <= 1){
+		    			PlayVoiceClip("its a housing boom", 1.0);
+		    		}else if(rand == 2){
+		    			PlayVoiceClip("cash grab", 1.0);
+		    		}
+	        	}
+	        	property.destroying = true;
         	}
         }
     }

@@ -52,10 +52,23 @@ if(move_cooldown[AT_DATTACK] > 0){
 	draw_sprite_ext(sprite_get("choochoo_icon"), 0, temp_x + 124, temp_y - 28, 2, 2, 0, c_white, 1);
 }
 
+if(epic_riches <= 60){
+	var offset_y = -16;
+	draw_text_color(temp_x+32,temp_y-62-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+34,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+30,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+32,temp_y-58-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	if(money_diff > 0){ //epic riches gained
+		draw_text_color(temp_x+32,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,"+"+string_thousands(money_diff*100), c_yellow, c_yellow, c_yellow, c_yellow, 2.0-(epic_riches/30));
+	}else if(money_diff < 0){ //cringe riches lost
+		draw_text_color(temp_x+32,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,string_thousands(money_diff*100), c_red, c_red, c_red, c_red, 2.0-(epic_riches/30));
+	}
+}
+
 shader_end();
 
 muno_event_type = 5;
-	user_event(14);
+user_event(14);
 	
 	
 #define string_thousands    

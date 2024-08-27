@@ -318,6 +318,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.34", "27th August, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some errors that showed up after the latest few patches, causing some specific issues (ex: Mr. Monopoly couldn't blow up his property in certain situations). Should hopefully be fine now");
+
+initPatch("1.33", "26th August, 2024");
+initHeader("Super Skillful Buffs");
+initSection("+ Mr. Monopoly can now see any money gain (or loss) displayed on his hud during a match, making it far easier to keep track of costs and so on");
+
 initPatch("1.32", "16th August, 2024");
 initHeader("Skillful Buffs");
 initSection("+ DStrong reflect now lasts 2f longer

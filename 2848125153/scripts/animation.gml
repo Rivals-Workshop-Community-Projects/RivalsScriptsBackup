@@ -46,6 +46,17 @@ if(state == PS_IDLE && lookuptime > 0){
     if(image_index > 2)image_index = 2;
 }
 
+money_frameignore--;
+if(epic_riches <= 60){epic_riches++;epic_riches2--;if(epic_riches == 6)money_diff += 0.001;}
+prev_money_diff = current_money-prev_money;
+
+if(prev_money_diff != 0 && prev_money_diff != money_diff){ //riches difference
+	money_diff = prev_money_diff;if(money_frameignore <= 0){epic_riches = 0;epic_riches2 = 60;money_frameignore = 4;}
+}
+
+if(money_frameignore <= 0)prev_money = current_money;
+
+
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX
