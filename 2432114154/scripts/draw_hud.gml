@@ -85,6 +85,114 @@ if ((triggercutscene >= 120 && triggercutscene < 180) or  (triggercutscene >= 30
     sound_play(asset_get("sfx_forsburn_spew_end"),false,noone,1,zitch + 0.2)
 }
 
+if string_count("zetta", string_lower(name)) > 0 {
+    line1 = "You were fated with a lot of power."
+    line2 = "Sadly, you lazed away with that girlfailure."
+    regconized = 1
+}
+
+if string_count("mayu", string_lower(name)) > 0 {
+    line1 = "Arrogant? With such little you had."
+    line2 = "You get an F for history."
+    regconized = 1
+}
+
+if string_count("alex", string_lower(name)) > 0 {
+    line1 = "A forest is missing their protector."
+    line2 = "Off you go."
+    regconized = 1
+}
+
+if string_count("vergil", string_lower(name)) > 0 {
+    line1 = "You sure was motivated."
+    line2 = "Such a shame that Dante super-glued you into this chair."
+    regconized = 1
+}
+
+if string_count("saji", string_lower(name)) > 0 {
+    line1 = "You were merely created for a TV show."
+    line2 = "Should've never become real."
+    regconized = 1
+}
+
+if string_count("elice", string_lower(name)) > 0 {
+    line1 = "Parading around as a lioness..."
+    line2 = "Inherited power, all wasted."
+    regconized = 1
+}
+
+if string_count("nolan", string_lower(name)) > 0 {
+    line1 = "I'm considering pulling my stocks away."
+    line2 = "Your burgers really suck."
+    regconized = 1
+}
+
+if string_count("nullan", string_lower(name)) > 0 {
+    line1 = "Ah yes, you survived Undertale."
+    line2 = "Now you will become dust just like them."
+    regconized = 1
+}
+
+if string_count("agent n", string_lower(name)) > 0 {
+    line1 = "Your brothers won't miss you."
+    line2 = "You were never there for them."
+    regconized = 1
+}
+
+if string_count("agent m", string_lower(name)) > 0 {
+    line1 = "Hee hee, hoo, augh."
+    line2 = "Now, scream me your dying sound."
+    regconized = 1
+}
+
+if string_count("katie", string_lower(name)) > 0 {
+    line1 = "You become strong because you were afraid..."
+    line2 = "Not strong enough, however."
+    regconized = 1
+}
+
+if string_count("lynk", string_lower(name)) > 0 {
+    line1 = "One thousand body to hide insider."
+    line2 = "But you will never be happy."
+    regconized = 1
+}
+
+if string_count("uza", string_lower(name)) > 0 {
+    line1 = "Godly weapon? Impressive."
+    line2 = "However, it mean nothing to me."
+    regconized = 1
+}
+
+if string_count("oboama", string_lower(name)) > 0 {
+    line1 = "You strayed from a warrior path long ago."
+    line2 = "Put that wrecked body to rest."
+    regconized = 1
+}
+
+if string_count("kanos", string_lower(name)) > 0 {
+    line1 = "Would you look at that, a big bad."
+    line2 = "You have no power here."
+    regconized = 1
+}
+
+if string_count("fuki", string_lower(name)) > 0 {
+    line1 = "Void Art not being use by Hu Hou."
+    line2 = "This is not my design."
+    regconized = 1
+}
+
+if string_count("fumo", string_lower(name)) > 0 {
+    line1 = "This creature..."
+    line2 = "Begone!"
+    regconized = 1
+}
+
+if string_count("gigachad", string_lower(name)) > 0 {
+    line1 = "What in the hell are you!?"
+    line2 = "Disgusting hairless creature, Begone!"
+    regconized = 1
+}
+
 
 if string_count("sai", string_lower(name)) > 0 {
     line1 = "While thy branches mix with mine..."

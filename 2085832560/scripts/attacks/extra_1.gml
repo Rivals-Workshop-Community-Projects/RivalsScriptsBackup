@@ -463,7 +463,6 @@ set_hitbox_value(AT_EXTRA_1, 7,HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_EXTRA_1, 7,HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_EXTRA_1, 7,HG_HIT_SFX, sound_get("exp2"));
 set_hitbox_value(AT_EXTRA_1, 7,HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_EXTRA_1, 7,HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_1, 7,HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 7,HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_1, 7,HG_PROJECTILE_DOES_NOT_REFLECT, true);

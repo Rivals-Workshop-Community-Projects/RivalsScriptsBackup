@@ -20,8 +20,11 @@ switch (attack)
 			boowomp.vsp = -6;
 			boowomp.depth = depth-1;
 		}
-		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
-		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
+		if (canAura)
+		{
+			if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+			else if (state_timer == 68 && auraMeter == 67) ActivateAura();
+		}
 		break;
 
 	case AT_EXTRA_1:

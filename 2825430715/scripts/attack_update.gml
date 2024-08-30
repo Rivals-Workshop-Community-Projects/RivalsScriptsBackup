@@ -1315,7 +1315,7 @@ if attack == AT_FSPECIAL && !hitpause{
     }
     
     if window == 1 && !hitpause{
-        hsp/= 1.2
+        hsp/= 1.1
         vsp/= 1.2
         if window_timer == 1 {
             sound_play(asset_get("sfx_shovel_swing_heavy2"));
@@ -1413,7 +1413,7 @@ if attack == AT_FSPECIAL && !hitpause{
     }
     
     if window == 4 && window_timer > 18 {
-    	prat_land_time = 46 - window_timer
+    	prat_land_time = 36 - window_timer
         if !free {
             set_state (PS_PRATLAND)
             sound_play(asset_get("sfx_land_med"))	
@@ -1438,7 +1438,7 @@ if attack == AT_FSPECIAL && !hitpause{
         }
         
         if (window == 3 && !hitpause && window_timer > 6) or window < 5 {
-        	x += 40*spr_dir
+        	x += 50*spr_dir
         	destroy_hitboxes()
         	sound_play(asset_get("sfx_clairen_spin"));
             sound_play(asset_get("sfx_shovel_swing_med1"));
@@ -1710,7 +1710,7 @@ if attack == AT_DSPECIAL && !hitpause{
 		pratfx = spawn_hit_fx(x,y - 40,306)
 		pratfx.pause = 3
 		set_state(PS_PRATFALL)
-		prat_land_time = 90
+		prat_land_time = 45
 		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.8,1.25);
 	}
 	

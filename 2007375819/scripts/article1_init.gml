@@ -11,3 +11,4 @@ ignores_walls = false;
 free = true;
 uses_shader = true;
 minionHealth = 5;
+turnaroundTimer = 0;

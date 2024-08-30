@@ -5,116 +5,116 @@
 /// have an intro, you're welcome
 if get_gameplay_time() <= 120 {
 	visible = true
-with (asset_get("oPlayer")) {
+// with (asset_get("oPlayer")) {
 	
-			if (player != other.player) {
-				//character that have intro literally just spawn an vfx 
+// 			if (player != other.player) {
+// 				//character that have intro literally just spawn an vfx 
 				
-			    if string_count("lynk", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
-			    string_count("tengia", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
-			    string_count("ase", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0  and 
-			    string_count("yanchang", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
-			    string_count("lucah", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
-			    string_count("elri", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0
-			    and get_gameplay_time() == 2 and visible and draw_y == 0 and (sprite_index == sprite_get("idle") or select <= 19) {
-			    	if "needintro" not in self {
-			    	print("This bozo didn't have an intro")
-			    	needintro = true
-			        }
-			    }
+// 			    if string_count("lynk", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
+// 			    string_count("tengia", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
+// 			    string_count("ase", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0  and 
+// 			    string_count("yanchang", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
+// 			    string_count("lucah", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
+// 			    string_count("elri", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0
+// 			    and get_gameplay_time() == 2 and visible and draw_y == 0 and (sprite_index == sprite_get("idle") or select <= 19) {
+// 			    	if "needintro" not in self {
+// 			    	print("This bozo didn't have an intro")
+// 			    	needintro = true
+// 			        }
+// 			    }
 			    
-			    if get_gameplay_time() > 6 {
+// 			    if get_gameplay_time() > 6 {
 			    	
-			    	if select > 19 {
-			    	if "needintro" in self {
-			    		if 	needintro = true {
-                         if get_gameplay_time() == 40 {
-                         	with other {
-                         		create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
-                         	}
-                         }
+// 			    	if select > 19 {
+// 			    	if "needintro" in self {
+// 			    		if 	needintro = true {
+//                          if get_gameplay_time() == 40 {
+//                          	with other {
+//                          		create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
+//                          	}
+//                          }
                          
-			    		 if get_gameplay_time() == 62 {spr_dir *= 1.2 sound_stop(asset_get("sfx_blow_medium3")) sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1.3) 
-			    		 shake_camera(4,4) spawn_hit_fx(x -10*spr_dir,y - 14,14)
-			    		 	with other { introfx = spawn_hit_fx(other.x,other.y - 46, SC)
-			    		 	             introfx.depth = -20 }
-			    		    }
+// 			    		 if get_gameplay_time() == 62 {spr_dir *= 1.2 sound_stop(asset_get("sfx_blow_medium3")) sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1.3) 
+// 			    		 shake_camera(4,4) spawn_hit_fx(x -10*spr_dir,y - 14,14)
+// 			    		 	with other { introfx = spawn_hit_fx(other.x,other.y - 46, SC)
+// 			    		 	             introfx.depth = -20 }
+// 			    		    }
 			    		 
-			    		 if get_gameplay_time() == 70 { spr_dir /= 1.2  }
+// 			    		 if get_gameplay_time() == 70 { spr_dir /= 1.2  }
 			    		  
-			    		 if get_gameplay_time() == 90 {sound_stop(asset_get("sfx_clairen_spin")) sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.15)}
+// 			    		 if get_gameplay_time() == 90 {sound_stop(asset_get("sfx_clairen_spin")) sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.15)}
 			    		 
-			    		 if get_gameplay_time() < 40 {
-			    		 	draw_indicator = false 
-			    		 	visible = false 
-			    		 	if sprite_index != sprite_get("idle") {
-			    		 		visible = true
-			    		 		needintro = false
-			    		 	}
-			    		 	draw_y = 9999
+// 			    		 if get_gameplay_time() < 40 {
+// 			    		 	draw_indicator = false 
+// 			    		 	visible = false 
+// 			    		 	if sprite_index != sprite_get("idle") {
+// 			    		 		visible = true
+// 			    		 		needintro = false
+// 			    		 	}
+// 			    		 	draw_y = 9999
 			    		 	
 			    		
 			    		 	
-			    		 } else if get_gameplay_time() < 62{
-			    		 	draw_indicator = false 
-			    		 	visible = false
-			    		 	sprite_index = sprite_get("hurt")
-			    		 	image_index = 0
-			    		 } else if get_gameplay_time() < 70 {
-			    		 	sprite_index = sprite_get("hurt")
-			    		 	visible = true 
-			    		 	image_index = (get_gameplay_time()-82)/5
-			    		 } else if get_gameplay_time() <= 90 {
-			    		 	sprite_index = sprite_get("hurt")
-			    		 } else if get_gameplay_time() <= 113 {
-			    		 	sprite_index = sprite_get("roll_forward")
-			    		 	image_index = (get_gameplay_time()-90)/4
-			    		 } 
-			    		 else if get_gameplay_time() <= 120 {
-			    		 	sprite_index = sprite_get("crouch")
-			    		 	image_index = 0
-			    		 }
-			    	} 
-			      }
-			    } else {
-			    	if get_gameplay_time() == 40 {
-                         	with other {
-                         		create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
-                         	}
-                         }
+// 			    		 } else if get_gameplay_time() < 62{
+// 			    		 	draw_indicator = false 
+// 			    		 	visible = false
+// 			    		 	sprite_index = sprite_get("hurt")
+// 			    		 	image_index = 0
+// 			    		 } else if get_gameplay_time() < 70 {
+// 			    		 	sprite_index = sprite_get("hurt")
+// 			    		 	visible = true 
+// 			    		 	image_index = (get_gameplay_time()-82)/5
+// 			    		 } else if get_gameplay_time() <= 90 {
+// 			    		 	sprite_index = sprite_get("hurt")
+// 			    		 } else if get_gameplay_time() <= 113 {
+// 			    		 	sprite_index = sprite_get("roll_forward")
+// 			    		 	image_index = (get_gameplay_time()-90)/4
+// 			    		 } 
+// 			    		 else if get_gameplay_time() <= 120 {
+// 			    		 	sprite_index = sprite_get("crouch")
+// 			    		 	image_index = 0
+// 			    		 }
+// 			    	} 
+// 			      }
+// 			    } else {
+// 			    	if get_gameplay_time() == 40 {
+//                          	with other {
+//                          		create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
+//                          	}
+//                          }
                          
-			    		 if get_gameplay_time() == 62 {spr_dir *= 1.2 sound_stop(asset_get("sfx_blow_medium3")) sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1.3) 
-			    		 shake_camera(4,4) spawn_hit_fx(x -10*spr_dir,y - 14,14)
-			    			with other { introfx = spawn_hit_fx(other.x,other.y - 46, SC)
-			    		 	             introfx.depth = -20 }
-			    		 }
+// 			    		 if get_gameplay_time() == 62 {spr_dir *= 1.2 sound_stop(asset_get("sfx_blow_medium3")) sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1.3) 
+// 			    		 shake_camera(4,4) spawn_hit_fx(x -10*spr_dir,y - 14,14)
+// 			    			with other { introfx = spawn_hit_fx(other.x,other.y - 46, SC)
+// 			    		 	             introfx.depth = -20 }
+// 			    		 }
 			    		 
-			    		 if get_gameplay_time() == 70 { spr_dir /= 1.2  }
+// 			    		 if get_gameplay_time() == 70 { spr_dir /= 1.2  }
 			    		  
-			    		 if get_gameplay_time() == 90 {sound_stop(asset_get("sfx_clairen_spin")) sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.15)}
+// 			    		 if get_gameplay_time() == 90 {sound_stop(asset_get("sfx_clairen_spin")) sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.15)}
 			    		 
-			    		 if get_gameplay_time() < 62 {
-			    		 	draw_indicator = false 
-			    		 	sprite_index = asset_get("empty_sprite")
-			    		 	image_index = (get_gameplay_time()-3)/3
-			    		 	visible = false
-			    		 }  else if get_gameplay_time() <= 90 {
-			    		 	visible = true 
-                            set_state(PS_CROUCH)
-                            state_timer = 2
-			    		 }
-			    }
+// 			    		 if get_gameplay_time() < 62 {
+// 			    		 	draw_indicator = false 
+// 			    		 	sprite_index = asset_get("empty_sprite")
+// 			    		 	image_index = (get_gameplay_time()-3)/3
+// 			    		 	visible = false
+// 			    		 }  else if get_gameplay_time() <= 90 {
+// 			    		 	visible = true 
+//                             set_state(PS_CROUCH)
+//                             state_timer = 2
+// 			    		 }
+// 			    }
 			    
 			    
 			    
 			    
-			    }
+// 			    }
 			    
 			    
-			}
+// 			}
 			
 			
-}
+// }
 
 }
 

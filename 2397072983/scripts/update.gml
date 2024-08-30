@@ -336,7 +336,7 @@ if raged {
 	}
 	
 
-    if state == PS_AIR_DODGE && right_down - left_down = 0 && up_down - down_down = 0 && state_timer <= 1 {
+    if state == PS_AIR_DODGE && state_timer <= 1 {
     	free = false 
        set_attack(AT_UTHROW)
        window = 1
@@ -989,9 +989,9 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            
 ///Jab
    set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 5);    
-   set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
+   set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 3);
    
-   set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
+   set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 7);
    set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 3);
    set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .3);
@@ -999,8 +999,8 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 6);
    set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 8);
    
-   set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
-   set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
+   set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 7);
+   set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
    set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
    set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .3);
@@ -1008,14 +1008,14 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 4);
    set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 7);
    
-   set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
-   set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8);
+   set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 7);
+   set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8.5);
    set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 5);
    set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .3);
    
-   set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 8);
-   set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 8);
+   set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 7);
+   set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 9);
    set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 5);
    set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .3);
@@ -1024,7 +1024,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 8);
    
    set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6);
-   set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 5);
+   set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6.5);
    set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
    set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .1);
@@ -1033,7 +1033,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 8);
    
    set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 7);
-   set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7);
+   set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7.5);
    set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
    set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .3);
@@ -1043,7 +1043,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
    
    set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 4);
-   set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 7);
+   set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 8);
    set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 5);
    set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, .3);
@@ -1052,7 +1052,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 7);
    set_attack_value(AT_FAIR, AG_LANDING_LAG, 10);
       
-   set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 7);
+   set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 5);
    set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 5);
    set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, .2);
    set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 6);
@@ -1063,7 +1063,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
     
    set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 7);
-   set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
+   set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7.5);
    set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .3);
    set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
    set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .3);
@@ -1072,8 +1072,8 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 7);
    set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
       
-   set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 8);
-   set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
+   set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+   set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7.5);
    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .4);
    set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
    set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .4);
@@ -1082,8 +1082,8 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 9);
    set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
    
-   set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 4);
-   set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5);
+   set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5);
+   set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
    set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .4); 
    set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 4);
    set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .4);

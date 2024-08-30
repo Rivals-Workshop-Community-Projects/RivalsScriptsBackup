@@ -3,7 +3,7 @@ if ("cpu_skill_pool" in self && ds_list_valid(cpu_skill_pool)) ds_list_destroy(c
 
 
 //code by Frtoud
-if (!handled_victory_quote)
+if (!handled_bar_victory_quote)
 {
     //default values
     var transfer_array = [];
@@ -28,10 +28,10 @@ if (!handled_victory_quote)
         if (url == other.url) // bar-specific
         {
             //only one bar has to handle this for everyone: notify them.
-            handled_victory_quote = true;
+            handled_bar_victory_quote = true;
             
             data.priority = 2;
-            data.quote = victory_quote;
+            data.quote = bar_victory_quote;
             data.emote = 2;
 
             //stage compatibility
@@ -148,10 +148,10 @@ if (!handled_victory_quote)
                 }
             }
         }
-        else if ("victory_quote" in self)
+        else if ("bar_victory_quote" in self)
         {
             data.priority = 2;
-            data.quote = victory_quote;
+            data.quote = bar_victory_quote;
             data.quote = emote;
         }
         else

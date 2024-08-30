@@ -7,7 +7,7 @@ if ("initialized_victory_screen" not in self)
 {
     initialized_victory_screen = true;
     //defaults to prevent errors
-    victory_quote = "You... Didn't code this properly, did you?";
+    bar_victory_quote = "You... Didn't code this properly, did you?";
     emote = 3;
     stage_id = noone;
     
@@ -47,7 +47,7 @@ if (winner == player)
     if (quote_current_pos_x > hide_pos_x)
     {
         draw_sprite(sprite_get("win_quote_bg"), 0, quote_current_pos_x, quote_pos_y);
-        draw_win_quote(quote_current_pos_x+117, quote_pos_y+7, victory_quote);
+        draw_win_quote(quote_current_pos_x+117, quote_pos_y+7, bar_victory_quote);
 
         draw_sprite(sprite_get("win_quote_emote"), emote, quote_current_pos_x+12, quote_pos_y+9)
     }
@@ -129,7 +129,7 @@ if (winner == player)
     if (string_length(data_array[winner].status_quote) > 1)
     {
         //Status messages always take precedence for winner bar
-        victory_quote = data_array[winner].status_quote;
+        bar_victory_quote = data_array[winner].status_quote;
         emote = data_array[winner].status_emote;
     }
     else
@@ -157,12 +157,12 @@ if (winner == player)
             }
         }
 
-        victory_quote = data_array[best_player].quote;
+        bar_victory_quote = data_array[best_player].quote;
         emote = data_array[best_player].emote;
 
-        if (string_length(victory_quote) < 1)
+        if (string_length(bar_victory_quote) < 1)
         {
-            victory_quote = get_random_quote().quote;
+            bar_victory_quote = get_random_quote().quote;
             emote = get_random_quote().emote;
         }
     }

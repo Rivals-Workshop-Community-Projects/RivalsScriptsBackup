@@ -24,7 +24,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 7.5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .065);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
@@ -34,13 +34,17 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .7);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, .4);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_DATTACK, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, .25);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, .95);
 
 set_window_value(AT_DATTACK, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 6, AG_WINDOW_LENGTH, 5);

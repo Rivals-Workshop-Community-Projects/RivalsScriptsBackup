@@ -213,6 +213,12 @@ swallowed = 0;
 
 // aura
 aura = false;
+switch (get_player_name(player)) // locked behind my tag :(
+{
+	case "Lukaru":
+	case "Karu": canAura = true; break;
+	default: canAura = false; break;
+}
 auraClone = noone;
 auraMeter = 0;
 hue = 0;

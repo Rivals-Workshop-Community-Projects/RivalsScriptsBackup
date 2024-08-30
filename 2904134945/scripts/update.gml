@@ -114,7 +114,7 @@ for (var i = 0; i < array_length_1d(afterimage_array); ++i)
 afterimage_array = newArray;
 
 // aura
-if (state == PS_SPAWN)
+if (state == PS_SPAWN && (canAura || ("temp_level" in self && temp_level == 1)))
 {
 	if (state_timer == 68)
 	{

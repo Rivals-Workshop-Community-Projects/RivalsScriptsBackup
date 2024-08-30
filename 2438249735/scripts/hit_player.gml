@@ -58,9 +58,9 @@ spawn_hit_fx(x,y -40, shit1)
     
 
 
-//if my_hitboxID.type == 1 {
-//	 move_cooldown[AT_USTRONG_2] = floor(my_hitboxID.damage/3)
-//}
+if my_hitboxID.type == 1 {
+	 move_cooldown[AT_USTRONG_2] = floor(my_hitboxID.damage/3) + 1
+}
 
 
 

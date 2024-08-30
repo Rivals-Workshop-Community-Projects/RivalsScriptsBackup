@@ -1,4 +1,8 @@
-with (fspec_article) state = 2
+with (fspec_article) 
+{
+	state = PS_DEAD
+	state_timer = 0;	
+}
 
 nspec_charge = 0
 uspec_first = true;

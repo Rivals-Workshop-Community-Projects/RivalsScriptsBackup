@@ -230,7 +230,7 @@ if (free && state != PS_WALL_JUMP && state_cat != SC_HITSTUN && move_cooldown[AT
 else move_cooldown[AT_DSPECIAL] = 0;
 
 // intro
-if (state == PS_SPAWN)
+if (state == PS_SPAWN && (canAura || ("temp_level" in self && temp_level == 1)))
 {
 	if (state_timer == 50) sound_play(sound_get("fspec"));
 	if (state_timer == 68)

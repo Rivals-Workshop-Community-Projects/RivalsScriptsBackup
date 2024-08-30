@@ -138,27 +138,11 @@ trail3 = hit_fx_create(sprite_get("knife_g_trail"), 1);
 
 //This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
-split_var = split_synced_var(1,1);
+//split_var = split_synced_var(1,1);
 
-mode = 1; // Declare variable
-bair_mode = 1; // Declare variable
+mode = 0; // Declare variable
+bair_mode = 0; // Declare variable
 
 // Synced variable overwrite
-mode = split_var[0];
-bair_mode = split_var[1];
-
-#define split_synced_var
-///args chunk_lengths...
-var num_chunks = argument_count;
-var chunk_arr = array_create(argument_count);
-var synced_var = get_synced_var(player);
-var chunk_offset = 0
-for (var i = 0; i < num_chunks; i++) {
-    var chunk_len = argument[i]; //print(chunk_len);
-    var chunk_mask = (1 << chunk_len)-1
-    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
-    //print(`matching shift = ${chunk_len}`);
-    chunk_offset += chunk_len;
-}
-//print(chunk_arr);
-return chunk_arr;
+//mode = split_var[0];
+//bair_mode = split_var[1];

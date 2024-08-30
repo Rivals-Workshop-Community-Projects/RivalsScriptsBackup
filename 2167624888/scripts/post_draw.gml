@@ -45,3 +45,67 @@ if (triggerProtection)
 	draw_text_transformed(view_get_xview()+view_get_wview()/2,view_get_yview()+view_get_hview()/2,"FUCK YOU. THIS IS MY CHARACTER.",1,1,0)
 	draw_set_font(-1)
 }
+
+if instance_exists(fspec_article) {
+	with fspec_article draw_indicator(0, isRed)
+}
+
+
+#define draw_indicator(angle, index)
+var offX = undefined;
+var offY = undefined;
+var offIndex = 0;
+var offRot = 0;
+
+if instance_number(asset_get("camera_obj")) == 0 return;
+
+var camera_x = get_instance_x(asset_get("camera_obj")) - (view_get_wview() / 2)
+var camera_y = get_instance_y(asset_get("camera_obj")) - (view_get_hview() / 2)
+
+if (x < camera_x - 30) {
+    offX = camera_x + 35;
+    if (y > camera_y + view_get_hview() - 60) {
+        offY = camera_y + view_get_hview() - 85;
+        offIndex = 1;
+        offRot = -90;
+    } else if (y < camera_y + 35) {
+        offY = camera_y + 35;
+        offIndex = 1;
+        offRot = 180;
+    } else {
+        offY = y;
+        offIndex = 0;
+        offRot = -90;
+    }
+} else if (x > camera_x + view_get_wview() + 30) {
+    offX = camera_x + view_get_wview() - 35;
+    if (y > camera_y + view_get_hview() - 60) {
+        offY = camera_y + view_get_hview() - 85;
+        offIndex = 1;
+        offRot = 0;
+    } else if (y < camera_y + 35) {
+        offY = camera_y + 35;
+        offIndex = 1;
+        offRot = 90;
+    } else {
+        offY = y;
+        offIndex = 0;
+        offRot = 90;
+    }
+} else if (y > camera_y + view_get_hview() - 60) {
+    offX = x;
+    offY = camera_y + view_get_hview() - 85;
+    offIndex = 0;
+    offRot = 0;
+} else if (y < camera_y + 35) {
+    offX = x;
+    offY = camera_y + 35;
+    offIndex = 0;
+    offRot = 180;
+}
+
+if (offX != undefined) {
+	draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY, 1, 1, offRot, get_player_hud_color(player), 1);
+	
+	draw_sprite_ext(sprite_get(index ? "arrow_offscreen_red" : "arrow_offscreen"), 0, offX, offY, 1, 1, 0, c_white, 1);
+}

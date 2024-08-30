@@ -316,15 +316,15 @@ set_color_profile_slot( 28, 5, 5, 26, 117 ); //Eyes
 set_color_profile_slot( 28, 6, 67, 96, 140 ); //Outfit 2 / Rest
 set_color_profile_slot( 28, 7, 7, 59, 140 ); //Outfit 1/ Legs
 
-// BBOUT
-set_color_profile_slot( 29, 0, 10, 56, 17 ); //Scarf
-set_color_profile_slot( 29, 1, 34, 78, 143 ); //Feathers
-set_color_profile_slot( 29, 2, 45, 99, 45 ); //Hair
-set_color_profile_slot( 29, 3, 139, 81, 150 ); //Shoulder
-set_color_profile_slot( 29, 4, 129, 0, 130 ); //Gloves/Light
-set_color_profile_slot( 29, 5, 161, 82, 142 ); //Eyes
-set_color_profile_slot( 29, 6, 112, 46, 122 ); //Outfit 2 / Rest
-set_color_profile_slot( 29, 7, 34, 78, 143 ); //Outfit 1/ Legs
+// RIPTIDE
+set_color_profile_slot( 29, 0, 14, 201, 189 ); //Scarf
+set_color_profile_slot( 29, 1, 255, 239, 144 ); //Feathers
+set_color_profile_slot( 29, 2, 163, 120, 3 ); //Hair
+set_color_profile_slot( 29, 3, 0, 255, 221 ); //Shoulder
+set_color_profile_slot( 29, 4, 255, 145, 0 ); //Gloves/Light
+set_color_profile_slot( 29, 5, 158, 70, 12 ); //Eyes
+set_color_profile_slot( 29, 6, 50, 62, 102 ); //Outfit 2 / Rest
+set_color_profile_slot( 29, 7, 255, 239, 144 ); //Outfit 1/ Legs
 
 // TOTES ANIMEVO
 set_color_profile_slot( 30, 0, 247, 45, 163 ); //Scarf

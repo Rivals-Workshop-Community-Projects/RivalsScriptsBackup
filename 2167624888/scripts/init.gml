@@ -25,7 +25,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 10;
-short_hop_speed = 6.5;
+short_hop_speed = 6;
 djump_speed = 9.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
@@ -121,7 +121,7 @@ nspec_effect_red = hit_fx_create( sprite_get( "redfire" ), 30 );
 fspec_effect = hit_fx_create( sprite_get( "bigblueexplosion" ), 30 );
 fspec_effect_red = hit_fx_create( sprite_get( "bigexplosion" ), 30 );
 fspec_effect_mix = hit_fx_create( sprite_get( "medianomix" ), 30 );
-nspec_effect_boom = hit_fx_create( sprite_get( "effect" ), 10 );
+nspec_effect_boom = hit_fx_create( sprite_get( "effect" ), 20 );
 nspec_wispconsume = false;
 
 //arrow draw stuff
@@ -131,7 +131,7 @@ should_red_arrow = false;
 red_explosion = hit_fx_create( sprite_get( "bigexplosion" ), 30 );
 nspec_hitenemy_red = hit_fx_create( sprite_get( "arrowhit_red" ), 15 );
 nspec_hitenemy = hit_fx_create( sprite_get( "arrowhit_blue" ), 15 );
-blue_charge = hit_fx_create( sprite_get( "arrowhit_bluenew" ), 15 );
+blue_charge = hit_fx_create( sprite_get( "arrowhit_bluenew" ), 27 );
 
 wisp_absorption_fx = hit_fx_create( sprite_get( "wispabsorption" ), 16 );
 crouch_timer = 0;
@@ -168,6 +168,7 @@ counter = 0;
 //Blue strongs
 flamecharge = false;
 bluestrong_hit = hit_fx_create( sprite_get( "bigblueexplosion" ), 25 );
+mixed_hit = hit_fx_create( sprite_get( "bigmixedexplosion" ), 30 );
 
 //DAIR
 dair_limit = 5;
@@ -179,7 +180,7 @@ Hikaru_Title = "Lycanthropy";
 particles = ds_list_create();
 
 //Reupload protection
-triggerProtection = (url != 2167624888);
+triggerProtection = false;
 
 //TAUNT MENU
 tMenuState = -1; //-1 not there, 0 fade in, 1 stay, 2 fade out
@@ -198,57 +199,27 @@ song_name = "My Song"
 curent_note = -1
 song_position = -1
 
-prepare_note_data(4, 100, 4) //four note song with a BPM of 100, base val at 4
+big_hit_vfx = hit_fx_create( sprite_get( "hfx_big" ), 32 );
+blue_big_hit_vfx = hit_fx_create( sprite_get( "hfx_bigblue" ), 36 );
 
-//NOTES
-set_note_value(0, "C", 0, 4)
-set_note_value(1, "D", 4, 4)
-set_note_value(2, "E", 8, 4)
-set_note_value(3, "F", 12, 4)
-
-#define prepare_note_data
-// prepare_note_data(n, tempo, base)
-// Prepares a number of notes for data to be put in, along with other data
-
-// n: number of notes to be put into the array.
-// tempo: tempo (in BPM) of the song.
-// base: what real value to set the quarter note to. This is an optional argument, the default being 4.
-// Eg. if quarter = 4, then eighth = 2, sixteenth = 1, half = 8, etc. 
-
-// Returns: none
-
-//get the first argument
-var n, s_tempo, s_base, s_notes;
-n = argument0
-s_tempo = argument1
-s_base = argument_count == 3 ? argument2 : 4
-s_notes = []
-
-//put in arrays
-for (var i = 0; i < n; i++)
-{
-    notes[i] = []
+state_map = ds_map_create();
+state_map[? PS_SPAWN] = {
+    sprite : [sprite_get("fire_enter"), sprite_get("willo_enter")],
+    next : PS_IDLE,
+    length : 20,
+    loop : true,
 }
 
-//prepare LWO
-song_data = {
-    tempo: s_tempo,
-    base: s_base,
-    notes: s_notes
+state_map[? PS_IDLE] = {
+    sprite : [sprite_get("fire_idle"), sprite_get("willo_idle")],
+    next : PS_DEAD,
+    length : 24,
+    loop : true,
 }
 
-#define set_note_value
-// set_note_value(index, name, start, duration) 
-
-//note name (string).
-//start time (base, cumulative).
-//duration (base)
-
-// Returns: none
-var index, name, start, duration;
-index = (argument0 < 0) ? 0 : argument0
-name = argument1
-start = argument2
-duration = argument3
-
-song_data.notes[index] = [name,start,duration]
+state_map[? PS_DEAD] = {
+    sprite : [sprite_get("fire_die"), sprite_get("willo_disappear")],
+    next : -1,
+    length : 16,
+    loop : false,
+}

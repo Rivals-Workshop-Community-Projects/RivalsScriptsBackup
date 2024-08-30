@@ -114,7 +114,7 @@ if attack == AT_NSPECIAL  {
   	    }
 	}
 	
-	if window == 1 && window_timer == 12 && special_down && state_timer < 400 {
+	if window == 1 && window_timer == 10 && special_down && state_timer < 400 {
 		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 		spawn_hit_fx(x - 30*spr_dir,y - 60,timeS2)
 		state_timer = 400

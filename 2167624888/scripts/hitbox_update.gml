@@ -12,7 +12,7 @@ if (attack == AT_NSPECIAL && hbox_num == 1)
 		xpos = hsp < 2 ? random_func(7, 20, false)*flip : 0;
 		with (player_id)
 		{
-			createParticle(particles,1,0,0,sprite_get("fireeffect"),0,other.x,other.y,0, -1, .3, 0, 0, 1, 0, 40, true, true)
+			createParticle(particles,1,0,0,sprite_get("fireeffect"),0,other.x, other.y,0, -1, .2, 0, 0, 1, 0, 30, true, true)
 		}
     }
     
@@ -20,88 +20,98 @@ if (attack == AT_NSPECIAL && hbox_num == 1)
 	{
 		current_frame = (current_frame >= 8) ? 0 : current_frame+.25
 	}
-}
-
-if ((attack == AT_NSPECIAL && hbox_num <= 3) or (attack == AT_USPECIAL || attack == AT_USPECIAL_2 /*&& hbox_num == 1*/))
-{
-    var hit_article = false;
-	if (player_id.fspec_article != noone
-	&& player_id.fspec_article.state != 2
-    && point_distance(x,y,player_id.fspec_article.x,player_id.fspec_article.y) < (hbox_num == 1?30:50)
-    //place_meeting(x,y,player_id.fspec_article)
-	&& player_id == player_id.fspec_article.player_id
-	&& orig_player == player)
-	{
-        player_id.fspec_article.state = 2;
-        player_id.fspec_article.state_timer = 0;
-        
-        hit_article = true;
+	else {
+		if player_id.should_red_arrow == false {
+			spawn_hit_fx(x,y, player_id.nspec_hitenemy)
+		}
+		else {
+			spawn_hit_fx(x,y, player_id.nspec_hitenemy_red)
+		}
+		destroyed = true;
 	}
 	
-	var can_plat = position_meeting(x,y+5,asset_get("par_jumpthrough")) and hitbox_timer > 3
-	
-    if ((hbox_num == 1 && (position_meeting(x,y+5,asset_get("par_block")) || can_plat)) || hit_article)  // hitbox_timer includes the firing time
-    {
-        destroyed = true;
-        player_id.move_cooldown[AT_NSPECIAL] = 30 + (30*(!player_id.should_red_arrow));
-        
-        if (hit_article)
-        {
-            if (!player_id.fspec_article.isRed) // if blue article
-            {
-            	if (player_id.should_red_arrow == false){ // blue arrow
-	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect);
-	                create_hitbox(AT_NSPECIAL, 4, player_id.fspec_article.x, player_id.fspec_article.y);
-            	}
-            	else{ // if red arrow
-	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect_mix);
-	                create_hitbox(AT_NSPECIAL, 6, player_id.fspec_article.x -5, player_id.fspec_article.y -12);
-            	}
-            }
-            else // red article
-            {
-            	if (player_id.should_red_arrow == false){ // if blue arrow
-	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect_mix);
-	                create_hitbox(AT_NSPECIAL, 6, player_id.fspec_article.x -5, player_id.fspec_article.y -12);
-            	}
-            	else{  // if red arrow
-	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.nspec_effect_red);
-	                create_hitbox(AT_NSPECIAL, 3, player_id.fspec_article.x, player_id.fspec_article.y);
-            	}
-            }
-        }
-        else
-        {
-        	//if(player_id.attack == AT_NSPECIAL){
-	            if (player_id.should_red_arrow == false) // if blue arrow
-	            {
-	                spawn_hit_fx(x,y,player_id.nspec_effect);
-	                //create_hitbox(AT_NSPECIAL, 2, x, y-16);
-	            }
-	            else
-	            {
-	                spawn_hit_fx(x,y,player_id.nspec_effect_red);
-	                //create_hitbox(AT_NSPECIAL, 3, x, y-16);
-	            }
-        	//}
-        }
-        
-        if (hbox_num == 1 || (hit_article?hitbox_timer>4:true))
-            sound_play(sound_get("Impact"));
-    }
-    else if (free)
-    {
-        if (y > room_height + 100)
-            destroyed = true;
-    }
-    else
-    {
-        //hsp = 0;
-        //vsp = 0;
-        hit_priority = 0;
-        transcendent = true;
-    }
 }
+
+
+
+// if ((attack == AT_NSPECIAL && hbox_num <= 3) or (attack == AT_USPECIAL || attack == AT_USPECIAL_2 /*&& hbox_num == 1*/))
+// {
+//     var hit_article = false;
+// 	if (player_id.fspec_article != noone
+// 	&& player_id.fspec_article.state != 2
+//     && point_distance(x,y,player_id.fspec_article.x,player_id.fspec_article.y) < (hbox_num == 1?30:50)
+//     //place_meeting(x,y,player_id.fspec_article)
+// 	&& player_id == player_id.fspec_article.player_id
+// 	&& orig_player == player)
+// 	{
+//         player_id.fspec_article.state = 2;
+//         player_id.fspec_article.state_timer = 0;
+        
+//         hit_article = true;
+// 	}
+	
+//     if ((hbox_num == 1 && !free) || hit_article)  // hitbox_timer includes the firing time
+//     {
+//         destroyed = true;
+//         player_id.move_cooldown[AT_NSPECIAL] = 30 + (30*(!player_id.should_red_arrow));
+        
+//         if (hit_article)
+//         {
+//             if (!player_id.fspec_article.isRed) // if blue article
+//             {
+//             	if (player_id.should_red_arrow == false){ // blue arrow
+// 	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect);
+// 	                create_hitbox(AT_NSPECIAL, 4, player_id.fspec_article.x, player_id.fspec_article.y);
+//             	}
+//             	else{ // if red arrow
+// 	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect_mix);
+// 	                create_hitbox(AT_NSPECIAL, 6, player_id.fspec_article.x -5, player_id.fspec_article.y -12);
+//             	}
+//             }
+//             else // red article
+//             {
+//             	if (player_id.should_red_arrow == false){ // if blue arrow
+// 	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.fspec_effect_mix);
+// 	                create_hitbox(AT_NSPECIAL, 6, player_id.fspec_article.x -5, player_id.fspec_article.y -12);
+//             	}
+//             	else{  // if red arrow
+// 	                spawn_hit_fx(player_id.fspec_article.x,player_id.fspec_article.y,player_id.nspec_effect_red);
+// 	                create_hitbox(AT_NSPECIAL, 3, player_id.fspec_article.x, player_id.fspec_article.y);
+//             	}
+//             }
+//         }
+//         else
+//         {
+//         	//if(player_id.attack == AT_NSPECIAL){
+// 	            if (player_id.should_red_arrow == false) // if blue arrow
+// 	            {
+// 	                spawn_hit_fx(x,y,player_id.nspec_effect);
+// 	                //create_hitbox(AT_NSPECIAL, 2, x, y-16);
+// 	            }
+// 	            else
+// 	            {
+// 	                spawn_hit_fx(x,y,player_id.nspec_effect_red);
+// 	                //create_hitbox(AT_NSPECIAL, 3, x, y-16);
+// 	            }
+//         	//}
+//         }
+        
+//         if (hbox_num == 1 || (hit_article?hitbox_timer>4:true))
+//             sound_play(sound_get("Impact"));
+//     }
+//     else if (free)
+//     {
+//         if (y > room_height + 100)
+//             destroyed = true;
+//     }
+//     else
+//     {
+//         //hsp = 0;
+//         //vsp = 0;
+//         hit_priority = 0;
+//         transcendent = true;
+//     }
+// }
 
 // if(attack == AT_NSPECIAL && hbox_num == 1){
 // 	if(!destroyed){

@@ -11,6 +11,35 @@ if (attack == AT_DSPECIAL) //dspec can't shoot if arrow is alr out
 
 //Nspecial Cooldown
 
+if attack == AT_DSPECIAL {
+	if(nspec_charge < blue_arrow_timer){
+		should_red_arrow = true;
+    	reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
+    	reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
+    	reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
+		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START)
+	}
+	if( nspec_charge >= blue_arrow_timer)
+    {
+    	should_red_arrow = false;
+    	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
+    	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .8);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .8);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
+		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11)
+    }
+    clear_button_buffer(PC_SPECIAL_PRESSED);
+    dspec_reverse = false;
+}
+
 if (attack == AT_TAUNT)
 {
 	if up_down
@@ -87,44 +116,52 @@ else
     
     switch (attack)
     {
-        case AT_FSTRONG:
-            set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
-            set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
-            //set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 76);
-            //set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -29);
-            //set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 132);
-            //set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 60);
-            //set_num_hitboxes(AT_FSTRONG, 1);
-            break;
-        case AT_USTRONG:
-            set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
-            set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, -15);
-            set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -107);
-            set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 57);
-            set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 57);
-            set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 6);
-            set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, .5);
-            set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7);
-            set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, .5);
-            break;
-        case AT_DSTRONG:
-            set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
-            set_num_hitboxes(AT_DSTRONG, 2);
-            break;
-        case AT_DSPECIAL:
-        
-            break;
-        /*case AT_NSPECIAL:
-            set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("rednspecial"));
-            set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("rednspecial"));
-            should_red_arrow = true;
-            set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, nspec_hitenemy_red);
-            break;*/
         case AT_USPECIAL:
             attack = AT_USPECIAL_2;
             set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 7);
             break;
     }
+}
+
+
+if attack == AT_NSPECIAL {
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX)
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT);
+	reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX);
+}
+
+if (nspec_charge >= blue_arrow_timer) {
+	switch attack {
+		case AT_FSTRONG:
+			nspec_charge = 0;
+			flamecharge = false;
+			attack = AT_FSTRONG_2
+		break;
+		case AT_USTRONG:
+			nspec_charge = 0;
+			flamecharge = false;
+			attack = AT_USTRONG_2
+		break;
+		case AT_DSTRONG:
+			nspec_charge = 0;
+			flamecharge = false;
+			attack = AT_DSTRONG_2
+		break;
+	}
+}
+
+if attack == AT_FSTRONG || attack == AT_FSTRONG_2 {
+	reset_hitbox_value(attack, 1, HG_ANGLE);
+	reset_hitbox_value(attack, 1, HG_BASE_KNOCKBACK);
+	reset_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING);
 }
 
 //DEBUG SHIT
@@ -143,7 +180,7 @@ else
 //}
 
 //strong red to blue effects
-flamecharge = false;
+//flamecharge = false;
 #define find_wisp
 //Return: real, -1 if failed
 //Takes the wisps array and sees if there is any object in it.

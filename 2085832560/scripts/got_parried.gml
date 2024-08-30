@@ -1,17 +1,17 @@
- with (asset_get("pHitBox")) {
-        if player_id == other.id {
-          destroyed = true;
-        }
+with (asset_get("pHitBox")) {
+    if player_id == other.id && attack != AT_EXTRA_1 && hbox_num != 7{
+       destroyed = true;
     }
+}
     
-infernal2 -= 50  
+infernal2 /= 2
 
 if rankm > 4 {
 rankm -= 300
 }
 
 
-if (my_hitboxID.attack == AT_EXTRA_1) {
+if (my_hitboxID.attack == AT_EXTRA_1) &&  my_hitboxID.hbox_num != 7{
 	     	sound_play(sound_get("exp1"));
 	     	sound_play(sound_get("RI"));
 		//take_damage(player, -1, 10)

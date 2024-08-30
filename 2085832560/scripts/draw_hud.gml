@@ -1,5 +1,5 @@
 
-if state == PS_RESPAWN {
+if state == PS_RESPAWN && !hitstop {
     
     if state_timer == 1 {
         sound_play(asset_get("sfx_absa_concentrate"),false,noone,1,1.4)
@@ -61,10 +61,7 @@ if state == PS_RESPAWN {
                 case 2 :
                   draw_debug_text(temp_x + 52,temp_y - 100,"Tier 3 weaponry toast your suitcase.");
                   if state_timer > 70 {
-                  draw_debug_text(temp_x + 52,temp_y - 85,"You can't change weapon anymore.");
-                  }
-                  if state_timer > 100 {
-                  draw_debug_text(temp_x + 52,temp_y - 70,"Not until you respawn.");
+                  draw_debug_text(temp_x + 52,temp_y - 85,"You will take damage simply by picking them up.");
                   }
                 break ;
                 

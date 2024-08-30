@@ -211,6 +211,15 @@ runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF
 ab_hud_x = 0;
 ab_hud_y = 0;
 
+// knight support
+knight_compat_dream = 
+    [
+        "I must bring victory to my team!",
+        "Is this one of... Merasmus's goons?",
+        "Must think about... sensible haircuts!"
+    ]
+
+
 //abyssMods[1 to 15] = [type, description];
 //types are: -1 - disabled
 // 0 - object mod: Modifies a static object left behind after an attack.
@@ -251,3 +260,7 @@ runeL = has_rune("L");
 runeM = has_rune("M");
 runeN = has_rune("N");
 runeO = has_rune("O");
+
+//adventure mode related
+hit_player_event = 13;
+draw_hud_event = 14;

@@ -31,7 +31,7 @@ if attack == AT_DTHROW && hbox_num == 4 {
 	hsp /= 1.15
 	vsp /= 1.15
      
-     transcendent = false 
+    transcendent = false 
 	
 	if player_id.state_cat == SC_HITSTUN {
 		destroyed = true
@@ -77,15 +77,15 @@ if attack == AT_DTHROW && hbox_num == 4 {
 		if id = other.player_id {
 			if attacking && attack == AT_DSPECIAL && window == 1 {
 		      if !up_down and !down_down {
-		      	other.hsp += (right_down - left_down)*.9
+		      	other.hsp += (right_down - left_down)
 		      } else {
-		      	other.hsp += (right_down - left_down)*.7
+		      	other.hsp += (right_down - left_down)
 		      }
 		      
 		      if !right_down and !left_down {
-		      	other.vsp -= (up_down - down_down)*.9
+		      	other.vsp -= (up_down - down_down)
 		      } else {
-		      	other.vsp -= (up_down - down_down)*.7
+		      	other.vsp -= (up_down - down_down)
 		      }
 			}
 	   }

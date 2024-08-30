@@ -67,7 +67,7 @@ and my_hitboxID.attack != AT_EXTRA_1 and state_cat != SC_HITSTUN {
 	inkvictim = hit_player_obj
     finaldir = spr_dir
 
-	 
+	destroy_hitboxes() 
 
 
     inkvictim.hitstop += 60

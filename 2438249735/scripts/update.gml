@@ -125,7 +125,7 @@ if move_cooldown[AT_NSPECIAL_2] > 0 {
 }
 
 if move_cooldown[AT_USTRONG_2] > 0 {
-	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 3 - random_func(1,6,true));
+	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 6 - random_func(1,12,true));
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4 - random_func(2,4,true));
 	create_hitbox(AT_NSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 40)
 }
@@ -372,17 +372,18 @@ with oPlayer if (activated_kill_effect) {
   	with other {
   		galx = x
         galy = y
-            sound_play(sound_get("tstrong"),false,noone,1)
-  	    finishercd = 60 
+        sound_play(sound_get("tstrong"),false,noone,1)
+        if instance_number(oPlayer) != 2 {
+  	         finishercd = 60 
+        }
 
   	}
   }
 }
 }
 
-/*
-if instance_number(oPlayer) == 2 {
 
+if instance_number(oPlayer) == 2 {
 
 
 if finisher > 0 {
@@ -391,8 +392,8 @@ if(player_id == other.id) {
    destroyed = true
 }
 }
-	galx += floor((room_width/2 - galx)/22)
-    galy += floor((room_height/2 - galy)/22)
+   	galx -= 6*spr_dir
+    // galy -= floor((room_height/2 - galy)/22)
 }
 
 if finishercd == 0 {
@@ -411,7 +412,7 @@ with oPlayer if (activated_kill_effect) {
 }
 
 
-if finisher = 60 {
+if finisher == 60 {
 	
 	if get_player_color(player) == 18 {
 		sound_stop(sound_get("JCsteath"))
@@ -427,13 +428,13 @@ if finisher = 60 {
 	
 }
 
-if finisher = 40 {
+if finisher == 40 {
     sound_play(sound_get("tstrong"),false,noone,0.6)
          sound_play(asset_get("sfx_plant_ready"))
                  sound_play(asset_get("sfx_crunch"),false,noone,1.4)
 }
 
-if finisher = 20 {
+if finisher == 20 {
     sound_play(sound_get("tstrong"),false,noone,1)
          sound_play(asset_get("sfx_crunch"),false,noone,3)
 }
@@ -506,4 +507,3 @@ if finishercd != 0 &&  hit_player_obj.state_cat == SC_HITSTUN && !hitpause{
 	 }
 } 
 
-*/

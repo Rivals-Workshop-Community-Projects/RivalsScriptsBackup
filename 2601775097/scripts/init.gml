@@ -895,9 +895,9 @@ pot_compat_variable = sprite_get("gumbo_schnitzel");
 pot_compat_text = "Holy Schnitzel";
 
 //Quote
-victory_quote = "No problem.";
+bar_victory_quote = "No problem.";
 emote = 2;
-handled_victory_quote = false;
+handled_bar_victory_quote = false;
 was_in_stage = get_stage_data(SD_ID);
 
 //sonic rainbow ring trick

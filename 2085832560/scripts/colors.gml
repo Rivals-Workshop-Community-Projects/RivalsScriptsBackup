@@ -9,8 +9,7 @@ set_color_profile_slot( 0, 1, 197, 20, 36 );
 set_color_profile_slot_range( 1, 1, 16, 24 );
 
 // white
-set_color_profile_slot( 0, 2, 255, 255, 255 );
-set_color_profile_slot_range( 2, 1, 1, 33 );
+// (no main color selected)
 
 // shirt & blade
 set_color_profile_slot( 0, 3, 216, 0, 17 );
@@ -34,7 +33,7 @@ set_color_profile_slot_range( 7, 1, 5, 46 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 10 );
 
 // Half Devil
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //energy
@@ -106,7 +105,6 @@ set_color_profile_slot( 7, 5, 255, 208, 77 ); //pink fur
 set_color_profile_slot( 7, 6, 0, 0, 0 ); //eye1
 set_color_profile_slot( 7, 7, 0, 0, 0 ); //eye2
 
-
 // Equaliza
 set_color_profile_slot( 8, 0, 161, 255, 252 ); //energy
 set_color_profile_slot( 8, 1, 161, 255, 252 ); //hair
@@ -117,9 +115,19 @@ set_color_profile_slot( 8, 5, 255, 181, 238 ); //pink fur
 set_color_profile_slot( 8, 6, 251, 0, 255 ); //eye1
 set_color_profile_slot( 8, 7, 0, 255, 255 ); //eye2
 
+// Modern
+set_color_profile_slot( 9, 0, 255, 8, 86 ); //energy
+set_color_profile_slot( 9, 1, 227, 7, 76 ); //hair
+set_color_profile_slot( 9, 2, 255, 255, 255 ); //white
+set_color_profile_slot( 9, 3, 130, 82, 107 ); //shirt & blade
+set_color_profile_slot( 9, 4, 115, 93, 106 ); //limbs & metal
+set_color_profile_slot( 9, 5, 226, 116, 132 ); //pink fur
+set_color_profile_slot( 9, 6, 214, 130, 28 ); //eye1
+set_color_profile_slot( 9, 7, 151, 20, 181 ); //eye2
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"energy","colors":[{"r":255,"g":0,"b":0,"main":true}]},{"name":"hair","colors":[{"r":197,"g":20,"b":36,"main":true},{"r":255,"g":63,"b":80}]},{"name":"white","colors":[{"r":255,"g":255,"b":255,"main":true},{"r":173,"g":173,"b":173}]},{"name":"shirt & blade","colors":[{"r":216,"g":0,"b":17,"main":true},{"r":148,"g":4,"b":15}]},{"name":"limbs & metal","colors":[{"r":29,"g":29,"b":29},{"r":87,"g":87,"b":87},{"r":40,"g":40,"b":40,"main":true}]},{"name":"pink fur","colors":[{"r":226,"g":116,"b":132,"main":true}]},{"name":"eye1","colors":[{"r":166,"g":37,"b":0,"main":true},{"r":255,"g":72,"b":0}]},{"name":"eye2","colors":[{"r":84,"g":0,"b":139,"main":true},{"r":158,"g":10,"b":255}]}]}
+{"formatversion":1,"data":[{"name":"energy","colors":[{"r":255,"g":0,"b":0,"main":true}]},{"name":"hair","colors":[{"r":197,"g":20,"b":36,"main":true},{"r":255,"g":63,"b":80}]},{"name":"white","colors":[{"r":255,"g":255,"b":255},{"r":173,"g":173,"b":173}]},{"name":"shirt & blade","colors":[{"r":216,"g":0,"b":17,"main":true},{"r":148,"g":4,"b":15}]},{"name":"limbs & metal","colors":[{"r":29,"g":29,"b":29},{"r":87,"g":87,"b":87},{"r":40,"g":40,"b":40,"main":true}]},{"name":"pink fur","colors":[{"r":226,"g":116,"b":132,"main":true}]},{"name":"eye1","colors":[{"r":166,"g":37,"b":0,"main":true},{"r":255,"g":72,"b":0}]},{"name":"eye2","colors":[{"r":84,"g":0,"b":139,"main":true},{"r":158,"g":10,"b":255}]}]}
 === END JSON PALETTE ===
 */

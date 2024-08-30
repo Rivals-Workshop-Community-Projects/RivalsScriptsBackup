@@ -41,6 +41,11 @@ if(taunt_down || get_player_color(player) == 1)
     set_victory_portrait(sprite_get("portrait_neco"));
     necomode = 1;
 }
+else if(shield_down)
+{
+    set_victory_portrait(sprite_get("portrait_old"));
+    necomode = 0;
+}
 else
 {
     set_victory_portrait(sprite_get("portrait"));

@@ -102,6 +102,7 @@ if (object_index != oTestPlayer){ //Code to stop crashing in test player
 	clone_player = -4;
 }
 
+ignore_camera = custom_clone;
 //new clone variables
 clone_got_hit = false;
 clone_hit_timer = 0;

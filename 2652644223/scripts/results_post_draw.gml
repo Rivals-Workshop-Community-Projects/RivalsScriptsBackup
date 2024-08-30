@@ -25,13 +25,13 @@ if(winner == player){
         else
             exit;
     }
-    
-        draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,30),400,0.6,1,0,c_white,1);
-        textDraw(ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,30)+(240),410,"medFont",c_white,22,350,1,true,1,string(win_quote_string));
-        //draw_rectangle_colour(25, 325, 450, 425, c_blue, c_blue, c_black, c_black, false); // Body
-        //draw_rectangle_colour(25, 325, 450, 425, c_white, c_white, c_gray, c_gray, true); // Main Outline
-        //draw_rectangle_colour(30, 330, 445, 420, c_white, c_white, c_gray, c_gray, true); // Inside Outline
-        
+        draw_sprite_ext(sprite_get("textbox"),0,view_get_xview()+ease_quadOut(-550,-50,slide_timer,30),310,1,1,0,c_white,1);
+        draw_sprite_ext(get_char_info(player, INFO_ICON), 0, view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+64,324,3,3,0,c_white,1);
+        textDraw(view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+(300), 322, "fName", c_white, 16, 240, 1.5, true, 1, '"'+string(win_quote_string)+'"');
+
+        // draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, ease_quadOut(-550,-50,slide_timer,30)+50,340,2,2,0,c_white,1);
+        // draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(-550,-50,slide_timer,30),310,1,1,0,c_white,1);
+        // textDraw(ease_quadOut(-550,-50,slide_timer,30)+(300), 330, "roaMBLFont", c_white, 22, 350, 1, true, 1, '"'+string(win_quote_string)+'"');
 }
 
 #define split_synced_var
@@ -79,7 +79,7 @@ draw_set_alpha(1);
 {
     var win_quote;
     // Base Cast
-    if(results_data.neco == 0)
+    if(results_data.neco == 0 && results_data.color != 31)
     {
         if(character_name == "Zetterburn")
             win_quote = "It was an honor to face a past legend. May you rest in peace."
@@ -133,12 +133,76 @@ draw_set_alpha(1);
         //TGP GANG
         else if(character_name == "Daora")
             win_quote = "Your kind heart shouldn't have to witness these cruel acts, you deserve better than this."
+
+        // Riptide 2024.
+        else if(character_name == "Vale Torina") 
+            win_quote = "Your faith is misguided, your God is long gone from here."
+        else if(character_name == "Ayaka Kinoshita") 
+            win_quote = "Axes are better wielded in-hand, you're out of touch."
+        else if(character_name == "Valkyrie" || character_name == "Arcuin") 
+            win_quote = "No wonder your kind lives on ice. You can't catch up."
+        else if(character_name == "Luna") 
+            win_quote = "Another time traveller captured, heading back to base."
+        else if(character_name == "Nacht") 
+            win_quote = "Quite fancy for the time, but swords are out of fashion."
+        else if(character_name == "Vakna") 
+            win_quote = "Shame, just like as lava would. You cooled off too soon."
+        else if(character_name == "Brook" || character_name == "Peppino") 
+            win_quote = "Another one in uniform, except you're not fit to serve in war."
+        else if(character_name == "Penny") 
+            win_quote = "I would've stayed in the shadows if I were you."
+        else if(character_name == "Wren") 
+            win_quote = "Seems like parents never taught their kids to pick up their toys anymore."
+        else if(character_name == "Yono") 
+            win_quote = "I didn't expect an early delivery to your grave."
+        else if(character_name == "Helios") 
+            win_quote = "Maybe you should've stuck with the sharks, the battlefield isn't meant for games."
+        else if(character_name == "Usher") 
+            win_quote = "There is no rainbow at the end of this rain."
+        else if(character_name == "Tomoko") 
+            win_quote = "Putting up walls only closed the distance between us, keep your gun up next time."
+        else if(character_name == "Kumaki") 
+            win_quote = "Possessed by a weapon? That's not something you see everyday."
+        else if(character_name == "Alexis") 
+            win_quote = "So a magician is never truly out of options, aren't they?"
+        else if(character_name == "Hoshimachi Suisei" || character_name == "Gawr Gura") 
+            win_quote = "Stick to the big screen, seems like real life was too big for you."
+        else if(character_name == "Amanita") 
+            win_quote = "Your delusions of grandeur ends here."
+        else if(character_name == "Pastelle") 
+            win_quote = "Way to leave yourself dry. Atleast the ink didn't mark on my suit.";
+        else if(character_name == "Kiku") 
+            win_quote = "Your crimes to the healthcare system have gone on long enough! There's no count this time.";
+        else if(character_name == "Sakuya Izayoi") 
+            win_quote = "Your timing was perfect, but you pissed me off.";
+        else if(character_name == "Desperado") 
+            win_quote = "What an interesting revolver, maybe there's more to improve on my gun.";
+        else if(character_name == "Amaya" || character_name == "Awatsu") 
+            win_quote = "You were bound to bind up with that tail. Now slither away!";
+        else if(character_name == "Truck-Kun") 
+            win_quote = "I knew self-driving cars were never a good idea.";
+        else if(character_name == "Putrolce") 
+            win_quote = "Sorry kid, I don't have anymore bullets left to feed you.";
+        else if(character_name == "Bhadra") 
+            win_quote = "I'm not a charity case, all your gold means nothing to me.";
+        else if(character_name == "La Reina") 
+            win_quote = "I guess wrestling's not all for show, way to sell me on it.";
+        else if(character_name == "Qoedil") 
+            win_quote = "Suspect down, wait is that a kid under there!?";
+        else if(character_name == "Napstablook") 
+            win_quote = "Ghosts are real after all, maybe you should stop holding on and fade away.";
+        else if(character_name == "Koishi") 
+            win_quote = "Obstacle terminated, wait where did she go?";
+        else if(character_name == "Hex") 
+            win_quote = "Are you supposed to be a squid or something? I'm not interested in seafood.";
+
         // Riptide
         else if(character_name == "Anglara") 
             win_quote = "All of this trouble for a lantern? You've shown true strength with just your fists alone."
         else if(character_name == "Barr")    
             win_quote = "What a fascinating weapon, you've made quite the impression to keep me on my feet."
-        else if(character_name == "Bluey" || character_name == "Fernet")   
+        else if(character_name == "Bluey" || character_name == "Fernet" || character_name == "Roekoko" || 
+        character_name == "Lumina" || character_name == "Noelle" || character_name == "Hana"  || character_name == "Azi & Mr. baggy")   
             win_quote = "A battlefield is no playground for a kid, stay out of this."
         else if(character_name == "Callie")  
             win_quote = "I appreciate your enthusiasm, but there's no such thing as bright happy days in war."

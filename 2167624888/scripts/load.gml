@@ -38,7 +38,7 @@ sprite_change_offset("tech", 52, 110);
 sprite_change_offset("jab", 66, 78);
 sprite_change_offset("dattack", 72, 80);
 sprite_change_offset("ftilt", 60,78);
-sprite_change_offset("dtilt", 60, 56);
+sprite_change_offset("dtilt", 60, 58);
 sprite_change_offset("utilt", 68, 102);
 sprite_change_offset("nair", 40,68);
 sprite_change_offset("fair", 84, 90);
@@ -49,8 +49,9 @@ sprite_change_offset("dair", 36, 68);
 sprite_change_offset("fstrong", 60, 110);
 sprite_change_offset("bluefstrong", 60, 110);
 
-sprite_change_offset("ustrong", 102, 200);
-sprite_change_offset("blueustrong", 102, 200);
+sprite_change_offset("ustrong", 78, 192);
+sprite_change_offset("blueustrong", 70, 174);
+
 sprite_change_offset("bluedstrong", 116, 102);
 sprite_change_offset("dstrong", 116, 102);
 sprite_change_offset("nspecial", 64, 78);
@@ -64,6 +65,8 @@ sprite_change_offset("uspecial", 60, 96);
 sprite_change_offset("red_uspecial", 60, 96);
 sprite_change_offset("dspecial", 50, 100);
 sprite_change_offset("taunt", 82, 98);
+sprite_change_offset("hfx_big", 98,98);
+sprite_change_offset("hfx_bigblue", 118,118);
 
 sprite_change_offset("plat", 50, 16);
 
@@ -72,22 +75,30 @@ sprite_change_offset("redarrow", 70, 20);
 sprite_change_offset("blueexplosion", 64, 110);
 sprite_change_offset("redfire", 64, 110);
 sprite_change_offset("bigblueexplosion", 128, 166);
+sprite_change_offset("bigmixedexplosion", 128, 166);
 sprite_change_offset("bigexplosion", 128, 166);
-sprite_change_offset("medianomix", 94, 130);
-sprite_change_offset("effect", 56, 52);
+sprite_change_offset("medianomix", 88, 116);
+sprite_change_offset("effect", 52, 52);
+sprite_change_offset("willo_enter", 12, 12);
+sprite_change_offset("fire_enter", 12, 12);
+sprite_change_offset("fire_idle", 18, 54);
+sprite_change_offset("fire_die", 14, 34);
 sprite_change_offset("willo_idle", 28, 30);
 sprite_change_offset("willo_appear", 28, 30);
 sprite_change_offset("willo_disappear", 28, 30);
-sprite_change_offset("red_willo", 18, 54);
+
 
 sprite_change_offset("bigfireball", 30, 72);
 sprite_change_offset("bigredball", 30, 72);
 
 sprite_change_offset("arrowhit_red", 34, 38)
 sprite_change_offset("arrowhit_blue", 34, 38)
-sprite_change_offset("arrowhit_bluenew", 26, 22)
+sprite_change_offset("arrowhit_bluenew", 56, 56)
 
-sprite_change_offset("fireeffect", 8, 24);
+sprite_change_offset("fireeffect", 6, 22);
 sprite_change_offset("wispabsorption", 58,58);
+sprite_change_offset("offscreen_indicator", 33, 33);
+sprite_change_offset("arrow_offscreen", 17, 17);
+sprite_change_offset("arrow_offscreen_red", 17, 17);
 
 set_victory_theme(sound_get("win"));

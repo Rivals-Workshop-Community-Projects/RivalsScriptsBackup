@@ -134,6 +134,12 @@ meowID = noone;
 
 // aura
 aura = false;
+switch (get_player_name(player)) // locked behind my tag :(
+{
+	case "Lukaru":
+	case "Karu": canAura = true; break;
+	default: canAura = false; break;
+}
 auraMeter = 0;
 hue = 0;
 

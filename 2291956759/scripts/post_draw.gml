@@ -34,6 +34,9 @@ if (UImode == 4) && invincible && invince_time <= 2 {
 	
 }
 
+if triggercutscene > 390 {
+    draw_sprite_ext(sprite_get("cutscene"),0,(room_width/2 - 200), room_height/2 ,4,5,0,-1,1)
+}
 
 shader_end() 
 

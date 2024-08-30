@@ -42,7 +42,7 @@ set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 15); // previously 17
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1); // multihit jabs aren't supposed to have whifflag apparently
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 4);
 

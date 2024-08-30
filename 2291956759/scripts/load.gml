@@ -4,6 +4,7 @@ sprite_change_offset("crouch", 46, 92);
 sprite_change_offset("walk", 46, 92);;
 sprite_change_offset("walkturn", 46, 92);
 
+sprite_change_offset("cutscene", 350/2, 350/2);
 
 sprite_change_offset("dash", 46, 92);
 sprite_change_offset("dash2", 102, 124);

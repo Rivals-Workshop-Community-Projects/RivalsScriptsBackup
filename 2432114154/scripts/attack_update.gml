@@ -751,7 +751,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         
         if attack == AT_USTRONG {
             
-            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 8 + strong_charge/8);
+            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 6 + strong_charge/8);
             
             if window == 1 && strong_charge == 0 {
                 hsp = 1*spr_dir

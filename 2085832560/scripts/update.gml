@@ -43,7 +43,7 @@ if bursted != 0 && down_down {
 
 
       
-if state == PS_RESPAWN {
+if state == PS_RESPAWN && !hitstop  {
       if state_timer == 90 {
       shake_camera(5,5)
       sound_stop(sound_get("exp1"))
@@ -125,7 +125,7 @@ if "in_adventure" in self {
    	  }
    	  
    	  
-   	  lmtime = 300
+   	  lmtime = 450
    	
 
       
@@ -526,7 +526,7 @@ if get_gameplay_time() == 15 {
 }
 
 
-if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
+if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && !hitstop {
 	
  if get_player_color(player) == 7{
      
@@ -796,8 +796,10 @@ if infernal2 > 301{
 	 	sound_play(sound_get("Dmax"));
 	 }	
 	spawn_hit_fx( x , y - 30, 306 )
-	sound_play(sound_get("RI"));
-	sound_play(sound_get("exp1"));
+	sound_stop(sound_get("RI"));
+	sound_play(sound_get("RI"),false,noone,0.75);
+	sound_stop(sound_get("exp1"));
+	sound_play(sound_get("exp1"),false,noone,0.8);
 	infernal2 = 300
 }
 

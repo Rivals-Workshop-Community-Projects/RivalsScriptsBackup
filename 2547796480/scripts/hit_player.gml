@@ -4,10 +4,20 @@ if ANwounded > 0 && my_hitboxID.type == 1 && hit_player_obj.char_height != 60.14
 }
 	
 if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
+ with (asset_get("pHitBox")) {
+    if player_id == other.id{
+       destroyed = true;
+    }
+ }
    if hit_player_obj.ANwounded < 1 {
    move_cooldown[AT_NSPECIAL] = 30
    hit_player_obj.ANtimeslow = 30
    } 
+   
+   create_hitbox(AT_FTHROW,1,x - 6,y - 75)
+   create_hitbox(AT_FTHROW,1,x + 6,y - 75)
+   oknifelost -= 2
+   
    if hit_player_obj.ANwounded == 1 {
    	move_cooldown[AT_NSPECIAL] = 40
     hit_player_obj.ANtimeslow = 40
@@ -35,8 +45,8 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_heavy")); 
     sound_play(sound_get("Fstrong"),false,noone,1.6,0.6);  
-    create_hitbox(AT_FTHROW,1,x - 30,y - 45)
-    create_hitbox(AT_FTHROW,1,x + 30,y - 45)
+    create_hitbox(AT_FTHROW,1,x - 35,y - 45)
+    create_hitbox(AT_FTHROW,1,x + 35,y - 45)
     create_hitbox(AT_FTHROW,1,x,y - 85) 
     oknifelost -= 3
    }

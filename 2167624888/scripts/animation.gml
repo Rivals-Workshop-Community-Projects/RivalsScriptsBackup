@@ -1,6 +1,6 @@
 switch (state){
     case PS_ATTACK_GROUND: //dstrong charge animation
-        if (attack == AT_DSTRONG && window == 2) {
+        if ((attack == AT_DSTRONG || attack == AT_DSTRONG_2) && window == 2) {
             image_index = (floor(strong_charge / 2.5) % 6) + 1;
             
             if get_gameplay_time() % 8 == 0

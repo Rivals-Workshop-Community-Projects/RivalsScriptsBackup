@@ -41,7 +41,7 @@ or my_hitboxID.sound_effect == sound_get("slice3")) and my_hitboxID.damage > 1 {
 		}
 		
 		with hit_player_obj {
-        	take_damage(player,-1, floor( (other.my_hitboxID.damage*0.5)) )
+        	take_damage(player,-1, floor( (other.my_hitboxID.damage*0.33)) )
         }
         
         
@@ -235,10 +235,12 @@ if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL or my_
 
 	
 }
-
+if (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_TAUNT) && my_hitboxID.type == 1{ 
+	admb = 3
+    admw = 4
+}
 
 if my_hitboxID.attack == AT_NSPECIAL {
-	
 
 if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
   sound_play(sound_get("slice1"))
@@ -343,9 +345,9 @@ if my_hitboxID.type == 1{
 	
 	
 	
-	
+	 move_cooldown[AT_NSPECIAL] = 10
 	if nshit < 2{
-	nshit += 1
+	nshit = 2
 	}
 
 
@@ -359,9 +361,9 @@ if (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL  or
 
 	 move_cooldown[AT_NSPECIAL] = 10
 	 
-	if nshit < 2{
-	nshit = 2
-	}
+	// if nshit < 2{
+	// nshit = 2
+	// }
 
 		
 	

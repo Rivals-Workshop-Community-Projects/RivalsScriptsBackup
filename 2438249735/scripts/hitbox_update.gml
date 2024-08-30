@@ -246,11 +246,16 @@ if attack == AT_NSPECIAL && hbox_num == 4 {
  player_id.target.hsp = 1 * spr_dir
  player_id.target.vsp = -1
  player_id.target.hitstop = 5
+ player_id.hitstop = 2
+ //shake_camera(1,2)
  player_id.target.x += 1
-
  
+ if get_gameplay_time() % 2 == 0 {
+ 	player_id.x -= 1
+ }
  if get_gameplay_time() % 4 == 0 {
  	player_id.target.x -= 4
+ 	player_id.x += 2
  }
  
  if hitbox_timer > 10 {

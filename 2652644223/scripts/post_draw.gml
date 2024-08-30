@@ -44,3 +44,19 @@ if(get_gameplay_time() < 120 || (get_gameplay_time() > 120 && get_gameplay_time(
 //         draw_sprite_part_ext(sprite_index,image_index,75+rand_x,50+rand_y,random_func(8,200,true),random_func(2,200,true),x-50*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-100+random_func(10,20,true)+rand_y,spr_dir,1,c_white,1);
 //     shader_end();
 // }
+
+#define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
+
+draw_set_font(asset_get(argument[2]));
+draw_set_halign(fa_middle); // This is important cause it will cause the text to not align properly
+if argument[7]{
+    for (i = -1; i < 2; i++){
+        for (j = -1; j < 2; j++){
+            draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, 1);
+        }
+    }
+}
+
+draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
+
+return string_width_ext(argument[9], argument[4], argument[5]);

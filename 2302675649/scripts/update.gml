@@ -148,7 +148,7 @@ hue%=255;
 switch (state)
 {
 	case PS_SPAWN:
-		if (state_timer == 68)
+		if (state_timer == 68 && (canAura || ("temp_level" in self && temp_level == 1)))
 		{
 			sound_play(sound_get("button"));
 			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67;

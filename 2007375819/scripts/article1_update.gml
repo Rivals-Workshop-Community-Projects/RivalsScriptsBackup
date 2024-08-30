@@ -54,10 +54,32 @@ if (state == 2){
 			}
 		}
 	}
+	
+//State 3: Turn around
+if (state == 3){
+	if !free {
+		if hsp > 0 {
+			hsp -= .25;
+		}
+		if hsp < 0 {
+			hsp += .25;
+		}
+	}
+	image_speed = 0;
+	turnaroundTimer--;
+	
+	if turnaroundTimer == 3 {
+		spr_dir *= -1;	
+	}
+	
+	if 0 >= turnaroundTimer {
+		state = 2;
+	}
+}
 
 //Firing cannonballs
 if(state_timer > 20){
-	if state == 2 && (state_timer % 115 == 0 || state_timer % 115 == 15) {
+	if (state == 2) && (state_timer % 115 == 0 || state_timer % 115 == 15) {
 			sound_play(asset_get("sfx_shop_invalid"), false, noone, .7, 1.5);
 	}
 	
@@ -99,8 +121,8 @@ if vsp > 25 {
 }
 
 if minionHealth <= 0 {
-	player_id.move_cooldown[AT_DSPECIAL] = 240;
-	spawn_hit_fx( x, y-20, 194);
-	sound_play(asset_get("sfx_abyss_despawn"));
+	player_id.move_cooldown[AT_DSPECIAL] = 200;
+	with player_id spawn_hit_fx( other.x, other.y-30, AppearBruh);
+	with player_id sound_play(sound_get("sfx_disappear"));
 	instance_destroy();
 }

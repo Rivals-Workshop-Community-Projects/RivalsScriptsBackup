@@ -1,3 +1,20 @@
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) {
+	switch (attack) {
+		case AT_DAIR:
+			if (window == 2 and window_timer mod 3 == 0 and !hitpause) {
+				var hitbox = 1 + max(window_timer - 11, 0);
+				create_hitbox(attack, hitbox, x,y)
+			}
+		break;
+	}
+}
+
+with hit_fx_obj {
+	if hit_fx == other.nspec_hitenemy_red {
+		depth = other.depth + 1
+	}
+}
+
 //taunt menu
 switch (tMenuState)
 {
@@ -107,13 +124,13 @@ outline_color = [sin(gt3) * new_color_r,sin(gt3) * new_color_g,sin(gt3) * new_co
 
 if (is_max)
 {
-    if ((abs(hsp)+abs(vsp) >= 3) and gt % 3 > 0)
+    if ((abs(hsp)+abs(vsp) >= 3) and gt % 4 > 1)
     {
 		var rand, flip, xpos;
 		rand = random_func(5,30,true)
 		flip = gt % 4 == 0 ? 1 : -1;
 		xpos = hsp < 2 ? random_func(7, 20, false)*flip : 0; 
-		createParticle(particles,1,0,0,sprite_get("fireeffect"),0,x+(rand/3)*spr_dir + xpos,y-4-(rand*2),0, -1, .3, 0, 0, 1, 0, 40, true, true)
+		createParticle(particles,1,0,0,sprite_get("fireeffect"),0,x+(rand/3)*spr_dir + xpos,y-4-(rand*2),0, -1, .2, 0, 0, 1, 0, 30, true, true)
     }
 }
 else

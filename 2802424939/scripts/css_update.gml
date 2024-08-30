@@ -38,7 +38,7 @@ generated_var = generate_synced_var(mode,1,bair_mode,1)
 set_synced_var(player, real(generated_var));
 */
 //#endregion
-#define generate_synced_var
+/*#define generate_synced_var
 ///args chunks...
 ///Given pairs of chunks and their lengths in bits, compiles them into one value.
 //arg format: chunk, bit_length, chunk, bit_length, etc.
@@ -62,3 +62,4 @@ if total_len > 32 {
 }
 return real(output);
 
+*/

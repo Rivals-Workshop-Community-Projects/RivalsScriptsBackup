@@ -91,6 +91,16 @@ break;
 		move_cooldown[AT_FSPECIAL] = 9999;
 		can_wall_jump = true;
 		}
+		if window == 2 && !hitpause && !has_hit {
+			if (place_meeting(x + hsp + 2 * spr_dir, y, asset_get("par_block")) && free) {
+	            for (var i = 1; i < 32; i++){
+	                if (!place_meeting(x + hsp + 2 * spr_dir, y- i ,asset_get("par_block"))) {
+	                    y -= i;
+	                    break;
+	                }
+	            }
+	        }
+		}
 		if window == 2 && has_hit == true {
 			window = 4 
 			destroy_hitboxes();

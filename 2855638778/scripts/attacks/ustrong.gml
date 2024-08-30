@@ -10,7 +10,7 @@ set_attack_value(AT_USTRONG, AG_AIR_SPRITE, sprite_get("ustrong_air"));
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 //set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1); // why is this here
-set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .02);
+//set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .02);
 
 // startup (post-charge)
 set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 3);

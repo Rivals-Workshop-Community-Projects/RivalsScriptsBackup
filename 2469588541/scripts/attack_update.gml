@@ -29,9 +29,12 @@ switch (attack)
 			hsp = 0;
 			vsp = 0;
 		}
-		if (state_timer == 1) auraMeter = 0;
-		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
-		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
+		if (canAura)
+		{
+			if (state_timer == 1) auraMeter = 0;
+			if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+			else if (state_timer == 68 && auraMeter == 67) ActivateAura();
+		}
 		if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
 		break;
 

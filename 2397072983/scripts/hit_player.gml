@@ -133,16 +133,18 @@ if my_hitboxID.attack == AT_DAIR {
 if (style == 2 or style == 4) && my_hitboxID.type == 1 {
 	antarget = hit_player_obj
 	move_cooldown[AT_EXTRA_2] = 100
-	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, my_hitboxID.kb_value);
-	set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale);
+	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 0);
+	set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 1+ floor(my_hitboxID.hitpause/2) );
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, floor(my_hitboxID.hitpause_growth/2));
-	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, floor(my_hitboxID.damage/2.4) );
+	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 1);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, my_hitboxID.kb_angle);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, my_hitboxID.hitstun_factor);
 }
 
-
+if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num = 1 {
+	sound_play(sound_get("gothit2"),false,noone,1,1)	
+}
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 10 {
 	spawn_hit_fx(hit_player_obj.x,hit_player_obj.y,lighten)

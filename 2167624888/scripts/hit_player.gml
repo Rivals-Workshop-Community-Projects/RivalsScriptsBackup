@@ -38,6 +38,25 @@ if (my_hitboxID.attack == AT_NSPECIAL && ( (should_red_arrow && my_hitboxID.hbox
 	move_cooldown[AT_DSPECIAL] = 0;
 }*/
 
+if my_hitboxID.attack == AT_FTILT and my_hitboxID.hbox_num == 1 {
+	sound_play(asset_get("sfx_ori_energyhit_medium"), false, noone, 0.4, 1.2)
+	sound_play(asset_get("sfx_forsburn_reappear_hit"), false, noone, 0.6, 1.1)
+}
+
+if my_hitboxID.attack == AT_BAIR and my_hitboxID.hbox_num == 2 {
+	sound_play(sound_get("bair_hit"), false, noone, 0.8, 1.1)
+	sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.6, 1.1)
+	sound_play(asset_get("sfx_forsburn_reappear_hit"), false, noone, 0.4, 1.1)
+}
+
+if my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num != 1 {
+	sound_play(sound_get("ustrong_sweetspot"), false, noone, 0.9, 1.1)
+}
+
+if (my_hitboxID.attack == AT_USTRONG_2) {
+	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.8, 1.15)
+}
+
 if (my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num == 1 and !hit_player_obj.clone)
 {
 	hit_player_obj.x = lerp(hit_player_obj.x, x + (spr_dir*40),0.16)

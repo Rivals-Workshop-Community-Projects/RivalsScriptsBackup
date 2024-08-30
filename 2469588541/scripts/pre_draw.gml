@@ -3,7 +3,7 @@ if ("practice" in self)
 	var tempColour = GetColourPlayer(3);
 	
 	// aura meter
-	if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT && !aura)) && auraMeter != -1 && state_timer < 68 && state_timer > 1)
+	if (canAura && (state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT && !aura)) && auraMeter != -1 && state_timer < 68 && state_timer > 1)
 	{
 	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
 	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);

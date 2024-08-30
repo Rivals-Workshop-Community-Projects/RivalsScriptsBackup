@@ -4,8 +4,8 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 70;
-idle_anim_speed = .2;
-crouch_anim_speed = .2;
+idle_anim_speed = .25;
+crouch_anim_speed = .25;
 walk_anim_speed = .2;
 dash_anim_speed = .3;
 pratfall_anim_speed = .25;
@@ -15,7 +15,7 @@ walk_accel = 0.35;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 6.25;
-dash_speed = 5.8;
+dash_speed = 5.65;
 dash_turn_time = 16;
 dash_turn_accel = 1.75;
 dash_stop_time = 6;
@@ -87,6 +87,12 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
+//Wait sprites
+wait_time = 448;
+wait_length = 180;
+wait_sprite = sprite_get("idle_wait");
+
+
 land_sound = asset_get("sfx_land_heavy");
 landing_lag_sound = asset_get("sfx_land_med2");
 waveland_sound = asset_get("sfx_waveland_abs");
@@ -103,11 +109,10 @@ funnyfish = 0;
 minion = 0;
 minionOut = false;
 HOut = false;
+HCharge = 0;
 burnerFuel = 100;
 randomTaunt = 0;
 tauntpic = sprite_get("blueybottaunt");
-feri_costume = sprite_get("feri_costume_ex");
-Hikaru_Title = "Blue Mememachine";
 arena_title = "The Blue Mememachine";
 tcoart = sprite_get("blueybottcoart");
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
@@ -116,7 +121,19 @@ bofa = false;
 chungus = false;
 DennisHeadOut = hit_fx_create( sprite_get( "dennisheadout" ),32);
 dennis = 0;
-diag_portrait=sprite_get("portrait_old");
+diag_portrait= sprite_get("portrait_old");
+AppearBruh = hit_fx_create( sprite_get( "appear" ),15);
+TeeVeeBruh = hit_fx_create( sprite_get( "tv" ),13);
+stupidThings = 0;
+funnySound = 1;
+
+hMoveSprite = sprite_get("h_move");
+hFallSprite = sprite_get("h_fall");
+hTurnSprite = sprite_get("h_turn");
+pizzaMoveSprite = sprite_get("pizzadino_move");
+pizzaFallSprite = sprite_get("pizzadino_fall");
+pizzaTurnSprite = sprite_get("pizzadino_turn");
+
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -126,35 +143,32 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "...What in the world is this? Is this even a living being?";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "h";
+dracula_text[page] = "> h";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "...Hmph. A piece of machinery built in the image and intelligence of humans... As if they weren't vain enough creatures.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "hey drac do you like this picture [taunt]";
+dracula_text[page] = "> hey drac do you like this picture [taunt]";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "What...";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "ok maybe not that one. how about this [taunt]";
+dracula_text[page] = "> . . .";
+page++;
+dracula_speaker[page] = 2;
+dracula_text[page] = "> oh this joke doesn't work anymore because of my new forward strong";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "...";
 page++;
-dracula_speaker[page] = 1;
-dracula_text[page] = "third time's the charm [taunt]";
+dracula_speaker[page] = 2;
+dracula_text[page] = "> i miss my twitter account. i miss it a lot";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "That's enough of you and your cursed paintings![glass] I, Dracula, shall reduce you to scrap metal!";
+dracula_text[page] = "Enough![glass] Nothing that you say makes sense AT ALL! I, Dracula, shall reduce you to scrap metal!";
 page++;
 dracula_speaker[page] = 2;
-dracula_text[page] = "you got problems bucko";
+dracula_text[page] = "> you STILL got problems bucko";
 page++;
-
-///agent n codec
-nname = "BLUEYBOT Mark H"
-ncode1 = "Android made on the image of [???]."
-ncode2 = "Possesses peculiar summoning powe!rs#$!%@"
-ncode3 = "#%@#!@w%hile you're at it follow my alt @.BarackObama"

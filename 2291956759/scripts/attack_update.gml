@@ -325,7 +325,7 @@ if attack == AT_DSPECIAL {
         }
         
         
-        if jump_pressed or shield_pressed {
+        if (jump_pressed or shield_pressed) && !free {
             set_state (PS_IDLE)
         }
         

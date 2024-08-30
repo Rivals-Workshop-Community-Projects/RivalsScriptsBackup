@@ -4,6 +4,19 @@ draw_xscale = spr_dir
 
 if attack == AT_DSPECIAL && hbox_num == 3 {
 	plasma_safe = true
+	if hitbox_timer % 8 == 0{
+		XX = spawn_hit_fx(x,y-4,305)
+		XX.pause = 4
+		XX.spr_dir = 1.2
+		XX.image_yscale = 1.2
+	}
+	
+	if has_hit{
+		if player_id.hit_player_obj == player_id.thundervictim{
+		   destroyed = 1
+		}
+	}
+	
 	with player_id.thundervictim {
 		
 		other.x = x

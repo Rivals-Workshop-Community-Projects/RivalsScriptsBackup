@@ -10,11 +10,26 @@ if attack == AT_DTILT && hbox_num != 1 {
 if attack == AT_EXTRA_1 && hbox_num == 7 {
 	if hitbox_timer > 20 {
 		can_hit_self = true
+	
+	
+    	with (asset_get("oPlayer")) {
+    	     if (abs(other.x - x) < 40) && (((abs(other.y - y) < 20) && (state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_BACKWARD or state == PS_TECH_FORWARD or state == PS_AIR_DODGE) && state_timer >= 4 && state_timer <= 16) or invince_time > 0 ){
+    	      with other{
+    	      	destroyed = 1
+    	      	sound_play(sound_get("exp1"));
+		
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		spawn_hit_fx( x , y , exp1 )
+    	      }
+    	     }
+    	}
 	}
 }
 
 if attack == AT_EXTRA_3 && hbox_num <= 2 {
-	
+	if player_id.attack == AT_EXTRA_3 && player_id.window == 1 && player_id.window_timer == 1 && player_id.state == PS_ATTACK_GROUND{
+		destroyed = true
+	}
 	if !free {
 		sound_play(sound_get("shell"));
 		vsp -= random_func(7, 4, true) + 3

@@ -1468,3 +1468,119 @@ if move_cooldown[AT_UTILT] >= 10  {
 	
 	
 }
+
+if(get_match_setting(SET_PRACTICE)) == false {
+if triggercutscene != 0 {
+	
+	if triggercutscene > 390 {
+		voidfx = spawn_hit_fx(x,y,thevoid)
+		voidfx.depth = -99999
+		voidfx.image_xscale = 5
+		voidfx.image_yscale = 5
+	}
+	
+	hitpause = true 
+    hitstop = 999 
+	if y > room_height/2 + 300 {
+		y -= 1
+	}
+	if x < room_width/2 - 300 {
+		x += 1
+	}
+	if x > room_width/2 + 300 {
+		x -= 1
+	}
+	
+		if triggercutscene > 100 {
+			x = room_width/2
+			y = room_height/2 - 100
+		}
+		
+	if triggercutscene < 341 {
+	with oPlayer {
+		if taunt_down {
+		  other.triggercutscene += 5	
+		}
+		if player != other.player {
+          hitpause = true 
+          hitstop = 5 
+		}
+	}
+	}
+		
+	if triggercutscene == 1 {
+		instance_create(x,y,"obj_article1")
+		sound_play(sound_get("counterhit"),false,noone,1)
+		sound_play(asset_get("sfx_orca_absorb"),false,noone,1,0.6)
+		sound_play(sound_get("RI"),false,noone,.8)
+		
+	} else if triggercutscene == 120 {
+
+		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,1,1.2)
+	} else if triggercutscene == 300 or triggercutscene == 315 or triggercutscene == 330{  
+		
+		sound_play(sound_get("counterhit"),false,noone,1,1.5)
+		
+	}  else if triggercutscene == 309 { 
+		sound_play(sound_get("Fstrong"),false,noone,1,1.4 )
+		
+   }  else if triggercutscene == 310 or triggercutscene == 325 or triggercutscene == 340{
+		sound_play(asset_get("sfx_waterhit_heavy"),false,noone,1,1)
+		sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,1)
+	} else if triggercutscene == 341 {
+		
+		sound_play(sound_get("Fstrong"),false,noone,1,.8)
+		sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1)
+		sound_play(asset_get("sfx_death2"),false,noone,1,1)
+	
+	} else if triggercutscene == 391 {
+	if get_player_stocks(player) > 1 {
+	  set_player_stocks(player, get_player_stocks(player) - 1)
+	}
+     	with oPlayer {
+          if player != other.player {
+          	y = 99999
+          }
+		}
+	}
+	suppress_stage_music( 0.5, 1 );	
+	triggercutscene ++ 
+}
+
+if instance_number(oPlayer) == 2 {
+
+with oPlayer {
+  if player != other.player {
+  	
+  	
+  	if get_player_stocks(player) == 1 {
+  		if other.alreadydead == 0 { 
+  		other.alreadydead = 1
+  		}
+  		
+  		if state == PS_RESPAWN && other.triggercutscene == 0 && other.move_cooldown[AT_USPECIAL_GROUND] != 0 {
+  		with other {
+  			sound_play(sound_get("ADfinish"),false,noone,1,0.35)
+  			alreadydead = 2 
+  	    	triggercutscene = 1
+  	    	set_player_stocks(player, get_player_stocks(player) + 1)
+  		}
+
+  	    }
+  		
+  	}
+  	
+  	if other.alreadydead = 1 {
+  		if x + hsp > room_width/2 + 600 or x - hsp < room_width/2 - 600 or y - vsp < room_height/2 - 350 or y + vsp > room_height/2 + 350 {
+  			set_player_stocks(player, 2)
+  			other.move_cooldown[AT_USPECIAL_GROUND] = 999
+  		} else {
+  			set_player_stocks(player, 1)
+  		}
+  	}
+  
+  }
+}
+
+}
+}

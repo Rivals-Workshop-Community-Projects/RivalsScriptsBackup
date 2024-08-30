@@ -3,6 +3,14 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+/*
+if (attack == AT_DATTACK) {
+	if (window == 1 && window_timer == 15) {
+		sound_play(asset_get("sfx_shovel_hit_light1"), false, noone, 0.8, 1);
+	}
+}
+*/
+
 // reload again if you push the special button during the reload
 // does not do this if you push a directional special (e.g. up special)
 if (attack == AT_NSPECIAL){
@@ -145,7 +153,7 @@ if (attack == AT_FSPECIAL) {
 		
 		if (up_down) {
 			rj_anim_pos = 2; // variable used for blastjump state anim
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -5); // math says: 5.77
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_up"));
 			//set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj_up"));
@@ -154,8 +162,8 @@ if (attack == AT_FSPECIAL) {
 		}
 		else if (down_down) {
 			rj_anim_pos = 1;
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 10);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 10); // math says: 7.07
+			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10); // math says: 7.07
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_down"));
 			//set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj_down"));
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));

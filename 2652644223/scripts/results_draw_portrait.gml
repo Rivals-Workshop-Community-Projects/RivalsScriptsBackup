@@ -1,0 +1,1 @@
+if (winner_name == "Future Ducky WINS!" && results_data.neco == 1) winner_name = "neco-ducc wins!";

@@ -7,7 +7,7 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"))
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_gained_1"));
@@ -22,7 +22,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

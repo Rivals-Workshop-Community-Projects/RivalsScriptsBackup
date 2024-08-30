@@ -147,6 +147,12 @@ uspecAngle = 0;
 // misc
 renderer = instance_create(0, 0, "obj_article2");
 aura = false;
+switch (get_player_name(player)) // locked behind my tag :(
+{
+	case "Lukaru":
+	case "Karu": canAura = true; break;
+	default: canAura = false; break;
+}
 auraClone = noone;
 auraMeter = 0;
 hue = 0;

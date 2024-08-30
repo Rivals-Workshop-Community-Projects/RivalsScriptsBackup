@@ -16,12 +16,12 @@ var alt_cur = get_player_color(player);
  
 alt_name[0]  = "Default";
 alt_name[1]  = "Bluey Botn't";
-alt_name[2]  = "Home Depot";
+alt_name[2]  = "ReddyRobot";
 alt_name[3]  = "VeganBot";
 alt_name[4]  = "DarkBot";
 alt_name[5]  = "T. Hanos";
 alt_name[6]  = "Blender";
-alt_name[7]  = "CinnaBot";
+alt_name[7]  = "Gold";
 alt_name[8]  = "Bounty Hunter";
 alt_name[9]  = "So Retro!!1!";
 alt_name[10] = "BlaneyBot";
@@ -30,8 +30,6 @@ alt_name[12] = "SnowBot";
 alt_name[13] = "TangerineBot";
 alt_name[14] = "Sand Under Table";
 alt_name[15] = "Suspicious";
-alt_name[16] = "KyleBot";
-alt_name[17] = "DD4";
  
 //Alt
  

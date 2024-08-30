@@ -1,9 +1,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "2.2.2";
-patch_day = "14";
-patch_month = "JUN";
+patch_ver = "2.2.3";
+patch_day = "26";
+patch_month = "AUG";
 
 var num_alts = 32;
 var alt_cur = get_player_color(player);

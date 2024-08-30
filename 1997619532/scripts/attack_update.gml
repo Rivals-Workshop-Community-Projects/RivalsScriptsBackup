@@ -342,17 +342,19 @@ if attack == AT_FSPECIAL {
     }
     
     if window == 1 {
+    	x += 3*spr_dir
     	if window_timer == 1 && !hitpause {
-    		sound_play(asset_get("sfx_bird_sidespecial_start")); 
+    		sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1.2); 
+    		sound_play(asset_get("sfx_spin"),false,noone,0.6,2); 
     	}
-    	if window_timer == 18 {
+    	if window_timer == 8 {
     		sound_play(asset_get("sfx_swipe_weak1")); 
     		sound_play(sound_get("swingw1"),false,noone,.7,1.2); 
     		if free {
-    			vsp = -2
+    		  vsp = -2
     		}
     	}
-    	     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) && window_timer > 10 {
+    	     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) && window_timer > 6 {
     	     	sound_play(sound_get("swingw1"),false,noone,.7,1.2); 
                  window = 2
                  window_timer = 0
@@ -365,9 +367,6 @@ if attack == AT_FSPECIAL {
              }
     }
     
-   	if window >= 2 && vsp > 0{
-		vsp /= 1.3
-	}
 	
     if window == 1 && window_timer % 3 = 0 {
     			if get_player_color(player) == 5 && sakura == 1 && window_timer % 6 = 0 {
@@ -391,14 +390,16 @@ if attack == AT_FSPECIAL {
     	
         if !free {
        	move_cooldown[AT_FSPECIAL] = 40
-        invincible = true
+        // invincible = true
         }
     
     
 }
 
 
-
+if window > 2 && vsp > 0{
+  vsp /= 1.2	
+}
 
 if window == 2 {
     can_move = false
@@ -625,7 +626,7 @@ if window == 1 && window_timer == 3 && !hitpause {
 
 if attack == AT_DAIR {
 	
-	hsp /= 1.1
+	// hsp /= 1.1
 
 if window == 8 {
 
