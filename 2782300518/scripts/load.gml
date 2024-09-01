@@ -137,6 +137,8 @@ sprite_change_offset("guilty_carol", 31, 0);
 sprite_change_offset("cappytaunt_carol", 40, 78);
 sprite_change_offset("cappytaunt_head_carol", 40, 78);
 sprite_change_offset("real_cat", 40, 78);
+sprite_change_offset("amber_hug", 44, 104);
+sprite_change_offset("carol_hug", 44, 104);
 
 sprite_change_offset("hit_small", 24, 24);
 sprite_change_offset("hit_medium", 50, 50);

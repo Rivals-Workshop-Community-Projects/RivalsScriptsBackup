@@ -485,6 +485,22 @@ else if (state != PS_SPAWN)
 			}
 			can_DACUS = false;
 		break;
+		case AT_TAUNT:
+			if (state_timer < 80)
+			{
+				taunt_down = true;
+				taunt_pressed = true;
+			}
+			else
+			{
+				taunt_down = false;
+				taunt_pressed = false;
+			}
+		case AT_TAUNT_2:
+		case AT_EXTRA_3:
+			can_DACUS = false;
+			win_taunt = true;
+		break;
 		default:
 			can_DACUS = false;
 		break;
@@ -533,6 +549,7 @@ else if (state != PS_SPAWN)
 						predictloc(12);
 						predictlocTarget(12);
 						hitboxloc("DACUS");
+						win_taunt = false;
 					}
 					if (chosenAttack == AT_USTRONG) 
 					{
@@ -800,6 +817,7 @@ else if (state != PS_SPAWN)
 	if (can_special && !targetbusy && !ai_attack_time > 0 && temp_level >= 7)
     {
     	hitboxloc("specials");
+    	win_taunt = false;
 		switch (chosenAttack)
 		{
 			case AT_NSPECIAL:
@@ -887,6 +905,20 @@ else if (state != PS_SPAWN)
 		chasing = true;
 		
 	}
+	if (ai_target = self && !ai_recovering && !free)
+	{
+		joy_pad_idle = true;
+		unpress_actions();
+		if (win_taunt = false)
+		{
+			taunt_down = true;
+			taunt_pressed = true;
+		}
+	}
+	if (ai_target = self && motorbike == true && !ai_recovering && win_taunt = true)
+	{
+		unpress_actions();
+	}
 }
 
 #define chooseAttack
@@ -946,6 +978,7 @@ if (!free)
 		{
 			//Call the hitbox selection function, it stores the value in chosenAttack
 			hitboxloc("strongs");
+			win_taunt = false;
 			switch (chosenAttack)
 			{
 				//UStrong
@@ -1016,6 +1049,7 @@ if (!free)
 	if (temp_level >=7)
 	{
 		hitboxloc("tilts"); //Project all attacks and returns which is in range and it is based on a set of conditions or random otherwise
+		win_taunt = false;
 		switch (chosenAttack)
 		{
 			//Dattack
@@ -1138,6 +1172,7 @@ if (!free)
 else if (temp_level >=7)
 {
 	hitboxloc("aerials");
+	win_taunt = false;
    	switch (chosenAttack)
    	{
    		case AT_DAIR:
@@ -1855,3 +1890,28 @@ else
     left_down = false;
     right_down = true;
 }
+
+#define unpress_actions
+	attack_down = false
+	attack_pressed = false
+	special_down = false
+	special_pressed = false
+	
+	strong_down_pressed = false
+	strong_down_down = false
+	up_strong_pressed = false
+	up_strong_down = false
+	left_strong_pressed = false
+	left_strong_down = false
+	right_strong_pressed = false
+	right_strong_down = false
+	down_strong_pressed = false
+	down_strong_down = false
+
+	parry_pressed = false
+	parry_down = false
+	shield_pressed = false
+	shield_down = false
+	
+	taunt_down = false;
+	taunt_pressed = false;

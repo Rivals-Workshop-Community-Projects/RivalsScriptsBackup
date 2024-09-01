@@ -306,6 +306,19 @@ neutralized_ability = "Bike"
 koffing_gas_active = 0;
 scoop_personalized_flavour_name = "Green Tea"
 scoop_personalized_flavour_sprite = sprite_get("green_tea_ice_cream")
+amber_herObj = noone;
+amber_thisHugSprite = sprite_get("carol_hug");
+amber_herHugSprite = sprite_get("amber_hug");
+amber_startHug = false;
+amber_thisSpriteInFront = false;
+amber_autoTurnToHer = true;
+amber_hugStartPos[0] = 72;
+amber_hugStartPos[1] = 0;
+amber_hugExitPos[0] = 72;
+amber_hugExitPos[1] = 0;
+amber_useSprDirOffset = true;
+amber_hugExitTimer = 27;
+amber_hugExitWindow = 3;
 
 knight_compat_dream = 
     [

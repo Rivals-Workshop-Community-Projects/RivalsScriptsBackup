@@ -87,15 +87,17 @@ if (e && state == 0)
 		}
 		if (pHitBox.attack == AT_USPECIAL && state == 0 && pHitBox.hbox_num == 1)
 		{
-			vsp = -8;
-			hsp = player_id.spr_dir > 0? 3: -3;
+			bike_spin_speed_v = -8;
+			//vsp = -8;
+			bike_spin_speed_h = player_id.spr_dir > 0? 3: -3;
+			//hsp = player_id.spr_dir > 0? 3: -3;
 			sound_play(sound_get("motorbike_extra"));
 			with (pHitBox)
 			{
 				sound_play(sound_effect);
 				spawn_hit_fx(hit_effect_x + other.x, hit_effect_y + other.y - other.article_height/2, hit_effect);
 			}
-			with (player_id) create_hitbox(AT_USPECIAL, 2, other.x, other.y - 22);
+			with (player_id) if (!hitpause) create_hitbox(AT_USPECIAL, 2, other.x, other.y - 22);
 			state = 1;
 			state_timer = 0;
 		}
@@ -107,17 +109,30 @@ switch (state)
 {
     case 0: //Idle
         sprite_index = sprite_get("bike_charge");
-        mask_index = sprite_get("bike_mask");
+        //mask_index = sprite_get("bike_mask");
+        if (free && !(collision_rectangle(x - 36, y, x + 36, y, jumpthrough, false, true))) y+= 2;
+        if (collision_rectangle(x - 36, y-2, x + 36, y-2, jumpthrough, false, true)) y-=2;
     break;
     case 1: //uppercut
+		is_hittable = false;
         sprite_index = sprite_get("bike_spin");
-        mask_index = sprite_get("bike_mask_spin");
+        //mask_index = sprite_get("bike_mask_spin");
         image_index = state_timer/2;
         if (floor(state_timer/6) == state_timer/6)
         {
-        	vsp++;
+        	bike_spin_speed_v++;
         }
-        if (!free && vsp > 0 && state_timer >2 && !hitpause)
+        if (!player_id.hitpause)
+        {
+	        vsp = bike_spin_speed_v;
+	        hsp = bike_spin_speed_h;
+        }
+        else
+        {
+        	vsp = 0;
+        	hsp = 0;
+        }
+        if (!free && vsp > 0 && state_timer >2 && !player_id.hitpause)
         {
         	hsp = 0;
         	vsp = 0;
@@ -130,14 +145,16 @@ switch (state)
 if (player_id.state == PS_DEAD)
 {
     instance_destroy();
+    exit;
 }
 
 if ( y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
 {
 	instance_destroy();
+	exit;
 }
 
-if (instance_exists(self)) state_timer++;
+if (instance_exists(self) && !player_id.hitpause) state_timer++;
 
 #define spawn_base_dust // written by supersonic
 /// spawn_base_dust(x, y, name, dir = 0)

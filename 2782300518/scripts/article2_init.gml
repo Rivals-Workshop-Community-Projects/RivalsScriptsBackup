@@ -11,6 +11,10 @@ hsp = 0;
 vsp = 0;
 old_hsp = 0;
 old_vsp = 0;
+block = asset_get("par_block");
+jumpthrough = asset_get("par_jumpthrough");
+bike_spin_speed_h = 0;
+bike_spin_speed_v = 0;
 
 sprite_index = sprite_get("bike_charge");    // - sets the sprite of the article, can also be changed dynamically in article#_update.gml
 mask_index = sprite_get("bike_mask");

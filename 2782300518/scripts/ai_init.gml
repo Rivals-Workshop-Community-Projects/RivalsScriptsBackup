@@ -92,3 +92,5 @@ fs_ai_attempt_use = false;
 
 DACUS_timer = 0
 can_DACUS = false;
+
+win_taunt = false;

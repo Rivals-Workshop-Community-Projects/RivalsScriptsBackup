@@ -144,6 +144,25 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.12"
+        patch_note_text[i++] =  
+
+"Fixed Carol's bike getting stuck on walls and inside jumpthroughs.
+
+Bike no longer moves during hitpause.
+
+Bike mask is the same across both states while Carol has it parked on the stage.
+
+Bike state timer only ticks up during hitpause, this is to try and prevent a bug where the bike could end up permanently spinning in the ground.
+
+Altered the AI to taunt upon taking a stock.
+
+Added Dialogue Buddy support for Twilight Sparkle
+
+Added Amber Hug compatibility
+
+Reduced the filesize of the mod by indexing the largest sprites and cutting the Wall-E Taunt, shaving about 3MB off the file size!"
+
         patch_note_title[i] = "2.11"
         patch_note_text[i++] =  
 

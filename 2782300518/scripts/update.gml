@@ -965,6 +965,36 @@ user_event(6);
 prev_hsp = hsp;
 //print_debug("Time:" + string(current_time-ct));
 
+//Amber Hug Compatibility
+if (amber_startHug == true)
+{
+	with (amber_herObj)
+	{
+
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, asset_get("hurtbox"));
+
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 18);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 6);
+
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 36);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 12);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 6);
+
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 27);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 9);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 18);
+		
+		amberHugState = 2;
+	}
+	oPlayerHugAmberState = 2;
+	
+	amber_startHug = false;
+}
+
 //Dialogue Buddy
 if(variable_instance_exists(id,"diag"))
 {
@@ -1113,8 +1143,13 @@ if(variable_instance_exists(id,"diag"))
 	{
 		diag = "Mmmmmmmmmmm.... ice cream..... *glowing anime eyes*";
 		diag_index = 0;		
-	}	
-	
+	}
+	//Twilight Sparkle
+	if (otherUrl == "3299337477")
+	{
+        diag = "You know you remind me a lot of my friend Lilac.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
 	
 	if (otherUrl == CH_ELLIANA && diag != "")
 	{
