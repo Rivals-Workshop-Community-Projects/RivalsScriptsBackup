@@ -32,7 +32,7 @@ set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 4);
-set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 1);
