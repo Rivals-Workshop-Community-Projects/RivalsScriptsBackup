@@ -20,24 +20,20 @@ if ("fspec_article" in self && fspec_article != noone)
 
 with pHitBox {
     //make sure it's your own article
-    if (player_id == other.id)
+    if (player_id != other.id) continue;
+
+    if (attack == AT_NSPECIAL && hbox_num == 1) 
     {
-        if (attack == AT_NSPECIAL && hbox_num == 1) 
-        {
-            if free
-            {
-                arrow_angle = point_direction(0,0,hsp,vsp);
-                if (!other.should_red_arrow) draw_sprite_ext(other.blue_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
-                else draw_sprite_ext(other.red_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
-                
-            }
-            else 
-            {
-                if (!other.should_red_arrow) draw_sprite_ext(other.blue_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
-                else draw_sprite_ext(other.red_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
-            }
-        }
+        if free arrow_angle = point_direction(0,0,hsp,vsp);
+        draw_sprite_ext(other.red_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
     }
+
+    if (attack == AT_NSPECIAL_2 && hbox_num == 1) 
+    {
+        if free arrow_angle = point_direction(0,0,hsp,vsp);
+        draw_sprite_ext(other.blue_arrow_sprite,current_frame,x,y,1,1,arrow_angle, c_white, 1);
+    }
+
 }
 shader_end()
 

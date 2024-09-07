@@ -287,7 +287,7 @@ set_hitbox_value(AT_JAB, 10, HG_ANGLE, 90);
 set_hitbox_value(AT_JAB, 10, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_JAB, 10, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_JAB, 10, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_JAB, 10, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_JAB, 10, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_JAB, 10, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_JAB, 10, HG_VISUAL_EFFECT, hitA2);
 set_hitbox_value(AT_JAB, 10, HG_PROJECTILE_SPRITE, sprite_get("icicle"));

@@ -248,6 +248,25 @@ DSPECIAL_STARTUP_TL4 = 22;
 DSPECIAL_ENDLAG = 30;
 DSPECIAL_ENDLAG_TL4 = 38;
 
+//Final Smash
+fs_char_portrait_y  = 96;
+fs_char_chosen_final_smash = "custom";
+
+fs_window = 1;
+fs_window_timer = 0;
+
+fs_cine_x = 0;
+fs_cine_y = 0;
+fs_cine_spr = asset_get("empty_sprite");
+fs_cine_img = 0;
+
+fs_cine_scale1 = 1;
+fs_cine_scale2 = 1;
+fs_cine_rot2 = 0;
+fs_cine_subs = "";
+fs_fx_shock = hit_fx_create(sprite_get("fx_shock_fs"), 28)
+fs_meter_y = -40;
+
 //Tension
 tension_init()
 

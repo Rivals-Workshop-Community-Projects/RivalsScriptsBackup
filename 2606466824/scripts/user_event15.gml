@@ -403,6 +403,10 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 // Recommended template for non-Sandbert characters:
 
+initPatch("1.3", "August 31st, 2024");
+initHeader("General");
+initSection("* Now has win quotes against other Chmmr characters as well as base cast. More characters coming at later date.");
+
 initPatch("1.2", "August 1st, 2024");
 initSection("Hey, it's been a while! I think Incin's in a pretty good spot right now, but there was still room for minor tweaks and bugfixes, as well as some fun non-competitive additions!");
 initHeader("General");
@@ -677,7 +681,7 @@ initSection("* The character was released.");
 
 initPatch("About Incineroar", "");
 initHeader("Character by");
-initSection("Nackles42");
+initSection("Chmmr");
 initHeader("Commissioned by");
 initSection("InnerOtaku and Snolid Ice");
 initHeader("SFX from");

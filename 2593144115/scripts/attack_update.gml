@@ -167,7 +167,10 @@ switch (attack)
                 break;
 
 		case 4: //attack window  
-                            if (has_hit_player && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id && amaya_venom_consumed){
+                            //if (has_hit_player && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id && amaya_venom_consumed){
+
+                            if (has_hit_player && hit_player_obj.amaya_venom && amaya_venom_consumed){
+
                                 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, hit_player_obj.amaya_venom_count);
                                 //set_hitbox_value(AT_USPECIAL, 3, HG_EXTRA_HITPAUSE, floor( hit_player_obj.amaya_venom_count*(1+hit_player_obj.amaya_venom_count*2) )); //4, 12, 24, 40
                                 //set_hitbox_value(AT_USPECIAL, 3, HG_EXTRA_HITPAUSE, 15*hit_player_obj.amaya_venom_count-10); //5, 20, 35, 50
@@ -320,7 +323,10 @@ switch (attack)
                     break; 
 
 		case 4: //attack window  
-                            if (has_hit_player && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+                            //if (has_hit_player && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+
+                            if (has_hit_player && hit_player_obj.amaya_venom){
+
                                 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, hit_player_obj.amaya_venom_count);
                                 //set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, floor( hit_player_obj.amaya_venom_count*(1+hit_player_obj.amaya_venom_count*2.5) )); //5, 15, 30, 50
                                 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 15*hit_player_obj.amaya_venom_count-10); //5, 20, 35, 50

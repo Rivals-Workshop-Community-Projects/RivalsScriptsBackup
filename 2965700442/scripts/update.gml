@@ -37,7 +37,7 @@ if (my_grab_id != noone) //if you have grabbed someone
 	{
 		hitstop = 2; //freeze grabbed foe
 
-		if (last_player_hit_me != other.player) //if another player hits the grabbed player stop the grab sequence
+		if (last_player != other.player) //if another player hits the grabbed player stop the grab sequence
 		{
 			hitstop = 0;
 			with (other)
@@ -69,22 +69,9 @@ if (!free && uspec_times > 0) {
     uspec_times = 0;
 }
 
-//Reset stats
-walk_speed = walk_speed_def;
-walk_accel = walk_accel_def;
-initial_dash_speed = initial_dash_speed_def;
-dash_speed = dash_speed_def;
-ground_friction = ground_friction_def;
-air_accel = air_accel_def;
-air_friction = air_friction_def;
-air_max_speed = air_max_speed_def;
-gravity_speed = gravity_speed_def;
-max_fall = max_fall_def;
-fast_fall = fast_fall_def;
-
-if (state != PS_DEAD) {
+if (impulse_active_previous != impulse_active) {
+	impulse_active_previous = impulse_active;
 	if (impulse_active) {
-		impulse_timer ++;
 		walk_speed *= impulse_walk_speed_adj;
 		walk_accel *= impulse_walk_speed_adj;
 		initial_dash_speed *= impulse_initial_dash_speed_adj;
@@ -96,6 +83,26 @@ if (state != PS_DEAD) {
 		gravity_speed *= impulse_grav_adj;
 		max_fall *= impulse_fall_speed_adj;
 		fast_fall *= impulse_fall_speed_adj;
+	}
+	else {
+		walk_speed = walk_speed_def;
+		walk_accel = walk_accel_def;
+		initial_dash_speed = initial_dash_speed_def;
+		dash_speed = dash_speed_def;
+		ground_friction = ground_friction_def;
+		air_accel = air_accel_def;
+		air_friction = air_friction_def;
+		air_max_speed = air_max_speed_def;
+		gravity_speed = gravity_speed_def;
+		max_fall = max_fall_def;
+		fast_fall = fast_fall_def;
+	}
+}
+
+if (state != PS_DEAD) {
+	impulse_activation_percent = get_impulse_activation();
+	if (impulse_active) {
+		impulse_timer ++;
 		
 		if (impulse_timer % 8 == 0) {
 			var rand_x = -32 + random_func(0, 64, true);
@@ -196,7 +203,7 @@ with (oPlayer) {
 				for (var i = 0; i < array_length(anthem_status_stacks); i++) {
 					var stack = anthem_status_stacks[i];
 					if (!instance_exists(stack)) {
-						other.anthem_status_stacks = array_cut(anthem_status_stacks, i);
+						anthem_status_stacks = array_cut(anthem_status_stacks, i);
 						continue;
 					}
 					
@@ -252,6 +259,7 @@ with (oPlayer) {
 			else {
 				anthem_status_timer = 0;
 				anthem_status_id = noone;
+				anthem_status_owner = noone;
 				anthem_status_kb = -1;
 				anthem_status_kbs = -1;
 				anthem_status_angle = -1;
@@ -262,6 +270,7 @@ with (oPlayer) {
 	else {
 		anthem_status_timer = 0;
 		anthem_status_id = noone;
+		anthem_status_owner = noone;
 		anthem_status_stacks = [];
 		anthem_status_kb = -1;
 		anthem_status_kbs = -1;
@@ -327,8 +336,8 @@ var damage_diff_max = self_damage - target_max_damage;
 
 var stock_advantage = 0;
 
-if (stock_diff_max > 0) stock_advantage = 5 * stock_diff_max;
-else if (stock_diff_max < 0) stock_advantage = -10 * stock_diff_max;
+if (stock_diff_max > 0) stock_advantage = -10 * stock_diff_max;
+else if (stock_diff_max < 0) stock_advantage = 5 * stock_diff_max;
 
 var activation_percent = 80;
 damage_diff_max -= self_damage;
@@ -354,7 +363,7 @@ return activation_percent;
 	
 #define can_acivate_impulse()
 var self_damage = get_player_damage(player);
-var activation_percent = get_impulse_activation();
+var activation_percent = impulse_activation_percent;
 
 return activation_percent > 0 && self_damage >= activation_percent;
 

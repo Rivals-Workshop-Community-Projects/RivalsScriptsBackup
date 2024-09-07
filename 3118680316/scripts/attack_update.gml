@@ -119,8 +119,7 @@ if (attack == AT_FSPECIAL){
 //#region USpecial
 if (attack == AT_USPECIAL){
 	
-	// Allow fastfalling on window 3
-	can_fast_fall = (window == 3 || (window == 2 && window_timer >= 10)) && has_hit_player;
+	can_fast_fall = false;
 	
 	// Resets
 	if(window == 1 && window_timer == 1)

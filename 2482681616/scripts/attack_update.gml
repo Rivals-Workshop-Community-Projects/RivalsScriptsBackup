@@ -529,6 +529,195 @@ if (attack == AT_DSPECIAL){
 	    }
 	}
 }
+
+if (attack == 49) {
+	can_fast_fall = false;	
+	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+	
+	//reset 'grabbed_player' variables on the first frame when performing a grab.
+    if (window == 1 && window_timer == 2) { 
+    	grabbed_player_obj = noone; 
+    	grabbed_player_relative_x = 0;
+    	grabbed_player_relative_y = 0;
+    	fs_falling = false;
+    }
+	
+	if (window == 1 || window == 2) {
+    	grav = 0;
+    	can_move = false;
+    }
+    
+	if (window == 3) {
+    	grav = 0.1;
+    	frict = 0.3;
+    	can_move = true;
+    }
+    
+    if (window == 2 && !hitpause) {
+		 off_edge = true;
+		
+        if (place_meeting(round(x + hsp), round (y), asset_get("par_block"))) {
+            window ++;
+            window_timer = 0;
+            hsp = 0;
+            vsp = 0
+            destroy_hitboxes();
+        }
+    }
+    if (instance_exists(grabbed_player_obj)) {
+	    if (window >= 8) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) {
+			grabbed_player_obj = noone; 
+		}
+		else {
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+			}
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
+			
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			var pull_to_x = 0
+			var pull_to_y = 0;
+			var window_length = 2;
+			var grab_ease = false;
+			 
+			//on the first window, pull the opponent into the grab.
+			if (window == 4) { 
+				attack_invince = 1;
+				grabbed_player_obj.attack_invince = 1;
+			    window_length = 5;
+			    if (window_timer >= 0 && window_timer <= window_length) {
+	    			pull_to_x = 90 * spr_dir;
+	    			pull_to_y = -74;
+			    }
+				
+			    if (window_timer >= window_length && window_timer <= window_length * 2) {
+	    			pull_to_x = 40 * spr_dir;
+	    			pull_to_y = -48;
+			    }
+				
+			    if (window_timer >= window_length * 2 && window_timer <= window_length * 3) {
+	    			pull_to_x = 26 * spr_dir;
+	    			pull_to_y = -38;
+			    }
+			    
+			    if (window_timer >= window_length * 3 && window_timer <= window_length * 4) {
+	    			pull_to_x = -72 * spr_dir;
+	    			pull_to_y = -42;
+			    }
+			    hsp = 0;
+			    vsp = 0;
+			    grav = 0;
+			}
+			
+			
+			if (window == 5) { 
+				attack_invince = 1;
+				grabbed_player_obj.attack_invince = 1;
+			    window_length = 20;
+			    if (window_timer >= 0 && window_timer <= window_length) {
+	    			pull_to_x = -66 * spr_dir;
+	    			pull_to_y = -82;
+			    }
+				
+			    if (window_timer >= window_length && window_timer <= window_length * 2) {
+	    			pull_to_x = -62 * spr_dir;
+	    			pull_to_y = -78;
+			    }
+			    hsp = 0;
+			    vsp = -18;
+			    grav = 0;
+			}
+			
+			if (window == 6) { 
+				attack_invince = 1;
+				grabbed_player_obj.attack_invince = 1;
+		    	pull_to_x = -68 * spr_dir;
+				pull_to_y = -76;
+				mask_index = asset_get("empty_sprite");
+				
+				if (!fs_falling) {
+					mask_index = asset_get("empty_sprite");
+					if (window_timer >= 60 || y <= 32) {
+						fs_falling = true;
+						vsp = max_fall;
+						x = room_width / 2;
+						y = 32;
+						
+						fs_fall_y = 96
+						while (fs_fall_y < room_height) {
+							fs_fall_y += 32;
+							if (collision_point(x, fs_fall_y, asset_get("par_block"), 0, 0)) {
+								break;
+							}
+						}
+						
+						print("FS Y is " + string(fs_fall_y))
+					}
+				}
+				else {
+					y += 24;
+					mask_index = asset_get("empty_sprite");
+					if (y >= fs_fall_y) {
+						window ++;
+						window_timer = 0;
+						hsp = 0;
+						vsp = 0;
+						y = fs_fall_y;
+						mask_index = fs_mask_index;
+						
+						sound_play(sound_get("sfx_final_smash_land"))
+						var _article = instance_create(round(x), round(y), "obj_article2")
+						_article.grabbed_player = grabbed_player_obj.player;
+					}
+				}
+				
+				grav = 0;
+			}
+			
+			if (window == 7) { 
+				attack_invince = 1;
+				grabbed_player_obj.attack_invince = 0;
+			    if (window_timer == 1 && !hitpause) {
+			        shake_camera(24, 4);
+			        spawn_hit_fx(round(x), round(y) - 24, 143);
+			        sound_play(sound_get("sfx_fspecial_land"));
+		        
+					var throw_hbox = create_hitbox(49, 2, round(x), round(y));
+
+					//this part of the code checks the "can_hit" array, which chooses who can be hit by what hitbox
+					//we are disabling the detection of the hitbox for any player that isn't the grabbed player
+					for (var i = 0; i <= 20; ++i)
+					{
+						throw_hbox.can_hit[i] = false;
+						throw_hbox.can_hit[grabbed_player_obj.player] = true;
+					}
+			    }
+			    window_length = 3;
+			    grab_ease = true;
+		    	pull_to_x = -32 * spr_dir;
+				pull_to_y = 0;
+			}
+			if (window >= 7) {
+				attack_invince = 0;
+				off_edge = false;
+			}
+			
+			if (grab_ease) {
+				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x * (spr_dir * image_xscale), window_timer, window_length);
+				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y* image_yscale, window_timer, window_length);
+			}
+			else {
+				grabbed_player_obj.x = x + pull_to_x * (spr_dir * image_xscale);
+				grabbed_player_obj.y = y + pull_to_y * image_yscale;
+			}
+		}
+    }
+	
+}
 #define check_spawn_rock(_spawn_x, _spawn_y)
 spawn_y = _spawn_y;
 spawn_x = _spawn_x;

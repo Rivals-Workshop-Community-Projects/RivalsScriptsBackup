@@ -191,7 +191,7 @@ afterimage_colour_array = [
   make_colour_rgb(200, 210, 210), // silver
   make_colour_rgb(210, 190, 90), // yellow
   make_colour_rgb(200, 40, 0), // potemkin
-  magnet_colour, // r mika
+  make_colour_rgb(280, 220, 90), // r mika
   make_colour_rgb(150, 20, 230), // abyss
   make_colour_rgb(60,  102, 22), // early access
   make_colour_rgb(40,  125, 50), // dakota
@@ -200,8 +200,29 @@ afterimage_colour_array = [
   make_colour_rgb(0,  120, 255), // gracefulknight
   make_colour_rgb(250, 30, 255), // ETDT
   make_colour_rgb(150, 40, 63), // honorless
+  make_colour_rgb(230, 128, 185), // Senpu
+  make_colour_rgb(243, 133, 235), // Kally
+  make_colour_rgb(0, 255, 255), // Riptide
 ]
+riptide_colours = [
+  make_colour_rgb(0,199,218), // blue shadow
+  make_colour_rgb(254, 184, 0), // yellow shadow
+  make_colour_rgb(218, 93, 0), // orange shadow
+]
+
 afterimage_colour = afterimage_colour_array[get_player_color( player )];
+
+// replace the afterimage colour for skins
+alt_palette = 0;
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+alt_palette = get_player_color( real_player );
+
+riptide_after_index = 0;
+magnet_colour = riptide_colours[0];
+
+if alt_palette == 18 { // Riptide
+  afterimage_colour = riptide_colours[riptide_after_index]
+}
 
 //Throw direction detector.
 //1 = forward. 2 = down. 3 = back. 4 = up.

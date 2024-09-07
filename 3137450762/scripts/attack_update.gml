@@ -162,7 +162,7 @@ if (attack == AT_FTILT){
 }
 
 if (attack == AT_UTILT) {
-  if window == 1 && window_timer == 1 {
+  if window == 1 && window_timer == 3 {
     sound_play(sound_get("pixabay_utilt_cheer"));
   }
 }
@@ -595,6 +595,14 @@ if (attack == AT_BAIR){
   if (window < 6 && grab_valid){
     can_fast_fall = false;
   }
+
+// Half-finished enabling of hitfall on Bair 2
+  /* if ((window < 5 || (window == 5 && window_timer <= 7) || window == 8) && grab_valid){
+    can_fast_fall = false;
+  }
+  else if (window == 5 && window_timer > 7){
+    can_fast_fall = true;
+  } */
 
   if (window == 2 && grab_valid){
     set_attack_value( AT_BAIR, AG_CATEGORY, 2);
@@ -1263,7 +1271,11 @@ if (attack == AT_USPECIAL){
   if (window == 7){
     // add afterimages to an array
     if uspecial_afterimage_timer % 5 == 0 {
-      array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer]);
+      array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer, afterimage_colour]);
+        if alt_palette == 18 { // Riptide
+            riptide_after_index = (riptide_after_index + 1) % 3
+            afterimage_colour = riptide_colours[riptide_after_index]
+        }
     }
 
     // Prevent too much aerial drift
@@ -1298,7 +1310,7 @@ if (attack == AT_USPECIAL){
     if (vsp >= 0 && !free){
       // spin speed ranges from about 15 (slow) to 9 (very fast)
       //formula will produce values from 1 to 1.88
-      var kb_formula = max(1, 1.81 - (uspecial_spin_speed - 9.5)/7);
+      var kb_formula = max(0.95, 0.93*(1.81 - (uspecial_spin_speed - 9.5)/7));
 
       // exponential version (if desired)
       //var kb_formula = max(1.15, power(1.73 - (uspecial_spin_speed - 9.5)/7, 1.34));
@@ -1469,6 +1481,10 @@ if (attack == AT_DSPECIAL_2){
   if move_cooldown[AT_NSPECIAL] > 0 {
     attack_end();
     if (window < 4) { window = 4; window_timer = 0; }
+  }
+
+  if (window == 5 && window_timer == 4){
+    move_cooldown[AT_NSPECIAL] = 14;
   }
 
 }//End of Dspecial 2

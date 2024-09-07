@@ -3,17 +3,17 @@
 //fix weird jittering that can happen when it tries to return to 0
 if (abs(hud_offset) < 1) hud_offset = 0;
 
+//lord X idle
+if (sprite_index == sprite_get("idle") && is_fake_x)
+{
+	sprite_index = sprite_get("lordX_idle");
+	image_index = state_timer * fake_x_idle_speed;
+}
 
 switch (state)
 {
 	case PS_IDLE:
 		if (sprite_index == sprite_get("wait") && image_index >= 36 && image_index < 41) hud_offset = 40;
-		//lord X idle
-		if (sprite_index == sprite_get("idle") && is_fake_x)
-		{
-			sprite_index = sprite_get("lordX_idle");
-			image_index = state_timer * fake_x_idle_speed;
-		}
 		break;
 	case PS_IDLE_AIR:
 		if (tails_grabbed_sonic)
@@ -49,6 +49,9 @@ switch (state)
 			sprite_index = sprite_get("jump");
 			image_index = lerp(0, image_number-0.0001, (vsp + djump_speed) / (djump_speed + max_fall));
 		}
+		break;
+	case PS_DASH_STOP:
+		if (!hitpause && state_timer == 0) spawn_base_dust(x + 32 * spr_dir, y, "dattack", -spr_dir);
 		break;
 	case PS_ROLL_FORWARD: case PS_ROLL_BACKWARD: case PS_TECH_FORWARD: case PS_TECH_BACKWARD:
 		sprite_index = sprite_get("roll");
@@ -249,6 +252,12 @@ if ("_ssnksprites" in self)
 
 	if (uses_super_sprites != used_super_sprites)
 	{
+		if ("fs_char_initialized" in self)
+		{
+			fs_char_initialized = false;
+			fs_has_portrait = false;
+		}
+
 		set_ui_element(UI_HUD_ICON, sprite_get_skinned("hud_sonic_norm"));
 		set_ui_element(UI_HUDHURT_ICON, sprite_get_skinned("hud_sonic_hurt"));
 
@@ -281,6 +290,116 @@ if (boost_mode || is_super)
     }
 }
 else cur_aftimg = aftimg_refresh_rate;
+
+
+
+//dust effect spawn
+if (is_attacking && !hitpause) switch (attack)
+{
+    case 2: //intro
+        spawn_base_dust(x + draw_x, y, "land", 0, 0, 2, window_end-1)
+        spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 4, 7)
+        spawn_base_dust(x, y, "walk", 0, 0, 6, 0)
+        spawn_base_dust(x + 24 * spr_dir, y, "walk", 0, 0, 7, window_end-1)
+        spawn_base_dust(x - 24 * spr_dir, y, "walk", 0, 0, 7, window_end-1)
+        break;
+    case AT_JAB:
+        spawn_base_dust(x, y, "dash", 0, 0, 1, 3);
+        spawn_base_dust(x, y, "dash_start", 0, 0, 4, 3);
+        spawn_base_dust(x, y, "jump", 0, 0, 7, 5);
+        spawn_base_dust(x, y, "land", 0, 0, 11);
+        break;
+    case AT_UTILT:
+        spawn_base_dust(x - 16 * spr_dir, y, "walk", 0, 0, 1, 5);
+        spawn_base_dust(x, y, "jump", 0, 0, 5, 5);
+        spawn_base_dust(x, y, "land", 0, 0, 8);
+        break;
+    case AT_FTILT:
+        spawn_base_dust(x, y, "dash_start", 0, 0, 1, 4);
+        break;
+    case AT_DTILT:
+        spawn_base_dust(x + 80 * spr_dir, y, "dash", -spr_dir, 0, 1, 3);
+        break;
+    case AT_DATTACK:
+        if (!free)
+        {
+            spawn_base_dust(x, y, "land", 0, 0, 5, 1);
+            if (dattack_cancel_time > 1)
+            {
+                spawn_base_dust(x - 16, y, "dattack", 1, 0, 5, 5);
+                spawn_base_dust(x + 16, y, "dattack", -1, 0, 5, 5);
+            }
+        }
+        break;
+    case AT_USTRONG:
+        spawn_base_dust(x, y, "jump", 0, 0, 3, 3);
+        break;
+    case AT_FSTRONG:
+        spawn_base_dust(x - 32 * spr_dir, y, "dash", 0, 0, 3, 0);
+        spawn_base_dust(x + 48 * spr_dir, y, "dash_start", -spr_dir, 0, 3, 3);
+        break;
+    case AT_DSTRONG:
+        if (window == 2 && strong_charge % 8 == 0)
+        {
+            spawn_base_dust(
+                x - 16 * spr_dir * (strong_charge <= 20),
+                y,
+                strong_charge <= 20 ? "dash" : "dash_start"
+            );
+        }
+        spawn_base_dust(x - 16 * spr_dir, y, "dattack", 0, 0, 3, 4);
+
+        if ((window == 4 || window == 5) && state_timer % 2 == 0 && sign(hsp) != 0) spawn_base_dust(x - 32 * sign(hsp), y, "dash", sign(hsp));
+        break;
+    case AT_FSPECIAL:
+        if (!free && (window == 2 || window == 3) && state_timer % 5 == 0) spawn_base_dust(x, y, window == 3 ? "dash_start" : "dash", sign(hsp));
+        spawn_base_dust(x, y - 32, "djump", 0, spr_dir ? 300 : 60, 4, 0);
+        if ((window == 8 || window == 9) && state_timer % 5 == 0)
+        {
+            spawn_base_dust(x, y - 24 - lengthdir_y(10, point_direction(0, 0, hsp, vsp)), "djump", 1, point_direction(0, 0, hsp, vsp) - 90);
+        }
+        
+        if (abs(hsp) > 0.75) spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 11, 0);
+        break;
+    case AT_DSPECIAL:
+        spawn_base_dust(x, y - 8, "djump_small", 0, 0, 1, 0);
+        spawn_base_dust(x, y, "jump", 0, 0, 1, 0);
+
+        if (dspec_jumps > 0) spawn_base_dust(x, y - 64, "djump", 0, 180, 2, 7);
+        if (!free)
+        {
+            spawn_base_dust(x, y, "land", 0, 0, 4, 1);
+            if (dspec_jumps >= dspec_jumps_max)
+            {
+                spawn_base_dust(x + 16 * spr_dir, y, "dash_start", -spr_dir, 0, 4, 3);
+                spawn_base_dust(x - 16 * spr_dir, y, "dash_start", 0, 0, 4, 3);
+            }
+        }
+        break;
+    case 49: //final smash - sonic overdrive
+        spawn_base_dust(x, y, "land", 0, 0, 6, 0);
+        spawn_base_dust(x + 32 * spr_dir, y, "dash_start", -1, 0, 6, 4);
+        spawn_base_dust(x - 32 * spr_dir, y, "dash_start", 1, 0, 6, 4);
+        spawn_base_dust(x + 96 * spr_dir, y, "dash", -1, 0, 6, 7);
+        spawn_base_dust(x - 96 * spr_dir, y, "dash", 1, 0, 6, 7);
+        break;
+}
+
+//tornado side dust
+with (pHitBox) if (player_id == other && attack == AT_DSTRONG && hbox_num == 2 && hitbox_timer % 8 == 0 && hitbox_timer <= length - 30) with (other)
+{
+    spawn_base_dust(dstrong_tornado_xscale[0] + 32 * -other.spr_dir, other.y + 44, "dash_start", -other.spr_dir);
+    spawn_base_dust(dstrong_tornado_xscale[1] + 32 * other.spr_dir, other.y + 44, "dash_start", other.spr_dir);
+}
+
+//tornado dust spawn on enemy like those rings on sonic heroes when players are shot up from the tornados
+with (oPlayer) if (hit_player_obj == other)
+{
+    if (state == PS_HITSTUN && state_timer % 5 == 0 && vsp < -2 && orig_knock > 13 && last_player == other.player && last_attack == AT_DSTRONG && last_hbox_num == 2)
+    {
+        with (other) spawn_base_dust(other.x, other.y, "djump")
+    }
+}
 
 //written by supersonic, modified by bar-kun
 #define spawn_base_dust
@@ -376,7 +495,7 @@ else cur_aftimg = aftimg_refresh_rate;
 	}
 	set_hitbox_value(0, 2, HG_PROJECTILE_SPRITE, sprite_get_skinned("proj_runeF"));
 
-	if (get_stage_data(SD_ID) == "2237190890")
+	if (get_stage_data(SD_ID) == "2237190890") //pokemon stadium
 	{
 		pkmn_stadium_front_img = sprite_get(uses_super_sprites ? "pokemon_front_super" : "pokemon_front");
 		pkmn_stadium_back_img = sprite_get(uses_super_sprites ? "pokemon_back_super" : "pokemon_back");
@@ -385,6 +504,26 @@ else cur_aftimg = aftimg_refresh_rate;
 			back_changed = true;
 			front_changed = true;
 		}
+	}
+	if (!fs_portrait_updated) //final smash buddy
+	{
+		switch (alt_cur)
+		{
+			case 5: //chaos
+				fs_char_portrait_override = sprite_get_skinned("portrait_ex1");
+				break;
+			case 14: //early access
+				fs_char_portrait_override = sprite_get_skinned("portrait_ex2");
+				break;
+			case 15: //milestone
+				fs_char_portrait_override = sprite_get_skinned("portrait_ex4");
+				break;
+			case 16: if (get_match_setting(SET_SEASON) == 3) break; //seasonal - lord X
+			default:
+				fs_char_portrait_override = sprite_get_skinned("portrait");
+				break;
+		}
+		fs_portrait_updated = true;
 	}
 }
 #define sprite_get_skinned

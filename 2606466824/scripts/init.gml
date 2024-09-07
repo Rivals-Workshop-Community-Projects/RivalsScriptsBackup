@@ -218,3 +218,8 @@ am_is_guest = true;
 am_is_handed = true;
 am_is_verbal = false;
 am_is_evil = true;
+
+//victory
+incin_victory_quote = "(You might copy my style, but you'll never be the real deal!)";
+incin_handled_victory_quote = false;
+incin_victory_icon = 4;

@@ -1,5 +1,4 @@
 //got_parried
-
 if (my_hitboxID.attack == AT_DAIR) {
 	if my_hitboxID.hbox_num == 1 {
 		my_hitboxID.hitbox_timer = 1;
@@ -19,7 +18,11 @@ if (my_hitboxID.attack == AT_DAIR) {
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
 		my_hitboxID.hitbox_timer = 1;
-		my_hitboxID.hsp *= 1.5;
+			
+		var angle = point_direction(my_hitboxID.x, my_hitboxID.y, x, y+10);
+		my_hitboxID.hsp = lengthdir_x(12, angle)*-my_hitboxID.spr_dir;
+		my_hitboxID.vsp = -lengthdir_y(12, angle);
+	
 }
 		
 if (my_hitboxID.attack == AT_NSPECIAL) {

@@ -51,12 +51,34 @@ if (my_hitboxID.attack == AT_DSPECIAL_AIR && attack == AT_DSPECIAL_AIR && is_att
 	has_hit = true;
 }
 
-//if !(my_hitboxID.attack == AT_NSPECIAL &&  my_hitboxID.hbox_num == 1) {
+if (my_hitboxID.attack == 49 ) {
+    if (my_hitboxID.hbox_num == 1) set_grab_id(); //special function you can see below that sets the hit player to be grabbed
+    else my_grab_id = noone; //the 2nd hitbox in the grab should always hit, releasing opponents from the grabbed state
+    
+}
+
+
+if (my_hitboxID.attack != 49 && my_hitboxID.player == player) {
 	if ("damage_original" in my_hitboxID)
 	    tension_add(ceil(my_hitboxID.damage_original * TENSION_ADD_RATIO));
 	else
 	    tension_add(ceil(my_hitboxID.damage * TENSION_ADD_RATIO));
-//}
+}
+
+#define set_grab_id()
+{
+    //things to check when you grab someone:
+    //  - make sure your grabbed ID is noone so it will grab the first player it collides with
+    //  - if the ID is a clone (clones usually disappear which will pop up an error)
+    //  - if the hit player is in a hitstun state (so it won't grab armored player)
+    //  - if the player isn't in ranno's bubble
+    
+    if (my_grab_id == noone && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && !hit_player_obj.bubbled)
+    {
+        my_grab_id = hit_player_obj;
+    }
+}
+
 
 #define tension_add(_change)
 tension_amount += _change;

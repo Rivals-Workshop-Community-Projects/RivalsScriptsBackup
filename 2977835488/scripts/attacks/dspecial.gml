@@ -10,7 +10,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HSPEED, 7.5);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_dash_start"));
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_hod_fspecial"));
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);

@@ -1,7 +1,7 @@
 
 switch(get_player_color(player)){
   case 5:
-    if(modifier == 0){
+    if(modifier == 3){
       for(var i = 0; i < 8; i++){
         set_character_color_shading( i, 0.4 );
       }

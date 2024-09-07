@@ -16,7 +16,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("sfx_anthem_swipe1"));
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_DAIR, 2, AG_MUNO_WINDOW_ROLE, 2);
-set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED, -1);
@@ -36,7 +36,7 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, asset_get("sfx_bite"));
 set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 15);
 
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED, -4);

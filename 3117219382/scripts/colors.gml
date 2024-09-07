@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 8, 8, 25 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 27 );
 
 // Red
 set_color_profile_slot( 1, 0, 240, 60, 64 ); //Coin
@@ -76,15 +76,15 @@ set_color_profile_slot( 4, 5, 108, 130, 124 ); //Bag and sheath
 set_color_profile_slot( 4, 6, 35, 84, 207 ); //Hilt
 set_color_profile_slot( 4, 7, 43, 71, 171 ); //Hat
 
-// Genesis
-set_color_profile_slot( 5, 0, 255, 69, 69 ); //Coin
-set_color_profile_slot( 5, 1, 66, 66, 66 ); //Fur secondary color
-set_color_profile_slot( 5, 2, 71, 66, 66 ); //Fur main color
-set_color_profile_slot( 5, 3, 243, 244, 245 ); //Vest
-set_color_profile_slot( 5, 4, 138, 31, 31 ); //Pants
-set_color_profile_slot( 5, 5, 97, 97, 97 ); //Bag and sheath
-set_color_profile_slot( 5, 6, 38, 38, 38 ); //Hilt
-set_color_profile_slot( 5, 7, 184, 0, 0 ); //Hat
+// Riptide
+set_color_profile_slot( 5, 0, 254, 207, 0 ); //Coin
+set_color_profile_slot( 5, 1, 227, 202, 177 ); //Fur secondary color
+set_color_profile_slot( 5, 2, 25, 41, 92 ); //Fur main color
+set_color_profile_slot( 5, 3, 0, 199, 218 ); //Vest
+set_color_profile_slot( 5, 4, 218, 93, 0 ); //Pants
+set_color_profile_slot( 5, 5, 218, 93, 0 ); //Bag and sheath
+set_color_profile_slot( 5, 6, 17, 36, 84 ); //Hilt
+set_color_profile_slot( 5, 7, 0, 199, 218 ); //Hat
 
 // Purple/Pink
 set_color_profile_slot( 6, 0, 242, 111, 182 ); //Coin
@@ -305,6 +305,16 @@ set_color_profile_slot( 27, 4, 240, 212, 182 ); //Pants
 set_color_profile_slot( 27, 5, 122, 61, 48 ); //Bag and sheath
 set_color_profile_slot( 27, 6, 232, 236, 245 ); //Hilt
 set_color_profile_slot( 27, 7, 161, 144, 129 ); //Hat
+
+// Genesis
+set_color_profile_slot( 28, 0, 255, 69, 69 ); //Coin
+set_color_profile_slot( 28, 1, 66, 66, 66 ); //Fur secondary color
+set_color_profile_slot( 28, 2, 71, 66, 66 ); //Fur main color
+set_color_profile_slot( 28, 3, 243, 244, 245 ); //Vest
+set_color_profile_slot( 28, 4, 138, 31, 31 ); //Pants
+set_color_profile_slot( 28, 5, 97, 97, 97 ); //Bag and sheath
+set_color_profile_slot( 28, 6, 38, 38, 38 ); //Hilt
+set_color_profile_slot( 28, 7, 184, 0, 0 ); //Hat
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

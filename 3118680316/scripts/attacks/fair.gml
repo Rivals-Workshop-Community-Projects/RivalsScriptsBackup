@@ -7,7 +7,7 @@ set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 // Startup
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -22,7 +22,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // Endlag
 set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);

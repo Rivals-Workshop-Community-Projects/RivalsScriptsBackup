@@ -1,6 +1,6 @@
 //other_pre_draw.gml
 
-if (instance_exists(bar_sonic_reticle_owner)) with (bar_sonic_reticle_owner)
+if (instance_exists(bar_sonic_reticle_owner) && bar_sonic_reticle_owner == other_player_id) with (bar_sonic_reticle_owner)
 {
     static_colorO[4] = cur_colors[1][0]/255;
     static_colorO[5] = cur_colors[1][1]/255;

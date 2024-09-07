@@ -4,6 +4,9 @@ amaya_venom_consumed = false;
 amaya_venom_id = 0;
 amaya_venom_timer = 0;
 amaya_venom_sprite = -1;
+amaya_self_venom = 0;
+
+bubble_whiff = false;
 
 venombubble_ins = noone;
 bubble_count = 0;
@@ -72,7 +75,7 @@ knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 16;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .07; //grounded deceleration when wavelanding
 
 //crouch animation frames

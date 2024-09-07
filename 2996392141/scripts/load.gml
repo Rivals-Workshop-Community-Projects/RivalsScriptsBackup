@@ -55,6 +55,7 @@ sprite_change_offset("dspecial", 32, 47, true);
 sprite_change_offset("dspecial_air", 32, 47, true);
 sprite_change_offset("taunt", 48, 63);
 sprite_change_offset("taunt2", 32, 47);
+sprite_change_offset("final_smash", 48, 47);
 
 sprite_change_offset("wait1", 32, 47);
 sprite_change_offset("wait2", 32, 47);
@@ -70,9 +71,20 @@ sprite_change_offset("fx_shock2", 96, 126);
 sprite_change_offset("fx_shockair1", 96, 126);
 sprite_change_offset("fx_shockair2", 96, 126);
 sprite_change_offset("fx_shockair3", 96, 126);
+sprite_change_offset("fx_shock_fs", 128, 320);
 
 sprite_change_collision_mask("fx_shock1_hurt", 1, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("fx_shock2_hurt", 1, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("fx_shockair1_hurt", 1, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("fx_shockair2_hurt", 1, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("fx_shockair3_hurt", 1, 0, 0, 0, 0, 0, 0);
+
+sprite_change_offset("final_smash_bg1", 240, 128);
+sprite_change_offset("final_smash_bg2", 240, 128);
+
+sprite_change_offset("final_smash_c1", -32, 0);
+sprite_change_offset("final_smash_c2", -64, 0);
+sprite_change_offset("final_smash_c3", 0, 0);
+sprite_change_offset("final_smash_c4", 384, 272);
+sprite_change_offset("final_smash_c4a", 384 - 32, 272 - 48);
+sprite_change_offset("final_smash_c4b", 128, 76);

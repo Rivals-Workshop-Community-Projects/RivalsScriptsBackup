@@ -302,6 +302,55 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 		vsp = 0;
 	}
 	
+	if player_id.bag_hit = true {
+		player_id.bag_hit = false;
+		 	if letters = 0 {
+            	state = 2;
+            	state_timer = 0;
+            	letters += 1;
+
+				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup1_vfx);
+				k.depth = depth - 1;
+				k.spr_dir = 1;
+				mbopacity = 1;
+            	sound_play(sound_get("mblvlup1"), 0, noone, 2, 1);
+            }	else if letters = 1 {
+            	state = 3;
+            	state_timer = 0;
+            	letters += 1;
+
+				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup2_vfx);
+				k.depth = depth - 1;
+				k.spr_dir = 1;
+   				mbopacity = 1;
+            	sound_play(sound_get("mblvlup2"), 0, noone, 2, 1);
+            	sound_stop(sound_get("mblvlup1"));
+            }   else if letters = 2 {
+            	state = 4;
+            	state_timer = 0;
+            	letters += 1;
+
+				var k = spawn_hit_fx(x, y + 70, player_id.mb_hud_lvup3_vfx);
+				k.depth = depth - 1;
+				k.spr_dir = 1;
+   				mbopacity = 1;
+            	sound_play(sound_get("mblvlup3"), 0, noone, 2, 1);
+            	sound_stop(sound_get("mblvlup1"));
+            	sound_stop(sound_get("mblvlup2"));
+            }   else if letters = 3 {
+		    	player_id.instant_explo_x = x;
+		    	player_id.instant_explo_y = y;
+	   	        player_id.instant_explo_start = true;
+		    	player_id.killarticles = false;
+			    player_id.mailboxID = 0;
+            	sound_stop(sound_get("mblvlup1"));
+            	sound_stop(sound_get("mblvlup2"));                    	
+            	sound_stop(sound_get("mblvlup3"));                    	
+	        	instance_destroy();
+	   	        exit;
+            }
+	}
+
 
 //Set killarticles to true in death.gml and all your articles will despawn. Gets reset to the false at the end of state 2
 
@@ -421,6 +470,22 @@ if (state == 1){
 if (state == 2){
     idle_anim_rate = 4; 
 
+   if player_id.mb_shoot = true {
+		player_id.mb_shoot = false;
+   		    if letters = 0 {
+   		    	//?
+            } else if letters = 1 {
+               	state = 5;
+               	state_timer = 0;
+            } else if letters = 2 {
+               	state = 6;
+               	state_timer = 0;
+            } else if letters = 3 {
+				state = 7;
+				state_timer = 0;
+            }
+   }
+
 	if state_timer > 15 {
 	can_be_hurt = true;
 	} else {
@@ -442,6 +507,22 @@ if (state == 2){
 if (state == 3){
 	idle_anim_rate = 4; 
 
+   if player_id.mb_shoot = true {
+		player_id.mb_shoot = false;
+   		    if letters = 0 {
+   		    	//?
+            } else if letters = 1 {
+               	state = 5;
+               	state_timer = 0;
+            } else if letters = 2 {
+               	state = 6;
+               	state_timer = 0;
+            } else if letters = 3 {
+				state = 7;
+				state_timer = 0;
+            }
+   }
+
 	if state_timer > 15 {
 	can_be_hurt = true;
 	} else {
@@ -461,6 +542,22 @@ if (state == 3){
 
 if (state == 4){
     idle_anim_rate = 4; 
+
+   if player_id.mb_shoot = true {
+		player_id.mb_shoot = false;
+   		    if letters = 0 {
+   		    	//?
+            } else if letters = 1 {
+               	state = 5;
+               	state_timer = 0;
+            } else if letters = 2 {
+               	state = 6;
+               	state_timer = 0;
+            } else if letters = 3 {
+				state = 7;
+				state_timer = 0;
+            }
+   }
 
 	if state_timer > 15 {
 	can_be_hurt = true;
@@ -512,6 +609,9 @@ if (state == 6){
 	if state_timer == 15 {
 		player_id.lvl2projID = create_hitbox(AT_DSPECIAL_2, 4, x, y - 65);
 		sound_play(asset_get("sfx_bird_nspecial"));
+	//	player_id.lvl2projID.proj_angle = 90;
+	//	player_id.lvl2projID.plane_temp_angle = 0;
+	//	player_id.lvl2projID.spr_dir = 1;
 		letters = 0;
 		//print("test2")
 	}

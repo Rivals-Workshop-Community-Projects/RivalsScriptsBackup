@@ -6,6 +6,11 @@ if(attack == AT_FSPECIAL_AIR && state == PS_ATTACK_AIR){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
+with (oPlayer){
+	plane_target_x = x;
+	plane_target_y = y;
+}
+
 if !free {
 	has_airdashed = false;
 }
@@ -33,7 +38,6 @@ if state == PS_AIR_DODGE || state == PS_HITSTUN {
 	}
 }	
 
-
 if spin_cooldown > 0 {
 	spin_cooldown--;
 }
@@ -42,12 +46,43 @@ if !free {
     move_cooldown[AT_DAIR] = 0;
 }
 
+if letterflyID != 0 && mailboxID != 0 {
+	letterflyID.depth = depth - 1;
+	letterflyID.proj_angle = point_direction(letterflyID.x, letterflyID.y, mailboxID.x, mailboxID.y - 40);
+	if letterflyID.hitbox_timer % 5 = 0 {
+		var k = spawn_hit_fx(letterflyID.x, letterflyID.y - 0, letter_sparks_vfx);
+   		k.depth = depth + 1;
+   	}
+	letterflyID.x = lerp(letterflyID.x, mailboxID.x, 0.1);
+	letterflyID.y = lerp(letterflyID.y, mailboxID.y - 40, 0.1);
+		if(mailboxID.state = 1 || mailboxID = 0){
+			instance_destroy(letterflyID);
+			letterflyID = 0;
+		}
+		if place_meeting(letterflyID.x, letterflyID.y, mailboxID) {
+			sound_play(asset_get("sfx_blow_medium2"))
+			instance_destroy(letterflyID);
+			letterflyID = 0;
+			bag_hit = true;
+		}
+	}
+
 if packageID != 0 || lvl1projID != 0 || lvl2projID != 0 || dairprojID != 0 || mb_cooldown > 0 {
 	move_cooldown[AT_DSPECIAL] = 999;
     move_cooldown[AT_DSPECIAL_2] = 999;
 } else if packageID = 0 && lvl1projID = 0 && lvl2projID = 0 && mailboxID = 0 && dairprojID = 0 && mb_cooldown < 1 {
     move_cooldown[AT_DSPECIAL] = 0;
 	move_cooldown[AT_DSPECIAL_AIR] = 0;
+}
+
+if mailboxID != 0 {
+	if letterflyID != 0 || instant_explo_start = true {
+		move_cooldown[AT_DSPECIAL] = 999;
+    	move_cooldown[AT_DSPECIAL_2] = 999;		
+	} else if letterflyID = 0 && instant_explo_start = false {
+    move_cooldown[AT_DSPECIAL] = 0;
+	move_cooldown[AT_DSPECIAL_AIR] = 0;
+	}		
 }
 
 //print(mb_cooldown)
@@ -236,7 +271,8 @@ if packageID != 0 {
 	        packageID.destroyed = true;
 	        var k = spawn_hit_fx(packageID.x, packageID.y + 55, mb_proj_lv3_explo_vfx);
 	   		k.depth = depth + 1;
-			exploID = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
+			explo1 = create_hitbox(AT_DSPECIAL_2, 2, packageID.x, packageID.y - 7);
+			exploID.player = explo_owner;
 			sound_play(asset_get("sfx_zetter_downb"))
 	        k.depth = depth + 1;
 	        explo_timer = 0;
@@ -274,23 +310,64 @@ if instant_explo_start = true {
 }
 	
 if lvl1projID != 0 {
-    if lvl1projID.has_hit = true || lvl1projID.free = false || (lvl1projID.hitbox_timer > 40 && lvl1projID.vsp = 0) {
-        lvl1projID.destroyed = true;
-        var k = spawn_hit_fx(lvl1projID.x, lvl1projID.y + 55, mb_proj_lv1_destroy_vfx);
-        var explo_x = lvl1projID.x;
-        var explo_y = lvl1projID.y;
-		sound_play(asset_get("sfx_zetter_downb"))
-        k.depth = depth + 1;
-        lvl1proj_timer = 0;
-        lvl1proj_exploded = true;
-        lvl1projID = 0;
-    }
+	var target_hitbox = lvl1projID;
+	    if lvl1projID.has_hit = true || lvl1projID.free = false || (lvl1projID.hitbox_timer > 40 && lvl1projID.vsp = 0) {
+	        lvl1projID.destroyed = true;
+	        var k = spawn_hit_fx(lvl1projID.x, lvl1projID.y + 55, mb_proj_lv1_destroy_vfx);
+			sound_play(asset_get("sfx_zetter_downb"))
+	        k.depth = depth + 1;
+	        lvl1proj_timer = 0;
+	        lvl1proj_exploded = true;
+	        lvl1projID = 0;
+	    } 
+	with (asset_get("pHitBox")){
+	    if	(player != target_hitbox.player) { 
+	    	if place_meeting(x, y, target_hitbox) && other.mailproj_hit = false {
+				other.mailproj_hit = true;	
+			}
+		}
+	}
+}
 
+if lvl2projID != 0 {
+	var target_hitbox = lvl2projID;
+	    	with (asset_get("pHitBox")){
+	            if	(player != target_hitbox.player) { 
+	            	if place_meeting(x, y, target_hitbox) && other.mailproj_hit = false {
+						other.mailproj_hit = true;	
+	    			}
+	    	}
+	    }
+}
+
+	if mailproj_hit = true {
+		if lvl1projID != 0 {
+	        lvl1projID.destroyed = true;
+	        var k = spawn_hit_fx(lvl1projID.x, lvl1projID.y + 55, mb_proj_lv1_destroy_vfx);
+			sound_play(asset_get("sfx_zetter_downb"))
+	        k.depth = depth + 1;
+	        lvl1proj_timer = 0;
+	        lvl1proj_exploded = true;
+	        lvl1projID = 0;
+	        mailproj_hit = false;
+		}
+		if lvl2projID != 0 {
+	        lvl2projID.destroyed = true;
+	        var k = spawn_hit_fx(lvl2projID.x, lvl2projID.y , mb_proj_lv2_break_vfx);
+			sound_play(asset_get("sfx_zetter_downb"))
+	        k.depth = depth + 1;
+	        lvl2proj_timer = 0;
+	        lvl2proj_exploded = true;
+	        lvl2projID = 0;
+	        mailproj_hit = false;
+		}
+	}
+	
 	if (!place_meeting(lvl1projID.x, lvl1projID.y, asset_get("par_block")) && lvl1projID.y >= room_height - 0){
 	    lvl1projID.destroyed = true;
 	    lvl1projID = 0;
 	}
-}
+
 
 	if lvl1proj_exploded = true {
 		lvl1proj_timer++

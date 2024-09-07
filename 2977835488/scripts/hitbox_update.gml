@@ -127,6 +127,11 @@ if ((attack == AT_NSPECIAL) && (hbox_num == 1)) {
 	if (hitbox_timer == length) {
 		spawn_hit_fx(x, y, hit_fx_create(sprite_get("nspecial_proj_hit"), 45));
 	}
+	if(hitbox_timer > length || player_id.state == PS_RESPAWN || player_id.state == PS_DEAD || player_id.was_parried)
+{
+    hitbox_timer = length;
+    spawn_hit_fx(x, y, hit_fx_create(sprite_get("nspecial_proj_hit"), 45));
+}
 	
     //print_debug("proj hsp = " + string(hsp) + ", vsp = " + string(vsp));
     //print_debug("frac hsp = " + string(frac_hsp) + ", vsp = " + string(frac_vsp));

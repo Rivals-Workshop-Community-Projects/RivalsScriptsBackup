@@ -26,12 +26,12 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HITPAUSE_FRAME, 3);
 
-
-//Attack & Hold
+//Hold
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 7);
-set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Recovery
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1);

@@ -247,6 +247,16 @@ with oPlayer {
 //     perfect_dodging = true;
 // }
 
+// if(keyboard_lastchar == "p"){
+// 	print_vars(self)
+// }
+
+// if(back_pressed){
+// 	print("hello")
+// 	var a = sprite_get("asdasd")
+	
+// 	draw_sprite(a , 0, x, y)
+// }
 
 // if("jel" not in self and keyboard_lastchar != ""){
 	
@@ -290,6 +300,8 @@ with(taunt_bird_fx){
 		}
 	}
 }
+
+
 
 if(practice){
 	if(taunt_down){ 
@@ -478,6 +490,7 @@ bd_rail_grind_backwards_spr = bd_rail_grind_forward_spr;
 //useful print function - allows us to print all variables in an specified object
 //usage: print_vars(object_name); | print_vars();
 #define print_vars
+/// @param instance = self
 /// print_vars(instance = self)
 {
     //prints the variables in the given instance, or in whatever instance ran the function.

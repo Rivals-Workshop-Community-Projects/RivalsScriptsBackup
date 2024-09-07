@@ -1,7 +1,5 @@
 //init.gml
 
-test = [];
-
 ////////////////////////////////////////////////////// CHARACTER GENERAL VARIABLES //////////////////////////////////////////////////////
 
 /* STAT NOTES
@@ -332,7 +330,6 @@ trick_ring_saturation = 150;
 trick_ring_colors = 7; //reffers to color spacing
 //do_trickring_shader = false; //unused (for now?)
 
-
 trick_input_time = 0;
 trick_input_set = 30;
 prev_trick = -1;
@@ -343,6 +340,10 @@ next_trick = -1;
 //2 = right
 //3 = down
 //4 = left
+trick_spam_penalty = -1;
+trick_spam_penalty_time = 0;
+trick_spam_penalty_set = 180;
+trick_spam_penalty_mult = 0.2;
 
 //BOOST MODE MECHANIC
 boost_cur = 0;
@@ -356,11 +357,12 @@ boost_trick_delay_set = 60;
 //boost trick math:
 boost_combotrick_mult = [30, 40];   //multiplier added on ending a combo (with trick)       //6, 7
 boost_comboend_mult = [20, 30];     //multiplier added on ending a combo (without trick)    //4, 5
-boost_hitgain_mult = [2, 2];        //multiplier when hitting a single hit                  //3, 4
+boost_comboend_hit_mult = [10, 20]  //multiplier added on ending a combo (when sonic is hit)
+boost_hitgain_mult = [0.75, 1.5];   //multiplier when hitting a single hit                  //2, 2
 boost_parrygain = [60, 80];
 
 boost_decrease_rate = [6, 3];       //passive decrease (divided by 60)                      //4, 2
-boost_hitloss_mult = [0.5, 1.5];        //multiplier reducing when getting hit                //0, 1
+boost_hitloss_mult = [0.5, 1.5];    //multiplier reducing when getting hit                  //0, 1
 boost_parryloss = [20, 40];
 
 
@@ -428,13 +430,14 @@ combo_time_gain_hit = 45;
 combo_time_gain_big = 90;
 comboing = false;
 trick_combo_end = false;
+hurt_combo_end = false;
 
 cur_combo_text = -1;
 combo_text_display_time = 0;
 combo_boost_display = [];
 combo_display_time = [];
 combo_display_time_max = 120;
-combo_display_hits = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]; //3, 5, 8, 10, 13, 15, 18, 20, 23, 25 - old values
+combo_display_hits = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
 //3, 5, 7, 9, 10, 11, 12, 13, 14, 15 - if it's not common enough to have a 15 hit combo maybe the combos should go more like this
 
 //attack specific
@@ -468,8 +471,6 @@ nspec_reticle_line_col = (average > 128 ? [0, 0, 0] : [255, 255, 255]);
 nspec_clash_id = noone;
 nspec_early = false;
 reticle_spr = sprite_get("fx_nspec_reticle");
-
-can_uspec = true;
 
 fspec_speed = 0;
 fspec_supercharge = 0;
@@ -595,7 +596,7 @@ fs_anim_pos = [
 has_superform = has_rune("M");
 if (has_superform) set_up_super_colors = false;
 
-is_super = 0;
+is_super = false;
 super_transform_time = 0; //transformation state timer just in case
 super_time = 0;
 super_col_lerp_time = 0;
@@ -835,6 +836,13 @@ greenwood_cheer = 2;
 //demon horde overwrite (USE WITH DRAW_HUD REDIRECT)
 demonhorde_hud_overwrite = true;
 
+if (set_up_super_colors) demonhorde_portrait = sprite_get("s_portrait");
+demonhorde_custom_color = make_color_rgb(
+    clamp(get_color_profile_slot_r(alt_cur, 1 + set_up_super_colors*8) + 70 * set_up_super_colors, 0, 255),
+    clamp(get_color_profile_slot_g(alt_cur, 1 + set_up_super_colors*8) + 70 * set_up_super_colors, 0, 255),
+    clamp(get_color_profile_slot_b(alt_cur, 1 + set_up_super_colors*8) + 70 * set_up_super_colors, 0, 255)
+);
+
 //mamizou compat
 var eyewhite_col = make_color_rgb(cur_colors[6][@ 0], cur_colors[6][@ 1], cur_colors[6][@ 2]);
 mamizou_transform_spr = sprite_get(eyewhite_col == c_white ? "mamizou_chao" : "mamizou_chao_alt");
@@ -870,6 +878,7 @@ fs_char_attack_index = 49;
 fs_hide_meter = true; //it doesn't work for some reason???
 fs_meter_y = 6; //because i can't hide it for some reason
 fs_charge_mult = 0;
+fs_portrait_updated = false;
 
 //green flower zone
 gfzsignspr = sprite_get("gfz_signpost");
@@ -909,3 +918,14 @@ super_form_aura = make_color_rgb(
 
 //wiimote
 wiimote_compat_sprite = sprite_get("wiimote_sonic");
+
+//funky stage boost deplete enabler
+bar_sonic_boost_down = false;
+switch(get_stage_data(SD_ID))
+{
+    case "2787758723": //mario world 1
+    case "2634489514": //hallowflame
+        bar_sonic_boost_down = true;
+        break;
+}
+rank_override = -1; //overwrites the rank on specific stages, -1 means it acts as normal

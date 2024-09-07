@@ -23,7 +23,9 @@ if (my_hitboxID.attack == AT_UAIR) {
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
-	my_hitboxID.hittimer = 40;
+	if my_hitboxID.was_parried {
+		my_hitboxID.hitbox_timer = my_hitboxID.length-1;
+	}
 	
 	if my_hitboxID.hbox_num == 1 && 6 > my_hitboxID.damage || my_hitboxID.hbox_num == 2 && 8 > my_hitboxID.damage {	
 		spawn_hit_fx(my_hitboxID.x+2*spr_dir,my_hitboxID.y, 301);
@@ -39,7 +41,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 		my_hitboxID.bkb_final = my_hitboxID.kb_value;
 	}
 	
-	if 	my_hitboxID.hitbox_timer < my_hitboxID.length-20 {
+	if !my_hitboxID.was_parried && (my_hitboxID.hitbox_timer < my_hitboxID.length-20) {
 		my_hitboxID.hitbox_timer += 20;
 	}
 	
@@ -52,6 +54,4 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 		my_hitboxID.hsp *= .65;
 		my_hitboxID.vsp = -6-(my_hitboxID.kb_value);
 	}	
-
-	move_cooldown[AT_FSPECIAL] = 104;
 }

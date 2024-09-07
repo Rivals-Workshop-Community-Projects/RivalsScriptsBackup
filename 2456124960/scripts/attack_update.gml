@@ -177,6 +177,13 @@ if (attack == AT_DAIR) {
 	}
 }
 
+if (attack == AT_FTILT) {
+	if (window == 1 && window_timer == 1) {
+		set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 55);
+        set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 55);
+	}
+}
+
 if (attack == AT_DTILT) {
 	if (window == 1 && window_timer == 1) {
 		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
@@ -593,15 +600,18 @@ if (attack == AT_USPECIAL){
 				//print_debug("making a platform!");
 				madePlat = 1;
 				canMakePlat = 0;
+                onPlatform = true;
 				myPlatform.juice = 30 + specialPower;
 				set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_full"));
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -2);
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, 0);
 				set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 5);
 			} else {
 				set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial2"));
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -6 - (specialPower / 25));
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, (1 + (specialPower / 50)) * (right_down-left_down) * spr_dir);
 				set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
 			}
 		} else if (window_timer == 3 && madePlat == 1) {

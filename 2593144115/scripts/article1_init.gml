@@ -57,3 +57,4 @@ bubblepop3 = hit_fx_create(sprite_get("bubblepop3"), 12);
 bubble_explosion1 = hit_fx_create(sprite_get("bubble_explosion1"), 30);
 bubble_explosion2 = hit_fx_create(sprite_get("bubble_explosion2"), 30);
 bubble_explosion3 = hit_fx_create(sprite_get("bubble_explosion3"), 30);
+

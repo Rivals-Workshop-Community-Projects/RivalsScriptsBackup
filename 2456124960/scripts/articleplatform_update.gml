@@ -58,8 +58,8 @@ fake_hsp *= 0.9;
 
 fake_vsp = clamp (fake_vsp, 0, 15)
 
-player_id.onPlatform = false;
-if ((point_distance(x, y, player_id.x, player_id.y) < 55) && player_id.y == y && player_id.free == false) {
+//player_id.onPlatform = false;
+if ((point_distance(x, y, player_id.x, player_id.y) < 55) && abs(player_id.y - y) < 10 && player_id.free == false) {
     player_id.onPlatform = true;
 }
 

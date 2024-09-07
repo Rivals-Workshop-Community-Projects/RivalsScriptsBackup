@@ -1,5 +1,5 @@
 //update
-if !(get_player_color( player ) == 15) { 
+if !(get_player_color( player ) == 16) { 
 	if (wblastcharge >= 35) { 
 		var outlineclr = (sin((get_gameplay_time() - wblastcharge) * 0.2) * -50) + 50
 		outline_color = [ 0, outlineclr * 1.05, outlineclr * 2];
@@ -15,7 +15,7 @@ if !(get_player_color( player ) == 15) {
 		}
 	}
 	else 
-	if (get_player_color( player) == 18) {
+	if (get_player_color( player) == 19) {
 		outline_color = [ 23, 22, 97];
 	}	else {
 		outline_color = [ 0, 0, 0 ];
@@ -41,7 +41,7 @@ if ballDown > 0 {
 	ballDown--;
 }
 
-if (get_player_color( player ) == 15) {
+if (get_player_color( player ) == 16) {
 	if (wblastcharge >= 35) and ((get_gameplay_time() mod 20) >= 5) {
 		outline_color = [ 40, 100, 255];
 	}

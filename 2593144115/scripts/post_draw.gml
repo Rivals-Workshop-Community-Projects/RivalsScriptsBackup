@@ -8,3 +8,12 @@ else draw_sprite_ext(sprite_get("fspecial_fx_2"), floor(hadoken_fx_frame/8 + win
 }
 }
 shader_end();
+
+
+if (amaya_venom && id == amaya_venom_id){
+            amaya_venom_sprite = sprite_get("venom_mark");
+        shader_start();
+    if (amaya_venom_sprite != -1)
+        draw_sprite(amaya_venom_sprite, amaya_venom_count-1, x, y-char_height-22);
+        shader_end();
+}

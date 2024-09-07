@@ -286,24 +286,24 @@ set_color_profile_slot( 25, 5, 132, 126, 135 ); //Socks
 set_color_profile_slot( 25, 6, 213, 207, 207 ); //Pupil
 set_color_profile_slot( 25, 7, 1, 0, 26 ); //Gas Cloud Outline
 
-// Ravenous
-set_color_profile_slot( 26, 0, 57, 50, 149 ); //Body 1
-set_color_profile_slot( 26, 1, 47, 18, 95 ); //Body 2
-set_color_profile_slot( 26, 2, 255, 191, 0 ); //Eye
-set_color_profile_slot( 26, 3, 198, 213, 255 ); //Teeth
-set_color_profile_slot( 26, 4, 113, 65, 59 ); //Shoes
-set_color_profile_slot( 26, 5, 65, 54, 80 ); //Socks
-set_color_profile_slot( 26, 6, 255, 191, 0 ); //Pupil
+// Hypogeal
+set_color_profile_slot( 26, 0, 238, 244, 249 ); //Body 1
+set_color_profile_slot( 26, 1, 193, 212, 224 ); //Body 2
+set_color_profile_slot( 26, 2, 34, 34, 34 ); //Eye
+set_color_profile_slot( 26, 3, 24, 218, 239 ); //Teeth
+set_color_profile_slot( 26, 4, 238, 244, 249 ); //Shoes
+set_color_profile_slot( 26, 5, 24, 218, 239 ); //Socks
+set_color_profile_slot( 26, 6, 34, 34, 34 ); //Pupil
 set_color_profile_slot( 26, 7, 1, 0, 26 ); //Gas Cloud Outline
 
-// Hypogeal
-set_color_profile_slot( 27, 0, 238, 244, 249 ); //Body 1
-set_color_profile_slot( 27, 1, 193, 212, 224 ); //Body 2
-set_color_profile_slot( 27, 2, 34, 34, 34 ); //Eye
-set_color_profile_slot( 27, 3, 24, 218, 239 ); //Teeth
-set_color_profile_slot( 27, 4, 238, 244, 249 ); //Shoes
-set_color_profile_slot( 27, 5, 24, 218, 239 ); //Socks
-set_color_profile_slot( 27, 6, 34, 34, 34 ); //Pupil
+// Riptide
+set_color_profile_slot( 27, 0, 0, 226, 247 ); //Body 1
+set_color_profile_slot( 27, 1, 0, 158, 223 ); //Body 2
+set_color_profile_slot( 27, 2, 255, 255, 255 ); //Eye
+set_color_profile_slot( 27, 3, 255, 153, 0 ); //Teeth
+set_color_profile_slot( 27, 4, 204, 92, 0 ); //Shoes
+set_color_profile_slot( 27, 5, 181, 128, 87 ); //Socks
+set_color_profile_slot( 27, 6, 235, 100, 0 ); //Pupil
 set_color_profile_slot( 27, 7, 1, 0, 26 ); //Gas Cloud Outline
 
 // Night

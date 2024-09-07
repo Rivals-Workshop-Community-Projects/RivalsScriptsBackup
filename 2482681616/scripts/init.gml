@@ -218,6 +218,15 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "So be it then.";
 page++;
 
+//Final Smash
+fs_char_portrait_y = 132;
+fs_char_chosen_final_smash = "custom";
+fs_mask_index = mask_index;
+fs_falling = false;
+fs_fall_y = 96;
+fs_meter_y = -24;
+fs_chosen_trigger = "ori";
+
 initIndexes();
 
 //Below code from MunoPhone API.

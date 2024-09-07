@@ -7,10 +7,12 @@
 //draw_debug_text(x, y + 35, "kill:" +string(killarticles));
 //draw_debug_text(x, y + 55, "angle:" +string(snapped_angle));
 //draw_debug_text(x, y + 55, "id:" +string(lvl1projID));
-//draw_debug_text(x, y + 55, "id:" +string(letterID));
+//draw_debug_text(x, y + 55, "id:" +string(letterflyID.x));
+//draw_debug_text(x, y + 75, "x" +string(x));
 //draw_debug_text(x, y + 55, "explo timer:" +string(explo_timer));
 //draw_debug_text(x, y + 35, "dairid:" +string(dairprojID));
 //draw_debug_text(x, y + 35, "explo1:" +string(explo1.player));
 //draw_debug_text(x, y + 35, "timer" +string(joy_pad_timer));
 //draw_debug_text(x, y + 55, "pad" +string(window_joy_pad));
-//draw_debug_text(x, y + 35, "charge " +string(nspec_charge));
+//draw_debug_text(x, y + 35, "mailproj " +string(mailproj_hit));
+//draw_debug_text(x, y + 55, "id " +string(lvl2projID));

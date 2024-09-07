@@ -1132,6 +1132,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		}
 		
 		var BubbleBounceSpeedLoss = .6;
+		var BubbleBounceSpeedLossHorizontal = .6;
 		
 		bubble.hsp *= BubbleFriction;
 		bubble.vsp *= BubbleFriction;
@@ -1184,6 +1185,7 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		{
 			// Always reflect vspeed
 			bubble.vsp *= -BubbleBounceSpeedLoss;
+			bubble.hsp *= BubbleBounceSpeedLossHorizontal;
 			if(instance_exists(bubble.linked_hitbox)) 
 			{
 				if(instance_exists(bubble.last_hitbox))
@@ -1383,9 +1385,9 @@ for (bubbleindex = 0; bubbleindex < bubble_list_size; bubbleindex++)
 		_bubble.linked_hitbox = noone;
 	}
 
-	var DamageValueMultiplier = 			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
-	var KnockbackValueMultiplier =			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
-	var KnockbackScalingValueMultiplier =	_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.5	: 1.0;
+	var DamageValueMultiplier = 			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.4	: 0.9;
+	var KnockbackValueMultiplier =			_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.4	: 0.9;
+	var KnockbackScalingValueMultiplier =	_bubble.size == TINY ? 0 : _bubble.size == SMALL ? 0.4	: 0.9;
 	
 	_bubble.linked_hitbox = create_hitbox(AT_EXTRA_1,_bubble.size, floor(_bubble.x), floor(_bubble.y));
 	_bubble.linked_hitbox.player = _bubble.player;

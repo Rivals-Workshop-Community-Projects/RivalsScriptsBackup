@@ -146,6 +146,7 @@ sprite_change_offset("result_rank", 32, 25);
 sprite_change_offset("hud_sonic_norm", 0, -2);
 sprite_change_offset("hud_sonic_hurt", 0, -2);
 sprite_change_offset("hud_sonic_offscreen", 16, 18);
+sprite_change_offset("hud_childe", 16, 18);
 
 //workshop compats
 sprite_change_offset("mamizou_chao", 16, 47);

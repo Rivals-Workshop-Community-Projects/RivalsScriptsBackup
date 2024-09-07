@@ -13,12 +13,13 @@ can_nspec = true;
 can_spawn_trick_ring = true;
 
 trick_attack_buffered = 0;
-attack_should_pratfall = false;
 
 combo_timer = 0;
 combo_hits = 0;
 comboing = false;
 trick_combo_end = false;
+trick_spam_penalty = -1;
+trick_spam_penalty_time = 0;
 
 blast_cur = 0;
 blast_meter_ready_img = 1;

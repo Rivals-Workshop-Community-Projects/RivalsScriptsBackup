@@ -1,3 +1,7 @@
+if player_id.letterflyID != 0 {
+	player_id.letterflyID.image_alpha = 0.5;
+}
+
 if (attack == AT_NSPECIAL || AT_NSPECIAL_AIR) && hbox_num == 1 {
     if !free {
         destroyed = true;
@@ -13,6 +17,11 @@ if (attack == AT_NSPECIAL || AT_NSPECIAL_AIR) && hbox_num == 1 {
 if (attack == AT_NSPECIAL) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) {
     hsp = hsp * 0.935;
     
+    if hitbox_timer % 6 = 0 {
+		var k = spawn_hit_fx(x - (spr_dir * 15), y - 0, player_id.letter_sparks_vfx);
+   		k.depth = depth + 1;
+   	}
+    
     if (hitbox_timer == 29 || destroyed = true || !free || (place_meeting(x, y, asset_get("pHitBox")))) {
         destroyed = true;
         player_id.letter1ID = 0;
@@ -26,6 +35,11 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) 
 if (attack == AT_NSPECIAL_AIR) && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3) {
     hsp = hsp * 0.95;
     vsp = vsp * 0.925;
+    
+    if hitbox_timer % 6 = 0 {
+		var k = spawn_hit_fx(x - (spr_dir * 15), y - 8, player_id.letter_sparks_vfx);
+   		k.depth = depth + 1;
+   	}
     
     if (hitbox_timer == 29 || destroyed = true || !free || (place_meeting(x, y, asset_get("pHitBox")))) {
         destroyed = true;
@@ -44,8 +58,24 @@ if (attack == AT_FSPECIAL_AIR && player_id.mb_spin_hit = true) && ((hbox_num == 
 
 if player_id.lvl2projID != 0  {
     vsp = vsp * 0.935;
+ /*   
+	print(player_id.lvl2projID.spr_dir)
+	print(player_id.lvl2projID.proj_angle)
+    
+    if player_id.grabbed_player_obj == noone && hitbox_timer > 1{
+        
+        player_id.plane_temp_angle = point_direction(player_id.lvl2projID.x, player_id.lvl2projID.y, oPlayer.plane_target_x, oPlayer.plane_target_y)
 
-
+	        if player_id.lvl2projID.proj_angle < player_id.plane_temp_angle {
+	            player_id.lvl2projID.proj_angle = player_id.lvl2projID.proj_angle * 1.025;
+	        } else if player_id.lvl2projID.proj_angle > player_id.plane_temp_angle {
+	            player_id.lvl2projID.proj_angle = player_id.lvl2projID.proj_angle * 0.975;
+	        }
+		
+	        hsp = lengthdir_x(6, player_id.lvl2projID.proj_angle) 
+	        vsp = lengthdir_y(6, player_id.lvl2projID.proj_angle)
+    }	
+*/
     if player_id.grabbed_player_obj != noone {
     	player_id.grabbed_player_obj.hitpause = true;
 		player_id.grabbed_player_obj.hitstop = 2;
@@ -105,6 +135,7 @@ if player_id.planeID != 0 {
 }
 
 if player_id.exploID != 0 {
+//	print("test2")
     if (player_id.exploID.hitbox_timer < 15)  {
         player_id.exploID.image_xscale = 0;
         player_id.exploID.image_yscale = 0;
@@ -121,6 +152,9 @@ if player_id.exploID != 0 {
 }
 
 if player_id.explo1 != 0 {
+//	print("test")
+	player_id.explo1.id = player_id.explo_owner.id;
+
     if (player_id.explo1.hitbox_timer < 15)  {
         player_id.explo1.image_xscale = 0;
         player_id.explo1.image_yscale = 0;
@@ -130,7 +164,7 @@ if player_id.explo1 != 0 {
         player_id.explo1.image_yscale = 1;
         player_id.exploID = 0;
         player_id.explo1 = 0;
-        player_id.explo_owner = noone;
+   //     player_id.explo_owner = noone;
         player_id.instant_explo_start = false;
         player_id.instant_exploding = false;
     }

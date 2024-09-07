@@ -26,14 +26,19 @@ if (attack == AT_DATTACK){
 
 //Jab stuff
 if(attack == AT_JAB){
+	if (window == 2 || window == 3) && window_timer > 2 && !attack_down {
+		window = 4;
+		window_timer = 0;
+	}
+
 	if window == 3 {
-		if window_timer == 5 && attack_down {
+		if window_timer == 4 && attack_down && !was_parried {
 			window = 2;
 			window_timer = 0;
 			sound_play(asset_get("sfx_swipe_weak1"));
 		}
 	}
-	if was_parried {
+	if window > 3 && was_parried {
 		was_parried = false;
 	}
 }
@@ -102,7 +107,7 @@ if (attack == AT_FSPECIAL){
 		HCharge = 0;
 	}
 	
-	if window == 2 && window_timer == 2 {
+	if window == 2 {
 		stupidThings = random_func(0, 100, true);
 	}
 	
@@ -135,13 +140,6 @@ if (attack == AT_FSPECIAL){
 		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX);
 	}
 }
-
-if (attack == AT_DSPECIAL_2 && shield_pressed){
-	with(asset_get("obj_article1")){
-		minionHealth = 0;
-    }
-}
-
 
 //Up special stuff
 if (attack == AT_USPECIAL) {
@@ -342,7 +340,7 @@ with(asset_get("obj_article1")){
 				image_speed = 0;
 				turnaroundTimer = 6;
 			}
-				player_id.move_cooldown[AT_DSPECIAL_2] = 50;
+				player_id.move_cooldown[AT_DSPECIAL_2] = 70;
 		}
 	}
 }

@@ -18,7 +18,7 @@ switch (impulse_hud_state) {
     case 0:
         if (impulse_can_activate) {
 			var self_damage = get_player_damage(player);
-        	var fill = get_impulse_activation() > 0 ? (self_damage) / max(1, get_impulse_activation()) : 0;
+        	var fill = impulse_activation_percent > 0 ? (self_damage) / max(1, impulse_activation_percent) : 0;
             fill_img = lerp(0, 6, clamp(fill, 0, 1))
         }
         else {
@@ -76,7 +76,7 @@ shader_end()
 if (!in_battle) {
     if (impulse_can_activate && !impulse_active) {
         text_draw(t_x, t_y - 32, "fName", c_white, 0, 1000, 1, true, 1, "Down + Taunt to toggle Impulse");
-        text_draw(t_x, t_y - 16, "fName", c_white, 0, 1000, 1, true, 1, "Activates at: " +  string(get_impulse_activation()) + "%");
+        text_draw(t_x, t_y - 16, "fName", c_white, 0, 1000, 1, true, 1, "Activates at: " +  string(impulse_activation_percent) + "%");
     }
 }
 #define get_impulse_activation()
@@ -130,7 +130,7 @@ return activation_percent;
 	
 #define can_acivate_impulse()
 var self_damage = get_player_damage(player);
-var activation_percent = get_impulse_activation();
+var activation_percent = impulse_activation_percent;
 
 return activation_percent > 0 && self_damage >= activation_percent;
 

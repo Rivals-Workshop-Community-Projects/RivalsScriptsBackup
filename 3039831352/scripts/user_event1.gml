@@ -67,10 +67,6 @@ if ("super_col_lerp_time" in self && ("is_fake_x" not in self || is_fake_x == fa
     //chaos emeralds buddy + super sonic alt/rune = hyper sonic
     if (super_col_lerp_time > super_col_lerp_time_max)
     {
-        var col_r = (min(color_get_red(hyper_hsv), 255) + 255)/2
-        var col_g = (min(color_get_green(hyper_hsv), 255) + 255)/2
-        var col_b = (min(color_get_blue(hyper_hsv), 255) + 255)/2
-
         if ("hyper_color" not in self || hyper_color >= 255) hyper_color = 0;
         
         hyper_color += 1;
@@ -78,6 +74,10 @@ if ("super_col_lerp_time" in self && ("is_fake_x" not in self || is_fake_x == fa
         var color_rgb = make_color_rgb(255, 0, 0);
         var hue = (color_get_hue(color_rgb)+hyper_color) % 255;
         var hyper_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), color_get_value(color_rgb));
+
+        var col_r = (min(color_get_red(hyper_hsv), 255) + 255)/2
+        var col_g = (min(color_get_green(hyper_hsv), 255) + 255)/2
+        var col_b = (min(color_get_blue(hyper_hsv), 255) + 255)/2
 
         if (alt_cur == 0 || alt_cur == 26) //hyper sonic is sonic alt exclusive
         {

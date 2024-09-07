@@ -136,8 +136,8 @@ switch(current_weekday){
 
 print("Today is " + string(current_month) + " " + string(current_day) + ", " + string(current_year));
 
-if current_month == 9 and current_year == 2023{
-    if current_day >= 8 and current_day < 11{
+if current_month == 9 and current_year == 2024{
+    if current_day >= 2 and current_day < 9{
         // Tournament Shilling
         with(obj_stage_article){
            if num == 2{

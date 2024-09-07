@@ -31,14 +31,19 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 48);
+set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 42);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -23);
-set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 78);
+set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 65);
 set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 30);
-set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
+//Decreased width
+//Move sourspot closer inside
+//Damage: 8 -> 9
+//Base Knockback: 8 -> 7
+//Knockback Scaling: 0.8 -> 1
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 2);
@@ -50,14 +55,19 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 4);
-set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 100);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 94);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -23);
-set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 26);
+set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 40);
-set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);
-set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 4);
-set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 13);
+set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 2);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
+//Sweetspot has more width
+//Damage: 12 -> 13
+//Base Knockback: 9 -> 8
+//Knockback Scaling: 1.15 -> 1.2
+//Priority: 3 -> 2
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 2);

@@ -6,6 +6,7 @@ if (shield_pressed && false) {//testing for bg blocks
     state = PS_IDLE_AIR;
 }
 
+onPlatform = false;
 spikeGlowTimer++;
 if (spikeGlowTimer > 180) {
     with (obj_article1) {

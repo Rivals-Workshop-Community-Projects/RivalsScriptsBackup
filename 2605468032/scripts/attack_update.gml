@@ -57,22 +57,23 @@ switch(attack)
         break;
     case AT_FSPECIAL_AIR:
         can_fast_fall = false;
+        can_move = false;
         if (window == 1)
         {
             if (window_timer == 1)
             {
-                reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+                reset_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_HSPEED);
                 sound_play(asset_get("sfx_frog_uspecial_cast"), 0, noone, 0.8, 0.85)
             }
             else if (window_timer == 6)
             {
                 sound_play(asset_get("sfx_swipe_medium2"), 0, noone, 0.6, 0.9)
             }
-            else if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
+            else if (window_timer == get_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH))
             {
                 if (special_down)
                 {
-                    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 12);
+                    set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 7);
                 }
             }
         }
@@ -120,7 +121,6 @@ switch(attack)
         {
             if (window_timer == 1)
             {
-                reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
                 sound_play(asset_get("sfx_frog_uspecial_cast"), 0, noone, 0.8, 0.85)
             }
             else if (window_timer == 6)

@@ -267,3 +267,8 @@ am_is_clothed = true;
 am_is_guest = true;
 am_is_magic = true;
 am_is_handed = true;
+
+//victory
+nate_victory_quote = "That was a simulation, right? It had to have been...";
+nate_handled_victory_quote = false;
+nate_victory_icon = 4;

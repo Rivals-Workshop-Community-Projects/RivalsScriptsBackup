@@ -54,38 +54,6 @@ if (slowstart_timer > 0)
 else
     slowstart_state = SLOWSTART_STATE_OFF
     
-    
-if (slowstart_state == SLOWSTART_STATE_ON)
-{
-    walk_speed = def_walk_speed * slowstart_movement_mult;
-    initial_dash_speed = def_initial_dash_speed * slowstart_movement_mult;
-    dash_speed = def_dash_speed * slowstart_movement_mult;
-    dash_turn_time = def_dash_turn_time * slowstart_movement_mult;
-    moonwalk_accel = def_moonwalk_accel * slowstart_movement_mult;
-    
-    max_jump_hsp = def_max_jump_hsp * slowstart_movement_mult;
-    air_max_speed = def_air_max_speed * slowstart_movement_mult;
-    jump_change = def_jump_change * slowstart_movement_mult;
-    air_dodge_speed = def_air_dodge_speed * slowstart_movement_mult;
-    roll_forward_max = def_roll_forward_max * slowstart_movement_mult;
-    roll_backward_max = def_roll_backward_max * slowstart_movement_mult;
-}
-else 
-{
-    walk_speed = def_walk_speed;
-    initial_dash_speed = def_initial_dash_speed;
-    dash_speed = def_dash_speed;
-    dash_turn_time = def_dash_turn_time;
-    moonwalk_accel = def_moonwalk_accel;
-    
-    max_jump_hsp = def_max_jump_hsp;
-    air_max_speed = def_air_max_speed;
-    jump_change = def_jump_change;
-    air_dodge_speed = def_air_dodge_speed;
-    roll_forward_max = def_roll_forward_max;
-    roll_backward_max = def_roll_backward_max;
-}
-
 //Stat effect
 if (slowstart_stateffect_timer >= 0)
     slowstart_stateffect_timer ++;
@@ -111,11 +79,37 @@ if (old_slowstart_state != slowstart_state) {
         slowstart_stateffect_bg = sprite_get("statchange_bg");
         slowstart_stateffect_bgdir = -1;
         sound_play(sound_get("sfx_statup"));
+        
+        walk_speed = def_walk_speed;
+        initial_dash_speed = def_initial_dash_speed;
+        dash_speed = def_dash_speed;
+        dash_turn_time = def_dash_turn_time;
+        moonwalk_accel = def_moonwalk_accel;
+        
+        max_jump_hsp = def_max_jump_hsp;
+        air_max_speed = def_air_max_speed;
+        jump_change = def_jump_change;
+        air_dodge_speed = def_air_dodge_speed;
+        roll_forward_max = def_roll_forward_max;
+        roll_backward_max = def_roll_backward_max;
     }  
     if (slowstart_state == SLOWSTART_STATE_ON) {
         slowstart_stateffect_bg = sprite_get("statchange_bg2");
         slowstart_stateffect_bgdir = 1;
         sound_play(sound_get("sfx_statdown"));
+        
+        walk_speed = def_walk_speed * slowstart_movement_mult;
+        initial_dash_speed = def_initial_dash_speed * slowstart_movement_mult;
+        dash_speed = def_dash_speed * slowstart_movement_mult;
+        dash_turn_time = def_dash_turn_time * slowstart_movement_mult;
+        moonwalk_accel = def_moonwalk_accel * slowstart_movement_mult;
+        
+        max_jump_hsp = def_max_jump_hsp * slowstart_movement_mult;
+        air_max_speed = def_air_max_speed * slowstart_movement_mult;
+        jump_change = def_jump_change * slowstart_movement_mult;
+        air_dodge_speed = def_air_dodge_speed * slowstart_movement_mult;
+        roll_forward_max = def_roll_forward_max * slowstart_movement_mult;
+        roll_backward_max = def_roll_backward_max * slowstart_movement_mult;
     }  
 }
 

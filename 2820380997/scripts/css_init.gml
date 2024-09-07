@@ -427,6 +427,16 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "My Aunt is the coolest! She taught me how to fight and use clone magic.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Yin & Yang";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Black and White Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Yin and Yang are the symbols my mother identifies with. I think of her whenever I see them.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Riptide 24";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Our last event, let's make this one good!";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tricky Kitsune";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Hikaru Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "The fox that taught me how to be tricky. I hope to be as strong as her someday!";sub_element_slot++;
@@ -487,11 +497,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I am always polite and always kind, but I always have a plan to trick someone.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Yin & Yang";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Black and White Colors";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Yin and Yang are the symbols my mother identifies with. I think of her whenever I see them.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Heat Wave";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Heat Wave Brackets";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character is legal in 2022 Heatwave Workshop Bracket.";sub_element_slot++;
@@ -510,11 +515,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Blood Moon";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Causeimapilot";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "There is a bad moon on the rise.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot
-	slot_property_array[color_slot,sub_element_slot] = "Cheri";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Colors for WasteofaName";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The sakura bloom is one of my favorite spectacles!";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Flame Shackle";sub_element_slot++;
@@ -700,19 +700,148 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Landkon";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	// ----------- PLACE HOLDER START-------------------------
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Rainbow";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Rainbow Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "One of the simplest and best illusions to make is a rainbow.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	// Place Holder Slots for Page 1
+	slot_property_array[color_slot,sub_element_slot] = "Manga";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flat Color Grayscale";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Trans rights";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 30
+	slot_property_array[color_slot,sub_element_slot] = "BLM";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	// ----------- PLACE HOLDER END-------------------------
+		//Slot 31 - Actual Slot 32, CANNOT USE LEAVE BLANK
+	slot_property_array[color_slot,sub_element_slot] = "Name";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Pallet Decription";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
-	num_of_shifted_alts = color_slot - 32;
+	// Color Selector Shift 2
+	// This is not actually in game slot 32, since that crashes online, this overrides starting at slot 0 again
+	//Slot 0 
+	slot_property_array[color_slot,sub_element_slot] = "Can't Shift Alt 0";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color Shifted Default";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The default color cannot be shifted due to the way code works.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Zetterburn";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Forsburn";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 35
+	slot_property_array[color_slot,sub_element_slot] = "Clairen";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Mollo";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Wrastor";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Absa";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Eliana";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Pomme";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Orcane";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Etalus";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 20
+	slot_property_array[color_slot,sub_element_slot] = "Ranno";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Hodan";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Kragg";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Maypul";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Sylvanos";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Olympia";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Shovel Knight";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Ori and Sein";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt by Flasher";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	
+	// Lore overwrite for screen
+	for(var current_color_slot = 32 + 15;current_color_slot < 96;current_color_slot++;){
+		slot_property_array[current_color_slot,2] = "Roekoko is a twin tailed fox that enjoys playing and fighting. She will combat evil at any chance.";
+	}
+	
+	num_of_shifted_alts = color_slot - 64;
 	//print(num_of_shifted_alts);
 	// Fill out rest with placeholders
 	for(var current_color_slot = color_slot;current_color_slot < 63;current_color_slot++;){
 		slot_property_array[current_color_slot,0] = slot_property_array[current_color_slot - 32,0];
 		slot_property_array[current_color_slot,1] = slot_property_array[current_color_slot - 32,1];
 		slot_property_array[current_color_slot,2] = slot_property_array[current_color_slot - 32,2];
-		
 	}
-	color_slot = 64;
+	color_slot = 96;
 		//Slot 64 DO NOT USE
-	slot_property_array[color_slot,sub_element_slot] = "64 Not used yet";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "96 Not used yet";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pallet Description";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;

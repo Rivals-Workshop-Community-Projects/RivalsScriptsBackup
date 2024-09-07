@@ -127,7 +127,6 @@ miiverse_post = sprite_get("miiverse");
 tcoart = sprite_get("blueytcoart");
 trummelcodecneeded = false;
 trummelcodec_id = noone;
-feri_costume = sprite_get("feri_costume_ex");
 arena_title = "The Blue Wonder";
 showHUD = false;
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
@@ -173,5 +172,8 @@ page++;
 
 //adventure
 pronouns = ["he","him","his","is"];
-am_is_noob = true;
-am_is_experienced = true;
+am_is_guest = true;
+
+bluey_victory_quote = "Trying to copy my flow? At least you're better at it than a certain robot, I'll give you that.";
+bluey_handled_victory_quote = false;
+bluey_victory_icon = 5;

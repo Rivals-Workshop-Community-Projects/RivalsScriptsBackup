@@ -37,13 +37,18 @@ if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1 ||
 my_hitboxID.attack == AT_FSTRONG || 
 my_hitboxID.attack == AT_FSPECIAL ||
 my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
-    if (my_hitboxID.was_parried = false){
+
+    //if (my_hitboxID.was_parried = false){
 
         if (!hit_player_obj.amaya_venom) {
             //sound_play(sound_get("mark"));
         }
 	    hit_player_obj.amaya_venom = true;
             hit_player_obj.amaya_venom_id = id;
+
+		amaya_self_venom = hit_player_obj.amaya_venom_id=id?my_hitboxID.player:0
+
+
             amaya_venom_consumed = false;
             //hit_player_obj.amaya_venom_count++;
 
@@ -79,7 +84,9 @@ my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
 
             if (hit_player_obj.amaya_venom_count > 4) hit_player_obj.amaya_venom_count = 4;
             else hit_player_obj.amaya_venom_timer = 0;
-        }
+
+
+        //}
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(venombubble_ins))
@@ -88,7 +95,9 @@ if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(venombubble_ins))
     if (my_hitboxID.hbox_num > 3) move_cooldown[AT_NSPECIAL] = 270;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+//if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+
+if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.amaya_venom){
     if (my_hitboxID.hbox_num == 1){
         amaya_venom_consumed = true;
         hit_player_obj.should_make_shockwave = false;
@@ -100,7 +109,9 @@ if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.amaya_venom && hit_playe
 
 //scripts are seperate incase i want to edit one move in particular
 
-if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+//if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){
+
+if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.amaya_venom){
     if (my_hitboxID.hbox_num == 2){
         amaya_venom_consumed = true;
         hit_player_obj.should_make_shockwave = false;
@@ -108,6 +119,15 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.amaya_venom && hit_playe
 		hit_player_obj.amaya_venom = false;
                 hit_player_obj.amaya_venom_count = 0;
 	}
+}
+
+if (amaya_venom && amaya_self_venom && hit_player_obj.player = amaya_self_venom && my_hitboxID.type != 2)
+{
+		amaya_venom_count--;
+                if (amaya_venom_count <= 0){
+			amaya_venom = false;
+			amaya_self_venom = 0;
+		}
 }
 
 

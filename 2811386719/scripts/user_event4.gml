@@ -24,15 +24,15 @@ var i = alt_update_index
 if("alt_mods_amounts" not in self) alt_mods_amounts = 999
 switch(modifier%alt_mods_amounts){
   case 0:
-    // Genesis
-    set_color_profile_slot( i, 0, 245, 238, 238 ); //Horn/static
-    set_color_profile_slot( i, 1, 99, 20, 20 ); //Shirt
-    set_color_profile_slot( i, 2, 33, 33, 33 ); //Coat
-    set_color_profile_slot( i, 3, 201, 30, 30 ); //water
-    set_color_profile_slot( i, 4, 50, 54, 54 ); //skin
-    set_color_profile_slot( i, 5, 135, 0, 0 ); //Pants
-    set_color_profile_slot( i, 6, 209, 29, 29 ); //gloves
-    set_color_profile_slot( i, 7, 238, 245, 238 ); //slippers/mouth/heart
+  	// Torbulha
+    set_color_profile_slot( i, 0, 254, 183, 0 ); //Horn/static
+    set_color_profile_slot( i, 1, 150, 102, 18 ); //Shirt
+    set_color_profile_slot( i, 2, 2, 198, 216 ); //Coat
+    set_color_profile_slot( i, 3, 2, 198, 216 ); //water
+    set_color_profile_slot( i, 4, 242, 228, 214 ); //skin
+    set_color_profile_slot( i, 5, 13, 36, 61 ); //Pants
+    set_color_profile_slot( i, 6, 254, 183, 0 ); //gloves
+    set_color_profile_slot( i, 7, 12, 25, 58 ); //slippers/mouth/heart
   break;
 	case 1:
 		// TAS
@@ -57,15 +57,15 @@ switch(modifier%alt_mods_amounts){
 		set_color_profile_slot( i, 7, 182, 255, 208 ); //slippers/mouth/heart
 	break;
   case 3:
-    // Torbulha
-    set_color_profile_slot( i, 0, 254, 183, 0 ); //Horn/static
-    set_color_profile_slot( i, 1, 150, 102, 18 ); //Shirt
-    set_color_profile_slot( i, 2, 2, 198, 216 ); //Coat
-    set_color_profile_slot( i, 3, 2, 198, 216 ); //water
-    set_color_profile_slot( i, 4, 242, 228, 214 ); //skin
-    set_color_profile_slot( i, 5, 13, 36, 61 ); //Pants
-    set_color_profile_slot( i, 6, 254, 183, 0 ); //gloves
-    set_color_profile_slot( i, 7, 12, 25, 58 ); //slippers/mouth/heart
+    // Genesis
+    set_color_profile_slot( i, 0, 245, 238, 238 ); //Horn/static
+    set_color_profile_slot( i, 1, 99, 20, 20 ); //Shirt
+    set_color_profile_slot( i, 2, 33, 33, 33 ); //Coat
+    set_color_profile_slot( i, 3, 201, 30, 30 ); //water
+    set_color_profile_slot( i, 4, 50, 54, 54 ); //skin
+    set_color_profile_slot( i, 5, 135, 0, 0 ); //Pants
+    set_color_profile_slot( i, 6, 209, 29, 29 ); //gloves
+    set_color_profile_slot( i, 7, 238, 245, 238 ); //slippers/mouth/heart
   break;
   case 4:
     // BigHouse

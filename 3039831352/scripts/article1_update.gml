@@ -4,6 +4,7 @@ if (!ignores_walls) ignores_walls = true;
 
 //the idle state is interractable
 is_hittable = (state == 1);
+can_be_hit[5] = 2;
 ring_is_useable = (state == 1);
 
 //ring going away
@@ -51,9 +52,6 @@ switch (state)
     case 1: //idle
         hsp = 0;
         vsp = 0;
-
-        //prevent sonic from spawning a ring if he doesn't own the existing one
-        if (state_timer == 1) player_id.can_spawn_trick_ring = (trick_ring_player == player_id.player);
 
         //sparkle effect that will add to the initial glow
         if (state_timer % 3 == 0)
@@ -167,7 +165,7 @@ switch (state)
                     x = other.x;
                     y = other.y;
                     free = true;
-                    other.ring_launch_speed = other.ring_base_spd + (point_distance(x, y, x + hsp, y + vsp/2) / 2);
+                    other.ring_launch_speed = other.ring_base_spd + (point_distance(x, y, x + hsp, y + vsp/2) / 2.5);
                     if (other.ring_launch_speed > other.ring_spd_limit) other.ring_launch_speed = other.ring_spd_limit;
 
                     //launch player up
@@ -183,8 +181,6 @@ switch (state)
         }
         break;
     case 2: //destroyed
-        player_id.can_spawn_trick_ring = true;
-
         image_alpha = lerp(1, 0, state_timer/ring_despawn_time);
         var fx = spawn_hit_fx(
             x + (random_func(8, 15, true) - 8) * 8 + (lengthdir_x(32 * player_used_ring, ring_launch_angle)),

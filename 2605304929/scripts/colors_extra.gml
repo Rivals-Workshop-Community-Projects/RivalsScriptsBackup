@@ -136,15 +136,15 @@ set_color_profile_slot( 10, 5, 160, 177, 214 ); //kimono wave
 set_color_profile_slot( 10, 6, 50, 57, 77 ); //kimono bottom
 set_color_profile_slot( 10, 7, 65, 107, 209 ); //kimono accents
 
-// Riptide
-set_color_profile_slot( 11, 0, 12, 25, 58 ); //fur
-set_color_profile_slot( 11, 1, 242, 228, 214 ); //fur tip
-set_color_profile_slot( 11, 2, 12, 25, 58 ); //hair
-set_color_profile_slot( 11, 3, 254, 183, 0 ); //horns + accents
-set_color_profile_slot( 11, 4, 2, 198, 216 ); //kimono top
-set_color_profile_slot( 11, 5, 254, 183, 0 ); //kimono wave
-set_color_profile_slot( 11, 6, 218, 93, 0 ); //kimono bottom
-set_color_profile_slot( 11, 7, 254, 183, 0 ); //kimono accents
+// Tuqiu
+set_color_profile_slot( 11, 0, 248, 242, 255 ); //fur
+set_color_profile_slot( 11, 1, 248, 242, 255 ); //fur tip
+set_color_profile_slot( 11, 2, 248, 242, 255 ); //hair
+set_color_profile_slot( 11, 3, 87, 255, 219 ); //horns + accents
+set_color_profile_slot( 11, 4, 248, 242, 255 ); //kimono top
+set_color_profile_slot( 11, 5, 247, 54, 54 ); //kimono wave
+set_color_profile_slot( 11, 6, 34, 32, 79 ); //kimono bottom
+set_color_profile_slot( 11, 7, 247, 54, 54 ); //kimono accents
 
 // Genesis 8
 set_color_profile_slot( 12, 0, 196, 33, 44 ); //fur

@@ -265,18 +265,18 @@ with (hit_fx_obj) {
 	}
 }
 
-//Empower hitboxes
-if (tension_level > floor(TENSION_LEVEL_AMOUNT-2))  {
-	with (pHitBox) {
-		if (player_id == other.id) {
-			if (hitbox_timer == 0) {
-				damage_original = damage;
-				damage *= 1 + (0.3 * other.tension_mult);
-				damage = ceil(damage);
-			}
-		}
-	}
-}
+// //Empower hitboxes
+// if (tension_level > floor(TENSION_LEVEL_AMOUNT-2))  {
+// 	with (pHitBox) {
+// 		if (player_id == other.id) {
+// 			if (hitbox_timer == 0) {
+// 				damage_original = damage;
+// 				damage *= 1 + (0.3 * other.tension_mult);
+// 				damage = ceil(damage);
+// 			}
+// 		}
+// 	}
+// }
 
 
 if (tension_level == TENSION_LEVEL_AMOUNT) { //Fully charged
@@ -385,7 +385,7 @@ if (lang != 0)
                                 if (window == 1 && window_timer == 0) play_voice(["attack_m1","attack_m2"], voice_cooldown_set);
                             break;
                             case AT_DATTACK:
-                                if (window == 1 && window_timer == 0) play_voice("dattack1", voice_cooldown_set);
+                                if (window == 1 && window_timer == 0 && random_func(1, 100, true) <= 25) play_voice("dattack1", voice_cooldown_set);
                             break;
                             case AT_NSPECIAL:
                                 if (window == 9 && window_timer == 0) play_voice(["nspecial1","nspecial2"], 120);
@@ -422,6 +422,18 @@ if (lang != 0)
                             case AT_EXTRA_2:
                                 if (window == 2 && mako_wait_timer % 160 == 0) play_voice("sleep", 0);
                                 if (window == 3 && window_timer == 0) play_voice("sleep_awake", 0);
+                            break;
+                            case 49:
+                                if (window == 4) {
+                                	if (fs_window == 2 && fs_window_timer == 1) {
+	                            		voice_cooldown = 0;
+	                            		play_voice("final_smash_c1", 1);
+                                	}
+                                	if (fs_window == 3 && fs_window_timer == 100) {
+	                            		voice_cooldown = 0;
+	                            		play_voice("final_smash_c2", 1);
+                                	}
+                                }
                             break;
                         }
                     }

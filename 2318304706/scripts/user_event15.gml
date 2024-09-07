@@ -383,6 +383,13 @@ initSection("Trummel & Alto, Otto, Steve, Link, Goku");
 
 // other patches go here...
 
+
+initPatch("2.1", "August 31st, 2024");
+initHeader("General");
+initSection("* Now has win quotes against other Chmmr characters as well as base cast. More characters coming at later date.");
+initHeader("FStrong");
+initSection("- Explosion hitbox size reduced.");
+
 initPatch("2.0", "December 11th, 2022");
 initSection("It's been over a year since the last Geno patch! I've been very busy with school and other IRL obligations, so I haven't had time to work on Rivals stuff basically at all.");
 initSection("However, that allowed me to look at Geno with basically fresh eyes, and I'm toning down the things I saw as particularly egregious. Mostly damage numbers and hitbox/hurtbox sizes.");
@@ -508,7 +515,7 @@ initSection("+ It is no longer possible to tech out of the multihit.");
 
 initPatch("About Geno", "");
 initHeader("Character by");
-initSection("Nackles42");
+initSection("Chmmr");
 initHeader("SFX from");
 initSection("Super Mario RPG (Sounds Resource), Star Control II / The Ur-Quan Masters");
 initHeader("Victory Theme Credit");

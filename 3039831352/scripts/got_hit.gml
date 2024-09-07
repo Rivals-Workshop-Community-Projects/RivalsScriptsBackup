@@ -2,6 +2,8 @@
 
 var true_damage = floor(enemy_hitboxID.damage * lerp(1, 1.6, hit_player_obj.strong_charge/60));
 
+hurt_combo_end = true;
+
 //boost loss
 if (blast_post_timer == 0)
 {
@@ -11,7 +13,7 @@ if (blast_post_timer == 0)
 
 //homing attack clash
 if (prev_state == PS_ATTACK_AIR && attack == AT_NSPECIAL && hit_window == 7 &&
-    "is_bar_sonic" in hit_player_obj && enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 2)
+    ("is_bar_sonic" in hit_player_obj && enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 2 || hit_player_obj.barsonic_clash_homeatks) )
 {
     nspec_clash_id = hit_player_obj;
     orig_knock = 0;
@@ -25,12 +27,25 @@ if (prev_state == PS_ATTACK_AIR && attack == AT_NSPECIAL && hit_window == 7 &&
     hitstop_full = 10;
     set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 20);
     should_make_shockwave = false;
+    take_damage(player, nspec_clash_id.player, -true_damage/2);
     
     with (nspec_clash_id)
     {
         hitstop = 10;
         hitstop_full = 10;
-        set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 20);
+        if ("is_bar_sonic" in self) set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 20);
+        else if ("barsonic_clash_homeatks" in self && barsonic_clash_homeatks)
+        {
+            state = barsonic_clash_stats.state;
+            state_timer = barsonic_clash_stats.statimer;
+            attack = other.last_attack;
+            window = barsonic_clash_stats.win;
+            window_timer = barsonic_clash_stats.wintimer;
+            spr_dir = barsonic_clash_stats.dir;
+            old_hsp = barsonic_clash_stats.hsp;
+            old_vsp = barsonic_clash_stats.vsp;
+            with (other) other.barsonic_clash_stats.should_be_damaged = get_hitbox_value(attack, 1, HG_DAMAGE);
+        }
     }
 }
 

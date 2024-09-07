@@ -147,6 +147,8 @@ sprite_change_offset("feather_small_vfx", 100, 100);
 sprite_change_offset("hammer_stamp_vfx", 128, 190);
 sprite_change_offset("stamp_vfx", 100, 100);
 sprite_change_offset("letter_vfx", 160, 160);
+sprite_change_offset("letterfly_vfx", 128, 128);
+sprite_change_offset("letter_sparks_vfx", 128, 128);
 sprite_change_offset("letter_add_vfx", 126, 190);
 sprite_change_offset("prop_destroy_vfx", 160, 160);
 sprite_change_offset("fspecial_wind_vfx", 160, 160);

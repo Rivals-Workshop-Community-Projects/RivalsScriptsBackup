@@ -1,3 +1,5 @@
+if (my_hitboxID.orig_player_id != self) exit;
+
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.player == player) {
     hit_player_obj.mamizou_mark_id = id;
     sound_play(asset_get("sfx_leaves"));
@@ -15,7 +17,7 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 2) {
     sound_play(asset_get("sfx_frog_gong_hit"));
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL) {
+if (my_hitboxID.attack == AT_DSPECIAL || (my_hitboxID.attack == 49 && (("mamizou_mark_id" in hit_player_obj) && hit_player_obj.mamizou_mark_id == id))) {
     if ((!("mamizou_trans" in hit_player_obj) || !hit_player_obj.mamizou_trans) && !hit_player_obj.super_armor && hit_player_obj.soft_armor == 0) {
         hit_player_obj.mamizou_trans = true;
         hit_player_obj.mamizou_trans_damage = 0;

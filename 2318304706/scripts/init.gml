@@ -207,3 +207,8 @@ am_is_magic = true;
 am_is_handed = true;
 am_is_experienced = true;
 am_is_myth = true;
+
+//victory
+geno_victory_quote = "Hmph. My light cannot be replicated so easily.";
+geno_handled_victory_quote = false;
+geno_victory_icon = 4;

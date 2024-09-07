@@ -66,18 +66,9 @@ switch (attack)
             fx.depth = depth - 2
         	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .8);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
         }
-        // else
-        // {
-   	    // 	reset_attack_value(AT_NSPECIAL, AG_SPRITE);
-        //   	reset_attack_value(AT_NSPECIAL, AG_AIR_SPRITE);
-        // }
+
+
     	if(shield_pressed and window < 3){
     		window = 6;
     		window_timer = 0;
@@ -87,60 +78,23 @@ switch (attack)
             case 1:
             	can_jump = true;
             	
-            	
-            	// if((wisp_switch == 1 && (((spr_dir = 1 && left_down) || (spr_dir = -1 && right_down)) && nspec_wispconsume == false && wisp_attack && nspec_charge < blue_arrow_timer))
-            	// || (wisp_switch  != 1 && (wisp_attack && nspec_charge < blue_arrow_timer && !nspec_wispconsume && special_down && attack_down))){
-             //       	print("DO SOMETHING")
-             //       	nspec_charge = blue_arrow_timer;
-             //       	nspec_wispconsume = true;
-             //       	destroy_wisp(find_wisp());
-                    	
-                // }
-            	
                 if (window_timer == 1)
-                
                 {	
                 	nspec_wispconsume = false;
                 	if(nspec_charge < blue_arrow_timer && !should_red_arrow){
                 		should_red_arrow = true;
                     	reset_attack_value(AT_NSPECIAL, AG_SPRITE);
                     	reset_attack_value(AT_NSPECIAL, AG_AIR_SPRITE);
-                    	reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
-                    	reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
-						reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
-						reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
-						reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
-						reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
-						reset_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE);
                 	}
                     //reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
                 }
                 break;
             case 2:
             	can_jump = true;
-            	if nspec_charge >= blue_arrow_timer
-            	{
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("blue_arrow_hit_new"));
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, blue_big_hit_vfx);
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 0);
-            	}
-            	else
-            	{
-            		var charge;
-            		charge = round((nspec_charge / 30) * 2)
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4+charge);
-            		reset_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX)
-            		reset_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT);
-            		reset_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT);
-            	}
             	
             	if(state_timer == 100){
             		window = 3;
             		window_timer = 0;
-            		sound_play(sound_get(nspec_charge >= blue_arrow_timer ? "arrow_shoot_blue" : "arrow_shoot"))
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, lerp(min_hsp,max_hsp,min(nspec_charge,max_charge)/max_charge));
-                    
             	}
                 if (special_down)
                 {
@@ -175,14 +129,12 @@ switch (attack)
                     window = 3;
                     window_timer = 0;
                     sound_play(sound_get(nspec_charge >= blue_arrow_timer ? "arrow_shoot_blue" : "arrow_shoot"))
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, lerp(min_hsp,max_hsp,min(nspec_charge,max_charge)/max_charge));
                     //set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, something that scales the damage lol);
                     //print(get_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED))
                 }
                 break;
             case 5:
             	if(window_timer == 2){
-                    nspec_charge = 0;
                     reset_attack_value(AT_NSPECIAL, AG_SPRITE);
                     reset_attack_value(AT_NSPECIAL, AG_AIR_SPRITE);
                 	move_cooldown[AT_NSPECIAL] = 30*(2 - should_red_arrow);
@@ -351,7 +303,7 @@ switch (attack)
     case AT_DSPECIAL:
 		move_cooldown[AT_DSPECIAL] = 2;
 		if window < 4 move_cooldown[AT_NSPECIAL] = 2;
-		move_cooldown[AT_FSPECIAL] = 2;
+		//move_cooldown[AT_FSPECIAL] = 100;
         can_move = false;
         can_shield = (window == 6);
         can_wall_jump = true;
@@ -382,29 +334,16 @@ switch (attack)
             case 5: // shoot red
                 if (window_timer == floor(2*get_window_value(AT_DSPECIAL, window, AG_WINDOW_LENGTH)/get_window_value(AT_DSPECIAL, window, AG_WINDOW_ANIM_FRAMES)))
                 { 
-                	
-            	if nspec_charge >= blue_arrow_timer
-            	{
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("blue_arrow_hit_new"));
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, blue_big_hit_vfx);
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
-            	}
-            	else
-            	{
-            		var charge;
-            		charge = round((nspec_charge / 30) * 2)
-            		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4+charge);
-            		reset_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX)
-            		reset_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT);
-            	}
-                    
                 	hsp -= 1*spr_dir;
                 	vsp -= 10;
                 	
-                    var hitbox = create_hitbox(AT_NSPECIAL, 1, x-20, y-25);
+                    var hitbox = create_hitbox(nspec_charge < blue_arrow_timer ? AT_NSPECIAL : AT_NSPECIAL_2, 1, x-20, y-25);
+					if nspec_charge < blue_arrow_timer  {
+						hitbox.damage += round((nspec_charge / 30) * 2);
+					}
                     hitbox.hsp = spr_dir * 20;
                     hitbox.vsp = 3.5;
-                    move_cooldown[AT_NSPECIAL] = 30*(2 - should_red_arrow);
+                    move_cooldown[AT_NSPECIAL] = 30*(2 - (nspec_charge < blue_arrow_timer) );
                     //hitbox.hit_flipper = 7;
                     //hitbox.damage = 10; // change the stats here
                     sound_play(sound_get("arrow_shoot"));
@@ -472,6 +411,7 @@ switch (attack)
 				set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 275);
 				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 5);
 				set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, .6);
+				set_hitbox_value(AT_FSTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 			}
 		}
 	}
@@ -506,6 +446,7 @@ switch (attack)
 				set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 275);
 				set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 7);
 				set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, .7);
+				set_hitbox_value(AT_FSTRONG_2, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 			}
 		}
 	}

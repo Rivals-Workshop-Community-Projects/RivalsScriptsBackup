@@ -23,7 +23,7 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_HITPAUSE_FRAME, 7);
 
 //Hold
 set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HITPAUSE_FRAME, 8);

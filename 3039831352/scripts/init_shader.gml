@@ -35,168 +35,169 @@ if (should_setup_shader)
 
 if ("temp_outline_color" not in self) temp_outline_color = [0, 0, 0];
 
-if(shade_will_load) {
-//set secret alt to overwrite every alt
-if (name_cur == "461225") 
+if (shade_will_load)
 {
-    alt_cur = 1993;
-
-    //base form
-    cur_colors[0] = [96, 64, 162];
-    cur_colors[1] = [1, 1, 128];
-    cur_colors[2] = [0, 0, 0];
-    cur_colors[3] = [96, 64, 162];
-    cur_colors[4] = [1, 1, 128];
-    cur_colors[5] = [96, 64, 162];
-    cur_colors[6] = [0, 0, 0];
-    cur_colors[7] = [96, 64, 162];
-    cur_colors[8] = cur_colors[0]; //just in case
-
-    temp_outline_color = [
-        floor(lerp(1, 94, 0.5)),
-        floor(lerp(1, 64, 0.5)),
-        floor(lerp(128, 162, 0.5))
-    ];
-
-    for (var i = 0; i < 8; i ++) set_character_color_shading(i, 1);
-
-    cur_alpha = [1, 1, 1, 1, 1, 1, 1, 1];
-}
-//exceptions / colormapping
-else
-{
-    switch (alt_cur)
+    //set secret alt to overwrite every alt
+    if (name_cur == "461225") 
     {
-        case 0: //default
-            cur_colors[1] = [34, 44, 224];
-            cur_colors[2] = [15, 189, 15];
-            cur_colors[3] = [255, 209, 158];
-            cur_colors[5] = [255, 255, 255];
-            cur_colors[7] = [67, 146, 241];
-            cur_colors[11] = cur_colors[3];
-            break;
-        case 5: //chaos
-            for (var i = 0; i < 8; i ++) if (i != 0 && i != 2 && i != 6)
-            {
-                cur_alpha[i] = (
-                    "cur_spr_set" in self && cur_spr_set ||
-                    "_barsonic_final_color" in self && _barsonic_final_color[player][0][0] != get_color_profile_slot_r(alt_cur, 0) ||
-                    object_index == asset_get("result_screen_box")
-                    ) ? 1 : 0.3; //super / normal
-                if ("super_col_lerp_time" in self && super_col_lerp_time > 0) cur_alpha[i] = lerp(0.3, 1, super_col_lerp_time/super_col_lerp_time_max);
-            }
+        alt_cur = 1993;
 
-            temp_outline_color = [10, 36, 107];
-            break;
-        case 14: //early access
-            temp_outline_color = [15, 56, 15];
-            set_color_profile_slot_range(3, 21, 55, 31); //include buckle
-            set_color_profile_slot_range(6, 155, 10, 20); //include whites
-            break;
-        case 15:
-            set_color_profile_slot_range(3, 21, 55, 31); //include buckle
-            set_color_profile_slot_range(6, 1, 1, 20);
-            break;
-        case 16: //seasonals
-            if (get_match_setting(SET_SEASON) == 3) //lord X
-            {
-                if ("is_fake_x" in self && !is_fake_x && object_index != 327 && object_index != 4) //real form
+        //base form
+        cur_colors[0] = [96, 64, 162];
+        cur_colors[1] = [1, 1, 128];
+        cur_colors[2] = [0, 0, 0];
+        cur_colors[3] = [96, 64, 162];
+        cur_colors[4] = [1, 1, 128];
+        cur_colors[5] = [96, 64, 162];
+        cur_colors[6] = [0, 0, 0];
+        cur_colors[7] = [96, 64, 162];
+        cur_colors[8] = cur_colors[0]; //just in case
+
+        temp_outline_color = [
+            floor(lerp(1, 94, 0.5)),
+            floor(lerp(1, 64, 0.5)),
+            floor(lerp(128, 162, 0.5))
+        ];
+
+        for (var i = 0; i < 8; i ++) set_character_color_shading(i, 1);
+
+        cur_alpha = [1, 1, 1, 1, 1, 1, 1, 1];
+    }
+    //exceptions / colormapping
+    else
+    {
+        switch (alt_cur)
+        {
+            case 0: //default
+                cur_colors[1] = [34, 44, 224];
+                cur_colors[2] = [15, 189, 15];
+                cur_colors[3] = [255, 209, 158];
+                cur_colors[5] = [255, 255, 255];
+                cur_colors[7] = [67, 146, 241];
+                cur_colors[11] = cur_colors[3];
+                break;
+            case 5: //chaos
+                for (var i = 0; i < 8; i ++) if (i != 0 && i != 2 && i != 6)
                 {
-                    /* pallete testing, ignore
-                        //OG look
-                        for (var i = 0; i < 7; i ++) cur_colors[i] = [lord_x_decay_col[i][0][0], lord_x_decay_col[i][0][1], lord_x_decay_col[i][0][2]];
-                        shading_data[alt_cur][@ 1] = 0.75; //blue
-                        shading_data[alt_cur][@ 4] = 0.75; //red
+                    cur_alpha[i] = (
+                        "cur_spr_set" in self && cur_spr_set ||
+                        "_barsonic_final_color" in self && _barsonic_final_color[player][0][0] != get_color_profile_slot_r(alt_cur, 0) ||
+                        object_index == asset_get("result_screen_box")
+                        ) ? 1 : 0.3; //super / normal
+                    if ("super_col_lerp_time" in self && super_col_lerp_time > 0) cur_alpha[i] = lerp(0.3, 1, super_col_lerp_time/super_col_lerp_time_max);
+                }
 
-                        //decayed look
-                        for (var i = 0; i < 7; i ++) cur_colors[i] = [lord_x_decay_col[i][1][0], lord_x_decay_col[i][1][1], lord_x_decay_col[i][1][2]];
-                        shading_data[alt_cur][@ 1] = 0.5; //blue
-                        shading_data[alt_cur][@ 4] = 0.5; //red
-                    */
-                    
-                    if ("lord_x_decaying" not in self || !lord_x_decaying)
+                temp_outline_color = [10, 36, 107];
+                break;
+            case 14: //early access
+                temp_outline_color = [15, 56, 15];
+                set_color_profile_slot_range(3, 21, 55, 31); //include buckle
+                set_color_profile_slot_range(6, 155, 10, 20); //include whites
+                break;
+            case 15:
+                set_color_profile_slot_range(3, 21, 55, 31); //include buckle
+                set_color_profile_slot_range(6, 1, 1, 20);
+                break;
+            case 16: //seasonals
+                if (get_match_setting(SET_SEASON) == 3) //lord X
+                {
+                    if ("is_fake_x" in self && !is_fake_x && object_index != 327 && object_index != 4) //real form
                     {
-                        cur_colors[0] = [56, 0, 82]; //aura
-                        cur_colors[1] = [60, 59, 89]; //blue
-                        cur_colors[2] = [255, 0, 70]; //green
-                        cur_colors[3] = [235, 143, 105]; //skin
-                        cur_colors[4] = [39, 36, 37]; //red
-                        cur_colors[5] = [223, 221, 208]; //white - clothes
-                        cur_colors[6] = [0, 0, 0]; //white - eyes
+                        /* pallete testing, ignore
+                            //OG look
+                            for (var i = 0; i < 7; i ++) cur_colors[i] = [lord_x_decay_col[i][0][0], lord_x_decay_col[i][0][1], lord_x_decay_col[i][0][2]];
+                            shading_data[alt_cur][@ 1] = 0.75; //blue
+                            shading_data[alt_cur][@ 4] = 0.75; //red
 
-                        shading_data[alt_cur][@ 1] = 0.5; //blue
-                        shading_data[alt_cur][@ 2] = 1.2; //green
-                        shading_data[alt_cur][@ 4] = 0.5; //red
+                            //decayed look
+                            for (var i = 0; i < 7; i ++) cur_colors[i] = [lord_x_decay_col[i][1][0], lord_x_decay_col[i][1][1], lord_x_decay_col[i][1][2]];
+                            shading_data[alt_cur][@ 1] = 0.5; //blue
+                            shading_data[alt_cur][@ 4] = 0.5; //red
+                        */
+                        
+                        if ("lord_x_decaying" not in self || !lord_x_decaying)
+                        {
+                            cur_colors[0] = [56, 0, 82]; //aura
+                            cur_colors[1] = [60, 59, 89]; //blue
+                            cur_colors[2] = [255, 0, 70]; //green
+                            cur_colors[3] = [235, 143, 105]; //skin
+                            cur_colors[4] = [39, 36, 37]; //red
+                            cur_colors[5] = [223, 221, 208]; //white - clothes
+                            cur_colors[6] = [0, 0, 0]; //white - eyes
 
-                        shading_data[alt_cur][@ 9] = 1; //blue
+                            shading_data[alt_cur][@ 1] = 0.5; //blue
+                            shading_data[alt_cur][@ 2] = 1.2; //green
+                            shading_data[alt_cur][@ 4] = 0.5; //red
+
+                            shading_data[alt_cur][@ 9] = 1; //blue
+                        }
+                        else
+                        {
+                            lord_x_decay_time = lord_x_decay_over ? 0 : get_game_timer() / (get_match_setting(SET_TIMER)*60*60);
+                            if (get_game_timer() == 0) lord_x_decay_over = true;
+
+                            for (var i = 0; i < 7; i ++)
+                            {
+                                cur_colors[i] = [
+                                    floor(lerp(lord_x_decay_col[i][1][0], lord_x_decay_col[i][0][0], lord_x_decay_time)),
+                                    floor(lerp(lord_x_decay_col[i][1][1], lord_x_decay_col[i][0][1], lord_x_decay_time)),
+                                    floor(lerp(lord_x_decay_col[i][1][2], lord_x_decay_col[i][0][2], lord_x_decay_time))
+                                ];
+                            }
+
+                            shading_data[alt_cur][@ 1] = lerp(0.75, 0.5, lord_x_decay_time); //blue
+                            shading_data[alt_cur][@ 4] = lerp(0.75, 0.5, lord_x_decay_time); //red
+                        }
+
+                        //super form is the illegal instruction screen
+                        cur_colors[8] = [56, 0, 82]; //aura
+                        cur_colors[9] = [1, 0, 255]; //blue
+                        cur_colors[10] = [255, 43, 0]; //green
+                        cur_colors[11] = [255, 194, 0]; //skin
+                        cur_colors[12] = [39, 36, 37]; //red
+                        cur_colors[13] = [255, 43, 0]; //white - clothes
+                        cur_colors[14] = [0, 0, 0]; //white - eyes
                     }
                     else
                     {
-                        lord_x_decay_time = lord_x_decay_over ? 0 : get_game_timer() / (get_match_setting(SET_TIMER)*60*60);
-                        if (get_game_timer() == 0) lord_x_decay_over = true;
-
-                        for (var i = 0; i < 7; i ++)
+                        //fake sonic shade data
+                        if (alt_cur < 32) 
                         {
-                            cur_colors[i] = [
-                                floor(lerp(lord_x_decay_col[i][1][0], lord_x_decay_col[i][0][0], lord_x_decay_time)),
-                                floor(lerp(lord_x_decay_col[i][1][1], lord_x_decay_col[i][0][1], lord_x_decay_time)),
-                                floor(lerp(lord_x_decay_col[i][1][2], lord_x_decay_col[i][0][2], lord_x_decay_time))
+                            shading_data[alt_cur] = [
+                                1, 1, 1, 1, 1, 1, 1, 1,
+                                1, -2, 1, 1, 1, 1, 1, 1
                             ];
                         }
-
-                        shading_data[alt_cur][@ 1] = lerp(0.75, 0.5, lord_x_decay_time); //blue
-                        shading_data[alt_cur][@ 4] = lerp(0.75, 0.5, lord_x_decay_time); //red
                     }
-
-                    //super form is the illegal instruction screen
-                    cur_colors[8] = [56, 0, 82]; //aura
-                    cur_colors[9] = [1, 0, 255]; //blue
-                    cur_colors[10] = [255, 43, 0]; //green
-                    cur_colors[11] = [255, 194, 0]; //skin
-                    cur_colors[12] = [39, 36, 37]; //red
-                    cur_colors[13] = [255, 43, 0]; //white - clothes
-                    cur_colors[14] = [0, 0, 0]; //white - eyes
                 }
-                else
+                break;
+            case 22: //snick
+                if (current_day == 31 && current_month == 10) //snick.exe
                 {
-                    //fake sonic shade data
-                    if (alt_cur < 32) 
-                    {
-                        shading_data[alt_cur] = [
-                            1, 1, 1, 1, 1, 1, 1, 1,
-                            1, -2, 1, 1, 1, 1, 1, 1
-                        ];
-                    }
+                    cur_colors[2] = [255, 255, 255]; //green
+                    cur_colors[3] = [88, 0, 184]; //skin
+                    cur_colors[6] = [0, 0, 0]; //white - eyes
+
+                    cur_colors[10] = cur_colors[2]; //green
+                    cur_colors[14] = cur_colors[6]; //white - eyes (super)
                 }
-            }
-            break;
-        case 22: //snick
-            if (current_day == 31 && current_month == 10) //snick.exe
-            {
-                cur_colors[2] = [255, 255, 255]; //green
-                cur_colors[3] = [88, 0, 184]; //skin
-                cur_colors[6] = [0, 0, 0]; //white - eyes
+                break;
+            case 27: //hud color
+                var hud_r = color_get_red(get_player_hud_color(player));
+                var hud_g = color_get_green(get_player_hud_color(player));
+                var hud_b = color_get_blue(get_player_hud_color(player));
+                
+                cur_colors[0] = [floor(lerp(61, min(255, hud_r), 0.75)), floor(lerp(206, min(255, hud_g), 0.75)), floor(lerp(255, min(255, hud_b), 0.75))]; //aura
+                cur_colors[1] = [floor(lerp(61, min(255, hud_r), 0.75)), floor(lerp(206, min(255, hud_g), 0.75)), floor(lerp(255, min(255, hud_b), 0.75))]; //blue
+                cur_colors[4] = [floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))]; //red
+                cur_colors[5] = [floor(hud_r/1.5), floor(hud_g/1.5), floor(hud_b/1.5)]; //white - clothes
+                cur_colors[7] = [min(255, hud_r + 150), min(255, hud_g + 150), min(255, hud_b + 150)]; //portrait light
 
-                cur_colors[10] = cur_colors[2]; //green
-                cur_colors[14] = cur_colors[6]; //white - eyes (super)
-            }
-            break;
-        case 27: //hud color
-            var hud_r = color_get_red(get_player_hud_color(player));
-            var hud_g = color_get_green(get_player_hud_color(player));
-            var hud_b = color_get_blue(get_player_hud_color(player));
-            
-            cur_colors[0] = [floor(lerp(61, min(255, hud_r), 0.75)), floor(lerp(206, min(255, hud_g), 0.75)), floor(lerp(255, min(255, hud_b), 0.75))]; //aura
-            cur_colors[1] = [floor(lerp(61, min(255, hud_r), 0.75)), floor(lerp(206, min(255, hud_g), 0.75)), floor(lerp(255, min(255, hud_b), 0.75))]; //blue
-            cur_colors[4] = [floor(min(255, hud_r + 150)), floor(min(255, hud_g + 150)), floor(min(255, hud_b + 150))]; //red
-            cur_colors[5] = [floor(hud_r/1.5), floor(hud_g/1.5), floor(hud_b/1.5)]; //white - clothes
-            cur_colors[7] = [min(255, hud_r + 150), min(255, hud_g + 150), min(255, hud_b + 150)]; //portrait light
-
-            cur_colors[12] = cur_colors[4] //red (super)
-            cur_colors[13] = cur_colors[5]; //white - clothes (super)
-            break;
+                cur_colors[12] = cur_colors[4] //red (super)
+                cur_colors[13] = cur_colors[5]; //white - clothes (super)
+                break;
+        }
     }
-}
 }
 
 if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || "state" in self && state == 40)
@@ -219,7 +220,7 @@ else
     var alt_change = ("hitpause" not in self) || !(hitpause || perfect_dodging) //variable made so it would only change your color if youre not in parry or hitpause.
     
     //set proper colors
-    if(alt_change && alt_cur == 5 || shade_will_load && alt_cur != 5) //ONLY DO THIS ONCE FOR THE NORMAL COLORS or keep continuing if youre transforming or chaos.
+    if (alt_change && alt_cur == 5 || shade_will_load && alt_cur != 5) //ONLY DO THIS ONCE FOR THE NORMAL COLORS or keep continuing if youre transforming or chaos.
     {
         for (var i = 0; i < 8; i ++)
         {
@@ -233,7 +234,7 @@ else
         if ("hitpause" in self) load_shade = false; 
     }
 
-    if(pos == 0) user_event(1);
+    if (pos == 0) user_event(1);
 }
 
 //Results screen color correction
@@ -264,6 +265,24 @@ if (object_index == asset_get("draw_result_screen") || object_index == asset_get
 
     if ("real_time" in self)
     {
+        if (real_time == 0)
+        {
+            var tmp_sync_vars = get_synced_var(player);
+            for (var i = 0; i < 2; i++)
+            {
+                var shift = (i*4);
+                synced_vars[i] = tmp_sync_vars >> shift & 15;
+            }
+            
+            //win names lol
+            if (get_player_name(player) == "461225") winner_name = "Mazin Wins!";
+            else if (get_player_color(player) == 16 && get_match_setting(SET_SEASON) == 3) winner_name = "so many souls... so little time";
+            else if (get_player_color(player) == 20) winner_name = "Dark Sonic Wins!";
+            else if (_barsonic_hyper_check) winner_name = "Hyper Sonic Wins!";
+            else if (synced_vars[1]) winner_name = "Super Sonic Wins!";
+            else if (winner_name == "Sonic (TEST) WINS!") winner_name = "Sonic Wins!";
+        }
+
         if (alt_cur == 5) //chaos mask
         {
             if (_barsonic_final_color[player][0][0] == get_color_profile_slot_r(alt_cur, 0)) //checks if he isn't super sonic

@@ -50,10 +50,3 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bigfireball")
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("bigfireball"));
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_VSPEED, 10);
-
-
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 2);
-set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

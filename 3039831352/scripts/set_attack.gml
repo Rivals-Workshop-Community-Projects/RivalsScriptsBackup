@@ -33,3 +33,5 @@ if (taunt_pressed && special_down && shield_down && !get_match_setting(SET_PRACT
     attack = 3;
     if (uses_super_sprites) window = 10;
 }
+
+airdash_stats = [1, 0, 0, -1];

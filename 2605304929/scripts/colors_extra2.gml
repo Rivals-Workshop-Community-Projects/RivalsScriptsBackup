@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 13, 18, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 26 );
 
 // Craum
 set_color_profile_slot( 1, 0, 209, 237, 234 ); //fur
@@ -265,6 +265,16 @@ set_color_profile_slot( 23, 4, 146, 236, 149 ); //kimono top
 set_color_profile_slot( 23, 5, 41, 36, 81 ); //kimono wave
 set_color_profile_slot( 23, 6, 58, 176, 87 ); //kimono bottom
 set_color_profile_slot( 23, 7, 136, 44, 176 ); //kimono accents
+
+// Vessel
+set_color_profile_slot( 24, 0, 39, 40, 38 ); //fur
+set_color_profile_slot( 24, 1, 117, 118, 114 ); //fur tip
+set_color_profile_slot( 24, 2, 141, 120, 163 ); //hair
+set_color_profile_slot( 24, 3, 19, 216, 103 ); //horns + accents
+set_color_profile_slot( 24, 4, 102, 106, 141 ); //kimono top
+set_color_profile_slot( 24, 5, 72, 239, 133 ); //kimono wave
+set_color_profile_slot( 24, 6, 67, 70, 98 ); //kimono bottom
+set_color_profile_slot( 24, 7, 72, 239, 133 ); //kimono accents
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -1,5 +1,21 @@
 if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) {
 	switch (attack) {
+		case AT_NSPECIAL:
+			if window == 3 and window_timer == 0 and !hitpause {
+		        var min_hsp = 8;
+		        //var max_hsp = 32;
+		        var max_charge = 25;
+		        var max_hsp = 26;
+				var arrow = create_hitbox(nspec_charge < blue_arrow_timer ? AT_NSPECIAL : AT_NSPECIAL_2, 1, x+ (44*spr_dir), y - 34)
+				arrow.hsp = spr_dir*lerp(min_hsp,max_hsp,min(nspec_charge,max_charge)/max_charge)
+				if nspec_charge < blue_arrow_timer  {
+					arrow.damage += round((nspec_charge / 30) * 2);
+				}
+				
+				flamecharge = false;
+				nspec_charge = 0;
+			}
+		break;
 		case AT_DAIR:
 			if (window == 2 and window_timer mod 3 == 0 and !hitpause) {
 				var hitbox = 1 + max(window_timer - 11, 0);
@@ -77,7 +93,7 @@ if (fspec_article != noone)
 	
 	diff = sqrt( sqr(xx-fspec_article.x) + sqr(yy-fspec_article.y) );
 	
-	if sprite_index == sprite_get("crouch") and diff <= crouch_threshold and fspec_article.sprite_index == sprite_get("willo_idle")
+	if sprite_index == sprite_get("crouch") and diff <= crouch_threshold and fspec_article.state == PS_IDLE and !fspec_article.isRed
 	{
 		crouch_timer++;
 		
@@ -88,7 +104,8 @@ if (fspec_article != noone)
 			sound_play(sound_get("wisp_absorb_crouch"))
 			with fspec_article
 			{
-				state = 2
+				state = PS_DEAD;
+				state_timer = 0;
 			}
 			add_wisp();
 			move_cooldown[AT_FSPECIAL] = 30;

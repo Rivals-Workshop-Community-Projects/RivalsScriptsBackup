@@ -19,7 +19,11 @@ with (hit_fx_obj) if player == other.player {
 
 if add_afterimages_timer > 0 {
   if add_afterimages_timer % 3 == 0 && !hitpause {
-    array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer]);
+    array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer, afterimage_colour]);
+    if alt_palette == 18 { // Riptide
+        riptide_after_index = (riptide_after_index + 1) % 3
+        afterimage_colour = riptide_colours[riptide_after_index]
+    }
   }
   add_afterimages_timer -= 1;
 }

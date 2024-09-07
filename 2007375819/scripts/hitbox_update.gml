@@ -23,8 +23,23 @@ if (attack == AT_FSPECIAL) {
 	if hsp == 0 && !free {
 		hsp = 2*spr_dir;
 	}
+	
+	if was_parried {
+		var angle = point_direction(x, y, player_id.x, player_id.y);
+		hsp = lengthdir_x(15, angle);
+		vsp = lengthdir_y(15, angle);
+		proj_angle -= 10;
+		grav = 0;
+		air_friction = 0;
+		if hbox_num == 1 {
+			with player_id other.sprite_index = hFallSprite;			
+		}
+		if hbox_num == 2 {
+			with player_id other.sprite_index = pizzaFallSprite;		
+		}
+	}
 		
-	if hbox_num == 1 {
+	if hbox_num == 1 && !was_parried {
 		hsp = clamp(hsp, -6, 6);
 		if free { 
 			with player_id other.sprite_index = hFallSprite;
@@ -63,7 +78,7 @@ if (attack == AT_FSPECIAL) {
 		}
 	}
 	
-	if hbox_num == 2 {
+	if hbox_num == 2 && !was_parried {
 		hsp = clamp(hsp, -8, 8);
 		if free { 
 			with player_id other.sprite_index = pizzaFallSprite;

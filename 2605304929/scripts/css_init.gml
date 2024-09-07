@@ -202,14 +202,12 @@ if(menu_button[0][8]){ // Sub Menu Button Pressed
 #macro CURSOR_HOVER_DRAW_Y 4
 #macro CURSOR_HOVER_MENU_BUTTON 5
 
-/* OLD
-// Variables Declarations
-dial_time = 0; // Used for transparncy
-dial_max = 100; // Used for transparncy
-color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
-col_max = 32; // number of alternate color palettes. 0 is the default color, count it accordingly.
-color_picker_alt_index = 0;
-*/
+
+// Reset arrays used by my characters
+if("menu_box" in self){menu_box=[];}
+if("draw_cursor_info_hover" in self){draw_cursor_info_hover=[];}
+if("slot_property_array" in self){slot_property_array=[];}
+
 // Menu variables
 current_box_draw = 0;
 button_latch_timer = 0;
@@ -418,7 +416,17 @@ return chunk_arr;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Moon's Dark Side";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Tzukiyo by Opengunner";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The sun is alright, but I love the moon and the night.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "FuRi's Edge";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "2022 / 23 /24 Riptide Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 5
 	slot_property_array[color_slot,sub_element_slot] = "Flickering Spectre";sub_element_slot++;
@@ -450,11 +458,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Color for Regina";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Moonlit Guardian";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Tuqiu by Talemon";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
 	//Slot 15
 	slot_property_array[color_slot,sub_element_slot] = "Walkya";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Loglord";sub_element_slot++;
@@ -484,11 +487,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Stormy Night";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Color for Wasteofaname";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I love a rainy night...";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "FuRi's Edge";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot
 	slot_property_array[color_slot,sub_element_slot] = "Zinogre";sub_element_slot++;
@@ -600,10 +598,10 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "2022 Riptide Bracket";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Moonlit Guardian";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Tuqiu by Talemon";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Genesis";sub_element_slot++;
@@ -827,8 +825,13 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for MGAM";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Vessel";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Alt for AetherAsylum";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
 	
-		num_of_shifted_alts = color_slot - 96;
+	num_of_shifted_alts = color_slot - 96;
 		
 	//print(num_of_shifted_alts);
 	// Fill out rest with placeholders

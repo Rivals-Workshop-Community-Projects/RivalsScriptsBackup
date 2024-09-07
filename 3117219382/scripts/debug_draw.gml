@@ -3,7 +3,6 @@
 //the commented line below is used to draw debug text right under the player character
 
 //draw_debug_text(x, y, "text = " + string(variable));
-
 if(debug_display){
 	draw_debug_text(gs[0], gs[1], string(gs[4]))
 	draw_debug_text(gs[0], gs[1]+15, string(gs[5]))
@@ -27,3 +26,21 @@ if(debug_display){
         }
     }
 }
+
+
+#define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
+
+draw_set_font(asset_get(argument[2]));
+
+if argument[7]{ //outline. doesn't work lol
+    for (i = -1; i < 2; i++){
+        for (j = -1; j < 2; j++){
+            draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, 1);
+        }
+    }
+}
+
+draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
+
+return string_width_ext(argument[9], argument[4], argument[5]);
+

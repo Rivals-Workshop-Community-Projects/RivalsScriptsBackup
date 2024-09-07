@@ -436,8 +436,88 @@ switch (attack){
 	    	}
 	    }
     break;
+    case 49:
+		hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+	    can_fast_fall = false;
+	    can_move = window >= 5;
+	    if (window == 1 && window_timer == 2)
+	    {
+    		reset_attack_value(attack, AG_CATEGORY);
+	    	fs_xstart = x;
+	    	fs_ystart = y;
+	    	fs_gate_x = x - (128 * spr_dir);
+	    	fs_gate_y = y - 128;
+	    	
+	    	fs_youkai_mod = get_window_value(attack, 3, AG_WINDOW_LENGTH) div 10;
+	    	fs_youkai_spawned = 0;
+	    	
+	    	//Get out of blocks
+	    	while (collision_rectangle(fs_gate_x - 64, fs_gate_y + 64, fs_gate_x + 128, fs_gate_y + 64, asset_get("par_block"), 0, 1)) {
+	    		fs_gate_x += 2 * spr_dir;
+	    		if (fs_gate_x >= room_width) break;
+	    		if (fs_gate_x <= 0) break;
+	    	}
+	    	while (place_meeting(floor(fs_gate_x), floor(fs_gate_y), asset_get("par_block"))) {
+	    		fs_gate_y += 2;
+	    		if (fs_gate_y >= room_height) break;
+	    	}
+	    }
+	    
+    	//Spawn the gate
+	    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
+	    {
+	    	var fx = spawn_hit_fx(floor(fs_gate_x), floor(fs_gate_y + 128), hfx_final_smash_gate);
+	    	fx.depth = depth + 1;
+	    	var fx2 = spawn_hit_fx(floor(fs_gate_x), floor(fs_gate_y + 64), hfx_leaf_heavy);
+	    	fx2.depth = depth;
+	    	sound_play(sound_get("sfx_smb3_explosion"));
+	    }
+    	
+	    if (window == 2 && !hitpause)
+	    {
+	    	x = ease_linear(floor(fs_xstart), floor(fs_gate_x), window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH));
+	    	y = ease_backOut(floor(fs_ystart), floor(fs_gate_y), window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH), 5);
+	    }
+    	
+    	//Spawn the fellas
+	    if (window == 3 && !hitpause)
+	    {
+	    	if (window_timer == 1) {
+	    		sound_play(sound_get("sfx_fs_youkai_spawn"));
+	    	}
+	    	
+	    	x = floor(fs_gate_x);
+	    	y = floor(fs_gate_y);
+	    	
+	    	shake_camera(8, 8);	
+	    	
+	    	if (window_timer % 20 == 0) {
+	    		sound_play(asset_get("sfx_kragg_roll_loop"));
+	    	}
+	    	
+	    	if (window_timer % fs_youkai_mod == 0 && fs_youkai_spawned < 10) {
+	    		fs_youkai_spawned++
+	    		var hbox = create_hitbox(49, 1, floor(fs_gate_x), floor(fs_gate_y + 128))
+	    		hbox.spr_dir = spr_dir;
+	    		hbox.mamizou_youkai_num = fs_youkai_spawned;
+	    	}
+	    }
+	    
+	    if (window == 6 && !hitpause)
+	    {
+	    	if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) / 2) {
+	    		can_jump = true;
+	    		can_shield = true;
+	    	}
+    		set_attack_value(attack, AG_CATEGORY, 1);
+	    }
+    break;
 }
 #define spawn_base_dust
+/// @param x
+/// @param y
+/// @param name
+/// @param dir=0
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.

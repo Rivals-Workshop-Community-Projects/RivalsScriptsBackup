@@ -1,10 +1,13 @@
+
 if mailboxID != 0 {
-	if(((my_hitboxID.attack != AT_DSPECIAL) || (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2)) && mailboxID.letters != 0){
-		if(my_hitboxID.type == 1){
-		dspec_cancel = true;
-		}
+	if (my_hitboxID.attack == AT_NAIR || my_hitboxID.attack == AT_UAIR || my_hitboxID.attack == AT_FSTRONG || (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 && letterflyID = 0 && instant_explo_start = false)){
+		letterflyID = create_hitbox(AT_DSPECIAL, 3, my_hitboxID.x, my_hitboxID.y);
+		sound_play(sound_get("letterflywhoosh"), false, noone, 1, 0.95+(random_func(14, 20, false)*0.01));	
+		sound_play(sound_get("lettertoss"))
+		sound_play(sound_get("paperhith"))
 	}
 }
+
 
 //Dair Grab
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num = 1) {
@@ -62,7 +65,7 @@ if (my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num >= 2) {
 	lerpam = [0.5, 0.5]
 	
 
-	hit_player_obj.x = lerp(floor(hit_player_obj.x), x + hsp - 50*my_hitboxID.player_id.spr_dir, lerpam[0])
+	hit_player_obj.x = lerp(floor(hit_player_obj.x), x + hsp - 50*my_hitboxID.spr_dir, lerpam[0])
 	hit_player_obj.y = lerp(floor(hit_player_obj.y), y + 10 + vsp, lerpam[1])
 	
 }

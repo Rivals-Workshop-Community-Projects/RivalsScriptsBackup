@@ -34,7 +34,12 @@ switch (attack) {
     break;
     case AT_DATTACK:
     	//DACFS
-        if (state_timer <= 6) {
+        if (state_timer <= 6 && !hitpause) {
+        	if (is_special_pressed(DIR_FORWARD)) {
+        		can_special = true;
+        	}
+        }
+        if (window >= 4 && has_hit_player && tension_level >= 4) {
         	if (is_special_pressed(DIR_FORWARD)) {
         		can_special = true;
         	}
@@ -66,7 +71,7 @@ switch (attack) {
         if (window == 4 && !hitpause) {
         	if (!was_parried) {
             	if (!free) set_state(PS_LANDING_LAG);
-                landing_lag_time = get_attack_value(attack, PS_LANDING_LAG) * (1 + (0.5 * (1 - has_hit)));
+                landing_lag_time = get_attack_value(attack, AG_LANDING_LAG) * (1 + (0.5 * (1 - has_hit)));
             }
             else
             {
@@ -131,7 +136,7 @@ switch (attack) {
         if (window == 7 || window == 8 || window == 9) && !hitpause {
         	can_move = false;
              if (free) hsp = clamp(hsp +  0.5 * (right_down - left_down), -2, 2)
-             vsp = min(vsp, 4)
+             vsp = min(vsp, 7)
         }
         
         if (window == 8) && !hitpause {
@@ -141,6 +146,7 @@ switch (attack) {
         		window_timer = 0;
         	}
 			if (shield_pressed) {
+                clear_button_buffer(PC_SHIELD_PRESSED);
 				window = 12;
         		window_timer = 0;
 			}
@@ -149,8 +155,8 @@ switch (attack) {
     
         if ((window == 2 || window == 5) && window_timer == 1 && !hitpause) {
             if (free) {
-            	vsp *= 0.5
-            	vsp += -5
+            	vsp *= 0.75
+            	vsp += -3
             }
             
             var proj_speeds = [[5, -4], [5, -6], [6, -4], [6, -6], [6, -8]]
@@ -167,8 +173,8 @@ switch (attack) {
         if (window == 9 && window_timer == window_end && !hitpause) {
         	started_from_air = 0;
             if (free) {
-            	vsp *= 0.5
-            	vsp += -6
+            	vsp *= 0.75
+            	vsp += -3
             }
             
             var hbox = create_hitbox(AT_NSPECIAL, 2, round(x + (12 * spr_dir)), round(y - 26));
@@ -409,7 +415,10 @@ switch (attack) {
         
         if (window == 4 && window_timer == window_end && !hitpause) {
         	move_cooldown[AT_FSPECIAL] = 60;
-        	if (!has_hit) set_state(PS_PRATFALL);
+        	if (!has_hit) {
+        		set_state(PS_PRATFALL);
+        		attack_end();
+        	}
         }
     break;
     case AT_NSPECIAL_2:
@@ -606,14 +615,179 @@ switch (attack) {
             iasa_script();
         }
     break;
-}
-
-if (attack == AT_DSPECIAL){
-    if (window == 2 && !was_parried){
-        can_jump = true;
-    }
-    can_fast_fall = false;
-    can_move = false
+    case 49: //Final Smash
+		hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+        if (window == 1 && window_timer == 2 && !hitpause) {
+            fs_window = 1;
+            fs_window_timer = 0;
+			fs_cine_x = 0;
+			fs_cine_y = 0;
+			fs_cine_img = 0;
+			fs_cine_scale1 = 1;
+			fs_cine_scale2 = 1;
+			fs_cine_rot2 = 0;
+			my_grab_id = noone; 
+			grab_time = 0;
+        }
+        
+		if (instance_exists(my_grab_id) && window == 2 && !hitpause) //if you have grabbed someone
+		{
+            fs_window = 1;
+            fs_window_timer = 0;
+			fs_cine_x = 0;
+			fs_cine_y = 0;
+			fs_cine_img = 0;
+			fs_cine_scale1 = 1;
+			fs_cine_scale2 = 1;
+			fs_cine_subs = "";
+			window = 4;
+			window_timer = 0;
+		}
+        
+        if (window == 2 && !hitpause) {
+            hsp = 24 * spr_dir;
+            vsp = 0;
+            grav = 0;
+        }
+        
+        if (window == 3 && window_timer == 1 && !hitpause) {
+        	hsp *= 0.25;
+            vsp = get_window_value(attack, window, AG_WINDOW_VSPEED);
+        }
+        
+        if (window == 3 && window_timer == window_end && !hitpause) {
+        	attack_end();
+        	set_state(PS_PRATFALL);
+        }
+        
+        //The cinematic
+        if (window == 4 && !hitpause) {
+        	hsp = 0;
+        	vsp = 0;
+			old_hsp = 0;
+			old_vsp = 0;
+			with (oPlayer) {
+				if (id != other.id) {
+					if (!hitpause) {
+						old_hsp = hsp;
+						old_vsp = vsp;
+					}
+					hitstop += 1;
+					hitstop_full += 1;
+					hitpause = true;
+					attack_invince = true;
+    				invince_time += 1;
+				}
+			}
+			fs_window_timer++;
+			
+			switch (fs_window) {
+				case 1:
+					fs_cine_spr = sprite_get("final_smash_c1");
+					fs_cine_x = 0;
+					if (fs_window_timer <= 90) {
+						fs_cine_y = ease_quadInOut(-320, 0, fs_window_timer, 90);
+					}
+					if (fs_window_timer >= 120) {
+						fs_window++;
+						fs_window_timer = 0;
+					}
+				break;
+				case 2:
+					fs_cine_x = 0;
+					fs_cine_y = 0;
+					if (fs_window_timer == 1) {
+						fs_cine_subs = "I'm female, 17, and a member of the Fight Club!"
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_spr = sprite_get("final_smash_c2");
+						fs_cine_img = 0;
+					}
+					if (fs_window_timer == 52) {
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_img = 1;
+					}
+					if (fs_window_timer == 110) {
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_img = 2;
+					}
+					if (fs_window_timer == 220) {
+						fs_cine_subs = "I was planted, watered, and now it's time to bloom!"
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_img = 3;
+					}
+					if (fs_window_timer == 260) {
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_img = 4;
+					}
+					if (fs_window_timer == 304) {
+						sound_play(asset_get("sfx_may_arc_hit"));
+						fs_cine_spr = sprite_get("final_smash_c3");
+						fs_cine_img = 0;
+					}
+					if (fs_window_timer >= 304) {
+						fs_cine_img = clamp(fs_cine_img + 0.2, 0, 10);
+					}
+					if (fs_window_timer >= 372) {
+						fs_window++;
+						fs_window_timer = 0;
+					}
+				break;
+				case 3:
+					if (fs_window_timer == 1) {
+						fs_cine_spr = sprite_get("final_smash_c4");
+						fs_cine_img = 0;
+					}
+					if (fs_window_timer == 40) {
+						fs_cine_subs = "";
+					}
+					if (fs_window_timer <= 60) {
+						fs_cine_y = 544;
+						fs_cine_x = ease_quadOut(960, 608, fs_window_timer, 60);
+					}
+					if (fs_window_timer <= 70) {
+						fs_cine_y = 544;
+						fs_cine_img = (fs_cine_img + 0.2) % 4;
+					}
+					if (fs_window_timer > 70 && fs_window_timer < 100) {
+						fs_cine_x = 608;
+						fs_cine_img = 4 + (ease_linear(0, 8, fs_window_timer - 70, 30));
+					}
+					if (fs_window_timer == 100) {
+						sound_play(sound_get("sfx_final_smash_start"));
+					}
+					if (fs_window_timer >= 100) {
+						fs_cine_spr = sprite_get("final_smash_c4a");
+						fs_cine_img = (fs_cine_img + 0.2) % 4;
+						fs_cine_x = 560;
+						
+						if (fs_window_timer % 4 == 0) {
+							fs_cine_scale1 = ease_linear(100, 75, fs_window_timer - 100, 60) / 100;
+							fs_cine_scale2 = ease_linear(100, 400, fs_window_timer - 100, 60) / 100;
+							fs_cine_rot2 = ease_linear(15, 0, fs_window_timer - 100, 60);
+						}
+						
+						fs_cine_y = 372 + ((fs_window_timer % 4 < 2 ? -8 : 8));
+					}
+					if (fs_window_timer >= 180) {
+						fs_window = 1;
+						fs_window_timer = 0;
+						window ++;
+		                window_timer = 0;
+					}
+				break;
+			}
+		}
+        if (window == 5 && window_timer == 0 && !hitpause) {
+        	var _fx = spawn_hit_fx(round(x + (128 * spr_dir)), round(y), fs_fx_shock);
+			sound_play(sound_get("sfx_final_smash_expl"));
+        	_fx.spr_dir = spr_dir;
+        }
+        
+        if (window >= 5 && !hitpause) {
+        	hsp = 0;
+        	vsp = 0;
+        }
+    break;
 }
 
 #define tension_speed_boost(_spd, _boost, _penatly)

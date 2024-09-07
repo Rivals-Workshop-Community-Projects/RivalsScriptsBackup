@@ -10,6 +10,7 @@ if (state_timer == 1)
 	prev_attack[1] = prev_attack[0]; //the prev attack
 	prev_attack[0] = attack;
 }
+if (window == window_last && abs(new_hsp) > min_dash_spd && !free) new_hsp = min_dash_spd * sign(new_hsp); //add speed limiter to the end of attacks
 
 switch (attack)
 {
@@ -117,7 +118,7 @@ switch (attack)
 					}
 					else
 					{
-						create_hitbox(attack, 1, x, y);
+						temp_hbox = create_hitbox(attack, 1, x, y);
 						hsp = (dstrong_hsp[1]/dstrong_hsp[0]) * spr_dir;
 						sound_play(sound_get("sfx_bluetornado_start"));
 					}
@@ -343,7 +344,6 @@ switch (attack)
 		switch (window)
 		{
 			case 1:
-				if (free) can_uspec = false;
 				if (window_timer == window_end)
 				{
 					hsp = (free ? 0 : -6) * spr_dir;
@@ -485,7 +485,7 @@ switch (attack)
 			case 8: case 9: //rocket accel
 				if (window == 8 && window_timer == 1) fast_falling = false; //cancel fastfall on the first frame
 
-				if (fast_falling) vsp = fast_fall;
+				if (fast_falling && !hitpause) vsp = fast_fall;
 				else vsp = 0;
 				break;
 		}
@@ -496,10 +496,18 @@ switch (attack)
 		switch (window)
 		{
 			case 1:
-				if (window_timer == 1) sound_play(jump_sound);
+				if (window_timer == 1)
+				{
+					sound_play(jump_sound);
+					if (vsp > 0) vsp = get_window_value(attack, window, AG_WINDOW_VSPEED);
+				}
+				can_fast_fall = false;
+				break;
+			case 2:
+				can_fast_fall = true;
 				break;
 			case 3:
-				vsp = fast_fall/0.75 + ((fast_fall/0.75) * fast_falling);
+				if (!hitpause) vsp = fast_fall/0.75 + ((fast_fall/0.75) * fast_falling);
 				add_blue_blur(x, y - 32); //smear effect
 				break;
 			case 4: //landing window
@@ -515,7 +523,7 @@ switch (attack)
 				}
 				break;
 			case 5: //bounce
-				if (special_pressed && down_down && window_timer < 10 && !has_hit) //bounce spam increases height
+				if (special_pressed && down_down && window_timer < 10 && !has_hit && !was_parried) //bounce spam increases height
 				{
 					attack_end();
 					window = 2;
@@ -618,6 +626,12 @@ switch (attack)
 				}
 				trick_combo_end = true;
 				boost_trick_delay = boost_trick_delay_set;
+
+				if (!has_superform) //this timer makes it so sonic gets less boost from ending a trick too
+				{
+					if (trick_spam_penalty_mult * trick_spam_penalty < 1) trick_spam_penalty ++;
+					trick_spam_penalty_time = trick_spam_penalty_set;
+				}
 			}
 
             //var setting - will set to the max time to add more time for tricks using the trick rune

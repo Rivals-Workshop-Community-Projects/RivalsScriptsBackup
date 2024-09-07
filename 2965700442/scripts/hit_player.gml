@@ -88,8 +88,17 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 }
 
 if ((my_hitboxID.attack == AT_FSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2))
-|| (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2)){
-if ((hit_player_obj.anthem_status_id == noone || hit_player_obj.anthem_status_id == id)) {
+|| (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2)) {
+	if ("anthem_status_id" not in hit_player_obj) {
+		anthem_status_timer = 0;
+		anthem_status_stacks = [];
+		anthem_status_kb = -1;
+		anthem_status_kbs = -1;
+		anthem_status_angle = -1;
+		anthem_status_id = noone;
+		anthem_status_owner = noone;
+	}
+	if ((hit_player_obj.anthem_status_id == noone || hit_player_obj.anthem_status_id == id)) {
 		var times = my_hitboxID.hbox_num == 1 ? 1 : 3;
 		if (my_hitboxID.attack == AT_DSPECIAL) times = 3;
 		repeat(times) {
@@ -102,6 +111,7 @@ if ((hit_player_obj.anthem_status_id == noone || hit_player_obj.anthem_status_id
 			}
 		}
 		hit_player_obj.anthem_status_id = id;
+		hit_player_obj.anthem_status_owner = hit_player_obj;
 		for (var i = 0; i < array_length(hit_player_obj.anthem_status_stacks); i++) {
 			var stack = hit_player_obj.anthem_status_stacks[i];
 			if (!instance_exists(stack)) {
@@ -113,6 +123,7 @@ if ((hit_player_obj.anthem_status_id == noone || hit_player_obj.anthem_status_id
 			stack.hitbox_timer = 0;
 		}
     }
+	
 }
 
 //Gotta recalculate galaxy here
@@ -161,6 +172,13 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2) {
     }
 }
 
+if (my_hitboxID.attack == 49) {
+    if (my_hitboxID.hbox_num == 1) {
+    	my_hitboxID.destroyed = false;
+    	my_hitboxID.hitbox_timer = 999;
+    }
+}
+
 //A custom status that auto actviates the marks.
 if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_EFFECT) == 30 && impulse_active)
 {
@@ -178,6 +196,27 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_EFFECT) == 30 
 	}
 	if (my_hitboxID.hit_flipper == 10) {
 		hit_player_obj.anthem_status_angle = 45;
+	}
+}
+
+//If you're in the effect of FSpecial, do this
+if (my_hitboxID.type == 1) {
+	for (var i = 0; i < array_length(anthem_status_stacks); i++) {
+		var stack = anthem_status_stacks[i];
+		if (!instance_exists(stack)) {
+    		anthem_status_stacks = array_cut(anthem_status_stacks, i);
+    		continue;
+		}
+		var time_end = (stack.length - 1) - (i * 3);
+		if (stack.hitbox_timer >= time_end - 30) continue;
+		if (i == 0) {
+    		instance_destroy(stack.id);
+    		anthem_status_stacks = array_cut(anthem_status_stacks, i);
+    		continue;
+		}
+		else {
+		    stack.hitbox_timer -= 5;
+		}
 	}
 }
 

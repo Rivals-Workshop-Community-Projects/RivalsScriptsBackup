@@ -2,9 +2,23 @@
 
 if (attack == AT_NSPECIAL && hbox_num == 1)
 {
+    
+	if (free)
+	{
+		current_frame = (current_frame >= 8) ? 0 : current_frame+.25
+	}
+	else {
+		spawn_hit_fx(x,y, player_id.nspec_hitenemy_red)
+		destroyed = true;
+		}
+		
+	
+}
+
+if attack == AT_NSPECIAL_2 && hbox_num == 1 {
 	var gt;
 	gt = get_gameplay_time() mod 10
-	if (player_id.should_red_arrow == false and gt % 3 > 0)
+	if (gt % 3 > 0)
     {
 		var rand, flip, xpos;
 		rand = random_func(5,30,true)
@@ -15,21 +29,14 @@ if (attack == AT_NSPECIAL && hbox_num == 1)
 			createParticle(particles,1,0,0,sprite_get("fireeffect"),0,other.x, other.y,0, -1, .2, 0, 0, 1, 0, 30, true, true)
 		}
     }
-    
 	if (free)
 	{
 		current_frame = (current_frame >= 8) ? 0 : current_frame+.25
 	}
 	else {
-		if player_id.should_red_arrow == false {
-			spawn_hit_fx(x,y, player_id.nspec_hitenemy)
-		}
-		else {
-			spawn_hit_fx(x,y, player_id.nspec_hitenemy_red)
-		}
+		spawn_hit_fx(x,y, player_id.nspec_hitenemy)
 		destroyed = true;
 	}
-	
 }
 
 

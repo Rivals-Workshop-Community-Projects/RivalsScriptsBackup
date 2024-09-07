@@ -4,3 +4,4 @@ anthem_status_kb = -1;
 anthem_status_kbs = -1;
 anthem_status_angle = -1;
 anthem_status_id = noone;
+anthem_status_owner = noone;

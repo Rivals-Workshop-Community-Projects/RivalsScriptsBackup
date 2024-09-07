@@ -120,7 +120,7 @@ portrait_bounds = [x+10,y+10,x+210,y+151];
 
 //save data
 synced_vars = [cur_lang, cur_spr_set];
-if (get_synced_var((room == 114) ? 0 : self.player) < 18 && (!init || room == 114))
+if (get_synced_var((room == asset_get("network_char_select")) ? 0 : self.player) < 18 && (!init || room == asset_get("network_char_select")))
 {
     var i = 0;
     repeat (array_length(synced_vars))
@@ -133,4 +133,4 @@ if (get_synced_var((room == 114) ? 0 : self.player) < 18 && (!init || room == 11
     cur_spr_set = synced_vars[1];
     stored_spr_set = cur_spr_set;
 }
-else set_synced_var((room == 114) ? 0 : self.player, 0);
+else set_synced_var((room == asset_get("network_char_select")) ? 0 : self.player, 0);

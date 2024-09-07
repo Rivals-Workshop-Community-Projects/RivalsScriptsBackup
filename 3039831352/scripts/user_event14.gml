@@ -32,21 +32,32 @@ if ("draw_hud_type" in self)
     if (draw_hud_type == "childe") draw_sprite(sprite_get_skinned("hud_sonic_offscreen"), 0, temp_x + 30, temp_y + 30);
     if (draw_hud_type == "gw_demonhorde")
     {
-        //player icon
+        //check if the player is dead or not
+        var dead_col = (state == PS_RESPAWN || state == PS_DEAD)*0.5;
+        var hud_spr = state == PS_DEAD ? sprite_get_skinned("hud_sonic_hurt") : sprite_get_skinned("hud_sonic_norm");
+
+        //player icon backdrop
         shader_end();
-        gpu_set_fog(true, get_player_hud_color(player), 1, 0);
-        draw_sprite(sprite_get_skinned("hud_sonic_norm"), 0, temp_x + 24, temp_y + 2);
+        gpu_set_fog(true, merge_color(obj_stage_main.player_hud_colors[player-1], c_black, dead_col), 1, 0);
+        draw_sprite(hud_spr, 0, temp_x + 22, temp_y + 8);
         gpu_set_fog(false, c_white, 1, 0);
 
+        //player icon real
         static_colorO[4*8 + 0] = outline_color[0]/255;
         static_colorO[4*8 + 1] = outline_color[1]/255;
         static_colorO[4*8 + 2] = outline_color[2]/255;
         shader_start();
-        draw_sprite(sprite_get_skinned("hud_sonic_norm"), 0, temp_x + 16, temp_y + 2);
+        draw_sprite(hud_spr, 0, temp_x + 14, temp_y + 8);
         shader_end();
         static_colorO[4*8 + 0] = 0;
         static_colorO[4*8 + 1] = 0;
         static_colorO[4*8 + 2] = 0;
+        colorO[4*8 + 0] = outline_color[0]/255;
+        colorO[4*8 + 1] = outline_color[1]/255;
+        colorO[4*8 + 2] = outline_color[2]/255;
+        
+        //darken sprite on death
+        if (dead_col > 0) draw_sprite_ext(hud_spr, 0, temp_x + 14, temp_y + 8, 1, 1, 0, c_black, dead_col);
         shader_start();
     }
 }

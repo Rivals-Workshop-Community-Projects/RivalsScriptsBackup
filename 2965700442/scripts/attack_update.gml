@@ -477,6 +477,41 @@ switch (attack) {
             }
     	}
     break;
+    case 49:
+    	hsp = 0;
+    	vsp = 0;
+    	can_move = false;
+    	if (window == 1 && window_timer == 2 && !hitpause) {
+			fs_spawn_xoffset = 1;
+    	}
+    	
+    	if (window == 1 && window_timer == 12 && !hitpause) {
+			var _art = instance_create(0, 0, "obj_article2");
+			_art.obj_type = 0;
+			
+			_art = instance_create(0, 0, "obj_article2");
+			_art.obj_type = 1;
+			
+			sound_play(sound_get("sfx_anthem_final1"));
+    	}
+    	
+    	if (window == 3 && window_timer == 1 && !hitpause) {
+			var _art = instance_create(x, y, "obj_article2");
+			_art.obj_type = 2;
+			sound_play(sound_get("sfx_anthem_final3a"));
+    	}
+    	
+    	if (window == 4 && window_timer == window_end-1 && window_loops <= 15 && !hitpause) {
+    		fs_spawn_xoffset *= -1;
+    		var _spawn_x = round(x - (fs_spawn_xoffset * random_func(0, 128, true)));
+    		while (collision_circle(_spawn_x, 0, 96, asset_get("par_block"), 1, 1)) {
+    			_spawn_x += fs_spawn_xoffset * 2;
+    			if (x > room_width || x < 0) break;
+    		}
+			var _hitbox = create_hitbox(49, 1, _spawn_x, round(0));
+			_hitbox.spr_dir = 1;
+    	}
+    break;
 }
 #define wall_test(_x, _y, _w, _h, x_rel, y_rel)
 var collision_x1 = _x - _w / 2;

@@ -9,14 +9,14 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1); // jumpstart
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("dspecial_jump"));
 //set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("dspecial_startup"));
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1); // jumping
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, -4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -11);

@@ -25,7 +25,7 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
-//Whiff
+//Whiff 1
 set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
@@ -116,10 +116,10 @@ set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 1);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 42);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -70);
-set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 70);
-set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 62);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 54);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -68);
+set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 40);
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);

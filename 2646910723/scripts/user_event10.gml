@@ -95,6 +95,9 @@ if (slot == 5){
 	SSLtextDraw(temp_x+178, temp_y+10, "fName", col4, 20, 1000, fa_left, 1, 1, 1, "P" + string(slot));
 }
 
+if Gear = 0{
+	draw_sprite_ext(sprite_get("Gear"), 21, temp_x-50, temp_y-100,4,4,0,-1,1); 
+}
 
 if Gear = 1{
 	if GearX == -1 {
@@ -142,6 +145,26 @@ if Gear = 3{
 		draw_sprite_ext(sprite_get("Gear"), 9, temp_x-50, temp_y-68,4,4,0,-1,1); 
 	}
 }
+
+if Gear = 5{
+	draw_sprite_ext(sprite_get("Gear"), 16, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	if GearAir < 20{
+		if GearAir > 10{
+		draw_sprite_ext(sprite_get("Gear"), 17, temp_x-50, temp_y-68,4,4,0,-1,1); 
+		}
+	}
+	else if GearAir < 30{
+		draw_sprite_ext(sprite_get("Gear"), 18, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	}
+	else if GearAir < 45{
+		draw_sprite_ext(sprite_get("Gear"), 19, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	}
+	else {
+		draw_sprite_ext(sprite_get("Gear"), 20, temp_x-50, temp_y-68,4,4,0,-1,1); 
+	}
+
+}
+
 if Gear = 4{
 	draw_sprite_ext(sprite_get("Gear"), 11, temp_x-48, temp_y-64,4,4,0,-1,1); 
 	if hitstop && get_gameplay_time() % 4 >= 1 && GearOcd <= 0{

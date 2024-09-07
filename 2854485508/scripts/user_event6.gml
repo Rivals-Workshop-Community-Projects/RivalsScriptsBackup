@@ -16,6 +16,7 @@ switch (art_event) {
             if (enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 1 && !enemy_hitboxID.destroyed ) {
                 mamizou_mark_id = enemy_hitboxID.player_id;
                 percent -= enemy_hitboxID.damage;
+                hitpoints += ceil(enemy_hitboxID.damage * 0.6);
                 enemy_hitboxID.destroyed = 1;
                 sound_play(asset_get("sfx_leaves"));
             }

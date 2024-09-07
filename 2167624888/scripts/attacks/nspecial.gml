@@ -44,7 +44,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1); // blue arrow (red in set_attack)
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 300);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 44);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -34);
@@ -57,8 +57,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("article"));
@@ -69,7 +69,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.35);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, nspec_hitenemy_red);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);
@@ -122,7 +122,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 
-set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 4); // blue big explosion
+set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 4); // red explosion
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 4);
@@ -133,11 +133,12 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 189);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 6);
 //set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, .8);
 //set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE_FLIPPER, 3);
 
 //set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 30);
@@ -164,7 +165,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 9);
 set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("article"));
@@ -174,6 +175,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, .8);
 //set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE_FLIPPER, 3);
 
 set_hitbox_value(AT_NSPECIAL, 6, HG_PARENT_HITBOX, 6); // BLUE EXPLOSION
@@ -189,7 +191,7 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_DAMAGE, 11);
 set_hitbox_value(AT_NSPECIAL, 6, HG_ANGLE, 40);
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 6, HG_KNOCKBACK_SCALING, 1.05);
-set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("article"));
@@ -199,5 +201,6 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, .8);
 //set_hitbox_value(AT_NSPECIAL, 6, HG_ANGLE_FLIPPER, 3);
 //set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 15);

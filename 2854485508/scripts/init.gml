@@ -119,6 +119,7 @@ float_cancel = false;
 float_timer = 0;
 float_restore = false;
 float_cancel_buffer = 0;
+
 //HFX
 hfx_leaf = hit_fx_create(sprite_get("hfx_mamizou_leaf"), 16);
 hfx_leaf_half = hit_fx_create(sprite_get("hfx_mamizou_leaf_half"), 16);
@@ -127,6 +128,7 @@ hfx_leaf_half_heavy = hit_fx_create(sprite_get("hfx_smoke_half_large"), 24);
 hfx_dspec_smoke = hit_fx_create(sprite_get("dspecial_smoke"), 24);
 
 hfx_log = hit_fx_create(sprite_get("uspecial_log"), 60);
+hfx_final_smash_gate = hit_fx_create(sprite_get("final_smash_gate"), 9999);
 
 set_hit_particle_sprite(1, sprite_get("hfx_part_leaf"))
 
@@ -184,6 +186,11 @@ set_victory_bg(sprite_get("victory_bg"));
 //Po Gumbo
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Mystery Meal"
+
+//Final Smash
+fs_char_portrait_y  = 96;
+fs_char_chosen_final_smash = "custom";
+fs_chosen_trigger = "ori";
 
 //#endregion
 

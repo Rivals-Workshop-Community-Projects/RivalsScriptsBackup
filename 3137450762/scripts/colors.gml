@@ -1,5 +1,5 @@
 //La Reina colors.gml
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // La Reina (Default)
 var edit_color = 0;
@@ -126,3 +126,24 @@ set_color_profile_slot(edit_color, 1, 75, 120, 160);
 set_color_profile_slot(edit_color, 2, 185, 20, 20);
 set_color_profile_slot(edit_color, 3, 250, 220, 180);
 set_color_profile_slot(edit_color, 4, 150, 45, 70);
+
+edit_color = 16; // Senpu
+set_color_profile_slot(edit_color, 0, 22, 20, 20);
+set_color_profile_slot(edit_color, 1, 158, 45, 38);
+set_color_profile_slot(edit_color, 2, 255, 255, 255);
+set_color_profile_slot(edit_color, 3, 230, 168, 255);
+set_color_profile_slot(edit_color, 4, 22, 20, 20);
+
+edit_color = 17; // Kally
+set_color_profile_slot(edit_color, 0, 243, 133, 235);
+set_color_profile_slot(edit_color, 1, 22, 20, 40);
+set_color_profile_slot(edit_color, 2, 253, 208, 239);
+set_color_profile_slot(edit_color, 3, 243, 6, 204);
+set_color_profile_slot(edit_color, 4, 243, 80, 195);
+
+edit_color = 18; // Riptide
+set_color_profile_slot(edit_color, 0, 242, 228, 214);
+set_color_profile_slot(edit_color, 1, 15, 40, 80);
+set_color_profile_slot(edit_color, 2, 0, 199, 218);
+set_color_profile_slot(edit_color, 3, 254, 184, 0);
+set_color_profile_slot(edit_color, 4, 260, 150, 9);

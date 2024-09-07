@@ -12,7 +12,7 @@ exist_timer ++;
 if (hit_player_lock > 0) hit_player_lock = 0;
 
 //Initialization
-if (!playtest_active)
+if (!playtest_active) if ("bar_sonic_boost_down" not in obj_stage_main || !obj_stage_main.bar_sonic_boost_down)
 {
     with (oPlayer)
     {
@@ -50,6 +50,8 @@ if (is_attacking)
     window_cancel_time = get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
 
     hit_window = window;
+
+    if (y < get_stage_data(SD_TOP_BLASTZONE_Y)) y = get_stage_data(SD_TOP_BLASTZONE_Y);
 }
 else
 {
@@ -84,7 +86,7 @@ if(stats_old != stats_cur)
     stats_state = 1;
 }
 
-if(stats_state == 1)
+if (stats_state == 1)
 {
     tempvar = 0;
     repeat (array_length(boost_stat_changes))
@@ -105,7 +107,7 @@ hugging_wall = (position_meeting(x + (spr_dir ? 19 : -20), y - 16, asset_get("pa
 
 if (trick_input_time > 0 && !hitpause)
 {
-    //decides which trick too use
+    //decides which trick too use: 0 = neutral | 1 = up | 2 = right | 3 = down | 4 = left
     if (up_down) next_trick = 1;
     else if (right_down) next_trick = 2;
     else if (down_down) next_trick = 3;
@@ -149,6 +151,19 @@ if (trick_input_time > 0 && !hitpause)
 //cooldown stuff
 if (trick_input_time > 0) trick_input_time --;
 
+if (!has_superform)
+{
+    if (trick_spam_penalty >= 0)
+    {
+        trick_spam_penalty_time --;
+        if (trick_spam_penalty_time <= 0)
+        {
+            trick_spam_penalty --;
+            trick_spam_penalty_time = trick_spam_penalty_set;
+        }
+    }
+}
+
 //////////////////// COMBO COUNTER
 
 if (combo_timer > 0)
@@ -178,7 +193,10 @@ else
                 }
                 if (!has_superform)
                 {
-                    var temp_math = (i+1) * (trick_combo_end ? boost_combotrick_mult[boost_mode] : boost_comboend_mult[boost_mode]);
+                    var temp_math = (i+1) * (trick_combo_end ? boost_combotrick_mult[boost_mode] :
+                        (hurt_combo_end ? boost_comboend_hit_mult[boost_mode] : boost_comboend_mult[boost_mode])
+                    );
+                    temp_math -= temp_math * trick_spam_penalty_mult * trick_spam_penalty;
                     boost_cur += temp_math;
                 }
                 combo_voiceline = i;
@@ -191,7 +209,11 @@ else
         {
             var temp_math = has_superform ? 0 : boost_comboend_mult[boost_mode] * combo_hits;
 
-            if (!has_superform) boost_cur += temp_math;
+            if (!has_superform)
+            {
+                temp_math -= temp_math * trick_spam_penalty_mult * trick_spam_penalty;
+                boost_cur += temp_math;
+            }
             else if (trick_combo_end) rings_cur += temp_math;
         }
 
@@ -311,7 +333,7 @@ if (has_superform)
     }
 
     //transformation
-    if (rings_cur >= 50 && !is_super && !is_attacking && taunt_pressed && state_cat != SC_HITSTUN && state != PS_DEAD && state != PS_RESPAWN) set_attack(48);
+    if (rings_cur >= 50 && !is_super && taunt_pressed && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL)) set_attack(48);
 
     //the button will not work if the super sonic rune is equipped
     if ("super_form_active" not in self || !super_form_active) uses_super_colors = is_super;
@@ -323,20 +345,24 @@ else //boost mechanic
     //boost mode activate
     if (boost_cur >= boost_max && !boost_mode)
     {
-        sound_play(asset_get("mfx_star"));
-        sound_play(asset_get("sfx_icehit_medium2"));
-        var fx = spawn_hit_fx(x, y-char_height/1.75, fx_windhit[1]);
-        //fx.spr_dir = 1;
-        //fx.draw_angle = point_direction(0, 0, hitpause ? old_hsp : hsp, hitpause ? old_vsp : vsp);
-
-        white_flash_timer = 20 + (hitstop * hitpause);
-        boost_mode = true;
-        if (is_darksonic && "super_form_active" not in self)
+        if (!hurt_combo_end)
         {
-            uses_super_colors = true;
-            super_col_lerp_time = super_col_lerp_time_max;
-            user_event(1);
+            sound_play(asset_get("mfx_star"));
+            sound_play(asset_get("sfx_icehit_medium2"));
+            var fx = spawn_hit_fx(x, y-char_height/1.75, fx_windhit[1]);
+            //fx.spr_dir = 1;
+            //fx.draw_angle = point_direction(0, 0, hitpause ? old_hsp : hsp, hitpause ? old_vsp : vsp);
+
+            white_flash_timer = 20 + (hitstop * hitpause);
+            boost_mode = true;
+            if (is_darksonic && "super_form_active" not in self)
+            {
+                uses_super_colors = true;
+                super_col_lerp_time = super_col_lerp_time_max;
+                user_event(1);
+            }
         }
+        else hurt_combo_end = false;
     }
     else if (boost_cur <= 0 && boost_mode)
     {
@@ -353,29 +379,45 @@ else //boost mechanic
     //deplete boost after X amount of time passed
     if (boost_cur > 0)
     {
-        if (!playtest_active)
+        if ("bar_sonic_boost_down" in obj_stage_main && obj_stage_main.bar_sonic_boost_down || bar_sonic_boost_down)
         {
-            var invince_count = 0;
-            //checks how many players are curently respawning unless they are either teammates or they are dead
-            with (oPlayer) if (other.enemy_invince_check[player-1] != -1 && (!clone && !custom_clone || player == 5))
+            if (boost_trick_delay > 0) boost_trick_delay --;
+            
+            //deplete boost if:
+            //  - sonic is in boost mode
+            //  - not doing a combo
+            //  - can hit at least one enemy
+            //  - using final smash (+ having the post effect)
+            if ((boost_mode || !comboing) && (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0)
             {
-                invince_count += (state == PS_RESPAWN || invince_time > 0);
+                boost_cur -= 1/boost_decrease_rate[boost_mode];
             }
         }
-
-        if (boost_trick_delay > 0) boost_trick_delay --;
-        
-        //deplete boost if:
-        //  - sonic is in boost mode
-        //  - not doing a combo
-        //  - can hit at least one enemy
-        //  - using final smash (+ having the post effect)
-        if (
-            (boost_mode || !comboing) && (invince_count < enemy_count || playtest_active) &&
-            (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0
-            )
+        else
         {
-            boost_cur -= 1/boost_decrease_rate[boost_mode];
+            if (!playtest_active)
+            {
+                var invince_count = 0;
+                //checks how many players are curently respawning unless they are either teammates or they are dead
+                with (oPlayer) if (other.enemy_invince_check[player-1] != -1 && (!clone && !custom_clone || player == 5))
+                {
+                    invince_count += (state == PS_RESPAWN || invince_time > 0);
+                }
+            }
+
+            if (boost_trick_delay > 0) boost_trick_delay --;
+            
+            //deplete boost if:
+            //  - sonic is in boost mode
+            //  - not doing a combo
+            //  - can hit at least one enemy
+            //  - using final smash (+ having the post effect)
+            if ((boost_mode || !comboing) && (invince_count < enemy_count || playtest_active) &&
+                (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0
+                )
+            {
+                boost_cur -= 1/boost_decrease_rate[boost_mode];
+            }
         }
     }
 
@@ -437,7 +479,9 @@ if (is_attacking)
                         }
                     }
                     
-                    if (prev_homing_target != homing_target)
+                    if (prev_homing_target != homing_target &&
+                        (instance_exists(homing_target) && homing_target.object_index == oPlayer ||
+                        instance_exists(prev_homing_target) && prev_homing_target.object_index == oPlayer))
                     {
                         sound_play(homing_target != noone ? sound_get("sfx_homingattack_reticle") : sound_get("sfx_homingattack_reticle_gone"));
                     }
@@ -604,7 +648,6 @@ else
 }
 
 move_cooldown[AT_NSPECIAL] = 1 + !can_nspec; //if sonic lands a homing attack he can't do another one untill he lands
-move_cooldown[AT_USPECIAL] = 1 + !can_uspec;
 move_cooldown[AT_FSPECIAL] = 1 + !can_fspec;
 
 if (fspec_supercharge > 0) fspec_supercharge --;
@@ -612,21 +655,16 @@ if (fspec_supercharge > 0) fspec_supercharge --;
 if (!is_attacking || attack != AT_NSPECIAL) nspec_early = false;
 if (!is_attacking || attack != AT_DSPECIAL) dspec_jumps = 0;
 
-
-
 //reset vars (maybe should be at the bottom)
+if (state == PS_WALL_JUMP || was_free && !free) can_spawn_trick_ring = true;
 if (state == PS_WALL_JUMP || state == PS_HITSTUN || was_free && !free)
 {
-    can_uspec = true;
     dspec_started_free = false;
     trick_input_time = 0;
     trick_rune_count = 0;
-    can_spawn_trick_ring = true;
     can_nspec = true;
-    attack_should_pratfall = false;
     can_fspec = true;
 }
-//else if (instance_exists(artc_trickring)) can_spawn_trick_ring = get_player_team(artc_trickring.trick_ring_player) == get_player_team(player);
 
 if (was_free != free) was_free = free;
 
@@ -783,7 +821,7 @@ if (lang != 0)
     if (voice_cooldown > 0 && !hitpause) voice_cooldown--;
     else if (voice_cooldown == 0)
     {
-        var should_speak = 1//random_func(0, 2, true); //0-1
+        var should_speak = random_func(0, 2, true); //0-1
         if (should_speak == 1)
         {
             switch (state)
@@ -918,14 +956,15 @@ if (is_fake_x)
         var fx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("lordX_jumpscare"), 40));
         fx.depth = depth - 1;
         fx.uses_shader = false;
-        sound_play(asset_get("sfx_ice_shatter"))
+        sound_play(asset_get("sfx_ice_shatter"));
+        sound_play(sound_get("sfx_lordX"), false, 0, 0.6);
 
         if (set_up_super_colors) //super sonic colors
         {
             uses_super_colors = true;
             super_col_lerp_time = super_col_lerp_time_max;
         }
-        init_shader();
+        set_ui_element(UI_HUD_ICON, sprite_get("hud_sonic_norm")); //init_shader();
     }
 }
 if ("lord_x_decaying" in self) lord_x_decaying = (get_match_setting(SET_TIMER) > 0 && !get_match_setting(SET_PRACTICE) && !is_super);
@@ -1193,6 +1232,75 @@ if ("holyburning" in self && outline_check != outline_color) outline_check = out
 //mushroom gourge trick compatibility
 if ("sonic_mushroom_trick" in self && sonic_mushroom_trick && (!is_attacking || attack != AT_TAUNT_2)) sonic_mushroom_trick = false;
 
+//rank override
+with (obj_stage_main)
+{
+    switch (get_stage_data(SD_ID))
+    {
+        case "2924212592": //childe
+            if (match_result == 1)
+            {
+                if (get_match_setting(SET_TEAMS)) other.rank_override = team_rank;
+                else other.rank_override = final_rank[other.player-1]-1;
+            }
+            break;
+        case "2169436552": //break the targets
+            with (obj_stage_article) if (num == 3 && "end_time" in self)
+            {
+                var time_check = 0;
+                if ("max_timer" in self) time_check = max_timer;
+                else time_check = max_time;
+
+                //basic mode uses the aether mode's time as a reference, if it doesn't exist it defaults to 30 seconds
+                if (!is_aether_stage() || "max_time" not in self)
+                {
+                    var rank_check = 4; //A rank
+                    for (var i = 0; i < 4; i++) if (end_time > time_check + (i-2)*(-time_check/10)) //B - E ranks
+                    {
+                        rank_check = i;
+                        break;
+                    }
+                }
+                else if (is_aether_stage())
+                {
+                    var rank_check = 4; //A rank
+                    for (var i = 0; i < 4; i++) if (time_check - end_time > time_check - time_check/10*(i+1)) //B - E ranks
+                    {
+                        rank_check = i;
+                        break;
+                    }
+                }
+            }
+            other.rank_override = rank_check;
+            break;
+        case "2787758723": //mario world 1
+            var A_rank_time = 4800; //1:20
+            var rank_inc = 1800; //+0:30
+
+            for (var i = 4; i >= 0; i--) if (other.speedrun_timer < A_rank_time - rank_inc * (i - 4))
+            {
+                other.rank_override = i;
+                break;
+            }
+            break;
+        case "2634489514": //hallowflame
+            var A_rank_time = 14400; //4:00
+            var rank_inc = 2700; //+0:45
+
+            for (var i = 4; i >= 0; i--) if (other.speedrun_timer < A_rank_time - rank_inc * (i - 4))
+            {
+                other.rank_override = i;
+                break;
+            }
+            break;
+    }
+    if ("is_demon_horde_stage" in self && check_results == 2) //demon horde
+    {
+        if (final_rank <= 0) other.rank_override = final_rank;
+        else other.rank_override = final_rank-1;
+    }
+}
+
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
 custom_attack_grid();
@@ -1204,6 +1312,9 @@ prep_hitboxes();
 #define do_sonic_physics
 {
     //original code by rioku, modified by bar-kun
+
+    if (leave_ground_max != max_dash_spd) leave_ground_max = max_dash_spd;
+
     if (hugging_wall) //basically if sonic is walking towards a wall
     {
         new_hsp = 0;
@@ -1295,7 +1406,6 @@ prep_hitboxes();
             }
             else if (!free)
             {
-                leave_ground_max = abs(new_hsp);
                 max_jump_hsp = abs(new_hsp) < 4 ? 4 : abs(new_hsp);
                 switch (state) //speed reset
                 {
@@ -1332,25 +1442,31 @@ prep_hitboxes();
                 }
             }
         }
+        if (state == PS_PRATFALL)
+        {
+            air_max_speed *= !is_super ? 0.6 : 0.8;
+        }
     }
 }
 //custom hitbox colors system (by @SupersonicNK)
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if player_id == other && "dont_color" not in self {
-        if "col" not in self {
-            with other {
-                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
-                if other.col == 0 other.col = c_red;
-                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+    with (pHitBox) if (player_id == other && "dont_color" not in self)
+    {
+        if ("col" not in self)
+        {
+            with (other)
+            {
+                var parent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX)
+                var true_hbox_num = parent ? parent : other.hbox_num
+                other.col = get_hitbox_value(other.attack, true_hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, true_hbox_num, HG_SHAPE)
                 other.draw_colored = true;
-                if other.type == 1
-                    other.sprite_index = __hb_hd_spr[other.shape];
-                else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
-                    other.mask_index = __hb_hd_spr[other.shape];
-                else 
-                    other.draw_colored = false;
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, true_hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
                 other.draw_spr = __hb_draw_spr;
             }
         }
@@ -1516,6 +1632,69 @@ prep_hitboxes();
 	if (!check_multi) with (closest_player)
 	{
 		if (state != PS_DEAD && state != PS_RESPAWN && !invincible) //!hurtboxID.dodging && 
+		{
+			return closest_player;
+		}
+	}
+
+
+    //////////////////////////////////////////////////////////////////////
+
+    with (obj_stage_article) if ("enemy_stage_article" in self)
+	{
+        if ("bar_sonic_reticle_owner" not in self)
+        {
+            bar_sonic_reticle_owner = noone;
+            nspec_reticle_time = 0;
+        }
+
+        var temp_angle = point_direction(other.x, other.y-other.char_height/1.75, x, y-char_height/1.75);
+        
+		if (distance_to_object(other) < other.homing_dist && (check_multi || distance_to_object(other) < closest_distance) &&
+			(other.spr_dir == 1 && (temp_angle < 90 - other.homing_range[0] || temp_angle > 270 + other.homing_range[1]) ||
+			other.spr_dir == -1 && 90 + other.homing_range[0] < temp_angle && 270 - other.homing_range[1] > temp_angle))
+		{
+            if (!check_multi)
+            {
+                closest_distance = distance_to_object(other);
+                closest_player = self;
+
+                with (other)
+                {
+                    window = 3;
+                    window_timer = 0;
+                    can_nspec = true;
+                }
+            }
+			else
+            {
+                //if array is longer than 0 or the current target doesn't exist in the array, add them
+                if (array_length(other.multihome_targets_temp) <= 0 || array_find_index(other.multihome_targets_temp, self) == -1)
+                {
+                    //if there is a [noone] in the array, replace it with this player's ID
+                    if (array_find_index(other.multihome_targets_temp, noone) > -1)
+                    {
+                        var array_point = array_find_index(other.multihome_targets_temp, noone);
+                        other.multihome_targets_temp[array_point] = self;
+                    }
+                    else array_push(other.multihome_targets_temp, self); //if there is no "noone" to replace, add a new instance to the array
+                }
+            }
+		}
+
+        if (check_multi)
+        {
+            if (state >= 8)
+            {
+                var array_point = array_find_index(other.multihome_targets_temp, self);
+                other.multihome_targets_temp[array_point] = noone;
+            }
+        }
+	}
+
+    if (!check_multi) with (closest_player)
+	{
+		if (state < 8)
 		{
 			return closest_player;
 		}

@@ -51,6 +51,8 @@ sprite_change_offset("dspecial", 96, 158);
 sprite_change_offset("dspecial_air", 96, 158);
 sprite_change_offset("taunt", 96, 158);
 sprite_change_offset("taunt2", 96, 158);
+sprite_change_offset("final_smash", 96, 158);
+sprite_change_offset("fx_final_smash_bg", 80, 0);
 
 sprite_change_offset("plat", 64, 0);
 
@@ -60,6 +62,7 @@ sprite_change_offset("nspecial_rock_mask", 48, 126);
 sprite_change_offset("nspecial_rock_side_mask", 0, 40);
 sprite_change_offset("nspecial_rock_hitbox", 48, 126);
 sprite_change_offset("nspecial_rock_side_hurt", 0, 40);
+sprite_change_offset("fx_final_smash_expl", 160, 192);
 sprite_change_collision_mask("nspecial_rock_hitbox", 1, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("nspecial_rock_side_hurt", 1, 0, 0, 0, 0, 0, 0);
 

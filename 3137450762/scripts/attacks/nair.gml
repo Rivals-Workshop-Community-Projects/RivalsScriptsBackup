@@ -105,7 +105,7 @@ set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_NAIR, 3, HG_SHAPE, 0);
-set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 17);
+set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 18);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 63);

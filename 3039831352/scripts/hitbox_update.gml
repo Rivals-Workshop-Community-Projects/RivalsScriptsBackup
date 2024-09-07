@@ -5,6 +5,7 @@ if (was_parried) draw_xscale = spr_dir;
 
 //if (hitbox_timer == length) spawn_hit_fx(x, y, destroy_fx); //disappear effect when the projectile's lifetime is over
 
+if (image_yscale == 0) do_not_show = true;
 switch (attack)
 {
     case AT_DSTRONG:
@@ -76,6 +77,9 @@ switch (attack)
 
 #define check_offscreen(offset)
 {
-    if (x < get_stage_data(7) - offset || x > get_stage_data(8) + offset || y < get_stage_data(9) - offset || y > get_stage_data(10) + offset) return true;
+    if (x < view_get_xview() - offset || x > view_get_xview()+view_get_wview() + offset || y < view_get_yview() - offset || y > view_get_yview()+view_get_hview() + offset)
+    {
+        return true;
+    }
     else return false;
 }

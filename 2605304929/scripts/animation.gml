@@ -28,7 +28,7 @@ if(state == PS_DOUBLE_JUMP){
 // Intro Code
 if(state == PS_SPAWN){
 	// Genesis / Waste's
-	if((get_player_color(player) == 12 && color_shift == 1) || (get_player_color(player) == 20 && color_shift == 0)){
+	if((get_player_color(player) == 12 && color_shift == 1) || (get_player_color(player) == 21 && color_shift == 0)){
 		sprite_index = sprite_get("intro_g8");
 		print(sprite_index);
 		// Parameters of the intro sequence
@@ -46,7 +46,7 @@ if(state == PS_SPAWN){
 		
 	} 
 	// Riptide
-	else if(get_player_color(player) == 11 && color_shift == 1){
+	else if(get_player_color(player) == 9 && color_shift == 0){
 		sprite_index = sprite_get("intro_riptide");
 		intro_animation_frames_before_start = 80; // Set this to calibrate where the animation should start
 		intro_animation_strip_frames = 7;
@@ -60,7 +60,7 @@ if(state == PS_SPAWN){
 	}
 	
 	// Furi's Intro
-	else if(get_player_color(player) == 21 && color_shift == 0){
+	else if(get_player_color(player) == 8 && color_shift == 0){
 		sprite_index = sprite_get("intro_furi");
 		intro_animation_frames_before_start = 60; // Set this to calibrate where the animation should start
 		intro_animation_strip_frames = 15;

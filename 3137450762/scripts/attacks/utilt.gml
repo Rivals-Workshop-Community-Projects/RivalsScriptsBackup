@@ -3,32 +3,38 @@ var edit_attack = AT_UTILT;
 var e_window = 1;
 
 set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
-set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 
 e_window = 1; //Anticipation
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
-set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 7);
+set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 9);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(edit_attack, e_window, AG_WINDOW_HAS_SFX, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(edit_attack, e_window, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
-e_window = 2; //Smear
+e_window = 2; //Smear (active)
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 2);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 1);
 
-e_window = 3; //Hit
+e_window = 3; //Late hit (active)
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
-set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 10);
+set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 2);
+set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 2);
+
+e_window = 4; //Recovery 1
+set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
+set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 8);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(edit_attack, e_window, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-e_window = 4; //Recovery
+e_window = 5; //Recovery 2
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 6);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 3);
@@ -40,7 +46,7 @@ set_num_hitboxes(AT_UTILT, 2);
 //Top hit
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, -3);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -78);

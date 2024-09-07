@@ -119,7 +119,7 @@ roll_back_active_frames         = 4;
 roll_back_recovery_frames       = 2;
 
 // Crouch
-crouch_startup_frames   = 2;
+crouch_startup_frames   = 3;
 crouch_active_frames    = 6;
 crouch_recovery_frames  = 1;
 
@@ -168,8 +168,10 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 
 
 killarticles = false;
+bag_hit = false;
 nspec_timer = 0;
 nspec_charge = 0;
+letterflyID = 0;
 letter1ID = 0;
 letter2ID = 0;
 letter3ID = 0;
@@ -182,6 +184,7 @@ lvl1proj_exploded = false;
 lvl1proj_timer = 0;
 lvl2projID = 0;
 lvl2projhitbox = 5;
+plane_temp_angle = 0;
 planeID = 0;
 packageID = 0;
 package_exploded = false;
@@ -195,8 +198,8 @@ explo_timer = 0;
 exploID = 0;
 letter_move = false;
 mb_shoot = false;
-dspec_cancel = false;
 mb_cooldown = false;
+mailproj_hit = false;
 
 dairprojID = 0;
 mb_dair_hit = false;
@@ -205,6 +208,7 @@ spin_cooldown = 0;
 mb_spin_hit = false;
 mb_spinning = false;
 AT_HAMMER = 43;
+armor_timer = 0;
 mb_hammer_hit = false;
 AT_VAULT = 42;
 mb_vault_hit = false;
@@ -219,6 +223,7 @@ stamp_vfx = hit_fx_create( sprite_get( "hammer_stamp_vfx" ), 30 );
 letter_vfx = hit_fx_create( sprite_get( "nspecial_proj_break" ), 35 );
 letter_big_vfx = hit_fx_create( sprite_get( "letter_big_vfx" ), 32 );
 letter_small_vfx = hit_fx_create( sprite_get( "letter_small_vfx" ), 22 );
+letter_sparks_vfx = hit_fx_create( sprite_get( "letter_sparks_vfx" ), 16 );
 bag_big_vfx = hit_fx_create( sprite_get( "bag_big_vfx" ), 24 );
 letter_add_vfx = hit_fx_create( sprite_get( "letter_add_vfx" ), 35 );
 feather_big_vfx = hit_fx_create( sprite_get( "feather_big_vfx" ), 40 );

@@ -66,3 +66,20 @@ switch (state) {
         dashstop_anim_timer = 0;
     break;
 }
+
+tension_animation();
+
+#define tension_animation()
+
+//Empower hitboxes
+if (tension_level > floor(TENSION_LEVEL_AMOUNT-2))  {
+	with (pHitBox) {
+		if (player_id == other.id) {
+			if (hitbox_timer == 0) {
+				damage_original = damage;
+				damage *= 1 + (0.3 * other.tension_mult);
+				damage = ceil(damage);
+			}
+		}
+	}
+}

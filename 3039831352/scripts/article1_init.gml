@@ -49,6 +49,9 @@ fx_trickring_dirspark = player_id.fx_trickring_dirspark;
 fx_trickring_circspark = player_id.fx_trickring_circspark;
 
 
+//venus rune reflects
+venus_article_reflect = 1;
+
 ///////////////////////////////////////////////////////// ON SPAWN CODE /////////////////////////////////////////////////////////
 
 //angle setup

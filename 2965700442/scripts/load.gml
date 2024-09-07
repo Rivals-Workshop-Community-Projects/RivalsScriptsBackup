@@ -51,7 +51,9 @@ sprite_change_offset("fspecial", 32, 47, true);
 sprite_change_offset("uspecial", 64, 111, true);
 sprite_change_offset("dspecial", 32, 47, true);
 sprite_change_offset("taunt", 32, 47);
-sprite_change_offset("taunt_riptide", 48, 64);
+sprite_change_offset("final_smash", 48, 63, true);
+sprite_change_offset("final_smash_cinematic", 144, 112);
+sprite_change_offset("taunt_riptide", 48, 63);
 
 sprite_change_offset("plat", 32, 0);
 sprite_change_offset("mamizou", 40, 80);
@@ -61,7 +63,7 @@ sprite_change_offset("nspecial_proj1e", 144, 144);
 sprite_change_offset("nspecial_proj2", 48, 48);
 sprite_change_offset("nspecial_proj2e", 160, 160);
 sprite_change_offset("nspecial_proj3", 48, 48);
-sprite_change_offset("nspecial_proj3e", 256, 224)
+sprite_change_offset("nspecial_proj3e", 240, 208)
 
 sprite_change_offset("dspecial_portal_appear", 16, 80);
 sprite_change_offset("dspecial_portal_mask", 16, 80);
@@ -75,6 +77,10 @@ sprite_change_offset("fx_fspecial_proj2b", 64, 64);
 sprite_change_offset("fx_uspecial_portal", 16, 80);
 sprite_change_offset("fx_uspecial_portal_despawn", 8, 40);
 sprite_change_offset("fx_uspecial_effect", 32, 40);
+sprite_change_offset("fx_final_smash_proj", 80, 160);
+sprite_change_collision_mask("fx_final_smash_proj", 0, 0, 0, 0, 0, 0, 1);
+sprite_change_offset("fx_final_smash_pillar", 64, 64);
+sprite_change_offset("fx_final_smash_expl", 272, 416);
 
 sprite_change_offset("hud_install_fill", 24, 24);
 sprite_change_offset("hud_install_filled", 24, 24);

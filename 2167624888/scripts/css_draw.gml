@@ -38,6 +38,7 @@ alt_name[12] = "Tails";
 alt_name[13] = "Metera";
 alt_name[14] = "Hime";
 alt_name[15] = "Killer Queen";
+alt_name[16] = "Blood Moon";
 
 //GB alt
 if (get_player_color(player) == 7)

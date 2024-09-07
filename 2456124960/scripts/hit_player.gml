@@ -7,6 +7,12 @@ if (attack == AT_FAIR && false) {
 	}
 }
 
+if (my_hitboxID.attack == AT_FTILT) {
+	set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 75);
+    set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 75);
+	hit_player_obj.frozenByNate = hit_player_obj.hitstop_full * 2;
+}
+
 if (my_hitboxID.attack == AT_FAIR) {
 	sound_play(asset_get("sfx_icehit_medium1"), false, noone, 0.4);
 	sound_play(asset_get("sfx_blow_medium2"), false, noone, 0.6);
@@ -104,10 +110,10 @@ outgoingDamage = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_D
 if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_TYPE) == 1) {
 	if (activeBuffUses > 0) {
 		actionMeterFill += 2;
-		actionMeterStatus = 1 + (outgoingDamage * 2);
+		actionMeterStatus = 2 + (outgoingDamage * 3);
 	} else {
 		actionMeterFill += 5;
-		actionMeterStatus = 1 + (outgoingDamage * 2);	
+		actionMeterStatus = 2 + (outgoingDamage * 3);	
 	}
 }
 
@@ -164,6 +170,36 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
         crystal.gotParried = 1;
         crystal.article_mode = 1;
         crystal.obj_timer = 0;
+    }
+}
+
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4) {
+	spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2), hitB);
+}
+
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5) {
+	spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2), hitC);
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL) {
+    switch (my_hitboxID.hbox_num) {
+        case 1:
+            spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2) - 20, hitA2);
+            break;
+        case 2:
+            spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2) - 20, hitA2);
+            break;
+        case 3:
+            spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2) - 20, hitC3);
+            break;
+        case 5:
+            spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2) - 20, hitC2);
+            break;
+        case 6:
+            spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2) - 20, hitA2);
+            break;
+        default:
+            break;
     }
 }
 

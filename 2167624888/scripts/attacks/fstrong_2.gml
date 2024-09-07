@@ -1,7 +1,7 @@
 set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get("bluefstrong"));
 set_attack_value(AT_FSTRONG_2, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_FSTRONG_2, AG_HAS_LANDING_LAG, 3);
-set_attack_value(AT_FSTRONG_2, AG_OFF_LEDGE, 1);
+set_attack_value(AT_FSTRONG_2, AG_OFF_LEDGE, 0);
 set_attack_value(AT_FSTRONG_2, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 set_attack_value(AT_FSTRONG_2, AG_CATEGORY, 2);

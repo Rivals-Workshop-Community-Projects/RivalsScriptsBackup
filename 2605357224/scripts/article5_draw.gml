@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_get("gang"), isMalNotThere, x-60, y-67, 1, 1, 0, c_white, isFriday);

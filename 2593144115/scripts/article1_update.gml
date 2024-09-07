@@ -11,6 +11,8 @@
 //
 //player variables:
 
+
+
 if (state != 5)
 {
   
@@ -56,6 +58,7 @@ if (state != 5)
 
         if (place_meeting(x, y, pHitBox))
         {
+		
             prevhitbox = hitbox;
     	    hitbox = instance_place(x, y, pHitBox);
             if (hitbox.player_id != player_id || hitbox.player_id = player_id && hitbox.attack != AT_NSPECIAL && (hitbox.no_other_hit = 0 || (player_id.time_since_last_hit > hitbox.no_other_hit && (!hitbox.in_hitpause || hitbox.hitbox_timer > 1))))
@@ -66,7 +69,7 @@ if (state != 5)
                     {
 	                prevattack = hitbox.attack;
 	                prevgroup = hitbox.hbox_group;
-                        hitbox.player_id.has_hit = true;
+                        //hitbox.player_id.has_hit = true;
                         //prev_bubbleid = id;
                         if (hitbox.player_id = player_id)
                         { 
@@ -107,6 +110,8 @@ if (state != 5)
                         }
                         else
                         {
+                       		hitbox.player_id.has_hit = true;
+
                             if (level > 1)
                             {
                                 if (level <= 2) spawn_hit_fx(floor(x), floor(y), bubblepop2);
@@ -379,3 +384,5 @@ if (state != 0 && state != 5)
         }
 
 }
+
+

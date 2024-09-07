@@ -1,5 +1,5 @@
 // css_draw
-var num_alts = 26;
+var num_alts = 27;
 
 // Version
 
@@ -22,7 +22,7 @@ var txt = "#" + string(alt_cur);
 
 rectDraw(x + 76, y + 15, 41, 20, c_black);
 
-textDraw(x + 82, y + 19, "fName", alt_cur == 25 ? (random_func(5, 24, 1) == 0 ? c_blue : c_red) : c_white, 20, 1000, fa_left, 1, false, 1, txt);
+textDraw(x + 82, y + 19, "fName", alt_cur == 25 ? (random_func(5, 24, 1) == 0 ? c_blue : c_red) : alt_cur == 26 ? make_color_rgb(1,196,215) : c_white, 20, 1000, fa_left, 1, false, 1, txt);
 
 // Genesis glitch code
 if alt_cur == 25 
@@ -35,7 +35,11 @@ if alt_cur == 25
     draw_sprite_ext(sprite_get("soap_GX"),1,x-4,y+128,2,2,0,c_white,1);
 }
 
-
+// Riptide alt code
+if(alt_cur == 26)
+{
+    draw_sprite_ext(sprite_get("soap_riptide"),1,x-4,y+128,2,2,0,c_white,1);
+}
 
 #define rectDraw(x1, y1, width, height, color)
 

@@ -19,7 +19,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 13);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 3.5);
@@ -34,7 +34,7 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_window_value(AT_DATTACK, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_WHIFFLAG, 5);
@@ -57,6 +57,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 set_hitbox_value(AT_DATTACK, 2, HG_PARENT_HITBOX, 2);
@@ -74,7 +75,8 @@ set_hitbox_value(AT_DATTACK, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 85);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_LOCKOUT, 3);
 
@@ -94,4 +96,5 @@ set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 75);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DATTACK, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

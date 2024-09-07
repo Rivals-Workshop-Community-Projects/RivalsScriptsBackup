@@ -1,38 +1,49 @@
-if ("real_time" not in self) real_time = 0; //for some reason the timers used in the results screen run twice
+if ("real_time" not in self)
+{
+    rank_override = -1;
+    with (hit_fx_obj) if ("rank_override" in self && rank_override > -1) other.rank_override = rank_override;
+
+    var tmp_sync_vars = get_synced_var(player);
+    for (var i = 0; i < 2; i++)
+    {
+        var shift = (i*4);
+        synced_vars[i] = tmp_sync_vars >> shift & 15;
+    }
+
+    real_time = 0; //for some reason the timers used in the results screen run twice
+}
 else
 {
     real_time += 0.5;
 
     //lord X has a different "win name" and no rank
-    if (get_player_color(player) == 16 && get_match_setting(SET_SEASON) == 3 && !get_match_setting(SET_TEAMS))
+    if !(get_player_color(player) == 16 && get_match_setting(SET_SEASON) == 3 && !get_match_setting(SET_TEAMS))
     {
-        if (real_time == 1) winner_name = "so many souls... so little time";
-    }
-    else
-    {
-        if (winner_name = "Sonic (TEST) WINS!") winner_name = "Sonic Wins!";
-
-        if (get_match_setting(SET_STOCKS) > 0)
+        if (get_match_setting(SET_STOCKS) > 0 || rank_override > -1)
         {
             if (real_time == 0.5)
             {
-                if (get_match_setting(SET_TEAMS))
+                if (rank_override <= -1)
                 {
-                    team_count = 0;
-                    team_stocks = 0;
-                    for (var i = 1; i <= 4; i++) if (is_player_on(i) && get_player_team(i) == get_player_team(player))
+                    if (get_match_setting(SET_TEAMS))
                     {
-                        team_count ++;
-                        team_stocks += get_player_stocks(i);
+                        team_count = 0;
+                        team_stocks = 0;
+                        for (var i = 1; i <= 4; i++) if (is_player_on(i) && get_player_team(i) == get_player_team(player))
+                        {
+                            team_count ++;
+                            team_stocks += get_player_stocks(i);
+                        }
+                        rank = round(team_stocks/(get_match_setting(SET_STOCKS)*team_count)*5);
                     }
-                    rank = round(team_stocks/(get_match_setting(SET_STOCKS)*team_count)*5);
+                    else
+                    {
+                        stocks = round(get_player_stocks(player)/get_match_setting(SET_STOCKS)*3);
+                        damage = (get_player_damage(player) < 100);
+                        rank = stocks*2 - 1 - !damage * (stocks != 1);
+                    }
                 }
-                else
-                {
-                    stocks = round(get_player_stocks(player)/get_match_setting(SET_STOCKS)*3);
-                    damage = (get_player_damage(player) < 100);
-                    rank = stocks*2 - 1 - !damage * (stocks != 1);
-                }
+                else rank = rank_override + 1;
 
                 rank_timing = 20;
                 rank_offset_time = 220;
@@ -66,13 +77,6 @@ else
             if (rank_cur_time == rank_timing-6)
             {
                 sound_play(sound_get("sfx_rank"));
-
-                var tmp_sync_vars = get_synced_var(player);
-                for (var i = 0; i < 2; i++)
-                {
-                    var shift = (i*4);
-                    synced_vars[i] = tmp_sync_vars >> shift & 15;
-                }
 
                 switch (synced_vars[0])
                 {

@@ -79,7 +79,7 @@ else
 
 
 //super sonic alt colors raise
-spr_set_ex_offset = (get_match_setting(SET_RUNES) * (room == 114 ? -32 : -48)) + ((room == 114) * -32);
+spr_set_ex_offset = (get_match_setting(SET_RUNES) * (room == asset_get("network_char_select") ? -32 : -48)) + ((room == asset_get("network_char_select")) * -32);
 
 //buttons
 if (instance_exists(cursor_id))

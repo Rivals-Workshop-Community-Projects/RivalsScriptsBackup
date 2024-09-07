@@ -14,26 +14,11 @@ if (attack == AT_DSPECIAL) //dspec can't shoot if arrow is alr out
 if attack == AT_DSPECIAL {
 	if(nspec_charge < blue_arrow_timer){
 		should_red_arrow = true;
-    	reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
-    	reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
-    	reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING);
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE);
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
 		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START)
 	}
 	if( nspec_charge >= blue_arrow_timer)
     {
     	should_red_arrow = false;
-    	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
-    	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .8);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .8);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 361);
 		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11)
     }
     clear_button_buffer(PC_SPECIAL_PRESSED);
@@ -85,9 +70,6 @@ if (find_wisp() != -1) //if you have wisps
             break;*/
         case AT_DSPECIAL: // dspec uses nspec stuff too
             wisp_attack = true;
-            reset_attack_value(AT_NSPECIAL, AG_SPRITE);
-            reset_attack_value(AT_NSPECIAL, AG_AIR_SPRITE);
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE);
             break;
         case AT_USPECIAL:
             wisp_attack = !uspec_first;
@@ -135,7 +117,6 @@ if attack == AT_NSPECIAL {
 	reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
 	reset_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX)
 	reset_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT);
-	reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX);
 }
 
 if (nspec_charge >= blue_arrow_timer) {
@@ -162,6 +143,7 @@ if attack == AT_FSTRONG || attack == AT_FSTRONG_2 {
 	reset_hitbox_value(attack, 1, HG_ANGLE);
 	reset_hitbox_value(attack, 1, HG_BASE_KNOCKBACK);
 	reset_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER);
 }
 
 //DEBUG SHIT

@@ -8,6 +8,8 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, sound_get("soap_tail_whoosh_med"));
 
 // Extra startup (for sound)
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
@@ -20,7 +22,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("soap_tail_whoosh_sml")
 
 // Startup
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
@@ -63,7 +65,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BUBBLE_KNOCKBACK, 25);
 set_hitbox_value(AT_USTRONG, 1, HG_BUBBLE_ANGLE, 90)
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -80);

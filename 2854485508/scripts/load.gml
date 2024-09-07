@@ -52,6 +52,7 @@ sprite_change_offset("uspecial", 32, 47, true);
 sprite_change_offset("uspecial2", 32, 47, true);
 sprite_change_offset("dspecial", 48, 63, true);
 sprite_change_offset("dspecial2", 32, 47, true);
+sprite_change_offset("final_smash", 32, 47, true);
 sprite_change_offset("taunt", 32, 47);
 
 sprite_change_offset("hfx_mamizou_leaf", 64, 64);
@@ -83,3 +84,19 @@ sprite_change_offset("dspecial_smoke", 32, 48);
 sprite_change_offset("transformations_base", 36, 47);
 sprite_change_offset("transformations_touhou", 64, 94);
 sprite_change_offset("mark", 16, 16);
+
+sprite_change_offset("fx_youkai1", 64, 126);
+sprite_change_offset("fx_youkai2", 64, 126);
+sprite_change_offset("fx_youkai3", 64, 126);
+sprite_change_offset("fx_youkai4", 64, 126);
+sprite_change_offset("fx_youkai5", 32, 62);
+sprite_change_offset("fx_youkai6", 64, 126);
+sprite_change_offset("fx_youkai7", 48, 94);
+sprite_change_offset("fx_youkai8", 64, 126);
+sprite_change_offset("fx_youkai9", 64, 158);
+sprite_change_offset("fx_youkai10", 48, 94);
+
+sprite_change_offset("fx_youkai_mask1", 32, 62);
+sprite_change_offset("fx_youkai_mask2", 48, 94);
+sprite_change_offset("fx_youkai_mask3", 64, 128);
+sprite_change_offset("final_smash_gate", 64, 158);

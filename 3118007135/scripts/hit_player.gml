@@ -1,8 +1,8 @@
-#region // Variables
+//#region // Variables
 var hitmove = my_hitboxID.attack;
 var hitmove_box = my_hitboxID.hbox_num;
 var _hitplayer_dmg = get_player_damage(hit_player_obj.player);
-#endregion
+//#endregion
 
 switch(hitmove){
     case AT_FTILT:
@@ -22,6 +22,15 @@ switch(hitmove){
                 hit_player_obj.wren_riptide_id = id;
                 wren_enemy_riptide_id = hit_player_obj.id;
                 hit_player_obj.should_make_shockwave = false;
+                break;
+        }
+        break;
+    case AT_DTILT:
+        switch(hitmove_box){
+            case 3:
+                hit_player_obj.wren_riptide_id = id;
+                wren_enemy_riptide_id = hit_player_obj.id;
+                hit_player_obj.wren_stacks += 1;
                 break;
         }
         break;
@@ -52,6 +61,7 @@ switch(hitmove){
                 hit_player_obj.wren_riptide_id = id;
                 wren_enemy_riptide_id = hit_player_obj.id;
                 hit_player_obj.wren_stacks += 1;
+                print("TEST")
                 break;
         }
         break;
@@ -68,12 +78,26 @@ switch(hitmove){
                 break;
         }
         break;
+    case AT_NSPECIAL_2:
+        switch(hitmove_box){
+            case 1:
+            case 2:
+                hit_player_obj.wren_riptide_id = id;
+                wren_enemy_riptide_id = hit_player_obj.id;
+                hit_player_obj.wren_stacks += 1;
+                print("TEST")
+                break;
+        }
+        break;
     case AT_USPECIAL:
         switch(hitmove_box){
             default:
                 hit_player_obj.should_make_shockwave = false;
                 break;
             case 5:
+                hit_player_obj.wren_riptide_id = id;
+                wren_enemy_riptide_id = hit_player_obj.id;
+                hit_player_obj.wren_stacks += 1;
                 break;
         }
         if hitmove_box < 5 and hit_player_obj.hitpause{
@@ -88,6 +112,8 @@ switch(hitmove){
                 hit_player_obj.should_make_shockwave = false;
                 break;
             case 4:
+                hit_player_obj.wren_riptide_id = id;
+                wren_enemy_riptide_id = hit_player_obj.id;
                 hit_player_obj.wren_stacks += 1;
                 break;
         }
@@ -108,6 +134,11 @@ switch(hitmove){
                 hit_player_obj.y = wren_yoyo.y;
                 hit_player_obj.should_make_shockwave = false;
                 break;
+            case 2:
+                hit_player_obj.wren_riptide_id = id;
+                hit_player_obj.wren_stacks += 1;
+                wren_enemy_riptide_id = hit_player_obj.id;
+                break;
         }
         if instance_exists(wren_yoyo){
             wren_yoyo.hitstop = ext_sweet_hitstop(hitmove_box);
@@ -117,8 +148,6 @@ switch(hitmove){
         hit_player_obj.should_make_shockwave = false;
         break;
 }
-
-print(string(hit_player_obj.wren_stacks))
 
 #define ext_sweet_hitstop(_hitbox)
 get_hitstop_formula(get_player_damage(hit_player_obj.player),

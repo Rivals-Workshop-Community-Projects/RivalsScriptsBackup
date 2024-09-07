@@ -76,15 +76,15 @@ set_color_profile_slot( 4, 5, 168, 168, 121 ); //Pants
 set_color_profile_slot( 4, 6, 62, 66, 94 ); //gloves
 set_color_profile_slot( 4, 7, 72, 50, 153 ); //slippers/mouth/heart
 
-// Genesis
-set_color_profile_slot( 5, 0, 245, 238, 238 ); //Horn/static
-set_color_profile_slot( 5, 1, 99, 20, 20 ); //Shirt
-set_color_profile_slot( 5, 2, 33, 33, 33 ); //Coat
-set_color_profile_slot( 5, 3, 201, 30, 30 ); //water
-set_color_profile_slot( 5, 4, 50, 54, 54 ); //skin
-set_color_profile_slot( 5, 5, 135, 0, 0 ); //Pants
-set_color_profile_slot( 5, 6, 209, 29, 29 ); //gloves
-set_color_profile_slot( 5, 7, 238, 245, 238 ); //slippers/mouth/heart
+// Torbulha
+set_color_profile_slot( 5, 0, 254, 183, 0 ); //Horn/static
+set_color_profile_slot( 5, 1, 150, 102, 18 ); //Shirt
+set_color_profile_slot( 5, 2, 2, 198, 216 ); //Coat
+set_color_profile_slot( 5, 3, 2, 198, 216 ); //water
+set_color_profile_slot( 5, 4, 242, 228, 214 ); //skin
+set_color_profile_slot( 5, 5, 13, 36, 61 ); //Pants
+set_color_profile_slot( 5, 6, 254, 183, 0 ); //gloves
+set_color_profile_slot( 5, 7, 12, 25, 58 ); //slippers/mouth/heart
 
 // Killer Whale
 set_color_profile_slot( 6, 0, 242, 231, 178 ); //Horn/static
@@ -396,15 +396,15 @@ set_color_profile_slot( 36, 5, 79, 26, 75 ); //Pants
 set_color_profile_slot( 36, 6, 194, 0, 0 ); //gloves
 set_color_profile_slot( 36, 7, 68, 40, 115 ); //slippers/mouth/heart
 
-// Torbulha
-set_color_profile_slot( 37, 0, 254, 183, 0 ); //Horn/static
-set_color_profile_slot( 37, 1, 150, 102, 18 ); //Shirt
-set_color_profile_slot( 37, 2, 2, 198, 216 ); //Coat
-set_color_profile_slot( 37, 3, 2, 198, 216 ); //water
-set_color_profile_slot( 37, 4, 242, 228, 214 ); //skin
-set_color_profile_slot( 37, 5, 13, 36, 61 ); //Pants
-set_color_profile_slot( 37, 6, 254, 183, 0 ); //gloves
-set_color_profile_slot( 37, 7, 12, 25, 58 ); //slippers/mouth/heart
+// Genesis
+set_color_profile_slot( 37, 0, 245, 238, 238 ); //Horn/static
+set_color_profile_slot( 37, 1, 99, 20, 20 ); //Shirt
+set_color_profile_slot( 37, 2, 33, 33, 33 ); //Coat
+set_color_profile_slot( 37, 3, 201, 30, 30 ); //water
+set_color_profile_slot( 37, 4, 50, 54, 54 ); //skin
+set_color_profile_slot( 37, 5, 135, 0, 0 ); //Pants
+set_color_profile_slot( 37, 6, 209, 29, 29 ); //gloves
+set_color_profile_slot( 37, 7, 238, 245, 238 ); //slippers/mouth/heart
 
 // BigHouse
 set_color_profile_slot( 38, 0, 255, 202, 6 ); //Horn/static

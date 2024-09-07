@@ -11,29 +11,7 @@ switch(attack){
 		break;
 }
 
-if(window == 1 && window_timer = 1 && attack != AT_DSPECIAL_2){
-	dspec_cancel = false;
-}
 
-if mailboxID != 0 {
-	if dspec_cancel = true {
-		if ((((attack != AT_DSPECIAL && attack != AT_DAIR && attack != AT_BAIR && attack != AT_UTILT && attack != AT_USPECIAL && attack != AT_USPECIAL_2 && attack != AT_FSPECIAL) || ((attack == AT_FSPECIAL && window == 4 && window_timer >= 12) || (attack == AT_DAIR && window == 5)  || (attack == AT_BAIR || attack == AT_UTILT || attack == AT_USPECIAL || attack == AT_USPECIAL_2) && window == 3))) && mailboxID.letters != 0) {
-			if(hitpause){
-		    	if(special_pressed || special_down) && (down_pressed ||down_down) {
-		            attack_end();
-		            destroy_hitboxes();
-					attack = AT_DSPECIAL_2;
-					window = 1;
-					window_timer = 0;
-					sound_stop(sound_get("rapidjab"));	
-					sound_stop(sound_get("dashcharge"));	
-					hurtboxID.sprite_index = sprite_get("dspecial_act");
-					dspec_cancel = false;
-				}
-			}
-		}
-	}
-}
 
 // per-attack logic
 
@@ -200,6 +178,11 @@ switch(attack){
 		can_fast_fall = false;
 		
 			if window == 4 {
+				if hsp > 2 {
+					hsp = 3;
+				} else if hsp < -2 {
+					hsp = -3;
+				}
 			if (strong_down || (left_strong_pressed || right_strong_pressed) || attack_down || special_down) {
 			window = 5;
 			window_timer = 0;
@@ -670,7 +653,7 @@ switch(attack){
 			can_fast_fall = false 
 			
 		if window == 2 && window_timer == 1 {
-			if mailboxID.state == 0 {
+			if mailboxID.state == 0 || mailboxID.state == 2 || mailboxID.state == 3 || mailboxID.state == 4  {
 					mb_shoot = true;
 			}
 				if mailboxID.letters < 3 {
@@ -1044,13 +1027,21 @@ switch(attack){
 		mb_spin_hit = false;
 		mb_spinning = false;
 		can_wall_jump = true;
-	
-		if window == 2 || window == 3 && free {
+		
+		if window == 1 && window_timer == 1 {
+			armor_timer = 0;
+		}
+		
+		//print(armor_timer)
+		if window == 3 {
+			armor_timer++;
+		}
+		
+		if (window == 2 || (window == 3 && armor_timer < 12)) && free {
 			super_armor = true;
 		} else {
 			super_armor = false;
 		}
-		
 
 		if window == 1 && window_timer == 1 {
 			var timer1 = random_func(1, 9, true);
@@ -1085,8 +1076,8 @@ switch(attack){
 			if down_down {
 				fall_through = true;
 			}
-			if vsp > 0 && vsp < 12 {
-				vsp = vsp * 1.05;
+			if vsp > 0 && vsp < 18 {
+				vsp = vsp * 1.1;
 			}
 			
 		/*

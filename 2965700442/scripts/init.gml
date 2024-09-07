@@ -218,7 +218,9 @@ HG_MUNO_OBJECT_LAUNCH_ANGLE = i; i++;	// Override the on-hit launch direction of
 //#region Character Variables
 //Reaper's Impulse
 impulse_active = false;
+impulse_active_previous = false;
 impulse_can_activate = true;
+impulse_activation_percent = 80;
 impulse_points = 0;
 impulse_points_max = 1;
 
@@ -296,4 +298,10 @@ set_victory_theme(sound_get("sfx_victory"));
 set_victory_bg(sprite_get("victory_bg"));
 
 mamizou_transform_spr = sprite_get("mamizou");
+
+//Final Smash
+fs_char_portrait_y  = 96;
+fs_char_chosen_final_smash = "custom";
+fs_spawn_xoffset = 0;
+fs_meter_y = -24;
 //#endregion

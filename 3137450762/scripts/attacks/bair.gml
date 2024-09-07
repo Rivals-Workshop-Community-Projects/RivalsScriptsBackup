@@ -35,7 +35,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 16);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 17);
 
-e_window = 5; //YEET
+e_window = 5;//YEET
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 8);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 4);

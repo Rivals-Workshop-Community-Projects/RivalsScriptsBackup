@@ -14,3 +14,5 @@ vault_letters = 0;
 dair_letters = 0;
 fspec_letter_timer = 0;
 dspec_cancel = false;
+bag_hit = false;
+mailproj_hit = false;

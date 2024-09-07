@@ -158,6 +158,14 @@ with (hit_fx_obj) {
             visible = step_timer % 8 > 4;
         }
     }
+    if (player == other.player && hit_fx == other.hfx_final_smash_gate) {
+		if ((other.state != PS_ATTACK_AIR && other.state != PS_ATTACK_GROUND) || other.window >= 4) {
+			step_timer = hit_length;
+		}
+		else {
+			step_timer = 1;
+		}
+    }
 }
 
 with (oPlayer) {

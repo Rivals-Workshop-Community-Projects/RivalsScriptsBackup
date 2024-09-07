@@ -139,7 +139,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[22,1] = "It's Morbin Time!"
     ce[22,2] = ""
     ce[23,0] = make_color_rgb(get_color_profile_slot_r(23, 1), get_color_profile_slot_g(23, 1), get_color_profile_slot_b(23, 1));
-    ce[23,1] = "Exetior"
+    ce[23,1] = "Potemkin"
     ce[23,2] = ""
     ce[24,0] = make_color_rgb(get_color_profile_slot_r(24, 1), get_color_profile_slot_g(24, 1), get_color_profile_slot_b(24, 1));
     ce[24,1] = "Memphis Tennessee"

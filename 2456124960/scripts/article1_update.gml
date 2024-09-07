@@ -1,3 +1,7 @@
+
+
+print(string(free));
+
 if (objectType == 0) {
     obj_timer++;
     hit_lockout--;

@@ -10,8 +10,7 @@ preview_y = floor(y+6);
 
 
 if("alt_with_mods" in self) {
-	if(alt_cur == 19) flags_switcher()
-	else switcher()
+	switcher()
 }
 
 alt_old = alt_cur
@@ -35,7 +34,7 @@ var cur_x = get_instance_x(cursor_id)
 var cur_y = get_instance_y(cursor_id)
 
 update_colors();
-inside_switcher = bet(cur_x, changer.x, changer.x + changer.width) * bet(cur_y, changer.y, changer.y + changer.height)
+inside_switcher = bet(cur_x - preview_x, changer.x, changer.x + changer.width) * bet(cur_y - preview_y, changer.y, changer.y + changer.height)
 if(!inside_switcher) return 0
 
 suppress_cursor = inside_switcher
@@ -113,5 +112,5 @@ if(menu_a_pressed or menu_rb_pressed or menu_lb_pressed){
 }
 #define update_colors
 
-user_event(4)
+user_event(5)
 init_shader()
