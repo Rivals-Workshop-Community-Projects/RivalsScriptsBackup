@@ -9,7 +9,8 @@ set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 18);
-set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ell_dspecial_drop"));//sfx_ell_eject
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME,17);
@@ -53,7 +54,7 @@ set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, false);
-set_hitbox_value(AT_DAIR, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DAIR, 1, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 3 );
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, true);
 

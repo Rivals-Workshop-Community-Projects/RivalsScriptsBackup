@@ -69,16 +69,16 @@ with (oPlayer){
         if (blue_time > 600){
             blue_time = 600;
         }
-                if (state_cat == SC_AIR_NEUTRAL){
+                if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP){
                 can_djump = false;
                 }
                 if (can_djump == false){
                 	djumps = 3;
-                }
-                if (can_djump == true){
-                    djumps = 0;
-                }
-                if (state_cat == SC_AIR_COMMITTED || state_cat == SC_HITSTUN){
+                } else djumps = 0;
+                /*if (got_hit && !can_djump){
+                	can_djump = true;
+                }*/
+                if (state_cat == SC_AIR_COMMITTED || state_cat == SC_HITSTUN || state == PS_TUMBLE){
                 	can_djump = true;
                 }
                 if (state == PS_FIRST_JUMP){

@@ -8,7 +8,7 @@
 #macro BOX_CLOSE_MENU 6
 #macro BOX_CLOSE_INTERAL_MENU 7
 #macro BOX_SHIFT_COLOR_ALTS 8
-#macro BOX_WIN_QUOTE_ENABLE 9
+#macro BOX_TAP_NSPEC_TOGGLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
@@ -284,7 +284,7 @@ switch(draw_menu){
 	
 	case DRAW_MENU_EXTRA_OPTIONS:
 		// Options Buttons Detection
-		current_box_draw = BOX_WIN_QUOTE_ENABLE;
+		current_box_draw = BOX_TAP_NSPEC_TOGGLE;
 	    Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
 		
 		//current_box_draw = BOX_INTRO_DIALOG_ENABLE;
@@ -297,11 +297,11 @@ switch(draw_menu){
 		Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
 		
 		// Set Buton Press Actions
-		if(menu_box[BOX_WIN_QUOTE_ENABLE][BUTTON_PRESSED] == true){
-			if(flag_win_quote_enabled == false){flag_win_quote_enabled = true;}
-			else flag_win_quote_enabled = false;
-	        menu_box[@BOX_WIN_QUOTE_ENABLE][@BUTTON_PRESSED] = false;
-	        menu_box[@BOX_WIN_QUOTE_ENABLE][@BUTTON_CURSOR_HOVER_TIMER] = 0;
+		if(menu_box[BOX_TAP_NSPEC_TOGGLE][BUTTON_PRESSED] == true){
+			if(tap_nspec_enabled == false){tap_nspec_enabled = true;}
+			else tap_nspec_enabled = false;
+	        menu_box[@BOX_TAP_NSPEC_TOGGLE][@BUTTON_PRESSED] = false;
+	        menu_box[@BOX_TAP_NSPEC_TOGGLE][@BUTTON_CURSOR_HOVER_TIMER] = 0;
 	        //print("flag_win_quote_enabled: " + string(flag_win_quote_enabled));
 		}
 		/*
@@ -364,14 +364,14 @@ if(get_player_color(player) == 27){
 // Synced Variable Stuff -Should run to reset these valus on game load
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
-2. Status of Win Quotes Enabled - 1 bit
+2. nspec tap toggle Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
 4. Swap Inputs - 1 bit
 5. Portrait to use
 6. Alt Outfit to use
 */
 
-generated_var = generate_synced_var(color_shift,2,flag_win_quote_enabled,1,flag_round_start_dialog,1,swap_nspec_dspec_input,1,portrait_to_use,2,alt_outfit_enabled,1)
+generated_var = generate_synced_var(color_shift,2,tap_nspec_enabled,1,flag_round_start_dialog,1,swap_nspec_dspec_input,1,portrait_to_use,2,alt_outfit_enabled,1)
 set_synced_var(player, real(generated_var));
 //print(generated_var);
 

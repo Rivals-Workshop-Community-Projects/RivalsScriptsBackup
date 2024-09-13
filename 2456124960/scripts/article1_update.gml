@@ -574,7 +574,7 @@ if (objectType == 0) {
         
         with (asset_get("pHitBox")) {
             if (place_meeting(x,y,other.id) && other.player_id == player_id && other.size == 0) {
-                if (attack == AT_BAIR || attack == AT_FSTRONG || (attack == AT_FSPECIAL && hbox_num != 1 && hbox_num != 6 && hbox_num != 4) || attack == AT_FTILT || (attack == AT_JAB && hbox_num > 2)) {
+                if (attack == AT_BAIR || attack == AT_FSTRONG || (attack == AT_FSPECIAL && hbox_num != 1 && hbox_num != 6 && hbox_num != 4) || attack == AT_FTILT || (attack == AT_JAB && hbox_num > 2 && hbox_num != 9)) {
                     player_id.old_vsp = player_id.vsp;
                     player_id.old_hsp = player_id.hsp;
                     //maintains the attacking player's velocity through hitpause

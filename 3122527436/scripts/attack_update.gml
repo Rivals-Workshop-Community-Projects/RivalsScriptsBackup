@@ -122,7 +122,7 @@ case AT_NSPECIAL:
 	if window == 7{
 		sound_stop(sound_get("inhale"));
 		if window_timer == 2{
-			divine_charge = divine_charge + 60;
+			divine_charge = divine_charge + 90;
 		}
 		if window_timer == 10{
 			sound_play(sound_get("nspecial_spit"));

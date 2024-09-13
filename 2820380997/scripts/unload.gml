@@ -1,4 +1,3 @@
-
 var temp_self = player;
 var temp_opponent; //Only does one opponent
 with(asset_get("oPlayer")){

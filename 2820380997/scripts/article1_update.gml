@@ -11,10 +11,11 @@
 #macro CL_TAUNT_2 8
 #macro CL_GOT_HIT 9
 #macro CL_GOT_PARRIED 10
-// Not Used yet
+// Not Used start
 #macro CL_PARRY_START 11
 #macro CL_PARRY 12
 #macro CL_ROLL 13
+// Not used end
 #macro CL_AIR_DASH 13
 #macro CL_WAVELAND 14
 

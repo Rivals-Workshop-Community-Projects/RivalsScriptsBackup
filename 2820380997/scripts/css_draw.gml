@@ -43,7 +43,7 @@ draw_sprite_ext(sprite_get("tgp_icon"),timer/20,x+190,y+130,2,2,0,c_white,1);
 #macro BOX_CLOSE_MENU 6
 #macro BOX_CLOSE_INTERAL_MENU 7
 #macro BOX_SHIFT_COLOR_ALTS 8
-#macro BOX_WIN_QUOTE_ENABLE 9
+#macro BOX_TAP_NSPEC_TOGGLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
@@ -243,7 +243,7 @@ switch(draw_menu){
 		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
 		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "Press to enable / disable")
 		// Draw Text for status of each button
-		if(flag_win_quote_enabled){textDraw(x + 50, y + 70, "fName", c_green, 18, 50, 1, false, 1, "Enabled");}
+		if(tap_nspec_enabled){textDraw(x + 50, y + 70, "fName", c_green, 18, 50, 1, false, 1, "Enabled");}
 			else{textDraw(x + 50, y + 70, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");}
 		/*
 		if(flag_round_start_dialog){
@@ -259,7 +259,9 @@ switch(draw_menu){
 			else{textDraw(x + 150, y + 110, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");}
 		
 		// Draw Buttons for extra Options
-		draw_menu_button(BOX_WIN_QUOTE_ENABLE);
+		draw_menu_button(BOX_TAP_NSPEC_TOGGLE);
+		textDraw(x + 18, y + 67, "tinyFont", c_white, 8, 15, 1, false, 1, "NSPEC TAP");
+		
 		//draw_menu_button(BOX_INTRO_DIALOG_ENABLE);
 		draw_menu_button(BOX_SWAP_INPUTS);
 		textDraw(x + 116, y + 67, "tinyFont", c_white, 8, 15, 1, false, 1, "SWAP NSPEC DSPEC");

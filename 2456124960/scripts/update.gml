@@ -236,7 +236,7 @@ with (oPlayer) {
 }
 
 with (pHitBox) {
-    if (player_id == other.id) {
+    if (player_id == other.id && dontcolor != 1) {
 		hboxShape = -2;
 		with (other) {
 			if (get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR) != 0) {
@@ -282,16 +282,4 @@ if (healTarget != noone) {
     if (healTimer < 0) {
         healTarget = noone;
     }
-}
-
-
-if(variable_instance_exists(id,"diag")) {
-//  ADDING REGULAR DIALOGUE
-
-    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
-    diagchoice = [
-    "Alright, let's see what I can learn out of this match.",
-    "I can't afford to lose! I'm representing my world, so there's no way I can let myself look foolish.",
-    "Improvise. Overcome. Adapt.",
-    "I'd like this to be an honest match, so please don't hold in on FAir. For your own sake."]
 }

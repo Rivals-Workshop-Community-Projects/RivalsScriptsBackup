@@ -6,7 +6,9 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 6);
 
 // startup charge
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 2);
+
 
 // startup after charge
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH,8);
@@ -61,7 +63,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 18);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.2);
@@ -82,8 +84,8 @@ set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 92);
 set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 92);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 18);
-set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
-set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 45);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.2);

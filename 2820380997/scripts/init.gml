@@ -267,7 +267,7 @@ mamizou_transform_spr = sprite_get("compat_mamizou"); //Replace "X" with your sp
 // Synced Variable Stuff -Should run to reset these valus on game load
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
-2. Status of Win Quotes Enabled - 1 bit
+2. Status Tap Nspec Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
 4. Swap Nspec / Dspec - 1 bit
 5. Portrait to use - 2 bits
@@ -279,13 +279,13 @@ mamizou_transform_spr = sprite_get("compat_mamizou"); //Replace "X" with your sp
 split_var = split_synced_var(2,1,1,1,2,1);
 
 color_shift = 0; // Declare variable
-flag_win_quote_enabled = 0; // Declare variable
+tap_nspec_enabled = 0; // Declare variable
 flag_round_start_dialog = 0; // Declare variable
 swap_nspec_dspec_input = 0; // Declare Variable
 
 // Synced variable overwrite
 color_shift = split_var[0];
-flag_win_quote_enabled = split_var[1];
+tap_nspec_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
 portrait_to_use = split_var[4];
@@ -295,11 +295,11 @@ alt_outfit_enabled = split_var[5];
 countPlayers = 0;
 /*
 print("color_shift: " + string(color_shift) + string(get_gameplay_time())); // Color_Shift;
-print("flag_win_quote_enabled: " + string(flag_win_quote_enabled) + string(get_gameplay_time())); // WinQuote
+
 print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_gameplay_time())); // Round Start Dialog
 print("swap_nspec_dspec_input: "+ string(swap_nspec_dspec_input) + string(get_gameplay_time())); // Round Start Dialog
 */
-
+//print("tap_nspec_enabled: " + string(tap_nspec_enabled) + "/ Frame: " + string(get_gameplay_time())); // WinQuote
 // Reload on round start
 manual_init_shader_call = true;
 init_shader();

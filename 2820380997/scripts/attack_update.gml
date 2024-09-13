@@ -519,6 +519,11 @@ switch(attack){
 		clone_object_ID = instance_create((spr_dir * 30) + x,y,"obj_article1");
 		clone_object_ID.spr_dir = -1 * spr_dir;
 		vfx_smoke_object = spawn_hit_fx(clone_object_ID.x + (0 * spr_dir),clone_object_ID.y-30,vfx_smoke);
+		// Ensure these are false to ensure it doesn't happen during Nspec spawn
+		clone_object_ID.clone_uspecial_player_throwing_clone = false;
+		clone_object_ID.clone_uspecial_clone_throwing_player = false;
+		clone_object_ID.clone_fspecial_player_throwing_clone = false;
+		clone_object_ID.clone_fspecial_clone_throwing_player = false;
 		}
 		break;
 	
@@ -533,17 +538,39 @@ switch(attack){
 	}
 		break;
 	
+	// Comtrolling Clone
 	case AT_EXTRA_1:
 		can_fast_fall = false;
-		if(special_down == true){
-			set_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE,9) // 9 = Looping window
+		// Normal Version with held
+		if(tap_nspec_enabled == false){
+			if(special_down == true){
+				set_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE,9) // 9 = Looping window
+			}
+			else reset_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE);
 		}
-		else reset_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE);
+		
+		// Alt control version where you tap
+		if(window == 2){
+			if(tap_nspec_enabled == true){
+				//print("Window:" + string(window) + "Window_timer" + string(window_timer) + "Special Pressed:" + string(special_pressed));
+				if(special_pressed == true){
+					reset_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE);
+					window_timer = 1;
+					window = 3;
+				}
+				else set_window_value(AT_EXTRA_1,2,AG_WINDOW_TYPE,9);
+			}
+		}
+		
+		// Clone control in window 2
 		if(window == 2 && right_down){ clone_walk_direction = 1;}
 		else if(window == 2 && left_down){ clone_walk_direction = -1;}
 		else clone_walk_direction = 0;
+		
+		// Clear special button press
 		if(window == 3){clear_button_buffer(PC_SPECIAL_PRESSED);}
 		break;
+		
 	case AT_FSPECIAL:
 	case AT_USPECIAL:
 		if(instance_exists(clone_object_ID) == false && instance_exists(wisp_object_ID) == false && window == 1 && window_timer == 8){

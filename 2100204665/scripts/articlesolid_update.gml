@@ -66,7 +66,9 @@ if (state == 3){
                 if (collision_rectangle(x + 4, y + 4, x - 4, y, other, false, true) && ground_type == 1){
                     y -= 16;
                     free = true;
+                    if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_HITSTUN || state == PS_PRATLAND){
                     state = PS_PRATFALL;
+                    }
                 }
             }
         }

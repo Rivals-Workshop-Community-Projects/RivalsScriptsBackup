@@ -39,7 +39,7 @@ switch(state)
         var x_true = x;
         var y_true = y;
     
-        if (state_timer > 136)
+        if (state_timer > 110)
         {
             if !(has_rune("E"))
             {

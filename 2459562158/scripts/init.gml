@@ -20,7 +20,7 @@ dash_turn_time = 12;
 dash_turn_accel = 0.85;
 dash_stop_time = 6;
 dash_stop_percent = .3; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .6;
+ground_friction = .4;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -31,7 +31,7 @@ leave_ground_max = 4 + has_rune("J"); //the maximum hsp you can have when you go
 max_jump_hsp = 4 + has_rune("J"); //the maximum hsp you can have when jumping from the ground
 air_max_speed = 3.5 + has_rune("J"); //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .25 + has_rune("J") * 0.15;
+air_accel = .3 + has_rune("J") * 0.15;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .035;
 max_djumps = 1 + has_rune("C");

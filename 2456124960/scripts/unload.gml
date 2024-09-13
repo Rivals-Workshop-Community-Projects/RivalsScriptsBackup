@@ -67,6 +67,7 @@ if (!nate_handled_victory_quote)
     smuggler.persistent = true; //survive room end
     smuggler.type = 2;
     smuggler.length = 60; //will destroy itself automatically after one second.
+    smuggler.dontcolor = 1;
     
     smuggler.nate_victory_screen_array = transfer_array;
     //smuggler.uhc_batteries = uhc_batteries;

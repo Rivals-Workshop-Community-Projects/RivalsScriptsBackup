@@ -9,7 +9,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hu
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 
 //startup
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 26);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_hair"));
@@ -100,11 +100,11 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 5);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -15);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 220);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 90);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 90);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 110);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 110);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 5 + has_rune("H") * 3); 
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 45);

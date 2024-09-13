@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 28 );
 
 // Keebo
 set_color_profile_slot( 1, 0, 253, 170, 10 ); //Body 1
@@ -285,6 +285,26 @@ set_color_profile_slot( 25, 4, 255, 127, 0 ); //Star 2
 set_color_profile_slot( 25, 5, 217, 51, 0 ); //Star 3
 set_color_profile_slot( 25, 6, 217, 51, 0 ); //Eyes
 set_color_profile_slot( 25, 7, 255, 255, 255 ); //Whites
+
+// Halloweebo
+set_color_profile_slot( 26, 0, 255, 149, 87 ); //Body 1
+set_color_profile_slot( 26, 1, 161, 102, 0 ); //Body 2
+set_color_profile_slot( 26, 2, 255, 46, 46 ); //Mout
+set_color_profile_slot( 26, 3, 165, 232, 19 ); //Star
+set_color_profile_slot( 26, 4, 255, 161, 0 ); //Star 2
+set_color_profile_slot( 26, 5, 252, 0, 156 ); //Star 3
+set_color_profile_slot( 26, 6, 0, 0, 0 ); //Eyes
+set_color_profile_slot( 26, 7, 255, 255, 255 ); //Whites
+
+// Christbo
+set_color_profile_slot( 27, 0, 21, 168, 60 ); //Body 1
+set_color_profile_slot( 27, 1, 7, 97, 49 ); //Body 2
+set_color_profile_slot( 27, 2, 255, 0, 0 ); //Mout
+set_color_profile_slot( 27, 3, 255, 255, 255 ); //Star
+set_color_profile_slot( 27, 4, 179, 219, 255 ); //Star 2
+set_color_profile_slot( 27, 5, 117, 152, 255 ); //Star 3
+set_color_profile_slot( 27, 6, 251, 255, 0 ); //Eyes
+set_color_profile_slot( 27, 7, 255, 255, 255 ); //Whites
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

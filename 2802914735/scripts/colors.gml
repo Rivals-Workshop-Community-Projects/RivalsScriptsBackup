@@ -56,13 +56,13 @@ set_color_profile_slot( 2, 5, 16, 155, 62 ); //Stems
 set_color_profile_slot( 2, 6, 255, 216, 202 ); //Skin
 set_color_profile_slot( 2, 7, 234, 199, 143 ); //Shoes
 
-// Samurai Woman
-set_color_profile_slot( 3, 0, 255, 119, 0 ); //Hair
-set_color_profile_slot( 3, 1, 255, 33, 107 ); //Dress
-set_color_profile_slot( 3, 2, 79, 147, 255 ); //Hakama
-set_color_profile_slot( 3, 3, 79, 147, 255 ); //Flowers
-set_color_profile_slot( 3, 4, 123, 255, 0 ); //Sash
-set_color_profile_slot( 3, 5, 79, 147, 255 ); //Stems
+// Parallel Worlds
+set_color_profile_slot( 3, 0, 254, 77, 115 ); //Hair
+set_color_profile_slot( 3, 1, 255, 241, 241 ); //Dress
+set_color_profile_slot( 3, 2, 244, 225, 184 ); //Hakama
+set_color_profile_slot( 3, 3, 255, 241, 241 ); //Flowers
+set_color_profile_slot( 3, 4, 237, 67, 74 ); //Sash
+set_color_profile_slot( 3, 5, 255, 241, 241 ); //Stems
 set_color_profile_slot( 3, 6, 255, 216, 202 ); //Skin
 set_color_profile_slot( 3, 7, 234, 199, 143 ); //Shoes
 
@@ -236,15 +236,15 @@ set_color_profile_slot( 20, 5, 117, 186, 167 ); //Stems
 set_color_profile_slot( 20, 6, 255, 223, 196 ); //Skin
 set_color_profile_slot( 20, 7, 234, 199, 143 ); //Shoes
 
-// Acidic
-set_color_profile_slot( 21, 0, 177, 106, 240 ); //Hair
-set_color_profile_slot( 21, 1, 79, 79, 79 ); //Dress
-set_color_profile_slot( 21, 2, 96, 181, 74 ); //Hakama
-set_color_profile_slot( 21, 3, 96, 181, 74 ); //Flowers
-set_color_profile_slot( 21, 4, 62, 117, 48 ); //Sash
+// Death's Vessel
+set_color_profile_slot( 21, 0, 227, 217, 250 ); //Hair
+set_color_profile_slot( 21, 1, 110, 93, 208 ); //Dress
+set_color_profile_slot( 21, 2, 221, 218, 239 ); //Hakama
+set_color_profile_slot( 21, 3, 110, 93, 208 ); //Flowers
+set_color_profile_slot( 21, 4, 110, 93, 208 ); //Sash
 set_color_profile_slot( 21, 5, 96, 181, 74 ); //Stems
-set_color_profile_slot( 21, 6, 255, 216, 202 ); //Skin
-set_color_profile_slot( 21, 7, 234, 199, 143 ); //Shoes
+set_color_profile_slot( 21, 6, 115, 156, 140 ); //Skin
+set_color_profile_slot( 21, 7, 115, 156, 140 ); //Shoes
 
 // Ambrosia
 set_color_profile_slot( 22, 0, 87, 87, 87 ); //Hair
@@ -256,13 +256,13 @@ set_color_profile_slot( 22, 5, 230, 137, 232 ); //Stems
 set_color_profile_slot( 22, 6, 255, 216, 202 ); //Skin
 set_color_profile_slot( 22, 7, 234, 199, 143 ); //Shoes
 
-// With Love
-set_color_profile_slot( 23, 0, 255, 171, 232 ); //Hair
-set_color_profile_slot( 23, 1, 75, 75, 161 ); //Dress
-set_color_profile_slot( 23, 2, 255, 240, 254 ); //Hakama
-set_color_profile_slot( 23, 3, 255, 240, 254 ); //Flowers
-set_color_profile_slot( 23, 4, 75, 75, 161 ); //Sash
-set_color_profile_slot( 23, 5, 255, 240, 254 ); //Stems
+// Kind Jester
+set_color_profile_slot( 23, 0, 162, 59, 60 ); //Hair
+set_color_profile_slot( 23, 1, 215, 187, 233 ); //Dress
+set_color_profile_slot( 23, 2, 242, 230, 224 ); //Hakama
+set_color_profile_slot( 23, 3, 230, 213, 101 ); //Flowers
+set_color_profile_slot( 23, 4, 255, 33, 103 ); //Sash
+set_color_profile_slot( 23, 5, 215, 187, 233 ); //Stems
 set_color_profile_slot( 23, 6, 255, 216, 202 ); //Skin
 set_color_profile_slot( 23, 7, 234, 199, 143 ); //Shoes
 
@@ -277,13 +277,13 @@ set_color_profile_slot( 24, 6, 255, 235, 153 ); //Skin
 set_color_profile_slot( 24, 7, 214, 192, 113 ); //Shoes
 
 // Festive
-set_color_profile_slot( 25, 0, 255, 220, 43 ); //Hair
+set_color_profile_slot( 25, 0, 255, 236, 135 ); //Hair
 set_color_profile_slot( 25, 1, 255, 241, 241 ); //Dress
 set_color_profile_slot( 25, 2, 255, 255, 255 ); //Hakama
 set_color_profile_slot( 25, 3, 255, 255, 255 ); //Flowers
-set_color_profile_slot( 25, 4, 201, 248, 255 ); //Sash
+set_color_profile_slot( 25, 4, 184, 246, 255 ); //Sash
 set_color_profile_slot( 25, 5, 255, 255, 255 ); //Stems
-set_color_profile_slot( 25, 6, 176, 117, 67 ); //Skin
+set_color_profile_slot( 25, 6, 176, 117, 69 ); //Skin
 set_color_profile_slot( 25, 7, 135, 90, 51 ); //Shoes
 
 // Noodles
@@ -296,13 +296,13 @@ set_color_profile_slot( 26, 5, 70, 184, 70 ); //Stems
 set_color_profile_slot( 26, 6, 255, 218, 171 ); //Skin
 set_color_profile_slot( 26, 7, 234, 199, 143 ); //Shoes
 
-// For The Occassion
-set_color_profile_slot( 27, 0, 225, 34, 47 ); //Hair
-set_color_profile_slot( 27, 1, 61, 61, 61 ); //Dress
-set_color_profile_slot( 27, 2, 255, 255, 255 ); //Hakama
-set_color_profile_slot( 27, 3, 255, 255, 255 ); //Flowers
-set_color_profile_slot( 27, 4, 255, 235, 110 ); //Sash
-set_color_profile_slot( 27, 5, 255, 255, 255 ); //Stems
+// Samurai Woman
+set_color_profile_slot( 27, 0, 255, 119, 0 ); //Hair
+set_color_profile_slot( 27, 1, 255, 33, 107 ); //Dress
+set_color_profile_slot( 27, 2, 79, 147, 255 ); //Hakama
+set_color_profile_slot( 27, 3, 79, 147, 255 ); //Flowers
+set_color_profile_slot( 27, 4, 123, 255, 0 ); //Sash
+set_color_profile_slot( 27, 5, 79, 147, 255 ); //Stems
 set_color_profile_slot( 27, 6, 255, 216, 202 ); //Skin
 set_color_profile_slot( 27, 7, 234, 199, 143 ); //Shoes
 

@@ -37,6 +37,10 @@ if (my_hitboxID.attack == AT_DSPECIAL){
     }
 }
 
+if(!hit_player_obj.can_djump && hit_player_obj.blue){
+    hit_player_obj.can_djump = true;
+}
+
 if (my_hitboxID.attack == AT_FSPECIAL){
     
     move_cooldown[AT_FSPECIAL] = 40;
