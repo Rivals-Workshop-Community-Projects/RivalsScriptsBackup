@@ -164,6 +164,10 @@ switch (attack){
         }
     }
     if (window == 2){
+        if (instance_exists(bone_spire) && bone_spire.state == 3){
+            free = true;
+            state = PS_PRATFALL;
+        }
         can_bone = false;
         if (window_timer < 4){
             hsp*= 0.5;
