@@ -1,16 +1,4 @@
 torched = false;
-if (has_rune("L")){
-	if (attack == AT_FTILT 
-	|| attack == AT_EXTRA_1 
-	|| (attack == AT_NAIR && hbox_num == 4) 
-	|| attack == AT_FAIR 
-	|| attack == AT_BAIR 
-	|| attack == AT_FSTRONG 
-	|| attack == AT_NSPECIAL 
-	|| attack == 49){
-		torched = true
-	}
-}
 
 if (attack == AT_FTILT 
 || attack == AT_EXTRA_1 
@@ -22,6 +10,10 @@ if (attack == AT_FTILT
 || attack == 49){
     img_spd = 0.5;
 	collision_sprite = sprite_get("pea");
+	if (has_rune("L")){
+		torched = true
+	}
+	
 }
 
 torch_damage_mult = round(damage*2);
@@ -31,8 +23,8 @@ torch_hsp_mult = hsp*1.3;
 if (attack == AT_NSPECIAL && hbox_num == 1){
 	if (player_id.free){
 		grounds = -1;
-		hsp = 13 * spr_dir;
-		vsp = 9;
+		hsp -= 3 * spr_dir;
+		vsp += 9;
 	}
 }
 

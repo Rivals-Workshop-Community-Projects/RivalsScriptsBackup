@@ -144,6 +144,20 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.14"
+        patch_note_text[i++] =  
+
+"Oops. Fixed Crouch and Jump sprites from being too small."
+
+        patch_note_title[i] = "2.13"
+        patch_note_text[i++] =  
+
+"Indexed every core sprite in Carol's sprites folder that can be indexed without losing anything. This should push her file size below 4MB.
+
+Simplified unnecessary extra colours such as mixed outline colours.
+
+Reanimated bike taunt so that Carol's head moves forward during the opening of it."
+
         patch_note_title[i] = "2.12"
         patch_note_text[i++] =  
 

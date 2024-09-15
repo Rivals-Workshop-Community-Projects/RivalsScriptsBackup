@@ -1,5 +1,5 @@
 if (my_hitboxID.attack == AT_USPECIAL_2){
-    take_damage (player, -1, 3)
+    take_damage (player, -1, 4)
 }
 
 if (my_hitboxID.attack == AT_DSTRONG){

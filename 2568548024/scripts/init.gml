@@ -46,6 +46,7 @@ backgroundIndex = 1; //default is last bg
 doDeathShake = false;
 
 
+
 /*
 music:
 Magical Sound Shower

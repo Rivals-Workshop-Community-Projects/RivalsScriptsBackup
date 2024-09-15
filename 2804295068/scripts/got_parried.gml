@@ -8,3 +8,7 @@ if (my_hitboxID.attack == AT_DAIR){
 	}
 	sound_stop (asset_get ("sfx_spin_longer"));
 }
+
+if (my_hitboxID.attack == 49){
+	hit_player_obj.invincible = false;
+}

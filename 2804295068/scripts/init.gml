@@ -36,7 +36,7 @@ prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 7;
+walljump_hsp = 6;
 walljump_vsp = 13;
 walljump_time = 32;
 max_fall = 9; //maximum fall speed without fastfalling
@@ -98,14 +98,44 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 0;
 
+set_victory_bg(sprite_get("winbg"));
+if (get_player_color(player) == 17) || (get_player_color(player) == 18){
+	set_victory_theme(sound_get("finalfanfare"));
+} else {
+	set_victory_theme( sound_get( "winmusic" ));
+}
+
+set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait"));
+set_ui_element(UI_HUD_ICON, sprite_get("hud"));
+set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt"));
+set_ui_element(UI_OFFSCREEN, sprite_get("offscreen"));
+set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
+set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small"));
+switch get_player_color(player){
+	case 7:
+        set_ui_element(UI_WIN_PORTRAIT, sprite_get("gb_portrait"));
+        set_ui_element(UI_WIN_SIDEBAR, sprite_get("gb_result_small"));
+	break;
+	case 16:
+        set_ui_element(UI_WIN_PORTRAIT, sprite_get("cosmic_portrait"));
+        set_ui_element(UI_HUD_ICON, sprite_get("cosmic_hud"));
+        set_ui_element(UI_HUDHURT_ICON, sprite_get("cosmic_hurt"));
+        set_ui_element(UI_OFFSCREEN, sprite_get("cosmic_offscreen"));
+        set_ui_element(UI_CHARSELECT, sprite_get("cosmic_charselect"));
+        set_ui_element(UI_WIN_SIDEBAR, sprite_get("cosmic_result_small"));
+	break;
+}
+
 firepea_sprite = sprite_get("pea_torched");
 nspecial_charge = 0;
 boom = false;
 bean_x = 0;
 bean_y = 0;
+
 bean_bomb_recharge = 0;
 torchwood_recharge = 0;
-timer = 0;
+alert_text_timer = 0;
+
 airraid_used = false;
 hover_used = false;
 hover_pratfall = false;
@@ -128,5 +158,11 @@ pot_compat_text = "Roasted Sugar Snap Peas"
 arena_title = "The Garden's First Defender";
 swallowed = 0;
 enemykirby = 0;
+knight_compat_dream = 
+    [
+        "...peas...was never an option...",
+        "...peased...to meet you...",
+        "...many...forms..."
+    ]
 
 user_event(0);

@@ -47,41 +47,64 @@
 
 if (state != 2){
     with pHitBox{
-	    //firepea
-	    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_FTILT || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
-	    	if (!torched){
-	            torched = true;
-				with obj_article1{
-					if (player_id == other.player_id){
-						state_timer += 180
+		if collision_rectangle(
+		other.x - 24, 
+		other.y - 72, 
+		other.x + 24, 
+		other.y, 
+		self, true, false) 
+		&& (player_id == other.player_id){
+			//firepea
+			if (attack == AT_FTILT 
+			|| attack == AT_EXTRA_1 
+			|| (attack == AT_NAIR && hbox_num == 4) 
+			|| attack == AT_FAIR 
+			|| attack == AT_BAIR 
+			|| attack == AT_NSPECIAL){
+				if (!torched){
+					torched = true;
+					with other{
+						state_timer += 180;
 					}
 				}
-	    	}
-		}
-		//final smash
-		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == 49){
-	    	if (!torched){
-	            torched = true;
-				if (hbox_num == 3){
-					with obj_article1{
-						if (player_id == other.player_id){
-							state = 2
-							state_timer = 0
+			}
+			if (attack == AT_FSTRONG){
+				if (!torched){
+					torched = true;
+					if (hbox_num != 4){
+						with other{
+							state_timer += 60;
+						}
+					} else {
+						with other{
+							state_timer += 540;
 						}
 					}
 				}
-	    	}
-		}
-		//bean
-		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_FSPECIAL && hbox_num == 1){
-	        hitbox_timer += 120
-			vsp += -1.25
-			hsp += 2*spr_dir
-			sound_play (sound_get ("wakeup"));
-			with obj_article1{
-				if (player_id == other.player_id){
-					state = 2
-					state_timer = 0
+			}
+			//final smash
+			if (attack == 49){
+				if (!torched){
+					torched = true;
+					with other{
+						state_timer = 0;
+					}
+					if (hbox_num == 3){
+						with other{
+							state = 2;
+						}
+					}
+				}
+			}
+			//bean
+			if (attack == AT_FSPECIAL && hbox_num == 1){
+				hitbox_timer += 120
+				vsp += -1.25
+				hsp += 2*spr_dir
+				sound_play (sound_get ("wakeup"));
+				with other{
+					state = 2;
+					state_timer = 0;
 				}
 			}
 	    }
@@ -211,7 +234,7 @@ if (sprite_index != new_sprite){
 
 
 //delete if out of bounds
-if (y > (room_height + 128)){
+if (y > (room_height + 192)){
     sound_play (sound_get ("shovel"));
     instance_destroy();
     exit;

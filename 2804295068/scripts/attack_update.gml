@@ -11,15 +11,22 @@ with (obj_article1){
     }
 }
 
+if (attack == AT_JAB) && (window == 6){
+    if (attack_pressed) && ((right_down - left_down == spr_dir) 
+	|| (right_stick_pressed - left_stick_pressed == spr_dir))
+	&& !(up_down || down_down){
+	    set_attack( AT_FTILT );
+	}
+}
+
 if (attack == AT_FTILT){
 	if (window == 2 || window == 5) && (window_timer == 1){
 		move_cooldown[AT_FTILT] = 30
 	}
 	if (window == 3){
-        if (((attack_pressed && left_down) || (left_stick_pressed && !left_strong_pressed)) && spr_dir = 1){
-		    set_attack( AT_EXTRA_1 );
-		}
-        if (((attack_pressed && right_down) || (right_stick_pressed && !right_strong_pressed) ) && spr_dir = -1){
+        if (attack_pressed) && ((right_down - left_down == -spr_dir) 
+		|| (right_stick_pressed - left_stick_pressed == -spr_dir))
+		&& !(up_down || down_down){
 		    set_attack( AT_EXTRA_1 );
 	    }
 	}
@@ -84,7 +91,6 @@ if (attack == AT_DAIR){
         can_fast_fall = true;
     }else{
 	    can_fast_fall = false;
-		hsp = clamp(hsp, -4, 4);
 	}
 	if (window == 2){
         can_wall_jump = true
@@ -316,6 +322,7 @@ if (attack == AT_FSPECIAL){
 		        bean_bomb_recharge = 0
 	        } else if (bean_bomb_recharge < 450){
 	        	sound_play (sound_get ("buzzer"));
+				alert_text_timer = 32;
 			}
         }
 	}
@@ -327,17 +334,24 @@ if (attack == AT_USPECIAL){
             hsp = clamp(hsp, -2, 2);
 		}
 	}
-	if (window == 2){
+	if (window == 2 || window == 3){
 	    with (obj_article1){
-		    if player_id = other.id{
-	            if place_meeting(x, y, other) && (state != 2){
-				    with player_id{
+		    if (player_id == other.id) && (state != 2){
+				with other{
+					if collision_rectangle(
+					other.x - 32, 
+					other.y - 72, 
+					other.x + 32, 
+					other.y, 
+					self, true, false){
 						set_attack( AT_USPECIAL_2 );
-						take_damage (player, -1, 3)
+						take_damage (player, -1, 4)
 						sound_play (sound_get ("wakeup"));
+						with other{
+							state = 2;
+							state_timer = 0;
+						}
 					}
-					state = 2
-					state_timer = 0
 				}
 			}
 		}
@@ -398,6 +412,7 @@ if (attack == AT_DSPECIAL){
 				torchwood_recharge = 0
 			} else if (!torchwood_exists){
 			    sound_play (sound_get ("buzzer"));
+				alert_text_timer = 32;
 			}
         }
     }
@@ -508,15 +523,17 @@ if (attack == 49){
             vsp = lengthdir_y(max_speed, fly_dir);
         }
 	}
-	if (window == 2 || window == 3 || window == 4){
-		if (window_timer mod 2 == 0){
-			create_hitbox( 49, 1, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
-		}
-		if (window_timer mod 2 == 1){
-			create_hitbox( 49, 2, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
-		}
-		if (window_timer mod 5 == 0){
-			sound_play (asset_get ("sfx_bubblepop"));
+	if (!hitpause && !hitstop){
+		if (window == 2 || window == 3 || window == 4){
+			if (window_timer mod 2 == 0){
+				create_hitbox( 49, 1, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
+			}
+			if (window_timer mod 2 == 1){
+				create_hitbox( 49, 2, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
+			}
+			if (window_timer mod 5 == 0){
+				sound_play (asset_get ("sfx_bubblepop"));
+			}
 		}
 	}
 }

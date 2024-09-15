@@ -1,9 +1,3 @@
-if (get_player_color(player) == 17) || (get_player_color(player) == 18){
-	set_victory_theme(sound_get("finalfanfare"));
-} else {
-	set_victory_theme( sound_get( "winmusic" ));
-}
-
 sprite_change_offset("idle", 64, 94);
 sprite_change_offset("hurt", 64, 94);
 sprite_change_offset("hurtground", 64, 94);
@@ -49,7 +43,7 @@ sprite_change_offset("dair", 64, 94);
 sprite_change_offset("fstrong", 64, 94);
 sprite_change_offset("fstrong_airraid", 64, 94);
 sprite_change_offset("ustrong", 64, 126);
-sprite_change_offset("dstrong", 128, 94);
+sprite_change_offset("dstrong", 80, 94);
 sprite_change_offset("nspecial", 64, 94);
 sprite_change_offset("fspecial", 64, 94);
 sprite_change_offset("uspecial", 64, 94);
@@ -80,21 +74,10 @@ sprite_change_offset("crouchbox", 64, 94);
 sprite_change_offset("wait", 64, 94);
 sprite_change_offset("wait2", 64, 94);
 
-sprite_change_offset("jab_kirby", 32, 62);
+sprite_change_offset("kirby", 32, 62);
 sprite_change_offset("helpless", 64, 94);
 
-if (get_player_color(player) == 7){
-	set_victory_portrait( sprite_get( "gb_portrait" ));
-	set_victory_sidebar( sprite_get( "gb_result_small" ));
-}
-if (get_player_color(player) == 14){
-	if object_index == oPlayer {
-        set_ui_element(UI_WIN_PORTRAIT, sprite_get("cosmic_portrait"));
-        set_ui_element(UI_HUD_ICON, sprite_get("cosmic_hud"));
-        set_ui_element(UI_HUDHURT_ICON, sprite_get("cosmic_hurt"));
-        set_ui_element(UI_OFFSCREEN, sprite_get("cosmic_offscreen"));
-        set_ui_element(UI_CHARSELECT, sprite_get("cosmic_charselect"));
-        set_ui_element(UI_WIN_SIDEBAR, sprite_get("cosmic_result_small"));
-    }
-}
+sprite_change_offset("hud", 0, -2);
+sprite_change_offset("hudhurt", 0, -2);
+sprite_change_offset("offscreen", 16, 18);
 sprite_change_offset("cosmic_offscreen", 16, 18);

@@ -3,7 +3,7 @@ if (get_player_color(player) == 7){
     outline_color = [35, 67, 49];
 }
 //cosmic alt
-if (get_player_color(player) == 14){
+if (get_player_color(player) == 16){
     outline_color = [255, 255, 255];
     set_character_color_slot(0, 255, 255, 255, 0);
     set_character_color_slot(1, 255, 255, 255, 0);
