@@ -144,6 +144,12 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.15"
+        patch_note_text[i++] =  
+
+"Fixed a crash that occurs in Teams mode where a teammate hitting the bike would crash the game. Now teammates attacking the bike does nothing, as intended."
+
+
         patch_note_title[i] = "2.14"
         patch_note_text[i++] =  
 

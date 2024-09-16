@@ -14,7 +14,7 @@ if ("url" in self)
     	case "1870616155":
     	case "1897152603":
     	case "2972048421":
-    		with (other)
+    		with (other_player_id)
     		{
     			if (get_player_team(player) == get_player_team(other.player) && voice == 1)
     			{

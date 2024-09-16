@@ -92,8 +92,8 @@ switch(attack)
 				sprite_index = sprite_get("fspecial_proj")
 				grounds = 1;
 				walls = 1;
-				var disc_direction = point_direction(x, y, player_id.x, player_id.y);
-				var disc_distance = point_distance(x, y, player_id.x, player_id.y);
+				var disc_direction = point_direction(x, y, player_id.x, player_id.y - player_id.char_height/2);
+				var disc_distance = point_distance(x, y, player_id.x, player_id.y - player_id.char_height/2);
 				
 				hsp = lengthdir_x(disc_distance, disc_direction) / 12;
 				vsp = lengthdir_y(disc_distance, disc_direction) / 12;

@@ -12,11 +12,11 @@ if old_vsp != 0
 image_xscale = article_xscale;
 image_yscale = article_yscale;
 
-var e = place_meeting(x, y, pHitBox);
+var e = instance_place(x, y, pHitBox);
 
 if (e && state == 0)
 {
-	if (pHitBox.player_id != player_id && get_player_team(pHitBox.player_id) != get_player_team(player_id) && !pHitBox.has_hit)
+	if (e.player_id != player_id && get_player_team(e.player) != get_player_team(player) && !e.has_hit)
 	{
 		player_id.fuel--;
 		if (player_id.fuel <= 0)
@@ -30,7 +30,7 @@ if (e && state == 0)
 			instance_destroy();
 			exit;
 		}
-		with(pHitBox)
+		with(e)
 		{
 			other.hitstop = get_hitstop_formula(
 			(other.damage_inc * 40) - (other.player_id.fuel) * other.damage_inc,
@@ -46,9 +46,9 @@ if (e && state == 0)
 			if (type == 2 && enemies == 0) instance_destroy(self);
 		}
 	}
-	else if (pHitBox.player_id = player_id)
+	else if (e.player_id = player_id)
 	{
-		if(pHitBox.attack = AT_NSPECIAL)
+		if(e.attack = AT_NSPECIAL)
 		{
 			if (has_rune("A")) player_id.fuel--;
 			player_id.fuel--;
@@ -64,7 +64,7 @@ if (e && state == 0)
 				instance_destroy();
 				exit;
 			}
-			with(pHitBox)
+			with(e)
 			{
 				other.hitstop = get_hitstop_formula(
 				(other.damage_inc * 40) - (player_id.fuel) * other.damage_inc,
@@ -80,19 +80,19 @@ if (e && state == 0)
 				if (type == 2 && enemies == 0) instance_destroy(self);
 			}
 		}
-		if (pHitBox.attack == AT_FSPECIAL && pHitBox.hbox_num == 1)
+		if (e.attack == AT_FSPECIAL && e.hbox_num == 1)
 		{
 			instance_destroy()
 			exit;
 		}
-		if (pHitBox.attack == AT_USPECIAL && state == 0 && pHitBox.hbox_num == 1)
+		if (e.attack == AT_USPECIAL && state == 0 && e.hbox_num == 1)
 		{
 			bike_spin_speed_v = -8;
 			//vsp = -8;
 			bike_spin_speed_h = player_id.spr_dir > 0? 3: -3;
 			//hsp = player_id.spr_dir > 0? 3: -3;
 			sound_play(sound_get("motorbike_extra"));
-			with (pHitBox)
+			with (e)
 			{
 				sound_play(sound_effect);
 				spawn_hit_fx(hit_effect_x + other.x, hit_effect_y + other.y - other.article_height/2, hit_effect);
