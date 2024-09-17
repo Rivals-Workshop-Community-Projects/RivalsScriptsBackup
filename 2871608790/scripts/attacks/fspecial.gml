@@ -14,7 +14,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 2);
 
 window_num ++; //close mouth
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -75,9 +75,11 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 32);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 8);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 0.7);
+set_hitbox_value(atk, hitbox_num, HG_EXTRA_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, HFX_ORC_WATER_LIGHT);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));

@@ -18,12 +18,12 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 2);
 
 window_num ++; //hold pose
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -88,7 +88,7 @@ hitbox_num ++; { //bomb explosion
     set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 18);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
+    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 15);
     set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1);
     set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 1);
@@ -124,6 +124,7 @@ hitbox_num ++; { //water bottle multihit
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 9);
+    set_hitbox_value(atk, hitbox_num, HG_AZI_CANT_POCKET, 1);
     set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
     set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
@@ -149,6 +150,7 @@ hitbox_num ++; { //water bottle final hit
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+    set_hitbox_value(atk, hitbox_num, HG_AZI_CANT_POCKET, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
     set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
     
@@ -217,7 +219,6 @@ hitbox_num ++; { //pencil
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, .50);
-
 }
 hitbox_num ++; { //ruler
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -252,7 +253,7 @@ hitbox_num ++; { //scissors
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
     set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
     set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
     set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_ARSlash"));
@@ -286,7 +287,7 @@ hitbox_num ++; { //paper airplane
     set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, .50);
 
 }
-hitbox_num ++; { //bottle hit detection (it's just the banana one)
+hitbox_num ++; { //bottle hit detection
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
     set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
@@ -305,7 +306,7 @@ hitbox_num ++; { //bottle hit detection (it's just the banana one)
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, false);
+    set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, true);
 }
 hitbox_num ++; { //soap hit detection (still the banana one)
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -337,7 +338,7 @@ hitbox_num ++; { //soap blast (it's just the bomb explosion copied)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 9);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9);
@@ -361,7 +362,7 @@ hitbox_num ++; { //car hit detection (still the banana one)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 32);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 1);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60); //this value doesn't matter because it grabs players up
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 1); //this value doesn't matter because it has a constant speed for the grab
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
@@ -382,7 +383,7 @@ hitbox_num ++; { //car blast (it's just the bomb explosion copied)
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 60);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 60);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 3);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
@@ -422,6 +423,28 @@ hitbox_num ++; { //textbook soft spike
     set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
     set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
+}
+hitbox_num ++; { //sandwich
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+    set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
+    set_hitbox_value(atk, hitbox_num, HG_WIDTH, 32);
+    set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
+    set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+    set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 9);
+    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.4);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
+    set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
+    set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+    set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+    set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, .85);
 }
 
 set_num_hitboxes(atk, hitbox_num);

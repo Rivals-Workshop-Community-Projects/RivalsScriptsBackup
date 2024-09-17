@@ -3,6 +3,8 @@
 //B-reverse - it allows the character to turn in while using specials
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+
+
 switch (attack)
 {
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
@@ -24,7 +26,7 @@ switch (attack)
 						{
 							if (place_meeting(x, y, asset_get("par_block")) || place_meeting(x, y, asset_get("par_jumpthrough")))
 							{
-								other.vsp = -8; //(hitbox_timer - length) * 2 - 2; // <- this will make her bounce higher depending on how soon she lands with the hitbox
+								other.vsp = -10; //(hitbox_timer - length) * 2 - 2; // <- this will make her bounce higher depending on how soon she lands with the hitbox
 								other.dair_bounce = true;
 								spawn_hit_fx(x, y, 301);
 								sound_play(asset_get("sfx_absa_jump"));
@@ -35,12 +37,6 @@ switch (attack)
 				break;
 		}
 		break;
-		
-	if (attack== AT_INTRO){
-  if ((window_timer+1)%6==0){
-    sound_play(asset_get("sfx_kitty_squeak"))
-  }
-}
 	/////////////////////////////////////////////// SPECIALS ///////////////////////////////////////////////
     //
 	case AT_NSPECIAL: //spawn item
@@ -111,7 +107,7 @@ switch (attack)
 		break;
 	case AT_USPECIAL: //funny bear jump
 		//azi can airdodge out of uspec
-		if (window >= 2 && window <= 4) if (shield_pressed && has_airdodge) set_state(PS_AIR_DODGE);
+		if (window >= 2 && window <= 4 && shield_pressed && has_airdodge && !was_parried) set_state(PS_AIR_DODGE);
 
 		switch (window)
 		{
@@ -156,6 +152,7 @@ switch (attack)
 			//	if (special_pressed) set_window(1);
 			//	break;
 		}
+		if (window == 1 && window_timer == 9 || window == 4 && window_timer == 2) sound_play(asset_get("sfx_zetter_downb"));
 		break;
 	case AT_DSPECIAL_AIR: //air dk smack
 		if (!free) 
@@ -181,22 +178,11 @@ switch (attack)
 		break;
 	///////////////////////////////////////////////// OTHER ////////////////////////////////////////////////
     //
-	case 2: //intro
+
+
 		if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); //put hud away
 		if (window == window_last && window_timer == window_end-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
 		break;
-}
-
-if attack == AT_DSPECIAL {
-    if window == 1 && window_timer == 9{
-        sound_play(asset_get("sfx_zetter_downb"));
-    }
-}
-
-if attack == AT_DSPECIAL {
-    if window == 4 && window_timer == 2{
-        sound_play(asset_get("sfx_zetter_downb"));
-    }
 }
 
 //0 will just go to the next window instead of a specific one
@@ -208,3 +194,4 @@ if attack == AT_DSPECIAL {
     else window = window_num;
     window_timer = 0;
 }
+

@@ -68,12 +68,13 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 
 
 hitbox_num ++; //item lift (this hitbox doesn't hit anything it just exists to boost items up)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 5);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 7);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 308);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 58);

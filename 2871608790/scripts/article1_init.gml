@@ -10,17 +10,18 @@ spitting = (player_id.attack == AT_FSPECIAL && player_id.window == 4);
 //manipulate the "range" to change how frequently an item can spawn
 item[0] = { name: "pencil",     range: 50 };
 item[1] = { name: "ruler",      range: 45 };
-item[2] = { name: "scissors",   range: 40 };
+item[2] = { name: "scissors",   range: 30 };
 item[3] = { name: "water",      range: 30 };
 item[4] = { name: "lunchbox",   range: 20 };
 item[5] = { name: "banana",     range: 30 };
-item[6] = { name: "bell",       range: 20 };
+item[6] = { name: "bell",       range: 30 };
 item[7] = { name: "textbook",   range: 20 };
 item[8] = { name: "car",        range: 20 };
 item[9] = { name: "soap",       range: 20 };
 item[10] ={ name: "paper",      range: 20 };
-item[11] ={ name: "bomb",       range: 10 };
+item[11] ={ name: "bomb",       range: 5 };
 item[12] ={ name: "sandwich",   range: 0  };
+item[13] ={ name: "fail",       range: 2  };
 
 total_item_amount = array_length(item);
 
@@ -112,6 +113,7 @@ hbox_spawn_time = !spitting ? 5 : 2;
 item_hit_lockout = 0; //just so it won't hit who hit it
 item_hit_player = false;
 item_sim_percent = 50;
+item_hit_azi_grace = 20; //the amount of time it takes for items that can hit azi start hitting her
 item_hit_azi = true;
 item_has_hit = false;
 item_dspec_bounced = 0;
@@ -134,12 +136,15 @@ fx_car_explode = hit_fx_create(sprite_get("fx_car_explode"), 24);
 fx_water_multi = hit_fx_create(sprite_get("fx_water_multi"), 24);
 fx_water_final = hit_fx_create(sprite_get("fx_water_final"), 32);
 
+//venus compatibility lol
+venus_article_reflect = 1;
+
 /////////////////////////////////////////////////////////////////////////// ITEM SPECIFIC ///////////////////////////////////////////////////////////////////////////
 
 water_dir = 0;
 water_time = 0;
 
-banana_slip = false;
+banana_slip = true;
 banana_prat_time_set = 24;
 
 // [hsp, vsp, time]
@@ -164,7 +169,7 @@ else //fspec path
 		[-5, -2, 50],
 		[-1, 6, 60],
 		[4, 2, 70],
-		[6, -5, 80],
+		[6, -2, 80],
 	];
 }
 paper_movement = true;
@@ -172,6 +177,9 @@ paper_homing = false;
 paper_homing_id = noone;
 paper_homing_spd = 7; //changes flight speed towards the target
 paper_homing_turn_speed = 5; //changes the turning speed of the paper airplane, the higher the number the sharper the turns
+paper_hit_times = 0;
+paper_hit_times_max = 3; //checks how many hits the plane can land totaly (including the last hit
+plane_hit_lockout = 30; //gap between hits
 
 bell_time = 0;
 
@@ -193,8 +201,15 @@ car_idle_anim_speed = 0.2;
 car_slowdown_rate = 500; //the higher the number, the longer it takes for the car to stop
 car_sees_wall = 0;
 car_player_id = noone;
-car_grab_time = 0;
+car_grab_time = 10;
 car_got_hit = false;
+
+sandwich_hbox = 18;
+
+failpaper_x_off = 48;
+failpaper_sway_time_max = 40;
+failpaper_sway_time = failpaper_sway_time_max/2;
+failpaper_sway_inc = false;
 
 ///////////////////////////////////////////////////////////////////////////// ITEM INIT /////////////////////////////////////////////////////////////////////////////
 
@@ -242,7 +257,7 @@ switch (item[item_type].name)
 		vsp = (!spitting ? -9 : -2);
 		grav = 0.4;
 		g_fric = 1;
-		item_hbox_num = 6;
+		//item_hbox_num = 6;
 		break;
 	case "bell":
 		launch_hsp = 7;
@@ -301,6 +316,19 @@ switch (item[item_type].name)
 		grav = 0.5;
 		item_hbox_num = 18;
 		break;
+	case "fail":
+		vsp = -10;
+		grav = 0.4;
+		can_be_grounded = false;
+		ignores_walls = true;
+		image_xscale = spr_dir;
+
+		//venus compatibility
+		venus_article_reflect = 0;
+		break;
 }
 
 hsp = (!spitting ? (3 + player_input * 1.5) : launch_hsp) * spr_dir;
+
+
+

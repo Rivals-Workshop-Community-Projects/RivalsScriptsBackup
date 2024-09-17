@@ -155,59 +155,7 @@ wait_sprite = sprite_get("wait");   // sets the wait animation sprite strip
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-debug_display = get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
-attack_names = [ //has the names of all the attacks
-    "0",
-    "AT_JAB",
-    "2 (custom intro default)",
-    "3",
-    "AT_FTILT",
-    "AT_DTILT",
-    "AT_UTILT",
-    "AT_FSTRONG",
-    "AT_DSTRONG",
-    "AT_USTRONG",
-    "AT_DATTACK",
-    "AT_FAIR",
-    "AT_BAIR",
-    "AT_DAIR",
-    "AT_UAIR",
-    "AT_NAIR",
-    "AT_FSPECIAL",
-    "AT_DSPECIAL",
-    "AT_USPECIAL",
-    "AT_NSPECIAL",
-    "AT_FSTRONG_2",
-    "AT_DSTRONG_2",
-    "AT_USTRONG_2",
-    "AT_USPECIAL_GROUND",
-    "AT_USPECIAL_2",
-    "AT_FSPECIAL_2",
-    "AT_FTHROW",
-    "AT_UTHROW",
-    "AT_DTHROW",
-    "AT_NTHROW",
-    "AT_DSPECIAL_2",
-    "AT_EXTRA_1",
-    "AT_DSPECIAL_AIR",
-    "AT_NSPECIAL_2",
-    "AT_FSPECIAL_AIR",
-    "AT_TAUNT",
-    "AT_TAUNT_2",
-    "AT_EXTRA_2",
-    "AT_EXTRA_3",
-    "39",
-    "40 (munophone default)",
-    "AT_NSPECIAL_AIR",
-    "42",
-    "43",
-    "44",
-    "45",
-    "46",
-    "47",
-    "48",
-    "49 (final strong default)"
-];
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 
 window_end = 0; //the last frame (including whifflag if it's there)
 window_last = 0; //AG_NUM_WINDOWS
@@ -228,17 +176,6 @@ has_intro = true; //change to false if you don't have one
 //relevant scripts:
 //  - update
 //  - attack_update (case 2)
-
-//grab code
-my_grab_id = noone; //grabbed player ID, the game has it's own way of setting up the grabs but this is easier
-grab_time = 0; //timer for grabbing, works as a state_timer of sorts
-//relevant scripts:
-//  - attack_update (case AT_FTILT)
-//  - hit_player
-//  - got_hit
-//  - got_parried
-
-cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
 
 plat_speed = 0.2; //controls the respawn platform's animation speed without it relying on the player's animation
 
@@ -290,9 +227,13 @@ pocket_item = {
     car_type: -1,       //if the item is a car, it also records the item the car holds
 }
 
-spit_item_id = 13; //change this if you add/remove items to match the article's item array, this is the spitball projectile setup
+spit_item_id = 14; //change this if you add/remove items to match the article's item array, this is the spitball projectile setup
 //pocket_tank_kb = 12; //if above this number the item is lost
 taunt_num = 0;
+
+bell_stop_min = 30;
+bell_stop_max = 70;
+bell_stop_mult = 0.45;
 
 HG_AZI_CANT_POCKET = 62;
 HG_AZI_CANT_BACKFIRE = 63;
@@ -310,3 +251,9 @@ fx_dspec = hit_fx_create(sprite_get("fx_dspec"), 8);
 fx_water_hit = hit_fx_create(sprite_get("fx_water_hit"), 18);
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
+
+//adventure mode hit_player redirect
+hit_player_event = 13;
+
+//draw_hud redirect
+draw_hud_event = 14;

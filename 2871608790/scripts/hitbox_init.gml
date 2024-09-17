@@ -16,3 +16,9 @@ with (player_id)
 }
 
 if ("owner" not in self) owner = noone;
+
+
+if (attack == AT_NSPECIAL) //venus compatibility lol
+{
+    venus_article_proj_ignore = true;
+}

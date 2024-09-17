@@ -5,6 +5,7 @@
 //initial check stuff
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 is_dodging = (hurtboxID.dodging);
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 game_time = get_gameplay_time();
 
 if (is_attacking)
@@ -15,8 +16,6 @@ if (is_attacking)
 }
 else
 {
-    if (my_grab_id != noone) my_grab_id = noone;
-
     if (state_timer == 0) //force reset manual offsets / rotations on new state
     {
         if (spr_angle != 0) spr_angle = 0;
@@ -51,7 +50,11 @@ with (oPlayer) if ("banana_prat_time" in self)
             if (banana_prat_time == 0)
             {
                 banana_prat_time = -4;
+                has_airdodge = true;
+                djumps = 0;
                 state = PS_IDLE_AIR;
+
+                if (url == "2601775097") glide_stamina = glide_stamina_max; //bar stamina reset
             }
         }
     }

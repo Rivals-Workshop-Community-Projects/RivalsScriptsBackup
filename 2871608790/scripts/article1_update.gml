@@ -54,7 +54,14 @@ if (item_hbox_num > 0)
         item_hbox.x = x + hsp;
         item_hbox.y = y + vsp;
 
-        if(!item_hit_azi) item_hbox.no_azi_backfire = 1;
+        if (!item_hit_azi || item_timer < item_hit_azi_grace) item_hbox.no_azi_backfire = 1;
+        else if (item_timer >= item_hit_azi_grace) item_hbox.no_azi_backfire = 0;
+
+        if (item_hbox.destroyed)
+        {
+            destroy_item();
+            exit;
+        }
 
         //parry reflect
         if (!item_hbox.does_not_reflect && reflected_item)
@@ -158,6 +165,14 @@ else
     spawn_hit_fx(x, y - 16, HFX_ORI_SEIN_HIT);
 }
 
+if (place_meeting(x, y, asset_get("plasma_field_obj")))
+{
+    sound_play(asset_get("sfx_clairen_hit_med"));
+    spawn_hit_fx(x, y, 301);
+    destroy_item();
+    exit;
+}
+
 /////////////////////////////////////////////////////////////////////////// ITEM SPECIFIC ///////////////////////////////////////////////////////////////////////////
 
 //item specific logic
@@ -180,6 +195,8 @@ switch (item[item_type].name)
             }
             item_has_hit = false;
             hitbox_destroy();
+
+            if (venus_article_reflect != 0) venus_article_reflect = 0;
         }
         break;
     case "water":
@@ -209,6 +226,8 @@ switch (item[item_type].name)
                 spawn_hit_fx(x, y, player_id.fx_water_hit);
                 destroy_item();
             }
+
+            if (vsp < 0) item_hit_azi_grace = item_timer+2;
 
             //land detection + movement
             // "couldn't find instance" erorr happens when players hit the bottle
@@ -257,51 +276,57 @@ switch (item[item_type].name)
     case "banana":
         if (item_timer >= hbox_spawn_time)
         {
-            if (free && !banana_slip) //hitbox time
-            {
-                if (item_has_hit)
-                {
-                    hitbox_destroy();
-                    destroy_item();
-                    exit;
-                }
-            }
-            else //slip time
-            {
-                banana_slip = true;
-                if (instance_exists(item_hbox)) hitbox_destroy();
-            }
-
             if (banana_slip)
             {
                 is_hittable = true;
 
-                with (oPlayer) if (invince_time <= 0 && !hurtboxID.dodging && state != PS_RESPAWN && state != PS_DEAD && place_meeting(x, y, other))
+                with (oPlayer)
                 {
-                    if (state == PS_PARRY)
+                    if (place_meeting(x, y, other) && invince_time <= 0 && !hurtboxID.dodging && state != PS_RESPAWN && state != PS_DEAD &&
+                        (player != other.player || other.item_timer >= other.item_hit_azi_grace))
                     {
-                        old_hsp = hsp; old_vsp = vsp; 
-                        hitpause = true; hitstop = 5; if(id != other.player_id) invincible = true; invince_time = 60; iasa_script()
-                        with(other)
+                        if (perfect_dodging) //parry
                         {
-                            sound_play(asset_get("sfx_parry_success"));
+                            old_hsp = hsp;
+                            old_vsp = vsp; 
+                            hitpause = true;
+                            hitstop = 5;
+                            perfect_dodged = true;
+                            if (self != other)
+                            {
+                                invincible = true;
+                                invince_time = 60;
+                                iasa_script();
+                            }
+
+                            with (other)
+                            {
+                                sound_play(asset_get("sfx_parry_success"));
+                                var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 18);
+                                newdust.x = floor(other.x);
+                                newdust.y = floor(other.y-other.char_height/2);
+                                newdust.dust_fx = 9;
+                                newdust.player = other.player;
+                                newdust.player_id = other;
+
+                                destroy_item();
+                            }
+                        }
+                        else if (state != PS_PRATFALL && state != PS_PRATLAND) //slip
+                        {
+                            was_parried = true;
+                            banana_prat_time = other.banana_prat_time_set;
+
+                            set_state(free ? PS_PRATFALL : PS_PRATLAND);
+                            hsp = 0;
+                            with (other) sound_play(sound_get("sfx_banana_slip"));
+                        }
+
+                        with (other)
+                        {
+                            spawn_hit_fx(x, y-8, HFX_ORI_BLUE_SMALL);
                             destroy_item();
                         }
-                    }
-                    else if (state != PS_PRATFALL && state != PS_PRATLAND)
-                    {
-                        was_parried = true;
-                        banana_prat_time = other.banana_prat_time_set;
-
-                        set_state(free ? PS_PRATFALL : PS_PRATLAND);
-                        hsp = 0;
-                        with (other) sound_play(sound_get("sfx_banana_slip"));
-                    }
-
-                    with (other)
-                    {
-                        spawn_hit_fx(x, y-8, HFX_ORI_BLUE_SMALL);
-                        destroy_item();
                     }
                 }
             }
@@ -344,6 +369,8 @@ switch (item[item_type].name)
 
             bell_time ++;
             if (bell_time >= 40) destroy_item();
+
+            if (venus_article_reflect != 0) venus_article_reflect = 0;
         }
         break;
     case "textbook":
@@ -377,6 +404,8 @@ switch (item[item_type].name)
         {
             if (free) image_angle += sign(hsp);
             else destroy_item();
+
+            if (venus_article_reflect != 0) venus_article_reflect = 0;
         }
         break;
     case "car":
@@ -412,9 +441,9 @@ switch (item[item_type].name)
 
                     if (!place_meeting(x + 32 * spr_dir, y + 1, asset_get("par_block"))
                     && !place_meeting(x + 32 * spr_dir, y + 1, asset_get("par_jumpthrough")) || car_sees_wall == 2) spr_dir *= -1;
-                }
 
-                if (item_timer > 1 && hsp == 0) destroy_item(); //when the car stops the car dies
+                    if (item_timer > 1 && hsp == 0) destroy_item(); //when the car stops the car dies
+                }
 
                 if (car_item_held == -1) //item grab
                 {
@@ -438,6 +467,8 @@ switch (item[item_type].name)
                 if (car_state_timer >= 120) destroy_item();
                 break;
             case 2: //exploding on player
+                if (venus_article_reflect != 0) venus_article_reflect = 0;
+
                 if (car_state_timer == 1)
                 {
                     hsp = 0;
@@ -463,7 +494,7 @@ switch (item[item_type].name)
                         hitstop = 2;
 
                         var hbox_check = other.player_id.my_hitboxID;
-                        if (last_player_hit_me != other.player || instance_exists(hbox_check) && //let go of grabbed players if they are hit
+                        if (last_player != other.player || instance_exists(hbox_check) && //let go of grabbed players if they are hit
                             (hbox_check.attack != AT_NSPECIAL || hbox_check.hbox_num != 15 && hbox_check.hbox_num != 16))
                         {
                             hitstop = 0;
@@ -610,13 +641,29 @@ switch (item[item_type].name)
             if (instance_exists(item_hbox)) for (var i = 0; i < array_length(item_hbox.can_hit); i++) item_hbox.can_hit[i] = true;
         }
         else grav = 0.3;
+        
 
-        if (instance_exists(item_hbox) && item_has_hit)
+        if (paper_hit_times < paper_hit_times_max) //multi hits
+        {
+            if (item_has_hit)
+            {
+                paper_hit_times ++;
+                if (paper_hit_times < paper_hit_times_max)
+                {
+                    item_has_hit = false;
+                    item_hit_lockout = plane_hit_lockout;
+                }
+            }
+
+            if (!hitpause) item_hit_lockout --;
+            if (item_hit_lockout > 0) hitbox_destroy();
+            else item_hbox_num = 11;
+        }
+        if (instance_exists(item_hbox) && paper_hit_times >= paper_hit_times_max && item_has_hit) //final hit
         {
             paper_movement = false;
             paper_homing = false;
             paper_homing_id = noone;
-
             if (hitpause)
             {
                 old_hsp *= -0.2;
@@ -628,6 +675,8 @@ switch (item[item_type].name)
                 vsp = -3;
             }
             hitbox_destroy();
+
+            if (venus_article_reflect != 0) venus_article_reflect = 0;
         }
         break;
     case "soap":
@@ -741,9 +790,26 @@ switch (item[item_type].name)
                 
                 image_index = image_number - item_hp;
                 item_hp --;
+                hitbox_destroy();
+                item_hbox_num = sandwich_hbox;
                 if (item_hp < 0) destroy_item();
             }
         }
+        break;
+    case "fail":
+        if (vsp > 1)
+        {
+            vsp = 1;
+
+            if (failpaper_sway_time >= failpaper_sway_time_max || failpaper_sway_time <= 0) failpaper_sway_inc = !failpaper_sway_inc;
+            failpaper_sway_time += !failpaper_sway_inc ? 1 : -1;
+            hsp = ease_cubeInOut(2, -2, failpaper_sway_time, failpaper_sway_time_max) * spr_dir;
+        }
+        else
+        {
+            hsp = lerp((3 + player_input * 1.5), 0, (vsp - 10) / (-10 + 2)) * -spr_dir;
+        }
+        image_angle = hsp*10 + hsp*10/2;
         break;
 }
 

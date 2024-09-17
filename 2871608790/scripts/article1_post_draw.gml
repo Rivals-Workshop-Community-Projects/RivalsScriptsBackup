@@ -23,7 +23,7 @@ var view_right = view_get_wview() + view_get_xview() - 34; //screenborder, y
 var view_up = view_get_yview() + 32; //x, 0
 var view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder
 
-//offscree check
+//offscreen check
 article_offscreen = !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 85);
 
 
@@ -63,7 +63,7 @@ if (offscreen_arrow_enabled)
             else if (y > view_down + 85) offscreen_image = 6;
         }
 
-        draw_sprite_ext(sprite_get("hud_offscreen_arrow"), offscreen_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, hud_col, 1);
+        draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), offscreen_image, offscreen_x_pos + 32, offscreen_y_pos + 34, 1, 1, 0, hud_col, 1);
         draw_sprite_ext(sprite_get("hud_items"), item_type, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, 0, c_white, 1);
     }
     else depth = orig_depth;

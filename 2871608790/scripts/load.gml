@@ -62,10 +62,6 @@ sprite_change_offset("plat_post",       32, 47); //draws platform over the playe
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player
 
-sprite_change_offset("hud_player_arrow",3, 2);
-sprite_change_offset("offscreen_icons", 16, 16);
-sprite_change_offset("offscreen_arrow", 16, 16);
-
 sprite_change_offset("hud_pocket",      8, 8);
 sprite_change_offset("hud_items",       8, 8);
 sprite_change_offset("hud_pocket_crack",8, 9);
@@ -88,6 +84,7 @@ sprite_change_offset("artc_nspec_bomb",     22, 22);
 sprite_change_offset("artc_nspec_soap",     22, 22);
 sprite_change_offset("artc_nspec_car",      24, 16);
 sprite_change_offset("artc_nspec_sandwich", 22, 22);
+sprite_change_offset("artc_nspec_fail",     22, 27);
 
 //effects
 sprite_change_offset("fx_bell_hit",         78*2, 86*2);

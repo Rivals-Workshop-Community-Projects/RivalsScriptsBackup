@@ -15,8 +15,10 @@ if (!player_id.holding_item)
                 if (other.item_hp > 0)
                 {
                     pocket_item.id = other.item_id;
-                    if (other.item_type != 4) pocket_item.type = other.item_type;
-                    else pocket_item.type = 12; //if pocketing lunchbox give her the new sandwich item
+                    if (other.item_type == 4) pocket_item.type = 12; //if pocketing lunchbox give her the new sandwich item
+                    else if (other.item_type == 13) pocket_item.type = spit_item_id; //failed paper
+                    else pocket_item.type = other.item_type; //every other item
+
                     pocket_item.hp = other.item_hp-1;
                     pocket_item.car_type = other.car_item_held;
                     holding_item = true;
@@ -47,7 +49,7 @@ if (!player_id.holding_item)
     //interraction with hitboxes
     with (pHitBox)
     {
-        if (place_meeting(x, y, other) && type == 2 && hit_priority != 0)
+        if (place_meeting(x, y, other) && ("real_owner_id" not in self && type == 2 || real_type == 2) && hit_priority != 0 && !plasma_safe)
         {
             //exception that makes azi unable to pocket her nspec projectiles
             if (player_id != other.player_id || ("no_azi_pocket" in self && no_azi_pocket)) with (other.player_id)

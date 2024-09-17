@@ -5,7 +5,7 @@ set_attack_value(atk, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 window_num = 1; //initial startup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 9);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
