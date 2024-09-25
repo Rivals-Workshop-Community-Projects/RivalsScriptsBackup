@@ -37,3 +37,10 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 {
     if (was_parried) destroyed = true;
 }
+
+if (attack == AT_FSTRONG)
+{
+    in_hitpause = player_id.hitpause;
+    if (!player_id.has_hit && has_hit) player_id.has_hit = true;
+    if (!player_id.has_hit_player && has_hit_player) player_id.has_hit_player = true;
+}

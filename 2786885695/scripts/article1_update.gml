@@ -1,6 +1,6 @@
 //article1_update - lightning stilleto
 
-depth = (player_id.stilleto_id != noone) ? player_id.stilleto_id.depth-2 : player_id.depth-2;
+depth = (instance_exists(player_id.stilleto_id) && player_id.stilleto_id != noone) ? player_id.stilleto_id.depth-2 : player_id.depth-2;
 state_timer ++;
 mask_index = sprite_get("artc_nspec_mask");
 
@@ -107,7 +107,7 @@ switch (state)
         // - keqing dies
         // - the targeted player dies
         if (active_time >= despawn_time || (player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) ||
-        player_id.stilleto_id != noone && (player_id.stilleto_id.state == PS_DEAD || player_id.stilleto_id.state == PS_RESPAWN))
+        player_id.stilleto_id != noone && (!instance_exists(player_id.stilleto_id) || player_id.stilleto_id.state == PS_DEAD || player_id.stilleto_id.state == PS_RESPAWN))
         {
             player_id.stilleto_id = noone;
 

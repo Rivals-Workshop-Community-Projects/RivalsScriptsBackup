@@ -40,6 +40,7 @@ shader_end();
 
 //ICONS
 if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur - 13 , icon_x_pos, icon_y_pos);
+if (alt_cur == 25) draw_sprite(sprite_get("css_vortex"), 0 , icon_x_pos, icon_y_pos);
 
 
 //alt boxes

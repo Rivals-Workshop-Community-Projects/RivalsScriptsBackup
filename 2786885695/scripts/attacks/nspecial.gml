@@ -65,13 +65,13 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 3);
-//set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.8); //added
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 15); //9
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1); //0.7
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, empty);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK,  -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_elec2);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

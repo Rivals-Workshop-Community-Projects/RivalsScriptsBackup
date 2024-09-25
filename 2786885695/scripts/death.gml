@@ -18,7 +18,7 @@ sound_stop(sfx_nspec_aim);
 fspec_used = false;
 
 //respawn halloween hat when she dies
-if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3) qiqi_hat = true;
+if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3 && get_player_stocks(player) > 1) qiqi_hat = true;
 
 if ("fs_char_initialized" not in self && has_burst) burst_charge = 0;
 else if ("fs_char_initialized" in self) fs_charge = 0;

@@ -28,7 +28,7 @@ set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
 
 //JAB 2 (windows 4 - 6)
 window_num ++; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8); //6
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -42,7 +42,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 5);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16); //15
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
@@ -50,7 +50,7 @@ set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 4);
 
 //JAB 3 (windows 7 - 9)
 window_num ++; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8); //6
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -67,8 +67,8 @@ window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 16);
-set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 0); //done manually
-set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 4);
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1); //0 //done manually
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 5); //4
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //JAB 4 (windows 10 - 12)
@@ -93,7 +93,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, sfx_slash_medium1);
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 6);
 
 window_num ++; //endlag (it's in midair)
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10); //6
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 26);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
@@ -146,7 +146,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 30);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_weak1);
 set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.7);
@@ -165,9 +165,9 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 96);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50); //60
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_weak2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
@@ -184,8 +184,8 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4); //6
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_weak3);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
@@ -203,7 +203,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_medium1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
@@ -222,7 +222,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 30);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_medium2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
@@ -241,7 +241,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 30);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4); //3
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_medium2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);

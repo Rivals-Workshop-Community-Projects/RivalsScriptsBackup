@@ -15,8 +15,21 @@ if (attack == AT_JAB && my_hitboxID.hbox_num <= 3) can_jab4 = true;
 
 switch (my_hitboxID.attack)
 {
+    case AT_NAIR:
+        if (my_hitboxID.hbox_num < get_num_hitboxes(attack)) hit_player_obj.hsp = hsp;
+        break;
     case AT_FSTRONG:
         if ("fs_charge" in self) fs_charge += point_distance(hit_player_obj.hsp,hit_player_obj.vsp,0,0) * fs_charge_mult;
+        if (my_hitboxID.hitpause > 0)
+        {
+            old_hsp = hsp;
+            old_vsp = vsp;
+            hitstop = get_hitstop_formula(get_player_damage(hit_player_obj.player), my_hitboxID.damage, my_hitboxID.hitpause, my_hitboxID.hitpause_growth, 0);
+            hitstop_full = hit_player_obj.hitstop;
+            hitpause = true;
+        }
+
+        if (poison > 0) poison --;
         break;
     case AT_NSPECIAL:
         //nspecial projectile
@@ -156,7 +169,8 @@ if (instance_exists(artc_marker) && artc_marker.state == 1 && my_hitboxID.attack
 //crits
 if (has_rune("I") && crit_val >= crit_rate)
 {
-    take_damage(hit_player_obj.player, player, floor(true_dmg * (crit_damage-1)));
+    if (hit_player_obj.object_index == oPlayer) take_damage(hit_player_obj.player, player, floor(true_dmg * (crit_damage-1)));
+    else if ("enemy_stage_article" in hit_player_obj) hit_player_obj.hp -= floor(true_dmg * (crit_damage-1));
 
     hit_player_obj.orig_knock *= crit_damage*0.75;
     hit_player_obj.hitstop_full *= crit_damage*0.75;

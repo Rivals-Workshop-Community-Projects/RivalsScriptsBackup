@@ -19,6 +19,7 @@ season_name = [
     "Holiday Lightning"
 ]
 
+alt_name = []; //refresh name array in case other characters use the same system
 //alt names
 alt_name = [
     "Driving Thunder",
@@ -46,6 +47,7 @@ alt_name = [
     "Flowering Night",
     "Elemental Guardian",
     "Baleful Stormstrider",
+    "Vortex Gallery",
     "Tenacious Team Player",
 ];
 
@@ -118,7 +120,7 @@ portrait_bounds = [x+10,y+10,x+210,y+151];
 //save voice/damage numbers data
 //if keqing is reloaded it will refresh the values, otherwise it will keep them
 synced_vars = [cur_lang, dmg_nums_active];
-if (get_synced_var(player) != 16 && (!init || room == 114))
+if (get_synced_var(player) != 16 && (!init || room == asset_get("network_char_select")))
 {
     for (var i = 0; i < 2; i++) synced_vars[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
     cur_lang = synced_vars[0];

@@ -18,21 +18,21 @@ walk_speed          = 4;		// 3    -  4.5
 walk_accel          = 0.4;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 8-has_rune("F")*4;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 9;		// 4    -  9
-dash_speed          = 8+has_rune("F")*2;		// 5    -  9
+initial_dash_speed  = 8;		// 4    -  9
+dash_speed          = 7+has_rune("F")*2;		// 5    -  9
 dash_turn_time      = 8;		// 8    -  20
 dash_turn_accel     = 1.75;		// 0.1  -  2
 dash_stop_time      = 10;		// 4    -  6        zetterburn's is 4
 dash_stop_percent   = 0.3;		// 0.25 -  0.5
 ground_friction     = 0.4;		// 0.3  -  1
-moonwalk_accel      = 1.4;		// 1.2  -  1.4
+moonwalk_accel      = 1.2;		// 1.2  -  1.4
     
 // Air movement
 leave_ground_max    = 7;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
-air_max_speed       = 5;  		// 3    -  7
+air_max_speed       = 4;  		// 3    -  7
 jump_change         = 3;		// 3
-air_accel           = 0.3;		// 0.2  -  0.4
+air_accel           = 0.35;		// 0.2  -  0.4
 prat_fall_accel     = 0.8;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
@@ -49,16 +49,16 @@ djump_accel         = 0;		// -1.4 -  0        absa's is -1.4, all other chars ar
 djump_accel_end_time= 0;		//                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 7;		// 4    -  7
-walljump_vsp        = 9;		// 7    -  10
+walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
 prat_land_time      = 20;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
-wave_friction       = 0.05;		// 0    -  0.15
+wave_friction       = 0.1;		// 0    -  0.15
 roll_forward_max    = 9;		// 9    -  11
 roll_backward_max   = 9;		// 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
-wave_land_adj       = 1.5;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.4;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;		// 7.5  -  8
 techroll_speed      = 8;		// 8    -  11
 
@@ -165,8 +165,65 @@ fx_empty = 1;
 ai_fight_time = 0;
 hbox_view = get_match_setting(SET_HITBOX_VIS);
 debug_keqing = false; //just in case i wanna see some basic variables
+debug_display = 0; //get_match_setting(SET_PRACTICE);
+attack_names = [ //has the names of all the attacks
+    "0",
+    "AT_JAB",
+    "2 (custom intro default)",
+    "3",
+    "AT_FTILT",
+    "AT_DTILT",
+    "AT_UTILT",
+    "AT_FSTRONG",
+    "AT_DSTRONG",
+    "AT_USTRONG",
+    "AT_DATTACK",
+    "AT_FAIR",
+    "AT_BAIR",
+    "AT_DAIR",
+    "AT_UAIR",
+    "AT_NAIR",
+    "AT_FSPECIAL",
+    "AT_DSPECIAL",
+    "AT_USPECIAL",
+    "AT_NSPECIAL",
+    "AT_FSTRONG_2",
+    "AT_DSTRONG_2",
+    "AT_USTRONG_2",
+    "AT_USPECIAL_GROUND",
+    "AT_USPECIAL_2",
+    "AT_FSPECIAL_2",
+    "AT_FTHROW",
+    "AT_UTHROW",
+    "AT_DTHROW",
+    "AT_NTHROW",
+    "AT_DSPECIAL_2",
+    "AT_EXTRA_1",
+    "AT_DSPECIAL_AIR",
+    "AT_NSPECIAL_2",
+    "AT_FSPECIAL_AIR",
+    "AT_TAUNT",
+    "AT_TAUNT_2",
+    "AT_EXTRA_2",
+    "AT_EXTRA_3",
+    "AT_EXTRA_4",
+    "AT_EXTRA_5",
+    "AT_NSPECIAL_AIR",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49 (final strong default)"
+];
 
+//woodcock stuff
 AG_MUNO_ATTACK_EXCLUDE = 80;
+HG_MUNO_HITBOX_BKB = 80;
+HG_MUNO_HITBOX_KBG = 81;
+HG_MUNO_HITBOX_MISC_ADD = 82;
 
 has_intro = true;
 AT_INTRO = 2;
@@ -198,6 +255,9 @@ rotate_time = -1;
 
 //jab
 can_jab4 = false;
+
+//D-attack
+buffered_hitfall = false;
 
 //D-air
 dair_fx_y_scale = 0;
@@ -426,62 +486,6 @@ lerp_array[0] = 115; //these use the
 lerp_array[1] = 255; //anemo colors
 lerp_array[2] = 189; //cuz it starts in anemo
 
-//attack names
-attack_index = [
-    "???",
-    "AT_JAB",
-    "???",
-    "???",
-    "AT_FTILT",
-    "AT_DTILT",
-    "AT_UTILT",
-    "AT_FSTRONG",
-    "AT_DSTRONG",
-    "AT_USTRONG",
-    "AT_DATTACK",
-    "AT_FAIR",
-    "AT_BAIR",
-    "AT_DAIR",
-    "AT_UAIR",
-    "AT_NAIR",
-    "AT_FSPECIAL",
-    "AT_DSPECIAL",
-    "AT_USPECIAL",
-    "AT_NSPECIAL",
-    "AT_FSTRONG_2",
-    "AT_DSTRONG_2",
-    "AT_USTRONG_2",
-    "AT_USPECIAL_GROUND",
-    "AT_USPECIAL_2",
-    "AT_FSPECIAL_2",
-    "AT_FTHROW",
-    "AT_UTHROW",
-    "AT_DTHROW",
-    "AT_NTHROW",
-    "AT_DSPECIAL_2",
-    "AT_EXTRA_1",
-    "AT_DSPECIAL_AIR",
-    "AT_NSPECIAL_2",
-    "AT_FSPECIAL_AIR",
-    "AT_TAUNT",
-    "AT_TAUNT_2",
-    "AT_EXTRA_2",
-    "AT_EXTRA_3",
-    "AT_EXTRA_4",
-    "AT_EXTRA_5", //used for phone
-    "AT_NSPECIAL_AIR",
-    "???",
-    "???",
-    "???",
-    "???",
-    "???",
-    "???",
-    "???",
-    "AT_FINAL_SMASH", //used for final smash
-    "???"
-];
-
-
 
 //read synced vars
 var tmp_sync_vars = get_synced_var(player);
@@ -664,3 +668,7 @@ pkmn_stadium_name_override = "keqing";
 
 //sonic trick ring
 sonic_rainbowring_atk = 46;
+
+//demon horde
+demonhorde_portrait_x = 32;
+demonhorde_portrait_y = 64;

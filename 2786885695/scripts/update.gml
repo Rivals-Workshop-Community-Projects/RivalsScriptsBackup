@@ -172,7 +172,7 @@ else
 using_nspec = (is_attacking && (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2));
 
 //stilleto marking foes code
-if (stilleto_id != noone)
+if (stilleto_id != noone && instance_exists(stilleto_id))
 {
     artc_marker.x = stilleto_id.x;
     artc_marker.y = stilleto_id.y-stilleto_id.char_height/2;
@@ -231,7 +231,11 @@ move_cooldown[AT_FSPECIAL] = fspec_used+1;
 //  U-SPECIAL
 //electric flash effect pause (applies to both instances of starward sword)
 if (instance_exists(uspec_flash)) if (hitpause) uspec_flash.step_timer --;
-if (uspec_fx_anim[0] <= uspec_fx_anim[1] && !hitpause) uspec_fx_anim[0] ++;
+if (uspec_fx_anim[0] <= uspec_fx_anim[1])
+{
+    if (!hitpause && is_attacking) uspec_fx_anim[0] ++;
+    else uspec_fx_anim[0] = uspec_fx_anim[1];
+}
 
 //  D-SPECIAL
 //parried afterimage cooldown
@@ -449,7 +453,11 @@ if (get_match_setting(SET_RUNES))
 }
 
 // STARWARD SWORD
-if ("fs_char_initialized" in self) has_burst = true;
+if ("fs_char_initialized" in self)
+{
+    has_burst = true;
+    if (get_match_setting(SET_PRACTICE) && burst_charge < 200 && taunt_down && shield_down) burst_charge = 200;
+}
 
 if (has_burst)
 {
@@ -517,6 +525,8 @@ if (!is_attacking || is_attacking && attack != AT_TAUNT_2)
 {
     if (lyre_hud_play_fade == 0 && lyre_hud_fade >= 10) lyre_hud_play_fade = -1;
     key_held_time = 0;
+
+    playing_lyre_timer = -1;
 }
 
 //vanish effect when dodging
@@ -581,7 +591,7 @@ if (display_damage_numbers && state != PS_DEAD)
 if (qiqi_hat)
 {
     check_idle_time = 0;
-    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
+    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE || is_attacking)
     {
         qiqi_hat = false;
         check_idle_time = check_idle_time_default;
@@ -595,7 +605,11 @@ if (alt_mc) do_traveller_colors();
 
 //credit to supersonic for the help
 //effects default depth when they spawn is 3, so this will make it so it won't overwrite values if i add them manually
-with (hit_fx_obj) if (player == other.player && depth == 3) depth = player_id.depth-2;
+with (hit_fx_obj)
+{
+    if (player == other.player && depth == 3) depth = player_id.depth-2;
+    if (self == other.strong_slashes && other.is_attacking) real_vfx_pause();
+}
 
 //dialouge buddy
 dialogue_buddy_compat();
@@ -705,8 +719,6 @@ if (lang != 0)
 }
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
-
-
 #define dialogue_buddy_compat
 {
     if(variable_instance_exists(id,"diag"))
@@ -767,19 +779,21 @@ if (lang != 0)
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if player_id == other {
-        if "col" not in self {
-            with other {
-                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
-                if other.col == 0 other.col = c_red;
-                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+    with (pHitBox) if (player_id == other && "dont_color" not in self)
+    {
+        if ("col" not in self)
+        {
+            with (other)
+            {
+                var parent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX)
+                var true_hbox_num = parent ? parent : other.hbox_num
+                other.col = get_hitbox_value(other.attack, true_hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, true_hbox_num, HG_SHAPE)
                 other.draw_colored = true;
-                if other.type == 1
-                    other.sprite_index = __hb_hd_spr[other.shape];
-                else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
-                    other.mask_index = __hb_hd_spr[other.shape];
-                else 
-                    other.draw_colored = false;
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, true_hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
                 other.draw_spr = __hb_draw_spr;
             }
         }
@@ -898,4 +912,12 @@ if (lang != 0)
 		electro_effect.draw_angle = elec_angle;
     	electro_effect.spr_dir = elec_dir;
 	}
+}
+
+#define real_vfx_pause
+{
+    //made to actually stop vfx properly, thanks dan.
+    if ("step_rec_time" not in self) step_rec_time = 0;
+    if (!other.hitpause) step_rec_time = step_timer;
+    else step_timer = step_rec_time;
 }

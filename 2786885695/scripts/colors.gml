@@ -303,7 +303,17 @@ set_color_profile_slot(palNum, 5, 237, 184, 94); //gold
 set_color_profile_slot(palNum, 6, 38, 33, 64); //purple-blue
 set_color_profile_slot(palNum, 7, 68, 34, 75); //stocking
 
-palNum ++; // 25 = hud color (uses default as a base)
+palNum ++; // 25 = vortex 2024
+set_color_profile_slot( palNum, 0, 230, 120, 103 ); //electro
+set_color_profile_slot( palNum, 1, 153, 81, 44 ); //hair
+set_color_profile_slot( palNum, 2, 199, 150, 114 ); //skin
+set_color_profile_slot( palNum, 3, 247, 227, 173 ); //white-blue
+set_color_profile_slot( palNum, 4, 148, 51, 26 ); //dark purple
+set_color_profile_slot( palNum, 5, 209, 80, 0 ); //gold
+set_color_profile_slot( palNum, 6, 115, 85, 51 ); //purple-blue
+set_color_profile_slot( palNum, 7, 168, 118, 54 ); //stocking
+
+palNum ++; // 26 = hud color (uses default as a base)
 set_color_profile_slot(palNum, 0, 194, 116, 229); //electro
 set_color_profile_slot(palNum, 1, 137, 105, 168); //hair
 set_color_profile_slot(palNum, 2, 229, 176, 145); //skin

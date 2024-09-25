@@ -125,37 +125,43 @@ else //lyre menu is active
     }
 }
 
-/*
+//practice prompt
+if (get_match_setting(SET_PRACTICE) && temp_level == 0) draw_debug_text(temp_x + 16, temp_y, debug_keqing ? "Test mode active" : "UP + TAUNT = Test mode");
+
+
 //debug stuff
-if (debug_keqing)
+if (debug_display && temp_level == 0)
 {
-    //state
-    if (!is_attacking)
+    var mul = 16; //spacing
+    var debug_x = 16;
+    var debug_y = 256;
+
+    var state_name = get_state_name(state);
+    switch (state) //new workshop state names don't actually have a state name for get_state_name
     {
-        draw_debug_text(temp_x, temp_y - 80, "state = " + string(get_state_name(state)));
-        draw_debug_text(temp_x, temp_y - 64, "timer = " + string(state_timer));
-    }
-    else
-    {
-        draw_debug_text(temp_x, temp_y - 80, "attack = " + string(attack_index[attack]));
-        draw_debug_text(temp_x, temp_y - 64, "window = " + string(window));
-        draw_debug_text(temp_x, temp_y - 48, "window_timer = " + string(window_timer));
+        case PS_FLASHED: state_name = "PS_FLASHED"; break;
+        case PS_CRYSTALIZED: state_name = "PS_CRYSTALIZED"; break;
+        case PS_BURIED: state_name = "PS_BURIED"; break;
     }
     
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-4, "state = " + string(state_name));
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-3, "state_timer = " + string(state_timer));
 
-    //coords
-    draw_debug_text(temp_x, temp_y - 32, "x = " + string(x));
-    draw_debug_text(temp_x + 112, temp_y - 32, "y = " + string(y));
+    if (is_attacking || state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD ||
+        state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD || state == PS_AIR_DODGE)
+    {
+        if (is_attacking) draw_debug_text(debug_x+mul*0, debug_y+mul*-7, "attack = " + string(attack_names[attack]));
+        draw_debug_text(debug_x+mul*0, debug_y+mul*-6, "window = " + string(window));
+        draw_debug_text(debug_x+mul*0, debug_y+mul*-5, "window_timer = " + string(window_timer));
+    }
 
-    //speed
-    draw_debug_text(temp_x, temp_y - 16, "hsp = " + string(hsp));
-    draw_debug_text(temp_x + 112, temp_y - 16, "vsp = " + string(vsp));
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-2, "x = " + string(x));
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-1, "y = " + string(y));
+
+    draw_debug_text(debug_x+mul*5, debug_y+mul*-2, "hsp = " + string(hsp));
+    draw_debug_text(debug_x+mul*5, debug_y+mul*-1, "vsp = " + string(vsp));
 }
-*/
-if (get_match_setting(SET_PRACTICE))
-{
-    draw_debug_text(temp_x + 16, temp_y, debug_keqing ? "Test mode active" : "UP + TAUNT = Test mode");
-}
+
 
 
 #define rectDraw(x1, y1, width, height, color)

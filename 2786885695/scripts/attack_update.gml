@@ -16,6 +16,7 @@ switch(attack)
 				if (get_match_setting(SET_TURBO)) clear_button_buffer(PC_ATTACK_PRESSED);
 				break;
 			case 9: //jab 3 (it has the whole "ooo can i use jab 4" stuff)
+				/*
 				if (window_timer >= window_cancel_time)
 				{
 					//continiue the jab if jab 4 is allowed
@@ -37,6 +38,7 @@ switch(attack)
 						can_jab4 = false;
 					}
 				}
+				*/
 			case 3: case 6: case 12: case 16: //jabs 1, 2, 4 and 5
 				if (attack_down_counter >= 10 && attack_down && window_timer >= window_cancel_time && !was_parried)
 				{
@@ -49,6 +51,13 @@ switch(attack)
 				vsp = 60; //needs to be set up here manually or there will be jank with air canceling
 				if (window_timer == window_end && free) window_timer = 0;
 				break;
+			case 12: case 16:
+				if (window_timer == window_end && was_parried)
+				{
+					set_state(free ? PS_PRATFALL : PS_PRATLAND);
+					parry_lag = clamp((4/45.0) * parry_distance + (160.0/3.0), 60, 100);
+				}
+				break;
 		}
 	case AT_FTILT: case AT_DTILT: case AT_UTILT: //should skip endlag
 		if (attack_down_counter >= 10 && attack_down && window == window_last && window_timer >= window_end-5 && !was_parried) use_charge_attack();
@@ -56,8 +65,8 @@ switch(attack)
 	case AT_FSTRONG: //the effect work for the strongs is on update.gml instead, i can't put window_timer = 0 here
 		if (!hitpause)
 		{
-			if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
-			if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
+			if (window == 4 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
+			if (window == 5 && window_timer == 2) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
 		}
 
 		if (instance_exists(fstrong_hitbox) && fstrong_hitbox != noone) fstrong_hitbox.fx_particles = 1;
@@ -80,33 +89,6 @@ switch(attack)
 
 		//end charge attack
 		if (window == window_last && window_timer == window_end) charge_attack = false;
-
-		//using different strongs/hitting with F-spec's wave slash will send the enemy in different directions
-		switch (attack)
-		{
-			case AT_USTRONG: //sends up
-				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-				break;
-			case AT_DSTRONG: //sends down
-				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 290);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-				break;
-			case AT_FSTRONG: default: //sends in the opposite direction keqing is facing
-				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
-				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-				if (instance_exists(artc_marker))
-				{
-					if (spr_dir) set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
-					else set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 130); //180-50
-				}
-				break;
-		}
 		break;
 	case AT_DAIR:
 		switch (window)
@@ -122,6 +104,7 @@ switch(attack)
 						window_timer = 0;
 					}
 				}
+				if (!hitpause && window_timer == window_end - 4) sound_play(sfx_slash_medium1);
 				break;
 			case 2: //plunge loop
 				can_wall_jump = true;
@@ -142,8 +125,14 @@ switch(attack)
 		can_fast_fall = false;
 		break;
 	case AT_DATTACK:
-		var prev_hsp = hsp;
 		if (down_down && !free && !hitpause && !was_parried) hsp = 8*spr_dir;
+
+		if (down_hard_pressed && !free && !hitpause && has_hit) buffered_hitfall = true;
+		if (buffered_hitfall && free && !fast_falling)
+		{
+			vsp = 0;
+			do_a_fast_fall = true;
+		}
 
 		if (window == 2 && !has_rune("F")) set_attack_value(attack, AG_CATEGORY, 2);
 		if (has_rune("F")) coyote_time = coyote_time_max;
@@ -779,7 +768,7 @@ switch(attack)
 					allow_glitch_warp = true;
 					if (allow_glitch_warp)
 					{
-						if (stilleto_id == noone)
+						if (stilleto_id == noone || !instance_exists(stilleto_id))
 						{
 							fly_speed = point_distance(x, y, artc_marker.x, artc_marker.y+32);
 							go_to = point_direction(x, y, artc_marker.x, artc_marker.y+32);
@@ -851,7 +840,7 @@ switch(attack)
 
 //if there's an enemy with a stilleto, allow nspec cancel
 //although this only actually activates according to hit_player
-if (stilleto_id != noone && attack != AT_BURST) nspec_cancel = true;
+if (instance_exists(stilleto_id) && stilleto_id != noone && attack != AT_BURST) nspec_cancel = true;
 else nspec_cancel = false;
 
 if (nspec_cancel_timer > 0 && nspec_cancel && special_pressed && joy_pad_idle)

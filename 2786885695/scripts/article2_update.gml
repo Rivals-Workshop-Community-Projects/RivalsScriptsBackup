@@ -79,6 +79,8 @@ switch (state)
             sound_play(asset_get("sfx_absa_singlezap1"));
 
             player_id.afterimage_amount --;
+
+            player_id.move_cooldown[AT_DSPECIAL] = 40;
             instance_destroy();
         }
         break;

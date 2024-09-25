@@ -36,7 +36,7 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, sfx_slash_rapid2);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 28); //20 / 26 / 32
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -46,7 +46,7 @@ set_num_hitboxes(atk, 2);
 hitbox_num = 1; //weak slash
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //2
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 64);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 120);
@@ -71,6 +71,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 //set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);
 
 hitbox_num ++; //strong slash (also does the explosion when it spawns)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -83,8 +84,11 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9);
+//set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7); //done in set_attack
+//set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9); //done in set_attack
+set_hitbox_value(atk, hitbox_num, HG_MUNO_HITBOX_BKB, "8/7");
+set_hitbox_value(atk, hitbox_num, HG_MUNO_HITBOX_KBG, "1/0.9");
+set_hitbox_value(atk, hitbox_num, HG_MUNO_HITBOX_MISC_ADD, "Knockback changes based on if it's a regular strong or a quick strong.");
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys3);

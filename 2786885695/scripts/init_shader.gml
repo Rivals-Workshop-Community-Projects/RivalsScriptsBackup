@@ -52,7 +52,11 @@ switch (alt_cur)
     case 21: //rin (fate)
         set_character_color_shading(1, 0.5); //hair
         break;
-    case 25:
+    case 25: //vortex
+        set_character_color_shading(3, 1.5); //white-blue
+        set_character_color_shading(6, 0.8); //purple-blue
+        break;
+    case 26: //hud color
         var hud_r = color_get_red(get_player_hud_color(player));
         var hud_g = color_get_green(get_player_hud_color(player));
         var hud_b = color_get_blue(get_player_hud_color(player));
