@@ -66,6 +66,7 @@ set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 18); // 25
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, .7);
 
 if !has_rune("A") exit;
 

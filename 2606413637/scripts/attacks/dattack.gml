@@ -5,7 +5,7 @@ set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
 
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, sfx_dbfz_elbow_start);

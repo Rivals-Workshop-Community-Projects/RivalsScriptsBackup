@@ -62,7 +62,7 @@ sprite_change_offset("vfx_afterimage_ssj1_alt0", 100, 140);
 sprite_change_offset("vfx_afterimage_ssj3_alt0", 100, 140);
 sprite_change_offset("ftilt_proj", 100, 140);
 sprite_change_offset("vfx_ftilt_destroy", 100, 140);
-sprite_change_offset("utilt_proj", 100, 140 - 30);
+sprite_change_offset("utilt_proj", 100, 140 - 30 - 20);
 sprite_change_offset("vfx_utilt_spawn", 100, 140);
 sprite_change_offset("nspecial_beam_start", 64, 64);
 sprite_change_offset("nspecial_beam_end", 64, 64);

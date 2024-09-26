@@ -175,9 +175,10 @@ switch attack{
 			}
 		}
 		if window == 4 && window_timer == phone_window_end{
-			var pos_x = x + 60 * spr_dir;
+			var pos_x = x + 72 * spr_dir;
 			pos_x += (right_down - left_down) * 24
 			
+			set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 72 + (right_down - left_down) * 24 * spr_dir);
 			create_hitbox(attack, 3, pos_x, y - 32);
 			spawn_hit_fx(pos_x, y, vfx_utilt_spawn);
 			
@@ -191,7 +192,7 @@ switch attack{
 				hsp += 2 * spr_dir;
 			}
 			if window_timer == phone_window_end{
-				hsp = 15 * spr_dir;
+				hsp = 10 * spr_dir;
 				if funny_broken_mode || has_rune("C"){
 					hsp = 30 * spr_dir;
 				}
@@ -233,11 +234,11 @@ switch attack{
 		}
 		
 		if window == 2{
-			hsp = clamp(hsp, -15, 15);
+			hsp = clamp(hsp, -11, 11);
 		}
 		
 		if window > 2{
-			hsp = clamp(hsp, -10, 10);
+			hsp = clamp(hsp, -6, 6);
 			hsp *= 0.9;
 		}
 		
@@ -346,6 +347,10 @@ switch attack{
 				vsp = -4;
 				hsp = 2 * spr_dir;
 			}
+			if !free {
+				set_state(PS_LANDING_LAG)
+				landing_lag_time = 6
+			}
 		}
 		break;
 	
@@ -373,6 +378,7 @@ switch attack{
 					beam_angle = 0;
 				}
 				if window_timer == phone_window_end{
+					beam_angle = point_direction(0, 0, lengthdir_x(1, beam_angle) * spr_dir, lengthdir_y(1, beam_angle));
 					voice_play(VB_KAMEHAME);
 				}
 				can_fast_fall = false;
@@ -384,20 +390,23 @@ switch attack{
 				if beam_juice > 180{
 					shake_camera(floor((beam_juice - 180) / 30), 1);
 				}
-				switch((right_down - left_down) * spr_dir){
-					default:
-						beam_angle = 30;
-						break;
-					case 1:
-						beam_angle = 15;
-						break;
-					case -1:
-						beam_angle = 45;
-						break;
-				}
+				//switch((right_down - left_down) * spr_dir)
+					//default:
+						//beam_angle = 30;
+						//break;
+					//case 1:
+						//beam_angle = 15;
+						//break;
+					//case -1:
+						//beam_angle = 45;
+						//break;
+				//}
+				/*
 				beam_angle *= (up_down - down_down);
 				beam_angle = (beam_angle + 360) % 360;
 				beam_angle = point_direction(0, 0, lengthdir_x(1, beam_angle) * spr_dir, lengthdir_y(1, beam_angle));
+				*/
+				
 				if special_down && beam_juice < beam_juice_max{
 					beam_juice++;
 				}
