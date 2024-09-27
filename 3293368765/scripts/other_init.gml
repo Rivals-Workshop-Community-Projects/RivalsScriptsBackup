@@ -1,0 +1,1 @@
+teenah_shock = noone;

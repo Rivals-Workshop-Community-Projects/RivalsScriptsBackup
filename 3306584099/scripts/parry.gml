@@ -1,0 +1,1 @@
+if (lang != 0) parry_voice = 1;

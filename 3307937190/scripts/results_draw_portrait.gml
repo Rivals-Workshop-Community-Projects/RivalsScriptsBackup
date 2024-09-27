@@ -1,0 +1,1 @@
+if (winner_name == "Pastelle DE WINS!") winner_name = "pastelle wins!";
