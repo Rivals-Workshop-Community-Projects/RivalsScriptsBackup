@@ -10,3 +10,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECI
     && ((enemy_hitboxID.kb_value > 0) && enemy_hitboxID.type == 1 || (enemy_hitboxID.kb_value > 8 && enemy_hitboxID.type == 2))){
     fspecial_push = enemy_hitboxID.kb_value;
 }
+
+if (enemy_hitboxID.kb_value > 5 && enemy_hitboxID.damage > 6){
+    heavy_damage = true;
+}

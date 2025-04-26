@@ -1,4 +1,108 @@
 
+if jumpfix > 0 && !hitpause{
+	jumpfix --
+	if jumpfix == 1{
+		jump_start_time = 5;
+	}
+}
+if (djumps == 0 && get_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING) == 0.8) or get_gameplay_time() == 80{
+
+sound_stop(sound_get("Empower"))
+sound_play(sound_get("Empower"),false,noone,0.5,0.8)
+fx = spawn_hit_fx( x, y - 10, djumpfx2 )
+fx.depth = depth - 2
+///Fair
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.25);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.25);
+
+set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .25);
+
+set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .25);
+
+//Bair
+set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_BAIR, 4, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_BAIR, 4, HG_ANGLE, 120);
+
+//Dair
+set_hitbox_value(AT_DAIR, 5, HG_ANGLE, 90);
+set_hitbox_value(AT_DAIR, 5, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DAIR, 5, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DAIR, 5, HG_HITPAUSE_SCALING, .3);
+
+set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 100);
+set_hitbox_value(AT_DAIR, 6, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DAIR, 6, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_DAIR, 6, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DAIR, 6, HG_HITPAUSE_SCALING, .3);
+
+set_hitbox_value(AT_DAIR, 7, HG_ANGLE, 80);
+set_hitbox_value(AT_DAIR, 7, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DAIR, 7, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_DAIR, 7, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DAIR, 7, HG_HITPAUSE_SCALING, .3);
+}
+
+if djumps > 0 && get_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING) != 0.8{
+spawn_hit_fx( x, y - 30, stylec )
+fx = spawn_hit_fx( x, y - 30, styled )
+fx.spr_dir *= 1.6
+fx.image_yscale = 1.6
+sound_play(sound_get("Empower"),false,noone,1,1)
+sound_play(sound_get("Empower"),false,noone,0.6,0.6)
+///Fair
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.8);
+
+set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .7);
+
+set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .7);
+
+//Bair
+set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_BAIR, 4, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_BAIR, 4, HG_ANGLE, 140);
+
+//Dair
+set_hitbox_value(AT_DAIR, 5, HG_ANGLE, 270);
+set_hitbox_value(AT_DAIR, 5, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DAIR, 5, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_DAIR, 5, HG_HITPAUSE_SCALING, .6);
+
+set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 140);
+set_hitbox_value(AT_DAIR, 6, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DAIR, 6, HG_KNOCKBACK_SCALING, .65);
+set_hitbox_value(AT_DAIR, 6, HG_BASE_HITPAUSE, 8);
+
+set_hitbox_value(AT_DAIR, 7, HG_ANGLE, 40);
+set_hitbox_value(AT_DAIR, 7, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DAIR, 7, HG_KNOCKBACK_SCALING, .65);
+set_hitbox_value(AT_DAIR, 7, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DAIR, 7, HG_HITPAUSE_SCALING, .6);
+}
+	
 
 if move_cooldown[AT_DTHROW] > 0 {
 	        if gunname == 4 && t21 != 0 gunname ++
@@ -33,7 +137,16 @@ if !hitpause && state == PS_PRATFALL {
 		hsp /= 1.05
 	}
 }
-
+if Donottaunt > 0 {
+	Donottaunt -= 1
+	if taunt_down && visible{
+		set_state(PS_IDLE)
+		Donottaunt = 0
+	}
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+		Donottaunt = 0
+	}
+}
 
 if bursted != 0 && down_down {
 	 clear_button_buffer( PC_SPECIAL_PRESSED );
@@ -298,7 +411,7 @@ if triggered > 1 && !hitpause{
 }
 
 if triggered = 1 {
-		sound_play(asset_get("sfx_ori_grenade_aim"),false, noone, 0.6);
+	sound_play(asset_get("sfx_ori_grenade_aim"),false, noone, 0.6);
 
 triggered = 0
 }
@@ -319,189 +432,6 @@ if gainlockout > 0 {
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_HSPEED, 6 * spr_dir);
 set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_HSPEED, -6 * spr_dir);
 
-
-
-/*
-if(get_gameplay_time() == 2){
-
-var shortest_dist = 9999;
-			var shortest_id = noone;
-			
-			with (asset_get("oPlayer")) {
-				if (player != other.player) {
-					var curr_dist = point_distance(x,y,other.x,other.y);
-					if (curr_dist < shortest_dist) {
-						shortest_dist = curr_dist;
-						shortest_id = id;
-					}
-				}
-			}
-			
-if x < shortest_id.x {			
-if shortest_id.url == "1913869515" or shortest_id.url == "2069283406" or shortest_id.url == "1997619532" 
-or shortest_id.url == "2085832560" or shortest_id.url == "2108469290" or shortest_id.url == "2047413648"
-or shortest_id.url == "2154720280" or shortest_id.url == "2136624834"
-{
-create_hitbox(AT_EXTRA_1 , 20 , shortest_id.x , shortest_id.y );   		
-}
-}
-
-}
-
-
-if hit_player_obj != self {
-if introtimer = 1 {
-	        visible = true
-		  spawn_hit_fx( x, y, lighten)
-	x = inx + (42 * introhit)
-	y = iny
-	introtimer = 0
-	hitpause = 0
-	spawn_hit_fx( x, y, exp2)
-	
-	if introhit = 1 {
-		sound_play(asset_get("sfx_abyss_explosion"),false, noone, );
-		sound_play(sound_get("exp2"),false, noone, 2);
-		hsp = -8
-		vsp = 0
-		spr_dir = 1
-		
-	}
-	
-	if introhit = -1 {
-		hsp = 8
-		vsp = 0
-		spr_dir = -1
-	}
-	
-}
-
-	
-
-if intro = 1 && instance_number(oPlayer) == 2 {
-
-if (hit_player_obj.url == "1913869515" or hit_player_obj.url == "2069283406" or hit_player_obj.url == "1997619532" 
-or hit_player_obj.url == "2085832560" or hit_player_obj.url == "2108469290" or hit_player_obj.url == "2047413648"
-or hit_player_obj.url == "2154720280" or hit_player_obj.url == "2136624834")
-&&  hit_player_obj.introtimer != 0{
-	
-take_damage( player, -1 , -1 )
-	/// Zetta Alex Mayu Katie Saji Uza Nolan Elice
-if introtimer = -1{
-	introtimer = 300
-	
-}
-
-if get_gameplay_time() % 3 == 0 {
-        spawn_hit_fx( x, y , smoke1 )
-}
-
-if get_gameplay_time() % 20 == 0 {
-
-        spr_dir *= -1
-}
-
-if introtimer > 1 && get_gameplay_time() % 20 == 0  {
-	set_state (PS_DOUBLE_JUMP)
-}
-
-if introhit == 1 {
-	if get_gameplay_time() % 20 = random_func(10, 20, true) {
-	  sound_play(asset_get("sfx_quick_dodge"),false, noone, 0.6);	
-      sound_play(sound_get("RI"),false, noone, 0.8);
-	  spawn_hit_fx( x, y, lighten)
-	}
-	
-	if get_gameplay_time() % 20 = 10 {
-		spawn_hit_fx( x, y, 302)
-		sound_play(sound_get("SGL"),false, noone, 0.6);
-		sound_play(asset_get("sfx_quick_dodge"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 30 = 15 {
-		spawn_hit_fx( x, y, 305)
-		sound_play(sound_get("RI2"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 40 = 20 {
-visible *= -1
-draw_indicator *= -1			
-		spawn_hit_fx( x, y, exp1)
-		sound_play(asset_get("sfx_swipe_weak1"),false, noone, 0.6);
-	}
-}
-
-if introhit == -1 {
-	if get_gameplay_time() % 20 = random_func(10, 20, true) - 10 {
-	  sound_play(asset_get("sfx_roll"),false, noone, 0.6);	
-	   sound_play(sound_get("exp2"),false, noone, 0.8);
-	  spawn_hit_fx( x, y , darken )	
-	}
-	if get_gameplay_time() % 20 = 0 {
-		spawn_hit_fx( x, y, 302)
-		sound_play(sound_get("SGL"),false, noone, 0.6);
-		sound_play(asset_get("sfx_roll"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 30 = 0 {
-		spawn_hit_fx( x, y, 305)
-		sound_play(sound_get("RI2"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 40 = 0 {
-		spawn_hit_fx( x, y, exp1)
-		sound_play(asset_get("sfx_swipe_weak2"),false, noone, 0.6);
-	}
-}
-
-
-
-if get_gameplay_time() % 10 = 0 && introtimer > 1 {
-hsp = (room_width/2 - x + 100  - random_func(1, 200, true)) / 7
-vsp = (room_height/2 - y - 80  - random_func(2, 160, true)) / 7
-}
-
-if introtimer > 0 {
-	
-		 with (asset_get("oPlayer")) {
-	if (player != other.player) {
-		
-		if hitpause {
-		with (asset_get("pHitBox")) {
-        if player_id == other.id {
-          destroyed = true;
-        }
-    }
-	}
-    
-    
-	}
-	
-   }
-   
-				with (asset_get("pHitBox")) {
-if(player_id == other.id) {
-    destroyed = true;
-}
-			}
-	introtimer -= 1
-	
-	
-	 if introhit = -1 {
-	if get_gameplay_time() % 3 = 0 {
-		spawn_hit_fx( x, y , darken )	
-	}
-	}
-}
-
-}
-
-}
-}
-*/
-
-////////////
-
 if gunname == 0 {
 
 }
@@ -521,70 +451,75 @@ if droptime > 0 {
 if get_player_color(player) == 7 {
 
 if get_gameplay_time() == 15 {
-	
-	sound_play(sound_get("isa2"));
+	sound_play(sound_get("isa2"),false,noone,0.66);
 }
 
 
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && !hitstop {
 	
  if get_player_color(player) == 7{
-     
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
      if get_gameplay_time() % 7 == 6 {
-	 sound_play(sound_get("isa6"));
+	 sound_play(sound_get("isa6"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 5 {
-	 sound_play(sound_get("isa5"));
+	 sound_play(sound_get("isa5"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 4 {
-	 sound_play(sound_get("isa3"));
+	 sound_play(sound_get("isa3"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 3 {
-	 sound_play(sound_get("isa2"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 2 {
-	 sound_play(sound_get("isa2"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 1 {
-	 sound_play(sound_get("isa1"));
+	 sound_play(sound_get("isa1"),false,noone,0.66);
 	}
 	
 }
      
  }
  
- 
-
-
 
 if attack == AT_TAUNT && (window == 1 or window == 4) && window_timer == 1 {
-if get_gameplay_time() % 7 == 6 {
-	 sound_play(sound_get("isa6"));
+	 sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+    if get_gameplay_time() % 7 == 6 {
+	 sound_play(sound_get("isa6"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 5 {
-	 sound_play(sound_get("isa5"));
+	 sound_play(sound_get("isa5"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 4 {
-	 sound_play(sound_get("isa3"));
+	 sound_play(sound_get("isa3"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 3 {
-	 sound_play(sound_get("isa2"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 2 {
-	 sound_play(sound_get("isa2"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 7 == 1 {
-	 sound_play(sound_get("isa1"));
+	 sound_play(sound_get("isa1"),false,noone,0.66);
 	}
 	
 }
@@ -605,7 +540,7 @@ if get_gameplay_time() <= 120 && Vrank == 0 and taunt_pressed && get_player_colo
 	Vrank = 1
 	casing = 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
-    sound_play(sound_get("rankc")) 	
+    sound_play(sound_get("rankc"),false,noone,0.66) 	
 }
 
 
@@ -795,11 +730,15 @@ if infernal2 > 301{
 	 	sound_stop(sound_get("Dmax"))	
 	 	sound_play(sound_get("Dmax"));
 	 }	
-	spawn_hit_fx( x , y - 30, 306 )
 	sound_stop(sound_get("RI"));
-	sound_play(sound_get("RI"),false,noone,0.75);
+	sound_play(sound_get("RI"),false,noone,0.75,1.2);
 	sound_stop(sound_get("exp1"));
-	sound_play(sound_get("exp1"),false,noone,0.8);
+	sound_play(sound_get("exp1"),false,noone,0.5,1.5);
+	fx = spawn_hit_fx( x, y - 10, djumpfx )
+    fx.depth = depth - 2
+    fx = spawn_hit_fx( x, y - 30, styled )
+    fx.spr_dir *= 1.6
+    fx.image_yscale = 1.6
 	infernal2 = 300
 }
 
@@ -811,63 +750,54 @@ if infernal2 < 100 {
 }
 
 if infernal2 >= 100 && infernal2 < 198 {
-	
-		 if get_gameplay_time() % 4 == 0 && !hitpause {
-		spawn_hit_fx( x - ((20 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , dairs3 )
+	if get_gameplay_time() % 3 == 0 && !hitpause {
+		spawn_hit_fx( x - ((20 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke3 )
 	}
-
-
 }
 
 if infernal2 >= 198 && infernal2 < 300 {
-	
-		 if get_gameplay_time() % 4 == 0 && !hitpause {
-		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smoke1 )
+	if get_gameplay_time() % 3 == 0 && !hitpause {
+		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke1 )
 	}
 
 		
-	if get_gameplay_time() % 4 == 1 && !hitpause {
-		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smoke2 )
+	if get_gameplay_time() % 3 == 1 && !hitpause {
+		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke2 )
 	}
-	
-		
 
 }
 
 if infernal2 >= 300 {
-	 if get_gameplay_time() % 4 == 0 && !hitpause {
-		spawn_hit_fx( x - ((25 - random_func(1, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smoke1 )
+	 if get_gameplay_time() % 3 == 0 && !hitpause {
+		spawn_hit_fx( x - ((25 - random_func(1, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke1 )
 	}
 
-		
-	if get_gameplay_time() % 4 == 1 && !hitpause {
-		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smoke2 )
+	if get_gameplay_time() % 3 == 1 && !hitpause {
+		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke2 )
 	}
 	
-	if get_gameplay_time() % 6 == 1 && !hitpause {
-		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , dairs3 )
+	if get_gameplay_time() % 5 == 1 && !hitpause {
+		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , smoke3 )
 	}
 	
-		
 }
 
 
 if gunname >= 1 && gunname <= 3 && infernal2 >= 100 {
 		 if get_gameplay_time() % 2 == 0 && !hitpause {
- spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , ustrongs2 )
+ spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , ustrongs2 )
 	 }
 }
 
 if gunname >= 4 && gunname <= 7 && infernal2 >= 200 {
 			 if get_gameplay_time() % 2 == 0 && !hitpause {
- spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , ustrongs2 )
+ spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , ustrongs2 )
 	 }
 }
 
-
 if gunname >= 8 && infernal2 >= 300 {
 			 if get_gameplay_time() % 2 == 0 && !hitpause {
- spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , ustrongs2 )
+ spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 6 - random_func(12, 66, true) , ustrongs2 )
 	 }
 }
 
@@ -926,10 +856,6 @@ if get_player_color(player) == 8 {
 //////////
 /// setstock 
 
-
-
-
-
 if rankm >= 0 && !hitpause {
 
 	inactive -= 1
@@ -950,11 +876,6 @@ if rankm >= 0 && !hitpause {
 
 
 if rank > 0  {
-
-if infernal2 < 300 {
-	infernal2 += 0.02 * rank
-}
-
 if rankm <= 0 {
 	if rank == 1 {
 		if hunter == 1 or Vrank = 1  {
@@ -969,16 +890,13 @@ if rankm <= 0 {
  rank -= 1
  
 }
-
 }
 
 if rank < 6  {
-	
-
-	
+   if get_gameplay_time() == 110 spawn_hit_fx(x - 30,y - 60,swordhit )
    if rankm >= 240 {
    	move_cooldown[AT_FSTRONG_2] = 10
-   	spawn_hit_fx(x - 30,y - 64,swordhit )
+   	spawn_hit_fx(x - 30,y - 60,swordhit )
    	 rankm -= 120
      rank += 1
      
@@ -987,7 +905,7 @@ if hunter == 1 or Vrank = 1 {
      	case 1 :
      	sound_stop(sound_get("rankd")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("rankc"),false,noone,0.8) 	
+     	sound_play(sound_get("rankc"),false,noone,0.66) 	
      	prevrank = rank
      	}
      	break;
@@ -995,7 +913,7 @@ if hunter == 1 or Vrank = 1 {
      	case 2 :
      	if rank > prevrank {
      	sound_stop(sound_get("rankc")) 	
-     	sound_play(sound_get("rankb"),false,noone,0.8) 
+     	sound_play(sound_get("rankb"),false,noone,0.66)  
      	prevrank = rank
      	}
      	break;
@@ -1003,7 +921,7 @@ if hunter == 1 or Vrank = 1 {
      	case 3 :
      	if rank > prevrank {
      	sound_stop(sound_get("rankb")) 	
-     	sound_play(sound_get("ranka"),false,noone,0.8) 
+     	sound_play(sound_get("ranka"),false,noone,0.66) 
      	prevrank = rank
      	}
      	break;
@@ -1011,7 +929,7 @@ if hunter == 1 or Vrank = 1 {
         case 4 :
         if rank > prevrank {
      	sound_stop(sound_get("ranka")) 	
-     	sound_play(sound_get("ranks"),false,noone,0.8) 
+     	sound_play(sound_get("ranks"),false,noone,0.66) 
      	prevrank = rank
         }
         
@@ -1021,14 +939,13 @@ if hunter == 1 or Vrank = 1 {
      	}
      	
      	    spawn_hit_fx(x,y,lighten)
-     		sound_play(sound_get("RI"),false,noone,0.7)
-     	
+     		sound_play(sound_get("RI"),false,noone,0.66,1.5) 
      	break;
      	
      	case 5 :
      	if rank > prevrank {
      	sound_stop(sound_get("ranks")) 	
-     	sound_play(sound_get("rankss"),false,noone,0.8) 
+     	sound_play(sound_get("rankss"),false,noone,0.66) 
      	prevrank = rank
      	}
      	break;
@@ -1037,7 +954,7 @@ if hunter == 1 or Vrank = 1 {
         case 6 :
         if rank > prevrank {
      	sound_stop(sound_get("rankss")) 	
-     	sound_play(sound_get("ranksss"),false,noone,0.8) 
+     	sound_play(sound_get("ranksss"),false,noone,0.66) 
      	prevrank = rank
         }
      	break;
@@ -1053,3 +970,19 @@ if hunter == 1 or Vrank = 1 {
    }
 }
 
+with oPlayer {
+	
+	if "grenadehit" in self {
+		if grenadehit > 0 {
+			if grenadehit > 50 {
+			x -= 2*spr_dir 
+			}else if grenadehit > 40{
+			x -= 1*spr_dir 	
+			}else if grenadehit <= 30{
+			x += 1*spr_dir 	
+			}
+			grenadehit -= 1
+		}
+	}
+	
+}

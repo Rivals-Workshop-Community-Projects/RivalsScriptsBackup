@@ -1,10 +1,10 @@
 set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
-set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_alt"));
-set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("boomerang_throw"));
+set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_NSPECIAL_2, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
-set_attack_value(AT_NSPECIAL_2, AG_AIR_SPRITE, sprite_get("nspecial_alt"));
-set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL_2, AG_AIR_SPRITE, sprite_get("boomerang_throw"));
+set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("boomerang_throw_hurt"));
 set_attack_value(AT_NSPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
 
 // Windup
@@ -49,12 +49,14 @@ set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_HSPEED, 0);
 
 // Return to neutral
+/*
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_LENGTH, 5); // 4
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 0);
-set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HSPEED, 0);
+*/
 
 /*
 // Hold

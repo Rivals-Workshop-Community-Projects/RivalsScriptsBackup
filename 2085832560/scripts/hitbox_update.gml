@@ -10,15 +10,13 @@ if attack == AT_DTILT && hbox_num != 1 {
 if attack == AT_EXTRA_1 && hbox_num == 7 {
 	if hitbox_timer > 20 {
 		can_hit_self = true
-	
-	
     	with (asset_get("oPlayer")) {
     	     if (abs(other.x - x) < 40) && (((abs(other.y - y) < 20) && (state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_BACKWARD or state == PS_TECH_FORWARD or state == PS_AIR_DODGE) && state_timer >= 4 && state_timer <= 16) or invince_time > 0 ){
     	      with other{
     	      	destroyed = 1
     	      	sound_play(sound_get("exp1"));
 		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x , y , exp1 )
     	      }
     	     }
@@ -108,10 +106,8 @@ if attack == AT_BAIR && hbox_num == 2 {
 	}
 	
 	if !free {
-
 		sound_play(sound_get("exp1"));
-		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x , y + 32 , exp1 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 30 );
@@ -146,7 +142,7 @@ if attack == AT_BAIR && hbox_num == 3 {
 
 		sound_play(sound_get("exp1"));
 		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x , y + 32 , exp1 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 30 );
@@ -167,7 +163,7 @@ if attack == AT_DAIR && hbox_num > 1{
 	if !free or vsp == 0 {
 		sound_play(sound_get("exp2"));
 		destroyed = 1
-		var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+		var exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 		spawn_hit_fx( x , y - 50 , exp2 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 8 , x   , y - 60  );
@@ -202,13 +198,13 @@ if attack == AT_UAIR && hbox_num > 1 {
 		if has_hit{ 
 		sound_play(sound_get("exp1"));
 		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x , y , exp1 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 11 ,x   , y );
 		} else {
-		sound_play(asset_get("sfx_blow_medium2"),false,noone,1,.8);
-		sound_play(asset_get("sfx_spin"),false,noone,1,1.2);
+		// sound_play(asset_get("sfx_blow_medium2"),false,noone,1,.8);
+		sound_play(asset_get("sfx_spin"),false,noone,0.8,1.2);
 		destroyed = 1	
 		spawn_hit_fx( x , y , 14 )
 		}
@@ -244,9 +240,9 @@ var smoke1 = hit_fx_create( sprite_get( "smoke1" ), 20 );
 				
 		destroyed = 1		
 		sound_play(sound_get("exp2"));
-       var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+       var exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 		spawn_hit_fx( x , y - 30 , exp2 )
-	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		create_hitbox(AT_EXTRA_3 , 21 , x, y + 10 );
         spawn_hit_fx( x , y - 30 , 304 )
         
@@ -285,9 +281,9 @@ var smoke1 = hit_fx_create( sprite_get( "smoke1" ), 20 );
 				
 		destroyed = 1		
 		sound_play(sound_get("exp2"));
-       var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+       var exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 		spawn_hit_fx( x , y - 30 , exp2 )
-	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		create_hitbox(AT_EXTRA_3 , 21 , x, y + 10 );
         spawn_hit_fx( x , y - 30 , 304 )
         
@@ -392,7 +388,7 @@ if attack == AT_EXTRA_1 && hbox_num == 13 {
 
 		sound_play(sound_get("exp1"));
 		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		
 		sound_play(sound_get("gun5"));
 		
@@ -427,9 +423,9 @@ if attack == AT_EXTRA_1 && hbox_num == 15 {
 	   sound_play(sound_get("exp2"));
        destroyed = 1
        create_hitbox(AT_EXTRA_1 , 17 , x , y  );
-       var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+       var exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 		spawn_hit_fx( x , y - 30 , exp2 )
-	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+	   var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x + 30, y - 22 , exp1 )
 		spawn_hit_fx( x - 30, y - 22 , exp1 )
         spawn_hit_fx( x , y  , 306 )
@@ -456,8 +452,8 @@ if attack == AT_EXTRA_1 && hbox_num == 18 {
 		hitbox_timer = 800 
 		
 		sound_play(sound_get("exp1"));
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		spawn_hit_fx( x , y + 10 , 306 )
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
+		// spawn_hit_fx( x , y + 10 , 306 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 		
 		sprite_index = sprite_get("gun6")
@@ -472,7 +468,7 @@ if attack == AT_EXTRA_1 && hbox_num == 18 {
 	if hitbox_timer == 950{
 		 sound_play(sound_get("exp2"));
 		destroyed = true 
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		spawn_hit_fx( x , y + 10 , exp1 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 	}	
@@ -489,10 +485,11 @@ if attack == AT_EXTRA_1 && hbox_num >= 21 and hbox_num <= 24 {
 	}
 	
 	if !free or hitbox_timer >= 60 and hbox_num == 21  {
-			sound_play(sound_get("SGF"));
+			sound_stop(sound_get("SGF"));
+			sound_play(sound_get("SGF"),false,noone,0.65);
 			destroyed = 1
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		spawn_hit_fx( x , y + 10 , 304 )
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
+		// spawn_hit_fx( x , y + 10 , 304 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 		if player_id.casing == 1 {
 		create_hitbox(AT_EXTRA_3 , 1 ,x   , y - 10 );
@@ -502,8 +499,8 @@ if attack == AT_EXTRA_1 && hbox_num >= 21 and hbox_num <= 24 {
 	
 	if !free or hitbox_timer >= 65 + random_func(1, 16, true) and hbox_num == 22 {
 			destroyed = 1
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		spawn_hit_fx( x , y + 10 , 304 )
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
+		// spawn_hit_fx( x , y + 10 , 304 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 		if player_id.casing == 1 {
 		create_hitbox(AT_EXTRA_3 , 1 ,x   , y - 10 );
@@ -511,10 +508,11 @@ if attack == AT_EXTRA_1 && hbox_num >= 21 and hbox_num <= 24 {
 		}
 	}
 	if !free or hitbox_timer >= 70 + random_func(2, 16, true) and hbox_num == 23 {
-			sound_play(sound_get("SGF"));
+		sound_stop(sound_get("SGF"));
+			sound_play(sound_get("SGF"),false,noone,0.65);
 			destroyed = 1
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		spawn_hit_fx( x , y + 10 , 304 )
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
+		// spawn_hit_fx( x , y + 10 , 304 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 				if player_id.casing == 1 {
 		create_hitbox(AT_EXTRA_3 , 1 ,x   , y - 10 );
@@ -523,8 +521,8 @@ if attack == AT_EXTRA_1 && hbox_num >= 21 and hbox_num <= 24 {
 	}
 	if !free or hitbox_timer >= 75 + random_func(3, 16, true) and hbox_num == 24 {
 			destroyed = 1
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		spawn_hit_fx( x , y + 10 , 304 )
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
+		// spawn_hit_fx( x , y + 10 , 304 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 		if player_id.casing == 1 {
 		create_hitbox(AT_EXTRA_3 , 1 ,x   , y - 10 );
@@ -559,7 +557,7 @@ if attack == AT_EXTRA_2 && hbox_num == 2{
 	if !free or hitbox_timer > 30 + random_func(2, 16, true)  {
 		sound_play(sound_get("exp2"));
 		destroyed = 1
-		var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+		var exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 		spawn_hit_fx( x , y - 50 , exp2 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 8 , x   , y - 60  );
@@ -655,9 +653,9 @@ if attack == AT_EXTRA_2 && (hbox_num == 5 or hbox_num == 6)  {
 	}	
 	
 	if !free {
-		sound_play(sound_get("exp2"));
+		sound_play(sound_get("exp2"),false,noone,0.8);
 		destroyed = 1
-		var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
+		var exp2 = hit_fx_create( sprite_get( "exp2" ), 16 );
 		spawn_hit_fx( x , y - 50 , exp2 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 8 , x   , y - 60  );
@@ -668,10 +666,12 @@ if attack == AT_EXTRA_2 && (hbox_num == 5 or hbox_num == 6)  {
 	
 }
 
-
 if attack == AT_EXTRA_2 && hbox_num == 7   {
-	
-if hitbox_timer % 4 == 0 {
+	if player_id.BFGhit = true && hitbox_timer < 120{
+		hitbox_timer = 120
+	}
+	player_id.BFGhit = false
+if hitbox_timer % 3 == 0 {
 		create_hitbox(AT_EXTRA_2 , 8 , x , y );
 }
 
@@ -680,7 +680,7 @@ hsp /= 1.01
     if hitbox_timer > 150{
     		sound_play(sound_get("exp1"));
 		
-		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
+		var exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 		
 		sound_play(sound_get("gun5"));
 		
@@ -697,17 +697,18 @@ hsp /= 1.01
 
 
 if attack == AT_EXTRA_2 && hbox_num >= 11 && hbox_num <= 12  {
-	
 	if !free or vsp <= 0 {
 		destroyed = 1
 		sound_play (sound_get("exp1"));
 	}
-	
 }
 
 
 if attack == AT_EXTRA_2 && hbox_num == 9   {
-	
+	if player_id.Laserhit = true && hitbox_timer < 300{
+		hitbox_timer = 300
+	}
+	player_id.Laserhit = false
 	
 	y = room_height/2 
 	
@@ -721,16 +722,15 @@ if hitbox_timer == 1 or hitbox_timer == 55 or hitbox_timer == 110 {
 }
     
 	if hitbox_timer == 160 {
-		hsp *= 150
 		sound_play (sound_get("laser2"));
 	}
 
 if hitbox_timer > 160 {
 	
-	if x > player_id.x {
-		hsp = -1.5
+	if x > player_id.hit_player_obj.x {
+		hsp = -1
 	} else {
-		hsp = 1.5
+		hsp = 1
 	}
 
 	  if hitbox_timer % 6 == 0 {

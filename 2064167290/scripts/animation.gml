@@ -120,18 +120,18 @@ if (attack == AT_UTHROW) and ((state == PS_ATTACK_GROUND) or (state == PS_ATTACK
         set_attack_value( AT_UTHROW, AG_SPRITE, sprite_get("uthrow_air"))
         set_attack_value( AT_UTHROW, AG_HURTBOX_SPRITE, sprite_get("uthrow_air_hurt"))
         
-        if ( pHurtBox.sprite_index != sprite_get("uthrow_air_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("uthrow_air_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("uthrow_air_hurt");
+            hurtboxID.sprite_index =  sprite_get("uthrow_air_hurt");
         }
     }
     else
     {
         set_attack_value( AT_UTHROW, AG_SPRITE, sprite_get("uthrow"))
         set_attack_value( AT_UTHROW, AG_HURTBOX_SPRITE, sprite_get("uthrow_hurt"))
-        if ( pHurtBox.sprite_index != sprite_get("uthrow_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("uthrow_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("uthrow_hurt");
+            hurtboxID.sprite_index =  sprite_get("uthrow_hurt");
         }
     }
 }
@@ -143,18 +143,18 @@ if (attack == AT_FTHROW) and ((state == PS_ATTACK_GROUND) or (state == PS_ATTACK
         set_attack_value( AT_FTHROW, AG_SPRITE, sprite_get("fthrow_air"))
         set_attack_value( AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("fthrow_air_hurt"))
         
-        if ( pHurtBox.sprite_index != sprite_get("fthrow_air_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("fthrow_air_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("fthrow_air_hurt");
+            hurtboxID.sprite_index =  sprite_get("fthrow_air_hurt");
         }
     }
     else
     {
         set_attack_value( AT_FTHROW, AG_SPRITE, sprite_get("fthrow"))
         set_attack_value( AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("fthrow_hurt"))
-        if ( pHurtBox.sprite_index != sprite_get("fthrow_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("fthrow_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("fthrow_hurt");
+            hurtboxID.sprite_index =  sprite_get("fthrow_hurt");
         }
     }
 }
@@ -178,9 +178,9 @@ if (attack == AT_NSPECIAL) and ((state == PS_ATTACK_GROUND) or (state == PS_ATTA
         
         set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_air_hurt"))
         
-        if ( pHurtBox.sprite_index != sprite_get("nspecial_air_hurt"))
+        if (hurtboxID.sprite_index != sprite_get("nspecial_air_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("nspecial_air_hurt");
+            hurtboxID.sprite_index =  sprite_get("nspecial_air_hurt");
         }
     }
     else
@@ -196,9 +196,9 @@ if (attack == AT_NSPECIAL) and ((state == PS_ATTACK_GROUND) or (state == PS_ATTA
         }
         
         set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"))
-        if ( pHurtBox.sprite_index != sprite_get("nspecial_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("nspecial_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("nspecial_hurt");
+            hurtboxID.sprite_index =  sprite_get("nspecial_hurt");
         }
     }
 }
@@ -249,9 +249,9 @@ if (attack == AT_NSPECIAL_2) and ((state == PS_ATTACK_GROUND) or (state == PS_AT
     
         set_attack_value( AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_throw_air_hurt"))
         
-        if ( pHurtBox.sprite_index != sprite_get("nspecial_throw_air_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("nspecial_throw_air_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("nspecial_throw_air_hurt");
+            hurtboxID.sprite_index =  sprite_get("nspecial_throw_air_hurt");
         }
     }
     else
@@ -295,19 +295,9 @@ if (attack == AT_NSPECIAL_2) and ((state == PS_ATTACK_GROUND) or (state == PS_AT
         
         
         set_attack_value( AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_throw_hurt"))
-        if ( pHurtBox.sprite_index != sprite_get("nspecial_throw_hurt"))
+        if ( hurtboxID.sprite_index != sprite_get("nspecial_throw_hurt"))
         {
-            pHurtBox.sprite_index =  sprite_get("nspecial_throw_hurt");
+            hurtboxID.sprite_index =  sprite_get("nspecial_throw_hurt");
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

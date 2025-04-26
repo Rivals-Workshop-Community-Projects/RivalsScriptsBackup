@@ -16,7 +16,7 @@ if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
         gunname = choosengun%13
         spawn_hit_fx( x, y - 30, stylec )
  		
- 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.75,1.1);
+ 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.45,1.1);
  		
  }
  
@@ -31,7 +31,7 @@ if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
         gunname = choosengun%13
         spawn_hit_fx( x, y - 30, stylec )
  		
- 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.75,1.1);
+ 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.45,1.1);
   	
   }
 

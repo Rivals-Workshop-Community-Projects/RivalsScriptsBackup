@@ -116,15 +116,15 @@ set_color_profile_slot( 8, 5, 255, 247, 215 ); //eye
 set_color_profile_slot( 8, 6, 0, 0, 0 ); //pupil
 set_color_profile_slot( 8, 7, 139, 108, 75 ); //darkshading
 
-// Raid
-set_color_profile_slot( 9, 0, 248, 201, 55 ); //orange
-set_color_profile_slot( 9, 1, 123, 87, 56 ); //light fur
-set_color_profile_slot( 9, 2, 123, 87, 56 ); //dark fur
-set_color_profile_slot( 9, 3, 255, 235, 169 ); //coat
-set_color_profile_slot( 9, 4, 123, 87, 56 ); //fluff
-set_color_profile_slot( 9, 5, 248, 201, 55 ); //eye
-set_color_profile_slot( 9, 6, 248, 201, 55 ); //pupil
-set_color_profile_slot( 9, 7, 89, 28, 16 ); //darkshading
+// Mr. Grizz
+set_color_profile_slot( 9, 0, 255, 68, 173 ); //orange
+set_color_profile_slot( 9, 1, 123, 56, 67 ); //light fur
+set_color_profile_slot( 9, 2, 123, 56, 67 ); //dark fur
+set_color_profile_slot( 9, 3, 130, 109, 189 ); //coat
+set_color_profile_slot( 9, 4, 123, 56, 67 ); //fluff
+set_color_profile_slot( 9, 5, 248, 248, 248 ); //eye
+set_color_profile_slot( 9, 6, 248, 248, 248 ); //pupil
+set_color_profile_slot( 9, 7, 89, 16, 49 ); //darkshading
 
 // Jolyon
 set_color_profile_slot( 10, 0, 60, 178, 255 ); //orange
@@ -146,15 +146,15 @@ set_color_profile_slot( 11, 5, 255, 255, 255 ); //eye
 set_color_profile_slot( 11, 6, 254, 170, 58 ); //pupil
 set_color_profile_slot( 11, 7, 176, 70, 56 ); //darkshading
 
-// Inverse Samson
-set_color_profile_slot( 12, 0, 247, 0, 251 ); //orange
-set_color_profile_slot( 12, 1, 164, 92, 16 ); //light fur
-set_color_profile_slot( 12, 2, 77, 43, 7 ); //dark fur
-set_color_profile_slot( 12, 3, 126, 1, 127 ); //coat
-set_color_profile_slot( 12, 4, 77, 43, 7 ); //fluff
+// Disco  Bear
+set_color_profile_slot( 12, 0, 255, 182, 128 ); //orange
+set_color_profile_slot( 12, 1, 255, 196, 74 ); //light fur
+set_color_profile_slot( 12, 2, 255, 196, 74 ); //dark fur
+set_color_profile_slot( 12, 3, 255, 236, 11 ); //coat
+set_color_profile_slot( 12, 4, 255, 130, 4 ); //fluff
 set_color_profile_slot( 12, 5, 255, 255, 255 ); //eye
-set_color_profile_slot( 12, 6, 247, 0, 251 ); //pupil
-set_color_profile_slot( 12, 7, 59, 27, 8 ); //darkshading
+set_color_profile_slot( 12, 6, 0, 0, 0 ); //pupil
+set_color_profile_slot( 12, 7, 255, 196, 74 ); //darkshading
 
 // Abyss
 set_color_profile_slot( 13, 0, 220, 113, 255 ); //orange
@@ -186,15 +186,16 @@ set_color_profile_slot( 15, 5, 255, 242, 242 ); //eye
 set_color_profile_slot( 15, 6, 254, 150, 160 ); //pupil
 set_color_profile_slot( 15, 7, 221, 159, 177 ); //darkshading
 
-// Hooded Ralsei
-set_color_profile_slot( 16, 0, 254, 150, 160 ); //orange
-set_color_profile_slot( 16, 1, 0, 0, 0 ); //light fur
-set_color_profile_slot( 16, 2, 0, 0, 0 ); //dark fur
-set_color_profile_slot( 16, 3, 78, 204, 141 ); //coat
-set_color_profile_slot( 16, 4, 246, 14, 150 ); //fluff
-set_color_profile_slot( 16, 5, 0, 0, 0 ); //eye
-set_color_profile_slot( 16, 6, 255, 255, 255 ); //pupil
-set_color_profile_slot( 16, 7, 0, 0, 0 ); //darkshading
+
+// Begin To Hope
+set_color_profile_slot( 16, 0, 255, 236, 1 ); //orange
+set_color_profile_slot( 16, 1, 252, 252, 250 ); //light fur
+set_color_profile_slot( 16, 2, 209, 205, 193 ); //dark fur
+set_color_profile_slot( 16, 3, 0, 0, 0 ); //coat
+set_color_profile_slot( 16, 4, 255, 255, 255 ); //fluff
+set_color_profile_slot( 16, 5, 255, 255, 255 ); //eye
+set_color_profile_slot( 16, 6, 0, 0, 0 ); //pupil
+set_color_profile_slot( 16, 7, 162, 164, 134 ); //darkshading
 
 // Trans Rights
 set_color_profile_slot( 17, 0, 197, 237, 253 ); //orange
@@ -340,6 +341,19 @@ set_color_profile_slot( 27, 4, 138, 123, 158 ); //fluff
 set_color_profile_slot( 27, 5, 255, 255, 255 ); //eye
 set_color_profile_slot( 27, 6, 255, 0, 0 ); //pupil
 set_color_profile_slot( 27, 7, 138, 123, 158 ); //darkshading
+
+// Hamtaro
+set_color_profile_slot( 28, 0, 244, 195, 216 ); //orange
+set_color_profile_slot( 28, 1, 246, 242, 212 ); //light fur
+set_color_profile_slot( 28, 2, 239, 121, 15 ); //dark fur
+set_color_profile_slot( 28, 3, 246, 242, 212 ); //coat
+set_color_profile_slot( 28, 4, 239, 121, 15 ); //fluff
+set_color_profile_slot( 28, 5, 255, 255, 255 ); //eye
+set_color_profile_slot( 28, 6, 0, 0, 0 ); //pupil
+set_color_profile_slot( 28, 7, 199, 72, 38 ); //darkshading
+
+
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

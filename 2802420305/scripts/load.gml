@@ -11,3 +11,7 @@ sprite_change_offset("hardDropSparks0", 96, 961);
 sprite_change_offset("hardDropSparks1", 96, 961);
 sprite_change_offset("hardDropSparks2", 96, 961);
 sprite_change_offset("lineClear", 320, 96);
+
+sprite_change_offset("gameOver", 210, 32);
+sprite_change_offset("tetris", 172, 32);
+sprite_change_offset("fullClear", 173, 64);

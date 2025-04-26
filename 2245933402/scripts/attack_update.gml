@@ -214,17 +214,22 @@ if (attack == AT_JAB){
 
 
 if attack == AT_UTILT && ostyle == 3 {
-    if window == 3 && window_timer == 3 && has_hit && bullet == 0 {
+    if window == 4 && window_timer == 1 && has_hit && bullet != 2 {
                   sound_play(sound_get("SGL"));
-                  bullet = 1
+                  bullet = 2
     }
     
-    if window == 3 && window_timer == 2  {
-            if bullet == 1 {
+    if window == 3 && window_timer == 2 && !hitpause {
+            if bullet > 0 {
                 spawn_hit_fx (x - 30*spr_dir, y - 30, shotgun1 )
+                spawn_hit_fx (x - 10*spr_dir, y - 45, shotgun1 )
                   sound_play(sound_get("SGF"));
-                  bullet = 0
-                            
+                  if bullet > 1{
+                  	window = 1
+                  	window_timer = 4
+                  }
+                  bullet -= 1
+                  
               create_hitbox(AT_UTILT , 3 , x + 60*spr_dir, y - 66 );
             }
     }
@@ -466,7 +471,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -7 );
         }
         
         if spamb % 20 == 0 or (spamb > 80 && spamb % 3 == 0) {
-            sound_play(asset_get("sfx_ell_steam_hit"))
+             sound_play(asset_get("sfx_ell_steam_hit"),false,noone,0.6,2)
             spawn_hit_fx (x - 26*spr_dir , y - 50 , 109)
         }
         
@@ -550,7 +555,7 @@ if attack == AT_DSTRONG {
 	   //sound_play(asset_get("sfx_abyss_explosion")); 
 	    spawn_hit_fx (x - 50*spr_dir , y - 80 , 253)
 	    spawn_hit_fx (x + 50*spr_dir , y - 80 , 204)
-	   spawn_hit_fx (x - 10*spr_dir , y - 20 , 253)
+	    spawn_hit_fx (x - 10*spr_dir , y - 20 , 253)
 	    spawn_hit_fx (x + 10*spr_dir , y - 20 , 204)
 	    
 	    spawn_hit_fx (x - 30*spr_dir , y  , 253)
@@ -560,6 +565,8 @@ if attack == AT_DSTRONG {
 	   
 	    spawn_hit_fx (x , y - 60 , 253)
 	    spawn_hit_fx (x , y - 60 , 204)
+	    spawn_hit_fx (x - 40 , y - 40 , 253)
+	    spawn_hit_fx (x + 40, y - 40 , 253)
 	    
 
 	    

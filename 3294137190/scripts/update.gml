@@ -26,7 +26,7 @@ if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) {
     			    // Mimic hspeed/vspeed type 2
         			if window_timer == 0 {
         				hsp = lengthdir_x(uspecial_speed, uspecial_angle)
-        				vsp = lengthdir_y(uspecial_speed, uspecial_angle) + uspecial_extra_vspeed;
+        				vsp = lengthdir_y(uspecial_speed, uspecial_angle) + uspecial_extra_vspeed; //(need to figure out some way to make down angling Uspecial not completely terrible)
         			}
 			        
 			        // Rotate around the center of the sprite.
@@ -85,7 +85,7 @@ if (silver_bullets < 2){
 }
 if (silver_bullets < 1){
 	move_cooldown[AT_FSPECIAL] = 999;
-	move_cooldown[AT_DSTRONG] = 999;
+	//move_cooldown[AT_DSTRONG] = 999;
 }
 if (silver_bullets <= 0) silver_bullets = 0;
 

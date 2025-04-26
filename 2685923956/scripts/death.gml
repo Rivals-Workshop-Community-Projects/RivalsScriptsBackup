@@ -4,6 +4,7 @@ bair_used = false;
 dstr_counter = 0;
 ustr_used = false;
 fsp_used = false;
+str_stall = 0;
 
 if (doomdesire_storage!=-4){
 	if (doomdesire_storage.state==0){ 

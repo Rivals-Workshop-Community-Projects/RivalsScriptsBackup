@@ -118,26 +118,48 @@ switch (state)
 //==================================================================
     case PS_PARRY:
     {
-        if (state_timer == 4) && (!msg_is_online) 
-             && !get_match_setting(SET_PRACTICE)
-             && (GET_RNG(9, 0x07) == 0)
+        if (state_timer == 4) && !has_parried
+            && !get_match_setting(SET_PRACTICE)
+            && (random_func(2, 8, true) == 0)
         {
-            msg_fakeout_parry_timer = 40;
-            sound_play(asset_get("sfx_parry_success"));
             //launch a substitute
             var sub = create_hitbox(AT_JAB, 2, x + 15*spr_dir, y);
             sub.hitpause_timer = 7;
             sub.length = 40;
-            sub.old_hsp = spr_dir * -(10 + GET_RNG(12, 0x07));
-            sub.old_vsp = -(8 + GET_RNG(16, 0x07));
+            sub.old_hsp = spr_dir * -(10 + random_func(3, 8, true));
+            sub.old_vsp = -(8 + random_func(4, 8, true));
             sub.hitstop = true;
-            //MARK UNSAFE. THIS PROJECTILE IS NOT SYNCED.
+
+            //ONLINE UNSAFE. THIS PROJECTILE MUST BE SYNCED.
             //this DID cause desyncs online! Dan does not like local-only projectiles.
-            sub.msg_unsafe = true;
+            //but, nothing prevents it from looking different in both versions
+            if (msg_is_local) || true //online-self POV, nothing interesting happens
+            {
+                sub.sprite_index = asset_get("empty_sprite");
+                sub.hit_effect = 1;
+                sub.destroy_fx = 1;
+                sub.msg_unsafe = true;
+            }
+            else //offline OR online-enemy POV, parry fx!?
+            {
+                msg_fakeout_parry_timer = 40;
+                sound_play(asset_get("sfx_parry_success"));
+            }
+
         }
         else if (state_timer == 10)
         {
-            if(!has_parried) create_hitbox(AT_JAB, 1, x + 15*spr_dir, y);
+            if(!has_parried) 
+            {
+                var sub = create_hitbox(AT_JAB, 1, x + 15*spr_dir, y);
+                if (msg_fakeout_parry_timer > 20)
+                {
+                    sub.sprite_index = asset_get("empty_sprite");
+                    sub.hit_effect = 1;
+                    sub.destroy_fx = 1;
+                    sub.msg_unsafe = true;
+                }
+            }
             has_parried = false;
         }
     } break;
@@ -281,6 +303,14 @@ switch (state)
             else if (window == 4 && msg_dstrong_sweetspot_hit)
             {
                 image_index = 1 + get_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START);
+            }
+
+            if (image_index == 8)
+            {
+                msg_unsafe_effects.bad_vsync.freq = 4;
+                msg_unsafe_effects.bad_vsync.horz_max = 20;
+                msg_unsafe_effects.shudder.freq = 2;
+                msg_unsafe_effects.shudder.horz_max = 20;
             }
         } break;
 //==================================================================

@@ -7,7 +7,7 @@ if(my_hitboxID.attack == AT_FSPECIAL_G || my_hitboxID.attack == AT_DSPECIAL_G
     if(!runeH && !h_rune){
         expl.player = 0;
     }
-    spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, air_explosion);
+    spawn_hit_fx(my_hitboxID.x - 2, my_hitboxID.y - 20, air_explosion);
     sound_play(sound_get("explosion1"));
     
     if ((runeL || l_rune) && my_hitboxID.attack != AT_FSPECIAL) {
@@ -47,7 +47,7 @@ else if((my_hitboxID.attack == AT_FTILT_G && my_hitboxID.hbox_num == 2) || (my_h
 
 //hitpause for explosions, hitpause is lower for Nade than the opponent
 if (my_hitboxID.attack == AT_EXPLOSION) {
-    var _base_hitpause = 8;
+    var _base_hitpause = 10;
     var _hitpause_scaling = 0.8;
     if (hit_player_obj != self) { //opponent hitpause (normal) 
         hit_player_obj.hitstop = _base_hitpause + _hitpause_scaling * get_player_damage(hit_player_obj.player) * 0.05;

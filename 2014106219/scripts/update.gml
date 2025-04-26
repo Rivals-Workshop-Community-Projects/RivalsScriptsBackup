@@ -1,21 +1,21 @@
 //update
 //Check if a fspecial ball is out
-var ABallThereIs = false;
+var ABoomerThereIs = false;
 
 with(asset_get("pHitBox")){
     if(player_id == other.id && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && hbox_num == 1){
-        ABallThereIs = true;
+        ABoomerThereIs = true;
     }
 }
 
-if ABallThereIs{
-   	ballOut = true;
+if ABoomerThereIs{
+   	boomerOut = true;
 }
 
-else { ballOut = false; }
+else { boomerOut = false; }
 
-if ballDown > 0 {
-	ballDown--;
+if boomerDown > 0 {
+	boomerDown--;
 }
 
 

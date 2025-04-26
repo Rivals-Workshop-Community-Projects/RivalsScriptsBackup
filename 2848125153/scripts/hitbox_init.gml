@@ -17,7 +17,7 @@ MorshuCanGrab = false;
 UnReflectable = false;
 
 playerurl = 0;
-thedice = noone;
+if("thedice" not in self)thedice = noone;
 landtimer = 0;
 dicearmororig = 1;
 dicearmor = 1;
@@ -46,13 +46,6 @@ if(attack == AT_NSPECIAL){
         lasthitbox = noone;lasthitbox_player_id = noone;lasthitbox_group = -1;lasthitbox_attack = -1;
         hitlockout = 4;hitlockout2 = 0;
         hitplayer = false;hitplayertimer = 0;
-        with(asset_get("pHitBox")){
-			if(place_meeting(x,y,other)){
-		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
-		        	other.thedice = self;
-		    	}
-			}
-        }
         dicenum = random_func(0, 6, true);
         if(player_id.runeL){
         	var extra_rng = random_func(1, 6, true);
@@ -135,14 +128,8 @@ if(attack == AT_NSPECIAL){
         player_id.previousdice = dicenum;
     }else if(hbox_num == 2){ //hit collision
         playerurl = player_id.url;
-        thedice = noone;
-        with(asset_get("pHitBox")){
-			if(place_meeting(x,y,other)){
-		    	if((attack == AT_NSPECIAL && hbox_num == 1 || attack == AT_FSPECIAL && hbox_num <= 2) && hitbox_timer <= 2 && player_id == other.player_id && other != self){
-		        	other.thedice = self;thedice = other;
-		    	}
-			}
-		}UnReflectable = true;AriaCantAbsorb = true;Pocketable = false;Untargetable = true;
+        if("thedice" not in self)thedice = noone;
+		UnReflectable = true;AriaCantAbsorb = true;Pocketable = false;Untargetable = true;
 	}else if(hbox_num == 3){
     	can_hit_self = true;Pocketable = false;
 	}
@@ -183,13 +170,6 @@ if(attack == AT_FSPECIAL){
 			dicearmor = 4;dicearmor2 = 2;
 			UnReflectable = true;
 		}
-		with(asset_get("pHitBox")){
-			if(place_meeting(x,y,other)){
-		    	if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 2){
-		        	other.thedice = self;
-		    	}
-			}
-        }
 			
 		token_num = random_func(0, 8, true);
         if(player_id.phone_cheats[player_id.CHEAT_Fspec] > 0){
@@ -291,7 +271,7 @@ if(attack == AT_DSPECIAL){
 		originalnum = num;
 		playermoneytimer = 6;
 		lastplayer = noone;
-		destroytimer = 0;
+		destroytimer = 0;destroyedbyplayer = false;
 		was_parried2 = false;
 		//MattCanGrab = true;
         //MorshuCanGrab = true;

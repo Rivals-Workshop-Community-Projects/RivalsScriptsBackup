@@ -12,12 +12,12 @@ set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("nspecial_shoot"));
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 8);
 
 //Active (Shoot Orbs)
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //Endlag
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 

@@ -1,0 +1,2 @@
+
+ds_list_destroy(dspecial_stem_hitboxes);

@@ -7,7 +7,15 @@ move_cooldown[AT_FSPECIAL] 		= 0;
 move_cooldown[AT_USPECIAL] 		= 0;
 move_cooldown[AT_DSPECIAL] 		= 0;
 
-energy_meter = 50;
+if (energy_meter > 50)
+{
+	energy_meter = 50;
+}
+
+if (energy_meter < 50)
+{
+	energy_meter = 0;
+}
 
 if (!muted)
 {

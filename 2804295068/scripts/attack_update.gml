@@ -7,15 +7,22 @@ var torchwood_exists = false;
 
 with (obj_article1){
     if (player_id == other.id){
-        var torchwood_exists = true;
+        torchwood_exists = true;
     }
 }
 
-if (attack == AT_JAB) && (window == 6){
-    if (attack_pressed) && ((right_down - left_down == spr_dir) 
-	|| (right_stick_pressed - left_stick_pressed == spr_dir))
-	&& !(up_down || down_down){
-	    set_attack( AT_FTILT );
+if (attack == AT_JAB){
+	if (window == 3){
+		if (is_attack_pressed(DIR_RIGHT) - is_attack_pressed(DIR_LEFT) == -spr_dir)
+		&& !(is_attack_pressed(DIR_UP) || is_attack_pressed(DIR_DOWN)){
+			set_attack( AT_EXTRA_1 );
+		}
+	}
+	if (window == 6){
+		if (is_attack_pressed(DIR_RIGHT) - is_attack_pressed(DIR_LEFT) == spr_dir)
+		&& !(is_attack_pressed(DIR_UP) || is_attack_pressed(DIR_DOWN)){
+			set_attack( AT_FTILT );
+		}
 	}
 }
 
@@ -24,9 +31,7 @@ if (attack == AT_FTILT){
 		move_cooldown[AT_FTILT] = 30
 	}
 	if (window == 3){
-        if (attack_pressed) && ((right_down - left_down == -spr_dir) 
-		|| (right_stick_pressed - left_stick_pressed == -spr_dir))
-		&& !(up_down || down_down){
+        if (is_attack_pressed(DIR_RIGHT) - is_attack_pressed(DIR_LEFT) == -spr_dir){
 		    set_attack( AT_EXTRA_1 );
 	    }
 	}
@@ -34,14 +39,6 @@ if (attack == AT_FTILT){
 
 if (attack == AT_EXTRA_1){
 	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
-}
-
-if (has_rune("A")){
-	if (attack == AT_DATTACK){
-		if (window < 3){
-			can_ustrong = true
-		}
-	}
 }
 
 if (attack == AT_FAIR){
@@ -73,20 +70,12 @@ if (attack == AT_FAIR){
 }
 
 if (attack == AT_BAIR){
-    if (window == 1 && window_timer == 12){
+    if (window == 1 && window_timer == 14){
         spr_dir = spr_dir*-1
 	}
 }
 
 if (attack == AT_DAIR){
-	if !(has_rune("C")){
-		if (window == 1 && window_timer == 1){
-			hover_used = true;
-			hover_pratfall = true;
-			hover_store_jump = djumps;
-			djumps = max_djumps;
-		}
-	}
 	if (window == 1 || window >= 4){
         can_fast_fall = true;
     }else{
@@ -136,76 +125,76 @@ if (attack == AT_NSPECIAL){
 		}
 		//releases
 	    if (window_timer >= 8 && window_timer < 12){
-			nspecial_charge = 0
+			nspecial_charge = 0;
 		    if (!special_down){
-			    window = 3
-				window_timer = 0
+			    window = 3;
+				window_timer = 0;
 			}
 		}
 		if (window_timer >= 16 && window_timer < 28){
-			nspecial_charge = 1
+			nspecial_charge = 1;
 		    if (!special_down){
-			    window = 5
-				window_timer = 0
+			    window = 5;
+				window_timer = 0;
 			}
 		}
 		if (window_timer >= 32 && window_timer < 44){
-			nspecial_charge = 2
+			nspecial_charge = 2;
 		    if (!special_down){
-			    window = 7
-				window_timer = 0
+			    window = 7;
+				window_timer = 0;
 			}
 		}
 		if (window_timer >= 48 && window_timer < 60){
-			nspecial_charge = 3
+			nspecial_charge = 3;
 		    if (!special_down){
-			    window = 9
-				window_timer = 0
+			    window = 9;
+				window_timer = 0;
 			}
 		}
 		if (window_timer >= 64){
-			nspecial_charge = 4
+			nspecial_charge = 4;
 		    if (!special_down){
-			    window = 11
-				window_timer = 0
+			    window = 11;
+				window_timer = 0;
 			}
 		}
 		//window loop
 		if (window_timer == 96 && special_down){
-		    window_timer = 64
+		    window_timer = 64;
 	    }
 		//cancel
 		if (shield_pressed){
-		    window = 14
-		    window_timer = 0
-			clear_button_buffer( PC_SHIELD_PRESSED )
-			move_cooldown[AT_NSPECIAL] = 0
+		    window = 14;
+		    window_timer = 0;
+			clear_button_buffer( PC_SHIELD_PRESSED );
+			move_cooldown[AT_NSPECIAL] = 0;
 	    }
 	}
 	if (window == 1){
 		if (window_timer == 9){
 			//stored charges
 			if (nspecial_charge == 1){
-				window = 2
-			    window_timer = 16
+				window = 2;
+			    window_timer = 16;
 			}
 		    if (nspecial_charge == 2){
-				window = 2
-			    window_timer = 32
+				window = 2;
+			    window_timer = 32;
 			}
 		    if (nspecial_charge == 3){
-				window = 2
-			    window_timer = 48
+				window = 2;
+			    window_timer = 48;
 			}
 		    if (nspecial_charge >= 4){
-			    window = 11
-			    window_timer = 0
+			    window = 11;
+			    window_timer = 0;
 			}
 		}
 	}
 	if (window == 5 || window == 7 || window == 9 || window == 11){
 		if (!has_rune("H")){
-			nspecial_charge = 0
+			nspecial_charge = 0;
 		}
 	}
 	//projectile creation
@@ -213,33 +202,33 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 1){
 	        create_hitbox( AT_NSPECIAL, 1, x+8*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
-			move_cooldown[AT_NSPECIAL] = 60
+			move_cooldown[AT_NSPECIAL] = 60;
 		}
 	    if (window_timer == 12){
-            window = 13
-			window_timer = 0
+            window = 13;
+			window_timer = 0;
 		}
 	}
 	if (window == 6){
 	    if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x-8*spr_dir, y-23 );
 			sound_play (sound_get ("throw"));
-			move_cooldown[AT_NSPECIAL] = 60
+			move_cooldown[AT_NSPECIAL] = 60;
 		}
 	    if (window_timer == 5){
 	        create_hitbox( AT_NSPECIAL, 1, x+8*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
 		}
 	    if (window_timer == 12){
-            window = 13
-			window_timer = 0
+            window = 13;
+			window_timer = 0;
 		}
 	}
 	if (window == 8){
 	    if (window_timer == 9){
 		    create_hitbox( AT_NSPECIAL, 1, x+28*spr_dir, y-19 );
 			sound_play (sound_get ("throw"));
-			move_cooldown[AT_NSPECIAL] = 60
+			move_cooldown[AT_NSPECIAL] = 60;
 		}
 		if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x-8*spr_dir, y-23 );
@@ -250,15 +239,15 @@ if (attack == AT_NSPECIAL){
 			sound_play (sound_get ("throw"));
 		}
 	    if (window_timer == 12){
-            window = 13
-			window_timer = 0
+            window = 13;
+			window_timer = 0;
 		}
 	}
 	if (window == 10){
 	    if (window_timer == 5){
 	    	create_hitbox( AT_NSPECIAL, 1, x+8*spr_dir, y-33 );
 			sound_play (sound_get ("throw"));
-			move_cooldown[AT_NSPECIAL] = 60
+			move_cooldown[AT_NSPECIAL] = 60;
 		}
 		if (window_timer == 2){
 		    create_hitbox( AT_NSPECIAL, 1, x+28*spr_dir, y-19 );
@@ -273,15 +262,15 @@ if (attack == AT_NSPECIAL){
 			sound_play (sound_get ("throw"));
 		}
 	    if (window_timer == 12){
-            window = 13
-			window_timer = 0
+            window = 13;
+			window_timer = 0;
 		}
 	}
 	if (window == 12){
 	    if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x+12*spr_dir, y-51 );
 			sound_play (sound_get ("throw"));
-			move_cooldown[AT_NSPECIAL] = 60
+			move_cooldown[AT_NSPECIAL] = 60;
 		}
 		if (window_timer == 3){
 	    	create_hitbox( AT_NSPECIAL, 1, x+8*spr_dir, y-33 );
@@ -343,7 +332,7 @@ if (attack == AT_USPECIAL){
 					other.y - 72, 
 					other.x + 32, 
 					other.y, 
-					self, true, false){
+					self, true, false) || (has_rune("L")){
 						set_attack( AT_USPECIAL_2 );
 						take_damage (player, -1, 4)
 						sound_play (sound_get ("wakeup"));
@@ -370,8 +359,8 @@ if (attack == AT_USPECIAL){
 if (attack == AT_USPECIAL_2){
 	hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE);
 	if (window == 1){
-	    can_fast_fall = false
-		soft_armor = 12
+	    can_fast_fall = false;
+		soft_armor = 12;
 		if (window_timer mod 4 == 0){
 			spawn_hit_fx(x - 18,y,4)
 		}
@@ -403,11 +392,7 @@ if (attack == AT_DSPECIAL){
 				}
 			}
 			if (torchwood_recharge >= 300){
-				if (!free){
-                    instance_create(x + (spr_dir*60),y - 0,"obj_article1");
-				} else if (free){
-				    instance_create(x + (spr_dir*30),y - 0,"obj_article1");
-				}
+				instance_create(x + (spr_dir*48),y - 0,"obj_article1");
 				sound_play (sound_get ("plant"));
 				torchwood_recharge = 0
 			} else if (!torchwood_exists){
@@ -503,6 +488,14 @@ if (attack == AT_TAUNT_2){
 	*/
 }
 
+if (attack == AT_EXTRA_2){
+	if (window > 1){
+		if (!taunt_down){
+			set_state( PS_IDLE );
+		}
+	}
+}
+
 if (attack == 49){
 	super_armor = true;
 	hurtboxID.sprite_index = get_attack_value(49, AG_HURTBOX_SPRITE);
@@ -526,10 +519,10 @@ if (attack == 49){
 	if (!hitpause && !hitstop){
 		if (window == 2 || window == 3 || window == 4){
 			if (window_timer mod 2 == 0){
-				create_hitbox( 49, 1, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
+				create_hitbox( 49, 1, x, y-(19 + random_func(0, 33, true)) );
 			}
 			if (window_timer mod 2 == 1){
-				create_hitbox( 49, 2, x+16*spr_dir, y-(19 + random_func(0, 33, true)) );
+				create_hitbox( 49, 2, x, y-(19 + random_func(0, 33, true)) );
 			}
 			if (window_timer mod 5 == 0){
 				sound_play (asset_get ("sfx_bubblepop"));

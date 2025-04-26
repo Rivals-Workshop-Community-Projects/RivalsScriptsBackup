@@ -14,9 +14,22 @@ if (!pastelle_handled_victory_quote)
 	    	icon: 0,		      // victory icon for pastelle
             //===========================================================================
             status_quote: "",         // message for this pastelle if she wins under certain conditions
+			isslime: secretalt,
         }
     }
-    
+
+	if(secretalt == 1)
+	{
+		set_color_profile_slot(18, 0, 38, 179, 138 ); //Hair
+		set_color_profile_slot(18, 1, 241, 222, 144 ); //Shirt
+		set_color_profile_slot(18, 2, 241, 222, 144 ); //Bow
+		set_color_profile_slot(18, 3, 168, 217, 241 ); //Skin
+		set_color_profile_slot(18, 4, 241, 222, 144 ); //Pants
+		set_color_profile_slot(18, 5, 86, 179, 152 ); //Sword
+		set_color_profile_slot(18, 6, 252, 254, 255 ); //Gold
+		set_color_profile_slot(18, 7, 241, 222, 144 ); //Waist
+	}
+	
     with (oPlayer) if (player <= 4)
     {
         var data = transfer_array[player];
@@ -165,6 +178,10 @@ if (!pastelle_handled_victory_quote)
 	case "3316054693": // Asra
 		quote = "See this is what happens when you side with a demon lord of darkness.";
 		icon = 4;
+		break;
+	case "3382637663": // Ciela
+		quote = "Oh my gosh, you look so pretty! Can I have your autograph?";
+		icon = 9;
 		break;
 	    //===========================================================================
 
@@ -422,7 +439,7 @@ if (!pastelle_handled_victory_quote)
 		quote = "What is a maid doing with infinite knives?... So weird...";
 		icon = 5;
 		break;
-	case "3304241490": // Saya
+	case "3415959265": // Saya
 	    quote = "Why are you called The Last Guardian? Where's the first one at?!"
 	    icon = 5;
 	    break;
@@ -437,6 +454,10 @@ if (!pastelle_handled_victory_quote)
 	case "2997493298": // Truck-Kun
 		quote = "A truck huh... Whoever was driving it clearly needs to go back to school!";
 		icon = 5;
+		break;
+	case "3353256940": // Twenny
+		quote = "Woahhh... A talking robot that sounds just like me?! That's so cool!!!";
+		icon = 9;
 		break;
 	case "3136330641": // Vakna
 		quote = "OWCHIE! Who in the world thought of a lizard with magma balls?!";

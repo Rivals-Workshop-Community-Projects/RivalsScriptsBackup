@@ -2,14 +2,14 @@ small_sprites = true;
 
 switch(state)
 {
-    case PS_SPAWN:
+	case PS_SPAWN:
 		if (state_timer % 5 == 0) introTimer++;
 		sprite_index = sprite_get(introTimer<19?isFurry?"introFur":"intro":isFurry?"idleFur":"idle");
 		if (introTimer < 0) image_index = 0;
 		else if (introTimer < 19) image_index = introTimer;
 		break;
-    case PS_IDLE:
-    case PS_RESPAWN:
+	case PS_IDLE:
+	case PS_RESPAWN:
 		if (isFurry) sprite_index = sprite_get("idleFur");
 		else if (floor(state_timer*idle_anim_speed/6)%6 == 5)
 		{
@@ -18,18 +18,18 @@ switch(state)
 		}
 		image_index = floor(image_number*state_timer/(image_number/idle_anim_speed));
 		break;
-    case PS_CROUCH:
-    case PS_TECH_GROUND:
+	case PS_CROUCH:
+	case PS_TECH_GROUND:
 		if (isFurry) sprite_index = sprite_get("crouchFur");
 		break;
-    case PS_WALK:
+	case PS_WALK:
 		if (isFurry)
 		{
 			sprite_index = sprite_get("walkFur");
 			image_index = state_timer*walk_anim_speed;
 		}
 		break;
-    case PS_WALK_TURN:
+	case PS_WALK_TURN:
 		if (isFurry) sprite_index = sprite_get("walkturnFur");
 		break;
 	case PS_DASH_START:
@@ -38,7 +38,7 @@ switch(state)
 	case PS_DASH_STOP:
 		if (isFurry) sprite_index = sprite_get("dashstopFur");
 		break;
-    case PS_DASH_TURN:
+	case PS_DASH_TURN:
 		if (isFurry) sprite_index = sprite_get("dashturnFur");
 		break;
 	case PS_DASH:
@@ -54,27 +54,27 @@ switch(state)
 	case PS_ROLL_BACKWARD:
 	case PS_ROLL_FORWARD:
 		if (image_index<6) rollArray[image_index]={rollX:x,rollY:y,rollDir:spr_dir,rollAlpha:16};
-    case PS_TECH_BACKWARD:
-    case PS_TECH_FORWARD:
+	case PS_TECH_BACKWARD:
+	case PS_TECH_FORWARD:
 		if (isFurry) sprite_index = sprite_get("rollFur");
 		break;
 	case PS_PARRY_START:
 		if (isFurry && !can_shield)
 		{
 			sprite_index = sprite_get("idleFur");
-		    image_index = 0;
+			image_index = 0;
 			break;
 		}
 	case PS_PARRY:
 		if (isFurry) sprite_index = sprite_get("parryFur");
 		break;
 	case PS_PRATFALL:
-        image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
+		image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
 	case PS_FIRST_JUMP:
 	case PS_IDLE_AIR:
 		if (isFurry) sprite_index = sprite_get("jumpFur");
 		break;
-    case PS_DOUBLE_JUMP:
+	case PS_DOUBLE_JUMP:
 	case PS_WALL_JUMP:
 		if (isFurry) sprite_index = sprite_get("doublejumpFur");
 		break;
@@ -127,24 +127,7 @@ switch(state)
 				case AT_UTILT: if (isFurry) sprite_index = sprite_get("utiltFur"); break;
 				case AT_DATTACK: if (isFurry) sprite_index = sprite_get("dattackFur"); break;
 				case AT_UTHROW: if (isFurry) sprite_index = sprite_get("grabFur"); break;
-				case AT_NTHROW:
-					//if (window == 5)
-					//{
-					//	if (free)
-					//	{
-					//		sprite_index = sprite_get(isFurry?"jumpFur":"jump");
-					//		image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
-					//	}
-					//	else
-					//	{
-					//		sprite_index = sprite_get(isFurry?"landFur":"land");
-					//		image_index = window_timer>8;
-					//	}
-					//	hurtboxID.sprite_index = hurtbox_spr;
-					//}
-					//else
-						if (isFurry) sprite_index = sprite_get("strongFur");
-					break;
+				case AT_NTHROW: if (isFurry) sprite_index = sprite_get("strongFur"); break;
 				case AT_NSPECIAL: if (isFurry) sprite_index = sprite_get("nspecialFur"+(free?"_air":"")); break;
 				case AT_FSPECIAL: if (isFurry) sprite_index = sprite_get("fspecialFur"); break;
 				case AT_DSPECIAL: if (isFurry) sprite_index = sprite_get("dspecialFur"); break;
@@ -159,7 +142,7 @@ switch(state)
 					if (isFurry) sprite_index = sprite_get("uspecialFur");
 					if (window == 1 && window_timer > uspecStartup/2)
 					{
-					    image_index = 1;
+						image_index = 1;
 					}
 					break;
 			}

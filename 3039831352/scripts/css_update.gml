@@ -26,6 +26,8 @@ if (alt_prev != alt_cur || prev_spr_set != cur_spr_set)
         alt_prev = alt_cur;
     }
     if (prev_spr_set != cur_spr_set) prev_spr_set = cur_spr_set;
+
+    if (secret_active) sound_play(sound_get("mfx_461225"), false, 0, 0.5);
 }
 secret_active = get_player_name(player) == "461225";
 

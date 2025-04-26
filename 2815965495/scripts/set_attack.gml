@@ -1,7 +1,6 @@
 Fcancel=0;
 
 if attack == AT_USPECIAL{
-	prat_land_time = 10;
 	contador = 0;
 	arrow =2;
 	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
@@ -32,8 +31,8 @@ if attack == AT_NSPECIAL{
 }
 
 if attack == AT_FSPECIAL{
-	prat_land_time  = 14;
 	max_charge=0;
+	last_hit_flame = 0;
 	Fcancel = 0;
 	contador = 0;
 	prat_alt += 1;
@@ -44,6 +43,13 @@ if attack == AT_FSPECIAL{
 }
 if attack == AT_TAUNT{
 	contador = 0;
+	if !down_down{
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+		moyai_taunt = 0;
+	} else{
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_2"));
+		moyai_taunt = 1;
+	}
 }
 if attack == AT_DAIR{
 	can_jump = false;

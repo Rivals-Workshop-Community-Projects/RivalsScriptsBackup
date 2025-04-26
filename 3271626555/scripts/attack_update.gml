@@ -11,7 +11,7 @@ if (window == 1){
 if (attack == AT_USPECIAL && stamina < 30) if (window == 1 && window_timer == 1) stamina += 2;
 if (attack == AT_JAB || attack == AT_NAIR || attack == AT_NSPECIAL 
 	|| attack == AT_NSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_DSTRONG){
-    if (window == 1 && window_timer == 1) stamina += 4.5;
+    if (window == 1 && window_timer == 1) stamina += 4;
 }
 if (attack == AT_USTRONG || attack == AT_DSPECIAL_AIR || attack == AT_FSPECIAL_AIR || attack == AT_FSTRONG){
     if (window == 1 && window_timer == 1) stamina += 8;
@@ -33,26 +33,26 @@ if (attack == AT_JAB){
 
 if (attack == AT_NAIR){
     move_cooldown[AT_NAIR] = 10;
-    if (window == 1 && window_timer >= 8) soft_armor = 9;
+    if (window == 1 && window_timer >= 7) soft_armor = 9;
     if (window == 2) soft_armor = 7;
     if (window > 2) soft_armor = 0;
 }
 
-if (attack == AT_DSPECIAL){
-    if (window == 1) soft_armor = 9;
-    if (window == 2 || window == 3) soft_armor = 0;
-    if (window > 3) soft_armor = 15;
-}
+//if (attack == AT_DSPECIAL){
+    //if (window == 1) soft_armor = 9;
+    //if (window == 2 || window == 3) soft_armor = 0;
+    //if (window > 3) soft_armor = 15;
+//}
 
 
-if (attack == AT_DTILT){
-    if ((window == 1 && window_timer >= 7)){
+/*if (attack == AT_DTILT){
+    if ((window == 1 && window_timer >= 5)){
         soft_armor = 8;
     }
     if (window == 2 && window_timer >= 4){
         soft_armor = 0;
     }
-}
+}*/
 
 if (attack == AT_USTRONG){
     if (window == 4) sound_stop(sound_get("ustrong_sfx"));
@@ -73,7 +73,10 @@ if (attack == AT_DSTRONG){
 //print(backstab);
 
 if (attack == AT_NSPECIAL){
-    if (window == 1) nspecial_destroy = false;
+    if (window == 1){ 
+    	nspecial_destroy = false;
+    	heavy_damage = false;
+    }
     if (window >= 2 && window <= 6){
         nspecial_shoot = false;
         if (window == 2 && window_timer == 1) instance_create(x, y-100, "obj_article1").orb_number = 1;
@@ -197,8 +200,12 @@ if (attack == AT_USPECIAL){
 
 if (attack == AT_FSPECIAL){
     can_wall_jump = true;
-    if (window == 1) fspecial_push = 0;
+    if (window == 1){
+    	fspecial_push = 0;
+    	fspecial_cancel_timer = 0;
+    } 
     if (window == 2 || window == 3){
+    	++fspecial_cancel_timer
     	if (state_timer%7 == 0){
     		spawn_base_dust(x-20*spr_dir,y,"dash_start",1*spr_dir)
     	}
@@ -211,7 +218,7 @@ if (attack == AT_FSPECIAL){
                 window_timer = 0;
             }
         }
-        if (stamina >= 30 || shield_pressed){
+        if (stamina >= 30 || fspecial_cancel_timer >= fspecial_cancel_timer_max && shield_pressed){
             window = 7;
             window_timer = 0;
             destroy_hitboxes();

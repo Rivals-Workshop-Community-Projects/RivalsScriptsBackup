@@ -46,9 +46,10 @@ patch_ver = "1.0";
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 26;
+var num_alts = 31;
 var alt_cur = get_player_color(player);
  
+
  
  
 //Alt name init. var doesn't work with arrays lol
@@ -62,14 +63,14 @@ alt_name[5]  = "Moogle";
 alt_name[6]  = "Gummmy Bear";
 alt_name[7]  = "Skullgirls";
 alt_name[8]  = "Camp Lazlo";
-alt_name[9]  = "Raid";
+alt_name[9]  = "Mr. Grizz";
 alt_name[10] = "Joylon";
 alt_name[11] = "Amber Burmese";
-alt_name[12] = "Inverse";
+alt_name[12] = "Disco Bear";
 alt_name[13] = "Abyss";
 alt_name[14] = "Gameboy";
 alt_name[15] = "Ralsei";
-alt_name[16] = "Hooded Ralsei";
+alt_name[16] = "Begin To Hope";
 alt_name[17] = "TRANS RIGHTS!!!";
 alt_name[18] = "Gold";
 alt_name[19] = "Penny Ling";
@@ -81,8 +82,8 @@ alt_name[24] = "Seasonal";
 alt_name[25] = "Morpho Knight";
 alt_name[26] = "Thive";
 alt_name[27] = "Rainbow";
+alt_name[28] = "Hamtaro";
 
- 
  
  
 

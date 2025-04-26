@@ -129,6 +129,10 @@ if (attack == AT_NSPECIAL_2){
 //FSpecial - Turbine Punch
 if (attack == AT_FSPECIAL){
     //Charging Window
+    if (window == 1) && turbine_cont >= 110 && window_timer = 1{
+            spawn_hit_fx( x, y-20, 196);
+            sound_play(asset_get("mfx_star"));
+    }
     if (window == 2){
         set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_charge"));
         hurtboxID.sprite_index = sprite_get("fspecial_charge_hurt");
@@ -141,7 +145,7 @@ if (attack == AT_FSPECIAL){
             attack = AT_TAUNT_2;
         }
         //Finished Charging
-        if (turbine_cont >= 70){
+        if (turbine_cont >= 110){
             window = 6;
         }
         //Attack during Charge
@@ -158,11 +162,12 @@ if (attack == AT_FSPECIAL){
     }
     //Resets the Charge and hitboxes
     if (window == 4){
-        if (turbine_cont >= 70 && free){
+        if (turbine_cont >= 110 && free){
             hsp = -8*spr_dir;
         }
         turbine_cont = 0;
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 2);
+        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 0);
     	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 25);
         set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
         set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);

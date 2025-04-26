@@ -35,11 +35,11 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	
 	
 
-	if abs(player_id.x - x) < 40 && abs(player_id.y - y) < 40  && hitbox_timer > 16 {
+	if abs(player_id.x - x) < 60 && abs(player_id.y - y) < 60  && hitbox_timer > 16 {
 		sound_stop(asset_get("sfx_diamond_small_collect"));
   	    sound_play(asset_get("sfx_diamond_small_collect"),false,noone,0.6,1.2);
-		player_id.ink += 4
-		destroyed = 1
+		player_id.ink += 8
+		destroyed = true
 
 		spawn_hit_fx (x,y,bhl)
 		player_id.move_cooldown[AT_EXTRA_2] = 60
@@ -51,8 +51,10 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 
 if attack == AT_FSPECIAL && type == 2 && hbox_num != 3{
 	if hitbox_timer > 5 && hitbox_timer < 15 {
-		hsp /= 1.1
 		vsp /= 1.1
+	}
+	if hitbox_timer > 5 && hitbox_timer < 20 {
+		hsp /= 1.1
 	}
 }
 	

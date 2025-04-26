@@ -33,11 +33,15 @@ with (my_hitboxID)
 //#endregion
 
 if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 4) {
-	hit_player_obj.orig_knock = point_distance(0, 0, hsp, vsp);
+	angle_autolink(32, -32, 4)
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	hit_player_obj.orig_knock = point_distance(0, 0, hsp, vsp);
+	hit_player_obj.orig_knock += point_distance(0, 0, hsp, vsp);
+	hit_player_obj.orig_knock = min (hit_player_obj.orig_knock, 8)
+	hit_player_obj.knock_dir = point_direction(x, (y - 32), my_hitboxID.x, my_hitboxID.y);
+    hit_player_obj.old_hsp = lengthdir_x(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
+    hit_player_obj.old_vsp = lengthdir_y(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && attack == AT_NSPECIAL_2 && is_attacking) {
@@ -78,6 +82,15 @@ if (my_hitboxID.attack != 49 && my_hitboxID.player == player) {
         my_grab_id = hit_player_obj;
     }
 }
+
+#define angle_autolink(_x, _y, _speed)
+if ((hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && !hit_player_obj.bubbled && my_hitboxID.force_flinch == 2) {
+    hit_player_obj.orig_knock = min(point_distance(hit_player_obj.x, hit_player_obj.y, x + _x * spr_dir,  y + _y) / _speed, 8);
+    hit_player_obj.knock_dir = point_direction(hit_player_obj.x, hit_player_obj.y,  x + _x * spr_dir,  y + _y);
+    hit_player_obj.old_hsp = lengthdir_x(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
+    hit_player_obj.old_vsp = lengthdir_y(hit_player_obj.orig_knock, hit_player_obj.knock_dir);
+}
+
 
 
 #define tension_add(_change)

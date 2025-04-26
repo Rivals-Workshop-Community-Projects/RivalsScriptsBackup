@@ -41,15 +41,17 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
         proj_angle += 5 * spr_dir;
         hit_priority = 4;
         proj_break = 0;
-        if !free {
-            if player == orig_player {
-                var spawntree = instance_create(x,y+22,"obj_article1");
-                spawntree.state = 2;
-                player_id.tree_id = spawntree;
-                destroyed = true;
-            } else {
-                player_id.move_cooldown[AT_DSPECIAL] = 120;
-                destroyed = true;
+        if (!apply_temporal_stasis) {
+            if !free {
+                if player == orig_player {
+                    var spawntree = instance_create(x,y+22,"obj_article1");
+                    spawntree.state = 2;
+                    player_id.tree_id = spawntree;
+                    destroyed = true;
+                } else {
+                    player_id.move_cooldown[AT_DSPECIAL] = 120;
+                    destroyed = true;
+                }
             }
         }
         transcendent = false;
@@ -77,5 +79,12 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
         spawn_hit_fx(x,y,301)
     }
 }
+/*
+if (attack == AT_FSPECIAL) {
+    if (hitbox_timer % 4 == 0) {
+        var fx = spawn_hit_fx(x,y,player_id.fx_small_centershine);
+        fx.draw_angle = random_func(3, 2, true) * 90;
+    }
+}
 
-
+*/

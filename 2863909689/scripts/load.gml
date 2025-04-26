@@ -1,4 +1,5 @@
 set_victory_theme( sound_get( "victory" ));
+set_victory_bg( sprite_get( "victorybg" ));
 
 sprite_change_offset("idle", 93, 114);
 sprite_change_offset("hurt", 93, 114);

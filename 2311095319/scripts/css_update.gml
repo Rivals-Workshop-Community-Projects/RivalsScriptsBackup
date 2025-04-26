@@ -12,7 +12,7 @@ var cursorY = get_instance_y(cursor_id);
 //print("Cursor X: " + string(cursorX) + ", Cursor Y: " + string(cursorY));
 
 //print(player);
-voiceLine = (random_func( 1, 6, true ) + 1);
+voiceLine = (random_func( 1, 9, true ) + 1);
 
 //print("my x pos:" + string(myXPos));
 //print("my y pos:" + string(myYPos));
@@ -33,6 +33,9 @@ if ((cursorX >= myXPos + 178 && cursorX <= myXPos + 202) && (cursorY >= myYPos +
 			sound_stop(sound_get("vc_mario_itsame"));
 			sound_stop(sound_get("vc_mario_yeah"));
 			sound_stop(sound_get("vc_mario_ohyeah"));
+			sound_stop(sound_get("vc_mario_wahoo_2"));
+			sound_stop(sound_get("vc_mario_i_got_it"));
+			sound_stop(sound_get("vc_mario_ohyeah_2"));
 			if (voiceLine == 1){
 				sound_play(sound_get("cssvoice"));
 			} else if (voiceLine == 2){
@@ -45,6 +48,12 @@ if ((cursorX >= myXPos + 178 && cursorX <= myXPos + 202) && (cursorY >= myYPos +
 				sound_play(sound_get("vc_mario_yeah"));
 			} else if (voiceLine == 6){
 				sound_play(sound_get("vc_mario_ohyeah"));
+			} else if (voiceLine == 7){
+				sound_play(sound_get("vc_mario_wahoo_2"));
+			} else if (voiceLine == 8){
+				sound_play(sound_get("vc_mario_i_got_it"));
+			} else if (voiceLine == 9){
+				sound_play(sound_get("vc_mario_ohyeah_2"));
 			}
 		} else {
 			sound_stop(sound_get("cssvoice"));

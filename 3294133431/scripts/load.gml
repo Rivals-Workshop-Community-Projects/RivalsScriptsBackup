@@ -1,10 +1,18 @@
 sprite_change_offset("idle", 64, 94);
+sprite_change_offset("idleWait", 64, 94);
+sprite_change_offset("idleIntro", 64, 94);
 sprite_change_offset("hurt_box", 64, 94);
 sprite_change_offset("crouch_box", 64, 94);
 sprite_change_offset("box_box", 64, 94);
 sprite_change_offset("hurt", 64, 94);
 sprite_change_offset("hurtground", 64, 94);
 sprite_change_offset("bighurt", 64, 94);
+sprite_change_offset("uphurt", 64, 94);
+sprite_change_offset("downhurt", 64, 94);
+sprite_change_offset("bouncehurt", 64, 94);
+sprite_change_offset("spinhurt", 64, 94);
+sprite_change_offset("hurt_ko_buddy", 64, 94);
+
 sprite_change_offset("crouch", 64, 94);
 sprite_change_offset("crouchWalk", 64, 94);
 sprite_change_offset("boxWalk", 96, 126);
@@ -56,6 +64,8 @@ sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("dspecialAir", 64, 94);
 sprite_change_offset("taunt", 64, 94);
 sprite_change_offset("tauntAir", 64, 94);
+sprite_change_offset("tauntTerminal", 96, 94);
+sprite_change_offset("tauntKnife", 96, 94);
 
 sprite_change_offset("plat", 64, 94);
 
@@ -69,3 +79,14 @@ sprite_change_offset("cigarette", 128, 144);
 
 sprite_change_offset("bulletProjectile", 32, 32);
 sprite_change_offset("bulletProjectileCrit", 32, 32);
+
+
+sprite_change_offset("compatabilityKirby", 64, 94);
+sprite_change_offset("compatabilityKirbyReverse", 64, 94);
+sprite_change_offset("compatabilityHypercam0", 11, 8);
+sprite_change_offset("compatabilityHypercam1", 11, 8);
+sprite_change_offset("compatabilityHypercam2", 11, 8);
+sprite_change_offset("compatabilityHypercam3", 11, 8);
+sprite_change_offset("compatabilityHypercam4", 11, 8);
+sprite_change_offset("compatabilityPacman", 16, 16);
+sprite_change_offset("compatabilityNaruto_taunt_sexyjutsu_custom", 50, 70);

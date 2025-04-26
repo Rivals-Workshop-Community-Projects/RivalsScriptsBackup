@@ -34,6 +34,91 @@ if(attack == AT_FSPECIAL){
 	}
 }
 
+
+if (state == PS_SPAWN) {
+	if (introTimer < -10) {//>
+		//print("erm");
+        sprite_index = sprite_get("empty");
+        image_index = 0;
+		draw_x = 0;
+		draw_y = 0;
+    } else if (introTimer >= -10 && theIntroWhichPartAmIOn == 0) {
+	
+		if (introTimer >= -10 && introTimer < -9){//>
+			theIntroFakeGravityValue = theIntroFakeGravityValue - 20;
+		} else {
+			theIntroFakeGravityValue += theIntroFakeGravManip;
+			theIntroFakeGravityValue -= theIntroFakeVerticalPartStuff;
+			theIntroFakeGravManip += 0.5;
+			theIntroFakeGravManip = clamp(theIntroFakeGravManip, 0, 15);
+			if (theIntroFakeVerticalPartStuff != 0){
+				theIntroFakeVerticalPartStuff--;
+			}
+		}
+		
+		//print("my mid grav manip: " + string(theIntroFakeGravManip));
+	
+		//print("thing");
+        sprite_index = sprite_get("intro");
+        image_index = floor(theIntroFakeGravManip / 4); // this is so much more complicated than this previously LOL
+		image_index = clamp(image_index, 0, 2);
+		draw_x = 0;
+		draw_y = theIntroFakeGravityValue;
+		
+		// landing
+		if (draw_y >= -10 && state_timer > (25 + playerNumDiff) && theIntroWhichPartAmIOn == 0){
+			theIntroWhichPartAmIOn = 1;
+			// print("Mario should land");
+			image_index = 3;
+			
+			sound_play(landing_lag_sound);
+			spawn_base_dust( x, y, "land", spr_dir);
+		}
+		
+		if (image_index >= 1){
+			introShouldPlayPipeLeavingThingy++;
+			
+			if (introShouldPlayPipeLeavingThingy == 1){
+				var leavingPipe = spawn_hit_fx( x, y, intro_pipe_leave);
+				leavingPipe.spr_dir = 1;
+				leavingPipe.depth = -50;
+			}
+		}
+		
+    } else if (introTimer >= -10 && theIntroWhichPartAmIOn == 1) {
+		//print("go to idle");
+		
+		theIntroOtherTimer++;
+		
+        sprite_index = sprite_get("intro");
+		
+		image_index = (theIntroOtherTimer / 5) + 3;
+		
+		if (image_index >= 8.5){
+			theIntroWhichPartAmIOn = 2;
+			image_index = 8;
+		}
+		
+		draw_x = 0;
+		draw_y = 0;
+		//print(theIntroOtherTimer);
+		//print("image index: " + string(image_index));
+    } else if (theIntroWhichPartAmIOn == 2){
+		//print("go to idle");
+        sprite_index = sprite_get("idle");
+		draw_x = 0;
+		draw_y = 0;
+    }
+	//print(state_timer);
+	// erm
+	if (state_timer == 20 + (playerNumDiff * 3)){
+		sound_stop(sfx_mario_intro);
+		sound_play(sfx_mario_intro);
+		sound_play(jump_sound, false, noone, 0.75 - (.05 * playerNumDiff), 1.3 + (.1 * playerNumDiff));
+		spawn_base_dust( x, y - 42, "jump", spr_dir);
+	}
+}
+
 //--------------------------------------------
 
 //Supersonic's Base Cast Dust Function

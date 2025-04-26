@@ -6,7 +6,7 @@
 if (get_stage_data(SD_ID) != "213227551" && get_stage_data(SD_ID) != "2381606021") exit;
 
 wait_time = 0;
-if (got_gameplay_time > 260) wait_time = normal_wait_time;
+if (game_time > 260) wait_time = normal_wait_time;
 
 if (has_theikos && theikos_type == 0) theikos_type = 1;
 

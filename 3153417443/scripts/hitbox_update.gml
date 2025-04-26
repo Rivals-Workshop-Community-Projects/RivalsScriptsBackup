@@ -1,12 +1,13 @@
 
 if (player_id.canID != 0) {
 	if (player_id.canID.player == orig_player) {
-	if (player_id.nspecialtap = true && !bounced && player_id.nspecialtap2 = false) {
+	if (player_id.nspecialtap = true && player_id.nspecialtap2 = false) {
 	    player_id.nspecialtap2 = true;
 	    player_id.canID.vsp = 0;
         player_id.canID.hsp = 0;
         sound_play(asset_get("sfx_frog_dspecial_swallow"));
-        sound_play(sound_get("dstrong_kegsplode"));
+        sound_play(asset_get("sfx_frog_nspecial_cast"));
+        sound_play(sound_get("soda2"), false, noone, 0.7, 1);
 		player_id.bubbleexists = true;
 		if (instance_exists(player_id.bubblearticle) && player_id.bubblearticle != 0){
     		player_id.bubblearticle.should_die = true;
@@ -37,6 +38,8 @@ if (player_id.canID != 0) {
         player_id.canID.vsp = 0;
         player_id.canID.hsp = 0;
         sound_play(asset_get("sfx_frog_dspecial_swallow"));
+        sound_play(asset_get("sfx_frog_nspecial_cast"));
+        sound_play(sound_get("soda2"), false, noone, 0.7, 1);
    		player_id.bubbleexists = true;
 		if (instance_exists(player_id.bubblearticle) && player_id.bubblearticle != 0){
     		player_id.bubblearticle.should_die = true;

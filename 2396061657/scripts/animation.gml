@@ -12,10 +12,10 @@ if (state == PS_ATTACK_GROUND){
 }
 
 
-// Halloween Code
+// Event Code
 if (!costume_end && (get_player_color(player) == 6)){
 	if (state == PS_SPAWN || state == PS_IDLE){
-		sprite_index = sprite_get("space_idle");
+		sprite_index = sprite_get("event_idle");
 		image_index = introTimer;
 	}
 }

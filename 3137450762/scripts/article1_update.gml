@@ -26,8 +26,13 @@ if magnetring_anim >= magnetring_animax {magnetring_anim = 0;}
 1: Toss arc from Nspecial
 2: Idle
 3: Pulled towards player
-
 */
+
+with player_id {
+  if was_parried && attack != AT_JAB {
+    move_cooldown[AT_NSPECIAL] = universal_chair_big_cooldown;
+  }
+end
 
 var destroy_self = false; // Checks at the end of this file to destroy the chair if true.
 
@@ -400,8 +405,10 @@ if (x > blastzone_right + 20 || x < blastzone_left - 20 || y > blastzone_bottom 
   if (get_stage_data(SD_ID) != 0) {
     if !((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)
     && (player_id.attack == AT_DSPECIAL_2)) {
-        player_id.move_cooldown[AT_NSPECIAL] = 60;
-        player_id.move_cooldown[AT_DSPECIAL] = 60;
+        player_id.move_cooldown[AT_NSPECIAL] = max(player_id.universal_chair_big_cooldown, player_id.move_cooldown[AT_NSPECIAL]);
+        player_id.move_cooldown[AT_DSPECIAL] = player_id.move_cooldown[AT_NSPECIAL];
+        player_id.chair_cooldown_by_destruction = true;
+        sound_play(asset_get("sfx_shovel_hit_heavy2"), false, noone, 0.6);
         destroy_self = true;
     }
     if !free {destroy_self = true;}

@@ -2,12 +2,12 @@
 // Note: draws in front of portraits, but behind the side boxes
 if (results_timer < 5) exit;
 
-if ("bluey_initialized_victory_screen" not in self)
+if ("azure_initialized_victory_screen" not in self)
 {
-    bluey_initialized_victory_screen = true;
+    azure_initialized_victory_screen = true;
     //defaults to prevent errors
-    bluey_victory_quote = "Uh, I don't think this was supposed to happen.";
-    bluey_victory_icon = 6;
+    azure_victory_quote = "Uh, I don't think this was supposed to happen.";
+    azure_victory_icon = 6;
     
     //magic happens in there
     get_victory_screen_data();
@@ -22,25 +22,25 @@ if (winner == player /* && uhc_batteries */)
     var hide_pos_x  = -1200;
     var quote_time  =   240;
     //Animate panel
-    if ("bluey_quote_current_pos_x" not in self)
-    { bluey_quote_current_pos_x = hide_pos_x; }
+    if ("azure_quote_current_pos_x" not in self)
+    { azure_quote_current_pos_x = hide_pos_x; }
     
     //Must check with timing or if result boxes are open
     var diff = ((results_timer > quote_time && !someone_pressed) ? 
-                    quote_pos_x : hide_pos_x) - bluey_quote_current_pos_x;
+                    quote_pos_x : hide_pos_x) - azure_quote_current_pos_x;
     
-    bluey_quote_current_pos_x += sign(diff) 
+    azure_quote_current_pos_x += sign(diff) 
                                 * max(min(abs(diff), 5), abs(diff) * 0.25);
     
     //Draw panel
-    if (bluey_quote_current_pos_x > hide_pos_x && (string_length(bluey_victory_quote) >= 1))
+    if (azure_quote_current_pos_x > hide_pos_x && (string_length(azure_victory_quote) >= 1))
     {
         draw_sprite(sprite_get("victory_quote_bg"), 0, 
-                    bluey_quote_current_pos_x, quote_pos_y);
-        draw_sprite_ext(sprite_get("stockicon"), bluey_victory_icon, 
-                    bluey_quote_current_pos_x + 33, quote_pos_y + 16, 1.5, 1.5, 0, c_white, 1);
-        draw_win_quote(bluey_quote_current_pos_x+135, quote_pos_y+8, 
-                        bluey_victory_quote);
+                    azure_quote_current_pos_x, quote_pos_y);
+        draw_sprite_ext(sprite_get("stockicon"), azure_victory_icon, 
+                    azure_quote_current_pos_x + 33, quote_pos_y + 16, 1.5, 1.5, 0, c_white, 1);
+        draw_win_quote(azure_quote_current_pos_x+135, quote_pos_y+8, 
+                        azure_victory_quote);
     }
 }
 
@@ -100,9 +100,9 @@ if (winner == player /* && uhc_batteries */)
     var data_array = noone;
     //var data_batteries = true;
     //relies on unload.gml sending over a persistent hitbox with said data
-    with (asset_get("pHitBox")) if ("bluey_victory_screen_array" in self)
+    with (asset_get("pHitBox")) if ("azure_victory_screen_array" in self)
     {
-        data_array = bluey_victory_screen_array;
+        data_array = azure_victory_screen_array;
         //data_batteries = uhc_batteries;
         break;
     }
@@ -126,8 +126,8 @@ if (winner == player /* && uhc_batteries */)
     if (string_length(data_array[winner].status_quote) > 1)
     {
         //Status messages always take precedence for winner Hypercam
-        bluey_victory_quote = data_array[winner].status_quote;
-        bluey_victory_icon = data_array[best_player].icon;
+        azure_victory_quote = data_array[winner].status_quote;
+        azure_victory_icon = data_array[best_player].icon;
     }
     else
     {
@@ -154,11 +154,11 @@ if (winner == player /* && uhc_batteries */)
             }
         }
 
-        bluey_victory_quote = data_array[best_player].quote;
-        bluey_victory_icon = data_array[best_player].icon;
-        if (string_length(bluey_victory_quote) < 1)
-        { bluey_victory_quote = get_random_quote(); 
-          bluey_victory_icon = 2;    
+        azure_victory_quote = data_array[best_player].quote;
+        azure_victory_icon = data_array[best_player].icon;
+        if (string_length(azure_victory_quote) < 1)
+        { azure_victory_quote = get_random_quote(); 
+          azure_victory_icon = 2;    
         }
     }
     

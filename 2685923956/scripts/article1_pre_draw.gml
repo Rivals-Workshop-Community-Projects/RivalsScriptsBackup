@@ -33,5 +33,5 @@ if (state==5){
 }
 
 
-
 draw_set_alpha(alphastorage);
+	//draw_rectangle_colour(x, y-1620, x+1, y+1620, c_red, c_red, c_red, c_red, false);

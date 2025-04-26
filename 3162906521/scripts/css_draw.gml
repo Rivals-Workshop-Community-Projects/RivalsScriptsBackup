@@ -3,7 +3,7 @@
 
 var alt_cur = get_player_color(player);
 
-if alt_cur == 8{//peppino's goggles and pants
+if alt_cur == 10{//peppino's goggles and pants
     set_color_profile_slot( 0, 2, 141, 76, 69 );
     set_color_profile_slot_range( 2, 1, 1, 1 );
     set_color_profile_slot( 0, 1, 221, 42, 56 );
@@ -24,32 +24,55 @@ shader_end();
 draw_sprite_ext(sprite_get("dispenser_gallery"), alt_cur, x + 4, y+35, 1, 1, 0, c_white, 1);
 
 //changing alt sounds/notes
-if change_alt_flag != alt_cur{
-    if alt_cur = 0 or alt_cur = 7 or alt_cur = 8 or alt_cur = 15 or alt_cur = 16{
-        sound_play(sound_get("alt_note1"), false, noone, 1.1);
-    }
-    if alt_cur = 1 or alt_cur = 6 or alt_cur = 9 or alt_cur = 14 or alt_cur = 17{
-        sound_play(sound_get("alt_note2"), false, noone, 1.1);
-    }
-    if alt_cur = 2 or alt_cur = 5 or alt_cur = 10 or alt_cur = 13 or alt_cur = 18 or alt_cur = 21{
-        sound_play(sound_get("alt_note3"), false, noone, 1.1);
-    }
-    if alt_cur = 3 or alt_cur = 4 or alt_cur = 11 or alt_cur = 12 or alt_cur = 19 or alt_cur = 20{
-        sound_play(sound_get("alt_note4"), false, noone, 1.1);
-    }
-    if alt_cur == 7{
+if change_alt_flag != alt_cur{ // 1,2,3,4,3,4,2,1,2,3,4,3,2,1...
+	switch alt_cur{
+	case 0:
+	case 7:
+	case 8:
+	case 15:
+	case 16:
+	case 23:
+		sound_play(sound_get("alt_note1"), false, noone, 1.1);
+	break;
+	case 1:
+	case 6:
+	case 9:
+	case 14:
+	case 17:
+	case 22:
+	case 24:
+		sound_play(sound_get("alt_note2"), false, noone, 1.1);
+    break;
+    case 2:
+    case 5:
+    case 10:
+    case 13:
+    case 18:
+    case 21:
+		sound_play(sound_get("alt_note3"), false, noone, 1.1);
+    break;
+    case 3:
+    case 4:
+    case 11:
+    case 12:
+    case 19:
+    case 20:
+		sound_play(sound_get("alt_note4"), false, noone, 1.1);
+    break;
+	}
+    if alt_cur == 9{
     	if get_synced_var (player) != 0{
 			set_synced_var (player, 2);
 			sound_play(sound_get("cd_sun"), false, noone, 0.8);
 		}
 	}
-	if alt_cur == 8{
+	if alt_cur == 10{
 		if get_synced_var (player) != 0{
 			set_synced_var (player, 3);
 			sound_play(sound_get("pizza_parry"), false, noone, 0.7);
 		}
 	}
-	if alt_cur < 7 or alt_cur > 8{
+	if alt_cur < 9 or alt_cur > 10{
 		if get_synced_var (player) > 1{
 			set_synced_var (player, 1);
 			sound_play(asset_get("mfx_option"))
@@ -88,7 +111,7 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 //RGB/engineer gaming alt code
 //rainbow 
 if !("hue" in self) hue = 0
-if get_player_color(player) = 21 {
+if get_player_color(player) = 24 {
 //remember rivals starts with 0
 	hue+=1 
 	if hue>255 hue-=255;
@@ -100,7 +123,7 @@ if get_player_color(player) = 21 {
 	//shift that colour by Hue, make sure it also loops
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(21, 1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(24, 1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	// set_color_profile_slot(24, 4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 
 
@@ -114,8 +137,8 @@ if get_player_color(player) = 21 {
 	//kirby's feet keep the same hue as his skin
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(21, 1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	// set_color_profile_slot(21, 4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(24, 1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	// set_color_profile_slot(24, 4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	//set the new color using rgb values from the gamemaker color
 	}
 //Keep repeating for every slot

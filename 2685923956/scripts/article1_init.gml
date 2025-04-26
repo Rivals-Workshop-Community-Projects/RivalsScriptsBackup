@@ -3,7 +3,7 @@
 //Hello This Is Doom Desire
 
 init = 0;
-sprite_index = sprite_get("dspecial_doomdesire");
+sprite_index = sprite_get("dspecial_doomdesire_smol");
 
 image_xscale = 2;
 image_yscale = 2;
@@ -14,6 +14,10 @@ state = 0;
 state_timer = 0;
 state_end = 0;
 idle_cycle = 0;
+
+
+eye_y_offset = 90; //118
+eye_y_radius = 85; //80
 
 quicker = false;
 

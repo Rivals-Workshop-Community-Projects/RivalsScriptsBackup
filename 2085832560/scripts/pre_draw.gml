@@ -7,18 +7,15 @@ shader_start();
 		} 
 	}
 	
-if rank >= 4 {
-	  gpu_set_blendmode(bm_add);
-        draw_sprite_ext(sprite_get("DT"), get_gameplay_time()/ 4 , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.5 - (get_gameplay_time() % 20)/200);
-  gpu_set_blendmode(bm_normal);
-
-		draw_sprite_ext(sprite_get("DT"), get_gameplay_time() / 4 , x + 1 - hsp  , y + 1 - vsp  , spr_dir*1, 1, 0 , -1 , rankm/280 - (get_gameplay_time() % 20)/200);
-		
+if djumps > 0 {
+	draw_sprite_ext(sprite_get("DT"), get_gameplay_time() / 2 , x + 1 - hsp  , y + 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.5);
+	gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_get("DT"), get_gameplay_time()/ 2 , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.5 - (get_gameplay_time() % 20)/200);
+    gpu_set_blendmode(bm_normal);
 }
 
 
-if rank < 5 {
-
+if rank < 5 && get_gameplay_time() > 110{
 
 draw_sprite_ext(sprite_get("rank"), rank + 5, x - 50 + 10, y- 60 - 22,1,1,0,-1, rankm/120/2 + 0.2 );
 

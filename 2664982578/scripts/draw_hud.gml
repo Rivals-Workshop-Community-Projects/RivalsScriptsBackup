@@ -24,3 +24,5 @@ draw_debug_text(temp_x + 160, temp_y - 72, string(counter_drop));
 muno_event_type = 5;
 user_event(14);
 */
+
+//draw_debug_text(temp_x + 160, temp_y - 72, string(window_timer));

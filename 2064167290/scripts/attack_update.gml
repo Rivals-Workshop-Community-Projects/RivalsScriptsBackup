@@ -2,13 +2,13 @@
 
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL_2){
     
     trigger_b_reverse();
 }
 
 // no fast fall please it's weird
-if (attack == AT_BAIR) or ( attack = AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) or (attack == AT_DTHROW) or (attack == AT_USPECIAL_GROUND) or (attack == AT_USPECIAL) or (attack == AT_DSPECIAL) or (attack == AT_FSPECIAL)
+if (attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) or (attack == AT_DTHROW) or (attack == AT_USPECIAL_GROUND) or (attack == AT_USPECIAL) or (attack == AT_DSPECIAL) or (attack == AT_FSPECIAL)
 {
     can_fast_fall = false;
 }
@@ -36,7 +36,7 @@ if ( attack == AT_USTRONG)
     }
     
     
-    if (window == 2) and (window_timer == 8)
+    if (window == 2) and (window_timer == 8) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         pale_x = x + 7 * spr_dir;
         pale_y = y;
@@ -68,19 +68,32 @@ if ( attack == AT_USTRONG)
 }
 
 // Dtilt
-if (attack == AT_DTILT) and ( window == 3) and ( window_timer == 13) and (!was_parried)
+if (attack == AT_DTILT) and ( window == 3) and ( window_timer == 13) and (!was_parried) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     set_state(PS_CROUCH);
     state_timer = 10;
-    pHurtBox.sprite_index = asset_get("ex_guy_crouch_box");
+    hurtboxID.sprite_index = asset_get("ex_guy_crouch_box");
 }
 
+ if(attack == AT_DTILT || attack == AT_UTILT)
+{
+            //turnaround
+        if(window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
+}
+
+
+
+
 // DATTACK
-if (attack == AT_DATTACK) and ( window == 4) and ( window_timer == 3) and(!was_parried)
+if (attack == AT_DATTACK) and ( window == 4) and ( window_timer == 3) and(!was_parried) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     set_state(PS_CROUCH);
     state_timer = 10;
-    pHurtBox.sprite_index = asset_get("ex_guy_crouch_box");
+    hurtboxID.sprite_index = asset_get("ex_guy_crouch_box");
 }
 
 
@@ -125,90 +138,21 @@ if (attack == AT_EXTRA_2) and ( window == 2)
 
 // NSPECIAL
 
-
-
-
-
 // JAB COMBO
 if (attack == AT_JAB)
 {
-    if (window == 3) and (attack_pressed) // jab 1 -> jab 2
-    {
-        
-        if (left_down) or (right_down)
-        {
-            spr_dir = right_down - left_down;
-            
-            attack_end();
-            set_attack(AT_FTILT);
-            window = 0;
-            window_timer = 0;
+        if((window == 1 || window == 4) && (window_timer == 1)){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+            clear_button_buffer(PC_ATTACK_PRESSED);
         }
-        else
-        {
-            window = 4;
-            window_timer = 0;
-            attack_end();
-        }
-        
-        if (down_down)
-        {
-            attack_end();
-            set_attack(AT_DTILT);
-        }
-        
-        if(up_down)
-        {
-            attack_end();
-            set_attack(AT_UTILT);
-        }
-        
+//turnaround
+if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - left_stick_down) * -1) && !up_down && !down_down && (attack_down || right_stick_down || left_stick_down)){
+    if(spr_dir == (right_down - left_down) * -1){
+        spr_dir *= -1;
+        attack_end();
+        set_attack(AT_FTILT);
     }
-    
-    if (window == 6) and (attack_pressed) // jab 2 -> jab 3
-    {
-        if (left_down) or (right_down)
-        {
-            
-            spr_dir = right_down - left_down;
-            
-            attack_end();
-            set_attack(AT_FTILT);
-            window = 0;
-            window_timer = 0;
-        }
-        else
-        {
-            window = 7;
-            window_timer = 0;
-            attack_end();
-        }
-        
-        if (down_down)
-        {
-            attack_end();
-            set_attack(AT_DTILT);
-        }
-         if(up_down)
-        {
-            attack_end();
-            set_attack(AT_UTILT);
-        }
-        
-    }
-    
-    if (window == 3) and ( window_timer == 10) // if waited too much, end jab 1
-    {
-        set_state(PS_IDLE);
-    }
-    
-    if (window == 6) and ( window_timer == 10) // if waited too much, end jab 2
-    {
-        set_state(PS_IDLE);
-    }
-
 }
-
+}
 // FAIR
 if (attack == AT_FAIR) and (window == 1) 
 {
@@ -232,7 +176,7 @@ if (attack == AT_FAIR) and (window == 1)
 // SPECIALS
 
 
-if (attack == AT_DSPECIAL) and (window_timer == 11) 
+if (attack == AT_DSPECIAL) and (window_timer == 11)  // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     if (runeF)
     {
@@ -295,7 +239,7 @@ if (attack == AT_DSPECIAL_2)
         }
     }
     
-    if (window == 2) and (window_timer == 6)
+    if (window == 2) and (window_timer == 6) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         if (!free)
         {
@@ -311,7 +255,7 @@ if (attack == AT_DSPECIAL_2)
 
 // THROWS
 
-if (attack == AT_UTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable)
+if (attack == AT_UTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
   
     
@@ -333,7 +277,7 @@ if (attack == AT_UTHROW) and (window == 1) and (window_timer == 11) and (holding
     holding_turntable = false;
     
 }
-if (attack == AT_FTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable)
+if (attack == AT_FTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     with (obj_article1)
     {
@@ -356,7 +300,7 @@ if (attack == AT_FTHROW) and (window == 1) and (window_timer == 11) and (holding
     holding_turntable = false;
     
 }
-if (attack == AT_DTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable)
+if (attack == AT_DTHROW) and (window == 1) and (window_timer == 11) and (holding_turntable) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     with (obj_article1)
     {
@@ -396,7 +340,7 @@ if (attack == AT_USPECIAL) and (can_uspecial) and (special_down)
     }
     
 
-    if (window == 1) and (window_timer == 11) and (turntable_exist) 
+    if (window == 1) and (window_timer == 11) and (turntable_exist)  // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         set_attack(AT_USPECIAL_2);
         hurtboxID.sprite_index = sprite_get("uspecial2_hurt");
@@ -419,13 +363,13 @@ if (attack == AT_USPECIAL_2)
     
     can_uspecial = false;
     
-    if (window == 1) and (window_timer == 0)
+    if (window == 1) and (window_timer == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         with (obj_article1)
         {
             if (player_id == other)
             {
-               uspecial_timer = 50;
+               uspecial_timer = 49;
             }
         }
     }
@@ -445,7 +389,7 @@ if (attack == AT_USPECIAL_2)
     }
     
     // teleportation
-    if ( window == 1) and (window_timer == 15)
+    if ( window == 1) and (window_timer == 15) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         
         with (obj_article1)
@@ -608,6 +552,7 @@ if (attack == AT_USTRONG) and ( window == 4) and (taunt_down)
     }
     
     //ustrong_pale = false;
+    attack_end();
     set_attack(AT_TAUNT_2);
     hurtboxID.sprite_index = sprite_get("paletaunt_hurt");
 }
@@ -684,7 +629,7 @@ if (attack == AT_USPECIAL)
 if (attack == AT_NSPECIAL_2)
 {
     
-    if (window == 1) and (window_timer == 1) and (runeF) // random RuneF
+    if (window == 1) and (window_timer == 1) and (runeF) // random RuneF // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         cd_level = random_func( 23, cd_level_max + 1, true);
         
@@ -698,7 +643,7 @@ if (attack == AT_NSPECIAL_2)
         }
     }
     
-    if ( window == 2) and ( window_timer == 5)
+    if ( window == 2) and ( window_timer == 5) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         create_hitbox( AT_NSPECIAL_2, cd_level + 1, x + (62 * spr_dir), y - 36 );
             
@@ -711,10 +656,11 @@ if (attack == AT_NSPECIAL_2)
 if (attack == AT_FSPECIAL) 
 {
     move_cooldown[AT_FSPECIAL] = 100000;
+    can_wall_jump = true;
     
     if ((window == 3) or (window == 4))
     {
-        if (jump_pressed) or (special_pressed)
+        if (jump_pressed || (tap_jump_pressed && can_tap_jump())) or (special_pressed)
         {
             window = 5;
             window_timer = 0;
@@ -751,7 +697,7 @@ if (attack == AT_EXTRA_3)
     }
     
     
-    if (window == 2) and (window_timer == 14)
+    if (window == 2) and (window_timer == 14) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         set_state(PS_CROUCH);
     }
@@ -761,7 +707,7 @@ if (attack == AT_EXTRA_3)
 
 // TAUNTTABLE
 
-if (attack == AT_DSPECIAL_AIR) and (window == 1) and (window_timer == 1)
+if (attack == AT_DSPECIAL_AIR) and (window == 1) and (window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     var rand = random_func( 5, array_length_1d(sound), true )
     
@@ -776,7 +722,7 @@ if (attack == AT_DSPECIAL_AIR) and (window == 1) and (window_timer == 1)
 
 if (attack == AT_TAUNT) and (runeN)
 {
-    if (window == 1) and (window_timer == 25)
+    if (window == 1) and (window_timer == 25) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
     
         with (obj_article2)
@@ -798,6 +744,11 @@ if (attack == AT_USPECIAL_2) and (window == 4)
     can_wall_jump = true;
 }
 
-
-
-
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

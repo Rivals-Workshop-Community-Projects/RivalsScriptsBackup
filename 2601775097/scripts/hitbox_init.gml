@@ -5,41 +5,42 @@ artc = noone;
 
 if (destroy_fx == 0) destroy_fx = hit_effect;
 
-if (attack == AT_USPECIAL_2)
+switch (attack)
 {
-    proj_speed = 20;
-    hit_sound_played = false;
-
-    shoot_projectile = false;
-    saved_size_x = image_xscale;
-    saved_size_y = image_yscale;
-    image_xscale = 0;
-    image_yscale = 0;
-}
-
-if (attack == AT_EXTRA_2)
-{
-    if (hbox_num == 1)
-    {
-        explosive_spear = player_id.burnbuff_active;
-        if (explosive_spear)
+    case AT_USTRONG:
+        if (player_id.rune_H_active && hbox_num == 4)
         {
-            sprite_index = sprite_get("fx_skill9_proj_burn");
-            projectile_parry_stun = 0;
-            does_not_reflect = 0;
-            transcendent = 1;
-            enemies = 0;
-            fx_particles = 2;
-            sound_effect = asset_get("sfx_forsburn_combust");
-            hit_effect = player_id.fx_fireblow[0];
-            destroy_fx = 1;
-            hsp /= 1.5;
-            length += 1.75;
+            artc = instance_create(x, y, "obj_article1");
+            artc.state = "hook_chain";
+            artc.chain_start[0] = player_id.x + 40 * player_id.spr_dir;
+            artc.chain_start[1] = player_id.y - 32 - 6 * player_id.spr_dir;
+            artc.chain_end[0] = x;
+            artc.chain_end[1] = y;
         }
-    }
-    else
-    {
-        fx_particles = 2;
-        with (player_id) set_hitbox_value(other.attack, 2, HG_HITBOX_COLOR, hb_color[3]);
-    }
+        break;
+    case AT_EXTRA_2: //light hookshot
+        if (hbox_num == 1)
+        {
+            artc = instance_create(x, y, "obj_article1");
+            artc.state = "hook_chain";
+            artc.chain_end[0] = x;
+            artc.chain_end[1] = y;
+        }
+        break;
+    case AT_USPECIAL_2: //polaris
+        proj_speed = 25; //20
+        proj_turn_spd = 0.07;
+        hit_sound_played = false;
+        home_id = noone;
+
+        shoot_projectile = false;
+        saved_size_x = image_xscale;
+        saved_size_y = image_yscale;
+        image_xscale = 0;
+        image_yscale = 0;
+        break;
+    case AT_EXTRA_1: //chasm burster
+        var ex_vfx = spawn_hit_fx(x, y-y_pos, player_id.fx_skill11_chasm);
+        ex_vfx.depth = depth-1;
+        break;
 }

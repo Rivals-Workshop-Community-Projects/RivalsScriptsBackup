@@ -78,7 +78,7 @@ if (ai_recovering)
         }
 
         //if bar has burning fury on he lets it rip, doesn't happen if he has searing descent since he automatically uses it
-        if (burnbuff_active && mp_current < 30 && skill[cur_skills[i]].skill_id != 10)
+        if (burnbuff_active && mp_cur < 30 && skill[cur_skills[i]].skill_id != 10)
         {
             up_down = false;
             if (x < surface_left) right_down = true;
@@ -86,7 +86,7 @@ if (ai_recovering)
             use_skill(i);
         }
         //light hookshot off stage (might need to check if there's actually a wall in front of him lmao)
-        if (skill[cur_skills[i]].skill_id == 9 && mp_current >= skill[9].mp_use_cost && y - char_height > surface_top)
+        if (skill[cur_skills[i]].skill_id == 9 && mp_cur >= skill[9].mp_use_cost && y - char_height > surface_top)
         {
             if (x < surface_left - 300) right_down = true;
             if (x > surface_right + 300) left_down = true;
@@ -149,10 +149,6 @@ if (cpu_fight_time > 0)
     if (!ai_recovering && jump_down) jump_down = false;
 
     facing_target = (x > ai_target.x && spr_dir == -1 || x < ai_target.x && spr_dir == 1);
-
-    //high level shenaningans
-    if (temp_level >= 7) mp_gain_rate = temp_level*2-8; //lvl 7: 6 mp | lvl 8: 8 mp | lvl 9: 10 mp
-    if (temp_level == 9) lightstun_active = true;
 
     //makes bar attempt to parry when enemies are close
     if (!hurtboxID.dodging && !invincible && !free && bar_should_parry <= 0 && temp_level > 5)
@@ -335,7 +331,7 @@ if (cpu_fight_time > 0)
         {
             case 0: //light dagger
                 if (cpu_fight_time % 500 == 0 && daggers_used > 2) daggers_used = 0; //allows him to use light dagger again
-                if (mp_current >= skill[0].mp_use_cost && facing_target && (y == ai_target.y && !free || y < ai_target.y && free) && daggers_used <= 2)
+                if (mp_cur >= skill[0].mp_use_cost && facing_target && (y == ai_target.y && !free || y < ai_target.y && free) && daggers_used <= 2)
                 {
                     if ((target_dist < 350 || target_dist < 500 && burnbuff_active) && target_dist > 160)
                     {
@@ -345,10 +341,10 @@ if (cpu_fight_time > 0)
                 }
                 break;
             case 4: //flashbang
-                if (mp_current >= skill[4].mp_use_cost && target_dist <= 40 && facing_target) use_skill(i);
+                if (mp_cur >= skill[4].mp_use_cost && target_dist <= 40 && facing_target) use_skill(i);
                 break;
             case 8: //ember fist
-                if (mp_current >= skill[8].mp_use_cost && (!burnbuff_active && target_dist < 120 &&
+                if (mp_cur >= skill[8].mp_use_cost && (!burnbuff_active && target_dist < 120 &&
                 (y > ai_target.y + ai_target.char_height/2 - 32 || y < ai_target.y - ai_target.char_height/2 + 32) || burnbuff_active && target_dist < 70)
                 && facing_target)
                 {
@@ -366,24 +362,24 @@ if (cpu_fight_time > 0)
                     burnbuff_end_time = random_func(924, 120, true);
 
                     //the input keeps going back to nspec because i'm forcing it out of fspec, overwriting the code above
-                    if (mp_current >= skill[1].mp_use_cost && target_dist < 250) use_skill(i);
+                    if (mp_cur >= skill[1].mp_use_cost && target_dist < 250) use_skill(i);
                 }
                 else
                 {
                     burnbuff_time ++;
                     if (burnbuff_time >= burnbuff_end_time)
                     {
-                        if (mp_current >= skill[1].mp_cost2 && facing_target && (y == ai_target.y && !free || y < ai_target.y && free))
+                        if (mp_cur >= skill[1].mp_cost2 && facing_target && (y == ai_target.y && !free || y < ai_target.y && free))
                         {
                             if (target_dist < 200) use_skill(i);
                         }
                     }
                 }
             case 5: //power smash
-                if (mp_current >= skill[5].mp_use_cost && target_dist < 180 && facing_target) use_skill(i);
+                if (mp_cur >= skill[5].mp_use_cost && target_dist < 180 && facing_target) use_skill(i);
                 break;
             case 9: //light hookshot
-                if (mp_current >= skill[9].mp_use_cost && target_dist < 600 && target_dist > 300 && (ai_target.y > y + 32 || ai_target.y < y - 32))
+                if (mp_cur >= skill[9].mp_use_cost && target_dist < 600 && target_dist > 300 && (ai_target.y > y + 32 || ai_target.y < y - 32))
                 {
                     use_skill(i);
                     if (attack == skill[9].skill_attack && window == 2)
@@ -394,7 +390,7 @@ if (cpu_fight_time > 0)
                 }
                 break;
             case 2: //force leap
-                if (mp_current >= skill[2].mp_use_cost && target_dist < 250 && y > ai_target.y && !ai_recovering)
+                if (mp_cur >= skill[2].mp_use_cost && target_dist < 250 && y > ai_target.y && !ai_recovering)
                 {
                     use_skill(i);
 
@@ -412,27 +408,27 @@ if (cpu_fight_time > 0)
                 }
                 break;
             case 6: //accel blitz
-                if (mp_current >= skill[6].mp_use_cost && target_dist < 320 && !burnbuff_active && !ai_recovering)
+                if (mp_cur >= skill[6].mp_use_cost && target_dist < 320 && !burnbuff_active && !ai_recovering)
                 {
                     joy_pad_idle = false;
 
                     angle_limier(6, false);
                 }
             case 10: //searing descent
-                if (mp_current >= skill[10].mp_use_cost && ai_target.y - 64 < y && (ai_target.x > x + 60 || ai_target.x < x - 60)) use_skill(i);
-                if (mp_current >= skill[10].mp_cost2 && ai_target.y + 64 > y && (ai_target.x > x + 60 || ai_target.x < x - 60) && (window == 3 || window == 4) && !ai_recovering)
+                if (mp_cur >= skill[10].mp_use_cost && ai_target.y - 64 < y && (ai_target.x > x + 60 || ai_target.x < x - 60)) use_skill(i);
+                if (mp_cur >= skill[10].mp_cost2 && ai_target.y + 64 > y && (ai_target.x > x + 60 || ai_target.x < x - 60) && (window == 3 || window == 4) && !ai_recovering)
                 {
                     special_down = true;
                 }
                 break;
             case 3: //photon blast
-                if (mp_current >= skill[3].mp_use_cost && target_dist < 140 && !burnbuff_active) use_skill(i);
+                if (mp_cur >= skill[3].mp_use_cost && target_dist < 140 && !burnbuff_active) use_skill(i);
                 break;
             case 7: //polaris
                 if (!lightbuff_active && !burnbuff_active)
                 {
                     lightbuff_time = 0;
-                    if (mp_current >= skill[7].mp_use_cost && target_dist < 1000)
+                    if (mp_cur >= skill[7].mp_use_cost && target_dist < 1000)
                     {
                         use_skill(i);
                     }
@@ -448,7 +444,7 @@ if (cpu_fight_time > 0)
                 }
                 break;
             case 11: //chasm burster
-                if (mp_current >= skill[11].mp_use_cost && target_dist < 200 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target) use_skill(i);
+                if (mp_cur >= skill[11].mp_use_cost && target_dist < 200 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target) use_skill(i);
                 break;
         }
     }

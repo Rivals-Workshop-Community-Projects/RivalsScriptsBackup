@@ -29,8 +29,8 @@ walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 4;
 initial_dash_time = 9;
-initial_dash_speed = 6;
-dash_speed = 7.5;
+initial_dash_speed = 8.5;
+dash_speed = 8;
 dash_turn_time = 5;
 dash_turn_accel = 2.5;
 dash_stop_time = 4;
@@ -42,8 +42,8 @@ jump_start_time = 5;
 jump_speed = 12.5;
 short_hop_speed = 8;
 djump_speed = 12.5;
-leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; // (3) the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 5; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .45;
@@ -90,7 +90,7 @@ techroll_speed = 8;
 air_dodge_startup_frames = 2;
 air_dodge_active_frames = 3;
 air_dodge_recovery_frames = 2;
-air_dodge_speed = 10;
+air_dodge_speed = 8.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
@@ -113,12 +113,10 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-//Sounds
+//Visual Effects
 vfx_steam_small = hit_fx_create( sprite_get( "vfx_steam1" ), 15 );
 vfx_steam_medium = hit_fx_create( sprite_get( "vfx_steam3" ), 20 );
 vfx_steam_large = hit_fx_create( sprite_get( "vfx_steam2" ), 25 );
-
-//Visual Effects
 vfx_doublejump_steam = hit_fx_create( sprite_get( "doublejump_steam" ), 15);
 vfx_fair_oomph = hit_fx_create( sprite_get( "vfx_fair_oomph" ), 15);
 vfx_steam_blast_bair = hit_fx_create( sprite_get( "vfx_steam_blast_bair" ), 15);
@@ -139,39 +137,42 @@ vfx_firework3 = hit_fx_create( sprite_get( "firework3" ), 24);
 halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 8);
 vfx_steam_particle = hit_fx_create( sprite_get( "steam_particle" ), 15);
 
+vfx_waterfx_small = hit_fx_create( sprite_get( "vfx_waterfx_small" ), 21);
+vfx_crystalburst = hit_fx_create( sprite_get( "vfx_crystalburst" ), 21);
+vfx_crystalshatter = hit_fx_create( sprite_get( "crystal_shatter" ), 16);
+vfx_icehit_small = hit_fx_create( sprite_get( "icehit_small" ), 20);
+vfx_icehit_medium = hit_fx_create( sprite_get( "icehit_medium" ), 24);
+vfx_icehit_heavy = hit_fx_create( sprite_get( "icehit_heavy" ), 32);
+vfx_icepop = hit_fx_create( sprite_get( "ice_pop" ), 21);
+
 
 //Variables
-steam = 100
-length = 0
+grabbedid = noone;
 steam_wall = noone
+steam_rocket = noone
+steam_part = noone
+steam_part_2 = noone
+steam = 100
 steam_wall_anim_sync = 0
-full_length = 0
-wall_dir = 1
 steam_wall_dismiss = false
 red_indicator_timer = 0
 green_indicator_timer = 0
 uspecial_uppie = false
 uspecial_steam_grav = 0
 uspecial_no_steam = false
-has_bounce = true
 cancel_buffer = false
-alt_cur = get_player_color(player);
-grabbedid = noone;
-geyser = noone
-geyser_2 = noone
 steam_break = false
 steam_wall_timer = 0
-steam_rocket = noone
-random_var = 0
-random_sway = 1
 steam_break_timer = 0
 steam_wall_no_down = 0
-steam_part = noone
-steam_part_2 = noone
-no_pttm = false
 lifetime = 0
 last_state_wl = false
 tired = false
+geysers = 0
+overheat = 0
+overheat_timer = 0
+switch_timer = 0
+not_moved = true
 
 col_r = get_color_profile_slot_r( get_player_color(player), 0);
 col_g = get_color_profile_slot_g( get_player_color(player), 0);
@@ -181,10 +182,42 @@ col_r_outline = 0
 col_g_outline = 0
 col_b_outline = 0
 
-//Steam Update
-pedal_to_metal = false
-chuff_noise_timer = 0
-damage_adj = 1
+//Tweakable variables
+
+//Overheat
+overheat_gen_multiplier = 1
+
+//Specials
+nspec_cooldown = 90
+nspec_cost = 34 //Costs for each special (Negative adds steam)
+uspec_cost = 25
+fspec_cost = 25
+dspec_cost = 20
+
+//Steam
+steam_generation = 1.5 //Rate of passive Steam generation
+
+//Steam Jumps
+steam_jump_vsp = -8.5
+jump_cost = 20
+
+//Geysers
+max_geysers = 2
+geyser_duration = 900
+
+//Abyss Variables
+regen_geysers = false
+big_geysers = false
+chained = false
+chained = false
+chained_player = noone
+chain_break_timer = 0
+chain_deactivation_timer = 0
+
+//ShrUg Character Check
+shrug_galega = true
+galega_players = [player]
+
 
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("galega_back_sprite")
@@ -201,10 +234,6 @@ sprite_change_offset("galega_miiverse", 60, 30);
 //kirby
 swallowed = 0;
 kirbyability = 1;
-
-switch_timer = 0
-
-not_moved = true
 
 //g7
 g7fx_timer = 0;
@@ -224,9 +253,15 @@ if(get_player_color(player) == 13){
 	halloween = false
 }
 
-if(get_player_color(player) > 8 && get_player_color(player) != 13 || get_player_color(player) <= 8 && attack_down || get_player_color(player) <= 8 && attack_pressed){
-	
+//Old Fstrong Visuals
+if(get_synced_var(player) == true){
 	masked = true
+}else{
+	masked = false
+}
+
+if(masked){
+
 	//Sfx
 	sfx_steam1 = sound_get("sfx_masked_steam1")
 	sfx_steam2 = sound_get("sfx_masked_steam2")
@@ -316,9 +351,7 @@ if(get_player_color(player) > 8 && get_player_color(player) != 13 || get_player_
 	spr_bounce = sprite_get("masked_bounce");
 
 	useskins = true;
-}else if(get_player_color(player) <= 8 || get_player_color(player) == 13 || get_player_color(player) > 8 && attack_down || get_player_color(player) > 8 && attack_pressed){
-	
-	masked = false
+}else{
 	
 	if(get_player_color(player) == 12){
 		spr_taunt = sprite_get("taunt");
@@ -340,4 +373,67 @@ if(get_player_color(player) > 8 && get_player_color(player) != 13 || get_player_
 	sfx_steam3 = sound_get("sfx_steam3")
 	sfx_steam_cloth = sound_get("sfx_steam_cloth")
 	useskins = false
+}
+
+///////////////////////
+//------[RUNES]------//
+///////////////////////
+
+
+//Cheatcode (RUNES, NOT AN ACTUAL CHEATCODE, RUNES NEED TO BE ACTIVE)
+//B E N
+if(has_rune("B") && has_rune("E") && has_rune("N") 
+&& !has_rune("A") && !has_rune("C") && !has_rune("D") && !has_rune("F") && !has_rune("G") && !has_rune("H")
+&& !has_rune("I") && !has_rune("J") && !has_rune("K") && !has_rune("L") && !has_rune("M") && !has_rune("O")){
+	all_runes = true
+}else{
+	all_runes = false
+}
+
+if(has_rune("A") || all_runes){
+	max_geysers = 4
+}
+
+if(has_rune("B") || all_runes){
+	overheat_gen_multiplier = 1.5
+}
+
+if(has_rune("C") || all_runes){
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 4);
+	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+	set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 4);
+	set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 3);
+}else{
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 8);
+	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+	set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 5);
+}
+
+if(has_rune("D") || all_runes){
+	nspec_cost = 20 //Costs for each special (Negative adds steam)
+	uspec_cost = 15
+	fspec_cost = 15
+	dspec_cost = 10
+	jump_cost /= 2
+	steam_generation = 3
+}
+
+if(has_rune("F") || all_runes){
+	jump_cost /= 1.5
+	steam_jump_vsp *= 1.2
+}
+
+if(has_rune("G") || all_runes){
+	regen_geysers = true
+}
+
+if(has_rune("K") || all_runes){
+	nspec_cost = -20
+}
+
+if(has_rune("L") || all_runes){
+	big_geysers = true
 }

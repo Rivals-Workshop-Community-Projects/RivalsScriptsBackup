@@ -16,19 +16,20 @@ switch (state){
 	
 	if (state_timer > 6){ instance_destroy(); exit; }
 	//if (place_meeting( x, y, asset_get("par_block"))){ player_id.cooldowntime = 100; }
-	x = player_id.x; //basically 
-	y = player_id.y; //always
+	x = player_id.x; //set to 
+	y = player_id.y; //always be
 	hsp = player_id.hsp; //on top of
 	vsp = player_id.vsp; //Mecha Sonic's body
 	
-	if (hit_player_obj > 0){
-		player_id.foresight = 50; player_id.invincible = true;
-		player_id.hitpause = false; player_id.hitstop = false;
+	if (hit_player_obj > 0 && hit_player_obj != player_id){
+		//player_id.invincible = true;
+		//player_id.hitpause = false; player_id.hitstop = false;
 		//player_id.y = player_id.y-2;
 		player_id.state = PS_ATTACK_GROUND; player_id.attack = AT_EXTRA_1;
 		player_id.window = 1; player_id.window_timer = 0;
 		//other.go_through = true;
-		sound_play(sound_get("instanttransmission"));
+		if (get_player_color(player_id.player) != 8) { sound_play(sound_get("instanttransmission")); }
+		if (get_player_color(player_id.player) == 8) { sound_play(sound_get("EA_instanttransmission")); }
 		state = 1; state_timer = 0;
 		player_id.hsp = prev_hsp * 3; 
 		player_id.vsp = prev_vsp * 3;
@@ -59,71 +60,123 @@ switch (state){
 	case 2:
 	//Spawn platform emerald
 	mask_index = asset_get("empty_sprite");
-	if (player_id.state == PS_RESPAWN){ sprite_index = asset_get("empty_sprite"); }
+	sprite_index = sprite_get("plat");
+
+	if (player_id.state == PS_RESPAWN && state_timer < 20){
+		state_timer = 0; vsp = 0;
+		if (player_id.spr_dir == 1){ image_xscale = 1; }
+		if (player_id.spr_dir == -1){ image_xscale = -1; }
+	}
 	else
-	{ sprite_index = sprite_get("plat"); }
 	if (state_timer > 20 || state_timer > 2 && !(player_id.state == PS_RESPAWN)){
 		vsp -= 0.001 * state_timer;
 	}
-	if (state_timer > 150){ instance_destroy(); exit; }
+	if (state_timer > 250){ instance_destroy(); exit; }
 	break;
 	
-	case 3:
+	case 3: //Emeralds that fly out of enemies
 	uses_shader = false;
-	ChaosEmerald = player_id.ChaosEmerald;
+	can_be_grounded = true;
+	ignores_walls = false;
 	
 	//Emerald flying out after parrying or respawning
 	sprite_index = sprite_get("emrl");
-	//sprite_index = sprite_get("emrl_mask");
 	mask_index = sprite_get("emrl_mask");
-	//if (state_timer < 1){ hit_wall = false; free = true; ignores_walls = false; can_be_grounded = true; }
+	
+	if (state_timer <= 1){
+    with (asset_get("oPlayer")){
+    OverallEmeralds -= 1;
+    	}
+	}
 	
 	if (state_timer < 10){
-	switch(ChaosEmerald){
+	image_index = ChaosEmerald;
+	}
+
+	switch(image_index){
 		case 0:
-		image_index = 0;
+		with (asset_get("oPlayer")){
+		if (Blue == 0 && other.state_timer > 19){ Blue = 1; }
+		if (Blue > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 1:
-		image_index = 1;
+		with (asset_get("oPlayer")){
+		if (Red == 0 && other.state_timer > 19){ Red = 1; }
+		if (Red > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 2:
-		image_index = 2;
+		with (asset_get("oPlayer")){
+		if (Pink == 0 && other.state_timer > 19){ Pink = 1; }
+		if (Pink > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 3:
-		image_index = 3;
+		with (asset_get("oPlayer")){
+		if (Yellow == 0 && other.state_timer > 19){ Yellow = 1; }
+		if (Yellow > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 4:
-		image_index = 4;
+		with (asset_get("oPlayer")){
+		if (Gray == 0 && other.state_timer > 19){ Gray = 1; }
+		if (Gray > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 5:
-		image_index = 5;
+		with (asset_get("oPlayer")){
+		if (Green == 0 && other.state_timer > 19){ Green = 1; }
+		if (Green > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
+		}
 		break;
 		
 		case 6:
-		image_index = 6;
-		break;
-		
-		case 7:
-		image_index = 7;
-		break;
-		
-		case 8:
-		//Dunno
-		break;
+		with (asset_get("oPlayer")){
+		if (Cyan == 0 && other.state_timer > 19){ Cyan = 1; }
+		if (Cyan > 0 && other.state_timer <= 19){ other.ChaosEmerald = random_func(0, 7, true); }
 		}
+		break;
 	}
 	
 	if (state_timer > 20){
-	if (free == true && bounced > 0){ vsp += .3; } // image_angle += 2;
+	if (free == true){ vsp += .3; } // image_angle += 2;
 	if (vsp > 8){ vsp = 8; }
 	}
 	
-	if (bounced > 0 && free == false){ vsp = -bounced; bounced -= 1; spawn_hit_fx(x-12, y-10, 251);  }
+	if (bounced > 0 && free == false){
+	vsp = -bounced; hsp = hsp / 2; bounced -= 1; spawn_hit_fx(x+14, y+18, 259);
+	sound_play(sound_get("emerald_bounce"));
+	}
+	
+	if (abs(hsp) < 0.5){ hsp = 0; }
+	
+	if ((abs(vsp)) > 0 && state_timer > 190 && GiveBack == false){
+	GiveBack = true;
+	with (asset_get("oPlayer")){
+	OverallEmeralds += 1;
+		}
+	}
+	
+	if (GiveBack == true){
+	with (asset_get("oPlayer")){
+	if (Blue == 1 && other.image_index == 0){ Blue = 0; }
+	if (Red == 1 && other.image_index == 1){ Red = 0; }
+	if (Pink == 1 && other.image_index == 2){ Pink = 0; } 
+	if (Yellow == 1 && other.image_index == 3){ Yellow = 0; } 
+	if (Gray == 1 && other.image_index == 4){ Gray = 0; }
+	if (Green == 1 && other.image_index == 5){ Green = 0; }
+	if (Cyan == 1 && other.image_index == 6){ Cyan = 0; }	
+	}
+	GiveBack = false;
+	instance_destroy(); exit;
+	//Kill it anyways
+	}
 	
 	if (bounced <= 0){ vsp = 0; bounced = 0;
 	//if (image_angle > 90 && image_angle < 180){ image_angle -= 1; }
@@ -131,33 +184,70 @@ switch (state){
 	}
 	
 	if (state_timer > 21){
-	if ((place_meeting( x, y, player_id))){ emerald_grabbed = true; }
-	if (emerald_grabbed == true){ player_id.ChaosEmerald += 1; instance_destroy(); exit; }
+	with (asset_get("oPlayer")){
+	if (place_meeting( x, y, other.id)){
+		if (EmeraldAmount < 7 && OverallEmeralds < 8){
+	with (other.id){ sound_play(sound_get("S3&K_emerald")); }
+	if (EmeraldAmount == 0){ Emerald1 = other.ChaosEmerald; }
+	if (EmeraldAmount == 1){ Emerald2 = other.ChaosEmerald; }
+	if (EmeraldAmount == 2){ Emerald3 = other.ChaosEmerald; }
+	if (EmeraldAmount == 3){ Emerald4 = other.ChaosEmerald; }
+	if (EmeraldAmount == 4){ Emerald5 = other.ChaosEmerald; }
+	if (EmeraldAmount == 5){ Emerald6 = other.ChaosEmerald; }
+	if (EmeraldAmount == 6){ Emerald7 = other.ChaosEmerald; }
+	spawn_hit_fx(x+8, y-18, 310);
+	EmeraldAmount += 1;
+	if (Blue == 1 && other.image_index == 0){ Blue = 2; }
+	if (Red == 1 && other.image_index == 1){ Red = 2; }
+	if (Pink == 1 && other.image_index == 2){ Pink = 2; } 
+	if (Yellow == 1 && other.image_index == 3){ Yellow = 2; } 
+	if (Gray == 1 && other.image_index == 4){ Gray = 2; }
+	if (Green == 1 && other.image_index == 5){ Green = 2; }
+	if (Cyan == 1 && other.image_index == 6){ Cyan = 2; }
+	instance_destroy(); exit;
+				}
+			}
+		}
 	}
+	
+	/*
+	if (place_meeting( x, y, asset_get("oPlayer"))){
+	with (asset_get("oPlayer")){
+		 if (player == other.player){
+	if (player.EmeraldAmount == 0){ player.Emerald1 = other.ChaosEmerald; }
+	if (player.EmeraldAmount == 1){ player.Emerald2 = other.ChaosEmerald; }
+	if (player.EmeraldAmount == 2){ player.Emerald3 = other.ChaosEmerald; }
+	if (player_id.EmeraldAmount == 3){ player.Emerald4 = other.ChaosEmerald; }
+	player.EmeraldAmount += 1;
+	sound_play(sound_get("S3&K_emerald"));
+	instance_destroy(); exit;
+		 }
+	}
+	with (asset_get("oPlayer")){
+		 if (player != other.player){
+	if (EmeraldAmount == 0){ Emerald1 = other.ChaosEmerald; }
+	if (EmeraldAmount == 1){ Emerald2 = other.ChaosEmerald; }
+	if (EmeraldAmount == 2){ Emerald3 = other.ChaosEmerald; }
+	if (EmeraldAmount == 3){ Emerald4 = other.ChaosEmerald; }
+	EmeraldAmount += 1;
+	sound_play(sound_get("S3&K_emerald"));
+	instance_destroy(); exit;
+				}
+			}
+		}
+	}
+	*/
 	break;
 	
-	case 4: //Respawning back
+	
+	case 4: //Respawning article body
+	
 	//if (player_id.state == PS_IDLE || player_id.hsp > abs(hsp) ){ instance_destroy(); exit; }
 	//initial_invince = 1;
 	//sprite_index = sprite_get("hurt");
 	//mask_index = asset_get("empty_sprite");
-	uses_shader = true;
-	ChaosEmerald = player_id.ChaosEmerald;
-	//set_article_color_slot(0, 1, 1, 15, 0.1);
-	switch(ChaosEmerald){
-		case 0:
-		break;
-		
-		case 1:
-		break;
-		
-		case 2:
-		break;
-		
-		case 3:
-		break;
-	}
 	
+	uses_shader = true;
 	spr_dir = player_id.spr_dir;
 	if (instance_exists(player_id) && !(player_id.state == PS_DEAD || player_id.state == PS_SPAWN 
 	|| player_id.state == PS_RESPAWN)){
@@ -174,6 +264,8 @@ switch (state){
 	x = lerp(x, player_id.x, 0.05);
 	y = lerp(y, player_id.y, 0.05);
 	
+	player_id.emerald_platform = true;
+	
 	//var fly_speed = 0.5;
 	//var mecha_dir = point_direction(player_id.x, player_id.y, x, y);
 	//var mecha_dist = point_distance(player_id.x, player_id.y, x, y);
@@ -187,6 +279,7 @@ switch (state){
 	if (player_id.state_timer >= 120 && player_id.state == PS_RESPAWN
 	|| !(player_id.state == PS_RESPAWN) ){
 	sprite_index = asset_get("empty_sprite");
+	player_id.emerald_platform = false;
 	//x = player_id.x+5;
 	//y = player_id.y-10;
 	}

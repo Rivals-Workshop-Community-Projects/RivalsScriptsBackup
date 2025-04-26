@@ -56,7 +56,7 @@ switch (attack)
             if (down_down) //infinite mana mode
             {
                 infinite_mp_mode = !infinite_mp_mode;
-                mp_current = mp_max;
+                mp_cur = mp_max;
                 set_state(prev_state == PS_CROUCH ? PS_CROUCH : PS_IDLE);
                 clear_button_buffer(PC_TAUNT_PRESSED);
             }
@@ -64,18 +64,27 @@ switch (attack)
         break;
 }
 
+//utilt startup category
+if (attack == AT_UTILT) set_attack_value(attack, AG_CATEGORY, 0);
+
 //burning fury redirect
 if ((attack == skill[1].skill_attack || attack == skill[1].skill_attack_air) && burnbuff_active)
 {
     window = 6;
     window_timer = 0;
 }
+//flaashbang parry reset
+if (attack == skill[4].skill_attack) reset_attack_value(attack, AG_NO_PARRY_STUN);
+//power smash air cancel counter
+if (attack == skill[5].skill_attack) power_uses ++;
 //polaris redirect
 if (attack == skill[7].skill_attack && lightbuff_active)
 {
     window = 5;
     window_timer = 0;
 }
+//chasm burster air cancel counter
+if (attack == skill[11].skill_attack) chasm_uses ++;
 
 //if the move is lacking MP, put up notice
 if (notice_time == -1 && (move_cooldown[attack] > 0 || attack == skill[7].skill_attack && polaris_cd > 0))
@@ -88,6 +97,7 @@ if (notice_time == -1 && (move_cooldown[attack] > 0 || attack == skill[7].skill_
         attack == skill[7].skill_attack && polaris_cd > 0
     );
     notice_time = notice_time_max;
+    clear_button_buffer(PC_SPECIAL_PRESSED);
 }
 
 //theikos bar can do strongs in the air
@@ -113,12 +123,12 @@ if (theikos_type > 0)
 switch (attack)
 {
     case AT_USTRONG: case AT_USTRONG_2:
-        attack = has_rune("K") ? (theikos_type > 0 ? AT_USTRONG : AT_USTRONG_2) : (theikos_type > 0 ? AT_USTRONG_2 : AT_USTRONG);
+        attack = rune_K_active ? (theikos_type > 0 ? AT_USTRONG : AT_USTRONG_2) : (theikos_type > 0 ? AT_USTRONG_2 : AT_USTRONG);
         break;
     case AT_FSTRONG: case AT_FSTRONG_2:
-        attack = has_rune("K") ? (theikos_type > 0 ? AT_FSTRONG : AT_FSTRONG_2) : (theikos_type > 0 ? AT_FSTRONG_2 : AT_FSTRONG);
+        attack = rune_K_active ? (theikos_type > 0 ? AT_FSTRONG : AT_FSTRONG_2) : (theikos_type > 0 ? AT_FSTRONG_2 : AT_FSTRONG);
         break;
     case AT_DSTRONG: case AT_DSTRONG_2:
-        attack = has_rune("K") ? (theikos_type > 0 ? AT_DSTRONG : AT_DSTRONG_2) : (theikos_type > 0 ? AT_DSTRONG_2 : AT_DSTRONG);
+        attack = rune_K_active ? (theikos_type > 0 ? AT_DSTRONG : AT_DSTRONG_2) : (theikos_type > 0 ? AT_DSTRONG_2 : AT_DSTRONG);
         break;
 }

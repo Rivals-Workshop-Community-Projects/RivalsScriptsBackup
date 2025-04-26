@@ -11,7 +11,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -7);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_spinstart"));
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_charge"));
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
 
 window_num ++; //windup 2

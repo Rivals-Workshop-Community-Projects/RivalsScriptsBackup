@@ -144,7 +144,7 @@ if (swallowed == 1) {
 if(variable_instance_exists(id,"diag"))
 {
 //Change their name whenever
-    diag_name = "Velvet"
+    diag_name = "Arizona"
 //  ADDING REGULAR DIALOGUE
 
     //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!

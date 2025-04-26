@@ -14,9 +14,9 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("SW_Livart01"));
-set_window_value(AT_UAIR, 2, AG_WINDOW_SFX_FRAME, 4);
+//set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("SW_Livart01"));
+//set_window_value(AT_UAIR, 2, AG_WINDOW_SFX_FRAME, 4);
 
 //at
 set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 3);

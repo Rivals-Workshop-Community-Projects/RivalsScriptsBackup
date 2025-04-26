@@ -63,13 +63,14 @@ sprite_change_offset("finalstrong_pratfall",    24, 47, true);
 sprite_change_offset("taunt",           24, 47, true);
 sprite_change_offset("taunt2",          24, 47, true);
 sprite_change_offset("intro",           24, 47, true);
-sprite_change_offset("runeK_dspec",     24, 41, true);
+sprite_change_offset("wait",            24, 47, true);
+sprite_change_offset("runeE_dspec",     24, 41, true);
 sprite_change_offset("crawl",           24, 31);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player
 
-sprite_change_offset("rumia_hurtbox",       16, 54);
+sprite_change_offset("rumia_hurtbox",       20, 54);
 sprite_change_offset("rumia_hurtbox_hit",   23, 49);
 sprite_change_offset("hud_msg1",        48, 48);
 sprite_change_offset("hud_msg2",        48, 48);

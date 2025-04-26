@@ -11,7 +11,7 @@ if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP ||
 if (state == PS_ATTACK_AIR) and (attack == AT_EXTRA_1) {
 	air_accel = .55;
 } else {
-	air_accel = .3;
+	air_accel = default_air_accel;
 	}
 
 if !free {
@@ -56,73 +56,50 @@ if (cookieAid) {
 
     glowAnim++;
     cookieTimer--;
-    
-    //these stats won't be changed by the rune
+
     idle_anim_speed = .17;    
     walk_anim_speed = .2;
     dash_anim_speed = .5;
+	
     walljump_vsp = 8;
-    fast_fall = 13;
-    gravity_speed = .55;
+	max_fall = 12;
+    fast_fall = 16;
+    gravity_speed = .7;
     knockback_adj = 1.08;
     wave_land_adj = 1.3;
     walk_speed = 6;
     walk_accel = .3;
-    jump_speed = 12;
-    short_hop_speed = 6.5;
-    djump_speed = 9;
+    jump_speed = 13;
+    short_hop_speed = 8;
+    djump_speed = 12;
     air_max_speed = 5; 
 	air_friction = .03;
-	hitstun_grav = .47;
-    
-    if (has_rune("M")) { //SL iroh stats
-        dash_speed = 8;
-        initial_dash_speed = 9;
-        air_accel = .6;    
-    } else { //default cookie buff stats
-        dash_speed = 7;
-        initial_dash_speed = 7.5;
-        air_accel = .4;    
-    }
+	hitstun_grav = .6;
+    dash_speed = 7;
+    initial_dash_speed = 7.5;    
 
-}
-    else { //these stats won't be changed
-    idle_anim_speed = .12;    
-    dash_anim_speed = .4;
-    walk_anim_speed = .14;
-    
-    
-    if (has_rune("M")) { //trummel stats
-        walk_accel = 1;
-        jump_speed = 11.5;
-        short_hop_speed = 7;
-        djump_speed = 8;
-        air_max_speed = 7; 
-        walljump_vsp = 11;
-        fast_fall = 15; 
-        gravity_speed = .5;
-        knockback_adj = 1.2;
-        wave_land_adj = 1.35;    
-        walk_speed = 4.5;
-        initial_dash_speed = 7.5;
-        dash_speed = 7;
-    } else { //default big yoshi stats
-        walk_accel = 0.25;
-        jump_speed = 12;
-        short_hop_speed = 7.5;
-        djump_speed = 10.5;
-        air_max_speed = 4;
-        walljump_vsp = 8;
-        fast_fall = 16;
-        gravity_speed = .6;
-        knockback_adj = .9;
-        wave_land_adj = 1.2;
-        walk_speed = 3;
-        initial_dash_speed = 6.75;
-        dash_speed = 6.25;
-		air_friction = .05;
-		hitstun_grav = .52;
-    }
+}   else { //default big yoshi stats
+    idle_anim_speed = 		default_idle_anim_speed;    
+    dash_anim_speed = 		default_dash_anim_speed;
+    walk_anim_speed = 		default_walk_anim_speed;
+	
+    walk_speed = 			default_walk_speed;
+    initial_dash_speed = 	default_initial_dash_speed;
+    dash_speed = 			default_dash_speed;
+	
+    jump_speed = 			default_jump_speed;
+    short_hop_speed =		default_short_hop_speed;
+    djump_speed = 			default_djump_speed;
+    air_max_speed = 		default_air_max_speed;
+    walljump_vsp = 			default_walljump_vsp;
+	max_fall = 				default_max_fall;
+    fast_fall = 			default_fast_fall;
+    gravity_speed = 		default_gravity_speed;
+    wave_land_adj = 		default_wave_land_adj;
+
+	air_friction = 			default_air_friction;
+	hitstun_grav = 			default_hitstun_grav;
+    knockback_adj = 		default_knockback_adj;
 }
 
 if spincool > 0 {

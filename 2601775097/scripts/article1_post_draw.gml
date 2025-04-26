@@ -7,16 +7,17 @@ switch (state)
     case "hook_chain":
         if (state_timer > 2) //chain draw logic
         {
-            for (var line_dist = 0; line_dist < player_id.hook_chain_amount; ++line_dist)
+            for (var i = 0; i < chain_amount; ++i)
             {
-                dist[line_dist] = line_dist/player_id.hook_chain_amount * point_distance(player_id.hook_bar_pos[0], player_id.hook_bar_pos[1], player_id.hook_proj[0], player_id.hook_proj[1]);
+                dist[i] = i/chain_amount *
+                    point_distance(chain_start[0], chain_start[1], chain_end[0], chain_end[1]);
             }
 
-            for (var line_length = 0; line_length < player_id.hook_chain_amount; ++line_length)
+            for (var j = 0; j < chain_amount; ++j)
             {
-                var angle = point_direction(player_id.hook_bar_pos[0], player_id.hook_bar_pos[1], player_id.hook_proj[0], player_id.hook_proj[1]);
-                var _x = player_id.hook_bar_pos[0] + lengthdir_x(dist[line_length], angle);
-                var _y = player_id.hook_bar_pos[1] + lengthdir_y(dist[line_length], angle);
+                var angle = point_direction(chain_start[0], chain_start[1], chain_end[0], chain_end[1]);
+                var _x = chain_start[0] + lengthdir_x(dist[j], angle);
+                var _y = chain_start[1] + lengthdir_y(dist[j], angle);
 
                 draw_sprite_ext(sprite_get("fx_skill9_chain"), artc_image_index, _x, _y, 2, 2, angle, c_white, 1);
             }

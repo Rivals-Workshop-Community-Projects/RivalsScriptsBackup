@@ -3,7 +3,7 @@ print (whirlwind_hit);
 shader_start();
 
 //Draws the Turbine Max Charge Effect
-if (turbine_cont >= 70){
+if (turbine_cont >= 110){
 	draw_sprite_ext(sprite_get("charged_front"), get_gameplay_time()*.4, x, y, 2, 2, 0, c_white, .85);	
 }
 

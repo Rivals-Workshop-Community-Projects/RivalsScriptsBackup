@@ -46,6 +46,11 @@ set_window_value(AT_DTILT, 6, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DTILT, 6, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
+//Muno stuff
+var cancel = get_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH) + get_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH) + 4;
+
+set_attack_value(AT_DTILT, AG_MUNO_ATTACK_MISC, `Can jump cancel on frame ${cancel}`);
+
 set_num_hitboxes(AT_DTILT, 1);
 
 set_hitbox_value(AT_DTILT, 1, HG_MUNO_HITBOX_NAME, "Sourspot");

@@ -450,6 +450,14 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 */
 
 
+initPatch("2.21", "02 Mar, 2025");
+initHeader("Bugs");
+initSection("- Adjusted code of throws and Ustrong to reduce unintended opportunity for grabbed opponents to escape");
+
+initPatch("2.20", "14 Oct, 2024");
+initHeader("Presentation");
+initSection("- Adjust sprites, positioning and timing of alternate special");
+
 initPatch("2.19", "07 Feb, 2024");
 initHeader("Presentation");
 initSection("- Re-enable down-taunt functionality");

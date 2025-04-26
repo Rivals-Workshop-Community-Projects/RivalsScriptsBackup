@@ -69,6 +69,8 @@ switch (state)
         }
 
         //end
+        if (!instance_exists(hitbox) && state_timer > 1 && !has_hit) player_id.afterimage_destroy_cd = player_id.afterimage_destroy_set;
+
         if (state_timer == despawn_time || !instance_exists(hitbox) && state_timer > 1 || hitbox.was_parried
         || (player_id.state == PS_DEAD || player_id.state == PS_RESPAWN))
         {

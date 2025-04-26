@@ -28,13 +28,12 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
 			draw_sprite_ext(sprite_get("fspecial_hud_h"), HCharge, x+32*spr_dir, y-52, image_xscale, image_yscale, image_angle, c_white, 1);			
 			}
 		}
-	}
-}
-
-with (asset_get("pHitBox")) {
-	if (attack == AT_FSPECIAL) {
-		if hitbox_timer > length-22 && (get_gameplay_time()%(3)) {
-			draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, .25);
+		with (asset_get("pHitBox")) {
+			if other.id == player_id {
+				if hitbox_timer > length-22 && (get_gameplay_time()%(3)) {
+					draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, .25);
+				}
+			}
 		}
 	}
 }

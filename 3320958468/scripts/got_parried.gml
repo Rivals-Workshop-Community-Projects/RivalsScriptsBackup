@@ -30,7 +30,7 @@ if (instance_exists(plunger_guard))
 		spawn_hit_fx(plunger_guard.x, plunger_guard.y + 8, 302);
 		sound_play(asset_get("sfx_ice_shatter"), false, noone, 0.75);
 
-		move_cooldown[AT_DSPECIAL] = 150;
+		move_cooldown[AT_DSPECIAL] = 210;
 		
 		instance_destroy(plunger_guard);
 	}

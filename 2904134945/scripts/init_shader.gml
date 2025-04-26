@@ -5,10 +5,8 @@ switch (playerAlt)
 	case 21:
 	{
 		if ("hue" not in self) hue = 0;
-		var color_rgb1=make_color_rgb(255, 255, 128);
-		var color_rgb2=make_color_rgb(200, 150, 60);
-		AltColour(0, make_color_hsv((color_get_hue(color_rgb1)+hue)%255,color_get_saturation(color_rgb1),color_get_value(color_rgb1)));
-		AltColour(2, make_color_hsv((color_get_hue(color_rgb2)+hue)%255,color_get_saturation(color_rgb2),color_get_value(color_rgb2)));
+		AltColour(0, make_color_hsv(hue%255,130,255));
+		AltColour(2, merge_colour(make_color_hsv(hue%255,150,230), make_color_hsv(180,255,230), 0.4));
 	}
 	break;
 	// custom

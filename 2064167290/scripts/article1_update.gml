@@ -7,7 +7,7 @@ is_held = player_id.holding_turntable;
 
 
 
-if (uspecial)
+if uspecial
 {
     if (!player_id.runeI)
     {
@@ -160,7 +160,7 @@ else
 }
 
 
-if (y > room_height) or (x > room_width) or (x < 0)
+if (y > room_height + 20) or (x > room_width) or (x < 0)
 {
     destroyed = true;
 }
@@ -306,15 +306,15 @@ if (destroyed)
     var x_fx = x;
     var y_fx = y;
         
-    while(x_fx < view_get_xview() + 40)
+    while(x_fx < view_get_xview() + 40) // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
     {
         x_fx += 1;
     }
-    while(x_fx > view_get_xview() +  view_get_wview() - 40)
+    while(x_fx > view_get_xview() +  view_get_wview() - 40) // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
     {
         x_fx -= 1;
     }
-    while(y_fx > view_get_yview() + view_get_hview())
+    while(y_fx > view_get_yview() + view_get_hview()) // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     {
         y_fx -= 1;
     }
@@ -380,6 +380,3 @@ if (destroyed)
     instance_destroy();
     
 }
-
-
-

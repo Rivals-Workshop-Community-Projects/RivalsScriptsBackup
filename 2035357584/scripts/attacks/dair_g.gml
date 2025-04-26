@@ -27,7 +27,7 @@ set_window_value(AT_DAIR_G, 2, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 //dairg land
 set_window_value(AT_DAIR_G, 3, AG_WINDOW_LENGTH, 21);
-set_window_value(AT_DAIR_G, 3, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_DAIR_G, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DAIR_G, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DAIR_G, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DAIR_G, 3, AG_WINDOW_HAS_SFX, 1);
@@ -44,6 +44,7 @@ set_num_hitboxes(AT_DAIR_G, 2);
 
 //diving
 set_hitbox_value(AT_DAIR_G, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR_G, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DAIR_G, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR_G, 1, HG_LIFETIME, 12);
 set_hitbox_value(AT_DAIR_G, 1, HG_HITBOX_X, -10);

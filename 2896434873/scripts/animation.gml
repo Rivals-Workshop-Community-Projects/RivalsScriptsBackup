@@ -81,10 +81,20 @@ switch(sprite){
 	case "jumpstart":
 	case "jump":
 	case "doublejump":
-	case "land":
 	case "landinglag":
 		image_index = img_set_duration;
 		break;
+	
+	case "land":
+        if (was_parried && state == PS_PRATLAND){
+            image_index = img_set_duration;
+            if (image_index >=  num_frames + offset){
+                image_index = (image_index % 2) + offset;
+            }
+        } else {
+            image_index = img_set_duration;
+        }
+    break;
 	
 	// anims w/ set numbers of frames per window
 	case "crouch":

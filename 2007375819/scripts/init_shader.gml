@@ -8,8 +8,8 @@ if (get_player_color( player ) == 0) {
 	set_character_color_shading(3, 1); //shoes
 	set_character_color_shading(4, 1); //gloves/scarf/hair
 	set_character_color_shading(5, 1); //h
-	set_character_color_shading(6, 1); //h shoes
-	set_character_color_shading(7, 1); //blueytank
+	set_character_color_shading(6, 1); //blueytank
+	set_character_color_shading(7, 1); //pizza dino
 }
 
 if (get_player_color( player ) == 1) {
@@ -21,7 +21,7 @@ if (get_player_color( player ) == 1) {
 if (get_player_color( player ) == 2) {
 	set_character_color_shading(0, 1.5); //cap/pants
 	set_character_color_shading(1, 5); //shirt
-	set_character_color_shading(7, .6); //blueytank
+	set_character_color_shading(7, .6); //pizza dino
 	set_character_color_shading(3, 1.5); //shoes
 }
 
@@ -99,9 +99,11 @@ if (get_player_color( player ) == 12) {
 }
 
 if (get_player_color( player ) == 13) {
-	set_character_color_shading(0, 1.5); //cap/pants
+	set_character_color_shading(0, 1.3); //cap/pants
 	set_character_color_shading(1, 2); //shirt
 	set_character_color_shading(4, 2); //gloves/scarf/hair
+	set_character_color_shading(5, 1.8); //h
+	set_character_color_shading(6, 1.5); //blueytank
 }
 
 if (get_player_color( player ) == 14) {

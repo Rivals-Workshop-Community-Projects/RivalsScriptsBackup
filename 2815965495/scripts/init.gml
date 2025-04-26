@@ -33,10 +33,10 @@ max_jump_hsp        = 5;		// 4    -  8
 air_max_speed       = 6;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.2;		// 0.2  -  0.4
-prat_fall_accel     = 0.7;		// 0.25 -  1.5
+prat_fall_accel     = 0.6;		// 0.25 -  1.5
 air_friction        = 0.03;		// 0.02 -  0.07
 max_fall            = 8;		// 6    -  11
-fast_fall           = 12;		// 11   -  16
+fast_fall           = 11;		// 11   -  16
 gravity_speed       = 0.3;		// 0.3  -  0.6
 hitstun_grav        = 0.45;		// 0.45 -  0.53
 
@@ -180,6 +180,7 @@ prat_alt = 0;
 arrow_cooldown = 0;
 Fcancel=0;
 kill_smoke = 0;
+moyai_taunt=0;
 
 kirbyability = 6;
 

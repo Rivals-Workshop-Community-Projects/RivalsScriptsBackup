@@ -57,11 +57,11 @@ set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 //pistol
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 2);
-set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 70);
-set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -70);
-set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 63);
-set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 63);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 65);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -65);
+set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 50);
+set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 361);

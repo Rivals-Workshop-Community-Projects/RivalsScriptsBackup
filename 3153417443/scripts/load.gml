@@ -8,7 +8,7 @@ sprite_change_offset("dashstart", 128, 190);
 sprite_change_offset("dashstop", 128, 190);
 sprite_change_offset("dashturn", 128, 190);
 
-sprite_change_offset("hurtbox", 54, 84);
+sprite_change_offset("hurtbox", 50, 87);
 sprite_change_offset("bighurt", 128, 190);
 sprite_change_offset("hurt", 128, 190);
 sprite_change_offset("hurtground", 128, 190);
@@ -74,5 +74,6 @@ sprite_change_offset("fstrong_catch_vfx", 118, 138);
 sprite_change_offset("fstrong_hit_vfx", 110, 132);
 sprite_change_offset("dstrong_keg_vfx", 128, 128);
 sprite_change_offset("bub_offscreen", 34, 17);
+sprite_change_offset("eye_gleam", 79, 159);
 
 

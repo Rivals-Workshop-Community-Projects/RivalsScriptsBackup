@@ -38,6 +38,7 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_PRIORITY, 6);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_FINAL_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.95);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.8);
@@ -49,5 +50,6 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, sound_get("hit_heavy"));
 if has_rune ("O")
 {
     set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 12);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_FINAL_BASE_KNOCKBACK, 10);
     set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 1);
 }

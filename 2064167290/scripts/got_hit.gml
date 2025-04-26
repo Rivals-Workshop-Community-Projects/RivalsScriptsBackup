@@ -29,5 +29,3 @@ if (holding_turntable)
         }
     }
 }
-    
-    

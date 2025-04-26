@@ -5,6 +5,7 @@ if metal_count > 200{
     metal_count = 200;
 }
 
+// print(hit_player_obj(url))
 //picking up metal boxes
 with (asset_get("obj_article2")){
 	if (player_id.url == other.url && place_meeting(x, y - 12, other.id) && ammostate == (2 or 3 or free == false)){
@@ -18,14 +19,14 @@ with (asset_get("obj_article2")){
 				} else{
 					sound_play(sound_get("ammo_pickup"));
 				}
-				if ammo_type < 3{
-					spawn_hit_fx( x+14, y+90, 144);
+				if ammo_type < 3{//Ammo Boxes
+					spawn_hit_fx( x+14, y, 144);
 					//scrapped idea for a poppup of how much metal you spend/collec
 					// ammo_poppup = create_hitbox(AT_NSPECIAL, 3, x, y+64);
 					// ammo_poppup.spr_dir = 1;
 					// ammo_poppup.image_index = ammo_type;
-				}else{
-					spawn_hit_fx( x+36, y+90, 144);
+				}else{//Building Scrap
+					spawn_hit_fx( x+36, y, 144);
 				}
 			} else if ammo_type < 3 && despawn_timer < 2{
 				vsp = -7;
@@ -34,15 +35,34 @@ with (asset_get("obj_article2")){
 					despawn_timer ++
 				}
 			}
-		}
-	}
-	if (place_meeting(x + 0, y - 4, player.id) && ammostate == (2 or 3 or free == false)){
-		if ammo_type == 4{
-			spawn_hit_fx( x+60, y+ 60, 15);
+		} else{ //bread for engi
+			spawn_hit_fx( x, y, 15);
 			despawn = true;
 			sound_play(asset_get("sfx_crunch"));
 			sound_play(asset_get("mfx_xp"));
+			sound_play(sound_get("sentry_search"));
 			take_damage( other.player, -1, -2 );
+		}
+	}
+	if ammo_type == 4 && despawn != true{//Bread for other players
+		if (place_meeting(x, y, oPlayer) && ammostate == (2 or 3 or free == false)){
+			if (abs(oPlayer.x) > abs(x + 20)) or (abs(oPlayer.x) < abs(x - 20)) or (abs(oPlayer.y) > abs(y + 20)) or (abs(oPlayer.y) < abs(y - 20)) && oPlayer.url != player_id.url{
+				if oPlayer.player != other.player{
+					take_damage( oPlayer.player, -1, -2 );
+				} else{
+					for (i = 1; i <= 4; i++){
+						print(i)
+						if is_player_on(i) == true && oPlayer.player != i{
+							take_damage(i, -1, -2 );
+							break;
+						}
+					}
+				}
+				despawn = true;
+				spawn_hit_fx( x, y, 15);
+				sound_play(asset_get("sfx_crunch"));
+				sound_play(asset_get("mfx_xp"));
+			}
 		}
 	}
 }
@@ -93,43 +113,54 @@ if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD{
     // sound_stop(sound_get("tp_ready"));
 }
 
-if (state != PS_ATTACK_AIR) and (state != PS_ATTACK_GROUND) and (wrench != false){ //when the sentry is shooting, it will not count that as attacking with the wrench
-    wrench = false;
+if (state != PS_ATTACK_AIR) and (state != PS_ATTACK_GROUND){ //when the sentry is shooting, it will not count that as attacking with the wrench
+	if (wrench != false){
+		wrench = false;
+	}
+	sound_stop(sound_get("eurika_charge"));
 }
 
 if state == PS_RESPAWN{
 	if(get_synced_var (player) == 1){
 		if state_timer == 110{
 			snd_rng = random_func(0, 8, true);
-			if (snd_rng == 0) {
+			switch snd_rng{
+			case 0:
 				voice_id = "v_doneplayingames";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 1) {
+			break;
+			case 1:
 				voice_id = "v_coward";
 				voice_volume = 2;
 				voice_play();
-			}else if (snd_rng == 2) {
+			break;
+			case 2:
 				voice_id = "v_darn";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 3) {
+			break;
+			case 3:
 				voice_id = "v_awhell";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 4) {
+			break;
+			case 4:
 				voice_id = "v_awshucks";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 5) {
+			break;
+			case 5:
 				voice_id = "v_beingdead";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 6) {
+			break;
+			case 6:
 				voice_id = "v_daggitnabbit";
 				voice_volume = 1.5;
 				voice_play();
-			}else if (snd_rng == 7) {
+			break;
+			default:
 				voice_id = "v_gnightireen";
 				voice_volume = 1.5;
 				voice_play();
@@ -195,70 +226,82 @@ if(state == PS_HITSTUN){
 		if(get_synced_var (player) == 1){
 			if sprite_index == sprite_get("hurt") || sprite_index == sprite_get("hurtground"){
 				snd_rng = random_func(0, 16, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_hurt1";
 					voice_volume = 1.5;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_hurt2";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 2) {
+				break;
+				case 2:
 					voice_id = "v_hurt3";
 					voice_volume = 1.5;
 					voice_play();
-				}else if (snd_rng == 3) {
+				break;
+				case 3:
 					voice_id = "v_hurt4";
 					voice_volume = 1.5;
 					voice_play();
-				}
-				else if (snd_rng == 4) {
+				break
+				case 4:
 					voice_id = "v_hurt5";
 					voice_volume = 1.5;
 					voice_play();
-				}
-				else if (snd_rng == 5) {
+				break;
+				case 5:
 					voice_id = "v_hurt6";
 					voice_volume = 1.5;
 					voice_play();
-				}
-				else if (snd_rng == 6) {
+				break;
+				case 6:
 					voice_id = "v_hurt7";
 					voice_volume = 1.5;
 					voice_play();
-				}
-				else if (snd_rng == 7) {
+				break;
+				case 7:
 					voice_id = "v_hurt8";
 					voice_volume = 1.5;
 					voice_play();
+				break;
 				}
 				
 			}else if sprite_index == sprite_get("bighurt") || sprite_index == sprite_get("uphurt") || sprite_index == sprite_get("downhurt") || sprite_index == sprite_get("spinhurt"){
 				snd_rng = random_func(0, 11, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_bighurt1";
 					voice_volume = 1.7;
 					voice_play();
-				} else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_bighurt2";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 2) {
+				break;
+				case 2:
 					voice_id = "v_bighurt3";
 					voice_volume = 1.7;
 					voice_play();
-				}else if (snd_rng == 3) {
+				break;
+				case 3:
 					voice_id = "v_bighurt4";
 					voice_volume = 2.2;
 					voice_play();
-				}else if (snd_rng == 4) {
+				break;
+				case 4:
 					voice_id = "v_bighurt5";
 					voice_volume = 1.4;
 					voice_play();
-				} else if (snd_rng == 5) {
+				break;
+				case 5:
 					voice_id = "v_help";
 					voice_volume = 1;
 					voice_play();
+				break;
 				}
 			}
 		}else if(get_synced_var (player) == 3){
@@ -298,53 +341,83 @@ if(burned == true){
 }
 
 //intro
-if (get_gameplay_time() = 16 + player){
-	
+if (get_gameplay_time() == 16 + player){
 	if(get_synced_var (player) == 1){
-		with (oPlayer) {
-			if (id != other.id) {
-				snd_rng = random_func(0, 4, true);
-				if get_player_color(other.player) == 21{ 
-					voice_id = "v_engineergaming";
-					voice_volume = 3;
-					voice_play();
-				} else if url = other.url or url = 2113500915{//self, og engi
-					voice_id = "v_engispy";
-					voice_volume = 1.5;
-					voice_play();
-				} else{
-					// snd_rng = random_func(0, 4, true);
-					if (snd_rng == 0) {
-						other.voice_id = "v_startpraying";
-						other.voice_volume = 1.5;
-						other.voice_play();
-					}
-					if (snd_rng == 1) {
-						other.voice_id = "v_getallong";
-						other.voice_volume = 2;
-						other.voice_play();
-					}
-					if (snd_rng == 2) {
-						other.voice_id = "v_realbadday";
-						other.voice_volume = 2;
-						other.voice_play();
-					}
-					if (snd_rng == 3) {
-						other.voice_id = "v_engihere2";
-						other.voice_volume = 2;
-						other.voice_play();
+		if get_player_color(player) == 24{
+			voice_id = "v_engineergaming";
+			voice_volume = 3;
+			voice_play();
+			return;
+		} else{
+			} with (oPlayer) {
+				if (id != other.id) {
+					snd_rng = random_func(0, 4, true);
+					if url = other.url or url = 2113500915{//self, og engi
+						voice_id = "v_engispy";
+						voice_volume = 1.5;
+						voice_play();
+					} else if url == 3294133431 or url == 2820380997 or url == 3161437965{ //Spy, Roe, Chara
+						if (snd_rng <= 1) {
+							other.voice_id = "v_spyaintonourside";
+							other.voice_volume = 1.5;
+							other.voice_play();
+						}
+						if (snd_rng >= 2) {
+							other.voice_id = "v_heyboysspy";
+							other.voice_volume = 2;
+							other.voice_play();
+						}
+					}else if url == 2273636433{ //Dr Mario
+							other.voice_id = "v_overheresawbones";
+							other.voice_volume = 2;
+							other.voice_play();
+					}else{
+						// snd_rng = random_func(0, 4, true);
+						if (snd_rng == 0) {
+							other.voice_id = "v_startpraying";
+							other.voice_volume = 1.5;
+							other.voice_play();
+						}
+						if (snd_rng == 1) {
+							other.voice_id = "v_getallong";
+							other.voice_volume = 2;
+							other.voice_play();
+						}
+						if (snd_rng == 2) {
+							other.voice_id = "v_realbadday";
+							other.voice_volume = 2;
+							other.voice_play();
+						}
+						if (snd_rng == 3) {
+							other.voice_id = "v_engihere2";
+							other.voice_volume = 2;
+							other.voice_play();
+						}
 					}
 				}
 			}
         }
-    }
     if(get_synced_var (player) == 2){
         voice_id = "cd_yelling";
         voice_volume = 2.5;
         voice_play();
     }
 }
-
+//muting engineer
+if (get_synced_var (player) > 0) && (get_gameplay_time() < 100){
+	with (oPlayer) {
+		if (id != other.id) {
+			if taunt_pressed == true{
+				with other{
+					voice_id = "v_nope";
+					voice_volume = 2;
+					voice_play();
+					engi_muted = true;
+				}
+			}
+		}
+	}
+}
 //on-kill lines
 
 if (get_synced_var (player) == 1){
@@ -382,123 +455,157 @@ if (get_synced_var (player) == 1){
 			//if (url = other.url){
 			//print("howdy partner")	
 			//}
-				if (url = 2005036466){ //penny
+				switch url{
+				case "2005036466": //penny
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 4, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_seehowbad";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_drafted";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 2) {
+							break;
+							case 2:
 								voice_id = "v_eyepatch";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							else if (snd_rng == 3) {
+							break;
+							default:
 								voice_id = "v_snake";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				} else if (url = 2820380997) or (url = 3161437965){ //roekoko, Chara
+				break;
+				case "3294133431": //Spy
+				case "2820380997": //Roekoko
+				case "3161437965": //Chara
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 3, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_itaintgettinharder";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_backstabbers";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 2) {
+							break;
+							default:
 								voice_id = "v_snake";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				}
-				else if (url = 1877384987 or url = 2817605804 or url = 2285717462 or url = 3039831352 or url = 2990315396){ //scout sandbert, jerma, sonic(muno), sonic (bar-kun), noise
+				break;
+				case "1877384987": //scout sandbert
+				case "2817605804": //Jerma985
+				case "2285717462": //Sonic(muno)
+				case "3039831352": //Sonic(bar-kun)
+				case "2990315396": //The Noise
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 3, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_fasterthanthat";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_molasses";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 2) {
+							break;
+							default:
 								voice_id = "v_ainttoofast";
 								voice_volume = 1.5;
 								voice_play();
 							}
-						} 
+						}
 					}
-				}
-				else if (url = 2855638778 or url = 2840091641 or url = 2035357584){ //soldier(danielone), soldier(squaggs), nade
+				break;
+				case "2855638778": //Soldier(danielone)
+				case "2840091641": //Soldier(squaggs)
+				case "2035357584": //Nade
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 3, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_drafted";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_liftyourlid";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 2) {
+							break;
+							default:
 								voice_id = "v_eaglescry";
 								voice_volume = 1.5;
 								voice_play();
 							}
-						} 
+						}
 					}
-				}
-				else if (url = 2113500915 or url = other.url){//engineer
+				break;
+				// case other.url: //self
+				case "2113500915": //og engi
+				case "3302238950": //Alexis
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
-							snd_rng = random_func(0, 1, true);
-							if (snd_rng == 0) {
+							snd_rng = random_func(0, 3, true);
+							switch snd_rng{
+							case 0:
 								voice_id = "v_aintdoinitright";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) { //add more later
-								voice_id = "v_drunkonthe";
+							break;
+							case 1:
+								voice_id = "v_realtexan";
+								voice_volume = 1.5;
+								voice_play();
+							break;
+							default:
+								voice_id = "v_hardhatnocattle";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				}
-				else if (url = 2192126112){//demopan
+				break;
+				case "2192126112"://demopan
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 2, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_eyepatch";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							default:
 								voice_id = "v_drunkonthe";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				}
-				else if (url = 2811386719 or url = 2814747446){ //Wally and Peat
+				break;
+				case "2811386719": //Wally
+				case "2814747446": //Peat
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 7, true);
@@ -506,70 +613,81 @@ if (get_synced_var (player) == 1){
 								voice_id = "v_fatboy";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 4) {
+							}
+							switch snd_rng{
+							case 4:
 								voice_id = "v_ugly";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 5) {
+							break;
+							case 5:
 								voice_id = "v_dumb";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							else if (snd_rng == 6) {
+							break;
+							case 6:
 								voice_id = "v_bettersidesofbeef";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				}else if (url = 2273636433){ //dr mario
+				break;
+				case "2273636433": //Dr Melee Mario
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 3, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_poultice";
 								voice_volume = 1.5;
 								voice_play();
-							}else if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_patience";
-								voice_volume = 1.5;
+								voice_volume = 2;
 								voice_play();
-							}else if (snd_rng == 2) {
+							break;
+							default:
 								voice_id = "v_doctorschool";
 								voice_volume = 1.5;
 								voice_play();
 							}
 						} 
 					}
-				} else{
+				break;
+				default:
+				print(url)
 					with other{
 						if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 							snd_rng = random_func(0, 6, true);
-							if (snd_rng == 0) {
+							switch snd_rng{
+							case 0:
 								voice_id = "v_seehowbad";
 								voice_volume = 1.5;
 								voice_play();
-							} if (snd_rng == 1) {
+							break;
+							case 1:
 								voice_id = "v_donttestmymetal";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							 if (snd_rng == 2) {
+							break;
+							case 2:
 								voice_id = "v_battlecry2";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							 if (snd_rng == 3) {
+							break;
+							case 3:
 								voice_id = "v_wouldyoulook";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							 if (snd_rng == 4) {
+							break
+							case 4:
 								voice_id = "v_bacon";
 								voice_volume = 1.5;
 								voice_play();
-							}
-							 if (snd_rng >= 5) {
+							break;
+							default:
 								voice_id = "v_ugly";
 								voice_volume = 1;
 								voice_play();
@@ -591,31 +709,38 @@ if (get_synced_var (player) == 2){
 			with other{
 				if (hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self) {
 					snd_rng = random_func(0, 7, true);
-					if (snd_rng == 0) {
+					switch snd_rng{
+					case 0:
 						voice_id = "cd_gibberish1";
 						voice_volume = 2;
 						voice_play();
-					}else if (snd_rng == 1) {
+					break;
+					case 1:
 						voice_id = "cd_gibberish2";
 						voice_volume = 2;
 						voice_play();
-					}else if (snd_rng == 2) {
+					break;
+					case 2:
 						voice_id = "cd_gibberish3";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 3) {
+					break;
+					case 3:
 						voice_id = "cd_gibberish4";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 4) {
+					break;
+					case 4:
 						voice_id = "cd_yelling";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 5) {
+					break;
+					case 5:
 						voice_id = "cd_yelling2";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 6) {
+					break;
+					default:
 						voice_id = "cd_wabbywabbo";
 						voice_volume = 3;
 						voice_play();
@@ -632,35 +757,43 @@ if (get_synced_var (player) == 3){
 			with other{
 				if (hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self) {
 					snd_rng = random_func(0, 8, true);
-					if (snd_rng == 0) {
+					switch snd_rng{
+					case 0:
 						voice_id = "pt_italian1";
 						voice_volume = 2;
 						voice_play();
-					}else if (snd_rng == 1) {
+					break;
+					case 1:
 						voice_id = "pt_italian2";
 						voice_volume = 2;
 						voice_play();
-					}else if (snd_rng == 2) {
+					break;
+					case 2:
 						voice_id = "pt_italian3";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 3) {
+					break;
+					case 3:
 						voice_id = "pt_italian4";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 4) {
+					break;
+					case 4:
 						voice_id = "pt_italian5";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 5) {
+					break;
+					case 5:
 						voice_id = "pt_italian6";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 6) {
+					break;
+					case 6:
 						voice_id = "pt_italian7";
 						voice_volume = 3;
 						voice_play();
-					}else if (snd_rng == 7) {
+					break;
+					default:
 						voice_id = "pt_italian8";
 						voice_volume = 3;
 						voice_play();
@@ -687,22 +820,24 @@ if (get_synced_var (player) == 3){
 
 //"TinMines, why is there inconsistent grammar in your code?" Oh that's not inconsistent...
 //it's an inside joke. Pattented grammar changes, old group chat classic.
-if get_player_color(player) = 21 {
+if get_player_color(player) = 24 {
 hue_offset+=hue_speed;
 hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
 
 color_rgb=make_color_rgb(0, 255, 0); //input rgb values here, uses rgb to create a gamemaker colour variable
 hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot( 21, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-set_color_profile_slot( 21, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+set_color_profile_slot( 24, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+set_color_profile_slot( 24, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
 
 init_shader();
 }
 
 #define voice_play() //voiceline code is heavily based off of Roboshyguy's Jerma985 mod, I was given permission to use his code as a base.
-if(!dont_shutup){
-sound_stop(voice_playing_sound);
+if engi_muted == false{
+	if(!dont_shutup){
+		sound_stop(voice_playing_sound);
+	}
+	voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
+	dont_shutup = false;
 }
-voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
-dont_shutup = false;

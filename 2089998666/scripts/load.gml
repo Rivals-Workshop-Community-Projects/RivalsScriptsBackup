@@ -10,7 +10,7 @@ sprite_change_offset("crouch", 42, 82);
 sprite_change_offset("walk", 42, 82);
 sprite_change_offset("walkturn", 42, 82);
 sprite_change_offset("dash", 42, 82);
-sprite_change_offset("dashstart", 42, 82);
+sprite_change_offset("dashstart", 42, 88);
 sprite_change_offset("dashstop", 42, 82);
 sprite_change_offset("dashturn", 42, 82);
 
@@ -52,6 +52,9 @@ sprite_change_offset("fspecial", 62, 102);
 	sprite_change_offset("fspecialproj", 20, 22);
 sprite_change_offset("uspecial", 60, 100);
 sprite_change_offset("dspecial", 42, 102);
+	sprite_change_offset("dspecial_overlay1", 42, 102);
+	sprite_change_offset("dspecial_overlay2", 42, 102);
+	sprite_change_offset("dspecial_overlay3", 42, 102);
 sprite_change_offset("taunt", 42, 82);
 	sprite_change_offset("taunt_crouch", 42, 82);
 	sprite_change_offset("taunt_sakk", 42, 82);

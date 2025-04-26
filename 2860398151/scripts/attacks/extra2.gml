@@ -2,6 +2,8 @@ set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("fspecial2_landing"));
 set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 
+set_attack_value(AT_EXTRA_2, AG_MUNO_ATTACK_NAME, "Fspecial 2 Landing");
+
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 5);
@@ -36,6 +38,6 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_ANGLE, 85);
 set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_EXTRA_2, 1, HG_KNOCKBACK_SCALING, 0.60);
 set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_EXTRA_2, 1, HG_HITPAUSE_SCALING, 0.60);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HITPAUSE_SCALING, 0.45);
 set_hitbox_value(AT_EXTRA_2, 1, HG_HIT_SFX, sound_get("sfx_kiIMPACT"));
 set_hitbox_value(AT_EXTRA_2, 1, HG_VISUAL_EFFECT, vfx_ki_impact);

@@ -67,23 +67,24 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 56);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50); //361
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8); //10
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //chasms bursting
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2)
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 14); //18
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 8); //14
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 56);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -48);
-set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24); //-48 (it goes from -24 to -40 instead)
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 38);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 90);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 80);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 54); //90 (it goes from 54 to 90 instead)
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90); //80
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.8);
@@ -116,25 +117,26 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 56);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50); //361
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8); //10
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //chasms bursting - burning fury ver
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2)
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 14); //18
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 32);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40);
-set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 56);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24); //-48 (it goes from -24 to -40 instead)
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 38);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 90);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 80);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 54); //90 (it goes from 54 to 90 instead)
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90); //80
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
@@ -166,9 +168,11 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -14);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 300);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 320); //300
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7); //6
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
+set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);

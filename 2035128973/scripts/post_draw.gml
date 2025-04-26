@@ -52,7 +52,7 @@ else
 				{
 					var col1 = GetColourPlayer(0);
 					var col2 = GetColourPlayer(2);
-					var rad = asCharge*0.2+10;
+					var rad = asCharge*(attack==49?0.2:0.15)+10;
 					if (window == 1) rad = lerp(0, rad, window_timer/get_window_value(attack, 1, AG_WINDOW_LENGTH));
 					var newX = x-spr_dir*(26-(window==3?(window_timer-1)*10:0)+random_func(4, 2, 1));
 					var newY = y-30+random_func(3, 2, 1);
@@ -88,7 +88,7 @@ else
 
 #define GetColourPlayer(_index)
 {
-    return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
+	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
 }
 
 #define DrawAura(_name, _start, _end)

@@ -49,3 +49,7 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 		state_timer = 0
 	}
 }
+
+if (my_hitboxID.attack == 49){
+	hit_player_obj.invincible = false;
+}

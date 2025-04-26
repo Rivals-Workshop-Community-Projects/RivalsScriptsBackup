@@ -1,9 +1,11 @@
 //article2_init
 life_timer = 0;
-box_sprite = ("ammo_s_fall");
+// box_sprite = ("ammo_s_fall");
 hurtbox_spr = sprite_get("ammo_s_idle");
 sprite_index = sprite_get("ammo_s_fall");
 image_index = 0;
+image_xscale = 2;
+image_yscale = 2;
 
 sprite[0] = sprite_get("ammo_s_fall"); //small ammo pack falling
 sprite[1] = sprite_get("ammo_s_land"); //small ammo pack when it lands on the ground

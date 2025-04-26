@@ -87,7 +87,8 @@ switch (state)
             case 2: //idle
                 window_frame_start = 2;
                 window_frames = 1;
-                window_length = 170 + (120 * had_burnbuff); //burning fury makes it stay for longer
+                window_length = 170 + (20 * had_burnbuff); //burning fury decreases the lifetime of it
+
                 break;
             case 3: //destroyed
                 window_frame_start = 3;
@@ -111,32 +112,36 @@ switch (state)
             fx_fire.hsp = had_burnbuff ? random_x/64 : -random_x/64;
 
             //hitbox stuff
-            if (get_gameplay_time() % 30 == 0)
+            with (oPlayer) if (holyburn_timer % holyburn_tick == 0)
             {
-                with (oPlayer)
+                if (place_meeting(x, y, other) && player != other.player && (get_player_team(player) != get_player_team(other.player) ||
+                    get_match_setting(SET_TEAMATTACK)) && !invincible && !hurtboxID.dodging)
                 {
-                    if (place_meeting(x, y, other) && player != other.player && (get_player_team(player) != get_player_team(other.player) ||
-                    get_match_setting(SET_TEAMATTACK)) && !invincible)
-                    {
-                        holyburning = true;
-                        holyburn_timer = other.player_id.holyburn_timer_set;
-                        holyburner_id = other.player_id;
-                    }
-                }
-                with (obj_stage_article) if ("enemy_stage_article" in self && place_meeting(x, y, other))
-                {
-                    if ("holyburn_timer" not in self)
-                    {
-                        lightstunner_id = noone;
-                        lightstun_type = 0;
-                        lightstun_timer = 0;
-                    
-                        holyburning = false;
-                        holyburner_id = noone;
-                        holyburn_timer = 0;
-                    }
                     holyburning = true;
-                    holyburn_timer = other.player_id.holyburn_timer_set;
+                    holyburn_tick = other.had_burnbuff ? other.player_id.power_fury_burn_tick : other.player_id.holyburn_tick_norm;
+                    holyburn_timer = holyburn_tick * other.player_id.holyburn_ticks;
+                    holyburner_id = other.player_id;
+                }
+            }
+            with (obj_stage_article) if ("enemy_stage_article" in self && place_meeting(x, y, other))
+            {
+                if ("holyburn_timer" not in self)
+                {
+                    lightstunner_id = noone;
+                    lightstun_type = 0;
+                    lightstun_timer = 0;
+                
+                    holyburning = false;
+                    holyburner_id = noone;
+                    holyburn_timer = 0;
+                    holyburn_tick = 30;
+                    fury_power_smash_ticks = false;
+                }
+                else if (holyburn_timer % holyburn_tick == 0)
+                {
+                    holyburning = true;
+                    holyburn_tick = other.had_burnbuff ? other.player_id.power_fury_burn_tick : other.player_id.holyburn_tick_norm;
+                    holyburn_timer = holyburn_tick * other.player_id.holyburn_ticks;
                     holyburner_id = other.player_id;
                 }
             }
@@ -158,10 +163,10 @@ switch (state)
         //captures bar's current position as long as the article is around
         with (player_id)
         {
-            if (attack == AT_EXTRA_2)
+            if (attack == AT_EXTRA_2 && is_attacking)
             {
-                hook_bar_pos[0] = x+64*spr_dir;
-                hook_bar_pos[1] = y-32;
+                other.chain_start[0] = x+64*spr_dir;
+                other.chain_start[1] = y-32;
             }
         }
 
@@ -217,6 +222,7 @@ switch (state)
                 {
                     var groundfire = create_hitbox(AT_DSTRONG_2, 3, x+fire_offset*count, player_id.attack == player_id.AT_OVERDRIVE ? y-24 : y-8);
                     groundfire.fx_particles = 2;
+                    if (player_id.attack == player_id.AT_OVERDRIVE) groundfire.projectile_parry_stun = false;
                 }
                 break;
             case 3: //end

@@ -11,6 +11,12 @@ if "in_adventure" in self {
  }
 }
 
+if cancdraw > 0{
+	cancdraw --
+	cancimg += 0.2
+	draw_sprite_ext(cancspr, cancimg,  cancx, cancy , cancdir, 1, 0 , -1 , cancdraw/10);
+}
+
 if move_cooldown[AT_FSTRONG_2] != 0 {
 	  gpu_set_blendmode(bm_add);
 	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
@@ -30,7 +36,7 @@ if move_cooldown[AT_FSTRONG_2] != 0 {
   gpu_set_blendmode(bm_normal);	
 }
 
-if rank >= 4 && state != PS_PRATFALL && state != PS_PRATLAND{
+if djumps > 0 && state != PS_PRATFALL && state != PS_PRATLAND{
 	  gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  - random_func(1,2,true), y - 1 - vsp - random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
 		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2 + random_func(1,2,true) , y + 1 - vsp*2 + random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
@@ -102,45 +108,6 @@ shader_end()
 		if window > 12 && window_timer == 1 {
 			infernal2 += 2
 		}
-
-/*
-	if window >= 12 and window <= 14 && (infernal2 > 300) {
-
-		if spr_dir == -1{
-	    draw_debug_text(x - (70) ,y - 90, "Sky.");
-		}
-		
-		if spr_dir == 1{
-	    draw_debug_text(x + (60) ,y - 90, "Sky.");
-		}
-		
-		
-	}
-	
-	if window >= 13 and window <= 15 && (infernal2 > 300) {
-	if spr_dir == -1{
-		draw_debug_text(x + (60) ,y - 90, "Stars.");
-		
-	}
-	
-	if spr_dir == 1{
-	    draw_debug_text(x - (96) ,y - 90, "Stars.");
-		}
-	
-	}
-	
-	if window >= 15 and window <= 16 and danced == 1 {
-		
-        if spr_dir == -1{
-        draw_debug_text(x - (140) ,y - 40, "Screw em up.");
-        }
-        
-        if spr_dir == 1{
-        draw_debug_text(x + (50) ,y - 40, "Screw em up.");
-        }
-		
-	}
-*/	
 	
 	if window >= 1 && window <= 6 {
 	    
@@ -314,8 +281,9 @@ shader_end()
 
 
 		   	if kquote == 29{
-		draw_debug_text(x - 110 ,y - 120, "Please go support Sydery");
-		draw_debug_text(x - 110 ,y - 105, "on Patreon.");
+		draw_debug_text(x - 110 ,y - 120, "Astra's adorable.");
+		draw_debug_text(x - 110 ,y - 105, "");
+
 
 		    }	
 		    
@@ -328,8 +296,8 @@ shader_end()
 
 
 		   	if kquote == 31{
-		draw_debug_text(x - 110 ,y - 125, "This weird case of Dementia keep making");
-		draw_debug_text(x - 110 ,y - 110, "me forget unimpotant but interesting details.");
+		draw_debug_text(x - 110 ,y - 125, "I'm not one for trivials, so I");
+		draw_debug_text(x - 110 ,y - 110, "forget unimpotant but interesting details.");
         draw_debug_text(x - 110 ,y - 95, "Better write them down in a book.");
 		    }	
 

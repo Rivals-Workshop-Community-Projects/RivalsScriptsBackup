@@ -1,5 +1,5 @@
-set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);
@@ -37,6 +37,7 @@ set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.60);
-set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.60);
+set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.25);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -2);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

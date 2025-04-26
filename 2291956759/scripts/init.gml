@@ -28,6 +28,7 @@ ui2y = 0
 inkshield = -1
 inkshield_buildup = 0
 ink = 100
+freesummon = 0
 
 drip_sound = sound_play(sound_get("drip"))
 sound_stop(drip_sound)

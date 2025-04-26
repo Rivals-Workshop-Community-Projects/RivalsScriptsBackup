@@ -19,8 +19,20 @@ with hit_player_obj
 if (my_hitboxID.attack == AT_FSPECIAL){
     if (window == 1 && grabbedid == noone){
         hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-	    grabbedid.ungrab = 0;
+        for(var i = 0; i < 3; i++){
+        	if (grabbedCharacter[i] == -4){
+        		grabbedCharacter[i] = hit_player_obj
+        		grabbedCharacter[i].ungrab = 0;
+        		break
+        	}
+        	
+        }
+	    // grabbedid.ungrab = 0;
+    }
+    if (window == 2){
+		grabbedCharacter[0] = -4;
+		grabbedCharacter[1] = -4;
+		grabbedCharacter[2] = -4;
     }
 
 }
@@ -52,7 +64,7 @@ if (my_hitboxID.attack == AT_NSPECIAL)
 		        valueExists = true;
 		    }
 		}
-		if (!valueExists) {
+		if !(valueExists and value == self) {
 			ds_list_add(frozenPlayersArray, hit_player_obj);
 			// print("-----------------------------")
 			// for (var i = 0; i < ds_list_size(frozenPlayersArray); i++) {
@@ -62,14 +74,17 @@ if (my_hitboxID.attack == AT_NSPECIAL)
 		// }else{
 		// 	print("player already exists in list")
 		// }
-		hit_player_obj.frozenInTime = true;
-		hit_player_obj.tickPlayed = false;
-		hit_player_obj.prevFrame = 0;
-		hit_player_obj.disappearFx = false;
-		hit_player_obj.freezeFrames = 120;
-		hit_player_obj.countDownFxFrame = 0;
-		hit_player_obj.countDownFxAlpha = 1;
-		sound_play(tick);
+		if hit_player_obj.id != id{
+			hit_player_obj.frozenInTime = true;
+			hit_player_obj.tickPlayed = false;
+			hit_player_obj.prevFrame = 0;
+			hit_player_obj.disappearFx = false;
+			hit_player_obj.freezeFrames = 120;
+			hit_player_obj.countDownFxFrame = 0;
+			hit_player_obj.countDownFxAlpha = 1;
+			sound_play(tick);			
+		}
+
 	}
 
 }

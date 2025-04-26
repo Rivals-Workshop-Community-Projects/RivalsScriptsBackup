@@ -37,18 +37,18 @@ if (get_player_color( player ) == 7) {
 }
 
 if (get_player_color( player ) == 8) {	
-	set_character_color_shading(0, 0.75); // body
+	set_character_color_shading(0, 1.1); // body
 	set_character_color_shading(1, .8); // hands
-	set_character_color_shading(2, .75); // shoes
-	set_character_color_shading(3, .75); // cutter
-	set_character_color_shading(4, .75); // shoulders
+	set_character_color_shading(2, .35); // shoes
+	set_character_color_shading(3, 1.1); // cutter
+	set_character_color_shading(4, 1.1); // shoulders
 	
 }
 
 if (get_player_color( player ) == 9) {	
-	set_character_color_shading(0, 1.5); // body
-	set_character_color_shading(1, .85); // hands
-	set_character_color_shading(2, 1.35); // shoes
+	set_character_color_shading(0, 1.2); // body
+	set_character_color_shading(1, .65); // hands
+	set_character_color_shading(2, 1.05); // shoes
 	set_character_color_shading(3, 1.25); // cutter
 	set_character_color_shading(4, 1.5); // shoulders
 	

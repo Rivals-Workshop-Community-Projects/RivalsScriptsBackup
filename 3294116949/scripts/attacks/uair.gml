@@ -50,7 +50,8 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .55);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("alt_axe2"));
+//set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 set_hitbox_value(AT_UAIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
@@ -70,4 +71,5 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .55);
-set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("alt_axe_strong1"));
+//set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

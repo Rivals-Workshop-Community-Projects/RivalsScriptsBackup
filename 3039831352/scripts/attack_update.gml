@@ -3,6 +3,8 @@
 //B-reverse - it allows the character to turn in_while using specials
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+custom_attack_grid();
+
 //recording the last attack
 if (state_timer == 1)
 {
@@ -47,8 +49,11 @@ switch (attack)
 	case AT_UTILT:
 		switch (window)
 		{
-			case 3:
-				if (is_attack_pressed(DIR_UP)) set_window(5);
+			case 1: //clears button buffer just in case
+				if (window_timer == 1) clear_button_buffer(PC_ATTACK_PRESSED);
+				break;
+			case 3: //combo input
+				if (is_attack_pressed(DIR_UP) || is_attack_pressed(DIR_NONE)) set_window(5);
 				break;
 			case 7:
 				if (!free) set_window(0);
@@ -58,19 +63,16 @@ switch (attack)
 		break;
 	case AT_DATTACK:
 		if (!free) manual_landing_lag();
-		if (window == 1 && window_timer == 1) sound_play(jump_sound);
+		if (window == 1 && window_timer == 1 && !hitpause) sound_play(jump_sound);
 		break;
 	case AT_USTRONG:
 		if (do_a_fast_fall) set_attack_value(attack, AG_LANDING_LAG, 10);
 		if (window == 1 && window_timer == 1) set_attack_value(attack, AG_LANDING_LAG, 6);
 
-		if (free) hsp = clamp(hsp, -3, 3); //hsp limiter
+		if (free && window >= 3) hsp = clamp(hsp, -3, 3); //hsp limiter
 		if (window == window_last)
 		{
-			if (!free)
-			{
-				manual_landing_lag();
-			}
+			if (!free) manual_landing_lag();
 			else if (window_timer == window_end - 1) set_state(was_parried ? PS_PRATFALL : PS_IDLE_AIR);
 		}
 		break;
@@ -83,7 +85,7 @@ switch (attack)
 		if (window == 4) force_vfx_depth = depth - 1;
 		else force_vfx_depth = 0;
 
-		if (smash_charging && strong_charge == 1 && !hitpause) sound_play(sound_get("sfx_charge_loop"), true);
+		if (smash_charging && strong_charge == 1 && !hitpause) cur_loop_sound = sound_play(sound_get("sfx_charge_loop"), true);
 
 		//correct tornado position and scale
 		if (instance_exists(dstrong_tornado_hbox))
@@ -99,6 +101,8 @@ switch (attack)
 				dstrong_tornado_xscale = [noone, noone];
 				dstrong_loops = 0;
 				for (var i = 0; i < 20; i ++) check_can_hit[i] = true;
+
+				dstrong_start_x = x;
 				break;
 			case 3: //initial speed + funny
 				if (window_timer == window_end)
@@ -120,6 +124,7 @@ switch (attack)
 					{
 						temp_hbox = create_hitbox(attack, 1, x, y);
 						hsp = (dstrong_hsp[1]/dstrong_hsp[0]) * spr_dir;
+						if (has_boost_atk_rune && (boost_mode || is_super)) hsp /= boost_atk_spd_mult;
 						sound_play(sound_get("sfx_bluetornado_start"));
 					}
 				}
@@ -147,7 +152,11 @@ switch (attack)
 						destroy_hitboxes();
 						set_window(6);
 					}
-					else hsp = -dstrong_hsp[1] * spr_dir;
+					else
+					{
+						hsp = -dstrong_hsp[1] * spr_dir;
+						if (has_boost_atk_rune && (boost_mode || is_super)) hsp /= boost_atk_spd_mult;
+					}
 				}
 				break;
 			case 5: //go forward / jump up
@@ -160,11 +169,12 @@ switch (attack)
 					{
 						set_window(4);
 						hsp = dstrong_hsp[1] * spr_dir;
+						if (has_boost_atk_rune && (boost_mode || is_super)) hsp /= boost_atk_spd_mult;
 					}
 				}
 				break;
 			case 6: //endlag
-				hsp = clamp(hsp, -2.5, 1); //hsp limiter
+				hsp = sign(spr_dir == 1) ? clamp(hsp, -2.5, 1) : clamp(hsp, -1, 2.5); //hsp limiter
 				if (window_timer > 2) manual_landing_lag();
 				break;
 		}
@@ -228,7 +238,7 @@ switch (attack)
 		
 		//smear effect (add visual for multihome rune too)
 		if (window == 4 || window == 5 || window == 6 && window_timer < window_end/4 ||
-			(window == 7 && 1 < window_timer || window == 9 && window_timer < window_end/4)) // && instance_exists(homing_target)
+			window == 7 && (window_timer > 0 || window_loops > 1) || window == 9 && window_timer < window_end/4) // && instance_exists(homing_target)
 		{
 			add_blue_blur(x, y - 32);
 			if (!hitpause && window <= 7) airdash_stats[3] ++;
@@ -291,7 +301,7 @@ switch (attack)
 					if (!has_multihome_rune)
 					{
 						var dir = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
-						homing_values[1] += sin(degtorad(dir - homing_values[1])) * 20;
+						homing_values[1] += sin(degtorad(dir - homing_values[1])) * 10;
 					}
 					hsp = lengthdir_x(homing_values[0], homing_values[1]);
 					vsp = lengthdir_y(homing_values[0], homing_values[1]);
@@ -305,20 +315,25 @@ switch (attack)
 
 				if (has_multihome_rune && next_multihome_target < multihome_limit-1) fall_through = true;
 
-				if (window_end > 0) //wall detection/whiff
+				//ground detection/whiff
+				if (point_direction(0, 0, hsp, vsp) > 200 && point_direction(0, 0, hsp, vsp) < 340 &&
+					(!free || place_meeting(x + hsp, y + vsp - 16, asset_get("par_block"))))
 				{
-					if (point_direction(0, 0, hsp, vsp) > 200 && point_direction(0, 0, hsp, vsp) < 340 &&
-						(!free || place_meeting(x + hsp, y + vsp - 16, asset_get("par_block"))))
-					{
-						set_window_value(attack, 9, AG_WINDOW_TYPE, 7);
-						set_window(0);
-					}
-					else if (window_timer == window_end && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES) && !has_hit)
-					{
-						hsp /= 5;
-						set_window(10);
-					}
+					set_window_value(attack, 9, AG_WINDOW_TYPE, 7);
+					set_window(0);
 				}
+				else if (place_meeting(x + 20 * sign(hsp), y, asset_get("par_block")) && vsp < 0)
+				{
+					set_window_value(attack, 9, AG_WINDOW_TYPE, 7);
+					x = x + hsp*2;
+					set_window(0);
+				}
+				else if (window_timer == window_end-1 && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1 && !has_hit)
+				{
+					hsp /= 5;
+					set_window(10);
+				}
+				
 				break;
 			case 9:
 				manual_landing_lag();
@@ -346,16 +361,27 @@ switch (attack)
 			case 1:
 				if (window_timer == window_end)
 				{
+					if (!joy_pad_idle) uspec_air_throw_hsp = abs(hsp) * spr_dir; //hsp
+					else uspec_air_throw_hsp = 0;
 					hsp = (free ? 0 : -6) * spr_dir;
 					vsp = free ? -10 : 0;
 
-					if (can_spawn_trick_ring && (!instance_exists(artc_trickring) || artc_trickring.state == 2)) artc_trickring = instance_create(x, y-32, "obj_article1");
+					if (can_spawn_trick_ring && (!instance_exists(artc_trickring) || artc_trickring.state == 2 || artc_trickring.trick_ring_player != player))
+					{
+						artc_trickring = instance_create(x, y-32, "obj_article1");
+					}
 				}
-
 				if (instance_exists(artc_trickring) && artc_trickring.state == 1 && can_spawn_trick_ring)
 				{
-					artc_trickring.state = 2;
-					artc_trickring.state_timer = 0;
+					with (artc_trickring)
+					{
+						if (trick_ring_player == other.player)
+						{
+							state = 2;
+							state_timer = 0;
+							visible = true;
+						}
+					}
 				}
 
 				break;
@@ -398,7 +424,7 @@ switch (attack)
 		can_wall_jump = true;
 
 		//smear effect
-		if (window == 5 || window >= 8 && window <= 9)
+		if (window == 5 || window == 8 && window_loops > 0 || window == 9 || window >= 12)
 		{
 			add_blue_blur(x, y - 24);
 			if (!hitpause) airdash_stats[3] ++;
@@ -407,9 +433,8 @@ switch (attack)
 			if (window == 5) airdash_stats[0] = 1;
 			else if (window == 8) airdash_stats[0] = 2;
 		}
-		else if (window == 10) airdash_stats[3] = -1;
-
-		if (has_hit && window > 4 && window < 7) //jump cancel
+		else if (window == 10 || window == 6) airdash_stats[3] = -1;
+		if (has_hit && window > 4 && window < 7 && window < 12) //jump cancel
 		{
 			if (jump_pressed)
 			{
@@ -430,6 +455,7 @@ switch (attack)
 			can_jump = true;
 		}
 
+		//main attack logic
 		switch (window)
 		{
 			case 1:
@@ -441,7 +467,7 @@ switch (attack)
 				if (abs(hsp) < 2 + holding_foward) hsp = (2 + holding_foward) * spr_dir;
 				else hsp = hsp;
 
-				if (!special_down)
+				if (!special_down && !special_pressed)
 				{
 					set_window(4);
 					hsp += abs(new_hsp) * spr_dir * 0.5;
@@ -456,7 +482,7 @@ switch (attack)
 				if (abs(hsp) < 2 + holding_foward) hsp = (2 + holding_foward) * spr_dir;
 				else hsp = hsp;
 				
-				if (!special_down || window_timer == window_end-1)
+				if (!special_down || window_timer == window_end-1 && window_loops >= get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1)
 				{
 					sound_play(sound_get("sfx_rocketaccel"));
 					set_window(8);
@@ -483,10 +509,89 @@ switch (attack)
 				if (!free && abs(hsp) > 0.5) hsp -= 0.5 * spr_dir;
 				break;
 			case 8: case 9: //rocket accel
-				if (window == 8 && window_timer == 1) fast_falling = false; //cancel fastfall on the first frame
-
 				if (fast_falling && !hitpause) vsp = fast_fall;
 				else vsp = 0;
+				grav = 0;
+				break;
+		}
+
+		//beam clash compatibility
+		if ((window == 8 || window == 9) && window_timer == 0 && window_loops == 0 && !hitpause) create_hitbox(attack, 4, x, y); //spawn clash checker
+		if (!hitpause) switch (window)
+		{
+			case 1: //var reset
+				beam_clash_buddy = noone;
+				beam_clash_timer = 0;
+				beam_length = 0;
+				beam_juice = 30;
+				break;
+			case 8: case 9: //hitbox window
+				with (pHitBox) if (player_id == other && attack == AT_FSPECIAL && hbox_num == 4) other.clashbox = self; //detects the hitbox for the clash
+				if (beam_clash_buddy == noone && instance_exists(clashbox))
+				{
+					var me = self;
+					//check if someone is doing a beam and the clash hitbox exists
+					with (oPlayer) if ("has_goku_beam" in self && doing_goku_beam && (beam_angle == 0 || beam_angle == 180))
+					{
+						var him = self;
+
+						//detect clash
+						with (beam_newest_hbox) if (place_meeting(x, y, me.clashbox))
+						{
+							//sets up variables
+							me.clash_x = x - 72 * me.spr_dir; 	//sets up the positions to snap sonic to
+							me.clash_y = y + 24;				//making it look more correct
+							me.beam_clash_buddy = him;
+							me.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max); //get the higher value of the two
+							me.doing_goku_beam = true;
+
+							him.beam_clash_buddy = me;
+							him.beam_juice = max(him.beam_juice, 30);
+							him.beam_clash_timer_max = max(me.beam_clash_timer_max, him.beam_clash_timer_max); //get the higher value of the two
+							him.doing_goku_beam = true;
+
+							with (me) //initiate beam clash
+							{
+								sound_play(sfx_beam_clash);
+
+								//creates hitbox for the beam clash
+								destroy_hitboxes();
+								clashbox = create_hitbox(attack, 4, x, y);
+
+								set_window(12);
+							}
+						}
+					}
+				}
+				break;
+			case 12: case 13: case 14: //beam clash windows (sonic has 3 variants for the animation based on how well he's doing)
+				with (pHitBox) if (player_id == other && attack == AT_FSPECIAL && hbox_num == 4) other.clashbox = self; //detects the hitbox for the clash (again)
+
+				//sonic movement logic, this is how sonic actually moves forward
+				can_move = false;
+				x = lerp(x, clash_x + (beam_length - 8) * spr_dir, 0.5);
+				y = lerp(y, clash_y, 0.5);
+				vsp = 0;
+				grav = 0;
+
+				if (beam_clash_buddy != noone) beam_clash_logic();
+				else
+				{
+					destroy_hitboxes();
+					if (clash_winner == self) //sonic won, restart the attack
+					{
+						hsp = 16 * spr_dir;
+						set_window(8);
+					}
+					else if (clash_winner == noone) //stalemate, sonic jumps off the beam
+					{
+						set_attack(AT_NSPECIAL);
+						hurtboxID.sprite_index = get_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE);
+						set_window(9);
+						sound_play(sound_get("sfx_jump"));
+					}
+					else set_window(10); //sonic lost, he goes to endlag which gaurentees the beam hitting him
+				}
 				break;
 		}
 		break;
@@ -539,6 +644,14 @@ switch (attack)
 	case 2: //intro
 		if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); //put hud away
 		if (window == window_last && window_timer == window_end-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
+		break;
+	case AT_TAUNT:
+		if (window == 1 && window_timer == 1 && taunt_grace_timer > 0)
+		{
+			do_trick();
+			taunt_grace_timer = 0;
+			set_window(6);
+		}
 		break;
 	case AT_TAUNT_2: //tricks
 		if (state_timer > 2 && !free) manual_landing_lag();
@@ -593,46 +706,7 @@ switch (attack)
 		if (window == 1 && window_timer == window_end)
 		{
 			//boost gain setup
-			if (combo_hits > 0 || trick_rune_active)
-			{
-				//visual stuff
-				spawn_hit_fx(x, y - char_height / 1.75, 304);
-				sound_play(alt_cur != 22 ? asset_get("mfx_star") : sound_get("sfx_snicktrick"));
-				for (var i = 0; i < 7; i ++)
-				{
-					var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 24);
-					newdust.x = floor(x);
-					newdust.y = floor(y);
-					newdust.hsp = (random_func(i, 9, true) - 5) * 2;
-					newdust.vsp = random_func(i + 7, 5, true) - 10 * 2;
-					newdust.dust_fx = 24; //set the fx id
-				}
-
-				//counts as ending a combo with a trick (the trick rune refreshes the combo counter instead)
-				if (!trick_rune_active) combo_timer = 0;
-				else
-				{
-					if (trick_rune_count == 1)
-					{
-						combo_timer = 0;
-						trick_combo_end = true;
-						doing_trick_combo_chain = true;
-					}
-
-					comboing = true;
-					combo_hits = trick_rune_count;
-					combo_timer = trick_input_set;
-					combo_timer_full = trick_input_set;
-				}
-				trick_combo_end = true;
-				boost_trick_delay = boost_trick_delay_set;
-
-				if (!has_superform) //this timer makes it so sonic gets less boost from ending a trick too
-				{
-					if (trick_spam_penalty_mult * trick_spam_penalty < 1) trick_spam_penalty ++;
-					trick_spam_penalty_time = trick_spam_penalty_set;
-				}
-			}
+			do_trick();
 
             //var setting - will set to the max time to add more time for tricks using the trick rune
             if (!trick_rune_active) trick_input_time = 0;
@@ -714,12 +788,11 @@ switch (attack)
 		if (window == 1 && window_timer == window_end) sound_play(sound_get("sfx_charge_lightspeed_start"))
 		if (window == 2)
 		{
-			if (state_timer == 48) sound_play(sound_get("sfx_charge_lightspeed_loop"), true);
+			if (state_timer == 48) cur_loop_sound = sound_play(sound_get("sfx_charge_lightspeed_loop"), true);
 
 			if (!special_down || boost_mode)
 			{
-				sound_stop(sound_get("sfx_charge_lightspeed_start"));
-				sound_stop(sound_get("sfx_charge_lightspeed_loop"));
+				sound_stop(cur_loop_sound);
 				set_window(0);
 			}
 			else if (special_down) //maybe it can be a ring magnet for super sonic idk
@@ -933,14 +1006,14 @@ switch (attack)
 			{
 				spawn_hit_fx(x, y, fx_emeralds);
 				sound_play(sound_get("sfx_emeralds_spawn"));
-				sound_play(sound_get("sfx_emeralds_idle"), true);
+				cur_loop_sound = sound_play(sound_get("sfx_emeralds_idle"), true);
 			}
 		}
 		if (window == 2 && window_timer == window_end) spawn_hit_fx(x, y-32, fx_trickring_circspark);
-		if (window == 4)
+		if (window == 4 || window == 5 && window_timer == 0)
 		{
 			if (!secret_active) super_col_lerp_time ++;
-			sound_stop(sound_get("sfx_emeralds_idle"));
+			sound_stop(cur_loop_sound);
 
 			var fx = spawn_hit_fx(
 				x + (random_func(1, 8, true) - 4) * 8,
@@ -982,7 +1055,6 @@ switch (attack)
 		break;
 }
 
-
 //0 will just go to the next window instead of a specific one
 //-1 makes it loop on the same window
 #define set_window(window_num)
@@ -1009,6 +1081,56 @@ switch (attack)
 		case 1: case 2: vsp = get_window_value(attack, window_num, AG_WINDOW_VSPEED); break; //sets speed for the first frame/the entire window
 	}
 }
+#define custom_attack_grid
+{
+    var cancel_total = get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME_TOTAL);
+    var whiff_mult = (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1;
+    window_cancel_total = (window_cancel_time + cancel_total) * whiff_mult;
+    
+    var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
+    var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
+    var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
+    
+    //make sure the player isn't in hitpause
+    if (!hitpause)
+    {
+        //make sure the window is in type 9 or 10
+        if (window_type_value == 9 || window_type_value == 10)
+        {
+            //checks the end of the window
+            if (window_timer == window_end)
+            {
+                if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
+            }
+
+            if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
+            {
+                if (window_timer == 0)
+                {
+                    if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
+                    window_loops ++; //at the start of the window, count a loop up
+                }
+
+                //when all the loops are over, go to the next window and reset the loop value
+                //if it's window type 10, it should stop the loop prematurely
+                if (window_loops > window_loop_value-1 || window_type_value == 10 && !free)
+                {
+                    destroy_hitboxes();
+                    if (window < window_last)
+                    {
+                        window += 1;
+                        window_timer = 0;
+                    }
+                    else set_state(free ? PS_IDLE_AIR : PS_IDLE);
+                    window_loops = 0;
+                }
+            }
+            else if (window_loop_value == 0) attack_end(attack);
+            //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
+            //this is how the game usually treats window type 9
+        }
+    }
+}
 
 #define manual_landing_lag
 {
@@ -1029,7 +1151,7 @@ switch (attack)
 	if (!hitpause && (airdash_stats[3] <= -1 || airdash_stats[3] % 3 == 0))
 	{
 		var dash_fx = spawn_hit_fx(pos_x, pos_y, fx_airdash_trail);
-		dash_fx.draw_angle = point_direction(x, y, x + hsp, y + vsp);
+		dash_fx.draw_angle = point_direction(0, 0, hsp, vsp);
 	}
 }
 #define check_homing_range
@@ -1055,6 +1177,49 @@ switch (attack)
 		if (state != PS_DEAD && state != PS_RESPAWN && !invincible) //!hurtboxID.dodging && 
 		{
 			return closest_player;
+		}
+	}
+}
+#define do_trick
+{
+	if (combo_hits > 0 || trick_rune_active)
+	{
+		//visual stuff
+		spawn_hit_fx(x, y - char_height / 1.75, 304);
+		sound_play(alt_cur != 22 ? asset_get("mfx_star") : sound_get("sfx_snicktrick"));
+		for (var i = 0; i < 7; i ++)
+		{
+			var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 24);
+			newdust.x = floor(x);
+			newdust.y = floor(y);
+			newdust.hsp = (random_func(i, 9, true) - 5) * 2;
+			newdust.vsp = random_func(i + 7, 5, true) - 10 * 2;
+			newdust.dust_fx = 24; //set the fx id
+		}
+
+		//counts as ending a combo with a trick (the trick rune refreshes the combo counter instead)
+		if (!trick_rune_active) combo_timer = 0;
+		else
+		{
+			if (trick_rune_count == 1)
+			{
+				combo_timer = 0;
+				trick_combo_end = true;
+				doing_trick_combo_chain = true;
+			}
+
+			comboing = true;
+			combo_hits = trick_rune_count;
+			combo_timer = trick_input_set;
+			combo_timer_full = trick_input_set;
+		}
+		trick_combo_end = true;
+		boost_trick_delay = boost_trick_delay_set;
+
+		if (!has_superform && !trick_rune_active) //this timer makes it so sonic gets less boost from ending a trick too
+		{
+			if (trick_spam_penalty_mult * trick_spam_penalty < 1) trick_spam_penalty ++;
+			trick_spam_penalty_time = trick_spam_penalty_set;
 		}
 	}
 }
@@ -1101,4 +1266,76 @@ switch (attack)
 	}
 
 	var overshoot = (easetype == "in_back" || easetype == "out_back" || easetype == "in_out_back") ? argument[6] : 0;
+}
+
+
+//beam clash compatibility (document stuff)
+#define beam_clash_logic
+{
+	if (!beam_clash_buddy.doing_goku_beam) //if no clash is happening, cancel the clash
+	{
+		beam_clash_buddy.beam_clash_buddy = noone;
+		beam_clash_buddy = noone;
+	}
+	else //clash is indeed happening
+	{
+		if (beam_clash_timer >= beam_clash_timer_max) //time's up
+		{
+			if (clash_winner != self) beam_juice = 0; //if you didn't win the beam clash
+			if (clash_winner == beam_clash_buddy) //if the enemy won the beam clash, stop the beam clash
+			{
+				beam_clash_buddy.beam_clash_buddy = noone;
+				beam_clash_buddy = noone;
+			}
+			else beam_clash_buddy.beam_juice = 0; //if they didn't, clear their juice too
+
+			if (clash_winner == noone) //if there is no winner, quit beam clash
+			{
+				beam_juice = 0;
+				set_window_value(AT_NSPECIAL, 9, AG_WINDOW_INVINCIBILITY, 1);
+
+				beam_clash_buddy.beam_clash_buddy = noone;
+				beam_clash_buddy.beam_juice = 0;
+				beam_clash_buddy = noone;
+			}
+		}
+		else //the actual clash
+		{
+			clash_winner = noone;
+			if (beam_length > beam_clash_buddy.beam_length) //winning
+			{
+				clash_winner = self;
+				if (window != 12) set_window(12);
+			}
+			if (beam_length < beam_clash_buddy.beam_length) //losing
+			{
+				clash_winner = beam_clash_buddy;
+				if (window != 14) set_window(14);
+			}
+			if (beam_length == beam_clash_buddy.beam_length && window != 13) set_window(13); //neutral
+
+			beam_clash_timer ++;
+			if (special_pressed) //clash input
+			{
+				clear_button_buffer(PC_SPECIAL_PRESSED);
+				beam_length += 32;
+				beam_clash_buddy.beam_length -= 32;
+				beam_juice = min(beam_juice + 20, beam_juice_max);
+				beam_clash_buddy.beam_juice = max(beam_clash_buddy.beam_juice - 10, 10);
+				sound_play(sfx_beam_progress, false, noone, 1, 1 + beam_juice * 0.001);
+			}
+
+			//reached the enemy, i win
+			if (x >= beam_clash_buddy.x - clash_stop_offset && spr_dir == 1 || x <= beam_clash_buddy.x + clash_stop_offset && spr_dir == -1)
+			{
+				clash_winner = self;
+				beam_clash_timer = beam_clash_timer_max;
+
+				beam_juice = 0;
+				beam_clash_buddy.beam_clash_buddy = noone;
+				beam_clash_buddy.beam_juice = 0;
+				beam_clash_buddy = noone;
+			}
+		}
+	}
 }

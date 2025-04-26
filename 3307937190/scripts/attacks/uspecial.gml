@@ -4,13 +4,14 @@ set_attack_value(atk, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_OFF_LEDGE, 1);
+set_attack_value(atk, 87, "Applies Elemental Ink on hit. Places Pastelle in pratfall.");//AG_MUNO_ATTACK_MISC_ADD = i; i++; 
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy1"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME,  8);
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("swing2"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME,  9);
 //set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 //set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -28,8 +29,8 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 //set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_med1"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("swing3"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 7);
 
 window_num ++; //second swing
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
@@ -101,9 +102,9 @@ set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -30);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 85);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 65);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 61);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);

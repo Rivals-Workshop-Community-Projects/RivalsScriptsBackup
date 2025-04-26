@@ -86,7 +86,7 @@ set_color_profile_slot( 5, 5, 189, 27, 143 ); //H
 set_color_profile_slot( 5, 6, 88, 26, 153 ); //BlueyTank
 set_color_profile_slot( 5, 7, 255, 168, 218 ); //Pizza Dino
 
-// Bender
+// Blender
 set_color_profile_slot( 6, 0, 88, 132, 163 ); //Cap / Pants
 set_color_profile_slot( 6, 1, 135, 156, 173 ); //Shirt
 set_color_profile_slot( 6, 2, 100, 127, 138 ); //Skin
@@ -156,15 +156,15 @@ set_color_profile_slot( 12, 5, 40, 40, 201 ); //H
 set_color_profile_slot( 12, 6, 51, 51, 255 ); //BlueyTank
 set_color_profile_slot( 12, 7, 207, 224, 255 ); //Pizza Dino
 
-// OrangeBot
-set_color_profile_slot( 13, 0, 255, 90, 0 ); //Cap / Pants
-set_color_profile_slot( 13, 1, 102, 46, 0 ); //Shirt
-set_color_profile_slot( 13, 2, 255, 139, 77 ); //Skin
-set_color_profile_slot( 13, 3, 204, 0, 0 ); //Shoes
-set_color_profile_slot( 13, 4, 191, 104, 32 ); //Gloves / Scarf / Hair
-set_color_profile_slot( 13, 5, 255, 90, 0 ); //H
-set_color_profile_slot( 13, 6, 184, 65, 0 ); //BlueyTank
-set_color_profile_slot( 13, 7, 255, 132, 0 ); //Pizza Dino
+// Vortex Gallery
+set_color_profile_slot( 13, 0, 248, 132, 0 ); //Cap / Pants
+set_color_profile_slot( 13, 1, 161, 57, 0 ); //Shirt
+set_color_profile_slot( 13, 2, 217, 180, 99 ); //Skin
+set_color_profile_slot( 13, 3, 34, 50, 71 ); //Shoes
+set_color_profile_slot( 13, 4, 34, 50, 71 ); //Gloves / Scarf / Hair
+set_color_profile_slot( 13, 5, 201, 175, 0 ); //H
+set_color_profile_slot( 13, 6, 70, 57, 173 ); //BlueyTank
+set_color_profile_slot( 13, 7, 248, 145, 0 ); //Pizza Dino
 
 // Sans
 set_color_profile_slot( 14, 0, 36, 36, 36 ); //Cap / Pants

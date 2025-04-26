@@ -1,5 +1,16 @@
 //
 
+/*
+if(player_touching_pot && can_be_hit && !pot_has_trapped && pot_can_be_thrown){
+	gpu_set_fog(true, c_white, 0, 0);
+    draw_sprite_ext(sprite_index, image_index, x + 2, y - 2, spr_dir * 1, 1, 0 , c_black , 1);
+    draw_sprite_ext(sprite_index, image_index, x - 2, y + 2, spr_dir * 1, 1, 0 , c_black , 1);
+    draw_sprite_ext(sprite_index, image_index, x - 2, y - 2, spr_dir * 1, 1, 0 , c_black , 1);
+    draw_sprite_ext(sprite_index, image_index, x + 2, y + 2, spr_dir * 1, 1, 0 , c_black , 1);
+    gpu_set_fog(false, c_white, 0, 0); 
+}
+*/
+
 if(player_id.pot_skin = 2){
     if(state != 7 && state != 8){
    backboard = draw_sprite_ext(backboard_sprite,image_index,floor(x),floor(y) + 2,1,1,0,c_white,1); 

@@ -2,7 +2,7 @@
 
 inkshield = -1
 inkshield_buildup = 0
-/*
+
 if zettachoose > 0 {
 zettachoose -= 100
 }

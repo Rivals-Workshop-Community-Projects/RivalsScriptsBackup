@@ -12,8 +12,3 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED, -8);
-
-
-
-
-

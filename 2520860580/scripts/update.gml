@@ -25,13 +25,14 @@ if ending = -1 {
         	ending = 600
 }
 
+if downed{
+	invincible = false 
+	invince_time = 0
+}
+
 if ending > 0 {
 	ending -= 1
-	
 
-	
-
-	
 	if ending == 520 {
 		sound_play(sound_get("RI"),false,noone,1,1.2)
 		shake_camera(2,4)
@@ -95,11 +96,11 @@ if ending > 0 {
 }
 
 if visible == false {
-	
 	invincible = true
+	invince_time = 5
 }
 	    
-	knockback_adj = (1.05 - (get_player_damage(player)/ 300))
+	knockback_adj = 0
 
 
 
@@ -527,6 +528,7 @@ walljump_time = 9;
 
 land_sound = sound_get("cnoise3");
 landing_lag_sound = sound_get("cnoise3");
+
 if !attacking or (attacking && attack != AT_USPECIAL) {
    char_height = 80;
    //sprite_change_offset("uspecial", 136, 158);

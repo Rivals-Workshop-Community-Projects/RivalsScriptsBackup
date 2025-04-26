@@ -1,6 +1,7 @@
 shader_start();
 if ("activeBuff" in self) {
 	if (usesAltHud == 0) {draw_sprite(sprite_get("hud_bg"), 0, temp_x + 138, temp_y - 6);}
+	else if (usesAltHud == 2) {draw_sprite(sprite_get("hud3_bg"), 0, temp_x + 138, temp_y - 6);}
 	else {draw_sprite(sprite_get("hud2_bg"), 0, temp_x + 138, temp_y - 6);}
 	
 	if (activeBuff == 1) {draw_sprite(sprite_get("hud_icons"), 0, temp_x + 86, temp_y - 8);}
@@ -18,6 +19,18 @@ if ("activeBuff" in self) {
 		if (actionMeterFill > 199) {
 			actionMeterAnimTimer++;
 			if (actionMeterAnimTimer > 3) {draw_sprite(sprite_get("hud_meter"), 45, temp_x + 162, temp_y - 5);}
+			if (actionMeterAnimTimer > 6) {actionMeterAnimTimer = 0;}
+		}
+	} else if (usesAltHud == 2) {
+		if (actionMeterFill >= 1) {
+			draw_sprite(sprite_get("hud3_meter"), ((actionMeterFill / 200) * 43) + 1, temp_x + 162, temp_y - 5);
+		} else {
+			draw_sprite(sprite_get("hud3_meter"), 0, temp_x + 162, temp_y - 5);
+		}
+		
+		if (actionMeterFill > 199) {
+			actionMeterAnimTimer++;
+			if (actionMeterAnimTimer > 3) {draw_sprite(sprite_get("hud3_meter"), 45, temp_x + 162, temp_y - 5);}
 			if (actionMeterAnimTimer > 6) {actionMeterAnimTimer = 0;}
 		}
 	} else {

@@ -35,13 +35,13 @@ if (window == 1 && enhanced == false && attack != AT_JAB && ex_cooldown == 0){
         }
         if (attack == AT_DATTACK || attack == AT_DAIR || attack == AT_DSPECIAL
         || attack == AT_FSPECIAL){
-            take_damage( player, -1, 8);
+            take_damage( player, -1, 5);
         }
         if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
-            take_damage( player, -1, 10);
+            take_damage( player, -1, 5);
         }
         if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_BAIR){
-            take_damage( player, -1, 12);
+            take_damage( player, -1, 5);
         }
     }
 }

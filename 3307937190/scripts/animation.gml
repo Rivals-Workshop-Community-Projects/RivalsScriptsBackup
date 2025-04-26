@@ -143,7 +143,7 @@ with (hit_fx_obj) if (player == other.player)
 
 	if ("atk_used" in self) //ink smears logic
 	{
-		if (other.image_index <= p_img + fx_stuck_img && step_timer < fx_stuck_img * (hit_length/image_length) && (other.is_attacking && other.attack == atk_used || can_interrupt))
+		if (other.image_index <= p_img + fx_stuck_img && step_timer < fx_stuck_img * (hit_length/image_length) && !variable_instance_exists(id, "stopanim") && (other.is_attacking && other.attack == atk_used || can_interrupt))
 		{
 			hsp = other.hsp;
 			vsp = other.vsp - other.grav * other.free;
@@ -166,9 +166,26 @@ with (hit_fx_obj) if (player == other.player)
 			{
 				hsp *= -0.3;
 				vsp = -0.5;
-				stop_follow = true;
+				stop_follow = false;
 			}
 		}
+	}
+}
+
+//jh sfx stuff
+if (is_attacking){
+	switch (attack){
+
+		case AT_DSTRONG:
+			if (window == 3 && window_timer == 0 && !hitpause){
+				sound_play(sound_get("ink_burst"), false, noone, 0.6);
+				sound_play(sound_get("sfx_scythe_hitground"));
+			}
+		break;
+		case AT_FSPECIAL:
+			if (window == 1 && window_timer == 0 && !hitpause){
+				sound_play(asset_get("sfx_bubblepop"), false, noone, 1, 0.9);
+			}
 	}
 }
 
@@ -217,6 +234,7 @@ with (hit_fx_obj) if (player == other.player)
 			fx.uses_shader = false;
 			fx.can_interrupt = true;
 			fx.stop_follow = false;
+			if(ink_hold == 0) fx.stopanim = true;
 
 			if (ink_hold == 0) //extra fire smear
 			{
@@ -232,6 +250,7 @@ with (hit_fx_obj) if (player == other.player)
 				fx.uses_shader = false;
 				fx.can_interrupt = false;
 				fx.stop_follow = false;
+				fx.stopanim = true;
 			}
 			
 			created_smear = true;

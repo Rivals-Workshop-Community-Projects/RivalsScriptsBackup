@@ -59,38 +59,32 @@ if (uspe_cooldown > 0)
 {
     uspe_cooldown -= 1;
 }
-/*
-if (attack == AT_USPECIAL) and (using_uspecial_timer < 20)
-{
-    if (!free)
-    {
-        using_uspecial = true;
-    }
-    using_uspecial_timer += 1;
-}
-else
-{
-    using_uspecial = false;
 
-}
-*/
-
-
-
-/*
-// create the graze article
-if(createGrazeBox){
-    if(createGrazeBox == 1){
-        grazeBox = instance_create(x, y, "obj_article3");
-    }
-    createGrazeBox--;
-}
-*/
-//
 if(state == PS_WALL_JUMP)
 {
     has_used_uspecial = false;
     has_runeg_uspecial = false;
+}
+
+// dspecial
+if (!free) 
+{
+    has_used_dspecial = false;
+}
+
+if (has_used_dspecial) 
+{
+    move_cooldown[AT_DSPECIAL] = 99;
+}
+else
+{
+    move_cooldown[AT_DSPECIAL] = 0;
+}
+
+
+if(state == PS_WALL_JUMP)
+{
+    has_used_dspecial = false;
 }
 
 
@@ -191,47 +185,12 @@ else
 
 
 
-// Fanstasy seal update
-/*
-for (var i = 0; i < ds_list_size(eff_x); i += 1)
-{
-    eff_life[|i] += 1;
-    
-    eff_x[|i] += eff_x_acc[|i];
-    eff_y[|i] += eff_y_acc[|i];
-    
-    eff_scale[|i] -= 0.05; 
-    
-   //eff_alpha[|i] -= 0.02;
-    
-    
-    
-    
-    
-    
-    
-    if(eff_scale[|i] < 0)
-    {
-        ds_list_delete(eff_x,i);
-        ds_list_delete(eff_y,i);
-        
-        ds_list_delete(eff_x_acc,i);
-        ds_list_delete(eff_y_acc,i);
-        
-        ds_list_delete(eff_scale,i);
-        ds_list_delete(eff_col,i);
-        ds_list_delete(eff_alpha,i);
-        
-        ds_list_delete(eff_life,i);
-    }
-}
-*/
 
 // TRUMMEL CODEC
 
 if trummelcodecneeded{
     trummelcodec = 17;
-    trummelcodecmax = 22;
+    trummelcodecmax = 24;
     trummelcodecsprite1 = sprite_get("codec");
     trummelcodecsprite2 = sprite_get("X");
     var page = 0;
@@ -390,13 +349,23 @@ if trummelcodecneeded{
     trummelcodecspeaker[page] = 1;
     trummelcodecexpression[page] = 0;
 
-    trummelcodecline[page,1] = "Reimu is a Zoner, she can";
-    trummelcodecline[page,2] = "cover a lot of space with";
-    trummelcodecline[page,3] = "her ofuda and Yin-Yang";
-    trummelcodecline[page,4] = "Orb.";
+    trummelcodecline[page,1] = "Although Reimu may seem like";
+    trummelcodecline[page,2] = "a Zoner, with how much space";
+    trummelcodecline[page,3] = "she'll cover with her Ofuda and";
+    trummelcodecline[page,4] = "Yin-Yang Orb...";
     page++; 
     
-     //Page 16
+    //Page 16
+    trummelcodecspeaker[page] = 1;
+    trummelcodecexpression[page] = 0;
+
+    trummelcodecline[page,1] = "Her melee attacks and";
+    trummelcodecline[page,2] = "fast air speed make her";
+    trummelcodecline[page,3] = "quite deadly up close!";
+    trummelcodecline[page,4] = "";
+    page++; 
+    
+     //Page 17
     trummelcodecspeaker[page] = 1;
     trummelcodecexpression[page] = 3;
 
@@ -406,27 +375,37 @@ if trummelcodecneeded{
     trummelcodecline[page,4] = "smack!";
     page++; 
     
-    //Page 17
+    //Page 18
     trummelcodecspeaker[page] = 1;
     trummelcodecexpression[page] = 5;
 
-    trummelcodecline[page,1] = "Be carefull about those";
-    trummelcodecline[page,2] = "floating cards as well, hit";
-    trummelcodecline[page,3] = "by the orb, it will create";
-    trummelcodecline[page,4] = "a ring of projectiles!";
+    trummelcodecline[page,1] = "It would be wise to be";
+    trummelcodecline[page,2] = "careful around that orb too.";
+    trummelcodecline[page,3] = "If she manages to land a clean";
+    trummelcodecline[page,4] = "kick while we're too close..";
     page++; 
     
-    //Page 18
+    //Page 19
+    trummelcodecspeaker[page] = 1;
+    trummelcodecexpression[page] = 5;
+
+    trummelcodecline[page,1] = "It'll explode, and then";
+    trummelcodecline[page,2] = "we'll be left wide open";
+    trummelcodecline[page,3] = "for a counterattack from";
+    trummelcodecline[page,4] = "her.";
+    page++; 
+    
+    //Page 20
     trummelcodecspeaker[page] = 1;
     trummelcodecexpression[page] = 1;
 
-    trummelcodecline[page,1] = "Managing the orb is the";
-    trummelcodecline[page,2] = "most crucial thing to";
-    trummelcodecline[page,3] = "remember!";
+    trummelcodecline[page,1] = "Overall, managing the orb";
+    trummelcodecline[page,2] = "is the most crucial thing";
+    trummelcodecline[page,3] = "to remember!";
     trummelcodecline[page,4] = "";
     page++; 
     
-     //Page 19
+     //Page 21
     trummelcodecspeaker[page] = 1;
     trummelcodecexpression[page] = 5;
 
@@ -436,7 +415,7 @@ if trummelcodecneeded{
     trummelcodecline[page,4] = "";
     page++; 
     
-    //Page 20
+    //Page 22
     trummelcodecspeaker[page] = 3;
     trummelcodecexpression[page] = 2;
 
@@ -446,17 +425,17 @@ if trummelcodecneeded{
     trummelcodecline[page,4] = "";
     page++; 
     
-    //Page 21
+    //Page 23
     trummelcodecspeaker[page] = 3;
     trummelcodecexpression[page] = 1;
 
     trummelcodecline[page,1] = "That incidents are";
     trummelcodecline[page,2] = "resolved easily enough by";
-    trummelcodecline[page,3] = "knocking everyone dead";
-    trummelcodecline[page,4] = "that I stumble upon!";
+    trummelcodecline[page,3] = "knocking down everyone ";
+    trummelcodecline[page,4] = "that I stumble across!";
     page++; 
 
-    //Page 22
+    //Page 24
     trummelcodecspeaker[page] = 2;
     trummelcodecexpression[page] = 0;
 
@@ -598,11 +577,6 @@ if (dspe_stall > 0)
 }
 
 
-var num = 20//get_num_hitboxes(AT_DSPECIAL); // Why does it not work???
-for ( var i = 0; i < num; i += 1 )
-{
-    set_hitbox_value(AT_DSPECIAL, i, HG_EXTRA_HITPAUSE, 20 - dspe_stall);
-}
     
 
 

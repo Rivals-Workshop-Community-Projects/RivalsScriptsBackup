@@ -145,6 +145,8 @@ sprite_change_offset("hud_bg", 80, 20);
 sprite_change_offset("hud_meter", 50, 15);
 sprite_change_offset("hud2_bg", 80, 20);
 sprite_change_offset("hud2_meter", 50, 15);
+sprite_change_offset("hud3_bg", 80, 20);
+sprite_change_offset("hud3_meter", 50, 15);
 sprite_change_offset("hud_meter_overlay", 5, 15);
 sprite_change_offset("hud_icons", 24, 16);
 sprite_change_offset("hud_icons", 24, 16);

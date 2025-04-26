@@ -13,7 +13,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("mfx_star"));
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1); //Vanishing forward
@@ -82,7 +82,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 100);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
-set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 21);
+set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 38);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);

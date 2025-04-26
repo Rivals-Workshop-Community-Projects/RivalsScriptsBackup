@@ -1136,7 +1136,6 @@ if ("rollArray" in self)
 			else if (CheckStageUrl(2499100511))	return "Hyper Potions - Porta Vista";
 			else if (CheckStageUrl(2498298211))	return "Pokemon Masters EX - Lillie Battle Theme";
 			else if (CheckStageUrl(2598328548))	return "No Straight Roads - Vs. Sayu";
-			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
 			else if (CheckStageUrl(2809646591))	return "Answearing Machine - Shattered Shrine of Light";
 			else if (CheckStageUrl(2823202747))	return "SSBM - Final Destination (GSV Remix)";
 			else if (CheckStageUrl(2980985092))	return "Answearing Machine - BLACK MOON RISING";

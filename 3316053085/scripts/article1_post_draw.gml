@@ -40,14 +40,14 @@ if (flash_fx_timer < flash_fx_time_max)
 
 if (charge_lvl > 0) for (var i = 0; i < charge_lvl; i ++) with (player_id)
 {
-    if (!s_alt && alt_cur == 27) shader_end();
+    if (!s_alt && alt_cur == 28) shader_end();
     draw_sprite(
         other.fx_lvl_sparkle,
         game_time * 0.2,
         other.x + lengthdir_x(other.lvl_indc_base_dist + abs(lengthdir_y(other.lvl_indc_ex_dist, other.rune_angle)), game_time*4 - i/other.charge_lvl*360),
         other.y + lengthdir_y(other.lvl_indc_base_dist + abs(lengthdir_x(other.lvl_indc_ex_dist, other.rune_angle)), game_time*4 - i/other.charge_lvl*360)
     );
-    if (!s_alt && alt_cur == 27) shader_start();
+    if (!s_alt && alt_cur == 28) shader_start();
 }
 
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////

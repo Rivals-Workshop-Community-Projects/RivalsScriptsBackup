@@ -1,7 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-//patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -23,47 +22,44 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
-alt_name = 0;
-alt_name[0]  = isFurry?"The Lost Miko":"The Lone Ronin";
-alt_name[1]  = "Transcend";
-alt_name[2]  = "Kitsune of Light";
-alt_name[3]  = "Vaporwave";
-alt_name[4]  = "Abyss";
-alt_name[5]  = "Early Access";
-alt_name[6]  = "Sawtooth";
-alt_name[7]  = "15: The Dragon";
-alt_name[8]  = "Zero";
-alt_name[9]  = "B4DA55 F42069";
-alt_name[10] = "Disco Bird";
-alt_name[11] = "The Samurai";
-alt_name[12] = "Bravo";
-alt_name[13] = "My day be so fine";
-alt_name[14] = "Unbreakable Diamond";
-alt_name[15] = "Mallow Sky";
-alt_name[16] = "Saikyo Jyanshi";
-alt_name[17] = "BLM";
-alt_name[18] = "Kizuna";
-alt_name[19] = "Genesis";
-alt_name[20] = "Laurie D. Bunnykins";
-alt_name[21] = "Gold";
-alt_name[22] = "Spectrum";
-alt_name[23] = "Swordfighter";
-alt_name[24] = "Slayer of Demons";
-alt_name[25] = "Thunderclap Flash";
-alt_name[26] = "Paint";
-alt_name[27] = "Inkbrush";
-alt_name[28] = "Champion";
-alt_name[29] = "Enby";
-alt_name[30] = "Ace";
-alt_name[31]  = GetCustomAltName();
+alt_name = [
+	isFurry?"The Lost Miko":"The Lone Ronin",
+	"Transcend",
+	"Kitsune of Light",
+	"Vaporwave",
+	"Abyss",
+	"Early Access",
+	"Sawtooth",
+	"15: The Dragon",
+	"Zero",
+	"B4DA55 F42069",
+	"Disco Bird",
+	"The Samurai",
+	"Bravo",
+	"My day be so fine",
+	"Unbreakable Diamond",
+	"Mallow Sky",
+	"Saikyo Jyanshi",
+	"BLM",
+	"Kizuna",
+	"Genesis",
+	"Laurie D. Bunnykins",
+	"Gold",
+	"Spectrum",
+	"Swordfighter",
+	"Slayer of Demons",
+	"Thunderclap Flash",
+	"Paint",
+	"Inkbrush",
+	"Champion",
+	"Enby",
+	"Ace",
+	GetCustomAltName()
+]
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
 draw_sprite_ext(sprite_get("charselectOutline"),isFurry,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
-
-//draw_set_halign(fa_right);
-//textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-//textDraw(temp_x + 200, temp_y + 72, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
 
 draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
@@ -111,13 +107,15 @@ init_shader();
 	user_event(1);
 	switch (string_upper(get_player_name(player)))
 	{
-		default: return "Riptide";
+		default:
+			if (string_upper(get_player_name(player)) == "HALLO"+chr(12354)) return"redQuote";
+			else return "Riptide";
 		case "KARU":
 		case "LUKARU":
 		case "AURORA":
 		case "AURO<3": return "Aurora";
-		case "MAKO":
-		case "4MAKO": return "Endless Now";
+		case "CHISAN":
+		case "UTA": return "Endless Now";
 		case "BLUE": return "Blue Dragon";
 	}
 }

@@ -51,4 +51,27 @@ set_hitbox_value(atk, hitbox_num, HG_THROWS_ROCK, 1);
 //set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 //set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
+/*
+hitbox_num ++; //galaxy checker (unused)
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 0);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+*/
+
 set_num_hitboxes(atk, hitbox_num);

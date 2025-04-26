@@ -3,11 +3,10 @@ var temp_y = y + 9;
 
 if (get_color_profile_slot_r(1, 0) == 119)
 {
-    sound_play(sound_get("flakeIce"),0,-4,2);
+	sound_play(sound_get("flakeIce"),0,-4,2);
 	set_color_profile_slot( 1, 0, 118, 116, 232 );
 }
 
-//patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR), 0));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -29,50 +28,43 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
-alt_name = 0;
-alt_name[0]  = "Girl Next Door";
-alt_name[1]  = "Blue";
-alt_name[2]  = "Orange";
-alt_name[3]  = "Green";
-alt_name[4]  = "Black";
-alt_name[5]  = "Purple";
-alt_name[6]  = "Abyss";
-alt_name[7]  = "Early Access";
-alt_name[8]  = "Transcend";
-alt_name[9]  = "Girls...";
-alt_name[10]  = "Enby";
-alt_name[11]  = "Spectrum";
-alt_name[12]  = "Kitsune";
-alt_name[13]  = "Lightworld";
-alt_name[14]  = "Susie <3";
-alt_name[15]  = "Krispy";
-alt_name[16]  = "Ralsie <3";
-alt_name[17]  = "Fricks";
-alt_name[18]  = "Ketsukane";
-alt_name[19]  = "Flutt-Girl";
-alt_name[20]  = "Ze Tundra";
-alt_name[21]  = "Paint";
-alt_name[22]  = "Lunar Eclipse";
-alt_name[23]  = "Seeing Stars";
-alt_name[24]  = "BLM";
-alt_name[25]  = "Musician";
-alt_name[26]  = "Candy";
-alt_name[27]  = "Coffee Cake";
-alt_name[28]  = "Aqua Beam";
-alt_name[29]  = "Frostburn";
-alt_name[30]  = GetCustomAltName();
+alt_name = [
+"Girl Next Door",
+"Blue",
+"Orange",
+"Green",
+"Black",
+"Purple",
+"Abyss",
+"Early Access",
+"Transcend",
+"Girls...",
+"Enby",
+"Spectrum",
+"Kitsune",
+"Lightworld",
+"Susie <3",
+"Krispy",
+"Ralsie <3",
+"Fricks",
+"Ketsukane",
+"Flutt-Girl",
+"Ze Tundra",
+"Paint",
+"Lunar Eclipse",
+"Seeing Stars",
+"BLM",
+"Musician",
+"Candy",
+"Coffee Cake",
+"Aqua Beam",
+"Frostburn",
+GetCustomAltName()
+]
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
 draw_sprite_ext(sprite_get("charselectOutline"),1,x+14,y+12,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
-
-//draw_set_halign(fa_right);
-//var verX = 184;
-//var verY = 76;
-//TextDraw(temp_x + verX,   temp_y + verY,   "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-//TextDraw(temp_x + verX+2, temp_y + verY+2, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-
-//draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
 draw_set_halign(fa_left);
 
@@ -123,6 +115,7 @@ init_shader();
 		case "M30W": return "Nyan";
 		case "WEET": return "London";
 		case "FUGG": return "Maeday";
-		case "PIKA": return "Pika alt I think";
+		case "VIOLET":
+		case "PIKA": return "Violet alt I think";
 	}
 }

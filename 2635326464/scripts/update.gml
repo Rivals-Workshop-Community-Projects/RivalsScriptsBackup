@@ -312,18 +312,21 @@ if (banana_hud_timer_active == 1){
 
 	if (state == PS_RESPAWN && attack_down){
 		has_tricked = 1;
+		has_finished_trick = 1;
 	}
 
 // Speed boost after Nair
 
 	if (free && attack_down == false){
 		has_tricked = 0;
+		has_finished_trick = 0;
 	}
 
-	if (has_tricked == 1){
+	if (has_tricked == 1 && has_finished_trick == 1){
 
 		if (!free){
 			has_tricked = 0;
+			has_finished_trick = 0;
 			state = PS_ATTACK_GROUND;
 			attack = AT_NAIR;
 			window = 4;

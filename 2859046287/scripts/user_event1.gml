@@ -126,7 +126,7 @@ guiltySprite  = sprite_get("wsc_trialground");
 
 //Boris intro voiceline
 boris_intro_sfx = sound_get("wsc_borisvoiceline"); //got to https://readloud.net/english/american/3-male-voice-eric.html to make your own voiceline
-boris_intro_loop = 16; //every loop is 30 frames long, so multiply the time of the voiceline by 2 (in tester's case the voiceline is 8 seconds long)
+boris_intro_loop = 12; //every loop is 30 frames long, so multiply the time of the voiceline by 2 (in tester's case the voiceline is 6 seconds long)
 
 //Final Smash
 sprite_change_offset("wsc_finalsmash", 24, 47, true); //make sure you specify the sprites in the wsc_finalsmash.gml if you change it
@@ -182,6 +182,27 @@ fs_char_portrait_y = 90; //y offset for portrait that appears when using the fin
         - fs_hide_meter: should hide the meter but currently does not do anything
 
         - fs_ai_attempt_use: if true, the AI of the player will try to use their final smash (would be used in ai_update.gml)
+*/
+
+//Outskirts Invasion
+demonhorde_custom_color = make_color_rgb( //color used to color the intro card, it defaults to the 0th color slot
+    get_color_profile_slot_r(alt_cur, 1),
+    get_color_profile_slot_g(alt_cur, 1),
+    get_color_profile_slot_b(alt_cur, 1)
+);
+demonhorde_portrait_x = -32; //horizontal potrait offset
+demonhorde_portrait_y = 32; //vertical potrait offset 
+/*
+    the enemies themselves are stage articles rather than players, so they need individual detection codes from players
+    this usually translates to things such as: status effects not working, extra damage not being taken with the take_damage function, grabs not working properly etc.
+    to add compatibility to the demons it is recommended to check out the guide  https://steamcommunity.com/workshop/filedetails/discussion/3316060490/4423184732113595322/
+
+    other variables tester doesn't use:
+        - demonhorde_portrait: portrait sprite used for the intro card. if it isn't set it checks for portrait.png in the sprites folder or the main folder
+        - _demonhorde_hud_spr: your character's normal hud icon
+        - _demonhorde_hud_hurt_spr: your character's hurt hud icon
+        - demonhorde_hud_overwrite: used to overwrite the player icon if true, to allow for more control over the hud
+        - draw_hud_type = "gw_demonhorde": used by the draw_hud event to detect the demon horde
 */
 
 //Dracula dialouge

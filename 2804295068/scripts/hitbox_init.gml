@@ -10,10 +10,12 @@ if (attack == AT_FTILT
 || attack == 49){
     img_spd = 0.5;
 	collision_sprite = sprite_get("pea");
-	if (has_rune("L")){
-		torched = true
+	if has_rune("F"){
+		grounds = -1;
+		length *= 2;
+		grav = 20/length;
+		air_friction = (hsp*spr_dir)/50;
 	}
-	
 }
 
 torch_damage_mult = round(damage*2);
@@ -23,8 +25,8 @@ torch_hsp_mult = hsp*1.3;
 if (attack == AT_NSPECIAL && hbox_num == 1){
 	if (player_id.free){
 		grounds = -1;
-		hsp -= 3 * spr_dir;
-		vsp += 9;
+		hsp -= has_rune("B")?(spr_dir):(3*spr_dir);
+		vsp += has_rune("B")?2:9;
 	}
 }
 

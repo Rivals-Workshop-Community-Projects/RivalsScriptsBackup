@@ -13,8 +13,6 @@
 - 8 Grabbed by itself
 */
 
-
-
 //Are there too many articles? If so, I should die
 
 if (replacedcount > maxarticles && state != 2){
@@ -53,10 +51,19 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     			}
     	}
     	if (hitbox_hit != noone){
+    		if(state != 5){
+    		hit_player_obj = hitbox_hit.player_id;
+			if hit_player_obj.url = player_id.url{
+			hit_player_obj.hitbubble = id;
+			}
+    		}
     		if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0 && hitbox_hit.kb_value != 0 && hitbox_hit.id != last_hit && hitbox_hit.hbox_group != last_hit_group){
     			with (hitbox_hit){
+    				if other.grab_hit = false{
         			sound_play(sound_effect);
+        			sound_play(asset_get("sfx_frog_nspecial_shove"))
         			spawn_hit_fx(floor(x), floor(y), hit_effect);
+    			}
     			}
     			if(hitbox_hit.type == 1){
     			hitbox_hit.player_id.hitpause = true;
@@ -98,7 +105,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     			//ily dino
     			switch(hitbox_hit.hit_flipper) {
     				case 5: //Reverse HSP (Same as 0)
-					hsp = lengthdir_x( bubble_kb, hit_angle ) * hitbox_hit.spr_dir;
+					hsp = -lengthdir_x( bubble_kb, hit_angle ) * hitbox_hit.spr_dir;
 					vsp = lengthdir_y( bubble_kb, hit_angle ); 
     				break;
     				case 6: //Away Player Hor
@@ -132,10 +139,12 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     			bubble_can_move = false;
     			
     			if(grabbed_id != noone){
+    				if grab_hit = false{
     			take_damage(grabbed_id.player, -1, hitbox_hit.damage);	
     			}
+    			}
     			if(state == 5){
-    			take_damage(player_id.player, -1, hitbox_hit.damage);		
+    			take_damage(hit_player_obj.player, -1, hitbox_hit.damage);		
     			}
     			//pass_thru = false;
     			
@@ -215,11 +224,10 @@ if(state == 1){
 		}
 		
     with (pHitBox){
-    if (place_meeting(x,y,other.id) and player_id == other.player_id){
-
+    if (place_meeting(x,y,other.id) and player_id.url == other.player_id.url){
 		if(attack == AT_USPECIAL && (hbox_num == 1 || hbox_num == 2)){
 			//enter bubble
-		if(!player_id.special_down){
+		if(player_id.special_down = false){
 			//print("entered bubble");
 			other.state = 5;
 			other.state_timer = 0;
@@ -254,9 +262,9 @@ if(state == 1){
 						if attack == AT_DSPECIAL {
 							attack_end();
 							clear_button_buffer( PC_SPECIAL_PRESSED );
-							set_attack(AT_DSPECIAL);
-							window = 4;
-							window_timer = 0;
+							// window = 4;
+							// window_timer = 0;
+							hitstop = 4;
 							hurtboxID.sprite_index = sprite_get("dspecial_hurt");
 							destroy_hitboxes();
 						} else if attack == AT_DSPECIAL_AIR {
@@ -265,6 +273,7 @@ if(state == 1){
 							set_attack(AT_DSPECIAL_AIR);
 							window = 6;
 							window_timer = 0;
+							hitstop = 4;
 							hurtboxID.sprite_index = sprite_get("dspecialair_hurt");
 							destroy_hitboxes();							
 						}
@@ -299,7 +308,7 @@ if (state == 3){
 	if(grabbed_id != noone){
 		grabbed_id.hitstop = 2;
 		grabbed_id.hitpause = true;
-		grabbed_id.invince_time = 2;
+		grabbed_id.invince_time = 1;
 		grabbed_id.invincible = true;
 		grabbed_id.x = floor(x);
 		grabbed_id.y = floor(y)+35;
@@ -347,7 +356,7 @@ if (state == 3){
     }
 	}
 	
-	if(state_timer >= trap_lifetime) || (state_timer >= 150) {
+	if(state_timer >= trap_lifetime) || (state_timer >= 150){
     	state = 4;
     	state_timer = 0;
 	}
@@ -378,26 +387,30 @@ if (state == 3){
 if (state == 4){
 	
 	if(grabbed_id != noone){
-		grabbed_id.hitstop = 2;
-		grabbed_id.hitpause = true;
-		grabbed_id.invince_time = 2;
-		grabbed_id.invincible = true;
-		grabbed_id.x = floor(x);
-		grabbed_id.y = floor(y)+35;
+		if(state_timer = 1){
+		// grabbed_id.x = floor(x);
+		// grabbed_id.y = floor(y)+35;
 		grabbed_id.hsp = 0;
 		grabbed_id.vsp = 0;
 		grabbed_id.old_hsp = 0;
-		grabbed_id.old_vsp = -6;
+		grabbed_id.old_vsp = 0;
+		grabbed_id.hitstop = 1;
+		grabbed_id.hitpause = true;
+		grabbed_id.invince_time = 0;
+		grabbed_id.invincible = false;
+		grabbed_id.state = PS_TUMBLE;
+
 		if(grabbed_id.state = PS_DEAD || grabbed_id.state = PS_RESPAWN){
 			grabbed_id = noone;
 		}
 	}
+	}
 	
 	hsp = 0;
 	vsp = 0;
-	if state_timer == 10 {
-	with(grabbed_id){
-	set_state(PS_IDLE_AIR);
+	if state_timer == 2 {
+	if(grabbed_id = player_id){
+		player_id.move_cooldown[AT_NSPECIAL] = 120
 	}
 	//print(grabbed_id.vsp);
 	grabbed_id = -4;
@@ -413,18 +426,18 @@ if (state == 4){
 
 //#region State 5: Mau In Bubble
 if (state == 5){
-
-		player_id.x = floor(x);
-		player_id.y = floor(y)+45;
-		player_id.invince_time = 2;
-		player_id.invincible = true;
-		player_id.hsp = 0;
-		player_id.vsp = 0;
-		player_id.old_hsp = 0;
-		player_id.old_vsp = 0;
+	
+		hit_player_obj.x = floor(x);
+		hit_player_obj.y = floor(y)+45;
+		hit_player_obj.invince_time = 2;
+		hit_player_obj.invincible = true;
+		hit_player_obj.hsp = 0;
+		hit_player_obj.vsp = 0;
+		hit_player_obj.old_hsp = 0;
+		hit_player_obj.old_vsp = 0;
 	
 	if(bubble_can_move){
-		with(player_id){
+		with(hit_player_obj){
     	if(!joy_pad_idle){
             other.hsp = (lengthdir_x(1, joy_dir)*4.5);
             other.vsp = (lengthdir_y(1, joy_dir)*4.5);
@@ -436,9 +449,9 @@ if (state == 5){
         }		
 	}
 	
-	if(player_id.special_pressed){
-	player_id.window = 3;
-	player_id.window_timer = 0;
+	if(hit_player_obj.special_pressed){
+	hit_player_obj.window = 3;
+	hit_player_obj.window_timer = 0;
 	state = 6;
 	state_timer = 0;
 	}
@@ -455,23 +468,22 @@ if (state == 5){
 	}
 	
 	if(state_timer == 120){
-	player_id.window = 3;
-	player_id.window_timer = 0;
+	hit_player_obj.window = 3;
+	hit_player_obj.window_timer = 0;
 	state = 6;
 	state_timer = 0;		
 	}
-	
 	
 }
 
 //#region State 6: Mau Burst
 if (state == 6){
-	player_id.x = floor(x);
-	player_id.y = floor(y)+45;
-	player_id.hsp = 0;
-	player_id.vsp = 0;
-	player_id.old_hsp = 0;
-	player_id.old_vsp = 0;
+	hit_player_obj.x = floor(x);
+	hit_player_obj.y = floor(y)+45;
+	hit_player_obj.hsp = 0;
+	hit_player_obj.vsp = 0;
+	hit_player_obj.old_hsp = 0;
+	hit_player_obj.old_vsp = 0;
 	hsp = 0;
 	vsp = 0;
 	
@@ -489,22 +501,22 @@ if (state == 6){
 //#region State 7: Grabbed Player
 if (state == 7){
 	lifetime_timer++;
-	if(grabbed_by_mau){
-	x = player_id.x + 50*player_id.spr_dir;
-	y = player_id.y - 40;
+	if(hit_player_obj.url = player_id.url && grabbed_by_mau && (hit_player_obj.attack = AT_USPECIAL || hit_player_obj.attack = AT_FSTRONG || hit_player_obj.attack = AT_FSPECIAL) && hit_player_obj.uspecstrongfx = false){
+	x = hit_player_obj.x + 50* hit_player_obj.spr_dir;
+	y = hit_player_obj.y - 40;
 	}
 	
-	with(player_id){
+	with(hit_player_obj){
 		if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 			//uspec
 		if(attack == AT_USPECIAL){
-		if(window == 6 && window_timer == 1){
+		if(window == 5 && window_timer == 9){
 		other.grabbed_by_mau = false;
 		other.x = x - 50 * spr_dir;
 		other.y = y;
 		other.state = 1;
 		other.state_timer = 0;
-		}	
+		}
 		}
 		
 		if(attack == AT_FSPECIAL){
@@ -520,17 +532,17 @@ if (state == 7){
 		if(attack == AT_FSPECIAL_2){
 			if(window == 1 && window_timer == 8){
 		other.grabbed_by_mau = false;
-		other.x = x;
-		other.y = y-60;
+		other.x = x + 20 * spr_dir;
+		other.y = y-70;
 		other.state = 1;
 		other.state_timer = 0;
 			}if(window == 2 && window_timer == 28){
 		other.grabbed_by_mau = false;
-		other.x = x - 50 * spr_dir;
-		other.y = y-50;
+		// other.x = x - 50 * spr_dir;
+		// other.y = y-50;
 		other.state = 1;
 		other.state_timer = 0;
-			}if(window == 3 && window_timer == 11){
+			}if(window == 3 && window_timer == 8){
 		other.grabbed_by_mau = false;
 		other.state = 1;
 		other.state_timer = 0;
@@ -544,13 +556,37 @@ if (state == 7){
 		}
 
 		if(attack == AT_FSTRONG){
-		if(window == 6 && window_timer == 23){
+		if(window = 4){
+		if(other.hit_player_obj.grabbed_player_obj != noone){
+		other.hit_player_obj.grabbed_player_obj.x = other.x
+    	other.hit_player_obj.grabbed_player_obj.y = other.y + 29
+    		if other.hit_player_obj.grabbed_player_obj.free = false{
+    			other.hit_player_obj.grabbed_player_obj.y -= 5
+    		}
+		}
+		}
+		if(window == 6){
+		if(window_timer == 23 && fstrongstrongfx = false){
 		other.grabbed_by_mau = false;
-		other.x = x + 50 * spr_dir;
-		other.y = y- 40;
+		// other.x = x + 50 * spr_dir;
+		// other.y = y- 40;
 		other.state = 1;
 		other.state_timer = 0;
 		other.ignores_walls = true;
+		}
+		if (window_timer == 23){
+			sound_play(asset_get("mfx_star"))
+			var tfx = spawn_hit_fx(other.hit_player_obj.x + 25*spr_dir, other.hit_player_obj.y + 44, fstrong_gleam_vfx)
+			tfx.depth = other.hit_player_obj.depth - 1
+		}
+		if (window_timer == 49){
+		other.grabbed_by_mau = false;
+		// other.x = x + 50 * spr_dir;
+		// other.y = y- 40;
+		other.state = 1;
+		other.state_timer = 0;
+		other.ignores_walls = true;
+		}
 			}
 		}
 		
@@ -572,7 +608,7 @@ if(state == 8){
     sound_play(sound_get("dstrong_kegsplode"));
 	}
 	
-    if (state_timer == die_time){
+    if (state_timer == die_time + 14){
         player_id.killarticles = false;
         instance_destroy();
         exit;
@@ -660,16 +696,21 @@ with (oPlayer){
 	if (place_meeting(x, y, other)){
 		if (id != other.player_id){
 			if(state == PS_HITSTUN){
+				if other.player_id.grabbed_player_obj = noone{
+				if (state_timer >= 3){
 				hitstop = 2;
 				hitpause = true;
 				other.grabbed_id = self;
 				other.state = 3;
 				other.state_timer = 0;
-				other.hsp = hsp * .9;
-				other.vsp = vsp * .9;
-				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
+				other.hsp = hsp * .6;
+				other.vsp = vsp * .6;
+				other.trap_lifetime = 30 + (get_player_damage( player ) * .5);
+			}
+			}
 			}
 		} else if (id == other.player_id){
+			if (other.player_id.hitpause = false){
 			if(state == PS_HITSTUN && other.player_id.mau_hitstun_scale = true){
 				hitstop = 2;
 				hitpause = true;
@@ -678,15 +719,16 @@ with (oPlayer){
 				other.state_timer = 0;
 				other.hsp = hsp * .9;
 				other.vsp = vsp * .9;
-				other.trap_lifetime = 60 + (get_player_damage( player ) * .8);
+				other.trap_lifetime = 40;
 			}			
-		} 
+		}
+		}
 	}
 }
 #define bubble_grabbed
 
     with (pHitBox){
-    if (place_meeting(x,y,other.id) and player_id == other.player_id){
+    if (place_meeting(x,y,other.id) and player_id.url == other.player_id.url){
 
 		if(attack == AT_USPECIAL && (hbox_num == 1 || hbox_num == 2)){
 		if(player_id.special_down){
@@ -694,8 +736,9 @@ with (oPlayer){
 				other.grabbed_by_mau = true;
 				other.state = 7;
 				other.state_timer = 0;
+				other.depth = 10
 			with(player_id){
-			sound_play(sound_get("catch"));
+			sound_play(sound_get("catch"), false, noone, 0.4, 1);
 			window = 5;
 			window_timer = 0;
 			mau_grabbed_da_bubble = true;
@@ -703,19 +746,33 @@ with (oPlayer){
 			}
 			
 			}else{
+				other.depth = -5
+				other.hit_player_obj.uspecialgrabbubble = true;
 				other.grabbed_id.invince_time = 0;
 				other.grabbed_id.invincible = false;
-				other.state = 8;
-				other.state_timer = 0;	
-				sound_play(sound_get("catch"));
-				if (!instance_exists(other.player_id.grabbed_player_obj)) { other.player_id.grabbed_player_obj = other.grabbed_id; }
+				other.state = 7;
+				other.state_timer = 0;
+				other.hit_player_obj.window = 5
+				other.hit_player_obj.window_timer = 0
+				sound_play(sound_get("catch"), false, noone, 0.4, 1);
+				if (!instance_exists(other.hit_player_obj.grabbed_player_obj)) { other.hit_player_obj.grabbed_player_obj = other.grabbed_id; }
 				with(player_id){
 				destroy_hitboxes();
 				}
 			}
 			}
 		}
-		
+		if(attack == AT_USPECIAL && hbox_num = 5){
+				other.depth = -10
+				if (other.grabbed_id != noone){
+				// print_debug("yehhha")
+				other.state = 8;
+				other.state_timer = 0;
+				other.grabbed_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*6))
+				other.hit_player_obj.hsp = 0;
+				other.hit_player_obj.vsp = 0;
+		}
+		}
 		if(attack == AT_FSPECIAL){
 			if(other.grabbed_id == noone){
 				other.grabbed_by_mau = true;
@@ -726,41 +783,66 @@ with (oPlayer){
 			mau_grabbed_da_bubble = true;
 			destroy_hitboxes();
 			}
-			
 			}else{
+				other.hit_player_obj.fspecialgrabbubble = true;
+				other.hit_player_obj.mau_grabbed_da_bubble = true;
 				other.grabbed_id.invince_time = 0;
 				other.grabbed_id.invincible = false;
-				other.state = 8;
-				other.state_timer = 0;	
-				if (!instance_exists(other.player_id.grabbed_player_obj)) { other.player_id.grabbed_player_obj = other.grabbed_id; }
+				other.state = 7;
+				other.state_timer = 0;
+				if (!instance_exists(other.hit_player_obj.grabbed_player_obj)) { other.hit_player_obj.grabbed_player_obj = other.grabbed_id; }
 				with(player_id){
 				destroy_hitboxes();
 				}
 			}
 		}
-		
+		if (attack == AT_FSPECIAL_2){
+			if (other.grabbed_id != noone){
+				sound_play(asset_get("sfx_poison_hit_strong"), false, noone, 0.7, 1);
+				other.state = 8;
+				other.state_timer = 0;
+				other.grabbed_id.hitstop_full = ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*5) + 10)
+				other.hit_player_obj.fspec2hit = true;
+		}else{
+				if (other.grabbed_id = noone){
+				other.hit_player_obj.move_cooldown[AT_FSPECIAL] = 999;
+				other.hit_player_obj.has_hit = false;
+		}
+		}
+		}
 		if(attack == AT_FSTRONG && hbox_num == 1){
 			if(other.grabbed_id == noone){
 				other.grabbed_by_mau = true;
 				other.state = 7;
 				other.state_timer = 0;
 			with(player_id){
-			sound_play(sound_get("catch"));
+			sound_play(sound_get("catch"), false, noone, 0.4, 1);
 			mau_grabbed_da_bubble = true;
 			destroy_hitboxes();
 			}
 			
 			}else{
-				other.grabbed_id.invince_time = 0;
-				other.grabbed_id.invincible = false;
-				other.state = 8;
-				other.state_timer = 0;	
-				if (!instance_exists(other.player_id.grabbed_player_obj)) { other.player_id.grabbed_player_obj = other.grabbed_id; }
+				other.hit_player_obj.fstronggrabbubble = true;
+				other.hit_player_obj.invince_time = 0;
+				other.hit_player_obj.invincible = false;
+				other.grabbed_id.can_tech = false;
+				other.hit_player_obj.grabbed_player_obj = other.grabbed_id
+				other.hit_player_obj.grabbed_player_obj.x = other.x + 1*other.spr_dir
+    			other.hit_player_obj.grabbed_player_obj.y = other.y + 35
+				other.state = 7;
+				other.state_timer = 0;
+				if (!instance_exists(other.hit_player_obj.grabbed_player_obj)) { other.hit_player_obj.grabbed_player_obj = other.grabbed_id; }
 				with(player_id){
 				destroy_hitboxes();
 				}
 			}
 		}		
-		
+		if(attack == AT_FSTRONG && hbox_num == 2){
+				if (other.grabbed_id != noone){
+				other.state = 8;
+				other.state_timer = 0;
+				other.grabbed_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*2) + 2)
 		}
 	}
+    }
+    }

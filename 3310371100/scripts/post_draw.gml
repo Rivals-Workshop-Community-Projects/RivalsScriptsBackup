@@ -33,6 +33,22 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v1.9 - (2024/10/01)"
+		patch_note_text[i++] = 
+		"===v1.9===
+		---changes---
+		:: alt color Sorbet moved somewhere else
+		:: in its place, we have the Seasonal alt now
+
+		---fixes---
+		:: fixed an issue where FSPECIAL land-cancelling didnt work
+		:: fixed an issue where after playing certain characters, usher's alt list might look... Broken
+
+		---notes---
+		i wanted to put changes on FSPECIAL landcancelling but
+		currently usher is in an online majors roster so it's in a patch lockout. hold on tight! im also busy and also want to rest"
+		
+		
 		patch_note_title[i] = "v1.8 - (2024/08/28)"
 		patch_note_text[i++] = 
 		"===v1.8===

@@ -221,20 +221,19 @@ if attack == AT_FSPECIAL {
         vsp = -4
         hsp = -4 * spr_dir
     }
-    
+    if window == 1 && window_timer < 15{
+    	ink -= 1
+    }
     if window == 2 && window_timer == 4{
+    	ink -= 35
         sound_play(asset_get("sfx_orca_absorb")) 
-        if inkshield < 0 {
-            create_hitbox(AT_FSPECIAL , 3 , x + 20*spr_dir , y - 36  );
-        } else {
-        	inkshield = 0
-            sound_play(sound_get("SpaceCut")) 
-            spawn_hit_fx(x, y - 32, 304)
-            create_hitbox(AT_FSPECIAL , 4 , x + 20*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 5 , x + 20*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 6 , x + 20*spr_dir , y - 36  );
+        if !special_down{
+        create_hitbox(AT_FSPECIAL , 3 , x + 20*spr_dir , y - 36  );
+        }else{
+        create_hitbox(AT_FSPECIAL , 4 , x + 20*spr_dir , y - 36  );
+        create_hitbox(AT_FSPECIAL , 5 , x + 20*spr_dir , y - 36  );
+        create_hitbox(AT_FSPECIAL , 6 , x + 20*spr_dir , y - 36  );
         }
-
     }
 }
 
@@ -279,31 +278,26 @@ if attack == AT_USPECIAL {
     if window == 3 && window_timer == 6 {
     	    hsp = (state_timer - 90)/-4
             vsp = -12
-           if !inkshield {
             set_state (PS_PRATFALL)
-           } else {
-           	inkshield = 0
-           
-           }
     }
 }
 
 if attack == AT_DSPECIAL {
     djumps = 0
-//    if taunt_pressed && ink >= 300 && !free{
-//    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
-//    	set_attack (AT_FSPECIAL)
-//    	window = 2
-//    	window_timer = 4
-//    	shake_camera(6,12)
-//    	sound_play(sound_get("counterhit")) 	
-//    	sound_play(asset_get("sfx_bird_downspecial")) 
-//    	sound_play(asset_get("sfx_orca_absorb")) 
-//    	spawn_hit_fx(x,y - 30,306)
-//    	spawn_hit_fx(x,y - 30,305)
-//    	ink = 0
-//    	x -= 40*spr_dir
-//    }
+    // if taunt_pressed && ink >= 300 && !free{
+    // 	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
+    // 	set_attack (AT_FSPECIAL)
+    // 	window = 2
+    // 	window_timer = 4
+    // 	shake_camera(6,12)
+    // 	sound_play(sound_get("counterhit")) 	
+    // 	sound_play(asset_get("sfx_bird_downspecial")) 
+    // 	sound_play(asset_get("sfx_orca_absorb")) 
+    // 	spawn_hit_fx(x,y - 30,306)
+    // 	spawn_hit_fx(x,y - 30,305)
+    // 	ink = 0
+    // 	x -= 40*spr_dir
+    // }
         if joy_dir < 45 || joy_dir >= 315 {
             summon = 0
         }
@@ -330,14 +324,13 @@ if attack == AT_DSPECIAL {
         }
         
     if window == 1 && window_timer == 10 && free {
-        set_state (PS_PRATFALL)
+        set_state (PS_IDLE)
         spawn_hit_fx (x, y + 4, i1)
         vsp = 100
         spawn_hit_fx (x, y + 4, i2)
+        move_cooldown[AT_DSPECIAL] = 5
         sound_play(asset_get("sfx_ori_bash_use"))
-        visible = false
         sound_stop(asset_get("sfx_ori_grenade_aim"))
-        prat_land_time = 3
     }
     
     if window == 1 && window_timer == 1 && !free {

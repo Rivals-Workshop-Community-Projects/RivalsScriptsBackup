@@ -111,6 +111,7 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //attack flurry 2
 set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 1);
@@ -122,6 +123,7 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 32);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -36);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //last attack
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);

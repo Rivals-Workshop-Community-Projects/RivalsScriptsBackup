@@ -35,7 +35,7 @@ dash_stop_time      = 4;		// 4    -  6        zetterburn's is 4
 dash_stop_percent   = 0.4;		// 0.25 -  0.5
 ground_friction     = 0.6;		// 0.3  -  1
 moonwalk_accel      = 1.3;		// 1.2  -  1.4
-    
+
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
@@ -71,7 +71,8 @@ wave_land_adj       = 1.2;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;		// 7.5  -  8
 techroll_speed      = 10;		// 8    -  11
 
-
+small_sprites = true;
+big_hurtbox = true;
 
 // Character-specific assets init
 
@@ -133,7 +134,7 @@ engi_muted = false;
 hue_offset = 0;
 hue_speed = 1; //change this to change the speed of the hueshift
 color_timer = 0;
-color_phase = 0;
+// color_phase = 0;
 
 //final smash
 fs_char_portrait_y = 60;
@@ -243,6 +244,14 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+miiverse_post = sprite_get("miiverse_engi"); 
+knight_compat_dream = 
+    [
+        "That bug is a spy!",
+        "Best not to kick the Hornet's nest, son.",
+        "I guess I haven't worked out all the bugs yet."
+    ]
 
 //Dracula support
 dracula_portrait = sprite_get("dracula_portrait");

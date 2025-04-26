@@ -12,27 +12,27 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("nspecial_charge"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
 
 //Level 1 (Hold)
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 //Level 2 (Hold)
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //Level 3 (Hold)
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //Level 4 (Hold)
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 
 //Level 5 (Hold)
-set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_GOTO, 12);

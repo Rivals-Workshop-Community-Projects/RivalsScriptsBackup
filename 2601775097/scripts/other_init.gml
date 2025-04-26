@@ -5,9 +5,12 @@
 holyburning = false;
 holyburner_id = noone;
 holyburn_timer = 0;
+holyburn_tick = 30;
 
 lightstunner_id = noone;
 lightstun_type = 0; //0 = not lightstunned | 1 = pre-lightstun timer | 2 = frozen
 lightstun_timer = 0;
 
 outline_check = outline_color;
+
+fury_power_smash_ticks = false;

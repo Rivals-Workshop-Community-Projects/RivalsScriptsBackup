@@ -56,4 +56,5 @@ set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_AIR_FRICTION, 0);
+set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DESTROY_EFFECT, rock_break);

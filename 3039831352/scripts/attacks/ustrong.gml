@@ -10,6 +10,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.5);
 
 window_num ++; //charge window
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 1);
@@ -17,6 +18,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.3);
 
 window_num ++; //shoot up windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);

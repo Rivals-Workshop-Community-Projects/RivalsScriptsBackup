@@ -16,10 +16,10 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG, 2);
 

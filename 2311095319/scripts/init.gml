@@ -18,6 +18,24 @@ normal_voiced_toggle = 0;
 
 deathvoiceline = 0
 
+// intro
+playerNumDiff = (3 * (player - 1));
+intro_pipe_leave = hit_fx_create(sprite_get("intro_pipe_leave"), 14);
+
+introTimer = -16 - playerNumDiff;
+introTimer2 = 0;
+stupidIntroJumpVariable = -20;
+stupidJumpGravityThing = -25;
+introShouldPlayPipeLeavingThingy = 0;
+
+//print("player NUM: " + string(player) + ", uh erm introTimer init: " + string(introTimer));
+
+theIntroFakeGravityValue = -15;
+theIntroFakeGravManip = 0;
+theIntroFakeVerticalPartStuff = 10;
+theIntroOtherTimer = 0;
+theIntroWhichPartAmIOn = 0;
+
 voicelinework = 0
 
 playedVoiceClip = noone;
@@ -187,6 +205,7 @@ sfx_hammer_swing = sound_get("sfx_hammer_swing");
 sfx_jump = sound_get("sfx_jump");
 sfx_land = sound_get("sfx_land");
 sfx_landing_lag = sound_get("sfx_landing_lag");
+sfx_mario_intro = sound_get("sfx_mario_intro");
 sfx_mario_fireball = sound_get("sfx_mario_fireball");
 sfx_mario_fireball_big = sound_get("sfx_mario_fireball_big");
 sfx_mario_fireball_charge = sound_get("sfx_mario_fireball_charge");
@@ -213,19 +232,32 @@ vc_mario_attack_5 = sound_get("vc_mario_attack_5");
 vc_mario_attack_6 = sound_get("vc_mario_attack_6");
 vc_mario_attack_7 = sound_get("vc_mario_attack_7");
 vc_mario_attack_8 = sound_get("vc_mario_attack_8");
+vc_mario_attack_9 = sound_get("vc_mario_attack_9");
 vc_mario_doh = sound_get("vc_mario_doh");
-vc_mario_doublejump = sound_get("vc_mario_doublejump");
+vc_mario_doublejump_1 = sound_get("vc_mario_doublejump_1");
+vc_mario_doublejump_2 = sound_get("vc_mario_doublejump_2");
+vc_mario_doublejump_3 = sound_get("vc_mario_doublejump_3");
+vc_mario_fantastico = sound_get("vc_mario_fantastico");
 vc_mario_grunt = sound_get("vc_mario_grunt");
 vc_mario_haha = sound_get("vc_mario_haha");
 vc_mario_herewego = sound_get("vc_mario_herewego");
 vc_mario_hooh = sound_get("vc_mario_hooh");
+vc_mario_hurt_1 = sound_get("vc_mario_hurt_1");
+vc_mario_hurt_2 = sound_get("vc_mario_hurt_2");
+vc_mario_hurt_3 = sound_get("vc_mario_hurt_3");
+vc_mario_hurt_4 = sound_get("vc_mario_hurt_4");
+vc_mario_i_got_it = sound_get("vc_mario_i_got_it");
 vc_mario_itsame = sound_get("vc_mario_itsame");
 vc_mario_jump_1 = sound_get("vc_mario_jump_1");
 vc_mario_jump_2 = sound_get("vc_mario_jump_2");
 vc_mario_jump_3 = sound_get("vc_mario_jump_3");
+vc_mario_jump_4 = sound_get("vc_mario_jump_4");
+vc_mario_mamma_mia = sound_get("vc_mario_mamma_mia");
 vc_mario_letsago = sound_get("cssvoice");
 vc_mario_oh = sound_get("vc_mario_oh");
+vc_mario_ohno = sound_get("vc_mario_ohno");
 vc_mario_ohyeah = sound_get("vc_mario_ohyeah");
+vc_mario_ohyeah_2 = sound_get("vc_mario_ohyeah_2");
 vc_mario_ooaah = sound_get("vc_mario_ooaah");
 vc_mario_oof = sound_get("vc_mario_oof");
 vc_mario_sleep1 = sound_get("vc_mario_sleep1");
@@ -234,6 +266,7 @@ vc_mario_starko = sound_get("vc_mario_starko");
 vc_mario_strong_1 = sound_get("vc_mario_strong_1");
 vc_mario_strong_2 = sound_get("vc_mario_strong_2");
 vc_mario_strong_3 = sound_get("vc_mario_strong_3");
+vc_mario_strong_4 = sound_get("vc_mario_strong_4");
 vc_mario_strong_charge_1 = sound_get("vc_mario_strong_charge_1");
 vc_mario_tired = sound_get("vc_mario_tired");
 vc_mario_uhh = sound_get("vc_mario_uhh");
@@ -241,6 +274,7 @@ vc_mario_wah = sound_get("vc_mario_wah");
 vc_mario_wahah = sound_get("vc_mario_wahah");
 vc_mario_wahoo_1 = sound_get("vc_mario_wahoo_1");
 vc_mario_wahoo_2 = sound_get("vc_mario_wahoo_2");
+vc_mario_wahoo_3 = sound_get("vc_mario_wahoo_3");
 vc_mario_woah = sound_get("vc_mario_woah");
 vc_mario_yah = sound_get("vc_mario_yah");
 vc_mario_yah_short = sound_get("vc_mario_yah_short");
@@ -270,9 +304,9 @@ bubble_y = 8;
 //Victory Themes
 if (get_player_color( player ) == 4){
 	set_victory_theme(sound_get("victory_galaxy"));
-} else if (get_player_color( player ) == 15){
+} else if (get_player_color( player ) == 29){
 	set_victory_theme(sound_get("victory_smb3"));
-} else if (get_player_color( player ) == 27){
+} else if (get_player_color( player ) == 28){
 	set_victory_theme(sound_get("victory_retro"));
 } else {
 	set_victory_theme(sound_get("victory"));
@@ -281,10 +315,10 @@ if (get_player_color( player ) == 4){
 
 
 //Is Shadow Mario?
-if (get_player_color( player ) == 11 || get_player_color( player ) == 23){
-	shadowmario = true
+if (get_player_color( player ) == 12 || get_player_color( player ) == 25){
+	shadowmario = true;
 } else {
-	shadowmario = false
+	shadowmario = false;
 }
 
 //Compatability

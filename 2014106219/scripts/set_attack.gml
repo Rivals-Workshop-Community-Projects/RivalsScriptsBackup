@@ -21,6 +21,6 @@ if (attack == AT_TAUNT_2) {
 	}
 }
 
-if (attack == AT_FSPECIAL && (ballOut || ballDown > 0) ) {
+if (attack == AT_FSPECIAL && (boomerOut || boomerDown > 0) ) {
 	attack = AT_FSPECIAL_AIR;
 	}

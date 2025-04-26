@@ -257,6 +257,13 @@ if (color_desc_activate){
 
 
 
+/*//beta display
+draw_set_alpha(0.7);
+draw_rectangle_color(temp_x + 2, temp_y + 109, temp_x + 204, temp_y + 126, c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+textDraw(temp_x + 6, temp_y + 112, "fName", c_teal, 0, 1000, 1, true, 1, "  beta v.h");*/
+
+
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.
 //--- ---

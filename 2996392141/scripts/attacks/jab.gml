@@ -11,6 +11,7 @@ set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED, 3);
 
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
@@ -29,12 +30,14 @@ set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_JAB, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 8);
+set_window_value(AT_JAB, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 6);
 
 set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAMES, 1);
@@ -42,16 +45,19 @@ set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_JAB, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_JAB, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, 6);
 
 set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAME_START, 14);
-set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_JAB, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, 7);
 
 set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_JAB, 9, AG_WINDOW_GOTO, 12);
+set_window_value(AT_JAB, 9, AG_WINDOW_CUSTOM_GROUND_FRICTION, 6);
 set_window_value(AT_JAB, 9, AG_WINDOW_TENSION_WHIFF_PENALTY, 3);
 
 set_window_value(AT_JAB, 10, AG_WINDOW_LENGTH, 5);
@@ -60,7 +66,7 @@ set_window_value(AT_JAB, 10, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_JAB, 10, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 10, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_JAB, 10, AG_WINDOW_SFX_FRAME, 4);
-set_window_value(AT_JAB, 10, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_JAB, 10, AG_WINDOW_HSPEED, 6);
 
 set_window_value(AT_JAB, 11, AG_WINDOW_TYPE, 9);
 set_window_value(AT_JAB, 11, AG_WINDOW_LENGTH, 8);

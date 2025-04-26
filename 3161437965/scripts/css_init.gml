@@ -31,22 +31,23 @@ alt_name[11] = "Scientist";
 alt_name[12] = "Host";
 alt_name[13] = "Shopkeep";
 alt_name[14] = "King";
-alt_name[15] = "Dreamer";
-alt_name[16] = "Memory";
-alt_name[17] = "Login";
-alt_name[18] = "Fallen";
-alt_name[19] = "X-Event";
-alt_name[20] = "Dark Hero";
-alt_name[21] = "Hikikomori";
-alt_name[22] = "Infernal";
-alt_name[23] = "Theory";
-alt_name[24] = "Story of Undertale";
-alt_name[25] = "Curse";
-alt_name[26] = "TKS";
-alt_name[27] = "BLW";
-alt_name[28] = "VAE";
-alt_name[29] = "Abyss";
-alt_name[30] = "Early Access";
+alt_name[15] = "Memory";
+alt_name[16] = "Login";
+alt_name[17] = "Fallen";
+alt_name[18] = "X-Event";
+alt_name[19] = "Dark Hero";
+alt_name[20] = "Hikikomori";
+alt_name[21] = "Infernal";
+alt_name[22] = "Theory";
+alt_name[23] = "Story of Undertale";
+alt_name[24] = "Curse";
+alt_name[25] = "TKS";
+alt_name[26] = "BLW";
+alt_name[27] = "VAE";
+alt_name[28] = "Abyss";
+alt_name[29] = "Early Access";
+alt_name[30] = "Khepri";
+alt_name[31] = "-9 Lives";
 
 alt_cur = 0; //checks current alt
 alt_prev = 0; //checks previous alt
@@ -66,17 +67,29 @@ preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprit
 
 //css button stuff
 cur_skin = 0; //0 = default, 1 = frisk
+voiced = 0; //0 = disabled, 1 = enabled
 skin_but_state = 0; //0 = normal | 1 = hover | 2 = press
+voice_but_state = 0; //0 = normal | 1 = hover | 2 = press
 press_delay = 0;
 
 skin_but_x = 150;
 skin_but_y = 100;
+
+voice_but_x = 180;
+voice_but_y = 70;
 
 skin_but_pos = [
     x + skin_but_x,
     y + skin_but_y,
     x + skin_but_x + sprite_get_width(sprite_get("css_altswitch")),
     y + skin_but_y + sprite_get_height(sprite_get("css_altswitch"))
+];
+
+voice_but_pos = [
+    x + voice_but_x,
+    y + voice_but_y,
+    x + voice_but_x + sprite_get_width(sprite_get("css_button")),
+    y + voice_but_y + sprite_get_height(sprite_get("css_button"))
 ];
 
 
@@ -95,9 +108,43 @@ y = floor(y);
 plate_bounds = [x,y,x+219,y+207];
 portrait_bounds = [x+10,y+10,x+210,y+151];
 
-
+//
+voice_sound = noone;
 
 //save data
+//FORMAT (1, voice_enabled, current_alt)
 var p_check = (room == 114) ? 0 : self.player;
-if (get_synced_var(p_check) > 1) set_synced_var(p_check, 0);
-cur_skin = get_synced_var(p_check);
+
+preset_sync_var();
+
+format_sync_var(splice_sync_var(2), splice_sync_var(3));
+
+cur_skin = splice_sync_var(2);
+voiced = splice_sync_var(3);
+
+// if (get_synced_var(p_check) > 1) set_synced_var(p_check, 0);
+
+#define splice_sync_var
+var index = argument0;
+// 2 is SKIN, 3 is VOICE
+var p_check = (room == 114) ? 0 : self.player;
+return real(string_char_at(string(get_synced_var(p_check)), index));
+
+#define preset_sync_var
+var p_check = (room == 114) ? 0 : self.player;
+var sync_string = string(get_synced_var(p_check));
+if(string_length(sync_string) != 3){
+    set_synced_var(p_check, 100);
+}
+
+#define format_sync_var
+var alt = argument0, voice = argument1;
+var p_check = (room == 114) ? 0 : self.player;
+var sync_string = string(get_synced_var(p_check));
+var new_sync = "1";
+var i = 2;
+repeat(2){
+    new_sync = new_sync + (real(string_char_at(sync_string, i)) > 1 ? "0" : (i == 2 ? string(alt) : string(voice)));
+    i += 1;
+}
+set_synced_var(p_check, real(new_sync));

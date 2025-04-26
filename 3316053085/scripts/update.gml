@@ -11,7 +11,6 @@ hbox_view = get_match_setting(SET_HITBOX_VIS);
 if (is_attacking)
 {
     window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
-    window_last = get_attack_value(attack, AG_NUM_WINDOWS);
     window_cancel_time = get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
 
     if (attack == AT_USPECIAL)
@@ -70,11 +69,12 @@ else
 
     if (dattack_can_bounce > 0) dattack_can_bounce = 0;
     if (air_hit_bounce_rune) air_attack_prev = -1;
+
+    if (same_pos_time > 0) same_pos_time = 0;
 }
 
 //play intro
 if (game_time == 4 && ("halloween_costume" not in self || !halloween_costume)) set_attack(AT_INTRO);
-
 
 //////////////////////////////////////////////////////// CHARACTER SPECIFIC UPDATE /////////////////////////////////////////////////////////
 
@@ -147,12 +147,23 @@ else
 //nspec aim cancel
 if ((!is_attacking || attack != AT_NSPECIAL) && nspec_aiming) nspec_aiming = false;
 
-//fspec
 move_cooldown[AT_FSPECIAL] = (!can_fspec) + 1;
+move_cooldown[AT_USPECIAL] = (!can_uspec) + 1;
+
+//fspec
 if (!is_attacking || attack != AT_FSPECIAL)
 {
     on_rune = noone;
     if (!can_fspec && (!free || state == PS_WALL_JUMP && state_timer == 1)) can_fspec = true;
+
+    if ("url" in self && url != "3316053085" && url != "3160108357")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=3316053085"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=3316053085";
+    }
 }
 if (fspec_leap_limit > 0 && !free) fspec_leap_limit = 0; //when venus touches the ground her fspec limit resets
 
@@ -200,6 +211,8 @@ if (can_overdrive > 0)
         var fs_hsv = make_color_hsv(fs_hue, color_get_saturation(fs_meter_color_rgb), color_get_value(fs_meter_color_rgb));
 
         od_color_const = fs_hsv;
+
+        if (get_match_setting(SET_PRACTICE) && od_cur < od_max && taunt_down && shield_down) od_cur = od_max;
     }
     
     //visual stuff
@@ -277,7 +290,7 @@ with (pHitBox) if (orig_player == other.player)
     if (hit_effect == other.fx_hit_small || hit_effect == other.fx_hit_medium || hit_effect == other.fx_hit_big) fx_particles = 6;
     if (hit_effect == other.fx_light_hit1 || hit_effect == other.fx_light_hit2 || hit_effect == other.fx_light_hit3) fx_particles = 1;
 }
-with (hit_fx_obj) if (player == other.player) //special hit effects
+with (hit_fx_obj) if (player == other.player && "hit_fx" in self) //special hit effects
 {
     if ("spawned_effects" not in self) //there HAS to be a better way to do this
     {
@@ -344,6 +357,36 @@ with (hit_fx_obj) if (player == other.player) //special hit effects
 
     if (hit_fx == other.fx_light_follow && other.attack == other.AT_INTRO && other.is_attacking) hit_length = 24;
 
+    if (hit_fx == other.fx_lightstun_arrow && "detect_id" in self)
+    {
+        if (detect_id.hitpause && step_timer <= 7)
+        {
+            detect_id.x = lerp(detect_id.x, x, 0.2);
+            detect_id.y = lerp(detect_id.y, y+detect_id.char_height/1.75, 0.2);
+            if (step_timer >= 6)
+            {
+                step_timer = 6;
+                if (detect_id.hitstop == detect_id.hitstop_full) step_timer = hit_length;
+            }
+        }
+        else if (step_timer == 7) with (other)
+        {
+            sound_play(asset_get("sfx_ori_bash_launch"));
+            var temp_fx = spawn_hit_fx(other.x, other.y, fx_lightstun_blast); //add a hit fx
+            temp_fx.draw_angle = other.draw_angle + 22;
+            temp_fx.spr_dir = 1;
+        }
+    }
+    if (hit_fx == other.fx_lightstunned)
+    {
+        draw_angle += 5;
+        if (instance_exists(arrow_fx) && arrow_fx.step_timer <= 7)
+        {
+            if (step_timer == hit_length-1) step_timer = 0;
+        }
+        else step_timer = hit_length;
+    }
+
     if (hit_fx == other.fx_od_sparkles)
     {
         var dir = point_direction(other.x, other.y - floor(other.char_height/1.75), x, y);
@@ -351,7 +394,6 @@ with (hit_fx_obj) if (player == other.player) //special hit effects
         hsp = lengthdir_x(speed, dir);
         vsp = lengthdir_y(speed, dir);
     }
-
     if (hit_fx == other.fx_od_part)
     {
         if (other.is_attacking && other.attack == other.AT_OVERDRIVE && other.window <= 3)
@@ -368,7 +410,6 @@ with (hit_fx_obj) if (player == other.player) //special hit effects
         }
         depth = other.depth + move_dir;
     }
-
     if (hit_fx == other.fx_od_finalhit)
     {
         real_vfx_pause();
@@ -482,7 +523,7 @@ if (!s_alt)
             static_colorO[7*4+2] = colorO[7*4+2];
         }
     }
-    if (alt_cur == 27 && game_time % 7 == 0 && point_distance(0, 0, hsp, vsp) > 2.5 && visible) //ASHe alt particles
+    if (alt_cur == 28 && game_time % 7 == 0 && point_distance(0, 0, hsp, vsp) > 2.5 && visible) //ASHe alt particles
     {
         var fx = spawn_hit_fx(
             x + draw_x + (random_func(0, 8, false) - 4)*8,

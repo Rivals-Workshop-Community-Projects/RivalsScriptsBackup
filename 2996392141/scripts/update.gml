@@ -72,12 +72,14 @@ if (move_cooldown[AT_FSPECIAL] > 12 && !free) {
 
 //Debug
 if (!in_battle) {
-	if (taunt_pressed && shield_down) {
-		clear_button_buffer(PC_TAUNT_PRESSED);
+	if (taunt_pressed && shield_down && taunt_buffer == 0) {
 		sound_play(asset_get("mfx_forward"));
 		tension_amount = (tension_level+1) * TENSION_LEVEL_THRESHOLD;
 		tension_amount %= TENSION_MAX + 1;
+		taunt_buffer = 10;
 	}
+	
+	if (taunt_buffer > 0) taunt_buffer--;
 }
 
 //Update tension

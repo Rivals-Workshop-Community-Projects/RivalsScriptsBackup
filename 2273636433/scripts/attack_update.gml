@@ -126,12 +126,20 @@ if attack == AT_DAIR && has_hit{
 if attack == AT_NSPECIAL {			//PILL LOGIC
 	if window == 2 && window_timer == 1 && !hitpause{
 		if !((has_rune("A"))){ pill++; }								//RUNE LOGIC
+		if !free {
+			spawn_dust_fx( x +12*spr_dir, y, asset_get("fx_skid_fg"), 14 );
+			dust_draw = 1
+		}
 	}
-	
+
 	if window ==2 || window == 3{	
 		if !(has_rune("I")){									//RUNE LOGIC
 			move_cooldown[AT_NSPECIAL] = 40;
 			move_cooldown[AT_TAUNT] = 40;
+		}
+		if !free && dust_draw == 0{
+			spawn_dust_fx( x +6*spr_dir, y, asset_get("fx_land_fg"), 12 );
+			dust_draw = 1;
 		}
 	}
 }
@@ -139,11 +147,17 @@ if attack == AT_NSPECIAL {			//PILL LOGIC
 
 ///DOCTOR TORNADO	
 if(attack==AT_DSPECIAL){	
-	can_fast_fall = false;		
+	can_fast_fall = false;
+	move_cooldown[AT_DSPECIAL]=4;	
 	if (window == 1) {
 		counter = 0;
 		set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
 		set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 1);
+		if vsp >2 {
+			vsp*=0.8;
+		} else {
+			vsp*=0.95;
+		}
 	}
 	if(window==2)||(window ==3){
 		
@@ -153,20 +167,26 @@ if(attack==AT_DSPECIAL){
 			counter=counter+1;
 		}
 		if counter > 0 	{	set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);}
-		if counter >1 { set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 3); set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 6);}
+		if counter >1 { set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 3); set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 5.5);}
 		if(counter>2|| was_parried) && window == 2{ 
 			counter=0;
 			window=3; 
 			window_timer=0;
 		}
+		//Height Logic
 		if(!was_parried){
 			if(special_pressed)&&(!hitpause) {
-				vsp=-2.75 -has_rune("L")+ cyclone*1.5;
+				vsp-=1.75;
+				//vsp=-2.75 -has_rune("L")+ cyclone*1.5;
 			} else if (special_down)&&(!hitpause){
-				vsp=-2.25 -has_rune("L") + cyclone*1.5;			
+				vsp-=1.5;
+				//vsp=-2.25 -has_rune("L") + cyclone*1.5;			
 			}else {
-				vsp= vsp + 0.5 + down_hard_pressed;	
+				vsp+= 0.75 + down_hard_pressed;	
 				if (vsp >(1.5+cyclone*3+ down_hard_pressed)) { vsp = 1.5 + +cyclone*3+ down_hard_pressed;}
+			}
+			if vsp < (-2.75 -has_rune("L")+ cyclone*1.5){
+				vsp = -2.75 -has_rune("L")+ cyclone*1.5;
 			}
 		}
 	
@@ -178,8 +198,15 @@ if(attack==AT_DSPECIAL){
 
 	}
 
+	if window == 3{
+		if !free && dust_draw == 0{
+			spawn_dust_fx( x +2*spr_dir, y, asset_get("fx_land_bg"), 18 );
+			dust_draw = 1;
+		}
+	}
+
 	if window == 3 && window_timer ==6 && free && !hitpause &&!was_parried{
-		vsp-=3;
+		vsp-=2.5;
 	}
 
 	if window == 4 && window_timer ==1{
@@ -187,6 +214,10 @@ if(attack==AT_DSPECIAL){
 	}
 	if window == 4{
 		can_move = false;
+		if !free && dust_draw == 0{
+			spawn_dust_fx( x +2*spr_dir, y, asset_get("fx_land_bg"), 16);
+			dust_draw = 1;
+		}
 		if vsp >5.5 {
 			vsp = 5.5;
 		}
@@ -240,7 +271,7 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 		with (asset_get("pHitBox")){					//From the perspective of the hitbox
 			if type == 2 && other.player !=  player {		//Not my own projectile / not the same
 				if (abs (x -  (other.x + 45*other.spr_dir)) <=52 ) && (abs (y -  (other.y - 34)) <=40 ) && hitstun_factor!= -1 {		//detectiong
-					if hit_priority !=  (0) && hit_priority !=  (-1) {			//THE CHEAT
+					if hit_priority !=  (0) && hit_priority !=  (-1)  {			//THE CHEAT
 					
 						//CHECK IF ARTICLES EXIST IN THE SAME PLACE AS THE HITBOX
 						hit_check = noone;

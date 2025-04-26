@@ -28,6 +28,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);

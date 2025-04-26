@@ -156,14 +156,18 @@ switch attack {
     //#region NSpecial ---------------------------------------------------------
     
     case AT_NSPECIAL_2 :
+        move_cooldown[AT_NSPECIAL_2] = 30
+        move_cooldown[AT_NSPECIAL_AIR] = 30
         if window == 4 {
-            if has_hit && window_timer >= 6 {
+            if has_hit && window_timer >= 15 && adrenaline_timer > 0 {
                 iasa_script();
             }
         }
         break;
         
     case AT_NSPECIAL_AIR :
+        move_cooldown[AT_NSPECIAL_2] = 30
+        move_cooldown[AT_NSPECIAL_AIR] = 30
         if window <= 3 {
         can_fast_fall = false
         } else {

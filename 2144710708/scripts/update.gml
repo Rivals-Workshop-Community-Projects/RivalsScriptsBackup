@@ -1,5 +1,17 @@
 // the dreaded... UPDATE AHHHH
 
+// tell boot to not hit people for 60 frames if you galaxied someone
+if (hit_player_obj != noone && hit_player_obj.activated_kill_effect) {
+	//print_debug("boot galaxy prevention active");
+	boot_save_from_galaxy_prevention = 60;
+}
+// counts down a 60 second timer
+if (boot_save_from_galaxy_prevention > 0) {
+	boot_save_from_galaxy_prevention--;
+}
+
+
+
 //super_armor = true;
 //take_damage( player, player, -99 );
 

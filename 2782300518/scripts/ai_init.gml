@@ -94,3 +94,4 @@ DACUS_timer = 0
 can_DACUS = false;
 
 win_taunt = false;
+hold_taunt = false;

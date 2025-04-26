@@ -36,7 +36,7 @@ if (attack==AT_DSPECIAL){
 						}
 					}
 				}
-		dsp_speed = 2.5;//2
+		dsp_speed = 3;//2
 		dsp_angle_str = proj_angle
 			dsp_angle_move = dsp_angle_str / 180 * -3.14; //45)*45)/180
 		hsp = (dsp_speed * cos(dsp_angle_move));

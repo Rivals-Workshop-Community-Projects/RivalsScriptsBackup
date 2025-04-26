@@ -11,7 +11,7 @@ set_window_value(AT_TAUNT_2, 1, AG_WINDOW_LENGTH, 50);
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, sound_get("IVE_LET_YOU_LIVE_LONG_ENOUGH"));
+set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, sound_get("Charge_Loop"));
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX_FRAME, 30);
 
 set_window_value(AT_TAUNT_2, 2, AG_WINDOW_TYPE, 1); //Flying upwards
@@ -32,7 +32,7 @@ set_window_value(AT_TAUNT_2, 3, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_SFX_FRAME, 55);
-set_window_value(AT_TAUNT_2, 3, AG_WINDOW_SFX, sound_get("ARC_BTL_CMN_ChargeGod_Start"));
+set_window_value(AT_TAUNT_2, 3, AG_WINDOW_SFX, sound_get("mvcsuperflash"));
 
 set_window_value(AT_TAUNT_2, 4, AG_WINDOW_TYPE, 10); //Transformed
 set_window_value(AT_TAUNT_2, 4, AG_WINDOW_LENGTH, 90);

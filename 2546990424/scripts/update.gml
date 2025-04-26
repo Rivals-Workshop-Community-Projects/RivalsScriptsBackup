@@ -13,8 +13,8 @@ if (state == PS_WALL_JUMP) {
 
 //Reached Max Charge
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL 
-&& window == 2 && turbine_cont == 69){
-	turbine_cont = 70;
+&& window == 2 && turbine_cont == 109){
+	turbine_cont = 110;
 	spawn_hit_fx( x, y-20, 196);
     sound_play(asset_get("mfx_player_ready"));	
 }
@@ -54,7 +54,7 @@ if (turbine_cont >= 30 && turbine_cont < 50){
     set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 0);
 }
 
-if (turbine_cont >= 50 && turbine_cont < 70){
+if (turbine_cont >= 50 && turbine_cont < 110){
 	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 2);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 10);
     set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
@@ -65,7 +65,7 @@ if (turbine_cont >= 50 && turbine_cont < 70){
     set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 0);
 }
 
-if (turbine_cont >= 70){
+if (turbine_cont >= 110){
 	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 3);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 5);
     set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
@@ -157,7 +157,7 @@ if (cargo_hit_left == true){
 	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.6);
 }
 
-if (state == PS_PRATFALL) can_fast_fall = true;
+if (state == PS_PRATFALL) can_fast_fall = false;
 
 // Grab timer ended
 if (grab_timer < 0){

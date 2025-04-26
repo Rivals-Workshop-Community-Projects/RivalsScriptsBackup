@@ -67,18 +67,18 @@ hitbox_num = 1; //tap blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MELEE, 1); //custom hitbox grid value that applies hitpause and sets offhit player flags
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 3);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 7);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32-5); //these offsets reflect the effect's offsets
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40+2); //the (-5, +2) offsets correspond to hsp and vsp, since tester moves at this point
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 56);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 56);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 130);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 140);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.85);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -87,13 +87,14 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 hitbox_num ++; //hold blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MELEE, 1); //custom hitbox grid value that applies hitpause and sets offhit player flags
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 6);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 11);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32-9); //these offsets reflect the effect's offsets
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40+4); //the (-5, +2) offsets correspond to hsp and vsp, since tester moves at this point
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 104);
@@ -102,6 +103,7 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 140);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(atk, hitbox_num, HG_FINAL_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
@@ -113,6 +115,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 set_num_hitboxes(atk, hitbox_num);

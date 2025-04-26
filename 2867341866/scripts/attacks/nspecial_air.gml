@@ -7,12 +7,12 @@ set_attack_value(AT_NSPECIAL_AIR, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("nspecial_air_hurt"));
 
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_buzzsaw_throw"));
-set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 13);
 
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 15);

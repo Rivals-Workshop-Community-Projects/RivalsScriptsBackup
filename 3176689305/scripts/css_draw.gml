@@ -74,7 +74,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 19; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(242, 246, 255) // "color preview square" color. can be any color!
@@ -146,6 +146,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[22,0] = make_color_rgb(144, 99, 184)
 	ce[22,1] = "Abyss"
 	ce[22,2] = ""
+	ce[23,0] = make_color_rgb(74, 132, 148)
+	ce[23,1] = "Spectral Thief"
+	ce[23,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

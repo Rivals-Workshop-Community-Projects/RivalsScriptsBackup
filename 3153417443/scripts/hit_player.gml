@@ -1,29 +1,94 @@
 if attack == AT_UAIR {
-	sound_play(asset_get("sfx_shovel_hit_heavy2"));
+	sound_play(asset_get("sfx_blow_heavy1"));
 }
 
 if attack == AT_FAIR {
-	sound_play(asset_get("sfx_blow_medium2"));
+	sound_play(asset_get("sfx_blow_medium3"));
 }
 
 if attack == AT_DSTRONG && my_hitboxID.hbox_num == 1 {
 	sound_play(asset_get("sfx_blow_heavy1"));
 }
 
+if attack == AT_FSTRONG && my_hitboxID.hbox_num == 2 {
+	sound_play(asset_get("sfx_poison_hit_strong"), false, noone, 0.7, 1);
+	grabbed_player_obj = noone;
+	fstrongstrongfx = false;
+}
 
 if attack == AT_USPECIAL && special_down && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) {
-	sound_play(sound_get("catch"));
+	sound_play(sound_get("catch"), false, noone, 0.4, 1);
 }
 
 if attack != AT_USPECIAL && attack != AT_FSPECIAL && attack != AT_FSTRONG && bubbleexists = true {
-	if (instance_exists(bubblearticle) && bubblearticle != 0){
+	if (instance_exists(hitbubble) && hitbubble != 0){
 
-	if bubblearticle.grabbed_id != noone && bubblearticle.state == 3 {
+	if hitbubble.grabbed_id != noone && hitbubble.state == 3 {
 		//bubbledamage = my_hitboxID.damage;
 		hit_break = true;
 	}
 			}
 }
+
+if (my_hitboxID.attack == AT_FSPECIAL_2) {
+	switch (window){
+		case 1:
+		if fspecstrongfx = true{
+		var tfx = spawn_hit_fx(hitbubble.x - 20, hitbubble.y - 5, fstrong_hit_vfx);
+		tfx.draw_angle = 90
+		tfx.depth = depth + 1;
+		if(spr_dir = -1){
+		tfx.spr_dir = 1;
+		}
+		}
+		break;
+		case 2:
+		if fspecstrongfx = true{
+		var tfx = spawn_hit_fx(hitbubble.x - 20*spr_dir, hitbubble.y + 20, fstrong_hit_vfx);
+		tfx.draw_angle = 180
+		tfx.depth = depth + 1;
+		}
+		break;
+		case 3:
+		if fspecstrongfx = true{
+		var tfx = spawn_hit_fx(hitbubble.x + 23, hitbubble.y + 5, fstrong_hit_vfx);
+		tfx.draw_angle = 270
+		tfx.depth = depth + 1;
+		if(spr_dir = -1){
+		tfx.spr_dir = 1;
+		}
+		}
+		break;
+		case 4:
+		if fspecstrongfx = true{
+		var tfx = spawn_hit_fx(hitbubble.x + 1*spr_dir, hitbubble.y - 20, fstrong_hit_vfx);
+		tfx.depth = depth + 1;
+	}
+	break;
+}
+	fspec2hit = true;
+	grabbed_player_obj = noone;
+	fspecstrongfx = false;
+}
+
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 5) {
+		// tfx = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 304);
+		// tfx.depth = depth + 1;
+		// if(spr_dir = -1){
+		// tfx.spr_dir = 1;
+  //  	}
+	grabbed_player_obj = noone;
+	uspecstrongfx = false;
+}
+
+// if (attack = AT_USPECIAL && my_hitboxID.hbox_num == 5) {
+// 		var tfx = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 304);
+// 		tfx.depth = -10
+// 		if(spr_dir = -1){
+// 		tfx.spr_dir = 1;
+//     	}
+//     	print_debug(tfx.depth)
+// }
 
 if (my_hitboxID.attack == AT_FSPECIAL && (my_hitboxID.hbox_num = 1)) {
 	

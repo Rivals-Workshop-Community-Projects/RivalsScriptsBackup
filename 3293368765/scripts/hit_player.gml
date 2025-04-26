@@ -42,6 +42,40 @@ if(my_hitboxID.attack == AT_NSPECIAL_2){
 	spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, fx_cat)
 }
 
+// Will Charge Meter Gain
+// This list below will lock out the exceptions
+if(
+	my_hitboxID.attack != AT_NSPECIAL &&
+	my_hitboxID.attack != AT_NSPECIAL_AIR && 
+	my_hitboxID.attack != AT_NSPECIAL_2 && // Catooken
+	my_hitboxID.attack != AT_FSPECIAL &&
+	my_hitboxID.attack != AT_FSPECIAL_AIR &&
+	my_hitboxID.attack != AT_DSPECIAL &&
+	my_hitboxID.attack != AT_USPECIAL &&
+	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1) && //Exclude Linker on Ustrong 
+	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3) && //Exclude Linker on Ustrong
+	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 4) && //Exclude Linker on Ustrong
+	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 5) && //Exclude Linker on Ustrong
+	!(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1) //Exclude Linker on Fstrong 1
+)
+{
+	will_charge += will_gain;
+	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
+	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
+}
+
+// Projectile will gain (only relivant to abyss runes and potentially extra buddies)
+// if(my_hitboxID.player_id == self && my_hitboxID.type == 2)
+// {
+// 	will_charge += will_gain;
+// 	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
+// 	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
+// }
+
+
+
+
+
 if(has_rune("G")){
 	if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num = 2 hit_player_obj.teenah_shock = noone;
 	if(my_hitboxID.attack != AT_DSPECIAL && (my_hitboxID.force_flinch != 1 || (my_hitboxID.force_flinch == 1 && hit_player_obj.free))){
@@ -50,5 +84,42 @@ if(has_rune("G")){
 		hit_player_obj.can_bounce = false;
 		hit_player_obj.can_tech = false;
 		// hit_player_obj.can_wall_tech = false;
+	}
+}
+
+// Gunner's Hit SFX Controller for sound layering
+//#region Hit SFX Controller
+// Function works like this: Sound name, hitbox to attach it to, volume to use (0 to 1), pitch to use, use asset_get over sound_get for base cast assets
+switch(my_hitboxID.attack){
+	case AT_FSTRONG:
+		insert_sfx_on_hit("sfx_blow_medium2",1,1,1,true); 
+		insert_sfx_on_hit("sfx_blow_heavy1",2,1,1,true);
+	break;
+	case AT_USTRONG:
+		insert_sfx_on_hit("sfx_blow_heavy2",2,1,1,true); //Strong Box
+	break;
+	case AT_DSTRONG:
+		insert_sfx_on_hit("sfx_blow_heavy1",1,1,1,true);
+		insert_sfx_on_hit("sfx_blow_heavy2",2,1,1,true);
+	break;
+	default:
+	break;
+}
+
+#define insert_sfx_on_hit(temp_sound_string,temp_hitbox_num,temp_volume,temp_pitch,use_asset_version)
+{
+	if(my_hitboxID.hbox_num == temp_hitbox_num){
+		switch(use_asset_version){
+			case 0: // False
+				temp_sfx_obj = sound_play(sound_get(temp_sound_string),false,noone,temp_volume,temp_pitch);
+			break;
+			case 1: // True
+				temp_sfx_obj = sound_play(asset_get(temp_sound_string),false,noone,temp_volume,temp_pitch);
+			break;
+			default: // Error
+				temp_sfx_obj = noone; 
+			break;
+		}
+		return temp_sfx_obj;
 	}
 }

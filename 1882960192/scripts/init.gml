@@ -14,8 +14,8 @@ walk_speed = 3.5;
 walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 6.55;
-dash_speed = 6.25;
+initial_dash_speed = 6.5;
+dash_speed = 6;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
 dash_stop_time = 4;
@@ -28,7 +28,7 @@ jump_speed = 10.9;
 short_hop_speed = 6;
 djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -124,15 +124,14 @@ shaboingboing = 0;
 
 //Character support
 miiverse_post = sprite_get("miiverse");
-tcoart = sprite_get("blueytcoart");
+tcoart = sprite_get("azuretcoart");
 trummelcodecneeded = false;
 trummelcodec_id = noone;
 arena_title = "The Blue Wonder";
 showHUD = false;
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
-kirbyability = 16;
-swallowed = 0;
+msgw_compat = sprite_get("msgwsprite");
 Lmao = has_rune("L");
 diag_portrait=sprite_get("diagportrait");
 pot_compat_variable = sprite_get("pot_compat");
@@ -167,13 +166,13 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare make a mockery of me and my army... You need to be taught a lesson, insolent child!";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh, I guess we're doing it like that, then.[taunt] Bring it, geezer!";
+dracula_text[page] = "Oh, I guess we're doing it like that, then.[taunt] Bring it then, geezer!";
 page++;
 
 //adventure
 pronouns = ["he","him","his","is"];
 am_is_guest = true;
 
-bluey_victory_quote = "Trying to copy my flow? At least you're better at it than a certain robot, I'll give you that.";
-bluey_handled_victory_quote = false;
-bluey_victory_icon = 5;
+azure_victory_quote = "Trying to copy my flow? At least you're better at it than a certain robot, I'll give you that.";
+azure_handled_victory_quote = false;
+azure_victory_icon = 5;

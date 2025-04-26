@@ -97,7 +97,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
 
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_TYPE, 1); //Done with shooting in air
-set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_HAS_SFX, 1);

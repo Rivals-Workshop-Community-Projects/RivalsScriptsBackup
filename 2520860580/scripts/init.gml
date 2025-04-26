@@ -15,6 +15,9 @@ triggertime = 0
 DT = 6
 
 prevrank = 0
+retreat = false
+parried = false
+justparried = false
 
 rank = 0
 rankm = 0

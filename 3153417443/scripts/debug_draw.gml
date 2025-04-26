@@ -4,8 +4,23 @@
 //draw_debug_text(x, y + 75, "bubble" +string(bubbleexists));
 //draw_debug_text(x, y + 55, "tap" +string(nspecialtap));
 //draw_debug_text(x, y + 75, "tap2" +string(nspecialtap2));
-//draw_debug_text(x, y + 35, "fspecialgrab" +string(fspecialgrab));
+// draw_debug_text(x, y + 35, "fspecialgrab" +string(fspecialgrabbing));
 //draw_debug_text(x, y + 55, "uspecgrab" +string(uspecialgrabbed));
-//draw_debug_text(x, y + 75, "grab" +string(grabbed_player_obj));
-//draw_debug_text(x, y + 55, "grabtimer:" +string(grabtimer));
+// draw_debug_text(x, y + 75, "grab" +string(grabbed_player_obj));
+// draw_debug_text(x, y + 55, "grabtimer:" +string(grabtimer));
 //draw_debug_text(x, y + 55, "id" +string(cantap));
+
+// draw_debug_text(x, y + 55, "uspecstrong" +string(uspecstrongfx));
+// draw_debug_text(x, y + 75, "grab" +string(bubblearticle.grabbed_by_mau));
+// draw_debug_text(x, y + 95, "uspecgrab" +string(uspecialhasgrabbed));
+// draw_debug_text(x, y + 35, "window" +string(window));
+// draw_debug_text(x, y + 15, "window timer" +string(window_timer));
+// draw_debug_text(x, y + 115, "bubble grabbed" +string(bubblearticle.grabbed_id));
+// draw_debug_text(x, y + 135, "bubble state" +string(bubblearticle.state));
+// draw_debug_text(x, y + 155, "grab hit" +string(bubblearticle.trap_lifetime));
+// draw_debug_text(x, y + 55, "fstrongstrong" +string(fstrongstrongfx));
+// draw_debug_text(x, y + 115, "hit player" +string(bubblearticle.grabbed_id.hitstop));
+// draw_debug_text(x, y + 115, "hit bubble" +string(hitbubble));
+// draw_debug_text(x, y + 115, "image" +string(image_index));
+// draw_debug_text(x, y + 95, "opp depth" +string(bubblearticle.hit_player_obj));
+// draw_debug_text(x, y + 95, "bubble percent" +string(bubblearticle.state_timer/bubblearticle.trap_lifetime * 100));

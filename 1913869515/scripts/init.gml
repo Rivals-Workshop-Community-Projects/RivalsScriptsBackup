@@ -3,10 +3,17 @@ introtimer = -1
 noparryedit = 0
 
 legacy = 0
+uspechit = false
+jabrp = 0
 
 enhanceee = 0
+pendmg = 0
+savedjump = false
+
+hit_player_event = 11
 
 ztrashes = 0
+dspecver2 = false
 
 iaihsp = 0
 iaivsp = 0
@@ -99,10 +106,10 @@ pratfall_anim_speed = .25;
 
 walk_speed = 4.5;
 walk_accel = 2;
-walk_turn_time = 6;
+walk_turn_time = 4;
 initial_dash_time = 4;
 initial_dash_speed = 8;
-dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 4;
 dash_turn_accel = 0.1;
 dash_stop_time = 6;
@@ -116,10 +123,10 @@ jump_frames = 8;
 short_hop_speed = 7.5;
 djump_speed = 12;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 4.5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = 0.30;
+air_accel = 0.25;
 prat_fall_accel = 0.8; //multiplier of air_accel while in pratfall
 air_friction = .05;
 max_djumps = 1;

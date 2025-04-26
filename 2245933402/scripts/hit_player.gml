@@ -1,10 +1,8 @@
 ///
 move_cooldown[AT_NSPECIAL_2] = 0
-//if (my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSPECIAL) && my_hitboxID.hbox_num == 2 {
-//	hit_player_obj.x += floor(hit_player_obj.hitstop*spr_dir)
-//    hit_player_obj.grenadehit = floor(hit_player_obj.hitstop) 
-//       
-//}
+if (my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSPECIAL) && my_hitboxID.hbox_num == 2 {
+    hit_player_obj.grenadehit = 60
+}
 
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 3 {
             	sound_play(asset_get("sfx_absa_kickhit"));
@@ -30,11 +28,11 @@ if my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 3 {
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && hit_player_obj.free = false {
-	hit_player_obj.x += 6 * spr_dir
+	hit_player_obj.x += 3 * spr_dir
 }
 
 if my_hitboxID.attack == AT_NSPECIAL {
-	hit_player_obj.x += 2 * spr_dir
+	hit_player_obj.x += 1 * spr_dir
 }
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
@@ -56,7 +54,7 @@ if my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num <= 2{
 
 if my_hitboxID.attack == AT_JAB && gun = 0{
 	if nbullet < 5 {
-    nbullet += 2
+    nbullet += 3
 	}
 }
 

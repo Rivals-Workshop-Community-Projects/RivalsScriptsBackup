@@ -36,6 +36,14 @@ else
 	invisTimer += my_hitboxID.damage * invisTimerGainOnHit;
 
 
+if(attack == AT_FSPECIAL)
+{
+	if(my_hitboxID.sprite_index == sprite_get("bulletProjectileCrit"))
+		has_hit_player_fspecial_crit = true;
+	else
+		has_hit_player_fspecial = true;
+}
+
 if(attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1)
 {
 	var wasAlreadySapped = false;
@@ -51,6 +59,62 @@ if(attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1)
 		sapper.can_be_hit[player] = 30;
 		ds_list_add(sappers, sapper);
 		GainCrit();
+		attachedSapper = true;
+	}
+}
+
+
+//-------------------- voice lines --------------------
+
+
+if(doVoiceLines)
+{
+	if(attack == AT_DAIR)
+	{
+		if(my_hitboxID.hbox_num == 1)
+			PlayRandomVoiceLine("staydown", "hell", "spy_taunt_rps_lose_05", "assasinate1");//assasinate assasinate1 assasinate2 Spy_specialcompleted12 Spy_taunts06
+	}
+	if(attack == AT_UAIR)
+	{
+		if(my_hitboxID.hbox_num == 1)
+			PlayRandomVoiceLine("Spy_highfive09", "Spy_taunt_flip_exert_08", "Spy_rpscountgo01");
+		if(my_hitboxID.hbox_num == 2)
+			PlayRandomVoiceLine("seeyou", "Spy_taunt_flip_fun_01");
+	}
+
+	if(attack == AT_NAIR)
+	{
+		if(!has_hit_player_last)
+			PlayRandomVoiceLine("Spy_taunt_flip_int_01", "Spy_taunt_flip_int_02", "Spy_taunt_flip_end_16", "concussion", "tres_bon");//spinning
+	}
+
+	if(attack == AT_BAIR)
+	{
+		if(my_hitboxID.hbox_num == 1)
+			PlayRandomVoiceLine("Spy_specialcompleted12", "Spy_taunts06", "Spy_taunt_flip_fun_01", "Spy_taunt_head_int_21");
+			
+		if(my_hitboxID.hbox_num == 2)
+			PlayRandomVoiceLine("Spy_taunt_flip_fun_02", "Spy_taunt_head_int_21");
+	}
+
+	if(attack == AT_DTILT)
+	{
+		if(my_hitboxID.hbox_num == 1)
+			PlayRandomVoiceLine("pardon", "dance01", "dance02");
+		if(my_hitboxID.hbox_num == 2)
+			PlayRandomVoiceLine("dance3", "woho");//magnifique
+	}
+
+	if(attack == AT_DATTACK)
+	{
+		if(my_hitboxID.hbox_num == 3)
+			PlayRandomVoiceLine("back", "hello", "Spy_mvm_resurrect05");
+	}
+
+	if(attack == AT_JAB)
+	{
+		if(my_hitboxID.hbox_num == 3)
+			PlayRandomVoiceLine("Spy_taunt_flip_end_12", "Spy_taunt_flip_fun_02", "tres_bon");
 	}
 }
 
@@ -168,3 +232,22 @@ if(attack == AT_DTILT)
 crits++;
 if(crits > 9)
 	crits = 9;
+
+//copied to other files
+#define PlayRandomVoiceLine()
+{
+    var randSound = random_func(0, argument_count, true);
+    PlayVoiceLine(argument[randSound]);
+}
+#define PlayVoiceLine()
+{
+	var clipName = argument[0];
+	var volume = argument_count > 1 ? argument[1] : 1;
+    sound_stop(lastVoiceLine);
+    lastVoiceLine = sound_play(sound_get(clipName), false, noone, volume);
+}
+#define PlayRandomVoiceLineFromOpponent()
+{
+    var randSound = random_func(0, ds_list_size(opponentLines), true);
+    PlayVoiceLine(opponentLines[|randSound]);
+}

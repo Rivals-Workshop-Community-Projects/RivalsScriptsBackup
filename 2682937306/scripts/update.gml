@@ -22,6 +22,6 @@ if (introTimer < 25) {
 //if (instance_exists(tornado_id) == false && tornado_id == noone){ buffup = false; }
 if (instance_exists(tornadowind_id) == true && tornadowind_id != noone && (place_meeting(x, y, tornadowind_id))){ buffup = true; } else { buffup = false; }
 
-if (buffup == true){ amp = 2; knockback_adj = 0.05; hitstun_grav = .7; } else { amp = 1; knockback_adj = 0.8; hitstun_grav = .5; }
+if (buffup == true){ amp = 2; knockback_adj = 0.5; hitstun_grav = .7; } else { amp = 1; knockback_adj = 0.9; hitstun_grav = .5; }
 
 knockback_spd = vsp;

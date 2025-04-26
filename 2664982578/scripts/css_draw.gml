@@ -2,10 +2,10 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "24";
-patch_month = "AUG";
+patch_day = "17";
+patch_month = "DEC";
  
-var num_alts = 25;
+var num_alts = 29;
 var alt_cur = get_player_color(player);
 var alt = get_player_color(player);
  
@@ -54,6 +54,7 @@ alt_name[24]  = "What the fuck is that";
 alt_name[25]  = "Ḙ̵̢̩̙̿̕ģ̵̘̻̀̾͂̎ģ̶̱̦͚̱͆̚ ̶̙͉͐̌̄ͅM̷̙̑̓̒͝a̸͚͂͛̎̃̚c̶͓͆̉͊̀͝h̸̺̟̆͊ȋ̷̛̠̰̘̂̚͝ǹ̸͇̮̥̲́̓͒̓e̶̡̹̮͉̓̓͆̈́̕ ̴̱̹͙̥̘̃̀͝Ḇ̸̖̠̪̮̊̉͠r̴̗̗̼̈́̀̈́̚̚͜o̷̢͂̑̅͝ͅk̴̛͎͇̜e̸͎͍̰͊̑̐̊̀"; 
 alt_name[26]  = "Cosmic Dog";  
 alt_name[27]  = "Breakfast Burger"; 
+alt_name[28]  = "Singularity"; 
  
 if (get_player_color(player)==24){
     if (drawtime == 1){
@@ -119,7 +120,7 @@ if (get_player_color(player)==19){
     }
   */  
 //Special Icon
-if (get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24 || get_player_color(player)== 25 || get_player_color(player)== 27){
+if (get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24 || get_player_color(player)== 25 || get_player_color(player)== 27 || get_player_color(player)== 28){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     

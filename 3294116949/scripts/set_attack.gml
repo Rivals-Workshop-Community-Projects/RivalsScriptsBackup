@@ -30,6 +30,7 @@ if (instance_exists(axe) && attack==AT_NSPECIAL && axe.state == 2){
     // axe.return_hit=1;
 }
 
+// if(attack == AT_USTRONG && move_cooldown[AT_USTRONG] <= 0) hsp = clamp(hsp, -initial_dash_speed, initial_dash_speed); // dacus hsp limiter (only use if ustrong low friction is kept)
 
 //Slide Jump Landing Lag
 if(attack == AT_DTILT){
@@ -49,6 +50,11 @@ if(attack == AT_DTILT){
 
 if(attack == AT_USPECIAL){
     uspec_grounded = !free;
+}
+
+if(attack == AT_FSPECIAL){
+    reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+    reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED);
 }
 
 

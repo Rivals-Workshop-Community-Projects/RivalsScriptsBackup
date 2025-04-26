@@ -16,12 +16,16 @@ switch(attack){
 	case AT_NSPECIAL:
 		if(window == 1){
 			if(window_timer == 8 && special_down){
+				nspecial_charge++;
 				window_timer -= 1;
 			}
+			if(window_timer >= 7 && shield_pressed){window = 3;window_timer = 0;}
 			if(b_reversed == false && window_timer < 7)KoB_reverse();
 			if(window_timer == phone_window_end){
 				move_cooldown[attack] = 90;
 				nspec_cloud = create_hitbox(attack,1,x+75*spr_dir,y-35);
+				nspec_cloud.length+=round(nspecial_charge*.75);
+				nspecial_charge = 0;
 				sound_play(sound_get("extinguisher1"));
 				var fx = spawn_hit_fx(x+80*spr_dir,y-5,fx_spray);fx.depth = depth - 1;
 			}
@@ -308,13 +312,14 @@ switch(attack){
 	case AT_FTILT:
         if(window == 1 && window_timer == 1 && !hitpause){
             PlayVoiceClip("look");
-        }
-        if(window == 3 && (window_timer == 1 || window_timer == 7) && (attack_down || right_stick_down || left_stick_down)){
+        }if(!attack_down && !right_stick_down && !left_stick_down)att_hold = false;
+        if(window == 3 && (window_timer == 1 || window_timer == 7) && att_hold){
 			if(left_down && spr_dir == 1 || right_down && spr_dir == -1){window_timer = 6;}else{if(window_timer > 1){PlayVoiceClip("look");}window_timer = 0;}
 		}
     break;
     case AT_UTILT:
-        if(window == 3 && (window_timer == 1 && up_down || window_timer == 4) && (attack_down || up_stick_down)){
+        if(!attack_down && !up_stick_down)att_hold = false;
+        if(window == 3 && (window_timer == 1 && up_down || window_timer == 4) && att_hold){
 			window_timer -= 1;
 			if(window_timer == 3 && up_down)window_timer = 0;
 		}
@@ -427,6 +432,11 @@ switch(attack){
 		}if(window == 10){
 			if(dairhold && window_timer == phone_window_end-1){window_timer = phone_window_end-2;}
 		}
+		if(DairBounce > 0 && free){
+			DairBounce = 0;dair_whereami = true;
+			if(window == 2){old_vsp = -12;vsp = -12;}
+			else if(window >= 4){old_vsp = -8;vsp = -8;attack_end();}
+		}
     break;
     case AT_BAIR:
     	if(window == 1 && window_timer == 1 && !hitpause){
@@ -440,9 +450,8 @@ switch(attack){
 }
 #define KoB_reverse
 	// Does a sick and based reverse
-	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && b_reversed == false){
-    	hsp *= -1;spr_dir *= -1;
-		b_reversed = true;
+	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && !b_reversed){
+    	hsp = -hsp;spr_dir = -spr_dir;b_reversed = true;
 	}
 
 #define Grab(xpos, ypos, xsmooth, ysmooth, target, isproj)
@@ -465,11 +474,12 @@ switch(attack){
 	}
 #define PlayVoiceClip
 /// PlayVoiceClip(name,?volume,?stopprev)
-//Plays SFX
-if(!muted && !hitpause){
-	if(argument_count>2?argument[2]!=false:true)sound_stop(voice);
-	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
-}
+	//Plays SFX
+	if(!muted && !hitpause){
+		if(argument_count>2?argument[2]!=false:true)sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]),false,noone,argument_count>1?argument[1]:1,("voicepitch" in self)?voicepitch:1);
+		if(argument_count>1)sound_volume(voice, argument[1], 0);
+	}
 
 #define cancelattack
     if(attack_pressed || special_pressed || jump_pressed || shield_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed

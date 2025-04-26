@@ -85,7 +85,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 37);
+set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(AT_FSTRONG, 1, HG_FINAL_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.85);
@@ -120,7 +120,6 @@ set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, SC);
 set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_ANIM_SPEED, .4);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_FSTRONG, 3, HG_TECHABLE, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, true );
 
 

@@ -55,6 +55,12 @@ if (cursor_x > alt_button_pos[0] && cursor_x < alt_button_pos[2] && cursor_y > a
            	case 21:
            	secret_alt_num = 6;
            	break; 
+           	case 8:
+           	secret_alt_num = 7;
+           	break;
+           	case 20:
+           	secret_alt_num = 8;
+           	break;        
            }
            sound_play(asset_get("mfx_levelup"));
            break;
@@ -212,4 +218,22 @@ set_color_profile_slot( 21, 4, 243, 242, 160 ); //Eyes
 set_color_profile_slot( 21, 5, 149, 110, 67 ); //Po Skin 1
 set_color_profile_slot( 21, 6, 110, 70, 27 ); //Po Skin 2
 set_color_profile_slot( 21, 7, 255, 255, 255 ); //Apron
+}if(get_player_color(player) == 8){//pokemon
+set_color_profile_slot( 8, 0, 156, 73, 73 ); //Gumbo Skin 1
+set_color_profile_slot( 8, 1, 89, 89, 89 ); //Gumbo Skin 2
+set_color_profile_slot( 8, 2, 110, 98, 98 ); //Jeans
+set_color_profile_slot( 8, 3, 110, 51, 51 ); //Hoodie
+set_color_profile_slot( 8, 4, 145, 145, 145 ); //Eyes
+set_color_profile_slot( 8, 5, 207, 168, 113 ); //Po Skin 1
+set_color_profile_slot( 8, 6, 138, 138, 138 ); //Po Skin 2
+set_color_profile_slot( 8, 7, 178, 183, 184 ); //Apron
+}if(get_player_color(player) == 20){//chef
+set_color_profile_slot( 20, 0, 230, 182, 52 ); //Gumbo Skin 1
+set_color_profile_slot( 20, 1, 88, 88, 95 ); //Gumbo Skin 2
+set_color_profile_slot( 20, 2, 60, 123, 171 ); //Jeans
+set_color_profile_slot( 20, 3, 61, 61, 76 ); //Hoodie
+set_color_profile_slot( 20, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 20, 5, 208, 157, 218 ); //Po Skin 1
+set_color_profile_slot( 20, 6, 86, 173, 75 ); //Po Skin 2
+set_color_profile_slot( 20, 7, 201, 224, 221 ); //Apron
 }

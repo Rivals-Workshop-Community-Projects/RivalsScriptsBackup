@@ -6,8 +6,14 @@ state_timer = 0;
 
 uses_shader = false;
 done = false;
-bounced = 10; //Emerald bouncing
-emerald_grabbed = false;
+bounced = 6; //Emerald bouncing
+
+ChaosEmerald = random_func(0, 7, true);
+//Somehow even with 0-7, making 8, it works (skipping the max number)
+
+free = true;
+
+GiveBack = false; //Give back the overall amount
 
 hitplayer_x = noone;
 hitplayer_y = noone;

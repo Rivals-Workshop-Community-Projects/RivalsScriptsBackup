@@ -82,11 +82,12 @@ set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 3);						    //UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 8);						//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .2);				//UPDATED
-set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE,6);					//UPDATED
+set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 7);					//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .2);				//UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);						    //UPDATED
 set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 3);
+set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_DAIR, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DAIR, 1, HG_THROWS_ROCK, 2);
 
@@ -132,11 +133,10 @@ set_hitbox_value(AT_DAIR, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 4);						//UPDATED
 set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 90);						//UPDATED
 set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 7);						//UPDATED
-set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, .7);				//UPDATED
-set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 8);					//UPDATED
-set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, .7);				//UPDATED
+set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, .6);				//UPDATED
+set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 7);					//UPDATED
+set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, .6);				//UPDATED
 set_hitbox_value(AT_DAIR, 3, HG_ANGLE_FLIPPER, 6);						//UPDATED
-set_hitbox_value(AT_DAIR, 3, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 

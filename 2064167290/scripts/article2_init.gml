@@ -22,4 +22,3 @@ state_timer = 0;
 
 
 entrance_spd = 0.25;
-

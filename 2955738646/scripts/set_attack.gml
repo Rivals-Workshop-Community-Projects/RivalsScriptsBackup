@@ -1,4 +1,4 @@
-//set_attack
+//setting attack
 
 if (attack == AT_DSPECIAL && free == false && window < 2){
     attack = AT_DSPECIAL_2;
@@ -15,8 +15,14 @@ if (attack == AT_USPECIAL && !free){
     attack = AT_USPECIAL_2;
 }
 
-if (attack == AT_FSPECIAL && !free){
+if (attack == AT_FSPECIAL && !free && SuperMecha == false){
     attack = AT_FSPECIAL_2;
+    window = 1;
+    window_timer = -1;
+}
+
+if (attack == AT_FSPECIAL && SuperMecha == true){
+    attack = AT_FSPECIAL_AIR;
     window = 1;
     window_timer = -1;
 }
@@ -25,8 +31,13 @@ if (attack == AT_TAUNT && down_down){ //Yeah
     attack = AT_FTHROW;
 }
 
-if (attack == AT_TAUNT && special_down && attack_down){
+if (attack == AT_TAUNT && EmeraldAmount >= 7){
     //attack = AT_TAUNT_2;
+}
+if (attack == AT_TAUNT && EmeraldAmount > 0){
+    //attack = AT_TAUNT_2;
+    //window = 1;
+    //window_timer = 0;
 }
 
 if (attack == AT_USPECIAL_2 && move_cooldown[AT_USPECIAL_2] > 0){
@@ -45,11 +56,13 @@ if (attack == AT_USPECIAL_2 && move_cooldown[AT_USPECIAL_2] > 0){
     //}
 //}
 
-if (attack == AT_NSPECIAL && air_special == true){
+if (attack == AT_NSPECIAL && air_special == true ){
     window = 6;
     window_timer = 0;
-} else if (attack == AT_NSPECIAL && (window == 6 || window == 7) && air_special == false){
+}
+if (attack == AT_NSPECIAL && (window == 6 || window == 7) && air_special == false){
     window = 9;
+    window_timer = 0;
 }
 /*
 if (attack == AT_NSPECIAL && telepunch == 1){

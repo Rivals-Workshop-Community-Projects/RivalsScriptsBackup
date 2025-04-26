@@ -38,8 +38,9 @@ set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8); // 5
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));

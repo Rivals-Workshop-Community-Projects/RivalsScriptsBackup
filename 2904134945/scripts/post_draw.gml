@@ -50,7 +50,7 @@ if ("rollArray" in self)
 
 				if (window == 2 || window == 3 || window == 6 || window == 9)
 				{
-					var offset = round((115-nspecMeter*2)/2)*2;
+					var offset = round((195-nspecMeter*2)/2)*2;
 					var scale = 0;
 					if (window == 3 || window == 6 || window == 9)
 					{

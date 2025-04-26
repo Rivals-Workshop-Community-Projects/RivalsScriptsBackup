@@ -202,8 +202,4 @@ ftilt_arrow = hit_fx_create( sprite_get("ftilt_arrow"), 14);
 
 jizo = has_rune("M") ; // to survive a galaxy
 
-Erune_set = !has_rune("E") 
-
-
-
-
+Erune_set = !has_rune("E")

@@ -1,4 +1,3 @@
-// states
 #macro AS_NEUTRAL 0
 #macro AS_ADVANTAGE 1
 #macro AS_RECOVER 2
@@ -94,7 +93,7 @@ SetAttack();
 						spr_dir = right_down?1:-1;
 					}
 					TryParry(7);
-					if (xdist < 180 || window_timer >= 54 || has_rune("N") || aura) special_down = true;
+					if (xdist < 180 || window_timer >= 94 || has_rune("N") || aura) special_down = true;
 					else if (ydist > 100) shield_pressed = true;
 				}
 				break;
@@ -171,7 +170,7 @@ SetAttack();
 			TryParry();
 
 		case AS_ADVANTAGE:
-			if ((ready_to_attack || tryhard) && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)
+			if ((ready_to_attack || tryhard) && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT && (!ai_target.invincible||ai_target.invince_time<7))
 			{
 				if (ai_target == self)
 				{
@@ -209,7 +208,7 @@ SetAttack();
 							if (ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90)
 								DoAttack(AT_USTRONG);
 							else
-								DoAttack(AT_JAB);
+								DoAttack(attack==AT_JAB?AT_DTILT:AT_JAB);
 						}
 						else if (xdist < 70 && (ai_target.noelleFrostbite==frostbiteMax||get_player_damage(ai_target.player)>90))
 							DoAttack(AT_DSTRONG);
@@ -485,7 +484,8 @@ SetAttack();
 	if (ai_target.y < y-64)
 	{
 		if (vsp > -1) jump_pressed = true;
-		if (ai_target.y < y-112) jump_down = true;
+		//if (ai_target.y < y-112) jump_down = true;
+		if ((ai_target.y+ai_target.vsp*4 < y-160)) jump_down = true;
 	}
 }
 

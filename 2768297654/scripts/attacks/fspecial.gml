@@ -21,11 +21,11 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 18);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 16.5);
 
 //whiff
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
@@ -58,7 +58,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 
 //whiff ground
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 27);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 33);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

@@ -68,7 +68,11 @@ if attack == AT_USTRONG && hbox_num == 2 {
 	
 }
 
-
+if attack == AT_FSPECIAL && hbox_num == 2 {
+	if hitbox_timer == 4 {
+		create_hitbox(AT_FSPECIAL , 3 , x  , y );
+	}
+}
 
 if attack == AT_FSPECIAL && hbox_num == 1 {
 
@@ -85,7 +89,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 	}
 	
 	    if hitbox_timer % 15 == 0 or hitbox_timer == 2 or (hitbox_timer > 60 && hitbox_timer % 3 == 0)  {
-            sound_play(asset_get("sfx_ell_steam_hit"))
+            sound_play(asset_get("sfx_ell_steam_hit"),false,noone,0.6,2)
             spawn_hit_fx (x , y, 109)
         }
         
@@ -100,7 +104,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 	}
 	
 	if hitbox_timer == 86 {
-	    create_hitbox(AT_FSPECIAL , 2 , x  , y - 20 );
+	    create_hitbox(AT_FSPECIAL , 2 , x  , y - 16 );
 	    destroyed = 1
 	}
 

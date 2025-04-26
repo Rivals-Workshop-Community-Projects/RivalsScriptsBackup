@@ -6,5 +6,5 @@ if ("hue" in self)
 
 if (gpu_get_alphatestfunc())
 {
-    winner_name = "Snow Angel Noelle wins!";
+	winner_name = "Snow Angel Noelle wins!";
 }

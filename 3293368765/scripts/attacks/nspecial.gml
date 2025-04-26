@@ -1,6 +1,6 @@
 set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
-set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
+set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5); // This is the normal form of the move, the other cancels will be canceled - Gunner
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
@@ -63,6 +63,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_SFX, sound_get("tee_hit_heavy"));
 set_num_hitboxes(AT_NSPECIAL, 4);
 
 // No Charge 
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 3);
@@ -82,6 +83,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, fx_burst);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("tee_punch_light"));
 
 // 1 Charge
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 3);
@@ -101,6 +103,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, fx_burst);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("tee_hit_med"));
 
 //2 Charges
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 7);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 3);
@@ -119,7 +122,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, fx_burst);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 7);
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 4);

@@ -12,6 +12,13 @@ if attack != AT_FSTRONG && my_hitboxID.hbox_num < 2 {
 	hit_player_obj.y += 10
 }
 
+if my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 6{
+	uphit = 30
+	downhit = 30
+	sidehit = 30
+	neutralhit = 30
+}
+
 
 if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3 && isyellow && state_cat != SC_HITSTUN  {
 	
@@ -36,10 +43,6 @@ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3 && isyellow &&
 
 }
 
-if my_hitboxID.attack == AT_FSPECIAL  {
-
-}
-
 
 if my_hitboxID.attack == AT_EXTRA_2{
 	
@@ -56,6 +59,36 @@ if my_hitboxID.attack == AT_EXTRA_2{
 			}
 }
 
+if my_hitboxID.attack == AT_NSPECIAL{
+	move_cooldown[AT_NSPECIAL] = 60
+	inkshield = 180
+	sound_play(sound_get("slice"),false,noone,1.2,0.5)	
+	// spawn_counter += 9
+	counter_x = x 
+    counter_y = y - 40
+    if uphit != 0 && downhit != 0 && sidehit != 0 && neutralhit != 0{
+    	spawn_counter += 27
+    	uphit = 0
+	    downhit = 0
+	    sidehit = 0
+	    neutralhit = 0
+	    allhit = 30
+	    sound_play(sound_get("RI"),false,noone,1,1)
+	    sound_play(asset_get("sfx_waterhit_heavy2"),false,noone,1,1)
+    }
+}
+
+if my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 4{
+	spawn_counter += 1.5
+	fx = spawn_hit_fx(my_hitboxID.x,my_hitboxID.y,305)
+	fx.pause = 2
+	with hit_player_obj {
+		take_damage(player,-1,1)
+	}
+	sound_play(asset_get("sfx_waterhit_medium"))
+	counter_x = my_hitboxID.x 
+    counter_y = my_hitboxID.y - 20
+}
 
 if move_cooldown[AT_USPECIAL] = 0 {
 
@@ -143,14 +176,14 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
     attack_end();
     
 	if my_hitboxID.attack != AT_FSTRONG { 
-	set_hitbox_value(AT_EXTRA_2, 5, HG_BASE_KNOCKBACK, my_hitboxID.kb_value);
-	set_hitbox_value(AT_EXTRA_2, 5, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale);
+	set_hitbox_value(AT_EXTRA_2, 5, HG_BASE_KNOCKBACK, my_hitboxID.kb_value+2);
+	set_hitbox_value(AT_EXTRA_2, 5, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale+0.25);
 	set_hitbox_value(AT_EXTRA_2, 5, HG_ANGLE, my_hitboxID.kb_angle);
 	set_hitbox_value(AT_EXTRA_2, 5, HG_HITSTUN_MULTIPLIER, my_hitboxID.hitstun_factor);
 	finalframe = image_index - 1
 	} else {
     finalframe = 6
-	set_hitbox_value(AT_EXTRA_2, 5, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_EXTRA_2, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_EXTRA_2, 5, HG_KNOCKBACK_SCALING, 1);
 	set_hitbox_value(AT_EXTRA_2, 5, HG_ANGLE, 40);
 	set_hitbox_value(AT_EXTRA_2, 5, HG_HITSTUN_MULTIPLIER, 1);	
@@ -191,18 +224,14 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 
 }
 
-if uphit == 0 && (attack == AT_UAIR or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num != 3)
+
+if uphit == 0 && (attack == AT_UAIR or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num != 3 and state_timer < 200)
 or my_hitboxID.attack == AT_USTRONG ){
 	uphit = 30
 	downhit = 30
 
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.35)
 		sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.8)
-	with hit_player_obj {
-		//take_damage(player,-1,4)
-		//hitstop += 6
-	}
-	//hitstop += 3
 }
 
 if downhit == 0 && (my_hitboxID.attack == AT_DAIR
@@ -212,11 +241,6 @@ or (my_hitboxID.attack == AT_DTILT && my_hitboxID.type == 1)or my_hitboxID.attac
 
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,0.8)
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.4)
-	with hit_player_obj {
-		//take_damage(player,-1,4)
-		//hitstop += 6
-	}
-	//hitstop += 3
 }
 
 if sidehit == 0 && (my_hitboxID.attack == AT_FTILT or (attack == AT_JAB && window > 3)
@@ -225,11 +249,6 @@ or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_coold
 
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.2)
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.6)	
-	with hit_player_obj {
-		//take_damage(player,-1,4)
-		//hitstop += 6
-	}
-	//hitstop += 3
 }
 
 if neutralhit == 0 && ((attack == AT_JAB && window <= 3) or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num == 3)
@@ -238,11 +257,6 @@ or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT) && my_hitbox
 
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1)
     sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.65)	
-	with hit_player_obj {
-		//take_damage(player,-1,4)
-		//hitstop += 6
-	}
-	//hitstop += 3
 }
 
 

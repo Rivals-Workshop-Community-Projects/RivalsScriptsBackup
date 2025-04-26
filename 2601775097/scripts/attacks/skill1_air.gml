@@ -186,6 +186,7 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_forsburn_combust"))
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //burning fury dash attack part 2
 set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 2);
@@ -196,6 +197,7 @@ set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 10);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -20);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //burning fury killing blow
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);

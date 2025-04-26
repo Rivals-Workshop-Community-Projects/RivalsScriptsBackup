@@ -52,10 +52,10 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 100);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PRIORITY, 8);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 270);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 304);
@@ -80,6 +80,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HIT_SFX, sound_get("hitSFX3"));
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_FORCE_FLINCH, 1);
 
 //Landing Hitbox
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);

@@ -62,6 +62,8 @@ sprite_change_offset("nspecial_proj5",17, 9);
 sprite_change_offset("nspecial_proj6",17, 9);
 sprite_change_offset("nspecial_proj7",17, 11);
 sprite_change_offset("nspecial_proj8",17, 11);
+sprite_change_offset("nspecial_proj9",17, 11);
+sprite_change_offset("nspecial_proj10",18, 11);
 
 sprite_change_offset("drmario_smash_proj", 42, 50);
 

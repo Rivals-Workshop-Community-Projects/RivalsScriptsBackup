@@ -86,15 +86,15 @@ set_color_profile_slot( 5, 5, 202, 200, 193 ); //kimono wave
 set_color_profile_slot( 5, 6, 80, 167, 57 ); //kimono bottom
 set_color_profile_slot( 5, 7, 51, 51, 65 ); //kimono accents
 
-// Heatwave
-set_color_profile_slot( 6, 0, 235, 126, 94 ); //fur
-set_color_profile_slot( 6, 1, 243, 183, 162 ); //fur tip
-set_color_profile_slot( 6, 2, 216, 107, 40 ); //hair
-set_color_profile_slot( 6, 3, 223, 216, 31 ); //horns + accents
-set_color_profile_slot( 6, 4, 138, 24, 32 ); //kimono top
-set_color_profile_slot( 6, 5, 223, 216, 31 ); //kimono wave
-set_color_profile_slot( 6, 6, 27, 33, 81 ); //kimono bottom
-set_color_profile_slot( 6, 7, 255, 255, 255 ); //kimono accents
+// Riptide
+set_color_profile_slot( 6, 0, 12, 25, 58 ); //fur
+set_color_profile_slot( 6, 1, 242, 228, 214 ); //fur tip
+set_color_profile_slot( 6, 2, 12, 25, 58 ); //hair
+set_color_profile_slot( 6, 3, 254, 183, 0 ); //horns + accents
+set_color_profile_slot( 6, 4, 2, 198, 216 ); //kimono top
+set_color_profile_slot( 6, 5, 254, 183, 0 ); //kimono wave
+set_color_profile_slot( 6, 6, 218, 93, 0 ); //kimono bottom
+set_color_profile_slot( 6, 7, 254, 183, 0 ); //kimono accents
 
 // Blueberry Bout
 set_color_profile_slot( 7, 0, 238, 106, 149 ); //fur

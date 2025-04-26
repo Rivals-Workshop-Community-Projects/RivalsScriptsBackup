@@ -46,6 +46,7 @@ if (has_superform)
         ring.ring_player = 0;
     }
     rings_cur = 0;
+    ring_life_next = 1;
 }
 
 if (lang != 0 && attack != 3)

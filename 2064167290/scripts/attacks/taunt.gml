@@ -19,5 +19,3 @@ set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START,10);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_shovel_knight_fanfare"));
 set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX_FRAME, 8);
-
-

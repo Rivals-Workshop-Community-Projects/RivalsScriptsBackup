@@ -20,9 +20,9 @@ with (hit_fx_obj) if player == other.player {
 if add_afterimages_timer > 0 {
   if add_afterimages_timer % 3 == 0 && !hitpause {
     array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer, afterimage_colour]);
-    if alt_palette == 18 { // Riptide
-        riptide_after_index = (riptide_after_index + 1) % 3
-        afterimage_colour = riptide_colours[riptide_after_index]
+    if activate_multicolour {
+        multicolour_after_index = (multicolour_after_index + 1) % 3
+        afterimage_colour = multicolour_colours[multicolour_after_index]
     }
   }
   add_afterimages_timer -= 1;
@@ -159,7 +159,7 @@ if (instance_exists(myChair)){
     move_cooldown[AT_DSPECIAL] = max(move_cooldown[AT_DSPECIAL], 2);
   }
   else if (!free){
-    move_cooldown[AT_DSPECIAL] = max(0, move_cooldown[AT_NSPECIAL]);
+    move_cooldown[AT_DSPECIAL] = 0;
     has_rolling_girl = false;
   }
 }
@@ -170,3 +170,10 @@ else{
   has_rolling_girl = false;
 }
 //print(air_chair_died)
+
+// indicate that the chair is available to create again
+if chair_cooldown_by_destruction and move_cooldown[AT_NSPECIAL] == 0 {
+  sound_play(asset_get("sfx_tow_anchor_land"), false, noone, 0.75);
+  create_chair_flash_opacity = 1;
+  chair_cooldown_by_destruction = false;
+}

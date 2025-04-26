@@ -40,3 +40,8 @@ if ((my_hitboxID.attack == AT_USTRONG && window == 2)
     rightfx.spr_dir = -spr_dir;
   }
 }
+
+if !chair_cooldown_by_destruction {
+  move_cooldown[AT_NSPECIAL] = 0;
+  move_cooldown[AT_DSPECIAL] = 0;
+}

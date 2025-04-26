@@ -12,7 +12,7 @@ icon_y_pos = 0;
 preview_x = 0; //preview char
 preview_y = 0;
 
-
+alt_name = []; //refresh name array in case other characters use the same system
 
 //ALT NAMES
 //seasonal alt names
@@ -25,15 +25,15 @@ season_name[4] = "Christmas";
 //there can be a total of 32 (0 - 31) alts normally
 alt_name[0] = "Default";
 alt_name[1] = "Red";
-alt_name[2] = "Blue";
-alt_name[3] = "Pink";
-alt_name[4] = "Green";
-alt_name[5] = "Orange";
-alt_name[6] = "Grey";
-alt_name[7] = "Shadow";
-alt_name[8] = "Cyan";
-alt_name[9] = "Purple";
-alt_name[10] = "BLW";
+alt_name[2] = "Orange";
+alt_name[3] = "Green";
+alt_name[4] = "Cyan";
+alt_name[5] = "Blue";
+alt_name[6] = "Purple";
+alt_name[7] = "Pink";
+alt_name[8] = "Brown";
+alt_name[9] = "Gray";
+alt_name[10] = "Black";
 alt_name[11] = "Rainbow Ver. 1";
 alt_name[12] = "Rainbow Ver. 2";
 
@@ -45,10 +45,6 @@ alt_name[15] = "Milestone";
 alt_name[16] = season_name[get_match_setting(SET_SEASON)]; //it uses the season_name array above
 alt_name[17] = "Infamous";
 alt_name[18] = "Ranked Gold"; //has the shiny effect
-
-alt_name[19] = "Enderman";
-alt_name[20] = "Spearmint";
-alt_name[21] = "THE MAN BEHIND THE TEST";
 
 
 alt_cur = 0; //checks current alt
@@ -65,5 +61,7 @@ preview_scale = 2; //depends on if we have small sprites on, if we do, type 2, i
 preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprites animation speed
 
 
-
-
+//used by the milestone alt's mask
+mask_anim_speed = 0.15;
+mask_move_x = 0.05;
+mask_move_y = -0.15;

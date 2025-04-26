@@ -105,6 +105,12 @@ if(attack == AT_DAIR){
 			vsp = -7;
 		}
 	}
+	if(window == 8){
+		if(window_timer == get_window_value(AT_DAIR, 8, AG_WINDOW_LENGTH)){
+			window = 9;
+			window_timer = 0;
+		}
+	}
 }
 
 if(attack == AT_DSTRONG){
@@ -120,16 +126,14 @@ if(attack == AT_DSTRONG){
 			window = 5;
 			window_timer = 0;
 			sound_play(asset_get("sfx_ori_stomp_hit"));
-		}if(window_timer = 30 && free){
+		}if(window_timer = get_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH) && free){
 			window = 7;
 			window_timer = 0;
 			sound_play(sound_get("grab_fail"));
 		}
-	}if(window == 6 && window_timer = get_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH)-1 && !was_parried){
-		set_state(PS_IDLE);
-	}if(window == 6 && window_timer = get_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH)-1 && was_parried){
-		set_state(PS_PRATLAND);
-	}     
+	}if(window == 6 && window_timer = get_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH)*(has_hit ? 1 : 1.5)){
+		set_state(was_parried ? PS_PRATLAND : PS_IDLE);
+	}   
 	if(window > 3 && instance_exists(grabbed_player_obj)){
     //first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
 	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
@@ -160,7 +164,7 @@ if(attack == AT_DSTRONG){
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 	}
-	}if(window == 5 && window_timer > 6){
+	}if(window == 5 && window_timer > 1){
 			    	grabbed_player_obj = noone; 
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
@@ -193,10 +197,12 @@ if(attack == AT_USTRONG){
     if(window != 1){
     	hud_offset = 60;
     }
-    if(window == 4 && window_timer = 18 && !was_parried){
-    	set_state(PS_IDLE);
-    }if(window == 4 && window_timer = 18 && was_parried){
-    	set_state(PS_PRATLAND);
+    
+    if(window == 3 or window == 4){
+    	hsp = clamp(hsp, -3, 3);
+    }
+    if(window == 4 && window_timer = get_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH)*(has_hit ? 1 : 1.5)){
+    	set_state(was_parried ? PS_PRATLAND : PS_IDLE);
     }
     if(window > 4 && instance_exists(grabbed_player_obj)){
     //first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.

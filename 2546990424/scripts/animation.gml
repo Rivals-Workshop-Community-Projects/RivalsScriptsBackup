@@ -29,7 +29,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_UTILT
 }
 
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL
-&& window == 4 && window_timer == 0 && turbine_cont >= 70){
+&& window == 4 && window_timer == 0 && turbine_cont >= 110){
 	turbine_gust_cont = 1;
 	sound_play(asset_get("sfx_bird_nspecial"));
 }

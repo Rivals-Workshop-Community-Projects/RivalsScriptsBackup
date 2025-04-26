@@ -21,6 +21,7 @@ var check_kb = get_kb_formula(get_player_damage( hit_player_obj.player ), hit_pl
 switch(my_hitboxID.attack){
 	case AT_TAUNT_2:
 		hit_player_obj.should_make_shockwave = true;
+                hit_player_obj.orig_knock = 0;
 	break;
     case AT_FTILT:
         sound_play(asset_get("sfx_clairen_hit_med"), false, noone, 0.8, 1.2);

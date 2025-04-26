@@ -7,7 +7,7 @@ alert_text_timer = clamp(alert_text_timer, 0, 32);
 alert_text_timer--;
 
 //heatwave alt
-if (get_player_color(player) == 13){
+if (get_player_color(player) == 12){
     if (state_cat == SC_HITSTUN || state == PS_TUMBLE || state == PS_PRATFALL || state == PS_PRATLAND){
 		set_character_color_slot(0, 239, 206, 115);
 		set_character_color_slot(1, 214, 173, 49);
@@ -76,7 +76,7 @@ if (get_player_color(player) == 5){
 
 //RAINBOWS
 if !("hue" in self) hue = 0
-if get_player_color(player) = 20 {
+if get_player_color(player) = 19 {
 	hue+=1
 	if hue>255 hue-=255;
 	//make hue shift every step + loop around
@@ -149,32 +149,18 @@ if (hover_pratfall){
 }
 
 //runes
+if (has_rune("A")){
+	set_attack_value(AT_FTILT, AG_CATEGORY, 2);
+}
+
 if (has_rune("B")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 100);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
 }
 
 if (has_rune("E")){
 	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 6);
-}
-
-if (has_rune("F")){
-	set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_GRAVITY, 0.2);
-	set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GRAVITY, 0.2);
-	set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GRAVITY, 0.2);
-	set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GRAVITY, 0.2);
-	set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_GRAVITY, 1);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.5);
-	set_hitbox_value(49, 1, HG_PROJECTILE_GRAVITY, 0.5);
-	set_hitbox_value(49, 2, HG_PROJECTILE_GRAVITY, 1);
 }
 
 if (has_rune("I")){
@@ -209,6 +195,7 @@ if (has_rune("I")){
 if (has_rune("K")){
 	set_num_hitboxes(AT_TAUNT, 2);
 	set_num_hitboxes(AT_TAUNT_2, 1);
+	set_num_hitboxes(AT_EXTRA_2, 1);
 }
 
 if (has_rune("M")){
@@ -229,7 +216,8 @@ if (has_rune("N")){
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
 }
-if (practice_mode && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
+if (practice_mode) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) 
+&& (attack == AT_TAUNT || attack == AT_TAUNT_2 || attack == AT_EXTRA_2){
     bean_bomb_recharge = 450;
 	torchwood_recharge = 300;
 }
@@ -328,7 +316,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 5);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, .5);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 6);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .4);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .3);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_SPRITE, ability_proj);

@@ -3,16 +3,51 @@
 
 
 
-//vfx
-hfx_smaller = hit_fx_create(sprite_get("hfx_smaller"),14);
-hfx_small = hit_fx_create(sprite_get("hfx_small"),20);
-hfx_medium = hit_fx_create(sprite_get("hfx_medium"),24);
-hfx_big = hit_fx_create(sprite_get("hfx_big"),28);
+// // VFX
+// composite array
+comp_vfx_array                  = [[{cur_timer: 1, max_timer: 0}]];
+vfx_created                     = false;
+
+// composite parts
+fx_small_flare1                 = hit_fx_create(sprite_get("fx_small_flare1"),12);
+fx_small_flare2                 = hit_fx_create(sprite_get("fx_small_flare2"),12);
+fx_medium_flare1                = hit_fx_create(sprite_get("fx_medium_flare1"),14);
+fx_medium_flare2                = hit_fx_create(sprite_get("fx_medium_flare2"),14);
+fx_small_circle                 = hit_fx_create(sprite_get("fx_small_circle"),14);
+fx_medium_circle                = hit_fx_create(sprite_get("fx_medium_circle"),20);
+fx_large_circle                = hit_fx_create(sprite_get("fx_large_circle"),24);
+
+fx_small_centershine            = hit_fx_create(sprite_get("fx_small_centershine"),10);
+fx_small_flashlight             = hit_fx_create(sprite_get("fx_small_flashlight"),14);
+
+fx_array_small_flare            = [
+                                fx_small_flare1,
+                                fx_small_flare2,
+                                ];
+
+fx_array_medium_flare            = [
+                                fx_medium_flare1,
+                                fx_medium_flare2,
+                                ];
+
+// attack dissipation
+fx_diss_utilt                  = hit_fx_create(sprite_get("utilt_dissipation"),9);
+fx_diss_fair                   = hit_fx_create(sprite_get("fair_dissipation"),9);
+fx_diss_bair1                  = hit_fx_create(sprite_get("bair_dissipation1"),6);
+fx_diss_bair2                  = hit_fx_create(sprite_get("bair_dissipation2"),6);
+fx_diss_bair3                  = hit_fx_create(sprite_get("bair_dissipation3"),6);
+fx_diss_nair1                   = hit_fx_create(sprite_get("nair_dissipation1"),9);
+fx_diss_nair2                   = hit_fx_create(sprite_get("nair_dissipation2"),9);
+fx_diss_uair                   = hit_fx_create(sprite_get("uair_dissipation"),9);
+fx_diss_dspecial               = hit_fx_create(sprite_get("dspecial_dissipation"),9);
+fx_diss_uspecial1               = hit_fx_create(sprite_get("uspecial_dissipation1"),9);
+fx_diss_uspecial2               = hit_fx_create(sprite_get("uspecial_dissipation2"),9);
 
 hue_offset=0; //rainbow alt stuff
 hue_speed=2; //change this to change the speed of the hueshift
 
 
+//
 
 //sfx
 sfx_other_bell1 = sound_get("sfx_other_bell1");
@@ -48,11 +83,14 @@ holding_present = false;
 present_id = noone;
 present_should_exist = false;
 tree_id = noone;
+glide_tossing = false;
+present_pickup_dist = 85;
+present_toss_speed = 5;
+toss_boost = 1.5;
 
 //other
 should_debug = false;
 debugtimer = 1;
-fuck_intro = false;
 no_u = noone;
 
 /// ----------------- bb ---------------------///

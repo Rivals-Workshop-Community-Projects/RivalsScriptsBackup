@@ -88,13 +88,13 @@ set_color_profile_slot( 5, 7, 49, 49, 59 ); //Leggy 2
 
 // Event - Dev Derby
 set_color_profile_slot( 6, 0, 255, 169, 195 ); //Hair Bottom
-set_color_profile_slot( 6, 1, 52, 46, 46 ); //Shirt
-set_color_profile_slot( 6, 2, 22, 114, 130 ); //Tie/Hoodie
-set_color_profile_slot( 6, 3, 22, 114, 130 ); //Skirt
+set_color_profile_slot( 6, 1, 245, 127, 31 ); //Shirt
+set_color_profile_slot( 6, 2, 61, 116, 204 ); //Tie/Hoodie
+set_color_profile_slot( 6, 3, 204, 71, 71 ); //Skirt
 set_color_profile_slot( 6, 4, 25, 197, 243 ); //Eyes
 set_color_profile_slot( 6, 5, 255, 216, 212 ); //Skin
-set_color_profile_slot( 6, 6, 93, 79, 71 ); //Leggy 1
-set_color_profile_slot( 6, 7, 93, 79, 71 ); //Leggy 2
+set_color_profile_slot( 6, 6, 150, 81, 102 ); //Leggy 1
+set_color_profile_slot( 6, 7, 150, 81, 102 ); //Leggy 2
 
 // Gameboy
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Hair Bottom

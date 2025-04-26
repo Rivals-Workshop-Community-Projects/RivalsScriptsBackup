@@ -94,6 +94,10 @@ switch(draw_menu){
 		//draw_text_ext_color(x+10,y+140,"test",18,200,c_white,c_white,c_white,c_white,1)
 		//draw_text_color(x+10,y+140,"test",c_white,c_white,c_white,c_white,1)
 		// TLC Icon
+		//draw_sprite_ext(sprite_get("css_tlc_icon"),timer/20,x+190,y+120,2,2,0,c_white,1);
+		if(get_player_color(player) == 9 && color_shift == 0){
+			draw_sprite_ext(sprite_get("css_vortex"),0,x+180,y+60,2,2,0,c_white,1);
+		}
 		draw_sprite_ext(sprite_get("css_tlc_icon"),timer/20,x+190,y+120,2,2,0,c_white,1);
 	break;
 	

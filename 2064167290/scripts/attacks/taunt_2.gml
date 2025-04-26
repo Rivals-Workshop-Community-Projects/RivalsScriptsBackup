@@ -78,5 +78,3 @@ set_window_value(AT_TAUNT_2, 9, AG_WINDOW_TYPE, 0);
 set_window_value(AT_TAUNT_2, 9, AG_WINDOW_LENGTH, 65);
 set_window_value(AT_TAUNT_2, 9, AG_WINDOW_ANIM_FRAMES, 13);
 set_window_value(AT_TAUNT_2, 9, AG_WINDOW_ANIM_FRAME_START, 35);
-
-

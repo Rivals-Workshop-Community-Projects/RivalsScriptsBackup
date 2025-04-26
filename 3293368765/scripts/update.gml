@@ -1,9 +1,9 @@
 //GATHERING STORM -- Passive Charge Effect
 
 //Check for Max Level. Charge if Not, Reset if so.
-if (will_charge >= will_max) {
+if (will_charge >= will_max || has_rune("A")) {
     will_charge = will_max;
-}else if (state != PS_DEAD && state != PS_RESPAWN) {
+/*}else if (state != PS_DEAD && state != PS_RESPAWN) {
     will_charge++;
     if(has_rune("A")) will_charge += 19;
     if has_rune("A"){
@@ -12,7 +12,7 @@ if (will_charge >= will_max) {
     } else {
     	if will_charge = 599 sound_play(sound_get("tee_lvl1"))
     	if will_charge = 1199 sound_play(sound_get("tee_lvl2"))
-    }
+    } */
 }
 
 //Will Level Reaches Full Charge at 20 Seconds, Halfway at 10 
@@ -30,64 +30,76 @@ if (will_charge >= 1200) {
     will_lvl = 2;
 }
 
-//Shmovement Gives a Tiny bit of Extra Charge
-
+//Shmovement Gives a Tiny bit of Extra Charge - Commenting this out as part of the will meter change - Gunner
+/*
 if (will_lvl < 2 && state == PS_DASH_START && state_timer == 1 || state == PS_WAVELAND && state_timer == 1) {
     will_charge += 5;
 }
+*/
 
-//if on the ground, refresh USPECIAL uses
-
-	if (!free && state != PS_ATTACK_GROUND) {
-		uspec_uses = uspec_uses_max;
-		can_uspec = false;
+//Gain Charge on Hit - Commenting this out be cause we want to do this in hit player, not it update.
+/*
+if (hitpause == true && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
+	if (hit_timer == 0) {
+    	will_charge += 200;
+    	hit_timer = 1;
 	}
-	
-	//if no uses, ((it's)) no use
-	if (uspec_uses <= 0 || uspec_uses == 1 && can_uspec == false)  {
-		move_cooldown [AT_USPECIAL] = 3;
-	}
-	
-	//Walljump / Getting hit restores use
-	if(free && uspec_uses >= 0 && (state == PS_WALL_JUMP || state_cat == SC_HITSTUN)){
-		uspec_uses = max(uspec_uses, 1);
-		can_uspec = (uspec_uses == 1 ? true : false);
-	}
-
-//WILL CANCELS
-
-	will_cancel--;
-
-	if (hitpause = true && will_lvl >= 1){
-		 will_cancel = 8 - 2 * (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND);
-	}
-
-	if (will_cancel <= 0){
-    	will_cancel = 0;
-	}
-	
-	//NO CANCELLING DURING SPIN FOR FUCK'S SAKE
-	if (attack == AT_USPECIAL && window == 2 || window == 13){
-		will_cancel = 0;
-	}
-
-/*Duking it out also gives you Extra Charge
-//Checking for hitpause, adding charge and setting a lockout timer
-if (hitpause = true && hit_timer == 0) {
-    will_charge += 10;
-    hit_timer = 25;
 }
-//When the timer hits zero, it stays there
-if (hit_timer == 0) {
-    hit_timer = 0;
-}else{
-    hit_timer--;
+//When hitpause is over, the lockout is reset
+if  (hitpause == false) {
+	hit_timer = 0;
 }
+*/
 
+// Teenah getting hit will add meter - Commenting this out as part of the will meter change - Gunner
+/*
 if (state == PS_HITSTUN && state_timer == 1) {
     will_charge += 15;
 }
 */
+
+
+//if on the ground, refresh USPECIAL uses
+
+if ((!free && (state != PS_ATTACK_GROUND || ((state == PS_ATTACK_GROUND && state_timer == 0 && attack != AT_USPECIAL) || 
+(state == PS_ATTACK_GROUND && attack == AT_USPECIAL && window == 5)))) || state == PS_RESPAWN || state == PS_DEAD) {
+	uspec_uses = uspec_uses_max;
+	can_uspec = false;
+	uspec_extra_used = 0;
+}
+
+// if uspec's extra use is used
+if(uspec_uses <= 0){
+	uspec_extra_used = true;
+}
+
+//if no uses, ((it's)) no use
+if (uspec_uses <= 0 || uspec_uses == 1 && can_uspec == false)  {
+	move_cooldown [AT_USPECIAL] = 3;
+}
+
+//Walljump / Getting hit restores use
+if(free && uspec_uses >= 0 && (state == PS_WALL_JUMP || state_cat == SC_HITSTUN)){
+	uspec_uses = 1 + !uspec_extra_used;
+	can_uspec = (uspec_uses > 0 ? true : false);
+}
+
+//WILL CANCELS
+
+will_cancel--;
+
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && hitpause == true && will_lvl >= 1){
+	 will_cancel = 8 - 2 * (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND);
+}
+
+if (will_cancel <= 0){
+	will_cancel = 0;
+}
+
+//NO CANCELLING DURING SPIN FOR HECK'S SAKE
+if (state == PS_ATTACK_AIR && attack == AT_USPECIAL && (window == 2 || window == 13)){
+	will_cancel = 0;
+}
 
 
 // Backward Jumps? Yeah we got those

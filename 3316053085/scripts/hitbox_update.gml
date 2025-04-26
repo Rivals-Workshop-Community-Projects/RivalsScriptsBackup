@@ -13,7 +13,7 @@ switch (attack)
     case AT_FSTRONG:
         if (hitbox_timer == length-1)
         {
-            var fx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("fx_fstrong_proj_end" + string(hbox_num-1)), 24));
+            var fx = spawn_hit_fx(x, y, player_id.fx_fstrong_proj_end[hbox_num-2]);
             fx.spr_dir = spr_dir;
             fx.draw_angle = proj_angle;
             fx.hsp = hsp/2;
@@ -34,11 +34,11 @@ switch (attack)
         spr_dir = move_angle > 90 && move_angle <= 270 ? -1 : 1;
         draw_xscale = spr_dir;
 
+        if (hitbox_timer % 8 == 0) with (orig_player_id) sound_play(sound_get("sfx_proj_exist" + string(other.hbox_num-1)), false, 0, 0.2);
+
         hsp = lerp(orig_hsp, 0, hitbox_timer/length);
         vsp = lerp(orig_vsp, 0, hitbox_timer/length);
 
-        grounds = 1;
-        walls = 1;
         if (place_meeting(x, y, asset_get("par_block")) || place_meeting(x, y, asset_get("par_jumpthrough")) && vsp > 0)
         {
             var fx = spawn_hit_fx(x, y, destroy_fx);
@@ -82,6 +82,6 @@ switch (attack)
         break;
     default:
         if (was_parried) draw_xscale = spr_dir;
-        if (hitbox_timer == length-1) spawn_hit_fx(x, y, destroy_fx);
+        if (hitbox_timer == length-1) with (orig_player_id) spawn_hit_fx(x, y, destroy_fx);
         break;
 }

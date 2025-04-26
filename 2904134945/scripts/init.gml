@@ -25,7 +25,7 @@ dash_speed = 6.2;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
-dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+dash_stop_percent = .35;
 ground_friction = .4;
 moonwalk_accel = 1.4;
 
@@ -33,29 +33,29 @@ jump_start_time = 5;
 jump_speed = 9;
 short_hop_speed = 4.5;
 djump_speed = 8;
-leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+leave_ground_max = 8;
+max_jump_hsp = 8;
+air_max_speed = 5.5;
+jump_change = 3;
 air_accel = .3;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .85;
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 25;
 walljump_hsp = 6;
 walljump_vsp = 7;
 walljump_time = 16;
-max_fall = 13; //maximum fall speed without fastfalling
-fast_fall = 13; //fast fall speed
+max_fall = 13;
+fast_fall = 13;
 gravity_speed = .4;
 hitstun_grav = .5;
-knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1;
 
-land_time = 4; //normal landing frames
+land_time = 4;
 prat_land_time = 16;
 wave_land_time = 9;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .14; //grounded deceleration when wavelanding
+wave_land_adj = 1.35;
+wave_friction = .14;
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -142,6 +142,7 @@ graveID = noone;
 nspecMeter = 0;
 fspecMeter = {charge:120, chargeMax:120, opacity:0};
 dspecBan = false;
+dspecSpawnBan = 0;
 uspecAngle = 0;
 
 // misc
@@ -157,16 +158,12 @@ auraClone = noone;
 auraMeter = 0;
 hue = 0;
 frostbiteMax = 6;
-frostgraveTime = 90;
-if (has_rune("F")) frostgraveTime*=3;
+frostgraveTime = 75;
 afterimage_array = 0;
 transcounter = 0;
 hasHitUAir = false;
 user_event(0);
 jumpSprites = [sprite_get("jump"), sprite_get("jumpMid"), sprite_get("jumpBack")];
-
-// ustrong
-ustrongLoop = 0;
 
 // intro
 introTimer = -4;
@@ -180,7 +177,6 @@ battle_text = "You are blinded by snow.";
 ncode1 = "Proceed.";
 ncode2 = ncode1;
 ncode3 = ncode1;
-steve_death_message = "Transphobia is gone";
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 96;
 spam_ad = sprite_get("spam_ad");

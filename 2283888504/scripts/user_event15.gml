@@ -336,6 +336,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.23", "06 April, 2025");
+initWords("Community Patch: JPEG Warrior");
+initHeader("Bair - Adjustments");
+initSection("Early hit hitpause scaling 0.25 --> 0.45");
+initHeader("Uspecial - Bugfixes");
+initSection("Now properly goes into parrystun if parried while grounded.");
+
 initPatch("1.22", "08 November, 2023");
 initWords("Community Patch: JPEG Warrior
 (again again)");

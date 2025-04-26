@@ -3,6 +3,7 @@
 var arrow_sprite = spr_kb_arrow;
 var spr_isplayer_sprite = spr_isplayer;
 var zone_sprite = spr_zone_init;
+var spr_bootwarning = spr_bootwarning_init;
 
 //This code draws a custom sprite tinted to the exact color of the player's first color slot.
 var col_R = get_color_profile_slot_r( get_player_color(player), 1);
@@ -164,11 +165,17 @@ with (asset_get("pHitBox"))
 			*/
 			
 			
+			// circle that appears around boot when it isn't moving
 			if (image_yscale == 64/200) {
 				
 				draw_sprite_ext(zone_sprite, image_index, x, y, spr_dir, 1, 0, get_player_hud_color(player), 1);
-			}
 				
+			}
+			
+			// shows up when player galaxy or whiteline
+			if (player_id.boot_save_from_galaxy_prevention > 0) {
+				draw_sprite_ext(spr_bootwarning, image_index, x+(4*spr_dir), y-24, spr_dir*2, 2, 0, c_white, 1);
+			}
 			
 			// dspecial arrow stuff
 			

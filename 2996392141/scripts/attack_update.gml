@@ -176,33 +176,37 @@ switch (attack) {
             	vsp *= 0.75
             	vsp += -3
             }
-            
-            var hbox = create_hitbox(AT_NSPECIAL, 2, round(x + (12 * spr_dir)), round(y - 26));
-    		if (!free) {
-	    		hbox.hsp = tension_speed_boost(12, 3, 2) * spr_dir;
-	    		hbox.vsp = -2;
-    		}
-    		else {
-    			var hbox_spd = tension_speed_boost(10, 3, 2);
-	    		hbox.hsp = lengthdir_x(hbox_spd, -45) * spr_dir;
-	    		hbox.vsp = lengthdir_y(hbox_spd, -45)
-    		}
-    		hbox.grav = 0.1;
     		
-    		if (tension_level == 4) {
+    		if (tension_level >= 3) {
+    			for (var i = 45; i >= 15; i -= (tension_level == 3 ? 30 : 15)) {
+		            var hbox = create_hitbox(AT_NSPECIAL, 2, round(x + (12 * spr_dir)), round(y - 26));
+		    		if (!free) {
+		    			var hbox_spd = tension_speed_boost(12, 3, 2);
+			    		hbox.hsp = lengthdir_x(hbox_spd, i) * spr_dir;
+			    		hbox.vsp = lengthdir_y(hbox_spd, i)
+		    		}
+		    		else {
+		    			var hbox_spd = tension_speed_boost(10, 3, 2);
+			    		hbox.hsp = lengthdir_x(hbox_spd, i) * spr_dir;
+			    		hbox.vsp = lengthdir_y(hbox_spd, -i)
+		    		}
+		    		hbox.grav = 0.4;
+		    		hbox.image_off = i/5;
+    			}
+    		}
+            else {
 	            var hbox = create_hitbox(AT_NSPECIAL, 2, round(x + (12 * spr_dir)), round(y - 26));
 	    		if (!free) {
-		    		hbox.hsp = tension_speed_boost(10, 3, 2) * spr_dir;
-		    		hbox.vsp = -6;
+		    		hbox.hsp = tension_speed_boost(12, 3, 2) * spr_dir;
+		    		hbox.vsp = -2;
 	    		}
 	    		else {
 	    			var hbox_spd = tension_speed_boost(10, 3, 2);
-		    		hbox.hsp = lengthdir_x(hbox_spd, -60) * spr_dir;
-		    		hbox.vsp = lengthdir_y(hbox_spd, -60)
+		    		hbox.hsp = lengthdir_x(hbox_spd, -45) * spr_dir;
+		    		hbox.vsp = lengthdir_y(hbox_spd, -45)
 	    		}
-	    		hbox.grav = 0.2;
-	    		hbox.image_off = 2;
-    		}
+	    		hbox.grav = 0.1;
+            }
         }
         
         if (window == 3 || window == 5 || window == 11) && !hitpause {
@@ -244,7 +248,7 @@ switch (attack) {
             off_edge = true;
             can_wall_jump = true;
             if ((window_loops >= 3 || has_hit) && window_loops <= FSPECIAL_LOOP_TIMES && !was_parried) {
-                if (jump_pressed || tap_jump_pressed) {
+                if (jump_pressed || (can_tap_jump() && tap_jump_pressed)) {
                     attack_end();
                     destroy_hitboxes();
                     clear_button_buffer(PC_JUMP_PRESSED);
@@ -399,7 +403,7 @@ switch (attack) {
         
         //Jump cancel
         if ((window == 3 || window == 4) && !hitpause) {
-            if (has_hit) {
+            if (has_hit_player && !was_parried) {
             	can_jump = true;
             	if (jump_pressed) {
             		attack_end();
@@ -415,7 +419,7 @@ switch (attack) {
         
         if (window == 4 && window_timer == window_end && !hitpause) {
         	move_cooldown[AT_FSPECIAL] = 60;
-        	if (!has_hit) {
+        	if (!has_hit_player) {
         		set_state(PS_PRATFALL);
         		attack_end();
         	}
@@ -443,7 +447,7 @@ switch (attack) {
         }
         
         if (window == 3 && window_timer == window_end && !hitpause) {
-            if (!has_hit) {
+            if (!has_hit_player) {
     			tension_add(-4 * TENSION_DAMAGE_RATIO);
             }
         }
@@ -459,6 +463,14 @@ switch (attack) {
         
         if (window == 3 && !hitpause) {
             hsp = clamp(hsp +  0.15 * (right_down - left_down), -1, 1)
+        }
+        
+        if (window == 3 && window_timer == window_end && !hitpause) {
+        	move_cooldown[AT_FSPECIAL] = 60;
+        	if (!has_hit_player) {
+        		set_state(PS_PRATFALL);
+        		attack_end();
+        	}
         }
         
     break;
@@ -513,7 +525,7 @@ switch (attack) {
         	sound_play(asset_get("sfx_ell_strong_attack_explosion"));
         	shake_camera(6, 6);
 			var dir = spr_dir == 1 ? 0 : 1;
-			var times = max(tension_level + 1, 1);
+			var times = max(tension_level * 2, 1);
 			if (tension_level == 4) {
     			tension_add(-TENSION_LEVEL_THRESHOLD);
 				times = 20;

@@ -96,7 +96,29 @@ if (state == 2){
 	else shoulddie = true;
 }
 
-
+if (player_id.heavy_damage){
+	if (orb_number == 5){
+		shoulddie = true;
+		player_id.heavy_damage = false;
+	}
+	else if (orb_number == 4){
+		shoulddie = true;
+		player_id.heavy_damage = false;
+	}
+	else if (orb_number == 3){
+		shoulddie = true;
+		player_id.heavy_damage = false;
+	}
+	else if (orb_number == 2){
+		shoulddie = true;
+		player_id.heavy_damage = false;
+	}
+	else if (orb_number == 1){
+		shoulddie = true;
+		player_id.heavy_damage = false;
+		player_id.nspecial_casted = false;
+	}
+}
 
 
 //Dying

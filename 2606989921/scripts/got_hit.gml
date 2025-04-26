@@ -16,7 +16,9 @@ if (msg_last_known_damage < 0) && (get_player_damage(player) == 0)
     set_player_damage(player, new_damage);
     msg_last_known_damage = new_damage;
 }
-if (msg_last_known_damage < -100)
+
+// its possible to explode into a negative-damage state with no timer. dont let armor apply.
+if (msg_last_known_damage < -100) && (msg_negative_dmg_timer > 0)
 {
     //being able to heal by getting hit is too strong
     //therefore Missingno gains a damage resistance proportional to its percent

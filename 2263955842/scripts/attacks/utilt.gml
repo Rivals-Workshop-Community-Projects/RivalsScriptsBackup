@@ -20,8 +20,7 @@ set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 3, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_UTILT, 3, AG_WINDOW_SFX_FRAME, 4);
 
-
-set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

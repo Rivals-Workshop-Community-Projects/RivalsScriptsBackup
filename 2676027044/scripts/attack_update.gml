@@ -81,9 +81,11 @@ switch(attack){
 				if (mim_wisp == noone){
 					if (!free){
 						mim_wisp = instance_create(x + (50 * spr_dir), y - 10, "obj_article1");
+						spawn_hit_fx(x + (50 * spr_dir), y - 36, hfx_shadow_small);
 					}
 					else {
-						mim_wisp = instance_create(x, y + 50, "obj_article1");					
+						mim_wisp = instance_create(x, y + 50, "obj_article1");	
+						spawn_hit_fx(x, y +32, hfx_shadow_small);
 						if (!hitpause){
 							hsp = -4 * spr_dir;
 							vsp = -6;
@@ -91,6 +93,7 @@ switch(attack){
 					}
 					mim_wisp.player_id = id;
 					mim_wisp.player = player;
+				
 				}
 			}
 		}
@@ -110,7 +113,7 @@ switch(attack){
 	case AT_DSTRONG:
 		if (atk_air || atk_ground){
 			if(window == 4 && window_timer == 1 && !has_hit_player){
-				set_player_damage(player, clamp(get_player_damage(player) + 10, 0, 999) )
+				set_player_damage(player, clamp(get_player_damage(player) + 6, 0, 999) )
 				shake_camera(3,3);	
 			}
 		}
@@ -549,8 +552,12 @@ switch(attack){
 				if (window_timer == 15){
 					window_timer = 1;
 				}
-				if (nspec_charge < 40){
+				if (nspec_charge < 60){
 					nspec_charge++;
+				}
+				if (nspec_charge >= 60){ // Strong
+					window = 4;
+					window_timer = 0;
 				}
 			}		
 			else { // Charge Release
@@ -558,7 +565,7 @@ switch(attack){
 					window = 3;
 					window_timer = 0;
 				}
-				if (nspec_charge >= 15 && nspec_charge <= 40){ // Strong
+				if (nspec_charge >= 15 && nspec_charge <= 60){ // Strong
 					window = 4;
 					window_timer = 0;
 				}
@@ -606,6 +613,7 @@ switch(attack){
 	
 	case AT_USTRONG:
 		if (atk_air || atk_ground){
+			
 			if (window == 1){
 				landed_curse_tipper = false;
 				set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);						

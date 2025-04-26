@@ -56,8 +56,8 @@ draw_sprite(sprite_get("nowplaying2"),0,temp_x + 156,temp_y - 34);
 
 
 //abyss gui code
-ab_hud_x = temp_x;
-ab_hud_y = temp_y;
+ab_hud_x = temp_x; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+ab_hud_y = temp_y; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 //this is for the outdated warning message
 if ("depNotice" not in self) depNotice = 0;
 if ("abyssEnabled" in self && abyssEnabled && (menuActive || timerActive)) abyssDraw();
@@ -111,8 +111,3 @@ draw_text_color(argument[0]-2,argument[1]+2,argument[2],c_black,c_black,c_black,
 draw_text_color(argument[0],argument[1],argument[2],argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,1);
 
 // End rune
-
-
-
-
-

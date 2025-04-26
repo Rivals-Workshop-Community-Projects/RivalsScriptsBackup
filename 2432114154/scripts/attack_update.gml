@@ -57,16 +57,15 @@ if window == 1 && window_timer == 1 {
 
 
     if attack == AT_FSPECIAL{
-    	
     	if has_hit {
     		djumps = 0
+    		attack_end()
               old_vsp = -9
               old_hsp = 4*spr_dir
-              set_attack(AT_DSPECIAL)
-              window = 3
+              set_attack(AT_UTILT)
+              window = 4
               window_timer = 0
               state_timer = 200
-	          set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10);
     	}
     	
     }
@@ -303,19 +302,33 @@ if isyellow && !hitpause {
         hsp = 7*spr_dir
     }
     
-    if attack == AT_UTILT && has_hit_player {
+    if attack == AT_UTILT && (has_hit_player or state_timer >= 200){
+    	vsp += 0.2
+    	if window == 5 && window_timer == 10 && y < room_height/2 + 300 {
+    		if  free{
+    		window_timer -= 1
+    		} else {
+    			window_timer += 4
+    			hit_player_obj.y = y
+    		}
+    	}
+    	
+    	if window == 5 && window_timer == 18 && free && !hitpause{
+    		vsp = -12
+    	}
     	
     	if window == 3 or window == 4 {
-    		
     	   	with hit_player_obj {
     	   		if state_cat == SC_HITSTUN {
+    	   		   hitpause = true
+    	   		   hitstop = 5
+    	   		   fall_through = true
    	               vsp = 0
    	               hsp = 0
    	               x += floor( (other.x  + 40*other.spr_dir - x)/6 )
    	               y += floor( (other.y - 30 - y)/6 )
     	   		}
              }
-                  
     	}
     	
     	if window == 4 && window_timer > 5 {
@@ -330,7 +343,9 @@ if isyellow && !hitpause {
     		with hit_player_obj {
     		if state_cat == SC_HITSTUN {	
     		if other.window_timer <= 13 {
-    			
+    			hitpause = true
+    			hitstop = 5
+    	   		fall_through = true
     			can_tech = false
    	               vsp = 0
    	               hsp = 0
@@ -369,8 +384,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
 
     
     if attack == AT_FSPECIAL{
-    	
-    	prat_land_time = 8;
+    	prat_land_time = 15;
     	can_wall_jump = true
         if window == 1 {
         hsp /= 1.2
@@ -394,13 +408,16 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
             			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
             	sound_play(asset_get("sfx_ori_bash_use"))
             	sound_play(asset_get("sfx_bird_nspecial"),false,noone,1,1.5)
-            	hsp = 16*spr_dir
+            	hsp = 18*spr_dir
             }
             
 
-                 	if ((left_down && spr_dir == 1) or (right_down && spr_dir == -1)) && window_timer == 1 && !hitpause && special_down{
-                 	   hsp *= -1	
-                 	} 
+                 	// if !hitpause && special_down && state_timer < 100{
+                 	//   window = 1
+                 	//   hsp = -4*spr_dir
+                 	//   window_timer = 0
+                 	//   state_timer = 100
+                 	// } 
                  
 
          
@@ -441,7 +458,6 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         		if state_timer == 1 {
         			move_cooldown[AT_EXTRA_1] = 0
         		}
-        	create_hitbox(AT_NSPECIAL,2,x,y - 30)
         	}
          ///if window < 3 {    
          ///vsp = 0
@@ -650,7 +666,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         
                 
         
-        if attack == AT_DSPECIAL{ 
+        if attack == AT_DSPECIAL{
         	move_cooldown[AT_USPECIAL] = 2
         	hitpause = 0
          if free && window <= 2{
@@ -673,27 +689,17 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
          }
          
          if window == 1{
-             
              if window_timer == 1 {
                  set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 20);
-                 sound_play(asset_get("sfx_swipe_weak1"))
-             }
-             if window_timer == 1 {
-                 sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"))
-                 super_armor = true
-                 countering = 1
+                 sound_play(asset_get("sfx_swipe_weak1"),false,noone,0.6)
+                 sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"),false,noone,0.6)
                  shake_camera(2,4)
-                 sound_play(sound_get("RI"))
+                 sound_play(sound_get("RI"),false,noone,0.6)
                  spawn_hit_fx (x, y - 30, 302)
              }
-             
-
-             
-             
          }   
            
          if window == 2 {
-
              if window_timer == 4 {
              	if left_down && !right_down {
              		spr_dir = -1 
@@ -701,22 +707,18 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
              	if !left_down && right_down {
              		spr_dir = 1 
              	}
-                 countering = 0
-                 super_armor = false
              }
              
              
              if window_timer == 8 {
-                 create_hitbox(AT_EXTRA_3, 1, x, y)
-                 create_hitbox(AT_EXTRA_3, 2, x, y)
-             spawn_hit_fx(x+70*spr_dir,y - 26, 113)
-             spawn_hit_fx(x+70*spr_dir,y - 26, 302)
+             fx = spawn_hit_fx(x+70*spr_dir,y - 26, 305)
+             fx2 = spawn_hit_fx(x+70*spr_dir,y - 26, 302)
+             fx.pause = 4
+             fx2.pause = 4
+             create_hitbox(AT_EXTRA_3, 6, x, y)
              sound_play(sound_get("counterhit"))
              }
-             
-             if  window_timer == 11 {
-            	create_hitbox(AT_EXTRA_3, 5, x, y)
-             }
+
          
          
          }
@@ -757,25 +759,30 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
                 hsp = 1*spr_dir
             }
             
+            if (window == 1 && strong_charge) > 0 or (window == 2 && window_timer < 6 && !hitpause){
+            	with oPlayer{
+            		if self != other{
+            			if abs(x + 60*other.spr_dir - other.x) < 400 &&abs(y - other.y) < 400{
+            				if other.strong_charge%4 == 0{
+            			    	x += (1 + floor(other.strong_charge/10))*(1 - (x > other.x + 40*other.spr_dir)*2)
+            				}
+            			}
+            			if abs(x + 60*other.spr_dir - other.x) < 200 &&abs(y - other.y) < 200{
+            				if other.strong_charge%2 == 1{
+            			    	x += (1 + floor(other.strong_charge/10))*(1 - (x > other.x + 40*other.spr_dir)*2)
+            				}
+            			}
+            		}
+            	}
+            }
+            
             if strong_charge % 2 == 0 && strong_charge > 0 && window == 1 {
                 
-                if hit_player_obj != self {
                 	
                 	if strong_charge % 6 == 0 {
                 	spawn_base_dust(x - (10 + random_func(2,30,true))*spr_dir,y, "dash_start",spr_dir)
                 	spawn_base_dust(x + (20 + random_func(1,40,true))*spr_dir,y, "dash",spr_dir*-1)
                 	}
-                	
-                if (spr_dir = 1 && hit_player_obj.x > x) or	(spr_dir = -1 && hit_player_obj.x < x){
-                if x + 24*spr_dir > hit_player_obj.x && hit_player_obj.x + 250 > x {
-                	hit_player_obj.x += 1 + floor(strong_charge/7)
-                }
-                
-                if x + 24*spr_dir < hit_player_obj.x && hit_player_obj.x - 250 < x  {
-                	hit_player_obj.x -= 1 + floor(strong_charge/7)
-                }
-                }
-                }
                 
                 
                 if strong_charge % 8 == 0 && strong_charge < 50  {

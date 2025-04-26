@@ -25,17 +25,6 @@ if(attack == AT_NSPECIAL){
 				}if(player_id.FinalSmash > 0)up = true;
 			}
 		}
-		/*if(swordnum <= 1){
-			if(player_id.attack == AT_NSPECIAL && player_id.window <= 2){
-				if(player_id.up_down){
-					hsp *= 0.5;
-					if(vsp > 0.1){vsp -= -0.1;}
-					up = true;
-				}else{
-					up = false;
-				}
-			}
-		}*/
 		if(swordnum == 0){ //startup phase
 			hsp = hsp*0.8;vsp = vsp*0.8;
 			//hsp = player_id.hsp+(hsp*0.9);vsp = player_id.vsp+(vsp*0.9);
@@ -54,8 +43,6 @@ if(attack == AT_NSPECIAL){
 				hsp *= 1.55;vsp *= 1.55;
 			}
 		}
-		/*hsp = min(hsp, 20);vsp = min(vsp, 20);
-		hsp = max(hsp, -20);vsp = max(vsp, -20);*/
 		angle = darctan2(-vsp * spr_dir, hsp * spr_dir);
     	proj_angle = angle;
     	if(hitbox_timer % 2 == 0 && !Pocketed){
@@ -286,11 +273,6 @@ if(attack == AT_DSTRONG){
 						anim += 1;
 					}if(hitbox_timer % 4 == 0){
 						var hit = create_hitbox(AT_DSTRONG, 10, x, y);hit.player = player;
-						/*hit.PocketBuff = PocketBuff;
-						if(PocketBuff > 0){
-							hit.damage = ceil(hit.damage*(power(1.5,PocketBuff)));hit.kb_scale = hit.kb_scale*(power(1.25,PocketBuff));
-							hit.damage = min(hit.damage,999);hit.kb_scale = min(hit.kb_scale,2);
-						}*/
 					}
 					if(anim >= 8){
 						anim = 0;

@@ -68,10 +68,15 @@ switch(attack)
 				destroyed = false;
 			}
 			//This code governs the movement of the jump disc
-			if (hitbox_timer == 1)
+			if (hitbox_timer == 1 && !was_parried)
 			{
 				hsp=lengthdir_x(18, player_id.dst);
 				vsp=lengthdir_y(18, player_id.dst);
+			}
+			if (was_parried)
+			{
+				hsp=lengthdir_x(x - player_id.x, player_id.dst + 180);
+				vsp=lengthdir_y(y - player_id.y, player_id.dst + 180);
 			}
 			if ((has_hit && player_id.moveDisc == true) || hitbox_timer == 12 )
 			{

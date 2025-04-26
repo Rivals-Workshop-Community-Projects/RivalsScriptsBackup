@@ -2,6 +2,7 @@
 
 is_venus_rune = true;
 sprite_index = sprite_get("artc_rune");
+mask_index = sprite_get("artc_rune_hurt");
 image_xscale = 2;
 image_yscale = 2;
 disable_movement = true;
@@ -29,7 +30,8 @@ flash_fx_time_max = 16;
 hp = 0;
 hp_max = 0;
 drain_cd = 0;
-reflect_mult = 0;
+reflect_mult = 0; //reflect strength for every object
+reflect_hb_mult = 0; //reflect strength for hitboxes
 charge_lvl = 0; //used to indicate how strong a rune is
 
 reflect_filter = 0; //cooldown for when venus can bounce off a rune with uspec
@@ -43,7 +45,7 @@ hud_col = (player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_play
 
 pow_col = make_color_rgb(player_id.colorO[6*4+0]*255, player_id.colorO[6*4+1]*255, player_id.colorO[6*4+2]*255);
 
-fx_lvl_sparkle = sprite_get(!player_id.s_alt && player_id.alt_cur == 27 ? "fx_ashe_trail" : "fx_light_follow");
+fx_lvl_sparkle = sprite_get(!player_id.s_alt && player_id.alt_cur == 28 ? "fx_ashe_trail" : "fx_light_follow");
 lvl_indc_base_dist = 32;
 lvl_indc_ex_dist = 22;
 

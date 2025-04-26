@@ -132,3 +132,5 @@ Hikaru_Title = "King of the Ring"
 
 arena_title = "The Ace of Aether"
 arena_short_name = "Bailey Rosworth";
+
+guiltySprite = sprite_get("guilty");

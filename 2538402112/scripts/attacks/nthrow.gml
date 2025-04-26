@@ -9,19 +9,21 @@ set_attack_value(AT_NTHROW, AG_OFF_LEDGE, 0);
 
 set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX, sound_get("EatSeed"));
 
 set_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NTHROW, 2, AG_WINDOW_SFX, sound_get("EatSeed"));
+set_window_value(AT_NTHROW, 2, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_NTHROW, 2, AG_WINDOW_SFX, asset_get("sfx_ell_big_missile_fire"));
 
 set_window_value(AT_NTHROW, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, -8);
-set_window_value(AT_NTHROW, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NTHROW, 3, AG_WINDOW_SFX, asset_get("sfx_ell_big_missile_fire"));
 
 set_window_value(AT_NTHROW, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_NTHROW, 4, AG_WINDOW_ANIM_FRAMES, 3);

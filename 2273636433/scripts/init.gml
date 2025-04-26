@@ -141,6 +141,7 @@ checker=0;
 golpeado=9;
 dust_pos1=0;
 dust_pos2=0;
+dust_draw= 0;
 soundpick = 0;
 pill_color = 0;
 kirby_pill=1;
@@ -151,7 +152,7 @@ split_var = split_synced_var(1,4);
 voice_toggle =split_var[0];
 pill_skin =split_var[1];
 
-if pill_skin == 0{
+if pill_skin == 0 || pill_skin> 10{
   pill_skin = 1;
 }
 
@@ -163,7 +164,7 @@ koffing_gas_active=0;
 next_group = 0;
 snolid = 0;
 pill_counter = 0;
-doc_ditto = 0;
+doc_melee_counter = 1;
 num3 = 0;
 repeat(1000)
 	   {

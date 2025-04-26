@@ -61,7 +61,7 @@ sprite_change_offset("taunt", 63, 110);
 sprite_change_offset("extra1", 63, 110);
 sprite_change_offset("extra1_hurt", 19, 60);
 sprite_change_offset("nspecial_proj", 19,19);
-sprite_change_offset("nspecial_projMask", 64, 110);
+// sprite_change_offset("nspecial_projMask", 19,19);
 sprite_change_offset("poyothrow", 32, 54);
 sprite_change_offset("hurtbox_idle", 63, 112);
 sprite_change_offset("hurtbox_crouch", 63, 112);

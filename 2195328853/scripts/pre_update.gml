@@ -1,0 +1,1 @@
+if(crawling)off_edge = false;

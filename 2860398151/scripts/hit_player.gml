@@ -67,10 +67,21 @@ if (my_hitboxID.attack == AT_DATTACK)
 
 if (my_hitboxID.attack == AT_FSTRONG)
 {
+	if (muted)
+	{
+		if (my_hitboxID.hbox_num == 1)
+		{
+			sound_play(asset_get("sfx_mol_flash_explode"), false, noone, 2);
+			sound_play(asset_get("sfx_mol_huge_explode"), false, noone, 2, 0.75);
+		}
+	}
+	
 	if (!muted)
 	{
 		if (my_hitboxID.hbox_num == 1)
 		{
+			sound_play(asset_get("sfx_mol_flash_explode"), false, noone, 1.25);
+			
 			var smash_bash = random_func(0, 6, true);		
 			switch(smash_bash) 
 			{

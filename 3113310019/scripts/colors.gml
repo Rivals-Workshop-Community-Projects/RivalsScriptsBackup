@@ -2,7 +2,7 @@
 
 // fruit
 set_color_profile_slot( 0, 0, 225, 107, 106 );
-set_color_profile_slot_range( 0, 13, 24, 27 );
+set_color_profile_slot_range( 0, 15, 24, 56 );
 
 // highlight
 set_color_profile_slot( 0, 1, 212, 230, 147 );
@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 24 );
 
 // winter
 set_color_profile_slot( 1, 0, 225, 107, 106 ); //fruit
@@ -50,8 +50,8 @@ set_color_profile_slot( 1, 7, 26, 114, 93 ); //foliage 2
 set_color_profile_slot( 2, 0, 255, 246, 237 ); //fruit
 set_color_profile_slot( 2, 1, 212, 151, 60 ); //highlight
 set_color_profile_slot( 2, 2, 171, 104, 38 ); //body 1
-set_color_profile_slot( 2, 3, 138, 78, 1 ); //body 2
-set_color_profile_slot( 2, 4, 97, 52, 0 ); //stripe 1
+set_color_profile_slot( 2, 3, 138, 78, 1 ); //stripe 1
+set_color_profile_slot( 2, 4, 97, 52, 0 ); //body 2
 set_color_profile_slot( 2, 5, 74, 34, 0 ); //stripe 2
 set_color_profile_slot( 2, 6, 144, 212, 0 ); //foliage 1
 set_color_profile_slot( 2, 7, 92, 138, 0 ); //foliage 2
@@ -76,15 +76,15 @@ set_color_profile_slot( 4, 5, 190, 79, 3 ); //stripe 2
 set_color_profile_slot( 4, 6, 93, 126, 37 ); //foliage 1
 set_color_profile_slot( 4, 7, 45, 87, 38 ); //foliage 2
 
-// cantaloupe
-set_color_profile_slot( 5, 0, 255, 154, 0 ); //fruit
-set_color_profile_slot( 5, 1, 255, 232, 194 ); //highlight
-set_color_profile_slot( 5, 2, 232, 199, 144 ); //body 1
-set_color_profile_slot( 5, 3, 199, 168, 113 ); //stripe 1
-set_color_profile_slot( 5, 4, 140, 136, 92 ); //body 2
-set_color_profile_slot( 5, 5, 94, 115, 85 ); //stripe 2
-set_color_profile_slot( 5, 6, 140, 156, 50 ); //foliage 1
-set_color_profile_slot( 5, 7, 63, 97, 19 ); //foliage 2
+// fusion 
+set_color_profile_slot( 5, 0, 140, 64, 109 ); //fruit
+set_color_profile_slot( 5, 1, 255, 234, 223 ); //highlight
+set_color_profile_slot( 5, 2, 222, 201, 177 ); //body 1
+set_color_profile_slot( 5, 3, 173, 162, 141 ); //stripe 1
+set_color_profile_slot( 5, 4, 158, 118, 124 ); //body 2
+set_color_profile_slot( 5, 5, 153, 72, 119 ); //stripe 2
+set_color_profile_slot( 5, 6, 136, 109, 112 ); //foliage 1
+set_color_profile_slot( 5, 7, 77, 81, 63 ); //foliage 2
 
 // abyss
 set_color_profile_slot( 6, 0, 50, 48, 95 ); //fruit
@@ -96,7 +96,7 @@ set_color_profile_slot( 6, 5, 109, 36, 134 ); //stripe 2
 set_color_profile_slot( 6, 6, 86, 84, 146 ); //foliage 1
 set_color_profile_slot( 6, 7, 50, 48, 95 ); //foliage 2
 
-// gameboy
+// gameboy (green #2)
 set_color_profile_slot( 7, 0, 35, 67, 49 ); //fruit
 set_color_profile_slot( 7, 1, 211, 226, 154 ); //highlight
 set_color_profile_slot( 7, 2, 167, 186, 74 ); //body 1
@@ -126,7 +126,7 @@ set_color_profile_slot( 9, 5, 23, 54, 61 ); //stripe 2
 set_color_profile_slot( 9, 6, 255, 170, 71 ); //foliage 1
 set_color_profile_slot( 9, 7, 171, 82, 50 ); //foliage 2
 
-// noodle
+// dragon (green #3)
 set_color_profile_slot( 10, 0, 255, 153, 53 ); //fruit
 set_color_profile_slot( 10, 1, 182, 244, 48 ); //highlight
 set_color_profile_slot( 10, 2, 100, 221, 42 ); //body 1
@@ -156,17 +156,17 @@ set_color_profile_slot( 12, 5, 193, 52, 52 ); //stripe 2
 set_color_profile_slot( 12, 6, 82, 106, 235 ); //foliage 1
 set_color_profile_slot( 12, 7, 59, 73, 135 ); //foliage 2
 
-// unnamed blue alt
+// the blue one
 set_color_profile_slot( 13, 0, 106, 92, 249 ); //fruit
 set_color_profile_slot( 13, 1, 154, 241, 255 ); //highlight
 set_color_profile_slot( 13, 2, 111, 188, 242 ); //body 1
 set_color_profile_slot( 13, 3, 182, 128, 224 ); //stripe 1
 set_color_profile_slot( 13, 4, 102, 109, 238 ); //body 2
-set_color_profile_slot( 13, 5, 101, 65, 217 ); //stripe 2
+set_color_profile_slot( 13, 5, 89, 58, 191 ); //stripe 2
 set_color_profile_slot( 13, 6, 153, 52, 52 ); //foliage 1
 set_color_profile_slot( 13, 7, 103, 11, 105 ); //foliage 2
 
-// watermimic
+// watermimic (green #4)
 set_color_profile_slot( 14, 0, 255, 63, 121 ); //fruit
 set_color_profile_slot( 14, 1, 192, 255, 97 ); //highlight
 set_color_profile_slot( 14, 2, 112, 233, 92 ); //body 1
@@ -203,25 +203,71 @@ set_color_profile_slot( 17, 2, 182, 132, 254 ); //body 1
 set_color_profile_slot( 17, 3, 143, 93, 204 ); //stripe 1
 set_color_profile_slot( 17, 4, 96, 75, 166 ); //body 2
 set_color_profile_slot( 17, 5, 65, 47, 135 ); //stripe 2
-set_color_profile_slot( 17, 6, 0, 255, 204 ); //foliage 2
-set_color_profile_slot( 17, 7, 0, 169, 152 ); //foliage 1
+set_color_profile_slot( 17, 6, 0, 255, 204 ); //foliage 1
+set_color_profile_slot( 17, 7, 0, 169, 152 ); //foliage 2
 
-// ranked gold
-set_color_profile_slot( 18, 0, 249, 185, 112 ); //fruit
+// glistering
+set_color_profile_slot( 18, 0, 237, 168, 90 ); //fruit
 set_color_profile_slot( 18, 1, 255, 236, 201 ); //highlight
 set_color_profile_slot( 18, 2, 255, 218, 107 ); //body 1
-set_color_profile_slot( 18, 3, 252, 193, 66 ); //stripe 1
-set_color_profile_slot( 18, 4, 237, 165, 64 ); //body 2
-set_color_profile_slot( 18, 5, 217, 125, 20 ); //stripe 2
-set_color_profile_slot( 18, 6, 207, 127, 35 ); //foliage 1
-set_color_profile_slot( 18, 7, 153, 83, 12 ); //foliage 2
+set_color_profile_slot( 18, 3, 235, 180, 61 ); //stripe 1
+set_color_profile_slot( 18, 4, 207, 141, 51 ); //body 2
+set_color_profile_slot( 18, 5, 173, 106, 31 ); //stripe 2
+set_color_profile_slot( 18, 6, 235, 169, 40 ); //foliage 1
+set_color_profile_slot( 18, 7, 176, 100, 30 ); //foliage 2
 
-// imitater
-set_color_profile_slot( 19, 0, 198, 144, 143 ); //fruit
+// felon-pult
+set_color_profile_slot( 19, 0, 117, 20, 20 ); //fruit
 set_color_profile_slot( 19, 1, 251, 251, 251 ); //highlight
-set_color_profile_slot( 19, 2, 193, 199, 181 ); //body 1
-set_color_profile_slot( 19, 3, 149, 168, 138 ); //stripe 1
-set_color_profile_slot( 19, 4, 116, 143, 105 ); //body 2
-set_color_profile_slot( 19, 5, 76, 99, 70 ); //stripe 2
-set_color_profile_slot( 19, 6, 152, 179, 152 ); //foliage 1
-set_color_profile_slot( 19, 7, 86, 127, 87 ); //foliage 2
+set_color_profile_slot( 19, 2, 204, 203, 209 ); //body 1
+set_color_profile_slot( 19, 3, 134, 146, 168 ); //stripe 1
+set_color_profile_slot( 19, 4, 104, 98, 153 ); //body 2
+set_color_profile_slot( 19, 5, 61, 55, 97 ); //stripe 2
+set_color_profile_slot( 19, 6, 72, 75, 112 ); //foliage 1
+set_color_profile_slot( 19, 7, 45, 35, 64 ); //foliage 2
+
+// polarity
+set_color_profile_slot( 20, 0, 163, 255, 233 ); //fruit
+set_color_profile_slot( 20, 1, 255, 173, 173 ); //highlight
+set_color_profile_slot( 20, 2, 255, 105, 105 ); //body 1
+set_color_profile_slot( 20, 3, 232, 58, 84 ); //stripe 1
+set_color_profile_slot( 20, 4, 51, 160, 255 ); //body 2
+set_color_profile_slot( 20, 5, 55, 107, 212 ); //stripe 2
+set_color_profile_slot( 20, 6, 95, 101, 117 ); //foliage 1
+set_color_profile_slot( 20, 7, 55, 46, 77 ); //foliage 2
+
+// suika touhou
+set_color_profile_slot( 21, 0, 209, 25, 25 ); //fruit
+set_color_profile_slot( 21, 1, 255, 255, 255 ); //highlight
+set_color_profile_slot( 21, 2, 240, 229, 187 ); //body 1
+set_color_profile_slot( 21, 3, 255, 174, 99 ); //stripe 1
+set_color_profile_slot( 21, 4, 199, 145, 120 ); //body 2
+set_color_profile_slot( 21, 5, 209, 92, 68 ); //stripe 2
+set_color_profile_slot( 21, 6, 151, 87, 255 ); //foliage 1
+set_color_profile_slot( 21, 7, 62, 41, 156 ); //foliage 2
+
+// relic (green #5)
+set_color_profile_slot( 22, 0, 255, 158, 189 ); //fruit
+set_color_profile_slot( 22, 1, 255, 231, 194 ); //highlight
+set_color_profile_slot( 22, 2, 255, 188, 156 ); //body 1
+set_color_profile_slot( 22, 3, 255, 143, 156 ); //stripe 1
+set_color_profile_slot( 22, 4, 171, 157, 63 ); //body 2
+set_color_profile_slot( 22, 5, 115, 117, 0 ); //stripe 2
+set_color_profile_slot( 22, 6, 130, 75, 84 ); //foliage 1
+set_color_profile_slot( 22, 7, 99, 31, 41 ); //foliage 2
+
+// imitater (green #6)
+set_color_profile_slot( 23, 0, 198, 144, 143 ); //fruit
+set_color_profile_slot( 23, 1, 251, 251, 251 ); //highlight
+set_color_profile_slot( 23, 2, 193, 199, 181 ); //body 1
+set_color_profile_slot( 23, 3, 149, 168, 138 ); //stripe 1
+set_color_profile_slot( 23, 4, 116, 143, 105 ); //body 2
+set_color_profile_slot( 23, 5, 76, 99, 70 ); //stripe 2
+set_color_profile_slot( 23, 6, 152, 179, 152 ); //foliage 1
+set_color_profile_slot( 23, 7, 86, 127, 87 ); //foliage 2
+
+/* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
+=== BEGIN JSON PALETTE ===
+{"formatversion":1,"data":[{"name":"fruit","colors":[{"r":"225","g":"107","b":"106","main":true},{"r":157,"g":63,"b":38},{"r":110,"g":48,"b":27},{"r":85,"g":26,"b":21}]},{"name":"highlight","colors":[{"r":"212","g":"230","b":"147","main":true}]},{"name":"body 1","colors":[{"r":"174","g":"206","b":"77","main":true}]},{"name":"stripe 1","colors":[{"r":"129","g":"174","b":"50","main":true}]},{"name":"body 2","colors":[{"r":"99","g":"146","b":"50","main":true}]},{"name":"stripe 2","colors":[{"r":"71","g":"106","b":"31","main":true}]},{"name":"foliage 1","colors":[{"r":"76","g":"116","b":"47","main":true}]},{"name":"foliage 2","colors":[{"r":"45","g":"79","b":"18","main":true}]}]}
+=== END JSON PALETTE ===
+*/

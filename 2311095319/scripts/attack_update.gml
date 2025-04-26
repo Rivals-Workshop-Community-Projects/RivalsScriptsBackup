@@ -38,7 +38,7 @@ if (attack == AT_DATTACK){
 	
 	if (window == 2 || window == 3){
 		if (!hitpause && !free){
-			if (window_timer mod 2 == 0){
+			if (window_timer mod 4 == 0){
 				if (window == 3 && window_timer > 4){
 					spawn_base_dust( x, y, "walk", spr_dir);
 				} else {

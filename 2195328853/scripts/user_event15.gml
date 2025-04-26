@@ -233,6 +233,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.84", "7th December 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Made the AI much better
++ Fixed a recovery exploit");
+
 initPatch("1.83", "16th August 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Added Green Flower Zone compat

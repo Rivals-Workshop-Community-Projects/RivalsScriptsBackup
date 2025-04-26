@@ -63,7 +63,7 @@ djump_accel_end_time    = 0;		            //                  the amount of time
 max_djumps              = 1;		            // 0    -  3        the 0 is elliana because she has hover instead
 //walljump_hsp          = 5;		            // 4    -  7
 //walljump_vsp          = 9;		            // 7    -  10
-//land_time             = 4;		            // 4    -  6
+land_time               = 4;		            // 4    -  6
 //prat_land_time        = 16;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
@@ -243,6 +243,9 @@ AG_WINDOW_LOOP_REFRESH_HITS = 38;   //if true, it will refresh hitboxes so they 
 window_loops = 0;                   //decides the amount of times to loop
 //usage: set_window_value(attack, window, AG_WINDOW_LOOP_TIMES, #loops)
 
+AG_WINDOW_CANCEL_FRAME_TOTAL = 39;
+window_cancel_total = 0;
+
 AG_MUNO_ATTACK_EXCLUDE = 80;
 
 /////////////////////////////////////////////////////// CUSTOM HITBOX COLOR SYSTEM //////////////////////////////////////////////////////
@@ -328,7 +331,7 @@ trick_ring_hue = 0; //controls the animation of the colors
 trick_ring_value = 255;
 trick_ring_saturation = 150;
 trick_ring_colors = 7; //reffers to color spacing
-//do_trickring_shader = false; //unused (for now?)
+//do_trickring_shader = false; //unused
 
 trick_input_time = 0;
 trick_input_set = 30;
@@ -345,25 +348,48 @@ trick_spam_penalty_time = 0;
 trick_spam_penalty_set = 180;
 trick_spam_penalty_mult = 0.2;
 
+taunt_grace_timer = 0;
+taunt_grace_set = 6;
+
+//COMBO MECHANIC
+combo_hits = 0;
+combo_timer = 0;
+combo_timer_full = 0;
+combo_time_gain_hit = 45;
+combo_time_gain_big = 90;
+comboing = false;
+trick_combo_end = false;
+hurt_combo_end = false;
+kill_combo_end = false;
+
+cur_combo_text = -1;
+combo_text_display_time = 0;
+combo_boost_display = [];
+combo_display_time = [];
+combo_display_time_max = 120;
+combo_display_hits = [2, 3, 4, 5, 6,  7,  8,  9,  10, 11]; //3, 5, 7, 9, 11, 13, 15, 17, 19, 21
+
 //BOOST MODE MECHANIC
 boost_cur = 0;
-boost_max = 300;
+boost_max = 200;
 boost_mode = false;
 
 test_boost = false; //debug boost
 boost_trick_delay = 0;
 boost_trick_delay_set = 60;
+boost_grace_timer = 0;      //when above 0, it won't deplete boost
+boost_grace_timer_set = 60;
 
 //boost trick math:
-boost_combotrick_mult = [30, 40];   //multiplier added on ending a combo (with trick)       //6, 7
-boost_comboend_mult = [20, 30];     //multiplier added on ending a combo (without trick)    //4, 5
-boost_comboend_hit_mult = [10, 20]  //multiplier added on ending a combo (when sonic is hit)
-boost_hitgain_mult = [0.75, 1.5];   //multiplier when hitting a single hit                  //2, 2
-boost_parrygain = [60, 80];
+boost_combotrick_mult = [40, 60];           //multiplier added on ending a combo (with trick)
+boost_comboend_mult = [20, 30];             //multiplier added on ending a combo (without trick)
+boost_hitgain_mult = [2, 2];                //multiplier when hitting a single hit
+boost_parrygain = [boost_max/2, boost_max]; //60, 80
+boost_kill_gain = [boost_max/4, boost_max/2];
+boost_decrease_rate = [8, 2];               //passive decrease (divided by 60)
+boost_parryloss = boost_max/2; //20, 40
+boost_hitloss_mult = 4;
 
-boost_decrease_rate = [6, 3];       //passive decrease (divided by 60)                      //4, 2
-boost_hitloss_mult = [0.5, 1.5];    //multiplier reducing when getting hit                  //0, 1
-boost_parryloss = [20, 40];
 
 
 walk_spd_mult = 0; //acceleration on walk
@@ -378,10 +404,9 @@ boost_stat_changes = [
     ["walk_accel",              0.2,    1,      "B"],
     ["ground_friction",         0.75,   0.5,    "B"],
     ["moonwalk_accel",          1.3,    2,      "B"],
-    ["air_max_speed",           5,      8,      "B"],
-    ["air_accel",               0.3,    0.4,    0.6],
+    ["air_max_speed",           5,      6.5,    8],     // 5,      8,      "B"
+    ["air_accel",               0.3,    0.35,   0.6],   // 0.3,    0.4,    0.6
     ["fast_fall",               14,     20,     "B"],
-    ["land_time",               4,      6,      4],
     ["prat_land_time",          16,     24,     16],
     ["jump_speed",              10,     "",     12],
     ["djump_speed",             10,     "",     12],
@@ -403,7 +428,7 @@ repeat(array_length(boost_stat_changes)) //stat translator
 {
     if (boost_stat_changes[tempvar][3] == "B") boost_stat_changes[tempvar][@ 3] = boost_stat_changes[tempvar][@ 2]; //this super value takes from the boost
     if (boost_stat_changes[tempvar][2] == "S") boost_stat_changes[tempvar][@ 2] = boost_stat_changes[tempvar][@ 3]; //this boost value takes from super
-    if (boost_stat_changes[tempvar][3] == "") boost_stat_changes[tempvar][@ 2] = boost_stat_changes[tempvar][@ 1]; //value doesn't exist on super so it defaults to normal
+    if (boost_stat_changes[tempvar][3] == "") boost_stat_changes[tempvar][@ 3] = boost_stat_changes[tempvar][@ 1]; //value doesn't exist on super so it defaults to normal
     if (boost_stat_changes[tempvar][2] == "") boost_stat_changes[tempvar][@ 2] = boost_stat_changes[tempvar][@ 1]; //value doesn't exist on boost so it defaults to normal
 
     tempvar ++;
@@ -419,31 +444,16 @@ afterimage = {
 };
 aftimg_refresh_rate = 8;
 cur_aftimg = 0;
+boost_col_average = ((cur_colors[0 + uses_super_colors * 8][@ 0] + cur_colors[0 + uses_super_colors * 8][@ 1] + cur_colors[0 + uses_super_colors * 8][@ 2]) / 3);
+boost_col_average = boost_col_average > 75;
 
 prev_attack = [0, 0];
-
-//COMBO MECHANIC
-combo_hits = 0;
-combo_timer = 0;
-combo_timer_full = 0;
-combo_time_gain_hit = 45;
-combo_time_gain_big = 90;
-comboing = false;
-trick_combo_end = false;
-hurt_combo_end = false;
-
-cur_combo_text = -1;
-combo_text_display_time = 0;
-combo_boost_display = [];
-combo_display_time = [];
-combo_display_time_max = 120;
-combo_display_hits = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
-//3, 5, 7, 9, 10, 11, 12, 13, 14, 15 - if it's not common enough to have a 15 hit combo maybe the combos should go more like this
 
 //attack specific
 dattack_cancel_time_max = 15;
 dattack_cancel_time = 0;
 
+dstrong_start_x = 0;
 dstrong_hsp = [1.5, 35];
 dstrong_loops = 0;
 dstrong_loops_max = 2;
@@ -462,7 +472,7 @@ can_nspec = true;
 homing_target = noone;
 prev_homing_target = noone;
 homing_values = [0, 0]; //distance, angle
-homing_range = [60, -20]; //angle cut limit (up), angle cut limit (down)
+homing_range = [60, -20]; //angle cut limit (up), angle cut limit (down) //60, -20  /  60, -30
 homing_dist_set = 180;
 homing_dist = homing_dist_set;
 //negative numbers go behind sonic
@@ -476,6 +486,8 @@ fspec_speed = 0;
 fspec_supercharge = 0;
 fspec_supercharge_set = 2;
 can_fspec = true;
+
+uspec_air_throw_hsp = 0;
 
 dspec_jumps = 0;
 dspec_jumps_max = 3;
@@ -527,6 +539,9 @@ if (has_multihome_rune)
     next_multihome_target = 0; //scrolls between the grid items avoiding garbage data
     homing_dist_rune = 400;
 }
+
+has_boost_atk_rune = has_rune("K");
+boost_atk_spd_mult = 0.75;
 
 //sonic overdrive (final smash)
 has_blast = has_rune("L");
@@ -614,7 +629,7 @@ switch (alt_cur) //glow intensity setup - it just adds this much color on all 3 
 }
 rings_cur = 0;
 rings_max = 999;
-//ring_life_caps_reached = [false, false, false, false, false, false, false, false, false];
+ring_life_next = 1;
 
 super_theme_loop_started = false;
 super_theme_loop_start_set = 2.835;
@@ -929,3 +944,27 @@ switch(get_stage_data(SD_ID))
         break;
 }
 rank_override = -1; //overwrites the rank on specific stages, -1 means it acts as normal
+
+
+//beam clash compatibility
+sfx_beam_clash = sound_get("sfx_homingattack"); //plays when the beam clash is initiated
+sfx_beam_progress = sound_get("sfx_charge");   //plays every time special is mashed while clashing, inceasing it's pitch
+clashbox = noone;           //the hitbox which detects the beam clash, on sonic's case i'm using a priority 0 hitbox
+doing_goku_beam = false;    //when true, it means you are doing a beam that supports the beam clash
+beam_juice = 30;            //beam's power for the clash
+beam_juice_max = 60 * 8;    //the max power a beam can have
+beam_length = 0;            //beam distance, in sonic's case it moves him forward
+beam_clash_buddy = noone;   //player_id of the enemy that's currently clashing with you
+beam_clash_timer = 0;       //how long have you been clashing
+beam_clash_timer_max = 120; //how long you can clash for
+clash_x = 0;                //x position of where the clash should happen
+clash_y = 0;                //same as above but for the y position
+clash_winner = noone;
+clash_stop_offset = 128;    //sonic specifically uses this to detect where the beam clash should be interrupted so the graphic for the beam won't look weird
+//used scripts:
+//  init.gml
+//  update.gml
+//  set_attack.gml
+//  attack_update.gml
+//  got_hit.gml
+//  fspecial.gml (hitbox 4)

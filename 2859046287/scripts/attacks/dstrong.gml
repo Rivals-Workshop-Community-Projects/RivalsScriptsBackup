@@ -46,6 +46,7 @@ hitbox_num = 1; //blast - front
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 1); //because of the looping, window timer 0 won't update the attack in time, this is a tester issue
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3); //multihit value - final hit is on attack_update.gml
@@ -53,11 +54,10 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 64);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48); //multihit value - final hit is on attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64); //multihit value - final hit is on attack_update.gml
-set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2); //multihit value - final hit is on attack_update.gml
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 1); //multihit value - final hit is on attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 80); //multihit value - final hit is on attack_update.gml
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.5);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 3); //multihit value - final hit is on attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3); //multihit value - final hit is on attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_pow_hit[0]); //multihit value - final hit is on attack_update.gml

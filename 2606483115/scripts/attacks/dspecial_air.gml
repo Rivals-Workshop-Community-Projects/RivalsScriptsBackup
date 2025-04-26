@@ -11,9 +11,9 @@ set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX, sfx_steam1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 5);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_VSPEED, -2);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_VSPEED, -3);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED, -2);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED, -1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED_TYPE, 0);
 
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 9);

@@ -41,6 +41,7 @@ hsprite_change_offset("bair", 92, 162, true);
 hsprite_change_offset("uair", 92, 162, true);
 hsprite_change_offset("dair", 92, 162, true);
 hsprite_change_offset("fstrong", 92, 162, true);
+hsprite_change_offset("fstrong_old", 92, 162, true);
 hsprite_change_offset("ustrong", 92, 162, true);
 hsprite_change_offset("dstrong", 92, 162, true);
 hsprite_change_offset("nspecial", 92, 162, true);
@@ -55,7 +56,9 @@ hsprite_change_offset("plat", 50, 50, false);       //this sprite is empty
 sprite_change_offset("wings", 92, 162);
 
 sprite_change_offset("nspec_bomb", 50, 50);
+sprite_change_offset("nspec_offbomb", 50, 50);
 sprite_change_offset("nspec_bomb_mask", 50, 50);
+sprite_change_offset("offscreen", 16, 18);
 
 sprite_change_offset("vfx_ember", 12, 38);
 sprite_change_offset("vfx_uspecspike", 92, 162);

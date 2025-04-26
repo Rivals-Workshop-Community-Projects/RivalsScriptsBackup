@@ -45,11 +45,11 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 400000);//it costs 400000 frames to use this attack, for 12 frames
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 20);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 68);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 300);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 80);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 45);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 45);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 80);
@@ -59,6 +59,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("deploy"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
@@ -67,7 +68,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
-set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("toolboxair"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 
 //boxing glove hitbox 
 set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 3);

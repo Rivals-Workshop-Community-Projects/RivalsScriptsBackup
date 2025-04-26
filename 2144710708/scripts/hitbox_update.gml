@@ -180,7 +180,7 @@ if (attack == AT_DSPECIAL) {
 	}
 	
 	// variable that actually makes the boot active
-	if (hit_override == true) {
+	if (hit_override == true && player_id.boot_save_from_galaxy_prevention == 0) {
 		hit_priority = 1;
 	}
 	else {
@@ -366,8 +366,16 @@ if (attack == AT_DSPECIAL) {
 							other.extra_hitpause = extra_hitpause;
 							other.camera_shake = camera_shake;
 							//other.hitstun_factor = hitstun_factor;
-							if (hitstun_factor == 0 && abyssmult < 1.25) {
-								other.hitstun_factor = 0.6;
+							if (hitstun_factor == 0 && abyssmult < 1.25) { // determines boot hitstun scaling
+								if (kb_scale < 0.4) {
+									other.hitstun_factor = 1;
+								}
+								else if (kb_scale < 0.8) {
+									other.hitstun_factor = 0.8;
+								}
+								else {
+									other.hitstun_factor = 0.6;
+								}
 							}
 							else {
 								other.hitstun_factor = hitstun_factor;

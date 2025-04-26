@@ -42,9 +42,6 @@ set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 0);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 set_window_value(atk, window_num, AG_WINDOW_LOOP_TIMES, 1);
 
 window_num ++; //endlag

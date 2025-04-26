@@ -7,16 +7,17 @@ set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("skill4_hurt"));
 set_attack_value(atk, AG_AIR_SPRITE, sprite_get("skill4_air"));
 set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("skill4_air_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 7);
+set_attack_value(atk, AG_NO_PARRY_STUN, true);
 
 var quit_atk = get_attack_value(atk, AG_NUM_WINDOWS) + 1;
 
 var window_num = 1; //windup 1
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 7); //10
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 5); //8
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.35);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction);
@@ -65,8 +66,8 @@ set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
-set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10);
+//set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
+//set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10);
 
 set_num_hitboxes(atk, 2);
 
@@ -88,6 +89,8 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //flashbang
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);

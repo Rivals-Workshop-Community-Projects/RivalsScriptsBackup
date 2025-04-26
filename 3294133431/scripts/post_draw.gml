@@ -1,8 +1,10 @@
 //
-if(!taunt_down && tauntAnimTimer1 == 0)
-	tauntAnimStartDelayTimer = 0;
 
-if((inTauntMenu || tauntAnimTimer1 > 0) && !invis && invisAnimationAlpha == 1 && tauntAnimStartDelayTimer++ > tauntAnimStartDelay)
+compatableAlpha = visible ? invisAlpha : 0;//ensure compatability with other items using "visible"
+var alphaChar = min(invisAnimationAlpha, compatableAlpha);
+
+
+if((inTauntMenu || tauntAnimTimer1 > 0) && !invis && invisAnimationAlpha == 1 && tauntAnimStartDelayTimer > tauntAnimStartDelay && !custom_clone)
 {
     /*draw_set_font(asset_get("fName"));
     draw_set_halign(fa_center);
@@ -55,42 +57,41 @@ if((inTauntMenu || tauntAnimTimer1 > 0) && !invis && invisAnimationAlpha == 1 &&
 			    x+xOff-2, 
 			    y+yOff-2+animOffY1, 
 			    2, 2, 0, c_white, 1*animAlpha1);
-            
-    
-	if(inTauntMenu)
-	{
-    	tauntAnimTimer1++;
-		
-		if(!tauntFirstMenu)
-			tauntAnimTimer2++;
-		else
-			tauntAnimTimer2 = 0;
-		tauntAnimTimer1 = min(tauntAnimTimer1, tauntAnimDur);
-		tauntAnimTimer2 = min(tauntAnimTimer2, tauntAnimDur);
-	}
-	else if(tauntAnimTimer1 > 0)
-	{
-		tauntAnimTimer1--;
-		tauntAnimTimer1 = max(tauntAnimTimer1, 0);
-	}
-}
-else
-{
-    tauntAnimTimer1 = 0;
-    tauntAnimTimer2 = 0;
 }
 
-var alphaChar = min(invisAnimationAlpha, invisAlpha);
+
 
 if(!disguised || disguisedAsSelf)
 {
-	init_shader();
-	
 	var spr_ind = sprite_index;
-	if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_FTILT || attack == AT_FAIR))
+	var img_ind = image_index;
+	if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FTILT)
 		spr_ind = backstabSuccess ? sprite_get(free ? "fair" : "ftilt") : sprite_get(free ? "fairWeak" : "ftiltWeak");
+	
+	var idleDelay = 60*4.5;
+	var idleDuration = 120;//idleDuration * idleSpeed should be frame count
+	var idleSpeed = 0.1666;
+	if(state == PS_IDLE && state_timer % (idleDelay+idleDuration) > idleDelay)
+	{
+		spr_ind = sprite_get("idleWait");
+		img_ind = floor((state_timer % (idleDelay+idleDuration)-idleDelay)*idleSpeed);
+		inIdleWait = true;
+		idleWaitInd = img_ind;
+	}
+	else
+		inIdleWait = false;
+		
+	if(state == PS_IDLE && state_timer == idleDelay+idleDuration-1)
+		state_timer = 0;
 
-	DrawSprite(spr_ind, image_index, x, y, spr_dir*1, 1, 0, c_white, alphaChar, true);
+	var introDuration = 120;
+	if((state == PS_SPAWN && state_timer < introDuration))// || (variable_instance_exists(self, "match_timer") && get_match_setting(SET_PRACTICE) && match_timer < introDuration))
+	{
+		spr_ind = sprite_get("idleIntro");
+		img_ind = state_timer*0.25;
+	}
+
+	DrawSprite(spr_ind, img_ind, x, y, spr_dir*1, 1, 0, c_white, alphaChar, true);
 }
 else
 {
@@ -137,6 +138,18 @@ else
 		disguiseSprite = asset_get("mech_hover");
 		disguisedImgInd = image_index;
 	}
+
+	if(disguised && !disguisedAsSelf && chars[charIndex] == "mouse")
+	{
+		if (floating && state != PS_ATTACK_AIR){
+			if (floor(floatAnimTimer/10) > 11 ) {
+				floatAnimTimer = 0;
+			}
+			disguiseSprite = asset_get("mouse_float");
+			disguisedImgInd = floor(floatAnimTimer/10);
+			floatAnimTimer++
+		}//TODO: add missing transition frames
+	}
 	
 	DrawSprite(disguiseSprite, disguisedImgInd, x, y, spr_dir*scale, scale, 0, c_white, alphaChar, false);
 	
@@ -170,120 +183,36 @@ hudHeight = char_height;
 if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && hudYOffsetMap[? attack] != undefined)
 	hudHeight += hudYOffsetMap[? attack];
 
+
+draw_sprite_ext(sprite_get("hudHpNew"), playerDmg, x-24, y-54-hudHeight, 1, 1, 0, c_white, alphaChar);
+
 var isMech = disguised && !disguisedAsSelf && chars[charIndex] == "mech";
-draw_sprite_ext(sprite_get("hudHp"), hudIndex, x-24, y-54-hudHeight+(isMech?2:0), 1, 1, 0, hudColor, alphaChar);
-
-var offset = 0;
-if(playerDmg > 9)
-	offset = 5;
-if(playerDmg > 99)
-	offset = 10;
-var dmgString = string(playerDmg);
-for(var i = 1; i < string_length(dmgString)+1; i++)
-	draw_sprite_ext(sprite_get("hud_numbers"), real(string_char_at(dmgString, i)), x-24+i*10-offset, y-48-hudHeight, 1, 1, 0, c_white, alphaChar);
-draw_sprite_ext(sprite_get("hud_numbers"), 10, x-24+(string_length(dmgString)+1)*10-offset, y-48-hudHeight, 1, 1, 0, c_white, alphaChar);
-
+if(playerDmg < 100)
+	draw_sprite_ext(sprite_get("hudHp"), hudIndex, x-24, y-54-hudHeight+(isMech?2:0), 1, 1, 0, hudColor, alphaChar);
 
 if(isMech)
-	draw_sprite_ext(mechOverheated ? asset_get("mech_heatbar_spr") : asset_get("mech_steambar_spr"), (mechHeat/mechHeatMax) * (sprite_get_number(asset_get("mech_steambar_spr"))-1), x-32, y-102, 2, 2, 0, c_white, invisAlpha);
+	draw_sprite_ext(mechOverheated ? asset_get("mech_heatbar_spr") : asset_get("mech_steambar_spr"), (mechHeat/mechHeatMax) * (sprite_get_number(asset_get("mech_steambar_spr"))-1), x-32, y-102, 2, 2, 0, c_white, compatableAlpha);
 
 
-/*with(oPlayer)
+//draw compatability copies
+user_event(11);
+
+//kirby compatability
+if(enemykirby != undefined)
 {
-	if(player == 2)
-	{
-		var startX = 350;
-		var startY = 130;
-		var currX = startX;
-		var currY = startY;
-		var offX = 210;
-		var offY = 16;
-		draw_debug_text(currX, currY, "hurtbox_spr = " + string(hurtbox_spr)); currY+=offY;
-		draw_debug_text(currX, currY, "crouchbox_spr = " + string(crouchbox_spr)); currY+=offY;
-		draw_debug_text(currX, currY, "air_hurtbox_spr = " + string(air_hurtbox_spr)); currY+=offY;
-		draw_debug_text(currX, currY, "hitstun_hurtbox_spr = " + string(hitstun_hurtbox_spr)); currY+=offY; currY+=offY;
-		draw_debug_text(currX, currY, "knockback_adj = " + string(knockback_adj)); currY+=offY;
-		draw_debug_text(currX, currY, "walk_speed = " + string(walk_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "walk_accel = " + string(walk_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "walk_turn_time = " + string(walk_turn_time)); currY+=offY;
-		draw_debug_text(currX, currY, "initial_dash_time = " + string(initial_dash_time)); currY+=offY;
-		draw_debug_text(currX, currY, "initial_dash_speed = " + string(initial_dash_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_speed = " + string(dash_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_turn_time = " + string(dash_turn_time)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_turn_accel = " + string(dash_turn_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_stop_time = " + string(dash_stop_time)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_stop_percent = " + string(dash_stop_percent)); currY+=offY;
-		draw_debug_text(currX, currY, "ground_friction = " + string(ground_friction)); currY+=offY;
-		draw_debug_text(currX, currY, "moonwalk_accel = " + string(moonwalk_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "max_djumps = " + string(max_djumps)); currY+=offY;
-		draw_debug_text(currX, currY, "jump_start_time = " + string(jump_start_time)); currY+=offY;
-		draw_debug_text(currX, currY, "jump_speed = " + string(jump_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "short_hop_speed = " + string(short_hop_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "djump_speed = " + string(djump_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "jump_change = " + string(jump_change)); currY+=offY;
-		draw_debug_text(currX, currY, "djump_accel = " + string(djump_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "djump_accel_start_time = " + string(djump_accel_start_time)); currY+=offY;
-		draw_debug_text(currX, currY, "djump_accel_end_time = " + string(djump_accel_end_time)); currY+=offY; currX+=offX; currY = startY;
-		
-		draw_debug_text(currX, currY, "leave_ground_max = " + string(leave_ground_max)); currY+=offY;
-		draw_debug_text(currX, currY, "air_max_speed = " + string(air_max_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "max_jump_hsp = " + string(max_jump_hsp)); currY+=offY;
-		draw_debug_text(currX, currY, "air_accel = " + string(air_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "air_friction = " + string(air_friction)); currY+=offY;
-		draw_debug_text(currX, currY, "double_jump_time = " + string(double_jump_time)); currY+=offY;
-		draw_debug_text(currX, currY, "gravity_speed = " + string(gravity_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "hitstun_grav = " + string(hitstun_grav)); currY+=offY;
-		draw_debug_text(currX, currY, "max_fall = " + string(max_fall)); currY+=offY;
-		draw_debug_text(currX, currY, "fast_fall = " + string(fast_fall)); currY+=offY;
-		draw_debug_text(currX, currY, "land_time = " + string(land_time)); currY+=offY;
-		draw_debug_text(currX, currY, "prat_land_time = " + string(prat_land_time)); currY+=offY;
-		draw_debug_text(currX, currY, "prat_fall_accel = " + string(prat_fall_accel)); currY+=offY;
-		draw_debug_text(currX, currY, "walljump_hsp = " + string(walljump_hsp)); currY+=offY;
-		draw_debug_text(currX, currY, "walljump_vsp = " + string(walljump_vsp)); currY+=offY;
-		draw_debug_text(currX, currY, "walljump_time = " + string(walljump_time)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_forward_max = " + string(roll_forward_max)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_backward_max = " + string(roll_backward_max)); currY+=offY;
-		draw_debug_text(currX, currY, "wave_land_time = " + string(wave_land_time)); currY+=offY;
-		draw_debug_text(currX, currY, "wave_land_adj = " + string(wave_land_adj)); currY+=offY;
-		draw_debug_text(currX, currY, "wave_friction = " + string(wave_friction)); currY+=offY;
-		draw_debug_text(currX, currY, "techroll_speed = " + string(techroll_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "air_dodge_speed = " + string(air_dodge_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "char_height = " + string(char_height)); currY+=offY;
-		draw_debug_text(currX, currY, "bubble_x = " + string(bubble_x)); currY+=offY;
-		draw_debug_text(currX, currY, "bubble_y = " + string(bubble_y)); currY+=offY; currX+=offX; currY = startY;
-		
-		draw_debug_text(currX, currY, "wall_frames = " + string(wall_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "dodge_startup_frames = " + string(dodge_startup_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "dodge_active_frames = " + string(dodge_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "dodge_recovery_frames = " + string(dodge_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "tech_active_frames = " + string(tech_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "tech_recovery_frames = " + string(tech_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "techroll_startup_frames = " + string(techroll_startup_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "techroll_active_frames = " + string(techroll_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "techroll_recovery_frames = " + string(techroll_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "air_dodge_startup_frames = " + string(air_dodge_startup_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "air_dodge_active_frames = " + string(air_dodge_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "air_dodge_recovery_frames = " + string(air_dodge_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_forward_startup_frames = " + string(roll_forward_startup_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_forward_active_frames = " + string(roll_forward_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_forward_recovery_frames = " + string(roll_forward_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_back_startup_frames = " + string(roll_back_startup_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_back_active_frames = " + string(roll_back_active_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "roll_back_recovery_frames = " + string(roll_back_recovery_frames)); currY+=offY;
-		draw_debug_text(currX, currY, "idle_anim_speed = " + string(idle_anim_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "walk_anim_speed = " + string(walk_anim_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "dash_anim_speed = " + string(dash_anim_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "crouch_anim_speed = " + string(crouch_anim_speed)); currY+=offY;
-		draw_debug_text(currX, currY, "pratfall_anim_speed = " + string(pratfall_anim_speed)); currY+=offY;currY+=offY;
-		
-		draw_debug_text(currX, currY, "land_sound = " + string(land_sound)); currY+=offY;
-		draw_debug_text(currX, currY, "landing_lag_sound = " + string(landing_lag_sound)); currY+=offY;
-		draw_debug_text(currX, currY, "waveland_sound = " + string(waveland_sound)); currY+=offY;
-		draw_debug_text(currX, currY, "jump_sound = " + string(jump_sound)); currY+=offY;
-		draw_debug_text(currX, currY, "djump_sound = " + string(djump_sound)); currY+=offY;
-		draw_debug_text(currX, currY, "air_dodge_sound = " + string(air_dodge_sound)); currY+=offY;
+    with(enemykirby)
+    {
+        if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
+        {
+            if(attack == AT_EXTRA_3)
+            {
+                shader_start();
+                draw_sprite_ext(get_window_value(AT_EXTRA_3, wasVisible ? 3 : 4, AG_SPRITE), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+                shader_end();
+			}
+		}
 	}
-}*/
+}
 
 #define DrawSprite(sprImg, imgInd, xx, yy, xDir, yDir, angle, color, alpha, doShader)
 {
@@ -366,6 +295,8 @@ if(isMech)
 		public_angle = angle;
 		public_color = color;
 		public_alpha = alpha;
+
+		DrawOutline(get_player_team(other.playerDisguise), sprImg, imgInd, xx, yy, xDir, yDir, angle, color, alpha);
 		with(oPlayer)
 		{
 			if(player == other.playerDisguise)
@@ -378,10 +309,37 @@ if(isMech)
 	}
 	else
 	{
+		if(!disguised)
+			DrawOutline(get_player_team(player), sprImg, imgInd, xx, yy, xDir, yDir, angle, color, alpha);
+
 		if(doShader) shader_start();
 		draw_sprite_ext(sprImg, imgInd, xx, yy, xDir, yDir, angle, color, alpha);
 		if(doShader) shader_end();
 	}
+}
+
+#define DrawOutline(teamIndex, sprImg, imgInd, xx, yy, xDir, yDir, angle, color, alpha)
+{
+	if(!get_match_setting(SET_TEAMS))
+		return;
+
+	if(teamIndex == 1)
+		gpu_set_fog(1, make_colour_rgb(250, 85, 85), 0, 1);
+	if(teamIndex == 2)
+		gpu_set_fog(1, make_colour_rgb(85, 100, 255), 0, 1);
+	draw_sprite_ext(sprImg, imgInd, xx, yy-6, xDir, yDir, angle, c_white, alpha);
+	draw_sprite_ext(sprImg, imgInd, xx+5, yy-5, xDir, yDir, angle, c_white, alpha);
+	draw_sprite_ext(sprImg, imgInd, xx-5, yy-5, xDir, yDir, angle, c_white, alpha);
+	draw_sprite_ext(sprImg, imgInd, xx+5, yy, xDir, yDir, angle, c_white, alpha);
+	draw_sprite_ext(sprImg, imgInd, xx-6, yy, xDir, yDir, angle, c_white, alpha);
+	draw_sprite_ext(sprImg, imgInd, xx+6, yy, xDir, yDir, angle, c_white, alpha);
+	if(free)
+	{
+		draw_sprite_ext(sprImg, imgInd, xx, yy+6, xDir, yDir, angle, c_white, alpha);
+		draw_sprite_ext(sprImg, imgInd, xx+5, yy+5, xDir, yDir, angle, c_white, alpha);
+		draw_sprite_ext(sprImg, imgInd, xx-5, yy+5, xDir, yDir, angle, c_white, alpha);
+	}
+	gpu_set_fog(0, c_white, 0, 0);
 }
 
 #define DoesAnimLoop()
@@ -449,6 +407,7 @@ if(isMech)
 }
 
 #define GetSpriteFromState(state, char, suffix)
+// printOnPlay(get_state_name(state));
 if(spriteMap[? state] == undefined)
 {
     printOnPlay("missing entry for: " + get_state_name(state));
@@ -478,6 +437,12 @@ if(char == "custom")
 
     if(asset_get("__newsprite"+string(playerSpriteMaps[playerDisguise-1][? stateName])) != -1)
     	return asset_get("__newsprite"+string(playerSpriteMaps[playerDisguise-1][? stateName]));
+}
+else if(chars[charIndex] == "frog" && state == PS_FIRST_JUMP && doFrogHighJump)
+{
+    var spr = "frog_highjump";
+    if(asset_get(spr) != -1)
+        return asset_get(spr);
 }
 for(var i = 0; i <  array_length(spriteMap[? state]); i++)
 {
@@ -582,7 +547,7 @@ return asset_get("empty_sprite");
 	for(var i = trailCount-1; i >= 0; i--)
 	{
 		var trail = trails[|i];
-		draw_sprite_ext(trail.sprite_index, trail.image_index, trail.x, trail.y, 2, trail.height * 2, trail.angle, c_white, invisAlpha);
+		draw_sprite_ext(trail.sprite_index, trail.image_index, trail.x, trail.y, 2, trail.height * 2, trail.angle, c_white, compatableAlpha);
 		trail.image_index++;
 		if(trail.image_index > 29)
 			trail.image_index = 3;
@@ -592,7 +557,7 @@ return asset_get("empty_sprite");
 	seinX = seinX * 0.9 + desiredX * 0.1;
 	seinY = seinY * 0.9 + desiredY * 0.1;
 	
-	draw_sprite_ext(asset_get("orb_idle_spr"), get_gameplay_time()/3.5, seinX, seinY, 2, 2, 0, c_white, invisAlpha);
+	draw_sprite_ext(asset_get("orb_idle_spr"), get_gameplay_time()/3.5, seinX, seinY, 2, 2, 0, c_white, compatableAlpha);
 	//TODO: completely delay the orb movement a bit
 }
 
@@ -635,7 +600,7 @@ return asset_get("empty_sprite");
     		continue;
 		iceShard.x += iceShard.hsp;
 		iceShard.y += iceShard.vsp;
-    	draw_sprite_ext(iceShard.sprite_index, iceShard.image_index, iceShard.x, iceShard.y, 1, 1, 0, c_white, invisAlpha);
+    	draw_sprite_ext(iceShard.sprite_index, iceShard.image_index, iceShard.x, iceShard.y, 1, 1, 0, c_white, compatableAlpha);
     }
 }
 
@@ -671,7 +636,7 @@ return asset_get("empty_sprite");
             continue;
             
         gpu_set_fog(true, color, 0, 0);
-        draw_sprite_ext(afterImage.sprite_index, afterImage.image_index, afterImage.x, afterImage.y, 2 * afterImage.spr_dir, 2, 0, 0, invisAlpha);
+        draw_sprite_ext(afterImage.sprite_index, afterImage.image_index, afterImage.x, afterImage.y, 2 * afterImage.spr_dir, 2, 0, 0, compatableAlpha);
     }
 
     gpu_set_fog(false, c_white, 0, 0);

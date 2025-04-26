@@ -14,11 +14,8 @@ if attack == AT_FTHROW && hbox_num == 19  {
 
 if attack == AT_FTHROW && hbox_num == 2  {
 	if hitbox_timer == 1 {
-		hsp = player_id.hsp
-		if player_id.free == false {
-		hsp *= 2	
-		}
-		vsp = player_id.vsp
+		hsp = 0
+		vsp = 0
 	}
 	if player_id.move_cooldown[AT_EXTRA_1] > 0  {
 		vsp /= 1.1

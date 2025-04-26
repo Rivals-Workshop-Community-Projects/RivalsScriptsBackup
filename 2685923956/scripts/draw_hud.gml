@@ -16,14 +16,14 @@ if (variable_instance_exists(id, "doomdesire_storage")){
 }
 
 //beta display
-/*
-draw_set_halign(fa_left);
+
+/*draw_set_halign(fa_left);
 draw_set_font(asset_get("fName"));
 draw_set_alpha(0.4);
 draw_rectangle_colour(temp_x+2, temp_y-17, temp_x+126, temp_y-4, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
-draw_text_ext_transformed_colour(temp_x+10, temp_y-16, "Jirachi Beta v.F", 30, 400, 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 0.5);
-*/
+draw_text_ext_transformed_colour(temp_x+10, temp_y-16, "Jirachi Beta v.h", 30, 400, 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 0.5);/()
+
 
 
 

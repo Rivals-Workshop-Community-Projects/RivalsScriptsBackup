@@ -121,44 +121,15 @@ if ("rollArray" in self)
 		draw_set_alpha(1);
 	}
 
-	if (spr_angle == 0) switch (get_player_color(player))
+	switch (get_player_color(player))
 	{
 		// Trans
 		case 8:
-			FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
-			FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
-			FlagPart(c_white, 1/5, 2/5);
+			FlagPart(make_colour_rgb(85, 205, 252), sprite_height, sprite_yoffset); // mayablue
+			FlagPart(make_colour_rgb(247, 168, 223), char_height/5*2, char_height/5*2.5); // pink
+			FlagPart(c_white, char_height/5, char_height/5*2);
 			gpu_set_fog(0, c_white, 0, 0);
 			break;
-		
-		//// Ace
-		//case 13:
-		//	FlagPart(c_black, 1/4, 0);
-		//	FlagPart(make_colour_rgb(164, 164, 164), 1/4, 1/4);
-		//	FlagPart(c_white, 1/4, 2/4);
-		//	FlagPart(make_colour_rgb(129, 0, 129), 1/4, 3/4);
-		//	gpu_set_fog(0, c_white, 0, 0);
-		//	break;
-		//
-		//// Enby
-		//case 14:
-		//	FlagPart(make_colour_rgb(255, 244, 51), 1/4, 0);
-		//	FlagPart(c_white, 1/4, 1/4);
-		//	FlagPart(make_colour_rgb(155, 89, 208), 1/4, 2/4);
-		//	FlagPart(make_colour_rgb(43, 43, 43), 1/4, 3/4);
-		//	gpu_set_fog(0, c_white, 0, 0);
-		//	break;
-		//
-		//// rainbow
-		//default:
-		//	if (aura > 0)
-		//	{
-		//		var color_rgb=make_color_rgb(255, 0, 255);
-		//		var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
-		//		FlagPart(color_hsv, 1, 0);
-		//		gpu_set_fog(0, c_white, 0, 0);
-		//	}
-		//	break;
 	}
 }
 
@@ -174,9 +145,12 @@ if ("rollArray" in self)
 	
 }
 
-#define FlagPart(_colour, _heightRatio, _xOffsetRatio)
+#define FlagPart(_colour, _height, _xLoc)
 {
 	gpu_set_fog(1, _colour, 0, 1);
-	for (i = -1; i < 2; ++i) for (j = -1; j < 2; ++j)
-		draw_sprite_part_ext(sprite_index, image_index, 0, sprite_height*_xOffsetRatio, sprite_width*spr_dir, sprite_height*_heightRatio, x+i*2+draw_x-sprite_xoffset*(1+small_sprites), y+j*2+(draw_y-sprite_yoffset+sprite_height*_xOffsetRatio)*(1+small_sprites), spr_dir*(1+small_sprites), 1+small_sprites, c_white, 1);
+	for (var i = -1; i < 2; ++i) for (var j = -1; j < 2; ++j) draw_sprite_general(sprite_index, image_index, 0, sprite_yoffset-_xLoc, abs(sprite_width), _height,
+		i*2+x+draw_x+(dsin(spr_angle)*(-_xLoc)+dcos(spr_angle)*(-sprite_xoffset))*2,
+		j*2+y+draw_y+(dcos(spr_angle)*(-_xLoc)-dsin(spr_angle)*(-sprite_xoffset))*2,
+		spr_dir*2, 2,
+		spr_angle, c_white, c_white, c_white, c_white, 1);
 }

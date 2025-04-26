@@ -1,6 +1,5 @@
 if ("cpu_skill_pool" in self && ds_list_valid(cpu_skill_pool)) ds_list_destroy(cpu_skill_pool);
-
-
+with (oPlayer) if ("outline_check" in self && outline_color != outline_check) outline_color = outline_check;
 
 //code by Frtoud
 if (!handled_bar_victory_quote)
@@ -86,13 +85,13 @@ if (!handled_bar_victory_quote)
                         data.status_emote = 2;
                         break;
                     case "2965266088": //rumia
-                        data.status_quote = "At least you aren't trying to eat me!";
+                        data.status_quote = "At least you aren't trying to eat me.";
                         data.status_emote = 1;
                         break;
                     case "3039831352": //sonic
                         if (alt_cur != 16 || get_match_setting(SET_SEASON) != 3) //make sure he isn't lord X
                         {
-                            data.status_quote = "Fighting side by side with Sonic the Hedgehog, didn't think it would be possible.";
+                            data.status_quote = "You look like a character from a game I like... but you're not him.";
                             data.status_emote = 2;
                         }
                         else
@@ -145,6 +144,11 @@ if (!handled_bar_victory_quote)
                         data.status_quote = "Try not to be reckless, will you?";
                         data.status_emote = 3;
                     }
+                }
+                if ("is_ilias" in self)
+                {
+                    quote = "Get off whatever high horse you are on, you are weaker than you think.";
+                    emote = 1;
                 }
             }
         }
@@ -203,63 +207,63 @@ if (!handled_bar_victory_quote)
     {
         //////////////////////////// BASECAST ////////////////////////////
         case CH_ZETTERBURN:
-            quote = "A lion that uses fire? Sure is something you don't see every day.";
-            emote = 0;
+            quote = "I hope for you that your fire mane won't cause me problems later.";
+            emote = 1;
             break;
         case CH_ORCANE:
             quote = "...Did the orca looking thing just turn into a puddle?";
             emote = 0;
             break;
         case CH_KRAGG:
-            quote = "I respect your duty, I'm fighting for something important to me too.";
+            quote = "I can respect you, I'm fighting for something important to me too.";
             emote = 5;
             break;
         case CH_WRASTOR:
-            quote = "You may like the air but I think I like you on the ground better.";
+            quote = "You may like the air, but I like you on the ground instead.";
             emote = 1;
             break;
         case CH_FORSBURN:
-            quote = "Is that a real skull...? That's kind of creepy if you ask me.";
+            quote = "Is that a real skull...?";
             emote = 0;
             break;
         case CH_ETALUS:
-            quote = "Using ice to give yourself more durability? Ice starts sounding useful...";
+            quote = "Maybe I should learn how to use ice.";
             emote = 4;
             break;
         case CH_MAYPUL:
-            quote = "I suppose ''guardian'' means different things to the both of us.";
+            quote = "I guess ''guardian'' means different things to the both of us.";
             emote = 5;
             break;
         case CH_ABSA:
-            quote = "Manipulating the weather just to keep treaspassers away? Please don't.";
+            quote = "Manipulating the weather just to keep people away? Please don't.";
             emote = 3;
             break;
         case CH_CLAIREN:
-            quote = "The future is corrupt from a mammoth? I'm no Guardian of Time, sorry.";
+            quote = "Some doomed future isn't my job to fix, I'm not the Guardian of Time.";
             emote = 1;
             break;
         case CH_RANNO:
-            quote = "I also don't like fighting, but we do it to protect what we got, right?";
+            quote = "I also hate this fighting, but we have to protect what we got, right?";
             emote = 5;
             break;
         case CH_ELLIANA:
-            quote = "I get you, but terrorizing those who wronged you isn't the way, too.";
-            emote = 5;
+            quote = "So you decided to become what you hate.";
+            emote = 6;
             break;
         case CH_SYLVANOS:
             quote = "I feel some strong energy from you... You're different, aren't you?";
             emote = 0;
             break;
         case CH_MOLLO: case "1871989159":
-            quote = "Your firepower is no match for mine, because mine doesn't backfire.";
-            emote = 2;
+            quote = "Not interested in joining a rebelion, I got enough on my plate already.";
+            emote = 1;
             break;
         case CH_HODAN: case "2136440419":
             quote = "I usually settle for what strength I got but... Thanks for your lesson.";
             emote = 2;
             break;
         case CH_OLYMPIA: case "1943759600":
-            quote = "Crystal gauntlets? ...That's actually not a bad idea, hm...";
+            quote = "Crystal gauntlets...? That's not a bad idea actually.";
             emote = 4;
             break;
         case CH_POMME: case "1913517643":
@@ -267,11 +271,11 @@ if (!handled_bar_victory_quote)
             emote = 3;
             break;
         case CH_ORI:
-            quote = "Guess my holy light is stronger than yours after all.";
+            quote = "This forest creature is a lot more competent than it looks.";
             emote = 2;
             break;
         case CH_SHOVEL_KNIGHT:
-            quote = "The armor is neat and all but... why the shovel?";
+            quote = "Armor's neat and all but... why the shovel exactly?";
             emote = 0;
             break;
         case "1865940669": case "2443363942": //sandbert / sandbert DE
@@ -283,7 +287,7 @@ if (!handled_bar_victory_quote)
             emote = 0;
             break; 
         case "1866016173": //guadua
-            quote = "Tough luck, panda, I have other places to be.";
+            quote = "I have other places to be.";
             emote = 1;
             break;
         //////////////////////// BAR-KUN CHARACTERS ////////////////////////
@@ -292,7 +296,7 @@ if (!handled_bar_victory_quote)
             emote = 4;
             break;
         case "2786885695": //keqing
-            quote = "Your speed of light doesn't match my... speed of... light. Huh.";
+            quote = "Maybe if you were less of a snob, people would like you more.";
             emote = 1;
             break;
         case "2801245512": //SSL chaos
@@ -308,15 +312,16 @@ if (!handled_bar_victory_quote)
             emote = 3;
             break;  
         case "3039831352": //sonic
+        case "1899673724": case "2285717462": case "2078670767": case "2074796206": case "2138937258": case "2139665984": case "1878949757": case "2294421289": //sonic (not mine)
             //sonic's quote changes if he uses the halloween seasonal alt
-            if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
+            if ("is_bar_sonic" in self && alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
             {
-                quote = "You won't trick me, demon. I know you're just a fake.";
+                quote = "You can't trick me, demon.";
                 emote = 6;
             }
             else
             {
-                quote = "Who would've thought a 1 meter tall cartoon hedgehog is real?";
+                quote = "Spinny Needlemouse is real?! Got the shoes wrong though.";
                 emote = 0;
             }
             break;
@@ -334,15 +339,27 @@ if (!handled_bar_victory_quote)
             emote = 6;
             break;
         case "3079776883": //kumaki
-            quote = "Control yourself, or I will be forced to stop you! Don't make me do this!";
+            quote = "Control yourself, or I will be forced to stop you! Don't make me do this.";
             emote = 6;
             break;
+        case "3308351120": //saelune
+            quote = "Gross.";
+            emote = 0;
+            break;
+        case "3294183869": //vale
+            quote = "Justice shouldn't be blind, I hope you know that now.";
+            emote = 3;
+            break;
+        case "3353256940": //twenny
+            quote = "Go back to the junkyard you came from, you piss me off.";
+            emote = 5;
+            break;
         case "2605377553": //mal
-            quote = "Those purple clouds make me want to puke, is that poison?";
+            quote = "Those purple clouds make me want to puke, is that poison?!";
             emote = 6;
             break;
         case "2108895293": //lumina
-            quote = "Your control over light is interesting, to say the least.";
+            quote = "Your control over light is good, I suppose.";
             emote = 3;
             break;
         case "2843521167": //pastelle (legacy)
@@ -357,8 +374,16 @@ if (!handled_bar_victory_quote)
             quote = "Sorry, I'm not a private tutor.";
             emote = 1;
             break;
+        case "3307368173": //sarolyn
+            quote = "Looks like a demon, acts like a demon... But was she?";
+            emote = 0;
+            break;
+        case "3415959265": case "3304241490": //saya
+            quote = "This Guardian job... I hate it.";
+            emote = 6;
+            break;
         case "2396061657": //callie
-            quote = "No hard feelings, right?";
+            quote = "...No hard feelings, right?";
             emote = 7;
             break;
         case "2490060793": //barr
@@ -381,8 +406,12 @@ if (!handled_bar_victory_quote)
             emote = 5;
             break;
         case "2606511813": //pit
-            quote = "You actually need permission to use your wings? That's rough buddy.";
+            quote = "You actually need permission to use your wings?";
             emote = 0;
+            break;
+        case "2899563373": //palutena
+            quote = "I'm not one of yours, go away.";
+            emote = 3;
             break;
         case "2606413637": //goku
             quote = "Maybe don't jump to fight so quickly next time!";
@@ -401,28 +430,36 @@ if (!handled_bar_victory_quote)
             emote = 3;
             break;
         case "2854485508": //mamizou
-            quote = "I don't think I like being a hedgehog, I'd rather stay myself.";
+            quote = "I don't think I like being a hedgehog.";
             emote = 1;
             break;
         case "2964956057": //flowey
-            quote = "Did that flower just talk?";
+            quote = "Go back to whatever underworld you came from.";
             emote = 0;
             break;
         case "2945062156": case "2944680077": case "2311095319": //mario (regina / mit / ricE)
-            quote = "Sorry Mario, your victory is in another place.";
-            emote = 2;
+            quote = "Can this dude really save a kingdom and it's ruler? Hard to believe.";
+            emote = 0;
             break;
         case "2945067212": //luigi (regina)
-            quote = "Sorry Mario, your victory is- wait a minute.";
+            quote = "Can this dude really save a- wait you're not the red one.";
             emote = 7;
             break;
         case "2995463890": //hol horse
             quote = "What the hell is shooting me?!";
             emote = 6;
             break;
-        case "3042615374": case "3030928225": case "3021608896": //nemesis, squigly, mako
+        case "3363227530": case "3351001188": //MX
+            quote = "No matter the size you're still going down, demon.";
+            emote = 5;
+            break;
+        case "3042615374": case "3030928225": case "3021608896": case "3349889053": case "3349890045": //nemesis, squigly, mako, deracine, platina
             quote = "Cheating death, undead... I hate it.";
             emote = 5;
+            break;
+        case "3357823813": //dracula (playable)
+            quote = "Stay down already!";
+            emote = 6;
             break;
         ////////////////////////////////////////////////////////////////////
         default: break;

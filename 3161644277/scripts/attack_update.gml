@@ -121,7 +121,7 @@ if (attack == AT_FSPECIAL){
     }
     if (window == 2 || window == 4){
         hsp = 10 * spr_dir;
-        if (dash_time > 7){
+        if (dash_time > 13){
             can_jump = true;
         }
         dash_time++;

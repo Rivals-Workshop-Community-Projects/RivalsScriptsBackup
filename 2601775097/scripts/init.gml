@@ -1,6 +1,6 @@
 //init
 
-////////////////////////////////////////////////////// CHARACTER GENERAL VARIABLES //////////////////////////////////////////////////////
+#region CHARACTER GENERAL VARIABLES
 
 /*
  * The stats below are taken from Zetterburn, replacing Sandbert's overpowered
@@ -170,52 +170,19 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+#endregion
 
-
-//////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
+#region USEFUL CUSTOM VARIABLES
 
 // "literally a white pixel" - nart
 spr_pixel = sprite_get("white_pixel");
 
-//for attacks
-window_end = 0; //the last frame (including whifflag if it's there)
-window_last = 0; //AG_NUM_WINDOWS
-window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
-hbox_view = get_match_setting(SET_HITBOX_VIS);
-
-strong_pressed = false;
-
-//various detections
-alt_cur = get_player_color(player);
-training = (get_match_setting(SET_PRACTICE));
-is_cpu = false;
-playtesting = (object_index == oTestPlayer);
-got_gameplay_time = get_gameplay_time(); //allows me to run stuff for 1 frame after bar is loaded/reloaded
-
-is_dodging = false;
-is_attacking = false;
-
-//hurt spin rotation
-cur_sprite_rot = 0;
-should_rotate = false;
-rotate_time = -1;
-
-//intro animation shenanigans
-AT_INTRO = 2;
-
-//custom window loop time (modify window type 9 for this)
-AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next to it is the amount to loop
-window_loops = 0;                   //decides the amount of times to loop
-
-AG_MUNO_ATTACK_EXCLUDE = 80;
-
-/*
-//attack names
-attack_index = [
+debug_display = 0;
+attack_names = [ //has the names of all the attacks
 	"???",
 	"AT_JAB",
-	"???",
-	"???",
+	"AT_INTRO",
+	"AT_SELECT",
 	"AT_FTILT",
 	"AT_DTILT",
 	"AT_UTILT",
@@ -264,86 +231,47 @@ attack_index = [
 	"AT_L_PUNISHMENT",
 	"???"
 ];
-*/
+
+//for attacks
+window_end = 0; //the last frame (including whifflag if it's there)
+window_last = 0; //AG_NUM_WINDOWS
+window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
+hbox_view = get_match_setting(SET_HITBOX_VIS);
+
+strong_pressed = false;
+
+//various detections
+alt_cur = get_player_color(player);
+training = (get_match_setting(SET_PRACTICE));
+is_cpu = false;
+playtesting = (object_index == oTestPlayer);
+game_time = get_gameplay_time(); //allows me to run stuff for 1 frame after bar is loaded/reloaded
+exist_time = 0;
+
+is_dodging = false;
+is_attacking = false;
+
+//hurt spin rotation
+cur_sprite_rot = 0;
+should_rotate = false;
+rotate_time = -1;
+
+//intro animation shenanigans
+AT_INTRO = 2;
+
+//custom window loop time (modify window type 9 for this)
+AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next to it is the amount to loop
+window_loops = 0;                   //decides the amount of times to loop
+
+AG_MUNO_ATTACK_EXCLUDE = 80;
 
 //object classification so i can mess around with it (might need to add more slots to it but oh well)
 bar_hitbox = noone;
 bar_hit_fx = noone;
 bar_hit_fx_pause = false;         //setting this to true makes the hit effect hitpause
+#endregion
 
-
-
-//special alt stuff
-my_day = 25;
-my_month = 10;
-birthboy = (current_day == my_day && current_month = my_month);
-bibical = (get_match_setting(SET_SEASON) == 3 && !birthboy && alt_cur == 16);
-
-//flash color
-light_col = make_colour_rgb(get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6));
-light_alpha = 0;
-
-//Outline color setup
-outline_time = 0;
-outline_time_up = true;
-default_line_color = [61, 113, 224];
-lerp_array = [0, 0, 0]; //lerps around
-activate_outline = false;
-
-if (alt_cur != 0 && !birthboy) line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
-else line_color = default_line_color;
-
-no_effect_line_color = [0, 0, 0];
-switch (alt_cur)
-{
-    case 14: //gameboy
-        no_effect_line_color = [15, 56, 15];
-        break;
-    case 15: //NES
-        no_effect_line_color = [32, 0, 178];    
-        break;
-    case 16: //seasonal-halloween
-        if (bibical) no_effect_line_color = [75, 43, 43];   
-        else no_effect_line_color = [0, 0, 0];
-        break;    
-    case 26: //helel
-        no_effect_line_color = [52, 52, 52];    
-        break;
-    case 27: //theikos
-        no_effect_line_color = [97, 45, 2];
-        break;
-}
-
-fire_col = make_colour_rgb(line_color[0], line_color[1], line_color[2]);
-
-//trail code
-apply_motion_trail = false;
-
-trail_cur_num = 0;      //rotates between the array values to update them
-trail_total_size = 10;  //the total size of the trail array
-trail_draw_size = 1;    //what size does it actually draw it on
-
-is_accel_trail = false;
-
-trail_pos = [0];
-t = 0;
-repeat (trail_total_size)   //fills array
-{
-    trail_pos[t] = {
-            sprite: sprite_index,
-            subimg: image_index,
-            x: x,
-            y: y,
-            xscale: image_xscale,
-            yscale: image_yscale,
-            rot: image_angle,
-            col: image_blend,
-        };
-    t ++;
-}
-
-
-///////////////////////////////////////////////////CUSTOM HITBOX COLOR SYSTEM/////////////////////////////////////////////////
+#region CUSTOM HITBOX COLOR SYSTEM
 
 //Custom Hitbox Colors System (by @SupersonicNK)
 // USAGE: set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, $FFFFFF) the colors are in BGR sadly
@@ -373,14 +301,16 @@ hb_color[0] = 0;        //nothing
 hb_color[1] = $00FFFF;  //sweetspot
 hb_color[2] = $88FFFF;  //holy light
 hb_color[3] = $FFFF00;  //holy fire
+#endregion
 
-
-////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
+#region CHARACTER SPECIFIC VARIABLES
 
 //Intro
 intro_alpha = 0;
 intro_pillar_fx_frame = 0;
 intro_pillar_fx_speed = 0.25;
+
+intro_hair_fade_time = 0;
 
 //Glide
 //PS_GLIDE = 50; //custom state - "replaced with a macro in update.gml" - nart
@@ -399,7 +329,7 @@ prev_djumps = 0;
 djump_turn = false;
 
 //MP mechanic
-mp_current = 100;
+mp_cur = 100;
 mp_max = 100 + 100 * has_rune("M");
 mp_gainable = true;
 mp_gain_rate = 2 + 5 * has_rune("M");
@@ -444,7 +374,7 @@ AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 10, 10, 50);
 
 AT_SKILL8  = set_skill("Ember Fist", 8, 0, 2, AT_DSPECIAL_2, -1, 20, 0, 20);
 AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
-AT_SKILL10 = set_skill("Searing Descent", 10, 2, 2, AT_EXTRA_3, -1, 10, 10, 10);
+AT_SKILL10 = set_skill("Searing Descent", 10, 2, 2, AT_EXTRA_3, -1, 10, 20, 10);
 AT_SKILL11 = set_skill("Chasm Burster", 11, 3, 2, AT_EXTRA_1, -1, 5, 25, 30);
 
 AT_SELECT = 3;                      //select attack
@@ -456,6 +386,7 @@ AG_WINDOW_MP_CONSUME_TYPE   = 36;   //type of mana consumption (0 = when pointed
 cur_skill_spr = 0;
 menu_x = 0;
 menu_y = 0;
+cur_skill_used = -1;
 
 //skill descriptions, will show on the UI when info_mode_menu is true
 skill_desc[0] = string("
@@ -526,7 +457,9 @@ holyburn_active = true;     //check if the mechanic is active
 holyburning = false;        //becomes true if they are burning
 holyburner_id = 0;          //keeps track of who is burning, to set the pallete correctly
 holyburn_timer = 0;
-holyburn_timer_set = 120;
+holyburn_tick_norm = 30;
+holyburn_tick = holyburn_tick_norm;
+holyburn_ticks = 4;
 
 //Lightstun Mechanic
 lightstun_active = has_rune("L");
@@ -538,8 +471,9 @@ lightstun_active_set = 120;
 lightstun_last_attack = 0;
 lightstun_last_hbox = 0;
 lightstun_last_attack_timer = 0;
+#endregion
 
-////////////////////////////////////////////////////////////// VFX SETUP //////////////////////////////////////////////////////////////
+#region VFX SETUP
 
 fx_empty = hit_fx_create(asset_get("empty_sprite"), 1);
 bar_plat_speed = 0.2;
@@ -588,7 +522,12 @@ fx_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
 fx_intro_back = sprite_get("fx_introlight_back");
 fx_intro = hit_fx_create(sprite_get("fx_intro"), 22);
 fx_dstrong_blast = hit_fx_create(sprite_get("fx_dstrong_blast"), 40);
-fx_dstrong_quake = hit_fx_create(sprite_get("fx_dstrong_quake"), 27);
+fx_dstrong_quake = hit_fx_create(asset_get("empty_sprite"), 1);
+fx_cracks = []; //x, y, timer, max time
+fx_crack_time_max = 72;
+fx_crack_spr = sprite_get("fx_dstrong_quake");
+fx_dstrong_shockwave = hit_fx_create(sprite_get("fx_dstrong_shockwave"), 24);
+fx_dstrong_rockblast = hit_fx_create(sprite_get("fx_dstrong_rockblast"), 32);
 fx_skill3 = hit_fx_create(sprite_get("fx_skill3"), 20);
 fx_skill4_smear = hit_fx_create(sprite_get("fx_skill4_smear"), 20);
 fx_skill4_smear_burn = hit_fx_create(sprite_get("fx_skill4_smear_burn"), 15);
@@ -608,21 +547,99 @@ genesis_window_timer = 0;
 genesis_window_timer_max = 8;
 genesis_load_tracker = 0;
 
+od_fx_col_time = 0;
+od_fx_col_time_max = 30;
+od_fx_col_change = false;
 
-//////////////////////////////////////////////////////////// ATTACK SPECIFIC ////////////////////////////////////////////////////////////
+
+
+//special alt stuff
+my_day = 13;
+my_month = 11;
+birthboy = (current_day == my_day && current_month = my_month);
+bibical = (get_match_setting(SET_SEASON) == 3 && !birthboy && alt_cur == 16);
+
+//flash color
+light_col = make_colour_rgb(get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6));
+light_alpha = 0;
+default_light_col = light_col;
+
+//Outline color setup
+outline_time = 0;
+outline_time_up = true;
+default_line_color = [61, 113, 224];
+lerp_array = [0, 0, 0]; //lerps around
+activate_outline = false;
+prev_activated_outline = false;
+
+if (alt_cur != 0 && !birthboy) line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
+else line_color = default_line_color;
+
+no_effect_line_color = [0, 0, 0];
+switch (alt_cur)
+{
+    case 14: //gameboy
+        no_effect_line_color = [15, 56, 15];
+        break;
+    case 15: //NES
+        no_effect_line_color = [32, 0, 178];    
+        break;
+    case 16: //seasonal-halloween
+        if (bibical) no_effect_line_color = [75, 43, 43];   
+        else no_effect_line_color = [0, 0, 0];
+        break;    
+    case 26: //helel
+        no_effect_line_color = [52, 52, 52];    
+        break;
+    case 27: //theikos
+        no_effect_line_color = [97, 45, 2];
+        break;
+}
+
+fire_col = make_colour_rgb(line_color[0], line_color[1], line_color[2]);
+
+//trail code
+apply_motion_trail = false;
+
+trail_cur_num = 0;      //rotates between the array values to update them
+trail_total_size = 10;  //the total size of the trail array
+trail_draw_size = 1;    //what size does it actually draw it on
+
+is_accel_trail = false;
+
+trail_pos = [0];
+t = 0;
+repeat (trail_total_size)   //fills array
+{
+    trail_pos[t] = {
+            sprite: sprite_index,
+            subimg: image_index,
+            x: x,
+            y: y,
+            xscale: image_xscale,
+            yscale: image_yscale,
+            rot: image_angle,
+            col: image_blend,
+        };
+    t ++;
+}
+#endregion
+
+#region ATTACK SPECIFIC
 
 //general
 bar_grabbed_id = noone;
 bar_grab_time = 0;
-
 bar_tracking_id = noone;
 angle_saved = 0;
 
 start_skill_cancel = false;
 skill_cancel_timer = 20;
-skill_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
 
 charge_color = false;
+
+mp_burn_rate = 5; //used for burning fury and polaris' buffed states
+skill_indc_time_set = 10; //used by burning fury and polaris' special color flash indicators
 
 //taunt
 taunt_react_time = 0;
@@ -636,13 +653,15 @@ dstrong_last_hbox = 0;
 //light dagger
 prepare_dagger_cd = false;
 dagger_spam_cd = 0;
-dagger_spam_cd_set = 40;
+dagger_spam_cd_set = 20; //40
+dagger_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
 
 //burning fury
 burnbuff_active = false;
+burnbuff_was_active = false;
 fury_norm_cost = skill[1].mp_use_cost;
 fury_mult = 1.5;
-mp_cost_burn_rate = 5; //used for burning fury's buffed state
+fury_indc_time = 0;
 
 //force leap
 leap_used = false;
@@ -653,8 +672,18 @@ leap_move_y = 0;
 blast_used = false;
 blast_charge_level = 0;
 
+//flashbang
+has_flashbang = false;
+flashbang_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
+
 //power smash
 power_crater_artc = noone;
+power_hsp_min = 6; //how fast bar goes normally
+power_init_y = y;
+power_uses = 0;
+power_air_uses_max = 2;
+fury_power_smash_ticks = false;
+power_fury_burn_tick = 20;
 
 //accel blitz
 accel_pos = [0, 0];
@@ -664,22 +693,24 @@ accel_vulnerable = false;
 accel_goto = 0;
 accel_used = false;
 accel_act_time = 0;
+accel_act_time_set = 20;
 accel_flashed_time = 0;
+accel_action_color = false;
 
 //polaris
 lightbuff_active = false;
 cancel_polaris = false;
+polaris_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
 polaris_shot = false;
-polaris_id = noone;
-mp_cost_light_rate = 3; //used for polaris
 polaris_shots_max = 4;
 polaris_shots_left = 4;
 polaris_shot_ids = [];
 prev_bar_pos = [x, y, spr_dir];
 polaris_norm_cost = skill[7].mp_use_cost;
-last_hitstop = 0;
-last_kb = [0, 0, 0, 0, 0];
-last_hitstun = 0;
+polaris_double_strike_time = 0;
+polaris_double_strike_time_set = 5;
+polaris_indc_time = 0;
+HG_NO_POLARIS = 60; //if true, it will not allow polaris to be proced by the hitbox
 
 polaris_cd_max = 60;
 polaris_cd = 0;
@@ -687,36 +718,36 @@ polaris_cd = 0;
 lightbuff_alpha = 0.1;
 lightbuff_rate = 0.02;
 lightbuff_increase = true;
-lightbuff_softarmor_max = mp_max/4;
 
 //ember fist
 ember_range = 40;
 ember_alter_anim_start = 0;
 ember_alter_anim_end = 0;
 fury_ember_timer = 0;
+fury_ember_hits = 6;
+fury_ember_hit_gaps = 8;
 fury_ember_x = 0
 fury_ember_y = 0;
 
 //light hookshot
 hook_charge = 0;
+hook_charge_max = 10;
 hook_grab = 0; //0 = nothing | 1 = player grab | 2 = terrain grab
+hook_dist = 0;
 hook_fling_anim = false;
-hook_chain_amount = 0;
-hook_chain_artc = noone;
-
-dist = [];
-hook_proj = [0, 0];
-hook_bar_pos = [0, 0];
+hook_full_charge = false;
 
 //chasm burster
 chasm_range = 48;
 chasm_limit = 0;
 chasm_count = 0;
-chasm_far_x = -10000; //there has to be a better way than to spawn all the bursts
 chasm_x = [];
 chasm_y = [];
+chasm_dir = spr_dir;
 chasm_burst_timer = 0;
 chasm_spawn_rate = 5;
+chasm_uses = 0;
+chasm_air_uses_max = 2;
 
 //theikos strongs
 strong2_charge = 0;
@@ -727,8 +758,9 @@ dstrong2_active = false;
 dstrong2_startpos = [0, 0];
 dstrong2_was_freemd = false;
 theikos_fire_artc = noone;
+#endregion
 
-///////////////////////////////////////////////////////// ABYSS RUNES SECTION ///////////////////////////////////////////////////////////
+#region ABYSS RUNES SECTION
 
 //rune A - airdash
 rune_A_active = has_rune("A");
@@ -737,19 +769,49 @@ rune_A_cd = 0; //20
 rune_A_attack_boost = false;
 rune_A_airdash_speed = 11;
 
+rune_C_active = has_rune("C");
+if (rune_C_active) //light fstrong (also applies to theikos f-strong)
+{
+    set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 25 + strong_charge/2);
+    set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, fx_lightblow[2]);
+    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_COLOR, hb_color[2]);
+    set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+    set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
+
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_EXTRA_HITPAUSE, 10 + strong_charge/4);
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, fx_lightblow[0]);
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_HITBOX_COLOR, hb_color[2]);
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_abyss_hex_hit"));
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_PARTICLE_NUM, 1);
+
+    set_hitbox_value(AT_FSTRONG_2, 2, HG_EXTRA_HITPAUSE, 10 + strong_charge/4);
+    set_hitbox_value(AT_FSTRONG_2, 2, HG_VISUAL_EFFECT, fx_lightblow[0]);
+    set_hitbox_value(AT_FSTRONG_2, 2, HG_HITBOX_COLOR, hb_color[2]);
+    set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_SFX, asset_get("sfx_abyss_hex_hit"));
+    set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_PARTICLE_NUM, 1);
+
+    set_hitbox_value(AT_FSTRONG_2, 3, HG_EXTRA_HITPAUSE, 25 + strong_charge/2);
+    set_hitbox_value(AT_FSTRONG_2, 3, HG_VISUAL_EFFECT, fx_lightblow[2]);
+    set_hitbox_value(AT_FSTRONG_2, 3, HG_HITBOX_COLOR, hb_color[2]);
+    set_hitbox_value(AT_FSTRONG_2, 3, HG_HIT_PARTICLE_NUM, 1);
+}
+
 rune_D_active = has_rune("D");
 
 rune_G_active = has_rune("G");
 rune_G_warp_lag = 0; //replicates the lag that used to be a thing cuz bar was inside accel blitz's animation instead
 
+rune_H_active = has_rune("H");
 rune_H_drag_id = noone;
 rune_H_target_was_free = false;
 rune_H_collision_pos = [0, 0];
 
+rune_K_active = has_rune("K");
+
 //OVERDRIVE - LORD'S PUNISHMENT
 AT_OVERDRIVE = 49;
 can_overdrive = has_rune("N");
-od_current = 0;
+od_cur = 0;
 od_max = 100;
 od_cast = 0; //0 = not cast | 1 = ready but still not cast | 2 = casting | 3 = post-OD buffs
 prev_od_cast = 0; //this locks some of the effects so they don't multiply forever
@@ -777,17 +839,24 @@ od_rect_alpha = 0;
 has_theikos = has_rune("O");
 AT_THEIKOS = 47;
 theikos_event_runtime = 0;
-theikos_type = 0; //0 = no theikos | 1 = regular mode | 2 = anti-cheapie mode
+theikos_type = 0; //0 = no theikos | 1 = regular mode
 theikos_mult = 1.75;
-found_cheapie = false;
 prev_attack = 0;
 theikos_music = false;
 
 theikos_color_time_max = 30;
 theikos_color_time = 0;
 theikos_color_increase = true;
+#endregion
 
-/////////////////////////////////////////////////////////// WORKSHOP SECTION ////////////////////////////////////////////////////////////
+#region WORKSHOP SECTION
+
+//venus idle
+venus_time = 0;
+venus_blush_time = 200;
+venus_blush_img = 0;
+venus_dist = 10;
+venus_exist_ids = [];
 
 //greenwood stage compatibility
 greenwood_cheer = 1;
@@ -909,9 +978,10 @@ knight_compat_dream = [
     "The demons... They will never take anything from me again...",
     "I wonder what's Venus doing now..."
 ];
+#endregion
+
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
-
 //checks the skills themselves
 #define set_skill(name, id, slot_x, slot_y, atk, air_atk, cost, cost_ex, cost_min)
 {
@@ -965,10 +1035,10 @@ knight_compat_dream = [
         //  if (skill_attack_air == -1) skill_attack_air = skill_attack;
 
         //attack_update.gml
-        //  if (window_timer == 1 && window == 2) mp_current -= mp_cost1; //initial cost
-        //  if (window_timer == 1 && window == 5) mp_current -= mp_cost2; //extra cost
+        //  if (window_timer == 1 && window == 2) mp_cur -= mp_cost1; //initial cost
+        //  if (window_timer == 1 && window == 5) mp_cur -= mp_cost2; //extra cost
 
         //update.gml
-        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_current);
+        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_cur);
     */
 }

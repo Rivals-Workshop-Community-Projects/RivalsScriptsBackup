@@ -46,13 +46,13 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 
 //Swing Endlag
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_GOTO, 8);
 
 //Cancel Endlag
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 17);
 

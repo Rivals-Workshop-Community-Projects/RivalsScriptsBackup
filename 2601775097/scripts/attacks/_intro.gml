@@ -55,3 +55,8 @@ window_num ++; //end
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 17);
+
+for (var i = 1; i <= get_attack_value(atk, AG_NUM_WINDOWS); i++) 
+{
+    if (i <= 3) intro_hair_fade_time += get_window_value(atk, i, AG_WINDOW_LENGTH);
+}

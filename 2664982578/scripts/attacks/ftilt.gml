@@ -10,14 +10,14 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 9);
 
 //attack
-set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //endlag
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FTILT, 2);
@@ -53,7 +53,7 @@ set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FTILT, 2, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 67);

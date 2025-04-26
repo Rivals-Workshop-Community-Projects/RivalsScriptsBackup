@@ -28,10 +28,3 @@ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, 0);
-
-
-
-
-
-
-

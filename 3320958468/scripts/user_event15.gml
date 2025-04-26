@@ -253,6 +253,44 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.05", "30 March, 2025");
+initHeader("GENERAL:");
+initSection("* Updated the localization files.");
+initHeader("DSPECIAL:");
+initSection("* Updated the code on how enemy players interact with the plunger guard when they attack/knock it away or towards other players or Rayman.
++ Updated the health bar to have a outline around it.");
+initHeader("~BONUS~:");
+initSection("+ Updated the Dialogue Buddy lines if Rayman faces Randalf Rhino, Geebs and... *sigh* Cindy Appeal.");
+
+initPatch("1.04", "01 December, 2024");
+initHeader("GENERAL:");
+initSection("* Updated the localization files.");
+initHeader("FAIR:");
+initSection("(non-spike hitbox)
+- BKB reduced from 8 -> 6
++ KBS increased from 0.60 -> 0.70");
+initHeader("DSPECIAL:");
+initSection("* The P.Guard now only fires at enemy players if they are in hurt states.
++ Increased the cooldown when the P.Guard gets destroyed from 145 -> 205.");
+initHeader("~BONUS~:");
+initSection("+ Added another rune:
+Rune N: The P.Guard has the previous firing checks. (aka, if enemy players are near it or inside it's circle.)");
+
+initPatch("1.03", "24 November, 2024");
+initHeader("GENERAL:");
+initSection("* Updated the localization files.");
+initHeader("DSPECIAL:");
+initSection("DSPECIAL:
++ Added a Health Bar for the P.Guard.
+- Decreased the detection radius from 140 -> 100.
+* Tweaked the P.Guard's positioning if near ledges.");
+initHeader("~BONUS~:");
+initSection("+ Added a few runes:
+Rune K: The Grapple Fist's range and speed has been increased slightly
+Rune O: The P.Guard's detection radius is now 160.
+
++ Updated the Dialogue Buddy if Rayman faces Camic.");
+
 initPatch("1.02", "11 September, 2024");
 initHeader("GENERAL:");
 initSection("* Updated the localization files.");

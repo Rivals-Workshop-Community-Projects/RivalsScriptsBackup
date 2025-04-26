@@ -60,6 +60,16 @@ set_color_profile_slot(4, 5, 64, 124, 48);
 set_color_profile_slot(4, 6, 33, 87, 18);
 set_color_profile_slot(4, 7, 248, 252, 6);
 
+//Shang Tu Wukong (Dev Derby 5)
+/*set_color_profile_slot(4, 0, 64, 124, 48); //Stripes
+set_color_profile_slot(4, 1, 128, 24, 176);
+set_color_profile_slot(4, 2, 248, 72, 248);
+set_color_profile_slot(4, 3, 128, 24, 176);
+set_color_profile_slot(4, 4, 160, 184, 56);
+set_color_profile_slot(4, 5, 64, 124, 48);
+set_color_profile_slot(4, 6, 56, 8, 112);
+set_color_profile_slot(4, 7, 248, 252, 6);*/
+
 //Corazon
 set_color_profile_slot(5, 0, 64, 124, 48); //Stripes
 set_color_profile_slot(5, 1, 37, 37, 37);
@@ -141,23 +151,23 @@ set_color_profile_slot(12, 6, 37, 37, 37);
 set_color_profile_slot(12, 7, 248, 252, 6);
 
 //Abyss
-set_color_profile_slot(13, 0, 152, 153, 232 );
-set_color_profile_slot(13, 1, 83, 82, 140 );
-set_color_profile_slot(13, 2, 214, 209, 255 );
-set_color_profile_slot(13, 3, 83, 82, 140 );
-set_color_profile_slot(13, 4, 83, 82, 140 );
-set_color_profile_slot(13, 5, 83, 82, 140 );
-set_color_profile_slot(13, 6, 83, 82, 140 );
+set_color_profile_slot(13, 0, 133, 138, 171);
+set_color_profile_slot(13, 1, 69, 67, 117);
+set_color_profile_slot(13, 2, 176, 90, 204);
+set_color_profile_slot(13, 3, 176, 90, 204);
+set_color_profile_slot(13, 4, 69, 67, 117);
+set_color_profile_slot(13, 5, 222, 255, 0);
+set_color_profile_slot(13, 6, 69, 67, 117);
 set_color_profile_slot(13, 7, 248, 252, 6);
 
 //Early Access
-set_color_profile_slot(14, 0, 167, 186, 74 );
-set_color_profile_slot(14, 1, 35, 67, 49 );
-set_color_profile_slot(14, 2, 83, 122, 62 );
-set_color_profile_slot(14, 3, 211, 226, 154 );
-set_color_profile_slot(14, 4, 167, 186, 74 );
-set_color_profile_slot(14, 5, 167, 186, 74 );
-set_color_profile_slot(14, 6, 167, 186, 74 );
+set_color_profile_slot(14, 0, 167, 186, 74);
+set_color_profile_slot(14, 1, 35, 67, 49);
+set_color_profile_slot(14, 2, 83, 122, 62);
+set_color_profile_slot(14, 3, 211, 226, 154);
+set_color_profile_slot(14, 4, 167, 186, 74);
+set_color_profile_slot(14, 5, 167, 186, 74);
+set_color_profile_slot(14, 6, 167, 186, 74);
 set_color_profile_slot(14, 7, 248, 252, 6);
 
 //Big
@@ -191,13 +201,13 @@ set_color_profile_slot(17, 6, 0, 0, 0);
 set_color_profile_slot(17, 7, 248, 252, 6);
 
 //Solid Gold Motorbike
-set_color_profile_slot(18, 0, 255, 162, 29 );
-set_color_profile_slot(18, 1, 86, 23, 16 );
-set_color_profile_slot(18, 2, 192, 92, 0 );
-set_color_profile_slot(18, 3, 255, 162, 29 );
-set_color_profile_slot(18, 4, 255, 234, 155 ); 
-set_color_profile_slot(18, 5, 255, 162, 29 );
-set_color_profile_slot(18, 6, 255, 162, 29 );
+set_color_profile_slot(18, 0, 117, 92, 0);
+set_color_profile_slot(18, 1, 117, 92, 0);
+set_color_profile_slot(18, 2, 255, 255, 254);
+set_color_profile_slot(18, 3, 252, 213, 53);
+set_color_profile_slot(18, 4, 252, 213, 53); 
+set_color_profile_slot(18, 5, 252, 213, 53);
+set_color_profile_slot(18, 6, 117, 92, 0);
 set_color_profile_slot(18, 7, 248, 252, 6);
 
 //Litten

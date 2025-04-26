@@ -5,11 +5,11 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 //Startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_rag_axe_swing"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 10);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -31,7 +31,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 //Retrive Trident
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);

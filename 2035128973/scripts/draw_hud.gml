@@ -52,6 +52,7 @@ if ("rollArray" in self)
 				AddText("Advanced Tutorials");
 				AddText("Change Notes");
 				AddText("Shrine of Light Discord");
+				AddText("Final Smash");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -366,6 +367,23 @@ if ("rollArray" in self)
 						AddText("v3.4.2 - 17 Apr 2024");
 						AddText("");
 						AddText("Fixed bugged code for Aura Sphere not losing charge on getting hit during the move");
+						break;
+					case 16:
+						AddText("v3.5 - 12 Nov 2024");
+						AddText("");
+						AddText("Optimized filesize");
+						AddText("");
+						AddText("Bone UAir Startup 15 -> 18");
+						AddText("Bone UAir Sweetspot KB 7+0.8 -> 8.5+0.7");
+						AddText("Bone UAir Sweetspot Hitstun Multiplier 1 -> 0.75");
+						AddText("");
+						AddText("BAir Startup 12 -> 14");
+						AddText("BAir Endlag 8 -> 10 (Before whifflag multiplier)");
+						AddText("BAir Landing Lag 9 -> 10");
+						AddText("BAir Sweetspot KB 7.5+0.9 -> 7.5+0.95");
+						AddText("");
+						AddText("NSpecial Startup 7 -> 11");
+						AddText("NSpecial Max Charge Time 100 frames -> 150 frames");
 						break;
 				}
 				DrawTutorialBlock();

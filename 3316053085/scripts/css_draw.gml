@@ -70,7 +70,7 @@ else
             shader_start();
             break;
         case 14: draw_sprite_ext(sprite_get("ex_charselect"), 1, x+8, y+8, 2, 2, 0, c_white, 1); break; //early access
-        case 26: draw_sprite_ext(sprite_get("ex_charselect"), 2, x+8, y+8, 2, 2, 0, c_white, 1); break; //theikos alt
+        case 27: draw_sprite_ext(sprite_get("ex_charselect"), 2, x+8, y+8, 2, 2, 0, c_white, 1); break; //theikos alt
     }
 
     //animation - character
@@ -103,8 +103,9 @@ else
         case 16: draw_sprite_ext(asset_get("prem_skin_spr"), 7, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //seasonal
         case 17: draw_sprite_ext(asset_get("prem_skin_spr"), 0, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //infamous/premium
         case 18: draw_sprite_ext(asset_get("prem_skin_spr"), 5, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //gold rank
-        case 26: draw_sprite_ext(sprite_get("css_theikos"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //theikos
-        case 27: draw_sprite_ext(sprite_get("css_allstar"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //all-star heroine
+        case 27: draw_sprite_ext(sprite_get("css_theikos"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //theikos
+        case 28: draw_sprite_ext(sprite_get("css_allstar"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //all-star heroine
+        case 29: draw_sprite_ext(sprite_get("css_vortex"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //vortex 2024
     }
     //other notable icon include:
     //  image_index 1: custom colors

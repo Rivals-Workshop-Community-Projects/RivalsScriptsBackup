@@ -14,8 +14,6 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			image_index=0;
 		}
 	}
-	//Spawn PARRYBOX
-	create_hitbox( AT_NSPECIAL, 5, x , y );
 
 	if hitbox_timer <= (45 + extra_trans) && !player_id.runeJ{
 		transcendent=true;
@@ -170,19 +168,11 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		if smoke_state >1 && player_id.runeM{
 			smoke_state =4;
 		}
-
-		/*			//No funciona :'v
-		//Preventing overlap
-		with pHitBox{				//From the perspective of the hitbox
-			if  type == 2 && attack == AT_NSPECIAL && hbox_num==1 && other.player_url == player_id.url  {
-				if abs(x-other.x)<=35 && abs(y - other.y)<=35{
-					hsp = 1.5*spr_dir;
-				} else {
-					hsp = 0;		
-				}
-			} 
+	
+		//Being parried
+		if was_parried{
+			player_id.kill_smoke = 1; 
 		}
-		*/
 
 		//NUMBER OF SMOKES LIMIT
 
@@ -197,9 +187,9 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			destroyed = true;
 		}
 
-		//Being parried
-		if was_parried{
-			player_id.kill_smoke = 1; 
+			//Spawn PARRYBOX
+		if !destroyed {
+			create_hitbox( AT_NSPECIAL, 5, x , y );
 		}
 
 	} else{																//SMOKE DETONATE

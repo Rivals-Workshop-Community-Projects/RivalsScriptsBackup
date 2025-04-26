@@ -113,14 +113,15 @@ if (winner == player /* && uhc_batteries */)
     quotes[i++] = "Oh sorry! I think that ink is going to be tough to rub out!";
     quotes[i++] = "Of course I can draw you! But you might wanna check the mirror first...";
     quotes[i++] = "You want my autograph? I’d love to, but I think you need a cast first!";
-    quotes[i++] = "Uh oh! I'm running out of ink. Could you buy some new cartridges for me?";
-    quotes[i++] = "Wuh oh! Looks like somebody didn't study their color theory today!";
+    quotes[i++] = "Whoops! I'm running out of ink. Could you buy some new cartridges for me?";
+    quotes[i++] = "Wuh oh, looks like somebody didn't study their color theory today!";
     return quotes[(current_time) % array_length(quotes)];
 }
 
 //====================================================
 #define get_victory_screen_data()
 {
+
     var data_array = noone;
     //var data_batteries = true;
     //relies on unload.gml sending over a persistent hitbox with said data
@@ -183,6 +184,8 @@ if (winner == player /* && uhc_batteries */)
         if (string_length(pastelle_victory_quote) < 1)
         { pastelle_victory_quote = get_random_quote(); }
     }
-    
+    //play sound
+    if(data_array[winner].isslime == 1)
+        sound_play(sound_get("sl_terr_win"));
 }
 

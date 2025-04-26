@@ -64,7 +64,7 @@ sprite_change_offset("fstrong_torso_wireframe", 61, 73);
 sprite_change_offset("ustrong", 65, 163);
 sprite_change_offset("dstrong", 65, 111);
 sprite_change_offset("nspecial", 85, 111);
-sprite_change_offset("nspecial_alt", 85, 111);
+sprite_change_offset("boomerang_throw", 85, 111);
 sprite_change_offset("final_smash", 117, 211);
 sprite_change_offset("nspecial_arrows", 85, 111);
 sprite_change_offset("big_arrow", 16, 16);

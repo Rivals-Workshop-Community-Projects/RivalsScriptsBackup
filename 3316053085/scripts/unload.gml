@@ -35,9 +35,9 @@ if (!handled_victory_quote)
             team: get_player_team(p), // current team of player
             priority: 0,              // message priority (0 default, 1 builtin, 2 explicit)
             quote:"",                 // message if venus wins against you
-            emote: 0,                 // emote venus uses when he wins
+            emote: 0,                 // emote venus uses when she wins
             //===========================================================================
-            status_quote: "",         // message for this venus if he wins under certain conditions
+            status_quote: "",         // message for this venus if she wins under certain conditions
             status_emote: 0
         }
     }
@@ -91,7 +91,7 @@ if (!handled_victory_quote)
             {
                 if ("is_demon_horde_stage" in self) //demon horde
                 {
-                    data.status_quote = "I didn't think that Bar being away for so long would have this happen...";
+                    data.status_quote = "Where have everyone been for this to happen...?";
                     data.status_emote = 4;
                 }
             }
@@ -116,7 +116,7 @@ if (!handled_victory_quote)
                     case "3039831352": //sonic
                         if (alt_cur != 16 || get_match_setting(SET_SEASON) != 3) //make sure he isn't lord X
                         {
-                            data.status_quote = "You kind of remind me of a friend of mine, but in a good way!";
+                            data.status_quote = "You kind of remind me of a friend of mine, in a good way!";
                             data.status_emote = 0;
                         }
                         else
@@ -162,13 +162,12 @@ if (!handled_victory_quote)
                     quote = "Your ice skating is beautiful! We should go ice skating together sometime!";
                     emote = 2;
                 }
+                if ("is_ilias" in self)
+                {
+                    quote = "You are hurting inside, aren't you? I can feel that you don't want this tyranny.";
+                    emote = 4;
+                }
             }
-        }
-        else if ("victory_quote" in self)
-        {
-            data.priority = 2;
-            data.quote = victory_quote;
-            data.quote = emote;
         }
         else
         {
@@ -222,7 +221,7 @@ if (!handled_victory_quote)
             emote = 1;
             break;
         case CH_ORCANE:
-            quote = "You're so cute! But you seem a bit more than meets the eye, aren't you?";
+            quote = "You're so cute! But you're more than meets the eye, aren't you?";
             emote = 0;
             break;
         case CH_KRAGG:
@@ -230,7 +229,7 @@ if (!handled_victory_quote)
             emote = 2;
             break;
         case CH_WRASTOR:
-            quote = "You seem like a bully, I don't think I trust you.";
+            quote = "You seem like a bully, I don't trust you.";
             emote = 3;
             break;
         case CH_FORSBURN:
@@ -246,7 +245,7 @@ if (!handled_victory_quote)
             emote = 2;
             break;
         case CH_ABSA:
-            quote = "You can live a little on top of your duty, y'know?";
+            quote = "You can live beyond of your duty, y'know?";
             emote = 1;
             break;
         case CH_CLAIREN:
@@ -254,7 +253,7 @@ if (!handled_victory_quote)
             emote = 2;
             break;
         case CH_RANNO:
-            quote = "But we still need to fight for the ones we cherish...";
+            quote = "But we still must fight for the ones we cherish...";
             emote = 4;
             break;
         case CH_ELLIANA:
@@ -262,7 +261,7 @@ if (!handled_victory_quote)
             emote = 3;
             break;
         case CH_SYLVANOS:
-            quote = "All that rage... I'm sorry that the world treated you so harshly.";
+            quote = "All that rage... I'm sorry the world treated you so harshly.";
             emote = 4;
             break;
         case CH_MOLLO: case "1871989159":
@@ -270,7 +269,7 @@ if (!handled_victory_quote)
             emote = 3;
             break;
         case CH_HODAN: case "2136440419":
-            quote = "Your martial arts are very interesting, I like it!";
+            quote = "Your Elementalism is very interesting, I like it!";
             emote = 2;
             break;
         case CH_OLYMPIA: case "1943759600":
@@ -319,10 +318,11 @@ if (!handled_victory_quote)
             emote = 3;
             break;  
         case "3039831352": //sonic
+        case "1899673724": case "2285717462": case "2078670767": case "2074796206": case "2138937258": case "2139665984": case "1878949757": case "2294421289": //sonic (not mine)
             //sonic's quote changes if he uses the halloween seasonal alt
-            if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
+            if ("is_bar_sonic" in self && alt_cur == 16 && get_match_setting(SET_SEASON) == 3)
             {
-                quote = "...Seems I was right, he was a fake.";
+                quote = "People are not your playthings!";
                 emote = 3;
             }
             else
@@ -344,37 +344,41 @@ if (!handled_victory_quote)
             quote = "I hope you find your way out of the darkness, there's always light at the end of the tunnel!";
             emote = 1;
             break;
-        case "3307937190": //pastelle
+        case "3307937190": case "2843521167": //pastelle
             quote = "The colors you use are so pretty! They compliment each other well.";
             emote = 2;
             break;
-        case "3308351120": //saelukune
+        case "3308351120": //saelune
             quote = "Detatching your limbs to attack seem painful, are you sure you're ok?";
             emote = 1;
             break;
         case "3309240911": //putrolce
-            quote = "The mouthpiece moves on it's own? We should remove it so it doesn't hurt you anymore!";
+            quote = "You look exausted... I'll get you something to eat.";
             emote = 1;
             break;
         case "3310371100": //usher
-            quote = "Oh! That's a very cute umbrella! could I share so I don't get soaked in the rain?";
+            quote = "Oh! That's a cute umbrella! May I share it with you so I don't get soaked in the rain?";
             emote = 5;
             break;
-        case "ciela": //ciela
+        case "3382637663": //ciela
             quote = "Swinging that floating weapon is dangerous, make sure no one's around at least!";
             emote = 3;
             break;
         //////////////////////// ORIGINAL CHARACTERS ///////////////////////
+        case "2983344228": //kiku
+            quote = "You're strong, both in body and heart!";
+            emote = 2;
+            break;
         case "2396061657": //callie
-            quote = "It was nice to meet you! as a cupid that is.";
+            quote = "It was nice to meet you! You're full of love to share, that's a wonderful thing!";
             emote = 2;
             break;
         case "2396053263": //heartbrake
-            quote = "Ending love won't destroy evil, evil can find a different thing to abuse.";
+            quote = "Ending love won't destroy evil, evil will always find a new thing to corrupt.";
             emote = 1;
             break;
         case "2944203759": //bastet
-            quote = "Nice movement, staying on beat can be tough.";
+            quote = "Nice movements, staying on beat can be tough.";
             emote = 2;
             break;
         case "2833345946": //reckless swordsman
@@ -382,7 +386,7 @@ if (!handled_victory_quote)
             emote = 3;
             break;
         case "3294183869": //vale
-            quote = "Are you an angel too? It's rare seeing any walking around Aretz, let alone in the Theïkós state.";
+            quote = "You're an angel too? You should probably disable your Theïkós state though.";
             emote = 0;
             break;
         case "2605377553": //mal
@@ -390,12 +394,24 @@ if (!handled_victory_quote)
             emote = 4;
             break;
         case "2105940891": //siren
-            quote = "...Why is your hat looking at me weird...? Is it some sort of demon?";
+            quote = "...Why is your hat looking at me weird...? Is it a demon?";
             emote = 6;
-            break;    
+            break;
+        case "3415959265": case "3304241490": //saya
+            quote = "The Last Guardian sounds lonely, I know a guardian too, you might get along!"
+            emote = 2;
+            break;
+        case "3353256940": //twenny
+            quote = "I'm sorry for what you have to go through.";
+            emote = 4;
+            break;
         /////////////////////////// IP CHARACTERS //////////////////////////
+        case "2945062156": case "2944680077": case "2311095319": //mario (regina / mit / ricE)
+            quote = "I'm sure the princess appritiates what you do for her, too!";
+            emote = 2;
+            break;
         case "2979347370": //amy rose
-            quote = "You're strong, I'm sure that Sonic person likes you, too!";
+            quote = "You're strong, I'm sure that Sonic person likes you too!";
             emote = 2;
             break;
         case "2555199085": case "2048123175": //crazy dave
@@ -427,16 +443,28 @@ if (!handled_victory_quote)
             emote = 2;
             break;
         case "2685923956": //jirachi
-            quote = "...I wish I could see my- No. I should't be so selfish about this...";
+            quote = "...I wish I could see my- No. I shouldn't be so selfish about this...";
             emote = 4;
             break;
         case "2879813992": case "3122192177": //aerith
             quote = "I like you! We should hang out sometime!";
             emote = 2;
             break;
-        case "3154367863": //aerith
+        case "3154367863": //saber
             quote = "Shirou, hm? Do you fight for his sake?";
             emote = 0;
+            break;
+        case "2606511813": //pit
+            quote = "Even as an underdog you save your world from Gehenom, so don't worry about this match!" ;
+            emote = 0;
+            break;
+        case "2899563373": //palutena
+            quote = "The loyalty your troops have for you shows how great of a leader you may be!";
+            emote = 2;
+            break;
+        case "3363227530": case "3351001188": //MX
+            quote = "Pretending to be someone you're not to lure children to their death, you're the worst!"
+            emote = 3;
             break;
         ////////////////////////////////////////////////////////////////////
         default: break;

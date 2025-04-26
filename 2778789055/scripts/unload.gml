@@ -515,7 +515,7 @@ Noise
             break;
       case "2005036466": // Penny
       case "2160036641": //
-            quote = "We should get ear-pieces like hers so I'd stop getting roughed up in fights.";
+            quote = "We should get ear-pieces like hers so I stop getting roughed up in fights.";
             speaker = 1;    
             break;
       case "2922282666": // Anzen

@@ -26,6 +26,8 @@ if((!invis && !inAttack && special_pressed && invisAlpha == 1 && !taunt_down && 
 	invisExitStateTimer = 0;
 	invisExitAnimationIndex = 0;
 	sound_play(sound_get("spy_cloak"));
+	if(state == PS_IDLE && (!disguised || disguisedAsSelf))
+		state_timer = 0;
 
 	if(stateAllowsInvis)
 		invisStateTimer = 999;//prevents playing invis animation since we already are partially
@@ -116,8 +118,15 @@ else
 	invisAlpha = min(invisAlpha,1);
 }
 
+var minAlpha = min(invisAnimationAlpha, invisAlpha);
+if(minAlpha == 0)
+	visible = false;
+else if(minAlphaLast < 1)
+	visible = true;
+minAlphaLast = minAlpha;
 
-visible = !invis || invisAlpha > 0;//prevent other_post_draw from running, but cant be used to hide spy bcz it also stops post_draw
+// visible = !invis || invisAlpha > 0;//prevent other_post_draw from running, but cant be used to hide spy bcz it also stops post_draw -> but cant be done permanently bcz it screws up compatabilities
+// print(visible);
 
 
 doInvisAnimation = stateAllowsInvis && (!disguised || disguisedAsSelf || disguisedThroughDodgeOrRoll);
@@ -179,20 +188,34 @@ if(invisSavedAttack != noone && invisAlpha == 1 && invisAlphaLast < 1)
 	invisSavedAttack = noone;
 }
 
-
-//make ai not see spy during invisibility
-with(oPlayer)
+//make ai not see spy during invisibility (pretty janky) (also for final smash)
+if(!custom_clone)
 {
-	if(variable_instance_exists(self,"ai_target")
-	&& variable_instance_exists(ai_target,"invis") && ai_target.invis)
+	with(oPlayer)
 	{
-		//ai_target = undefined;
-		//ai_attack_time = 8;
-		//ai_recovering = true;
-		temp_level = 1;
-		//TODO: should be more random, so try to change ai_going_left/ai_going_right/ready_to_attack/ai_going_into_attack
-		//		or use an article as target that we randomly offset from spy
-		//TODO: spy itself should also see itself less perfectly
-		// other.temp_level *= 0.5;
+		if(variable_instance_exists(self,"ai_target")
+		&& ds_list_find_index(other.clones, self) == -1
+		&& (variable_instance_exists(ai_target,"invis") && ai_target.invis
+		|| variable_instance_exists(ai_target,"fs_using_final_smash") && ai_target.fs_using_final_smash))
+		{
+			//ai_target = undefined;//TODO: try setting this to something besides spy and change its position?
+			//ai_attack_time = 8;
+			//ai_recovering = true;
+			// temp_level = 1;
+			// ready_to_attack = false;
+			// ai_disabled = true;
+			var targetIsRight = ai_target.x > x;
+			if(random_func( 0, 100, false ) < 4-temp_level*0.5)
+				if(targetIsRight)
+				{
+					ai_going_left = true;
+					ai_going_right = false;
+				}
+				else
+				{
+					ai_going_left = false;
+					ai_going_right = true;
+				}
+		}
 	}
 }

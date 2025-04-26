@@ -34,9 +34,9 @@ if(attack == AT_DSPECIAL && hbox_num == 1){
 	if (vsp >= 0 && has_bounced) || (!was_parried && hitbox_timer > 6 && player_id.down_down && player_id.special_pressed){
 		if (hitbox_timer > 6 && player_id.down_down && player_id.special_pressed) with(player_id) clear_button_buffer(PC_SPECIAL_PRESSED);
 		destroyed = true;
-		if !was_parried player_id.lamp = instance_create(x, y, "obj_article2");
+		if player == player_id.player player_id.lamp = instance_create(round(x), round(y), "obj_article2");
 		var hfx = spawn_hit_fx(x, y, HFX_SHO_FLAME_SMALL);
-		if !was_parried hfx.depth = player_id.lamp.depth - 1;
+		if player == player_id.player hfx.depth = player_id.lamp.depth - 1;
 		sound_play(asset_get("sfx_burnapplied"));
 	}
 	if(free && place_meeting(x + 2 + hsp, y - 1, asset_get("par_block"))){
@@ -65,9 +65,8 @@ if(attack == AT_DSPECIAL && hbox_num == 1){
 
 //Lantern Fire Trail
 if (attack == AT_DSPECIAL && hbox_num == 1){
-	var lanterntrail = hit_fx_create( sprite_get( "fire_trail" ), 16 );
 	if (hitbox_timer%5==1){ //for each 8 frames, a frame goes up in the strip
-		spawn_hit_fx( x-10*spr_dir, y-20, lanterntrail);
+		var hfx = spawn_hit_fx( x-0*spr_dir, y-20, player_id.lanterntrail);
 	}
 }
 

@@ -1,4 +1,5 @@
 //article3_pre_draw
+/* This file is currently unused.
 // drawing cards ffect
 
 if (state == 0)

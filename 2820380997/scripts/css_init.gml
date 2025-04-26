@@ -173,7 +173,7 @@ if(menu_button[0][8]){ // Sub Menu Button Pressed
 #macro BOX_CLOSE_MENU 6
 #macro BOX_CLOSE_INTERAL_MENU 7
 #macro BOX_SHIFT_COLOR_ALTS 8
-#macro BOX_TAP_NSPEC_TOGGLE 9
+#macro BOX_WIN_QUOTE_ENABLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
@@ -278,7 +278,7 @@ create_menu_box(BOX_ALT_OUTFIT,"Alt_outfit",x + 20,y + 110,32,32,"css_menu_butto
 // Extra Options Menu Buttons
 row_x = x + 20
 row_y = y + 70;
-create_menu_box(BOX_TAP_NSPEC_TOGGLE,"Tap Nspec",row_x,row_y,32,32,"css_menu_buttons",9);
+create_menu_box(BOX_WIN_QUOTE_ENABLE,"Win Quote",row_x,row_y,32,32,"css_menu_buttons",7);
 //create_menu_box(BOX_INTRO_DIALOG_ENABLE,"Intro Dialog",row_x,row_y + 40,32,32,"css_menu_buttons",8); //Disabled for riptide cannot finish in time
 create_menu_box(BOX_SWAP_INPUTS,"Swap Inputs",row_x + 100,row_y,32,32,"css_menu_buttons",9);
 create_menu_box(BOX_NECO_PORTRAIT,"NECO_PORTRAIT",row_x + 100,row_y + 40,32,32,"css_menu_buttons",9);
@@ -298,7 +298,7 @@ initialize_color_slot_info();
 
 // Supersonic's Synched Variable Code
 generated_var = 0;
-tap_nspec_enabled = false;
+flag_win_quote_enabled = false;
 flag_round_start_dialog = false;
 swap_nspec_dspec_input = false;
 portrait_to_use = 0;
@@ -308,7 +308,7 @@ portrait_to_use = 0;
 // Synced Variable Stuff -Should run to reset these valus on game load
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
-2. Status of Bspec tap toggle - 1 bit
+2. Status of Win Quotes Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
 4. Swap Nspec / Dspec - 1 bit
 5. Portrait to use - 2 bits
@@ -321,11 +321,11 @@ split_var = split_synced_var(2,1,1,1,2,1);
 //print(split_var);
 /*
 print(split_var[0]); // Color_Shift;
-print(split_var[1]); // Nspec tap
+print(split_var[1]); // WinQuote
 print(split_var[2]); // Round Start Dialog
 */
 color_shift = split_var[0];
-tap_nspec_enabled = split_var[1];
+flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
 portrait_to_use = split_var[4];

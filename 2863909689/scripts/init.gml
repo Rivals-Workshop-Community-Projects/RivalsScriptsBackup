@@ -32,13 +32,13 @@ cancel_damage_threshold = 100;
 can_cancel = false;
 should_cancel = false;
 
-fspec_hsp = 10;
+fspec_hsp = 8.5;
 fspec_vsp = -4;
 fspec_jump = 38;
 fspec_start_y = 0;
 enter_fspecial_command_grab = false;
 grab_hsp_move = 4;
-fspec_hit_cooldown = 40;
+fspec_hit_cooldown = 60;
 
 uspec_hsp = 0;
 uspec_vsp = -12.5;
@@ -92,7 +92,7 @@ max_jump_hsp = 7.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .7; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.

@@ -282,7 +282,9 @@ if !free or state == PS_WALL_JUMP {
 	move_cooldown[AT_USPECIAL] = 0
 }
 if ink < 300 {
-	
+	if ink < 50 {
+		move_cooldown[AT_FSPECIAL] = 2
+	}
 	if get_gameplay_time() % 8 == 0 {
 		with oPlayer {
 			if player != other.player {
@@ -298,13 +300,15 @@ if ink < 300 {
 		
 	}
 }
+if freesummon > 0 {
+	freesummon -= 1
+	if freesummon = 10{
+		sound_play(asset_get("sfx_orca_absorb"))     
+        create_hitbox(AT_DSPECIAL, 1, x + 62*spr_dir, y - 30)
+	}
+}
 
-if ink > 300 {
-	ink = 300
-}
-if ink < 0 {
-	ink = 0
-}
+ink = clamp(ink,0,300)
 
 if (state == PS_PRATLAND or state == PS_WALL_JUMP)  && visible = false {
 	visible = true

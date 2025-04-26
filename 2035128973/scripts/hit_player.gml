@@ -2,7 +2,7 @@ if (get_synced_var(player) == 15005)
 {
 	hit_player_obj.orig_knock *= 1 + (get_player_damage(player)/200);
 	if (my_hitboxID.attack == AT_USPECIAL) set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
-    if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) my_hitboxID.can_hit[hit_player_obj.player] = true;
+	if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) my_hitboxID.can_hit[hit_player_obj.player] = true;
 }
 else
 {

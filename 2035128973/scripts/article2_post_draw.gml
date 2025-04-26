@@ -18,5 +18,5 @@ with (pHitBox) if (player_id == other.player_id && attack == AT_NSPECIAL && hbox
 
 #define GetColourPlayer(_index)
 {
-    return make_colour_rgb(get_color_profile_slot_r(get_player_color(player_id.player), _index),get_color_profile_slot_g(get_player_color(player_id.player), _index),get_color_profile_slot_b(get_player_color(player_id.player), _index));
+	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player_id.player), _index),get_color_profile_slot_g(get_player_color(player_id.player), _index),get_color_profile_slot_b(get_player_color(player_id.player), _index));
 }

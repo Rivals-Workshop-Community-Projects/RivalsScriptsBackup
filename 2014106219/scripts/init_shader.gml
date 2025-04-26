@@ -36,10 +36,11 @@ if (get_player_color( player ) == 3) {
 }
 
 if (get_player_color( player ) == 4) {
-	set_character_color_shading(5, .5); //socks
+	set_character_color_shading(5, 1.1); //socks
 }
 
 if (get_player_color( player ) == 5) {
+	set_character_color_shading(2, .3); //shirt
 	set_character_color_shading(0, .5); //shoes/bracelets
 	set_character_color_shading(1, .8); //headband
 	set_character_color_shading(3, .6); //skirt

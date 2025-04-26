@@ -5,6 +5,7 @@ set_color_profile_slot_range(1,9,9,18);//Reset
 switch(get_player_color(real_player)){//0 Green|1 Red|2 Eye|3 Leaf|4 Mouth|5 Eye Black|6 Orb/Gear
     case 0://Eye black
         set_character_color_slot(5,0,0,0);
+        set_article_color_slot(5,0,0,0);
         break;
     case 1://Celebi
         set_character_color_shading(3,2.0);

@@ -98,8 +98,8 @@ walk_speed              = 3.25;		            // 3    -  4.5
 walk_accel              = 0.2;		            // 0.2  -  0.5
 walk_turn_time          = 6;		            // 6
 initial_dash_time       = 10;		            // 8    -  16       zetterburn's is 14
-initial_dash_speed      = 7.5;		            // 4    -  9
-dash_speed              = 7;		            // 5    -  9
+initial_dash_speed      = 7;		            // 4    -  9
+dash_speed              = 6.5;		            // 5    -  9
 dash_turn_time          = 10;		            // 8    -  20
 dash_turn_accel         = 1.5;		            // 0.1  -  2
 dash_stop_time          = 4;		            // 4    -  6        zetterburn's is 4
@@ -131,7 +131,7 @@ max_djumps              = 1;		            // 0    -  3        the 0 is elliana b
 walljump_hsp            = 7;		            // 4    -  7
 walljump_vsp            = 8;		            // 7    -  10
 land_time               = 4;		            // 4    -  6
-prat_land_time          = 10;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time          = 14;		            // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction           = 0.08;		            // 0    -  0.15
@@ -205,7 +205,7 @@ set_victory_theme(sound_get("mus_victory")); // sounds\mus_victory.ogg - leave s
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
-waveland_sound      = asset_get("sfx_waveland_zet"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = asset_get("sfx_jumpground");
 djump_sound         = asset_get("sfx_jumpair");
 air_dodge_sound     = asset_get("sfx_quick_dodge");
@@ -235,6 +235,13 @@ wait_time = 0;                      // if wait_time is over 0, staying in idle f
 wait_length = 0;                    // this values sets how long the character is animated for in the wait animation
 wait_sprite = sprite_get("wait");   // sets the wait animation sprite strip
 
+//secret 
+motion_input = false;
+motion_state = 0;
+motion_state2 = 0;
+secretalt = 0;
+motion_timer = 0;
+galaxy_sfx = false;
 
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
@@ -451,6 +458,33 @@ knight_compat_dream =
         "Nah just kidding! I got all my inks this time!"
     ]
 
+if(get_match_setting(SET_PRACTICE)){
+    //print("In Training Mode - Initiaizing Woodcock variables");
+    // Attack Indexes
+    AG_MUNO_ATTACK_EXCLUDE = 80;
+    AG_MUNO_ATTACK_REFRESH = 81;
+    AG_MUNO_ATTACK_NAME = 82;
+    AG_MUNO_ATTACK_FAF = 83;
+    AG_MUNO_ATTACK_ENDLAG = 84;
+    AG_MUNO_ATTACK_LANDING_LAG = 85;
+    AG_MUNO_ATTACK_MISC = 86;
+    AG_MUNO_ATTACK_MISC_ADD = 87;
+    
+    //Hitbox Indexes
+    HG_MUNO_HITBOX_EXCLUDE = 80;
+    HG_MUNO_HITBOX_NAME = 81;
+    HG_MUNO_HITBOX_ACTIVE = 82;
+    HG_MUNO_HITBOX_DAMAGE = 83;
+    HG_MUNO_HITBOX_BKB = 84;
+    HG_MUNO_HITBOX_KBG = 85;
+    HG_MUNO_HITBOX_ANGLE = 86;
+    HG_MUNO_HITBOX_PRIORITY = 87;
+    HG_MUNO_HITBOX_GROUP = 88;
+    HG_MUNO_HITBOX_BHP = 89;
+    HG_MUNO_HITBOX_HPG = 90;
+    HG_MUNO_HITBOX_MISC = 91;
+    HG_MUNO_HITBOX_MISC_ADD = 92;
+}
 
 #define create_smear_effects(sprite_name, frame_duration, spawn_img, stuck_img_frames)
 {

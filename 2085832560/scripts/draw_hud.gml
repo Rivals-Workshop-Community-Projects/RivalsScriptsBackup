@@ -1,6 +1,5 @@
 
 if state == PS_RESPAWN && !hitstop {
-    
     if state_timer == 1 {
         sound_play(asset_get("sfx_absa_concentrate"),false,noone,1,1.4)
     }
@@ -29,11 +28,8 @@ if state == PS_RESPAWN && !hitstop {
         draw_sprite_ext(sprite_get("nc5"), (state_timer%9)/3, temp_x - 44, temp_y - 114,1.5,2,0,-1,1 );
         
         if state_timer < 120 {
-            if state_timer%8 == 0 {
-                sound_play(sound_get("beepv2"),false,noone,.75*casing)
-            }
             if state_timer%2 == 0 {
-                sound_play(asset_get("mfx_orby_talk"),false,noone,1-casing)
+                sound_play(asset_get("mfx_orby_talk"),false,noone,1)
             }
          gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_get("nc5"), 3 + (state_timer%10)/5, temp_x - 42 + random_func(2,4,true), temp_y - 112 + random_func(2,4,true),1.5,1.5,0,-1,.4 );
@@ -170,6 +166,12 @@ shader_start();
 
 
 draw_sprite(sprite_get("infernalempty"), 0, temp_x + 26, temp_y - 6 );
+if rank < 4{
+	 draw_sprite(sprite_get("infernalempty"), 2, temp_x + 26, temp_y - 6 );
+}
+else if rank < 6{
+	 draw_sprite(sprite_get("infernalempty"), 3, temp_x + 26, temp_y - 6 );
+}
 
 draw_sprite_part(sprite_get("infernalfull2"), 0, 0, 0, (infernal2/300) * 182, 36, temp_x + 26, temp_y - 6 );
 
@@ -257,146 +259,10 @@ shader_end();
 
 
 shader_start();
-if introtimer > 0 {
-    
-    
-        if introtimer == temp_y - 6000 {
-        spawn_hit_fx( x, y , exp1 )
-        sound_play(sound_get("RI"));
-    	sound_play(sound_get("exp1"));
-    }
-    
-        draw_sprite(sprite_get("interaction"), 0, temp_x - 20, temp_y - 170);
-    
-    if introhit = -1 && introtimer < 150 {
-         if introtimer == 150 {
-        spawn_hit_fx( temp_x + 300 , temp_y + 60  , exp2 )
-        sound_play(sound_get("RI"));
-    	sound_play(sound_get("exp1"));
-    }
-          draw_sprite(sprite_get("interactionbox"), 0, temp_x + 40, temp_y - 180);
-      }
-      
-        if introhit = 1 {
-           draw_sprite(sprite_get("interactionbox"), 0, temp_x + 40, temp_y - 220);
-      }
-
-//Zetta
-  if hit_player_obj.url == "1913869515"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 30,temp_y - 28,"Foolishness,Zetta, foolishness");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 36,temp_y - 68,"Give me the Yamato.");
-      }
-      
-  }
-
-//Alex
-  if hit_player_obj.url == "2069283406"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 42,temp_y - 28,"None of your concern.");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 38,temp_y - 68,"Hmm...?");
-           draw_debug_text(temp_x + 40,temp_y - 52,"What's with the glare?");
-      }
-      
-  }
-  
- //Mayu
-  if hit_player_obj.url == "1997619532"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 48,temp_y - 28,"Who asked ?");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 40,temp_y - 68,"First Blood.");
-      }
-      
-  }
-  
-   //Katie
-  if hit_player_obj.url == "2085832560"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 42,temp_y - 28,"Shame that it last");
-           draw_debug_text(temp_x + 44,temp_y - 12,"for only one game.");
-
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 48 ,temp_y - 68,"Doppelganger.");
-      }
-      
-  }
-  
-
-
-//Saji
-  if hit_player_obj.url == "2108469290"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 24,temp_y - 28,"A ghost possessing a puppet..?");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 44,temp_y - 68,"What are you...?");
-      }
-      
-  }
-  
-
-//Uza
-  if hit_player_obj.url == "2047413648"  {
-      if introhit = -1 && introtimer < 150 {
-          draw_debug_text(temp_x + 36,temp_y - 28,"Your helps during last ");
-           draw_debug_text(temp_x + 38,temp_y - 12,"mission was... very helpful.");
-           draw_debug_text(temp_x + 48,temp_y + 4,"Appreciate it.");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 38,temp_y - 68,"My next mission still");
-            draw_debug_text(temp_x + 40,temp_y - 52,"have a free slot.");
-      }
-      
-  }
-  
-///Nolan
-  if hit_player_obj.url == "2154720280"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 24,temp_y - 28,"I ate demon for breakfirst.");
-            draw_debug_text(temp_x - 16,temp_y - 12,"Cook them on sizzling plasma blade.");
-      }
-      
-        if introhit = 1 {
-           draw_debug_text(temp_x + 30,temp_y - 68,"Try not to get oil");
-           draw_debug_text(temp_x + 32,temp_y - 52,"on any of my guns..");
-      }
-      
-  }
-
-///Elice
-    if hit_player_obj.url == "2136624834"  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 16,temp_y - 28,"She helped me on my missions..");
-      }
-      
-        if introhit = 1 {
-          draw_debug_text(temp_x + 24,temp_y - 68,"I swear i have been eating");
-            draw_debug_text(temp_x + 26,temp_y - 52,"and sleeping VERY heathily.");
-
-      }
-      
-  }
-}  
-  
-
 if gunname = 1 {
     draw_sprite(sprite_get("NS1"), 4, temp_x + 20 , temp_y - 20 );  
       draw_debug_text(temp_x + 40, temp_y - 34,"Dual Pistols");
       draw_debug_text(temp_x + 50, temp_y - 20,"Eve & Ivy");
-    
 }
 
 if gunname = 2 {

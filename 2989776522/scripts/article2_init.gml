@@ -51,7 +51,9 @@ seen = 0;
 seen_x = 2.0;
 seen_y = 0;
 
-if(player_id.free){
+if(player_id.free || !position_meeting(x,y+50,asset_get("par_block")) && !position_meeting(x,y+50,asset_get("par_jumpthrough"))
+&& !position_meeting(x,y+150,asset_get("par_block")) && !position_meeting(x,y+150,asset_get("par_jumpthrough"))
+&& !position_meeting(x,y+300,asset_get("par_block")) && !position_meeting(x,y+300,asset_get("par_jumpthrough"))){
     robot = 1;depth = player_id.depth+3;
 }
 
@@ -74,7 +76,7 @@ if(robot == 0){ //egg pawn
 		sprite_index = sprite_get("eggflapper_alts");
 	}
 	mask_index = sprite_get("eggpawn_mask");
-	hp = round(9*player_id.eggpawn_health_multiplier);
+	hp = round(7*player_id.eggpawn_health_multiplier);
 	attack_cooldown = 90;
     can_be_grounded = false;
     ignores_walls = false;

@@ -212,9 +212,9 @@ switch(attack){
 								}
 								if(amy){
 									if(voicecooldown <= 0){
-										rand = random_func(2, 6, true);
+										rand = random_func(2, 40, true);
 										if(rand == 0){
-											voicecooldown = 90;PlayVoiceClip("alfred_shoot_amy", 2);
+											voicecooldown = 180;PlayVoiceClip("alfred_shoot_amy", 2);
 										}
 									}
 								}
@@ -463,6 +463,7 @@ switch(attack){
 		}
 		if(window == 4 && !hitpause){
 			hsp *= 0.9;
+			if(!has_hit && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))kob_bonus_damage(1.25);
 		}
 		if(free && vsp > 0)vsp *= 0.85;
 	break;
@@ -476,7 +477,7 @@ switch(attack){
 		if (window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			shake_camera(4,3);
         	sound_play(asset_get("sfx_metal_hit_strong"));sound_play(sound_get("mech sfx"),false,noone,0.75);
-    	}
+    	}if(window == 6 && !has_hit && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))kob_bonus_damage(1.25);
 	break;
 	case AT_DSTRONG:
 		if (window == 1 && window_timer == round(get_window_value(attack, window, AG_WINDOW_LENGTH)/2) && !hitpause){
@@ -487,7 +488,7 @@ switch(attack){
         	eff = spawn_hit_fx(x+120*spr_dir,y,fx_slamfast);eff.depth = depth-1;eff = spawn_hit_fx(x+60*spr_dir,y,fx_slamfast);eff.depth = depth-1;eff.spr_dir = -spr_dir;
         	eff = spawn_hit_fx(x-120*spr_dir,y,fx_slamfast);eff.depth = depth-1;eff.spr_dir = -spr_dir;eff = spawn_hit_fx(x-60*spr_dir,y,fx_slamfast);eff.depth = depth-1;
         	sound_play(sound_get("mech_stomp"),false,noone,0.75);sound_play(sound_get("mech_stomp2"),false,noone,0.75);
-    	}
+    	}if(window == 3 && !has_hit && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))kob_bonus_damage(1.25);
 	break;
 	case AT_NAIR:
 		if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
@@ -498,6 +499,7 @@ switch(attack){
 		/*|| (attack_down || strong_down || left_stick_down || right_stick_down || right_strong_pressed || left_strong_pressed) && nair_loop < 3)*/){
 			window = 2;window_timer = 0;
 			nair_loop += 1;sound_play(sound_get("mech sfx"),false,noone,0.5);
+			if(attack_down && runeJ && nair_loop > 1){nair_loop = 1;attack_end();}
 		}else if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			create_hitbox(AT_NAIR, 2, x, y);
 		}
@@ -672,7 +674,7 @@ switch(attack){
 	    		}
 	    		destroy_hitboxes();sound_stop(sfx);
 	    	}
-	    }
+	    }if(window == 5 && window_timer == 2 && !has_hit)kob_bonus_damage(1.25);
 	    if(window >= 2 && window <= 4){
 			if(get_gameplay_time() % 2 == 0){
 				var fire = spawn_hit_fx(x-(110*spr_dir)+(random_func(0, 70, true)+eff_offset_X)*spr_dir,y-35-random_func(1, 40, true)+eff_offset_Y,fx_fire);fire.draw_angle = (25+random_func(4, 60, true))*spr_dir;
@@ -839,6 +841,18 @@ if (attack = AT_FSTRONG || attack = AT_USTRONG || attack = AT_DSTRONG){
     if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){rand = random_func(1, 3, true);PlayAttackVoiceClip();}
 }
 
+//aerial strong stuff
+if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
+    can_fast_fall = false;
+    if(!hitpause && free){
+	    if(window == 1 && strong_charge >= 1){
+	    	hsp *= 0.85;
+	        if(!strongstall){if(y > 200){vsp = 0;}else{vsp = 2;}}
+	    }else hsp *= 0.9;
+    }if(window == get_attack_value(attack, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && strong_free){
+    	strongstall = true;
+    }
+}
 
 #define KoB_reverse
 	// Does a sick and based reverse
@@ -932,7 +946,7 @@ if (attack = AT_FSTRONG || attack = AT_USTRONG || attack = AT_DSTRONG){
 			}
 		}
 	}
-	
+
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX
@@ -953,6 +967,10 @@ if (attack = AT_FSTRONG || attack = AT_USTRONG || attack = AT_DSTRONG){
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed || taunt_pressed){
 		window = 20;//sound_stop(voice);
 	}
+	
+#define kob_bonus_damage
+	bonus_damage = argument[0]>1;
+	damage_scaling = argument[0] > 1 ? argument[0] : 1;
 	
 #define collision_line_list 
     {

@@ -27,7 +27,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 8);
-set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 3);
+set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 68);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 68);

@@ -133,7 +133,7 @@ mound_outline = true;
 //**** CHANGEABLE VARIABLES
 knuckles_soft_armor = 6;
 glide_speed = 7;
-glide_fall_speed = 1;
+glide_fall_speed = 2;
 glide_landing_lag_time = 4;
 glide_jump_speed = 6;
 glide_turn_speed = 0.58;

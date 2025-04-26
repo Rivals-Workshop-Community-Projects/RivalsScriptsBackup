@@ -109,7 +109,7 @@ alt_name[27] = "Banana Cat"; // banana rat steam profile pic
 alt_name[28] = "Butterscotch"; // skitty from pokemon
 alt_name[29] = "Splat"; // maeko; splat oc 
 alt_name[30] = "Shephard"; // adrian shephard
-alt_name[31] = "guh?"; // named after a tourney. alt 31 doesn't work online :(
+alt_name[31] = "the 32nd one"; // named after a tourney. alt 31 doesn't work online :(
  
  
 //Patch

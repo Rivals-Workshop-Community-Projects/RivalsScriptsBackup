@@ -11,18 +11,14 @@ if (was_parried == true) {
 }
 
 /*
-draw_debug_text( x -20, y - 80,"Total Timer: " + string(article_total_timer));
-draw_debug_text( x -20, y - 100,"" + string(""));
 draw_debug_text( x -20, y - 120,"Article State: " + string(state));
 draw_debug_text( x -20, y - 140,"Article State Timer: "+ string(state_timer));
 draw_debug_text( x -20, y - 160,"hitstop" + string(hitstop));
-draw_debug_text( x -20, y - 180,"" + string(""));
-//draw_debug_text( x -20, y - 200,"clone_nspecial_cooldown: " + string(clone_nspecial_cooldown));
-draw_debug_text( x -20, y - 220,"Free: " + string(free));
-draw_debug_text( x -20, y - 240,"image_index " + string(image_index));
-draw_debug_text( x -20, y - 260,"vsp: " + string(vsp));
-draw_debug_text( x -20, y - 280,"hsp: " + string(hsp));
-draw_debug_text( x -20, y - 300,"" + string(""));
+draw_debug_text( x -20, y - 180,"Free: " + string(free));
+draw_debug_text( x -20, y - 200,"image_index " + string(image_index));
+draw_debug_text( x -20, y - 220,"vsp: " + string(vsp));
+draw_debug_text( x -20, y - 240,"hsp: " + string(hsp));
+//draw_debug_text( x -20, y - 260,"" + string(""));
 */
 
 //Triangle/percentage from Ruber

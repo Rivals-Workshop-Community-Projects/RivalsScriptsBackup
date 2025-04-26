@@ -4,6 +4,8 @@ invisAlpha = 1;
 
 user_event(2);//Cancel Disguise
 
+inTerminalTauntMenu = false;
+terminalTauntAnimTimer = 0;
 
 var otherIsSapped = false;
 for(var i = 0; i < ds_list_size(sappers); i++)

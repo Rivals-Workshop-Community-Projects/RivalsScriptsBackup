@@ -1,7 +1,5 @@
 //user_event 13
 
-if (attack == AT_FSTRONG) barsonic_clash_homeatks = true;
-
 var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
 
 if ("holyburn_timer" not in hit_player_obj)
@@ -18,7 +16,7 @@ if ("holyburn_timer" not in hit_player_obj)
 //mana
 if (mp_gainable)
 {
-    mp_current += (true_damage * 0.6 < 1) ? 1 : round(true_damage * 0.6);
+    mp_cur += (true_damage * 0.6 < 1) ? 1 : round(true_damage * 0.6);
     if (!playtesting && true_damage > 0) mp_mini_timer = mp_mini_timer_set;
 }
 
@@ -69,13 +67,14 @@ switch (my_hitboxID.attack)
         }
         if (my_hitboxID.hbox_num == 4)
         {
-            do_rune_warp(); //rune warp
-            if (has_rune("H"))
+            if (rune_G_active) do_rune_warp(); //rune warp
+            if (rune_H_active)
             {
+                hit_player_obj.should_make_shockwave = false;
                 rune_H_drag_id = hit_player_obj;
                 bar_grab_time = 0;
-                hook_proj[0] = rune_H_drag_id.x;
-                hook_proj[1] = rune_H_drag_id.y;
+                my_hitboxID.artc.chain_end[0] = rune_H_drag_id.x;
+                my_hitboxID.artc.chain_end[1] = rune_H_drag_id.y;
 
                 with (obj_article1) if (player_id == other.id && state == "hook_chain")
                 {
@@ -85,28 +84,38 @@ switch (my_hitboxID.attack)
             }
         }
         break;
-    case AT_EXTRA_2:
+    case AT_EXTRA_2: //light hookshot
         if (my_hitboxID.hbox_num == 1)
         {
-            if (my_hitboxID.explosive_spear) create_hitbox(AT_EXTRA_2, 2, my_hitboxID.x, my_hitboxID.y);
+            if (!rune_G_active)
+            {
+                var dist = abs(hit_player_obj.x - x);
+
+                if (state_cat != SC_HITSTUN)
+                {
+                    hit_player_obj.hitstop += dist/15;
+                    hit_player_obj.hitstop_full = hit_player_obj.hitstop;
+                }
+            }
             else do_rune_warp(); //rune warp
         }
+        else if (my_hitboxID.hbox_num == 2) create_hitbox(my_hitboxID.attack, 3, my_hitboxID.x, my_hitboxID.y);
         break;
-    case AT_NTHROW: case AT_NSPECIAL_AIR:
-        if (my_hitboxID.hbox_num == 1) do_rune_warp(); //rune warp
+    case AT_NTHROW: case AT_NSPECIAL_AIR: //light dagger
+        if (my_hitboxID.hbox_num == 1 && rune_G_active) do_rune_warp(); //rune warp
         break;
-    case AT_EXTRA_3:
+    case AT_EXTRA_3: //searing descent
         if (my_hitboxID.hbox_num < 3)
         {
             hit_player_obj.should_make_shockwave = false;
-            hit_player_obj.orig_knock = point_distance(0, 0, old_hsp, old_vsp);
+            if (burnbuff_active) set_grab_id();
         }
+        else if (burnbuff_active) bar_grabbed_id = noone;
         break;
-    //bar_grabbed_id setup
-    case AT_FTHROW: case AT_FSPECIAL_AIR:
+    case AT_FTHROW: case AT_FSPECIAL_AIR: //burning fury
         if (my_hitboxID.hbox_num == 2) set_grab_id();
         break;
-    case 39:
+    case 39: //flashbang
         if (my_hitboxID.hbox_num == 1) set_grab_id();
         break;
     /////////////
@@ -133,77 +142,73 @@ switch (my_hitboxID.attack)
         }
         break;
 }
+if (my_hitboxID.attack != skill[6].skill_attack) //accel blitz cancel
+{
+    if (apply_motion_trail) apply_motion_trail = false;
+    if (accel_act_time > 0) accel_act_time = 0;
+}
 
 //polaris logic
 if (lightbuff_active && !was_parried && polaris_shots_left > 0)
 {
     //who to track
-    if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) polaris_id = noone;
+    var tracking_obj = noone;
+    if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) tracking_obj = noone;
     else
     {
-        polaris_id = hit_player_obj;
-        if (polaris_id.player < 5 && (polaris_id.clone || polaris_id.custom_clone)) //if it's a clone player ignore them and go straight to the original
+        tracking_obj = hit_player_obj;
+        if (tracking_obj.player < 5 && (tracking_obj.clone || tracking_obj.custom_clone)) //if it's a clone player ignore them and go straight to the original
         {
-            with (oPlayer) if (other.polaris_id.player == player && !clone && !custom_clone) other.polaris_id = self;
+            with (oPlayer) if (tracking_obj.player == player && !clone && !custom_clone) tracking_obj = self;
         }
     }
     
     //prevents it from shooting on some attacks and conditions
-    if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48
-    && (my_hitboxID.attack != skill[11].skill_attack || my_hitboxID.attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
-    && !polaris_shot && polaris_id != self)
+    if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_NO_POLARIS) == false &&
+        !polaris_shot && tracking_obj != self)
     {
+        if ("enemy_stage_article" in hit_player_obj && hit_player_obj.hp <= 0) exit; //doesn't chase demon horde enemies that just died
         polaris_shot = true;
 
-        repeat (polaris_shots_left > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2] ? 2 : 1)
+        //light based attacks shoot another projectile but in slight delay
+        if (polaris_shots_left > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2])
         {
-            polaris_shot_ids[polaris_shots_left-1].shoot_projectile = true;
-            polaris_shot_ids[polaris_shots_left-1].hitbox_timer = 0;
-            polaris_shot_ids[polaris_shots_left-1] = noone;
+            polaris_double_strike_time = polaris_double_strike_time_set;
+        }
+        if (polaris_shots_left > 0)
+        {
+            var proj = polaris_shot_ids[polaris_shots_left-1];
+            proj.shoot_projectile = true;
+            proj.home_id = tracking_obj;
+            proj.hitbox_timer = 0;
+            proj = noone;
             polaris_shots_left --;
         }
-        
-        last_hitstop = hit_player_obj.hitstop_full;
-        last_kb = [hit_player_obj.orig_knock, hit_player_obj.old_hsp, hit_player_obj.old_vsp, hit_player_obj.was_free, hit_player_obj.sent_down];
-        last_hitstun = hit_player_obj.hitstun_full;
     }
 }
 if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1)
 {
     sound_play(asset_get("sfx_holy_lightning"));
-    mp_current += true_damage;
-    with (hit_player_obj)
-    {
-        hitstop = other.last_hitstop + 15;
-        hitstop_full = hitstop;
-        orig_knock = other.last_kb[0];
-        was_free = other.last_kb[3];
-        sent_down = other.last_kb[4];
-        old_hsp = other.last_kb[1];
-        old_vsp = other.last_kb[2];
-        hitstun = other.last_hitstun;
-        hitstun_full = hitstun;
-    }
+    mp_cur += true_damage;
 }
-
 
 //overdrive
 if (can_overdrive && od_cast == 0) || ("fs_char_initialized" in self && fs_char_initialized)
 {
     od_color_time = 10;
-    od_current += (true_damage * 0.7 < 1) ? 1 : floor(true_damage * 0.7);
+    od_cur += (true_damage * 0.7 < 1) ? 1 : floor(true_damage * 0.7);
 }
 
 if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(true_damage * (godbuff_mult-1) ));
 if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(true_damage * (theikos_mult+theikos_type-1)));
 
-mp_current = clamp(mp_current, 0, mp_max);
+mp_cur = clamp(mp_cur, 0, mp_max);
 
 #define drain_mp
 {
     var true_damage = floor(my_hitboxID.damage * lerp(1, 1.6, strong_charge/60));
-	//if (!has_rune("K") && !theikos_active) mp_current -= round(true_damage / 2);
-    if (!infinite_mp_mode) mp_current -= round(true_damage / 2);
+	//if (!rune_K_active && !theikos_active) mp_cur -= round(true_damage / 2);
+    if (!infinite_mp_mode) mp_cur -= round(true_damage / 2);
 }
 #define holyburn_apply
 {
@@ -211,8 +216,8 @@ mp_current = clamp(mp_current, 0, mp_max);
 	{
 		holyburning = true;
         holyburner_id = other;
-		holyburn_timer = other.holyburn_timer_set;
-        outline_color = other.line_color;
+		holyburn_timer = other.holyburn_tick * other.holyburn_ticks;
+        if ("outline_color" in self) outline_color = other.line_color;
 	}
 }
 #define lightstun_apply
@@ -285,9 +290,22 @@ mp_current = clamp(mp_current, 0, mp_max);
 
 #define do_rune_warp
 {
-    if (rune_G_active && !burnbuff_active)
+    if (!burnbuff_active)
     {
-        if (instance_exists(hook_chain_artc)) instance_destroy(hook_chain_artc);
+        //light hookshot chain
+        for (var i = 0; i < instance_number(obj_article1); i++)
+        {
+            var obj = instance_find(obj_article1, i);
+            if ("is_bar_artcmaster" in obj && obj.state == "hook_chain" && obj.player_id == self)
+            {
+                with (obj)
+                {
+                    window = 3;
+                    window_timer = 0;
+                }
+                break;
+            }
+        }
 
         var fx_warp = spawn_hit_fx(x, y-32, fx_skill6);
         fx_warp.draw_angle = random_func(18, 60, true)-30;

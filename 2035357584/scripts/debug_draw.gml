@@ -9,4 +9,5 @@ if(debug){
     draw_debug_text(x, y + 50, "hsp: " + string(hsp));
     draw_debug_text(x + 100, y + 50, "vsp: " + string(vsp));
     draw_debug_text(x, y + 65, "was parried: " + string(was_parried));
+    draw_debug_text(x, y + 75, "FSPEC: " + string(fspec_hit));
 }

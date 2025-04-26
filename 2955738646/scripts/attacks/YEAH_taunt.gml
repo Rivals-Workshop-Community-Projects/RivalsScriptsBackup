@@ -4,11 +4,28 @@ set_attack_value(AT_FTHROW, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_FTHROW, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 
+
+if (get_player_color(player) != 8){
 set_window_value(AT_FTHROW, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 10);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_SFX, sound_get("y_e_a_h"));
+} else {
+set_window_value(AT_FTHROW, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 10);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_SFX, sound_get("EA_y_e_a_h"));
+}
+
+if (voice_clips == false && (get_player_color(player) != 8)){
+set_window_value(AT_FTHROW, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 10);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_ell"));
+}
 
 set_num_hitboxes(AT_FTHROW,2);
 /*

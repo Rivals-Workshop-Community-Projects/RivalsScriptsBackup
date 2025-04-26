@@ -43,4 +43,34 @@ if(attack == AT_DSTRONG)
         sound_effect = asset_get("sfx_blow_weak1");
         hit_effect = 301;
     }
+    
+    if(get_match_setting(SET_PRACTICE) && get_match_setting(SET_HITBOX_VIS))
+    {
+        time = clamp(time, 0, 1);
+        var lerped_b = lerp(0, 255, time);
+        var lerped_g = lerp(0, 255, time);
+        var lerped_r = lerp(255, 0, time);
+        col = make_color_rgb(lerped_r, lerped_g, lerped_b);
+    }
+}
+
+
+//villager
+if(attack == AT_DSTRONG || attack == AT_DSPECIAL)
+    Pocketable = false;
+if(attack == AT_USTRONG)
+{
+    Pocket_hud = sprite_get("compatabilityVillager");
+    Pocket_hud_imageindex = 0;
+}
+if(attack == AT_FSPECIAL)
+{
+    Pocket_hud = sprite_get("compatabilityVillager");
+    Pocket_hud_imageindex = sprite_index == sprite_get("bulletProjectileCrit") ? 3 : 2;
+    //TODO: fix offset
+
+    // if(variable_instance_exists(self, "Pocketed"))
+    //     print(Pocketed);
+    if(variable_instance_exists(self, "Pocketed") && Pocketed)
+        spr_dir = player.spr_dir;
 }

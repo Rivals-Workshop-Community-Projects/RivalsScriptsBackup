@@ -162,7 +162,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[30,1] = "HYPER KNUCKLES"
     
     ce[31,0] = make_color_rgb(247, 111, 173)
-    ce[31,1] = "Spectral Theif"
+    ce[31,1] = "Spectral Thief"
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

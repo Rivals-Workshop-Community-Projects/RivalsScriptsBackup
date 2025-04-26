@@ -44,28 +44,24 @@
 with pHitBox{
     if place_meeting(x, y, other) && (player_id == other.player_id){
 		if (attack == AT_NSPECIAL){
-			with obj_article1{
-				if (player_id == other.player_id){
-					if (other.x - x) < 0 {
-						hsp = 6;
-					} else {
-						hsp = -6;
-					}
+			with other{
+				if (other.x - x) < 0 {
+					hsp = 6;
+				} else {
+					hsp = -6;
 				}
 			}
 		}
 		if (has_rune("H")){
 			if (attack == AT_USPECIAL){
-				with obj_article1{
-					if (player_id == other.player_id){
-						state = 1
-						state_timer = 240
-						vsp = -4.5;
-						if (other.x - x) < 0 {
-							hsp = 6;
-						} else {
-							hsp = -6;
-						}
+				with other{
+					state = 1
+					state_timer = 240
+					vsp = -4.5;
+					if (other.x - x) < 0 {
+						hsp = 6;
+					} else {
+						hsp = -6;
 					}
 				}
 			}
@@ -120,7 +116,8 @@ if (state == 0){
     if (state_timer == 1){
 		spawn_hit_fx(x + 16,y,15)
 		spawn_hit_fx(x - 16,y,15)
-	    sound_play(sound_get("jackolantern"));
+		if (get_player_color(player) == 3) sound_play(sound_get("shaqolantern"));
+		else sound_play(sound_get("jackolantern"));
 	}
 	if (state_timer == 12){
 		spawn_hit_fx(x + 12*spr_dir,y - 36,116)
@@ -134,20 +131,22 @@ if (state == 0){
 
 //State 1: Attacking
 if (state == 1){
-	if (state_timer mod 6 == 0){
+	if (state_timer mod 6 == 2){
 		create_hitbox( AT_DSPECIAL, 1, (x + 54*spr_dir),(y - 10) );
-		if (state_timer >= 120 || has_rune("I")){
-			create_hitbox( AT_DSPECIAL, 1, (x + 102*spr_dir),(y - 10) );
-		}
-		if (state_timer >= 240 || has_rune("I")){
-			create_hitbox( AT_DSPECIAL, 1, (x + 150*spr_dir),(y - 10) );
-		}
+	}
+	if (state_timer mod 6 == 4) && (state_timer >= 120 || has_rune("I")){
+		create_hitbox( AT_DSPECIAL, 1, (x + 102*spr_dir),(y - 10) );
+	}
+	if (state_timer mod 6 == 0) && (state_timer >= 240 || has_rune("I")){
+		create_hitbox( AT_DSPECIAL, 1, (x + 150*spr_dir),(y - 10) );
 	}
 	if (state_timer == 120){
 	    sound_play(sound_get("jackolantern_ambient1"));
+		if (get_player_color(player) == 3) sound_play(sound_get("shaqolantern_laugh"));
 	}
 	if (state_timer == 240){
 	    sound_play(sound_get("jackolantern_ambient2"));
+		if (get_player_color(player) == 3) sound_play(sound_get("shaqolantern_laugh2"));
 	}
     if (state_timer == 300){
 		state = 2

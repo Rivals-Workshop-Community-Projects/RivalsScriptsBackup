@@ -163,7 +163,7 @@ wren_caught = false;
 wren_caught_cooldown = 0;
 wren_enemy_riptide_id = noone;  // to see who is in your whirlspool
 
-wren_riptide_dist = 360;
+wren_riptide_dist = 720;
 
 wren_yoyo_recall = false;
 wren_yoyo_timer = 0;

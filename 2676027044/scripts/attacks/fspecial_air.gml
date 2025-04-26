@@ -112,7 +112,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_WIDTH, 60);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HEIGHT, 50);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_PRIORITY, 5);
-set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_DAMAGE, 10);
+set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_DAMAGE, 13);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_KNOCKBACK_SCALING, 1.0);

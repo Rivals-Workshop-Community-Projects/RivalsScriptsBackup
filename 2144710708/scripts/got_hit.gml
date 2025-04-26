@@ -1,5 +1,18 @@
 // hit in the gut
 
+// tell boot to not hit people for 60 frames if you galaxied someone
+/*
+if (hit_player_obj != noone && hit_player_obj.activated_kill_effect) {
+	print_debug("boot galaxy prevention active");
+	boot_save_from_galaxy_prevention = 60;
+}
+*/
+
+if (should_make_shockwave) { // prevents boot galaxy preventions. and also whitelines for some reason
+	//print_debug("boot galaxy prevention active");
+	boot_save_from_galaxy_prevention = 60;
+}
+
 //reset state of nspecial bar
 if (enemy_hitboxID.effect != 9 || enemy_hitboxID.hitstun_factor != -1) {
 	nspecial_active = false;

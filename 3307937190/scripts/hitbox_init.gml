@@ -11,3 +11,5 @@ if ("ink_hold" not in self)
 
 hbox_state = 0;
 anim_timer = 0;
+
+ink_hitsound = sound_get("inkhit_med");

@@ -67,8 +67,8 @@ sprite_change_offset("tech2", 40, 82);
 
 sprite_change_offset("jab", 38, 78);
 sprite_change_offset("jab2", 38, 98);
-sprite_change_offset("dattack", 30, 78);
-sprite_change_offset("dattack2", 30, 78);
+sprite_change_offset("dattack", 34, 78);
+sprite_change_offset("dattack2", 48, 78);
 sprite_change_offset("ftilt", 44, 78);
 sprite_change_offset("ftilt2", 38, 98);
 sprite_change_offset("dtilt", 56, 68);
@@ -98,6 +98,7 @@ sprite_change_offset("fspecial", 32, 78);
 sprite_change_offset("fspecial2", 136, 86);
 sprite_change_offset("fspecial_air", 52, 88);
 sprite_change_offset("fspecial_proj", 24, 24);
+sprite_change_offset("fspecial_pre_empt", -170, 24);
 sprite_change_offset("bike_store_spin", 52, 90);
 sprite_change_offset("uspecial", 60, 66);
 sprite_change_offset("uspecial2", 52, 98);
@@ -153,13 +154,4 @@ sprite_change_offset("bike_mask_spin", 40, 60);
 sprite_change_offset("bike_break", 78, 118);
 sprite_change_offset("death", 86, 76);
 
-//Set victory theme based on alt
-if (get_player_color(player) == 5)
-{
-    set_victory_theme(sound_get ( "fp2_victory"));   
-}
-else
-{
-    set_victory_theme( sound_get( "victory" ) );
-}
 set_victory_bg(sprite_get("custom2"));

@@ -166,7 +166,7 @@ if(variable_instance_exists(id,"diag"))
 				diag_nrs_diag = [
                 "We gotta stop meeting like this",
                 "Afraid that I'll get your job or something? ",
-                "I'm worried someone is going to find out about your hat."]
+                "I'm worried someone is going to find out about your blue hat..."]
             }
         }
     }
@@ -440,6 +440,96 @@ if(variable_instance_exists(id,"diag"))
             }
         }
     }	
+
+    //	Brella
+    if(otherUrl == 3244606859)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "You got quite the attitude, little miss.",
+                "Little?! Like you're the one to talk, shorty!",
+                "Oi! I may be small but I'm an adult!"]
+            }
+        }
+    }	
+
+    //	Rayman
+    if(otherUrl == 3320958468)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Whoa whoa! Did someone steal your body parts or something?!",
+                "What? No, that's crazy. I was born like this.",
+                "Ooh... Oh, I'm sorry for your loss."]
+            }
+        }
+    }	
+
+    //	Camic
+    if(otherUrl == 3350776556)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Stop right, clown girl! I've seen the damage you caused!",
+                "...",
+                "Talk dammit! I know you can! Don't play with me!"]
+            }
+        }
+    }	
+
+    //	Randalf Rhino
+    if(otherUrl == 3388038739)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Did I step into a cartoon or something?",
+                "I tried being a cartoonist once, I didn't have a license at the time though.",
+                "Wait, you need a license for that?!"]
+            }
+        }
+    }	
+
+    //	Geebs
+    if(otherUrl == 3432458008)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Wait... That's not the time hat. What happened to you, G.B.A?!",
+                "G.B.A? My good tiny small bitsized toy-I mean friend... I AM THE GREAT GEEBS~!",
+                "I got a bad feeling about this..."]
+            }
+        }
+    }	
 	
 	//	Roger 
     if(otherUrl == 2304745302)
@@ -476,6 +566,24 @@ if(variable_instance_exists(id,"diag"))
             }
         }
     }
+
+    //	Cindy Appeal
+    if(otherUrl == 3376849067)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Great... Another weird manifestation.",
+                "Like, submit to the holiness that is, like, Roger~!",
+                "I... might have to purge this whole timeline because of that."]
+            }
+        }
+    }	
 }
 
 //===============================================================================================
@@ -510,20 +618,25 @@ if (!muted)
         }
     }
 
-
     if (attack == AT_DSPECIAL)
     {
-        if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+        if (instance_exists(hit_player_obj))
         {
-            sound_play(sound_get("Kodiak Down Special final connect"), false, noone, 2);	
+            if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+            {
+                sound_play(sound_get("Kodiak Down Special final connect"), false, noone, 2);	
+            }
         }
     }
 
     if (attack == AT_DSPECIAL_2)
     {
-        if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+        if (instance_exists(hit_player_obj))
         {
-            sound_play(sound_get("Kodiak Bear Down Special final connect"), false, noone, 2);	
+            if (hit_player_obj.activated_kill_effect && get_gameplay_time() mod 80 == 0)
+            {
+                sound_play(sound_get("Kodiak Bear Down Special final connect"), false, noone, 2);	
+            }
         }
     }
 }

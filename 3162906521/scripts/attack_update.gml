@@ -42,10 +42,13 @@ if (attack == AT_TAUNT){
 			if (tp_alive == 0){
 				if metal_count >= 50{
 					metal_count = metal_count - 50;
-					tp = instance_create(x+20*spr_dir,y-100,"obj_article1");
+					tp = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					tp.spr_dir = spr_dir;
 					tp.building_type = 0;
 					tp_alive = 1;
+					if engi_muted == true{
+						sound_play(sound_get("v_tpgoingup"));
+					}
 					if get_synced_var (player) <= 1{
 						voice_id = "v_tpgoingup";
 						voice_volume = 2;
@@ -77,10 +80,13 @@ if (attack == AT_TAUNT){
 			if (disp_alive == 0){
 				if metal_count >= 100{
 					metal_count = metal_count - 100;
-					disp = instance_create(x+20*spr_dir,y-100,"obj_article1");
+					disp = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					disp.spr_dir = spr_dir * -1;
 					disp.building_type = 1;
 					disp_alive = 1;
+					if engi_muted == true{
+						sound_play(sound_get("v_dispenserup"));
+					}
 					if get_synced_var (player) <= 1{
 						voice_id = "v_dispenserup";
 						voice_volume = 2;
@@ -113,10 +119,13 @@ if (attack == AT_TAUNT){
 			if (sentry_alive == 0){
 				if metal_count >= 125{
 					metal_count = metal_count - 125;
-					sentry = instance_create(x+20*spr_dir,y-100,"obj_article1");
+					sentry = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					sentry.spr_dir = spr_dir;
 					sentry.building_type = 2;
 					sentry_alive = 1;
+					if engi_muted == true{
+						sound_play(sound_get("v_sentrygoinup"));
+					}
 					if get_synced_var (player) <= 1{
 						voice_id = "v_sentrygoinup";
 						voice_volume = 2;
@@ -155,7 +164,6 @@ if (attack == AT_TAUNT){
 	pda = false;
 }
 
-
 //uspecial
 if (attack == AT_USPECIAL){
 	can_fast_fall = false;
@@ -193,6 +201,14 @@ if (attack == AT_USPECIAL){
 			set_state(PS_PRATFALL);
 		}
 	} 
+	if window >= 2 && window <= 4 && (attack_pressed or special_pressed){ //manual override bounce
+		vsp = -13;
+		sound_stop(sound_get("eurika_charge"));
+		sound_stop(sound_get("pt_uspec_charge"));
+		sound_play(sound_get("bottle_hit"));
+		sound_play(sound_get("shortcircuit_fizzle"));
+		set_state(PS_PRATFALL);
+	}
 	if (window == 5 && window_timer == 14){//actually teleporting
 		if get_synced_var (player) == 3{
 			sound_play(sound_get("pt_uspec"));
@@ -201,13 +217,13 @@ if (attack == AT_USPECIAL){
 		}
 		if (tp_process == true){
 			x = tp.x - 10 * spr_dir;
-			y = tp.y + 70;
+			y = tp.y;
 		}
 	}
 	if (window == 5 && window_timer == 14){
 		if metal_drop_counter == 2{ //Question. What's your question soldier? I teleported Bread. what.
 			sound_play(sound_get("demoman_grenade"));
-			iteleportedbread = instance_create(x - 70,y-80,"obj_article2");
+			iteleportedbread = instance_create(x,y-30,"obj_article2");
 			breadtype_rng = random_func(0, 9, true);
 			iteleportedbread.hsp = -3 * spr_dir;
 			iteleportedbread.vsp = -5;
@@ -226,7 +242,7 @@ if attack == AT_EXTRA_1{
 	wrangling = true;
 	if window == 1 && window_timer == 1{
 		if(get_synced_var (player) == 1){
-			snd_rng = random_func(0, 5, true);
+			snd_rng = random_func(0, 12, true);
             if (snd_rng == 0) {
                 voice_id = "v_aintonautopilot";
                 voice_volume = 1.5;
@@ -256,7 +272,7 @@ if attack == AT_EXTRA_1{
 			sound_play(sound_get("wrangler_shoot_lv1"));
 		}
 		if (window == 3 && window_timer == 4){
-			create_hitbox(AT_EXTRA_1, 2, x, y);
+			create_hitbox(AT_EXTRA_1, 1, x, y);
 			sound_play(sound_get("wrangler_shoot_lv1"));
 		}
 		if (window == 5 && window_timer == 4){
@@ -283,13 +299,13 @@ if attack == AT_EXTRA_1{
 
 //makes fair rise on hit
 if attack == AT_FAIR{
-	if has_hit == true{
-		if window == 4{
+	if has_hit == true && down_down == false && fast_falling == false{
+		if window >= 3 && window <= 5{
 			if vsp > 0{
-				vsp = -2
+				vsp = -2;
 			}
-		} else{
-			vsp = vsp - vsp /20
+		} else if down_down == false{
+			vsp = vsp - vsp /20;
 		}
 	}
 }
@@ -323,6 +339,20 @@ if attack == AT_UTILT{
 	}
 }
 
+if attack == AT_UAIR{
+	if (down_down == false && fast_falling == false) or has_hit == false{
+		if window_timer == 1{
+			if window == 3{
+				vsp = -0.25
+			} else if window == 4{
+				vsp = -0.5
+			}
+		}
+		if window == 5{
+			vsp = -1
+		}
+	}
+}
 
 // Audio Stuff -------------------------------------------------------------
 
@@ -440,6 +470,7 @@ if attack == AT_FSPECIAL{
 		}
 	}
 	if window == 2 && window_timer == 3{
+		
 		if free == false{
 			sound_play(asset_get("sfx_blow_medium3"));
 			if (get_synced_var (player) == 1){
@@ -447,6 +478,9 @@ if attack == AT_FSPECIAL{
 				voice_volume = 1.5;
 				voice_play();
 			}
+			move_cooldown[AT_FSPECIAL] = 90;
+		} else{
+			move_cooldown[AT_FSPECIAL] = 150;
 		}
 	}
 	can_wall_jump = true;
@@ -655,7 +689,7 @@ if attack == 49{
 	if window == 5 && window_timer == 30{
 		sound_play(sound_get("fs_bomb"));
 	}
-	if jump_pressed == true && free == false && hsp == 0{
+	if jump_pressed == true && free == false && hsp == 0{ //hopping around
 		vsp = -5;
 		hsp = 0;
 	}
@@ -667,12 +701,13 @@ if attack == 49{
 
 
 #define voice_play() //voiceline code is heavily based off of Roboshyguy's Jerma985 mod, I was given permission to use his code as a base.
-if(!dont_shutup){
-sound_stop(voice_playing_sound);
+if engi_muted == false{
+	if(!dont_shutup){
+		sound_stop(voice_playing_sound);
+	}
+	voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
+	dont_shutup = false;
 }
-voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
-dont_shutup = false;
-
 // #define spawn_base_dust // written by supersonic
 // /// spawn_base_dust(x, y, name, dir = 0)
 // ///spawn_base_dust(x, y, name, ?dir)

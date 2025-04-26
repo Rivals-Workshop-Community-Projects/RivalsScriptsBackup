@@ -23,11 +23,11 @@ set_num_hitboxes(AT_UTILT, 2);
 //gunshot
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 7);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -92);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -85);
 set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 54);
-set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 113);
+set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 100);
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);

@@ -250,9 +250,9 @@ game_time = 0; //checks get_gameplay_time() so we don't need to call the functio
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
 AG_MUNO_ATTACK_EXCLUDE = 80;
 
-cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
 plat_speed = 0.15; //platform anim speed
 true_dmg = 0; //damage calculation that takes strong charge into consideration
+last_sound_to_stop = noone;
 
 //custom window loop time (NOTE: this is a custom index that is created manually)
 AG_WINDOW_LOOP_TIMES = 37;          //loop amount
@@ -332,6 +332,7 @@ total_runes = 2 + 2 * has_rune("A"); //decides the amount of runes venus can hav
 artc_rune = array_create(total_runes, noone);
 next_rune = 0; //checks the currently used rune with nspec
 spawned_rune = false; //initial flag to check if venus actually spawned a rune yet with nspec so it doesn't spam spawn them
+is_weaker_rune = false;
 nspec_dir = 0;
 nspec_aiming = false;
 nspec_aim_time = 0;
@@ -343,8 +344,10 @@ nspec_gravstall_falloff = 120; //when aiming, this adds onto the calculation and
 nspec_jumpstall_falloff = 45; //when doing the little bounce in the air
 
 last_reflect_mult = 1;
-min_reflect_pow = 0.8;
-max_reflect_pow = 1.3;
+min_reflect_pow = 0.8; //0.8
+max_reflect_pow = 1.2; //1.3
+min_hb_reflect_pow = 1;
+max_hb_reflect_pow = max_reflect_pow;
 
 venus_players = 0; //rune reflections with uspec hard limit change based off the amount of active venus players
 with (oPlayer) if (!clone && !custom_clone && "is_venus_t" in self) other.venus_players ++;
@@ -367,6 +370,11 @@ uspec_angle = 0;
 uspec_reflect_limit = 0;
 uspec_reflect_limit_max = total_runes * (2 + (venus_players - 1) * 2) + 2; //6, 10, 14, 18
 last_reflected_id = noone;
+can_uspec = true;
+
+prev_x = x;
+prev_y = y;
+same_pos_time = 0;
 
 dspec_charge_milestone = 1;
 dspec_charge_rate = 1.2;
@@ -402,6 +410,12 @@ fx_artc_rune_destroyed = hit_fx_create(sprite_get("fx_artc_rune_destroyed"), 24)
 fx_uspec_smear = hit_fx_create(sprite_get("fx_uspec_smear"), 12);
 fx_dspec_end = hit_fx_create(sprite_get("fx_dspec_end"), 24);
 
+fx_fstrong_proj_end = [
+    hit_fx_create(sprite_get("fx_fstrong_proj_end1"), 24),
+    hit_fx_create(sprite_get("fx_fstrong_proj_end2"), 24),
+    hit_fx_create(sprite_get("fx_fstrong_proj_end3"), 24),
+];
+
 fx_od_start = hit_fx_create(sprite_get("fx_od_start"), 28);
 fx_od_eyeshine = hit_fx_create(sprite_get("fx_od_eyeshine"), 12);
 fx_od_shock = hit_fx_create(sprite_get("fx_od_shock"), 38);
@@ -412,6 +426,10 @@ fx_od_part = hit_fx_create(sprite_get("fx_od_part"), 32);
 fx_od_stun = hit_fx_create(sprite_get("fx_od_stun"), 25);
 
 fx_ashe_trail = hit_fx_create(sprite_get("fx_ashe_trail"), 20);
+
+fx_lightstun_arrow = hit_fx_create(sprite_get("fx_lightstun_arrow"), 16);
+fx_lightstunned = hit_fx_create(sprite_get("fx_lightstunned"), 16);
+fx_lightstun_blast = hit_fx_create(sprite_get("fx_lightstun_blast"), 32);
 
 intro_start_offset = 0;
 intro_total_time = 0;
@@ -473,7 +491,7 @@ switch (alt_cur)
         set_ui_element(UI_WIN_PORTRAIT, sprite_get("ex2_portrait"));
         set_ui_element(UI_WIN_SIDEBAR, sprite_get("ex2_result_small"));
         break;
-    case 26: //theikos
+    case 27: //theikos
         set_ui_element(UI_WIN_PORTRAIT, sprite_get("ex3_portrait"));
         set_ui_element(UI_WIN_SIDEBAR, sprite_get("ex3_result_small"));
         break;
@@ -487,7 +505,7 @@ switch (alt_cur)
 
 
 alt_hair_apply = false;
-if (alt_cur == 0 || alt_cur == 27) alt_hair_apply = (random_func(3, 100, true) == 0); //different hair color??
+if (alt_cur == 0 || alt_cur == 30) alt_hair_apply = (random_func(3, 100, true) == 0); //different hair color??
 
 halloween_costume = (get_match_setting(SET_SEASON) == 3 && alt_cur == 16);
 
@@ -526,6 +544,8 @@ air_attacks_total_max = 5;
 giga_drain_rune = has_rune("D");
 giga_drain_offset = 32;
 giga_drain_range = 64;
+lightstun_rune = has_rune("M");
+lightstun_time = 90;
 
 //final smash/overdrive - garden of eden
 AT_OVERDRIVE = 49;
@@ -594,6 +614,8 @@ knight_compat_dream =
     "Where could my mom be...?"
 ];
 
+//the chosen one art
+tcoart = sprite_get("tcoart");
 
 //break the targets
 get_btt_data = false;
@@ -616,7 +638,7 @@ handled_victory_quote = false;
 was_in_stage = get_stage_data(SD_ID);
 
 //dracula dialouge
-if (alt_cur != 26)
+if (alt_cur != 27)
 {
     dracula_portrait = sprite_get("dracula1");
     dracula_portrait2 = sprite_get("dracula2");
@@ -649,8 +671,6 @@ else
     set_dracula_text(0, "I am indeed aware of your motives, cupid.");
     set_dracula_text(0, "Let us dance to the death, and test your might! [glass]");
 }
-
-
 
 
 

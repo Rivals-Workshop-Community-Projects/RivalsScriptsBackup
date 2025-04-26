@@ -8,6 +8,17 @@ if state != PS_SPAWN has_spawned = true;
 
 with(hit_fx_obj) if(player_id == other && sprite_index == sprite_get("rune_proj_end")) { hsp = 4 * spr_dir; depth = -6}
 
+// kill quotes
+with(oPlayer){
+	if(self != other && (state == PS_DEAD || state == PS_RESPAWN) && state_timer == 0 && hit_player_obj == other){
+		if(get_player_stocks(player) == 1) { with(other) if voiced { sound_stop(voice_playing_sound) sound_play(vc_one_left, false, noone, 1.2); } }
+		else if(get_player_stocks(player) <= 0 && "died_of_cringe" not in self){ 
+			with(other) if voiced { sound_stop(voice_playing_sound) sound_play(vc_kill, false, noone, 1.2); }
+			died_of_cringe = true;
+		}
+	}
+}
+
 //nspecial
 move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL], 2);
 var is_genociding = ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL_2)
@@ -38,6 +49,11 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
                 vsp = -short_hop_speed;
                 if hitpause old_vsp = -short_hop_speed;
             }
+            
+            var s = saved_state.attack;
+            var can_speak = (s == AT_USPECIAL || s == AT_UAIR || s == AT_FAIR || s == AT_DAIR || s == AT_DSTRONG || s == AT_FSTRONG || s == AT_USTRONG);
+            
+            if(can_speak) voice_play_dark_version(VC_ATK);
 
             //use attack + skip to the middle of the first window (add exceptions) + play whiff sound if the window starts after it should be playing
 
@@ -82,6 +98,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             attack_end();
             set_attack(saved_state.attack);
             hurtboxID.dodging = false;
+            if hurtboxID.sprite_index == asset_get("empty_sprite") hurtboxID.sprite_index = hurtbox_spr;
             
             if (saved_state.strong_window == 0)
             {
@@ -116,6 +133,8 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             save_flash_time = 15;
             sound_play(sound_get("sfx_save"));
             spawn_hit_fx(x, y - 32, fx_savestate);
+            
+            sound_stop(voice_playing_sound);
             
             if !get_match_setting(SET_RUNES) && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
 
@@ -214,12 +233,10 @@ if(lobotomy != noone && !lobotomy_victory){
 		lobotomy_victory = true;
 		sound_stop(lobotomy);
 	}
-    if cur_skin == 1 set_synced_var(player, 420) else set_synced_var(player, 69);
     set_ui_element(UI_WIN_PORTRAIT, sprite_get("real_portrait"));
     set_victory_theme(sound_get("lobotomy_victory"))
 } else if(!lobotomy_victory){
-    set_synced_var(player, cur_skin);
-    set_ui_element(UI_WIN_PORTRAIT, get_synced_var(player) == 1 ? sprite_get("f_portrait") : get_char_info(player, INFO_PORTRAIT));
+    set_ui_element(UI_WIN_PORTRAIT, cur_skin == 1 ? sprite_get("f_portrait") : get_char_info(player, INFO_PORTRAIT));
     set_victory_theme(sound_get("charavictory"));
 }
 var cur_time = get_gameplay_time();
@@ -231,7 +248,7 @@ if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && lobotomy != noone){
 }
 
 //cutscene vfx update
-// update afterimage array
+// update afterimage arrays
 var newArray = 0;
 for (var i = 0; i < array_length_1d(murder_vfx_array); ++i)
 {
@@ -442,3 +459,34 @@ return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
 #define check_string_for_dev(player, string)
 
 return string_count(string, string_lower(get_char_info(player, INFO_STR_AUTHOR)))
+
+#define voice_play
+/// voice_play(idx, voice_array, empty_chance = 0)
+var idx = argument[0], voice_array = argument[1];
+var empty_chance = argument_count > 2 ? argument[2] : 0;;
+
+if !voiced return;
+
+var selected = random_func(idx, array_length(voice_array) + empty_chance, true);
+
+if selected < array_length(voice_array) {
+	sound_stop(voice_playing_sound);
+	voice_playing_sound = sound_play(voice_array[selected], false, noone, 1.2);
+}
+
+#define voice_play_dark_version
+/// voice_play(idx, force_voice = -1, flash = 0;)
+var idx = argument[0];
+var force_voice = argument_count > 1 ? argument[1] : -1;
+var flash = argument_count > 2 ? argument[2] : 0;;
+
+if !voiced return;
+
+var selected = (force_voice >= 0? force_voice: min(random_func(idx, vcs[idx][0] + vcs[idx][1], true), vcs[idx][0] - 1 + vcs[idx][1]));
+if selected >= vcs[idx][0] return;
+selected = (idx/10 >= 1? "": "0") + string(idx) + string(selected);
+
+if selected != noone{
+	sound_stop(voice_playing_sound);
+	voice_playing_sound = sound_play(sound_get("vc_" + selected), false, noone, 1.2);
+}

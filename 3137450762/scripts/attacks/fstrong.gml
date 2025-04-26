@@ -120,6 +120,8 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_clairen_swing_strong"));
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
 
+var fstrong_base = 8;
+var fstrong_scaling = 1.15;
 e_hitbox = 2; //Back throw
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_SHAPE, 2);
@@ -134,8 +136,8 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HEIGHT, 60);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_ANGLE, 130);
-set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, fstrong_base);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, fstrong_scaling);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 304);
@@ -156,8 +158,8 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HEIGHT, 55);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_ANGLE, 50);
-set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, fstrong_base);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, fstrong_scaling);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 304);

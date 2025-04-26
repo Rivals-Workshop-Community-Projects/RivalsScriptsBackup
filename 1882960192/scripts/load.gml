@@ -45,7 +45,8 @@ sprite_change_offset("fair", 54, 98);
 sprite_change_offset("bair", 82, 98);
 sprite_change_offset("uair", 64, 142);
 sprite_change_offset("dair", 64, 70);
-sprite_change_offset("fstrong", 70, 94);
+sprite_change_offset("fstrong", 82, 102);
+sprite_change_offset("fstrong2", 70, 94);
 sprite_change_offset("ustrong", 60, 126);
 sprite_change_offset("dstrong", 62, 94);
 sprite_change_offset("nspecial", 66, 94);
@@ -64,7 +65,7 @@ sprite_change_offset("tauntd", 36, 68);
 sprite_change_offset("tauntd_l", 36, 68);
 
 
-sprite_change_offset("plat", 64, 84);
+sprite_change_offset("plat", 92, 70);
 sprite_change_offset("eggburst", 40, 40);
 
 sprite_change_offset("nspecial_proj", 22, 18);
@@ -91,6 +92,7 @@ sprite_change_offset("hudbobblebody", 8, 6);
 sprite_change_offset("miiverse", 60, 30);
 sprite_change_offset("kirbyicon", 10, 10);
 sprite_change_offset("mamizou_compat", 30, 70);
+sprite_change_offset("msgwsprite", 32, 68);
 
 sprite_change_offset("fspecial_proj_socc", 24, 24);
 sprite_change_offset("fspecial_proj_socc2", 28, 28);

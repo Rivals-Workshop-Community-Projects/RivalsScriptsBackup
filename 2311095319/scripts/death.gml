@@ -3,17 +3,28 @@
 hasfirebrand = false
 firecharge = 0
 
+
+sound_stop(vc_mario_doh);
+sound_stop(vc_mario_mamma_mia);
+sound_stop(vc_mario_starko);
+sound_stop(vc_mario_ohno);
+sound_stop(vc_mario_grunt);
+sound_stop(vc_mario_oof);
 if (voiced == 1){
 	if (deathvoiceline == 0){
 		//
 	} else if (deathvoiceline == 1){
 		sound_play(vc_mario_doh);
 	} else if (deathvoiceline == 2){
-		sound_play(vc_mario_oof);
+		sound_play(vc_mario_mamma_mia);
 	} else if (deathvoiceline == 3){
 		sound_play(vc_mario_starko);
 	} else if (deathvoiceline == 4){
+		sound_play(vc_mario_ohno);
+	} else if (deathvoiceline == 5){
 		sound_play(vc_mario_grunt);
+	} else if (deathvoiceline == 6){
+		sound_play(vc_mario_oof);
 	}
 }
 

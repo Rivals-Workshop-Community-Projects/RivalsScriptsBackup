@@ -8,11 +8,15 @@ fans_mask_index = sprite_get("lareinaring_mask");
 
 // replace the ring sprite for skins
 alt_palette = 0;
+var real_player = 0;
 with player_id {
-  var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+  real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
   other.alt_palette = get_player_color( real_player );
 }
-if alt_palette == 12 { // Genesis X
+
+var sync = get_synced_var(real_player)
+var tens = floor(sync/10)
+if alt_palette == player_id.tournament_alt && tens == 1 { // Genesis X
   fans_sprite_index = sprite_get("lareinaring_gx");
 }
 

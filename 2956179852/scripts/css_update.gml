@@ -24,6 +24,11 @@ if (cur_x > x+voice_button_pos[0] && cur_x < x+voice_button_pos[2] && cur_y > y+
 css_draw_time++;
 alt_fix = player;
 
+if("css_timer" not in self)css_timer = 0; //rivals
+css_timer += 1;
+
+if(css_timer == 1800)sound_play(sound_get("if you wanna move on to the game press button 2"),false,noone,2);
+
 if(css_draw_time == 1){
     sound_stop(sfx);
 	switch(alt_cur){

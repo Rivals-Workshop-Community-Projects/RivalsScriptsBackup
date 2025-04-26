@@ -12,12 +12,18 @@ if attack == AT_FSTRONG{
 	shock_hit=0;
 }
 if attack == AT_DSPECIAL{
-	set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
-	set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+	reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG);
+	reset_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK);
+	reset_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY);
+	dust_draw = 0;
+}
+
+if attack == AT_NSPECIAL{
+	dust_draw = 0;
 }
 
 if attack == AT_DATTACK{
-dust_pos1 = -69; dust_pos2 = -69;
+	dust_pos1 = -69; dust_pos2 = -69;
 }
 
 //Bug FIX

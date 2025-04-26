@@ -1,3 +1,5 @@
+if(player_id.player == orig_player){
+
 if(attack == AT_FSTRONG){
     if(hbox_num == 1){
         if(hitbox_timer == 4){
@@ -66,7 +68,7 @@ if(attack == AT_FSTRONG){
 	if(vsp > 5){ //spike
 		kb_value *= 0.5;kb_scale *= 0.5;
 	}
-	kb_angle = (vsp<5 && abs(hsp)>.5)?45:(vsp<2)?90:(abs(hsp)>2)?315:270;
+	kb_angle = (vsp<5 && abs(hsp)>2)?45:(vsp<2)?90:(abs(hsp)>2)?315:270;
 	if((!free || place_meeting(x,y,asset_get("par_block")) && hit_priority > 0) || y >= room_height+500 || x >= room_width+1000 || x < -1000){
         destroyed = true;
     }
@@ -121,6 +123,8 @@ else if(attack == AT_UAIR){
 			hitbox_timer = 0;
 			was_pocketed = true;
 		}
+		if(hitbox_timer == 12)Freezable = true; //fuck you, sky!
+		if(Frozen){hit_priority = 0;}else if(!KoB_grabbed && !Pocketed && hitstop <= 0){hit_priority = 4;} //fuck you again, sky!!
 		if(player != player_id.player){
 	    	pigtimer++;
 	    	if(pigtimer == 240){
@@ -178,11 +182,6 @@ else if(attack == AT_UAIR){
 	    if(instance_exists(theotherhitbox)){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.theotherhitbox)){
-	        		if("dairhitbox" in player_id && player_id.dairhitbox == self){
-	        			with(player_id){
-					    	vsp = -12;old_vsp = vsp;
-	        			}
-	        		}    	    		
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && other != self && effect != 100 && (player != other.orig_player || player = other.orig_player && attack != AT_UAIR)){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
 	    	                other.hitplayertimer -= 10;
@@ -196,6 +195,10 @@ else if(attack == AT_UAIR){
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
+	                			//to make certain characters bounce
+				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+			   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	        		}
 	    	        		other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
 	    	        		
@@ -332,10 +335,14 @@ if(attack == AT_USPECIAL){
 	}
 }
 
+stop_effect = false;
+if(KoB_destroy){hitbox_timer = length;destroyed = true;}
 draw_xscale = spr_dir;
 
+}
+
 #define nspec_stun
-if(place_meeting(x,y,other) && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Freezable" not in self || "Freezable" in self && Freezable){
+if(place_meeting(x,y,other) && ((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self || sprite_index != asset_get("empty_sprite")) && "Freezable" not in self) || "Freezable" in self && Freezable)){
 	if("in_hitpause" in self){
 		if(!in_hitpause){
 			in_hitpause = 1;		
@@ -346,7 +353,7 @@ if(place_meeting(x,y,other) && ("UnReflectable" in self && !UnReflectable || "Un
 		if(hitstop > 0 && other.hitbox_timer == other.length)hitstop = 0;
 	}
 	if("Frozen" in self)Frozen = other.hitbox_timer < other.length;
-}else if(!place_meeting(x,y,other) && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Freezable" not in self || "Freezable" in self && Freezable){
+}else if(!place_meeting(x,y,other) && ((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self || sprite_index != asset_get("empty_sprite")) && "Freezable" not in self) || "Freezable" in self && Freezable)){
 	if("in_hitpause" in self){
 		if(in_hitpause && other.hitbox_timer == other.length)in_hitpause = false;
 	}else if("hitstop" in self){

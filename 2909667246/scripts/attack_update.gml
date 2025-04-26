@@ -19,17 +19,11 @@ if (attack == AT_NSPECIAL){
 		cancelattack2();
 	}
 	if(!instance_exists(Pocketed_Projectile) && (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 2 && window_timer < 15)){
-		with(obj_article1){
-        	pocket_article_if_valid();
-    	}with(obj_article2){
-        	pocket_article_if_valid();
-    	}with(obj_article3){
-        	pocket_article_if_valid();
-    	}with(obj_article_solid){
-        	pocket_article_if_valid();
-    	}with(obj_article_platform){
-        	pocket_article_if_valid();
-    	}
+		with(obj_article1)pocket_article_if_valid();
+    	with(obj_article2)pocket_article_if_valid();
+    	with(obj_article3)pocket_article_if_valid();
+    	with(obj_article_solid)pocket_article_if_valid();
+    	with(obj_article_platform)pocket_article_if_valid();
 	}
 	
 	if(instance_exists(Pocketed_Projectile)){
@@ -92,9 +86,6 @@ if (attack == AT_NSPECIAL){
 		}
 	}
 }else if (attack == AT_FSPECIAL){
-	/*if(window == && !instance_exists(Lloid_Rocket) && !hitpause){
-		vsp = 0;hsp = 0;
-	}*/
 	if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 		if(!instance_exists(Lloid_Rocket)){
 			vsp = 0;hsp = 0;fspec_spawned = true;
@@ -152,6 +143,8 @@ if (attack == AT_NSPECIAL){
 	        	balloon2.theotherhitbox = balloon_collision;
         	}
 		}
+		//if moving backwards and the player is holding forward, slow down the hsp
+		if(hsp*spr_dir < 0 && (spr_dir == 1 && right_down || spr_dir == -1 && left_down))hsp *= 0.25;
 	}else if(window == 5){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			window = 4;window_timer = 0;
@@ -362,7 +355,7 @@ if (attack == AT_NSPECIAL){
         		}
         		bowlingball.damage = 7;bowlingball.kb_value = 7;bowlingball.kb_scale = 0.9;bowlingball.grav = 0.5;bowlingball.waspocketed2 = true;
         	}
-        	if(instance_exists(Pocketed_Projectile) && ("Villager_Slingshot" in Pocketed_Projectile || "Villager_Bowling_Ball" in Pocketed_Projectile && (attack_down || right_stick_down || left_stick_down))){
+        	if(instance_exists(Pocketed_Projectile) && (("Villager_Slingshot" in Pocketed_Projectile || "Villager_Bowling_Ball" in Pocketed_Projectile) && (attack_down || right_stick_down || left_stick_down))){
         		thepocketedprojectile = Pocketed_Projectile;Pocketed_Projectile = noone;
         		if (attack == AT_FAIR){
 					thepocketedprojectile.spr_dir = spr_dir;thepocketedprojectile.hsp = pocket_hsp*spr_dir;thepocketedprojectile.vsp = pocket_vsp;
@@ -482,12 +475,12 @@ if (attack == AT_NSPECIAL){
 		            if(type == 2 && self != other){
 		            	if(string_length(string(player_id.url)) > 0 && orig_player != 5){
 			            	var playerurl = real(player_id.url);
-			                if("MattCanGrab" in self && MattCanGrab || other.url != playerurl && (other.canon || other.op || playerurl < 20)
-			                || !transcendent && (("MattCanGrab" in self && MattCanGrab) || "MattCanGrab" not in self)){
+			                if(("MattCanGrab" in self && MattCanGrab || "MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20)
+    	    				|| !transcendent && (("MattCanGrab" in self && MattCanGrab || "MorshuCanGrab" in self && MorshuCanGrab) || "MattCanGrab" not in self && "MorshuCanGrab" not in self)){
 			                	var dist = point_distance(other.x+70*other.spr_dir, other.y-25, x, y); //distance
 		                	    if(dist <= 75 && !other.grabbedobject && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
 		                	        spr_dir = other.spr_dir;player = other.player;
-			                		other.grabbedtarget = self;other.grabbedobject = true;num = 1;
+			                		other.grabbedtarget = self;other.grabbedobject = true;if("MorshuBomb" in self && MorshuBomb || "MattStar" in self && MattStar)num = 1;
 			                		can_hit[1] = true;can_hit[2] = true;can_hit[3] = true;can_hit[4] = true;
 			                		KoB_grabbed = true;
 			                		if("Villager_Bowling_Ball" in self){
@@ -528,13 +521,13 @@ if (attack == AT_NSPECIAL){
 			&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))grabtimer -= 4;
 			if(right_pressed || left_pressed){
 				window = 5;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 7);
-				if(right_pressed){spr_dir = 1;}else{spr_dir = -1;}instance_exists(grabbedtarget){grabbedtarget.y = y;grabbedtarget.x = x-(65*spr_dir);grabbedtarget.visible = false;}
+				if(right_pressed){spr_dir = 1;}else{spr_dir = -1;}instance_exists(grabbedtarget){grabbedtarget.y = y;grabbedtarget.x = x-(65*spr_dir);grabbedtarget.grabbed_invisible = true;}
 			}else if(up_pressed){
 				window = 8;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 10);
-				instance_exists(grabbedtarget){grabbedtarget.y = y+15;grabbedtarget.x = x+(75*spr_dir);grabbedtarget.visible = false;}
+				instance_exists(grabbedtarget){grabbedtarget.y = y+15;grabbedtarget.x = x+(75*spr_dir);grabbedtarget.grabbed_invisible = true;}
 			}else if(down_pressed){
 				window = 11;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 13);
-				instance_exists(grabbedtarget){grabbedtarget.y = y+5;grabbedtarget.x = x-(55*spr_dir);grabbedtarget.visible = false;}
+				instance_exists(grabbedtarget){grabbedtarget.y = y+5;grabbedtarget.x = x-(55*spr_dir);grabbedtarget.grabbed_invisible = true;}
 				if(free && vsp > -7){vsp = -7;}else if(!free){vsp = -6;}
 			}/*else if(special_pressed){
 				
@@ -568,7 +561,7 @@ if (attack == AT_NSPECIAL){
 	}else if(window >= 5 && window <= 7){ //fthrow / bthrow
 		if(window == 5){
 			grabbedposX = -55;grabbedposY = -10;
-			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 				if(!free){create_hitbox(AT_GRAB, 2, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 3, x, y);}
 				if(instance_exists(grabbedtarget)){
@@ -592,7 +585,7 @@ if (attack == AT_NSPECIAL){
 	}else if(window >= 8 && window <= 10){ //uthrow
 		if(window == 8){
 			grabbedposX = 75;grabbedposY = 15;
-			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 				if(!free){create_hitbox(AT_GRAB, 4, x, y);}else{if(vsp > -7){vsp = -7;}create_hitbox(AT_GRAB, 5, x, y);}
 				if(instance_exists(grabbedtarget)){
@@ -616,7 +609,7 @@ if (attack == AT_NSPECIAL){
 	}else if(window >= 11 && window <= 13){ //dthrow
 		if(window == 11){
 			grabbedposX = -35;grabbedposY = -35;
-			if(instance_exists(grabbedtarget))grabbedtarget.visible = false;
+			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 				var grounded = true;
 				if(!free || position_meeting(x,y+40,asset_get("par_block")) || position_meeting(x,y+40,asset_get("par_jumpthrough"))){create_hitbox(AT_GRAB, 6, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 7, x, y);grounded = false;}
@@ -750,74 +743,63 @@ if (canon || op) {
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
     	var playerurl = 21;
     	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
-    	//if(string_length(string(player_id.url)) > 0){
-	        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable
-	        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")
-	        && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
-	        || other.runeI){
-            	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
-            	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
-            		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;
-		        	player = other.player;
-		        	if("current_player" in self){
-		        		current_player = other.player;
-		        	}
-		        	if(other.pocket_handle_state){
-				    	state = 3;
-					}other.pocket_projectile_sprite_imageindex = image_index;
-			    	other.pocket_projectile_sprite = sprite_index;//sprite_index = asset_get("empty_sprite");
-			    	
-			    	//velocity stuff
-			    	if("Pocket_hsp" not in self){  //if no forced hsp, then just use what the projectile had
-			    		other.pocket_hsp = abs(hsp);
-			    	}else{
-			    		other.pocket_hsp = abs(Pocket_hsp);
-			    	}if("Pocket_vsp" not in self){ //if no forced vsp, then just use what the projectile had
-			    		other.pocket_vsp = vsp;
-			    	}else{
-			    		other.pocket_vsp = Pocket_vsp;
+        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable
+        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")
+        && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
+        || other.runeI){
+        	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance
+        	if(((dist <= 150 || dist <= 150*1.5 && other.runeF) || place_meeting(other.x+55*other.spr_dir,other.y-25,self))){
+        		other.pocket_article = true;other.pocket_projectile = false;other.Pocketed_Projectile = self;
+	        	player = other.player;
+	        	if("current_player" in self)current_player = other.player;
+	        	
+				other.pocket_projectile_sprite_imageindex = image_index;
+		    	other.pocket_projectile_sprite = sprite_index;
+		    	
+		    	//velocity stuff. if no speed is defined, then just use 0 for articles
+		    	if("Pocket_hsp" not in self){
+		    		other.pocket_hsp = 0;//abs(hsp);
+		    	}else{
+		    		other.pocket_hsp = abs(Pocket_hsp);
+		    	}if("Pocket_vsp" not in self){
+		    		other.pocket_vsp = 0;//vsp;
+		    	}else{
+		    		other.pocket_vsp = Pocket_vsp;
+		    	}
+		    	if(other.pocket_hsp <= 0.5 && abs(other.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol (unused now)
+		    		//if("Pocket_hsp" not in self){other.pocket_hsp = 5;}
+		    		//if("Pocket_vsp" not in self){other.pocket_vsp = -5;}
+		    	}
+		    	Pocketed = true;
+		    	if("Pocket_hud" in self){
+		    		if(Pocket_hud != -1){ //has sprites defined
+			    		other.pocket_projectile_hud_sprite = Pocket_hud;
+		    		}else{ //if set to -1, use generic icons
+		    			other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_basic;
+		    		}
+		    		if("Pocket_hud_imageindex" in self){
+			    		other.pocket_projectile_hud_sprite_imageindex = Pocket_hud_imageindex;
 			    	}
-			    	if(other.pocket_hsp <= 0.5 && abs(other.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol
-			    		if("Pocket_hsp" not in self){other.pocket_hsp = 5;}
-			    		if("Pocket_vsp" not in self){other.pocket_vsp = -5;}
-			    	}
-			    	
-			    	//if("Pocketed" in self){
-			    		Pocketed = true;
-			    	//}
-			    	if("Pocket_hud" in self){
-			    		if(Pocket_hud != -1){ //has sprites defined
-				    		other.pocket_projectile_hud_sprite = Pocket_hud;
-			    		}else{ //if set to -1, use generic icons
-			    			other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_basic;
-			    		}
-			    		if("Pocket_hud_imageindex" in self){
-				    		other.pocket_projectile_hud_sprite_imageindex = Pocket_hud_imageindex;
-				    	}
-			    	}else{
-			    		other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_original;
-			    		other.pocket_projectile_hud_sprite_imageindex = 0;
-			    	}
-			    	//check if villager is gonna mess with the 'state' variable or not
-			    	if("is_KOB" in player_id && player_id.is_KOB){
-			    		other.pocket_handle_state = true;
-			    	}else{
-			    		other.pocket_handle_state = false;
-			    	}
-			    	if("MattPlanet" in self){
-		            	state = 3;
-	            	}
-			    	with(other){
-			    		invincible = true;invince_time = 10;
-			    		sound_play(sound_get("pocket"),false,noone,1);
-			    		sound_stop(sfx);
-			    	}
-			    	if(instance_exists(other.Pocket_Hitbox)){
-			    		other.Pocket_Hitbox.img_spd = 2;
-			    	}
-            	}
+		    	}else{
+		    		other.pocket_projectile_hud_sprite = other.pocket_projectile_hud_sprite_original;
+		    		other.pocket_projectile_hud_sprite_imageindex = 0;
+		    	}
+		    	//check if villager is gonna mess with the 'state' variable or not
+		    	if("is_KOB" in player_id && player_id.is_KOB){
+		    		other.pocket_handle_state = true;
+		    	}else{
+		    		other.pocket_handle_state = false;
+		    	}
+		    	if(other.pocket_handle_state || "MattPlanet" in self)state = 3;
+		    	
+		    	with(other){
+		    		invincible = true;invince_time = 10;
+		    		sound_play(sound_get("pocket"),false,noone,1);
+		    		sound_stop(sfx);
+		    	}
+		    	if(instance_exists(other.Pocket_Hitbox))other.Pocket_Hitbox.img_spd = 2;
         	}
-    	//}
+    	}
     }
     
 #define grab_article_if_valid
@@ -833,8 +815,7 @@ if (canon || op) {
     		var dist = point_distance(other.x+(70*other.spr_dir), other.y-25, x, y); //distance
     		var range = 65;
 	        
-        	if(dist <= range+GrabRangeModifier && ("MattPlanet" in self && (state == 0 || state == 1 || state == 2) || "MattPlanet" not in self && "MattCanGrab" in self && MattCanGrab
-        	|| other.url != playerurl && (other.canon || other.op || playerurl < 20)) && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
+        	if(dist <= range+GrabRangeModifier && ("MattCanGrab" in self && MattCanGrab || "MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20) && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
             	other.grabbedtarget = self;other.grabbedobject = true;other.grabbedarticle = true;
             	KoB_grabbed = true;
 	        	if("MattPlanet" in self){
@@ -858,7 +839,6 @@ if (canon || op) {
 		    	set_state(PS_HITSTUN);
 		    	hitstun = 20;hitstun_full = 20;
 			}
-		}if(!grabbedobject){
 			soft_armor = 9999;
 		}
 	}

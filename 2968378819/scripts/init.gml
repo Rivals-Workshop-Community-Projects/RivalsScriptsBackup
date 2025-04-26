@@ -259,6 +259,10 @@ if get_player_color(player) == 19 || get_player_color(player) == 22 || get_playe
     set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("HitHardDBZ1"));
 }
 
+// Victory
+set_victory_bg(sprite_get("Iwanttofighteveryoneintheworld")); // sprites\winscreen.png - name doesn't matter, the size has to be 480 x 270 pixels big, usually has this puple filter on it
+set_victory_theme( sound_get( "music_win_fight" ));
+
 // Runes
 if has_rune("I"){
     upspecial_charged = false;

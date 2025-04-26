@@ -11,42 +11,36 @@ if (attack == AT_NSPECIAL){
 			("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable) || other.player_id.runeI)){
 	            if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND
 	            && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
-	            	//print(hbox_num);print(hitbox_timer);
 	            	hitbox_timer = 0;hit_priority = 0;
-	            	if(player == other.player){
-	            		other.player_id.pocket_buff = false;
-	            	}else{
-	            		other.player_id.pocket_buff = true;
-	            	}
-	            	player = other.player;
+	            	
+	            	other.player_id.pocket_buff = player == other.player ? false : true;
+	            	
+	            	player = other.player;last_player_id = other.player_id;
 	            	if("current_player" in self){current_player = player;}
 			    	if("Pocket_Player" not in self){Pocket_Player = noone;}
 			    	Pocket_Player = other.player_id;
 			    	other.player_id.Pocketed_Projectile = self;
 			    	other.player_id.pocket_projectile_sprite_imageindex = image_index;
-			    	other.player_id.pocket_projectile_sprite = sprite_index;//sprite_index = asset_get("empty_sprite");
+			    	other.player_id.pocket_projectile_sprite = sprite_index;
 			    	
 			    	//velocity stuff
-			    	if("Pocket_hsp" not in self){  //if no forced hsp, then just use what the projectile had
-			    		other.player_id.pocket_hsp = abs(hsp);
+			    	if("Pocket_hsp" not in self){  //if no defined hsp, then use defaults
+			    		other.player_id.pocket_hsp = 5//abs(hsp);
 			    	}else{
 			    		other.player_id.pocket_hsp = abs(Pocket_hsp);
-			    	}if("Pocket_vsp" not in self){ //if no forced vsp, then just use what the projectile had
-			    		other.player_id.pocket_vsp = vsp;
+			    	}if("Pocket_vsp" not in self){ //if no defined vsp, then use defaults
+			    		other.player_id.pocket_vsp = -5//vsp;
 			    	}else{
 			    		other.player_id.pocket_vsp = Pocket_vsp;
 			    	}
-			    	if(other.player_id.pocket_hsp <= 0.5 && abs(other.player_id.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol
-			    		if("Pocket_hsp" not in self){other.player_id.pocket_hsp = 5;}
-			    		if("Pocket_vsp" not in self){other.player_id.pocket_vsp = -5;}
+			    	if(other.player_id.pocket_hsp <= 0.5 && abs(other.player_id.pocket_vsp) <= 0.5){ //if it has no speed in any direction then just default to having some lol (unused, done above instead)
+			    		//if("Pocket_hsp" not in self){other.player_id.pocket_hsp = 5;}
+			    		//if("Pocket_vsp" not in self){other.player_id.pocket_vsp = -5;}
 			    	}
 			    	other.player_id.pocket_transcendent = transcendent;transcendent = 1;
 			    	other.player_id.pocket_grounds = grounds;other.player_id.pocket_walls = walls;grounds = 1;walls = 1;
 			    	other.player_id.pocket_projectile = true;other.player_id.pocket_article = false;
-			    	
-			    	//if("Pocketed" in self){
-			    		Pocketed = true;
-			    	//}
+			    	Pocketed = true;
 			    	if("Pocket_hud" in self){
 			    		if(Pocket_hud != -1){ //has sprites defined
 				    		other.player_id.pocket_projectile_hud_sprite = Pocket_hud;
@@ -66,13 +60,12 @@ if (attack == AT_NSPECIAL){
 			    		if(self == other.player_id.Lloid_Rocket){
 			    			other.player_id.Lloid_Rocket = noone;
 			    		}
-			    	}
-			    	if("Villager_Bowling_Ball" in self){
+			    	}if("Villager_Bowling_Ball" in self){
 			    		if(!waspocketed && !waspocketed2 && player_id == other.player_id){ //if its your own bowling ball and it hasnt been pocketed or anything yet, make it weaker
 			    			damage = 8;kb_value = 7;kb_scale = 0.9;waspocketed2 = true;
 			    		}
 			    	}
-			    	//check if villager is gonna mess with the 'state' variable or not
+			    	//check if villager is gonna mess with the 'state' variable or not, to avoid at least some bugs
 			    	if("is_KOB" in player_id && player_id.is_KOB){
 			    		other.player_id.pocket_handle_state = true;
 			    	}else{
@@ -84,7 +77,6 @@ if (attack == AT_NSPECIAL){
 			    		sound_play(sound_get("pocket"),false,noone,1);
 			    		sound_stop(sfx);
 			    	}
-			    	//other.destroyed = true;
 			    	other.img_spd = 2;
 	        	}
 	    	}
@@ -271,10 +263,10 @@ if (attack == AT_NSPECIAL){
 	        sound_play(sfx_explode,false,noone,1);shake_camera(10, 5);
 	        if(hp <= 0){ //stronger explosion as the rocket was destroyed by an attack
 	        	var explosionhitbox = create_hitbox(AT_FSPECIAL, 4, round(x), round(y));
-	        	explosionhitbox.player = player;
+	        	explosionhitbox.player = player;explosionhitbox.init = false;
 	        }else{ //weaker, normal explosion
 	        	var explosionhitbox = create_hitbox(AT_FSPECIAL, 3, round(x), round(y));
-	        	explosionhitbox.player = player;
+	        	explosionhitbox.player = player;explosionhitbox.init = false;
 	        	if(lastplayerhit != -1){
 	        		explosionhitbox.can_hit[lastplayerhit] = false;
 	        	}

@@ -33,5 +33,9 @@ enemy_detected 	    = false;
 shoot_angle         = 0;
 reset_guard 		= 118;
 
+sensitivity_flipper = false;
+
 //	No. Just no.
 Pocketable 			= false;
+
+owner_override      = noone;        //  Hitbox owner

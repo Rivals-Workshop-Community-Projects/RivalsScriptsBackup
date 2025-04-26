@@ -2,25 +2,46 @@
 
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
-    trigger_b_reverse();
+	trigger_b_reverse();
 }
 
 
-switch(attack)
-{
-
+switch(attack){
+	
     case AT_USPECIAL:
+		if window == 1 && window_timer == 1{
+			upspecial_used = 1;
+			clear_button_buffer(PC_SPECIAL_PRESSED)
+		}
+		if has_rune("O") && free{
+			iasa_script();
+		}
         if (window == 4){
         if (down_pressed){
-        set_state(PS_PRATFALL);
+        set_state(has_rune("K")? PS_IDLE_AIR:PS_PRATFALL);
         }
         can_wall_jump = true
     }
     break;
+    
+    case AT_DSTRONG:
+    	if has_rune("H"){
+    		set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 10);
+    		if window == 2 && !hitstop{
+    			hsp = clamp(hsp + ((right_down - left_down) * ((strong_charge + 60) / 90)), -7, 7);
+    		}
+    	}
+    	if has_rune("I"){
+    		set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    		if window == 2 && !hitstop{
+    			vsp = (-3 - (strong_charge / 20)) + (window_timer / 5);
+    		}
+    	}
+    break;
 
     case AT_BAIR:
-    move_cooldown[AT_BAIR] = 40;
-    bair_cool = 40;
+    move_cooldown[AT_BAIR] = 20;
+    bair_cool = 20;
     // Samson can't fast fall on every window except 4
     if window != 4 
     {can_fast_fall = false;}
@@ -64,7 +85,7 @@ if (window == 2 && window_timer == 1 && hitpause == false && jar_is_out == false
     jar = instance_create(x + (25*spr_dir), y-10, "obj_article1");
     jar.jar_hitbox_num = jar_hitbox_num;
     jar.player_id = id;
-	jar.player = player;
+	jar.player = player; 
         
     }
     // Turn it into NSPECIAL if his Jar is already out 
@@ -73,14 +94,48 @@ if (window == 2 && window_timer == 1 && hitpause == false && jar_is_out == false
 
         {set_attack(AT_NSPECIAL_2);
         hurtboxID.sprite_index = sprite_get("nspecial2_hurt");
+          if phone_cheats[CHEAT_JAR] == 0
+        {
         move_cooldown[AT_NSPECIAL] = 250
+        move_cooldown[AT_NSPECIAL_AIR] = 250
         nspecial_cool = 250;}
+        }
+    }
+    if window == 1 && window_timer == 1 && free{
+    	set_attack(AT_NSPECIAL_AIR)
+    }
+    break;
+    case AT_NSPECIAL_AIR:
+// Samson spawns his Jar
+if (window == 2 && window_timer == 1 && hitpause == false && jar_is_out == false)
+    {
+
+    jar = instance_create(x, y + 30, "obj_article1");
+    jar.jar_hitbox_num = jar_hitbox_num;
+    jar.player_id = id;
+	jar.player = player; 
+        
+    }
+    // Turn it into NSPECIAL if his Jar is already out 
+    if window == 1 and (window_timer == 1) and jar_is_out == true  
+    {if jar.grounded >= 1 and jar.jar_health > 0
+
+        {set_attack(AT_NSPECIAL_2);
+        hurtboxID.sprite_index = sprite_get("nspecial2_hurt");
+
+        if phone_cheats[CHEAT_JAR] == 0
+        {
+        move_cooldown[AT_NSPECIAL] = 250
+        move_cooldown[AT_NSPECIAL_AIR] = 250
+        nspecial_cool = 250;
+        }
+        }
         
     }
     break;
 
     case AT_NSPECIAL_2:
-    if window == 2
+    if window == 2 || has_rune("L")
     {
     jar.manual_boom = 1;
     }
@@ -92,6 +147,8 @@ if (window == 2 && window_timer == 1 && hitpause == false && jar_is_out == false
     break;
 
     case AT_DATTACK:
+
+    
 
     // Samson will end the attack prematurely if he was parried
    if was_parried         
@@ -105,14 +162,25 @@ if (window == 2 && window_timer == 1 && hitpause == false && jar_is_out == false
         }
     if window == 4 and !was_parried
     {
-
+		if has_rune("A") && (right_down - left_down = spr_dir) && window_timer == 20 && state_timer < 80{
+			window_timer = 0;
+		}
+		if has_rune("B") && has_hit{
+			can_attack = true;
+		}
         //Samson does his finishing attack
-        if attack_pressed
-        {destroy_hitboxes();
-        window = 5;
-        window_timer = 0;
-        hsp = 0;
-        create_hitbox(AT_DATTACK, 3, x, y);}
+        if attack_pressed && can_attack == false{
+        	destroy_hitboxes();
+        	window = 5;
+        	window_timer = 0;
+        	create_hitbox(AT_DATTACK, 3, x, y);
+        }
+        
+        if window = 4 and !hitpause and window_timer % 5 == 0 
+        {
+            create_hitbox( AT_DATTACK, 2, x, y);
+        }
+
         // Dash-canceling 
         if window = 4 and window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH )  
         {set_state(PS_DASH);
@@ -132,26 +200,43 @@ destroy_hitboxes();
     break;
 
     case AT_FSPECIAL:
-     if window == 8 
+    can_fast_fall = false;
+     if window >= (2) 
     {
-        can_jump = true;
         can_wall_jump = true;
     }
-    if window == 8 and window_timer >= 10 and free
-    {set_state(PS_PRATFALL);}
+	if has_rune("M") && window == 3 && window_timer == 12 && special_down{
+		attack_end();
+		window_timer = 0;
+	}
+	if window >= (5) 
+    {
+        can_jump = true;
+    }
 
-can_fast_fall = false;
     break;
 
     case AT_TAUNT:
-    maypul_check();
-    ralsei_check();
-    if blushing == 1
-    {set_attack( AT_TAUNT_2 );
-    move_cooldown[AT_TAUNT] = 250;};
-    else if fatblunt == 1 or get_player_color( player ) == 15
-    {set_attack( AT_EXTRA_1 )};
+
+            with asset_get( "oPlayer" )
+            {
+                switch(url)
+                {
+                case 2249417003: //ralsei w/ gun
+                with other
+                //set_attack( AT_EXTRA_1 )
+                break;
+
+                case CH_MAYPUL: //maypul my beloved
+                //set_attack( AT_TAUNT_2 );
+                other.move_cooldown[AT_TAUNT] = 250;
+                break;
+                }
+            }
     break;
+
+
+
 
     case 49:
     if get_player_color(player) > 0
@@ -184,6 +269,7 @@ can_fast_fall = false;
 
     break;
 
+//Samson makes honey when landing the move
     case AT_DSPECIAL_AIR:
 
  if window == 2 and window_timer = 1 and !hitpause
@@ -216,6 +302,9 @@ can_fast_fall = false;
     break;
 
     case AT_DSPECIAL:
+    if window == 1{
+    	plungerboom = false;
+    }
     if free 
     {
     set_attack( AT_DSPECIAL_AIR );
@@ -278,7 +367,35 @@ else if window == 4 || window == 1
 }
 }
 
+// MvC Samson
+if secret_code_input == true
 
+{
+    if get_player_color( player ) == 18
+    {
+
+
+        if (attack == AT_FTILT and has_hit) or (attack == AT_DTILT and has_hit) or (attack == AT_UTILT and has_hit) or (attack == AT_DATTACK and has_hit) or (attack == AT_NAIR and has_hit) or (attack == AT_BAIR and has_hit) or (attack == AT_FAIR and has_hit) or (attack == AT_DAIR and has_hit) or (attack == AT_UAIR and has_hit)
+        {
+        can_special = true;
+        can_strong = true;
+        }
+
+        if (attack == AT_FSTRONG and has_hit) or (attack == AT_DSTRONG and has_hit) or (attack == AT_USTRONG and has_hit)
+        {
+        can_special = true;
+        }
+
+        if attack == AT_UTILT {
+        set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 90);
+        if has_hit
+        {
+        can_jump = true;
+        }
+        }
+    }
+
+}
 
 
 if (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
@@ -311,31 +428,3 @@ grabbedid.state = PS_TUMBLE;
 };
 
 
-
-
-
-//Everytime Samson taunts, check if he's fighting Maypul. If so, do his alternate taunt
-//If not, check if he's fighting Ralsei, if so, do his third taunt, if not, do his defeault. 
-#define maypul_check
-{if get_char_info( 1, INFO_STR_NAME) == 'Maypul'
-    {blushing = 1;}
-    else if get_char_info( 2, INFO_STR_NAME) == 'Maypul'
-        {blushing = 1;}
-        else if get_char_info( 3, INFO_STR_NAME) == 'Maypul'
-            {blushing = 1;}
-            else if get_char_info( 4, INFO_STR_NAME) == 'Maypul'
-                    {blushing = 1;}
-                    else {blushing = 0;}
-};
-
-#define ralsei_check
-{if get_char_info( 1, INFO_STR_NAME) == 'Ralsei'
-    {fatblunt = 1;}
-    else if get_char_info( 2, INFO_STR_NAME) == 'Ralsei'
-        {fatblunt = 1;}
-        else if get_char_info( 3, INFO_STR_NAME) == 'Ralsei'
-            {fatblunt = 1;}
-            else if get_char_info( 4, INFO_STR_NAME) == 'Ralsei'
-                    {fatblunt = 1;}
-                    else {fatblunt = 0;}
-};

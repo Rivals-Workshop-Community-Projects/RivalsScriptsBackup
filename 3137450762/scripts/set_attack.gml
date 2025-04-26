@@ -21,7 +21,10 @@ if attack == AT_NSPECIAL {
   dattack_starting_y = y;
 } else if attack == AT_FSTRONG {
   reset_attack_value( AT_FSTRONG, AG_CATEGORY);
+} else if (attack == AT_USPECIAL) {
+  uspecial_spin_timer = 0;
 }
+
 
 // Ensure that grab_victim is released when starting a new move
 if (instance_exists(grab_victim)){

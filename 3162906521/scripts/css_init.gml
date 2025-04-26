@@ -13,25 +13,28 @@ alt_name[1]  = "BLU";
 alt_name[2]  = "GRN";
 alt_name[3]  = "YLW";
 alt_name[4]  = "TFC";
-alt_name[5]  = "Robot Engi";
-alt_name[6]  = "Kitty0706";
-alt_name[7]  = "Garden Warfare";
-alt_name[8]  = "Pizza Engineer";
-alt_name[9]  = "Portly Plumber";
-alt_name[10] = "Black Mesa Builder";
-alt_name[11] = "Redstone Engineer";
-alt_name[12] = "Nitori";
-alt_name[13] = "Kris";
-alt_name[14] = "Death, Destroyer of Worlds";
-alt_name[15] = "Kragg";
-alt_name[16] = "Dazz";
-alt_name[17] = "King Coal";
-alt_name[18] = "Aether";
-alt_name[19] = "Hell Yeah";
-alt_name[20] = "Achievement Unlocked";
-alt_name[21] = "Engineer Gaming";
+alt_name[5]  = "BOT";
+alt_name[6]  = "BOT (Red Flavor)";
+alt_name[7]  = "Kitty0706";
+alt_name[8]  = "Emesis Blues";
+alt_name[9]  = "Garden Warfare";
+alt_name[10]  = "Pizza Engineer";
+alt_name[11]  = "Portly Plumber";
+alt_name[12] = "Black Mesa Builder";
+alt_name[13] = "Redstone Engineer";
+alt_name[14] = "Nitori";
+alt_name[15] = "Kris";
+alt_name[16] = "Death Herself (Neko Arc)";
+alt_name[17] = "Kragg";
+alt_name[18] = "Dazz";
+alt_name[19] = "King Coal";
+alt_name[20] = "Aether";
+alt_name[21] = "Hell Yeah";
+alt_name[22] = "Achievement Unlocked";
+alt_name[23] = "Badwater BulletHells";
+alt_name[24] = "Engineer Gaming";
 
-num_alts = 22;
+num_alts = 25;
 //Alt
 
 //CSS Button Stuff

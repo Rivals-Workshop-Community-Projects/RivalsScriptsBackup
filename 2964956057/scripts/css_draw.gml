@@ -1,7 +1,7 @@
 var temp_x = x;
 var temp_y = y;
 
-var num_alts = 32;
+var num_alts = 33;
 var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
 var runes_mode = get_match_setting(SET_RUNES) == true? -16:0;
 if "prev_alt" not in self {
@@ -36,6 +36,7 @@ alt_name = [
 'Genesis',
 'Champions',
 '"Make It Yourself"'
+'Ghostride'
 ];
 champ_name = [
 'Seesaw/Undertale 2',

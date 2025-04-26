@@ -1,34 +1,302 @@
+if(custom_clone)
+	return;
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
-// if (attack == AT_FSPECIAL && window == 1 && window_timer == 1)
-// {
-// 	if(cloneChar != noone)
-// 		instance_destroy(cloneChar);
-// 	cloneChar = instance_create(x, y, "oPlayer");
-// 	cloneChar.custom_clone = true;
-// 	// cloneChar.disable_ai = false;
-// 	// cloneChar.ai_target = player;
-// 	//TODO: why clone crashed on reload??? oh "clone" is an actually reserved variable...
-// 	//TODO: easy way to make the clone move?
-	
-// 	//with (etalus)
-// 	//	instance_create(oPlayer);
-// }
-/*
-if (attack == AT_JAB && window == 1 && window_timer == 1 && cloneChar != noone)
+if(attack == AT_EXTRA_2)
 {
-	var tempX = cloneChar.x;
-	var tempY = cloneChar.y;
-	cloneChar.x = x;
-	cloneChar.y = y;
-	x = tempX;
-	y = tempY;
-	//-> doesnt feel very spy?
-}*/
+	if(window == 1 && window_timer == 1)
+	{
+		nctimer = 0;
+		terminalTauntAnimStartDelayTimer = 0;
+		nPlayerId = noone;
+		tcoSelectedArt = noone;
+		tcoVanillaChar = 0;
+	}
 
+	if(window > 1 && window < 7)
+	{
+		tauntIsOnWaitFrame = window == 4 && window_timer == 160
+						|| window == 5 && window_timer == 125
+						|| window == 5 && window_timer == 160
+						|| window == 6 && window_timer == 60;
+
+		
+		//tco / toon link / miiverse compatability copy
+		if(window == 4 && window_timer == 1)
+		{
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			with(oPlayer)
+			{
+				if (player == other.player)
+					continue;
+
+				var curr_dist = point_distance(x,y,other.x,other.y);
+				if (curr_dist < shortest_dist)
+				{
+					shortest_dist = curr_dist;
+					shortest_id = id;
+				}
+			}
+			if(shortest_id == noone)
+				paperPlayerId = id;
+			else
+				paperPlayerId = shortest_id;
+
+			tcoSelectedArt = noone;
+			tcoVanillaChar = 0;
+			paperSprite = noone;
+			paperSpriteBackground = sprite_get("compatability_tcoart_paper");
+			paperIndex = 0;
+			paperType = "tco";
+			var possiblePaperTypes = ds_list_create();
+			with(shortest_id)
+			{
+				if(variable_instance_exists(self, "tcoart")
+				|| select == clamp(select, 2, 15)
+				|| url == 1865940669 //Sandbert
+				|| url == 1866016173) //Guadua
+					ds_list_add(possiblePaperTypes, "tco");
+				if(variable_instance_exists(self, "toonlink_photo"))
+					ds_list_add(possiblePaperTypes, "toonlink");
+				if(variable_instance_exists(self, "miiverse_post"))
+					ds_list_add(possiblePaperTypes, "miiverse");
+			}
+			
+			terminalImageSuccess = ds_list_size(possiblePaperTypes) > 0;
+			
+			if(!terminalImageSuccess)
+			{
+				paperType = "tco";
+				tcoSelectedArt = tcoart;//spy tco as backup
+			}
+			else
+			{
+	            var randPaper = random_func(0, ds_list_size(possiblePaperTypes), true);
+				paperType = possiblePaperTypes[|randPaper];
+
+				if(paperType == "tco")
+				{
+					with(shortest_id)
+					{
+						if(variable_instance_exists(self, "tcoart"))
+						{
+							other.tcoVanillaChar = 0;
+							other.tcoSelectedArt = tcoart;
+							other.paperSprite = tcoart;
+						}
+						if(select == clamp(select, 2, 15))
+							other.tcoVanillaChar = select - 1;
+						if (url == 1865940669) //Sandbert
+							other.tcoVanillaChar = 15;
+						if (url == 1866016173) //Guadua
+							other.tcoVanillaChar = 16;
+					}
+				}
+				if(paperType == "toonlink")
+				{
+					with(shortest_id)
+					{
+						other.paperType = "toonlink";
+						other.paperSpriteBackground = toonlink_photo;
+
+						other.pictophotonum2 = 0;
+						if("toonlink_photo2" in self){ //check for custom toon link drawing
+							if(toonlink_photo2 > 12){
+								other.paperSprite = toonlink_photo2;
+								other.pictophotonum2 = 100;
+							}else{
+								other.paperSprite = noone;
+								other.pictophotonum2 = toonlink_photo2;
+							}
+						}else{ //nothing found
+							other.paperSprite = noone;other.pictophotonum2 = 0;
+						}
+					}
+				}
+				if(paperType == "miiverse")
+				{
+					with(shortest_id)
+					{
+						other.paperType = "miiverse";
+						other.paperSprite = miiverse_post;
+					}
+				}
+			}
+
+			
+			if(paperType == "toonlink")
+			{
+				if(paperSprite == noone)
+					paperSprite = sprite_get("pictophotoTL");
+				paperIndex = pictophotonum2;
+			}
+			else if(paperType == "miiverse")
+			{
+				post_num = random_func_2(x%200,sprite_get_number(paperSprite),true);
+			}
+			else if(paperType == "tco")
+			{
+				if(tcoVanillaChar == 0 && tcoSelectedArt != noone)
+					paperSprite = tcoSelectedArt;
+				else
+				{
+					paperSprite = sprite_get("compatability_tcoart_original");
+					paperIndex = tcoVanillaChar;
+				}
+			}
+
+			ds_list_destroy(possiblePaperTypes);
+		}
+
+		//spamton compatability copy (credits to: @mallow @reigamogus @Ruber @SAKK @BernardO)
+		if(window == 5)
+		{
+			if(window_timer == 1)
+			{
+				draw_ad1 = false;
+				draw_ad2 = false;
+				draw_ad3 = false;
+				for (var i = 0; i < array_length(ad_indexes); i++) {
+					ad_indexes[i] = random_func(i, 100, true);
+					ad_rarity[i] = random_func(i+4, 20, true);
+				}
+				ad_extra = []
+				with oPlayer if ("spam_ad" in self) {
+					array_push(other.ad_extra, spam_ad)
+					// if(other.player == self.player)
+					// {
+						array_push(other.ad_extra, spam_ad)
+						array_push(other.ad_extra, spam_ad)//boost custom ad likelihood
+					// }
+				}
+				ad_opp_index = random_func(7, array_length(ad_extra), true)
+			}
+
+			if(window_timer == 2)
+				draw_ad1 = true;
+			// if(window_timer == 60)
+			// 	draw_ad2 = true;
+			if(window_timer == 135)//126)
+				draw_ad2 = true;
+			if(window_timer == 181)//161)
+				draw_ad3 = true;
+		}
+
+		//cancel taunt
+		if(!tauntIsOnWaitFrame && (taunt_pressed || attack_pressed || special_pressed || jump_pressed || shield_pressed))
+		{
+			window = 7;
+			window_timer = 0;
+		}
+		
+		if(window == 2 || (window == 3 && terminalOption == "NONE"))
+		{
+			if(down_down && window != 3)
+			{
+				terminalOption = "NONE";
+				window = 3;
+				window_timer = 0;
+			}
+				
+			if(up_down || left_down || right_down)
+			{
+				if(up_down)
+					terminalOption = "TEXT";
+				if(left_down)
+					terminalOption = "IMAGE";
+				if(right_down)
+					terminalOption = "ADVERT";
+
+				//allow skipping initial normal typing before action when already typing, except for text which needs the typing
+				if(terminalOption == "TEXT")
+					window_timer = 0;
+				else
+					window_timer = window == 2 ? 0 : get_window_value(attack, 3, AG_WINDOW_LENGTH)-2;
+				window = 3;
+			}
+		}
+		
+		if(window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)
+		{
+			if(terminalOption == "NONE")
+				window = 2;
+			if(terminalOption == "IMAGE")
+				window = 4;
+			if(terminalOption == "ADVERT")
+				window = 5;
+			if(terminalOption == "TEXT")
+				window = 6;
+			window_timer = 0;
+		}
+		
+		if(tauntIsOnWaitFrame)
+		{
+			window_timer -= 1;
+			if(up_down || left_down || right_down || down_down)
+				window_timer++;
+		}
+
+		if(window > 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)
+		{
+			window = 2;
+			window_timer = 0;
+		}
+	}
+
+	if(((window == 3 && window_timer > 20) || window == 6))
+	{
+		//spy & agent N Compatability
+		nctimer += 1
+		if nctimer == 1
+		{
+			if nPlayerId == noone
+			{
+				var shortest_dist = 9999;
+				var shortest_id = noone;
+				
+				with (asset_get("oPlayer"))
+				{
+					if (player != other.player)
+					{
+						var curr_dist = point_distance(x,y,other.x,other.y);
+						if (curr_dist < shortest_dist)
+						{
+							shortest_dist = curr_dist;
+							shortest_id = id;
+						}
+					}
+				}
+				nPlayerId = shortest_id	
+			}	
+			if(nPlayerId == noone)
+				nPlayerId = id;
+		}
+	}
+	else
+		nctimer = 0;
+	
+	inTerminalTauntMenu = (window == 1 && window_timer > 32) || (window > 1 && window < 7) || (window == 7 && window_timer < 8);
+	if((inTerminalTauntMenu || terminalTauntAnimTimer > 0) && !invis && invisAnimationAlpha == 1 && terminalTauntAnimStartDelayTimer++ > tauntAnimStartDelay && !custom_clone)
+	{
+		if(inTerminalTauntMenu)
+		{
+			terminalTauntAnimTimer++;
+			terminalTauntAnimTimer = min(terminalTauntAnimTimer, tauntAnimDur);
+		}
+		else if(terminalTauntAnimTimer > 0)
+		{
+			terminalTauntAnimTimer--;
+			terminalTauntAnimTimer = max(terminalTauntAnimTimer, 0);
+		}
+	}
+	else
+		terminalTauntAnimTimer = 0;
+}
 
 if(attack == AT_DATTACK)
 {
@@ -42,7 +310,7 @@ if(attack == AT_DATTACK)
 	
 	if(window == 4 || (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1))
 	{
-		if(up_pressed || attack_pressed || special_pressed || jump_pressed || shield_pressed || taunt_pressed)
+		if(up_pressed || attack_pressed || special_pressed || jump_pressed || shield_pressed || taunt_pressed || (strong_down && !strong_down_last) )
 		{
 			window++;
 			if(sprite_index == sprite_get("boxWalk"))
@@ -64,7 +332,7 @@ if(attack == AT_DATTACK)
 			moveDir++;
 		if(left_down)
 			moveDir--;
-		hsp = moveDir * 2.5;
+		hsp = moveDir * 1.75;
 		go_through = true;
 	}
 }
@@ -86,7 +354,7 @@ if(attack == AT_DAIR)
 	{
 		dairHitPlayer = true;
 		old_vsp = -8;
-		old_hsp = -hit_player_obj.old_hsp*0.5;
+		old_hsp = clamp(-hit_player_obj.old_hsp*0.5, -5, 5);
 	}
 }
 
@@ -107,6 +375,19 @@ if (attack == AT_DSPECIAL)
 {
 	soft_armor = 6;
 }
+
+if (attack == AT_USTRONG)
+{
+	if(!invis)
+	{
+		if(window == 1 && window_timer == 4)
+			ustrongChargeSfx = sound_play(sound_get("ustrongCharge"), false, noone, 1);
+		if(window > get_attack_value(attack, AG_STRONG_CHARGE_WINDOW))
+			sound_stop(ustrongChargeSfx);
+	}
+}
+else
+    sound_stop(ustrongChargeSfx);
 
 if (attack == AT_USPECIAL)
 {
@@ -207,7 +488,7 @@ if(attack == AT_FSPECIAL)
 		|| (spr_dir == -1 && (joy_dir < 270-45 && joy_dir > 90+45)))))
 		continueShooting = true;
 
-	if(continueShooting && window == 4 && window_timer > get_window_value(AT_FSPECIAL, window, AG_WINDOW_LENGTH)-1 && shotCounter < 6)
+	if(continueShooting && window == 4 && window_timer > get_window_value(AT_FSPECIAL, window, AG_WINDOW_LENGTH)-1 && (shotCounter < 6 || (variable_instance_exists(self, "potential_unlocked") && potential_unlocked)))
 	{
 		set_up_fspecial();
 		window = 2;
@@ -234,9 +515,9 @@ else
 		crits--;
 		didShootCrit = true;
 		
-		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 7);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.3);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
@@ -251,7 +532,7 @@ else
 	else
 	{
 		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 3);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
@@ -277,7 +558,7 @@ else
 	}
 
 	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 8);
-	if(shotCounter == 6)
+	if(shotCounter == 6 && (!variable_instance_exists(self, "potential_unlocked") || !potential_unlocked))
 	{
 		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 16);
 		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 18);

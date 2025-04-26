@@ -6,6 +6,24 @@ if (state == PS_DOUBLE_JUMP && state_timer == 0){
 	sound_play(sound_get("sfx_jump"), false, noone, 1, 1.35);
 }
 
+// intro stuff
+if (introTimer < 0) {
+	if (introTimer2 < 2) {
+		introTimer2++;
+	} else {
+		introTimer2 = 0;
+		introTimer++;
+	}
+} else {
+	if (introTimer2 < 3) {
+		introTimer2++;
+	} else {
+		introTimer2 = 0;
+		introTimer++;
+	}
+}
+
+
 //Setting Victory Background
 set_victory_bg(sprite_get("victory_background"));
 
@@ -35,8 +53,6 @@ if (!free){
 if (!free){
 	tornadoused = false
 }
-
-deathvoiceline = random_func( 0, 5, true );
 
 switch (state){
 	/*
@@ -137,11 +153,16 @@ if (shadowmario == true){
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 }
 
+
+// all the voiced mode shenanegans
 if (voiced){
+
+// on death
+deathvoiceline = random_func( 0, 7, true );
 
 // sometimes makes a voice clip not play.
 var voiceDudDet = (random_func( 1, 9, true ) + 1);
-if (voiceDudDet >= 8){
+if (voiceDudDet >= 7){
 	var denyVoiceClip = true;
 } else {
 	var denyVoiceClip = false;
@@ -149,14 +170,33 @@ if (voiceDudDet >= 8){
 
 // jump grunts
 if (state == PS_JUMPSQUAT && state_timer == 3){
-	var voiceClip = (random_func( 1, 3, true ) + 1);
+	var voiceClip = (random_func( 1, 4, true ) + 1);
 	playVoiceClip("jump_" + string(voiceClip), denyVoiceClip);
 	// print(string(voiceClip) + " " + string(denyVoiceClip))
 }
 if (state == PS_DOUBLE_JUMP && state_timer == 0){
-	var voiceClip = (random_func( 1, 2, true ) + 1);
+	var voiceClip = (random_func( 1, 3, true ) + 1);
 	playVoiceClip("doublejump_" + string(voiceClip), denyVoiceClip);
 	// print(string(voiceClip) + " " + string(denyVoiceClip))
+}
+
+// intro thing
+if (state == PS_SPAWN){
+	if (state_timer == 20 + (playerNumDiff * 3)){
+		var voiceClip = (random_func( 1, 5, true ) + 1);
+		// print(voiceClip);
+		if (voiceClip == 1){
+			sound_play(vc_mario_ohyeah_2);
+		} else if (voiceClip == 2){
+			sound_play(vc_mario_i_got_it);
+		} else if (voiceClip == 3){
+			sound_play(vc_mario_herewego);
+		} else if (voiceClip == 4){
+			sound_play(vc_mario_letsago);
+		} else if (voiceClip == 5){
+			sound_play(vc_mario_wahoo_2);
+		}
+	}
 }
 
 // attack voices
@@ -191,7 +231,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hitpause){
 			|| attack == AT_FSPECIAL
 			){
 			if (state_timer == 1){
-				var voiceClip = (random_func( 1, 8, true ) + 1);
+				var voiceClip = (random_func( 1, 9, true ) + 1);
 				playVoiceClip("attack_" + string(voiceClip), denyVoiceClip);
 				//print(string(voiceClip) + " " + string(denyVoiceClip))
 			}
@@ -225,8 +265,10 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hitpause){
 			}
 			if (window == (2 + ((attack==AT_FSTRONG_2)?1:0)) && window_timer == 1){
 				sound_stop(vc_mario_strong_charge_1);
-				if (randomStrongChangeVC <= 3){//>
-					var voiceClip = (random_func( 1, 4, true ) + 1);
+				//print("randomChangeStrongVC: " + string(randomStrongChangeVC <= 3));
+				if (randomStrongChangeVC <= 4){//>
+					var voiceClip = (random_func( 1, 5, true ) + 1);
+					//print(voiceClip)
 					playVoiceClip("strong_" + string(voiceClip), playStrongVC);
 				} else {
 					if (attack == AT_FSTRONG || attack == AT_FSTRONG_2){
@@ -243,7 +285,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hitpause){
 		// taunt
 		if (attack == AT_TAUNT){
 			if (window == 1 && window_timer == 18){
-				var voiceClip = (random_func( 1, 5, true ) + 1);
+				var voiceClip = (random_func( 1, 6, true ) + 1);
 				if (voiceClip == 1){
 					playVoiceClip("yeah", denyVoiceClip);
 				} else if (voiceClip == 2){
@@ -254,6 +296,8 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hitpause){
 					playVoiceClip("yahoo", denyVoiceClip);
 				} else if (voiceClip == 5){
 					playVoiceClip("ohyeah", denyVoiceClip);
+				} else if (voiceClip == 6){
+					playVoiceClip("fantastico", denyVoiceClip);
 				}
 			}
 		}
@@ -266,7 +310,7 @@ if ((state == PS_HITSTUN && free) || (state == PS_HITSTUN_LAND && !free)){
 	// basic hurt sounds
 	if (state_timer == 1 && hurtVoiceClipAlreadyPlayed == false){
 		if (sprite_index == sprite_get("hurt") || sprite_index == sprite_get("hurtground")){
-			var voiceClip = (random_func( 1, 3, true ) + 1);
+			var voiceClip = (random_func( 1, 4, true ) + 1);
 			playVoiceClip("hurt_" + string(voiceClip), denyVoiceClip);
 			hurtVoiceClipAlreadyPlayed = true;
 		} else if (sprite_get("bighurt") || sprite_index == sprite_get("uphurt") || sprite_index == sprite_get("downhurt")){	// big hurt sounds

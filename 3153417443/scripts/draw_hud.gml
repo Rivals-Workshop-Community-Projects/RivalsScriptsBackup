@@ -34,3 +34,30 @@ with obj_article1 if player_id == other {
 }
 
 shader_end();
+
+if(move_cooldown[AT_NSPECIAL] > 0){
+draw_sprite_ext(sprite_get("bubicon"), 1, temp_x + 180, temp_y - 18, 1, 1, 0, c_white, 1);
+shake = false;
+shaketime = 0;
+}else{
+if shake = false{
+var rand = random_func_2(0, 5, true)
+if(rand <= 1){
+draw_sprite_ext(sprite_get("bubicon"), 0, temp_x + 180 + random_func_2(1, 4, true), temp_y - 18 + random_func_2(1, 4, true), 1, 1, 0, c_white, 1);
+}
+if(rand = 2){
+draw_sprite_ext(sprite_get("bubicon"), 0, temp_x + 180 - random_func_2(1, 4, true), temp_y - 18 - random_func_2(1, 4, true), 1, 1, 0, c_white, 1);
+}
+if(rand = 3){
+draw_sprite_ext(sprite_get("bubicon"), 0, temp_x + 180 - random_func_2(1, 4, true), temp_y - 18 + random_func_2(1, 4, true), 1, 1, 0, c_white, 1);
+}
+if(rand = 4){
+draw_sprite_ext(sprite_get("bubicon"), 0, temp_x + 180 + random_func_2(1, 4, true), temp_y - 18 - random_func_2(1, 4, true), 1, 1, 0, c_white, 1);
+}
+shaketime ++;
+}
+if ((shaketime = 12 && shake = false)) || shake = true{
+draw_sprite_ext(sprite_get("bubicon"), 0, temp_x + 180, temp_y - 18, 1, 1, 0, c_white, 1);
+shake = true;
+}
+}

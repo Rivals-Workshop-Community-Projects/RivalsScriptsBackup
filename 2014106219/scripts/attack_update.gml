@@ -10,7 +10,6 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 		can_special = true;
 	}
 }
-
 //DSpecial stuff
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_wall_jump = true;
@@ -28,38 +27,30 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 		}
 	}
 	/*
-	if shaboingboing && !has_hit {
+	if shaboingboing == 1 && !has_hit {
 		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 7);
 		} else {
 		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
 	}
 	*/
 	
-	if window == 2 && window_timer == 6 && free {
-			set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 17);
-			set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 23);
-	} else {
-			reset_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED);
-			reset_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED);	
+	if window == 5 && 5 > window_timer {
+		vsp = clamp(vsp, -100, 0);	
 	}
 	
-	if window == 4 && window_timer == 3 {
+	if window == 4 && window_timer == 4 {
 		if attack == AT_DSPECIAL {
 			hsp = clamp(hsp, -9, 9);	
 		}
 		if attack == AT_DSPECIAL_2 {
-			hsp = clamp(hsp, -10, 10);	
+			hsp = clamp(hsp, -11, 11);	
 		}
-	}
-	
-	if window == 5 && 5 > window_timer {
-		vsp = clamp(vsp, -100, 0);	
 	}
 	
 	if 2 >= window {
 		vsp = clamp(vsp, -100, 1);		
 	}
-	
+		
 	if window == 2 || window == 3 || window == 4 {
 		off_edge = true;
 	} else {
@@ -71,13 +62,13 @@ if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 	if window == 1 && 10 > window_timer && window_timer > 2 && (spr_dir == 1 && right_down || spr_dir == -1 && left_down) && !down_down {
 		set_attack(AT_DSPECIAL);
 		window = 1;
-		window_timer = 3;
+		window_timer = 5;
 		shaboingboing = 0;
 	}
 	can_wall_jump = true;
 	can_fast_fall = false;
 	can_move = false;
-	if (window == 3 || window == 4) && !free && !hitpause {
+	if (window == 3 || window == 4 || window == 5 && 4 > window_timer) && !free && !hitpause {
 		destroy_hitboxes();
 		sound_play(asset_get("sfx_zetter_downb"));
 		window = 6;
@@ -86,20 +77,18 @@ if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 		spawn_base_dust(x, y, "land");
 	}
 	
-	if window == 4 && window_timer == 3 {
+	if window == 4 && window_timer == 1 {
 		if attack == AT_DSPECIAL_AIR {
-			vsp = clamp(vsp, -11, 11);	
+			hsp = clamp(hsp, -3, 3);	
+			vsp = clamp(vsp, -8, 8);	
 		}
 		if attack == AT_DTHROW {
-			vsp = clamp(vsp, -18, 18);	
+			hsp = clamp(hsp, -4, 4);	
+			vsp = clamp(vsp, -10, 10);	
 		}
 	}
 	
 	if window == 5 {
-		if window_timer == 1 {
-			vsp = clamp(vsp, -100, 3);
-			hsp = clamp(hsp, -3, 3);
-		}
 		if !free && !was_parried {
 			set_state(PS_LANDING_LAG);
 		}
@@ -283,18 +272,29 @@ if (attack == AT_USTRONG_2) {
 	}
 }
 
-//NSpecial cooldown
-if (attack == AT_NSPECIAL) and (window == 7) and (window_timer == 3) {
-    move_cooldown[AT_NSPECIAL] = 45;
-	move_cooldown[AT_FSPECIAL] = 30;
-}
-//DSpecial cooldown
-if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) and (window == 5) and (window_timer == 14) {
-    move_cooldown[AT_DSPECIAL] = 50;
-	move_cooldown[AT_DSPECIAL_AIR] = 50;
+if (attack == AT_EXTRA_2) {
+	if window == 3 || window == 4 {
+		if (has_hit_player && !hitpause && hit_player_obj.super_armor == 0){
+		hit_player_obj.hsp = lerp(hit_player_obj.hsp,hsp,0.1);
+        hit_player_obj.vsp = lerp(hit_player_obj.vsp,vsp,-0.1);
+        hit_player_obj.x = lerp(hit_player_obj.x,x+20*spr_dir,0.1);
+        hit_player_obj.y = lerp(hit_player_obj.y,y,0.1);
+		}
+	}
 }
 
-if (attack == AT_DSPECIAL_AIR) and (window == 5 && window_timer == 14 || window == 6 && window_timer == 2) {
+//NSpecial cooldown
+if (attack == AT_NSPECIAL) and (window == 7) and (window_timer == 3) {
+    move_cooldown[AT_NSPECIAL] = 35;
+	move_cooldown[AT_FSPECIAL] = 15;
+}
+//DSpecial cooldown
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) and (window == 5) {
+    move_cooldown[AT_DSPECIAL] = 30;
+	move_cooldown[AT_DSPECIAL_AIR] = 30;
+}
+
+if (attack == AT_DSPECIAL_AIR) and (window == 5 || window == 6) {
     move_cooldown[AT_DSPECIAL] = 50;
 	move_cooldown[AT_DSPECIAL_AIR] = 50;
 }
@@ -458,11 +458,9 @@ if !hitpause {
 	if attack == AT_DSTRONG {
 		if window == 3 && window_timer == 3 {
 			spawn_base_dust(x-40*spr_dir, y, "dash_start", spr_dir);
-			spawn_base_dust(x+30*spr_dir, y, "dash",-spr_dir);
 		}
-		if window == 5 && window_timer == 3 {
+		if window == 5 && window_timer == 2 {
 			spawn_base_dust(x+30*spr_dir, y, "dash_start", -spr_dir);
-			spawn_base_dust(x-30*spr_dir, y, "dash", spr_dir);
 		}
 	}
 	if attack == AT_USTRONG && (window == 3) && window_timer == 1 {
@@ -489,13 +487,13 @@ if (attack == AT_TAUNT_2) and (window == 4) {
 	
 //sfx things because the window indexes kinda suck
 if 	(attack == AT_DTILT && window == 3 && window_timer == 2) {
-	sound_play(asset_get("sfx_zetter_shine"));
+	sound_play(sound_get("magicshoot2"));
 }
 
 if 	(attack == AT_EXTRA_3 && window == 3 && window_timer == 2) {
+	sound_play(sound_get("magicshoot3"));
 	sound_play(asset_get("sfx_absa_kickhit"));
 }
-
 
 //FSpecial angling
 if (attack == AT_FSPECIAL) and (3 > window) and !(joy_pad_idle) {
@@ -631,7 +629,7 @@ if (attack == AT_USTRONG) && !hitpause {
 }
 
 if (attack == AT_DSPECIAL_2 || attack == AT_DTHROW) {
-	if (window == 2 && window_timer == 6) {
+	if (window == 2 && window_timer == 5) {
 		if !hitpause {
 			spawn_hit_fx(x-14*spr_dir, y-22, 115);
 		}

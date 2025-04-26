@@ -1,3 +1,21 @@
+//fspec detection
+//count down
+if(right_buffer > 0) right_buffer--;
+if(left_buffer > 0) left_buffer--;
+
+//only reset if the direction is no longer held
+if(right_buffer == 0 && !(right_hard_pressed || right_pressed || right_down)) right_buffer = -1;
+if(left_buffer == 0 && !(left_hard_pressed || left_pressed || left_down)) left_buffer = -1;
+//trigger on hard press
+if(right_hard_pressed && right_buffer <= -1){
+    right_buffer = 7;
+}
+if(left_hard_pressed && left_buffer <= -1){
+    left_buffer = 7;
+}
+
+
+/* old fspec detection
 if(right_pressed){
     right_buffer = 6;
 }
@@ -6,7 +24,7 @@ if(left_pressed){
 }
 if(right_buffer > 0) right_buffer--;
 if(left_buffer > 0) left_buffer--;
-
+*/
 if get_player_color(player) == 7 {
     hue = (hue + hue_speed) % 255; //finds the hue and shifts it
     color_hsv = make_color_hsv(hue, 160, 245); //creates a new gamemaker colour variable using the shifted hue

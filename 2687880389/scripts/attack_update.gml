@@ -30,7 +30,7 @@ if (attack == AT_NSPECIAL_2) {
 	
 	if ((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
 		//sound_play(sound_get("horn_rotom"));
-		var boomerang_hitbox = create_hitbox(AT_NSPECIAL_2, 1, x + spr_dir * 30, y - 50);
+		var boomerang_hitbox = create_hitbox(AT_NSPECIAL_2, 1, x + spr_dir * 58, y - 44);
 		//var fthrow_hsp = intial_boomerang_throw_speed;
 		//var fthrow_vsp = 0;
 		var throw_angle = 0;
@@ -224,7 +224,7 @@ if ((attack == AT_NSPECIAL)
                     }
                     break;
                 case 2 :
-                    if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+                    if (window_timer == 2) {
 			            let_everyone_go();
 			        }
                 	break;
@@ -250,7 +250,7 @@ if ((attack == AT_NSPECIAL)
                     }
                     break;
                 case 5 :
-                    if (window_timer == 1) {
+                    if (window_timer == 2) {
 			        	//shake_camera(3, get_window_value(attack, window, AG_WINDOW_LENGTH));
 			            let_everyone_go();
 			        }
@@ -285,13 +285,13 @@ if ((attack == AT_NSPECIAL)
 														  false, noone, 1, 0.5);
 						sound_play(asset_get("sfx_absa_uair"),
 								   false, noone, 0.8, 0.7);
-                    } else if (window_timer == current_window_length) {
-			            let_everyone_go();
-			        }
+                    }
                     break;
                 case 3 :
 			        if (window_timer = 0) {
                 		shake_camera(8, get_window_value(attack, window, AG_WINDOW_LENGTH));
+			        } else if (window_timer == 2) {
+			            let_everyone_go();
 			        }
                     break;
                 default :
@@ -324,7 +324,7 @@ if ((attack == AT_NSPECIAL)
                 	if (window_timer == 0) {
                 		shake_camera(10, get_window_value(attack, window, AG_WINDOW_LENGTH));
 						sound_stop(current_effect_sound);
-                    } else if (window_timer == 1) {
+                    } else if (window_timer == 2) {
 						sound_stop(current_effect_sound);
             			let_everyone_go();
                     }
@@ -1100,7 +1100,7 @@ if (attack == AT_USTRONG_2) {
 	}
 
 	//if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-	if ((window == 3) && (window_timer == 1)) {
+	if ((window == 5) && (window_timer == 2)) {
 		sound_stop(current_effect_sound);
         let_everyone_go();
     }

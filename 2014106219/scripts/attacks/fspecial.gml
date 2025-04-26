@@ -57,6 +57,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

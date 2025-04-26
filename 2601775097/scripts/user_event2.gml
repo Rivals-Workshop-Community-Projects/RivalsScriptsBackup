@@ -97,18 +97,22 @@ switch (skill_script_type)
                     {
                         case 1: //up
                             if (cur_skill_hover - 4 >= 0) cur_skill_hover -= 4;
+                            else cur_skill_hover += 8;
                             sound_play(asset_get("mfx_move_cursor"));
                             break;
                         case 2: //right
                             if (cur_skill_hover + 1 <= 4 *skill[cur_skill_hover].skill_pos_y + 3) cur_skill_hover += 1;
+                            else cur_skill_hover -= 3;
                             sound_play(asset_get("mfx_move_cursor"));
                             break;
                         case 3: //down
                             if (cur_skill_hover + 4 <= 11) cur_skill_hover += 4;
+                            else cur_skill_hover -= 8;
                             sound_play(asset_get("mfx_move_cursor"));
                             break;
                         case 4: //left
-                            if (cur_skill_hover - 1 >= 4 * skill[cur_skill_hover].skill_pos_y) cur_skill_hover -= 1;;
+                            if (cur_skill_hover - 1 >= 4 * skill[cur_skill_hover].skill_pos_y) cur_skill_hover -= 1;
+                            else cur_skill_hover += 3;
                             sound_play(asset_get("mfx_move_cursor"));
                             break;
                         case -1: //confirm selection
@@ -167,7 +171,7 @@ switch (skill_script_type)
 
 
                                 //gives bar the MP to use the skill too
-                                if (mp_current < skill[cur_skill_hover].mp_use_cost) mp_current = skill[cur_skill_hover].mp_use_cost;
+                                if (mp_cur < skill[cur_skill_hover].mp_use_cost) mp_cur = skill[cur_skill_hover].mp_use_cost;
                                 menu_active = false;
                                 menu_controls(false);
                                 bar_pause(false);
@@ -214,7 +218,7 @@ switch (skill_script_type)
 
         //buttons
         if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), (menu_type == 2), menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
-        else draw_sprite_ext(sprite_get("hud_menu_buttons"), 2, menu_x, menu_y - 152, 2, 2, 0, c_white, 1);
+        else draw_sprite_ext(sprite_get("hud_menu_buttons"), 2, menu_x - 12, menu_y - 152, 2, 2, 0, c_white, 1);
 
         //practice text
         if (menu_type == 1)
@@ -301,8 +305,6 @@ switch (skill_script_type)
         break;
 }
 
-
-
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 
 //checks the skills themselves
@@ -349,11 +351,11 @@ switch (skill_script_type)
         //  if (skill_attack_air == -1) skill_attack_air = skill_attack;
 
         //attack_update.gml
-        //  if (window_timer == 1 && window == 2) mp_current -= mp_cost1; //initial cost
-        //  if (window_timer == 1 && window == 5) mp_current -= mp_cost2; //extra cost
+        //  if (window_timer == 1 && window == 2) mp_cur -= mp_cost1; //initial cost
+        //  if (window_timer == 1 && window == 5) mp_cur -= mp_cost2; //extra cost
 
         //update.gml
-        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_current);
+        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_cur);
     */
 }
 #define bar_pause(enable)
@@ -400,6 +402,7 @@ switch (skill_script_type)
 
             burnbuff_active = false;
             if (lightbuff_active) cancel_polaris = true;
+            hook_charge = 0;
         }
         else
         {
@@ -414,7 +417,7 @@ switch (skill_script_type)
             hitpause = false;
             hitstop = 0;
             hitstop_full = 0;
-            state_timer = got_gameplay_time;
+            state_timer = game_time;
 
             mp_gainable = true;
         }

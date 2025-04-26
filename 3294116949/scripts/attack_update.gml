@@ -82,7 +82,7 @@ if (attack == AT_DSPECIAL) {
 // }
 
 if(attack == AT_DSPECIAL_2){
-	if(window == 1 && window_timer == 2 && !hitpause && instance_exists(lamp) && lamp.state == 1){
+	if(window == 2 && window_timer == 1 && !hitpause && instance_exists(lamp) && lamp.state == 1){
 		lamp.state = 2;
 		lamp.state_timer = 0;
 	}
@@ -107,12 +107,12 @@ if (attack == (46)){ //Directional Whip Code (John Morris Castlevania Bloodlines
 }
 	
 if (attack == (AT_FSPECIAL)){
-    if (window <= 2 or window >= 5) {
+    if (window <= 2 or (window >= 5 && !axeless)) {
     	if (state_timer % 4 == 0){
       		instance_create(x , y, "obj_article3");
     	}
     }
-    if (window == 2){
+    if (window == 2 && !hitpause){
     	if(up_down){
     		vsp = -5;
     	} else if(down_down){
@@ -121,9 +121,9 @@ if (attack == (AT_FSPECIAL)){
     		vsp = 0;
     	}
     }
-    if(window == 3){
-    	vsp = min(vsp, 5);
-    }
+    // if(window == 3){
+    // 	vsp = min(vsp, 5);
+    // }
     // if (window == 3){
     // if (up_down){
     // 	vsp = -2;
@@ -135,6 +135,17 @@ if (attack == (AT_FSPECIAL)){
     // if (window==6){
     // 	lamp_bounce=false;
     // }
+}
+
+//AXELESS FIXES
+if (!axeless){
+	set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("alt_axe2"));
+	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -15);
+} else {
+	set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("alt_fspecial_hurt"));
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -45);
 }
 
 
@@ -408,13 +419,13 @@ if (attack == AT_DAIR) {
 		can_jump = true;
 		can_wall_jump = true;
 		can_shield = true;
-		if is_special_pressed( DIR_UP ){
+		if is_special_pressed( DIR_UP ) && (move_cooldown[AT_USPECIAL] < 1){
 			set_attack( AT_USPECIAL );
 			vsp = 0;
 		}
 	}
 	if(window == 4 && !hitpause && !free){
-		shake_camera(2,6);
+		shake_camera(4,8);
 		spawn_base_dust(x + 30 * spr_dir, y, "dash_start", -spr_dir)
 		destroy_hitboxes();
 		sound_play(asset_get("sfx_blow_heavy2"));
@@ -422,6 +433,14 @@ if (attack == AT_DAIR) {
 		sound_play(asset_get("sfx_kragg_spike"));
 		window++;
 		window_timer = 0;
+	}
+}
+
+if (attack == AT_FSTRONG) {
+	if(window == 4 && window_timer == 8 && !hitpause){
+		shake_camera(4,8);
+		spawn_base_dust(x + 60 * spr_dir, y, "dash_start", -spr_dir)
+		sound_play(asset_get("sfx_blow_heavy2"));
 	}
 }
 
@@ -437,6 +456,8 @@ if (attack == AT_USTRONG) {
 	}
 }	
 
+/* 
+//DSTRONG SPIN CHARGE
 if(attack == AT_DSTRONG){
 	can_move = false;
 	if(window == 2) spin_count = round(strong_charge/20);
@@ -457,8 +478,11 @@ if(attack == AT_DSTRONG){
 		spawn_base_dust(x + 30 * spr_dir, y, "dash_start", -spr_dir)
 		spawn_base_dust(x + 30 * -spr_dir, y, "dash_start", spr_dir)
 	}
+	if window == 5 && window_timer == 2{
+		sound_play(asset_get("sfx_swipe_medium1"));
+	}
 	if(window == 6 && hitpause) shake_camera( 6, 2);
-}
+}*/
 
 //Down Strong Shenanigans
 // if (attack == AT_DSTRONG) {
@@ -515,6 +539,19 @@ if(attack == AT_DSTRONG){
 // 	}
 // }
 
+if (attack == AT_DSPECIAL){
+	if ((window == 1) && window_timer == 14) && (vsp > 12){
+		airstall = 1;
+	}
+}
+
+if (attack == AT_DSPECIAL) && (airstall == 1){
+	//if (airstall_timer <= 4){
+		vsp *= 0.7;
+		hsp *= 0.7;
+	//}
+}
+
 if(attack == AT_FAIR){
 	if(hitpause && has_hit && !did_hit && !fast_falling){
 		did_hit = true;
@@ -529,6 +566,15 @@ if(attack == AT_FAIR){
 			has_hit = false;
 			did_hit = false
 		}
+	}
+}
+
+
+if (attack == AT_DSTRONG){
+	if (window == 4 && window_timer == 5){
+		sound_play(asset_get("sfx_rag_axe_swing"));
+		spawn_base_dust(x + 30 * spr_dir, y, "dash_start", -spr_dir)
+		spawn_base_dust(x + 30 * -spr_dir, y, "dash_start", spr_dir)
 	}
 }
 
@@ -588,14 +634,21 @@ if (attack == AT_FSPECIAL) {
         }
     	
     }
-    if window == 3 vsp = min(vsp, 3)
+    if window == 3 if vsp > 0 vsp *= .7;
 }
+
 if (attack == AT_FSPECIAL){
-	if (free){
+	if (free && !fspec_grounded){
+	move_cooldown[AT_FSPECIAL] = 99999;
+	} else if(free && fspec_grounded){
 	move_cooldown[AT_FSPECIAL] = 50;
-	} else{
+	} else {
 	move_cooldown[AT_FSPECIAL] = 30;
-	fspec_grounded = true;
+	if(window == 1 || window == 3) fspec_grounded = true;
+	}
+	if(window == 2) {
+		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH);
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH) + 4 * (fspec_grounded && free));
 	}
 	if has_hit || !free || fspec_grounded set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 	else set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);

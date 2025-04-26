@@ -3,6 +3,10 @@ if("should_make_shockwave" not in hit_player_obj)hit_player_obj.should_make_shoc
 if("activated_kill_effect" not in hit_player_obj)hit_player_obj.activated_kill_effect = false;
 if(my_hitboxID.hitstun_factor < 0)hit_player_obj.should_make_shockwave = false;
 
+//extra hitpause and shake code
+extrahitpauseon = my_hitboxID.type==1?true:false;
+shaketarget = hit_player_obj;hitpausesetpos = true;hitpausecap = 40;shakecap = 50;
+
 //hitboxes that cause custom fire status effect
 if(my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num != 7 || my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2){
 	if(!hit_player_obj.sol_burn){
@@ -36,6 +40,8 @@ if(my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num >= 5 && my_hitboxID.
 	}
 }
 
+if(my_hitboxID.attack == AT_DSTRONG)set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 16);
+
 if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	sound_play(sound_get("laser shot hit"),false,noone,1.0);
 }
@@ -55,6 +61,11 @@ if(my_hitboxID.attack == AT_FAIR){
 if(my_hitboxID.attack == AT_BAIR){
 	if(my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5)sound_play(asset_get("sfx_zetter_upb_hit"),false,noone,1.0);
 	if(my_hitboxID.hbox_num <= 3)hit_player_obj.should_make_shockwave = false;
+	
+	set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 120);set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 60);
+	set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 120);set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 60);
+	set_hitbox_value(AT_BAIR, 3, HG_WIDTH, 120);set_hitbox_value(AT_BAIR, 3, HG_HEIGHT, 60);
+	set_hitbox_value(AT_BAIR, 4, HG_WIDTH, 120);set_hitbox_value(AT_BAIR, 4, HG_HEIGHT, 80);
 }
 
 if(my_hitboxID.attack == AT_UAIR){
@@ -63,6 +74,8 @@ if(my_hitboxID.attack == AT_UAIR){
 		if(!hit_player_obj.free && !hit_player_obj.freemd){
 			hit_player_obj.y += 2;hit_player_obj.free = false;
 		}
+		set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 65);set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 105);
+		set_hitbox_value(AT_UAIR, 6, HG_WIDTH, 70);set_hitbox_value(AT_UAIR, 6, HG_HEIGHT, 105);
 	}else if(my_hitboxID.hbox_num == 5){
 		hit_player_obj.should_make_shockwave = false;hit_player_obj.y -= 25;
 		hit_player_obj.old_hsp = old_hsp;//hit_player_obj.old_vsp = old_vsp;
@@ -148,9 +161,12 @@ if(hit_player_obj.should_make_shockwave){
 	    	with(other){rouge = true;}
 		}else if(string_count("Chaos 0", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Chaos Zero", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){chaos = true;}
-		}else if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self){
+		}else if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribbit", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribble", string( get_char_info(player, INFO_STR_NAME) )) > 0
+		|| string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self
+		|| string_count("Frog", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ranno", string( get_char_info(player, INFO_STR_NAME) )) > 0 
+		|| string_count("Keroro", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Croagunk", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){based_frog = true;}
-		}else if(string_count("skycrafter", string_lower(get_player_name(player))) > 0 || string_count("Bar Reygard", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Amber", string( get_char_info(player, INFO_STR_NAME) )) > 0){
+		}else if(string_count("skycrafter", string_lower(get_player_name(player))) > 0 || string_count("Rat", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Bar Reygard", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Amber", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){yucky_rat = true;}
 		}
 	}

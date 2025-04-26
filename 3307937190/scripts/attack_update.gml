@@ -5,6 +5,21 @@ custom_attack_grid();
 //B-reverse - it allows the character to turn in while using specials
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+if (attack == AT_JAB) {
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    } else {
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+    }
+}
+
 switch (attack)
 {
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
@@ -30,6 +45,9 @@ switch (attack)
 			}
 			has_hit = false;
 			has_hit_player = false;
+		}
+		if (window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(asset_get("sfx_frog_dstrong"), false, noone, 1, 1.15);
 		}
 		break;
 	case AT_DATTACK:
@@ -59,6 +77,36 @@ switch (attack)
 		if(window == 3)
 			set_attack_value(attack, AG_CATEGORY, 1);
 		break;
+	case AT_FTILT:
+		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(asset_get("sfx_frog_dstrong"), false, noone, 1, 1.15);
+		}
+	break;
+	case AT_BAIR:
+		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(asset_get("sfx_frog_ustrong"), false, noone, 0.8, 1.2);
+		}
+	break;
+	case AT_FSTRONG:
+		if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(asset_get("sfx_frog_fstrong"), false, noone, 0.9, 1.1);
+		}
+	break;
+	case AT_USTRONG:
+		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(asset_get("sfx_frog_dstrong"), false, noone, 0.9, 1.1);
+		}
+	break;
+	case AT_DSTRONG:
+		if (window == 4 && window_timer == 1 && !hitpause){
+			sound_play(sound_get("ink_dstrong"), false, noone, 0.7, 1.25);
+		}
+		break;
+	case AT_JAB:
+	if (window == 9 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+		sound_play(asset_get("sfx_frog_ustrong"), false, noone, 0.8, 1.2);
+	}
+	break;
 	/////////////////////////////////////////////// SPECIALS ///////////////////////////////////////////////
     //
 	case AT_FSPECIAL:
@@ -71,16 +119,24 @@ switch (attack)
 		}
 		if(window == 1 && window_timer == 11)
 		{
-			sound_play(asset_get("sfx_orca_soak"),false,noone,1,2);
+			sound_play(asset_get("sfx_frog_nspecial_shove"),false,noone,1,2);
+			sound_play(asset_get("sfx_swish_medium"),false,noone,1,1);
 		}
 		break;
 	case AT_USPECIAL:
 		can_fast_fall = false;
 		can_wall_jump = true;
-		if(window == 1 && window_timer == 8)
+		if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
 		{
-			sound_play(asset_get("sfx_shovel_swing_heavy1"),false,noone,1.4);
-			sound_play(asset_get("sfx_ori_charged_flame_release"),false,noone,1,1.1);
+			sound_play(sound_get("ink_burst"),false,noone,0.5, 1.2);
+			sound_play(asset_get("sfx_frog_fstrong"),false,noone,0.7,1.1);
+		}
+
+		if(window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
+		{
+			//sound_play(sound_get("ink_burst"),false,noone,0.5, 1.2);
+			sound_play(sound_get("ink_burst"),false,noone,0.5, 1.3);
+			sound_play(asset_get("sfx_frog_ustrong"),false,noone,0.7,1.2);
 		}
 
 		if (window == 1) 
@@ -101,7 +157,9 @@ switch (attack)
 		if(window == 1 && window_timer == window_end)
 		{
 			sound_play(asset_get("sfx_blow_weak1"),false,noone,1,2);
-			sound_play(asset_get("sfx_orca_absorb"),false,noone,1,2);
+			sound_play(asset_get("sfx_frog_fspecial_fire"),false,noone,1);
+			sound_play(asset_get("sfx_ell_utilt_retract"),false,noone,0.6, 1.5);
+			sound_play(asset_get("sfx_frog_ustrong"), false, noone, 0.8, 1.2);
 			hbox = create_hitbox(AT_DSPECIAL, 1, x+16*spr_dir, y-54);
 			hbox.ink_hold = ink_hold;
 			hbox.ink_apply = true;
@@ -124,7 +182,7 @@ switch (attack)
 		}
 		break;
 	case AT_NSPECIAL:
-		move_cooldown[AT_NSPECIAL] = 40;
+		move_cooldown[AT_NSPECIAL] = (window <=3 ? 10:40);
 		if(state_timer <= 1 && !past_nspec_used) 
 			past_ff_nspec = false;
 		else if(state_timer < 5 && down_down)
@@ -134,8 +192,13 @@ switch (attack)
 		if(window <= 3)
 		{
 			reset_attack_value(attack, AG_NUM_WINDOWS);
-			if(window == 1 && window_timer == 6)
+			if (window == 1 && window_timer == 4 && !hitpause){
+				sound_play(sound_get("ink_dstrong"), false, noone, 0.75, 1.25);
+			}
+			if(window == 1 && window_timer == 6){
+				sound_play(asset_get("sfx_frog_ustrong"), false, noone, 0.8, 1.2);
 				sound_play(asset_get("sfx_zetter_fireball_fire"),false,noone,1,1.1)
+			}
 			else if(window == 2) 
 			{
 				can_fast_fall = false;
@@ -163,6 +226,8 @@ switch (attack)
 				if (window_timer == window_end)
 				{
 					sound_play(asset_get("sfx_ice_shatter"),false,noone,2)
+					sound_play(asset_get("sfx_frog_dstrong"), false, noone, 0.9, 1.25);
+					sound_play(asset_get("sfx_orca_snow_evaporate"), false, noone, 0.8, 1.5);
 					hbox = create_hitbox(AT_NSPECIAL, 2, x+64*spr_dir, y-30);
 					hbox.ink_hold = 1;
 					hbox.ink_apply = true;
@@ -202,6 +267,7 @@ switch (attack)
 				}
 				if(window_timer == 1)
 				{
+					sound_play(asset_get("sfx_frog_nspecial_shove"),false,noone,0.45,2.4);
 					if(thunder_hbox != noone)
 					{
 						with(thunder_hbox)
@@ -231,6 +297,7 @@ switch (attack)
 		//if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); //put hud away
 		//if (window == window_last && window_timer == window_end-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
 		break;
+		
 }
 
 
@@ -310,6 +377,7 @@ switch (attack)
 
 //written by supersonic, modified by bar-kun
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0, angle = 0, win = -10, win_time = 0)
 {
     // spawn_base_dust(x, y, name)
     // spawn_base_dust(x, y, name, ?dir, ?angle, ?window, ?window_timer)

@@ -109,3 +109,35 @@ with (oPlayer) if (other.fs_trapped_player[player]) with (other) //stun
 {
     draw_sprite_ext(sprite_get("fx_fs_stun"), state_timer/2 + (10 * other.player), other.x, floor(other.y - char_height / 1.75), 2, 2, 0, c_white, 1);
 }
+
+if (object_index == oTestPlayer) //playtest boost meter
+{
+    var x_size = 80;
+    var meter_r = cur_colors[boost_mode ? 0 : 1][@ 0];
+    var meter_g = cur_colors[boost_mode ? 0 : 1][@ 1];
+    var meter_b = cur_colors[boost_mode ? 0 : 1][@ 2];
+    var meter_col = make_color_rgb(meter_r, meter_g, meter_b);
+
+    if (room != asset_get("network_char_select") && room != asset_get("workshop_room"))
+    {
+        var small_meter_x = floor(x)-94;
+        var small_meter_y = floor(y)-100;
+        if (x < 100) small_meter_x = 100-94;
+        if (x > 860) small_meter_x = 860-94;
+        if (y > 466) small_meter_y = 466-100;
+        if (y < 148) small_meter_y = 148-100;
+    }
+    else
+    {
+        var small_meter_x = 6;
+        var small_meter_y = clamp(floor(y)-96, 48, 320);
+    }
+
+    draw_sprite_stretched_ext(sprite_get("hud_meter_fill"), 1, small_meter_x + 4, small_meter_y + 6, x_size, 8, c_black, 0.5); //back
+    if (boost_cur > 0) //fill
+    {
+        draw_sprite_stretched_ext(sprite_get("hud_meter_fill"), 0, small_meter_x + 4, small_meter_y + 6, lerp(0, 1, boost_cur/boost_max) * x_size, 8, meter_col, 1);
+        draw_sprite_ext(sprite_get("hud_meter_fill"), 1, small_meter_x + 4 + lerp(0, 1, boost_cur/boost_max) * x_size, small_meter_y + 6, 2, 1, 0, c_white, 0.5);
+    }
+    draw_sprite_ext(sprite_get("hud_boost_playtest"), 0, small_meter_x - 4, small_meter_y, 2, 2, 0, c_white, 1); //meter box
+}

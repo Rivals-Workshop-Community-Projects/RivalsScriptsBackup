@@ -769,8 +769,9 @@ if (attack == AT_UAIR){
 
       if (window_timer >= uair_window_length*0.8){
         //Scale back breaker damage
-        backbreaker_damage = min(backbreaker_damage+1, 12);
-        set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, backbreaker_damage);
+        // But actually don't though
+        //backbreaker_damage = min(backbreaker_damage+1, 12);
+        set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 6);
         window_timer = 0;
 
       }
@@ -1272,9 +1273,9 @@ if (attack == AT_USPECIAL){
     // add afterimages to an array
     if uspecial_afterimage_timer % 5 == 0 {
       array_push(uspecial_last_positions, [sprite_index,image_index,x, y,spr_dir,uspecial_afterimage_timer, afterimage_colour]);
-        if alt_palette == 18 { // Riptide
-            riptide_after_index = (riptide_after_index + 1) % 3
-            afterimage_colour = riptide_colours[riptide_after_index]
+        if activate_multicolour { // Tournament (Vortex, Riptide, etc)
+            multicolour_after_index = (multicolour_after_index + 1) % 3
+            afterimage_colour = multicolour_colours[multicolour_after_index]
         }
     }
 
@@ -1285,9 +1286,9 @@ if (attack == AT_USPECIAL){
 
     // Increase spin speed over time
     uspecial_spin_speed = max(8, uspecial_spin_speed-0.38);
+    uspecial_spin_timer = min(uspecial_spin_timer + 1, uspecial_spin_max_time);
     set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, max(8, floor(uspecial_spin_speed)));
     window_timer = min(window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH));
-
 
     var uspecial_eighth = uspecial_window_length / 8;
 
@@ -1309,14 +1310,15 @@ if (attack == AT_USPECIAL){
     //increment window when landing and adjust power
     if (vsp >= 0 && !free){
       // spin speed ranges from about 15 (slow) to 9 (very fast)
-      //formula will produce values from 1 to 1.88
-      var kb_formula = max(0.95, 0.93*(1.81 - (uspecial_spin_speed - 9.5)/7));
+      // old formula
+      //var kb_formula = max(0.95, 0.93*(1.81 - (uspecial_spin_speed - 9.5)/7));
 
-      // exponential version (if desired)
-      //var kb_formula = max(1.15, power(1.73 - (uspecial_spin_speed - 9.5)/7, 1.34));
+      // updated formula
+      var new_formula = min(1.6, (0.71 + max(0.17, power(uspecial_spin_timer/36, 4))))
+      //print("hp_f: "+string(hp_formula)+", timer: " + string(uspecial_spin_timer))
 
-      set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, kb_formula);
-      set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, kb_formula);
+      set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, new_formula);
+      set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, new_formula);
       if grab_victim.is_a_La_Reina_chair {
         set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 12);
       } else {
@@ -1484,7 +1486,7 @@ if (attack == AT_DSPECIAL_2){
   }
 
   if (window == 5 && window_timer == 4){
-    move_cooldown[AT_NSPECIAL] = 14;
+    move_cooldown[AT_NSPECIAL] = max(30, move_cooldown[AT_NSPECIAL]);
   }
 
 }//End of Dspecial 2

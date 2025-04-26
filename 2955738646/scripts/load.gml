@@ -1,4 +1,8 @@
-set_victory_theme( sound_get( "victory" ));
+
+if (get_player_color(player) != 8) { set_victory_theme( sound_get( "victory" )); }
+if (get_player_color(player) == 8) { set_victory_theme( sound_get( "EA_victory" )); }
+
+set_victory_bg( sprite_get( "victory_screen" ));
 
 sprite_change_offset("idle", 64, 108);
 sprite_change_offset("mecha_hurt", 22, 88);
@@ -23,6 +27,7 @@ sprite_change_offset("pratfall", 62, 98);
 sprite_change_offset("land", 64, 108);
 sprite_change_offset("landinglag", 64, 108);
 sprite_change_offset("landinglag2", 64, 108);
+sprite_change_offset("land2", 64, 108);
 
 sprite_change_offset("boosters_light", 35, 30);
 sprite_change_offset("boosters", 35, 30);
@@ -46,9 +51,13 @@ sprite_change_offset("dtilt2", 64, 94);
 sprite_change_offset("utilt", 64, 108);
 sprite_change_offset("nair", 64, 94);
 sprite_change_offset("fair", 64, 102);
+sprite_change_offset("fair_land", 64, 108);
 sprite_change_offset("bair", 84, 114);
+sprite_change_offset("bair_land", 84, 108);
 sprite_change_offset("uair", 64, 94);
+sprite_change_offset("uair_land", 56, 105);
 sprite_change_offset("dair", 62, 101);
+sprite_change_offset("dair_land", 62, 110);
 sprite_change_offset("fstrong", 64, 108);
 sprite_change_offset("fstrong_explode", 50, 120);
 sprite_change_offset("fstrong_burst_tail", 0, 80);
@@ -67,8 +76,9 @@ sprite_change_offset("fspecial", 98, 108);
 sprite_change_offset("fspecial2", 68, 112);
 sprite_change_offset("fspecial_followup", 40, 80);
 sprite_change_offset("fspecial_charged", 65, 86);
-sprite_change_offset("fspecial2_afterimage", 68, 112);
 sprite_change_offset("fspecial_charge", 64, 120);
+sprite_change_offset("fspecial2_afterimage", 26, 104);
+sprite_change_offset("fspecial3", 52, 104);
 sprite_change_offset("uspecial", 68, 107);
 sprite_change_offset("uspecial_ground", 64, 158);
 sprite_change_offset("uspecial_ground4", 76, 396);
@@ -86,11 +96,33 @@ sprite_change_offset("target_indicator", 5, 48);
 sprite_change_offset("target_numbers", -14, 49);
 sprite_change_offset("dspecial", 68, 108);
 sprite_change_offset("dspecial_ground", 64, 114);
+sprite_change_offset("dspecial_ground_outline", 64, 114);
+sprite_change_offset("dspecial_ground_outline2", 64, 114);
 sprite_change_offset("dspecial_wall", 54, 102);
 sprite_change_offset("dspecial_burst_tail", 0, 70);
 sprite_change_offset("dspecial_burst_trail_end", 160, 160);
 sprite_change_offset("taunt", 64, 108);
 sprite_change_offset("taunt1", 64, 108);
+sprite_change_offset("taunt_transform", 60, 108);
+
+sprite_change_offset("afterimage_charge", 68, 112);
+
+sprite_change_offset("arrow", 26, 28);
+sprite_change_offset("lighspeed_orb", 12, 12);
+//sprite_change_offset("lighspeed_line", 40, 80);
+sprite_change_offset("lighspeed_line", 8, 60);
+
+sprite_change_offset("shine", 36, 60);
+
+sprite_change_offset("intro0", 180, 114);
+sprite_change_offset("intro1", 64, 64);
+sprite_change_offset("intro2", 68, 62);
+sprite_change_offset("intro3", 64, 64);
+sprite_change_offset("intro4", 64, 64);
+sprite_change_offset("intro5", 64, 64);
+sprite_change_offset("intro6", 64, 64);
+sprite_change_offset("intro7", 64, 64);
+sprite_change_offset("intro8", 64, 64);
 
 sprite_change_offset("shockwave", 30, 0);
 sprite_change_offset("taunt_aura", 0, 14);

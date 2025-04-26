@@ -51,7 +51,7 @@ short_hop_speed = 6.5;
 djump_speed = 10;
 leave_ground_max = 5.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 6.0; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -68,10 +68,10 @@ hitstun_grav = .45;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 8;
+prat_land_time = 15;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = .12; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -133,6 +133,7 @@ wall_frames = 2;
 
 
 has_used_uspecial = false // true when already used uspecial. Reset when touching the ground
+has_used_dspecial = false // similar to the above, but for dspecial instead
 has_runeg_uspecial = false;
 
 uspe_cooldown = 0; // cooldown to wait for another uspecial no matter what
@@ -145,9 +146,15 @@ uspe_cooldown_ref = 10;
 // nspecial 2
 nspecial2_timer = 0;
 nspe2_rot = 0; // angle to reapplie to nspecial
+arrow_col = get_player_hud_color(player); //for nspec2 arrow
 
-// dspecial
-dspe_list = ds_list_create(); // liste keeping the dspe article
+//dspecial trail variable
+//replace the '22' with how long you want the hit effect to last for this function
+
+trail_sparkle = hit_fx_create(sprite_get("sparkle"), 22);
+
+// OLD dspecial (no longer used)
+/*dspe_list = ds_list_create(); // liste keeping the dspe article
 
 if (!has_rune("C"))
 {
@@ -157,6 +164,7 @@ else
 {
     max_dspe_card = 3;
 }
+*/
 
 // The Chosen One Support
 
@@ -202,10 +210,15 @@ ncode3 = "outside reality. Exercise extreme caution."
 pkmn_stadium_front_img = sprite_get("pokemon_sprite_front");
 pkmn_stadium_back_img = sprite_get("pokemon_sprite_back");
 
-// KIRBY
+// KIRBY (Custom Ability)
 kirbyability = 16;
 enemykirby = noone; // by doing this it will stop _my side_ from spamming error messages to the log
 swallowed = 0; // changed swallowed implementation to fix error message as well
+
+// Po & Gumbo
+
+pot_compat_variable = sprite_get("sakeplate");
+pot_compat_text = "Saké";
 
 // entrance
  has_enter = false;
@@ -266,11 +279,8 @@ dash_to_use = dash_effect_upfront;
 dspe_stall = 0;
 fspe_stall = 0;
 
-// Wall-E Support
-walle_taunt_sound = sound_get("spring_lane");
-walle_taunt_type = 1;
 
-// FUMO
+// FUMO (april fools mode)
 is_fumo = false;
 
 if (is_fumo)
@@ -291,4 +301,33 @@ if (is_fumo)
 }
 
 
-trainingMode = 0
+trainingMode = 0;
+
+// Final Smash Buddy
+AT_FINAL_SMASH = 49;
+fs_char_portrait_y = 81;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = AT_FINAL_SMASH;
+//fs_force_fs = true;
+
+//Fantasy Nature - Built off of JPEG's Danmakubert---------------------------------------------------
+//constants for the first rotation
+angle_adjust = 0; //used for accelerating rotation
+emit_center = [0, -25];
+length = 30; //distance from the center to spawn at
+
+emit_angle = -4.5; //angle to spawn at
+emit_angle_add = 6; //adds angle_adjust every frame
+emit_point = [length, emit_center[1]]; //point to spawn at
+
+
+//constants for the second rotaiton
+angle_adjust2 = 0;
+emit_center2 = [0, -25];
+length2 = 30;
+
+emit_angle2 = -4.5;
+emit_angle_add2 = -8;
+emit_point2 = [length2, emit_center2[1]];
+
+hfx_spawn = hit_fx_create( sprite_get( "nothing" ), 6 );

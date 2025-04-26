@@ -9,7 +9,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 13;
+var num_alts = 19;
 var alt_cur = get_player_color(player);
  
  
@@ -29,9 +29,12 @@ alt_name[9]  = "Lofi";
 alt_name[10] = "Obama";
 alt_name[11] = "Grand Dad";
 alt_name[12] = "Yuuka";
-alt_name[13] = "woag";
-alt_name[14] = "woag";
-alt_name[15] = "woag";
+alt_name[13] = "Serene";
+alt_name[14] = "Nua Kouzui";
+alt_name[15] = "Reverence";
+alt_name[16] = "Riptide";
+alt_name[17] = "Vortex Gallery";
+alt_name[18] = "Rainbow";
  
  
 //Patch

@@ -112,10 +112,14 @@ bubble_x = 0;
 bubble_y = 8;
 
 //knockback for grenade sweetspots
-ftilt_g_knockback = 8.5;
-ftilt_g_scaling = 1.1;
+ftilt_g_knockback = 9;
+ftilt_g_scaling = 1.15;
 bair_g_knockback = 8.5;
 bair_g_scaling = 1.1;
+aerial_trap_angle = 90;
+aerial_trap_knockback = 8
+aerial_trap_scaling = 0.8
+trap_angle = 90;
 trap_knockback = 8.5;
 trap_scaling = 1.1;
 
@@ -157,9 +161,9 @@ THROW_HOLD_SPEED_COVER = 10;
 
 COVER_GRENADE_COOLDOWN = 120;
 
-ex_y_off_air = 22;
+ex_y_off_air = -3;
 ex_y_off_ground = 25;
-ex_x_off_air = 2;
+ex_x_off_air = 0;
 ex_x_off_ground = 0;
 
 grenade_angle = 0; //angle between grenade and player
@@ -241,7 +245,7 @@ DAIR_CAN_CANCEL = 200;
 DAIR_FALL_CANCEL = 35;
 
 //taunt variables
-taunt_speed = 1.7;
+taunt_speed = 2;
 taunt = false;
 
 //dattack variables

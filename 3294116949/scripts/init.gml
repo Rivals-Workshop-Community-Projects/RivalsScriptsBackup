@@ -10,6 +10,9 @@ can_wall_cling = true;
 walljump_timer = 0;
 did_hit = false;
 
+airstall = 0;
+airstall_timer = 0;
+
 uspec_bounce = true;
 fennek_uspec_grab = noone;
 uspec_grabbed_lamp = false;
@@ -26,6 +29,7 @@ fspec_grounded = false;
 
 //Article variable pls dont delete
 axe=noone;
+axeless=false;
 axe_should_die=false;
 can_catch_axe=false;
 axe_has_hit=false;
@@ -37,7 +41,43 @@ lamp = noone;
 
 sparks1 = hit_fx_create( sprite_get( "sparks1" ), 16 );
 sparks2 = hit_fx_create( sprite_get( "sparks2" ), 16 );
+lanterntrail = hit_fx_create( sprite_get( "fire_trail" ), 16 );
 
+axeless_sprite_name_list = [
+    "airdodge",
+    "bighurt",
+    "crouch",
+    "dashstart",
+    "dashstop",
+    "dashturn",
+    "dash",
+    "doublejump",
+    "fspecial",
+    "hurt",
+    "hurtground",
+    "idle",
+    "jumpstart",
+    "jump",
+    "landinglag",
+    "land",
+    "nspecial2",
+    "parry",
+    "pratfall",
+    "roll_backward",
+    "roll_forward",
+    "tech",
+    "walkturn",
+    "walk",
+    "walljump",
+    "waveland"
+];
+with_axe_sprites = [];
+no_axe_sprites = [];
+
+for(var i = 0; i < array_length(axeless_sprite_name_list); i++){
+    array_push(with_axe_sprites, sprite_get(axeless_sprite_name_list[i]));
+    array_push(no_axe_sprites, sprite_get("alt_" + axeless_sprite_name_list[i]));
+}
 
 //COMMAND (TEST)
 item = 0;
@@ -98,8 +138,8 @@ crouch_active_frames = 4;
 crouch_recovery_frames = 1;
 
 //parry animation frames
-dodge_startup_frames = 3;
-dodge_active_frames = 3;
+dodge_startup_frames = 1;
+dodge_active_frames = 2;
 dodge_recovery_frames = 3;
 
 //tech animation frames
@@ -134,6 +174,7 @@ waveland_sound = asset_get("sfx_waveland_zet");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
+set_victory_theme ( sound_get( "fennek_victory" ));
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

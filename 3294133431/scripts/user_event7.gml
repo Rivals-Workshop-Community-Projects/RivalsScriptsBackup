@@ -6,6 +6,9 @@ with(oPlayer)
 	//	print(image_number);
 	//TODO: fix this is different for base cast, so need to manually animate during disguise
 	
+	if(get_match_setting(SET_RUNES) && other.player != self.player)
+		continue;
+
 	if(other.playerSmallSprites[player-1] == noone)
 	{
 		other.playerSmallSprites[player-1] = small_sprites;

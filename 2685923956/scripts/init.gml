@@ -50,10 +50,10 @@ max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .3;
 hitstun_grav = 0.45;
-knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 12;
+prat_land_time = 25;
 wave_land_time = 8;
 wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .03; //grounded deceleration when wavelanding
@@ -126,7 +126,10 @@ eye3_hfx = hit_fx_create( sprite_get("dspecial_eye3"), 40 )
 sparkles1 = hit_fx_create( sprite_get("sparkles1"), 9 )
 sparkles2 = hit_fx_create( sprite_get("sparkles2"), 9 )
 sparkles3 = hit_fx_create( sprite_get("sparkles3"), 9 )
+windy = hit_fx_create( asset_get("hfx_part_wind"), 9 )
 eye_hfx_storage = -4; //this didnt work
+eye_hfx_storage_taketwo = -4;
+eye_hfx_y_store = 0;
 set_victory_bg(sprite_get("victorybg"));
 set_victory_theme(sound_get("jirachi_victory"));
 alt_init = false;
@@ -140,10 +143,14 @@ dstr_counter = 0; //used for decreasing height
 ustr_used = false;
 fsp_used = false;
 doomdesire_storage = -4;
-doomdesire_cooldown_amount = 600;
+doomdesire_cooldown_amount = 1000;
+doomdesire_cooldown_hit_into_amount = 1000;
+doomdesire_cooldown_broken_amount = 1000;
 dstr_used = false;
 dstr_turned = false;
 dsp_got_parried = false;
+str_stall_max = 20;
+str_stall = 0; //timer for strong airstall shared by all strongs
 
 //- - - - - compats
 

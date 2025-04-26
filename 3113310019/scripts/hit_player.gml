@@ -19,6 +19,11 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 	destroyed = true;
 }
 
+if (my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 1){
+	create_hitbox( 49, 2, (my_hitboxID.x),(my_hitboxID.y - 24) );
+	destroyed = true;
+}
+
 if (my_hitboxID.attack == AT_FSPECIAL){
 	if (!hit_player_obj.super_armor && hit_player_obj.soft_armor == 0) && (!hit_player_obj.clone){
 		melonpult_fspecial_grabbed = hit_player_obj.id;
@@ -35,7 +40,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 			melonpult_fspecial_grabbed.y = floor(y) - 16;
 		} else if (my_hitboxID.hbox_num == 4){
 			window_timer = 0;
-			melonpult_fspecial_grabbed.x = floor(x) + (130 * spr_dir);
+			melonpult_fspecial_grabbed.x = floor(x) + (126 * spr_dir);
 			melonpult_fspecial_grabbed.y = floor(y) - 16;
 		}
 	}

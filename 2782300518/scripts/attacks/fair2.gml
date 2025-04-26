@@ -48,8 +48,9 @@ set_hitbox_value(43, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(43, 1, HG_KNOCKBACK_SCALING, .75)
 set_hitbox_value(43, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(43, 1, HG_HITPAUSE_SCALING, .75);
-set_hitbox_value(43, 1, HG_VISUAL_EFFECT, hit_large);
-set_hitbox_value(43, 1, HG_HIT_SFX, sound_get("hit_heavy"));
+set_hitbox_value(43, 1, HG_VISUAL_EFFECT, hit_medium);
+set_hitbox_value(43, 1, HG_HIT_SFX, sound_get("hit"));
+set_hitbox_value(43, 1, HG_MUNO_HITBOX_MISC_ADD, "Sourspot");
 
 set_hitbox_value(43, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(43, 2, HG_HITBOX_GROUP, 1);

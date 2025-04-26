@@ -156,14 +156,23 @@ for(var i = 0; i <= 3; i++){
     }
 }
 
+
 //SPECIAL SYNCED_VAR CODE BY SUPERSONIC-----------------------------------------
 var tmp_specials = get_synced_var(player);
-//read specials from synced var
-for (var i = 0; i <= 3; i++) {
-    var shift = (i*2);
-    //print(`${i} = ${tmp_specials >> shift & 3}`); //whee debug print
-    specialnums[i] = tmp_specials >> shift & 3;
-    specialnums[i]--;
+//account for random
+if(tmp_specials < 85){
+    specialnums[0] = 0;
+    specialnums[1] = 2;
+    specialnums[2] = 1;
+    specialnums[3] = 1;
+}else{
+    //read specials from synced var
+    for (var i = 0; i <= 3; i++) {
+        var shift = (i*2);
+        //print(`${i} = ${tmp_specials >> shift & 3}`); //whee debug print
+        specialnums[i] = tmp_specials >> shift & 3;
+        specialnums[i]--;
+    }
 }
 //------------------------------------------------------------------------------
 //making special names nicer

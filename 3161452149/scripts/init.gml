@@ -129,7 +129,7 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
 set_victory_bg(sprite_get("winscreen")); // sprites\winscreen.png - name doesn't matter, the size has to be 480 x 270 pixels big, usually has this puple filter on it
-//set_victory_theme(sound_get("mus_victory")); // sounds\mus_victory.ogg - leave some silence in the file after the victory theme finishes
+set_victory_theme(sound_get("music_win_generic")); // sounds\mus_victory.ogg - leave some silence in the file after the victory theme finishes
 
 alt_cur = get_player_color(player);
 

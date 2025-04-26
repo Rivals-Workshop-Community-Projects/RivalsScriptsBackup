@@ -74,18 +74,18 @@ set_color_profile_slot( 7, 3, 23, 212, 255 ); //cutter
 set_color_profile_slot( 7, 4, 19, 87, 255 ); //shoulders
 
 // Puke
-set_color_profile_slot( 8, 0, 149, 170, 95 ); //body
+set_color_profile_slot( 8, 0, 183, 214, 109 ); //body
 set_color_profile_slot( 8, 1, 57, 163, 39 ); //hands
 set_color_profile_slot( 8, 2, 73, 92, 25 ); //shoes
-set_color_profile_slot( 8, 3, 149, 170, 100); //cutter
-set_color_profile_slot( 8, 4, 149, 170, 95); //shoulders
+set_color_profile_slot( 8, 3, 183, 214, 109 ); //cutter
+set_color_profile_slot( 8, 4, 149, 170, 95 ); //shoulders
 
 // Plugg
-set_color_profile_slot( 9, 0, 0, 212, 255 ); //body
-set_color_profile_slot( 9, 1, 87, 237, 0 ); //hands
-set_color_profile_slot( 9, 2, 87, 237, 0 ); //shoes
-set_color_profile_slot( 9, 3, 255, 204, 0 ); //cutter
-set_color_profile_slot( 9, 4, 255, 231, 153 ); //shoulders
+set_color_profile_slot( 9, 0, 78, 187, 212 ); //body
+set_color_profile_slot( 9, 1, 54, 150, 0 ); //hands
+set_color_profile_slot( 9, 2, 54, 150, 0 ); //shoes
+set_color_profile_slot( 9, 3, 255, 255, 102 ); //cutter
+set_color_profile_slot( 9, 4, 255, 255, 102 ); //shoulders
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

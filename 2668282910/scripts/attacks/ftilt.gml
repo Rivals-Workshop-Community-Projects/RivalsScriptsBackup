@@ -19,7 +19,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_SFX, 0);
 set_window_value(AT_FTILT, 3, AG_WINDOW_SFX, sound_get("pokken_kick4"));
 
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

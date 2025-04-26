@@ -27,7 +27,7 @@ switch(state){
 			set_num_hitboxes(AT_FSPECIAL, 1);
 		    set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 		    set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HSPEED, 9);
-    		window = 5;
+    		window = 4;
     		window_timer = 0;
     		destroy_hitboxes();
     		create_hitbox(AT_FSPECIAL, 5, x, y);
@@ -61,5 +61,5 @@ switch(state){
 
 
 
-image_index = state_timer/4;
+image_index = state_timer/8;
 state_timer++;

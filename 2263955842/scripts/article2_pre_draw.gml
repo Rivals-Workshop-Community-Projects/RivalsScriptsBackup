@@ -2,7 +2,11 @@
 // drawing yinyang effect
 
 
-draw_sprite(sprite_get("is_player"),player - 1,x,y - 30)
+draw_sprite_ext(sprite_get("small_arrow"), 0, x, y - 30, 1, 1, 0, player_id.arrow_col, 1)
+
+if (player_id.move_cooldown[AT_NSPECIAL_2] > 0){
+    draw_sprite_ext(sprite_get("small_arrow"), 0, x, y - 30, 1, 1, 0, c_black, 0.5)
+}
 
 // border
 /*

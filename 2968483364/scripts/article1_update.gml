@@ -86,7 +86,6 @@ if (state == 0){
 
 if (state == 1){
     
-    //Stop the movement from state 0
     hsp *= fric;
     if(vsp < max_fall) vsp += grav;
     
@@ -99,16 +98,40 @@ if (state == 1){
 		exit;
     }
     
-    var next_hbox = create_hitbox(AT_NSPECIAL, 1, floor(x + hsp), floor(y + vsp));
-    next_hbox.player = owner;
-    next_hbox.spr_dir = spr_dir;
-    next_hbox.owner = self;
-    
-    if(place_meeting(x, y, asset_get("par_block"))){
-    	state = 2;
-        state_timer = 0;
-        next_hbox.destroyed = true;
+    if(nohit_timer == 0){
+    	
+	    var next_hbox = create_hitbox(AT_NSPECIAL, (its_lit? 1:3), floor(x + hsp), floor(y + vsp));
+	    
+	    next_hbox.player = owner;
+	    next_hbox.spr_dir = spr_dir;
+	    next_hbox.owner = self;
     }
+    
+    if(place_meeting(x+hsp, y+vsp, asset_get("par_block"))){
+    	if(its_lit){
+    		//blow up when landing while lit
+			state = 2;
+			state_timer = 0;
+			next_hbox.destroyed = true;
+		}else{
+			//otherwise bounce
+			if(bounce_times < bounce_max){
+				hsp *= 0.8;
+				vsp *= -0.6;
+				sound_play(asset_get("sfx_mol_norm_bounce1"));
+				bounce_times++;
+			}else{
+				
+				//and then despawn
+				sound_play(asset_get("sfx_burnend"));
+				sound_play(asset_get("sfx_mol_norm_bounce1"));
+				spawn_hit_fx( x, y, 14 );
+				player_id.pipebomb = noone;
+				instance_destroy();
+				exit;
+			}
+		}
+	}
 }
 
 
@@ -123,9 +146,7 @@ if (state == 2){
 		var next_hbox = create_hitbox(AT_NSPECIAL, 2, floor(x), floor(y - 10));
 		next_hbox.player = owner;
     	sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.9, 1.1);
-	}
-	
-    if (state_timer == die_time){
+	}else if(state_timer == die_time){
         player_id.pipebomb = noone;
         instance_destroy();
         exit;
@@ -146,7 +167,7 @@ switch(state){
         animation_type = 0;
         break;
     case 1:
-        new_sprite = sprite_get("nspec_bomb");
+        new_sprite = (its_lit? spr_lit:spr_unlit);
         animation_type = 1;
         break;
     case 2:
@@ -221,7 +242,15 @@ if hbox.type == 1 {
 // or comment out the line below.
 hitstop = floor(desired_hitstop); 
  
- 
+//light bomb
+if(hbox.kb_scale > 0 && !its_lit){
+	its_lit = true;
+	sound_play(asset_get("sfx_mol_norm_light"), false, noone, 0.8, 1.0);
+}
+
+//re-enable ability to hit again
+nohit_timer = 0;
+
 //Hit Lockout
 if article_should_lockout hit_lockout = hbox.no_other_hit;
  
@@ -238,6 +267,11 @@ else orig_knock = hbox.kb_value + hbox.damage * hbox.kb_scale * 0.12 * kb_adj;
 kb_dir = get_hitbox_angle(hbox);
 var swap_ang = false;
 var hitbox = hbox;
+//let jabs juggle it better
+if(hbox.attack == AT_JAB && hbox.kb_scale == 0){
+	kb_dir = 80;
+	orig_knock += 7.5;
+}
 with(hit_player_obj){
 	if(get_hitbox_value(hitbox.attack, hitbox.hbox_num, other.mok_bomb_ang) != 0){
 		other.kb_dir = get_hitbox_value(hitbox.attack, hitbox.hbox_num, other.mok_bomb_ang);
@@ -292,7 +326,6 @@ switch(hbox.hit_flipper){
 		break;
 }
 owner = hit_player_num;
-
 if(hsp > 0) spr_dir = 1;
 else if(hsp < 0) spr_dir = -1;
 

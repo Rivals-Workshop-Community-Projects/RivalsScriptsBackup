@@ -223,6 +223,7 @@ current_button_selected = 0;
 sprite_change_offset("css_menu_buttons", 16, 16);
 sprite_change_offset("css_menu_buttons_highlight", 16, 16);
 sprite_change_offset("css_cursor_hover", 16, 16);
+sprite_change_offset("css_vortex", 0, 0);
 sprite_change_offset("idle", 128, 128);
 sprite_change_offset("css_icon", 7, 7);
 sprite_change_offset("css_tlc_icon",12,12);
@@ -423,10 +424,15 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "2022 / 23 /24 Riptide Bracket";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
+	//Slot
+	slot_property_array[color_slot,sub_element_slot] = "Vortex Gallery";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Vortex Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Vortex 2024";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot
+	slot_property_array[color_slot,sub_element_slot] = "Heatwave";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Heatwave Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Heatwave 22 / 23 / 24";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 5
 	slot_property_array[color_slot,sub_element_slot] = "Flickering Spectre";sub_element_slot++;
@@ -452,11 +458,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Tricky Kitsune";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Hikaru by Lukaru";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I admire powerful illusionary Magic, you can get what you want without being destructive.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Kunoichi";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for Regina";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 15
 	slot_property_array[color_slot,sub_element_slot] = "Walkya";sub_element_slot++;
@@ -574,9 +575,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Join the WORMS bracket every Saturday at 7:30PM Est";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 40
-	slot_property_array[color_slot,sub_element_slot] = "Heatwave";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Heatwave";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Heatwave 2021 WS Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Riptide Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character at Heatwave 22 / 23 / 24 WS Bracket";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "BB";sub_element_slot++;
@@ -820,15 +821,20 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for Renecup";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-			//Slot 
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Incredi. Stength";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for MGAM";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-		//Slot 
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Vessel";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Alt for AetherAsylum";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Kunoichi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for Regina";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	
 	num_of_shifted_alts = color_slot - 96;

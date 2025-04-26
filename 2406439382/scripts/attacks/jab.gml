@@ -88,4 +88,3 @@ set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 302 );
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 1);
-

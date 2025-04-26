@@ -110,15 +110,48 @@ set_color_profile_slot( 7, 5, 167, 186, 74 ); //gold
 set_color_profile_slot( 7, 6, 167, 186, 74 ); //umbrella
 set_color_profile_slot( 7, 7, 83, 122, 62 ); //eyes
 
-// sorbet
-set_color_profile_slot( 8, 0, 255, 213, 0 ); //green
-set_color_profile_slot( 8, 1, 54, 69, 117 ); //hair
-set_color_profile_slot( 8, 2, 255, 243, 224 ); //skin
-set_color_profile_slot( 8, 3, 236, 166, 255 ); //white
-set_color_profile_slot( 8, 4, 142, 74, 161 ); //dark
-set_color_profile_slot( 8, 5, 0, 217, 224 ); //gold
-set_color_profile_slot( 8, 6, 0, 217, 224 ); //umbrella
-set_color_profile_slot( 8, 7, 166, 97, 0 ); //eyes
+		// seasonal in testing...
+		if (get_match_setting( SET_SEASON )==1){
+			// valentines
+			set_color_profile_slot( 8, 0, 247, 86, 114 ); //green
+			set_color_profile_slot( 8, 1, 255, 196, 248 ); //hair
+			set_color_profile_slot( 8, 2, 255, 220, 176 ); //skin
+			set_color_profile_slot( 8, 3, 255, 163, 238 ); //white
+			set_color_profile_slot( 8, 4, 161, 26, 26 ); //dark
+			set_color_profile_slot( 8, 5, 75, 176, 77 ); //gold
+			set_color_profile_slot( 8, 6, 255, 245, 252 ); //umbrella
+			set_color_profile_slot( 8, 7, 173, 42, 63 ); //eyes
+		}else if(get_match_setting( SET_SEASON )==2){
+			// summer
+			set_color_profile_slot( 8, 0, 255, 248, 158 ); //green
+			set_color_profile_slot( 8, 1, 99, 226, 230 ); //hair
+			set_color_profile_slot( 8, 2, 235, 194, 136 ); //skin
+			set_color_profile_slot( 8, 3, 101, 224, 156 ); //white
+			set_color_profile_slot( 8, 4, 181, 80, 11 ); //dark
+			set_color_profile_slot( 8, 5, 127, 107, 255 ); //gold
+			set_color_profile_slot( 8, 6, 255, 248, 158 ); //umbrella
+			set_color_profile_slot( 8, 7, 120, 53, 7 ); //eyes
+		}else if(get_match_setting( SET_SEASON )==3){
+			// halloween
+			set_color_profile_slot( 8, 0, 57, 64, 60 ); //green
+			set_color_profile_slot( 8, 1, 57, 64, 60 ); //hair
+			set_color_profile_slot( 8, 2, 0, 0, 0 ); //skin
+			set_color_profile_slot( 8, 3, 57, 64, 60 ); //white
+			set_color_profile_slot( 8, 4, 184, 189, 184 ); //dark
+			set_color_profile_slot( 8, 5, 184, 189, 184 ); //gold
+			set_color_profile_slot( 8, 6, 57, 64, 60 ); //umbrella
+			set_color_profile_slot( 8, 7, 255, 255, 255 ); //eyes
+		}else if(get_match_setting( SET_SEASON )==4){
+			// christmas
+			set_color_profile_slot( 8, 0, 255, 245, 245 ); //green
+			set_color_profile_slot( 8, 1, 247, 245, 245 ); //hair
+			set_color_profile_slot( 8, 2, 247, 209, 178 ); //skin
+			set_color_profile_slot( 8, 3, 235, 66, 82 ); //white
+			set_color_profile_slot( 8, 4, 54, 122, 20 ); //dark
+			set_color_profile_slot( 8, 5, 61, 212, 34 ); //gold
+			set_color_profile_slot( 8, 6, 48, 171, 28 ); //umbrella
+			set_color_profile_slot( 8, 7, 20, 122, 23 ); //eyes
+		}//yes i know i shoulda done a switch() here or something but i didnt remember if switch() within switch() worked or not and i didnt want to test it out
 
 // doomsday forever
 set_color_profile_slot( 9, 0, 0, 255, 129 ); //green

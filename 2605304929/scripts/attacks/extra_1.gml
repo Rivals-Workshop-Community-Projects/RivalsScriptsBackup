@@ -1,4 +1,4 @@
-// Ground grab special input
+// Ground grab special input Not used
 /*
 var attack = AT_EXTRA_1; // Swap Taunt for attack that this is
 

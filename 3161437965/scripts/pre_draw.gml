@@ -19,6 +19,25 @@ for (var i = trail_draw_size-1; i > 0; i--)
 gpu_set_fog(false, c_red, 1, 0);
 
 
+if array_length_1d(intro_alt_vfx_array) > 0 {
+
+        for (var i = 0; i < array_length_1d(intro_alt_vfx_array); ++i)
+        {
+            var obj = intro_alt_vfx_array[i];
+            if("is_cat" in obj)
+            draw_sprite_ext(obj.sprite_index, obj.timer/4, obj.x, obj.y, obj.spr_dir*(.5+obj.timer/20), (.5+obj.timer/20), obj.rot, c_white, 1 - obj.timer/obj.timerMax);
+            if("is_khep" in obj){
+            	gpu_set_alphatestenable(true);
+            	gpu_set_fog(1, obj.col, 0, 1);
+            	draw_sprite_ext(obj.sprite_index, obj.timer/5, obj.x, obj.y, obj.spr_dir*(2+obj.timer/3), (2+obj.timer/3), obj.rot + obj.timer, c_white, 1.2 - (obj.timer/obj.timerMax) * 1.2);
+            }
+            gpu_set_fog(0, c_white, 0, 0);
+			gpu_set_alphatestenable(false);
+        }
+
+}
+
+
 if(attack == AT_TAUNT_2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     var alph = (lobotomy_timer < 360 ? lobotomy_timer/3600 : .25)
     draw_set_alpha(alph);

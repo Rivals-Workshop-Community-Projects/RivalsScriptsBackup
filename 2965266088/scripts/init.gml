@@ -23,7 +23,7 @@
 // STAT NAME		    VALUE                   BASECAST RANGE      NOTES
 
 // Physical size
-char_height             = 50;                   //                  the height of the overhead hud - the arrow with your name and %
+char_height             = 54;                   //                  the height of the overhead hud - the arrow with your name and %
 knockback_adj           = 0.94; //0.97		    // 0.9  -  1.2
 
 // Ground movement
@@ -147,8 +147,8 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-normal_wait_time    = 0;                    //how long it takes for the animation to be done
-wait_length         = 0;                    //amount of frames the wait animation takes
+normal_wait_time    = 270;                    //how long it takes for the animation to be done
+wait_length         = 120;                    //amount of frames the wait animation takes
 wait_sprite         = sprite_get("wait");
 wait_time = normal_wait_time;
 
@@ -230,6 +230,7 @@ hud_color = [
     color_get_blue(get_player_hud_color(player))
 ];
 true_dmg = 0;
+down_held_time = 0;
 
 //crawl stuff
 crawl_time = 0;
@@ -239,7 +240,7 @@ crawl_sound = noone;
 fake_img = 0;
 
 //dark orb mechanic
-dark_state = -1; //-1 = inactive | 0 = activating | 1 = active | 2 = deactivate | 3 = transfer | 4 = dark consume
+dark_state = -1; //-1 = inactive | 0 = activating | 1 = active | 2 = deactivate | 3 = transfer | 4 = dark consume | 5 = transfer from a death
 dark_state_prev = -1;
 dark_timer = 0;
 dark_img = 0;
@@ -247,19 +248,19 @@ dark_target = noone; //the player affected
 dark_target_prev = noone; //used by the transfer animation to know who to transfer from
 dark_owner = noone; //the player that owns the darkness (should also locks other rumias from overwriting darkness)
 dark_last_coords = [x, y];
+dark_last_is_enemy_article = false;
 
 dark_hp_cur = 0;
 dark_hp_max = 30 + 20 * has_rune("G");
 dark_hp_temp = 0; //used by dspec
 dark_hp_prev = -1; //used for stats changing
-dark_hp_redc_time = 0; //having darkness on enemies now makes it deplete over time
-dark_hp_redc_inc = 60; //1% per 60 frames
 dark_cd = 0;
 dark_cd_set = 180;
 
 dark_spr[0] = {spr: sprite_get("fx_darkorb_start"), anim_type: "lerp", anim_spd: 12};
 dark_spr[1] = {spr: sprite_get("fx_darkorb_loop"), anim_type: "loop", anim_spd: 0.2};
 dark_spr[3] = {spr: sprite_get("fx_darkorb_transfer"), anim_type: "lerp", anim_spd: 20};
+dark_spr[5] = {spr: sprite_get("fx_darkorb_transfer"), anim_type: "lerp", anim_spd: 20};
 dark_alpha = {cur: 0, min: 0.25, max: 0.75, time: 0, time_max: 30, increment: true};
 darkness_col = $7b1837;
 hud_frame_col = c_white;
@@ -293,9 +294,16 @@ grazing_time_max = 30;
 graze_lockout_max = 30;
 graze_lockout = 0;
 
-graze_dist_min = 48; //the actual graze range
+graze_dist_cur = 44; //the actual graze range
 graze_dist_max = 200; //how far away the graze range can be seen
+graze_size = [graze_dist_cur, 64]; //the different scales of the graze range, based on if rumia is crouching or not
+graze_size_change_delay = 20;
+graze_size_change_speed = 0.15;
+//old graze range values: 48/80
+
 graze_alpha = 0;
+graze_alpha_bigger = 0;
+graze_hold_alpha = 0.5;
 graze_disable_redc_alpha = 0.05;
 graze_sound = noone;
 

@@ -10,7 +10,7 @@ if (koa_hat) draw_sprite_ext(sprite_get("koakuma_idle"), image_index, x, y, 2 * 
 ///////////////////////////////////////////////// DARKNESS STUFF /////////////////////////////////////////////////
 
 //cooldown effect
-if (("draw_hud_type" not in self || draw_hud_type != "childe") && dark_cd > 0)
+if (("draw_hud_type" not in self || draw_hud_type != "childe") && dark_cd > 0 && (get_local_setting(SET_HUD_NAMES) || get_local_setting(SET_HUD_SIZE)))
 {
     //30 frames before cooldown is done it starts flashing
     var cd_flash = dark_cd < 30 ? (dark_cd % 8 >= 4 ? 0 : 1) : 1;
@@ -21,7 +21,13 @@ if (("draw_hud_type" not in self || draw_hud_type != "childe") && dark_cd > 0)
         make_color_rgb(hud_color[0]/2, hud_color[1]/2, hud_color[2]/2), cd_flash == 0 ? 0 : 1
     );
 }
-
+if (playtest_active && dark_target != noone) //playtest darkness %
+{
+    text_draw(
+        x, y + 6, `${dark_hp_temp > 0 ? floor(dark_hp_temp) : dark_hp_cur}%`, darkness_col, "fName", fa_center, 1, true, 1,
+        !is_tas_alt ? hud_frame_col : make_color_rgb(static_colorO[6*4+0]*255, static_colorO[6*4+1]*255, static_colorO[6*4+2]*255)
+    );
+}
 
 ///////////////////////////////////////////////////// GRAZING /////////////////////////////////////////////////////
 
@@ -30,9 +36,9 @@ if (graze_state == 0)
     draw_sprite_ext(
         sprite_get("fx_graze_range"),
         game_time * 0.15,
-        graze_pos[0] + draw_x,
-        graze_pos[1] + draw_y,
-        2, 2,
+        floor(graze_pos[0]) + 1,
+        floor(graze_pos[1]) + 1,
+        graze_dist_cur/graze_size[0]*2, graze_dist_cur/graze_size[0]*2,
         spr_angle,
         c_white,
         graze_alpha

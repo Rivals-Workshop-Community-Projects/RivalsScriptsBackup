@@ -36,8 +36,8 @@ prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
 double_jump_time = 20; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 6;
-walljump_vsp = 11;
+walljump_hsp = 7;
+walljump_vsp = 9;
 walljump_time = 20;
 max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
@@ -125,7 +125,9 @@ diag_portrait= sprite_get("portrait_old");
 AppearBruh = hit_fx_create( sprite_get( "appear" ),15);
 TeeVeeBruh = hit_fx_create( sprite_get( "tv" ),13);
 stupidThings = 0;
-funnySound = 1;
+funnySound = 0;
+copyright = 0;      //if set to true, disables nintendo-related sfx and fstrong pictures
+FStrongPictureSprite = sprite_get("tauntpics");
 
 hMoveSprite = sprite_get("h_move");
 hFallSprite = sprite_get("h_fall");
@@ -172,3 +174,8 @@ page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "> you STILL got problems bucko";
 page++;
+
+//
+blueybot_victory_quote = "> follow blueybot.bsky.social on bluesky";
+blueybot_handled_victory_quote = false;
+blueybot_victory_icon = 0;

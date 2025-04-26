@@ -111,25 +111,28 @@ switch (alt_cur)
 		set_character_color_shading(6, 4); //LIGHT
 		set_character_color_shading(7, -2); //FIRE
 
-		//color scroll shenanigans
-		if ("helel_color" not in self) helel_color = 0;
-		else
+		if (object_index != oPlayer && object_index != oTestPlayer)
 		{
-			helel_color += 2;
-			if (helel_color >= 255) helel_color = 0;
+			//color scroll shenanigans
+			if ("helel_color" not in self) helel_color = 0;
+			else
+			{
+				helel_color += 2;
+				if (helel_color >= 255) helel_color = 0;
 
-			var color_rgb = make_color_rgb(255, 0, 0);
-    		var hue = (color_get_hue(color_rgb)+helel_color) % 255;
-    		var helel_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), color_get_value(color_rgb));
+				var color_rgb = make_color_rgb(255, 0, 0);
+				var hue = (color_get_hue(color_rgb)+helel_color) % 255;
+				var helel_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), color_get_value(color_rgb));
 
-			line_color = [color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv)];
-			light_col = make_colour_rgb(color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv));
+				line_color = [color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv)];
+				light_col = make_colour_rgb(color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv));
 
-			set_character_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
-			set_character_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
+				set_character_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
+				set_character_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
 
-			set_article_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
-			set_article_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
+				set_article_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
+				set_article_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
+			}
 		}
 		break;
 	case 18: //gold alt shading tweak
@@ -149,10 +152,29 @@ switch (alt_cur)
 		break;
 }
 
-if (alt_cur == 27 || "theikos_type" not in self || theikos_type > 0 && (alt_cur == 0 || alt_cur == 27)) user_event(1); //theikos color stuff
+if (alt_cur == 27 || "theikos_type" not in self || theikos_type > 0 && (alt_cur == 0 || alt_cur == 28)) user_event(1); //theikos color stuff
 
 if (object_index == asset_get("draw_result_screen")) set_endgame_stuff(); //old portrait setup code lol
 
+if ("od_fx_col_change" in self && od_fx_col_time > 0)
+{
+	colorO[6*4+0] = lerp(color_get_red(light_col)/255, theikos_light[0], od_fx_col_time/od_fx_col_time_max);
+    colorO[6*4+1] = lerp(color_get_green(light_col)/255, theikos_light[1], od_fx_col_time/od_fx_col_time_max);
+    colorO[6*4+2] = lerp(color_get_blue(light_col)/255, theikos_light[2], od_fx_col_time/od_fx_col_time_max);
+    colorO[7*4+0] = lerp(color_get_red(fire_col)/255, theikos_fire[0], od_fx_col_time/od_fx_col_time_max);
+    colorO[7*4+1] = lerp(color_get_green(fire_col)/255, theikos_fire[1], od_fx_col_time/od_fx_col_time_max);
+    colorO[7*4+2] = lerp(color_get_blue(fire_col)/255, theikos_fire[2], od_fx_col_time/od_fx_col_time_max);
+	
+	light_col = make_colour_rgb(theikos_light[0]*255, theikos_light[1]*255, theikos_light[2]*255);
+	line_color = [colorO[7*4+0]*255, colorO[7*4+1]*255, colorO[7*4+2]*255];
+
+    static_colorO[6*4+0] = colorO[6*4+0];
+    static_colorO[6*4+1] = colorO[6*4+1];
+    static_colorO[6*4+2] = colorO[6*4+2];
+    static_colorO[7*4+0] = colorO[7*4+0];
+    static_colorO[7*4+1] = colorO[7*4+1];
+    static_colorO[7*4+2] = colorO[7*4+2];
+}
 
 #define set_endgame_stuff
 {

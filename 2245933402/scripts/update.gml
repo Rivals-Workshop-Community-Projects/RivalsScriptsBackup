@@ -123,7 +123,13 @@ if !attacking {
 	}
 }	
 
-if ostyle == 3{
+if ostyle == 2{
+move_cooldown[AT_FSTRONG] = 5
+move_cooldown[AT_USTRONG] = 5
+move_cooldown[AT_DSTRONG] = 5
+}
+
+if ostyle == 4{
 move_cooldown[AT_NSPECIAL] = 5
 move_cooldown[AT_FSPECIAL] = 5
 move_cooldown[AT_DSPECIAL] = 5
@@ -134,6 +140,10 @@ if ostyle == 1{
 move_cooldown[AT_NSPECIAL] = 5
 move_cooldown[AT_FSPECIAL] = 5
 move_cooldown[AT_DSPECIAL] = 5
+
+move_cooldown[AT_FSTRONG] = 5
+move_cooldown[AT_USTRONG] = 5
+move_cooldown[AT_DSTRONG] = 5
 
 if state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_PRATFALL or state == PS_AIR_DODGE {
 	
@@ -192,9 +202,9 @@ dash_turn_accel = 1.5;
 dash_stop_time = 9;
 
 jump_start_time = 4;
-jump_speed = 14;
+jump_speed = 12;
 short_hop_speed = 7;
-djump_speed = 14;
+djump_speed = 12;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -202,7 +212,7 @@ jump_change = 4; //maximum hsp when double jumping. If already going faster, it 
 air_accel = .4;
 prat_fall_accel = .80; //multiplier of air_accel while in pratfall
 air_friction = .02;
-max_djumps = 1;
+max_djumps = 2;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4;
 walljump_vsp = 11;
@@ -217,8 +227,48 @@ hitstun_grav = .5;
 knockback_adj = 1.1;
 }
 
-} else {
+} else if ostyle == 3 {
 	
+if walk_speed != 2 {
+idle_anim_speed = .1;
+crouch_anim_speed = .15;
+walk_anim_speed = .15;
+dash_anim_speed = .2;
+
+walk_speed = 2;
+walk_accel = 0.5;
+walk_turn_time = 6;
+initial_dash_time = 8;
+initial_dash_speed = 4;
+dash_speed = 4.5;
+dash_turn_time = 4.5;
+dash_turn_accel = 1.5;
+dash_stop_time = 9;
+dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .5;
+moonwalk_accel = 1.4;
+
+jump_start_time = 4;
+jump_speed = 12;
+short_hop_speed = 7;
+djump_speed = 12;
+leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 2; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .3;
+prat_fall_accel = .80; //multiplier of air_accel while in pratfall
+air_friction = .02;
+max_djumps = 1;
+double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+walljump_hsp = 4;
+walljump_vsp = 11;
+walljump_time = 24;
+max_fall = 8; //maximum fall speed without fastfalling
+fast_fall = 12; //fast fall speed	
+}
+
+} else {
 if walk_speed != 3 {	
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
@@ -276,11 +326,8 @@ if ostyle == 3{
 	
 	set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 	
-
-	
 	set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
 
-	
 	set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 
 	
@@ -288,14 +335,10 @@ if ostyle == 3{
 	
 	set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 	
-	
 	set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 
-	
 	set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
 
-
-	
 } 
 
 
@@ -469,18 +512,16 @@ if get_player_color(player) == 7 {
 with oPlayer {
 	
 	if "grenadehit" in self {
-		
-		if grenadehit > 0 && hitpause {
+		if grenadehit > 0 {
+			if grenadehit > 50 {
 			x -= 2*spr_dir 
+			}else if grenadehit > 40{
+			x -= 1*spr_dir 	
+			}else if grenadehit <= 30{
+			x += 1*spr_dir 	
+			}
 			grenadehit -= 1
 		}
-		
-		if !hitpause && grenadehit > 0 {
-			grenadehit = 0
-		}
-		
-		
 	}
-	
 	
 }

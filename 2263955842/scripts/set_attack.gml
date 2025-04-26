@@ -50,20 +50,19 @@ if (attack == AT_FSPECIAL)
 }
 
 
-/*
-if (attack == AT_DSPECIAL)
-{
-    if (move_cooldown[AT_DSPECIAL] > 0)
-    {
-        attack = AT_USPECIAL
-    }
-}
-*/
 if (attack == AT_USPECIAL)
 {
     if (!move_cooldown[AT_USPECIAL])
     {
         has_used_uspecial = true;
+    }
+}
+
+if (attack == AT_DSPECIAL)
+{
+    if (!move_cooldown[AT_DSPECIAL])
+    {
+        has_used_dspecial = true;
     }
 }
 

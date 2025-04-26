@@ -25,3 +25,13 @@ switch state{
 if(state == PS_PRATLAND){
 	sprite_index = sprite_get("pratland");
 }
+
+if get_player_name(player) == "TANIA"{
+	set_victory_theme(sound_get("music_win_yapyap"));
+	set_victory_bg(sprite_get("winscreenYap"));
+}
+
+if (get_player_color(player) == 25){
+	set_victory_theme(sound_get("music_win_ingot"));
+	set_victory_bg(sprite_get("winscreenYap"));
+}

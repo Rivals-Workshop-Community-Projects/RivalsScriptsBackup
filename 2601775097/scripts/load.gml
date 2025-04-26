@@ -99,13 +99,17 @@ sprite_change_offset("fx_fireblow3", 80, 80);
 sprite_change_offset("fx_ustrong", 40, 59);
 sprite_change_offset("fx_ustrong_burn", 40, 59);
 sprite_change_offset("fx_dstrong_blast", 80, 62);
-sprite_change_offset("fx_dstrong_quake", 142, 166);
+sprite_change_offset("fx_dstrong_quake", 144, 144); //142, 166
+sprite_change_offset("fx_dstrong_shockwave", 176, 176);
+sprite_change_offset("fx_dstrong_rockblast", 176, 176);
 
 sprite_change_offset("fx_skill0", 39, 47);
 sprite_change_offset("fx_skill0_proj", 34, 16);
 sprite_change_offset("fx_skill0_proj_burn", 64, 16);
 sprite_change_offset("fx_skill2", 0, 24);
 sprite_change_offset("fx_skill2_fg", 0, 24);
+sprite_change_offset("fx_skill2_arrow", -16, 8);
+sprite_change_offset("fx_skill2_range", -6, 42);
 sprite_change_offset("fx_skill3", 112, 154);
 sprite_change_offset("fx_skill4_smear", 88, 96);
 sprite_change_offset("fx_skill4_smear_burn", 88, 96);
@@ -131,11 +135,16 @@ sprite_change_offset("fx_od_bg", 240, 0);
 sprite_change_offset("fx_od_sword", 142+42, 191);
 sprite_change_offset("fx_od_slash", 176, 96);
 
-
+if ("alt_cur" in self && (alt_cur == 0 || alt_cur == 28))
+{
+    theikos_light = [get_color_profile_slot_r(27, 6)/255, get_color_profile_slot_g(27, 6)/255, get_color_profile_slot_b(27, 6)/255];
+    theikos_fire = [get_color_profile_slot_r(27, 7)/255, get_color_profile_slot_g(27, 7)/255, get_color_profile_slot_b(27, 7)/255];
+}
 
 //theikos
 sprite_change_offset("theikos_idle", 16, 39);
 sprite_change_offset("theikos_dash", 24, 39);
+sprite_change_offset("idle_venus", 16, 39);
 
 sprite_change_offset("fx_theikos_aura", 8, 8);
 sprite_change_offset("fx_theikos_shockwave", 100, 100);

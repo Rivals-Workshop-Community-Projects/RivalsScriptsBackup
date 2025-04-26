@@ -1,8 +1,16 @@
 //death.gml
 
-//reset certain things
+//reset explosion damage
 msg_exploded_damage = 0;
 msg_exploded_respawn = false;
+
+if (msg_exploded_stock_cost > 0)
+{
+    //this death costs extra
+    set_player_stocks(player, get_player_stocks(player) - msg_exploded_stock_cost);
+}
+msg_exploded_stock_cost = 0;
+
 
 //clears saved attack index
 msg_bspecial_last_move.target = noone;

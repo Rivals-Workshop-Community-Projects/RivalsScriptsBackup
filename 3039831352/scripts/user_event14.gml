@@ -10,8 +10,7 @@ if (debug_display)
     draw_debug_text(debug_x+mul*0, debug_y+mul*-4, "state = " + string(get_state_name(state)));
     draw_debug_text(debug_x+mul*0, debug_y+mul*-3, "state_timer = " + string(state_timer));
 
-    if (
-        is_attacking || state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD ||
+    if (is_attacking || state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD ||
         state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD || state == PS_AIR_DODGE)
     {
         if (is_attacking) draw_debug_text(debug_x+mul*0, debug_y+mul*-7, "attack = " + string(attack_names[attack]));
@@ -68,15 +67,15 @@ var x_size = 79*2;
 var meter_r = cur_colors[boost_mode ? 0 : 1][@ 0];
 var meter_g = cur_colors[boost_mode ? 0 : 1][@ 1];
 var meter_b = cur_colors[boost_mode ? 0 : 1][@ 2];
-var meter_col = make_color_rgb(meter_r, meter_g, meter_b)
+var meter_col = make_color_rgb(meter_r, meter_g, meter_b);
 
 if (!has_superform) //boost meter
 {
     //this setup is used to set the colors to the normal state's colors
     var temp_values = [ //records currently used values
         static_colorB[0], static_colorB[4], //shading
-        static_colorO[0], static_colorO[1], static_colorO[2], //aura
-        static_colorO[4], static_colorO[5], static_colorO[6] //blue
+        static_colorO[0], static_colorO[1], static_colorO[2], static_colorO[3], //aura
+        static_colorO[4], static_colorO[5], static_colorO[6], static_colorO[7] //blue
     ];
     for (var i = 0; i < 2; i ++)
     {
@@ -85,6 +84,7 @@ if (!has_superform) //boost meter
         static_colorO[pos] = cur_colors[i][0]/255;
         static_colorO[pos + 1] = cur_colors[i][1]/255;
         static_colorO[pos + 2] = cur_colors[i][2]/255;
+        static_colorO[pos + 3] = 1;
     }
 
     //the meter itself
@@ -110,9 +110,12 @@ if (!has_superform) //boost meter
     static_colorO[0] = temp_values[2];
     static_colorO[1] = temp_values[3];
     static_colorO[2] = temp_values[4];
-    static_colorO[4] = temp_values[5];
-    static_colorO[5] = temp_values[6];
-    static_colorO[6] = temp_values[7];
+    static_colorO[3] = temp_values[5];
+
+    static_colorO[4] = temp_values[6];
+    static_colorO[5] = temp_values[7];
+    static_colorO[6] = temp_values[8];
+    static_colorO[7] = temp_values[9];
 
     //boost gain display
     tempvar = 0;
@@ -162,7 +165,6 @@ else //super sonic rings
         tempvar ++;
     }
 }
-
 
 //combo counter
 if (combo_timer > 0 && combo_hits > 1)

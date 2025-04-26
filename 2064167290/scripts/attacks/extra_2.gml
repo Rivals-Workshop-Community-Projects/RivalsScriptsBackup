@@ -9,7 +9,7 @@ set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 2)
 
 
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX, sound_get("bounce"));
@@ -20,14 +20,8 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HSPEED, 0);
 
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_VSPEED, -11);
-
-
-
-
-
-

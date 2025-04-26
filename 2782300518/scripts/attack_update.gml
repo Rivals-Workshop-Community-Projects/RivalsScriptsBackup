@@ -144,11 +144,22 @@ if (motorbike == false)
 					}
 				break;
 				case 3:
-					can_jump = has_hit && window_timer >=3;
-					can_special = has_hit && window_timer >=3;
-					can_strong = has_hit && window_timer >=3;
+					can_jump = has_hit && window_timer >=4;
+					can_special = has_hit && window_timer >=4;
+					can_strong = has_hit && window_timer >=4;
 					ClawCombo();
-					if (!can_attack && window_timer >= 3 && attack_pressed)
+					if (right_down-left_down == - spr_dir && down_down-up_down == 0)
+					{
+						if (window_timer == 15)
+						{
+							set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
+							set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+							set_hitbox_value(AT_UTILT, 1, HG_TECHABLE, 1);
+							set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
+							set_state(PS_IDLE);
+			            }
+					}
+					else if (!can_attack && window_timer >= 4 && attack_pressed)
 					{
 						window = 4;
 						window_timer = 0;
@@ -164,11 +175,11 @@ if (motorbike == false)
 					}
 				break;
 				case 6:
-					can_jump = has_hit && window_timer >=3;
-					can_special = has_hit && window_timer >=3;
-					can_strong = has_hit && window_timer >=3;
+					can_jump = has_hit && window_timer >=4;
+					can_special = has_hit && window_timer >=4;
+					can_strong = has_hit && window_timer >=4;
 					ClawCombo();
-					if (!can_attack && window_timer >= 3 && attack_pressed)
+					if (!can_attack && window_timer >= 4 && attack_pressed && !(right_down-left_down == - spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player))
 					{
 						window = 7;
 						window_timer = 0;
@@ -327,6 +338,12 @@ if (motorbike == false)
 			if (window == 1)
 			{
 				vsp = clamp(vsp, -2, 2)
+				if (window_timer == 4 && voice == 1 && random_func_2(78, 3, 1) == 1)
+				{
+					stopVoice();
+					sound_stop(sound_get ("carol_jab_voice4"));
+					sound_play(sound_get ("carol_jab_voice4"));	
+				}
 			}
 			if (window == 3)
 			{
@@ -346,12 +363,18 @@ if (motorbike == false)
 			can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 			if (voice == 1 && window == 1 && window_timer == 5)
 			{
-				var random_play = random_func_2 (79, 3, 1);
+				var random_play = random_func_2(79, 4, 1);
 				if (random_play == 1)
 				{
 					stopVoice();
 					sound_stop(sound_get ("carol_up_special"));
 					sound_play(sound_get ("carol_up_special"));
+				}
+				else if (random_play == 2)
+				{
+					stopVoice();
+					sound_stop(sound_get ("carol_jab_voice2"));
+					sound_play(sound_get ("carol_jab_voice2"));					
 				}
 			}
 			/*if (window == 1  && window_timer == 5)
@@ -428,9 +451,14 @@ if (motorbike == false)
 				destroy_hitboxes();
 				set_state(PS_LAND)
 			}*/
-			if (window == 2 && window_timer == 25)
+			if (window == 2 && (window_timer == 25 || !free))
 			{
 				destroy_hitboxes();
+				if (window_timer < 25)
+				{
+					window = 3;
+					window_timer = 0;
+				}
 			}
 			if (window == 3)
 			{
@@ -556,6 +584,12 @@ else if (motorbike == true)
 			if (window == 1)
 			{
 				vsp = clamp(vsp, -2, 2)
+				if (window_timer == 4 && voice == 1 && random_func_2(78, 3, 1) == 1)
+				{
+					stopVoice();
+					sound_stop(sound_get ("carol_jab_voice4"));
+					sound_play(sound_get ("carol_jab_voice4"));	
+				}
 			}
 			if (window == 3)
 			{
@@ -1007,6 +1041,20 @@ switch (attack)
 		}
 	break;
 	case AT_NTHROW:
+        if (right_down-left_down == - spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
+        {
+            var win_time = get_window_value(attack, window, AG_WINDOW_LENGTH);
+            set_window_value(attack, window, AG_WINDOW_CANCEL_FRAME, win_time);
+            if (get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE) != 0  && window_timer == win_time)
+            {
+                set_state(PS_IDLE);
+                was_parried = false;
+            }
+        }
+        else
+        {
+            reset_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);   
+        }
 	case AT_FTHROW:
 	case AT_UTHROW:
 		var	choose_quote = random_func(16, 15, 1);
@@ -1295,8 +1343,8 @@ switch (attack)
 		if (window == 3 && window_timer == 27)
 		{
 			moveDisc = true;
-			move_cooldown[AT_FSPECIAL] = 60;
-			move_cooldown[AT_FSPECIAL_AIR] = 60;
+			move_cooldown[AT_FSPECIAL] = 120;
+			move_cooldown[AT_FSPECIAL_AIR] = 120;
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 45);
@@ -1408,8 +1456,8 @@ switch (attack)
 				//Set Cooldown at the very end of the move
 				case 32:
 					moveDisc = true;
-					move_cooldown[AT_FSPECIAL] = 60;
-					move_cooldown[AT_FSPECIAL_AIR] = 60;
+					move_cooldown[AT_FSPECIAL] = 120;
+					move_cooldown[AT_FSPECIAL_AIR] = 120;
 					if (!has_hit)
 					{
 						set_state(PS_PRATFALL);
@@ -1434,8 +1482,8 @@ switch (attack)
 	//Intro
 	case 2:
 		var time = get_gameplay_time();
-		if (window <= 3) hud_offset = lerp(hud_offset, 2000, 0.1); // put hud away
-		if (window == 3 && window_timer == 33 && time <= 125) state = PS_SPAWN; //correct state to spawn if needed
+		if (window <= 4) hud_offset = lerp(hud_offset, 2000, 0.1); // put hud away
+		if (window == 4 && window_timer == 33 && time <= 125) state = PS_SPAWN; //correct state to spawn if needed
 	break;
 	default:
 	break;
@@ -1523,7 +1571,7 @@ if has_rune ("K")
 }
 if (comboCounter < maxCombo )
 {
-	if ((window == 3 || window == 6) && window_timer >= 3)
+	if ((window == 3 || window == 6) && window_timer >= 4 && !(right_down-left_down == - spr_dir))
 	{
 				
 		//If a direction is pressed when attacking, cancel to the specificed jab

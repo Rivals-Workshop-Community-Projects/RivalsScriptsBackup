@@ -100,8 +100,9 @@ if(blown){
                 var expl = create_hitbox(AT_EXPLOSION, 1, other.x + 5 * spr_dir, other.y - 87);
                 sound_play(sound_get("explosion1"))
                 expl.player = player;
-                expl.kb_value = trap_knockback;
-                expl.kb_scale = trap_scaling;
+                expl.kb_angle = aerial_trap_angle;
+                expl.kb_value = aerial_trap_knockback;
+                expl.kb_scale = aerial_trap_scaling;
                 expl.camera_shake = 0;
                 spawn_hit_fx(other.x + 5 * spr_dir, other.y - 105, air_explosion);
             }
@@ -109,6 +110,7 @@ if(blown){
                 var expl = create_hitbox(AT_EXPLOSION, 1, other.x - 5 * spr_dir, other.y - 10);
                 sound_play(sound_get("explosion1"))
                 expl.player = player;
+                expl.kb_angle = trap_angle;
                 expl.kb_value = trap_knockback;
                 expl.kb_scale = trap_scaling;
                 expl.camera_shake = 0;

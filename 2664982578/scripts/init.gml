@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 28;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1.05;		// 0.9  -  1.2
+knockback_adj       = 1.1;		// 0.9  -  1.2
 small_sprites = 1;
 
 // Ground movement
@@ -217,7 +217,7 @@ if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){
 	trans_outline = true;
 }if(alt == 22){ 
 	bbout_egg = true;
-}if(alt == 18 || alt == 23 || alt == 24 || alt == 25 || alt == 26 || alt == 27){ 
+}if(alt == 18 || alt == 23 || alt == 24 || alt == 25 || alt == 26 || alt == 27 || alt == 28){ 
 	champ_skin = true;
 }if(alt == 24){ 
 	set_victory_portrait(sprite_get("nothingthere_portrait"));

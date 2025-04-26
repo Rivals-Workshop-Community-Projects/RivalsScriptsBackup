@@ -198,7 +198,7 @@ set_color_profile_slot(pal_num, 10, 255, 0, 0); //green (super)
 set_color_profile_slot(pal_num, 11, 999, 999, 999); //skin (super)
 set_color_profile_slot(pal_num, 12, 167, 25, 207); //red (super)
 set_color_profile_slot(pal_num, 13, 999, 999, 999); //white - clothes (super)
-set_color_profile_slot(pal_num, 14, 0, 0, 0); //white - eyes (super)
+set_color_profile_slot(pal_num, 14, 10, 10, 10); //white - eyes (super)
 set_color_profile_slot(pal_num, 15, 244, 184, 255); //portrait light (super)
 
 pal_num ++; // 10 - mario (fire mario)

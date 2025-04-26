@@ -33,4 +33,22 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 
-set_num_hitboxes(atk, 0);
+hitbox_num = 1;
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+
+set_num_hitboxes(atk, hitbox_num);

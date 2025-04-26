@@ -22,6 +22,45 @@ if (theikos_type > 0)
 
 ////////////////////////////////////////////////////////// ANIMATE //////////////////////////////////////////////////////////
 
+if (od_fx_col_change && od_fx_col_time < od_fx_col_time_max) od_fx_col_time ++;
+if (od_fx_col_time > 0)
+{
+    init_shader();
+    if (!od_fx_col_change) od_fx_col_time --;
+
+	if (od_fx_col_time == 0)
+	{
+		if (alt_cur == 0) line_color = default_line_color;
+		else line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
+
+		light_col = default_light_col;
+	}
+}
+
+if (alt_cur == 26)
+{
+	//color scroll shenanigans
+	if ("helel_color" not in self) helel_color = 0;
+	else
+	{
+		helel_color += 2;
+		if (helel_color >= 255) helel_color = 0;
+
+		var color_rgb = make_color_rgb(255, 0, 0);
+		var hue = (color_get_hue(color_rgb)+helel_color) % 255;
+		var helel_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), color_get_value(color_rgb));
+
+		line_color = [color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv)];
+		light_col = make_colour_rgb(color_get_red(helel_hsv),color_get_green(helel_hsv),color_get_blue(helel_hsv));
+
+		set_character_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
+		set_character_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
+
+		set_article_color_slot(6, color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)); //LIGHT
+		set_article_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120); //FIRE
+	}
+}
+
 //halloween costume
 if ((sprite_index == sprite_get("theikos_idle") || sprite_index == sprite_get("idle")) && bibical)
 {
@@ -54,11 +93,79 @@ if (alt_cur == 19)
 	}
 }
 
-switch (state) {
+if (state == PS_IDLE && !bibical && sprite_index != wait_sprite)
+{
+	if (array_length(venus_exist_ids) > 0)
+	{
+		var closest_venus = noone;
+		var closest_dist = 9999999999999999999;
+		for (var i = 0; i < array_length(venus_exist_ids); i++;)
+		{
+			if (distance_to_object(venus_exist_ids[i]) <= venus_dist && closest_dist > distance_to_object(venus_exist_ids[i]))
+			{
+				closest_venus = venus_exist_ids[i];
+				closest_dist = distance_to_object(venus_exist_ids[i]);
+			}
+		}
+
+		if (closest_venus != noone)
+		{
+			venus_time ++;
+			wait_time = -1;
+			if (venus_time >= venus_blush_time)
+			{
+				if (floor(venus_blush_img) < 3) venus_blush_img += 0.16;
+			}
+			else venus_blush_img = 0;
+		}
+		else if (venus_blush_img > 0)
+		{
+			if (venus_time > 0)
+			{
+				wait_time = normal_wait_time;
+				venus_time = 0;
+				state_timer = 0;
+				if (floor(venus_blush_img) < 3) venus_blush_img = 3;
+			}
+			
+			if (floor(venus_blush_img) > sprite_get_number(sprite_get("idle_venus"))-1) venus_blush_img = 0;
+			else venus_blush_img += 0.16;
+		}
+
+		if (venus_blush_img > 0 && venus_blush_img < sprite_get_number(sprite_get("idle_venus")))
+		{
+			sprite_index = sprite_get("idle_venus");
+			image_index = venus_blush_img;
+		}
+	}
+}
+else if (venus_time > 0)
+{
+	wait_time = normal_wait_time;
+	venus_blush_img = 0;
+	venus_time = 0;
+}
+
+switch (state)
+{
 	// ATTACK ANIMATIONS
 	case PS_ATTACK_AIR: case PS_ATTACK_GROUND:
 		switch (attack)
 		{
+			case 2: //intro
+				if (state_timer <= intro_hair_fade_time)
+				{
+					colorO[0 + 2 * 4] = lerp(static_colorO[0 + 6 * 4], static_colorO[0 + 2 * 4], state_timer/intro_hair_fade_time);
+					colorO[1 + 2 * 4] = lerp(static_colorO[1 + 6 * 4], static_colorO[1 + 2 * 4], state_timer/intro_hair_fade_time);
+					colorO[2 + 2 * 4] = lerp(static_colorO[2 + 6 * 4], static_colorO[2 + 2 * 4], state_timer/intro_hair_fade_time);
+					colorO[0 + 8 * 4] = lerp(static_colorO[0 + 6 * 4]/2, no_effect_line_color[0]/255, state_timer/intro_hair_fade_time);
+					colorO[1 + 8 * 4] = lerp(static_colorO[1 + 6 * 4]/2, no_effect_line_color[1]/255, state_timer/intro_hair_fade_time);
+					colorO[2 + 8 * 4] = lerp(static_colorO[2 + 6 * 4]/2, no_effect_line_color[2]/255, state_timer/intro_hair_fade_time);
+				}
+				break;
+			case AT_EXTRA_3: //searing descent
+				if (!free && window == 7) destroy_hitboxes();
+				break;
 			case AT_DSTRONG: case AT_DSTRONG_2:
 				if (smash_charging)
 				{
@@ -195,7 +302,6 @@ if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 
 	image_index = 1;
 }
 
-
 if (!hitpause) //dust effects
 {
     if (is_attacking)
@@ -238,7 +344,7 @@ if (!hitpause) //dust effects
     }
 
     //rune A airdash dust
-    if (rune_A_active && state == PS_AIRDASH && state_timer == 1) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -85*spr_dir);
+    if (rune_A_active && state == PS_AIRDASH && state_timer == 1) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -90*spr_dir);
 }
 #define spawn_base_dust
 {

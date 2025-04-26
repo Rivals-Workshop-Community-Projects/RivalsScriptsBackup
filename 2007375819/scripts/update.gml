@@ -47,9 +47,9 @@ if funnyfish > 0 {
 }
 
 if (state == PS_SPAWN) {
-	if taunt_pressed && funnySound {
+	if taunt_pressed && !funnySound {
 		sound_play(sound_get("steamalert"));
-		funnySound = 0;
+		funnySound = 1;
 	}
 }
 

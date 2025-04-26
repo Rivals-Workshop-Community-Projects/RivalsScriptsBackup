@@ -2,37 +2,61 @@
 
 
 
-if get_player_color(player) == 7 && move_cooldown[AT_TAUNT] == 0{ 
+if get_player_color(player) == 7{ 
 
 	
 	if get_gameplay_time() % 20 == 16 {
-	 sound_play(sound_get("isa6"));
-	 move_cooldown[AT_TAUNT] = 40	
+	 sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa6"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 20 == 5 {
-	 sound_play(sound_get("isa5"));
-	 move_cooldown[AT_TAUNT] = 40	
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa5"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 20 == 14 {
-	 sound_play(sound_get("isa3"));
-	 move_cooldown[AT_TAUNT] = 10	
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa3"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 20 == 3 {
-	 sound_play(sound_get("isa2"));
-	 move_cooldown[AT_TAUNT] = 40	
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 20 == 12 {
-	 sound_play(sound_get("isa2"));
-	 move_cooldown[AT_TAUNT] = 40	
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa2"),false,noone,0.66);
 	}
 	
 	if get_gameplay_time() % 20 == 1 {
-	 sound_play(sound_get("isa1"));
-	 move_cooldown[AT_TAUNT] = 40	
+     sound_stop(sound_get("isa1"));
+	 sound_stop(sound_get("isa2"));
+	 sound_stop(sound_get("isa3"));
+	 sound_stop(sound_get("isa4"));
+	 sound_stop(sound_get("isa5"));
+	 sound_play(sound_get("isa1"),false,noone,0.66);
 	}
 	
 
@@ -45,58 +69,42 @@ if introhit = 0 {
 }
 intro = 1
 
-//	if rank >= 4 &&  my_hitboxID.damage > 1 {   
-//		 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20)
-//
-//
-//		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
-//			hitstop += 2
-//			hit_player_obj.hitstop += 2
-//		}
-//	if my_hitboxID.damage > 2 {
-//	   	 with hit_player_obj {
-//                 take_damage( player, -1 , 1)
-//         }	
-//         
-//     }
-//
-//	}
-//
-///if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2
-///and my_hitboxID.attack != AT_EXTRA_3 and move_cooldown[AT_FSPECIAL_2] == 0{
-///	
-///if infernal2 < 300{
-///
-///
-///    infernal2 += min(30,floor(my_hitboxID.damage * 2 * (rank/2 + 1)))
-///
-///if attack != AT_USTRONG and attack != AT_FSTRONG and attack != AT_DSTRONG and attack != AT_USPECIAL and attack != AT_DAIR{
-///    move_cooldown[AT_FSPECIAL_2] = 15
-///}
-///
-///}
-///
-///}
-
 if infernal2 < 300{
 	if my_hitboxID.type == 1 {
-	infernal2 += min(15,floor(hit_player_obj.hitstop * 3 * (rank/2 + 1)))
+		if rank < 4{
+	     if infernal2 < 102 infernal2 = min(102,infernal2 + 5 + my_hitboxID.damage*4)
+		}
+		if rank >= 4 && rank < 6 {
+	     if infernal2 < 202 infernal2 = min(202,infernal2 + 5 + my_hitboxID.damage*4)
+		}
+		else if rank == 6{
+	    infernal2 += 5 + my_hitboxID.damage*4
+		}
 	    if my_hitboxID.attack == AT_NAIR {
 	    move_cooldown[AT_USPECIAL_GROUND] = 30
 	    }
 	} else {
 		
+	    if rank < 4{
+	     if infernal2 < 102 infernal2 = min(102,infernal2 + my_hitboxID.damage*3)
+		}
+		if rank >= 4 && rank < 6 {
+	     if infernal2 < 202 infernal2 = min(202,infernal2 + my_hitboxID.damage*3)
+		}
+		else if rank == 6{
+	    infernal2 += my_hitboxID.damage*3
+		}
+	    if my_hitboxID.attack == AT_NAIR {
+	    move_cooldown[AT_USPECIAL_GROUND] = 30
+	    }
 	    
 		if my_hitboxID.damage <= 2 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
-			infernal2 += 2
 	    	move_cooldown[AT_USPECIAL_GROUND] = 5
 		}
 	    if my_hitboxID.damage > 2 && my_hitboxID.damage <= 6 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
-			infernal2 += 10
 			move_cooldown[AT_USPECIAL_GROUND] = 8	
 		}
 		if my_hitboxID.damage > 6 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
-			infernal2 += 20
 			move_cooldown[AT_USPECIAL_GROUND] = 12
 		}
 		
@@ -108,25 +116,78 @@ if infernal2 < 300{
 }
 
 ///
+if my_hitboxID.attack == AT_UTILT {
+      sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,0.8);
+      sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,0.6);
+}
+
+if my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.sound_effect == asset_get("sfx_burnapplied"){
+	hit_player_obj.grenadehit = 60
+}
+
+if my_hitboxID.attack == AT_DAIR && my_hitboxID.sound_effect == sound_get("exp2"){
+	hit_player_obj.grenadehit = 60
+}
 
 if my_hitboxID.attack == AT_FAIR {
-      sound_play(asset_get("sfx_clairen_tip_strong"));
-    	
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,0.8);
+      if djumps > 0{
+      	rankm += 50
+      	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,0.6);
+      	with hit_player_obj {
+      	take_damage( player, -1 , 3)
+      	}
+      	fx = spawn_hit_fx((my_hitboxID.x + hit_player_obj.x)/2,(my_hitboxID.y + hit_player_obj.y)/2 - 15,306)
+      	fx.pause = 8
+      }
 }
 
 if my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 4 {
-     sound_play(asset_get("sfx_clairen_tip_strong"));
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,0.8);
+     if djumps > 0{
+     	rankm += 50
+     	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,0.6);
+     	with hit_player_obj {
+      	take_damage( player, -1 , 3)
+      	}
+     	fx = spawn_hit_fx((my_hitboxID.x + hit_player_obj.x)/2,(my_hitboxID.y + hit_player_obj.y)/2 - 15,306)
+      	fx.pause = 8
+     }
 }
 
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num >= 5 {
-     sound_play(asset_get("sfx_clairen_tip_strong"));
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,0.8);
+     if djumps > 0{
+     	rankm += 50
+     	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,0.6);
+     	with hit_player_obj {
+      	take_damage( player, -1 , 3)
+      	}
+     	fx = spawn_hit_fx((my_hitboxID.x + hit_player_obj.x)/2,(my_hitboxID.y + hit_player_obj.y)/2 - 15,306)
+      	fx.pause = 8
+     }
 }
 
+if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 2 {
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,0.8);
+     sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,0.6);
+     fx = spawn_hit_fx((my_hitboxID.x + hit_player_obj.x)/2,(my_hitboxID.y + hit_player_obj.y)/2 - 15,306)
+     fx.pause = 8
+}
 
+if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 3 {
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,0.4,1);
+     sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.8,1);
+}
+
+if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 4 {
+     sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1,1);
+     sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,1);
+     rankm += 50
+}
 
 /// UAIR
 if my_hitboxID.attack == AT_UAIR {
-    
  hit_player_obj.y -= 20   
 }
 
@@ -159,30 +220,58 @@ create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , h
  
 }
 
+if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 8{
+	sound_play(sound_get("slice"),false,noone,1,0.8);
+	sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1);
+	fx = spawn_hit_fx( my_hitboxID.x , my_hitboxID.y - 32 , 306 )
+	fx2 = spawn_hit_fx( my_hitboxID.x , my_hitboxID.y - 32 , 305 )
+	fx.pause = 10
+	fx2.pause = 6
+	
+}
 
+if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
+	sound_stop(asset_get("sfx_ori_energyhit_heavy"));
+	sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,0.6,1.4);
+	fx2 = spawn_hit_fx( my_hitboxID.x , my_hitboxID.y - 15 , 305 )
+	fx2.pause = 6
+}	
 ////
 
 if my_hitboxID.attack == AT_DATTACK {
-	if hit_player_obj.state_cat == SC_HITSTUN {
-		hit_player_obj.x += floor((x + 100*spr_dir - hit_player_obj.x)/4)
+	if hit_player_obj.state_cat == SC_HITSTUN && my_hitboxID.hbox_num < 4{
+		hit_player_obj.x += floor((x + 80*spr_dir - hit_player_obj.x)/2)
+		hit_player_obj.y += floor((y - hit_player_obj.y + 30)/4)
 	}
 }
-if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 4 {
 
-sound_play(sound_get("slice"));
-
-
+if my_hitboxID.attack == AT_NAIR {
+	if hit_player_obj.state_cat == SC_HITSTUN && my_hitboxID.hbox_num == 1{
+		hit_player_obj.x += floor((x + 40*spr_dir - hit_player_obj.x)/6)
+		hit_player_obj.y += floor((y - hit_player_obj.y - 60)/6)
+	}
+	if hit_player_obj.state_cat == SC_HITSTUN && my_hitboxID.hbox_num == 2{
+		hit_player_obj.x += floor((x - 50*spr_dir - hit_player_obj.x)/5)
+		hit_player_obj.y += floor((y - hit_player_obj.y - 10)/5)
+	}
+	if hit_player_obj.state_cat == SC_HITSTUN && my_hitboxID.hbox_num == 3{
+		hit_player_obj.x += floor((x + 50*spr_dir - hit_player_obj.x)/3)
+		hit_player_obj.y += floor((y - hit_player_obj.y - 15)/3)
+	}
 }
 
-if my_hitboxID.attack == AT_UTILT {
-
-sound_play(sound_get("slice"));
- 
+if my_hitboxID.attack == AT_NAIR && window >= 8 {
+	if hit_player_obj.state_cat == SC_HITSTUN && my_hitboxID.hbox_num < 8{
+		hit_player_obj.x += floor((x + 10*spr_dir - hit_player_obj.x)/3)
+		hit_player_obj.y += floor((y - hit_player_obj.y)/3)
+	}
 }
+
+
 
 if my_hitboxID.attack == AT_DSPECIAL {
 state_timer = 10
-sound_play(sound_get("bonk"),false,noone,1.5,1);
+sound_play(sound_get("bonk"),false,noone,0.6,1);
  
 }
 
@@ -207,7 +296,6 @@ if my_hitboxID.attack == AT_USTRONG {
 if my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 2 {
      	destroyed = 1
     	create_hitbox(AT_BAIR , 3 , hit_player_obj.x , hit_player_obj.y - 30  );
-    	
 }
 
 
@@ -222,7 +310,15 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7 {
 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num >= 9 && my_hitboxID.hbox_num <= 11  {
     	spawn_hit_fx( hit_player_obj.x , hit_player_obj.y - 32 , 303 )
 
-    hit_player_obj.y += floor( (y - 6 -  hit_player_obj.y))
+    hit_player_obj.y += floor((y - hit_player_obj.y - 30)/6)
+    hit_player_obj.x += 5*spr_dir
+    if my_hitboxID.hbox_num == 9{
+    	hit_player_obj.x -= 12*spr_dir
+    	hit_player_obj.y -= 12
+    }
+    if my_hitboxID.hbox_num == 11{
+    	hit_player_obj.y += 12
+    }
 
 }
 
@@ -258,6 +354,14 @@ if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num >= 21 {
 }
 
 
+///BFG
+if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 8 {
+	BFGhit = true
+}
+///SAS
+if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 11  {
+	Laserhit = true
+}
 rankm += my_hitboxID.damage*20
 if rank == 0 && rankm < 120 {
 	rankm += 100

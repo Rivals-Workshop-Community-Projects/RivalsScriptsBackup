@@ -51,7 +51,16 @@ switch(attack){
         if(move_cooldown[AT_FSPECIAL] > 0) exit;
         //"smash" input
         var tmp_x = 190;
-        if((spr_dir == 1 && (right_pressed || right_buffer > 0)) || (spr_dir == -1 && (left_pressed || left_buffer > 0))){
+        //detect input here as well to account for frame-perfect inputs
+        if(right_hard_pressed && right_buffer <= -1){
+            right_buffer = 7;
+        }
+        if(left_hard_pressed && left_buffer <= -1){
+            left_buffer = 7;
+        }
+        //old smash input detection
+        //if((spr_dir == 1 && (right_pressed || right_buffer > 0)) || (spr_dir == -1 && (left_pressed || left_buffer > 0))){
+        if((spr_dir == 1 && right_buffer > 0) || (spr_dir == -1 && left_buffer > 0)){
             tmp_x = 280;
         }
         //temp_x = 210;

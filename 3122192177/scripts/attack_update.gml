@@ -178,8 +178,10 @@ if (attack == AT_FSPECIAL){
 	if(window == 2 && window_timer == 1){
 		if (instance_exists(materia_field) && materia_field != 0){
 			window = 3;
-			window_timer = 0;	
+			window_timer = 0;
+			if(materia_field.hit_cooldown == 0){
 			materia_field.need_to_die = true;
+			}
 		}else{
 		if(!special_down){
 			window = 3;
@@ -232,12 +234,31 @@ if(attack == AT_USPECIAL_2){
 		window_timer = 0;
 	}
 	
-	if(window == 1 && !free){
+	if(window == 1){
+		fall_through = down_down;
+	}
+	
+	if(window == 1){
+		if(freemd){
 	sound_play(sound_get("land"), 0, noone, 0.5);	
 	sound_play(asset_get("sfx_land_med"));	
 	spawn_base_dust(x-15*spr_dir, y, "land", spr_dir);
 		window = 2;
 		window_timer = 0;
+		}else{
+		if(!free){
+			
+			if(fall_through){
+			free = true;
+			}else{
+	sound_play(sound_get("land"), 0, noone, 0.5);	
+	sound_play(asset_get("sfx_land_med"));	
+	spawn_base_dust(x-15*spr_dir, y, "land", spr_dir);
+		window = 2;
+		window_timer = 0;				
+			}
+		}
+		}
 	}
 	
 	if(window == 2 && window_timer > 11){

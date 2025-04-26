@@ -1,17 +1,16 @@
 //article1_update.gml
 
 if (!ignores_walls) ignores_walls = true;
-
-//the idle state is interractable
-is_hittable = (state == 1);
-can_be_hit[5] = 2;
-ring_is_useable = (state == 1);
-
 //ring going away
 if (state == 1 && state_timer >= destruct_time || player_used_ring || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN)
 {
     if (state != 2) set_artc_state(2);
 }
+//the idle state is interractable
+is_hittable = (state == 1);
+can_be_hit[5] = 2;
+ring_is_useable = (state == 1);
+
 
 //prevent article from being hit by the owner's teammates (unless tester is using fspecial or can hit the article with rune H)
 with (oPlayer)
@@ -65,119 +64,67 @@ switch (state)
             fx.hsp = lengthdir_x(1, ring_launch_angle);
             fx.vsp = lengthdir_y(1, ring_launch_angle);
         }
+        if (state_timer >= destruct_time - 60) visible = (state_timer % 6 > 3);
 
         //interraction with ring
-        with (oPlayer) if (place_meeting(x, y, other) && !hitpause)
+        if (launching_player == noone)
         {
-            //you can parry the ring, which makes you the current owner of it
-            //you can hit the ring to change the owner but that's on the hit script
-            if (perfect_dodging && player != other.trick_ring_player) with (other)
+            with (oPlayer) if (place_meeting(x, y, other) && !hitpause)
             {
-                trick_ring_player = other.player;
-                trick_ring_player_id = other;
-                hud_owner_col = (trick_ring_player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
-
-                //spawn vfx
-                var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 18);
-                newdust.x = floor(x);
-                newdust.y = floor(y);
-                newdust.dust_fx = 9;
-                newdust.player = trick_ring_player;
-                sound_play(sound_get("sfx_rainbowring_swap"));
-                sound_play(asset_get("sfx_parry_success"));
-
-                ring_stun_start_time = 0;
-                set_artc_state(4);
-
-                with (trick_ring_player_id)
+                if (state != PS_RESPAWN && state != PS_DEAD && !bubbled && !super_armor && soft_armor < other.soft_armor_check &&
+                    invince_time <= 0 && !initial_invince && !invincible && !hurtboxID.dodging &&
+                    (player == other.trick_ring_player && !get_match_setting(SET_TEAMS) || get_player_team(player) == get_player_team(other.trick_ring_player) ||
+                    player != other.trick_ring_player))
                 {
-                    old_hsp = hsp;
-                    old_vsp = vsp;
-                    hitstop = 10;
-                    hitpause = true;
-
-                    invince_time = hitstop;
-                    invincible = true;
+                    //this part could probably be done as a DS_grid but... eh.....
+                    if (perfect_dodging) add_launch_obj(self, 5); //a player that's currently parrying
+                    else if (player == other.trick_ring_player && !clone && !custom_clone) add_launch_obj(self, 4); //the owner of the ring
+                    else if (get_player_team(player) == get_player_team(other.trick_ring_player) && !clone && !custom_clone) add_launch_obj(self, 3); //teammates of the owner
+                    else if (player >= 5 || clone || custom_clone) add_launch_obj(self, 2); //NPC players
+                    else add_launch_obj(self, 1); //enemy players
                 }
-                exit;
             }
-            else if (!perfect_dodging && state != PS_RESPAWN && state != PS_DEAD && !hurtboxID.dodging && player != 5 && !bubbled)
+            with (obj_stage_article) if ("enemy_stage_article" in self && place_meeting(x, y, other) && !hitpause)
             {
-                //teammate / owner behaviour
-                if (player == other.trick_ring_player && !get_match_setting(SET_TEAMS) || get_player_team(player) == get_player_team(other.trick_ring_player))
+                if (state < 8 && physics_state < 2 && !bubbled && !super_armor && soft_armor < other.soft_armor_check) add_launch_obj(self, 0);
+            }
+
+            //priority check
+            if (array_length(prior_check_detect) > 0)
+            {
+                var final_prior = 0;
+                var cur_prior_checked = -1;
+                for (var i = 0; i < array_length(prior_check_detect); i++) if (prior_check_detect[i] > cur_prior_checked)
                 {
-                    if (("is_bar_sonic" in self || "sonic_rainbowring_atk" in self)) //sonic/compatibility behaviour
-                    {
-                        other.launching_player = player;
-                        set_ring_attack("is_bar_sonic" in self ? AT_USPECIAL_2 : sonic_rainbowring_atk);
-                    }
-                    else //a teammate without compatibility
-                    {
-                        other.launching_player = player;
-                        if (!hitpause) set_state(PS_IDLE_AIR);
-                    }
+                    cur_prior_checked = prior_check_detect[i];
+                    final_prior = i;
                 }
-                else //enemy behaviour
+                launching_player = prior_check_obj[final_prior];
+            }
+        }
+        if (launching_player != noone)
+        {
+            var hb = create_hitbox(AT_USPECIAL, 1, x, y);
+            hb.artc_trickring = self;
+            hb.player = trick_ring_player;
+
+            with (launching_player)
+            {
+                other.ring_launch_speed = other.ring_base_spd + (point_distance(0, 0, hsp, vsp/2) / 2.5);
+                if (other.ring_launch_speed > other.ring_spd_limit) other.ring_launch_speed = other.ring_spd_limit;
+
+                //launch player up
+                if (object_index == oPlayer)
                 {
-                    if (invince_time <= 0 && !initial_invince && !invincible)
-                    {
-                        other.launching_player = player;
-
-                        //knockback shenanigans
-                        /* old code lmao
-                            var temp_angle = point_direction(x, y, x + hsp, y + vsp);
-                            if (temp_angle > 60 && temp_angle < 150) hurt_img = 4;
-                            else if (temp_angle > 240 && temp_angle < 300) hurt_img = 2;
-                            else hurt_img = 0;
-                            if (hsp != 0) spr_dir = -sign(hsp);
-                        */
-                        hurt_img = 4;
-
-                        if (state != PS_HITSTUN) //set them to hitstun
-                        {
-                            hurtboxID.sprite_index = hitstun_hurtbox_spr;
-                            hitstun_full = 30;
-                            hitstun = hitstun_full;
-                            hit_player = other.player;
-                            set_state(PS_HITSTUN);
-                        }
-                        else //reset hitstun
-                        {
-                            state_timer = 0;
-                            hitstun = hitstun_full;
-                            other.ring_launch_speed = orig_knock;
-                        }
-
-                        if (self != other.player_id)
-                        {
-                            other.player_id.combo_timer += hitstun_full; //combo counter
-                            other.player_id.combo_timer_full = other.player_id.combo_timer;
-                            other.player_id.combo_hits ++;
-                            other.player_id.comboing = true;
-                        }
-                    }
-                }
-                
-
-                //setup
-                if (other.launching_player > 0)
-                {
-                    x = other.x;
-                    y = other.y;
-                    free = true;
-                    other.ring_launch_speed = other.ring_base_spd + (point_distance(x, y, x + hsp, y + vsp/2) / 2.5);
-                    if (other.ring_launch_speed > other.ring_spd_limit) other.ring_launch_speed = other.ring_spd_limit;
-
-                    //launch player up
                     if (state_cat != SC_HITSTUN && "is_bar_sonic" not in self) other.ring_launch_speed *= (gravity_speed/4+1);
-                    hsp = lengthdir_x(other.ring_launch_speed, other.ring_launch_angle); //tbh i technecally don't need this but whatever
-                    vsp = lengthdir_y(other.ring_launch_speed, other.ring_launch_angle);
-                    if (vsp > 0) sent_down = true; //always bounce lol (it's unused)
-
-                    other.player_used_ring = true;
-                    exit;
+                    else if (state_cat == SC_HITSTUN && activated_kill_effect) other.ring_launch_speed *= 1.2;
                 }
+                else if ("enemy_stage_article" in self) other.ring_launch_speed *= (gravity_speed/4+1) * 1.2;
             }
+
+            prior_check_detect = [];
+            prior_check_obj = [];
+            exit;
         }
         break;
     case 2: //destroyed
@@ -267,6 +214,7 @@ artc_state_update(state);
 {
     state = new_state;
     state_timer = 0;
+    visible = true;
 }
 #define artc_state_update(cur_state)
 {
@@ -353,4 +301,11 @@ artc_state_update(state);
             keep_air_speed = abs(hsp);
         }
     }
+}
+#define add_launch_obj(object, priority)
+{
+    array_push(other.prior_check_obj, object);
+    array_push(other.prior_check_detect, priority);
+
+    //print ("added object ID " + string(object) + " with priority value " + string(priority));
 }

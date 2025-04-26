@@ -12,7 +12,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 10;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
  
  
@@ -29,12 +29,11 @@ alt_name[6]  = "Yamame";
 alt_name[7]  = "Ryuko";
 alt_name[8]  = "Farewell";
 alt_name[9]  = "Pâle";
-alt_name[10] = "Pâle";
-alt_name[11] = "Strange Bird";
-alt_name[12] = "Yuuto";
-alt_name[13] = "Zetta";
+alt_name[10] = "Strange Bird";
+alt_name[11] = "Yuuto";
+alt_name[12] = "Jevilknife";
+alt_name[13] = "Slime Pie";
 alt_name[14] = "Abyss";
-alt_name[15] = "Early Access";
  
  
 //Patch

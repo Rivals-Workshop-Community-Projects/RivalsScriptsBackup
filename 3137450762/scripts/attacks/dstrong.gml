@@ -100,7 +100,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 11);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 361);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 6); // horizontal kb sends away from attacker
-set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.8);

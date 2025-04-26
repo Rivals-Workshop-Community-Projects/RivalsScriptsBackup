@@ -1,3 +1,8 @@
+if (my_hitboxID.attack != AT_UTILT && my_hitboxID.dumb_di_mult == 0)
+{
+    hit_player_obj.dumb_di_mult = 1;
+}
+
 //actual code stuff
 //if axes hit the opponent, return
 if ((my_hitboxID.attack == AT_FTILT) or (my_hitboxID.attack == AT_FSPECIAL)) && (my_hitboxID.player_id == self) {

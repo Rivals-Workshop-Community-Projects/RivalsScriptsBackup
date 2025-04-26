@@ -219,8 +219,10 @@ if(state == 1){
 	}
 	
 	if(field_hp = 0){
+		if(!death_instance){
 		with(player_id){
 		move_cooldown[AT_FSPECIAL] = 300;
+		}
 		}
 		state = 3;
 		state_timer = 0;

@@ -189,12 +189,25 @@ if (attack == AT_FSPECIAL)
 			grapple_fist 				= instance_create(x + hand_x, y - hand_y, "obj_article1");
 			grapple_fist.depth			= depth - 2;
 			
-			grapple_fist.hsp 			= spr_dir ? grapple_speed : -grapple_speed;
-
-			grapple_fist.proj_angle 	= final_joy_angle;
-
-			grapple_fist.hsp 			= round(grapple_speed * dcos(final_joy_angle) * spr_dir);
-			grapple_fist.vsp 			= round(grapple_speed * dsin(final_joy_angle) * -spr_dir);			
+			grapple_fist.proj_angle 	= final_joy_angle;	
+			
+			//	Normal
+			if !has_rune("K")
+			{
+				grapple_fist.hsp 		= spr_dir ? grapple_speed : -grapple_speed;
+				
+				grapple_fist.hsp 		= round(grapple_speed * dcos(final_joy_angle) * spr_dir);
+				grapple_fist.vsp 		= round(grapple_speed * dsin(final_joy_angle) * -spr_dir);	
+			}
+			
+			//	Longer and Faster
+			if has_rune("K")
+			{
+				grapple_fist.hsp 		= spr_dir ? gpr_speed : -gpr_speed;
+				
+				grapple_fist.hsp 		= round(gpr_speed * dcos(final_joy_angle) * spr_dir);
+				grapple_fist.vsp 		= round(gpr_speed * dsin(final_joy_angle) * -spr_dir);	
+			}	
 		}
 	}
 
@@ -226,7 +239,16 @@ if (attack == AT_FSPECIAL)
 		{ 
 			if (window_timer < 3)
 			{
-				var pull_speed 			= 13.5;
+				if !has_rune("K")
+				{
+					var pull_speed 		= 13.5;
+				}
+				
+				if has_rune("K")
+				{
+					var pull_speed 		= 20.5;
+				}				
+				
 				var pull_angle 			= point_direction(x + hand_x, y - hand_y, grapple_fist_pos_x, grapple_fist_pos_y);		
 
 				//	Rayman pulling himself towards the Enemy

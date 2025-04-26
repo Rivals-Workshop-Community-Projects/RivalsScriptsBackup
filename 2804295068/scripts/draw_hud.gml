@@ -18,7 +18,7 @@ var torchwood_exists = false;
 
 with (obj_article1){
     if (player_id == other.id){
-        var torchwood_exists = true;
+        torchwood_exists = true;
     }
 }
 

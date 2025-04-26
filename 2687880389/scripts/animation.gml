@@ -272,7 +272,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
                             grab_y_offset = ease_linear(y, other.y - 60, other.ustrong_rising_count, other.ustrong_rising_duration);
 		                    //grab_x_offset = other.x + (24 * other.spr_dir);
                             //grab_y_offset = other.y - 60;
-		        			hitstop = other.ustrong_rising_hitbox_duration + 4;
+		        			//hitstop = other.ustrong_rising_hitbox_duration + 4;
 		                default :
 		                    break;
 		            }

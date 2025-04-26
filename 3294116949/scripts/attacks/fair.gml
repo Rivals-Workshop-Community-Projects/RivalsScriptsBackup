@@ -76,7 +76,8 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("alt_axe1"));
+//set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 0);
 
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 2);
@@ -96,7 +97,8 @@ set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 7);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("alt_axe2"));
+//set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 0);
 
 //hit 3
@@ -119,7 +121,8 @@ set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 7);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 3);
-set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("alt_axe3"));
+//set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 set_hitbox_value(AT_FAIR, 4, HG_PARENT_HITBOX, 4);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_TYPE, 1);
@@ -140,4 +143,5 @@ set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 45);
 set_hitbox_value(AT_FAIR, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FAIR, 4, HG_PRIORITY, 8);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, 3);
-set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, sound_get("alt_axe3"));
+//set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

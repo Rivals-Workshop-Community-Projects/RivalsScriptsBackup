@@ -283,7 +283,7 @@ else
 	// nspec
 	asReverse = false;
 	asCharge = 0;
-	asChargeMax = 100;
+	asChargeMax = 150;
 	asSFX[0] = 0;
 	asSFX[1] = 0;
 	asSFX[2] = 0;

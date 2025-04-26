@@ -172,11 +172,11 @@ so that things like page breaks can work properly.
 initTip("Fluttering");
 initWords("Samson's wings are too small for him to fly, but he can definitely hover. Samson can cancel into aerial attacks or specials while in this state.");
 initWords("Samson can flutter in the air for about a second when holding down the jump button.");
-initWords("Pressing down and jumping will instantly make Samson hover.");
+initWords("Pressing down and jumping will instantly make Samson hover, even when on the ground.");
 initImage_ext(sprite_get("hover"), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("NSpecial: Deploy! Honey Jar");
-initWords("Samson throws a jar of honey that can be hit. Samson can detonate it manually by using his special again, or if the jar takes a cumilative 10 worth of damage.");
+initWords("Samson throws a jar of honey that can be hit. Samson can detonate it manually by using his special again, or if the jar takes a cumilative 10 percent worth of damage.");
 initWords("Opponents caught in the blast are stuck in place, like Maypul's wrap. In this state, Samson's specials, strongs, and dash attack can launch them out of it.");
 initWords("Try using Samson's attacks to push them into the blast!");
 
@@ -186,7 +186,7 @@ initImage_ext(sprite_get("jaridle"), -8, fa_left, 1, 1, true, c_white, 1, false,
 
 initTip("FSpecial: Bearscrew");
 initWords("Samson stole this from his favorite bear from a certain fighting game.");
-initWords("This move has very good hit range and goes a long way horizontally, making it a good edgeguarding tool. The inital hits are untechable.");
+initWords("This move has very good hit range and goes a decent way horizontally, making it a good edgeguarding tool. The inital hits are untechable.");
 initWords("You can cancel into a jump or walljump after Samson starts falling. (If Samson finishes while in the air) Otherwise, Samson will shortly go into pratfall.");
 initImage_ext(sprite_get("fspecial"), -6, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -214,7 +214,7 @@ initWords("Samson uses his favorite rhythm game to attack. The sweet spot are at
 initImage_ext(sprite_get("fstrong"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("UStrong: Patapon");
-initWords("Samson uses his favorite rhythm game to attack. The sweet spot is at the tip of the spear. The sourspot cannot hit grounded opponents.");
+initWords("Samson uses his favorite rhythm game to attack. The sweet spot is at the tip of the spear.");
 initImage_ext(sprite_get("ustrong"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("DAttack: Circus Bear!");
@@ -235,12 +235,12 @@ initWords("RNG? In my fighting game?");
 
 initTip("Samson's Lore");
 initWords("Samson is a bugbear, a strange species characterized by a hybrid of any ursine and insectiod. Samson is 36% Polar Bear, 33% Brown Bear, 28% Sleepy Orange Butterfly, and 3% Huntsman Spider. (He knows the numbers by heart!) He is all parts cuddlebug and teddybear <3, and can make webs but refuses to tell you how.");
-initWords("Samson is a generally bubbly and vibrant guy. He's quite affectionate to the people he trusts, and is always willing to lend an emotional hand. He is very quick to trust others, which more often than not leads him into grave situations. Samson enjoys hugs, cuddles, rhythm games (He claims to be the best at Taiko, but can barely do Haya Saitama 2000 on Oni), and consuming healthy ammounts of media featuring best girl, Maypul (He really likes raccons. Even he can't explain why). He was born with a birth defect that makes his wings too small and thin for flight. Despite this setback, Samson still knows how to utilize his wings to save himself, and has learned to rely on his claws a little more than the average bugbear of his composition. (Even if he isn't good at it) He also cannot utilize his bioluminescent antennas properly, as they only seem to come on during bursts of honest happiness.");
-initWords("Despite everything, he's your typical teenager. He lives in Hammockton, a lively town on a planet much like Earth, except it's filled with colorful creatures of varying anthropomorphism.");
+initWords("Samson is a generally bubbly and vibrant guy. He's quite affectionate to the people he trusts, and is always willing to lend an emotional hand. He is very quick to trust others, which more often than not leads him into grave situations. Samson enjoys hugs, cuddles, rhythm games, and consuming healthy amounts of media featuring best girl, Maypul (He really likes raccoons. Even he can't explain why). He was born with a birth defect that makes his wings too small and thin for flight. Despite this setback, Samson still knows how to utilize his wings to save himself, and has learned to rely on his claws a little more than the average bugbear of his composition. (Even if he isn't good at it) He also cannot utilize his bioluminescent antennas properly, as they only seem to come on during bursts of honest happiness.");
+initWords("Despite everything, he's your typical bear making it through life. He lives in Hammockton, a lively town on a planet much like Earth, except it's filled with colorful creatures of varying anthropomorphism.");
 initWords("One faithful day in Hammockton, Samson was working on making a mod about himself in Rivals. Only for a portal to appear out of nowhere from his computer and suck him in. Aether has a problem with portals, don't they?");
 initWords("After the inital panic about being in a completely different world (possibly universe) passed over, Samson realized he could use the oppertunity to meet some of his favorite characters in Aether... like Maypul! Sad part is, he appeared in Merchant Port, which is a long ways from the forest.");
 initWords("On the realization of a new adventure, Samson makes his way to Julesvale, where all the workshop characters seem to originate from. Samson must fight (or hug, he prefers that a lot more) the balanced, the jank, the intimidating, and the all-powerful alike to get stronger and reach the Aetherian Forest.");
-initWords("Using the power of cartoon logic and the blessing of the Ursimexan Goddess Briarslee, Samson can throw pressurized jars of a special honey that's stickier than the consumer brand. (Don't worry, it's ethically sourced!)");
+initWords("Using the power of hammerspace, Samson can throw pressurized jars of a special honey that's stickier than the consumer brand. (Don't worry, it's ethically sourced!)");
 
 
 
@@ -282,6 +282,71 @@ in a Patch.
 */
 
 #define CORE_patches
+
+
+initPatch("1.1.0", "November 2024");
+initHeader("HUGE patch. Thanks to a lot of feedback, a lot of issues with Samson have been fixed, I hope.");
+initSection("It's been like, what, two years?");
+initSection("First of all, I appreiate all the support and feedback Samson received. I legit did not expect to get 10,000 subscribers on Samson, but it makes me really happy to see that people enjoy him, despite all his jank. I want to get back into Rivals modding one day, but for now my current obsession is with MUGEN stuff lol. This update has been mostly finished for a while, I just never released it because I got lazy lol. Special thanks to Reaver of Souls for helping me get it out and inspiring me to continue. I really appreciate them :)");
+
+initHeader("N-Special");
+initSection("-Samson does an entirely new move when doing his N-Special in the air, now throwing the jar straight downwards instead of forwards.");
+initImage_ext(sprite_get("nspecial_air"), -8, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initSection("If you or a loved one has consumed Samson's honey with the batch number 'ROAU2Ftc29u' please contact the Food and Drug Administration of Aether.");
+
+initHeader("Dash Attack");
+initSection("-The rolling part of his attack now hits multiple times instead of once, the animation has also been reworked slightly.");
+initSection("-Samson slides a little when doing his finisher attack, this should be easier to combo with this move.");
+initSection("-Endlag has been reduced, also making it easier to combo.");
+
+initHeader("THE DREADED FSPECIAL");
+initSection("-Hitboxes come out faster which makes it harder for opponents to fall out");
+initSection("-You can finally wall-jump/jump cancel this!");
+initSection("-Range has been halved");
+initSection("-Knockback of final hit reduced from 8 > 7");
+initSection("-Angle of final hit reduced from 30 > 45");
+initSection("-Added hit FX");
+initSection("-Ability to not sugarcoat it has reduced by about 90%");
+
+initHeader("F-Tilt");
+initSection("-Reworked animation, now has bigger horizontal range.");
+
+initHeader("F-Air");
+initSection("-Animation has been changed to better reflect hitboxes.");
+initSection("-Hit angle 50 > 70.");
+
+initHeader("F-Strong");
+initSection("-Reworked animation, now has bigger horizontal and vertical range.");
+
+initHeader("U-Air");
+initSection("-Damage 8 > 6");
+initSection("-Damage (late) 7 > 5");
+
+initHeader("U-Strong");
+initSection("- Has a hitbox that hits opponents on the ground, more in-tune to Clarien's U-Strong.");
+initSection("- Tipper base knockback 8 > 7.");
+initSection("- Tipper scaling 1.3 > 1.");
+
+initHeader("B-Air");
+initSection("- Sweetspot knockback 10 > 8 ");
+initSection("- Sweetspot scaling 1.3 > 0.8 ");
+initSection("- Angle changed 119 > 135 ");
+initSection("- Cooldown has been reduced from 40 to 20 frames. ");
+
+initHeader("U-Special");
+initSection("-Initial hitbox base knockback 11 > 7");
+initSection("- Late hitbox base knockback 7 > 4");
+initSection("- Samson will no longer be arrested for public indecency while using this move in certain stages.");
+
+initHeader("Misc");
+initSection("- Added Runes! Thanks Reaver!");
+initSection("- Added custom jars to Seasonal alts");
+initSection("- Replaced Inverse Alt with Disco Bear Alt");
+initSection("- Replaced Raid alt with Mr. Grizz (Will fix the CSS thing soon...)");
+initSection("- Samson now has a character select sound");
+initSection("- Replaced Hooded Ralsei Alt with Begin To Hope alt");
+
+
 
 initPatch("1.0.1", "28 May, 2022");
 initHeader("Samson has been released to the public!");
@@ -373,6 +438,7 @@ initSection("- Angle 315 > 50");
 
 initHeader("Nair");
 initSection("-Removed air friction stopping his momentum");
+initSection("-Angle changed to 10");
 
 initHeader("Bair");
 initSection("- Fixed bug where the hit box would spawn while landing");
@@ -416,7 +482,7 @@ initSection("Trummel & Alto, Bailey, Feri, Pit, Steve, Henry Stickmin, Amber, TC
 initSection("Final Smash Buddy, Assist Buddy, Kirby Fighters Buddy");
 initSection("Soulbound Conflict, Mt. Dedede Stadium, Pokemon Stadium, The Killing Grounds, Miiverse");
 initPatch("Special Thanks", "");
-initSection("Reaver of Souls - Prerelease Playtesting and Suggestions");
+initSection("Reaver of Souls - Prerelease Playtesting and Suggestions, Abyss Runes. Air N-Special");
 initImage_ext(sprite_get("thanksreaver"), -6, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 initSection("Kidma64 - Inspriation and emotional support (Seriously, I could not have done this without you. Thanks Kidma. :)");
 initImage_ext(sprite_get("thankskidma"), -6, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
@@ -517,10 +583,7 @@ zero".
 
 #define CORE_cheats
 
-CHEAT_FLY		= initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
-
-(hold shield to not fly)");
-
+CHEAT_JAR = initCheat("No Jar Cooldown", [0,1], ["Off","On"], "Samson can spawn a new jar as soon as one disappears.")
 
 
 /*

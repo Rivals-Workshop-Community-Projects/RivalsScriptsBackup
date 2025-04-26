@@ -42,7 +42,7 @@ if ( ustrong_pale)
         {
             sound_play(asset_get("sfx_quick_dodge"));
         }
-         pale_sweetspot = false;
+         pale_sweetspot = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         
         draw_sprite_ext(sprite_get("ustrong_pale_leaving"),(pale_timer - 40) / 4,pale_x,pale_y,pale_dir,1,0,c_white,1);
     }
@@ -113,11 +113,11 @@ if (!runeF)
 */
 if (cd_charge_offset_timer > 0)
 {
-    cd_charge_offset_timer -= 1;
+    cd_charge_offset_timer -= 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 else
 {
-    cd_charge_offset = 0;
+    cd_charge_offset = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 
@@ -163,11 +163,11 @@ with (obj_article1)
 
 
 
-hcd_image += 0.13;
+hcd_image += 0.13; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
 if (hcd_image > 4)
 {
-    hcd_image -= 4
+    hcd_image -= 4 // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 if (is_turn)
@@ -200,17 +200,17 @@ if (is_turn)
     if (is_hcd)
     {
         
-        hcd_y -= hcd_spd;
-        hcd_step += 1;
+        hcd_y -= hcd_spd; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        hcd_step += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         
         if( hcd_spd > 0)
         {
-            hcd_spd -= 0.5;
+            hcd_spd -= 0.5; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
     
         if (hcd_step >= 239)
         {
-            is_hcd = false;
+            is_hcd = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
         
         
@@ -231,21 +231,21 @@ if (is_turn)
     var offset = 38;
     var need_draw = false;
     
-    var xv = view_get_xview();
+    var xv = view_get_xview(); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
     var wv = view_get_wview();
-    var yv = view_get_yview();
+    var yv = view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     var hv = view_get_hview();
     var image = 0;
     
-    x_draw = inst.x;
-    y_draw = inst.y;
+    x_draw = inst.x; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    y_draw = inst.y; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     
     // right
     if (x_draw > xv + wv)
     {
         while(x_draw > xv + wv - offset)
         {
-            x_draw -= 1;
+            x_draw -= 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             
             need_draw = true;
         }
@@ -258,7 +258,7 @@ if (is_turn)
     {
         while(x_draw < xv + offset)
         {
-            x_draw += 1;
+            x_draw += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             
             need_draw = true;
         }
@@ -271,7 +271,7 @@ if (is_turn)
     {
         while(y_draw > yv + hv - offset)
         {
-            y_draw -= 1;
+            y_draw -= 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             
             need_draw = true;
         }
@@ -292,7 +292,7 @@ if (is_turn)
     {
         while(y_draw < yv + offset)
         {
-            y_draw += 1;
+            y_draw += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             
             need_draw = true;
         }
@@ -340,7 +340,7 @@ with (obj_article2)
 {
     if (player_id == other)
     {
-        y_head = y - 110;
+        y_head = y - 110; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
            
         if (player_id.x - x != 0)
         {
@@ -354,17 +354,3 @@ with (obj_article2)
         draw_sprite_ext(sprite_get("pale_head"),0,x,y_head,1,1,rot,c_white,1)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

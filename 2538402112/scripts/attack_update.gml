@@ -221,10 +221,11 @@ switch(attack)
                 }
                 break;
             case 2://Dig into Ground
+                hud_offset = max(-10*window_timer,-60);
                 if free set_state(PS_IDLE_AIR);
-                if window_timer == 0 destroy_hitboxes();
                 break;
             case 3://Ground Wait
+                hud_offset = -60;
                 if free set_state(PS_IDLE_AIR);
                 else if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
                     grov_digdir = 0;
@@ -332,6 +333,7 @@ return newdust;
 #define downb_article_check
 window = 2;
 window_timer = 0;
+destroy_hitboxes();
 
 with asset_get("obj_article_solid"){
     if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone  other.window = 8;

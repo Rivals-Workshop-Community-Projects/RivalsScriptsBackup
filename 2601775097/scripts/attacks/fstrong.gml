@@ -10,7 +10,6 @@ set_attack_value(atk, AG_STRONG_CHARGE_WINDOW, 2);
 var theikos_friction = 0.15;
 
 var window_num = 1; //charge startlag
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -18,7 +17,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);
 
 window_num ++; //charge
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -27,7 +25,6 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);
 
 window_num ++; //attack windup
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -36,7 +33,6 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -45,9 +41,8 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"))
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18); //14
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_friction);
@@ -66,7 +61,7 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12); //14
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361); //40
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45); //361
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 13);

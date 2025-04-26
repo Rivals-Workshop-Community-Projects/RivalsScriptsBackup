@@ -88,7 +88,7 @@ set_color_profile_slot_range( 6, 2, 14, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Cokey Coley
 set_color_profile_slot( 1, 0, 237, 176, 176 ); //orange
@@ -298,13 +298,22 @@ set_color_profile_slot( 23, 5, 255, 0, 0 ); //pink
 set_color_profile_slot( 23, 6, 179, 0, 64 ); //bronze
 
 // Medicinal Spices
-set_color_profile_slot( 24, 0, 144, 45, 29 ); //orange
-set_color_profile_slot( 24, 1, 76, 25, 24 ); //orange2
-set_color_profile_slot( 24, 2, 255, 255, 255 ); //gray
-set_color_profile_slot( 24, 3, 207, 207, 207 ); //gray2
-set_color_profile_slot( 24, 4, 144, 30, 43 ); //red
-set_color_profile_slot( 24, 5, 116, 38, 50 ); //pink
-set_color_profile_slot( 24, 6, 144, 30, 43 ); //bronze
+set_color_profile_slot( 24, 0, 173, 75, 57 ); //orange
+set_color_profile_slot( 24, 1, 92, 29, 29 ); //orange2
+set_color_profile_slot( 24, 2, 235, 235, 235 ); //gray
+set_color_profile_slot( 24, 3, 181, 181, 181 ); //gray2
+set_color_profile_slot( 24, 4, 158, 33, 47 ); //red
+set_color_profile_slot( 24, 5, 69, 69, 69 ); //pink
+set_color_profile_slot( 24, 6, 161, 42, 42 ); //bronze
+
+// Tropical Climate
+set_color_profile_slot( 25, 0, 146, 235, 196 ); //orange
+set_color_profile_slot( 25, 1, 87, 212, 174 ); //orange2
+set_color_profile_slot( 25, 2, 0, 212, 179 ); //gray
+set_color_profile_slot( 25, 3, 0, 150, 142 ); //gray2
+set_color_profile_slot( 25, 4, 147, 222, 190 ); //red
+set_color_profile_slot( 25, 5, 222, 245, 73 ); //pink
+set_color_profile_slot( 25, 6, 225, 245, 98 ); //bronze
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

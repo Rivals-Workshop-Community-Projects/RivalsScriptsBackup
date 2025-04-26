@@ -6,72 +6,81 @@ if instance_exists(cursor_id){
 	var cur_y = get_instance_y(cursor_id);
 	
 	//Voice Logic
-	if get_player_color(player) ==11 || get_player_color(player) ==12 {	
-		if (cur_x > 16  + x )&& (cur_x <=  48 + x )&& (cur_y > 86 + y )&& (cur_y <=  112 + y ){		//Button Coordinates
-			suppress_cursor = true;
-			if menu_a_pressed  {
-				voice_button = !voice_button;
-				 sound_play(asset_get("mfx_option"));
-				menu_a_pressed = false;
+	if "voice_button" in self{
+		if get_player_color(player) ==11 || get_player_color(player) ==12 {	
+			if (cur_x > 16  + x )&& (cur_x <=  48 + x )&& (cur_y > 86 + y )&& (cur_y <=  112 + y ){		//Button Coordinates
+				suppress_cursor = true;
+				if menu_a_pressed  {
+					voice_button = !voice_button;
+					sound_play(asset_get("mfx_option"));
+					menu_a_pressed = false;
+				}
 			}
+		} else {
+			voice_button = 0;
 		}
-	} else {
-		voice_button = 0;
 	}
 	//Pill Logic
-	if (cur_x > 12 + x )&& (cur_x <=  52  + x )&& (cur_y > 44 + y )&& (cur_y <=  70  + y ){		//Button Coordinates
-		suppress_cursor = true;
-		if menu_a_pressed  {
-			pill_button = pill_button+1;
-			if pill_button >8{pill_button = 1}								//TOTAL AMOUNT OF PILLS
-			sound_play(asset_get("mfx_option"));
-			menu_a_pressed = false;
-			pill_prev = pill_button;
+	if "pill_button" in self{
+		if (cur_x > 12 + x )&& (cur_x <=  52  + x )&& (cur_y > 44 + y )&& (cur_y <=  70  + y ){		//Button Coordinates
+			suppress_cursor = true;
+			if menu_a_pressed  {
+				pill_button = pill_button+1;
+				if pill_button >10{pill_button = 1}								//TOTAL AMOUNT OF PILLS
+				sound_play(asset_get("mfx_option"));
+				menu_a_pressed = false;
+				pill_prev = pill_button;
+			}
 		}
 	}
 }
+if ("pill_button" in self) &&  ("voice_button" in self){
+	if ("alt_prev" in self) && ("alt_cur" in self) {
+		if alt_prev != alt_cur{
+			if alt_cur == 11 || alt_cur == 12{		//Medic
+				if alt_prev != 12 && alt_prev !=11 {pill_button=6;}
+			}
+			else if alt_cur == 8{			//Bluey
+				pill_button=10;
+			}
+			else if alt_cur == 15{			//Wily
+				pill_button=9;
+			}
+			else if alt_cur == 16{			//Eggman
+				pill_button=5;
+			}
+			else if alt_cur == 21 || alt_cur == 22{		//Tetris
+				if alt_prev != 22 && alt_prev !=21 {pill_button=4;}
+			}
+			else if alt_cur == 20{			//Virus
+				pill_button=8;
+			}
+			else if alt_cur == 25{			//Pringles
+				pill_button=2;
+			}
+			else if alt_cur == 28{			
+				pill_button=3;
+			}
+			else if alt_cur == 29{			//Rice
+				pill_button=6;
+			}
+			else if alt_cur == 31{			//Mothra
+				pill_button=7;
+			}
+			else {
+				pill_button=pill_prev;
+			}
+		}
+	}
 
-if alt_prev != alt_cur{
-	if alt_cur == 11 || alt_cur == 12{		//Medic
-		if alt_prev != 12 && alt_prev !=11 {pill_button=6;}
-	}
-	else if alt_cur == 16{			//Eggman
-		pill_button=5;
-	}
-	else if alt_cur == 21 || alt_cur == 22{		//Tetris
-		if alt_prev != 22 && alt_prev !=21 {pill_button=4;}
-	}
-	else if alt_cur == 20{			//Virus
-		pill_button=8;
-	}
-	else if alt_cur == 25{			//Pringles
-		pill_button=2;
-	}
-	else if alt_cur == 28{			
-		pill_button=3;
-	}
-	else if alt_cur == 29{			//Rice
-		pill_button=6;
-	}
-	else if alt_cur == 31{			//Mothra
-		pill_button=7;
-	}
-	else {
+	//The last line
+	alt_prev = alt_cur; 
+	pill_cur = pill_button
 
-		pill_button=pill_prev;
-
-	}
-
+	//We receive the Voice Toggle and Pill Skin
+	generated_var = generate_synced_var(voice_button, 1, pill_button, 4)
+	set_synced_var(player, generated_var);
 }
-
-//The last line
-alt_prev = alt_cur; 
-pill_cur = pill_button
-
-//We receive the Voice Toggle and Pill Skin
-generated_var = generate_synced_var(voice_button, 1, pill_button, 4)
-
-set_synced_var(player, generated_var);
 
 #define generate_synced_var
 ///args chunks...

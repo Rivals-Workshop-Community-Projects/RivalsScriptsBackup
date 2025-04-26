@@ -3,37 +3,34 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR 
 }
 
 if (attack == AT_FSPECIAL) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-    if (window == 1 && grabbedid != noone){
-	    grabbedid.ungrab = 0;
-        grabbedid.invincible = true; //DELETE THIS LINE TO MAKE THE GRABBED PLAYER HITTABLE
-    
-        //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        grabbedid.x = lerp(grabbedid.x, x + spr_dir * 80, 0.6); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
-        grabbedid.y = y; //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
-        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-        grabbedid.wrap_time = 6000;
-        grabbedid.state = PS_WRAPPED;
-    } 
-       if(window == 2 && has_hit_player && grabbedid != noone){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
-            
-            grabbedid.x = lerp(grabbedid.x, x + spr_dir * 45, 0.6);
-            grabbedid.y = y;
-            grabbedid = noone;
-        }
-	if window == 3 && window_timer == 8
-	{
-	move_cooldown[AT_FSPECIAL] = 55;
-	dichal = 0;
+    for (var i = 0; i < 3; i++){
+	    if (window == 1 && grabbedCharacter[i] != -4){
+		    grabbedCharacter[i].ungrab = 0;
+		    grabbedCharacter[i].invincible = true;
+	        grabbedCharacter[i].x = lerp(grabbedCharacter[i].x, x + spr_dir * 80, 0.6); 
+	        grabbedCharacter[i].y = y;
+	        grabbedCharacter[i].spr_dir = -spr_dir;
+	        grabbedCharacter[i].wrap_time = 6000;
+	        grabbedCharacter[i].state = PS_WRAPPED;
+	    } 
+	       if(window == 2 && has_hit_player && grabbedCharacter[i] != noone){
+	            grabbedCharacter[i].x = lerp(grabbedCharacter[i].x, x + spr_dir * 45, 0.6);
+	            grabbedCharacter[i].y = y;
+	        }
+		{
+    }
+    if (window == 1 and window_timer == 1){
+		move_cooldown[AT_FSPECIAL] = 55;
+		dichal = 0;    	
+    }
 	}
-           if left_down && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
-             spr_dir = -1;
-             dichal = 1;
-             destroy_hitboxes();
+        if (left_down and spr_dir == 1) && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
+            spr_dir = -1;
+            dichal = 1;
          }
-          if right_down && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
-             spr_dir = 1;
-             dichal = 1;
-             destroy_hitboxes();
+          if (right_down and spr_dir == -1) && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
+            spr_dir = 1;
+            dichal = 1;
          }    
 	}
 
@@ -395,7 +392,15 @@ if (attack == AT_USTRONG){
 //////////////////////
 ///JAB 
 if (attack == AT_JAB){
+	if (window == 3){
+		if (!has_hit){
+			set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 0);
+		}else{
+			set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
+		}
+	}
 	if (window == 1 && window_timer == 1) {
+		set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 0);
 		reset_hitbox_value(AT_JAB, 1, HG_DAMAGE);
         reset_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER);
 	    reset_window_value(AT_JAB, 1, AG_WINDOW_HSPEED);
@@ -566,7 +571,7 @@ if (attack == AT_DSTRONG){
 if (attack == AT_NSPECIAL){
       if (window == 3 && window_timer == 8){
       	
-        move_cooldown[AT_NSPECIAL] = 50;
+        move_cooldown[AT_NSPECIAL] = 85;
         
        spawnclock = 41;
     }
@@ -575,13 +580,13 @@ if (attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 1);
         reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 60);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
         reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK)
 	}
     if (window == 1 && window_timer == 1){
 		if(!shield_down && GAUGE_NAME_CURRENT >= 55){
 	        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 12);
-	        set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
+	        set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 180);
 	        set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 20);
 	        set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 		}

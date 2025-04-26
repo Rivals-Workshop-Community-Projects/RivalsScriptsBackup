@@ -6,7 +6,8 @@ mask_index = sprite_get("sentry_lv1_idle")
 sprite_index = sprite_get("teleporter_opening");
 //mask_index = sprite_get("tele_hurt");
 image_index = 0;
-
+image_xscale = 2;
+image_yscale = 2;
 
 sprite[0] = sprite_get("teleporter_opening"); //goingup
 sprite[1] = sprite_get("teleporter_ready"); //idle
@@ -35,9 +36,7 @@ sprite[21] = sprite_get("sentry_lv3_idle"); //idle
 sprite[22] = sprite_get("sentry_lv3_shoot_0"); //shooting forwards
 sprite[23] = sprite_get("sentry_lv3_shoot_45"); //shooting at a 45* angle
 sprite[24] = sprite_get("sentry_lv3_shoot_90"); //shooting upwards
-sprite[25] = sprite_get("sentry_range"); //the range that the sentry can detect players
-
-
+sprite[25] = sprite_get("sentry_range"); //the visual of the range that the sentry can detect players
 
 sprite[30] = sprite_get("detonate"); //self-destruct
 
@@ -51,8 +50,8 @@ frames_3s = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36]
 frames_4s = [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 47]
 frames_5s = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65]
 
-building_health = 20;//health
-building_max_health = 20;//health
+building_health = 25;//health
+building_max_health = 25;//health
 building_hit = 0;//0-nothing, 1-enemy hit, 2-friendly hit
 building_hit_cooldown = 0;//to prevent single-hitbox attacks from hitting 30 times in a row
 building_upgrade = 0;// will insert 25 metal at a time, each time that happens, this number will go up by 1. When this number reaches 3, the building upgrades
@@ -80,7 +79,7 @@ enemy_being_shot = 0;//if it is nobody, = 0. otherwise it = their player number
 shoot_angle = 0;//angle 0 = forwards aim, angle 45 = diagonal aim, angle 90 = upwards aim
 sentry_enemy_x = 0;
 sentry_enemy_y = 0;
-more_than_2_players = true; //changes the sentry's targetting code if there are >2 players because otherwise it breaks
+// more_than_2_players = true; //changes the sentry's targetting code if there are >2 players because otherwise it breaks
 still_fire_anyways = false; //thing for if there's more than 2 players
 still_fire_anyways_loop_prevent = false;
 rocket_timer = 0;// when this hits 3, it fires a rocket

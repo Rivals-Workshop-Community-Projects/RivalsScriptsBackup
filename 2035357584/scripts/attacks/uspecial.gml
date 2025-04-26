@@ -40,7 +40,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 8);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 60);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 12);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 15);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, .05);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.08);
 
 //land
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 25);

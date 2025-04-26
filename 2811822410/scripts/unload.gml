@@ -9,3 +9,10 @@ if (
 ) {
 	set_victory_theme( sound_get( "birthday" ));
 }
+
+//Feliz Navidad
+if (
+	(current_month == 12) && (current_day == 24 || current_day == 25) 
+) {
+	set_victory_theme( sound_get( "feliznavidad" ));
+}

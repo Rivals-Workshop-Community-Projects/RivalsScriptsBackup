@@ -81,7 +81,7 @@ if (attack == AT_NSPECIAL){
     	x -= 3*spr_dir;
     }
     //Creates the Trident
-    if (window == 1 && window_timer == 24 && !instance_exists(trident)){
+    if (window == 1 && window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) && !instance_exists(trident)){
     	trident = instance_create( x+65*spr_dir, y-25, "obj_article1");
     	trident.sprite_index = sprite_get("trident_spin");
     	trident.mask_index = sprite_get("trident_spin_mask");
@@ -224,6 +224,8 @@ if (attack == AT_FSPECIAL_2){
     }
 }
 if (attack == AT_FSPECIAL_AIR){
+	move_cooldown[AT_FSPECIAL] = 9999;
+	move_cooldown[AT_FSPECIAL_2] = 9999;
 	move_cooldown[AT_FSPECIAL_AIR] = 9999;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;
@@ -297,6 +299,8 @@ if (attack == AT_FSPECIAL_AIR){
 }
 
 if (attack == AT_FSPECIAL_2_AIR){
+	move_cooldown[AT_FSPECIAL] = 9999;
+	move_cooldown[AT_FSPECIAL_2] = 9999;
 	move_cooldown[AT_FSPECIAL_AIR] = 9999;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;

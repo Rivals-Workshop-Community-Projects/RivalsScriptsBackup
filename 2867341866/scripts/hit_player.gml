@@ -78,7 +78,7 @@ switch(atk) {
 	        sound_play(asset_get("sfx_holy_lightning"), 0, noone, .5, wibble + .5)
 	    } else {
 	        sound_play(asset_get("sfx_holy_lightning"), 0, noone, 1.1, .7)
-	        spawn_gem(x+40*spr_dir, y-4, 2.5*spr_dir, -6);
+	        if adrenaline_timer == 0 { spawn_gem(x+40*spr_dir, y-4, 2.5*spr_dir, -6) }
 	    }
     	break;
     	
@@ -103,7 +103,7 @@ switch(atk) {
 
 	    } 
 	    else {
-	        spawn_gem(x+(44*spr_dir), y+(hbox==9?0:32), 1.5*spr_dir, (hbox==9?-6:-8));
+	        if adrenaline_timer == 0 { spawn_gem(x+(44*spr_dir), y+(hbox==9?0:32), 1.5*spr_dir, (hbox==9?-6:-8)) }
 	        sound_play(asset_get("sfx_holy_lightning"), 0, noone, 1.1, .7)
 
 	    }

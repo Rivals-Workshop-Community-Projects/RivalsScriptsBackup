@@ -1,6 +1,3 @@
-//var temp_self = player;
-// Clear CSS Arrays
-
 // FRTOUD's System
 var temp_opponent; //Only does one opponent
 with(asset_get("oPlayer")){

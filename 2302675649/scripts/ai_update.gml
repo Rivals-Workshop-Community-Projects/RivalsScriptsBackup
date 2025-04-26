@@ -42,7 +42,7 @@ SetAttack();
 		
 		if (ai_state == AS_RECOVER)
 		{
-		    ai_recovering2 = true;
+			ai_recovering2 = true;
 		}
 		else if (free && (point_distance(x,y,(x>room_width/2?room_width:0),room_height)<((stage_y >= 800)?point_distance((x>room_width/2?room_width:0),room_height, ((x>room_width/2)?3:1)*floor(room_width/4), topcustom):point_distance((x>room_width/2?room_width:0),room_height, (x>room_width/2?room_width-stage_x:stage_x), stage_y))))
 		{
@@ -500,9 +500,9 @@ SetAttack();
 
 #define NumOfPortals()
 {
-    var i = 0;
-    with (asset_get("obj_article1")) if (player_id == other.id && !isDespawn) i++;
-    return i;
+	var i = 0;
+	with (asset_get("obj_article1")) if (player_id == other.id && !isDespawn) i++;
+	return i;
 }
 
 #define ForceSprDir()

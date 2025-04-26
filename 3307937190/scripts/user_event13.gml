@@ -23,6 +23,7 @@ if(atk == AT_NSPECIAL)
 }
 else if(atk == AT_DSTRONG)
 {
+	/*
     switch(hbox)
     {
         case 1:
@@ -32,7 +33,7 @@ else if(atk == AT_DSTRONG)
         case 3:
             sound_play(asset_get("sfx_watergun_splash"), false, noone, 1, 1.1);
             break;
-    }
+    }*/
 }
 else if(atk == AT_USPECIAL)
 {
@@ -68,8 +69,9 @@ if (my_hitboxID.attack == AT_FAIR){
         }
     }
 }
+
 //Super Armor break
-if(atk == AT_FSTRONG && (hit_player_obj.soft_armor > 0 && hit_player_obj.state != PS_HITSTUN || hit_player_obj.super_armor 
+if(atk == AT_FSTRONG && has_rune("A") && (hit_player_obj.soft_armor > 0 && hit_player_obj.state != PS_HITSTUN || hit_player_obj.super_armor 
 || hit_player_obj.state != PS_HITSTUN && (hit_player_obj.state == PS_ATTACK_AIR || hit_player_obj.state == PS_ATTACK_GROUND)))
 {
     hit_player_obj.super_armor = false;
@@ -169,5 +171,75 @@ if (get_hitbox_value(atk, hbox, HG_HITBOX_COLOR) == hb_color[1])
 
 #region TESTER Stuff
 true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
+
+#endregion
+
+#region jh sfx pass lol
+
+switch (atk){
+	case AT_JAB:
+	if (hbox == 4){
+		sound_play(sound_get("inkhit_med"), false, noone, 0.5);
+	}
+	break;
+	case AT_FTILT:
+			sound_play(sound_get("inkhit_med"), false, noone, 0.5);
+	break;
+	case AT_FAIR:
+	if (hbox == 3){
+		sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1);
+	}
+	break;
+	case AT_BAIR:
+	if (hbox == 2){
+		sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1);
+        if(secretalt == 1 && lang != 0) 
+        {
+		    sound_play(sound_get("sl_yea_baby"), false, noone, 1, 1);
+        }
+	}
+	break;
+	case AT_DAIR:
+	if (hbox == 1){
+		sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1);
+	}
+	break;
+	case AT_FSTRONG:
+	if (hbox == 1){
+		sound_play(sound_get("inkhit_heavy"), false, noone, 0.7, 1);
+	} else {
+		sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1);
+		}
+	break;
+	case AT_USTRONG:
+		if (hbox > 1){
+			sound_play(sound_get("inkhit_heavy"), false, noone, 0.7, 1);
+		}
+	break;
+	case AT_DSTRONG:
+		if (hbox < 3){
+			sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1.4);
+		} else {
+			sound_play(sound_get("inkhit_heavy"), false, noone, 0.7, 1);
+		}
+	break;
+	case AT_FSPECIAL:
+		sound_play(sound_get("inkhit_heavy"), false, noone, 0.7, 1);
+	break;
+	case AT_USPECIAL:
+		if (hbox < 4){
+			sound_play(sound_get("inkhit_med"), false, noone, 0.5, 1.4);
+		} else {
+			sound_play(sound_get("inkhit_heavy"), false, noone, 0.7, 1);
+            if(secretalt == 1 && lang != 0) 
+            {
+                sound_play(sound_get("sl_awp2"), false, noone, 1, 1);
+            }
+		}
+	break;
+	case AT_DSPECIAL:
+	with (my_hitboxID) sound_play(ink_hitsound, false, noone, 0.5, 1.4);
+	break;
+}
 
 #endregion

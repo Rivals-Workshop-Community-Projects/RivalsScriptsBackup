@@ -1,6 +1,20 @@
+if (get_player_hud_color(player) == 8421504) 
+{
+	cpu_player = true
+}
+else if (get_match_setting(SET_TEAMS) = false)
+{
+	cpu_player = false;
+}
+
+print_debug(cpu_player);
+
+
 cpu_hover_update();
 
 if !(instance_exists(cursor_id)) exit;
+
+if ("css_timer" not in self) exit;
 
 if ("css_timer" in self)
 {
@@ -42,16 +56,9 @@ if ("temp_y" in self && "voice_button_position_x" in self && "voice_button_posit
 	}
 	else
 	{
-		if (get_player_hud_color(player) == 8421504)
-		{
-			voice_button_position_x = x + 60;
-			voice_button_position_y = temp_y + 169;
-		}
-		else
-		{
-			voice_button_position_x = x + 75;
-			voice_button_position_y = temp_y + 169;
-		}
+		voice_button_position_x = x + 60;
+		voice_button_position_y = temp_y + 169;
+		cpu_player = true;
 	}
 }
 if ("alttime" in self && "css_timer" in self && "alt_checker" in self && alt_cur != alt_checker)
@@ -153,7 +160,7 @@ if ("voice_timer" in self)
 
 #define cpu_hover_update()
 var p = player;
-var is_cpu = (get_player_hud_color(p) == 8421504);
+var is_cpu = cpu_player == true;
 
 if (is_cpu && "plate_bounds" in self) {
     var pb = plate_bounds, cs = cursors;

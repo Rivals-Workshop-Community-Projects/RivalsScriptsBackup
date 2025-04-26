@@ -70,7 +70,11 @@ switch (my_hitboxID.attack)
                 artc_marker.active_time = 30;
                 artc_marker.play_anim = true;
             }
-            if (instance_exists(artc_afterimage)) with (artc_afterimage) instance_destroy();
+            if (instance_exists(artc_afterimage)) with (artc_afterimage)
+            {
+                has_hit = true;
+                instance_destroy();
+            }
         }
         break;
     case 49: //final smash

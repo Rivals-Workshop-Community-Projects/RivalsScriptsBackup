@@ -58,23 +58,3 @@ set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_AIR_FRICTION, -1);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_DESTROY_EFFECT, rock_break);
-
-/*
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 9);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 75);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -33);
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 60);
-set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 80);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .25);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6);

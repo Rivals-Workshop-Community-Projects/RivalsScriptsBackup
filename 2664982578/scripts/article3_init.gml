@@ -57,6 +57,8 @@ enemy_knockback = 0;
 enemy_knockback_scaling = 0;
 counter_drop = 0;
 
+counter_x = x;
+
 /* README - Basic Article Usage
 
 

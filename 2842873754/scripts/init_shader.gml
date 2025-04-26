@@ -1,4 +1,4 @@
-var alt_cur = get_player_color(player) //sprite_get_xoffset(sprite_get("alts"));
+alt_cur = get_player_color("online_fix" in self ? online_fix : player) //sprite_get_xoffset(sprite_get("alts"));
 switch (alt_cur) {
     case 0:
         set_character_color_slot(3, 253, 187, 47 );

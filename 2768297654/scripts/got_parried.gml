@@ -5,7 +5,7 @@ if(bomb_state = true){
     move_cooldown[AT_DSPECIAL] = 360;
 }
 if(combo_num > 0){
-	if(my_hitboxID.type = 1){
+	if(my_hitboxID.type = 1 or my_hitboxID.attack == AT_NSPECIAL){
 combo_num = 0;
 hud_combo_num = 0;
 hit_player_obj.other_combo_num = 0;

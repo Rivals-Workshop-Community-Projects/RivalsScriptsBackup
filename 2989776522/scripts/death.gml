@@ -43,7 +43,10 @@ if("player" in last_player){
 	    	with(other){rouge = true;}
 		}else if(string_count("Chaos 0", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Chaos Zero", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){chaos = true;}
-		}else if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self){
+		}else if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribbit", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribble", string( get_char_info(player, INFO_STR_NAME) )) > 0
+		|| string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self
+		|| string_count("Frog", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ranno", string( get_char_info(player, INFO_STR_NAME) )) > 0 
+		|| string_count("Keroro", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Croagunk", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){based_frog = true;}
 		}
 	}

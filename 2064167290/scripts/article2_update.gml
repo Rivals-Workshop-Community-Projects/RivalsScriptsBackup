@@ -104,7 +104,7 @@ if (player_id.runeN)
     {
         state = 3;
         state_timer = 0;
-        create_hitbox( AT_USTRONG, 5, floor(x), floor(y) - 60 );
+        create_hitbox( AT_USTRONG, 4, floor(x), floor(y) - 60 );
     }
     
     /*
@@ -139,9 +139,3 @@ if (!player_id.runeN) or ((player_id.attack == AT_USTRONG) and (player_id.state 
         instance_destroy(self);
     }
 }
-
-
-
-
-
-

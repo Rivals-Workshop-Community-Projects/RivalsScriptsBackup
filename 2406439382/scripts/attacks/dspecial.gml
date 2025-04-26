@@ -29,7 +29,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_num_hitboxes(AT_DSPECIAL, 0);
 
-var size = 162 + has_rune("L") * 162
+var size = 140 + has_rune("L") * 140
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 99);
@@ -43,8 +43,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, size);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 10); 
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 110 );
@@ -59,6 +59,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 12);
 
 // this one is for seija's only
@@ -72,9 +73,9 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, size);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, size);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8); 
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 10); 
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.9);

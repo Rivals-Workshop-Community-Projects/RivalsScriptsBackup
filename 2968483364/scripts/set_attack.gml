@@ -24,6 +24,7 @@ switch(attack){
     
     case AT_FSPECIAL:
         set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
+        set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 7);
         break;
     
     case AT_DSPECIAL:

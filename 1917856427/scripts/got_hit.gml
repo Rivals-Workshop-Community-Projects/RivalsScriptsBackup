@@ -7,15 +7,20 @@ if (used_aird = true)
     used_aird = false;
 }
 TIMED = 0;
-if grabbedid != noone 
-{
-    grabbedid.invincible = false;
-    grabbedid.wrap_time = 0;
-    grabbedid.ungrab = 0;
-    grabbedid = noone;
-}
 
-   
+for(var i = 0; i < 3; i++){
+	if (grabbedCharacter[i] != -4){
+        grabbedCharacter[i].invincible = false;
+        grabbedCharacter[i].wrap_time = 0;
+        grabbedCharacter[i].ungrab = 0;
+        grabbedCharacter[i].state = PS_TUMBLE;
+	}
+}
+grabbedCharacter[0] = -4;
+grabbedCharacter[1] = -4;
+grabbedCharacter[2] = -4;
+
+
 if (hitpause = true && MUS_NOTE != 8 && multihitpro = 0) 
 {
 MUS_NOTE -= 1;

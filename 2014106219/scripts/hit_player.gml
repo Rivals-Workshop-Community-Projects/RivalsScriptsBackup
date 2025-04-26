@@ -17,14 +17,14 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 
 //FSpecial bounce
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-4;
-	my_hitboxID.vsp = 0;
+	my_hitboxID.hitbox_timer = my_hitboxID.length-7;
+	my_hitboxID.vsp = -2;
 	my_hitboxID.hsp = 0;
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-4;
-	my_hitboxID.vsp = 0;
+	my_hitboxID.hitbox_timer = my_hitboxID.length-8;
+	my_hitboxID.vsp = -2;
 	my_hitboxID.hsp = 0;	
 }
 

@@ -15,17 +15,28 @@ workshop_compatibilities();
 //it's seperate from the switch statement because switch statements always take the later instance of that case
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+//allow reverse ftilt code (by supersonic)
+if (attack == AT_JAB)
+{
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
+	{
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, window_end); //NOTE: window_end is a tester variable!
+        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end)
+		{
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    }
+	else reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+}
+
 switch (attack)
 {
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
     //
 	case AT_FTILT: //command grab
-		if (window == 1) //reset variables
-		{
-			my_grab_id = noone; 
-			grab_time = 0;
-		}
-
 		if (instance_exists(my_grab_id) && my_grab_id != noone) //if you have grabbed someone (and made sure they exist)
 		{
 			//"with" switches the perspective of the code, in this case to the grabbed player
@@ -43,13 +54,12 @@ switch (attack)
 						}
 						break;
 					case 4: case 5: //move grabbed player to the proper postion
-						x = ease_sineInOut(x, other.x+32*other.spr_dir, other.grab_time, 10);
-                		y = ease_sineInOut(y, other.y-8, other.grab_time, 10);
+						x = lerp(floor(x), floor(other.x+32*other.spr_dir), 0.15);
+                		y = lerp(floor(y), floor(other.y-8), 0.15);
 
 						//if conditions are met, go to window 6 and set the grab time to 0 again
 						with (other) if (attack_pressed && attack_counter == 1 || window == 5 && window_timer == window_end)
 						{
-							grab_time = 0;
 							set_window(6);
 
 							//allows us to turn the player if the opposite direction is held while throwing
@@ -57,8 +67,8 @@ switch (attack)
 						}
 						break;
 					case 6: case 7: //move grabbed player to the proper postion... again
-						x = ease_sineInOut(x, other.x-32*other.spr_dir, other.grab_time, other.grab_time+10);
-                		y = ease_sineInOut(y, other.y-32, other.grab_time, other.grab_time+10);
+						x = lerp(floor(x), floor(other.x-32*other.spr_dir), 0.15);
+                		y = lerp(floor(y), floor(other.y-32), 0.15);
 
 						with (other)
 						{
@@ -97,11 +107,10 @@ switch (attack)
 		}
 		break;
 	case AT_DTILT: //cancel attack to jump
-		if (has_hit && (window == 2 || window == 3) && !was_parried) can_jump = true;
+		if (has_hit && !was_parried) can_jump = true;
 		//this cancel is allowed to be done if:
 		//	- we hit any hittable object, including articles
-		//	- we are in window 2 or window 3
-		//	- also check if the player isn't parried
+		//	- if the player isn't parried
 		break;
 	case AT_DATTACK: //cancel attack to a specific attack only on hitting a player
 		if (has_hit_player && up_strong_pressed && window == 3) set_attack(AT_USTRONG);
@@ -162,15 +171,15 @@ switch (attack)
 			case 2: //set loop amount
 				set_window_value(attack, 4, AG_WINDOW_LOOP_TIMES, floor(strong_charge/15)+1);
 				break;
-			case 4: //hit value setups because i don't feel like using individual hitboxes
-				if (window_loops == get_window_value(attack, 4, AG_WINDOW_LOOP_TIMES)-1) //final hit
+			case 4: //set the values for the final hitbox if the hitbox reaches it's final loop (note that it's the loop amount-1, since the loops start at 0)
+				if (window_loops == get_window_value(attack, 4, AG_WINDOW_LOOP_TIMES)-1)
 				{
 					set_hitbox_value(attack, 1, HG_WIDTH, 64);
 					set_hitbox_value(attack, 1, HG_HEIGHT, 80);
-					set_hitbox_value(attack, 1, HG_DAMAGE, 10-floor(strong_charge*0.1));
-					set_hitbox_value(attack, 1, HG_ANGLE, 40);
-					set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 7);
-					set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, 0.9);
+					set_hitbox_value(attack, 1, HG_DAMAGE, 12-strong_charge*0.05); //this value changes based on strong charge (no charge: 12 | max charge: 9)
+					set_hitbox_value(attack, 1, HG_ANGLE, 45); //40
+					set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 8); //7
+					set_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING, 1); //0.9
 					set_hitbox_value(attack, 1, HG_BASE_HITPAUSE, 9);
 					set_hitbox_value(attack, 1, HG_HITPAUSE_SCALING, 0.8);
 					set_hitbox_value(attack, 1, HG_VISUAL_EFFECT, fx_pow_hit[1]);
@@ -178,22 +187,6 @@ switch (attack)
 					
 					set_hitbox_value(attack, 1, HG_HITBOX_X, 72);
 					set_hitbox_value(attack, 2, HG_HITBOX_X, -56);
-				}
-				else //multihit
-				{
-					reset_hitbox_value(attack, 1, HG_WIDTH);
-					reset_hitbox_value(attack, 1, HG_HEIGHT);
-					reset_hitbox_value(attack, 1, HG_DAMAGE);
-					reset_hitbox_value(attack, 1, HG_ANGLE);
-					reset_hitbox_value(attack, 1, HG_BASE_KNOCKBACK);
-					reset_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING);
-					reset_hitbox_value(attack, 1, HG_BASE_HITPAUSE);
-					reset_hitbox_value(attack, 1, HG_HITPAUSE_SCALING);
-					reset_hitbox_value(attack, 1, HG_VISUAL_EFFECT);
-					reset_hitbox_value(attack, 1, HG_HIT_SFX);
-
-					reset_hitbox_value(attack, 1, HG_HITBOX_X);
-					reset_hitbox_value(attack, 2, HG_HITBOX_X);
 				}
 				break;
 		}
@@ -213,9 +206,7 @@ switch (attack)
 	case AT_BAIR: //hold / tap input
 		switch (window)
 		{
-			case 1: //hold input redirect + landing lag reset
-				reset_attack_value(attack, AG_LANDING_LAG); //because the landing lag changes based on if we used the tap/hold, we reset it here just in case
-				
+			case 1: //hold input redirect
 				//redirection to window 5, the hold version of the move
 				//the left_stick and right_stick inputs are for the C-stick
 				if (window_timer == window_end && (attack_down || left_stick_down || right_stick_down)) set_window(5);
@@ -240,7 +231,7 @@ switch (attack)
 		can_move = false; //lock player's left-right movement
 		if (window <= 4) vsp = clamp(vsp, vsp, 1 + state_timer/50); //also while charging, our character will slowly fall
 
-		move_cooldown[attack] = ( (nspec_charge_max + 1) * 10 - floor(nspec_charge) * 10 ) + 30;
+		move_cooldown[attack] = ( (nspec_charge_max + 1) * 10 - floor(nspec_charge_prev) * 10 ) + 10;
 		if (shield_pressed) move_cooldown[attack] = 0;
 		//puts the move in cooldown depending on charge level, unless the charge is being stored with parry
 		//the stronger the charge, the lower the cooldown
@@ -303,8 +294,6 @@ switch (attack)
 						set_window(4);
 						if (!nspec_charge_stored) sound_play(asset_get("sfx_frog_fspecial_charge_full"));
 					}
-
-					nspec_shoot_delay_time_max = 10 + 4 * floor(nspec_charge - 1); //charge release delay changes based on charge level (10 | 14 | 18)
 				}
 				else //releasing the proectile
 				{
@@ -312,6 +301,7 @@ switch (attack)
 					if (nspec_shoot_delay_time >= nspec_shoot_delay_time_max) set_window(5); //when not holding down special, fire the projectile
 					else if (window_timer == window_end) window_timer = 0; //unless [nspec_shoot_delay_time] isn't 0 yet
 				}
+				nspec_shoot_delay_time_max = 4 + 6 * floor(nspec_charge - 1); //charge release delay changes based on charge level (4 | 10 | 16) //10 | 14 | 18
 				break;
 			case 5: //shooting the projectile
 				//don't let these window numbers fool you, by putting in "window 5 + window_timer window_end" it acts as "window 6 + window_timer 0"
@@ -350,6 +340,7 @@ switch (attack)
 					}
 
 					set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 20 + 10 * floor(nspec_charge - 1)); //sets endlag according to the charge level
+					nspec_charge_prev = nspec_charge;
 					if (nspec_charge > 1) nspec_charge = 1; //reset nspec charge
 				}
 				break;
@@ -377,43 +368,53 @@ switch (attack)
 				vsp = clamp(vsp, vsp, 0);
 				break;
 			case 4: //movement
-				//uspec_angle = joy_dir; //dynamic turning rune?
-
-				var uspec_speed = 10;
-				hsp = lengthdir_x(uspec_speed, uspec_angle);
-				vsp = lengthdir_y(uspec_speed, uspec_angle);
-
-				if (window_timer == 1) uspec_was_free = free;
-				else if (window_timer > 2)
+				if (!hitpause) //this prevents the movement from applying while tester is in hitpause
 				{
-					if (uspec_was_free && !free) //bounce
-					{
-						spawn_hit_fx(x, y-32, fx_pow_hit[1]);
-						sound_play(asset_get("sfx_forsburn_combust"));
+					var uspec_speed = 10;
+					hsp = lengthdir_x(uspec_speed, uspec_angle);
+					vsp = lengthdir_y(uspec_speed, uspec_angle);
 
-						vsp = -5;
-						set_state(PS_PRATFALL);
-						uspec_was_free = false;
-					}
-					else if (window_timer == window_end) //if the player doesn't hit the ground/was on the ground this entire time
+					if (window_timer == 1) uspec_was_free = free;
+					else if (window_timer > 2)
 					{
-						spawn_hit_fx(x, y-32, fx_pow_hit[0]);
+						if (uspec_was_free && !free) //bounce
+						{
+							spawn_hit_fx(x, y-32, fx_pow_hit[1]);
+							sound_play(asset_get("sfx_forsburn_combust"));
 
-						if (!uspec_was_free && !free) set_state(PS_LANDING_LAG); //slide
+							vsp = -5;
+							set_state(PS_PRATFALL);
+							uspec_was_free = false;
+						}
+						else if (window_timer == window_end) //if the player doesn't hit the ground/was on the ground this entire time
+						{
+							spawn_hit_fx(x, y-32, fx_pow_hit[0]);
+
+							if (!uspec_was_free && !free) set_state(PS_LANDING_LAG); //slide
+						}
 					}
 				}
 				break;
 		}
+
+		if (vsp >= 0) grav = 0;
+		//this is a replacement for the default behaviour for gravity in attacks
+		//it makes it so it will update the gravity as long as the vertical speed dips to 0
 		break;
-	case AT_FSPECIAL: //tether
+	case AT_FSPECIAL: //tether + once per airtime attack
 		can_fast_fall = false; //prevents player from being able to fastfall
 		can_move = false;
+
+		if (instance_exists(my_grab_id)) //brings the enemy to the center of the hitbox when tethered
+		{
+			my_grab_id.x = lerp(my_grab_id.x, floor(fspec_tether_pos[0]), 0.15);
+			my_grab_id.y = lerp(my_grab_id.y, floor(fspec_tether_pos[1]+my_grab_id.char_height/2), 0.15);
+		}
 
 		switch (window)
 		{
 			case 1: case 2: //aiming + var reset
 				fspec_found_target = false;
-				fspec_hit_player = false;
 				fspec_tether_pos = [floor(x + 64), floor(y - char_height/2)];
 				
 				//sets aim direction
@@ -446,25 +447,9 @@ switch (attack)
 				}
 				if (window_timer == window_end) set_window(fspec_found_target && !was_parried ? 6 : 5); //if a target was found, go to window 6
 				break;
-			case 5: //goes into pratfall because we couldn't catch anyone
-				if (window_timer == window_end)
-				{
-					//this will force the player into pratfall only in the air, on the ground it will force them into idle instead
-					//unless the player was parried
-
-					set_state(free ? PS_PRATFALL : was_parried ? PS_PRATLAND : PS_IDLE);
-
-					//writing [statement] ? [if] : [else] is essencially the same as writing [if (statement) code; else code;]
-					
-
-					//NOTE: you can manipulate the [parry_lag] variable to be something different other than the [prat_land_time]
-				}
-				break;
-			case 6: //if a target is found it grapples towards them + applying cooldown
+			case 6: //if a target is found it grapples towards them
 				if (!hitpause && fspec_found_target)
 				{
-					move_cooldown[attack] = 90; //half a sec cooldown
-
 					//sets the speed values according to fspec_speed and the angles
 					hsp = lengthdir_x(fspec_speed, fspec_angle * -fspec_aim) * spr_dir;
 					vsp = lengthdir_y(fspec_speed, fspec_angle * -fspec_aim) - gravity_speed;
@@ -510,7 +495,8 @@ switch (attack)
 							spawn_hit_fx(x + hsp, y - char_height / 2, get_hitbox_value(attack, 1, HG_VISUAL_EFFECT));
 						}
 						
-						set_state(!has_hit ? PS_PRATFALL : PS_IDLE_AIR);
+						//set the state to the air idle
+						set_state(PS_IDLE_AIR);
 
 						//if for some reason the player hit the stage before the grabbed player
 						//this part of the code will stop the hitpause on them and reset my_grab_id
@@ -524,6 +510,8 @@ switch (attack)
 					{
 						hsp /= 8;
 						vsp = -9;
+
+						//set the state to the air idle
 						set_state(PS_IDLE_AIR);
 					}
 				}
@@ -564,29 +552,33 @@ switch (attack)
 					
 				}
 			case 6: //effects
-				do_particle(
-					sprite_get("fx_pow_sparks"),
-					12,
-					x + (random_func(5, 5, true) - 2) * 16,
-					y + (random_func(6, 5, true) - 2) * 16 - char_height / 2,
-					1, //xscale
-					1, //yscale
-					1, //spr_dir
-					random_func(7, 30, true) * 12 //angle
-				)
+				//NOTE: when using the do_particle function, make sure you encase it by both () and {} brackets, otherwise it won't work
+				//      the reason is because it now uses a lightweight object for the setup, to allow you to pick and choose the options you need more freely
+				do_particle({
+					spr: sprite_get("fx_pow_sparks"),
+					length: 12,
+					xpos: x + (random_func(5, 5, true) - 2) * 16,
+					ypos: y + (random_func(6, 5, true) - 2) * 16 - char_height / 2,
+					dir: 1,
+					angle: random_func(7, 30, true) * 12,
+					layer: -1,
+                    anim_img: true,
+                    alpha: 1
+				});
 
 				if (instance_exists(artc_dspec))
 				{
-					do_particle(
-						sprite_get("fx_pow_sparks"),
-						12,
-						artc_dspec.x + (random_func(8, 5, true) - 2) * 16,
-						artc_dspec.y + (random_func(9, 5, true) - 2) * 16 - artc_dspec.article_height / 2,
-						1, //xscale
-						1, //yscale
-						1, //spr_dir
-						random_func(10, 30, true) * 12 //angle
-					)
+					do_particle({
+						spr: sprite_get("fx_pow_sparks"),
+						length: 12,
+						xpos: artc_dspec.x + (random_func(5, 5, true) - 2) * 16,
+						ypos: artc_dspec.y + (random_func(6, 5, true) - 2) * 16 - artc_dspec.article_height / 2,
+						dir: 1,
+						angle: random_func(7, 30, true) * 12,
+						layer: -1,
+						anim_img: true,
+						alpha: 1
+					});
 				}
 			case 8: case 9: case 10: //lock player movement
 				can_move = false;
@@ -601,6 +593,19 @@ switch (attack)
 		if (window <= window_last) hud_offset = lerp(hud_offset, 2000, 0.1); // put hud away
 		if (window == window_last && window_timer == window_end-1 && game_time <= 125) state = PS_SPAWN; //correct state to spawn if needed
 		break;
+	case AT_TAUNT: //morb taunt, press shield or taunt to cancel and end early
+		if (window <= 5 && state_timer >= 30 && (shield_pressed || taunt_pressed))
+		{
+			set_window_value(attack, 7, AG_WINDOW_LENGTH, 20);
+			sound_stop(asset_get("sfx_boss_vortex_start"));
+			window = 6;
+			window_timer = 0;
+		}
+		if (window == 7 && (shield_pressed || taunt_pressed))
+		{
+			set_window_value(attack, 7, AG_WINDOW_LENGTH, 20);
+		}
+		break;
 	case AT_TAUNT_2: //breakdance loop, hold taunt to continiue breakdancing
 		if (taunt_down)
 		{	
@@ -609,13 +614,13 @@ switch (attack)
 			//get_local_setting(3) reffers to the music's volume
 
 			// "i would have used the cur_loop_sound variable but the taunt is spammable, making the music layer on itself" - bar-kun
-			if (state_timer == 1) sound_play(alt_cur == 21 ? sound_get("mus_slaughter") : sound_get("mus_onlyyou"), true, 0, get_local_setting(3));
+			if (state_timer == 1 && !hitpause) sound_play(sound_get("mus_onlyyou"), true, 0, get_local_setting(3));
 			suppress_stage_music(0, 1);
 
 			if (window_timer == window_end) set_window(-1); //loops back around
 			
 		}
-		else set_state(PS_IDLE);
+		else if (respawn_taunt <= 270) set_state(PS_IDLE); // prevents taunt from being used to get off plat faster than usual
 		break;
 }
 
@@ -646,52 +651,36 @@ switch (attack)
 		case 1: case 2: vsp = get_window_value(attack, window_num, AG_WINDOW_VSPEED); break; //sets speed for the first frame/the entire window
 	}
 }
-#define do_particle
+//NOTE: when using the do_particle function, make sure you encase it by both () and {} brackets, otherwise it won't work
+//      the reason is because it now uses a lightweight object for the setup, to allow you to pick and choose the options you need more freely
+#define do_particle(new_part)
 {
-	var _spr = argument[0], _length = argument[1], _xpos = argument[2], _ypos = argument[3];
-	var _dir = argument_count > 4 ? argument[4] : 0;
-	var _xscale = argument_count > 5 ? argument[5] : 1;
-	var _yscale = argument_count > 6 ? argument[6] : 1;
-	var _angle = argument_count > 7 ? argument[7] : 0;
-	var _layer = argument_count > 8 ? argument[8] : -1;
-	var _anim_img = argument_count > 9 ? argument[9] : true;
-	var _hsp = argument_count > 10 ? argument[10] : 0;
-	var _vsp = argument_count > 11 ? argument[11] : 0;
-	var _torque = argument_count > 12 ? argument[12] : 0;
-	var _alpha = argument_count > 13 ? argument[13] : 1;
-	var _anim_alpha = argument_count > 14 ? argument[14] : 0;
-	var _color = argument_count > 15 ? argument[15] : c_white;
-	var _filled = argument_count > 16 ? argument[16] : false;
-    var _shader = argument_count > 17 ? argument[17] : false;
-	var _img = argument_count > 18 ? argument[18] : 0;
-
-	var new_part = {
-		spr: _spr,
-		xpos: _xpos,
-		ypos: _ypos,
-		hsp: _hsp,
-		vsp: _vsp,
-		dir: _dir,
-		angle: _angle,
-		torque: _torque,
-		xscale: _xscale,
-		yscale: _yscale,
-		alpha: _alpha,
-		anim_alpha: _anim_alpha,
-		color: _color,
-		filled: _filled,
-        shader: _shader,
-		layer: _layer,
-		length: _length,
-		img: _img,
-		anim_img: _anim_img,
-		timer: 0
-    };
+	new_part.timer = 0;
+	if (!variable_instance_exists(new_part, "spr")) new_part.spr = 0; //particle's sprite
+    if (!variable_instance_exists(new_part, "xpos")) new_part.xpos = 0;	//x position
+    if (!variable_instance_exists(new_part, "ypos")) new_part.ypos = 0;	//y position
+    if (!variable_instance_exists(new_part, "hsp")) new_part.hsp = 0; //horizontal speed
+    if (!variable_instance_exists(new_part, "vsp")) new_part.vsp = 0; //vertical speed
+	if (!variable_instance_exists(new_part, "dir")) new_part.dir = 0;	//0 means it will default to the object's spr_dir, otherwise you can put either 1 or -1 to set a specific spr_dir for it
+	if (!variable_instance_exists(new_part, "angle")) new_part.angle = 0; //the angle to draw the particle with
+	if (!variable_instance_exists(new_part, "torque")) new_part.torque = 0;	//rotation speed, negative numbers rotate clockwise, positive numbers rotate counter-clockwise
+	if (!variable_instance_exists(new_part, "xscale")) new_part.xscale = 1;	//the sprite's horizontal scale
+	if (!variable_instance_exists(new_part, "yscale")) new_part.yscale = 1;	//the sprite's vertical scale
+	if (!variable_instance_exists(new_part, "alpha")) new_part.alpha = 1; //numbers between 0 to 1 have visual changes
+	if (!variable_instance_exists(new_part, "anim_alpha")) new_part.anim_alpha = 0;	//0 means it will not change the transperency, 1 will make it fade in, -1 will make it fade out
+	if (!variable_instance_exists(new_part, "color")) new_part.color = c_white; //the color of the particle - note that without "filled" the particle will be tinted with this color instead
+	if (!variable_instance_exists(new_part, "filled")) new_part.filled = false;	//if true, the sprite's color will be a single color based on "color"
+	if (!variable_instance_exists(new_part, "shader")) new_part.shader = true;	//if true, the particle will use the player's shaders
+	if (!variable_instance_exists(new_part, "layer")) new_part.layer = 1; //0 means it will use article3 to set the depth, 1 uses pre_draw and -1 uses post_draw
+	if (!variable_instance_exists(new_part, "length")) new_part.length = 0;	//for how long should the particle play
+	if (!variable_instance_exists(new_part, "img")) new_part.img = 0; //reffers to the particle's image index, if "anim_img" is false it will stick to that image for the duration of the particle
+	if (!variable_instance_exists(new_part, "anim_img")) new_part.anim_img = true;	//if true, the particle's sprites will animate
+	
     array_push(fx_part, new_part);
 }
-//custom attack grid example - Looping window X times (by Bar-Kun)
 #define custom_attack_grid
 {
+	//custom attack grid example - Looping window X times (by Bar-Kun)
     var window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES); //looping window for X times - we set this up inside the different conditions
     var window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE); //check the type of the window, helps condense the code a bit
     var window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS); //checks if the loop should refresh hits or not
@@ -734,6 +723,7 @@ switch (attack)
             //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
             //this is how the game usually treats window type 9
         }
+		else if (window_loops > 0) window_loops = 0;
     }
 }
 #define workshop_compatibilities

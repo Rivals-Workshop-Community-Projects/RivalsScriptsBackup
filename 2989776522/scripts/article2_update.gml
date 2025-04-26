@@ -10,7 +10,7 @@ if(player_id.state == PS_DEAD || player_id.state == PS_RESPAWN){
 timer += 1;
 timer2 += 1;
 
-if(timer >= 600){
+if(timer >= 900){
 	if(player_id.the_eggpawn == self){
 		player_id.the_eggpawn = noone;
 	}if(player_id.the_eggpawn2 == self){

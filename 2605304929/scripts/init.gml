@@ -1,5 +1,5 @@
 hurtbox_spr = sprite_get("hurtbox");
-crouchbox_spr = sprite_get("crouch_hurtbox");
+crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
@@ -52,9 +52,9 @@ wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usu
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 1;
+crouch_startup_frames = 2;
 crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+crouch_recovery_frames = 2;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -62,7 +62,7 @@ dodge_active_frames = 1;
 dodge_recovery_frames = 4;
 
 //tech animation frames
-tech_active_frames = 3;
+tech_active_frames = 5;
 tech_recovery_frames = 1;
 
 //tech roll animation frames
@@ -103,6 +103,7 @@ bubble_y = 8;
 //Crouch Bubble Hitfx
 crouch_bubble = noone;
 hsp_at_start_of_double_jump = 0;
+moved_up = false; // Ledge Snapping Variabel from Guadua
 
 //init.gml - Maw's command grab variables
 grabbed_player_obj = noone;    //the player object currently being grabbed.
@@ -229,7 +230,34 @@ diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any cu
 kinniku_front = sprite_get("kinniku_front");
 kinniku_behind = sprite_get("kinniku_behind");
 
-
+// Woodcock Compat for training mode.
+if(get_match_setting(SET_PRACTICE)){
+    //print("In Training Mode - Initiaizing Woodcock variables");
+    // Attack Indexes
+    AG_MUNO_ATTACK_EXCLUDE = 80;
+    AG_MUNO_ATTACK_REFRESH = 81;
+    AG_MUNO_ATTACK_NAME = 82;
+    AG_MUNO_ATTACK_FAF = 83;
+    AG_MUNO_ATTACK_ENDLAG = 84;
+    AG_MUNO_ATTACK_LANDING_LAG = 85;
+    AG_MUNO_ATTACK_MISC = 86;
+    AG_MUNO_ATTACK_MISC_ADD = 87;
+    
+    //Hitbox Indexes
+    HG_MUNO_HITBOX_EXCLUDE = 80;
+    HG_MUNO_HITBOX_NAME = 81;
+    HG_MUNO_HITBOX_ACTIVE = 82;
+    HG_MUNO_HITBOX_DAMAGE = 83;
+    HG_MUNO_HITBOX_BKB = 84;
+    HG_MUNO_HITBOX_KBG = 85;
+    HG_MUNO_HITBOX_ANGLE = 86;
+    HG_MUNO_HITBOX_PRIORITY = 87;
+    HG_MUNO_HITBOX_GROUP = 88;
+    HG_MUNO_HITBOX_BHP = 89;
+    HG_MUNO_HITBOX_HPG = 90;
+    HG_MUNO_HITBOX_MISC = 91;
+    HG_MUNO_HITBOX_MISC_ADD = 92;
+}
 
 //#region Synced Variable
 

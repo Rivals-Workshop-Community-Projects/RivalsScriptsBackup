@@ -157,7 +157,7 @@ switch (state)
 			{
 				sound_play(asset_get("sfx_absa_uair"));
 				shake_camera(8, 6);
-                spawn_hit_fx(x, y-42, 157);
+				spawn_hit_fx(x, y-42, 157);
 			}
 		}
 		else if (state_timer < 68 && auraMeter != -1) auraMeter = taunt_down?auraMeter+1:-1;
@@ -249,38 +249,38 @@ if (swallowed)
 
 if ("enemykirby" in self && enemykirby != undefined) with (oPlayer) if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3)
 {
-    trigger_b_reverse();
+	trigger_b_reverse();
 	switch (window)
 	{
-	    case 1:
-	        nspecCharge = 0;
-	        if (!free) hsp = -3 * spr_dir;
-	        break;
-	    case 2:
-	        if (special_down || nspecCharge < 6)
-	        {
-	            can_shield = nspecCharge < nspecMax;
-	            if (nspecCharge == nspecMax - 1)
-	            {
-	                sound_play(asset_get("mfx_star"));
-	                with (other) {var owo = spawn_hit_fx(other.x+6*other.spr_dir,other.y-28,shinestar_effect); owo.depth = -10;}
-	            }
-	            if (nspecCharge < nspecMax) nspecCharge++;
-	            else shake_camera(2,1);
-	        }
-	        else
-	        {
-	            ++window;
-	            window_timer = 0;
+		case 1:
+			nspecCharge = 0;
+			if (!free) hsp = -3 * spr_dir;
+			break;
+		case 2:
+			if (special_down || nspecCharge < 6)
+			{
+				can_shield = nspecCharge < nspecMax;
+				if (nspecCharge == nspecMax - 1)
+				{
+					sound_play(asset_get("mfx_star"));
+					with (other) {var owo = spawn_hit_fx(other.x+6*other.spr_dir,other.y-28,shinestar_effect); owo.depth = -10;}
+				}
+				if (nspecCharge < nspecMax) nspecCharge++;
+				else shake_camera(2,1);
+			}
+			else
+			{
+				++window;
+				window_timer = 0;
 				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK,     lerp(8,   11,  (nspecCharge-6)/(nspecMax-6)));
-                set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING,  lerp(0.5, 1.5, (nspecCharge-6)/(nspecMax-6)));
-                set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE,      lerp(9,   60,  (nspecCharge-6)/(nspecMax-6)));
-                set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE,             lerp(8,   18,  (nspecCharge-6)/(nspecMax-6)));
-	        }
-	        break;
-	    case 3:
-	        if (!free) hsp = 6 * spr_dir;
-	        break;
+				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING,  lerp(0.5, 1.5, (nspecCharge-6)/(nspecMax-6)));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE,      lerp(9,   60,  (nspecCharge-6)/(nspecMax-6)));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE,             lerp(8,   18,  (nspecCharge-6)/(nspecMax-6)));
+			}
+			break;
+		case 3:
+			if (!free) hsp = 6 * spr_dir;
+			break;
 	}
 }
 

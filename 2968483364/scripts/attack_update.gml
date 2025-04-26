@@ -171,6 +171,27 @@ switch(attack){
     
     
     case AT_FSTRONG:
+    	if((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1) && strong_charge % 10 == 0){
+                spawn_base_dust(x - (20*spr_dir), y, "dash_start", spr_dir);
+        }else if(window == 2 && window_timer == 3){
+            sound_play(asset_get("sfx_burnconsume"), false, noone, 0.4, 0.8);
+            sound_play(asset_get("sfx_ori_stomp_spin"), false, noone, 1.0, 0.85);
+        }else if(window == 3){
+        	if(collision_rectangle(x, y - 60, x + 30*spr_dir, y, asset_get("oPlayer"), false, true) && abs(hsp) > 0) hsp = 0;
+        	
+        	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
+				sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 1.0, 1.2);
+				sound_play(asset_get("sfx_zetter_downb"), false, noone, 1.0, 0.9);
+        	}
+        }
+        
+        //self damage
+        if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
+            self_damage(selfdmg_val[2]);
+            //self_damage(30); //so i can test install stuff easier
+        }
+        
+        /* Old Fstrong
         if((window == 1 && window_timer == get_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH) - 1) && strong_charge % 10 == 0){
                 spawn_base_dust(x + (40*spr_dir), y, "dash_start", -1);
                 spawn_base_dust(x + (40*spr_dir), y, "dash_start", 1);
@@ -183,7 +204,7 @@ switch(attack){
         if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
             self_damage(selfdmg_val[2]);
             //self_damage(30); //so i can test install stuff easier
-        }
+        }*/
         break;
     
     case AT_USTRONG:
@@ -316,6 +337,11 @@ switch(attack){
             sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.55, 1.0);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 1.0, 0.95);
             }
+        }else if(window == 9){
+        	can_wall_jump = true;
+        	if(window_timer == 1 && has_hit){
+        		set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 1);
+        	}
         }
         
         //hold back to move less forwards
@@ -416,6 +442,10 @@ switch(attack){
             sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.7, 1.0);
             sound_play(asset_get("sfx_zetter_fireball_fire"), false, noone, 0.8, 1.0);
             sound_play(asset_get("sfx_holy_tablet_appear"), false, noone, 1.0, 1.1);
+            
+            //You May (Not) Use This Near Walls
+            dspec_notech = true;
+            
         }else if(window == 3 && (window_timer+1) % 8 == 0){
             //sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.25, 0.9);
             sound_play(asset_get("sfx_burnend"), false, noone, 0.85, 0.9);
@@ -495,7 +525,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

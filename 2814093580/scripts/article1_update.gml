@@ -6,7 +6,7 @@ lifetime++;
 
 
 
-
+//Jar Explodes when Samson hits it with Dspecial
 if place_meeting(x, y, pHitBox)
 {
     with (pHitBox)
@@ -24,9 +24,11 @@ if place_meeting(x, y, pHitBox)
                     shake_camera( 8, 10 );
                     instance_destroy(jar);
                     jar_is_out = false;
-                    move_cooldown[AT_NSPECIAL] = 250
-                    nspecial_cool = 250;
-                   instance_destroy(plunger);
+                              if phone_cheats[CHEAT_JAR] == 0
+                      {    move_cooldown[AT_NSPECIAL] = 250
+                            nspecial_cool = 250;
+                       }
+                    instance_destroy(plunger);
                     create_hitbox( AT_DSPECIAL, 4, x+(87*spr_dir), y );
                     create_hitbox( AT_DSPECIAL, 5, x-(5*spr_dir), y );
                     sound_play(sound_get("megaboom"));
@@ -49,18 +51,32 @@ if place_meeting(x, y, pHitBox)
 if can_hit == 1 and jar_health > 0 and manual_boom != 1
 {hit_detection();}
 
-print_debug("vsp = " + string(vsp));
-
-if lifetime == 10
+if lifetime == 10 && rune_behavior == false
 {can_hit = 1;}
 
-if free
-{with(player_id)
+if free{
+	if jar_falling_hitbox != noone{
+		jar_falling_hitbox.x = x;
+		jar_falling_hitbox.y = y;
+		if jar_falling_hitbox.has_hit{
+			vsp = -3;
+			instance_destroy(jar_falling_hitbox)
+			jar_falling_hitbox = noone;
+			rune_behavior = false;
+			can_hit = 1;
+		}
+	}
+	with(player_id)
 
 {move_cooldown[AT_NSPECIAL] = 999;}
 
 }
-else
+else{
+	instance_destroy(jar_falling_hitbox)
+	jar_falling_hitbox = noone;
+	rune_behavior = false;
+	can_hit = 1;
+}
 with(player_id)
 
 {move_cooldown[AT_NSPECIAL] = 0;}
@@ -68,11 +84,14 @@ with(player_id)
 if (jar_health <= 0)
 {
     with(player_id)
-    {    move_cooldown[AT_NSPECIAL] = 250
-    nspecial_cool = 250;}
+    {              if phone_cheats[CHEAT_JAR] == 0
+        {    move_cooldown[AT_NSPECIAL] = 250
+    nspecial_cool = 250;
+        }
+        }
 thar_he_blows = 1
 can_hit = 0;
-boomtimer += 0.02;
+boomtimer += has_rune("L")? 1:0.02;
 sprite_index = asset_get("empty_sprite");
 }
 
@@ -122,8 +141,11 @@ else {grounded = 0;}
 if (y >= (get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) )) {
         with(player_id)
     {
-    move_cooldown[AT_NSPECIAL] = 250
+          if phone_cheats[CHEAT_JAR] == 0
+        {    move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
+        }
+
     jar_is_out = false;
     }
         should_die = true;
@@ -131,8 +153,10 @@ if (y >= (get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) )) {
 
 if (x < 0 || x > room_width){
 	with (player_id){
-    move_cooldown[AT_NSPECIAL] = 250
+              if phone_cheats[CHEAT_JAR] == 0
+        {    move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
+        }
     jar_is_out = false;
 	}
         should_die = true;
@@ -142,8 +166,11 @@ if(position_meeting(x,y,asset_get("plasma_field_obj")))
 {
     with(player_id)
     {
-    move_cooldown[AT_NSPECIAL] = 250
+        
+          if phone_cheats[CHEAT_JAR] == 0
+        {    move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
+        }
     jar_is_out = false;
     }
         should_die = true;
@@ -192,7 +219,11 @@ if should_die {
 }
 
 
-
+// Keeps MUG sprite forward
+if (sprite_index == sprite_get("mugmoment") and spr_dir == -1) 
+{
+    spr_dir = 1;
+}
 
 
 
@@ -396,6 +427,8 @@ should_die = true;
 with(player_id)
     {
 jar_is_out = false;
-move_cooldown[AT_NSPECIAL] = 250;
- nspecial_cool = 250;
+          if phone_cheats[CHEAT_JAR] == 0
+        {    move_cooldown[AT_NSPECIAL] = 250
+    nspecial_cool = 250;
+        }
     }

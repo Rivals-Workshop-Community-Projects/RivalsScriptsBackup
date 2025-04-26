@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////// OWNER INDICATOR ///////////////////////////////////////////////////////
 
 //if the article isn't offscreen, it will draw the hud arrow
-if (!article_offscreen) draw_sprite_ext(sprite_get("hud_player_arrow"), 0, x, y-article_height, 2, 2, 0, hud_col, 1);
+if (!article_offscreen) draw_sprite_ext(asset_get("triangle_spr"), 0, x + 1, y-article_height - 6, 1, 1, 0, hud_col, 1);
 
 
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////
@@ -56,7 +56,8 @@ if (offscreen_arrow_enabled)
             else if (y > view_down + 85) offscreen_image = 6;
         }
 
-        draw_sprite_ext(sprite_get("hud_offscreen_arrow"), offscreen_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, hud_col, 1);
+        //for the version with the circle inside it replace  "offscreen_cloud_bg_spr"  with  "offscreen_bg_spr"
+        draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), offscreen_image, offscreen_x_pos + 32, offscreen_y_pos + 34, 1, 1, 0, hud_col, 1);
         draw_sprite_ext(sprite_get("hud_offscreen_image"), 0, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, c_white, 1);
     }
     else depth = orig_depth; //reset depth back to normal when it's on screen

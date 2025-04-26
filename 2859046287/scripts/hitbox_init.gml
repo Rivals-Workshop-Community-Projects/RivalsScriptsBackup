@@ -15,13 +15,16 @@ proj_multihit_final = false; //if true, it will stop the multihit code and remov
 multihit_hit_player = noone; //records hit player
 multihit_escape_time = 0; //when it reaches 5, the multihit_hit_player will stop being affected by the projectile
 additional_radius = 10; //exta threshhold for the multihit projectile's collision
+orig_grounds = grounds; //stores the original projectile ground behavior
+orig_walls = walls; //stores the original projectile wall behavior
 
 //hitbox grid stuff
 multihit_amount = 0; //sets amount of hits
 multihit_gap = 0; //sets time between hits
 multihit_damage = 0;
 multihit_vfx = 0; //sets the hit effect for when a multihit hits
-multihit_sfx = 0;
+multihit_sfx = 0; //same as above but for sound
+multihit_flipper = 0; //multihits angle flipper
 
 //HOMING PROJECTILE
 homing_enabled = false;
@@ -39,6 +42,9 @@ with (player_id)
     other.multihit_damage = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_DAMAGE);
     other.multihit_vfx = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_VFX);
     other.multihit_sfx = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_SFX);
+    other.multihit_angle = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_ANGLE);
+    other.multihit_flipper = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_FLIPPER);
+
 
     other.homing_enabled = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_HOMING);
     other.home_turn_speed = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_HOMING_TURN);
@@ -58,7 +64,8 @@ if (multihit_amount > 0) //only works if the hitbox grid actually has multihits 
         sound_effect,
         kb_angle,
         damage,
-        can_tech
+        can_tech,
+        hit_flipper
     ];
 
     //for the first frame of the projectile existing, set the values to the multihit values
@@ -67,9 +74,10 @@ if (multihit_amount > 0) //only works if the hitbox grid actually has multihits 
     kb_scale = 0;
     hitpause = 3;
     hitpause_growth = 0;
-    hit_effect = multihit_vfx;
-    sound_effect = multihit_sfx;
-    kb_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp);
+    if (multihit_vfx != -1) hit_effect = multihit_vfx;
+    if (multihit_sfx != -1) sound_effect = multihit_sfx;
+    if (multihit_angle != -1) kb_angle = multihit_angle;
+    if (multihit_flipper != -1) hit_flipper = multihit_flipper;
     damage = multihit_damage;
     can_tech = 1;
 }

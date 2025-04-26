@@ -56,4 +56,4 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("Ustrong_hit"));
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 1);
+//set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 1);

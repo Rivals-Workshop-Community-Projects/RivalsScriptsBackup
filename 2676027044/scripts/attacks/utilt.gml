@@ -42,8 +42,8 @@ set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("cut"));
 // Middle
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, -8);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -80);
 set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 35);

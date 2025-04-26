@@ -20,19 +20,25 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[2].mp_cost1);
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_birdflap"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 6);
 
 window_num ++; //windup 2
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20); //4
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 4); //i'm using this to set the time the window can progress to the next
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_forceleap_jump"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED, 0.25);
 
 window_num ++; //windup 3
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_forceleap_jump"));
 
 window_num ++; //movement
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
@@ -127,9 +133,9 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 40);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10); //12
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 280); //300
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 280);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6); //4
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7);
@@ -143,14 +149,14 @@ hitbox_num ++; //spike explosion but for burning fury
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0); //7 - done in attack_update
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 38);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 28); //38
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 40);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64); //40
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64); //40
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 16); //20
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 16);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 300);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7); //5
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.9);

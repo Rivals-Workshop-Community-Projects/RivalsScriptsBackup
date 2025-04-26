@@ -24,7 +24,8 @@ if (samson_honeyed && other_player_id == samson_honeyed_ID){
 		{
 			sprite_index = honeyed_sprite;
 			if "honeyed_amn_speed" in self
-			{image_index += honeyed_amn_speed;}
+			{image_index = honeyed_frame;
+            }
 		}
         else if "owie_hurt_sprite" in self
         {

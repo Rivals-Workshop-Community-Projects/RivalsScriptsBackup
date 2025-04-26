@@ -1,5 +1,6 @@
-//B - Reversals
-switch(attack){
+//	B - Reversals
+switch(attack)
+{
 	case AT_NSPECIAL:
 	case AT_FSPECIAL:
 	case AT_DSPECIAL:
@@ -8,7 +9,9 @@ switch(attack){
 		break;
 }
 
-if (attack == AT_DTILT)
+//======================================================================================================================
+
+if (attack == AT_DTILT && !hitpause)
 {
 	can_fast_fall = false;
 	
@@ -32,8 +35,8 @@ if (attack == AT_DTILT)
 				set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 7);
 				set_attack_value(AT_DTILT, AG_OFF_LEDGE, 1);
 				
-				window = 4;
-				window_timer = 0;
+				window 			= 4;
+				window_timer 	= 0;
 			}
 		}
 		
@@ -52,7 +55,7 @@ if (attack == AT_DTILT)
 	
 	if (window == 4)
 	{
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			energy_meter -= 10;
 		}
@@ -67,10 +70,10 @@ if (attack == AT_DTILT)
 	}
 }
 
-if (attack == AT_DATTACK)
+if (attack == AT_DATTACK && !hitpause)
 {	
 	//	This is the part where mr or mrs projectile go flipside
-	if (window == 2 && window_timer > 2 && !hitpause)
+	if (window == 2 && window_timer > 2)
     {
 		with (pHitBox)
 		{    
@@ -128,9 +131,9 @@ if (attack == AT_DATTACK)
 	}
 }
 
-if (attack == AT_FSTRONG)
+if (attack == AT_FSTRONG && !hitpause)
 {
-	if (window == 3 && window_timer == 5 && !hitpause)
+	if (window == 3 && window_timer == 5)
 	{
 		if (!has_hit)
 		{
@@ -139,7 +142,7 @@ if (attack == AT_FSTRONG)
 	}
 }
 
-if (attack == AT_USTRONG)
+if (attack == AT_USTRONG && !hitpause)
 {
 	if (window == 3)
 	{
@@ -148,16 +151,21 @@ if (attack == AT_USTRONG)
 	}
 }
 
-if (attack == AT_DSTRONG)
+if (attack == AT_DSTRONG && !hitpause)
 {	
 	if (window == 1)
 	{
 		dstrong_charge = (strong_charge / 18);
 		dstrong_charge = dstrong_charge * -1.05;
 	}
-	if (window == 2 && window_timer == 1)
+	if (window == 2)
 	{
-		set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED, -8.5 + dstrong_charge);
+		sound_stop(sound_get("Aura Chargin"));	
+
+		if (window_timer == 1)
+		{
+			set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED, -8.5 + dstrong_charge);
+		}
 	}
 	
 	if (window == 4)
@@ -174,7 +182,20 @@ if (attack == AT_DSTRONG)
 	}
 }
 
-if (attack == AT_DAIR)
+if (attack == AT_UAIR && !hitpause)
+{
+	if (has_hit_player)
+	{
+		set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
+	}
+
+	else if (!has_hit_player)
+	{
+		set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);
+	}
+}
+
+if (attack == AT_DAIR && !hitpause)
 {	
 	can_wall_jump = true;
 	can_fast_fall = false;
@@ -193,7 +214,7 @@ if (attack == AT_DAIR)
 			dairad = 0;
 		}
 
-		if (window_timer == 12 && !hitpause)
+		if (window_timer == 12)
 		{
 			sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.80);
 			sound_play(asset_get("sfx_swipe_medium2"), false, noone, 0.80);
@@ -202,8 +223,8 @@ if (attack == AT_DAIR)
 	
 	if (window == 3)
 	{
-		can_jump = true;
-		can_shield = true;
+		can_jump 			= true;
+		can_shield 			= true;
 		
 		if (!free)
 		{
@@ -234,7 +255,7 @@ if (attack == AT_DAIR)
 		can_attack 	= true;
 		can_special = true;
 	
-		// Double jump or not
+		//	Double jump or not
 		if (dairdj == 0)
 		{
 			djumps = 0;
@@ -257,7 +278,9 @@ if (attack == AT_DAIR)
 	}	
 }
 
-if (attack == AT_NSPECIAL)
+//======================================================================================================================
+
+if (attack == AT_NSPECIAL && !hitpause)
 {	
 	can_fast_fall = false;
 	
@@ -282,7 +305,7 @@ if (attack == AT_NSPECIAL)
 		}
 	}
 	
-	if (window == 2 && window_timer == 1 && !hitpause)
+	if (window == 2 && window_timer == 1)
 	{
 		energy_meter -= 5;
 	}
@@ -293,7 +316,7 @@ if (attack == AT_NSPECIAL)
 	}
 }
 
-if (attack == AT_NSPECIAL_AIR)
+if (attack == AT_NSPECIAL_AIR && !hitpause)
 {	
 	can_fast_fall = false;
 	
@@ -332,7 +355,7 @@ if (attack == AT_NSPECIAL_AIR)
 		}
 	}
 	
-	if (window == 2 && window_timer == 1 && !hitpause)
+	if (window == 2 && window_timer == 1)
 	{
 		energy_meter -= 5;
 	}
@@ -343,7 +366,7 @@ if (attack == AT_NSPECIAL_AIR)
 	}
 }
 
-if (attack == AT_NSPECIAL_2)
+if (attack == AT_NSPECIAL_2 && !hitpause)
 {	
 	can_fast_fall = false;
 	
@@ -360,24 +383,24 @@ if (attack == AT_NSPECIAL_2)
 	
 	if (window == 2)
 	{
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			energy_meter -= 10;
 		}
 	
-		if (window_timer == 8 && !hitpause)
+		if (window_timer == 8)
 		{
 			sound_play(sound_get("sfx_auracharged"));
 		}
 	}
 	
-	if (window == 3 && window_timer == 9 && !hitpause)
+	if (window == 3 && window_timer == 9)
 	{
 		sound_play(sound_get("sfx_auracharged"));
 	}
 }
 
-if (attack == AT_FSPECIAL)
+if (attack == AT_FSPECIAL && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= true;
@@ -420,7 +443,7 @@ if (attack == AT_FSPECIAL)
 		}		
 	}
 	
-	if (window == 2 && window_timer == 1 && !hitpause)
+	if (window == 2 && window_timer == 1)
 	{
 		energy_meter -= 10;
 	}
@@ -436,7 +459,7 @@ if (attack == AT_FSPECIAL)
 	}
 }
 
-if (attack == AT_FSPECIAL_2)
+if (attack == AT_FSPECIAL_2 && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= false;
@@ -478,8 +501,8 @@ if (attack == AT_FSPECIAL_2)
 		{
             sprite_change_offset("fspecial2", 208, 102);
 			
-			hsp = 0;
-			vsp = 0;
+			hsp 			= 0;
+			vsp 			= 0;
 			
 			destroy_hitboxes();
 			
@@ -497,7 +520,7 @@ if (attack == AT_FSPECIAL_2)
 	//	Welcome to comedy central
     if (window == 2)
 	{				
-		if (window_timer == 1 && !hitpause)  
+		if (window_timer == 1)  
 		{      
 			sprite_change_offset("fspecial2", 208, 68);
 			
@@ -535,7 +558,7 @@ if (attack == AT_FSPECIAL_2)
 			}
 		}
 		
-		if (window_timer > 13 && !hitpause)  
+		if (window_timer > 13)  
 		{      
 			sprite_change_offset("fspecial2", 208, 86);
 		}
@@ -570,17 +593,17 @@ if (attack == AT_FSPECIAL_2)
 }
 
 //	Wall Smack
-if (attack == AT_EXTRA_2)
+if (attack == AT_EXTRA_2 && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= false;
 	can_fast_fall 	= false;
 	can_jump 		= false;
 	
-	hsp = 0;
-	vsp = 0;
+	hsp 			= 0;
+	vsp 			= 0;
 	
-	spr_angle = 90*spr_dir;
+	spr_angle 		= 90 * spr_dir;
 	
 	sprite_change_offset("fspecial2_landing", 34, 64);
 	
@@ -589,18 +612,18 @@ if (attack == AT_EXTRA_2)
 	
 	if (window == 1 || window == 2)
 	{
-		can_jump = true;
-		can_move = true;
+		can_jump 	= true;
+		can_move 	= true;
 	}
 	
 	if (window == 3)
 	{
-		spr_angle = 0*spr_dir;
+		spr_angle 	= 0 * spr_dir;
 		sprite_change_offset("fspecial2_landing", 64, 84);
 	}
 }
 
-if (attack == AT_USPECIAL)
+if (attack == AT_USPECIAL && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= true;
@@ -637,12 +660,12 @@ if (attack == AT_USPECIAL)
 	
 	if (window == 2)
 	{
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			energy_meter -= 25;
 		}	
 
-		if (window_timer == 4 && !hitpause)
+		if (window_timer == 4)
 		{
 			vsp = -16.5;
 		}		
@@ -661,7 +684,7 @@ if (attack == AT_USPECIAL)
 	}	
 }
 
-if (attack == AT_USPECIAL_2)
+if (attack == AT_USPECIAL_2 && !hitpause)
 {	
 	can_move 		= true;
 	can_wall_jump 	= true;
@@ -677,12 +700,12 @@ if (attack == AT_USPECIAL_2)
 	
 	if (window == 2)
 	{
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			energy_meter -= 50;
 		}
 		
-		if (window_timer == 4 && !hitpause)
+		if (window_timer == 4)
 		{
 			vsp = -13;
 		}
@@ -690,7 +713,7 @@ if (attack == AT_USPECIAL_2)
 	
 	if (window == 3)
 	{		
-		if (window_timer == 2 && !hitpause)
+		if (window_timer == 2)
 		{
 			var bear = random_func(0, 3, true);		
 			switch(bear) 
@@ -716,7 +739,7 @@ if (attack == AT_USPECIAL_2)
 	}
 }
 
-if (attack == AT_DSPECIAL)
+if (attack == AT_DSPECIAL && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= true;
@@ -796,7 +819,7 @@ if (attack == AT_DSPECIAL)
 	}
 }
 
-if (attack == AT_DSPECIAL_2)
+if (attack == AT_DSPECIAL_2 && !hitpause)
 {	
 	can_move 		= false;
 	can_wall_jump 	= true;
@@ -814,7 +837,7 @@ if (attack == AT_DSPECIAL_2)
 		
 		soft_armor = 8;
 		
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			energy_meter -= 50;
 		}
@@ -825,7 +848,7 @@ if (attack == AT_DSPECIAL_2)
 		hsp = 0.45 * spr_dir * window_timer;
 		vsp = 0;
 	
-		if (window_timer == 11 && !hitpause)
+		if (window_timer == 11)
 		{
 			var bear2 = random_func(0, 3, true);		
 			switch(bear2) 
@@ -868,7 +891,7 @@ if (attack == AT_DSPECIAL_2)
 	
 	if (window == 6)
 	{
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			if (!has_hit)
 			{
@@ -900,22 +923,58 @@ if (attack == AT_DSPECIAL_2)
 }
 
 //	Out of juice, bruce
-if (attack == AT_EXTRA_3)
+if (attack == AT_EXTRA_3 && !hitpause)
 {	
 	can_wall_jump 	= true;
 	can_fast_fall 	= false;
 
-	if (window == 1 && window_timer > 1 && window_timer < 4 && !hitpause) 
+	if (free)
 	{
-		take_damage( player, player, 1 );
-	}	
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 7);
+	}
+
+	if (!free)
+	{
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+	}
+
+	if (window == 1)
+	{
+		if (window_timer == 1)
+		{
+			if (free)
+			{
+				vsp = -12;
+			}
+
+			var kodiOW = random_func(0, 3, true);		
+			switch(kodiOW) 
+			{
+				case 0:
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, sound_get("Kodiak Pain 1"));
+				break;
+				
+				case 1:
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, sound_get("Kodiak Pain 2"));
+				break;
+					
+				case 2:
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, sound_get("Kodiak Pain 3"));
+				break;		
+			}				
+		}
+		
+		if (window_timer > 1 && window_timer < 4) 
+		{
+			take_damage( player, player, 1 );
+		}	
+	}
 }
 
-//------------------------------------------------------------------------------
-
+//======================================================================================================================
 //	Taunt(s)
 
-if (attack == AT_TAUNT_2) 
+if (attack == AT_TAUNT_2 && !hitpause) 
 {
 	if (attack_pressed) or (special_pressed) 
 	{
@@ -950,14 +1009,13 @@ if (attack == AT_EXTRA_1)
 	if (window == 3)
 	{
 		sound_stop(sound_get("Dance Jingle"));
-		taunt_time = 0;
+		taunt_time 			= 0;
 	}
 }
 
-//------------------------------------------------------------------------------
-
+//======================================================================================================================
 //	DUST TO DUST HAHAHAHAHAHAHAHAHA
-//	What did you expect? I've been repeating the same joke with 4 different characters at this point
+//	What did you expect? I've been repeating the same joke with 4 different characters at this point...
 
 switch(attack)
 {	
@@ -990,7 +1048,7 @@ switch(attack)
 		break;	
 }
 
-
+//======================================================================================================================
 
 #define spawn_base_dust // written by supersonic
 /// spawn_base_dust(x, y, name, dir = 0)

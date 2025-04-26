@@ -5,11 +5,11 @@ set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
 //JAB 1 (windows 1 - 3)
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 3);
 
 window_num ++; //attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
@@ -19,7 +19,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 4);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
@@ -84,8 +84,8 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 24);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -118,7 +118,7 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 54);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 4);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.6);

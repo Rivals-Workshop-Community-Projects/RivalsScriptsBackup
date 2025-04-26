@@ -7,7 +7,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecial_air_hu
 
 // charge hold
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 48);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
@@ -49,7 +49,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 15);
 
 // endlag
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 25);
 
@@ -59,10 +59,10 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 38);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 42);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -14);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 30);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 0);
@@ -89,7 +89,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 68);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 70);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -18);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 1);
 

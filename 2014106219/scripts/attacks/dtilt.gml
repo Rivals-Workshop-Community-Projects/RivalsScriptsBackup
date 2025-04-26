@@ -23,7 +23,7 @@ set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_SFX, 0);
-set_window_value(AT_DTILT, 4, AG_WINDOW_SFX, asset_get("sfx_zetter_shine"));
+set_window_value(AT_DTILT, 4, AG_WINDOW_SFX, sound_get("magicshoot2"));
 
 set_window_value(AT_DTILT, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DTILT, 5, AG_WINDOW_LENGTH, 6);

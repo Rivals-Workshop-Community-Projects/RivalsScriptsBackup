@@ -15,7 +15,7 @@ image_xscale = 1;
 image_yscale = 1;
 
 // Movement Variables
-wisp_speed = 11;
+wisp_speed = 10;
 
 // State Control
 state = 0;

@@ -1,6 +1,18 @@
 // pre-draw
 
 shader_start();
+
+for (var i = 0; i < array_length(fx_cracks); i++)
+{
+	var cur_part = fx_cracks[i];
+	var time = lerp(0, 1, cur_part.timer/cur_part.max_time);
+	gpu_set_blendmode(bm_add);
+	draw_set_alpha(min(0.25, 1 - time));
+	draw_sprite(fx_crack_spr, time * sprite_get_number(fx_crack_spr), cur_part.x, cur_part.y);
+	draw_set_alpha(1);
+	gpu_set_blendmode(bm_normal);
+}
+
 if (is_attacking)
 {
 	switch (attack)
@@ -75,7 +87,7 @@ if (lightbuff_active)
 			2,
 			spr_angle,
 			c_white,
-			lerp(0, 0.75, mp_current/mp_max) //lightbuff_alpha
+			lerp(0, 0.75, mp_cur/mp_max) //lightbuff_alpha
 		);
 	}
 	gpu_set_fog(0, c_white, 0, 0);

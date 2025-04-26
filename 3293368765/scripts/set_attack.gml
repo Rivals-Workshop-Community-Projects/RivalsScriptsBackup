@@ -1,3 +1,5 @@
+has_gained_will = false;
+
 var is_special = (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL_AIR || attack == AT_NSPECIAL_AIR)
 
 if (will_cancel && is_special && move_cooldown[attack] <= 0 && !get_match_setting(SET_TURBO)) {

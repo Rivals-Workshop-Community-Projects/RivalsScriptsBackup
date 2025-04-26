@@ -89,8 +89,7 @@ skill_button_pos = [
 
 var w = sprite_get_width(sprite_get("hud_skills"));
 var h = sprite_get_height(sprite_get("hud_skills"));
-
-for (var i = 0; i <= 3; ++i)
+for (var i = 0; i <= 3; ++i) //button offsets
 {
     for (var j = i; j <= i + 8; j += 4)
     {
@@ -106,15 +105,71 @@ for (var i = 0; i <= 3; ++i)
     }
 }
 
-if (init && room != asset_get("network_char_select")) set_synced_var(player, 0);
+rng_msg_time = 0;
+rng_msg_time_set = 10;
 
-//saves skill data in case it's needed
-//if not, set it to [12816], which is the default kit
-if (get_synced_var(player) >= 4228 && (!init || room == asset_get("network_char_select"))) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
-else set_synced_var(player, 12816);
+//rng weight setup
+rng_prio = [1, 7, 11]; //not recommended | works well | recommended slot
+//init values - used to reset the values
+rng_weight_init = [
+    [rng_prio[2], rng_prio[1], rng_prio[0], rng_prio[0],      0  ], //light dagger
+    [rng_prio[1], rng_prio[2], rng_prio[0], rng_prio[1],      1  ], //burning fury
+    [rng_prio[0], rng_prio[1], rng_prio[2], rng_prio[0],      2  ], //force leap
+    [rng_prio[1], rng_prio[0], rng_prio[0], rng_prio[2],      3  ], //photon blast
+    [rng_prio[2], rng_prio[1], rng_prio[0], rng_prio[1],      4  ], //flashbang
+    [rng_prio[1], rng_prio[2], rng_prio[1], rng_prio[1],      5  ], //power smash
+    [rng_prio[1], rng_prio[0], rng_prio[2], rng_prio[0],      6  ], //accel blitz
+    [rng_prio[1], rng_prio[0], rng_prio[0], rng_prio[2],      7  ], //polaris
+    [rng_prio[2], rng_prio[1], rng_prio[0], rng_prio[0],      8  ], //ember fist
+    [rng_prio[1], rng_prio[2], rng_prio[0], rng_prio[0],      9  ], //light hookshot
+    [rng_prio[0], rng_prio[0], rng_prio[2], rng_prio[0],      10 ], //searing descent
+    [rng_prio[1], rng_prio[1], rng_prio[0], rng_prio[2],      11 ], //chasm burster
+];
+rng_pools_init = [0, 0, 0, 0];
 
-//put this in user_event2 ^ because it needs to run on css and ingame
+//current values - used to update the values
+//  rng_weight_cur: the priority of the skills in the RNG, set individually for every SKILL
+//  rng_pools_cur: the currently existing sum of all the priorities in the rng, set for every SLOT
+rng_weight_cur = [[], [], [], [], [], [], [], [], [], [], [], []];
+rng_pools_cur = [0, 0, 0, 0];
 
+for (var a = 0; a < 5; a++) for (var b = 0; b < array_length(rng_weight_init); b ++) rng_weight_cur[b][@ a] = rng_weight_init[b][@ a];
+for (var a = 0; a < 4; a++) for (var b = 0; b < array_length(rng_weight_init); b ++)
+{
+    rng_pools_init[a] += rng_weight_init[b][@ a]; //add currently checked weight to the pool
+    rng_weight_cur[b][@ a] = rng_pools_init[a]; //set current priority after the additions from previous skill priorities
+}
+for (var a = 0; a < 4; a ++) rng_pools_cur[a] = rng_pools_init[a]; //copy pool data for refreshing after the randomizer is done
+
+
+//writing skills down
+var check = array_create(4, -1);
+var overwrote_skills = false;
+for (var i = 0; i <= 3; i++)
+{
+    check[i] = (get_synced_var(player) >> (i * 4)) & 0xf; //translates values to the skills
+    check[i] %= 12; //makes sure the value won't overflow
+}
+//overwrite check
+//if there was at least 1 overwrite, set the code to set the synced var accordingly
+//the repeat is here to double check that all the slots have changed properly
+repeat (2) for (var i = 0; i <= 3; i++) for (var j = 0; j <= 3; j++) if (i != j && check[i] == check[j])
+{
+    check[i] = i;
+    if (!overwrote_skills) overwrote_skills = true;
+}
+cur_skills = check;
+if (overwrote_skills) //make sure the synced var is set correctly after the overwrite
+{
+    set_synced_var(player, 0); //shrinks values back to smaller numbers
+    for (var i = 0; i <= 3; ++i)
+    {
+        var old_sync_var = get_synced_var(player);                                  //the synced var before updating
+        var zeroed_element = old_sync_var & ~(0xf << (i * 4))                       //i forgor but it has something to do with shifting the bits
+        var new_sync_var = zeroed_element | ((cur_skills[i] & 0xf) << (4 * i));     //shift bits again for the new synced var
+        set_synced_var(player, new_sync_var);                                       //update synced var
+    }
+}
 
 
 #define set_skill(name, id, slot_x, slot_y, atk, air_atk, cost, cost_ex, cost_min)
@@ -160,10 +215,10 @@ else set_synced_var(player, 12816);
         //  if (skill_attack_air == -1) skill_attack_air = skill_attack;
 
         //attack_update.gml
-        //  if (window_timer == 1 && window == 2) mp_current -= mp_cost1; //initial cost
-        //  if (window_timer == 1 && window == 5) mp_current -= mp_cost2; //extra cost
+        //  if (window_timer == 1 && window == 2) mp_cur -= mp_cost1; //initial cost
+        //  if (window_timer == 1 && window == 5) mp_cur -= mp_cost2; //extra cost
 
         //update.gml
-        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_current);
+        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_cur);
     */
 }

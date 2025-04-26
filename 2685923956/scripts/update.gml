@@ -2,6 +2,12 @@
 
 // ---------------------------------------------------------------------------------------- cosmetics
 
+if (state==PS_WALK_TURN){
+	if (left_down&&right_down){
+		state_timer = 1;
+	}
+}
+
 if (get_player_color( player ) == 7){ //kantonianvision
 if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 outline_color=[35, 67, 49]
@@ -21,6 +27,29 @@ if (blink_cooldown>0){
 	blink_cooldown--;
 	if (blink_cooldown==0){
 		blink_time = 10 + random_func( (id%20)+1, 10, true );
+	}
+}
+
+if (state==PS_FIRST_JUMP){
+	if (state_timer==0){
+		if (!hitpause){
+			sound_play(sound_get("wavedash"),false,noone,0.3,1.3);
+			sound_play(asset_get("sfx_oly_uspecial_crystal"),false,noone,0.3,1.7);
+			spawn_hit_fx( x-40+random_func( 1, 80, true ), y-20-20+random_func( 8, 40, true ), sparkles1 );
+			spawn_hit_fx( x-40+random_func( 2, 80, true ), y-20-20+random_func( 9, 40, true ), sparkles3 );
+			spawn_hit_fx( x-40+random_func( 3, 80, true ), y-20-20+random_func( 10, 40, true ), sparkles2 );
+		}
+	}
+}
+
+if (eye_hfx_storage_taketwo!=-4){
+	if (instance_exists(eye_hfx_storage_taketwo)){
+		if (doomdesire_storage!=-4){
+			if (instance_exists(doomdesire_storage)){
+				//print("yea?/")
+				eye_hfx_storage_taketwo.y = ease_quadOut( round(eye_hfx_y_store), round(doomdesire_storage.y-doomdesire_storage.eye_y_offset), eye_hfx_storage_taketwo.step_timer, eye_hfx_storage_taketwo.hit_length )
+			}
+		}
 	}
 }
 
@@ -52,7 +81,7 @@ if (bair_used){
 }
 if (ustr_used){
 	move_cooldown[AT_USTRONG] = 2;
-	if ( ((state==PS_HITSTUN||state==PS_WALL_JUMP)&&state_timer==1) || !free){
+	if ( ((/*state==PS_HITSTUN||*/state==PS_WALL_JUMP)&&state_timer==1) || !free){
 		move_cooldown[AT_USTRONG] = 0;
 		ustr_used = false;
 	}
@@ -71,9 +100,14 @@ if (fsp_used){
 }
 if (dstr_used){
 	move_cooldown[AT_DSTRONG] = 2;
-	if ( ((state==PS_HITSTUN||state==PS_WALL_JUMP)&&state_timer==1) || !free){
+	if ( ((/*state==PS_HITSTUN||*/state==PS_WALL_JUMP)&&state_timer==1) || !free){
 		move_cooldown[AT_DSTRONG] = 0;
 		dstr_used = false;
+	}
+}
+if (str_stall > 0){
+	if ((state==PS_WALL_JUMP&&state_timer==1) || !free){
+		str_stall = 0;
 	}
 }
 

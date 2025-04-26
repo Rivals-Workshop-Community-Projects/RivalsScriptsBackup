@@ -56,6 +56,11 @@ if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 6 && hit_player_
 	hit_player_obj.free = true;
 }
 
+if(my_hitboxID.effect == 2) sound_play(asset_get("sfx_burnconsume"));
+if((my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DSTRONG) && my_hitboxID.effect != 2 && hit_player_obj.burned){
+	hit_player_obj.burn_timer = max(hit_player_obj.burn_timer - hit_player_obj.hitstop + 10, 0);
+}
+
 // if (my_hitboxID.attack == AT_USPECIAL && window == 2) {
 //     hit_player_obj.x = x + spr_dir * 40
 //     hit_player_obj.y = y + -10
@@ -179,5 +184,32 @@ if (attack == (AT_FTILT)){
 			old_vsp = 0;
 			}
 		}
+	}
+}
+
+//SFX Overlaps
+if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num >= 1){
+	with(my_hitboxID){
+		sound_play(asset_get("sfx_blow_heavy2"));
+	}
+}
+if(my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 2){
+	with(my_hitboxID){
+		sound_play(asset_get("sfx_blow_heavy1"));
+	}
+}
+if(my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 1){
+	with(my_hitboxID){
+		sound_play(asset_get("sfx_blow_heavy1"));
+	}
+}
+if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2){
+	with(my_hitboxID){
+		sound_play(asset_get("sfx_blow_heavy1"));
+	}
+}
+if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
+	with(my_hitboxID){
+		sound_play(asset_get("sfx_blow_heavy1"));
 	}
 }

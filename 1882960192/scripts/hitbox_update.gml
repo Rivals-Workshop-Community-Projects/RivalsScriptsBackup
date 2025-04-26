@@ -54,7 +54,7 @@ if (attack == AT_FSPECIAL) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_FTHROW || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
 			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
@@ -92,6 +92,11 @@ if (attack == AT_FSPECIAL) {
 					other.old_vsp = -6;
 					other.old_hsp = 10 * (spr_dir);
 				}
+				
+				if (attack == AT_FTHROW) {
+					other.old_vsp = -8;
+					other.old_hsp = 8 * (spr_dir);
+				}	
 				
 				if (attack == AT_DSTRONG) {
 					other.old_vsp = -15;
@@ -229,7 +234,7 @@ if (attack == AT_FSPECIAL_2) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_FTHROW || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
 			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
@@ -262,6 +267,11 @@ if (attack == AT_FSPECIAL_2) {
 					other.old_vsp = 0;
 					other.old_hsp = 24 * (spr_dir);
 				}
+				
+				if (attack == AT_FTHROW) {
+					other.old_vsp = -10;
+					other.old_hsp = 20 * (spr_dir);
+				}		
 				
 				if (attack == AT_FSPECIAL_AIR) {
 					other.old_vsp = -4;

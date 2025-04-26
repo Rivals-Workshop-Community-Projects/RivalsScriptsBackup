@@ -86,6 +86,31 @@ taunt_cancel_available = false;
 
 nspecPowerChange = 0;
 
+
+alive_players = 0;
+
+VA_inactiveColor_R1 = 130;
+VA_inactiveColor_G1 = 20;
+VA_inactiveColor_B1 = 14;
+VA_inactiveColor_R2 = 82;
+VA_inactiveColor_G2 = 5;
+VA_inactiveColor_B2 = 5;
+VA_inactiveColor_R3 = 59;
+VA_inactiveColor_G3 = 1;
+VA_inactiveColor_B3 = 1;
+
+VA_activeColor_R1 = 255;
+VA_activeColor_G1 = 248;
+VA_activeColor_B1 = 176;
+VA_activeColor_R2 = 255;
+VA_activeColor_G2 = 228;
+VA_activeColor_B2 = 18;
+VA_activeColor_R3 = 214;
+VA_activeColor_G3 = 162;
+VA_activeColor_B3 = 4;
+
+VA_transitionamt = 0;
+
 target = noone;
 
 HG_HITBOX_COLOR = 69;

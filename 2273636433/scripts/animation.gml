@@ -5,7 +5,7 @@ switch (state){
 
 	case PS_SPAWN:
         image_index = floor(image_number*state_timer/(image_number*8));
-		if(state_timer==1)&&(!hitpause){sound_play(sound_get("se_mariod_appear"));}		//112
+		if(state_timer==2)&&(!hitpause){sound_play(sound_get("se_mariod_appear"));}		//112
 		if(timer_intro<20)&&(timer_intro>=0){
 			intro_done=1;
 			sprite_index = sprite_get("intro");

@@ -29,7 +29,7 @@ if (attack == AT_BAIR) and (holding_turntable)
     spr_dir = -spr_dir;
 }
 // dthrow
-if ((attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DTILT) or (attack == AT_DSTRONG)) and (holding_turntable) 
+if ((attack == AT_DAIR)  or (attack == AT_DSPECIAL) or (attack == AT_DTILT) or (attack == AT_DSTRONG)) and (holding_turntable) 
 {
     attack = AT_DTHROW
     
@@ -62,6 +62,7 @@ if (attack == AT_DSPECIAL) and (ds_list_size(cd_pos) == 0)
 // letting the turntable go when uspecialing
 if (attack == AT_USPECIAL)
 {
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
     if (holding_turntable)
     {
         holding_turntable = false;
@@ -93,7 +94,3 @@ if (attack == AT_TAUNT) and (holding_turntable)
     attack = AT_DSPECIAL_AIR;
     
 }
-
-
-
-

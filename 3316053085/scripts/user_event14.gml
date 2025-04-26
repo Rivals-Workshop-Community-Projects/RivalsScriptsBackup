@@ -125,8 +125,3 @@ if (get_match_setting(SET_PRACTICE) && temp_level == 0)
     draw_debug_text(temp_x - 8, temp_y - 64, "UP + TAUNT = Add charge");
     draw_debug_text(temp_x - 8, temp_y - 48, "DOWN + TAUNT = Remove charge");
 }
-
-#define rectDraw(x1, y1, width, height, color)
-{
-    draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);
-}

@@ -3,6 +3,23 @@
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+//allow reverse ftilt code (by supersonic)
+if (attack == AT_JAB)
+{
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
+	{
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, window_end); //NOTE: window_end is a tester variable!
+        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end)
+		{
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    }
+	else reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+}
+
 switch(attack)
 {
 	//charge attack mechanic + some other specific stuff for some of those moves

@@ -779,7 +779,7 @@ if (lang != 0)
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if (player_id == other && "dont_color" not in self)
+    with (pHitBox) if (orig_player_id == other && "dont_color" not in self)
     {
         if ("col" not in self)
         {

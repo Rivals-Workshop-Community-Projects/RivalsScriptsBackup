@@ -7,18 +7,12 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
     voicecooldown = 0; //attack sounds
 	voicecooldown3 = 0; //galaxy hit sounds
     
-	/*if(instance_exists(grabbedtarget)){
-		if(grabbedobject){
-	    	grabbedobject = false;grabbedtarget.KoB_grabbed = false;
-	    	if(grabbedarticle){
-	    		grabbedtarget.state = 1;grabbedtarget.timer = 60;
-	    		if("StarterBlock" in grabbedtarget){grabbedtarget.state = 2;}
-	    		grabbedtarget.visible = true;
-	    	}
-	    }else{
-	    	grabbedtarget.visible = true;
-		}
-    }*/
+	//extra bonus damage mechanic
+	if(bonus_damage){
+		bonus_damage = false;bonus_damage_flash = enemy_hitboxID.damage > 10?120:80;
+		damage_scaling = 1;hitstop *= 2;outline_color = [0, 0, 0];init_shader();
+		sound_play(enemy_hitboxID.damage > 10?sound_get("mech_stomp2"):sound_get("mech_stomp"),false,noone,1.0, 1.1);
+	}
     
     if(voicecooldown2 <= 0){
     	rand = random_func(1, 3, true);

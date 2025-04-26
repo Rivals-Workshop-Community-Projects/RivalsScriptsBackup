@@ -44,6 +44,22 @@ if ((attack == AT_DSPECIAL) || (attack == AT_DSPECIAL_AIR) || (attack == AT_FSPE
     }
 }
 
+// Supersonics Reverse Ftilt code
+if (attack == AT_JAB) {
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    } else {
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+    }
+}
+
 //#region Normal Command Grab Section
 
 //Uspecial + Uthrow --------------------------------------------------------------------------------------------------------------------
@@ -620,8 +636,9 @@ if (attack == AT_EXTRA_2 && instance_exists(grabbed_player_obj)) {
 	move_cooldown[AT_NSPECIAL] = 30;
 	if(window > 1){soft_armor = 99;}
 	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
+	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; } //Minus 1 window for last window release
+	if (window >= get_attack_value(attack, AG_NUM_WINDOWS) - 1) { grabbed_player_obj = noone; } //Minus 1 window for last window release
 	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
 
 	else {
@@ -871,58 +888,42 @@ if (attack == AT_FINAL_SMASH_THROW && instance_exists(grabbed_player_obj)) {
 //#region Gannoncide Prevention Code
 
 if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || attack == AT_USPECIAL_2 || attack == AT_DSPECIAL_2 || attack == AT_FINAL_SMASH_THROW){
-	//Referenced from Amvira's code for anti-ganoncide; release grabbed foe once you're almost out of the viewport
-	/*
-	print("room_width:" + string(room_width));
-	print("room_height:" + string(room_height));
-	print("x:" + string(x));
-	print("y:" + string(y));
-	*/
 	var bottom_boundry = room_height - 130;
-	//var left_side_boundry = 20;
-	//var right_side_boundry = room_width - 20;
-	if(//x < left_side_boundry || 
-		//x > right_side_boundry ||
-		y > bottom_boundry){
-			if(attack != AT_FSPECIAL){
-				if(article_platform_id == noone){
-					// Create platform
-					article_platform_id = instance_create(x + (30 * spr_dir),y+60,"obj_article_platform");
-					ganoncide_preventor_available_flag = false; // Set the flag to false to prevent running this until landing again.
-					
-					// Modiify hitboxes of the grab to prevent cheese by sending the opponent upwards.
-					if(attack == AT_FTHROW){ // Fthrow is the only non boosted grab
-					//set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,.1);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,12);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,1);
-					}
-					// Modify all the hitboxes of the grabs.
-					else{
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,1.2);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,10);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,85);
-					}
+	if( y > bottom_boundry){
+		if(attack != AT_FSPECIAL){
+			if(article_platform_id == noone){
+				// Create platform
+				article_platform_id = instance_create(x + (30 * spr_dir),y+60,"obj_article_platform");
+				ganoncide_preventor_available_flag = false; // Set the flag to false to prevent running this until landing again.
+				
+				// Modiify hitboxes of the grab to prevent cheese by sending the opponent upwards.
+				if(attack == AT_FTHROW){ // Fthrow is the only non boosted grab
+				//set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,.1);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,12);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,1);
+				}
+				// Modify all the hitboxes of the grabs.
+				else{
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,1.2);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,10);
+				set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,85);
 				}
 			}
-			else {
-				// Drop opponent for any reason if they are somehow grabbed
-				if(grabbed_player_obj != noone){
-				grabbed_player_obj.state = PS_IDLE_AIR;
-				grabbed_player_obj.vsp = -7;
-				grabbed_player_obj = noone;}
-				can_shield = true;
-				can_jump = true;
-			if(ganoncide_preventor_available_flag = true){
-				fspecial_recovery_enabled_flag = true;
-				/* // Uspecial Exception
-				if(special_down && up_down){
-					iasa_script();
-				}
-				*/
+		}
+		else {
+			// Drop opponent for any reason if they are somehow grabbed
+			if(grabbed_player_obj != noone){
+			grabbed_player_obj.state = PS_IDLE_AIR;
+			grabbed_player_obj.vsp = -7;
+			can_shield = true;
+			can_jump = true;
+				if(ganoncide_preventor_available_flag == true){
+					fspecial_recovery_enabled_flag = true;
 				}
 			}
+		}
 	}
 }
 
@@ -955,6 +956,29 @@ switch(attack){
 		}
 	break;
 	
+	case AT_USPECIAL:
+	if(window > 4){ // Windows 5 and 6 endlag
+		// Guadua Ledge Snap Code MOVE UP AT LEDGE Code
+		if (moved_up == false) {
+	    	if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+	        	for (var i = 0; i < 40; i++){ // 40 px tolerance
+	        		//print("i: " + string(i) + "y: " + string(place_meeting(x+hsp,y-(i+1),asset_get("par_block"))));
+	        		if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+	            		y -= i;
+	        			moved_up = true;
+	            	    break;
+	            	}
+	        	}
+	    	}
+		}
+		// Cancel move into last frame so you go into pratland if you land early
+		if(!free){
+			window = 6;
+			window_timer = get_window_value(AT_USPECIAL,6,AG_WINDOW_LENGTH);
+		}
+	}
+	break;
+	
 	//Nair hover Code
 	case AT_NAIR:
 		if(window == 3 && has_hit == true && down_down == false){vsp = 0;}
@@ -967,22 +991,61 @@ switch(attack){
 	
 	// Switch to Dspec air to prevent grounded Fspec frame perfect being used off plats
 	case AT_DSPECIAL:
+	// The code below is obsolete due to implementing Ducky's lanmding code in Dspecial Air.
+		//print("Window: " + string(window) + " / Free:" + string(free))
+		/*
 		if((window == 1 || window == 2) && free){
-			attack = AT_DSPECIAL_AIR;
-			hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
+			destroy_hitboxes();
+			attack_end();
+			set_state(PS_IDLE_AIR);
+			clear_button_buffer(PC_SPECIAL_PRESSED);
+			//attack = AT_DSPECIAL_AIR; // Old system to set into Dspec air
+			//hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE); // Old system to set into Dspec air
 		}
+		*/
 	break;
 	
 	case AT_DSPECIAL_AIR:
 		// Add cooldown on air version
 		move_cooldown[AT_DSPECIAL_AIR] = 10;
-		// Custom Land Logic
-		if(!free && window != 6){
-			set_attack_value(AT_DSPECIAL_AIR,AG_NUM_WINDOWS,6);
-			destroy_hitboxes();
-			window = 6;
-			window_timer = 0;
+		
+		// Snap to ledge for regular Dspec if close enoguh to a platform. Code from Ducky
+		if(free && window == 1){
+			var pixelbufferbelow = 16; //adjust for feel
+	        var pixelbufferabove = 16; //adjust for feel
+	        //CHECK FOR PLATFORMS OR GROUND. (5px for landing.)
+	        for(i = -pixelbufferbelow; i < pixelbufferabove; i++)
+	        {
+	            if(position_meeting(x+hsp,y+i,asset_get("par_jumpthrough")) && !position_meeting(x+hsp,y+i-1,asset_get("par_jumpthrough"))
+	            || position_meeting(x+hsp,y+i,asset_get("par_block")) && !position_meeting(x+hsp,y+i-1,asset_get("par_block")))
+	            {
+	                //print_debug("wavelanded with " + string(abs(i)) + "px amount of leniency");
+	                y = y+i-1;
+	                vsp = 0;
+	                hsp = 0;
+	                //clear_button_buffer(PC_SHIELD_PRESSED);
+	                attack_end();
+	                destroy_hitboxes();
+	                free = false;
+	                attack = AT_DSPECIAL;
+	                window = 1;
+	                window_timer = 1;
+	                hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
+	                break;
+	            }
+	        }
 		}
+		// Custom Land Logic
+		if(!free){
+			// Do custom landing window if past the first window. 
+			if(window > 1 && window != 6){
+				set_attack_value(AT_DSPECIAL_AIR,AG_NUM_WINDOWS,6);
+				destroy_hitboxes();
+				window = 6;
+				window_timer = 0;
+			}
+		}
+		
 	break;
 	
 	// Uspecial / Air Nspec iasa script on last window

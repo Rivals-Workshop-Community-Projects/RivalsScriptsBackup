@@ -141,7 +141,7 @@ if (state == 0 && state_timer > 10 || state == 1 || state == 2 && state_timer > 
 					{
 						other.state 		= 4;
 						other.state_timer 	= 0;
-						other.hsp 			= 3.25 * obj_article2.spr_dir;
+						other.hsp 			= 3.25 * spr_dir;
 						other.vsp			= -11.5;	
 
 						spawn_hit_fx(other.x + 11 * other.spr_dir, other.y - 3, 304);	
@@ -218,11 +218,40 @@ if (state == 0)
 
     hsp 			= 0;
 
-    if (!free)
-    vsp 			= 0;
-
     if (free)
-    vsp += 0.85;
+		vsp += 0.85;
+		
+	if (!free)
+	{
+		vsp 		= 0;
+		
+		var pguardL = x - 22;
+		var pguardR = x + 22;
+		var pguardY = y + 40;
+
+		//	Check for collisions with jump-through platforms or solid blocks
+		var isOnPlatform 	= place_meeting(x, pguardY, asset_get("par_jumpthrough"));
+		var isOnSolidBlock 	= place_meeting(x, pguardY, asset_get("par_block"));
+
+		//	Reposition if hanging off ledges
+		if (isOnPlatform || isOnSolidBlock) 
+		{
+			//	Check if the left and right edges have collisions
+			var leftCollision 	= position_meeting(pguardL, pguardY, isOnPlatform ? asset_get("par_jumpthrough") : asset_get("par_block"));
+			var rightCollision 	= position_meeting(pguardR, pguardY, isOnPlatform ? asset_get("par_jumpthrough") : asset_get("par_block"));
+			
+			//	If there's no collision, begone with you
+			if (!leftCollision) 
+			{
+				x += 2;
+			} 
+				
+			else if (!rightCollision) 
+			{
+				x -= 2;
+			}
+		}	
+	}
 
     //	Control image index progression
     if (state_timer <= 20)
@@ -276,67 +305,150 @@ if (state == 1)
 
     //	Track the direction of the enemy relative to the turret
 	var enemy_direction = spr_dir;  
+	
+	with (player_id)
+	{
+		//	P.Guard range... expansion. Or whatever the meme anime thing is.
+		if !has_rune("O")
+		{
+			var detection_radius = 100;
+		}
+
+		if has_rune("O")
+		{
+			var detection_radius = 160;		//	140	
+		}
+
+		//	There's a hidden joke here somewhere...
+		if !has_rune("N")
+		{
+			sensitivity_flipper = false;
+		}
+
+		if has_rune("N")
+		{
+			sensitivity_flipper = true;
+		}
+	}
 
     with (oPlayer) 
     {
         //	Ensure the detected player is not the turret's owner
         if (player != other.player_id.player)
         {
-            var detection_radius = 145;		//140
-
-            //  A lot of fair checks
-            if ((invince_time == 0 && invincible == false && hitstop == 0 && hitpause == 0 
-			&& (state == PS_HITSTUN && state_timer > 6 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_PRATFALL
-			&& state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD 
-			&& state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN
-			&& get_player_team(player) != get_player_team(other.player))
+            //  Only hits targets if they're in hitstuns or whatever
+			//	Try and do something cool, people cry like I'm the devil or something... Sheesh.
+			if (other.sensitivity_flipper == false)
 			{
-                //  Check if the enemy is within range
-                if (point_distance(x, y, other.x, other.y) <= detection_radius)
-                {
-                    other.enemy_detected = true;
+				if (state == PS_HITSTUN || state == PS_HITSTUN_LAND || state == PS_TUMBLE 
+				&& hitpause == true && get_player_team(player) != get_player_team(other.player))
+				{
+					//  Check if the enemy is within range
+					if (point_distance(x, y, other.x, other.y) <= detection_radius)
+					{
+						other.enemy_detected = true;
 
-                    //	Determine the direction based on the enemy's position
-                    if (x > other.x)
-                    {
-                        enemy_direction = 1;    //  Enemy is to the left
-                    }
-                    
-                    else
-                    {
-                        enemy_direction = -1;   //  Enemy is to the right
-                    }
+						//	Determine the direction based on the enemy's position
+						if (x > other.x)
+						{
+							enemy_direction = 1;    //  Enemy is to the left
+						}
+						
+						else
+						{
+							enemy_direction = -1;   //  Enemy is to the right
+						}
 
-                    //	Update turret direction if the enemy moves past
-                    if (other.spr_dir != enemy_direction)
-                    {
-                        //  Switch turret's facing direction
-                        other.spr_dir = enemy_direction;    
-                    }
+						//	Update turret direction if the enemy moves past
+						if (other.spr_dir != enemy_direction)
+						{
+							//  Switch turret's facing direction
+							other.spr_dir = enemy_direction;    
+						}
 
-                    //  Determine the shooting angle based on the enemy's vertical position
-                    if (y < other.y - 100)
-                    {
-                        other.shoot_angle = -1;     // Enemy is directly above, no firing
-                    }
+						//  Determine the shooting angle based on the enemy's vertical position
+						if (y < other.y - 100)
+						{
+							other.shoot_angle = -1;     // Enemy is directly above, no firing
+						}
 
-                    else if (y > other.y + 70)
-                    {
-                        other.shoot_angle = -1;     // Enemy is directly below, no firing
-                    }
+						else if (y > other.y + 70)
+						{
+							other.shoot_angle = -1;     // Enemy is directly below, no firing
+						}
 
-                    else if (y < other.y + 30)
-                    {
-                        other.shoot_angle = 45;     // Enemy is above but not directly overhead, fire at 45 degrees
-                    }
+						else if (y < other.y + 30)
+						{
+							other.shoot_angle = 45;     // Enemy is above but not directly overhead, fire at 45 degrees
+						}
 
-                    else
-                    {
-                        other.shoot_angle = 0;      // Enemy is level or below, fire straight
-                    }
-                }
-            }
-        }
+						else
+						{
+							other.shoot_angle = 0;      // Enemy is level or below, fire straight
+						}
+					}
+				}
+			}
+
+			//===========================================================
+
+			//	The Previous Way
+			if (other.player_id.sensitivity_flipper)
+			{
+				//  A lot of fair checks
+				if ((invince_time == 0 && invincible == false && hitstop == 0 && hitpause == 0 
+				&& (state == PS_HITSTUN && state_timer > 6 || state != PS_HITSTUN)) && state != PS_AIR_DODGE && state != PS_PRATFALL
+				&& state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_GROUND && state != PS_DEAD 
+				&& state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_WALL_TECH && state != PS_RESPAWN
+				&& get_player_team(player) != get_player_team(other.player))
+				{
+					//  Check if the enemy is within range
+					if (point_distance(x, y, other.x, other.y) <= detection_radius)
+					{
+						other.enemy_detected = true;
+
+						//	Determine the direction based on the enemy's position
+						if (x > other.x)
+						{
+							enemy_direction = 1;    //  Enemy is to the left
+						}
+						
+						else
+						{
+							enemy_direction = -1;   //  Enemy is to the right
+						}
+
+						//	Update turret direction if the enemy moves past
+						if (other.spr_dir != enemy_direction)
+						{
+							//  Switch turret's facing direction
+							other.spr_dir = enemy_direction;    
+						}
+
+						//  Determine the shooting angle based on the enemy's vertical position
+						if (y < other.y - 100)
+						{
+							other.shoot_angle = -1;     // Enemy is directly above, no firing
+						}
+
+						else if (y > other.y + 70)
+						{
+							other.shoot_angle = -1;     // Enemy is directly below, no firing
+						}
+
+						else if (y < other.y + 30)
+						{
+							other.shoot_angle = 45;     // Enemy is above but not directly overhead, fire at 45 degrees
+						}
+
+						else
+						{
+							other.shoot_angle = 0;      // Enemy is level or below, fire straight
+						}
+					}
+				}
+			}
+		}
     }
 
     //	Transition to the firing state if an enemy is detected
@@ -492,8 +604,8 @@ if (state == 4)
 	
 	if (!has_bounced)
 	{
-		var ray_toss    = create_hitbox(AT_DSPECIAL, 4, x + 2 * spr_dir, y + 9);
-        ray_toss.x      = x + 2 * spr_dir;
+		var ray_toss    = create_hitbox(AT_DSPECIAL, 4, x + 0 * spr_dir, y);
+        ray_toss.x      = x - 3 * spr_dir;
         ray_toss.y      = y + 9;              
 	}
 
@@ -584,11 +696,23 @@ if (state == 5)
 
     if (!has_bounced)
 	{
-        var ene_toss                = create_hitbox(AT_DSPECIAL, 4, x - 5 * spr_dir, y + 9);
-        ene_toss.x                  = x - 5 * spr_dir;
-        ene_toss.y                  = y + 9;   
-		ene_toss.can_hit_self 	    = true;				
-		ene_toss.can_hit[player]    = true;
+        var ene_toss                = create_hitbox(AT_DSPECIAL, 4, x - 0 * spr_dir, y);
+        ene_toss.x                  = x - 3 * spr_dir;
+        ene_toss.y                  = y + 9; 
+
+		with (oPlayer) 
+		{
+			if (player != other.player)
+			{
+				ene_toss.can_hit_self 	    = true;						
+			}		
+		}
+		
+		//	Please, don't hurt me...
+		with (owner_override)
+		{
+			ene_toss.can_hit[player] = false;
+		}
 	}
 
 	if (!free)
@@ -630,6 +754,19 @@ if (state == 5)
 
 	with (oPlayer) 
 	{
+		if (player == other.player && place_meeting(x, y, other) && hitpause)
+		{
+			destroyed 				= true;
+			hitpause 				= true;
+            hitstop					= 4;
+            hitstop_full 			= 4;	
+
+			other.hsp 				*= 0.5;
+			other.vsp 				= -7.5;
+
+			other.has_bounced 		= true;
+		}
+
 		if (player != other.player && place_meeting(x, y, other) && hitpause)
 		{
 			destroyed 				= true;
@@ -691,7 +828,7 @@ if (state == 7)
 	
 	with (player_id)
 	{
-		move_cooldown[AT_DSPECIAL] = 145;
+		move_cooldown[AT_DSPECIAL] = 205;
 	}
 	
 	spawn_hit_fx(x - 10, y - 16, 302);	
@@ -719,7 +856,8 @@ if (can_be_hit == 0)
 	{
 		can_be_hit = 10;
 		
-		var hitOwner = hitbox.player_id;
+		var hitOwner 	= hitbox.player_id;
+		owner_override 	= hitOwner;
 		
 		with (hitbox)
 		{
@@ -830,12 +968,13 @@ if (can_be_hit == 0)
                         hitting.hsp 	= sign(relativeX) * 4.5;
                     }
 
-                    if (hitbox.type == 1)
+					//	The previous way to stop enemy players from hitting themselves
+                    /*if (hitbox.type == 1)
                     {
                         //	It would be silly if the enemy got hit from chucking the P.Guard
                         invincible 		= true;
                         invince_time 	= 15;	
-                    }						
+                    }*/					
 				}
 			}
         }
@@ -846,7 +985,6 @@ if (can_be_hit == 0)
         }
 	}
 }
-
 
 //--------------------------------------------------------------------------------------------
 

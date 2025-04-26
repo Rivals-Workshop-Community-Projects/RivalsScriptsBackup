@@ -70,8 +70,6 @@ with (oPlayer){
 	        hurt_img = 2;
 	        if(villager_bury_timer == 0){
 	        	hitpause = 0;hitstop = 0;villager_bury = false;vsp = -8;free = true;
-	        }else{
-				
 	        }
 	    }
 	    if(!villager_bury){
@@ -82,9 +80,7 @@ with (oPlayer){
 		    }
 		}
 	}else if(villager_bury_id == other.id){
-		if(!villager_bury && villager_bury_cooldown > 0){
-	        villager_bury_cooldown--;
-		}
+		if(!villager_bury && villager_bury_cooldown > 0)villager_bury_cooldown--;
 	}
 	
 	//shake hitpause code
@@ -134,7 +130,7 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 if(((state == PS_PARRY_START || state == PS_PARRY && state_timer <= 0 || state == PS_AIR_DODGE && state_timer <= 1)
 || ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 1 && window_timer <= 2 && attack != AT_GRAB))
 && ((attack_down || attack_pressed) && (shield_down || shield_pressed))){
-	attack_end();destroy_hitboxes();
+	attack_end();destroy_hitboxes();window = 1;window_timer = 0;
 	attack = AT_GRAB;set_attack(AT_GRAB);hurtboxID.sprite_index = sprite_get("grab_hurt");
 	grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
 	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
@@ -209,8 +205,7 @@ if(canon){
         y = 1;
     	vsp = 0;
     }
-    set_player_damage(player, 0);
-    //print(damagebuff);
+    set_player_damage(player, 0);mega = true;
 }else if(op){
     outline_color = [0, outline_timer, outline_timer/2];
 	if (outline_timer > 150) outline_rev = true;
@@ -230,7 +225,7 @@ if(canon){
 		max_djumps = 999;
 		move_cooldown[attack] = 0;can_move = true;can_jump = true;can_attack = true;
 		can_strong = true;can_ustrong = true;can_special = true;can_shield = true;
-    }
+    }mega = true;
 }else{
     outline_color = [0, 0, 0];
     init_shader();
@@ -287,25 +282,22 @@ if(get_gameplay_time() <= 120 || !loaded){
 		kewtmode = 1;
 	}
 	
-	if(!attack_down){
+	if(attack_down && ("temp_level" not in self || "temp_level" in self && temp_level <= 0)){
 		with(asset_get("oPlayer")){
 			if ("url" in self){
 			if (url != ""){ //detects op characters. credit to sai for some of the logic here
 				if(
 				//exclude these characters	
-				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274 && url != 1928599994
+				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274 && url != 1928599994 && url != 2128134424
 				//op characters
-				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646/*|| url ==  && "temp_level" in self*/
-				|| (string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				//or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				//or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("duane", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646 || url == 2662021036
+				|| (string_count("Ronald", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("ultra instinct", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("UI ", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("00%", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("% accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("Duane", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("OP ", string( get_char_info(player, INFO_STR_NAME) )) > 0
 				))){
 					//print_debug(string("canon"));
 					other.canon = true;other.supercanon = true;other.kewtmode = 1;
@@ -428,6 +420,7 @@ if(!loaded || kewtmode == 1){
 		set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_falling_mc"));
 		set_hitbox_value(AT_DSPECIAL, 8, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_mc"));
 		set_victory_theme(sound_get("emeralds win"));
+		pocket_hud_slot = sprite_get("nspecial_pocket_hud_mc");
 	}
 	
 	if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
@@ -535,6 +528,8 @@ if(trainingmode || op || canon || runeK){
     }
 }
 
+if("element_cooldown" not in self)element_cooldown = 0;
+if(element_cooldown > 0)element_cooldown--;
 //uncanon things!
 if(get_gameplay_time() % 30 == 0 || hitpause){
 	poison = 0;

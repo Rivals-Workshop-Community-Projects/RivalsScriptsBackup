@@ -10,3 +10,11 @@ with (pHitBox) {
         }
     }
 }
+
+with(oPlayer){
+    if("past_ink_owner" in self && past_ink_owner == other){
+        past_ink_r = 0;
+        past_ink_b = 0;
+        past_ink_y = 0;
+    }
+}

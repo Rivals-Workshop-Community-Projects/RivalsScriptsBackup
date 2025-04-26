@@ -290,6 +290,12 @@ if(water_buff_electric_attack_flag == 1){
 			break;
 	}
 }
+
+//Allow Techning After Hit on Oppoents after Boosted Ground Special.
+if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4){
+	hit_player_obj.can_tech = true;
+}
+
 //#endregion
 
 //#region HitFX Layering

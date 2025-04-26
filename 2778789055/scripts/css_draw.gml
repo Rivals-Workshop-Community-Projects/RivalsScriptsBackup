@@ -59,8 +59,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "3";
-patch_month = "JAN";
+patch_day = "15";
+patch_month = "DEC";
  
 var num_alts = 27;
 var alt_cur = get_player_color(player);
@@ -135,10 +135,12 @@ alt_name[26]  = "Hoops";
 alt_name[27]  = "GENESIS"; 
 alt_name[28]  = "Champion"; 
 }else{
+alt_name[8]  = "Ensemble Chef"; 
 alt_name[12]  = "Mishima"; 
 alt_name[14]  = "Avocado";  
 alt_name[15]  = "RetroTag"; 
 alt_name[16]  = "Champed-Up"; 
+alt_name[20]  = "Pencil Pushers"; 
 alt_name[21]  = "Enby";
 alt_name[22]  = "The Best"; 
 }
@@ -157,7 +159,7 @@ draw_set_halign(fa_left);
 textDraw(temp_x + 134, temp_y + -12, "fName", c_white, 0, 1000, 1, true, 1, "VER");
 textDraw(temp_x + 2, temp_y + 32, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
 
-if (get_player_color(player)==12 || get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)==16 || get_player_color(player)==22 || get_player_color(player)==21){
+if (get_player_color(player)==12 || get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)==16 || get_player_color(player)==22 || get_player_color(player)==21 || get_player_color(player)==8 || get_player_color(player)==20){
 	is_alt_changeable = true;
 }else{
 	is_alt_changeable = false;

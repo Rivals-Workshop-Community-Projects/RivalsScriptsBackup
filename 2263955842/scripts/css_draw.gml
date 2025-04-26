@@ -16,24 +16,24 @@ var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays 
  
-alt_name[0]  = "Default";
+alt_name[0]  = "Hakurei";
 alt_name[1]  = "Player 2";
-alt_name[2]  = "Marisa";
-alt_name[3]  = "Sanae";
-alt_name[4]  = "Alice";
-alt_name[5]  = "Youmu";
-alt_name[6]  = "Kokoro";
-alt_name[7]  = "Rumia";
-alt_name[8]  = "Cirno";
-alt_name[9]  = "Meiling";
-alt_name[10] = "Sakuya Izayoi";
+alt_name[2]  = "Magician";
+alt_name[3]  = "Moriya";
+alt_name[4]  = "Puppeteer";
+alt_name[5]  = "Gardener";
+alt_name[6]  = "Tipsy";
+alt_name[7]  = "Rebirth";
+alt_name[8]  = "Idiot";
+alt_name[9]  = "Gatekeeper";
+alt_name[10] = "Maid";
 alt_name[11] = "PC 98";
-alt_name[12] = "CtC";
-alt_name[13] = "Yuuto";
-alt_name[14] = "Zetta";
+alt_name[12] = "Fantasy's End";
+alt_name[13] = "Bootleg";
+alt_name[14] = "Magma";
 alt_name[15] = "Abyss";
 alt_name[16] = "Early Access";
-alt_name[17] = "Slimepuffen";
+alt_name[17] = "Champion";
 alt_name[18] = "BLM"
  
 //Patch

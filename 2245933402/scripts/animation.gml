@@ -1,15 +1,12 @@
 ///
 
 if (state == PS_PRATLAND) {
-    
     sprite_index = sprite_get("landinglag");
     image_index = min(state_timer/8,2);
-    
 }
 
 if (state == PS_PRATFALL && attack != AT_JAB && attack != AT_USPECIAL) {
-    
-    sprite_index = sprite_get("jump");
+    sprite_index = sprite_get("djump2");
     image_index = 4
 }
 
@@ -61,9 +58,23 @@ if ostyle == 1 {
     if state == PS_IDLE_AIR {
         sprite_index = sprite_get("djump2");
         image_index = 6
-        
     }
     
     
+    
+} else {
+    if state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP{
+            sprite_index = sprite_get("djump2");
+            image_index = min(state_timer/4,6);
+    }
+    if state == PS_WALL_JUMP {
+        sprite_index = sprite_get("djump3");
+        image_index = min(state_timer/3,10);
+    }
+    
+    if state == PS_IDLE_AIR {
+        sprite_index = sprite_get("djump2");
+        image_index = 6
+    }
     
 }

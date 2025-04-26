@@ -46,6 +46,7 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Main Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("nicehit"));
 
 hitbox_num ++; //Lower Hitbox
@@ -66,6 +67,7 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Lower Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("nicehit"));
 
 set_num_hitboxes(atk, hitbox_num);

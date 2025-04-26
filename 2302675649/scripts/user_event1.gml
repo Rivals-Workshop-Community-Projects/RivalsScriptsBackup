@@ -1,6 +1,21 @@
 switch (string_upper(get_player_name(player)))
 {
 	default:
+	if (string_upper(get_player_name(player)) == "HALLO"+chr(12354))
+	{
+		// redQuote
+		set_color_profile_slot( 31, 0, 255, 48, 48 ); //sword
+		set_color_profile_slot( 31, 1, 255, 48, 48 ); //shirt
+		set_color_profile_slot( 31, 2, 179, 0, 47 ); //shirt2
+		set_color_profile_slot( 31, 3, 255, 48, 48 ); //pants
+		set_color_profile_slot( 31, 4, 179, 0, 47 ); //pants2
+		set_color_profile_slot( 31, 5, 255, 48, 48 ); //skin
+		set_color_profile_slot( 31, 6, 179, 0, 47 ); //skin2
+		set_color_profile_slot( 31, 7, 179, 0, 47 ); //hair
+		break;
+	}
+	else
+	{
 		// Riptide
 		set_color_profile_slot( 31, 0, 0, 199, 218 ); //sword
 		set_color_profile_slot( 31, 1, 254, 184, 0 ); //shirt
@@ -10,7 +25,8 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 31, 5, 242, 228, 214 ); //skin
 		set_color_profile_slot( 31, 6, 194, 162, 153 ); //skin2
 		set_color_profile_slot( 31, 7, 218, 93, 0 ); //hair
-		break;
+	}
+	break;
 	case "LUKARU":
 	case "KARU":
 	case "AURORA":
@@ -25,8 +41,8 @@ switch (string_upper(get_player_name(player)))
 		set_color_profile_slot( 31, 6, 164, 124, 213 ); //skin2
 		set_color_profile_slot( 31, 7, 166, 128, 250 ); //hair
 		break;
-	case "MAKO":
-	case "4MAKO":
+	case "CHISAN":
+	case "UTA":
 		// Endless Now
 		set_color_profile_slot( 31, 0, 194, 1, 194 ); //sword
 		set_color_profile_slot( 31, 1, 223, 182, 87 ); //shirt

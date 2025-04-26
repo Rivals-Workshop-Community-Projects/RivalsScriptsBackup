@@ -101,7 +101,7 @@ with oPlayer if id != other.id && totk_dstrong_earthwake_id == other.id {
         sound_play(asset_get("sfx_kragg_rock_shatter"))
         spawn_hit_fx(totk_dstrong_earthwake_x, totk_dstrong_earthwake_y - 30, 193)
     }
-    if totk_dstrong_earthwake_timer >= 48 {
+    if totk_dstrong_earthwake_timer >= 48 || other.state == PS_HITSTUN || other.state == PS_HITSTUN_LAND {
         totk_dstrong_earthwake_id = noone
         totk_dstrong_earthwake_timer = 0
         totk_dstrong_earthwake_y = 0

@@ -16,13 +16,14 @@ if(!muted){
 }
 
 downspecialcharge = round(downspecialcharge/1.25);
-
+nspecial_charge = 0;
 respawnplat = 1;
 
 #define PlayVoiceClip
-/// PlayVoiceClip(name,?volume)
-//Plays SFX
-if(!muted && !hitpause){
-    sound_stop(voice)
-    voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
-}
+/// PlayVoiceClip(name,?volume,?stopprev)
+	//Plays SFX
+	if(!muted && !hitpause){
+		if(argument_count>2?argument[2]!=false:true)sound_stop(voice);
+		voice = sound_play(sound_get(argument[0]),false,noone,argument_count>1?argument[1]:1,("voicepitch" in self)?voicepitch:1);
+		if(argument_count>1)sound_volume(voice, argument[1], 0);
+	}

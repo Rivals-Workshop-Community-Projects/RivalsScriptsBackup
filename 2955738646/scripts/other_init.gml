@@ -14,3 +14,16 @@ maintarget = false; //When there are multiple enemies locked on, this one takes 
 prev_damage = 0;
 timestop_damage = 0;
 timestop_hit = false;
+
+//error checkers
+//OverallEmeralds = 7;
+//EmeraldAmount = 0; 
+Blue = 0;
+Red = 0;
+Pink = 0;
+Yellow = 0;
+Gray = 0;
+Green = 0;
+Cyan = 0;
+
+has_emerald = false; //All other players having a possible emerald

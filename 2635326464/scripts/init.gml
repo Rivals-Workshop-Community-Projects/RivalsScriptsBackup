@@ -260,6 +260,7 @@ dtilt_hsp = 8;
 
 //Nair speed boost and trick
 has_tricked = 0;
+has_finished_trick = 0;
 next_trick = 1;
 
 //Fair use (ha)

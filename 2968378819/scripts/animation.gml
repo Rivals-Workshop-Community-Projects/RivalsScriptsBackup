@@ -50,4 +50,9 @@ switch state{
 prev_sprite = sprite_index;
 prev_frame = image_index;
 
+if get_player_name(player) == "TANIA"{
+	set_victory_theme(sound_get("music_win_street"));
+//	set_victory_bg(sprite_get("winscreenYap"));
+}
+
 init_shader();

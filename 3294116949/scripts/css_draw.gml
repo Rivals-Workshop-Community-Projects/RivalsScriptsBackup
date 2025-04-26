@@ -45,7 +45,22 @@ prepare_shader(); //resets shader
 //everything below this point shouldn't use shaders
 
 //alt icons
-// if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
+var icon_index = -1;
+switch(alt_cur){
+    case 19:
+    icon_index = 0;
+    break;
+    case 31:
+    icon_index = 1;
+    break;
+    case 13: case 16: case 30: // Krispy, Fennie, Champion
+    icon_index = 2;
+    break;
+    case 18:
+    icon_index = 3;
+    break;
+}
+if icon_index >= 0 draw_sprite(sprite_get("css_icons"), icon_index, icon_x_pos, icon_y_pos);
 
 //alt boxes
 draw_set_halign(fa_left);

@@ -20,6 +20,7 @@ thin = num_alts > 16;
 is_css = true;
 preview_x = 0; //preview char
 preview_y = 0;
+cpu_player = false;
 
 title_alpha = 0;
 

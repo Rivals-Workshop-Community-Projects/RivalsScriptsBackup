@@ -11,14 +11,14 @@ if afterimage_number > 0 {
   for (var i = 0; i < array_length(uspecial_last_positions); i += 1) {
     var ulp = uspecial_last_positions;
     var opacity = max(0, min(1, 2 - (uspecial_afterimage_timer-ulp[i][5])/8))
-	if alt_palette == 18 { gpu_set_fog(1, ulp[i][6], 0, 1); }
+	if activate_multicolour { gpu_set_fog(1, ulp[i][6], 0, 1); }
 
     draw_sprite_ext(ulp[i][0],ulp[i][1],ulp[i][2]-10*spr_dir,ulp[i][3],ulp[i][4]*2,1*2,0,magnet_colour,opacity*0.9);
 
   }
 }
 
-if alt_palette == 18 { gpu_set_fog(1, riptide_colours[0], 0, 1); }
+if activate_multicolour { gpu_set_fog(1, multicolour_colours[0], 0, 1); }
 
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 && attack == AT_DSPECIAL_2
@@ -50,19 +50,19 @@ if instance_exists(myChair)
 
   with myChair {
     // draw afterimages
-	if other.alt_palette == 18 {
-		gpu_set_fog(1, other.riptide_colours[1], 0, 1);
+	if other.activate_multicolour {
+		gpu_set_fog(1, other.multicolour_colours[1], 0, 1);
 	} else {
 		gpu_set_fog(1, other.afterimage_colour, 0, 1);
 	}
 
     gpu_set_blendmode(bm_add);
 	var effect_colour = c_white;
-	if other.alt_palette == 18 { gpu_set_fog(1, other.riptide_colours[0], 0, 1); }
+	if other.activate_multicolour { gpu_set_fog(1, other.multicolour_colours[0], 0, 1); }
     draw_sprite_ext(sprite_copy_index,draw_frame,draw_x-hsp*2,draw_y-vsp*2,spr_dir,1,0,c_white,outline_opacity*0.66);
-	if other.alt_palette == 18 { gpu_set_fog(1, other.riptide_colours[1], 0, 1); }
+	if other.activate_multicolour { gpu_set_fog(1, other.multicolour_colours[1], 0, 1); }
     draw_sprite_ext(sprite_copy_index,draw_frame,draw_x-hsp*4,draw_y-vsp*4,spr_dir*0.9,0.9,0,c_white,outline_opacity*0.44);
-	if other.alt_palette == 18 { gpu_set_fog(1, other.riptide_colours[2], 0, 1); }
+	if other.activate_multicolour { gpu_set_fog(1, other.multicolour_colours[2], 0, 1); }
     draw_sprite_ext(sprite_copy_index,draw_frame,draw_x-hsp*6,draw_y-vsp*6,spr_dir*0.8,0.8,0,c_white,outline_opacity*0.22);
 
     //outline
@@ -79,10 +79,14 @@ if instance_exists(myChair)
       with myChair {
         draw_sprite_ext(sprite_copy_index,draw_frame,draw_x,draw_y,spr_dir,1,drangle,chair_color,1);
         if shine_timer > 0 {
-			with player_id { if alt_palette == 18 { shader_end(); } }
+    			with player_id { if activate_multicolour or alt_palette == 13 {
+            gpu_set_blendmode(bm_add);
+            if riptide_active { shader_end(); }
+          }}
           if draw_frame >= 5 && draw_frame <= 7 {
             draw_sprite_ext(chair_shine_index,(shine_timer_max-shine_timer)/2,draw_x,draw_y,spr_dir,1,drangle,c_white,1);
           }
+          gpu_set_blendmode(bm_normal);
         }
       }
       shader_end();

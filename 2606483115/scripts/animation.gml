@@ -1,8 +1,5 @@
 //animation
 
-if(lifetime > 1){
-    changeAnim(spr_dspecial, sprite_get("dspecial"));
-}
 if useskins{
     //Ground
     changeAnim(spr_idle, sprite_get("idle"));
@@ -54,9 +51,6 @@ if useskins{
     changeAnim(spr_fstrong, sprite_get("fstrong"));
     changeAnim(spr_ustrong, sprite_get("ustrong"));
     changeAnim(spr_dstrong, sprite_get("dstrong"));
-    changeAnim(spr_fstrong_2, sprite_get("fstrong_tired"));
-    changeAnim(spr_ustrong_2, sprite_get("ustrong_tired"));
-    changeAnim(spr_dstrong_2, sprite_get("dstrong_tired"));
     changeAnim(spr_nspecial, sprite_get("nspecial"));
     changeAnim(spr_fspecial, sprite_get("fspecial"));
     changeAnim(spr_uspecial, sprite_get("uspecial"));

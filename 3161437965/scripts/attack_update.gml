@@ -16,6 +16,22 @@ if(has_rune("G") && using_stored_attack){
     }
 }
 
+if(!using_stored_attack){
+    if(attack == AT_FAIR || attack == AT_UAIR || attack == AT_DAIR || attack == AT_USPECIAL){
+        if(window == 1 && window_timer == 1 && !hitpause) voice_play_dark_version(VC_ATK)
+    }
+    if(attack == AT_FSPECIAL || attack == AT_USTRONG || attack == AT_FSTRONG){
+        if(window == 2 && window_timer == 1 && !hitpause) voice_play_dark_version(VC_ATK)
+    }
+    if(attack == AT_DSTRONG){
+        if(window == 3 && window_timer == 1 && !hitpause) voice_play_dark_version(VC_ATK)
+    }
+} else {
+    if(attack == AT_FSPECIAL){
+        if(window == 2 && window_timer == 1 && !hitpause) voice_play_dark_version(VC_ATK)
+    }
+}
+
 switch (attack)
 {
     case AT_DSTRONG:
@@ -224,6 +240,7 @@ switch (attack)
         }
         break;
     case AT_TAUNT:
+        if(window == 1 && window_timer == 1 && !hitpause) voice_play(floor(abs(x%200)), [vc_taunt])
         if(window == 2 && window_timer == 26){
             take_damage(player, player, 1);
             take_damage(player, player, -2)
@@ -452,3 +469,34 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+#define voice_play
+/// voice_play(idx, voice_array, empty_chance = 0)
+var idx = argument[0], voice_array = argument[1];
+var empty_chance = argument_count > 2 ? argument[2] : 0;;
+
+if !voiced return;
+
+var selected = random_func(idx, array_length(voice_array) + empty_chance, true);
+
+if selected < array_length(voice_array) {
+	sound_stop(voice_playing_sound);
+	voice_playing_sound = sound_play(voice_array[selected], false, noone, 1.2);
+}
+
+#define voice_play_dark_version
+/// voice_play(idx, force_voice = -1, flash = 0;)
+var idx = argument[0];
+var force_voice = argument_count > 1 ? argument[1] : -1;
+var flash = argument_count > 2 ? argument[2] : 0;;
+
+if !voiced return;
+
+var selected = (force_voice >= 0? force_voice: min(random_func(idx, vcs[idx][0] + vcs[idx][1], true), vcs[idx][0] - 1 + vcs[idx][1]));
+if selected >= vcs[idx][0] return;
+selected = (idx/10 >= 1? "": "0") + string(idx) + string(selected);
+
+if selected != noone{
+	sound_stop(voice_playing_sound);
+	voice_playing_sound = sound_play(sound_get("vc_" + selected), false, noone, 1.2);
+}

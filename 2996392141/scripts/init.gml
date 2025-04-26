@@ -248,6 +248,8 @@ DSPECIAL_STARTUP_TL4 = 22;
 DSPECIAL_ENDLAG = 30;
 DSPECIAL_ENDLAG_TL4 = 38;
 
+taunt_buffer = 0;
+
 //Final Smash
 fs_char_portrait_y  = 96;
 fs_char_chosen_final_smash = "custom";

@@ -1,7 +1,7 @@
 
 
 //not in selection screen
-if(variable_instance_exists(self, "spr_dir"))
+if(variable_instance_exists(self, "spr_dir") && variable_instance_exists(self, "currAlt"))
 {
     for(var i = 0; i < 8; i++)
     {

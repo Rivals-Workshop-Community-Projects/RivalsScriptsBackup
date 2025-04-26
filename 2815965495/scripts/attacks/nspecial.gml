@@ -24,10 +24,11 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .1);
 
 //Endlag1
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -4.5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //MAX CHARGE
@@ -65,10 +66,10 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1190);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_frog_jab"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_smoke"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .04);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);

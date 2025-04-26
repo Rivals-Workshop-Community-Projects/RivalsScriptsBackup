@@ -28,7 +28,7 @@ if (has_rune("I"))
 switch (attack)
 {
 	case AT_BAIR:
-		if (window == 2) and (window_timer == 4)
+		if (window == 2) and (window_timer == 4) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 			spawn_hit_fx( x - 82 * spr_dir, y - 34, bair_arrow );
 		}
@@ -44,20 +44,20 @@ switch (attack)
 		}
 	break;
 	case AT_FAIR:
-		if (window == 2) and (window_timer == 4)
+		if (window == 2) and (window_timer == 4) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 			spawn_hit_fx( x + 82 * spr_dir, y - 32, fair_arrow );
 		}
 	break;
 	case AT_FTILT:
-		if (window == 2) and (window_timer == 4)
+		if (window == 2) and (window_timer == 4) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 			spawn_hit_fx( x + 82 * spr_dir, y - 40, ftilt_arrow );
 		}
 	break;
 	case AT_UAIR:
 		var time = get_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH);
-		if (window == 3) and (window_timer == 4)
+		if (window == 3) and (window_timer == 4) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 			spawn_hit_fx( x, y - 88, uair_arrow );
 		}
@@ -74,7 +74,7 @@ switch (attack)
 			break;
 			case 4:
 				last_jab = 2;
-				if (window_timer == time)
+				if (window_timer == time) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					spr_dir *= -1;
 				}
@@ -87,7 +87,7 @@ switch (attack)
 		{
 			case 1:
 				var time = get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH);
-				if (window_timer == time)
+				if (window_timer == time) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					//sound_play(sound_get("payday"))
 					
@@ -106,7 +106,7 @@ switch (attack)
 			break;
 			case 2:
 				var time = get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH);
-				if (window_timer == time)
+				if (window_timer == time) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					var num = 0 + has_rune("F") * 23;
 				
@@ -123,7 +123,7 @@ switch (attack)
 			break;
 			case 3:
 				var time = get_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH);
-				if (window_timer == time) and (taunt_down)
+				if (window_timer == time) and (taunt_down) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					window_timer = 0;
 					var ang_rand = random_func(7,80,true) - 40 + 90;
@@ -152,7 +152,7 @@ switch (attack)
 	
 	/*
 		var time = get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH);
-		if (window == 2) and (window_timer == time)
+		if (window == 2) and (window_timer == time) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 				var num = 0 + has_rune("F") * 23;
 				
@@ -169,7 +169,7 @@ switch (attack)
 	*/
 	/*
 		var time = get_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH);
-		if (window == 3) and (window_timer == time) and (taunt_down)
+		if (window == 3) and (window_timer == time) and (taunt_down) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
 			window_timer = 0;
 			var ang_rand = random_func(7,80,true) - 40 + 90;
@@ -199,7 +199,7 @@ switch (attack)
 		if (window == 1) 
 		{
 			var time = get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH);
-			if (window_timer == time)
+			if (window_timer == time) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			{
 				//sound_play(sound_get("payday"))
 				
@@ -265,7 +265,7 @@ switch (attack)
 			break;
 		}
         
-        if (window == 2) and (window_timer == 2)
+        if (window == 2) and (window_timer == 2) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
         {
         	sound_stop(sound_get("photo_charge"))
         	picture_draw = 4;
@@ -730,3 +730,12 @@ else
 	
 }
 return angle;
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

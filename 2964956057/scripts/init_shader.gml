@@ -4,7 +4,7 @@ var real_player = (room == asset_get("network_char_select") && object_index != o
 set_color_profile_slot( 1, 0, 255, 255, 255 ); 
 
 if "champ_color_array" not in self{
-    champ_color_array = [ // each array is a nested array of rgbs for each slot of the alt
+    champ_color_array = [ // each array is a nested array of rgbs for each slot of the alt // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         [ // seesaw
             [251, 234, 212],
             [60, 164, 67],
@@ -29,15 +29,15 @@ if "champ_color_array" not in self{
 }
 
 if "custom_color_array" not in self{
-    mouth_color = get_synced_var(real_player) % 10;
-    righteye_color = ((get_synced_var(real_player) - mouth_color) / 10) % 10;
-    lefteye_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10)) / 100) % 10;
-    soul_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10;
-    thorns_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10;
-    stem_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10;
-    petals_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100;
-    face_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100;
-    custom_color_array = [ // [[shade 1's rgbs], [shade 2's rgbs], shade 1's shading, shade 2's shading]
+    mouth_color = get_synced_var(real_player) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    righteye_color = ((get_synced_var(real_player) - mouth_color) / 10) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    lefteye_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10)) / 100) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    soul_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100)) / 1000) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    thorns_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000)) / 10000) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    stem_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000)) / 100000) % 10; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    petals_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000)) / 1000000) % 100; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    face_color = ((get_synced_var(real_player) - mouth_color - (righteye_color * 10) - (lefteye_color * 100) - (soul_color * 1000) - (thorns_color * 10000) - (stem_color * 100000) - (petals_color * 1000000)) / 100000000) % 100; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    custom_color_array = [ // [[shade 1's rgbs], [shade 2's rgbs], shade 1's shading, shade 2's shading] // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         [[255, 0, 0], [192, 0, 1], 1, 1], // rainbow, 0
         [[255, 255, 255], [192, 177, 177], 1, 1], // white, 1
         [[80, 80, 80], [48, 48, 48], 1, 0.2], // black, 2
@@ -74,7 +74,7 @@ if "custom_color_array" not in self{
 //animate_portrait("_portrait_intro", 40, 6, "_portrait_idle", 20, 5);
 
 if "battle_over" not in self {
-    battle_over = 0;  
+    battle_over = 0;   // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 switch get_player_color(real_player){
@@ -113,10 +113,11 @@ switch get_player_color(real_player){
         set_character_color_shading(6, 1);
         set_character_color_shading(7, 1);
         if "champ_cur" not in self{
-            champ_cur = get_synced_var(real_player);
+            champ_cur = get_synced_var(real_player); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
         for (var h = 0; h < 8; h++){
             set_character_color_slot(h, champ_color_array[champ_cur][h][0], champ_color_array[champ_cur][h][1], champ_color_array[champ_cur][h][2]);
+            set_article_color_slot(h, champ_color_array[champ_cur][h][0], champ_color_array[champ_cur][h][1], champ_color_array[champ_cur][h][2]);
         }
         set_synced_var(real_player, champ_cur);
     break;
@@ -156,21 +157,21 @@ if !("hue_speed" in self) hue_speed = 1;
 // rainbow code
 hue_offset = (hue_offset + hue_speed) % 255; //keeps hue_offset within the 0-255 range
  
-color_rgb = make_color_rgb(240, 72, 72); //input rgb values here, uses rgb to create a gamemaker colour variable
+color_rgb = make_color_rgb(240, 72, 72); //input rgb values here, uses rgb to create a gamemaker colour variable // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 hue = (color_get_hue(color_rgb) + hue_offset) % 255; //finds the hue and shifts it
 
 if "attack" not in self{
-    attack = 0;
+    attack = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 if get_player_color(real_player) == 3 || get_player_color(real_player) >= 23 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
 //remember rivals starts with 0
 
-    color_rgb = make_color_rgb(240, 72, 72);
+    color_rgb = make_color_rgb(240, 72, 72); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     //make a gamemaker color variable using kirby's default color (body)
     hue2 = (color_get_hue(color_rgb) + hue) % 255;
     //shift that colour by Hue, make sure it also loops
-    color_hsv = make_color_hsv(hue2, color_get_saturation(color_rgb), color_get_value(color_rgb));
+    color_hsv = make_color_hsv(hue2, color_get_saturation(color_rgb), color_get_value(color_rgb)); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     //make a gamemaker color variable using the new hue
     if get_player_color(real_player) == 3 || (attack == 49 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window >= 2 && window <= 4){
         set_character_color_slot(1, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
@@ -227,11 +228,11 @@ if (object_index == asset_get("draw_result_screen"))
     //initializing variables
     if !("stime" in self)
     {
-        stime = -StartUp;
-        frame = 0;
-        on_idle = 0;
-        itime = -IdleStartUp;
-        AnimSpeed = clamp(AnimSpeed, 0, 6000);
+        stime = -StartUp; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        frame = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        on_idle = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        itime = -IdleStartUp; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        AnimSpeed = clamp(AnimSpeed, 0, 6000); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         sprite_change_offset(SpriteName, 0, 0);
         sprite_change_offset(IdleSpriteName, 0, 0);
     }
@@ -249,8 +250,8 @@ if (object_index == asset_get("draw_result_screen"))
     var h = 350; //the portrait height
     
     //store animation frames of each sprite
-    AnimFrames = sprite_get_height(sprite_get(SpriteName)) / h;
-    IdleFrames = sprite_get_height(sprite_get(IdleSpriteName)) / h;
+    AnimFrames = sprite_get_height(sprite_get(SpriteName)) / h; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    IdleFrames = sprite_get_height(sprite_get(IdleSpriteName)) / h; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     
     //set the image depending if it's on idle or not
     if (!on_idle)
@@ -262,7 +263,7 @@ if (object_index == asset_get("draw_result_screen"))
             {
                 if (frame > AnimFrames - 2)
                 {
-                    on_idle = 1;
+                    on_idle = 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 }
                 else
                 {

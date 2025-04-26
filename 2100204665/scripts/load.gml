@@ -58,6 +58,7 @@ sprite_change_offset("plat", 80, 120);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("bluesoul", 16, 32);
 
+sprite_change_offset("hit_trap", 80, 120);
 sprite_change_offset("unshaded_trap", 80, 120);
 sprite_change_offset("unshaded_trap_big", 80, 120);
 sprite_change_offset("trap", 80, 120);

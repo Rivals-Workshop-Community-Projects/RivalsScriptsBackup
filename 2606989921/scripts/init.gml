@@ -218,11 +218,6 @@ msg_dair_startup_has_jumped = false; //allows jumping out in startup
 msg_dair_earthquake_counter = 0;
 msg_dair_earthquake_max = 10;
 
-msg_uair_ace_activated = false; //if true, next melee hit will be saved
-msg_uair_ace_buffer = [AT_UAIR, AT_UAIR, AT_UAIR, AT_UAIR]; //act as NOPs
-msg_uair_ace_pointer = 0;
-msg_uair_ace_coins = 0;
-
 msg_ustrong_coin_charge = 0;
 msg_fstrong_interrupted_timer = 0;
 
@@ -251,6 +246,9 @@ msg_leechseed_particle_pointer = 0;
 //Explosion
 msg_exploded_damage = 0; //to reapply once Missingno gets hit
 msg_exploded_respawn = false; //to check wether a respawned missingno gets invincibility
+msg_exploded_stock_cost = 0; //if negative-explosion made next stock double-costly
+
+msg_exploded_stock_abyss_freebie = false; //free sample if abyss & single stock
 
 msg_antibash_direction = 0; //where to send Missingno after the bash
 

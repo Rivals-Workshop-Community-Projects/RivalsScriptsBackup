@@ -4,6 +4,45 @@
  */
 
 
+
+if secret_code_input
+
+{
+	if attack == AT_FSPECIAL and get_player_color(player) != 18
+	{
+  
+        if my_hitboxID.hbox_num == 1 
+        {
+            sugarcoat = 0.5
+            sound_play( sound_get("vineboom") );
+        }
+
+                if my_hitboxID.hbox_num == 3
+                
+        {
+            sugarcoat = 0.5
+            sound_play( sound_get("vineboom") );
+        }
+
+                        if my_hitboxID.hbox_num == 5
+                        
+        {
+            sugarcoat = 0.5
+            sound_play( sound_get("vineboom") );
+        }
+
+                if my_hitboxID.hbox_num == 8
+                
+        {
+            sugarcoat = 1.5
+            sound_play( sound_get("wowzers") );
+        }
+		
+    }
+
+	}
+
+
  if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.type == 1) || (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num == 3) || (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3)|| (my_hitboxID.attack == AT_DSPECIAL && (my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5)){
     if (!hit_player_obj.samson_honeyed and hit_player_obj.honeyed_cooldown <= 0) {
         sound_play(sound_get("sfx_honeysplat"));
@@ -49,10 +88,11 @@ if hit_player_obj.orig_knock >= 18
     spawn_hit_fx( x, y, spotlight_fx);}
 }
 
-if (my_hitboxID.attack == AT_DAIR && my_hitboxID.type == 2)
-{
-    sound_play( asset_get( "sfx_coin_collect" ) );
-    spawn_hit_fx( hit_player_obj.x, hit_player_obj.y, yummy);
+if (my_hitboxID.attack == AT_DAIR && my_hitboxID.type == 2){
+	sound_play(asset_get("sfx_coin_collect"));
+	if has_rune("F"){
+		hit_player_obj.sugar_rush = 150;
+	}
 }
 
 if my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2)

@@ -9,7 +9,7 @@ if (get_match_setting(SET_PRACTICE) && temp_level == 0)
 shader_start();
 
 //darkness hud
-draw_sprite_ext(sprite_get("hud_darkness_cd"), dark_cd <= 0, temp_x + 188 + 8 * has_superspell, temp_y - 14, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_get("hud_darkness_cd"), (dark_cd <= 0 || dark_cd < 30 && dark_cd % 8 >= 4), temp_x + 188 + 8 * has_superspell, temp_y - 14, 2, 2, 0, c_white, 1);
 
 //rumia EX hud
 if (has_superspell)
@@ -49,7 +49,7 @@ if (has_superspell)
     //draw_debug_text(temp_x + 2, temp_y - 4, string(superspell_cur));
 }
 
-if (dark_state > -1 && dark_hp_cur > 0 || dark_hp_temp > 0)
+if (dark_state > -1 && dark_hp_cur > 0 || dark_hp_temp > 0) //darkness %
 {
     text_draw(
         temp_x + 192 + 8 * has_superspell,

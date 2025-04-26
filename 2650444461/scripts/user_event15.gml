@@ -195,32 +195,27 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
-/*initTip("NSpecial: Kamehameha");
-initWords("This Sandbert's NSpecial is completely different from the normal version of the character: it's Goku's Kamehameha!");
-initWords("The longer it's charged, the more distance it travels. The more distance it has left to travel by the time it reaches the enemy, the more damage and knockback it deals.");
-initWords("If two Kamehamehas clash, you'll get into a beam struggle! Mash B to overpower your opponent.");
-initImage_ext(sprite_get("nspecial"), -4, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("nspecial"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("Neutral Special");
+initWords("Mudkip charges up Bubble Beam. More charge means more bubbles!
+Mudkip can also move while firing bubbles!");
+initImage_ext(sprite_get("nspecial"), -6, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("FSpecial: Sandbert Delusion");
-initWords("Just like vanilla Sandbert, you can shorten the FSpecial by pressing B at the correct moment.");
-initWords("It's handy as a mixup when recovering!");
-initImage_ext(sprite_get("fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("Side Special");
+initWords("For side special, Mudkip uses Surf! A multihit move that can carry opponents off the side, or be used to recover.
+If Mudkip surfs over his mud puddle, Surf becomes Muddy Water, making it extra powerful!");
+initImage_ext(sprite_get("fspecial"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("USpecial: Forbidden Flight");
-initWords("USpecial is significantly toned down from regular Sandbert: its flight has a set, short duration, and you're forced to end with the big hit.");
-initWords("On the bright side, you can now cancel the move into a wall jump! Also, its finishing hit is just as strong as before.");
-initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initTip("Up Special");
+initWords("Up special is Hydro Pump! Mudkip fires a blast of water downwards, which launches him upward. Can also spike opponents below him!");
+initImage_ext(sprite_get("uspecial"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("DSpecial: Hexagon of Power");
-initWords("Sandbert's DSpecial can be canceled into a jump, but only if you successfully hit an opponent.");
-initWords("It's useful for combos, but maybe not as punish-safe as you'd expect based on its appearance.");
-initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-
-initTip("FStrong: Burning Dropkick");
-initWords("During the charge of FStrong, Sandbert slides as if on ice. Get a running start to ambush a foe!");
-initImage_ext(sprite_get("fstrong"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);*/
-
+initTip("Down Special");
+initWords("Down special is two different moves: Dive and Mud Sport!
+The grounded version, Mud Sport, makes a mud puddle which can be used together with other moves!
+A lot of moves when used near the puddle will make mud projectiles. The puddle also makes Mudkip slippery when he's on top of it.");
+initImage_ext(sprite_get("dspecial_air"), -6, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("If used in the air, it becomes Dive, which will make Mudkip dive downwards. It can spike enemies on the way down, and if he reaches the ground he will go underwater.
+When underwater, Mudkip can't be hit and you can press Special again to leap out and attack!");
 
 
 
@@ -260,6 +255,18 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.21", "19th December, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed another error with DSpecial puddles, particularly on death. Should also now destroy all puddles on death properly");
+
+initPatch("1.20", "16th December, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed DSpecial bugging out if an existing puddle was unexpectedly destroyed
++ Made the AI better
++ Added phone tips
++ Added Miiverse compatibility
++ Updated some misc code");
+
 initPatch("1.19", "13th July, 2024");
 initHeader("Buffs");
 initSection("+ Increased some stats when going from grounded to aerial, allowing momentum to be kept better");
@@ -391,7 +398,7 @@ initSection("Mudkip is one of the starter Pokemon in the Hoenn region.");
 initHeader("Character by");
 initSection("FelixBlobDev");
 initHeader("Compatible with");
-initSection("Toon Link, Mt. Dedede, Boxing Ring, Steve, Link");
+initSection("Toon Link, Miiverse, Mt. Dedede, Boxing Ring, Steve, Link");
 
 /*initPatch("1.2", "22 September, 2021");
 initHeader("MunoPhone Touch Firmware v2");

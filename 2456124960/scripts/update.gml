@@ -46,35 +46,69 @@ if (actionMeterFill > 199 && playedMeterSfx == 0) {
 	sound_play(asset_get("mfx_star"));
 	playedMeterSfx = 1;
 	timeUntilFlow = 30;
-	outlineR = 255;
-	outlineG = 128;
-	outlineB = 255;
+    if (get_player_color(player) == 26) {
+        outlineR = 255;
+        outlineG = 202;
+        outlineB = 64;    
+    } else {
+        outlineR = 255;
+        outlineG = 128;
+        outlineB = 255;
+    }
 }
 
 timeUntilFlow--;
-if (actionMeterFill > 199 && timeUntilFlow < 0) {
-	if (outlineDirection == 0) {
-		outlineR += 4.2;
-		outlineB += 4.6;
-	} else {
-		outlineR -= 4.2;
-		outlineB -= 4.6;
-	}
-	if (outlineR > 100) {
-		outlineDirection = 1;
-	} else if (outlineR < 5) {
-		outlineDirection = 0;
-	}
-} else {
-	if (outlineB > 0) {
-		outlineR -= 20;
-		outlineG -= 10;
-		outlineB -= 20;	
-	}
 
-	if (outlineR < 0) {outlineR = 0;}
-	if (outlineG < 0) {outlineG = 0;}
-	if (outlineB < 0) {outlineB = 0;}
+if (get_player_color(player) == 26) {
+    if (actionMeterFill > 199 && timeUntilFlow < 0) {
+        if (outlineDirection == 0) {
+            outlineR += 4.2;
+            outlineG += 4.6;
+        } else {
+            outlineR -= 4.2;
+            outlineG -= 4.6;
+        }
+        if (outlineR > 120) {
+            outlineDirection = 1;
+        } else if (outlineR < 5) {
+            outlineDirection = 0;
+        }
+    } else {
+        if (outlineG > 0) {
+            outlineR -= 20;
+            outlineG -= 20;
+            outlineB -= 10;	
+        }
+
+        if (outlineR < 0) {outlineR = 0;}
+        if (outlineG < 0) {outlineG = 0;}
+        if (outlineB < 0) {outlineB = 0;}
+    }
+} else {
+    if (actionMeterFill > 199 && timeUntilFlow < 0) {
+        if (outlineDirection == 0) {
+            outlineR += 4.2;
+            outlineB += 4.6;
+        } else {
+            outlineR -= 4.2;
+            outlineB -= 4.6;
+        }
+        if (outlineR > 100) {
+            outlineDirection = 1;
+        } else if (outlineR < 5) {
+            outlineDirection = 0;
+        }
+    } else {
+        if (outlineB > 0) {
+            outlineR -= 20;
+            outlineG -= 10;
+            outlineB -= 20;	
+        }
+
+        if (outlineR < 0) {outlineR = 0;}
+        if (outlineG < 0) {outlineG = 0;}
+        if (outlineB < 0) {outlineB = 0;}
+    }
 }
 
 outline_color = [ outlineR, outlineG, outlineB ];
@@ -103,10 +137,92 @@ switch (get_player_color(player)) {
 	case 22:
 		usesAltHud = 1;
 		break;
+	case 26:
+		usesAltHud = 2;
+		break;
 	default:
 		usesAltHud = 0;
 		break;
 }
+
+if (get_player_color(player) == 26) {
+    var VA_tempcolor1R = ((VA_inactiveColor_R1 * (1-VA_transitionamt)) + (VA_activeColor_R1 * VA_transitionamt));
+    var VA_tempcolor1G = ((VA_inactiveColor_G1 * (1-VA_transitionamt)) + (VA_activeColor_G1 * VA_transitionamt));
+    var VA_tempcolor1B = ((VA_inactiveColor_B1 * (1-VA_transitionamt)) + (VA_activeColor_B1 * VA_transitionamt));
+    
+    var VA_tempcolor2R = ((VA_inactiveColor_R2 * (1-VA_transitionamt)) + (VA_activeColor_R2 * VA_transitionamt));
+    var VA_tempcolor2G = ((VA_inactiveColor_G2 * (1-VA_transitionamt)) + (VA_activeColor_G2 * VA_transitionamt));
+    var VA_tempcolor2B = ((VA_inactiveColor_B2 * (1-VA_transitionamt)) + (VA_activeColor_B2 * VA_transitionamt));
+    
+    var VA_tempcolor3R = ((VA_inactiveColor_R3 * (1-VA_transitionamt)) + (VA_activeColor_R3 * VA_transitionamt));
+    var VA_tempcolor3G = ((VA_inactiveColor_G3 * (1-VA_transitionamt)) + (VA_activeColor_G3 * VA_transitionamt));
+    var VA_tempcolor3B = ((VA_inactiveColor_B3 * (1-VA_transitionamt)) + (VA_activeColor_B3 * VA_transitionamt));
+    
+    set_color_profile_slot( 26, 3, round(VA_tempcolor1R), round(VA_tempcolor1G), round(VA_tempcolor1B) ); //N+M Light
+    set_color_profile_slot( 26, 4, round(VA_tempcolor2R), round(VA_tempcolor2G), round(VA_tempcolor2B) ); //Necklace+Magic
+    set_color_profile_slot( 26, 5, round(VA_tempcolor3R), round(VA_tempcolor3G), round(VA_tempcolor3B) ); //N+M Dark
+    
+    set_article_color_slot( 3, round(VA_tempcolor1R), round(VA_tempcolor1G), round(VA_tempcolor1B), 1 ); //N+M Light
+    set_article_color_slot( 4, round(VA_tempcolor2R), round(VA_tempcolor2G), round(VA_tempcolor2B), 1 ); //Necklace+Magic
+    set_article_color_slot( 5, round(VA_tempcolor3R), round(VA_tempcolor3G), round(VA_tempcolor3B), 1 ); //N+M Dark
+    
+    init_shader();
+}
+
+
+alive_players = 0;
+with (asset_get("oPlayer")) {
+    if (get_player_stocks(player) > 0) {
+        other.alive_players++;
+    }
+}
+
+if (alive_players < 2) {
+    set_color_profile_slot( 26, 3, VA_activeColor_R1, VA_activeColor_G1, VA_activeColor_B1 ); //N+M Light
+    set_color_profile_slot( 26, 4, VA_activeColor_R2, VA_activeColor_G2, VA_activeColor_B2 ); //Necklace+Magic
+    set_color_profile_slot( 26, 5, VA_activeColor_R3, VA_activeColor_G3, VA_activeColor_B3 ); //N+M Dark
+}
+
+//if (up_down) {VA_transitionamt += 0.1;}
+//if (down_down) {VA_transitionamt -= 0.1;}
+
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
+    if (attack == AT_DSTRONG || attack == AT_USPECIAL_GROUND || attack == AT_USPECIAL || attack == AT_NSPECIAL) {
+        if (window == 1 || window == 2) {VA_transitionamt += 0.1;}
+        if (window == 3) {VA_transitionamt = 1;}
+    } else if (attack == AT_USTRONG) {
+        if (window == 5) {VA_transitionamt += 0.2;}
+        if (window == 6) {VA_transitionamt = 1;}
+    } else if (attack == AT_JAB) {
+        if (window == 4) {VA_transitionamt += 0.2;}
+        if (window == 5) {VA_transitionamt = 1;}
+    } else if (attack == AT_NSPECIAL_2) {
+        if (window == 1 || window == 2) {VA_transitionamt += 0.1;}
+        if (window > 2) {VA_transitionamt = 1;}
+    } else if (attack != AT_FSTRONG && attack != AT_FTILT && attack != AT_BAIR && attack != AT_FSPECIAL) {
+        if (window == 1) {VA_transitionamt += 0.2;}
+        if (window == 2) {VA_transitionamt = 1;}
+    }
+}
+if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_PARRY) {
+    if (window == 1) {VA_transitionamt += 0.2;}
+    if (window == 2) {VA_transitionamt = 1;}
+}
+if (state == PS_WALL_JUMP && state_timer < 10) {
+    VA_transitionamt = 1;
+}
+if (state == PS_DASH_TURN && state_timer < 5) {
+    VA_transitionamt = 0.4;
+}
+if (state == PS_RESPAWN) {
+    VA_transitionamt = 1;
+}
+if (state == PS_SPAWN && state_timer < 60) {
+    VA_transitionamt = 1;
+}
+VA_transitionamt *= 0.98;
+VA_transitionamt -= 0.05;
+VA_transitionamt = clamp(VA_transitionamt, 0, 1);
 
 if (state == PS_SPAWN && should_do_intro == true) {
 	if (state_timer == 2) {

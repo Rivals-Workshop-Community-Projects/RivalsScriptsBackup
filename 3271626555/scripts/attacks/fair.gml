@@ -2,15 +2,15 @@ set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //Startup
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("swing_sword2"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 9);
 
 //Active
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
@@ -33,7 +33,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 55);
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 61);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
@@ -50,7 +50,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -21);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 75);
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 41);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 5);
-set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
+set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .5);

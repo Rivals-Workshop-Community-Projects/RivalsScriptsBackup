@@ -69,7 +69,7 @@ if (state != 5)
                     {
 	                prevattack = hitbox.attack;
 	                prevgroup = hitbox.hbox_group;
-                        //hitbox.player_id.has_hit = true;
+                        hitbox.player_id.has_hit = true;
                         //prev_bubbleid = id;
                         if (hitbox.player_id = player_id)
                         { 

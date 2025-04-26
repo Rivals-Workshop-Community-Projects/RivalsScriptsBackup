@@ -65,7 +65,7 @@ if(attack == AT_USTRONG){
     	if("extra_delay" not in self)extra_delay = 0;
 	}else if(hbox_num == 5 || hbox_num == 7){ //lightning hitboxes
 	    AriaCantAbsorb = false;
-	}
+	}ThunderHitbox = true;Toadie_Ability = 5;
 }
 
 if(attack == AT_DSTRONG){

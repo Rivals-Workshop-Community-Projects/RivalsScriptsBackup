@@ -22,7 +22,7 @@ set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_VSPEED, 2);
 
 //Retrive Trident
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);

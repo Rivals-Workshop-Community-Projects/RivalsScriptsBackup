@@ -35,7 +35,7 @@ if(attack == AT_EXTRA_1){
     		shiny = 9;
     	}if(get_player_color(player)== 23){
     		shiny = 8;
-    	}if(get_player_color(player)== 24){
+    	}if(get_player_color(player)== 24 || get_player_color(player)== 28){
     		shiny = 10;
     	}if(get_player_color(player)== 25){
     		shiny = 11;

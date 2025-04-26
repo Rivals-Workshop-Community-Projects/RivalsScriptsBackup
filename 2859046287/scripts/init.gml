@@ -97,8 +97,11 @@ crouch_recovery_frames  = 2;
 // Jumps
 double_jump_time        = 30;		// 24   -  40
 walljump_time           = 18;		// 18   -  32
-can_wall_cling          = false;    // lets the character cling onto walls, you can use [clinging] to check when the character is currently clinging
-wall_frames             = 0;		// amount of animation frames to play while clinging, spread accross 60 frames
+can_wall_cling          = false; //if true, allows the character to cling onto walls by holding jump
+//wall_frames is a variable that usually doesn't work, so i have my own solution here (and in animation.gml)
+cling_timer = 0; //custom var to help with animation on wall clinging
+cling_frame = 0; //sets the frame the player should be on when wall clinging, any number higher than 0 will make it spread across the entire wall cling duration
+cling_anim_time = 0; //similarly to variables like idle_anim_speed, it's the a value deciding the speed of the animation until it reaches the cling_frame
 
 // Parry
 dodge_startup_frames    = 1;
@@ -163,6 +166,8 @@ wait_time = 0;                      // if wait_time is over 0, staying in idle f
 wait_length = 0;                    // this values sets how long the character is animated for in the wait animation
 wait_sprite = sprite_get("wait");   // sets the wait animation sprite strip
 
+orig_wait_time = wait_time;         // not there normally, this is used by the halloween costume to make sure only the idle animatition plays uninterrupted
+
 
 
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
@@ -225,6 +230,7 @@ attack_names = [ //has the names of all the attacks
 window_end = 0; //the last frame (including whifflag if it's there)
 window_last = 0; //AG_NUM_WINDOWS
 window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
+cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
 
 alt_cur = get_player_color(player);
 
@@ -234,6 +240,8 @@ with (oTestPlayer) playtest_active = true;
 is_dodging = false;
 is_attacking = false;
 game_time = 0; //checks get_gameplay_time() so we don't need to call the function all the time
+exist_time = 0; //allows you to check how long the character is functioning
+plat_speed = 0.2; //controls the respawn platform's animation speed without it relying on the player's animation
 
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
@@ -253,10 +261,6 @@ grab_time = 0; //timer for grabbing, works as a state_timer of sorts
 //  - got_hit
 //  - got_parried
 //  - death
-
-cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
-
-plat_speed = 0.2; //controls the respawn platform's animation speed without it relying on the player's animation
 
 //wall slide support (used for tester's rune A)
 wall_slide_enabled = false; //adds a slide function to wall clinding
@@ -282,7 +286,7 @@ window_loops = 0;                   //decides the amount of times to loop
 //  - attack_update
 
 //projectile with melee hitbox behaviour
-HG_PROJECTILE_MELEE = 65;               //if true, it makes it so the projectile applies hitpause and sets off hit player flags
+HG_PROJECTILE_MELEE = 66;               //if true, it makes it so the projectile applies hitpause and sets off hit player flags
 //  set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_MELEE, true);
 //relevant scripts:
 //  - hitbox_init
@@ -290,15 +294,19 @@ HG_PROJECTILE_MELEE = 65;               //if true, it makes it so the projectile
 //  - bair
 
 //projectile multihit
-HG_PROJECTILE_MULTIHIT = 58;            //hitbox grid index, the number of times the projectile should hit
-HG_PROJECTILE_HITRATE = 59;             //the delay time between multihits
-HG_MULTIHIT_DAMAGE = 60;                //overwrites damage for multihits
-HG_MULTIHIT_VFX = 61;                   //overwrites HG_VISUAL_EFFECT for the multihits, putting -1 will not overwrite it
-HG_MULTIHIT_SFX = 62;                   //overwrites HG_HIT_SFX for multihits, putting -1 will not overwrite it
+HG_PROJECTILE_MULTIHIT = 59;            //hitbox grid index, the number of times the projectile should hit
+HG_PROJECTILE_HITRATE = 60;             //the delay time between multihits
+HG_MULTIHIT_DAMAGE = 61;                //overwrites damage for multihits
+HG_MULTIHIT_VFX = 62;                   //overwrites HG_VISUAL_EFFECT for the multihits, putting -1 will not overwrite it
+HG_MULTIHIT_SFX = 63;                   //overwrites HG_HIT_SFX for multihits, putting -1 will not overwrite it
+HG_MULTIHIT_ANGLE = 64;                 //overwrites HG_ANGLE for the multihits, putting -1 will not overwrite it
+HG_MULTIHIT_FLIPPER = 65;               //overwrites HG_ANGLE_fLIPPER for the multihits, putting -1 will not overwrite it
 //usage example:
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MULTIHIT, 4);
-//  set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MULTIHIT, 6);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HITRATE, 6);
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_DAMAGE, 3);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_ANGLE, -1);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_FLIPPER, 9);
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_VFX, HFX_GEN_OMNI);
 //  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_SFX, asset_get("sfx_blow_medium2"));
 //relevant scripts:
@@ -307,8 +315,8 @@ HG_MULTIHIT_SFX = 62;                   //overwrites HG_HIT_SFX for multihits, p
 //  - nspecial
 
 //projectile homing
-HG_PROJECTILE_HOMING = 63;              //if true, allow projectile to use the homing code
-HG_PROJECTILE_HOMING_TURN = 64;         //how sharp the angle for the homing is, and only applies if homing is true (make sure it's a number between 0 and 1)
+HG_PROJECTILE_HOMING = 67;              //if true, allow projectile to use the homing code
+HG_PROJECTILE_HOMING_TURN = 68;         //how sharp the angle for the homing is, and only applies if homing is true (make sure it's a number between 0 and 1)
 //usage example:
 //  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING, true);
 //  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING_TURN, 0.4);
@@ -318,12 +326,14 @@ HG_PROJECTILE_HOMING_TURN = 64;         //how sharp the angle for the homing is,
 //  - nspecial
 
 //particle system
+//NOTE: when using the do_particle function, make sure you encase it by both () and {} brackets, otherwise it won't work
+//      the reason is because it now uses a lightweight object for the setup, to allow you to pick and choose the options you need more freely
 artc_partc = instance_create(x, y, "obj_article3"); //used for layer 0 for the particle system
 artc_partc.depth = 5; //use this to set the custom depth
 artc_partc.uses_shader = false; //keep this false so it will not always use the shader for every particle
 fx_part = [];
 /* particle struct info
-    var new_part = { //new_part is set as a temporary variable to store all the information
+    { //new_part is set as a temporary variable to store all the information
         spr:        sprite_get("???")   //particle's sprite
         xpos:       #number             //x position
         ypos:       #number             //y position
@@ -344,7 +354,7 @@ fx_part = [];
         img:        #number             //reffers to the particle's image index, if "anim_img" is false it will stick to that image for the duration of the particle
         anim_img:   true / false        //if true, the particle's sprites will animate
         timer:      0                   //increments in update, sets the start time of the particle (no need to change)
-    };
+    }
     array_push(fx_part, new_part); //this pushes our new particle out to the particle system
 */
 //alternatively, you can use the function in attack_update that is used for dspecial and play around with the arguments (it's the same code)
@@ -358,10 +368,12 @@ fx_part = [];
 
 //custom "dust" effect support
 uses_custom_dusts = false;
+//relevant scripts:
+//  - animation
 
 //  - to add an effect, use hit_fx_create as normal on the correct array placement (use the list next to it to know which effect goes where)
-//  - to use a default effect, add a 0
-//  - if you want to make an effect not show, add a 1 (it's the hit_fx ID for "no effect")
+//  - to use a default effect instead of a custom one, replace the hit_fx_create line you want to replace with a 0
+//  - if you want to make an effect not show, replace the hit_fx_create line with a 1 (it's the hit_fx ID for "no effect") in the slot you wish to change
 //  - if you want a to replace an effect with one from the list, it doesn't matter what you put cuz you can just change it on update.gml
 dust_effect = [
     hit_fx_create(sprite_get("sprite_name"), 24),        //0  = land
@@ -390,7 +402,6 @@ dust_effect = [
     hit_fx_create(sprite_get("sprite_name"), 24),        //23 = kill "slash"
     hit_fx_create(sprite_get("sprite_name"), 34)         //24 = kill star particles
 ];
-
 
 /////////////////////////////////////////////////////// CUSTOM HITBOX COLOR SYSTEM //////////////////////////////////////////////////////
 
@@ -436,11 +447,12 @@ test_status_timer = 0;
 test_status_time_set = 180;
 
 nspec_charge = 1;
+nspec_charge_prev = 1;
 nspec_charge_rate = 0.02;
 nspec_charge_max = 3;
 nspec_charge_stored = false;
 nspec_charge_sound = asset_get("sfx_frog_fspecial_charge_loop");
-nspec_shoot_delay_time_max = 10; //changes according to charge level
+nspec_shoot_delay_time_max = 0; //changes according to charge level
 nspec_shoot_delay_time = 0; //counts up to [nspec_shoot_delay_time_max] when the projectile is released
 
 uspec_angle = 90;
@@ -451,6 +463,7 @@ fspec_speed = 0;
 fspec_angle = 20;
 fspec_found_target = false;
 fspec_tether_pos = [0, 0]; //x, y - should be used for the drawing stuf, as well as the positions the hitbox should spawn
+can_fspec = false; //this variable decides if tester can use fspecial or not, affected by set_attack.gml and gets reset on set_state.gml
 
 artc_dspec = noone;
 
@@ -471,11 +484,42 @@ set_hit_particle_sprite(1, sprite_get("fx_pow_part")); //this function allows us
 fx_fstrong_pop = hit_fx_create(sprite_get("fx_fstrong_pop"), 12);
 fx_pow_sparks = hit_fx_create(sprite_get("fx_pow_sparks"), 12); //this effect spawns when someone is affected by tester's u-air status aswell as the d-spec teleport
 
+//used by the milestone alt's mask
+mask_anim_speed = 0.15;
+mask_move_x = 0.05;
+mask_move_y = -0.15;
+
+//halloween alt stuff
+halloween_alt = (get_match_setting(SET_SEASON) == 3 && alt_cur == 16); //bool that checks wether the alt is used or not, make sure the alt is set up to be the halloween alt
+halloween_active = halloween_alt; //the code checks this variable to see if the costume should be on or not
+fx_halloween_disappear = hit_fx_create(sprite_get("fx_halloween_disappear"), 24); //effect that appears when you move
+//relevant scripts:
+//  - load
+//  - pre_update
+//  - update
+//  - animation
+//  - death
+
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 
 //on tester, all compatibilities are in [ user_event1.gml ] but they can run from various places based on the compatibility, usually here in init.gml
 user_event(1);
 
+//user events
+hit_player_event = 2; //will allow certain stages to run hit_player.gml code from players at any point they need, by calling the user event with this number
+draw_hud_event = 3; //same as above but for draw_hud.gml instead
+
 //used by final smash compatibility
 start_y_off = 0;
 end_y_off = 0;
+
+//win quotes
+victory_quote = "A winner is you."; //this quote usually appears if you get to the results screen alone
+victory_emote = 0; //emotes are just individual frames on a strip of emotes, you choose emotes based on the frame they are on said strip
+was_in_stage = get_stage_data(SD_ID); //checks the ID of the stage you were in, allows you to have win quotes for specific stages
+//relevant scripts:
+//  - unload
+//  - results_draw_portrait
+//relevant sprites:
+//  - wsc_win_emote
+//  - wsc_win_quote_bg

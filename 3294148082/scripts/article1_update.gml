@@ -146,13 +146,35 @@ if articletype == "Magic" {
     if state = "launching"{
         timer3++
         if timer3 = 1 {
-        with oPlayer {
-            if self != other.player_id and get_player_stocks(player) != 0 {
-                other.launchdir = point_direction(other.x,other.y,x,y-20)
+// --- [ MODIFED ] ------------------------------------------------------ //
+// Added 2 variables below used to target the nearest viable oPlayer
+// ---------------------------------------------------------------------- //
+        // added a team check!
+        with oPlayer if ( get_player_team( player ) != get_player_team( other.player_id.player ) ) {
+            // added state check (just in case)
+            // added the y check (so far, the best solution to the Abyss AI, which resets to above the camera's bounds)
+            if self != other.player_id and get_player_stocks(player) != 0 and state != PS_DEAD and y >= 0 {
+                // other.launchdir = point_direction(other.x,other.y,x,y-20)
+                var distance = distance_to_object( other );
+                if distance < other.closest_distance || other.closest_distance == -1 {
+                    other.closest_distance = distance;
+                    other.closest_player = self;
+                }
+            }
         }
+        if closest_player == noone || !instance_exists( closest_player ) {
+            // aim in your facing direction if there's no target or the target id doesn't exist
+            launchdir = ( player_id.spr_dir == 1 ? 0 : 180 );
+        }
+        else{
+            // all characters have a handy height value, allowing you to aim center mass
+            launchdir = point_direction( x, y, closest_player.x, closest_player.y - closest_player.char_height / 2 );
         }
         hsp = lengthdir_x(8,launchdir)
         vsp = lengthdir_y(8,launchdir)
+// --- [ END OF MODIFICATION ] ------------------------------------------ //
+// 
+// ---------------------------------------------------------------------- //
         }
         if instance_exists(myhitbox) {
             if timer3 = 1 {

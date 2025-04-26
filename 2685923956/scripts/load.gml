@@ -49,6 +49,7 @@ sprite_change_offset("dspecial_eye", 100, 100);
 sprite_change_offset("dspecial_eye2", 100, 100);
 sprite_change_offset("dspecial_eye3", 100, 100);
 sprite_change_offset("dspecial_doomdesire", 100, 123+48+50);
+sprite_change_offset("dspecial_doomdesire_smol", 38, 123+48+18);
 sprite_change_offset("taunt", 93, 134);
 
 sprite_change_offset("hurt", 93, 134);
@@ -62,9 +63,9 @@ sprite_change_offset("downhurt", 93, 134);
 sprite_change_offset("intro", 93, 134);
 sprite_change_offset("plat", 93, 134);
 sprite_change_offset("eye", 8, 8);
-sprite_change_offset("sparkles1", 8, 8);
-sprite_change_offset("sparkles2", 8, 8);
-sprite_change_offset("sparkles3", 8, 8);
+sprite_change_offset("sparkles1", 16, 16);
+sprite_change_offset("sparkles2", 16, 16);
+sprite_change_offset("sparkles3", 16, 16);
 
 sprite_change_offset("aaa_hurtbox_ground", 93, 134);
 

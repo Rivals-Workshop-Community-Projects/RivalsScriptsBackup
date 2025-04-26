@@ -7,14 +7,14 @@ patch_ver = "2.749";
 patch_day = "31";
 patch_month = "FEB";
  
-var num_alts = 18;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
  
  
 
 //Alt name init. var doesn't work with arrays lol
  
-alt_name[0]  = "Default";
+alt_name[0]  = "BlueyBot";
 alt_name[1]  = "Bluey Botn't";
 alt_name[2]  = "ReddyRobot";
 alt_name[3]  = "VeganBot";
@@ -27,7 +27,7 @@ alt_name[9]  = "So Retro!!1!";
 alt_name[10] = "BlaneyBot";
 alt_name[11] = "Roo";
 alt_name[12] = "SnowBot";
-alt_name[13] = "TangerineBot";
+alt_name[13] = "the vortex is coming";
 alt_name[14] = "Sand Under Table";
 alt_name[15] = "Suspicious";
  

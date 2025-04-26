@@ -3,7 +3,7 @@ if ("rollArray" in self)
 	var tempColour = GetColourPlayer(0);
 	if (get_player_color(player)==26)
 	{
-        var color_rgb1=make_color_rgb(255, 255, 128);
+		var color_rgb1=make_color_rgb(255, 255, 128);
 		tempColour = make_color_hsv((color_get_hue(color_rgb1)+hue)%255,color_get_saturation(color_rgb1),color_get_value(color_rgb1));
 	}
 	var tempColour2 = GetColourPlayer(5);
@@ -41,8 +41,8 @@ if ("rollArray" in self)
 	// aura meter
 	if (canAura && (state == PS_SPAWN || (state == PS_ATTACK_GROUND && (attack == AT_TAUNT || attack == AT_TAUNT_2) && !aura)) && auraMeter != -1 && state_timer < 68 && state_timer > 1)
 	{
-	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
-	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
 		draw_debug_text(x - 60, y - 114, "Void Dragon Mode");
 	}
 
@@ -110,11 +110,11 @@ if ("rollArray" in self)
 					draw_sprite_ext(sprite_get("uspecial_border"), 0, x, floor(y-char_height/2), 2*timerGrow, 2*timerGrow, 0, uspecCol, timerGrow/2);
 					shader_end();
 					var joyDir = {x:x+lengthdir_x(200*timerGrow, spr_dir==1?70:110), y:floor(y-char_height/2)+lengthdir_y(200*timerGrow, spr_dir==1?70:110)};
-				    if (!uspecSpeed.joy_pad_idle)
-				    {
-				        joyDir.x = x+lengthdir_x(200*timerGrow, uspecSpeed.joy_dir);
-				        joyDir.y = floor(y-char_height/2)+lengthdir_y(200*timerGrow, uspecSpeed.joy_dir);
-				    }
+					if (!uspecSpeed.joy_pad_idle)
+					{
+						joyDir.x = x+lengthdir_x(200*timerGrow, uspecSpeed.joy_dir);
+						joyDir.y = floor(y-char_height/2)+lengthdir_y(200*timerGrow, uspecSpeed.joy_dir);
+					}
 					var offsetWidth = 2;
 					var offsetX = lengthdir_x(offsetWidth, (uspecSpeed.joy_pad_idle?spr_dir==1?70:110:uspecSpeed.joy_dir)+90);
 					var offsetY = lengthdir_y(offsetWidth, (uspecSpeed.joy_pad_idle?spr_dir==1?70:110:uspecSpeed.joy_dir)+90);
@@ -201,11 +201,11 @@ if ("rollArray" in self)
 		var pinkkk = make_colour_rgb(247, 168, 223);
 		var drawyyy = y - 30;
 		draw_set_alpha(0.5);
-	    draw_rectangle_color(x-transcounter,drawyyy-30,x+transcounter,drawyyy-19,mayablue,mayablue,mayablue,mayablue,false);
-	    draw_rectangle_color(x-transcounter,drawyyy-18,x+transcounter,drawyyy-7,pinkkk,pinkkk,pinkkk,pinkkk,false);
-	    draw_rectangle_color(x-transcounter,drawyyy-6,x+transcounter,drawyyy+5,c_white,c_white,c_white,c_white,false);
-	    draw_rectangle_color(x-transcounter,drawyyy+6,x+transcounter,drawyyy+17,pinkkk,pinkkk,pinkkk,pinkkk,false);
-	    draw_rectangle_color(x-transcounter,drawyyy+18,x+transcounter,drawyyy+29,mayablue,mayablue,mayablue,mayablue,false);
+		draw_rectangle_color(x-transcounter,drawyyy-30,x+transcounter,drawyyy-19,mayablue,mayablue,mayablue,mayablue,false);
+		draw_rectangle_color(x-transcounter,drawyyy-18,x+transcounter,drawyyy-7,pinkkk,pinkkk,pinkkk,pinkkk,false);
+		draw_rectangle_color(x-transcounter,drawyyy-6,x+transcounter,drawyyy+5,c_white,c_white,c_white,c_white,false);
+		draw_rectangle_color(x-transcounter,drawyyy+6,x+transcounter,drawyyy+17,pinkkk,pinkkk,pinkkk,pinkkk,false);
+		draw_rectangle_color(x-transcounter,drawyyy+18,x+transcounter,drawyyy+29,mayablue,mayablue,mayablue,mayablue,false);
 		draw_set_alpha(1);
 	}
 
@@ -302,37 +302,37 @@ if ("rollArray" in self)
 
 #define range_finder(x,y,dir,range,object,prec,notme)
 {
-    var ox,oy,dir,range,object,prec,notme,dx,dy,sx,sy,distance,ox2,oy2;
-    ox = argument0;
-    oy = argument1;
-    dir = argument2;
-    range = argument3;
-    object = argument4;
-    prec = argument5;
-    notme = argument6;
-    sx = lengthdir_x(range,dir);
-    sy = lengthdir_y(range,dir);
-    dx = ox + sx;
-    dy = oy + sy;
-    ox2 = argument0;
-    oy2 = argument1;
-    if (collision_line(ox,oy,dx,dy,object,prec,notme) < 0) {
-        distance = 0;
-    }else{
-        while ((abs(sx) >= 1) || (abs(sy) >= 1)) {
-            sx /= 2;
-            sy /= 2;
-            if (collision_line(ox2,oy2,dx,dy,object,prec,notme) < 0) {
-                ox2 -= sx;
-                oy2 -= sy;
-            }else{
-                ox2 += sx;
-                oy2 += sy;
-            }
-        }
-        distance = point_distance(ox,oy,ox2,oy2);
-    }
-    return distance;
+	var ox,oy,dir,range,object,prec,notme,dx,dy,sx,sy,distance,ox2,oy2;
+	ox = argument0;
+	oy = argument1;
+	dir = argument2;
+	range = argument3;
+	object = argument4;
+	prec = argument5;
+	notme = argument6;
+	sx = lengthdir_x(range,dir);
+	sy = lengthdir_y(range,dir);
+	dx = ox + sx;
+	dy = oy + sy;
+	ox2 = argument0;
+	oy2 = argument1;
+	if (collision_line(ox,oy,dx,dy,object,prec,notme) < 0) {
+		distance = 0;
+	}else{
+		while ((abs(sx) >= 1) || (abs(sy) >= 1)) {
+			sx /= 2;
+			sy /= 2;
+			if (collision_line(ox2,oy2,dx,dy,object,prec,notme) < 0) {
+				ox2 -= sx;
+				oy2 -= sy;
+			}else{
+				ox2 += sx;
+				oy2 += sy;
+			}
+		}
+		distance = point_distance(ox,oy,ox2,oy2);
+	}
+	return distance;
 }
 
 #define GenesisStageList()

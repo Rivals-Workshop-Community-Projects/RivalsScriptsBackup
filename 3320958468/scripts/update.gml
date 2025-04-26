@@ -131,21 +131,21 @@ if(variable_instance_exists(id,"diag"))
 	"YEAH!",
 	"No problem!",
 	"Let's do it! Where do I start?",
-    "Hey, what’s the matter?",
+    "Hey, what's the matter?",
 	"Hey Globox, are you there?",
 	"What do I do? What do I do?!",
 	"Oh No!!! What happened to my best pal?!",
 	"Alright, Ladies and Gents! Let's roll!",
 	"Hey, have you seen my friend Globox around?",
-    "I’m sorry! I-I-I didn’t-I didn’t mean to!",
+    "I'm sorry! I-I-I didn't-I didn't mean to!",
 	"Leave my friend alone!",
-    "What’s the matter? Are you afraid?",
+    "What's the matter? Are you afraid?",
 	"Umm... no.",
 	"Nice moves! But can you keep up with this?",
-	"I’m all about the fun, but I’m not going easy on you!",
-	"You know, I’ve faced a lot of baddies, but you’ve got style!",
-	"Watch out! I’ve got more tricks up my sleeve—if I had sleeves!",
-    "No arms, no legs, no problem! Let’s see what you’ve got!",
+	"I'm all about the fun, but I'm not going easy on you!",
+	"You know, I've faced a lot of baddies, but you've got style!",
+	"Watch out! I've got more tricks up my sleeve-if I had sleeves!",
+    "No arms, no legs, no problem! Let's see what you've got!",
 	"Ready to see what I can do here? Let's do it!"]
 	
 	//--------------Specific Character Interactions
@@ -154,7 +154,7 @@ if(variable_instance_exists(id,"diag"))
 	//	Aperson's Yooka Laylee
     if(otherUrl == "2961053646" && diag != "2961053646") //Change the url into a specific character's
     {
-        diag = "Two against one, huh? This’ll be a blast from the past!";
+        diag = "Two against one, huh? This'll be a blast from the past!";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
 	
@@ -174,7 +174,7 @@ if(variable_instance_exists(id,"diag"))
 				diag_nrs_diag = [
                 "Whoa, this is weird. Am I seeing double, or did I just look in a magic mirror?",
                 "Guess the fairies really outdid themselves this time! But hey, more Rayman, more fun, right?",
-                "Double the punches, double the kicks. Let’s see who’s the real hero here!"]
+                "Double the punches, double the kicks. Let's see who's the real hero here!"]
             }
         }
     }
@@ -190,9 +190,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "Whoa, you’ve got some serious firepower there! Think you can keep up with these fists?",
+                "Whoa, you've got some serious firepower there! Think you can keep up with these fists?",
                 "I don't know, can you? Let's jam!",
-                "Alright, hotshot! Let’s see if your flames can handle my whirlwind punches!"]
+                "Alright, hotshot! Let's see if your flames can handle my whirlwind punches!"]
             }
         }
     }
@@ -209,8 +209,8 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "Whoa, you're fully armed! This just got interesting!",
-                "Prepare to be extinct, buddy! I’ve got the firepower to back it up.",
-                "Let’s see if you can keep up with a hero who’s got no arms or legs!"]
+                "Prepare to be extinct, buddy! I've got the firepower to back it up.",
+                "Let's see if you can keep up with a hero who's got no arms or legs!"]
             }
         }
     }
@@ -226,9 +226,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "You’re like a one-creature weather system! Fire, shock, and frost? That’s some wild stuff!",
+                "You're like a one-creature weather system! Fire, shock, and frost? That's some wild stuff!",
                 "You better believe it! I'm so ready to bring the chaos!",
-                "Sounds like a storm’s brewing! Let's roll!"]
+                "Sounds like a storm's brewing! Let's roll!"]
             }
         }
     }
@@ -244,9 +244,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "You certainly bring a whole new meaning to ‘cutting-edge’!",
-                "Oh yeah? Let’s see if your skills are as sharp as your wit.",
-                "I may not have a sword, but I’ve got plenty of tricks up my sleeve... If I had sleeves! Let’s dance!"]
+                "You certainly bring a whole new meaning to 'cutting-edge'!",
+                "Oh yeah? Let's see if your skills are as sharp as your wit.",
+                "I may not have a sword, but I've got plenty of tricks up my sleeve... If I had sleeves! Let's dance!"]
             }
         }
     }	
@@ -317,8 +317,8 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "A stickman with card tricks? Got any aces up your sleeve?",
-                "I’ve got a whole deck of them, Rayman. Care to see if luck’s on your side~?",
-                "Luck? Who needs luck when you’ve got moves like mine? Let's go!"]
+                "I've got a whole deck of them, Rayman. Care to see if luck's on your side~?",
+                "Luck? Who needs luck when you've got moves like mine? Let's go!"]
             }
         }
     }
@@ -370,9 +370,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "A time patroller, huh? You must’ve seen some wild stuff on your journeys!",
-                "I’ve been through all kinds of timelines, Rayman. Ready to see how you measure up across the ages?",
-                "Bring it on! Whether it’s past, present, or future, I’m ready to show you that some heroes are timeless!"]
+                "A time patroller, huh? You must've seen some wild stuff on your journeys!",
+                "I've been through all kinds of timelines, Rayman. Ready to see how you measure up across the ages?",
+                "Bring it on! Whether it's past, present, or future, I'm ready to show you that some heroes are timeless!"]
             }
         }
     }
@@ -406,9 +406,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "You’ve got that dark and angry vibe going on. Wait... Haven't we fought before?",
+                "You've got that dark and angry vibe going on. Wait... Haven't we fought before?",
                 "You have no idea what you're walking into here.",
-                "I’ve faced my share of shadows before. This shouldn't be any different!"]
+                "I've faced my share of shadows before. This shouldn't be any different!"]
             }
         }
     }
@@ -425,7 +425,7 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "Is that a bird in your backpack...?",
-                "RyeGuy: Yep, this is Beaky! We’re a team and we’re ready for anything!",
+                "RyeGuy: Yep, this is Beaky! We're a team and we're ready for anything!",
                 "A kid with a sword and his bird... Now this is going to be fun!"]
             }
         }
@@ -444,13 +444,67 @@ if(variable_instance_exists(id,"diag"))
 				diag_nrs_diag = [
                 "Nice umbrella, pretty stylish! Got any tricks to share, kid?",
                 "Ooh, I got plenty! Let's see if you can keep up!",
-                "Hehe, let’s see if your umbrella can keep up with a hero who’s been hopping around for years!"]
+                "Hehe, let's see if your umbrella can keep up with a hero who's been hopping around for years!"]
+            }
+        }
+    }
+	
+	//	Camic
+	if(otherUrl == 3350776556)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "I didn't know the circus was in town. What's your act?",
+                "...",
+                "I get the feeling I'm in for a treat..."]
+            }
+        }
+    }
+
+    //	Randalf Rhino
+	if(otherUrl == 3388038739)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Whoa, whoa! Easy there big fella!",
+                "Who? Me? I'm on a diet, I swear!",
+                "...Right. I was not expecting that."]
+            }
+        }
+    }
+
+    //	Geebs
+	if(otherUrl == 3432458008)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "What's got you in such a good mood?",
+                "Me? Weelll... Let's just say I'm about to ROCK THIS JOINT!!!",
+                "W-Wha? With what exactly?!"]
             }
         }
     }
 	
 	//	Shantae
-	if(otherUrl == 2890757258) //Change the url into a specific character's
+	if(otherUrl == 2890757258)
     {
         with(pet_obj)
         {
@@ -461,7 +515,7 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "Hey Shantae, think you could grant me a wish?",
-                "Sorry, Rayman! I’m not that kind of Genie.",
+                "Sorry, Rayman! I'm not that kind of Genie.",
                 "Awww... Can I atleast get something magical?"]
             }
         }
@@ -478,8 +532,8 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "Nice jester hat! I bet you’ve got a few tricks up your sleeves.",
-                "More than a few! And with this electric power, I’m no joke in battle.",
+                "Nice jester hat! I bet you've got a few tricks up your sleeves.",
+                "More than a few! And with this electric power, I'm no joke in battle.",
                 "Well then, allow me to deliver the Punchline!"]
             }
         }
@@ -496,9 +550,9 @@ if(variable_instance_exists(id,"diag"))
                 diag_nrs = true; //Sets the 3-Part dialogue to happen.
                 
 				diag_nrs_diag = [
-                "Whoa, whoa! You’ve got some serious attitude problems...",
-                "You better believe it, freak! I’m more than just a pretty face~!",
-                "Whatever your deal is, I’m not one to back down from a challenge!"]
+                "Whoa, whoa! You've got some serious attitude problems...",
+                "You better believe it, freak! I'm more than just a pretty face~!",
+                "Whatever your deal is, I'm not one to back down from a challenge!"]
             }
         }
     }
@@ -535,6 +589,24 @@ if(variable_instance_exists(id,"diag"))
                 "Oh, great. Another one. Let me guess, 'Roger Roger?'",
                 "Don't you dare mock him. I only respect him. No one else.",
                 "Oh, so you can talk. Interesting..."]
+            }
+        }
+    }
+
+    //	Cindy Appeal 
+    if(otherUrl == 2670125703)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "So, what's your story? Another one of those, Roger rogers?",
+                "Like, I'm gonna turn you into a Hichuli for my Roger~!",
+                "I'm sorry... What?"]
             }
         }
     }

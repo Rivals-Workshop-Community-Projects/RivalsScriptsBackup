@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // City of Tears
 set_color_profile_slot( 1, 0, 179, 201, 227 ); //Mask
@@ -255,6 +255,16 @@ set_color_profile_slot( 22, 4, 144, 99, 184 ); //Eyes 2
 set_color_profile_slot( 22, 5, 220, 113, 255 ); //Eyes Fix
 set_color_profile_slot( 22, 6, 146, 59, 206 ); //Trail1
 set_color_profile_slot( 22, 7, 123, 40, 153 ); //Trail2
+
+// Spectral Thief
+set_color_profile_slot( 23, 0, 99, 100, 105 ); //Mask
+set_color_profile_slot( 23, 1, 74, 132, 148 ); //Cloak
+set_color_profile_slot( 23, 2, 23, 65, 79 ); //Nail
+set_color_profile_slot( 23, 3, 232, 226, 164 ); //Eyes1
+set_color_profile_slot( 23, 4, 232, 146, 125 ); //Eyes 2
+set_color_profile_slot( 23, 5, 232, 146, 125 ); //Eyes Fix
+set_color_profile_slot( 23, 6, 23, 65, 79 ); //Trail1
+set_color_profile_slot( 23, 7, 34, 97, 117 ); //Trail2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

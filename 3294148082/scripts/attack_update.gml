@@ -91,7 +91,14 @@ _pcount += 1;
 }
 }
     with oPlayer {
-	if get_player_stocks(player) != 0 and point_distance(other.x,other.y,x,y) < 480{
+	// --- [ ADDITION ] ----------------------------------------------------- //
+	// This is hacky, but I added `y >= 0` which prevents targeting oPlayers
+	// that are off the top of the screen, which includes Abyss AI.
+	// ---------------------------------------------------------------------- //
+	if get_player_stocks(player) != 0 and point_distance(other.x,other.y,x,y) < 480 and y >= 0 {
+	// --- [ END OF ADDITION ] ---------------------------------------------- //
+	//
+	// ---------------------------------------------------------------------- //
         if !(self == other){
     with other {
     	if window_timer = 1 and shot = 0 {

@@ -35,7 +35,7 @@ else
 	// taunt menu
 	if (practice)
 	{
-		var noOfPatches = 16;
+		var noOfPatches = 17;
 		tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 		if (menuStateBuffer != menuState)
 		{
@@ -60,7 +60,7 @@ else
 				break;
 			case 1: // main menu
 				Invince();
-				MenuNav(4, 0, MainMenuNext());
+				MenuNav(5, 0, MainMenuNext());
 				break;
 			case 2: // Basic Tut Menu
 				Invince();
@@ -242,6 +242,14 @@ else
 			return tutMenu + 2;
 		case 3:
 			return 7;
+		case 4:
+			if (attack_down && !attack_counter)
+			{
+				state_timer = 0;
+				set_attack(49);
+				menuStateBuffer = 0;
+			}
+			break;
 	}
 	return 0;
 }

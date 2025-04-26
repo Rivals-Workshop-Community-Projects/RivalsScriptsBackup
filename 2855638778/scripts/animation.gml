@@ -19,11 +19,15 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && blastjumping == tru
 	if (attack == AT_NSPECIAL) {
 		sprite_index = sprite_get("nspecial_blast");
 	}
-	
+	*/
 	if (attack == AT_USPECIAL) {
 		sprite_index = sprite_get("uspecial_blast");
 	}
-	*/
+	
+	if (attack == AT_DSPECIAL) {
+		sprite_index = sprite_get("dspecial_blast");
+	}
+	
 	if (free) {
 		
 		if (attack == AT_FSPECIAL) {

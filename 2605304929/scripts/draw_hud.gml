@@ -1,76 +1,55 @@
 // Code to prevent error from running on first frame
-//#region Gannoncide Platform Icon
-if ("ganoncide_preventor_available_flag" not in self){ // 
-    exit;
+
+// Draw the cloud as a Meter, using code from Iroh DE
+
+    var temp_cooldown_remaining = move_cooldown[AT_FSPECIAL];
+    var temp_cooldown_duration = 60;
+    var bar_length_in_px = 30; // Legnth of bar
+    var bar_height_in_px = 10; // Height of Bar
+    var top_left_x = 0; // Start the bar at the right side
+    var top_left_y = 11; // Location of center of bar vertically
+    var start_x = temp_x + 175;
+    var start_y = temp_y - 2;
+    var cooldown_percentage = (temp_cooldown_duration - temp_cooldown_remaining) / temp_cooldown_duration; // Convert frame cooldown to a percentage
+    var pixel_length_to_display = (cooldown_percentage * bar_length_in_px); // Determins percent and converts it to bar length. Need floor to prevent mixels
+    // Check if Odd and round up to even)
+    if(pixel_length_to_display % 2 == 1){
+    	pixel_length_to_display--;
     }
-
-if(ganoncide_preventor_available_flag == true){
-    draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_white,1);
-}
-else{
-    draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_dkgray,1);
-}
-//#endregion
-/* Disabled until finished
-//#region Dialog Box
-
-if(flag_round_start_dialog){
-	
-	rectDraw(260+102,420 - 4,604,420 + 72 + 1,c_black,c_black,.33);
-	rectDraw(260 - 4,420 - 4,260 + 102 + 4,420 + 72 + 1,c_black,c_black,.5);
-	rectDraw(604 - 4,420 - 4,604 + 102 + 0,420 + 72 + 1,c_black,c_black,.5);
-	
-	
-	var player_css_sprite = get_char_info(player,INFO_CHARSELECT);
-
-	//Grab Opponent Info and draw sprites
-	var temp_self = player;
-    var temp_opponent;
-    var temp_opponent_css_sprite //Only does one opponent
-    with(asset_get("oPlayer")){
-    	if(player != temp_self){
-        //print("Opponent: " + get_char_info(player, INFO_STR_NAME));
-        temp_opponent = get_char_info(player, INFO_STR_NAME);
-        temp_opponent_css_sprite = get_char_info(player, INFO_CHARSELECT);
-    	}
+    
+    shader_start();
+    //draw_sprite_ext(sprite_get("platform_icon"),1,start_x,start_y,1,1,0,c_white,1);
+    // Draw ramping up with image index 0
+    if(move_cooldown[AT_FSPECIAL] != 0){
+    	// Draw the bark grayed out during the move
+	    if(attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	    	draw_sprite_part(sprite_get("platform_icon"),0,top_left_x,top_left_y,pixel_length_to_display,bar_height_in_px,start_x,start_y);
+	    	//print("in fspec");
+	    }
+	    // Else draw the bar rising
+    	draw_sprite_part(sprite_get("platform_icon"),0,top_left_x,top_left_y,pixel_length_to_display,bar_height_in_px,start_x,start_y);
     }
-	// Draw Css Sprites
-	draw_sprite_ext(player_css_sprite,0,260,420,1,1,0,c_white,1);
-	draw_sprite_ext(temp_opponent_css_sprite,0,604 + 102 + 0,420,-1,1,0,c_white,1);
-}
+    // If fspecial is in use, show it grayed out
 
-//#endregion
-*/
-/*
-//#region Secret Alts - Old Secret Alt Code
-if(state == PS_SPAWN){
-    var current_alt = get_player_color(player);
-    if(current_alt == 30){
-        var attack_button, special_button, strong_button, jump_button, shield_button, taunt_button;
-        var strong_stick_down = left_strong_down || right_strong_down || up_strong_down || down_strong_down || strong_down;
-        var alt_index = attack_down + special_down*2 + strong_stick_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
-        if(attack_down){draw_debug_text(temp_x + 0, temp_y - 40,"AT:1");}
-        if(special_down){draw_debug_text( temp_x + 33, temp_y - 40,"SP:2");}
-        if(strong_stick_down){draw_debug_text( temp_x + 66, temp_y - 40,"ST:4");}
-        if(jump_down){draw_debug_text( temp_x + 99, temp_y - 40,"JP:8");}
-        if(shield_down){draw_debug_text( temp_x + 131, temp_y - 40,"SH:16");}
-        if(taunt_down){draw_debug_text( temp_x + 170, temp_y - 40,"TA:32");}
-        draw_debug_text( temp_x + 0, temp_y - 25,"Color Picker Alt Number: " + string(alt_index));
-        draw_debug_text( temp_x + 0, temp_y - 10,"Name: " + string(color_select_alt_name));
+    // Else draw icon indicating its ready with image index 1
+    else{
+    	draw_sprite_ext(sprite_get("platform_icon"),1,start_x,start_y,1,1,0,c_white,1);
+    	//draw_sprite_part(sprite_get("platform_icon"),1,top_left_x,top_left_y,pixel_length_to_display,bar_height_in_px,start_x,start_y);
+    	//draw_sprite_part(sprite_get("platform_icon"),1,top_left_x,top_left_y,pixel_length_to_display,bar_height_in_px,start_x,start_y);
     }
-}
-//#endregion
-*/
+	//draw_debug_text(start_x, start_y - 25,"pixel length: " + string(pixel_length_to_display));
+    //draw_debug_text(start_x, start_y - 40,"cooldown_frames: " + string(temp_cooldown_remaining));
+    shader_end();
 
 //#region AI Draw
-
+/*
 // debrug draw
 
 // debrug draw
 // Draw AI Variables
 
 // Variable Info
-/*
+
 ai_target -	The current target of the AI.
 ai_recovering -	Is true while the AI is attempting to recover back onto the stage.
 temp_level -	The difficulty level of the AI, from 1 to 9.

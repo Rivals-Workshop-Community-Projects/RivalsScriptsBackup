@@ -1,0 +1,35 @@
+set_attack_value(AT_EXTRA_2, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("dspecial_error"));
+set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 1);
+set_attack_value(AT_EXTRA_2, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_EXTRA_2, AG_AIR_SPRITE, sprite_get("dspecial_error"));
+set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_error_hurt"));
+
+set_num_hitboxes(AT_EXTRA_2, 1); 
+//falling log visual
+set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_2, 1, HG_WINDOW, 0);
+set_hitbox_value(AT_EXTRA_2, 1, HG_LIFETIME, 120);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_X, 5);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_Y, -7);
+set_hitbox_value(AT_EXTRA_2, 1, HG_WIDTH, 48);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HEIGHT, 21);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PRIORITY, -1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_2, 1, HG_WIDTH, 0);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HEIGHT, 0);
+set_hitbox_value(AT_EXTRA_2, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_SPRITE, sprite_get("parry"));
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_MASK, sprite_get("log"));
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_GRAVITY, 0.5);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_VSPEED, -4);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_ANIM_SPEED, 0);
+set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_UNBASHABLE, 1);

@@ -56,6 +56,7 @@ sprite_change_offset("phone_open", 25, 47);//
 sprite_change_offset("we_do_a_little_trolling", 45, 45);//
 sprite_change_offset("we_do_a_little_trolling_3", 70, 60);//
 sprite_change_offset("wonder_trade", 50, 50);//
+sprite_change_offset("wt_mask", 20, 20);//
 sprite_change_offset("wonder_trade_start", 50, 50);//
 sprite_change_offset("fspecial_whiff_vfx", 20, 20);//
 sprite_change_offset("fspecial_whiff_vfx2", 20, 20);//

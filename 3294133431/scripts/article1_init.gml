@@ -34,4 +34,4 @@ swaySpeedRandScale = 10;
 
 state = "spawn";
 
-sound_play(sound_get("sapper_timer"), true, noone, 0.2, 1);
+sapper_timerSfx = sound_play(sound_get("sapper_timer"), true, noone, 0.2, 1);

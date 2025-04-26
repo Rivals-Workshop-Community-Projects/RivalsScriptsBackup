@@ -47,7 +47,6 @@ set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 5);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);

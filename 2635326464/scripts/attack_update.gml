@@ -141,8 +141,15 @@ switch(attack){
 		}
 
 		if (window == 1 && window_timer == 1){
-			has_tricked = 1;
 			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
+		}
+
+		if (window == 1 && window_timer == 1){
+			has_tricked = 1;
+		}
+
+		if (window == 3 && window_timer == 1){
+			has_finished_trick = 1;
 		}
 
 		if(!free){

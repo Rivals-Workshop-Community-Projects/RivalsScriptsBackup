@@ -21,16 +21,20 @@ if ("practice" in self)
 			shader_end();
 		}
 	}
+	
+	var noCryX=184;
 
 	// taunt menu
 	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
+		noCryX=-1;
 		draw_set_alpha(tutAlpha);
 		ResetText();
 		switch (menuState)
 		{
 			default:
 				draw_debug_text(temp_x + 148, temp_y - 10 + floor(tutAlpha*4)*2-8, "Taunt~");
+				noCryX=120;
 				break;
 			case 1:
 				AddText("Basic Tutorials");
@@ -204,6 +208,41 @@ if ("practice" in self)
 						AddText("");
 						AddText("Upgraded flag outline system");
 						break;
+					case 9:
+						AddText("v1.7 - 31 Oct 2024");
+						AddText("");
+						AddText("Optimized sound and text file sizes");
+						AddText("");
+						AddText("UStrong now has smaller hitboxes");
+						AddText("");
+						AddText("DTilt Ground Tornado projectile halved lifetime");
+						AddText("DTilt Ground Tornado projectile smaller hitboxes");
+						AddText("");
+						AddText("NSpecial no longer allows platdropping while charging");
+						AddText("NSpecial added +40 frames to charge time");
+						AddText("NSpecial can't be cancelled right before fully it's charged");
+						AddText("");
+						AddText("DSpecial Crystal can't be respawned within 4 seconds after it's destroyed");
+						AddText("Freeze time has been changed from a flat 90 frames to (damage% + 10) frames");
+						AddText("Freeze ending now puts the opponent in Idle Air state");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.7.1 - 20 Nov 2024");
+						AddText("");
+						AddText("Fixed Ice Crystal Freeze's early pop mechanic accidentally setting opponent's state to idle.");
+						AddText("Ice Crystal Freeze's outline timer now accounts for hitstun ending earlier than the freeze timer.");
+						break;
+					case 10:
+						AddText("v1.8 - 22 Mar 2025");
+						AddText("");
+						AddText("UStrong Startup 14 -> 19");
+						AddText("");
+						AddText("Freeze time has been reverted from (damage% + 10) frames to a flat 75 frames");
+						AddText("Freezing hitbox on Strongs will now also break frozen opponents out of Ice Crystal Freeze");
+						AddText("");
+						AddText("HUD Sprite for No spawning DSpecial Crystal now shows remaining time");
+						AddText("FSpecial meter now also appears on the HUD");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -289,7 +328,35 @@ if ("practice" in self)
 		draw_set_alpha(1);
 	}
 	else if (aura)
+	{
 		draw_debug_text(temp_x + 128, temp_y - 10, "Snow Angel");
+		noCryX=100;
+	}
+
+	if(dspecSpawnBan>0&&noCryX!=-1)
+	{
+		shader_start();
+		var meterSpr=sprite_get("noCrystal");
+		draw_sprite_ext(meterSpr,0,temp_x+noCryX,temp_y-20,2,2,0,c_gray,1);
+		var spriteWidth=11;
+		var spriteHeight=13;
+		var yOffset=floor((1-dspecSpawnBan/240)*(spriteHeight-1));
+		draw_sprite_part_ext(meterSpr,0,0,yOffset+1,spriteWidth,spriteHeight,temp_x+noCryX,temp_y-18+yOffset*2,2,2,c_white,1);
+		shader_end();
+	}
+	
+	if (fspecMeter.opacity>0)
+	{
+		var tempCol = GetColourPlayer(4);
+		var tempCol2 = GetColourPlayer(1);
+		var width = 80;
+		draw_set_alpha(fspecMeter.opacity);
+		draw_rectangle_color(temp_x+4,temp_y-2,temp_x+width+8,temp_y+3,c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color(temp_x+6,temp_y,temp_x+6+lerp(0,width,min(fspecMeter.charge,70)/fspecMeter.chargeMax)-1,temp_y+1,tempCol,tempCol,tempCol,tempCol,false);
+		if (fspecMeter.charge>70)
+			draw_rectangle_color(temp_x+6+lerp(0,width,70/fspecMeter.chargeMax),temp_y,temp_x+6+lerp(0,width,fspecMeter.charge/fspecMeter.chargeMax),temp_y+1,tempCol2,tempCol2,tempCol2,tempCol2,false);
+		draw_set_alpha(1);
+	}
 }
 
 #define DrawTutBlock()
@@ -338,4 +405,9 @@ if ("practice" in self)
 	for (var i = 0; i < tutLength; ++i)
 		length = max(length, string_width_ext(tutText[i], 0, room_width));
 	return length;
+}
+
+#define GetColourPlayer(_index)
+{
+	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
 }

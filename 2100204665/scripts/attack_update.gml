@@ -120,7 +120,8 @@ switch (attack){
             case 2:
             if (window_timer == 8){
                 if (!instance_exists(bone_trap)){
-                bone_trap = instance_create(x, y - 32, "obj_article1" );
+                    bone_trap = instance_create(x, y - 32, "obj_article1" );
+                    move_cooldown[AT_DSPECIAL] = 150;
                 }
             }
             break;
@@ -196,8 +197,8 @@ switch (attack){
         j++;
         if chars_drawn < msg_length
         {
-        chars_drawn+= 0.7;
-        if (chars_drawn < msg_length - 4){
+        chars_drawn += 1;
+        if (chars_drawn < msg_length - 2 && chars_drawn % 2 == 1){
         sound_play(sound_get("sfx_txt"));
         }
         }

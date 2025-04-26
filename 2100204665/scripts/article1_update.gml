@@ -41,6 +41,12 @@ if free == true && !collision_rectangle(x - 2, y, x + 2, y + 64, player_id.bone_
     should_die = true;
 }
 
+if (hitpause_time > 0 && !busy){
+    sprite_index = (sprite_get("hit_trap"));
+} else if !busy{
+    sprite_index = sprite_get( (shader == 0 ? "unshaded_" : "") + "trap");
+}
+
 if (state == 2){
     busy = true;
     if(sprite_index == sprite_get("trap") || sprite_index == sprite_get("unshaded_trap")){
@@ -62,6 +68,10 @@ if (state == 2){
 }
 
 if (state == 3){
+    if (hitpause_time > 0){
+        hitpause_time --;
+        image_index -= 0.2;
+    }
     busy = false;
     image_index += 0.2;
     if (image_index >= 5.8){

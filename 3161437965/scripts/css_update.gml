@@ -81,7 +81,11 @@ if (instance_exists(cursor_id))
             sound_stop(sound_get("sfx_save"));
             sound_play(sound_get("sfx_save"));
 
-            set_synced_var(player, cur_skin);
+            format_sync_var(cur_skin, voiced);
+            
+            cur_skin = splice_sync_var(2);
+            voiced = splice_sync_var(3);
+            
             user_event(1);
 
             press_delay = 3;
@@ -94,6 +98,35 @@ if (instance_exists(cursor_id))
         skin_but_state = 0;
         spr_set_button_state = 0;
         suppress_cursor = false;
+        
+        if (cursor_x > voice_but_pos[0] && cursor_x < voice_but_pos[2] && cursor_y > voice_but_pos[1] && cursor_y < voice_but_pos[3])
+        {
+            if (press_delay == 0) voice_but_state = 1;
+            suppress_cursor = true;
+    
+            if (menu_a_pressed)
+            {
+                voiced = !voiced;
+                if !voiced voice_sound = sound_stop(voice_sound);
+                if voiced voice_sound = sound_play(sound_get("vc_01" + string(random_func_2(floor(abs((current_second * current_minute)%200)), 2, true))), false, noone, 1.2);
+    
+                format_sync_var(cur_skin, voiced);
+                
+                cur_skin = splice_sync_var(2);
+                voiced = splice_sync_var(3);
+                
+                user_event(1);
+    
+                press_delay = 3;
+                voice_but_state = 2;
+            }
+        }
+        else
+        {
+            voice_but_state = 0;
+            spr_set_button_state = 0;
+            suppress_cursor = false;
+        }
     }
 }
 
@@ -115,3 +148,19 @@ if (press_delay > 0)
     }
     return -1;
 }
+
+#define splice_sync_var
+var index = argument0;
+// 2 is SKIN, 3 is VOICE
+return real(string_char_at(string(get_synced_var(player)), index));
+
+#define format_sync_var
+var alt = argument0, voice = argument1;
+var sync_string = string(get_synced_var(player));
+var new_sync = "1";
+var i = 2;
+repeat(2){
+    new_sync = new_sync + (real(string_char_at(sync_string, i)) > 1 ? "0" : (i == 2 ? string(alt) : string(voice)));
+    i += 1;
+}
+set_synced_var(player, real(new_sync));

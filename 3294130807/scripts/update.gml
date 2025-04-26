@@ -11,10 +11,14 @@
 
 can_taunt = (state != "idle" || !waiting) && state != "taunt";
 
+if(owner.url == 3294133431)//spy
+	max_run_dist = (owner.state == PS_CROUCH) ? 80 : max_run_dist_default;
+print(max_run_dist);
 if(state == "idle")
 {
 	if(teetering)
 	{
+		anim_speed = 0.2;
 	}
 	else if(waiting)
 	{

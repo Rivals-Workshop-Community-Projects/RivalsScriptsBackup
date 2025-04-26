@@ -19,7 +19,16 @@ if (state == PS_RESPAWN)
 
 var range_x_offset  = 4;
 var range_y_offset  = 2;
-var shortest_dist   = 140;  // Example radius for the turret's range
+
+if !has_rune("O")
+{
+	var shortest_dist   = 100;  // Example radius for the turret's range
+}
+
+if has_rune("O")
+{
+	var shortest_dist   = 160;
+}
 
 if (instance_exists(plunger_guard))
 {

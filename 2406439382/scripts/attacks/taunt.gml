@@ -67,5 +67,3 @@ set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_DESTROY_EFFECT, shine_effect);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_GROUND_FRICTION, 0.05);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_AIR_FRICTION, 0.02);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
-
-

@@ -34,3 +34,11 @@ if (attack == AT_NSPECIAL && hbox_num == 1){
 	//hsp = (6+(player_id.pult_di*4)+(abs(player_id.pult_di)+player_id.pult_di))*spr_dir;
 	hsp = (6 + (player_id.pult_di * 4)) * spr_dir;
 }
+
+/*
+if (attack == 49 && hbox_num == 1){
+	for (var i = 0; i < array_length(can_hit); i++) {
+		can_hit[i] = false;
+	}
+}
+*/

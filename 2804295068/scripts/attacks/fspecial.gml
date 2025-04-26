@@ -39,6 +39,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bean_bomb"));

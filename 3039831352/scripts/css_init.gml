@@ -66,7 +66,6 @@ secret_active = false;
 //CSS settings
 press_delay = 0;
 
-
 //language settings
 lang_x = 170;
 lang_y = 40;

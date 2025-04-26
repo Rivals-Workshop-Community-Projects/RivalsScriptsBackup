@@ -12,56 +12,39 @@ print(split_var[1]); // WinQuote
 print(split_var[2]); // Round Start Dialog
 */
 
-//results_post_draw.gml
-if(winner == player){ // flag_win_quote_enabled == true && 
+// Win Quote Handling
+if(winner == player){ // Removed this flag_win_quote_enabled == true && 
     // Create Timer
     if("run_timer" not in self){run_timer = 0}
     run_timer++;
 
     // Code from Frtoud for smuggling hitbox data
     // Relies on unload.gml sending over a persistent hitbox with said data
-        with (asset_get("pHitBox")) if ("results_data_daora" in self)
-    {
-            other.results_data_daora = results_data_daora;
+    with (asset_get("pHitBox")) if ("results_data_daora" in self)
+	    {
+            other.results_data = results_data_daora;
             break;
-    }
+	    }
     
     //print(results_data.opponent_name);
     
-    // Set Timer and transparncey Effect
-    var duration_for_transparency_effect = 500;
-    var current_transparency = run_timer / duration_for_transparency_effect;
-    
-    // Clamp Values to prevent out of bounds if left waiting on results screen
-    current_transparency = clamp(current_transparency,0,1);
-    run_timer = clamp(run_timer,0,duration_for_transparency_effect);
-    
     run_timer = clamp(run_timer,0,1000);
-    var slide_timer = clamp(run_timer-200,0,60);
-    var offset_x = 50
+    var slide_timer = clamp(run_timer-200,0,30);
+    var offset_x = 50;
     
-    if("win_quote_string" not in self){
-        if(results_data_daora.num_of_players <= 2)
-        //print(results_data_daora);
-        win_quote_string = get_win_quote(results_data_daora.opponent_name);
+    if("win_quote_string" not in self)
+    {
+        if(results_data.num_of_players <= 2){
+        	win_quote_string = get_win_quote(results_data.opponent_name);
+        }
        // print(win_quote_string);
+       else
+            exit;
     }
-    
-    // Newer Ducky Winqoutes 
-	draw_sprite_ext(sprite_get("textbox"),0,view_get_xview()+ease_quadOut(-550,-50,30,30),310,1,1,0,c_white,1);
-	draw_sprite_ext(get_char_info(player, INFO_HUD), 0, view_get_xview()+ease_quadOut(-550,-50,30,30)+65,330,1,1 ,0,c_white,1);
-	textDraw(view_get_xview()+ease_quadOut(-550,-50,30,30)+(300), 322, "fName", c_white, 16, 240, 1.5, true, 1, '"'+string(win_quote_string)+'"');
-    // Old Ducky Winquotes
-    //draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60),400,0.6,1,0,c_white,1);
-    //textDraw(ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60)+(240),410,"medFont",c_white,22,350,1,true,1,string(win_quote_string));
-    
-    // Old Winqoutes before the Ducky Hook Up (THANKS DUCKY)
-    //rectDraw(25,325,450,425,c_dkgray,c_white,current_transparency);
-    //textDraw(240,331,"medFont",c_white,22,410,1,true,current_transparency,string(win_quote_string));
-    
-    //draw_rectangle_colour(25, 325, 450, 425, c_blue, c_blue, c_black, c_black, false); // Body
-    //draw_rectangle_colour(25, 325, 450, 425, c_white, c_white, c_gray, c_gray, true); // Main Outline
-    //draw_rectangle_colour(30, 330, 445, 420, c_white, c_white, c_gray, c_gray, true); // Inside Outline
+    	// Winquotes from Ducky V2
+        draw_sprite_ext(sprite_get("textbox"),0,view_get_xview()+ease_quadOut(-550,-50,slide_timer,30),310,1,1,0,c_white,1);
+        draw_sprite_ext(get_char_info(player, INFO_ICON), 0, view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+64,324,3,3,0,c_white,1);
+        textDraw(view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+(300), 322, "fName", c_white, 16, 240, 1.5, true, 1, '"'+string(win_quote_string)+'"');
 }
 
 #define split_synced_var
@@ -213,7 +196,7 @@ draw_set_alpha(1);
     if(character_name == "Valley & Death"){win_quote = "You reek of death. You are no ordinary florae, you may be the most evil one I have met yet.";} // works
     if(character_name == "Yuuto Ichika"){win_quote = "Bolders, space ships, magic, is there anything you won't throw at me?";} //works
     
-    // Riptide 23
+    // Riptide 2023
     if(character_name == "Anglara"){win_quote = "My condolences that my ancestor injured you, please don't hold it against me."} // works
     if(character_name == "Barr"){win_quote = "I do not understand what you are doing to reality and I don't think I want to know."} // workss
     if(character_name == "Bluey"){win_quote = "I swear I have seen a robotic version of you somewhere before."} // works
@@ -241,7 +224,7 @@ draw_set_alpha(1);
     if(character_name == "Wally"){win_quote = "You are still very strong as always Wally. We should go to the beach when the world is safer."} // works
     if(character_name == "Zephrie"){win_quote = "Your species glides with such grace. I aspire to be half as graceful as you."} // works
     
-    // Riptide 24
+    // Riptide 2024
     if(character_name == "Amanita"){win_quote = "I will admit, I am quite hesistant to grab you, I am not fond of any form of fungus."}; // Works
     if(character_name == "Alexis"){win_quote = "It would make me happy if you gave up the guns and focused on the non lethal tool you have."}; // Works
     if(character_name == "Amaya"){win_quote = "Your poison is quite potent. I would hate to have to heal someone who's succumbing to it."}; // Works
@@ -282,8 +265,45 @@ draw_set_alpha(1);
     if(character_name == "Wren"){win_quote = "I can teach you some water elemental magic if you'll share some of yours with me."}; // Works
     if(character_name == "Yono"){win_quote = "I have great respect for message carriers, traversing a dangerous world like this is no easy task."}; // Works
     
-    //Friend's Characters
-    //if(character_name == "Fennek"){win_quote = "The departed "};
+    // Vortex Gallery 2024 
+    // OCs
+    if(character_name == "Asra"){win_quote = "I've never been one for cloak and daggers, I prefer evil to fear me directly."};
+    if(character_name == "Bluey Bot"){win_quote = "I would assume you were created as a weapon of war, but some of your weapon choices are... unorthodx."};
+    if(character_name == "Coda"){win_quote = "I love your guitar! I play a shamisen occasionally myself."};
+    if(character_name == "Fennek"){win_quote = "Don't let yourself be consumed by death and killing. Protect what should be alive instead."};
+    if(character_name == "Kaiero"){win_quote = "Your fighting style is very direct, it's honestly quite refreshing to fight a straightforward fighter."};
+    if(character_name == "Larry"){win_quote = "What even are your weapons? Are you attacking with food?"};
+    if(character_name == "Liz"){win_quote = "You should be careful with time manipulation, it is a very unstable magic that I don't think kids should be playing with."};
+    if(character_name == "Putrolce"){win_quote = "Please stop trying to eat my pipe, your stomach might explode from the water magic inside of it."};
+    if(character_name == "Sarolyn"){win_quote = "You remind me of one of my friends, consumed by a darkness they can't truly control."};
+    if(character_name == "Teenah"){win_quote = "I like training with you because you're one of the few lighting elementals that can go toe to toe in hand to hand martial arts with me."};
+    if(character_name == "Venus"){win_quote = "I've never seen an elemental like you before. Are you powers magical or something else?"};
+    if(character_name == "Ziggy"){win_quote = "You're a pretty strong lighting elemental, can you show me how your weapons works? It's looks very fancy."};
+    // Characters
+    if(character_name == "Aerith"){win_quote = "You're versed in a lot of different types of magic, I aspire to be like you."};
+    if(character_name == "Fumo Cirno"){win_quote = "You're probably the evilest doll I've ever dealt with and that includes some terrible youkai."};
+    if(character_name == "Goku"){win_quote = "Your raw power is ridiculous. It's almost an impossible level to comprehend."};
+    if(character_name == "Hisui"){win_quote = "Your choice of weapons are very strange. Are you sure you should be fighting?"};
+    if(character_name == "Keqing"){win_quote = "You're pretty at intertwining magic use and a sword. I am not fond of weapons, but I can respect the dedication."};
+    if(character_name == "Kosihi"){win_quote = "Please stop calling me, I don't even have a phone."};
+    if(character_name == "Krillin"){win_quote = "Be careful with that power, you could hurt someone with that crazu disk attack."};
+    if(character_name == "Mako Mankanshoku"){win_quote = "Where are you even storing all of these things that you are throwing at me?"};
+    if(character_name == "Michiru Kagemori"){win_quote = "I've never seen powers quite like yours. I've known a lot of shape shifting Tanuki but never stretchy ones!"};
+    if(character_name == "Miku"){win_quote = "What on earth is a vocaloid? I feel like time is leaving me behind."};
+    if(character_name == "Mira"){win_quote = "I don't think bringing a whole group of thugs to a one versus one is a very fair way to fight."};
+    if(character_name == "Mokou"){win_quote = "I know what its like to hurt yourself to harness your true power. I can draw my own blood to make my electricity more potent."};
+    if(character_name == "Monoko"){win_quote = "What is that thing following you? How does it follow you so well?"};
+    if(character_name == "Nano Shinonome"){win_quote = "Something about you seems.... off? Are you sure you're a regular human?"};
+    if(character_name == "Nitori"){win_quote = "Fighting you is agony. Why does a kid have all of these weapons of war?"};
+    if(character_name == "Phoenix Wright"){win_quote = "I've never had a specific need for legal counsel, but I suppose I may need to ask for your services the day I kill Loxodont. "};
+    if(character_name == "Reimu"){win_quote = "Your goals are nobel but your methods of fighting are a tad annoying."};
+    if(character_name == "Roland"){win_quote = "All of these words and feelings, you have strong emotions that you let slip out in combat."};
+    if(character_name == "Saber"){win_quote = "I heard you were a super heroic strong character, but you seem otherwise pretty normal."};
+    if(character_name == "Skibidi Toilet"){win_quote = "I'm not sure what you are, and I don't think I ever want to."};
+    if(character_name == "Smol Nozomi"){win_quote = "Your singing is lovely! But I'm not sure if you should be doing it during a fight."};
+    if(character_name == "Squiggly"){win_quote = "What foul spell has awakened you from your eternal slumber? The dead shouldn't be forced to fight any futher."};
+    if(character_name == "Terra"){win_quote = "Your magic use is quite impressive, but also wildy destructive, much like my own..."};
+    if(character_name == "Yuuko Aioi"){win_quote = "One of my friends told me that if I bite your hand, you can summon a world destroying beam."};
     
     // Other characters
     if(character_name == "Lilac"){win_quote = "I find some kinship in another half water dragon. Together we can fight evil!";} //works

@@ -86,6 +86,8 @@ touched_wisp = false;
 
 parried = false;
 
+curse_enhanced_outline = false;
+
 hurtbox_spr = sprite_get("mimikyu_stand_hurtbox");
 crouchbox_spr = sprite_get("mimikyu_crouch_hurtbox");
 air_hurtbox_spr = -1;
@@ -99,7 +101,7 @@ dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
 // Effective Weight
-knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 gravity_speed = .42;
 hitstun_grav = .45;
 air_friction = .04;
@@ -124,7 +126,7 @@ wave_land_time = 8;
 wave_friction = .04; //grounded deceleration when wavelanding
 
 // Aerial
-air_max_speed = 4.2; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4.1; //the maximum hsp you can accelerate to when in a normal aerial state
 max_djumps = 1;
 jump_start_time = 5;
 jump_speed = 10.5;

@@ -15,7 +15,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
@@ -53,7 +53,8 @@ set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 1.1);
-set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("alt_axe_strong1"));
+//set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_DATTACK, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 1);
@@ -72,7 +73,8 @@ set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 1.1);
-set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("alt_axe_strong1"));
+//set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_DATTACK, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_GROUP, 1);
@@ -91,4 +93,5 @@ set_hitbox_value(AT_DATTACK, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DATTACK, 3, HG_HITPAUSE_SCALING, 1.1);
-set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, sound_get("alt_axe_strong1"));
+//set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

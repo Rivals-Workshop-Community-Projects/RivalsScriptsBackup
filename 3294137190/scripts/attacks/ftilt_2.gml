@@ -99,3 +99,4 @@ set_hitbox_value(AT_FTILT_2, 3, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_FTILT_2, 3, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT_2, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FTILT_2, 3, HG_EXTRA_CAMERA_SHAKE, 2);
+set_hitbox_value(AT_FTILT_2, 3, HG_HITSTUN_MULTIPLIER, 0.8);

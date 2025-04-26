@@ -119,7 +119,7 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, true);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]); //this is a custom hitbox grid function by supersonic that changes the color of the hitboxes
@@ -139,7 +139,7 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]); //this is a custom hitbox grid function by supersonic that changes the color of the hitboxes
 set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, true);
@@ -180,7 +180,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]); //this is a custom hitbox grid function by supersonic that changes the color of the hitboxes
 

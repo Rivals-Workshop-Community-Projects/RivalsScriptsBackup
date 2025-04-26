@@ -116,6 +116,8 @@ grov_emera_land = false;
 grov_gen3 = false;
 grov_hasruneO = false; // Added to prevent draw_hud from crashing when f5ing with runes on.
 
+// set_hit_particle_sprite(1, PART_MAY_LEAF);
+
 //workshop support
 plushForAmber = sprite_get("plushForAmber");
 battle_text = "* Time stands still.";
@@ -135,19 +137,23 @@ pkmn_stadium_back_img = sprite_get("gen1_grovyle_back");
 link_spear_drop = 6;
 copy_ability_id = 48; //Leaf
 kf_custom_icon = sprite_get("kf_ability_icon");
-mamizou_transform_spr = get_player_color(player) == 0 ? sprite_get("mamizou_transform_default"):sprite_get("mamizou_transform");
+mamizou_transform_spr = sprite_get("mamizou_transform");
 Hikaru_Title = "Time Gear Theif";
 pot_compat_variable = sprite_get("po_gumbo_dish");
 pot_compat_text = "Four-Leaf Cookie";
 wiimote_compat_sprite = sprite_get("wiimote");
-buddy_screenko_sprite = get_player_color(player) == 0 ? sprite_get("screen_ko_alt1"):sprite_get("screen_ko");
+buddy_screenko_sprite = sprite_get("screen_ko");
 greenwood_cheer = 2;
 scoop_personalized_flavour_name = "Icicle Forest Berry";
 scoop_personalized_flavour_sprite = sprite_get("scoop_icecream");
+knight_compat_dream =
+["My spirit will live on!",
+"If only they remembered...",
+"...Will I ever see them again?..."]
 
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-amber_thisHugSprite = get_player_color(player) == 0 ? sprite_get("grovyle_cheer_alt0"):sprite_get("grovyle_cheer");
+amber_thisHugSprite = sprite_get("grovyle_cheer");
 amber_herHugSprite = sprite_get("amber_cheer");
 amber_startHug = false; //This variable is set true from Amber's scripts
 amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite

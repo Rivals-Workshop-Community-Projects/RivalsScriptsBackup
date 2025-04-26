@@ -43,7 +43,7 @@ if (state == 0){
 
 // // // // STATE 1 - IDLE
 if (state == 1){
-	state_end = 30;
+	state_end = 23;
     image_index = 3 + (door_kind*4);
 	knock_image_index = -1;
 	

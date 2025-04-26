@@ -17,14 +17,6 @@ if  get_player_color(player) == 11 ||  get_player_color(player) == 12 {
 	set_victory_theme(sound_get("TF2Victory"));
 }
 
-if doc_ditto == 0 {
-	if variable_instance_exists(oPlayer, "pilleffect"){
-		doc_ditto= 1;
-	} else {
-		doc_ditto=-1;
-	}
-}
-
 //---------------------------------------------------REFLECT STUFF-----------------------
 with (asset_get("pHitBox")){					//From the perspective of the hitbox
 	if was_parried{

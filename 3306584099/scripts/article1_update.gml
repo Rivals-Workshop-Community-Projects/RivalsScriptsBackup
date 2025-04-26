@@ -203,6 +203,14 @@ switch (attack) {
         force_depth = 1;
     break;
     
+    case AT_DATTACK:
+    	if (!player_id.runeA) {
+	        if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_USTRONG) {
+	            destroyed = true;
+	        }
+    	}
+    break;
+    
     case AT_NAIR:
         destroy_on_hit = window != 6;
         force_depth = 1;

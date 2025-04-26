@@ -111,6 +111,7 @@ sprite_change_offset("uspecial_undeploy", 80, 110);
 sprite_change_offset("dspecial", 40, 55);
 sprite_change_offset("dspecial_hurt", 80, 110);
 sprite_change_offset("dspecial_air", 40, 55);
+sprite_change_offset("dspecial_blast", 40, 55);
 
 sprite_change_offset("dspecial_aura_back", 40, 55);
 sprite_change_offset("dspecial_aura_front", 40, 55);

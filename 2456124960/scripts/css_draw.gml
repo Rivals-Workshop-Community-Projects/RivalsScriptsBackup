@@ -4,11 +4,11 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.09";
-patch_day = "SEP";
-patch_month = "11";
+patch_ver = "2.10";
+patch_day = "OCT";
+patch_month = "15";
  
-var num_alts = 26;
+var num_alts = 27;
 var alt_cur = get_player_color(player);
  
  
@@ -41,6 +41,7 @@ alt_name[22] = "White Mage";
 alt_name[23] = "Riptide";
 alt_name[24] = "ricE gaming";
 alt_name[25] = "Sunset";
+alt_name[26] = "Vortex";
  
  
  

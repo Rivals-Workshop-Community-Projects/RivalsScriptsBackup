@@ -9,6 +9,8 @@ if ("crystal" in self) {
     //draw_debug_text(x, y - 220, (string(crystal.parryTarget)));
 }
 
+//draw_debug_text(x, y + 40, string(usesAltHud));
+
 shader_start();
 if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL) {
 	switch (window) {

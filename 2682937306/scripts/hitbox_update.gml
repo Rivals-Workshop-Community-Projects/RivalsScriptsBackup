@@ -63,7 +63,6 @@ if (attack == AT_UAIR){
 }
 
 if (attack == AT_FAIR){
-	//if !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND){ instance_destroy(); }
 	ignores_walls = true;
 	through_platforms = 2;
 	var crad_dir = point_direction(player_id.x, player_id.y - player_id.char_height * 1, x, y);
@@ -93,8 +92,6 @@ if (attack == AT_FAIR){
 if (attack == AT_DAIR){
 	ignores_walls = true;
 	through_platforms = 2;
-	
-	
 	if (spr_dir == 1){ //Facing right
     	spr_dir = 1;
     if (hitbox_timer <= 15){

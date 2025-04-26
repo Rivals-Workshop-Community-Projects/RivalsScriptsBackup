@@ -6,7 +6,7 @@ set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 3);
 set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_spin_longer"));
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 25);
@@ -14,7 +14,7 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -91,7 +91,7 @@ set_hitbox_value(AT_UTILT, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 4, HG_WINDOW_CREATION_FRAME, 22);
 set_hitbox_value(AT_UTILT, 4, HG_SHAPE, 2);
-set_hitbox_value(AT_UTILT, 4, HG_LIFETIME, 8);
+set_hitbox_value(AT_UTILT, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_X, 2);
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_Y, -102);
 set_hitbox_value(AT_UTILT, 4, HG_WIDTH,72);
@@ -109,6 +109,3 @@ set_hitbox_value(AT_UTILT, 4, HG_ANGLE_FLIPPER, 4 );
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_UTILT, 4, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_UTILT, 4, HG_DRIFT_MULTIPLIER, 1);
-
-
-

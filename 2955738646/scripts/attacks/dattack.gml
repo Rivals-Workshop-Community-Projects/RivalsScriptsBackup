@@ -10,19 +10,23 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, -0.9);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1); //Knee out
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 8);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .5);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_WHIFFLAG, 10);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, sound_get("DashAttack_attack"));
@@ -36,8 +40,8 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 2);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 3);
 
 set_window_value(AT_DATTACK, 4, AG_WINDOW_TYPE, 1); //Empty window
 set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 2);
@@ -115,7 +119,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DATTACK, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 310);
+set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 254);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_X_OFFSET, 7);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_Y_OFFSET, 7);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("DashAttack_hit"));

@@ -3,6 +3,22 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+// supersonic reverse ftilt code
+if (attack == AT_JAB) {
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    } else {
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+    }
+}
+
 /*
 if (attack == AT_DATTACK) {
 	if (window == 1 && window_timer == 15) {
@@ -109,6 +125,13 @@ if (attack == AT_DTILT) {
 			//can_attack = true;
 			can_strong = true;
 			can_ustrong = true;
+			if (css_dspec == 1) {
+				move_cooldown[AT_DSPECIAL] = 2;
+				move_cooldown[AT_FSPECIAL] = 2;
+				move_cooldown[AT_USPECIAL] = 2;
+				//move_cooldown[AT_DSTRONG] = 2;
+				can_special = true;
+			}
 			//can_up_strong = true;
 		}
 	}

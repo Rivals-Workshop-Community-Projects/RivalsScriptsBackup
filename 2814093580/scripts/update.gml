@@ -60,6 +60,13 @@ if ustrongtimer == true
 
 
 
+print_debug(string(intro_type));
+
+
+
+
+
+
 //Makes sure the game know that the Jar belongs to Samson
 with (obj_article1)
         {
@@ -90,6 +97,7 @@ init_shader();
 }
 
 
+
 with (asset_get("oPlayer")) {
 	if (samson_honeyed && samson_honeyed_ID == other.id) {
 		if state = PS_HITSTUN
@@ -101,18 +109,29 @@ with (asset_get("oPlayer")) {
 		// replace -= with += if you don't want the status effect to wear off so it counts up repeatedly instead of counting down
 		samson_honeyed_timer -= 1;
 		honeyed_cooldown = 50;
+		print("honeyed!!");
 		set_state( PS_WRAPPED );
 		can_jump = false;
 		can_attack = false;
 		can_fast_fall = false;
 		can_strong = false;
 		can_special = false;
+		if "honeyed_sprite" in self
+				{
+					if "honeyed_amn_speed" in self
+						{
+							honeyed_frame += honeyed_amn_speed;
+							print(string(honeyed_frame));
+						}
+				}
 		can_shield = false;
 		x = samson_honeyed_inital_x;
 		y = samson_honeyed_inital_y;
         floating = -1;
 		if (samson_honeyed_timer == 0) samson_honeyed = false;
+					
 	}
+				
 };
 
 with (asset_get("oPlayer")) {
@@ -124,10 +143,49 @@ print(string(honeyed_cooldown));
 };
 
 
-if !free{
-move_cooldown[AT_BAIR] = 0;
-bair_cool = 0;
+if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
+	move_cooldown[AT_BAIR] = 0;
+	bair_cool = 0;
+	if state != PS_ATTACK_GROUND || attack != AT_USPECIAL{
+		upspecial_used = 0;
+	}
 }
+
+if upspecial_used{
+	move_cooldown[AT_USPECIAL] = 2;
+}
+
+with oPlayer{
+	if sugar_rush{
+		x += (hsp / 2);
+		y += (vsp / 2);
+		sugar_rush--;
+	}
+}
+
+if get_gameplay_time() <= 120 && secret_code_input = false{
+	secret_code = [up_pressed, down_pressed, up_pressed, down_pressed, attack_pressed, taunt_pressed];
+	if secret_code_pointer >= array_length(secret_code){
+		sound_play(asset_get("sfx_coin_collect"));
+		secret_code_input = true;
+	}
+	else if secret_code[secret_code_pointer] == true{
+		secret_code_pointer++;
+	}
+}
+
+with (asset_get("oPlayer"))
+if other.secret_code_input
+ {
+	if special_pressed and shield_pressed and taunt_pressed
+		
+		{
+			other.secret_code_input = false;
+			sound_play(asset_get("sfx_coin_collect"));
+		}
+	}
+
+
 
 
 
@@ -303,8 +361,8 @@ with (asset_get("oPlayer"))
         samson_honeyed = false;
 		honeyed_cooldown = 0;
     }
+
+	
 }
-
-
 
 

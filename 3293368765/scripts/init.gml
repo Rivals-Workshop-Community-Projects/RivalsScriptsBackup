@@ -52,7 +52,7 @@ hitstun_grav = .5;
 knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 15;
+prat_land_time = 18;
 wave_land_time = 8;
 wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .06; //grounded deceleration when wavelanding
@@ -118,12 +118,15 @@ nturn = false;
 can_uspec = false;
 uspec_uses_max = 2;
 uspec_uses = uspec_uses_max;
+uspec_extra_used = false;
 
 hit_timer = 0;      //Lockout Timer for Charge Applied to Hitstop
 will_charge = 0;    //Charge Amount. Builds over time.
 will_max = 1200;    //Charge Max. For Meter Gain.
 will_lvl = 0;       //Charge Level. 1 is half, 2 is full.
 will_cancel = 0;    //Window for Will Cancels
+will_gain = will_max/4;  // Will gained per hit
+has_gained_will = false; // Will given on hit for an attack
 
 spring_charge_level = 0;
 spring_cooldown = 120;

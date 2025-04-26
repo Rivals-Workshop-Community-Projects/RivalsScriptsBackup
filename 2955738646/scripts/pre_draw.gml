@@ -1,8 +1,25 @@
 shader_start();
 
-//draw_debug_text(x-20, y-190, "window: " + string(window));
-//draw_debug_text(x-20, y-210, "window timer: " + string(window_timer));
-//draw_debug_text(x-20, y-230, "state timer: " + string(state_timer));
+
+//draw_debug_text(x-40, y-190, "window: " + string(window));
+//draw_debug_text(x-40, y-170, "window timer: " + string(window_timer));
+//draw_debug_text(x-40, y-150, "random mecha: " + string(random_mecha));
+//draw_debug_text(x-40, y-130, "timestop amount: " + string(timestop_amount));
+//draw_debug_text(x-30, y-150, "state timer: " + string(state_timer));
+//draw_debug_text(x-30, y-130, "state name: " + get_state_name(state));
+/*
+draw_debug_text(x-90, y-220, "overall: " + string(OverallEmeralds));
+draw_debug_text(x-90, y-200, "Red: " + string(Red));
+draw_debug_text(x-90, y-180, "Pink: " + string(Pink));
+draw_debug_text(x-90, y-160, "Yellow: " + string(Yellow));
+draw_debug_text(x-90, y-140, "Green: " + string(Green));
+draw_debug_text(x-90, y-120, "Cyan: " + string(Cyan));
+draw_debug_text(x-90, y-100, "Blue: " + string(Blue));
+draw_debug_text(x-90, y-80, "Gray: " + string(Gray));
+*/
+
+//var taunt_check = move_cooldown[AT_TAUNT_2];
+//draw_debug_text(x-30, y-140, "Taunt 2: " + string(taunt_check));
 
 if (instance_exists(teleportback) && teleportback >= 0 && teleportback.teleporting_amount < 4){
 	draw_debug_text( teleportback.x-1, teleportback.y-110, string( teleportback.teleporting_amount ));
@@ -20,6 +37,10 @@ if (state == PS_DASH){
 if (state == PS_DASH_TURN){
 	draw_sprite_ext(sprite_get("booster_startup_light"), state_timer / 6, x+8 * spr_dir, y-44, 2, 2, 270 * spr_dir, c_white, 1);
 	draw_sprite_ext(sprite_get("booster_startup"), state_timer / 6, x+8 * spr_dir, y-44, 2, 2, 270 * spr_dir, booster_color, 1);
+}
+if (state == PS_DASH_STOP){
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.2, x-10 * spr_dir, y-50, 2 + (state_timer / 6), 2 - (state_timer / 6), 270 * spr_dir, c_white, .8);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.2, x-10 * spr_dir, y-50, 2 + (state_timer / 6), 2 - (state_timer / 6), 270 * spr_dir, booster_color, .8);
 }
 
 if !(state == PS_IDLE_AIR && state_timer < 3){
@@ -80,24 +101,24 @@ if (state == PS_ATTACK_AIR){
 	if (attack == AT_NSPECIAL && (window == 2 || window == 3 || window == 4) && free == true){
 	if (vsp < 0.1 || vsp > 0.1){
 	if (hsp >= 0.1){
-	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 270, c_white, 1);
-	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 270, booster_color, 1);
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 270, c_white, 1);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 270, booster_color, 1);
 		
 	}else if(hsp <= -1.0){
-	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 90, c_white, 1);
-	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 90, booster_color, 1);
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 90, c_white, 1);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 90, booster_color, 1);
 		
 	}else if(hsp > 0.1 && hsp < 0.1){
-	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 315, c_white, 1);
-	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 315, booster_color, 1);
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 315, c_white, 1);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 315, booster_color, 1);
 		
 	}else if(hsp < -10.0 && hsp > 10.0){
-	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 45, c_white, 1);
-	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 45, booster_color, 1);
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 45, c_white, 1);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 45, booster_color, 1);
 		
 	}else{
-	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 0, c_white, 1);
-	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+7 * spr_dir, y-40, 2, 2, 0, booster_color, 1);
+	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+1 * spr_dir, y-40, 2, 2, 0, booster_color, 1);
 			}
 		}
 	}
@@ -113,6 +134,36 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 		if (window == 1 && window_timer >= 4 && window_timer < 9){
 			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.6, x-8 * spr_dir, y-40, 1.5, 2, 100 * spr_dir, c_white, 1);
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.6, x-8 * spr_dir, y-40, 1.5, 2, 100 * spr_dir, booster_color, 1);
+		}
+	}
+	if (attack == AT_JAB){
+		if (window == 5){
+			if (window_timer < 12){
+			draw_sprite_ext(sprite_get("booster_startup_light"), window_timer / 10, x-18 * spr_dir, y-46, 2, 2, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("booster_startup"), window_timer / 10, x-18 * spr_dir, y-46, 2, 2, 0, booster_color, 1);
+			}
+			if (window_timer >= 12){
+			draw_sprite_ext(sprite_get("boosters_light"), window_timer / 10, x-12 * spr_dir, y-46, 2, 1, -105 * spr_dir, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), window_timer / 10, x-12 * spr_dir, y-46, 2, 1, -105 * spr_dir, booster_color, 1);
+			}
+		}
+		if (window == 6){
+			if (window_timer < 15){
+			//draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-6 * spr_dir, y-42, 1.5, 2 - (window_timer / 40), -90 * spr_dir, c_white, 1 - (window_timer / 90));
+			//draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x-6 * spr_dir, y-42, 1.5, 2 - (window_timer / 40), -90 * spr_dir, booster_color, 1 - (window_timer / 90));
+			}
+			if (window_timer >= 15){
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-6 * spr_dir, y-48, 2, 2 - (window_timer / 40), -90 * spr_dir, c_white, 1 - (window_timer / 90));
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x-6 * spr_dir, y-48, 2, 2 - (window_timer / 40), -90 * spr_dir, booster_color, 1 - (window_timer / 90));
+			}
+		}
+		if (window == 7 && state_timer <= 95){ //Jabbed early
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-6 * spr_dir, y-48, 1, 2 - (window_timer / 9), -90 * spr_dir, c_white, 1 - (window_timer / 9));
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x-6 * spr_dir, y-48, 1, 2 - (window_timer / 9), -90 * spr_dir, booster_color, 1 - (window_timer / 9));
+		}
+		if (window == 7 && state_timer > 95){ //Jabbed late
+			//draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-6 * spr_dir, y-46, 1.5, 2, -90 * spr_dir, c_white, 1);
+			//draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x-6 * spr_dir, y-46, 1.5, 2, -90 * spr_dir, booster_color, 1);
 		}
 	}
 	if (attack == AT_USPECIAL){
@@ -133,7 +184,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.6, x+1 * spr_dir, y-38, 1.5 - (window_timer / 19), 2.5, hsp * -5, booster_color, 1);
 		}
 	}
-	if (attack == AT_FSPECIAL){
+	if (attack == AT_FSPECIAL){ //Aerial
 		if (window == 1){
 			draw_sprite_ext(sprite_get("booster_startup_light"), get_gameplay_time()*.8, x-12 * spr_dir, y-46, 2, 2, 0, c_white, 0.8);
 			draw_sprite_ext(sprite_get("booster_startup"), get_gameplay_time()*.8, x-12 * spr_dir, y-46, 2, 2, 0, booster_color, 0.8);
@@ -147,10 +198,26 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.8, x-6 * spr_dir, y-46, 2 - (window_timer / 10), 2, -90 * spr_dir, booster_color, 1);
 		}
 	}
-	if (attack == AT_FSPECIAL_2){
-		if (state == PS_ATTACK_AIR || window == 3){
-		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x-3 * spr_dir, y-50, 3 - (state_timer / 36), 2, -hsp * 10, c_white, 1);
-		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x-3 * spr_dir, y-50, 3 - (state_timer / 36), 2, -hsp * 10, booster_color, 1);
+	if (attack == AT_FSPECIAL_2){ //Ground
+		if (window == 1){
+			draw_sprite_ext(sprite_get("booster_startup_light"), get_gameplay_time()*.4, x-12 * spr_dir, y-50, 2, 2, 0, c_white, 0.8);
+			draw_sprite_ext(sprite_get("booster_startup"), get_gameplay_time()*.4, x-12 * spr_dir, y-50, 2, 2, 0, booster_color, 0.8);
+		}
+		if (window == 2){
+			//draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.11, x-19 * spr_dir, y-49, 3 - (window_timer / 3), 2, -90 * spr_dir, c_white, 1);
+			//draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.11, x-19 * spr_dir, y-49, 3 - (window_timer / 3), 2, -90 * spr_dir, booster_color, 1);
+		}
+		if (window == 3){
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-16 * spr_dir, y-49, 2, 2, -90 * spr_dir, c_white, 0.9);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x-16 * spr_dir, y-49, 2, 2, -90 * spr_dir, booster_color, 0.9);
+		}
+		if (window == 4){
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.11, x-11 * spr_dir, y-49, 2 - (window_timer / 4), 2, -90 * spr_dir, c_white, 0.5);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.11, x-11 * spr_dir, y-49, 2 - (window_timer / 4), 2, -90 * spr_dir, booster_color, 0.5);
+		}
+		if (window == 5){
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.3, x-11 * spr_dir, y-52, 2 - (window_timer / 11), 2 - (window_timer / 19), -90 * spr_dir, c_white, 0.8);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.3, x-11 * spr_dir, y-52, 2 - (window_timer / 11), 2 - (window_timer / 19), -90 * spr_dir, booster_color, 0.8);
 		}
 	}
 	if (attack == AT_DSPECIAL){
@@ -196,36 +263,46 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-35, 2, 2, 0, c_white, 1);
 		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-35, 2, 2, 0, booster_color, 1);
 	}
-	if (attack == AT_FAIR && window == 2){
-		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-40, 2, 2, -25 * spr_dir, c_white, 1);
-		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-40, 2, 2, -25 * spr_dir, booster_color, 1);
+	if (attack == AT_FAIR){
+		if (window == 1){
+		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 9, c_white, 1);
+		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 9, booster_color, 1);
+		}
+		if (window == 2){
+		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 6, c_white, 1);
+		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 6, booster_color, 1);
+		}
+		if (window == 3){
+		draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 3, c_white, 1);
+		draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-40, 2, 2, -hsp * 3, booster_color, 1);
+		}
 	}
 	if (attack == AT_BAIR){
 		if (window == 1){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x-10 * spr_dir, y-52, 2, 2, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x-10 * spr_dir, y-52, 2, 2, 0, booster_color, 1);
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x-10 * spr_dir, y-52, 2, 2, -hsp * 3, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x-10 * spr_dir, y-52, 2, 2, -hsp * 3, booster_color, 1);
 		}
 		if (window == 2){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-50, 2, 2, 25 * spr_dir, c_white, 1);
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-50, 2, 2, 25 * spr_dir, booster_color, 1);
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-52, 2, 2, -hsp * 3, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-52, 2, 2, -hsp * 3, booster_color, 1);
 		}
 		if (window == 3){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-40, 2, 2, 5 * spr_dir, c_white, 1);
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-40, 2, 2, 5 * spr_dir, booster_color, 1); 
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-52, 2, 2, -hsp * 6, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-52, 2, 2, -hsp * 6, booster_color, 1); 
 		}
 	}
 	if (attack == AT_DAIR){
 		if (window == 1){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-30, 2, 2, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-30, 2, 2, 0, booster_color, 1);
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x, y-36, 2, 2, -hsp * 9, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x, y-36, 2, 2, -hsp * 9, booster_color, 1);
 		}
 		if (window == 2){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+4 * spr_dir, y-25, 2, 2, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+4 * spr_dir, y-25, 2, 2, 0, booster_color, 1);
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+4 * spr_dir, y-25, 2, 2, -hsp * 6, c_white, 1);
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+4 * spr_dir, y-25, 2, 2, -hsp * 6, booster_color, 1);
 		}
 		if (window == 3){
-			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+3 * spr_dir, y-25, 2, 2, 0, c_white, 1); 
-			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+3 * spr_dir, y-25, 2, 2, 0, booster_color, 1);
+			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.5, x+3 * spr_dir, y-25, 2, 2, -hsp * 3, c_white, 1); 
+			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.5, x+3 * spr_dir, y-25, 2, 2, -hsp * 3, booster_color, 1);
 		}
 	}
 	if (attack == AT_USTRONG){
@@ -262,6 +339,10 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 	}
 	if (attack == AT_DATTACK){
 		if (state == PS_ATTACK_AIR){
+			if (window == 1 || window == 2 || window == 3){
+			draw_sprite_ext(sprite_get("booster_startup_light"), get_gameplay_time()*.1, x-10 * spr_dir, y-45, 2, 2, -85 * spr_dir, c_white, 1);
+			draw_sprite_ext(sprite_get("booster_startup"), get_gameplay_time()*.1, x-10 * spr_dir, y-45, 2, 2, -85 * spr_dir, booster_color, 1);
+			}
 			if (window == 5){
 			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x+2 * spr_dir, y-24, 2, 2, -hsp * 9, c_white, 1);
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.4, x+2 * spr_dir, y-24, 2, 2, -hsp * 9, booster_color, 1);
@@ -307,21 +388,23 @@ if(attack == AT_EXTRA_2 && state == PS_ATTACK_AIR){
 }
 
 if(attack == AT_TAUNT_2 && state == PS_ATTACK_AIR){
-	if(window == 2){
-		draw_sprite_ext(sprite_get("electric_effect"), get_gameplay_time()*.5, x - 70, y - 90, 2, 2, 0, c_white, 1);
+	if (window == 2){
+		draw_sprite_ext(sprite_get("electric_effect"), get_gameplay_time()*.5, x - 45, y - 20, 2, 2, 0, c_white, 1);
 	}
 }
 
 if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 //MOTION BLUR CODE
-	if (attack == AT_EXTRA_1 || attack == AT_UTILT && window == 2 && flyforward == true ||timestop == true){
+	if (attack == AT_EXTRA_1
+	|| attack == AT_UTILT && window == 2 && flyforward == true
+	|| timestop == true){
 	for(var m = 0; m < array_length_1d(blur); m++) {
 		var _img = blur[m];
 		var _percent = 1 - (m / array_length_1d(blur));
 		draw_sprite_ext(_img[0], _img[1], _img[2], _img[3], _img[4], _img[5], _img[6], _img[7], _img[8] * _percent);
 		}
 	}
-if (attack == AT_FSPECIAL_2 && !(window == 1 || window == 3)){
+if (attack == AT_FSPECIAL_2 && !(window == 1 || window == 3 || window == 7) && SuperMecha == true){
 	for(var m = 0; m < array_length_1d(blur); m++) {
 		var _img = blur[m];
 		var _percent = 1 - (m / array_length_1d(blur));
@@ -339,8 +422,10 @@ if (timestop == true){
 }
 
 if (SuperMecha == true){
-//set_character_color_slot(0, 255, 205, 90, 1);
+set_character_color_slot(0, 255, 205, 90, 1);
 }
+
+
 /*
 if (TauntSuper > 0){
 set_character_color_slot(0, 255, 190, 70, 1);

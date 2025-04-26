@@ -29,7 +29,7 @@ sprite_change_offset("tech",            28, 49);
 
 //hurt
 sprite_change_offset("hurt",            27, 49); //default hurt names: bighurt, hurt, downhurt, bouncehurt, uphurt, hurtground
-sprite_change_offset("hurt_tumble",     27, 49); //normally called "spinhurt"
+sprite_change_offset("hurt_tumble",     27, 45); //normally called "spinhurt"
 
 //normals
 sprite_change_offset("jab",                 34, 49, true); //this "true" alligns the hurtboxes when using small_sprites

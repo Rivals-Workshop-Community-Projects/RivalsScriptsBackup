@@ -66,6 +66,7 @@ switch (state)
 				icebreak.hsp = random_func_2(3+5*i, 6, 0)-3+lengthdir_x(breakForce, breakAngle)*1.2;
 				icebreak.vsp = random_func_2(4+5*i, 6, 0)-3+lengthdir_y(breakForce, breakAngle)*1.2;
 			}
+			player_id.dspecSpawnBan=240;
 			sound_play(asset_get("sfx_icehit_medium2"));
 			instance_destroy();
 			exit;

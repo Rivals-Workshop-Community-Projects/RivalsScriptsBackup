@@ -84,6 +84,8 @@ tempest_cur_hitbox = 0;
 hitbox_hit = noone;
 
 field_owner = player_id;
+
+death_instance = false;
 /* README - Basic Article Usage
 
 

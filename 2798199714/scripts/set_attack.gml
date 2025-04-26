@@ -1,12 +1,6 @@
-/*if (strong_down || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed){
-    if (attack == AT_FAIR || attack == AT_BAIR){
-	    attack = AT_FSTRONG;
-	}else if (attack == AT_UAIR){
-	    attack = AT_USTRONG;
-	}else if (attack == AT_DAIR){
-	    attack = AT_DSTRONG;
-	}
-}*/
+
+//reset bonus dmg stuff
+if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
 
 if ((attack == AT_FAIR || attack == AT_BAIR) && (strong_down || right_strong_pressed || left_strong_pressed)){
     attack = AT_FSTRONG;

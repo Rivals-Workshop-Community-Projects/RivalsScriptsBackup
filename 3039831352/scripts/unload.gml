@@ -21,6 +21,8 @@ pers_fx.player = 0;
 pers_fx.real_player = player;
 pers_fx.persistent = true;
 pers_fx.is_sonic_persist = true;
+pers_fx.is_boost = boost_mode;
+pers_fx.is_super = uses_super_sprites;
 pers_fx.is_hyper = super_col_lerp_time >= super_col_lerp_time_max*2 && (alt_cur == 0 || alt_cur == 26);
 pers_fx.secret_active = secret_active;
 for (var i = 0; i < 8; i ++)

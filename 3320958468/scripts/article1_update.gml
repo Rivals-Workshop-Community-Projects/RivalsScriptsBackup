@@ -5,9 +5,10 @@
 //	The States
 
 //	0: 	Spawn
-//	1:	Grabby
-//	2:	Return
-//	3:	Ded
+//	1:	Grabby Enemy
+//	2:	Grabby Terrain or P.Guard
+//	3:	Return
+//	4:	Ded
 
 //	Make time progress
 state_timer++;
@@ -23,8 +24,8 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")))
 }
 
 //	Track the fist's position
-player_id.grapple_fist_pos_x = obj_article1.x;
-player_id.grapple_fist_pos_y = obj_article1.y;
+player_id.grapple_fist_pos_x = x;
+player_id.grapple_fist_pos_y = y;
 
 with (player_id) 
 {
@@ -79,7 +80,7 @@ if (state == 0)
                     other.hsp 				= 0;
                     other.vsp 				= 0;
 					
-					other.state 			= 1;
+					other.state 			= 2;
 					other.state_timer 		= 0;
 					
 					spawn_hit_fx(obj_article1.x - 0 * spr_dir, obj_article1.y + 3, 302);	
@@ -100,7 +101,7 @@ if (state == 0)
                     other.hsp 				= 0;
                     other.vsp 				= 0;
 					
-					other.state 			= 1;
+					other.state 			= 2;
 					other.state_timer 		= 0;
 					
 					spawn_hit_fx(player_id.plunger_guard.x - 5 * player_id.plunger_guard.spr_dir, player_id.plunger_guard.y + 5, 302);	
@@ -130,7 +131,7 @@ if (state == 0)
 
 	if (state_timer == 18)
     {
-		setState(2);
+		setState(3);
 	}
 }
 
@@ -159,12 +160,28 @@ if (state == 1)
 	
 	if (state_timer == 18)
     {
-        setState(2);
+        setState(3);
     }
 }
 
-//	State 2: Return to Sender
+//	State 2: Grabby the floor, P.Guard or whatever
 if (state == 2)
+{
+	sprite_index 	= sprite_get("fspec_grapple_thrown");
+	mask_index 		= sprite_get("fspec_grapple_mask");
+	image_index 	= 1;
+	
+	hsp 			= 0;
+	vsp 			= 0;
+	
+	if (state_timer == 18)
+    {
+        setState(3);
+    }
+}
+
+//	State 3: Return to Sender
+if (state == 3)
 {
 	sprite_index 	= sprite_get("fspec_grapple_thrown");
 	mask_index 		= sprite_get("fspec_grapple_mask");
@@ -180,14 +197,14 @@ if (state == 2)
 		{				
 			//other.mask_index 		= sprite_get("fspec_grapple_mask");
 			
-			other.state 			= 3;
+			other.state 			= 4;
 			other.state_timer 		= 0;
 		}
 	}		
 }
 
-//	State 3: Deceased, Death, Dead... 
-if (state == 3)
+//	State 4: Deceased, Death, Dead... 
+if (state == 4)
 {
 	sprite_index 	= asset_get("empty_sprite");
 	mask_index 		= asset_get("empty_sprite");

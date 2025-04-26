@@ -81,7 +81,13 @@ var palette_names = [
   "Gusta",
   "It's a bell",
   "Equaliza",
+  "Doom",
   "Modern",
+  "V1",
+  "Mr.Wick",
+  "Lady",
+  "Girl Friend",
+  "Sol",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

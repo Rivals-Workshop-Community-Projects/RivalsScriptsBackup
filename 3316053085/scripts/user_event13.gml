@@ -19,15 +19,15 @@ switch (my_hitboxID.attack) //attack specific
     case AT_UAIR:
         if (my_hitboxID.hbox_num <= 3)
         {
-            if (vsp > 0) old_vsp = -1.5;
-            if (abs(hsp) > 3) old_hsp *= 0.75;
+            //if (vsp > 0) old_vsp = -1.5;
+            //if (abs(hsp) > 3) old_hsp *= 0.75;
 
             sound_play(sound_get("sfx_lighthit1"));
         }
         else sound_play(sound_get("sfx_lighthit2"));
         break;
     case AT_DAIR:
-        if (my_hitboxID.hbox_num <= 3 && !fast_falling)
+        if (my_hitboxID.hbox_num <= 3) // && !fast_falling
         {
             hit_player_obj.old_vsp = -abs(hit_player_obj.old_vsp);
             if (old_vsp > 1) old_vsp = -0.5;
@@ -51,8 +51,12 @@ switch (my_hitboxID.attack) //attack specific
     case AT_USTRONG:
         if (my_hitboxID.hbox_num <= 2) sound_play(sound_get("sfx_lighthit1"));
         else sound_play(sound_get("sfx_lighthit2"));
+
+        //tweak old_hsp based on venus' old_hsp and their positions from each other for more consistent chains
+        if (do_ustrong_ex && my_hitboxID.hbox_num <= 2) hit_player_obj.old_hsp = (hit_player_obj.old_hsp/old_hsp - abs(hit_player_obj.x-x)/50) * spr_dir;
         break;
     case AT_DSTRONG:
+        if (my_hitboxID.hbox_num == 1) sound_play(sound_get("sfx_lighthit2"));
         if (dstrong_ex_uses <= dstrong_ex_charges)
         {
             if (my_hitboxID.hbox_num == 1)
@@ -64,20 +68,18 @@ switch (my_hitboxID.attack) //attack specific
                 set_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, 1, HG_KNOCKBACK_SCALING));
             }
             if (my_hitboxID.hbox_num == 2) hit_player_obj.x = my_hitboxID.x;
-            hit_player_obj.x += my_hitboxID.spr_dir * 16; //push enemies into the hitboxes
-
-            if (dstrong_ex_uses < dstrong_ex_charges) hit_player_obj.should_make_shockwave = false;
-            else
+            if (hit_player_obj.object_index != oPlayer || hit_player_obj.state_cat == SC_HITSTUN)
             {
-                sound_play(asset_get("sfx_ori_energyhit_medium"), false, 0, 0.4, 1.2);
+                hit_player_obj.x += sign(hit_player_obj.old_hsp) * 16; //push enemies into the hitboxes
             }
+            
+            if (dstrong_ex_uses < dstrong_ex_charges) hit_player_obj.should_make_shockwave = false;
+            else sound_play(asset_get("sfx_ori_energyhit_medium"), false, 0, 0.4, 1.2);
         }
-
-        if (my_hitboxID.hbox_num == 1) sound_play(sound_get("sfx_lighthit2"));
-        else sound_play(sound_get("sfx_lighthit1"));
         break;
     case AT_USPECIAL:
         sound_play(sound_get("sfx_lighthit1"));
+        set_window_value(attack, window_last, AG_WINDOW_TYPE, 0);
         break;
     case 49: //overdrive
         if (my_hitboxID.hbox_num == 1)

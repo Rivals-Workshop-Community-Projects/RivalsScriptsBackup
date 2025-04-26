@@ -14,3 +14,11 @@ if (free){
 		if (attack==AT_DAIR){ attack=AT_DSTRONG };
 	}
 }
+
+if (attack==AT_DATTACK){
+	reset_num_hitboxes(AT_DATTACK);
+}
+
+if (str_stall > str_stall_max && (attack==AT_FSTRONG||attack==AT_DSTRONG||attack==AT_USTRONG)){
+	str_stall = str_stall_max;
+}

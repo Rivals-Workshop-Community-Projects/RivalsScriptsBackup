@@ -141,8 +141,15 @@ if(clone_spawn_sprite == 0){
 	// Set Sprites to Variables
 	clone_spawn_sprite = sprite_get_skinned("clone_spawn");
 	clone_idle_sprite = sprite_get_skinned("idle");
+	clone_crouch_sprite = sprite_get_skinned("crouch");
+	clone_crouch_idle_sprite = sprite_get_skinned("crouch_idle");
 	//clone_idle_flourish_sprite = sprite_get_skinned("idle_2");
-	clone_walk_sprite = sprite_get_skinned("dash");
+	clone_walk_sprite = sprite_get_skinned("walk");
+	clone_walk_turn_sprite = sprite_get_skinned("walkturn");
+	clone_dash_sprite = sprite_get_skinned("dash");
+	clone_dash_start_sprite = sprite_get_skinned("dashstart");
+	clone_dash_stop_sprite = sprite_get_skinned("dashstop");
+	clone_dash_turn_sprite = sprite_get_skinned("dashturn");
 	clone_jumpstart_sprite = sprite_get_skinned("jumpstart");
 	clone_jump_sprite = sprite_get_skinned("jump");
 	clone_doublejump_sprite = sprite_get_skinned("doublejump");

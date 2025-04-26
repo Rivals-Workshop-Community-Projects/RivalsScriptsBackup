@@ -85,8 +85,8 @@ switch (playerAlt)
 			case "AURO<3":
 				set_character_color_shading(7, 1.5);
 				break;
-			case "MAKO":
-			case "4MAKO":
+			case "CHISAN":
+			case "UTA":
 				set_character_color_shading(7, 1.5);
 				// Endless Now
 				if ("isFurry" in self?isFurry:get_synced_var(player))

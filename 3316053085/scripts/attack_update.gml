@@ -1,9 +1,27 @@
 //attack_update.gml
 
 custom_attack_grid();
+if (window_last != get_attack_value(attack, AG_NUM_WINDOWS)) window_last = get_attack_value(attack, AG_NUM_WINDOWS);
 
 //B-reverse - it allows the character to turn in while using specials
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
+
+//allow reverse ftilt code (by supersonic)
+if (attack == AT_JAB)
+{
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
+	{
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, window_end); //NOTE: window_end is a tester variable!
+        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end)
+		{
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    }
+	else reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+}
 
 switch (attack)
 {
@@ -20,11 +38,16 @@ switch (attack)
             move_cooldown[AT_DSTRONG] = hitstop_full + 1;
         }
         */
+        
+        if (window == 9 && window_timer == window_end && !is_attack_pressed(DIR_ANY) && was_parried) set_state(PS_PRATLAND);
         break;
+    case AT_DAIR:
+    	if (has_hit && !was_parried && window < 5 && !down_down && !down_stick_pressed) can_attack = true;
+    	break;
 	case AT_DATTACK:
         if (window >= 3 && !free)
         {
-            landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+            landing_lag_time = has_hit ? get_attack_value(attack, AG_LANDING_LAG) : 14;
             set_state(was_parried ? PS_PRATLAND : PS_LANDING_LAG);
         }
 
@@ -64,7 +87,6 @@ switch (attack)
                 {
                     for (var i = 1; i <= 2; i++)
                     {
-                        reset_hitbox_value(attack, i, HG_ANGLE_FLIPPER); //0
                         reset_hitbox_value(attack, i, HG_DAMAGE); //8
                         reset_hitbox_value(attack, i, HG_BASE_KNOCKBACK); //8
                         reset_hitbox_value(attack, i, HG_KNOCKBACK_SCALING); //1
@@ -79,9 +101,8 @@ switch (attack)
                 {
                     for (var i = 1; i <= 2; i++)
                     {
-                        set_hitbox_value(attack, i, HG_ANGLE_FLIPPER, 7);
                         set_hitbox_value(attack, i, HG_DAMAGE, 3);
-                        set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, 8);
+                        set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, 10); //8
                         set_hitbox_value(attack, i, HG_KNOCKBACK_SCALING, 0);
                         set_hitbox_value(attack, i, HG_BASE_HITPAUSE, 6);
                         set_hitbox_value(attack, i, HG_HITPAUSE_SCALING, 0.2);
@@ -118,7 +139,7 @@ switch (attack)
         }
         can_fast_fall = !(do_ustrong_ex && window < 5);
 
-        if (!do_ustrong_ex && window == 5 || window == 7) hsp = clamp(hsp, -2.5, 2.5);
+        if (!do_ustrong_ex && (window == 5 || window == 7)) hsp = clamp(hsp, -2.5, 2.5);
         break;
     case AT_FSTRONG:
         switch (window)
@@ -178,16 +199,18 @@ switch (attack)
             hb.spr_dir = 1;
             if (play_stronger_sound)
             {
-                hb.sound_effect = asset_get("sfx_waterhit_heavy2");
+                hb.sound_effect = sound_get("sfx_lighthit2");
                 hb.hit_effect = fx_light_hit2;
             }
             var hb = create_hitbox(attack, 2, x - 64 - dstrong_ex_uses * 32, y - 40);
             hb.spr_dir = -1;
             if (play_stronger_sound)
             {
-                hb.sound_effect = asset_get("sfx_waterhit_heavy2");
+                hb.sound_effect = sound_get("sfx_lighthit2");
                 hb.hit_effect = fx_light_hit2;
             }
+            sound_play(asset_get(play_stronger_sound ? "sfx_waterhit_heavy2" : "sfx_waterhit_medium"));
+            sound_play(sound_get(play_stronger_sound ? "sfx_proj_exist3" : "sfx_proj_exist2"));
 
             dstrong_ex_uses ++;
         }
@@ -208,7 +231,7 @@ switch (attack)
                 nspec_aiming = true;
                 spawned_rune = false;
                 next_rune = array_find_index(artc_rune, noone);
-                spawned_rune = false;
+                is_weaker_rune = false;
                 break;
             case 2: case 3: //aiming
                 hsp = clamp(hsp, -2, 2);
@@ -221,8 +244,16 @@ switch (attack)
                     if (!joy_pad_idle) nspec_dir = joy_dir;
                     if (!special_down)
                     {
-                        window = 3;
-                        window_timer = 0;
+                        set_window(3);
+                        nspec_aiming = false;
+                    }
+                    //weak version
+                    if (attack_pressed ||
+                        up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed ||
+                        up_stick_pressed || down_stick_pressed || left_stick_pressed || right_stick_pressed)
+                    {
+                        is_weaker_rune = true;
+                        set_window(3);
                         nspec_aiming = false;
                     }
                 }
@@ -253,6 +284,7 @@ switch (attack)
                     image_xscale = (rune_angle > 90 && rune_angle <= 270) ? -2 : 2;
                     image_yscale = image_xscale;
                     image_index = ("s_alt" in other && other.s_alt) ? 0 : other.alt_cur;
+                    reflect_mult = other.min_reflect_pow;
                 }
 
                 if (shield_pressed)
@@ -272,16 +304,22 @@ switch (attack)
                     artc_rune[next_rune].state = "mirror";
                     artc_rune[next_rune].state_timer = 0;
 
-                    artc_rune[next_rune].hp = 3 + can_repair_runes //uses charges as durability for mirror rune //"3" used to be [ floor(charge_cur/100) + 1 ]
-                    artc_rune[next_rune].hp_max = artc_rune[next_rune].hp;
-                    artc_rune[next_rune].reflect_mult = lerp(min_reflect_pow, max_reflect_pow, double_meter_rune ? charge_cur/400 : charge_cur/300);
-                    artc_rune[next_rune].charge_lvl = floor(charge_cur/100);
-                    if (special_down)
+                    if (!is_weaker_rune)
                     {
-                        charge_cur -= 100;
-                        if (charge_cur <= 0) charge_cur = 0;
+                        artc_rune[next_rune].reflect_mult = lerp(min_reflect_pow, max_reflect_pow, double_meter_rune ? charge_cur/400 : charge_cur/300);
+                        artc_rune[next_rune].reflect_hb_mult = lerp(min_hb_reflect_pow, max_hb_reflect_pow, double_meter_rune ? charge_cur/400 : charge_cur/300);
+                        artc_rune[next_rune].charge_lvl = floor(charge_cur/100);
+                        charge_cur = frac(charge_cur/100)*100; //it leaves fractions
                     }
-                    else charge_cur = frac(charge_cur/100)*100; //it leaves fractions
+                    else
+                    {
+                        artc_rune[next_rune].reflect_mult = min_reflect_pow;
+                        artc_rune[next_rune].reflect_hb_mult = min_hb_reflect_pow;
+                        artc_rune[next_rune].charge_lvl = 0;
+                    }
+
+                    artc_rune[next_rune].hp = artc_rune[next_rune].charge_lvl + 3 + can_repair_runes;
+                    artc_rune[next_rune].hp_max = artc_rune[next_rune].hp;
                 }
                 break;
         }
@@ -374,6 +412,7 @@ switch (attack)
             can_attack = true;
             can_special = true;
             can_strong = true;
+            can_shield = true;
             if (is_attack_pressed(DIR_ANY) || is_special_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY))
             {
                 aftimg_active = false;
@@ -396,6 +435,8 @@ switch (attack)
     case AT_USPECIAL: //directional dash
 		can_fast_fall = false; //prevents player from being able to fastfall
         can_wall_jump = true;
+        can_uspec = false;
+        if (window == window_last && has_hit_player) iasa_script();
 
 		//we need this so the player will be able to fast fall after using the move (unless they got parried)
 		if (window == window_last && window_timer == window_end && !was_parried) can_fast_fall = true;
@@ -430,7 +471,14 @@ switch (attack)
                     hsp = lengthdir_x(uspec_speed, uspec_angle) * last_reflect_mult;
                     vsp = lengthdir_y(uspec_speed, uspec_angle) * last_reflect_mult;
 
-                    if (vsp > 0 && !free || window_timer == window_end-1 && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1)
+                    if (prev_x == x && prev_y == y) same_pos_time ++;
+                    else same_pos_time = 0;
+                    prev_x = x;
+                    prev_y = y;
+
+                    if (vsp > 0 && !free ||
+                        window_timer == window_end-1 && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1 ||
+                        same_pos_time >= window_end + 3)
                     {
                         vsp = -5;
                         hsp = sign(hsp)*2;
@@ -442,6 +490,8 @@ switch (attack)
                 aftimg_active = false;
                 break;
 		}
+        if (window < 4 && state_timer % 8 == 0) last_sound_to_stop = sound_play(sound_get("sfx_proj_exist1"), false, 0, 1);
+        if (window == 4 && state_timer % 8 == 0) last_sound_to_stop = sound_play(sound_get("sfx_proj_exist2"), false, 0, 1);
 		break;
     case AT_DSPECIAL: //charge
         can_fast_fall = false;
@@ -461,6 +511,9 @@ switch (attack)
                 if (!healing_dspec) //normal charge
                 {
                     charge_cur += dspec_charge_rate;
+                    //this is needed for rune C so it doesn't proc the code that's meant to limit the charge normally
+                    if (has_rune("C")) dspec_charge_milestone = min(floor(charge_cur/100)+1, charge_max/100);
+                    
                     if (!special_down || (!has_rune("C") && (charge_cur/100) >= dspec_charge_milestone || charge_cur >= charge_max))
                     {
                         if (charge_cur > dspec_charge_milestone*100) charge_cur = dspec_charge_milestone*100;
@@ -752,6 +805,7 @@ switch (attack)
                 get_window_value(attack, 12, AG_WINDOW_VSPEED) * (last_reflect_mult * 0.8 + (1 - min_reflect_pow))
             );
         }
+        if (on_rune != noone) on_rune = noone;
 
         set_window(12);
         fspec_sjump_coyote = 0;

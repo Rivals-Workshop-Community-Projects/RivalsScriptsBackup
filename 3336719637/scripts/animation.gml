@@ -92,13 +92,25 @@ if (get_player_color(player) == 16){
 	set_victory_bg(sprite_get("winscreenrisk"));
 }
 
+if (get_player_color(player) == 18){
+	set_victory_bg(sprite_get("winscreencyber"));
+	set_victory_theme(sound_get("music_win_cyber"));
+}
+
 if (get_player_color(player) == 7){
 	set_victory_bg(sprite_get("winscreenEA"));
 }
 
-if (get_player_color(player) == 14){
+if (get_player_color(player) == 14) || get_player_name(player) == "TANIA"{
 	set_victory_theme(sound_get("music_win_yapyap"));
 	set_victory_bg(sprite_get("winscreenYap"));
 }
+
+//Jester Mode Test
+//	set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, sound_get("JMbounce"));
+//	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, jmbounce);
+//	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, -90);
+//	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -70);
+//}
 
 init_shader();

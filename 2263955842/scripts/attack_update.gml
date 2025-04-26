@@ -4,7 +4,7 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_NSPECIAL_AI
 }
 
 // No Fastfall Zone
-if (attack == AT_NSPECIAL || attack == AT_DAIR || attack == AT_USPECIAL || attack == AT_FSPECIAL || attack == AT_UAIR || attack == AT_DSPECIAL || attack == AT_NSPECIAL_2 )
+if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_FSPECIAL || attack == AT_UAIR || attack == AT_DSPECIAL || attack == AT_NSPECIAL_2 )
 {
     can_fast_fall = false;
 }
@@ -106,8 +106,13 @@ switch (attack)
                 window = 3;
                 window_timer = 0;
             }
-    
         }
+        
+        if (window >= 4){
+            move_cooldown[AT_FSPECIAL] = 45;
+        }
+    
+        
         if (window == 2 && window_timer == 1)
         {
             fspe_is_charged = true;
@@ -125,15 +130,6 @@ switch (attack)
                    create_hitbox( AT_FSPECIAL_2, 1, x + (free * 7 + get_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_X) *  spr_dir) , y - (free * 16) + get_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_Y))
                }
            }
-           /*
-           if (has_rune("E"))
-           {
-               if (window_timer == 1)
-               {
-                    create_hitbox( AT_FSPECIAL_AIR, 1, x + (free * 7 + get_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_X) *  spr_dir) , y - (free * 16) + get_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_Y))
-               }
-           }
-            */
             if (window_timer == get_window_value( AT_FSPECIAL, 4, AG_WINDOW_LENGTH ))
             {
                 if (fspe_extra_to_shot > 0) // -1 than the actual number of shots
@@ -147,12 +143,6 @@ switch (attack)
             }
     
         }
-    /*
-        if (special_pressed) and (!has_used_uspecial)
-        {
-            set_attack( AT_USPECIAL);
-        }
-    */
     break;
     case AT_FSTRONG: // FSTRONG
          var time = get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH);
@@ -191,18 +181,31 @@ switch (attack)
         }
     break;
     case AT_DSPECIAL: // DSPECIAL
-        var time = get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH);
-    
-        if (window == 1 && window_timer == time) 
+        if (window == 1)
         {
-            var inst = instance_create(x,y - 20,"obj_article3");
-            ds_list_add(dspe_list,inst);
-            
-            if(ds_list_size(dspe_list) == max_dspe_card + 1)
-            {
-                instance_destroy(dspe_list[|0]);
-                ds_list_delete(dspe_list,0);
-            }
+            reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE);
+        }
+        
+        if (window == 2 && window_timer == 2)
+        {
+            sound_play(sound_get("dspecialjump"));
+        }
+        
+        if(!has_hit_player && window == 4)
+        {
+            set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 7);
+        }
+            //for dspecial trail
+        if window == 2 && get_gameplay_time() % 3 == 0
+                {
+                    var xx;
+                    xx = random_func(0, 40, false)-20; //this is for randomly adjusting the position the trail particles spawn
+                    spawn_hit_fx(x-(20*spr_dir)+xx,y-8,trail_sparkle);
+                }
+        if (!free && window >= 2) 
+        {
+            set_state(was_parried ? PS_PRATLAND : PS_LANDING_LAG);
+            landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
         }
     break;
     case AT_NSPECIAL_2: // NSPECIAL 2
@@ -221,7 +224,7 @@ switch (attack)
             {
                 yinyang_id.is_hold = true;
                 
-                instance_destroy(yinyang_id.my_hitbox);
+                instance_destroy(yinyang_id.active_hitbox);
             }
             
             var nspe2_rot_then = nspe2_rot;
@@ -449,3 +452,110 @@ if (has_rune("K"))
         }
     }
 }
+
+
+if (attack == AT_FINAL_SMASH){
+    //reset values
+    if(window == 1 && window_timer == 1){
+        emit_angle = -4.5;
+        emit_point = [length, -25];
+        emit_angle_add = 4;
+    }
+    if (window == 2){
+        //end when not holding special
+            window++;
+        }
+        //stall
+        hsp = 0;
+        vsp = 0;
+// Danmaku code for Final Smash, credit to JPEG Warrior -------------------------------------------------------
+        
+        //First Rotation
+        //amount of bullets spawned per frame
+    if(get_gameplay_time() % 4 == 0){
+        for(var i = 0; i < 4; i++){
+            
+            //spawn bullet at location and set speed and sprite angle
+            var hfx = spawn_hit_fx( x + emit_point[0], y + emit_point[1], hfx_spawn );
+            hfx.depth -= 10;
+            var bullet = create_hitbox( AT_FINAL_SMASH, 1, floor(x + emit_point[0]), floor(y + emit_point[1]) );
+            bullet.proj_angle = point_direction(x + emit_center[0], y + emit_center[1], bullet.x, bullet.y);
+            bullet.hsp = 10 * dcos(bullet.proj_angle);
+            bullet.vsp = -10 * dsin(bullet.proj_angle);
+            
+            
+            //set new point
+            emit_point[0] = emit_center[0] + lengthdir_x(length, emit_angle);
+            emit_point[1] = emit_center[1] + lengthdir_y(length, emit_angle);
+            
+            //only use if multiple bullets per frame, make equal to 360/max i
+            emit_angle += 90;
+            
+        }
+            
+            //This should be all the code involving the rotation of the danmaku pattern
+            
+            emit_angle_add += angle_adjust;
+            if(emit_angle_add >= 360) emit_angle_add = emit_angle_add % 360;
+            
+            emit_angle += emit_angle_add;
+            if(emit_angle >= 360) emit_angle = emit_angle % 360;
+            
+            
+            
+    }
+        
+        
+//------------------------------------------------------------------------------  
+    }
+    
+if (attack == AT_FINAL_SMASH){
+    //reset values
+    if(window == 1 && window_timer == 1){
+        emit_angle2 = -4.5;
+        emit_point2 = [length2, -25];
+        emit_angle_add2 = -4;
+    }
+    if (window == 2){
+        //end when not holding special
+            window++;
+        }
+        //stall
+        hsp = 0;
+        vsp = 0;
+    
+       //Second Rotation
+        //amount of bullets spawned per frame
+    if(get_gameplay_time() % 4 == 0){
+        for(var i = 0; i < 4; i++){
+            
+            //spawn bullet at location and set speed and sprite angle
+            var hfx = spawn_hit_fx( x + emit_point2[0], y + emit_point2[1], hfx_spawn );
+            hfx.depth -= 10;
+            var bullet = create_hitbox( AT_FINAL_SMASH, 1, floor(x + emit_point2[0]), floor(y + emit_point2[1]) );
+            bullet.proj_angle = point_direction(x + emit_center2[0], y + emit_center2[1], bullet.x, bullet.y);
+            bullet.hsp = 10 * dcos(bullet.proj_angle);
+            bullet.vsp = -10 * dsin(bullet.proj_angle);
+            
+            
+            //set new point
+            emit_point2[0] = emit_center2[0] + lengthdir_x(length2, emit_angle2);
+            emit_point2[1] = emit_center2[1] + lengthdir_y(length2, emit_angle2);
+            
+            //only use if multiple bullets per frame, make equal to 360/max i
+            emit_angle2 += 90;
+            
+        }
+            
+            //This should be all the code involving the rotation of the danmaku pattern
+            
+            emit_angle_add2 += angle_adjust2;
+            if(emit_angle_add2 >= 360) emit_angle_add2 = emit_angle_add2 % 360;
+            
+            emit_angle2 += emit_angle_add2;
+            if(emit_angle2 >= 360) emit_angle2 = emit_angle2 % 360;
+    }
+//------------------------------------------------------------------------------  
+
+}
+

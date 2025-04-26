@@ -12,3 +12,14 @@ switch (state) {
         }
         break;
 }
+
+if(axeless)
+{
+    var spr_indx = array_find_index(with_axe_sprites, sprite_index);
+    if(spr_indx >= 0)
+    {
+        var prev_img_indx = image_index;
+        sprite_index = no_axe_sprites[spr_indx];
+        if prev_img_indx > sprite_get_number(sprite_index) image_index = prev_img_indx%sprite_get_number(sprite_index);
+    }
+}

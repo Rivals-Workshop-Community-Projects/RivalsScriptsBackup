@@ -486,20 +486,26 @@ else if (state != PS_SPAWN)
 			can_DACUS = false;
 		break;
 		case AT_TAUNT:
-			if (state_timer < 80)
+			can_DACUS = false;			
+			if (attacking)
 			{
-				taunt_down = true;
-				taunt_pressed = true;
+				print_debug(state_timer)
+				if (state_timer < 80)
+				{
+					taunt_down = true;
+				}
+				else
+				{
+					taunt_down = false;
+					taunt_pressed = false;
+					win_taunt = true;
+				}
 			}
-			else
-			{
-				taunt_down = false;
-				taunt_pressed = false;
-			}
+		break;
 		case AT_TAUNT_2:
 		case AT_EXTRA_3:
 			can_DACUS = false;
-			win_taunt = true;
+			if (attacking) win_taunt = true;
 		break;
 		default:
 			can_DACUS = false;
@@ -905,17 +911,18 @@ else if (state != PS_SPAWN)
 		chasing = true;
 		
 	}
-	if (ai_target = self && !ai_recovering && !free)
+	if (ai_target = self && !ai_recovering && !free && state != PS_ATTACK_GROUND)
 	{
 		joy_pad_idle = true;
 		unpress_actions();
 		if (win_taunt = false)
 		{
+			down_down = false;
 			taunt_down = true;
-			taunt_pressed = true;
+			if (motorbike) taunt_pressed = true;
 		}
 	}
-	if (ai_target = self && motorbike == true && !ai_recovering && win_taunt = true)
+	if (ai_target = self && !ai_recovering && win_taunt = true)
 	{
 		unpress_actions();
 	}

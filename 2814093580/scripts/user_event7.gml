@@ -149,8 +149,8 @@ initCodecPage(SPK_PALU, 1,  1,  "Viridi, calm down. That's Samson, a bugbear fro
 initCodecPage(SPK_PIT,  7,  7,  "Huh... I kinda expected a bugbear to be a lot more... scarier from all the folk tales.");
 initCodecPage(SPK_VIR,  3,  8,  "Exactly, Pit! I bet this bear couldn't even hurt a fly!");
 initCodecPage(SPK_PIT,  7,  7,  "Well... if that's a bugbear, would a fly be his... uncle?");
-initCodecPage(SPK_PALU, 0,  1,  "Focus, you two! Pit, you need to watch out for the jars he throws.");
-initCodecPage(SPK_PALU, 4,  -999,  "They may look harmless, but it can leave you stuck and vulnerable if you're caught when it explodes.");
+initCodecPage(SPK_PALU, 0,  1,  "Focus, you two! Pit, whatever you do, keep away from those jars.");
+initCodecPage(SPK_PALU, 4,  -999,  "They may look delicious, but it can leave you stuck and vulnerable if you're caught when it explodes.");
 initCodecPage(SPK_PIT,  7,  8,  "Where does he even get all that honey?");
 initCodecPage(SPK_PALU, 2,  5,  "It's simple, Pit. It's a blessing from the bugbear goddess, Briarslee.");
 initCodecPage(SPK_PIT,  1,  -999,  "(What is a Briarslee?!?!?!)");

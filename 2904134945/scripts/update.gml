@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 9;
+	var noOfPatches = 11;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -22,42 +22,42 @@ if (practice)
 	}
 	switch (menuState)
 	{
-		default:
-			break;
-		case 1: // main menu
-			Invince();
-			MenuNav(4, 0, MainMenuNext());
-			break;
-		case 2: // Basic Tut Menu
-			Invince();
-			MenuNav(4, 1, 5);
-			break;
-		case 3: // Adv Tut Menu
-			Invince();
-			MenuNav(3, 1, 6);
-			break;
-		case 4: // Change Notes
-			Invince();
-			MenuNav(noOfPatches, 1, -1);
-			break;
-		case 5: // Basic Tut
-			if (tutDone[tutPrevMenu])
-			{
-				if (menuStateBuffer == menuState) sound_play(asset_get("mfx_player_found"));
-				menuStateBuffer = 2;
-			}
-			break;
-		case 6: // Adv Tut
-			if (tutDoneAdv[tutPrevMenu])
-			{
-				if (menuStateBuffer == menuState) sound_play(asset_get("mfx_player_found"));
-				menuStateBuffer = 3;
-			}
-			break;
-		case 7: // Discord Link
-			Invince();
-			MenuNav(0, 1, -1);
-			break;
+	default:
+		break;
+	case 1: // main menu
+		Invince();
+		MenuNav(4, 0, MainMenuNext());
+		break;
+	case 2: // Basic Tut Menu
+		Invince();
+		MenuNav(4, 1, 5);
+		break;
+	case 3: // Adv Tut Menu
+		Invince();
+		MenuNav(3, 1, 6);
+		break;
+	case 4: // Change Notes
+		Invince();
+		MenuNav(noOfPatches, 1, -1);
+		break;
+	case 5: // Basic Tut
+		if (tutDone[tutPrevMenu])
+		{
+			if (menuStateBuffer == menuState) sound_play(asset_get("mfx_player_found"));
+			menuStateBuffer = 2;
+		}
+		break;
+	case 6: // Adv Tut
+		if (tutDoneAdv[tutPrevMenu])
+		{
+			if (menuStateBuffer == menuState) sound_play(asset_get("mfx_player_found"));
+			menuStateBuffer = 3;
+		}
+		break;
+	case 7: // Discord Link
+		Invince();
+		MenuNav(0, 1, -1);
+		break;
 	}
 }
 
@@ -93,6 +93,7 @@ else fspecMeter.opacity = max(fspecMeter.opacity-0.1,0);
 
 // uspecial
 if (!free || state == PS_WALL_JUMP) dspecBan = false;
+if (dspecSpawnBan > 0) dspecSpawnBan--;
 if (!free) grabDjump = true;
 if (dspecBan && move_cooldown[AT_DSPECIAL] < 2) move_cooldown[AT_DSPECIAL] = 2;
 if (state == PS_PRATFALL) can_fast_fall = true;
@@ -144,7 +145,7 @@ with (oPlayer) if (player != other.player && noelleFrostbiteID == other)
 	else if (noelleFrostgrave > 0 && !hitpause)
 	{
 		noelleFrostgrave--;
-		if (state != PS_HITSTUN || noelleFrostgrave <= 0) // early pop
+		if (state != PS_HITSTUN || noelleFrostgrave <= 0 || noelleEarlyPop)
 		{
 			noelleFrostgrave = 0;
 			var icebreaksfx = noone;
@@ -156,6 +157,12 @@ with (oPlayer) if (player != other.player && noelleFrostbiteID == other)
 			hurtboxID.sprite_index = hurtbox_spr;
 			sound_play(asset_get("sfx_ice_shatter_big"));
 			sound_play(icebreaksfx);
+			if (!noelleEarlyPop)
+			{
+				set_state(PS_IDLE_AIR);
+				vsp = -6;
+			}
+			noelleEarlyPop = false;
 		}
 		else
 		{
@@ -247,12 +254,10 @@ init_shader();
 {
 	switch (tutMenu)
 	{
-		case 0:
-		case 1:
-		case 2:
-			return tutMenu + 2;
-		case 3:
-			return 7;
+	case 0:
+	case 1:
+	case 2: return tutMenu + 2;
+	case 3: return 7;
 	}
 	return 0;
 }

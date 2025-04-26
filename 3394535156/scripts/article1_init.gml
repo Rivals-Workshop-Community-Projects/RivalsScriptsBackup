@@ -1,0 +1,9 @@
+sprite_index = sprite_get("cascade_flame");
+mask_index = sprite_get("cascade_flame_mask");
+inner_flame = true;
+state_timer = 0;
+duration = 40;
+alt= false;
+active = false;
+can_hit_self = false;
+can_hit = array_create(20, 0)

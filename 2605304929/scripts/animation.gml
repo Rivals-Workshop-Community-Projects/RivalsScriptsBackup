@@ -1,5 +1,5 @@
-// Courch Idle
-if(state == PS_CROUCH && state_timer > 20){
+// Couch Idle
+if(state == PS_CROUCH && state_timer > 20 && down_down){
     sprite_index = sprite_get("crouch_idle");
     image_index = floor(image_number*state_timer/(image_number*20));
 }
@@ -46,7 +46,7 @@ if(state == PS_SPAWN){
 		
 	} 
 	// Riptide
-	else if(get_player_color(player) == 9 && color_shift == 0){
+	else if(get_player_color(player) == 6 && color_shift == 1){
 		sprite_index = sprite_get("intro_riptide");
 		intro_animation_frames_before_start = 80; // Set this to calibrate where the animation should start
 		intro_animation_strip_frames = 7;

@@ -11,11 +11,13 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 1); //Going in for elbow
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 2);
+set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, sound_get("Ftilt_startup"));
 set_window_value(AT_FTILT, 2, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FTILT, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 3);
+set_window_value(AT_FTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
 
 set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1); //Hold hard elbow
 set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 2);
@@ -78,9 +80,9 @@ set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 3);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_FTILT, 2, HG_DRIFT_MULTIPLIER, 0.001);

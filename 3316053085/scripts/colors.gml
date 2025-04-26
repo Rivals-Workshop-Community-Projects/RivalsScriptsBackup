@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 8, 5, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 31 );
 
 // P2
 set_color_profile_slot( 1, 0, 234, 243, 252 ); //pink
@@ -339,59 +339,80 @@ set_color_profile_slot( 23, 6, 240, 130, 237 ); //holy water main
 set_color_profile_slot( 23, 7, 245, 244, 113 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
+// time agent
+set_color_profile_slot( 24, 0, 168, 175, 218 ); //pink
+set_color_profile_slot( 24, 1, 94, 100, 122 ); //hair
+set_color_profile_slot( 24, 2, 171, 122, 104 ); //skin
+set_color_profile_slot( 24, 3, 223, 225, 242 ); //white
+set_color_profile_slot( 24, 4, 208, 186, 111 ); //black
+set_color_profile_slot( 24, 5, 122, 79, 78 ); //leaf
+set_color_profile_slot( 24, 6, 255, 203, 24 ); //holy water main
+set_color_profile_slot( 24, 7, 182, 93, 0 ); //holy water sub
+
 // keqing
-set_color_profile_slot( 24, 0, 104, 77, 206 ); //pink
-set_color_profile_slot( 24, 1, 188, 150, 225 ); //hair
-set_color_profile_slot( 24, 2, 255, 231, 201 ); //skin
-set_color_profile_slot( 24, 3, 172, 204, 242 ); //white
-set_color_profile_slot( 24, 4, 126, 76, 65 ); //black
-set_color_profile_slot( 24, 5, 255, 226, 122 ); //leaf
-set_color_profile_slot( 24, 6, 255, 171, 254 ); //holy water main
-set_color_profile_slot( 24, 7, 168, 117, 255 ); //holy water sub
+set_color_profile_slot( 25, 0, 104, 77, 206 ); //pink
+set_color_profile_slot( 25, 1, 188, 150, 225 ); //hair
+set_color_profile_slot( 25, 2, 255, 231, 201 ); //skin
+set_color_profile_slot( 25, 3, 172, 204, 242 ); //white
+set_color_profile_slot( 25, 4, 126, 76, 65 ); //black
+set_color_profile_slot( 25, 5, 255, 226, 122 ); //leaf
+set_color_profile_slot( 25, 6, 255, 171, 254 ); //holy water main
+set_color_profile_slot( 25, 7, 168, 117, 255 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // rumia
-set_color_profile_slot( 25, 0, 226, 40, 16 ); //pink
-set_color_profile_slot( 25, 1, 234, 212, 154 ); //hair
-set_color_profile_slot( 25, 2, 242, 218, 190 ); //skin
-set_color_profile_slot( 25, 3, 50, 45, 63 ); //white
-set_color_profile_slot( 25, 4, 245, 249, 252 ); //black
-set_color_profile_slot( 25, 5, 226, 40, 16 ); //leaf
-set_color_profile_slot( 25, 6, 38, 18, 79 ); //holy water main
-set_color_profile_slot( 25, 7, 230, 0, 255 ); //holy water sub
+set_color_profile_slot( 26, 0, 226, 40, 16 ); //pink
+set_color_profile_slot( 26, 1, 234, 212, 154 ); //hair
+set_color_profile_slot( 26, 2, 242, 218, 190 ); //skin
+set_color_profile_slot( 26, 3, 50, 45, 63 ); //white
+set_color_profile_slot( 26, 4, 245, 249, 252 ); //black
+set_color_profile_slot( 26, 5, 226, 40, 16 ); //leaf
+set_color_profile_slot( 26, 6, 38, 18, 79 ); //holy water main
+set_color_profile_slot( 26, 7, 230, 0, 255 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // theikos
-set_color_profile_slot( 26, 0, 255, 222, 102 ); //pink
-set_color_profile_slot( 26, 1, 255, 176, 217 ); //hair
-set_color_profile_slot( 26, 2, 247, 225, 203 ); //skin
-set_color_profile_slot( 26, 3, 240, 239, 232 ); //white
-set_color_profile_slot( 26, 4, 240, 239, 232 ); //black
-set_color_profile_slot( 26, 5, 255, 170, 79 ); //leaf
-set_color_profile_slot( 26, 6, 255, 241, 191 ); //holy water main
-set_color_profile_slot( 26, 7, 255, 193, 148 ); //holy water sub
+set_color_profile_slot( 27, 0, 255, 222, 102 ); //pink
+set_color_profile_slot( 27, 1, 255, 176, 217 ); //hair
+set_color_profile_slot( 27, 2, 247, 225, 203 ); //skin
+set_color_profile_slot( 27, 3, 240, 239, 232 ); //white
+set_color_profile_slot( 27, 4, 240, 239, 232 ); //black
+set_color_profile_slot( 27, 5, 255, 170, 79 ); //leaf
+set_color_profile_slot( 27, 6, 255, 241, 191 ); //holy water main
+set_color_profile_slot( 27, 7, 255, 193, 148 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // all-star heroines
-set_color_profile_slot( 27, 0, 255, 216, 99 ); //pink
-set_color_profile_slot( 27, 1, 92, 92, 219 ); //hair
-set_color_profile_slot( 27, 2, 250, 230, 255 ); //skin
-set_color_profile_slot( 27, 3, 215, 166, 255 ); //white
-set_color_profile_slot( 27, 4, 156, 159, 255 ); //black
-set_color_profile_slot( 27, 5, 237, 128, 173 ); //leaf
-set_color_profile_slot( 27, 6, 115, 105, 219 ); //holy water main
-set_color_profile_slot( 27, 7, 164, 113, 214 ); //holy water sub
+set_color_profile_slot( 28, 0, 255, 216, 99 ); //pink
+set_color_profile_slot( 28, 1, 92, 92, 219 ); //hair
+set_color_profile_slot( 28, 2, 250, 230, 255 ); //skin
+set_color_profile_slot( 28, 3, 215, 166, 255 ); //white
+set_color_profile_slot( 28, 4, 156, 159, 255 ); //black
+set_color_profile_slot( 28, 5, 237, 128, 173 ); //leaf
+set_color_profile_slot( 28, 6, 115, 105, 219 ); //holy water main
+set_color_profile_slot( 28, 7, 164, 113, 214 ); //holy water sub
 //shading data: [1.5, 1.2, 1, 1, 1, 1, 0.7, 1]
 
+// vortex 2024
+set_color_profile_slot( 29, 0, 217, 175, 78 ); //pink
+set_color_profile_slot( 29, 1, 217, 126, 77 ); //hair
+set_color_profile_slot( 29, 2, 255, 234, 173 ); //skin
+set_color_profile_slot( 29, 3, 255, 224, 163 ); //white
+set_color_profile_slot( 29, 4, 209, 44, 19 ); //black
+set_color_profile_slot( 29, 5, 255, 136, 0 ); //leaf
+set_color_profile_slot( 29, 6, 255, 209, 84 ); //holy water main
+set_color_profile_slot( 29, 7, 255, 123, 0 ); //holy water sub
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
 // hud color
-set_color_profile_slot( 28, 0, 211, 76, 102 ); //pink
-set_color_profile_slot( 28, 1, 235, 206, 141 ); //hair
-set_color_profile_slot( 28, 2, 247, 225, 203 ); //skin
-set_color_profile_slot( 28, 3, 245, 249, 252 ); //white
-set_color_profile_slot( 28, 4, 61, 43, 82 ); //black
-set_color_profile_slot( 28, 5, 95, 211, 102 ); //leaf
-set_color_profile_slot( 28, 6, 254, 171, 211 ); //holy water main
-set_color_profile_slot( 28, 7, 214, 174, 242 ); //holy water sub
+set_color_profile_slot( 30, 0, 211, 76, 102 ); //pink
+set_color_profile_slot( 30, 1, 235, 206, 141 ); //hair
+set_color_profile_slot( 30, 2, 247, 225, 203 ); //skin
+set_color_profile_slot( 30, 3, 245, 249, 252 ); //white
+set_color_profile_slot( 30, 4, 61, 43, 82 ); //black
+set_color_profile_slot( 30, 5, 95, 211, 102 ); //leaf
+set_color_profile_slot( 30, 6, 254, 171, 211 ); //holy water main
+set_color_profile_slot( 30, 7, 214, 174, 242 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 

@@ -334,7 +334,7 @@ else
 				&& effect != 9
 				&& hit_priority > currentPri
 				&& player != other.player_id.player
-                && !player_id.hitpause)
+				&& !player_id.hitpause)
 			{
 				currentPri = hit_priority;
 				currentHbox = self;

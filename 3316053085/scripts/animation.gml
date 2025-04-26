@@ -38,6 +38,7 @@ switch (state)
 				{
 					draw_y = ease_sineOut(0, -12, window_timer-start_fake_jump, floor((window_end-start_fake_jump)/2));
 				}
+				else if (window > 10 && draw_y != 0) draw_y = 0;
 				break;
 			case AT_USTRONG: case AT_FSTRONG: case AT_DSTRONG:
 				if (window == get_attack_value(attack, AG_STRONG_CHARGE_WINDOW))
@@ -233,109 +234,150 @@ if (aftimg_active)
 
 
 //dust effects
-if (is_attacking) switch (attack)
+if (is_attacking)
 {
-    case AT_JAB:
-        spawn_base_dust(x, y, "dash", 0, 0, 4, 0);
-        spawn_base_dust(x, y, "dash", 0, 0, 7, 0);
-        spawn_base_dust(x + 32 * spr_dir, y, "dash_start", -spr_dir, 0, 7, window_end-1);
-        spawn_base_dust(x, y, "dattack", 0, 0, 10, 0);
-        spawn_base_dust(x, y, "land", 0, 0, 10, window_end-1);
-        spawn_base_dust(x + 32 * spr_dir, y, "dattack", -spr_dir, 0, 10, window_end-1);
-        break;
-    case AT_UTILT:
-        spawn_base_dust(x, y, "walk", 0, 0, 1, 0);
-        break
-    case AT_FTILT:
-        spawn_base_dust(x, y, "dash", 0, 0, 1, 0);
-        if (!free) spawn_base_dust(x, y, "walk", 0, 0, 3, 10);
-        break;
-    case AT_DTILT:
-        spawn_base_dust(x + 64 * spr_dir, y, "dash", -spr_dir, 0, 1, window_end-1);
-        spawn_base_dust(x - 16 * spr_dir, y, "dattack", 0, 0, 2, 1);
-        break;
-    case AT_DATTACK:
-        if (has_hit) spawn_base_dust(x, y, "djump_small", 0, 0, 5, 0);
-        break;
-    case AT_USTRONG:
-        spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 1, 2);
-        spawn_base_dust(x - 32 * spr_dir, y, "dash", 0, 0, 1, 6);
-        spawn_base_dust(x, y, "jump", 0, 0, 3, window_end-1);
-        if (!hitpause && (window == 4 || window == 6) && window_timer == window_end-1)
-        {
-            var fx = spawn_hit_fx(x, y, window == 4 ? fx_ustrong_smear1 : fx_ustrong_smear2);
-            fx.depth = depth - 1;
-            fx.hsp = hsp/2;
-            fx.vsp = -3;
-            fx.grav = 0.15;
-        }
-        break;
-    case AT_FSTRONG:
-        spawn_base_dust(x, y, "dash_start", 0, 0, 3, window_end-1);
-        spawn_base_dust(x + 64 * spr_dir, y, "dattack", 0, 0, 6, 0);
-        if (!hitpause && window_timer == window_end-1)
-        {
-            if (window == 4)
-            {
-                var fx = spawn_hit_fx(x, y, fx_fstrong_smear1);
-                fx.depth = depth - 1;
-                fx.hsp = 1.5 * spr_dir;
-                fx.grav = 0.01;
-            }
-            if (window == 6)
-            {
-                var fx = spawn_hit_fx(x, y, fx_fstrong_smear2);
-                fx.depth = depth - 1;
-                fx.hsp = 0.5 * spr_dir;
-                fx.vsp = -0.25;
-                fx.grav = 0.05;
-            }
-        }
-        break;
-    case AT_DSTRONG:
-        if (!hitpause && window == 4 && window_timer == window_end-1)
-        {
-            var fx = spawn_hit_fx(x, y, fx_dstrong_smear);
-            fx.depth = depth - 1;
-        }
-        break;
-    case AT_FSPECIAL:
-        spawn_base_dust(x, y - 16 * free, free ? "djump" : "dash_start", 0, 60 * -spr_dir * free, 1, 1);
-        spawn_base_dust(x + hsp * 4 * spr_dir * (on_rune == noone), y, "land", 0, (rune_surface_angle - 90) * (on_rune != noone), 3, 0);
-        spawn_base_dust(x, y - 32, "djump_small", 0, 60 * -spr_dir, 5, 0);
-        spawn_base_dust(x + 32 * spr_dir, y, "dattack", 0, 0, 9, 0);
+	switch (attack)
+	{
+		case AT_JAB:
+			spawn_base_dust(x, y, "dash", 0, 0, 4, 0);
+			spawn_base_dust(x, y, "dash", 0, 0, 7, 0);
+			spawn_base_dust(x + 32 * spr_dir, y, "dash_start", -spr_dir, 0, 7, window_end-1);
+			spawn_base_dust(x, y, "dattack", 0, 0, 10, 0);
+			spawn_base_dust(x, y, "land", 0, 0, 10, window_end-1);
+			spawn_base_dust(x + 32 * spr_dir, y, "dattack", -spr_dir, 0, 10, window_end-1);
+			break;
+		case AT_UTILT:
+			spawn_base_dust(x, y, "walk", 0, 0, 1, 0);
+			break
+		case AT_FTILT:
+			spawn_base_dust(x, y, "dash", 0, 0, 1, 0);
+			if (!free) spawn_base_dust(x, y, "walk", 0, 0, 3, 10);
+			break;
+		case AT_DTILT:
+			spawn_base_dust(x + 64 * spr_dir, y, "dash", -spr_dir, 0, 1, window_end-1);
+			spawn_base_dust(x - 16 * spr_dir, y, "dattack", 0, 0, 2, 1);
+			break;
+		case AT_DATTACK:
+			if (has_hit) spawn_base_dust(x, y, "djump_small", 0, 0, 5, 0);
+			break;
+		case AT_USTRONG:
+			spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 1, 2);
+			spawn_base_dust(x - 32 * spr_dir, y, "dash", 0, 0, 1, 6);
+			spawn_base_dust(x, y, "jump", 0, 0, 3, window_end-1);
+			if (!hitpause && (window == 4 || window == 6) && window_timer == window_end-1)
+			{
+				var fx = spawn_hit_fx(x, y, window == 4 ? fx_ustrong_smear1 : fx_ustrong_smear2);
+				fx.depth = depth - 1;
+				fx.hsp = hsp/2;
+				fx.vsp = -3;
+				fx.grav = 0.15;
+			}
+			break;
+		case AT_FSTRONG:
+			spawn_base_dust(x, y, "dash_start", 0, 0, 3, window_end-1);
+			spawn_base_dust(x + 64 * spr_dir, y, "dattack", 0, 0, 6, 0);
+			if (!hitpause && window_timer == window_end-1)
+			{
+				if (window == 4)
+				{
+					var fx = spawn_hit_fx(x, y, fx_fstrong_smear1);
+					fx.depth = depth - 1;
+					fx.hsp = 1.5 * spr_dir;
+					fx.grav = 0.01;
+				}
+				if (window == 6)
+				{
+					var fx = spawn_hit_fx(x, y, fx_fstrong_smear2);
+					fx.depth = depth - 1;
+					fx.hsp = 0.5 * spr_dir;
+					fx.vsp = -0.25;
+					fx.grav = 0.05;
+				}
+			}
+			break;
+		case AT_DSTRONG:
+			if (!hitpause && window == 4 && window_timer == window_end-1)
+			{
+				var fx = spawn_hit_fx(x, y, fx_dstrong_smear);
+				fx.depth = depth - 1;
+			}
+			break;
+		case AT_FSPECIAL:
+			spawn_base_dust(x, y - 16 * free, free ? "djump" : "dash_start", 0, 60 * -spr_dir * free, 1, 1);
+			spawn_base_dust(x + hsp * 4 * spr_dir * (on_rune == noone), y, "land", 0, (rune_surface_angle - 90) * (on_rune != noone), 3, 0);
+			spawn_base_dust(x, y - 32, "djump_small", 0, 60 * -spr_dir, 5, 0);
+			spawn_base_dust(x + 32 * spr_dir, y, "dattack", 0, 0, 9, 0);
 
-        if (window == 3 && window_timer == 0) white_flash_timer = 10;
+			if (window == 3 && window_timer == 0) white_flash_timer = 10;
 
-        if (window == 12 && window_timer == 0) spawn_base_dust(x, y - vsp, "jump", 1, 0);
-        else if ((window == 12 || window == 13) && state_timer % 5 == 0 && vsp < -5) spawn_base_dust(x, y, "djump", 1, 0);
-        break;
-    case AT_USPECIAL:
-        if (window < window_last)
-        {
-            var fx = spawn_hit_fx(x + (random_func(2, 8, true)-4)*8, y - random_func(3, 8, true)*8, fx_light_follow);
-            fx.hsp = hsp/8;
-            fx.vsp = vsp/8;
-        }
-        if (window == 4 && window_timer % floor(window_end/2) == 0)
+			if (window == 12 && window_timer == 0) spawn_base_dust(x, y - vsp, "jump", 1, 0);
+			else if ((window == 12 || window == 13) && state_timer % 5 == 0 && vsp < -5) spawn_base_dust(x, y, "djump", 1, 0);
+			break;
+		case AT_USPECIAL:
+			if (window < window_last)
+			{
+				var fx = spawn_hit_fx(x + (random_func(2, 8, true)-4)*8, y - random_func(3, 8, true)*8, fx_light_follow);
+				fx.hsp = hsp/8;
+				fx.vsp = vsp/8;
+			}
+			if (window == 4 && window_timer % floor(window_end/2) == 0)
+			{
+				var fx = spawn_hit_fx(x, y - 32, fx_uspec_smear);
+				fx.depth = depth - 1;
+				fx.draw_angle = spr_angle;
+			}
+			break;
+		case AT_DSPECIAL:
+			if (window == 2 && state_timer % 2 == 0 && !healing_dspec)
+			{
+				var fx = spawn_hit_fx(x + (random_func(2, 7, true)-3)*12, y - random_func(3, 4, true)*8 - 16, fx_light_follow);
+				fx.vsp = -random_func(4, 4, true) - 2;
+				fx.depth = random_func(5, 2, true) == 0 ? depth - 1 : depth + 1;
+			}
+			break;
+		case 2: //intro
+			spawn_base_dust(x + draw_x, y, "land", 0, 0, 1, window_end-1);
+			spawn_base_dust(x + draw_x, y, "walk", 0, 0, 5, window_end-1);
+			break;
+	}
+
+	//extra sound effects
+	if (!hitpause)
+	{
+		var time = get_window_value(attack, window, AG_WINDOW_SFX_FRAME)+1;
+		switch (attack)
 		{
-			var fx = spawn_hit_fx(x, y - 32, fx_uspec_smear);
-			fx.depth = depth - 1;
-            fx.draw_angle = spr_angle;
+			case AT_UAIR:
+				if (get_window_value(attack, window, AG_WINDOW_HAS_SFX) && window_timer == time)
+				{
+					last_sound_to_stop = sound_play(sound_get("sfx_lightswipe1"), false, 0, 1, window <= 2 ? 0.99 : 1.01);
+				}
+				break;
+			case AT_USTRONG:
+				if (window == 3 && window_timer == time)
+				{
+					last_sound_to_stop = sound_play(sound_get("sfx_lightswipe1"));
+					sound_play(sound_get("sfx_wateradd"), false, 0, 0.3, 1.3);
+				}
+				if (do_ustrong_ex && window == 6 && window_timer == 0) last_sound_to_stop = sound_play(sound_get("sfx_lightswipe2"));
+				break;
+			case AT_FSTRONG:
+				if (window == 3 && window_timer == time)
+				{
+					last_sound_to_stop = sound_play(sound_get("sfx_lightswipe2"), false, 0, 0.9, 1.1);
+					sound_play(sound_get("sfx_wateradd"), false, 0, 0.3, 1.3);
+				}
+				if (window == 6 && window_timer == 0) last_sound_to_stop = sound_play(sound_get("sfx_lightswipe2"), false, 0, 1, 1.1);
+				break;
+			case AT_DSTRONG:
+				if (window == 3 && window_timer == time)
+				{
+					last_sound_to_stop = sound_play(sound_get("sfx_lightswipe2"), false, 0, 1, 1.03);
+					sound_play(sound_get("sfx_wateradd"), false, 0, 0.3, 1.1);
+				}
+				break;
 		}
-        break;
-    case AT_DSPECIAL:
-        if (window == 2 && state_timer % 2 == 0 && !healing_dspec)
-        {
-            var fx = spawn_hit_fx(x + (random_func(2, 7, true)-3)*12, y - random_func(3, 4, true)*8 - 16, fx_light_follow);
-            fx.vsp = -random_func(4, 4, true) - 2;
-            fx.depth = random_func(5, 2, true) == 0 ? depth - 1 : depth + 1;
-        }
-        break;
-    case 2: //intro
-        spawn_base_dust(x + draw_x, y, "land", 0, 0, 1, window_end-1);
-        spawn_base_dust(x + draw_x, y, "walk", 0, 0, 5, window_end-1);
-        break;
+	}
 }
 
 //wall slide dust
@@ -349,6 +391,8 @@ if (state == PS_WALL_JUMP)
         spawned_wall_dust = true;
     }
 }
+
+
 
 //written by supersonic, modified by bar-kun
 #define spawn_base_dust

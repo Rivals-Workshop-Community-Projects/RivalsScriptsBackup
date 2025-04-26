@@ -145,6 +145,12 @@ wing_timer = 0;         //uspecial and plat wing visual timer
 pipebomb = noone;
 HG_MOKOU_BOMB_ANGLE = 94; //custom launch angles for mokou pipebomb, synced to be the same number that muno chars use, so it works with more characters
 
+dspec_notech = false;
+
 vfx_ember = hit_fx_create(sprite_get("vfx_ember"), 16);
 vfx_uspecspike = hit_fx_create(sprite_get("vfx_uspecspike"), 12);
 vfx_firering = hit_fx_create(sprite_get("vfx_firering"), 16);
+
+//no sword indicator if in playtest room (very minor)
+mokou_playtest = false;
+with (oTestPlayer) if("mokou_playtest" in self) mokou_playtest = true;

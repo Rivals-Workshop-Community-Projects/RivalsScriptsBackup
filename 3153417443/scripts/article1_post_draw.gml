@@ -1,7 +1,9 @@
 var col_w = c_white;
 var col_b = c_black;
 
+if (state != 8){
 draw_sprite_ext(sprite_get("_pho_cooldown_arrow"), 0, x-7, y - 80, 1, 1, 0, get_player_hud_color(player), 1);
+}
 
 //draw_debug_text(x-7, y + -100,string(lifetime_timer));
 //draw_debug_text(x-7, y + -120,string(trap_lifetime));

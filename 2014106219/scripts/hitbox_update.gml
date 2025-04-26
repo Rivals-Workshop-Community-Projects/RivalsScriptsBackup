@@ -97,7 +97,7 @@ if (attack == AT_FSPECIAL) {
 				}
 				
 				if (attack == AT_DSTRONG) {
-					other.old_vsp = -7;
+					other.old_vsp = -4;
 					if hbox_num == 1 || hbox_num == 4 {
 						other.old_hsp = -8 * (spr_dir);
 					}

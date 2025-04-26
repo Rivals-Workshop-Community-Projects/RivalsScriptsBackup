@@ -1,11 +1,13 @@
 
+// user_event(10);//fps counter
+
 //------------------------- Input ------------------------------ 
 with (oPlayer)
 {
 	//has_walljump = true;//TODO: should wall jump always be possible bcz otherwise recovery can be impossible? but then too easy to recover
 	
     //if ("that_stage_article_id" in self) && instance_exists(that_stage_article_id)
-    if(player == 1 && (is_aether_stage() || other.debugControl))
+    if(player == other.playerInControl && (is_aether_stage() || other.debugControl))
     {
     	if(!other.didPlayerInit)
     	{
@@ -31,10 +33,9 @@ with (oPlayer)
 	        move_cooldown[AT_UAIR] = 100;
 	        move_cooldown[AT_TAUNT] = 100;
 	        
-	        //in the center so camera doesnt change
 	        x = 600; 
 	        //if(!other.rivalsGameOver && state != PS_DEAD )
-        	y = -1000;
+        	y = -10000;
 	        hsp = 0;
 	        vsp = 0;
 	        free = true; 
@@ -54,9 +55,8 @@ with (oPlayer)
 			has_airdodge = false;
 			can_fast_fall = false;
 			djumps = 100;
+			ignore_camera = true;
 			
-			//TODO: get rid of things like ori ball (put offscreen or delete?) 
-			//		-> maybe just move ori offscreen + fix camera manually
 			/*if(variable_instance_exists(self, "url") && url == CH_ORI)
 			{
 				//print("D");
@@ -88,6 +88,7 @@ with (oPlayer)
         other.jump_down = jump_down;
         other.shield_down = shield_down;
         other.taunt_down = taunt_down;
+        other.strong_down = strong_down;
         break;
     }
 	//TODO: set everything except input less than every frame, or even save player ref id and dont loop over oPlayer
@@ -102,29 +103,36 @@ if(!playerControlled && pieceCurr != noone && !inClearAnim && !gameOver)
 		DoGameOver(true);
 		return;
 	}
-	if(highestPieceY < gameOverAiHeightSoftCap && fps_real <= gameOverAiFpsCap && !isOnline)
-	{
-		if(gameOverAiFpsTimer >= gameOverAiFpsLength)
-		{
-			//TODO: fix first move after game over, should usually go all the way to the left?
-			DoGameOver(true);
-			return;
-		}
-		gameOverAiFpsTimer++;
-	}
-	else
-	{
-		if(!gameOverAiRecoverFrame)//because it even feels laggy if every second frame is low
-			gameOverAiRecoverFrame = true;
-		else
-		{
-			gameOverAiFpsTimer = 0;
-			gameOverAiRecoverFrame = false;
-		}
-	}
+	// if(highestPieceY < gameOverAiHeightSoftCap && fps_real <= gameOverAiFpsCap && !isOnline)
+	// {
+	// 	if(gameOverAiFpsTimer >= gameOverAiFpsLength)
+	// 	{
+	// 		//TODO: fix first move after game over, should usually go all the way to the left?
+	// 		DoGameOver(true);
+	// 		return;
+	// 	}
+	// 	gameOverAiFpsTimer++;
+	// }
+	// else
+	// {
+	// 	if(!gameOverAiRecoverFrame)//because it even feels laggy if every second frame is low
+	// 		gameOverAiRecoverFrame = true;
+	// 	else
+	// 	{
+	// 		gameOverAiFpsTimer = 0;
+	// 		gameOverAiRecoverFrame = false;
+	// 	}
+	// }
 	
 	if(!botFoundMove)
-		calcBestPosRot();
+	{
+		if (aiThinkCounter >= aiThinkDelay)//TODO: increase this delay if framerate is low?
+		{
+			calcBestPosRot();
+			aiThinkCounter = 0;
+		}
+		aiThinkCounter++;
+	}
 	
 	DoBotMoves();
 }
@@ -171,23 +179,43 @@ if(get_gameplay_time() == 2)
 			other.totalPlayersNonAI++;
 			
 	isOnline = totalPlayersNonAI > 1; //TODO: this is still not 100% accurate, eg for couch co-op
-	print("isOnline: " + string(isOnline) + " totalPlayersNonAI: " + string(totalPlayersNonAI));
-	
-	with (oPlayer)
+	// print("isOnline: " + string(isOnline) + " totalPlayersNonAI: " + string(totalPlayersNonAI));
+
+	if(!isOnline)
 	{
-	    if(player != 1 || (!is_aether_stage() && !other.debugControl))
-	    	ds_list_add(other.camTargets, id);
-	    	
-	    if(url != "")
-    		other.seed += real(url);
+		with (oPlayer) 
+			if (state != PS_DEAD && !variable_instance_exists(self, "ai_target"))
+			{
+				other.playerInControl = player;
+				break;
+			}
 	}
+}
+
+if(get_gameplay_time() == startDelay)
+{
+	// with (oPlayer)
+	// {
+	//     if(url != "")
+    // 		other.seed += real(url);
+	// }
 	
-	seed += current_minute;//current_second is more rand, but will still desync sometimes
-	//could also take current_second and round it down by 30 or less? so its more rand but unlikely desync
-	print(string(current_second) + " -> " + string(current_second / 15)); //safe to assume 15 sec wont desync?
-	seed += floor(current_second / 15);
+	// seed += current_minute;//current_second is more rand, but will still desync sometimes
+	// //could also take current_second and round it down by 30 or less? so its more rand but unlikely desync
+	// print(string(current_second) + " -> " + string(current_second / 15)); //safe to assume 15 sec wont desync?
+	// seed += floor(current_second / 15);
+
+	// if(!isOnline)
+	// 	seed = random_func_2(current_time % 200, 100000, true);
+	// else
+	// {
+	// 	set_synced_var(player, abs(current_time) % 100000);//TODO: only do this on 1 player? or earlier?
+	// 	seed = get_synced_var(player);
+	// }
 	
-	print("seed: " + string(seed));//needs to be the same for both online players
+	// print("seed: " + string(seed));//needs to be the same for both online players
+
+	//seed just made it worse??
 	
 	extendQueue();
 }
@@ -197,28 +225,12 @@ if(rivalsGameOver)
 {
 	fullScreenAnim = false;
 	rivalsGameOverTimer++;
-	with(oPlayer)
-	{
-	    if(player == 1 && (is_aether_stage() || other.debugControl))
-	    {
-	    	//print(y);
-	        //y = 400;
-	    	////draw_y = -800;
-	        //visible = true;
-	        
-	        //TODO: on P1 controll death game over -> reset player pos low so camera not so snappy
-	        //		or always use my camera, but how? and add screenshake at the end
-	        //		or kill player by set stocks instead + manual draw death?
-	    }
-	}
 	if(!rivalsGameOverLast)
 		sound_play(sound_get("gameover"), 0, 0, 1, 1);
 }
 rivalsGameOverLast = rivalsGameOver;
 
 handleMusic();
-
-handleCamera();
 
 if(ticks > startDelay && !inClearAnim && !gameOver && !gameOverReal)
 {
@@ -263,6 +275,8 @@ if(ticks > startDelay && !inClearAnim && !gameOver && !gameOverReal)
 	    rotate(pieceCurr, -1, false);
 	else if(special_down && !special_down_last)
 	    rotate(pieceCurr, 1, false);
+	else if(strong_down && !strong_down_last)
+	    rotate(pieceCurr, 2, false);//180°
 	    
 	//hold
 	if(jump_down && !jump_down_last && canSwap)
@@ -296,7 +310,10 @@ if(ticks > startDelay && !inClearAnim && !gameOver && !gameOverReal)
 		drawHud = !drawHud;
 		
 	if(taunt_down && !taunt_down_last && !gameOver)
+	{
+		zenMode = !zenMode;
 		DoGameOver(true);
+	}
 
 	right_down_last = right_down;
 	left_down_last = left_down;
@@ -307,6 +324,7 @@ if(ticks > startDelay && !inClearAnim && !gameOver && !gameOverReal)
 	jump_down_last = jump_down;
     shield_down_last = shield_down;
     taunt_down_last = taunt_down;
+    strong_down_last = strong_down;
 }
 //TODO: optimize this main loop so less is called every tick? eg using break;
 
@@ -375,6 +393,7 @@ if(gameOver)
 					foundPiece = true;
 					field[m, gameOverI].playFx = true;
 				}
+				ds_list_remove(pieceArticles, field[m, gameOverI]);
 				field[m, gameOverI].cleared = true;
 				field[m, gameOverI].destroyNext = true;
 				field[m, gameOverI] = 0;
@@ -441,7 +460,7 @@ for(var i = 0; i < 7; i++)
 	ds_list_add(pieceBag, i);
 for(var i = 0; i < ds_list_size(pieceBag); i++) 
 {
-	var r = random_func(getPseudoRand() + i, ds_list_size(pieceBag), true);
+	var r = random_func_2(i, ds_list_size(pieceBag), true);
 	var temp = pieceBag[|i];
 	pieceBag[|i] = pieceBag[|r];
 	pieceBag[|r] = temp;
@@ -476,8 +495,9 @@ for(var i = 0; i < times; i++)
 for(var i = 0; i < array_length_1d(piece.articles); i++)
 {
     var artic = piece.articles[i];
-    artic.grounded = true;
+    artic.is_hittable = true;
 	field[artic.gridX, artic.gridY] = artic;
+	ds_list_add(pieceArticles, artic);
 }
 pieceCurr = noone;
 checkAndInitClear(piece);
@@ -520,6 +540,7 @@ for(var i = height-1; i >= 0; i--)
 			firstClearedRowY = height-i;
 		for(var m = 0; m < width; m++)
 		{
+	        ds_list_remove(pieceArticles, field[m, i]);
 			field[m, i].cleared = true;
 			if(m == 0)
 				field[m, i].playFx = true;
@@ -598,16 +619,15 @@ for(var i = height-1; i >= 0; i--)
 
 
 #define intersects(piece, xDir, yDir, rot)
-var piece0GridXplusDir = piece.centerX + xDir;
-var piece0GridYplusDir = piece.centerY + yDir;
-return intersectsSim(piece.typ, rot, piece0GridXplusDir, piece0GridYplusDir);
+return intersectsSim(piece.typ, rot, piece.centerX + xDir, piece.centerY + yDir);
 
 
 #define intersectsSim(typ, rot, gridX, gridY)
 for(var i = 0; i < 4; i++)
 {
-	var newGridX = gridX + floor(pieces[typ, rot][i] % 4);
-	var newGridY = gridY + floor(pieces[typ, rot][i] / 4);
+    var offset = pieceOffsets[typ][rot][i];
+	var newGridX = gridX + offset.x;
+	var newGridY = gridY + offset.y;
 	if(newGridX < 0 || /*newGridY < 0 ||*/ newGridX >= width || newGridY >= height || field[newGridX, newGridY] != 0)
 		return true;
 }
@@ -659,13 +679,13 @@ return false;
 #define hardDrop()
 {
 	up_down_last = true;
-	var doneX = ds_list_create();
+	ds_list_clear(hardDropCheckedX);
 	for(var i = 0; i < array_length_1d(pieceCurr.articles); i++)
-		if(!ds_list_contains(doneX, pieceCurr.articles[i].x))
+		if(!ds_list_contains(hardDropCheckedX, pieceCurr.articles[i].x))
 		{
-			if(ds_list_size(doneX) == 0 || random_func(i, 1, false) < 0.333)
+			if(ds_list_size(hardDropCheckedX) == 0 || random_func_2(i, 1, false) < 0.333)
 			{
-				var randSpark = random_func(i, 1, false);
+				var randSpark = random_func_2(i, 1, false);
 				if(randSpark < 0.333)
 					pieceCurr.articles[i].sparks = hardDropSparksFx0;
 				else if(randSpark < 0.666)
@@ -675,7 +695,7 @@ return false;
 			}
 			
 			pieceCurr.articles[i].hardDropped = true;
-			ds_list_add(doneX, pieceCurr.articles[i].x);
+			ds_list_add(hardDropCheckedX, pieceCurr.articles[i].x);
 		}
 	
 	moveDownOrFreeze(pieceCurr, 20, true, false, false);
@@ -693,32 +713,52 @@ return false;
     if(newRot < 0)
     	newRot = 4 + newRot;
     
-    for(var i = 0; i < 5; i++)
+	var is180 = dir == 2;
+	var kickAttempts = is180 ? 2 : 5;
+    for(var i = 0; i < kickAttempts; i++)
     {
+		var offX = 0;
+		var offY = 0;
     	var rotInd = 0;
-    	if(piece.rotation == 1 && dir == -1)
-    		rotInd = 1;
-    	else if(piece.rotation == 1 && dir == 1)
-    		rotInd = 2;
-    	else if(piece.rotation == 2 && dir == -1)
-    		rotInd = 3;
-    	else if(piece.rotation == 2 && dir == 1)
-    		rotInd = 4;
-    	else if(piece.rotation == 3 && dir == -1)
-    		rotInd = 5;
-    	else if(piece.rotation == 3 && dir == 1)
-    		rotInd = 6;
-    	else if(piece.rotation == 0 && dir == -1)
-    		rotInd = 7;
-    		
-    	var offX = rotations[rotInd,i][0];
-    	var offY = rotations[rotInd,i][1];
-    	if(piece.typ == 0)
-    	{
-	    	offX = rotationsI[rotInd,i][0];
-	    	offY = rotationsI[rotInd,i][1];
-    	}
-    	offY *= -1;
+    	if(is180)
+		{
+			if(piece.rotation == 1)
+				rotInd = 1;
+			else if(piece.rotation == 2)
+				rotInd = 2;
+			else if(piece.rotation == 3)
+				rotInd = 3;
+
+			offX = wallKicks180[rotInd,i][0];
+			offY = wallKicks180[rotInd,i][1];
+		}
+		else
+		{
+			if(piece.rotation == 1 && dir == -1)
+				rotInd = 1;
+			else if(piece.rotation == 1 && dir == 1)
+				rotInd = 2;
+			else if(piece.rotation == 2 && dir == -1)
+				rotInd = 3;
+			else if(piece.rotation == 2 && dir == 1)
+				rotInd = 4;
+			else if(piece.rotation == 3 && dir == -1)
+				rotInd = 5;
+			else if(piece.rotation == 3 && dir == 1)
+				rotInd = 6;
+			else if(piece.rotation == 0 && dir == -1)
+				rotInd = 7;
+
+			offX = wallKicks[rotInd,i][0];
+			offY = wallKicks[rotInd,i][1];
+			if(piece.typ == 0)
+			{
+				offX = wallKicksI[rotInd,i][0];
+				offY = wallKicksI[rotInd,i][1];
+			}
+		}
+		offY *= -1;
+		
     	if(force || !intersects(piece, offX, offY, newRot))
 	    {
 	        piece.rotation = newRot;
@@ -756,9 +796,10 @@ return false;
         
         if(doHitbox)
         {
-	        with (artic)
+	        with(artic)
 	        {
-	            create_hitbox( AT_JAB, 1, x, y);
+	            var hb = create_hitbox(AT_JAB, 1, x, y);
+				hb.player_id = obj_stage_main;
 	            //TODO: more accurate hitboxes, with only 64 size again, but then sometimes wont hit...
 	            //		actually need to do hitbox before the articles moves?! so check one frame early?
 	            //		or workaround: just check for overlap & deal dmg directly?
@@ -832,7 +873,6 @@ gameOverClearTimer = 0;
 fullScreenAnim = true;
 fullScreenTimer = 0;
 fullScreenSprite = sprite_get("gameOver");
-fullScreenAnimMoveWithCamera = true;
 gameOverI = height-1;
 currentPiecesOnBoard = 0;
 //hide ghost piece
@@ -862,7 +902,7 @@ if(is_aether_stage() || debugControl)
 	
 	with(oPlayer)
 	{
-	    if(player == 1 && (is_aether_stage() || other.debugControl))
+	    if(player == other.playerInControl && (is_aether_stage() || other.debugControl))
 	    {
 	        /*invincible = false;
 	        invince_time = 0;
@@ -903,42 +943,10 @@ debugX[ind] = xPos;
 debugY[ind] = yPos;
 debugString[ind] = s;
 
-
-#define contains(arr, n)
-var loop = 0;
-repeat (array_length_1d(arr)) if (arr[loop++] == n) return true;
-return false;
-
-#define contains2D(arr, n)
-var loop = 0;
-repeat (array_length_1d(arr)) if (contains(arr, n)) return true;
-return false;
-
-#define containsTupel(arr, n)
-var loop = 0;
-repeat (array_length_1d(arr))
-{
-	if (arr[loop][0] == n[0] && arr[loop][1] == n[1])
-		return true;
-	loop++;
-}
-return false;
-
 #define ds_list_contains(list, n)
 var loop = 0;
 repeat (ds_list_size(list)) if (list[|loop++] == n) return true;
 return false;
-
-#define ds_list_contains_tupel(list, n)
-var loop = 0;
-repeat (ds_list_size(list))
-{
-	 if (list[|loop][0] == n[0] && list[|loop][1] == n[1]) 
-		return true;
-	loop++;
-}
-return false;
-
 
 #define calcBestPosRot()
 {
@@ -1052,8 +1060,9 @@ return false;
     breaks = 0;
 	currHeight = height;
 	currHoles = 0;
-	filled = [];
-	filledIndex = 0;
+	filled = array_create(height);
+	for (var y = 0; y < height; y++)
+		filled[@y] = array_create(width, false);
 	simStartIndex = height-1;
 	heightToCheckTotal = max(0, highestPieceY-4);
 	heightToCheck = simStartIndex - loops + 1;
@@ -1069,25 +1078,32 @@ return false;
 		var prevHoles = currHoles;
 		for(var j = 0; j < width; j++)
 		{
-			var occupied = false;
-			if(field[j, i] != 0)
-				occupied = true;
+			var occupied = field[j, i] != 0;
 			if(!occupied)
 				for(var ii = 0; ii < 4; ii++)//TODO: this is probably wrong?!
 					if(floor(pieces[pieceCurr.typ, rr][ii] / 4) + yy == i && floor(pieces[pieceCurr.typ, rr][ii] % 4) + xx == j)
-						occupied = true;
-			if(occupied && i < currHeight)
-				currHeight = i;
-				
-			if(occupied)
-			{
-				filled[filledIndex++] = [i, j];
-				for(var k = i; k < height; k++)//TODO: this isnt optimized yet? or indirectly through other loop?
-					if(!containsTupel(filled, [k, j]))
-					{
-						filled[filledIndex++] = [k, j];
-						currHoles++;
-					}
+                    {
+                        occupied = true;
+                        break;
+                    }
+
+            if(occupied)
+            {
+                if(i < currHeight)
+                    currHeight = i;
+
+				if(!filled[i][j])
+                {
+                    filled[@i][@j] = true;
+                    for(var k = i + 1; k < height; k++)
+                    {
+                        if(!filled[k][j])
+                        {
+                            filled[@k][@j] = true;
+                            currHoles++;
+                        }
+                    }
+                }
 			}
 			else
 				isFull = false;
@@ -1112,7 +1128,7 @@ return false;
 	aiHoldTimer = 0;
 	aiHardDropTimer = 0;
 	aiExtraThinkTimeTimer = 0;
-	aiExtraThinkTimeDelay = (random_func(getPseudoRand(), aiExtraThinkTimeDelayMax+1, true) + aiExtraThinkTimeDelayMin) * (currentPiecesOnBoard / min(currentPiecesOnBoard, aiPieceOnBoardMax));
+	aiExtraThinkTimeDelay = (random_func_2(0, aiExtraThinkTimeDelayMax+1, true) + aiExtraThinkTimeDelayMin) * (currentPiecesOnBoard / min(currentPiecesOnBoard, aiPieceOnBoardMax));
 	botDesPos = noone;
 	botDesRot = noone;
 	botPos = -3;
@@ -1126,7 +1142,7 @@ return false;
 	var range = ds_list_size(botSimResults);
 	for(var i = 0; i < range; i++)
 	{
-	    var j = random_func(getPseudoRand()+i, range, true);
+	    var j = random_func_2(i, range, true);
 	    var temp = botSimResults[| i];
 	    botSimResults[| i] = botSimResults[| j];
 	    botSimResults[| j] = temp;
@@ -1175,7 +1191,7 @@ return false;
 			resetBot();
 			sound_play(sound_get("hold"), 0, 0, 1, 1);
 			aiHoldTimer = 0;
-			aiHoldDelay = random_func(getPseudoRand()+0, aiHoldDelayMax+1, true) + aiHoldDelayMin;
+			aiHoldDelay = random_func_2(0, aiHoldDelayMax+1, true) + aiHoldDelayMin;
 			return;
 		}
 		
@@ -1189,7 +1205,7 @@ return false;
 			lastHoles = minHoles;
 			resetBot();
 			aiHardDropTimer = 0;
-			aiHardDropDelay = random_func(getPseudoRand()+1, aiHardDropDelayMax+1, true) + aiHardDropDelayMin;
+			aiHardDropDelay = random_func_2(1, aiHardDropDelayMax+1, true) + aiHardDropDelayMin;
 			return;
 		}
 		
@@ -1204,7 +1220,7 @@ return false;
 		    	rotate(pieceCurr, -1, false);
 		    	
 			aiRotCorrectTimer = 0;
-			aiRotCorrectDelay = random_func(getPseudoRand()+2, aiRotCorrectDelayMax+1, true) + aiRotCorrectDelayMin;
+			aiRotCorrectDelay = random_func_2(2, aiRotCorrectDelayMax+1, true) + aiRotCorrectDelayMin;
 		}
 		if(horDelta != 0 && aiMoveCorrectTimer >= aiMoveCorrectDelay)
 		{
@@ -1214,7 +1230,7 @@ return false;
 		    	tryToMove(-1,0);
 		    	
 			aiMoveCorrectTimer = 0;
-			aiMoveCorrectDelay = random_func(getPseudoRand()+3, aiMoveCorrectDelayMax+1, true) + aiMoveCorrectDelayMin;
+			aiMoveCorrectDelay = random_func_2(3, aiMoveCorrectDelayMax+1, true) + aiMoveCorrectDelayMin;
 		}
 		
 		//print("holes " + string(lastHoles) + " to " + string(minHoles));
@@ -1228,7 +1244,7 @@ return false;
 		if(aiMoveTimer >= aiMoveDelay)
 		{
 			var right = true;
-			if(random_func(getPseudoRand()+0, 2, true) == 0)
+			if(random_func_2(0, 2, true) == 0)
 				right = false;
 			if(right == true)
 			    tryToMove(1,0);
@@ -1236,13 +1252,13 @@ return false;
 			    tryToMove(-1,0);
 				
 			aiMoveTimer = 0;
-			aiMoveDelay = random_func(getPseudoRand()+1, aiMoveDelayMax+1, true) + aiMoveDelayMin;
+			aiMoveDelay = random_func_2(1, aiMoveDelayMax+1, true) + aiMoveDelayMin;
 		}
 		
 		if(aiRotTimer >= aiRotDelay)
 		{
 			var right = true;
-			if(random_func(getPseudoRand()+2, 2, true) == 0)
+			if(random_func_2(2, 2, true) == 0)
 				right = false;
 			if(right == true)
 		    	rotate(pieceCurr, -1, false);
@@ -1250,15 +1266,15 @@ return false;
 		    	rotate(pieceCurr, 1, false);
 				
 			aiRotTimer = 0;
-			aiRotDelay = random_func(getPseudoRand()+3, aiRotDelayMax+1, true) + aiRotDelayMin;
+			aiRotDelay = random_func_2(3, aiRotDelayMax+1, true) + aiRotDelayMin;
 		}
 	}
 }
 
 #define AnimateSkybox()
 {
-	//bg2Dir += (random_func(get_gameplay_time(), 2, false) - 1) * 2;//get_gameplay_time()
-	//bg3Dir += (random_func(get_gameplay_time()+1, 2, false) - 1) * 2;
+	//bg2Dir += (random_func_2(get_gameplay_time(), 2, false) - 1) * 2;//get_gameplay_time()
+	//bg3Dir += (random_func_2(get_gameplay_time()+1, 2, false) - 1) * 2;
 	bg2Dir += 0.1;
 	bg3Dir -= 0.1;
 	var bg2DirX = dsin(bg2Dir);
@@ -1357,7 +1373,6 @@ return false;
 			fullScreenAnim = true;
 			fullScreenTimer = 0;
 			fullScreenSprite = sprite_get("fullClear");
-			fullScreenAnimMoveWithCamera = false;
 		}
 	}
 	else
@@ -1375,7 +1390,6 @@ return false;
 			fullScreenAnim = true;
 			fullScreenTimer = 0;
 			fullScreenSprite = sprite_get("tetris");
-			fullScreenAnimMoveWithCamera = false;
 		}
 	}
 	
@@ -1434,6 +1448,8 @@ return false;
 //https://gamedev.stackexchange.com/questions/159835/understanding-tetris-speed-curve
 #define LevelUp()
 {
+	if(zenMode)
+		return;
 	level = min(level+1, 30);
 	var delay = power(0.8-((level-1)*0.007), level-1);
 	//TODO: this isnt correct? just use table for now
@@ -1478,105 +1494,6 @@ return false;
 	fallDelay = round(1/delay);
 	fallDelay = max(fallDelay, 1);
 	//TODO: can't fall more than 1 cell per frame atm... so above lvl 13 broken
-}
-
-#define handleCamera()
-{
-	if(get_gameplay_time() < 15 || rivalsGameOver)
-		return;
-	else if(get_gameplay_time() == 15)
-	{
-		xviewOrg = view_get_xview()+view_get_wview()/2;
-		yviewOrg = view_get_yview()+view_get_hview()/2;
-		xviewCurr = xviewOrg;
-		yviewCurr = yviewOrg;
-	}
-	
-	var xviewMin = view_get_wview()/2;
-	var yviewMin = view_get_hview()/2-18;
-	var xviewMax = room_width-view_get_wview()/2;
-	var yviewMax = room_height-view_get_hview()/2;
-	var xview = view_get_xview()+view_get_wview()/2;
-	var yview = view_get_yview()+view_get_hview()/2;
-	var rightEdge = view_get_xview()+view_get_wview();
-	var lowerEdge = view_get_yview()+view_get_hview();
-	
-	var smoothY = yview;
-	var verticalRecenter = false;
-	var verticalHigher = false;
-	
-	var xSafety = 100;
-	var ySafetyTop = 150;
-	var ySafetyBot = 80;
-	
-	if (ds_list_size(camTargets) > 0)
-	{
-		smoothY = 0;
-	    for (var i = 0; i < ds_list_size(camTargets); i++)
-	    {
-	        if (!instance_exists(camTargets[| i]))
-	            ds_list_delete(camTargets, i);
-	    }
-	    for (var i = 0; i < ds_list_size(camTargets); i++)
-	    {
-	        if (!instance_exists(camTargets[| i]))
-	            continue;
-	            
-            //chars push camera edges
-	        var xChar = camTargets[| i].x;
-        	if(xChar + xSafety > rightEdge)
-        		xview += (xChar + xSafety) - rightEdge;
-        	else if(xChar - xSafety < view_get_xview())
-        		xview += (xChar - xSafety) - view_get_xview();
-        		
-	        var yChar = camTargets[| i].y;
-        	if(yChar + ySafetyBot > lowerEdge)
-        	{
-        		yview += (yChar + ySafetyBot) - lowerEdge;
-    			verticalRecenter = true;
-        	}
-        	else if(yChar - ySafetyTop < view_get_yview())
-        	{
-        		yview += (yChar - ySafetyTop) - view_get_yview();
-    			verticalRecenter = true;
-    			verticalHigher = true;
-        	}
-	        smoothY += camTargets[| i].y;
-		}
-		
-	    if (ds_list_size(camTargets) > 1)
-	        smoothY /= ds_list_size(camTargets);
-	}
-	
-	//stage tries to center back camera
-	var xOff = xview - xviewOrg;
-	if(abs(xOff) > 13)
-		xview -= sign(xview-xviewOrg) * 13;
-	else if(xview != xviewOrg)
-		xview = xviewOrg;
-	
-	var yOff = yview - yviewOrg;
-	if(abs(yOff) > 13)
-		yview -= sign(yview-yviewOrg) * 13;
-	else if(yview != yviewOrg)
-		yview = yviewOrg;
-		
-	xviewCurr = clamp(lerp(xviewCurr, xview, 0.3), xviewMin, xviewMax);
-	//if(!verticalHigher)
-	//	yviewCurr = clamp(lerp(yviewCurr, yview, verticalRecenter ? 0.5 : 0.1), yviewMin, yviewMax);
-	//else
-	//	yviewCurr = clamp(lerp(yviewCurr, smoothY, 0.15), yviewMin, yviewMax);
-	//TODO: this should only happen if above a certain height? bcz always is annoying, but other one is too jittery at top
-	//		or completely other option? like a second higher threshold window thingy?
-	//		... or could I actually just increase room height???
-	
-	yviewCurr = clamp(lerp(yviewCurr, yview+50, 0.15), yviewMin, yviewMax);
-	//TODO: why is this different from original camera? moves too much
-	
-	if(totalPlayers == 1)
-		yviewCurr = yviewOrg;
-	
-	set_view_position(xviewCurr, yviewCurr);//-50);
 }
 
 #define handleMusic()
@@ -1650,63 +1567,4 @@ return false;
 	else if(initRot == 3)
 		attack_down_last = true;
 	return initRot;
-}
-
-#define getPseudoRand()
-{
-	//want total randomness in single player, since no need for anti desync
-	if(!isOnline)
-		return current_time;
-	
-	var randPos = 0;
-	with (oPlayer)
-		randPos += floor(x+y);
-	//randPos will be the same on game start, but different during gameplay
-	//TODO: could make more complex, but shouldn't be necessary
-	
-	return randPos + seed + get_gameplay_time();
-	
-	/*
-	return 
-	var input =
-	attack_down+
-	special_down+
-	jump_down+
-	shield_down+
-	strong_down+
-	taunt_down+
-	
-	attack_pressed+
-	special_pressed+
-	jump_pressed+
-	shield_pressed+
-	up_strong_pressed+
-	down_strong_pressed+
-	left_strong_pressed+
-	right_strong_pressed+
-	taunt_pressed+
-	
-	up_down+
-	down_down+
-	left_down+
-	right_down+
-	
-	up_pressed+
-	down_pressed+
-	left_pressed+
-	right_pressed+
-	
-	joy_dir+
-	x+
-	y+
-	spr_dir;
-	
-	if(url != "")
-		input += real(url);
-	//if(variable_instance_exists(self, "temp_level"))
-	//	print(temp_level);
-	//if(variable_instance_exists(self, "ai_going_left")) //sadly not different on game start
-	//	print(ai_going_left);
-	
-	return input + index;*/
 }

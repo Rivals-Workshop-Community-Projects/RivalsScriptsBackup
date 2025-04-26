@@ -18,13 +18,16 @@ if !instance_exists(msg_other_update_article)
 //==============================================================
 //First-jump physics: same as shorthop, just with teleport
 //jump_down is the full-hop condition. shield_down prevents breaking wavedash
-if (state == PS_FIRST_JUMP && state_timer == 0 && jump_down && !shield_pressed)
+//note: tap_jump_pressed lasts 6 frames. if jumpsquat lasts longer, this effect is lost.
+if (state == PS_FIRST_JUMP && state_timer == 0 && (jump_down || tap_jump_pressed) && !shield_pressed)
 {
     y -= msg_firstjump_height;
 }
 
 //==============================================================
 //crawling 
+var currently_crawling = false; //required for colliders later
+
 if (state == PS_CROUCH)
 || ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DTILT)
 {
@@ -32,6 +35,8 @@ if (state == PS_CROUCH)
     var speed_limit = max(abs(hsp), crawl_speed);
     hsp = clamp(hsp + (right_down - left_down) * (ground_friction + crawl_accel), 
                -speed_limit, speed_limit);
+
+    currently_crawling = true;
 }
 else if (state == PS_DASH_START) && down_down
 {
@@ -45,6 +50,8 @@ else if (state == PS_DASH_START) && down_down
                        + (right_down - left_down) * (ground_friction + dashcrawl_accel),
                        -speed_limit, speed_limit);
     }
+
+    currently_crawling = true;
 }
 
 //==============================================================
@@ -202,6 +209,9 @@ if (msg_air_tech_active && !hitpause)
     {
         if (do_offset) y -= 80;
         vsp = 0; hsp = 0;
+
+        with (obj_article_platform) if (client_id == other)
+            external_should_die = true;
 
         var plat = instance_create(x, y, "obj_article_platform");
         plat.client_id = self;
@@ -417,6 +427,9 @@ if (msg_uspecial_wraparound)
     }
 }
 else if (image_yscale == 0) image_yscale = 1;
+
+//shrinks collider size if crawling
+image_yscale = sign(image_yscale) * (currently_crawling ? 0.45 : 1);
 
 if (msg_uspecial_wraparound_require_pratfall)
 && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)

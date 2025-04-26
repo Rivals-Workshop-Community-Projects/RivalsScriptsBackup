@@ -21,7 +21,6 @@ if (ai_recovering)
     }
 
     can_wall_jump = (recovery_rng == 0);
-    
 
     switch (recovery_rng)
     {
@@ -32,8 +31,10 @@ if (ai_recovering)
         case 0: //using the rainbow ring
             if (instance_exists(artc_trickring))
             {
-                if (artc_trickring.state <= 1)
+                if (artc_trickring.state <= 1 && y <= artc_trickring.y + 32) // && abs(x - artc_trickring.x) < 80
                 {
+                    up_down = false;
+                    special_pressed = false;
                     switch (ring_rng)
                     {
                         case -1: //undefined
@@ -52,8 +53,17 @@ if (ai_recovering)
                             jump_pressed = false;
                             left_down = false;
                             right_down = false;
-                            if (state_cat == SC_AIR_NEUTRAL) set_attack(AT_DSPECIAL);
-                            else if (is_attacking && attack == AT_DSPECIAL && ring_rng == 1) fast_falling = true;
+                            if (state_cat == SC_AIR_NEUTRAL)
+                            {
+                                special_pressed = true;
+                                down_down = true;
+                            }
+                            else if (is_attacking && attack == AT_DSPECIAL)
+                            {
+                                if (ring_rng == 1) fast_falling = true;
+                                if (x > artc_trickring.x) left_down = true;
+                                else if (x < artc_trickring.x) right_down = true;
+                            }
                             break;
                         case 2: //fastfall
                             jump_pressed = false;
@@ -65,57 +75,76 @@ if (ai_recovering)
                             jump_pressed = false;
                             shield_pressed = false;
 
-                            if (attack == AT_USPECIAL)
+                            if (can_attack && y < artc_trickring.y || state == PS_ATTACK_AIR && attack == AT_USPECIAL)
                             {
-                                if (is_attacking)
+                                if (abs(y - artc_trickring.y) > 48) //if sonic isn't close to the ring (vertically), he moves away from it to get some space
                                 {
                                     right_down = (which_dir_is_stage == "go left" && x > blastzone_left);
                                     left_down = (which_dir_is_stage == "go right" && x < blastzone_right);
-
-                                    if (x <= blastzone_left - 1 || x >= blastzone_right) hsp = 0;
                                 }
                                 else
-                                {
-                                    spr_dir = (x < artc_trickring.x) ? 1 : -1
-                                    state = PS_ATTACK_AIR;
-                                    attack = can_fspec ? AT_FSPECIAL : AT_FAIR;
-                                    window = 1;
-                                    window_timer = 0;
-                                }
-                            }
-
-                            if (is_attacking && attack == AT_FSPECIAL)
-                            {
-                                if (window < 4)
                                 {
                                     right_down = false;
                                     left_down = false;
                                 }
-                                special_down = (y < artc_trickring.y - 16);
+
+                                if (x <= blastzone_left - 1 || x >= blastzone_right) hsp = 0;
+                            }
+
+                            if (state != PS_ATTACK_AIR && abs(y - artc_trickring.y) <= 48) //he's close enough (vertically) to the ring and uses fspec/fair
+                            {
+                                if (can_fspec)
+                                {
+                                    special_pressed = true;
+                                    if (x < artc_trickring.x) right_down = true;
+                                    else left_down = true;
+                                }
+                                else
+                                {
+                                    special_pressed = false;
+                                    attack_pressed = true;
+                                    spr_dir = (x < artc_trickring.x) ? 1 : -1
+                                }
+                                if (x < artc_trickring.x) right_down = true;
+                                else left_down = true;
                             }
                             break;
                         case 4: //airdodge
                             if (!has_airdodge) ring_rng = 3;
 
                             jump_pressed = false;
+                            shield_pressed = false;
 
                             if (is_attacking && attack == AT_USPECIAL)
                             {
                                 right_down = (which_dir_is_stage == "go left");
                                 left_down = (which_dir_is_stage == "go right");
                             }
-                            else if (state_cat == SC_AIR_NEUTRAL && state != PS_AIR_DODGE && point_distance(x, y, artc_trickring.x, artc_trickring.y) < 110 && has_airdodge) shield_pressed = true;
-                            else if (state == PS_AIR_DODGE) joy_dir = -point_distance(x, y, artc_trickring.x, artc_trickring.y) + 90;
+                            else if (state_cat == SC_AIR_NEUTRAL && state != PS_AIR_DODGE && point_distance(x, y, artc_trickring.x, artc_trickring.y) < 110 && has_airdodge)
+                            {
+                                shield_pressed = true;
+                            }
+                            else if (state == PS_AIR_DODGE) joy_dir = point_direction(x, y, artc_trickring.x, artc_trickring.y);
                             break;
                     }
                 }
-                if (is_attacking && attack == AT_USPECIAL_2 && ring_rng != -1) ring_rng = random_func(0, 3, true) + 1;
+                if (is_attacking && attack == AT_USPECIAL_2)
+                {
+                    if (vsp >= -2) if (x > room_width/2 && point_distance(x, y, stage_left, stage_top) >= 180 || point_distance(x, y, stage_right, stage_top) >= 180)
+                    {
+                        taunt_pressed = true;
+                    }
+                }
                 
                 //if sonic notices someone is next to the rainbow ring while recovering he will try to dspec them
                 if (y < ai_target.y && point_distance(x, 0, ai_target.x, 0) < 80 && point_distance(ai_target.x, ai_target.y, artc_trickring.x, artc_trickring.y) < 120)
                 {
                     if (ring_rng != -2) ring_rng = -2;
-                    if (state_cat != SC_HITSTUN && state_cat == SC_AIR_NEUTRAL) set_attack(AT_DSPECIAL);
+                    if (state_cat != SC_HITSTUN && state_cat == SC_AIR_NEUTRAL)
+                    {
+                        special_pressed = true;
+                        down_down = true;
+                    }
                 }
                 if (ring_rng == -2)
                 {
@@ -126,8 +155,8 @@ if (ai_recovering)
             }
             else if (!can_spawn_trick_ring) //if he can't spawn the rainbow ring he will just try to get to the wall
             {
-                right_down = (which_dir_is_stage == "go left");
-                left_down = (which_dir_is_stage == "go right");
+                right_down = (which_dir_is_stage == "go right");
+                left_down = (which_dir_is_stage == "go left");
             }
             break;
         case 1: //using fair to get closer to the wall (should probably be disabled if he is facing away from the wall)
@@ -252,7 +281,7 @@ if (cpu_fight_time > 0)
             if (can_hitfall) do_a_fast_fall = true;
             break;
         case AT_NSPECIAL: //would probably need to know to aim it
-            if ("bar_sonic_reticle_owner" in ai_target) special_pressed = (ai_target.bar_sonic_reticle_owner == self);
+            if ("bar_sonic_reticle_owner" in ai_target) special_pressed = (ai_target.bar_sonic_reticle_owner != self);
             break;
         case AT_FSPECIAL: //would probably need to know to aim it
             if (!ai_recovering) special_down = (target_dist >= 120);
@@ -266,4 +295,15 @@ if (cpu_fight_time > 0)
             }
             break;
     }
+
+    /*
+    if (get_player_stocks(player) == 1 && get_match_setting(SET_STOCKS) > 1 && visible && state == PS_RESPAWN && temp_level == 9)
+    {
+        has_superform = true;
+        rings_cur = 100;
+        set_attack(48)
+    }
+    */
+
+    if (ai_target.player == player && !free && state != PS_ATTACK_GROUND && attack != AT_TAUNT) taunt_pressed = true;
 }

@@ -164,7 +164,7 @@ alt_name[25] = "Dreamland's Painter";
 alt_name[26] = "Limitless Palette";
 alt_name[27] = "Blueberry";
 alt_name[28] = "Spectral Thief";
-alt_name[29] = "Blood Blade";
+alt_name[29] = "Vortex Ink";
 alt_name[30] = "Riptide Ink";
 alt_name[31] = "All Star Glitter"
 
@@ -182,13 +182,9 @@ alt_name[31] = "All Star Glitter"
 //alt_name[22] = "22"; //has the shiny effect
 //alt_name[23] = "22"; //has the shiny effect
 
-
-
 alt_cur = 0;
 alt_prev = 0;
 alt_total = array_length(alt_name);
-
-
 
 //ANIMATION VARS
 sprite_change_offset("idle", 23, 47); //"load.gml offsets"
@@ -196,3 +192,13 @@ sprite_change_offset("idle", 23, 47); //"load.gml offsets"
 preview_idle = sprite_get("idle");
 preview_scale = 2; //depends on if we have small sprites on, if we do, type 2, if not type 1
 preview_anim_speed = 0.15; //"idle_anim_speed"
+
+//RESET SLIME ALT
+set_color_profile_slot( 18, 0, 53, 188, 255 ); //Hair
+set_color_profile_slot( 18, 1, 255, 230, 249 ); //Shirt
+set_color_profile_slot( 18, 2, 184, 119, 255 ); //Bow
+set_color_profile_slot( 18, 3, 251, 217, 175 ); //Skin
+set_color_profile_slot( 18, 4, 62, 61, 66 ); //Pants
+set_color_profile_slot( 18, 5, 132, 234, 255 ); //Sword
+set_color_profile_slot( 18, 6, 193, 55, 90 ); //Gold
+set_color_profile_slot( 18, 7, 118, 135, 183 ); //Waist

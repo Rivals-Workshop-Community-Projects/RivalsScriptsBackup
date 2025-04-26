@@ -13,7 +13,7 @@ if (state==PS_RESPAWN || (state==PS_ATTACK_GROUND && free && attack==AT_TAUNT)){
 //idk who made this code but thanks -hy
 
 if (get_synced_var( player )==0){//A
-	if (get_player_color( player ) == 8){//sorbet
+	/*if (get_player_color( player ) == 8){//sorbet
 		shader_end();
 		maskHeader();
 		draw_self();
@@ -25,7 +25,7 @@ if (get_synced_var( player )==0){//A
 			draw_sprite_tiled_ext(sprite_get("etc_field_pool"), 0, x-121, y-141, 0.6, 0.6, c_white, 1)
 		}
 		maskFooter();
-	}
+	}*/
 }
 if (get_synced_var( player )==2){//C
 	if (get_player_color( player ) == 2){//starburst

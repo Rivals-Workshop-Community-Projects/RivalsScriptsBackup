@@ -216,6 +216,7 @@ switch (attack){
 			}
 		    can_fast_fall = false;
 		    can_move = false;
+		    vsp = min(vsp, 8)
 		    //Shartboost
 		    // if (state_timer == 6 && free) {
 		    // 	if (b_reversed)
@@ -227,10 +228,16 @@ switch (attack){
 				nspecial_sound_id = noone;
 				nspecial_damage = 0;
 			}
+			if (window == 1 && window_timer = 1 && !hitpause) {
+				if (free) {
+					hsp /= 2;
+					vsp /= 2;
+				}
+			}
 			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
 				nspecial_sound_id = sound_play(sound_get("sfx_dedede_suck"));
 			}
-			if (window == 2 || window == 3) {
+			if ((window == 2 || window == 3) && !hitpause) {
 				if (get_gameplay_time() % 12 == 0 && !free) {
 					var dust = spawn_base_dust(round(x - 16 * spr_dir), round(y), "dash_start")
 					dust.spr_dir = spr_dir;
@@ -316,7 +323,7 @@ switch (attack){
 	    		
 	    	}
 			
-			if (window == 2 || window == 3) {
+			if ((window == 2 || window == 3) && !hitpause) {
 				//Projectile sucking
 				var proj_hit = select_projectile(x + (56 * spr_dir), y-32, 112, 32);
 				
@@ -350,24 +357,23 @@ switch (attack){
 			}
 		break;
 		case AT_NSPECIAL_2:
-			if (window == 1 && window_timer == 1) {
+			if (window == 1) {
 				grab_timer = 0;
 			}	
 			
 			var grab_damage = 0;
 			if (window == 6 && instance_exists(sucked_player_obj)) { 
-	    		sucked_player_obj.visible = true;
 	    		sucked_player_obj = noone; 
 			}
 	    	else if (instance_exists(sucked_player_obj) && ((sucked_player_obj.object_index == oPlayer) && (sucked_player_obj.state != PS_HITSTUN && sucked_player_obj.state != PS_HITSTUN_LAND))) {
-	    		sucked_player_obj.visible = true;
 	    		sucked_player_obj = noone; 
 	    	}
 			else if (instance_exists(sucked_player_obj)) {
 	    		sucked_player_obj.hitstop = 2;
 	    		sucked_player_obj.hitpause = true;
 	    		sucked_player_obj.x = x + 24 * spr_dir;
-	    		sucked_player_obj.y = y - 48;
+	    		sucked_player_obj.y = y - 64;
+	    		if ("grabbed_invisible" in self) sucked_player_obj.grabbed_invisible = true;
 	    		sucked_player_obj.visible = false;
 	    		sucked_player_obj.invincible = true;
 	    		sucked_player_obj.invince_time = 2;
@@ -379,73 +385,73 @@ switch (attack){
 	        		else grab_damage = object_index == obj_stage_article ? percent : get_player_damage(player);
 	        	}	
 			}
-			grab_timer++;
-			if (grab_timer > min(nspecial_grab_time_min + 0.55 * grab_damage, nspecial_grab_time_max)) {
-        		window = 6;
-        		window_timer = 0;
-        		grab_timer = 0;
-        		hsp = -8 * spr_dir
-        		
-		        sucked_player_obj.x = x + spr_dir * 48
-		        sucked_player_obj.y = y - 32;
-        		
-				if (sucked_player_obj.object_index == oPlayer) {
-			        sucked_player_obj.hitstun = 30;
-			        sucked_player_obj.hitstun_full = 30;
-			        sucked_player_obj.hitpause = true;
-			        sucked_player_obj.state = PS_HITSTUN;
-			        sucked_player_obj.hsp = 8 * spr_dir;
-			        sucked_player_obj.vsp = -2;
-			        sucked_player_obj.old_hsp = 8 * spr_dir;
-			        sucked_player_obj.old_vsp = -2;
-		    		sucked_player_obj.visible = true;
-				}
-				else if (sucked_player_obj.object_index == obj_article1) {
-					with (sucked_player_obj) {
-						hit_already = true;
-						owned_player = other.player;
-						state = 0;
-						state_timer = 0;
-						kb_dir = 55;
-						orig_knock = 4;
-						
-						if !free && kb_dir > 180 && kb_dir < 360 vsp = orig_knock*dsin(kb_dir);
-						else if !free vsp = -abs(orig_knock*dsin(kb_dir));
-						else vsp = -orig_knock*dsin(kb_dir);
-						hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
-						if hsp != 0 spr_dir = -sign(hsp);
+			if (!hitpause) {
+				grab_timer++;
+				if (grab_timer > min(nspecial_grab_time_min + 0.55 * grab_damage, nspecial_grab_time_max)) {
+	        		window = 6;
+	        		window_timer = 0;
+	        		grab_timer = 0;
+	        		hsp = -8 * spr_dir
+	        		
+			        sucked_player_obj.x = x + spr_dir * 48
+			        sucked_player_obj.y = y - 32;
+	        		
+					if (sucked_player_obj.object_index == oPlayer) {
+				        sucked_player_obj.hitstun = 20;
+				        sucked_player_obj.hitstun_full = 20;
+				        sucked_player_obj.hitpause = true;
+				        sucked_player_obj.state = PS_HITSTUN;
+				        sucked_player_obj.hsp = 8 * spr_dir;
+				        sucked_player_obj.vsp = -2;
+				        sucked_player_obj.old_hsp = 8 * spr_dir;
+				        sucked_player_obj.old_vsp = -2;
 					}
-				}
-				else if (sucked_player_obj.object_index == obj_article2) {
-					with (sucked_player_obj) {
-						hitstun = 60;
-						hitstun_full = 60;
-						next_state = PS_HITSTUN;
-						kb_dir = 45;
-						orig_knock = 12;
-						state_timer = 0;
-						hitpause = 0;
-						if !free && kb_dir > 180 && kb_dir < 360 vsp = orig_knock*dsin(kb_dir);
-						else if !free vsp = -abs(orig_knock*dsin(kb_dir));
-						else vsp = -orig_knock*dsin(kb_dir);
-						hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
-	    				visible = true;
+					else if (sucked_player_obj.object_index == obj_article1) {
+						with (sucked_player_obj) {
+							hit_already = true;
+							owned_player = other.player;
+							state = 0;
+							state_timer = 0;
+							kb_dir = 55;
+							orig_knock = 4;
+							
+							if !free && kb_dir > 180 && kb_dir < 360 vsp = orig_knock*dsin(kb_dir);
+							else if !free vsp = -abs(orig_knock*dsin(kb_dir));
+							else vsp = -orig_knock*dsin(kb_dir);
+							hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
+							if hsp != 0 spr_dir = -sign(hsp);
+						}
 					}
-		    		sucked_player_obj = noone; 
-				}
-				sucked_player_obj = noone;
-        	}
+					else if (sucked_player_obj.object_index == obj_article2) {
+						with (sucked_player_obj) {
+							hitstun = 30;
+							hitstun_full = 30;
+							next_state = PS_HITSTUN;
+							kb_dir = 45;
+							orig_knock = 12;
+							state_timer = 0;
+							hitpause = 0;
+							if !free && kb_dir > 180 && kb_dir < 360 vsp = orig_knock*dsin(kb_dir);
+							else if !free vsp = -abs(orig_knock*dsin(kb_dir));
+							else vsp = -orig_knock*dsin(kb_dir);
+							hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
+						}
+			    		sucked_player_obj = noone; 
+					}
+					sucked_player_obj = noone;
+	        	}
         	
-        	if (window >= 1 && window <= 5) {
-	    		if (is_special_pressed(DIR_ANY) || is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY)) {
-	    			attack_end();
-        			set_attack(AT_FTHROW);
-        			hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
-			        if (((left_down && spr_dir == 1) || (right_down && spr_dir == -1))) {
-	        			spr_dir = -spr_dir;
-			        }
-	    		}
-        	}
+	        	if (window >= 1 && window <= 5) {
+		    		if (is_special_pressed(DIR_ANY) || is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY)) {
+		    			attack_end();
+	        			set_attack(AT_FTHROW);
+	        			hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
+				        if (((left_down && spr_dir == 1) || (right_down && spr_dir == -1))) {
+		        			spr_dir = -spr_dir;
+				        }
+		    		}
+	        	}
+			}
         	
         	if ((window == 2 || window == 4 || window == 5) && !hitpause) {
         		can_move = false;
@@ -490,14 +496,14 @@ switch (attack){
 				if (sucked_player_obj.object_index == oPlayer || sucked_player_obj.object_index == obj_article1 || sucked_player_obj.object_index == obj_article2) {
 		    		sucked_player_obj.hitstop = 2;
 		    		sucked_player_obj.hitpause = true;
+		    		if ("grabbed_invisible" in self) sucked_player_obj.grabbed_invisible = true;
+		    		else sucked_player_obj.visible = false;
 			    	if (instance_exists(sucked_player_obj) && ((sucked_player_obj.object_index == oPlayer) &&  sucked_player_obj.state != PS_HITSTUN && sucked_player_obj.state != PS_HITSTUN_LAND)) {
-			    		sucked_player_obj.visible = true;
 			    		sucked_player_obj = noone; 
 			    	}
 				}
 	    		sucked_player_obj.x = x + spr_dir * 32;
 	    		sucked_player_obj.y = y - 32;
-	    		sucked_player_obj.visible = false;
 			}
 			var grab_damage = 0;
 			
@@ -546,7 +552,6 @@ switch (attack){
 							else if !free vsp = -abs(orig_knock*dsin(kb_dir));
 							else vsp = -orig_knock*dsin(kb_dir);
 							hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
-	    					visible = true;
 						}
 			    		sucked_player_obj = noone; 
 					}

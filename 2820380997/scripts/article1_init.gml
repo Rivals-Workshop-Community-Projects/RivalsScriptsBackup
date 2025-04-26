@@ -19,15 +19,27 @@ image_yscale = 1;
 image_alpha = 1;
 
 // Movement Variables
-walk_speed = 2;
-walk_accel = 0.2;
-walk_turn_time = 6;
-gravity_speed = .52;
-land_time = 4; //normal landing frames
+crouch_timer = 0;
+walk_speed = player_id.walk_speed;
+walk_accel = player_id.walk_accel;
+walk_turn_time = player_id.walk_turn_time;
+gravity_speed = player_id.gravity_speed;
+land_time = player_id.land_time; //normal landing frames
 land_sound = asset_get("sfx_land_light");
 jump_speed = player_id.jump_speed;
 short_hop_speed = player_id.short_hop_speed;
 djump_speed = player_id.djump_speed;
+down_was_pressed = false;
+horizontal_dir = 0;
+
+//duckytimings
+initial_dash_time = player_id.initial_dash_time;
+initial_dash_speed = player_id.initial_dash_speed;
+dash_turn_time = player_id.dash_turn_time;
+dash_turn_accel = player_id.dash_turn_accel;
+dash_stop_time = player_id.dash_stop_time;
+dash_stop_percent = player_id.dash_stop_percent;
+moonwalk_accel = player_id.moonwalk_accel;
 
 // State Control
 state = 0;
@@ -44,6 +56,8 @@ clone_has_air_dash = true;
 clone_air_dash_direction = 0;
 on_platform = false;
 clone_can_tap_jump = false;
+spawn_idle = false;
+is_platdropping = false;
 
 // Other Variables
 unbashable = 1;
@@ -107,7 +121,14 @@ plat_clone_assist_sprite = sprite_get("plat_clone_assist");
 spawn_sprite = player_id.clone_spawn_sprite
 idle_sprite = player_id.clone_idle_sprite
 idle_flourish_sprite = player_id.clone_idle_flourish_sprite
+crouch_sprite = player_id.clone_crouch_sprite
+crouch_idle_sprite = player_id.clone_crouch_idle_sprite
 walk_sprite = player_id.clone_walk_sprite
+walk_turn_sprite = player_id.clone_walk_turn_sprite
+dash_sprite = player_id.clone_dash_sprite
+dash_start_sprite = player_id.clone_dash_start_sprite
+dash_stop_sprite = player_id.clone_dash_stop_sprite
+dash_turn_sprite = player_id.clone_dash_turn_sprite
 jumpstart_sprite = player_id.clone_jumpstart_sprite
 jump_sprite = player_id.clone_jump_sprite
 doublejump_sprite = player_id.clone_doublejump_sprite

@@ -135,6 +135,50 @@ if(secret_alt_num = 1){
     set_article_color_slot( 7, 199, 74, 52 ); //Apron
     }
 }
+
+if(secret_alt_num = 7){
+    if(avocado = true){
+        //DD5
+set_character_color_slot( 0, 88, 80, 63 ); //Gumbo Skin 1
+set_character_color_slot( 1, 200, 189, 158 ); //Gumbo Skin 2
+set_character_color_slot( 2, 48, 45, 47 ); //Jeans
+set_character_color_slot( 3, 48, 45, 47 ); //Hoodie
+set_character_color_slot( 4, 255, 191, 0 ); //Eyes
+set_character_color_slot( 5, 242, 207, 207 ); //Po Skin 1
+set_character_color_slot( 6, 211, 120, 120 ); //Po Skin 2
+set_character_color_slot( 7, 51, 117, 175 ); //Apron
+set_article_color_slot( 0, 88, 80, 63 ); //Gumbo Skin 1
+set_article_color_slot( 1, 200, 189, 158 ); //Gumbo Skin 2
+set_article_color_slot( 2, 48, 45, 47 ); //Jeans
+set_article_color_slot( 3, 48, 45, 47 ); //Hoodie
+set_article_color_slot( 4, 255, 191, 0 ); //Eyes
+set_article_color_slot( 5, 242, 207, 207 ); //Po Skin 1
+set_article_color_slot( 6, 211, 120, 120 ); //Po Skin 2
+set_article_color_slot( 7, 51, 117, 175 ); //Apron
+    }
+}
+
+if(secret_alt_num = 8){
+    if(avocado = true){
+        //gunner
+set_character_color_slot( 0, 127, 147, 190 ); //Gumbo Skin 1
+set_character_color_slot( 1, 167, 195, 219 ); //Gumbo Skin 2
+set_character_color_slot( 2, 73, 81, 92 ); //Jeans
+set_character_color_slot( 3, 128, 135, 143 ); //Hoodie
+set_character_color_slot( 4, 43, 107, 255 ); //Eyes
+set_character_color_slot( 5, 218, 205, 188 ); //Po Skin 1
+set_character_color_slot( 6, 253, 208, 105 ); //Po Skin 2
+set_character_color_slot( 7, 212, 213, 215 ); //Apron
+set_article_color_slot( 0, 127, 147, 190 ); //Gumbo Skin 1
+set_article_color_slot( 1, 167, 195, 219 ); //Gumbo Skin 2
+set_article_color_slot( 2, 73, 81, 92 ); //Jeans
+set_article_color_slot( 3, 128, 135, 143 ); //Hoodie
+set_article_color_slot( 4, 43, 107, 255 ); //Eyes
+set_article_color_slot( 5, 218, 205, 188 ); //Po Skin 1
+set_article_color_slot( 6, 253, 208, 105 ); //Po Skin 2
+set_article_color_slot( 7, 212, 213, 215 ); //Apron
+    }
+}
 }
 
 if  (get_player_color(player) == 23) { //change # to the color you wanna change
@@ -144,6 +188,7 @@ if  (get_player_color(player) == 25) { //change # to the color you wanna change
     set_character_color_slot( 3, 0, 0, 0, 0); //change # to the slot you wanna change
 }
 
+if(avocado == false){
 switch (get_player_color(player)){
 	case 4:
 	case 9:
@@ -160,6 +205,7 @@ switch (get_player_color(player)){
 	case 25:
 	set_character_color_shading(3,1.5);
 	break;
+}
 }
 
 

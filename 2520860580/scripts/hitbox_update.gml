@@ -47,8 +47,6 @@ if hitbox_timer == 1 {
         }    
 }
     
-    
-    
 }
 
 
@@ -68,30 +66,32 @@ if attack == AT_EXTRA_1 && hbox_num == 3 {
      create_hitbox(AT_EXTRA_1, 4 , x, y)
  }
  
- 
 }
 
 
 if attack == AT_EXTRA_2 && hbox_num == 2 {
   hsp /= 1.1
-  player_id.move_cooldown[AT_DTILT] = 2
-  player_id.move_cooldown[AT_DAIR] = 2
-  player_id.move_cooldown[AT_FAIR] = 2
+  with player_id{
+  	if "hit_player_obj" in self{
+			other.y += clamp(floor((hit_player_obj.y - other.y)/12),-3,3)
+			other.x += clamp(floor(hit_player_obj.x - other.x)/12,-2,2)
+  	}
+  }
   
-  if hitbox_timer >= 16 && hitbox_timer % 4 == 0{
-  	create_hitbox(AT_EXTRA_2, 3,x, y)
+  if hitbox_timer >= 16 && hitbox_timer % 6 == 0{
+  	create_hitbox(AT_EXTRA_2, 3, round(x), round(y))
   	  if hitbox_timer % 8 == 0{
   	sound_play(sound_get("SpaceCutB"),false,noone,0.4) 
   	  }
   }
   
-    if hitbox_timer < 16 && (hitbox_timer % 4 == 0 or hitbox_timer == 1){
-    	  	create_hitbox(AT_EXTRA_2, 4,x, y)
+    if hitbox_timer < 16 && (hitbox_timer % 6 == 0 or hitbox_timer == 1){
+    	  	create_hitbox(AT_EXTRA_2, 4, round(x), round(y))
     	  	 sound_play(sound_get("SpaceCutB"),false,noone,0.4) 
     }
   
   
-  if hitbox_timer == 150 or player_id.attack == AT_EXTRA_3 or player_id.attack == AT_FSTRONG {
+  if hitbox_timer == 90 or player_id.attack == AT_EXTRA_3 or player_id.attack == AT_FSTRONG {
   	sound_play(asset_get("sfx_ori_bash_projectile"))
   	destroyed = 1
   }
@@ -101,12 +101,52 @@ if attack == AT_EXTRA_2 && hbox_num == 2 {
 
 
 if attack == AT_FSPECIAL && hbox_num == 1 {
-	  player_id.move_cooldown[AT_FSPECIAL] = 2
-	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - random_func(4, 10, true) , esp )
+	
+	if hitbox_timer > 40{
+		spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - random_func(4, 10, true) , esp )
+		hit_priority = 9
+		with player_id{
+        	if "hit_player_obj" in self{
+      			other.y += clamp(floor((hit_player_obj.y - other.y - 12)/12),-2,2)
+        	}
+        }
+	}
+	
+	 if hitbox_timer == 40{
+	 	sound_play(sound_get("counterhit"),false,noone,0.5,2)
+	 	hsp = 16*spr_dir
+     	SC2 = spawn_hit_fx(x,y,302)
+     	SC2.pause = 4
+     }
+     
+    if hitbox_timer < 40{
+    	hsp /= 1.1
+    }
+  
+	if hitbox_timer == 1{
+    	SC2 = spawn_hit_fx(x,y,302)
+    	SC2.pause = 4
+    }  
+	  
+	
 }
 
-if attack == AT_FSPECIAL && hbox_num == 2 {
-}
+
+// if attack == AT_FSPECIAL && hbox_num == 5 {
+//   if hitbox_timer == 1{
+//   	SC2 = spawn_hit_fx(x,y,302)
+//   	SC2.pause = 4
+//   }
+  
+//   if hitbox_timer == 40{
+//   	destroyed = 1
+//   	sub = create_hitbox(AT_FSPECIAL,1,round(x),round(y))
+//   	sub.spr_dir = spr_dir
+//   	SC2 = spawn_hit_fx(x,y,302)
+//   	SC2.pause = 4
+//   }
+//   hsp /= 1.05
+// }
 
 if attack == AT_FSPECIAL && hbox_num == 3 {
 	

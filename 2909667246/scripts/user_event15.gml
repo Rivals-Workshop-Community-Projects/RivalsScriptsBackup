@@ -259,8 +259,27 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.47", "6th May, 2024");
+initPatch("1.50", "8th February, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Made Grab use grabbed_invisible so that player visibility resets always (without it, it could cause invisibility bugs in Turbo Mode etc)");
+
+initPatch("1.49", "25th January, 2025");
 initHeader("Buffs");
+initSection("+ When having a slingshot projectile pocketed, you can choose when to launch both projectiles by holding the button instead of the next FAir/Bair always using it (pocketed bowling balls already worked this way, so not only is it useful, but it's more consistent)");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a niche bug with UAir/DAir hitboxes related to size changes
++ Anti-cheapie is now opt-in (hold Attack to activate it!), and should react to less characters");
+
+initPatch("1.48", "16th December, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some misc code and increased some performance slightly
++ Changed how pocket throw speed works a little bit: Projectiles without defined throw speed no longer use their original velocity when thrown (as this usually works poorly), and Articles without defined speed no longer default to any speed and instead stand still (since many articles may be stationary)
++ Made the AI better once again, fixing several issues and also adding more features (ex: using Axe as a finisher, using FSpec to recover, etc)
++ Fixed anti-cheapie a bit (should be less strict, to hopefully have it trigger less on accident)
++ Added more Miiverse posts");
+
+initPatch("1.47", "6th May, 2024");
+initHeader("Fixes / Other Changes");
 initSection("+ Added more Miiverse posts
 + Added Nintendo Wii Wiimote compatibility");
 
@@ -683,7 +702,7 @@ zero".
 
 #define CORE_cheats
 
-CHEAT_BeegKewtian	= initCheat("Beeg Kewtian", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 99], ["no", "beeg", "beeg,,,", "very beeg", "extra beeg", "yuge", "massiv", "enormus", "wow!", "what a good boy", "yes"], "Very very beeg boy");
+CHEAT_BeegKewtian	= initCheat("Beeg Kewtian", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 99], ["no", "beeg", "beeg,,,", "very beeg", "extra beeg", "yuge", "massiv", "enormus", "wow!", "what a silky kewtian", "yes"], "Very very beeg");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

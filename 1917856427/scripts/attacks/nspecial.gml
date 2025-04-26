@@ -28,7 +28,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 60);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 9999); // 60 > 120
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 32);
@@ -36,14 +36,15 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1); // 0.5 > 0.1
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1.0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("nspecial_projMask"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 9);

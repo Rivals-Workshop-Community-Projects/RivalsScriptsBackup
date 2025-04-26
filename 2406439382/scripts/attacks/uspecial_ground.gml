@@ -10,6 +10,3 @@ set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_ANIM_FRAMES, 4);
-
-
-

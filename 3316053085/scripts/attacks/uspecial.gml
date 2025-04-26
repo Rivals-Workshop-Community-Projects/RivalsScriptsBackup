@@ -21,7 +21,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_superjump_sein"));
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_uspec"));
 
 window_num ++; //attack movement
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);

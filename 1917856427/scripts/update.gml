@@ -54,27 +54,36 @@ with(oPlayer){
 		}
 	}
 }
+if (hitstop >= 100){
+	hitstop = 10;
+	shake_camera( 8, 6 );
+}
 
 if (ds_list_size(frozenPlayersArray) != 0){
+	
 	for (var i = 0; i < ds_list_size(frozenPlayersArray); i++){
 		with(oPlayer){
-			
-			if (id == ds_list_find_value(other.frozenPlayersArray, i) and frozenInTime){
-				// print(freezeFrames);
-				hitstop = 99999;
-				if (countDownFxFrame < 21){
-					countDownFxFrame += 0.067;
-				}
-				freezeFrames -= 1;
-				outline_color = [ 56, 62, 182 ];
-				if (freezeFrames <= 0){
-					var toClear = ds_list_find_index(other.frozenPlayersArray, id);
-					ds_list_delete(other.frozenPlayersArray, toClear);
-					disappearFx = true;
-					sound_play(other.tick);
-					hitstop = 5;
-					outline_color = [0, 0, 0];
-					frozenInTime = false;
+			if (id != other.id){
+				if (id == ds_list_find_value(other.frozenPlayersArray, i)){
+					if (frozenInTime){
+						if (state == PS_HITSTUN){
+							hitstop = 1;
+						}
+						if (countDownFxFrame < 21){
+							countDownFxFrame += 0.067;
+						}
+						freezeFrames -= 1;
+						outline_color = [ 56, 62, 182 ];
+						if (freezeFrames <= 0){
+							var toClear = ds_list_find_index(other.frozenPlayersArray, id);
+							ds_list_delete(other.frozenPlayersArray, toClear);
+							disappearFx = true;
+							sound_play(other.tick);
+							hitstop = 5;
+							outline_color = [0, 0, 0];
+							frozenInTime = false;
+						}						
+					}
 				}
 			}
 		}
@@ -130,15 +139,6 @@ else
 	{
 		used_aird = false;
 		move_cooldown[AT_USPECIAL] = 0;
-	}
-}
-if(grabbedid != noone){
-	grabbedid.ungrab++;
-	if(grabbedid.ungrab == 2){
-		grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
-		grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
-		grabbedid.state = PS_TUMBLE;
-		grabbedid.ungrab = 0;
 	}
 }
 

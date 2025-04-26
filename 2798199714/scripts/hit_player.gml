@@ -32,7 +32,7 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 
 if(my_hitboxID.attack == AT_NAIR){
 	if(my_hitboxID.hbox_num >= 11){
-		if(hit_player_obj.hitstun > 0){
+		if(hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND){
 			if(my_hitboxID.hbox_num == 11){
 				hit_player_obj.x = x+60*spr_dir;
 		    	hit_player_obj.y = y;
@@ -67,7 +67,7 @@ if(my_hitboxID.attack == AT_UAIR){
 if(my_hitboxID.attack == AT_FTILT){
 	if(my_hitboxID.hbox_num == 2){
 		window = 3;window_timer = 0;
-		hit_player_obj.x = x+60*spr_dir;hit_player_obj.y = y-10;
+		if(hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND){hit_player_obj.x = x+60*spr_dir;hit_player_obj.y = y-10;}
 	}
 }
 

@@ -20,6 +20,93 @@ switch (attack)
             player_id.dstrong_tornado_hbox = noone;
         }
         break;
+    case AT_USPECIAL:
+        with (artc_trickring) if (instance_exists(launching_player))
+        {
+            if (launching_player.state == PS_DEAD || launching_player.state == PS_RESPAWN) exit;
+            
+            if (launching_player.object_index != oPlayer && "enemy_stage_article" in launching_player) //stage article enemies
+            {
+                launching_player.state = 6;
+                launching_player.state_timer = 0;
+                launching_player.hurt_img = 4;
+                if (launching_player.physics_state == 1) hitstun = player_id.combo_time_gain_hit;
+            }
+            else if (launching_player.perfect_dodging && launching_player.player != trick_ring_player) //parry check
+            {
+                trick_ring_player = launching_player.player;
+                trick_ring_player_id = launching_player;
+                hud_owner_col = (trick_ring_player_id.temp_level == 0 || get_match_setting(SET_TEAMS)) ? get_player_hud_color(trick_ring_player) : hud_col_sel[trick_ring_player];
+
+                ring_stun_start_time = 0;
+                state = (trick_ring_player == player) ? 2 : 4;
+                state_timer = 0;
+                visible = true;
+
+                player_used_ring = false;
+                launching_player = noone;
+            }
+            else if (!launching_player.perfect_dodging) //everything else
+            {
+                with (launching_player)
+                {
+                    //teammate / owner behaviour
+                    if (player == other.trick_ring_player && !get_match_setting(SET_TEAMS) || get_player_team(player) == get_player_team(other.trick_ring_player))
+                    {
+                        //sonic/compatibility behaviour
+                        if (("is_bar_sonic" in self || "sonic_rainbowring_atk" in self)) 
+                        {
+                            set_ring_attack("is_bar_sonic" in self ? AT_USPECIAL_2 : sonic_rainbowring_atk);
+                        }
+                        else if (!hitpause) set_state(PS_IDLE_AIR);
+                        //a teammate without compatibility
+                    }
+                    else //enemy behaviour
+                    {
+                        if (invince_time <= 0 && !initial_invince && !invincible)
+                        {
+                            hurt_img = 4;
+                            if (state != PS_HITSTUN) //set them to hitstun
+                            {
+                                soft_armor = 0;
+                                hurtboxID.sprite_index = (hitstun_hurtbox_spr != -1) ? hitstun_hurtbox_spr : hurtbox_spr;
+                                hitstun_full = 30;
+                                hitstun = hitstun_full;
+                                hit_player = other.player;
+                                set_state(PS_HITSTUN);
+                            }
+                            else //reset hitstun
+                            {
+                                state_timer = 0;
+                                hitstun = hitstun_full;
+                                other.ring_launch_speed = orig_knock;
+                            }
+                        }
+                    }
+
+                    attack_end();
+                    destroy_hitboxes();
+                }
+            }
+
+            if (state == 1) with (launching_player)
+            {
+                x = other.x;
+                y = other.y;
+                free = true;
+
+                //speed calculation needs to be done a frame early
+                hsp = 0;
+                vsp = -other.ring_launch_speed;
+                
+                other.player_used_ring = true;
+                
+                other.is_hittable = false;
+                other.ring_is_useable = false;
+            }
+            launching_player = noone;
+        }
+        break;
     case 0: //stray hitboxes
         switch (hbox_num)
         {
@@ -40,7 +127,7 @@ switch (attack)
                         sound_play(sound_get("sfx_ring"));
                         if ("is_bar_sonic" in other && other.has_superform)
                         {
-                            other.rings_cur ++;
+                            if (other.rings_cur < other.rings_max) other.rings_cur ++;
                             if (other.has_blast) other.blast_cur ++; //rings also increase the fs meter if it's available
                         }
                         ring_collected = true;
@@ -82,4 +169,21 @@ switch (attack)
         return true;
     }
     else return false;
+}
+#define set_ring_attack(atk)
+{
+    if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR || attack != atk)
+    {
+        set_attack(atk);
+        state_timer = 0;
+        hurtboxID.sprite_index = get_attack_value(atk, AG_HURTBOX_SPRITE);
+        spr_angle = 0;
+        draw_x = 0;
+        draw_y = 0;
+        if ("is_bar_sonic" in self)
+        {
+            airdash_stats = [1, 0, 0, -1];
+            keep_air_speed = abs(hsp);
+        }
+    }
 }

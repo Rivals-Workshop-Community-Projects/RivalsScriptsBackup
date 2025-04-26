@@ -39,6 +39,7 @@ if (state == PS_FLASHED || state == PS_FROZEN || state == PS_BURIED) sprite_inde
 
 if(state == PS_SPAWN && !hitpause && !has_spawned){
 	if(cur_skin != 1){
+		if(state_timer == 1) voice_play(1, [vc_intro]);
 		if(state_timer < 30){
 			sprite_index = asset_get("empty_sprite");
 			hud_offset = 99999;
@@ -64,12 +65,50 @@ if(state == PS_SPAWN && !hitpause && !has_spawned){
 		spawn_hit_fx(x, y - char_height/2, fx_load);
 		sound_play(asset_get("mfx_star"))
 		if juiced_up sound_play(sound_get("sfx_strong_hit"))
+		if(get_player_color(player) == 31){
+			sound_play(asset_get("mfx_title_start"), false, false, 1.2);
+			sound_play(sound_get("sfx_scratch_meow2"));
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y, spr_dir:1, sprite_index:sprite_get("maxwell"), image_index:image_index, rot:spr_angle, col:c_gray, timer:0, timerMax:20, is_cat:true};
+		}
+		if(get_player_color(player) == 30){
+			if !juiced_up sound_play(sound_get("sfx_strong_hit"));
+		}
 	}
 	if(state_timer >= 85 && state_timer <= 98){
 		sprite_index = (cur_skin == 1 ? sprite_get("f_dspecial") : sprite_get("dspecial"));
 		image_index = 11 + (state_timer-85)/5;
 	}
+	if(get_player_color(player) == 30){
+		var blu = make_colour_rgb(85, 205, 252);
+		var pink = make_colour_rgb(247, 168, 223);
+		switch(state_timer){
+			case 85:
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:2*state_timer, col:blu, timer:0, timerMax:20, is_khep:true};
+			break;
+			case 95:
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:2*state_timer, col:pink, timer:0, timerMax:20, is_khep:true};
+			break;
+			case 105:
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:2*state_timer, col:c_white, timer:0, timerMax:20, is_khep:true};
+			break;
+			case 115:
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:2*state_timer, col:pink, timer:0, timerMax:20, is_khep:true};
+			break;
+			case 125:
+			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:2*state_timer, col:blu, timer:0, timerMax:20, is_khep:true};
+			break;
+		}
+	}
 }
+
+// intro vfx array
+var newArray = 0;
+for (var i = 0; i < array_length_1d(intro_alt_vfx_array); ++i)
+{
+    var obj = intro_alt_vfx_array[i];
+    if (++obj.timer <= obj.timerMax) newArray[array_length_1d(newArray)] = obj;
+}
+intro_alt_vfx_array = newArray;
 
 
 #define sprite_get_skinned()
@@ -215,4 +254,18 @@ var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 		return player_id._ssnksprites.skin_active != -1;
 	}
 	return _ssnksprites.skin_active != -1;
+}
+
+#define voice_play
+/// voice_play(idx, voice_array, empty_chance = 0)
+var idx = argument[0], voice_array = argument[1];
+var empty_chance = argument_count > 2 ? argument[2] : 0;;
+
+if !voiced return;
+
+var selected = random_func(idx, array_length(voice_array) + empty_chance, true);
+
+if selected < array_length(voice_array) {
+	sound_stop(voice_playing_sound);
+	voice_playing_sound = sound_play(voice_array[selected], false, noone, 1.2);
 }

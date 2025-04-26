@@ -98,7 +98,28 @@ if(explode_timer = 120){
 	}
 }
 
+//death interactions
 with (player_id){
+	if(state == PS_RESPAWN and state_timer = 0){
+		if(other.spice_level > 0){
+			other.spice_level = 0;
+			sound_play(asset_get("sfx_hod_steam_level1"));
+			spawn_hit_fx(floor(other.x), floor(other.y) - 40, dust_effect);
+			other.spice_cooldown = 90;
+		}
+		
+		if(other.has_shrimp and other.state < 4){
+			sound_play(asset_get("sfx_blow_medium1"));
+			spawn_hit_fx(floor(other.x), floor(other.y) - 40, 301);
+		create_hitbox(AT_FSPECIAL, 3, floor(other.x), floor(other.y) - 60);	
+		other.explode_timer = 0;
+		other.has_shrimp = false;
+		move_cooldown[AT_FSPECIAL] = 120;
+		shrimp_in_pot = false;	
+		}
+	}
+	
+	
 	if(other.has_shrimp && other.explode_timer == 120){	
 		if(other.state != 6){
 	if (get_player_stocks( player ) == 0) {
@@ -458,7 +479,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     	hitbox_hit = noone;
     }
 
-
+//#endregion 
 //#region State 0: Spawn
 if (state == 0){
 	can_be_hit = false;
@@ -522,7 +543,7 @@ if (state == 0){
 }
 
 
-
+//#endregion 
 //#region State 1: Idle
 if (state == 1){
 	galaxy_prevention = false;
@@ -560,7 +581,7 @@ pot_trap();
 	}
 	
 }
-
+//#endregion 
 //#region State 2: Got Hit
 if (state == 2){
 	//if(state_timer = 1){
@@ -681,7 +702,7 @@ if(pot_trapped.activated_kill_effect){
 }
 }
 }
-
+//#endregion 
 //#region State 3: Spice Up
 if (state == 3){
 	if(!hitstop && !pot_hitbox_active && !can_be_hit){
@@ -791,7 +812,7 @@ with (pHitBox){
     }
 }
 }
-
+//#endregion 
 //#region State 4: Shrimp Up
 if (state == 4){
 	can_be_hit = false;
@@ -829,6 +850,7 @@ if (state == 4){
 		}
 	}
 }
+//#endregion 
 //#region State 5: Trapped
 if (state == 5){
 	can_be_hit = false;
@@ -887,7 +909,7 @@ if(state_timer == 35){
 	galaxy_pot = true;
 }
 }
-
+//#endregion 
 //#region State 6: Explosion
 if (state == 6){
 	can_be_hit = false;
@@ -1104,7 +1126,7 @@ if(!free){
 		}
 	}
 }
-
+//#endregion 
 //#region State 7: Vfx
 if (state == 7){
 can_be_hit = false;	
@@ -1174,7 +1196,7 @@ if(can_be_hit){
 }
 
 
-
+//#endregion 
 //#region State 8: Grabbed
 if (state == 8){
 can_be_hit = false;	
@@ -1203,6 +1225,7 @@ if(player_id.state != PS_ATTACK_GROUND and player_id.state != PS_ATTACK_AIR){
 
 
 //Sprite and animation handling
+//#endregion 
 //#region Sprites
 //Assign each state both a sprite it should have and a way it should animate
 if(player_id.pot_skin = 0 && !player_id.genesis_alt){

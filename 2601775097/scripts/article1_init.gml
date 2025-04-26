@@ -1,5 +1,7 @@
 //article1_init
 
+is_bar_artcmaster = true;
+
 can_be_grounded = false;
 ignores_walls = true;
 uses_shader = true;
@@ -19,6 +21,10 @@ last_window = 0;        //if last_window is 0, it will not use the window animat
 mask_color = c_black;
 
 alt_cur = get_player_color(player);
+
+chain_start = [0, 0];
+chain_end = [0, 0];
+chain_amount = 0;
 
 rec_fire_count = 3;
 fire_offset = 48;

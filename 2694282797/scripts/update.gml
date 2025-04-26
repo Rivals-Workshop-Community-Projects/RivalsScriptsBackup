@@ -56,56 +56,72 @@ if get_player_color(player) == 14 { //marisa alt rainbow ice
 }
 
 // ------------------- a --------------------------------
-//later add to doomkin beryl minior
-if fuck_intro {
-    if get_gameplay_time() == 6 {
-        sound_play(sfx_vineboom)   
-    }
-    /*
-    if get_gameplay_time() == 40 {
-        with msai {
-            create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
+update_comp_hit_fx();
+
+#define update_comp_hit_fx
+//function updates comp_vfx_array
+if comp_vfx_array != null {
+    for(var ao=0;ao<array_length(comp_vfx_array);ao++) {
+        if (comp_vfx_array[ao][0].cur_timer > comp_vfx_array[ao][0].max_timer) { //if effect is over, skip
+            continue;
+        }//otherwise go on
+        comp_vfx_array[ao][0].cur_timer += 1; //update effect timer
+        var check_timer = comp_vfx_array[ao][0].cur_timer; //store in a var for easier access
+        for (var ae=1; ae<array_length(comp_vfx_array[ao]);ae++) { //check effect timers
+            if (check_timer == comp_vfx_array[ao][ae].delay_timer) { //if timer is the spawn time, spawn it
+                var new_fx = spawn_hit_fx(comp_vfx_array[ao][ae].x,comp_vfx_array[ao][ae].y,comp_vfx_array[ao][ae].index);
+                new_fx.draw_angle = comp_vfx_array[ao][ae].rotation;
+                new_fx.depth = depth+1+comp_vfx_array[ao][ae].depth; //so it appears in front of hit players
+                new_fx.spr_dir = comp_vfx_array[ao][ae].spr_dir; // set it's spr dir, in case it should face a specific direction
+            }
         }
     }
-    if get_gameplay_time() == 56 {
-        state = PS_PARRY_START;
-    }
-    //reflect
-    if get_gameplay_time() == 60 {
-        sound_play(sfx_vineboom)   
-        sound_play(asset_get("sfx_parry_success"))
-        with(msai) {
-            set_hitbox_value(AT_UTHROW,player,HG_WIDTH,50);
-            set_hitbox_value(AT_UTHROW,player,HG_HEIGHT,50);
-            set_hitbox_value(AT_UTHROW,player,HG_BASE_KNOCKBACK,0);
-            set_hitbox_value(AT_UTHROW,player,HG_KNOCKBACK_SCALING,0);
-            other.no_u = create_hitbox(AT_UTHROW,player,other.x,other.y-35);
-        }
-        no_u.player = player;
-        no_u.hit_priority = 1;
-        no_u.alt_timer = 0;
-        //no_u.vsp = 0;
-        //no_u.hsp = 0;
-    }
-    
-    if instance_exists(no_u) {
-        no_u.hitbox_timer = 0;
-        no_u.vsp -= 0.9;
-        //no_u.target = msai;
-        //no_u.hsp = 0;
-        //no_u.vsp = 0;
-        no_u.x = floor(lerp(no_u.x,msai.x,0.1));
-        no_u.y = floor(lerp(no_u.y,msai.y - 20,0.1));
-        no_u.alt_timer += 1;
-        if no_u.alt_timer == 28 {
-            no_u.destroyed = true;
-        }
-        
-    }
-    */
 }
 
+#define spawn_comp_hit_fx
+//function takes in an array that contains smaller arrays with the vfx information
+// list formatting: [ [x, y, delay_time, index, rotation, depth, force_dir], ..]
+var fx_list = argument0;
+vfx_created = false;
 
+//temporary array
+var temp_array = [{cur_timer: -1, max_timer: 0}];  //first value is an array that constains current and max timer, to detect when to spawn vfx and when to stop and be replaced
+                            //later values are the fx
+var player_dir = spr_dir;
+
+//first take the arrays from the function, set them into objects, and store them in an array
+for (var i=0;i < array_length(fx_list);i++) {
+    //create new fx part tracker and add to temp array
+    var new_fx_part = {
+        x: fx_list[i][0],
+        y: fx_list[i][1],
+        delay_timer: fx_list[i][2],
+        index: fx_list[i][3],
+        rotation: fx_list[i][4],
+        depth: fx_list[i][5],
+        spr_dir: fx_list[i][6] == 0 ? player_dir : fx_list[i][6]
+    };
+    array_push(temp_array, new_fx_part);
+    
+    //change max timer if delay is bigger than it
+    if (new_fx_part.delay_timer > temp_array[0].max_timer) {
+        temp_array[0].max_timer = new_fx_part.delay_timer;
+    }
+}
+
+//add temp array to final array
+for (var e=0;e<array_length(comp_vfx_array);e++) {
+    if (vfx_created) { //stop process if effect is created
+        break;
+    } 
+    if (comp_vfx_array[e][0].cur_timer > comp_vfx_array[e][0].max_timer) { //replace finished effects
+        comp_vfx_array[e] = temp_array;
+        vfx_created = true;
+    } else if (e == array_length(comp_vfx_array)-1) { //otherwise add it in the end of the array
+        array_push(comp_vfx_array, temp_array);
+        vfx_created = true;
+    }
+}
 
 #define do_a_glide_toss
 //a
@@ -114,9 +130,10 @@ if ((state == PS_ROLL_BACKWARD) or (state == PS_ROLL_FORWARD) or (state == PS_AI
     if invincible && !initial_invince {
         invince_timer = 0;
     }
-    hsp *= 1.75;
-    vsp *= 1.75;
+    hsp *= toss_boost;
+    vsp *= toss_boost;
     if free {
         has_airdodge = false;
     }
+    glide_tossing = true;
 }

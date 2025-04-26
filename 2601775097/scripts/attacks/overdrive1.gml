@@ -14,7 +14,7 @@ set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
 
 window_num ++; //windup 2
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 40); //100 on anti-cheapie?
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 40);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);

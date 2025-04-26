@@ -5,7 +5,7 @@ hitstun_hurtbox_spr = -1;
 
 char_height = 52;
 idle_anim_speed = .2;
-crouch_anim_speed = .2;
+crouch_anim_speed = .1;
 walk_anim_speed = .1;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
@@ -46,14 +46,14 @@ hitstun_grav = .5;
 knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 12;
+prat_land_time = 8;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 6;
-crouch_active_frames = 24;
+crouch_active_frames = 18;
 crouch_recovery_frames = 11;
 
 //parry animation frames
@@ -98,8 +98,10 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 0;
 
+small_sprites = 1;
+
 set_victory_bg(sprite_get("winbg"));
-if (get_player_color(player) == 17) || (get_player_color(player) == 18){
+if (get_player_color(player) == 18){
 	set_victory_theme(sound_get("finalfanfare"));
 } else {
 	set_victory_theme( sound_get( "winmusic" ));
@@ -116,7 +118,7 @@ switch get_player_color(player){
         set_ui_element(UI_WIN_PORTRAIT, sprite_get("gb_portrait"));
         set_ui_element(UI_WIN_SIDEBAR, sprite_get("gb_result_small"));
 	break;
-	case 16:
+	case 15:
         set_ui_element(UI_WIN_PORTRAIT, sprite_get("cosmic_portrait"));
         set_ui_element(UI_HUD_ICON, sprite_get("cosmic_hud"));
         set_ui_element(UI_HUDHURT_ICON, sprite_get("cosmic_hurt"));

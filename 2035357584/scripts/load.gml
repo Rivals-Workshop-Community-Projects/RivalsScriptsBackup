@@ -118,6 +118,7 @@ sprite_change_offset("intro", 183, 366);
 sprite_change_offset("plat", 110, 118);
 sprite_change_offset("platback", 110, 118);
 sprite_change_offset("grenade_spin", 60, 67);
+sprite_change_offset("grenade_spin_outline", 60, 67);
 sprite_change_offset("dust_fore", 63, 106);
 sprite_change_offset("dust_back", 63, 106);
 sprite_change_offset("explosion_air", 128, 128);

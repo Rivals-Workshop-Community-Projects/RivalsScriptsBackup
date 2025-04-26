@@ -50,6 +50,10 @@ if(inside_mech){
 	|| (state == PS_HITSTUN || state == PS_HITSTUN_LAND) && kob_sleep){
 	    draw_y = ease_sineIn(0,-5,get_gameplay_time(),50);
 	    hud_offset = ease_sineIn(10,15,get_gameplay_time(),50);
+	    sprite_change_offset("hurtbox", 50, round(98-ease_sineIn(0,-5,get_gameplay_time(),50)));
+    	sprite_change_offset("hurtbox_crouch", 50, round(98-ease_sineIn(0,-5,get_gameplay_time(),50)));
+	}else{
+		sprite_change_offset("hurtbox", 50, 98);sprite_change_offset("hurtbox_crouch", 50, 98);
 	}
 	
 	if(abs(hud_offset) < 1)hud_offset = 0;
@@ -105,6 +109,14 @@ else if(!inside_mech){
 	    var frames = 6;
 	    var frame_dur = 6-floor(dash_anim_speed);frame_dur = max(frame_dur,1);
 	    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
+	}
+}
+
+if(phone_attacking){
+	if(attack == AT_BAIR){
+		with(pHitBox){
+			if(player_id == other && attack == other.attack)FireHitbox = true;
+        }
 	}
 }
 

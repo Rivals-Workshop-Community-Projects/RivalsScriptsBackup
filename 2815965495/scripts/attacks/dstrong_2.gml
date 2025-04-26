@@ -59,6 +59,7 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_HITPAUSE_SCALING, .75);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_VISUAL_EFFECT, 148);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_zetter_downb"));
 set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_LOCKOUT, 10);
+
 

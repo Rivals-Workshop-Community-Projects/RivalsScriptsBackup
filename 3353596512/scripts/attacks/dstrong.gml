@@ -1,0 +1,197 @@
+set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
+set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC, "Ladder can extend to four different heights depending on how much the move is charged; impact hitbox goes up by 0.1 in knockback scaling, 2 in base hitpause, and 2 in damage for each tier.");
+
+//startup
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
+
+//release
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+
+//active
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+
+//endlag
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+set_num_hitboxes(AT_DSTRONG, 5);
+
+//physical hit
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
+set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 26);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -12);
+set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 77);
+set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 26);
+set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 11);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);
+
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 22);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -28);
+set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 42);
+set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 56);
+set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 11);
+set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 45);
+set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
+
+//ladder fall
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 30);
+set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 5);
+set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 40);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(AT_DSTRONG, 3, HG_FORCE_FLINCH, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSTRONG, 3, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSTRONG, 3, HG_GROUNDEDNESS, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 5);
+
+set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 30);
+set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 5);
+set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 280);
+set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(AT_DSTRONG, 4, HG_FORCE_FLINCH, 0);
+set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSTRONG, 4, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSTRONG, 4, HG_GROUNDEDNESS, 2);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_DSTRONG, 4, HG_HIT_LOCKOUT, 5);
+
+//copies of the ladder hitboxes under a different attack index to fix a bug involving strong charge.
+set_hitbox_value(2, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(2, 1, HG_LIFETIME, 3);
+set_hitbox_value(2, 1, HG_HITBOX_X, 0);
+set_hitbox_value(2, 1, HG_HITBOX_Y, 0);
+set_hitbox_value(2, 1, HG_WIDTH, 90);
+set_hitbox_value(2, 1, HG_HEIGHT, 30);
+set_hitbox_value(2, 1, HG_SHAPE, 1);
+set_hitbox_value(2, 1, HG_PRIORITY, 5);
+set_hitbox_value(2, 1, HG_DAMAGE, 10);
+set_hitbox_value(2, 1, HG_ANGLE, 40);
+set_hitbox_value(2, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(2, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(2, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(2, 1, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(2, 1, HG_FORCE_FLINCH, 0);
+set_hitbox_value(2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(2, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(2, 1, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(2, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(2, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(2, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(2, 1, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(2, 1, HG_GROUNDEDNESS, 1);
+set_hitbox_value(2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(2, 1, HG_HIT_LOCKOUT, 5);
+
+set_hitbox_value(2, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(2, 2, HG_LIFETIME, 3);
+set_hitbox_value(2, 2, HG_HITBOX_X, 0);
+set_hitbox_value(2, 2, HG_HITBOX_Y, 0);
+set_hitbox_value(2, 2, HG_WIDTH, 90);
+set_hitbox_value(2, 2, HG_HEIGHT, 30);
+set_hitbox_value(2, 2, HG_SHAPE, 1);
+set_hitbox_value(2, 2, HG_PRIORITY, 5);
+set_hitbox_value(2, 2, HG_DAMAGE, 10);
+set_hitbox_value(2, 2, HG_ANGLE, 280);
+set_hitbox_value(2, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(2, 2, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(2, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(2, 2, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(2, 2, HG_FORCE_FLINCH, 0);
+set_hitbox_value(2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(2, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(2, 2, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(2, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(2, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(2, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(2, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(2, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(2, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(2, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(2, 2, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(2, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(2, 2, HG_GROUNDEDNESS, 2);
+set_hitbox_value(2, 2, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(2, 2, HG_HIT_LOCKOUT, 5);

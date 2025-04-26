@@ -64,7 +64,7 @@ alt_names = [
 	"Nova",
 	"Thunder God",
 	"Sun God",
-	"Android X",
+	"Cyber Kewtian X",
 	"Wind God",
 	"Oarly",
 	"Octopus58",
@@ -259,6 +259,20 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.92", "8th February, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ DStrong now goes through platforms for a few frames, making it get caught on them a bit less
++ DSpecial now ignores platforms (doesn't mean much but looks and feels nicer when right above one)");
+
+initPatch("1.91", "3rd January, 2025");
+initHeader("Nerfs");
+initSection("- Added bonus-damage windows to certain attacks, where if GK misses he can be punished for extra damage");
+initHeader("Fixes / Other Changes");
+initSection("+ Added more Miiverse posts
++ Anti-cheapie is now opt-in (hold Attack to activate it!), and should react to less characters
++ Made the AI much better (mostly doesn't apply to Boss mode however, for obvious reasons)
++ Added elemental stuff to hitboxes for KoB interactions");
+
 initPatch("1.90", "16th March, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Added extra impact to powerful hits, and made hits in general feel better with a custom shaky hitpause effect

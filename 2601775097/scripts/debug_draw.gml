@@ -52,21 +52,6 @@
         }
         else break; //if they don't exist just stop running this code so the bursts won't float
     }
-
-
-    if (debug_chain_display)
-    {
-        for (var line_dist = 0; line_dist < hook_chain_amount; line_dist ++) dist[line_dist] = line_dist/hook_chain_amount * point_distance(x+32*spr_dir, y-32, hook_proj[0], hook_proj[1]);
-
-        for (var line_length = 0; line_length < hook_chain_amount; line_length ++)
-        {
-            var angle = point_direction(x+32*spr_dir, y-32, hook_proj[0], hook_proj[1]);
-            var _x = x+32*spr_dir + lengthdir_x(dist[line_length], angle);
-            var _y = y-32 + lengthdir_y(dist[line_length], angle);
-
-            draw_circle_color(floor(_x), floor(_y), 5, c_red, c_red, false);
-        }
-    }
 */
 
 //Put this above all the #defines in your script.
@@ -78,7 +63,7 @@ draw_colored_hitboxes();
     if (hbox_view)
     {
         var arrowspr = __kb_arrow_spr, hitboxes = [], arr_len, __kb_angle, angle;
-        with (pHitBox) if (player_id == other && draw_colored && "do_not_show" not in self) array_push(hitboxes,self)
+        with (pHitBox) if (player_id == other && "draw_colored" in self && draw_colored && "do_not_show" not in self) array_push(hitboxes,self)
         arr_len = array_length(hitboxes);
         if (arr_len > 0)
         {
@@ -86,7 +71,7 @@ draw_colored_hitboxes();
             for (var i = 0; i < arr_len; i++) with (hitboxes[i])
             {
                 var col = hit_priority > 0 ? self.col : c_gray
-                draw_sprite_ext(draw_spr, shape, x, y, image_xscale,image_yscale,0,col,0.5);
+                draw_sprite_ext(draw_spr, shape, x, y, image_xscale,image_yscale,image_angle,col,0.5);
                 __kb_angle = kb_angle == 361 ? 45 : kb_angle;
                 angle = ((__kb_angle+90)*(hit_flipper==5?-1:1)*spr_dir)-90
                 draw_sprite_ext(arrowspr, 0, x, y, 1,1,angle,-1,0.5);
@@ -96,7 +81,7 @@ draw_colored_hitboxes();
         hurtboxID.image_alpha = 0;
         //redraw hurtbox OVER hitbox display for visibility
         if (state_cat == SC_HITSTUN) gpu_set_fog(true, c_yellow, 0, 999) //turn hurtbox yellow
-        if (invincible || attack_invince == 1 || initial_invince || hurtboxID.dodging) gpu_set_fog(true, c_aqua, 0, 999)
+        if (invincible || attack_invince == 1 || initial_invince || hurtboxID.dodging || soft_armor > 0 || super_armor) gpu_set_fog(true, c_teal, 0, 999)
         draw_sprite_ext(hurtboxID.sprite_index, hurtboxID.image_index, x, y, hurtboxID.image_xscale, hurtboxID.image_yscale, 0, -1, 0.5)
         gpu_set_fog(false, c_white, 0, 999)
     }

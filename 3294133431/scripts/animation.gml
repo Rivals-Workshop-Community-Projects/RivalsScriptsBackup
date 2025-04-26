@@ -56,33 +56,12 @@ if(!invis && invisAlpha < 1 && attack != AT_FSTRONG && attack != AT_USTRONG && a
 
 var isAttacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 
-if(isAttacking && attack == AT_USPECIAL)
-{
-	if(window == 1 && window_timer == 1)
-		sound_play(asset_get("sfx_swipe_weak2"), false, noone, 1);//sfx_ell_eject sfx_absa_whip_charge sfx_referee_fly
-	// if(window == 3 && window_timer == 1)
-	// 	sound_play(asset_get("sfx_ell_eject"), false, noone, 0.5);
-	if(window == 4 && window_timer == 1)
-		sound_play(sound_get("helicopter_start"), false, noone, 1);
-	if(window == 5 && window_timer == 1)
-		sound_play(sound_get("helicopter"), true, noone, 0.75);
-	if(window == 6 && window_timer == 1)
-		sound_stop(sound_get("helicopter"));
-}
-else
-	sound_stop(sound_get("helicopter"));
-
-if(state == PS_DOUBLE_JUMP && state_timer == 0)
-	sound_play(sound_get("helicopter_jump"), false, noone, 0.75);
-	// sound_play(asset_get("sfx_ell_eject"), false, noone, 0.5);
-
-
 if(isAttacking && attack == AT_USTRONG)
 {
 	var horFxOffset = 8 * spr_dir;
 	var vertFxOffset = 142;
 
-	if(window == 1 && window_timer == 1)
+	if(window == 1 && window_timer == 0)
 	{
 		didPlayUstrongFx1 = false;
 		didPlayUstrongFx2 = false;
@@ -114,16 +93,6 @@ if(isAttacking && attack == AT_USTRONG)
 		spawn_hit_fx(x+horFxOffset, y-vertFxOffset, 144);
 	}
 	//TODO: vfx should be slower? or draw over it?
-
-	
-	if(window == 2 && window_timer == 1)
-		sound_play(asset_get("sfx_hod_steam_charge"), false, noone, 0.25);
-	if(window == 3)
-		sound_stop(asset_get("sfx_hod_steam_charge"));
-	if(window == 3 && window_timer == 1)
-		sound_play(asset_get("sfx_swipe_heavy2"), false, noone, 0.75);
-	if(window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 )
-		sound_play(sound_get("cigarette"), false, noone, 0.333);
 }
 
 if(isAttacking && attack == AT_DSTRONG)
@@ -136,23 +105,6 @@ if(isAttacking && attack == AT_DSTRONG)
 		var animSpeed = shuffleLength/frames;
 		if(window_timer == shuffleLength-1)
 			image_index = floor(get_window_value(attack, 1, AG_WINDOW_ANIM_FRAMES)+state_timer/animSpeed % frames);
-	}
-	if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
-		sound_play(sound_get("money_count_start"), false, noone, 0.75);
-	if(window == get_attack_value(attack, AG_STRONG_CHARGE_WINDOW) && state_timer % 10 == 0)
-		sound_play(sound_get("money_count"), false, noone, 0.5);
-		
-		
-	if(window == get_hitbox_value(attack, 1, HG_WINDOW) && window_timer == get_hitbox_value(attack, 1, HG_WINDOW_CREATION_FRAME)-1)
-	{
-		//TODO: maybe use panning spr_dir? but only ints are allowed?
-		sound_play(sound_get("money_throw"), false, noone, 0.75);
-		// sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.25);
-	}
-	if(window == get_hitbox_value(attack, 2, HG_WINDOW) && window_timer == get_hitbox_value(attack, 2, HG_WINDOW_CREATION_FRAME)-1)
-	{
-		sound_play(sound_get("money_throw"), false, noone, 0.75);
-		// sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.25);
 	}
 }
 
@@ -222,7 +174,7 @@ if(isCrouching || isBoxWalking)
 			else
 			{
 				sprite_index = sprite_get("boxWalk");
-			    image_index = floor(image_number * crouchAnimTimer / (image_number * 8));
+			    image_index = floor(image_number * crouchAnimTimer / (image_number * 6));
 			}
 			
 	    	crouchStopTimer = 0;
@@ -251,92 +203,4 @@ else
     crouchAnimTimer = 0;
     crouchTimer = 0;
     crouchStopTimer = 10000000;
-}
-
-
-//-------------------- custom SFX --------------------
-if(!invis)
-{
-	if(attack == AT_UAIR && isAttacking)
-	{
-		if(window == 1 && window_timer == 0)
-		{
-			sound_play(asset_get("sfx_swipe_weak2"));
-			// sound_play(sound_get("spy_assassin_knife_draw"));
-		}
-	}
-
-	if(attack == AT_DAIR && isAttacking)
-	{
-		if(window == 1 && window_timer == 4)
-		{
-			sound_play(asset_get("sfx_swipe_weak1"));
-			sound_play(sound_get("spy_assassin_knife_draw"), false, noone, 0.5);
-			dairPlayedSfx = false;
-		}
-		if(window == 3 && window_timer == 8 && !dairPlayedSfx)
-			sound_play(sound_get("whoosh"), false, noone, 0.75);
-
-		// if(window == 3 && ((window_timer == 8 && random_func( 0, 5, true) == 0) || window_timer == 42 ) && !dairPlayedSfx)
-		if(window == 3 && window_timer == 8 && !dairPlayedSfx)//TODO: dont always play this, but randomly?
-		{
-			dairPlayedSfx = true;
-			sound_play(sound_get("eagle"), false, noone, 0.05);
-		}
-	}
-	else
-		sound_stop(sound_get("whoosh"));
-	
-	if(attack == AT_FSTRONG && isAttacking)
-	{
-		// if(window == 1 && window_timer == 6)
-		// 	sound_play(sound_get("knife_open1"));
-		
-		if(window == 3 && window_timer == 4)
-			sound_play(asset_get("sfx_swipe_weak1"));
-		if(window == 5 && window_timer == 2)
-			sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.5);
-		if(window == 9 && window_timer == get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-2)
-		{
-			sound_play(asset_get("sfx_swipe_heavy1"));
-			// sound_play(asset_get("sfx_swipe_heavy1"), false, noone, 0.75);
-			// sound_play(sound_get("spy_assassin_knife_draw"));
-		}
-	}
-
-	if(attack == AT_TAUNT && isAttacking)
-	{
-		// if((window == 1 || window == 3) && window_timer == 0)
-		// {
-		// 	sound_stop(sound_get("draw_pda_spy"));
-		// 	sound_play(sound_get("draw_pda_spy"));
-		// }
-		if(window == 1 && window_timer == 0)
-			sound_play(sound_get("draw_pda_spy"));
-		if(window == 3 && window_timer == 0)
-			sound_play(sound_get("draw_pda_spy"));
-	}
-
-	if(isCrouching && image_index != last_crouch_imgage_index)
-	{
-		if(image_index == 3 && sprite_index != sprite_get("crouchWalk"))
-			didPlayCrouchSfx = false;
-
-		if((image_index == 1 || image_index == 3) && !didPlayCrouchSfx)
-		{
-			sound_play(sound_get("draw_pda_spy"), false, noone, 0.5);
-			didPlayCrouchSfx = true;
-		}
-	}
-	last_crouch_imgage_index = image_index;
-	if(attack == AT_DTILT && isAttacking)
-	{
-		if((window == 1 && window_timer == 1) && !didPlayCrouchSfx)
-		{
-			sound_play(sound_get("draw_pda_spy"), false, noone, 0.5);
-			didPlayCrouchSfx = true;
-		}
-	}
-	if(!isCrouching && (!isAttacking || attack != AT_DTILT))
-		didPlayCrouchSfx = false;
 }

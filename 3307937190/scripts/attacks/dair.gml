@@ -46,6 +46,8 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen_ink2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
+set_hitbox_value(atk, hitbox_num, 81, "Tipper");//HG_MUNO_HITBOX_NAME = i; i++;
+set_hitbox_value(atk, hitbox_num, 92, "Inks opponents on hit");//HG_MUNO_HITBOX_MISC_ADD = i; i++; 
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]); //this is a custom hitbox grid function by supersonic that changes the color of the hitboxes
 
 hitbox_num ++; //sourspot
@@ -67,5 +69,6 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
+set_hitbox_value(atk, hitbox_num, 81, "Sourspot");//HG_MUNO_HITBOX_NAME = i; i++;
 
 set_num_hitboxes(atk, hitbox_num);

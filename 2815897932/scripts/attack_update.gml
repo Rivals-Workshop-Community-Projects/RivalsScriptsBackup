@@ -50,6 +50,9 @@ if (attack == AT_DSPECIAL){
     if window == 3{
     move_cooldown[AT_DSPECIAL]+= 4
     }
+    if window == 4{
+    move_cooldown[AT_DSPECIAL]+= 2
+    }
 }
 
 if (attack == AT_FSPECIAL){
@@ -66,8 +69,9 @@ if (attack == AT_FSPECIAL){
         if window == 3{
     move_cooldown[AT_FSPECIAL]+= 4
     }
-            if window == 4{
+        if window == 4{
     hsp = 0
+    move_cooldown[AT_FSPECIAL]+= 2
     }
 }
 

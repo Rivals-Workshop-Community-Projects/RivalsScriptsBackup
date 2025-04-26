@@ -1,6 +1,10 @@
 sprite_change_offset("idle", 64, 86);
 sprite_change_offset("hurt", 24, 76);
 sprite_change_offset("bighurt", 54, 80);
+sprite_change_offset("uphurt", 132, 156);
+sprite_change_offset("downhurt", 132, 156);
+sprite_change_offset("bouncehurt", 132, 156);
+sprite_change_offset("spinhurt", 132, 156);
 sprite_change_offset("hurtground", 58, 80);
 sprite_change_offset("crouch", 52, 76);
 sprite_change_offset("walk", 68, 90);
@@ -68,7 +72,7 @@ sprite_change_offset("charge", 78, 112);
 sprite_change_offset("uspecial", 46, 82);
 sprite_change_offset("uspecial_ground", 46, 82);
 
-sprite_change_offset("dspecial", 58, 94);
+sprite_change_offset("dspecial", 90, 124);
 sprite_change_offset("card", 14, 18);
 sprite_change_offset("card_ctc", 14, 18);
 sprite_change_offset("card_marker", 36, 36);
@@ -94,7 +98,7 @@ sprite_change_offset("dash_up", 82, 60);
 sprite_change_offset("dash_downfront", 88, 110);
 sprite_change_offset("dash_upfront", 92, 62);
 
-
+sprite_change_offset("sparkle", 90, 104);
 
 sprite_change_offset("grazebox", 62, 62);
 

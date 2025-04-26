@@ -30,10 +30,10 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 3.8);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 3.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 302);
@@ -58,11 +58,11 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 38);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 30);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 2.8);
+set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 40);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.9);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 6);
@@ -72,7 +72,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
-
 
 
 // GREEN
@@ -88,10 +87,10 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 110);
-set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 17);
@@ -102,6 +101,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.6);
 
 // yellow
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -142,11 +142,11 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_HEIGHT, 38);
 set_hitbox_value(AT_DSPECIAL, 5, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSPECIAL, 5, HG_DAMAGE, 2);
-set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 76);
+set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 80);
 set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 5, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSPECIAL, 5, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 143);
@@ -156,6 +156,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 0.7);
 
 
 // RED
@@ -173,8 +174,8 @@ set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 6, HG_ANGLE, 70);
 set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 6, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 6, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 6, HG_VISUAL_EFFECT, 3);
@@ -185,6 +186,7 @@ set_hitbox_value(AT_DSPECIAL, 6, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 set_hitbox_value(AT_DSPECIAL, 6, HG_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 0.5);
 
 // PURPLE
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_TYPE, 2);
@@ -201,8 +203,8 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_DAMAGE,7);
 set_hitbox_value(AT_DSPECIAL, 7, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_DSPECIAL, 7, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_DSPECIAL, 7, HG_HITPAUSE_SCALING, 1.4);
+set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSPECIAL, 7, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL, 7, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 7, HG_VISUAL_EFFECT, 21);
@@ -213,6 +215,4 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 set_hitbox_value(AT_DSPECIAL, 7, HG_EFFECT, 11);
 set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_PARRY_STUN, true);
-
-
-
+set_hitbox_value(AT_DSPECIAL, 7, HG_HITSTUN_MULTIPLIER, 0.7);

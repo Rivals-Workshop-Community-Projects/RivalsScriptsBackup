@@ -3,8 +3,8 @@
 // This is where the character establishes all variables for this article
 // can be article1, article2, article3, articlesolid, articleplatform
 
-life_timer = 500;
-wisp_alpha = 1;
+life_timer = 600;
+wisp_alpha = .85;
 
 state = 0;
 state_timer = 0;

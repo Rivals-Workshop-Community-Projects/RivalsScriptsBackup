@@ -45,16 +45,7 @@ arena_title = "The Blissful Bugbear;";
 kirbyability = 16;
 swallowed = 0
 
-///
-///codec
 
-nname = "Samson Calvana"
-
-ncode1 = "A mysterous hybrid creature from an unknown dimension."
-ncode2 = "The jars of honey he throws can render one immobile."
-ncode3 = "His motivations are unknown, but claims to be a 'Maypul Stan'"
-
-///
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -76,7 +67,7 @@ initial_dash_speed  = 5;		// 4    -  9
 dash_speed          = 6.25;		// 5    -  9
 dash_turn_time      = 15;		// 8    -  20
 dash_turn_accel     = 1;		// 0.1  -  2
-dash_stop_time      = 12;		// 4    -  6        zetterburn's is 4
+dash_stop_time      = 4;		// 4    -  6        zetterburn's is 4
 dash_stop_percent   = 0.30;		// 0.25 -  0.5
 ground_friction = .30;
 moonwalk_accel = 1.4;
@@ -155,7 +146,7 @@ jumpTimer = 0;
 floatMax = 60; //MODIFIABLE
 jumpMax = 5; //MODIFIABLE
 gravSet = -1; //MODIFIABLE
-vspSet = -1.3; //MODIFIABLE
+vspSet = has_rune("E")? -2.5:-1.3; //MODIFIABLE
 hspSet = -1; //MODIFIABLE
 
 land_sound = asset_get("sfx_land_med");
@@ -171,6 +162,10 @@ bubble_y = 8;
 
 //FX stuff
 
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
+
 sweetdon_fx = hit_fx_create( sprite_get( "sweetdon" ), 30 );
 spotlight_fx = hit_fx_create( sprite_get("spotlight"), 24 );
 yummy_fx = hit_fx_create( sprite_get("yummy"), 32 );
@@ -180,24 +175,38 @@ kirbyboom = hit_fx_create( sprite_get( "kirbyboom" ), 30 );
 honeyshockdestroy = hit_fx_create( sprite_get( "honeydissapate" ), 25 );
 honeyshockdestroy_small = hit_fx_create( sprite_get( "honeydissapatesmall" ), 25 );
 
+//Slash FX
+slash_ul = hit_fx_create( sprite_get( "slashFXupleft" ), 18 );
+slash_ur = hit_fx_create( sprite_get( "slashFXupright" ), 18 );
+slash_small = slash_ur = hit_fx_create( sprite_get( "smallslash" ), 18 );
+
 //Honeyed-Sprite
 honeyed_sprite = sprite_get( "samson_honeyed" );
 
 plungerboom = false;
 fspecial_recovery = false;
-blushing = 0;
-fatblunt = 0;
+blushing = false;
+fatblunt = false;
 changetimer = 60;
 jar_is_out = false;
 ustrongtimer = false;
+
+intro_animation = noone;
+intro_duration = 0
+intro_time = 0
+intro_type = noone;
 
 //init.gml
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
 
+upspecial_used = 0;
+sugar_rush = 0;
+
+
 //Killing Grounds
-guiltySprite = sprite_get("DRSamson");
+guiltySprite = sprite_get("DRSamson"); //SAMSON DIES
 
 
 
@@ -259,6 +268,12 @@ steve_death_message = "Steve couldn't bear it.";
 copy_ability_id = 55
 kf_hud_offset = -20;
 
+//Samson turns into a plush and dies
+mamizou_transform_spr = sprite_get("plushsamson"); //Replace "X" with your sprite.
+
+//Samson gets cooked alive and dies
+pot_compat_variable = sprite_get("loukoumades");
+pot_compat_text = "Greek Honey Doughnuts"
 
 //Miiverse
 miiverse_post = sprite_get("samsonMiiverse");
@@ -271,3 +286,8 @@ if get_player_color(player) == 0
 fs_char_portrait_y = 95;
 fs_char_chosen_final_smash = "custom";
 grabbedid = noone;
+
+secret_code = [up_pressed, down_pressed, up_pressed, down_pressed, attack_pressed, taunt_pressed];
+secret_code_pointer = 0;
+secret_code_input = false;
+sugarcoat = 0;

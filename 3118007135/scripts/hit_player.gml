@@ -27,6 +27,7 @@ switch(hitmove){
         break;
     case AT_DTILT:
         switch(hitmove_box){
+            case 2:
             case 3:
                 hit_player_obj.wren_riptide_id = id;
                 wren_enemy_riptide_id = hit_player_obj.id;
@@ -61,7 +62,6 @@ switch(hitmove){
                 hit_player_obj.wren_riptide_id = id;
                 wren_enemy_riptide_id = hit_player_obj.id;
                 hit_player_obj.wren_stacks += 1;
-                print("TEST")
                 break;
         }
         break;
@@ -75,6 +75,11 @@ switch(hitmove){
                     hit_player_obj.old_vsp = (old_vsp * .5);
                 }
                 hit_player_obj.should_make_shockwave = false;
+                break;
+            case 5:
+                hit_player_obj.wren_riptide_id = id;
+                wren_enemy_riptide_id = hit_player_obj.id;
+                hit_player_obj.wren_stacks += 1;
                 break;
         }
         break;

@@ -2,6 +2,8 @@ turnabout = false;
 turnabout_timer = 0;
 turnabout_timer_pause = 0;
 
+sound_stop(cornered_sound);
+
 evidence_count = 0;
 good_evidence_count = 0;
 bad_evidence_count = 0;

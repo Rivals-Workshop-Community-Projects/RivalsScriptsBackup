@@ -192,7 +192,7 @@ set_color_profile_slot( 16, 1, 31, 31, 31 ); //Shirt
 set_color_profile_slot( 16, 2, 25, 89, 255 ); //Pants
 set_color_profile_slot( 16, 3, 248, 160, 76 ); //Skin
 set_color_profile_slot( 16, 4, 25, 89, 255 ); //Gloves / Scarf
-set_color_profile_slot( 16, 5, 25, 89, 255 ); //Hair
+set_color_profile_slot( 16, 5, 31, 31, 31 ); //Hair
 set_color_profile_slot( 16, 6, 31, 31, 31 ); //Shoes / Wand
 set_color_profile_slot( 16, 7, 25, 89, 255 ); //Shoes / Wand 2
 

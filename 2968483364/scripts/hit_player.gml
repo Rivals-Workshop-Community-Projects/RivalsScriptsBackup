@@ -42,12 +42,16 @@ switch(my_hitboxID.attack){
         break;
     
     case AT_NSPECIAL:
-        if(my_hitboxID.hbox_num == 1){
-            pipebomb.state = 2;
-            pipebomb.state_timer = 0;
-        }else{
-            sound_play(asset_get("sfx_hod_charged_uspecial_hit"));
-            pipebomb.hitstop = 8;
+        if(pipebomb != noone){
+            if(my_hitboxID.hbox_num == 1){
+                pipebomb.state = 2;
+                pipebomb.state_timer = 0;
+            }if(my_hitboxID.hbox_num == 2){
+                sound_play(asset_get("sfx_hod_charged_uspecial_hit"));
+                pipebomb.hitstop = 8;
+            }else{
+                pipebomb.nohit_timer = 1;
+            }
         }
         break;
     

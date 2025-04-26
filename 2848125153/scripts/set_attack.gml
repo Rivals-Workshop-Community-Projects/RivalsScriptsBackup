@@ -346,7 +346,7 @@ if (attack == AT_BAIR){
 }
 
 if (attack == AT_TAUNT){
-	if(down_down){
+	if(up_down){
 		window = 4;set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 6);
 		sound_stop(voice);
 		rand = random_func(0, 2, true);
@@ -355,7 +355,30 @@ if (attack == AT_TAUNT){
 		}else if(rand == 1){
 			PlayVoiceClip("i see you2", 1.0);
 		}
-	}else if((right_down || left_down) && current_money >= 10000 && !up_down){
+	}else if(down_down){
+		window = 7;set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 9);
+		sound_stop(voice);
+		rand = random_func(0, 9, true);
+		if(rand == 0){
+			PlayVoiceClip("big bonus", 1.0);
+		}else if(rand == 1){
+			PlayVoiceClip("a tax refund", 1.0);
+		}else if(rand == 2){
+			PlayVoiceClip("cash grab", 1.0);
+		}else if(rand == 3){
+			PlayVoiceClip("congratulations", 1.0);
+		}else if(rand == 4){
+			PlayVoiceClip("feeling lucky", 1.0);
+		}else if(rand == 5){
+			PlayVoiceClip("free money", 1.0);
+		}else if(rand == 6){
+			PlayVoiceClip("feel the power", 1.0);
+		}else if(rand == 7){
+			PlayVoiceClip("its a housing boom", 1.0);
+		}else if(rand == 8){
+			PlayVoiceClip("lets buy some property", 1.0);
+		}
+	}else if((right_down || left_down) && current_money >= 10000){
 		attack = AT_FSPECIAL;window = 4;set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);move_cooldown[AT_FSPECIAL] = 0;
 		if(attack_down && current_money >= 40000){
 			PlayVoiceClip("four million", 1.0);tauntmoney = 1;

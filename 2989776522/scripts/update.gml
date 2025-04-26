@@ -5,10 +5,8 @@ user_event(14);
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
     move_cooldown[AT_USPECIAL] = 0;upb = false;
-    if(!free){
-        float = floatmax;
-    }djumpfloat = 0;
-    
+    if(!free)float = floatmax;
+    djumpfloat = 0;strongstall = false;
     can_summon_mech = true;
 }
 
@@ -39,13 +37,11 @@ if(nspecial_charge < 400){
 }
 
 if(!instance_exists(the_eggpawn)){
-	eggpawn_cooldown--;
-	eggpawn_cooldown = max(0,eggpawn_cooldown);
-}//eggpawn_cooldown = min(1800,eggpawn_cooldown);
+	eggpawn_cooldown--;eggpawn_cooldown = max(0,eggpawn_cooldown);
+}
 if(!instance_exists(the_eggpawn2)){
-	eggpawn_cooldown2--;
-	eggpawn_cooldown2 = max(0,eggpawn_cooldown2);
-}//eggpawn_cooldown2 = min(1800,eggpawn_cooldown2);
+	eggpawn_cooldown2--;eggpawn_cooldown2 = max(0,eggpawn_cooldown2);
+}
 
 if(eggpawn_destroyed){
 	rand = random_func(2, 8, true);
@@ -124,7 +120,7 @@ if(inside_mech){
 		if(get_gameplay_time() % 4 == 0){
 	        var eff = spawn_hit_fx(x-((45+random_func(0, 25, true))+offset_x)*spr_dir,y-50+random_func(1, 30, true)+offset_y,fx_dust);eff.depth = depth+1;
 	    }if(get_gameplay_time() % 3 == 0){
-	        var eff = spawn_hit_fx(x-((45+random_func(2, 25, true))+offset_x)*spr_dir,y-50+random_func(3, 30, true)+offset_y,fx_fire);eff.depth = depth+1;fire.draw_angle = (75+random_func(4, 30, true))*spr_dir;
+	        var eff = spawn_hit_fx(x-((45+random_func(2, 25, true))+offset_x)*spr_dir,y-50+random_func(3, 30, true)+offset_y,fx_fire);eff.depth = depth+1;eff.draw_angle = (75+random_func(4, 30, true))*spr_dir;
 	    }
 	}else{
 		air_max_speed = 5;
@@ -169,7 +165,7 @@ if(inside_mech){
 		if(get_gameplay_time() % 4 == 0){
 	        var eff = spawn_hit_fx(x-((45+random_func(0, 25, true)))*spr_dir,y-55+random_func(1, 30, true),fx_dust);eff.depth = depth+1;
 	    }if(get_gameplay_time() % 3 == 0){
-	        var eff = spawn_hit_fx(x-((45+random_func(2, 25, true)))*spr_dir,y-55+random_func(3, 30, true),fx_fire);eff.depth = depth+1;fire.draw_angle = (75+random_func(4, 30, true))*spr_dir;
+	        var eff = spawn_hit_fx(x-((45+random_func(2, 25, true)))*spr_dir,y-55+random_func(3, 30, true),fx_fire);eff.depth = depth+1;eff.draw_angle = (75+random_func(4, 30, true))*spr_dir;
 	    }
 	}
 }else{ //mechless specific stuff
@@ -222,39 +218,64 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	attacking = true;
 }else{
 	attacking = false;
-	if(ds_list_valid(target_list)){
-		ds_list_destroy(target_list);
-	}
+	if(ds_list_valid(target_list)){ds_list_destroy(target_list);}
+	//reset bonus dmg stuff
+	if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
 }
+if(bonus_damage){outline_color = [80, 0, 0];init_shader();}
+if(bonus_damage_flash > 0)bonus_damage_flash -= hitpause?4:8;
 
 //custom status effect stuff
-with (asset_get("oPlayer")){
+with(oPlayer){
     if (state == PS_RESPAWN || state == PS_DEAD){
-        sol_burn = false;
-        outline_color = [0, 0, 0];
-    	init_shader();
+        sol_burn = false;kob_status = 0;
+        outline_color = [0, 0, 0];init_shader();
     }
 	if (sol_burn && sol_burn_id == other.id && !hitpause) {
 		sol_burn_timer -= 1;
 		with (other){
 			if(get_gameplay_time() % 3 == 0){
-				var fire = spawn_hit_fx(other.x-(50*spr_dir)+random_func(1, 100, true)*spr_dir,other.y+20-random_func(2, 120, true),fx_fire);fire.depth = depth-1;
-				fire = spawn_hit_fx(other.x-(50*spr_dir)+random_func(3, 100, true)*spr_dir,other.y+20-random_func(4, 120, true),fx_fire_fast);fire.depth = depth-1;
-			}if(get_gameplay_time() % 20 == 0){
-				if(!other.free){
-					create_hitbox(AT_DSTRONG, 11, round(other.x), round(other.y+2));
-	            }
+				var fireeff = spawn_hit_fx(round(other.x-(40*spr_dir)+random_func(1, 80, true)*spr_dir),round(other.y+20-(random_func(2, 40+other.char_height, true))),fx_fire);fireeff.depth = depth-1;
+				fireeff = spawn_hit_fx(round(other.x-(40*spr_dir)+random_func(1, 80, true)*spr_dir),round(other.y+20-(random_func(2, 40+other.char_height, true))),fx_fire_fast);fireeff.depth = depth-1;
 			}
 		}
-		outline_color = [150, 0, 0];
+		outline_color = [150, 0, 0];init_shader();
 		if (sol_burn_timer == 0){
-			sol_burn = false;
-			outline_color = [0, 0, 0];
-    		init_shader();
+			sol_burn = false;outline_color = [0, 0, 0];init_shader();
+		}kob_status = sol_burn ? 1 : 0;
+	}
+	
+	//custom bury status effect stuff
+	if (villager_bury && villager_bury_id == other.id) {
+	    if (state == PS_RESPAWN || state == PS_DEAD || hitstop > 1 && (abs(old_hsp) >= 6 || abs(old_vsp) >= 6) && !villager_bury_hitpause){
+	    	villager_bury = false;
+	    	if (state == PS_RESPAWN || state == PS_DEAD){
+		    	hitpause = 0;hitstop = 0;
+		    }
+	    }
+		if(villager_bury && villager_bury_timer > 0){
+	        villager_bury_timer--;
+	        set_state(PS_HITSTUN);
+	        hitpause = 1;hitstop = 1;
+	        villager_bury_hitpause = false;
+	        hurt_img = 2;
+	        if(villager_bury_timer == 0){
+	        	hitpause = 0;hitstop = 0;villager_bury = false;vsp = -8;free = true;
+	        }else{
+				
+	        }
+	    }
+	    if(!villager_bury){
+	    	villager_bury_cooldown = 60;
+		    with (other){
+				var buryeffect = spawn_hit_fx(other.x+35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = 1;
+				buryeffect = spawn_hit_fx(other.x-35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = -1;
+		    }
+		}kob_status = villager_bury ? 2 : 0;
+	}else if(villager_bury_id == other.id){
+		if(!villager_bury && villager_bury_cooldown > 0){
+	        villager_bury_cooldown--;
 		}
-		/*if(other.runeA && get_gameplay_time() % 10 == 0){
-			take_damage(player, -1, 1);
-		}*/
 	}
 	
 	//shake hitpause code
@@ -281,41 +302,6 @@ with (asset_get("oPlayer")){
 		x = round(new_x);y = round(new_y);
 	}else if(!hitpause){
 		prev_x = x;prev_y = y;
-	}
-}
-
-//custom bury status effect stuff
-with (oPlayer){
-	if (villager_bury && villager_bury_id == other.id) {
-	    if (state == PS_RESPAWN || state == PS_DEAD || hitstop > 1 && (abs(old_hsp) >= 6 || abs(old_vsp) >= 6) && !villager_bury_hitpause){
-	    	villager_bury = false;
-	    	if (state == PS_RESPAWN || state == PS_DEAD){
-		    	hitpause = 0;hitstop = 0;
-		    }
-	    }
-		if(villager_bury && villager_bury_timer > 0){
-	        villager_bury_timer--;
-	        set_state(PS_HITSTUN);
-	        hitpause = 1;hitstop = 1;
-	        villager_bury_hitpause = false;
-	        hurt_img = 2;
-	        if(villager_bury_timer == 0){
-	        	hitpause = 0;hitstop = 0;villager_bury = false;vsp = -8;free = true;
-	        }else{
-				
-	        }
-	    }
-	    if(!villager_bury){
-	    	villager_bury_cooldown = 60;
-		    with (other){
-				var buryeffect = spawn_hit_fx(other.x+35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = 1;
-				buryeffect = spawn_hit_fx(other.x-35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = -1;
-		    }
-		}
-	}else if(villager_bury_id == other.id){
-		if(!villager_bury && villager_bury_cooldown > 0){
-	        villager_bury_cooldown--;
-		}
 	}
 }
 
@@ -403,7 +389,10 @@ if(!loaded){
 	    	with(other){rouge_inmatch = true;}
 		}if(string_count("Chaos 0", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Chaos Zero", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){chaos_inmatch = true;}
-		}if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self){
+		}if(string_count("Toadie", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribbit", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ribble", string( get_char_info(player, INFO_STR_NAME) )) > 0
+		|| string_count("Spike", string( get_char_info(player, INFO_STR_NAME) )) > 0 && "Spike" in self
+		|| string_count("Frog", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Ranno", string( get_char_info(player, INFO_STR_NAME) )) > 0 
+		|| string_count("Keroro", string( get_char_info(player, INFO_STR_NAME) )) > 0 || string_count("Croagunk", string( get_char_info(player, INFO_STR_NAME) )) > 0){
 	    	with(other){based_frog_inmatch = true;}
 		}
 	}
@@ -521,44 +510,27 @@ if(!loaded){
 	}
 	
     if (runesUpdated || get_match_setting(SET_RUNES)) {
-		if (has_rune("A") || runeA) {
-			
-		}if (has_rune("C") || runeC) {
-			
-		}if (has_rune("E") || runeE) {
-			runeE = true;
-			eggpawn_cooldown = 0;eggpawn_cooldown2 = 0;
-			eggpawn_cooldown_multiplier = 0.5;
-		}if (has_rune("F") || runeF) {
-			runeF = true;
-			maxspd = 999999;
-		}
-		
-		if (has_rune("G") || runeG) {
-			runeG = true;
-			set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 420);
-		}if (has_rune("H") || runeH) {
-			runeH = true;eggpawn_health_multiplier = 3.0;
-		}if (has_rune("I") || runeI) {
-			
-		}if (has_rune("J") || runeJ) {
-			
-		}if (has_rune("K") || runeK) {
-			
-		}
-		if (has_rune("L") || runeL) {
-			runeL = true;
-		}if (has_rune("M") || runeM) {
-			
-		}if (has_rune("N") || runeN) {
-			
-		}if (has_rune("O") || runeO) {
-			
-		}
+		if (has_rune("A") || runeA) runeA = true;
+		if (has_rune("B") || runeB) runeB = true;	
+		if (has_rune("C") || runeC) runeC = true;
+		if (has_rune("D") || runeD) runeD = true;
+		if (has_rune("E") || runeE) {runeE = true;eggpawn_cooldown = 0;eggpawn_cooldown2 = 0;eggpawn_cooldown_multiplier = 0.5;}
+		if (has_rune("F") || runeF) {runeF = true;maxspd = 999999;}
+		if (has_rune("G") || runeG) {runeG = true;set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 420);}
+		if (has_rune("H") || runeH) {runeH = true;eggpawn_health_multiplier = 3.0;}
+		if (has_rune("I") || runeI) runeI = true;
+		if (has_rune("J") || runeJ) runeJ = true;
+		if (has_rune("K") || runeK) runeK = true;
+		if (has_rune("L") || runeL) runeL = true;
+		if (has_rune("M") || runeM) runeM = true;
+		if (has_rune("N") || runeN) runeN = true;
+		if (has_rune("O") || runeO) runeO = true;
 	}
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
     loaded = true;
 }
+//cheats and rune stuff
+if(runeI)phone_cheats[CHEAT_Air_Strongs] = 1;
 
 //he has 70 alt accounts
 if((state == PS_SPAWN || state == PS_RESPAWN) && !i_have_70_alt_accounts && voicemode == 2){

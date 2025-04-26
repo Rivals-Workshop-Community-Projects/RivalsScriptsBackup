@@ -8,7 +8,7 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
 
 
     if (hit_player_obj != player_id) { // prevent La Reina from immediately recalling a chair that an enemy hit
-      player_id.move_cooldown[AT_NSPECIAL] = 60;
+      player_id.move_cooldown[AT_NSPECIAL] = player_id.universal_chair_big_cooldown;
     } else {
       player_id.move_cooldown[AT_NSPECIAL] = 0; // but allow her to reactivate chair if she hits it herself
     }
@@ -27,6 +27,7 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
 
       // Spawn the move's visual effect at the average position of the chair | hitbox center
       with hit_player_obj { // Do it from the enemy's perspective to apply their palette to the hit affect
+        has_hit = true;
         spawn_hit_fx((hID.x + other.x)/2 + other.hsp, (hID.y + other.y)/2  + other.vsp - 20, hID.hit_effect); // the -20 here is a magic number to account for the chair's position being at its bottom.
       }
       // Play the move's on-hit sound effect (but not if we've already hit a player)
@@ -56,9 +57,11 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
       // Feed the chair info about the hitbox and put it into the hitpause window
       window = 6; window_timer = 0;
       gethit_hitpause = hID.hitpause + hID.extra_hitpause;
-      gethit_angle = hID.kb_angle;
+      gethit_angle = get_hitbox_angle(hID);
+      gethit_spr_dir = 1;
+      /* gethit_angle = hID.kb_angle;
       if gethit_angle == 361 {gethit_angle = 40;}
-      gethit_spr_dir = hit_player_obj.spr_dir;
+      gethit_spr_dir = hit_player_obj.spr_dir; */
       gethit_knockback = (hID.kb_value + hID.kb_scale*6) * 1.4;
       gethit_grabbed = noone;
       gethit_postgrab = false;
@@ -77,7 +80,7 @@ if hID != most_recent_hitbox && (lifetime > 10 && !hitpause) && hID.hit_priority
         if hID.attack == 10 && (hID.hbox_num == 2) {
           hit_player_obj.window = 6; hit_player_obj.window_timer = 0; // Do the dash-attack spike pop-up
           gethit_knockback += 2;
-          gethit_angle += 20;
+          gethit_angle += 20*hit_player_obj.spr_dir;
 
 
         // GRABS --- welcome to the ~ Grab Zone ~

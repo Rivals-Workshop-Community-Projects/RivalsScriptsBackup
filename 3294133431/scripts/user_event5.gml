@@ -15,6 +15,6 @@ for(var i = 0; i < fxCount; i++)
 	temp_fx.depth = -100;//TODO: why is it not enough to set this here once? instead done in user_event1, but still char is visible for 1 frame?
 	temp_fx.uses_shader = false;
 
-	sound_stop(sound_get("spy_disguise"));
-	sound_play(sound_get("spy_disguise"));
+	sound_stop(spy_disguiseSfx);
+	spy_disguiseSfx = sound_play(sound_get("spy_disguise"));
 }

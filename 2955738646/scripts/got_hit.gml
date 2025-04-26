@@ -9,3 +9,5 @@ if (state == PS_AIR_DODGE && state_timer < 5){
 	window = 1;
 	window_timer = 0;
 }
+
+random_mecha = random_func(0, 5, true);

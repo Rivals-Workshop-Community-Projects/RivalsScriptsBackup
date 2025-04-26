@@ -63,9 +63,9 @@ if (attack == AT_USPECIAL) && (window == 5) && (window_timer == 12){
 if uspecialafterimage_fader >= 1{
     uspecialafterimage_fader ++;
     if get_player_color(player) == 0{ //it wouldn't recolor the green on the red alt for some reason
-        draw_sprite_ext(sprite_get("uspecialafterimage_red"), uspecialafterimage_fader/6 - 1, uspecialafterimage_x, uspecialafterimage_y, 1, 1, 0, c_white, 1); //(16/uspecialafterimage_fader)/16
+        draw_sprite_ext(sprite_get("uspecialafterimage_red"), uspecialafterimage_fader/6 - 1, uspecialafterimage_x, uspecialafterimage_y, 2, 2, 0, c_white, 1); //(16/uspecialafterimage_fader)/16
     } else{
-        draw_sprite_ext(sprite_get("uspecialafterimage"), uspecialafterimage_fader/6 - 1, uspecialafterimage_x, uspecialafterimage_y, 1, 1, 0, c_white, 1); //(16/uspecialafterimage_fader)/16
+        draw_sprite_ext(sprite_get("uspecialafterimage"), uspecialafterimage_fader/6 - 1, uspecialafterimage_x, uspecialafterimage_y, 2, 2, 0, c_white, 1); //(16/uspecialafterimage_fader)/16
     }
     if uspecialafterimage_fader == 26{
         uspecialafterimage_fader = 0;

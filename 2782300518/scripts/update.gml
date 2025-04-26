@@ -18,8 +18,10 @@ else
 	short_hop_speed = 6;
 	jump_speed = motorbike? 9: 11;
 }
-dash_speed = motorbike? 9: 7.2;
+dash_speed = motorbike? 8.5: 7.2;
 dash_stop_time = motorbike? 12: 4;
+dash_turn_time = motorbike? 15: 10;
+prat_land_time = motorbike? 14: 10;
 //djump_speed = motorbike? 10: 10;
 //walljump_hsp = motorbike? 0:3;
 //walljump_vsp = motorbike? 7:11;
@@ -114,10 +116,10 @@ if (motorbike == false)
 		move_cooldown[AT_DSPECIAL] = 5;
 	}
 	
-	if (fuel < 40 && !bike_stored && !instance_exists(bike))
+	if (fuel < 40 && !bike_stored && !instance_exists(bike) && state != PS_DEAD)
 	{
 		move_cooldown[AT_DSPECIAL] = 2;
-		if (floor(state_timer/10) == state_timer/10 && !instance_exists(thrownBike))
+		if (floor(state_timer/25) == state_timer/25 && !instance_exists(thrownBike))
 		{
 			if (has_rune("C"))
 			{
@@ -811,7 +813,7 @@ if (dodgeTaunt == true)
 	}
 }
 
-	//Custon Galaxy Effect
+//Custon Galaxy Effect
 with (oPlayer) 	if (player != other.player && activated_kill_effect && last_player == other.player && state_timer == 0)
 {
 	with (other)
@@ -878,32 +880,35 @@ with (oPlayer) 	if (player != other.player && activated_kill_effect && last_play
 		}
 	}
 }
-	//Unique quote if Lilac is KO'd as teammate or if Neera is KO'd
-with (oPlayer) if (player != other.player && "teammate_is_lilac" in self && teammate_is_lilac = true)
+//Unique quote if Lilac is KO'd as teammate or if Neera is KO'd
+with (oPlayer) if (player != other.player && other.teammate_is_lilac = true && get_player_team(player) == get_player_team (other.player))
 {
 	if ((state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) 
 	{
-		sound_stop(sound_get ("hold_on_lilac"));
-		sound_play(sound_get ("hold_on_lilac"));
+		with (other) if (voice == 1)
+		{
+			stopVoice();
+			sound_stop(sound_get ("hold_on_lilac"));
+			sound_play(sound_get ("hold_on_lilac"));
+		}
 	}
 }
-with (oPlayer) if ("scary_lady" in self && scary_lady == true && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
+with (oPlayer) if (player != other.player && "scary_lady" in self && scary_lady == true && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
 {
-	if (voice == 1)
+	with (other) if (voice == 1)
 	{
+		stopVoice();
 		sound_stop(sound_get ("that_stupid_panda"));
 		sound_play(sound_get ("that_stupid_panda"));
 	}
 }
-with (oPlayer) if ("teammate_is_lilac" in self && "scary_lady" in self && teammate_is_lilac == false && scary_lady == false  && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
+with (oPlayer) if ("scary_lady" in self && other.teammate_is_lilac == false && scary_lady == false && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1)
 {
-	with (other)
+	with (other) if (voice == 1)
 	{
-		if (voice == 1)
-		{
-			sound_stop(sound_get ("did_you_see_that"));
-			sound_play(sound_get ("did_you_see_that"));
-		}
+		stopVoice();
+		sound_stop(sound_get ("did_you_see_that"));
+		sound_play(sound_get ("did_you_see_that"));
 	}
 }
 

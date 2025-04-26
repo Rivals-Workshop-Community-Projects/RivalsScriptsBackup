@@ -474,8 +474,10 @@ parkan_fissure_falling_spr = sprite_get("down_hurt");
 parkan_fissure_falling_anim_speed = 0
 
 xmas_product_name = "Detective Toy (Armless)";
-xmas_product_desc = "Black and white detective action figure toy. Undamaged. Arms are missing. 34cm.";
+xmas_product_desc = "Black and white detective action figure toy, undamaged, arms are missing, 34cm";
 xmas_product_price = 1674;
+
+guiltySprite = sprite_get("z_guilty");
 
 //talk zone (sub-area of the combatability zone)
 

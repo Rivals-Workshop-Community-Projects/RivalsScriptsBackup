@@ -30,14 +30,13 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial"));
 
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 
-set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 9);
-set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
@@ -93,7 +92,6 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 4);
 //final
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW, 5);
-set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_X, 4);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_Y, -20);

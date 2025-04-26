@@ -521,8 +521,8 @@ switch(attack)
 					{
 						player_id.stopwatch.sound = 0;
 						hsp = stored_hsp;
-						image_xscale = 0.2;
-						image_yscale = 0.2;
+						image_xscale = 0.05;
+						image_yscale = 0.05;
 						sprite_index = sprite_get("knife");
 					}
 					

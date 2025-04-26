@@ -115,6 +115,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 14);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Projectile (charged)");
@@ -137,4 +138,5 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0.4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 306 );
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 14);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 10);

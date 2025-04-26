@@ -161,6 +161,37 @@ switch (attack)
         }
     } break;
 //=============================================================
+    case AT_UTILT:
+    {
+        //if in contact with own projectile, trigger the airtech too
+        if (window == 2)
+        {
+            var highest_touched_projectile = noone;
+
+            //alt approach? find all UTILT-sweetspot hitboxes, if any touch a projectile, allow tech
+            with (pHitBox) if (type == 1) && (player == other.player)
+                           && (attack == AT_UTILT) && (hbox_num == 2) //tipper
+            {
+                for (var i = 0; i < instance_number(pHitBox); i++) 
+                with (instance_find(pHitBox, i)) if (player == other.player)
+                                                 && (type == 2) && (hit_priority > 0)
+                                                 && place_meeting(x, y, other)
+                {
+                    if !instance_exists(highest_touched_projectile)
+                    || (highest_touched_projectile.y > y)
+                        highest_touched_projectile = self;
+                }
+            }
+            
+            if instance_exists(highest_touched_projectile) && shield_down
+            {
+                with (highest_touched_projectile) spawn_hit_fx(x, y, hit_effect);
+                msg_air_tech_active = true;
+            }
+        }
+
+    } break;
+//=============================================================
     case AT_DATTACK:
     {
         can_fast_fall = has_hit;
@@ -210,7 +241,7 @@ switch (attack)
             //fstrong's bug potentially active, check for collisions with own projectiles
             with (pHitBox) if (hit_priority > 0)
             && (player == other.player)
-            && place_meeting(x, y, other.hurtboxID)
+            && (place_meeting(x, y, other.hurtboxID) || test_place_meeting_with_clones(other, self))
             {
                 can_hit_self = true;
             }
@@ -673,7 +704,34 @@ switch (attack)
                 sound_play(sfx_sd);
                 sound_play(asset_get("sfx_death1"));
 
-                msg_exploded_damage += get_player_damage( player ) + msg_grab_explode_penalty;
+                //NOTE: resetting damage triggers the "snap-to-zero" prevention code (see article1_update)
+                // solution: allow the tech, but make it cost a stock
+                var current_damage = get_player_damage( player );
+
+                if (current_damage < 0)
+                {
+                    if (get_player_stocks(player) - msg_exploded_stock_cost) > 1
+                    // you get one freebie if its abyss mode
+                    || (msg_exploded_stock_abyss_freebie)
+                    {
+                        current_damage = 0;
+
+                        if (msg_exploded_stock_abyss_freebie) msg_exploded_stock_abyss_freebie = false;
+                        else
+                        {
+                            msg_exploded_stock_cost++; //cashed in on death.gml
+                        }
+                    }
+                    else 
+                    {
+                        //fix the glitch that snaps to zero
+                        msg_last_known_damage = 0;
+                        //plus your damage penalty gets reflipped to positive
+                        current_damage = abs(ceil(current_damage/2));
+                    }
+                }
+
+                msg_exploded_damage += current_damage + msg_grab_explode_penalty;
                 set_player_damage( player, 0 );
                 
                 if (GET_RNG(6, 0x03) == 0) msg_unsafe_effects.altswap.trigger = true;
@@ -884,14 +942,17 @@ at_prev_free = free;
 
 //==============================================================
 //passive charge glitch
-if (msg_fstrong_interrupted_timer > 0) && (attack != AT_TAUNT)
+if (msg_fstrong_interrupted_timer > 0)
+//exception: TAUNT and TMTRAINER
+&& (attack != AT_TAUNT)
+&& (attack != AT_NSPECIAL)
 {
     strong_charge = msg_fstrong_interrupted_timer;
     msg_fstrong_interrupted_timer = 0;
 
-    //"diminishing returns" above 60 for two extra seconds worth of charge
+    //"diminishing returns" above 60 for up to 400% charge
     if (strong_charge > 60)
-        strong_charge = 60 + min((strong_charge - 60)/2, 60);
+        strong_charge = 60 + min((strong_charge - 60)/2, 60*3);
 }
 
 if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_WINDOW)
@@ -901,6 +962,20 @@ if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_W
     var next_window = get_window_value(attack, window, AG_WINDOW_GOTO);
     window = (next_window == 0) ? window + 1 : next_window;
     window_timer = 0;
+}
+
+//==============================================================
+#define test_place_meeting_with_clones(playerId, hbxId)
+{
+    for (var i = 0; i < instance_number(obj_article2); i++) 
+    with (instance_find(obj_article2, i)) if ("is_missingno_copy" in self)
+                                          && (client_id == playerId)
+    {
+        with (hbxId) if place_meeting(x - other.client_offset_x, y - other.client_offset_y, playerId.hurtboxID)
+            return true; //at least one clone touched
+    }
+
+    return false; //none found
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

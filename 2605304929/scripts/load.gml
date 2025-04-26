@@ -113,7 +113,7 @@ sprite_change_offset("platform_grow", 128, 128);
 sprite_change_offset("platform_idle", 128, 128);
 sprite_change_offset("platform_impact", 128, 128);
 sprite_change_offset("platform_vanish", 128, 128);
-sprite_change_offset("platform_icon", 128, 128);
+sprite_change_offset("platform_icon", 0, 11); // Handled in draw hud
 
 //Other Stuff
 sprite_change_offset("intro", 128, 162);
@@ -145,8 +145,8 @@ sprite_change_offset("uair_land", 128, 162);
 sprite_change_offset("fair_land", 128, 162);
 
 // Hurtbox
-sprite_change_offset("hurtbox", 128, 164);
-sprite_change_offset("crouch_hurtbox", 128, 164);
+sprite_change_offset("hurtbox", 124, 164);
+sprite_change_offset("crouch_hurtbox", 124, 164);
 
 // Victory Stuff
 set_victory_theme(sound_get("victory"));

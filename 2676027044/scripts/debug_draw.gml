@@ -1,6 +1,8 @@
 // debug_draw.gml
 // draws debug text/sprites in front of everything
 
+//draw_debug_text( x, y, string(curse_enhanced_outline) );
+
 if ("mim_wisp" in self && mim_wisp != noone){
 	with (mim_wisp){
 		// If wisp is 

@@ -104,6 +104,7 @@ sprite_change_offset("fx_dstrong_smear", 76, 94);
 sprite_change_offset("artc_rune", 24, 24);
 sprite_change_offset("artc_rune_hp", 24, 24);
 sprite_change_offset("artc_rune_layers", 24, 24);
+sprite_change_offset("artc_rune_hurt", 24, 24);
 sprite_change_offset("hud_artc_rune_angle", 11, 11);
 sprite_change_offset("fx_artc_rune_destroyed", 48, 48);
 sprite_change_offset("fx_fstrong_proj1", 80, 32);
@@ -119,7 +120,7 @@ sprite_change_offset("fx_dspec", 24, 47); //16, 24
 sprite_change_offset("fx_dspec_end", 80, 80);
 if ("static_colorO" in self) orig_line = [static_colorO[8*4+0], static_colorO[8*4+1], static_colorO[8*4+2]];
 
-if ("alt_cur" in self && !s_alt && (alt_cur == 0 || alt_cur == 27))
+if ("alt_cur" in self && !s_alt && (alt_cur == 0 || alt_cur == 30))
 {
     col_lightmain = [
         [static_colorO[6*4+0], static_colorO[6*4+1], static_colorO[6*4+2]],
@@ -132,6 +133,9 @@ if ("alt_cur" in self && !s_alt && (alt_cur == 0 || alt_cur == 27))
 }
 
 sprite_change_offset("fx_dspec_healfield", 56, 56);
+sprite_change_offset("fx_lightstun_arrow", 48, 128);
+sprite_change_offset("fx_lightstunned", 64, 64);
+sprite_change_offset("fx_lightstun_blast", 96, 80);
 sprite_change_offset("fx_ashe_trail", 9, 9);
 
 sprite_change_offset("fx_od_start", 64, 94);

@@ -29,7 +29,7 @@ jump_frames = 6;
 short_hop_speed = 6;
 djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 4.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.30;
@@ -135,9 +135,26 @@ if(has_rune("H")){
 
 ////////////////////////// Chara Specific //////////////////////////
 
-cur_skin = get_synced_var(player);
+cur_skin = splice_sync_var(2);
+voiced = splice_sync_var(3);
 i_am_in_the_game = true;
 user_event(1);
+
+//voices
+voice_playing_sound = noone;
+
+VC_ATK           = 0;
+VC_CSS           = 2;
+
+vcs = [
+    [3, 1], //VC_ATK
+    [2, 0], //VC_CSS
+];
+
+vc_intro = sound_get("vc_intro");
+vc_taunt = sound_get("vc_taunt");
+vc_one_left = sound_get("vc_one_left");
+vc_kill = sound_get("vc_kill");
 
 
 //attack name list
@@ -290,6 +307,7 @@ nine_x_off = 0;
 nine_y_off = 0;
 murder_vfx_array = 0;
 genocided = 0;
+intro_alt_vfx_array = 0;
 
 //cheating
 faq_u_timer = 0;
@@ -359,3 +377,9 @@ felix_urls=[
 3018630828,
 3071141132]
 juiced_up = false;
+
+#define splice_sync_var
+var index = argument0;
+// 2 is SKIN, 3 is VOICE
+var p_check = (room == 114) ? 0 : self.player;
+return real(string_char_at(string(get_synced_var(p_check)), index));

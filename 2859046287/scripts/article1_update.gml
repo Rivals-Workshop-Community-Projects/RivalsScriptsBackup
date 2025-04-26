@@ -40,6 +40,8 @@ if (has_rune("H"))
     }
 }
 
+free = false;
+
 
 if (artc_hp > 0) image_index = lerp(image_number, 0, artc_hp/artc_hp_max); //spreads frames accross the different health values, article becomes more damage
 else if (artc_hp <= 0 && hitstop <= 0) //article has no health so it spontaniously conbusts lmao

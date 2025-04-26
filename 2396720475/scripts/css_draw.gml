@@ -58,10 +58,10 @@ if (CSS_image_alpha != 0 && position = color){
 
 shader_end();
 
-draw_set_font(asset_get("tinyFont"));
+draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 215, "v1.9.1", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v" + string(major_update_num) + "." + string(minor_update_num) + "." + string(mini_update_num), c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));

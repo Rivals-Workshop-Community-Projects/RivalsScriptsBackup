@@ -2,7 +2,7 @@
 
 shader_start();
 
-if (turbine_cont >= 70){
+if (turbine_cont >= 110){
 	draw_sprite_ext(sprite_get("charged_back"), get_gameplay_time()*.4, x, y, 2, 2, 0, c_white, .85);	
 }
 

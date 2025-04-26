@@ -28,7 +28,7 @@ jump_speed = 10;
 short_hop_speed = 7;
 djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -98,9 +98,14 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+small_sprites = 1;
+
 splat_effect = hit_fx_create( sprite_get("splat"), 18 );
 splat_effect2 = hit_fx_create( sprite_get("splat_small"), 12 );
+
 umbrellaleaf_recharge = 0;
+alert_text_timer = 0;
+
 swing_throw_type = 1;
 dair_fall_timer = 0;
 umbrellaleaf_dair_bounces = 0;
@@ -116,6 +121,52 @@ playtest = (object_index == oTestPlayer);
 
 copy_ability_id = 25;
 TCG_Kirby_Copy = 10;
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 200;
+fs_portrait_x = 80;
+opptarget = [];
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Watermelon Arrangement"
 arena_title = "The Homeowner's Last Stand";
+knight_compat_dream = 
+    [
+        "*melon noises*",
+        "So, when do we get to cracking skulls?",
+        "Some weird lookin imp? I'll smash 'em flat!"
+    ]
+
+//thank you mr nart
+// ==================== GRAFFITI INIT ======================
+// set up colors
+graffiti_colors[0] = make_color_rgb(0, 255, 204); // outer outline
+graffiti_colors[1] = make_color_rgb(0, 220, 176); // outline
+graffiti_colors[2] = make_color_rgb(255, 255,255); // main text
+graffiti_colors[3] = make_color_rgb(118, 251, 255); // text anti-aliasing
+
+// default string if there is no player tag
+graffiti_string_default = "infamous" // default string if no player tag
+
+// ===== Please don't edit below here :) =====
+// the fonts to use when drawing -- the array indexes match up with the graffiti_colors array indexes
+graffiti_fonts[0] = font_get("_graffiti_outerline");
+graffiti_fonts[1] = font_get("_graffiti_outline");
+graffiti_fonts[2] = font_get("_graffiti");
+graffiti_fonts[3] = font_get("_graffiti_aa");
+
+// some variables to keep track of things
+graffiti_id = noone; // keeps track of your old graffiti article
+graffiti_tagging = false; // set true right before you spawn the graffiti, false immediately after
+
+// get player tag
+graffiti_string = string_lower(get_player_name(player));
+// replace any tag containing special characters with the default string
+if string_lettersdigits(graffiti_string) != string_replace_all(graffiti_string, " ", "") {
+    graffiti_string = string_lower(graffiti_string_default);
+}
+// replace empty tags with default tag
+switch graffiti_string {
+    case "p1": case "p2": case "p3": case "p4": case "":
+        graffiti_string = string_lower(graffiti_string_default);
+        break;
+}
+// =========================================================

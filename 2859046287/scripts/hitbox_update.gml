@@ -58,6 +58,22 @@ if (psuedo_melee_hitbox)
 //multihit projectile code, only should run if multihit_hit_player actually exists
 if (multihit_amount > 0)
 {
+    //this is a precaution to prevent the projectile from being destroyed prematurely if it has already hit a player
+    if (proj_gap_timer > 0 && !proj_multihit_final)
+    {
+        //this temporarily disables the projectile's collision and extends its lifetime when a player is being hit
+        grounds = 1;
+        walls = 1;
+        
+        //this extends the projectile's lifetime if it's nearly over when a player is being hit
+        length = max(length, hitbox_timer + 2);
+    }
+    else
+    {
+        // restores collision when no multi hits are being performed
+        grounds = orig_grounds;
+        walls = orig_walls;
+    }
     if (instance_exists(multihit_hit_player) && multihit_hit_player != noone)
     {
         if (!in_hitpause)
@@ -118,6 +134,7 @@ if (multihit_amount > 0)
                 kb_angle = multproj_saved_values[6];
                 damage = multproj_saved_values[7];
                 can_tech = multproj_saved_values[8];
+                hit_flipper = multproj_saved_values[9];
             }
         }
         else

@@ -1,5 +1,6 @@
 //a
-if holding_present {
+//&& instance_exists(present_id)
+if holding_present && instance_exists(present_id) {
     shader_start();
     draw_sprite_ext(present_id.sprite_index,present_id.image_index, x - 30 * spr_dir, y - 25,1,1,0,c_white,0.75);
     shader_end();
@@ -16,10 +17,6 @@ if should_debug {
     if instance_exists(present_id) {
         draw_debug_text(present_id.x - 15, present_id.y + 30,"Is Present");
     }
-}
-
-if fuck_intro && get_gameplay_time() >= 30 && get_gameplay_time() <= 140 {
-    draw_debug_text(x - 30,y-100,"nah lmao")
 }
 
 if get_player_color(player) == 19 {

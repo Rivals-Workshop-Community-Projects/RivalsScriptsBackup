@@ -42,28 +42,24 @@
 with pHitBox{
     if place_meeting(x, y, other) && (player_id == other.player_id){
 		if (attack == AT_NSPECIAL){
-			with obj_article2{
-				if (player_id == other.player_id){
-					if (other.x - x) < 0 {
-						hsp = 6;
-					} else {
-						hsp = -6;
-					}
+			with other{
+				if (other.x - x) < 0 {
+					hsp = 6;
+				} else {
+					hsp = -6;
 				}
 			}
 		}
 		if (has_rune("H")){
 			if (attack == AT_USPECIAL){
-				with obj_article2{
-					if (player_id == other.player_id){
-						state = 1
-						state_timer = 0
-						vsp = -4.5;
-						if (other.x - x) < 0 {
-							hsp = 6;
-						} else {
-							hsp = -6;
-						}
+				with other{
+					state = 1
+					state_timer = 0
+					vsp = -4.5;
+					if (other.x - x) < 0 {
+						hsp = 6;
+					} else {
+						hsp = -6;
 					}
 				}
 			}
@@ -119,7 +115,7 @@ if (state == 0){
 		spawn_hit_fx(x + 16,y,15)
 		spawn_hit_fx(x - 16,y,15)
 	}
-	if (state_timer == 30){
+	if (state_timer == 40){
 		state = 1
 		state_timer = 0
 	}
@@ -165,7 +161,7 @@ switch(state){
 switch(animation_type){
     
     case 0: //Increment image_index at the rate determined by idle_anim_rate
-        if (state_timer mod 5 == 0){
+        if (state_timer mod 6 == 0){
             image_index++;
         }
         break;

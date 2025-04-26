@@ -14,10 +14,10 @@
     	with (asset_get("pHitBox")){
     		if (player != other.player_id.player){
     			if (place_meeting(x, y, other)) && (type != 2){
-    				other.hitbox_hit = self;
-    				player_id.hitpause = true;
-                    player_id.hitstop = hitpause;
-                    other.hitstop = hitpause;
+					other.hitbox_hit = self;
+					player_id.hitpause = true;
+					player_id.hitstop = hitpause;
+					other.hitstop = hitpause;
     			}
     		}
     	}
@@ -46,14 +46,13 @@
     }
 
 if (state != 2){
-    with pHitBox{
+	with pHitBox if (player_id == other.player_id){
 		if collision_rectangle(
 		other.x - 24, 
 		other.y - 72, 
 		other.x + 24, 
 		other.y, 
-		self, true, false) 
-		&& (player_id == other.player_id){
+		self, true, false) || (has_rune("L")){
 			//firepea
 			if (attack == AT_FTILT 
 			|| attack == AT_EXTRA_1 
@@ -160,7 +159,7 @@ if (state == 0){
 		spawn_hit_fx(x,y - 62,14)
 	}
 	//delete if 30 seconds pass
-	if (state_timer >= 1800){
+	if (state_timer >= 1800 && !has_rune("L")) || (state_timer >= 2700){
 		state = 2
 		state_timer = 0
 	}
@@ -246,7 +245,7 @@ if (shovel == true){
 	spawn_hit_fx(x - 16,y,15)
     sound_play (sound_get ("shovel"));
 	if (has_rune("D")){
-		create_hitbox( AT_DSPECIAL, 2, (x),(y) );
+		create_hitbox( AT_DSPECIAL, 2, (x),(y-30) );
 	}
 	instance_destroy();
     exit;

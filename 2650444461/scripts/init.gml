@@ -130,6 +130,13 @@ trainingmode = false;
 playtesting = (object_index == oTestPlayer);
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 
+KoBWeaknesses = 
+{
+    Fire: false,
+    Water: false,
+    Thunder: true
+}
+
 //runeF = true;runesUpdated = true;
 
 toonlink_photo = sprite_get("toonlink_photo");
@@ -138,7 +145,7 @@ toonlink_randomizephoto = false;
 kob_sleep_sprite = sprite_get("sleep");
 kob_sleep_sprite_air = sprite_get("sleep_air");
 kob_sleep = false;
-//miiverse_post = sprite_get("miiverse_post");
+miiverse_post = sprite_get("miiverse_post");
 //guiltySprite = sprite_get("trialgrounds");
 //resort_portrait = sprite_get("lastresort");
 battle_text = "* A wild Mudkip appeared!";

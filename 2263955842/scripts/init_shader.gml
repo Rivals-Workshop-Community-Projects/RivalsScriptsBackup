@@ -20,18 +20,3 @@ switch (get_player_color(player)) {
 
 
 //early access alt 
-if (get_player_color(player) == 16){
-    set_color_profile_slot_range(7, 10, 26, 7)
-    set_color_profile_slot_range(2, 24, 11, 19); //HAIR 
-    
-    for(i = 0; i < 8; i++){
-        set_character_color_shading(i, 0);
-    }
-    outline_color = [35, 67, 49];
-    
-}
-else
-{
-    set_color_profile_slot_range(2, 24, 10, 10); //HAIR 
-    set_color_profile_slot_range(7, 0, 0, 0); //PINK
-}

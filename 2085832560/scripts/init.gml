@@ -19,6 +19,12 @@ t34 = 0
 t35 = 0
 t36 = 0
 
+cancdraw = 0
+cancx = x
+cancy = y
+cancimg = image_index
+cancspr = sprite_index
+cancdir = 0
 
 Hikaru_Title = "Infernal Fuel"
 
@@ -38,13 +44,14 @@ triggered = 0
 gainlockout = 0
 
 introhit = 0
-
+Donottaunt = 0
 intro = 0
 introtimer = -1
 hunter = 0
 
 attacking = true
-
+BFGhit = false
+Laserhit = false
 casing = 0
 
 style = 0
@@ -76,6 +83,7 @@ uhit = 0
 oldx = 0
 oldy = 0
 grind = 0
+jumpfix = 0
 
 char_height = 60;
 idle_anim_speed = .1;
@@ -100,7 +108,7 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 6;
-djump_speed = 11;
+djump_speed = 8;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -108,7 +116,7 @@ jump_change = 3.5; //maximum hsp when double jumping. If already going faster, i
 air_accel = .25;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .045;
-max_djumps = 1;
+max_djumps = 2;
 double_jump_time = 30; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3;
 walljump_vsp = 11;
@@ -120,7 +128,7 @@ gravity_speed = .5;
 hitstun_grav = .55;
 knockback_adj = 0.90; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4; //normal landing frames
+land_time = 6; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 0.70; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
@@ -173,8 +181,9 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-djumpfx = hit_fx_create( sprite_get( "doublejumpfx" ), 9 );
-sprite_change_offset("doublejumpfx", 42, 68);
+djumpfx = hit_fx_create( sprite_get( "doublejumpfx" ), 18 );
+djumpfx2 = hit_fx_create( sprite_get( "doublejumpfx" ), 9 );
+sprite_change_offset("doublejumpfx", 48, 68);
 
 shotgun1  = hit_fx_create( sprite_get( "shotgun1" ), 9 );
 sprite_change_offset("shotgun1", 76, 98);
@@ -203,19 +212,21 @@ sprite_change_offset("ustrongs2", 16, 30);
 dattacks1 = hit_fx_create( sprite_get( "dattacks1" ), 24 );
 sprite_change_offset("dattacks1", 30, 16);
 
-exp1 = hit_fx_create( sprite_get( "exp1" ), 42 );
+exp1 = hit_fx_create( sprite_get( "exp1" ), 48 );
 sprite_change_offset("exp1", 80, 80);
 
-exp2 = hit_fx_create( sprite_get( "exp2" ), 42 );
+exp2 = hit_fx_create( sprite_get( "exp2" ), 48 );
 sprite_change_offset("exp2", 82, 152);
 
 dairs3 = hit_fx_create( sprite_get( "dairs3" ), 20 );
 sprite_change_offset("dairs3", 32, 32);
 
-smoke1 = hit_fx_create( sprite_get( "smoke1" ), 20 );
+smoke3 = hit_fx_create( sprite_get( "dairs3" ), 16 );
+
+smoke1 = hit_fx_create( sprite_get( "smoke1" ), 16 );
 sprite_change_offset("smoke1", 16, 16);
 
-smoke2 = hit_fx_create( sprite_get( "smoke2" ), 20 );
+smoke2 = hit_fx_create( sprite_get( "smoke2" ), 16 );
 sprite_change_offset("smoke2", 16, 16);
 
 
@@ -249,6 +260,7 @@ NS12 = hit_fx_create( sprite_get( "NS12" ), 30 );
 NS13 = hit_fx_create( sprite_get( "NS13" ), 30 );
 
 stylec = hit_fx_create( sprite_get( "Dstylec" ), 5 );
+styled = hit_fx_create( sprite_get( "Dstylec" ), 10 );
 
 sprite_change_offset("NS1", 32, 32);
 sprite_change_offset("NS2", 32, 32);

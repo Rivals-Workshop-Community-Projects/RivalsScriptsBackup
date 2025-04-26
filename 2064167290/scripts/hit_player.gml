@@ -21,7 +21,7 @@ if (my_hitboxID.attack == AT_USTRONG)
 {
     has_hit = true
     
-    if (my_hitboxID.hbox_num == 4)
+    if (my_hitboxID.hbox_num == 3)
     {
         with (obj_article2)
         {
@@ -107,6 +107,7 @@ if (my_hitboxID.attack == AT_DSPECIAL) //and (my_hitboxID.hbox_num == 1)
 if (my_hitboxID.attack == AT_USPECIAL)
 {
     can_uspecial_combo = true;
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 }
 
 
@@ -136,13 +137,3 @@ if (my_hitboxID.attack == AT_FSPECIAL)
         move_cooldown[AT_FSPECIAL] = 0;
     }
 }
-
-
-
-
-
-
-
-
-
-

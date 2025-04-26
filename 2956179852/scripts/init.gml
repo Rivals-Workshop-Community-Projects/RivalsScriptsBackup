@@ -202,12 +202,11 @@ meatball_angle = 0;
 meatball = noone;
 fspecial_stall = 0;
 dattack_projectile_cooldown = 0;
-dairhold = true;
-dairholdbounce = false;
-dair_whereami = false;
-dairhitbox = noone;
+DairBounce = 0;dairhold = true;dairholdbounce = false;dair_whereami = false;dairhitbox = noone;
+sol_burn = false;sol_burn_id = 0;sol_burn_timer = 0;
 bairtoast = false;
 nspec_cloud = noone;
+nspecial_charge = 0;
 can_uspecial = false;
 respawnplat = 0;
 peach = noone;
@@ -217,6 +216,10 @@ kob_sleep_sprite_air = sprite_get("hurt");
 walk_music_timer = 0;
 walk_music = noone;
 walk_music_blocked = false;
+
+this_is_it_luigi = false;
+prev_stock_count = get_player_stocks(player);
+can_this_be_it_luigi = false;
 
 if(alt != 0){
     fx_spray = hit_fx_create(sprite_get("nspecial_spray_alts"), 30);

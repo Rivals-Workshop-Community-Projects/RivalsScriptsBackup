@@ -429,3 +429,5 @@ dspec2_die = hit_fx_create(sprite_get("Gascloudlevel2die"), 9);
 dspec3_die = hit_fx_create(sprite_get("Gascloudlevel3die"), 9);
 
 tauntcloud_die = hit_fx_create(sprite_get("Gascloudtauntdie"), 9);
+
+jmbounce = hit_fx_create(sprite_get("JMLBounce"), 30);

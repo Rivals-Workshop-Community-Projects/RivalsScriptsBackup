@@ -26,14 +26,21 @@ if tool_type == 0{
 			vsp = vsp + 0.4;
 		}
 		wait_timer = 0;
-		if life_timer == 1 or life_timer == 5{
-			create_hitbox(AT_FSPECIAL, 2, x, y);
+		if life_timer == 1{
+			boxing_attack = create_hitbox(AT_FSPECIAL, 2, x + 10 * spr_dir, y -15);
 			//put in parried.gml that hitbox AT_FSPECIAL, 2 sets it to tool_state 10 if parried
+		} else if life_timer > 0 && instance_exists(boxing_attack){
+			boxing_attack.x = x + 10 * spr_dir
+			boxing_attack.y = y - 15
 		}
 		if life_timer == 8{//loops animations
-			life_timer = 0
+			life_timer = 1
+			boxing_attack = create_hitbox(AT_FSPECIAL, 2, x + 10 * spr_dir, y-15);
 		}
 		if free == false{//there's also another line of code in hit_player that will send it straight to tool_state 2 on hit
+			if instance_exists(boxing_attack){
+				boxing_attack.destroyed = true;
+			}
 			tool_state = 1;
 			life_timer = 0;
 			sound_play(sound_get("deploy"), false, noone, 0.4);
@@ -125,9 +132,6 @@ if tool_type == 0{
 		
 		if life_timer == 5{
 			killing_glove_of_boxing = create_hitbox(AT_FSPECIAL, 3, x, y- 40);
-			// if is_bread == true{
-			// 	killing_glove_of_boxing.sound_effect = asset_get("sfx_orca_crunch");
-			// }
 		}
 		if life_timer == 14{
 			sound_play(asset_get("sfx_orca_bite"));
@@ -145,7 +149,7 @@ if tool_type == 0{
 	if tool_state >= 10{
 		sprite_index = sprite_get("toolboxair");
 		wait_timer ++;
-		vsp = -0.7
+		vsp = -0.7;
 		if wait_timer == 120{
 			instance_destroy();
 			exit;
@@ -160,10 +164,9 @@ if tool_type == 0{
 if tool_type == 1{ 
 	death_timer++
 	if tool_state == 0{ //spawn
-		// other.move_cooldown[AT_DSPECIAL] = 400;
 		frame_num = 4;
 		if free == true{
-			vsp = -6 + life_timer
+			vsp = -6 + life_timer;
 		}
 		sprite_index = sprite_get("rat_spawn");
 		if life_timer == 17{//loops animations

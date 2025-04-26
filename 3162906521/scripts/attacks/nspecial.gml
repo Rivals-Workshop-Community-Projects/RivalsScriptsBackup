@@ -40,6 +40,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 
 //hitbox for hitting buildings
@@ -67,7 +68,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 100);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, -200);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 200);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 200);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 70);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 0);

@@ -73,7 +73,25 @@ if (boost_mode || is_super)
 		1 * alpha_mult
 	);
     shader_end();
-	gpu_set_blendmode(bm_normal);
+
+    if (boost_col_average == 0) gpu_set_blendmode(bm_normal);
+    gpu_set_fog(1, make_color_rgb(cur_colors[0 + uses_super_colors * 8][@ 0], cur_colors[0 + uses_super_colors * 8][@ 1], cur_colors[0 + uses_super_colors * 8][@ 2]), 0, 1);
+    for (var ix = -2; ix <= 2; ix += 2) for (var iy = -2; iy <= 2; iy += 2) if (ix != 0 && iy != 0)
+    {
+        draw_sprite_ext(
+            sprite_index,
+            image_index,
+            x + draw_x + ix,
+            y + draw_y + iy,
+            2 * spr_dir,
+            2,
+            spr_angle,
+            c_white,
+            (game_time % 8 > 4 ? 0.4 : 0.5)
+        );
+    }
+    gpu_set_fog(0, c_white, 0, 0);
+    gpu_set_blendmode(bm_normal);
 }
 
 //chaos mask
@@ -100,10 +118,15 @@ with (pHitBox) if (player_id == other && attack == 0)
 
 #define maskHeader
 {
+    //this saves some gpu data, it's used to allow us to draw masks safetly without breaking anything
+    //as we later reset the state
+    gpu_push_state();
+    
     //set the mask to take effect on pretty much everything in the room
     //below this function, add the MASK
+    gpu_set_alphatestenable(false);
     gpu_set_blendenable(false);
-    gpu_set_colorwriteenable(false,false,false,true);
+    gpu_set_colorwriteenable(false, false, false, true);
     draw_set_alpha(0);
     draw_rectangle_color(-200 ,-200 , room_width + 200, room_height + 200, c_white, c_white, c_white, c_white, false);
     draw_set_alpha(1);
@@ -113,14 +136,20 @@ with (pHitBox) if (player_id == other && attack == 0)
     //sets the thing underneath the mask to be drawn
     //below this function, add the TEXTURE
     gpu_set_blendenable(true);
-    gpu_set_colorwriteenable(true,true,true,true);
-    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_colorwriteenable(true, true, true, true);
+    gpu_set_blendmode_ext(bm_dest_alpha, bm_inv_dest_alpha);
     gpu_set_alphatestenable(true);
 }
 #define maskFooter
 {
-    //go back to drawing normally again
-    gpu_set_alphatestenable(false);
-    gpu_set_blendmode(bm_normal);
-    draw_set_alpha(1);
+    // playtest zone fix by frtoud
+    if (object_index == oTestPlayer)
+    {
+        gpu_set_blendenable(false);
+        gpu_set_alphatestenable(false);
+        gpu_set_colorwriteenable(false, false, false, true);
+        draw_rectangle_color(-200 ,-200 , room_width + 200, room_height + 200, c_white, c_white, c_white, c_white, false);
+    }
+    //gpu state reset, restores everything back to normal
+    gpu_pop_state();
 }

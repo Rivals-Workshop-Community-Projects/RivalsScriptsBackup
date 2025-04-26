@@ -2,10 +2,91 @@
 
 DT = 16
 
-if triggered == 1 && pattern == 0 {
+if triggered == 1 && downed == 0 {
+	if pattern == 0{
 	motivation += 0.5
+	} else {
+	motivation += 0.2	
+	}
 }
 
+can_shield = false
+has_airdodge = false
+
+ai_target.parry_cooldown = 0
+
+if pattern == 0{
+	justparried = 0
+} else {
+	if justparried > 0{
+		justparried = 20
+	}
+}
+if (place_meeting(x+15*spr_dir, y, asset_get("par_block"))) {
+                 y -= 15
+           }
+           
+if justparried > 10 && !hitpause{
+	justparried -= 1
+}
+
+if ai_target.state == PS_AIR_DODGE{
+	invincible = true
+	invince_time = 15
+	if ai_target.state_timer == 14{
+	with ai_target{
+		has_airdodge = false
+		invincible = true
+		vsp = -2
+		invince_time = 15
+		set_state(PS_IDLE_AIR)
+	}
+		
+	}
+}
+if ai_target.state_cat == SC_GROUND_NEUTRAL && ai_target.shield_pressed{
+		with ai_target{
+			  attack_end()
+		 }
+	 	ai_target.state = PS_PARRY_START
+}
+if ai_target.state == PS_PARRY_START or ai_target.state == PS_PARRY{
+	ai_target.can_be_hit[2] = 0
+	if parried && !ai_target.hitpause{
+	 	if ai_target.shield_pressed{
+	 		with ai_target{
+			  attack_end()
+		    }
+	 		ai_target.state = PS_PARRY_START
+	 	} else {
+	 		ai_target.window_timer += 1
+	 	}
+	}
+	
+	if ai_target.invince_time > 15{
+	   ai_target.invince_time = 15
+	}
+	if ai_target.state == PS_PARRY_START{
+		parried = false
+	    if ai_target.invince_time > 5{
+	       ai_target.invince_time = 5
+	    }
+	}
+		
+	if ai_target.state == PS_PARRY && parried == false{
+		if ai_target.state_timer < 10{
+			if ai_target.state_timer > 1{
+		ai_target.invince_time = 0
+		ai_target.window_timer -= 1
+		ai_target.invincible = false
+			}
+		}else{
+		ai_target.window_timer += 0.25	
+		}
+	}
+} else {
+	parried = false
+}
 
 if temp_level == 1 && room_speed < 72{
 	room_speed = 72
@@ -24,17 +105,15 @@ if !hitstop {
 if timescore  > 10000 {
 	time -= 0.5
 }
-
-if ai_target.state == PS_RESPAWN && ai_target.state_timer == 1 {
-
-stock -= 500	
-	
+if hit_player_obj == -4 hit_player_obj = ai_target
+if "hit_player_obj" in self {
+if hit_player_obj.state == PS_RESPAWN && hit_player_obj != self && hit_player_obj.state_timer == 1{
+stock -= 500
+print("minus")
+}
 }
 
 }
-
-
-
 
     xdist = abs(ai_target.x - x);
     ydist = abs(y - ai_target.y);
@@ -91,18 +170,41 @@ if attacking && attack == AT_TAUNT && state_timer = 307 {
 if !hitpause && downed == 0 {
 	if motivation2 > motivation  {
 		motivation2 -= 1
+		if abs(motivation2 - motivation) > 10  {
+		motivation2 -= 1
+    	}
+    	if abs(motivation2 - motivation) > 40  {
+		motivation2 -= 1
+    	}
 	}
 
     lockout = 0
-	
+	hsp /= 1.15
+	if vsp > 0{
+		vsp -= 0.15
+	}
 	if motivation > motivation2 {
 		motivation2 = motivation
 	}
 }
 
 if motivation <= 0 && downed = 0 {
-	
 	if lockout > 0 {
+		if phase == 2 && airraid == true{
+			sound_play(asset_get("sfx_ori_energyhit_medium"))
+            shake_camera(4,10)
+            spawn_hit_fx(x,y,lighten)
+            spawn_hit_fx(x,y - 46,306)
+            spawn_hit_fx(x,y - 40,triggerfx)
+            sound_play(sound_get("RI"))
+            sound_play(sound_get("counterhit"))
+            triggered = 1
+            DTtime = 800
+     	    pattern = 5
+     	    attackcd = 100
+     	    airraid = false
+     	    motivation = 20
+		} else {
 		sound_stop(sound_get("taunt1"))
 		sound_stop(sound_get("taunt5"))
 			sound_play(sound_get("RI"))
@@ -121,13 +223,12 @@ if motivation <= 0 && downed = 0 {
 	        downed = 1
 	        pattern = 0
 	        ptimer = 0
-	        take_damage(player, -1,15)
+	        take_damage(player, -1,25)
 	        triggered = 0
+		}
 	} else {
 		motivation = 1
 	}
-	
-
 }
 
 
@@ -158,13 +259,13 @@ sound_play(sound_get("Parried"))
 }
 
 	if phase >= 2 {
-			stormtarget = ai_target
-	        create_hitbox(AT_FSPECIAL, 3, ai_target.x, ai_target.y - 40 )
+		stormtarget = ai_target
+	    create_hitbox(AT_FSPECIAL, 3, ai_target.x, ai_target.y - 40 )
 	}
 	
    if phase == 3 {
-			pattern = -2
-	}
+		pattern = -2
+   }
 	
 	
 	downed = 0
@@ -186,8 +287,6 @@ sound_play(sound_get("Parried"))
              spawn_hit_fx(x,y,lighten)
              spawn_hit_fx(x,y - 46,306)
              spawn_hit_fx(x,y - 40,triggerfx)
-             sound_play(sound_get("RI"))
-             sound_play(sound_get("counterhit"))
              triggered = 1
              DTtime += 100
 	}
@@ -210,8 +309,25 @@ if lockout > 0 && !hitpause{
 	lockout -= 1
 }
 
-if get_player_damage( player ) > 150 {
-	
+if retreat > 0 && !hitpause{
+	retreat -= 1
+	if downed == 0 && retreat == 1{
+		set_state(PS_IDLE)
+		create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+		with ai_target{
+			attack_end()
+			set_state(PS_IDLE)
+		}
+		if x > room_width/2{
+	        x = ai_target.x - 100 - random_func(1,200,true)
+			sound_play(asset_get("sfx_roll"))
+			hsp = -10
+		} else {
+			x =  ai_target.x + 100 + random_func(1,200,true)
+			sound_play(asset_get("sfx_roll"))
+			hsp = 10
+		}
+	}
 }
 
 if !hitpause   {
@@ -228,11 +344,18 @@ if !hitpause   {
 if downed == 1 {
 
 if state_cat != SC_HITSTUN {
+	if free{
 	set_state(PS_HITSTUN)
 	state_timer = 1
+	}else{
+	set_state(PS_PRATLAND)
+	state_timer = 1	
+	sound_stop(sound_get("cnoise3"))
+	}
 }
-if state_cat == SC_HITSTUN {
-	if free {
+
+    
+	if free && !hitpause {
 	vsp -= 0.2
 	}
 	left_down = false
@@ -241,45 +364,96 @@ if state_cat == SC_HITSTUN {
 	down_down = false
 	up_down = true
 	hsp /= 1.02
+	jump_down = false
+	djumps = 5
+	has_airdodge = false
+	shield_down = false
+	special_down = false
+	attack_down = false
+	can_wall_jump = false
 
-	
-	if !hitpause {
-	state_timer -= 1
+
+}
+
+  	    
+  	    
+if abs(ai_target.x - x + ai_target.hsp*6) < 250{
+	movemode = 1
+} else {
+	movemode = 0
+	if abs(ai_target.x - x + ai_target.hsp*6) < 350{
+		left_down = false
+	    right_down = false
 	}
-	
 }
 
-}
 
-  	    
-  	    
-if get_gameplay_time() % 45 == 0 {
-	
-	movemode = random_func(1, 2, true)
+if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && free && downed == 0{
+	if x  > room_width/2 + 300 && hsp > -7{
+		hsp -= 2
+	}
+	if x  < room_width/2 - 300 && hsp < 7{
+		hsp += 2
+	}
 }
-
 
 if movemode = 1 {
-	if state == PS_WALK {
-		hsp = walk_speed * -0.6
+	if state == PS_WALK or state == PS_DASH or state == PS_DASH_START{
+		hsp = 0
+		x -= 1*spr_dir
+		if abs(ai_target.x - x + ai_target.hsp*6) < 150{
+			x -= 1*spr_dir
+		}
 	}
-	
+} else {
+	if state == PS_WALK or state == PS_DASH or state == PS_DASH or state == PS_DASH_START{
+		hsp = 0
+		if abs(ai_target.x - x + ai_target.hsp*6) > 350{
+		x += 2*spr_dir
+		}
+	}
 }
 
-
-  	    
-  	    
 	    		if x + hsp > room_width - 30 {
 	    			x = 50
+	    			hsp = 12
+	    			if downed != 0 {
+	    				take_damage(player,-1,5)
+	    				 motivation2 += 20
+	    				fx = spawn_hit_fx(x,y - 20,304)
+	    				fx.pause = 6
+	    				sound_play(asset_get("sfx_blow_heavy2"))
+	    				sound_stop(sound_get("vdeath"))
+	    				sound_play(sound_get("vdeath"),false,noone,2)
+	    			}
 	    		}
 	    		
 	    		    		
 	    		if x + hsp < 30 {
 	    			x = room_width - 50
+	    			hsp = -12
+	    			if downed != 0 {
+	    				take_damage(player,-1,5)
+	    				motivation2 += 20
+	    				fx = spawn_hit_fx(x,y - 20,304)
+	    				fx.pause = 6
+	    				sound_play(asset_get("sfx_blow_heavy2"))
+	    				sound_stop(sound_get("vdeath"))
+	    				sound_play(sound_get("vdeath"),false,noone,2)
+	    			}
 	    		}	
 	    		
 	    		
 	    		if y + vsp > room_height - 20 {
+	    			if downed != 0 {
+	    				take_damage(player,-1,15)
+	    				motivation2 += 45
+	    				fx = spawn_hit_fx(x,y - 20,304)
+	    				fx.pause = 6
+	    				sound_play(asset_get("sfx_blow_heavy2"))
+	    				sound_stop(sound_get("vdeath"))
+	    				sound_play(sound_get("vdeath"),false,noone,2)
+	    			}
 	    			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
 	    			sound_play(sound_get("SpaceCut"))
 	                shake_camera(6,6)
@@ -292,6 +466,16 @@ if movemode = 1 {
 	    		
 	    		if y + vsp < 0 {
 	    			y = 10
+	    			vsp = 14
+	    			if downed != 0 {
+	    				take_damage(player,-1,5)
+	    				motivation2 += 20
+	    				fx = spawn_hit_fx(x,y - 20,304)
+	    				fx.pause = 6
+	    				sound_play(asset_get("sfx_blow_heavy2"))
+	    				sound_stop(sound_get("vdeath"))
+	    				sound_play(sound_get("vdeath"),false,noone,2)
+	    			}
 	    		}  	    
 	    		
 	    		
@@ -314,6 +498,7 @@ if phase = 0 && get_gameplay_time() > 120{
 	
 	
 }
+
 
 if phase == 1 {
 	
@@ -352,7 +537,7 @@ if phase == 1 {
 				spawn_hit_fx(x,y - 40,304)
 				set_attack(AT_DSTRONG)
 				window = 1
-				window_timer = 15 
+				window_timer = 10 
 				pattern = 0
 				attackcd = 160
 		}
@@ -375,6 +560,7 @@ if phase == 1 {
 		}
 	}
 	
+	if ai_target.y < room_height/2 + 150 && ai_target.x > room_width/2 - 400 && ai_target.x < room_width/2 + 400{
 	if get_gameplay_time() > 120 && attackcd <= 0 && pattern == 0 && state_cat != SC_HITSTUN && !invincible && state != PS_PRATFALL && state != PS_PRATLAND 
 	 && !attack_down && (state != PS_AIR_DODGE )
      && (state != PS_ROLL_BACKWARD )
@@ -383,13 +569,27 @@ if phase == 1 {
      && (state != PS_TECH_FORWARD )
      && (state != PS_TECH_GROUND){
 		pattern = 1 + random_func(3,3,true)
+		if oldpat != pattern{
+			oldpat = pattern
+		} else {
+			pattern += 1
+			has_hit_player = false
+			attack_end()
+			move_cooldown[AT_USPECIAL] = 0
+			move_cooldown[AT_FSTRONG] = 0
+			if pattern = 4 pattern = 1
+			oldpat = pattern
+		}
 		motivation -= 40
 	}
+	} 
 	
 	if pattern == 1 && !hitstop{
+		   if 	y < ai_target.y {
            vsp /= 1.2
+		   }
            if free {
-           	vsp -= 0.4
+           	vsp -= 0.25
            	hsp /= 1.2
            }
 		
@@ -402,8 +602,19 @@ if phase == 1 {
 			window_timer = 1
 			hsp = -12*spr_dir
 			spawn_hit_fx(x,y,vai)
-			x = ai_target.x + 40*spr_dir
+			x = ai_target.x - 100*spr_dir
 			y = ai_target.y 
+			if free {
+				y -= 20
+				vsp = -8
+			}
+		}
+		
+		if ptimer > 5 && ptimer < 22 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-4,4)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-3,3)
 		}
 		
 		if ptimer == 20 {
@@ -416,32 +627,88 @@ if phase == 1 {
            }
 		}
 
+	    if ptimer > 38 - 6 && ptimer < 38 + 2{
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-2,2)
+		}
+		
 	     if ptimer == 38 {
 	     	sound_play(sound_get("vef3"),false,noone,1,1.05) 
 	     	set_attack(AT_JAB)
 			window = 4
 			window_timer = 0
 			if free {
-           	vsp = -2
+           	vsp = -3
            }
 	     }
 	     
-	     
-	      if ptimer == 50 {
+	     if ptimer > 50 - 6 && ptimer < 50 + 2{
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-2,2)
+		}
+		
+	     if ptimer == 50 {
 	     	set_attack(AT_FTILT)
 			window = 1
-			window_timer = 1
+			window_timer = 8
+			sound_play(sound_get("vef3"))
 			if free {
            	vsp = -3
            }
-           pattern = 0
 	     }
 	     
+	     if ptimer == 65{
+	     	if has_hit_player{
+	     	  spr_dir *= -1
+	     	  sound_play(asset_get("sfx_roll"))
+              spawn_hit_fx(x,y,vai)
+	          
+	     	  spr_dir = (ai_target.x < x?1:-1)	
+	     	  attack_end()
+			  set_attack(AT_DAIR)
+			  window = 1
+			  window_timer = 12
+			  create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+			  x = ai_target.x - 60*spr_dir
+			  y = ai_target.y - 40
+			  vsp = -6
+	     	} else {
+	     	  pattern = 0
+	     	}
+	     }
+	     
+	     if ptimer > 64 && ptimer < 75{
+			vsp += clamp(floor((ai_target.y - 15 - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - 15 - y)/6),-6,6)
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-5,5)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-9,9)
+			ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			ai_target.hsp /= 1.1
+			ai_target.vsp /= 1.1
+		}
+		
+	     if ptimer == 78{
+	     	set_state(PS_IDLE)
+	     	pattern = 3
+	     	ptimer = 0
+	     }
 	     
 	}
-	
+	if pattern == 2{
+		sound_stop(sound_get("vef2"))
+	}
 	if pattern == 2 && !hitstop {
+		if ptimer < 6{
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-3,3)
+		}
 		if ptimer == 1 {
+			has_hit_player = false
 				sound_play(asset_get("sfx_roll"))
             spawn_hit_fx(x,y,vai)
 	        
@@ -450,20 +717,109 @@ if phase == 1 {
 			window = 0
 			window_timer = 0
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			x = ai_target.x - 80*spr_dir
+			x = ai_target.x - 60*spr_dir
 			y = room_height/2 - 140
 	     }
 	     
 	     if free && ptimer > 2 && ptimer < 10 {
 	     	ptimer = 2
-	     	
 	     }
-	     
+	     if ptimer > 3{
+	     if !has_hit_player{
 	     if y + vsp > room_height - 100 or (!free) {
 	     	pattern = 0
 	     	if y + vsp > room_height/2 + 200 {
 	     		set_state(PS_IDLE_AIR)
 	     	}
+	     }
+	     } else {
+	        if y + vsp > room_height/2 + 200 or (!free) {
+	        	if y + vsp > room_height/2 + 200 {
+	     	    	set_state(PS_IDLE_AIR)
+	     	    	pattern = 0
+	     	    }
+	        	if !free && ptimer < 60{
+	             	sound_play(asset_get("sfx_roll"))
+                    spawn_hit_fx(x,y,vai)
+	                  
+	               spr_dir = (ai_target.x < x?1:-1)	
+	             	attack_end()
+		   	       set_attack(AT_FAIR)
+		   	       window = 1
+		   	       window_timer = 6
+		   	       create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+		   	       x = ai_target.x - 80*spr_dir
+		   	       y = ai_target.y - 10
+		   	       vsp = -6
+		   	       ptimer = 60
+	        	}
+	        }	
+	        if ptimer >= 60 && ptimer < 70{
+		    	vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer == 75 {
+		    	spr_dir *= -1
+	     	  sound_play(asset_get("sfx_roll"))
+              spawn_hit_fx(x,y,vai)
+	          
+	     	  spr_dir = (ai_target.x < x?1:-1)	
+	     	  attack_end()
+			  set_attack(AT_DAIR)
+			  window = 1
+			  window_timer = 12
+			  create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+			  x = ai_target.x - 120*spr_dir
+			  y = ai_target.y - 40
+			  vsp = -6
+		    }
+		    if ptimer >= 75 && ptimer < 85{
+		    	vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer == 85{
+		    	sound_play(asset_get("sfx_roll"))
+              spawn_hit_fx(x,y,vai)
+	          
+	     	  spr_dir = (ai_target.x < x?1:-1)	
+	     	  attack_end()
+			  set_attack(AT_UAIR)
+			  window = 1
+			  window_timer = 0
+			  create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+			  x = ai_target.x - 80*spr_dir
+			  y = ai_target.y + 120
+		    }
+		    if ptimer >= 85 && ptimer < 95{
+		    	vsp += clamp(floor((ai_target.y+ 80 - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y+ 80 - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer >= 95 {
+		        attack_end()
+	     	    set_state(PS_IDLE)
+	     	    pattern = 3
+	     	    ptimer = 0
+		    }
+		
+	     }
 	     }
 
 	}
@@ -476,6 +832,7 @@ if phase == 1 {
 		spr_dir = (ai_target.x > x?1:-1)	
 		
 		if ptimer == 1 {
+			motivation += 30
 			hsp = -6*spr_dir
 						shake_camera (4,6)
 			spawn_hit_fx(x,y,vai)
@@ -563,7 +920,7 @@ if phase == 2 {
              sound_play(sound_get("RI"))
              sound_play(sound_get("counterhit"))
              triggered = 1
-             DTtime = 600
+             DTtime = 800
 	}
 
 	if pattern != 0{
@@ -575,13 +932,18 @@ if phase == 2 {
 	}
 	
 	if pattern != 0 {
-		attackcd = 90
+		attackcd = 120
 	} else {
 		if !hitstop {
 		attackcd -= 1
 		}
+		if downed == 0 && attackcd == 90 && !hitpause && triggered{
+				spr_dir = (ai_target.x > x?1:-1)
+				sound_play(sound_get("counterhit"),false,noone,0.5,2)
+				create_hitbox(AT_FSPECIAL,1,round(x - 105*spr_dir - 20 + random_func(1,41,true)),round(y - 20 - random_func(2,61,true)))
+		}
 	}
-	
+	if ai_target.y < room_height/2 + 150 && ai_target.x > room_width/2 - 400 && ai_target.x < room_width/2 + 400{
 	if get_gameplay_time() > 120 && attackcd <= 0 && pattern == 0 && state_cat != SC_HITSTUN && !invincible && state != PS_PRATFALL && state != PS_PRATLAND 
 	 && !attack_down && (state != PS_AIR_DODGE )
      && (state != PS_ROLL_BACKWARD )
@@ -590,24 +952,32 @@ if phase == 2 {
      && (state != PS_TECH_FORWARD )
      && (state != PS_TECH_GROUND){
      	
-     if DTtime < 180 && DTtime > 0 {
-     		 sound_play(asset_get("sfx_ori_energyhit_medium"))
-             shake_camera(4,10)
-             spawn_hit_fx(x,y,lighten)
-             spawn_hit_fx(x,y - 46,306)
-             spawn_hit_fx(x,y - 40,triggerfx)
-             sound_play(sound_get("RI"))
-             sound_play(sound_get("counterhit"))
-             triggered = 1
-             DTtime = 600
-             
-     	pattern = 4
+     if DTtime < 180 && DTtime > 0 && airraid == true{
+        sound_play(asset_get("sfx_ori_energyhit_medium"))
+        shake_camera(4,10)
+        spawn_hit_fx(x,y,lighten)
+        spawn_hit_fx(x,y - 46,306)
+        spawn_hit_fx(x,y - 40,triggerfx)
+        sound_play(sound_get("RI"))
+        sound_play(sound_get("counterhit"))
+        triggered = 1
+        DTtime = 800
+     	pattern = 5
+     	attackcd = 100
+     	airraid = false
     } else {
-    	pattern = 1 + random_func(4,3,true)
+    	pattern = 1 + random_func(3,3,true)
+		if oldpat != pattern{
+			oldpat = pattern
+		} else {
+			pattern += 1
+			if pattern = 4 pattern = 1
+			oldpat = pattern
+		}
 		motivation -= 40
     }
-     	
-     	
+	
+	}
 	}
 	
 	if pattern == -1 && !hitpause{
@@ -631,9 +1001,11 @@ if phase == 2 {
 		if has_hit_player && ptimer > 63{
 			y += floor((ai_target.y - y)/8)
 		}
+           if 	y < ai_target.y {
            vsp /= 1.2
+		   }
            if free {
-           	vsp -= 0.4
+           	vsp -= 0.25
            	hsp /= 1.05
            }
 		
@@ -646,8 +1018,19 @@ if phase == 2 {
 			window_timer = 1
 			hsp = -12*spr_dir
 			spawn_hit_fx(x,y,vai)
-			x = ai_target.x + 40*spr_dir
+			x = ai_target.x - 100*spr_dir
 			y = ai_target.y 
+			if free {
+				y -= 20
+				vsp = -8
+			}
+		}
+		
+		if ptimer > 5 && ptimer < 22 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-4,4)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-3,3)
 		}
 		
 		if ptimer == 20 {
@@ -658,6 +1041,13 @@ if phase == 2 {
 			if free {
            	vsp = -3
            }
+		}
+		
+		if ptimer > 38 - 6 && ptimer < 38 + 2 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-2,2)
 		}
 
 	     if ptimer == 38 {
@@ -670,7 +1060,13 @@ if phase == 2 {
            }
 	     }
 	     
-	     
+	     if ptimer > 53 - 6 && ptimer < 53 + 2 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+		}
+		
 	      if ptimer == 53 {
 	      	spr_dir = (ai_target.x > x?1:-1)
 	      	sound_play(asset_get("sfx_swipe_medium1"))
@@ -679,11 +1075,17 @@ if phase == 2 {
 			window_timer = 3
 			hsp = 6*spr_dir
 			if free {
-           	vsp = -2
+           	vsp = -1
            }
 	     }
 	     
-	     
+	     if ptimer > 63 - 6 && ptimer < 63 + 2 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+		}
+		
 	     if ptimer == 63 {
 	     	sound_play(sound_get("vef1"))   
 	     	set_attack(AT_NAIR)
@@ -691,10 +1093,17 @@ if phase == 2 {
 			window_timer = 2
 			hsp = 3*spr_dir
 			if free {
-           	vsp = -2
+           	vsp = -1
            }
 	     }
 	     
+	     if ptimer > 73 - 6 && ptimer < 73 + 2 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+		}
+		
 	      if ptimer == 73 {
 	     	set_attack(AT_NAIR)
 			window = 1
@@ -702,34 +1111,88 @@ if phase == 2 {
 			hsp = 5*spr_dir
 	     }
 	     
+	     if ptimer > 83 - 6 && ptimer < 83 + 2 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+		}
+		
+		
 	     if ptimer == 83 {
 	     	set_attack(AT_NAIR)
 			window = 1
 			window_timer = 2
 			hsp = 4*spr_dir
 			if free {
-           	vsp = -2
+           	vsp = -1
            }
 	     }
+	     
+	     if ptimer > 90 && ptimer < 90 + 10 {
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp = 10*spr_dir
+		 }
 	     
 	     if ptimer == 90 {
 	     	spr_dir = (ai_target.x > x?1:-1)
 	     	set_attack(AT_DATTACK)
 			window = 1
-			window_timer = 0
-			hsp = 4*spr_dir
+			window_timer = 5
 			if free {
-           	vsp = -2
+           	vsp = -1
            }
 	     }
 	     
-	      if ptimer == 120 {
-	        pattern = 0	
+	      if ptimer == 130 {
+	      	if !has_hit_player{
+	           pattern = 0	
+	      	} else {
+	      		spr_dir = (ai_target.x > x?1:-1)	
+	      		motivation += 30
+			    set_attack(AT_EXTRA_1)
+		        window = 1
+		        window_timer = 0
+		        create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
+			    hsp = -6*spr_dir
+			    shake_camera (4,6)
+			    spawn_hit_fx(x,y,vai)
+			    x -= 60*spr_dir
+			    sound_play(asset_get("sfx_ice_on_player"),false,noone, 1, 1.2)
+			    sound_play(sound_get("vJC1"),false,noone, 2)
+	      	}
 	      }
+	      
+	      if ptimer == 145{
+	      	spr_dir = (ai_target.x > x?1:-1)	
+	      	set_attack(AT_EXTRA_1)
+		    window = 1
+		    window_timer = 0
+		    create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
+	      } 
+	      if ptimer == 160{
+	      	spr_dir = (ai_target.x > x?1:-1)	
+	      	set_attack(AT_EXTRA_1)
+		    window = 1
+		    window_timer = 0
+		    create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
+		    pattern = 0
+	      } 
+	}
+	
+	if pattern == 2{
+		sound_stop(sound_get("vef2"))
 	}
 	
 	if pattern == 2 && !hitstop {
+		if ptimer < 6{
+			hsp += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-2,2)
+			x += clamp(floor(ai_target.x - 40*spr_dir - x)/6,-3,3)
+		}
 		if ptimer == 1 {
+			dairloop = 1
+			has_hit_player = false
 				sound_play(asset_get("sfx_roll"))
             spawn_hit_fx(x,y,vai)
 	        
@@ -738,38 +1201,138 @@ if phase == 2 {
 			window = 0
 			window_timer = 0
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			x = ai_target.x - 80*spr_dir
+			x = ai_target.x - 60*spr_dir
 			y = room_height/2 - 140
 	     }
 	     
 	     if free && ptimer > 2 && ptimer < 10 {
 	     	ptimer = 2
-	     	
 	     }
-	     
-	     if (!free && ptimer > 10) {
-	     	sound_play(asset_get("sfx_roll"))
-            spawn_hit_fx(x,y,vai)
-	        
-	     	spr_dir = (ai_target.x > x?1:-1)		
-			set_attack(AT_DAIR)
-			window = 0
-			window_timer = 0
-			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			x = ai_target.x - 80*spr_dir
-			y = room_height/2 - 140
-	     	pattern = 0
-
+	     if ptimer > 3{
+	     if !has_hit_player{
+	     if y + vsp > room_height - 100 or (!free) {
+	     	if dairloop > 0{
+	     	  dairloop -= 1
+	     	  	has_hit_player = false
+				sound_play(asset_get("sfx_roll"))
+                spawn_hit_fx(x,y,vai)
+	            
+	         	spr_dir = (ai_target.x > x?1:-1)		
+		    	set_attack(AT_DAIR)
+		    	window = 0
+		    	window_timer = 0
+		    	create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+		    	x = ai_target.x - 60*spr_dir
+		    	y = room_height/2 - 140
+	     	} else {
+	     		create_hitbox(AT_EXTRA_2,2, round (x), round (y - 20))
+	     	  pattern = 0
+	     	}
+	     	if y + vsp > room_height/2 + 200 {
+	     		set_state(PS_IDLE_AIR)
+	     	}
 	     }
-	     
-
-
-	     
+	     } else {
+	     	dairloop = 0
+	        if y + vsp > room_height/2 + 200 or (!free) {
+	        	if y + vsp > room_height/2 + 200 {
+	     	    	set_state(PS_IDLE_AIR)
+	     	    	pattern = 0
+	     	    }
+	        	if !free && ptimer < 60{
+	             	sound_play(asset_get("sfx_roll"))
+                    spawn_hit_fx(x,y,vai)
+	                  
+	               spr_dir = (ai_target.x < x?1:-1)	
+	             	attack_end()
+		   	       set_attack(AT_FAIR)
+		   	       window = 1
+		   	       window_timer = 6
+		   	       create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+		   	       x = ai_target.x - 80*spr_dir
+		   	       y = ai_target.y - 10
+		   	       vsp = -6
+		   	       ptimer = 60
+	        	}
+	        }	
+	        if ptimer >= 60 && ptimer < 70{
+		    	vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer == 75 {
+		    	spr_dir *= -1
+	     	  sound_play(asset_get("sfx_roll"))
+              spawn_hit_fx(x,y,vai)
+	          
+	     	  spr_dir = (ai_target.x < x?1:-1)	
+	     	  attack_end()
+			  set_attack(AT_DAIR)
+			  window = 1
+			  window_timer = 12
+			  create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+			  x = ai_target.x - 120*spr_dir
+			  y = ai_target.y - 40
+			  vsp = -6
+		    }
+		    if ptimer >= 75 && ptimer < 85{
+		    	vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer == 79{
+		    	spawn_hit_fx(x,y - 40,304)
+		    	create_hitbox(AT_EXTRA_2,2, round (ai_target.x), round (ai_target.y - 40))
+		    }
+		    
+		    if ptimer == 85{
+		      sound_play(asset_get("sfx_roll"))
+              spawn_hit_fx(x,y,vai)
+	          
+	     	  spr_dir = (ai_target.x < x?1:-1)	
+	     	  attack_end()
+			  set_attack(AT_UAIR)
+			  window = 1
+			  window_timer = 0
+			  create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
+			  x = ai_target.x - 80*spr_dir
+			  y = ai_target.y + 120
+		    }
+		    
+		    if ptimer >= 85 && ptimer < 95{
+		    	vsp += clamp(floor((ai_target.y+ 80 - y)/6),-1,1)
+		    	y += clamp(floor((ai_target.y+ 80 - y)/6),-6,6)
+		    	hsp += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-5,5)
+		    	x += clamp(floor(ai_target.x - 50*spr_dir - x)/6,-9,9)
+		    	ai_target.hsp = clamp(ai_target.hsp,-8,8)
+			    ai_target.vsp = clamp(ai_target.vsp,-10,10)
+			    ai_target.hsp /= 1.1
+		    	ai_target.vsp /= 1.1
+		    }
+		    if ptimer >= 95 {
+		        attack_end()
+	     	    set_state(PS_IDLE)
+	     	    pattern = 3
+	     	    ptimer = 0
+		    }
+		
+	     }
+	     }
 
 	}
 	
 	if pattern == 3 && !hitstop {
-		
+		move_cooldown[AT_EXTRA_1] = 0
 		if free {
 			vsp -= 0.3
 			hsp /= 1.05
@@ -777,14 +1340,14 @@ if phase == 2 {
 		spr_dir = (ai_target.x > x?1:-1)	
 		
 		if ptimer == 1 {
+			motivation += 30
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
 			hsp = -6*spr_dir
-						shake_camera (4,6)
+			shake_camera (4,6)
 			spawn_hit_fx(x,y,vai)
 			x -= 60*spr_dir
 			sound_play(asset_get("sfx_ice_on_player"),false,noone, 1, 1.2)
-			    sound_play(sound_get("vJC1"),false,noone, 2)
-
+			sound_play(sound_get("vJC1"),false,noone, 2)
 		} 
 		
 		if ptimer < 15 {
@@ -800,7 +1363,6 @@ if phase == 2 {
 		}
 		
 		if ptimer == 15 {
-
 		set_attack(AT_EXTRA_1)
 		window = 1
 		window_timer = 0
@@ -813,7 +1375,7 @@ if phase == 2 {
 	}
 	
 	
-	if pattern == 4 && !hitstop {
+	if pattern == 5 && !hitstop {
 		move_cooldown[AT_USPECIAL] = 0
 		if ptimer < 316 {
 		soft_armor = 999
@@ -822,10 +1384,10 @@ if phase == 2 {
 		}
 		
 		if ptimer == 1 {
-			fshit = 0 
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
 			sound_play(sound_get("vef5"),false,noone, 2)
 			set_attack(AT_USPECIAL)
+			has_hit_player = false
 			window = 1
 			window_timer = 0
 		}
@@ -843,21 +1405,23 @@ if phase == 2 {
 		}
 		
 		
-		if ptimer >= 75 && ptimer < 306 {
-			
-			vsp = (ai_target.y - y)/10
-			hsp = 15*spr_dir
+		if ptimer >= 75 && ptimer < 256 {
+			vsp = (ai_target.y - y)/8
+			fall_through = true
+			hsp = 20*spr_dir
 			
 			if x + hsp < room_width/2 - 550 {
 				spr_dir = 1
 				y = room_height/2 - 120
-				create_hitbox(AT_DSPECIAL,2,ai_target.x, room_height/2 - 400) 
+				create_hitbox(AT_DSPECIAL,2,ai_target.x - 150, room_height/2 - 400) 
+				create_hitbox(AT_DSPECIAL,2,ai_target.x + 150, room_height/2 - 400) 
 			} 
 			
 			if x + hsp > room_width/2 + 550  {
 				spr_dir = -1
 				y = room_height/2 - 120
-				create_hitbox(AT_DSPECIAL,2,ai_target.x, room_height/2 - 400) 
+				create_hitbox(AT_DSPECIAL,2,ai_target.x - 150, room_height/2 - 400) 
+				create_hitbox(AT_DSPECIAL,2,ai_target.x + 150, room_height/2 - 400) 
 			}
 			
 			if ptimer == 95 or ptimer % 17 == 0 {
@@ -870,11 +1434,12 @@ if phase == 2 {
 			
 		}
 		
-		if ptimer == 306 {
+		if ptimer == 256 or (has_hit_player && ptimer > 30){
 			DTtime = 0
 			set_attack(AT_FSTRONG)
 			window = 3
-			window_timer = 16
+			window_timer = 0
+			pattern = 0
 		}
 		
 				if ptimer == 350 {
@@ -899,7 +1464,7 @@ if phase == 2.5 {
         sound_stop(sound_get("Parried")) 
         
         sound_play(sound_get("firstkill")) 
-        
+        spr_dir = (ai_target.x > x?1:-1)
 		hsp = 0
 		vsp = 0
 		set_attack(AT_TAUNT)
@@ -941,7 +1506,7 @@ if phase == 3 {
              sound_play(sound_get("RI"))
              sound_play(sound_get("counterhit"))
              triggered = 1
-             DTtime = 600
+             DTtime = 800
 	}
 
 	if pattern != 0{
@@ -951,15 +1516,20 @@ if phase == 3 {
 	} else {
 		ptimer = 0
 	}
-	
 	if pattern != 0 {
 		attackcd = 90
 	} else {
 		if !hitstop {
 		attackcd -= 1
 		}
+		if downed == 0 && attackcd == 90 && !hitpause && triggered{
+				spr_dir = (ai_target.x > x?1:-1)
+				sound_play(sound_get("counterhit"),false,noone,0.5,2)
+				create_hitbox(AT_FSPECIAL,1,round(x - 105*spr_dir - 20 + random_func(1,41,true)),round(y - 20 - random_func(2,61,true)))
+		}
 	}
 	
+	if ai_target.y < room_height/2 + 150 && ai_target.x > room_width/2 - 400 && ai_target.x < room_width/2 + 400{
 	if get_gameplay_time() > 120 && attackcd <= 0 && pattern == 0 && state_cat != SC_HITSTUN && !invincible && state != PS_PRATFALL && state != PS_PRATLAND 
 	 && !attack_down && (state != PS_AIR_DODGE )
      && (state != PS_ROLL_BACKWARD )
@@ -967,13 +1537,16 @@ if phase == 3 {
      && (state != PS_TECH_BACKWARD)
      && (state != PS_TECH_FORWARD )
      && (state != PS_TECH_GROUND){
-     	
-
-    	pattern = 1 + random_func(4,3,true)
-        motivation -= 80
-    
-     	
-     	
+     	pattern = 1 + random_func(3,3,true)
+		if oldpat != pattern{
+			oldpat = pattern
+		} else {
+			pattern += 1
+			if pattern = 4 pattern = 1
+			oldpat = pattern
+		}
+		motivation -= 40
+	}
 	}
 	
 	
@@ -992,6 +1565,7 @@ if phase == 3 {
 		}
 		
 		if ptimer < 30 {
+			vsp = 10
 			x = room_width/2 - 300 + random_func(1,600,true)
 			if ptimer % 5 == 0 {
 				sound_play(asset_get("sfx_roll"))
@@ -999,7 +1573,7 @@ if phase == 3 {
 			}
 		}
 		
-		if ptimer >= 30 && !free {
+		if ptimer == 30 && !free {
 			visible = true
 			sound_play(asset_get("sfx_roll"))
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
@@ -1009,11 +1583,17 @@ if phase == 3 {
 				spawn_hit_fx(x,y - 40,304)
 				set_attack(AT_DSTRONG)
 				window = 1
-				window_timer = 0 
-				pattern = 0
-				attackcd = 160
+				window_timer = 10
+				sound_play(sound_get("Dstrong1"))
+                sound_play(asset_get("sfx_bird_downspecial"))
 		}
-		
+		if ptimer > 30 && ptimer < 60{
+			x += clamp(floor(ai_target.x - 30*spr_dir - x)/10,-12,12)
+		}
+		if ptimer >= 60{
+			pattern = 0
+			attackcd = 120
+		}
 	}
 		
 	if pattern == -1 && !hitpause{
@@ -1029,7 +1609,7 @@ if phase == 3 {
              sound_play(sound_get("RI"))
              sound_play(sound_get("counterhit"))
              triggered = 1
-             DTtime = 600
+             DTtime = 800
 		}
 		
 		
@@ -1038,6 +1618,7 @@ if phase == 3 {
 					y = room_height/2 - 300
 			visible = false
 			invincible = true
+	        invince_time = 5
 		}
 		
 		if ptimer = 60 {
@@ -1093,22 +1674,19 @@ if phase == 3 {
 				window = 1
 				window_timer = 0 
 				pattern = 0
-				attackcd = 120
+		}
+		
+		if ptimer > 330 && ptimer < 360{
+			x += clamp(floor(ai_target.x - 30*spr_dir - x)/10,-12,12)
+		}
+		if ptimer >= 360{
+			pattern = 0
+			attackcd = 120
 		}
 		
 	}
 	
 	if pattern == 1 && !hitstop{
-		
-		if has_hit_player && ptimer > 63 && ptimer < 155{
-			y += floor((ai_target.y + 30 - y)/4)
-			x += floor(ai_target.x - 60*spr_dir - x)/2
-		}
-           vsp /= 1.2
-           if free {
-           	vsp -= 0.4
-           	hsp /= 1.05
-           }
 		
 		if ptimer == 1 {
 			set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 20);
@@ -1118,120 +1696,198 @@ if phase == 3 {
 			set_attack(AT_TAUNT)
 			window = 4 
 			window_timer = 1
-			hsp = -12*spr_dir
 			spawn_hit_fx(x,y,vai)
-			x = ai_target.x - 80*spr_dir
+			x = ai_target.x - 120*spr_dir
 			y = ai_target.y 
 		}
 		
-		if ptimer == 6 {
+		if ptimer == 10{
+			sound_play(sound_get("firstkill"),false,noone,2)
+			attack_end()
+			spr_dir = (ai_target.x > x?1:-1)	
 			set_attack(AT_DATTACK)
 			window = 1
 			window_timer = 0
-			hsp = 4*spr_dir
-			if free {
-           	vsp = -3
-           }
-           ptimer = 60
-		}
-
-
-		if ptimer == 96 {
-			set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 16);
-			spr_dir *= -1
-			sound_play(asset_get("sfx_roll"))
-			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			set_attack(AT_DATTACK)
-			window = 1
-			window_timer = 0
-			hsp = 4*spr_dir
-						x = ai_target.x - 120*spr_dir
-						y = ai_target.y 
-			if free {
-           	vsp = -3
-           }
 		}
 		
-		
-		if ptimer == 130 {
-			vsp = -8
-			set_attack(AT_NAIR)
-			window = 1
-			window_timer = 3
+		if ptimer < 30{
+			hsp = (-4+(ptimer/2))*spr_dir
+			invincible = true
+			invince_time = 10
 		}
 		
-		
-		if ptimer == 150 {
-			sound_play(asset_get("sfx_ice_on_player"),false,noone, 1, 1.1)
-			vsp = -8
-			attack_end();
-			spr_dir*= -1
-			set_attack(AT_BAIR)
-			window = 1
-			window_timer = 8
-		}
-		
-		if ptimer == 158{
-			sound_play(asset_get("sfx_ice_on_player"),false,noone, 1, 1)
-			attack_end();
-			spr_dir*= -1
-			set_attack(AT_UAIR)
-			window = 1
-			window_timer = 5
-		}
-		
-		if ptimer == 175 {
-			spawn_hit_fx(x,y - 40,305)
-			spr_dir = (ai_target.x > x?1:-1)
-			 vsp = -6
-              hsp = -6*spr_dir
-				sound_play(asset_get("sfx_ice_on_player"),false,noone, 1, 1)
-			    sound_play(sound_get("vJC1"),false,noone, 2)
-		}
-		
-		if ptimer > 175 && ptimer < 190 {
-        spr_dir = (ai_target.x > x?1:-1)
-		shake_camera(4,6)
-		set_attack(AT_EXTRA_1)
-		window = 1
-		window_timer = 12
+		if ptimer >= 30 && ptimer < 160 {
+			if ptimer == 30{
+				visible = false 
+				spawn_hit_fx(x,y,vai)
+                shake_camera(4,10)
+                spawn_hit_fx(x,y,lighten)
+                spawn_hit_fx(x,y - 46,306)
+                spawn_hit_fx(x,y - 40,triggerfx)
+                sound_play(sound_get("counterhit"))
+			}
+			if ptimer % 10 == 5 && ptimer < 140 && ptimer >= 50{
+				if ai_target.state_cat != SC_HITSTUN{
+				create_hitbox(AT_EXTRA_1, 3 , ai_target.x, ai_target.y - 40)
+				spawn_hit_fx(ai_target.x , ai_target.y - 40, slashc)
+				sound_play(asset_get("sfx_bird_sidespecial_start"))
+				} else {
+				create_hitbox(AT_EXTRA_1, 3 , ai_target.x - 50 + random_func(1,101,true), ai_target.y - 40 - 50 + random_func(2,101,true))
+				spawn_hit_fx(ai_target.x - 50 + random_func(1,101,true), ai_target.y - 40 - 50 + random_func(2,101,true), slashc)	
+				}
+			}
 			
+			if ptimer >= 30 && ptimer < 150{
+			x = ai_target.x - ai_target.hsp
+			y = min(room_height/2 + 300,ai_target.y - 10 - ai_target.vsp)
+			vsp = 0
+			hsp = 0
+			set_state(PS_IDLE_AIR)
+			}
 		}
 		
-		if ptimer == 190 {
-        vsp = -6
-        hsp = -6*spr_dir
-		set_attack(AT_EXTRA_1)
-		window = 1
-		window_timer = 0
-		create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
+		if ptimer < 250{
+			if DTtime < -590{
+				DTtime = -590
+			}
+			invincible = true
+			invince_time = 10
 		}
 		
-		if ptimer == 220{
+		if ptimer > 150 && ptimer < 160 + 12{
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-2,2)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-2,2)
+		}
+		
+		if ptimer == 150{
+			visible = true
+			spr_dir = (ai_target.x > x?1:-1)
+	     	set_attack(AT_FTILT)
+			window = 1
+			window_timer = 0
+			sound_play(sound_get("vef3"))
+			if free {
+              vsp = -3
+	     	}
+		}
+		
+		if ptimer > 150 && ptimer < 160{
+			window_timer = 1
+		}
+		
+		if ptimer == 180{
+			set_attack(AT_DATTACK)
+			window = 1
+			window_timer = 0
+		}
+		if ptimer >= 190 && ptimer < 250{
+			if ptimer == 190{
+				ptimer += 30
+				visible = false 
+				sound_play(sound_get("vef3"))
+				spawn_hit_fx(x,y,vai)
+                shake_camera(4,10)
+                spawn_hit_fx(x,y,lighten)
+                spawn_hit_fx(x,y - 46,306)
+                spawn_hit_fx(x,y - 40,triggerfx)
+                sound_play(sound_get("counterhit"))
+			}
+			
+			if ptimer % 6 == 0  && ptimer > 180{
+				if ai_target.state_cat != SC_HITSTUN{
+				create_hitbox(AT_EXTRA_1, 3 , ai_target.x, ai_target.y - 40)
+				spawn_hit_fx(ai_target.x , ai_target.y - 40, slashc)
+				sound_play(asset_get("sfx_bird_sidespecial_start"))
+				} else {
+				create_hitbox(AT_EXTRA_1, 3 , ai_target.x - 50 + random_func(1,101,true), ai_target.y - 40 - 50 + random_func(2,101,true))
+				spawn_hit_fx(ai_target.x - 50 + random_func(1,101,true), ai_target.y - 40 - 50 + random_func(2,101,true), slashc)	
+				}
+				sound_play(asset_get("sfx_bird_sidespecial_start"))
+			}
+			
+			if ptimer < 250{
+			x = ai_target.x - ai_target.hsp
+			y = min(room_height/2 + 300,ai_target.y - 10 - ai_target.vsp)
+			vsp = 0
+			hsp = 0
+			set_state(PS_IDLE_AIR)
+			}
+		} 
+		
+		if ptimer > 250 - 6 && (ptimer < 250 + 22 or ai_target.state_cat == SC_HITSTUN){
+			if ai_target.state_cat == SC_HITSTUN{
+			vsp += clamp(floor((ai_target.y - y)/6),-1,1)
+			y += clamp(floor((ai_target.y - y)/6),-8,8)
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-8,8)
+			} else {
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-8,8)
+			}
+			if free {
+				vsp -= 0.2
+			}
+		}
+		
+		if ptimer == 250{
+			visible = true
+			spr_dir = (ai_target.x > x?1:-1)
+			set_attack(AT_DATTACK)
+			window = 1
+			window_timer = 0
+			hsp = 12*spr_dir
+			if free {
+              vsp = -3
+	     	}
+		}
+		
+		if ptimer >= 280{
 			pattern = 0
+			attackcd = 120
 		}
-		
 	}
 	
 	if pattern == 2 && !hitstop {
-		
-		     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
-                 y -= 15
-             }
+		if ptimer < 20{
+        	if ptimer <= 7{
+        		room_speed = 50
+        	}else if ptimer <= 14{
+        		room_speed = 45
+        	} else {
+			    room_speed = 50
+        	}
+		}
+		if ptimer == 20{
+			room_speed = 60
+		}
           move_cooldown[AT_FAIR] = 0
+          attack_end()
+        if ptimer < 500{
+         	invincible = true
+			invince_time = 10
+        }
 		if ptimer == 1 {
 			sound_play(asset_get("sfx_roll"))
-			spr_dir = (ai_target.x > x?1:-1)
+			if ai_target.x < room_width/2{
+				spr_dir = -1
+			} else{
+				spr_dir = 1
+			}
 			spawn_hit_fx(x,y,vai)
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			x -= 80*spr_dir
+			x = room_width/2 - 240*spr_dir
 			hsp = -16*spr_dir
 			set_attack(AT_FAIR)
 			window = 1
 			window_timer = 2
 			sound_play(sound_get("taunt6"),false,noone, 2)
 	     }
-	     
+	     if ptimer == 5{
+	     	create_hitbox(AT_DSPECIAL,2,ai_target.x , room_height/2 - 400) 
+        	create_hitbox(AT_DSPECIAL,2,ai_target.x + 200*spr_dir , room_height/2 - 400)
+	     }
         if ptimer = 16 {
         	sound_play(sound_get("counterhit"),false,noone, 1)	
         	sound_play(asset_get("sfx_clairen_swing_mega_instant"),false,noone, 1)
@@ -1241,9 +1897,12 @@ if phase == 3 {
 			if !free && ptimer % 5 == 0 {
 				sound_play(sound_get("cnoise1"),false,noone, 1)
 			}
-			
-			hsp = (ptimer/2 - 8)*spr_dir
-			if ptimer < 22 {
+			if ptimer < 20{
+			hsp =(ptimer/2-8)*spr_dir
+			} else {
+			hsp = 15*spr_dir	
+			}
+			if ptimer < 30 {
 				vsp = 0
 			set_attack(AT_FAIR)
 			window = 1
@@ -1259,15 +1918,13 @@ if phase == 3 {
 				}
 			}
 	     }
-	     
-	    if ptimer  > 70 && ptimer < 100 {
-	    	visible = false
-	    	invincible = true
-	    	y = 0
-	    	soft_armor = 999
-	    }
+	    if attack == AT_DAIR{
+			hsp += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-2,2)
+			x += clamp(floor(ai_target.x - 60*spr_dir - x)/6,-1,1)
+		}
 	    
-        if ptimer = 70 {
+        if ptimer = 45 {
+        	ptimer += 49
         	create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
         	 spawn_hit_fx(x,y - 46,304)
              sound_play(sound_get("counterhit"))
@@ -1276,75 +1933,101 @@ if phase == 3 {
         }
         
         if ptimer = 100 {
-        	visible = true
-        		     	spr_dir = (ai_target.x > x?1:-1)		
+        	spr_dir = (ai_target.x > x?1:-1)		
 			set_attack(AT_DAIR)
-			window = 0
+			window = 1
 			window_timer = 0
 			x = ai_target.x - 80*spr_dir
-			y = room_height/2 - 140
-			
+			y = room_height/2 - 120
         }
         
-        if ptimer = 140 {
+        if ptimer > 100 && ptimer <= 300 && !free {
+        	ptimer = 300
         	    	sound_play(asset_get("sfx_roll"))
         	    		create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
         		     	spr_dir = (ai_target.x > x?1:-1)		
 			set_attack(AT_DAIR)
-			window = 0
+			window = 1
 			window_timer = 0
+			spawn_hit_fx(x,y + 5,vai)
+			sound_play(asset_get("sfx_ori_energyhit_medium"))
+			spawn_hit_fx(x,y + 10, 303)
 			x = ai_target.x - 80*spr_dir
-			y = room_height/2 - 140
+			y = room_height/2 - 120
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
         }
         
-        if ptimer = 180 {
-        	
-        	        	create_hitbox(AT_DSPECIAL,2,ai_target.x , room_height/2 - 400) 
+        if ptimer > 300 && ptimer <= 400 && !free {
+        	ptimer = 400
         	sound_play(asset_get("sfx_roll"))
         		create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
 	        
-	     	spr_dir = (ai_target.x > x?1:-1)		
+	     	spr_dir = (ai_target.x > x?1:-1)	
+	     	spawn_hit_fx(x,y + 5,vai)
+			sound_play(asset_get("sfx_ori_energyhit_medium"))
+			spawn_hit_fx(x,y + 10, 303)
 			set_attack(AT_DAIR)
-			window = 0
+			window = 1
 			window_timer = 0
 			x = ai_target.x - 80*spr_dir
-			y = room_height/2 - 140
+			y = room_height/2 - 120
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
         }
 
-        if ptimer = 220 or y > room_width/2 + 150 {
-        	sound_play(sound_get("Drive1"))
-        	spawn_hit_fx(x,y,vai)
+        if (ptimer > 400 && !free && ptimer < 500 ) or y > room_width/2 + 150 {
+        	ptimer = 500
         	spr_dir = (ai_target.x > x?1:-1)
+        	create_hitbox(AT_DSPECIAL,2,ai_target.x , room_height/2 - 400) 
+        	create_hitbox(AT_DSPECIAL,2,ai_target.x + 200*spr_dir , room_height/2 - 400) 
+        	sound_play(sound_get("Drive1"))
+        	spawn_hit_fx(x,y + 5,vai)
+			sound_play(asset_get("sfx_ori_energyhit_medium"))
+			spawn_hit_fx(x,y + 10, 303)
+        	spawn_hit_fx(x,y,vai)
         	sound_play(asset_get("sfx_roll"))
         	create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
         	set_attack(AT_EXTRA_3)
         	window = 1
         	window_timer = 0
         }
-        
-        if ptimer = 300 {
-          pattern = 0	
+        if ptimer == 560{
+        	spr_dir = (ai_target.x > x?1:-1)
         }
+        if ptimer == 600{
+        	pattern = 0
+        	attackcd = 120
+        }
+        
 	}
 	
 	if pattern == 3 && !hitstop {
-  
-	    invincible = true
-		
+        if ptimer < 20{
+        	if ptimer <= 7{
+        		room_speed = 50
+        	}else if ptimer <= 14{
+        		room_speed = 45
+        	} else {
+			    room_speed = 50
+        	}
+		}
+		if ptimer == 20{
+			room_speed = 60
+		}
+		if ptimer <= 210 {
+		   invincible = true
+		   invince_time = 10
+		}
 		if ptimer == 1 {
 			sound_play(asset_get("sfx_roll"))
-			spr_dir = (ai_target.x > x?1:-1)
+			spr_dir = (ai_target.x < x?1:-1)
 			spawn_hit_fx(x,y,vai)
 			create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
-			x -= 20*spr_dir
+			x = ai_target.x - 200*spr_dir
 			hsp = -6*spr_dir
 			vsp = -8
 			set_attack(AT_EXTRA_2)
 			window = 1
 			window_timer = 0
-
 		} 
 		
 		
@@ -1384,7 +2067,7 @@ if phase == 3 {
 		
 	
 			
-		if ptimer > 60 && ptimer % 30 == 0 && ptimer < 210{
+		if ptimer > 60 && ptimer % 30 == 0 && ptimer < 190{
 			spawn_hit_fx(x,y,vai)
 						create_hitbox(AT_EXTRA_1,9,floor(x),floor(y))
 		y = room_height/2 - 100 + random_func(2,100,true)
@@ -1398,7 +2081,7 @@ if phase == 3 {
 		create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
 		}
 		
-		if ptimer == 210 {
+		if ptimer == 190 {
 			spawn_hit_fx(x,y,vai)
 			sound_play(sound_get("RI"))
              sound_play(sound_get("counterhit"))
@@ -1408,13 +2091,19 @@ if phase == 3 {
 				vsp = 600
 		}
 		
-		if ptimer > 240 && !free {
+		if ptimer == 210 && !free {
 			visible = true
 			x = ai_target.x - 30*spr_dir
 			set_attack(AT_DSTRONG)
 			window = 1
 			window_timer = 0
-			attackcd = 200
+		}
+		
+		if ptimer >= 210 && ptimer < 240{
+			x += clamp(floor(ai_target.x - 30*spr_dir - x)/10,-12,12)
+		}
+		if ptimer >= 300{
+			attackcd = 120
 			pattern = 0
 		}
 		

@@ -8,6 +8,7 @@ set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 4);
 set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(atk, 87, "Sends Pastelle into the air. Can be hitfallen to stay on the ground.");//AG_MUNO_ATTACK_MISC_ADD = i; i++; 
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
@@ -58,6 +59,7 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Starting Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
 
 hitbox_num ++; //Main
@@ -77,6 +79,7 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Main Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
 
 set_num_hitboxes(atk, hitbox_num);

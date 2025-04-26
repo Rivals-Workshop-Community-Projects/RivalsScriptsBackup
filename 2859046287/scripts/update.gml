@@ -2,72 +2,6 @@
 //this is where the bulk of our programming goes, where we want to program most gimmicks
 //anything that should be checked/executed after the first frame of the match
 
-///////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES /////////////////////////////////////////////////////////
-
-is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack check - becomes true if the state is PS_ATTACK_GROUND or PS_ATTACK_AIR
-is_dodging = (hurtboxID.dodging); //dodge check - becomes true if the character is invincible when dodging/teching
-game_time = get_gameplay_time(); //get_gameplay_time() is a timer that counts up every frame of the match
-hbox_view = get_match_setting(SET_HITBOX_VIS); //keeps track if hitbox view is on or off
-
-if (is_attacking)
-{
-    window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
-    window_last = get_attack_value(attack, AG_NUM_WINDOWS);
-    window_cancel_time = get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
-
-    //window_end - takes the last frame of the window (includes whifflag)
-    //window_last - checks the last window in the attack
-    //window_cancel_time - if the window has a cancel frame to attack/special, this variable can detect the frame it can happen
-}
-else
-{
-    window_loops = 0; //resets loop value in case the character isn't attacking (useful for hitstun)
-    if (my_grab_id != noone) my_grab_id = noone; //if the player isn't attacking, we don't need the grab_id to stay
-
-    if (state_timer == 0)
-    {
-        //force reset spr_angle and draw offsets on the start of every state
-        //normally we put this sort of stuff in animation.gml, but update.gml runs before animation.gml
-        if (spr_angle != 0) spr_angle = 0;
-        if (draw_x != 0) draw_x = 0;
-        if (draw_y != 0) draw_y = 0;
-    }
-}
-
-//grab logic
-if (instance_exists(my_grab_id) && my_grab_id != noone) //if you have grabbed someone (and made sure they exist)
-{
-	grab_time ++;
-
-    with (my_grab_id)
-	{
-		hitstop = 2; //freeze grabbed foe
-
-		if (last_player_hit_me != other.player) //if another player hits the grabbed player stop the grab sequence
-		{
-			hitstop = 0;
-			with (other)
-			{
-				my_grab_id = noone;
-				if (!free) hsp = spr_dir*-6; //push back for some extra effect (ground only)
-				set_state(free ? PS_IDLE_AIR : PS_IDLE);
-			}
-		}
-    }
-}
-else grab_time = 0;
-
-//play intro
-if (game_time == 4 && has_intro) set_attack(AT_INTRO);
-
-//renders effects in front of you
-//credit to supersonic for the help
-with (hit_fx_obj)
-{
-    //effects default depth when they spawn is 3, so this will make it so it won't overwrite values if i add them manually
-    if (player == other.player && depth == 3) depth = player_id.depth-1;
-}
-
 //////////////////////////////////////////////////////// CHARACTER SPECIFIC UPDATE /////////////////////////////////////////////////////////
 
 //u-air status effect
@@ -82,47 +16,96 @@ with (oPlayer) if (test_status_owner == other)
         //% # == 0 makes it so only once every multiples of # it will actually run
         if (test_status_timer % 30 == 0)
         {
-            take_damage(player, player, 1); //basic damage application
+            take_damage(player, other.player, 1); //basic damage application
             with (test_status_owner)
             {
                 //spawns the bigger particles that blink every +1%
-                var status_part = spawn_hit_fx(
+                var temp_fx = spawn_hit_fx(
                     other.x,
                     other.y - other.char_height/2,
                     fx_pow_hit[0]
                 );
-                status_part.depth = other.depth + 2; //sets the depth so they always appear behind of the enemy
-                status_part.spr_dir = 1; //forces the spr_dir of the effect to be consistent
+                temp_fx.depth = other.depth + 2; //sets the depth so they always appear behind of the enemy
+                temp_fx.spr_dir = 1; //forces the spr_dir of the effect to be consistent
             }
         }
 
-        //basic status particles - uses the particle system
+        //basic status particles
         if (test_status_timer % 6 == 0)
         {
-            //this "with" statement changes the perspective of the code, in this case it goes back to the owner player
-            //we are doing this so the effects get recolored according to the owner
+            //similarly to the code above, but with the smaller effects
             with (test_status_owner)
             {
-                //spawns the little sparkles
-                //using random_func, we can make the particles spread randomly on the enemy player
-                do_particle(
-					sprite_get("fx_pow_sparks"),
-					12,
-					other.x + (random_func(11, 5, true) - 2) * 16,
-					other.y + (random_func(12, 5, true) - 2) * 16 - other.char_height / 2,
-                    1, //xscale
-					1, //yscale
-					1, //spr_dir
-				);
+                var temp_fx = spawn_hit_fx(
+                    other.x + (random_func(11, 5, true) - 2) * 16,
+                    other.y + (random_func(12, 5, true) - 2) * 16 - other.char_height / 2,
+                    fx_pow_sparks
+                );
+                temp_fx.depth = other.depth - 1; //sets the depth so they always appear in front of the enemy
+                temp_fx.spr_dir = 1; //forces the spr_dir of the effect to be consistent
             }
         }
     }
     else test_status_timer = 0;
 }
+with (obj_stage_article) if ("enemy_stage_article" in self) //stage article u-air status effect
+{
+    if ("test_status_owner" not in self) //initiates the variables if the object doesn't have them
+    {
+        test_status_timer = 0;
+        test_status_owner = noone;
+    }
+    else //if the variables already exist, allow the code to run properly
+    {
+        if (test_status_owner == other)
+        {
+            //as long as the timer is above 0, the status is active
+            //we also need to make sure the player isn't dead so the status effect can be inflicted
+            if (test_status_timer > 0)
+            {
+                test_status_timer --;
 
-//technecally speaking, we CAN add this to the previous instance of is_attacking above but for order in the code we have it here seperated
-//but because it's pretty much the same if statement we can merge them though
-if (is_attacking)
+                //% # == 0 makes it so only once every multiples of # it will actually run
+                if (test_status_timer % 30 == 0)
+                {
+                    hp --; //this reduces the health variable of the article by 1
+                    with (test_status_owner)
+                    {
+                        //spawns the bigger particles that blink every +1%
+                        var temp_fx = spawn_hit_fx(
+                            other.x,
+                            other.y - other.char_height/2,
+                            fx_pow_hit[0]
+                        );
+                        temp_fx.depth = other.depth + 2; //sets the depth so they always appear behind of the enemy
+                        temp_fx.spr_dir = 1; //forces the spr_dir of the effect to be consistent
+                    }
+                }
+
+                //basic status particles
+                if (test_status_timer % 6 == 0)
+                {
+                    //similarly to the code above, but with the smaller effects
+                    with (test_status_owner)
+                    {
+                        var temp_fx = spawn_hit_fx(
+                            other.x + (random_func(11, 5, true) - 2) * 16,
+                            other.y + (random_func(12, 5, true) - 2) * 16 - other.char_height / 2,
+                            fx_pow_sparks
+                        );
+                        temp_fx.depth = other.depth - 1; //sets the depth so they always appear in front of the enemy
+                        temp_fx.spr_dir = 1; //forces the spr_dir of the effect to be consistent
+                    }
+                }
+            }
+            else test_status_timer = 0;
+        }
+        else if (test_status_timer > 0) test_status_timer = 0; //reset the value if there is a chance where the object has the variables but it isn't reset properly
+    }
+}
+
+//you can also use tester's is_attacking check, but this is actually a frame faster as it uses base-game logic
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 {
     switch (attack)
     {
@@ -207,7 +190,16 @@ if (is_attacking)
                 //we want to detect collisions with the hurtbox rather than the player's bounding box, since that will not be an accurate judge of size.
                 //as a note, hurtboxes like to break variable naming conventions. To get the player id of a hurtbox, you do playerID instead of player_id.
                 var player_col;
-                with (hurtboxID) player_col = collision_line_point(start_x, start_y, end_x, end_y, pHurtBox, true, true);
+                with (hurtboxID)
+                {
+                    if (get_match_setting(SET_TEAMS)) //checking for player teams makes sure you won't see a teammate
+                    {
+                        player_col = (get_player_team(player) != get_player_team(other.player)) ?
+                            collision_line_point(start_x, start_y, end_x, end_y, pHurtBox, true, true) :
+                            [-4, end_x, end_y];
+                    }
+                    else player_col = collision_line_point(start_x, start_y, end_x, end_y, pHurtBox, true, true);
+                }
                 
                 if (player_col[0] != noone)
                 {
@@ -223,6 +215,9 @@ if (is_attacking)
                 		with (player_col[0]) player_col = collision_line_point(player_col[1], player_col[2], end_x, end_y, pHurtBox, true, true);
                 	}
                 }
+
+                //article enemy check
+                with (obj_stage_article) if ("enemy_stage_article" in self) player_col = collision_line_point(start_x, start_y, end_x, end_y, obj_stage_article, true, true);
                 
                 //I choose to put the collisions into an array and loop through them to avoid code repetition.
                 //It is ideal to reduce repetition as much as possible, so that you don't have to change values
@@ -274,6 +269,15 @@ if (is_attacking)
 }
 else
 {
+    if (state_timer == 0)
+    {
+        //force reset spr_angle and draw offsets on the start of every state
+        //normally we put this sort of stuff in animation.gml, but update.gml runs before animation.gml
+        if (spr_angle != 0) spr_angle = 0;
+        if (draw_x != 0) draw_x = 0;
+        if (draw_y != 0) draw_y = 0;
+    }
+
     //f-air cooldown conditions
     if (fair_cd)
     {
@@ -290,7 +294,7 @@ else
 
     //loop sound cancel
     sound_stop(cur_loop_sound);
-    sound_stop(alt_cur == 21 ? sound_get("mus_slaughter") : sound_get("mus_onlyyou"));
+    sound_stop(sound_get("mus_onlyyou"));
 
     //practice mode shortcut to reset cooldown - only works if cooldown is actually over 0
     if (get_match_setting(SET_PRACTICE) && move_cooldown[AT_DSPECIAL] > 0)
@@ -303,6 +307,9 @@ else
         }
     }
 }
+
+//making sure a move is once per airtime
+move_cooldown[AT_FSPECIAL] = !can_fspec + 1;
 
 ////////////////////////////////////////////////////////////////// MISC. //////////////////////////////////////////////////////////////////
 
@@ -324,7 +331,7 @@ if (get_match_setting(SET_RUNES))
 
         //this part has to be in update.gml
         //adds vsp when clinging basically
-        if (clinging && wall_slide_enabled) vsp += state_timer*wall_slide_fric;
+        if (clinging && wall_slide_enabled && state == PS_WALL_JUMP) vsp += state_timer*wall_slide_fric;
         if (!free) clinging = false; //stop clinging
     }
 
@@ -381,9 +388,22 @@ if (get_match_setting(SET_RUNES))
     }
 }
 
-
 //rainbow alts user_event redirect
 if (alt_cur == 11 || alt_cur == 12) user_event(0);
+
+//halloween alt stuff
+if (halloween_active)
+{
+    wait_time = 0; //if your character has a wait animation, this will ignore it so it won't cut off the halloween costume
+
+    if (state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE) //when not in any of these states, the costume falls off
+    {
+        halloween_active = false; //disables the costume logic
+        wait_time = orig_wait_time; //if your character has a wait animation, this will help restore the time to it properly
+        var fx = spawn_hit_fx(x, y, fx_halloween_disappear); //spawns a hit fx to indicate the costume falling off
+        fx.depth = depth - 1; //renders the hit fx a layer in front of the player
+    }
+}
 
 //ties certain hit particles to certain effects automatically
 with (pHitBox)
@@ -395,6 +415,17 @@ with (pHitBox)
         //we are basically checking which visual effect the hitbox has, and set the particles accordingly
         if (hit_effect == other.fx_pow_hit[0] || hit_effect == other.fx_pow_hit[1] || hit_effect == other.fx_pow_hit[2]) fx_particles = 1;
     }
+}
+
+//properly sets the depth of hit effects with custom sprites to match base game effects
+with (hit_fx_obj)
+{
+	if (player_id == other)
+	{
+		//any custom sprite effect will have a built in file name that results in the white X error sprite
+		//detecting this allows us to properly reset the depth of those effects
+		if(sprite_get(sprite_get_name(sprite_index)) == asset_get("net_disc_spr")) depth = -3; //sets depth for all custom sprited hit effects
+	}
 }
 
 //if (shield_pressed) end_match(player); //uncomment this line to check the victory screen (the input can also be changed but it needs some input)
@@ -409,10 +440,8 @@ with (oPlayer) if (temp_level != 0 && state == PS_PARRY && !perfect_dodged)
 }
 */
 
-
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
-if (uses_custom_dusts) custom_dust_effects();
 if (game_time > 60) prep_hitboxes();
 particle_system();
 
@@ -420,19 +449,21 @@ particle_system();
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if player_id == other {
-        if "col" not in self {
-            with other {
-                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
-                if other.col == 0 other.col = c_red;
-                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+    with (pHitBox) if (orig_player_id == other && "dont_color" not in self)
+    {
+        if ("col" not in self)
+        {
+            with (other)
+            {
+                var parent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX)
+                var true_hbox_num = parent ? parent : other.hbox_num
+                other.col = get_hitbox_value(other.attack, true_hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, true_hbox_num, HG_SHAPE)
                 other.draw_colored = true;
-                if other.type == 1
-                    other.sprite_index = __hb_hd_spr[other.shape];
-                else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
-                    other.mask_index = __hb_hd_spr[other.shape];
-                else 
-                    other.draw_colored = false;
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, true_hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
                 other.draw_spr = __hb_draw_spr;
             }
         }
@@ -466,111 +497,32 @@ particle_system();
         }
     }
 }
-#define do_particle
+//NOTE: when using the do_particle function, make sure you encase it by both () and {} brackets, otherwise it won't work
+//      the reason is because it now uses a lightweight object for the setup, to allow you to pick and choose the options you need more freely
+#define do_particle(new_part)
 {
-	var _spr = argument[0], _length = argument[1], _xpos = argument[2], _ypos = argument[3];
-	var _dir = argument_count > 4 ? argument[4] : 0;
-	var _xscale = argument_count > 5 ? argument[5] : 1;
-	var _yscale = argument_count > 6 ? argument[6] : 1;
-	var _angle = argument_count > 7 ? argument[7] : 0;
-	var _layer = argument_count > 8 ? argument[8] : -1;
-	var _anim_img = argument_count > 9 ? argument[9] : true;
-	var _hsp = argument_count > 10 ? argument[10] : 0;
-	var _vsp = argument_count > 11 ? argument[11] : 0;
-	var _torque = argument_count > 12 ? argument[12] : 0;
-	var _alpha = argument_count > 13 ? argument[13] : 1;
-	var _anim_alpha = argument_count > 14 ? argument[14] : 0;
-	var _color = argument_count > 15 ? argument[15] : c_white;
-	var _filled = argument_count > 16 ? argument[16] : false;
-    var _shader = argument_count > 17 ? argument[17] : false;
-	var _img = argument_count > 18 ? argument[18] : 0;
-
-	var new_part = {
-		spr: _spr,
-		xpos: _xpos,
-		ypos: _ypos,
-		hsp: _hsp,
-		vsp: _vsp,
-		dir: _dir,
-		angle: _angle,
-		torque: _torque,
-		xscale: _xscale,
-		yscale: _yscale,
-		alpha: _alpha,
-		anim_alpha: _anim_alpha,
-		color: _color,
-		filled: _filled,
-        shader: _shader,
-		layer: _layer,
-		length: _length,
-		img: _img,
-		anim_img: _anim_img,
-		timer: 0
-    };
+	new_part.timer = 0;
+	if (!variable_instance_exists(new_part, "spr")) new_part.spr = 0; //particle's sprite
+    if (!variable_instance_exists(new_part, "xpos")) new_part.xpos = 0;	//x position
+    if (!variable_instance_exists(new_part, "ypos")) new_part.ypos = 0;	//y position
+    if (!variable_instance_exists(new_part, "hsp")) new_part.hsp = 0; //horizontal speed
+    if (!variable_instance_exists(new_part, "vsp")) new_part.vsp = 0; //vertical speed
+	if (!variable_instance_exists(new_part, "dir")) new_part.dir = 0;	//0 means it will default to the object's spr_dir, otherwise you can put either 1 or -1 to set a specific spr_dir for it
+	if (!variable_instance_exists(new_part, "angle")) new_part.angle = 0; //the angle to draw the particle with
+	if (!variable_instance_exists(new_part, "torque")) new_part.torque = 0;	//rotation speed, negative numbers rotate clockwise, positive numbers rotate counter-clockwise
+	if (!variable_instance_exists(new_part, "xscale")) new_part.xscale = 1;	//the sprite's horizontal scale
+	if (!variable_instance_exists(new_part, "yscale")) new_part.yscale = 1;	//the sprite's vertical scale
+	if (!variable_instance_exists(new_part, "alpha")) new_part.alpha = 1; //numbers between 0 to 1 have visual changes
+	if (!variable_instance_exists(new_part, "anim_alpha")) new_part.anim_alpha = 0;	//0 means it will not change the transperency, 1 will make it fade in, -1 will make it fade out
+	if (!variable_instance_exists(new_part, "color")) new_part.color = c_white; //the color of the particle - note that without "filled" the particle will be tinted with this color instead
+	if (!variable_instance_exists(new_part, "filled")) new_part.filled = false;	//if true, the sprite's color will be a single color based on "color"
+	if (!variable_instance_exists(new_part, "shader")) new_part.shader = true;	//if true, the particle will use the player's shaders
+	if (!variable_instance_exists(new_part, "layer")) new_part.layer = 1; //0 means it will use article3 to set the depth, 1 uses pre_draw and -1 uses post_draw
+	if (!variable_instance_exists(new_part, "length")) new_part.length = 0;	//for how long should the particle play
+	if (!variable_instance_exists(new_part, "img")) new_part.img = 0; //reffers to the particle's image index, if "anim_img" is false it will stick to that image for the duration of the particle
+	if (!variable_instance_exists(new_part, "anim_img")) new_part.anim_img = true;	//if true, the particle's sprites will animate
+	
     array_push(fx_part, new_part);
-}
-//remove dust from existance (not really we are just pushing it off-screen)
-#define custom_dust_effects
-{
-    //original code by FQF (from QUA mario), modified by bar-kun
-    with (asset_get("new_dust_fx_obj"))
-    {
-        //dust_fx <= 24 && dust_fx >= 0 will check the values in the array that are in between 0 and 24
-        //other.dust_effect[dust_fx] != 0 will check the array value isn't 0 (which represents the default effect)
-        //if we put any other number value it will act as if you have an effect, and remove the default dust
-        if (dust_fx <= 24 && dust_fx >= 0 && player == other.player && x != -3000 && other.dust_effect[dust_fx] != 0)
-        {
-            //all the values of the effect that eventually spawn are based off the original effect
-            //this allows us to add our own dusts in the proper placement and such
-            var effect = other.dust_effect[dust_fx]; //sets up effect
-            var spawn_x = x; //X and Y coordinates for where the effect should spawn
-            var spawn_y = y;
-            var dust_angle = draw_angle; //allows us to rotate the sprites around
-            var dust_depth = dust_depth; //sets the depth of the effect
-
-            //other variable checks you can add yourself:
-            //player_id - player object
-            //player - player number
-            //spr_dir - dust's facing direction
-            //dust_length - dust's length
-            //dust_color - which shade (from the player's shade slots) should the dust color with
-            //init - checks if the dust spawned, false for the first frame
-            //shader_init - ???
-            //step_timer - ???
-            //fg_index - ???
-            //__sync_id - ???
-
-            //spawn new dusts
-            with (other)
-            {
-                //exceptions:
-                //  - we can add in exceptions for certain dusts to do various things (example below)
-                //  - the numbers go between 0 - 24
-                switch (other.dust_fx)
-                {
-                    case 8: //wall hit bounce - when hitting the celling it should b rotated properly
-                        if (hit_player_obj.vsp != 0 && hit_player_obj.free && dust_angle == 0) dust_angle = 180; //celling bounce
-                        break;
-                }
-                
-                //spawn effect
-                var new_dust_fx = spawn_hit_fx(spawn_x, spawn_y, effect);
-                new_dust_fx.draw_angle = dust_angle;
-                new_dust_fx.depth = dust_depth;
-                new_dust_fx.hsp = other.hsp;
-                new_dust_fx.vsp = other.vsp;
-            }
-
-            //"remove" dust by moving to a place nobody will see
-            x = -3000;
-            y = -3000;
-            dust_length = 0;
-        }
-    }
-
-    //K.O stars are kinda funky - they need to be controlled outside of the with statement
-    //as we need to make them move down every frame
-    with (hit_fx_obj) if (player == other.player) if (hit_fx == other.dust_effect[24]) vsp ++;
 }
 
 //collision_line() but it returns the point it collided with.

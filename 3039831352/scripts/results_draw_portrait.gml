@@ -1,3 +1,5 @@
+//results_draw_portrait.gml
+
 if ("real_time" not in self)
 {
     rank_override = -1;
@@ -14,6 +16,22 @@ if ("real_time" not in self)
 }
 else
 {
+    if (_barsonic_boost_check) //boost mode wind
+    {
+        var alpha_check = results_timer < 10 ? 1 : white_flash_alpha;
+        var alpha_set = clamp(alpha_check * 1.5, 0, 1);
+        var boost_off_x = _barsonic_super_check ? -34 : 0;
+        var boost_off_y = _barsonic_super_check ? 4 : 44;
+
+        static_colorB = colorB;
+        static_colorO = colorO;
+        static_colorT = colorT;
+        static_colorI = colorI;
+        shader_start();
+        draw_sprite_ext(sprite_get("port_fx"), _barsonic_super_check, portrait_x + boost_off_x, portrait_y + boost_off_y, 2, 2, 0, merge_color(c_white, c_black, alpha_set), 0.75);
+        shader_end();
+    }
+
     real_time += 0.5;
 
     //lord X has a different "win name" and no rank
@@ -86,8 +104,30 @@ else
             }
         }
     }
-}
 
+    if (alt_cur == 5) //chaos mask
+    {
+        if (_barsonic_final_color[player][0][0] == get_color_profile_slot_r(alt_cur, 0)) //checks if he isn't super sonic
+        {
+            var alpha_check = results_timer < 10 ? 1 : white_flash_alpha;
+            var alpha_set = clamp(alpha_check * 1.5, 0, 1);
+
+            maskHeader();
+            draw_sprite_ext(sprite_get("portrait_ex1"), 0, portrait_x, portrait_y, 2, 2, 0, c_white, (1-alpha_set) * 0.5);
+            maskMidder();
+            draw_sprite_tiled(sprite_get("alt_chaos"), real_time * 0.15, portrait_x, portrait_y + (-real_time / 8));
+            maskFooter();
+
+            static_colorB = colorB;
+            static_colorO = colorO;
+            static_colorT = colorT;
+            static_colorI = colorI;
+            shader_start();
+            draw_sprite_ext(sprite_get("portrait_ex1-2"), 0, portrait_x, portrait_y, 2, 2, 0, merge_color(c_white, c_black, alpha_set), 1);
+            shader_end();
+        }
+    }
+}
 
 #define maskHeader
 {

@@ -45,6 +45,8 @@ switch (state)
                         if (other.player_id.charge_cur >= other.player_id.charge_max) other.player_id.charge_cur = other.player_id.charge_max;
                     }
 
+                    x = other.x;
+                    y = other.y;
                     destroyed = true;
                     length = 0;
                     other.flash_fx_timer = 0;
@@ -67,7 +69,10 @@ switch (state)
         //reflect check
         with (oPlayer) if (state == PS_HITSTUN && !hitpause && !bubbled)
         {
-            if (can_wall_tech && tech_counter <= 20 && place_meeting(x, y, other)) teched_rune(); //let people tech it like a wall
+            if (can_wall_tech && tech_counter <= 20)
+            {
+                if (place_meeting(x, y, other)) teched_rune(); //let people tech it like a wall
+            }
             else
             {
                 if ("venus_reflected" not in self) venus_reflected = false;
@@ -83,14 +88,13 @@ switch (state)
     case "mirror": //inside the with pHitBox there's code to attempt to make hitbox articles reflect (check the [with (pHitBox)] section)
         is_hittable = true;
 
-        if (state_timer == 0) //place sound
+        if (state_timer == 0) //place init
         {
             sound_play(asset_get("sfx_flareo_rod"));
-            if (player_id.special_down) sound_play(asset_get("sfx_coin_capture"), false, 0, 1, 0.7);
+            if (player_id.is_weaker_rune) sound_play(asset_get("sfx_coin_capture"), false, 0, 1, 0.7);
             else sound_play(asset_get("sfx_coin_capture"));
             flash_fx_timer = 0;
         }
-        if (reflect_filter > 0) reflect_filter--; //uspec cooldown to make sure venus gets the proper angle
 
         with (oPlayer)
         {
@@ -354,8 +358,13 @@ switch (state)
             exit;
         }
         break;
+    case "instakill":
+        destroy_rune();
+        exit;
+        break;
 }
 
+if (reflect_filter > 0) reflect_filter--; //cooldown to make sure the reflects don't happen multiple times
 state_timer ++;
 
 glow_time += glow_inc ? 1 : -1;
@@ -397,116 +406,151 @@ if (!player_id.s_alt && player_id.alt_cur == 10)
     
     if ((check_id == noone || "is_venus_rune" not in check_id) && venus_reflected) //this only applies if there's no collision with ANY of the runes
     {
-        if ("venus_rune_ID" not in self || venus_rune_ID == other || !instance_exists(venus_rune_ID)) venus_reflected = false; 
+        if ("venus_rune_ID" not in self || venus_rune_ID == other || !instance_exists(venus_rune_ID)) venus_reflected = false;
     }
-    else if (check_id != noone)
+    else if (check_id != noone) if (place_meeting(x, y, other) && !venus_reflected)
     {
-        if (place_meeting(x, y, other))
+        sound_play(asset_get("mfx_star"));
+        with (check_id)
         {
-            if (!venus_reflected)
+            if (reflect_type != "compatibility")
             {
-                sound_play(asset_get("mfx_star"));
-                with (check_id)
-                {
-                    if (reflect_type != "compatibility")
-                    {
-                        last_move_angle = point_direction(other.hsp, other.vsp, 0, 0);
-                        output_angle = rune_angle - angle_difference(last_move_angle, rune_angle);
-                        output_speed = point_distance(0, 0, other.hsp, other.vsp) * (reflect_mult + (1 - player_id.min_reflect_pow));
+                last_move_angle = point_direction(other.hsp, other.vsp, 0, 0);
+                output_angle = rune_angle - angle_difference(last_move_angle, rune_angle);
+                output_speed = point_distance(0, 0, other.hsp, other.vsp) * ( (object_index == oPlayer || "enemy_stage_article" in self) ? reflect_mult : reflect_hb_mult );
 
-                        other.hsp = lengthdir_x(output_speed, output_angle);
-                        other.vsp = lengthdir_y(output_speed, output_angle);
-                    }
-
-                    flash_fx_timer = 0;
-                }
-
-                venus_rune_ID = other;
-                if (reflect_type != "compatibility")
-                {
-                    //reflect flag set
-                    if ("venus_reflected" in self) venus_reflected = true;
-
-                    if (object_index == pHitBox)
-                    {
-                        other.player_id.perfect_hitpause = true;
-                        player_id.parry_id = other.player_id;
-
-                        player = other.player;
-                        last_player_id = other.player_id;
-                        reflected = true;
-                        was_parried = true;
-                        hitbox_timer = 0;
-                        if ("rocket_angle" in self) rocket_angle = other.output_angle; //elliana fspec
-                        if ("buzzsaw_angle" in self) buzzsaw_angle = other.output_angle; //SK utilt
-
-                        other.hp -= 0.5;
-                        other.hitstop = get_hitstop_formula(
-                            abs(other.hp - 4) * 25,
-                            damage * lerp(1, 1.6, player_id.strong_charge/60),
-                            hitpause,
-                            hitpause_growth,
-                            extra_hitpause
-                        );
-                        sound_play(sound_effect);
-                        var fx = spawn_hit_fx(hit_effect_x + other.x, hit_effect_y + other.y, hit_effect); //puts up the hit fx of the hitbox
-
-                        if ("is_venus_t" in player_id && attack == AT_FSTRONG) //venus fstrong compatibility
-                        {
-                            hitbox_timer -= 15;
-                            orig_hsp = hsp;
-                            orig_vsp = vsp;
-
-                            fx.x += lengthdir_x(16, other.rune_angle-180);
-                            fx.y += lengthdir_y(16, other.rune_angle-180);
-                            fx.kb_dir = other.rune_angle-180;
-                        }
-                        else
-                        {
-                            proj_angle = other.output_angle;
-                            spr_dir = other.output_angle >= 90 && other.output_angle <= 270 ? -1 : 1;
-                            draw_xscale = spr_dir;
-                            proj_angle = other.output_angle % 180 + 180;
-                            //ok so not ALL projectiles look good with this uhhhhh
-
-                            fx.hit_angle = spr_dir == 1 ? get_hitbox_angle(self) : get_hitbox_angle(self) - 180; //some hit effects use this variable for angling hit fx
-                        }
-                    }
-
-                    if (object_index == oPlayer || "enemy_stage_article" in self) with (check_id.player_id)
-                    {
-                        if (other.object_index == oPlayer &&
-                            (other.state == PS_HITSTUN || "venus_player_reflect" in other && other.venus_player_reflect > 0 &&
-                            other.state != PS_ATTACK_GROUND && other.state != PS_ATTACK_AIR) ||
-                            "enemy_stage_article" in other && other.state == 6)
-                        {
-                            check_id.hp -= 0.5;
-                        }
-
-                        var bg_dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 10);
-                        bg_dust.x = floor(check_id.x);
-                        bg_dust.y = floor(check_id.y);
-                        bg_dust.dust_fx = 7;
-                        bg_dust.draw_angle = check_id.output_angle - 90;
-                        bg_dust.depth = check_id.depth + 1;
-
-                        var fg_dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 14);
-                        fg_dust.x = floor(check_id.x);
-                        fg_dust.y = floor(check_id.y);
-                        fg_dust.dust_fx = 8;
-                        fg_dust.draw_angle = check_id.output_angle - 90;
-                        fg_dust.depth = check_id.depth - 1;
-                        
-                        sound_play(asset_get("sfx_ori_stomp_hit"));
-                    }
-
-                    if (object_index == obj_article1 || object_index == obj_article2 || object_index == obj_article3 ||
-                        object_index == obj_article_solid || object_index == obj_article_platform) other.hp -= 0.5;
-                }
-
-                other.reflect_filter = other.reflect_filter_set;
+                other.hsp = lengthdir_x(output_speed, output_angle);
+                other.vsp = lengthdir_y(output_speed, output_angle);
             }
+
+            flash_fx_timer = 0;
         }
+
+        venus_rune_ID = other;
+        if (reflect_type != "compatibility" && instance_exists(check_id))
+        {
+            //reflect flag set
+            if ("venus_reflected" in self) venus_reflected = true;
+
+            if (object_index == pHitBox)
+            {
+                other.player_id.perfect_hitpause = true;
+                player_id.parry_id = other.player_id;
+
+                player = other.player;
+                last_player_id = other.player_id;
+                reflected = true;
+                was_parried = true;
+                hitbox_timer = 0;
+                if ("rocket_angle" in self) rocket_angle = other.output_angle; //elliana fspec
+                if ("buzzsaw_angle" in self) buzzsaw_angle = other.output_angle; //SK utilt
+
+                other.hp -= 0.5;
+                other.hitstop = get_hitstop_formula(
+                    abs(other.hp - 4) * 25,
+                    damage * lerp(1, 1.6, player_id.strong_charge/60),
+                    hitpause,
+                    hitpause_growth,
+                    extra_hitpause
+                );
+                sound_play(sound_effect);
+                var fx = spawn_hit_fx(hit_effect_x + other.x, hit_effect_y + other.y, hit_effect); //puts up the hit fx of the hitbox
+
+                if ("is_venus_t" in player_id && attack == AT_FSTRONG) //venus fstrong compatibility
+                {
+                    hitbox_timer -= 15;
+                    orig_hsp = hsp;
+                    orig_vsp = vsp;
+
+                    fx.x += lengthdir_x(16, other.rune_angle-180);
+                    fx.y += lengthdir_y(16, other.rune_angle-180);
+                    fx.kb_dir = other.rune_angle-180;
+                }
+                else
+                {
+                    proj_angle = other.output_angle;
+                    spr_dir = other.output_angle >= 90 && other.output_angle <= 270 ? -1 : 1;
+                    draw_xscale = spr_dir;
+                    proj_angle = other.output_angle % 180;
+                    //ok so not ALL projectiles look good with this uhhhhh
+
+                    fx.hit_angle = spr_dir == 1 ? get_hitbox_angle(self) : get_hitbox_angle(self) - 180; //some hit effects use this variable for angling hit fx
+                }
+            }
+
+            if (object_index == oPlayer || "enemy_stage_article" in self) with (check_id.player_id)
+            {
+                var lightstun_activated = false;
+                if (check_id.state == "mirror")
+                {
+                    if (other.object_index == oPlayer &&
+                        (other.state == PS_HITSTUN || "venus_player_reflect" in other && other.venus_player_reflect > 0 &&
+                        other.state != PS_ATTACK_GROUND && other.state != PS_ATTACK_AIR) ||
+                        "enemy_stage_article" in other && other.state == 6)
+                    {
+                        if (lightstun_rune)
+                        {
+                            other.orig_knock = check_id.output_speed;
+                            other.knock_dir = check_id.output_angle;
+                            other.old_hsp = other.hsp;
+                            other.old_vsp = other.vsp;
+
+                            other.hitpause = true; //this atually makes the speed get ignored for some reason???
+                            other.hitstop = lightstun_time;
+                            other.hitstop_full = lightstun_time;
+                            other.hitstun += 10;
+                            other.hitstun_full += 10;
+                            if (other.vsp > 0) other.sent_down = true;
+                            
+                            var temp_fx1 = spawn_hit_fx(check_id.x, check_id.y, fx_lightstun_arrow);
+                            temp_fx1.draw_angle = check_id.output_angle - 90;
+                            temp_fx1.spr_dir = 1;
+                            temp_fx1.detect_id = other;
+                            temp_fx1.depth = -10;
+                            temp_fx1.rune_cur = check_id;
+                            var temp_fx2 = spawn_hit_fx(check_id.x, check_id.y, fx_lightstunned);
+                            temp_fx2.arrow_fx = temp_fx1;
+
+                            sound_play(asset_get("sfx_frog_fspecial_cancel"));
+                            sound_play(asset_get("sfx_ori_bash_hit"));
+                            check_id.state = "instakill";
+                            lightstun_activated = true;
+                        }
+                        else check_id.hp -= 0.5;
+                    }
+                }
+
+                if (!lightstun_activated) //bounce fx
+                {
+                    var bg_dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 10);
+                    bg_dust.x = floor(check_id.x);
+                    bg_dust.y = floor(check_id.y);
+                    bg_dust.dust_fx = 7;
+                    bg_dust.draw_angle = check_id.output_angle - 90;
+                    bg_dust.depth = check_id.depth + 1;
+
+                    var fg_dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 14);
+                    fg_dust.x = floor(check_id.x);
+                    fg_dust.y = floor(check_id.y);
+                    fg_dust.dust_fx = 8;
+                    fg_dust.draw_angle = check_id.output_angle - 90;
+                    fg_dust.depth = check_id.depth - 1;
+                    
+                    sound_play(asset_get("sfx_ori_stomp_hit"));
+                }
+
+                var hb = create_hitbox(AT_NSPECIAL, 2, floor(other.x), floor(other.y-other.char_height/2));
+                hb.kb_angle = point_direction(0, 0, other.hsp, other.vsp);
+                hb.kb_value = other.venus_rune_ID.output_speed;
+                hb.spr_dir = 1;
+                hb.hitpause = 0;
+            }
+
+            if (object_index == obj_article1 || object_index == obj_article2 || object_index == obj_article3 ||
+                object_index == obj_article_solid || object_index == obj_article_platform) other.hp -= 0.5;
+        }
+
+        other.reflect_filter = other.reflect_filter_set;
     }
 }
 #define destroy_rune
@@ -548,5 +592,12 @@ if (!player_id.s_alt && player_id.alt_cur == 10)
     dust.x = floor(other.x);
     dust.y = floor(other.y);
     dust.dust_fx = 1;
-    dust.draw_angle = other.rune_angle - 270;
+
+    var teched_angle = point_direction(other.x, other.y, x, y-char_height/2);
+    var diff = angle_difference(teched_angle, other.rune_angle);
+    var final_angle = 0;
+    if (diff < 90 && diff > -90) final_angle = other.rune_angle + 180;
+    else final_angle = other.rune_angle;
+
+    dust.draw_angle = final_angle + 90;
 }

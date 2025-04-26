@@ -264,8 +264,11 @@ if (attack == AT_USPECIAL) {
 
 //Fstrong picture
 if (attack == AT_FSTRONG) && window == 1 && window_timer == 1 {
+	if copyright {
 	randomTaunt = random_func(0, 80, true);
-	
+	} else {
+	randomTaunt = random_func(0, 111, true);	
+	}
 	//this is for debug purposes
 	//randomTaunt = 11;
 }
@@ -284,13 +287,13 @@ if attack == AT_FSTRONG {
 		if randomTaunt == 20 { //it's actually the 21th picture
 			sound_play(sound_get("21"));
 		}
-		if randomTaunt == 51 {
+		if randomTaunt == 51 && !copyright {
 			sound_play(sound_get("bigyoshi"));
 		}
 		if randomTaunt == 59 {
 			sound_play(sound_get("picklepower"));
 		}
-		if randomTaunt == 68 {
+		if randomTaunt == 68 && !copyright {
 			sound_play(sound_get("thwomp"));
 		}
 		if randomTaunt == 69 {
@@ -325,7 +328,7 @@ if attack == AT_FSTRONG {
 
 //Control the Blueytank's movement
 with(asset_get("obj_article1")){
-    if (player_id.attack == AT_DSPECIAL_2 && player_id.window == 1 && player_id.window_timer == 1) {
+    if (player_id == other.id && player_id.attack == AT_DSPECIAL_2 && player_id.window == 1 && player_id.window_timer == 1) {
 		if state = 2 {
 			if player_id.spr_dir == spr_dir {
 				if !free {
@@ -354,21 +357,24 @@ if window == 1 {
 }
 
 //funny sounds
-if (hit_player_obj.activated_kill_effect) && funnySound {
+if has_hit_player && (hit_player_obj.activated_kill_effect) {
 	if attack == AT_DSTRONG {
 		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong_fu"));
 	}
-	if (funnyfish == 6) {
+	if (funnyfish == 6) && funnySound {
 		if attack == AT_BAIR {
 			sound_play(sound_get("tacobell"));
 		}
 		if attack == AT_FAIR {
-			sound_play(sound_get("fwr"));
+			sound_play(sound_get("vineboom"));
 		}
 		if attack == AT_USTRONG {
 			sound_play(sound_get("fwr"));
 		}
-		if !(attack == AT_FAIR || attack == AT_BAIR || attack == AT_DSTRONG || attack == AT_FSTRONG) {
+		if attack == AT_DSTRONG {
+			sound_play(sound_get("vineboom"));
+		}
+		if !(attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG) {
 			if randomFunny == 11 {
 				sound_play(sound_get("hamburger"));
 			} if randomFunny == 10 {
@@ -399,6 +405,10 @@ if (hit_player_obj.activated_kill_effect) && funnySound {
 }
 
 #define spawn_base_dust
+/// @param {undefined} x
+/// @param {undefined} y
+/// @param {undefined} name
+/// @param {undefined} dir = 0
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
@@ -407,7 +417,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

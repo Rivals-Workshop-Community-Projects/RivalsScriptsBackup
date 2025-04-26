@@ -46,6 +46,9 @@ if (cursor_x > alt_button_pos[0] && cursor_x < alt_button_pos[2] && cursor_y > a
            	case 20:
            	secret_alt_num = 3;
            	break;
+           	case 1:
+           	secret_alt_num = 4;
+           	break;
            }
            sound_play(asset_get("mfx_levelup"));
            break;
@@ -175,4 +178,13 @@ set_color_profile_slot( 20, 3, 59, 59, 59 ); //Hair2
 set_color_profile_slot( 20, 4, 122, 71, 52 ); //Pants
 set_color_profile_slot( 20, 5, 255, 212, 71 ); //Shoes
 set_color_profile_slot( 20, 6, 255, 212, 71 ); //Shirt Stripe
+}
+if(get_player_color(player) == 1){ // Orange
+set_color_profile_slot( 1, 0, 255, 186, 140 ); //Shirt
+set_color_profile_slot( 1, 1, 238, 200, 169 ); //Skin
+set_color_profile_slot( 1, 2, 159, 97, 61 ); //Hair1
+set_color_profile_slot( 1, 3, 119, 73, 29 ); //Hair2
+set_color_profile_slot( 1, 4, 79, 168, 157 ); //Pants
+set_color_profile_slot( 1, 5, 126, 63, 37 ); //Shoes
+set_color_profile_slot( 1, 6, 255, 248, 238 ); //Shirt Stripe
 }

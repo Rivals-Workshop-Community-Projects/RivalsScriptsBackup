@@ -15,3 +15,13 @@ if(taunt_down && disguised && !disguisedAsSelf)
         state = free ? PS_IDLE_AIR : PS_IDLE;
     }
 }
+
+
+if(!disguised || disguisedAsSelf)
+{
+    if(state_cat == SC_GROUND_NEUTRAL && down_down && taunt_pressed)
+        attack = AT_EXTRA_2;
+
+    if(state_cat == SC_GROUND_NEUTRAL && up_down && taunt_pressed)
+        attack = AT_EXTRA_3;
+}

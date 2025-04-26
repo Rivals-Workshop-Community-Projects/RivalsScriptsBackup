@@ -43,7 +43,7 @@ djump_accel_end_time= 0;		//                  the amount of time that   djump_ac
 max_djumps          = 3;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 5.5;		// 4    -  7
 walljump_vsp        = 9;		// 7    -  10
-land_time           = 4;		// 4    -  6
+land_time           = 6;		// 4    -  6
 prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
@@ -107,52 +107,31 @@ alt = get_player_color(player);
 loaded = false;
 attacking = false;
 upb = false;
-nspecial_charge = 0;
-nspecial_charged = false;
-nspecial_charge_sfx = false;
-nspecial_charge_sfx2 = noone;
-nspecial_meter_hud = 2;
-nspecial_start_charge = 0;
-fspecialY = 0;
-fspec_hit = false;
-target_list = ds_list_create();
-fspec_sfx = false;
+nspecial_charge = 0;nspecial_charged = false;nspecial_charge_sfx = false;
+nspecial_charge_sfx2 = noone;nspecial_meter_hud = 2;nspecial_start_charge = 0;nspec_meter = sprite_get("nspec_meter");
+fspecialY = 0;fspec_hit = false;target_list = ds_list_create();fspec_sfx = false;
 aim_sprite = sprite_get("fspec_aim");
-aimtarget = noone;
-aimtarget2 = noone;
-the_eggpawn = noone;
-the_eggpawn2 = noone;
-eggpawn_cooldown = 420;
-eggpawn_cooldown2 = 600;
-eggpawn_cooldown_multiplier = 1.0;
-eggpawn_icon = 0;
-eggpawn_destroyed = false;
-eggpawn_health_multiplier = 1.0;
+aimtarget = noone;aimtarget2 = noone;
+the_eggpawn = noone;the_eggpawn2 = noone;
+eggpawn_cooldown = 420;eggpawn_cooldown2 = 600;eggpawn_cooldown_multiplier = 1.0;
+eggpawn_icon = 0;eggpawn_destroyed = false;eggpawn_health_multiplier = 1.0;eggpawn_icon_spr = sprite_get("eggpawn_icon");
 ftilt_hitbox = noone;
-dattack_timer = 0;
-dattack_hitbox = noone;
-dattack_anim = 0;
-dattack_alpha = 0;
-dattack_hit = false;
+dattack_timer = 0;dattack_hitbox = noone;
+dattack_anim = 0;dattack_alpha = 0;dattack_hit = false;
 nair_loop = 0;
 hit_timer = 0;
-eff_offset_X = 0;
-eff_offset_Y = 0;
+eff_offset_X = 0;eff_offset_Y = 0;
+strongstall = false;strong_free = false;
 armor_timer = 0;
-floatmax = 120;
-float = 0;
-floating = false;
-floatanim = 0;
-floatbuffer = 0;
+bonus_damage = false;bonus_damage_flash = 0;
+floatmax = 120;float = 0;floating = false;floatanim = 0;floatbuffer = 0;
 djumpfloat = 0;
 voice = noone;
 voicecooldown = 0; //attack sounds
 voicecooldown2 = 0; //hurt sounds
 voicecooldown3 = 0; //galaxy hit sounds
-sfx = noone;
-eff = noone;
-floating_sfx = false;
-hover_sfx = noone;
+sfx = noone;eff = noone;
+floating_sfx = false;hover_sfx = noone;
 voicemode = get_synced_var(player);
 i_have_70_alt_accounts = false;
 familiar_eggmans = 0;
@@ -160,9 +139,9 @@ lookuptime = 0;
 airdodgeanimthing = 0;
 rand = 0;
 silly = 0;
+crawling = false;
 
-inside_mech = true;
-inside_mech2 = true;
+inside_mech = true;inside_mech2 = true;eggmobile_icon_spr = sprite_get("eggmobile_icon");
 can_summon_mech = true;
 
 //Ground
@@ -234,7 +213,7 @@ villager_bury_sprite = sprite_get("bury");
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 
-//runeE = true;runeF = true;runeG = true;runeH = true;runesUpdated = true;
+//runeJ = true;runesUpdated = true;
 
 alpha = 0.5;
 playtesting = (object_index == oTestPlayer);

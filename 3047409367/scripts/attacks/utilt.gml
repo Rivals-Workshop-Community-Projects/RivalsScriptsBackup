@@ -4,11 +4,11 @@ set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 
 //startup
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 7);
 
 //hit 1
 set_window_value(AT_UTILT, 2, AG_WINDOW_TYPE, 1);
@@ -18,7 +18,7 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //hit 2
 set_window_value(AT_UTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -50,7 +50,7 @@ set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, petal_small);
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, -42);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -49);
 set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 55);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, petal_small);
 
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_X, -7);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_Y, -86);
 set_hitbox_value(AT_UTILT, 3, HG_WIDTH, 96);

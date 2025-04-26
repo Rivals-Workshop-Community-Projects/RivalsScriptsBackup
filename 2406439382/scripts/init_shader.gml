@@ -28,4 +28,3 @@ switch(get_player_color("onlineCSS" in self && onlineCSS ? 0 : player)) {
         }
     break;
 }
-

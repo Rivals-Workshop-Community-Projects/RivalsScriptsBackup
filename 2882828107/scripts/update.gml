@@ -1,9 +1,10 @@
 //timers
-timer++;
 jackolantern_recharge = clamp(jackolantern_recharge, 0, 450);
 jackolantern_recharge++;
 witchhazel_recharge = clamp(witchhazel_recharge, 0, 180);
 witchhazel_recharge++;
+alert_text_timer = clamp(alert_text_timer, 0, 32);
+alert_text_timer--;
 
 //wall phasing
 if (wall_phase == true){
@@ -45,25 +46,39 @@ if (state == PS_PARRY){
 	}
 }
 
+if (state == PS_DASH_START && state_timer > 1){
+	if (hsp * spr_dir <= 0){
+		initial_dash_speed = 7;
+	}
+} else {
+	if (initial_dash_speed != 4){
+		initial_dash_speed = 4;
+	}
+}
+
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	sound_stop(sound_get("haunt_ambience"));
 }
 
+if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_TAUNT){
+	sound_stop(sound_get ("watering_cannot"));
+}
+
+with (obj_stage_article){
+	if ("enemy_stage_article" in self){
+		if "dattack_drag" not in self dattack_drag = false;
+		if "dattack_flick" not in self dattack_flick = false;
+	}
+}
+
+//witchhazel
 with (oPlayer) {
 	if (id != other.id){
 		if (puffshroom_timer != 0 && puffshroom_timer <= 30){
-			if (state == PS_HITSTUN_LAND || state == PS_HITSTUN){
-				puffshroom_timer--;
-				draw_y = 999;
-			} else {
-				puffshroom_timer = 0;
-			}
-		} else {
-			draw_y = 0;
-		}
-		if (puffshroom_timer == 1){
-			spawn_hit_fx(floor(x),floor(y - 30),67);
-		}
+			if (state == PS_HITSTUN_LAND || state == PS_HITSTUN) puffshroom_timer--;
+			else puffshroom_timer = 0;
+		} else draw_y = 0;
+		if (puffshroom_timer == 1) spawn_hit_fx(floor(x),floor(y - 30),67);
 	}
 }
 
@@ -71,14 +86,14 @@ with (oPlayer) {
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
 }
-if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
+if (practice_mode && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_TAUNT)){
     jackolantern_recharge = 450;
 	witchhazel_recharge = 180;
 }
 
 //ranibow sprimkle
 if !("hue" in self) hue = 0
-if get_player_color(player) = 15 {
+if get_player_color(player) = 16 {
 	hue+=1
 	if hue>255 hue-=255;
 	//make hue shift every step + loop around
@@ -156,8 +171,14 @@ if (has_rune("D")){
 }
 
 if (has_rune("E")){
-	walljump_hsp = 6
+	walljump_hsp = 5
 	walljump_vsp = 9
+}
+
+if (has_rune("F")){
+	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 45);
+	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1.2);
 }
 
 if (has_rune("J")){

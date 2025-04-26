@@ -8,28 +8,23 @@ if(doDrawDebug)
 //game over / tetris / full clear
 if(fullScreenAnim)
 {
-	var offX = -118;
-	var offY = -20;
-	if(!fullScreenAnimMoveWithCamera)
-	{
-		offX -= view_get_xview()-235;
-		offY -= view_get_yview()-244 + (fullClear ? 192 : (firstClearedRowY*64));
-	}
+	var offX = 464;
+	var offY = 44;
 	if(fullScreenTimer < 10)
 	{
-		draw_sprite_ext(fullScreenSprite, 0, x+161-300+fullScreenTimer*30+offX, y+offY, 2, 2, 0, c_white, fullScreenTimer/10);
-		draw_sprite_ext(fullScreenSprite, 0, x+161+300-fullScreenTimer*30+offX, y+offY, 2, 2, 0, c_white, fullScreenTimer/10);
+		draw_sprite_ext(fullScreenSprite, 0, x+offX-300+fullScreenTimer*30, y+offY, 2, 2, 0, c_white, fullScreenTimer/10);
+		draw_sprite_ext(fullScreenSprite, 0, x+offX+300-fullScreenTimer*30, y+offY, 2, 2, 0, c_white, fullScreenTimer/10);
 	}
 	else if(fullScreenTimer < 15)
-		draw_sprite_ext(fullScreenSprite, 2, x+161+offX, y+offY, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(fullScreenSprite, 2, x+offX, y+offY, 2, 2, 0, c_white, 1);
 	else if(fullScreenTimer > 60)
 	{
 		var fullScreenTimerCut = fullScreenTimer-60;
-		draw_sprite_ext(fullScreenSprite, 0, x+161-fullScreenTimerCut*30+offX, y+offY, 2, 2, 0, c_white, 1-fullScreenTimerCut/10);
-		draw_sprite_ext(fullScreenSprite, 0, x+161+fullScreenTimerCut*30+offX, y+offY, 2, 2, 0, c_white, 1-fullScreenTimerCut/10);
+		draw_sprite_ext(fullScreenSprite, 0, x+offX-fullScreenTimerCut*30, y+offY, 2, 2, 0, c_white, 1-fullScreenTimerCut/10);
+		draw_sprite_ext(fullScreenSprite, 0, x+offX+fullScreenTimerCut*30, y+offY, 2, 2, 0, c_white, 1-fullScreenTimerCut/10);
 	}
 	else
-		draw_sprite_ext(fullScreenSprite, 1, x+161+offX, y+offY, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(fullScreenSprite, 1, x+offX, y+offY, 2, 2, 0, c_white, 1);
 	fullScreenTimer++;
 }
 
@@ -48,7 +43,7 @@ if(totalPlayers == 3)
 if(totalPlayers == 4)
 	draw_sprite_ext(sprite_get("tetrisLogo"), 0, 103, 498, 2, 2, 0, c_white, logoAlpha);
 	
-if(!drawHud)
+if(!drawHud || get_gameplay_time() < startDelay)
 	return;
 
 if(rivalsGameOver)
@@ -61,10 +56,10 @@ if(rivalsGameOver)
 	}
 }
 
-draw_text_color(x+152, y-178, "Score: " + string(score), hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextAlpha);
-draw_text_color(x+150, y-180, "Score: " + string(score), hudTextColor, hudTextColor, hudTextColor, hudTextColor, hudTextAlpha);
-draw_text_color(x+152, y-198, "Level: " + string(level), hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextAlpha);
-draw_text_color(x+150, y-200, "Level: " + string(level), hudTextColor, hudTextColor, hudTextColor, hudTextColor, hudTextAlpha);
+draw_text_color(hudBoardX+89, hudBoardY-154, "Score: " + string(score), hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextAlpha);
+draw_text_color(hudBoardX+87, hudBoardY-156, "Score: " + string(score), hudTextColor, hudTextColor, hudTextColor, hudTextColor, hudTextAlpha);
+draw_text_color(hudBoardX+89, hudBoardY-174, "Level: " + string(level) + (zenMode ? " (Zen)" : ""), hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextColorBg, hudTextAlpha);
+draw_text_color(hudBoardX+87, hudBoardY-176, "Level: " + string(level) + (zenMode ? " (Zen)" : ""), hudTextColor, hudTextColor, hudTextColor, hudTextColor, hudTextAlpha);
 //TODO: proper outlined text? bcz can be hard to see sometimes
 //		but drawing 8 times is too resource heavy... could use draw_debug_text, but no transparency...
 
@@ -104,14 +99,42 @@ if(hudTextTspinTimer < hudTextDurationTotal)
 draw_sprite_ext(sprite_get("board"), 0, hudBoardX, hudBoardY, 1, 1, 0, c_white, hudBoardAlpha);
 //TODO: could show line where camera is? or full camera rect?
 
-for(var i = 0; i < height; i++)
-	for(var m = 0; m < width; m++)
-		if (field[m, i] > 0 && !field[m, i].cleared)
-			drawRect(hudBoardOriginX + m * hudSpacing, hudBoardOriginY + i * hudSpacing, field[m, i].typCol, 0);
+for(var i = 0; i < ds_list_size(pieceArticles); i++)
+{
+	var piece = pieceArticles[|i];
+	drawRect(hudBoardOriginX + piece.gridX * hudSpacing, hudBoardOriginY + piece.gridY * hudSpacing, piece.typCol, 0);
+}
+//TODO: find a way to draw board with primitives in one batch
 
 //Current piece
 if(pieceCurr != noone)
+{
     render(pieceCurr, 0, 0, 0);
+	//TODO: instead use sprite for performance -> but why does rotation wobble?
+	// var offX = 0;
+	// var offY = 0;
+	// if(pieceCurr.typ == 0//I
+	// || pieceCurr.typ == 6)//O
+	// {
+	// 	offX = 17;
+	// 	offY = 9;
+	// 	sprite_change_offset("pieces", 17, 9);
+	// }
+	// if(pieceCurr.typ == 1//Z
+	// || pieceCurr.typ == 2//S
+	// || pieceCurr.typ == 3//J
+	// || pieceCurr.typ == 4//L
+	// || pieceCurr.typ == 5)//T
+	// {
+	// 	offX = 13;
+	// 	offY = 13;
+	// 	sprite_change_offset("pieces", 13, 13);
+	// }
+	// draw_sprite_ext(sprite_get("pieces"), pieceCurr.typ,
+	// 	hudBoardOriginX + pieceCurr.centerX * hudSpacing + offX + hudSpacing * 5,
+	// 	hudBoardOriginY + pieceCurr.centerY * hudSpacing + offY,
+	// 	1, 1, -pieceCurr.rotation*90, c_white, hudBoardAlpha);
+}
 if(ghostCurr != noone)
 	render(ghostCurr, 0, 0, rivalsGameOver ? 0 : 0.6);
 if(pieceHeld != noone)

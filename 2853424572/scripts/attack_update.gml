@@ -281,6 +281,10 @@ if (attack == AT_DSPECIAL){
 			x = x + (5 * spr_dir);
 		}
 	}
+    if (window == 5){
+        if !free{move_cooldown[AT_DSPECIAL] = 10}
+        if free{move_cooldown[AT_DSPECIAL] = 35}
+    }
 }
 
 if (attack == AT_UTILT){
@@ -319,6 +323,8 @@ if (attack == AT_FSPECIAL){
     hsp = 0
 	can_fast_fall = false;
     can_move = false
+    if !free{move_cooldown[AT_FSPECIAL] = 10}
+    if free{move_cooldown[AT_FSPECIAL] = 35}
     }
         afterimage_spr = sprite_get("fspecial_afterimage");
     air_accel = .12

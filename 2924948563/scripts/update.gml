@@ -81,7 +81,7 @@ if (attacking && !hitpause) {
     		case 6:
     			if (window != 6) {
     				if (has_walljump) {
-    					if (position_meeting(x + (19 * spr_dir), y - 20, asset_get("par_block"))) {
+    					if (position_meeting(x + (20 * spr_dir), y - 20, asset_get("par_block"))) {
     						spr_dir *= -1;
     						set_state(PS_WALL_JUMP);
     						sound_play(land_sound);
@@ -96,6 +96,7 @@ if (attacking && !hitpause) {
 		            sound_play(landing_lag_sound);
 	            	window = 5;
 	            	window_timer = 0;
+	            	destroy_hitboxes()
     			}
     		break;
     		case 4:
@@ -182,6 +183,14 @@ if (attacking && !hitpause) {
 			window_timer = 0;
 		}
 		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		if window == 3 && window_timer == 1{
+        		with pHitBox {
+                    if player_id == other and attack == AT_DSPECIAL_AIR and type == 1 {
+                        destroyed = true;
+                        instance_destroy();
+                    }
+                }
+    		}
 	break;
 	case AT_DSPECIAL_2:
 		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);

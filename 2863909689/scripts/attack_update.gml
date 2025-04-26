@@ -258,6 +258,10 @@ if (attack == AT_FSPECIAL){
 			enter_fspecial_command_grab = false;
 			set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 			reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
+			
+			if (!hitpause && !hitstop){
+				sound_play(asset_get("sfx_frog_jab"));
+			}
 		}
 		if (window_timer == 12){
 			if (!hitpause && !hitstop){

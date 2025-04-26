@@ -1,24 +1,12 @@
-//Fancy CSS template by Muno
 
 set_color_profile_slot(70, 0, 0, 0, 0);//for hud in lvl select
- 
+
 var temp_x = x + 8;
 var temp_y = y + 9;
+shader_end();
 
-var num_alts = 10;//needs to be the same as init.gml and colors.gml
 var alt_cur = get_player_color(player);
- 
-alt_name[0] = "Red";
-alt_name[1] = "Blue";
-alt_name[2] = "Yellow";
-alt_name[3] = "Purple";
-alt_name[4] = "Green";
-alt_name[5] = "Game Boy";
-alt_name[6] = "BLM";
-alt_name[7] = "MiB";
-alt_name[8] = "Vampire";
-alt_name[9] = "Grey";
- 
+
 
 //shift alts so start on red instead of red stripes (but need stripes on base char for recolor)
 /*var colSlot = (alt_cur+1)%num_alts;
@@ -42,7 +30,6 @@ draw_set_halign(fa_left);
  
  
  
-//Alt
  
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
@@ -62,7 +49,13 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
  
  
+//voice line button
+draw_sprite(sprite_get("sound_toggle"), get_synced_var(player), x + 178, y+32);
  
+init_shader();
+
+//------------------------------- define -------------------------------
+
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

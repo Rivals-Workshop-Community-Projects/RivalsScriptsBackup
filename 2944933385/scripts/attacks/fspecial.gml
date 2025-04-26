@@ -36,6 +36,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);

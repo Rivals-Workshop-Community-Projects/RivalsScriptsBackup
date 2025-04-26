@@ -67,7 +67,6 @@ if (state== PS_ATTACK_GROUND)
 	}
 }
 
-
 //	Crawling Mechanic
 if (is_crawling && hsp != 0)
 {

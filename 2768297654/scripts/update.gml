@@ -243,6 +243,40 @@ set_color_profile_slot( 20, 6, 207, 43, 25 ); //Shirt Stripe
 				}
 		}
 	}
+if(get_player_color(player) = 1){
+		//Mii Gunner
+		if(secret_alt_on == false){
+			if(attack_down && taunt_down){
+			  white_flash_timer = 18;
+			  sound_play(asset_get("mfx_levelup"));
+set_color_profile_slot( 1, 0, 255, 157, 57 ); //Shirt
+set_color_profile_slot( 1, 1, 255, 242, 205 ); //Skin
+set_color_profile_slot( 1, 2, 137, 45, 30 ); //Hair1
+set_color_profile_slot( 1, 3, 115, 76, 57 ); //Hair2
+set_color_profile_slot( 1, 4, 71, 74, 87 ); //Pants
+set_color_profile_slot( 1, 5, 19, 22, 30 ); //Shoes
+set_color_profile_slot( 1, 6, 49, 255, 255 ); //Shirt Stripe
+			secret_alt_num = 4;
+			seinfeld = true;
+			init_shader();
+			secret_alt_on = true;
+			}
+		}else{
+				if(!seinfeld){
+		white_flash_timer = 24;
+set_color_profile_slot( 1, 0, 255, 157, 57 ); //Shirt
+set_color_profile_slot( 1, 1, 255, 242, 205 ); //Skin
+set_color_profile_slot( 1, 2, 137, 45, 30 ); //Hair1
+set_color_profile_slot( 1, 3, 115, 76, 57 ); //Hair2
+set_color_profile_slot( 1, 4, 71, 74, 87 ); //Pants
+set_color_profile_slot( 1, 5, 19, 22, 30 ); //Shoes
+set_color_profile_slot( 1, 6, 49, 255, 255 ); //Shirt Stripe
+		secret_alt_num = 4;
+		init_shader();            
+		seinfeld = true;					
+				}
+		}
+	}
 }
 
 //check practice mode

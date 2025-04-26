@@ -11,7 +11,7 @@ game_time = get_gameplay_time();
 exist_timer ++;
 if (hit_player_lock > 0) hit_player_lock = 0;
 
-//Initialization
+//initialization
 if (!playtest_active) if ("bar_sonic_boost_down" not in obj_stage_main || !obj_stage_main.bar_sonic_boost_down)
 {
     with (oPlayer)
@@ -43,7 +43,7 @@ if (!playtest_active) if ("bar_sonic_boost_down" not in obj_stage_main || !obj_s
     }
 }
 
-if (is_attacking)
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 {
     window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
     window_last = get_attack_value(attack, AG_NUM_WINDOWS);
@@ -63,6 +63,8 @@ else
     }
 
     if (trick_rune_active && prev_trick != -1) prev_trick = -1; //reset trick combos
+
+    if (get_window_value(AT_NSPECIAL, 9, AG_WINDOW_INVINCIBILITY) != 0) reset_window_value(AT_NSPECIAL, 9, AG_WINDOW_INVINCIBILITY); //beam clash compatibility
 }
 
 //play intro
@@ -75,9 +77,8 @@ if (game_time == 5 && state == PS_SPAWN && set_up_super_colors) //force super sp
 }
 
 //////////////////////////////////////////////////////// CHARACTER SPECIFIC UPDATE /////////////////////////////////////////////////////////
-
-//sonic gradual speed up mechanic
-do_sonic_physics();
+#region ACCELERATION
+do_sonic_physics(); //sonic gradual speed up mechanic
 
 stats_cur = (is_super || boost_mode);
 if(stats_old != stats_cur) 
@@ -102,9 +103,9 @@ if (stats_state == 1)
 }
 
 hugging_wall = (position_meeting(x + (spr_dir ? 19 : -20), y - 16, asset_get("par_block")) || "touching_childe_wall" in self && touching_childe_wall);
+#endregion
 
-//////////////////// AIR TRICKS
-
+#region AIR TRICKS
 if (trick_input_time > 0 && !hitpause)
 {
     //decides which trick too use: 0 = neutral | 1 = up | 2 = right | 3 = down | 4 = left
@@ -132,7 +133,7 @@ if (trick_input_time > 0 && !hitpause)
             hurtboxID.sprite_index = get_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE);
             airdash_stats = [1, 0, 0, -1];
 
-            sound_play(asset_get("sfx_swipe_medium1"), false, 0, 0.6, 0.8 + random_func(8, 10, true)/10)
+            sound_play(asset_get("sfx_swipe_medium1"), false, 0, 0.6, 0.8 + random_func(8, 10, true)/10);
 
             if (trick_rune_count == 0 || !trick_rune_active) vsp = -13;
             //vsp = vsp > -2 ? -10 : vsp - 5;
@@ -163,19 +164,34 @@ if (!has_superform)
         }
     }
 }
+#endregion
 
-//////////////////// COMBO COUNTER
-
+#region COMBO COUNTER
 if (combo_timer > 0)
 {
     combo_timer --;
-    if (instance_exists(hit_player_obj) && (hit_player_obj.state == PS_DEAD || hit_player_obj.state == PS_RESPAWN) && !doing_trick_combo_chain) combo_timer = 0;
+    if (instance_exists(hit_player_obj) && hit_player_obj.last_player == player &&
+        (hit_player_obj.state == PS_DEAD || hit_player_obj.state == PS_RESPAWN) &&
+        !doing_trick_combo_chain)
+    {
+        combo_timer = 0;
+        kill_combo_end = true;
+    }
 }
 else
 {
     if (comboing)
     {
-        if (combo_hits >= combo_display_hits[0])
+        if (boost_grace_timer < boost_grace_timer_set && !boost_mode) boost_grace_timer = boost_grace_timer_set;
+
+        var temp_math = 0;
+        if (kill_combo_end && !has_superform) //death bonus
+        {
+            temp_math += boost_kill_gain[boost_mode];
+            boost_cur += temp_math;
+        }
+
+        if (combo_hits >= combo_display_hits[0]) //rewards are based on milestones
         {
             //display compliment text
             if (cur_combo_text <= -1) combo_text_display_time = combo_display_time_max;
@@ -187,27 +203,23 @@ else
                 cur_combo_text = i;
                 if (has_superform && trick_combo_end)
                 {
-                    var temp_math = ring_combo_gain[i];
+                    temp_math += ring_combo_gain[i];
                     rings_cur += temp_math;
                     sound_play(sound_get("sfx_ringcombo"));
                 }
                 if (!has_superform)
                 {
-                    var temp_math = (i+1) * (trick_combo_end ? boost_combotrick_mult[boost_mode] :
-                        (hurt_combo_end ? boost_comboend_hit_mult[boost_mode] : boost_comboend_mult[boost_mode])
-                    );
+                    temp_math += (i+1) * (trick_combo_end ? boost_combotrick_mult[boost_mode] : boost_comboend_mult[boost_mode]);
                     temp_math -= temp_math * trick_spam_penalty_mult * trick_spam_penalty;
                     boost_cur += temp_math;
                 }
                 combo_voiceline = i;
                 break;
             }
-
-            //if (has_superform && trick_combo_end) sound_play(sound_get("sfx_ringcombo")); //ringbox sound lol
         }
-        else if (combo_hits < combo_display_hits[0] && trick_combo_end) //if sonic didn't do enough hits for it to count as compliment worthy he will get boost based on hits
+        else if (combo_hits < combo_display_hits[0] && trick_combo_end) //but if he didn't reach a reward (and did a trick) he will get it based on hits
         {
-            var temp_math = has_superform ? 0 : boost_comboend_mult[boost_mode] * combo_hits;
+            temp_math += has_superform ? 0 : boost_comboend_mult[boost_mode] * combo_hits;
 
             if (!has_superform)
             {
@@ -218,31 +230,19 @@ else
         }
 
         //setting up the number to show when adding boost
-        if (temp_math > 0)
-        {
-            if (array_find_index(combo_boost_display, noone) > -1) //add combo display view
-            {
-                var temp_index = array_find_index(combo_boost_display, noone);
-                combo_boost_display[temp_index] = temp_math;
-            }
-            else array_push(combo_boost_display, temp_math);
-
-            if (array_find_index(combo_display_time, noone) > -1) //reset timers/add new ones
-            {
-                var temp_index = array_find_index(combo_display_time, noone);
-                combo_display_time[temp_index] = combo_display_time_max;
-            }
-            else array_push(combo_display_time, combo_display_time_max);
-        }
+        if (temp_math > 0) combo_push(temp_math);
 
         if (lang != 0) voice_array (2); //combo end voiceclip
 
         combo_hits = 0;
         comboing = false;
         trick_combo_end = false;
+        kill_combo_end = false;
     }
 }
+#endregion
 
+#region BOOST MODE / SUPER FORM RUNE
 //boost count add timer management
 var clear_array = 0;
 tempvar = 0;
@@ -258,32 +258,25 @@ repeat (array_length(combo_display_time))
     }
     tempvar ++;
 }
-if(clear_array == array_length(combo_display_time)) combo_display_time = [];
-
+if (clear_array == array_length(combo_display_time)) combo_display_time = [];
 
 if (combo_text_display_time > 0) combo_text_display_time --;
 else cur_combo_text = -1;
 
-//////////////////// BOOST MODE / SUPER FORM RUNE
-
-if (has_superform)
+//MECHANICS
+if (has_superform) //super mechanic
 {
     //ring counter
     if (rings_cur <= 0) rings_cur = 0;
     if (rings_cur >= rings_max) rings_cur = rings_max;
 
-    //FUNCTIONAL LIVES SYSTEM?? (if i add this i think i'll make it so it either only works in specific gamemodes or just give everyone a ring counter)
-    /*
-        for (var i = 1; i <= array_length(ring_life_caps_reached)-1; i ++) if (rings_cur >= 100 * i)
-        {
-            if (ring_life_caps_reached[i-1] == false)
-            {
-                sound_play(sound_get("sfx_1up"))
-                set_player_stocks(player, get_player_stocks(player) + 1);
-                ring_life_caps_reached[i-1] = true;
-            }
-        }
-    */
+    //play a 1up sound when sonic has 100 rings (+ unused code to increase sonic's stocks by 1 lol)
+    if (rings_cur >= 100 * ring_life_next)
+    {
+        //set_player_stocks(player, get_player_stocks(player) + 1);
+        sound_play(sound_get("sfx_1up"));
+        ring_life_next = floor(rings_cur/100)+1;
+    }
 
     if (rings_cur == 0) //0 rings indicator
     {
@@ -311,6 +304,8 @@ if (has_superform)
             );
         }
 
+        if (super_time == 0 && has_boost_atk_rune) user_event(0);
+
         super_time ++;
         if (!is_attacking || attack != 3)
         {
@@ -328,6 +323,7 @@ if (has_superform)
     }
     else if (!is_super && (!is_attacking || attack != 48))
     {
+        if (super_time > 0 && has_boost_atk_rune) user_event(0);
         super_time = 0;
         if (super_col_lerp_time > 0 + ("super_form_active" in self && super_form_active) * 48) super_col_lerp_time -= 3;
     }
@@ -361,6 +357,8 @@ else //boost mechanic
                 super_col_lerp_time = super_col_lerp_time_max;
                 user_event(1);
             }
+
+            if (has_boost_atk_rune) user_event(0);
         }
         else hurt_combo_end = false;
     }
@@ -368,6 +366,8 @@ else //boost mechanic
     {
         if (is_darksonic && "super_form_active" not in self) uses_super_colors = false;
         boost_mode = false;
+
+        if (has_boost_atk_rune) user_event(0);
     }
 
     if (is_darksonic && !boost_mode && "super_form_active" not in self) //fade back to normal form (dark sonic alt)
@@ -376,47 +376,50 @@ else //boost mechanic
         else if (super_col_lerp_time < 0) super_col_lerp_time = 0;
     }
 
-    //deplete boost after X amount of time passed
+    //deplete boost after a combo is no longer at play and some extra grace period
     if (boost_cur > 0)
     {
-        if ("bar_sonic_boost_down" in obj_stage_main && obj_stage_main.bar_sonic_boost_down || bar_sonic_boost_down)
-        {
-            if (boost_trick_delay > 0) boost_trick_delay --;
-            
-            //deplete boost if:
-            //  - sonic is in boost mode
-            //  - not doing a combo
-            //  - can hit at least one enemy
-            //  - using final smash (+ having the post effect)
-            if ((boost_mode || !comboing) && (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0)
-            {
-                boost_cur -= 1/boost_decrease_rate[boost_mode];
-            }
-        }
+        if (boost_grace_timer > 0) boost_grace_timer --; //grace period
         else
         {
-            if (!playtest_active)
+            if ("bar_sonic_boost_down" in obj_stage_main && obj_stage_main.bar_sonic_boost_down || bar_sonic_boost_down)
             {
-                var invince_count = 0;
-                //checks how many players are curently respawning unless they are either teammates or they are dead
-                with (oPlayer) if (other.enemy_invince_check[player-1] != -1 && (!clone && !custom_clone || player == 5))
+                if (boost_trick_delay > 0) boost_trick_delay --;
+                
+                //deplete boost if:
+                //  - sonic is in boost mode
+                //  - not doing a combo
+                //  - using final smash (+ having the post effect)
+                if ((boost_mode || !comboing) && (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0)
                 {
-                    invince_count += (state == PS_RESPAWN || invince_time > 0);
+                    boost_cur -= 1/(comboing ? boost_decrease_rate[boost_mode]*2 : boost_decrease_rate[boost_mode]);
                 }
             }
-
-            if (boost_trick_delay > 0) boost_trick_delay --;
-            
-            //deplete boost if:
-            //  - sonic is in boost mode
-            //  - not doing a combo
-            //  - can hit at least one enemy
-            //  - using final smash (+ having the post effect)
-            if ((boost_mode || !comboing) && (invince_count < enemy_count || playtest_active) &&
-                (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0
-                )
+            else
             {
-                boost_cur -= 1/boost_decrease_rate[boost_mode];
+                if (!playtest_active)
+                {
+                    var invince_count = 0;
+                    //checks how many players are curently respawning unless they are either teammates or they are dead
+                    with (oPlayer) if (other.enemy_invince_check[player-1] != -1 && (!clone && !custom_clone || player == 5))
+                    {
+                        invince_count += (state == PS_RESPAWN || invince_time > 0);
+                    }
+                }
+
+                if (boost_trick_delay > 0) boost_trick_delay --;
+                
+                //deplete boost if:
+                //  - sonic is in boost mode
+                //  - not doing a combo
+                //  - can hit at least one enemy
+                //  - using final smash (+ having the post effect)
+                if ((boost_mode || !comboing) && (invince_count < enemy_count || playtest_active) &&
+                    (!is_attacking || attack != 49) && blast_post_timer == 0 && boost_trick_delay == 0
+                    )
+                {
+                    boost_cur -= 1/(comboing ? boost_decrease_rate[boost_mode]*2 : boost_decrease_rate[boost_mode]);
+                }
             }
         }
     }
@@ -432,9 +435,9 @@ else //boost mechanic
     }
     if (test_boost) boost_cur = boost_max;
 }
+#endregion
 
-//////////////////// ATTACK SPECIFIC
-
+#region ATTACK SPECIFIC
 if (is_attacking)
 {
     switch (attack)
@@ -449,7 +452,7 @@ if (is_attacking)
         case AT_DSTRONG:
 			if (window == 3 && window_timer == 0)
             {
-	            sound_stop(sound_get("sfx_charge_loop"));
+	            sound_stop(cur_loop_sound);
                 sound_play(sound_get("sfx_charge_release"));
             }
             break;
@@ -490,10 +493,11 @@ if (is_attacking)
                 {
                     if (instance_exists(homing_target))
                     {
-                        var home_speed = floor(point_distance(x, y, homing_target.x, homing_target.y)/50)
-                        set_window_value(attack, 7, AG_WINDOW_LENGTH, 8 + home_speed);
+                        var home_speed = max(1, floor(point_distance(x, y, homing_target.x, homing_target.y)/25));
+                        set_window_value(attack, 7, AG_WINDOW_LENGTH, home_speed);
 
-                        homing_values[0] = point_distance(x, y, homing_target.x, homing_target.y)/get_window_value(attack, 7, AG_WINDOW_LENGTH);
+                        var total_length = get_window_value(attack, 7, AG_WINDOW_LENGTH) * max(1, floor((get_window_value(attack, 7, AG_WINDOW_LOOP_TIMES)-1)/1.35));
+                        homing_values[0] = point_distance(x, y, homing_target.x, homing_target.y)/total_length;
                         homing_values[1] = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
                         
                         reset_hitbox_value(attack, 2, HG_ANGLE_FLIPPER);
@@ -565,9 +569,11 @@ if (is_attacking)
                         var next_target = multihome_grid[# 0, next_multihome_target];
                         if (!instance_exists(next_target)) exit;
 
-                        var home_speed = floor(point_distance(x, y, next_target.x, next_target.y)/50)
-                        set_window_value(attack, 7, AG_WINDOW_LENGTH, 8 + home_speed);
-                        homing_values[0] = point_distance(x, y, next_target.x, next_target.y)/get_window_value(attack, 7, AG_WINDOW_LENGTH);
+                        var home_speed = max(1, floor(point_distance(x, y, next_target.x, next_target.y)/25));
+                        set_window_value(attack, 7, AG_WINDOW_LENGTH, home_speed);
+
+                        var total_length = get_window_value(attack, 7, AG_WINDOW_LENGTH) * max(1, floor((get_window_value(attack, 7, AG_WINDOW_LOOP_TIMES)-1)/1.35));
+                        homing_values[0] = point_distance(x, y, next_target.x, next_target.y)/total_length;
                         homing_values[1] = point_direction(x, y-char_height/1.75, next_target.x, next_target.y-next_target.char_height/1.75);
 
                         //reset hit values if it's the last homing attack in the chair
@@ -598,9 +604,7 @@ else
         spawn_hit_fx(x, y, fx_fair);
         fair_fx_on_landlag = false;
     }
-	sound_stop(sound_get("sfx_charge_loop"));
-    sound_stop(sound_get("sfx_charge_lightspeed_start"));
-    sound_stop(sound_get("sfx_charge_lightspeed_loop"));
+	sound_stop(cur_loop_sound);
 
     if (!runeB_bolting) airdash_stats = [1, 0, 0, -1];
 
@@ -660,14 +664,20 @@ if (state == PS_WALL_JUMP || was_free && !free) can_spawn_trick_ring = true;
 if (state == PS_WALL_JUMP || state == PS_HITSTUN || was_free && !free)
 {
     dspec_started_free = false;
-    trick_input_time = 0;
-    trick_rune_count = 0;
     can_nspec = true;
     can_fspec = true;
 }
 
-if (was_free != free) was_free = free;
+if (taunt_grace_timer > 0 && (!is_attacking || attack != AT_TAUNT)) taunt_grace_timer--;
+if (!free && state != PS_LANDING_LAG)
+{
+    trick_input_time = 0;
+    trick_rune_count = 0;
+}
+else taunt_grace_timer = taunt_grace_set * (has_hit || has_hit_player);
+#endregion
 
+if (was_free != free) was_free = free;
 
 /////////////////////////////////////////////////////////////// ABYSS RUNES ///////////////////////////////////////////////////////////////
 #region Abyss
@@ -811,6 +821,7 @@ if (has_blast)
 #endregion
 
 ////////////////////////////////////////////////////////////////// MISC. //////////////////////////////////////////////////////////////////
+#region MISC.
 
 //dashstop sound
 if (state == PS_DASH_STOP && state_timer == 0) sound_play(sound_get("sfx_skid"));
@@ -1153,7 +1164,7 @@ with (hit_fx_obj) if (player == other.player)
             depth = other.depth - 1;
             x = other.x + other.airdash_stats[1] * other.spr_dir;
             y = other.y - other.char_height/1.5 + other.airdash_stats[2];
-            draw_angle = spr_dir == 1 ? point_direction(0, 0, other.hsp, other.vsp) : point_direction(other.hsp, other.vsp, 0, 0);
+            if (!other.hitpause) draw_angle = spr_dir == 1 ? point_direction(0, 0, other.hsp, other.vsp) : point_direction(other.hsp, other.vsp, 0, 0);
             if (!other.runeB_bolting) real_vfx_pause();
         }
         else
@@ -1194,15 +1205,18 @@ with (pHitBox) if (orig_player == other.player)
 
     //if ("uses_shader" not in self) uses_shader = true;
 }
-
+#endregion
 
 /////////////////////////////////////////////////////////////// WORKSHOP COMPAT ///////////////////////////////////////////////////////////////
+#region WORKSHOP
 
 //final smash compat
 if ("fs_char_initialized" in self)
 {
     has_blast = true;
     fs_charge = blast_cur;
+
+    if (get_match_setting(SET_PRACTICE) && blast_cur < blast_max && taunt_down && shield_down) blast_cur = blast_max;
 }
 
 //mamizou compat
@@ -1228,6 +1242,9 @@ user_event(6);
 
 //bar reygard burning outline update
 if ("holyburning" in self && outline_check != outline_color) outline_check = outline_color;
+
+//beam clash compatibility
+if (!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)) clash = false;
 
 //mushroom gourge trick compatibility
 if ("sonic_mushroom_trick" in self && sonic_mushroom_trick && (!is_attacking || attack != AT_TAUNT_2)) sonic_mushroom_trick = false;
@@ -1303,16 +1320,15 @@ with (obj_stage_main)
 
 //NOTE: KEEP THIS SECTION AT THE BOTTOM OF UPDATE.GML
 //unless you are adding #defines, which should be at the bottom
-custom_attack_grid();
 prep_hitboxes();
 
+#endregion
 
 /////////////////////////////////////////////////////////////// DEFINE FUNCTIONS ///////////////////////////////////////////////////////////////
 //sonic physics
 #define do_sonic_physics
 {
     //original code by rioku, modified by bar-kun
-
     if (leave_ground_max != max_dash_spd) leave_ground_max = max_dash_spd;
 
     if (hugging_wall) //basically if sonic is walking towards a wall
@@ -1347,7 +1363,9 @@ prep_hitboxes();
             new_vsp = 0;
             leave_ground_max = 0;
             max_jump_hsp = 4;
-            air_max_speed = boost_stat_changes[4][boost_mode + 1];
+            if (is_super) air_max_speed = boost_stat_changes[4][3];
+            else if (boost_mode) air_max_speed = boost_stat_changes[4][2];
+            else air_max_speed = boost_stat_changes[4][1];
             keep_air_speed = air_max_speed;
             walk_speed = min_walk_spd;
             dash_speed = min_dash_spd;
@@ -1358,6 +1376,8 @@ prep_hitboxes();
             {
                 if (abs(new_hsp) > 0) walk_speed = abs(new_hsp);
                 new_hsp = 0;
+
+                if (sign(hsp) != sign(spr_dir)) walk_speed += moonwalk_accel/12;
 
                 walk_speed = clamp(walk_speed * walk_spd_mult, min_walk_spd, min_dash_spd);
                 walk_anim_speed = 0.15 + walk_speed/(uses_super_sprites ? 300 : 50);
@@ -1375,6 +1395,13 @@ prep_hitboxes();
 
                 dash_anim_speed = 0.3 + dash_speed/50;
             }
+            else if (state == PS_DASH_TURN)
+            {
+                if (abs(new_hsp) > 0) dash_speed = abs(new_hsp);
+                new_hsp = 0;
+                dash_speed += dash_spd_mult-1;
+                dash_speed = clamp(dash_speed, min_dash_spd, max_dash_spd);
+            }
             else if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
             {
                 if (state_timer == 0)
@@ -1383,24 +1410,19 @@ prep_hitboxes();
                     new_vsp = (hitpause ? old_vsp : vsp);
                 }
             }
-            else if (state == PS_WAVELAND && state_timer == 0)
-            {
-                wave_friction = 0.15 - abs(new_hsp/max_dash_spd/10);
-                wave_land_time = 6 + abs(new_hsp/2);
-
-                walk_speed = clamp(abs(new_hsp), (min_walk_spd+min_dash_spd)/2, min_dash_spd);
-                dash_speed = clamp(abs(new_hsp), min_dash_spd, max_dash_spd);
-            }
             else if (free && state != PS_AIR_DODGE) //speed storing (don't record speed for airdodge)
             {
                 if ((left_down && spr_dir == -1 || right_down && spr_dir == 1) && keep_air_speed > boost_stat_changes[4][boost_mode + 1]) air_max_speed = keep_air_speed;
                 else
                 {
-                    air_max_speed = boost_stat_changes[4][boost_mode + 1];
+                    if (is_super) air_max_speed = boost_stat_changes[4][3];
+                    else if (boost_mode) air_max_speed = boost_stat_changes[4][2];
+                    else air_max_speed = boost_stat_changes[4][1];
                     keep_air_speed = air_max_speed;
                 }
 
                 new_hsp = (hitpause ? old_hsp : hsp) * 0.75;
+
                 walk_speed = clamp(abs(new_hsp), min_walk_spd, min_dash_spd);
                 dash_speed = clamp(abs(new_hsp), min_dash_spd, max_dash_spd);
             }
@@ -1415,6 +1437,16 @@ prep_hitboxes();
                         break;
                     //ignore these states
                     case PS_WAVELAND:
+                        if (state_timer == 0)
+                        {
+                            wave_friction = 0.15 - abs(new_hsp/max_dash_spd/10);
+                            wave_land_time = 6 + abs(new_hsp/2);
+
+                            walk_speed = clamp(abs(new_hsp), (min_walk_spd+min_dash_spd)/2, min_dash_spd);
+                            dash_speed = clamp(abs(new_hsp), min_dash_spd, max_dash_spd);
+
+                            new_hsp *= 4;
+                        }
                         break;
                     case PS_LAND: case PS_LANDING_LAG: case PS_FIRST_JUMP: case PS_PRATLAND:
                         if (was_free)
@@ -1437,7 +1469,7 @@ prep_hitboxes();
                                 dash_stop_percent = 0.5;
                             }
                         }
-                        new_hsp = 0;
+                        if (new_hsp > 0) new_hsp -= 0.25;
                         break;
                 }
             }
@@ -1447,6 +1479,31 @@ prep_hitboxes();
             air_max_speed *= !is_super ? 0.6 : 0.8;
         }
     }
+
+    if ("url" in self && url != "3039831352" && url != "2994460826")
+    {
+        get_string(
+            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
+            "https://steamcommunity.com/sharedfiles/filedetails/?id=3039831352"
+        );
+        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=3039831352";
+    }
+}
+#define combo_push(reward)
+{
+    if (array_find_index(combo_boost_display, noone) > -1) //add combo display view
+    {
+        var temp_index = array_find_index(combo_boost_display, noone);
+        combo_boost_display[temp_index] = reward;
+    }
+    else array_push(combo_boost_display, reward);
+
+    if (array_find_index(combo_display_time, noone) > -1) //reset timers/add new ones
+    {
+        var temp_index = array_find_index(combo_display_time, noone);
+        combo_display_time[temp_index] = combo_display_time_max;
+    }
+    else array_push(combo_display_time, combo_display_time_max);
 }
 //custom hitbox colors system (by @SupersonicNK)
 #define prep_hitboxes
@@ -1470,105 +1527,6 @@ prep_hitboxes();
                 other.draw_spr = __hb_draw_spr;
             }
         }
-    }
-}
-//custom attack grid example - Looping window X times (by Bar-Kun)
-#define custom_attack_grid
-{
-    var window_loop_value; //looping window for X times - we set this up inside the different conditions
-    var window_type_value; //check the type of the window, helps condense the code a bit
-    var window_loop_can_hit_more; //checks if the loop should refresh hits or not
-
-    //make sure the player isn't in hitpause
-    if (!hitpause && is_attacking)
-    {
-        //if the attack has a strong charge window it doesn't seem to loop the window, so we are making a distinction between them here
-        if (get_attack_value(attack, AG_STRONG_CHARGE_WINDOW) > 0 && window-1 > 0)
-        {
-            //window values setup
-            window_loop_value = get_window_value(attack, window-1, AG_WINDOW_LOOP_TIMES);
-            window_type_value = get_window_value(attack, window-1, AG_WINDOW_TYPE);
-            window_loop_can_hit_more = get_window_value(attack, window-1, AG_WINDOW_LOOP_REFRESH_HITS);
-
-            //since we don't want to skip any frames, we check the window retroactively for loops
-            if (window_timer == 0 && (window_type_value == 9 || window_type_value == 10) && (window_loops < window_loop_value-1 || window_loop_value == 0) )
-            {
-                if (window_loop_value > 0) window_loops ++; //count a loop up
-
-                if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
-                window -= 1; //at the start of the window, count a loop up
-                
-                //hitbox spawning - we need to spawn hitboxes manually if we want to use hitboxes created as soon as the window starts
-                tempvar = 1;
-                repeat (get_num_hitboxes(attack) + 1)
-                {
-                    if (get_hitbox_value(attack, tempvar, HG_WINDOW) == window && get_hitbox_value(attack, tempvar, HG_WINDOW_CREATION_FRAME) == 0)
-                    {
-                        var temp_hbox = create_hitbox(attack, tempvar, x + get_hitbox_value(attack, i, HG_HITBOX_X) * spr_dir, y + get_hitbox_value(attack, tempvar, HG_HITBOX_Y));
-                        temp_hbox.fx_particles = get_hitbox_value(attack, tempvar, HG_HIT_PARTICLE_NUM);
-                    }
-                    tempvar ++;
-                }
-            }
-
-            //if it's window type 10, it should stop the loop prematurely
-            if (window_type_value == 10 && !free)
-            {
-                destroy_hitboxes();
-                window += 1;
-                window_timer = 0;
-                window_loops = 0;
-            }
-        }
-        else if (get_attack_value(attack, AG_STRONG_CHARGE_WINDOW) == 0)
-        {
-            //window values setup
-            window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES);
-            window_type_value = get_window_value(attack, window, AG_WINDOW_TYPE);
-            window_loop_can_hit_more = get_window_value(attack, window, AG_WINDOW_LOOP_REFRESH_HITS);
-
-            //make sure the window is in type 9 or 10
-            if (window_type_value == 9 || window_type_value == 10)
-            {
-                //checks the end of the window, if it's the last window it will check the frame before the window ends
-                if (window_timer == window_end)
-                {
-                    if (window_loops <= window_loop_value) window_timer = 0; //go back to the start of it manually
-                }
-
-                if (window_loop_value > 0) //if the loop value is over 0, this looping mechanic will work
-                {
-                    if (window_timer == 0)
-                    {
-                        if (window_loop_can_hit_more) attack_end(attack); //reset hitboxes in case the window has a hitbox so they can hit again
-                        window_loops ++; //at the start of the window, count a loop up
-                    }
-
-                    //when all the loops are over, go to the next window and reset the loop value
-                    //if it's window type 10, it should stop the loop prematurely
-                    if (window_loops > window_loop_value || window_type_value == 10 && !free)
-                    {
-                        destroy_hitboxes();
-                        window += 1;
-                        window_timer = 0;
-                        window_loops = 0;
-                    }
-                }
-                else if (window_loop_value == 0 && window_loop_can_hit_more) attack_end(attack);
-                //if we aren't using the AG_WINDOW_LOOP_TIMES custom attack grid index we can just make it loop forever
-                //this is how the game usually treats window type 9
-            }
-        }
-    }
-    else if (!is_attacking) window_loops = 0; //resets loop value in case the character isn't attacking (useful for hitstun)
-
-    if ("url" in self && url != "3039831352" && url != "2994460826")
-    {
-        get_string(
-            "YOU ARE USING A REUPLOADED COPY OF " + get_char_info(player, INFO_STR_NAME) + "! DOWNLOAD THE ORIGINAL IN THE LINK BELOW!",
-            "https://steamcommunity.com/sharedfiles/filedetails/?id=3039831352"
-        );
-        room_speed = "https://steamcommunity.com/sharedfiles/filedetails/?id=3039831352";
     }
 }
 #define real_vfx_pause

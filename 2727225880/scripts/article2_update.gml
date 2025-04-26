@@ -391,13 +391,18 @@ if hit_lockout <= 0 {
             }
     }
     if instance_exists(currentHighestPriority) with currentHighestPriority {
-        sound_play(sound_effect);
         spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
         //this handles the knockback; hitstun, speed, etc.
+        sound_play (asset_get( "sfx_kragg_rock_shatter" ));
+        other.player_id.you_have_a_fucking_chakram_out = false;
         with other {
             //print_debug(`hit_${article}`);
             
+          //  move_cooldown[AT_NSPECIAL] = 120
             
+            instance_destroy();
+            
+
                     //   set_a_state(AS.HITSTUN); //set_a_state is my article state setting function; replace this with yours lol
             
             

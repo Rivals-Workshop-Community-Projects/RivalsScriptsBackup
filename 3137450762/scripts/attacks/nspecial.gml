@@ -197,12 +197,13 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 6);
-set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 0.8); // originally 1.1
+set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 0.7); // originally 1.1
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("chair_invisible"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_MASK, sprite_get("chair_hitbox"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));

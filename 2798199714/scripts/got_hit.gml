@@ -8,6 +8,13 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	}
 }
 
+//extra bonus damage mechanic
+if(bonus_damage){
+	bonus_damage = false;bonus_damage_flash = enemy_hitboxID.damage > 10?120:80;
+	damage_scaling = 1;hitstop *= 2;outline_color = [0, 0, 0];init_shader();
+	sound_play(enemy_hitboxID.damage > 10?sound_get("hit_strong"):sound_get("hit"),false,noone,1.25, 0.8);
+}
+
 if(BossMode && !bossdead && !superop){
 	//death
 	if(get_player_damage(player) >= 300 && temp_level == 1 || get_player_damage(player) >= 600 && temp_level == 2 || get_player_damage(player) >= 900 && temp_level == 3){

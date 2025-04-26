@@ -1,0 +1,47 @@
+atk = 48;
+
+set_attack_value(atk, AG_CATEGORY, 2);
+set_attack_value(atk, AG_SPRITE, sprite_get("transform"));
+set_attack_value(atk, AG_HURTBOX_SPRITE, hurtbox_spr);
+set_attack_value(atk, AG_MUNO_ATTACK_EXCLUDE, true);
+
+window_num = 1; //startup
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
+
+window_num ++; //startup pose hold
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
+
+window_num ++; //transform flash
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_saya_transform"));
+
+window_num ++; //transformation
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
+set_window_value(atk, window_num, AG_WINDOW_LOOP_TIMES, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
+
+
+window_num ++; //transformation end
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(atk, window_num, AG_WINDOW_INVINCIBILITY, 1);
+
+set_attack_value(atk, AG_NUM_WINDOWS, window_num);
+
+
+//////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
+
+set_num_hitboxes(atk, 0);

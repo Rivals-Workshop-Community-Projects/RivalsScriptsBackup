@@ -389,7 +389,7 @@ if (blastjump_should_undeploy) {
 }
 
 // while in the air...
-if (state_cat == SC_AIR_COMMITTED || state_cat == SC_AIR_NEUTRAL) {
+if (state_cat == SC_AIR_COMMITTED || state_cat == SC_AIR_NEUTRAL || state_cat == SC_HITSTUN) {
 	
 	// makes you unable to reload
 	// this is necessary. trust me.
@@ -549,7 +549,7 @@ if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
 // push taunt before the match begins to swap DSPECIAL and DSTRONG
 if (get_gameplay_time() < 127) {
 	if (css_dspec != 1) {
-		if (taunt_pressed) {
+		if (taunt_pressed && (down_pressed||down_down)) {
 			sound_play(asset_get("mfx_star"), false, noone, 1, 1);
 			css_dspec = 1;
 			dspec_swap_task_timer = 1;

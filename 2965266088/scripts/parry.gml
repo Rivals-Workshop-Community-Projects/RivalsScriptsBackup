@@ -8,6 +8,5 @@ if (dark_target == noone && dark_owner == noone)
     dark_target.dark_owner = self;
     dark_state = 0;
 }
-if (dark_hp_redc_time > 0) dark_hp_redc_time = 0;
 
 graze_lockout = graze_lockout_max + floor(hitstop_full);

@@ -12,10 +12,15 @@ switch (attack)
 	case 42:
 		can_fast_fall = true;
 	case 39:
-	case 43:
 	case AT_FSPECIAL_2:
 	case AT_USPECIAL_2:
 		sound_play(sound_get("hit_light"));
+	break;
+	case 43:
+		if (my_hitboxid.hbox_num == 2)
+		{
+			sound_play(asset_get("sfx_heavy_blow_2"), false, noone, 0.8);
+		}
 	break;
 	case AT_DAIR:
 		sound_play(sound_get("spring"));

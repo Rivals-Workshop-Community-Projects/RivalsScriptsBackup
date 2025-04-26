@@ -233,6 +233,9 @@ updateWallJump = 0;
 afterimage_array = 0;
 playtest_active = false;
 with (oTestPlayer) playtest_active = true;
+victory_quote = "Aw yeah, in your face!"
+handled_victory_quote = false;
+was_in_stage = get_stage_data(SD_ID); //checks the ID of the stage you were in, allows you to have win quotes for specific stages
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.
@@ -262,6 +265,16 @@ galaxy_effect_sprite_index = -1;
 
 //Debug Variable
 debugCheck = false;
+
+//Set victory theme based on alt
+if (get_player_color(player) == 5)
+{
+    set_victory_theme(sound_get ( "fp2_victory"));   
+}
+else
+{
+    set_victory_theme( sound_get( "victory" ) );
+}
 
 //Extras
 pkmn_stadium_front_img = sprite_get("pkmn_carol_front");
@@ -319,6 +332,7 @@ amber_hugExitPos[1] = 0;
 amber_useSprDirOffset = true;
 amber_hugExitTimer = 27;
 amber_hugExitWindow = 3;
+tcoart= sprite_get("tcoart");
 
 knight_compat_dream = 
     [
@@ -463,4 +477,24 @@ if has_rune("O")
     dash_turn_accel = 1.5;
 }
 
+teammate_is_lilac = false;
+with (oPlayer) if ("url" in self)
+{
+    switch (url)
+    {
+        case "2697174282"://Lilac
+    	case "1870616155":
+    	case "1897152603":
+		case "2822151579":
+    	case "2972048421":
+    		with (other) if (get_match_setting(SET_TEAMS))
+    		{
+    			if (get_player_team(player) == get_player_team(other.player) && voice == 1)
+    			{
+    	            teammate_is_lilac = true;
+    			}
+    		}
+    	break;
+    }
+}
 user_event(7);

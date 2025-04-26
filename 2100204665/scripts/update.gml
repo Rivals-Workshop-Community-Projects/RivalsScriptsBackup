@@ -107,6 +107,10 @@ if (!hitpause){
     orbd = false;
 }
 
+if (move_cooldown[AT_DSPECIAL] > 0){
+    hud_col = c_gray;
+} else hud_col = c_white;
+
 if (!can_bone && !free){
     if (!instance_exists(bone_spire) || !collision_rectangle(x + 32, y + 8, x - 32, y, bone_spire, false, true)){
         can_bone = true;

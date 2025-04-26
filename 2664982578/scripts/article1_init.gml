@@ -2,6 +2,7 @@
 
 //Sprite and direction
 sprite_index = sprite_get("wonder_trade");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+mask_index = sprite_get("wt_mask")
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
 uses_shader = false;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 

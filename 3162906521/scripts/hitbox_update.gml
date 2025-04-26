@@ -89,8 +89,8 @@ if attack == AT_USTRONG && hbox_num == 3 && player_id.ustrong_dd == false{
 		kb_scale = kb_scale * 0.99;
 	}
 }
-if attack == AT_USTRONG && hbox_num == 3 && player_id.ustrong_dd == true{
-	kb_value = 11;
+if attack == AT_USTRONG && hbox_num == 3 && player_id.ustrong_dd == true{//double donk
+	kb_value = 8.5;
 	kb_scale = 1.1;
 	hitpause = 7;
 	hitpause_growth = 0.5;
@@ -121,6 +121,7 @@ if attack == 49 {
 		}
 	}
 	if hbox_num == 1{
+		scale = 2;
 		if hsp < -1 or hsp > 1{
 			hsp = 7 * spr_dir - (hitbox_timer * spr_dir * 0.1);
 		}
@@ -137,4 +138,6 @@ if attack == 49 {
 			shake_camera( 8, 130 )
 		}
 	}
+	image_xscale = 2;
+	image_yscale = 2;
 }

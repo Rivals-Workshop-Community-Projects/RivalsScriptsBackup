@@ -34,87 +34,81 @@ else if (alt_new != currAlt)
 alt_name = 0;
 if (get_synced_var(player) == 15005)
 {
-	alt_name[0]  = "100% Accurate";
-	alt_name[1]  = "Shiny";
-	alt_name[2]  = "Purple";
-	alt_name[3]  = "Cyan";
-	alt_name[4]  = "Grey";
-	alt_name[5]  = "Teal";
-	alt_name[6]  = "Blue";
-	alt_name[7]  = "Dark Blue";
-	alt_name[8]  = "Green";
-	alt_name[9]  = "Pink";
-	alt_name[10]  = "Orange";
-	alt_name[11]  = "Spectrum";
-	alt_name[12]  = "BadassF42069";
-	alt_name[13]  = "Flake";
-	alt_name[14]  = "Hikaru";
-	alt_name[15]  = "Lorekeeper";
-	alt_name[16]  = "CMY";
-	alt_name[17]  = "RGB";
-	alt_name[18]  = "Snowblind";
-	alt_name[19]  = "Drunken";
-	alt_name[20]  = ".net";
-	alt_name[21]  = "Lemongrass";
-	alt_name[22]  = "Melon";
-	alt_name[23]  = "Transcend";
-	alt_name[24]  = "Pan";
-	alt_name[25]  = "Enby";
-	alt_name[26]  = "Agender";
-	alt_name[27]  = "Candy";
-	alt_name[28]  = "God of Death";
-	alt_name[29]  = "Coffee Cake";
-	alt_name[30]  = "Seeing Stars";
+	alt_name = [
+		"100% Accurate",
+		"Shiny",
+		"Purple",
+		"Cyan",
+		"Grey",
+		"Teal",
+		"Blue",
+		"Dark Blue",
+		"Green",
+		"Pink",
+		"Orange",
+		"Spectrum",
+		"BadassF42069",
+		"Flake",
+		"Hikaru",
+		"Lorekeeper",
+		"CMY",
+		"RGB",
+		"Snowblind",
+		"Drunken",
+		".net",
+		"Lemongrass",
+		"Melon",
+		"Transcend",
+		"Pan",
+		"Enby",
+		"Agender",
+		"Candy",
+		"God of Death",
+		"Coffee Cake",
+		"Seeing Stars"
+	];
 }
 else
 {
-	alt_name[0]  = "The Aura Guardian";
-	alt_name[1]  = "Blue";
-	alt_name[2]  = "Red";
-	alt_name[3]  = "Green";
-	alt_name[4]  = "Gray";
-	alt_name[5]  = "Purple";
-	alt_name[6]  = "Brawl";
-	alt_name[7]  = "Shiny";
-	alt_name[8]  = "Transcend";
-	alt_name[9]  = "Abyss";
-	alt_name[10]  = "Early Access";
-	alt_name[11]  = "Spectrum";
-	alt_name[12]  = "BadassF42069";
-	alt_name[13]  = "Snowblind Sage";
-	alt_name[14]  = "Kitsune";
-	alt_name[15]  = "Lorekeeper";
-	alt_name[16]  = "Flickering Spectre";
-	alt_name[17]  = "Star Fox";
-	alt_name[18]  = "Snowblind";
-	alt_name[19]  = "Drunken";
-	alt_name[20]  = ".net";
-	alt_name[21]  = "Lemongrass";
-	alt_name[22]  = "Amethyst Fist";
-	alt_name[23]  = "Logical Jetstream";
-	alt_name[24]  = "The Lightning Gladiator";
-	alt_name[25]  = "Photon Edge";
-	alt_name[26]  = "Nova Visionary";
-	alt_name[27]  = "Paint";
-	alt_name[28]  = "God of Death";
-	alt_name[29]  = "Mewmew";
-	alt_name[30]  = GetCustomAltName();
+	alt_name = [
+		"The Aura Guardian",
+		"Blue",
+		"Red",
+		"Green",
+		"Gray",
+		"Purple",
+		"Brawl",
+		"Shiny",
+		"Transcend",
+		"Abyss",
+		"Early Access",
+		"Spectrum",
+		"BadassF42069",
+		"Snowblind Sage",
+		"Kitsune",
+		"Lorekeeper",
+		"Flickering Spectre",
+		"Star Fox",
+		"Snowblind",
+		"Drunken",
+		".net",
+		"Lemongrass",
+		"Amethyst Fist",
+		"Logical Jetstream",
+		"The Lightning Gladiator",
+		"Photon Edge",
+		"Nova Visionary",
+		"Paint",
+		"God of Death",
+		"Mewmew",
+		GetCustomAltName()
+	];
 }
 
 var num_alts = array_length_1d(alt_name);
 
 if (get_synced_var(player) != 15005 && max((eyeShine/6)-6, 0) < 9) draw_sprite_ext(sprite_get("eyeshine"),max((eyeShine/6)-6, 0),temp_x,temp_y-1,2,2,0,c_white,1);
 shader_end();
-
-//draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
-
-//draw_set_halign(fa_right);
-//var verX = 184;
-//var verY = 76;
-//textDraw(temp_x + verX,   temp_y + verY,   "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-//textDraw(temp_x + verX+2, temp_y + verY+2, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-
-//draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
 if ("syncUID" in id && syncUID == 15005 && instance_exists(cursor_id) && player != 0)
 {

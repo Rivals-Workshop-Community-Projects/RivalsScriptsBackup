@@ -260,15 +260,59 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.27", "13th July, 2024");
+initPatch("1.31", "8th April, 2025");
+initHeader("Buffs");
+initSection("+ UStrong finisher kills a little bit better (0.95->1.05 kbs)
++ If an Eggpawn is spawned with no ground below, it'll become an Egg flapper (mostly just fixes so they don't die immediately if spawned at ledges)");
+initHeader("Nerfs");
+initSection("- Slap hitbox made slightly smaller (he was simply too powerful)
+- Idle + crouch hurtboxes while in mech are slightly larger, which should match a bit better
+- Increased hurtbox a bit on some moves (FTilt, FAir) to somewhat reduce the amount of disjoint
+- BAir front hit is a bit less powerful (1.0->0.9 kbs)
+- Egg flapper health reduced slightly (9->7). Normal eggpawn is unchanged (& this is mostly just to make aerial slightly less superior)
+- Added 1.25x bonus damage windows after some attacks (FStrong, UStrong, DStrong, DAttack)");
+initHeader("Fixes / Other Changes");
+initSection("+ Idle hurtbox while in mech now moves and should match the floating of the mech better
++ Added more runes
++ Added more Miiverse posts
++ Improved the CPU further by giving it much more custom behavior
++ Some more optimization");
+
+initPatch("1.30", "11th November, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Some file size optimizations
++ Added 2 more Miiverse posts");
+
+initPatch("1.29", "28th October, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Added white flashing for the NSpecial meter when at full charge
++ Made the Alfred 'Shoot Amy' line with FSpecial a bit less common when using it on Amy
++ Added 1 more Miiverse post");
+
+initPatch("1.28", "27th October, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Cleaned up some unnecessary code from last patch");
+
+initPatch("1.27", "27th October, 2024");
+initHeader("Nerfs");
+initSection("- DSpecial cooldown now waits a bit longer to count down if an Eggpawn is already out, making multiple at once a bit harder to get
+- BAir multihit hitboxes are smaller and now grow on hit instead, while tap version just has a smaller sourspot
+- FStrong has a bit more endlag (15->20)
+- Added some extra whifflag to DStrong (21 vs the usual 16). On hit, endlag is same as before
+- FAir has a bit less vertical range with the upper sourspot removed, and the latest hitbox removed
+- UAir finisher has a bit less base knockback (7->6) and the hitboxes are overall a bit smaller (instead, they grow to the older size on hit)");
+initHeader("Fixes / Other Changes");
+initSection("+ Made the AI much better, giving it custom code for detecting incoming attacks and projectiles. This allow it to dodge/parry much more effectively in many cases
++ Added elemental stuff to hitboxes for KoB interactions (mostly just BAir)
++ Fixed a missing part of the shaky hitpause effect
++ Special voice lines vs Frog characters should now work against a few more characters (ex: Ranno, Keroro, Flipnote Frog, etc)");
+
+initPatch("1.26", "13th July, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Added a new CSS (1/10 chance normally, 1/2 chance with Alfred voice on). Credit to DonGT for making it!
 + Added shaky hitpause effect
-+ Added 5 more Miiverse posts (now 24 total)");
-
-initPatch("1.26", "7th January, 2024");
-initHeader("Fixes / Other Changes");
-initSection("+ Small fix to bury status effect to not clash with unique bury sprites (ex: Christmas Morshu)
++ Added 5 more Miiverse posts (now 24 total)
++ Small fix to bury status effect to not clash with unique bury sprites (ex: Christmas Morshu)
 + Misc code improvements");
 
 initPatch("1.25", "23rd December, 2023");
@@ -459,7 +503,7 @@ zero".
 
 #define CORE_cheats
 
-
+CHEAT_Air_Strongs = initCheat("Air Strongs", [0, 1], ["Off", "On"], "Enable aerial strong attacks!");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

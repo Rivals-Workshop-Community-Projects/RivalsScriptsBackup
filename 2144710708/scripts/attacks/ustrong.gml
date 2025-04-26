@@ -45,14 +45,14 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 0);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -65);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 104);
-set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 120);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -61);
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 106);
+set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 114);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.9); // should probably bump up to 1 at some point, seems kinda weak
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.95);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);

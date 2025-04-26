@@ -25,20 +25,20 @@ var alt_cur = get_player_color(player);
  
 alt_name[0]  = "Mario";
 alt_name[1]  = "Blue";
-alt_name[2]  = "Pink";
+alt_name[2]  = "Classic";
 alt_name[3]  = "Green";
 alt_name[4]  = "Flying";
 alt_name[5]  = "Waluigi";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "Gameboy";
-alt_name[8]  = "Foreman Spike";
-alt_name[9]  = "Wario";
-alt_name[10] = "Fire";
-alt_name[11] = "Shadow Mario";
-alt_name[12] = "Luigi";
-alt_name[13] = "Bluey";
-alt_name[14] = "Classic";
-alt_name[15] = "SMB3";
+alt_name[7]  = "Early Access";
+alt_name[8]  = "Wario";
+alt_name[9]  = "Fire";
+alt_name[10] = "Foreman Spike";
+alt_name[11] = "Pink";
+alt_name[12] = "Shadow Mario";
+alt_name[13] = "Luigi";
+alt_name[14] = "Bluey";
+alt_name[15] = "Princess Peach";
 alt_name[16] = "Infamous";
 alt_name[17] = "Pure Gold";
 alt_name[18] = "Ranked Gold";
@@ -46,11 +46,15 @@ alt_name[19] = "Champion";
 alt_name[20] = "Turquoise";
 alt_name[21] = "Light Blue";
 alt_name[22] = "Boomerang";
-alt_name[23] = "Pelee Pablo";
+alt_name[23] = "SMBZ";
 alt_name[24] = "Teal";
-alt_name[25] = "Princess Peach";
+alt_name[25] = "Pelee Pablo";
 alt_name[26] = "Evil Mario";
-alt_name[27] = "Retro";
+alt_name[27] = "Seasonal";
+alt_name[28] = "Retro";
+alt_name[29] = "SMB3";
+alt_name[30] = "World";
+alt_name[31] = "Unmapped";
  
 //Alt
  
@@ -70,29 +74,43 @@ if (get_player_color(player) == 7){
 	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 }
 
-//ricE's colorgrid css_draw stuffs.
-if (alt_cur < 16){
-	//draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
-	//draw_sprite(sprite_get("colorgrid_pagenum1"),alt_cur,x + 202, y - 28);
-} else {
-	//draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
-	//draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
-}
-//Special Icons n shit
-if (get_player_color(player) == 6){
-	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
-} else if (get_player_color(player) == 7){
-	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
-} else if (get_player_color(player) == 18){
-	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
-} else if (get_player_color(player) == 11 || get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
-	if (get_player_color(player) == 17){
-		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
-	}
-	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
+var icon_draw_x = x + 174;
+var icon_draw_y = y + 108;
+// Special Icons
+switch (get_player_color(player)){
+	case 6:
+		// Abyss
+		draw_sprite(sprite_get("_css_icons"),0,icon_draw_x,icon_draw_y);
+	break;
+	case 7:
+		// Early Access
+		draw_sprite(sprite_get("_css_icons"),1,icon_draw_x,icon_draw_y);
+	break;
+	case 12:
+	case 16:
+	case 17:
+	case 19:
+		// Star
+		draw_sprite(sprite_get("_css_icons"),2,icon_draw_x,icon_draw_y);
+	break;
+	case 18:
+		// Ranked Gold
+		draw_sprite(sprite_get("_css_icons"),3,icon_draw_x,icon_draw_y);
+	break;
+	case 27:
+		// Seasonal
+		draw_sprite(sprite_get("_css_icons"),4,icon_draw_x,icon_draw_y);
+	break;
+	break;
 }
 
+// Outlines
+if (get_player_color(player) == 7){
+	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+}
+if (get_player_color(player) == 17){
+	draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+}
 
 // CSS button
 draw_sprite_ext(sprite_get("css_voicedMode_button"), 0 + buttonShouldHighlight + (css_voicedMode_enabled * 3) + buttonPressed, temp_x + 174 - 4, temp_y + 26, 1, 1, 0, c_white, 1);

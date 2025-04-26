@@ -5,6 +5,11 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
    upb = false;uairboost = 1;
 }
 
+//to fix a roment
+if("dJumping" not in self)dJumping = 0;
+dJumping = (free && jump_pressed && djumps < max_djumps);
+if(phone_attacking && attack == AT_USPECIAL && window == 1 && window_timer == 0 && jump_pressed && free && dJumping)djumps++;
+
 if(nspecialcharge < 60 && fspecialcharge < 60){
     if (get_player_color( player ) == 7){
         if (outline_color[0] != 31 || outline_color[1] != 31 || outline_color[2] != 111){

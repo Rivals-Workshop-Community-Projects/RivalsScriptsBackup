@@ -4,7 +4,6 @@ spr_dir = player_id.spr_dir;
 uses_shader = true;
 image_xscale = 2;
 image_yscale = 2;
-//depth = player_id.depth+1;
 
 state = 0;
 newState = 0;

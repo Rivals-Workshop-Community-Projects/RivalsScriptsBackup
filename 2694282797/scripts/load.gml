@@ -27,10 +27,18 @@ sprite_change_offset("dattack", 136, 134);
 sprite_change_offset("ftilt", 136, 134);
 sprite_change_offset("dtilt", 136, 134);
 sprite_change_offset("utilt", 136, 134);
+sprite_change_offset("utilt_dissipation", 136, 134);
 sprite_change_offset("nair", 136, 134);
+sprite_change_offset("nair_dissipation1", 136, 134);
+sprite_change_offset("nair_dissipation2", 136, 134);
 sprite_change_offset("fair", 136, 134);
+sprite_change_offset("fair_dissipation", 136, 134);
 sprite_change_offset("bair", 136, 134);
+sprite_change_offset("bair_dissipation1", 136, 134);
+sprite_change_offset("bair_dissipation2", 136, 134);
+sprite_change_offset("bair_dissipation3", 136, 134);
 sprite_change_offset("uair", 136, 134);
+sprite_change_offset("uair_dissipation", 136, 134);
 sprite_change_offset("dair", 136, 134);
 sprite_change_offset("fstrong", 136, 134);
 sprite_change_offset("ustrong", 136, 164);
@@ -39,7 +47,10 @@ sprite_change_offset("nspecial", 136, 134);
 sprite_change_offset("nspecial_2", 136, 134);
 sprite_change_offset("fspecial", 136, 134);
 sprite_change_offset("uspecial", 136, 134);
+sprite_change_offset("uspecial_dissipation1", 136, 134);
+sprite_change_offset("uspecial_dissipation2", 136, 134);
 sprite_change_offset("dspecial", 136, 134);
+sprite_change_offset("dspecial_dissipation", 136, 134);
 sprite_change_offset("taunt", 126, 134);
 
 sprite_change_offset("plat", 136, 134);
@@ -58,11 +69,15 @@ sprite_change_offset("uphurt", 136, 134);
 sprite_change_offset("downhurt", 136, 134);
 
 //vfx
-sprite_change_offset("hfx_smaller", 280, 280);
-sprite_change_offset("hfx_small", 280, 280);
-sprite_change_offset("hfx_medium", 280, 280);
-sprite_change_offset("hfx_big", 280, 280);
-
+sprite_change_offset("fx_small_centershine"     , 174, 168);
+sprite_change_offset("fx_small_flashlight"      , 174, 168);
+sprite_change_offset("fx_small_flare1"          , 174, 168);
+sprite_change_offset("fx_small_flare2"          , 174, 168);
+sprite_change_offset("fx_medium_flare1"         , 174, 168);
+sprite_change_offset("fx_medium_flare2"         , 174, 168);
+sprite_change_offset("fx_small_circle"          , 174, 168);
+sprite_change_offset("fx_medium_circle"         , 174, 168);
+sprite_change_offset("fx_large_circle"          , 174, 168);
 
 //misc
 set_victory_theme(sound_get("sfx_padoru"));

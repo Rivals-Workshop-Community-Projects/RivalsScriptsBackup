@@ -5,6 +5,17 @@
 
 //draw_debug_text(x,y,string(usp_cd_state));
 
+if (doomdesire_storage!=-4){
+	if (doomdesire_storage.idle_cycle>0){
+		if (get_match_setting( SET_HITBOX_VIS )){
+		draw_set_alpha(0.5);
+		//print("yea?")
+		draw_circle_colour(doomdesire_storage.x, doomdesire_storage.y-doomdesire_storage.eye_y_offset, doomdesire_storage.eye_y_radius, c_teal, c_teal, false);
+		}
+		draw_set_alpha(1);
+	}
+}
+
 	//if (state==PS_ATTACK_AIR&&attack==AT_USPECIAL){draw_debug_text(x-30,y+10,"temporary anim")};
 if (natdev == true){
 	

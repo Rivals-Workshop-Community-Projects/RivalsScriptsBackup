@@ -72,16 +72,3 @@ if (turntable_exist)
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

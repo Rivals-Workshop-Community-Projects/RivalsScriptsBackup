@@ -84,7 +84,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HIT_PARTICLE_NUM, particle_num);
 //late hit is a windbox? idk i didnt design the character
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_WINDOW, 4);
-set_hitbox_value(AT_FSTRONG, 3, HG_LIFETIME, 6);
+set_hitbox_value(AT_FSTRONG, 3, HG_LIFETIME, 6); //CHANGE THIS BACK TO 6!!!
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X, 61);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_FSTRONG, 3, HG_WIDTH, 92);

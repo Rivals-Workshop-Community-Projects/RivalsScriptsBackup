@@ -20,6 +20,8 @@ switch (state){
     	hurtboxID.sprite_index = sprite_get("mecha_dashstart");
     break;
     case PS_DASH:
+    if (spr_dir == 1 && hsp < 0){ sprite_index = sprite_get("mecha_crouch"); }
+	if (spr_dir == -1 && hsp > 0){ sprite_index = sprite_get("mecha_crouch"); }
     	hurtboxID.sprite_index = sprite_get("mecha_dash");
     break;
     case PS_DASH_STOP:
@@ -30,9 +32,19 @@ switch (state){
     	hurtboxID.sprite_index = sprite_get("mecha_jump");
     break;
     case PS_PRATLAND:
-    	sprite_index = sprite_get("landinglag2");
+    	sprite_index = sprite_get("landinglag");
     	//image_index = floor(image_number*state_timer/(image_number*5));
     break;
+    case PS_TECH_BACKWARD:
+    	sprite_index = sprite_get("roll_backward");
+    break;
+    case PS_TECH_FORWARD:
+    	sprite_index = sprite_get("roll_forward");
+    break;
+    case PS_ROLL_FORWARD:
+    case PS_ROLL_BACKWARD:
+	    sprite_index = sprite_get("idle");
+	break;
     case PS_ATTACK_AIR: //Just air
     if (attack == AT_NSPECIAL && window == 10 ||
     attack == AT_USPECIAL && window == 7 ||
@@ -80,6 +92,20 @@ switch (state){
     break;
 }
 
+//Intro stuff
+if (state == PS_SPAWN){
+    if (introTimer <= 21 && introTimer >= 0) {
+        sprite_index = asset_get("empty_sprite");
+		//image_index = introTimer;
+    }
+    else if (introTimer < 0) {
+        sprite_index = asset_get("empty_sprite");
+        //image_index = introTimer;
+    } else {
+        sprite_index = sprite_get("idle");
+    }
+}
+
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if (attack == AT_DATTACK && window == 8){
 		sprite_index = sprite_get( "doublejump" );
@@ -122,9 +148,15 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	}
 	
 	if (attack == AT_EXTRA_1){
-	if (window == 1){ hurtboxID.sprite_index = asset_get("empty_sprite"); }
-	if (window == 2){ hurtboxID.sprite_index = sprite_get("mecha_hurt"); }
+	if (window == 1){ sprite_index = asset_get("empty_sprite"); }
+	//hurtboxID.sprite_index = sprite_get("mecha_hurt");
+	//if (window == 1){ hurtboxID.sprite_index = asset_get("empty_sprite"); }
+	//if (window == 2){ hurtboxID.sprite_index = sprite_get("mecha_hurt"); }
 	}
+}
+
+if (move_cooldown[AT_EXTRA_1] > 5 && move_cooldown[AT_EXTRA_1] < 200){
+	//hurtboxID.sprite_index = sprite_get("mecha_hurt");
 }
 
 
@@ -147,6 +179,30 @@ if (state == PS_RESPAWN){
 	if (state_timer > 121){
 	sprite_index = sprite_get( "taunt" );
 	image_index = 9;
+	}
+}
+
+if (prev_state == PS_ATTACK_AIR && state == PS_LANDING_LAG && was_parried == false && prev_attack == 0){
+	sprite_index = sprite_get( "land2" );
+	//image_index = floor(image_number*state_timer/(image_number*9));
+	image_index = state_timer / 2;
+}
+if (state == PS_LANDING_LAG && was_parried == false){
+	if (prev_attack == 1){
+	sprite_index = sprite_get( "uair_land" );
+	image_index = state_timer / 1.5;
+	}
+	if (prev_attack == 2){
+	sprite_index = sprite_get( "fair_land" );
+	image_index = state_timer / 1.6;
+	}
+	if (prev_attack == 3){
+	sprite_index = sprite_get( "dair_land" );
+	image_index = state_timer / 1.6;
+	}
+	if (prev_attack == 4){
+	sprite_index = sprite_get( "bair_land" );
+	image_index = state_timer / 1.2;
 	}
 }
 

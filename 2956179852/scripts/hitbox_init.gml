@@ -7,6 +7,9 @@ CalCanSnack = false;
 UnReflectable = false;
 Pocketable = false;
 SpikeCanEat = false;
+if("KoB_grabbed" not in self)KoB_grabbed = false;
+KoB_was_grabbed = false;
+KoB_destroy = false;
 Frozen = false;
 
 alt = player_id.alt;
@@ -46,6 +49,7 @@ if(attack == AT_DSPECIAL){
 	Pocketable = false;Toadie_Ability = 5;
 }
 if(attack == AT_UAIR){
+	if(hbox_num == 1)Freezable = false;
 	if(hbox_num <= 3){
 		MattCanGrab = true;
 		MorshuCanGrab = true;
@@ -79,7 +83,8 @@ if(attack == AT_UAIR){
 		UnReflectable = true;AriaCantAbsorb = true;
 	}
 	if(hbox_num == 3){
-		rupee_sfx = sound_get("ww_rupee");
+		rupee_sfx = noone;
+		with(player_id)other.rupee_sfx = sound_get("ww_rupee");
 		Freezable = false;
 		UnReflectable = true;		
 	}

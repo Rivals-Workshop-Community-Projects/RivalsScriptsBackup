@@ -38,13 +38,13 @@ for(i = 1; i <= 5; i++){
     set_hitbox_value(AT_FTILT, i, HG_ANGLE, 361);
     set_hitbox_value(AT_FTILT, i, HG_BASE_KNOCKBACK, 3);
     set_hitbox_value(AT_FTILT, i, HG_BASE_HITPAUSE, 5);
-    set_hitbox_value(AT_FTILT, i, HG_HITPAUSE_SCALING, 0.6);
+    set_hitbox_value(AT_FTILT, i, HG_HITPAUSE_SCALING, 0);
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT, HFX_MAY_LEAF_SMALL);
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT_Y_OFFSET, 18);
     set_hitbox_value(AT_FTILT, i, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
     
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_HSPEED, 17);
-    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_SPRITE, sprite_get("bullet_seed"));
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_MASK, -1);

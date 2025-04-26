@@ -42,7 +42,7 @@ set_window_value(AT_JAB_G, 6, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB_G, 6, AG_WINDOW_CANCEL_FRAME, 6);
 
 //jabg3 start
-set_window_value(AT_JAB_G, 7, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_JAB_G, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB_G, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB_G, 7, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_JAB_G, 7, AG_WINDOW_HAS_SFX, 1);

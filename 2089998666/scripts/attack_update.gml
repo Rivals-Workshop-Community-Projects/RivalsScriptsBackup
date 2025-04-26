@@ -21,10 +21,18 @@ if (attack == AT_EXTRA_1) {
 	
 	if vsp > -5 {
 		if vsp > 3 {
-			vsp -= .7;
+			if cookieAid {
+			vsp -= .95;	
+			} else {
+			vsp -= .8;
+			}
 		} 
 		else {
-			vsp -= .35;
+			if cookieAid {
+			vsp -= .35;	
+			} else {
+			vsp -= .3;
+			}
 		}
 	}
 	
@@ -195,21 +203,6 @@ if (attack == AT_EXTRA_3) {
 		window_timer = 0;
 		}
 	}
-}
-
-//Cookie things
-if cookieTimer > 0 {
-	set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .15);
-	set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, .35);
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 7);
-	set_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .15);
-	set_window_value(AT_DTILT, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .25);
-}	else {
-	reset_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION);
-	reset_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION);
-	reset_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED);
-	reset_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION);
-	reset_window_value(AT_DTILT, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION);
 }
 
 //Dust stuff
@@ -517,12 +510,6 @@ if (attack == AT_DSPECIAL) {
 			can_shield = true;
 		}
 	}
-
-	if window == 1 && window_timer == 3 && cookieMeter == 0 {
-			sound_play(sound_get("smrpg_wrong"));
-			window = 5;
-			window_timer = 0;
-		}
 }
 
 if has_rune("A") {

@@ -1,6 +1,6 @@
 alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable
-
 alt_cur = get_player_color(player);
+
 if(alt_prev != alt_cur){
 	drawtime = 0;
 	alt_prev = alt_cur;

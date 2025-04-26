@@ -103,3 +103,4 @@ set_hitbox_value(AT_NAIR, 2+loops, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 2+loops, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NAIR, 2+loops, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NAIR, 2+loops, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_NAIR, 2+loops, HG_HITBOX_COLOR, $FFFF00);

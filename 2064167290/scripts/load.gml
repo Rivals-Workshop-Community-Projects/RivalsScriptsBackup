@@ -4,7 +4,7 @@ sprite_change_offset("dash_hurtbox", 42, 92);
 sprite_change_offset("hurt_hurt", 30, 46);
 
 
-sprite_change_offset("idle", 32, 86); 
+sprite_change_offset("idle", 32, 86);
 sprite_change_offset("crouch", 24, 82);
 sprite_change_offset("walk", 35, 76);
 sprite_change_offset("walkturn", 28, 80);
@@ -367,6 +367,3 @@ sprite_change_offset("hold",0,14);
 
 
 sprite_change_offset("kirby",66,82);
-
-
-

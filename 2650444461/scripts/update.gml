@@ -208,6 +208,8 @@ if(get_gameplay_time() <= 120){
 	}
 }
 
+if("element_cooldown" not in self)element_cooldown = 0;
+if(element_cooldown > 0)element_cooldown--;
 
 //silly angle 0 code (part 2)
 if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}

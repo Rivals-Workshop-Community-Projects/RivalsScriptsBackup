@@ -15,34 +15,7 @@ if state == PS_PARRY{
         rand_parry_sprite = random_func( 0, 9, true);
         parry_spam_cancel = true;
     }
-    
-	if rand_parry_sprite == 0{
-		image_index = 0;
-	}
-	else if rand_parry_sprite == 1{
-		image_index = 1;
-	}
-	else if rand_parry_sprite == 2{
-		image_index = 2;
-	}
-	else if rand_parry_sprite == 3{
-		image_index = 3;
-	}
-	else if rand_parry_sprite == 4{
-		image_index = 4;
-	}
-	else if rand_parry_sprite == 5{
-		image_index = 5;
-	}
-	else if rand_parry_sprite == 6{
-		image_index = 6;
-	}
-	else if rand_parry_sprite == 7{
-		image_index = 7;
-	}
-	else if rand_parry_sprite == 8{
-		image_index = 8;
-	}
+    image_index = rand_parry_sprite;
 } else{
     parry_spam_cancel = false;
 }
@@ -67,19 +40,35 @@ if attack == AT_DSPECIAL_AIR or state == PS_LANDING_LAG{
 if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL{
 	// if window == 1{
 		if metal_count >= 50{
-			if free != true{
-				sprite_index = sprite_get("fspecial2");
+			switch(free){
+				case 0:
+					sprite_index = sprite_get("fspecial2");
+				break;
+				default:
+					sprite_index = sprite_get("fspecial2air");
+				break;
 			}
-			if free == true{
-				sprite_index = sprite_get("fspecial2air");
-			}
+			// if free != true{
+			// 	sprite_index = sprite_get("fspecial2");
+			// }
+			// if free == true{
+			// 	sprite_index = sprite_get("fspecial2air");
+			// }
 		} else{
-			if free != true{
-				sprite_index = sprite_get("fspecial");
-			} 
-			if free == true{
-				sprite_index = sprite_get("fspecialair");
+			switch(free){
+				case 0:
+					sprite_index = sprite_get("fspecial");
+				break;
+				default:
+					sprite_index = sprite_get("fspecialair");
+				break;
 			}
+			// if free != true{
+			// 	sprite_index = sprite_get("fspecial");
+			// } 
+			// if free == true{
+			// 	sprite_index = sprite_get("fspecialair");
+			// }
 		}
 	// }
 }

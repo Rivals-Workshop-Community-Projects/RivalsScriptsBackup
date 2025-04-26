@@ -1,7 +1,5 @@
 //attack_update
 
-move_cooldown[AT_NSPECIAL] = 30;
-
 //B - Reversals
 switch(attack){
 	case AT_NSPECIAL:
@@ -94,6 +92,7 @@ switch(attack)
 switch(attack)
 {
     case AT_NSPECIAL:
+    move_cooldown[AT_NSPECIAL] = 30;
     if (window == 1 && window_timer == 1 && shade_stock == 1) {
     	shade_stock = 0
     	window = 4;

@@ -46,9 +46,9 @@ With Fspecial, Egg can grab the Orb like an opponent, and slam it down. If this 
 If Egg already has grabbed an opponent with Fspecial or Ustrong, it can bounce off of the 
 	Adrenaline orb, which creates a Basketball hoop in front of it. Egg can use the 
 	hoop to slam dunk the opponent it has. Hitting this attack increases the hatch rate 
-	by 400, activate Dspecial's Shiny Charm boost.
+	by 400, and activate Dspecial's Shiny Charm boost.
 If hit by Uspecial, the Adrenaline Orb will switch places with Egg and create an explosion. 
-	If this hits and opponent, it will increase Egg's hatch rate by 200.
+	If this hits an opponent, it will increase Egg's hatch rate by 200.
 Uspecial can also initially grab the orb during it's startup, causing it to move with 
 	Uspecial's Mark. If you hit the opponent, it will detonate after switching places and 
 	increase Egg's hatch rate by 200."

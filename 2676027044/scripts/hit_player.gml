@@ -127,9 +127,10 @@ switch(my_hitboxID.attack){
 				
 				// Play Sound
 				sound_play( sound_get("getboosted"));
+				sound_play( asset_get("mfx_hp_spawn"));
 				// Play Heal VFX
-				set_player_damage(player, clamp(get_player_damage(player) - 12, 0, 999) )
-
+				set_player_damage(player, clamp(get_player_damage(player) - 11, 0, 999) )
+				
 				with(hit_player_obj){
 					take_damage(player, other, 6);
 				}
@@ -155,18 +156,22 @@ switch(my_hitboxID.attack){
 	
 	case AT_FSPECIAL:
 		if (my_hitboxID.orig_player == player){
-			if (hit_player_obj.has_hit_player && hit_player_obj.hit_player_obj == self){
-				hit_player_obj.hitpause = false;
-				hit_player_obj.hitstop = 0;
+//			print("hit player")
+			if (self.state == PS_HITSTUN_LAND || self.state == PS_HITSTUN){
+//				print("exiting attack")				
+				with(hit_player_obj){
+					hitstun = false;
+					hitstop = 0;
+				}
 				exit;
 			}
 		
 			hit_player_obj.can_wall_tech = false;
 			if (my_hitboxID.hbox_num == 1 && my_hitboxID.orig_player == player){
+//				print("successful hit")
 				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 				
 				if (!hit_player_obj.super_armor){
-						
 					attack_end();
 					window = 1;
 					window_timer = 1;

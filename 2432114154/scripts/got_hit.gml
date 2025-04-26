@@ -10,7 +10,23 @@ sound_play(sound_get("RI"))
 move_cooldown[AT_EXTRA_1] = 60
 
 
-	        
+if inkshield {
+    
+   if enemy_hitboxID.damage < 5 {    
+   sound_play(sound_get("RI2"),false,noone,1,.8)	
+   } else {
+   sound_play(sound_get("RI"),false,noone,1,.8)	   
+   }
+
+take_damage(player,-1,enemy_hitboxID.damage*-1)
+
+
+spawn_hit_fx (x, y - 40, 304)
+
+
+	inkshield = -1
+
+}    
 
 spawn_hit_fx (x, y - 40, 304)
 take_damage( player, -1 , floor(-0.5 * enemy_hitboxID.damage))

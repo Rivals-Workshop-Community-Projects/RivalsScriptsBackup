@@ -43,7 +43,12 @@ if(state_timer == 5 && state == PS_DOUBLE_JUMP){
 
 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if(op || superop || BossMode){soft_armor = 99999;}
+}else{
+	//reset bonus dmg stuff
+	if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
 }
+if(bonus_damage){outline_color = [80, 0, 0];init_shader();}
+if(bonus_damage_flash > 0)bonus_damage_flash -= hitpause?4:8;
 
 with (asset_get("pHitBox")){
 	if (player_id == other && type == 2 && attack == AT_DSPECIAL){
@@ -56,22 +61,10 @@ with (asset_get("pHitBox")){
 
 if(state == PS_PARRY){
 	if(state_timer == 1 && !hitpause){
-		//shieldfx = spawn_hit_fx(x,y-round(char_height/2),fx_parry_shield);shieldfx.depth = depth-1;
-		//shieldfx2 = spawn_hit_fx(x,y-round(char_height/2),fx_parry_shield2);
-		//sound_play(asset_get("sfx_absa_cloud_crackle"));
 		sound_play(sound_get("shield"));
 		dusteff = spawn_hit_fx(x-50*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 	    dusteff2 = spawn_hit_fx(x+50*spr_dir,y,fx_dust_sharp);dusteff2.depth = depth-1;
 	}
-	/*if(state_timer % 2 == 0 && state_timer < 20){
-		spawn_hit_fx(x-(70*spr_dir)+random_func(1, 140, true)*spr_dir,y+20-random_func(2, 120, true),fx_chargelightning4);
-		spawn_hit_fx(x-(70*spr_dir)+random_func(3, 140, true)*spr_dir,y+20-random_func(4, 120, true),fx_chargelightning4_fast);
-	}
-	if(instance_exists(shieldfx)){
-		shieldfx.x = x;shieldfx.y = y-round(char_height/2);
-	}if(instance_exists(shieldfx2)){
-		shieldfx2.x = x;shieldfx2.y = y-round(char_height/2);
-	}*/
 }else if(state == PS_HITSTUN){
 	if((hsp > 8 || hsp < -8 || vsp > 8 || vsp < -8) && get_gameplay_time() % 5 == 0 || get_gameplay_time() % 10 == 0){
     	spawn_hit_fx(x-40+(random_func(0, 80, true)),y-20,fx_feathers);
@@ -125,25 +118,22 @@ if(runeK){
 }
 
 if(get_gameplay_time() <= 120 || !loaded){
-	if(!attack_down){
+	if(attack_down && ("temp_level" not in self || "temp_level" in self && temp_level <= 0)){
 		with(asset_get("oPlayer")){
 			if ("url" in self){
 			if (url != ""){ //detects op characters. credit to sai for some of the logic here
 				if(
 				//exclude these characters	
-				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274 && url != 1928599994
+				url != 2273636433 && url != 1870768156 && url != 1869351026 && url != 2558467885 && url != 2702430274 && url != 1928599994 && url != 2128134424
 				//op characters
-				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646/*|| url ==  && "temp_level" in self*/
-				|| (string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				//or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				//or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-				or string_count("duane", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				&& (url == 2257020796 || url == 2179072217 || url == 1916799945 || url == 2297738646 || url == 2662021036
+				|| (string_count("Ronald", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("ultra instinct", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("UI ", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("00%", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("% accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("Duane", string( get_char_info(player, INFO_STR_NAME) )) > 0
+				or string_count("OP ", string( get_char_info(player, INFO_STR_NAME) )) > 0
 				))){
 					other.superop = true;other.superboss = true;
 					other.runeA = true;other.runeB = true;other.runeC = true;other.runeD = true;other.runeE = true;other.runeF = true;
@@ -369,8 +359,6 @@ if(superop){
     knockback_adj = .1;
     if(BossMode){
 		max_djumps = 999;soft_armor = 99999;
-		/*move_cooldown[attack] = 0;can_move = true;can_jump = true;can_attack = true;
-		can_strong = true;can_ustrong = true;can_special = true;can_shield = true;*/
     }
 }
 if(bossdead){
@@ -389,12 +377,6 @@ if(bossdead){
 		set_attack(AT_TAUNT);window = 10;
 	}
 	if(bossdeadtimer == 300){
-		//sound_play(sound_get("death"));//set_player_stocks(player,0);
-		/*with oPlayer{
-	        if id != other.id{
-	            player=0;
-	        }
-	    }*/
 	    end_match(last_player);
 	}
 }

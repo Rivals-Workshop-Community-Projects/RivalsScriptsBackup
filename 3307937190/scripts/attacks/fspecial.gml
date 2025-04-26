@@ -8,13 +8,14 @@ set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(atk, AG_LANDING_LAG, 8);
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_OFF_LEDGE, 1);
+set_attack_value(atk, 87, "Applies Elemental Ink on hit. Can only be used once per airtime.");//AG_MUNO_ATTACK_MISC_ADD = i; i++;
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 11);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy2"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 9);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 
@@ -62,6 +63,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(atk, hitbox_num, 81, "Main Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
@@ -85,6 +87,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.65);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(atk, hitbox_num, 81, "Late Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 

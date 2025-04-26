@@ -3,7 +3,8 @@ voice = get_synced_var(player);
 turnabout = false;
 turnabout_timer = 0;
 turnabout_timer_pause = 0;
-turnabout_timer_max = 1800; //25 sec
+turnabout_pause_countdown = 0;
+turnabout_timer_max = 1500; //25 sec
 
 evidence_count = 0;
 good_evidence_count = 0;
@@ -33,7 +34,11 @@ dspecial_random_index = 2;  //so the while script in dspecial doesn't crash the 
 key_dir = 0;
 ustrong_launch_dir = 0;
 ustrong_parried = 0;
+ustrong_parried_id = noone;
+ustrong_parried_x = 0;
+ustrong_parried_y = 0;
 ustrong_hit = 0;
+should_play_gavel_sound = false;
 
 uspecial_angle = 90;
 uspecial_old_hsp = hsp;
@@ -90,8 +95,8 @@ jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 6.5;
 djump_speed = 10.5;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -106,12 +111,12 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 16;
+prat_land_time = 14;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .08; //grounded deceleration when wavelanding
 
 //crouch animation frames

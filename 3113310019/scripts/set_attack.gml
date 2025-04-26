@@ -33,6 +33,7 @@ if (has_rune("E")){
 }
 
 if (attack == AT_DAIR){ 
+	set_attack_value( AT_DAIR, AG_CATEGORY, 2 );
 	if (left_down && !right_down){
         spr_dir = -1
     }

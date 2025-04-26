@@ -13,6 +13,7 @@ play_anim = false;
 //image_xscale = 2;
 //image_yscale = 2;
 hitbox = noone;
+has_hit = false;
 
 p_col = get_player_hud_color(player);
 

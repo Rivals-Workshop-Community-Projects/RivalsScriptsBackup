@@ -10,8 +10,8 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 
 if (player_id.killarticles && state != 2)
 {
-    state = 2;
-    state_timer = 0;
+	state = 2;
+	state_timer = 0;
 }
 
 switch (state)
@@ -32,8 +32,8 @@ switch (state)
 		}
 		if (player_id.window > 2 || shoulddie || (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR))
 		{
-		    state = 2;
-		    state_timer = 0;
+			state = 2;
+			state_timer = 0;
 		}
 		break;
 	case 2:
@@ -45,8 +45,8 @@ switch (state)
 		hsp = spr_dir * 4;
 		if (shoulddie)
 		{
-		    state = 2;
-		    state_timer = 0;
+			state = 2;
+			state_timer = 0;
 		}
 		break;
 }

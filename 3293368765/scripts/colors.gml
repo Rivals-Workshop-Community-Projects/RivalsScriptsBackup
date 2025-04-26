@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 33, 30 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Mountain Ice
 set_color_profile_slot( 1, 0, 148, 176, 255 ); //hair
@@ -87,21 +87,21 @@ set_color_profile_slot( 5, 6, 199, 206, 224 ); //faceshade
 set_color_profile_slot( 5, 7, 53, 191, 124 ); //lightning
 
 // Star Player
-set_color_profile_slot( 6, 0, 255, 166, 166 ); //hair
-set_color_profile_slot( 6, 1, 104, 30, 184 ); //pants
-set_color_profile_slot( 6, 2, 110, 105, 82 ); //wraps
-set_color_profile_slot( 6, 3, 235, 205, 0 ); //cloth
+set_color_profile_slot( 6, 0, 255, 173, 182 ); //hair
+set_color_profile_slot( 6, 1, 172, 37, 230 ); //pants
+set_color_profile_slot( 6, 2, 231, 228, 232 ); //wraps
+set_color_profile_slot( 6, 3, 251, 255, 0 ); //cloth
 set_color_profile_slot( 6, 4, 3, 227, 128 ); //eyes
-set_color_profile_slot( 6, 5, 163, 55, 55 ); //noseandears
+set_color_profile_slot( 6, 5, 160, 64, 95 ); //noseandears
 set_color_profile_slot( 6, 6, 255, 207, 207 ); //faceshade
-set_color_profile_slot( 6, 7, 170, 13, 212 ); //lightning
+set_color_profile_slot( 6, 7, 172, 37, 230 ); //lightning
 
 // Sky Pirate
-set_color_profile_slot( 7, 0, 210, 214, 222 ); //hair
-set_color_profile_slot( 7, 1, 94, 80, 107 ); //pants
-set_color_profile_slot( 7, 2, 255, 211, 66 ); //wraps
-set_color_profile_slot( 7, 3, 242, 36, 63 ); //cloth
-set_color_profile_slot( 7, 4, 242, 36, 63 ); //eyes
+set_color_profile_slot( 7, 0, 223, 222, 228 ); //hair
+set_color_profile_slot( 7, 1, 72, 75, 104 ); //pants
+set_color_profile_slot( 7, 2, 248, 248, 128 ); //wraps
+set_color_profile_slot( 7, 3, 179, 51, 77 ); //cloth
+set_color_profile_slot( 7, 4, 3, 227, 128 ); //eyes
 set_color_profile_slot( 7, 5, 112, 111, 115 ); //noseandears
 set_color_profile_slot( 7, 6, 214, 211, 232 ); //faceshade
 set_color_profile_slot( 7, 7, 88, 144, 184 ); //lightning
@@ -157,13 +157,13 @@ set_color_profile_slot( 12, 6, 247, 179, 255 ); //faceshade
 set_color_profile_slot( 12, 7, 217, 130, 0 ); //lightning
 
 // Eye of the Seeker
-set_color_profile_slot( 13, 0, 186, 179, 255 ); //hair
-set_color_profile_slot( 13, 1, 242, 244, 255 ); //pants
+set_color_profile_slot( 13, 0, 223, 219, 255 ); //hair
+set_color_profile_slot( 13, 1, 72, 75, 104 ); //pants
 set_color_profile_slot( 13, 2, 255, 249, 237 ); //wraps
 set_color_profile_slot( 13, 3, 96, 55, 191 ); //cloth
 set_color_profile_slot( 13, 4, 151, 107, 255 ); //eyes
 set_color_profile_slot( 13, 5, 51, 30, 99 ); //noseandears
-set_color_profile_slot( 13, 6, 176, 161, 255 ); //faceshade
+set_color_profile_slot( 13, 6, 217, 209, 255 ); //faceshade
 set_color_profile_slot( 13, 7, 124, 64, 189 ); //lightning
 
 // Hidden Hunter
@@ -220,7 +220,7 @@ set_color_profile_slot( 18, 7, 157, 37, 194 ); //lightning
 set_color_profile_slot( 19, 0, 194, 200, 255 ); //hair
 set_color_profile_slot( 19, 1, 255, 111, 0 ); //pants
 set_color_profile_slot( 19, 2, 255, 255, 255 ); //wraps
-set_color_profile_slot( 19, 3, 56, 51, 135 ); //cloth
+set_color_profile_slot( 19, 3, 55, 50, 161 ); //cloth
 set_color_profile_slot( 19, 4, 207, 207, 207 ); //eyes
 set_color_profile_slot( 19, 5, 255, 135, 135 ); //noseandears
 set_color_profile_slot( 19, 6, 190, 201, 214 ); //faceshade
@@ -305,6 +305,16 @@ set_color_profile_slot( 27, 4, 0, 132, 255 ); //eyes
 set_color_profile_slot( 27, 5, 0, 80, 185 ); //noseandears
 set_color_profile_slot( 27, 6, 144, 155, 166 ); //faceshade
 set_color_profile_slot( 27, 7, 0, 0, 225 ); //lightning
+
+// Vortex
+set_color_profile_slot( 28, 0, 248, 142, 50 ); //hair
+set_color_profile_slot( 28, 1, 82, 82, 82 ); //pants
+set_color_profile_slot( 28, 2, 253, 238, 142 ); //wraps
+set_color_profile_slot( 28, 3, 248, 21, 0 ); //cloth
+set_color_profile_slot( 28, 4, 248, 21, 0 ); //eyes
+set_color_profile_slot( 28, 5, 156, 60, 51 ); //noseandears
+set_color_profile_slot( 28, 6, 227, 197, 179 ); //faceshade
+set_color_profile_slot( 28, 7, 248, 21, 0 ); //lightning
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

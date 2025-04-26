@@ -24,9 +24,11 @@ set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 //set_window_value(attack, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 //set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0); // Prevent falling on grounded version
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1); // Prevent falling on grounded version
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_absa_cloud_crackle")); // asset_get("") or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 2);
 
 window_num++;
 
@@ -35,6 +37,8 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0); // Prevent falling on grounded version
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1); // Prevent falling on grounded version
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_glide_start")); // asset_get("") or sound_get("")
 set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
@@ -46,7 +50,7 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 14);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 15);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 2);
@@ -64,6 +68,9 @@ set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1); // Set Ground Friction to Air to prevent this from going further off plats
+set_window_value(attack, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, ground_friction); // Set Ground Friction to Air to prevent this from going further off plats 
+set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, ground_friction); // Set Ground Friction to Air to prevent this from going further off plats
 
 //set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 //set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_absa_dattack")); // asset_get("") or sound_get("") 

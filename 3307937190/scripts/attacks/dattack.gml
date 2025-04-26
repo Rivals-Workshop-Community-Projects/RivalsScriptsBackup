@@ -3,6 +3,7 @@ atk = AT_DATTACK;
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+set_attack_value(atk, 87, "Sends Pastelle up in the air on hit. Can slide off platforms.");//AG_MUNO_ATTACK_MISC_ADD = i; i++;  
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
@@ -53,6 +54,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, hitbox_num, 81, "Main Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 
 hitbox_num ++
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -74,5 +76,6 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(atk, hitbox_num, 81, "Late Hit");//HG_MUNO_HITBOX_NAME = i; i++;
 
 set_num_hitboxes(atk, hitbox_num);

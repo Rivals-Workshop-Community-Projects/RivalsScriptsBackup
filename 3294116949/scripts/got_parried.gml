@@ -38,3 +38,18 @@ if(my_hitboxID.attack == AT_NSPECIAL){
     	return_dir = point_direction(x, y, player_id.x, player_id.y);
 	}
 }
+
+if(my_hitboxID.attack == AT_FSPECIAL){
+	hsp = clamp(hsp, -3, 3);
+	old_hsp = clamp(hsp, -3, 3);
+    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 3);
+    set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 3);
+    set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HSPEED, 3);
+}
+
+if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
+	my_hitboxID.has_bounced = false;
+	my_hitboxID.vsp = max(my_hitboxID.vsp, -my_hitboxID.vsp);
+	my_hitboxID.free = true;
+	my_hitboxID.y -= my_hitboxID.vsp;
+}

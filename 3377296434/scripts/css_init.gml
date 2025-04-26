@@ -1,0 +1,1 @@
+music_quiet_timer = 0;

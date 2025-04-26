@@ -60,3 +60,5 @@ sprite_change_offset("table", 140, 166);
 sprite_change_offset("table_mask", 140, 166);
 set_victory_theme(sound_get( "baileyvic"));
 set_victory_bg(sprite_get("bailey_victory"));
+
+sprite_change_offset("guilty", 31, 0);

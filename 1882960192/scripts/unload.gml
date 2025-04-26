@@ -1,7 +1,7 @@
 //shoutouts to reiga and frtoud
 
 //Sending win quotes to result screen <3 code by Frtoud
-if (!bluey_handled_victory_quote)
+if (!azure_handled_victory_quote)
 {
     //default values
     var transfer_array = [];
@@ -13,7 +13,7 @@ if (!bluey_handled_victory_quote)
             team: get_player_team(p), // current team of player
             priority: 0,              // message priority (0 default, 1 builtin, 2 explicit)
             quote:"",                 // message if Hypercam wins against you
-            icon: 0,                   // victory icon for bluey
+            icon: 0,                   // victory icon for azure
             //===========================================================================
             status_quote: ""         // message for this Hypercam if he wins under certain conditions
             //held_cd_color:-1          // Current color of CD for Hypercam
@@ -25,16 +25,16 @@ if (!bluey_handled_victory_quote)
         var data = transfer_array[player];
         if (url == other.url)
         {
-            //only one bluey has to handle this for everyone: notify them.
-            bluey_handled_victory_quote = true;
+            //only one azure has to handle this for everyone: notify them.
+            azure_handled_victory_quote = true;
             
             data.priority = 2;
-            data.icon = bluey_victory_icon;
-            data.quote = bluey_victory_quote;
+            data.icon = azure_victory_icon;
+            data.quote = azure_victory_quote;
             //else... >:]
             
         }
-        else if ("bluey_victory_quote" in self)
+        else if ("azure_victory_quote" in self)
         {
             var builtin_quote = try_get_quote(url);
             var builtin_icon = try_get_icon(url);
@@ -70,7 +70,7 @@ if (!bluey_handled_victory_quote)
     smuggler.type = 2;
     smuggler.length = 60; //will destroy itself automatically after one second.
     
-    smuggler.bluey_victory_screen_array = transfer_array;
+    smuggler.azure_victory_screen_array = transfer_array;
     //smuggler.uhc_batteries = uhc_batteries;
 }
 /*checklist
@@ -91,12 +91,13 @@ if (!bluey_handled_victory_quote)
             quote = "Welp, BBot, doesn't seem like your questionable humor was strong enough... let alone funny."; 
             break;
         case "2014106219": // Cinna
-            quote = "Not this time, Sis... You'll get it next time, I'm sure of it.";
+            quote = "You weren't half bad, Sis... Maybe next time you'll get it.";
             break;
         case "2089998666": // Big Yoshi
             quote = "...Huh? What do you mean it's a cookie, not a flower?";
             break;
-        case "1932503649": // Troops
+        case "3380391964": // Troops
+        case "1932503649": // Troops (Legacy)
             quote = "How odd... I feel like I've known you for ages.";
             break;
         case "2310580951": // 64 Mario
@@ -111,8 +112,11 @@ if (!bluey_handled_victory_quote)
             break;
         case "2799785099": // Sir Kibble
             quote = "Is there even anything inside that armor...?";
-            break;		
-        case "2193855004": // EXW1 Bluey
+            break;	
+        case "3380395299": // Ms. Game & Watch
+            quote = "Are you made of paper or something, miss? What are you even supposed to be?";
+            break;	
+        case "2193855004": // EXW1 Azure
             quote = "Geez, why did I look so pale back then?";
             break;
 						
@@ -370,14 +374,14 @@ if (!bluey_handled_victory_quote)
            quote = "I wonder if the Multi-Rod could copy that sword. It'd be so much cooler than the one I have right now...";
            break;
         case CH_MOLLO:
-           quote = "You aren't the only one with bombs around here, you know! ...What? Where I'm getting them from?";
+           quote = "You aren't the only one with bombs around here, you know! ...What? Where am I getting them from?";
            break;
 
         case CH_WRASTOR:
            quote = "Whoops, I think one of your wings got caught in my propeller.";
            break;
         case CH_ELLIANA:
-           quote = "I've always wanted to try riding a mech... I should ask BBot about it someday.";
+           quote = "I've always wanted to try riding a mech. I should ask BBot about it someday.";
            break;
         case CH_POMME:
            quote = "Where can I get a ticket to your next show? ...Asking for a friend."; 
@@ -427,7 +431,7 @@ return quote
     {
             
         //Neutral
-        case "2193855004": // EXW1 Bluey
+        case "2193855004": // EXW1 Azure
         case "2605468032": // Gawr Gura
         case "3118007135": // Wren
         case "2167624888": // Lyca
@@ -457,7 +461,8 @@ return quote
         
         //Intrigued
         case "2089998666": // Big Yoshi
-        
+		
+        case "3380395299": // Ms. Game & Watch       
         case "2546990424": // Maverick
         case "2904498757": // Peppino
         case "2490060793": // Barr
@@ -473,7 +478,8 @@ return quote
             break;
           
         //Thinking
-        case "1932503649": // Troops
+        case "3380391964": // Troops
+        case "1932503649": // Troops (Legacy)
         case "2799785099": // Sir Kibble
         case "3123375474": // Miles Edgeworth
         case "2839808881": // Kirby (Dream Collection)
@@ -520,7 +526,8 @@ return quote
         case "2811386719": // Wally
         case "3302238950": // Alexis
         case "3137450762": // La Reina
-        
+        case "2802424939": // Sakuya Izayoi 
+        case "2035357584": // Nade
         
             icon = 6;
             break;
@@ -552,9 +559,7 @@ return quote
         case "2817605804": // Jerma985
         case "3117219382": // Bhadra
         case "2593144115": // Amaya
-        case "2802424939": // Sakuya Izayoi
         case "3139869895": // Arcuin
-        case "2035357584": // Nade
 
 
             icon = 9;

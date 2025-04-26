@@ -19,12 +19,12 @@ switch (attack)
 	break;
 	case AT_NSPECIAL:
 		// setting the hitbox the the same location as his yinyang
-		if (instance_exists(my_yinyang)){
+		/*if (instance_exists(my_yinyang)){
 			x = my_yinyang.x + my_yinyang.hsp;
 			y = my_yinyang.y + my_yinyang.vsp;
 		} else{
 			destroyed = true;
-		}
+		}*/
 		
 		/*
 		if (my_yinyang.hsp * my_yinyang.spr_dir > 0)

@@ -103,7 +103,7 @@ djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
 fair_sweetspot_sfx = asset_get("sfx_ell_uspecial_explode");
-fair_sweetspot_volume = 0.67;
+fair_sweetspot_volume = 0.4;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -126,6 +126,9 @@ hitfx_crown_medland = hit_fx_create( sprite_get( "hitfx_crown_medland" ), 20 );
 active_landing_fx = noone;
 
 //BAH GAWHD, SHE'S PULLING OUT THE STEEL CHAIR!
+universal_chair_big_cooldown = 420;
+chair_cooldown_by_destruction = false;
+create_chair_flash_opacity = 0;
 can_create_air_chair = true;
 air_chair_died = false;
 myChair = noone;
@@ -176,6 +179,11 @@ uspecial_afterimage_timer = 0;
 uspecial_have_drawn_afterimages = false;
 uspecial_can_cheer = 0;
 uspecial_grab_victim = noone;
+//delta parallax variables
+uspecial_spin_timer = 0;
+uspecial_spin_max_time = 43;
+
+user_event(2); // set swappable colours
 
 // afterimage colour stuff
 var altpal = get_player_color( player );
@@ -190,24 +198,44 @@ afterimage_colour_array = [
   make_colour_rgb(255, 20, 255), // green
   make_colour_rgb(200, 210, 210), // silver
   make_colour_rgb(210, 190, 90), // yellow
+  // INSERT SEASONAL
   make_colour_rgb(200, 40, 0), // potemkin
-  make_colour_rgb(280, 220, 90), // r mika
+  make_colour_rgb(0, 200, 200), // r mika
   make_colour_rgb(150, 20, 230), // abyss
   make_colour_rgb(60,  102, 22), // early access
-  make_colour_rgb(40,  125, 50), // dakota
+  //make_colour_rgb(250, 30, 255), // ETDT
+  make_colour_rgb(99, 95, 170), // Gold
+  //
+  make_colour_rgb(40,  125, 50), // Playtest
+  make_colour_rgb(255, 50, 50), // Tournament / genesis
+  make_colour_rgb(0, 230, 230), // Rivals 2
+
+  //make_colour_rgb(0, 255, 255), // Riptide
+]
+
+// afterimage colours for skins
+playtester_afterimage_colours = [
   make_colour_rgb(0,  120, 200), // toma
-  make_colour_rgb(255, 50, 50), // genesis
-  make_colour_rgb(0,  120, 255), // gracefulknight
-  make_colour_rgb(250, 30, 255), // ETDT
-  make_colour_rgb(150, 40, 63), // honorless
+  make_colour_rgb(40,  125, 50), // dakota
   make_colour_rgb(230, 128, 185), // Senpu
+  make_colour_rgb(0,  120, 255), // gracefulknight
+  make_colour_rgb(150, 40, 63), // honorless
   make_colour_rgb(243, 133, 235), // Kally
-  make_colour_rgb(0, 255, 255), // Riptide
 ]
 riptide_colours = [
   make_colour_rgb(0,199,218), // blue shadow
   make_colour_rgb(254, 184, 0), // yellow shadow
   make_colour_rgb(218, 93, 0), // orange shadow
+]
+vortex_colours = [
+  make_colour_rgb(218, 70, 0), // orange shadow
+  make_colour_rgb(191, 10, 48), // red
+  make_colour_rgb(254, 215, 40), // yellow
+]
+heatwave_colours = [
+  make_colour_rgb(0, 40, 104), // blue
+  make_colour_rgb(254, 215, 40), // yellow
+  make_colour_rgb(191, 10, 48), // red
 ]
 
 afterimage_colour = afterimage_colour_array[get_player_color( player )];
@@ -217,11 +245,29 @@ alt_palette = 0;
 var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
 alt_palette = get_player_color( real_player );
 
-riptide_after_index = 0;
-magnet_colour = riptide_colours[0];
+// Unique afterimage colours
+var sync = get_synced_var(player);
+var tens = floor(sync/10)
+var ones = sync-10*tens
 
-if alt_palette == 18 { // Riptide
-  afterimage_colour = riptide_colours[riptide_after_index]
+// Playtester afterimage colours
+if alt_palette == playtester_alt {
+  afterimage_colour = playtester_afterimage_colours[sync-10*floor(sync/10)];
+}
+
+// Multicolour afterimage colours
+multicolour_colours = riptide_colours; riptide_active = true;
+if tens == 3 {
+  multicolour_colours = vortex_colours; riptide_active = false;
+} else if tens == 4 {
+  multicolour_colours = heatwave_colours; riptide_active = false;
+}
+multicolour_after_index = 0;
+magnet_colour = multicolour_colours[0];
+activate_multicolour = alt_palette == tournament_alt && (tens > 1);
+
+if activate_multicolour { // Riptide, Vortex and Heatwave
+  afterimage_colour = multicolour_colours[multicolour_after_index]
 }
 
 //Throw direction detector.
@@ -257,3 +303,16 @@ available_taunts = [];
 upsecial_spin_pitch = 1;
 uspecial_slam_pitch = 1;
 fstrong_falling_sound = noone;
+
+init_shader();
+//set_article_color_slot( shade_slot, r, g, b );
+if alt_palette == playtester_alt or alt_palette == tournament_alt {
+  var ptp = playtester_list[sync-10*floor(sync/10)];
+  if alt_palette == tournament_alt {ptp = tournament_list[floor(sync/10)-1];}
+
+  set_article_color_slot(0, ptp[1][0], ptp[1][1], ptp[1][2]);
+  set_article_color_slot(1, ptp[2][0], ptp[2][1], ptp[2][2]);
+  set_article_color_slot(2, ptp[3][0], ptp[3][1], ptp[3][2]);
+  set_article_color_slot(3, ptp[4][0], ptp[4][1], ptp[4][2]);
+  set_article_color_slot(4, ptp[5][0], ptp[5][1], ptp[5][2]);
+}

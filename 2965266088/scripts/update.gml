@@ -62,7 +62,7 @@ if (my_grab_id != noone) //if you have grabbed someone
     with (my_grab_id)
 	{
 		hitstop = 2; //freeze grabbed foe
-		if (last_player_hit_me != other.player) //if another player hits the grabbed player stop the grab sequence
+		if (last_player != other.player) //if another player hits the grabbed player stop the grab sequence
 		{
 			hitstop = 0;
 			with (other)
@@ -114,7 +114,7 @@ if (hit_player_lock > 0) hit_player_lock = 0;
 
 #region grazing
 
-graze_pos = [x + hsp, y - char_height / 1.83 + vsp];
+graze_pos = [x + hsp - 1, y - char_height / 1.83 + vsp - 1];
 if (graze_alpha > 0) graze_alpha -= graze_disable_redc_alpha;
 
 //can't graze conditions
@@ -147,7 +147,8 @@ switch (graze_state)
                 }
             }
         }
-        with (pHitBox) if (player != other.player && can_hit[other.player]) //show graze range near hitboxes
+        with (pHitBox) if ((get_player_team(player) != get_player_team(other.player) || get_match_setting(SET_TEAMATTACK) && player != other.player) &&
+            can_hit[other.player] && hit_priority > 0) //show graze range near hitboxes
         {
             if (point_distance(x, y, other.graze_pos[0], other.graze_pos[1]) < graze_dist) //detect closest hitbox
             {
@@ -155,7 +156,7 @@ switch (graze_state)
                 graze_dist = point_distance(x, y, other.graze_pos[0], other.graze_pos[1]);
             }
 
-            with (other) if (graze_lockout <= 0 && collision_circle(graze_pos[0], graze_pos[1], graze_dist_min, other, true, true)) //apply graze
+            with (other) if (graze_lockout <= 0 && collision_circle(graze_pos[0], graze_pos[1], graze_dist_cur, other, true, true)) //apply graze
             {
                 grazing_time = grazing_time_max;
                 graze_state = 1;
@@ -173,11 +174,13 @@ switch (graze_state)
             }
         }
 
+        //alpha based on graze distance
         if (instance_exists(near_obj) && near_obj != noone) //set graze values
         {
-            graze_dist = clamp(distance_to_object(near_obj), graze_dist_min, graze_dist_max);
-            graze_alpha = lerp(0.75, 0, (graze_dist - graze_dist_min)/(graze_dist_max - graze_dist_min)) * 0.75;
+            graze_dist = clamp(distance_to_object(near_obj), graze_dist_cur, graze_dist_max);
+            graze_alpha = lerp(0.75, 0, (graze_dist - graze_dist_cur)/(graze_dist_max - graze_dist_cur)) * 0.75;
         }
+        graze_alpha = max(graze_alpha, graze_alpha_bigger);
         break;
     case 1: //grazing
         grazing_time --;
@@ -228,6 +231,14 @@ if (dark_owner != self && dark_owner != noone) move_cooldown[AT_DSPECIAL] = 2;
 else move_cooldown[AT_DSPECIAL] = dark_cd > 0 ? dark_cd : 1 + (dark_target == self);
 move_cooldown[AT_DSPECIAL_2] = move_cooldown[AT_DSPECIAL];
 
+//horde enemies other_init
+with (obj_stage_article) if ("enemy_stage_article" in self && "dark_owner_last" not in self)
+{
+    do_dark_blast = false;
+    dark_owner = noone; //checks the current owner of the darkness
+    dark_owner_last = noone; //only updates on darkness transfers for the effect
+}
+
 if (dark_state > -1) //general behaviour
 {
     //darkness alpha
@@ -235,17 +246,24 @@ if (dark_state > -1) //general behaviour
     if (dark_alpha.time > dark_alpha.time_max || dark_alpha.time < 0) dark_alpha.increment = !dark_alpha.increment;
     dark_alpha.time += dark_alpha.increment ? 1 : -1;
 
-    if (instance_exists(dark_target)) dark_last_coords = [dark_target.x, dark_target.y - dark_target.char_height / 1.75];
+    if (instance_exists(dark_target) && dark_state != 5 && (dark_target.object_index != oPlayer || dark_target.state != PS_DEAD && dark_target.state != PS_RESPAWN))
+    {
+        var d_x = "draw_x" in dark_target ? dark_target.draw_x : 0;
+        var d_y = "draw_y" in dark_target ? dark_target.draw_y : 0;
+        dark_last_coords = [dark_target.x + d_x, dark_target.y - (dark_target.char_height / 1.75) + d_y];
+        dark_last_is_enemy_article = ("enemy_stage_article" in dark_target);
+    }
 
     //deactivate darkness_conditions
     if (!instance_exists(dark_target) || dark_target.state == PS_DEAD || dark_target.state == PS_RESPAWN ||
-        state == PS_DEAD || state == PS_RESPAWN || dark_hp_cur <= 0) dark_state = 2;
+        state == PS_DEAD || state == PS_RESPAWN || dark_hp_cur <= 0)
+    {
+        if (dark_hp_cur > 0 && dark_target != self) dark_state = 5;
+        else dark_state = 2;
+    }
 }
 //dark consume
-with (dark_target) if ("do_dark_blast" in self && (state == PS_HITSTUN || super_armor || soft_armor > 0) && hitstop < 2 && do_dark_blast && other.dark_state != 4)
-{
-    other.dark_state = 4;
-}
+with (dark_target) if ("do_dark_blast" in self && hitstop < 2 && do_dark_blast && other.dark_state != 4) other.dark_state = 4;
 
 switch (dark_state) //basic state behaviour
 {
@@ -267,9 +285,6 @@ switch (dark_state) //basic state behaviour
     case 0: //activating
         if (dark_timer == 1) sound_play(asset_get("sfx_abyss_spawn"), false, 0, 1, 0.8);
         break;
-    case 1: //active
-        if (dark_target != self && !dark_target.was_parried) dark_hp_redc_time ++;
-        break;
     case 2: //deactivate
         if (instance_exists(dark_target) && ("visible" not in dark_target || dark_target.visible)) 
         {
@@ -280,9 +295,22 @@ switch (dark_state) //basic state behaviour
         sound_play(asset_get("sfx_abyss_despawn"), false, 0, 0.6, 0.7);
 
         if (instance_exists(dark_target)) dark_target.dark_owner = noone;
-        dark_cd = dark_cd_set;
+        if (dark_target != self || state != PS_RESPAWN && state != PS_DEAD) dark_cd = dark_cd_set;
         dark_state = -1;
         break;
+    case 5:
+        if (dark_timer == 0)
+        {
+            if (instance_exists(dark_target)) dark_target.dark_owner = noone;
+            dark_target = self;
+            dark_owner = self;
+
+            if (!is_attacking || attack != AT_DSPECIAL_2 || window < 2)
+            {
+                dark_hp_cur /= 2;
+                dark_hp_cur = floor(dark_hp_cur);
+            }
+        }
     case 3: //transfer
         if (dark_timer == 1)
         {
@@ -313,7 +341,6 @@ if (dark_state_prev != dark_state) //state reset
 {
     dark_timer = 0;
     dark_state_prev = dark_state;
-    if (dark_hp_redc_time > 0) dark_hp_redc_time = 0;
 }
 if (dark_state > -1 && variable_instance_exists(dark_spr[dark_state], "spr")) //dark orb animation
 {
@@ -334,10 +361,13 @@ if (state_cat == SC_HITSTUN)
 {
     if (dark_hp_temp > 0) //hit while charging dspec
     {
-        dark_hp_cur = floor(dark_hp_temp);
-        dark_target = self;
-        dark_owner = self;
-        dark_state = 0;
+        if (dark_owner == noone)
+        {
+            dark_hp_cur = floor(dark_hp_temp);
+            dark_target = self;
+            dark_owner = self;
+            dark_state = 0;
+        }
         dark_hp_temp = 0;
     }
 }
@@ -406,6 +436,7 @@ if ("fs_char_initialized" in self)
 {
     has_superspell = true;
     fs_charge = 0;
+    if (get_match_setting(SET_PRACTICE) && superspell_cur < superspell_max && taunt_down && shield_down) superspell_cur = superspell_max;
 }
 
 //dracula boss dialouge
@@ -613,7 +644,7 @@ if (alt_cur == 2 || alt_cur == 6 || alt_cur == 8 || is_tas_alt) user_event(0);
 if (koa_hat)
 {
     wait_time = 0;
-    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
+    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE || is_attacking)
     {
         koa_hat = false;
         wait_time = normal_wait_time;
@@ -632,19 +663,21 @@ if (game_time > 60) prep_hitboxes();
 #define prep_hitboxes
 {
     //Applies the hitbox sprites and prepares them to be drawn (with color!)
-    with (pHitBox) if player_id == other {
-        if "col" not in self {
-            with other {
-                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
-                if other.col == 0 other.col = c_red;
-                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+    with (pHitBox) if (player_id == other && "dont_color" not in self)
+    {
+        if ("col" not in self)
+        {
+            with (other)
+            {
+                var parent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX)
+                var true_hbox_num = parent ? parent : other.hbox_num
+                other.col = get_hitbox_value(other.attack, true_hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, true_hbox_num, HG_SHAPE)
                 other.draw_colored = true;
-                if other.type == 1
-                    other.sprite_index = __hb_hd_spr[other.shape];
-                else if get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1
-                    other.mask_index = __hb_hd_spr[other.shape];
-                else 
-                    other.draw_colored = false;
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, true_hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
                 other.draw_spr = __hb_draw_spr;
             }
         }

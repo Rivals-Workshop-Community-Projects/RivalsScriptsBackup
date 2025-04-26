@@ -94,7 +94,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sfx_kodiak_dspec_hit);
-set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 1);
 
@@ -117,7 +117,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 2);
 
@@ -141,7 +141,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1.3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 3, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, 3);
 
 set_hitbox_value(AT_DSPECIAL, 4, HG_PARENT_HITBOX, 3);

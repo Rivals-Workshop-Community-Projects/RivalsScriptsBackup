@@ -7,11 +7,11 @@ set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 10);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -39,9 +39,9 @@ set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 140 + has_rune("J") * 40 );
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.55);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.65);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7.5);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 302 );
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 3);

@@ -3,6 +3,23 @@
 //B-reverse - it allows the character to turn in while using specials
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
+//allow reverse ftilt code (by supersonic)
+if (attack == AT_JAB)
+{
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
+	{
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, window_end); //NOTE: window_end is a tester variable!
+        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end)
+		{
+            set_state(PS_IDLE);
+            // if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            // that doesn't happen in base cast so this fixes that
+            was_parried = false; 
+        }
+    }
+	else reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+}
+
 switch (attack)
 {
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
@@ -115,8 +132,8 @@ switch (attack)
 
 				with (my_grab_id)
 				{
-					x = ease_sineInOut(x, other.x, other.grab_time, 20);
-                	y = ease_sineInOut(y, other.y+16, other.grab_time, 20);
+					x = ease_sineInOut(floor(x), floor(other.x), other.grab_time, 20);
+                	y = ease_sineInOut(floor(y), floor(other.y+16), other.grab_time, 20);
 				}
 			}
 			else fall_through = false;
@@ -251,7 +268,7 @@ switch (attack)
 				break;
 			case 2: //charge
 				var startup = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH);
-				if (!dspec_done)
+				if (!dspec_done && dark_hp_cur <= 0)
 				{
 					//set charge to stop
 					if (!special_down || dark_hp_temp >= dark_hp_max) dspec_done = true;
@@ -313,7 +330,7 @@ switch (attack)
 		break;
 	///////////////////////////////////////////////// OTHER ////////////////////////////////////////////////
     //
-	case AT_TAUNT: //far taunt - she dancing
+	case AT_TAUNT: //taunt - she dancing
 		if (window == 1 && window_timer == 1) //play a random pop sound every new pose
 		{
 			sound_play(

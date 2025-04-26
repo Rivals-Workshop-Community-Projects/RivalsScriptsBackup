@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 36 );
 
 // Blue - Arcade
 set_color_profile_slot( 1, 0, 0, 60, 173 ); //Hat
@@ -46,13 +46,13 @@ set_color_profile_slot( 1, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 1, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 1, 7, 4, 122, 213 ); //Eye Color
 
-// Pink - Reverse Sm4sh Pink, Trans
-set_color_profile_slot( 2, 0, 238, 124, 177 ); //Hat
-set_color_profile_slot( 2, 1, 66, 200, 255 ); //Undershirt
-set_color_profile_slot( 2, 2, 238, 124, 177 ); //Overalls
+// Faded - Classic Suit
+set_color_profile_slot( 2, 0, 209, 55, 12 ); //Hat
+set_color_profile_slot( 2, 1, 60, 71, 123 ); //Undershirt
+set_color_profile_slot( 2, 2, 209, 55, 12 ); //Overalls
 set_color_profile_slot( 2, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 2, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 2, 5, 220, 241, 243 ); //Button
+set_color_profile_slot( 2, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 2, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 2, 7, 4, 122, 213 ); //Eye Color
 
@@ -96,7 +96,7 @@ set_color_profile_slot( 6, 5, 255, 143, 187 ); //Button
 set_color_profile_slot( 6, 6, 35, 39, 101 ); //Shoes
 set_color_profile_slot( 6, 7, 56, 56, 224 ); //Eye Color
 
-// Gameboy - Early Access
+// Early Access
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Hat
 set_color_profile_slot( 7, 1, 167, 186, 74 ); //Undershirt
 set_color_profile_slot( 7, 2, 83, 122, 62 ); //Overalls
@@ -106,85 +106,85 @@ set_color_profile_slot( 7, 5, 167, 186, 74 ); //Button
 set_color_profile_slot( 7, 6, 83, 122, 62 ); //Shoes
 set_color_profile_slot( 7, 7, 35, 67, 49 ); //Eye Color
 
-// Brown - Foreman Spike
-set_color_profile_slot( 8, 0, 101, 56, 35 ); //Hat
-set_color_profile_slot( 8, 1, 255, 202, 130 ); //Undershirt
-set_color_profile_slot( 8, 2, 101, 56, 35 ); //Overalls
+// Yellow - Wario
+set_color_profile_slot( 8, 0, 255, 229, 0 ); //Hat
+set_color_profile_slot( 8, 1, 255, 229, 0 ); //Undershirt
+set_color_profile_slot( 8, 2, 109, 0, 181 ); //Overalls
 set_color_profile_slot( 8, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 8, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 8, 5, 255, 255, 0 ); //Button
+set_color_profile_slot( 8, 5, 220, 241, 243 ); //Button
 set_color_profile_slot( 8, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 8, 7, 4, 122, 213 ); //Eye Color
 
-// Yellow - Wario
-set_color_profile_slot( 9, 0, 255, 229, 0 ); //Hat
-set_color_profile_slot( 9, 1, 255, 229, 0 ); //Undershirt
-set_color_profile_slot( 9, 2, 109, 0, 181 ); //Overalls
+// White - Fire
+set_color_profile_slot( 9, 0, 255, 255, 255 ); //Hat
+set_color_profile_slot( 9, 1, 255, 255, 255 ); //Undershirt
+set_color_profile_slot( 9, 2, 212, 0, 0 ); //Overalls
 set_color_profile_slot( 9, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 9, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 9, 5, 220, 241, 243 ); //Button
+set_color_profile_slot( 9, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 9, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 9, 7, 4, 122, 213 ); //Eye Color
 
-// White - Fire
-set_color_profile_slot( 10, 0, 255, 255, 255 ); //Hat
-set_color_profile_slot( 10, 1, 255, 255, 255 ); //Undershirt
-set_color_profile_slot( 10, 2, 212, 0, 0 ); //Overalls
+// Brown - Foreman Spike
+set_color_profile_slot( 10, 0, 101, 56, 35 ); //Hat
+set_color_profile_slot( 10, 1, 255, 202, 130 ); //Undershirt
+set_color_profile_slot( 10, 2, 101, 56, 35 ); //Overalls
 set_color_profile_slot( 10, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 10, 4, 220, 241, 243 ); //Gloves
 set_color_profile_slot( 10, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 10, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 10, 7, 4, 122, 213 ); //Eye Color
 
+// Pink - Reverse Sm4sh Pink, also trans
+set_color_profile_slot( 11, 0, 238, 124, 177 ); //Hat
+set_color_profile_slot( 11, 1, 66, 200, 255 ); //Undershirt
+set_color_profile_slot( 11, 2, 238, 124, 177 ); //Overalls
+set_color_profile_slot( 11, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 11, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 11, 5, 220, 241, 243 ); //Button
+set_color_profile_slot( 11, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 11, 7, 4, 122, 213 ); //Eye Color
+
 // Full Blue - Shadow Mario
-set_color_profile_slot( 11, 0, 70, 111, 199 ); //Hat
-set_color_profile_slot( 11, 1, 101, 143, 231 ); //Undershirt
-set_color_profile_slot( 11, 2, 49, 99, 204 ); //Overalls
-set_color_profile_slot( 11, 3, 139, 168, 231 ); //Skin
-set_color_profile_slot( 11, 4, 152, 177, 231 ); //Gloves
-set_color_profile_slot( 11, 5, 101, 143, 231 ); //Button
-set_color_profile_slot( 11, 6, 29, 66, 145 ); //Shoes
-set_color_profile_slot( 11, 7, 213, 4, 4 ); //Eye Color
+set_color_profile_slot( 12, 0, 70, 111, 199 ); //Hat
+set_color_profile_slot( 12, 1, 101, 143, 231 ); //Undershirt
+set_color_profile_slot( 12, 2, 49, 99, 204 ); //Overalls
+set_color_profile_slot( 12, 3, 139, 168, 231 ); //Skin
+set_color_profile_slot( 12, 4, 152, 177, 231 ); //Gloves
+set_color_profile_slot( 12, 5, 101, 143, 231 ); //Button
+set_color_profile_slot( 12, 6, 29, 66, 145 ); //Shoes
+set_color_profile_slot( 12, 7, 213, 4, 4 ); //Eye Color
 
 // Light Green - Luigi
-set_color_profile_slot( 12, 0, 2, 181, 42 ); //Hat
-set_color_profile_slot( 12, 1, 2, 181, 42 ); //Undershirt
-set_color_profile_slot( 12, 2, 45, 66, 114 ); //Overalls
-set_color_profile_slot( 12, 3, 255, 205, 133 ); //Skin
-set_color_profile_slot( 12, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 12, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 12, 6, 101, 56, 35 ); //Shoes
-set_color_profile_slot( 12, 7, 4, 122, 213 ); //Eye Color
-
-// True Blue - bluy
-set_color_profile_slot( 13, 0, 27, 39, 199 ); //Hat
-set_color_profile_slot( 13, 1, 16, 12, 88 ); //Undershirt
-set_color_profile_slot( 13, 2, 27, 39, 199 ); //Overalls
-set_color_profile_slot( 13, 3, 255, 185, 64 ); //Skin
+set_color_profile_slot( 13, 0, 2, 181, 42 ); //Hat
+set_color_profile_slot( 13, 1, 2, 181, 42 ); //Undershirt
+set_color_profile_slot( 13, 2, 45, 66, 114 ); //Overalls
+set_color_profile_slot( 13, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 13, 4, 220, 241, 243 ); //Gloves
 set_color_profile_slot( 13, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 13, 6, 55, 28, 9 ); //Shoes
-set_color_profile_slot( 13, 7, 12, 33, 71 ); //Eye Color
+set_color_profile_slot( 13, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 13, 7, 4, 122, 213 ); //Eye Color
 
-// Faded - Classic Suit
-set_color_profile_slot( 14, 0, 209, 55, 12 ); //Hat
-set_color_profile_slot( 14, 1, 60, 71, 123 ); //Undershirt
-set_color_profile_slot( 14, 2, 209, 55, 12 ); //Overalls
-set_color_profile_slot( 14, 3, 255, 205, 133 ); //Skin
+// True Blue - bluy
+set_color_profile_slot( 14, 0, 27, 39, 199 ); //Hat
+set_color_profile_slot( 14, 1, 16, 12, 88 ); //Undershirt
+set_color_profile_slot( 14, 2, 27, 39, 199 ); //Overalls
+set_color_profile_slot( 14, 3, 255, 185, 64 ); //Skin
 set_color_profile_slot( 14, 4, 220, 241, 243 ); //Gloves
 set_color_profile_slot( 14, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 14, 6, 101, 56, 35 ); //Shoes
-set_color_profile_slot( 14, 7, 4, 122, 213 ); //Eye Color
+set_color_profile_slot( 14, 6, 55, 28, 9 ); //Shoes
+set_color_profile_slot( 14, 7, 12, 33, 71 ); //Eye Color
 
-// Retro - SMB3
-set_color_profile_slot( 15, 0, 178, 50, 38 ); //Hat
-set_color_profile_slot( 15, 1, 178, 50, 38 ); //Undershirt
-set_color_profile_slot( 15, 2, 0, 0, 0 ); //Overalls
-set_color_profile_slot( 15, 3, 254, 206, 199 ); //Skin
-set_color_profile_slot( 15, 4, 254, 206, 199 ); //Gloves
-set_color_profile_slot( 15, 5, 254, 206, 199 ); //Button
-set_color_profile_slot( 15, 6, 0, 0, 0 ); //Shoes
-set_color_profile_slot( 15, 7, 0, 0, 0 ); //Eye Color
+// Pink - Peach
+set_color_profile_slot( 15, 0, 255, 159, 203 ); //Hat
+set_color_profile_slot( 15, 1, 255, 159, 203 ); //Undershirt
+set_color_profile_slot( 15, 2, 245, 80, 136 ); //Overalls
+set_color_profile_slot( 15, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 15, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 15, 5, 0, 179, 251 ); //Button
+set_color_profile_slot( 15, 6, 247, 230, 102 ); //Shoes
+set_color_profile_slot( 15, 7, 4, 122, 213 ); //Eye Color
 
 // Neon - Infamous
 set_color_profile_slot( 16, 0, 0, 255, 169 ); //Hat
@@ -256,15 +256,15 @@ set_color_profile_slot( 22, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 22, 6, 20, 32, 73 ); //Shoes
 set_color_profile_slot( 22, 7, 4, 122, 213 ); //Eye Color
 
-// Mixture - Pelee Pablo
-set_color_profile_slot( 23, 0, 211, 31, 81 ); //Hat
-set_color_profile_slot( 23, 1, 41, 66, 149 ); //Undershirt
-set_color_profile_slot( 23, 2, 237, 240, 240 ); //Overalls
-set_color_profile_slot( 23, 3, 255, 164, 95 ); //Skin
-set_color_profile_slot( 23, 4, 237, 240, 240 ); //Gloves
-set_color_profile_slot( 23, 5, 200, 126, 30 ); //Button
-set_color_profile_slot( 23, 6, 89, 46, 19 ); //Shoes
-set_color_profile_slot( 23, 7, 17, 96, 127 ); //Eye Color
+// SMBZ
+set_color_profile_slot( 23, 0, 255, 255, 0 ); //Hat
+set_color_profile_slot( 23, 1, 255, 255, 0 ); //Undershirt
+set_color_profile_slot( 23, 2, 244, 244, 244 ); //Overalls
+set_color_profile_slot( 23, 3, 255, 219, 156 ); //Skin
+set_color_profile_slot( 23, 4, 241, 243, 243 ); //Gloves
+set_color_profile_slot( 23, 5, 255, 255, 0 ); //Button
+set_color_profile_slot( 23, 6, 132, 56, 0 ); //Shoes
+set_color_profile_slot( 23, 7, 255, 255, 0 ); //Eye Color
 
 // Teal
 set_color_profile_slot( 24, 0, 0, 103, 102 ); //Hat
@@ -276,15 +276,15 @@ set_color_profile_slot( 24, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 24, 6, 101, 56, 35 ); //Shoes
 set_color_profile_slot( 24, 7, 4, 122, 213 ); //Eye Color
 
-// Pink - Peach
-set_color_profile_slot( 25, 0, 255, 159, 203 ); //Hat
-set_color_profile_slot( 25, 1, 255, 159, 203 ); //Undershirt
-set_color_profile_slot( 25, 2, 245, 80, 136 ); //Overalls
-set_color_profile_slot( 25, 3, 255, 205, 133 ); //Skin
-set_color_profile_slot( 25, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 25, 5, 0, 179, 251 ); //Button
-set_color_profile_slot( 25, 6, 247, 230, 102 ); //Shoes
-set_color_profile_slot( 25, 7, 4, 122, 213 ); //Eye Color
+// Mixture - Pelee Pablo
+set_color_profile_slot( 25, 0, 211, 31, 81 ); //Hat
+set_color_profile_slot( 25, 1, 41, 66, 149 ); //Undershirt
+set_color_profile_slot( 25, 2, 237, 240, 240 ); //Overalls
+set_color_profile_slot( 25, 3, 255, 164, 95 ); //Skin
+set_color_profile_slot( 25, 4, 237, 240, 240 ); //Gloves
+set_color_profile_slot( 25, 5, 200, 126, 30 ); //Button
+set_color_profile_slot( 25, 6, 89, 46, 19 ); //Shoes
+set_color_profile_slot( 25, 7, 17, 96, 127 ); //Eye Color
 
 // Evil Mario
 set_color_profile_slot( 26, 0, 96, 42, 36 ); //Hat
@@ -296,15 +296,105 @@ set_color_profile_slot( 26, 5, 208, 78, 52 ); //Button
 set_color_profile_slot( 26, 6, 96, 42, 36 ); //Shoes
 set_color_profile_slot( 26, 7, 0, 0, 0 ); //Eye Color
 
-// So Retro...
-set_color_profile_slot( 27, 0, 181, 49, 32 ); //Hat
-set_color_profile_slot( 27, 1, 107, 109, 0 ); //Undershirt
-set_color_profile_slot( 27, 2, 181, 49, 32 ); //Overalls
-set_color_profile_slot( 27, 3, 234, 158, 34 ); //Skin
-set_color_profile_slot( 27, 4, 234, 158, 34 ); //Gloves
-set_color_profile_slot( 27, 5, 234, 158, 34 ); //Button
-set_color_profile_slot( 27, 6, 107, 109, 0 ); //Shoes
-set_color_profile_slot( 27, 7, 107, 109, 0 ); //Eye Color
+// Seasonal (default coluhs)
+set_color_profile_slot( 27, 0, 238, 3, 16 ); //Hat
+set_color_profile_slot( 27, 1, 238, 3, 16 ); //Undershirt
+set_color_profile_slot( 27, 2, 0, 71, 204 ); //Overalls
+set_color_profile_slot( 27, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 27, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 27, 5, 255, 255, 0 ); //Button
+set_color_profile_slot( 27, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 27, 7, 4, 122, 213 ); //Eye Color
+
+switch(get_match_setting(SET_SEASON)){
+	case 1: // Valentines' Day
+		// Seasonal - Valentine's Day
+		set_color_profile_slot( 27, 0, 212, 0, 139 ); //Hat
+		set_color_profile_slot( 27, 1, 255, 133, 193 ); //Undershirt
+		set_color_profile_slot( 27, 2, 212, 0, 139 ); //Overalls
+		set_color_profile_slot( 27, 3, 242, 184, 184 ); //Skin
+		set_color_profile_slot( 27, 4, 243, 238, 243 ); //Gloves
+		set_color_profile_slot( 27, 5, 225, 73, 73 ); //Button
+		set_color_profile_slot( 27, 6, 101, 35, 65 ); //Shoes
+		set_color_profile_slot( 27, 7, 4, 122, 213 ); //Eye Color
+	break;
+	case 2: // Summer
+		// Seasonal - Summer
+		set_color_profile_slot( 27, 0, 111, 224, 221 ); //Hat
+		set_color_profile_slot( 27, 1, 255, 183, 79 ); //Undershirt
+		set_color_profile_slot( 27, 2, 111, 224, 221 ); //Overalls
+		set_color_profile_slot( 27, 3, 255, 183, 79 ); //Skin
+		set_color_profile_slot( 27, 4, 220, 241, 243 ); //Gloves
+		set_color_profile_slot( 27, 5, 255, 252, 114 ); //Button
+		set_color_profile_slot( 27, 6, 176, 49, 24 ); //Shoes
+		set_color_profile_slot( 27, 7, 255, 252, 114 ); //Eye Color
+	break;
+	
+	case 3: // Halloween
+		// Seasonal - Halloween
+		set_color_profile_slot( 27, 0, 101, 78, 67 ); //Hat
+		set_color_profile_slot( 27, 1, 132, 52, 48 ); //Undershirt
+		set_color_profile_slot( 27, 2, 74, 77, 93 ); //Overalls
+		set_color_profile_slot( 27, 3, 184, 197, 170 ); //Skin
+		set_color_profile_slot( 27, 4, 184, 197, 170 ); //Gloves
+		set_color_profile_slot( 27, 5, 152, 110, 71 ); //Button
+		set_color_profile_slot( 27, 6, 101, 78, 67 ); //Shoes
+		set_color_profile_slot( 27, 7, 184, 197, 170 ); //Eye Color
+	break;
+	
+	case 4: // Christmas
+		// Seasonal - Christmas
+		set_color_profile_slot( 27, 0, 255, 0, 0 ); //Hat
+		set_color_profile_slot( 27, 1, 199, 226, 240 ); //Undershirt
+		set_color_profile_slot( 27, 2, 255, 0, 0 ); //Overalls
+		set_color_profile_slot( 27, 3, 255, 205, 133 ); //Skin
+		set_color_profile_slot( 27, 4, 220, 241, 243 ); //Gloves
+		set_color_profile_slot( 27, 5, 0, 176, 48 ); //Button
+		set_color_profile_slot( 27, 6, 199, 226, 240 ); //Shoes
+		set_color_profile_slot( 27, 7, 4, 122, 213 ); //Eye Color
+	break;
+}
+
+
+// Retro
+set_color_profile_slot( 28, 0, 181, 49, 32 ); //Hat
+set_color_profile_slot( 28, 1, 107, 109, 0 ); //Undershirt
+set_color_profile_slot( 28, 2, 181, 49, 32 ); //Overalls
+set_color_profile_slot( 28, 3, 234, 158, 34 ); //Skin
+set_color_profile_slot( 28, 4, 234, 158, 34 ); //Gloves
+set_color_profile_slot( 28, 5, 234, 158, 34 ); //Button
+set_color_profile_slot( 28, 6, 107, 109, 0 ); //Shoes
+set_color_profile_slot( 28, 7, 107, 109, 0 ); //Eye Color
+
+// SMB3
+set_color_profile_slot( 29, 0, 178, 50, 38 ); //Hat
+set_color_profile_slot( 29, 1, 178, 50, 38 ); //Undershirt
+set_color_profile_slot( 29, 2, 0, 0, 0 ); //Overalls
+set_color_profile_slot( 29, 3, 254, 206, 199 ); //Skin
+set_color_profile_slot( 29, 4, 254, 206, 199 ); //Gloves
+set_color_profile_slot( 29, 5, 254, 206, 199 ); //Button
+set_color_profile_slot( 29, 6, 0, 0, 0 ); //Shoes
+set_color_profile_slot( 29, 7, 0, 0, 0 ); //Eye Color
+
+// World
+set_color_profile_slot( 30, 0, 242, 43, 95 ); //Hat
+set_color_profile_slot( 30, 1, 242, 43, 95 ); //Undershirt
+set_color_profile_slot( 30, 2, 82, 189, 175 ); //Overalls
+set_color_profile_slot( 30, 3, 246, 191, 161 ); //Skin
+set_color_profile_slot( 30, 4, 213, 241, 255 ); //Gloves
+set_color_profile_slot( 30, 5, 213, 241, 255 ); //Button
+set_color_profile_slot( 30, 6, 128, 88, 25 ); //Shoes
+set_color_profile_slot( 30, 7, 94, 94, 94 ); //Eye Color
+
+// Unmapped
+set_color_profile_slot( 31, 0, 238, 3, 16 ); //Hat
+set_color_profile_slot( 31, 1, 177, 3, 238 ); //Undershirt
+set_color_profile_slot( 31, 2, 0, 71, 204 ); //Overalls
+set_color_profile_slot( 31, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 31, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 31, 5, 255, 255, 0 ); //Button
+set_color_profile_slot( 31, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 31, 7, 4, 122, 213 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

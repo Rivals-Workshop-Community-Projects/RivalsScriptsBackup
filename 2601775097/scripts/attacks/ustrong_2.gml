@@ -98,6 +98,7 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_zap"));
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //final hit
 set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, hitbox_num);

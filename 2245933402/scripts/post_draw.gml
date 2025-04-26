@@ -8,13 +8,16 @@ if ostyle == 3 {
 if bullet == 1 {
 	draw_sprite(sprite_get("shell"), get_gameplay_time() / 3, x - 30, y - 100 );
 }
-
+if bullet == 2 {
+	draw_sprite(sprite_get("shell"), get_gameplay_time() / 3, x - 30, y - 100 );
+	draw_sprite(sprite_get("shell"), get_gameplay_time() / 3, x - 35, y - 100 );
+}
 if nbullet >= 1 {
 	draw_sprite(sprite_get("nbullet"), nbullet - 1, x + 28, y - 120 );
 }
 
 if bbullet >= 1 {
-	draw_sprite(sprite_get("bbullet"), nbullet - 1, x - 70, y - 120 );
+	draw_sprite(sprite_get("bbullet"), nbullet - 1, x - 76, y - 120 );
 }
 
 if dbullet >= 1 {

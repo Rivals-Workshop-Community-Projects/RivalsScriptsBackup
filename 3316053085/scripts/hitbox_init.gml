@@ -7,7 +7,8 @@ if (attack == AT_FSTRONG)
     draw_xscale = 1;
     orig_hsp = hsp;
     orig_vsp = vsp;
+    grounds = 1;
+    walls = 1;
 
     proj_lockout_set = 10;
-    //proj_lockout = 0;
 }

@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 2, 12, 22 );
 
 // eye
 set_color_profile_slot( 0, 4, 69, 103, 225 );
-set_color_profile_slot_range( 4, 1, 16, 8 );
+set_color_profile_slot_range( 4, 1, 1, 1 );
 
 // death
 set_color_profile_slot( 0, 5, 152, 91, 198 );
@@ -46,14 +46,14 @@ set_color_profile_slot( 1, 5, 52, 52, 84 ); //death
 set_color_profile_slot( 1, 6, 105, 117, 129 ); //death outline
 set_color_profile_slot( 1, 7, 145, 145, 184 ); //gas skull
 
-// Like an Enderman
-set_color_profile_slot( 2, 0, 71, 71, 71 ); //white
-set_color_profile_slot( 2, 1, 38, 38, 38 ); //white shade
-set_color_profile_slot( 2, 2, 81, 70, 102 ); //skin
-set_color_profile_slot( 2, 3, 182, 75, 196 ); //purple
-set_color_profile_slot( 2, 4, 247, 128, 255 ); //eye
-set_color_profile_slot( 2, 5, 51, 16, 77 ); //death
-set_color_profile_slot( 2, 6, 199, 61, 224 ); //death outline
+// end
+set_color_profile_slot( 2, 0, 77, 61, 120 ); //white
+set_color_profile_slot( 2, 1, 33, 17, 61 ); //white shad
+set_color_profile_slot( 2, 2, 129, 112, 163 ); //skin
+set_color_profile_slot( 2, 3, 161, 108, 217 ); //purple
+set_color_profile_slot( 2, 4, 145, 76, 217 ); //eye
+set_color_profile_slot( 2, 5, 91, 64, 133 ); //death
+set_color_profile_slot( 2, 6, 161, 108, 217 ); //death outline
 set_color_profile_slot( 2, 7, 119, 66, 158 ); //gas skull
 
 // ao
@@ -297,8 +297,10 @@ set_color_profile_slot( 26, 6, 199, 233, 237 ); //death outline
 set_color_profile_slot( 26, 7, 223, 241, 244 ); //gas skull
 
 
+
+
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hair","colors":[{"r":93,"g":77,"b":133,"main":true},{"r":58,"g":47,"b":87},{"r":35,"g":27,"b":56}]},{"name":"lev ","colors":[{"r":232,"g":234,"b":165,"main":true},{"r":172,"g":141,"b":115}]},{"name":"skirt","colors":[{"r":59,"g":53,"b":70,"main":true},{"r":36,"g":29,"b":49}]},{"name":"skin","colors":[{"r":211,"g":216,"b":252,"main":true},{"r":141,"g":150,"b":213},{"r":55,"g":61,"b":98}]},{"name":"dress","colors":[{"r":115,"g":31,"b":71,"main":true},{"r":80,"g":16,"b":38}]},{"name":"red","colors":[{"r":210,"g":5,"b":33,"main":true},{"r":139,"g":8,"b":26}]},{"name":"white","colors":[{"r":255,"g":251,"b":238,"main":true},{"r":204,"g":189,"b":142},{"r":255,"g":248,"b":101}]},{"name":"fire","colors":[{"r":243,"g":192,"b":255,"main":true},{"r":206,"g":84,"b":234},{"r":63,"g":0,"b":77}]}]}
+{"formatversion":1,"data":[{"name":"white","colors":[{"r":232,"g":224,"b":255,"main":true}]},{"name":"white shad","colors":[{"r":182,"g":158,"b":251,"main":true}]},{"name":"skin","colors":[{"r":68,"g":164,"b":115,"main":true},{"r":36,"g":117,"b":75},{"r":0,"g":85,"b":41}]},{"name":"purple","colors":[{"r":110,"g":103,"b":216,"main":true},{"r":67,"g":61,"b":164}]},{"name":"eye","colors":[{"r":69,"g":103,"b":225,"main":true}]},{"name":"death","colors":[{"r":152,"g":91,"b":198,"main":true},{"r":139,"g":62,"b":192},{"r":117,"g":40,"b":170}]},{"name":"death outline","colors":[{"r":55,"g":8,"b":87,"main":true}]},{"name":"gas skull","colors":[{"r":219,"g":167,"b":255,"main":true}]}]}
 === END JSON PALETTE ===
 */

@@ -4,10 +4,26 @@ switch(attack){
 	case AT_NSPECIAL:
 	if (was_parried == true || player_id.state == PS_PRATLAND || player_id.state == PS_PRATFALL){ instance_destroy(); }
 	if (hbox_num == 1){
-		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
+		if (hitbox_timer == 1){
+		player_id.nspecial_time -= round(1); 
+		if (get_player_color(player_id.player) != 8) { var gun_sound = (sound_get("Gun_heat")); }
+		if (get_player_color(player_id.player) == 8) { var gun_sound = (sound_get("EA_gun_heat")); }
+		if (player_id.nspecial_time < 11){
+		player_id.gun_heat_sound += 0.1;
+		sound_play((gun_sound), false, noone, player_id.gun_heat_sound, 1);
+			}
+		}
 	}
 	if (hbox_num == 2){
-		if (hitbox_timer == 1){ player_id.nspecial_time -= 1; }
+		if (hitbox_timer == 1){
+			player_id.nspecial_time -= round(1); 
+			if (get_player_color(player_id.player) != 8) { var gun_sound = (sound_get("Gun_heat")); }
+			if (get_player_color(player_id.player) == 8) { var gun_sound = (sound_get("EA_gun_heat")); }
+			if (player_id.nspecial_time < 11){
+			player_id.gun_heat_sound += 0.1;
+			sound_play((gun_sound), false, noone, player_id.gun_heat_sound, 1);
+			}
+		}
 		if (place_meeting( x, y+9, asset_get("par_block"))){
 		spark = true;
 		}
@@ -48,6 +64,10 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	    
     	if (spr_dir == 1){ proj_angle = mydir + 180; }
     	if (spr_dir == -1){ proj_angle = mydir; }
+    	
+    	if (hitbox_timer > 45){
+	    	destroyed = true;
+	    }
 	    
 	    with (asset_get("oPlayer")) {
 	        if (player != other.player){
@@ -118,6 +138,10 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	    
     	if (spr_dir == 1){ proj_angle = mydir + 180; }
     	if (spr_dir == -1){ proj_angle = mydir; }
+    	
+    	if (hitbox_timer > 45){
+	    	destroyed = true;
+	    }
 	    
 	    with (asset_get("oPlayer")) {
 	        if (player != other.player){
@@ -261,7 +285,10 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	break;
 	
 	case AT_FAIR:
-	if (hitbox_timer == 1){ sound_play(sound_get("Gun")); }
+	if (hitbox_timer == 1){
+		if (get_player_color(player_id.player) != 8) { sound_play(sound_get("Gun")); }
+		if (get_player_color(player_id.player) == 8) { sound_play(sound_get("EA_gun")); }
+	}
 	if ((place_meeting( x, y+9, asset_get("par_block"))) || (place_meeting( x, y+1, asset_get("par_jumpthrough"))) ||
 	!(player_id.attack == AT_FAIR)){ destroyed = true; }
 	
@@ -353,6 +380,64 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 			//player_id.white_flash_timer = 13;
 			}
 		}
+	}
+	if (hbox_num == 6){
+		if (hitbox_timer < 5 && place_meeting( x, y, asset_get("par_block"))){
+			instance_destroy();
+			exit;
+		}
+		if (hitbox_timer > 5 && place_meeting( x, y, player_id)){
+			//player_id.dspecial_charge += 1;
+			player_id.white_flash_timer = 2;
+			destroyed = true;
+		}
+		if (hitbox_timer <= 1){
+			var random_dir = random_func(0, 360, true);
+            hsp = lengthdir_x(250, random_dir);
+            vsp = lengthdir_y(250, random_dir);
+        	}
+		if (hitbox_timer >= 2 && hitbox_timer < 4){
+			hsp = lengthdir_x(0, random_dir);
+            vsp = lengthdir_y(0, random_dir);
+		}
+		if (hitbox_timer >= 4){ sprite_index = sprite_get( "lighspeed_orb" ); }
+		if (hitbox_timer >= 5 && hitbox_timer < 7){
+			var player_dir = point_direction(x,y,player_id.x+5,player_id.y-50);
+			var random_dir = random_func(0, 360, true);
+            hsp = lengthdir_x(4, player_dir + random_dir);
+            vsp = lengthdir_y(3, player_dir);
+            image_index = 1;
+        }
+		if (hitbox_timer >= 7 && hitbox_timer < 25){
+			var player_dir = point_direction(x,y,player_id.x+5,player_id.y-50);
+			//var moving_dir = point_direction(x,y,other.x,other.y);
+			hsp += lengthdir_x(1.5, player_dir);
+            vsp += lengthdir_y(1.5, player_dir);
+            var fly_dir = point_direction(0,0,hsp,vsp);
+            var fly_dist = point_distance(0,0,hsp,vsp);
+            if (fly_dist > 30){
+            hsp = lengthdir_x(30, fly_dir);
+            vsp = lengthdir_y(30, fly_dir);
+        	}
+		}
+	if (hitbox_timer >= 25){
+			var player_dir = point_direction(x,y,player_id.x+5,player_id.y-50);
+			//var moving_dir = point_direction(x,y,other.x,other.y);
+			hsp += lengthdir_x(9, player_dir);
+            vsp += lengthdir_y(9, player_dir);
+            var fly_dir = point_direction(0,0,hsp,vsp);
+            var fly_dist = point_distance(0,0,hsp,vsp);
+            if (fly_dist > 26){
+            hsp = lengthdir_x(26, fly_dir);
+            vsp = lengthdir_y(26, fly_dir);
+        }
+	}
+	if (hitbox_timer > 7){
+	var lightspeed_trail = spawn_hit_fx(x, y, player_id.DSpecial_lightspeed_trail);
+	lightspeed_trail.draw_angle = point_direction(0,0,hsp,vsp);
+	//lightspeed_trail.draw_angle = point_direction(hsp,vsp,0,0);
+	}
+	
 	}
 	break;
 	

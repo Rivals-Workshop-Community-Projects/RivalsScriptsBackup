@@ -1,6 +1,8 @@
 //update
 umbrellaleaf_recharge = clamp(umbrellaleaf_recharge, 0, 300);
 umbrellaleaf_recharge++;
+alert_text_timer = clamp(alert_text_timer, 0, 32);
+alert_text_timer--;
 
 if (state == PS_PARRY){
 	if (state_timer == 1){
@@ -28,6 +30,22 @@ if (state == PS_DASH || state == PS_DASH_STOP){
 if (attack == AT_DAIR){
 	if (window == 4 && window_timer == 0){ 
 		spawn_hit_fx(floor(x + 30*spr_dir),floor(y),splat_effect);
+		shake_camera( 4, 4 );
+		
+		if get_synced_var(player) == true {
+			var ground_test = collision_point(floor(x + 30 * spr_dir), floor(y), asset_get("par_block"), 1, 1)
+			var plat_test = collision_point(floor(x + 30 * spr_dir), floor(y), asset_get("par_jumpthrough"), 1, 1)
+			if (ground_test || plat_test) {
+				// destroy old graffiti
+				if instance_exists(graffiti_id) {
+					instance_destroy(graffiti_id);
+				}
+				// create new graffiti
+				graffiti_tagging = true; // must be set true before spawning
+				graffiti_id = instance_create(x + 30*spr_dir, y, "obj_article3");
+				graffiti_tagging = false; // must be set false after spawning
+			}
+		}
 	}
 }
 
@@ -45,7 +63,7 @@ if (umbrellaleaf_glide_used == true && !free)
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
 }
-if (practice_mode && attack == AT_TAUNT){
+if (practice_mode && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_TAUNT){
 	umbrellaleaf_recharge = 300;
 }
 

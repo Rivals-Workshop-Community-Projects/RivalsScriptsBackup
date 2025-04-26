@@ -67,4 +67,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("orb_proj"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.65);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);

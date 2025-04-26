@@ -71,7 +71,7 @@ muno_char_name = "Kodiak [DE]";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
-phone.uses_shader = false;
+phone.uses_shader = true;
 
 // If you use a custom phone sprite that's taller than the default, enter how
 // much taller it is here. (measured in ingame pixels; so if editing the default
@@ -253,6 +253,39 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.05", "25 Feb, 2025");
+initHeader("GENERAL:");
+initSection("* Updated the localisation files.
+* Fixed an 'overlooked' detail with the meter when Kodiak is KO'd. If the meter is over 50, it will reset to 50 on respawn. If the meter is below 50, it will reset to 0.
++ Charging FSTRONG and DSTRONG also builds meter too, though not as much compared to USTRONG's.
+* Kodiak now gains a small/reasonable vertical boost when he's out of meter when you try to use any special, but now it goes into pratfall.
+* Fixed another minor error debug message related to sound effects.");
+initHeader("NORMALs:");
+initSection("UTILT:
++ Base Hitpause increased from 9 -> 10
+- Hitpause scaling reduced from 0.60 -> 0.25
+
+FTILT:
++ Base Hitpause increased from 7 -> 8
+- Hitpause scaling reduced from 0.60 -> 0.25
+* Changed the visual hit effect
+
+FSTRONG:
++ Added another hitbox to act as the move's sweetspot.
++ Base Knockback set to 8
++ Knockback scaling set to 1.15
+(hitbox 2, the previous single hitbox)
+- Knockback scaling reduced from 1.10 -> 1
+- Base Hitpause reduced from 15 -> 10
+- Hitpause scaling reduced from 1 -> 0.70
+
+UAIR:
+* Changed the hitbox from a curved rectangle to a circle.
++ Base Hitpause increased from 6 -> 7
+- Hitpause scaling reduced from 0.60 -> 0.35");
+initHeader("~BONUS~:");
+initSection("Updated the Dialogue Buddy lines against Brella, Camic, Randalf Rhino, Geebs and Rayman");
 
 initPatch("1.04", "25 April, 2024");
 initHeader("GENERAL:");

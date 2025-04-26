@@ -67,6 +67,7 @@ if (state == 0){
     			hitbox_hit.player_id.has_hit = true
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
+    			counter_x = hitbox_hit.player_id.x;
     			state = 2;
 				state_timer = 0;
     		}
@@ -125,6 +126,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 1) { //activates back 
     			hitbox_hit.player_id.has_hit = true
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
+    			counter_x = hitbox_hit.player_id.x;
     			state = 3;
     			state_timer = 0;
     		}
@@ -147,6 +149,12 @@ if (state == 2){
         counter_drop = 1;
         player_id.counter_drop = counter_drop;
 	with(player_id){
+		if(other.counter_x >= x){
+			spr_dir = 1;
+		}else{
+			spr_dir = -1;	
+		}
+		
 	attack_end();
 	set_attack(AT_DSPECIAL_2);
 	}
@@ -163,7 +171,11 @@ if (state == 3){
         counter_drop = 2;
         player_id.counter_drop = counter_drop;
 	with(player_id){
-	spr_dir = spr_dir * -1;
+		if(other.counter_x >= x){
+			spr_dir = 1;
+		}else{
+			spr_dir = -1;	
+		}
 	attack_end();
 	set_attack(AT_DSPECIAL_2);
 	}

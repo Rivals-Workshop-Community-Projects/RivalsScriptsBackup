@@ -1,4 +1,28 @@
 
+
+// if(variable_instance_exists(self, "fs_using_final_smash") && fs_using_final_smash && !custom_clone)
+// {
+//   our_x = temp_x + 115;
+//   our_y = temp_y - 22;
+
+//   range_x_down = our_x-2;
+//   range_y_down = our_y-2;
+//   range_x_up = our_x+2;
+//   range_y_up = our_y+2;
+
+//   for (var ix = range_x_down; ix <= range_x_up; ix++)
+//   {
+//     for (var jy = range_y_down; jy <= range_y_up; jy++)
+//     {
+//       draw_text_color(ix, jy, "cl_interp 0", c_black,c_black,c_black,c_black, 1);
+//     }
+//   }
+//   draw_text_color(our_x, our_y, "cl_interp 0", c_white,c_white,c_white,c_white, 1);
+//   //TODO: why does it just draw numbers if more than 1 player??
+// }
+
+
+
 if(inTauntMenu || tauntAnimTimer1 > 0)
 {
   var xOff = -20;
@@ -8,20 +32,36 @@ if(inTauntMenu || tauntAnimTimer1 > 0)
 	var animOffY1 = tauntAnimDur*animVertMul-tauntAnimTimer1*animVertMul;
 	var animAlpha1 = tauntAnimTimer1/tauntAnimDur;
     
-    draw_sprite_ext(sprite_get("hudDisguiseKit"), 0, 
+    draw_sprite_ext(sprite_get("hudHint"), 0, 
+			    temp_x+xOff, 
+			    temp_y+yOff+animOffY1, 
+			    1, 1, 0, c_white, 1*animAlpha1);
+}
+if(inTerminalTauntMenu || terminalTauntAnimTimer > 0)
+{
+  var xOff = -20;
+  var yOff = -174;
+  var animVertMul = 0.5;
+
+	var animOffY1 = tauntAnimDur*animVertMul-terminalTauntAnimTimer*animVertMul;
+	var animAlpha1 = terminalTauntAnimTimer/tauntAnimDur;
+    
+    draw_sprite_ext(sprite_get("hudHint"), 1, 
 			    temp_x+xOff, 
 			    temp_y+yOff+animOffY1, 
 			    1, 1, 0, c_white, 1*animAlpha1);
 }
 
-draw_sprite_ext(sprite_get("hud"), 0, temp_x - 8, temp_y - 46, 1, 1, 0, get_player_hud_color(player), 1);
-draw_sprite_ext(sprite_get("hud"), 1, temp_x - 8, temp_y - 46, 1, 1, 0, c_white, 1);
+draw_sprite_ext(sprite_get("hud"), 0, temp_x - 8, temp_y - 48, 1, 1, 0, get_player_hud_color(player), 1);
+draw_sprite_ext(sprite_get("hud"), 1, temp_x - 8, temp_y - 48, 1, 1, 0, c_white, 1);
+if(variable_instance_exists(self, "fs_using_final_smash") && fs_using_final_smash && !custom_clone)
+  draw_sprite_ext(sprite_get("hud"), 2, temp_x - 8, temp_y - 48, 1, 1, 0, c_white, 1);
 
 var cloakLineLength = 19*2;
-cloakLineLength *= (invisTimer/invisTimerMax);
-draw_line_width_color(temp_x+3, temp_y-27, temp_x + 3 + cloakLineLength, temp_y-27, 8, c_white, c_white);
+cloakLineLength *= (min(invisTimer, invisTimerMax)/invisTimerMax);
+draw_line_width_color(temp_x+3, temp_y-29, temp_x + 3 + cloakLineLength, temp_y-29, 8, c_white, c_white);
 
-draw_sprite_ext(sprite_get("hud_numbers_big"), crits, temp_x+74, temp_y-40, 1, 1, 0, c_white, 1);
+draw_sprite_ext(sprite_get("hud_numbers_big"), crits, temp_x+76, temp_y-42, 1, 1, 0, c_white, 1);
 
 /*with(oPlayer)
 {

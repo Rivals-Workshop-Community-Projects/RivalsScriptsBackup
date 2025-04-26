@@ -99,3 +99,6 @@ set_hitbox_value(AT_FTILT, 3, HG_SDI_MULTIPLIER, 2);
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, -4);
 set_hitbox_value(AT_FTILT, 2, HG_EXTRA_HITPAUSE, -4);
 set_hitbox_value(AT_FTILT, 3, HG_SDI_MULTIPLIER, 2);
+
+set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
+set_hitbox_value(AT_FTILT, 2, HG_TECHABLE, 1);

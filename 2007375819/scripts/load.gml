@@ -87,6 +87,7 @@ sprite_change_offset("h_hud", 20, 38);
 sprite_change_offset("h_hud_overlay", 20, 38);
 sprite_change_offset("uspecial_fuel", 23, 14);
 sprite_change_offset("tauntpics", 35, 25);
+	sprite_change_offset("tauntpics_cprgt", 35, 25);
 sprite_change_offset("blueybottaunt", 35, 25);
 sprite_change_offset("notaunt", 35, 25);
 set_victory_bg( sprite_get( "victorybg" ));
@@ -95,3 +96,10 @@ sprite_change_offset("appear", 28, 28);
 sprite_change_offset("tv", 18, 18);
 sprite_change_offset("fspecial_hud_h", 18, 18);
 sprite_change_offset("fspecial_hud_pizza", 18, 18);
+
+
+if copyright {
+	FStrongPictureSprite = sprite_get("tauntpics_cprgt");	
+}	else {
+	FStrongPictureSprite = sprite_get("tauntpics");	
+}

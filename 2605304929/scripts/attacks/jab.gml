@@ -38,19 +38,20 @@ window_num++;
 
 // Window #3 / Frame(s) # 4-6 / Jab 1 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 4);
+set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 6);
 
 window_num++;
 
 // Window #4 / Frame(s) # 7-9 / Jab 2 Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1")); // asset_get("sfx_swipe_weak1") or sound_get("")
 set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, get_window_value(attack,window_num,AG_WINDOW_LENGTH) -1);
@@ -67,17 +68,17 @@ window_num++;
 
 // Window #6 / Frame(s) # 11-16 / Jab 2 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 16);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 4);
+set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 5);
 
 window_num++;
 
 // Window #7 / Frame(s) # 17-22 / Jab 3 Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 8);
@@ -153,12 +154,12 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -34);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 52);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 37);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 361);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
@@ -177,7 +178,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -38);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 78);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 41);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 361);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
@@ -186,7 +187,6 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_water);
 set_hitbox_value(attack, hitbox_num, 81, "Jab 2");//HG_MUNO_HITBOX_NAME
 

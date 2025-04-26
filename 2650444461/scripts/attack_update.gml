@@ -125,24 +125,20 @@ if (attack == AT_NSPECIAL){
     can_fast_fall = false;
     if(window == 2){
 	    grav = 0.08;
-		if(vsp > 2){
-			vsp *= 0.9;
-		}
+		if(vsp > 2)vsp *= 0.9;
 		if(window_timer == 5 && !hitpause){
 			sound_play(sound_get("Mud Sport"));
 			spawn_hit_fx(x+20*spr_dir,y-15,fx_mudsplash);spawn_hit_fx(x-20*spr_dir,y-15,fx_mudsplash);
 			spawn_hit_fx(x+20*spr_dir,y-50,fx_mudsplash);spawn_hit_fx(x-20*spr_dir,y-50,fx_mudsplash);
 			if(ds_grid_get(mud_puddles,ds_grid_width(mud_puddles)-1,0) != 0){
-				ds_grid_get(mud_puddles,0,0).hitbox_timer = ds_grid_get(mud_puddles,0,0).length;	
+				if("hitbox_timer" in ds_grid_get(mud_puddles,0,0)){
+					ds_grid_get(mud_puddles,0,0).hitbox_timer = ds_grid_get(mud_puddles,0,0).length;	
+				}
 				for(var i = 0; i < ds_grid_width(mud_puddles); i++){
 					ds_grid_set(mud_puddles,i-1,0,ds_grid_get(mud_puddles,i,0));ds_grid_set(mud_puddles,i,0,0);
 				}
 			}
-			if(freemd){
-				var puddle = create_hitbox(AT_DSPECIAL, 2, x, y);
-			}else{
-				var puddle = create_hitbox(AT_DSPECIAL, 2, x, y-10);
-			}
+			var puddle = create_hitbox(AT_DSPECIAL, 2, x, freemd ? y : y-10);
 			var pudl = false;
 			for(var i = 0; i < ds_grid_width(mud_puddles); i++){
 				if(ds_grid_get(mud_puddles,i,0) == 0 && !pudl){

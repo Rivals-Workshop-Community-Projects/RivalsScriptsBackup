@@ -356,7 +356,8 @@ if (is_attacking && !hitpause) switch (attack)
         spawn_base_dust(x, y - 32, "djump", 0, spr_dir ? 300 : 60, 4, 0);
         if ((window == 8 || window == 9) && state_timer % 5 == 0)
         {
-            spawn_base_dust(x, y - 24 - lengthdir_y(10, point_direction(0, 0, hsp, vsp)), "djump", 1, point_direction(0, 0, hsp, vsp) - 90);
+            if (window_loops > 0) spawn_base_dust(x, y - 24 - lengthdir_y(10, point_direction(0, 0, hsp, vsp)), "djump", 1, point_direction(0, 0, hsp, vsp) - 90);
+			else spawn_base_dust(x, y - 24 - lengthdir_y(10, point_direction(0, 0, hsp, vsp)), "djump", 1, spr_dir == 1 ? 270 : 90);
         }
         
         if (abs(hsp) > 0.75) spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 11, 0);
@@ -418,7 +419,10 @@ with (oPlayer) if (hit_player_obj == other)
     var win = argument_count > 5 ? argument[5] : -10;
     var win_time = argument_count > 6 ? argument[6] : 0;
 
-    if (!hitpause && (win > 0 && win == window && win_time == window_timer || win == -10) ) //spawns it whenever we want for 1 frame
+	var check_win_time = has_boost_atk_rune && (boost_mode || is_super) ? floor(win_time * boost_atk_spd_mult) : win_time;
+	if (check_win_time >= window_end) check_win_time --;
+
+    if (!hitpause && (win > 0 && win == window && check_win_time == window_timer || win == -10) ) //spawns it whenever we want for 1 frame
     {
         switch (name) {
             default: 

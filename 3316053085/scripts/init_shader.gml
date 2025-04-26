@@ -144,9 +144,9 @@ else
             break;
         case 21: set_shading(1.5, 1.5, 1, 1, 1, 1, 1, 1); break; //kiku
         case 22: set_shading(1, 1, 1, 0.7, 0.7, 1, 2, 1); break; //kim
-        case 26: set_outline(90, 43, 55); break; //theikos
-        case 27: set_shading(1.5, 1.2, 1, 1, 1, 1, 0.7, 1); break; //all-star heroines
-        case 28: //hud color
+        case 26: set_shading(1.5, 1.2, 1, 1, 1, 1, 0.7, 1); break; //all-star heroines
+        case 27: set_outline(90, 43, 55); break; //theikos
+        case 30: //hud color
             var hud_r = color_get_red(get_player_hud_color(player))/255;
             var hud_g = color_get_green(get_player_hud_color(player))/255;
             var hud_b = color_get_blue(get_player_hud_color(player))/255;
@@ -184,7 +184,7 @@ else
             break;
     }
 
-    if (alt_cur == 0 || alt_cur == 27)
+    if (alt_cur == 0 || alt_cur == 30)
     {
         if ("alt_hair_apply" in self && alt_hair_apply)
         {

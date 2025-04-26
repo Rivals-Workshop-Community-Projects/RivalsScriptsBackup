@@ -13,9 +13,11 @@ uses_shader = true;
 offset = 0;
 should_die = false;
 busy = false;
-
+hits = 0;
 hsp = 0;
 owner = player_id.player;
+is_hittable = true;
+hitpause_time = 0;
 
 while(!position_meeting(x,bbox_bottom+1,asset_get("par_block")) && !position_meeting(x,bbox_bottom+1,asset_get("par_jumpthrough"))){
     y++;

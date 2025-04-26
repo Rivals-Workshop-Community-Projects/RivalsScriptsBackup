@@ -33,6 +33,7 @@ death_sound_chance_var = random_func( 0, 100, true );
 death_sound_var = random_func( 1, 5, true );
 
 // 10% chance to play 1 of 4 death sounds
+/*
 if (death_sound_chance_var > 89) {
 	if (death_sound_var == 0) {
 		sound_play(sound_get("soldier_die1"), false, noone, 1, 1);
@@ -47,5 +48,6 @@ if (death_sound_chance_var > 89) {
 		sound_play(sound_get("soldier_die4"), false, noone, 1, 1);
 	}
 }
+*/
 
 //print_debug(death_sound_chance_var);

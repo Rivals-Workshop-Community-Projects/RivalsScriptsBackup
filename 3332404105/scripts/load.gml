@@ -244,5 +244,7 @@ sprite_change_offset("sbahj_fx_txt_thwak", 33, 21);
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_back", 64, 94);
 sprite_change_offset("nspecial_proj", 64, 94);
+
 sprite_change_offset("z_miiverse_post", 64, 30);
+sprite_change_offset("z_guilty", 31, 0);
 sprite_change_offset("z_resort_portrait", 27, 39);

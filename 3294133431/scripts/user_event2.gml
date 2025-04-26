@@ -5,6 +5,7 @@ if(disguised)
 {
 	disguised = false;
 	currAlt = orgAlt;
+	init_shader();
 
 	tauntAnimStartDelay = tauntAnimStartDelayNotDisguised;
 	

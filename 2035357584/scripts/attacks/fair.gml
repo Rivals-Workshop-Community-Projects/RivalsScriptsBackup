@@ -25,7 +25,7 @@ set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 //fair end
-set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -51,11 +51,11 @@ with(pHitBox){
                     sound_play(sound_get("pistol"));
             
                     //destroy grenade
-                    var expl = create_hitbox(other.AT_EXPLOSION, 1, round(x) + other.ex_x_off_air * other.spr_dir, y + other.ex_y_off_air);
+                    var expl = create_hitbox(other.AT_EXPLOSION, 1, round(x)+ other.ex_x_off_air * (other.spr_dir * -1), y + other.ex_y_off_air);
                     if(!other.runeH && !other.h_rune){
                         expl.player = 0;
                     } 
-                    spawn_hit_fx(round(x), y, other.air_explosion);
+                    spawn_hit_fx(round(x) - (spr_dir * 2), y - 24, other.air_explosion);
                     sound_play(sound_get("explosion1"));
                     destroyed = true;
                     if (other.runeL || other.l_rune) {

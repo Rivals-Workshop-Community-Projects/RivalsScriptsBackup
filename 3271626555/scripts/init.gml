@@ -195,6 +195,8 @@ backstab_grab = false;
 ustrong_grab = false;
 
 fspecial_push = 0;
+fspecial_cancel_timer = 0;
+fspecial_cancel_timer_max = 27;
 
 stamina = 0;
 stamina_cooldown = 0;

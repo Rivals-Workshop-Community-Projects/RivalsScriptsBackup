@@ -3,7 +3,7 @@
 
 var icon_x = 176
 var icon_y = 112
-if (get_synced_var( player )==0){//A
+if (var_localstorage==0){//A
 	switch(get_player_color( player )){
 		case 6:
 		draw_sprite_ext(sprite_get("z_css_icons"),3,x+icon_x,y+icon_y,2,2,0,-1,1);
@@ -12,8 +12,8 @@ if (get_synced_var( player )==0){//A
 		draw_sprite_ext(sprite_get("z_ea_outline"),1,x+8,y+8,2,2,0,-1,1);
 		draw_sprite_ext(sprite_get("z_css_icons"),6,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
-		case 8://great riptide icon by reiga its open source its free
-		draw_sprite_ext(sprite_get("z_css_icons"),10,x+icon_x,y+icon_y,2,2,0,-1,1);
+		case 8:
+		draw_sprite_ext(sprite_get("z_css_icons"),0,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 9:
 		case 10:
@@ -28,7 +28,7 @@ if (get_synced_var( player )==0){//A
 		default: break;
 	}
 }
-if (get_synced_var( player )==3){//D???
+if (var_localstorage==3){//D???
 	switch(get_player_color( player )){
 		case 1:
 		draw_sprite_ext(sprite_get("z_css_icons"),9,x+icon_x,y+icon_y,2,2,0,-1,1);
@@ -179,8 +179,24 @@ if (reset_color_list == true){
 	ce[6,1] = "Abyss"
 	ce[7,0] = make_color_rgb(167, 186, 74)
 	ce[7,1] = "Early Access"
-	ce[8,0] = make_color_rgb(0, 217, 224)
-	ce[8,1] = "Sorbet"//will be Seasonal later
+	switch(get_match_setting( SET_SEASON )){
+		case 1: //spring
+			ce[8,0] = make_color_rgb(255, 163, 238)
+			ce[8,1] = "Seasonal ~ Cupid"
+		break;
+		case 2: //summer
+			ce[8,0] = make_color_rgb(99, 226, 230)
+			ce[8,1] = "Seasonal ~ Seafoam"
+		break;
+		case 3: //autumn
+			ce[8,0] = make_color_rgb(57, 64, 60)
+			ce[8,1] = "Seasonal ~ Interloper"
+		break;
+		case 4: //winter
+			ce[8,0] = make_color_rgb(235, 66, 82)
+			ce[8,1] = "Seasonal ~ SANTA!!"
+		break;
+	}
 	ce[9,0] = make_color_rgb(48, 74, 60)
 	ce[9,1] = "Doomsday Forever"
 	ce[10,0] = make_color_rgb(113, 230, 119)
@@ -316,7 +332,7 @@ if (reset_color_list == true){
 		break;
 		case 4: //winter
 			ce[9,0] = make_color_rgb(235, 66, 82)
-			ce[9,1] = "Seasonal ~ SANTA"
+			ce[9,1] = "Seasonal ~ SANTA!!"
 		break;
 	}
 	ce[10,0] = make_color_rgb(0, 255, 123)

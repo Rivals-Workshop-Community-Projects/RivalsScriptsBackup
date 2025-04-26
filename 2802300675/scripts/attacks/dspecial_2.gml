@@ -2,7 +2,7 @@ set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial_boosted"));
 set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_DSPECIAL_2, AG_HAS_LANDING_LAG, 4);
-set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 1);
+set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("dspecial_boosted"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 

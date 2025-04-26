@@ -47,7 +47,7 @@ if (winner == player)
     if (quote_current_pos_x > hide_pos_x)
     {
         draw_sprite(sprite_get("win_quote_bg"), 0, quote_current_pos_x, quote_pos_y);
-        draw_win_quote(quote_current_pos_x+117, quote_pos_y+7, bar_victory_quote);
+        draw_win_quote(quote_current_pos_x+108, quote_pos_y+7, bar_victory_quote);
 
         draw_sprite(sprite_get("win_quote_emote"), emote, quote_current_pos_x+12, quote_pos_y+9)
     }
@@ -58,7 +58,7 @@ if (winner == player)
 {
     var text_scale = 3; //3x3 pixels
     var half_scale = text_scale/2; //font is already 2x2
-    var max_line_length = floor(600 / text_scale);
+    var max_line_length = floor(700 / text_scale);
     var line_spacing = 20;
     draw_set_font(asset_get("fName"));
     draw_set_halign(fa_left);

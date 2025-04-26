@@ -51,30 +51,9 @@ if (theikos_event_runtime == 0)
     wait_time                   = 0; //theikos bar has no wait animation
 
     mp_gain_rate = 100;
-    holyburn_timer_set = holyburn_timer_set * (theikos_mult+theikos_type);
-    lightstun_active_set = lightstun_active_set * (theikos_mult+theikos_type);
+    lightstun_active_set = lightstun_active_set * theikos_mult;
 
     rune_A_airdash_speed = 22;
-
-    if (theikos_type == 2)
-    {
-        mp_max = 200;
-        mp_current = mp_max;
-
-        infinite_mp_mode = true;
-        lightstun_active = true;
-
-        rune_A_active = true;
-
-        rune_D_active = true;
-        set_attack_value(AT_DAIR, AG_CATEGORY, 2);
-        set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 5);
-        set_num_hitboxes(AT_DAIR, 3);
-
-        rune_G_active = true;
-
-        can_overdrive = true;
-    }
 }
 
 theikos_event_runtime ++;
@@ -89,13 +68,13 @@ if (theikos_event_runtime > 0)
     if (djumps > 0) djumps = 0; //he used to have 50 djumps but now his jumps just constnatly refresh
     glide_stamina = glide_stamina_max;
     rune_A_cd = 0;
-    soft_armor = (is_attacking || theikos_type == 2) ? 999999 : 10;
+    soft_armor = (is_attacking) ? 999999 : 16;
     if (state == PS_PRATLAND || state == PS_PRATFALL) set_state(free ? PS_IDLE_AIR : PS_IDLE);
 
     //taunt insta kill
     if (is_attacking && attack == AT_TAUNT && window == 7 && has_hit_player)
     {
-        create_deathbox(x-16, y-42, 1, 1, has_hit_id.player, true, 1, 1, 1);
+        create_deathbox(x-16, y-42, 100, 100, has_hit_id.player, true, 1, 1, 1);
         if (!hitpause) has_hit = false;
     }
 
@@ -110,13 +89,6 @@ if (theikos_event_runtime > 0)
     if (prev_attack != attack || attack == AT_NAIR) move_cooldown[prev_attack] = 0; //if the attack isn't the previous attack put no cooldown
 
     prev_attack = attack;
-
-    if (theikos_type == 2)
-    {
-        if (get_gameplay_time() % 60 == 0) take_damage(player, player, -1);
-
-        if (get_gameplay_time() % 10 == 0 && od_cast == 0) od_current ++;
-    }
 }
 
 ////////////////////////////////////////////////////////// #DEFINE SECTION //////////////////////////////////////////////////////////

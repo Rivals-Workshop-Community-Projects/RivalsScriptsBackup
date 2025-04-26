@@ -16,7 +16,8 @@ if (attack == AT_NSPECIAL){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	if(!instance_exists(thedice1) || !instance_exists(thedice2)){
         		sound_play(asset_get("sfx_swipe_medium1"));
-	        	var dice = create_hitbox(AT_NSPECIAL, 1, round(x+30*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+30*spr_dir), round(y-35));
+	        	var dice = create_hitbox(AT_NSPECIAL, 1, round(x+30*spr_dir), round(y-35));
+	        	var hitcol = create_hitbox(AT_NSPECIAL, 2, round(x+30*spr_dir), round(y-35));dice.thedice = hitcol;hitcol.thedice = dice;
 	        	if(right_down && spr_dir == 1 || left_down && spr_dir == -1){
 	        		if(up_down){
 	        			dice.hsp *= 1.5;dice.vsp *= 1.75;
@@ -60,12 +61,14 @@ if (attack == AT_NSPECIAL){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	if(!instance_exists(thetoken)){
 	        	if(fspec_charge >= 30 && current_money >= 3000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 2, round(x+55*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));
+	        		thetoken = create_hitbox(AT_FSPECIAL, 2, round(x+55*spr_dir), round(y-35));
+	        		var hitcol = create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));thetoken.thedice = hitcol;hitcol.thedice = thetoken;
 	        		current_money -= 3000*discount;
 	        		rand = random_func(0, 3, true);                    
             		sound_play(sound_get("money_pickup"+string(rand+1)));
 	        	}else if(current_money >= 1000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 1, round(x+55*spr_dir), round(y-35));create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));
+	        		thetoken = create_hitbox(AT_FSPECIAL, 1, round(x+55*spr_dir), round(y-35));
+	        		var hitcol = create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));thetoken.thedice = hitcol;hitcol.thedice = thetoken;
 	        		current_money -= 1000*discount;
 	        	}else{
 					create_hitbox(AT_JAB, 12, round(x+55*spr_dir), round(y-35));
@@ -396,19 +399,19 @@ if (attack == AT_NSPECIAL){
         KoB_reverse();
     }else if(window == 2 && !hitpause){
     	dspec_charge += 1;
-    	if(dspec_charge < 30 && current_money >= 5000 || current_money < 10000){
+    	if(dspec_charge < 30 && current_money >= 5000*discount || current_money < 10000*discount){
         	set_attack_value(AT_DSPECIAL, AG_SPRITE, dspec_sprite1);
-		}else if(dspec_charge < 60 && current_money >= 10000 || current_money < 30000){
+		}else if(dspec_charge < 60 && current_money >= 10000*discount || current_money < 30000*discount){
         	set_attack_value(AT_DSPECIAL, AG_SPRITE, dspec_sprite2);
-		}else if(current_money >= 30000){
+		}else if(current_money >= 30000*discount){
         	set_attack_value(AT_DSPECIAL, AG_SPRITE, dspec_sprite3);
     	}
-    	if(current_money < 5000){
+    	if(current_money < 5000*discount){
 			set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_empty"));
 		}
-        if(!special_down || dspec_charge >= 60 && current_money < 10000 || dspec_charge >= 90 && current_money < 30000 || dspec_charge >= 120 || current_money < 5000){
+        if(!special_down || dspec_charge >= 60 && current_money < 10000*discount || dspec_charge >= 90 && current_money < 30000*discount || dspec_charge >= 120 || current_money < 5000*discount){
         	window = 3;window_timer = 0;
-        	if(current_money >= 5000){
+        	if(current_money >= 5000*discount){
         		vsp = -8;
         	}else{
         		
@@ -562,6 +565,8 @@ if (attack == AT_NSPECIAL){
 				create_hitbox(AT_JAB, 12, round(x+65*spr_dir), round(y-35));
 			}
     	}
+	}if(window == 9 && window_timer == 2 && !hitpause){
+		if((attack_down || up_stick_down) && ("temp_level" not in self || "temp_level" in self && temp_level <= 0))window_timer -= 1;
 	}
 }else if(attack == AT_DATTACK){
 	can_fast_fall = false;
@@ -717,6 +722,9 @@ if (attack == AT_NSPECIAL){
 				var dust = create_hitbox(AT_JAB, 12, round(x+50*spr_dir), round(y-65));dust.hsp *= 0.5;dust.vsp *= 1.75;
 			}
     	}
+	}
+	if(window == 3 && window_timer == 2 && !hitpause){
+		if((attack_down || up_stick_down) && ("temp_level" not in self || "temp_level" in self && temp_level <= 0))window_timer -= 1;
 	}
 }else if (attack == AT_DTILT){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
@@ -956,9 +964,9 @@ if (attack == AT_NSPECIAL){
 		    }
 	    }
     }
-    if(window == 2){
+    if(window == 2 || window == 5 || window == 8){
     	if(!taunt_down){
-	    	window = 3;window_timer = 0;
+	    	window += 1;window_timer = 0;
 	    }
     }
     
@@ -969,10 +977,6 @@ if (attack == AT_NSPECIAL){
 		    		toggleplatform = true;
 		    	}
 		    }
-	    }
-    }else if(window == 5){
-    	if(!taunt_down){
-	    	window = 6;window_timer = 0;
 	    }
     }
     

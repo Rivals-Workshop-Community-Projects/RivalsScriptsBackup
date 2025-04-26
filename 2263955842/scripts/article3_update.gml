@@ -1,4 +1,5 @@
 //article1_update
+/* This file is currently unused.
 // NSPECIAL YIN YANG
 
 
@@ -16,14 +17,17 @@ switch (state)
     
     
          yy_hitbox = noone
-        with (obj_article2)
+        /*with (obj_article2)
         {
             if (player_id == other.player_id)
             {
                 other.yy_hitbox = my_hitbox;
             }
-        }
+        }*/
     
+//    
+/* This file is currently unused.
+//
     
         var _team = get_player_team(player_id.player);
             var hitboxHit = noone;

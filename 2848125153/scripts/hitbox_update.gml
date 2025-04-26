@@ -585,16 +585,17 @@ if(attack == AT_DSPECIAL){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 && type <= 1){
     	            		if(throws_rock < 1 && type <= 1 && !other.player_id.runeF){
     	            			other.hp -= round(damage*(1+(player_id.strong_charge/100)));
+    	            			if(other.hp <= 0)other.destroyedbyplayer = true;
     	            		}
 	    	                other.hitplayertimer -= 10;
-	    	                other.hitlockout = 6;other.hitlockout2 = 10;
+	    	                other.hitlockout = 60;other.hitlockout2 = 60;
 	    	        		if(type <= 1){
 	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
 	    	        			if(other.hitpausehit <= 0){
-	    	        				other.hitpausehit = 3;
+	    	        				other.hitpausehit = 2;
 	    	        			}
 	    	        			other.hitstop = other.hitpausehit;
-	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+	    	        			player_id.hitpause = true;player_id.hitstop = round(other.hitpausehit/2);
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
 	                			player_id.has_hit = true;
 	                			//to make certain characters bounce
@@ -700,7 +701,7 @@ if(attack == AT_DSPECIAL){
 		            var fire2 = spawn_hit_fx(round(x+(-70+random_func(4, 140, true))), round(y+(-100+random_func(5, 140, true))), player_id.fx_fire2);fire2.depth = depth-1;
 		        }
 	    	}
-	    	if(housemoney > 0 && (hbox_num <= 2 || playerdead || was_parried2) && y < room_height){
+	    	if(housemoney > 0 && (hbox_num <= 2 || playerdead || was_parried2 || destroyedbyplayer) && y < room_height){
 	    		sound_play(player_id.moneysfx1,false,noone,2);
 				sound_play(player_id.moneysfx2,false,noone,2);
 	    		if(housemoney >= 600){
@@ -786,7 +787,7 @@ if(attack == AT_DSPECIAL){
 						var explode = spawn_hit_fx(round(x) , round(y-45), player_id.fx_explosion_big);explode.draw_angle = random_func(0, 360, true);spawn_hit_fx(round(x) , round(y-45), 304);
 						sound_play(sound_get("explosion"));sound_play(player_id.moneybaghitsfx2,false,noone,1);shake_camera(20, 12);
 						spawn_hitbox(AT_DSPECIAL, 6, round(x), round(y-45));
-						if(y < room_height && !was_parried2){
+						if(y < room_height && !was_parried2 && !destroyedbyplayer){
 							player_id.current_money += housemoney;housemoney = 0;
 							sound_play(player_id.moneysfx1,false,noone,2);sound_play(player_id.soldsfx,false,noone,3);
 						}

@@ -33,7 +33,7 @@ switch(attack){
         if(window == 1 && window_timer == 1)move_cooldown[attack] = 999;
          if (has_hit && (window == 5 || window == 8) && !was_parried) can_jump = true;
         vsp = min(vsp,1);
-        if(free)hsp*=.86;
+        if(free)hsp*=.7;
     break;
     case AT_FSPECIAL:
         switch (window) {
@@ -186,10 +186,16 @@ switch(attack){
             hsp = 0;
             can_move = false;
             if(!free){
-                if(shield_down && !was_parried){
+                if(shield_down){
                     sound_play(sound_get("sfx_airdodge"));
-                    set_state(PS_WAVELAND);
-                    hsp = 9*spr_dir;
+                    set_state(PS_LANDING_LAG);
+                    if has_hit {
+                        landing_lag_time= 16
+                    }else{
+                        landing_lag_time= 24
+                    }
+                    
+                    //hsp = 4*spr_dir;
                 }
             }
         }

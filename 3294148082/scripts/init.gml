@@ -9,6 +9,7 @@ rblastzone = 0
 lblastzone = 0
 washovering = 0
 tblastzone = 0
+chao_type = 2;
 lastx = 0
 bblastzone = 0
 	walljumpsused = 0

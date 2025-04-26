@@ -27,7 +27,7 @@ if ("super_col_lerp_time" in self && ("is_fake_x" not in self || is_fake_x == fa
             var col_b = 0;
 
             //aura and portrait light colors doesn't need to lerp
-            if(i == 0)
+            if (i == 0)
             {
                 if (get_color_profile_slot_r(alt_cur, 0) != 999) //filter colors that don't change
                 {
@@ -52,6 +52,7 @@ if ("super_col_lerp_time" in self && ("is_fake_x" not in self || is_fake_x == fa
                     col_b = floor(lerp(cur_colors[i][2], cur_colors[i + 8][2] + (100 * (super_glow_intensity != 0 && cur_colors[i + 8][0] > 25 && (i == 1)) ), super_col_lerp_time/super_col_lerp_time_max));
                 }
             }
+
             //Apply the colors if they have a color to go to.
             if !(col_r == 0 && col_g == 0 && col_b == 0)
             {

@@ -38,5 +38,5 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
-set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -35);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -64);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));

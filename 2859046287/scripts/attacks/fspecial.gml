@@ -21,20 +21,21 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
 
 window_num ++; //throw
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_blink_dash"));
 
 window_num ++; //throw hold
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
 
 window_num ++; //endlag (it has no whifflag because it's a special)
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(atk, window_num, AG_WINDOW_GOTO, 31); //going to a window that doesn't exist forces you out of the attack
 
 window_num ++; //tether success
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);

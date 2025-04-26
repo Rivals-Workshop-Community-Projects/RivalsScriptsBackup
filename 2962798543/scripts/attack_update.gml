@@ -209,7 +209,7 @@ if (window == 2){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 10);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 7);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .4);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 89);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 		// set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);

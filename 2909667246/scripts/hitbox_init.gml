@@ -98,31 +98,21 @@ if(attack == AT_NSPECIAL){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
         	if(player_id.alt == 0){Pocket_hud_imageindex = 16;}
         }
-		MattCanGrab = true;
-	    MorshuCanGrab = true;
-	    CalCanSnack = 1;
-	    AriaCantAbsorb = true;
-	    SpikeCanEat = true;//SpikeHealPercent = 0;
+		MattCanGrab = true;MorshuCanGrab = true;
+	    CalCanSnack = 1;AriaCantAbsorb = true;SpikeCanEat = true;
 		
-		hp = 1;
-		hitpausehit = 0;
-    	timer = 0;
+		hp = 1;hitpausehit = 0;timer = 0;
     	lasthitbox = noone;
-		hitlockout = 4;
-        hitlockout2 = 0;
-        hitplayer = false;
-    	hitplayertimer = 0;
-    	lastplayerhit = -1;
-    	orig_player = player;
+		hitlockout = 4;hitlockout2 = 0;
+        hitplayer = false;hitplayertimer = 0;
+    	lastplayerhit = -1;orig_player = player;
 		num2 = 0;attached = true;
         pop_sfx = sound_get("uspecial_balloon_pop");
 	}else if(hbox_num == 2){ //balloon hit collision
-		Pocketable = false;
-		UnReflectable = true;AriaCantAbsorb = true;
+		Pocketable = false;UnReflectable = true;AriaCantAbsorb = true;
 	}
 }else if(attack == AT_DSPECIAL){
-	UnReflectable = true;
-	AriaCantAbsorb = true;
+	UnReflectable = true;AriaCantAbsorb = true;
 	if(hbox_num == 1){ //seed
 		timer = 0;airtime = 0;watr = 0;hit_timer = 0;
 		Is_Villager_Sapling = true;
@@ -179,10 +169,8 @@ if(attack == AT_NSPECIAL){
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 2;
         despawning = false;
         prev_player = player;
-        MattCanGrab = true;
-        MorshuCanGrab = true;
-        CalCanSnack = 2;
-        AriaCantAbsorb = true;
+        MattCanGrab = true;MorshuCanGrab = true;
+        CalCanSnack = 2;AriaCantAbsorb = true;
         SpikeCanEat = true;//SpikeHealPercent = 0;
         landtimer = 0;
         landsfx = sound_get("fstrong_land");

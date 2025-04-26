@@ -28,7 +28,10 @@ if (can_glide == true && jump_down && glide_off == false && im_gliding_cont < 90
 (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP
 || state == PS_ATTACK_AIR)){
     im_gliding = true;
-    vsp = 1;
+    if !hitpause{
+    	    vsp = 1.6;	
+    }
+
 //    glide_used = true;
 }
 else {
@@ -60,7 +63,9 @@ else {
 if (im_gliding == true && jump_down && im_gliding_cont < 90){
     im_gliding = true;
     im_gliding_cont++;
-    vsp = 1;
+    if !hitpause{
+    	    vsp = 1.6;	
+    }
     if (im_gliding_cont >= 10){
         glide_used = true;
     }
@@ -102,30 +107,30 @@ if (!instance_exists(trident) && move_cooldown[AT_NSPECIAL] == 0 && window == 1 
 	set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair2_hurt"));
 	set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 0);
 	set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 0);
-	set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 3);
-	set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 3);
-	set_hitbox_value(AT_FAIR, 5, HG_LIFETIME, 3);
+	set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 2);
+	set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 2);
+	set_hitbox_value(AT_FAIR, 5, HG_LIFETIME, 2);
 	set_hitbox_value(AT_FAIR, 6, HG_LIFETIME, 2);
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 15);
+	reset_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH);
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("swing_heavy2"));
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 12);
-	set_attack_value(AT_FAIR, AG_LANDING_LAG, 9);
+	reset_attack_value(AT_FAIR, AG_LANDING_LAG);
 	
 	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair2"));
 	set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair2_hurt"));
 	set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 0);
 	set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 4);
 	set_hitbox_value(AT_BAIR, 3, HG_LIFETIME, 2);
-	set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+	reset_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH);
 	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 10);
-	set_attack_value(AT_BAIR, AG_LANDING_LAG, 9);
+	reset_attack_value(AT_BAIR, AG_LANDING_LAG);
 	
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong2"));
 	set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong2_hurt"));
 	set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 0);
 	set_hitbox_value(AT_FSTRONG, 3, HG_LIFETIME, 4);
 	set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 4);
-	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 49);
+	reset_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH);
 	
 	set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong2"));
 	set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong2_hurt"));
@@ -140,10 +145,10 @@ if (!instance_exists(trident) && move_cooldown[AT_NSPECIAL] == 0 && window == 1 
 	set_hitbox_value(AT_USTRONG, 9, HG_LIFETIME, 2);
 	set_hitbox_value(AT_USTRONG, 10, HG_LIFETIME, 2);
 	set_hitbox_value(AT_USTRONG, 11, HG_LIFETIME, 2);
-	set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 16);
+	reset_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH);
 	set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("ustrong_swing"));
 	set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_SFX, 1);
-	set_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH, 16);
+	reset_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH);
 	
 	set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong2"));
 	set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong2_hurt"));
@@ -153,7 +158,7 @@ if (!instance_exists(trident) && move_cooldown[AT_NSPECIAL] == 0 && window == 1 
 if (instance_exists(trident) || move_cooldown[AT_NSPECIAL] != 0){
 	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
 	set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
-	set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
+	set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);
 	set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);
 	set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 0);
 	set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 0);
@@ -202,7 +207,9 @@ if (instance_exists(trident) || move_cooldown[AT_NSPECIAL] != 0){
 	set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 }
 
-if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
+if (!free || free && state == PS_WALL_JUMP || state == PS_HITSTUN){
+	move_cooldown[AT_FSPECIAL] = 0;
+	move_cooldown[AT_FSPECIAL_2] = 0;
 	move_cooldown[AT_FSPECIAL_AIR] = 0;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 0;
 }

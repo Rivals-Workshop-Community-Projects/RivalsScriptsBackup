@@ -1,0 +1,11 @@
+sprite_index = sprite_get("platform_" + string(plat_num));
+mask_index = sprite_get("platform_coll_" + string(plat_num));
+initial_y = 0;
+initial_x = 0;
+plat_num = 1;
+state = 0;
+state_timer = 0;
+image_xscale = 2;
+image_yscale = 2;
+plat_hp = 6;
+bananas_spawned = false;

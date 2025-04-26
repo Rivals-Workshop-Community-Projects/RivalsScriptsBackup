@@ -3,8 +3,76 @@ if (attack == AT_DSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
-//Jab 2 Cancel
+//Dspecial Air stuff
+if(attack == AT_DSPECIAL_AIR){
+	if(window == 2){
+		if(steam <= 0 && !hitpause){
+			vsp = 14
+			hsp = 3.5*spr_dir
+			if(window_timer == 1){
+				spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
+			}
+			set_num_hitboxes(AT_DSPECIAL_AIR, 0);
+		}else if(!hitpause){
+			vsp = 16
+			hsp = 4*spr_dir
+			steam--
+			spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
+			set_num_hitboxes(AT_DSPECIAL_AIR, 1);
+		}
+		if(!hitpause){
+			if(state_timer > 50){
+				window = 3
+				window_timer = 0
+			}else if(!free){
+				if(left_down){
+					spr_dir = -1
+				}else if(right_down){
+					spr_dir = 1
+				}
+				hsp = 4*spr_dir
+				set_attack(AT_DSPECIAL)
+				window_timer = 8
+				vsp = 0
+			}
+		}
+		if(state_timer > 28){
+			can_shield = true
+			can_wall_jump = true
+			can_special = true
+			can_jump = true
+		}
+	}
+	
+	//Runes
+	if(window >= 2){
+		if(!hitpause && has_hit && (has_rune("N") || all_runes)){
+			can_special = true
+		}
+	}
+}
 
+//Dspecial Stuff
+if(attack == AT_DSPECIAL){
+	if(window == 1 && window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH) - 1 && !free && !hitpause){
+		sound_play(sound_get("sfx_steam3"))
+	}
+	if(window == 2 && window_timer == 1){
+		if(steam >= 20 && geysers < max_geysers && !hitpause){
+			var geyser = instance_create(x + 5*spr_dir, y - 80, "obj_article1")
+			
+		}
+	}
+	
+	//Runes
+	if(window == 2 && window_timer > 1 || window > 2){
+		if(!hitpause && has_hit && (has_rune("N") || all_runes)){
+			can_special = true
+		}
+	}
+}
+
+//Jab 2 Cancel
 if(attack == AT_JAB){
 	if(window == 6 && has_hit_player){
 		can_jump = true
@@ -297,24 +365,13 @@ if(attack == AT_NSPECIAL){
 			hsp *= 2
 		}
 		sound_play(sound_get("sfx_steam_quick"))
-		if(!tired){
-			if(vsp > -3){
-				if(free){
-					vsp = -3
-				}
+		if(vsp > -3){
+			if(free){
+				vsp = -3
 			}
-			if(move_cooldown[AT_NSPECIAL] < 60){
-				move_cooldown[AT_NSPECIAL] = 60
-			}
-		}else{
-			if(vsp > -1){
-				if(free){
-					vsp = -1
-				}
-			}
-			if(move_cooldown[AT_NSPECIAL] < 100){
-				move_cooldown[AT_NSPECIAL] = 100
-			}
+		}
+		if(move_cooldown[AT_NSPECIAL] < nspec_cooldown){
+			move_cooldown[AT_NSPECIAL] = nspec_cooldown
 		}
 		if(!free){
 			spawn_hit_fx(x, y - 20, vfx_nspec_cancel)
@@ -349,63 +406,48 @@ if(attack == AT_NSPECIAL){
 
 //Fspecial stuff
 if(attack == AT_FSPECIAL){
-	steam_break_timer = 20
 	can_fast_fall = false
 	if(window == 1){
 		if(vsp > 0){
 			vsp = 0
 		}
 	}
-	if(window == 1 && window_timer == 6){
-		if(tired){
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 5);
-			if(steam > 0){
-				sound_play(sfx_steam_cloth)
-				if(!free){
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 24);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-					spawn_hit_fx(x - 40*spr_dir, y - 40, vfx_fspecial_steam)
-				}else{
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 24);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-					spawn_hit_fx(x - 40*spr_dir, y - 50, vfx_fspecial_steam)
-				}
+	if(window == 1 && window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) - 1){
+		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 9);
+		if(steam > 0){
+			sound_play(sfx_steam_cloth)
+			if(!free){
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 11);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
+				spawn_hit_fx(x - 40*spr_dir, y - 40, vfx_fspecial_steam)
 			}else{
-				move_cooldown[AT_FSPECIAL] = 30
-				if(!free){
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-				}else{
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-				}
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.5);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
+				spawn_hit_fx(x - 40*spr_dir, y - 50, vfx_fspecial_steam)
 			}
 		}else{
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 9);
-			if(steam > 0){
-				sound_play(sfx_steam_cloth)
-				if(!free){
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 14);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-					spawn_hit_fx(x - 40*spr_dir, y - 40, vfx_fspecial_steam)
-				}else{
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 10);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-					spawn_hit_fx(x - 40*spr_dir, y - 50, vfx_fspecial_steam)
-				}
-			}else{
+			if(!(has_rune("N") || all_runes)){
 				move_cooldown[AT_FSPECIAL] = 30
-				if(!free){
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-				}else{
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
-					set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-				}
+			}
+			if(!free){
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
+			}else{
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 			}
 		}
+	}	
+	if(window == 2 && window_timer == 1 && !hitpause && steam > 0){
+		if(steam > fspec_cost){
+			steam -= fspec_cost
+		}else{
+			steam = 0
+		}
 	}
+	spawn_hit_fx(x, y - (10 + random_func(1, 50, true)), vfx_speed_line_x)
 	//Fspecial Geyser Stuff
+	/*
 	if(window == 2){
 		if(instance_exists(geyser) || instance_exists(geyser_2)){
 			if(distance_to_object(geyser) < 25 && geyser.state == 2 || distance_to_object(geyser_2) < 25 && geyser_2.state == 2){
@@ -441,56 +483,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}
 		}
-		if(!tired){
-			if(!pedal_to_metal && steam > 0){
-				if(window_timer == 9){
-					if(!free){
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 5);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}else{
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 9);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}
-				}
-			}else{
-				if(window_timer == 9){
-					if(!free){
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 3);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}else{
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 4);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}
-				}
-			}
-		}else{
-			if(!pedal_to_metal && steam > 0){
-				if(window_timer == 5){
-					if(!free){
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 2);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}else{
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 2);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}
-				}
-			}else{
-				if(window_timer == 5){
-					if(!free){
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 3);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}else{
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 4);
-						set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-					}
-				}
-			}
-		}
 		if(window_timer == 1 && !hitpause && steam > 0){
-			if(pedal_to_metal){
-				sound_play(sound_get("sfx_steam_hiss_short"))
-				pedal_to_metal = false
-			}
 			if(steam > 25){
 				steam -= 25
 			}else{
@@ -499,8 +492,12 @@ if(attack == AT_FSPECIAL){
 		}
 		spawn_hit_fx(x, y - (10 + random_func(1, 50, true)), vfx_speed_line_x)
 	}
+	*/
 	if(window == 3){
 		if(!free){
+			hsp /= 1.2
+		}
+		if(!free && has_hit && !hitpause){
 			if(window_timer == 1){
 				sound_play(asset_get("sfx_land"))
 			}
@@ -519,6 +516,14 @@ if(attack == AT_FSPECIAL){
 			can_wall_jump = true
 		}
 	}
+	
+	//Runes
+	if(window >= 2){
+		//Runes
+		if(!hitpause && has_hit && (has_rune("N") || all_runes)){
+			can_special = true
+		}
+	}
 }
 
 //Red Indicator Timer going away
@@ -527,131 +532,17 @@ if(attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG || attac
 	sound_stop(asset_get("mfx_timertick"))
 }
 
-//Dspecial Air stuff
-if(attack == AT_DSPECIAL_AIR){
-	if(window == 2){
-		if(steam <= 0 && !hitpause){
-			if(tired){
-				vsp = 16
-			}else{
-				vsp = 12
-			}
-			hsp = 3.5*spr_dir
-			if(window_timer == 1){
-				spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
-			}
-			set_num_hitboxes(AT_DSPECIAL_AIR, 0);
-		}else if(!hitpause){
-			if(tired){
-				vsp = 20
-			}else{
-				vsp = 14
-			}
-			hsp = 4*spr_dir
-			steam--
-			if(pedal_to_metal){
-				sound_play(sound_get("sfx_steam_hiss_short"))
-				pedal_to_metal = false
-			}
-			spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
-			set_num_hitboxes(AT_DSPECIAL_AIR, 1);
-		}
-		if(state_timer > 50){
-			window = 3
-			window_timer = 0
-		}else if(!free){
-			if(left_down){
-				spr_dir = -1
-			}else if(right_down){
-				spr_dir = 1
-			}
-			if(state_timer < 10){
-				hsp = 9*spr_dir
-			}else{
-				hsp = 4*spr_dir
-			}
-			set_attack(AT_DSPECIAL)
-			window_timer = 7
-			vsp = 0
-		}
-		if(hsp == 0 && !hitpause){
-			if(has_bounce == true){
-				set_state(PS_IDLE_AIR)
-				set_attack(AT_EXTRA_1)
-			}
-		}
-		if(state_timer > 14){
-			can_shield = true
-			can_wall_jump = true
-			can_special = true
-			can_jump = true
-		}
-		
-	}
-}
-
-//Dspecial Stuff
-if(attack == AT_DSPECIAL){
-	if(window == 1 && window_timer == 9 && !free){
-		if(tired == false){
-			sound_play(sound_get("sfx_crank"))
-		}else{
-			sound_play(sound_get("sfx_steam_hiss_short"))
-		}
-	}
-	if(window == 2 && window_timer == 2 && !free){
-		if(tired == false){
-			tired = true
-		}else{
-			tired = false
-		}
-	}
-}
-/*
-if (attack == AT_DSPECIAL){
-	steam_break_timer = 20
-	if (window == 2 && window_timer == 2 && !free){
-		if(!(instance_exists(geyser) && instance_exists(geyser_2))){
-			if(instance_exists(geyser)){
-				geyser.attack = true
-			}else if(steam > 0){
-	        	geyser = instance_create(x,y - 78, "obj_article1");
-	        	geyser.number = 1
-	        	if(!pedal_to_metal){
-	        		if(steam > 20){
-		        		steam -= 20
-	        		}else{
-	        			steam = 0
-	        		}
-				}else{
-					if(steam > 20){
-		        		steam -= 20
-	        		}else{
-	        			steam = 0
-	        		}
-					sound_play(sound_get("sfx_steam_hiss_short"))
-					pedal_to_metal = false
-				}
-			}
-		}
-	}
-	if(window == 2 && window_timer == 1 && !has_hit_player){
-		shake_camera( 8, 4)
-	}
-}
-*/
-
 //Fspecial snap to ledge
 if(attack == AT_FSPECIAL){
 	if(window == 2){
-            if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
-                for (var i = 1; i < 40; i++){
-                    if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
-                        y -= i;
-                        break;
-                    }
-                }      
-            }
+        if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+            for (var i = 1; i < 40; i++){
+                if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
+                    y -= i;
+                    break;
+                }
+            }      
+        }
     }
 }
 
@@ -660,19 +551,12 @@ if(attack == AT_USPECIAL){
 	if(uspecial_uppie = false){
 		can_fast_fall = false
 	}
-	if(tired && vsp < 0){
-		hsp = 0
-	}
 	if(window == 1){
-		if(window_timer == 6 && uspecial_uppie = false && uspecial_no_steam == false){
+		if(window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH) - 1 && uspecial_uppie = false && uspecial_no_steam == false){
 			sound_play(sfx_steam_cloth)
-			if(pedal_to_metal == true){
-				pedal_to_metal = false
-				sound_play(sound_get("sfx_steam_hiss_short"))
-			}
 		}
 		if(window_timer > 3){
-			if(shield_down || shield_pressed || steam == 0){
+			if(steam == 0){
 				if(uspecial_no_steam = false){
 					set_num_hitboxes(AT_USPECIAL, 1);
 					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
@@ -692,41 +576,36 @@ if(attack == AT_USPECIAL){
 		if(vsp > 0){
 			can_wall_jump = true
 		}
+		if(!hitpause){
+			if(left_down){
+				if(hsp > -5){
+					hsp = lerp(hsp, -5, 0.2)
+				}
+			}else if(right_down){
+				if(hsp < 5){
+					hsp = lerp(hsp, 5, 0.2)
+				}
+			}else{
+				hsp /= 1.2
+			}
+		}
 		if(window_timer == 1 && uspecial_uppie = false){
 			hsp /= 2
 			uspecial_uppie = true
-			if(!tired){
-				if(uspecial_no_steam == true){
-					vsp = -11.5
-					old_vsp = -11.5
-					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
-				}else{
-					vsp = -13
-					old_vsp = -13
-					if(steam > 25){
-						steam -= 25
-					}else if(steam != 0){
-						steam = 0
-					}
-					uspecial_steam_grav = 15
-					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air_steam"));
-				}
+			if(uspecial_no_steam == true){
+				vsp = -11.5
+				old_vsp = -11.5
+				set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
 			}else{
-				if(uspecial_no_steam == true){
-					vsp = -11.5
-					old_vsp = -11.5
-					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
-				}else{
-					vsp = -17
-					old_vsp = -17
-					if(steam > 25){
-						steam -= 25
-					}else if(steam != 0){
-						steam = 0
-					}
-					uspecial_steam_grav = 15
-					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air_steam"));
+				vsp = -13
+				old_vsp = -13
+				if(steam > uspec_cost){
+					steam -= uspec_cost
+				}else if(steam != 0){
+					steam = 0
 				}
+				uspecial_steam_grav = 15
+				set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air_steam"));
 			}
 		}
 		if(uspecial_steam_grav > 0 && !hitpause){
@@ -760,6 +639,15 @@ if(attack == AT_USPECIAL){
 				set_state(PS_PRATLAND)
 			}else{
 				set_state(PS_LANDING_LAG)
+			}
+		}
+	}
+	
+	//Runes
+	if(window >= 2 && free){
+		if(!hitpause && has_hit && (has_rune("N") || all_runes)){
+			if(!up_down){
+				can_special = true
 			}
 		}
 	}
@@ -866,33 +754,6 @@ if(attack == AT_TAUNT_2){
 	}
 }
 
-//Actionable out of dspecial bounce
-if(attack == AT_EXTRA_1){
-	if(window == 1){
-		can_move = false
-		if(window_timer <= 1){
-			state_timer = 0
-		}
-		if(window_timer > 4){
-			if(special_down && state_timer < 50){
-				window_timer = 4
-			}
-		}
-		if(steam < 100){
-			steam += 1
-		}
-	}
-	if(window == 3 && window_timer > 5){
-		can_jump = true
-		can_special = true
-		can_attack = true
-		can_wall_jump = true
-		can_strong = true
-		can_shield = true
-	}
-	has_bounce = false
-}
-
 //Fstrong having kill power
 if(attack == AT_FSTRONG){
 	if(window == 1){
@@ -921,90 +782,26 @@ if(attack == AT_UTILT){
 	}
 }
 
-//strongs cancelling pedal
-if(attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_FSTRONG){
-	if(pedal_to_metal == true){
-		pedal_to_metal = false
-		sound_play(sound_get("sfx_steam_hiss_short"))
-	}
-}
-
 //Nspecial Cancel
 
 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if(attack != AT_USPECIAL &&
 		attack != AT_DSPECIAL &&
-		attack != AT_DSPECIAL_AIR &&
 		attack != AT_NSPECIAL &&
-		attack != AT_FSPECIAL &&
-		attack != AT_FSTRONG &&
-		attack != AT_DSTRONG &&
-		attack != AT_USTRONG){
-			if(special_pressed && joy_pad_idle && has_hit && steam > 34){
-				if(hitpause){
-					cancel_buffer = true
-				}else if(move_cooldown[AT_NSPECIAL] <= 0 && !cancel_buffer){
-					set_attack(AT_NSPECIAL)
-					if(steam > 34){
-						steam -= 34
-						if(move_cooldown[AT_NSPECIAL] < 80){
-							move_cooldown[AT_NSPECIAL] = 80
-						}
-						sound_play(asset_get("mfx_back"))
+		attack != AT_FSPECIAL){
+		if(special_pressed && joy_pad_idle && has_hit && steam > 34){
+			if(hitpause){
+				cancel_buffer = true
+			}else if(move_cooldown[AT_NSPECIAL] <= 0 && !cancel_buffer){
+				set_attack(AT_NSPECIAL)
+				if(steam > nspec_cost){
+					steam -= nspec_cost
+					if(move_cooldown[AT_NSPECIAL] < nspec_cooldown){
+						move_cooldown[AT_NSPECIAL] = nspec_cooldown
 					}
-				}
-			}
-		}
-}
-
-//Old fair thing but I didnt wanna get rid of it
-/* if(attack == AT_FAIR){
-	if(window > 3 || window == 2){
-		can_fast_fall = false
-	}
-	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-	    if (window == 4 && grabbedid != noone){
-	    grabbedid.invincible = false
-	    grabbedid.invince_time = 0
-		grabbedid.ungrab = 0;
-		if(window_timer < 6){
-	        //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-	        grabbedid.x = lerp(grabbedid.x, x + 40*spr_dir, 0.4); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
-			grabbedid.y = lerp(grabbedid.y, y, 0.5); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
-	        grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-	        grabbedid.wrap_time = 6000;
-	        grabbedid.state = PS_WRAPPED;
-	    }else if(window_timer == 6){
-	    	grabbedid.state = PS_TUMBLE
-	    	grabbedid = noone;
-	    }
-		}
-	}
-	if(window == 3){
-		if(window_timer == 19){
-			if(!was_parried){
-				if(!free){
-					set_state(PS_IDLE)
-				}else{
-					set_state(PS_IDLE_AIR)
-				}
-			}else{
-				if(!free){
-					set_state(PS_PRATLAND)
-				}else{
-					set_state(PS_PRATFALL)
+					sound_play(asset_get("mfx_back"))
 				}
 			}
 		}
 	}
-	if(window == 4){
-		if(window_timer < 6){
-			vsp = 0
-			hsp = 0
-		}else if(window_timer == 6){
-			old_vsp = -9
-			old_hsp = -3*spr_dir
-		}
-	}
 }
-*/

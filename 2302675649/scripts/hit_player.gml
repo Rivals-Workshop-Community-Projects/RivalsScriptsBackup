@@ -29,7 +29,7 @@ switch (my_hitboxID.attack)
 		if (fspecHooked && strongAng == 270) tutDoneAdv[6] = true;
 		with(asset_get("obj_article1")) if (player_id == other.id && replacedCount == 2)
 		{
-            with (other.hit_player_obj) afterImageLonin = {sprite:sprite_index,image:image_index,xPos:x,yPos:y,dir:spr_dir,small:small_sprites,alpha:30,lonin:other.player_id.player};
+			with (other.hit_player_obj) afterImageLonin = {sprite:sprite_index,image:image_index,xPos:x,yPos:y,dir:spr_dir,small:small_sprites,alpha:30,lonin:other.player_id.player};
 			other.hit_player_obj.x = x;
 			other.hit_player_obj.y = y;
 			sound_play(sound_get("shing"));

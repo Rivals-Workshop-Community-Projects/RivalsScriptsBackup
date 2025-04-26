@@ -2,7 +2,15 @@
 
 MattCanGrab = false;
 MorshuCanGrab = false;
-Pocketable = false;
+Pocketable = false;Pocketed = false;
+CalCanSnack = false;SpikeCanEat = false;
+MorshuCanGrab = false;
+UnReflectable = false;
+if("KoB_grabbed" not in self)KoB_grabbed = false;
+KoB_was_grabbed = false;
+KoB_destroy = false;
+Frozen = false;
+
 
 if (attack == AT_NSPECIAL && hbox_num == 1 || attack == AT_FAIR){
     bubble_pop_sfx = sound_get("Bubble Pop");
@@ -24,6 +32,7 @@ if (attack == AT_DSPECIAL){
     	MudkipPuddle = true;
     	UnReflectable = true;
         collision_sprite = sprite_get("mudpuddle_collision");
+        ScrubbableObject = true;scrubbed = false;  
     }
 }
 

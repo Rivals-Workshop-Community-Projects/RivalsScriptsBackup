@@ -3,6 +3,9 @@
 if (attack == AT_USPECIAL) {
 	if hbox_num == 4 {
 	vsp = 0;
+	if hsp == 0 {
+		hitbox_timer = length;
+		}
 	}	
 }
 

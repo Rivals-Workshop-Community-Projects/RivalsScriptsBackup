@@ -28,6 +28,8 @@ if (attack == AT_FSPECIAL) {
 		var angle = point_direction(x, y, player_id.x, player_id.y);
 		hsp = lengthdir_x(15, angle);
 		vsp = lengthdir_y(15, angle);
+		walls = 1;
+		grounds = 1;
 		proj_angle -= 10;
 		grav = 0;
 		air_friction = 0;
@@ -131,7 +133,7 @@ if (attack == AT_FSPECIAL) {
 	
 	if hitbox_timer == length {
 		with player_id spawn_hit_fx( other.x, other.y-2, AppearBruh);
-		with player_id move_cooldown[AT_FSPECIAL] = 100;
+		with player_id move_cooldown[AT_FSPECIAL] = 80;
 		with player_id move_cooldown[AT_FSPECIAL_2] = move_cooldown[AT_FSPECIAL];
 		with player_id sound_play(sound_get("sfx_disappear"));
 	}
@@ -237,10 +239,12 @@ if (attack == AT_DAIR) {
 			}
 		}
 		if was_parried {
-			var angle = point_direction(x, y, player_id.x, player_id.y-24)
+			var angle = point_direction(x, y, player_id.x, player_id.y-24);
 			hsp = lengthdir_x(12, angle);
 			vsp = lengthdir_y(12, angle);
 			proj_angle -= 5;
+			walls = 1;
+			grounds = 1;
 		}
 	}
 }

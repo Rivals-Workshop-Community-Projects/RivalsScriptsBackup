@@ -9,11 +9,12 @@ sprite_change_offset("dead", 47, 54);
 sprite_change_offset("respawn", 47, 54);
 sprite_change_offset("sleepVfx", 47, 54);
 
+add_compatible_urls(3294133431);//spy
+
 pet_w = 32;
 run_speed = 1;
-max_run_dist = 90;//TODO: higher by default but lower with spy?
-
-//add_compatiable_urls( all );//TODO: use spys alts?
+max_run_dist_default = 200;
+max_run_dist = max_run_dist_default;
 
 imageIndex = 0;
 stateTimer = 0;

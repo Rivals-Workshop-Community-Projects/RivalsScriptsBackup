@@ -9,7 +9,7 @@ if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_DEA
 // }
 
 if(state == PS_DASH && dashing == noone && !hitpause){
-    dashing = sound_play(asset_get("sfx_kragg_roll_loop"), true, false, 200);
+    dashing = sound_play(asset_get("sfx_kragg_roll_loop"), true);
 } else if(state != PS_DASH && dashing != noone){
     sound_stop(dashing);
     dashing = noone;

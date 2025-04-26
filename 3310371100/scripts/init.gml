@@ -135,6 +135,7 @@ wow_wavebounce_happened = false;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
+
 dsp_hit = false;
 ushr_rainclouded = false;
 ushr_rainclouded_timer = 0;

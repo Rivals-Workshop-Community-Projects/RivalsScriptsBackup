@@ -22,18 +22,18 @@
 shader_start();
 
 
-
+//Fstrong
 if fstrong_anim_timer != 0 && metal_count >= 25{
     if spr_dir == -1{
-        var left_boost = -140;
+        var left_boost = -114;
     } else{
-        var left_boost = 10;
+        var left_boost = +46;
     }
-    draw_sprite(sprite_get("fstrong_ballspawn"), fstrong_anim_timer, x + left_boost, y - 100);
+    draw_sprite_ext(sprite_get("fstrong_ballspawn"), fstrong_anim_timer, x + left_boost, y - 70, 2, 2, 0, c_white, 1);
 }
 
 shader_end();
-
+//Final Smash
 if fs_explosion_active > 0{
     fs_explosion_active = fs_explosion_active + 1;
     draw_sprite_ext(sprite_get("fs_flash"), 0, fs_explosion_x - fs_explosion_active, fs_explosion_y - fs_explosion_active, (fs_explosion_active * fs_explosion_active)/4 + 1, fs_explosion_active, 1, c_white, 0.7 + fs_explosion_active/40 - fs_explosion_active * fs_explosion_active * 0.0005 - 0.3);

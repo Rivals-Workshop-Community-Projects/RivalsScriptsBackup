@@ -10,6 +10,10 @@ switch (attack)
         else if (down_down) attack = AT_DTILT;
         else if (left_down || right_down) attack = AT_DATTACK;
         break;
+    case AT_USPECIAL:
+        can_uspec = false;
+        reset_window_value(attack, get_attack_value(AT_USPECIAL, AG_NUM_WINDOWS), AG_WINDOW_TYPE);
+        break;
     case AT_FSPECIAL:
         can_fspec = false;
         break;

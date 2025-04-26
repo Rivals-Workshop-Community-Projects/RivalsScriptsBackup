@@ -49,11 +49,13 @@ alt_name[20] = "Sullied Blossom";
 alt_name[21] = "Honeycrisp Punch";
 alt_name[22] = "Electromagnetism";
 alt_name[23] = "Ultimate Pianist";
-alt_name[24] = "Driving Thunder";
-alt_name[25] = "Youkai of Dusk";
-alt_name[26] = "Érota Iroída"; //theikos
-alt_name[27] = "All-Star Heroine"
-alt_name[28] = "Trustee Team Player"; //hud color
+alt_name[24] = "Time Agent";
+alt_name[25] = "Driving Thunder";
+alt_name[26] = "Youkai of Dusk";
+alt_name[27] = "Érota Iroída"; //theikos
+alt_name[28] = "All-Star Heroine"
+alt_name[29] = "Vortex Gallery";
+alt_name[30] = "Trustee Team Player"; //hud color
 
 
 alt_cur = 0;

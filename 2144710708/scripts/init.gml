@@ -38,7 +38,7 @@ djump_speed = 9;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 
-air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .50;
@@ -170,6 +170,7 @@ spr_kb_arrow = sprite_get("owen_kb_arrow");
 spr_isplayer = sprite_get("is_player");
 spr_isplayer_mirror = sprite_get("is_player_mirrored");
 spr_zone_init = sprite_get("oldboot_zone");
+spr_bootwarning_init = sprite_get("boot_warning");
 
 // initial dspecial hud icon
 dspec_hudicon = sprite_get("oldboot");
@@ -217,25 +218,27 @@ tf_stage = false;
 temple_stage = false;
 am_stage = false;
 
+print_debug(string(stage_id));
+
 // if the stage id matches, it's the lethal league stage
 // it doesn't look like it should work, but it does
-if (stage_id == "nt\383980\2217830677") {
+if (stage_id == "2217830677") {
 	ll_stage = true;
 	print_debug( "Lethal League stage detected" );
 }
 
-if (stage_id == "nt\383980\2349987133") {
+if (stage_id == "2349987133") {
 	tf_stage = true;
 	print_debug( "Trad Fighter stage detected" );
 }
 
-if (stage_id == "nt\383980\2486256103") {
+if (stage_id == "2486256103") {
 	temple_stage = true;
 	print_debug( "Temple detected" );
 }
 
 // i know there's variables for this but i can't find em :(
-if (stage_id == "nt\383980\2634489514") {
+if (stage_id == "2634489514") {
 	am_stage = true;
 	print_debug( "Hallowflame stage detected" );
 }
@@ -256,6 +259,9 @@ sound_fspecial_boot = sound_get("gravgun_launch2");
 sound_boot_land_sound = sound_get("toolgun_shoe_place");
 
 sound_uspecial_misfire = sound_get("tau_overcharge");
+
+// boot variable
+boot_save_from_galaxy_prevention = 0;
 
 // WORKSHOP SUPPORTS BEGIN HERE
 
@@ -990,3 +996,15 @@ fail_text = "That was FailRP.";
 
 // Mamizou Transformation
 mamizou_transform_spr = sprite_get("owen_mamizou");
+
+// knight support
+knight_compat_dream = 
+    [
+        "strange little thingy...",
+        "what will it do...",
+        "r..."
+    ]
+	
+// adventure mode? Support
+hit_player_event = 13;
+draw_hud_event = 14;

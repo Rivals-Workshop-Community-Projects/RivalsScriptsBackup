@@ -3,12 +3,17 @@ if (state = PS_PRATFALL && !was_parried)
     can_fast_fall = true;
 }
 
-if ((state = PS_HITSTUN_LAND || state = PS_TECH_GROUND || state = PS_TECH_BACKWARD || state = PS_TECH_FORWARD) 
+if ((state = PS_HITSTUN_LAND || (state == PS_HITSTUN && state_timer == hitstun_full - 1) || state == PS_TUMBLE || state = PS_TECH_GROUND || state = PS_TECH_BACKWARD || state = PS_TECH_FORWARD) 
 && ustrong_parried && attack = AT_USTRONG)
 {
-    state = PS_PRATLAND;
+    if (!free){
+        state = PS_PRATLAND;
+    } else {
+        state = PS_PRATFALL;
+    }
+    state_timer = 0;
     was_parried = true;
-    parry_lag = 40;
+    parry_lag = 40 + abs(round((x - ustrong_parried_x)/8));
     ustrong_parried = 0;
 }
 
@@ -143,11 +148,21 @@ else
 if (instance_exists(hit_player_obj) && hit_player_obj.player != player) player_i_hit = hit_player_obj;
 if !(instance_exists(hit_player_obj)) player_i_hit = noone;
 
-if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_RESPAWN && player_i_hit.state_timer = 1)
+if (turnabout && instance_exists(player_i_hit)) && (player_i_hit.state = PS_RESPAWN || player_i_hit.respawn_taunt)
 {
-    //turnabout_timer += 210; 
+    //turnabout_timer += 210;
     turnabout_timer_pause = 1;
+    turnabout_pause_countdown = 60;
 	//if (get_player_color(player) == 15 && voice) sound_play(sound_get("matpat_KO"));
+}
+
+if (turnabout_timer_pause){
+	turnabout_pause_countdown--;
+	if (turnabout_pause_countdown <= 0){
+		turnabout_timer_pause = 0;
+	}
+} else {
+	turnabout_pause_countdown = 0;
 }
 
 if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_DEAD && theory_length != -74)

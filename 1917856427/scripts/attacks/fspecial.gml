@@ -39,22 +39,20 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
 set_num_hitboxes(AT_FSPECIAL,3);
 
-
-
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 11);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 62);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 94);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 48);
-set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 84);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 21);
+set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, -180);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 25);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 301);
@@ -63,7 +61,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -101);
@@ -82,11 +80,9 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, large_plasma_hfx);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_spirit_flame_hit_1"));
 
-
-
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -73);

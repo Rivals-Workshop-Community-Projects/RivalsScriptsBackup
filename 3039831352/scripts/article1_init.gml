@@ -3,8 +3,17 @@
 
 sprite_index = sprite_get("artc_tr_spawn");
 mask_index = sprite_get("artc_ring_mask");
-
 uses_shader = false;
+
+prior_check_detect = [];
+prior_check_obj = [];
+//priority list:
+//  5 - parrying players
+//  4 - rainbow ring owner
+//  3 - owner's teammates
+//  2 - NPC players
+//  1 - enemies
+//  0 - article enemies
 
 spr_dir = -player_id.spr_dir;
 state = 0;
@@ -12,10 +21,11 @@ state_timer = 0;
 anim_length = 0;
 cur_anim_frame = 0;
 ring_spawn_anim_time = 25;
+soft_armor_check = 10; //the rainbow ring will affect enemies with soft armor lower than this value
 
 destruct_time = 300;
 player_used_ring = false;
-launching_player = 0; //player port
+launching_player = noone; //player id
 ring_launch_speed = 0;
 ring_base_spd = 12;
 ring_spd_limit = 40;
@@ -60,7 +70,7 @@ if (player_id.attack == AT_USPECIAL)
     ring_launch_angle = 90;
     ring_throw_power = -7;
     
-    hsp = player_id.free ? 0 : (9 + abs(player_id.new_hsp)*0.6) * player_id.spr_dir;
+    hsp = player_id.free ? player_id.uspec_air_throw_hsp * 1.5 : (9 + abs(player_id.new_hsp)*0.6) * player_id.spr_dir;
     vsp = player_id.free ? (7 + abs(player_id.new_vsp)*0.4) : 0;
 }
 

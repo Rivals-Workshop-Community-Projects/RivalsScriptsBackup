@@ -3,7 +3,15 @@
 //tTimer = (tTimer + 200);
 //
         intimer++
+        if instance_exists(dimentio1) or instance_exists(dimentio2){
+        	
+hud_offset = 9999999999
+        }
         
+        if state = PS_ATTACK_GROUND and attack = AT_TAUNT {
+        	
+hud_offset = 100
+        }
         if intimer = 18 and state = PS_SPAWN{
         	var _h = instance_create(x,y-40,"obj_article1");
 	_h.articletype = "TPSquare"

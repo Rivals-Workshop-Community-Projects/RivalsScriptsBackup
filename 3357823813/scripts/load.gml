@@ -1,0 +1,153 @@
+sprite_change_offset("idle", 20, 50);
+sprite_change_offset("hurt", 21, 46);
+sprite_change_offset("bighurt", 19, 43);
+sprite_change_offset("hurtground", 19, 49);
+sprite_change_offset("uphurt", 16, 49);
+sprite_change_offset("downhurt", 22, 39);
+sprite_change_offset("bouncehurt", 22, 25);
+sprite_change_offset("spinhurt", 27, 44);
+sprite_change_offset("crouch", 24, 41);
+sprite_change_offset("walk", 24, 50);
+sprite_change_offset("walkturn", 24, 51);
+sprite_change_offset("dash", 32, 53);
+sprite_change_offset("dashstart", 26, 52);
+sprite_change_offset("dashstop", 31, 52);
+sprite_change_offset("dashturn", 30, 53);
+
+sprite_change_offset("hurtbox_idle", 35, 100);
+sprite_change_offset("hurtbox_head", 35, 100);
+sprite_change_offset("hurtbox_crouch", 24*2, 41*2);
+
+sprite_change_offset("jumpstart", 48, 95);
+sprite_change_offset("jump", 37, 79);
+sprite_change_offset("doublejump", 37, 87);
+sprite_change_offset("walljump", 31, 64);
+sprite_change_offset("pratfall", 37, 79);
+sprite_change_offset("land", 33, 53);
+sprite_change_offset("landinglag", 33, 53);
+sprite_change_offset("pratland", 33, 53);
+
+sprite_change_offset("parry", 48, 95);
+sprite_change_offset("roll_forward", 24, 50);
+sprite_change_offset("roll_backward", 24, 50);
+sprite_change_offset("airdodge", 33, 67);
+sprite_change_offset("waveland", 33, 53);
+sprite_change_offset("tech", 46, 54);
+
+sprite_change_offset("jab", 65, 51, 1);
+sprite_change_offset("dattack", 61, 62, 1);
+sprite_change_offset("ftilt", 43, 51, 1);
+sprite_change_offset("dtilt", 38, 38, 1);
+sprite_change_offset("utilt", 36, 82, 1);
+sprite_change_offset("nair", 58, 79, 1);
+sprite_change_offset("fair", 61, 80, 1);
+sprite_change_offset("bair", 89, 78, 1);
+sprite_change_offset("uair", 70, 72, 1);
+sprite_change_offset("dair", 46, 84, 1);
+sprite_change_offset("fstrong", 60, 70, 1);
+sprite_change_offset("ustrong", 21, 65, 1);
+sprite_change_offset("dstrong", 41, 55, 1);
+sprite_change_offset("nspecial", 28, 51, 1);
+sprite_change_offset("nspecial_air", 49, 63, 1);
+sprite_change_offset("nspecial2", 60, 65, 1);
+sprite_change_offset("fspecial", 59, 58, 1);
+sprite_change_offset("fspecialair", 59, 56, 1);
+sprite_change_offset("uspecial", 20, 50, 1);
+sprite_change_offset("uspecialair", 26, 50, 1);
+sprite_change_offset("dspecial", 31, 50, 1);
+sprite_change_offset("taunt", 57, 51, 1);
+sprite_change_offset("phone_open", 16, 31, 1);
+
+sprite_change_offset("plat_trueform", 247, 189);
+sprite_change_offset("plat_trueform_wing1", 58, 38);
+sprite_change_offset("plat_trueform_wing2", 188, 135);
+sprite_change_offset("plat_trueform_hand", 29, 42);
+sprite_change_offset("plat_trueform_head", 11, 25);
+
+sprite_change_offset("dair_proj", 32, 32);
+sprite_change_offset("fstrong_proj", 20, 47);
+sprite_change_offset("ustrong_proj1", 23, 0);
+sprite_change_offset("ustrong_proj2", 13, 108);
+sprite_change_offset("ustrong_proj2_impact", 63, 94);
+sprite_change_offset("hitbox_dstrong", 100, 200);
+sprite_change_collision_mask("hitbox_dstrong", true, 0, 0, 0, 0, 0, 0);
+sprite_change_offset("dstrong_demonic_megiddo", 64, 64);
+sprite_change_offset("dstrong_demonic_megiddo_mask", 111, 105);
+sprite_change_offset("nspecial_proj", 36, 12);
+sprite_change_offset("nspecial_proj_start", 28, 26);
+sprite_change_offset("nspecial2_proj", 57, 57);
+sprite_change_offset("dspecial_proj", 15, 64);
+sprite_change_offset("taunt_proj", 11, 11);
+
+//vfx
+sprite_change_offset("fx_darkness_hit2", 94, 110);
+sprite_change_offset("fx_fire_hit1", 28, 26);
+sprite_change_offset("fx_fatal_ray_big", 64, 54);
+sprite_change_offset("fx_smash_grab", 50, 50);
+sprite_change_offset("fx_blood_hit1", 40, 32);
+sprite_change_offset("fx_blood_hit2", 63, 23);
+sprite_change_offset("fx_blood_drip", 4, 4);
+
+sprite_change_offset("fx_roll", 36, 98);
+sprite_change_offset("fx_roll_end", 36, 98);
+sprite_change_offset("fx_airdodge", 66, 102);
+sprite_change_offset("fx_nspecial", 28, 26);
+sprite_change_offset("fx_nspecial_trail", 36, 12);
+sprite_change_offset("fx_nspecial_destroy", 50, 48);
+sprite_change_offset("fx_nspecial_swirl", 28, 26);
+sprite_change_offset("fx_nspecial2_glow", 63, 63);
+sprite_change_offset("fx_fspecial", 102, 104);
+sprite_change_offset("fx_fspecial_outline", 26, 59);
+sprite_change_offset("fx_uspecial", 64, 162);
+sprite_change_offset("fx_uspecial_tiled", 48, 1);
+sprite_change_offset("fx_uspecialglow_tiled", 48, 1);
+sprite_change_offset("fx_uspecial_impact", 62, 18);
+sprite_change_offset("fx_uspecial_sparks", 5, 5);
+sprite_change_offset("fx_dspecial_fireball", 3, 12);
+sprite_change_offset("fx_dspecial_base", 9, 14);
+sprite_change_offset("fx_dspecial_trail", 30, 102);
+sprite_change_offset("fx_dspecial_sparks", 3, 3);
+
+sprite_change_offset("fx_mist_cloud", 42, 42);
+sprite_change_offset("fx_mist_cloud_hit", 66, 22);
+sprite_change_offset("fx_bat", 7, 7);
+sprite_change_offset("fx_bat_small", 5, 5);
+sprite_change_offset("fx_bat_moon", 24, 54);
+sprite_change_offset("fx_bat_moon2", 32, 66);
+sprite_change_offset("fx_bat_moon_glow", 64, 96);
+sprite_change_offset("fx_dair_fall", 23, 37);
+sprite_change_offset("fx_darkness_rift1", 24, 24);
+sprite_change_offset("fx_darkness_rift2", 19, 19);
+sprite_change_offset("fx_darkness_rift3", 11, 11);
+sprite_change_offset("fx_darkness_spark_small", 10, 11);
+sprite_change_offset("fx_darkness_spark", 20, 24);
+sprite_change_offset("fx_darkness_rapidjab", 23, 21);
+sprite_change_offset("fx_dust_leap", 28, 34);
+sprite_change_offset("fx_hitsurface_bg", 64, 112);
+sprite_change_offset("fx_hitsurface_fg", 61, 96);
+sprite_change_offset("fx_shockwave", 72, 13);
+sprite_change_offset("fx_shockwave_dissipate", 25, 26);
+sprite_change_offset("fx_shockwave_impact", 35, 3);
+sprite_change_offset("fx_shockwave_sparks", 50, 52);
+sprite_change_offset("fx_fstrong_beam", 0, 5);
+sprite_change_offset("fx_fatal_ray_trail", 5, 0);
+sprite_change_offset("fx_fatal_ray_debris", 7, 7);
+sprite_change_offset("fx_fatal_ray_impact", 35, 3);
+sprite_change_offset("fx_demonic_megiddo_impact", 156, 9);
+sprite_change_offset("fx_demonic_megiddo_border", 64, 10);
+sprite_change_offset("fx_demonic_megiddo_debris1", 3, 4);
+sprite_change_offset("fx_demonic_megiddo_debris2", 3, 4);
+sprite_change_offset("fx_demonic_megiddo_debris3", 3, 4);
+sprite_change_offset("fx_glass_part1", 5, 5);
+sprite_change_offset("fx_glass_part2", 4, 4);
+sprite_change_offset("fx_glass_part3", 1, 1);
+
+sprite_change_offset("hfx_part_darkness", 15, 11);
+sprite_change_offset("hfx_part_fire", 11, 11);
+sprite_change_offset("hfx_part_ray", 8, 10);
+
+
+
+sprite_change_offset("_dialogue_box", 234, 0);
+sprite_change_offset("_dialogue_box_bleed", 60, 0);
+sprite_change_offset("_dialogue_box_portrait", 23, 35);

@@ -61,7 +61,7 @@ sprite_change_offset("taunt", 64, 82);
 sprite_change_offset("tauntd", 36, 68);
 sprite_change_offset("tauntd_l", 36, 68);
 
-sprite_change_offset("plat", 64, 84);
+sprite_change_offset("plat", 92, 70);
 sprite_change_offset("eggburst", 40, 40);
 
 sprite_change_offset("nspecial_proj", 22, 18);
@@ -82,6 +82,7 @@ sprite_change_offset("orihitmedium", 128, 128);
 sprite_change_offset("orihitlarge", 128, 128);
 sprite_change_offset("orihitsmall", 64, 64);
 sprite_change_offset("phone_open", 32, 68);
+sprite_change_offset("msgwsprite", 40, 68);
 
 sprite_change_offset("ex_tallguy_crouch_box", 32, 66);
 set_victory_bg( sprite_get( "victorybg" ));

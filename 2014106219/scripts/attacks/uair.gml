@@ -6,11 +6,11 @@ set_attack_value(AT_UAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_featherout"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 5);

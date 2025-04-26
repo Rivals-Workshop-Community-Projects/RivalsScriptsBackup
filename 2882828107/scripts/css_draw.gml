@@ -1,6 +1,6 @@
 //ranibow sprimkle
 if !("hue" in self) hue = 0
-if get_player_color(player) = 15 {
+if get_player_color(player) = 16 {
 	hue+=1
 	if hue>255 hue-=255;
 	//make hue shift every step + loop around
@@ -61,7 +61,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 20;
+var num_alts = 32;
 var alt_cur = get_player_color(player);
  
  
@@ -81,30 +81,40 @@ alt_name[10]  = "Disguised";
 alt_name[11]  = "Shadowy";
 alt_name[12]  = "Crowned";
 alt_name[13]  = "Vessel";
-alt_name[14]  = "Infamous";
-alt_name[15]  = "Spectral";
-alt_name[16]  = "Transcendence";
-alt_name[17]  = "Featureless";
+alt_name[14]  = "Soothe";
+alt_name[15]  = "Ruinous";
+alt_name[16]  = "Spectral";
+alt_name[17]  = "Infamous";
 alt_name[18]  = "Protoplast";
-alt_name[19]  = "Flaming Hot";
-alt_name[20]  = "Eldritch";
-alt_name[21]  = "Blossoming";
-alt_name[22]  = "Reaper";
-alt_name[23]  = "Twilight";
-alt_name[24]  = "Cryptic";
-alt_name[25]  = "Excited";
-alt_name[26]  = "Smoldering";
+alt_name[19]  = "Trendsetter";
+alt_name[20]  = "Flaming Hot";
+alt_name[21]  = "???";
+alt_name[22]  = "Blossoming";
+alt_name[23]  = "Overgrown";
+alt_name[24]  = "Twilight";
+alt_name[25]  = "Eldritch";
+alt_name[26]  = "Hexchained";
+alt_name[27]  = "Remnant";
+alt_name[28]  = "Warden";
+alt_name[29]  = "Cryptic";
+alt_name[30]  = "Excited";
+alt_name[31]  = "Smoldering";
  
 //Alt
  
-shader_end();
- 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
- 
+var draw_y = -1;
 for(i = 0; i < num_alts; i++){
+	var draw_x = temp_x + 2 + 10 * i;
+	if(i < 16){
+		draw_y = 4;
+	} else {
+		draw_x -= temp_x * 7 + 6;
+		draw_y = -1;
+	}
     var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = temp_x + 2 + 10 * i;
-    rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
+    
+    rectDraw(draw_x, temp_y + 137+draw_y, draw_x + 7, temp_y + 140+draw_y, draw_color);
 }
  
 draw_set_halign(fa_left);
@@ -114,8 +124,6 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
- 
- 
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

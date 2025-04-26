@@ -362,6 +362,76 @@ set_color_profile_slot( 21, 7, 125, 125, 125 ); //Apron
 		avocado = true;					
 				}
 		}
+	}if(get_player_color(player) = 8){
+		//DD5
+		if(secret_alt_on == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));  
+set_color_profile_slot( 8, 0, 88, 80, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 8, 1, 200, 189, 158 ); //Gumbo Skin 2
+set_color_profile_slot( 8, 2, 48, 45, 47 ); //Jeans
+set_color_profile_slot( 8, 3, 48, 45, 47 ); //Hoodie
+set_color_profile_slot( 8, 4, 255, 191, 0 ); //Eyes
+set_color_profile_slot( 8, 5, 242, 207, 207 ); //Po Skin 1
+set_color_profile_slot( 8, 6, 211, 120, 120 ); //Po Skin 2
+set_color_profile_slot( 8, 7, 51, 117, 175 ); //Apron
+		avocado = true;
+		secret_alt_num = 7;
+		init_shader();
+		secret_alt_on = true;
+			}
+		}else{
+				if(!avocado){
+		white_flash_timer = 24;
+set_color_profile_slot( 8, 0, 88, 80, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 8, 1, 200, 189, 158 ); //Gumbo Skin 2
+set_color_profile_slot( 8, 2, 48, 45, 47 ); //Jeans
+set_color_profile_slot( 8, 3, 48, 45, 47 ); //Hoodie
+set_color_profile_slot( 8, 4, 255, 191, 0 ); //Eyes
+set_color_profile_slot( 8, 5, 242, 207, 207 ); //Po Skin 1
+set_color_profile_slot( 8, 6, 211, 120, 120 ); //Po Skin 2
+set_color_profile_slot( 8, 7, 51, 117, 175 ); //Apron
+		secret_alt_num = 7;
+		init_shader();            
+		avocado = true;					
+				}
+		}
+	}if(get_player_color(player) = 20){
+		//gunner
+		if(secret_alt_on == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));  
+set_color_profile_slot( 20, 0, 127, 147, 190 ); //Gumbo Skin 1
+set_color_profile_slot( 20, 1, 167, 195, 219 ); //Gumbo Skin 2
+set_color_profile_slot( 20, 2, 73, 81, 92 ); //Jeans
+set_color_profile_slot( 20, 3, 128, 135, 143 ); //Hoodie
+set_color_profile_slot( 20, 4, 43, 107, 255 ); //Eyes
+set_color_profile_slot( 20, 5, 218, 205, 188 ); //Po Skin 1
+set_color_profile_slot( 20, 6, 253, 208, 105 ); //Po Skin 2
+set_color_profile_slot( 20, 7, 212, 213, 215 ); //Apron
+		avocado = true;
+		secret_alt_num = 8;
+		init_shader();
+		secret_alt_on = true;
+			}
+		}else{
+				if(!avocado){
+		white_flash_timer = 24;
+set_color_profile_slot( 20, 0, 127, 147, 190 ); //Gumbo Skin 1
+set_color_profile_slot( 20, 1, 167, 195, 219 ); //Gumbo Skin 2
+set_color_profile_slot( 20, 2, 73, 81, 92 ); //Jeans
+set_color_profile_slot( 20, 3, 128, 135, 143 ); //Hoodie
+set_color_profile_slot( 20, 4, 43, 107, 255 ); //Eyes
+set_color_profile_slot( 20, 5, 218, 205, 188 ); //Po Skin 1
+set_color_profile_slot( 20, 6, 253, 208, 105 ); //Po Skin 2
+set_color_profile_slot( 20, 7, 212, 213, 215 ); //Apron
+		secret_alt_num = 8;
+		init_shader();            
+		avocado = true;					
+				}
+		}
 	}
 	
 	if(get_player_color(player) = 25){

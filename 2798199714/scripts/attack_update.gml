@@ -188,6 +188,7 @@ if (attack == AT_NSPECIAL){
         can_move = false;
     }
 }else if (attack == AT_DSPECIAL){
+	fall_through = true;
     if(window == 1){
         vsp -= 1;
     }else if(window == 2){
@@ -222,9 +223,9 @@ if (attack == AT_NSPECIAL){
     }
 }else if (attack == AT_NAIR){
 	can_move = false;
-	if(right_down && hsp < 1.5){
+	if(right_down && hsp < 1.5 && free){
 		hsp += .35;
-	}else if(left_down && hsp > -1.5){
+	}else if(left_down && hsp > -1.5 && free){
 		hsp -= .35;
 	}
     if(window >= 2 && window <= 6){
@@ -240,6 +241,7 @@ if (attack == AT_NSPECIAL){
         	}
         	create_hitbox(AT_FTILT, 7, x+50*spr_dir, y-20);
         	window = 8;window_timer = 0;
+        	if(!has_hit)kob_bonus_damage(1.25);
         }else{
         	if(runeB && attack_down && window == 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         		window = 1;window_timer = get_window_value(attack, 1, AG_WINDOW_LENGTH);
@@ -426,6 +428,9 @@ if (attack == AT_NSPECIAL){
     		shake_camera(5,5);
     	}
     }
+    if(window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+    	if(!has_hit)kob_bonus_damage(1.25);
+    }
 }else if (attack == AT_USTRONG){
     can_move = false;
 	if(right_down && hsp < 1.5){
@@ -521,6 +526,8 @@ if (attack == AT_NSPECIAL){
 		    	shake_camera(7,5);
 		    }
 	    }
+    }if(window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+    	if(!has_hit)kob_bonus_damage(1.25);
     }
     if(window >= 4 && spawnlightning){
     	if(!ustrongstall){
@@ -539,18 +546,16 @@ if (attack == AT_NSPECIAL){
     	hsp *= 0.5;
     }
 }else if (attack == AT_DSTRONG){
+	if(window == 2)fall_through = true;
     if(window == 3){
         can_move = false;
+        if(window_timer < 4)fall_through = true;
         if(window_timer > 25){
         	window_timer = 25;
         }
         if(get_gameplay_time() % 2 == 0 || window_timer == 1){
     		spawn_hit_fx(x,y-50,fx_trailvertical);
     	}
-        /*if (free && position_meeting(x,y+40,asset_get("par_block"))){
-        	y += 20;free = false;
-        	vsp += 10;
-        }*/
     }if(window == 3 && !free){
         window = 4;window_timer = 0;
         shake_camera(7,5);destroy_hitboxes();
@@ -561,7 +566,7 @@ if (attack == AT_NSPECIAL){
 		star = spawn_hit_fx(x-100*spr_dir, y-35, fx_star_tiny);star.spr_dir = -spr_dir;star.depth = depth-1;
         if (position_meeting(x+70*spr_dir,y+5,asset_get("par_block")) || position_meeting(x+70*spr_dir,y+5,asset_get("par_jumpthrough"))){
             if(!free && strong_charge >= 60*runeC_charge_multiplier && (position_meeting(x+200*spr_dir,y+5,asset_get("par_block")) || position_meeting(x+200*spr_dir,y+5,asset_get("par_jumpthrough")))){
-                var tornado = create_hitbox(AT_DSTRONG, 9, x+80*spr_dir, y-4500);tornado.hsp = 2*spr_dir;
+                var tornado = create_hitbox(AT_DSTRONG, 9, x+80*spr_dir, y-4500);tornado.hsp = 2*spr_dir;dstrongtornado = tornado;
                 set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 40);
                 if (!has_rune("G") && !runeG) {
                 	set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 40);
@@ -574,6 +579,11 @@ if (attack == AT_NSPECIAL){
                 var shockwave = spawn_hit_fx(x+60*spr_dir,y,fx_shockwave);shockwave.depth = depth-1;create_hitbox(AT_DSTRONG, 6, x+60*spr_dir, y-40);
             }
         }
+    }
+    if(window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+    	if(!has_hit && !instance_exists(dstrongtornado))kob_bonus_damage(1.25);
+    }if(window == 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+    	if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
     }
     if(window == 2){
     	if(window_timer == get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH)){
@@ -805,6 +815,10 @@ if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
 			old_vsp = 0;hitpause = 0;hitstop = 0;
 		}
 	}
+	
+#define kob_bonus_damage
+	bonus_damage = argument[0]>1;
+	damage_scaling = argument[0] > 1 ? argument[0] : 1;
 	
 #define collision_line_list {
     {

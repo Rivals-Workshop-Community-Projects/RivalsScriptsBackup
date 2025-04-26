@@ -42,7 +42,7 @@ switch(my_hitboxID.attack)
         
         destroy_hitboxes()
     break;
-    case AT_FSPECIAL:
+case AT_FSPECIAL:
         hit_player_obj.spr_dir *= -1;
         hit_player_obj.has_walljump = true;
         
@@ -72,16 +72,13 @@ switch(my_hitboxID.attack)
             
             var spd_max = 10 + has_rune("K") * 10;
             
-            if (abs(hit_player_obj.hsp) < spd_max)
+            hit_player_obj.hsp = (abs(hit_player_obj.hsp) +3) * -sign(hit_player_obj.hsp);
+            if (abs(hit_player_obj.hsp) > spd_max)
             {
-                hit_player_obj.hsp *= -((spd_max - hit_player_obj.hsp) / spd_max + 1) //-2 - (has_rune("K") * 2)
-            }
-            else
-            {
-                 hit_player_obj.hsp *= -1;
+                hit_player_obj.hsp *= 1 - (abs(hit_player_obj.hsp)*0.01);
             }
             
-            hit_player_obj.old_hsp = hit_player_obj.hsp ;
+            hit_player_obj.old_hsp = hit_player_obj.hsp;
             
             hit_player_obj.old_vsp = hit_player_obj.vsp;
         }
@@ -93,9 +90,3 @@ switch(my_hitboxID.attack)
         }
     break;
 }
-
-
-
-
-
-

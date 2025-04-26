@@ -2,9 +2,6 @@
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
-//draw_debug_text(x, y, "penalty: " + string(trick_spam_penalty));
-//draw_debug_text(x, y + 16, "time: " + string(trick_spam_penalty_time) + "/" + string(trick_spam_penalty_set));
-
 /* //check color array lol
 for (var i = 0; i < 9; i++)
 {
@@ -16,6 +13,62 @@ for (var i = 0; i < 9; i++)
 }
 */
 
+//rainbow ring indicator
+with (obj_article1) if (player_id == other && "trick_ring_player" in self)
+{
+    //capture area + sprite offsets
+    var view_left = view_get_xview() + 34; //0, y
+    var view_right = view_get_wview() + view_get_xview() - 34; //screenborder, y
+    var view_up = view_get_yview() + 32; //x, 0
+    var view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder
+
+    //offscreen check
+    article_offscreen = !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 85);
+
+    if (offscreen_arrow_enabled)
+    {
+        if (article_offscreen && !player_id.playtest_active)
+        {
+            depth = -200; //makes the indicator appear above everything
+            
+            //screen limits x
+            if (x < view_left - 65) offscreen_x_pos = view_left - 32;
+            else if (x > view_right + 65) offscreen_x_pos = view_right - 32;
+            else offscreen_x_pos = x - 32;
+
+            //screen limits y
+            if (y < view_up + 24) offscreen_y_pos = view_up - 32;
+            else if (y > view_down + 24) offscreen_y_pos = view_down - 32;
+            else offscreen_y_pos = y - 54;
+
+
+            //image angles
+            if (x < view_left - 63)
+            {
+                if (y < view_up - 33) offscreen_image = 1;
+                else if (y > view_down + 85) offscreen_image = 7;
+                else  offscreen_image = 0;
+            }
+            else if (x > view_right + 63)
+            {
+                if (y < view_up - 33) offscreen_image = 3;
+                else if (y > view_down + 85) offscreen_image = 5;
+                else  offscreen_image = 4;
+            }
+            else
+            {
+                if (y < view_up - 33) offscreen_image = 2;
+                else if (y > view_down + 85) offscreen_image = 6;
+            }
+
+            draw_sprite_ext(sprite_get("hud_offscreen_arrow"), offscreen_image, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, offscreen_col, 1);
+            draw_sprite_ext(sprite_get("hud_offscreen_image"), 0, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, 0, c_white, 1); //ring
+            //draw_sprite_ext(sprite_get("hud_offscreen_image"), 1, offscreen_x_pos+33, offscreen_y_pos+33, 2, 2, image_angle, c_white, 1); //arrow
+        }
+        else depth = orig_depth;
+    }
+}
+
 if (hbox_view)
 {
     var found_target = false;
@@ -24,31 +77,25 @@ if (hbox_view)
     //homing attack range
     if (is_attacking && (attack == AT_NSPECIAL && window == 2 || attack == AT_EXTRA_1 && window == 1 && hitpause))
     {
-        draw_circle_color(
-            x, y, homing_dist,
-            found_target ? $00FF00 : $0000FF,
-            found_target ? $00FF00 : $0000FF, true
-        );
-
-        //upper limit
-        draw_line_color(
-            x, y,
-            x + lengthdir_x(homing_dist, 90 + homing_range[0] * -spr_dir),
-            y + lengthdir_y(homing_dist, 90 + homing_range[0] * -spr_dir),
-            found_target ? $00FF00 : $0000FF,
-            found_target ? $00FF00 : $0000FF
-        );
-
-        //lower limit
-        draw_line_color(
-            x, y,
-            x + lengthdir_x(homing_dist, 270 + homing_range[1] * spr_dir),
-            y + lengthdir_y(homing_dist, 270 + homing_range[1] * spr_dir),
-            found_target ? $00FF00 : $0000FF,
-            found_target ? $00FF00 : $0000FF
-        );
+        draw_set_color(found_target ? $FF3300 : $880017);
+        draw_set_alpha(0.5);
+        draw_primitive_begin(pr_trianglefan);
+        draw_vertex(x, y);
+        var range_start = (spr_dir < 0) ? 90 + homing_range[0] : 270 + homing_range[1];
+        var range_end = (spr_dir < 0) ? 270 - homing_range[1] : 90 - homing_range[0] + 360;
+        for (var i = range_start; i <= range_end; i += 10)
+        {
+            draw_vertex(
+                x + lengthdir_x(homing_dist + 40, i),
+                y + lengthdir_y(homing_dist + 40, i)
+            )
+        }
+        draw_primitive_end();
+        draw_set_color(c_white);
+        draw_set_alpha(1);
     }
 }
+
 
 //Put this above all the #defines in your script.
 draw_colored_hitboxes();

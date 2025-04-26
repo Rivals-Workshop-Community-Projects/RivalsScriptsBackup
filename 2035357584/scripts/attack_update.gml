@@ -31,6 +31,10 @@ if(attack == AT_DSTRONG_G){
 	if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		has_grenade = false;
 	}
+	if (window == 2 && window_timer == 3)
+	{
+		sound_play(asset_get("sfx_swipe_medium1"));
+	}
 }
 
 //throw grenade to the side
@@ -129,6 +133,16 @@ if(attack == AT_USPECIAL){
 	}
 
 	else if(window == 4){
+		
+		if (hsp > 4 && right_down)
+		{
+			hsp = 4;
+		}
+		
+		if (hsp < -4 && left_down)
+		{
+			hsp = -4;
+		}
 		can_fast_fall = false;
 		can_wall_jump = true;
 		if(shield_pressed){
@@ -340,13 +354,13 @@ if(attack == AT_FSPECIAL){
 	//charge
 	if(window == 7){
 		if(has_hit_player){
-			can_jump = true;
-			can_shield = true;
+			//can_jump = true;
+			//can_shield = true;
 		}
 		//headbutt hitbox
 		if(window_timer % 15 == 0){
 			if(!hitpause){
-				head_box = create_hitbox(AT_FSPECIAL, 5, x, y);
+			//	head_box = create_hitbox(AT_FSPECIAL, 5, x, y);
 			}
 			attack_end();
 		}
@@ -374,9 +388,18 @@ if(attack == AT_FSPECIAL){
 	if(window == 8 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		set_state(PS_IDLE);
 	}
-	if(window > 8 && !free){
-		set_state(PS_PRATFALL);
+	if(window > 8 && !free && fspec_hit == false){
+		set_state(PS_PRATLAND);
 	}
+	if(window > 8 && !free && fspec_hit == true){
+		set_state(PS_LANDING_LAG);
+		fspec_hit = false;
+	}
+	if (window == 13 && window_timer == 6)
+	{
+		fspec_hit = false;
+	}
+
 	
 	
 	//aerial charge
@@ -384,7 +407,7 @@ if(attack == AT_FSPECIAL){
 		//reset charge variables
 		if(window == 9){
 			move_cooldown[attack] = 60;
-			fspec_hit = false;
+			
 			fspec_charge = 0;
 			if(special_down){
 				sound_play(asset_get("mfx_coin"))
@@ -423,7 +446,7 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	
-	if(window == 10 && (shield_pressed || jump_pressed)){
+	if(window == 10 && shield_pressed && has_airdodge == true){
 		set_state(PS_IDLE_AIR);
 	}
 	
@@ -448,7 +471,7 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	
-	if(window == 13 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !fspec_hit){
+	if(window == 13 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit_player){
 		set_state(PS_PRATFALL);
 	}
 }
@@ -525,16 +548,16 @@ if(attack == AT_BAIR_G){
 	if(trigger && hitstop == 1){
 		trigger = false;
         has_grenade = false;
-		var expl = create_hitbox(AT_EXPLOSION, 1, x -85 * spr_dir, y - 47);
+		var expl = create_hitbox(AT_EXPLOSION, 1, x -60 * spr_dir, y - 47);
 		expl.kb_value = bair_g_knockback;
 		expl.kb_scale = bair_g_scaling;
-		expl.image_xscale += 10/(200)
+		expl.image_xscale += 20/(200)
         if(!runeH){
             expl.player = 0;
         }
 		expl.hitstun_factor = 1;
 		expl.hit_flipper = 3;
-        spawn_hit_fx(x -85 * spr_dir, y - 47, air_explosion);
+        spawn_hit_fx(x -60 * spr_dir, y - 60, air_explosion);
         sound_play(sound_get("explosion1"));
 	}
 	if (trigger) {
@@ -635,14 +658,14 @@ if(attack == AT_FTILT_G){
 	if(trigger && !hitpause){
 		trigger = false;
         has_grenade = false;
-		var expl = create_hitbox(AT_EXPLOSION, 1, x + 135 * spr_dir, y - 34);
+		var expl = create_hitbox(AT_EXPLOSION, 1, x + 125 * spr_dir, y - 34);
 		expl.kb_value = ftilt_g_knockback;
 		expl.kb_scale = ftilt_g_scaling;
 		expl.hit_flipper = 3;
         if(!runeH){
             expl.player = 0;
         }
-        spawn_hit_fx(x + 135 * spr_dir, y - 34, air_explosion);
+        spawn_hit_fx(x + 135 * spr_dir, y - 50, air_explosion);
         sound_play(sound_get("explosion1"));
 	}
 }

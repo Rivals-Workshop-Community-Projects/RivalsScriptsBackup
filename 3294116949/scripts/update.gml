@@ -1,11 +1,12 @@
 //update
 
-
 // if (instance_exists(axe.axe_hitbox) and instance_exists(axe)){
 // 	if (axe.axe_hitbox.was_parried){
 // 		instance_destroy(axe.axe_hitbox);
 // 	}
 // }
+
+can_wall_cling = !axeless;
 
 if "fixed_drift" not in self {
 	for(var i = 0; i <= 50; i++){
@@ -58,13 +59,26 @@ if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIA
 //wall cling
 
 if state == PS_WALL_JUMP && !clinging {
-    if state_timer == 0 {
+    if state_timer == 0{
         walljump_timer = 0
+        if (!axeless){
         sound_play(asset_get("sfx_kragg_roll_land"))
+        }
     }
     else walljump_timer++
+    //print(walljump_timer);
 }
 
+//Airstall
+
+if (airstall == 1) && (airstall_timer > 7){
+	airstall = 0;
+	airstall_timer = 0;
+}
+if (airstall == 1){
+	airstall_timer++;
+	//print(airstall_timer);
+}
 
 // if (instance_exists(axe)){
 // 	move_cooldown[AT_NSPECIAL]=12;
@@ -91,6 +105,7 @@ if(state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN || state_cat
 {
 	move_cooldown[AT_FSPECIAL] = 0;
 }
+if !free move_cooldown[AT_FSPECIAL] = min(50, move_cooldown[AT_FSPECIAL]);
 
 
 //Uspecial Cooldown

@@ -11,6 +11,7 @@ exheld = 0
 if attack == AT_TAUNT {
 	if window == 4 {
 	invincible = true
+	invince_time = 2
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("roll_backward"));
 	} else {
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
@@ -487,8 +488,6 @@ if attack == AT_DAIR {
 	
 	hsp = 0
 	
-	
-	
 	     	if y + vsp > room_height/2 + 200 {
 	     		set_state(PS_IDLE_AIR)
 	     		pattern = 0
@@ -499,12 +498,9 @@ if attack == AT_DAIR {
 	         }
    can_wall_jump = true
    can_fast_fall = false 
-   
+   fall_through = true
    if !free && ground_type = 2 {
        y += 10
-       sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6)
-       sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.6)
-       spawn_hit_fx(x + 44*spr_dir,y - 10, 302)
    }
    
     weapon = 1
@@ -597,6 +593,7 @@ if attack == AT_TAUNT {
     		vsp = 60
     	}
     	 invincible = true
+	     invince_time = 2
         if !free {
         	if state_timer == 85{
         		DT += 1
@@ -653,7 +650,7 @@ if attack == AT_TAUNT {
     		vsp = 60
     	}
     	invincible = true
-    	
+    	invince_time = 2
     	if window_timer % 3 == 0 && window_timer >  6*5 && window_timer < 10*5{
     		DT += 1
     	}
@@ -913,7 +910,7 @@ if attack == AT_FSTRONG && !hitpause {
     }
     
     if window = 3 && window_timer <= 18 {
-         if fshit = 1 {
+         if has_hit_player {
             hit_player_obj.y += (y - hit_player_obj.y)/3
             hit_player_obj.x += ((x+40*spr_dir) - hit_player_obj.x)/3
         }
@@ -946,9 +943,8 @@ if attack == AT_DSTRONG {
     
     if window < 4 {
     	invincible = true
-    } else {
-        invincible = false
-    }
+	    invince_time = 2
+    } 
     
     if has_hit_player {
         set_num_hitboxes(AT_DSTRONG, 2);
@@ -1015,6 +1011,9 @@ if attack == AT_DSTRONG {
         x = oldx
         draw_indicator = false
         if window_timer >= 20 && !hitpause {
+        	if window_timer % 3 == 0{
+        	create_hitbox(AT_DSTRONG,1,x,y)
+        	}
               shake_camera(4,4)
               if window_timer % 2 == 1 {
                   spr_dir *= -1
@@ -1043,6 +1042,7 @@ if attack == AT_DSTRONG {
              spawn_base_dust(x - 30,y - 0,"dash_start",1);
         }
     }
+    
     
     if window == 4 && window_timer == 35 && has_hit_player && !hitpause{
         spawn_hit_fx (x+20*spr_dir,y-40, 305)

@@ -54,7 +54,17 @@ if hit_player_obj.y > room_height/2 + 300 {
 
 
 }
+if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3{
+	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,1.2)
+}
 
+if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 3{
+ 	sound_play(sound_get("counterhit"),false,noone,0.6,1.6)
+ 	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6,1.2)
+ 	schit = spawn_hit_fx (my_hitboxID.x, my_hitboxID.y - 16, SC)
+ 	schit.image_yscale = 0.6
+ 	schit.spr_dir *= 0.6
+}
 
 if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 12{
  zettahit = 1   

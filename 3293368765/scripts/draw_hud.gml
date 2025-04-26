@@ -16,14 +16,20 @@ draw_debug_text(30, 200,"Will_Cancel?" + string(can_special));
 
 /*draw_debug_text(30, 280,"sprite_index:" + string(sprite_index));
 draw_debug_text(30, 300,"image_index:" + string(image_index));
-
-draw_debug_text(30, 320,"CD:" + string(move_cooldown [AT_USPECIAL]));
 */
+
+if("hit_timer" not in self){
+    exit;
+}
+// draw_debug_text(30, 320,"Hit Lockout:" + string(hit_timer));
+
 
 // draw_debug_text(30, 260,"ATTACK: " + string(attack));
 // draw_debug_text(30, 280,"CAN WALL JUMP: " + string(can_wall_jump));
 // draw_debug_text(30, 300,"WINDOW: " + string(window));
 // draw_debug_text(30, 320,"TIMER: " + string(window_timer));
+
+// draw_debug_text(30, 320,"Uspec Uses: " + string(uspec_uses));
 
 
 shader_start();

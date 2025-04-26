@@ -2,6 +2,38 @@ if(state == PS_DOUBLE_JUMP && state_timer == 1){
     sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.2, 1.3);
 }
 
+//mokou cant tech after being hit out of dspec
+if(dspec_notech){
+	
+	//wallsplat vfx
+	
+	if(place_meeting(x + hsp, y + vsp, asset_get("par_block"))){
+		spawn_hit_fx(x + hsp, y + vsp, 13 );
+		sound_play(asset_get("sfx_burnend"));
+	}
+	
+	if((attack == AT_DSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) || state == PS_HITSTUN){
+		//print("nahhhh")
+		can_wall_tech = false;
+		can_tech = false;
+	}else{
+		dspec_notech = false;
+		can_wall_tech = true;
+		can_tech = true;
+		//print("ok you can tech")
+	}
+}
+
+//testing vs attacks
+/*with(oPlayer){
+	if(state == PS_IDLE && self != other){
+		set_attack(AT_UTILT);
+		//state_timer = 4;
+		//state_timer--;
+	}
+}*/
+
+//get back fspec freshness
 if(state == PS_WALL_JUMP || state_cat == SC_HITSTUN || !free){
     fspec_fresh = [1, 1, 1];
 }

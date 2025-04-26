@@ -2,7 +2,7 @@
 
 if (enemy_hitboxID.hit_priority > 0)
 {
-    if (get_player_team(enemy_hitboxID.player) != get_player_team(trick_ring_player) && can_be_hit[enemy_hitboxID.player] == 0)
+    if (get_player_team(enemy_hitboxID.player) != get_player_team(trick_ring_player))
     {
         //owner set
         if (enemy_hitboxID.player < 5)
@@ -13,8 +13,9 @@ if (enemy_hitboxID.hit_priority > 0)
         }
 
         //set state and timing
-        state = 4;
+        state = (trick_ring_player == player) ? 2 : 4;
         state_timer = 0;
+        visible = true;
         state_timer -= player_id.hitstop;
         ring_stun_start_time = state_timer;
 
@@ -22,7 +23,7 @@ if (enemy_hitboxID.hit_priority > 0)
         with (enemy_hitboxID)
         {
             //set hitpause time
-            player_id.hitstop = get_hitstop_formula(0, 0, hitpause, hitpause_growth, extra_hitpause);
+            if (type == 1) player_id.hitstop = get_hitstop_formula(0, 0, hitpause, hitpause_growth, extra_hitpause);
 
             sound_play(sound_effect); //plays the hitbox's hit sound... on hit
             if (effect == 1 && sound_effect == 0) sound_play(asset_get("sfx_burnapplied"));

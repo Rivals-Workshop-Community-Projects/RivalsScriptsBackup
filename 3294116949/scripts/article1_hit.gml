@@ -50,6 +50,7 @@ if (enemy_hitboxID.type == 1 && (state < 3 || (state == 3 && returning))){
         		window_timer = 0;
         		destroy_hitboxes();
         		move_cooldown[AT_NSPECIAL] = 70;
+        		fspec_grounded = true;
         		if other.ignited {
         // 			burned = true;
         //     		burnt_id = self;

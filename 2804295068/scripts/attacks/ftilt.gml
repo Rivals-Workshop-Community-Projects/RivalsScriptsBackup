@@ -44,7 +44,7 @@ set_num_hitboxes(AT_FTILT, 2);
 
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 19);
+set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 21);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 28);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 19);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 21);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 18);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 28);
@@ -78,7 +78,7 @@ set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, sound_get("splat2"));
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("pea"));

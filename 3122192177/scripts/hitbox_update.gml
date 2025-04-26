@@ -133,7 +133,7 @@ if(attack == AT_EXTRA_1){
 
 if(attack == AT_EXTRA_2){
     if(hbox_num = 1){
-        print(hitbox_timer);
+        //print(hitbox_timer);
         switch(hitbox_timer){
         case 5:
         sound_play(asset_get("sfx_waveland_zet"));
@@ -148,7 +148,7 @@ if(attack == AT_EXTRA_2){
 
 if(attack == AT_EXTRA_3){
     if(hbox_num = 1){
-        print(hitbox_timer);
+        //print(hitbox_timer);
         switch(hitbox_timer){
         case 5:
         sound_play(asset_get("sfx_waveland_zet"));

@@ -1,6 +1,7 @@
 voice_hover = false;
 
 css_draw_time = 0;
+css_timer = 0;
 alt_cur = 0;
 alt_prev = 0;
 portrait = 0;

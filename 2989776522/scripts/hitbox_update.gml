@@ -37,13 +37,6 @@ if(attack == AT_FSPECIAL){
 	}
 }else if (attack == AT_USPECIAL){
 	if(hbox_num == 1){
-        /*if(vsp < -6 || vsp < -1 && abs(hsp) < 1){
-        	kb_angle = 90;
-        }else if(vsp > 6 || vsp > 1 && abs(hsp) < 1){
-        	kb_angle = 300;
-        }else{
-        	kb_angle = 55;
-        }*/
         if(hitbox_timer % 10 == 0 && image_index < 3){
 	        image_index += 1;
 	    }

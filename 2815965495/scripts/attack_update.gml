@@ -36,8 +36,8 @@ switch(attack){
 				fall_through = false;
 			}
 			if window == 2{
-					can_jump = (Fcancel==1);
-					can_shield = (Fcancel==1);
+				can_jump = (Fcancel==1);
+				can_shield = (Fcancel==1);
 				can_wall_jump = true;
 				if !free{
 					window = 4;
@@ -57,7 +57,7 @@ switch(attack){
 				can_wall_jump = true;
 				if left_down{hsp-=0.2;}
 				if right_down{hsp+=0.2;}
-				if state_timer == 32 {
+				if state_timer == 36 {
 					Fcancel=4;
 					sound_stop(sound_get("jingle"));
 					sound_play(sound_get("jingle"));
@@ -241,12 +241,12 @@ switch(attack){
 	break;
 	case AT_FSPECIAL:
 		can_move = true;
-
-		can_fast_fall = false;
 		can_wall_jump = true;
+		
 		fall_through = true;
 		switch(window){
 			case 1:
+				can_fast_fall = false;
 				if window_timer == 14{
 					vsp =0;
 				}
@@ -303,6 +303,7 @@ switch(attack){
 				
 				break;
 			case 2:
+				can_fast_fall = false;
 				can_jump = (Fcancel==1);
 				can_shield = (Fcancel==1);
 				if window_timer == get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)-1{
@@ -343,6 +344,7 @@ switch(attack){
 
 				break;
 			case 3:
+				can_fast_fall = last_hit_flame;
 				break;
 		}
 		break;
@@ -474,7 +476,6 @@ switch(attack){
 		if window == 2 {
 			can_shield = true;
 			can_wall_jump = true;
-			//if taunt_pressed{set_attack(AT_TAUNT);}
 			if window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH)-2{
 				contador+=1;
 			}
@@ -553,6 +554,7 @@ switch(attack){
 	case AT_TAUNT:
 		if window == 1 {	
 			sprite_change_offset("taunt_2", 22+floor( sin(state_timer/10)*4), 62);
+			sprite_change_offset("taunt", 22+floor( sin(state_timer/10)*4), 62);
 			if window_timer == 17{
 				contador++;
 			}
@@ -560,8 +562,11 @@ switch(attack){
 				window=2;
 				spawn_hit_fx( x , y-32, 143 );
 				//spawn_hit_fx( x +200 , y-60, 3 );
-				sound_play(sound_get("tauntxd"));
+				if moyai_taunt {sound_play(sound_get("tauntxd"));}
+				else{sound_play(sound_get("koffing"));}
 				sprite_change_offset("taunt_2", 22, 62);
+				sprite_change_offset("taunt", 22, 62);
+				//spr_angle = 180;
 				window_timer = 5;
 			}
 		}
@@ -580,32 +585,40 @@ switch(attack){
 			can_jump = (Fcancel==1);
 			can_shield = (Fcancel==1);
 		}
-
 	break;
-	
-
 }
 
 if attack == AT_JAB  {
 	can_move = true;
-	if left_down { hsp-=0.75;}
-	if right_down {hsp +=0.75;}
-	hsp = clamp(hsp,-2,2);
-	can_jump = (Fcancel==1);
+	move_cooldown[AT_JAB] = 2;
+
+	//Movement
+	if left_down { hsp-=0.5;}
+	if right_down {hsp +=0.5;}
+	hsp = clamp(hsp,-2.25,2.25);
+
+	if window == 3{
+		if window_timer >= (12 - 5*has_hit) {
+			can_jump = true;
+			can_attack = true;
+		}
+	}
 } 
 
 if attack == AT_FTILT  {
 	can_move = true;
-	if left_down  && !was_parried { hsp-=0.75;}
-	if right_down && !was_parried {hsp +=0.75;}
-	hsp = clamp(hsp,-3,3);
+	//Movement
+	if left_down { hsp-=0.5;}
+	if right_down {hsp +=0.5;}
+	hsp = clamp(hsp,-2.75,2.75);
 } 
 
 if attack == AT_UTILT {
 	can_move = true;
-	if left_down  && !was_parried{ hsp-=0.75;}
-	if right_down && !was_parried {hsp +=0.75;}
-	hsp = clamp(hsp,-3,3);
+	//Movement
+	if left_down { hsp-=0.5;}
+	if right_down {hsp +=0.5;}
+	hsp = clamp(hsp,-2.75,2.75);
 } 
 
 
@@ -620,7 +633,6 @@ if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG{
 	can_fast_fall = false;
 }
 */
-
 
 if attack == AT_DSTRONG  {
 	if window>=3{
@@ -651,12 +663,13 @@ if attack == AT_DSTRONG_2 {
 	if window == 4 && window_timer ==4 {
 		spawn_hit_fx(x,y-8, 3);
 	}
-	if !free && window == 3{
+	if !free && window == 3 && !has_hit{
 		attack_end();
 		destroy_hitboxes();
 		attack = AT_DSTRONG;
 		hurtboxID.sprite_index = get_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE);
 		window_timer = 0;
+		sound_stop(asset_get("sfx_zetter_fireball_fire"));
 		sound_play(asset_get("sfx_zetter_fireball_fire"));
 
 	}
@@ -714,7 +727,7 @@ if (attack == AT_DATTACK)  && window ==2 && window_timer == 9 && !hitpause  {
 	}
 }
 
-if (attack == AT_JAB)  && window ==2 && window_timer == 8 && !hitpause  {
+if (attack == AT_JAB)  && window ==2 && window_timer == 6 && !hitpause  {
 	spawn_hit_fx(x+48*spr_dir,y-32, 154 );
 	if runeI {
 		create_hitbox(AT_NSPECIAL, 1, x+48*spr_dir,y-36);

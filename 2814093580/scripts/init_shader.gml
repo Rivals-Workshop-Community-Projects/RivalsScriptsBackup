@@ -1,3 +1,5 @@
+
+//Cool Regular Colors 
 if (get_player_color( player ) == 0) {
 set_character_color_slot(0, 253, 145, 62, 1)
 set_character_color_slot(1, 241, 240, 234, 1)
@@ -10,16 +12,15 @@ set_character_color_slot(7, 148, 95, 68, 1)
 ;
 }
 
+//Carebear alt
 if (get_player_color( player ) == 3) {
 	outline_color = [ 99, 8, 78 ];
 ;
 }
 
-if (get_player_color( player ) == 16) {
-	outline_color = [ 56, 112, 94 ];
-;
-}
 
+
+//Gummy alt
 if get_player_color(player) == 6 {
     set_character_color_shading( 0, -1 );
     set_character_color_shading( 1, -1 );
@@ -33,6 +34,7 @@ if get_player_color(player) == 6 {
     ;
 }
 
+//Gameboy Alt
 if get_player_color(player) == 14 {
     set_character_color_shading( 0, 0 );
     set_character_color_shading( 1, 0 );
@@ -44,4 +46,26 @@ if get_player_color(player) == 14 {
         set_character_color_shading( 7, 0 );
             set_character_color_shading( 8, 0 );
     ;
+}
+
+//Disco Bear alt
+if get_player_color(player) == 12 {
+    set_character_color_shading( 0, 0 );
+    set_character_color_shading( 1, 0 );
+    set_character_color_shading( 2, 0 );
+    set_character_color_shading( 3, 0 );
+    set_character_color_shading( 4, 0 );
+    set_character_color_shading( 5, 0 );
+    set_character_color_shading( 6, 0 );
+        set_character_color_shading( 7, 0 );
+            set_character_color_shading( 8, 0 );
+            outline_color = [ 131, 22, 7 ];
+    ;
+}
+
+// init_shader.gml
+switch(get_player_color(player)){
+  case 9:  // Replace this with whatever skin slot you want the mask on
+    set_character_color_slot(0, 255, 255, 255, 0);  // Change the shade slot to whatever you need
+    break;
 }

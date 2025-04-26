@@ -24,7 +24,7 @@ if (attack == AT_FTHROW && hbox_num == 1)
     if ("sucked_player_obj" in self) {
 		sucked_player_obj.hitstop = 2;
 		sucked_player_obj.hitpause = true;
-		sucked_player_obj.visible = false;
+		sucked_player_obj.grabbed_invisible = true;
 		sucked_player_obj.x = x;
 		sucked_player_obj.y = y + 12;
 		sucked_player_obj.invincible = true;
@@ -43,7 +43,6 @@ if (attack == AT_FTHROW && hbox_num == 1)
 		}
 		
 		if (destroyed || hitbox_timer >= length) {
-		    sucked_player_obj.visible = true;
 		    sucked_player_obj.invincible = false;
 			sucked_player_obj.invince_time = 0;
 			sucked_player_obj.hitstun = 4;

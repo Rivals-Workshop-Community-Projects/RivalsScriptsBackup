@@ -3,6 +3,14 @@
 true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
 
 if (is_attacking && attack == AT_DSTRONG && !was_parried) was_parried = true;
+if (is_attacking && attack == AT_DATTACK) parry_lag = 60;
+if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.type == 2)
+{
+    my_hitboxID.orig_hsp *= -1;
+    my_hitboxID.orig_vsp *= -1;
+    my_hitboxID.hitbox_timer = 0;
+}
+
 if (pratfall_type != 0) pratfall_type = 0;
 
 charge_cur -= charge_max/3;

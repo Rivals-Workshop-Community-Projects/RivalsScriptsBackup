@@ -2,6 +2,7 @@ infernal2 /= 1.5
 
 bursted = 0
 gunname = 0
+Donottaunt = 300
 
  with (asset_get("pHitBox")) {
         if player_id == other.id {

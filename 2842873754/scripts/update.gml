@@ -44,9 +44,9 @@ with (pHitBox) {
         if (player_list != noone) {
             for (var i = 0; i < ds_list_size(player_list); i++) {
                 var hplayer = player_list[|i]
-            	if (instance_exists(hplayer) && hplayer.player != orig_player && (get_player_team(hplayer.player) != get_player_team(orig_player) || team_attack) && !hplayer.invincible) {
-            		hplayer.x += lengthdir_x(kb_value, get_hitbox_angle(id));
-            		hplayer.y += lengthdir_y(kb_value, get_hitbox_angle(id));
+            	if (hitbox_timer == 1 && instance_exists(hplayer) && hplayer.player != orig_player && hplayer.state != PS_RESPAWN && (get_player_team(hplayer.player) != get_player_team(orig_player) || team_attack) && !hplayer.invincible && !hplayer.hurtboxID.dodging) {
+        	   		hplayer.hsp += lengthdir_x(kb_value, get_hitbox_angle(id));
+            		hplayer.vsp += lengthdir_y(kb_value, get_hitbox_angle(id));
             	}
             }
             ds_list_destroy(player_list);

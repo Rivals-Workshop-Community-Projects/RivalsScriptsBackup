@@ -21,7 +21,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 9);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_charged_flame_release"));
+set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_ori_charged_flame_release"));
 
 window_num ++; //attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 9);
@@ -59,7 +59,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink1);
-set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_ori_seinhit_medium"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 
 hitbox_num ++;
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -85,12 +85,13 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink2);
-set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
 set_num_hitboxes(atk, hitbox_num);

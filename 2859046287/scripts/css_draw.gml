@@ -4,19 +4,36 @@
 
 alt_cur = get_player_color(player); //checks the current alt
 
+//milestone alt mask - this draws directly behind the character, so you should make the character somewhat transparent for the effect to work
+if (alt_cur == 15)
+{
+    //these 3 functions are custom functions which allow you to draw masks in the range of whatever you want
+
+    //this section starts with you setting up the frame for the mask, think of it like a hole that's shaped like what you're putting here
+    //in this case, this is our player
+    maskHeader(); 
+    draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+    //this section stops the shape of our mask and starts the set up for the actual texture we put below it
+    //basically, this is what we see through our "hole"
+    //we use draw_sprite_tiled as it coverts the entire screen, but it doesn't need to
+    maskMidder();
+    shader_end(); //css_draw actually starts with the shader on, but i don't want my texture to use the shader
+    draw_sprite_tiled(
+        sprite_get("vfx_milestone_mask"),
+        css_anim_time * mask_anim_speed,
+        x + css_anim_time * mask_move_x,
+        y + css_anim_time * mask_move_y
+    );
+
+    //closes the masking and goes back to drawing normally again
+    maskFooter();
+}
+
 //thanks to supersonic, we can use colors directly from init_shader.gml
 //which is useful for adding special colored outlines to our alts
 shader_end();
 prepare_shader();
-
-//outline colors - the set_outline function is similar to the outline_color array- the numbers are red, green and blue values
-switch (alt_cur)
-{
-    case 7: set_outline(150, 0, 0); break; //shadow
-    case 14: set_outline(15, 56, 15); break; //early access / gameboy
-    case 15: set_outline(0, 255, 0); break; //milestone
-    default: set_outline(0, 0, 0); break;
-}
 
 shader_start();
 //we need to draw over the portrait so the outline colors apply to it too
@@ -45,8 +62,21 @@ prepare_shader(); //resets shader
 
 //alt icons
 //alts 13(abyss) to 18(gold rank) reffer to the rivals time based/unlockable alts
-if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
-
+switch (alt_cur)
+{
+    case 13: draw_sprite_ext(asset_get("prem_skin_spr"), 3, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //abyss
+    case 14: draw_sprite_ext(asset_get("prem_skin_spr"), 2, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //early access
+    case 15: draw_sprite_ext(asset_get("prem_skin_spr"), 8, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //milestone
+    case 16: draw_sprite_ext(asset_get("prem_skin_spr"), 7, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //seasonal
+    case 17: draw_sprite_ext(asset_get("prem_skin_spr"), 0, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //infamous/premium
+    case 18: draw_sprite_ext(asset_get("prem_skin_spr"), 5, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //gold rank
+}
+//other notable icon include:
+//  image_index 1: custom colors
+//  image_index 4: early access gameboy icon but with GP instead of EA
+//  image_index 6: gear icon
+//  image_index 9: another gear icon
+//  image_index 10: gift package alt (as seen on ori and shovel knight's free champion skins)
 
 //alt boxes
 draw_set_halign(fa_left);
@@ -100,14 +130,6 @@ if (css_anim_time < 140)
     static_colorI = colorI;
     init_shader();
 }
-#define set_outline(r, g, b)
-{
-    //we use this function to add custom outlines to our character's portrait
-    var start = 8*4; //outline
-    static_colorO[start] = r/255;
-    static_colorO[start+1] = g/255;
-    static_colorO[start+2] = b/255;
-}
 
 //functions by muno
 #define rectDraw(x1, y1, width, height, color)
@@ -134,3 +156,30 @@ if (css_anim_time < 140)
 }
 
 
+//this version does NOT work properly for the CSS playtest, and will draw the character in a dark void
+#define maskHeader
+{
+    //set the mask to take effect on pretty much everything in the room
+    //below this function, add the MASK
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false, false, false, true);
+    draw_set_alpha(0);
+    draw_rectangle_color(-200 ,-200 , room_width + 200, room_height + 200, c_white, c_white, c_white, c_white, false);
+    draw_set_alpha(1);
+}
+#define maskMidder
+{
+    //sets the thing underneath the mask to be drawn
+    //below this function, add the TEXTURE
+    gpu_set_blendenable(true);
+    gpu_set_colorwriteenable(true,true,true,true);
+    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+}
+#define maskFooter
+{
+    //go back to drawing normally again
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
+}

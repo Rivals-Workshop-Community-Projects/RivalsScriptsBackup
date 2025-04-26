@@ -1,15 +1,18 @@
 //update
+
+//Reset player height
+if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+	char_height = lerp(char_height, 52, 0.3)
+}
+
+//
 if(djumps > 0 && free && steam > 0){
-	if(state == PS_ATTACK_AIR && can_jump || state == PS_IDLE_AIR && hitpause == false){
-		if(jump_pressed /* && steam > 20*/){
-			if(pedal_to_metal){
-				sound_play(sound_get("sfx_steam_hiss_short"))
-				pedal_to_metal = false
-			}
+	if(state == PS_ATTACK_AIR && can_jump || state == PS_IDLE_AIR && !hitpause){
+		if(jump_pressed){
 			sound_play(sound_get("sfx_steam_quick"))
 			spawn_hit_fx(x, y + 60, vfx_doublejump_steam)
-			if(steam >= 20){
-				steam -= 20
+			if(steam >= jump_cost){
+				steam -= jump_cost
 			}else{
 				steam = 0
 			}
@@ -21,26 +24,28 @@ if(djumps > 0 && free && steam > 0){
 				hsp = 4
 				old_hsp = 4
 			}
-			vsp = -8.5
-			old_vsp = -8.5
-			//steam -= 20
+			vsp = steam_jump_vsp
+			old_vsp = steam_jump_vsp
+			
+			//Runes
+			if(has_rune("F") || all_runes){
+				var waterfx = spawn_hit_fx(x + (25 - random_func_2(1, 50, true)), (y - 10) + (25 - random_func_2(2, 50, true)), vfx_waterfx_small)
+				var waterfx = spawn_hit_fx(x + (25 - random_func_2(3, 50, true)), (y - 10) + (25 - random_func_2(4, 50, true)), vfx_waterfx_small)
+				var waterfx = spawn_hit_fx(x + (25 - random_func_2(5, 50, true)), (y - 10) + (25 - random_func_2(6, 50, true)), vfx_waterfx_small)
+			}
 		}
 	}
 }
 
-if(steam < 0){
-	steam = 0
-}
-
 //Dash FX
 if(state == PS_DASH_START && state_timer == 3){
-	//sound_play(asset_get("sfx_ell_steam_hit"))
 	spawn_hit_fx(x - 40*spr_dir, y - (60 + random_func(1, 20, true)), vfx_steam_small)
 	spawn_hit_fx(x - 20*spr_dir, y - (60 + random_func(3, 20, true)), vfx_steam_medium)
 	spawn_hit_fx(x - 40*spr_dir, y - (20 + random_func(1, 20, true)), vfx_steam_small)
 	spawn_hit_fx(x - 5*spr_dir, y - (40 + random_func(2, 20, true)), vfx_steam_large)
 }
 
+//Reset Grabbedid
 if(grabbedid != noone){
 	if(attack != AT_DATTACK){
 		if(state != PS_ATTACK_GROUND){
@@ -48,89 +53,22 @@ if(grabbedid != noone){
 		}
 	}
 	if(!instance_exists(grabbedid)){
-	grabbedid = noone
-	exit;
-	}
-	grabbedid.ungrab++;
-	if(grabbedid.ungrab == 2){
-		grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
-		grabbedid.ungrab = 0;
-		grabbedid.state = PS_TUMBLE;
-		grabbedid = noone;
-	}
-}
-
-steam_wall_anim_sync += 0.25
-
-//geyser while not in fspecial
-if(instance_exists(geyser) || instance_exists(geyser_2)){
-	if(!(attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))){
-		if((distance_to_object(geyser) < 20 || distance_to_object(geyser_2) < 20) && grabbedid == noone && state != PS_AIR_DODGE && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD && state != PS_PARRY && !(attack == AT_DATTACK && state == PS_ATTACK_GROUND && window < 4)){
-			if(distance_to_object(geyser) < 20 && (geyser.state == 2 || geyser.state == 1 && image_index > 1)){
-				geyser.attack = true
-				geyser.image_index = 0
-				djumps = 0
-				has_airdodge = true
-				set_state(PS_IDLE_AIR)
-				vsp = -16 + (-6 * (geyser.lifetime / 36))
-				hsp /= 2
-				if(left_down){
-					hsp -= 2
-				}else if(right_down){
-					hsp += 2
-				}
-			}else if(distance_to_object(geyser_2) < 20 && (geyser_2.state == 2 || geyser_2.state == 1 && image_index > 1)){
-				geyser_2.attack = true
-				geyser_2.image_index = 0
-				djumps = 0
-				has_airdodge = true
-				set_state(PS_IDLE_AIR)
-				vsp = -16 + (-6 * (geyser_2.lifetime / 36))
-				hsp /= 2
-				if(left_down){
-					hsp -= 2
-				}else if(right_down){
-					hsp += 2
-				}
-			}
+		grabbedid = noone
+	}else{
+		grabbedid.ungrab++;
+		if(grabbedid.ungrab == 2){
+			grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
+			grabbedid.ungrab = 0;
+			grabbedid.state = PS_TUMBLE;
+			grabbedid = noone;
 		}
 	}
 }
-//Indicating low on steam
-/*
-if(red_indicator_timer <= 0){
-	if(steam < 50){
-		if(down_strong_pressed && !free && can_strong == true || special_pressed && (left_down || right_down) && can_special == true){
-			red_indicator_timer = 30
-			sound_play(asset_get("mfx_timertick"))
-		}
-	}
-	if(steam < 100 && can_strong = true && !free && can_strong == true){
-		if(up_strong_pressed && can_ustrong == true){
-			red_indicator_timer = 30
-			sound_play(asset_get("mfx_timertick"))
-		}
-	}
-	if(steam >= 100){
-		if(special_pressed && can_special && joy_pad_idle && can_special){
-			red_indicator_timer = 30
-			sound_play(asset_get("mfx_timertick"))
-		}
-	}
-}
-*/
-
-//Get Bounce Back (jk not anymore haha)
-has_bounce = false
 
 if(instance_exists(steam_wall)){
 	steam_break = true
 }else{
 	steam_break = false
-}
-
-if(steam_wall_timer > 0){
-	steam_wall_timer -= 1
 }
 
 if(instance_exists(steam_rocket)){
@@ -190,20 +128,18 @@ if(cancel_buffer){
 		set_attack(AT_NSPECIAL)
 		sound_play(asset_get("mfx_back"))
 		cancel_buffer = false
-		if(steam > 34){
-			steam -= 34
+		if(steam > nspec_cost){
+			steam -= nspec_cost
 		}else{
 			steam = 0
-			no_pttm = true
-			pedal_to_metal = false
-			move_cooldown[AT_NSPECIAL] = 240
+			move_cooldown[AT_NSPECIAL] = 90
 		}
 	}else if(!hitpause){
 		cancel_buffer = false
 	}
 }
 
-//Tired
+//Nspecial Cooldown
 
 if(move_cooldown[AT_NSPECIAL] == 1){
 	sound_play(asset_get("mfx_coin"), false, noone, 0.5)
@@ -212,81 +148,6 @@ if(move_cooldown[AT_NSPECIAL] == 1){
 	col_b_outline = 255
 }
 
-//Tired Moves
-if(tired && steam > 0){
-	//Dspecial
-	set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.55);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 9);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0.55);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_ANGLE, 65);
-	
-	//Fspecial
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 8);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 55);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8.5);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.55);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .6);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 304);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	
-	//Uspecial
-	set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 11);
-}else{
-	//Dspecial
-	set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 5);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_KNOCKBACK, 7.5);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.3);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 9);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0.3);
-	set_hitbox_value(AT_DSPECIAL, 6, HG_ANGLE, 85);
-	
-	//Fspecial
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 75);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.2);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .15);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 301);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-	
-	//Uspecial
-	set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 6);
-}
-
-//Tired Stats
-if(tired){
-	col_r_outline = 100 + sin(lifetime / 20) * 50
-	walk_speed = 3;
-	initial_dash_speed = 4;
-	dash_speed = 5.5;
-	knockback_adj = 1.05
-	air_max_speed = 4.5
-	air_accel = .15;
-	wave_land_adj = 1
-	if(lifetime mod 15 == 0){
-		spawn_hit_fx(x - 40 + random_func(2, 80, true), y - 60 + random_func(1, 80, true), vfx_steam_small)
-	}
-}else{
-	walk_speed = 4;
-	initial_dash_speed = 6;
-	dash_speed = 7.5;
-	knockback_adj = 1
-	air_max_speed = 5.5
-	air_accel = .45;
-	wave_land_adj = 1.2
-}
-
-outline_color = [col_r_outline, col_g_outline, col_b_outline]
-
-init_shader();
-
-col_r_outline = lerp(col_r_outline, 0, 0.05)
-col_b_outline = lerp(col_g_outline, 0, 0.05)
-col_g_outline = lerp(col_b_outline, 0, 0.05)
 //Wavecancel
 
 if(state == PS_WAVELAND){
@@ -301,20 +162,6 @@ if(state == PS_WAVELAND){
 			}
 		}
 	}
-}
-
-//Steam Check
-if(steam <= 0){
-	steam = 0
-}else if(steam >= 100){
-	steam = 100
-}
-
-
-//Reset player height
-
-if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	char_height = lerp(char_height, 52, 0.3)
 }
 
 if(state == PS_SPAWN || not_moved){
@@ -387,9 +234,6 @@ if(state == PS_SPAWN || not_moved){
 		spr_fstrong = sprite_get("masked_fstrong");
 		spr_ustrong = sprite_get("masked_ustrong");
 		spr_dstrong = sprite_get("masked_dstrong");
-		spr_fstrong_2 = sprite_get("masked_fstrong_tired");
-		spr_ustrong_2 = sprite_get("masked_ustrong_tired");
-		spr_dstrong_2 = sprite_get("masked_dstrong_tired");
 		spr_nspecial = sprite_get("masked_nspecial");
 		spr_fspecial = sprite_get("masked_fspecial");
 		spr_uspecial = sprite_get("masked_uspecial");
@@ -672,43 +516,6 @@ if(not_moved && state != PS_SPAWN){
 	}
 }
 
-//Specials Cancel
-/*
-if(steam >= 50){
-	if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_LANDING_LAG && state_timer < 3){
-		if(state_timer > 5 && !(attack == AT_DSTRONG && window < 3) && attack != AT_USTRONG && attack != AT_FSTRONG
-		&& attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_AIR && attack != AT_EXTRA_1 && attack != AT_NSPECIAL){
-			if(!hitpause){
-				if(special_pressed && joy_pad_idle && !was_parried && has_hit_player || nspec_cancel_buffer){
-					nspec_cancel_buffer = false
-					set_attack(AT_NSPECIAL)
-				}
-			}else if(hitpause){
-				if(special_pressed && joy_pad_idle && !was_parried && has_hit_player){
-					nspec_cancel_buffer = true
-				}
-			}
-		}
-	}
-}
-*/
-
-//Dsppecial Sprite Change
-if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	if(!masked){
-		if(tired){
-			spr_dspecial = sprite_get("dspecial_tired");
-		}else{
-			spr_dspecial = sprite_get("dspecial");
-		}
-	}else{
-		if(tired){
-			spr_dspecial = sprite_get("masked_dspecial_tired");
-		}else{
-			spr_dspecial = sprite_get("masked_dspecial");
-		}
-	}
-}
 //Uspecial Air Accel
 if(attack == AT_USPECIAL && state == PS_ATTACK_AIR){
 	air_accel = 0.9;
@@ -725,360 +532,210 @@ if(halloween == true){
     }
 }
 
-/*
-//Pedal to the Metal
-if(pedal_to_metal){
-	if(chuff_noise_timer >= 30){
-		chuff_noise_timer = 0
-		if(random_func_2(3, 3, true) == 0){
-			sound_play(sound_get("sfx_chuff_1"))
-		}else if(random_func_2(3, 3, true) == 1){
-			sound_play(sound_get("sfx_chuff_2"))
-		}else{
-			sound_play(sound_get("sfx_chuff_3"))
-		}
-	}
-	chuff_noise_timer++
-	
-	green_indicator_timer = 26
-	if(steam < 100){
-		steam += 0.3
-	}else{
-		pedal_to_metal = false
-		sound_play(sound_get("sfx_steam_hiss_short"))
-	}
-	
-	if(instance_exists(geyser)){
-		geyser.attack = true
-	}
-	idle_anim_speed = .22;
-	crouch_anim_speed = .15;
-	walk_anim_speed = .25;
-	dash_anim_speed = .55;
-	
-	walk_speed = 5;
-	walk_accel = 0.4;
-	initial_dash_speed = 8.5;
-	dash_speed = 9;
-	dash_turn_accel = 4;
-	dash_stop_percent = .35;
-	moonwalk_accel = 1.7;
-	max_jump_hsp = 8;
-	air_max_speed = 6.5;
-	jump_change = 6.5;
-	air_accel = .55;
-	walljump_hsp = 4;
-	walljump_vsp = 13;
-	knockback_adj = 1.04;
-	
-	wave_land_adj = 1.3;
-	wave_friction = .2;
-	
-	damage_adj = 0.75
-	
-	set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 7);
-	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 4);
-	
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 1);
-	
-	set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
-	
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 1);
-	
-	set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 3);
-	
-	set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
-	
-	set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
-
-	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
-	
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 12);
-}else{
-	if(steam > 0){
-		idle_anim_speed = .14;
-		crouch_anim_speed = .1;
-		walk_anim_speed = .2;
-		dash_anim_speed = .4;
-		
-		walk_speed = 4;
-		walk_accel = 0.2;
-		initial_dash_speed = 7;
-		dash_speed = 7.5;
-		dash_turn_accel = 2.5;
-		dash_stop_percent = .35;
-		moonwalk_accel = 1.2;
-		max_jump_hsp = 7;
-		air_max_speed = 6;
-		jump_change = 5;
-		air_accel = .45;
-		walljump_hsp = 4.5;
-		walljump_vsp = 12;
-		knockback_adj = 1.02;
-		
-		wave_land_adj = 1.2;
-		wave_friction = .4;
-		
-		damage_adj = 1
-		
-		set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
-		set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
-		
-		set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 6);
-		set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
-		
-		set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 8);
-		set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 6);
-		
-		set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
-		set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 4);
-		
-		set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
-		set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 7);
-	
-		set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
-		set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
-		
-		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 9);
-		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
-		
-		set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);
-		set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
-		
-		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 11);
-	}else{
-		red_indicator_timer = 26
-		
-		idle_anim_speed = .1;
-		crouch_anim_speed = .05;
-		walk_anim_speed = .2;
-		dash_anim_speed = .25;
-		
-		walk_speed = 2.5;
-		walk_accel = 0.1;
-		initial_dash_speed = 4.5;
-		dash_speed = 5.5;
-		dash_turn_accel = 2.5;
-		dash_stop_percent = .35;
-		moonwalk_accel = 0.75;
-		max_jump_hsp = 4.5;
-		air_max_speed = 4.5;
-		jump_change = 5;
-		air_accel = .15;
-		walljump_hsp = 3.5;
-		walljump_vsp = 10;
-		knockback_adj = 1;
-		
-		wave_land_adj = 1;
-		wave_friction = .5;
-		
-		damage_adj = 1.2
-		
-		set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 14);
-		set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
-		
-		set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
-		set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
-		
-		set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 12);
-		set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 6);
-		
-		set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
-		set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 8);
-		
-		set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 11);
-		set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 10);
-	
-		set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 7);
-		set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 6);
-		
-		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 11);
-		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 10);
-		
-		set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);
-		set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 7);
-		
-		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9);
-		
-		set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-		set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-		set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-		set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-		set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-		set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-		
-		//spike nair when tired
-		set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 8);
-		set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.5);
-		set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 11);
-		set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.4);
-		set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 304);
-		
-		//jab 2 is strong when tired
-		set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 10);
-		set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.75);
-		set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 9);
-		set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.7);
-		set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 304);
-		
-		set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);
-		set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
-	}
-}
-
-//Not tired
-if(steam > 0){
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-	set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-	set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-	
-	set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 6 * damage_adj);
-	set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.2 * damage_adj);
-	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, round(6 * damage_adj));
-	set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 7 * damage_adj);
-	set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.25 * damage_adj);
-	set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 0);
-	
-	set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 9 * damage_adj);
-	set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
-	set_hitbox_value(AT_JAB, 2, HG_DAMAGE, round(5 * damage_adj));
-	set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 9.5);
-	set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.4);
-	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 0);
-	
-	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 0);
-	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 0);
-}
-
-if(steam == 0){
-	set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -6);
-}else{
-	if(pedal_to_metal){
-		set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -9);
-	}else{
-		set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -8);
-	}
-}
-//Steam Cap
-if(steam > 100){
+//Steam Check
+if(steam <= 0){
+	steam = 0
+}else if(steam >= 100){
 	steam = 100
 }
-//Damage Changes
-set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, round(10 * damage_adj));
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 9 * damage_adj);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.95 * damage_adj);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 11 * damage_adj);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .9 * damage_adj);
 
-set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, round(7 * damage_adj));
-set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 5 * damage_adj);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.55 * damage_adj);
-set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 6 * damage_adj);
-set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .6 * damage_adj);
+//Galega Check
 
-set_hitbox_value(AT_DAIR, 10, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_DAIR, 10, HG_BASE_KNOCKBACK, 5 * damage_adj);
-set_hitbox_value(AT_DAIR, 10, HG_KNOCKBACK_SCALING, 0.55 * damage_adj);
-set_hitbox_value(AT_DAIR, 10, HG_BASE_HITPAUSE, 9 * damage_adj);
-set_hitbox_value(AT_DAIR, 10, HG_HITPAUSE_SCALING, 0.7 * damage_adj);
+with(oPlayer){
+    if("shrug_galega" in self && !array_contains(other.galega_players, player)){
+        array_push(other.galega_players, player)
+        array_sort(other.galega_players, true)
+    }
+}
 
-set_hitbox_value(AT_DAIR, 9, HG_DAMAGE, 3 * damage_adj);
-set_hitbox_value(AT_DAIR, 9, HG_BASE_KNOCKBACK, 7 * damage_adj);
-set_hitbox_value(AT_DAIR, 9, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
-set_hitbox_value(AT_DAIR, 9, HG_BASE_HITPAUSE, 7 * damage_adj);
-set_hitbox_value(AT_DAIR, 9, HG_HITPAUSE_SCALING, 0.6 * damage_adj);
+//Overheat
 
-set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 8 * damage_adj);
-set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, 0.35 * damage_adj);
-set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 2 * damage_adj);
-set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0.1 * damage_adj);
+if(has_rune("H") || all_runes){
+	var heat_damage = true
+}else{
+	var heat_damage = false
+}
+if(player == galega_players[0]){
+	with(oPlayer){
+		var current_player = self
+		
+	    if(overheat > 0){
+		    if(overheat_timer > 0 && state_cat != SC_HITSTUN){
+		    	overheat_timer--
+		    }else if(overheat_timer <= 0){
+		    	overheat -= 1
+		    	if(heat_damage && overheat mod 4 == 0 && overheat > 25){
+		    		take_damage(player, -1, 1)
+		    	}
+		    }
+		    if(overheat >= 100){
+		    	with(other){
+		    		if(lifetime mod 3 == 0){
+		    			spawn_hit_fx(current_player.x - 30 + random_func_2(1, 60, true), current_player.y - 55 + random_func_2(2, 45, true), vfx_steam_small)
+		    		}
+		    	}
+		    }else if(overheat > 75){
+		    	with(other){
+		    		if(lifetime mod 5 == 0){
+		    			spawn_hit_fx(current_player.x - 30 + random_func_2(1, 60, true), current_player.y - 55 + random_func_2(2, 45, true), vfx_steam_small)
+		    		}
+		    	}
+		    }else if(overheat > 50){
+		    	with(other){
+		    		if(lifetime mod 8 == 0){
+		    			spawn_hit_fx(current_player.x - 30 + random_func_2(1, 60, true), current_player.y - 55 + random_func_2(2, 45, true), vfx_steam_small)
+		    		}
+		    	}
+		    }
+	    }
+	    
+	    //Remove Overheat on death
+	    if(state == PS_DEAD || state == PS_RESPAWN){
+	    	overheat = 0
+	    }
+	}
+}
 
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 9.5 * damage_adj);
-set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
-set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 6 * damage_adj);
-set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.25 * damage_adj);
+outline_color = [col_r_outline, col_g_outline, col_b_outline]
 
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3 * damage_adj);
-set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 2 * damage_adj);
+col_r_outline = lerp(col_r_outline, 0, 0.05)
+col_b_outline = lerp(col_g_outline, 0, 0.05)
+col_g_outline = lerp(col_b_outline, 0, 0.05)
 
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, round(7 * damage_adj));
-set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 7 * damage_adj);
-set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.75 * damage_adj);
-set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.8);
+/////////////////
+//---[RUNES]---//
+/////////////////
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, round(7 * damage_adj));
-set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7 * damage_adj);
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.75 * damage_adj);
-set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6 * damage_adj);
-set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.8 * damage_adj);
+//All runes outline
+if(all_runes){
+	outline_color = [255, 255, 255]
+}
 
-set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6 * damage_adj);
-set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.4 * damage_adj);
-set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 4.5 * damage_adj);
-set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.35 * damage_adj);
+init_shader();
 
-set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6.5 * damage_adj);
-set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.15 * damage_adj);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 4 * damage_adj);
-set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.45 * damage_adj);
 
-set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 9 * damage_adj);
-set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.15 * damage_adj);
-set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 6 * damage_adj);
-set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.2 * damage_adj);
+if(has_rune("E") || all_runes){
+	var steam_spd = 1 + (steam / 200)
+	walk_speed = 4 * steam_spd;
+	initial_dash_speed = 8.5 * steam_spd;
+	dash_speed = 8 * steam_spd;
+	
+	leave_ground_max = 7 * steam_spd; //the maximum hsp you can have when you go from grounded to aerial without jumping
+	max_jump_hsp = 6 * steam_spd; //the maximum hsp you can have when jumping from the ground
+	air_max_speed = 5.5 * steam_spd; // (3) the maximum hsp you can accelerate to when in a normal aerial state
+	jump_change = 5 * steam_spd; //maximum hsp when double jumping. If already going faster, it will not slow you down
+	air_accel = .45 * steam_spd;
+	walljump_hsp = 4.5 * steam_spd;
+	walljump_vsp = 12 * steam_spd;
+	
+	wave_land_adj = 1.2 * steam_spd; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+}
 
-set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, 0.5 * damage_adj);
-set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 7 * damage_adj);
-set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 7 * damage_adj);
-set_hitbox_value(AT_NAIR, 5, HG_HITPAUSE_SCALING, 0.6 * damage_adj);
+//Chain
 
-set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8 * damage_adj);
-set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .75 * damage_adj);
-set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, round(7 * damage_adj));
-set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 8 * damage_adj);
-set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .7 * damage_adj);
+if(has_rune("O") || all_runes){
+	with(oPlayer){
+	    if(chained && chained_player == other){
+	    	//Reset Chain Stuff on Death
+	    	if(state == PS_DEAD || state == PS_RESPAWN){
+	    		chained = false
+	    		exit;
+	    	}
+	    	var temp_chain_timer = chain_timer
+	    	//Chain Break Stuff
+	    	with(other){
+    			if(distance_to_point(other.x, other.y - 25) > 245 && other.chain_break_timer <= 0 && chain_deactivation_timer <= 0){
+	    			other.chain_break_timer = 8
+	    		}else if(distance_to_point(other.x, other.y -25) < 215 && other.chain_break_timer > 0){
+	    			other.chain_break_timer = 0
+	    		}
+	    	}
+	    	if(chain_break_timer == 1){
+	    		with(other){
+	    			var chain_break_hitbox = create_hitbox(AT_EXTRA_1, 6, other.x, other.y - 25)
+	    			var crystalburst = spawn_hit_fx(other.x, other.y - 25, vfx_crystalburst)
+	
+		            var bamboo_dir = point_direction(x, y - 19, other.x, other.y - 19);
+		            var bamboo_dist = point_distance(x, y - 19, other.x, other.y - 19);
+		            
+		            //since the arm sprite's origin isn't centered, do some math
+		            if (bamboo_dist < 7) bamboo_dist = 7; //needs minimum distance to prevent arcsin errors
+		            var arm_dir = darcsin(6 / bamboo_dist);
+		            arm_dir = bamboo_dir - arm_dir + 180
+		            if (bamboo_dist > 64){
+		                var rope_x = other.x  + lengthdir_x(32, arm_dir);
+		                var rope_y = other.y - 19  + lengthdir_y(32, arm_dir);
+		                
+		                var rope_length = 0;
+		                var max_rope_length = point_distance(x, y - 19, other.x, other.y - 19);
+		                while (rope_length < max_rope_length-16){
+		                	var shatter = create_hitbox(AT_EXTRA_1, 2, round(rope_x), round(rope_y))
+		                	var rand_num = round(random_func_2((rope_length / 16), 3, false))
+		                	if(get_player_color(player) != 12){
+					        	if(rand_num == 0){
+					        		shatter.sprite_index = sprite_get("ice_small1")
+					        	}else if(rand_num == 1){
+					        		shatter.sprite_index = sprite_get("ice_small2")
+					        	}else if(rand_num == 2){
+					        		shatter.sprite_index = sprite_get("ice_small3")
+					        	}else if(rand_num == 3){
+					        		shatter.sprite_index = sprite_get("ice_small4")
+					        	}
+				        	}else{
+				        		if(rand_num == 0){
+					        		shatter.sprite_index = sprite_get("ice_small1_vortex")
+					        	}else if(rand_num == 1){
+					        		shatter.sprite_index = sprite_get("ice_small2_vortex")
+					        	}else if(rand_num == 2){
+					        		shatter.sprite_index = sprite_get("ice_small3_vortex")
+					        	}else if(rand_num == 3){
+					        		shatter.sprite_index = sprite_get("ice_small4_vortex")
+					        	}
+				        	}
+		                	shatter.hsp = -2 + random_func_2((rope_length / 16), 4, false)
+		                	shatter.vsp = -1 - random_func_2((rope_length / 16) + 1, 4, false)
+		                    rope_x += lengthdir_x(16, arm_dir);
+		                    rope_y += lengthdir_y(16, arm_dir);
+		                    rope_length += 16;
+		                }
+		            }
+	    		}
+	    		if(chain_stack > 1){
+	    			other.chain_deactivation_timer = 45
+	    			chain_break_timer = 0
+	    			chain_stack--
+	    		}else{
+	    			chained = false
+	    			chain_stack = 0
+	    		}
+	    	}
+	    	if(chain_timer < 250){
+		    	chain_timer++
+		    }
+	    }
+	    if(self != other && chain_break_timer > 1){
+	    	chain_break_timer--
+	    }
+	}
+	chain_deactivation_timer--
+}
 
-set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, round(4 * damage_adj));
-set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 2 * damage_adj);
-set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .1 * damage_adj);
-
-set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6 * damage_adj);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.3 * damage_adj);
-set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 6 * damage_adj);
-set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, 0.35 * damage_adj);
-
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7 * damage_adj);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.85 * damage_adj);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, round(11 * damage_adj));
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 12 * damage_adj);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.8 * damage_adj);
-
-set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 9.5 * damage_adj);
-set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.95 * damage_adj);
-set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, round(10 * damage_adj));
-set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 10 * damage_adj);
-set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.75 * damage_adj);
-*/
-
+if(steam_wall_timer > 0){
+	steam_wall_timer -= 1
+}
+steam_wall_anim_sync += 0.25
 steam_wall_no_down--
 switch_timer--
 steam_break_timer--
 lifetime++
+
+#define array_contains(array, value)
+var checks = 0
+while(checks < array_length(array)){
+	if(array[checks] == value){
+		return true
+	}
+	checks++
+}
+
+return false

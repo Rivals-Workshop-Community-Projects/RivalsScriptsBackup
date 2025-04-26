@@ -51,6 +51,9 @@ cpu_hover_draw();
 
 //alt icons
 switch (get_player_color(player)){
+case 29:
+	    draw_sprite(sprite_get("css_vortex"),0,x+176,y+110);
+	break;
 case 30:
 	    draw_sprite(sprite_get("css_icon_riptide"),0,x+176,y+110);
 	break;	

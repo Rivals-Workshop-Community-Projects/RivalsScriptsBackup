@@ -63,6 +63,7 @@ switch(attack)
         spr_dir = 1;
     break;
     case AT_NSPECIAL:
+    	/*
         if (player_id.is_reimu_a)
         {
            // can_hit_self = true;
@@ -88,7 +89,7 @@ switch(attack)
         else
         {
             destroyed = true;
-        }
+        }*/
     break;
     case AT_FSPECIAL:
     case AT_FSPECIAL_2:

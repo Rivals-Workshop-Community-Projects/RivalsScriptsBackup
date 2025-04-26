@@ -88,6 +88,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1); //only false for
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 0); //only true for theikos bar
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //collision explosion
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -126,6 +127,7 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
@@ -141,3 +143,4 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);

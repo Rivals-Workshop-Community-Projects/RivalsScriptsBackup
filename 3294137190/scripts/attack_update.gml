@@ -29,6 +29,9 @@ if (attack == AT_DATTACK){
 	}
 }
 if (attack == AT_DATTACK_2){
+	if window == 1 && window_timer <= 4{
+    			can_ustrong = true
+    		}
 	if window == 1 && window_timer == 13{
 		spawn_base_dust(x +40*spr_dir,y,"dash_start",1* -spr_dir)
 		spawn_base_dust(x +20 ,y,"dash_start",1* spr_dir)
@@ -134,7 +137,7 @@ if (attack == AT_DSTRONG){
 		move_cooldown[AT_DSTRONG] = 40;
 		spawn_base_dust(x +10*spr_dir,y,"dash_start",1* -spr_dir)
 		spawn_base_dust(x -10*spr_dir,y,"dash_start",1* spr_dir)
-		silver_bullets--;
+		//silver_bullets--;
 	}
 }
 
@@ -261,7 +264,7 @@ if (attack == AT_DSPECIAL){
 //Uspecial
 if (attack == AT_USPECIAL){
 	if window == 3 {
-	if (window_timer == 1 && silver_bullets >= 3){
+	if (window_timer == 1 && silver_bullets >= 3 && uspec_drop == false){
 		silver_bullets -= 3;
 		uspecial_cancel = true;
 	}
@@ -291,12 +294,14 @@ if (attack == AT_USPECIAL){
             move_cooldown[AT_USPECIAL] = 999
         }
     	//Regular USpecial
-    	if (silver_bullets >= 3){
+    	if (silver_bullets >= 3) && !shield_down{
     		reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE)
+    		uspec_drop = false;
     	}
     	//USpecial without bullets
     	else {
     		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+    		uspec_drop = true;
     	}
     }
 } 

@@ -65,7 +65,7 @@ draw_sprite_ext( sprite_get("select_highlight"), 0, x + 8, y + 8, 1, 1, 0, Highl
 draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 231, "v2.7.1", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v" + string(major_update_num) + "." + string(minor_update_num) + "." + string(mini_update_num), c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date display_alpha
 draw_set_font(asset_get("tinyFont"));

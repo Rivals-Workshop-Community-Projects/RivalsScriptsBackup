@@ -7,6 +7,8 @@ switch(attack){
 		trigger_b_reverse();
 		break;
 }
+
+
 //sfxs
 if attack == AT_UAIR {
     if window == 1 && window_timer == 3 {
@@ -291,6 +293,9 @@ if(attack == AT_DSPECIAL){
         window = 4;
         window_timer = 0;
     }
+    
+
+
     //landing
     if(window == 4 && !free){
     	destroy_hitboxes();
@@ -477,6 +482,8 @@ if(attack == AT_UTILT){
 	hud_offset = 80;
 }
 
+
+
 #define trigger_wavebounce() 
 {
 	if ((left_down and state_timer <= 6 and spr_dir == 1) or (right_down and state_timer <= 6 and spr_dir == -1) and (b_reversed == false)) {
@@ -491,4 +498,5 @@ if(attack == AT_UTILT){
     	b_reversed = false;
 	}
 }
+
 

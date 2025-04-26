@@ -14,18 +14,18 @@ switch(attack){
 			sound_play(asset_get("sfx_syl_dstrong"), false, noone, true, .9)
 		}
 		if (window <= get_attack_value(2, AG_NUM_WINDOWS)) hud_offset = 2000; // put hud away
-		if (window == get_attack_value(2, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
+		if (window == get_attack_value(2, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	break;
     case AT_FTILT:
-        if (window == 1 && window_timer == (has_rune("L")?4:6)) {
+        if (window == 1 && window_timer == (has_rune("L")?4:6)) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.7, 1.15);
         }
     break;
     case AT_DTILT:
-        if (window == 1 && window_timer == 1) {
+        if (window == 1 && window_timer == 1) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_syl_ustrong"), false, noone, 0.7, 1.35);
         }
-        if (window == 1 && window_timer == 6) {
+        if (window == 1 && window_timer == 6) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             //sound_play(asset_get("sfx_swipe_weak2"), false, noone, 0.5, 1.1);
             sound_play(asset_get("sfx_leaves"), false, noone, 0.7, 1.25);
         }
@@ -36,7 +36,7 @@ switch(attack){
         }
         switch(window){
             case 1:
-                if (window_timer == 10){
+                if (window_timer == 10){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     hsp = spr_dir*4
                     sound_play(asset_get("sfx_mol_flare_shoot"))
                 }
@@ -53,7 +53,7 @@ switch(attack){
             var accel_interval = 0.5;
             hsp += accel_interval*spr_dir;
         }
-        if (window == 1 && window_timer == 1){
+        if (window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_syl_ustrong_part1"), false, noone, 1, 1.5);
             sound_play(asset_get("sfx_may_root"), false, noone, 1, 1.4);
         }
@@ -61,14 +61,14 @@ switch(attack){
     case AT_FSTRONG:
         set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_ANIM_SPEED, 1/3 + (strong_charge / 200));
         set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_HSPEED, 7 + (strong_charge / 20));
-        if window == 1 && window_timer == 2{
+        if window == 1 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_dtilt_perform"), false, noone, 0.9, 1.1);
             sound_play(sound_get("unt_summon"), false, noone, 1, 0.9);
         }
         if window == 2 && has_rune("L"){
             strong_charge += 1;
         }
-        if window == 3 && window_timer == 2{
+        if window == 3 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_bash_use"));
             sound_play(asset_get("sfx_absa_uair"), false, noone, 0.7, 0.8);
         }
@@ -80,20 +80,20 @@ switch(attack){
         if window == 2 && has_rune("L"){
             strong_charge += 1;
         }
-        if window == 3 && window_timer == 5{
+        if window == 3 && window_timer == 5{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_buzzsaw_throw"));
         }
-        if window == 3 && window_timer == 2{
+        if window == 3 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 0.8, 0.8);
         }
     break;
     case AT_USTRONG:
-        if (window == 1 && window_timer == 8){
+        if (window == 1 && window_timer == 8){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
            //sound_play(asset_get("sfx_syl_ustrong_part1"));
            sound_play(asset_get("sfx_syl_nspecial"), false, noone, 0.4, 1.1);
            sound_play(asset_get("sfx_leaves"), false, noone, 0.7, 0.8);
         }
-        if (window == 3 && window_timer == 1){
+        if (window == 3 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
            //sound_play(asset_get("sfx_syl_ustrong_part1"));
            sound_play(asset_get("sfx_syl_dstrong"), false, noone, 0.6, 0.9);
         }
@@ -102,10 +102,10 @@ switch(attack){
         }
     break;
     case AT_NAIR:
-        if (window == 1 && window_timer == (has_rune("L")?4:6)){
+        if (window == 1 && window_timer == (has_rune("L")?4:6)){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_uptilt_single"), false, noone, 0.7, 1.3);
         }
-    if (window == 1 && window_timer == (has_rune("L")?7:11)){
+    if (window == 1 && window_timer == (has_rune("L")?7:11)){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
         sound_play(asset_get("sfx_ell_dtilt2"), false, noone, 1, 1.1);
     }
     break;
@@ -124,16 +124,16 @@ switch(attack){
         }
     break;
     case AT_BAIR:
-        if window == 1 && window_timer == 2{
+        if window == 1 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_syl_dstrong"), false, noone, 0.9, 1.1);
             flowey_bairloop = 1;
             set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
             set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
         }
-        if window == 1 && window_timer == 7{
+        if window == 1 && window_timer == 7{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_abyss_hazard_hit"), false, noone, 0.7, 0.9);
         }
-        if has_rune("I") && window == 3 && window_timer == 3 && flowey_bairloop == 1{
+        if has_rune("I") && window == 3 && window_timer == 3 && flowey_bairloop == 1{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             window = 1;
             window_timer = 6;
             set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
@@ -143,11 +143,11 @@ switch(attack){
         }
     break;
     case AT_DAIR:
-        if window == 1 && window_timer == 2{
+        if window == 1 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_glide_featherout"), false, noone, 0.9, 0.9);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.2, 1.15);
         }
-        if window == 3 && window_timer == 5{
+        if window == 3 && window_timer == 5{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_glide_featherout"), false, noone, 0.9, 1.1);
             sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.2, 1.2);
         }
@@ -156,11 +156,11 @@ switch(attack){
         }*/
     break;
     case AT_UAIR:
-        if window == 1 && window_timer == 1 {
+        if window == 1 && window_timer == 1 { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_grenade_hit_ground"), false, noone, 1.1, 1.2);
             sound_play(asset_get("sfx_ori_taunt2"), false, noone, 1.2, 0.9);
         }
-        if window == 2 && window_timer == 1 {
+        if window == 2 && window_timer == 1 { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             sound_play(asset_get("sfx_ori_grenade_hit"), false, noone, 1.1, 1.2);
         }
         //if ((window == 1 && window_timer == 8) || (window == 2 && window_timer == 2)) && !hitpause{
@@ -171,13 +171,13 @@ switch(attack){
     case AT_NSPECIAL:
         switch (window) {
             case 1:
-                if (window_timer == 2) {
+                if (window_timer == 2) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     sound_play(asset_get("mfx_xp"), false, noone, 0.5, 0.7);
                     sound_play(asset_get("sfx_ori_grenade_aim"), false, noone, 0.7, 1.9);
                 }
                 break;
             case 3:
-                if (window_timer == 6 && !special_down && hitstop <= 0) {
+                if (window_timer == 6 && !special_down && hitstop <= 0) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     create_hitbox(AT_NSPECIAL, 1, x + 36 * spr_dir, y);
                     window = 5;
                     window_timer = 0;
@@ -187,7 +187,7 @@ switch(attack){
                 move_cooldown[AT_NSPECIAL] = 35;
                 break;
             case 4:
-                if (window_timer == 4) {
+                if (window_timer == 4) { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     create_hitbox(AT_NSPECIAL, 2, x + 36 * spr_dir, y - 24);
                     if has_rune("G"){
                         rune_pellet1 = create_hitbox(AT_NSPECIAL, 1, x + 36 * spr_dir, y);
@@ -215,7 +215,7 @@ switch(attack){
             vsp *= 0.75;
         }
         else if window == 2 || window == 3{
-            if window == 2 && window_timer == 5 && hitstop <= 0 && flowey_vine == -4{
+            if window == 2 && window_timer == 5 && hitstop <= 0 && flowey_vine == -4{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                 flowey_vine = create_hitbox(AT_FSPECIAL, 1, x + 68 * spr_dir, y - 16);
                 flowey_vineCheck = create_hitbox(AT_FSPECIAL, 3, x + 68 * spr_dir, y - 16);
             }
@@ -280,7 +280,7 @@ switch(attack){
             case 1:
                 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 16);
                 can_jump = false;
-                if(window_timer == 8) sound_play(asset_get("sfx_kragg_rock_shatter"))
+                if(window_timer == 8) sound_play(asset_get("sfx_kragg_rock_shatter")) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             break;
             case 2:
 				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 16);
@@ -299,7 +299,7 @@ switch(attack){
             case 3:
 				hud_offset = round(lerp(hud_offset, 180, 0.5));
                 hsp *= 0.975;
-                if(window_timer == 7) sound_play(asset_get("sfx_oly_uspecial_kick"))
+                if(window_timer == 7) sound_play(asset_get("sfx_oly_uspecial_kick")) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                 if has_rune("M"){
                     hsp = 0;
                     switch window_timer{
@@ -343,7 +343,7 @@ switch(attack){
 			if(window_timer == 1 && !hitpause) sound_play(asset_get("sfx_kragg_rock_shatter"))
 			attack_end();
 			destroy_hitboxes();
-			if window_timer = 12{
+			if window_timer = 12{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				set_attack(AT_DSPECIAL);
 				window = 2;
 				window_timer = 0;
@@ -357,7 +357,7 @@ switch(attack){
             attack_end();
             set_state(free? PS_IDLE_AIR:PS_IDLE);
     	}
-        if window == 1 && window_timer == (has_rune("L")?8:12) && !instance_exists(flowey_save){
+        if window == 1 && window_timer == (has_rune("L")?8:12) && !instance_exists(flowey_save){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
             flowey_save = instance_create(x, y, "obj_article1");
             flowey_savecooldown = 10;
             destroy_hitboxes();
@@ -367,14 +367,14 @@ switch(attack){
         else if window == 2{
             vsp = -0.5;
             hsp *= 0.975;
-            if window_timer == 5 && has_rune("F") && special_down{
+            if window_timer == 5 && has_rune("F") && special_down{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                 flowey_savejump += has_rune("L")? 1:0.5;
                 window_timer = 0;
                 if flowey_savejump >= 5{
                     window_timer = 5;
                 }
             }
-            if window_timer == 6{
+            if window_timer == 6{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                 x = flowey_save.x;
                 y = flowey_save.y - 0.1;
                 if special_down{
@@ -429,7 +429,7 @@ switch(attack){
     break;
     case AT_TAUNT_2:
         move_cooldown[AT_TAUNT_2] = 2;
-        if window == 1 && window_timer == 28{
+        if window == 1 && window_timer == 28{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
         	sound_play(sound_get("vineboom"));
         }
         if window == 2 && state_timer >= 50 && !taunt_down{
@@ -491,7 +491,7 @@ switch(attack){
 				flowey_final_strong_timer--;
 				hsp *= .9;
 				vsp *= .9;
-				if window_timer == 6{
+				if window_timer == 6{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 					window = flowey_final_strong_timer <= 0? 5:2;
 					window_timer = 0;
 					flowey_final_strong_cooldown = 60;
@@ -525,3 +525,12 @@ if has_rune("O") && instance_exists(flowey_save){
         }
     }
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

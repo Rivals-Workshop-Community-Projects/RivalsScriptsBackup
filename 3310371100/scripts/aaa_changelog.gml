@@ -4,7 +4,36 @@
 ```
 ```diff
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
-```
+
+
+===IDK v.A===
+:: STATS ... max air speed 3.75 -> 4.
+:: STATS ... run speed 5.75 -> 6.
+:: DTILT ... no longer has sweetspot. can not cancel
+:: FSPECIAL ... weird now. has no landcancel
+:: UTILT ... 2nd half hitbox main hit has angle flipper 3. might mean backward hit is easier now. idk
+:: RAINCLOUD STATE ... disappears upon freeze usage.
+:: RAINCLOUD STATE ... max time 500 -> 100.
+:: RAINCLOUD STATE ... slightly faster timer decrease when they are offstage.
+:: FAIR ... [NYI] 
+
+
+
+
+===v1.9===
+---changes---
+:: alt color Sorbet moved somewhere else
+:: in its place, we have the Seasonal alt now
+
+---fixes---
+:: fixed an issue where FSPECIAL land-cancelling didnt work
+:: fixed an issue where after playing certain characters, usher's alt list might look... Broken
+
+---notes---
+i wanted to put changes on FSPECIAL landcancelling but
+currently usher is in an online majors roster so it's in a patch lockout. hold on tight! im also busy and also want to rest
+
+
 
 ===v1.8===
 ---changes---

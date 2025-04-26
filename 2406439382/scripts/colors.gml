@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 21, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 10 );
+set_num_palettes( 14 );
 
 // Ajies
 set_color_profile_slot( 1, 0, 0, 228, 228 ); //REDCLOTH
@@ -126,15 +126,45 @@ set_color_profile_slot( 9, 5, 26, 26, 44 ); //CLOTHRING
 set_color_profile_slot( 9, 6, 254, 255, 0 ); //REDHAIR
 set_color_profile_slot( 9, 7, 48, 169, 57 ); //DRESS
 
-// changeit
-set_color_profile_slot( 10, 0, 214, 109, 209 ); //REDCLOTH
+// Sagume
+set_color_profile_slot( 10, 0, 149, 19, 105 ); //REDCLOTH
 set_color_profile_slot( 10, 1, 207, 202, 214 ); //HAIR
 set_color_profile_slot( 10, 2, 255, 215, 198 ); //SKIN
-set_color_profile_slot( 10, 3, 207, 202, 214 ); //BOW
+set_color_profile_slot( 10, 3, 253, 0, 0 ); //BOW
 set_color_profile_slot( 10, 4, 156, 94, 125 ); //EYES
 set_color_profile_slot( 10, 5, 175, 58, 70 ); //CLOTHRING
 set_color_profile_slot( 10, 6, 214, 109, 209 ); //REDHAIR
-set_color_profile_slot( 10, 7, 237, 224, 190 ); //DRESS
+set_color_profile_slot( 10, 7, 227, 225, 196 ); //DRESS
+
+// Yuuto
+set_color_profile_slot( 11, 0, 93, 127, 198 ); //REDCLOTH
+set_color_profile_slot( 11, 1, 20, 187, 255 ); //HAIR
+set_color_profile_slot( 11, 2, 255, 215, 198 ); //SKIN
+set_color_profile_slot( 11, 3, 253, 237, 17 ); //BOW
+set_color_profile_slot( 11, 4, 113, 170, 223 ); //EYES
+set_color_profile_slot( 11, 5, 69, 130, 178 ); //CLOTHRING
+set_color_profile_slot( 11, 6, 253, 237, 17 ); //REDHAIR
+set_color_profile_slot( 11, 7, 20, 187, 255 ); //DRESS
+
+// Jevil
+set_color_profile_slot( 12, 0, 247, 234, 4 ); //REDCLOTH
+set_color_profile_slot( 12, 1, 41, 41, 66 ); //HAIR
+set_color_profile_slot( 12, 2, 166, 189, 206 ); //SKIN
+set_color_profile_slot( 12, 3, 178, 230, 26 ); //BOW
+set_color_profile_slot( 12, 4, 0, 0, 0 ); //EYES
+set_color_profile_slot( 12, 5, 181, 230, 27 ); //CLOTHRING
+set_color_profile_slot( 12, 6, 110, 108, 190 ); //REDHAIR
+set_color_profile_slot( 12, 7, 109, 110, 191 ); //DRESS
+
+// Gamzee
+set_color_profile_slot( 13, 0, 99, 29, 180 ); //REDCLOTH
+set_color_profile_slot( 13, 1, 31, 31, 31 ); //HAIR
+set_color_profile_slot( 13, 2, 124, 124, 124 ); //SKIN
+set_color_profile_slot( 13, 3, 56, 27, 118 ); //BOW
+set_color_profile_slot( 13, 4, 252, 188, 0 ); //EYES
+set_color_profile_slot( 13, 5, 99, 29, 180 ); //CLOTHRING
+set_color_profile_slot( 13, 6, 68, 10, 127 ); //REDHAIR
+set_color_profile_slot( 13, 7, 31, 31, 31 ); //DRESS
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

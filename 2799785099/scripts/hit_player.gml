@@ -57,6 +57,7 @@ if (my_hitboxID.attack == AT_DSTRONG) {
 	}
 	if my_hitboxID.hbox_num == 3 {
 	sound_play(sound_get("sfx_hit_sharp2"));
+	spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 113);
 	}
 }
 

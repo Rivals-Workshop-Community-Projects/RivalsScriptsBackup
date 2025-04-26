@@ -5,6 +5,8 @@ hurtbox_spr = sprite_get("toolbox");
 mask_index = sprite_get("toolbox")
 sprite_index = sprite_get("toolbox");
 image_index = 0;
+image_xscale = 2;
+image_yscale = 2;
 
 //article 3 is for fpecial and dspecial's articles/"tools"
 

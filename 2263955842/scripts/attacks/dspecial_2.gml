@@ -1,3 +1,5 @@
+/* This file is currently unused.
+
 set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL_2, AG_HAS_LANDING_LAG, 1);

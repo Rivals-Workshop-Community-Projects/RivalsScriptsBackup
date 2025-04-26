@@ -74,19 +74,18 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2); 
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //punch it down to the ground
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 3);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
-set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -34);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 30);
@@ -103,6 +102,7 @@ set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2")); //
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
+set_hitbox_value(atk, hitbox_num, HG_NO_POLARIS, true);
 
 hitbox_num ++; //fire blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -142,7 +142,8 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.05);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.15); //0.05
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2); //added
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 193);
@@ -153,8 +154,7 @@ set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 3);
 set_hitbox_value(atk, hitbox_num, HG_GROUNDEDNESS, 1);
 set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);
-set_hitbox_value(atk, hitbox_num, HG_EFFECT, 12);
+set_hitbox_value(atk, hitbox_num, HG_FORCE_FLINCH, 3);
 
 hitbox_num ++; //rune I rocks
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);

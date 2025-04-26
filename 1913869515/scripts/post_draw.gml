@@ -3,11 +3,8 @@ shader_start();
 if invincible == true && invince_time < 2 {
 	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1,1)
 }
-
+//////
 if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2 {
-	
-	
-		
 	if !free {
 	if !down_down {	
       	   if abs(hsp) < 2 {
@@ -42,15 +39,10 @@ if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2
 			draw_sprite_ext(sprite_get("iaido_arm5"),window_timer/3,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
 		break
 	}
-	
 	draw_sprite_ext(iaispr,iaiimg,x,y,iaidir,1,0,-1, 1 - ((window_timer + 5)/10))	
-	
 }
+//////
 
-if "showdm" in self {
-	showdm -- 
-	draw_sprite_ext(sprite_get("dm"), 9 + (get_gameplay_time()%12)/4, x , y + 24,1,1,showdm*showdm*-1, -1,showdm/30 ); 
-}
 if slashdraw > 0 && hit_player_obj != self{
         	draw_sprite_ext(sprite_get("slosh"), 0, hit_player_obj.x , hit_player_obj.y - 36,
         	1 - (slashdraw/maxdraw)/2,
@@ -73,39 +65,39 @@ if attacking && attack == AT_UTHROW{
 }
 
  if hitstop > 6 {     
- 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/15 );
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, random_func(1,14,true)/15 );
  }
  
 if window == 1 {
 
  if  window_timer % 12 > 6 {     
- 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/10 );
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, random_func(1,14,true)/10 );
  }
  
  if  window_timer % 2 == 0 {     
- 	draw_sprite_ext(sprite_get("RCEm"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(2,14,true)/10  )
+ 	draw_sprite_ext(sprite_get("RCEm"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, random_func(2,14,true)/10  )
  }
  
  if  window_timer % 12 > 4 {     
- 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(3,14,true)/10  );
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, random_func(3,14,true)/10  );
  }
 
 }
 
 if window == 3 && window_timer > 20{
      if  window_timer % 3 == 0 {     
- 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  )
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.5 - dspecver2*0.2, random_func(1,3,true)/10 + 0.5 - dspecver2*0.2, 0, -1, 1  )
  }
       if  window_timer % 3 == 0 {     
- 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  )
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, 1  )
  }
  
  if  window_timer % 3 ==  1 {     
- 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  );
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 0.8 - dspecver2*0.2, 0.8 - dspecver2*0.2, 0, -1, 1  );
  }
     
      if  window_timer % 3 ==  1 {     
- 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  );
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.5 - dspecver2*0.2, random_func(1,3,true)/10 + 0.5 - dspecver2*0.2, 0, -1, 1  );
  }
 
 }   
@@ -113,56 +105,47 @@ if window == 3 && window_timer > 20{
 
 if window == 2{
    if window_timer <= 10 {
-      draw_sprite_ext(sprite_get("jab"), 13 , x - 40 - window_timer*6, y , -1, 1,0, -1,0.7 - window_timer/10  );
-      draw_sprite_ext(sprite_get("jab"), 14 , x - 100- window_timer*3, y , -1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("jab"), 13 + dspecver2 , x - 30 - window_timer*6, y , -1, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("jab"), 14 , x - 65 - window_timer*3, y , -1, 1,0, -1,0.7 - window_timer/10  - dspecver2 );
       
-      draw_sprite_ext(sprite_get("utilt"), 2 , x - 40 - window_timer*4, y - 40 - window_timer*4 , -1, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("utilt"), 3 , x - 80 - window_timer*2, y - 80 - window_timer*2 , -1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 2 + dspecver2 , x - 30 - window_timer*4, y - 30 - window_timer*4 , -1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 3 , x - 60 - window_timer*2, y - 60 - window_timer*2 , -1, 1,0, -1,0.7 - window_timer/10  - dspecver2 );
       
-      draw_sprite_ext(sprite_get("uair"), 2 , x , y - 40 - window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("uair"), 3 , x , y - 100 - window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("uair"), 2 + dspecver2, x , y - 30 - window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("uair"), 3 , x , y - 65 - window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10  - dspecver2 );
 
-      draw_sprite_ext(sprite_get("utilt"), 2 , x + 40 + window_timer*4, y - 40 - window_timer*4 , 1, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("utilt"), 3 , x + 80 + window_timer*2, y - 80 - window_timer*2 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 2 + dspecver2, x + 30 + window_timer*4, y - 30 - window_timer*4 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 3 , x + 60 + window_timer*2, y - 60 - window_timer*2 , 1, 1,0, -1,0.7 - window_timer/10  - dspecver2 );
       
             
-      draw_sprite_ext(sprite_get("jab"), 13 , x + 40 + window_timer*6, y , 1, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("jab"), 14 , x + 100 + window_timer*3, y , 1, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("jab"), 13 + dspecver2, x + 30 + window_timer*6, y , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("jab"), 14 , x + 65 + window_timer*3, y , 1, 1,0, -1,0.7 - window_timer/10 - dspecver2 );
   }  
 }
 
 if window == 4{
    if window_timer <= 10 {
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 80 + window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 140 + window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 30 + window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 100 + window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10 - dspecver2  );
       
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 60 + window_timer*4, y - 60 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 100 + window_timer*2, y - 100 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 30 + window_timer*4, y - 30 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 80 + window_timer*2, y - 80 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10 - dspecver2  );
       
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 80 + window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 140 + window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 30 + window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 100 + window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10 - dspecver2  );
 
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 60 - window_timer*4, y - 60 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 100 - window_timer*2, y - 100 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 30 - window_timer*4, y - 30 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 80 - window_timer*2, y - 80 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10 - dspecver2  );
       
             
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 80 - window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
-      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 140 - window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 30 - window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 100 - window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10 - dspecver2 );
   }  
 }
 
 
 
 }
-
-
-shader_end(); 
-
-
-
-
-
-shader_start(); 
 
 
 if halox == 8 && state != PS_PRATFALL && state != PS_PRATLAND {
@@ -290,7 +273,7 @@ gpu_set_fog(0, c_black, 0, 0);
 
 
 
-
+if finisher > 34{
   gpu_set_blendmode(bm_add);
 	draw_sprite_ext(sprite_get("blud"),0, 
 	(x + room_width/2)/2 - (x - hit_player_obj.x)*2 ,
@@ -308,6 +291,7 @@ gpu_set_fog(0, c_black, 0, 0);
 	3 - finisher/30 , 3 - finisher/30 ,0,c_white,  finisher/60)
 
   gpu_set_blendmode(bm_normal);
+}
 }
 
 

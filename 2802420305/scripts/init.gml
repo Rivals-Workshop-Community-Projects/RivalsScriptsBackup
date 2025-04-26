@@ -1,37 +1,5 @@
 
-hasSpawned = false;
-
-
-itemSpawnTimer = 0
-itemSpawnCD = 60 * 4
-
-tetrominoZtest = ds_list_create();
-tetrominos = ds_list_create();
-
-
 ticks = 0;
-
-moveTickCounter = 0;
-moveTickLength = 10;
-
-/*
-//gridcells = [10, 50];
-gridcellsW = 10;
-gridcellsH = 50;
-
-for(var i = 0; i < gridcellsW; i++)
-    for(var j = 0; j < gridcellsH; j ++)
-        gridcells[i, j] = 0;
-*/
-
-currentFalling = noone;
-
-moveIndex = 0;
-fallCounter = 0;
-
-inputQue = ds_list_create();
-
-currentTetromino = 0;
 
 
 right_down = 0;
@@ -43,6 +11,7 @@ special_down = 0;
 jump_down = 0;
 shield_down = 0;
 taunt_down = 0;
+strong_down = 0;
 right_down_last = 0;
 left_down_last = 0;
 up_down_last = 0;
@@ -52,12 +21,13 @@ special_down_last = 0;
 jump_down_last = 0;
 shield_down_last = 0;
 taunt_down_last = 0;
+strong_down_last = 0;
 
 
 horInputTimerR = 0;
 horInputTimerL = 0;
 vertInputTimer = 0;
-horInputDelay = 5;//4; //6;
+horInputDelay = 6;//4; //6;
 horInputDelayConsecutive = 2;
 vertInputDelayConsecutive = 2;
 
@@ -68,11 +38,11 @@ fallTimer = 0;
 
 level = 1;
 score = 0;
+zenMode = false;
 
 fullScreenAnim = false;
 fullScreenTimer = 0;
 fullScreenSprite = sprite_get("gameOver");
-fullScreenAnimMoveWithCamera = false;
 
 linesCleared = 0;
 lastDropCleared = false;
@@ -97,9 +67,11 @@ field = [];
 for(var i = 0; i < width; i++)
     for(var j = 0; j < height; j ++)
         field[i, j] = 0;
+pieceArticles = ds_list_create();
 
 pieceQueue = ds_list_create();
 pieceBag = ds_list_create();
+hardDropCheckedX = ds_list_create()
 
 startDelay = 60 * 2.5; //not less delay, otherwise starting bag might not be random
 
@@ -119,11 +91,27 @@ pieces = [
         [[1, 2, 5, 6], [1, 2, 5, 6], [1, 2, 5, 6], [1, 2, 5, 6]],//O
         //TODO: get rid of O duplicates
     ];
-    
+
+number_of_types = 7;
+max_rotations = 4;
+pieceOffsets = [];//optimized lookup
+for (var typ = 0; typ < number_of_types; typ++) {
+    pieceOffsets[@typ] = [];
+    for (var rot = 0; rot < max_rotations; rot++) {
+        pieceOffsets[@typ][@rot] = [];
+        for (var i = 0; i < 4; i++) {
+            pieceOffsets[@typ][@rot][@i] = {
+                x: floor(pieces[typ, rot][i] % 4),
+                y: floor(pieces[typ, rot][i] / 4)
+            };
+        }
+    }
+}
+
 pieceColorValues = [$f1f101, $0102f0, $01f007, $ff6200, $0e8ffe, $f000c8, $01f0f0];
 
-//SRS
-rotations = [
+//SRS wall kicks https://tetris.fandom.com/wiki/SRS
+wallKicks = [
         [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]],//0>>1
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],//1>>0
         [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],//1>>2
@@ -133,7 +121,7 @@ rotations = [
         [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],//3>>0
         [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],//0>>3
     ];
-rotationsI = [
+wallKicksI = [
         [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]],//0>>1
         [[0, 0], [2, 0], [-1, 0], [2, 1], [-1, -2]],//1>>0
         [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]],//1>>2
@@ -143,6 +131,20 @@ rotationsI = [
         [[0, 0], [1, 0], [-2, 0], [1, -2], [-2, 1]],//3>>0
         [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]],//0>>3
     ];
+//JSTRIS 180 kicks https://www.reddit.com/r/Tetris/comments/gh7jd4/180_degree_kicktable/
+wallKicks180 = [
+        [[0, 0], [0, 1]],//0>>2
+        [[0, 0], [1, 0]],//1>>3
+        [[0, 0], [0, -1]],//2>>0
+        [[0, 0], [-1, 0]],//3>>1
+    ];
+//TETRI.IO 180 kicks https://x.com/tetriogame/status/1271572187309375491/photo/1
+// wallKicks180 = [
+//         [[0, 0], [0, 1], [1, 1], [-1, 1], [1, 0], [-1, 0]],//0>>2
+//         [[0, 0], [0, -1], [-1, -1], [1, -1], [-1, 0], [1, 0]],//1>>3
+//         [[0, 0], [1, 0], [1, 2], [1, 1], [0, 2], [0, 1]],//2>>0
+//         [[0, 0], [-1, 0], [-1, 2], [-1, 1], [0, 2], [0, 1]],//3>>1
+//     ];
     
 debugX = [];
 debugY = [];
@@ -150,10 +152,11 @@ debugString = [];
 doDrawDebug = false;
 
 playerControlled = false;
+playerInControl = 1;
 didPlayerInit = false;
 
 hudBoardX = 79;//258;
-hudBoardY = 184;//492;
+hudBoardY = 224;//184;//lower to give room to online hud
 hudSpacing = 9;
 hudSpacingMinus1 = hudSpacing-1;
 hudSpacingMinus2 = hudSpacing-2;
@@ -263,6 +266,8 @@ aiPieceOnBoardMax = 30;//used to scale ai think time so that its faster at the s
 //TODO: more natural movement, eg hold down a direction for a while
 //also try less random? maybe try to do some worse moves that are found during calculation
 //use non uniform randomness
+aiThinkCounter = 0;
+aiThinkDelay = 1;
 
 bg2ScrollSpd = 0.125;
 bg3ScrollSpd = 0.25;
@@ -273,9 +278,6 @@ bg3ScrollSpd = 0.25;
 bg2Dir = 0;
 bg3Dir = 90;
 
-camTargets = ds_list_create();
-camX = 0;
-camY = 0;
 
 fpsRecords = array_create(10);
 
@@ -290,4 +292,4 @@ rivalsGameOver = false;
 rivalsGameOverLast = false;
 rivalsGameOverTimer = 0;
 
-seed = 0;// current_time OR current_second + all players real(url)
+seed = 0;

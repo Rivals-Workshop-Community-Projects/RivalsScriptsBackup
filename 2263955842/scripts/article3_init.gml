@@ -1,4 +1,7 @@
 // article 3 init
+/* This file is currently unused.
+//
+
 step = 0;
 /*
 /*
@@ -24,6 +27,11 @@ ignores_walls = true;
 
 grazeCooldown = 0;
 */
+
+//
+/* This file is currently unused.
+//
+
 spr_dir = 1;
 
 if (get_player_color(player) == 11)

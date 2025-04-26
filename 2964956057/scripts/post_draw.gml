@@ -138,17 +138,17 @@ Dspecial:
 = Fixed issue where nspecial still homed on players taunting on respawn plat."
         
         //these are optional things that you can change if you'd like, but probably best to keep as-is
-        pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color.
-        pn__txt_col = make_colour_rgb( 255,255,255 ); //text color.
-        pn__acc_col = get_player_hud_color( player ); //accent color.
-        pn__btn_txt = "hold TAUNT: changelog"; //button text
-        pn__btn_width = 176; //button width in pixels, change it accordingly to text
-        pn__guide_txt = "use ATTACK / SPECIAL"; //select list guide text
-        pn__swipe_sound = asset_get("mfx_result_expand"); //sound for when changelog is opened/closed with taunt
-        pn__move_sound = asset_get("mfx_input_key"); //sound for moving between list entries
-        pn__confirm_sound = asset_get("mfx_forward"); //sound for confirming a list entry
-        pn__cancel_sound = asset_get("mfx_return_cursor"); //sound for cancelling out of a list entry
-        pn__scroll_speed = 3; //the speed of which how fast you scroll up/down in text display
+        pn__bg_col = make_colour_rgb( 0,0,0 ); //bg color. // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__txt_col = make_colour_rgb( 255,255,255 ); //text color. // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__acc_col = get_player_hud_color( player ); //accent color. // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__btn_txt = "hold TAUNT: changelog"; //button text // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__btn_width = 176; //button width in pixels, change it accordingly to text // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__guide_txt = "use ATTACK / SPECIAL"; //select list guide text // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__swipe_sound = asset_get("mfx_result_expand"); //sound for when changelog is opened/closed with taunt // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__move_sound = asset_get("mfx_input_key"); //sound for moving between list entries // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__confirm_sound = asset_get("mfx_forward"); //sound for confirming a list entry // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__cancel_sound = asset_get("mfx_return_cursor"); //sound for cancelling out of a list entry // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__scroll_speed = 3; //the speed of which how fast you scroll up/down in text display // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         
         //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
         //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
@@ -157,28 +157,28 @@ Dspecial:
         //if you're not trying to do in-depth stuff, you dont have to touch these
         //these are permanent variables just so we only have to run them once
         //pn__ standing for Patch Note (double underscore cause i dont think anyone would do this, avoiding overlaps)
-        pn__init = true;
-        pn__list_select = 0;
-        pm__list_select_old = pn__list_select; //remember old selection for transition anim direction purposes
-        pn__list_max = i-1; //print(string(pn__list_max));
-        pn__taunt_track = 0; //after activated, checks if taunt has been unpressed before timer starts counting up again
-        pn__taunt_timer = 0; //track how long taunt is being held
-        pn__taunt_max = 50; //how long taunt should be held until its open
-        pn__open = false; //is it open or not
-        pn__opener_timer_max = 30; //opening timer max
-        pn__opener_timer = pn__opener_timer_max; //timer for opening
-        pn__displaying = false; //is it in the text screen (true) or in the list screen (false)
-        pn__scroll = 0; //current amount of scroll
-        pn__up_track = 0; //same with taunt track for list selection
-        pn__down_track = 0; //yes
-        pn__list_old = 0; //list selection storage
-        pn__select_timer_max = 16; //selection transition timer max
-        pn__select_timer = pn__select_timer_max; //selection transition timer
-        pn__scroll_did = 0; //niche storage for if list has scrolled or not
-            pn__online = false; //set
+        pn__init = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__list_select = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pm__list_select_old = pn__list_select; //remember old selection for transition anim direction purposes // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__list_max = i-1; //print(string(pn__list_max)); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__taunt_track = 0; //after activated, checks if taunt has been unpressed before timer starts counting up again // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__taunt_timer = 0; //track how long taunt is being held // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__taunt_max = 50; //how long taunt should be held until its open // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__open = false; //is it open or not // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__opener_timer_max = 30; //opening timer max // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__opener_timer = pn__opener_timer_max; //timer for opening // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__displaying = false; //is it in the text screen (true) or in the list screen (false) // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__scroll = 0; //current amount of scroll // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__up_track = 0; //same with taunt track for list selection // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__down_track = 0; //yes // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__list_old = 0; //list selection storage // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__select_timer_max = 16; //selection transition timer max // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__select_timer = pn__select_timer_max; //selection transition timer // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        pn__scroll_did = 0; //niche storage for if list has scrolled or not // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+            pn__online = false; //set // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         if (room == asset_get("network_char_select") || room == asset_get("workshop_room")){ //if in online playtest, or in extramode workshop list playtest
             //thanks to mr nart for heads up on using asset_get for room id's instead!
-            pn__online = true; //switch to online view
+            pn__online = true; //switch to online view // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
         
     }
@@ -219,9 +219,9 @@ Dspecial:
         
         //player freezer i hope
         if (pn__open){ //(if open)
-            state = PS_SPAWN;
-            state_timer = 89;
-            hitpause = true; hitstop = 2; hitstop_full = 2;
+            state = PS_SPAWN; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+            state_timer = 89; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+            hitpause = true; hitstop = 2; hitstop_full = 2; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
         //offset
         if (pn__opener_timer<pn__opener_timer_max){
@@ -298,44 +298,44 @@ Dspecial:
             if (pn__open){//scroll stuff n select stuff
                 if (up_down){
                     if (pn__up_track==false){
-                        pm__list_select_old = pn__list_select;  pn__list_select--;
+                        pm__list_select_old = pn__list_select;  pn__list_select--; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         if (pn__list_select<0){pn__list_select = pn__list_max;}
-                        pn__up_track = true;
-                        pn__select_timer = 0;
-                        pn__list_old = "up"
+                        pn__up_track = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                        pn__select_timer = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                        pn__list_old = "up" // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         sound_play(pn__move_sound);
-                        pn__scroll_did = 0;
+                        pn__scroll_did = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     }
                 }else{ pn__up_track = false; };
                 if (down_down){
                     if (pn__down_track==false){
-                        pm__list_select_old = pn__list_select;  pn__list_select++;
+                        pm__list_select_old = pn__list_select;  pn__list_select++; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         if (pn__list_select>pn__list_max){pn__list_select = 0;}
-                        pn__down_track = true;
-                        pn__select_timer = 0;
-                        pn__list_old = "down"
+                        pn__down_track = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                        pn__select_timer = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                        pn__list_old = "down" // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         sound_play(pn__move_sound);
-                        pn__scroll_did = 0;
+                        pn__scroll_did = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     }
                 }else{ pn__down_track = false; };
                 
                 //list scroll stuff
                 if ( ((pn_i*22)+26)+pn__scroll > page_h-20 ){//horrible puzzle of maths
                     //print("true, down")
-                    pn__scroll = clamp( (pn_i*-22)+81, -9000, 0 );
+                    pn__scroll = clamp( (pn_i*-22)+81, -9000, 0 ); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     if (pn__online){ pn__scroll = clamp( (pn_i*-22)+132, -9000, 0 ); }
-                    pn__scroll_did = 2;
+                    pn__scroll_did = 2; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 }
                 if ( ((pn_i*22)+26)+pn__scroll < 26 ){
                     //print("true, up")
-                    pn__scroll = clamp( (pn_i*-22)+6, -9000, 0 );
-                    pn__scroll_did = 2;
+                    pn__scroll = clamp( (pn_i*-22)+6, -9000, 0 ); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    pn__scroll_did = 2; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 }
                 //print(string(pn__scroll))
                 
                 if (attack_down){
-                    pn__displaying = true;
-                    pn__scroll = 0;
+                    pn__displaying = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    pn__scroll = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     sound_play(pn__confirm_sound);
                 }
             }
@@ -373,10 +373,10 @@ Dspecial:
             var scroll_max = ( string_height_ext(patch_note_text[pn_i], 16+(4*sign(extendem)), 190+extendem)-113 )*-1//thanks vman for finding this function
             if (up_down){ pn__scroll+=pn__scroll_speed * (shield_down+1); } //hold shield to scroll faster
             if (down_down){ pn__scroll-=pn__scroll_speed * (shield_down+1); }
-            pn__scroll = clamp( pn__scroll, scroll_max, 0 );
+            pn__scroll = clamp( pn__scroll, scroll_max, 0 ); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             if (special_down){
-                pn__displaying = false;
-                pn__scroll = false;
+                pn__displaying = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                pn__scroll = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 sound_play(pn__cancel_sound);
             }
         }
@@ -398,10 +398,10 @@ Dspecial:
                 pn__taunt_timer++;
                 if (pn__open){ pn__taunt_timer+=0.5; } //1.5x the speed when the panel is already open
                 if (pn__taunt_timer > pn__taunt_max){
-                    pn__open = !pn__open; //this toggles it hopefully
-                    pn__taunt_track = true;
-                    pn__taunt_timer = 0;
-                    pn__opener_timer = 0;
+                    pn__open = !pn__open; //this toggles it hopefully // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    pn__taunt_track = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    pn__taunt_timer = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    pn__opener_timer = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     sound_play(pn__swipe_sound);
                 }
             }

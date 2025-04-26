@@ -24,7 +24,11 @@ if (my_grab_id != noone)
     my_grab_id = noone;
 }
 
-dark_cd = 0;
+if (dark_cd > 0) dark_cd = 0;
+dark_hp_temp = 0;
 
 if (spell_bg) spell_bg = false;
 if (has_superspell) superspell_cur /= 2;
+
+//respawn halloween hat when she dies
+if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3 && get_player_stocks(player) > 1) koa_hat = true;

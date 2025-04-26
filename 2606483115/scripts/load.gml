@@ -185,3 +185,17 @@ sprite_change_offset("hud_steam_meter", 5, 18);
 sprite_change_offset("geyser_timer", 20, 10);
 sprite_change_offset("geyser_timer_emergency", 20, 10);
 
+sprite_change_offset("steamcloud_base", 50, 50);
+sprite_change_offset("steamcloud_outline", 50, 50);
+sprite_change_offset("steamcloud_highlight", 50, 50);
+
+//Runes
+
+sprite_change_offset("chain", 12, 12);
+sprite_change_offset("icehit_small", 29, 29);
+sprite_change_offset("icehit_medium", 59, 59);
+sprite_change_offset("icehit_heavy", 90, 90);
+sprite_change_offset("ice_pop", 49, 49);
+sprite_change_offset("vfx_crystalburst", 59, 59);
+sprite_change_offset("crystal_shatter", 40, 40);
+sprite_change_offset("chain_range", 250, 250);

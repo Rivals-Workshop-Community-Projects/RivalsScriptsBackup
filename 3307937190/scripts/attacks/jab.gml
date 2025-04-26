@@ -19,7 +19,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 4);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
@@ -27,12 +27,12 @@ set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 2);
 
 //JAB 2 (windows 4 - 8)
 window_num ++; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 5);
 
 window_num ++; //attack 1
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
@@ -55,7 +55,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
@@ -126,9 +126,9 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 10);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 20);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 110);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 90);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
@@ -156,6 +156,8 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen_ink2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
+set_hitbox_value(atk, hitbox_num, 81, "Finisher");//HG_MUNO_HITBOX_NAME = i; i++;
+set_hitbox_value(atk, hitbox_num, 92, "Inks opponents on hit");//HG_MUNO_HITBOX_MISC_ADD = i; i++; 
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
 set_num_hitboxes(atk, hitbox_num);

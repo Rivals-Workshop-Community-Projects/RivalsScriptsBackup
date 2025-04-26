@@ -16,7 +16,7 @@ if my_hitboxID.attack == AT_NSPECIAL_2 or my_hitboxID.attack == AT_DSPECIAL{
     move_cooldown[AT_NSPECIAL] = 10;
     if instance_exists(wren_yoyo){
         if instance_exists(wren_yoyo.hbox){
-            instance_destroy(wren_yoyo.hbox);
+            wren_yoyo.hbox.destroyed = true;
         }
         instance_destroy(wren_yoyo);
     }
@@ -32,7 +32,7 @@ if my_hitboxID.attack == AT_USPECIAL_2{
     destroy_hitboxes();
     set_state(PS_PRATFALL);
     if instance_exists(wren_yoyo.hbox){
-        instance_destroy(wren_yoyo.hbox);
+        wren_yoyo.hbox.destroyed = true;
     }
     wren_yoyo.state = 15;
     wren_yoyo.state_timer = 0;

@@ -105,6 +105,8 @@ blue_id = noone;
 can_djump = true;
 orbd = false;
 
+hud_col = c_white;
+
 bone_trap = noone;
 bluesoul = sprite_get("bluesoul");
 

@@ -22,18 +22,18 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 3);
 
 //early hit
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 //late hit
 set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 9); //was 12
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //endlag
 set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -42,7 +42,7 @@ set_num_hitboxes(AT_USTRONG, 3);
 //early sweet (base)
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 44);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -58);
 set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 42);
@@ -63,7 +63,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, particle_num);
 //early sour (tip)
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 5);
+set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 46);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -128);
 set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 26);
@@ -84,7 +84,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_PARTICLE_NUM, particle_num);
 //late hit
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 4);
-set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 12);
+set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 9); //was 12
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_X, 46);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_Y, -122);
 set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 10);

@@ -1,4 +1,3 @@
-//print(mau_hitstun_scale)
 
 if state == PS_HITSTUN {
 	outline_color = [ 0, 0, 0];
@@ -50,6 +49,10 @@ if	move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 240 && (specia
 
 if nspecialtap2 = true {
 	nspecialtap = false;
+}
+
+if move_cooldown[AT_NSPECIAL] = 1{
+	sound_play(sound_get("dstrong"))
 }
 
 if (bubbleexists = true) {

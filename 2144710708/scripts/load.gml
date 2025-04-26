@@ -215,3 +215,7 @@ sprite_change_offset("owen_kinniku_front", 70, 95);
 
 // mamizou stuff
 sprite_change_offset("owen_mamizou", 40, 55);
+
+// victory stuff
+set_victory_bg(sprite_get("owenvictorybg"));
+set_victory_theme(sound_get("owenvictory"));

@@ -182,6 +182,7 @@ set_hitbox_value(AT_JAB, 10, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_JAB, 10, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_JAB, 10, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_JAB, 10, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_JAB, 10, HG_HITSTUN_MULTIPLIER, 0.75);
 
 //money pile
 set_hitbox_value(AT_JAB, 11, HG_HITBOX_TYPE, 2);
@@ -231,4 +232,5 @@ set_hitbox_value(AT_JAB, 12, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_JAB, 12, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_JAB, 12, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_JAB, 12, HG_PROJECTILE_DESTROY_EFFECT, 1);
-set_hitbox_value(AT_JAB, 13, HG_HITSTUN_MULTIPLIER, 0.25);
+set_hitbox_value(AT_JAB, 12, HG_HITSTUN_MULTIPLIER, 0.25);
+set_hitbox_value(AT_JAB, 12, HG_IGNORES_PROJECTILES, true);

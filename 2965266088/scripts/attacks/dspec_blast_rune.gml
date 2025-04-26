@@ -1,8 +1,8 @@
 atk = AT_EXTRA_1;
 
 set_attack_value(atk, AG_CATEGORY, 2);
-set_attack_value(atk, AG_SPRITE, sprite_get("runeK_dspec"));
-set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("runeK_dspec_hurt"));
+set_attack_value(atk, AG_SPRITE, sprite_get("runeE_dspec"));
+set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("runeE_dspec_hurt"));
 
 window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);

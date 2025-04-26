@@ -14,7 +14,19 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "Dedede"
+
+prepare_shader()
+shader_start();
+draw_sprite_ext(sprite_get("charselect_bg"), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+//we need to draw over the portrait so the outline colors apply to it too
+draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+shader_end();
+prepare_shader(); //resets shader
+
+var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
+online_fix = player; //this is used in init_shader to fix the online init_shader bug.
+
 // ! you can now scroll down until you reach "the primary part you should change."
  
 var tmp_cur = 0;
@@ -254,7 +266,18 @@ if (color_desc_activate){
 }
  
 //ae code end
- 
+
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+    init_shader();
+}
  
  
 //--- ---

@@ -47,7 +47,7 @@ set_window_value(AT_DSTRONG, 7+moneyCountLoops, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG, 2);
 
-for(var i = 1; i <= 2; i++)
+for(var i = 1; i <= get_num_hitboxes(AT_DSTRONG); i++)
 {
     if(i == 1)
     {
@@ -96,6 +96,7 @@ for(var i = 1; i <= 2; i++)
     set_hitbox_value(AT_DSTRONG, i, HG_PROJECTILE_PARRY_STUN, false);
     set_hitbox_value(AT_DSTRONG, i, HG_PROJECTILE_DESTROY_EFFECT, 0);//asset_get("empty_sprite"));//115);
     set_hitbox_value(AT_DSTRONG, i, HG_VISUAL_EFFECT, 303);//overriden in hitbox_update
+    set_hitbox_value(AT_DSTRONG, i, HG_HITBOX_COLOR, $0000FF);//overriden in hitbox_update
 }
 
 

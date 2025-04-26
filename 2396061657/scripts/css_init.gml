@@ -16,3 +16,7 @@ CSS_image_speed = 0;
 ColorPrev = noone;
 ColorNext = noone;
 ColorNextNext = noone;
+
+major_update_num = 2;
+minor_update_num = 7;
+mini_update_num = 2;

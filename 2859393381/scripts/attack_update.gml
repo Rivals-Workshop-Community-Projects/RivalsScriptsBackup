@@ -62,9 +62,10 @@ switch (attack)
             easetimer = 0;
             char_height = 60;
             ustrong_move = false;
+            should_play_gavel_sound = false;
         }
         key_dir = (right_down - left_down) * spr_dir;
-        if (key_dir != 0) ustrong_launch_dir = 90 - (key_dir * 55);
+        if (key_dir != 0) ustrong_launch_dir = 90 - (key_dir * 45);
         if (window = 6 && window_timer > 3 && !hitpause)
         {
             var gavel_hitbox = create_hitbox(AT_USTRONG, 1, x, y);
@@ -75,7 +76,8 @@ switch (attack)
             //ustrong_gavel_slam_fx = hit_fx_create(sprite_get("ustrong_gavel_slam_fx"), 36);
             //var ustrong_fx = spawn_hit_fx(x, y, ustrong_gavel_slam_fx);
             //ustrong_fx.depth = depth - 1;
-            if (!has_hit_player) sound_play(asset_get("sfx_blow_heavy1"));
+            if (!has_hit_player) should_play_gavel_sound = true;
+            if (should_play_gavel_sound) sound_play(asset_get("sfx_blow_heavy1"));
         }
 
         if (window == 3) 
@@ -175,7 +177,7 @@ switch (attack)
             }
         }
         if (has_hit) can_fastfall = true;
-        if (((window = 1 && window_timer = 7) || (window = 2 && (window_timer = 4 || window_timer = 8))) && !hitpause) 
+        if (((window = 1 && window_timer = 9) || (window = 2 && (window_timer = 4 || window_timer = 8))) && !hitpause) 
 sound_play(sound_get("phone"));
         break;
 
@@ -260,7 +262,7 @@ sound_play(sound_get("phone"));
                 if (evidence_proj_sprite != noone) evidence_proj.sprite_index = sprite_get(evidence_proj_sprite);
                 evidence_proj.uses_shader = false;
                 
-                if (evidence_proj_item == 7) sound_play(sound_get("nyaw"));
+                //ill be honest this is a bit annoying now //if (evidence_proj_item == 7) sound_play(sound_get("nyaw"));
                 if (evidence_proj_item == 8) sound_play(asset_get("sfx_sand_yell"), 0, noone, 1, 2);
                 //if (evidence_proj_item == ) 
 
@@ -359,7 +361,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }                        
                         evidence_box_icon = evidence1;
-                        evidence1_status = 1;
                     }
                     else if (evidence2_status = 0)
                     {
@@ -370,7 +371,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }                        
                         evidence_box_icon = evidence2;
-                        evidence2_status = 1;
                     }
                     else if (evidence3_status = 0)
                     {
@@ -381,7 +381,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }                        
                         evidence_box_icon = evidence3;
-                        evidence3_status = 1;
                     }
                 }
                 else if (evidence_roll <= good_evidence_percent + bad_evidence_percent)
@@ -395,7 +394,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }                        
                         evidence_box_icon = evidence1;
-                        evidence1_status = 2;
                     }
                     else if (evidence2_status = 0)
                     {
@@ -406,7 +404,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }                        
                         evidence_box_icon = evidence2;
-                        evidence2_status = 2;
                     }
                     else if (evidence3_status = 0)
                     {
@@ -417,7 +414,6 @@ sound_play(sound_get("phone"));
                             dspecial_random_index++;
                         }
                         evidence_box_icon = evidence3;
-                        evidence3_status = 2;
                     }
                 }
                 else
@@ -433,6 +429,42 @@ sound_play(sound_get("phone"));
                 sound_play(asset_get("sfx_fish_collect"));
             }
         }
+        if (window = 3)
+        {
+        	if (window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)
+            {
+                if (evidence_roll <= good_evidence_percent)
+                {
+                    if (evidence1_status = 0)
+                    {
+                        evidence1_status = 1;
+                    }
+                    else if (evidence2_status = 0)
+                    {
+                        evidence2_status = 1;
+                    }
+                    else if (evidence3_status = 0)
+                    {
+                        evidence3_status = 1;
+                    }
+                }
+                else if (evidence_roll <= good_evidence_percent + bad_evidence_percent)
+                {
+                    if (evidence1_status = 0)
+                    {
+                        evidence1_status = 2;
+                    }
+                    else if (evidence2_status = 0)
+                    {
+                        evidence2_status = 2;
+                    }
+                    else if (evidence3_status = 0)
+                    {
+                        evidence3_status = 2;
+                    }
+                }
+        	}
+       }
         if (window = 1 && window_timer = 20) evidence_box_index = 0;
         if (window = 2 && window_timer = 3) evidence_box_index = 1;
         if (window = 2 && window_timer = 6) evidence_box_index = 2;
@@ -524,7 +556,7 @@ sound_play(sound_get("phone"));
         break;
 
         case AT_DTILT2:
-        if (window = 1 && window_timer = 4 && !hitpause)
+        if (window = 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
         {
             sound_play(asset_get("sfx_ori_dsmash_skitter_alone"));
             sound_play(asset_get("mfx_star"));
@@ -534,7 +566,7 @@ sound_play(sound_get("phone"));
         break;
 
         case AT_NAIR2:
-        if (window = 1 && window_timer = 5 && !hitpause)
+        if (window = 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
         {
             //vsp--;
             sound_play(asset_get("sfx_ori_energyhit_medium"));
@@ -544,7 +576,7 @@ sound_play(sound_get("phone"));
         break;
 
         case AT_FAIR2:
-        if (window = 1 && window_timer = 5 && !hitpause)
+        if (window = 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
         {
             sound_play(asset_get("sfx_ori_dsmash_skitter_alone"));
             sound_play(asset_get("mfx_star"));
@@ -560,7 +592,7 @@ sound_play(sound_get("phone"));
         break;
 
         case AT_UAIR2:
-        if (window = 1 && window_timer = 5 && !hitpause)
+        if (window = 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
         {
             sound_play(asset_get("sfx_ori_dsmash_skitter_alone"));
             sound_play(asset_get("mfx_star"));
@@ -568,7 +600,7 @@ sound_play(sound_get("phone"));
         break;
 
         case AT_DAIR2:
-        if (window = 1 && window_timer = 8 && !hitpause)
+        if (window = 1 && window_timer = 9 && !hitpause)
         {
             sound_play(asset_get("sfx_ori_dsmash_skitter_sein"));
             sound_play(asset_get("mfx_star"));

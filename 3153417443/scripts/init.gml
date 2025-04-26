@@ -52,7 +52,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 13;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -175,6 +175,14 @@ blastzonedestroy = false;
 canID = 0;
 cantap = false;
 mau_hitstun_scale = false;
+fspecstrongfx = false;
+uspecstrongfx = false;
+fstronggrabbubble = false;
+fstrongstrongfx = false;
+fspec2hit = false;
+hitbubble = false;
+shake = true;
+shaketime = 0;
 
 mau_grabbed_da_bubble = false;
 
@@ -195,6 +203,7 @@ fstrong_startup_vfx = hit_fx_create( sprite_get( "fstrong_startup_vfx" ), 20 );
 fstrong_catch_vfx = hit_fx_create( sprite_get( "fstrong_catch_vfx" ), 30 );
 fstrong_hit_vfx = hit_fx_create( sprite_get( "fstrong_hit_vfx" ), 28 );
 dstrong_vfx = hit_fx_create( sprite_get( "dstrong_keg_vfx" ), 20 );
+fstrong_gleam_vfx = hit_fx_create( sprite_get( "eye_gleam" ), 20 );
 
 //init.gml
 grabbed_player_obj = noone;    //the player object currently being grabbed.

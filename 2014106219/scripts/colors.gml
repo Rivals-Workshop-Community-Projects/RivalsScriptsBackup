@@ -56,15 +56,15 @@ set_color_profile_slot( 2, 5, 255, 179, 66 ); //Socks
 set_color_profile_slot( 2, 6, 94, 24, 15 ); //Hair
 set_color_profile_slot( 2, 7, 255, 38, 0 ); //Wand
 
-// Green
-set_color_profile_slot( 3, 0, 33, 105, 0 ); //Shoes / Bracelets
-set_color_profile_slot( 3, 1, 36, 191, 0 ); //Headband
-set_color_profile_slot( 3, 2, 0, 173, 9 ); //Shirt
-set_color_profile_slot( 3, 3, 0, 42, 156 ); //Skirt
+// Citrus
+set_color_profile_slot( 3, 0, 54, 115, 0 ); //Shoes / Bracelets
+set_color_profile_slot( 3, 1, 177, 247, 0 ); //Headband
+set_color_profile_slot( 3, 2, 177, 247, 0 ); //Shirt
+set_color_profile_slot( 3, 3, 0, 184, 126 ); //Skirt
 set_color_profile_slot( 3, 4, 245, 179, 81 ); //Skin
 set_color_profile_slot( 3, 5, 237, 236, 232 ); //Socks
 set_color_profile_slot( 3, 6, 82, 31, 0 ); //Hair
-set_color_profile_slot( 3, 7, 94, 224, 0 ); //Wand
+set_color_profile_slot( 3, 7, 224, 250, 60 ); //Wand
 
 // Purple
 set_color_profile_slot( 4, 0, 200, 22, 245 ); //Shoes / Bracelets
@@ -72,7 +72,7 @@ set_color_profile_slot( 4, 1, 200, 22, 245 ); //Headband
 set_color_profile_slot( 4, 2, 69, 14, 115 ); //Shirt
 set_color_profile_slot( 4, 3, 200, 22, 245 ); //Skirt
 set_color_profile_slot( 4, 4, 242, 124, 78 ); //Skin
-set_color_profile_slot( 4, 5, 156, 94, 255 ); //Socks
+set_color_profile_slot( 4, 5, 215, 163, 255 ); //Socks
 set_color_profile_slot( 4, 6, 53, 24, 40 ); //Hair
 set_color_profile_slot( 4, 7, 255, 0, 174 ); //Wand
 
@@ -103,7 +103,7 @@ set_color_profile_slot( 7, 2, 56, 252, 255 ); //Shirt
 set_color_profile_slot( 7, 3, 245, 255, 249 ); //Skirt
 set_color_profile_slot( 7, 4, 245, 163, 108 ); //Skin
 set_color_profile_slot( 7, 5, 245, 243, 230 ); //Socks
-set_color_profile_slot( 7, 6, 230, 180, 55 ); //Hair
+set_color_profile_slot( 7, 6, 189, 147, 12 ); //Hair
 set_color_profile_slot( 7, 7, 255, 217, 0 ); //Wand
 
 // Crazy Cap
@@ -128,12 +128,12 @@ set_color_profile_slot( 9, 7, 254, 25, 205 ); //Wand
 
 // Retro
 set_color_profile_slot( 10, 0, 31, 31, 31 ); //Shoes / Bracelets
-set_color_profile_slot( 10, 1, 31, 31, 31 ); //Headband
+set_color_profile_slot( 10, 1, 247, 57, 16 ); //Headband
 set_color_profile_slot( 10, 2, 31, 31, 31 ); //Shirt
 set_color_profile_slot( 10, 3, 247, 57, 16 ); //Skirt
 set_color_profile_slot( 10, 4, 248, 160, 76 ); //Skin
 set_color_profile_slot( 10, 5, 247, 57, 16 ); //Socks
-set_color_profile_slot( 10, 6, 247, 57, 16 ); //Hair
+set_color_profile_slot( 10, 6, 31, 31, 31 ); //Hair
 set_color_profile_slot( 10, 7, 247, 57, 16 ); //Wand
 
 // Yellow

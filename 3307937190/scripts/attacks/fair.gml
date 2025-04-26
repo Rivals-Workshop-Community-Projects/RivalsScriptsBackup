@@ -82,11 +82,13 @@ set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 84);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, .1);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Hit 1");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("hit1"));
 
 hitbox_num ++; //attack 2
@@ -100,11 +102,13 @@ set_hitbox_value(atk, hitbox_num, HG_WIDTH, 81);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 109);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 4);
-set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, .1);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen1);
+set_hitbox_value(atk, hitbox_num, 81, "Hit 2");//HG_MUNO_HITBOX_NAME = i; i++;
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium1"));
 
 hitbox_num ++; //attack 3
@@ -117,14 +121,17 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -44);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 112);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 78);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.4);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_pen_ink2);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("KB_hitmedium2"));
+set_hitbox_value(atk, hitbox_num, 81, "Finisher");//HG_MUNO_HITBOX_NAME = i; i++;
+set_hitbox_value(atk, hitbox_num, 92, "Inks opponents on hit");//HG_MUNO_HITBOX_MISC_ADD = i; i++; 
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
 set_num_hitboxes(atk, hitbox_num);

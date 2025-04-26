@@ -31,6 +31,16 @@ if (angles_debug)
             draw_debug_text(floor(x) - 12, floor(y) + 48, "hp: " + string(hp));
             draw_debug_text(floor(x) - 12, floor(y) + 64, "order: " + string(i));
             draw_debug_text(floor(x) - 12, floor(y) + 80, "angle: " + string(rune_angle));
+
+            draw_line_width_color(
+                x - lengthdir_x(32, rune_angle),
+                y - lengthdir_y(32, rune_angle),
+                x + lengthdir_x(32, rune_angle),
+                y + lengthdir_y(32, rune_angle),
+                2, c_blue, c_blue
+            )
+            draw_debug_text(floor(x - lengthdir_x(32, rune_angle)), floor(y - lengthdir_y(32, rune_angle)), string((rune_angle+180)%360));
+            draw_debug_text(floor(x + lengthdir_x(32, rune_angle)), floor(y + lengthdir_y(32, rune_angle)), string(rune_angle));
         }
         else draw_debug_text(floor(x) - 12, floor(y) + 48, "angle: " + string(rune_angle));
     }

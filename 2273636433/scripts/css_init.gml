@@ -5,7 +5,11 @@ shader_end();
 
 //CCS Button Variables
 voice_button = 0;
-pill_button = 1;
+
+split_var = split_synced_var(1,4);
+pill_button =split_var[1];
+if (pill_button <1) || (pill_button >10) {pill_button = 1;}
+pill_prev=pill_button;
 
 
 alt_cur = get_player_color(player);
@@ -19,7 +23,7 @@ alt_name[4]  = "Dr. Light Blue";
 alt_name[5]  = "Dr. Dark";
 alt_name[6]  = "Dr. Gold";
 alt_name[7]  = "Dr. Purple";
-alt_name[8]  = "Dr. Bluey";
+alt_name[8]  = "Dr. Azure";
 alt_name[9]  = "Dr. Yuuto";
 alt_name[10] = "Dr. Peace";
 alt_name[11] = "The Medic (Red)";
@@ -45,7 +49,14 @@ alt_name[30] = "Dr. Wrecker";
 alt_name[31] = "Dr. Weird";
 
 //setting pill Defaults
-    if alt_cur == 11 || alt_cur == 12{		//Medic
+if pill_button == 1{
+	 if alt_cur == 8 {		//Bluey
+		pill_button=10;
+	}
+	else if alt_cur == 15 {		//Wily
+		pill_button=9;
+	}
+    else if alt_cur == 11 || alt_cur == 12{		//Medic
 		pill_button=6;
 	}
 	else if alt_cur == 16{			//Eggman
@@ -69,12 +80,32 @@ alt_name[31] = "Dr. Weird";
 	else if alt_cur == 31{			//Mothra
 		pill_button=7;
 	}
-
+}
 //Init vars part 2
 pill_cur = pill_button;
-pill_prev=1;
+
 
 num_alts = 32;
 //Alt
 
-//CSS Button Stuff
+
+
+//-------------------------Thanks Supersonic-------------------
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var player = (room == 113) ? 0 : self.player;
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+print(chunk_arr);
+return chunk_arr;
+//pill_skin = abs(get_synced_var(player));
+//pill_prev = get_synced_var(player);

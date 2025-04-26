@@ -22,16 +22,17 @@ time = 1000
 useddive = 0
 
 total = 0
+dairloop = 0
 
 lockout = 0
-phase = 0
+phase =  0
 adamage = 0 
 max_hitpoints = 300
 
-motivation = 300
-motivation2 = 300
+motivation = 150
+motivation2 = 150
 downed = 0
-
+airraid = true
 condamage = 0
 
 DTtime = -500 

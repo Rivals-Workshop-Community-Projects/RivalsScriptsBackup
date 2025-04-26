@@ -17,6 +17,9 @@ if (instance_exists(myChair)){
   myChair.window = 4;
   myChair.spawn_death_effect = true;
 }
+move_cooldown[AT_NSPECIAL] = 0;
+move_cooldown[AT_DSPECIAL] = 0;
+chair_cooldown_by_destruction = false;
 
 if (instance_exists(grab_victim)){
   grab_victim.wrap_time = 0;

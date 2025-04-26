@@ -120,9 +120,9 @@ hsp = spr_dir*fspecial_hsp_multiplier*dcos(window_timer*90/get_window_value(AT_F
 if (has_hit_player) {
 	
 	
-	set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 140);
+	set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 120);
 
-} else  set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 110);
+} else  set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 70);
 
 
 if (window == 1) {
@@ -267,6 +267,7 @@ if (window == 6 && window_timer > 6) {
 	iasa_script();
 }
 
+/* //turnaround stuff i dont want anymore
 if (window == 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 	
 	if (spr_dir == 1 && right_down || right_pressed) {
@@ -281,7 +282,7 @@ if (window == 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LEN
 	}
 	
 	
-}
+}*/
 
 //WINDOW ONE BABY
 if (window == 1 && window_timer < 6){ 
@@ -1127,14 +1128,14 @@ if (!hitpause) {
  
  if (!joy_pad_idle){
  	
- 	hsp_added = lengthdir_x(3 , joy_dir)
- 	vsp_added = lengthdir_y(2.5, joy_dir);
+ 	hsp_added = lengthdir_x(4.5 , joy_dir)
+ 	vsp_added = lengthdir_y(4.5, joy_dir);
  	
   // * dcos(window_timer*45/4)
  	
  } else {
  	hsp_added *= 0.8
- 	vsp_added *= 0.8 
+ 	vsp_added *= 0.8
  
  
  }

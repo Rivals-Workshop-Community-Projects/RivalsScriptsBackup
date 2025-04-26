@@ -16,14 +16,21 @@ if (attack == skill[8].skill_attack) was_parried = true;
 
 if (lightbuff_active) cancel_polaris = true;
 
-if (instance_exists(hook_chain_artc))
+//light hookshot chain
+for (var i = 0; i < instance_number(obj_article1); i++)
 {
-    with (obj_article1) if (player_id == other.id && state == "hook_chain")
+    var obj = instance_find(obj_article1, i);
+    if ("is_bar_artcmaster" in obj && obj.state == "hook_chain" && obj.player_id == self)
     {
-        window = 3;
-        window_timer = 0;
+        with (obj)
+        {
+            window = 3;
+            window_timer = 0;
+        }
+        break;
     }
 }
+hook_charge = 0;
 
 
 if (lightstun_active)

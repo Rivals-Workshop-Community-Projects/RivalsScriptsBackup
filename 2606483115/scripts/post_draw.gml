@@ -1,4 +1,4 @@
-//rgdrg
+//Steam Bar Indicators
 draw_sprite(sprite_get("steam_bar"), steam / 4, x + 1, y - (char_height + 33))
 if(red_indicator_timer > 0){
     draw_sprite(sprite_get("vfx_steam_bar_red"), red_indicator_timer / 6, x + 1, y - (char_height + 33))
@@ -8,27 +8,6 @@ if(red_indicator_timer > 0){
 if(green_indicator_timer > 0){
     draw_sprite(sprite_get("vfx_steam_bar_green"), green_indicator_timer / 6, x + 1, y - (char_height + 33))
     green_indicator_timer--
-}
-
-if(instance_exists(geyser)){
-    if(geyser.state == 2){
-        //draw_debug_text(geyser.x, geyser.y + 90, string(5 - round(geyser.state_timer / 60)))
-        if(geyser.lifetime < 35){
-        	draw_sprite(sprite_get("geyser_timer"), 35 - geyser.lifetime, geyser.x, geyser.y + 90)
-        }else{
-        	draw_sprite(sprite_get("geyser_timer"), 0, geyser.x, geyser.y + 90)
-        	if(geyser.lifetime > 50){
-        		draw_sprite(sprite_get("geyser_timer_emergency"), geyser.lifetime * 2, geyser.x, geyser.y + 90)
-        	}
-        }
-    }
-}
-
-if(instance_exists(geyser_2)){
-    if(geyser_2.state == 2){
-        //draw_debug_text(geyser_2.x, geyser_2.y + 90, string(5 - round(geyser_2.state_timer / 60)))
-        draw_sprite(sprite_get("geyser_timer"), 35 - geyser_2.lifetime, geyser_2.x, geyser_2.y + 90)
-    }
 }
 
 //G7 Glitch effect by Giik
@@ -44,6 +23,13 @@ if((state == PS_IDLE || state == PS_SPAWN) && halloween == true){
         draw_sprite(sprite_get("halloween_right"), image_index, x, y)
     }else{
         draw_sprite(sprite_get("halloween_left"), image_index, x, y)
+    }
+}
+
+//Overheat overlay
+if(player == galega_players[0]){
+    if(overheat > 0){
+        draw_sprite_ext(sprite_index, image_index, x, y, (1 + small_sprites)*spr_dir, 1 + small_sprites, spr_angle, c_red, overheat / 150)
     }
 }
 

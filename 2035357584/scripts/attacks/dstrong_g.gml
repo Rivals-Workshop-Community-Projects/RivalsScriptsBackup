@@ -13,6 +13,7 @@ set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_DSTRONG_G, 2, AG_WINDOW_SFX, sound_get("explosion2"));
 
 //actvive1
@@ -20,6 +21,7 @@ set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_SFX_FRAME, 7);
 set_window_value(AT_DSTRONG_G, 3, AG_WINDOW_SFX, sound_get("explosion2"));
 
 //actvive2
@@ -28,10 +30,10 @@ set_window_value(AT_DSTRONG_G, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG_G, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //end
-set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_LENGTH, 25);
-set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_ANIM_FRAMES, 9);
+set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_HAS_WHIFFLAG, 11);
+set_window_value(AT_DSTRONG_G, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG_G, 4);
 

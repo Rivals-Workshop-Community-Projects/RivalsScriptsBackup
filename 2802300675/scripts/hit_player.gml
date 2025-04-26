@@ -57,3 +57,8 @@ if (attack == AT_FTILT) {
 if (attack == AT_DATTACK) {
     sound_play(asset_get("sfx_hod_steamhit3"));
 }
+
+if (my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_DSPECIAL_2){
+    hit_player_obj.sdi_mult = 1;
+    hit_player_obj.dumb_di_mult = 1;
+}

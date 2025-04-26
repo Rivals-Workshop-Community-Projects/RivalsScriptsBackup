@@ -1,8 +1,10 @@
-//draw_debug_text( x +80 , y - 20, string(joy_dir));
+//draw_debug_text( x +80 , y - 20, string(state_timer));
 //draw_debug_text( x +80 , y - 20, string(my_hitboxID.kb_value));
 
 //Draws Smoke
 if state != PS_HITSTUN && state != PS_PRATFALL && state != PS_SPAWN{
+
+temp_color = get_player_hud_color(player);
 
 if !((state== PS_ATTACK_AIR || state == PS_ATTACK_GROUND )&& (attack ==AT_NSPECIAL && (window!=3 && window !=6))){
 	shader_start();
@@ -29,7 +31,7 @@ if state == PS_ATTACK_AIR || state ==PS_ATTACK_GROUND{
 		draw_sprite_ext( sprite_get("Udir"), 0, x, y-30, 1, 1,  abs(arrow)*45, c_white, 1); 
 	}
 }
-	shader_end();
+shader_end();
 
 
 //Draws WILL O WISP
@@ -68,8 +70,11 @@ if state == PS_ATTACK_AIR || state ==PS_ATTACK_GROUND{
 if smoke_counter>0{
 	with pHitBox {
 	//draw_debug_text( x + 60, y - 40, string(hitbox_timer));
-		if attack == AT_NSPECIAL && hbox_num ==1 && smoke_state ==1 && orig_player == other.player &&(player_id.url == other.url) && !was_parried{
-				draw_sprite(sprite_get("owner"), player , x, y-34);			
+		if (player_id.url == other.url &&  orig_player == other.player) {
+			temp_color = get_player_hud_color(player)
+			if attack == AT_NSPECIAL && hbox_num ==1 && smoke_state ==1 && orig_player == other.player  && !was_parried{
+				draw_sprite_ext(sprite_get("owner"), 0 , x, y-34, 1, 1, 0, temp_color, 1);			
+			}
 		}
 	}
 }
@@ -83,7 +88,8 @@ with pHitBox {
 			//draw_debug_text(x + 60, y - 35, string(abs(x - (player_id.x ))));
 			//draw_debug_text(x + 90, y - 35, string(smoke_num));
 			if attack == AT_NSPECIAL && hbox_num == 1 && smoke_state != 1{
-				draw_sprite(sprite_get("notice"), smoke_state-2 , x  , y - 36);
+				temp_color = get_player_hud_color(player)
+				draw_sprite_ext(sprite_get("notice"), smoke_state-2 , x  , y - 36,1, 1, 0, temp_color, 1);
 			}
 		}
 }

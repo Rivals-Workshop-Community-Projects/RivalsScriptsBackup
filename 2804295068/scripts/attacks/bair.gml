@@ -2,15 +2,15 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("throw"));
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 13);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 2);

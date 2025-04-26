@@ -35,6 +35,13 @@ article_should_lockout = true; //set to false if you don't want hit lockout.
 
 switch (get_player_color(player))
 {
+
+  case 9: 
+sprite_index = sprite_get("fuzzyjar");
+boomsprite = sprite_get("fuzzyjar");
+uses_shader = true;  
+break;
+
 case 20: 
 sprite_index = sprite_get("mugmoment");
 boomsprite = sprite_get("mugmoment");
@@ -59,6 +66,35 @@ boomsprite = sprite_get("cola");
 uses_shader = false;
 break;
 
+case 24: 
+
+switch (get_match_setting(SET_SEASON)) {
+  case 1: // valentines
+sprite_index = sprite_get("valentinejar");
+boomsprite = sprite_get("valentinejar");
+uses_shader = false;  
+    break;
+  case 2: // summer
+sprite_index = sprite_get("summerjar");
+boomsprite = sprite_get("summerjar");
+uses_shader = false;  
+    break;
+  case 3: // halloween
+sprite_index = sprite_get("halloweenjar");
+boomsprite = sprite_get("halloweenjar");
+uses_shader = true;  
+    break;
+  case 4: // christmas
+sprite_index = sprite_get("christmasjar");
+boomsprite = sprite_get("christmasjar");
+uses_shader = false;  
+
+    break;
+}
+
+break;
+
+
 default:
 sprite_index = sprite_get("jaridle");
 boomsprite = sprite_get("jaridle");
@@ -78,11 +114,20 @@ mask_index = sprite_get("jarhurt");
 lifetime = 0;
 
 //State
+if has_rune("G"){
+    rune_behavior = true;
+    jar_falling_hitbox = create_hitbox(AT_NSPECIAL_AIR, 1, x, y);
+}
+else{
+    rune_behavior = false;
+    jar_falling_hitbox = noone;
+}
+
 state = 0;                                          //The behavior state the article should start in.
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
-hsp = 5*spr_dir;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
-vsp = -5;
+hsp = orig_player_id.attack == AT_NSPECIAL_AIR? 0:5*spr_dir;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
+vsp = orig_player_id.attack == AT_NSPECIAL_AIR? 8:-5;
 can_hit = 0;                                            //The vertical speed of the article.
 jar_health = 10;
 thar_he_blows = 0;

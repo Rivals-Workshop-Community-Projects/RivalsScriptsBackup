@@ -1,12 +1,18 @@
 //
 
-if(targetPlayer == noone)
-	return;
+if(targetPlayer == noone || !instance_exists(targetPlayer))
+{
+    Destroy(true);
+    return;
+}
 
 visible = targetPlayer.visible;
     
 if(targetPlayer.state == PS_DEAD || targetPlayer.state == PS_RESPAWN)
-	Destroy(true);
+{
+    Destroy(true);
+    return;
+}
 	
 // if(hitpause)
 // {
@@ -21,7 +27,10 @@ Animate();
 Attack();
 
 if (hp <= 0)
+{
     Destroy(false);// state = "dead"; //TODO: death animation instead
+    return;
+}
 
 // if(targetPlayer.state == PS_DEAD || targetPlayer.state == PS_RESPAWN)
 // 	Destroy(true);
@@ -80,7 +89,7 @@ if(!wasOffscreen)
     // hitPause(player_id, 60);
 	// hittable_hitpause_mult = 10000;
 }
-sound_stop(sound_get("sapper_timer"));
+sound_stop(sapper_timerSfx);
 sound_play(sound_get("sapper_removed"), false, noone, 1, 1);
 instance_destroy(self);
 exit;

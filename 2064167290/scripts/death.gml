@@ -73,4 +73,3 @@ sound_play(sound_get("wait1"));
 
 
 runeG_can_uspecial = true;
-

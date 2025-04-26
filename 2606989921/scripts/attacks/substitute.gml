@@ -20,6 +20,7 @@ set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 2); //none
 set_hitbox_value(AT_JAB, 1, HG_THROWS_ROCK, 2); //ignore
 set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_SPRITE, msg_substitute);
 set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_ANIM_SPEED, (5.0 / get_hitbox_value(AT_JAB, 1, HG_LIFETIME)));
+set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_COLLISION_SPRITE, msg_substitute);
 set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_JAB, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
@@ -53,6 +54,7 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_DESTROY_EFFECT, hfx_error_b);
 set_hitbox_value(AT_JAB, 2, HG_FORCE_FLINCH, 2); //none
 set_hitbox_value(AT_JAB, 2, HG_THROWS_ROCK, 2); //ignore
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_SPRITE, sprite_get("substitute_hit"));
+set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("substitute_hit"));
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_ANIM_SPEED, (5.0 / get_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME)));
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);

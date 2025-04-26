@@ -18,10 +18,22 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
-window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+window_num ++; //endlag 1
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+window_num ++; //endlag 2
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+window_num ++; //endlag 3
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);

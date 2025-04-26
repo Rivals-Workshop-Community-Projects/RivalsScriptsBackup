@@ -19,9 +19,12 @@ or place_meeting(x, y, player_id) && player_id.shield_pressed){
 if (state == 0){
 var hbox = create_hitbox(AT_NSPECIAL, fruit_num, x + (8 + hbox_x_offset)*spr_dir, y);
 hbox.player = owner;
+if (hbox.was_parried){
+    player_id.times_collected += 1;
+}
     switch(fruit_num){
         case 1: //Cherry
-        grav = 4;
+        grav = 5;
         hsp = 4*spr_dir;
         max_bounces = 2;
         resistance = 1;
@@ -30,8 +33,8 @@ hbox.player = owner;
         max_airtime = 40;
         break;
         case 2: //Strawberry
-        grav = 4.5;
-        hsp = 3*spr_dir;
+        grav = 5.5;
+        hsp = 3.5*spr_dir;
         max_bounces = 3;
         resistance = 2;
         passes_through = false;
@@ -276,6 +279,7 @@ if (should_die){
 
 if (collected){
     sound_stop(galaxian_sound);
+    hbox.destroyed = true;
     sound_play(sound_get("sfx_fruit"));
     spawn_hit_fx(x, y, 305);
     player_id.fruit_num = fruit_num;

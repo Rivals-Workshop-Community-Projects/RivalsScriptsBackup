@@ -106,8 +106,3 @@ set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 301 );
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_GROUNDEDNESS, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_EXTRA_CAMERA_SHAKE, 1);
-
-
-
-
-

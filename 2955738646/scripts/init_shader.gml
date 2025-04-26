@@ -1,6 +1,6 @@
 //Shader stuff
 
-if (get_player_color(player) == 8) { set_character_color_shading( 0, 1 ); }
+if (get_player_color(player) == 8) { set_character_color_shading( 0, 0 ); }
 
 SuperMech = false;
 if (get_player_color(player) < 13) {

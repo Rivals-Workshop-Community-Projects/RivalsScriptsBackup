@@ -11,11 +11,10 @@
 #macro CL_TAUNT_2 8
 #macro CL_GOT_HIT 9
 #macro CL_GOT_PARRIED 10
-// Not Used start
+// Not Used yet
 #macro CL_PARRY_START 11
 #macro CL_PARRY 12
 #macro CL_ROLL 13
-// Not used end
 #macro CL_AIR_DASH 13
 #macro CL_WAVELAND 14
 
@@ -32,27 +31,41 @@
 #macro CL_DSPECIAL_DOWN 30
 #macro CL_DTHROW_TEAM 31
 
+// New Ducky States
+#macro CL_WALK 40
+#macro CL_WALK_TURN 41
+#macro CL_DASH_START 42
+#macro CL_DASH_STOP 43
+#macro CL_DASH_TURN 44
+
 #macro SC_NEUTRAL 50
 #macro SC_COMMITTED 51
 
 #macro CL_ARTICLE_DESTROY 99
 
+var player_attacking = (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND);
+var dashing = (player_id.left_hard_pressed || player_id.right_hard_pressed) && !player_id.down_down;
+
 check_interupts();
 if(state != CL_GOT_HIT && state != CL_ARTICLE_DESTROY // Lockout on destroy
 	&& state != CL_DTHROW && state != CL_DTHROW_TEAM // Lockout on Grabs
-	){
+    )
+{
 	hit_detection();
 }
 //print("left_down: " + string(player_id.left_down) + "\ right_down: " + string(player_id.right_down));
 if(mask_index != player_id.hurtbox_spr){mask_index = player_id.hurtbox_spr;} // Enable for hurtbox editing Set this before every state and change it later
 
-if(state == CL_DSPECIAL){
-//Clear Throw flags to prevent the throw from taking effect after the move
-        // Reset flags to prevent second throws and grab storage
-        if(player_id.clone_fspecial_player_throwing_clone == true){player_id.clone_fspecial_player_throwing_clone = false;}
-		if(player_id.clone_fspecial_clone_throwing_player == true){player_id.clone_fspecial_clone_throwing_player = false;}
-		if(player_id.clone_uspecial_player_throwing_clone == true){player_id.clone_uspecial_player_throwing_clone = false;}
-		if(player_id.clone_uspecial_clone_throwing_player == true){player_id.clone_uspecial_clone_throwing_player = false;}
+//Failsafe, added var spawn_idle to make sure NSpec doesnt play any animation.
+if(state == CL_DSPECIAL || spawn_idle)
+{
+    spawn_idle = false;
+    //Clear Throw flags to prevent the throw from taking effect after the move
+    // Reset flags to prevent second throws and grab storage
+    if(player_id.clone_fspecial_player_throwing_clone == true){player_id.clone_fspecial_player_throwing_clone = false;}
+    if(player_id.clone_fspecial_clone_throwing_player == true){player_id.clone_fspecial_clone_throwing_player = false;}
+    if(player_id.clone_uspecial_player_throwing_clone == true){player_id.clone_uspecial_player_throwing_clone = false;}
+    if(player_id.clone_uspecial_clone_throwing_player == true){player_id.clone_uspecial_clone_throwing_player = false;}
 }
 var temp_can_tap_jump;
 with(player_id){
@@ -60,6 +73,10 @@ with(player_id){
 }
 
 clone_can_tap_jump = temp_can_tap_jump;
+// End plat dropping state out of air neutral
+if(state != CL_AIR_NEUTRAL){
+	is_platdropping = false;
+}
 /*
 print(state);
 print(state_timer);
@@ -68,6 +85,26 @@ print(state_timer);
 print(sprite_index)
 print(image_index)
 */
+
+//Allow dashing during these states!
+if((state == CL_IDLE || state == CL_WALK || state == CL_WALK_TURN) && dashing && horizontal_dir != 0)
+{
+    state = CL_DASH_START;
+    state_timer = 0;
+    sound_play(asset_get("sfx_dash_start"));
+    //spawn_hit_fx((horizontal_dir * -10) + x,y-5,4);} //4   - fire directional
+    spawn_base_dust(x, y, "dash_start", horizontal_dir);
+}
+//Dash particles
+if(state == CL_DASH || state == CL_DASH_START)
+{
+    // Dust effect
+    if(abs(hsp) > 0 && !instance_exists(dash_vfx)){dash_vfx = spawn_base_dust(x, y, "dash", spr_dir);dust_timer = 0;}
+    else if(instance_exists(dash_vfx) && dust_timer >= 4){dash_vfx = spawn_base_dust(x, y, "dash", spr_dir);dust_timer = 0;}
+    else {dust_timer++;}
+}
+else
+    down_was_pressed = false;
 
 switch(state){
     case CL_INITALIZE:
@@ -78,48 +115,181 @@ switch(state){
         break;
         
     case CL_IDLE:
-        sprite_index = idle_sprite;
-        image_index = state_timer / 8;
         hsp *= .80; // ground friction
         clone_state_cat = SC_NEUTRAL;
         clone_has_djump = true;
         // Reset flags
-        if(player_id.clone_dspecial_hit){player_id.clone_dspecial_hit = false;} //Force to false to prevent storing grabs glitch
-        if(clone_dspecial_hit){clone_dspecial_hit = false;}
-        // Reset flags to prevent second throws and grab storage
-        if(player_id.clone_fspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_player_throwing_clone = false;}
-		if(player_id.clone_fspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_clone_throwing_player = false;}
-		if(player_id.clone_uspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_player_throwing_clone = false;}
-		if(player_id.clone_uspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_clone_throwing_player = false;}
+        if(player_id.clone_dspecial_hit)
+            player_id.clone_dspecial_hit = false; //Force to false to prevent storing grabs glitch
+        if(clone_dspecial_hit)
+            clone_dspecial_hit = false;
+        if !(player_attacking)
+            spawn_idle = true;
+        if(state_timer <= 1) crouch_timer = 0;
+        is_platdropping = false;
+        //Changed so it calls the function above.
+        // if(player_id.clone_fspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_player_throwing_clone = false;}
+		// if(player_id.clone_fspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_clone_throwing_player = false;}
+		// if(player_id.clone_uspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_player_throwing_clone = false;}
+		// if(player_id.clone_uspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_clone_throwing_player = false;}
         
         if(free){vsp = vsp + player_id.gravity_speed;}
-        
-        // Dash Start Logic
-        if(player_id.clone_walk_direction != 0){
-	        state = CL_DASH;
-	        state_timer = 0;
-	        sound_play(asset_get("sfx_dash_start"));
-	        //spawn_hit_fx((player_id.clone_walk_direction * -10) + x,y-5,4);} //4   - fire directional
-	        spawn_base_dust(x, y, "dash_start", player_id.clone_walk_direction);
+        // Crouching Logic, welcome back mugen
+        if(player_id.down_down && player_id.attack == AT_EXTRA_1 && player_attacking)
+        {
+            mask_index = player_id.crouchbox_spr;
+            if(crouch_timer < 4)
+            {
+                sprite_index = crouch_sprite;
+                image_index = crouch_timer / 2;
+            }
+            else
+            {
+                sprite_index = crouch_idle_sprite;
+                image_index = floor(image_number*crouch_timer/(image_number*10));
+            }
+            
+            crouch_timer ++;
+        }
+        else if(crouch_timer != 0)
+        {
+            mask_index = player_id.hurtbox_spr;
+            if(crouch_timer > 4) crouch_timer = 4;
+            crouch_timer --;
+            sprite_index = crouch_sprite;
+            image_index = crouch_timer / 2;
+        }
+        //welcome back idle
+        else
+        {
+            sprite_index = idle_sprite;
+            image_index = state_timer / 8;
+            mask_index = player_id.hurtbox_spr;
+        }
+        //Walk
+        if(horizontal_dir != 0 && !player_id.down_down)
+        {   
+            state = (horizontal_dir == spr_dir) ? CL_WALK : CL_WALK_TURN;
+            state_timer = 0;
         }
         break;
-        
-    case CL_DASH:
-        sprite_index = walk_sprite;
-        image_index = state_timer / 6;
+    case CL_WALK:
         clone_state_cat = SC_NEUTRAL;
-        if(player_id.clone_walk_direction == 1){spr_dir = 1;hsp = player_id.dash_speed}
-        if(player_id.clone_walk_direction == -1){spr_dir = -1;hsp = -1 * player_id.dash_speed}
-        if(player_id.clone_walk_direction == 0 ){state = CL_IDLE;}
-        //if(!(player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)){state = CL_IDLE;}
-        // Dust effect
-        if(abs(hsp) > 0 && !instance_exists(dash_vfx)){dash_vfx = spawn_base_dust(x, y, "dash", player_id.clone_walk_direction);dust_timer = 0;}
-        else if(instance_exists(dash_vfx) && dust_timer >= 4){dash_vfx = spawn_base_dust(x, y, "dash", player_id.clone_walk_direction);dust_timer = 0;}
-        else {dust_timer++;}
+        sprite_index = walk_sprite;
+        image_index = state_timer * player_id.walk_anim_speed;
+
+        var walk_hsp = (hsp != walk_speed*spr_dir ? walk_accel*spr_dir : 0)
+        if(horizontal_dir == 0){state = CL_IDLE; hsp =0;}
+        else {spr_dir = horizontal_dir;hsp += walk_hsp}
+
+        if(state_timer % 8 == 0)
+            spawn_base_dust(x, y, "walk", spr_dir)
+        hsp = clamp(hsp, -walk_speed, walk_speed);
+
+        break;
+    case CL_WALK_TURN:
+        clone_state_cat = SC_NEUTRAL;
+        sprite_index = walk_turn_sprite;
+        image_index = state_timer/walk_turn_time/image_number;
+
+        if(state_timer == walk_turn_time)
+        {  spr_dir *= -1; state = (horizontal_dir!=0?CL_WALK:CL_IDLE);}
+
+        break;
+    case CL_DASH_START:
+        sprite_index = dash_start_sprite;
+        image_index = floor(state_timer/initial_dash_time*(image_number-1));
+        clone_state_cat = SC_NEUTRAL;
+        //BABYDASH
+        if(state_timer == 2 && player_id.joy_pad_idle) {state = CL_IDLE; state_timer = 0;}
+        //MOONWALK DETECTION
+        if(player_id.down_down || player_id.up_down) 
+        {
+            if(state_timer > 1) down_was_pressed = true;
+        }
+        //BACK THAT THING UP
+        if(down_was_pressed)
+        {
+            if(horizontal_dir != spr_dir && horizontal_dir != 0) hsp += -moonwalk_accel*spr_dir;
+            hsp = clamp(hsp,-initial_dash_speed,initial_dash_speed);
+            if(player_id.joy_pad_idle) { state = CL_IDLE; state_timer = 0;}
+            else if(dashing && horizontal_dir == spr_dir && !(player_id.down_down || player_id.up_down))
+            {
+                down_was_pressed = false;
+                state_timer = 0; 
+                spr_dir = horizontal_dir;
+                sound_play(asset_get("sfx_dash_start"));
+                //spawn_hit_fx((horizontal_dir * -10) + x,y-5,4);} //4   - fire directional
+                spawn_base_dust(x, y, "dash_start", horizontal_dir);
+            }
+        }
+        //RESET WHEN DASH DANCING
+        else if(horizontal_dir != spr_dir && horizontal_dir != 0 && dashing && !down_was_pressed)
+        {   
+            down_was_pressed = false;
+            state_timer = 0; 
+            spr_dir = horizontal_dir;
+            sound_play(asset_get("sfx_dash_start"));
+            //spawn_hit_fx((horizontal_dir * -10) + x,y-5,4);} //4   - fire directional
+            spawn_base_dust(x, y, "dash_start", horizontal_dir);
+        }
+
+        //go to dash
+        if(state_timer == initial_dash_time)
+        {state = (!(horizontal_dir == 0 || player_id.state_cat == SC_HITSTUN)?CL_DASH:CL_IDLE); state_timer = 0;}
+
+        if(horizontal_dir != 0 && !down_was_pressed) 
+        {spr_dir = horizontal_dir; hsp = initial_dash_speed * horizontal_dir;}
+
         // Interupts
         if(free == true && state_timer > 4){state = CL_AIR_NEUTRAL;state_timer = 0;}
-        if(player_id.state_cat == SC_HITSTUN){state = CL_IDLE; player_id.clone_walk_direction = 0;}
-        //if(player_id.state == AT_EXTRA_1){state = CL_IDLE; player_id.clone_walk_direction = 0;}
+
+        break;
+    case CL_DASH_TURN:
+        sprite_index = dash_turn_sprite;
+        image_index = 0;
+        clone_state_cat = SC_NEUTRAL;
+        if(abs(hsp) <= player_id.dash_speed && state_timer > 1) hsp += dash_turn_accel *spr_dir;
+        if(state_timer == dash_turn_time)
+        {state = (horizontal_dir == spr_dir?CL_DASH:(horizontal_dir == 0?CL_IDLE:CL_WALK_TURN)); state_timer = 0;}
+        if(state_timer == 5) spawn_base_dust(x, y, "dash_start", spr_dir);
+        break;
+    case CL_DASH_STOP:
+        clone_state_cat = SC_NEUTRAL;
+        sprite_index = dash_stop_sprite;
+        image_index = 0;
+        hsp *= dash_stop_percent;
+        if(state_timer == dash_stop_time) {state = CL_IDLE;}
+        else if(horizontal_dir != spr_dir && horizontal_dir != 0) {state = CL_DASH_TURN; spr_dir = horizontal_dir; state_timer = 0;}
+        break;
+
+    case CL_DASH:
+        sprite_index = dash_sprite;
+        image_index = state_timer / 6;
+        clone_state_cat = SC_NEUTRAL;
+        if(down_was_pressed)
+        {
+            if(horizontal_dir != spr_dir && horizontal_dir != 0) hsp += -moonwalk_accel*spr_dir;
+            hsp = clamp(hsp,-initial_dash_speed,initial_dash_speed);
+            if(player_id.joy_pad_idle || state_timer == dash_turn_time) { down_was_pressed = false; state = CL_IDLE; state_timer = 0;}
+            else if(dashing && horizontal_dir == spr_dir)
+            {
+                down_was_pressed = false;
+                state_timer = 0; 
+                spr_dir = horizontal_dir;
+                sound_play(asset_get("sfx_dash_start"));
+                //spawn_hit_fx((horizontal_dir * -10) + x,y-5,4);} //4   - fire directional
+                spawn_base_dust(x, y, "dash_start", horizontal_dir);
+            }
+        }
+        else if(horizontal_dir == 0 || player_id.state_cat == SC_HITSTUN) {state = CL_DASH_STOP; state_timer = 0;}
+        else if(horizontal_dir != spr_dir) {state = CL_DASH_TURN; spr_dir = horizontal_dir; state_timer = 0;}
+        else {spr_dir = horizontal_dir;hsp = player_id.dash_speed * horizontal_dir}
+
+        // Interupts
+        if(free == true && state_timer > 4){state = CL_AIR_NEUTRAL;state_timer = 0;}
+        // if(player_id.state_cat == SC_HITSTUN){state = CL_IDLE; horizontal_dir = 0;}
+        //if(player_id.state == AT_EXTRA_1){state = CL_IDLE; horizontal_dir = 0;}
         break;
         
     case CL_JUMP_SQUAT:
@@ -147,15 +317,23 @@ switch(state){
     
     case CL_AIR_NEUTRAL:
         sprite_index = jump_sprite;
-        image_index = 2 + (vsp / player_id.max_fall);
+        //image_index = 2 + (vsp / player_id.max_fall);
+        image_index = clamp((image_number/2)+vsp*.4, 0, image_number-1); // From Giik
         clone_state_cat = SC_NEUTRAL;
         vsp = vsp + player_id.gravity_speed;
-       Apply_Air_Drift();
-        //vsp = clamp(vsp,-8,player_id.max_fall);
+        Apply_Air_Drift();
+        ignores_walls = false; // Fefault to this logic normally until set by the logic below.
+        //vsp = clamp(vsp,-120,player_id.max_fall);
         //Fast Fall Logic
-        if(player_id.down_hard_pressed && sign(vsp) == 1 && player_id.attack == AT_EXTRA_1){
+        if(player_id.down_hard_pressed && sign(vsp) == 1 && player_id.attack == AT_EXTRA_1 && !is_platdropping){
         	vsp = player_id.fast_fall; 
         	if(fast_fall_fx_played_flag == false){spawn_hit_fx((spr_dir * -10) + x,y - 40,player_id.vfx_clone_fast_fall);fast_fall_fx_played_flag = true;} //19  - sweetspot small
+        }
+        // Go through plat logic
+        if(player_id.down_down && player_id.attack == AT_EXTRA_1){
+        	if(position_meeting(x, y + vsp, asset_get("jumpthrough_32_obj"))){
+        		ignores_walls = true;
+        	}
         }
         if(free == false){state = CL_LAND;state_timer = 0;}
         break;
@@ -168,7 +346,8 @@ switch(state){
     	clone_has_djump = false;
     	// From Air Neutral
     	vsp = vsp + player_id.gravity_speed;
-        hsp = clamp(hsp + (player_id.air_accel * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed)
+        hsp = clamp(hsp + (player_id.air_accel * horizontal_dir),-1 * player_id.air_max_speed,player_id.air_max_speed);
+        is_platdropping = false;
     	// Double Jump HSP reverse around logic
     	if(state_timer < 4 && spr_dir == 1 && sign(hsp) == 1 && player_id.left_down){
     		hsp = -1 * .5 * hsp;
@@ -200,6 +379,7 @@ switch(state){
         clone_has_air_dash = true;
         fast_fall_fx_played_flag = false;
         hsp *= .95; // ground friction
+        is_platdropping = false;
         // Play Sound
         if(state_timer == 1){spawn_base_dust(x, y, "land", spr_dir);sound_play(player_id.land_sound);}
         // Exit Condition
@@ -213,6 +393,7 @@ switch(state){
     	clone_has_djump = true;
         clone_has_air_dash = true;
         fast_fall_fx_played_flag = false;
+        is_platdropping = false;
         //wave_land_time = 8;
 		//wave_land_adj = 1.30; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 		//wave_friction = .065; //grounded deceleration when wavelanding
@@ -222,18 +403,20 @@ switch(state){
         	sound_play(player_id.waveland_sound);
         	hsp *= player_id.wave_land_adj + .10;
         }
-        if(state_timer > 4 && state_timer < player_id.wave_land_time){hsp = hsp *(1-player_id.wave_friction);}
-        if(player_id.attack_down == true){state = CL_DSPECIAL;state_timer = 0;hsp = hsp * 1.1;}
-        if(state_timer >= player_id.wave_land_time){state = CL_IDLE;state_timer = 0;}
+        if(state_timer > 4 && state_timer < player_id.wave_land_time){hsp = hsp *(1-player_id.wave_friction);} //Waveland Friction
+        if(player_id.attack_down == true){state = CL_DSPECIAL;state_timer = 0;hsp = hsp * 1.1;} //Increase hsp when attacking.
+        if(state_timer >= player_id.wave_land_time){state = CL_IDLE;state_timer = 0;} //Go back to idle.
         break;
     case CL_AIR_DASH:
         image_index = state_timer/4;
         clone_state_cat = SC_COMMITTED;
         clone_has_air_dash = false;
+        is_platdropping = false;
         
-        if(state_timer == 1){
-        	vsp=0;
-        	hsp=0;
+        if(state_timer == 1)
+        {
+            //Reset velocity
+        	vsp = 0; hsp = 0;
         	// soundID,looping,panning,volume,pitch / Pitch range from .4 to .7
 	        sound_play(asset_get( "sfx_dash_start" ),false,noone,1, .75);
 	        switch(clone_air_dash_direction){
@@ -281,9 +464,10 @@ switch(state){
 	        	default:
 	        		break;
 	        }
-	    //if(spr_dir = -1){ image_angle = image_angle + 180;}
+	        //if(spr_dir = -1){ image_angle = image_angle + 180;}
         }
-        if(state_timer == 4){
+        if(state_timer == 4)
+        {
         	var air_dash_total_speed = 8;
         	switch(clone_air_dash_direction){
         		case 8:
@@ -329,17 +513,40 @@ switch(state){
         		case 4:
         		case 7:
         		case 5:
-        			spawn_base_dust(x, y, "dash_start", player_id.clone_walk_direction);
+        			spawn_base_dust(x, y, "dash_start", horizontal_dir);
         			break;
         		case 8:
         		case 2:
-        			spawn_base_dust(x, y, "djump", player_id.clone_walk_direction);
+        			spawn_base_dust(x, y, "djump", horizontal_dir);
         	}
         }
         if(state_timer > 15){image_angle = 0;}
-        if(state_timer > 16 && free){state = CL_AIR_NEUTRAL;state_timer = 0;}
-        if(state_timer < 15 && !free){state = CL_WAVELAND;state_timer = 0;}
-        if(state_timer > 15 && !free){state = CL_LAND;state_timer = 0;}
+        //Ending States
+        //wave landing as long youre not going up
+        if(state_timer > 5 && state_timer <= 16 && vsp <= 0)
+        {
+            var waveland = false;
+            var pixelbufferbelow = 20; //adjust for feel
+            var pixelbufferabove = 8; //adjust for feel
+            //CHECK FOR PLATFORMS OR GROUND. (5px for landing.)
+            for(i = -pixelbufferbelow; i < pixelbufferabove; i++)
+            {
+                if(position_meeting(x+hsp,y+i,asset_get("par_jumpthrough")) && !position_meeting(x+hsp,y+i-1,asset_get("par_jumpthrough"))
+                || position_meeting(x+hsp,y+i,asset_get("par_block")) && !position_meeting(x+hsp,y+i-1,asset_get("par_block")))
+                {
+                    //print_debug("wavelanded with " + string(abs(i)) + "px amount of leniency")
+                    y = y+i-1;
+                    vsp = 0;
+                    waveland = true;
+                    clear_button_buffer(PC_SHIELD_PRESSED);
+                    break;
+                }
+            }
+            //Land.
+            if(waveland || !free) { state = (state_timer < 15? CL_WAVELAND : CL_LAND); state_timer = 0;}
+        }
+        else if(state_timer > 16){state = CL_AIR_NEUTRAL; state_timer = 0;} //still in air
+
     	break;
         
     case CL_TAUNT:
@@ -347,11 +554,11 @@ switch(state){
         clone_state_cat = SC_COMMITTED;
         hsp = 0;
         if((player_id.attack == AT_FSPECIAL_2) && 
-        (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+        (player_attacking)){
         	state = CL_FSPECIAL;state_timer = 0;
         }
         if((player_id.attack == AT_USPECIAL_2) && 
-        (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+        (player_attacking)){
         	state = CL_USPECIAL;state_timer = 0;
         }
         
@@ -705,7 +912,7 @@ switch(state){
         var endlag_window_final_frame = 12;
         	
         if(player_id.window == englag_window && player_id.window_timer == (endlag_window_final_frame - 1) // Normal
-        || !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){ // Incase she is hit out
+        || !(player_attacking)){ // Incase she is hit out
         	player_id.clone_dspecial_hit = false;
         	clone_dspecial_hit = false;
         	state = CL_IDLE;
@@ -753,7 +960,7 @@ switch(state){
         }
         
         // Waiting Time - Total Time is 55 seconds
-        if(player_id.attack == AT_DTHROW && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+        if(player_id.attack == AT_DTHROW && (player_attacking)){
         	player_grab_timer = player_id.state_timer;
         }
     	if(player_grab_timer == 52 && player_id.hitpause == false){current_hitbox = create_article_hitbox(AT_FSPECIAL_AIR, 2, player_id.x, player_id.y - 34); hitstop = 8;} // Create hitbox
@@ -843,7 +1050,7 @@ switch(state){
 		player_id.clone_uspecial_clone_throwing_player = false;
 		player_id.clone_dspecial_assist = false;
 		player_id.clone_dspecial_hit = false;
-		player_id.clone_walk_direction = 0;
+		horizontal_dir = 0;
 		player_id.wisp_object_ID = instance_create(x,y-30,"obj_article2");
 		if(Nspecial_explosion_flag == true){player_id.wisp_object_ID.wisp_idle_timer = 10;} // Overide the tmer on nspecial detonation
         instance_destroy(self);
@@ -860,43 +1067,70 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 
 #define check_interupts()
 {
+    var player_attacking = (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND);
+    var player_control = (player_id.attack == AT_EXTRA_1 && player_id.window != 3 && player_id.special_down);
+
 	// Throw Interupts
 	if(player_id.clone_fspecial_player_throwing_clone == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_FSPECIAL_2; state_timer = 0; player_id.clone_fspecial_player_throwing_clone = false;}
 	if(player_id.clone_fspecial_clone_throwing_player == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_FSPECIAL;state_timer = 0; player_id.clone_fspecial_clone_throwing_player = false;}
 	if(player_id.clone_uspecial_player_throwing_clone == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL_2;state_timer = 0; player_id.clone_uspecial_player_throwing_clone = false;}
 	if(player_id.clone_uspecial_clone_throwing_player == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL;state_timer = 0; player_id.clone_uspecial_clone_throwing_player = false;}
 	
+    if(player_control && player_attacking)
+        horizontal_dir = (player_id.right_down && !player_id.left_down ? 1: (!player_id.right_down && player_id.left_down ? -1: 0));
+    else
+        horizontal_dir = 0;
+
 	// Idle in the Air
-	if(free == true && state_timer > 4 && clone_state_cat == SC_NEUTRAL && !(state == CL_FSPECIAL_2 || state == CL_USPECIAL_2 || state == CL_FSPECIAL_AIR || state == CL_DJUMP)){state = CL_AIR_NEUTRAL;}
+	if(free == true && state_timer > 4 && clone_state_cat == SC_NEUTRAL && !(state == CL_FSPECIAL_2 || state == CL_USPECIAL_2 || state == CL_FSPECIAL_AIR || state == CL_DJUMP))
+        {state = CL_AIR_NEUTRAL;}
 	
 	// Jump
-	if(!free && (player_id.jump_down == true || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_id.attack == AT_EXTRA_1 && 
-	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+	if(!free && (player_id.jump_pressed == true || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_control && 
+	(player_attacking) && clone_state_cat == SC_NEUTRAL){
 		state = CL_JUMP_SQUAT; state_timer = 0;}
 		
 	// Double Jump
-	if(free && state_timer > 4 && (player_id.jump_pressed || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_id.attack == AT_EXTRA_1 && clone_has_djump == true && 
-	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+	if(free && state_timer > 4 && (player_id.jump_pressed || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_control && clone_has_djump == true && 
+	(player_attacking) && clone_state_cat == SC_NEUTRAL){
 		state = CL_DJUMP; state_timer = 0;}
 		
 	// Platdrop
-	if(!free == true && clone_state_cat == SC_NEUTRAL && player_id.attack == AT_EXTRA_1 && 
-	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) &&
-	place_meeting(x, y, asset_get("jumpthrough_32_obj"))
-	&& player_id.down_hard_pressed){can_be_grounded = false;free = true; state = CL_AIR_NEUTRAL; vsp = vsp + 4;}
+	if(!free == true && clone_state_cat == SC_NEUTRAL && player_control && 
+	(player_attacking) &&
+	position_meeting(x, y, asset_get("jumpthrough_32_obj"))
+	&& player_id.down_hard_pressed){
+		can_be_grounded = false;
+		free = true;
+		state = CL_AIR_NEUTRAL;
+		vsp = vsp + 2;
+		if(player_id.right_pressed){
+			hsp = player_id.initial_dash_speed;
+			spr_dir = 1;
+		}
+		if(player_id.left_pressed){
+			hsp = player_id.initial_dash_speed * -1;
+			spr_dir = -1;
+		}
+		is_platdropping = true;
+	}
 	
 	// Reset Platdrop
 	if(!player_id.down_hard_pressed){can_be_grounded = true};
 	
 	// Wavedash
-	if(!free && player_id.shield_pressed && player_id.attack == AT_EXTRA_1 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL)
+	if(!free && player_id.shield_pressed && player_control && (player_attacking) && clone_state_cat == SC_NEUTRAL)
 	{
+        var air_dash_total_speed = 8;
+        if(player_id.left_down && !player_id.right_down) hsp = -air_dash_total_speed;
+        if(!player_id.left_down && player_id.right_down) hsp = air_dash_total_speed;
+        if(player_id.down_down || player_id.up_down) hsp /= 2; 
 		state = CL_WAVELAND; state_timer = 0;
 	}
 
 	// Air Dash
-	if(free && state_timer > 1 && player_id.shield_down && player_id.attack == AT_EXTRA_1 && clone_has_air_dash == true && 
-	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+	if(free && state_timer > 1 && player_id.shield_down && player_control && clone_has_air_dash == true && 
+	(player_attacking) && clone_state_cat == SC_NEUTRAL){
 		// Numpad Direction
 		if(player_id.up_down && !player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 8;}
 		if(player_id.up_down && player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 9;}
@@ -911,12 +1145,12 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 	}
 	
 	// DSPECIAL GRAB
-	if( clone_dspecial_cooldown == 0 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL &&
+	if( clone_dspecial_cooldown == 0 && (player_attacking) && clone_state_cat == SC_NEUTRAL &&
 		(
 		//(player_id.attack == AT_DSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Dspecial without swapped inputs
 		//(player_id.attack == AT_NSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Nspecial with swapped inputs
 		// Controls inputs, Up and down variant need to be managed above in state
-		(player_id.attack == AT_EXTRA_1 && (player_id.attack_pressed // Attack Pressed
+		(player_control && (player_id.attack_pressed // Attack Pressed
 		|| player_id.left_stick_pressed || player_id.right_stick_pressed // Tilt Stick Compat L/R
 		|| player_id.up_stick_pressed || player_id.down_stick_pressed // Tilt Stick Compat U/D
 		|| player_id.up_strong_pressed || player_id.down_strong_pressed // Any Strong Pressed
@@ -926,7 +1160,7 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 	}
 	
 	// Dspecial Team Grab
-	if(player_id.attack == AT_EXTRA_3 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL && state != CL_DTHROW_TEAM){clone_dspecial_hit = false;state = CL_DTHROW_TEAM;clone_dspecial_cooldown = 60;state_timer=0;}
+	if(player_id.attack == AT_EXTRA_3 && (player_attacking) && clone_state_cat == SC_NEUTRAL && state != CL_DTHROW_TEAM){clone_dspecial_hit = false;state = CL_DTHROW_TEAM;clone_dspecial_cooldown = 60;state_timer=0;}
 	
 	// Nspecial Detonate
 	if(clone_state_cat == SC_NEUTRAL && Nspecial_explosion_flag == false &&
@@ -972,8 +1206,10 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 
 #define Apply_Air_Drift()
 {
-// This simulates Air drift for multiple states
-hsp = clamp(hsp + (player_id.air_accel * 1.1 * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed); // Added Multipler to speed it up slightly
+	// This simulates Air drift for multiple states
+	if(!is_platdropping){
+		hsp = clamp(hsp + (player_id.air_accel * 1.1 * horizontal_dir),-1 * player_id.air_max_speed,player_id.air_max_speed); // Added Multipler to speed it up slightly
+	}
 }
 /*
     Supersonic's Complex Hit Detection script v2

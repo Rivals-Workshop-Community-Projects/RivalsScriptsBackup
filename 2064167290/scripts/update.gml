@@ -1,3 +1,8 @@
+//rainbow alts user_event redirect
+if (get_player_color(player) == 18){
+    user_event(0);
+}
+
 //update
 step += 1;
 
@@ -8,7 +13,7 @@ if (state == PS_DASH_START) or (state == PS_DASH)
 }
 
     
-if( state == PS_IDLE) or ( state == PS_WALK) or ( state == PS_FIRST_JUMP)
+if( state == PS_IDLE) or ( state == PS_WALK) or ( state == PS_FIRST_JUMP) or ( state == PS_IDLE_AIR) or ( state == PS_PARRY_START)
 {
         hurtboxID.sprite_index = sprite_get("hana_hurtbox");
 }
@@ -53,7 +58,7 @@ if (!has_enter) and (!instance_exists(oTestPlayer))
     
 }
 
-if (attack == AT_NTHROW) and (window == 2) and (window_timer == 55)
+if (attack == AT_NTHROW) and (window == 2) and (window_timer == 55) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     set_state(PS_SPAWN);
     state_timer += 70;
@@ -699,6 +704,11 @@ with (hit_fx_object)
     
 }
 
-
-
-
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

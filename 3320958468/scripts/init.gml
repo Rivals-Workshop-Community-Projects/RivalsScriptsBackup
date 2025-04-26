@@ -110,6 +110,7 @@ hand_y 						= 0;
 grapple_fist_pos_x 			= 0;
 grapple_fist_pos_y 			= 0;
 grapple_speed				= 15;
+gpr_speed					= 20;			//	Rune Modifier
 
 plunger_guard               = noone;        //  DSPECIAL related
 
@@ -122,6 +123,8 @@ jumpMax 					= 5; 			//	5
 gravSet 					= 0; 			//	0
 vspSet 						= 0.98; 		//	0
 hspSet 						= -1; 			//	-1
+
+//-------------------------------------------------------------------------------------------
 
 // Animation Info
 

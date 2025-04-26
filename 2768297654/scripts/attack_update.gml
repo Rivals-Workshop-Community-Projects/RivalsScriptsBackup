@@ -242,6 +242,7 @@ if(attack == AT_FTHROW){
 	if(window == 1 && window_timer = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
+		clear_button_buffer( PC_SPECIAL_PRESSED );
 		move_cooldown[AT_DSPECIAL] = 330;		
 	}
 }

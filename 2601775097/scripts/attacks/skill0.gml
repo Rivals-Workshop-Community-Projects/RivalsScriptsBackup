@@ -25,7 +25,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //windup 2
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6); //10
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[0].mp_cost1);
@@ -63,7 +63,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //windup 2
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6); //10
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[0].mp_cost2);
@@ -83,12 +83,12 @@ set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 18);
-set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 2);
-set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
+//set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 2);
+//set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
-window_num ++;
-set_window_value(atk, window_num, AG_WINDOW_GOTO, 1);
+//window_num ++; //this window and the cancel types above let light dagger loop back
+//set_window_value(atk, window_num, AG_WINDOW_GOTO, 1);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 

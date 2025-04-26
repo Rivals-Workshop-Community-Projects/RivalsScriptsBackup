@@ -46,7 +46,7 @@ if(attack == AT_FSPECIAL){
 }
 
 if(charm_timer > 0){
-	draw_debug_text(x + -10, y + 12, string(charm_timer));
+	textDraw(x, y + 12, "fName",c_white, 14, 1000, fa_center, 1, 1, 1, string(round(charm_timer/60)), 0);
 }
 
 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
@@ -58,3 +58,20 @@ if(attack == AT_BAIR){
 	}
 }
 }
+#define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text, array_bool)
+
+draw_set_font(asset_get(font));
+draw_set_halign(align);
+
+if outline {
+    for (i = -1; i < 2; i++) {
+        for (j = -1; j < 2; j++) {
+            draw_text_ext_transformed_color(floor(x1) + i * 2, floor(y1) + j * 2, text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
+        }
+    }
+}
+
+if alpha draw_text_ext_transformed_color(x1, y1, text, lineb, linew, scale, scale, 0, color, color, color, color, alpha);
+
+if array_bool return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
+else return;

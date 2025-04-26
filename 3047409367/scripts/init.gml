@@ -121,7 +121,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 11;
 wave_land_time = 8;
 wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .03; //grounded deceleration when wavelanding
+wave_friction = .2; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;

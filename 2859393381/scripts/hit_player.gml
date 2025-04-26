@@ -1,9 +1,11 @@
 //if (hit_player != player) player_i_hit = hit_player_obj;
 
+if (hit_player_obj.soft_armor < 8 && !hit_player_obj.super_armor){
 if (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3))
 {
     //hit_player_obj.fall_through = false;
     if (!free) hit_player_obj.y -= 1;
+}
 }
 
 if ((my_hitboxID.attack == AT_NAIR2 || my_hitboxID.attack == AT_USPECIAL) && my_hitboxID.hbox_num = 1)
@@ -45,7 +47,7 @@ if ((my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_NSPECIAL_AIR 
 }
 */
 
-
+if (hit_player_obj.soft_armor < 8 && !hit_player_obj.super_armor){
 if (my_hitboxID.attack == AT_USTRONG){
     if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){
         if (hit_player_obj.y < my_hitboxID.y){
@@ -65,12 +67,21 @@ if (my_hitboxID.attack == AT_USTRONG){
         hit_player_obj.fall_through = false;
     }
 }
+} else {
+    if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){
+        should_play_gavel_sound = true;
+    } else if (my_hitboxID.hbox_num == 4){
+        should_play_gavel_sound = false;
+    }
+}
 
-if (my_hitboxID.attack == AT_FSTRONG){
-    if (my_hitboxID.hbox_num < 3){
-        if (!hit_player_obj.free){
-            hit_player_obj.old_hsp = round((10*my_hitboxID.spr_dir)-((hit_player_obj.x - x)/50));
-            hit_player_obj.old_vsp = 0;
+if (hit_player_obj.soft_armor < 6 && !hit_player_obj.super_armor){
+    if (my_hitboxID.attack == AT_FSTRONG){
+        if (my_hitboxID.hbox_num < 3){
+            if (!hit_player_obj.free){
+                hit_player_obj.old_hsp = round((10*my_hitboxID.spr_dir)-((hit_player_obj.x - x)/50));
+                hit_player_obj.old_vsp = 0;
+            }
         }
     }
 }

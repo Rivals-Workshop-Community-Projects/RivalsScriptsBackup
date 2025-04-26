@@ -6,7 +6,7 @@ set_attack_value(AT_NAIR2, AG_LANDING_LAG, 7);
 set_attack_value(AT_NAIR2, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 set_window_value(AT_NAIR2, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR2, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR2, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NAIR2, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR2, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
@@ -50,7 +50,7 @@ set_hitbox_value(AT_NAIR2, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NAIR2, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NAIR2, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NAIR2, 1, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_NAIR2, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+set_hitbox_value(AT_NAIR2, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_NAIR2, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR2, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_NAIR2, 1, HG_VISUAL_EFFECT, shock);

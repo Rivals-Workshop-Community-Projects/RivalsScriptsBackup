@@ -252,7 +252,42 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.5", "7th October, 2023");
+initPatch("1.7", "27th October, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed an error sound with Pig
++ Added burn status to DAttack fire
++ Improved hold input for FTilt and UTilt
++ Made the AI much better, giving it custom code for detecting incoming attacks and projectiles. This allow it to dodge/parry much more effectively in many cases");
+
+initPatch("1.6", "1st June, 2024");
+initHeader("Buffs");
+initSection("+ FSpecial meatball now charges slightly passively while Hotel Mario is moving around while grounded
++ Mario can now make a comment if you've waited on CSS for a while
++ Mario now has a victory quote
++ Mario will now say 'This is it Luigi', if on a team with any Luigi, and the opposing team is at last stock
++ Mario will now say 'uh oh' if someone gains a stock (IE: Toads, Mr. Monopoly, etc.)
++ Updated the Voice playing to play pitched with size for the Toads
++ NSpecial's cloud now lasts longer with charge
++ NSpecial can be canceled");
+
+initHeader("Nerfs");
+initSection("- UAir's pig can no longer be frozen for the first 12 frames, afterwards it can.
+- UAir pig no longer hits opponents while frozen");
+
+initHeader("Fixes / Other Changes");
+initSection("+ Improved some misc hitbox code
++ Peach's despawn hitbox is no longer freezable
++ Peach now becomes destroyable when Frozen
++ Uair's coins now despawn offscreen (hopefully fixes some lag?)
++ Made DAir work properly with other hittable KoB objects so it can bounce on them
++ NSpecial's cloud now properly disables its hit after the first 4 frames
++ NSpecial's cloud is now grabbable by other characters
++ NSpecial's cloud no longer freezes invisible projectiles
++ Fixed an NSpecial bug that could allow projectiles to be freezable from anywhere
++ Added shaky hitpause effect
++ Added angle 0 galaxy to (Jab 3, FTilt, BAir, FStrong, DAttack)");
+
+initPatch("1.5", "15th November, 2023");
 initHeader("Nerfs");
 initSection("- UAir pig is now slightly easier to knock around with physical attacks, and weaker hits than before will prevent it from hitting you
 - Powerful enough attacks now changes UAir pig's owner (aka letting it hit Hotel Mario back)

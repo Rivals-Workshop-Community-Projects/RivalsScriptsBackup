@@ -20,5 +20,8 @@ with (asset_get("pHitBox")){
 whirlwind.state_timer = -30; 
 whirlwind2.state_timer = -30; 
 
+if(attack == AT_FSPECIAL && hbox == 6){
+   was_parried = true;
+}
 
 

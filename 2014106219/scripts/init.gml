@@ -104,8 +104,8 @@ wait_length = 170;
 wait_sprite = sprite_get("idle_wait");
 
 //other variables. idk
-ballOut = 0;
-ballDown = 0;
+boomerOut = 0;
+boomerDown = 0;
 wblastcharge = 0;
 rps = 0;
 showHUD = false;
@@ -122,13 +122,13 @@ shaboingboing = 0;
 //Character support
 tcoart = sprite_get("cinnytcoart");
 nspecialstun = hit_fx_create(sprite_get("nspecial_stun"), 40); 
-feri_costume = sprite_get("feri_costume_ex");
 arena_title = "The Red Wonder";
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 kirbyability = 16;
 swallowed = 0;
 diag_portrait= sprite_get("diagportrait");
+msgw_compat = sprite_get("msgwsprite");
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");

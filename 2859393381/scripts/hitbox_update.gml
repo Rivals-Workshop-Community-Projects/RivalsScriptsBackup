@@ -1,6 +1,6 @@
 if (attack == AT_FSPECIAL)
 {
-    through_platforms = 37;
+    //through_platforms = 37;
     if (!free && !evidence_bounced){
         vsp *= -0.7;
         hsp *= 0.5;

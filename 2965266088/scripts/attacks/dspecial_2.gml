@@ -7,7 +7,7 @@ set_attack_value(atk, AG_AIR_SPRITE, sprite_get("dspecial2_air"));
 set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial2_air_hurt"));
 
 window_num = 1; //windup 1
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 24);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16); //24
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_blink_dash"));
 

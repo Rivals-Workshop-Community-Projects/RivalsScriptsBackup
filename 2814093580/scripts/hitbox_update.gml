@@ -43,4 +43,8 @@ if free
 destroyed = true;
 }
 
+if attack == AT_DAIR && hitbox_timer >= 15{
+	can_hit_self = true;
+}
+
 

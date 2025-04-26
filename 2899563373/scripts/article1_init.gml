@@ -23,6 +23,8 @@ uses_shader = false;                                 //Whether or not the articl
 life_timer = 0;
 lifetime_max = 600;
 hp = 24;
+reflect_lockout = 0;
+reflect_maxlock = 15;
 despawn_cd = 60;
 break_cd = 300;
 

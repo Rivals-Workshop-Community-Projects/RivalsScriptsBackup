@@ -87,16 +87,32 @@ if (!menu_active)
         draw_sprite_ext(sprite_get("hud_skills"), cur_skills[3], skill_button_pos[0]+30, skill_button_pos[1]+30, 2, 2, 0, c_white, 1);
         draw_sprite_ext(sprite_get("hud_skillselect_button"), 0, skill_button_pos[0], skill_button_pos[1], 1, 1, 0, c_white, 1);
 
-        draw_sprite_stretched_ext(
-            sprite_get("white_pixel"),
-            0,
-            skill_button_pos[0],
-            skill_button_pos[1],
-            sprite_get_width(sprite_get("hud_skillselect_button")),
-            sprite_get_height(sprite_get("hud_skillselect_button")),
-            c_white,
-            skill_hover_time/20
-        );
+        //gpu_set_blendmode(bm_add)
+        if (skill_hover_time > 0)
+        {
+            draw_sprite_stretched_ext(
+                sprite_get("white_pixel"),
+                0,
+                skill_button_pos[0],
+                skill_button_pos[1],
+                sprite_get_width(sprite_get("hud_skillselect_button")),
+                sprite_get_height(sprite_get("hud_skillselect_button")),
+                c_white,
+                clamp(lerp(1, 0, skill_hover_time/20), 0, 1)
+            );
+        }
+        //gpu_set_blendmode(bm_normal)
+
+        if (suppress_cursor)
+        {
+            draw_sprite_ext(
+                sprite_get("hud_skillselect_button"),
+                1 + (skill_hover_time * menu_cursor_speed) % 8,
+                skill_button_pos[0],
+                skill_button_pos[1],
+                1, 1, 0, c_white, 1
+            );
+        }
     }
 
     //animation - text
@@ -118,14 +134,24 @@ if (!menu_active)
             false
         );
     }
+
+    if (rng_msg_time > 0)
+    {
+        //skill_hover_time
+        draw_sprite_ext(
+            sprite_get("hud_menu_buttons"), 3,
+            x - 6,
+            y - ease_quadOut(14, 22, rng_msg_time, rng_msg_time_set),
+            2, 2, 0, c_white,
+            rng_msg_time/rng_msg_time_set
+        );
+    }
 }
 else
 {
     skill_script_type = 2;
     user_event(2);
 }
-
-
 
 //functions by muno
 #define rectDraw(x1, y1, width, height, color)

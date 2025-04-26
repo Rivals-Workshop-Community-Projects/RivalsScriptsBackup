@@ -1,5 +1,5 @@
 //Checks for characters in the match and destroys the article if true.
-with (asset_get("oPlayer"))     if (string_count("sonic", string_lower(get_char_info(player, INFO_STR_NAME))) > 0)
+with (asset_get("oPlayer"))     if (string_count("sonic", string_lower(get_char_info(player, INFO_STR_NAME))) > 0) && !(string_count("metal sonic", string_lower(get_char_info(player, INFO_STR_NAME))) > 0)
 {
     with (other)
     {

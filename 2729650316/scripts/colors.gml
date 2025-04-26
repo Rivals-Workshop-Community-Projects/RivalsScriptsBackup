@@ -197,7 +197,7 @@ set_color_profile_slot( 16, 6, 82, 48, 28 ); //Eyes
 set_color_profile_slot( 16, 7, 0, 255, 0 ); //Table
 
 // Beowulf
-set_color_profile_slot( 17, 0, 186, 186, 186 ); //Light Fur
+set_color_profile_slot( 17, 0, 201, 198, 193 ); //Light Fur
 set_color_profile_slot( 17, 1, 135, 131, 116 ); //Dark Fur
 set_color_profile_slot( 17, 2, 46, 35, 35 ); //Red Tights
 set_color_profile_slot( 17, 3, 163, 171, 152 ); //Yellow Tights
@@ -218,16 +218,16 @@ set_color_profile_slot( 18, 7, 0, 255, 0 ); //Table
 
 // Terryman
 set_color_profile_slot( 19, 0, 186, 186, 164 ); //Light Fur
-set_color_profile_slot( 19, 1, 2, 19, 56 ); //Dark Fur
-set_color_profile_slot( 19, 2, 8, 25, 66 ); //Red Tights
-set_color_profile_slot( 19, 3, 255, 207, 43 ); //Yellow Tights
-set_color_profile_slot( 19, 4, 87, 0, 0 ); //Kneepads
+set_color_profile_slot( 19, 1, 5, 44, 130 ); //Dark Fur
+set_color_profile_slot( 19, 2, 20, 64, 168 ); //Red Tights
+set_color_profile_slot( 19, 3, 153, 142, 25 ); //Yellow Tights
+set_color_profile_slot( 19, 4, 112, 91, 54 ); //Kneepads
 set_color_profile_slot( 19, 5, 8, 25, 66 ); //Black
 set_color_profile_slot( 19, 6, 141, 192, 214 ); //Eyes
 set_color_profile_slot( 19, 7, 0, 255, 0 ); //Table
 
 // Chris Hayabusa
-set_color_profile_slot( 20, 0, 156, 156, 156 ); //Light Fur
+set_color_profile_slot( 20, 0, 237, 237, 237 ); //Light Fur
 set_color_profile_slot( 20, 1, 22, 22, 28 ); //Dark Fur
 set_color_profile_slot( 20, 2, 16, 22, 31 ); //Red Tights
 set_color_profile_slot( 20, 3, 248, 212, 72 ); //Yellow Tights

@@ -114,13 +114,13 @@ if (get_num_hitboxes(attack) && !move_cooldown[attack]){
     for(var i = 0; i < get_num_hitboxes(attack); i++){
         var num = i + 1;
         if (attack != AT_UAIR && attack != AT_DAIR || attack == AT_DAIR && num == 2 || attack == AT_UAIR && num == 2){
-        reset_hitbox_value(attack, num, HG_DAMAGE);
-        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
-        reset_hitbox_value(attack, num, HG_HITBOX_X);reset_hitbox_value(attack, num, HG_HITBOX_Y);
-        reset_hitbox_value(attack, num, HG_WIDTH);reset_hitbox_value(attack, num, HG_HEIGHT);
+	        reset_hitbox_value(attack, num, HG_DAMAGE);
+	        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
+	        reset_hitbox_value(attack, num, HG_WIDTH);reset_hitbox_value(attack, num, HG_HEIGHT);
         }
+        reset_hitbox_value(attack, num, HG_HITBOX_X);reset_hitbox_value(attack, num, HG_HITBOX_Y);
         
-        if((size_mult > 1 && (big || mega) || size_mult < 1 && mini || phone_cheats[CHEAT_BeegKewtian] > 0) && get_hitbox_value(attack, num, HG_HITBOX_TYPE) != 2){
+        if((size_mult > 1 && (big || mega) || size_mult < 1 && mini || phone_cheats[CHEAT_BeegKewtian] > 0 || runeK) && get_hitbox_value(attack, num, HG_HITBOX_TYPE) != 2){
             set_hitbox_value(attack, num, HG_DAMAGE, round(get_hitbox_value(attack, num, HG_DAMAGE) * (size_mult/2+.5)));
             if (big && size_mult > 1 && size_mult <= 2 || mega && size_mult > 2 || has_rune("K") || runeK) {
 	            set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * ((size_mult/4)*2.2));
@@ -142,12 +142,12 @@ if (get_num_hitboxes(attack) && !move_cooldown[attack]){
 }
 }else{
 	for(var i = 0; i < get_num_hitboxes(attack); i++){
-        var num = i + 1;if (attack != AT_UAIR && attack != AT_DAIR || attack == AT_DAIR && num == 2 || attack == AT_UAIR && num == 2){
-        reset_hitbox_value(attack, num, HG_DAMAGE);
-        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
-        reset_hitbox_value(attack, num, HG_HITBOX_X);reset_hitbox_value(attack, num, HG_HITBOX_Y);
-        reset_hitbox_value(attack, num, HG_WIDTH);reset_hitbox_value(attack, num, HG_HEIGHT);
-        }
+        var num = i + 1;
+        if (attack != AT_UAIR && attack != AT_DAIR || attack == AT_DAIR && num == 2 || attack == AT_UAIR && num == 2){
+	        reset_hitbox_value(attack, num, HG_DAMAGE);
+	        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);reset_hitbox_value(attack, num, HG_BASE_KNOCKBACK);
+	        reset_hitbox_value(attack, num, HG_WIDTH);reset_hitbox_value(attack, num, HG_HEIGHT);
+        }reset_hitbox_value(attack, num, HG_HITBOX_X);reset_hitbox_value(attack, num, HG_HITBOX_Y);
     }
 }
 

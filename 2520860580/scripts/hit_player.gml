@@ -1,8 +1,8 @@
 ///
 
-if my_hitboxID.attack == AT_FSTRONG && hit_player_obj.soft_armor = 0 && hit_player_obj.super_armor = 0 {
-	fshit = 1
-}
+// if my_hitboxID.attack == AT_FSTRONG && hit_player_obj.soft_armor = 0 && hit_player_obj.super_armor = 0 {
+// 	fshit = 1
+// }
 
 if get_player_color(player) == 7 {
     		set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_HSPEED, 6 - random_func(4, 14, true) );
@@ -12,11 +12,25 @@ if get_player_color(player) == 7 {
 }
 
 if hit_player_obj.soft_armor = 0 && hit_player_obj.super_armor = 0 {
-style -= my_hitboxID.damage*4
+style -= my_hitboxID.damage*10
 }
 
-motivation += my_hitboxID.damage
+if (my_hitboxID.attack == AT_FSTRONG &&  my_hitboxID.type == 1) or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG{
+	with (asset_get("pHitBox")) {
+    if(player_id == other.id && type == 2) {
+        destroyed = true
+    }
+    }
+}
+
+if  (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 2) {
+ 	sound_play(sound_get("SpaceCut"))
+  sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone, 0.6,0.6)
+}
+ 
+// motivation += my_hitboxID.damage
 rankm += my_hitboxID.damage*15
+
 if rank == 0 && rankm < 120 {
 	rankm += 100
 }
@@ -84,10 +98,10 @@ if triggered == 1 or rank >= 4{
 		 spawn_hit_fx (hit_player_obj.x  + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 10 - random_func(2, 66, true) , slashn)
 
 
-		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
-			hitstop += 2
-			hit_player_obj.hitstop += 2
-		}
+		// if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
+		// 	hitstop += 2
+		// 	hit_player_obj.hitstop += 2
+		// }
 	if my_hitboxID.damage >= 2 {
 	   	 with hit_player_obj {
                  take_damage( player, -1 , 1)
@@ -117,8 +131,6 @@ if triggered == 1 or rank >= 4{
 
 
 		if my_hitboxID.type == 1  && my_hitboxID.attack != AT_TAUNT {
-			hitstop += 2
-			hit_player_obj.hitstop += 2
 			if !triggered {
 			DT += 1
 			}

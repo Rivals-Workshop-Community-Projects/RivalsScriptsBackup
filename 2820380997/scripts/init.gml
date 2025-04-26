@@ -24,9 +24,9 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 4;
-jump_speed = 10.5;
+jump_speed = 10.99;
 short_hop_speed = 6;
-djump_speed = 9.5;
+djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -39,8 +39,8 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 8;
 walljump_time = 32;
-max_fall = 9.5; //maximum fall speed without fastfalling
-fast_fall = 13; //fast fall speed
+max_fall = 11; //maximum fall speed without fastfalling
+fast_fall = 16; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
 knockback_adj = 1.05; //Ranno Weight
@@ -215,7 +215,14 @@ final_strong_window_loops = 3;
 clone_spawn_sprite = 0;
 clone_idle_sprite = 0;
 clone_idle_flourish_sprite = 0;
+clone_crouch_sprite = 0;
+clone_crouch_idle_sprite = 0;
 clone_walk_sprite = 0;
+clone_walk_turn_sprite = 0;
+clone_dash_sprite = 0;
+clone_dash_turn_sprite = 0;
+clone_dash_start_sprite = 0;
+clone_dash_stop_sprite = 0;
 clone_jumpstart_sprite = 0;
 clone_jump_sprite = 0;
 clone_doublejump_sprite = 0;
@@ -253,6 +260,35 @@ clone_wisp_travel_sprite = 0;
 
 clone_plat_clone_assist_sprite = 0;
 
+// Woodcock Compat for training mode.
+if(get_match_setting(SET_PRACTICE)){
+    //print("In Training Mode - Initiaizing Woodcock variables");
+    // Attack Indexes
+    AG_MUNO_ATTACK_EXCLUDE = 80;
+    AG_MUNO_ATTACK_REFRESH = 81;
+    AG_MUNO_ATTACK_NAME = 82;
+    AG_MUNO_ATTACK_FAF = 83;
+    AG_MUNO_ATTACK_ENDLAG = 84;
+    AG_MUNO_ATTACK_LANDING_LAG = 85;
+    AG_MUNO_ATTACK_MISC = 86;
+    AG_MUNO_ATTACK_MISC_ADD = 87;
+    
+    //Hitbox Indexes
+    HG_MUNO_HITBOX_EXCLUDE = 80;
+    HG_MUNO_HITBOX_NAME = 81;
+    HG_MUNO_HITBOX_ACTIVE = 82;
+    HG_MUNO_HITBOX_DAMAGE = 83;
+    HG_MUNO_HITBOX_BKB = 84;
+    HG_MUNO_HITBOX_KBG = 85;
+    HG_MUNO_HITBOX_ANGLE = 86;
+    HG_MUNO_HITBOX_PRIORITY = 87;
+    HG_MUNO_HITBOX_GROUP = 88;
+    HG_MUNO_HITBOX_BHP = 89;
+    HG_MUNO_HITBOX_HPG = 90;
+    HG_MUNO_HITBOX_MISC = 91;
+    HG_MUNO_HITBOX_MISC_ADD = 92;
+}
+
 // Other Compat Stuff
 // Compatibility Stuff -----------------------------------------------
 Hikaru_Title = "We're twin tailed troublemakers";
@@ -267,7 +303,7 @@ mamizou_transform_spr = sprite_get("compat_mamizou"); //Replace "X" with your sp
 // Synced Variable Stuff -Should run to reset these valus on game load
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
-2. Status Tap Nspec Enabled - 1 bit
+2. Status of Win Quotes Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
 4. Swap Nspec / Dspec - 1 bit
 5. Portrait to use - 2 bits
@@ -279,13 +315,13 @@ mamizou_transform_spr = sprite_get("compat_mamizou"); //Replace "X" with your sp
 split_var = split_synced_var(2,1,1,1,2,1);
 
 color_shift = 0; // Declare variable
-tap_nspec_enabled = 0; // Declare variable
+flag_win_quote_enabled = 0; // Declare variable
 flag_round_start_dialog = 0; // Declare variable
 swap_nspec_dspec_input = 0; // Declare Variable
 
 // Synced variable overwrite
 color_shift = split_var[0];
-tap_nspec_enabled = split_var[1];
+flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
 portrait_to_use = split_var[4];
@@ -295,11 +331,11 @@ alt_outfit_enabled = split_var[5];
 countPlayers = 0;
 /*
 print("color_shift: " + string(color_shift) + string(get_gameplay_time())); // Color_Shift;
-
+print("flag_win_quote_enabled: " + string(flag_win_quote_enabled) + string(get_gameplay_time())); // WinQuote
 print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_gameplay_time())); // Round Start Dialog
 print("swap_nspec_dspec_input: "+ string(swap_nspec_dspec_input) + string(get_gameplay_time())); // Round Start Dialog
 */
-//print("tap_nspec_enabled: " + string(tap_nspec_enabled) + "/ Frame: " + string(get_gameplay_time())); // WinQuote
+
 // Reload on round start
 manual_init_shader_call = true;
 init_shader();

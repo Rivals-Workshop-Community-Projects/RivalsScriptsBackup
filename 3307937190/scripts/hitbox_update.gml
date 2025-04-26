@@ -8,6 +8,7 @@ visible = false;
 
 if(attack == AT_DSPECIAL && !free)
 {
+    sound_play(sound_get("ink_burst"),false,noone,0.4, 2);
     destroyed = true;
 }
 else if(attack == AT_NSPECIAL)
@@ -40,6 +41,16 @@ else if(attack == AT_NSPECIAL)
                 //deactivate trap after some time goes to state 2
                 if (hitbox_timer > 590 || player_id.state == PS_RESPAWN || player_id.state == PS_DEAD)
                 {
+                    if(hitbox_timer > 590)
+                    {
+                        with(player_id)
+                        {
+                            if(secretalt == 1 && lang != 0)
+                            {
+                                cur_voiceclip[0] = sound_play(sound_get("sl_uh_sir_the_bomb"));
+                            }
+                        }
+                    }
                     hbox_state = 2;
                     hitbox_timer = 0;
                     anim_timer = 0;
@@ -60,11 +71,15 @@ else if(attack == AT_NSPECIAL)
                 if (anim_timer >= end_time) destroyed_next = true;
                 image_index = lerp(0, image_number-0.999999, anim_timer/end_time)
 
-                if (anim_timer == 18) sound_play(asset_get("sfx_clairen_swing_weak"),false,noone,1,1.5);
+                if (anim_timer == 18){
+                    sound_play(asset_get("sfx_clairen_swing_weak"),false,noone,1,1.5);
+                } 
                 if (anim_timer == 21)
                 {
                     shake_camera( 12, 6 )
-                    sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,0.9);
+                    sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,0.7,0.9);
+                    sound_play(sound_get("sfx_thunder"),false,noone,2);
+                    sound_play(sound_get("ink_burst"),false,noone,0.6, 1);
                     hbox = create_hitbox(AT_NSPECIAL, 4, x, y-46);
                     hbox.ink_hold = 2;
                     hbox.ink_apply = true;

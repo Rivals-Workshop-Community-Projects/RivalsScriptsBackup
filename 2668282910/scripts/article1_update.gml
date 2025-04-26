@@ -346,6 +346,11 @@ hsp = lengthdir_x(orig_knock, kb_dir)*0.9;
 vsp = lengthdir_y(orig_knock, kb_dir)*0.9;
 
 }
+
+if (hbox.player != player && wisp_ex == true){
+	spawn_hit_fx(floor(x),floor(y),player_id.zetter_hit2);
+	shoulddie = true;
+}
             
  
 #define filters(hbox)

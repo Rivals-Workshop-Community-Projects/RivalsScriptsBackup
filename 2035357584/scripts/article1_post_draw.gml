@@ -48,3 +48,17 @@ if (article_offscreen && !player_id.playtest_active)
         draw_sprite_ext(sprite_get("hud_offscreen_image"), 0, offscreen_x_pos, offscreen_y_pos, 2, 2, 0, c_white, 1);
     }
 else depth = orig_depth; //reset depth back to normal when it's on screen
+
+/* // trap outline
+// why he out linin :joy:
+
+if(!breakdown){
+    if(aerial){
+        draw_sprite_ext(sprite_get("airtrap_outline"), image_index, x, y, 1*spr_dir, 1, 0, hud_col, 1);
+    }
+    else{
+        draw_sprite_ext(sprite_get("trap_outline"), 0, x, y, 1*spr_dir, 1, 0, hud_col, 1);
+    }
+}
+
+/*

@@ -88,53 +88,53 @@ if attack == AT_EXTRA_2 && hbox_num < 5{
 	
 }
 
-if attack == AT_NSPECIAL {
+// if attack == AT_NSPECIAL {
 	
 	
-	x = player_id.x
-	y = player_id.y - 30
+// 	x = player_id.x
+// 	y = player_id.y - 30
 	
 	
-	 with asset_get("pHitBox") {
+// 	 with asset_get("pHitBox") {
 	   
 	   
 	   
-		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
+// 		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
 	
 	    
-	    if nearbyhitbox != noone && player_id != other.player_id && type == 2 && hit_priority != 0 {
+// 	    if nearbyhitbox != noone && player_id != other.player_id && type == 2 && hit_priority != 0 {
 	    	
 	    	
-	    	with other.player_id {
-	    		hit_player_obj = other.player_id
-	    	 if move_cooldown[AT_EXTRA_1] == 0 {
-	    		sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
-    	     	sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
-	    	 }
+// 	    	with other.player_id {
+// 	    		hit_player_obj = other.player_id
+// 	    	 if move_cooldown[AT_EXTRA_1] == 0 {
+// 	    		sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
+//     	     	sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
+// 	    	 }
 	    		
-	    		if move_cooldown[AT_EXTRA_1] == 0 {
-	    		spawn_counter += max(6, floor(other.damage/1.5) + floor(other.kb_value*(1 + other.kb_scale*2)))
-                sound_play(sound_get("RI"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
-                shake_camera(4,2)
-                spawn_hit_fx(x,y - 36,302)
-                counter_x = other.x 
-                counter_y = other.y
-                other.destroyed = true
-	    		}
-	    		sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
-	    		move_cooldown[AT_EXTRA_1] = 90
+// 	    		if move_cooldown[AT_EXTRA_1] == 0 {
+// 	    		spawn_counter += max(6, floor(other.damage/1.5) + floor(other.kb_value*(1 + other.kb_scale*2)))
+//                 sound_play(sound_get("RI"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
+//                 shake_camera(4,2)
+//                 spawn_hit_fx(x,y - 36,302)
+//                 counter_x = other.x 
+//                 counter_y = other.y
+//                 other.destroyed = true
+// 	    		}
+// 	    		sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
+// 	    		move_cooldown[AT_EXTRA_1] = 90
 	    		
-	    	}
+// 	    	}
 	    	
-	    	spawn_hit_fx(x,y,302)
-	    	destroyed = true 
+// 	    	spawn_hit_fx(x,y,302)
+// 	    	destroyed = true 
 			
 			
-	    }
+// 	    }
 	    
-	}   
+// 	}   
 	
-}
+// }
 	
 if attack == AT_DTILT && hbox_num == 4 {
 	
@@ -164,17 +164,29 @@ if attack == AT_DTILT && hbox_num == 4 {
 		image_index = hitbox_timer
 	}
 	
-	if hitbox_timer >= 30 {
-		if hitbox_timer == 30 {
+	if player_id.hit_player_obj.perfect_dodging or player_id.hit_player_obj.state == PS_PARRY_START or player_id.hit_player_obj.invincible == true{
+		hit_priority = 0
+		if abs(x - player_id.hit_player_obj.x) < 80 && abs(y - player_id.hit_player_obj.y - 16) < 80{
+		destroyed = 1
+		print("naw")
+		}
+	}else{
+		if hitbox_timer > 20 hit_priority = 9
+	}
+	
+	if hitbox_timer == 1{
+		sound_play(asset_get("sfx_swish_medium"),false,noone,0.6,1.6 + (random_func(1,30,true)/100))
+	}
+	if hitbox_timer >= 20 {
+		if hitbox_timer == 20 {
 	    spawn_hit_fx(x,y,bh2)
 		hit_priority = 9
 		sound_play(asset_get("sfx_swish_medium"),false,noone,1,.6 + (random_func(1,30,true)/100))
 		} else if hitbox_timer < 60 {
-		var angle = point_direction(x, y, player_id.hit_player_obj.x - 20 - random_func(2,41,true), player_id.hit_player_obj.y - 16 - random_func(1,40,true) );
-
-            hsp = lengthdir_x(12, angle)
-            vsp = lengthdir_y(12, angle)
-		}
+		var angle = point_direction(x, y, player_id.hit_player_obj.x, player_id.hit_player_obj.y - 22 );
+            hsp = lengthdir_x(2 + hitbox_timer/2, angle)
+            vsp = lengthdir_y(2 + hitbox_timer/2, angle)
+		} 
 		
 	}
 	

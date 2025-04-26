@@ -37,46 +37,31 @@ if(winner == player){ // Removed this flag_win_quote_enabled == true &&
 
     // Code from Frtoud for smuggling hitbox data
     // Relies on unload.gml sending over a persistent hitbox with said data
-    with (asset_get("pHitBox"))
-    {
-        if ("results_data" in self){
-            other.results_data = results_data;
+    with (asset_get("pHitBox")) if ("results_data_roekoko" in self)
+	    {
+            other.results_data = results_data_roekoko;
             break;
 	    }
-	    // Set default
-	    //else other.results_data = [0, 0];
-    }
     
     //print(results_data.opponent_name);
     
     run_timer = clamp(run_timer,0,1000);
-    var slide_timer = clamp(run_timer-200,0,60);
-    var offset_x = 50;
+    var slide_timer = clamp(run_timer-200,0,30);
+    var offset_x = 50
     
-    if("win_quote_string" not in self){
-        if(results_data.num_of_players <= 2)
-        win_quote_string = get_win_quote(results_data.opponent_name);
+    if("win_quote_string" not in self)
+    {
+        if(results_data.num_of_players <= 2){
+        	win_quote_string = get_win_quote(results_data.opponent_name);
+        }
        // print(win_quote_string);
        else
             exit;
     }
     	// Winquotes from Ducky V2
-    	draw_sprite_ext(sprite_get("textbox"),0,view_get_xview()+ease_quadOut(-550,-50,30,30),310,1,1,0,c_white,1);
-		draw_sprite_ext(get_char_info(player, INFO_HUD), 0, view_get_xview()+ease_quadOut(-550,-50,30,30)+65,330,1,1 ,0,c_white,1);
-		textDraw(view_get_xview()+ease_quadOut(-550,-50,30,30)+(300), 322, "fName", c_white, 16, 240, 1.5, true, 1, '"'+string(win_quote_string)+'"');
-    	
-    	// Old Winquotes from Ducky
-        //draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60),400,0.6,1,0,c_white,1);
-        //textDraw(ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60)+(240),410,"medFont",c_white,22,350,1,true,1,string(win_quote_string));
-        
-        // Old Winqoutes before the Ducky Hook Up (THANKS DUCKY)
-        //rectDraw(25,325,450,425,c_dkgray,c_white,current_transparency);
-        //textDraw(240,331,"medFont",c_white,22,410,1,true,current_transparency,string(win_quote_string));
-        
-        //draw_rectangle_colour(25, 325, 450, 425, c_blue, c_blue, c_black, c_black, false); // Body
-        //draw_rectangle_colour(25, 325, 450, 425, c_white, c_white, c_gray, c_gray, true); // Main Outline
-        //draw_rectangle_colour(30, 330, 445, 420, c_white, c_white, c_gray, c_gray, true); // Inside Outline
-        
+        draw_sprite_ext(sprite_get("textbox"),0,view_get_xview()+ease_quadOut(-550,-50,slide_timer,30),310,1,1,0,c_white,1);
+        draw_sprite_ext(get_char_info(player, INFO_ICON), 0, view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+64,324,3,3,0,c_white,1);
+        textDraw(view_get_xview()+ease_quadOut(-550,-50,slide_timer,30)+(300), 322, "fName", c_white, 16, 240, 1.5, true, 1, '"'+string(win_quote_string)+'"');
 }
 
 //print(portrait_to_use);

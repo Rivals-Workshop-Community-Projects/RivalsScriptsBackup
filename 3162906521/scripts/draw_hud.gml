@@ -2,11 +2,21 @@ var temp_color = c_white;
 
 //hud stuff
 
-if sentry_alive == false && disp_alive == false && tp_alive == false{
+if sentry_alive == false && disp_alive == false && tp_alive == false && get_gameplay_time() > 100{
     draw_debug_text( temp_x - 6, temp_y-64, "Press Taunt to use the PDA.");
 }
 
-
+//mute option
+if(get_synced_var (player) > 0) && get_gameplay_time() < 100{
+    if engi_muted == false{
+        draw_debug_text( temp_x - 6, temp_y-64, "Press [TAUNT] to mute Engineer.");
+    } else{
+        draw_debug_text( temp_x - 6, temp_y-64, "Engineer Muted.");
+    }
+}
+if engi_muted == true{
+    draw_sprite(sprite_get("hud_muted"), 0, temp_x + 66, temp_y + 6);
+}
 
 shader_start();
 //this is all for the metal count

@@ -13,11 +13,11 @@ if (!hitpause)
     //accel blitz effect
     if (accel_act_time > 0)
     {
-        if (charge_color)
+        if (accel_action_color)
         {
             gpu_set_blendmode(bm_add);
             gpu_set_fog(1, light_col, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, light_col, 0.5);
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale*2, image_yscale*2, 0, light_col, 0.5);
             gpu_set_fog(0, c_white, 0, 0);
             gpu_set_blendmode(bm_normal);
         }
@@ -25,32 +25,51 @@ if (!hitpause)
 }
 
 shader_start();
+
+if (charge_color)
+{
+    gpu_set_blendmode(bm_add);
+    gpu_set_fog(1, light_col, 0, 1);
+    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale*2, image_yscale*2, 0, light_col, light_alpha);
+    gpu_set_fog(0, c_white, 0, 0);
+    gpu_set_blendmode(bm_normal);
+}
+
 //attack stuff that needs to be drawn regardless of hitpause
 if (is_attacking) switch (attack)
 {
     case AT_USTRONG:
         draw_sprite_ext(sprite_get("fx_ustrong"), image_index+24*burnbuff_active, x, y, 2*spr_dir, 2, 0, c_white, 1);
         break;
-    case AT_NTHROW: case AT_NSPECIAL_AIR:
+    case AT_NTHROW: case AT_NSPECIAL_AIR: //light dagger
         draw_sprite_ext(sprite_get("fx_skill0"), image_index+(20/(1+burnbuff_active)*free)+(40*burnbuff_active), x, y, 2*spr_dir, 2, 0, c_white, 1);
         break;
     case AT_EXTRA_2: //light hookshot
-        if (window < 4) draw_sprite_ext(
-            sprite_get("fx_skill9"), image_index + burnbuff_active * (image_number/2 - 2),
-            x - 88 * spr_dir, y - 94 - free * 2, 2*spr_dir, 2, 0, c_white, 1
-        );
-    case AT_DTHROW: //photon blast
-        if (charge_color)
+        if (attack == AT_EXTRA_2 && window < 4)
         {
-            gpu_set_blendmode(bm_add);
-            gpu_set_fog(1, light_col, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale*2, image_yscale*2, 0, light_col, light_alpha);
-            gpu_set_fog(0, c_white, 0, 0);
-            gpu_set_blendmode(bm_normal);
+            draw_sprite_ext(
+                sprite_get("fx_skill9"), image_index + burnbuff_active * (image_number/2 - 2),
+                x - 88 * spr_dir, y - 94 - free * 2, 2*spr_dir, 2, 0, c_white, 1
+            );
         }
         break;
-    case AT_EXTRA_3:
+    case AT_EXTRA_3: //searing descent
         if (window == 6 || window == 7) draw_sprite_ext(sprite_get("fx_skill10"), state_timer*0.4, x, y, 2, 2, 0, c_white, 1);
+        break;
+    case AT_UTHROW: //force leap
+        if (window == 2 && special_down)
+        {
+            var start_move = ease_quadOut(0, 1, min(window_timer, 5), 5);
+
+            draw_sprite_ext(sprite_get("fx_skill2_range"), 0, x, y - 32, 2 * spr_dir, 2, 0, c_white, start_move*0.35);
+            draw_sprite_ext(
+                sprite_get("fx_skill2_arrow"),
+                state_timer*0.4,
+                lengthdir_x(start_move * 20, angle_saved) + x,
+                lengthdir_y(start_move * 20, angle_saved) + y - 32,
+                2, 2, angle_saved, c_white, start_move
+            );
+        }
         break;
     case AT_USTRONG_2:
         gpu_set_blendmode(bm_add);
@@ -96,23 +115,23 @@ if (mp_mini_timer > 0 && draw_indicator)
 
     //MP gauge
     var alpha = mp_mini_timer/20;
-    draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, alpha); // background
+    draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, mp_cur <= 100 ? $8b1733 : $e9973e, alpha); // background
     for (var i = 0; i <= 2; ++i) //fill
     {
         draw_sprite_stretched_ext(
             spr_pixel, 0,
             mp_x + 0 + i * 2,
             mp_y - 2 - i * 2,
-            floor(mp_current)/2 + 2 - 50 * (mp_current > 100),
+            floor(mp_cur)/2 + 2 - 50 * (mp_cur > 100),
             2,
-            mp_current <= 100 ? mp_color : mp_color_ex,
+            mp_cur <= 100 ? mp_color : mp_color_ex,
             alpha
         );
     }
 
     draw_sprite_ext(sprite_get("hud_mp_small"), 0, mp_x - 4, mp_y - 18, 2, 2, 0, c_white, alpha); //frame
     draw_set_alpha(alpha);
-    draw_debug_text(mp_x - 2, mp_y - 14, string(floor(mp_current))); //text
+    draw_debug_text(mp_x - 2, mp_y - 14, string(floor(mp_cur))); //text
     draw_set_alpha(1);
 }
 
@@ -134,7 +153,7 @@ if (playtesting)
         var small_meter_y = clamp(floor(y)+24, 168, 440);
     }
 
-    draw_sprite_stretched_ext(spr_pixel, 0, small_meter_x + 14, small_meter_y - 104, 52, 4, mp_current <= 100 ? $8b1733 : $e9973e, 1); // background
+    draw_sprite_stretched_ext(spr_pixel, 0, small_meter_x + 14, small_meter_y - 104, 52, 4, mp_cur <= 100 ? $8b1733 : $e9973e, 1); // background
 
     for (var i = 0; i <= 2; ++i) //fill
     {
@@ -142,21 +161,32 @@ if (playtesting)
             spr_pixel, 0,
             small_meter_x + 12 + i * 2,
             small_meter_y - 102 - i * 2,
-            floor(mp_current)/2 + 2 - 50 * (mp_current > 100),
+            floor(mp_cur)/2 + 2 - 50 * (mp_cur > 100),
             2,
-            mp_current <= 100 ? mp_color : mp_color_ex,
+            mp_cur <= 100 ? mp_color : mp_color_ex,
             1
         );
     }
 
 
     draw_sprite_ext(sprite_get("hud_mp_small"), 0, small_meter_x + 8, small_meter_y - 118, 2, 2, 0, c_white, 1); //frame
-    draw_debug_text(small_meter_x + 12, small_meter_y - 90, "MP: " + string(floor(mp_current))); //text
+    draw_debug_text(small_meter_x + 12, small_meter_y - 90, "MP: " + string(floor(mp_cur))); //text
 }
 
+if (fury_indc_time > 0)
+{
+    gpu_set_fog(true, fire_col, 0, 1)
+    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2*spr_dir, 2, spr_angle, c_white, fury_indc_time/skill_indc_time_set);
+    gpu_set_fog(false, c_white, 0, 1)
+}
+if (polaris_indc_time > 0)
+{
+    gpu_set_fog(true, light_col, 0, 1)
+    draw_sprite_ext(sprite_index, image_index, x + draw_x, y + draw_y, 2*spr_dir, 2, spr_angle, c_white, polaris_indc_time/skill_indc_time_set);
+    gpu_set_fog(false, c_white, 0, 1)
+}
 
-
-if (alt_cur == 19)
+if (alt_cur == 19) //genesis alt effect
 {
     if (genesis_window_timer > 0) //genesis alt stopped responding wait anim
     {
@@ -198,9 +228,8 @@ if (alt_cur == 19)
     }
 }
 
-
-#define textDraw
 /// textDraw(x, y, string, color = c_white, font = "fname", align = fa_center, outline = false, alpha = 1)
+#define textDraw
 {
     //textDraw(x, y, string, color, font, align, outline, alpha)
     var x = argument[0], y = argument[1], string = argument[2];

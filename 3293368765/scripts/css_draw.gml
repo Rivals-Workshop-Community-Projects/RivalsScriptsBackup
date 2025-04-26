@@ -266,14 +266,16 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 
-	/*
-	//Slot 
+	//Slot 28
 	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "26";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Vortex";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "A Major Accomplishment!";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "2024 WS Bracket";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
+
+	/*
+
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(245, 169, 184);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "27";sub_element_slot++;
@@ -318,6 +320,10 @@ color_picker_alt_index = 0;
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black,c_black,1);
 textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "#" + string(ue) + ": " + ce[ue,1]);
 
+// Draw Vortex Icon
+if(get_player_color(player) == 28){
+	draw_sprite_ext(sprite_get("css_vortex"),0,x+180,y+120,2,2,0,c_white,1);
+}
 
 // Set up Timer Function
 if("timer" not in self){timer = 1;}

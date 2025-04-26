@@ -13,8 +13,8 @@ drawing = 1
 introing = 0
 prev_alt = alt
     css_char = charuuid;
-    sound_play(asset_get("sfx_abyss_explosion"))
-    sound_play(asset_get("sfx_bird_downspecial"))
+    sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5);
+    sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.5);
 
 }
 
@@ -35,15 +35,15 @@ introing ++
 prev_alt = alt;
 draw_sprite_ext(sprite_get("charselectver"),min(introing/3,32 -3 ) + 3,temp_x-2,temp_y-2,2,2,0,-1,1);
 if introing == 6 * 3 {
-    sound_play(sound_get("RCE"),false,noone,1,1.4)
+    sound_play(sound_get("RCE"),false,noone,0.8,1.4)
 }
 
 
 
 if alt == 8 {
     if drawtime == 1 {
-    sound_play(asset_get("sfx_diamond_collect"))
-    sound_play(asset_get("sfx_boss_vortex_end"),false,noone,2)
+    sound_play(asset_get("sfx_diamond_collect"),false,noone,0.6);
+    sound_play(asset_get("sfx_boss_vortex_end"),false,noone,0.5)
     }
     draw_sprite_ext(sprite_get("tflag"),0,temp_x-2,temp_y-2,2,2,0,-1,1);    
     if drawtime <= 20 && drawtime % 3 == 0 { 

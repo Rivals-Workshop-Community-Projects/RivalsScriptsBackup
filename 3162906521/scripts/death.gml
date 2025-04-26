@@ -51,8 +51,10 @@ if(get_synced_var (player) == 3){
 
 
 #define voice_play() //voiceline code is heavily based off of Roboshyguy's Jerma985 mod, I was given permission to use his code as a base.
-if(!dont_shutup){
-sound_stop(voice_playing_sound);
+if engi_muted == false{
+	if(!dont_shutup){
+		sound_stop(voice_playing_sound);
+	}
+	voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
+	dont_shutup = false;
 }
-voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
-dont_shutup = false;

@@ -93,7 +93,6 @@ set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -24);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 
 hitbox_num ++; //attack 3
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);

@@ -318,6 +318,33 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.38", "7th December, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug with the newest update where the new Bank mechanic wouldnt always work properly");
+
+initPatch("1.37", "7th December, 2024");
+initHeader("Skillful Buffs");
+initSection("+ Added a new skillful taunt. Big bonus!
++ Properties now have much more hit lockout, making fast moves and rapid attacks much less effective at destroying them. Additionally, hitpause is reduced, making that less abusable as well");
+initHeader("Unskillful Nerfs");
+initSection("- Destroying a Bank now actually matters, as when it's destroyed by an opponent it will now drop the money instead of returning it to Mr. Monopoly");
+initHeader("Fixes / Other Changes");
+initSection("+ Added more Miiverse posts");
+
+initPatch("1.36", "11th November, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Some file size optimizations");
+
+initPatch("1.35", "1st November, 2024");
+initHeader("Skillful Buffs");
+initSection("+ Added ability to hold pose during Jab3 and UTilt");
+initHeader("Unskillful Nerfs");
+initSection("- Money projectiles now have a bit less hitstun (1.0x->0.75x)");
+initHeader("Fixes / Other Changes");
+initSection("+ Made Mr Monopoly's AI much better, giving it custom code for detecting incoming attacks and projectiles. This allow it to dodge/parry much more effectively in many cases. Also includes some character-specific AI improvements
++ Improved some outdated projectile code, which also fixes some obscure issues (ex: throwing a token into a wall could sometimes despawn it)
++ Fixed some minor errors with Mr. Monopoly's AI");
+
 initPatch("1.34", "27th August, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed some errors that showed up after the latest few patches, causing some specific issues (ex: Mr. Monopoly couldn't blow up his property in certain situations). Should hopefully be fine now");

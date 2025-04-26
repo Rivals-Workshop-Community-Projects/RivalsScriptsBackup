@@ -1,5 +1,7 @@
 ///#args attack // this line makes code editors not freak out for some reason
 
+att_hold = true;
+
 switch(attack){
     case AT_USPECIAL:
     	reset_attack_value(AT_USPECIAL, AG_CATEGORY);
@@ -41,8 +43,8 @@ switch(attack){
         }
     break;
     case AT_DAIR:
-    	dairhold = true;dairholdbounce = false;dair_whereami = false;
-    	reset_attack_value(AT_DAIR, AG_NUM_WINDOWS);
+    	dairhold = true;dairholdbounce = false;dair_whereami = false;DairBounce = 0;
+    	reset_attack_value(AT_DAIR, AG_NUM_WINDOWS);reset_attack_value(AT_DAIR, AG_CATEGORY);
     break;
     case AT_BAIR:
     	bairtoast = false;

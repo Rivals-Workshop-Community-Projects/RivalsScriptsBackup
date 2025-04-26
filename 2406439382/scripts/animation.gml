@@ -90,7 +90,7 @@ switch (state){
 
 if (((state == PS_ATTACK_GROUND) or (state == PS_ATTACK_AIR)) and (attack == AT_USPECIAL))
 {
-    if (window == 4) and (window_timer == 0)
+    if (window == 4) and (window_timer == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
     {
         if (can_effect)
         {
@@ -108,3 +108,12 @@ if (state == PS_IDLE_AIR) and ((prev_state == PS_AIR_DODGE) or (prev_state == PS
 {
     image_index = image_number - 1;
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

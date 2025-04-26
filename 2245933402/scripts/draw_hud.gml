@@ -8,49 +8,59 @@ if obabo > 0 {
        draw_debug_text(temp_x - 6,temp_y - 10,"DOWN + TAUNT TO SWITCH STYLE");
 }
 
-if obabo > 0 {
     if ostyle == 1{
-           draw_debug_text(temp_x - 6,temp_y - 25,"Mr.President");
+        if get_gameplay_time()%80 > 60{
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Mr.President] +Spd -Spc -Str");
+        } else{
+          if get_gameplay_time()%80 > 20 && get_gameplay_time()%80 <= 40 {
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Mr.President] More Hit Damage"); 
+          } else {
+            draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Mr.President]");   
+          }
+        }
     }
     
     if ostyle == 2{
-           draw_debug_text(temp_x - 6,temp_y - 25,"Specialist");
+        if get_gameplay_time()%80 > 60{
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Specialist] +Spc -Str");
+        } else{
+          if get_gameplay_time()%80 > 20 && get_gameplay_time()%80 <= 40 {
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Specialist] All Specials Pratfall"); 
+          } else {
+            draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Specialist]");   
+          }
+        }
     }
     
     if ostyle == 3{
-           draw_debug_text(temp_x - 6,temp_y - 25,"Terminator");
+        if get_gameplay_time()%80 > 60{
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Terminator] --Spd");
+        } else{
+          if get_gameplay_time()%80 > 20 && get_gameplay_time()%80 <= 40 {
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Terminator] Attack Stockpile"); 
+          } else {
+            draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Terminator]");   
+          }
+        }
     }
     
     if ostyle == 4{
-           draw_debug_text(temp_x - 6,temp_y - 25,"Patriotic");
-    }
-    
-    if ostyle == 5{
-           draw_debug_text(temp_x - 6,temp_y - 25,"Standard");
-    }
-    
-} else {
-     if ostyle == 1{
-           draw_debug_text(temp_x - 6,temp_y - 15,"Mr.President");
-    }
-    
-    if ostyle == 2{
-           draw_debug_text(temp_x - 6,temp_y - 15,"Specialist");
-    }
-    
-    if ostyle == 3{
-           draw_debug_text(temp_x - 6,temp_y - 15,"Terminator");
-    }
-    
-    if ostyle == 4{
-           draw_debug_text(temp_x - 6,temp_y - 15,"Patriotic");
+           if get_gameplay_time()%80 > 60{
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Patriotic] -Spc +Str");
+        } else{
+          if get_gameplay_time()%80 > 20 && get_gameplay_time()%80 <= 40 {
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Patriotic] Take Less Damage"); 
+          } else {
+            draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[Patriotic]");   
+          }
+        }
     }   
     
     if ostyle == 5{
-           draw_debug_text(temp_x - 6,temp_y - 15,"Standard");
+           draw_debug_text(temp_x - 6,temp_y - 15 - 10*(obabo>0),"[[Standard]]");
     }
     
-}
+
 
 
 if obabo > 0 {

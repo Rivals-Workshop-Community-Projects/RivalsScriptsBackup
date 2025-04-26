@@ -21,7 +21,7 @@ draw_sprite_ext(sprite_get("combometer_bar3"), 0, temp_x + 24, temp_y + -18, (co
 }
 }
 if(combo_cooldown > 0){
-draw_sprite_ext(sprite_get("combometer_bar2"), 0, temp_x + 24, temp_y + -18, (hud_combo_cooldown/ (240*hud_cooldown_mult)), 1, 0, c_white, 1);
+draw_sprite_ext(sprite_get("combometer_bar2"), 0, temp_x + 24, temp_y + -18, (hud_combo_cooldown/ (300*hud_cooldown_mult)), 1, 0, c_white, 1);
 }
 
 if(bomb_state = true){

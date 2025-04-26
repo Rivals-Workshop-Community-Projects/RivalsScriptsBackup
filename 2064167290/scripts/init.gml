@@ -47,7 +47,7 @@ max_fall = 10; max_fall_ref = max_fall; max_fall_jmp = 17;//maximum fall speed w
 fast_fall = 13; fast_fall_ref = fast_fall; fast_fall_jmp = 19;//fast fall speed
 gravity_speed = 0.4; gravity_speed_ref = gravity_speed; gravity_speed_jmp = 0.45; gravity_speed_shld = 0.4;
 hitstun_grav = .45;
-knockback_adj = 1.2; knockback_adj_ref = knockback_adj; knockback_adj_shld = 0.8;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; knockback_adj_ref = knockback_adj; knockback_adj_shld = 0.8;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 3;
@@ -239,19 +239,20 @@ has_enter = false;
 sound[0] = sound_get("midnight")
 sound[1] = sound_get("cuphead")
 sound[2] = sound_get("veryfunny")
-//sound[3] = sound_get("yee")
+sound[3] = sound_get("yee")
 
 lenght[0] = 230;
 lenght[1] = 190;
 lenght[2] = 140;
-//lenght[3] = 230;
+lenght[3] = 230;
 
 
 
 // particule
 
 
-
+//sugarcoat
+sugarcoat_screen = sprite_get("lmao")
 
 
 // hud
@@ -283,7 +284,9 @@ swallowed = 0; // changed swallowed implementation to fix error message as well
 
 
 //Rune Support
-abyssEnabled = false;
+menuActive = false;
+timerActive = false;
+abyssEnabled = true;
 enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 ab_hud_x = 0;
@@ -330,7 +333,21 @@ for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++){
     variable_instance_set(self, "rune" + rune_letters[rune_num], has_rune(rune_letters[rune_num]));
 }
  
-
+runeA = has_rune("A");
+runeB = has_rune("B");
+runeC = has_rune("C");
+runeD = has_rune("D");
+runeE = has_rune("E");
+runeF = has_rune("F");
+runeG = has_rune("G");
+runeH = has_rune("H");
+runeI = has_rune("I");
+runeJ = has_rune("J");
+runeK = has_rune("K");
+runeL = has_rune("L");
+runeM = has_rune("M");
+runeN = has_rune("N");
+runeO = has_rune("O");
 
 wall_frames = 2;
 
@@ -344,7 +361,3 @@ miiverse_post2 = sprite_get("miiverse2");
 
 sprite_change_offset("miiverse3", 60, 30);
 miiverse_post3 = sprite_get("miiverse3");
-
-
-
-

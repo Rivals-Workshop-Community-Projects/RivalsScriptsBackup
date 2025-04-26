@@ -75,6 +75,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PARENT_HITBOX, 2);
@@ -98,6 +99,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_PARENT_HITBOX, 3);
@@ -122,6 +124,7 @@ set_hitbox_value(AT_DSPECIAL_2, 3, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_DSPECIAL_2, 3, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_GROUP, 3);
 
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_PARENT_HITBOX, 4);
@@ -145,6 +148,7 @@ set_hitbox_value(AT_DSPECIAL_2, 4, HG_DRIFT_MULTIPLIER, 0.70);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_DSPECIAL_2, 4, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_HITBOX_GROUP, 4);
 
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_PARENT_HITBOX, 4);
@@ -196,4 +200,5 @@ set_hitbox_value(AT_DSPECIAL_2, 8, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 set_hitbox_value(AT_DSPECIAL_2, 8, HG_HITSTUN_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 8, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 8, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_DSPECIAL_2, 8, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 8, HG_HITBOX_GROUP, 8);

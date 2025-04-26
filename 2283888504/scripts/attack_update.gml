@@ -394,9 +394,15 @@ if (attack == AT_USPECIAL){
             set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1 + 6 * free);
             if (window_timer == phone_window_end){
                 if !free{
-                    set_state(PS_LANDING_LAG);
-                    landing_lag_time = 10 + 5 * !has_hit;
-                    attack_end();
+                    if(was_parried){ //community patch
+						set_state(PS_PRATLAND);
+						landing_lag_time = 45;
+						attack_end();
+                	}else{
+                    	set_state(PS_LANDING_LAG);
+                    	landing_lag_time = 10 + 5 * !has_hit;
+                    	attack_end();
+                	}
                 }
             }
             break;

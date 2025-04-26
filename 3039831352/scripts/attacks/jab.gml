@@ -47,7 +47,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 4);
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6); //4
 
 //JAB 3 (windows 7 - 11)
 window_num ++; //windup
@@ -57,7 +57,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(atk, window_num, AG_WINDOW_HSPEED, 6);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 8); //6
 
 window_num ++; //attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);

@@ -21,7 +21,7 @@ free = false;                                        //Whether the article is in
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
 
 dist = 0
-number = 0
 
 lifetime = 0
 attack = false
+start_adjust = 0

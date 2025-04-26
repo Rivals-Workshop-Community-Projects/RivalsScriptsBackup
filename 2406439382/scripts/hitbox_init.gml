@@ -18,4 +18,3 @@ switch (attack)
         }
     }
 }
-

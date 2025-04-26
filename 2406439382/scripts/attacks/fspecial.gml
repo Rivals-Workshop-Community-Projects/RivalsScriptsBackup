@@ -23,7 +23,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0); 
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -56,7 +56,3 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302); //switch_effect
 set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
-
-
-
-

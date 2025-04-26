@@ -24,3 +24,5 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2) was_parried 
 
 //reset tester's charge
 nspec_charge = 1;
+//if the player parried an nspec projectile, this code resets it's duration so it can hit you back
+if (my_hitboxID.attack == AT_NSPECIAL) my_hitboxID.hitbox_timer = 0;

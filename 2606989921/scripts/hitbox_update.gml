@@ -8,7 +8,7 @@ if (attack == AT_USTRONG)
         //flickering
         visible = (hitbox_timer % 2) == 0 || hitbox_timer < 10;
     }
-    else if (!free) 
+    else if (!free) || (y_pos_counter > 3)
     { 
         coin_fading = true; 
         image_yscale = 0; //essentially turns off collider
@@ -16,6 +16,7 @@ if (attack == AT_USTRONG)
         img_spd = 0;
         image_index = floor(image_index);
         length = 20;
+        hsp = 0;
     }
     else
     {
@@ -45,7 +46,11 @@ if (attack == AT_USTRONG)
         //..."Thanks" Dan?
         kb_value = target_in_hitstun ? 0 : original_kb_value;
         kb_scale = target_in_hitstun ? 0 : original_kb_scale;
+
+        if (round(y) == previous_known_y_position) y_pos_counter++;
+        else y_pos_counter = 0;
     }
+    previous_known_y_position = round(y);
 }
 
 //==========================================================
@@ -218,6 +223,13 @@ if (attack == AT_JAB)
             newsub.image_index = 3;
             newsub.hsp = hsp;
             destroyed = true;
+            if (msg_unsafe)
+            {
+                newsub.sprite_index = asset_get("empty_sprite");
+                newsub.hit_effect = 1;
+                newsub.destroy_fx = 1;
+                newsub.msg_unsafe = true;
+            }
         }
         else
         {
@@ -246,14 +258,14 @@ if (attack == AT_JAB)
         if ( y >= blastzone_b ) || ( y <= blastzone_t )
         || ( x >= blastzone_r ) || ( x <= blastzone_l )
         {
-            sound_play(asset_get("sfx_death1"), false, noone, 0.5, 1.5);
+            if (!msg_unsafe) sound_play(asset_get("sfx_death1"), false, noone, 0.5, 1.5);
             instance_destroy(self); exit;
         }
         else if (hitbox_timer >= (length - 2)) 
         {
-            spawn_hit_fx(x + spr_dir*random_func_2(3, 20, true), 
-                            y - random_func_2(4, 30, true),
-                            (hitbox_timer % 2 == 0) ? hit_effect : destroy_fx);
+            if (!msg_unsafe) spawn_hit_fx(x + spr_dir*random_func_2(3, 20, true), 
+                                          y - random_func_2(4, 30, true),
+                                          (hitbox_timer % 2 == 0) ? hit_effect : destroy_fx);
         }
     }
 

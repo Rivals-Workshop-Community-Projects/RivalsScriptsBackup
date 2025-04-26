@@ -14,24 +14,24 @@ if (menu_active) //skill select
 else             //regular gameplay UI
 {
     //MP gauge
-    if (mp_current <= 100) //normal version
+    if (mp_cur <= 100) //normal version
     {
         draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 2, temp_y - 6, 204, 6, $8b1733, 1); // background
-        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_current)*2 + 2, 2, mp_color, 1); // fill
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_cur)*2 + 2, 2, mp_color, 1); // fill
     }
-    else if (mp_current > 100) //double mana version
+    else if (mp_cur > 100) //double mana version
     {
         draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 2, temp_y - 6, 204, 6, $e9973e, 1); // background
-        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_current-100)*2 + 2, 2, mp_color_ex, 1); // fill
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_cur-100)*2 + 2, 2, mp_color_ex, 1); // fill
         
     }
     draw_sprite_ext(sprite_get("hud_mp"), 0, temp_x - 24, temp_y - 20, 2, 2, 0, c_white, 1); //frame
-    draw_debug_text(temp_x - 0, temp_y - 20, "MP " + (theikos_type == 2 ? "999999999" : string(floor(mp_current)) + "/100") ); //text
+    draw_debug_text(temp_x - 0, temp_y - 20, "MP " + string(floor(mp_cur)) + "/100"); //text
 
     //skill info
     for (var i = 0; i <= 3; ++i)
     {
-        if (skill[cur_skills[i]].mp_use_cost <= mp_current)
+        if (skill[cur_skills[i]].mp_use_cost <= mp_cur)
         {
             draw_sprite_ext(sprite_get("hud_skills"),
             skill[cur_skills[i]].skill_id,
@@ -56,17 +56,37 @@ else             //regular gameplay UI
         if ("fs_char_initialized" in self) var use_fs_hud = true;
 
         draw_sprite_ext(sprite_get(use_fs_hud ? "hud_fs" : "hud_od"), 0, temp_x-18+2*use_fs_hud, temp_y-14-4*use_fs_hud, 2, 2, 0, c_white, 1);
-        draw_sprite_stretched_ext(spr_pixel, 0, temp_x - 4, temp_y + 4, floor(od_current*1.96), 2, od_color, 1);
-        //rectDraw(temp_x - 4, temp_y + 4, floor(od_current*1.96)-1, 1, od_color);
+        draw_sprite_stretched_ext(spr_pixel, 0, temp_x - 4, temp_y + 4, floor(od_cur*1.96), 2, od_color, 1);
+        //rectDraw(temp_x - 4, temp_y + 4, floor(od_cur*1.96)-1, 1, od_color);
 
         if (od_cast >= 1) draw_sprite_ext(sprite_get(use_fs_hud ? "hud_fs_ball" : "hud_od_star"), 0, temp_x+194+8*use_fs_hud, temp_y-10-8*use_fs_hud, 2, 2, 0, od_color, 1);
     }
-
-    if (theikos_type == 2) draw_debug_text(temp_x-10, temp_y-96-36*training, "
-    You're gonna have to try
-    a little harder than THAT.");
 }
 
+if (debug_display)
+{
+    var mul = 16; //spacing
+    var debug_x = 16;
+    var debug_y = 256;
+    
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-4, "state = " + string(get_state_name(state)));
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-3, "state_timer = " + string(state_timer));
+
+    if (
+        is_attacking || state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD ||
+        state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD || state == PS_AIR_DODGE)
+    {
+        if (is_attacking) draw_debug_text(debug_x+mul*0, debug_y+mul*-7, "attack = " + string(attack_names[attack]));
+        draw_debug_text(debug_x+mul*0, debug_y+mul*-6, "window = " + string(window));
+        draw_debug_text(debug_x+mul*0, debug_y+mul*-5, "window_timer = " + string(window_timer));
+    }
+
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-2, "x = " + string(x));
+    draw_debug_text(debug_x+mul*0, debug_y+mul*-1, "y = " + string(y));
+
+    draw_debug_text(debug_x+mul*5, debug_y+mul*-2, "hsp = " + string(hsp));
+    draw_debug_text(debug_x+mul*5, debug_y+mul*-1, "vsp = " + string(vsp));
+}
 
 ////////////////////////////////////////////////////////////////////// TRAINING MODE STUFF //////////////////////////////////////////////////////////////////////
 

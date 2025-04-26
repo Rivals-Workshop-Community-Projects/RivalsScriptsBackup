@@ -16,12 +16,14 @@ if (my_hitboxID.attack == AT_DSPECIAL){
     }
     if (my_hitboxID.hbox_num == 1){
         sound_play(sound_get("sfx_ut_souldamage"));
+        move_cooldown[AT_DSPECIAL] = 90;
     }
     if (my_hitboxID.hbox_num == 2){
         sound_play(sound_get("sfx_monsterhit"));
         if (hit_player_obj.blue_time > 0){
             hit_player_obj.blue_time -= 60;
         }
+        move_cooldown[AT_DSPECIAL] = 120;
     }
     if (instance_exists(bone_trap) && bone_trap.state == 1){
         if (hit_player_obj.blue == true){

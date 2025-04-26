@@ -7,7 +7,7 @@ if (state == PS_PARRY){
 }
 
 if (state == PS_RESPAWN || respawn_taunt){
-	draw_sprite_ext(sprite_get("plat"), 0, x, y, spr_dir, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("plat"), 0, x, y, spr_dir*2, 2, 0, c_white, 1);
 }
 
 shader_start();

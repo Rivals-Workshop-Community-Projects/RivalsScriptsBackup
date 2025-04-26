@@ -1,5 +1,4 @@
 if (get_synced_var(player) == 15005) exit;
-// states
 #macro AS_NEUTRAL 0
 #macro AS_ADVANTAGE 1
 #macro AS_RECOVER 2
@@ -57,15 +56,15 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 4;
+			ai_attack_time = (9-temp_level) * 4;
 			Movement();
 			break;
 		case AS_RECOVER:
-			ai_attack_time = 40;
+			ai_attack_time = (9-temp_level) * 10;
 			if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 30;
+			ai_attack_time = (9-temp_level) * 10;
 			Movement();
 			break;
 	}
@@ -128,7 +127,7 @@ SetAttack();
 			TryParry();
 
 		case AS_ADVANTAGE:
-			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)
+			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT && (!ai_target.invincible||ai_target.invince_time<7))
 			{
 				if (ai_target == self)
 				{
@@ -393,13 +392,13 @@ SetAttack();
 	if (ai_target.y < y-64)
 	{
 		if (vsp > -1) jump_pressed = true;
-		if ((ai_target.y < y-32)) jump_down = true;
+		if ((ai_target.y < y-160)) jump_down = true;
 	}
 }
 
 #define Hitfall()
 {
-	if (free && hitpause && hitstop_full > 4 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+64, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+64, asset_get("par_jumpthrough"), 1, 0)))
+	if (free && hitpause && hitstop_full > 4 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+160, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+160, asset_get("par_jumpthrough"), 1, 0)))
 	{
 		do_a_fast_fall = true;
 	}

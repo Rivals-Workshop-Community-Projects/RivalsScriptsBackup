@@ -90,6 +90,9 @@ switch (step)
             spawn_hit_fx( other.x + 20, other.y - 30, counter_star )
         }
     break;
+    case 230:
+    sound_play(asset_get("mfx_star"), 0, 0, 1.5)
+    break;
     case 240: 
         state = 1;
         x_shake = 0;
@@ -162,7 +165,3 @@ if (destroyed)
 {
          instance_destroy(self);
 }
-
-
-
-

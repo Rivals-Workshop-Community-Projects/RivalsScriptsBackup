@@ -33,3 +33,9 @@ boxwidthoffset = random_func(0, 20, true)
 boxheightoffset = random_func(1, 20, true)
 sprite_index = sprite_get("empty");
 mask_index =  sprite_get("empty");
+
+// --- [ ADDITION ] ----------------------------------------------------- //
+// Added 2 variables below used to target the nearest viable oPlayer
+// ---------------------------------------------------------------------- //
+closest_distance = -1;
+closest_player = noone;

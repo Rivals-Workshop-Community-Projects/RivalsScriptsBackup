@@ -4,6 +4,8 @@
 if (attack == AT_JAB)
 {
     if ("msg_unsafe" not in self) msg_unsafe = false;
+    //TRUE if its meant as desync
+    //cannot actually be desynced; but must stick around invisibly instead
 }
 //==========================================================
 else if (attack == AT_USTRONG)
@@ -13,6 +15,10 @@ else if (attack == AT_USTRONG)
     original_kb_value = kb_value;
     original_kb_scale = kb_scale;
     temp_team_attack = get_match_setting(SET_TEAMATTACK);
+
+    //prevent coins from lingering on stagearticles which do not trigger !free
+    previous_known_y_position = y;
+    y_pos_counter = 0;
 }
 //==========================================================
 else if (attack == AT_FSPECIAL_2)

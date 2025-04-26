@@ -8,7 +8,7 @@ if (object_index == asset_get("oPlayer")) alt_cur = get_fake_alt();
 
 var should_setup_shader = ("shader_setup_ran" not in self || "alt_prev" in self && alt_cur != alt_prev); // default condition
 if (object_index == asset_get("stage_HUD")) // exception
-{   
+{
     if ("shader_setup_ran" not in self) shader_setup_ran = [0, 0, 0, 0, 0];
     if (!shader_setup_ran[player])
     {
@@ -245,12 +245,16 @@ if (object_index == asset_get("draw_result_screen") || object_index == asset_get
         _barsonic_final_color = [-4, -4, -4, -4, -4];
         _barsonic_final_shade = [-4, -4, -4, -4, -4];
         _barsonic_hyper_check = false;
+        _barsonic_super_check = false;
+        _barsonic_boost_check = false;
     }
     with (hit_fx_obj) if ("is_sonic_persist" in self)
     {
         other._barsonic_final_color[real_player] = colors;
         other._barsonic_final_shade[real_player] = shades;
         other._barsonic_hyper_check = is_hyper;
+        other._barsonic_super_check = is_super;
+        other._barsonic_boost_check = is_boost;
     }
 
     //actually set the colors
@@ -283,18 +287,6 @@ if (object_index == asset_get("draw_result_screen") || object_index == asset_get
             else if (winner_name == "Sonic (TEST) WINS!") winner_name = "Sonic Wins!";
         }
 
-        if (alt_cur == 5) //chaos mask
-        {
-            if (_barsonic_final_color[player][0][0] == get_color_profile_slot_r(alt_cur, 0)) //checks if he isn't super sonic
-            {
-                var water_alpha = 0.75;
-                maskHeader();
-                draw_sprite_ext(sprite_get("portrait_ex1"), 0, portrait_x, portrait_y, 2, 2, 0, c_white, min((real_time - 50)/70 * water_alpha, water_alpha) );
-                maskMidder();
-                draw_sprite_tiled(sprite_get("alt_chaos"), real_time * 0.15, portrait_x, portrait_y + (-real_time / 8));
-                maskFooter();
-            }
-        }
         if (_barsonic_hyper_check) //hyper sonic colors in the results screen
         {
             if ("hyper_color" not in self) hyper_color = 0;
@@ -441,32 +433,5 @@ if (object_index == asset_get("draw_result_screen") || object_index == asset_get
             }
         }
     }
-}
-
-#define maskHeader
-{
-    //set the mask to take effect on pretty much everything in the room
-    //below this function, add the MASK
-    gpu_set_blendenable(false);
-    gpu_set_colorwriteenable(false,false,false,true);
-    draw_set_alpha(0);
-    draw_rectangle_color(-200 ,-200 , room_width + 200, room_height + 200, c_white, c_white, c_white, c_white, false);
-    draw_set_alpha(1);
-}
-#define maskMidder
-{
-    //sets the thing underneath the mask to be drawn
-    //below this function, add the TEXTURE
-    gpu_set_blendenable(true);
-    gpu_set_colorwriteenable(true,true,true,true);
-    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
-    gpu_set_alphatestenable(true);
-}
-#define maskFooter
-{
-    //go back to drawing normally again
-    gpu_set_alphatestenable(false);
-    gpu_set_blendmode(bm_normal);
-    draw_set_alpha(1);
 }
 #endregion

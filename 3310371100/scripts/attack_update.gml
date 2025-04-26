@@ -374,15 +374,15 @@ if ( attack == AT_FSPECIAL ){
 			}
 		}
 	}
-	if (fsp_airstart){
-		if (!free){
+	if (fsp_airstart){//IF started in air
+		if (!free){//THEN IF landed
 			if (!was_parried){
 				if (special_down && !special_pressed){
 					fsp_airstart = false;
 				}else{
 					if (window>1){
-						move_cooldown[AT_FSPECIAL] = 4;//0
-						landing_lag_time = 6;
+						move_cooldown[AT_FSPECIAL] = 4;//0//4//11?
+						landing_lag_time = 6;//6//8?
 						set_state( PS_LANDING_LAG );
 						hsp = clamp(hsp, dash_speed*-1, dash_speed);
 					}
@@ -391,6 +391,11 @@ if ( attack == AT_FSPECIAL ){
 				window = 10;//does not exist
 				window_timer = 100;//hope it works question mark
 			}
+		}
+	}
+	if (!fsp_airstart){//IF started on ground
+		if (free){//THEN IF went off ledge
+			fsp_airstart = true;
 		}
 	}
 }

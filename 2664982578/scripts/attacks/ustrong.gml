@@ -12,7 +12,7 @@ set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_cape_swipe"));
 
 //grab
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 8); 
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 7); 
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
@@ -24,6 +24,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //endlag
 set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 7);
@@ -59,7 +60,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 6); 
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 5); 
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("kss_grab_activate"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
@@ -76,7 +77,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7); 
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.15); 
-set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);

@@ -21,19 +21,19 @@ if (get_synced_var(player) == 15005)
 			}
 			else if (window == 2)
 			{
-			    can_jump = !was_parried;
+				can_jump = !was_parried;
 				can_shield = free && !was_parried;
 				if ((shield_pressed && !free) || was_parried)
 				{
-				    window = 4;
-				    window_timer = 0;
+					window = 4;
+					window_timer = 0;
 					if (!was_parried) sound_play(asset_get("sfx_frog_fspecial_cancel"));
 					clear_button_buffer(PC_SHIELD_PRESSED);
 				}
-			    else if (special_pressed)
+				else if (special_pressed)
 				{
-			        window = 3;
-			        window_timer = 0;
+					window = 3;
+					window_timer = 0;
 					sound_play(sound_get("button_x"))
 					if (charge != noone)
 					{
@@ -49,7 +49,7 @@ if (get_synced_var(player) == 15005)
 						set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, floor(charge.size * 0.2));
 					}
 					clear_button_buffer( PC_SPECIAL_PRESSED );
-			    }
+				}
 			}
 			break;
 		case AT_USPECIAL:
@@ -92,13 +92,13 @@ if (get_synced_var(player) == 15005)
 			{
 				if (get_gameplay_time() % 10 == 1) set_player_damage( player, get_player_damage( player ) + 1 );
 				if (window_timer == 0) vsp = 0;
-			    if (special_down && ((right_down && spr_dir == -1) || (left_down && spr_dir == 1)))
+				if (special_down && ((right_down && spr_dir == -1) || (left_down && spr_dir == 1)))
 				{
 					spr_dir *= -1;
-			        window = 1;
-			        window_timer = 1;
-			    }
-			    super_armor = true;
+					window = 1;
+					window_timer = 1;
+				}
+				super_armor = true;
 				can_fast_fall = false;
 				if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH)) set_state(PS_IDLE);
 			}
@@ -141,40 +141,40 @@ else
 	if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == 49) trigger_b_reverse();
 	switch (attack)
 	{
-	    case AT_TAUNT:
-	        if (practice&&object_index!=oTestPlayer)
-	        {
-	            if (state_timer == 1)
-	            {
-	                if (menuState == 0 && !shield_down)
-	                    menuStateBuffer = 1;
-	                else
-	                {
-	                    tutDone[tutPrevMenu] = 1;
-	                    tutDoneAdv[tutPrevMenu] = 1;
-	                }
-	            }
-	            hsp = 0;
-	            vsp = 0;
-	        }
-	        if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
-	        break;
+		case AT_TAUNT:
+			if (practice&&object_index!=oTestPlayer)
+			{
+				if (state_timer == 1)
+				{
+					if (menuState == 0 && !shield_down)
+						menuStateBuffer = 1;
+					else
+					{
+						tutDone[tutPrevMenu] = 1;
+						tutDoneAdv[tutPrevMenu] = 1;
+					}
+				}
+				hsp = 0;
+				vsp = 0;
+			}
+			if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
+			break;
 	
-	    case AT_EXTRA_1:
-	        can_jump = true;
-	        if (state_timer == 1) {spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir); sound_play(sound_get("riolu"),0,noone,3);}
-	        if (taunt_down && !jump_pressed)
+		case AT_EXTRA_1:
+			can_jump = true;
+			if (state_timer == 1) {spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir); sound_play(sound_get("riolu"),0,noone,3);}
+			if (taunt_down && !jump_pressed)
 			{
 				if (window_timer == get_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH)) window_timer = 0;
 				suppress_stage_music(0.2, 0.5);
 			}
-	        else
+			else
 			{
 				if (hasBone) costumeIndex = random_func(0, array_length_1d(costumeList), 1);
 				sound_stop(sound_get("riolu"));
 				window = 2;
 			}
-	        break;
+			break;
 	
 		case AT_JAB:
 			if (window == 6 && window_timer > 4)
@@ -258,11 +258,11 @@ else
 				var throw_angle = 65;
 				if (!joy_pad_idle)
 				{
-				    var angle_diff = 90 - joy_dir;
-				    if (angle_diff < -180) angle_diff += 360;
-				    if (angle_diff > 180) angle_diff -= 360;
-				    var angle_change = 25*(dsin(angle_diff)*dsin(angle_diff));
-				    throw_angle -= sign(angle_diff)*spr_dir*angle_change;
+					var angle_diff = 90 - joy_dir;
+					if (angle_diff < -180) angle_diff += 360;
+					if (angle_diff > 180) angle_diff -= 360;
+					var angle_change = 25*(dsin(angle_diff)*dsin(angle_diff));
+					throw_angle -= sign(angle_diff)*spr_dir*angle_change;
 				}
 				boneProj.spr_dir = spr_dir;
 				boneProj.hsp = throw_speed*dcos(throw_angle)*spr_dir;
@@ -352,7 +352,7 @@ else
 						if (get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) != 6) for (var i = 0; i < afterImageMax; ++i)
 						{
 							if (has_rune("E")) create_hitbox(AT_USPECIAL_2, 1, floor(x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang)), floor(y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang)));
-	                        afterImage[i]={sprite_index:sprite_index,image_index:image_index,x:x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang),y:y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang),spr_dir:spr_dir,alpha:10*(1-i/64),angle:spr_angle};
+							afterImage[i]={sprite_index:sprite_index,image_index:image_index,x:x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang),y:y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang),spr_dir:spr_dir,alpha:10*(1-i/64),angle:spr_angle};
 						}
 						else afterImageTimer = afterImageMax;
 					}
@@ -443,10 +443,10 @@ else
 	
 				case 2:
 					if (state_timer == 120 && !hitpause) asSFX[1] = sound_play(sound_get("ascLoop"), 1);
-					if (asCharge < asChargeMax*10) asCharge += 3;
+					if (asCharge < 1000) asCharge += 3;
 					set_hitbox_value(49, 1, HG_WIDTH, asCharge*0.4+20);
 					set_hitbox_value(49, 1, HG_HEIGHT, asCharge*0.4+20);
-					if (asCharge >= asChargeMax*10)
+					if (asCharge >= 1000)
 					{
 						window = 3;
 						window_timer = 0;
@@ -479,8 +479,8 @@ else
 					{
 						clear_button_buffer(PC_SPECIAL_PRESSED);
 						asReverse = false;
-						set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, asCharge*0.4+20);
-						set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, asCharge*0.4+20);
+						set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, asCharge*0.3+20);
+						set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, asCharge*0.3+20);
 						asSFX[0] = sound_play(sound_get("ascStart"));
 						asSFX[2] = sound_play(sound_get("vc_lucario_003"));
 					}
@@ -504,16 +504,16 @@ else
 							sound_play(asset_get("mfx_star"));
 						}
 					}
-					set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, asCharge*0.4+20);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, asCharge*0.4+20);
+					set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, asCharge*0.3+20);
+					set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, asCharge*0.3+20);
 					can_jump = !was_parried;
 					can_shield = free && !was_parried;
 					move_cooldown[attack] = 10;
 					if (special_pressed || jump_pressed || shield_pressed) sound_stop(asSFX[2]);
 					if ((shield_pressed && !free) || was_parried)
 					{
-					    window = 5;
-					    window_timer = 0;
+						window = 5;
+						window_timer = 0;
 						if (!was_parried) sound_play(asset_get("sfx_frog_fspecial_cancel"));
 						clear_button_buffer(PC_SHIELD_PRESSED);
 					}
@@ -545,17 +545,17 @@ else
 			}
 			break;
 	
-	    case AT_DTILT:
-	        down_down = true;
-	        move_cooldown[attack] = 1;
+		case AT_DTILT:
+			down_down = true;
+			move_cooldown[attack] = 1;
 			break;
 	
-	    case AT_UAIR:
+		case AT_UAIR:
 			if (state_timer == 1) sound_play(asset_get("sfx_charge_blade_ready"),0,-4,1,1.5);
 			break;
 	
-	    case AT_USTRONG:
-	        if (window > 1) hud_offset = 120;
+		case AT_USTRONG:
+			if (window > 1) hud_offset = 120;
 			if (window == 3  && window_timer < 2 && has_hit_player && hit_player_obj.hitpause) Grab(0, -100, 0, 5);
 			break;
 	
@@ -576,35 +576,35 @@ else
 
 #define LedgeSnap(_dist, _hsp)
 {
-    if (!hasMovedUp && free && place_meeting(x+_hsp,y,asset_get("par_block"))) for (var i = 0; i < _dist; ++i) if (!place_meeting(x+_hsp,y-(i+1),asset_get("par_block")))
-    {
-        y -= i;
-        hasMovedUp = true;
-        break;
-    }
+	if (!hasMovedUp && free && place_meeting(x+_hsp,y,asset_get("par_block"))) for (var i = 0; i < _dist; ++i) if (!place_meeting(x+_hsp,y-(i+1),asset_get("par_block")))
+	{
+		y -= i;
+		hasMovedUp = true;
+		break;
+	}
 }
 
 #define Grab(xpos, ypos, xsmooth, ysmooth)
 {
-    if (xsmooth != 0)
-    {
-        hit_player_obj.x += ((x + spr_dir * xpos) - hit_player_obj.x)/xsmooth;
-        hit_player_obj.hsp = 0;
-        //hit_player_obj.old_hsp = 0;
-    }
-    if (ysmooth != 0)
-    {
-        hit_player_obj.y += ((y + ypos) - hit_player_obj.y)/ysmooth;
-        hit_player_obj.vsp = 0;
-        //hit_player_obj.old_vsp = 0;
-    }
+	if (xsmooth != 0)
+	{
+		hit_player_obj.x += ((x + spr_dir * xpos) - hit_player_obj.x)/xsmooth;
+		hit_player_obj.hsp = 0;
+		//hit_player_obj.old_hsp = 0;
+	}
+	if (ysmooth != 0)
+	{
+		hit_player_obj.y += ((y + ypos) - hit_player_obj.y)/ysmooth;
+		hit_player_obj.vsp = 0;
+		//hit_player_obj.old_vsp = 0;
+	}
 }
 
 #define InitAuraSphere()
 {
 	destroy_hitboxes();
-	set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, asCharge*0.4+20);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, asCharge*0.4+20);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, asCharge*0.3+20);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, asCharge*0.3+20);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, floor(lerp(3, 15, asCharge/asChargeMax)));
 	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, lerp(3, 10, asCharge/asChargeMax));
 	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, lerp(0.3, 0.9, asCharge/asChargeMax));
@@ -626,33 +626,33 @@ else
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 {
-    var dlen; //dust_length value
-    var dfx; //dust_fx value
-    var dfg; //fg_sprite value
-    var dfa = 0; //draw_angle value
-    var dust_color = 0;
-    var x = argument[0], y = argument[1], name = argument[2];
-    var dir = argument_count > 3 ? argument[3] : 0;
-    
-    switch (name) {
-        default: 
-        case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-        case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-        case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-        case "doublejump": 
-        case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-        case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-        case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-        case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-        case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-        case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
-        case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
-    }
-    var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-    newdust.dust_fx = dfx; //set the fx id
-    if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
-    newdust.dust_color = dust_color; //set the dust color
-    if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-    newdust.draw_angle = dfa;
-    return newdust;
+	var dlen; //dust_length value
+	var dfx; //dust_fx value
+	var dfg; //fg_sprite value
+	var dfa = 0; //draw_angle value
+	var dust_color = 0;
+	var x = argument[0], y = argument[1], name = argument[2];
+	var dir = argument_count > 3 ? argument[3] : 0;
+	
+	switch (name) {
+		default: 
+		case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+		case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+		case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+		case "doublejump": 
+		case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+		case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+		case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+		case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+		case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+		case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+		case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
+	}
+	var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+	newdust.dust_fx = dfx; //set the fx id
+	if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+	newdust.dust_color = dust_color; //set the dust color
+	if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+	newdust.draw_angle = dfa;
+	return newdust;
 } // Supersonic

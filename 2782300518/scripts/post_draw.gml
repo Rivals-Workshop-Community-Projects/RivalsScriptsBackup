@@ -61,6 +61,10 @@ switch (state)
 		{
 			case AT_FSPECIAL:
 			case AT_FSPECIAL_AIR:
+				if (window == 1)
+				{
+					draw_sprite_ext(sprite_get("fspecial_pre_empt"), 0, x + 30 *spr_dir, y - 26, 1 * spr_dir, 1, brotation, c_white, 0.5)
+				}
 				if (motorbike == false && walljump_number > 0)
 				{
 					//draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x+18 * spr_dir, y-80, 2, 2, 0, c_white, 1);
@@ -143,6 +147,106 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+
+        patch_note_title[i] = "2.20"
+        patch_note_text[i++] =  
+
+"Made some alterations to Carol's jabs and tilts so that you can buffer Ftilt out of any of them in the other direction rather than cancelling into the next tilt.
+
+Bike Jab can now be buffered into Bike Ftilt (thanks Supersonic for the code)
+
+Fixed quote not playing when Lilac dies as a teammate, it will now properly call out the unique line (broke it in a previous update whoops)
+
+Carol will no longer shout ''Oh yeah'' when dead. It was funny in Dev Derby but alas now fuel will only actually recharge if Carol is alive.
+
+Added win quotes for winning on Air Armada, Shang Tu and Shenlin Park.
+
+Added win quote for Mecha Sonic.
+
+Moved the voice button and tweaked code so that you can select the voice button with teams enabled.
+
+Enabled CSS overlay for other characters to work in Teams mode."
+
+        patch_note_title[i] = "2.19"
+        patch_note_text[i++] =  
+
+"Bike Dash Speed 9 -> 8.5
+
+Bike now takes longer to turn around in Dash turn time, with 15 frames as opposed to sharing bike's 10.
+
+Jab, Ftilt, Utilt and Dtilt are now all 2 frames each for each hit.
+
+The cancel timings for the move have been changes from 3 frames of active endlag to 4.
+
+Bike Jab has also received the same adjustments.
+
+In addition Carol cannot cancel out of her Claw combos into other moves until after 4 frames of endlag.
+
+FSpecial now has a hitstun multiplier of 0.5
+
+FSpecial Damage 5 -> 4
+
+FSpecial Knockback 6 -> 5
+
+FSpecial Move Cooldown 60 -> 120
+
+FSpecial Techable 2 -> 0
+
+FSpecial Ground on Bike (Nitro Boost) now has a Final Base Knockback of 6, making this long distance move a bit less of a threat from the other side of the stage
+
+FSpecial Bike Air Damage 5 -> 4
+
+FSpecial Bike Air Knockback 8 -> 7
+
+FSpecial Bike Air Move Cooldown 60 -> 120
+
+FSpecial Bike Air now has a hitstun multiplier of 0.5 on the projectile.
+
+FSpecial Bike Air Techable 2 -> 0
+
+Fuel recharge rate reduced from every 10 frames to every 25 frames
+
+Added win quote support, supports all of base cast, the other Freedom Planet characters and select other characters.
+
+Removed Dev Derby alt and reverted to White Scarf alt
+
+Added The Chosen One compatibility.
+
+Neera exclusive voicelines now play also for SSL Neera in addition to the normal Neera mod.
+
+Lilac exclusive voicelines now also play for SSL Lilac."
+
+        patch_note_title[i] = "2.18"
+        patch_note_text[i++] =  
+
+"Redid the colours for the Abyss Alt to be more inline with base cast, adding pink to the palette.
+
+Redid Golden Alt to be actual Rivals Golden colours"
+        
+        patch_note_title[i] = "2.17"
+        patch_note_text[i++] =  
+        
+"USpecial will now end earlier if Carol touches the ground during a pounce.
+
+Altered endlag of USpecial animation to make it a smoother transition back to idle.
+
+Sourspot on Bike Fair has a weaker sound and hit effect to denote it better.
+
+Fixed Bike DStrong sprite not having any white colouring and instead having transparency, eyes should look normal now (no idea how that one happened!)
+
+Added Dev Derby alt, STW (DD5), the kit colours of Shang Tu Wukong"
+        
+        patch_note_title[i] = "2.16"
+        patch_note_text[i++] =  
+
+"Adjusted the animation for both Dash Attacks by giving it an additional effect to make it look more distinct from Carol's regular roll.
+
+Added voicelines to Uair (both variants) and an additional voiceline to Nair (off-bike).
+
+Adjusted AI to prevent Carol using her suicidal Secret Taunt during team matches if there isn't a target.
+
+AI shouldn't spam taunt anymore after taking stocks."
+
 
         patch_note_title[i] = "2.15"
         patch_note_text[i++] =  

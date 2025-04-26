@@ -16,90 +16,108 @@ if my_hitboxID.throws_rock == 0{
 		if(get_synced_var (player) == 1){
 			if my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_DSTRONG{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_bettersidesofbeef";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_cutyoubackdown";
 					voice_volume = 1.5;
 					voice_play();
-				}else if (snd_rng >= 2) {
+				break;
+				case 2:
 					voice_id = "v_creamgravy";
 					voice_volume = 2.5;
 					voice_play();
 				}
 			} else if my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_JAB{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_pow";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_bam";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng >= 2){
+				break;
+				default:
 					voice_id = "v_bap";
 					voice_volume = 3;
 					voice_play();
 				}
 			} else if my_hitboxID.attack == AT_UAIR{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_cowboyup";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_mini2";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng >= 2) {
+				break;
+				default:
 					voice_id = "v_mini3";
 					voice_volume = 1.5;
 					voice_play();
 				}
 			} else if my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSPECIAL_AIR or my_hitboxID.attack == AT_FTILT{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_bacon";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_gotcha";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng >= 2) {
+				break;
+				default:
 					voice_id = "v_pow";
 					voice_volume = 3;
 					voice_play();
 				}
 			} else if my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_FSTRONG{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_bacon";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_branded";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng >= 2) {
+				break;
+				default:
 					voice_id = "v_pow";
 					voice_volume = 3;
 					voice_play();
 				}
 			} else if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2{
 				snd_rng = random_func(0, 4, true);
-				if (snd_rng == 0) {
+				switch snd_rng{
+				case 0:
 					voice_id = "v_gotcha";
-					voice_volume = 2;
+					voice_volume = 2.4;
 					voice_play();
-				}else if (snd_rng == 1) {
+				break;
+				case 1:
 					voice_id = "v_stoptryingtomess";
 					voice_volume = 2;
 					voice_play();
-				}else if (snd_rng >= 2) {
+				break;
+				default:
 					voice_id = "v_planturnout";
 					voice_volume = 3;
 					voice_play();
@@ -108,31 +126,38 @@ if my_hitboxID.throws_rock == 0{
 		}
 		if(get_synced_var (player) == 2){
 			snd_rng = random_func(0, 7, true);
-			if (snd_rng == 0) {
+			switch snd_rng{
+			case 0:
 				voice_id = "cd_gibberish1";
 				voice_volume = 2;
 				voice_play();
-			}else if (snd_rng == 1) {
+			break;
+			case 1:
 				voice_id = "cd_gibberish2";
 				voice_volume = 2;
 				voice_play();
-			}else if (snd_rng == 2) {
+			break;
+			case 2:
 				voice_id = "cd_gibberish3";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 3) {
+			break;
+			case 3:
 				voice_id = "cd_gibberish4";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 4) {
+			break;
+			case 4:
 				voice_id = "cd_yelling";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 5) {
+			break;
+			case 5:
 				voice_id = "cd_yelling2";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 6) {
+			break;
+			case 6:
 				voice_id = "cd_wabbywabbo";
 				voice_volume = 3;
 				voice_play();
@@ -140,35 +165,43 @@ if my_hitboxID.throws_rock == 0{
 		}
 		if(get_synced_var (player) == 3){
 			snd_rng = random_func(0, 8, true);
-			if (snd_rng == 0) {
+			switch snd_rng{
+			case 0:
 				voice_id = "pt_italian1";
 				voice_volume = 2;
 				voice_play();
-			}else if (snd_rng == 1) {
+			break;
+			case 1:
 				voice_id = "pt_italian2";
 				voice_volume = 2;
 				voice_play();
-			}else if (snd_rng == 2) {
+			break;
+			case 2:
 				voice_id = "pt_italian3";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 3) {
+			break;
+			case 3:
 				voice_id = "pt_italian4";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 4) {
+			break;
+			case 4:
 				voice_id = "pt_italian5";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 5) {
+			break;
+			case 5:
 				voice_id = "pt_italian6";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 6) {
+			break;
+			case 6:
 				voice_id = "pt_italian7";
 				voice_volume = 3;
 				voice_play();
-			}else if (snd_rng == 7) {
+			break;
+			case 7:
 				voice_id = "pt_italian8";
 				voice_volume = 3;
 				voice_play();
@@ -182,9 +215,9 @@ if my_hitboxID.attack == AT_DSPECIAL or (my_hitboxID.attack == AT_JAB && my_hitb
 }
 
 //telefrag
-if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.hitpause > 15{//telefrag reward
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.hitpause > 5{//telefrag reward
 	if(get_synced_var (player) == 3){
-		sound_play(sound_get("pt_jerome"), false, noone, 2);
+		sound_play(sound_get("pt_jerome"), false, noone, 1.6);
 	} else{
 		sound_play(sound_get("demo_shield_hit"), false, noone, 2);
 	}
@@ -240,8 +273,11 @@ if my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3 && ustrong_dd =
 // }
 
 #define voice_play() //voiceline code is heavily based off of Roboshyguy's Jerma985 mod, I was given permission to use his code as a base.
-if(!dont_shutup){
-sound_stop(voice_playing_sound);
+if engi_muted == false{
+	if(!dont_shutup){
+		sound_stop(voice_playing_sound);
+	}
+	voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
+	// print(voice_id);
+	dont_shutup = false;
 }
-voice_playing_sound = sound_play(sound_get(voice_id), false, noone, voice_volume);
-dont_shutup = false;

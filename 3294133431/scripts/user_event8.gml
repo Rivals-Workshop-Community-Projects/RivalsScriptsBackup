@@ -5,6 +5,7 @@ hurtbox_spr = players_hurtbox_spr[updateVariablesToPlayer];
 crouchbox_spr = players_crouchbox_spr[updateVariablesToPlayer];
 air_hurtbox_spr = players_air_hurtbox_spr[updateVariablesToPlayer];
 hitstun_hurtbox_spr = players_hitstun_hurtbox_spr[updateVariablesToPlayer];
+hurtboxID.sprite_index = hurtbox_spr;//to force hitbox update directly
 
 knockback_adj = players_knockback_adj[updateVariablesToPlayer];
 walk_speed = players_walk_speed[updateVariablesToPlayer];

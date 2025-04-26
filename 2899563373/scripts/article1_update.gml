@@ -42,6 +42,7 @@ if(state < 5){
 		state = 5;
 		state_timer = 0;
 	}
+	if(reflect_lockout > 0) reflect_lockout--;
 }
 
 
@@ -337,11 +338,14 @@ if(hbox.type == 1){
 
 }else if(hbox.type == 2){
 	if(!hbox.plasma_safe){
-		with(player_id) set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, floor(hbox.damage * 1.3));
 		hbox.destroyed = true;
-		state = 3;
-		state_timer = 0;
-		sound_play(sound_get("sfx_barrier_reflect"));
+		if(reflect_lockout <= 0){
+			with(player_id) set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, floor(hbox.damage * 1.3));
+			state = 3;
+			state_timer = 0;
+			reflect_lockout = reflect_maxlock;
+			sound_play(sound_get("sfx_barrier_reflect"));
+		}
 	}
 }
  

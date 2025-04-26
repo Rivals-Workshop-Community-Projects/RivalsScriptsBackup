@@ -6,17 +6,17 @@ set_attack_value(AT_FAIR_G, AG_LANDING_LAG, 8);
 set_attack_value(AT_FAIR_G, AG_HURTBOX_SPRITE, sprite_get("fairg_hurt"));
 
 //fairg start1
-set_window_value(AT_FAIR_G, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FAIR_G, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_FAIR_G, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR_G, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //fairg active1
-set_window_value(AT_FAIR_G, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR_G, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_FAIR_G, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR_G, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //fairg end1
-set_window_value(AT_FAIR_G, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FAIR_G, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FAIR_G, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR_G, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FAIR_G, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

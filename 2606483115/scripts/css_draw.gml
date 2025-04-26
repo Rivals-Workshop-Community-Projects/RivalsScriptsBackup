@@ -10,7 +10,7 @@ var alt_cur = get_player_color(player);
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 14;
+var num_alts = 12;
 var alt_cur = get_player_color(player);
 
 var alt_new = get_player_color(player);
@@ -22,11 +22,9 @@ if (!"currAlt" in self)
 else if (alt_new != currAlt)
 {
 	sound_stop(asset_get("mfx_change_color"));
-	if(get_player_color(player) == 12){
+	if(get_player_color(player) == 10){
 		sound_play(sound_get("boop_distorted"), 0, 0, 2);
 	}else if(get_player_color(player) == 11){
-		sound_play(sound_get("sand"), 0, 0, 2);
-	}else if(get_player_color(player) == 13){
 		sound_play(sound_get("pkmn"), 0, 0, 2);
 	}else{
 		sound_play(sound_get("boop"), 0, 0, 2);
@@ -34,41 +32,69 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
-//Alt name init. var doesn't work with arrays lol
+ //Fstrong button
+set_synced_var(player, compressed_vars)
  
-alt_name[0]  = "Galega";
-alt_name[1]  = "Torga";
-alt_name[2]  = "Red";
-alt_name[3]  = "Blue";
-alt_name[4]  = "Yellow";
-alt_name[5]  = "Green";
-alt_name[6]  = "Pink";
-alt_name[7]  = "Canyon";
-alt_name[8]  = "BLW";
-alt_name[9]  = "Masked Galega";
-alt_name[10]  = "Dusk Masked Galega";
-alt_name[11]  = "Ocean Masked Galega";
-alt_name[12]  = "Genesis Masked Galega";
-alt_name[13]  = "Blastoise Galega";
+if(abs(get_instance_x(cursor_id) - (temp_x + 12)) < 14 && abs(get_instance_y(cursor_id) - (temp_y + 150)) < 13){
+	if(!masked){
+		button = draw_sprite(sprite_get("css_button"), 3, temp_x + 1, temp_y + 140)
+	}else{
+		button = draw_sprite(sprite_get("css_button"), 2, temp_x + 1, temp_y + 140)
+	}
+}else{
+	if(!masked){
+		button = draw_sprite(sprite_get("css_button"), 1, temp_x + 1, temp_y + 140)
+	}else{
+		button = draw_sprite(sprite_get("css_button"), 0, temp_x + 1, temp_y + 140)
+	}
+}
+
+//Alt name init. var doesn't work with arrays lol
+
+if(!masked){
+	alt_name[0]  = "Galega";
+	alt_name[1]  = "Torga";
+	alt_name[2]  = "Craggy";
+	alt_name[3]  = "Frostbitten";
+	alt_name[4]  = "Sunburst";
+	alt_name[5]  = "Wild";
+	alt_name[6]  = "Vibrant";
+	alt_name[7]  = "Canyon";
+	alt_name[8]  = "Dusk";
+	alt_name[9]  = "BLW";
+	alt_name[10]  = "Genesis";
+	alt_name[11]  = "Blastoise";
+}else{
+	alt_name[0]  = "Galega [Masked]";
+	alt_name[1]  = "Torga [Masked]";
+	alt_name[2]  = "Craggy [Masked]";
+	alt_name[3]  = "Frostbitten [Masked]";
+	alt_name[4]  = "Sunburst [Masked]";
+	alt_name[5]  = "Wild [Masked]";
+	alt_name[6]  = "Vibrant [Masked]";
+	alt_name[7]  = "Canyon [Masked]";
+	alt_name[8]  = "Dusk [Masked]";
+	alt_name[9]  = "BLW [Masked]";
+	alt_name[10]  = "Genesis [Masked]";
+	alt_name[11]  = "Blastoise [Masked]";
+}
 
 //Alt
 
-if(get_player_color(player) == 8){
-    draw_sprite(sprite_get("icons"), 2, temp_x + 4, temp_y + 101)
+var masked_offset = 0
+if(masked){
+	masked_offset = 22
 }
-if(get_player_color(player) > 8 && get_player_color(player) != 13){
+if(get_player_color(player) == 9){
+    draw_sprite(sprite_get("icons"), 2, temp_x + 4 + masked_offset, temp_y + 101)
+}else if(get_player_color(player) == 10){
+    draw_sprite(sprite_get("icons"), 0, temp_x + 4 + masked_offset, temp_y + 101)
+}else if(get_player_color(player) == 11){
+    draw_sprite(sprite_get("icons"), 4, temp_x + 4 + masked_offset, temp_y + 101)
+}
+if(masked){
     draw_sprite(sprite_get("masked_charselect"), 1, x + 8, y + 8)
     draw_sprite(sprite_get("icons"), 1, temp_x + 4, temp_y + 101)
-    
-    if(get_player_color(player) == 12){
-        draw_sprite(sprite_get("icons"), 0, temp_x + 26, temp_y + 101)
-    }
-    if(get_player_color(player) == 11){
-        draw_sprite(sprite_get("icons"), 3, temp_x + 26, temp_y + 101)
-    }
-}
-if(get_player_color(player) == 13){
-	draw_sprite(sprite_get("icons"), 4, temp_x + 4, temp_y + 101)
 }
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);

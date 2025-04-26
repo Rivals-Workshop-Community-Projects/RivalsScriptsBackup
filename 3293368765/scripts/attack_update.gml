@@ -6,6 +6,15 @@ if (has_rune("B") && move_cooldown[AT_NSPECIAL_2] <= 0 && attack_pressed && spec
 	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE)
 }
 
+// Gaining Will
+// Will incriment will once Teenah has hit a player
+// if(has_hit_player && !has_gained_will && attack != AT_NSPECIAL && attack != AT_NSPECIAL_AIR && attack != AT_USPECIAL && attack != AT_FSPECIAL){
+// 	has_gained_will = true;
+// 	will_charge += will_gain;
+// 	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
+// 	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
+// }
+
 if(attack == AT_NSPECIAL_2) move_cooldown[AT_NSPECIAL_2] = 50
 
 if (has_hit && will_cancel && !hitpause){
@@ -117,14 +126,29 @@ if (attack == AT_USPECIAL) {
       destroy_hitboxes();
       set_window(5);
     }
+    
+    if(window == tn_uspec_up_window && window_timer == 2){
+		reset_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X);
+		reset_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y);
+		reset_hitbox_value(AT_USPECIAL, 4, HG_WIDTH);
+		reset_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT);
+		
+		if(has_hit_player){
+			set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 25);
+			set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -35);
+			set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 65);
+			set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 135);
+		}
+    }
 
     //Simulates edge cancel.
-    if(window == 5 && free) {
-      set_state(PS_IDLE_AIR);
+    if(window == 5) {
+    	if was_parried set_state(PS_PRATLAND)
+      else if free set_state(PS_IDLE_AIR);
     }
 
     //If in endlag windows, cancel into 2nd stage attack windows on directional special press.
-    if(window == 2 && has_hit && !hitpause || window == 3 || window == 4) {
+    if !was_parried && (window == 2 && has_hit && !hitpause || window == 3 || window == 4) {
       if(down_down && special_pressed) {
         set_window(tn_uspec_down_window);
         destroy_hitboxes();
@@ -176,7 +200,7 @@ if (attack == AT_USPECIAL) {
     // }
 
     //Throw
-    if(window >= tn_uspec_throw_window && window <= tn_uspec_throw_window + 2) {
+    if(instance_exists(grabbed_player_obj) && window >= tn_uspec_throw_window && window <= tn_uspec_throw_window + 2) {
       //first, drop the grabbed player if they somehow escaped hitstun.
       if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) {
         grabbed_player_obj = noone;
@@ -356,9 +380,9 @@ if (attack==AT_USTRONG) {
     can_fast_fall = false;
     can_move = false;
     
-    if (window = 3 && has_hit == true) {
-        set_state(PS_IDLE_AIR);
-    }
+    // if (window = 3 && has_hit == true) {
+    //     set_state(PS_IDLE_AIR);
+    // }
 }
 
 //NSPECIAL
@@ -366,7 +390,7 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR) {
   trigger_wavebounce();
 
   //Checks for and consumes will charge, advances window
-  if(window == 2 || window == 3){
+  if(window == 2 || window == 3 && !was_parried){
   	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && will_lvl > 0 && special_down) {
     //tn_nspec_will_charge = true;
     will_lvl = (will_lvl) - 1;
@@ -383,7 +407,7 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR) {
   	}
     
   //Attack ends when Release window is over
-  if (window >= 5 && window <= 7){
+  if (window >= 5 && window <= 7 && !was_parried){ // Added was parried here cause this was always forcing idle - Gunner
   	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
   		set_state (PS_IDLE);
   	}

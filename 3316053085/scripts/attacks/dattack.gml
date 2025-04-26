@@ -36,9 +36,10 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, true);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
