@@ -208,8 +208,8 @@ if (bboost_counter == 3) {
 	//
 	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
 	//
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 0);
-	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 0);
+	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
+	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 10);
 	////////////////// DSPECIAL
 	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 2);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 2);

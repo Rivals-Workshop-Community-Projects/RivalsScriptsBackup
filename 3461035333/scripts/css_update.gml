@@ -151,6 +151,81 @@ if get_player_color( player ) == 19
 	}
 }
 
+// Invisiwoman
+if get_player_color( player ) == 21
+{
+	if cur_sage_display % 2 == 0 // Sage
+	{
+		set_color_profile_slot( 21, 0, 148, 55, 55 ); //hair + glaze
+		set_color_profile_slot( 21, 1, 148, 109, 110 ); //skin
+		set_color_profile_slot( 21, 2, 188, 0, 0 ); //leggings
+		set_color_profile_slot( 21, 3, 26, 21, 71 ); //clothes
+		set_color_profile_slot( 21, 4, 66, 72, 72 ); //headgear
+		set_color_profile_slot( 21, 5, 98, 109, 119 ); //zipper + sleeves
+		set_color_profile_slot( 21, 6, 186, 186, 188 ); //eye
+		set_color_profile_slot( 21, 7, 237, 0, 0 ); //moontech logo
+		
+		set_article_color_slot( 0, 148, 55, 55 ); //hair + glaze
+		set_article_color_slot( 1, 148, 109, 110 ); //skin
+		set_article_color_slot( 2, 188, 0, 0 ); //leggings
+		set_article_color_slot( 3, 26, 21, 71 ); //clothes
+		set_article_color_slot( 4, 66, 72, 72 ); //headgear
+		set_article_color_slot( 5, 98, 109, 119 ); //zipper + sleeves
+		set_article_color_slot( 6, 186, 186, 188 ); //eye
+		set_article_color_slot( 7, 237, 0, 0 ); //moontech logo
+	}
+	else //Not Sage
+	{
+		set_color_profile_slot( 21, 0, 255, 219, 110 ); //hair + glaze
+		set_color_profile_slot( 21, 1, 255, 214, 201 ); //skin
+		set_color_profile_slot( 21, 2, 20, 111, 255 ); //leggings
+		set_color_profile_slot( 21, 3, 255, 255, 255 ); //clothes
+		set_color_profile_slot( 21, 4, 255, 255, 255 ); //headgear
+		set_color_profile_slot( 21, 5, 38, 150, 255 ); //zipper + sleeves
+		set_color_profile_slot( 21, 6, 255, 255, 255 ); //eye
+		set_color_profile_slot( 21, 7, 0, 242, 255 ); //moontech logo 
+	
+		set_article_color_slot( 0, 255, 219, 110 ); //hair + glaze
+		set_article_color_slot( 1, 255, 214, 201 ); //skin
+		set_article_color_slot( 2, 20, 111, 255 ); //leggings
+		set_article_color_slot( 3, 255, 255, 255 ); //clothes
+		set_article_color_slot( 4, 255, 255, 255 ); //headgear
+		set_article_color_slot( 5, 38, 150, 255 ); //zipper + sleeves
+		set_article_color_slot( 6, 255, 255, 255 ); //eye
+		set_article_color_slot( 7, 0, 242, 255 ); //moontech logo 
+	}
+}
+
+// Steve
+if get_player_color( player ) == 22
+{
+	if cur_sage_display % 2 == 0 // Sage
+	{
+		set_color_profile_slot( 22, 0, 60, 84, 184 ); //hair + glaze
+		set_color_profile_slot( 22, 1, 186, 144, 113 ); //skin
+		set_color_profile_slot( 22, 3, 10, 71, 87 ); //clothes
+		set_color_profile_slot( 22, 5, 106, 203, 230 ); //zipper + sleeves
+	
+		set_article_color_slot( 0, 60, 84, 184 ); //hair + glaze
+		set_article_color_slot( 1, 186, 144, 113 ); //skin
+		set_article_color_slot( 3, 10, 71, 87 ); //clothes
+		set_article_color_slot( 5, 106, 203, 230); //zipper + sleeves
+
+	}
+	else
+	{
+		set_color_profile_slot( 22, 0, 107, 69, 46 ); //hair + glaze
+		set_color_profile_slot( 22, 1, 227, 182, 152 ); //skin
+		set_color_profile_slot( 22, 3, 106, 203, 230 ); //clothes
+		set_color_profile_slot( 22, 5, 84, 84, 84 ); //zipper + sleeves
+	
+		set_article_color_slot( 0, 107, 69, 46 ); //hair + glaze
+		set_article_color_slot( 1, 227, 182, 152 ); //skin
+		set_article_color_slot( 3, 106, 203, 230 ); //clothes
+		set_article_color_slot( 5, 84, 84, 84 ); //zipper + sleeves
+	}
+}
+
 #define update_sync_var
 {
     synced_vars = [cur_sage_display];

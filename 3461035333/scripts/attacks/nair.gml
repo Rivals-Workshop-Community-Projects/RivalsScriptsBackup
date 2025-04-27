@@ -4,7 +4,7 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_OFF_LEDGE, 0);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 5);//4
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 7);//4
 
 //Startup
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 1);

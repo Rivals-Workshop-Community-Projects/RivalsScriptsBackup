@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 26 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 21);
 
 // Time Avatar
 set_color_profile_slot( 1, 0, 126, 134, 163 ); //hair + glaze
@@ -247,3 +247,25 @@ set_color_profile_slot( 20, 4, 43, 35, 43 ); //headgear
 set_color_profile_slot( 20, 5, 255, 247, 196 ); //zipper + sleeves
 set_color_profile_slot( 20, 6, 244, 212, 255 ); //eye
 set_color_profile_slot( 20, 7, 255, 247, 196 ); //moontech logo
+
+// invisiwoman
+/*
+set_color_profile_slot( 21, 0, 255, 219, 110 ); //hair + glaze
+set_color_profile_slot( 21, 1, 255, 214, 201 ); //skin
+set_color_profile_slot( 21, 2, 20, 111, 255 ); //leggings
+set_color_profile_slot( 21, 3, 255, 255, 255 ); //clothes
+set_color_profile_slot( 21, 4, 255, 255, 255 ); //headgear
+set_color_profile_slot( 21, 5, 38, 150, 255 ); //zipper + sleeves
+set_color_profile_slot( 21, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( 21, 7, 0, 242, 255 ); //moontech logo
+
+// Placing blocks and shit
+set_color_profile_slot( 22, 0, 107, 69, 46 ); //hair + glaze
+set_color_profile_slot( 22, 1, 227, 182, 152 ); //skin
+set_color_profile_slot( 22, 2, 60, 84, 184 ); //leggings
+set_color_profile_slot( 22, 3, 106, 203, 230 ); //clothes
+set_color_profile_slot( 22, 4, 106, 203, 230 ); //headgear
+set_color_profile_slot( 22, 5, 84, 84, 84 ); //zipper + sleeves
+set_color_profile_slot( 22, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( 22, 7, 186, 186, 188 ); //moontech logo
+*/

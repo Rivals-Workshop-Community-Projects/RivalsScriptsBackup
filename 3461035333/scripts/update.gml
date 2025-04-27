@@ -1,50 +1,3 @@
-// Color palettes
-/*
-if get_player_color( player ) == 1
-{
-	if sage_mode == 0
-	{
-		set_color_profile_slot( 1, 0, 126, 134, 163 ); //hair + glaze
-		set_color_profile_slot( 1, 1, 171, 122, 104 ); //skin
-		set_color_profile_slot( 1, 2, 208, 186, 111 ); //leggings
-		set_color_profile_slot( 1, 3, 223, 225, 242 ); //clothes
-		set_color_profile_slot( 1, 4, 255, 255, 255 ); //headgear
-		set_color_profile_slot( 1, 5, 168, 175, 218 ); //zipper + sleeves
-		set_color_profile_slot( 1, 6, 255, 255, 255 ); //eye
-		set_color_profile_slot( 1, 7, 186, 186, 188 ); //moontech logo
-		
-		set_article_color_slot( 0, 126, 134, 163 ); //hair + glaze
-		set_article_color_slot( 1, 171, 122, 104 ); //skin
-		set_article_color_slot( 2, 208, 186, 111 ); //leggings
-		set_article_color_slot( 3, 223, 225, 242 ); //clothes
-		set_article_color_slot( 4, 255, 255, 255 ); //headgear
-		set_article_color_slot( 5, 168, 175, 218 ); //zipper + sleeves
-		set_article_color_slot( 6, 255, 255, 255 ); //eye
-		set_article_color_slot( 7, 186, 186, 188 ); //moontech logo
-	}
-	else
-	{
-		set_color_profile_slot( 1, 0, 255, 0, 0 ); //hair + glaze
-		set_color_profile_slot( 1, 1, 156, 156, 156 ); //skin
-		set_color_profile_slot( 1, 2, 74, 55, 83 ); //leggings
-		set_color_profile_slot( 1, 3, 74, 55, 83 ); //clothes
-		set_color_profile_slot( 1, 4, 74, 55, 83 ); //headgear
-		set_color_profile_slot( 1, 5, 120, 0, 0 ); //zipper + sleeves
-		set_color_profile_slot( 1, 6, 255, 0, 0 ); //eye
-		set_color_profile_slot( 1, 7, 156, 156, 156 ); //moontech logo	
-		
-		set_article_color_slot( 0, 255, 0, 0 ); //hair + glaze
-		set_article_color_slot( 1, 156, 156, 156 ); //skin
-		set_article_color_slot( 2, 74, 55, 83 ); //leggings
-		set_article_color_slot( 3, 74, 55, 83 ); //clothes
-		set_article_color_slot( 4, 74, 55, 83 ); //headgear
-		set_article_color_slot( 5, 120, 0, 0 ); //zipper + sleeves
-		set_article_color_slot( 6, 255, 0, 0 ); //eye
-		set_article_color_slot( 7, 156, 156, 156 ); //moontech logo
-	}
-}
-*/
-
 // Colors palettes exceptions 
 // The Reservist
 if get_player_color( player ) == 18
@@ -89,6 +42,80 @@ if get_player_color( player ) == 19
 		set_article_color_slot( 3, 156, 0, 12 ); //clothes
 		set_article_color_slot( 4, 97, 71, 81 ); //headgear
 		set_article_color_slot( 5, 216, 180, 183 ); //zipper + sleeves
+	}
+}
+
+// Invisiwoman
+if get_player_color( player ) == 21
+{
+	if sage_mode == 1
+	{
+		set_color_profile_slot( 21, 0, 148, 55, 55 ); //hair + glaze
+		set_color_profile_slot( 21, 1, 148, 109, 110 ); //skin
+		set_color_profile_slot( 21, 2, 188, 0, 0 ); //leggings
+		set_color_profile_slot( 21, 3, 26, 21, 71 ); //clothes
+		set_color_profile_slot( 21, 4, 66, 72, 72 ); //headgear
+		set_color_profile_slot( 21, 5, 98, 109, 119 ); //zipper + sleeves
+		set_color_profile_slot( 21, 6, 186, 186, 188 ); //eye
+		set_color_profile_slot( 21, 7, 237, 0, 0 ); //moontech logo
+		
+		set_article_color_slot( 0, 148, 55, 55 ); //hair + glaze
+		set_article_color_slot( 1, 148, 109, 110 ); //skin
+		set_article_color_slot( 2, 188, 0, 0 ); //leggings
+		set_article_color_slot( 3, 26, 21, 71 ); //clothes
+		set_article_color_slot( 4, 66, 72, 72 ); //headgear
+		set_article_color_slot( 5, 98, 109, 119 ); //zipper + sleeves
+		set_article_color_slot( 6, 186, 186, 188 ); //eye
+		set_article_color_slot( 7, 237, 0, 0 ); //moontech logo
+	}
+	else
+	{
+		set_color_profile_slot( 21, 0, 255, 219, 110 ); //hair + glaze
+		set_color_profile_slot( 21, 1, 255, 214, 201 ); //skin
+		set_color_profile_slot( 21, 2, 20, 111, 255 ); //leggings
+		set_color_profile_slot( 21, 3, 255, 255, 255 ); //clothes
+		set_color_profile_slot( 21, 4, 255, 255, 255 ); //headgear
+		set_color_profile_slot( 21, 5, 38, 150, 255 ); //zipper + sleeves
+		set_color_profile_slot( 21, 6, 255, 255, 255 ); //eye
+		set_color_profile_slot( 21, 7, 0, 242, 255 ); //moontech logo 
+	
+		set_article_color_slot( 0, 255, 219, 110 ); //hair + glaze
+		set_article_color_slot( 1, 255, 214, 201 ); //skin
+		set_article_color_slot( 2, 20, 111, 255 ); //leggings
+		set_article_color_slot( 3, 255, 255, 255 ); //clothes
+		set_article_color_slot( 4, 255, 255, 255 ); //headgear
+		set_article_color_slot( 5, 38, 150, 255 ); //zipper + sleeves
+		set_article_color_slot( 6, 255, 255, 255 ); //eye
+		set_article_color_slot( 7, 0, 242, 255 ); //moontech logo 
+	}
+}
+
+// Steve
+if get_player_color( player ) == 22
+{
+	if sage_mode == 1
+	{
+		set_color_profile_slot( 22, 0, 60, 84, 184 ); //hair + glaze
+		set_color_profile_slot( 22, 1, 186, 144, 113 ); //skin
+		set_color_profile_slot( 22, 3, 10, 71, 87 ); //clothes
+		set_color_profile_slot( 22, 5, 106, 203, 230 ); //zipper + sleeves
+		
+		set_article_color_slot( 0, 60, 84, 184 ); //hair + glaze
+		set_article_color_slot( 1, 186, 144, 113 ); //skin
+		set_article_color_slot( 3, 10, 71, 87 ); //clothes
+		set_article_color_slot( 5, 106, 203, 230); //zipper + sleeves
+	}
+	else
+	{
+		set_color_profile_slot( 22, 0, 107, 69, 46 ); //hair + glaze
+		set_color_profile_slot( 22, 1, 227, 182, 152 ); //skin
+		set_color_profile_slot( 22, 3, 106, 203, 230 ); //clothes
+		set_color_profile_slot( 22, 5, 84, 84, 84 ); //zipper + sleeves
+	
+		set_article_color_slot( 0, 107, 69, 46 ); //hair + glaze
+		set_article_color_slot( 1, 227, 182, 152 ); //skin
+		set_article_color_slot( 3, 106, 203, 230 ); //clothes
+		set_article_color_slot( 5, 84, 84, 84 ); //zipper + sleeves
 	}
 }
 
@@ -444,9 +471,10 @@ if (was_parried) or (state == PS_RESPAWN)
 }
 
 // After images
-if (abs(hsp) > sonic_boom_threshold) 
+var no_after_images_pls = (attack == AT_FSTRONG and window >= 3);
+if (abs(hsp) > sonic_boom_threshold) and !no_after_images_pls
 {
-	if (attack != AT_FSPECIAL) or (state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR)
+	if (state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR)
 	{
 		if (state != PS_HITSTUN and state != PS_HITSTUN_LAND)
 		{

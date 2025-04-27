@@ -49,15 +49,20 @@ if (attack == AT_TAUNT)
 
 if (attack == AT_FSTRONG)
 {
-	if (window == 5)
+	if (window == 2)
+	{
+		wsh = 13.5 + (strong_charge / 4.5)
+		set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, wsh);
+	}
+	if (window == 4)
 	{
 		if (free)
 		{
-			hsp = hsp / 1.1;
+			hsp = hsp / 1.3;//1.1
 		}
 		else
 		{
-			hsp = hsp / 1.6;	
+			hsp = hsp / 1.6;//1.6
 		}
 	}
 }
