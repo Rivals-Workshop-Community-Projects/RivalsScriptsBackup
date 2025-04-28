@@ -1,9 +1,17 @@
 //postdraw
 
 
-//draw_debug_text(x, y, "fuel rate: " + string(fuel_rate));
-//draw_debug_text(x, y+16, "current quota: " + string(quota_current));
+//draw_debug_text(x, y, "Bonus: " + string(overtime_bonus) + "%");
+//draw_debug_text(x, y+16, "Fine: " + string(death_fine));
+
 /*
+if (show_result && result_timer > 0){
+    draw_debug_text(x, y, "+ " + string(result_scrap));
+    if (result_overtime > 0) draw_debug_text(x, y+16, "+ " + string(result_overtime) + " Overtime");
+} else {
+    draw_debug_text(x, y, "damage: " + string(overtime_damage));
+    draw_debug_text(x, y+16, "overtime: " + string(overtime_bonus));
+}
 if (current_scrap != noone){
 draw_debug_text(x, y+32, "current scrap: " + string(current_scrap.name));
 draw_debug_text(x, y+48, "scrap size: " + string(current_scrap.size));

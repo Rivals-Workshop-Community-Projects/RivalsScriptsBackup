@@ -51,6 +51,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSTRONG, 1, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
@@ -69,6 +70,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSTRONG, 2, HG_OVERTIME_CREDIT, 5);
 
 //ladder fall
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
@@ -101,6 +103,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 3, HG_GROUNDEDNESS, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 5);
+set_hitbox_value(AT_DSTRONG, 3, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 3);
@@ -132,6 +135,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 4, HG_GROUNDEDNESS, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_LOCKOUT, 5);
+set_hitbox_value(AT_DSTRONG, 4, HG_OVERTIME_CREDIT, 5);
 
 //copies of the ladder hitboxes under a different attack index to fix a bug involving strong charge.
 set_hitbox_value(2, 1, HG_HITBOX_TYPE, 2);
@@ -164,6 +168,7 @@ set_hitbox_value(2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(2, 1, HG_GROUNDEDNESS, 1);
 set_hitbox_value(2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(2, 1, HG_HIT_LOCKOUT, 5);
+set_hitbox_value(2, 1, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(2, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(2, 2, HG_LIFETIME, 3);
@@ -195,3 +200,4 @@ set_hitbox_value(2, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(2, 2, HG_GROUNDEDNESS, 2);
 set_hitbox_value(2, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(2, 2, HG_HIT_LOCKOUT, 5);
+set_hitbox_value(2, 2, HG_OVERTIME_CREDIT, 5);

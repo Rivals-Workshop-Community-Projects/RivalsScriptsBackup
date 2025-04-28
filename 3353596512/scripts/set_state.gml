@@ -22,6 +22,12 @@ if (state_cat != PS_HITSTUN){
 	i_exploded = false;
 }
 
+if (prev_state == PS_HITSTUN) && (last_player != player) && (state != PS_RESPAWN && state != PS_DEAD) && (state_cat != SC_HITSTUN || state == PS_HITSTUN_LAND) && (should_make_shockwave){
+	if (overtime_bonus < overtime_bonus_max){
+		overtime_bonus += 3;
+	}
+}
+
 if (state == PS_AIR_DODGE && has_scrap && joy_pad_idle){
 	is_zdropping = true;
 	var zscrap = create_hitbox(AT_DSPECIAL_2, 1 + current_scrap.size, x, y - 30);

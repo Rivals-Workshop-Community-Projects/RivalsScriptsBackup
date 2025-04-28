@@ -11,3 +11,7 @@ if (enemy_hitboxID.orig_player == player){
         if (instance_exists(not_the_bees)) not_the_bees.hitbox_timer = not_the_bees.length - 1;
     }
 }
+
+if (overtime_bonus < overtime_bonus_max && enemy_hitboxID.orig_player != player){
+    overtime_bonus += 5;
+}

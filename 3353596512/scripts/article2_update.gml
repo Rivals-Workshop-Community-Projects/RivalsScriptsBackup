@@ -5,6 +5,11 @@ if (hitstop <= 0){
 
 image_index += anim_speed;
 
+if (state <= 2){
+	var baseb = array_length(scrap_on_counter);
+	base_bonus = (1/6)*(baseb-1)*(sqr(baseb) - (8*baseb) + 30);
+}
+
 if (state == 2 || state == 5){
     hit_detection();
 }
@@ -29,6 +34,9 @@ if (sprite_index == sprite_get("jeb_bell")){
             if (jeb_patience <= 0){
                 state = 6;
                 state_timer = 0;
+                if (player_id.overtime_bonus > 0){
+                	player_id.overtime_bonus -= 10*player_id.quota_level;
+                }
                 sprite_index = sprite_get("jeb_angry");
                 image_index = 0;
                 anim_speed = 0.25;
@@ -121,8 +129,17 @@ switch (state){
         if (state_timer == 90){
             player_id.jeb_collected = true;
             player_id.pending_quota += scrap_total;
-            player_id.scrap_lifetime += scrap_total;
+            player_id.result_scrap = scrap_total;
+            player_id.result_grade = round( ((50-player_id.total_bonus)/10) );
+            player_id.overtime_total = clamp( player_id.overtime_total, floor((scrap_total * (player_id.total_bonus/100))*0.2)/0.2, player_id.overtime_credits_cap);
+            if (player_id.result_grade <= 4 && player_id.overtime_total < 5){
+            	player_id.overtime_total = 5;
+            }
+            player_id.pending_quota += player_id.overtime_total;
+            //player_id.overtime_bonus = 0;
+            
             player_id.jeb_cooldown = 240;
+            base_bonus = 0;
             sound_stop(jeb_sound);
             instance_destroy(self);
             exit;

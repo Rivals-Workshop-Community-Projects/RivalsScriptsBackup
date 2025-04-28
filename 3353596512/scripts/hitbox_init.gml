@@ -2,6 +2,7 @@
 
 destroyed_effect = false;
 scrap_unsellable = false;
+is_homemade = false;
 
 //fspec
 if (attack == AT_FSPECIAL){
@@ -23,6 +24,7 @@ if (attack == AT_FSPECIAL){
     }
     if (hbox_num == 2){
         can_hit_self = true;
+        is_homemade = false;
     }
 }
 

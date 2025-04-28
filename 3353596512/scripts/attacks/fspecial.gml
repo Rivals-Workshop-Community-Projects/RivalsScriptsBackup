@@ -107,3 +107,4 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Detonation");
+set_hitbox_value(AT_FSPECIAL, 2, HG_OVERTIME_CREDIT, 5);

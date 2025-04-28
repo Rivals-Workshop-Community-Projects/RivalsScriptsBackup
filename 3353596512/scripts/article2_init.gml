@@ -50,6 +50,7 @@ scrap_on_counter = [
 ];
 
 scrap_total = 0;
+base_bonus = 0;
 
 hud_col = get_player_hud_color(player); 
 

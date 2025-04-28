@@ -157,3 +157,17 @@ switch (my_hitboxID.attack){
         }
     break;
 }
+
+var overtime_credit = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_OVERTIME_CREDIT);
+
+if (overtime_bonus < 50 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_OVERTIME_CREDIT) > 0) && my_hitboxID.player == my_hitboxID.player_id.player && (hit_player_obj != self){
+    if (my_hitboxID.attack == AT_FSPECIAL && !my_hitboxID.is_homemade) || (my_hitboxID.attack != AT_FSPECIAL){
+        overtime_bonus += overtime_credit;
+    }
+}
+
+if (overtime_bonus < 50) && (my_hitboxID.attack != AT_DSPECIAL) && (my_hitboxID.attack != AT_DSPECIAL_2 || (my_hitboxID.attack == AT_DSPECIAL_2 && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 5))){
+    if (my_hitboxID.player == my_hitboxID.player_id.player && (hit_player_obj != self)){
+        overtime_damage += floor(my_hitboxID.damage*(1 + (strong_charge/100)));
+    }
+}

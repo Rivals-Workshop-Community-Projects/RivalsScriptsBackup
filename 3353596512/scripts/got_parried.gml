@@ -34,12 +34,15 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){
     }
 }
 
-if (has_scrap && hit_player_obj != self){
-    current_scrap = noone;
-    item_weight = 0;
-    has_scrap = false;
-    scan_nofind = false;
-    calculate_weight()
+if (hit_player_obj != self){
+	if (overtime_bonus > 0) overtime_bonus -= (6 + ((quota_level-1)*2) );
+	if (has_scrap){
+    	current_scrap = noone;
+    	item_weight = 0;
+    	has_scrap = false;
+    	scan_nofind = false;
+    	calculate_weight()
+	}
 }
 
 #define calculate_weight()

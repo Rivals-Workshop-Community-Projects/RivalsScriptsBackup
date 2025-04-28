@@ -30,6 +30,10 @@ if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR) && (attack ==
 	drop_scrap();
 }
 
+if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR || prev_state == PS_LANDING_LAG || prev_state == PS_PARRY_START || prev_state == PS_PARRY){
+	if (overtime_bonus > 0) overtime_bonus -= (3 + (quota_level-1));
+}
+
 /*
 if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR) && attack == AT_USPECIAL_2{
 		hurt_img = 0;

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 18, 18 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 25 );
 
 // green suit
 set_color_profile_slot( 1, 0, 0, 130, 52 ); //suit
@@ -245,6 +245,36 @@ set_color_profile_slot( 21, 4, 171, 0, 0 ); //boots/gloves
 set_color_profile_slot( 21, 5, 230, 0, 0 ); //rabbit
 set_color_profile_slot( 21, 6, 171, 0, 0 ); //rabbit shading
 set_color_profile_slot( 21, 7, 60, 204, 217 ); //visor
+
+// phasmophobia
+set_color_profile_slot( 22, 0, 127, 156, 151 ); //suit
+set_color_profile_slot( 22, 1, 84, 119, 113 ); //suit shading
+set_color_profile_slot( 22, 2, 68, 72, 86 ); //mask
+set_color_profile_slot( 22, 3, 41, 45, 60 ); //mask shading
+set_color_profile_slot( 22, 4, 68, 72, 86 ); //boots/gloves
+set_color_profile_slot( 22, 5, 127, 156, 151 ); //rabbit
+set_color_profile_slot( 22, 6, 84, 119, 113 ); //rabbit shading
+set_color_profile_slot( 22, 7, 234, 237, 239 ); //visor
+
+// content warning
+set_color_profile_slot( 23, 0, 53, 54, 56 ); //suit
+set_color_profile_slot( 23, 1, 36, 38, 38 ); //suit shading
+set_color_profile_slot( 23, 2, 53, 54, 56 ); //mask
+set_color_profile_slot( 23, 3, 36, 38, 38 ); //mask shading
+set_color_profile_slot( 23, 4, 53, 54, 56 ); //boots/gloves
+set_color_profile_slot( 23, 5, 53, 54, 56 ); //rabbit
+set_color_profile_slot( 23, 6, 36, 38, 38 ); //rabbit shading
+set_color_profile_slot( 23, 7, 0, 255, 221 ); //visor
+
+// repo
+set_color_profile_slot( 24, 0, 173, 160, 76 ); //suit
+set_color_profile_slot( 24, 1, 135, 117, 59 ); //suit shading
+set_color_profile_slot( 24, 2, 173, 160, 76 ); //mask
+set_color_profile_slot( 24, 3, 135, 117, 59 ); //mask shading
+set_color_profile_slot( 24, 4, 135, 117, 59 ); //boots/gloves
+set_color_profile_slot( 24, 5, 173, 160, 76 ); //rabbit
+set_color_profile_slot( 24, 6, 173, 160, 76 ); //rabbit shading
+set_color_profile_slot( 24, 7, 250, 253, 255 ); //visor
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

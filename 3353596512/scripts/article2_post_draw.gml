@@ -2,7 +2,7 @@
 
 //draw_debug_text(x, y + 32, "state: " + string(state));
 //draw_debug_text(x, y + 48, "state timer: " + string(state_timer));
-//draw_debug_text(x, y + 64, "scrap collected: " + string(array_length(scrap_on_counter)));
+//raw_debug_text(x, y + 64, "flat bonus: " + string(base_bonus) + "%");
 //draw_debug_text(x, y + 80, "total value: " + string(scrap_total));
 
 

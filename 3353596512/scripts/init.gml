@@ -166,19 +166,22 @@ melee_weapons = [
         {
         index : 0,
         name : "Yield sign",
-        rank_req : 1
+        rank_req : 1,
+        was_bought : true
         },
         
         {
         index : 1,
         name : "Stop sign",
-        rank_req : 3
+        rank_req : 3,
+        was_bought : false
         },
         
         {
         index : 2,
         name : "Shovel",
-        rank_req : 4
+        rank_req : 4,
+        was_bought : false
         }
     ];
     
@@ -186,13 +189,15 @@ fspecial_tools = [
         {
         index : 0,
         name : "Stun grenades",
-        rank_req : 2
+        rank_req : 2,
+        was_bought : false
         },
         
         {
         index : 1,
         name : "Zap gun",
-        rank_req : 4
+        rank_req : 4,
+        was_bought : false
         }
     ];
     
@@ -200,13 +205,15 @@ uspecial_tools = [
         {
         index : 0,
         name : "Jetpack",
-        rank_req : 2
+        rank_req : 2,
+        was_bought : false
         },
         
         {
         index : 1,
         name : "Cruiser",
-        rank_req : 5
+        rank_req : 5,
+        was_bought : false
         }
     ];
     
@@ -412,7 +419,7 @@ playtest_active = false;
 with (oTestPlayer) playtest_active = true;
 
 //VICTORY MUSIC AND BG SET ---------------------------------------------------------------------------------
-//set_victory_bg( sprite_get( "[bg sprite name]" )); //Victory BackGround
+set_victory_bg( sprite_get( "victory_employee" )); //Victory BackGround
 set_victory_theme(sound_get("employee_victory")); //Victory BGMusic
 //remove the slashes at the start of the lines to use the above 2
 
@@ -586,6 +593,35 @@ mamizou_transform_spr = sprite_get("mamizou_transformation");
 pot_compat_variable = sprite_get("pumbo_food");
 pot_compat_text = "Company Rations";
 
+
+//custom indexes
+overtime_bonus = 0;
+total_bonus = 0;
+overtime_bonus_max = 50;
+overtime_credits_cap = 0;
+overtime_total = 0;
+
+overtime_damage = 0;
+
+efficiency_timer = 0;
+
+result_scrap = 0;
+result_overtime = 0;
+result_grade = 0;
+show_result = false;
+result_timer = 0;
+result_timer_max = 120;
+sold_index = 0;
+show_overtime = false;
+result_queue = false;
+
+death_fine = 0;
+show_fine = 0;
+fine_queue = false;
+fine_index = 0;
+
+should_make_shockwave = false;
+HG_OVERTIME_CREDIT = 69; //multiplier for overtime credits.
 
 //woodcock support
 i = 80;

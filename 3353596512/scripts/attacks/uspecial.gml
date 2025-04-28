@@ -79,3 +79,4 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Jetpack Explosion");
+set_hitbox_value(AT_USPECIAL, 1, HG_OVERTIME_CREDIT, 5);

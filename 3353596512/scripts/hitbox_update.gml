@@ -168,7 +168,8 @@ switch (attack){
     				if (hitbox_timer == 4){
     					sound_play(hit_sfx);
                 		spawn_hit_fx(x, y, 262);
-	            		create_hitbox(AT_FSPECIAL, 2, x, y);
+	            		var flash = create_hitbox(AT_FSPECIAL, 2, x, y);
+	            		flash.is_homemade = true;
 	            		destroyed_next = true;
     				}
     			break;

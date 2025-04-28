@@ -659,7 +659,7 @@ switch(attack)
     	if (window == 1){
     		if (window_timer = 1 && !hitpause){
     			available_scrap[31].orig_value = random_func(0, 199, true) + 1;
-    			available_scrap[31].value = available_scrap[20].orig_value;
+    			available_scrap[31].value = available_scrap[31].orig_value;
     		}
     	}
     	if (window == 2){
@@ -674,7 +674,7 @@ switch(attack)
     			if (!has_scrap){
     				scrap_found_timer = 0;
     				current_scrap = available_scrap[random_func(0, array_length(available_scrap), true)];
-    				//current_scrap = available_scrap[10]; //debug thing
+    				//current_scrap = available_scrap[30]; //debug thing
     				prev_scrap = current_scrap;
     				scrap_visual_dir = spr_dir;
 
@@ -700,11 +700,12 @@ switch(attack)
     				if (current_scrap.index == 16 && !instance_exists(not_the_bees)){
     					not_the_bees = create_hitbox(AT_DSPECIAL_2, 3, x, y - 50);
     				}
+    				/*
     				if (scanned_player_value){
     					current_scrap.value = round(current_scrap.orig_value*1.5);
     				} else {
     					current_scrap.value = current_scrap.orig_value;
-    				}
+    				}*/
     				place_anim = current_scrap.size;
     				scrap_visual_value = current_scrap.value;
     			}
@@ -917,6 +918,10 @@ if (attack == AT_USTRONG|| attack == AT_USTRONG_2 || attack == AT_USTRONG_3){
     					sound_play(sound_get("terminal_confirm"));
     					terminal_slot_buffer = 10;
     					curr_melee = melee_weapons[terminal_melee_index].index
+    					if (!melee_weapons[terminal_melee_index].was_bought){
+    						melee_weapons[terminal_melee_index].was_bought = true;
+    						overtime_bonus += 4;
+    					}
     					window = random_func(0, 2, true) + 3;
     					window_timer = 0;
     				}
@@ -947,6 +952,10 @@ if (attack == AT_USTRONG|| attack == AT_USTRONG_2 || attack == AT_USTRONG_3){
     					sound_play(sound_get("terminal_confirm"));
     					terminal_slot_buffer = 10;
     					curr_fspec = fspecial_tools[terminal_fspec_index].index
+    					if (!fspecial_tools[terminal_fspec_index].was_bought){
+    						fspecial_tools[terminal_fspec_index].was_bought = true;
+    						overtime_bonus += 4;
+    					}
     					window = random_func(0, 2, true) + 3;
     					window_timer = 0;
     				}
@@ -977,6 +986,10 @@ if (attack == AT_USTRONG|| attack == AT_USTRONG_2 || attack == AT_USTRONG_3){
     					sound_play(sound_get("terminal_confirm"));
     					terminal_slot_buffer = 10;
     					curr_uspec = uspecial_tools[terminal_uspec_index].index
+    					if (!uspecial_tools[terminal_uspec_index].was_bought){
+    						uspecial_tools[terminal_uspec_index].was_bought = true;
+    						overtime_bonus += 4;
+    					}
     					window = random_func(0, 2, true) + 3;
     					window_timer = 0;
     				}

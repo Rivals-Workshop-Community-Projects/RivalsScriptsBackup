@@ -26,6 +26,9 @@ switch (get_player_color(player)){
     case 14:
     case 18:
     case 20:
+    case 22:
+    case 23:
+    case 24:
         set_character_color_shading(1, 0.6);
     break;
 }

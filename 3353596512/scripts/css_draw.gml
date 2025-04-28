@@ -70,7 +70,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 24; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(218, 123, 30) // "color preview square" color. can be any color!
@@ -139,6 +139,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb(230, 0, 0)
     ce[21,1] = "Crewmate"
     ce[21,2] = ""
+    ce[22,0] = make_color_rgb(127, 156, 151)
+    ce[22,1] = "Phasmophobia"
+    ce[22,2] = ""
+    ce[23,0] = make_color_rgb(53, 54, 56)
+    ce[23,1] = "Content Warning"
+    ce[23,2] = ""
+    ce[24,0] = make_color_rgb(173, 160, 76)
+    ce[24,1] = "R.E.P.O."
+    ce[24,2] = ""
 }
  
 if (ae == "ae"){

@@ -152,6 +152,7 @@ set_hitbox_value(AT_FSPECIAL_2, 5, HG_TECHABLE, 3);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_VISUAL_EFFECT, zapgun_small);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSPECIAL_2, 5, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(AT_FSPECIAL_2, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_2, 6, HG_WINDOW, 5);
@@ -174,6 +175,7 @@ set_hitbox_value(AT_FSPECIAL_2, 6, HG_TECHABLE, 3);
 set_hitbox_value(AT_FSPECIAL_2, 6, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(AT_FSPECIAL_2, 6, HG_VISUAL_EFFECT, zapgun_small);
 set_hitbox_value(AT_FSPECIAL_2, 6, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSPECIAL_2, 6, HG_OVERTIME_CREDIT, 5);
 
 //zap multihits
 set_hitbox_value(AT_FSPECIAL_2, 7, HG_HITBOX_TYPE, 1);
@@ -376,3 +378,4 @@ set_hitbox_value(AT_FSPECIAL_2, 23, HG_EXTRA_HITPAUSE, 36);
 set_hitbox_value(AT_FSPECIAL_2, 23, HG_VISUAL_EFFECT, zapgun_big);
 set_hitbox_value(AT_FSPECIAL_2, 23, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_FSPECIAL_2, 23, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL_2, 23, HG_OVERTIME_CREDIT, 5);

@@ -91,6 +91,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_OVERTIME_CREDIT, 5);
 
 //flying (ascent)
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 1);
@@ -111,6 +112,7 @@ set_hitbox_value(AT_USPECIAL_2, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_OVERTIME_CREDIT, 5);
 
 //flying (descent)
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_TYPE, 1);
@@ -187,6 +189,7 @@ set_hitbox_value(AT_USPECIAL_2, 5, HG_HIT_SFX, asset_get("sfx_forsburn_combust")
 set_hitbox_value(AT_USPECIAL_2, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_VISUAL_EFFECT, 253);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_MUNO_HITBOX_NAME, "Explosion");
+set_hitbox_value(AT_USPECIAL_2, 5, HG_OVERTIME_CREDIT, 5);
 
 //run over front
 set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_TYPE, 1);
@@ -208,6 +211,7 @@ set_hitbox_value(AT_USPECIAL_2, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL_2, 6, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_USPECIAL_2, 6, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_OVERTIME_CREDIT, 5);
 
 //run over rear
 set_hitbox_value(AT_USPECIAL_2, 7, HG_HITBOX_TYPE, 1);
@@ -230,3 +234,4 @@ set_hitbox_value(AT_USPECIAL_2, 7, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL_2, 7, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL_2, 7, HG_HITBOX_GROUP, 5);
 set_hitbox_value(AT_USPECIAL_2, 7, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_OVERTIME_CREDIT, 5);

@@ -15,6 +15,36 @@ if (has_scrap){
     calculate_weight()
 }
 
+overtime_bonus = 0;
+
+if (quota_current > 0 && quota_level > 1){
+	switch (quota_level){
+		case 2:
+		death_fine = round((quota_next*0.4)*0.2) / 0.2;
+		break;
+		case 3:
+		death_fine = round((quota_next*0.45)*0.2) / 0.2;
+		break;
+		case 4:
+		death_fine = round((quota_next*0.5)*0.2) / 0.2;
+		break;
+	}
+	if (quota_level >= 5){
+		death_fine = round((quota_next*0.5)*0.2) / 0.2;
+	}
+	if (death_fine > 999){
+		death_fine = 999;
+	}
+	if (death_fine > quota_current){
+		death_fine = quota_current;
+	}
+	if (!show_result){
+		result_queue = true;
+	}
+	show_fine += 1;
+	quota_current -= death_fine;
+}
+
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;

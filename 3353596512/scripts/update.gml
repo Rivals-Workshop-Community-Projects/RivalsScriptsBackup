@@ -44,6 +44,25 @@ if (quota_level < 17){
 	quota_next = 9999;
 }
 
+quota_current = clamp(quota_current, 0, 9999);
+overtime_bonus = clamp(overtime_bonus, 0, overtime_bonus_max);
+
+if (instance_exists(jeb_obj)){
+	total_bonus = overtime_bonus + jeb_obj.base_bonus;
+	total_bonus = clamp(total_bonus, jeb_obj.base_bonus, overtime_bonus_max);
+} else {
+	total_bonus = overtime_bonus;
+}
+
+overtime_total = clamp(overtime_total, 0, overtime_credits_cap);
+
+
+
+if (overtime_damage >= 5){
+	if (overtime_bonus < overtime_bonus_max) overtime_bonus += 1;
+	overtime_damage -= 5;
+}
+
 if (state == PS_RESPAWN || respawn_taunt > 0){
 	respawn_timer++;
 } else {
@@ -56,10 +75,18 @@ if (jeb_collected){
 		if (jeb_collected_timer == 90){
 			quota_current += pending_quota;
 			pending_quota = 0;
+			result_overtime = overtime_total;
+			show_overtime = 1;
+			show_result = true;
+			if (!show_fine){
+				fine_queue = true;
+			}
 			if (quota_current >= quota_next){
 				is_ranking_up = true;
-
 			}
+			
+				//overtime_bonus = 0;
+				overtime_total = 0;
 				jeb_collected_timer = 0;
 				jeb_collected = false;
 		}
@@ -68,6 +95,58 @@ if (jeb_collected){
 if (jeb_cooldown > 0 && !jeb_collected){
 	jeb_cooldown--;
 }
+
+if (show_result && !result_queue){
+	result_timer++;
+	if (result_timer == 1){
+		if (!is_ranking_up){
+			if (result_overtime > 0 && result_grade < 4){
+				sound_play(sound_get("bonus_good"))
+			} else {
+				sound_play(sound_get("bonus_bad"))
+			}
+		}
+	}
+	if (sold_index < 14 && result_timer < result_timer_max * (1+show_overtime)){
+		sold_index++;
+	}
+	if (result_timer == result_timer_max || result_timer == result_timer_max*2){
+		sold_index = 6;
+	}
+	if (result_timer >= result_timer_max * (1+show_overtime)){
+		sold_index--;
+	}
+	if (sold_index <= 0){
+		result_timer = 0;
+		show_overtime = false;
+		show_result = false;
+		fine_queue = false;
+	}
+}
+
+if (show_fine > 0 && !fine_queue){
+	result_timer++;
+	if (fine_index < 6 && result_timer < result_timer_max){
+		fine_index++;
+	}
+	if (result_timer >= result_timer_max){
+		fine_index--;
+	}
+	if (fine_index <= 0){
+		result_timer = 0;
+		show_fine -= 1;
+		result_queue = false;
+	}
+}
+
+/*
+if (overtime_bonus > 0 && jeb_cooldown <= 0 && !hitpause){
+	efficiency_timer++;
+}
+
+if (efficiency_timer != 0 && efficiency_timer % 120 == 0 && overtime_bonus > 0 && !hitpause){
+	overtime_bonus--;
+}*/
 
 //leveling up
 
@@ -99,6 +178,12 @@ if (is_ranking_up){
 		is_ranking_up = false;
 		rank_timer = 0;
 	}
+}
+
+if (quota_level < 17){
+	overtime_credits_cap = floor(quota_next/2);
+} else {
+	overtime_credits_cap = 5000;
 }
 
 //hud stuff
@@ -194,7 +279,7 @@ with (pHitBox) if ("player_id" in self && player_id == other){
 
 with (oPlayer) {
 	if	(state == PS_RESPAWN && hit_by_jeb && state_timer == 0){
-		other.pending_quota += 5;
+		//other.pending_quota += 5;
 		hit_by_jeb = false;
 	}
 	if (state_cat != SC_HITSTUN && state != PS_RESPAWN && hit_by_jeb){
@@ -560,6 +645,9 @@ if (attack == AT_DSPECIAL && hbox_num == 1){
 				has_reticle = true;
 				with (other.player_id) scanned_player_value = true;
 				other.player_id.reticle_id = other.player_id;
+				if (other.player_id.overtime_bonus < other.player_id.overtime_bonus_max){
+					other.player_id.overtime_bonus += 10;
+				}
 			}
 		}
 		if (!is_new_creature){

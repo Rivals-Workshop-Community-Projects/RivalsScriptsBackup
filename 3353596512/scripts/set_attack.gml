@@ -1,5 +1,7 @@
 //set_attack
 
+overtime_attacked = false;
+
 switch (attack){
     case AT_USPECIAL:
     switch (curr_uspec){
@@ -118,9 +120,11 @@ switch (attack){
     case AT_DSTRONG:
     	if (instance_exists(ladder_obj)){
     		set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 0);
+    		set_hitbox_value(AT_DSTRONG, 2, HG_OVERTIME_CREDIT, 0);
     		has_ladder = false;
     	} else {
     		reset_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME);
+    		reset_hitbox_value(AT_DSTRONG, 2, HG_OVERTIME_CREDIT);
     		has_ladder = true;
     	}
     break;
