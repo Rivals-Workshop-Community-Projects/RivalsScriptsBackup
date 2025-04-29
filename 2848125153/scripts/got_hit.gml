@@ -11,22 +11,22 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	if(current_money >= 600 && hitbox_dmg >= 3){
 		sound_play(sound_get("money_pickup2"),false,noone,2)
 		sound_play(sound_get("money_pickup3"),false,noone,2)
-		var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;
+		var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(0, 10, true);money.vsp = -2-random_func(1, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.UnReflectable = true;
 		current_money -= 600;
 		if(current_money >= 1000 && hitbox_dmg >= 8){
-			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;
+			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(1, 10, true);money.vsp = -2-random_func(2, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;money.UnReflectable = true;
 			current_money -= 1000;
 		}
 		if(current_money >= 1000 && hitbox_dmg >= 15){
-			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;
+			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(2, 10, true);money.vsp = -2-random_func(3, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;money.UnReflectable = true;
 			current_money -= 1000;
 		}
 		if(current_money >= 1000 && hitbox_dmg >= 20){
-			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(3, 10, true);money.vsp = -2-random_func(4, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;
+			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(3, 10, true);money.vsp = -2-random_func(4, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;money.UnReflectable = true;
 			current_money -= 1000;
 		}
 		if(current_money >= 1000 && hitbox_dmg >= 25){
-			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(4, 10, true);money.vsp = -2-random_func(5, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;
+			var money = create_hitbox(AT_JAB, 10, round(x), round(y-35));money.hsp = 5-random_func(4, 10, true);money.vsp = -2-random_func(5, 8, true);money.hitbox_timer = 20;money.hit_priority = 0;money.value = 1000;money.UnReflectable = true;
 			current_money -= 1000;
 		}
 	}

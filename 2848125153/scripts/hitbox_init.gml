@@ -311,20 +311,15 @@ if(attack == AT_DSPECIAL){
 
 //money
 if(attack == AT_JAB){
+	money_timer = 0;
 	if(hbox_num == 10){
-		UnReflectable = true;
-		if(hitbox_timer >= 16){
-			hit_priority = 0;
-		}
+		if(hitbox_timer >= 16)hit_priority = 0;
 	}else if(hbox_num == 11){
-	    UnReflectable = true;//depth = -2;
 	    collision_sprite = sprite_get("moneypile");
 	}CalCanSnack = 1;
-	
+	UnReflectable = hit_priority <= 0;
 	if(hbox_num == 10 || hbox_num == 11){
-		if("value" not in self){
-	        value = 600;
-	    }
+		if("value" not in self)value = 600;
 	}
 	Pocketable = false;
 	Untargetable = true;

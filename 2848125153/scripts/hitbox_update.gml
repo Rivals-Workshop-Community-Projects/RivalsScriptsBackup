@@ -799,17 +799,16 @@ if(attack == AT_DSPECIAL){
 }
 
 if(attack == AT_JAB){
-	through_platforms = 999;
-    fall_through = true;
+	through_platforms = 999;fall_through = true;money_timer += 1;
 	if(hbox_num == 10){
 		hsp *= 0.95;vsp *= 0.95;spr_dir = hsp>0?1:-1;
 		if(!KoB_grabbed && hit_priority > 0)projectile_trail();
 		if(hitbox_timer >= 10){
 			hit_priority = 0;image_xscale = 0.2;image_yscale = 0.2;
 		}if(hitbox_timer >= 100)depth = -2;
+		UnReflectable = hit_priority <= 0;
 		if(!free){
 			destroyed = true;
-			//create_hitbox(AT_JAB, 11, round(x), round(y+8));
 			var pile = create_hitbox(AT_JAB, 11, round(x), round(y+8));
             pile.value = value;pile.hitbox_timer = hitbox_timer;pile.init = false;
 			sound_play(sound_get("money_land"),false,noone,2);
@@ -841,12 +840,12 @@ if(attack == AT_JAB){
 		    	if(num2 == 0){
 		    		sprite_index = asset_get("empty_sprite");num2 = 1;
 		    	}else{
-		    		sprite_index = sprite_get("moneypile");num2 = 0;
+		    		sprite_index = collision_sprite;num2 = 0;
 		    	}
 			}
 		}else{
 			if(num2 != 0){
-				sprite_index = sprite_get("moneypile");num2 = 0;
+				sprite_index = collision_sprite;num2 = 0;
 			}
 		}
 	}

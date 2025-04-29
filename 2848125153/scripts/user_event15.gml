@@ -318,6 +318,11 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.39", "28th April, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed Money being reflectable on the first frame in specific cases on hit
++ Added more Miiverse posts");
+
 initPatch("1.38", "7th December, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug with the newest update where the new Bank mechanic wouldnt always work properly");

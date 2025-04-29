@@ -883,20 +883,14 @@ if (attack == AT_NSPECIAL){
     	}
 	}
 }else if (attack == AT_DAIR){
-	if(window != 3){
-		reset_attack_value(AT_DAIR, AG_CATEGORY);
-	}else{
-		set_attack_value(AT_DAIR, AG_CATEGORY, 2);
-	}
-	if(shield_down){
-		fall_through = true;
-	}
+	if(window != 3)reset_attack_value(AT_DAIR, AG_CATEGORY);
+	else set_attack_value(AT_DAIR, AG_CATEGORY, 2);
+	
+	if(shield_down)fall_through = true;
 	if((window == 2 || window == 3) && vsp >= -4 && DairBounce <= 0){
 		with(pHitBox){
 	    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && player_id != other){
-		    	if(place_meeting(x,y,other.dairhitbox)){
-		    		other.DairBounce = 2;
-		    	}
+		    	if(place_meeting(x,y,other.dairhitbox))other.DairBounce = 2;
 	    	}
 	    }
 	}
@@ -908,18 +902,15 @@ if (attack == AT_NSPECIAL){
 		|| position_meeting(x,y+20,asset_get("par_jumpthrough")) || position_meeting(x-10*spr_dir,y+20,asset_get("par_jumpthrough")) || position_meeting(x+10*spr_dir,y+20,asset_get("par_jumpthrough")))
 		|| DairBounce){
 			vsp = -13;old_vsp = vsp;
-			if(DairBounce == 2){
-    			spawn_hit_fx(x,y,304);sound_play(asset_get("sfx_blow_heavy1"));
-    		}sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
+			if(DairBounce == 2)spawn_hit_fx(x,y,304);sound_play(asset_get("sfx_blow_heavy1"));
+    		sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
 			DairBounce = 0;move_cooldown[AT_USPECIAL] = 0;djumps = 0;has_airdodge = true;
 		}
     	if(window_timer == 12 && !attack_down && !hitpause){window = 4;window_timer = 0;destroy_hitboxes();}
     }else if(window == 3){
-    	if(vsp <= 2){
-    		can_fast_fall = false;
-    	}else{
-    		can_fast_fall = true;
-    	}if(vsp >= 0 && !instance_exists(dairhitbox) && !hitpause){
+    	if(vsp <= 2)can_fast_fall = false;
+    	else can_fast_fall = true;
+    	if(vsp >= 0 && !instance_exists(dairhitbox) && !hitpause){
     		if(DairBounceHits < 2){dairhitbox = create_hitbox(AT_DAIR, 2, round(x), round(y));}
     		else{dairhitbox = create_hitbox(AT_DAIR, 3, round(x), round(y));}
     	}else if(vsp < 0){
@@ -929,9 +920,7 @@ if (attack == AT_NSPECIAL){
 			DairBounce = 1;sound_play(asset_get("sfx_land"));dust = spawn_hit_fx(x, y, fx_dust);dust.depth = depth-1;
 		}
     	if(DairBounce > 0){
-    		if(DairBounce == 2){
-    			spawn_hit_fx(x,y,303);sound_play(asset_get("sfx_blow_medium1"));
-    		}
+    		if(DairBounce == 2)spawn_hit_fx(x,y,303);sound_play(asset_get("sfx_blow_medium1"));
     		DairBounce = 0;
     		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}
     		else if(up_down){vsp = -12;old_vsp = vsp;}
