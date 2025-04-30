@@ -24,6 +24,14 @@ if (state == PS_CROUCH && state_timer >= footstool_start && down_down && get_mat
     draw_set_alpha(1);
 }
 
+// Training mode + Abyss Rune: Nspecial Windbox visual
+if (nspecial_windbox_rune && is_attacking && attack == AT_NSPECIAL && (window == 2 || window == 3) && get_match_setting(SET_HITBOX_VIS)) {
+    draw_set_alpha(0.5);
+    rectDraw(x+strong_windbox_x, y+strong_windbox_y, strong_windbox_w, strong_windbox_h, c_blue);
+    rectDraw(x+weak_windbox_x, y+weak_windbox_y, weak_windbox_w, weak_windbox_h, c_purple);
+    draw_set_alpha(1);
+}
+
 
 //written by muno
 #define rectDraw(x1, y1, width, height, color)

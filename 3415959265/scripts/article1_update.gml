@@ -5,20 +5,7 @@ state_timer++;
 // Ensure hitstop doesn't go negative
 if (hitstop < 0) hitstop = 0;
 
-// **Only Transition to State 7 Once** When First Becoming Free
-if (free && !previous_free) { 
-    newState(7); // Move to timeout state once
-}
-
-// **Store Previous Frame's Free State**  
-previous_free = free;
-    
 if (player_id.my_grab_id != noone) slam_grab_id = player_id.my_grab_id 
-
-
-/*
-if (state == 3) is_hittable = true; 
-else is_hittable = false;*/
 
 //Placed these outside the switch case as the 3 states share the same detonation code for the command grabs
 if (state == 1) //Prepping
@@ -397,20 +384,65 @@ switch (state)
 }
 
 
-// Check if the player_hit exists before referencing it
 var player_hit = player_id.hit_player_obj;
 if (instance_exists(player_hit))
 {
-	if (player_hit.last_player == player_id.player) {
-	    if (player_hit.state != PS_HITSTUN) {
-	        mask_index = sprite_get("artc_mask");
-	    } else {
-	        mask_index = sprite_get("artc_mask2");
-	    }
-	}
-		
+    if (player_hit.last_player == player_id.player)
+    {
+        var new_mask;
+
+        if (player_hit.state == PS_HITSTUN) {
+            new_mask = sprite_get("artc_mask2");
+        } else {
+            new_mask = sprite_get("artc_mask");
+        }
+
+        if (new_mask != mask_sprite_prev)
+        {
+            mask_index = new_mask;
+            mask_sprite_prev = new_mask;
+
+            // Snap to floor/platform using pixel-accurate rayDown
+            var snap_y = rayDown("par_block", "par_jumpthrough");
+            if (snap_y != 1000) {
+                y = snap_y;
+
+                // Extra: force-correct Y down until we touch a surface
+                while (!place_meeting(x, y + 1, asset_get("par_block")) &&
+                       !place_meeting(x, y + 1, asset_get("par_jumpthrough")))
+                {
+                    y += 1;
+                    if (y > room_height) break;
+                }
+            }
+        }
+    }
 }
 
+/// === 2. Grounded Status Check (Manual) ===
+safe_grounded = place_meeting(x, y + 1, asset_get("par_block")) ||
+                place_meeting(x, y + 1, asset_get("par_jumpthrough"));
+
+/// === 3. Transition to Timeout Only When Actually Leaving Ground ===
+if (!safe_grounded && grounded_last_frame)
+{
+    newState(7); // Despawn timeout
+}
+
+/// === 4. Store Previous Grounded State ===
+grounded_last_frame = safe_grounded;
+
+#define rayDown(key1, key2){  
+    if (!free) return y;  
+    var _y = y;  
+    var _obj;  
+    for (var i = 0; i < 100; ++i) {  
+        _obj = instance_position(x + spr_dir, _y + 16 * i, asset_get(key1));  
+        if (_obj == noone) _obj = instance_position(x + spr_dir, _y + 16 * i, asset_get(key2));  
+        if (_obj != noone) return _y + i;  
+    }  
+    return 1000;  
+}
 // State change function
 #define newState (state_id)
 {

@@ -28,11 +28,11 @@ jump_start_time = 5;
 jump_speed = 10;
 short_hop_speed = 5;
 djump_speed = 9;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .4;
+air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .05;
 max_djumps = 1;
@@ -129,6 +129,7 @@ float_max_speed = 4;
 
 air_time = 0;
 can_fspecial = true;
+can_fspec_jump = true;
 
 cannon = noone;
 
@@ -144,6 +145,7 @@ clowncar = noone;
 
 cannon_cooldown = 0;
 cannonball_cooldown = 0;
+hud_col = c_white;
 
 set_victory_theme(sound_get("mus_junior_wins"));
 set_victory_bg(sprite_get("victory_bg"));

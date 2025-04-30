@@ -435,7 +435,7 @@ break;
 	break;
 	
 	case AT_TAUNT:
-	
+		can_fast_fall = false;
 	    switch taunt_type {
 		    default:
 		        if window = 1 && window_timer = 1 && !hitpause {
@@ -473,7 +473,7 @@ break;
 	break;
 	
 	case AT_EXTRA_1:
-	
+		can_fast_fall = false;
 	    if (window = 1 || window = 3) && window_timer = 1 && !hitpause {
     		sound_play(sound_get("8bit_warp"), false, noone, 1, 1);
 		}
@@ -499,7 +499,7 @@ break;
 	break;
 	
 	case AT_EXTRA_2:
-	
+	can_fast_fall = false;
 	//set movement checks ==
 	    var held_forward = false;
 	    var held_back = false;

@@ -62,7 +62,7 @@ if (state == 1){
     }
 }
 
-if (collision_circle(x, y, 24, cannon, false, false) && state != 3 && !double_fired && cannon.state != 3){
+if (collision_circle(x, y, 24, cannon, false, false) && state != 3 && !double_fired && cannon.state != 3 && owner == player_id.player){
     sound_play(sound_get("sfx_succ"));
     spawn_hit_fx(cannon.x, cannon.y, 302);
     state = 3;

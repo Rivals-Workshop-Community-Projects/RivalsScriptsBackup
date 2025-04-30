@@ -88,7 +88,8 @@ switch state{
         other.can_hit_self = 1;
         set_st(3);
         other.damage = floor(other.damage*1.5);
-        if "is_a_rosso_missile" in self should_angle = 0;
+        if "is_a_rosso_missile" in other other.should_angle = 0;
+        if "is_V1_ultrakill" in other.player_id && !(other.rosso_bounce%2) other.rosso_bounce++;
     }
     break;
     case 3: //shine
@@ -118,6 +119,37 @@ switch state{
                 if !shot_num && instance_exists(colh) && colh.player == player && colh.attack == AT_NSPECIAL{
                     shot_num++;
                 }
+                
+                var colart1 = instance_position(fire_end[0], fire_end[1], obj_article1);
+				var colart2 = instance_position(fire_end[0], fire_end[1], obj_article2);
+				var colart3 = instance_position(fire_end[0], fire_end[1], obj_article3);
+				var colartpl = instance_position(fire_end[0], fire_end[1], obj_article_platform);
+				
+				if !shot_num && instance_exists(colart1) && colart1.is_hittable && array_find_index(hit_list, colart1) < 0 && colart1 != drone{
+					shot_num++;
+				}
+				if !shot_num && instance_exists(colart2) && colart1.is_hittable && array_find_index(hit_list, colart2) < 0{
+					shot_num++;
+				}
+				if !shot_num && instance_exists(colart3) && colart1.is_hittable && array_find_index(hit_list, colart3) < 0{
+					shot_num++;
+				}
+				if !shot_num && instance_exists(colartpl) && colart1.is_hittable && array_find_index(hit_list, colartpl) < 0{
+					shot_num++;
+				}
+				
+				//v1 compat
+				var object = instance_position(fire_end[0], fire_end[1], pHitBox);
+				if !shot_num && object != noone && "is_V1_ultrakill" in object.player_id && object.type == 2 && "hitscannable" in object && object.hitscannable && object.hitscanned == noone{
+					object.hsp = 0;
+					object.splitshot = (object.vsp >= 8 || object.hitbox_timer == clamp(object.hitbox_timer, 20, 30)) && object.attack == AT_NSPECIAL && object.hbox_num == 3;
+					object.vsp = 0;
+					object.grav = 0;
+					var alt = (!alt_cur? 32: alt_cur);
+					object.hitscanned = [fire_end[0], fire_end[1], 10, 1, player, self, make_color_rgb(get_color_profile_slot_r(alt, 1), get_color_profile_slot_g(alt, 1), get_color_profile_slot_b(alt, 1)), 1];
+					object.hitscanned_delay = 3;
+					shot_num++;
+				}
             }
             array_push(target_pos, fire_end);
             set_snipe_strength();

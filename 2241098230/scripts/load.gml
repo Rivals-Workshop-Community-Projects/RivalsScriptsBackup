@@ -52,9 +52,9 @@ sprite_change_offset("fthrow_air", 80, 126);
 sprite_change_offset("uthrow", 80, 126);
 sprite_change_offset("uthrow_air", 80, 126);
 sprite_change_offset("fspecial", 80, 126);
-sprite_change_offset("bullcharge", 48, 126);
+sprite_change_offset("bullcharge", 64, 126);
 
-sprite_change_offset("fspecial2", 48, 126);
+sprite_change_offset("fspecial2", 64, 126);
 sprite_change_offset("fspecial_air", 80, 126);
 sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);

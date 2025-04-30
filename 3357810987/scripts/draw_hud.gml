@@ -53,7 +53,7 @@ if (!variable_instance_exists(id, "mus_phase"))
  
 var placeholder_name = "MUSIC_FILE_NAME_HERE";
  
-if (get_gameplay_time() <= 122 && mus_phase == 0)
+if (get_gameplay_time() <= 122 && mus_phase == 0 && get_gameplay_time() > 5)
 {
     with (asset_get("oPlayer"))
     {

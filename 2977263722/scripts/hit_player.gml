@@ -15,6 +15,10 @@ switch my_hitboxID.attack {
 		sound_play(sound_get("bully_dink"));
 		sound_play(sound_get("bully_noise"));
 		
+		//for rune stuff
+		attack = AT_FSPECIAL;
+		state = (free ? PS_ATTACK_AIR : PS_ATTACK_GROUND);
+		
 		if has_rune("D") && hit_player_obj.bully_burn = true {
 		    hit_player_obj.bully_burn_timer = 0;
 			hitstop += 20;

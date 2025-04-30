@@ -60,7 +60,7 @@ switch (attack)
 	case AT_EXTRA_1: // footstool
 		down_down = true;
 		force_crouch = true;
-		hud_offset = 120;
+		if (!plant_gang_rune) hud_offset = 120;
 		break;
 	
 	case AT_NSPECIAL:
@@ -75,8 +75,12 @@ switch (attack)
 				hsp *= 0.8;
 				vsp *= 0.8;
 				if (window_timer == win_len) {
+					if(nspecial_windbox_rune) ptooieless_nspecial = instance_exists(ptooie_obj) && ptooie_obj.state != 0;
 					if (!instance_exists(ptooie_obj)) {
 						ptooie_obj = instance_create(x, y-60, "obj_article1");
+						set_attack_value(attack, AG_NUM_WINDOWS, 5);
+						ptooie_full_fx = 0;
+					} else if(ptooieless_nspecial){
 						set_attack_value(attack, AG_NUM_WINDOWS, 5);
 						ptooie_full_fx = 0;
 					} else {
@@ -87,16 +91,22 @@ switch (attack)
 				break;
 			case 3: // Shares ptooie handling with case 2
 				if (vsp > 2.5) vsp = 2.5;
-				var dir = (right_down - left_down);
-				if (dir != 0) {
-					set_attack_value(attack, AG_NUM_WINDOWS, 7);
-					window = 6;
-					window_timer = 0;
-					spr_dir = dir;
-					break;
-				}
-				else if (!special_down) {
-					window++;
+				if(!ptooieless_nspecial){
+					var dir = (right_down - left_down);
+					if (dir != 0) {
+						set_attack_value(attack, AG_NUM_WINDOWS, 7);
+						window = 6;
+						window_timer = 0;
+						spr_dir = dir;
+						break;
+					}
+					else if (!special_down) {
+						window++;
+						window_timer = 0;
+						break;
+					}
+				} else if (!special_down) {
+					window = 8;
 					window_timer = 0;
 					break;
 				}
@@ -111,31 +121,71 @@ switch (attack)
 					else spawn_hit_fx(x, y-120, nspecial_vfx_half);
 				}
 				
-				ptooie_obj.x = lerp(ptooie_obj.x, x, 0.9);
-				ptooie_obj.rot_speed = -3*spr_dir;
-				var pt_timer = ptooie_obj.state_timer;
-				var loop_timer = pt_timer % pt_total;
-				if (pt_timer < pt_r) { // init rise
-					ptooie_obj.y = ease_backOut(y-60, y-190, pt_timer, ptooie_raise_time, 1);
-					ptooie_full_fx = (ptooie_obj.y < y-130);
-				} else if (loop_timer < pt_r) { // looped rise
-					pt_timer = loop_timer;
-					ptooie_obj.y = ease_backInOut(y-110, y-190, pt_timer, ptooie_raise_time, 1);
-					ptooie_full_fx = (ptooie_obj.y < y-130);
-				} else if (loop_timer < pt_h) { // hold high
-					pt_timer = loop_timer - pt_r;
-					ptooie_obj.y = y-190 + 2*sin(pi * pt_timer / 16.667);
-				} else if (loop_timer < pt_d) { // descend
-					pt_timer = loop_timer - pt_h;
-					ptooie_obj.y = ease_backInOut(y-190, y-110, pt_timer, ptooie_descend_time, 1);
-					ptooie_full_fx = (ptooie_obj.y < y-180);
-				} else { // hold low (deprecated)
-					pt_timer = loop_timer - pt_total;
-					ptooie_obj.y = y-110 - 2*sin(pi * pt_timer / 16.667);
+				if(nspecial_windbox_rune && ptooieless_nspecial) ptooie_full_fx = true;
+				else {
+					ptooie_obj.x = lerp(ptooie_obj.x, x, 0.9);
+					ptooie_obj.rot_speed = -3*spr_dir;
+					var pt_timer = ptooie_obj.state_timer;
+					var loop_timer = pt_timer % pt_total;
+					if (pt_timer < pt_r) { // init rise
+						ptooie_obj.y = ease_backOut(y-60, y-190, pt_timer, ptooie_raise_time, 1);
+						ptooie_full_fx = (ptooie_obj.y < y-130);
+					} else if (loop_timer < pt_r) { // looped rise
+						pt_timer = loop_timer;
+						ptooie_obj.y = ease_backInOut(y-110, y-190, pt_timer, ptooie_raise_time, 1);
+						ptooie_full_fx = (ptooie_obj.y < y-130);
+					} else if (loop_timer < pt_h) { // hold high
+						pt_timer = loop_timer - pt_r;
+						ptooie_obj.y = y-190 + 2*sin(pi * pt_timer / 16.667);
+					} else if (loop_timer < pt_d) { // descend
+						pt_timer = loop_timer - pt_h;
+						ptooie_obj.y = ease_backInOut(y-190, y-110, pt_timer, ptooie_descend_time, 1);
+						ptooie_full_fx = (ptooie_obj.y < y-180);
+					} else { // hold low (deprecated)
+						pt_timer = loop_timer - pt_total;
+						ptooie_obj.y = y-110 - 2*sin(pi * pt_timer / 16.667);
+					}
+					if (instance_exists(ptooie_obj.hitbox)) {
+						ptooie_obj.hitbox.x = ptooie_obj.x;
+						ptooie_obj.hitbox.y = ptooie_obj.y;
+					}
 				}
-				if (instance_exists(ptooie_obj.hitbox)) {
-					ptooie_obj.hitbox.x = ptooie_obj.x;
-					ptooie_obj.hitbox.y = ptooie_obj.y;
+				
+				// Abyss Rune: Nspecial active windbox
+				if(nspecial_windbox_rune && special_down){
+					strong_windbox_h = ptooie_full_fx ? tall_strong_windbox_h : short_strong_windbox_h;
+					strong_windbox_y = ptooie_full_fx ? tall_strong_windbox_y : short_strong_windbox_y;
+					
+					var strong_windbox = [x+strong_windbox_x, y+strong_windbox_y, x+strong_windbox_x+strong_windbox_w, y+strong_windbox_y+strong_windbox_h];
+					var weak_windbox = [x+weak_windbox_x, y+weak_windbox_y, x+weak_windbox_x+weak_windbox_w, y+weak_windbox_y+weak_windbox_h];
+					
+					with(oPlayer) if player != other.player && !super_armor && !soft_armor && !hitpause && !invincible && !attack_invince && !hurtboxID.dodging {
+						if(collision_rectangle(strong_windbox[0], strong_windbox[1], strong_windbox[2], strong_windbox[3], self, false, false)){
+							do_a_fast_fall = false;
+                    		can_fast_fall = false;
+							var damage_mod = (get_player_damage(player)/100) * knockback_adj;
+							vsp -= grav + (vsp > 0 ? 0.4 + damage_mod : 0.2 + damage_mod);
+							spider_plant_windbox_death_timer = abs(vsp/grav) + 10;
+							spider_plant_windbox_death_owner = other;
+						} else if(collision_rectangle(weak_windbox[0], weak_windbox[1], weak_windbox[2], weak_windbox[3], self, false, false)){
+							do_a_fast_fall = false;
+                    		can_fast_fall = false;
+							var damage_mod = (get_player_damage(player)/200) * knockback_adj;
+							vsp -= grav + (vsp > 0 ? 0.4 + damage_mod : 0.1 + damage_mod);
+							spider_plant_windbox_death_timer = abs(vsp/grav) + 10;
+							spider_plant_windbox_death_owner = other;
+						}
+					}
+					
+					with(ptooie_obj){
+						if(state == 1 && !destroyed && !hitstop){
+							if(collision_rectangle(strong_windbox[0], strong_windbox[1], strong_windbox[2], strong_windbox[3], self, false, false)){
+								vsp -= 1.5;
+							} else if(collision_rectangle(weak_windbox[0], weak_windbox[1], weak_windbox[2], weak_windbox[3], self, false, false)){
+								vsp -= 1;
+							}
+						}
+					}
 				}
 				break;
 			case 4: // Await ptooie drop
@@ -238,23 +288,43 @@ switch (attack)
 			else if (fspecial_charge == fspecial_large_charge) {
 				sound_play(asset_get('sfx_frog_fspecial_charge_full'));
 				fspecial_flash = 1;
+				if(fspecial_infinite_charge_rune){ // Abyss Rune: Fspecial Infinite Charge
+					fspecial_charge = 0;
+					fspecial_stacks++;
+				}
 			}
 
-			if (window = 3) {
+			if (window == 3) {
 				// 1, 2, 3
 				fspecial_level = 1 + (fspecial_charge >= fspecial_mid_charge) + (fspecial_charge >= fspecial_large_charge);
-				fspecial_charge = 0;
+				if (!fspecial_infinite_charge_rune) fspecial_charge = 0;
 			}
 		}
 		if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-			var i = fspecial_level-1; // for array access
-			var _x = !free ? x+(poison_ground_x[i]*spr_dir) : x+(poison_air_x[i]*spr_dir);
-			var _y = !free ? y+poison_ground_y[i] : y+poison_air_y[i];
-			if (fspecial_level == 1) {
-				var hitbox = create_hitbox(AT_FSPECIAL, 1+free, _x, _y);
-				if (free) hitbox.proj_angle = poison_air_angle*spr_angle;
+			if(fspecial_infinite_charge_rune && fspecial_stacks > 0){  // Abyss Rune: Fspecial Infinite Charge
+				for(var j = 1; j <= fspecial_stacks + 1; j++){
+					var stored_fspecial_level = fspecial_level;
+					if(j != fspecial_stacks + 1) fspecial_level = 3;
+					var i = fspecial_level-1; // for array access
+					var _x = !free ? x+(poison_ground_x[i]*spr_dir*j) : x+(poison_air_x[i]*spr_dir*j);
+					var _y = !free ? y+poison_ground_y[i] : y+poison_air_y[i]*j;
+					if (fspecial_level == 1) {
+						var hitbox = create_hitbox(AT_FSPECIAL, 1+free, _x, _y);
+						if (free) hitbox.proj_angle = poison_air_angle*spr_angle;
+					}
+					else instance_create(_x, _y, "obj_article2");
+					fspecial_level = stored_fspecial_level;
+				}
+			} else {
+				var i = fspecial_level-1; // for array access
+				var _x = !free ? x+(poison_ground_x[i]*spr_dir) : x+(poison_air_x[i]*spr_dir);
+				var _y = !free ? y+poison_ground_y[i] : y+poison_air_y[i];
+				if (fspecial_level == 1) {
+					var hitbox = create_hitbox(AT_FSPECIAL, 1+free, _x, _y);
+					if (free) hitbox.proj_angle = poison_air_angle*spr_angle;
+				}
+				else instance_create(_x, _y, "obj_article2");
 			}
-			else instance_create(_x, _y, "obj_article2");
 			
 			move_cooldown[AT_FSPECIAL] = fspecial_cooldown;
 
@@ -302,12 +372,31 @@ switch (attack)
 		}
 		
 		if (window == 5) {
-			if (window_timer == 12) create_hitbox(AT_USPECIAL, 3, x, y);
-			spr_angle = 0;
-			if (!free) set_state(PS_PRATLAND);
-			else if (down_pressed) set_state(PS_PRATFALL);
-			else if (vsp > 3) vsp = clamp(vsp-1.5, 3, vsp);
-			if (state != PS_ATTACK_AIR) destroy_hitboxes();
+			if(slowfall_rune && slowfalling){
+				if !hitpause vsp = slowfall_speed;
+				if !free set_state(PS_IDLE);
+				else if !jump_down || slowfall_duration <= 0 set_state(PS_IDLE_AIR);
+				iasa_script();
+				uspecial_override = true;
+			} else {
+				if (window_timer == 12) create_hitbox(AT_USPECIAL, 3, x, y);
+				spr_angle = 0;
+				if(pratless_uspecial_rune && uspecial_count == 1 && !was_parried){
+					if (!free) set_state(PS_IDLE);
+					else if (down_pressed) set_state(PS_IDLE_AIR);
+					else if (vsp > 3) vsp = clamp(vsp-1.5, 3, vsp);
+					iasa_script();
+				} else {
+					if (!free) set_state(PS_PRATLAND);
+					else if (down_pressed) set_state(PS_PRATFALL);
+					else if (vsp > 3) vsp = clamp(vsp-1.5, 3, vsp);
+					if(pratless_uspecial_rune && uspecial_count > 1 && free && !was_parried) {
+						uspecial_prat_buffer = true;
+						can_attack = true;
+					}
+				}
+				if (state != PS_ATTACK_AIR) destroy_hitboxes();
+			}
 		}
 		
 		break;
@@ -325,6 +414,7 @@ switch (attack)
 		}
 		else vsp = min(vsp, 4);
 		
+		if window > 1 && "dspecial_tilt" in self spr_angle = dspecial_tilt; // fixed issue where hurtbox and sprite didn't align properly
 		hurtboxID.image_angle = spr_angle;
 		
 		// Armor
@@ -339,9 +429,9 @@ switch (attack)
 		
 		// Charge window
 		if (window == 2) {
-			var max_tilt = free ? 120 : 75;
+			var max_tilt = homing_dspecial_rune ? 720 : free ? 120 : 75;
 			var tilt_dir = right_down - left_down;
-			if (tilt_dir != 0) dspecial_tilt -= 4.5*tilt_dir;
+			if (tilt_dir != 0) dspecial_tilt -= (homing_dspecial_rune ? 7.5 : 4.5) * tilt_dir;
 			dspecial_tilt = clamp(dspecial_tilt, -max_tilt, max_tilt);
 			spr_angle = dspecial_tilt;
 			can_shield = (dspecial_timer < 20)
@@ -367,14 +457,14 @@ switch (attack)
 			var _max_ddistance = 36 * dsp_mult + dsp_start + 50;
 			var _stem_hxoffset = lengthdir_x(4, dspecial_tilt);
 			var _stem_hyoffset = lengthdir_y(4, dspecial_tilt) * spr_dir;
-			var max_tilt = free ? 120 : 75;
+			var max_tilt = homing_dspecial_rune ? 720 : free ? 120 : 75;
 			
 			if (window_timer == 4) {
 				
 				// Homing handling
 				
 				with (oPlayer) {
-					if (id == other.id) continue;
+					if (player == other.player) continue;
 					
 					var _x_distance = x - other.x;
 					var _y_distance = (y - char_height / 2) - other.y;
@@ -494,6 +584,11 @@ switch (attack)
 			var _bite_hbox = create_hitbox(AT_DSPECIAL, 3, 0, 0);
 			_bite_hbox.x_pos = _head_x_distance + draw_x;
 			_bite_hbox.y_pos = _head_y_distance + draw_y;
+			if(poison_consume_rune){ // poison consume rune
+				var _bite_consume_hbox = create_hitbox(AT_DSPECIAL, 4, 0, 0);
+				_bite_consume_hbox.x_pos = _head_x_distance + draw_x;
+				_bite_consume_hbox.y_pos = _head_y_distance + draw_y;
+			}
 		}
 		
 		// Handle HUD offset
@@ -528,6 +623,9 @@ switch (attack)
 		// Hurtbox handling
 		if ((window == 3 && window_timer == 4) || window == 4 || (window == 5 && window_timer < adj_window_length)) {
 			hurtboxID.sprite_index = sprite_get("dspecial_stretch_hurt");
+			if(long_dspecial_rune) {
+				hurtboxID.sprite_index = sprite_get("dspecial_rune_hurt");
+			}
 		}
 		else {
 			hurtboxID.sprite_index = sprite_get("dspecial_hurt");
@@ -566,6 +664,26 @@ switch (attack)
 			hud_offset = lerp(hud_offset, 90, window_timer/5);
 		}
 		else hud_offset = 90;
+		if(plant_gang_rune && window == 2 && window_timer == 1){
+			var plant_gang_count = 0;
+    		for (var i = instance_number(oPlayer) - 1; i >= 0; i--) // nested safe with statements, by frtoud
+    		with (instance_find(oPlayer, i)) {
+    			if "PLANT_GANG" in self && player == other.player {
+    				if (plant_gang_count < 4) plant_gang_count++;
+    				else instance_destroy(self);
+    			}
+    		}
+			for(var i = 1; i < 5; i++){
+				var _x_off = 80 * ceil(i/2) * (i%2 == 1 ? 1 : -1);
+				var new_self = instance_create(x + _x_off, y, "oPlayer");
+				with(new_self){
+					x = other.x + _x_off;
+					PLANT_GANG = true;
+					player_id = other;
+					ignore_camera = true;
+				}
+			}
+		}
 		break;
 }
 

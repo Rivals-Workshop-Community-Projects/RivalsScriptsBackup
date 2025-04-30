@@ -46,7 +46,8 @@ if (!free){
 
 if (cannon_cooldown > 0){
 	cannon_cooldown --;
-}
+	hud_col = c_dkgray;
+} else hud_col = c_white;
 if (cannonball_cooldown > 0){
 	cannonball_cooldown --;
 }
@@ -105,6 +106,7 @@ if((state == PS_IDLE_AIR || (air && vsp > 0)) && jump_down && floating == 0 || (
 	floatTimer = floatMax;
 	if (floatTimer == floatMax){
 		sound_play(hover_sound, true, noone, 1, 1);
+		sound_play(hover_sound, true, noone, 1, 0.4);
 	}
 }
 if(floating){

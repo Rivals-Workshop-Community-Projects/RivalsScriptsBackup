@@ -380,4 +380,4 @@ HG_MUNO_HITBOX_HPG = i; i++;			// Enter a string to override hitpause scaling
 HG_MUNO_HITBOX_MISC = i; i++;			// Enter a string to override the auto-generated misc notes (which include misc properties like angle flipper or elemental effect)
 HG_MUNO_HITBOX_MISC_ADD = i; i++;		// Enter a string to ADD TO the auto-generated misc notes, not override (line break will be auto-inserted)
 
-
+kamek_hud_inited = true;

@@ -92,15 +92,28 @@ switch state {
         if (free || ignores_walls) { // if ignoring walls, then it needs to pass through a platform
             vsp += 0.5;
         } else {
-            if (old_vsp >= 1) {
-                vsp = old_vsp*-0.2;
+            if (old_vsp >= 1 + player_id.bouncy_ptooie_rune * 2) {
+                vsp = old_vsp*(-0.2 - 0.6 * player_id.bouncy_ptooie_rune);
                 var volume = (abs(old_vsp) > 5 ? 1 : abs(old_vsp)/5)
                 sound_play(asset_get("sfx_fishing_rod_land"), false, noone, volume, 1.2);
                 sound_play(asset_get("sfx_kragg_roll_land"), false, noone, volume/2);
+                // Rune Code
+                if(player_id.bouncy_ptooie_rune && idle_timer <= 0){ // Prevent infinite bounce stalling
+                    if abs(abs(vsp) - abs(last_bounce_speed)) > .05 {
+                        last_bounce_speed = vsp;
+                        consecutive_bounce_count = 0;
+                    } else {
+                        consecutive_bounce_count++;
+                        if(consecutive_bounce_count >= 3){
+                            vsp = 0;
+                            last_bounce_speed = 0;
+                        }
+                    }
+                }
             }
-            if (abs(hsp) <= 0.2) hsp = 0;
-            else if (hsp > 0) hsp -= 0.2;
-            else hsp += 0.2;
+            if (abs(hsp) <= 0.2 + 0.6) hsp = 0;
+            else if (hsp > 0) hsp -= 0.2 + 0.6 * player_id.bouncy_ptooie_rune * player_id.hittable_ptooie_rune;
+            else hsp += 0.2 + 0.6 * player_id.bouncy_ptooie_rune * player_id.hittable_ptooie_rune;
             hsp = clamp(-3, hsp, 3);
         }
         rot_speed = lerp(rot_speed, -hsp, 0.8);
@@ -139,7 +152,7 @@ draw_angle += rot_speed;
 var hbox_active = instance_exists(hitbox);
 if (!free && vsp >= 0 && abs(hsp) <= 2) {
     if (hbox_active) {
-        can_hit = hitbox.can_hit;
+        if !player_id.hittable_ptooie_rune can_hit = hitbox.can_hit;
         hitbox.destroyed = true;
     }
     hitbox_cooldown = 2;
@@ -158,14 +171,24 @@ if (place_meeting(x, y, asset_get("plasma_field_obj"))) {
     sound_play(asset_get("sfx_clairen_hit_weak"));
     destroyed = true;
 }
+
+if (player_id.ptooie_explode_rune && instance_exists(hitbox) && hitbox.has_hit) destroyed = true;
 if (destroyed) {
     if (state == 0 && player_id.window <= 4) {
         player_id.window = 7
         player_id.window_timer = 0;
     }
-    var vfx = spawn_hit_fx(x-10, y, HFX_FOR_HIT_SMALL);
-    vfx.spr_dir = 1;
-    vfx.depth = depth-1;
+    if (player_id.ptooie_explode_rune) {
+        var vfx = spawn_hit_fx(round(x-10), round(y), player_id.fx_explosion);
+        create_hitbox(AT_NSPECIAL, 2, round(x), round(y));
+        vfx.spr_dir = 1;
+        vfx.depth = -6;
+        sound_play(asset_get("sfx_ell_fist_explode"));
+    } else {
+        var vfx = spawn_hit_fx(x-10, y, HFX_FOR_HIT_SMALL); 
+        vfx.spr_dir = 1;
+        vfx.depth = depth-1;
+    }
     if (instance_exists(hitbox)) hitbox.destroyed = true;
     instance_destroy();
     exit;
@@ -205,10 +228,10 @@ hit_player_num = hbox.player;
 
 //Unique behavior
 if (instance_exists(hitbox)) {
-    can_hit = hitbox.can_hit;
+    if !player_id.hittable_ptooie_rune can_hit = hitbox.can_hit;
     hitbox.destroyed = true;
 }
-hitbox_cooldown += 4;
+if !player_id.hittable_ptooie_rune hitbox_cooldown += 4;
 armor -= hbox.damage;
 if (armor <= 0) {
     if (state == 0) {
@@ -263,7 +286,7 @@ if article_should_lockout hit_lockout = hbox.no_other_hit;
 if hbox.force_flinch orig_knock = 0.3; //comment out this line for grounded articles.
 else orig_knock = hbox.kb_value + hbox.damage * hbox.kb_scale * 0.12 * kb_adj;
 kb_dir = get_hitbox_angle(hbox);
-orig_knock *= 0.5;
+orig_knock *= 0.5 + (.75 * player_id.hittable_ptooie_rune);
 
 if (armor <= 0) {
     hsp = lengthdir_x(orig_knock, kb_dir);
@@ -290,7 +313,8 @@ with hbox {
     return ("ptooie_obj" not in self || ptooie_obj.can_hit_ptooies[other.player]) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
         && (groundedness == 0 || groundedness == 1+other.free)
-        && (!player_equal || other.was_reflected)
+        && (player_equal * other.player_id.hittable_ptooie_rune || other.was_reflected)
+        && effect != other.player_id.poison_consume_effect_index //don't get hit by poison consume hitboxes
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.
 }
  

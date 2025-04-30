@@ -35,16 +35,17 @@ alt_name[12] = "Octo";
 
 //everything in between abyss and gold rank alts can be anything, i just like to put these in this pattern
 //if you change it don't forget to change the icon order!
-alt_name[13] = "Pale"; //has the abyss death effect
-alt_name[14] = "Pride";
-alt_name[15] = "BLW";
-alt_name[16] = "Lily of the valley";
-alt_name[17] = "Hivemind";
-alt_name[18] = "Sickly love"; //has the shiny effect
-alt_name[19] = "Wonderer";
-alt_name[20] = "Ancient";
-alt_name[21] = "Outcast";
-alt_name[22] = "Fall";
+alt_name[13] = "Abyss"; //has the abyss death effect
+alt_name[14] = "Pale";
+alt_name[15] = "Pride";
+alt_name[16] = "BLW";
+alt_name[17] = "Lily of the valley";
+alt_name[18] = "Hivemind";
+alt_name[19] = "Sickly love"; //has the shiny effect
+alt_name[20] = "Wonderer";
+alt_name[21] = "Ancient";
+alt_name[22] = "Outcast";
+alt_name[23] = "Fall";
 
 
 alt_cur = 0;

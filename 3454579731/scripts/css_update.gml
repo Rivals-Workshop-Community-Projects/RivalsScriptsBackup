@@ -12,6 +12,7 @@ if (get_instance_x(cursor_id) >= preview_x + 136 && get_instance_x(cursor_id) <=
     		set_synced_var(player, 0);
     		voicebuttoncurrent = voicebutton;
     		sound_play(asset_get("mfx_change_color"));
+    		sound_play(sound_get("sfx_attack" + ( string (1 + round ( random_func_2(1, 4, false) ) ) ) ) );
     	}
 	}
 }

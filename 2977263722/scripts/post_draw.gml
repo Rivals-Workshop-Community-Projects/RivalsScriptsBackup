@@ -50,6 +50,24 @@ if attack = AT_FSPECIAL {
 	}
 }
 
+if has_rune("L") {
+if state = PS_DASH {
+    if abs(hsp) = dash_speed - ground_friction {
+	
+    shader_start();
+        draw_sprite_ext(sprite_get("fspecial_effect"), state_timer/2, x-10*spr_dir, y, spr_dir*2, 2, 0, alt = 26 ? c_red : c_white, 1);
+	shader_end();
+	}
+}
+if state = PS_DASH_STOP || state = PS_DASH_TURN {
+    if state_timer < 2 {
+	    shader_start();
+            draw_sprite_ext(sprite_get("fspecial_effect"), window_timer/4, x-10* (state = PS_DASH_TURN? -spr_dir : spr_dir), y, state = PS_DASH_TURN ? spr_dir*-2 : spr_dir*2, 2, 0, alt = 26 ? c_red : c_white, 0.5);
+	    shader_end();
+	}		
+}
+}
+
 //NSPECIAL HEAT GLOW ==========================================================================
 if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack = AT_NSPECIAL) || n_charge_stored {
     var alpha_lol = 0;

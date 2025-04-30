@@ -166,6 +166,18 @@ if (move_cooldown[AT_NSPECIAL] == 1){
 	//spawn_hit_fx(x, y - 30, 301);
 }
 
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if (attack == AT_NSPECIAL){
+		var dirForHADust = point_direction(x, y, x + hsp, y + vsp);
+		if (window == 2 && window_timer == 1 && !hitpause){
+			spawn_base_dust( x - (0 * spr_dir), y - 20, "doublejump", spr_dir, dirForHADust + (270 * spr_dir));
+		}
+		if (window == 2 && window_timer >= 2 && window_timer mod 3 == 0 && !hitpause){
+			spawn_base_dust( x - (0 * spr_dir), y - 20, "doublejump_small", spr_dir, dirForHADust + (270 * spr_dir));
+		}
+	}
+}
+
 //Making the Light Speed Particles animate
 lightspeedeffecttimer++;
 if (lightspeedeffecttimer >= 90){
@@ -404,4 +416,48 @@ dracula_speaker[page] = 1;
 dracula_text[page] = "Hey! That's my line!";
 page++;
 
-//if you're snooping through this code and editing it and reuploading this, please stop.
+//--------------------------------------------
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+// use this to be awesome
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = angle;

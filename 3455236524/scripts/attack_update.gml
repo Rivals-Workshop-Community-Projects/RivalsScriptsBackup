@@ -1,3 +1,14 @@
+// Band-aid cancel window fix. Top of attack_update.gml.
+var cancel_type = get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE)
+if (attack != AT_JAB && cancel_type >= 1 && cancel_type < 8) {
+    if (
+        cancel_type == 2 ?
+        is_special_pressed(DIR_ANY) : 
+        (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || strong_down)
+        ) 
+                window_attack_pressed = true;
+}
+
 //B - Reversals
 switch(attack){
 	case AT_NSPECIAL:
@@ -198,6 +209,13 @@ if (attack == AT_DSPECIAL){
 			spawn_base_dust(x,y,"djump",1* spr_dir)
 		}
 	}
+	if window == 3{
+		if !has_hit{
+			set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 32);
+		}else{
+			set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 20);
+		}
+	}
 }
 
 //USpecial - Rocket Barrel Blast
@@ -264,12 +282,15 @@ if (attack == AT_USPECIAL){
 				spawn_hit_fx( x +30*spr_dir, y-50, 305 );
 				sound_play(asset_get("sfx_frog_fspecial_cancel"));
 			}
-			window = 5;
-			window_timer = 0;
+			if (!free){
+				window = 5;
+				window_timer = 0;
+			}
+			else can_shield = true;
 		}
 	}
 	if (window == 6){
-		if (window_timer == get_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH)-1) set_state(PS_PRATFALL);
+		//if (window_timer == get_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH)-1) set_state(PS_PRATFALL);
 		uspecial_charge = 0;
 		uspecial_length = 20;
 		reset_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH);
@@ -278,6 +299,7 @@ if (attack == AT_USPECIAL){
 		reset_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME);
 		reset_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME);
 		reset_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME);
+		move_cooldown[AT_USPECIAL] = 999;
 	}
 }
 
@@ -450,7 +472,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

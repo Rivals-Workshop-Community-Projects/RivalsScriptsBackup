@@ -4,7 +4,6 @@
 //GB Icon
 if (get_player_color(player)==7){
 		draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-        draw_sprite(sprite_get("ea_icon"),0,x+10,y+42);
     }
 
 if (get_color_profile_slot_r(0, 0) == 31) {
@@ -59,30 +58,19 @@ draw_set_halign(fa_left);
 shader_end();
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
- 
-//ricE's colorgrid css_draw stuffs.
-if (alt_cur < 16){
-	draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum1"),alt_cur,x + 202, y - 28);
-} else {
-	draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
-} 
 
+var icon_draw_x = x + 174;
+var icon_draw_y = y + 108;
 //Special Icons n shit
 if (get_player_color(player) == 6){
-	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
+	draw_sprite(sprite_get("_css_icons"),0,icon_draw_x,icon_draw_y);
 } else if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
+	draw_sprite(sprite_get("_css_icons"),1,icon_draw_x,icon_draw_y);
 } else if (get_player_color(player) == 18){
-	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
+	draw_sprite(sprite_get("_css_icons"),3,icon_draw_x,icon_draw_y);
 } else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
-	if (get_player_color(player) == 17){
-		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
-	}
-	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
-} 
+	draw_sprite(sprite_get("_css_icons"),2,icon_draw_x,icon_draw_y);
+}
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

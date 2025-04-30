@@ -5,7 +5,7 @@ true_dmg = my_hitboxID.damage * lerp(1, 1.6, strong_charge/60);
 
 if (instance_exists(my_grab_id) && my_grab_id != noone) my_grab_id = noone;
 
-if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(my_hitboxID.ptooie_obj)) {
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && instance_exists(my_hitboxID.ptooie_obj)) {
     var pt = my_hitboxID.ptooie_obj;
     
     pt.hsp *= -1;

@@ -117,3 +117,113 @@ set_hitbox_value(atk, i, HG_PROJECTILE_PARRY_STUN    , false);
 set_hitbox_value(atk, i, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(atk, i, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(atk, i, HG_PROJECTILE_PLASMA_SAFE   , false);
+
+// Rune Hitboxes
+
+i++; // Explosion Hit
+set_hitbox_value(atk, i, HG_HITBOX_TYPE              , 2);
+set_hitbox_value(atk, i, HG_WINDOW                   , 1);
+set_hitbox_value(atk, i, HG_WINDOW_CREATION_FRAME    , 1);
+set_hitbox_value(atk, i, HG_LIFETIME                 , 9);
+set_hitbox_value(atk, i, HG_HITBOX_X                 , 0);
+set_hitbox_value(atk, i, HG_HITBOX_Y                 , 0);
+set_hitbox_value(atk, i, HG_SHAPE                    , 0);
+set_hitbox_value(atk, i, HG_WIDTH                    , 128);
+set_hitbox_value(atk, i, HG_HEIGHT                   , 128);
+set_hitbox_value(atk, i, HG_PRIORITY                 , 1);
+set_hitbox_value(atk, i, HG_DAMAGE                   , 10);
+set_hitbox_value(atk, i, HG_EFFECT                   , 0);
+set_hitbox_value(atk, i, HG_ANGLE                    , 45);
+set_hitbox_value(atk, i, HG_ANGLE_FLIPPER            , 3);
+set_hitbox_value(atk, i, HG_BASE_KNOCKBACK           , 8);
+set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING        , 1.15);
+set_hitbox_value(atk, i, HG_HITSTUN_MULTIPLIER       , 1);
+set_hitbox_value(atk, i, HG_BASE_HITPAUSE            , 12);
+set_hitbox_value(atk, i, HG_HITPAUSE_SCALING         , .8);
+set_hitbox_value(atk, i, HG_VISUAL_EFFECT            , fx_bite);
+set_hitbox_value(atk, i, HG_HIT_SFX                  , asset_get("sfx_mol_norm_explode"));
+set_hitbox_value(atk, i, HG_PROJECTILE_SPRITE        , sprite_get("null"));
+set_hitbox_value(atk, i, HG_PROJECTILE_MASK          , -1);
+set_hitbox_value(atk, i, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_WALL_BEHAVIOR , 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_UNBASHABLE    , true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PARRY_STUN    , false);
+set_hitbox_value(atk, i, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(atk, i, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PLASMA_SAFE   , false);
+
+
+i++; // Evil Ptooie
+set_hitbox_value(atk, i, HG_HITBOX_TYPE              , 2);
+set_hitbox_value(atk, i, HG_WINDOW                   , 1);
+set_hitbox_value(atk, i, HG_WINDOW_CREATION_FRAME    , 1);
+set_hitbox_value(atk, i, HG_LIFETIME                 , 200);
+set_hitbox_value(atk, i, HG_HITBOX_X                 , 0);
+set_hitbox_value(atk, i, HG_HITBOX_Y                 , 0);
+set_hitbox_value(atk, i, HG_SHAPE                    , 0);
+set_hitbox_value(atk, i, HG_WIDTH                    , 40);
+set_hitbox_value(atk, i, HG_HEIGHT                   , 40);
+set_hitbox_value(atk, i, HG_PRIORITY                 , 1);
+set_hitbox_value(atk, i, HG_DAMAGE                   , 4 + !ptooie_explode_rune * 4);
+set_hitbox_value(atk, i, HG_EFFECT                   , 0);
+set_hitbox_value(atk, i, HG_ANGLE                    , 45);
+set_hitbox_value(atk, i, HG_BASE_KNOCKBACK           , 8);
+set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING        , .8);
+set_hitbox_value(atk, i, HG_HITSTUN_MULTIPLIER       , 1);
+set_hitbox_value(atk, i, HG_BASE_HITPAUSE            , 12);
+set_hitbox_value(atk, i, HG_HITPAUSE_SCALING         , .5);
+set_hitbox_value(atk, i, HG_VISUAL_EFFECT            , fx_bite);
+set_hitbox_value(atk, i, HG_HIT_SFX                  , asset_get("sfx_blow_heavy1"));
+set_hitbox_value(atk, i, HG_PROJECTILE_SPRITE        , sprite_get("ptooie"));
+set_hitbox_value(atk, i, HG_PROJECTILE_MASK          , -1);
+set_hitbox_value(atk, i, HG_PROJECTILE_GRAVITY       , .5);
+set_hitbox_value(atk, i, HG_PROJECTILE_DESTROY_EFFECT, (ptooie_explode_rune ? 1 : HFX_FOR_HIT_SMALL));
+set_hitbox_value(atk, i, HG_PROJECTILE_WALL_BEHAVIOR , 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_ENEMY_BEHAVIOR, !ptooie_explode_rune);
+set_hitbox_value(atk, i, HG_PROJECTILE_UNBASHABLE    , true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PARRY_STUN    , false);
+set_hitbox_value(atk, i, HG_PROJECTILE_DOES_NOT_REFLECT, false);
+set_hitbox_value(atk, i, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PLASMA_SAFE   , false);
+
+
+i++; // Explosion Hit But Evil
+set_hitbox_value(atk, i, HG_HITBOX_TYPE              , 2);
+set_hitbox_value(atk, i, HG_WINDOW                   , 1);
+set_hitbox_value(atk, i, HG_WINDOW_CREATION_FRAME    , 1);
+set_hitbox_value(atk, i, HG_LIFETIME                 , 9);
+set_hitbox_value(atk, i, HG_HITBOX_X                 , 0);
+set_hitbox_value(atk, i, HG_HITBOX_Y                 , 0);
+set_hitbox_value(atk, i, HG_SHAPE                    , 0);
+set_hitbox_value(atk, i, HG_WIDTH                    , 128);
+set_hitbox_value(atk, i, HG_HEIGHT                   , 128);
+set_hitbox_value(atk, i, HG_PRIORITY                 , 1);
+set_hitbox_value(atk, i, HG_DAMAGE                   , 8);
+set_hitbox_value(atk, i, HG_EFFECT                   , 0);
+set_hitbox_value(atk, i, HG_ANGLE                    , 45);
+set_hitbox_value(atk, i, HG_ANGLE_FLIPPER            , 3);
+set_hitbox_value(atk, i, HG_BASE_KNOCKBACK           , 8);
+set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING        , 1);
+set_hitbox_value(atk, i, HG_HITSTUN_MULTIPLIER       , 1);
+set_hitbox_value(atk, i, HG_BASE_HITPAUSE            , 12);
+set_hitbox_value(atk, i, HG_HITPAUSE_SCALING         , .8);
+set_hitbox_value(atk, i, HG_VISUAL_EFFECT            , fx_bite);
+set_hitbox_value(atk, i, HG_HIT_SFX                  , asset_get("sfx_mol_norm_explode"));
+set_hitbox_value(atk, i, HG_PROJECTILE_SPRITE        , sprite_get("null"));
+set_hitbox_value(atk, i, HG_PROJECTILE_MASK          , -1);
+set_hitbox_value(atk, i, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_WALL_BEHAVIOR , 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(atk, i, HG_PROJECTILE_UNBASHABLE    , true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PARRY_STUN    , false);
+set_hitbox_value(atk, i, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(atk, i, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(atk, i, HG_PROJECTILE_PLASMA_SAFE   , false);
+
+if (ptooie_parry_rune){
+    set_hitbox_value(atk, i, HG_IGNORES_PROJECTILES, true);
+}

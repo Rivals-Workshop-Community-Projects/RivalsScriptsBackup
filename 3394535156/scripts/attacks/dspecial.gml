@@ -11,7 +11,7 @@ set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Selects 1 of 4 powders t
 All powders with the exception of Black can only have 1 bomb out at a time - Black powder gets 3 bombs max. You also start the match with Black powder bombs.
 
 - Black (up): Standard, has no unique effects. Sends upward. Useful for general situations and harrasing the opponent.
-- Sparkler (right): Produces constant polite electric hitboxes, but loses a contact explosion. Very useful in the midst of combos to extend bomb range.
+- Sparkler (right): Produces constant polite electric hitboxes, but loses a contact explosion. Stuns on hit, and has an initial non-polite hitbox which stuns.
 - Cascade (down): Explodes sooner and produces a flame which erupts into more flames, dealing high knockback. Great kill option.
 - Cluster (left): Explodes with a series of multihitting hitboxes. Great for confirms.");
 

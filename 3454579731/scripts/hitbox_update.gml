@@ -12,6 +12,9 @@ if (attack == AT_NSPECIAL && hbox_num == 1){
     if (player_id.cannonball.double_fired){
         damage = 15;
         kb_value = 8;
+        if (player_id.cannonball.vsp <= -4){
+            kb_angle = 90;
+        }
         //kb_angle = darctan2(player_id.cannonball.vsp, player_id.cannonball.hsp);
     }
 }

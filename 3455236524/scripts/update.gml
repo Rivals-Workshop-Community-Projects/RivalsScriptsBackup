@@ -2,6 +2,7 @@
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
     move_cooldown[AT_DSPECIAL] = 0;
     move_cooldown[AT_FSPECIAL_AIR] = 0;
+    move_cooldown[AT_USPECIAL] = 0;
 }
 
 var intro_time = get_gameplay_time()-12;

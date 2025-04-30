@@ -178,7 +178,7 @@ CHEAT_PARRY		= initCheat("Endless Parry", [0, 1], ["Off", "On"], "Causes other p
 
 CHEAT_TEST_HURTS = initCheat("Test Hurt Sprites", [-1, 1, 2, 3, 4], ["Off", "Hurt", "Big Hurt", "Down Hurt", "Up Hurt"], "Test hurt animations by creating a hitbox when Vanda jumps.");
 
-CHEAT_NSPECIAL_BUG_1 = initCheat("Test NSpecial Bug 1", [0], ["Toggle"], "Toggle testing for Neutral Special Bug 1. To replicate, go to Spirit Tree and fully charge NSpecial. Within a specific range of positions and velocities, the projectile will diagonally bounce off the platform.");
+//CHEAT_NSPECIAL_BUG_1 = initCheat("Test NSpecial Bug 1", [0], ["Toggle"], "Toggle testing for Neutral Special Bug 1. To replicate, go to Spirit Tree and fully charge NSpecial. Within a specific range of positions and velocities, the projectile will diagonally bounce off the platform.");
 
 
 /*

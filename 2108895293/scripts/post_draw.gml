@@ -35,6 +35,26 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v2.7b - (2025 Apr 26)"
+		patch_note_text[i++] = 
+		"v2.7b - (2025 Apr 26)
+		[b]fixes[/b]
+		- it seems lumina was affected by the update after all. fixed the issue where UAIR could not go into UAIR2 if you are tapping ATTACK and not holding ATTACK or using TILTSTICK UP.
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
+		patch_note_title[i] = "v2.7 - (2025 Apr 25)"
+		patch_note_text[i++] = 
+		"v2.7 - (2025 Apr 25)
+		[b]fixes[/b]
+		- nothing special, i just fixed how the ranked gold alt special alternative colors were checking for the wrong alt color number which was infamous alt. did that make no sense? idk thats fine
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v2.6 - (2024 Apr 29)"
 		patch_note_text[i++] = 
 		"v2.6 - (2024 Apr 29)

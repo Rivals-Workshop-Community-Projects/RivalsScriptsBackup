@@ -65,6 +65,7 @@ sprite_change_offset("cannonball", 16, 16);
 sprite_change_offset("big_cannonball", 16, 16);
 
 sprite_change_offset("cannon", 96, 128);
+sprite_change_offset("cannon_hud", 96, 128);
 sprite_change_offset("cannonstand", 96, 142);
 sprite_change_offset("cannon_spawn", 96, 128);
 sprite_change_offset("cannonstand_spawn", 96, 142);

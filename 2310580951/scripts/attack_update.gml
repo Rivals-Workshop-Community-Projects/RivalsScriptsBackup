@@ -538,7 +538,12 @@ if (attack == AT_NTHROW) {
 	}
 	if window == 7 && window_timer == 4 {
 		if ItsAMeMario {
-			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 || hit_player_obj.url == 2962798543 || hit_player_obj.url == 2611384650 {
+			if hit_player_obj.url == 2207197597 
+			|| hit_player_obj.url == 2037682193 
+			|| hit_player_obj.url == 2962798543 
+			|| hit_player_obj.url == 2611384650 
+			|| hit_player_obj.url == 3456604404
+			|| hit_player_obj.url == 3455408851 {
 				sound_play(bowser);
 			} else {
 				sound_play(buhbye);
@@ -555,7 +560,12 @@ if (attack == AT_FTHROW) {
 	}
 	if window == 4 && window_timer == 4 {
 		if ItsAMeMario {
-			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 || hit_player_obj.url == 2962798543 || hit_player_obj.url == 2611384650 {
+			if hit_player_obj.url == 2207197597 
+			|| hit_player_obj.url == 2037682193 
+			|| hit_player_obj.url == 2962798543 
+			|| hit_player_obj.url == 2611384650 
+			|| hit_player_obj.url == 3456604404
+			|| hit_player_obj.url == 3455408851 {
 				sound_play(bowser);
 			} else {
 				sound_play(buhbye);

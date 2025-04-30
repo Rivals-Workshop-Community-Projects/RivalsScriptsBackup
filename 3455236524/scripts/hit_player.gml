@@ -38,8 +38,8 @@ switch my_hitboxID.attack {
 	if my_hitboxID.hbox_num == 1 {
          sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
      }
-     if my_hitboxID.hbox_num == 1 {
-         sound_play(asset_get("sfx_blow_heavy"),false,noone,0.8);
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
      }
 	break;
 	case AT_NSPECIAL:

@@ -37,8 +37,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.14";
-patch_day = "11";
-patch_month = "FEB";
+patch_day = "25";
+patch_month = "APR";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -75,6 +75,7 @@ prev_alt = alt;
 //Alt name init. var doesn't work with arrays lol
 if(read_alts = 0){  
     if(secret_alt_on == 0){
+alt_name = array_create(25,"");
 alt_name[0]  = "Thief of Tazmily"; 
 alt_name[1]  = "Orange"; 
 alt_name[2]  = "Purple"; 

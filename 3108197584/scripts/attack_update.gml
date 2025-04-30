@@ -287,6 +287,10 @@ switch attack{
 				var colp = instance_position(fire_end[0], fire_end[1], pHurtBox);
 				var colh = instance_position(fire_end[0], fire_end[1], pHitBox);
 				var cold = instance_position(fire_end[0], fire_end[1], drone);
+				var colart1 = instance_position(fire_end[0], fire_end[1], obj_article1);
+				var colart2 = instance_position(fire_end[0], fire_end[1], obj_article2);
+				var colart3 = instance_position(fire_end[0], fire_end[1], obj_article3);
+				var colartpl = instance_position(fire_end[0], fire_end[1], obj_article_platform);
 				if instance_exists(colp) && array_find_index(hit_list, colp) < 0{
 					array_push(hit_list, colp);
 					array_push(hit_pos, fire_end[0]);
@@ -311,6 +315,43 @@ switch attack{
 					drone.shot_fx_timer = 13;
 					drone.snipe = 1;
 					sound_play(sound_get("sfx_drone_reflect"), 0, noone, 1, 1);
+				}
+				if instance_exists(colart1) && colart1.is_hittable && array_find_index(hit_list, colart1) < 0 && colart1 != drone{
+					array_push(hit_list, colart1);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colart2) && colart1.is_hittable && array_find_index(hit_list, colart2) < 0{
+					array_push(hit_list, colart2);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colart3) && colart1.is_hittable && array_find_index(hit_list, colart3) < 0{
+					array_push(hit_list, colart3);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colartpl) && colart1.is_hittable && array_find_index(hit_list, colartpl) < 0{
+					array_push(hit_list, colartpl);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				
+				//v1 compat
+				var object = instance_position(fire_end[0], fire_end[1], pHitBox);
+				if object != noone && "is_V1_ultrakill" in object.player_id && object.type == 2 && "hitscannable" in object && object.hitscannable && object.hitscanned == noone{
+					object.hsp = 0;
+					object.splitshot = (object.vsp >= 8 || object.hitbox_timer == clamp(object.hitbox_timer, 20, 30)) && object.attack == AT_NSPECIAL && object.hbox_num == 3;
+					object.vsp = 0;
+					object.grav = 0;
+					var alt = (!alt_cur? 32: alt_cur);
+					object.hitscanned = [fire_end[0], fire_end[1], 10, 1, player, self, make_color_rgb(get_color_profile_slot_r(alt, 1), get_color_profile_slot_g(alt, 1), get_color_profile_slot_b(alt, 1)), 1];
+					object.hitscanned_delay = 3;
+					hit_count++;
 				}
 			}
 			shot_fx_timer = 13;
@@ -398,6 +439,10 @@ switch attack{
 				var colp = instance_position(fire_end[0], fire_end[1], pHurtBox);
 				var colh = instance_position(fire_end[0], fire_end[1], pHitBox);
 				var cold = instance_position(fire_end[0], fire_end[1], drone);
+				var colart1 = instance_position(fire_end[0], fire_end[1], obj_article1);
+				var colart2 = instance_position(fire_end[0], fire_end[1], obj_article2);
+				var colart3 = instance_position(fire_end[0], fire_end[1], obj_article3);
+				var colartpl = instance_position(fire_end[0], fire_end[1], obj_article_platform);
 				if instance_exists(colp) && array_find_index(hit_list, colp) < 0{
 					array_push(hit_list, colp);
 					array_push(hit_pos, fire_end[0]);
@@ -422,6 +467,43 @@ switch attack{
 					drone.shot_fx_timer = 13;
 					drone.snipe = 1;
 					sound_play(sound_get("sfx_drone_reflect"), 0, noone, 1, 1);
+				}
+				if instance_exists(colart1) && colart1.is_hittable && array_find_index(hit_list, colart1) < 0 && colart1 != drone{
+					array_push(hit_list, colart1);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colart2) && colart1.is_hittable && array_find_index(hit_list, colart2) < 0{
+					array_push(hit_list, colart2);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colart3) && colart1.is_hittable && array_find_index(hit_list, colart3) < 0{
+					array_push(hit_list, colart3);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				if instance_exists(colartpl) && colart1.is_hittable && array_find_index(hit_list, colartpl) < 0{
+					array_push(hit_list, colartpl);
+					array_push(hit_pos, fire_end[0]);
+					array_push(hit_pos, fire_end[1]);
+					hit_count++;
+				}
+				
+				//v1 compat
+				var object = instance_position(fire_end[0], fire_end[1], pHitBox);
+				if object != noone && "is_V1_ultrakill" in object.player_id && object.type == 2 && "hitscannable" in object && object.hitscannable && object.hitscanned == noone{
+					object.hsp = 0;
+					object.splitshot = (object.vsp >= 8 || object.hitbox_timer == clamp(object.hitbox_timer, 20, 30)) && object.attack == AT_NSPECIAL && object.hbox_num == 3;
+					object.vsp = 0;
+					object.grav = 0;
+					var alt = (!alt_cur? 32: alt_cur);
+					object.hitscanned = [fire_end[0], fire_end[1], 10, 1, player, self, make_color_rgb(get_color_profile_slot_r(alt, 1), get_color_profile_slot_g(alt, 1), get_color_profile_slot_b(alt, 1)), 1];
+					object.hitscanned_delay = 3;
+					hit_count++;
 				}
 			}
 			shot_fx_timer = 13;

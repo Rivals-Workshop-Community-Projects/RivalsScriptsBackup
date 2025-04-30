@@ -106,25 +106,19 @@ switch (get_player_color(player)){
     case 3:
         set_victory_theme(sound_get("scissors"));
     break;
-    case 4:
+    case 5:
         set_victory_theme(sound_get("stapler"));
     break;
-    case 6:
+    case 4:
         set_victory_theme(sound_get("holepunch"));
     break;
+    case 8:
+    case 9:
     case 10:
-        set_victory_theme(sound_get("vellumental"));
-    break;
     case 11:
         set_victory_theme(sound_get("vellumental"));
     break;
     case 12:
-        set_victory_theme(sound_get("vellumental"));
-    break;
-    case 13:
-        set_victory_theme(sound_get("vellumental"));
-    break;
-    case 14:
         set_victory_theme(sound_get("bossfight"));
     break;
     default:

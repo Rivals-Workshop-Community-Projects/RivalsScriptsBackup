@@ -80,9 +80,9 @@ if (state == 3){
     	if (cannonball_stuck){
     	big_cannonball.state = 0;
     	big_cannonball.state_timer = 0;
-		big_cannonball.hsp = lengthdir_x((big_cannonball.stored_charge*0.25 + 2), point_direction(x,y,get_closest_enemy().x,get_closest_enemy().y));
-        big_cannonball.vsp = lengthdir_y((big_cannonball.stored_charge*0.25 + 2), point_direction(x,y,get_closest_enemy().x,get_closest_enemy().y));
-        big_cannonball.active_time = big_cannonball.stored_charge*1.2;
+		big_cannonball.hsp = lengthdir_x((big_cannonball.stored_charge*0.25 + 8), point_direction(x,y,get_closest_enemy().x,get_closest_enemy().y));
+        big_cannonball.vsp = lengthdir_y((big_cannonball.stored_charge*0.25 + 8), point_direction(x,y,get_closest_enemy().x,get_closest_enemy().y));
+        big_cannonball.active_time = big_cannonball.stored_charge*1.5;
         big_cannonball.double_fired = true;
         big_cannonball.image_alpha = 1;
     	}
@@ -109,7 +109,7 @@ if (state == 3){
 if (fucking_dies){
     spawn_hit_fx(x, y - 20, 260);
     sound_play(asset_get("sfx_ell_explosion_medium"));
-    player_id.cannon_cooldown = 60;
+    player_id.cannon_cooldown = 300;
     should_die = true;
 }
 
@@ -124,6 +124,7 @@ exist_timer ++;
 if (should_die){
     if (!fucking_dies){
     spawn_hit_fx(x, y - 20, 144);
+    player_id.cannon_cooldown = 150;
     }
     instance_destroy();
     exit;

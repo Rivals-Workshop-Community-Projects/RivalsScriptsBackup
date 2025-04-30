@@ -264,6 +264,17 @@ with phone{
 	//
 	
 	
+	initPatch("2.7", "2025-04-25 (YMD)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("nothing special, i just fixed how the ranked gold alt special alternative colors were checking for the wrong alt color number which was infamous alt. did that make no sense? idk thats fine")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.6", "2024-04-29 (YMD)");
 	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
 	initPatchWords("- nspecial turnaround-on-release thing input moved to Attack (formerly on parry button).

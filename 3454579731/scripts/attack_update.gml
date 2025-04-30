@@ -63,7 +63,7 @@ if (voice_on == true){
         }
         break;
         case AT_BAIR:
-        if (window == 1 && window_timer == 8 && voice_chance >= 5){
+        if (window == 1 && window_timer == 10 && voice_chance >= 5){
             sound_play(sound_get("sfx_attack4"));
         }
         break;
@@ -75,6 +75,9 @@ if (attack == AT_BAIR){
             spr_dir *= -1;
             dir_flipped = true;
         }
+    }
+    if (window == 2){
+        
         if (floating){
             floating = -1;
         }
@@ -181,11 +184,14 @@ if (attack == AT_FSPECIAL){
         window_timer = 0;
     }
     if (window == 1 && window_timer == 2){
+        can_fspec_jump = true;
         sound_play(car_start, false, noone, 0.8, 1);
         loop_playing = false;
         spawn_base_dust(x - 10*spr_dir, y, "dash_start");
     }
     if (window == 2){
+        can_wall_jump = true;
+        djumps = 0;
         var stage_left = get_stage_data( SD_X_POS ) - 19;
         var stage_right = (room_width - get_stage_data( SD_X_POS )) + 19;
         var stage_y = get_stage_data( SD_Y_POS );
@@ -204,10 +210,12 @@ if (attack == AT_FSPECIAL){
             window_timer = 0;
             destroy_hitboxes();
         }*/
-        if (jump_pressed && !free || hsp == 0 && !free && !hitpause){
+        if (jump_pressed && !free || jump_pressed && free && can_fspec_jump || hsp == 0 && !free && !hitpause){
+            air_time = 0;
             vsp = -8;
             sound_play(sound_get("sfx_car_jump"));
             spawn_base_dust(x, y, "jump");
+            can_fspec_jump = false;
         }
         if (car_start_time >= 75 && !loop_playing){
         sound_play(car_loop, true, noone, 0.7, 1);
@@ -215,7 +223,7 @@ if (attack == AT_FSPECIAL){
         }
         if (free){
             air_time ++;
-            if (air_time >= 10){
+            if (air_time >= 10 && !can_fspec_jump){
             can_jump = true;
             if (jump_pressed){
                 hsp = 0;
@@ -282,6 +290,8 @@ if (attack == AT_USPECIAL){
     }
     if (window == 2){
         has_mech = false;
+        has_airdodge = true;
+        has_walljump = true;
     }
 }
 

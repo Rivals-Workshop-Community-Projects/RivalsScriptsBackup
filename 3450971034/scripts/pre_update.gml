@@ -52,3 +52,10 @@ else grab_time = 0;
 
 //play intro
 if (game_time == 4 && has_intro) set_attack(AT_INTRO);
+
+if(ptooie_parry_rune){
+    with(oPlayer) if player != other.player && !hitpause {
+        spider_plant_stored_hsp = hsp;
+        spider_plant_stored_vsp = vsp;
+    }
+}

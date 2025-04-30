@@ -47,9 +47,28 @@ set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.35);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_explosion);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+// set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
+// set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 
 
 set_num_hitboxes(atk, hitbox_num);
+
+
+// Rune Code
+if(plant_gang_rune){
+    window_num = 1; //it's morbin' time
+    set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+
+window_num ++; //almost done morb   
+    set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+    
+    window_num ++; //now i'm morb
+    set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+    
+    window_num ++; //morb lean
+    set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+    
+    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
+}

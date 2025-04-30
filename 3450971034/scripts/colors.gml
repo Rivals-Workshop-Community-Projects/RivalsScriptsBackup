@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 29, 42 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // Classic
 set_color_profile_slot( 1, 0, 255, 203, 50 ); //stem
@@ -168,116 +168,126 @@ set_color_profile_slot( 12, 6, 80, 79, 122 ); //pot
 set_color_profile_slot( 12, 7, 243, 227, 103 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
+// Abyss
+set_color_profile_slot( 13, 0, 93, 81, 146 ); //stem
+set_color_profile_slot( 13, 1, 67, 52, 109 ); //stem 2
+set_color_profile_slot( 13, 2, 79, 61, 94 ); //red
+set_color_profile_slot( 13, 3, 42, 35, 56 ); //red 2
+set_color_profile_slot( 13, 4, 166, 172, 214 ); //white
+set_color_profile_slot( 13, 5, 122, 129, 187 ); //white 2
+set_color_profile_slot( 13, 6, 79, 61, 94 ); //pot
+set_color_profile_slot( 13, 7, 220, 113, 255 ); //inner leaf
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
 // Pale Piranha
-set_color_profile_slot( 13, 0, 107, 113, 115 ); //stem
-set_color_profile_slot( 13, 1, 81, 92, 97 ); //stem 2
-set_color_profile_slot( 13, 2, 57, 65, 66 ); //red
-set_color_profile_slot( 13, 3, 38, 37, 38 ); //red 2
-set_color_profile_slot( 13, 4, 222, 227, 231 ); //white
-set_color_profile_slot( 13, 5, 198, 199, 206 ); //white 2
-set_color_profile_slot( 13, 6, 65, 71, 70 ); //pot
-set_color_profile_slot( 13, 7, 160, 168, 171 ); //inner leaf
+set_color_profile_slot( 14, 0, 107, 113, 115 ); //stem
+set_color_profile_slot( 14, 1, 81, 92, 97 ); //stem 2
+set_color_profile_slot( 14, 2, 57, 65, 66 ); //red
+set_color_profile_slot( 14, 3, 38, 37, 38 ); //red 2
+set_color_profile_slot( 14, 4, 222, 227, 231 ); //white
+set_color_profile_slot( 14, 5, 198, 199, 206 ); //white 2
+set_color_profile_slot( 14, 6, 65, 71, 70 ); //pot
+set_color_profile_slot( 14, 7, 160, 168, 171 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Pride
-set_color_profile_slot( 14, 0, 245, 194, 204 ); //stem
-set_color_profile_slot( 14, 1, 227, 111, 192 ); //stem 2
-set_color_profile_slot( 14, 2, 142, 220, 250 ); //red
-set_color_profile_slot( 14, 3, 174, 157, 250 ); //red 2
-set_color_profile_slot( 14, 4, 255, 255, 255 ); //white
-set_color_profile_slot( 14, 5, 245, 203, 212 ); //white 2
-set_color_profile_slot( 14, 6, 142, 220, 250 ); //pot
-set_color_profile_slot( 14, 7, 195, 235, 250 ); //inner leaf
+set_color_profile_slot( 15, 0, 245, 194, 204 ); //stem
+set_color_profile_slot( 15, 1, 227, 111, 192 ); //stem 2
+set_color_profile_slot( 15, 2, 142, 220, 250 ); //red
+set_color_profile_slot( 15, 3, 174, 157, 250 ); //red 2
+set_color_profile_slot( 15, 4, 255, 255, 255 ); //white
+set_color_profile_slot( 15, 5, 245, 203, 212 ); //white 2
+set_color_profile_slot( 15, 6, 142, 220, 250 ); //pot
+set_color_profile_slot( 15, 7, 195, 235, 250 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1.5, 1]
 
 // BLW
-set_color_profile_slot( 15, 0, 243, 224, 78 ); //stem
-set_color_profile_slot( 15, 1, 232, 157, 121 ); //stem 2
-set_color_profile_slot( 15, 2, 77, 57, 57 ); //red
-set_color_profile_slot( 15, 3, 36, 19, 19 ); //red 2
-set_color_profile_slot( 15, 4, 243, 223, 66 ); //white
-set_color_profile_slot( 15, 5, 232, 157, 121 ); //white 2
-set_color_profile_slot( 15, 6, 255, 254, 252 ); //pot
-set_color_profile_slot( 15, 7, 255, 255, 255 ); //inner leaf
+set_color_profile_slot( 16, 0, 243, 224, 78 ); //stem
+set_color_profile_slot( 16, 1, 232, 157, 121 ); //stem 2
+set_color_profile_slot( 16, 2, 77, 57, 57 ); //red
+set_color_profile_slot( 16, 3, 36, 19, 19 ); //red 2
+set_color_profile_slot( 16, 4, 243, 223, 66 ); //white
+set_color_profile_slot( 16, 5, 232, 157, 121 ); //white 2
+set_color_profile_slot( 16, 6, 255, 254, 252 ); //pot
+set_color_profile_slot( 16, 7, 255, 255, 255 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 0.6]
 
 // Lily of the valley
-set_color_profile_slot( 16, 0, 110, 103, 216 ); //stem
-set_color_profile_slot( 16, 1, 67, 61, 164 ); //stem 2
-set_color_profile_slot( 16, 2, 68, 164, 115 ); //red
-set_color_profile_slot( 16, 3, 36, 117, 75 ); //red 2
-set_color_profile_slot( 16, 4, 232, 224, 255 ); //white
-set_color_profile_slot( 16, 5, 182, 158, 251 ); //white 2
-set_color_profile_slot( 16, 6, 152, 91, 198 ); //pot
-set_color_profile_slot( 16, 7, 80, 194, 136 ); //inner leaf
+set_color_profile_slot( 17, 0, 110, 103, 216 ); //stem
+set_color_profile_slot( 17, 1, 67, 61, 164 ); //stem 2
+set_color_profile_slot( 17, 2, 68, 164, 115 ); //red
+set_color_profile_slot( 17, 3, 36, 117, 75 ); //red 2
+set_color_profile_slot( 17, 4, 232, 224, 255 ); //white
+set_color_profile_slot( 17, 5, 182, 158, 251 ); //white 2
+set_color_profile_slot( 17, 6, 152, 91, 198 ); //pot
+set_color_profile_slot( 17, 7, 80, 194, 136 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Hivemind
-set_color_profile_slot( 17, 0, 144, 100, 87 ); //stem
-set_color_profile_slot( 17, 1, 117, 73, 60 ); //stem 2
-set_color_profile_slot( 17, 2, 221, 211, 199 ); //red
-set_color_profile_slot( 17, 3, 179, 167, 151 ); //red 2
-set_color_profile_slot( 17, 4, 224, 162, 75 ); //white
-set_color_profile_slot( 17, 5, 200, 118, 70 ); //white 2
-set_color_profile_slot( 17, 6, 224, 162, 75 ); //pot
-set_color_profile_slot( 17, 7, 224, 162, 75 ); //inner leaf
+set_color_profile_slot( 18, 0, 144, 100, 87 ); //stem
+set_color_profile_slot( 18, 1, 117, 73, 60 ); //stem 2
+set_color_profile_slot( 18, 2, 221, 211, 199 ); //red
+set_color_profile_slot( 18, 3, 179, 167, 151 ); //red 2
+set_color_profile_slot( 18, 4, 224, 162, 75 ); //white
+set_color_profile_slot( 18, 5, 200, 118, 70 ); //white 2
+set_color_profile_slot( 18, 6, 224, 162, 75 ); //pot
+set_color_profile_slot( 18, 7, 224, 162, 75 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Sickly love
-set_color_profile_slot( 18, 0, 122, 216, 179 ); //stem
-set_color_profile_slot( 18, 1, 119, 163, 202 ); //stem 2
-set_color_profile_slot( 18, 2, 253, 167, 212 ); //red
-set_color_profile_slot( 18, 3, 255, 92, 182 ); //red 2
-set_color_profile_slot( 18, 4, 240, 228, 231 ); //white
-set_color_profile_slot( 18, 5, 224, 164, 192 ); //white 2
-set_color_profile_slot( 18, 6, 218, 168, 241 ); //pot
-set_color_profile_slot( 18, 7, 248, 240, 244 ); //inner leaf
+set_color_profile_slot( 19, 0, 122, 216, 179 ); //stem
+set_color_profile_slot( 19, 1, 119, 163, 202 ); //stem 2
+set_color_profile_slot( 19, 2, 253, 167, 212 ); //red
+set_color_profile_slot( 19, 3, 255, 92, 182 ); //red 2
+set_color_profile_slot( 19, 4, 240, 228, 231 ); //white
+set_color_profile_slot( 19, 5, 224, 164, 192 ); //white 2
+set_color_profile_slot( 19, 6, 218, 168, 241 ); //pot
+set_color_profile_slot( 19, 7, 248, 240, 244 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Wonderer
-set_color_profile_slot( 19, 0, 208, 157, 100 ); //stem
-set_color_profile_slot( 19, 1, 161, 98, 28 ); //stem 2
-set_color_profile_slot( 19, 2, 133, 107, 94 ); //red
-set_color_profile_slot( 19, 3, 96, 73, 62 ); //red 2
-set_color_profile_slot( 19, 4, 208, 175, 137 ); //white
-set_color_profile_slot( 19, 5, 161, 98, 28 ); //white 2
-set_color_profile_slot( 19, 6, 95, 85, 122 ); //pot
-set_color_profile_slot( 19, 7, 148, 118, 105 ); //inner leaf
+set_color_profile_slot( 20, 0, 208, 157, 100 ); //stem
+set_color_profile_slot( 20, 1, 161, 98, 28 ); //stem 2
+set_color_profile_slot( 20, 2, 133, 107, 94 ); //red
+set_color_profile_slot( 20, 3, 96, 73, 62 ); //red 2
+set_color_profile_slot( 20, 4, 208, 175, 137 ); //white
+set_color_profile_slot( 20, 5, 161, 98, 28 ); //white 2
+set_color_profile_slot( 20, 6, 95, 85, 122 ); //pot
+set_color_profile_slot( 20, 7, 148, 118, 105 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Ancient
-set_color_profile_slot( 20, 0, 87, 76, 72 ); //stem
-set_color_profile_slot( 20, 1, 71, 46, 50 ); //stem 2
-set_color_profile_slot( 20, 2, 81, 97, 100 ); //red
-set_color_profile_slot( 20, 3, 48, 73, 71 ); //red 2
-set_color_profile_slot( 20, 4, 130, 105, 113 ); //white
-set_color_profile_slot( 20, 5, 92, 57, 69 ); //white 2
-set_color_profile_slot( 20, 6, 108, 87, 94 ); //pot
-set_color_profile_slot( 20, 7, 129, 158, 163 ); //inner leaf
+set_color_profile_slot( 21, 0, 87, 76, 72 ); //stem
+set_color_profile_slot( 21, 1, 71, 46, 50 ); //stem 2
+set_color_profile_slot( 21, 2, 81, 97, 100 ); //red
+set_color_profile_slot( 21, 3, 48, 73, 71 ); //red 2
+set_color_profile_slot( 21, 4, 130, 105, 113 ); //white
+set_color_profile_slot( 21, 5, 92, 57, 69 ); //white 2
+set_color_profile_slot( 21, 6, 108, 87, 94 ); //pot
+set_color_profile_slot( 21, 7, 129, 158, 163 ); //inner leaf
 //shading data: [1, 0.5, 1, 1, 1, 1, 1, 1]
 
 // Outcast
-set_color_profile_slot( 21, 0, 225, 204, 141 ); //stem
-set_color_profile_slot( 21, 1, 177, 141, 186 ); //stem 2
-set_color_profile_slot( 21, 2, 109, 75, 104 ); //red
-set_color_profile_slot( 21, 3, 68, 39, 64 ); //red 2
-set_color_profile_slot( 21, 4, 225, 204, 141 ); //white
-set_color_profile_slot( 21, 5, 177, 141, 186 ); //white 2
-set_color_profile_slot( 21, 6, 99, 40, 71 ); //pot
-set_color_profile_slot( 21, 7, 109, 75, 104 ); //inner leaf
+set_color_profile_slot( 22, 0, 225, 204, 141 ); //stem
+set_color_profile_slot( 22, 1, 177, 141, 186 ); //stem 2
+set_color_profile_slot( 22, 2, 109, 75, 104 ); //red
+set_color_profile_slot( 22, 3, 68, 39, 64 ); //red 2
+set_color_profile_slot( 22, 4, 225, 204, 141 ); //white
+set_color_profile_slot( 22, 5, 177, 141, 186 ); //white 2
+set_color_profile_slot( 22, 6, 99, 40, 71 ); //pot
+set_color_profile_slot( 22, 7, 109, 75, 104 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Fall
-set_color_profile_slot( 22, 0, 184, 103, 0 ); //stem
-set_color_profile_slot( 22, 1, 140, 56, 62 ); //stem 2
-set_color_profile_slot( 22, 2, 163, 27, 168 ); //red
-set_color_profile_slot( 22, 3, 99, 16, 102 ); //red 2
-set_color_profile_slot( 22, 4, 249, 230, 250 ); //white
-set_color_profile_slot( 22, 5, 239, 182, 250 ); //white 2
-set_color_profile_slot( 22, 6, 235, 91, 0 ); //pot
-set_color_profile_slot( 22, 7, 255, 178, 0 ); //inner leaf
+set_color_profile_slot( 23, 0, 184, 103, 0 ); //stem
+set_color_profile_slot( 23, 1, 140, 56, 62 ); //stem 2
+set_color_profile_slot( 23, 2, 163, 27, 168 ); //red
+set_color_profile_slot( 23, 3, 99, 16, 102 ); //red 2
+set_color_profile_slot( 23, 4, 249, 230, 250 ); //white
+set_color_profile_slot( 23, 5, 239, 182, 250 ); //white 2
+set_color_profile_slot( 23, 6, 235, 91, 0 ); //pot
+set_color_profile_slot( 23, 7, 255, 178, 0 ); //inner leaf
 //shading data: [1, 1, 1, 1, 1, 1, 2, 1]
-
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -48,6 +48,7 @@ switch (player)
     break;
 }
 
+
 ///      article[index]_init.gml
 //You may put this code anywhere in your article init.
  

@@ -179,3 +179,5 @@ page++;
 blueybot_victory_quote = "> follow blueybot.bsky.social on bluesky";
 blueybot_handled_victory_quote = false;
 blueybot_victory_icon = 0;
+
+hud_enable = 0;

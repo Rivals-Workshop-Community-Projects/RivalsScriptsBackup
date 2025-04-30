@@ -21,8 +21,9 @@ if (my_hitboxID.attack != AT_JAB)
             state_timer = 0;
         }
     }    
-    artc_parried_timer = 240;
+    if (my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 4) artc_parried_timer = 240;
 }
+
 
 if (is_sparking || is_guardian) {
     meter -= meter_max * 0.25; // Depletes 1/4 of the max meter

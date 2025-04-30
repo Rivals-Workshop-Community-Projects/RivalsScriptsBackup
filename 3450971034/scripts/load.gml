@@ -55,6 +55,7 @@ sprite_change_offset("fspecial",        50, 70, small_sprites);
 sprite_change_offset("fspecial_air",    50, 70, small_sprites);
 sprite_change_offset("dspecial",        34, 78, small_sprites);
 sprite_change_offset("dspecial_stretch_hurt", 34, 238);
+sprite_change_offset("dspecial_rune_hurt", 34, 78);
 sprite_change_offset("dspecial_head",   36, 78);
 sprite_change_offset("dspecial_stem",    2, 1);
 sprite_change_offset("footstool",       44, 166);
@@ -80,7 +81,7 @@ sprite_change_offset("offscreen_arrow", 16, 16);
 
 //effects 
 sprite_change_offset("bair_explosion_vfx", 140, 85);
-sprite_change_offset("fx_explosion", 85, 85);
+sprite_change_offset("fx_explosion", 100, 100); // sprite_change_offset("fx_explosion", 85, 85);
 sprite_change_offset("fx_poisonhit", 80, 90);
 sprite_change_offset("fx_leaf", 80, 100);
 sprite_change_offset("fx_bite", 80, 100);
@@ -92,4 +93,5 @@ sprite_change_offset("nspecial_vfx_spit", 30, 42);
 sprite_change_offset("ptooie_trail_vfx", 2, 0);
 sprite_change_offset("uspecial_trail", 30, 16);
 sprite_change_offset("poison_status_vfx", 8, 8);
+sprite_change_offset("poison_consume_vfx", sprite_get_xoffset(asset_get("afx_poison_large")), sprite_get_yoffset(asset_get("afx_poison_large")));
 

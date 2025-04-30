@@ -43,7 +43,7 @@ moonwalk_accel          = 1.3;		            // 1.2  -  1.4
 // Air movement
 leave_ground_max        = 6;		            // 4    -  8
 max_jump_hsp            = 6;		            // 4    -  8
-air_max_speed           = 3.5;  		            // 3    -  7
+air_max_speed           = 3.5;  		        // 3    -  7
 jump_change             = 3;		            // 3
 air_accel               = 0.25;		            // 0.2  -  0.4
 prat_fall_accel         = 1;		            // 0.25 -  1.5
@@ -407,6 +407,93 @@ __hb_draw_spr = sprite_get("hitbox_shapes");
 hb_color[0] = 0;        //0 makes it the default red
 hb_color[1] = $00FFFF;  //any color hex value works ($BBGGRR), using this one for sweetspots
 
+//////////////////////////////////////////////////////////// RUNE SHENANIGENS ////////////////////////////////////////////////////////////
+
+// Poison Consume
+poison_consume_rune = has_rune("L");
+poison_extend_effect_index = 341;
+poison_consume_effect_index = 342;
+fx_poisonconsume = hit_fx_create(sprite_get("poison_consume_vfx"), 28);
+
+// Fspecial quick charge
+fspecial_quick_charge_rune = has_rune("D");
+if(fspecial_quick_charge_rune){
+    fspecial_mid_charge = 20;
+    fspecial_large_charge = 50;
+    fspecial_release_charge = 70;
+}
+
+//Fspecial infinite charge
+fspecial_infinite_charge_rune = has_rune("I");
+fspecial_stacks = 0;
+if fspecial_infinite_charge_rune fspecial_cooldown = 180;
+
+//Plant Slow Fall
+slowfall_rune = has_rune("B");
+slowfall_speed = 1;
+slowfall_max = 200;
+slowfall_duration = slowfall_max;
+slowfalling = 0;
+slowfallable_attacks = [AT_NAIR, AT_FAIR, AT_DAIR, AT_UAIR, AT_BAIR];
+uspecial_override = false;
+
+//Hittable Ptooie
+hittable_ptooie_rune = has_rune("A");
+
+//Pratless Uspecial
+pratless_uspecial_rune = has_rune("H");
+uspecial_count = 0;
+uspecial_redeploy = false;
+uspecial_prat_buffer = false;
+
+//Homing Dspecial
+homing_dspecial_rune = has_rune("G");
+if homing_dspecial_rune dspecial_lockon_degrees = 135;
+
+//Ptooie Parry
+ptooie_parry_rune = has_rune("K");
+ptooie_parry_dummy = noone;
+ptooie_parry_cooldown = 0;
+
+//Bouncy Ptooie
+bouncy_ptooie_rune = has_rune("E");
+
+//Higher air speed
+high_air_speed_rune = has_rune("C");
+if high_air_speed_rune air_max_speed = 5.5;
+
+//Longer Dspecial Rune
+long_dspecial_rune = has_rune("J");
+if long_dspecial_rune dspecial_distance_max = 330;
+
+//Nspecial windbox
+nspecial_windbox_rune = has_rune("F");
+ptooieless_nspecial = false;
+strong_windbox_x = -30;
+strong_windbox_y = -160;
+strong_windbox_w = 60;
+strong_windbox_h = 80;
+tall_strong_windbox_y = -160;
+tall_strong_windbox_h = 80;
+short_strong_windbox_y = -130;
+short_strong_windbox_h = 50;
+weak_windbox_x = -30;
+weak_windbox_y = -79;
+weak_windbox_w = 60;
+weak_windbox_h = 80;
+
+//Ptooie Explode
+ptooie_explode_rune = has_rune("M");
+
+//Plant Gang
+plant_gang_rune = has_rune("N");
+offset_camera = false;
+
+//Ptooie Swarm
+ptooie_swarm_rune = has_rune("O");
+ptooie_swarm_timer = 0;
+ptooie_swarm_timer_max = 360;
+ptooie_swarm_cooldown = 0;
 
 ////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
 

@@ -99,6 +99,10 @@ air_dodge_sound =noone// asset_get("sfx_quick_dodge");//sound_get("gap")
 bubble_x = 0;
 bubble_y = 8;
 
+//victory
+set_victory_bg(sprite_get("winscreen"));
+set_victory_theme(sound_get("seijavictory"));
+
 
 // Trummel
 trummelcodecneeded = false;

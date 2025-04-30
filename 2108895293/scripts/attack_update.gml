@@ -60,6 +60,10 @@ if (attack == AT_UAIR){
 				window = 4;
 				window_timer = 0;
 			}
+			if (attack_pressed){
+				window = 4;
+				window_timer = 0;
+			}
 		}
 	}
 	if (window == 3 && window_timer == 13){

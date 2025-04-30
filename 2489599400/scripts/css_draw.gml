@@ -7,7 +7,7 @@ patch_ver = "2.749";
 patch_day = "31";
 patch_month = "FEB";
  
-var num_alts = 16;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
 
 if (get_color_profile_slot_r(0, 7) == 255) {
@@ -18,21 +18,19 @@ if (get_color_profile_slot_r(0, 7) == 255) {
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Tape";
-alt_name[1]  = "Rubber Band";
-alt_name[2]  = "Colored Pencils";
-alt_name[3]  = "Scissors";
-alt_name[4]  = "Stapler";
-alt_name[5]  = "Olly";
-alt_name[6]  = "Hole Punch";
-alt_name[7]  = "Blue";
-alt_name[8]  = "Teal";
-alt_name[9]  = "Olivia";
-alt_name[10] = "Earth";
-alt_name[11] = "Fire";
-alt_name[12] = "Water";
-alt_name[13] = "Ice";
-alt_name[14] = "Handaconda";
-alt_name[15] = "Mario";
+alt_name[1]  = "Blue Streamer";
+alt_name[2]  = "Red Streamer";
+alt_name[3]  = "Green Streamer";
+alt_name[4]  = "Yellow Streamer";
+alt_name[5]  = "Black";
+alt_name[6]  = "King";
+alt_name[7]  = "King's Sister";
+alt_name[8]  = "Earth";
+alt_name[9]  = "Fire";
+alt_name[10] = "Water";
+alt_name[11] = "Ice";
+alt_name[12] = "Pitch Black";
+alt_name[13] = "Mario";
  
  
  

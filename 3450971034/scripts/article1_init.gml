@@ -20,7 +20,7 @@ state = 0;
 state_timer = 0;
 idle_timer = 0;
 idle_threshold = 2; // despawns hitbox and starts despawn timer
-idle_despawn_time = 30;
+idle_despawn_time = 30 + player_id.hittable_ptooie_rune * 90;
 parried_despawn_time = 75; // takes longer if parried
 destroyed = false;
 unbashable = false;
@@ -34,7 +34,7 @@ can_hit = array_create(20, true);
 can_hit_ptooies = array_create(20, true);
 can_hit_ptooies[player] = false;
 hitbox_cooldown = 2; // To allow the hitbox to be disabled briefly when hit, as well as reduce initial activeness
-armor = 8; // Resistance to being knocked away, based on damage delt
+armor = 8 * !player_id.hittable_ptooie_rune; // Resistance to being knocked away, based on damage delt
 
 draw_angle = 0;
 rot_speed = 0;
@@ -66,4 +66,12 @@ orig_knock = 0;
 hit_lockout = 20;
  
 article_should_lockout = true; //set to false if you don't want hit lockout.
+
+// Rune Code
+last_bounce_speed = 0;
+consecutive_bounce_count = 0;
  
+if(player_id.ptooie_parry_rune){
+    is_hittable = true;
+    hittable_hitpause_mult = 0
+}

@@ -122,3 +122,5 @@ stung2 = hit_fx_create(sprite_get("effect_bluey2"), 34);
 stung3 = hit_fx_create(sprite_get("effect_cinna"), 16);
 stung4 = hit_fx_create(sprite_get("effect_cinna2"), 32);
 cementspill = hit_fx_create(sprite_get("cementspill"), 32);
+
+hud_enable = 0;

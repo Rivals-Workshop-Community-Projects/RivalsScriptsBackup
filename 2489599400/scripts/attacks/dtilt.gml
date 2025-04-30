@@ -18,7 +18,7 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_CANCEL_FRAME, 4);
+set_window_value(AT_DTILT, 3, AG_WINDOW_CANCEL_FRAME, 3);
 
 //DTilt2
 set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 2);

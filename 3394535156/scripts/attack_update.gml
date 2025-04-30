@@ -340,15 +340,11 @@ switch (attack) {
 			var new_x = ease_backIn(fspecial_start_position.x, floor(fspecial_start_position.x + lengthdir_x(fspecial_max_distance, dir)), window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH), - 1)
 			var new_y = ease_backIn(fspecial_start_position.y, floor(fspecial_start_position.y + lengthdir_y(fspecial_max_distance, dir)), window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH), - 1) 
 			
-			if !place_meeting(new_x,new_y,asset_get("par_block")) {
-				x = new_x
-				y = new_y
-			}
 			
 			if shield_pressed {
 				spawn_hit_fx(x,y-(char_height/2),fspecial_cancel_vfx).depth = depth - 1;
-				vsp = -4 + (y - yprevious);
-				hsp = 0.4*(x - xprevious);
+				vsp = -4 + (new_y - y);
+				hsp = 0.4*(new_x - x);
 				set_state(PS_PRATFALL)
 				if alt_cur == 8 && taunt_down {
 					sound_play(sound_get("sfx_plague_fspecial_cancel"))
@@ -357,6 +353,11 @@ switch (attack) {
 					sound_play(sound_get("sfx_vakna_explosion_2"), false, noone, 0.9, 1.4)
 				}
 				break;
+			}
+			
+			if !place_meeting(new_x,new_y,asset_get("par_block")) {
+				x = new_x
+				y = new_y
 			}
 			
 			with oPlayer {

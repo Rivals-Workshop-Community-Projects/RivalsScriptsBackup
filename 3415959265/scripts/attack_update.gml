@@ -1806,23 +1806,16 @@ switch (attack)
         }
     }
 }
-#define rayDown(key1, key2){
-        if(!free) return y;
-        var _y = y-16;
-        var _obj;
-        //do pathfind loop
-        for(var i = 0; i < 100; ++i){
-            _obj = instance_position(x+1*spr_dir,_y + 16 * i,asset_get(key1));
-            if(_obj == noone) _obj = instance_position(x+1*spr_dir,_y + 16 * i,asset_get(key2));
-            if(_obj != noone){
-                _y = _y + 16 * i;
-                return _y;
-            }
-        }
-        if(y == _y){
-            _y = 1000;
-        }
-        return _y;
+#define rayDown(key1, key2){  
+    if (!free) return y;  
+    var _y = y;  
+    var _obj;  
+    for (var i = 0; i < 100; ++i) {  
+        _obj = instance_position(x + spr_dir, _y + 16 * i, asset_get(key1));  
+        if (_obj == noone) _obj = instance_position(x + spr_dir, _y + 16 * i, asset_get(key2));  
+        if (_obj != noone) return _y + i;  
+    }  
+    return 1000;  
 }
 #define spawn_base_dust
 /// @param x

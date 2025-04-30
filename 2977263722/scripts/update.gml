@@ -10,6 +10,17 @@ with(hit_fx_obj) {
 	}
 }
 
+//tackle dash rune
+if state = PS_DASH && has_rune("L") {
+     if abs(hsp) = dash_speed {
+         create_hitbox(AT_FSPECIAL, 1, x + 9*spr_dir, y-32);
+	 }
+	 if fspecial_hit = 1 {
+	     attack = AT_FSPECIAL;
+		 state = PS_ATTACK_GROUND;
+	 }
+}
+
 //infinite jablock prevention timer
 with oPlayer {
     if "bully_from_mario_jablock_cooldown" not in self bully_from_mario_jablock_cooldown = 0; //failsafe for clones and such
@@ -168,7 +179,7 @@ break;
 
 //SPAWNING =========================================================================
 
-if introTimer != 21 {
+if introTimer != 22 {
     if (introTimer2 < 2) {
         introTimer2++;
     } else {
@@ -178,7 +189,7 @@ if introTimer != 21 {
 }
 
 if was_reloaded || object_index == oTestPlayer{
-introTimer = 21;
+introTimer = 22;
 
 switch alt {
 case 1:
@@ -231,7 +242,24 @@ if introTimer < 21 {
 	}
 	}
 } else {
+	if introTimer = 21 && introTimer2 = 0 && asplodable {
+		sound_play(sound_get("sm64_break"), false, noone, 2, 1);
+		sound_play(sound_get("sm64_break"), false, noone, 2, 0.9);
+		sound_play(sound_get("sm64_break"), false, noone, 2, 1.1);
+			
+		spawn_hit_fx(x, y, anti_p_asplode);
+		asploded = true;
+		fxlol = spawn_hit_fx(x, y, death_coin);
+		fxlol.hsp = -2 + random_func(5, 4, false);
+		fxlol.vsp = -20;
+		fxlol.grav = 1;
+	}
     draw_indicator = true;
+}
+
+if asploded {
+	visible = false;
+	waiting_to_spawn = true;
 }
 
 //RESPAWN PLAT =====================================================================

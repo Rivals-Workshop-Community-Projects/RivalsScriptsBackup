@@ -23,7 +23,25 @@ if (has_rune("I"))
 		break;
 	}
 }
+//turn arounds
+ if(attack == AT_DTILT || attack == AT_UTILT)
+{
+            //turnaround
+        if(window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
+}
 
+if (attack == AT_JAB)
+if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - left_stick_down) * -1) && !up_down && !down_down && (attack_down || right_stick_down || left_stick_down)){
+    if(spr_dir == (right_down - left_down) * -1){
+        spr_dir *= -1;
+        attack_end();
+        set_attack(AT_FTILT);
+    }
+}
 
 switch (attack)
 {
@@ -81,6 +99,7 @@ switch (attack)
 			break;
 		}
 	break;
+	
 	case AT_TAUNT:
 	
 		switch(window)

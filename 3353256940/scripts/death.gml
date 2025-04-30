@@ -12,7 +12,7 @@ if (setting_visible) {
 }
 
 if (is_voiced) {
-				var voice_line = random_func_2((current_second % 50) + get_player_color( player ), 12, true); // TODO: does this desync?
+				var voice_line = random_func_2((current_second % 50) + get_player_color( player ), 18, true); // TODO: does this desync?
 				if (voice_line == 1) sound_play(sound_get("ig_ko_1"), false, 0, 1, 1);
 				else if (voice_line == 2) sound_play(sound_get("ig_ko_2"), false, 0, 1, 1);
 				else if (voice_line == 3) sound_play(sound_get("ig_ko_3"), false, 0, 1, 1);

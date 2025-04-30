@@ -1,5 +1,5 @@
 //Spawning Afterimages on Certain Attacks
-if (attack == AT_DATTACK && window == 2 || attack == AT_NSPECIAL && window == 2 || attack == AT_DSPECIAL && window != 1 && window != 2 && window != 5){
+if (attack == AT_NSPECIAL && window == 2 || attack == AT_DSPECIAL && window != 1 && window != 2 && window != 5){
 	afterimage = 1
 } else if (attack != AT_DAIR && attack != AT_NSPECIAL && attack != AT_DSPECIAL){
 	afterimage = 0
@@ -11,12 +11,25 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-//Stopping SFX for Fstrong
+// Fstrong
 if (attack == AT_FSTRONG){
 	if (window == 3 && window_timer == 1){
 		sound_stop(sound_get("sfx_sonic_fstrong_spin"))
 		if (voiced == 1){
 			sound_play(sound_get("sfx_sonic_fstrong1"))
+		}
+	}
+	
+	
+	if (window == 2){
+		if (state_timer mod 10 == 0){
+			spawn_base_dust( x - (32 * spr_dir), y, "walk", spr_dir);
+		}
+	}
+	
+	if (window == 3){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (12 * spr_dir), y, "dash_start", spr_dir);
 		}
 	}
 }
@@ -214,6 +227,7 @@ if (attack == AT_DAIR){
 	can_wall_jump = true;
 }
 
+/*
 //Buffing Strongs with Meter
 if (ichigauge == 16){
 	//Down Strong
@@ -245,6 +259,7 @@ if (ichigauge == 16){
 		set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 4);
 	}
 }
+*/
 
 //Up Strong: Sonic Up Draft
 if (attack == AT_USTRONG){
@@ -254,7 +269,72 @@ if (attack == AT_USTRONG){
 	if (hsp < -10){//>
 		hsp = -9.5
 	}
+	
+	if (window == 2){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (18 * spr_dir), y, "dash_start", -spr_dir);
+		}
+	}
 }	
+
+// Down Strong
+if (attack == AT_DSTRONG){
+	if (window == 2){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (28 * spr_dir), y, "dattack", -spr_dir);
+		}
+	}
+	
+	if (window == 4){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (28 * spr_dir), y, "dattack", spr_dir);
+		}
+	}
+}
+
+// ftilt
+if (attack == AT_FTILT){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (40 * spr_dir), y, "dattack", -spr_dir);
+		}
+	}
+}
+
+// utilt
+if (attack == AT_UTILT){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (16 * spr_dir), y, "walk", -spr_dir);
+		}
+	}
+	
+	if (window == 3){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (16 * spr_dir), y, "dash", -spr_dir);
+		}
+	}
+}
+
+
+// dtilt
+if (attack == AT_DTILT){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (60 * spr_dir), y, "wavedash", -spr_dir);
+		}
+	}
+}
+
+// dattack
+if (attack == AT_DATTACK){
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (window == 2 && state_timer mod 3 == 0)){
+		if (!hitpause){
+			spawn_base_dust( x - (20 * spr_dir), y, "walk", spr_dir);
+		}
+	}
+}
+
 
 //********************************************************************
 //New
@@ -271,6 +351,7 @@ if (attack == AT_NSPECIAL){
 	if (!has_hit){
 		if window == 1 { //targets the opponent during startup
 			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 7);
+			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 			if (window_timer == 1){
 				homingpose++;
 				if (homingpose > 2){
@@ -347,8 +428,8 @@ if (attack == AT_NSPECIAL){
 	} else if has_hit && window != 3 {//If Sonic hits, this code lets him bounce
 		window = 3; window_timer = 4;
 		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-		draw_reticle = false
-		//set_attack(AT_NSPECIAL_2);
+		draw_reticle = false;
+		
 		old_hsp = 0 * spr_dir;
 		old_vsp = -7;
 		hsp = 0;
@@ -360,92 +441,29 @@ if (attack == AT_NSPECIAL){
 			sound_play(sound_get("sfx_sonic_homing_land"))
 		}
 	}
+	
+	if (has_hit && window == 3 && !hitpause){
+		
+		window = 5;
+		window_timer = 0;
+		
+		vsp = -7.5;
+		hsp = 0;
+		
+		has_hit = false;
+		
+		state_timer = 0;
+	}
+	
+	if (window >= 5){
+		if (state_timer > 11){
+			attack_end();
+			iasa_script();
+		}
+	}
 }	
 
 //*********************************************************************
-
-if (attack == AT_NSPECIAL_2){
-	if (window_timer == 3 && window == 3){
-		set_attack(AT_NSPECIAL);
-		window = 4
-		window_timer = 18
-		vsp = 0
-	}
-}
-
-
-//Unused Homing Attack Poses.
-if (homingpose == 0){
-	set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("pose1"));
-	set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
-	set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
-	set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("hurtbox_ground"));
-
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_taunt_slow"));
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 0);
-
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
-}
-
-if (homingpose == 1) {
-	set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("pose2"));
-	set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
-	set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
-	set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("hurtbox_ground"));
-
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_taunt_slow"));
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 0);
-
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
-}
-
-if (homingpose == 2){
-	set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("pose3"));
-	set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
-	set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
-	set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("hurtbox_ground"));
-
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_taunt_slow"));
-	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 0);
-
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
-	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_TYPE, 2);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 4);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
-	set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 7);
-}
 
 //Forward Special: Light Speed Dash
 if (attack == AT_FSPECIAL){
@@ -645,8 +663,8 @@ if (attack == AT_DSPECIAL){
         spindash_loop--;
         window_timer = 0
     }
-	if (window == 4 && window_timer == 1 && !free){
-		spawn_base_dust(x, y, "dash", 0);
+	if (window == 4 && state_timer mod 3 == 0 && !hitpause && !free){
+		spawn_base_dust(x, y, "walk", 0);
 	}
 	//fastfall idk
 	if (free && down_pressed && window == 4){
@@ -784,17 +802,20 @@ if (attack == AT_EXTRA_1){
 	}
 }
 
+//--------------------------------------------
+
 //Supersonic's Base Cast Dust Function
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)
+// use this to be awesome
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
 var dfx; //dust_fx value
 var dfg; //fg_sprite value
-var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
 var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
 switch (name) {
     default: 
@@ -808,11 +829,21 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    
+    //
+    //bar-kun additions (note: idk how fg_sprite work)
+    //
+    case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": 
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
-return newdust;
+newdust.draw_angle = angle;

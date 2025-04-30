@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 16, 32 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 23 );
 
 // Red
 set_color_profile_slot( 1, 0, 237, 22, 43 ); //Shell
@@ -225,6 +225,36 @@ set_color_profile_slot( 19, 4, 206, 192, 180 ); //Snout
 set_color_profile_slot( 19, 5, 156, 0, 0 ); //Body
 set_color_profile_slot( 19, 6, 52, 51, 51 ); //Bowl
 set_color_profile_slot( 19, 7, 67, 67, 67 ); //Lips
+
+// BLM
+set_color_profile_slot( 20, 0, 255, 183, 0 ); //Shell
+set_color_profile_slot( 20, 1, 145, 69, 26 ); //Head
+set_color_profile_slot( 20, 2, 255, 247, 245 ); //Highlights
+set_color_profile_slot( 20, 3, 71, 53, 46 ); //Hair
+set_color_profile_slot( 20, 4, 224, 187, 103 ); //Snout
+set_color_profile_slot( 20, 5, 173, 112, 41 ); //Body
+set_color_profile_slot( 20, 6, 112, 97, 92 ); //Bowl
+set_color_profile_slot( 20, 7, 255, 216, 46 ); //Lips
+
+// Transcendance
+set_color_profile_slot( 21, 0, 255, 105, 175 ); //Shell
+set_color_profile_slot( 21, 1, 135, 223, 255 ); //Head
+set_color_profile_slot( 21, 2, 235, 255, 255 ); //Highlights
+set_color_profile_slot( 21, 3, 255, 105, 175 ); //Hair
+set_color_profile_slot( 21, 4, 255, 229, 171 ); //Snout
+set_color_profile_slot( 21, 5, 255, 94, 124 ); //Body
+set_color_profile_slot( 21, 6, 25, 212, 250 ); //Bowl
+set_color_profile_slot( 21, 7, 241, 248, 255 ); //Lips
+
+// Free Palestine
+set_color_profile_slot( 22, 0, 235, 12, 12 ); //Shell
+set_color_profile_slot( 22, 1, 250, 255, 254 ); //Head
+set_color_profile_slot( 22, 2, 92, 66, 63 ); //Highlights
+set_color_profile_slot( 22, 3, 32, 199, 37 ); //Hair
+set_color_profile_slot( 22, 4, 255, 229, 171 ); //Snout
+set_color_profile_slot( 22, 5, 70, 163, 54 ); //Body
+set_color_profile_slot( 22, 6, 241, 248, 255 ); //Bowl
+set_color_profile_slot( 22, 7, 99, 240, 43 ); //Lips
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

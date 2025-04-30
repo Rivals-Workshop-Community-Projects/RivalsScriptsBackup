@@ -21,7 +21,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_UAIR, 3, AG_WINDOW_CANCEL_FRAME, 5);
+set_window_value(AT_UAIR, 3, AG_WINDOW_CANCEL_FRAME, 111); //5);
 
 //part 2
 set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 6);

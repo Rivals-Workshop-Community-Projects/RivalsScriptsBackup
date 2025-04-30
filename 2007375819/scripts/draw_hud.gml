@@ -1,5 +1,8 @@
-shader_start();
 //HUD stuff to show Blueytank's availability
+
+if "hud_enable" not in self exit
+
+shader_start();
 if minionOut == true {
 	draw_sprite(sprite_get("blueytank_hud"), 1, temp_x+190, temp_y+4);
 	draw_sprite(sprite_get("blueytank_hud_overlay"), 1, temp_x+190, temp_y+4);
@@ -24,5 +27,4 @@ if HOut == true {
 	else {
 	draw_sprite(sprite_get("h_hud"), 0, temp_x+156, temp_y+4);
 }
-
 shader_end();

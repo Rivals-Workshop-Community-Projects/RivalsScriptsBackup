@@ -48,8 +48,10 @@ artc_grab_id = noone; //Article's version of the command grab
 artc_grab_time = 0; //timer for grabbing, works as a state_timer of sorts
 previous_free = false;
 detect_player = false;
-
-
+mask_sprite_prev = -1; // stores last mask sprite
+mask_sprite_prev = -1;
+grounded_last_frame = true; // Assume starts grounded
+safe_grounded = true;
 
 
 slam_grab_id = noone;

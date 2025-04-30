@@ -3,7 +3,7 @@
 if spr_dir == 0 {
 	spr_dir = 1
 }
-print(finishercd)
+
 if finishercd > 90 && !hitpause{
 	finishercd --
 	iaido = false

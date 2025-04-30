@@ -362,7 +362,7 @@ switch(state){
 					if(player == other.hitplayer){
 						if(attack == AT_FSTRONG or attack == AT_FSTRONG_2 or attack == AT_USTRONG or attack == AT_USTRONG_2 or attack == AT_DSTRONG or attack == AT_DSTRONG_2){
 							super_armor = true;
-							if(hitstop == hitstop_full){
+							if(hitstop == hitstop_full and has_hit == false){
 								with(other){
 								//aesthetics
 									var i = 0;

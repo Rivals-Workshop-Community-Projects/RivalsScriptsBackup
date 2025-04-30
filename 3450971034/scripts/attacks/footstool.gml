@@ -60,6 +60,7 @@ set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(atk, i, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(atk, i, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(atk, i, HG_HIT_SFX, asset_get("sfx_leafy_hit1"));
+set_hitbox_value(atk, i, HG_VISUAL_EFFECT, fx_bite);
 i++;
 
 set_hitbox_value(atk, i, HG_HITBOX_TYPE, 1);
@@ -77,4 +78,35 @@ set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(atk, i, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, i, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(atk, i, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, i, HG_VISUAL_EFFECT, fx_bigbite);
 i++;
+
+// Abyss Rune: Poison Consume
+
+if(poison_consume_rune){
+
+    set_hitbox_value(atk, 1, HG_EFFECT, poison_extend_effect_index);
+
+    i++
+    set_hitbox_value(atk, i, HG_HITBOX_TYPE, 1);
+    set_hitbox_value(atk, i, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(atk, i, HG_WINDOW, 3);
+    set_hitbox_value(atk, i, HG_LIFETIME, 4);
+    set_hitbox_value(atk, i, HG_HITBOX_Y, -104);
+    set_hitbox_value(atk, i, HG_WIDTH, 60); // 20
+    set_hitbox_value(atk, i, HG_HEIGHT, 60);
+    set_hitbox_value(atk, i, HG_PRIORITY, 3);
+    set_hitbox_value(atk, i, HG_DAMAGE, 10); // 3
+    set_hitbox_value(atk, i, HG_ANGLE, 90);
+    set_hitbox_value(atk, i, HG_BASE_KNOCKBACK, 8);
+    set_hitbox_value(atk, i, HG_KNOCKBACK_SCALING, 1.2);
+    set_hitbox_value(atk, i, HG_BASE_HITPAUSE, 18);
+    set_hitbox_value(atk, i, HG_HITPAUSE_SCALING, .5);
+    set_hitbox_value(atk, i, HG_VISUAL_EFFECT, 1);
+    set_hitbox_value(atk, i, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+    set_hitbox_value(atk, i, HG_EFFECT, poison_consume_effect_index);
+    set_hitbox_value(atk, i, HG_HIT_LOCKOUT, 10);
+    
+    set_num_hitboxes(atk, i);
+
+}

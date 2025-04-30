@@ -51,13 +51,13 @@ switch(attack){
 		sound_play(asset_get("sfx_swipe_medium1"));
 	}
 	case AT_DTILT:
-		if window == 1 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
+		if window == 1 && window_timer == 4{
+			spawn_base_dust(x,y,"dash",1*spr_dir)
 		}
 		break;
 	case AT_FSTRONG:
-		if window == 2 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
+		if window == 3 && window_timer == 1{
+			spawn_base_dust(x,y,"dash_start",1*spr_dir)
 		}
 		if window == 1 and window_timer == 10{
 			sound_play(asset_get("sfx_charge_blade_ready"));
@@ -68,9 +68,9 @@ switch(attack){
 		}
 		break;
 	case AT_USTRONG:
-		if window == 2 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
+		if window == 2 && window_timer == 9{
+			spawn_base_dust(x,y,"dash_start",1*spr_dir)
+			spawn_base_dust(x,y,"dash_start",1*-spr_dir)
 		}
 		if window == 2 and window_timer == 2{
 			sound_play(sound_get("sfx_spear_swing_3"));
@@ -671,12 +671,11 @@ switch(attack){
 		groundcracks = spawn_hit_fx(x,y,fx_groundcracks2);groundcracks.depth = depth-2;
 	}
 
-#define spawn_base_dust // written by supersonic
+#define spawn_base_dust
 /// @param {undefined} x
 /// @param {undefined} y
 /// @param {undefined} name
 /// @param {undefined} dir = 0
-/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
@@ -685,23 +684,22 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
-	default: 
-	case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-	case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-	case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-	case "doublejump": 
-	case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-	case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-	case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-	case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-	case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-	case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-if newdust == noone return noone;
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color

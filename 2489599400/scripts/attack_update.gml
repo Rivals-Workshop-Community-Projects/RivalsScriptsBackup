@@ -10,35 +10,13 @@ if(attack == AT_JAB && was_parried){
     was_parried = false;
 }
 
-/*
 //dtilt stuff
 if attack == AT_DTILT {
-	if window == 1 && window_timer == 5 && special_down && 5 > tapes && tapecool == 0 {
-		window = 8;
+	if window == 3 && window_timer > 3 && attack_pressed {
+		window = 4;
 		window_timer = 0;
-		sound_play(sound_get("sfx-tape-1"));
-	}
-	if window == 8 {
-		if window_timer == get_window_value(AT_DTILT, 8, AG_WINDOW_LENGTH) {
-			window = 9;
-			window_timer = 0;
-		}
-	}
-	if window == 9 {
-		if window_timer == 2 {
-			spawn_hit_fx(x+48*spr_dir, y-15, 19);
-			create_hitbox(AT_EXTRA_2, 3, x+48*spr_dir, y-15);
-			tapes += 1;		
-			tapecool = 180;		
-			take_damage( player, -1, 2);
-		}
-		if window_timer == get_window_value(AT_DTILT, 9, AG_WINDOW_LENGTH) {
-			window = 10;
-			window_timer = 0;
-		}
 	}
 }
-*/
 
 //Taunt stuff
 if(attack == AT_TAUNT){

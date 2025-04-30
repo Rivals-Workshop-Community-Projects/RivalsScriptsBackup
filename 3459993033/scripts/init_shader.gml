@@ -21,7 +21,6 @@ switch (get_player_color(player)){
     case 2:
     case 3:
     case 7:
-    case 8:
     set_article_color_slot( 6, 255, 45, 45 );
     break;
 }

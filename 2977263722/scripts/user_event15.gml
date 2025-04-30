@@ -271,6 +271,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.10", "28 April, 2025");
+initHeader("Aesthetic");
+initSection("-Munophone now scrolls smoothly on the home screen");
+initHeader("Balance");
+initSection("-Added Abyss Rune L: ''Dashing has FSpecial's hitbox when Bully reaches top speed.''");
+initHeader("Fixes");
+initSection("-Fixed USpecial sprite being coded stupidly
+-Fixed offscreen icons having weird offsets on pattern alts
+-Fixed Bully Burn dealing 1% to respawning opponents when they die frame-perfectly");
+
+
+
 initPatch("1.9", "18 December, 2023");
 initHeader("Aesthetic");
 initSection("-Burn effect is now custom-coded (This means fire now looks nicer, recolours with alts, and screws over Zetterburn specifically!)
@@ -391,7 +403,7 @@ initHeader("Credits");
 initSection("Flophawk: Everything xoxo
 Zard: Legacy Wario FSpecial Code & Effect Sprite
 TheAcidCat: Miiverse Posts (Miiverse Stage Compatability)
-VaporV01D: Character Inspiration (aka its his fault i decided to make this)");
+WaferW15P: Character Inspiration (aka its her fault i decided to make this)");
 
 initHeader("Stuff used:");
 initSection("''Prince Bully Throws Coke at LH Martin and Gets Grounded'' by Weatherstar4000video");

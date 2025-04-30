@@ -137,6 +137,7 @@ sprite_change_offset("hurtbox", 66, 94);
 sprite_change_offset("crouchbox", 66, 94);
 
 sprite_change_offset("literally_1_coin_for_your_troubles", 16, 16);
+sprite_change_offset("asplode", 80, 78);
 
 //COMPAT
 sprite_change_offset("comp_bully_miiverse", 60, 30);

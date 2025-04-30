@@ -173,6 +173,9 @@ dspecial_fx = hit_fx_create( sprite_get( "dspecial_fx" ), 15 );
 fspecial_bonk_fx = hit_fx_create( sprite_get( "fspecial_wall_fx" ), 10 );
 fire_fx_1 = hit_fx_create( sprite_get( "fire_fx_1" ), 20 );
 death_coin = hit_fx_create( sprite_get("literally_1_coin_for_your_troubles"), 96 );
+anti_p_asplode = hit_fx_create( sprite_get("asplode"), 32 );
+asplodable = false;
+asploded = false;
 
 empty_fx = hit_fx_create( asset_get( "empty_sprite" ), 1 );
 
@@ -297,6 +300,8 @@ pkmn_stadium_back_img = sprite_get("comp_pkmn_battlefort_back");
 TCG_Kirby_Copy = 1;
 poa_pong_custom_paddle_sprite = sprite_get("comp_bully_pong"); poa_pong_custom_paddle_shader = false;
 talkingflower_special_taunt_line = 187;
+scoop_personalized_flavour_name = "Lethal Lava Cake";
+scoop_personalized_flavour_sprite = sprite_get("comp_scoopflavour");
 
 nspecial_glow_colour = c_red;
 

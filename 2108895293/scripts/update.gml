@@ -84,7 +84,7 @@ if (state==PS_SPAWN && extra_col == 0){
 		init_shader();
 	}
 	
-	if (get_player_color( player ) == 18){
+	if (get_player_color( player ) == 19){
 		if (jump_down&&right_down){//alt 1
 			extra_col = 7
 			white_flash_timer = 18;

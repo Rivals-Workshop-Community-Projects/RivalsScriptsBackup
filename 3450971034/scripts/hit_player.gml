@@ -8,7 +8,7 @@ var attack = my_hitboxID.attack;
 var hbox = my_hitboxID.hbox_num;
 
 //functional
-if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(my_hitboxID.ptooie_obj)) {
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && instance_exists(my_hitboxID.ptooie_obj)) {
     var pt = my_hitboxID.ptooie_obj;
     pt.hitstop = my_hitboxID.hitpause;
     if (pt.state == 0) {
@@ -28,7 +28,12 @@ if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(my_hitboxID.ptooie_obj)
         pt.hsp *= -0.8;
         pt.vsp *= 0.9;
     }
-    pt.can_hit = my_hitboxID.can_hit;
+    if !hittable_ptooie_rune pt.can_hit = my_hitboxID.can_hit;
+    if ptooie_explode_rune {
+        pt.destroyed = true;
+        pt.hitstop = false;
+        if hit_player_obj != self hit_player_obj.should_make_shockwave = false;
+    }
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
@@ -61,13 +66,13 @@ switch attack {
         break;
         
     case AT_NSPECIAL:
-        if (hbox == 1) sound_play(sound_get("sfx_BTL_SPEAR1"), false, noone, .4, 1.05);
+        if (hbox == 1 || hbox == 3) sound_play(sound_get("sfx_BTL_SPEAR1"), false, noone, .4, 1.05);
         break;
         
     case AT_FSTRONG:
         if (hbox == 1) sound_play(sound_get("sfx_hit_slash_medium_02"), false, noone, 1, .9);//hyu tweak
-        else if (hbox == 2) sound_play(sound_get("sfx_smash_ult_sword_hit_heavy"), false, noone, .5, 1.3);//hyu tweak
-        else if (hbox == 3) sound_play(sound_get("sfx_smash_ult_sword_hit_heavy"), false, noone, .5, 1.3);//hyu tweak
+        else if (hbox == 2) sound_play(sound_get("sfx_smash_ult_sword_hit_heavy"), false, noone, .5, 1.1);//hyu tweak
+        else if (hbox == 3) sound_play(sound_get("sfx_smash_ult_sword_hit_heavy"), false, noone, .5, 1.1);//hyu tweak
         else if (hbox == 4) sound_play(sound_get("sfx_hit_slash_medium_02"), false, noone, 1, .9);//hyu tweak
         break;  
         
@@ -97,6 +102,45 @@ if (my_hitboxID.attack != AT_NSPECIAL){
     hit_player_obj.hitstun_mult = 1;
 }
 
+//Rune Code
+
+// poison consume
+if(my_hitboxID.effect == poison_extend_effect_index && hit_player_obj.spider_plant_poison_damage > 0){
+    hit_player_obj.spider_plant_poison_timer = 1;
+    hit_player_obj.hitstop += 12;
+    hit_player_obj.hitstop_full += 12;
+    if(my_hitboxID.attack == AT_FTILT) move_cooldown[AT_FTILT] = 30; // to prevent infinites
+}
+
+if(my_hitboxID.effect == poison_consume_effect_index){
+    spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height/2, fx_poisonconsume);
+    sound_play(asset_get("sfx_poison_hit_strong"));
+    sound_play(asset_get("sfx_burnconsume"));
+    hit_player_obj.spider_plant_poison_damage = 0;
+    hit_player_obj.spider_plant_poison_timer = 0;
+    hit_player_obj.spider_plant_poison_owner = noone;
+    sound_play(asset_get("sfx_ell_cooldown"), false, noone, 0.6, 0.6);
+    with(hit_player_obj){
+        outline_color = [0, 0, 0];
+        init_shader();
+    }
+}
+
+if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3){
+    if(ptooie_explode_rune){
+        hit_player_obj.should_make_shockwave = false;
+        var vfx = spawn_hit_fx(round(my_hitboxID.x-10), round(my_hitboxID.y), fx_explosion);
+        create_hitbox(AT_NSPECIAL, 4, round(my_hitboxID.x), round(my_hitboxID.y));
+        vfx.spr_dir = 1;
+        vfx.depth = -6;
+        sound_play(asset_get("sfx_ell_fist_explode"));
+    } else {
+        my_hitboxID.in_hitpause = true;
+        my_hitboxID.hitstop = hit_player_obj.hitstop;
+        my_hitboxID.old_hsp = -3 * my_hitboxID.spr_dir;
+        my_hitboxID.old_vsp = -4;
+    }
+}
 
 #define set_grab_id
 {

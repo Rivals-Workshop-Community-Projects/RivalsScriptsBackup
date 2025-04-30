@@ -381,7 +381,10 @@ switch(attack){
 		switch(window){
 			case 1:
 			attack_charge ++;
-			if (window_timer == 4){
+			if (window_timer == 5 && !attack_charged){
+				sound_play(sound_get("sfx_jet_start"));
+			}
+			if (window_timer == 9){
 				if (attack_charged == true){
 				sound_play(sound_get("sfx_jet_big"));
 					window = 5;
@@ -497,7 +500,10 @@ switch(attack){
 		switch(window){
 			case 1:
 			attack_charge ++;
-			if (window_timer == 4){
+			if (window_timer == 5 && !attack_charged){
+				sound_play(sound_get("sfx_jet_start"));
+			}
+			if (window_timer == 9){
 				if (attack_charged == true){
 				sound_play(sound_get("sfx_jet_big"));
 					window = 5;

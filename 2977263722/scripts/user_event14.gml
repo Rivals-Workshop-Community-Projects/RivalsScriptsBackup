@@ -129,7 +129,6 @@ phone = {
 	apps: [],
 	cursor: 0,
 	page: 0,
-	home_scroll: 0, //floppo wuz here :)
 	
 	// app data
 	tips: [{}], // reserved spot for "how to phone" tip.
@@ -162,6 +161,9 @@ phone = {
 	starting_ag_index: 80,
 	starting_hg_index: 80,
 	phone_attack_index: 40,
+	home_scroll: 0, //floppo was here :)
+	home_scroll_dest: 0,
+	home_scroll_pos: 0,
 	
 	dummy: 0 // footer, because LWOs don't support trailing commas :(
 }
@@ -635,17 +637,19 @@ rectDraw(phone_x, phone_y, phone.screen_width, phone.screen_height, phone.apps[p
 
 if phone.app == phone.APP_HOME{
 
-if phone.cursor <= 3 {
-var home_scroll = (phone.cursor - 1) * -30;
-} else {
-var home_scroll = -90;
-}
+if phone.home_scroll_pos > (phone_y + phone.screen_height - 32) { phone.home_scroll_dest -= 10; }
+if phone.home_scroll_pos < phone_y { phone.home_scroll_dest += 10; }
+
+phone.home_scroll_dest = clamp(phone.home_scroll_dest, -100, 10)
+phone.home_scroll = lerp(phone.home_scroll, phone.home_scroll_dest, 0.2);
 
 	for (var i = 1; i < array_length(phone.apps); i++){
 		var app_sel = i == phone.cursor;
 		var app_x = phone_x + app_sel * phone.cursor_change_timer + ease_backIn(0, phone.screen_width, phone.app_icon_slide_timer, phone.app_icon_slide_timer_max, 1);
-		var app_y = phone_y + 10 + home_scroll + (38 * (i-1));
+		var app_y = phone_y + 10 + phone.home_scroll + (38 * (i-1));
 		drawAppIcon(app_x, app_y, i, app_sel);
+		
+		if app_sel phone.home_scroll_pos = app_y;
 	}
 }
 

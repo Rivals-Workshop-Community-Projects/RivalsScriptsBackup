@@ -137,7 +137,9 @@ leaving_effect_mirror = hit_fx_create( sprite_get("ustrong_pale_leaving_mirror")
 
 holding_turntable = false;
 
-
+//victory
+set_victory_bg(sprite_get("winscreen"));
+set_victory_theme(sound_get("hana_victory"));
 
 // 0: jump
 // 1: speed

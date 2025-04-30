@@ -68,7 +68,7 @@ sprite_change_offset("ustrong", 42, 98);
 sprite_change_offset("dstrong", 46, 80);
 
 //Specials
-sprite_change_offset("nspecial", 30, 64);
+sprite_change_offset("nspecial", 50, 78);
 sprite_change_offset("fspecial", 36, 78);
 sprite_change_offset("fspecial_afterimage", 36, 78);
 sprite_change_offset("ring", 16, 32);

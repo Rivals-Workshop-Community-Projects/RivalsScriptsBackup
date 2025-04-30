@@ -54,10 +54,10 @@ break;
 
 //USPECIAL ROTATION ===========================================================================
 if attack = AT_USPECIAL && window > 1 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)  {
-    doing_uspecial = true;
-    if alt != 3 shader_start();
-    draw_sprite_ext(pattern? sprite_get("uspecial_"+string(alt)) : sprite_get("uspecial"), image_index, x, y, pattern? spr_dir : 2*spr_dir, pattern? 1 : 2, u_angle, alt = 26 ? c_red : c_white, 1);
-	shader_end();
+    //if alt != 3 shader_start();
+    //draw_sprite_ext(pattern? sprite_get("uspecial_"+string(alt)) : sprite_get("uspecial"), image_index, x, y, pattern? spr_dir : 2*spr_dir, pattern? 1 : 2, u_angle, alt = 26 ? c_red : c_white, 1);
+	//shader_end();
+	spr_angle = u_angle;
 }
 
 //DISABLE SHADER DURING PARRY =================================================================
@@ -68,7 +68,7 @@ if object_index = oPlayer && !(doing_uspecial || parry_lock) {
 
 if pattern && object_index = oPlayer {
     maskHeader();
-		draw_sprite_ext(doing_uspecial? sprite_get("uspecial_mask") : sprite_index, image_index, x, y, 2*spr_dir, 2, doing_uspecial? u_angle : 0, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1);
     maskMidder();
     if alt != 3 shader_start();
     	draw_sprite_tiled(pattern_spr, 0, x-32, yoffs);

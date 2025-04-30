@@ -105,6 +105,8 @@ springlockout = 0
 springy = 0
 ricegaming = place_meeting(x, y, obj_article2)
 didriceallowthespringtobejumpedon = false
+
+homingAttackPose = 1;
 //**************************************************************
 //New
 longest_id = noone;
@@ -185,12 +187,6 @@ dodge_recovery_frames = 2;
 tech_active_frames = 4;
 tech_recovery_frames = 2;
 
-//tech roll animation frames
-techroll_startup_frames = 2
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
-techroll_speed = 10;
-
 //airdodge animation frames
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
@@ -201,11 +197,17 @@ air_dodge_speed = 8;
 roll_forward_startup_frames = 1;
 roll_forward_active_frames = 3;
 roll_forward_recovery_frames = 3;
-roll_back_startup_frames = 1;
-roll_back_active_frames = 3;
-roll_back_recovery_frames = 3;
+roll_back_startup_frames = roll_forward_startup_frames;
+roll_back_active_frames = roll_forward_active_frames;
+roll_back_recovery_frames = roll_forward_recovery_frames;
 roll_forward_max = 10; //roll speed
 roll_backward_max = 10;
+
+//tech roll animation frames
+techroll_startup_frames = roll_forward_startup_frames;
+techroll_active_frames = roll_forward_active_frames;
+techroll_recovery_frames = roll_forward_recovery_frames;
+techroll_speed = 10;
 
 //walljump frames
 wall_frames = 2

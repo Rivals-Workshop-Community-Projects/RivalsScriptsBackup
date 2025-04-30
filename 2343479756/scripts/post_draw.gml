@@ -29,6 +29,17 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v1.7 - (2025 Apr 26)"
+		patch_note_text[i++] = 
+		"v1.7 - (2025 Apr 26)
+		[b]fixes[/b]
+		- DTILT2 can properly be used by pressing ATTACK now and not just TILTSTICK DOWN.
+		- also it turns out all this time, DTILT2 thing happened a bit earlier when you are using TILTSTICK DOWN to do it, as opposed to with ATTACK which happened 3 frames into the window. fixed (changed?) this now to BOTH be 3 frames into the window
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v1.6 - (2023 Apr 14)"
 		patch_note_text[i++] = 
 		"v1.6 - (2023 Apr 14)

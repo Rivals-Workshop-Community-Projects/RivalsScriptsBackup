@@ -83,6 +83,17 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.4 - (2025 Apr 25)"
+		patch_note_text[i++] = 
+		"v3.4 (2025 Apr 25)
+		[b]fixes[/b]
+		- fixed the duplicate sprites thing. i was really coinfident past me would have been attentive enough to be clean of any duplicate sprites, but i guess i had this one. in specific, there was a draft sprite leftover for dspecial.
+
+		[b]notes[/b]
+		sorry for the patch drought
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v3.3 - (2024 Aug 19)"
 		patch_note_text[i++] = 
 		"v3.3 (2024 Aug 19)

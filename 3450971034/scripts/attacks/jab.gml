@@ -149,3 +149,36 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_bigbite);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 
 set_num_hitboxes(atk, hitbox_num);
+
+// Abyss Rune: Poison Consume
+
+if(poison_consume_rune){
+
+    set_hitbox_value(atk, 3, HG_EFFECT, poison_extend_effect_index);
+
+    hitbox_num ++; //attack 3 poison consume
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num - 1);
+    set_hitbox_value(atk, hitbox_num, HG_WINDOW, 8);
+    set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 0);
+    set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
+    set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 58);
+    set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24);
+    set_hitbox_value(atk, hitbox_num, HG_WIDTH, 110);
+    set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 58);
+    set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 3);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 12);
+    set_hitbox_value(atk, hitbox_num, HG_ANGLE, 45);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
+    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
+    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 18);
+    set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
+    set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_bigbite);
+    set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
+    set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 10);
+    set_hitbox_value(atk, hitbox_num, HG_EFFECT, poison_consume_effect_index);
+    
+    set_num_hitboxes(atk, hitbox_num);
+
+}

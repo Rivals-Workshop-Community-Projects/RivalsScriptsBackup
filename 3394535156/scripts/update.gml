@@ -198,7 +198,7 @@ if !free {
 }
 
 if charging_nspecial_buffer {
-	charged_nspecial_should_wait = (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and (attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG)
+	charged_nspecial_should_wait = ((state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and (attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG)) or (state == PS_PARRY or state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_AIR_DODGE or state == PS_TECH_BACKWARD or state == PS_TECH_FORWARD or state == PS_TECH_FORWARD)
 	
 	if !(state_cat == SC_HITSTUN) {
 		if special_down {

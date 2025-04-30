@@ -150,11 +150,11 @@ switch(attack)
 					sound_play(a_sfx_boss_vortex_end);
 				}
 				
-				if(window == 7 && window_timer == nspecial_spawn_frame[nspecial_storage_level] - 1 && phone_cheats[CHEAT_NSPECIAL_BUG_1] == 1)
+				/*if(window == 7 && window_timer == nspecial_spawn_frame[nspecial_storage_level] - 1 && phone_cheats[CHEAT_NSPECIAL_BUG_1] == 1)
 				{
 					y = 388;
 					vsp = 3.75;
-				}
+				}*/
 				break;
 			}
 			case 8:

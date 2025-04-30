@@ -243,6 +243,9 @@ knockback_scaling = 1 - 0.3*has_rune("I");
 target_practice_mode = 0;
 
 //compats
+is_rosso = 1;
+rosso_reflect_sfx = sound_get("sfx_drone_reflect");
+
 wiimote_compat_sprite = sprite_get("wiimote");
 
 //super metroid compat
@@ -282,3 +285,4 @@ super_metroid_pause_menu_box_name = sprite_get("super_metroid_pause_box");
 super_metroid_pause_menu_cool_name = sprite_get("super_metroid_pause_cool_name");
 super_metroid_pause_menu_larger_cool_name = 0;
 super_metroid_pause_menu_character = sprite_get("super_metroid_pause_character");
+super_metroid_zebes_intro_fanfare = sound_get("metroid_jingle");

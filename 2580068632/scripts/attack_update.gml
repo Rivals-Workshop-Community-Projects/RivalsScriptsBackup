@@ -1,3 +1,16 @@
+// attack_update.gml
+
+// Band-aid cancel window fix. Top of attack_update.gml.
+var cancel_type = get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE)
+if (attack != AT_JAB && cancel_type >= 1 && cancel_type < 8) {
+    if (
+        cancel_type == 2 ?
+        is_special_pressed(DIR_ANY) : 
+        (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || strong_down)
+        ) 
+                window_attack_pressed = true;
+}
+
 //Jab
 if (attack == AT_JAB){
 

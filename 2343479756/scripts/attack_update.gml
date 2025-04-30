@@ -67,12 +67,14 @@ if (attack==AT_UTILT){
 }
 if (attack==AT_DTILT){
 	if (window==3){
+	if (window_timer>=3){
 		if (!hitpause){
-			if (down_stick_pressed){
+			if (down_stick_pressed || attack_pressed){
 				window=4;
 				window_timer=0;
 			}
 		}
+	}
 	}
 	if (window==7){
 		//iasa_script(); //decided not to use iasa because cancelling it with crouch kinda wrecked my intention
