@@ -18,7 +18,7 @@ switch (attack){
     break;
     case AT_TAUNT:
         if (down_down) attack = AT_TAUNT_2;
-        if (shield_down) attack = AT_EXTRA_1;
+        if (shield_down && !is_attacking) attack = AT_EXTRA_1;
     break;
 }
 

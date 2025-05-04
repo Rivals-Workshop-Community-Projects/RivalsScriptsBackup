@@ -57,7 +57,7 @@ set_color_profile_slot( 2, 6, 205, 0, 0 ); //Staff Jewel
 set_color_profile_slot( 2, 7, 102, 50, 0 ); //Shoes
 
 // White
-set_color_profile_slot( 3, 0, 249, 249, 250 ); //Cloak
+set_color_profile_slot( 3, 0, 203, 206, 209 ); //Cloak
 set_color_profile_slot( 3, 1, 252, 253, 255 ); //Cloak Sleeves
 set_color_profile_slot( 3, 2, 246, 212, 43 ); //Skin A
 set_color_profile_slot( 3, 3, 236, 161, 44 ); //Skin B
