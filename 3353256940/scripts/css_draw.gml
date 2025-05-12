@@ -41,9 +41,6 @@ switch (get_player_color( player ) ){
     case 18:
     	draw_sprite_ext(sprite_get("b_scrapbomb_variants"),5,x+132,y-18,1,1,0,-1,1);
     	break;
-    case 19:
-    	draw_sprite_ext(sprite_get("b_scrapbomb_variants"),7,x+132,y-18,1,1,0,-1,1);
-    	break;
 }
 
 if (get_player_color(player) != 20) {
@@ -208,9 +205,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[18,1] = "Q5U4EX7YY2E9N"
 	ce[18,2] = " > THIS W0MAN IS A C0MPUTER T00? I'D L0VE T0 GRAB A GLASS 0F ACID WITH HER!"
 	
-	ce[19,0] = make_color_rgb(148, 181, 174)
-	ce[19,1] = "Creative Freedom"
-	ce[19,2] = "> T0 BE F0RG0TTEN LIKE THAT... P- PSSH! IMAGINE THAT! SUCKER!!"
+	ce[19,0] = make_color_rgb(255, 253, 66)
+	ce[19,1] = "Eclipse"
+	ce[19,2] = "> M00N MASKS SUN. I KNEW A THING 0R 2 ABOUT MASKS. N0W I JUST D0N'T KNoW."
 	
 	ce[20,0] = make_color_rgb(0, 0, 0)
 	ce[20,1] = "An End."

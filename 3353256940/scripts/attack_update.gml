@@ -294,12 +294,12 @@ switch(attack) {
     			hsp = clamp(hsp, -6, 6);
     			if (window_timer == window_end_time) {
     				hsp = 1*spr_dir;
-    				vsp = -4;
+    				if (free) vsp = -4; else vsp = -3.5 
     				spawn_base_dust(x+(10*spr_dir), y, free ? "djump_small" : "jump");
     			}
     			break;
     		case 4:
-    			hsp = clamp(hsp, -2, 2);
+    			hsp = clamp(hsp, -1, 1);
     			break;
     	}
     	break;

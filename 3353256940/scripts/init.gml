@@ -229,7 +229,6 @@ switch (get_player_color(player)) {
     case 16:
     case 17:
     case 18:
-    case 19:
         scrapbomb_visual = "b_scrapbomb_variants";
     break;
 }
@@ -258,8 +257,6 @@ switch (get_player_color(player)) {
     case 18:
         scrapbomb_alt_index = 5;
     break;
-    case 19:
-        scrapbomb_alt_index = 7;
     case 20:
         set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("p_livespark_alt"))
         is_deadalt = true;

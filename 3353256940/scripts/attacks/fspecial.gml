@@ -44,7 +44,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 //end
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 0); 
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
