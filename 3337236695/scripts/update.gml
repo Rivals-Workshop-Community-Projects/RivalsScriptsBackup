@@ -36,3 +36,47 @@ if (get_gameplay_time() < 120){
     }
   }
 }
+
+//Allows the Miis to cheer when a player taunts.
+with (oPlayer) {
+    if (taunt_down) {
+      with (other) {
+        mii_can_cheer = true
+      }
+    }
+}
+
+//Ice physics on Aether Mode.
+//Original code from Punch Bowl by Aperson!
+//Has been modified to work with platforms by saving the player's original ground_friction value.
+if is_aether_stage() && get_gameplay_time() = 3 {
+    with (oPlayer) {
+        ice_friction_original = ground_friction
+    }
+}
+
+if is_aether_stage() && get_gameplay_time() > 2 {
+    with (oPlayer) {
+        ice_friction_original = ice_friction_original
+        if (!free && y < get_marker_y(1) && y > get_marker_y(2) && x > get_marker_x(1) && x < get_marker_x(2)) {
+          switch (state) {
+    		case PS_WALK:
+    		    if (hsp >= walk_speed) hsp = walk_speed + 1;
+    		    if (hsp <= -walk_speed) hsp = -walk_speed - 1;
+    		break;
+    		case PS_DASH_START:
+    		    if (hsp >= initial_dash_speed) hsp = initial_dash_speed + 1;
+    		    if (hsp <= -initial_dash_speed) hsp = -initial_dash_speed - 1;
+    		break;
+    		case PS_DASH:
+    		    if (hsp >= dash_speed) hsp = dash_speed + 1;
+    		    if (hsp <= -dash_speed) hsp = -dash_speed -1
+    		break;
+    	}
+    	//force-restore hsp and apply only 33% of friction
+    	ground_friction = 0.06;  
+        }else if !free {
+            ground_friction = ice_friction_original
+        }
+    }
+}

@@ -23,3 +23,12 @@
    sprite_change_offset(("bg_platform_c"), -3, 20);
    sprite_change_offset(("bg_screens_c"), 0, 0);
    sprite_change_offset(("a_bg_screens_c"), 0, 0);
+   sprite_change_offset(("mii_default_m"), 0, 0);
+   sprite_change_offset(("mii_default_f"), 0, 0);
+   sprite_change_offset(("mii_guest_a"), 0, 0);
+   sprite_change_offset(("mii_guest_b"), 0, 0);
+   sprite_change_offset(("mii_guest_c"), 0, 0);
+   sprite_change_offset(("mii_guest_d"), 0, 0);
+   sprite_change_offset(("mii_guest_e"), 0, 0);
+   sprite_change_offset(("mii_guest_f"), 0, 0);
+   sprite_change_offset(("mii_matt"), 0, 0);

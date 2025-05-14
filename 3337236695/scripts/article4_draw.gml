@@ -8,6 +8,10 @@ var cloudsaparay = (view_get_yview()*0.12);
 //Draws the sprites for the article.
 draw_sprite_ext(sprite_get("bg_clouds_a"), aether_a, x + cloudsaparax, y + cloudsaparay, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("bg_platform_a"), aether_a, x + bgaparax, y + bgaparay, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_get(string(mii_cameo_array[mii_chosen_1])), mii_anim, x + 218 + bgaparax, y + 140 + bgaparay, 2, 2, 0, c_white, mii_1_visible);
+draw_sprite_ext(sprite_get(string(mii_cameo_array[mii_chosen_2])), mii_anim, x + 390 + bgaparax, y + 140 + bgaparay, -2, 2, 0, c_white, mii_2_visible);
+draw_sprite_ext(sprite_get(string(mii_cameo_array[mii_chosen_3])), mii_anim, x + 186 + bgaparax, y + 152 + bgaparay, 2, 2, 0, c_white, mii_3_visible);
+draw_sprite_ext(sprite_get(string(mii_cameo_array[mii_chosen_4])), mii_anim, x + 422 + bgaparax, y + 152 + bgaparay, -2, 2, 0, c_white, mii_4_visible);
 
 //Draws the shadow for the platform using a mask!
 //Defines by Flophawk.
