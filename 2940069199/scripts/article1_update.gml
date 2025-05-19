@@ -15,6 +15,7 @@
 
 /* print(state_timer);
  print(state);*/
+if (state != 0 && state != 1){
 with (pHitBox)
 {
     if (player != other.player)
@@ -27,6 +28,7 @@ with (pHitBox)
             }
         }
     }
+}
 }
 if (state >= 3)
 {

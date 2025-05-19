@@ -40,7 +40,7 @@ if (!free || state == PS_WALL_JUMP || state == PS_RESPAWN) {
 }*/
 //should_switch = get_synced_var(player) % 2;
 
-if (state == PS_ATTACK_GROUND && attack == AT_TAUNT) {
+if taunt_pressed || taunt_down {
 	set_victory_theme( sound_get("TralalaVictory"));
 	awesome = true;
 	//set_synced_var(player, awesome * 10 + should_switch);
@@ -85,4 +85,9 @@ if music_suppress{
 	sound_play(sound_get("suisei_intro"));
 }*/
 
+if(instance_exists(comet)){
+if(comet.state = 3){
+	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8+(comet.state_timer / 25))
+}
+}
 	

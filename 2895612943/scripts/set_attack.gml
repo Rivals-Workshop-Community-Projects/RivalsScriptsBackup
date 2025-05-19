@@ -6,6 +6,7 @@ if attack == AT_TAUNT && bite() {
 if special_pressed && up_down && move_cooldown[AT_USPECIAL_2] == 0 ||special_pressed && up_down && move_cooldown[AT_USPECIAL] != 0 {
     if disk_obj != noone {
         attack = AT_USPECIAL_2;
+        uspec_coord = [1,1];
     }
 } 
 #define bite()

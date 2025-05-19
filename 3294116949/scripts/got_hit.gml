@@ -4,6 +4,8 @@ if (move_cooldown[AT_FSPECIAL] > 0){
         move_cooldown[AT_FSPECIAL] = 0;
 }
 
+airstall = 0;
+
 // lamp_bounce=false;
 
 if(state_cat == SC_HITSTUN && instance_exists(axe) && (axe.state < 3 || (axe.state == 3 && axe.returning))){

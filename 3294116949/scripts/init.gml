@@ -195,6 +195,7 @@ afterImage = array_create(afterImageMax, -1);*/
 
 
 // Comapts
+miiverse_post = sprite_get("miiverse");
 TCG_Kirby_Copy = 1;
 plushForAmber = sprite_get("plushForAmber");
 Hikaru_Title = "The Hack n' Slasher";

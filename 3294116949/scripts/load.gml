@@ -1,6 +1,6 @@
 
 set_victory_bg( sprite_get( "victory_bg" ));
-
+sprite_change_offset("miiverse", 60, 30);
 
 //Normal movement
 sprite_change_offset("idle", 50, 78);
@@ -86,6 +86,7 @@ sprite_change_offset("dair", 76, 114);
 sprite_change_offset("fstrong", 72, 90);
 sprite_change_offset("ustrong", 90, 106);
 sprite_change_offset("dstrong", 100, 100);
+    sprite_change_offset("dstrong_v5", 100, 100);
 
 sprite_change_offset("nspecial", 106, 94);
     sprite_change_offset("nspecial_air", 106, 94);

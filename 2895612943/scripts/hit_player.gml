@@ -39,6 +39,7 @@ if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1 {
 	}
 }
 
+//scratch fspec hit lockout on all melee hits
 if(my_hitboxID.type == 1){
 	disk_lockout = disk_lockout_total;
 	with(pHitBox){
@@ -47,6 +48,20 @@ if(my_hitboxID.type == 1){
 		}
 	}
 }
+//bite fspec spinout on-hit when parried
+if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.was_parried && my_hitboxID.enemies == 0){
+	var temp_dir = disk_obj.spr_dir;
+    disk_obj = create_hitbox(AT_FSPECIAL, 3, my_hitboxID.x, my_hitboxID.y);
+    var temp_angle = 30;
+	var new_hsp, new_vsp;
+	new_hsp = lengthdir_x(5,temp_angle) * -temp_dir;
+	new_vsp = lengthdir_y(5,temp_angle);
+	
+	disk_obj.hsp = new_hsp;
+	disk_obj.vsp = new_vsp;
+}
+
+
 if(my_hitboxID.type == 2 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_FSPECIAL &&
 	my_hitboxID.attack != AT_USPECIAL && my_hitboxID.attack != AT_NSPECIAL){
 	

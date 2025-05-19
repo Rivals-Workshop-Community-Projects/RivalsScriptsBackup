@@ -151,6 +151,7 @@ disk_dir = 0;
 vbite = hit_fx_create( sprite_get("vfx_bite"), 25 )
 vscratch = hit_fx_create( sprite_get("vfx_scratch"), 35 )
 uspec_stall = 4;        //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
+uspec_coord = [1,1];    //Sign (-1 or 1) of the X and Y difference between you and the disk when you start uspec
 
 disk_speed = 10;        //fspec initial speed, bite's is 2 lower
 disk_uspeed = 14.5;       //uspec initial speed

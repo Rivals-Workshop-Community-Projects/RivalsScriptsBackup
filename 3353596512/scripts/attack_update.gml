@@ -658,7 +658,7 @@ switch(attack)
     	can_fast_fall = false;
     	if (window == 1){
     		if (window_timer = 1 && !hitpause){
-    			available_scrap[31].orig_value = random_func(0, 199, true) + 1;
+    			available_scrap[31].orig_value = random_func(10, 199, true) + 1;
     			available_scrap[31].value = available_scrap[31].orig_value;
     		}
     	}
@@ -673,14 +673,14 @@ switch(attack)
     			}
     			if (!has_scrap){
     				scrap_found_timer = 0;
-    				current_scrap = available_scrap[random_func(0, array_length(available_scrap), true)];
+    				current_scrap = available_scrap[random_func(7, array_length(available_scrap), true)];
     				//current_scrap = available_scrap[30]; //debug thing
     				prev_scrap = current_scrap;
     				scrap_visual_dir = spr_dir;
 
     				if (current_scrap.index == 31){
-    					if (random_func(0, 10, true) >= 0){
-    						current_scrap = available_scrap[random_func(player, array_length(available_scrap) - 1, true)];
+    					if (random_func(9, 10, true) >= 0){
+    						current_scrap = available_scrap[random_func(8, array_length(available_scrap) - 1, true)];
     						prev_scrap = current_scrap;
     						//print("no dog here.");
     					}
@@ -692,10 +692,10 @@ switch(attack)
     					sound_play(sound_get("quackerz"), false, noone, 1, 1);
     				}
     				if (current_scrap.index == 18){
-    					sound_play(sound_get("scrap_mask_laugh" + string(random_func(0, 2, true) + 1 )), false, noone, 0.75, 1);
+    					sound_play(sound_get("scrap_mask_laugh" + string(random_func(6, 2, true) + 1 )), false, noone, 0.75, 1);
     				}
     				if (current_scrap.index == 19){
-    					sound_play(sound_get("scrap_mask_cry" + string(random_func(0, 2, true) + 1 )), false, noone, 0.75, 1);
+    					sound_play(sound_get("scrap_mask_cry" + string(random_func(6, 2, true) + 1 )), false, noone, 0.75, 1);
     				}
     				if (current_scrap.index == 16 && !instance_exists(not_the_bees)){
     					not_the_bees = create_hitbox(AT_DSPECIAL_2, 3, x, y - 50);
@@ -730,7 +730,7 @@ switch(attack)
     					sound_play(player_id.current_scrap.sfx, false, noone, 0.6, 1);
     					array_push(scrap_instances, player_id.current_scrap);
 						var scrap_num = array_length(scrap_on_counter);
-						scrap_instances[scrap_num].pos = random_func(0, 98, true);
+						scrap_instances[scrap_num].pos = random_func(5, 98, true);
 						scrap_instances[scrap_num].index = player_id.current_scrap.index;
     					array_push(scrap_on_counter, scrap_instances[scrap_num]);
     				}
@@ -783,8 +783,8 @@ switch(attack)
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
 	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
-	leave_ground_max = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
-	max_jump_hsp = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
+	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	wave_friction = lerp(0.11, 0.2, weight_value/weight_max);
 
 

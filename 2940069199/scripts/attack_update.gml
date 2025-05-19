@@ -62,6 +62,7 @@ if (attack == AT_NSPECIAL){
 		if(window_timer == 1){
 			if(!hitpause){
 				if(comet == noone){
+					reset_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK)
 					comet = instance_create(x+32*spr_dir, y-60, "obj_article1");
 					/*print(comet);*/
 				}else{

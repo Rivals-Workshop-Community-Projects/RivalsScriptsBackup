@@ -658,6 +658,6 @@ calculate_weight();
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
 	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
-	leave_ground_max = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
-	max_jump_hsp = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
+	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	wave_friction = lerp(0.12, 0.2, weight_value/weight_max);

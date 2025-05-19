@@ -171,9 +171,9 @@ if (is_ranking_up){
 	}
 	if (rank_timer == 80){
 		if (random_func(0, 100, true) <= 2){
-			sound_play(sound_get("vo_quota_rare" + string(random_func(0, 5, true) + 1 ) ), false, noone, 0.7, 1);
+			sound_play(sound_get("vo_quota_rare" + string(random_func(1, 5, true) + 1 ) ), false, noone, 0.7, 1);
 		} else {
-			sound_play(sound_get("vo_quota_common" + string(random_func(0, 5, true) + 1 ) ), false, noone, 0.9, 1);
+			sound_play(sound_get("vo_quota_common" + string(random_func(2, 5, true) + 1 ) ), false, noone, 0.9, 1);
 		}
 		is_ranking_up = false;
 		rank_timer = 0;
@@ -438,7 +438,7 @@ if (cant_use_jetpack){
 }
 
 if (fuel_should_refill && jetpack_fuel < jetpack_fuel_max){
-	jetpack_fuel += 8;
+	jetpack_fuel += 10;
 }
 
 if (state == PS_WALL_JUMP){
@@ -527,7 +527,7 @@ if (scanned_creature){
 		creature_index += 0.5;
 	}
 	if (creature_timer % 100 == 0 && creature_timer != 0){
-		creature_index = random_func(0, 3, true) + 5;
+		creature_index = random_func(4, 3, true) + 5;
 	} else if (creature_timer % 101 == 0 && creature_timer != 0){
 		creature_index = 4;
 	}
@@ -595,8 +595,8 @@ if (rabbit_suit){
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
 	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
-	leave_ground_max = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
-	max_jump_hsp = round(lerp(6.5, 3, weight_value/weight_max)*2) / 2;
+	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 
 #define hitbox_stuff()
 

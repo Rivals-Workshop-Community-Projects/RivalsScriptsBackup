@@ -57,7 +57,7 @@ hud_col = get_player_hud_color(player);
 jeb_sound = noone;
 jeb_busy_timer = 0;
 jeb_busy_timer_max = 480;
-jeb_patience = random_func(0, 4, true) + 3;
+jeb_patience = random_func(11, 4, true) + 3;
 jeb_has_hit = false;
 
 items_taken = false;

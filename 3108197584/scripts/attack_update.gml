@@ -287,10 +287,7 @@ switch attack{
 				var colp = instance_position(fire_end[0], fire_end[1], pHurtBox);
 				var colh = instance_position(fire_end[0], fire_end[1], pHitBox);
 				var cold = instance_position(fire_end[0], fire_end[1], drone);
-				var colart1 = instance_position(fire_end[0], fire_end[1], obj_article1);
-				var colart2 = instance_position(fire_end[0], fire_end[1], obj_article2);
-				var colart3 = instance_position(fire_end[0], fire_end[1], obj_article3);
-				var colartpl = instance_position(fire_end[0], fire_end[1], obj_article_platform);
+				var colart = instance_position(fire_end[0], fire_end[1], asset_get("obj_article_parent"));
 				if instance_exists(colp) && array_find_index(hit_list, colp) < 0{
 					array_push(hit_list, colp);
 					array_push(hit_pos, fire_end[0]);
@@ -316,29 +313,19 @@ switch attack{
 					drone.snipe = 1;
 					sound_play(sound_get("sfx_drone_reflect"), 0, noone, 1, 1);
 				}
-				if instance_exists(colart1) && colart1.is_hittable && array_find_index(hit_list, colart1) < 0 && colart1 != drone{
-					array_push(hit_list, colart1);
+				if instance_exists(colart) && colart.is_hittable && array_find_index(hit_list, colart) < 0 && colart != drone{
+					array_push(hit_list, colart);
 					array_push(hit_pos, fire_end[0]);
 					array_push(hit_pos, fire_end[1]);
 					hit_count++;
-				}
-				if instance_exists(colart2) && colart1.is_hittable && array_find_index(hit_list, colart2) < 0{
-					array_push(hit_list, colart2);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
-				}
-				if instance_exists(colart3) && colart1.is_hittable && array_find_index(hit_list, colart3) < 0{
-					array_push(hit_list, colart3);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
-				}
-				if instance_exists(colartpl) && colart1.is_hittable && array_find_index(hit_list, colartpl) < 0{
-					array_push(hit_list, colartpl);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
+                    var e = spawn_hit_fx(floor(fire_end[0]), floor(fire_end[1]), snipe_hit);
+				    e.depth = depth-2;
+				    var hpos = colart;
+				    if floor(fire_end[1]) == clamp(floor(fire_end[1]), hpos.bbox_top, hpos.bbox_top + (hpos.bbox_bottom - hpos.bbox_top)*.1){
+				        sound_play(asset_get("sfx_abyss_hex_hit"), 0, noone, 1);
+				    }
+				    sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .8, .9);
+				    sound_play(asset_get("sfx_hod_charged_uspecial_hit"), 0, noone, .6, 1.5);
 				}
 				
 				//v1 compat
@@ -355,6 +342,10 @@ switch attack{
 				}
 			}
 			shot_fx_timer = 13;
+			if hit_count = !has_rune("B"){
+				array_push(hit_pos, fire_end[0]);
+				array_push(hit_pos, fire_end[1]);
+			}
 			
 			var h = 0;
 			if !hit_drone || has_rune("B") repeat array_length(hit_pos)/2{
@@ -439,10 +430,7 @@ switch attack{
 				var colp = instance_position(fire_end[0], fire_end[1], pHurtBox);
 				var colh = instance_position(fire_end[0], fire_end[1], pHitBox);
 				var cold = instance_position(fire_end[0], fire_end[1], drone);
-				var colart1 = instance_position(fire_end[0], fire_end[1], obj_article1);
-				var colart2 = instance_position(fire_end[0], fire_end[1], obj_article2);
-				var colart3 = instance_position(fire_end[0], fire_end[1], obj_article3);
-				var colartpl = instance_position(fire_end[0], fire_end[1], obj_article_platform);
+				var colart = instance_position(fire_end[0], fire_end[1], asset_get("obj_article_parent"));
 				if instance_exists(colp) && array_find_index(hit_list, colp) < 0{
 					array_push(hit_list, colp);
 					array_push(hit_pos, fire_end[0]);
@@ -468,29 +456,19 @@ switch attack{
 					drone.snipe = 1;
 					sound_play(sound_get("sfx_drone_reflect"), 0, noone, 1, 1);
 				}
-				if instance_exists(colart1) && colart1.is_hittable && array_find_index(hit_list, colart1) < 0 && colart1 != drone{
-					array_push(hit_list, colart1);
+				if instance_exists(colart) && colart.is_hittable && array_find_index(hit_list, colart) < 0 && colart != drone{
+					array_push(hit_list, colart);
 					array_push(hit_pos, fire_end[0]);
 					array_push(hit_pos, fire_end[1]);
 					hit_count++;
-				}
-				if instance_exists(colart2) && colart1.is_hittable && array_find_index(hit_list, colart2) < 0{
-					array_push(hit_list, colart2);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
-				}
-				if instance_exists(colart3) && colart1.is_hittable && array_find_index(hit_list, colart3) < 0{
-					array_push(hit_list, colart3);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
-				}
-				if instance_exists(colartpl) && colart1.is_hittable && array_find_index(hit_list, colartpl) < 0{
-					array_push(hit_list, colartpl);
-					array_push(hit_pos, fire_end[0]);
-					array_push(hit_pos, fire_end[1]);
-					hit_count++;
+                    var e = spawn_hit_fx(floor(fire_end[0]), floor(fire_end[1]), snipe_hit);
+				    e.depth = depth-2;
+				    var hpos = colart;
+				    if floor(fire_end[1]) == clamp(floor(fire_end[1]), hpos.bbox_top, hpos.bbox_top + (hpos.bbox_bottom - hpos.bbox_top)*.1){
+				        sound_play(asset_get("sfx_abyss_hex_hit"), 0, noone, 1);
+				    }
+				    sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .8, .9);
+				    sound_play(asset_get("sfx_hod_charged_uspecial_hit"), 0, noone, .6, 1.5);
 				}
 				
 				//v1 compat
@@ -507,6 +485,10 @@ switch attack{
 				}
 			}
 			shot_fx_timer = 13;
+			if hit_count = !has_rune("B"){
+				array_push(hit_pos, fire_end[0]);
+				array_push(hit_pos, fire_end[1]);
+			}
 			
 			var h = 0;
 			if !hit_drone || has_rune("B") repeat array_length(hit_pos)/2{

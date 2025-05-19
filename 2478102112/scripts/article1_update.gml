@@ -16,6 +16,7 @@
 */
 
 var ball_pos = asset_get("obj_article1");
+// print("stability: "+string(stability));
 
 //Are there too many articles? If so, I should die
 

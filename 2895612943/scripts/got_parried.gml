@@ -5,9 +5,9 @@ if(my_hitboxID.attack == AT_FSPECIAL){
         with(pHitBox){
             if(attack == other.my_hitboxID.attack && player_id == other && hbox_num == 1){
                 was_parried = true;
-                player = other.my_hitboxID.player;
+                player = other.hit_player_obj.player;
                 phase = 1;
-                my_hitboxID.bounces = 0;
+                other.my_hitboxID.bounces = 0;
                 hitbox_timer = 0;
                 spr_dir *= -1;
                 original_hsp *= -1;

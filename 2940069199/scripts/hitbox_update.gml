@@ -220,7 +220,7 @@ if(attack == AT_DSPECIAL){
 		player_id.cur_tetramino.destroyed = true
 		player_id.tetris_hit = true;
     }
-    print(string(place_meeting(x, y, player_id.comet)))
+    // print(string(place_meeting(x, y, player_id.comet)))
     
     
     

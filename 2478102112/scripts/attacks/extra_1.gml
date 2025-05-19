@@ -242,10 +242,11 @@ set_hitbox_value(AT_EXTRA_1, 11, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 11, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_EXTRA_1, 11, HG_VISUAL_EFFECT, 264);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_EXTRA_1, 11, HG_HIT_SFX, asset_get("sfx_dust_knuckle"));
+set_hitbox_value(AT_EXTRA_1, 11, HG_HIT_SFX, asset_get("sfx_mol_flare_explode"));
 
 set_hitbox_value(AT_EXTRA_1, 12, HG_HITBOX_TYPE, 2) //NUKE
 set_hitbox_value(AT_EXTRA_1, 12, HG_LIFETIME, 2);
@@ -353,10 +354,11 @@ set_hitbox_value(AT_EXTRA_1, 16, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 16, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 16, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_EXTRA_1, 16, HG_VISUAL_EFFECT, 264);
 set_hitbox_value(AT_EXTRA_1, 16, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 16, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
 set_hitbox_value(AT_EXTRA_1, 16, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_EXTRA_1, 16, HG_HIT_SFX, asset_get("sfx_dust_knuckle"));
+set_hitbox_value(AT_EXTRA_1, 16, HG_HIT_SFX, asset_get("sfx_mol_flare_explode"));
 
 set_hitbox_value(AT_EXTRA_1, 17, HG_HITBOX_TYPE, 2) //Masti
 set_hitbox_value(AT_EXTRA_1, 17, HG_LIFETIME, 18);

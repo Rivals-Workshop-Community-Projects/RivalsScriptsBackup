@@ -140,6 +140,7 @@ if attack == AT_USPECIAL_2 {
     if(window == 1){
         if(instance_exists(disk_obj)){
             if(window_timer == 1) disk_obj.y -= 2;
+            
             disk_obj.bounces = 0;
             disk_obj.enemies = 1;
             disk_obj.hitbox_timer--;
@@ -148,7 +149,11 @@ if attack == AT_USPECIAL_2 {
             //disk_obj.phase = 5;
             disk_obj.hit_priority = 0;
             //disk_obj.grav = 0;
-        }else{
+            
+            if(window_timer == get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH)){
+                uspec_coord[0] = sign(disk_obj.x - x);
+                uspec_coord[1] = sign(disk_obj.y - y);
+            }
         }
     }
     if (window == 2 && !hitpause){
@@ -158,8 +163,30 @@ if attack == AT_USPECIAL_2 {
             disk_dir = point_direction(x, y-char_height*.5, disk_obj.x, disk_obj.y);
             vsp = lengthdir_y(24, disk_dir);
             hsp = lengthdir_x(24, disk_dir);
-            if(place_meeting(x + (20 * sign(hsp)), y+5, asset_get("par_block"))){
-                vsp = sign(vsp) * 24;
+            //ledge snap
+            if (place_meeting(x + hsp, y, asset_get("par_block")) && free){
+                for (var i = 1; i < 40; i++){
+                    if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))){
+                        y -= i;
+                        break;
+                    }
+                }      
+            }
+            
+            var y_bound = sign(vsp) == 1? y+2: y-char_height-2;
+            if(place_meeting(x + (20 * sign(hsp)), y, asset_get("par_block"))){
+                //running into walls
+                vsp = uspec_coord[1] * 24;
+            }
+            if(place_meeting(x, y_bound, asset_get("par_block"))){
+                if(sign(vsp) == -1){
+                    //running into ceilings, yes this only happens on air armada.
+                    var aaaa = sign(x-room_width/2);
+                    hsp = aaaa * 24;
+                }else{
+                    //running into floors
+                    hsp = uspec_coord[0] * 24;
+                }
             }
             disk_obj.hitbox_timer--;
             disk_obj.hsp = 0;
@@ -170,7 +197,7 @@ if attack == AT_USPECIAL_2 {
             fall_through = true;
             
             //stop when close
-            if (point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y) < 32){
+            if (point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y) < 32 || window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH)){
                 attack = AT_USPECIAL
                 window = 6;
                 window_timer = 0;

@@ -95,7 +95,7 @@ if (state == 0){
 		if state_timer == 0 and obj_article1.stability == 0{
 			//print("mew")
 			foodnum = foodrng//random_func( 0, 10, true)
-			itemnum = random_func( 0, 16, true )//
+			itemnum = random_func( 0, 17, true )
 			print(foodnum)
 			print(itemnum)
 		}
@@ -109,7 +109,7 @@ if (state == 0){
 	if player_id.que_timer > 0{
 		if state_timer == 0{
 		//	print("bark")
-			itemnum = random_func( 0, 22, true );//17
+			itemnum = random_func( 0, 23, true );//17
 		}
 	}
 	
@@ -256,8 +256,10 @@ if (state == 3){
 				set_state(PS_IDLE_AIR);
 				//print_debug("cat");
 				zdrop = true
+				
 			}
 		}
+		sound_play(asset_get("sfx_mol_flare_shoot"));
 		state = 4;
 		state_timer = 0;
 	}

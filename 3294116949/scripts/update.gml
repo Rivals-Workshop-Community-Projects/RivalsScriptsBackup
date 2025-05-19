@@ -71,7 +71,7 @@ if state == PS_WALL_JUMP && !clinging {
 
 //Airstall
 
-if (airstall == 1) && (airstall_timer > 7){
+if (airstall == 1) && (airstall_timer > 8){
 	airstall = 0;
 	airstall_timer = 0;
 }

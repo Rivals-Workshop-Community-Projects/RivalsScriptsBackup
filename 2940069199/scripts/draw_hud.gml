@@ -1,5 +1,5 @@
 //post-draw
-
+if ("char_height" not in self) exit;
 if(state == PS_SPAWN){
 tetrimino = 0;
 comet = noone;

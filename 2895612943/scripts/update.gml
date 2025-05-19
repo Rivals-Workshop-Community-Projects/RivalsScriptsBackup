@@ -149,6 +149,15 @@ if disk_obj != noone {
     print("fasd")
 }*/
 
+//testing vs attacks
+/*with(oPlayer){
+	if(state == PS_IDLE && self != other){
+		set_attack(AT_UTILT);
+		//state_timer = 4;
+		//state_timer--;
+	}
+}*/
+
 #define swap()
 //print("swap")
 //if storedatk != 0 {

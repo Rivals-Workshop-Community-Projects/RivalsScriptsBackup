@@ -316,8 +316,9 @@ if (attack == AT_USPECIAL){
 			}
 			if(window_timer == window_end && !hitpause){
 				if !uspec_grounded {
-					set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 7);
-					vsp = -14;
+					set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1); //up special pratfall
+					//set_window_value(AT_USPECIAL, 7, AG_WINDOW_HAS_WHIFFLAG, 1); //up special whifflag
+					vsp = -10; //formerly -14
 					hsp = 2 * spr_dir;
 					create_hitbox(AT_USPECIAL, 7, round(x), round(y + char_height/2));
 		    		// burned = true;
@@ -456,11 +457,11 @@ if (attack == AT_USTRONG) {
 	}
 }	
 
-/* 
+
 //DSTRONG SPIN CHARGE
 if(attack == AT_DSTRONG){
 	can_move = false;
-	if(window == 2) spin_count = round(strong_charge/20);
+	if(window == 2) spin_count = round(strong_charge/50);
 	if(window == 2 && window_timer == window_end && !hitpause){
 		// sound_play(asset_get("sfx_spin_longer"), false, noone, true, .9);
 	}
@@ -474,15 +475,15 @@ if(attack == AT_DSTRONG){
 	}
 	if(window == 5 && !hitpause && window_timer == 1) strong_charge/=2;
 	if(window == 5 && window_timer == window_end) {
-		shake_camera( 6, 8);
+		sound_play(asset_get("sfx_rag_axe_swing"));
 		spawn_base_dust(x + 30 * spr_dir, y, "dash_start", -spr_dir)
 		spawn_base_dust(x + 30 * -spr_dir, y, "dash_start", spr_dir)
 	}
-	if window == 5 && window_timer == 2{
+	/*if window == 5 && window_timer == 2{
 		sound_play(asset_get("sfx_swipe_medium1"));
 	}
-	if(window == 6 && hitpause) shake_camera( 6, 2);
-}*/
+	if(window == 6 && hitpause) shake_camera( 6, 2);*/
+}
 
 //Down Strong Shenanigans
 // if (attack == AT_DSTRONG) {
@@ -539,6 +540,18 @@ if(attack == AT_DSTRONG){
 // 	}
 // }
 
+/*if (attack == AT_NSPECIAL){
+	if (((window == 2) or (window == 3)) && (vsp > 7)){
+		airstall = 1;
+	}
+}
+if (attack == AT_NSPECIAL) && (airstall == 1){
+	//if (airstall_timer <= 4){
+		vsp *= 0.7;
+		hsp *= 0.9;
+	//}
+}*/
+
 if (attack == AT_DSPECIAL){
 	if ((window == 1) && window_timer == 14) && (vsp > 12){
 		airstall = 1;
@@ -570,13 +583,13 @@ if(attack == AT_FAIR){
 }
 
 
-if (attack == AT_DSTRONG){
+/*if (attack == AT_DSTRONG){
 	if (window == 4 && window_timer == 5){
 		sound_play(asset_get("sfx_rag_axe_swing"));
 		spawn_base_dust(x + 30 * spr_dir, y, "dash_start", -spr_dir)
 		spawn_base_dust(x + 30 * -spr_dir, y, "dash_start", spr_dir)
 	}
-}
+}*/
 
 //Forward Air Input Fixes
 // if (attack == (AT_FAIR)){
@@ -607,6 +620,13 @@ if (attack == AT_DATTACK) && window == 2{
          sound_play(asset_get("sfx_ice_dspecial_ground"));
          shake_camera( 2, 6);
 	}
+}
+if (attack == AT_DATTACK) && (down_down){ //Short Distance Dash Attack
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 6);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 2);
+}else{
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 9);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
 }
 
 if (attack == AT_FSPECIAL) {
@@ -651,7 +671,7 @@ if (attack == AT_FSPECIAL){
 		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH) + 4 * (fspec_grounded && free));
 	}
 	if has_hit || !free || fspec_grounded set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-	else set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
+	else set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7); // Side Special Pratfall
 	// if window == 3 && window_timer == 12 && !has_hit{
 	// 	if (free) set_state( PS_PRATFALL );
 	// }
