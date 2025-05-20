@@ -3,7 +3,7 @@
 if attack == AT_FSPECIAL {
 
 	if(hbox_num == 1){
-		player_id.move_cooldown[AT_FSPECIAL] = 40;
+		player_id.move_cooldown[AT_FSPECIAL] = player_id.disk_cooldown_global; //see init.gml
 		
 		swap_cd --;
 		
@@ -53,7 +53,7 @@ if attack == AT_FSPECIAL {
 				if(vsp < 5) vsp = 5;
 				vsp *= -1.0;
 				hsp *= 0.9;
-				if(bounces >= 3) {
+				if(bounces >= 3) { //init.gml
 					//spinout
 					if(was_parried){
 						with(player_id){

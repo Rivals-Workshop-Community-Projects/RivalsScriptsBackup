@@ -20,7 +20,6 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-
 set_num_hitboxes(AT_FAIR, 3);
 //Top
 set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Sour");
@@ -68,8 +67,8 @@ set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 40);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -48);
-set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 90);
-set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 122);
+set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 100);
+set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 100);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 75);
@@ -91,10 +90,10 @@ for(var i = 1; i <= get_num_hitboxes(_move); i++) {
 	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
 	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
 	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + "/" + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + "/" + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + "/" + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + "/" + string(hstop - slowstart_hitstop_sub));
 }
 #define big_yes
 /// big_yes(_move, ...)

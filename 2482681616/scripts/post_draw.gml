@@ -23,3 +23,24 @@ if (slowstart_stateffect_timer >= 0)
     gpu_set_blendmode(bm_normal);
     draw_set_alpha(1);
 }
+
+// Stone edge.
+
+
+// TESTING FOR STONE EDGE
+if (se_debug)
+{
+    draw_line_color(
+            x + (se_detection_center_x - se_detection_offset_inner) * spr_dir,
+            0,
+            x + (se_detection_center_x - se_detection_offset_inner) * spr_dir,
+            se_stage_bottom,
+            c_red, c_red);
+            
+    draw_line_color(
+            x + (se_detection_center_x + se_detection_offset_outer) * spr_dir,
+            0,
+            x + (se_detection_center_x + se_detection_offset_outer) * spr_dir,
+            se_stage_bottom,
+            c_green, c_green);
+}

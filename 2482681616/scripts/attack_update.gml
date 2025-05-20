@@ -139,6 +139,29 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR) {
     can_move = false;
     can_fast_fall = false;
     
+    /*// Placing Rock.
+    if (window == 2 && !hitpause) 
+    {
+        if (has_rune("H")) 
+        {
+    		var window_length = get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)
+    		var window_now = (window_timer) % 5
+    		var rock_mult = window_timer div 4; 
+	    	if (window_now == 1)
+	    		check_spawn_rock(x + (104 + rock_mult * 64) * spr_dir, spawn_y);
+	    	if (window_now == 2)
+	    		check_spawn_rock2();
+	    	if (window_now == 3)
+	    		check_spawn_rock3();
+			if (window_now == 4)
+        		spawn_rock();
+        }
+        else if (window_timer == 1)
+        {
+    		//seeking_rock_placement();
+        }
+    }*/
+    
     var spawn_x = 104;
     var num_rocks = has_rune("H");
     
@@ -169,8 +192,7 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR) {
         		spawn_rock();
         }
         else {
-    		if (window_timer == 1)
-        		spawn_rock();
+    		if (window_timer == 1) seeking_rock_placement();
         }
     }
 }
@@ -718,6 +740,128 @@ if (attack == 49) {
     }
 	
 }
+#define seeking_rock_placement()
+// STEP 1:
+// Determine the left and right ends of detection.
+var _left_x = 0;
+var _right_x = 0;
+if (spr_dir == 1)
+{
+	_left_x = x + (se_detection_center_x - se_detection_offset_inner);
+	_right_x = x + (se_detection_center_x + se_detection_offset_outer);
+}
+else
+{
+	_right_x = x - (se_detection_center_x - se_detection_offset_inner);
+	_left_x = x - (se_detection_center_x + se_detection_offset_outer);
+}
+
+// STEP 1:
+// Check for players within the designated x width.
+var _found_players = array_create(0);
+with (oPlayer)
+{
+	if (id == other.id) continue;
+	// TODO - make it so you can edges of hurtbox plz
+	
+	if (state != PS_DEAD && state != PS_RESPAWN && 
+		((x + char_half_width > _left_x && x + char_half_width < _right_x) || 
+		 (x - char_half_width > _left_x && x - char_half_width < _right_x)))
+	{
+		// Order players based on lowest y to highest.
+		var _found = false;
+		for (var _i = 0; _i < array_length(_found_players); ++_i)
+		{
+			if (_found_players[0].y < y)
+			{
+				array_insert(_found_players, _i, id);
+				_found = true;
+				break;
+			}
+		}
+		if (!_found) array_push(_found_players, id);
+	}
+}
+
+// STEP 2:
+// If no players were found, use normal stone placement.
+if (array_length(_found_players) == 0)
+{
+	spawn_rock();
+	return;
+}
+
+// STEP 3:
+// Attempt to place stone below player travelling from bottom to top.
+var _set_spawn_y = false;
+for (var _i = 0; _i < array_length(_found_players); ++_i)
+{
+	var _id = _found_players[_i];
+	var _found_walkable = false;
+	var _fixed_x = _id.x;
+	if (_fixed_x > _right_x) _fixed_x = _right_x;
+	if (_fixed_x < _left_x) _fixed_x = _left_x;
+	// Do initial check to make sure checks don't start within a walkable.
+	for (var _y = _id.y + se_stone_height; _y > _id.y - _id.char_height; --_y)
+	{
+		if (!_found_walkable)
+		{
+			// Looking for the bottom of a walkable.
+			if (instance_place(_fixed_x, _y, asset_get("par_block")) != noone ||
+            	instance_place(_fixed_x, _y, asset_get("par_jumpthrough")) != noone)
+            {
+            	_found_walkable = true;
+            }
+		}
+		else
+		{
+			// Looking for the top of the found walkable.
+			if (instance_place(_fixed_x, _y, asset_get("par_block")) == noone &&
+            	instance_place(_fixed_x, _y, asset_get("par_jumpthrough")) == noone)
+	        {
+	        	spawn_y = _y;
+	        	spawn_x = _fixed_x;
+	        	_set_spawn_y = true;
+	        	can_spawn_side = false;
+				can_spawn = true;
+	        	break;
+	        }
+		}
+	}
+	if (_found_walkable)
+	{
+		if (_set_spawn_y) break;
+		_found_walkable = false;
+	}
+}
+
+// If stone was unset, then attempt again but this time using the closest
+if (!_set_spawn_y)
+{
+	var _id = _found_players[0];
+	var _fixed_x = _id.x;
+	if (_fixed_x > _right_x) _fixed_x = _right_x;
+	if (_fixed_x < _left_x) _fixed_x = _left_x;
+	for (var _y = _id.y - _id.char_height; _y < se_stage_top; ++_y)
+	{
+		if (instance_place(_fixed_x, _y, asset_get("par_jumpthrough")) != noone)
+		{
+			var _y2 = _y;
+			while (instance_place(_fixed_x, _y2, asset_get("par_jumpthrough")) != noone)
+			{
+				_y2--;
+			}
+			spawn_y = _y2;
+	        spawn_x = _fixed_x;
+	        _set_spawn_y = true;
+	        can_spawn_side = false;
+			can_spawn = true;
+	        break;
+		}
+	}
+}
+spawn_rock();
+
 #define check_spawn_rock(_spawn_x, _spawn_y)
 spawn_y = _spawn_y;
 spawn_x = _spawn_x;
@@ -777,7 +921,8 @@ if (can_spawn) {
         var hb = create_hitbox(AT_NSPECIAL, 2, round(spawn_x), round(spawn_y));
         hb.spr_dir = spr_dir;
     }
-    else {
+    else 
+    {
         var hb = create_hitbox(AT_NSPECIAL, 1, round(spawn_x), round(spawn_y));
     }
 }

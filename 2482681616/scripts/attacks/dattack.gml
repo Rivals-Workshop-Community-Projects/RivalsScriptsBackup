@@ -9,14 +9,14 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 4);
 
-set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, has_rune("C") ? 18 : 9);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
@@ -44,8 +44,8 @@ set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 4);
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 56);
+set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 70);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 98);
 set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 96);
@@ -70,10 +70,10 @@ for(var i = 1; i <= get_num_hitboxes(_move); i++) {
 	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
 	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
 	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + "/" + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + "/" + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + "/" + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + "/" + string(hstop - slowstart_hitstop_sub));
 }
 #define big_yes
 /// big_yes(_move, ...)

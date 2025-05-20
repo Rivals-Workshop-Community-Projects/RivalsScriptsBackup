@@ -28,15 +28,15 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 8);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 50);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 14);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_DSPECIAL, 1);
 
@@ -71,10 +71,10 @@ for(var i = 1; i <= get_num_hitboxes(_move); i++) {
 	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
 	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
 	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
-	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + "/" + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + "/" + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + "/" + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + "/" + string(hstop - slowstart_hitstop_sub));
 }
 
 #define big_yes

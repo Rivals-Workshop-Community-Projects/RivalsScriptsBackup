@@ -1,6 +1,32 @@
 //Training toggle
 training_toggle = get_training_cpu_action() != CPU_FIGHT
 
+if (char_width_set_timer <= 10) char_width_set_timer++;
+else 
+{
+    var _x = 0;
+    var _position = 0;
+    with (pHurtBox)
+    {
+        if (other.id != playerID && 
+            playerID.char_half_width == noone && 
+            sprite_index == playerID.hurtbox_spr)
+        {
+            // Checks from left, assumes lenght
+            _x = playerID.x;
+            while (playerID.char_half_width == noone)
+            {
+                if (!position_meeting(_x, y - floor(playerID.char_height / 2), self))
+                {
+                    playerID.char_half_width = _x - playerID.x;
+                    break;
+                }
+                ++_x;
+            }
+        }
+    }
+}
+
 //USPECIAL wall cling
 if (!free && uspecial_wall_times > 0) {
     uspecial_wall_times = 0;
@@ -114,3 +140,7 @@ if (old_slowstart_state != slowstart_state) {
 }
 
 old_slowstart_state = slowstart_state
+
+// Debugging
+se_debug = ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR)) && get_match_setting(SET_HITBOX_VIS);
+

@@ -153,11 +153,13 @@ vscratch = hit_fx_create( sprite_get("vfx_scratch"), 35 )
 uspec_stall = 4;        //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
 uspec_coord = [1,1];    //Sign (-1 or 1) of the X and Y difference between you and the disk when you start uspec
 
-disk_speed = 10;        //fspec initial speed, bite's is 2 lower
+disk_cooldown_global = 40; //the cooldown on disc when thrown naturally. originally fixed at 40
+
+disk_speed = 8;        //fspec initial speed, bite's is 2 lower
 disk_uspeed = 14.5;       //uspec initial speed
-disk_uspeed_scratch = 14.5; //target uspec initial speed for scratch
-disk_uspeed_bite = 13;  //target uspec initial speed for bite
-disk_grav = 0.5;        //bite disk gravity
+disk_uspeed_scratch = 14; //target uspec initial speed for scratch
+disk_uspeed_bite = 11;  //target uspec initial speed for bite
+disk_grav = 0.4;        //bite disk gravity
 //the following are all the time FROM THE START, not from eachother
 disk_timer_start = 20;  //time until scratch disc starts to go get backwards speed. acts normally until.
 disk_timer_turn = 40;   //time until sdisc stops getting back speed. smoothly goes from speed to -speed between the above variable and this one

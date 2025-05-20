@@ -183,6 +183,21 @@ if (has_rune("O")) {
     instance_create(round(x), round(y), "obj_article1");
 }
 
+// VForce Stone Edge Recoded
+se_detection_center_x = 100;
+se_detection_offset_inner = 40;
+se_detection_offset_outer = 40;
+se_stage_bottom = 
+        get_stage_data(SD_TOP_BLASTZONE) + 
+        get_stage_data(SD_BOTTOM_BLASTZONE);
+se_stage_top = get_stage_data(SD_TOP_BLASTZONE);
+se_checked = false;
+se_stone_height = 40;
+se_debug = get_match_setting(SET_HITBOX_VIS);
+
+char_half_width = noone;
+char_width_set_timer = 0;
+
 /*
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║

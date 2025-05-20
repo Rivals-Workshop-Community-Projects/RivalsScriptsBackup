@@ -20,8 +20,8 @@ if(attack == AT_FSPECIAL){
         hitbox_timer = 0;
         uspec = 1;
         if(!bite()){
-            hsp = hsp/2.5;
-            vsp = vsp/2.5;
+            hsp = hsp/1.8;
+            vsp = vsp/1.8;
             disk_ver = 1;
         }else{
             image_index = 7;
