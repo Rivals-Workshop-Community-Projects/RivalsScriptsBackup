@@ -171,8 +171,16 @@ if (state == 7){
 	mask_index = asset_get("empty_sprite"); 
 	hsp = 0;
 	vsp = 0;
-	x = player_id.trident_opponent.x;
-	y = player_id.trident_opponent.y;
+	if (instance_exists(player_id.trident_opponent)){
+		x = player_id.trident_opponent.x;
+		y = player_id.trident_opponent.y;
+	}
+	if (!instance_exists(player_id.trident_opponent)){
+		shoulddie = true;
+		player_id.move_cooldown[AT_NSPECIAL] = 30;
+		player_id.move_cooldown[AT_DSPECIAL] = 30;
+		player_id.move_cooldown[AT_DSPECIAL_2] = 30;
+	}
 }
 
 //State 8 - Thunderstrike

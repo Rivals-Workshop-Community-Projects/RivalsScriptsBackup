@@ -224,8 +224,6 @@ if (attack == AT_FSPECIAL_2){
     }
 }
 if (attack == AT_FSPECIAL_AIR){
-	move_cooldown[AT_FSPECIAL] = 9999;
-	move_cooldown[AT_FSPECIAL_2] = 9999;
 	move_cooldown[AT_FSPECIAL_AIR] = 9999;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;
@@ -299,8 +297,6 @@ if (attack == AT_FSPECIAL_AIR){
 }
 
 if (attack == AT_FSPECIAL_2_AIR){
-	move_cooldown[AT_FSPECIAL] = 9999;
-	move_cooldown[AT_FSPECIAL_2] = 9999;
 	move_cooldown[AT_FSPECIAL_AIR] = 9999;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 9999;
 	can_wall_jump = true;

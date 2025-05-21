@@ -207,9 +207,7 @@ if (instance_exists(trident) || move_cooldown[AT_NSPECIAL] != 0){
 	set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 }
 
-if (!free || free && state == PS_WALL_JUMP || state == PS_HITSTUN){
-	move_cooldown[AT_FSPECIAL] = 0;
-	move_cooldown[AT_FSPECIAL_2] = 0;
+if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
 	move_cooldown[AT_FSPECIAL_AIR] = 0;
 	move_cooldown[AT_FSPECIAL_2_AIR] = 0;
 }
