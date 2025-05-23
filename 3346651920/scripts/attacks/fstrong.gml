@@ -33,12 +33,10 @@ set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 
-
 //empty window just in case
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
-
 
 //start
 set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 7);
@@ -74,10 +72,6 @@ set_window_value(AT_FSTRONG, 12, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 13, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_FSTRONG, 13, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSTRONG, 13, AG_WINDOW_ANIM_FRAMES, 2);
-
-
-
-
 
 set_num_hitboxes(AT_FSTRONG, 2); 
 
@@ -120,10 +114,3 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("hit5_t_b"));
-
-
-
-
-
-
-

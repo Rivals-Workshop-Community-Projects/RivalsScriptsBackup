@@ -20,20 +20,6 @@ if (instance_exists(currKoopaShell)){
 
 }
 */
-/*
-if (instance_exists(currKoopaShell)
-	&&
-	(move_cooldown[AT_NSPECIAL] == 0
-	|| move_cooldown[AT_NSPECIAL] == 4
-	|| move_cooldown[AT_NSPECIAL] == 8
-	|| move_cooldown[AT_NSPECIAL] == 12
-	|| move_cooldown[AT_NSPECIAL] == 16
-	|| move_cooldown[AT_NSPECIAL] == 20)){
-	var shellHudFrame = 0;
-} else {
-	var shellHudFrame = 1;
-}
-*/
 
 if (instance_exists(currKoopaShell)){
 	var shellHudFrame = 0;

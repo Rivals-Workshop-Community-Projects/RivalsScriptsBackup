@@ -99,7 +99,6 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-
 //!!!
 
 DAY_ONE_MODE = false;
@@ -107,7 +106,6 @@ DAY_ONE_MODE = false;
 //!!!
 
 day_one_special_intro = false;
-
 fsp_did = false;
 
 // stage edges
@@ -142,11 +140,16 @@ dsp_timer_max = 120;
 dsp_end_timer = 0;
 dsp_orig_dir = 1;
 dsp_real_cd = 0;
+
+dsp_shadow_max_length = 100;
+
 dsp_air_max_distance = 165; //
 dsp_air_try_cd = 0; //dsp air attempt cooldown
-dsp_air_try_cd_max = 30; //dsp air attempt cooldown
+dsp_air_try_cd_max = 120; //dsp air attempt cooldown
 dsp_air_try_cd_timer = 0; //for vfx
 dsp_air_try_cd_timer_max = 20;
+
+dsp_air_min_distance = 40;
 
 sl_prev_vsp = 0;
 sl_prev_vsp_old = 0;
@@ -170,22 +173,39 @@ slender_playercounting = 0;
 
 natdev = false;
 
+dsp_air_descend = noone;
+
 set_victory_bg( sprite_get("_victorybg") )
 set_victory_theme( sound_get("_victorytheme") );
 
+stage_top_position = get_stage_data(SD_TOP_BLASTZONE);
 
 //compat land
-
 steve_death_message = "death.attack.void";
 arena_title = "The Folklore";
 battle_text = "* It's too dark to see around you.";
 
+// V_Force DSpecial recode
+shadow_width_true = 0; // maximum possible current width.
+shadow_width_max = 500; // maximum width that the shadow can reach.
+shadow_width_min = 20; // minimum used at the start (platform edge glitch).
+shadow_increment = 0; // Amount the shadow should increment total per frame.
+shadow_increment_start = 8;
+shadow_increment_end = 3;
+shadow_growth_timer = 0;
+shadow_growth_length = 40;
+shadow_dir = 1; // The initial direction the player had for the shadow.
 
+// other_init.gml content
+slender_haunt = noone;
+slender_haunt_timer = 0;
+slender_haunt_standstill = 0;
+slender_haunt_standstill_max = 200;
 
+slender_buildup = 0;
+slender_buildup_max = 70;
 
-
-
-
+walkturn_dir = 1;
 
 
 

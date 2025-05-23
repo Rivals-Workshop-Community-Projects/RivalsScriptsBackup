@@ -18,8 +18,11 @@ if (carryingShell){
 	}
 }
 
-if (sprite_index == sprite_get("fspecial") || sprite_index == sprite_get("nspecial_air")){
-	sound_stop(sfx_ttydR_koops_field_spin);
+// stops fspecial sfx
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if (attack == AT_FSPECIAL){
+		sound_stop(sfx_ttydR_koops_field_spin);
+	}
 }
 
 

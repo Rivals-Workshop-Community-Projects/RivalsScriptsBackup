@@ -91,6 +91,9 @@ dir_joy_direction_vert = spr_dir;
 dir_joy_remember_direction_vert = spr_dir;
 ranger_aim_hand_shoot_offset = 0;
 
+// other minor stuff
+test_horiz_speed_mult = 0;	// note to self: fstrong base movement speed is 12.5
+
 // custom vfx
 vfx_shell_hit_lrg = hit_fx_create(sprite_get("vfx_shell_hit_lrg"), 7*4);
 vfx_shell_hit_med = hit_fx_create(sprite_get("vfx_shell_hit_med"), 7*4);
@@ -269,6 +272,9 @@ set_ui_element( UI_HUD_ICON, sprite_get( "_ui_hud" ) );
 set_ui_element( UI_HUDHURT_ICON, sprite_get( "_ui_hurt" ) );
 set_ui_element( UI_OFFSCREEN, sprite_get( "_ui_offscreen" ) );
 
+// also charselect thats important too
+set_ui_element( UI_CHARSELECT, sprite_get( "charselect" ));
+
 curr_alt_costume = 0;
 
 // victory theme
@@ -278,6 +284,14 @@ if (alt_cur == 15){
 	set_victory_theme(sound_get("victory_classic"));
 }
 
+// RESETTING THESE VALUES HERE (VERY IMPORTANT)
+// eye whites, pants
+set_color_profile_slot( 0, 6, 249, 249, 240 );
+set_color_profile_slot_range( 6, 6, 4, 22 );
+
+// eye col, scarf, hoodie
+set_color_profile_slot( 0, 7, 77, 97, 91 );
+set_color_profile_slot_range( 7, 11, 17, 49 );
 
 // portrait setting depending on alt
 switch (alt_cur){
@@ -304,6 +318,8 @@ switch (alt_cur){
 		set_ui_element( UI_OFFSCREEN, sprite_get( "_ui_offscreen_racer" ) );
 		user_event(7);	// so shit gets changed
 		
+		set_ui_element( UI_CHARSELECT, sprite_get( "charselect_racer" ));
+		
 		set_victory_theme(sound_get("victory_racer"));
 		
 		break;
@@ -312,12 +328,23 @@ switch (alt_cur){
 	case 26:
 	case 27:
 		curr_alt_costume = 2;	// for kooper
+		
+		// eye whites, pants
+		set_color_profile_slot( 0, 6, 249, 249, 240 );
+		set_color_profile_slot_range( 6, 6, 4, 22 );
+		
+		// eye col, scarf, hoodie
+		set_color_profile_slot( 0, 7, 93, 192, 244 );
+		set_color_profile_slot_range( 7, 1, 31, 46 );
+		
 		set_victory_portrait( sprite_get( "portrait_kooper" ));
 		set_victory_sidebar( sprite_get( "result_small_kooper" ));
 		set_ui_element( UI_HUD_ICON, sprite_get( "_ui_hud_kooper" ) );
 		set_ui_element( UI_HUDHURT_ICON, sprite_get( "_ui_hurt_kooper" ) );
 		set_ui_element( UI_OFFSCREEN, sprite_get( "_ui_offscreen_kooper" ) );
 		user_event(7);	// so shit gets changed
+		
+		set_ui_element( UI_CHARSELECT, sprite_get( "charselect_kooper" ));
 		
 		set_victory_theme(sound_get("victory_kooper"));
 		
@@ -327,12 +354,23 @@ switch (alt_cur){
 	case 30:
 	case 31:
 		curr_alt_costume = 3;	// for koops
+		
+		// eye whites, pants
+		set_color_profile_slot( 0, 6, 21, 111, 225 );
+		set_color_profile_slot_range( 6, 1, 7, 44 );
+
+		// eye col, scarf, hoodie
+		set_color_profile_slot( 0, 7, 93, 192, 244 );
+		set_color_profile_slot_range( 7, 1, 31, 46 );
+		
 		set_victory_portrait( sprite_get( "portrait_koops" ));
 		set_victory_sidebar( sprite_get( "result_small_koops" ));
 		set_ui_element( UI_HUD_ICON, sprite_get( "_ui_hud_koops" ) );
 		set_ui_element( UI_HUDHURT_ICON, sprite_get( "_ui_hurt_koops" ) );
 		set_ui_element( UI_OFFSCREEN, sprite_get( "_ui_offscreen_koops" ) );
 		user_event(7);	// so shit gets changed
+		
+		set_ui_element( UI_CHARSELECT, sprite_get( "charselect_koops" ));
 		
 		set_victory_theme(sound_get("victory_koops"));
 		

@@ -82,7 +82,6 @@ set_window_value(AT_DSTRONG, 9, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_SFX_FRAME, 4);
 
-
 set_num_hitboxes(AT_DSTRONG, 2);
 
 // front travel hitbox

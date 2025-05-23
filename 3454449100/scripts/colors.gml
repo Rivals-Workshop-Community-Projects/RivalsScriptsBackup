@@ -37,9 +37,9 @@ set_color_profile_slot_range( 7, 11, 17, 49 );
 set_num_palettes( 32 );
 
 // blue shell
-set_color_profile_slot( 1, 0, 0, 47, 201 ); //shell
-set_color_profile_slot( 1, 1, 230, 144, 6 ); //skin
-set_color_profile_slot( 1, 2, 0, 47, 201 ); //shoes
+set_color_profile_slot( 1, 0, 0, 87, 201 ); //shell
+set_color_profile_slot( 1, 1, 255, 164, 6 ); //skin
+set_color_profile_slot( 1, 2, 0, 87, 201 ); //shoes
 set_color_profile_slot( 1, 3, 255, 242, 142 ); //shoe rim
 set_color_profile_slot( 1, 4, 211, 215, 227 ); //shell rim
 set_color_profile_slot( 1, 5, 232, 212, 148 ); //belly
@@ -47,12 +47,12 @@ set_color_profile_slot( 1, 6, 249, 249, 240 ); //eye whites, pants
 set_color_profile_slot( 1, 7, 77, 97, 91 ); //eye col, scarf, hoodie
 
 // red shell
-set_color_profile_slot( 2, 0, 186, 0, 0 ); //shell
-set_color_profile_slot( 2, 1, 251, 201, 108 ); //skin
-set_color_profile_slot( 2, 2, 186, 0, 0 ); //shoes
-set_color_profile_slot( 2, 3, 171, 165, 124 ); //shoe rim
+set_color_profile_slot( 2, 0, 201, 49, 27 ); //shell
+set_color_profile_slot( 2, 1, 248, 192, 97 ); //skin
+set_color_profile_slot( 2, 2, 201, 49, 27 ); //shoes
+set_color_profile_slot( 2, 3, 230, 193, 150 ); //shoe rim
 set_color_profile_slot( 2, 4, 247, 222, 219 ); //shell rim
-set_color_profile_slot( 2, 5, 171, 165, 124 ); //belly
+set_color_profile_slot( 2, 5, 215, 168, 127 ); //belly
 set_color_profile_slot( 2, 6, 249, 249, 240 ); //eye whites, pants
 set_color_profile_slot( 2, 7, 77, 97, 91 ); //eye col, scarf, hoodie
 
@@ -146,9 +146,9 @@ set_color_profile_slot( 11, 5, 255, 232, 125 ); //belly
 set_color_profile_slot( 11, 6, 249, 249, 240 ); //eye whites, pants
 set_color_profile_slot( 11, 7, 77, 97, 91 ); //eye col, scarf, hoodie
 
-// yoshi?
+// yoshi
 set_color_profile_slot( 12, 0, 207, 0, 0 ); //shell
-set_color_profile_slot( 12, 1, 62, 148, 35 ); //skin
+set_color_profile_slot( 12, 1, 69, 166, 39 ); //skin
 set_color_profile_slot( 12, 2, 228, 96, 7 ); //shoes
 set_color_profile_slot( 12, 3, 252, 220, 1 ); //shoe rim
 set_color_profile_slot( 12, 4, 225, 227, 226 ); //shell rim
@@ -220,8 +220,8 @@ set_color_profile_slot( 18, 7, 13, 13, 13 ); //eye col, scarf, hoodie
 set_color_profile_slot( 19, 0, 81, 199, 97 ); //shell
 set_color_profile_slot( 19, 1, 137, 153, 159 ); //skin
 set_color_profile_slot( 19, 2, 81, 199, 97 ); //shoes
-set_color_profile_slot( 19, 3, 41, 38, 33 ); //shoe rim
-set_color_profile_slot( 19, 4, 41, 38, 33 ); //shell rim
+set_color_profile_slot( 19, 3, 57, 64, 60 ); //shoe rim
+set_color_profile_slot( 19, 4, 57, 64, 60 ); //shell rim
 set_color_profile_slot( 19, 5, 211, 217, 221 ); //belly
 set_color_profile_slot( 19, 6, 203, 209, 204 ); //eye whites, pants
 set_color_profile_slot( 19, 7, 55, 105, 60 ); //eye col, scarf, hoodie
@@ -278,13 +278,13 @@ set_color_profile_slot( 24, 7, 219, 0, 0 ); //eye col, scarf, hoodie
 
 // kooper brown - parakarry
 set_color_profile_slot( 25, 0, 115, 195, 222 ); //shell
-set_color_profile_slot( 25, 1, 200, 144, 48 ); //skin
+set_color_profile_slot( 25, 1, 239, 173, 75 ); //skin
 set_color_profile_slot( 25, 2, 162, 74, 1 ); //shoes
 set_color_profile_slot( 25, 3, 242, 185, 0 ); //shoe rim
 set_color_profile_slot( 25, 4, 253, 251, 244 ); //shell rim
 set_color_profile_slot( 25, 5, 184, 168, 128 ); //belly
-set_color_profile_slot( 25, 6, 179, 225, 242 ); //eye whites, pants
-set_color_profile_slot( 25, 7, 154, 77, 5 ); //eye col, scarf, hoodie
+set_color_profile_slot( 25, 6, 193, 213, 247 ); //eye whites, pants
+set_color_profile_slot( 25, 7, 120, 50, 9 ); //eye col, scarf, hoodie
 
 // kooper purple - kammy koopa
 set_color_profile_slot( 26, 0, 121, 60, 183 ); //shell

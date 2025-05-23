@@ -159,8 +159,8 @@ if (curr_alt_costume == 0){
 } else if (curr_alt_costume == 2){
 	// text for kooper
 	initCodecPage(SPK_PALU,	2,	5,	"This one's actually Kooper. He's one of Mario's friends who helped him save Peach when Bowser kidnapped her whole castle in the sky.");
-	initCodecPage(SPK_VIR,	1,	6,	"He looks kinda basic, scarf and bands aside. Wasn't another Koopa helping out with them as well?");
-	initCodecPage(SPK_PALU,	5,	0,	"That's Parakarry, yes. But he's another Koopa for another Mario story.");
+	initCodecPage(SPK_VIR,	1,	6,	"He looks kinda basic, scarf and wristbands aside. Wasn't another Koopa helping out with them as well?");
+	initCodecPage(SPK_PALU,	5,	0,	"That's Parakarry, the Mushroom Kingdom's mailman. But... he's another Koopa for another Mario Story.");
 } else if (curr_alt_costume == 3){
 	// text for koops
 	initCodecPage(SPK_VIR,	2,	7,	"Hey, isn't this that one introverted Koopa from Petalburg? Their name... what was it again?");

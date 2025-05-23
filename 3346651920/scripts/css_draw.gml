@@ -1,38 +1,18 @@
 //slenderman css draw
 
+draw_sprite_ext(sprite_get("aaa_vernum"), 1, x + 180, y + 118, 2, 2, 0, -1, 0.5);
 
-draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+118,2,2,0,-1,0.5);
+if (!variable_instance_exists(id,"timertest")) timertest = 0;
+timertest += 0.4;
 
-var DAY_ONE_MODE = false;
-if (DAY_ONE_MODE){
-	if (get_synced_var( player )!=666){
-		day_one=true;
-	}
-	if (get_synced_var( player )==666){
-		day_one=false;
-	}
-}else{
-	day_one=false;
-}
-if (!variable_instance_exists(id,"timertest")){
-	timertest = 0;
-}
-timertest+=0.4;
-draw_sprite_ext(sprite_get("__static_css"),timertest,x+10,y+10,2,2,0,-1,0.1);
+draw_sprite_ext(sprite_get("__static_css"),timertest, x + 10, y + 10, 2, 2, 0, -1, 0.1);
+draw_sprite_ext(sprite_get("_css_real"), 0, x + 8, y + 8, 2, 2, 0, -1, 1);
 
-draw_sprite_ext(sprite_get("_css_real"),0,x+8,y+8,2,2,0,-1,1);
-
-if (day_one){
-	//persistent static
-draw_sprite_ext(sprite_get("__static_css"),timertest,x+10,y+10,2,2,0,-1,1);
-}else{
 	//static fadeout
-var b_slope = ease_cubeOut( 100, 0, clamp(round(timertest),0,60), 60 )/100
-draw_sprite_ext(sprite_get("__static_css"),timertest,x+10,y+10,2,2,0,-1,b_slope);
-}
+var b_slope = ease_cubeOut(100, 0, clamp(round(timertest), 0, 60), 60) / 100;
+draw_sprite_ext(sprite_get("__static_css"), timertest, x + 10, y + 10, 2, 2,0, -1, b_slope);
 
 /*
- 
 There are two pictures of a
 door.
  
@@ -51,6 +31,7 @@ all.
  
 What happened?
 
+>> The Treachery of Images
 */
 
 //--- ---
@@ -212,8 +193,8 @@ if (ne != ue){
 	ie = (ue == col_max && ne == 0) ? -1 : (ue == 0 && ne == col_max) ? 1 : (ne < ue) ? 1 : -1 
 	ne = ue;
 	ae = "ne";
-	if (!day_one){
-		if (altsel!=0){
+	if (altsel!=0)
+	{
 		sound_stop(altsel);
 		sound_play(altsel,false,noone,0.9);
 		sound_play(altsel,false,noone,0.3,0.97);
@@ -223,9 +204,6 @@ if (ne != ue){
 		sound_play(altsel,false,noone,0.02,0.2);
 		sound_stop(sound_get("cut_5"));
 		sound_play(sound_get("cut_5"),false,noone,0.5);
-		}
-	}else{
-		sound_stop(asset_get("mfx_change_color"));
 	}
 }
 if (ae == "ne"){
@@ -269,8 +247,7 @@ if (ee > 0){
 	ce[clamp(ue+(3*-ie),0,col_max),0], c_gray, tw_f);
 	}
 	
-if (day_one){ textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, tw_g, "?????"); }
-if (!day_one){ textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, tw_g, ce[ue,1]); }
+	textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, tw_g, ce[ue,1]);
 	
 	ee--;
 }
@@ -328,9 +305,7 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 draw_set_alpha(argument[6]);
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[5], argument[5], argument[5], argument[5], false);
 draw_set_alpha(argument[6]*1.5);
-if (!day_one){ 
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
-}
 draw_set_alpha(1);
 
 

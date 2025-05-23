@@ -88,7 +88,7 @@ pratfall_anim_speed     = 0.25;
 // Crouch
 crouch_startup_frames   = 4;
 crouch_active_frames    = 3;
-crouch_recovery_frames  = 4;
+crouch_recovery_frames  = 3;
 //a dan moment makes it so the last frame needs to be doubled, the strip actually has 3 frames but the last 2 are the same
 
 // Jumps

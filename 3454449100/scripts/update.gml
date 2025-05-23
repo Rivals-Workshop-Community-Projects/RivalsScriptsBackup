@@ -2,6 +2,10 @@
 
 // print("spr_angle: " + string(spr_angle))
 
+// print(get_window_value( AT_DSTRONG, 10, AG_WINDOW_HSPEED ));
+// print(string(get_window_value( AT_FSTRONG, 3, AG_WINDOW_HSPEED ) / 12.5));
+test_horiz_speed_mult = (get_window_value( AT_FSTRONG, 3, AG_WINDOW_HSPEED ) / 12.5);
+
 // HEEEEELP MEE
 uspecPityStompX1Coord = x - 16 + hsp;
 uspecPityStompY1Coord = y - 36 + vsp;
@@ -156,7 +160,7 @@ switch (state){
 		break;
 }
 
-if (state == PS_AIR_DODGE || state == PS_WAVELAND){
+if (state == PS_AIR_DODGE || state == PS_WAVELAND || state == PS_PARRY_START || ( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && window == 0) ){
 	if (instance_exists(currKoopaShell)){
 		if (place_meeting(x, y, currKoopaShell)){
 			//spawn_hit_fx(x, y, 302);
@@ -166,6 +170,14 @@ if (state == PS_AIR_DODGE || state == PS_WAVELAND){
 			
 				carryingShell = true;
 				grabbedShellFromNSpec = false;
+				
+				if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD){
+					if (state == PS_ROLL_FORWARD){
+						spr_dir = currKoopaShell.spr_dir*-1;
+					}
+					
+					hsp = roll_forward_max*spr_dir;
+				}
 			
 				delete_koopa_shell();
 				
@@ -314,6 +326,32 @@ if (shield_pressed && carryingShell && !hitpause){
 
 if (carryingShell){
 	numShellTimeRebound = 0;
+	
+	if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+	
+	&& (attack == AT_JAB
+	|| attack == AT_FTILT
+	|| attack == AT_UTILT
+	|| attack == AT_DTILT
+	|| attack == AT_DATTACK
+	|| attack == AT_NAIR
+	|| attack == AT_FAIR
+	|| attack == AT_UAIR
+	|| attack == AT_BAIR
+	|| attack == AT_DAIR
+	|| attack == AT_FSTRONG
+	|| attack == AT_USTRONG
+	|| attack == AT_DSTRONG)
+	){
+		print("not sure how koopa is holding shell. get rid of it.");
+		
+		throw_discarded_shell();
+		if (!free){
+			set_state(PS_IDLE);
+		} else {
+			set_state(PS_IDLE_AIR);
+		}
+	}
 }
 
 //--------------------------------------------
@@ -358,6 +396,20 @@ if (instance_exists(currKoopaShell)){
 	}
 	
 }
+
+//--------------------------------------------
+
+#define throw_discarded_shell()
+
+carryingShell = false;
+			
+var droppedShell = instance_create(x + (4 * spr_dir), y - 2, "obj_article3");
+	
+droppedShell.spr_dir = spr_dir;
+droppedShell.hsp = 3.5 * spr_dir;
+droppedShell.vsp = -9;
+
+// yeah
 
 //--------------------------------------------
 

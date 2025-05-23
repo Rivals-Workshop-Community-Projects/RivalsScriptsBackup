@@ -46,9 +46,9 @@ if (my_hitboxID.attack == AT_NSPECIAL){
 				}
 			}
 			
-			if (get_hitbox_value( AT_NSPECIAL, 1, HG_VISUAL_EFFECT ) == 1){
+			if (get_hitbox_value( AT_NSPECIAL, 1, HG_VISUAL_EFFECT ) == 1 && my_hitboxID.type == 2){
 				// print("ueah")
-				spawn_hit_fx(my_hitboxID.x ,my_hitboxID.y, vfx_shell_hit_med);
+				spawn_hit_fx(my_hitboxID.x ,my_hitboxID.y - 24, vfx_shell_hit_med);
 			}
 		}
 	}

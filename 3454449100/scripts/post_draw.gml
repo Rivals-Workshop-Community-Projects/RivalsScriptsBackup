@@ -14,7 +14,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if (attack == AT_FSPECIAL){
 		if (window == 4){
 			var visualOffset = point_direction(x, y, x + hsp, y + vsp);
-			draw_sprite_ext( sprite_get("fspecial_movevfx"), image_index - 16, x + (16 * spr_dir), y - 12, 1, 1, visualOffset, c_white, 1 );
+			draw_sprite_ext( sprite_get("fspecial_movevfx"), image_index - 16, x + (16 * spr_dir), y - 12 + vsp, 1, 1, visualOffset, c_white, 1 );
 		}
 		
 		if (fspecStylishIndicator && get_match_setting(SET_HITBOX_VIS)){

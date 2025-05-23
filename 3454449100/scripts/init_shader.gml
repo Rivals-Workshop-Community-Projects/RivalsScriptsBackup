@@ -28,6 +28,16 @@ if (get_player_color(player) == 7){
 	outline_color = [76, 53, 0];
 }
 
+// Blue Shell
+if (get_player_color(player) == 1){
+	set_character_color_shading(0, 1.4); // shell
+}
+
+// Red Shell
+if (get_player_color(player) == 2){
+	set_character_color_shading(1, 1.1); // skin
+}
+
 // Greener shell
 if (get_player_color(player) == 4){
 	set_character_color_shading(2, 0.45); // shoes
@@ -50,6 +60,29 @@ if (get_player_color(player) == 8){
 if (get_player_color(player) == 9){
 	set_character_color_shading(1, 1.3); // skin
 }
+
+// Kuzzle
+if (get_player_color(player) == 13){
+	set_character_color_shading(1, 1.3); // skin
+}
+
+// Pure Gold
+if (get_player_color(player) == 17){
+	set_character_color_shading(1, 1.35); // skin
+}
+
+// Champion
+if (get_player_color(player) == 19){
+	set_character_color_shading(3, 0.6); // shoe soles
+	set_character_color_shading(4, 0.6); // shell rim
+	set_character_color_shading(7, 1.5); // eyes
+}
+
+// Parakarry
+if (get_player_color(player) == 25){
+	set_character_color_shading(7, 0.75); // scarf
+}
+
 
 // ====
 

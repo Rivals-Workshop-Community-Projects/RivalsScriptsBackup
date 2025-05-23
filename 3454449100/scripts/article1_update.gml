@@ -72,6 +72,9 @@ if (shellWasParried){
 	
 	storedHSP = clamp(storedHSP, -25, 25);
 	
+	// so stuff doesnt get messy
+	initialThrownDirection = "normal";
+	
 	setState(2);
 }
 
@@ -106,6 +109,18 @@ if (state == 0 || state == 1 || state == 3){
 									grabbedShellFromNSpec = true;
 								}
 							}
+						} else if (attack == AT_NSPECIAL && other.shellOwnedByOrigKoopa == false){
+							// regrab hitbox but as a failsafe
+							with (other){
+								if (state == 0 || state == 2 || state == 3){
+									
+									with (player_id){
+										grabbedShellFromNSpec = true;
+									}
+									
+								}
+							}
+							
 						} else if (attack == AT_FSPECIAL && type == 1){						
 							// im so cooked!
 							other.spr_dir = player_id.spr_dir;
@@ -191,7 +206,7 @@ if (state == 0 || state == 1 || state == 3){
 								
 								djumps = 0;
 							}
-						} else {
+						} else {	// all other kinds of attacks
 						
 							if (other.state != 3 && (other.shellOwnedByOrigKoopa == true)){
 						
@@ -515,15 +530,14 @@ if (state == 1){
 		// print(string(currShellHitbox.player) + " - " + string(player_id.player));
 		
 		if (currShellHitbox.player != player_id.player){
-			// print("shell was hit by a non-koopa");
+			//print("shell was hit by a non-koopa");
 			with (player_id){
 				set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 			}
-			// 
 		} else {
-			// print("shell hit by og")
+			//print("shell hit by og")
 			with (player_id){
-				set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_shell_hit_med);
+				//set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 			}
 		}
 		

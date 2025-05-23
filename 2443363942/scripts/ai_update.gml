@@ -317,53 +317,41 @@ SetAttack();
 	}
 }
 
-#define TryParry()
+#define TryParry
 {
+	var _frameAdvance = argument_count > 0 ? argument[0] : 3;
 	if (state == PS_PARRY_START) // no rolls
 	{
 		left_down = false;
 		right_down = false;
 		joy_pad_idle = true;
 	}
-	else
+	else if (!free)
 	{
 		var doParry = false;
-		if (!ai_target.was_parried && !doParry)
+		if (!ai_target.was_parried)
 		{
-			with (pHitBox) // proj
+			with (pHitBox) if (player != other.player && type == 2 && place_meeting(x+hsp*(_frameAdvance+1),y+vsp*(_frameAdvance+1),other)) // proj
 			{
-				if (player != other.player && type == 2)
-				{
-					if (place_meeting(x+hsp*4,y+vsp*4,other))
-						doParry = true;
-				}
+				doParry = true;
+				break;
 			}
-			with (oPlayer) // phys
+			with (oPlayer) if (!doParry && player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) // phys
 			{
-				if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+				var numHitboxes = get_num_hitboxes(attack);
+				var numWindows = get_attack_value(attack, AG_NUM_WINDOWS);
+				for (var i = 1; i <= numHitboxes; ++i) if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
 				{
-					for (var i = 1; i <= get_num_hitboxes(attack); ++i)
+					var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
+					if (firstwindow == clamp(firstwindow, 1, numWindows))
 					{
-						if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
+						var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
+						if (abs((x+get_hitbox_value(attack,i,HG_HITBOX_X)*spr_dir)-other.x)<get_hitbox_value(attack,i,HG_WIDTH)
+							&& abs((y+get_hitbox_value(attack,i,HG_HITBOX_Y))-other.y)<get_hitbox_value(attack,i,HG_HEIGHT)
+							&& (firstwindowframe<2)?firstwindow==window+1&&get_window_value(attack,firstwindow-1,AG_WINDOW_LENGTH)==window_timer+_frameAdvance:firstwindow==window&&firstwindowframe==window_timer+_frameAdvance)
 						{
-							var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-							if (firstwindow > 0)
-							{
-								var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
-								var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
-								var hboxlength = get_hitbox_value(attack, i, HG_WIDTH);
-								var hboxheight = get_hitbox_value(attack, i, HG_HEIGHT);
-								var hboxx = get_hitbox_value(attack, i, HG_HITBOX_X);
-								var hboxy = get_hitbox_value(attack, i, HG_HITBOX_Y);
-								
-								if (abs((x+hboxx*spr_dir)-other.x)<hboxlength
-									&& abs((y+hboxy)-other.y)<hboxheight
-									&& (firstwindowframe<2)?firstwindow==window+1&&prevwindowlen==window_timer+3:firstwindow==window&&firstwindowframe==window_timer+3)
-								{
-									doParry = true;
-									break;
-								}
-							}
+							doParry = true;
+							break;
 						}
 					}
 				}
@@ -376,6 +364,8 @@ SetAttack();
 			left_down = false;
 			right_down = false;
 			ai_state = AS_ADVANTAGE;
+			return true;
 		}
+		return false;
 	}
 }

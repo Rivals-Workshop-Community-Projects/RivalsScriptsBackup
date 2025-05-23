@@ -56,15 +56,14 @@ if (attack == AT_DATTACK){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_play(sfx_smashult_mario_dattack, false, noone, 0.65, 1.25);
 			sound_play(sfx_ttydR_koops_field_shoot, false, noone, 0.5, 1);
-			spawn_base_dust( x + (14 * spr_dir), y, "dash_start", spr_dir);
+			spawn_base_dust( x + (28 * spr_dir), y, "dash_start", spr_dir);
 		}
 	}
 	
-	if (window == 2 || window == 3){
+	if ((window <= 4 && window >= 2) && state_timer mod 5 == 0){
 		if (!hitpause){
-			if (state_timer mod 2 == 0){
-				spawn_base_dust( x + (0 * spr_dir), y, "dash", spr_dir);
-			}
+			// moving dust
+			spawn_base_dust( x + (0 * spr_dir), y, "walk", spr_dir, 0);
 		}
 	}
 }
@@ -194,7 +193,7 @@ if (attack == AT_DSTRONG){
 		dstrongHasLoopedYet = false;
 	}
 
-	var dstrongMaxTravelSpeed = 12;
+	var dstrongMaxTravelSpeed = 12 * test_horiz_speed_mult;
 	var dstrongTurnaroundSpeed = (dstrongMaxTravelSpeed / 2.5);
 	
 	// sfx stuff
@@ -1302,7 +1301,7 @@ if (attack == AT_DSPECIAL){
 	
 	if (window == 3){
 		
-		hsp = clamp(hsp, -1.75, 1.75);
+		hsp = clamp(hsp, -2, 2);
 	
 		if (!hitpause){
 			// dust fx
