@@ -4,6 +4,8 @@ set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_NAME, "DAir: Sharp Stab");
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_MISC, "Bounces you upward on hit.");
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 9);
@@ -27,6 +29,7 @@ set_num_hitboxes(AT_DAIR, 2+dairRune);
 
 //sour
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Sour Hitbox");
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, -2);
@@ -48,12 +51,13 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 6);
 
 //sweet (spike)
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_X, -2);
-set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, 33);
-set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 26);
-set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 26);
+set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, 36);
+set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 20);
+set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 20);
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 10);
@@ -73,6 +77,7 @@ if (dairRune){
 if (dairRune){
 //rune spike (ground)
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_X, -2);

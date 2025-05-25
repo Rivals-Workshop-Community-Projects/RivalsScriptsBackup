@@ -226,6 +226,7 @@ if (state > 1){
 
 //Idle Ground
 if (state == 2){
+	grabbed_player_id = noone;
 	if (free){
 		sprite_index = sprite_get("super_vac_fall");
 	}
@@ -367,6 +368,14 @@ if (state == 4){
 	}
 }
 
+/*
+if (instance_exists(grabbed_player_id)){
+	print("hi");
+} else  {
+	print("womp womp");
+}
+*/
+
 //Throw opponent
 if (state == 5){
 	player_id.move_cooldown[AT_DSPECIAL] = 4;
@@ -496,6 +505,7 @@ if (state == 5){
 			launch_hitbox = create_hitbox(AT_DSPECIAL_2, 4, x-40*spr_dir, y-40);
 		}//>
 		if (image_index >= 13.5){
+			player_id.vacuum_grab = false;
 			grabbed_player_id = noone;
 			if (has_throw == 2){
 				state = 6;
@@ -520,8 +530,20 @@ if (state == 5){
 if (state == 6){
 	should_die_instantly = false;
 	player_id.move_cooldown[AT_DSPECIAL] = 90;
+	player_id.vacuum_grab = false;
 	if (state_timer == 0){
 		sound_play(asset_get("sfx_ell_cooldown"));
+		
+		if (instance_exists(grabbed_player_id)){
+		//print("hi");
+		
+			with(grabbed_player_id){
+				print("please fuckin work");
+				set_state(PS_IDLE_AIR);
+			}
+		
+		}
+		
 	}
 	if (free && fspecial_hop = false){
 		vsp = 5;

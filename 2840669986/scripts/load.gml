@@ -3,6 +3,7 @@
 
 //Idle, Walk, Dash
 sprite_change_offset("idle", 100, 124);
+sprite_change_offset("idle_wait", 120, 130);
 sprite_change_offset("hurt", 32, 62);
 sprite_change_offset("crouch", 100, 124);
 sprite_change_offset("walk", 100, 124);
@@ -59,9 +60,9 @@ sprite_change_offset("dair", 100, 124);
 //Strongs
 sprite_change_offset("fstrong", 100, 124);
 sprite_change_offset("ustrong", 100, 124);
-sprite_change_offset("dstrong", 120, 124);//me when i have to expand the canvas (this is so sad)
-sprite_change_offset("dstrong_ea", 120, 124);//me when i have to expand the canvas (this is so sad)
-sprite_change_offset("dstrong_gold", 120, 124);//me when i have to expand the canvas (this is so sad)
+sprite_change_offset("dstrong", 120, 130);//me when i have to expand the canvas (this is so sad)
+sprite_change_offset("dstrong_ea", 120, 130);//me when i have to expand the canvas (this is so sad)
+sprite_change_offset("dstrong_gold", 120, 130);//me when i have to expand the canvas (this is so sad)
 
 //Specials
 sprite_change_offset("nspecial", 100, 124);

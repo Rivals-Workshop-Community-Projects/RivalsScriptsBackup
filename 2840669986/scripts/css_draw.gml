@@ -60,20 +60,31 @@ if (get_player_color(player) == 26){
 	draw_sprite(sprite_get("css_dl3_outline"),0,x + 8,y + 8);
 }
 
-//Special Icons n shit
-if (get_player_color(player) == 6){
-	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
-} else if (get_player_color(player) == 7){
-	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
-} else if (get_player_color(player) == 18){
-	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
-} else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
-	if (get_player_color(player) == 17){
-		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
-	}
-	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
+var icon_draw_x = x + 174;
+var icon_draw_y = y + 108;
+// Special Icons
+switch (get_player_color(player)){
+	case 6:
+		// Abyss
+		draw_sprite(sprite_get("_css_icons"),0,icon_draw_x,icon_draw_y);
+	break;
+	case 7:
+		// Early Access
+		draw_sprite(sprite_get("_css_icons"),1,icon_draw_x,icon_draw_y);
+	break;
+	case 11:
+	case 16:
+	case 17:
+	case 19:
+		// star icon
+		draw_sprite(sprite_get("_css_icons"),2,icon_draw_x,icon_draw_y);
+	break;
+	case 18:
+		// Ranked Gold
+		draw_sprite(sprite_get("_css_icons"),3,icon_draw_x,icon_draw_y);
+	break;
 }
+
 
 //include alt. name
 //textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + alt_name[alt_cur]);

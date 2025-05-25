@@ -48,9 +48,9 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){
 with(vacuum){
 	if (instance_exists(grabbed_player_id)){
 		if(grabbed_player_id == player_id){
-			print("MARIO");
+			// print("MARIO");
 		} else {
-			print("fuck");
+			// print("fuck");
 		}
 	}
 }

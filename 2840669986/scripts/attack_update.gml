@@ -66,7 +66,7 @@ if (attack == AT_UTILT){
 			spawn_base_dust( x + (22 * spr_dir), y, "dash", spr_dir*-1)
 		}
 	}
-	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 5)){
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 5)){//>
 		hud_offset = 42;
 	}
 }
@@ -77,6 +77,7 @@ if (attack == AT_DTILT){
 		clear_button_buffer(PC_ATTACK_PRESSED);
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x - (10 * spr_dir), y, "dattack", spr_dir);
+			spawn_base_dust( x + (0 * spr_dir), y, "dash", spr_dir);
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 	}
@@ -98,6 +99,13 @@ if (attack == AT_DTILT){
 			}
 		}
 	}
+	
+	if (window == 2 || window == 3){
+		if (!hitpause && state_timer mod 3 == 0){
+			spawn_base_dust( x - (14 * spr_dir), y, "walk", spr_dir);
+		}
+	}
+	
 	if (window == 6){
 		if (window_timer == 1){
 			spawn_base_dust( x - (0 * spr_dir), y, "jump", spr_dir)
@@ -213,10 +221,17 @@ if (attack == AT_DSTRONG){
 			if (window == 2){
 				spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir);
 				sound_play(sfx_krdl_water_use, false, noone, 0.4, 1.2);
+				
+				var water_vfx = spawn_hit_fx( x + 68 * spr_dir, y, water_trail_vfx );
+				water_vfx.depth = 10;
+				water_vfx.spr_dir *= -1;
 			}
 			if (window == 4){
 				spawn_base_dust( x + (14 * spr_dir), y, "dash", spr_dir*-1);
 				sound_play(sfx_krdl_water_use, false, noone, 0.4, 1.2);
+				
+				var water_vfx = spawn_hit_fx( x - 68 * spr_dir, y, water_trail_vfx );
+				water_vfx.depth = 10;
 			}
 			sound_play(asset_get("sfx_swish_medium"), false, noone, 1, 1.05);
 		}
@@ -338,6 +353,9 @@ if (attack == AT_FSPECIAL){
 		move_cooldown[AT_FSPECIAL] = 99999;
 		if (window_timer == 12){
 			sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, 1, 1);
+		}
+		if (window_timer >= 9){
+			can_wall_jump = true;
 		}
 	}
 	if (window == 5){

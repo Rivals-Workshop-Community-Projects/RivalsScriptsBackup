@@ -13,6 +13,7 @@ set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial_gold"));
 set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_gold"));
 }
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_NAME, "USpecial: Cleaning ChuChu");
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);

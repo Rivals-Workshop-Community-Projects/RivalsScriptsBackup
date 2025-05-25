@@ -13,7 +13,7 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sfx_star_allies_cleaning_swipe_2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -27,7 +27,7 @@ set_num_hitboxes(AT_FAIR, 1);
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -19);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 75);

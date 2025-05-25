@@ -3,6 +3,7 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
+set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_NAME, "FStrong: Broom Flick");
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);

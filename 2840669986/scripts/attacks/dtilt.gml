@@ -3,6 +3,9 @@ set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DTILT, AG_CATEGORY, 2);
 set_attack_value(AT_DTILT, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
+set_attack_value(AT_DTILT, AG_MUNO_ATTACK_NAME, "DTilt: Slide");
+set_attack_value(AT_DTILT, AG_MUNO_ATTACK_MISC, "Bounces you upwards on hit.
+Can be canceled if you slide off of a ledge.");
 
 //startup
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);

@@ -13,6 +13,10 @@ set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Cleaning Pitch");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC, "Projectile that travels in an arc and goes away on contact with either the ground, platform or opponent.
+Charging the move for ~30 frames will increase the projectile's speed.
+Has a special interaction with the Super-Vac by throwing this move's projectile into it, where the Super-Vac spits out 3 smaller projectiles.");
 
 //Startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
@@ -53,6 +57,7 @@ set_num_hitboxes(AT_NSPECIAL, 5);
 
 //Main
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Projectile");
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 69);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 360);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);
@@ -85,6 +90,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 var smallWaterProjVFX = 9;
 //Small 1
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Super-Vac Projectile");
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 69);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 360);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
@@ -113,6 +119,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 
 //small 2
+set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 69);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 360);
@@ -142,6 +149,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 
 //small 3
+set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 69);
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 360);
@@ -171,6 +179,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 
 //ignore the spill
+set_hitbox_value(AT_NSPECIAL, 5, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW, 69);
 set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 6);

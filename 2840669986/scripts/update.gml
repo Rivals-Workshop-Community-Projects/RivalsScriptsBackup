@@ -113,8 +113,17 @@ with(oPlayer){
 	}
 }
 
+/*
+with(oPlayer){
+	print(string(get_char_info(player, INFO_STR_NAME)) + ", hitpause: " + string(hitpause));
+	print(string(get_char_info(player, INFO_STR_NAME)) + ", hitstop: " + string(hitstop));
+	print(string(get_char_info(player, INFO_STR_NAME)) + ", hitstop full: " + string(hitstop_full));
+}
+*/
+
 //DSpecial "Comand Grab"
 if (vacuum_grab == true){
+	// print("is this fuckass code still running");
 	hit_player_obj.hitstop = 1;
 	//hit_player_obj.visible = false;
 	if (vacuum.throw_direction == vacuum.spr_dir){
@@ -130,6 +139,7 @@ if (vacuum_grab == true){
 		*/
 	}
 } else {
+	// print("it isnt");
 	if (has_hit_someone_for_first_time_with_dspec){
 		if (hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer > 90){
 			hit_player_obj.visible = true;

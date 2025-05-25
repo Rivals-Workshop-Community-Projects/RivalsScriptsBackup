@@ -13,6 +13,11 @@ set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_gold"));
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_gold"));
 }
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial: Cleaning Nago");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC, "Forward-moving dash with a hitbox and plenty of endlag. Endlag can be canceled with a walljump 10 frames into it.
+On hit, Nago will throw Broom Hatter upwards.
+Will bounce backward upon wall contact.
+If used on the Super-Vac, you will push it forward.");
 
 //Startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
@@ -69,8 +74,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 20+(4*fspecDistanceRune));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -12)
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 56);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 56);		// 48
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);	// 34
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9);

@@ -33,6 +33,7 @@ var multihit_base_kb = 6;
 var multihit_hitpause = 4;
 
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DATTACK, 1, HG_MUNO_HITBOX_NAME, "Multihit Hitbox 1");
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 2);
@@ -52,6 +53,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_MUNO_HITBOX_NAME, "Multihit Hitbox 1");
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 2);
@@ -72,6 +74,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DATTACK, 3, HG_MUNO_HITBOX_NAME, "Multihit Hitbox 1");
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_DATTACK, 3, HG_LIFETIME, 2);
@@ -92,6 +95,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_TECHABLE, 3);
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_GROUP, 3);
 
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DATTACK, 4, HG_MUNO_HITBOX_NAME, "Multihit Hitbox 1");
 set_hitbox_value(AT_DATTACK, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 4, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(AT_DATTACK, 4, HG_LIFETIME, 2);
@@ -113,6 +117,7 @@ set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_GROUP, 4);
 
 //finisher
 set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_MUNO_HITBOX_NAME, "Finishing Hitbox");
 set_hitbox_value(AT_DATTACK, 5, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 5, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_DATTACK, 5, HG_LIFETIME, 2);

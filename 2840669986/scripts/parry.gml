@@ -7,5 +7,5 @@ if (hit_player == player){
 	}
 }
 
-print(hit_player);
-print(player);
+// print(hit_player);
+// print(player);
