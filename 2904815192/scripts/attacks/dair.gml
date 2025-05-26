@@ -29,6 +29,7 @@ set_num_hitboxes(AT_DAIR, 3);
 
 //Sourspot 1
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Sour Hitbox");
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, 6);
@@ -50,6 +51,7 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 6);
 
 //Sourspot 2
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Sour Hitbox");
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_X, 20);
@@ -71,6 +73,7 @@ set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 6);
 
 //Spike
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 3, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_X, 4);

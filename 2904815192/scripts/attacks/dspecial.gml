@@ -4,8 +4,9 @@ set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
-set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));/*
+set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_NAME, "DSpecial: Property Management");
 set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Properties only attack opponenents who either:
 - are in hitstun while near the property
 - are standing completely still while touching it
@@ -13,7 +14,7 @@ set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Properties only attack o
 Properties can be upgraded by doing either of the following:
 - doing DSpecial on one of your properties if max properties have been placed
 - letting an FSpecial projectile land on a property");
-*/
+
 // ==========
 
 // Placing Properties
@@ -110,7 +111,7 @@ var propertyHitboxWidth = 96 + (propertyWidthRune * 50);
 var propertyHitboxHeight = 82;
 
 //No Houses
-//set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Property: No Houses");
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Property: No Houses");
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 4);
@@ -138,7 +139,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //1 House
-//set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Property: 1 House");
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Property: 1 House");
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 4);
@@ -166,7 +167,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //2 Houses
-//set_hitbox_value(AT_DSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Property: 2 Houses");
+set_hitbox_value(AT_DSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Property: 2 Houses");
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 4);
@@ -194,7 +195,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //3 Houses
-//set_hitbox_value(AT_DSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Property: 3 Houses");
+set_hitbox_value(AT_DSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Property: 3 Houses");
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 4, HG_LIFETIME, 4);
@@ -222,7 +223,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //4 Houses
-//set_hitbox_value(AT_DSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Property: 4 Houses");
+set_hitbox_value(AT_DSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Property: 4 Houses");
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 5, HG_LIFETIME, 4);
@@ -250,7 +251,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //Hotel
-//set_hitbox_value(AT_DSPECIAL, 6, HG_MUNO_HITBOX_NAME, "Property: Hotel");
+set_hitbox_value(AT_DSPECIAL, 6, HG_MUNO_HITBOX_NAME, "Property: Hotel");
 set_hitbox_value(AT_DSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 6, HG_WINDOW, 69);
 set_hitbox_value(AT_DSPECIAL, 6, HG_LIFETIME, 4);

@@ -134,7 +134,8 @@ KoBWeaknesses =
 {
     Fire: false,
     Water: false,
-    Thunder: true
+    Thunder: true,
+    Nature: true
 }
 
 //runeF = true;runesUpdated = true;
@@ -164,6 +165,7 @@ boxing_title = "Mud Fish Pokemon";
 
 fx_bubbles = hit_fx_create(sprite_get("fx_bubbles"), 30);
 fx_bubbles_fast = hit_fx_create(sprite_get("fx_bubbles"), 15);
+fx_bubbletrail = hit_fx_create(sprite_get("fx_bubbletrail"), 20);
 fx_watersplash = hit_fx_create(sprite_get("fx_watersplash"), 15);
 fx_watersplash_verysmall = hit_fx_create(sprite_get("fx_watersplash_verysmall"), 15);
 fx_mudsplash = hit_fx_create(sprite_get("fx_mudsplash"), 20);

@@ -184,7 +184,7 @@ if (attack == AT_NSPECIAL){
 	    	theotherhitbox.x = x; theotherhitbox.y = y;
 	    }
 	    if(instance_exists(theotherhitbox) /*&& (hit_priority > 0 || player = orig_player || )*/){
-    	    with(asset_get("pHitBox")){
+    	    with(pHitBox){
     	    	if(place_meeting(x,y,other.theotherhitbox)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
@@ -382,7 +382,7 @@ if (attack == AT_NSPECIAL){
 	    	theotherhitbox.x = x; theotherhitbox.y = y-10;
 	    }
 	    if(instance_exists(theotherhitbox)){
-    	    with(asset_get("pHitBox")){
+    	    with(pHitBox){
     	    	if(place_meeting(x,y,other.theotherhitbox)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && other != self && effect != 100 && 
     	            (player_id != other.player_id || player_id == other.player_id && (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR ||
@@ -538,7 +538,7 @@ if (attack == AT_NSPECIAL){
 		if(num >= 1 && num <= 4){ //the states tree can be hit in
 			if(instance_exists(hitcollision) && hp > 0 && timer2 < 840){
 	    		hitcollision.x = x; hitcollision.y = y-45;
-	    	    with(asset_get("pHitBox")){
+	    	    with(pHitBox){
 	    	    	if(place_meeting(x,y,other.hitcollision)){
 	    	            if(self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
 	    	            	if(damage > 0 && kb_value > 0 && hit_priority > 0){
@@ -1060,7 +1060,7 @@ if (attack == AT_NSPECIAL){
 	    }
     }else{
 	    grounds = 2;walls = 2;grav = 0.25;
-	    with(asset_get("pHitBox")){
+	    with(pHitBox){
     	    if(place_meeting(x,y,other)){
     	        if(/*other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox &&*/ player != other.player && other != self){
     	            if(damage > 0 && kb_value > 0 && hit_priority > 0 && !proj_break && other.hit_priority > 0 || "ShieldHitbox" in self && ShieldHitbox){
@@ -1105,7 +1105,7 @@ if (attack == AT_NSPECIAL){
 
 //windboxes pushing projectiles
 if (attack == AT_DSPECIAL && hbox_num == 2){
-    with(asset_get("pHitBox")){
+    with(pHitBox){
 	    if(place_meeting(x,y,other)){
 	    	if((player == other.player || "Villager" in player_id || other.player_id.op) && other != self && other.attack != attack && abs(hsp) < 10){
 	            hsp += cos(degtorad(other.kb_angle))*((6+(3.6))*0.075)*other.spr_dir;
@@ -1124,11 +1124,9 @@ if (attack == AT_DSPECIAL && hbox_num == 2){
 }
 
 if(attack == AT_TAUNT){
-	with(asset_get("pHitBox")){
+	with(pHitBox){
 	    if(place_meeting(x,y,other)){
-	        if(attack == AT_TAUNT && other != self){
-	            x += 100;
-	        }
+	        if(attack == AT_TAUNT && other != self)x += 100;
 	    }
     }
 }

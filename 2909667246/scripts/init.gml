@@ -152,6 +152,7 @@ tauntcancel = false;
 loaded = false;
 trainingmode = false;
 playtest = (object_index == oTestPlayer);
+bonus_damage = false;bonus_damage_flash = 0;
 
 KoBWeaknesses = 
 {
@@ -171,8 +172,7 @@ grabbedtargetsprite = asset_get("empty_sprite");
 grabbedtargetsprite_imageindex = 0;
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
-
-//runeC = true;runesUpdated = true;
+//runeK = true;runesUpdated = true;
 
 if(string_lower(get_player_name(player)) == "felixblobdev" || string_lower(get_player_name(player)) == "felix" || string_lower(get_player_name(player)) == "don"
 /*|| string_lower(get_player_name(player)) == "sky" || string_lower(get_player_name(player)) == "skycrafter1234"

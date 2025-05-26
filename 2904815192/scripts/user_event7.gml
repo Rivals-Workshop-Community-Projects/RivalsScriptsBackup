@@ -142,10 +142,10 @@ initCodecPage(SPK_VIR,  1,  6,  "Yeah, but eating off the floor is just gross.")
 ///////////////////////////////////////////
 
 initCodecPage(SPK_PIT,	4,	7,	"Wait, the Monopoly Guy is real?! ...is this some kind of weird dream? Am I going insane, Lady Palutena?");
-initCodecPage(SPK_PALU,	2,	5,	"The Monopoly Guy was ALWAYS real, silly. His full name is Milburn Pennybags, although most commly reffered to as Mr. Monopoly.");
+initCodecPage(SPK_PALU,	2,	5,	"The Monopoly Guy was ALWAYS real, silly. His full name is Milburn Pennybags, although most commonly reffered to as Mr. Monopoly.");
 initCodecPage(SPK_VIR,	2,	1,	"You're telling me this one little guy on the cover of a board game is real here? Unbelievable. ");
 initCodecPage(SPK_PALU,	0,	1,	"Real or not, you'd better not underestimate him. He can gain cash from simply just hitting you, and can materialize properties out of thin air!");
-initCodecPage(SPK_PALU,	2,	5,	"Obviously, don't stand on them, else you'll be in for a beating - especially if it has Houses, as he can upgade them once he has all 3 placed!");
+initCodecPage(SPK_PALU,	2,	5,	"Obviously, don't stand on them, else you'll be in for a beating - especially if it has Houses, as he can upgrade them once he has two properties placed.");
 initCodecPage(SPK_DPIT,	0,	0,	"If he gets a Hotel on a property, kiss your wallet good-bye if you're unlucky to find youself standing on it.");
 initCodecPage(SPK_VIR,	3,	3,	"Don't let those properties get the best of you - all you need to do to avoid them is walk over them, or parry them to downgrade them as well!");
 initCodecPage(SPK_PALU,	4,	1,	"K.O.ing Mr. Monopoly also gets rid of any properties he has onstage. Also, that reminds me, Pit...");

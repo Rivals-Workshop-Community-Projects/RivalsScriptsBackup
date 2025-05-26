@@ -5,6 +5,9 @@ tauntcancel = false;
 
 grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
 
+//reset bonus dmg stuff
+if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
+
 if(attack == AT_NSPECIAL){
 	pocket_release = 0;
 	if(instance_exists(Pocketed_Projectile)){

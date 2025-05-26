@@ -37,13 +37,13 @@ set_color_profile_slot_range( 7, 2, 3, 22 );
 set_num_palettes( 28 );
 
 // Blue
-set_color_profile_slot( 1, 0, 0, 114, 187 ); //Hat + Suit
+set_color_profile_slot( 1, 0, 52, 123, 186 ); //Hat + Suit
 set_color_profile_slot( 1, 1, 0, 221, 255 ); //Hat Band
 set_color_profile_slot( 1, 2, 0, 39, 125 ); //Pants
 set_color_profile_slot( 1, 3, 0, 76, 125 ); //Shoes
 set_color_profile_slot( 1, 4, 70, 63, 74 ); //Cane
 set_color_profile_slot( 1, 5, 255, 0, 0 ); //Bowtie
-set_color_profile_slot( 1, 6, 238, 204, 173 ); //Skin
+set_color_profile_slot( 1, 6, 238, 192, 150 ); //Skin
 set_color_profile_slot( 1, 7, 246, 253, 255 ); //Hair + Undershirt
 
 // Red
@@ -77,7 +77,7 @@ set_color_profile_slot( 4, 6, 238, 204, 173 ); //Skin
 set_color_profile_slot( 4, 7, 246, 253, 255 ); //Hair + Undershirt
 
 // Pink - Party Phil (yes.)
-set_color_profile_slot( 5, 0, 255, 96, 218 ); //Hat + Suit
+set_color_profile_slot( 5, 0, 255, 98, 216 ); //Hat + Suit
 set_color_profile_slot( 5, 1, 74, 74, 74 ); //Hat Band
 set_color_profile_slot( 5, 2, 74, 74, 74 ); //Pants
 set_color_profile_slot( 5, 3, 63, 63, 74 ); //Shoes
@@ -107,7 +107,7 @@ set_color_profile_slot( 7, 6, 211, 226, 154 ); //Skin
 set_color_profile_slot( 7, 7, 167, 186, 74 ); //Hair + Undershirt
 
 // Yellow
-set_color_profile_slot( 8, 0, 255, 255, 0 ); //Hat + Suit
+set_color_profile_slot( 8, 0, 255, 234, 0 ); //Hat + Suit
 set_color_profile_slot( 8, 1, 125, 125, 125 ); //Hat Band
 set_color_profile_slot( 8, 2, 125, 125, 125 ); //Pants
 set_color_profile_slot( 8, 3, 63, 63, 74 ); //Shoes
@@ -137,7 +137,7 @@ set_color_profile_slot( 10, 6, 238, 204, 173 ); //Skin
 set_color_profile_slot( 10, 7, 246, 253, 255 ); //Hair + Undershirt
 
 // Violet
-set_color_profile_slot( 11, 0, 214, 32, 227 ); //Hat + Suit
+set_color_profile_slot( 11, 0, 169, 21, 179 ); //Hat + Suit
 set_color_profile_slot( 11, 1, 255, 255, 255 ); //Hat Band
 set_color_profile_slot( 11, 2, 255, 255, 255 ); //Pants
 set_color_profile_slot( 11, 3, 63, 63, 74 ); //Shoes

@@ -4,6 +4,10 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial: Moneybags");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Requires 40 Cash in order to be used.
+Projectile speed can be angled by holding either forward or backward during startup.
+If the projectile lands on a property, it will upgrade it by 1 House (if possible).");
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 16);
@@ -38,6 +42,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 set_num_hitboxes(AT_FSPECIAL, 1);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Projectile");
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 69);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 360);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 0);

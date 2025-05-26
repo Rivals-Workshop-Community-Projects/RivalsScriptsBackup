@@ -1,6 +1,7 @@
 set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab"));
 set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+set_attack_value(AT_JAB, AG_MUNO_ATTACK_NAME, "Jab: Cane Stab, Shoe Token");
 
 set_window_value(AT_JAB, 1, AG_WINDOW_TYPE, 1);//Jab 1
 set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3);
@@ -45,6 +46,7 @@ set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_JAB, 2);
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Cane Hitbox");
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_X, 48);
@@ -68,6 +70,7 @@ set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM, 0);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Shoe Hitbox");
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 40);

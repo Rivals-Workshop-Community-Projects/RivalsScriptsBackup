@@ -26,6 +26,10 @@ if (instance_exists(property2)){
 if (instance_exists(property3)){
 	property3.shouldDieInstantly = true;
 }
+
+currCash = floor(currCash / 2);
+
+/*
 if (!deathCashConvertRune){
 	currCash = floor(currCash / 2);
 } else if (deathCashConvertRune){
@@ -33,3 +37,4 @@ if (!deathCashConvertRune){
 	
 	currCash += MyDamage;
 }
+*/

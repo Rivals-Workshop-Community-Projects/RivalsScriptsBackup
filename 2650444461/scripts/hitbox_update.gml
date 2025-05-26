@@ -4,6 +4,10 @@ if(player_id.player == orig_player){
 	if (attack == AT_NSPECIAL){
 	    if(hbox_num == 1){
 	        free = true;hsp *= 0.97;vsp *= 0.99;
+	        if(get_gameplay_time() % 2 == 0){
+		    	var fx = spawn_hit_fx(round(x),round(y),player_id.fx_bubbletrail);
+		    	fx.vsp = -0.1-(random_func(1, 20, true)/10);fx.draw_angle = random_func(2,360,true);
+			}
 	        if(hitbox_timer == 40 || destroyed){
 	            sound_play(bubble_pop_sfx);spawn_hit_fx(x,y,player_id.fx_bubbles);
 	        }
@@ -12,6 +16,7 @@ if(player_id.player == orig_player){
 	
 	if (attack == AT_DSPECIAL){
 	    if(hbox_num == 2){
+	    	hsp *= 0.9;
 	        if(x > room_width || x < 0 || y >= room_height+65 || y <= -200){
 	            destroyed = true;
 	        }
@@ -53,8 +58,12 @@ if(player_id.player == orig_player){
 	        damage = 6;kb_value = 6;kb_scale = 0.7;kb_angle = 70;hitstun_factor = 0.9;
 	        sound_effect = asset_get("sfx_waterhit_medium");hit_effect = 304;image_xscale = 0.2;image_yscale = 0.2;
 	    }
+	    if(get_gameplay_time() % 2 == 0){
+        	var fx = spawn_hit_fx(round(x),round(y),player_id.fx_bubbletrail);
+        	fx.vsp = -0.1-(random_func(1, 20, true)/10);fx.draw_angle = random_func(2,360,true);
+    	}
 	    if(hitbox_timer == 40 || destroyed){
-	        sound_play(bubble_pop_sfx);spawn_hit_fx(x,y,player_id.fx_bubbles);
+	        sound_play(bubble_pop_sfx);spawn_hit_fx(round(x),round(y),player_id.fx_bubbles);
 	    }
 	}
 	
@@ -69,9 +78,7 @@ if(player_id.player == orig_player){
 	        if(!free){
 	            destroyed = true;
 	        }
-	        if(get_gameplay_time() % 3 == 0){
-	        	spawn_hit_fx(x,y,player_id.fx_mudtrail);
-	    	}
+	        if(get_gameplay_time() % 3 == 0)spawn_hit_fx(x,y,player_id.fx_mudtrail);
 	        if(hitbox_timer == 900 || destroyed){
 	            sound_play(asset_get("sfx_waterhit_heavy"));spawn_hit_fx(x,y,player_id.fx_mudsplash);
 	        }

@@ -28,6 +28,7 @@ set_num_hitboxes(AT_UTILT, 3);
 
 //Back Hitbox
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_NAME, "Back Hitbox");
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, activeTimeForEachHitbox);
@@ -51,6 +52,7 @@ set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //Overhead Hitbox
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_NAME, "Middle Hitbox");
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, activeTimeForEachHitbox);
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, activeTimeForEachHitbox);
@@ -74,6 +76,7 @@ set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //Front (and also Weak) Hitbox
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 3, HG_MUNO_HITBOX_NAME, "Front Hitbox");
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME, activeTimeForEachHitbox*2);
 set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, activeTimeForEachHitbox);

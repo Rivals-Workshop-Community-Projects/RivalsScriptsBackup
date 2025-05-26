@@ -1,5 +1,7 @@
 //hit_player.gml
 
+didDStrongHit = 0;
+
 //if (my_hitboxID.attack == AT_WHATEVER){
 //}
 //again this is just here so i have it for reference
@@ -68,12 +70,15 @@ if (my_hitboxID.attack == AT_USTRONG){
 
 //Down Strong
 if (my_hitboxID.attack == AT_DSTRONG){
+	didDStrongHit = 1;
 	if (my_hitboxID.hbox_num == 2){
 		sound_play(sfx_monopoly_ds_cash);
 		
 		var new_hitfx = spawn_hit_fx(((my_hitboxID.x + hit_player_obj.x)/2) + (my_hitboxID.hit_effect_x * my_hitboxID.spr_dir), ((my_hitboxID.y + hit_player_obj.y)/2) + (my_hitboxID.hit_effect_y), money_hit_fx_lrg)
         new_hitfx.depth = hit_player_obj.depth - 1;
 	}
+} else {
+	didDStrongHit = 0;
 }
 
 //Neutral Special
@@ -178,7 +183,7 @@ if (doublesBoostTimer != 0 && (doublesCount == 1 || doublesCount == 2)){
 if (hit_player_obj.prev_state == PS_HITSTUN
 || hit_player_obj.prev_state == PS_HITSTUN_LAND
 || hit_player_obj.prev_state == PS_TUMBLE){
-	var incHitstunOpp = 0.4;
+	var incHitstunOpp = 1;
 } else {
 	var incHitstunOpp = 0;
 }
@@ -194,6 +199,26 @@ if (cashGainMultInc != 1){
 	var mario = 69420;
 	var cashMult = 0;
 }
-currCash += floor(mario*cashMult);
+
+var whatTheHellAmIDoingHere = floor(1 + incHitstunOpp + incCashGainHitRune);
+
+// transferring cash to monopoly
+if (!incCashGainHitRune){
+	
+	var cashGained = floor(mario*cashMult);
+	if (didDStrongHit){
+		cashGained *= 1.5;
+	}
+
+	currCash += ceil(cashGained);
+} else {
+	
+	var cashGained = floor(mario*cashMult) * whatTheHellAmIDoingHere;
+	if (didDStrongHit){
+		cashGained *= 1.5;
+	}
+
+	currCash += ceil(cashGained);
+}
 
 //--------------------------------------------

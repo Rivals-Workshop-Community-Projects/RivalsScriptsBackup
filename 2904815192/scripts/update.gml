@@ -7,6 +7,13 @@ if (get_match_setting(SET_PRACTICE)){
 	}
 }
 
+// rune
+if (passiveCashGainRune){
+	if (get_gameplay_time() mod 15 == 0){
+		currCash += 1;
+	}
+}
+
 // altering Dream Nail Dialogue for The Knight (Reiga) if Mr Monopoly is on Monopoly City
 if (isOnMonopolyCity){
 	knight_compat_dream = 

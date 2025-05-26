@@ -24,3 +24,4 @@ neutral_attacks[1] = AT_NAIR;
 
 rapidattack = 0;
 silly = 0;
+waveland_dir = -999;

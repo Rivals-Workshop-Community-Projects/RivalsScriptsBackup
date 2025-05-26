@@ -57,15 +57,28 @@ if (get_player_color(player) == 17){
 	draw_sprite(sprite_get("_css_outlines"),2,x + 8,y + 8);
 }
 
-//Special Icons n shit
-if (get_player_color(player) == 6){
-	draw_sprite(sprite_get("_css_icons"),0,x+10,y+42);
-} else if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("_css_icons"),1,x+10,y+42);
-} else if (get_player_color(player) == 18){
-	draw_sprite(sprite_get("_css_icons"),3,x+10,y+42);
-} else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
-	draw_sprite(sprite_get("_css_icons"),2,x+10,y+42);
+var icon_draw_x = x + 174;
+var icon_draw_y = y + 108;
+// Special Icons
+switch (get_player_color(player)){
+	case 6:
+		// Abyss
+		draw_sprite(sprite_get("_css_icons"),0,icon_draw_x,icon_draw_y);
+	break;
+	case 7:
+		// Early Access
+		draw_sprite(sprite_get("_css_icons"),1,icon_draw_x,icon_draw_y);
+	break;
+	case 16:
+	case 17:
+	case 19:
+		// star icon
+		draw_sprite(sprite_get("_css_icons"),2,icon_draw_x,icon_draw_y);
+	break;
+	case 18:
+		// Ranked Gold
+		draw_sprite(sprite_get("_css_icons"),3,icon_draw_x,icon_draw_y);
+	break;
 }
 
 

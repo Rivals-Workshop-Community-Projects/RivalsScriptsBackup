@@ -139,6 +139,13 @@ if (attack == AT_DATTACK){
 			hsp *= 0.36;
 		}
 	}
+	
+	
+	if (dattackRune){
+		if (has_hit && !hitpause){
+			can_jump = true;
+		}
+	}
 }
 
 //Forward Tilt
@@ -536,7 +543,7 @@ if (attack == AT_USPECIAL){
 			sound_play(asset_get("sfx_propeller_dagger_release"));
 		}
 		can_shield = true;
-		hsp = clamp(hsp, -2.6, 2.6);
+		hsp = clamp(hsp, -2.6 - (uspecialBoostRune * 3.2), 2.6 + (uspecialBoostRune * 3.2));
 		if (vsp < -4){//>
 			vsp = -4;
 		}
@@ -765,7 +772,7 @@ if (propertyNumber == 1){
 	property1.numberOfHouses = houses;
 	property1.decayTimer = 900;
 	if (property1HouseStartRune){
-		property1.numberOfHouses += 1;
+		property1.numberOfHouses += 2;
 	}
 	if (thrown == 0){
 		property1.vsp = 12;
@@ -787,7 +794,7 @@ if (propertyNumber == 1){
 	property2.numberOfHouses = houses;
 	property2.decayTimer = 900;
 	if (property1HouseStartRune){
-		property2.numberOfHouses += 1;
+		property2.numberOfHouses += 2;
 	}
 	if (thrown == 0){
 		property2.vsp = 12;
@@ -809,7 +816,7 @@ if (propertyNumber == 1){
 	property3.numberOfHouses = houses;
 	property3.decayTimer = 900;
 	if (property1HouseStartRune){
-		property3.numberOfHouses += 1;
+		property3.numberOfHouses += 2;
 	}
 	if (thrown == 0){
 		property3.vsp = 12;

@@ -31,6 +31,7 @@ var multihit_hitpause = 3;
 
 //Multihit 1
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 22);
@@ -52,6 +53,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 
 //Multihit 2
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 3);
@@ -73,6 +75,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 2);
 
 //Multihit 3
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 3, HG_MUNO_HITBOX_NAME, "Multihit 3");
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 3);
@@ -94,6 +97,7 @@ set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 3);
 
 //Finishing Hit
 set_hitbox_value(AT_UAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 4, HG_MUNO_HITBOX_NAME, "Finishing Hitbox");
 set_hitbox_value(AT_UAIR, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 4, HG_WINDOW_CREATION_FRAME, 9);
 set_hitbox_value(AT_UAIR, 4, HG_LIFETIME, 3);

@@ -148,7 +148,7 @@ if (player_id.propertyWidthRune){
 }
 
 // decay stuff
-if (numberOfHouses == 0){
+if (numberOfHouses == 0 || player_id.propertyAutoUpgradeRune){
 	decayTimer = decayTimerMax;
 } else {
 	if (decayTimer != 0){

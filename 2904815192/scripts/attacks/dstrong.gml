@@ -3,6 +3,8 @@ set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_NAME, "DSpecial: Community Chest");
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Yields 1.5x Cash on hit.");
 
 //charge
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
@@ -56,6 +58,7 @@ set_num_hitboxes(AT_DSTRONG, 2);
 
 //1st Hit
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 52);
@@ -82,6 +85,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 3);
 
 //2nd Hit
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_MUNO_HITBOX_NAME, "Launcher Hitbox");
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 54);

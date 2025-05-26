@@ -68,6 +68,7 @@ sprite_change_offset("miiverse_post", 60, 30);
 
 sprite_change_offset("bubbleprojectile", 15, 15);
 sprite_change_offset("fx_bubbles", 30, 30);
+sprite_change_offset("fx_bubbletrail", 30, 30);
 sprite_change_offset("mudprojectile", 20, 20);
 sprite_change_offset("mudpuddle", 40, 0);
 sprite_change_offset("mudpuddle_collision", 40, 40);

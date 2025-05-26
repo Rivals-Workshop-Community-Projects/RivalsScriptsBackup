@@ -43,9 +43,11 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 		if ("burned" in hit_player_obj && hit_player_obj.burned) {
 			hit_player_obj.burned = false;hit_player_obj.burn_timer = 150;
 		}
-		if ("sol_burn" in hit_player_obj && hit_player_obj.sol_burn) {
-			hit_player_obj.sol_burn_timer = 1;
-		}
+		if ("sol_burn" in hit_player_obj && hit_player_obj.sol_burn) hit_player_obj.sol_burn_timer = 1;
+		
+		with(hit_player_obj)if(element_cooldown <= 0 && ("KoBWeaknesses" in self && variableExistsInAndIs(KoBWeaknesses,"Water",true))){
+            take_damage(player,-1,1);element_cooldown = 60;
+        }
 	}else if(my_hitboxID.hbox_num == 10){ //trip sapling
 		with(hit_player_obj){
 			was_parried = true;y -= 2;free = true;
@@ -205,3 +207,7 @@ if(BossMode){
 	sound_stop(voice);
 	voice = sound_play(sound_get(argument[0]/* + (alt==21?" df":"")*/),false,noone,argument_count>1?argument[1]:1);
 //}
+
+#define variableExistsInAndIs(obj,variable,type)
+	if(variable not in obj)return false;
+	return (variable_instance_exists(obj,variable) && variable_instance_get(obj,variable) == type);

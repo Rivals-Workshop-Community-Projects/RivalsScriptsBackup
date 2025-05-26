@@ -78,7 +78,7 @@ with (oPlayer){
 				var buryeffect = spawn_hit_fx(other.x+35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = 1;
 				buryeffect = spawn_hit_fx(other.x-35,other.y,fx_bury);buryeffect.depth = depth-1;buryeffect.spr_dir = -1;
 		    }
-		}
+		}kob_status = villager_bury ? 2 : 0;
 	}else if(villager_bury_id == other.id){
 		if(!villager_bury && villager_bury_cooldown > 0)villager_bury_cooldown--;
 	}
@@ -124,7 +124,12 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	}
 }else{
 	attacking = false;strong_charge = 0;fakecharge = 0;inendlag = true;
+	
+	//reset bonus dmg stuff
+	if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
 }
+if(bonus_damage){outline_color = [80, 0, 0];init_shader();}
+if(bonus_damage_flash > 0)bonus_damage_flash -= hitpause?4:8;
 
 //grab input
 if(((state == PS_PARRY_START || state == PS_PARRY && state_timer <= 0 || state == PS_AIR_DODGE && state_timer <= 1)
@@ -227,8 +232,8 @@ if(canon){
 		can_strong = true;can_ustrong = true;can_special = true;can_shield = true;
     }mega = true;
 }else{
-    outline_color = [0, 0, 0];
-    init_shader();
+    //outline_color = [0, 0, 0];
+    //init_shader();
     if (small_sprites > 1) {
     	passivesoftarmor = 4*size_mult;
     }else{passivesoftarmor = 0;}
@@ -520,7 +525,6 @@ if(trainingmode || op || canon || runeK){
     	small_sprites = phone_cheats[CHEAT_BeegKewtian]*2;
         size_mult = small_sprites;
     }else if(op || canon || runeK){
-    	//small_sprites = phone_cheats[CHEAT_BeegKewtian]*2;
         size_mult = small_sprites;
     }else if(!big && !mega && normalsize){
         small_sprites = 1;

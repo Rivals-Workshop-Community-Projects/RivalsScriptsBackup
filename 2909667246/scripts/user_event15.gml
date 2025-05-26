@@ -259,6 +259,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.51", "25th May, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Some file size optimization (5mb->3mb)
++ Improved the AI to be much more custom
++ Rebalanced rune K slightly");
+
 initPatch("1.50", "8th February, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Made Grab use grabbed_invisible so that player visibility resets always (without it, it could cause invisibility bugs in Turbo Mode etc)");

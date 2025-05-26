@@ -261,4 +261,6 @@ if(attack == AT_NSPECIAL){
     SpikeCanEat = true;//SpikeHealPercent = 0;
 }
 
+if(attack == AT_TAUNT && hbox_num == 2){collision_sprite = player_id.sprite_index;image_index = image_number;}
+
 draw_xscale = spr_dir;

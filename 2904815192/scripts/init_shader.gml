@@ -42,6 +42,12 @@ if (get_player_color(player) == 4){
 	set_character_color_shading( 2, 2 );
 }
 
+// Pink
+if (get_player_color(player) == 5){
+	set_character_color_shading( 0, 1.4 );
+	set_character_color_shading( 2, 1.9 );
+}
+
 //Yellow
 if (get_player_color(player) == 8){
 	set_character_color_shading( 0, 1.5 );
@@ -60,16 +66,25 @@ if (get_player_color(player) == 11){
 //holy crap its the pringles man!!!
 if (get_player_color(player) == 12){
 	set_character_color_shading( 0, 1.55 );
+	set_character_color_shading( 2, 1.35 );
 }
 
 //Old Artwork
 if (get_player_color(player) == 13){
 	set_character_color_shading( 0, 0.7 );
+	set_character_color_shading( 2, 1.4 );
+}
+
+// walter... we need to cook
+if (get_player_color(player) == 14){
+	set_character_color_shading( 0, 1.4 );
+	set_character_color_shading( 1, 1.4 );
+	set_character_color_shading( 2, 1.4 );
 }
 
 //Orange
 if (get_player_color(player) == 15){
-	set_character_color_shading( 0, 1.2 );
+	set_character_color_shading( 0, 1.4 );
 	set_character_color_shading( 2, 1.4 );
 }
 
@@ -84,6 +99,14 @@ if (get_player_color(player) == 16){
 // Ranked Gold
 if (get_player_color(player) == 18){
 	set_character_color_shading( 0, 1.4 );
+	set_character_color_shading( 2, 1.8 );
+}
+
+// Light Blue
+if (get_player_color(player) == 21){
+	set_character_color_shading( 0, 1.4 );
+	set_character_color_shading( 1, 1.4 );
+	set_character_color_shading( 2, 1.4 );
 }
 
 //Oops! You need to put the CD in the computer.

@@ -255,6 +255,18 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.22", "23rd May, 2025");
+initHeader("Buffs");
+initSection("+ BAir comes out a little faster (f16->f13)");
+initHeader("Nerfs");
+initSection("- USpecial spike is now a bit harder to hit, as later hitboxes will send up
++ DAttack hitboxes shrunk a little");
+initHeader("Fixes / Other Changes");
+initSection("+ Added some new vfx to NSpecial and FAir bubble projectiles, making them look nicer
++ Improved the AI again
++ Fixed some minor janky interactions with puddles
++ Adjusted some hitpause on some moves");
+
 initPatch("1.21", "19th December, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed another error with DSpecial puddles, particularly on death. Should also now destroy all puddles on death properly");

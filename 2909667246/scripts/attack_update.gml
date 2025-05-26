@@ -713,9 +713,21 @@ else if (attack == AT_TAUNT_2){ // beeg taunt
     }
 }
 
-if (canon || op) {
-	strong_charge = 61;
+//rune K balance
+if (runeK) {
+	if(window >= get_attack_value(attack, AG_NUM_WINDOWS)-1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)
+	&& !hitpause && !has_hit && bonus_damage < 1.25)kob_bonus_damage(1.25);
 }
+
+if (canon || op) strong_charge = 61;
+
+#define kob_bonus_damage
+	bonus_damage = argument[0]>1;
+	if(argument[0] > 1){
+		damage_scaling = argument[0];
+	}else{
+		damage_scaling = 1;
+	}
 
 #define KoB_reverse
 	if((left_down && spr_dir == 1 || right_down && spr_dir == -1) && !b_reversed){

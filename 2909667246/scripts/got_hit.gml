@@ -29,6 +29,13 @@ if(element_cooldown <= 0){
     }
 }
 
+//extra bonus damage mechanic
+if(bonus_damage){
+	bonus_damage = false;bonus_damage_flash = enemy_hitboxID.damage > 10?120:80;
+	damage_scaling = 1;hitstop *= 2;outline_color = [0, 0, 0];init_shader();
+	sound_play(enemy_hitboxID.damage > 10?sound_get("weakpoint"):sound_get("weakpoint3"),false,noone,1.25);
+}
+
 #define variableExistsInAndIs(obj,variable,type)
 if(variable not in obj)return false;
 return (variable_instance_exists(obj,variable) && variable_instance_get(obj,variable) == type);

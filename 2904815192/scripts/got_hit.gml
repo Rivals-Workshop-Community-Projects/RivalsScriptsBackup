@@ -34,7 +34,7 @@ if (propertyNumber == 1){
 	property1.numberOfHouses = houses;
 	property1.decayTimer = 900;
 	if (property1HouseStartRune){
-		property1.numberOfHouses += 1;
+		property1.numberOfHouses += 2;
 	}
 	if (thrown == 0 || thrown == 2){
 		property1.vsp = 12;
@@ -59,7 +59,7 @@ if (propertyNumber == 1){
 	property2.numberOfHouses = houses;
 	property2.decayTimer = 900;
 	if (property1HouseStartRune){
-		property2.numberOfHouses += 1;
+		property2.numberOfHouses += 2;
 	}
 	if (thrown == 0 || thrown == 2){
 		property2.vsp = 12;
@@ -84,7 +84,7 @@ if (propertyNumber == 1){
 	property3.numberOfHouses = houses;
 	property3.decayTimer = 900;
 	if (property1HouseStartRune){
-		property3.numberOfHouses += 1;
+		property3.numberOfHouses += 2;
 	}
 	if (thrown == 0 || thrown == 2){
 		property3.vsp = 12;
