@@ -75,6 +75,7 @@ sprite_change_offset("icon_gip", 4, 4, true);
 sprite_change_offset("icon_gip_2", 7, 7, true);
 
 sprite_change_offset("miiverse_post", 60, 30);
+sprite_change_offset("taunt_specialkewtian", 40,79, true);
 sprite_change_offset("trialgrounds", 31, 0, true);
 sprite_change_offset("lastresort", 27, 39, true);
 sprite_change_offset("greenflowerzone", 20, 43, true);

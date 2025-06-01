@@ -114,7 +114,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = true;
+phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -259,6 +259,10 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.52", "26th May, 2025");
+initHeader("Buffs");
+initSection("+ Added plush taunt! Press special during taunt to use it!");
+
 initPatch("1.51", "25th May, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Some file size optimization (5mb->3mb)

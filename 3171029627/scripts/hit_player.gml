@@ -8,7 +8,7 @@ if ((my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.length == 80)
 	    torment = instance_create(torment_opponent.x, torment_opponent.y, "obj_article1");
 	    sound_play(sound_get("torment_start"),false,noone,1.2);
     }
-    else if (torment.state < 2){
+    else if (torment.state < 2 && hit_player_obj == torment_opponent){
         torment.state ++;
         torment.state_draw ++;
     }
@@ -16,7 +16,7 @@ if ((my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.length == 80)
 
 //FSpecial Trigger Multihits on Torment Players
 if ((my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSPECIAL_AIR) && my_hitboxID.hbox_num == 1 && instance_exists(torment)){
-    if (instance_exists(torment_opponent)){
+    if (instance_exists(torment_opponent) && hit_player_obj == torment_opponent){
     	fspecial_timer = 0;
 	    if (torment.state == 0) fspecial_multihit = 17;
 	    if (torment.state == 1) fspecial_multihit = 25;
@@ -26,7 +26,7 @@ if ((my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSPECIAL_AIR)
 }
 
 //Applying torment damage to opponent on hit
-if (instance_exists(torment_opponent) && my_hitboxID.attack != AT_DSPECIAL){
+if (instance_exists(torment_opponent) && my_hitboxID.attack != AT_DSPECIAL && hit_player_obj == torment_opponent){
 	take_damage(torment_opponent.player, -1, torment.number_tens * 10 + torment.number_ones);
 	torment.number_tens = 0;
 	torment.number_ones = 1;

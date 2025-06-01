@@ -4,7 +4,7 @@ temp_y = y;
 set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
 
 num_alts = 24;
-var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer)? 0:player;
 champ_cur = 0;
 prev_champ = champ_cur;
 runes_mode = get_match_setting(SET_RUNES) == true? -16:0;
@@ -20,12 +20,12 @@ customizer_timer = 0;
 customizer_closing = -1;
 
 previews = [ // sprite, animation speed
-    [sprite_get("idle"), 1/6],
-    [sprite_get("dash"), 1/4],
-    [sprite_get("taunt"), 1/3],
-    [sprite_get("taunt2"), 1/4],
-    [sprite_get("fair"), 1/4],
-    [sprite_get("bair"), 1/4]
+	[sprite_get("idle"), 1/6],
+	[sprite_get("dash"), 1/4],
+	[sprite_get("taunt"), 1/3],
+	[sprite_get("taunt2"), 1/4],
+	[sprite_get("fair"), 1/4],
+	[sprite_get("bair"), 1/4]
 ];
 preview_animation = 0;
 preview_frame = 0;
@@ -35,7 +35,7 @@ selected_slot = -1;
 face_color = 1;
 petals_color = 19;
 stem_color = 6;
-thorns_color = 3
+thorns_color = 3;
 soul_color = 3;
 lefteye_color = 2;
 righteye_color = 2;

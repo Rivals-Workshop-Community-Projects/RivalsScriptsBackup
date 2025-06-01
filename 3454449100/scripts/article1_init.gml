@@ -86,10 +86,17 @@ speedValue = 0;
 maxSpeed = 0;
 outsideOfBlastzones = false;
 
+teamOfOriginalKoopa = player_id.player;
+teamOfPlayerWhoHitShell = player_id.player;
+
+wasShellParriedAtAll = false;
+
 vfx_shell_hit_med = hit_fx_create(sprite_get("vfx_shell_hit_med"), 7*4);
 
+/*
 with (player_id){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_shell_hit_med);
 }
+*/
 
 Pocketable = false; // yeah

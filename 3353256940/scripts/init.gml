@@ -272,3 +272,4 @@ switch (get_player_color(player)) {
 //voiceline on galaxy
 galaxy_timer = 0;
 eureka = false;
+extra_col = 0;

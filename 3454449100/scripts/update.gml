@@ -1,5 +1,11 @@
 // update.gml
 
+/*
+with(asset_get("oPlayer")){
+	print("player " + string(player) + " - team number: " + string(get_player_team( player )))
+}
+*/
+
 // print("spr_angle: " + string(spr_angle))
 
 // print(get_window_value( AT_DSTRONG, 10, AG_WINDOW_HSPEED ));

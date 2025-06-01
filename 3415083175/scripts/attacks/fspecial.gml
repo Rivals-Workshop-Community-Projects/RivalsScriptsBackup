@@ -8,12 +8,12 @@ set_attack_value(AT_FSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
 
 //startup
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("laser_start"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 15);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 20);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
@@ -39,13 +39,13 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 //endlag start
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 //endlag fall
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

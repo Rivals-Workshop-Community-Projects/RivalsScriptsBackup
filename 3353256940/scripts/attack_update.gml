@@ -532,6 +532,8 @@ switch(attack) {
     	// Slightly hacky fix for strong charge
     	if (window <= 2 && (right_stick_down || left_stick_down || up_stick_down || down_stick_down)) attack_down = true;
     	
+    	fall_through = 1
+    	
     	if (window == 2 && window_timer == 1) sound_play(asset_get("sfx_absa_current_pop"), false, noone, 0.5, 1);
     	else if (window == 3 && window_timer == window_end_time) sound_play(sound_get("wildcharge"), false, noone, 0.5, 1);
     	else if (window == 4) sound_stop(asset_get("sfx_absa_current_pop"));

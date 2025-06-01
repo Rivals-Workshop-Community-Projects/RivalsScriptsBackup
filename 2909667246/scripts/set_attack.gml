@@ -111,6 +111,9 @@ if(attack == AT_GRAB){
 	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
 }
 
+if(attack == AT_TAUNT){
+	reset_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS);reset_attack_value(AT_EXTRA_1, AG_SPRITE);specialkewtland = 10;
+}
 
 if(small_sprites != 1 || big && size_mult > 1 && size_mult <= 2 || mega && size_mult > 2 || mini && size_mult < 1){
 if (get_num_hitboxes(attack) && !move_cooldown[attack]){

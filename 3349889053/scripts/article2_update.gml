@@ -103,7 +103,7 @@ if owner.invinc_timer == 0 {
     
     var mult = owner.gravestone_damage_multiplier
     print("this should run")
-    owner.incubation -= (hbox.damage * mult) + floor(owner.incubation*owner.gravestone_tax_amount)
+    owner.incubation -= (hbox.damage * mult) + floor(owner.incubation*owner.gravestone_tax_amount*!is_minion)
     owner.incubation_growth_cooldown = owner.incubation_growth_cooldown_max
     
     if is_minion and owner.incubation <= 0 {

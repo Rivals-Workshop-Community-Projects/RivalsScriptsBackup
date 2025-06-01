@@ -300,6 +300,8 @@ if (place_meeting(x, y, torment) && instance_exists(torment) && get_window_value
 	}
 }
 else {
-	super_armor = false;
+	if(window_timer == 0){
+		super_armor = false;	
+	}
 }
 

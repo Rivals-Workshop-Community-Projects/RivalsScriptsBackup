@@ -80,7 +80,8 @@ switch(attack) {
 	}
 	break;
 	case AT_DATTACK:
-	if (window == 2 && attack_pressed){//&& has_hit 
+	//if (window == 2 && attack_pressed){//&& has_hit 
+	if (window == 2 && special_pressed){//&& has_hit 
 		destroy_hitboxes();
 		attack_end();
 		set_attack( AT_EXTRA_1 );

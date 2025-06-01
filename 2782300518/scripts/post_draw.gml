@@ -148,6 +148,21 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.21"
+        patch_note_text[i++] =  
+
+"Tweaked the AI to ensure it only acts for anything inside Fight setting.
+
+Fixed the Final Smash meter not showing up on the character, it now shows up on the HUD above Carol's normal meters.
+
+Carol now has a Final Smash, the Proto Bike. Her bike transforms into a design based on a scrapped FP2 underwater bike and she proceeds to throw it at the opponent where it hits several times before Carol Warp Jumps to deliver the final blow.
+
+Added skid sound effect to stopping on Dash.
+
+Made a number of optimisations, including changing the character to small sprites, streamlining attack scripts and altering the compression of sound files to dramatically reduce the character's file size.
+
+Added an additional voiceline on the win screen."
+
         patch_note_title[i] = "2.20"
         patch_note_text[i++] =  
 

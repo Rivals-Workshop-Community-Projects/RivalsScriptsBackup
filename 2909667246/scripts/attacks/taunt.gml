@@ -1,3 +1,4 @@
+set_attack_value(AT_TAUNT, AG_CATEGORY, 2);
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
 set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 4);
@@ -10,8 +11,6 @@ set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
-//set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
-//set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 
 set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 16);
@@ -22,6 +21,30 @@ set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAME_START, 14);
+
+//silky taunt
+set_window_value(AT_TAUNT, 12, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 12, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_TAUNT, 12, AG_WINDOW_ANIM_FRAMES, 1);
+
+set_window_value(AT_TAUNT, 13, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 13, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAME_START, 1);
+
+set_window_value(AT_TAUNT, 14, AG_WINDOW_TYPE, 9);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAME_START, 3);
+
+set_window_value(AT_TAUNT, 15, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 15, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_TAUNT, 15, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_TAUNT, 15, AG_WINDOW_ANIM_FRAMES, -1);
+
+set_window_value(AT_TAUNT, 16, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 16, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_TAUNT, 16, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_num_hitboxes(AT_TAUNT, 0);
 

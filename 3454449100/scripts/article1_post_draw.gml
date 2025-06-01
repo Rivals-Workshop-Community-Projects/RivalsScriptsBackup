@@ -2,38 +2,6 @@
 
 //Used for Koopa Troopa's Neutral Special
 
-// draws the stuff
-if (state == 1){
-
-	// draws hitbox
-
-
-	/*
-	var opacEffectForReticle = (8 / abs(hsp)) - .15;
-	opacEffectForReticle = clamp(opacEffectForReticle, 0, 1);
-	//print(opacEffectForReticle);
-	// little sparkle effect (slightly transparent)
-	draw_sprite_ext( sprite_get("fspecial_sparkle"), exist_timer, x, y, 1, 1, (exist_timer * 1.04) * spr_dir, c_white, 0.6);
-
-	// main reticle
-	draw_sprite_ext( sprite_get("fspecial_reticle_placeholder"), 0, x, y, 1, 1, (exist_timer * 4.5) * spr_dir, c_white, (2 / maxSpeed) );
-	
-	// outline reticle
-	//
-	draw_sprite_ext( sprite_get("fspecial_reticle_circle"), 0, x, y, opacEffectForReticle * 1.1, opacEffectForReticle * 1.1, (exist_timer * 2.1) * spr_dir, c_white, (4.6 / maxSpeed) );
-	draw_sprite_ext( sprite_get("fspecial_reticle_arrow"), 0, x, y, opacEffectForReticle * 1.24, opacEffectForReticle * 1.24, -(exist_timer * 7) * spr_dir, c_white, (4.6 / maxSpeed) );
-
-	if (get_match_setting(SET_HITBOX_VIS)){
-		if ((dmgIncrease / 8.65) + 0.5 < maxKBScal){//>
-			draw_debug_text(x - 26,y + 36,"kb_scaling: " + string((dmgIncrease / 8.65) + 0.5));
-		} else {
-			draw_debug_text(x - 26,y + 36,"kb_scaling: " + string(maxKBScal));
-		}
-		draw_debug_text(x - 26,y + 56,"damage: " + string(dmgIncrease + 11));
-	}
-	*/
-}
-
 
 if (state == 3){
 	var spinShellSprite = sprite_get("shell_drop");
@@ -62,8 +30,12 @@ draw_debug_text(x - 12,y + 150,"throw dir: " + string(initialThrownDirection));
 
 
 // draws hurtbox
-if (get_match_setting(SET_HITBOX_VIS) && canShellBounce){
+if (get_match_setting(SET_HITBOX_VIS)){
 	draw_sprite_ext( sprite_get("shell_hurtbox"), 0, x, y, 1, 1, 0, c_white, 0.5 );
+}
+// draws shell jump detection box
+if (get_match_setting(SET_HITBOX_VIS) && canShellBounce){
+	//draw_sprite_ext( sprite_get("shell_hurtbox"), 0, x, y, 1, 1, 0, c_white, 0.5 );
 	
 	
 	draw_set_alpha(0.5);

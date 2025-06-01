@@ -58,7 +58,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 999);
-set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 75);
+set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 120);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 1);

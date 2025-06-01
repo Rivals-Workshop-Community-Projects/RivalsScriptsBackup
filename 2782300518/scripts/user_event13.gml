@@ -17,7 +17,7 @@ switch (attack)
 		sound_play(sound_get("hit_light"));
 	break;
 	case 43:
-		if (my_hitboxid.hbox_num == 2)
+		if (my_hitboxID.hbox_num == 2)
 		{
 			sound_play(asset_get("sfx_heavy_blow_2"), false, noone, 0.8);
 		}
@@ -39,6 +39,30 @@ switch (attack)
 			var bikeExplode = spawn_hit_fx(x, y +20, explosion);
 		    bikeExplode.depth = -100;
 		}
+	break;
+	case 49:
+		if (my_hitboxID.hbox_num == 1)
+		{
+			if (final_smash_player = noone)
+			{
+				final_smash_player = hit_player_obj;
+			}
+			if (hit_player_obj == final_smash_player)
+			{
+				final_smash_bike.times_hit++;
+			}
+			with (my_hitboxID)
+			{
+				for (var p = 0; p < array_length(can_hit); p++)
+				{ 
+					can_hit[p] = false;
+				}
+			}
+		}
+		if (my_hitboxID.hbox_num == 2)
+		{
+			final_smash_player = noone;
+		}		
 	break;
 	default:
 	break;

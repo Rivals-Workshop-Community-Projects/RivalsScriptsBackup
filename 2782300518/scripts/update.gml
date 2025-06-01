@@ -346,8 +346,8 @@ if (motorbike == false)
 				tfront=false;
 				tx=-45*spr_dir;
 				ty=-76;
-				tsx=1;
-				tsy=1;
+				tsx=2;
+				tsy=2;
 				bsprite_index=-1;
 				wait_anti_voice1 = false;
 				wait_anti_voice2 = false;
@@ -367,14 +367,15 @@ if (motorbike == false)
 				tfront=false;
 				tx=-40*spr_dir;
 				ty=-78;
-				tsx=1;
-				tsy=1;
+				tsx=2;
+				tsy=2;
 				bsprite_index=-1;
 				wait_anti_voice1 = false;
 				wait_anti_voice2 = false;
 				wait_anti_voice3 = false;
 			break;
 			case PS_DASH_STOP:
+				if (state_timer = 0) sound_play(sound_get("skid"));
 			case PS_DASH_TURN:
 				tsprite_index=sprite_get("tail_walk");
 				trotation=0;
@@ -383,8 +384,8 @@ if (motorbike == false)
 				tfront=false;
 				tx=-50*spr_dir;
 				ty=-70;
-				tsx=1;
-				tsy=1;
+				tsx=2;
+				tsy=2;
 				bsprite_index=-1;
 				wait_anti_voice1 = false;
 				wait_anti_voice2 = false;
@@ -398,8 +399,8 @@ if (motorbike == false)
 				tfront=false;
 				tx=-46*spr_dir;
 				ty=-70;
-				tsx=1;
-				tsy=1;
+				tsx=2;
+				tsy=2;
 				bsprite_index=-1;
 				wait_anti_voice1 = false;
 				wait_anti_voice2 = false;
@@ -415,8 +416,8 @@ if (motorbike == false)
 				tfront=0;
 				tx=0;
 				ty=0;
-				tsx=1;
-				tsy=1;
+				tsx=2;
+				tsy=2;
 				bsprite_index=-1;
 				wait_anti_voice1 = false;
 				wait_anti_voice2 = false;
@@ -453,6 +454,10 @@ if (motorbike == false)
 				wait_anti_voice3 = false;
 			break;
     	}
+	}
+	else
+	{
+	    window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 	}
 }
 //While riding the motorbike, fuel is consumed
@@ -738,6 +743,11 @@ else if (motorbike == true)
 	{
 		comboCounter = 0;
 	}
+	if (is_attacking)
+	{
+	    window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+	}
+
 }
 
 if (bikeExplosion == true)
@@ -961,6 +971,15 @@ if (get_match_setting(SET_PRACTICE) == true)
 {
 	practice = true;
 	practice_hud_clearance++;
+}
+
+if (final_smash_player != noone)
+{
+	with (final_smash_player)
+	{
+		state = PS_HITSTUN;
+		hitstop = 1;
+	}
 }
 
 //Dracula compat

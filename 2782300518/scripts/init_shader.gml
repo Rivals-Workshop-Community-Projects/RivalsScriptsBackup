@@ -29,9 +29,18 @@ if (object_index == asset_get("draw_result_screen"))
     {
         if (voice >= 1)
         {
-            sound_stop(sound_get("victory_quote"));
-            sound_play(sound_get("victory_quote")); 
-            exit;
+            if (random_func_2(134, 2, 1) == 1)
+            {
+                sound_stop(sound_get("victory_quote"));
+                sound_play(sound_get("victory_quote")); 
+                exit;
+            }
+            else
+            {
+                sound_stop(sound_get("victory_quote_2"));
+                sound_play(sound_get("victory_quote_2")); 
+                exit;
+            }
         }
     }
 }

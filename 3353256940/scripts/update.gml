@@ -201,3 +201,19 @@ if (in_hstance) {
     move_cooldown[AT_EXTRA_3] = 0;
 }
 
+
+//alt
+if (state == PS_SPAWN && extra_col == 0 && get_player_color(player) == 11 && taunt_down){
+	extra_col = 1;
+	white_flash_timer = 18;
+	init_shader();
+	sound_stop(sound_get("intro_1"));
+	sound_stop(sound_get("intro_2"));
+	sound_stop(sound_get("intro_3"));
+	sound_stop(sound_get("intro_4"));
+	sound_stop(sound_get("intro_5"));
+	sound_stop(sound_get("intro_6"));
+	sound_stop(sound_get("intro_7"));
+	sound_stop(sound_get("intro_sewer"));
+	sound_play(sound_get("teto"))
+}

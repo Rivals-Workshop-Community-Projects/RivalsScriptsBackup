@@ -97,12 +97,16 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 
 small_sprites = 1;
 
-vfx_explosion = hit_fx_create(sprite_get("vfx_utilt_explosion"),28);
-vfx_explosion_smol = hit_fx_create(sprite_get("vfx_utilt_explosion_small"),15);
-vfx_ftilt_energy_hit = hit_fx_create(sprite_get("vfx_ftilt_hit"),26);
-vfx_nair_energy_hit = hit_fx_create(sprite_get("vfx_nair_hit"),26);
-vfx_panbg_energy_hit = hit_fx_create(sprite_get("fx_pan_hit_bg"),32);
-vfx_fstrongbg_energy_hit = hit_fx_create(sprite_get("fx_fstrong_hit_bg"),32);
+vfx_ftilt_energy_hit = hit_fx_create(sprite_get("vfx_ftilt_hit"), 26);
+vfx_explosion = hit_fx_create(sprite_get("vfx_utilt_explosion"), 28);
+vfx_explosion_smol = hit_fx_create(sprite_get("vfx_utilt_explosion_small"), 15);
+
+vfx_fstrongbg_energy_hit = hit_fx_create(sprite_get("fx_fstrong_hit_bg"), 32);
+vfx_panbg_energy_hit = hit_fx_create(sprite_get("fx_pan_hit_bg"), 32);
+
+vfx_nair_energy_hit = hit_fx_create(sprite_get("vfx_nair_hit"), 26);
+vfx_star = hit_fx_create(sprite_get("vfx_star"), 24);
+
 small_wood_hfx = hit_fx_create(sprite_get("hfx_wood_small"), 18);
 large_wood_hfx = hit_fx_create(sprite_get("hfx_wood_large"), 21);
 xlarge_wood_hfx = hit_fx_create(sprite_get("hfx_wood_xlarge"), 28);
@@ -117,24 +121,14 @@ set_victory_theme(sound_get("VictoryFloweyNoises"));
 set_victory_bg(sprite_get("victorybg"));
 //#endregion
 
-//uspecial
-flowey_save = instance_create(x, y, "obj_article1");
-sound_stop(sound_get("snd_save"));
-vfx_star = hit_fx_create(sprite_get("vfx_star"), 24);
-instance_destroy(flowey_save);
+//has an intro
+has_intro = true;
 
-fs_char_chosen_final_smash = "custom";
-fs_portrait_x = 36;
-fs_char_portrait_y = 120;
-if get_player_color(player) = 0{
-    fs_char_portrait_override = sprite_get("_fs_portrait");
-}
+dtilt_dist = 46;
+dtilt_offset = 40;
+dtilt_pos = x + dtilt_dist;
 
-// AGE's rainbow code
-hue_offset = 0;
-hue_speed = 1.5; //change this to change the speed of the hueshift
-particles = [];
-prev_spr_dir = spr_dir;
+flowey_ustrong_quick_grab = noone;
 
 //fspecial
 flowey_vine = noone;
@@ -144,7 +138,18 @@ has_grab = 0;
 grabp = noone;
 enemy_pos = [];
 
-flowey_ustrong_quick_grab = noone;
+//uspecial
+flowey_save = noone;
+flowey_saves_max = has_rune("E")? 2:1;
+flowey_saves_used = flowey_saves_max;
+flowey_savecooldown = 0;
+flowey_savejump = 0;
+flowey_pratprevent = 0;
+
+fs_char_chosen_final_smash = "custom";
+fs_portrait_x = 36;
+fs_char_portrait_y = 120;
+if get_player_color(player) == 0 fs_char_portrait_override = sprite_get("_fs_portrait");
 
 flowey_morefloweys = 0;
 
@@ -152,35 +157,25 @@ flowey_specialeffects = 1;
 
 flowey_last_grunt = 180;
 
-// genesis related shenanigens
+// AGE's rainbow code
+hue_offset = 0;
+hue_speed = 1.5; //change this to change the speed of the hueshift
+particles = [];
+prev_spr_dir = spr_dir;
+
+//genesis related shenanigens
 genesis = get_player_color(player) == 22;
 genesis_shockwave_vfx = false;
 genesis_glitch_sound = sound_play(asset_get("sfx_plasma_field_loop"), true, false, 0, .5);
 sound_volume(genesis_glitch_sound, 0, 1);
 genesis_sound_enabled = false;
 
-//has an intro
-has_intro = true;
-
-// Runes
-if has_rune("G"){
-    rune_pellet1 = create_hitbox(AT_NSPECIAL, 1, x + 36 * spr_dir, y);
-    rune_pellet2 = create_hitbox(AT_NSPECIAL, 1, x + 36 * spr_dir, y);
-    instance_destroy(rune_pellet1);
-    instance_destroy(rune_pellet2);
-}
-flowey_saves_max = has_rune("A")? 2:1;
-flowey_saves_used = flowey_saves_max;
-flowey_savecooldown = 0;
-flowey_savejump = 0;
-flowey_pratprevent = 0;
-
 //#region compatability
 
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("Flowey_back_sprite");
-
 pkmn_stadium_front_img = sprite_get("flowey_front_sprite");
+
 //mt ddd
 arena_title = "Your Best Friend";
 
@@ -188,148 +183,82 @@ arena_title = "Your Best Friend";
 battle_text = "* It's your best friend, Flowey the Flower!";
 
 //Boxing arena
-
 boxing_title = "Devilish 
 Flower";
 
 //Snake interigations
-
 sna_interrogated_line_01 = "Gah, my stem!";
 sna_interrogated_line_02 = "I'm gonna tear your SOUL apart for this!";
 sna_interrogated_line_03 = "Do you know the meaning of this world?";
 
 //Henry Stickmin fail
-
 has_fail = true;
 fail_text = "[insert determination quote]";
 
 //unregistered HyperCam quotes
-
 uhc_victory_quote = "Undrtel 2 leek :0!!!";
 
 //Wall-E Taunt
-
-walle_taunt_sound = sound_get("Your_best_friend")
-walle_taunt_type = 1
+walle_taunt_sound = sound_get("Your_best_friend");
+walle_taunt_type = 1;
 
 //Chaos emeralds buddy
-super_form_transform_sound = sound_get("Flowey_chaos_sound")
-super_form_music = sound_get("Chaos_Flowey");
-
-//Your Best Nightmare / Finale - Metal Cover || RichaadEB
+super_form_transform_sound = sound_get("Flowey_chaos_sound");
+super_form_music = sound_get("Chaos_Flowey"); //Your Best Nightmare / Finale - Metal Cover || RichaadEB
 
 //steve-compatiblity
-
-steve_death_message = "Steve lost his SOUL privileges."
+steve_death_message = "Steve lost his SOUL privileges.";
 
 // Green flower hill zone
-
-gfzsignspr = sprite_get("FloweyBoard")
-
-gfzsignsfx = sound_get("Flowey_ding")
+gfzsignspr = sprite_get("FloweyBoard");
+gfzsignsfx = sound_get("Flowey_ding");
 
 //wily castle
- wily_robotmaster_img = sprite_get("Flowey_Megaman");
+wily_robotmaster_img = sprite_get("Flowey_Megaman");
 
 //Kirby Fighters
-
-kf_custom_icon = sprite_get("Flowey2_kirby_Fighters")
+kf_custom_icon = sprite_get("Flowey2_kirby_Fighters");
 
 //Hikaru title
-
 Hikaru_Title = "Soulless"; 
 
 //Yooka Laylee
-laylee_win_quote = "HEY, DON'T FEEL BAD. AT LEAST YOUR SOUL IS AT... OH, RIGHT."
+laylee_win_quote = "HEY, DON'T FEEL BAD. AT LEAST YOUR SOUL IS AT... OH, RIGHT.";
 
 //Dracula support
 if get_player_color(player) == 0{
-    dracula_portrait = sprite_get("Flowey1Base");
-    dracula_portrait2 = sprite_get("Flowey2Base");
-    dracula_portrait3 = sprite_get("Flowey3Base");
-    dracula_portrait4 = sprite_get("Flowey4Base");
-    dracula_portrait5 = sprite_get("Flowey5Base");
-    dracula_portrait6 = sprite_get("Flowey6Base");
-    dracula_portrait7 = sprite_get("Flowey7Base");
+	dracula_portrait = sprite_get("Flowey1Base");
+	dracula_portrait2 = sprite_get("Flowey2Base");
+	dracula_portrait3 = sprite_get("Flowey3Base");
+	dracula_portrait4 = sprite_get("Flowey4Base");
+	dracula_portrait5 = sprite_get("Flowey5Base");
+	dracula_portrait6 = sprite_get("Flowey6Base");
+	dracula_portrait7 = sprite_get("Flowey7Base");
 }
 else{
-    dracula_portrait = sprite_get("Flowey1");
-    dracula_portrait2 = sprite_get("Flowey2");
-    dracula_portrait3 = sprite_get("Flowey3");
-    dracula_portrait4 = sprite_get("Flowey4");
-    dracula_portrait5 = sprite_get("Flowey5");
-    dracula_portrait6 = sprite_get("Flowey6");
-    dracula_portrait7 = sprite_get("Flowey7");
+	dracula_portrait = sprite_get("Flowey1");
+	dracula_portrait2 = sprite_get("Flowey2");
+	dracula_portrait3 = sprite_get("Flowey3");
+	dracula_portrait4 = sprite_get("Flowey4");
+	dracula_portrait5 = sprite_get("Flowey5");
+	dracula_portrait6 = sprite_get("Flowey6");
+	dracula_portrait7 = sprite_get("Flowey7");
 }
-var page = 0;
 
-//Page 0
-dracula_speaker[0] = 1;
-dracula_text[0] = "Howdy! I’m Flowey. Flowey the Flower!";
-page++;
-
-//Page 1
-dracula_speaker[1] = 0;
-dracula_text[1] = "...";
-page++;
-
-//page 2
-
-dracula_speaker[2] = 1;
-dracula_text[2] = "Golly, I seem to have gotten lost. Could you tell me wher-";
-page++;
-
-//Page 3
-dracula_speaker[3] = 0;
-dracula_text[3] = "Do you take me for a fool?";
-page++;
-
-//Page 4
-dracula_speaker[4] = 5;
-dracula_text[4] = "!";
-page++;
-
-//Page 5
-dracula_speaker[5] = 0;
-dracula_text[5] = "I recognize evil when I see it, plant, so spare me your deceit and state your purpose here.";
-page++;
-
-//Page 6
-dracula_speaker[6] = 2;
-dracula_text[6] = "Well, aren’t you clever?";
-page++;
-
-//Page 7
-dracula_speaker[7] = 7;
-dracula_text[7] = "My purpose is to take your power, old fool!";
-page++;
-
-//Page 8
-dracula_speaker[8] = 7;
-dracula_text[8] = "With it, I could control everything and everyone!";
-page++;
-
-//Page 9
-dracula_speaker[9] = 0;
-dracula_text[9] = "And how, pray tell, would you take that power?";
-page++;
-
-//Page 10
-dracula_speaker[10] = 3;
-dracula_text[10] = "Why golly, how about I just show you?";
-page++;
-
-//Page 11
-dracula_speaker[11] = 4;
-dracula_text[11] = "Tell me; do you know the true nature of this world?";
-page++;
-
-//Page 12
-dracula_speaker[12] = 0;
-dracula_text[12] = "Indeed I do.[glass] In this world, it's kill-";
-page++;
-
-//Page 13
-dracula_speaker[13] = 6;
-dracula_text[13] = "-Or be killed! [taunt]";
-page++;
+dracula_speaker = [1, 0, 1, 0, 5, 0, 2, 7, 7, 0, 3, 4, 0, 6];
+dracula_text = [
+	"Howdy! I’m Flowey. Flowey the Flower!",
+	"...",
+	"Golly, I seem to have gotten lost. Could you tell me wher-",
+	"Do you take me for a fool?",
+	"!",
+	"I recognize evil when I see it, plant, so spare me your deceit and state your purpose here.",
+	"Well, aren’t you clever?",
+	"My purpose is to take your power, old fool!",
+	"With it, I could control everything and everyone!",
+	"And how, pray tell, would you take that power?",
+	"Why golly, how about I just show you?",
+	"Tell me; do you know the true nature of this world?",
+	"Indeed I do.[glass] In this world, it's kill-",
+	"-Or be killed! [taunt]"
+];

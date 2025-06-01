@@ -43,7 +43,7 @@ if (shouldBeDestroyed || outsideOfBlastzones){
 
 
 // flag for if shell belongs to koopa or not
-if (whoHitShell == player_id.player){
+if (whoHitShell == player_id.player || teamOfOriginalKoopa == teamOfPlayerWhoHitShell){
 	shellOwnedByOrigKoopa = true;
 } else {
 	shellOwnedByOrigKoopa = false;
@@ -79,6 +79,9 @@ if (shellWasParried){
 }
 
 // print(hud_color);
+// print(shellOwnedByOrigKoopa);
+// print(timesParried);
+
 
 // regrab, also hitting the shell (both ways)
 if (state == 0 || state == 1 || state == 3){
@@ -102,14 +105,16 @@ if (state == 0 || state == 1 || state == 3){
 				if (player_id == other.player_id){
 					if (type == 1){// yeah
 						// 
-						if (attack == AT_NSPECIAL && other.shellOwnedByOrigKoopa){
+						// print(other.shellOwnedByOrigKoopa);
+						other.teamOfPlayerWhoHitShell = get_player_team( player_id.player );
+						if (attack == AT_NSPECIAL && other.shellOwnedByOrigKoopa && other.wasShellParriedAtAll == false){
 							// regrab hitbox
 							with (other){
 								with (player_id){
 									grabbedShellFromNSpec = true;
 								}
 							}
-						} else if (attack == AT_NSPECIAL && other.shellOwnedByOrigKoopa == false){
+						} else if (attack == AT_NSPECIAL && other.shellOwnedByOrigKoopa == false && other.wasShellParriedAtAll == false){
 							// regrab hitbox but as a failsafe
 							with (other){
 								if (state == 0 || state == 2 || state == 3){
@@ -207,17 +212,96 @@ if (state == 0 || state == 1 || state == 3){
 								djumps = 0;
 							}
 						} else {	// all other kinds of attacks
-						
-							if (other.state != 3 && (other.shellOwnedByOrigKoopa == true)){
-						
-								// print(other.shellWasParried)
-						
-								// im so cooked!
-								other.spr_dir = player_id.spr_dir;
-								
-								// print("When the hell am i calling this?");
-								
-								//other.spr_dir *= 1;
+							// print(other.timesParried);
+							if (other.state != 3){
+								if (other.wasShellParriedAtAll == false){
+									// print(other.shellWasParried)
+							
+									// im so cooked!
+									other.spr_dir = player_id.spr_dir;
+									
+									// print("When the hell am i calling this?");
+									
+									//other.spr_dir *= 1;
+									
+									if (player_id.x > other.x){
+										other.spr_dir = -1;
+									} else if (player_id.x < other.x){//>
+										other.spr_dir = 1;
+									} else {
+										other.spr_dir = spr_dir;
+									}
+									
+									//if (other.hitByOrigOwner == false){
+										// my code is so unreadable LOL
+										//other.hsp = 0.5 * spr_dir;
+										//other.vsp = -10;						
+										//other.state = 3;
+										//other.state_timer = 0;
+										//other.shellHitLockout = 30;
+										//other.y -= 4;		
+									//} else {
+										// my code is so unreadable LOL
+										other.hsp = 0;
+										other.vsp = 0;		
+										other.storedHSP = other.baseReboundSpeed * other.spr_dir;
+										other.storedVSP = -1.5;								
+										other.state = 2;
+										other.state_timer = 0;
+										other.shellHitLockout = 30;
+										other.y -= 4;	
+									//}
+									
+									if (other.player_id.player != player){
+										// print("not og player");
+										other.hitByOrigOwner = false;
+									} else {
+										// print("oh")
+										other.hitByOrigOwner = true;
+									}
+									
+									other.whoHitShell = player;
+									
+									other.additionalHitHitpause = floor(hitpause + 2);
+									
+									other.initialThrownDirection = "normal";
+									
+									other.timesParried = 0;
+									
+									if (attack == AT_BAIR){
+										other.spr_dir *= -1;
+									}
+									
+									sound_play(sound_effect);
+									spawn_hit_fx(floor(other.x + hit_effect_x),floor(other.y + hit_effect_y),hit_effect);
+									
+									with(player_id){
+										has_hit = true;
+										old_hsp = hsp;
+										old_vsp = vsp;
+										hitpause = true;
+										hitstop = other.hitpause + 2;
+										
+										hud_color = get_player_hud_color(player);
+										
+										shellGrabCancelStoredHSP = old_hsp;
+										shellGrabCancelStoredVSP = old_vsp;
+										
+										if (currKoopaShell.ownedByOriginalKoopaAndReboundedOffOfEnemy){
+											specialShellRegrabTimer = 3;
+										}
+									}
+								}
+							}
+							
+						}
+					}
+				} else {	
+					// REMINDER TO MYSELF THAT IM CHECKING STATES HERE
+					if (other.state == 0 || other.state == 1){
+						if (type == 1){
+							if (other.wasShellParriedAtAll == false){
+								other.teamOfPlayerWhoHitShell = get_player_team( player_id.player );
 								
 								if (player_id.x > other.x){
 									other.spr_dir = -1;
@@ -227,124 +311,48 @@ if (state == 0 || state == 1 || state == 3){
 									other.spr_dir = spr_dir;
 								}
 								
-								//if (other.hitByOrigOwner == false){
-									// my code is so unreadable LOL
-									//other.hsp = 0.5 * spr_dir;
-									//other.vsp = -10;						
-									//other.state = 3;
-									//other.state_timer = 0;
-									//other.shellHitLockout = 30;
-									//other.y -= 4;		
-								//} else {
-									// my code is so unreadable LOL
-									other.hsp = 0;
-									other.vsp = 0;		
-									other.storedHSP = other.baseReboundSpeed * other.spr_dir;
-									other.storedVSP = -1.5;								
-									other.state = 2;
-									other.state_timer = 0;
-									other.shellHitLockout = 30;
-									other.y -= 4;	
-								//}
+								other.spr_dir *= 1;
+								other.hsp = 0;
+								other.vsp = 0;
+								other.storedHSP = other.baseReboundSpeed * other.spr_dir;
+								other.storedVSP = -1.5;
+								other.state = 2;
+								other.state_timer = 0;
+								other.shellHitLockout = 10;
 								
-								if (other.player_id.player != player){
-									// print("not og player");
-									other.hitByOrigOwner = false;
-								} else {
-									// print("oh")
-									other.hitByOrigOwner = true;
-								}
-								
+								other.hitByOrigOwner = false;
 								other.whoHitShell = player;
 								
-								other.additionalHitHitpause = floor(hitpause + 2);
+								other.additionalHitHitpause = floor(hitpause);
 								
 								other.initialThrownDirection = "normal";
-								
-								other.timesParried = 0;
 								
 								if (attack == AT_BAIR){
 									other.spr_dir *= -1;
 								}
 								
+								// print(other.spr_dir)
+								
+								hud_color = get_player_hud_color(player_id.player);
+								
 								sound_play(sound_effect);
 								spawn_hit_fx(floor(other.x + hit_effect_x),floor(other.y + hit_effect_y),hit_effect);
+								
+								// this is to force the hit effect of the shell so we don't inadvertedly cause a custom char to have their hit fx be used... for some reason. i blame dan code.
+								with(other){
+									with(player_id){
+										// y -= 10;
+										set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
+									}
+								}
 								
 								with(player_id){
 									has_hit = true;
 									old_hsp = hsp;
 									old_vsp = vsp;
 									hitpause = true;
-									hitstop = other.hitpause + 2;
-									
-									hud_color = get_player_hud_color(player);
-									
-									shellGrabCancelStoredHSP = old_hsp;
-									shellGrabCancelStoredVSP = old_vsp;
-									
-									if (currKoopaShell.ownedByOriginalKoopaAndReboundedOffOfEnemy){
-										specialShellRegrabTimer = 3;
-									}
+									hitstop = other.hitpause;
 								}
-								
-							}
-							
-						}
-					}
-				} else {	
-					// REMINDER TO MYSELF THAT IM CHECKING STATES HERE
-					if (other.state == 0 || other.state == 1){
-						if (type == 1){
-							
-							if (player_id.x > other.x){
-								other.spr_dir = -1;
-							} else if (player_id.x < other.x){//>
-								other.spr_dir = 1;
-							} else {
-								other.spr_dir = spr_dir;
-							}
-							
-							other.spr_dir *= 1;
-							other.hsp = 0;
-							other.vsp = 0;
-							other.storedHSP = other.baseReboundSpeed * other.spr_dir;
-							other.storedVSP = -1.5;
-							other.state = 2;
-							other.state_timer = 0;
-							other.shellHitLockout = 30;
-							
-							other.hitByOrigOwner = false;
-							other.whoHitShell = player;
-							
-							other.additionalHitHitpause = floor(hitpause);
-							
-							other.initialThrownDirection = "normal";
-							
-							if (attack == AT_BAIR){
-								other.spr_dir *= -1;
-							}
-							
-							// print(other.spr_dir)
-							
-							hud_color = get_player_hud_color(player_id.player);
-							
-							sound_play(sound_effect);
-							spawn_hit_fx(floor(other.x + hit_effect_x),floor(other.y + hit_effect_y),hit_effect);
-							
-							// this is to force the hit effect of the shell so we don't inadvertedly cause a custom char to have their hit fx be used... for some reason. i blame dan code.
-							with(other){
-								with(player_id){
-									// y -= 10;
-									set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
-								}
-							}
-							
-							with(player_id){
-								has_hit = true;
-								old_hsp = hsp;
-								old_vsp = vsp;
-								hitpause = true;
-								hitstop = other.hitpause;
 							}
 						}
 					}
@@ -359,10 +367,13 @@ if (shellHitLockout != 0){
 	shellHitLockout--;
 }
 
+// print(teamOfPlayerWhoHitShell);
+
 // ==========================================================
 
 // idle
 if (state == 0){
+	wasShellParriedAtAll = false;
 	sprite_index = sprite_get("shell_idle");
 	
 	hsp = 0;
@@ -529,6 +540,7 @@ if (state == 1){
 		
 		// print(string(currShellHitbox.player) + " - " + string(player_id.player));
 		
+		/*
 		if (currShellHitbox.player != player_id.player){
 			//print("shell was hit by a non-koopa");
 			with (player_id){
@@ -540,6 +552,7 @@ if (state == 1){
 				//set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 			}
 		}
+		*/
 		
 		if (currShellHitbox.has_hit == true){
 			// print("shell hitbox has hit someone, go to rebound window");
@@ -621,6 +634,7 @@ if (state == 2){
 
 // spin
 if (state == 3){
+	wasShellParriedAtAll = false;
 	if (state_timer == 0){
 		sprite_index = sprite_get("shell_idle");
 	} else {

@@ -23,29 +23,35 @@ if (state == PS_DOUBLE_JUMP){
     }
 }
 
-if(attack == AT_DSPECIAL){
-	if (window == 4){
-    	var anim_start = get_window_value(AT_DSPECIAL,window,AG_WINDOW_ANIM_FRAME_START);
-        if(abs(hsp) < 0.2 || free){
-            //anim_offset = 0;
-        }else{
-            if(window_timer % 3 == 0){
-                if(hsp*spr_dir > 0){
-                    dspec_walk += 1;
-                }else{
-                    dspec_walk -= 1;
-                }
-                if(dspec_walk > 4){
-                    dspec_walk = 1;
-                }else if(dspec_walk < 1){
-                    dspec_walk = 4;
-                }
-            }
-            image_index = round(anim_start+(dspec_walk));
-        }
-    }
-    if (window == 6 && strong_charge > 10){
-        image_index = 21+round((strong_charge-10)/2.5);
+if(phone_attacking){
+	if(attack == AT_DSPECIAL){
+		if (window == 4){
+	    	var anim_start = get_window_value(AT_DSPECIAL,window,AG_WINDOW_ANIM_FRAME_START);
+	        if(abs(hsp) < 0.2 || free){
+	            //anim_offset = 0;
+	        }else{
+	            if(window_timer % 3 == 0){
+	                if(hsp*spr_dir > 0){
+	                    dspec_walk += 1;
+	                }else{
+	                    dspec_walk -= 1;
+	                }
+	                if(dspec_walk > 4){
+	                    dspec_walk = 1;
+	                }else if(dspec_walk < 1){
+	                    dspec_walk = 4;
+	                }
+	            }
+	            image_index = round(anim_start+(dspec_walk));
+	        }
+	    }
+	    if (window == 6 && strong_charge > 10){
+	        image_index = 21+round((strong_charge-10)/2.5);
+	    }
+	}
+	if(attack == AT_TAUNT && window == 14){
+    	if(vsp < -5 && jump_pressed)image_index = 1;
+    	else if(!free && specialkewtland < 5)image_index = 2;
     }
 }
 

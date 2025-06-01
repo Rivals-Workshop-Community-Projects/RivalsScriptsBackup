@@ -651,6 +651,17 @@ if (attack == AT_NSPECIAL){
 		soft_armor = 0;
 	}
 }else if (attack == AT_TAUNT){
+	//silky taunt stuff
+	if(window <= 9 && special_down){
+		window = 12;window_timer = 0;sound_play(sound_get("squeaky"));hurtboxID.sprite_index = sprite_get("hurtbox");
+		set_attack_value(attack, AG_NUM_WINDOWS, 16);set_attack_value(attack, AG_SPRITE, sprite_get("taunt_specialkewtian"));
+	}if(window == 14){can_wall_jump = true;
+		if(taunt_pressed || attack_pressed || special_pressed || shield_pressed){window += 1;window_timer = 0;} //cancel
+		hsp = (right_down-left_down != 0)?2*(right_down-left_down):hsp;if(sign(hsp) != 0)spr_dir = sign(hsp); //move
+		if(jump_pressed && !free && !hitpause){vsp = -9;free = true;sound_play(jump_sound);array_push(phone_dust_query, [x, y, "jump", spr_dir]);} //jump
+		if(!free){if(specialkewtland <= 0){specialkewtland = 1;sound_play(land_sound);sound_play(sound_get("squeaky"),false,noone,0.3,1.2);array_push(phone_dust_query, [x, y, "land", spr_dir]);}specialkewtland += 1;}else specialkewtland = 0;
+	}if(window >= 13 && window <= 15)hud_offset = 35;
+	
 	if((window == 1 || window == 3) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         sound_play(sound_get("crouch2"),false,noone,0.6);
     }if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-10 && !hitpause){

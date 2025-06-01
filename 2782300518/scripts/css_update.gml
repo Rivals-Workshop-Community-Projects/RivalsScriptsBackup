@@ -7,9 +7,6 @@ else if (get_match_setting(SET_TEAMS) = false)
 	cpu_player = false;
 }
 
-print_debug(cpu_player);
-
-
 cpu_hover_update();
 
 if !(instance_exists(cursor_id)) exit;

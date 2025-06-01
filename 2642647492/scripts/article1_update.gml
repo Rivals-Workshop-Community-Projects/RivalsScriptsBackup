@@ -64,7 +64,7 @@ switch(mode) {
 	break;
 	
 }
-print(string(mode));
+//print(string(mode));
 vsp = floor(desty-y);
 /*
 if(vsp != 0 ){

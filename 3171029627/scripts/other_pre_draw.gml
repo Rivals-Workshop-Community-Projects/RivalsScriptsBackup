@@ -6,7 +6,7 @@ with (other_player_id) {
 }
 
 //char_height
-if (instance_exists(other_player_id.torment) && other_player_id.torment.state_draw >= 0){
+if (instance_exists(other_player_id.torment) && other_player_id.torment.state_draw >= 0 && other_player_id.torment_opponent == id){
 	with (other_player_id) {
 		shader_start();
 	}

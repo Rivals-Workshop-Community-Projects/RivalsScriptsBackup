@@ -263,6 +263,14 @@ chargeUpVoiceLine = true;
 galaxy_effect = noone;
 galaxy_effect_sprite_index = -1;
 
+//Final Smash
+fs_char_portrait_y = 126;
+fs_portrait_x = 102;
+fs_charge = 0;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = 49;
+fs_meter_y = -20
+
 //Debug Variable
 debugCheck = false;
 
@@ -401,6 +409,7 @@ explosion=hit_fx_create(sprite_get("explosion"), 32);
 bike_break=hit_fx_create(sprite_get("bike_break"), 18);
 feather_death=hit_fx_create(sprite_get("death"), 35);
 
+window_end = 0;
 
 multikick_energy = 200;
 kickTime=0;
@@ -415,6 +424,9 @@ small_djumps = true;
 prev_hsp = 0;
 pounce_number = 0;
 max_pounce = 1;
+
+final_smash_bike = noone;
+final_smash_player = noone;
 
 voice = get_synced_var(player);
 alt_cur = get_player_color(player);

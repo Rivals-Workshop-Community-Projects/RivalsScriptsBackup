@@ -172,6 +172,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_shell_hit_med);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);	// empty
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 12);

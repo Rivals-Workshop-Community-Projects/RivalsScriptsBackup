@@ -61,8 +61,8 @@ incubation_growth_cooldown_max = 14;
 invinc_max = 90;
 invinc_timer = invinc_max;
 
-gravestone_damage_multiplier = 2;
-gravestone_tax_amount = 0.2;
+gravestone_damage_multiplier = 2.0;
+gravestone_tax_amount = 0.1;
 
 knockback_multiplier = 0.5;
 attack_invinc_threshold = 10;

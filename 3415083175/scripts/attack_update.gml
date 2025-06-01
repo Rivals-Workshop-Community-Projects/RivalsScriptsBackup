@@ -121,7 +121,7 @@ switch attack {
     break;
     
     case AT_FSPECIAL:
-    move_cooldown[AT_FSPECIAL] = 30
+    move_cooldown[AT_FSPECIAL] = 60
     if window == 3 && window_timer >= 12 can_move = true
     else can_move = false
     if window == 1 {
@@ -336,11 +336,11 @@ switch attack {
         fire_stance = true
         fire_amount = 100
         if !free {
-            vsp -= 5
+            vsp -= 7
             spawn_base_dust(x, y, "jump", spr_dir)
         } else {
             vsp = clamp(vsp, -5, 2)
-            vsp -= 1
+            vsp -= 3
         }
     }
     
@@ -493,6 +493,10 @@ switch attack {
 	if (window == 3 || window == 6) && !hitpause {
 		can_attack = true
 		move_cooldown[AT_NTHROW] = 6
+		if attack_pressed && window_timer >= get_window_value(AT_NTHROW, window, AG_WINDOW_CANCEL_FRAME) {
+			window++
+			window_timer = 0
+		}
 	}
 	
     if window == 7 {

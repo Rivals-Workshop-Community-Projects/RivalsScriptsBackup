@@ -1,17 +1,21 @@
-set_attack_value(45, AG_SPRITE, sprite_get("bench_sit"));
-set_attack_value(45, AG_NUM_WINDOWS, 3);
-set_attack_value(45, AG_HURTBOX_SPRITE, sprite_get("carol_hurtbox_standing"));
-set_attack_value(45, AG_MUNO_ATTACK_NAME, ":O");
+#macro atk 45
+#macro av set_attack_value
+#macro win set_window_value
+
+av(atk, AG_SPRITE, sprite_get("bench_sit"));
+av(atk, AG_NUM_WINDOWS, 3);
+av(atk, AG_HURTBOX_SPRITE, sprite_get("carol_hurtbox_standing"));
+av(atk, AG_MUNO_ATTACK_NAME, "Benches");
 
 
-set_window_value(45, 1, AG_WINDOW_LENGTH, 20);
-set_window_value(45, 1, AG_WINDOW_ANIM_FRAMES, 4);
+win(atk, 1, AG_WINDOW_LENGTH, 20);
+win(atk, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
-set_window_value(45, 2, AG_WINDOW_TYPE, 9);
-set_window_value(45, 2, AG_WINDOW_LENGTH, 60);
-set_window_value(45, 2, AG_WINDOW_ANIM_FRAMES, 12);
-set_window_value(45, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+win(atk, 2, AG_WINDOW_TYPE, 9);
+win(atk, 2, AG_WINDOW_LENGTH, 60);
+win(atk, 2, AG_WINDOW_ANIM_FRAMES, 12);
+win(atk, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_window_value(45, 3, AG_WINDOW_LENGTH, 20);
-set_window_value(45, 3, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(45, 3, AG_WINDOW_ANIM_FRAME_START, 12);
+win(atk, 3, AG_WINDOW_LENGTH, 20);
+win(atk, 3, AG_WINDOW_ANIM_FRAMES, 4);
+win(atk, 3, AG_WINDOW_ANIM_FRAME_START, 12);

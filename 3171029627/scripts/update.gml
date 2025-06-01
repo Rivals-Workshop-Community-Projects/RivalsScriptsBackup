@@ -8,7 +8,7 @@ set_attack_value(AT_FSPECIAL_AIR, AG_SPRITE, sprite_get("fspecial_air"));
 
 print(opponent_damage)
 
-if (instance_exists(torment_opponent)){
+if (instance_exists(torment_opponent) && hit_player_obj == torment_opponent){
     //if (torment.state_timer%60 == 0) take_damage(torment_opponent.player, -1, torment.state+1);
     if (hit_player_obj.state == PS_RESPAWN || hit_player_obj.state == PS_DEAD){
         instance_destroy(torment);

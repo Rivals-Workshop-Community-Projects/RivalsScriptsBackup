@@ -155,7 +155,7 @@ switch(attack)
 			{
 				destroyed = true;
 			}
-			//Makes Jump Disc multi hit
+			//Makes Bike multi hit
 			for (var p = 0; p < array_length(can_hit); p++)
 			{ 
 				if (hitbox_timer % 10 == 0 && hitbox_timer !=0)
@@ -164,6 +164,90 @@ switch(attack)
 				}
 			}
 			stop_effect = false;
+		}
+	break;
+	case 49:
+		if (hbox_num == 1)
+		{
+			if (has_hit_player && times_hit = 1 && hitbox_timer <27)
+			{
+				length = 202;
+				for (var p = 0; p < array_length(can_hit); p++)
+				{ 
+					can_hit[p] = false;
+				}				
+			}
+			if (hitbox_timer == 1 && !was_parried)
+			{
+				hsp=lengthdir_x(50, player_id.dst);
+				vsp=lengthdir_y(50, player_id.dst);
+			}
+			if (hitbox_timer == 12)
+			{
+				player_id.Fspecial_positionX = x;
+				player_id.Fspecial_positionY = y;
+				hsp = lengthdir_x(2, player_id.dst);
+				vsp = lengthdir_y(2, player_id.dst);
+				for (var p = 0; p < array_length(can_hit); p++)
+				{ 
+					can_hit[p] = false;
+				}
+			}
+			if (times_hit > 0)
+			{
+				if (x <= get_stage_data(SD_LEFT_BLASTZONE_X) + 15 || x >= get_stage_data(SD_RIGHT_BLASTZONE_X) - 15
+				|| y <= get_stage_data(SD_TOP_BLASTZONE_Y) + 15 || y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) - 15)
+				{
+					player_id.Fspecial_positionX = x;
+					player_id.Fspecial_positionY = y;
+					hsp = 0;
+					vsp = 0;
+				}
+				if (hitbox_timer == 39 || hitbox_timer == 64 || hitbox_timer == 93 || hitbox_timer == 120 || hitbox_timer == 147)
+				{
+					player_id.Fspecial_positionX = x;
+					player_id.Fspecial_positionY = y;
+					hsp = lengthdir_x(2, flight_direction);
+					vsp = lengthdir_y(2, flight_direction);
+				}
+				if (hitbox_timer == 27 || hitbox_timer == 52 || hitbox_timer == 81 || hitbox_timer == 108 || hitbox_timer == 135)
+				{
+					if (times_hit < 6)
+					{
+						for (var p = 0; p < array_length(can_hit); p++)
+						{ 
+							if (p == player_id.final_smash_player.player) can_hit[p] = true;
+							else can_hit[p] = false;
+						}
+						stop_effect = false;
+					}
+					flight_direction = point_direction(x, y, player_id.final_smash_player.x, player_id.final_smash_player.y - player_id.final_smash_player.char_height);
+
+					hsp = lengthdir_x(80, flight_direction);
+					vsp = lengthdir_y(80, flight_direction);
+				}
+			}
+			if ((hitbox_timer == 27 && times_hit = 0) || hitbox_timer >= 190)
+			{
+				print_debug(times_hit);
+				var return_direction = point_direction(x, y, player_id.x, player_id.y - player_id.char_height);
+				var return_distance = point_distance(x, y, player_id.x, player_id.y - player_id.char_height);
+				
+				if (hitbox_timer < 190)
+				{
+					hsp = lengthdir_x(return_distance, return_direction) / 10;
+					vsp = lengthdir_y(return_distance, return_direction) / 10;
+				}
+				else
+				{
+					hsp = lengthdir_x(return_distance, return_direction) / (202 - hitbox_timer);
+					vsp = lengthdir_y(return_distance, return_direction) / (202 - hitbox_timer);
+				}
+				for (var p = 0; p < array_length(can_hit); p++)
+				{ 
+					can_hit[p] = false;
+				}
+			}
 		}
 	break;
 	default:

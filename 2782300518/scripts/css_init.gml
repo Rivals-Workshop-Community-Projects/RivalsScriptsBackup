@@ -30,10 +30,10 @@ voice_button_position_x = 0;
 voice_button_position_y = 0;
 
 //ANIMATION VARS
-sprite_change_offset("idle", 40, 78); //should mimic the load.gml offsets
+sprite_change_offset("idle", 20, 39); //should mimic the load.gml offsets
 
 preview_idle = sprite_get("idle");
-preview_scale = 1; //depends on if we have small sprites on, if we do, type 2, if not type 1
+preview_scale = 2; //depends on if we have small sprites on, if we do, type 2, if not type 1
 preview_anim_speed = 0.15; //should mimic "idle_anim_speed" - controls the sprites animation speed
 
 

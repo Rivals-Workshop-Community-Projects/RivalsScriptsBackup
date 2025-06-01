@@ -87,9 +87,6 @@ if (e && state == 0)
 		}
 		if (e.attack == AT_USPECIAL && state == 0 && e.hbox_num == 1)
 		{
-			bike_spin_speed_v = -8;
-			//vsp = -8;
-			bike_spin_speed_h = player_id.spr_dir > 0? 3: -3;
 			//hsp = player_id.spr_dir > 0? 3: -3;
 			sound_play(sound_get("motorbike_extra"));
 			with (e)
@@ -97,7 +94,10 @@ if (e && state == 0)
 				sound_play(sound_effect);
 				spawn_hit_fx(hit_effect_x + other.x, hit_effect_y + other.y - other.article_height/2, hit_effect);
 			}
-			with (player_id) if (!hitpause) create_hitbox(AT_USPECIAL, 2, other.x, other.y - 22);
+			with (player_id) if (!hitpause) create_hitbox(AT_USPECIAL, 2, other.x, other.y - 20);
+			bike_spin_speed_v = -8;
+			//vsp = -8;
+			bike_spin_speed_h = player_id.spr_dir > 0? 3: -3;
 			state = 1;
 			state_timer = 0;
 		}

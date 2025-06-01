@@ -3,10 +3,7 @@ with (ai_target) if ("char_height" not in self) exit; //prevents annoying error 
 //DACUS
 DACUSpercent = (2 - ai_target.knockback_adj) * 100;
 
-if (get_training_cpu_action() == CPU_STAND && !ai_recovering)
-{
-	joy_pad_idle = true;
-}
+if (get_training_cpu_action() != CPU_FIGHT && !ai_recovering) exit;
 else if (state != PS_SPAWN)
 {
 	//Main AI code goes here.

@@ -41,7 +41,7 @@ if (motorbike == false)
 		case AT_UTILT:
 		case AT_DTILT:
 			//Jab and Tilt Combo cancels
-			//Mix up jab quotes so that it doesn't get tired
+			//Mix up jab quotes so that it doesn't get tired and also break them up a bit.
 			var	 choose_quote = random_func(16, 15, 1);
 			
 			switch (window)
@@ -53,7 +53,7 @@ if (motorbike == false)
 				{
 					sound_stop(sound_get("sweet"));
 					stopVoice();
-					if (choose_quote <3)
+					if (choose_quote <2)
 					{
 						if (voice == 1)
 						{
@@ -61,7 +61,7 @@ if (motorbike == false)
 							sound_play(sound_get ("carol_jab_voice1"));
 						}
 					}
-					else if (choose_quote >2 && choose_quote <6)
+					else if (choose_quote >1 && choose_quote <4)
 					{
 						if (voice == 1)
 						{
@@ -69,7 +69,7 @@ if (motorbike == false)
 							sound_play(sound_get ("carol_jab_voice2"));
 						}
 					}
-					else if (choose_quote >5 && choose_quote <9)
+					else if (choose_quote >3 && choose_quote <6)
 					{
 						if (voice == 1)
 						{
@@ -77,7 +77,7 @@ if (motorbike == false)
 							sound_play(sound_get ("carol_jab_voice3"));
 						}
 					}
-					else if (choose_quote >8 && choose_quote <13)
+					else if (choose_quote >5 && choose_quote <8)
 					{
 						if (voice == 1)
 						{
@@ -85,7 +85,7 @@ if (motorbike == false)
 							sound_play(sound_get ("carol_jab_voice4"));
 						}
 					}
-					else
+					else if (choose_quote >7 && choose_quote <10)
 					{
 						if (voice == 1)
 						{
@@ -357,6 +357,25 @@ if (motorbike == false)
 		case AT_BAIR:
 			can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 			can_special = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
+			if (window == 1 && window_timer == window_end)
+			{
+				var make_quote = random_func_2(15, 12, 1);
+				if (voice == 1)
+				{
+					if (make_quote < 2)
+					{
+						stopVoice();
+						sound_stop(sound_get("carol_attack_voice1"));
+						sound_play(sound_get("carol_attack_voice1"));
+					}
+					else if (make_quote <4)
+					{
+						stopVoice();
+						sound_stop(sound_get("carol_attack_voice2"));
+						sound_play(sound_get("carol_attack_voice2"));
+					}
+				}
+			}
 		break;
 		//Wild Claw (Voice clip for Nair)
 		case AT_NAIR:
@@ -491,8 +510,8 @@ if (motorbike == false)
 				bfront=true;
 				bx=-40*spr_dir;
 				by=-80;
-				bsx=1;
-				bsy=1;
+				bsx=2;
+				bsy=2;
 				bshader = true;
 				returnBike = false;
 				//Voice line
@@ -738,8 +757,8 @@ else if (motorbike == true)
 					bfront=true;
 					bx=-40*spr_dir;
 					by=-79;
-					bsx=1;
-					bsy=1;
+					bsx=2;
+					bsy=2;
 					bshader = true;
 				}
 				else
@@ -748,8 +767,7 @@ else if (motorbike == true)
 				}
 				//Reset values back to default
 				motorbike = false;
-				bikeReady = 0;
-				
+
 				wait_length = 60;
 				wait_sprite = sprite_get("wait");
 				
@@ -849,9 +867,19 @@ else if (motorbike == true)
 			}
 		//Claw Combo
 		case AT_NTHROW:
-			if ((window == 3 || window == 6) && has_hit && window_timer >=2)
+			if ((window == 3 || window == 6) && has_hit && window_timer >=4)
 			{
 				can_attack = !joy_pad_idle;
+			}
+			if (window == 3 && joy_pad_idle && window_timer >=4 && attack_pressed)
+			{
+				window = 4;
+				window_timer = 0;
+			}
+			if (window == 6 && joy_pad_idle && window_timer >=4 && attack_pressed)
+			{
+				window = 7;
+				window_timer = 0;
 			}
 			if ((window == 3 || window == 6|| window == 9) && was_parried && window_timer == 15)
 			{
@@ -1065,7 +1093,7 @@ switch (attack)
 			case 7:
 				if (window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause)
 				{
-					if (choose_quote <3)
+					if (choose_quote <2)
 					{
 						if (voice == 1)
 						{
@@ -1074,7 +1102,7 @@ switch (attack)
 							sound_play(sound_get ("carol_jab_voice1"));
 						}
 					}
-					else if (choose_quote >2 && choose_quote <6)
+					else if (choose_quote >1 && choose_quote <4)
 					{
 						if (voice == 1)
 						{
@@ -1083,7 +1111,7 @@ switch (attack)
 							sound_play(sound_get ("carol_jab_voice2"));
 						}
 					}
-					else if (choose_quote >5 && choose_quote <9)
+					else if (choose_quote >3 && choose_quote <6)
 					{
 						if (voice == 1)
 						{
@@ -1092,7 +1120,7 @@ switch (attack)
 							sound_play(sound_get ("carol_jab_voice3"));
 						}
 					}
-					else if (choose_quote >8 && choose_quote <13)
+					else if (choose_quote >5 && choose_quote <8)
 					{
 						if (voice == 1)
 						{
@@ -1101,7 +1129,7 @@ switch (attack)
 							sound_play(sound_get ("carol_jab_voice4"));
 						}
 					}
-					else
+					else if (choose_quote >7 && choose_quote <10)
 					{
 						if (voice == 1)
 						{
@@ -1171,8 +1199,8 @@ switch (attack)
 			tfront=false;
 			tx= -42*spr_dir;
 			ty=-66;
-			tsx=1;
-			tsy=1;
+			tsx=2;
+			tsy=2;
 		 	bsprite_index=-1;
 		}
 		//Voice line
@@ -1281,6 +1309,8 @@ switch (attack)
 			bimage_number = 1;
 			bx= 0 ;
 			by= -36;
+			bsx = 1;
+			bsy = 1;
 			bshader = false;
 			bikeWarp = false;
 		}
@@ -1477,6 +1507,178 @@ switch (attack)
 			{
 				vsp += 0.2;
 			}
+		}
+	break;
+	//Final Smash
+	case 49:
+		can_move = false;
+		can_fast_fall = false;
+		if (window < 6)
+		{
+			hsp = 0;
+			old_hsp = 0;
+			vsp = 0;
+			old_vsp = 0;
+		}
+		//Voice line
+		if (window == 1 && window_timer == 4 && !hitpause)
+		{
+			bsprite_index = -1;
+			sound_play(sound_get("gear"));
+			if (voice == 1)
+			{
+				stopVoice();
+				sound_stop(sound_get ("dramatic_music_voice"));
+				sound_play(sound_get ("dramatic_music_voice"));
+			}
+		}
+		if (window == 2 && window_timer == 1)
+		{
+			sound_play(sound_get("motorbike_idle"));
+			bsprite_index = sprite_get("disc_arrow");
+			bimage_number = 1;
+			bx= 0 ;
+			by= -36;
+			bsx = 1;
+			bsy = 1;
+			bshader = false;
+			bikeWarp = false;
+
+			if (motorbike = true)
+			{
+				motorbike = false;
+				bikeReady = 0;
+				wait_length = 60;
+				wait_sprite = sprite_get("wait");
+				//Abyss Runes reset, just in case!
+				if has_rune("B")
+				{
+					walk_accel = 0.3;
+					walk_turn_time = 5;
+					initial_dash_time = 8;
+					initial_dash_speed = 7.75;
+					dash_turn_time = 8;
+					dash_turn_accel = 1.5;
+				}
+				
+				if has_rune("I")
+				{
+					jump_speed = 15;
+				}
+					
+				if has_rune("O")
+				{
+				 	jump_speed = 16;
+					walk_accel = 0.8;
+					initial_dash_time = 9;
+					initial_dash_speed = 8;
+					dash_turn_time = 8;
+					dash_turn_accel = 1.5;
+				}
+			}
+				
+		}
+		if (window = 2)
+		{
+			var ddir = spr_dir > 0 ? 0 : 180;
+			//Move the boost arrow around
+			if (joy_pad_idle) brotation=0;
+			else brotation=joy_dir + ddir;
+			if (floor(window_timer/5) == window_timer /5) sound_play(sound_get("final_smash_charge"))
+			if (window_timer == 101) sound_play(sound_get("motorbike_idle"));
+			
+			if (window_timer > 140)
+			{
+				if (floor(window_timer/4) == window_timer/4 && !hitpause)
+				{
+					white_flash_timer = 10;
+				}
+			}
+			if (window_timer == 180)
+			{
+				sound_stop(sound_get("motorbike_idle"));
+				sound_stop(sound_get("final_smash_charge"))
+				if (joy_pad_idle) dst=spr_dir>0 ? 0 : 180;
+				else dst=round(joy_dir/45)*45;
+				bsprite_index = -1;
+				final_smash_bike = create_hitbox(49, 1, x + 36 * spr_dir, y -80)
+			}
+		}
+		if (window == 4 && window_timer == 25 && final_smash_bike.times_hit = 0)
+		{
+			final_smash_player = noone;
+			destroy_hitboxes();
+			attack_end();
+			bike_stored = true;
+			set_state(free?PS_IDLE_AIR:PS_IDLE);
+		}
+		if (window == 5)
+		{
+			tsprite_index=sprite_get("tail_idle");
+			trotation=0;
+			timage_number=12;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-76;
+			tsx=2;
+			tsy=2;
+		}
+		if (window == 5 && instance_exists(final_smash_bike))
+		{
+			if (final_smash_bike.times_hit >= 6)
+			{
+				tsprite_index = -1;
+				window = 6;
+				window_timer = 0;
+			}
+			if (!instance_exists(final_smash_bike))
+			{
+				final_smash_player = noone;
+				destroy_hitboxes();
+				attack_end();
+				set_state(free?PS_IDLE_AIR:PS_IDLE);
+			}
+		}
+		if (window == 6)
+		{
+			can_move = false
+			if (spr_dir == 1)
+			{
+				x = lerp(x, final_smash_player.x - 40, 0.15)
+				y = lerp(y, final_smash_player.y , 0.15)
+			}
+			else
+			{
+				x = lerp(x, final_smash_player.x + 40, 0.15)
+				y = lerp(y, final_smash_player.y, 0.15)
+			}
+			switch (window_timer)
+			{
+				case 1:
+					sound_play(sound_get("pounce"));
+					if (voice == 1)
+					{
+						stopVoice();
+						sound_stop(sound_get ("go2"));
+						sound_play(sound_get ("go2"));
+					}
+
+				case 5:
+				case 9:
+				case 13:
+				case 17:
+					var smallspark = spawn_hit_fx(x - 20 * spr_dir, y-30 , sparkle);
+					smallspark.depth = -100;
+				break;
+				default:
+				break;
+			}
+		}
+		if (window == 8 && window_timer == window_end)
+		{
+			bike_stored = true;
+			final_smash_player = noone;
 		}
 	break;
 	//Intro

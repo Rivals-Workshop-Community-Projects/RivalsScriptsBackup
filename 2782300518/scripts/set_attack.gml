@@ -56,7 +56,7 @@ if (motorbike == true)
 	{
 		attack = 3;
 	}
-	if (attack == AT_NSPECIAL)
+	if (attack == AT_NSPECIAL && fs_charge < 200)
 	{
 		attack = AT_NSPECIAL_2;
 	}

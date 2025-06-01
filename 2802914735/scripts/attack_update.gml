@@ -97,6 +97,7 @@ if (attack == AT_FTILT){
         fspec_land_timer -= 1;
     }
     //hurtbox
+    /*
     if free {
         hurtboxID.sprite_index = sprite_get("ftilt_air_hurt");
     } else if fspec_jumpstart {
@@ -112,6 +113,7 @@ if (attack == AT_FTILT){
     } else {
         hurtboxID.sprite_index = sprite_get("ftilt_hurt");
     }
+    */
 }
 
 if (attack == AT_FSPECIAL){
@@ -217,6 +219,7 @@ if (attack == AT_FSPECIAL){
         fspec_land_timer -= 1;
     }
     //hurtbox
+    /*
     if fspecial_charging && hsp == 0 && !free {
         hurtboxID.sprite_index = sprite_get("fspecial_charged_hurt");
     } else if free {
@@ -234,6 +237,7 @@ if (attack == AT_FSPECIAL){
     } else {
         hurtboxID.sprite_index = sprite_get("fspecial_hurt");
     }
+    */
 }
 //red throws
 if (attack == AT_FSPECIAL_RED){
@@ -336,6 +340,7 @@ if (attack == AT_FSPECIAL_RED){
         fspec_land_timer -= 1;
     }
     //hurtbox
+    /*
     if fspecial_charging && hsp == 0 && !free {
         hurtboxID.sprite_index = sprite_get("throwred_charged_hurt");
     } else if free {
@@ -353,6 +358,7 @@ if (attack == AT_FSPECIAL_RED){
     } else {
         hurtboxID.sprite_index = sprite_get("throwred_hurt");
     }
+    */
 }
 
 //blue throws
@@ -456,6 +462,7 @@ if (attack == AT_FSPECIAL_BLUE){
         fspec_land_timer -= 1;
     }
     //hurtbox
+    /*
     if fspecial_charging && hsp == 0 && !free {
         hurtboxID.sprite_index = sprite_get("throwblue_charged_hurt");
     } else if free {
@@ -473,6 +480,7 @@ if (attack == AT_FSPECIAL_BLUE){
     } else {
         hurtboxID.sprite_index = sprite_get("throwblue_hurt");
     }
+    */
 }
 
 //green throws
@@ -574,6 +582,7 @@ if (attack == AT_FSPECIAL_GREEN){
         fspec_land_timer -= 1;
     }
     //hurtbox
+    /*
     if fspecial_charging && hsp == 0 && !free {
         hurtboxID.sprite_index = sprite_get("throwgreen_charged_hurt");
     } else if free {
@@ -591,6 +600,7 @@ if (attack == AT_FSPECIAL_GREEN){
     } else {
         hurtboxID.sprite_index = sprite_get("throwgreen_hurt");
     }
+    */
 }
 
 /* old axe throw fstrong
@@ -857,7 +867,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

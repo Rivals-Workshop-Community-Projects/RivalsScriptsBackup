@@ -199,12 +199,6 @@ if (motorbike == true) //Change all the sprites used if Carol is on the bike
 			}
 		break;
 	}
-	if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || state == PS_CRYSTALIZED)
-	{
-	    sprite_index = sprite_get("hurt_bike_crystalised");
-    	small_sprites = 1;
-	}
-	else small_sprites = 0;
 }
 else
 {
@@ -233,12 +227,6 @@ else
 		default:
 		break;
 	}
-	if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || state == PS_CRYSTALIZED)
-	{
-	    sprite_index = sprite_get("hurt_crystalised");
-    	small_sprites = 1;
-	}
-	else small_sprites = 0;
 }
 
 if (is_attacking)
@@ -252,6 +240,10 @@ if (is_attacking)
 				sprite_index = sprite_get("bike_store_spin")
 				image_index = window_timer/2;
 			}
+		break;
+		case 49:
+			//Final Smash Buddy doesn't use correct Hurtbox sprite, this corrects it
+			hurtboxID.sprite_index = sprite_get("final_smash_hurt");
 		break;
 	}
 }
