@@ -80,12 +80,14 @@ if (attack == AT_NSPECIAL)
    clear_button_buffer(PC_JUMP_PRESSED);
    
    cd_rel_lvl = cd_level;
+   can_b_reverse = true;
 }
 
 // throwing if fully charge
 if ((attack == AT_NSPECIAL) and ((cd_level == cd_level_max) or (runeF)))
 {
    attack = AT_NSPECIAL_2;
+      can_b_reverse = true;
 }
 
 

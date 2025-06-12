@@ -2,7 +2,7 @@
 
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL_2){
+if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     
     trigger_b_reverse();
 }
@@ -12,8 +12,6 @@ if (attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) o
 {
     can_fast_fall = false;
 }
-
-
 
 
 
@@ -103,6 +101,11 @@ if (attack == AT_DAIR)
 {
     if (!was_parried)
     {
+        if (window == 3 && window_timer >= 12) or (window == 4)
+        {
+			can_jump = true
+			can_shield = true
+        }
         if (attack == AT_DAIR) and (window < 4)
         {
             set_attack_value( AT_DAIR, AG_HAS_LANDING_LAG, 0 );
@@ -116,11 +119,12 @@ if (attack == AT_DAIR)
         
         if (attack == AT_DAIR) and ( !free ) and (bounce_needed) 
         {
+             set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 18)
             destroy_hitboxes()
             attack_end();
             set_attack(AT_EXTRA_1);
             hurtboxID.sprite_index = sprite_get("dairbounce_hurt")
-            
+          
         }
     }
     else
@@ -423,7 +427,16 @@ if (attack == AT_USPECIAL_2)
 
 if (attack == AT_NSPECIAL)
 {
- 
+    
+ //B-reverse
+    if(state_timer <= 4 && can_b_reverse){
+        if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)){
+            can_b_reverse = false;
+            spr_dir *= -1;
+            hsp *= -0.8;
+        }
+    }
+    
     cd_image += cd_spd;
     
     if (jump_pressed)
@@ -627,6 +640,7 @@ if (attack == AT_USPECIAL)
 
 // NSPECIAL THROW
 if (attack == AT_NSPECIAL_2)
+
 {
     
     if (window == 1) and (window_timer == 1) and (runeF) // random RuneF // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
@@ -648,6 +662,14 @@ if (attack == AT_NSPECIAL_2)
         create_hitbox( AT_NSPECIAL_2, cd_level + 1, x + (62 * spr_dir), y - 36 );
             
         cd_level = 0;
+    }
+     //B-reverse
+    if(state_timer <= 4 && can_b_reverse){
+        if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)){
+            can_b_reverse = false;
+            spr_dir *= -1;
+            hsp *= -0.8;
+        }
     }
 }
 

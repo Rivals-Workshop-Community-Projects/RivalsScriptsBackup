@@ -18,10 +18,10 @@ with oPlayer{
 	}
 }
 
-if (!place_meeting(x + (60 * spr_dir), y + 10, (asset_get("par_block"))) &&
+if ( (!place_meeting(x + (60 * spr_dir), y + 10, (asset_get("par_block"))) &&
 !place_meeting(x + (60 * spr_dir), y + 10, (asset_get("par_jumpthrough")))) ||
-place_meeting(x + (35 * spr_dir), y, (asset_get("par_block")))
-	move_cooldown[AT_DSPECIAL] = 2;
+place_meeting(x + (35 * spr_dir), y, (asset_get("par_block"))) ) && !free && state != PS_ATTACK_GROUND
+    move_cooldown[AT_DSPECIAL] = 2;
 
 if flowey_savecooldown || !flowey_saves_used || (y < get_stage_data(SD_TOP_BLASTZONE_Y) && !instance_exists(flowey_save)) move_cooldown[AT_USPECIAL] = 2;
 

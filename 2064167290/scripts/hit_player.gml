@@ -7,6 +7,7 @@ if (my_hitboxID.attack == AT_DAIR)
 {
     if (state_cat != SC_HITSTUN)
     {
+        set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 6)
         destroy_hitboxes()
         attack_end();
         set_attack(AT_EXTRA_1);
@@ -127,6 +128,7 @@ if (my_hitboxID.attack == AT_FSPECIAL)
 {
     if (state_cat != SC_HITSTUN)
     {
+    reset_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH)
         destroy_hitboxes()
         attack_end();
         set_attack(AT_EXTRA_1);

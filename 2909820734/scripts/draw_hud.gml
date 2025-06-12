@@ -12,10 +12,10 @@ var music_files, music_titles;
  
 //music file name, in your /sounds folder
 //if you want to keep it empty, keep the placeholder name and it will disallow selecting that music
-music_files = ["music_loop", "music_loop2"]
+music_files = ["music_loop", "music_loop2", "music_loop3"]
  
 //music name title
-music_titles = ["Vancouver Velocity - Mario Kart Tour", "Tour Vancouver Velocity - Mario Kart 8 Deluxe"]
+music_titles = ["Vancouver Velocity - Mario Kart Tour", "Tour Vancouver Velocity - Mario Kart 8 Deluxe", "Vancouver Velocity - Mario Kart World"]
  
  
 //confirmation sound to play when music has been changed

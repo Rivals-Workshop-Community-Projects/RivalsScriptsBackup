@@ -35,7 +35,8 @@ alt_name[15] = "Reverence";
 alt_name[16] = "Riptide";
 alt_name[17] = "Vortex Gallery";
 alt_name[18] = "Rainbow";
- 
+alt_name[19] = "Puree of Disks";
+alt_name[20] = "Quote Em'"
  
 //Patch
  
@@ -58,9 +59,11 @@ for(i = 0; i < num_alts; i++){
 }
  
 draw_set_halign(fa_left);
+
+var col = (get_player_color(player) == 0? c_white : make_color_rgb(get_color_profile_slot_r(get_player_color(player), 4), get_color_profile_slot_g(get_player_color(player), 4), get_color_profile_slot_b(get_player_color(player), 4)));
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 124, "fName", col, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

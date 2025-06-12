@@ -97,7 +97,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, -4);
 set_hitbox_value(AT_USTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.4);
 
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW,3 )
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
@@ -124,7 +123,6 @@ set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 
 
-set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW,3 )
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW_CREATION_FRAME, 4);
@@ -155,7 +153,6 @@ set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, effect_nothing);
 
 
 // bounce hitbox that was not active on the old version
-set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_WINDOW,3 )
 set_hitbox_value(AT_USTRONG, 4, HG_WINDOW_CREATION_FRAME, 4);

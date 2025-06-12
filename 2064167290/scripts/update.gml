@@ -51,7 +51,7 @@ if (!found)
 */
 
 // ENTRANCE
-if (!has_enter) and (!instance_exists(oTestPlayer))
+if (!has_enter) and (state == PS_SPAWN) and (!instance_exists(oTestPlayer))
 {
     has_enter = true;
     set_attack(AT_NTHROW);
@@ -645,7 +645,7 @@ if (runeK)
 }
 else
 {
-    reset_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH);
+    //reset_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH);
     reset_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH);
     
     reset_hitbox_value( AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING);

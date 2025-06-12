@@ -1,5 +1,5 @@
 step = 0;
-
+can_b_reverse = true;
 hurtbox_spr = sprite_get("hana_hurtbox");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = sprite_get("hana_hurtbox");

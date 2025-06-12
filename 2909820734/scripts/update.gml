@@ -40,6 +40,11 @@ if (should_play_laststock_mus) && final_stock_cont == -1 && (get_gameplay_time()
 			music_stop();
 			sound_play(sound_get("final-lap-mk8"), false, 0, .5, 1);
 		}
+		if mus == 2 {
+			suppress_stage_music(0,1);
+			music_stop();
+			sound_play(sound_get("final-lap-mk8"), false, 0, .5, 1);
+		}
 		final_stock = true;
 		final_stock_cont = 0;
 }
@@ -65,6 +70,14 @@ if (final_stock_cont >= 201){
         }
         else {
             music_play_file("final_music2_loop");
+        }
+    }
+    if (mus == 2){
+        if (final_stock_cont < 200){
+            music_play_file("final_music3_loop_intro");    
+        }
+        else {
+            music_play_file("final_music3_loop");
         }
     }
 }

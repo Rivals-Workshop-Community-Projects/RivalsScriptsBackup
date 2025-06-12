@@ -57,7 +57,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 16;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -180,6 +180,9 @@ keymarked = 1;
 
 //Charizard6903 Dair
 dairbounce = false; //DAIR BOUNCES OFF THE GROUND
+
+introTimer = -4;
+introTimer2 = 0;
 
 // Muno template: (don't change)
 
