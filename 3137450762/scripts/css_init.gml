@@ -5,7 +5,23 @@ user_event(2); // set swappable colours
 var sync = get_synced_var(player)
 // print('synced var: ' + string(sync))
 if sync == 0 or (sync < 10 or sync > (total_tournaments*10 + total_playtesters)) {
-  var tens = 3 // vortex, tournament skins
+  // tens = tournament skin
+  var cmonth = current_month;
+  
+  if cmonth == 6 && current_year == 2025 { // release window
+    tens = 5
+  } else if cmonth < 3 {
+    tens = 1 // genesis
+  } else if cmonth < 6 {
+    tens = 5 // hitfall.5
+  } else if cmonth < 10 {
+    tens = 2 // riptide 
+  } else if cmonth < 11 {
+    tens = 3 // vortex  
+  } else {
+    tens = 4 // heatwave
+  }
+  
   var ones = current_time%6 // 'randomized' playtester skins
   set_synced_var( player, tens*10 + ones );
   // print('new synced var: ' + string(tens*10 + ones))

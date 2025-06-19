@@ -131,11 +131,28 @@ switch(attack){
                 xpos = x-xshuffle;
                 if(strong_charge > 2 and get_gameplay_time()%(40/strong_charge) <= 1){
                     xshuffle = random_func(0, 4, true) - 2
-                    x = xpos + xshuffle;
+                    var _xprev = x;    
+		    
+
+
+		    if( collision_point(bbox_left+xshuffle+12, y+1, asset_get("par_jumpthrough"), false, false) or collision_point(bbox_right+xshuffle-12,y+1, asset_get("par_jumpthrough"), false, false) or 
+			collision_point(bbox_left+xshuffle+12, y+1, asset_get("par_block"), false, false) or collision_point(bbox_right+xshuffle-12,y+1, asset_get("par_block"), false, false)){
+		       x = xpos + xshuffle;
+		    }
+		
                 }
             }
             if(window == 2 and window_timer == 1){
                 x = xpos;
+		if !( collision_point(bbox_left+12, y+1, asset_get("par_jumpthrough"), false, false) or 
+			collision_point(bbox_left+12, y+1, asset_get("par_block"), false, false) ){
+		       x = xpos+1;
+		} else if !( collision_point(bbox_right-12, y+1, asset_get("par_jumpthrough"), false, false) or 
+			collision_point(bbox_right-12, y+1, asset_get("par_block"), false, false) ){
+			x = xpos-1;		
+		}
+
+
             }
         break;
         case AT_FSPECIAL:

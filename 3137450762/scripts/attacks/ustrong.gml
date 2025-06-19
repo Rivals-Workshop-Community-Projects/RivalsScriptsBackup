@@ -88,7 +88,7 @@ set_window_value(AT_USTRONG, 11, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USTRONG, 11, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 11, AG_WINDOW_ANIM_FRAME_START, 18);
 
-set_num_hitboxes(AT_USTRONG, 4);
+set_num_hitboxes(AT_USTRONG, 5);
 
 //Grab
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
@@ -111,6 +111,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_oly_dspecial_hit"));
 set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_USTRONG, 1, HG_THROWS_ROCK, 1);
 
 //Slam
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -134,6 +135,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_USTRONG, 2, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 10);
 
 //Chest grab hitbox
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
@@ -156,6 +159,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_oly_dspecial_hit"));
 set_hitbox_value(AT_USTRONG, 3, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_USTRONG, 3, HG_THROWS_ROCK, 1);
 
 //Middle grab hitbox
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -178,6 +182,7 @@ set_hitbox_value(AT_USTRONG, 4, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_oly_dspecial_hit"));
 set_hitbox_value(AT_USTRONG, 4, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_USTRONG, 4, HG_THROWS_ROCK, 1);
 
 //Back hand hitbox (Unused)
 /* set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -199,3 +204,29 @@ set_hitbox_value(AT_USTRONG, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 4, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_oly_dspecial_hit")); */
+
+// Throws Rock
+
+//Slam
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_WINDOW, 8);
+set_hitbox_value(AT_USTRONG, 5, HG_LIFETIME, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_X, 54);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_Y, -68);
+set_hitbox_value(AT_USTRONG, 5, HG_WIDTH, 40);
+set_hitbox_value(AT_USTRONG, 5, HG_HEIGHT, 50);
+set_hitbox_value(AT_USTRONG, 5, HG_SHAPE, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_PRIORITY, 2);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 10);
+set_hitbox_value(AT_USTRONG, 5, HG_ANGLE, 55);
+set_hitbox_value(AT_USTRONG, 5, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 14);
+set_hitbox_value(AT_USTRONG, 5, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_USTRONG, 5, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT_X_OFFSET, 20);
+set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT_Y_OFFSET, -20);
+set_hitbox_value(AT_USTRONG, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_USTRONG, 5, HG_THROWS_ROCK, 1);

@@ -1,8 +1,8 @@
 with(pHitBox){
     if(type == 2 and player_id = other and attack == AT_USPECIAL){
 
-        draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, ease_circIn(1, 0, hitbox_timer, 30));
-        draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_black, ease_circIn(1, 0, hitbox_timer, 30)*.5);
+        draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, ease_circIn(1, 0, clamp(hitbox_timer, 0, 29), 30));
+        draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_black, ease_circIn(1, 0, clamp(hitbox_timer, 0, 29), 30)*.5);
 
     }
     

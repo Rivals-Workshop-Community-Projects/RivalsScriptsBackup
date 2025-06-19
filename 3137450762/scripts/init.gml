@@ -129,6 +129,7 @@ active_landing_fx = noone;
 universal_chair_big_cooldown = 420;
 chair_cooldown_by_destruction = false;
 create_chair_flash_opacity = 0;
+chair_hit_add_opacity = 0;
 can_create_air_chair = true;
 air_chair_died = false;
 myChair = noone;
@@ -151,6 +152,7 @@ grab_victim = noone;
 grab_valid = false;
 old_grab_valid = false;
 destroy_postgrab_hitbox_countdown = 0;
+grab_timer = 0;
 
 grabevent_grab_box = 0;
 grabevent_attack_box = 0;
@@ -201,10 +203,10 @@ afterimage_colour_array = [
   // INSERT SEASONAL
   make_colour_rgb(200, 40, 0), // potemkin
   make_colour_rgb(0, 200, 200), // r mika
-  make_colour_rgb(150, 20, 230), // abyss
+  make_colour_rgb(200, 20, 100), // abyss
   make_colour_rgb(60,  102, 22), // early access
-  //make_colour_rgb(250, 30, 255), // ETDT
-  make_colour_rgb(99, 95, 170), // Gold
+  make_colour_rgb(250, 30, 255), // ETDT
+  //make_colour_rgb(99, 95, 170), // Gold
   //
   make_colour_rgb(40,  125, 50), // Playtest
   make_colour_rgb(255, 50, 50), // Tournament / genesis
@@ -234,8 +236,13 @@ vortex_colours = [
 ]
 heatwave_colours = [
   make_colour_rgb(0, 40, 104), // blue
-  make_colour_rgb(254, 215, 40), // yellow
+  make_colour_rgb(255, 170, 0), // yellow
   make_colour_rgb(191, 10, 48), // red
+]
+hitfall_colours = [
+  make_colour_rgb(0,235,100), // munsell green
+  make_colour_rgb(240, 110, 255), // pink
+  make_colour_rgb(0, 230, 255), // cyan
 ]
 
 afterimage_colour = afterimage_colour_array[get_player_color( player )];
@@ -258,10 +265,13 @@ if alt_palette == playtester_alt {
 // Multicolour afterimage colours
 multicolour_colours = riptide_colours; riptide_active = true;
 if tens == 3 {
-  multicolour_colours = vortex_colours; riptide_active = false;
+  multicolour_colours = vortex_colours; riptide_active = false; 
 } else if tens == 4 {
   multicolour_colours = heatwave_colours; riptide_active = false;
+} else if tens == 5 {
+  multicolour_colours = hitfall_colours; riptide_active = true;
 }
+
 multicolour_after_index = 0;
 magnet_colour = multicolour_colours[0];
 activate_multicolour = alt_palette == tournament_alt && (tens > 1);
@@ -316,3 +326,9 @@ if alt_palette == playtester_alt or alt_palette == tournament_alt {
   set_article_color_slot(3, ptp[4][0], ptp[4][1], ptp[4][2]);
   set_article_color_slot(4, ptp[5][0], ptp[5][1], ptp[5][2]);
 }
+
+//grabbing rock
+can_grab_rock = true;
+release_rock = false;
+has_released_rock = false;
+dthrow_air = false;

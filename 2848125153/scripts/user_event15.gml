@@ -318,6 +318,10 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.40", "14th June, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Made DSpecial property a bit more stable on vertically moving platforms (hopefully). Also removed the platform on it, as Rivals is just way too unstable and it has always caused issues on certain stages");
+
 initPatch("1.39", "28th April, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed Money being reflectable on the first frame in specific cases on hit

@@ -259,6 +259,10 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.53", "14th June, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug with the new plush taunt");
+
 initPatch("1.52", "26th May, 2025");
 initHeader("Buffs");
 initSection("+ Added plush taunt! Press special during taunt to use it!");

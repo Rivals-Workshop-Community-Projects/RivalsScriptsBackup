@@ -31,7 +31,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 6);
 
 
-set_num_hitboxes(edit_attack, 1);
+set_num_hitboxes(edit_attack, 2);
 var e_hitbox = 1;
 
 // Hitbox
@@ -56,3 +56,32 @@ set_hitbox_value(edit_attack, e_hitbox, HG_VISUAL_EFFECT_X_OFFSET, 4);
 set_hitbox_value(edit_attack, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -8);
 set_hitbox_value(edit_attack, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(edit_attack, e_hitbox, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, e_hitbox, HG_THROWS_ROCK, 2);
+set_hitbox_value(edit_attack, e_hitbox, HG_HIT_LOCKOUT, 10);
+
+// Rock Throw
+
+// Hitbox
+e_hitbox++;
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_TYPE, 1);
+set_hitbox_value(edit_attack, e_hitbox, HG_SHAPE, 2);
+set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW, 3);
+set_hitbox_value(edit_attack, e_hitbox, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(edit_attack, e_hitbox, HG_LIFETIME, 1);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_X, 6);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_Y, -24);
+set_hitbox_value(edit_attack, e_hitbox, HG_WIDTH, 100);
+set_hitbox_value(edit_attack, e_hitbox, HG_HEIGHT, 50);
+set_hitbox_value(edit_attack, e_hitbox, HG_PRIORITY, 0);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITBOX_GROUP, 2);
+set_hitbox_value(edit_attack, e_hitbox, HG_DAMAGE, 6);
+set_hitbox_value(edit_attack, e_hitbox, HG_ANGLE, 80);
+set_hitbox_value(edit_attack, e_hitbox, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(edit_attack, e_hitbox, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(edit_attack, e_hitbox, HG_BASE_HITPAUSE, 16);
+set_hitbox_value(edit_attack, e_hitbox, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(edit_attack, e_hitbox, HG_VISUAL_EFFECT_X_OFFSET, 4);
+set_hitbox_value(edit_attack, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -8);
+set_hitbox_value(edit_attack, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(edit_attack, e_hitbox, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, e_hitbox, HG_THROWS_ROCK, 1);

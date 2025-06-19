@@ -39,7 +39,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 10);
 e_window = 4;
 set_window_value(edit_attack, e_window, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 20);// originally 12
-set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(edit_attack, e_window, AG_WINDOW_HAS_WHIFFLAG, 1);//Added whifflag
 
@@ -48,7 +48,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_HAS_WHIFFLAG, 1);//Added whiff
 set_window_value(edit_attack, 5, AG_WINDOW_TYPE, 1);
 set_window_value(edit_attack, 5, AG_WINDOW_LENGTH, 14);//changed from 18 to 9
 set_window_value(edit_attack, 5, AG_WINDOW_ANIM_FRAMES, 9);
-set_window_value(edit_attack, 5, AG_WINDOW_ANIM_FRAME_START, 16);
+set_window_value(edit_attack, 5, AG_WINDOW_ANIM_FRAME_START, 19);
 
 set_num_hitboxes(edit_attack,1);
 
@@ -75,3 +75,4 @@ set_hitbox_value(edit_attack, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(edit_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(edit_attack, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(edit_attack, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(edit_attack, 1, HG_THROWS_ROCK, 1);

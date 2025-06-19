@@ -19,7 +19,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 //set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -56,7 +56,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM, particle_num);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 8);
+set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 37);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -33);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 28);

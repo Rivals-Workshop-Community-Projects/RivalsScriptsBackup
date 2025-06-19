@@ -86,7 +86,7 @@ set_window_value(edit_attack, e_window, AG_WINDOW_LENGTH, 13);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(edit_attack, e_window, AG_WINDOW_ANIM_FRAME_START, 31);
 
-set_num_hitboxes(edit_attack, 2);
+set_num_hitboxes(edit_attack, 3);
 
 //Grab
 set_hitbox_value(edit_attack, 1, HG_HITBOX_TYPE, 1);
@@ -110,6 +110,7 @@ set_hitbox_value(edit_attack, 1, HG_VISUAL_EFFECT_Y_OFFSET, -30);
 set_hitbox_value(edit_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(edit_attack, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(edit_attack, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(edit_attack, 1, HG_THROWS_ROCK, 1);
 
 //Slam
 set_hitbox_value(edit_attack, 2, HG_HITBOX_TYPE, 1);
@@ -136,3 +137,31 @@ set_hitbox_value(edit_attack, 2, HG_VISUAL_EFFECT_X_OFFSET, 2);
 set_hitbox_value(edit_attack, 2, HG_VISUAL_EFFECT_Y_OFFSET, 12);
 set_hitbox_value(edit_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(edit_attack, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, 2, HG_THROWS_ROCK, 2);
+set_hitbox_value(edit_attack, 2, HG_HIT_LOCKOUT, 10);
+
+// Throws Rock
+
+//Slam
+set_hitbox_value(edit_attack, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(edit_attack, 3, HG_SHAPE, 0);
+set_hitbox_value(edit_attack, 3, HG_WINDOW, 8);
+set_hitbox_value(edit_attack, 3, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(edit_attack, 3, HG_LIFETIME, 1);
+set_hitbox_value(edit_attack, 3, HG_HITBOX_X, 10);
+set_hitbox_value(edit_attack, 3, HG_HITBOX_Y, -21);
+set_hitbox_value(edit_attack, 3, HG_WIDTH, 100);
+set_hitbox_value(edit_attack, 3, HG_HEIGHT, 64);
+set_hitbox_value(edit_attack, 3, HG_PRIORITY, 0);
+set_hitbox_value(edit_attack, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(edit_attack, 3, HG_DAMAGE, 10);
+set_hitbox_value(edit_attack, 3, HG_ANGLE, 90);
+set_hitbox_value(edit_attack, 3, HG_BASE_KNOCKBACK, 12); // set in attack_update
+set_hitbox_value(edit_attack, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(edit_attack, 3, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(edit_attack, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(edit_attack, 3, HG_VISUAL_EFFECT_X_OFFSET, 2);
+set_hitbox_value(edit_attack, 3, HG_VISUAL_EFFECT_Y_OFFSET, 12);
+set_hitbox_value(edit_attack, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(edit_attack, 3, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(edit_attack, 3, HG_THROWS_ROCK, 1);

@@ -78,6 +78,12 @@ set_color_profile_slot(edit_color, 2, 166, 172, 214);
 set_color_profile_slot(edit_color, 3, 270, 105, 270);
 set_color_profile_slot(edit_color, 4, 210, 150, 210);
 
+set_color_profile_slot(edit_color, 0, 80, 45, 90);
+set_color_profile_slot(edit_color, 1, 83, 86, 160);
+set_color_profile_slot(edit_color, 2, 170, 180, 220);
+set_color_profile_slot(edit_color, 3, 300, 105, 300);
+set_color_profile_slot(edit_color, 4, 210, 150, 210);
+
 edit_color = 9; // Early Access
 set_color_profile_slot(edit_color, 0, 167, 186, 74);
 set_color_profile_slot(edit_color, 1, 83,  122, 62);
@@ -86,10 +92,16 @@ set_color_profile_slot(edit_color, 3, 253, 253, 253);
 set_color_profile_slot(edit_color, 4, 211, 226, 154);
 
 edit_color = 10; // Ranked Gold
-set_color_profile_slot(edit_color, 0, 255, 175, -15);
-set_color_profile_slot(edit_color, 1, 99, 95, 170);
-set_color_profile_slot(edit_color, 2, 255, 100, -10);
-set_color_profile_slot(edit_color, 3, 242, 253, 255);
+// set_color_profile_slot(edit_color, 0, 255, 175, -15);
+// set_color_profile_slot(edit_color, 1, 99, 95, 170);
+// set_color_profile_slot(edit_color, 2, 255, 100, -10);
+// set_color_profile_slot(edit_color, 3, 242, 253, 255);
+// set_color_profile_slot(edit_color, 4, 320, 300, 180);
+
+set_color_profile_slot(edit_color, 0, 254, 180, 10);
+set_color_profile_slot(edit_color, 1, 60, 6, 90);
+set_color_profile_slot(edit_color, 2, 255, 255, 199);
+set_color_profile_slot(edit_color, 3, 275, 100, 335);
 set_color_profile_slot(edit_color, 4, 320, 300, 180);
 
 edit_color = 11; // Playtester (Toma)

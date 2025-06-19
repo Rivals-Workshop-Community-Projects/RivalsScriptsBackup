@@ -83,6 +83,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_DAIR, 1, HG_THROWS_ROCK, 1); // 3 = Cannot tech or bounce
 
 //Grab 2 | Weird number order so as not to mess with chair interaction.
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
@@ -108,6 +109,7 @@ set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_DAIR, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DAIR, 3, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_DAIR, 3, HG_THROWS_ROCK, 1);
 
 //Yeet
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 0);
@@ -132,3 +134,29 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.7);
 //set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_DAIR, 2, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT, 10);
+
+// Throw Rock
+
+//Yeet
+set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DAIR, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 5);
+set_hitbox_value(AT_DAIR, 3, HG_LIFETIME, 2);
+set_hitbox_value(AT_DAIR, 3, HG_HITBOX_X, 26);
+set_hitbox_value(AT_DAIR, 3, HG_HITBOX_Y, -82);
+set_hitbox_value(AT_DAIR, 3, HG_WIDTH, 54);
+set_hitbox_value(AT_DAIR, 3, HG_HEIGHT, 100);
+set_hitbox_value(AT_DAIR, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 8);
+set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DAIR, 3, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_DAIR, 3, HG_THROWS_ROCK, 1);

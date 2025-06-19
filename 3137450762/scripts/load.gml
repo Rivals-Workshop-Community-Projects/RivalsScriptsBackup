@@ -1,4 +1,6 @@
 //La Reina load.gml
+sprite_change_offset("gold_shine", 56, 78);
+
 sprite_change_offset("idle", 48/2, 78/2);
 sprite_change_offset("hurt", 40/2, 78/2);
 sprite_change_offset("hurtground", 54/2, 94/2);

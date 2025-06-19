@@ -28,6 +28,16 @@ switch(attack){
                 }
             }
         }
+        
+        //turnaround ftilt
+        if((window == 3 || window == 6) && window_timer >= get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME)){
+            if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_pressed - left_stick_pressed) * -1) && !up_down && !down_down &&
+            (attack_down || right_stick_pressed || left_stick_pressed)){
+                spr_dir *= -1;
+                attack_end();
+                set_attack(AT_FTILT);
+            }
+        }
         break;
     
     case AT_DATTACK:
@@ -46,10 +56,24 @@ switch(attack){
         
     case AT_DTILT:
         if(window == 1 && window_timer == 11) sound_play(sound_get("sfx_staffspin"), false, noone, 0.85, 0.95);
+        
+         //turnaround
+        if(window == 1 && window_timer == 1){
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
         break;
     
     case AT_UTILT:
         if(window == 1 && window_timer == 8) sound_play(sound_get("sfx_staffspin"), false, noone, 1.1, 0.95);
+        
+        //turnaround
+        if(window == 1 && window_timer == 1){
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
         break;
     
     case AT_FAIR:

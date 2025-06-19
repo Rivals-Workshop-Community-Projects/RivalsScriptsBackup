@@ -2,11 +2,17 @@
 
 // Chair icon
 var chair_color = c_white;
-if move_cooldown[AT_NSPECIAL] > 0 {chair_color = c_gray;}
+//if move_cooldown[AT_NSPECIAL] > 0 {chair_color = c_gray;}
 if variable_instance_exists(id, "myChair") && instance_exists(myChair) && !has_rolling_girl {
 	draw_sprite_ext(sprite_get("chair_icon_energy_outline"), floor(1), temp_x + 184, temp_y - 16,1,1,0,c_white,1);
 }
-draw_sprite_ext(sprite_get("tiny_chair_icon"), floor(1), temp_x + 186, temp_y - 14,1,1,0,chair_color,1);
+var cooldown = (ceil((move_cooldown[AT_NSPECIAL] / universal_chair_big_cooldown) * 7));
+if !chair_cooldown_by_destruction {cooldown = 0;}
+draw_sprite_ext(sprite_get("tiny_chair_icon"), cooldown, temp_x + 186, temp_y - 14,1,1,0,chair_color,1);
+gpu_set_blendmode(bm_add);
+draw_sprite_ext(sprite_get("tiny_chair_icon"), cooldown, temp_x + 186, temp_y - 14,1,1,0,chair_color,chair_hit_add_opacity);
+chair_hit_add_opacity = max(0, chair_hit_add_opacity - 0.1)
+gpu_set_blendmode(bm_normal);
 
 //LOYAL FANS icon
 /* if variable_instance_exists(id, "ring_summon_count") && ring_summon_count > 0 {

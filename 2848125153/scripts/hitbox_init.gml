@@ -280,8 +280,8 @@ if(attack == AT_DSPECIAL){
         AriaCantAbsorb = true;
         Bounceable = true;
 		depth = -2;
-        thedice = instance_create(x,y-40,"obj_article_platform");
-        thedice.choochoo = self;thedice.property = true;
+        //thedice = instance_create(x,y-40,"obj_article_platform");
+        //thedice.choochoo = self;thedice.property = true;
         moneytimer = 0;toggleplatform = false;
         playerdead = false;
         playerurl = player_id.url;

@@ -312,7 +312,7 @@ if(runeE){
 }
 if(runeN){
 	//skillful weight rune
-	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.2,1.10935);
+	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.5,1.10935);
 }
 
 //silly angle 0 code (part 2)

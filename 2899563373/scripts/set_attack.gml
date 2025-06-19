@@ -29,7 +29,7 @@ switch(attack){
                 nspec_grav_cur = 0;
                 nspec_float_cur = 0;
                 in_float = true;
-                vsp = 0;
+                vsp = -3.5;
                 sound_play(sound_get("sfx_rapidjab"), false, noone, 0.6, 0.99);
             }
         }

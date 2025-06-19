@@ -537,39 +537,40 @@ if(attack == AT_DSPECIAL){
 		    	}
 			}
 		}
+		
 		if(free){
 			if(abs(vsp) > 3){
 				hit_priority = 2;
 			}else{
 				hit_priority = 0;
-			}num2 = 0;
-			Bounceable = true;
+			}num2 = 0;Bounceable = true;
 			if(!KoB_grabbed)projectile_trail();
 		}else{
-			depth = -1;
-			hit_priority = 0;
+			depth = -1;hit_priority = 0;
 			if(num2 == 0){
-				num2 = 1;
-				shake_camera(10,8);sound_play(player_id.moneybaghitsfx2,false,noone,1);
-				hsp = 0;vsp = 0;
-			}
-			if(destroysoon){
-				destroying = true;
-			}
+				num2 = 1;shake_camera(10,8);sound_play(player_id.moneybaghitsfx2,false,noone,1);
+				hsp = 0;vsp = 2;
+			}if(destroysoon)destroying = true;
 			Bounceable = false;
-		}
-		if(instance_exists(thedice)){
-			thedice.x = x;thedice.spr_dir = spr_dir;
+		}vsp = round(vsp);
+		/*if(instance_exists(thedice)){
+			thedice.x = round(x);thedice.spr_dir = spr_dir;
 			thedice.hsp = round(hsp);thedice.vsp = round(vsp);
 			if(hbox_num == 1){
-				thedice.y = y-26;
+				thedice.y = round(y-26);
 			}else if(hbox_num == 2){
-				thedice.y = y-58;
+				thedice.y = round(y-58);
 			}else if(hbox_num == 3){
-				thedice.y = y-58;
+				thedice.y = round(y-58);
 			}
+			if(!free){
+				with(obj_stage_article_platform)if(place_meeting(x,y-2,other)){
+					other.vsp = round(vsp+2);other.thedice.vsp = round(vsp);print("on plat");
+				}
+			}
+			print(thedice.y);print(thedice.vsp);
 			if(toggleplatform){thedice.plat_on = !thedice.plat_on;thedice.plat_on2 = !thedice.plat_on2;thedice.toggleplatform = true;toggleplatform = false;}
-		}
+		}*/
 		if (hp <= 0 || y >= room_height || x >= room_width+1000 || x < -1000) {
 			destroying = true;
 		}
@@ -607,7 +608,7 @@ if(attack == AT_DSPECIAL){
 	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
     	            	}
     	            }
-    	            if(get_player_team(player) == get_player_team(other.player) && "current_money" in player_id && attack == AT_JAB && hbox_num >= 10 && hbox_num < 12 && !other.destroying){
+    	            if(get_player_team(player) == get_player_team(other.player) && "current_money" in player_id && "value" in self && attack == AT_JAB && hbox_num >= 10 && hbox_num < 12 && !other.destroying){
     	            	if(other.hbox_num == 1 && other.housemoney < 10000 || other.hbox_num == 2 && other.housemoney < 30000 || other.hbox_num == 3){
 	    	            	//other.num3 = 0;
 	    	            	//with(other){

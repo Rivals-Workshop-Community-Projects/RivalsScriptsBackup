@@ -1,3 +1,6 @@
+can_grab_rock = true;
+relase_rock = false;
+has_released_rock = false;
 if attack == AT_NSPECIAL {
   if (window == 1 && instance_exists(myChair)){
     if move_cooldown[AT_NSPECIAL] <= 0 {

@@ -175,5 +175,15 @@ else{
 if chair_cooldown_by_destruction and move_cooldown[AT_NSPECIAL] == 0 {
   sound_play(asset_get("sfx_tow_anchor_land"), false, noone, 0.75);
   create_chair_flash_opacity = 1;
+  chair_hit_add_opacity = 1;
   chair_cooldown_by_destruction = false;
+}
+
+//Bug fix to allow kragg rock to be regrabbed
+with(pHitBox){
+    if("is_a_Kragg_rock" in self && ((player_id.url == CH_KRAGG && attack == AT_NSPECIAL && hbox_num == 1) ||
+    (player_id.url == CH_SHOVEL_KNIGHT && attack == AT_USTRONG && hbox_num == 4)) && player == other.player && self != other.grab_victim){
+        is_a_Kragg_rock = false;
+        hit_priority = 1;
+    }
 }

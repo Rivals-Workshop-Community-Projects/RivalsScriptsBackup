@@ -44,4 +44,8 @@ if ((my_hitboxID.attack == AT_USTRONG && window == 2)
 if !chair_cooldown_by_destruction {
   move_cooldown[AT_NSPECIAL] = 0;
   move_cooldown[AT_DSPECIAL] = 0;
+} else {
+  move_cooldown[AT_NSPECIAL] -= 60;
+  move_cooldown[AT_DSPECIAL] -= 60;
+  chair_hit_add_opacity = 1;
 }

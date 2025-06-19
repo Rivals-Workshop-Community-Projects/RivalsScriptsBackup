@@ -234,10 +234,9 @@ if(canon){
 }else{
     //outline_color = [0, 0, 0];
     //init_shader();
-    if (small_sprites > 1) {
-    	passivesoftarmor = 4*size_mult;
-    }else{passivesoftarmor = 0;}
-    knockback_adj = 1.05/size_mult;
+    if (small_sprites > 1) passivesoftarmor = 4*size_mult;
+    else passivesoftarmor = 0;
+    if(phone_cheats_updated[CHEAT_BeegKewtian])knockback_adj = 1.05/size_mult;
     
     if (has_rune("K") || runeK) {
     	passivesoftarmor = 4*(size_mult*0.75);

@@ -58,7 +58,7 @@ set_window_value(AT_UAIR, 8, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UAIR, 8, AG_WINDOW_ANIM_FRAME_START, 23);
 
-set_num_hitboxes(AT_UAIR, 2);
+set_num_hitboxes(AT_UAIR, 3);
 
 //Grab
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
@@ -83,6 +83,7 @@ set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UAIR, 1, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_UAIR, 1, HG_THROWS_ROCK, 1);
 
 //Back-breaker
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
@@ -109,3 +110,31 @@ set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 12);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UAIR, 2, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT, 10);
+
+// Rock Throw
+
+//Back-breaker
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 7);
+set_hitbox_value(AT_UAIR, 3, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 1);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_X, 2);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_Y, -41);
+set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 110);
+set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 64);
+set_hitbox_value(AT_UAIR, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 4);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 70);
+set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 11);
+set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 12);
+set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UAIR, 3, HG_THROWS_ROCK, 1);

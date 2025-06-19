@@ -16,6 +16,14 @@
 // Check if we're grabbing something grabbable.
 old_grab_valid = grab_valid;
 grab_valid = false;
+var grabbed_a_rock = false;
+with(pHitBox){
+    if(player_id == other && type == 1 && throws_rock == 1){
+        for(var i = 0; i < array_length(can_rock); i++){
+            if(can_rock[i] == 0) grabbed_a_rock = true;
+        }
+    }
+}
 if instance_exists(grab_victim) {
   if has_hit_player {
     // End the grab if the grabbed player died somehow
@@ -41,8 +49,31 @@ if instance_exists(grab_victim) {
           opp.move_cooldown[AT_NSPECIAL] = max(2, opp.move_cooldown[AT_NSPECIAL]);
         }
       }
+    } else if("is_a_Kragg_rock" in self){
+        if(other.release_rock){
+            other.grab_victim = noone
+            other.release_rock = false;
+        } else {
+            other.grab_valid = true;
+            hitpause_timer = 0;
+            hit_priority = 0;
+            in_hitpause = true;
+            hitbox_timer = 0;
+        }
     }
   }
+} else if(grabbed_a_rock && can_grab_rock){
+    with(pHitBox){
+        if(((player_id.url == CH_KRAGG && attack == AT_NSPECIAL && hbox_num == 1) ||(player_id.url == CH_SHOVEL_KNIGHT && attack == AT_USTRONG && hbox_num == 4))
+        && player == other.player && ("is_a_Kragg_rock" not in self || ("is_a_Kragg_rock" in self && !is_a_Kragg_rock))){
+            other.grab_victim = self;
+            is_a_La_Reina_chair = false;
+            is_a_Kragg_rock = true;
+            hit_priority = 0;
+            //player variables to not break code
+            activated_kill_effect = false;
+        }
+    }
 }
 /* if grab_valid { grab_victim.wrap_time = 9001; grab_victim.state = PS_WRAPPED; } */
 
@@ -348,6 +379,8 @@ if (attack == AT_FSTRONG){
     window = 7;
     window_timer = 0;
 
+    kragg_rock_release();
+
     if (!hitpause){
       vsp = -8;
     }
@@ -417,6 +450,7 @@ if (attack == AT_FSTRONG){
       active_landing_fx = spawn_hit_fx(x, y, hitfx_crown_bigland);
       window = 13;
       window_timer = 0;
+      kragg_rock_release();
     }
 
     if (vsp >= 0){
@@ -509,6 +543,7 @@ if (attack == AT_USTRONG){
     grab_victim.y = y - 58;
 
     if (window_timer == get_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH)){
+        kragg_rock_release();
       window += 1;
       window_timer = 0;
     }
@@ -660,10 +695,13 @@ if (window == 5){
       grab_victim.y = y - 32;
     }
 
-    if (window_timer == 6 || window_timer == 7){
+    if (window_timer == 6 || (window_timer == 7 && !has_released_rock)){
       grab_victim.x = x - 38 * spr_dir;
       grab_victim.y = y - 36;
     }
+
+    // Rock throw
+    if (window_timer == 6) kragg_rock_release();
 
 //Copter boost
     if (window_timer == 2 && vsp > 0){
@@ -784,12 +822,15 @@ if (attack == AT_UAIR){
 
   //Land
   if (window == 7){
-    grab_victim.x = base_x - 4*spr_dir;
-    if window_timer <= 3 {
-      grab_victim.y = base_y - 20;
-    } else {
-      grab_victim.y = base_y - 40;
-    }
+      if(!has_released_rock){
+        grab_victim.x = base_x - 4*spr_dir;
+        if window_timer <= 3 {
+          grab_victim.y = base_y - 20;
+        } else {
+          grab_victim.y = base_y - 40;
+        }
+      }
+     if(window_timer == 2) kragg_rock_release();
 
     if (window_timer >= uair_window_length){ window = 8; window_timer = 0; }
   }
@@ -841,6 +882,8 @@ if (attack == AT_DAIR){
       grab_victim.y = y - 70;
     }
   }
+
+    if(window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) kragg_rock_release();
 
   if (window == 5){
     can_fast_fall = true;
@@ -979,6 +1022,13 @@ if (attack == AT_FSPECIAL){
   can_wall_jump = (window == 4);
 
   if (window == 3){
+    if fspecial_dash_loops == 4 or (fspecial_dash_loops == 3 && window_timer > 3) {
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAMES, 1);
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAME_START, 12);
+    } else {
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAMES, 2);
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAME_START, 10);
+    }
     if window_timer == 1 && fspecial_dash_loops < fspecial_max_dash_loops-1 {
       add_afterimages_timer = 0; // 3
       } // activate afterimages.
@@ -1013,7 +1063,19 @@ if (attack == AT_FSPECIAL){
       } else if fspecial_dash_loops == 4 { // destroy hitbox on last loop
         destroy_hitboxes()
       }
+      if fspecial_dash_loops < 3 {
+        set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
+        set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 4);
+      } else if ((fspecial_dash_loops == 4) or (fspecial_dash_loops == 3 && window_timer > 2)) {
+        set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 99);
+        set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+      }
 
+    } else {
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAMES, 2);
+      set_window_value(attack, 3, AG_WINDOW_ANIM_FRAME_START, 10);
+      set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
+      set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 4);
     }
 
   if (window == 4) {
@@ -1024,6 +1086,16 @@ if (attack == AT_FSPECIAL){
       set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
       if !fspecial_can_edgecancel {spawn_base_dust(x, y, "land");}
       fspecial_can_edgecancel = true;
+    }
+    if fspecial_can_edgecancel && !free {
+      var target_speed = min(3, max(abs(hsp), (fspecial_window_length/(max(1,window_timer))*2)));
+      if ((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)) {
+        hsp = spr_dir*0.3*target_speed;
+      } else if ((spr_dir == -1 && left_down) || (spr_dir == 1 && right_down)) {
+        hsp = spr_dir*0.9*target_speed;
+      } else {
+        hsp = spr_dir*0.7*target_speed;
+      }
     }
   }
 
@@ -1066,7 +1138,7 @@ if (attack == AT_FSPECIAL){
 
 }//End of Fspecial Section 1
 
-if instance_exists(grab_victim) {
+if instance_exists(grab_victim) || (has_released_rock && attack == AT_FTHROW) {
   if (attack == AT_FTHROW) {
 
     // put the chair away
@@ -1102,9 +1174,12 @@ if instance_exists(grab_victim) {
       if (window_timer > 5 && vsp >= 0 && !free){
         window = 3; window_timer = 0;
         active_landing_fx = spawn_hit_fx(x, y, hitfx_crown_medland);
+        kragg_rock_release();
       }
-      grab_victim.x += (x+hsp+20*spr_dir - grab_victim.x)/1;
-      grab_victim.y += (y+vsp+0 - grab_victim.y)/1;
+      if(!has_released_rock){
+          grab_victim.x += (x+hsp+20*spr_dir - grab_victim.x)/1;
+          grab_victim.y += (y+vsp+0 - grab_victim.y)/1;
+      }
     }
     if window == 3 {
       can_move = false
@@ -1189,6 +1264,7 @@ if instance_exists(grab_victim) {
     } else if window == 3 && window_timer <= 1 {
       hsp = -2*spr_dir; vsp = -10;
     }
+    if(window == 2 && window_timer == 4) kragg_rock_release();
   }
 }//End of Fspecial Section 2
 
@@ -1319,6 +1395,7 @@ if (attack == AT_USPECIAL){
 
       set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, new_formula);
       set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, new_formula);
+      set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 12 + new_formula * 6);
       if grab_victim.is_a_La_Reina_chair {
         set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 12);
       } else {
@@ -1326,6 +1403,7 @@ if (attack == AT_USPECIAL){
       }
       uspecial_can_cheer = 3;
       window = 8; window_timer = 0;
+      kragg_rock_release();
 
       active_landing_fx = spawn_hit_fx(x, y, hitfx_crown_bigland);
 
@@ -1372,8 +1450,10 @@ if (attack == AT_USPECIAL){
   if (window == 9) {
      can_move = true;
     if window_timer <= 2 {
-      var victim_damage = (get_player_damage(uspecial_grab_victim.player));
-      if uspecial_grab_victim.is_a_La_Reina_chair { victim_damage = 0; }
+      if(instance_exists(uspecial_grab_victim)){
+          var victim_damage = (get_player_damage(uspecial_grab_victim.player));
+          if uspecial_grab_victim.is_a_La_Reina_chair { victim_damage = 0; }
+      }
       hsp = -spr_dir*(2+(min(victim_damage, 120)/32));
       vsp = -(6+(min(victim_damage, 120)/24));
     }
@@ -1494,7 +1574,16 @@ if (attack == AT_DSPECIAL_2){
 // Soft armor during grabs during multiplayer matches
 // Also spawn magnet hitfx and manage hitfx
 if instance_exists(grab_victim) {
+
+    if grab_valid {
+        grab_timer += 1;
+    } else {
+        grab_timer = 0;
+    }
+    
   if (total_player_count > 2) && grab_valid && !grab_victim.is_a_La_Reina_chair {
+//   if ((total_player_count > 2) or (grab_timer > 2 && (attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_FTHROW or attack == AT_DTHROW)))
+//   && grab_valid && !grab_victim.is_a_La_Reina_chair && not ("is_a_Kragg_rock" in grab_victim) {
     soft_armor = 13.8; // Breaks if Kragg Fair hits you at 70% or above.
   } else {
     soft_armor = 0;
@@ -1606,6 +1695,11 @@ if (instance_exists(grab_victim)){
 /////////
 
 if (attack == AT_TAUNT){
+    // reset chair cooldown in practice mode
+    if get_match_setting(SET_PRACTICE) {
+        move_cooldown[AT_NSPECIAL] = 0;
+        move_cooldown[AT_DSPECIAL] = 0;
+    }
   if (window > 2) {
     if ((window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) ||
         (window_timer >= 14 && taunt_pressed)) {
@@ -1630,7 +1724,23 @@ if (attack == AT_TAUNT){
 
 }
 
+// ROCK THROW OFFSET CORRECTION
+if(instance_exists(grab_victim) && "is_a_Kragg_rock" in grab_victim){
+    if(attack != AT_DTHROW && (attack != AT_FTHROW || (attack == AT_FTHROW && window > 1))){
+        grab_victim.y -= 32;
+    }
+}
+
 /// DEFINITIONS ONLY PAST THIS POINT
+
+#define kragg_rock_release
+can_grab_rock = false;
+if(instance_exists(grab_victim) && "is_a_Kragg_rock" in grab_victim){
+    has_released_rock = true;
+    release_rock = true;
+    grab_victim.is_a_Kragg_rock = false;
+    grab_victim.in_hitpause = false;
+}
 
 #define ledge_snap
 //gain a little height against walls + ledgesnap

@@ -95,7 +95,7 @@ set_window_value(AT_FSTRONG, 13, AG_WINDOW_HITPAUSE_FRAME, 31);
 
 
 
-set_num_hitboxes(AT_FSTRONG, 3);
+set_num_hitboxes(AT_FSTRONG, 5);
 
 var e_hitbox = 1; //GRAB
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_TYPE, 1);
@@ -119,6 +119,7 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_clairen_swing_strong"));
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_TECHABLE, 3); // 3 = Cannot tech or bounce
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_THROWS_ROCK, 1);
 
 var fstrong_base = 8;
 var fstrong_scaling = 1.15;
@@ -143,6 +144,8 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_LOCKOUT, 10);
 
 e_hitbox = 3; //Forward throw
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_TYPE, 1);
@@ -167,3 +170,53 @@ set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_LOCKOUT, 10);
+
+// Rock hits
+
+e_hitbox = 4; //Back throw
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_SHAPE, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_WINDOW, 7);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_X, -16);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_Y, -28);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_WIDTH, 94);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HEIGHT, 60);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_PRIORITY, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_DAMAGE, 10);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_ANGLE, 140);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_THROWS_ROCK, 1);
+
+e_hitbox = 5; //Forward throw
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_SHAPE, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_WINDOW, 13);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_X, 11);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITBOX_Y, -22);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_WIDTH, 96);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HEIGHT, 55);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_PRIORITY, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_DAMAGE, 10);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_ANGLE, 40);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_KNOCKBACK, 14);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_FSTRONG, e_hitbox, HG_THROWS_ROCK, 1);
