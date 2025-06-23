@@ -43,7 +43,7 @@ if (should_play_laststock_mus) && final_stock_cont == -1 && (get_gameplay_time()
 		if mus == 2 {
 			suppress_stage_music(0,1);
 			music_stop();
-			sound_play(sound_get("final-lap-mk8"), false, 0, .5, 1);
+			sound_play(sound_get("final-lap-tour"), false, 0, .5, 1);
 		}
 		final_stock = true;
 		final_stock_cont = 0;

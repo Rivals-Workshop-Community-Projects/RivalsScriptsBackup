@@ -15,7 +15,7 @@ var music_files, music_titles;
 music_files = ["music_loop", "music_loop2", "music_loop3"]
  
 //music name title
-music_titles = ["Vancouver Velocity - Mario Kart Tour", "Tour Vancouver Velocity - Mario Kart 8 Deluxe", "Vancouver Velocity - Mario Kart World"]
+music_titles = ["Vancouver Velocity - Mario Kart Tour", "Tour Vancouver Velocity - Mario Kart 8 Deluxe", "Vancouver Velocity - Mario Kart World (Jukebox Tunes)"]
  
  
 //confirmation sound to play when music has been changed
