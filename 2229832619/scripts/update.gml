@@ -28,7 +28,17 @@ if (get_player_color( player ) == 7){ //towerofheaven
 		ea_init = true;
 	}
 }
-if (get_player_color( player ) == 20){ //towerofheaven
+if (get_player_color(player)==11&&extra_col==10){ //knight
+	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+		outline_color=[200, 200, 255]
+		init_shader();
+	}
+	if (!ea_init){
+		
+		ea_init = true;
+	}
+}
+if (get_player_color( player ) == 20){ //SAVE
 	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 		outline_color=[30, 30, 30]
 	}
@@ -39,6 +49,15 @@ if (get_player_color( player ) == 20){ //towerofheaven
 }
 
 if (was_reloaded){
+	if (get_player_color(player)==11||get_player_color(player)==19||get_player_color(player)==20){//specialsfx
+		if (rk_sfx == false){
+			if (special_down){
+				rk_sfx = true;
+				white_flash_timer = 18;
+				sound_play(sound_get("rk_active"));
+			}
+		}
+	}
 	sound_play(sound_get("altsel"))
 	was_reloaded = false;
 }
@@ -71,9 +90,10 @@ if (yo_dummy_your_up_b_got_PARRIED){
 if ((get_gameplay_time() == 2 && get_training_cpu_action() != CPU_FIGHT) || was_reloaded){
 	practice = true;
 }
+/*
 if (practice && down_down && taunt_down && shield_down){
 	nadev = true;
-}
+}*/
 
 if (usp_real_cd){
 	move_cooldown[AT_USPECIAL] = 2;
@@ -87,6 +107,11 @@ if (dairvsp != dairvsp_orig){
 	if (!free){
 		dairvsp = dairvsp_orig
 	}
+}
+
+if (state==PS_LANDING_LAG && fair_thing==true){
+	hsp = fair_thing_hsp;
+	fair_thing = false;
 }
 
 if (usp_ls_cooldown>0){
@@ -196,6 +221,26 @@ if (state==PS_SPAWN && extra_col == 0 && taunt_down){
 		white_flash_timer = 18;
 		sound_play(sound_get("shine"));
 		init_shader();
+	}
+}
+
+/*if (get_player_color(player)==11){//knight
+	if (state==PS_SPAWN && extra_col == 0){
+		if (strong_down&&jump_down){
+			extra_col = 10
+			white_flash_timer = 18;
+			sound_play(sound_get("rk_active"));
+			init_shader();
+		}
+	}
+}*/ //disabled cause i got lazy of bugfixing
+if (get_player_color(player)==11||get_player_color(player)==19||get_player_color(player)==20){//specialsfx
+	if (state==PS_SPAWN && rk_sfx == false){
+		if (special_down){
+			rk_sfx = true;
+			white_flash_timer = 18;
+			sound_play(sound_get("rk_active"));
+		}
 	}
 }
 
@@ -311,6 +356,15 @@ if (quake_timer>0){
 		was_usp = false;
 	}
 }*/
+
+/*
+var demoncheck = false;
+with (asset_get("obj_stage_article")){ if (variable_instance_exists(id, "gw_demonhorde_enemy")){demoncheck = true;}}//demon horde check
+if (demoncheck==true){
+	
+}
+*/
+
 
 if (trummelcodecneeded){
 //	if (id % 10 == 0){
@@ -888,7 +942,6 @@ if(variable_instance_exists(id,"diag"))
     "Chaos beckons.",
     "Night is longest when day does not exist.",
     "An unwelcome visitant.",
-    "Would molydeux grant you fortune?",
     "Go, then. Reap what it has sown.",
     "Your time is drawing near... Nothingness."]
 
@@ -897,22 +950,22 @@ if(variable_instance_exists(id,"diag"))
 //  Regular dialogue
     if(otherUrl == "1894194148" && diag != "") //Change the url into a specific character's
     {//A.R.
-        diag = "False manusya. What have you found in your paths?";
+        diag = "False manusya, what have you found in your paths?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2108895293" && diag != "")
     {//Lumina
-        diag = "Chaos. Black within white. Light within dusk. A concept as old as history.";
+        diag = "Eigengrau cannot be erased.";
         diag_index = 0;
     }
     if(otherUrl == "2226596831" && diag != "")
     {//Reckless
-        diag = "A silhouette seeking physical chaos. Destruction shall beget decay.";
+        diag = "Destruction shall beget its decay.";
         diag_index = 0;
     }
     if(otherUrl == "2229832619" && diag != "")
     {//N/A (mirror match)
-        diag = "Signs...";
+        diag = "...Signs...";
         diag_index = 0;
     }
     if(otherUrl == "2343479756" && diag != "")
@@ -922,31 +975,40 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "2415092274" && diag != "")
     {//Ao
-        diag = "Constellations ever-radiant. Loneliness, too, is a driving force.";
+        diag = "Constellations ever-radiant. But all stars must burn out.";
         diag_index = 0;
     }
-	
     if(otherUrl == "2605462884" && diag != "")
     {//EXPLORER
-        diag = "Seeker. Explorer of the infinite. We must teach you that nothing is truly endless.";
+        diag = "Seeker. Explorer of the infinite. You shall know that nothing is truly endless, but us.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2685923956" && diag != "")
+    {//Jirachi
+        diag = "Wishes are but an excuse.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2895650073" && diag != "")
+    {//Madotsuki
+        diag = "All dreams has its end. Even with its dreamer absent, fates step all the same.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3273103805" && diag != "")
+    {//NisaeSSL
+        diag = "Justified or not, all actions has its consequences. Nothing are without its entropy.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3310371100" && diag != "")
+    {//Usher
+        diag = "All are blind to what one lacks, for they never knew what they could have.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3346651920" && diag != "")
+    {//Slenderman
+        diag = "Myths rely of intangibility. Without, they wither and crumble.";
         diag_index = 0;
     }
 	
-    if(otherUrl == "1877715009" && diag != "")
-    {//Hikaru
-        diag = "Light. Dawn. Reasons hardly sought after.";
-        diag_index = 0;
-    }
-    if(otherUrl == "2396735388" && diag != "")
-    {//Zephrie
-        diag = "Befriender of the wind. Controlled, but no powerful than a storm.";
-        diag_index = 0;
-    }
-    if(otherUrl == "2006712792" && diag != "")
-    {//Feri
-        diag = "Voices. Or is it the end of your hubris?";
-        diag_index = 0;
-    }
     if(otherUrl == "1993599340" && diag != "")
     {//LSD
         diag = "Ablation of subconscious. To read without reading.";
@@ -959,17 +1021,17 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "2322322191" && diag != "")
     {//Frisk
-        diag = "To determine a path, you must accept its consequences.";
+        diag = "To determine a path, one must be prepared for its answers.";
         diag_index = 0;
     }
-    if(otherUrl == "2300438860" && diag != "")
+    if(otherUrl == "3161437965" && diag != "")
     {//Chara
-        diag = "One end of a path, perhaps. Soon there will be no more of you to move on to another.";
+        diag = "Soon there will be nowhere else to call your next.";
         diag_index = 0;
     }
     if((otherUrl == "2100204665"||otherUrl == "1873681040") && diag != "")
     {//Papyrus
-        diag = "Unconditional trust... Futility.";
+        diag = "Trust beckons exploit. But you already know this, do you.";
         diag_index = 0;
     }
     if(otherUrl == "1869814191" && diag != "")
@@ -979,22 +1041,82 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "1867608473" && diag != "")
     {//Kris
-        diag = "Control lies in one's willpower. Take yours, else it is lost.";
+        diag = "Control your control.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1877715009" && diag != "")
+    {//Hikaru
+        diag = "Aimless...";
+        diag_index = 0;
+    }
+    if(otherUrl == "2802300675" && diag != "")
+    {//Valley & Death
+        diag = "Those who walk in the shadow of death will soon follow its demise.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2871608790" && diag != "")
+    {//Azi & Mr.Baggy
+        diag = "Dare to heed the warning or face the truth.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3079776883" && diag != "")
+    {//Kumaki
+        diag = "It's easy to see where such reckless abandon can take you.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2965700442" && diag != "")
+    {//Anthem
+        diag = "Unsung are your unwritten future. Tread carefully or trip.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2977835488" && diag != "")
+    {//Qoedil
+        diag = "No hunger are ever satiated.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3308351120" && diag != "")
+    {//Saelune
+        diag = "Attitude can only hide so much.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3306584099" && diag != "")
+    {//Tomoko
+        diag = "Seems even the narrative wants you not.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3309240911" && diag != "")
+    {//Putrolce
+        diag = "The world of nothing has no feed.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2396735388" && diag != "")
+    {//Zephrie
+        diag = "Breeze grow to tempest, to storm. Control lest they absorb you.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3480814244" && diag != "")
+    {//Iori
+        diag = "You understand nothing.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2006712792" && diag != "")
+    {//Feri
+        diag = "End of your hubris.";
         diag_index = 0;
     }
     if(otherUrl == "2534202008" && diag != "")
     {//Kinunosu
-        diag = "A nest of silk. Restrictment is means none to us of many.";
+        diag = "Transliterations do not tell the whole story.";
         diag_index = 0;
     }
     if(otherUrl == "2504062893" && diag != "")
     {//Sciros
-        diag = "Reanimation. Free spirits confined once again. Serve your purpose, then.";
+        diag = "What wills you to keep your chain that bounds?";
         diag_index = 0;
     }
     if(otherUrl == "2201608216" && diag != "")
     {//Blake
-        diag = "A soul echt, but an abandoned artifice nonetheless.";
+        diag = "You've sought after what was ultimately none.";
         diag_index = 0;
     }
     if(otherUrl == "2502590772" && diag != "")
@@ -1004,87 +1126,122 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "2546990424" && diag != "")
     {//Maverick
-        diag = "Wind... Aimless it is not. Directions, a destination.";
+        diag = "Air and wind is volatile. Even a small feather can alter the fate.";
         diag_index = 0;
     }
     if(otherUrl == "2504113755" && diag != "")
     {//Nova
-        diag = "Tangible illusions. Time dissonance.";
+        diag = "Time dissonance do not fool our eyes.";
         diag_index = 0;
     }
     if(otherUrl == "2396961482" && diag != "")
     {//Anglara
-        diag = "Light of the depths. The ocean darkness has much to offer - however our differences are clear.";
+        diag = "The ocean darkness has much to offer - however the differences are clear.";
+        diag_index = 0;
+    }
+    if(otherUrl == "3139912282" && diag != "")
+    {//Rudra
+        diag = "...Not of us? Intriguing.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1996010699" && diag != "")
+    {//Suitcase
+        diag = "...What reasons brought thou here?";
         diag_index = 0;
     }
     if(otherUrl == "2504123533" && diag != "")
     {//Visselle
-        diag = "Controlled alchemy. Conjure your path, then.";
+        diag = "Conjure your path, if you dare.";
         diag_index = 0;
     }
     if(otherUrl == "2453146011" && diag != "")
     {//Monarch
-        diag = "Our spatial comprehension is beyond what you can attain. Think.";
+        diag = "Think beyond your own rules, lest the reality flings you nowhere.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2605468610" && diag != "")
+    {//Exetior
+        diag = "Your ideal self is none but terrible hubris.";
         diag_index = 0;
     }
     if(otherUrl == "2217843818" && diag != "")
     {//Among
-        diag = "Deception. Mean naught with many eyes to prove its falsehood.";
+        diag = "With many eyes, we cannot be fooled. Try, if you dare.";
         diag_index = 0;
     }
     if(otherUrl == "2265876548" && diag != "")
     {//Matthew Favson
-        diag = "That is what you wish to believe. Let us see how much further can you keep such beliefs.";
-        diag_index = 0;
-    }
-    if(otherUrl == "2775288890" && diag != "")
-    {//Sol
-        diag = "Such hubris. One day, thou shalt face true consequence.";
+        diag = "That is what you wish to believe. Let us see how further can you keep such beliefs.";
         diag_index = 0;
     }
     if(otherUrl == "2502476068" && diag != "")
     {//Matt
-        diag = "Manusya of the folklores. A powerful fighter, though not absolute.";
+        diag = "Legends and folklores are not absolute.";
         diag_index = 0;
     }
     if(otherUrl == "1962084547" && diag != "")
     {//Bird Guy
-        diag = "Your driving force... beyond our comprehension. Perhaps it is clear?";
+        diag = "Absent...";
         diag_index = 0;
     }
     if(otherUrl == "2267598408" && diag != "")
     {//Cantaloupe
-        diag = "Void is a concept nonsingular. What you serve casts different motives, however we naught mean end to what may overlap with what we are. We only intend to purge what is against us.";
+        diag = "Voids are concept nonsingular.";
         diag_index = 0;
     }
     if(otherUrl == "2787737701" && diag != "")
     {//Sinker
-        diag = "...This artifice... observing us. If what thou seek is us, then leave thouself to the flow.";
+        diag = "...An artifice... followed us here. If what thou seek are we, then leave thouself to the flow.";
         diag_index = 0;
     }
     if(otherUrl == "2102497760" && diag != "")
     {//Aei Ou
-        diag = "Forgotten to time... We admit this to be an emotion we, too, have felt closely.";
+        diag = "Forgotten to time, or was it inevitable...?";
+        diag_index = 0;
+    }
+    if((otherUrl == "1871989159"||otherUrl == "16") && diag != "")
+    {//Mollo
+        diag = "Praise not the god that does not hear.";
+        diag_index = 0;
+    }
+    if((otherUrl == "2136440419"||otherUrl == "17") && diag != "")
+    {//Hodan
+        diag = "Care not the world, and the world, too, cares you not.";
+        diag_index = 0;
+    }
+    if(otherUrl == "19" && diag != "")
+    {//Olympia
+        diag = "The truth is always obscured.";
         diag_index = 0;
     }
     if(otherUrl == "1968068304" && diag != "")
     {//Epinel
-        diag = "Formidable one... However no extent of durable stones mean unbreakable. It shalt be done.";
+        diag = "Earth will draw its final breath.";
         diag_index = 0;
     }
-    if(otherUrl == "1913517643" && diag != "")
+    if((otherUrl == "1913517643"||otherUrl == "18") && diag != "")
     {//Pomme
-        diag = "Hymns, songs, we had long forgotten these concepts. Such is time fleeting.";
+        diag = "It will all be over soon.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2229887722" && diag != "")
+    {//Amber
+        diag = "...";
+        diag_index = 0;
+    }
+    if(otherUrl == "1968648848" && diag != "")
+    {//Hime Abyss
+        diag = "How... exhausting.";
         diag_index = 0;
     }
     if(otherUrl == "1866016173" && diag != "")
     {//Guadua
-        diag = "Misunderstood. You were made to be on par, now compared to the subpar.";
+        diag = "Past may build future, but that is not its sole purpose.";
         diag_index = 0;
     }
-    if(otherUrl == "1865940669" && diag != "")
-    {//Sandbert
-        diag = "Primeval being. Divine, demonic, all the same. All that lives must die, passing through nature to eternity.";
+    if((otherUrl == "1865940669"||otherUrl == "3139883935") && diag != "")
+    {//Sandbert/Mrs.
+        diag = "All that lives must die, passing through nature to eternity.";
         diag_index = 0;
     }
 	/*
@@ -1097,33 +1254,6 @@ if(variable_instance_exists(id,"diag"))
     
 	
 //  NRS/3-Part dialogue
-    if(otherUrl == "1968648848") //Change the url into a specific character's
-    {//Hime Abyss
-        with(pet_obj) {
-        diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-        diag_nrs = true; //Sets the 3-Part dialogue to happen.
-        diag_nrs_diag = [
-        "Yeeel, Was yea ra weal yorr toe titilia mahin en jambea won mea. Infel, yorr memora? Wharn wis dor sos yora spitze - Was nyasri ga nozess en kil yora.",
-        "...",
-        "Den dest phantasmagoria en rhaplanca ides, Mea wis rooshellan, noini roon en endia vale. Coall inna mea."]
-
-        //If your portrait has multiple sprite indexes. You can change them during the interaction!
-		/*
-        switch(diag_nrs_state)
-        {
-            case 0: //First Message
-                other.diag_index = 1;
-                break;
-            case 1: //Second Message
-                other.diag_index = 1;
-                break;
-            case 2: //Last Message
-                other.diag_index = 2;
-                break;
-        }
-		*/
-		}
-    }
     if(otherUrl == "2254931693") //Change the url into a specific character's
     {//bagelboy bonby
         with(pet_obj) {
@@ -1131,7 +1261,7 @@ if(variable_instance_exists(id,"diag"))
         diag_nrs = true; //Sets the 3-Part dialogue to happen.
         diag_nrs_diag = [
         "(axolotl)",
-        "A manusya beyond reality rules. We are curious to see what you perform.",
+        "A manusya beyond reality rules. How curious.",
         "(  )"]
 
         //If your portrait has multiple sprite indexes. You can change them during the interaction!
@@ -1157,7 +1287,7 @@ if(variable_instance_exists(id,"diag"))
         diag_nrs = true; //Sets the 3-Part dialogue to happen.
         diag_nrs_diag = [
         "Ooh, axolotl of doom. Very scary!",
-        "Severed manusya head with sentience. A flight with no end, away from whence you came. Its path shall be cut short.",
+        "Your flight shall be cut short.",
         "Get ready to move your fingers, it's-a time for you to type!"]
 
         //If your portrait has multiple sprite indexes. You can change them during the interaction!
@@ -1185,7 +1315,7 @@ if(variable_instance_exists(id,"diag"))
 
 
 
-
+/*
 if (nadev){
 	if (down_stick_down && shield_down){
 		if (nadev_cooldown==0){
@@ -1197,7 +1327,7 @@ if (nadev){
 		nadev_cooldown--;
 	}
 }
-
+*/
 
 
 

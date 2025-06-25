@@ -16,18 +16,18 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("blob"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
 
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 8);//10
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 6);//10//8
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 3);//4
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_absa_taunt"));
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX_FRAME, 2);//3
 
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 3);//4
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 
@@ -54,8 +54,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 150);//170
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 150);//170
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 125);//170//150//125//120
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 125);//170//150//125//120
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9);//13
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
@@ -80,8 +80,8 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 110);//130
-set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 110);//130
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 80);//130//110//80//76
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 80);//130//110//80//76
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 7);//10
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
@@ -106,8 +106,8 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 90);//100
-set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 90);//100
+set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 70);//100//90//70//68
+set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 70);//100//90//70//68
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 5);//8
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE_FLIPPER, 3);

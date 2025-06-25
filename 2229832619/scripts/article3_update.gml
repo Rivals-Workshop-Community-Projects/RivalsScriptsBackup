@@ -28,7 +28,7 @@ if (state == 0){
 		if (player_id == other.player_id){
 			if (place_meeting(x, y, other.id)){
 				if (state == 1){
-					sound_play(sound_get("swing3"));
+					sound_play(sound_get("swing3"))
 					image_angle = other.image_angle;
 					var hfx = spawn_hit_fx( x, y, player_id.na_ms_fx )
 					hfx.draw_angle = other.image_angle+90
@@ -36,10 +36,48 @@ if (state == 0){
 					state_timer = 0;
 					//other.state = 2;
 					//other.state_timer = 0;
-					hitstop = 9;
+					//hitstop = 9;
 				}
 			}
 		}
+	}
+	var distance = (32*15);
+	var angleA = (image_angle / 180 * -3.14);
+	var tmp_xoffset = round(distance * cos(angleA));
+	var tmp_yoffset = round(distance * sin(angleA));
+	var col_check = collision_line(x+tmp_xoffset, y+tmp_yoffset, x-tmp_xoffset, y-tmp_yoffset, asset_get("obj_article2"), true, true);
+	if (col_check != -4){
+	with(col_check){
+		if (player_id == other.player_id){
+			if (place_meeting(x, y, other.id)){
+				if (state == 1){
+					if (slash_immune == false){
+					sound_play(sound_get("swing3"))
+					sound_play(sound_get("shadow"),false,noone,0.8,1.5)
+					var distance = 20;
+					var angle1 = ((other.image_angle+90) / 180 * -3.14);
+					var b_x_tmp1 = round(distance * cos(angle1));
+					var b_y_tmp1 = round(distance * sin(angle1));
+					var riftID1 = instance_create(x+b_x_tmp1, y+b_y_tmp1, "obj_article2");
+					var riftID2 = instance_create(x-b_x_tmp1, y-b_y_tmp1, "obj_article2");
+					riftID1.image_angle = other.image_angle+90;
+					riftID2.image_angle = other.image_angle-90;
+					riftID1.state = 1;
+					riftID2.state = 1;
+					riftID1.state_timer = state_end;
+					riftID2.state_timer = state_end;
+					riftID1.slash_immune = true;
+					riftID2.slash_immune = true;
+					var hfx = spawn_hit_fx( x, y, player_id.na_ms_fx )
+					hfx.draw_angle = other.image_angle+90
+					state = 1;
+					state_timer = state_end;
+					loop_count = loop_max;
+					}
+				}
+			}
+		}
+	}
 	}
 		
     if (state_timer == state_end){
@@ -62,9 +100,29 @@ if (state == 1){
 	with(asset_get("oPlayer")){
 		if (id != other.player_id){
 			if (place_meeting(x, y, other.id)){
+				if (!(get_match_setting( SET_TEAMS )==true&&get_player_team( id.player )==get_player_team( other.player_id.player ))){
 				other.state = 3;
 				other.state_timer = 0;
 				if (state == PS_HITSTUN){
+					other.quicker = true;
+				}
+				var usp_angle_e = other.image_angle / 180 * -3.14;
+				var hbdisp = point_distance(x, y-round(char_height/2), other.x, other.y);;
+				other.tmp_x_str = other.x+round(hbdisp * cos(usp_angle_e));
+				other.tmp_y_str = other.y+round(hbdisp * sin(usp_angle_e));
+				//other.tmp_x_str = x;
+				//other.tmp_y_str = y-round(char_height/2);
+				}
+			}
+		}
+	}
+	//demonhorde or etc
+	with (asset_get("obj_stage_article")){
+		if (variable_instance_exists(id, "enemy_stage_article")){
+			if (place_meeting(x, y, other.id)){
+				other.state = 3;
+				other.state_timer = 0;
+				if (state == 6||state == 7){//if hitstun
 					other.quicker = true;
 				}
 				var usp_angle_e = other.image_angle / 180 * -3.14;
@@ -103,7 +161,8 @@ if (state == 3){
 	state_end = 10;//13
 	}
 	if (state_timer==1){
-		sound_play(sound_get("prem"), false, noone, 1, 1.1);
+		if (player_id.rk_sfx){ sound_play(sound_get("rk_eye"), false, noone, 1, 1); }else{
+		sound_play(sound_get("prem"), false, noone, 1, 1.1); }
 		with(player_id){
 			spawn_hit_fx( other.tmp_x_str, other.tmp_y_str, 66 )
 		}
@@ -120,8 +179,10 @@ if (state == 3){
 	
     if (state_timer == state_end){
 			sound_stop(sound_get("prem"));
+			sound_stop(sound_get("rk_eye"));
 		with(player_id){
-			sound_play(sound_get("swing3"));
+			if (rk_sfx){ sound_play(sound_get("rk_cut2"), false, noone, 1, 1); }else{
+			sound_play(sound_get("swing3")); }
 			spawn_hit_fx( other.tmp_x_str, other.tmp_y_str, na_ss_fx ) //y+30
 			create_hitbox( AT_USPECIAL, 5, other.tmp_x_str, other.tmp_y_str );
 			steve_death_message = "I want you to retrace your steps";

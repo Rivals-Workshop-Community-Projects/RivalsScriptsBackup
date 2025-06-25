@@ -58,33 +58,6 @@ if (attack == AT_USPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
 }
 
 
-if (attack == AT_DSPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
-	
-	//charge effect
-	if (window==3){
-		var tmp_range3 = ease_cubeOut( 0, 70, dsp_glow_time, dsp_glow_max )
-		var tmp_alpha5 = clamp(ease_cubeIn( 60, 0, dsp_glow_time, dsp_glow_max )/100, 0, 1)
-		var tmp_alpha6 = tmp_alpha5 - clamp(ease_cubeIn( 100, 0, dsp_glow_time, round(dsp_glow_max/3) )/100, 0, 1)
-		
-		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0), get_color_profile_slot_g( get_player_color(player), 0), get_color_profile_slot_b( get_player_color(player), 0));
-		
-		draw_set_alpha(tmp_alpha6);
-		draw_circle_colour(x, y-24, tmp_range3, make_color, make_color, false);
-		draw_set_alpha(1);
-	}
-	
-	//laser
-	if (window==11||window==12||window==13){
-		var tmp_x3 = x+(57*spr_dir)
-		var tmp_y3 = y-49
-		
-			var tmp_rad = ease_quartInOut( 40, 0, state_timer-19, 54 );
-			var tmp_disp = ease_quartInOut( 0, 10, state_timer-19, 54 );
-			
-		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad), c_white, c_white);
-		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad/2), c_white, c_white, false);
-	}
-}
 
 /*
 clock_show = false;
@@ -129,7 +102,6 @@ if (clock_s_timer>0){
 	draw_sprite_ext( sprite_get("na_clock_needle"), 0, x+1, y-24, 1, 1, tmp_angle, -1, 0.8 )
 }
 shader_end()
-
 
 
 

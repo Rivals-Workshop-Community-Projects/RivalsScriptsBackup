@@ -1,7 +1,7 @@
 alt_button = 0;
 
-cursor_x = get_instance_x(cursor_id);
-cursor_y = get_instance_y(cursor_id);
+cursor_x = 0;
+cursor_y = 0;
 
 alt_button_x = 180
 alt_button_y = 44

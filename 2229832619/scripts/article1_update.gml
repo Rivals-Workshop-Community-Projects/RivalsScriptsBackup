@@ -25,7 +25,10 @@ if (init == 0){
 	}
 }
 
+if (!hitstop){
 state_timer++;
+}
+
 if (hsp != 0){
 	hsp = hsp/1.04
 }
@@ -70,7 +73,11 @@ if (state == 0){
 	
 	
     if (state_timer == state_end){
-		cooldown = 12;//35//25
+		if (tier==1){//normal init (large bubble)
+			cooldown = 10;//35//25//12
+		}else{//slashed init (middle or small bubble)
+			cooldown = 16;//8
+		}
         state = 1;
         state_timer = 0;
 		mode = 1;
@@ -81,15 +88,15 @@ if (state == 0){
 //time to randomly define the ranges
 switch (tier){
 	case 1:
-	void_range = 84;//82
+	void_range = 70;//82//84
 	disable_range = 135;//110//120
 	break;
 	case 2:
-	void_range = 60;//54
+	void_range = 50;//54//60
 	disable_range = 110;//54//70//80
 	break;
 	case 3:
-	void_range = 50;//42
+	void_range = 40;//42//50
 	disable_range = 100;//42//65//75
 	break;
 }
@@ -118,20 +125,24 @@ if (state == 1){
 			image_index = 7 + state_timer * 2 / state_end;
 			break;
 			case 1:
-			switch (cooldown){
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-				image_index = 56 + state_timer * 2 / state_end;
-				break;
-				default:
+			if (modebuffer==1){
 				image_index = 9 + state_timer * 2 / state_end;
-				break;
+			}else{
+				switch (cooldown){
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+					image_index = 56 + state_timer * 2 / state_end;
+					break;
+					default:
+					image_index = 9 + state_timer * 2 / state_end;
+					break;
+				}
 			}
 			break;
 			case 2:
@@ -145,20 +156,24 @@ if (state == 1){
 			image_index = 23 + state_timer * 2 / state_end;
 			break;
 			case 1:
-			switch (cooldown){
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-				image_index = 58 + state_timer * 2 / state_end;
-				break;
-				default:
+			if (modebuffer==1){
 				image_index = 25 + state_timer * 2 / state_end;
-				break;
+			}else{
+				switch (cooldown){
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+					image_index = 58 + state_timer * 2 / state_end;
+					break;
+					default:
+					image_index = 25 + state_timer * 2 / state_end;
+					break;
+				}
 			}
 			break;
 			case 2:
@@ -172,20 +187,24 @@ if (state == 1){
 			image_index = 39 + state_timer * 2 / state_end;
 			break;
 			case 1:
-			switch (cooldown){
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-				image_index = 60 + state_timer * 2 / state_end;
-				break;
-				default:
+			if (modebuffer==1){
 				image_index = 41 + state_timer * 2 / state_end;
-				break;
+			}else{
+				switch (cooldown){
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+					image_index = 60 + state_timer * 2 / state_end;
+					break;
+					default:
+					image_index = 41 + state_timer * 2 / state_end;
+					break;
+				}
 			}
 			break;
 			case 2:
@@ -197,10 +216,22 @@ if (state == 1){
 	
 	//mode change depending on range towards n/a
 	if (point_distance(x, y, player_id.x, player_id.y-round(player_id.char_height/2)) <= disable_range){
+			/*if (player_id.state!=PS_AIR_DODGE&&
+			player_id.state!=PS_ROLL_BACKWARD&&
+			player_id.state!=PS_ROLL_FORWARD&&
+			player_id.state!=PS_WALL_TECH&&
+			player_id.state!=PS_TECH_GROUND&&
+			player_id.state!=PS_TECH_BACKWARD&&
+			player_id.state!=PS_TECH_FORWARD){
+				if (player_id.state_timer<2){*/
 		if (cooldown == 0){
 			modebuffer = 1;
 			cooldown = 3;
 		}
+				//}
+			//}else{
+			//modebuffer = 0;
+	//}
 	}else{
 		modebuffer = 0;
 	}
@@ -229,6 +260,36 @@ if (state == 1){
 		cooldown = cooldown - 1;
 	}
 	
+	if (mode<=1){
+		
+			var tmp_dist = round( point_distance(x, y, player_id.x, player_id.y-round(player_id.char_height/2)) )
+			
+			
+			if (tmp_dist<=disable_range*2){
+			if (get_gameplay_time()%12==id%12){
+			//hbtx = round(disp_1 * cos(angle_1));
+			//hbty = round(disp_1 * sin(angle_1));
+			var tmp_angle = point_direction(x, y, player_id.x+player_id.hsp, (player_id.y-round(player_id.char_height/2))+player_id.vsp) / 180 * -3.14;
+			var tmp_xoffset = round(disable_range * cos(tmp_angle));
+			var tmp_yoffset = round(disable_range * sin(tmp_angle));
+			/*var tmp_xoffsetC = round(disable_range * cos(tmp_angle+0.3));
+			var tmp_yoffsetC = round(disable_range * sin(tmp_angle+0.3));
+			var tmp_xoffsetD = round(disable_range * cos(tmp_angle-0.3));
+			var tmp_yoffsetD = round(disable_range * sin(tmp_angle-0.3));
+			draw_line_colour(tmp_xoffset, tmp_yoffset, tmp_xoffsetC, tmp_yoffsetC, c_white, c_purple);
+			draw_line_colour(tmp_xoffset, tmp_yoffset, tmp_xoffsetD, tmp_yoffsetD, c_white, c_purple);
+			*/
+			
+			var tmp_angleB = tmp_angle-0.4+random_func_2( 5, 80, true )/100
+			var tmp_xoffsetB = round(disable_range * cos(tmp_angleB));
+			var tmp_yoffsetB = round(disable_range * sin(tmp_angleB));
+			var hfxthingy = spawn_hit_fx( x+tmp_xoffsetB, y+tmp_yoffsetB, player_id.na_dot2 )
+			hfxthingy.depth = -10
+			}
+			}
+			
+	}
+	
 	if (mode==2){
 		var elec_max = 10;
 		if (elec_timer == elec_max){
@@ -253,8 +314,9 @@ if (state == 1){
 	}
 	
 	//hitbox detect to explode or to be slashed
-	if (place_meeting(x,y, asset_get("pHitBox"))){
-		var tmp_hb_id = instance_place(x,y, asset_get("pHitBox"))
+	//if (place_meeting(x,y, asset_get("pHitBox"))){
+		var tmp_hb_id = collision_circle(x, y, void_range, asset_get("pHitBox"), true, true)
+	if (tmp_hb_id != -4){
 		var tmp_id = tmp_hb_id.player_id;
 		if (tmp_id == player_id){
 			//to be slashe
@@ -324,13 +386,16 @@ if (state == 1){
 				//hitpause recode
 				tmp_id.hitstop = max(tmp_id.hitstop,6);
 				tmp_id.hitstop_full = max(tmp_id.hitstop,6);
-				hitstop = max(tmp_id.hitstop,6);
+				//hitstop = max(tmp_id.hitstop,6);
 				hbox_got_hit = tmp_hb_id;
 			}
 			}
-		}else{
+		}else if (!(get_match_setting( SET_TEAMS )==true&&get_player_team( tmp_id.player )==get_player_team( player_id.player )&&get_match_setting( SET_TEAMATTACK )==false)){
 			//to explode
-			if (tmp_hb_id.type == 1){
+			var demoncheck = false;
+			with (asset_get("obj_stage_article")){ if (variable_instance_exists(id, "gw_demonhorde_enemy")){demoncheck = true;}}//demon horde check
+			if ( (tmp_hb_id.type == 1 || demoncheck) && tmp_hb_id.hit_priority != 0){
+			//print("myeah?")
 				if(mode !=2){
 					sound_play(asset_get("sfx_bubblepop"), false, noone, 1, 0.8);
 				sound_stop(tmp_hb_id.sound_effect);
@@ -345,10 +410,17 @@ if (state == 1){
 					tmp_id.hitpause = true;
 				}
 				//note: this is player exploding
-				tmp_id.hitstop = tmp_id.hitpause;//14
-				tmp_id.hitstop_full = tmp_id.hitpause;//14
-				hitstop = tmp_id.hitpause;//14
+				tmp_id.hitstop = max(tmp_id.hitstop,tmp_hb_id.hitpause);//14
+				tmp_id.hitstop_full = max(tmp_id.hitstop,tmp_hb_id.hitpause);//14
+				//hitstop = tmp_id.hitpause;//14
+				
 				if(mode==0){
+					tmp_id.hitstop = max(tmp_id.hitstop,tmp_hb_id.hitpause);//14//12
+					tmp_id.hitstop_full = max(tmp_id.hitstop,tmp_hb_id.hitpause);//14//12//12
+					hitstop = tmp_id.hitpause;//14//12
+					
+					sound_play(sound_get("shadow_rev"),false,noone,0.8,1.6);
+					sound_play(sound_get("shadow_rev"),false,noone,0.8,1.5);
 					state = 3;
 					state_timer = 0;
 					/*if (player_id.na_dsp_charge < player_id.dspmax){
@@ -384,13 +456,13 @@ if (state == 1){
 	}*/
 	
 	//IDLE EXPIRED (might remove this)
-	var idle_max = 30;//30
+	idle_max = 30;//30
 	if (idle_cycle >= idle_max && state == 1){
 		state = 2;
 		state_timer = 0;
 		sound_stop(asset_get("sfx_absa_champ_loop"));
 		sound_stop(asset_get("sfx_bubblepop"));
-		sound_play(asset_get("sfx_bubblepop"), false, noone, 1, 0.9);
+		sound_play(asset_get("sfx_bubblepop"), false, noone, 0.9, 0.9+(((id%20)-10)/90));
 	}
 	
 	//idle loop
@@ -496,7 +568,7 @@ if (state == 2){
 
 // // // // STATE 3 - EXPLODE
 if (state == 3){
-	state_end = 30;
+	state_end = 24;
 	switch (tier){
 		case 1:
 		image_index = 15 + state_timer * 5 / state_end;
@@ -508,8 +580,13 @@ if (state == 3){
 		image_index = 47 + state_timer * 5 / state_end;
 		break;
 	}
-	if (state_timer == state_end/5){
+	if (state_timer == round(state_end/5)){
+				sound_stop(sound_get("shadow_rev"));
 		sound_play(sound_get("clash"));
+		sound_play(sound_get("clash"),false,noone,0.5,0.8);
+		sound_play(sound_get("shadow"),false,noone,0.8,1.5);
+		sound_play(asset_get("sfx_abyss_hazard_burst"),false,noone,0.7,0.8);
+		sound_play(asset_get("sfx_abyss_hazard_burst"),false,noone,0.7,0.7);
 		switch (tier){
 			case 1:
 			create_hitbox( AT_FSPECIAL, 1, x, y )
@@ -539,6 +616,8 @@ if (state == 3){
 
 // // // // STATE 4 - slashed
 if (state == 4){
+	hsp = 0;
+	vsp = 0;
 	switch (tier){
 		case 1:
 		state_end = 10;
@@ -555,7 +634,7 @@ if (state == 4){
 	}
 	if (state_timer == 1){
 		sound_stop(asset_get("sfx_bubblepop"));
-		sound_play(asset_get("sfx_bubblepop"), false, noone, 1, 0.9);
+		sound_play(asset_get("sfx_bubblepop"), false, noone, 0.9, 0.9+(((id%20)-10)/100));
 	}
 	
     if (state_timer == state_end){
@@ -570,7 +649,7 @@ if (state == 4){
 		
 		if (tier == 1||tier == 2){
 		sound_stop(asset_get("sfx_absa_taunt"));
-		sound_play(asset_get("sfx_absa_taunt"));
+		sound_play(asset_get("sfx_absa_taunt"), false, noone, 0.7, 1+(((id%20)-10)/80));
 			
 			with(player_id){
 				var bubbleID1 = instance_create(other.x+b_x_tmp1, other.y+b_y_tmp1, "obj_article1");

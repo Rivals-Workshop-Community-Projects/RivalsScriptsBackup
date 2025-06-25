@@ -69,38 +69,14 @@ if(combo_num == 1){
 }
 
 if(duster_muted == false){
-if(combo_num == 1){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 2){
-    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 3){
-    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 4){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 5){
-    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 6){
-    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 7){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 8){
-    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 9){
-    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 10){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 11){
-    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 12){
-    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 13){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 14){
-    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 2);
-}if(combo_num == 15){
-    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 2);
+if(combo_num == 1 || combo_num == 4 || combo_num == 7 || combo_num == 10 || combo_num == 13){
+    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 0.65, 1);
+}if(combo_num == 2 || combo_num == 5 || combo_num == 8 || combo_num == 11 || combo_num == 14){
+    sound_play(sound_get("dusterbass_2-" + string(instrum_num)), false, 0, 0.65, 1);
+}if(combo_num == 3 || combo_num == 6 || combo_num == 9 || combo_num == 12 || combo_num == 15){
+    sound_play(sound_get("dusterbass_3-" + string(instrum_num)), false, 0, 0.65, 1);
 }if(combo_num == 16){
-    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 2.5);
+    sound_play(sound_get("dusterbass_1-" + string(instrum_num)), false, 0, 0.9, 1);
 }
 }
 

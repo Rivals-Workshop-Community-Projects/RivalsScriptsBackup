@@ -64,6 +64,7 @@ sprite_change_offset("na_uspecial_hurtbox", 74, 134);
 sprite_change_offset("na_slash", 0, 8);
 sprite_change_offset("na_slash_wh", 0, 8);
 sprite_change_offset("na_void", 15, 63);
+sprite_change_offset("na_voidB", 15, 63);
 sprite_change_offset("na_wave", 15, 63);
 sprite_change_offset("na_bubble", 96, 96);
 sprite_change_offset("na_bubble_g", 96, 96);
@@ -73,6 +74,9 @@ sprite_change_offset("na_bubble_ol", 96, 96);
 sprite_change_offset("na_aura1", 1, 29);
 sprite_change_offset("na_aura2", 2, 28);
 sprite_change_offset("na_aura3", 3, 51);
+
+sprite_change_offset("na_dot", 16, 16);
+sprite_change_offset("na_dot2", 32, 32);
 
 sprite_change_offset("na_clock", 74, 134);
 sprite_change_offset("na_clock_needle", 5, 97);
@@ -86,7 +90,7 @@ sprite_change_offset("idle_csschop", 74, 134);
 sprite_change_offset("na_codec", 52, 14);
 sprite_change_offset("na_halo", -10, 70);
 
-sprite_change_offset("na_feri", 84, 114);
+sprite_change_offset("fake_circle", 100, 100);
 
 sprite_change_offset("sweetspot_circle", 100, 100);
 sprite_change_offset("na_square_what_is_this_for", 1, 1);

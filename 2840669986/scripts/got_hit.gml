@@ -16,3 +16,8 @@ if (attack == AT_USPECIAL){
 if (enemy_hitboxID.effect == 421){
 	spr_dir *= -1;
 }
+
+// MAYBE THIS FIXES THE VACUUM BUG???
+if (state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+	vacuum_grab = false;
+}

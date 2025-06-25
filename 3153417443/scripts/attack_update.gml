@@ -1,4 +1,5 @@
 //B - Reversals
+//B - Reversals
 switch(attack){
 	case AT_NSPECIAL:
 	case AT_FSPECIAL:
@@ -268,6 +269,10 @@ if (attack == AT_FSPECIAL){
 		window = 4;
     }
     
+    if (window = 3) && !free{
+    	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 8);
+    }
+    
 
  
     if(window == 1){
@@ -299,6 +304,7 @@ if (attack == AT_FSPECIAL){
 		reset_hitbox_value(AT_FSPECIAL_2, 4, HG_EXTRA_HITPAUSE);
 		reset_hitbox_value(AT_FSPECIAL_2, 4, HG_DAMAGE);
 		reset_hitbox_value(AT_FSPECIAL_2, 4, HG_ANGLE);
+		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES);
     }
  
     if(window < 4 and (grabbed_player_obj!= noone or mau_grabbed_da_bubble) and !hitpause){
@@ -934,6 +940,9 @@ switch(attack){
 				set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 7);
     		}
 		}
+    	}
+    	if (has_hit && window = 6 && !hitpause){
+    		can_fast_fall = true;
     	}
 		break;
 	

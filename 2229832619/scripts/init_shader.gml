@@ -1,19 +1,45 @@
 //a
 
+var careful_of_purple_shading = false;
 
 if (get_player_color( player ) == 7) { //early
 for (var slot_num = 0; slot_num < 8; slot_num++) {
 set_character_color_shading( slot_num, 0 );
+careful_of_purple_shading = true;
 }
 }
+
+if (get_player_color( player ) == 4) { //axanthic
+set_character_color_shading( 3, 0.8 );
+careful_of_purple_shading = true;
+}
+if (get_player_color( player ) == 13) { //truepurple
+set_character_color_shading( 3, 0.65 );
+careful_of_purple_shading = true;
+}
+if (get_player_color( player ) == 15) { //truegreen
+set_character_color_shading( 3, 1.5 );
+careful_of_purple_shading = true;
+}
+
 if (get_player_color( player ) == 19) { //genesis
 for (var slot_num = 0; slot_num < 8; slot_num++) {
 set_character_color_shading( slot_num, 0 );
+careful_of_purple_shading = true;
 }
 }
 if (get_player_color( player ) == 20) { //-save-
 set_character_color_shading( 3, 0.3 );
+careful_of_purple_shading = true;
 }
+/*
+	if (variable_instance_exists(id, "extra_col")){
+if (extra_col==10) { //knight
+for (var slot_num = 0; slot_num < 8; slot_num++) {
+set_character_color_shading( slot_num, 0 );
+}
+}
+	}*/
 
 
 /*
@@ -352,6 +378,26 @@ set_article_color_slot(6, 236, 238, 255 ); //blade
 set_article_color_slot(7, 174, 177, 206 ); //blade.2
 base_col = make_colour_rgb(254, 170, 229 );
 }
+if (extra_col==10){//knight
+// shade, r, g, b, alpha
+set_character_color_slot(0, 0, 0, 0 ); //main
+set_character_color_slot(1, 0, 0, 0 ); //main.2
+set_character_color_slot(2, 44, 28, 51 ); //main.3
+set_character_color_slot(3, 0, 0, 0 ); //purple
+set_character_color_slot(4, 0, 0, 0 ); //white_eye
+set_character_color_slot(5, 255, 255, 255 ); //abyss_eye
+set_character_color_slot(6, 0, 0, 0 ); //blade
+set_character_color_slot(7, 71, 72, 94 ); //blade.2
+set_article_color_slot(0, 0, 0, 0 ); //main
+set_article_color_slot(1, 0, 0, 0 ); //main.2
+set_article_color_slot(2, 44, 28, 51 ); //main.3
+set_article_color_slot(3, 0, 0, 0 ); //purple
+set_article_color_slot(4, 0, 0, 0 ); //white_eye
+set_article_color_slot(5, 255, 255, 255 ); //abyss_eye
+set_article_color_slot(6, 0, 0, 0 ); //blade
+set_article_color_slot(7, 71, 72, 94 ); //blade.2
+base_col = make_colour_rgb(125, 0, 0 );
+}
 
 
 if (variable_instance_exists(id, "state")){
@@ -409,7 +455,8 @@ if ((state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND) && (attack==AT_DSPECIAL ||
 		colour_get_blue(tmp_col_c)
 	);
 	
-	if (get_player_color( player ) != 7) { //NOT early
+	//if (get_player_color( player ) != 7) { //NOT early
+	if (careful_of_purple_shading == false) { //careful of purple
 		set_character_color_shading( 3, tmp_sh );
 	}
 	
@@ -428,7 +475,8 @@ if (variable_instance_exists(id, "extra_col")){
 			get_color_profile_slot_b( altnum, 3 )
 		)
 	}
-	if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
+	//if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
+	if (careful_of_purple_shading == false) { //careful of purple
 		set_character_color_shading( 3, 1 );
 	}
 	}
@@ -449,7 +497,8 @@ if (variable_instance_exists(id, "extra_col")){
 			get_color_profile_slot_b( altnum, 3 )
 		)
 	}
-	if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
+	//if (get_player_color( player ) != 7 && get_player_color( player ) != 19 && get_player_color( player ) != 20) { //NOT early
+	if (careful_of_purple_shading == false) { //careful of purple
 		set_character_color_shading( 3, 1 );
 	}
 	}

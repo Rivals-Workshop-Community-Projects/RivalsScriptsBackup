@@ -51,7 +51,7 @@ if (state == 1){
 	}
 	if (article1check == true){
 		//print_debug( "i see article" )
-		var test = instance_position(x, y, asset_get("obj_article1"))
+		/*var test = instance_position(x, y, asset_get("obj_article1"))
 		if (test != noone){
 			if (test.player_id == player_id){
 				//print_debug( "article confirmed" )
@@ -82,10 +82,10 @@ if (state == 1){
 				
 				
 			}
-		}
+		}*/
 	}
 	if (article1check == true || parried_player != -4){
-		state_end = 12
+		state_end = 8//12
 	}else{
 		state_end = 15
 	}
@@ -102,9 +102,12 @@ if (state == 1){
     if (state_timer >= state_end){
 		if (loop_count < loop_max){
 			void_spawn();
-			sound_play(asset_get("sfx_boss_shine"), false, noone, vol_tmp, 0.8);
+			sound_play(asset_get("sfx_boss_shine"), false, noone, vol_tmp/((slash_immune)?2:1), 0.8+((article1check)?0.05:0)-((slash_immune)?0.1:0));
 			if (article1check == false){
 				loop_count++;
+			}else{
+				sound_play(asset_get("sfx_abyss_despawn"), false, noone, vol_tmp*0.8, 1.9);
+				spawn_hit_fx( x, y, 67 );
 			}
 			state = 1;
 			state_timer = 0;
@@ -117,8 +120,12 @@ if (state == 1){
 
 
 #define void_spawn()
-
+	
+	if (slash_immune==true){
+	var voidfx_id = spawn_hit_fx( x, y, player_id.voidfxB )
+	}else{
 	var voidfx_id = spawn_hit_fx( x, y, player_id.voidfx )
+	}
 	voidfx_id.draw_angle = image_angle;
 	voidfx_id.spr_dir = 1;
 	voidfx_id.depth = -20;
@@ -131,23 +138,45 @@ if (state == 1){
 	var disp_2 = 36;
 	var hbtx = 0;
 	var hbty = 0;
+	var hbidA = create_hitbox( AT_NSPECIAL_AIR, 2, x+hbtx, y+hbty );
+	hbidA.owner_article=id;
+	hbidA.spr_dir = tmpdir;
+	hbidA.image_angle = image_angle
+	//hbidA.leaderhb = hbidA;
+	//hbidA.idbox = [0,0,0,0,0]
+	//hbidA.idbox[0] = hbidA
+	//hbidA.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	if (parried_player!=-4){
+		hbidA.player = parried_player
+		hbidA.was_parried = true;
+	}
+	
+	/*var angle_1 = (image_angle + 90) / 180 * -3.14;
+	var angle_2 = (image_angle - 90) / 180 * -3.14;
+	var disp_1 = 18;
+	var disp_2 = 36;
+	var hbtx = 0;
+	var hbty = 0;
 	var hbidA = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbidA.owner_article=id;
 	hbidA.spr_dir = tmpdir;
 	hbidA.leaderhb = hbidA;
 	hbidA.idbox = [0,0,0,0,0]
 	hbidA.idbox[0] = hbidA
+	hbidA.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	if (parried_player!=-4){
 		hbidA.player = parried_player
 		hbidA.was_parried = true;
-	}
-	hbtx = round(disp_1 * cos(angle_1));
+	}*/
+	
+	/*hbtx = round(disp_1 * cos(angle_1));
 	hbty = round(disp_1 * sin(angle_1));
 	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbid.owner_article=id;
 	hbid.spr_dir = tmpdir;
 	hbid.leaderhb = hbidA;
 	hbidA.idbox[1] = hbid
+	hbid.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	if (parried_player!=-4){
 		hbid.player = parried_player
 		hbid.was_parried = true;
@@ -159,6 +188,7 @@ if (state == 1){
 	hbid.spr_dir = tmpdir;
 	hbid.leaderhb = hbidA;
 	hbidA.idbox[2] = hbid
+	hbid.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	if (parried_player!=-4){
 		hbid.player = parried_player
 		hbid.was_parried = true;
@@ -170,6 +200,7 @@ if (state == 1){
 	hbid.spr_dir = tmpdir;
 	hbid.leaderhb = hbidA;
 	hbidA.idbox[3] = hbid
+	hbid.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	if (parried_player!=-4){
 		hbid.player = parried_player
 		hbid.was_parried = true;
@@ -181,10 +212,12 @@ if (state == 1){
 	hbid.spr_dir = tmpdir;
 	hbid.leaderhb = hbidA;
 	hbidA.idbox[4] = hbid
+	hbid.can_hit_fake = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	if (parried_player!=-4){
 		hbid.player = parried_player
 		hbid.was_parried = true;
-	}
+	}*/
+	
 	}//else{
 		//print_debug( "spawn successfully prevented" )
 	//}

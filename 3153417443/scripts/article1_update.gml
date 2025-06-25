@@ -249,6 +249,13 @@ if(state == 1){
 					//print("entered bubble");
 					other.state = 5;
 					other.state_timer = 0;
+					if other.hit_player_obj != other.player_id{
+					if (other.hit_player_obj.url = other.player_id.url){
+					
+					}else{
+					other.hit_player_obj = other.player_id
+					}
+					}
 					//other.grabbed_id = player_id;
 						with(player_id){
 							clear_button_buffer( PC_SPECIAL_PRESSED );
@@ -769,6 +776,7 @@ with (oPlayer){
 				other.state = 8;
 				other.state_timer = 0;
 				other.grabbed_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*6))
+				other.player_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*6))
 				other.hit_player_obj.hsp = 0;
 				other.hit_player_obj.vsp = 0;
 		}
@@ -802,6 +810,7 @@ with (oPlayer){
 				other.state = 8;
 				other.state_timer = 0;
 				other.grabbed_id.hitstop_full = ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*5) + 10)
+				other.player_id.hitstop = ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*5) + 10)
 				other.hit_player_obj.fspec2hit = true;
 		}else{
 				if (other.grabbed_id = noone){
@@ -842,6 +851,7 @@ with (oPlayer){
 				other.state = 8;
 				other.state_timer = 0;
 				other.grabbed_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*2) + 2)
+				other.player_id.hitstop += ((other.hitbox_hit.hitpause) + (other.hitbox_hit.hitpause_growth*2) + 2)
 		}
 	}
     }

@@ -1,3 +1,5 @@
+if "hit_shade" not in self exit;
+
 shader_start();
 //article icon
 with obj_article1 if player_id == other {

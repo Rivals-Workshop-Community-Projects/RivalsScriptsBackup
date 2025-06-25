@@ -3,7 +3,7 @@
 //test
 
 
-draw_sprite_ext(sprite_get("aaa_vernum"),1,x+146,y+118,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+80,2,2,0,-1,1);
 
 if (get_player_color( player ) == 10) {
 init_shader();
@@ -108,7 +108,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[6,0] = make_color_rgb(255, 74, 131)
 	ce[6,1] = "Leucistic" //"not" abyss
 	ce[7,0] = make_color_rgb(167, 186, 74)
-	ce[7,1] = "Turris" //tower
+	ce[7,1] = "Tower" //tower
 	ce[8,0] = make_color_rgb(255, 246, 245)
 	ce[8,1] = "Angel" //02
 	ce[9,0] = make_color_rgb(0, 89, 84)

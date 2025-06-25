@@ -49,12 +49,108 @@ if (get_player_color( player ) == 8){
 	}
 }*/
 
+
+with(asset_get("obj_article1")){
+	if (player_id == other.id){
+		//if (point_distance(x, y, player_id.x, player_id.y-round(player_id.char_height/2)) <= disable_range){
+			var tmp_dist = round( point_distance(x, y, player_id.x, player_id.y-round(player_id.char_height/2)) )
+			var tmp_a = ease_sineIn( 100, 0, min((max(disable_range,tmp_dist)-disable_range),round(disable_range)), round(disable_range) )/100
+			var tmp_blend = gpu_get_blendmode();
+			gpu_set_blendmode(bm_add);
+			draw_sprite_ext( sprite_get("na_dot"), 0, player_id.x, player_id.y-1-round(player_id.char_height/2), 2, 2, 0, c_white, tmp_a/((tmp_dist<=disable_range&&state==1)?1:3) );
+			gpu_set_blendmode(tmp_blend);
+			
+			/*if (tmp_dist<=disable_range*2){
+			if (get_gameplay_time()%9==id%9){
+			//hbtx = round(disp_1 * cos(angle_1));
+			//hbty = round(disp_1 * sin(angle_1));
+			var tmp_angle = point_direction(x, y, player_id.x+player_id.hsp, (player_id.y-round(player_id.char_height/2))+player_id.vsp) / 180 * -3.14;
+			var tmp_angle = tmp_angle-0.2+random_func_2( 5, 40, true )/100
+			var tmp_xoffset = round(disable_range * cos(tmp_angle));
+			var tmp_yoffset = round(disable_range * sin(tmp_angle));
+			spawn_hit_fx( x+tmp_xoffset, y+tmp_yoffset, player_id.na_dot2 )
+			}
+			}*/
+			
+			/*var tmp_angle = point_direction(x, y, player_id.x+player_id.hsp, (player_id.y-round(player_id.char_height/2))+player_id.vsp) / 180 * -3.14;
+			var tmp_xoffset = round(disable_range * cos(tmp_angle));
+			var tmp_yoffset = round(disable_range * sin(tmp_angle));
+			var tmp_xoffsetC = round(disable_range * cos(tmp_angle+0.3));
+			var tmp_yoffsetC = round(disable_range * sin(tmp_angle+0.3));
+			var tmp_xoffsetD = round(disable_range * cos(tmp_angle-0.3));
+			var tmp_yoffsetD = round(disable_range * sin(tmp_angle-0.3));
+			
+			var tmp_blend = gpu_get_blendmode();
+			gpu_set_blendmode(bm_add);
+			var tmp_aget = draw_get_alpha();
+			draw_set_alpha(tmp_a);
+			
+			draw_line_width_colour(x+tmp_xoffset, y+tmp_yoffset, x+tmp_xoffsetC, y+tmp_yoffsetC, 2, c_white, c_purple);
+			draw_line_width_colour(x+tmp_xoffset, y+tmp_yoffset, x+tmp_xoffsetD, y+tmp_yoffsetD, 2, c_white, c_purple);
+			
+			gpu_set_blendmode(tmp_blend);
+			draw_set_alpha(tmp_aget);*/
+			
+		//}
+	}
+}
+
 shader_end()
 
 
 
-
-
+if (attack == AT_DSPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
+	
+	//charge effect
+	if (window==3){
+		var tmp_range3 = ease_cubeOut( 0, 70, dsp_glow_time, dsp_glow_max )
+		var tmp_alpha5 = clamp(ease_cubeIn( 60, 0, dsp_glow_time, dsp_glow_max )/100, 0, 1)
+		var tmp_alpha6 = tmp_alpha5 - clamp(ease_cubeIn( 100, 0, dsp_glow_time, round(dsp_glow_max/3) )/100, 0, 1)
+		
+		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0), get_color_profile_slot_g( get_player_color(player), 0), get_color_profile_slot_b( get_player_color(player), 0));
+		var make_colorB = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3), get_color_profile_slot_g( get_player_color(player), 3), get_color_profile_slot_b( get_player_color(player), 3));
+		
+		draw_set_alpha(tmp_alpha6);
+		draw_circle_colour(x, y-24, tmp_range3, make_colorB, make_color, false);
+		draw_set_alpha(1);
+	}
+	
+	//laser
+	if (window==11||window==12||window==13){
+		var tmp_x3 = x+(57*spr_dir)
+		var tmp_y3 = y-49
+		
+		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3), get_color_profile_slot_g( get_player_color(player), 3), get_color_profile_slot_b( get_player_color(player), 3));
+		
+			var tmp_rad = ease_quartInOut( 40, 0, state_timer-19, 54 );
+			var tmp_disp = ease_quartInOut( 0, 10, state_timer-19, 54 );
+			var tmp_ab = ease_quartInOut( 10, 0, state_timer-19, 54 )/50;
+		
+		gpu_set_blendmode(bm_add);
+		draw_set_alpha(tmp_ab);
+		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad*1.7), make_color, make_color);
+		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad*2), make_color, make_color);
+		draw_set_alpha(tmp_ab*1.3);
+		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad/1.3), make_color, make_color, false);
+		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad*1), make_color, make_color, false);
+		
+		draw_set_alpha(tmp_ab*10);
+		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad*1.15), make_color, make_color);
+		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad/1.75), make_color, make_color, false);
+		
+		draw_set_alpha(tmp_ab);
+		gpu_set_blendmode(bm_normal);
+		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad*1.4), make_color, make_color);
+		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad/1.5), make_color, make_color, false);
+		
+		draw_set_alpha(1);
+		//print(string(ceil(tmp_rad/1.7)))
+			
+		draw_line_width_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, tmp_x3+(800*spr_dir), tmp_y3-800, ceil(tmp_rad), c_white, c_white);
+		
+		draw_circle_colour(tmp_x3-(tmp_disp*spr_dir), tmp_y3+tmp_disp, ceil(tmp_rad/2), c_white, c_white, false);
+	}
+}
 
 
 //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
@@ -81,6 +177,147 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
+		
+		
+		patch_note_title[i] = "v4.0 -After All- Pg.1"
+		patch_note_text[i++] = 
+		"v4.0 -After All-
+
+		[b]So, what's new, really?[/b]
+		- A bitter awakening 'til before it's too late.
+		- After all.
+		---
+		i'd prefer if you read the whole thing but i guess i'll give a summary.
+		- Good amount of visual/audio upgrades.
+		- Changes to some FSPECIAL BUBBLE visuals for clarity, notably the ''cooldown'' indicator and N/A's range for bubbles entering the ''cooldown mode''.
+		- A whole lot of balance changes. Generally, addressed a bunch of elements people have expressed annoyance for, both N/A players and their opponents.
+		- Straightened out some niche parts of N/A that was awkward compared to the base-game characters.
+		- Some of the change requests were years and years old. I could call this patch years-in-the-making.
+
+		[b]ameliorations[/b]
+		- But we can be so much more.
+		- But I can be so much more.
+		- ALAS THUS AND BEHOLD:
+		- Welcome to our grand design.
+		---
+		- animations have been given ameliorations.
+		--- JAB. FAIR. ROLL. AIRDODGE. CROUCH. FSTRONG.
+		--- JUMP/AIR IDLE. AND CHANGES RESULTING FROM IT SUCH AS. WALLJUMP. BAIR. UAIR. DAIR. NAIR. FSPECIAL-AIR. DSPECIAL-AIR.
+		- sounds and visual effects have been adjusted and added.
+		- FSPECIAL BUBBLE sprites updated.
+		--- as a part of the change, BUBBLE cooldown visual has been given a good amount of change, that, i hope, helps with visual distinctness for colorblindness and other reasons.
+		--- all these years... these sprites have remained unchanged from the draft sprites, so much so that the palette data within and colours used is one from the draft sprites. until now.
+
+		[b]additions[/b]
+		- Your infinity couldn't compare.
+		---
+		- FAIR ... EXPERIMENTAL: you can now hold attack + forward at startup to gain a little more forward momentum.
+		- FSPECIAL BUBBLE ... when the owner n/a is nearby, it now casts some particle effects in the radius of its disable cooldown range. the center of n/a starts glowing too, which is the point it compares to for range distance. it's when this dot of light is within the range that the bubble will enter cooldown.
+		--- its more intuitive ingame than this reads here i promise
+		--- report back to me if this has performance issues. thanks
+		- FSPECIAL BUBBLE ... in practice mode, when you have hitbox display enabled, you can now see detection range for the bubble's disable cooldown (marked with GREY ring), and hitbox detection range (marked with RED ring). it also has an indicator for its lifetime timer as well.
+		--- the visualizer was always there but was inaccurate and was locked behind some button combo. it is now accurate and much more accessible
+		--- i think this has performance issues but meh, doesnt affect real matches.
+		- USPECIAL (DOUBLETAP) ... EXPERIMENTAL: the ''lingering slash'' now gain you a bit of dspecial charge, about as much as the smallest bubble explosion hit. i might revert this one; i dont want to encourage combat tooooo much? ...but then i did just also add the fair thing
+		- USPECIAL (DOUBLETAP) && NSPECIAL PROJECTILE ... the doubletap ''slash'' now slices the nspecial projectile in half. this may not sound like much here but i think it's atleast somewhat significant
+
+		[b]changes[/b]
+		- Destined for fight, are we all, really? Is that truly rivalry, or something else?
+		---
+		- ALT COLORS ... True Purple and True Grey has been adjusted to be a bit more appealing maybe.
+		- ALT COLORS ... the ROAACO colors have been adjusted to also be a bit more appealing...maybe.
+		- ALT COLORS ... colors like Terra, Crown or doomsday are now specifically made to be much less darker.
+		--- nothing darker than the deep abyss
+		- ALT COLORS ... Axanthic adjusted to hopefully be a little more accurate to real axanthic axolotls?
+		- ALT COLORS ... True Red has been adjusted to be a bit less harsh on the eyes. hopefully.
+		- ALT COLORS ... alt color Turris renamed to Tower
+		- ALT COLORS ... ALT COLORS NOW RECOLOR THE BUBBLES AND OTHER STUFF NOW INCLUDING THE ABYSS VFX.
+		--- initially, the alt colors not recoloring these were intentional. but times have changed
+		- parry lag animation adjusted, mostly for when the parried hitbox has extended parry stun.
+		--- i did adjust how it looks for normal parrystun. this is bothering, i can revert that one
+		- HITSTUN ... in hitstun, it now uses the same hitstun hurtbox as sylvanos
+		- DAIR ... anim tweak, notably on the first frame of animation.
+		- FSTRONG ... now lunges forward before attack (but after charge), giving it a sort of sudden extended range. (about 1.1 training room tile worth of distance)
+		- NSPECIAL PROJECTILE ... it no longer does slow homing while in fspecial bubble.
+		- NSPECIAL PROJECTILE ... while in fspecial bubble, it now spawns hitbox MUCH more rapidly than it did before.
+		- NSPECIAL PROJECTILE ... it no longer has the weird hit lockout stuff. but on the other hand, that means it no longer has hit lockout... you can definitely get a hit directly out of it now. a mistake? who knows
+		- FSPECIAL BUBBLE ... when the DSPECIAL electricity hitbox is parried, it now safely pops the bubble the hitbox belongs to.
+		--- apparently, formerly it DID do something to the bubble when it was parried - but it just subtracts some amount from the total lifetime of the bubble. not anymore
+		- FSPECIAL BUBBLE ... hitbox detection range is now larger than it looks.
+		- FSPECIAL BUBBLE ... i think i made it work with teams? idk i havent tested it actually
+		- FSPECIAL BUBBLE ... a bunch of the ''bubble pop'' noises now has slight volume and pitch tweaks, and some shift in pitch randomly also.
+		- DSPECIAL LASER ... endlag reduced by 14 frames (its so long that it doesnt matter too much but it probably helps with offstage usage)
+		- DSPECIAL LASER ... removed defining hitbox type from all the 31 hitboxes and i heard this hides the hitboxes from muno's framedata buddy so i hope this fixes the crash with that. idk i havent tested it
+		- DSPECIAL LASER ... visibility increased. darkness pierces light.
+		
+		
+		EXCLUSIVE BONUS INFO
+		to you, reading the playtest changelog...
+		
+		with alt colors ''doomsday'', ''genesis'', or ''-save-'', press SPECIAL while the match is starting up to activate special SFX."
+		
+		
+		patch_note_title[i] = "v4.0 -After All- Pg.2"
+		patch_note_text[i++] = 
+		"v4.0 -After All-
+		
+		[b]fixes[/b]
+		- You think you yourself are better than fate.
+		---
+		- FSPECIAL BUBBLE ... no longer reacts to hitboxes with priority of 0.
+		- FSPECIAL BUBBLE ... fixed an issue where if an opponent hits n/a and n/a's bubble at the same time, the opponent's hitpause is much shorter.
+		--- as it turns out, the whole time i thought i was setting the hitpause value to the hitbox's hitpause but this whole time it's been setting it to the PLAYER's ''hitpause'' variable which is a BOOLEAN, meaning it always set it to 1. (or 0)
+		--- i stupid
+		--- fixed it so that it compares the hitpause the player is in currently to the hitbox's hitpause amount, and uses the longer one.
+
+		[b]balances[/b]
+		- Don't get it over your head however.
+		- Lest the darkness of your vainglory swallow you whole.
+		- And the shadows burn you to your expire.
+		-- -- idk
+		- UTILT ... sweetspot angle changed to 70. (72???????? -> 70)
+		- UAIR ... all hitboxes angles are now an angle of 60.
+		- UAIR ... the ''body hit'' hitbox parameters now resembles that of the aerial hit.
+		- FSTRONG ... this isnt a change but i wanted to put it out there, i wanted to add hit lockout on fstrong but because of how things were made i can't put it. i tried a lot of things i cant put it it doesnt work. sorry
+		- NSPECIAL-GROUND ... it hops even lower now. (-2.5 -> -2)
+		- NSPECIAL PROJECTILE ... base knockback increased to 7. (bkb 5 -> 7)
+		- DSPECIAL ... in the air, maximum fall speed has been reduced. (6 -> 5) it's now a bit closer to how it was before v1.6.
+		-- -- beneficial
+		- DATTACK ... endlag reduced by 3 frames, not counting whifflag.
+		- FSTRONG ... EXPERIMENTAL: while the hitbox is out, the hurtbox is now a little bit disjointed.
+		- FSTRONG ... the main hit hitbox's base knockback is now lower, but the knockback growth is higher. (BKB 10 -> 8, KBG 1.15 -> 1.25)
+		- NSPECIAL ... with grounded and aerial, startup reduced by total of 4 frames. i dont remember how i implemented it, i think it might be made so both version has same amount of startup? not sure, it's been too long
+		- FSPECIAL ... startup reduced by 4 frames.
+		- FSPECIAL BUBBLE ... when bubble is made via fspecial it is ''ready'' faster by having less initial cooldown, and if split by slicing hitboxes, it is ''ready'' _slower_ by having more (normal 13 -> 11, sliced 9 -> 17)
+		- FSPECIAL BUBBLE ... the ''bubble cooldown'' after it being slashed and split is shorter by 4 frames. (13f normal -> 9f slashed)
+		- FSPECIAL BUBBLE ... when it ''explodes'', the hitbox comes out 2 frames faster. (6 -> 4)
+		-- -- counterplay
+		- DTILT ... hitbox active time reduced. (6 -> 4)
+		--- i also shifted around the windows for this to make the visuals match so idk maybe theres side effects but i hope it doesnt matter much
+		- FAIR ... knockback scaling reduced. (1.0 -> 0.95)
+		- FAIR ... startup increased by 1. (10 -> 11)
+		--- there's not too much benefit in spamming fspecial so i didnt need to do this but it felt weird
+		- FSPECIAL BUBBLE ... the bubble's explosion is now smaller than its detection range. (as an example, largest bubble explosion radius is now 150 -> 125.)
+		--- this combined with change mentioned in [changes], the bubble's explosion is now a ''negative disjoint''.
+		- USPECIAL DOUBLETAP ... when the ''lingering slash'' is parried, USPECIAL enters about 3 seconds of cooldown. (but you're in parrystun already anyways so its like less than 2 seconds)
+		- DSPECIAL ... total charge amount increased to 35. (30 -> 35)
+
+		[b]notes[/b]
+		After all.
+		But of course. Who am I kidding?
+		Of course the abyss will never see the light of day.
+		Abyss antithesis light.
+
+		How cruel.
+
+
+
+
+		Was I not good enough for you?
+		Answer me...
+
+
+		Answer me!"
 		
 		
 		patch_note_title[i] = "v3.4 - (2025 Apr 25)"

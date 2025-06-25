@@ -62,7 +62,7 @@ for(var i=0; i < instance_number(oPlayer); i++)
 	    
 	    if (!hitpause)
 	    {
-	    	sound_play(sound_get("dusterbass_miss"), false, noone, 1.2);
+	    	sound_play(sound_get("dusterbass_miss"), false, noone, 1);
 	    }
 	    
 	    outline_color = [ 0, 0, 0 ];

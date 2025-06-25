@@ -48,12 +48,12 @@ set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 24);
 set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 23);
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 11);//11
-set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 72);
+set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 70);//72
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 1.1);//1.3//1.2
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("swing4"));

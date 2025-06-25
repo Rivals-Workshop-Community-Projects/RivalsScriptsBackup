@@ -69,12 +69,13 @@ set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 3);//3
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 10);//10//8
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.15);//1.05//0.9//0.95
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);//10//8//10
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.25);//1.05//0.9//0.95//1.15
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 305); //305
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("hit4"));
+//set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 0);
 
 
 //axe
@@ -97,8 +98,6 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("hit4"));
-
-
 
 
 

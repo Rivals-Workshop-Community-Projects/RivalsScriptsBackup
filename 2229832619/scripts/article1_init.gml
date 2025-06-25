@@ -7,6 +7,7 @@ state = 0;
 state_timer = 0;
 state_end = 0;
 idle_cycle = 0;
+idle_max = 0; //(set in update)
 tier = 1;
 mode = 0;
 modebuffer = 0;
@@ -23,7 +24,7 @@ mask_wait = 2;
 free = false;
 can_be_grounded = false;
 ignores_walls = false;
-uses_shader = false;
+uses_shader = true;
 
 track_num = 0;
 track_num_max = 2;//2

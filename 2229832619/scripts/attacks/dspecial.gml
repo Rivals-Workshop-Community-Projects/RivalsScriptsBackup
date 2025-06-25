@@ -68,7 +68,7 @@ set_window_value(AT_DSPECIAL, 13, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_DSPECIAL, 13, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_DSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 1);
 
-set_window_value(AT_DSPECIAL, 14, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_DSPECIAL, 14, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 14, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_DSPECIAL, 14, AG_WINDOW_ANIM_FRAMES, 2);
 
@@ -101,7 +101,7 @@ for (var i = 2; i <= 32; i ++;){
 	var tmpx = 57 + (24 * (i-1))
 	var tmpy = -49 - (24 * (i-1))
 	set_hitbox_value(AT_DSPECIAL, i, HG_PARENT_HITBOX, 1);
-	set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_TYPE, 1);
+	//set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_TYPE, 1);
 	set_hitbox_value(AT_DSPECIAL, i, HG_WINDOW, 11);
 	set_hitbox_value(AT_DSPECIAL, i, HG_LIFETIME, 24);
 	set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_X, tmpx);

@@ -45,7 +45,7 @@ set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 66);
 set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 100);
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8);//6//5
-set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 64);//67
+set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 60);//67//64//90
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5.5); //5//4
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.65); //0.9//0.78
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8.5); //8
@@ -66,7 +66,7 @@ set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 66);
 set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 100);
 set_hitbox_value(AT_UAIR, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 8);//6
-set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 90);//78
+set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 60);//78//90
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.35);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8.5);
@@ -87,15 +87,16 @@ set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 50);
 set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 70);
 set_hitbox_value(AT_UAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 3, HG_SHAPE, 2);
-set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 5);//6//5
-set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);//67//58
-set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 5.5); //5//4
-set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, 0.5); //0.9
-set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 6); //8
-set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.5);//0.6
+set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 8);//6//5
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 60);//67//58//90
+set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 5.5); //5//4//5.5
+set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, 0.65); //0.9//0.5
+set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 8.5); //8//6
+set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.7);//0.6//0.5
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 3, HG_HITSTUN_MULTIPLIER, 0.8);
-set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+//set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("hit4"));
 
 

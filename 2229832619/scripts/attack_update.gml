@@ -20,16 +20,187 @@ if (attack==AT_JAB){
 	was_parried = false;
 	if (window==1 && !hitpause){
 		if (window_timer==3){
-			sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ice_shieldup"),false,noone,0.8,1.4);
+			sound_play(asset_get("sfx_zetter_downb"),false,noone,0.4,1.4);
+			spawn_base_dust(x-(50*spr_dir)+hsp, y, "dash", spr_dir)
+		}
+	}
+}
+if (attack==AT_FTILT){
+	if (window==1 && !hitpause){
+		if (window_timer==5){
+			spawn_base_dust(x-(10*spr_dir)+hsp, y, "dash_start", spr_dir);
+			//sound_play(asset_get("sfx_ice_shieldup"),false,noone,0.8,1.6);
+			sound_play(sound_get("swing1"),false,noone,0.8,0.7);
+		}
+	}
+	if (window==4 && !hitpause){
+		if (window_timer==round(10*((has_hit)?1:1.5))){
+			sound_play(asset_get("sfx_swipe_medium1"),false,noone,0.3,1.1);
+		}
+	}
+}
+if (attack==AT_DTILT){
+	if (window==3 && !hitpause){
+		if (window_timer==1){
+			spawn_base_dust(x+(80*spr_dir)+hsp, y, "walk", spr_dir*-1)
+			spawn_base_dust(x+(100*spr_dir)+hsp, y, "walk", spr_dir*-1)
+			spawn_base_dust(x+(120*spr_dir)+hsp, y, "dash", spr_dir*-1)
+			spawn_base_dust(x+(140*spr_dir)+hsp, y, "walk", spr_dir*-1)
+		}
+	}
+}
+if (attack==AT_UTILT){
+	if (window==2 && !hitpause){
+		if (window_timer==1){
+			sound_play(asset_get("sfx_swipe_medium1"),false,noone,0.6,1.2);
+			sound_play(sound_get("swing1"),false,noone,0.6,1.4);
+			spawn_base_dust(x+(80*spr_dir)+hsp, y, "walk", spr_dir*-1)
+			spawn_base_dust(x+(80*spr_dir)+hsp, y, "dash_start", spr_dir*-1)
+		}
+	}
+}
+if (attack==AT_DATTACK){
+	if (window==2 && !hitpause){
+		if (window_timer==1){
+			spawn_base_dust(x+(50*spr_dir)+hsp, y, "dash_start", spr_dir*-1);
+			sound_play(asset_get("sfx_zetter_downb"),false,noone,0.3,0.8);
+		}
+	}
+}
+if (attack==AT_UAIR){
+	if (window==2 && !hitpause){
+		if (window_timer==1){
+			sound_play(asset_get("sfx_swipe_medium2"),false,noone,0.6,0.8);
+		}
+	}
+}
+if (attack==AT_BAIR){
+	if (window==2 && !hitpause){
+		if (window_timer==1){
+			sound_play(asset_get("sfx_swipe_heavy1"),false,noone,0.8,0.8);
+		}
+		if (window_timer==3){
+			if (rk_sfx){ sound_play(sound_get("rk_cut1"), false, noone, 0.7, 1.3); }
+		}
+	}
+}
+if (attack==AT_NAIR){
+	if (window==1 && !hitpause){
+		if (window_timer==8){
+			sound_play(asset_get("sfx_swipe_medium2"),false,noone,0.4,1.2);
+		}
+	}
+	if (window==3 && !hitpause){
+		if (window_timer==3){
+			sound_play(asset_get("sfx_swipe_medium1"),false,noone,0.4,1.2);
+		}
+	}
+}
+if (attack==AT_DSTRONG){
+	if (window==3 && !hitpause){
+		if (window_timer==1){
+			sound_play(asset_get("sfx_swipe_heavy2"),false,noone,0.7,1);
+			sound_play(sound_get("shadow"),false,noone,0.45,1.5);
+			sound_play(sound_get("shine"),false,noone,0.5,1.5);
+		}
+	}
+}
+if (attack==AT_USTRONG){
+	if (window==6 && !hitpause){
+		if (window_timer==8){
+			sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1);
+			sound_play(asset_get("sfx_swipe_heavy1"),false,noone,0.7,0.9);
+			sound_play(sound_get("swing2"),false,noone,0.4,1.4);
+		}
+	}
+}
+if (attack==AT_FSTRONG){
+	if (window==1 && !hitpause){
+		if (window_timer==1){
+			fstr_thing = false;
+			fstr_thing_hsp = false;
+		}
+	}
+	if (window==4 && !hitpause){
+		if (window_timer==4){
+			//if ((attack_down||strong_down||((left_stick_down&&spr_dir==-1)||(right_stick_down&&spr_dir==1)))&&((left_down&&spr_dir==-1)||(right_down&&spr_dir==1))){
+				fstr_thing_hsp = hsp;
+				hsp = 9*spr_dir;
+				fstr_thing = true;
+				spawn_base_dust(x-(10*spr_dir), y, "wavedash", spr_dir)
+			//}
+		}
+	}
+	if (window==5 && !hitpause){
+		if (window_timer==2){
+			if (fstr_thing==true){
+				if (sign(fstr_thing_hsp)==spr_dir){
+					hsp = fstr_thing_hsp;
+				}else{
+					hsp = 0;
+				}
+				fstr_thing = false;
+			}
+		}
+	}
+	
+	
+	if (window==5 && !hitpause){
+		if (window_timer==1){
+			sound_play(sound_get("swing4"),false,noone,0.7,0.9);
+		}
+	}
+	if (window==8 && !hitpause){
+		if (window_timer==6){
+			sound_play(sound_get("swing4"),false,noone,0.4-(has_hit*0.1),0.8);
+		}
+	}
+	if (window==9 && !hitpause){
+		if (window_timer==1){
+			sound_play(sound_get("swing4"),false,noone,0.2-(has_hit*0.1),0.7);
+		}
+		if (window_timer==6){
+			sound_play(sound_get("swing4"),false,noone,0.1-(has_hit*0.1),0.6);
 		}
 	}
 }
 
 if (attack==AT_FAIR){
 	if (window==1 && !hitpause){
-		if (window_timer==9){
+		if (window_timer==1){
+			fair_thing = false;
+			fair_thing_hsp = false;
+			sound_play(sound_get("clash_rev"),false,noone,0.8,1.05)
+		}
+		if (window_timer==8){
+			if ((attack_down||strong_down||((left_stick_down&&spr_dir==-1)||(right_stick_down&&spr_dir==1)))&&((left_down&&spr_dir==-1)||(right_down&&spr_dir==1))){
+				fair_thing_hsp = hsp;
+				hsp = 9*spr_dir;
+				fair_thing = true;
+				spawn_base_dust(x-(10*spr_dir), y, "wavedash", spr_dir)
+			}
+		}
+		if (window_timer==10){
+			sound_stop(sound_get("clash_rev"))
 			sound_play(asset_get("sfx_ice_on_player"),false,noone,0.6,1.5)
 			sound_play(asset_get("mfx_result_expand"),false,noone,0.5,1.5)
+			sound_play(sound_get("swing3"),false,noone,0.4,1.6)
+		}
+	}
+	//if (fair_thing==true && !hitpause){
+	//	spawn_base_dust(x-(10*spr_dir), y, "dash", spr_dir)
+	//}
+	if (window==2 && !hitpause){
+		if (window_timer==1){
+			if (fair_thing==true){
+				if (sign(fair_thing_hsp)==spr_dir){
+					hsp = fair_thing_hsp;
+				}else{
+					hsp = 0;
+				}
+				fair_thing = false;
+			}
 		}
 	}
 }
@@ -211,6 +382,7 @@ if (attack==AT_FSTRONG){
 			reset_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH);
 			reset_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH);
 			reset_window_value(AT_FSTRONG, 8, AG_WINDOW_LENGTH);
+			reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT);
 		}
 	}
 	if (window==6){
@@ -228,6 +400,7 @@ if (attack==AT_FSTRONG){
 			if (!hitpause&&v_fstrong){
 				var hbx_temp = get_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X);
 				var hby_temp = get_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y);
+				//set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 100); //it no work...
 				create_hitbox( AT_FSTRONG, 1, hbx_temp, hby_temp );
 			}
 		}
@@ -338,6 +511,8 @@ if (attack == AT_NSPECIAL_AIR){
 	if (window==3&&window_timer==1){
 		var wave_id = spawn_hit_fx( x+(41*spr_dir), y-46, wavefx );
 		wave_id.depth = 5;
+		
+			if (rk_sfx){ sound_play(sound_get("rk_appear"), false, noone, 0.7, 1); }
 	}
 	if (window==5&&window_timer==1){
 		nsp_hsp_storage = -6 * spr_dir;
@@ -355,13 +530,20 @@ if (attack == AT_NSPECIAL_AIR){
 }
 
 if (attack == AT_FSPECIAL){
+	//move_cooldown[AT_FSPECIAL] = 4;
 	if (window<7){
 		can_fast_fall = false;
 		hsp = clamp(hsp, -1.5, 1.5)
 		vsp = clamp(vsp, -16, 4)
 	}
+	if (window==3&&window_timer==1){
+		var gweh_time = get_gameplay_time()
+		sound_play(sound_get("bubblestart2"), false, noone, 0.9, 0.8-((gweh_time%20)/2000));
+		//print(string(gweh_time%20)+" -> "+string((gweh_time%20)/200)+" -> "+string(0.8-((gweh_time%20)/200)))
+	}
 	if (window==5&&window_timer==1){
 		
+		sound_play(sound_get("bubblestart2"), false, noone, 0.8, 1.2);
 		var bubbleID = instance_create(x+(87*spr_dir), y-36, "obj_article1");
 		bubbleID.player_id = id;
 		bubbleID.player = player;
@@ -561,7 +743,9 @@ if (attack == AT_USPECIAL){
 		}
 		if (window_timer==11){
 			sound_stop(sound_get("dimensional"));
-			sound_play(sound_get("fastslash"), false, noone, 0.9, 1.3);
+			if (rk_sfx){ sound_play(sound_get("rk_cut1"), false, noone, 1, 0.8);
+			sound_play(sound_get("fastslash"), false, noone, 0.7, 1.5); }else{
+			sound_play(sound_get("fastslash"), false, noone, 0.9, 1.3); }
 			hsp_decide = 0;
 			vsp_decide = 0;
 			//usp_angle is "pure" rounded angle (45, etc)
@@ -698,7 +882,9 @@ if (attack == AT_DSPECIAL){//22%
 			window = 7
 			window_timer = 0;
 		}else{
-			sound_play(sound_get("charge"), false, noone, 0.6, 1);
+			if (rk_sfx){ sound_play(sound_get("rk_pulse2"), false, noone, 0.7, 1);
+			sound_play(sound_get("rk_active"), false, noone, 0.7, 1); } else{
+			sound_play(sound_get("charge"), false, noone, 0.6, 1); }
 			sound_play(sound_get("charge2"), false, noone, 0.8, 1);
 			if (get_player_color(player) == 19){ sound_play(sound_get("genesis_extra_elec"), false, noone, 1, 1); };
 		}
@@ -707,7 +893,7 @@ if (attack == AT_DSPECIAL){//22%
 		can_move = false;
 		can_fast_fall = false;
 		hsp = clamp(hsp, -3, 3)//3
-		vsp = clamp(vsp, -16, 6)//4
+		vsp = clamp(vsp, -16, 5)//4//6
 	}
 	if (window>=2&&window<6){
 		if (special_down && !free){
@@ -740,6 +926,15 @@ if (attack == AT_DSPECIAL){//22%
 				sound_play(sound_get("charge2"), false, noone, 0.6, 1);
 				dsp_sep_count = 0;
 			}
+				var demoncheck = false;
+				with (asset_get("obj_stage_main")){ if (variable_instance_exists(id, "is_demon_horde_stage")){demoncheck = true;}}//demon horde check
+					//print(string(demoncheck))
+				if (demoncheck){
+					if (round(na_dsp_charge)%4==0){
+						if (get_player_damage( player )>0){sound_play(asset_get("mfx_hp"), false, noone, 2, 1);}
+						take_damage( player, -1, -1 );
+					}
+				}
 			na_dsp_charge++;
 			clock_timer = clock_dur;
 			if (!special_down||na_dsp_charge >= dspmax){
@@ -753,6 +948,8 @@ if (attack == AT_DSPECIAL){//22%
 			window_timer = 0;
 			sound_stop(sound_get("charge"));
 			sound_stop(sound_get("charge2"));
+			sound_stop(sound_get("rk_pulse2"));
+			sound_stop(sound_get("rk_active"));
 			if (get_player_color(player) == 19){ sound_stop(sound_get("genesis_extra_elec")); };
 			}else if (special_down){
 				white_flash_timer = 6;
@@ -785,7 +982,11 @@ if (attack == AT_DSPECIAL){//22%
 	}
 	if (window==10&&window_timer==2){
 		na_dsp_charge = 0;
-		sound_play(sound_get("laser"), false, noone, 0.9, 1);
+			if (rk_sfx){ sound_play(sound_get("rk_blast"), false, noone, 0.8, 1.3);
+			sound_play(sound_get("rk_blast"), false, noone, 0.8, 1.3); 
+			sound_play(sound_get("laser"), false, noone, 0.5, 0.8); }else{
+			sound_play(sound_get("laser"), false, noone, 0.9, 1);
+			}
 		
 		if (get_player_color( player ) == 7){//towerofheaven
 			sound_play(sound_get("laser_ea"), false, noone, 0.9, 1);
@@ -825,6 +1026,10 @@ if (attack == AT_DSPECIAL){//22%
 	}
 	if (window==14){
 		hsp = clamp(hsp, -2, 2)
+		//if (window_timer>15){
+		//	iasa_script()
+		//}
+		
 	}
 	
 	
@@ -875,6 +1080,11 @@ if (attack==AT_TAUNT&&window==5){
 			sound_play(sound_get( "scream8" ));
 		}else if (get_player_color(player)==10){//astral
 			sound_play(sound_get( "scream5" ));
+		}else if (get_player_color(player)==11&&extra_col==10){//knight
+			sound_play(sound_get( "scream9" ));
+		}else if (rk_sfx){//knight
+			sound_play(sound_get( "scream9" ));
+			sound_play(sound_get( "scream9" ));
 		//}else if (get_player_color(player)==11){//doomsday
 		//	sound_play(sound_get( "scream2" ));
 		//	sound_play(sound_get( "scream2" ));
@@ -920,5 +1130,44 @@ if ( (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR) ){
 
 
 
+
+
+
+//=======================================================================================================================//
+
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+if (newdust != -4){
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+}
+return newdust;
 
 

@@ -12,6 +12,13 @@ if (attack == AT_USPECIAL && (state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND)){
 	}
 }
 
+if (state == PS_PRATLAND && was_parried == true){
+	image_index = 0 + state_timer * 4 / (parry_lag*2);
+	if (was_it_extended_parrystun==true){
+		image_index = 0 + state_timer * 4 / 160;
+	}
+}
+
 if (state == PS_WALL_JUMP){
 	switch(image_index){
 		case 0:
@@ -37,5 +44,9 @@ with(pHitBox){
 				sprite_index = sprite_get("sweetspot_circle")
 			}
 		}
+			//if (attack == AT_NSPECIAL_AIR && hbox_num == 2){
+			//	sprite_index = sprite_get("fake_circle")
+			//	
+			//}
 	}
 }

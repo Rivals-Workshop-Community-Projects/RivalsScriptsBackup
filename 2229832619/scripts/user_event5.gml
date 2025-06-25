@@ -1,3 +1,6 @@
+//hit_player.gml 2
+//look man im too lazy to "move" everything here so its a direct copy
+
 if (my_hitboxID.attack == AT_FSTRONG){
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 4);
 		set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 8);//8

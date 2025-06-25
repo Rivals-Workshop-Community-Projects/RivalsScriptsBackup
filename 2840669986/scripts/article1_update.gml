@@ -241,6 +241,9 @@ if (state == 2){
 		//hsp = 0;
 	}
 	//player_id.move_cooldown[AT_DSPECIAL] = 0;
+	
+	// MAYBE THIS FIXES THE VACUUM BUG???
+	player_id.vacuum_grab = false;
 }
 
 //Vacuuming
