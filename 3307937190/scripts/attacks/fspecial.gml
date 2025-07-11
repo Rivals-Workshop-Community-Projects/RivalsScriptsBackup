@@ -11,11 +11,11 @@ set_attack_value(atk, AG_OFF_LEDGE, 1);
 set_attack_value(atk, 87, "Applies Elemental Ink on hit. Can only be used once per airtime.");//AG_MUNO_ATTACK_MISC_ADD = i; i++;
 
 window_num = 1; //windup
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 11);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy2"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 12);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 

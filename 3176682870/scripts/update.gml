@@ -1,7 +1,6 @@
 //Music randomizer
 if (cur_song == -1) cur_song = random_func(current_second, 6, true)+1;
  
-
 music_play_file("music_track" + string(cur_song));
 
 //If preferred, songs can now be selected from a set of four instead of randomized!
@@ -36,4 +35,14 @@ if (get_gameplay_time() < 120){
       }
     }
   }
+}
+
+//Plays the ambient sfxs.
+if (get_gameplay_time() = 130) {
+    sound_play(sound_get("green_path_atmos_loop"), true);
+    sound_play(sound_get("cave_noises"), true);
+    sound_play(sound_get("waterfall_loop"), true, noone, 0.5);
+    if is_aether_stage() {
+    	sound_play(sound_get("acid_ambient_loop"), true);
+    }
 }

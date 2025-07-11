@@ -29,7 +29,7 @@ set_num_hitboxes(AT_BAIR, 2);
 var bk_power    = 7;
 var kb_power    = 0.60;
 var bhit_pause  = 7;
-var hp_power    = 0.50;
+var hp_power    = 0.25;
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);

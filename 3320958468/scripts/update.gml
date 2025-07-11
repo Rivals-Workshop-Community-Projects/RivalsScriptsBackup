@@ -556,6 +556,24 @@ if(variable_instance_exists(id,"diag"))
             }
         }
     }
+
+    //	Wapeach
+	if(otherUrl == 3489846072)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Did someone order a royal pain in the neck?",
+                "Only if you're ready to be served, you limbless meh.",
+                "Let's see if you're all crown, or just clown!"]
+            }
+        }
+    }
 	
 	//	Roger 
     if(otherUrl == 2304745302)

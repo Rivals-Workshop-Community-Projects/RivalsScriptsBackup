@@ -13,3 +13,11 @@ with(oPlayer){
         }
     }
 }
+
+//Fang's dumb hack to allow the lava to damage blue team.
+if (obj_stage_main.team_timer = 0) {
+    set_player_team(5,1);
+    obj_stage_main.team_timer += 1}
+else {
+    set_player_team(5,2);
+    obj_stage_main.team_timer -= 1}

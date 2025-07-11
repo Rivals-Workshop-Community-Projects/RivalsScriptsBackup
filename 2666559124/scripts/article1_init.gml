@@ -1,13 +1,21 @@
-//article1_init
+// Pedestal Init
 
-if (get_player_color(player) == 11) {
-	sprite_index = sprite_get("bomb_gb")
+if (get_player_color(player) == 0) {
+	sprite_index = sprite_get("bomb");
+} else if (get_player_color(player) == 15) {
+	sprite_index = sprite_get("bomb_gb");
 } else {
-	sprite_index = sprite_get("bomb")
+	sprite_index = sprite_get("bomb_alt");
 }
-mask_index = sprite_get("bomb_hurt")
+mask_index = sprite_get("bomb_p_mask")
 
 can_be_grounded = true;
 ignores_walls = false;
-uses_shader = true;
-hp = 1;
+//uses_shader = false;
+
+grav = 8;
+destroy = false;
+
+// Create Bomb
+var bomb = instance_create(x, y, "obj_article2");
+bomb.parent = self;

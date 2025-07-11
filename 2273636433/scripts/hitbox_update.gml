@@ -11,6 +11,7 @@ if attack == AT_NSPECIAL{
 
 	damage= 4+ C_dam*2;
 	kb_value = 4+ C_knock*1.25;
+	hitpause = 4 + floor(C_knock/1.5);
 
 	//DAMAGE AND KNOCKBACK RESTRICTIONS
 	if limit == 1{																				//For RUNE K

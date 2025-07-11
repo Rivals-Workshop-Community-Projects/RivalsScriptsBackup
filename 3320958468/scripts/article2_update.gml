@@ -279,12 +279,11 @@ if (state == 0)
         image_index += 0.20;  
     }
     
-    //	Pause on the last frame (image_index 8) for a set amount of time
+    //	Pause on the last frame for a set amount of time
     if (image_index >= 8)
     {
         image_index = 8;
 
-        //	Pause for a specific amount of time before transitioning to the next state
         if (state_timer > 100) 
         {
             setState(1); 
@@ -303,7 +302,7 @@ if (state == 1)
     mask_index 			= sprite_get("dspec_plungerguard_mask");
     image_index 		= 8;
 
-    //	Track the direction of the enemy relative to the turret
+    //	Track the direction of the enemy for the turret
 	var enemy_direction = spr_dir;  
 	
 	with (player_id)
@@ -359,7 +358,7 @@ if (state == 1)
 							enemy_direction = -1;   //  Enemy is to the right
 						}
 
-						//	Update turret direction if the enemy moves past
+						//	Update turret direction if the enemy moves past it
 						if (other.spr_dir != enemy_direction)
 						{
 							//  Switch turret's facing direction
@@ -369,7 +368,7 @@ if (state == 1)
 						//  Determine the shooting angle based on the enemy's vertical position
 						if (y < other.y - 100)
 						{
-							other.shoot_angle = -1;     // Enemy is directly above, no firing
+							other.shoot_angle = -1;     //Enemy is directly above, no firing
 						}
 
 						else if (y > other.y + 70)

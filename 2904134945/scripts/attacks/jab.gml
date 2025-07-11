@@ -13,6 +13,8 @@ win(a,1,AG_WINDOW_ANIM_FRAMES,1);
 win(a,1,AG_WINDOW_HAS_SFX,1);
 win(a,1,AG_WINDOW_SFX,asset_get("sfx_swipe_medium2"));
 win(a,1,AG_WINDOW_HSPEED,4);
+win(a,1,AG_WINDOW_HAS_CUSTOM_FRICTION,1);
+win(a,1,AG_WINDOW_CUSTOM_GROUND_FRICTION,1.5);
 
 win(a,2,AG_WINDOW_TYPE,1);
 win(a,2,AG_WINDOW_LENGTH,4);

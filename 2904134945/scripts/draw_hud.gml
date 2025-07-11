@@ -243,6 +243,21 @@ if ("practice" in self)
 						AddText("HUD Sprite for No spawning DSpecial Crystal now shows remaining time");
 						AddText("FSpecial meter now also appears on the HUD");
 						break;
+					case 11:
+						AddText("v1.9 - 1 Jul 2025");
+						AddText("");
+						AddText("Initial Dash Time 4 -> 8");
+						AddText("Waveland adj 1.35 -> 1.2");
+						AddText("Waveland friction 0.14 -> 0.15");
+						AddText("Air Max Speed 5.5 -> 4.5");
+						AddText("");
+						AddText("Frostbite stacks are now removed on Noelle death");
+						AddText("");
+						AddText("Jab startup custom friction 1.5");
+						AddText("Jab can no longer hit through super armour");
+						AddText("");
+						AddText("NSpecial UI indicator bar speed halved (Does not affect gameplay)");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

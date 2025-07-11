@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 21, 46, 4 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 25 );
 
 // Blue / Original
 set_color_profile_slot( 1, 0, 39, 41, 184 ); //Body 1
@@ -246,15 +246,35 @@ set_color_profile_slot( 21, 5, 145, 61, 64 ); //Buttons/Tambo 1
 set_color_profile_slot( 21, 6, 97, 41, 69 ); //Buttons/Tambo 2
 set_color_profile_slot( 21, 7, 255, 215, 207 ); //Tambo/Disco 1
 
+// Battle Cats Zombie
+set_color_profile_slot( 22, 0, 184, 113, 255 ); //Body 1
+set_color_profile_slot( 22, 1, 133, 73, 175 ); //Body 2
+set_color_profile_slot( 22, 2, 0, 0, 0 ); //Face 1
+set_color_profile_slot( 22, 3, 0, 0, 0 ); //Face 2
+set_color_profile_slot( 22, 4, 245, 255, 253 ); //Eye Glint
+set_color_profile_slot( 22, 5, 245, 255, 253 ); //Buttons/Tambo 1
+set_color_profile_slot( 22, 6, 194, 205, 209 ); //Buttons/Tambo 2
+set_color_profile_slot( 22, 7, 59, 59, 59 ); //Tambo/Disco 1
+
 // the amongla.
-set_color_profile_slot( 22, 0, 222, 80, 63 ); //Body 1
-set_color_profile_slot( 22, 1, 153, 34, 76 ); //Body 2
-set_color_profile_slot( 22, 2, 140, 234, 255 ); //Face 1
-set_color_profile_slot( 22, 3, 118, 154, 219 ); //Face 2
-set_color_profile_slot( 22, 4, 140, 234, 255 ); //Eye Glint
-set_color_profile_slot( 22, 5, 255, 181, 106 ); //Buttons/Tambo 1
-set_color_profile_slot( 22, 6, 237, 126, 82 ); //Buttons/Tambo 2
-set_color_profile_slot( 22, 7, 209, 255, 252 ); //Tambo/Disco 1
+set_color_profile_slot( 23, 0, 222, 80, 63 ); //Body 1
+set_color_profile_slot( 23, 1, 153, 34, 76 ); //Body 2
+set_color_profile_slot( 23, 2, 140, 234, 255 ); //Face 1
+set_color_profile_slot( 23, 3, 118, 154, 219 ); //Face 2
+set_color_profile_slot( 23, 4, 140, 234, 255 ); //Eye Glint
+set_color_profile_slot( 23, 5, 255, 181, 106 ); //Buttons/Tambo 1
+set_color_profile_slot( 23, 6, 237, 126, 82 ); //Buttons/Tambo 2
+set_color_profile_slot( 23, 7, 209, 255, 252 ); //Tambo/Disco 1
+
+// Mr "Ant" Tenna
+set_color_profile_slot( 24, 0, 227, 204, 251 ); //Body 1
+set_color_profile_slot( 24, 1, 161, 147, 237 ); //Body 2
+set_color_profile_slot( 24, 2, 254, 252, 255 ); //Face 1
+set_color_profile_slot( 24, 3, 227, 204, 251 ); //Face 2
+set_color_profile_slot( 24, 4, 172, 210, 222 ); //Eye Glint
+set_color_profile_slot( 24, 5, 218, 31, 82 ); //Buttons/Tambo 1
+set_color_profile_slot( 24, 6, 122, 34, 58 ); //Buttons/Tambo 2
+set_color_profile_slot( 24, 7, 254, 249, 96 ); //Tambo/Disco 1
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -48,6 +48,23 @@ cur_lang = synced_vars[0];
 tag_pal_on = synced_vars[1];
 cur_ink = synced_vars[2];
 
+// Validate synced variables.
+var valid = true;
+if (cur_lang > 2) {
+    cur_lang = 0;
+    valid = false;
+}
+if (cur_ink > 2) {
+    cur_ink = 0;
+    valid = false;
+}
+if (!valid) {
+    // Overwrite synced vars immediately, just in case.
+    synced_vars = generate_synced_var(cur_lang, 2, tag_pal_on, 2, cur_ink, 2);
+    set_synced_var(player, synced_vars)
+}
+
+
 voice_init(cur_lang)
 
 #define voice_init(_lang_var)
@@ -86,7 +103,7 @@ if total_len > 32 {
     print(`error generating synced var - bit length surpassed 32! (${total_len} bits.)`);
     return 0;
 }
-
+print(output)
 return real(output);
 
 #define split_synced_var

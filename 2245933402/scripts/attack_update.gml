@@ -415,9 +415,9 @@ if (attack == AT_FAIR or attack == AT_BAIR) and strong_down{
 if attack == AT_FSPECIAL {
 
 if ostyle == 2 {    
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, (10 - jettime/10)/1.2 + 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -4 - jettime/10);
-set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60 + jettime/2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED,  round(10 - jettime/12));
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED,  round(-4 - jettime/10));
+set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, round(60 + jettime/2));
 } else {
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 4 );
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -7 );	
@@ -471,7 +471,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -7 );
         }
         
         if spamb % 20 == 0 or (spamb > 80 && spamb % 3 == 0) {
-             sound_play(asset_get("sfx_ell_steam_hit"),false,noone,0.6,2)
+            sound_play(asset_get("sfx_ell_steam_hit"),false,noone,0.6,2)
             spawn_hit_fx (x - 26*spr_dir , y - 50 , 109)
         }
         
@@ -498,14 +498,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -7 );
         spamb += 1
         
 
-
-        if jettime > 80 {
-            jettime = 80
-        }
-        
-        if jettime < -30 {
-            jettime = -30
-        }
+       jettime = clamp(jettime,-30,80)
     }
 }
 

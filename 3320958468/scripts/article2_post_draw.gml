@@ -1,4 +1,4 @@
-//	article2_post_drawl
+//	article2_post_draw
 //	stuff to draw stuff for article2... stuff
 
 //=========================================================================================

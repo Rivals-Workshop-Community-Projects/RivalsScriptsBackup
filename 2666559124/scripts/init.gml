@@ -3,6 +3,7 @@ crouchbox_spr = asset_get("ex_guy_hurt_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+alt = get_player_color(player);
 char_height = 60;
 idle_anim_speed = .150;
 crouch_anim_speed = .2;
@@ -12,7 +13,7 @@ pratfall_anim_speed = .25;
 
 walk_speed = 2.50;
 walk_accel = 0.2;
-walk_turn_time = 6;
+walk_turn_time = 8;
 initial_dash_time = 14;
 initial_dash_speed = 6;
 dash_speed = 6;
@@ -79,11 +80,11 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 1;
-roll_forward_recovery_frames = 1;
+roll_forward_active_frames = 2;
+roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 1;
-roll_back_recovery_frames = 1;
+roll_back_active_frames = 2;
+roll_back_recovery_frames = 3;
 roll_forward_max = 8; //roll speed
 roll_backward_max = 8;
 
@@ -99,22 +100,39 @@ bubble_x = 0;
 bubble_y = 8;
 
 set_victory_bg(sprite_get("victory_bg"));
-set_victory_theme( sound_get( "victory_theme" ));
+set_victory_theme( sound_get("victory_theme"));
+
+my_barrel = noone;
+if (alt == 0) {
+	barrel_dust = hit_fx_create(sprite_get("dfx_barrel_dust"), 24);
+} else {
+	barrel_dust = hit_fx_create(sprite_get("dfx_barrel_dust_alt"), 24);
+}
+barreled = false;
 
 canBomb = true;
 
-alt = get_player_color(player);
+ai_test = 0;
+ai_test_2 = 0;
+ai_test_3 = false;
 
-if (alt == 7 || alt == 8 || alt == 9 || alt == 10 || alt == 11) {
+if (alt == 2 || alt == 3 || alt == 4 ||
+    alt == 7 || alt == 13 || alt == 14 || alt == 15) {
 	use_ex_sprites = true;
-	set_ui_element( UI_HUD_ICON, sprite_get("hud_ex"));
-	set_ui_element( UI_HUDHURT_ICON, sprite_get("hudrt_ex"));
-	set_ui_element( UI_WIN_PORTRAIT, sprite_get("portrait_ex"));
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_ex"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_ex"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_ex"));
 } else {
 	use_ex_sprites = false;
-	set_ui_element( UI_HUD_ICON, sprite_get("hud_def"));
-	set_ui_element( UI_HUDHURT_ICON, sprite_get("hudrt_def"));
-	set_ui_element( UI_WIN_PORTRAIT, sprite_get("portrait_def"));
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_def"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_def"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_def"));
+}
+
+if (alt == 0) {
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("barrel_pieces"));
+} else if (alt == 15) {
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("barrel_gb_pieces"));
 }
 
 //Toonlink Support
@@ -249,3 +267,5 @@ daroach_speaker[page] = 0;
 daroach_text[page] = "You just so happen to be talking to their leader.";
 page++;
 
+// *** Outskirts Invasion *** 
+draw_hud_event = 5;

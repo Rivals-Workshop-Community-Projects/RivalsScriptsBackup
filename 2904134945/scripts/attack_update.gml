@@ -91,7 +91,7 @@ case AT_NSPECIAL:
 		case 2:
 			if (window_timer >= 4 && (attack_down || attack_pressed || special_down || special_pressed))
 			{
-				if ((window_timer >= 95 && window_timer <= 102) || has_rune("L"))
+				if ((window_timer >= 95 && window_timer <= 107) || has_rune("L"))
 				{
 					window = 6;
 					sound_play(sound_get("snd_laz"));
@@ -512,7 +512,7 @@ case AT_JAB:
 	switch (window)
 	{
 		case 2:
-			if (!hitpause && !was_parried && has_hit_player && instance_exists(hit_player_obj))
+			if (!hitpause && !was_parried && has_hit_player && instance_exists(hit_player_obj) && !hit_player_obj.super_armor)
 			{
 				window = 3;
 				window_timer = 0;

@@ -247,6 +247,7 @@ if ((attack == AT_FSTRONG|| attack == AT_DSTRONG || attack == AT_USTRONG) && win
 
 
 if attack == AT_FSPECIAL {
+	move_cooldown[AT_FSPECIAL]=8;
 	if window ==2 {
 		if vsp > -5 {
 			if window_timer ==1 && free && cape == 0 {
@@ -319,7 +320,7 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 							other.hitstop_full=3;
 							other.old_vsp=other.vsp;
 							other.old_hsp=other.hsp;
-							player = other.player;
+							player = other.player;						//May Cause Issues - Removing this prevents some articles from fully reflecting
 							can_hit_self = true;
 							can_hit[other.player] = false;
 							if does_not_reflect == false && hit_check == noone {hitbox_timer =0;}

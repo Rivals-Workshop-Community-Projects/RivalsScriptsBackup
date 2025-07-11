@@ -136,7 +136,7 @@ dash_anim_speed     = 0.2;
 pratfall_anim_speed = 0.25;
 
 // Jumps
-double_jump_time    = 38;		// 24   -  40
+double_jump_time    = 34;		// 24   -  40
 walljump_time       = 26;		// 18   -  32
 wall_frames         = 2;		// may or may not actually work... dan pls
 
@@ -208,7 +208,6 @@ bubble_x = 4;
 bubble_y = 6;
 
 //-------------------------------------------------------------------------------------------
-
 //	Workshop stuff
 
 //	PAC-MAN
@@ -253,7 +252,7 @@ kf_hud_offset 			= -23;
 //	Solid Snake support
 sna_interrogated_line_01 = "Rayman... 4";
 sna_interrogated_line_02 = "H-Hey! Get off me!";
-sna_interrogated_line_03 = "I’m sorry! I-I-I didn’t-I didn’t mean to!";
+sna_interrogated_line_03 = "I'm sorry! I-I-I didn't-I didn't mean to!";
 
 //	Kirby Copy Ability
 TCG_Kirby_Copy 			= 4;
@@ -278,7 +277,93 @@ laylee_win_quote 			= "Bugger off, Big Nose!";
 //	Nintendo Wii Stage
 wiimote_compat_sprite 		= sprite_get("wiimote_rayman"); 
 
-//----------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
+//	Workshop Bosses
+
+//	Dracula Support
+dracula_portrait 			= sprite_get("dracportrait1");
+dracula_portrait2 			= sprite_get("dracportrait2");
+
+var page 					= 0;
+
+//	Page 1
+dracula_speaker[page] 		= 0;
+dracula_text[page] 			= "Another fool wanders into my castle. Speak... What manner of creature are you?";
+page++;
+
+//  Page 2
+dracula_speaker[page] 		= 1;
+dracula_text[page] 			= "Name's Rayman! Nightmare to creeps like you and a big punching enthusiast! Well, depending on who you ask.";
+page++;
+
+//  Page 3
+dracula_speaker[page] 		= 0;
+dracula_text[page] 			= "Your appearance is... Most unnatural. But yet, I sense no fear. Here you stand, at the seat of darkness.";
+page++;
+
+//  Page 4
+dracula_speaker[page] 		= 1;
+dracula_text[page] 			= "How fitting. And I thought Mr. Dark was... dark. You? You certainly need to lighten up.";
+page++;
+
+//  Page 5
+dracula_speaker[page] 		= 0;
+dracula_text[page] 			= "You jest in the face of your doom. Few dare to mock me and leave with their spirit intact.";
+page++;
+
+//  Page 6
+dracula_speaker[page] 		= 2;
+dracula_text[page] 			= "What can I say? I've fought living rocks, robot pirates and nightmare-ish lums. [taunt] You're just missing a bit of colour, that's all.";
+page++;
+
+//  Page 7
+dracula_speaker[page] 		= 0;
+dracula_text[page] 			= "You are either very brave, or very foolish. Soon, it will not matter.";
+page++;
+
+//  Page 8
+dracula_speaker[page] 		= 1;
+dracula_text[page] 			= "Mind if we skip the evil monologue and get to the part where you try to bite me?";
+page++;
+
+//  Page 9
+dracula_speaker[page] 		= 0;
+dracula_text[page] 			= "So be it. [glass] The night is long, and your end will be most... enlightening.";
+page++;
+ 
+
+//	Daroach dialogue
+daroach_portrait 			= sprite_get("dracportrait1");
+daroach_portrait2 			= sprite_get("dracportrait2");
+
+var page 					= 0;
+
+//	Page 1
+daroach_speaker[page] 		= 0;
+daroach_text[page] 			= "Careful, Eggplant. These treasures belong to the Squeak Squad!";
+page++;
+
+//	Page 2
+daroach_speaker[page] 		= 2;
+daroach_text[page] 			= "You'll need fast paws to swipe these fists";
+page++;
+
+//	Page 3
+daroach_speaker[page] 		= 0;
+daroach_text[page] 			= "Ooh, I love a good challenge and a bit of chaos doesn't hurt either.";
+page++;
+
+//	Page 4
+daroach_speaker[page] 		= 1;
+daroach_text[page] 			= "Lucky for you, I bring both in spades!";
+page++;
+
+//	Page 5
+daroach_speaker[page] 		= 0;
+daroach_text[page] 			= "Let's see which of us disappears first.";
+page++;
+
+//-------------------------------------------------------------------------------------------
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

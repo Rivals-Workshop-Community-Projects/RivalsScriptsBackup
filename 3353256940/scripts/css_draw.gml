@@ -7,9 +7,6 @@ switch (get_player_color( player ) ){
    case 6:
         draw_sprite_ext(sprite_get("css_bg_alts"),0,x+8,y+8,2,2,0,-1,1);
     	break;
-   case 17:
-        draw_sprite_ext(sprite_get("css_bg_alts"),1,x+8,y+8,2,2,0,-1,1);
-    	break;
     case 20:
         draw_sprite_ext(sprite_get("css_bg_alts"),2,x+8,y+8,2,2,0,-1,1);
     	break;
@@ -70,7 +67,7 @@ if (get_player_color(player) != 20) {
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- --
-var qe_b = "Twenny"
+var qe_b = "TweNnny"
 
 // ! you can now scroll down until you reach "the primary part you should change."
 
@@ -131,43 +128,43 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(187, 70, 135) // "color preview square" color. can be any color!
 	ce[0,1] = "An Ambrosian Anomaly" // the name of the alternate color.
-	ce[0,2] = "> NAME'S TWENNY. D0N'T WEAR IT 0UT!" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+	ce[0,2] = "NAME'S TWENNY. D0N'T WEAR IT 0UT!" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
 	
 	ce[1,0] = make_color_rgb(68, 151, 219)
 	ce[1,1] = "New Horizon"
-	ce[1,2] = "> IS THE SKY AS PRETTY AS THIS BLUE? I'D L0VE T0 TASTE IT SOMEDAY."
+	ce[1,2] = "IS THE SKY AS PRETTY AS THIS BLUE? I'D L0VE T0 TASTE IT SOMEDAY."
 	
 	ce[2,0] = make_color_rgb(237, 81, 104)
 	ce[2,1] = "Fiery Passion"
-	ce[2,2] = "> A RED LIKE THIS REMINDS ME 0F L0VE... WILL I EVER FIND MY TWIN PR0CESS0R?"
+	ce[2,2] = "A RED LIKE THIS REMINDS ME 0F L0VE... WILL I EVER FIND MY TWIN PR0CESS0R?"
 	
 	ce[3,0] = make_color_rgb(74, 214, 117)
 	ce[3,1] = "Green Envy"
-	ce[3,2] = "> WHAT'S THIS AB0UT ENVY?? I'M N0T JEAL0US 0F ANY 0F Y0U GERMS!!"
+	ce[3,2] = "WHAT'S THIS AB0UT ENVY?? I'M N0T JEAL0US 0F ANY 0F Y0U GERMS!!"
 	
 	ce[4,0] = make_color_rgb(142, 109, 214)
 	ce[4,1] = "Of Hearts and Acid"
-	ce[4,2] = "> THE PINK STUFF? GUESS THAT'S KIND 0F ACID. IT D0ES MAKE GH0STS TINGLE."
+	ce[4,2] = "THE PINK STUFF? GUESS THAT'S KIND 0F ACID. IT D0ES MAKE GH0STS TINGLE."
 	
 	ce[5,0] = make_color_rgb(123, 127, 145)
 	ce[5,1] = "Monochrome Monitor"
-	ce[5,2] = "> I'D NEVER WEAR S0METHING S0 DRAB! S0... S0... SULLEN."
+	ce[5,2] = "I'D NEVER WEAR S0METHING S0 DRAB! S0... S0... SULLEN."
 	
     ce[6,0] = make_color_rgb(167, 186, 74)
 	ce[6,1] = "Small Nostalgia"
-	ce[6,2] = "> SUPER SMALL LADS? S0RRY PAL, TH0SE KINDS 0F GAMES ARE F0R D0RKS."
+	ce[6,2] = "SUPER SMALL LADS? S0RRY PAL, TH0SE KINDS 0F GAMES ARE F0R D0RKS."
 
 	ce[7,0] = make_color_rgb(173, 133, 98)
 	ce[7,1] = "Bittersweet Memories"
-	ce[7,2] = "> LIKE A SEPIA P0LAR0ID... KIND 0F MAKES ME REMEMB"
+	ce[7,2] = "LIKE A SEPIA P0LAR0ID... KIND 0F MAKES ME REMEMB"
 	
     ce[8,0] = make_color_rgb(180, 69, 254)
 	ce[8,1] = "Infamous Star"
-	ce[8,2] = "> INFAM0US? N0 DUH!! I AM ALWAYS 'IN FAME'!"
+	ce[8,2] = "INFAM0US? N0 DUH!! I AM ALWAYS 'IN FAME'!"
 	
     ce[9,0] = make_color_rgb(255, 189, 237)
 	ce[9,1] = "A Real Girl"
-	ce[9,2] = "> I SET MY MIND L0NG AG0, BUT JUST S0 WE'RE CLEAR, THIS IS WH0 I AM BABY!!!"
+	ce[9,2] = "I SET MY MIND L0NG AG0, BUT JUST S0 WE'RE CLEAR, THIS IS WH0 I AM BABY!!!"
 	
     ce[10,0] = make_color_rgb(66, 185, 212)
 	ce[10,1] = "Virtual Attachment"
@@ -175,39 +172,39 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	
 	ce[11,0] = make_color_rgb(137, 232, 231)
 	ce[11,1] = "Singing Software"
-	ce[11,2] = "> THIS JUST REMINDS ME H0W L0NG IT T00K T0 FIGURE 0UT MY DAMN V0ICEB0XX!"
+	ce[11,2] = "THIS JUST REMINDS ME H0W L0NG IT T00K T0 FIGURE 0UT MY DAMN V0ICEB0XX!"
 	
 	ce[12,0] = make_color_rgb(99, 99, 97)
 	ce[12,1] = "Want You Gone"
-	ce[12,2] = "> I D0 KNOW A THING 0R TW0 AB0UT THINKING WITH P0RTALS. TW0."
+	ce[12,2] = "I D0 KNOW A THING 0R TW0 AB0UT THINKING WITH P0RTALS. TW0."
 	
 	ce[13,0] = make_color_rgb(48, 122, 32)
 	ce[13,1] = "She Is Here"
-	ce[13,2] = "> 0H WHAT AN IC0N! H0W CAN I N0T GUSH?"
+	ce[13,2] = "0H WHAT AN IC0N! H0W CAN I N0T GUSH?"
 	
     ce[14,0] = make_color_rgb(48, 91, 182)
 	ce[14,1] = "Turquoise Troll"
-	ce[14,2] = "> WHAT'S THIS GUY'S DEAL?? IMAGINE SP0UTING AS MUCH INC0HERENT N0NSENSE AS THIS GUY!"
+	ce[14,2] = "WHAT'S THIS GUY'S DEAL?? IMAGINE SP0UTING AS MUCH INC0HERENT N0NSENSE AS THIS GUY!"
 	
 	ce[15,0] = make_color_rgb(150, 237, 119)
 	ce[15,1] = "Evil Genius"
-	ce[15,2] = "> THIS BROAD IS K0CA CRAZY! WH0 TURNS HALF THEIR B0DY INT0 G00P??"
+	ce[15,2] = "THIS BROAD IS K0CA CRAZY! WH0 TURNS HALF THEIR B0DY INT0 G00P??"
 	
     ce[16,0] = make_color_rgb(255, 135, 142)
 	ce[16,1] = "Maddened Mew"
-	ce[16,2] = "> THE CUTEST DULLAHAN EVER? YEAH, Y0U F-CK*NG WISH."
+	ce[16,2] = "THE CUTEST DULLAHAN EVER? YEAH, Y0U F-CK*NG WISH."
 	
-    ce[17,0] = make_color_rgb(143, 184, 49)
-	ce[17,1] = "Your Best Nightmare"
-	ce[17,2] = "> S0ME FL0WER FREAK, RIGHT? WHAT D0ES HE EVEN HAVE T0 D0 WITH SCREENS??"
+    ce[17,0] = make_color_rgb(254, 249, 96)
+	ce[17,1] = "It's PC Time!"
+	ce[17,2] = "A RIVAL SHOW? PUHLEASE, HE WON'T EVEN CATER T0 THE GL00BY DEMOGRAPHIC!"
 	
 	ce[18,0] = make_color_rgb(111, 209, 255)
 	ce[18,1] = "Q5U4EX7YY2E9N"
-	ce[18,2] = " > THIS W0MAN IS A C0MPUTER T00? I'D L0VE T0 GRAB A GLASS 0F ACID WITH HER!"
+	ce[18,2] = "THIS W0MAN IS A C0MPUTER T00? I'D L0VE T0 GRAB A GLASS 0F ACID WITH HER!"
 	
 	ce[19,0] = make_color_rgb(255, 253, 66)
 	ce[19,1] = "Eclipse"
-	ce[19,2] = "> M00N MASKS SUN. I KNEW A THING 0R 2 ABOUT MASKS. N0W I JUST D0N'T KNoW."
+	ce[19,2] = "M00N MASKS SUN. I KNEW A THING 0R 2 ABOUT MASKS. N0W I JUST D0N'T KNoW."
 	
 	ce[20,0] = make_color_rgb(0, 0, 0)
 	ce[20,1] = "An End."

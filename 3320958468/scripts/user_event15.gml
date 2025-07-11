@@ -253,6 +253,25 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.07", "09 July, 2025");
+initHeader("JAB:");
+initSection("JAB:
+(hitboxes 1 & 2)
+* Changed the visual hit effects.
+(for all hitboxes)
+- Slightly shrunken the hitboxes.");
+initHeader("~BONUS~:");
+initImage_ext(sprite_get("dracportrait1"), 0, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initSection("+ Added support for the Dracula Boss stage
++ Updated the Dialogue Buddy lines if Rayman faces Wapeach");
+
+
+initPatch("1.06", "22 April, 2025");
+initHeader("FSTRONG:");
+initSection("- Knockback Scaling reduced from 1.15 -> 1.10");
+initHeader("DAIR:");
+initSection("* Angle Flipper set to 9 instead of 7, to make the attack more snappy.");
+
 initPatch("1.05", "30 March, 2025");
 initHeader("GENERAL:");
 initSection("* Updated the localization files.");

@@ -6,13 +6,41 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_DATTACK) {
-	if (window == 2) {
+	if (window == 3) {
 		can_jump = true;
+		can_shield = true;
+		can_strong = true;
+		can_ustrong = true;
+		can_special = true;
+		if (left_down || right_down || up_down || down_down) {
+			can_attack = true;
+		} else if (window_timer > 7 && attack_pressed) {
+			window = 5;
+			window_timer = 0;
+		}
+	}
+	if (window == 4 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		attack = 0;
+		attack_end();
 	}
 }
 
-if (attack == AT_DAIR) {
-	if (window == 2){
+/*if (attack == AT_UTILT) {
+	if (window == 1) {
+		if (!attack_down && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+			window = 5;
+			window_timer = 0;
+		}
+	}
+}*/
+
+if (attack == AT_UAIR) {
+	hud_offset = 32;
+}
+
+// Unused code for the old DAir
+/*if (attack == AT_DAIR) {
+	if (window == 2) {
 		move_cooldown[AT_DAIR] = 9999;
         	can_shield = true;
         	can_jump = true;
@@ -26,6 +54,22 @@ if (attack == AT_DAIR) {
         		window = 2;
         		window_timer = 0;
         	}
+	}
+}*/
+
+if (attack == AT_DAIR) {
+	if (window == 3) {
+		if (!down_down) {
+			can_attack = true;
+		}
+		can_shield = true;
+	}
+	if (window >= 4 && !hitpause) {
+		if (has_hit) {
+			can_shield = true;
+			can_jump = true;
+		}
+		can_wall_jump = true;
 	}
 }
 
@@ -54,7 +98,8 @@ if (attack == AT_NSPECIAL) {
 	move_cooldown[AT_NSPECIAL] = 35;
 }
 
-if (attack == AT_FSPECIAL) {
+// Unused code for the old FSpecial
+/*if (attack == AT_FSPECIAL) {
 	super_armor = true;
 	if (window == 1) {
 		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_grenade_launch"));
@@ -87,7 +132,7 @@ if (attack == AT_FSPECIAL) {
 			sound_play(sound_get("wario_vc"));
 		}
 	}
-	/*if(get_player_color(player) == 10) {
+	if(get_player_color(player) == 10) {
 		if (window == 1 && window_timer == 4) {
 			var charge_vc = random_func(0, 6, true);
 			if(charge_vc == 0){
@@ -124,11 +169,45 @@ if (attack == AT_FSPECIAL) {
 				sound_play(sound_get("mafia_impact_vc8"));
 			}
 		}
-	}*/
+	}
+}*/
+
+if (attack == AT_FSPECIAL) {
+	if (window == 1) {
+		if (window_timer >= 13 && shield_pressed) {
+			window = 2;
+			window_timer = 10;
+			my_barrel.moving = false;
+			clear_button_buffer(PC_SHIELD_PRESSED);
+		}
+		if (window_timer >= 15 && special_down) {
+			window_timer = 13;
+		}
+		// Spawn Barrel
+		if (window_timer == 12) {
+			var screen_y = view_get_yview();
+			if (instance_exists(my_barrel)) {
+				if (my_barrel.state == 0) {
+					my_barrel.moving = true;
+				} else { // Replace barrel if it was already dropped
+					my_barrel.hp = 0;
+					my_barrel = instance_create(round(x), screen_y - 90, "obj_article_platform");
+				}
+			} else {
+				my_barrel = instance_create(round(x), screen_y - 90, "obj_article_platform");
+			}
+		}
+	}
+	if (window == 2) {
+		if (instance_exists(my_barrel) && window_timer == 1) {
+			my_barrel.dropped = true;
+			move_cooldown[AT_FSPECIAL] = 230;
+		}
+	}
 }
 
 if (attack == AT_DSPECIAL) {
 	if (window == 2 && window_timer == 1) {
-		instance_create( round(x), round(y) - 50, "obj_article1" );
+		instance_create(round(x), round(y), "obj_article1");
 	}
 }

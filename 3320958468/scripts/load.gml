@@ -65,6 +65,7 @@ sprite_change_offset("fspecial",                        82, 90);
 sprite_change_offset("fspecial_air",                    82, 90);
 sprite_change_offset("fspec_grapple_mask", 	    	    20, 16);
 sprite_change_offset("fspec_grapple_thrown", 	        20, 16);
+sprite_change_offset("fspec_grapple_thrown_pr", 	    20, 16);
 sprite_change_offset("fspec_grapple_fist_tether",       20, 16);
 
 sprite_change_offset("uspecial",                        60, 108);

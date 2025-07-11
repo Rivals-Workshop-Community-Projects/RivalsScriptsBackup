@@ -196,15 +196,15 @@ set_color_profile_slot( 16, 5, 255, 213, 97 ); //Pinky
 set_color_profile_slot( 16, 6, 255, 237, 238 ); //Rag
 set_color_profile_slot( 16, 7, 255, 181, 193 ); //Acid
 
-// Photoshop Flowey
-set_color_profile_slot( 17, 0, 143, 184, 49 ); //Bowtrash
-set_color_profile_slot( 17, 1, 110, 102, 100 ); //Monitor
-set_color_profile_slot( 17, 2, 0, 0, 0 ); //Screen
-set_color_profile_slot( 17, 3, 214, 214, 214 ); //FaceElec
-set_color_profile_slot( 17, 4, 158, 148, 158 ); //PipeMetal
-set_color_profile_slot( 17, 5, 217, 187, 182 ); //Pinky
-set_color_profile_slot( 17, 6, 212, 93, 81 ); //Rag
-set_color_profile_slot( 17, 7, 204, 255, 143 ); //Acid
+// Tenna
+set_color_profile_slot( 17, 0, 254, 249, 96 ); //Bowtrash
+set_color_profile_slot( 17, 1, 161, 146, 235 ); //Monitor
+set_color_profile_slot( 17, 2, 250, 240, 255 ); //Screen
+set_color_profile_slot( 17, 3, 93, 95, 164 ); //FaceElec
+set_color_profile_slot( 17, 4, 254, 252, 255 ); //PipeMetal
+set_color_profile_slot( 17, 5, 93, 95, 164 ); //Pinky
+set_color_profile_slot( 17, 6, 218, 31, 82 ); //Rag
+set_color_profile_slot( 17, 7, 218, 31, 82 ); //Acid
 
 // Queen
 set_color_profile_slot( 18, 0, 111, 209, 255 ); //Bowtrash

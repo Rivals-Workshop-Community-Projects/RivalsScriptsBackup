@@ -10,7 +10,7 @@
 /*
 with pHitBox{ //i was here
 	//draw_debug_text(x +30 , y , string(id%1000));
-	draw_debug_text(x +60 , y , string(y));
+	draw_debug_text(x +60 , y , string(hitpause));
 	draw_debug_text(x +90 , y , string(kb_value));
 	draw_debug_text(x +120 , y , string(hitstun_factor));
 }

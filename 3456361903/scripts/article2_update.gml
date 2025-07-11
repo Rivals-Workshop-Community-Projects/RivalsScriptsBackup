@@ -68,7 +68,7 @@ if (state == 1){ //
     	
     with (oPlayer) {
     	
-	        if (player == other.owner && place_meeting(x, y, other) && !hitstun && !hitpause && state != PS_DEAD && state != PS_RESPAWN ) {
+	        if (player == other.owner && place_meeting(x, y, other) && state_cat != SC_HITSTUN && !hitpause && state != PS_DEAD && state != PS_RESPAWN ) {
 	        	//jspd = other.bounce_speed
 	        	jspd = other.bounce_speed
 	        	if (state == PS_ATTACK_AIR && attack == AT_USPECIAL) jspd = other.bounce_speed_uspec;

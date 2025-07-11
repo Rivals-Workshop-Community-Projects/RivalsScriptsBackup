@@ -1,4 +1,4 @@
-set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2);
+set_attack_value(AT_DSPECIAL, AG_CATEGORY, 0);
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 2);
@@ -24,7 +24,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 3);

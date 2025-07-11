@@ -23,3 +23,9 @@
    set_bg_data(8, BG_LAYER_Y, 308)
    set_bg_data(9, BG_LAYER_Y, 308)
    }
+   
+//Steve block compat:   
+//Set offsets of item drops to bottom center of sprite.
+sprite_change_offset("steve_0_drop", 6, 10);
+sprite_change_offset("steve_1_drop", 6, 10);
+sprite_change_offset("steve_2_drop", 6, 10);

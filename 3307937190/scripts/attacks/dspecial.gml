@@ -45,7 +45,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("dspecial_red"));

@@ -1,3 +1,6 @@
+small_sprites = .07;
+
+
 sprite_change_offset("idle", 128, 158);
 sprite_change_offset("intro", 128, 158);
 sprite_change_offset("hurt", 128, 158);

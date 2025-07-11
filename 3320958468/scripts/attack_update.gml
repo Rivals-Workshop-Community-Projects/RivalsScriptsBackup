@@ -1,5 +1,6 @@
 //	B - Reversals
-switch(attack){
+switch(attack)
+{
 	case AT_NSPECIAL:
 	case AT_FSPECIAL:
 	case AT_DSPECIAL:
@@ -10,54 +11,51 @@ switch(attack){
 
 //=============================================================================================
 
-if (attack == AT_UTILT)
+if (attack == AT_UTILT && !hitpause)
 {	
-	if (window == 3 && window_timer == phone_window_end && !free && !hitpause)
+	if (window == 3 && window_timer == phone_window_end && !free)
 	{
 		set_state(PS_LANDING_LAG);
 	}
 }
 
-if (attack == AT_DATTACK)
+if (attack == AT_DATTACK && !hitpause)
 {
 	can_fast_fall	= false;
 	can_wall_jump 	= true;
 	
-	if (window == 1 && window_timer == phone_window_end && !hitpause)
+	if (window == 1 && window_timer == phone_window_end)
 	{
 		sound_play(sound_get("sfx_rayman_dash_spin"), false, noone, 0.45);		
 	}
 	
 	if (window == 2)
 	{
-		if (!hitpause)
+		if (window_timer < 5 && !has_hit)
 		{
-			if (window_timer < 5 && !has_hit)
-			{
-				can_jump = true;
+			can_jump = true;
 				
-				if (can_jump)
-				{
-					hsp *= 0.98;
-				}
-			}			
-			
-			if (window_timer < phone_window_end && free)
+			if (can_jump)
 			{
-				vsp *= -0.98;
-			}		
-		}		
+				hsp *= 0.98;
+			}
+		}			
+			
+		if (window_timer < phone_window_end && free)
+		{
+			vsp *= -0.98;
+		}			
 	}
 }
 
-if (attack == AT_FSTRONG)
+if (attack == AT_FSTRONG && !hitpause)
 {
-	if (window == 1 && window_timer == 1 && !hitpause)
+	if (window == 1 && window_timer == 1)
 	{
 		sound_play(sound_get("sfx_rayman_windup"), false, noone, 0.45);		
 	}
 
-	if (window == 3 && !hitpause)
+	if (window == 3)
 	{
 		if (window_timer == phone_window_end)
 		{
@@ -72,14 +70,14 @@ if (attack == AT_FSTRONG)
 	}
 }
 
-if (attack == AT_USTRONG)
+if (attack == AT_USTRONG && !hitpause)
 {
-	if (window == 1 && window_timer == 1 && !hitpause)
+	if (window == 1 && window_timer == 1)
 	{
 		sound_play(sound_get("sfx_rayman_windup"), false, noone, 0.45);		
 	}
 
-	if (window == 3 && !hitpause)
+	if (window == 3)
 	{
 		if (window_timer == phone_window_end)
 		{
@@ -94,9 +92,9 @@ if (attack == AT_USTRONG)
 	}
 }
 
-if (attack == AT_DSTRONG)
+if (attack == AT_DSTRONG && !hitpause)
 {
-	if (window == 2 && window_timer == phone_window_end && !hitpause)
+	if (window == 2 && window_timer == phone_window_end)
 	{
 		sound_play(sound_get("sfx_rayman_fist_throw"), false, noone, 0.90);	
 		
@@ -108,13 +106,13 @@ if (attack == AT_DSTRONG)
 	}
 }
 
-if (attack == AT_NSPECIAL)
+if (attack == AT_NSPECIAL && !hitpause)
 {
 	can_move 		= false;
 	can_fast_fall 	= false;
 	can_wall_jump	= true;
 
-	if (window == 1 && !hitpause)
+	if (window == 1)
 	{
 		if (window_timer == 2)
 		{
@@ -133,7 +131,7 @@ if (attack == AT_NSPECIAL)
 	}
 }
 
-if (attack == AT_FSPECIAL)
+if (attack == AT_FSPECIAL && !hitpause)
 {    	
 	//	Set the hand's positions
 	hand_x 					= 24 * spr_dir;
@@ -143,7 +141,7 @@ if (attack == AT_FSPECIAL)
 	can_fast_fall 			= false;
 	can_wall_jump			= true;
 
-	if (window == 1 && !hitpause)
+	if (window == 1)
 	{
 		//	Allow turning and adjusting angles
 		if (joy_pad_idle) 
@@ -160,9 +158,9 @@ if (attack == AT_FSPECIAL)
 		}
 		
 		//	Minor Air Stall
-		if (window_timer < phone_window_end && free && !hitpause)
+		if (window_timer < phone_window_end && free)
 		{
-			vsp 			= -1.5;
+			vsp = -1.5;
 		}
 		
 		//	Grapple City
@@ -211,7 +209,7 @@ if (attack == AT_FSPECIAL)
 		}
 	}
 
-	if (window == 2 && !hitpause)
+	if (window == 2)
 	{
 		if (grapple_grab != noone)
 		{
@@ -233,7 +231,7 @@ if (attack == AT_FSPECIAL)
 		}
 	}
 	
-	if (window == 3 && !hitpause) 
+	if (window == 3) 
 	{		
 		if (grapple_grab != noone)
 		{ 
@@ -282,7 +280,7 @@ if (attack == AT_FSPECIAL)
 	}
 	
 	//	Easy there, Mr Eggplant...
-	if (window == 3 || window == 4 && window_timer < phone_window_end - 1 && !hitpause)
+	if (window == 3 || window == 4 && window_timer < phone_window_end - 1)
 	{
 		if (grapple_grab != noone || grapple_obj)
 		{ 
@@ -353,7 +351,7 @@ if (attack == AT_FSPECIAL)
 	}
 }
 
-if (attack == AT_USPECIAL)
+if (attack == AT_USPECIAL && !hitpause)
 {
 	var throttle_max 	= 55; 
 	
@@ -364,7 +362,7 @@ if (attack == AT_USPECIAL)
 	{		
 		throttle_timer = 0;
 		
-		if (window_timer == 1 && !hitpause)
+		if (window_timer == 1)
 		{
 			//	Prevent from falling any further near bottom blastzone
 			if (vsp > 0 && y > get_stage_data(SD_BOTTOM_BLASTZONE) - 20) 
@@ -373,12 +371,12 @@ if (attack == AT_USPECIAL)
 			}
 		}
 
-		if (window_timer == 2 && !hitpause)
+		if (window_timer == 2)
 		{
 			sound_play(asset_get("sfx_charge_blade_ready"), false, noone, 1);
 		}
 		
-		if (window_timer < phone_window_end && !hitpause)
+		if (window_timer < phone_window_end)
 		{
 			if (free)
 			{
@@ -386,13 +384,13 @@ if (attack == AT_USPECIAL)
 			}
 		}
 		
-		if (window_timer == phone_window_end && !hitpause)
+		if (window_timer == phone_window_end)
 		{
 			vsp = -4.5;
 		}
 	}
 
-	if (window == 2 && !hitpause)
+	if (window == 2)
 	{
 		throttle_timer += 1;
 		
@@ -422,7 +420,7 @@ if (attack == AT_USPECIAL)
 	}
 }
 
-if (attack == AT_DSPECIAL)
+if (attack == AT_DSPECIAL && !hitpause)
 {
 	var pg_x 		= 34;
 	var pg_y 		= 36;
@@ -431,7 +429,7 @@ if (attack == AT_DSPECIAL)
 	can_fast_fall 	= false;
 	can_wall_jump	= false;
 
-	if (window == 1 && !hitpause)
+	if (window == 1)
 	{
 		if (window_timer == 1)
 		{
@@ -476,7 +474,7 @@ if (attack == AT_DSPECIAL)
 		}
 	}
 
-	if (window == 2 && !hitpause)
+	if (window == 2)
 	{
 		//	Spawn the P.Guard if grounded
 		if (!free)
@@ -495,9 +493,9 @@ if (attack == AT_DSPECIAL)
 //=============================================================================================
 //	Taunts
 
-if (attack == AT_TAUNT)
+if (attack == AT_TAUNT && !hitpause)
 {
-	if (window == 3 && !hitpause)
+	if (window == 3)
 	{
 		with (self)
 		{
@@ -510,7 +508,7 @@ if (attack == AT_TAUNT)
 		}
 	}
 	
-	if (window == 4 && window_timer == phone_window_end && !hitpause)
+	if (window == 4 && window_timer == phone_window_end)
 	{
 		var wooyeah 		= spawn_hit_fx(x+3*spr_dir, y-40, 301);
 		wooyeah.depth 		= depth-2;
@@ -546,7 +544,7 @@ if (attack == AT_TAUNT)
 		}		
 	}
 	
-	if (window == 5 && !hitpause)
+	if (window == 5)
 	{		
 		if (taunt_down && window_timer == phone_window_end) 
 		{
@@ -562,9 +560,9 @@ if (attack == AT_TAUNT)
 	}
 }
 
-if (attack == AT_TAUNT_2)
+if (attack == AT_TAUNT_2 && !hitpause)
 {
-	if (window == 1 && window_timer == phone_window_end && !hitpause)
+	if (window == 1 && window_timer == phone_window_end)
 	{
 		var sfx_raygrim = random_func(0, 2, true);
 		switch(sfx_raygrim) 
@@ -580,7 +578,7 @@ if (attack == AT_TAUNT_2)
 	}
 }
 
-if (attack == AT_EXTRA_1)
+if (attack == AT_EXTRA_1 && !hitpause)
 {
 	if (window == 2)
 	{
@@ -592,9 +590,7 @@ if (attack == AT_EXTRA_1)
 	}
 }
 
-
 //=============================================================================================
-
 //	Welcome to the Finest Dust in Rayman's Arsenal...
 
 switch(attack){

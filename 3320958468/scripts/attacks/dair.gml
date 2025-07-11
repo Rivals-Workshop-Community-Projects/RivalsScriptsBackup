@@ -63,7 +63,7 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 65);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 1);

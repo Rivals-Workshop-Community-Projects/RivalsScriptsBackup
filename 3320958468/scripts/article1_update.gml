@@ -37,9 +37,18 @@ with (player_id)
 //	State 0: Grapple Fist Spawn
 if (state == 0)
 {
-    sprite_index 	= sprite_get("fspec_grapple_thrown");
     mask_index 		= sprite_get("fspec_grapple_mask");
 	image_index 	= 0;
+
+	if (get_player_color( player ) == 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown_pr");
+	}
+
+	else if (get_player_color( player ) != 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown");
+	}
     
     if (state_timer < 16)
     {
@@ -138,12 +147,21 @@ if (state == 0)
 //	State 1: Grabby - Now Pose I mean Pause
 if (state == 1)
 {
-	sprite_index 	= sprite_get("fspec_grapple_thrown");
 	mask_index 		= sprite_get("fspec_grapple_mask");
 	image_index 	= 1;
+
+	if (get_player_color( player ) == 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown_pr");
+	}
+
+	else if (get_player_color( player ) != 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown");
+	}
 	
-	hsp 			= 0;
-	vsp 			= 0;
+	hsp = 0;
+	vsp = 0;
 
 	//	Centre the Grapple Fist on the Enemy Player
 	with (oPlayer)
@@ -167,12 +185,21 @@ if (state == 1)
 //	State 2: Grabby the floor, P.Guard or whatever
 if (state == 2)
 {
-	sprite_index 	= sprite_get("fspec_grapple_thrown");
 	mask_index 		= sprite_get("fspec_grapple_mask");
 	image_index 	= 1;
+
+	if (get_player_color( player ) == 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown_pr");
+	}
+
+	else if (get_player_color( player ) != 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown");
+	}
 	
-	hsp 			= 0;
-	vsp 			= 0;
+	hsp = 0;
+	vsp = 0;
 	
 	if (state_timer == 18)
     {
@@ -183,12 +210,21 @@ if (state == 2)
 //	State 3: Return to Sender
 if (state == 3)
 {
-	sprite_index 	= sprite_get("fspec_grapple_thrown");
 	mask_index 		= sprite_get("fspec_grapple_mask");
 	image_index 	= 2;
+
+	if (get_player_color( player ) == 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown_pr");
+	}
+
+	else if (get_player_color( player ) != 0) 
+	{
+		sprite_index = sprite_get("fspec_grapple_thrown");
+	}
 	
-	hsp 			= round(player_id.grapple_speed * 1.5 * dcos(pull_angle + 180));
-	vsp 			= round(-player_id.grapple_speed * 1.5 * dsin(pull_angle + 180));
+	hsp = round(player_id.grapple_speed * 1.5 * dcos(pull_angle + 180));
+	vsp = round(-player_id.grapple_speed * 1.5 * dsin(pull_angle + 180));
 	
 	//	When the Grapple Fist returns and clashes into Rayman, disappear
 	with (oPlayer) 

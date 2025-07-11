@@ -48,9 +48,9 @@ set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 0); //because of the looping, window_timer 0 won't spawn hitboxes
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -23);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 120);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 50);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
@@ -69,7 +69,7 @@ set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 3); //because of the looping, window_timer 0 won't spawn hitboxes
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -23);
 
 hitbox_num ++; //KILL!
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -77,10 +77,10 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 3);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 6); //because of the looping, window_timer 0 won't spawn hitboxes
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -26);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 7);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 137);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 71);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
