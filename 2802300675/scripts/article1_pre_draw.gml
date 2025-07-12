@@ -1,46 +1,55 @@
-if  (get_player_color(player) == 24) {
+var fx_image_index = get_gameplay_time() / 6;
+
+if  (get_player_color(player) == 24 or get_player_color(player) == 25) {
 //crash prevention line
 shader_end();
 maskHeader();
 draw_self();
 maskMidder();
-
-if(state != 3){
-    var fx_image_index = get_gameplay_time() / 6;
-    draw_sprite_tiled_ext(sprite_get("unknown"), fx_image_index, x, y, 1, 1, c_white, 1)
-}if(state == 3){
-    var fx_image_index = get_gameplay_time() / 6;
-    draw_sprite_tiled_ext(sprite_get("unknown"), fx_image_index, x, y, 1, 1, c_gray, 1)
+if(get_player_color(player) == 24 ){
+draw_sprite_tiled_ext(sprite_get("unknown"), fx_image_index, x, y, 1, 1, c_white, 1)
+}if(get_player_color(player) == 25 ){
+	draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_white, 1)
 }
+
 maskFooter();
 
 with(player_id){
     shader_start();
+}	
+	
 }
 
-}
-if  (get_player_color(player) == 25) {
-//crash prevention line
-shader_end();
-maskHeader();
-draw_self();
-maskMidder();
 
-if(state != 3){
-    var fx_image_index = get_gameplay_time() / 6;
-    draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_white, 1)
-}if(state == 3){
-    var fx_image_index = get_gameplay_time() / 6;
-    draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_gray, 1)
-}
-maskFooter();
+//actual sprite draw code
+for (var i = 0; i < array_length(poison_array); i++){
+	
+	if(poison_array[i].poison_active == true){
+		if  (get_player_color(player) == 24 or get_player_color(player) == 25) {
+			//crash prevention line
+			shader_end();
+			maskHeader();
+			draw_sprite_ext(poison_array[i].sprite_index, poison_array[i].image_index, poison_array[i].x, poison_array[i].y, 1, 1, 0, poison_array[i].color, poison_array[i].alpha);
+			maskMidder();
+				if(get_player_color(player) == 24 ){
+					draw_sprite_tiled_ext(sprite_get("unknown"), fx_image_index, poison_array[i].x, poison_array[i].y, 1, 1, poison_array[i].color, 1)
+				}if(get_player_color(player) == 25 ){
+					draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, poison_array[i].x, poison_array[i].y, 1, 1, poison_array[i].color, 1)
+				}
 
-with(player_id){
-    shader_start();
-}
+				maskFooter();
 
+				with(player_id){
+    				shader_start();
+				}	
+	
+			}
+		
+		
+		draw_sprite_ext(poison_array[i].sprite_index, poison_array[i].image_index, poison_array[i].x, poison_array[i].y, 1, 1, 0, poison_array[i].color, poison_array[i].alpha);
+	}
+    
 }
-//================================================================================
 
 #define maskHeader
 // Mask renderer utility: disables Normal draw.
@@ -73,4 +82,3 @@ with(player_id){
     gpu_set_blendmode(bm_normal);
     draw_set_alpha(1);
 }
-

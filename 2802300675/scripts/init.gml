@@ -111,19 +111,40 @@ set_victory_theme(sound_get("ValleyVictory"));
 fspecial_ledge_cancel = 0;
 nspecial_charge_amount = 0;
 
-player_in_smog = false;
+//player_in_smog = false;
 boost_used = false;
 destroy_smog = false;
-enemy_in_smog = false;
-cloud_poison_timer = 0;
-smog_cloud = 0;
+//enemy_in_smog = false;
+//cloud_poison_timer = 0;
+//smog_cloud = 0;
 spec_reverse = false;
 start_predraw = false;
 uspec_cooldown = 0;
 shortened_usp = false;
 uspec_dir = 0;
 
-valley_outline_timer = 0;
-valley_outline = false;
+//valley_outline_timer = 0;
+//valley_outline = false;
 
-isHasBrainDamage = true;
+isHasBrainDamage = false;
+
+//new code stuff---
+poisonsmog_article = 0;
+
+in_poison_timer = 0;
+poison_tick = 5;
+num_valleys = 0;
+in_poison = false;
+
+cloud_sprite = 0;
+if (get_player_color(player) == 24 or get_player_color(player) == 25 or get_player_color(player) == 9) {
+    t1projsprite = sprite_get("outline_projectilelv1");
+    t2projsprite = sprite_get("outline_projectilelv2");
+    t3projsprite = sprite_get("outline_projectilelv3");
+    cloud_sprite = sprite_get("outline_cloud_idle");
+}else{
+    t1projsprite = sprite_get("projectilelv1");
+    t2projsprite = sprite_get("projectilelv2");
+    t3projsprite = sprite_get("projectilelv3");
+    cloud_sprite = sprite_get("cloud_idle");    
+}

@@ -1,13 +1,12 @@
-//
-/*
-if(state = 0){
-    var fx_image_index = get_gameplay_time() / 5;
-        draw_sprite_ext(sprite_get("cloud_idle"),fx_image_index,x,y,1,1,0,c_gray, intro_trans);
-}*/
-if(state == 3 || state == 0){
-    draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_gray, intro_trans);
-}
 
-//debug
-//draw_debug_text(x-12, y + 15,string(proj_sprdir));
-//draw_sprite_ext(sprite_get("cloud_hurt"),fx_image_index,x,y,1,1,0,c_white, 0.5);
+with (player_id) shader_end();
+
+for (var i = 0; i < array_length(poison_array); i++){
+	
+	if(poison_array[i].poison_active == true and poison_array[i].state_timer < (poison_array[i].lifetime+poison_array[i].introtime)){
+		if get_match_setting(SET_HITBOX_VIS) {
+		draw_circle_color( poison_array[i].x, poison_array[i].y-30, poison_array[i].radiuscircle,c_white, c_white, true);
+		}
+	}
+    
+}

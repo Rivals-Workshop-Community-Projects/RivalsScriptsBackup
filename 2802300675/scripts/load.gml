@@ -50,6 +50,9 @@ sprite_change_offset("plat", 64, 94);
 sprite_change_offset("projectilelv1", 48, 34);
 sprite_change_offset("projectilelv2", 48, 34);
 sprite_change_offset("projectilelv3", 48, 34);
+sprite_change_offset("outline_projectilelv1", 48, 34);
+sprite_change_offset("outline_projectilelv2", 48, 34);
+sprite_change_offset("outline_projectilelv3", 48, 34);
 sprite_change_offset("smogball", 34, 28);
 
 sprite_change_offset("intro", 109, 91);

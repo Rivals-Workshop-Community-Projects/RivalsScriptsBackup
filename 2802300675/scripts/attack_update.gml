@@ -269,6 +269,26 @@ if(attack == AT_FSPECIAL){
             }
         }
     }
+    
+    //cloud interaction
+    if(in_poison_timer > 10){
+		if(window == 2 && window_timer > 6){
+	    	if(jump_pressed || (can_tap_jump() && tap_jump_pressed) || special_pressed){
+	    		if(boost_used = false){
+	    	 		move_cooldown[AT_FSPECIAL] = 0;
+	    	 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+	    	 		spawn_hit_fx(x + spr_dir * 0, y - 30, bigsmoke);
+	    	 		destroy_hitboxes();
+	    	 		attack_end();
+	    	 		attack = AT_FSPECIAL_2;
+	    	 		hurtboxID.sprite_index = sprite_get("fspecial_boosted_hurt");
+	    	 		window = 1;
+	    	 		window_timer = 0;
+	    	 		boost_used = true;
+	    	 	}
+	    	}
+	    }
+	}
 }
 
 if(attack == AT_DSPECIAL){
