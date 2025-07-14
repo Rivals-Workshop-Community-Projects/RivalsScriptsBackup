@@ -7,11 +7,8 @@ if (instance_exists(my_barrel)) {
 	}
 }
 
-if(get_player_stocks(player) == 1 && get_player_color(player) == 10){
-	sound_play(sound_get("dgr_death"));
-}
-
-if(get_player_color(player) == 9){ 
+// Wario dies
+if(alt == 10){ 
 	if(get_player_stocks(player) == 1){ 
 		sound_play(sound_get("wario_missed"));
 	} else {
@@ -22,4 +19,9 @@ if(get_player_color(player) == 9){
 			sound_play(sound_get("wario_die2"));
 		}
 	}
+}
+
+// Classic DGR Scream
+if(get_player_stocks(player) == 1 && alt == 18){
+	sound_play(sound_get("dgr_death"));
 }

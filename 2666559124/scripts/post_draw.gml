@@ -1,7 +1,7 @@
 //post_draw
 
 if (state == PS_RESPAWN) {
-	if (get_player_color(player) == 11) {
+	if (alt == 15) {
 		draw_sprite(sprite_get("plat_gb"), 0, x, y);
 	} else {
 		draw_sprite(sprite_get("plat_def"), 0, x, y);

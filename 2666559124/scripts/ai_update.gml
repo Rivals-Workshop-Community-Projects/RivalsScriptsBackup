@@ -112,14 +112,36 @@ if (place_meeting(x+5*spr_dir,y,asset_get("par_block")) && can_wall_jump && has_
 // Unique Attack Knowledge
 if (ai_atk_state) {
 	switch (attack) {
-		case AT_UTILT:
-			if (window == 1) {
-				if (temp_level >= 6) {
-					if (ai_xdist <= 36 && ai_ydist <= -15) {
-						attack_down = true;
+		case AT_DATTACK:
+			if (window == 3) {
+				if (temp_level >= 5) {
+					if (ai_facing && targ_distance <= 58) {
+						ai_hold_dir("N", false);
+						attack_pressed = true;
+					} else if (ydist < -100) {
+						jump_pressed = true;
+					} else if (ydist >= 80) {
+						var pick_attack = random_func(0, 3, true);
+						if (ai_facing) {
+							ai_hold_dir("F", false);
+						} else {
+							ai_hold_dir("B", false);
+						}
+						if (pick_attack = 1) {
+							up_down = true;
+							down_down = false;
+						} else {
+							up_down = false;
+							down_down = true;
+						} 
+						attack_pressed = true;
 					}
-				} else if (temp_level > 2 && random_func(14, 4, true) > 1) {
-					attack_down = true;
+				} else {
+					var random_flick = random_func(2, 55 - (5 * temp_level), true);
+					if (random_flick == 0) {
+						ai_hold_dir("N", false);
+						attack_pressed = true;
+					}
 				}
 			}
 			break;
@@ -370,6 +392,20 @@ if (ai_running) { // Run from respawning targets
 		}
 	}
 	
+	// Keep the ai from using certain attacks when ai is too high or too low
+	if (!ai_recovering) {
+		if (ai_ydist < -100) {
+			down_pressed = false;
+			down_down = false;
+			if (!free) {
+				move_cooldown[AT_UTILT] = 2;
+			}
+		} else if (ai_ydist > 100) {
+			up_pressed = false;
+			up_down = false;
+		}
+	}
+	
 	// Drop through platforms if the target is under you (ai does not do this if the target is still close)
 	if (temp_level >= 4 && ground_type == 2 && ai_xdist <= 50 && ai_ydist > 50) {
 		attack_pressed = false;
@@ -380,7 +416,7 @@ if (ai_running) { // Run from respawning targets
 		down_strong_pressed = false;
 		if (state_cat == SC_GROUND_NEUTRAL || state == PS_DASH ||
 		     state == PS_DASH_START || state == PS_DASH_STOP) {
-			down_hard_pressed = true;
+			ai_hold_dir("D", true);
 		}
 	}
 	
@@ -483,7 +519,7 @@ if (ai_running) { // Run from respawning targets
 					ai_hold_dir("F", false);
 					special_pressed = true;
 				}
-			} else {
+			} else if (!ai_recovering) {
 				ai_hold_dir("N", false);
 				special_pressed = true;
 			}

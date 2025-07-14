@@ -1,8 +1,8 @@
 // Pedestal Init
 
-if (get_player_color(player) == 0) {
+if (player_id.alt == 0) {
 	sprite_index = sprite_get("bomb");
-} else if (get_player_color(player) == 15) {
+} else if (player_id.alt == 15) {
 	sprite_index = sprite_get("bomb_gb");
 } else {
 	sprite_index = sprite_get("bomb_alt");

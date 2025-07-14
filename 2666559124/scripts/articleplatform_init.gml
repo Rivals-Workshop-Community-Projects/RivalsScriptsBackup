@@ -1,9 +1,9 @@
 // Barrel Init
 
 sprite_index = asset_get("empty_sprite");
-if (get_player_color(player) == 0) {
+if (player_id.alt == 0) {
 	bar_sprite = sprite_get("barrel");
-} else if (get_player_color(player) == 15) {
+} else if (player_id.alt == 15) {
 	bar_sprite = sprite_get("barrel_gb");
 } else {
 	bar_sprite = sprite_get("barrel_alt");
@@ -27,6 +27,7 @@ can_collide = false;
 landed = false;
 
 barreled_id = noone;
+grabbed_article = false;
 struggle_x = 0;
 struggle_resist = 0;
 struggle_ai_timer = 0;

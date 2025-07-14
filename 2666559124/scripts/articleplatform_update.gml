@@ -25,7 +25,16 @@ if (instance_exists(barreled_id)) {
 		hitpause = true;
 		hitstop = 2;
 		var train_opt = get_training_cpu_action();
-		if (temp_level == 0) { // Handle captured struggling
+		if (other.grabbed_article) { // Articles caught in barrel
+			with (other) {
+				struggle_ai_timer--;
+				if (struggle_ai_timer <= 0) {
+					struggle_resist--;
+					struggle_x = 1 - (2 * random_func(3, 2, true));
+					struggle_ai_timer = struggle_ai_timer_max;
+				}
+			}
+		} else if (temp_level == 0) { // Handle captured struggling
 			if (left_pressed) {
 				other.struggle_x = -1;
 				other.struggle_resist--;
@@ -48,6 +57,14 @@ if (instance_exists(barreled_id)) {
 			other.hp = 0;
 		}
 	}
+	// If hp of the barreled id is zero, release (articles only)
+	if (grabbed_article) {
+		if (barreled_id.hp <= 0) {
+			barreled_id = noone;
+		}
+	}
+} else {
+	eye_timer = -1;
 }
 
 // If the barrel goes offscreen, destroy it
@@ -56,14 +73,16 @@ if (y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) - 88) {
 		with (barreled_id) {
 			hitpause = false;
 			hitstop = 0;
-			set_state(PS_HITSTUN);
-			hitstop_full = 38;
-			hitstun = hitstop_full;
 			y = other.y;
-			vsp = -13;
-			barreled = false;
-			has_airdodge = false;
-			djumps = max_djumps;
+			if (!other.grabbed_article) {
+				set_state(PS_HITSTUN);
+				hitstop_full = 38;
+				hitstun = hitstop_full;
+				vsp = -13;
+				barreled = false;
+				has_airdodge = false;
+				djumps = max_djumps;
+			}
 		}
 		barreled_id = noone;
 	}
@@ -147,9 +166,14 @@ switch (state) {
 			with (barreled_id) {
 				hitpause = false;
 				hitstop = 0;
-				set_state(PS_IDLE_AIR);
+				if (!other.grabbed_article) {
+					set_state(PS_IDLE_AIR);
+					barreled = false;
+				} else {
+					state = 3;
+					state_timer = 0;
+				}
 				vsp = -8;
-				barreled = false;
 			}
 			barreled_id = noone;
 			sound_play(sound_get("sfx_barrel_break"));
@@ -158,6 +182,7 @@ switch (state) {
 		break;
 	case 2: // Broken
 		if (instance_exists(barreled_id)) {
+			barreled_id.barreled = false;
 			barreled_id = noone;
 		}
 		grav = 0;

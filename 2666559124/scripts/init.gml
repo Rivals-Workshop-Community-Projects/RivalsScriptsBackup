@@ -121,11 +121,13 @@ if (alt == 2 || alt == 3 || alt == 4 ||
 	use_ex_sprites = true;
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_ex"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_ex"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_ex"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_ex"));
 } else {
 	use_ex_sprites = false;
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_def"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_def"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_def"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_def"));
 }
 
@@ -269,3 +271,4 @@ page++;
 
 // *** Outskirts Invasion *** 
 draw_hud_event = 5;
+hit_player_event = 6;
