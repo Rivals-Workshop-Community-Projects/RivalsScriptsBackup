@@ -1,781 +1,478 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2){
     trigger_b_reverse();
 }
 
-if attack == AT_TAUNT{
-	if window >= 2{
-		iasa_script();
-	}
-}
-
-// RUNE J : USpecial Armor
-if runeJ {
-	if (attack == AT_USPECIAL || attack == AT_USPECIAL_2){
-		if window == 2{
-			super_armor = true;
-		}
-		if window == 1 || window == 3{
-			super_armor = false;
-		}
-	} else {
-		if (attack == AT_USPECIAL || AT_USPECIAL_2){
-			if window >= 1{
-				super_armor = false;
-			}
-		}
-	}
-}
-
-// RUNE G : Zetta Perfect Framing
-if runeG {
-// Rune G and Rune B
-if (runeG && runeB){
-	if (attack == AT_FSPECIAL && window == 2 && window_timer <= 5){
-		if (special_pressed){
-			set_num_hitboxes(AT_FSPECIAL, 3);
-			
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 5);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -80);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zap"));
-			
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 10);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -80);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_zap"));
-			
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 4);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 15);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -80);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, sprite_get("rune_proj"));
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_zap"));
-		}
-	}
-}
-
-// Normal Rune G
-else if (attack == AT_FSPECIAL && window == 2 && window_timer <= 5){
-		if (special_pressed){
-			set_num_hitboxes(AT_FSPECIAL, 3);
-			
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 5);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -65);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 70);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zap"));
-			
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 10);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -65);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 70);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_zap"));
-			
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 4);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 15);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 55);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 6);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -65);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 70);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 50);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 8);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .9);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, sprite_get("fspecial_proj"));
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .2);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 7.25);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, rudebuster);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, -30);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -40);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_zap"));
-		}
-	}
-
-} else {
-	set_num_hitboxes(AT_FSPECIAL, 1);
-}
-
-if (runeO){
-	if supersaiyan == 1 and has_hit{
-		can_jump = true;
-	}
-}
-
-if (attack == AT_EXTRA_3){
-	if (window == 1 || (window == 2 && window_timer == 1)){
-		sound_play(sound_get("music_spooky"), true, false);
-	}
-}
-
-if (attack == AT_JAB) {
-	if (window == 2) {
-		if (window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)) {
-			clear_button_buffer(PC_ATTACK_PRESSED);
-		}
-	}
-}
-
-if (attack == AT_DSTRONG) {
-	if window < 7 {
-		var followup_pos = get_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X);
-		var time_to_hit1 = 11; //im lazy so i counted the time in the attack file. you could totally do this via code
-		var time_to_followup = 6; //counted again. maybe do this via code.
-		for (var p = 0; p < array_length(dstrong_hit_list); p++) {
-			if dstrong_hit_list[p,0] != noone && dstrong_hit_list[p,0].state_cat == SC_HITSTUN {
-				dstrong_hit_list[p,0].x = ease_linear(dstrong_hit_list[p,1], x+(followup_pos*spr_dir), state_timer-strong_charge-time_to_hit1, time_to_followup);
-			}
-		}
-	}
-	if (window == get_attack_value(attack,AG_NUM_WINDOWS) && window_timer == 1) {
-		for (var p = 0; p < array_length(dstrong_hit_list); p++) {
-			if (dstrong_hit_list[p,0] == noone) {
-				break;
-			}
-			else {
-				dstrong_hit_list[p,0] = noone;
-				dstrong_hit_list[p,1] = 0;
-			}
-		}
-	}
-}
-
-if diamondbutbetterkrisbbutbetter{
-	if attack == AT_JAB && window >= 5 && has_hit_player{
-		iasa_script();
-		can_jump = true;
-	}
-	else if attack != AT_JAB && attack != AT_NTHROW && has_hit_player{
-		iasa_script();
-		can_jump = true;
-	}
-}
-
-//Skins and Stuff
-#region
-// Change the colors of the extra characters
-/* if (sneakyalt == 1){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt1"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt1"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt1"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt1"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt1"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt1"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt1"));
-	}
-}
-else if (sneakyalt == 2){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt2"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt2"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt2"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt2"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt2"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt2"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt2"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt2"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt2"));
-	}
-}
-else if (sneakyalt == 3){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt3"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt3"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt3"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt3"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt3"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt3"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt3"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt3"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt3"));
-	}
-}
-else if (sneakyalt == 4){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt4"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt4"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt4"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt4"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt4"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt4"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt4"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt4"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt4"));
-	}
-}
-else if (sneakyalt == 5){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt5"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt5"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt5"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt5"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt5"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt5"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt5"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt5"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt5"));
-	}
-}
-else if (sneakyalt == 7){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt7"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt7"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt7"));
-		//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecialskinalt8_proj")); (Yeah I can't figure it out either, maybe try making a variable that changes depending on the costume?)
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt7"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt7"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt7"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt7"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt7"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt7"));
-	}
-}
-else if (sneakyalt == 8){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt8"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt8"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt8"));
-		//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecialskinalt8_proj")); (Yeah I can't figure it out either)
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt8"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt8"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt8"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt8"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt8"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt8"));
-	}
-}
-else if (sneakyalt == 9){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt9"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt9"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt9"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt9"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt9"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt9"));
-	}
-}
-else if (sneakyalt == 10){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt10"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt10"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt10"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt10"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt10"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt10"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt10"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt10"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt10"));
-	}
-}
-else if (sneakyalt == 11){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt11"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt11"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt11"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt11"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt11"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt11"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt11"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt11"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt11"));
-	}
-}
-else if (sneakyalt == 12){
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt12"));
-	}
-	if (attack == AT_NSPECIAL){
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt12"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialskinalt12"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt12"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt12"));
-		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialskinalt12"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt12"));
-		set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecialskinalt12"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt12"));
-	}
-}
-else{
-	if (attack == AT_DSTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("dstrong"));
-	}
-	if (attack == AT_USTRONG){
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
-	}
-	if (attack == AT_FSPECIAL){
-		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
-	}
-	if (attack == AT_FSPECIAL_2){
-		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecial"));
-	}
-	if (attack == AT_TAUNT){
-		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
-	}
-}
-
-if (sneakyalt == 6){
-	//colors.gml OR init_shader.gml:
-	switch (get_match_setting(SET_SEASON)) {
-	  case 1: // valentines
-	    switch(attack){
-	    	case AT_DSTRONG:
-	    		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinalt5"));
-	    	case AT_NSPECIAL:
-	    		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinalt5"));
-	    	case AT_FSPECIAL:
-	    		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinalt1"));
-	    	case AT_FSPECIAL_2:
-	    		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinalt1"));
-	    	case AT_USTRONG:
-	    		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinalt1"));
-	    	case AT_TAUNT:
-	    		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinalt5"));
-	    }
-	    break;
-	  case 2: // summer
-	    	case AT_DSTRONG:
-	    		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinheat"));
-	    	case AT_NSPECIAL:
-	    		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinheat"));
-	    	case AT_FSPECIAL:
-	    		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinheat"));
-	    	case AT_FSPECIAL_2:
-	    		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinheat"));
-	    	case AT_USTRONG:
-	    		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinheat"));
-	    	case AT_TAUNT:
-	    		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinheat"));
-	    break;
-	  case 3: // halloween
-	    	case AT_DSTRONG:
-	    		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinhalloween"));
-	    	case AT_NSPECIAL:
-	    		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinhalloween"));
-	    	case AT_FSPECIAL:
-	    		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinhalloween"));
-	    	case AT_FSPECIAL_2:
-	    		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinhalloween"));
-	    	case AT_USTRONG:
-	    		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinhalloween"));
-	    	case AT_TAUNT:
-	    		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinhalloween"));
-	    break;
-	  case 4: // christmas
-	    	case AT_DSTRONG:
-	    		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongskinxmas"));
-	    	case AT_NSPECIAL:
-	    		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialskinxmas"));
-	    	case AT_FSPECIAL:
-	    		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialskinxmas"));
-	    	case AT_FSPECIAL_2:
-	    		set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecialskinxmas"));
-	    	case AT_USTRONG:
-	    		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongskinxmas"));
-	    	case AT_TAUNT:
-	    		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntskinxmas"));
-	    break;
-	}
-} */
-#endregion
-
-if attack == AT_TAUNT {
-	if window <= 2 {
-		if (window == 1 && window_timer == 5 && shield_down) {
-			attack = AT_TAUNT_2;
-		}
-		if (window == 1 && window_timer == 5 && (shield_down && special_down)) {
-			attack = AT_EXTRA_3;
-		}
-	}
-}
-
-if (attack == AT_EXTRA_3){
-	if (window == 5 && window_timer == 5){
-		if (shield_down && special_down && taunt_down){
-			window = 2;
-			window_timer = 1;
-		}
-	}
-	if (window == 6){
-		sound_stop(sound_get("music_spooky"));
-	}
-}
-
-if attack == AT_USPECIAL || attack == AT_USPECIAL_2 {
-	if attack == AT_USPECIAL {
-		if (window == 1 && (window_timer >= 11 && window_timer <= 12)&& special_down && tp_gauge >= recover_high) {
-			attack = AT_USPECIAL_2;
-			tp_gauge -= recover_high;
-		}
-	}
-	if window == 2 {
-		var window_length = get_window_value(attack,window,AG_WINDOW_LENGTH);
-		if (window_timer >= window_length/2) {
-			can_wall_jump = true;
-		}
-	}
-}
-
-// DEVILSKNIFE
-// Checks for the move
-if (attack == AT_NSPECIAL) {
-    // Checks the window
-    if (window == 2 && window_timer == 1) {
-        // offset coords for spawning the article
-        var temp_x = 30;
-        var temp_y = -25;
-        devilsknife = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-		if angle_devilsknife {
-			if joy_pad_idle {
-				if (spr_dir == 1) devilsknife.movement_angle = 0;
-				if (spr_dir == -1) devilsknife.movement_angle = 180;
-			}
-			else {
-				devilsknife.movement_angle = joy_dir;
-			}
-		}
-		else {
-			devilsknife.movement_angle = 90 - (90*spr_dir);
-		}
-    }
-	if (window < 3) {
-		can_fast_fall = false;
-	}
-}
-
-// On Hit Cancel Stuff
-/*if (attack == AT_UTILT) { disabled for balance reasons
-    if (window == 1 && window_timer == 1) {
-        reset_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH);
-    }
-}*/
-
-// Looking at Dash Attack
-if (attack == AT_DATTACK or attack == AT_DTILT) {
-    if (window == 1 && window_timer == 1) {
-        reset_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH);
-    }
-    // Makes Dash Attack Jump Cancellable
-    if (window == 2 && has_hit_player && attack == AT_DATTACK) {
-    	can_jump = true;
-    	set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 4);
-    	
-    	if (window == 3 && window_timer >= 1){
-    		can_move = true;
-    	}
-    }
-    else{
-    	set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 11);
-    }
-
-/*if attack == AT_DATTACK {
-	hsp /= 1.1
-}*/
-	
-}
-
-/*if (attack == AT_NAIR) { disabled for balance
-    if (window == 1 && window_timer == 1) {
-        reset_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH);
-        reset_attack_value(AT_NAIR, AG_LANDING_LAG);
-    }
-} */
-
-/* if (attack == AT_UAIR) { disabled for balance
-    if (window == 1 && window_timer == 1) {
-        reset_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH);
-    }
-}*/
-
-if (attack == AT_NSPECIAL && !diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_NSPECIAL] = 80;
-	}
-}
-
-if (attack == AT_NSPECIAL && diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_NSPECIAL] = 20;
-	}
-}
-
-if (attack == AT_FSPECIAL && !diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_FSPECIAL] = 70;
-	}
-}
-
-if (attack == AT_FSPECIAL && diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_FSPECIAL] = 15;
-	}
-}
-
-if (attack == AT_FSPECIAL_2 && !diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_FSPECIAL_2] = 100;
-	}
-}
-
-if (attack == AT_FSPECIAL_2 && diamondbutbetterkrisbbutbetter){
-	if (window == 3 && window_timer == 1){
-		move_cooldown[AT_FSPECIAL_2] = 25;
-	}
-}
-
-//if downspecial sucessfully, toggle courage. also reset courage timer
-if (attack == AT_DSPECIAL && move_cooldown[AT_DSPECIAL] == 0) {
-    if (window == 2 && window_timer == 1){
-    	sound_play(dspec_activesound);
-    }
-    if (window == 3 && window_timer == 1) {
-        if (supersaiyan == 0) {
-            supersaiyan = 1;
-			stats_adjusted = false;
-        }
+if !hitpause{
+    switch(attack){
+        case AT_TAUNT:
+            switch(window){
+                case 2:
+                    if ((window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)){
+                        if taunt_down{
+                            window = 2;
+                            window_timer = 0;
+                        }
+                    }
+                    break;
+            }
+            break;
+        case AT_UTILT:
+            if window == 5{
+                if has_hit{
+                    if ((window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)){
+                        set_state(PS_LAND);
+                    }
+                } else {
+                    if ((window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) * 1.5) - 1)){
+                        set_state(PS_LAND);
+                    }
+                }
+            }
+            break;
+        case AT_DATTACK:
+            if !was_parried and has_hit{
+                can_jump = true;
+                can_tap_jump();
+                if jump_pressed{
+                    attack_end();
+                    destroy_hitboxes();
+                }
+            }
+            break;
+        // All Strong_2's are with soul outside of Kris, generally faster, weaker, and lack range.
+        case AT_FSTRONG:
+            switch(window){
+                case 1:
+                    if ((window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1)){
+                       print_debug("Proceed.");
+                    }
+                    break;
+                case 2:
+                    if ((window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1)){
+                       sound_play(sfx_fstrong);
+                    }
+                    break;
+                case 4:
+                    if ((window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH) - 1)){
+                       sound_stop(sfx_fstrong);
+                    }
+                    break;
+            }
+            break;
+        case AT_FSTRONG_2:
+            switch(window){
+                case 2:
+                    if window_timer == 2{
+                        sound_play(sound_get("sfx_kris_slash"))
+                    }
+                    break;
+            }
+            break;
+        case AT_USTRONG:
+            if (window == 2 and (window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1)){
+                spawn_base_dust(x + 48, y, "dash_start", -spr_dir);
+                spawn_base_dust(x + 64, y, "wavedash", -spr_dir);
+            }
+            break;
+        case AT_DSTRONG:
+        	if window < 5 {
+        		var followup_pos = get_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X);
+        		var time_to_hit1 = (get_window_value(attack, 1, AG_WINDOW_LENGTH) + get_window_value(attack, 2, AG_WINDOW_LENGTH)); //im lazy so i counted the time in the attack file. you could totally do this via code
+        		var time_to_followup = get_window_value(attack, 4, AG_WINDOW_LENGTH); //counted again. maybe do this via code.
+        		for (var p = 0; p < array_length(dstrong_hit_list); p++) {
+        			if dstrong_hit_list[p,0] != noone && dstrong_hit_list[p,0].state_cat == SC_HITSTUN {
+        				dstrong_hit_list[p,0].x = ease_linear(dstrong_hit_list[p,1], x+(followup_pos*spr_dir), state_timer-strong_charge-time_to_hit1, time_to_followup);
+        			}
+        		}
+        	}
+        	if (window == get_attack_value(attack,AG_NUM_WINDOWS) && window_timer == 1) {
+        		for (var p = 0; p < array_length(dstrong_hit_list); p++) {
+        			if (dstrong_hit_list[p,0] == noone) {
+        				break;
+        			}
+        			else {
+        				dstrong_hit_list[p,0] = noone;
+        				dstrong_hit_list[p,1] = 0;
+        			}
+        		}
+        	}
+            break;
+        case AT_DSTRONG_2:
+            if window == 1{
+                var times_thru = 0;
+            }
+            switch(window){
+                case 1:
+                    fall_through = true;
+                    if window_timer == 1{
+                        dstrong_start_pos = y;
+                    }
+                    if window_timer <= 6{
+                        if !up_down{
+                            dstrong_jump_height = 96;
+                        } else {
+                            dstrong_jump_height = 128;
+                        }
+                    }
+                    break;
+                case 2:
+                    fall_through = true;
+                    can_fast_fall = false;
+                    hsp = clamp(hsp, -2.5, 2.5);
+                    if window_timer == 1{
+                        spawn_base_dust(x, y, "jump", spr_dir);
+                    }
+                    if y > dstrong_start_pos - dstrong_jump_height{
+                        y = lerp(y, dstrong_start_pos - dstrong_jump_height, .4);
+                    }
+                    break;
+                case 3:
+                    can_fast_fall = false;
+                    free = true;
+                    fall_through = true;
+                    vsp = 0;
+                    if strong_charge == 60{
+                        if window_timer == 1{
+                            set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_CUSTOM_GRAVITY, 9);
+                            
+                            sound_play(sound_get("sfx_dstrongcharged"));
+                            set_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_KNOCKBACK, 7);
+                            set_hitbox_value(AT_DSTRONG_2, 2, HG_KNOCKBACK_SCALING, 1.5);
+                            set_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_HITPAUSE, 8);
+                            set_hitbox_value(AT_DSTRONG_2, 2, HG_HITPAUSE_SCALING, 1);
+                            
+                            set_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_KNOCKBACK, 7);
+                            set_hitbox_value(AT_DSTRONG_2, 3, HG_KNOCKBACK_SCALING, 1.5);
+                            set_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_HITPAUSE, 8);
+                            set_hitbox_value(AT_DSTRONG_2, 3, HG_HITPAUSE_SCALING, 1);
+                            
+                            spawn_hit_fx(x, y - 48 ,vfx_dstrongcharge);
+                            
+                            window = 8;
+                            window_timer = 0;
+                        }
+                    } else {
+                            reset_window_value(AT_DSTRONG_2, 4, AG_WINDOW_CUSTOM_GRAVITY);
+                        
+                            reset_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_KNOCKBACK);
+                            reset_hitbox_value(AT_DSTRONG_2, 2, HG_KNOCKBACK_SCALING);
+                            reset_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_HITPAUSE);
+                            reset_hitbox_value(AT_DSTRONG_2, 2, HG_HITPAUSE_SCALING);
+                            reset_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_KNOCKBACK);
+                            reset_hitbox_value(AT_DSTRONG_2, 3, HG_KNOCKBACK_SCALING);
+                            reset_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_HITPAUSE);
+                            reset_hitbox_value(AT_DSTRONG_2, 3, HG_HITPAUSE_SCALING);
+                    }
+                    break;
+                case 4:
+                    can_wall_jump = true;
+                    hsp = clamp(hsp, -1, 1);
+                    if times_thru >= 3{
+                        can_jump = true;
+                    }
+                    
+                    if down_down{
+                        fall_through = true;
+                    }
+                    if free{
+                        if ((window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) - 1) and !hitpause){
+                            times_thru++;
+                            window = 4;
+                            window_timer = 0;
+                        }
+                    } else {
+                        window = 5;
+                        window_timer = 0;
+                    }
+                    break;
+                case 5:
+                    destroy_hitboxes();
+                    if window_timer == 1{
+                        sound_play(asset_get("sfx_ori_energyhit_medium"));
+                        spawn_base_dust(x - 24, y, "dash", spr_dir);
+                        spawn_base_dust(x + 24, y, "dash", spr_dir);
+                    }
+                    break;
+                case 8:
+                    hsp = 0;
+                    if ((window_timer == get_window_value(attack, 8, AG_WINDOW_LENGTH) - 1)){
+                        window = 4;
+                        window_timer = 0;
+                    }
+                    break;
+            }
+            if window >= 5{
+                can_move = false;
+            }
+            break;
+        case AT_DSPECIAL:   //
+            can_wall_jump = true;
+            switch(window){
+                case 1:
+                    move_cooldown[AT_DSPECIAL] = 30;
+                    if window_timer == 6{
+                        vsp -= 8;
+                    }
+                    if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH){
+                        soft_armor = 12;
+                        if soul == noone{
+                            soul = instance_create(x + (16 * spr_dir), y + 32, "obj_article2");
+                        }
+                        soul_cooldown = soul_cool_max;
+                    }
+                    break;
+            }
+            break;
+        case AT_NSPECIAL:   //
+            if !down_pressed{
+                vsp = clamp(vsp, -6, 6);
+            } else {
+                vsp = clamp(vsp, -6, fast_fall);
+            }
+            if window == 1 and window_timer < get_window_value(attack, 1, AG_WINDOW_LENGTH){
+                if soul != noone{
+                    soul.x = x + (8 * spr_dir);
+                    soul.y = y - 32;
+                }
+            }
+            
+            switch(window){
+                case 1:
+                    if window_timer == 4{
+                        if soul == noone{
+                            soul = instance_create(x + (8 * spr_dir), y-32, "obj_article2");
+                            soul.depth = -10;
+                            soul.state = 7;
+                            soul_cooldown = soul_cool_max;
+                        }
+                    }
+                    if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH){
+                        soul.y = y-52;
+                        if !free{
+                            vsp = -4;
+                        }
+                    }
+                    break;
+            }
+            break;
+        case AT_USPECIAL:
+            can_move = false;
+            switch(window){
+                case 1:
+                    // Charge, this is aiming time
+                    
+                    // This is purely visual, but have the soul travel towards the end point
+                    var travel_frames = 6;
+                    /*if (window_timer == 1) {
+                        temp_soul_dist_2 = 0;
+                        temp_soul_dist_1 = 0;
+                        temp_soul_dist = 0;
+                        temp_uspec_dir_2 = 0;
+                        temp_uspec_dir_1 = 0;
+                    }
+                    if window_timer % 2 == 0 {
+                        temp_soul_dist_2 = temp_soul_dist_1;
+                        temp_soul_dist_1 = temp_soul_dist;
+                    }*/
+                    
+                    temp_soul_dist = ease_sineOut(0, uspec_soul_length, min(window_timer, travel_frames), travel_frames);
+                case 2:
+                    hsp *= 0.9;
+                    vsp *= 0.9;
+                    if !free vsp = -3;
+                    /*
+                    if window_timer % 2 == 0 {
+                        temp_uspec_dir_2 = temp_uspec_dir_1;
+                        temp_uspec_dir_1 = uspec_dir;
+                    }
+                    */
+                    uspec_dir = joy_dir;
+                    if (window == 2) {
+                        if !special_down
+                            window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
+                        
+                    }
+                    
+                    break;
+                case 3:
+                    hsp = 0;
+                    vsp = 0;
+                    if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+                        if (sign(lengthdir_x(1, uspec_dir)) == -spr_dir) {
+                            spr_dir *= -1;
+                        }
+                        uspec_start_x = x;
+                        uspec_start_y = y;
+                        hsp = lengthdir_x(uspec_soul_length, uspec_dir);
+                        vsp = lengthdir_y(uspec_soul_length, uspec_dir);
+                        var hitbox = create_hitbox(attack, 1, x, y);
+                        hitbox.x_pos = lengthdir_x(60, uspec_dir);
+                        hitbox.y_pos = lengthdir_y(60, uspec_dir) - 32;
+                        hitbox = create_hitbox(attack, 2, x, y);
+                        // trail created in animation.gml because i'm Funny or something
+                        // jk it's because speed is applied already by then
+                    }
+                    break;
+                case 4:
+                    if window_timer == 1{
+                        hsp = lengthdir_x(4, uspec_dir);
+                        vsp = lengthdir_y(4, uspec_dir);
+                    } else {
+                        hsp *= 0.85;
+                        vsp *= 0.85;
+                    }
+                    break;
+            }
+            break;
+        case AT_FSPECIAL:
+            can_fast_fall = false;
+            switch(window){
+                case 1:
+                    if soul == noone{
+                        if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH){
+                            soul = instance_create(x + (64 * spr_dir), y - 32, "obj_article2");
+                            soul.spr_dir = spr_dir;
+                            soul.state = 10;
+                            soul.hsp = 8 * spr_dir;
+                            soul_cooldown = soul_cool_max;
+                            move_cooldown[AT_DSPECIAL] = 80;
+                            move_cooldown[AT_NSPECIAL] = 80;
+                            move_cooldown[AT_FSPECIAL] = 80;
+                        }
+                    }
+                    break;
+            }
+            break;
+        case AT_FSPECIAL_2:
+            move_cooldown[AT_FSPECIAL_2] = 60;
+            can_fast_fall = false;
+            can_wall_jump = true;
+            if window < 3{
+                soul_cooldown = 99999;
+            } else {
+                if window_timer > 4{
+                    soul_cooldown = 0;
+                }
+            }
+            if window > 1{
+                can_attack = true;
+                can_strong = true;
+                can_ustrong = true;
+                can_jump = true;
+                can_tap_jump();
+                if (jump_pressed or attack_pressed or special_pressed or is_strong_pressed(DIR_ANY)){
+                    soul.state = 1;
+                    soul.state_timer = 0;
+                    soul_cooldown = 0;
+                }
+            }
+            switch(window){
+                case 1:
+                    if soul.x < x{
+                        spr_dir = -1;
+                    }
+                    if soul.x > x{
+                        spr_dir = 1;
+                    }
+                    if ((window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)){
+                        soul.state = 2;
+                        soul.state_timer = 0;
+                    }
+                    break;
+                case 2:
+                    if soul.state == 2{
+                        var move_dir = point_direction(x, y, soul.x, soul.y);
+                        var move_rate = .75;
+                        
+                        can_move = false;
+                        
+                        if point_distance(x, y, soul.x, soul.y) > 30{
+                            hsp += lengthdir_x(move_rate, move_dir);
+                            vsp += lengthdir_y(move_rate, move_dir);
+                        } else {
+                            hsp = 0;
+                            vsp = 0;
+                            window = 3;
+                            window_timer = 0;
+                        }
+                    }
+                    
+                    break;
+                case 3:
+                    if soul != noone{
+                        soul.state = 1;
+                        soul.state_timer = 0;
+                        if point_distance(x, y, soul.x, soul.y) > 30{
+                            soul_cooldown = 0;
+                            attack_end();
+                            destroy_hitboxes();
+                        } else {
+                            move_cooldown[AT_NSPECIAL] = 60;
+                            move_cooldown[AT_FSPECIAL] = 60;
+                            move_cooldown[AT_DSPECIAL] = 60;
+                        }
+                    }
+                    break;
+            }
+            break;
+        case AT_DSPECIAL_2:
+            can_fast_fall = false;
+            can_wall_jump = true;
+            
+            if window < 3{
+                soul_cooldown = 99999;
+            } else {
+                if window_timer > 4{
+                    soul_cooldown = 0;
+                }
+            }
+            switch(window){
+                case 2:
+                    if soul != noone{
+                        soul.state = 5;
+                        soul.state_timer = 5;
+                    }
+                    break;
+                case 3:
+                    hsp = 0;
+                    vsp = 0;
+                    break;
+            }
+            break;
     }
 }
 
-if (attack == AT_DSPECIAL_2){
-	if (!free && window == 1 && window_timer == 1) {
-		set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED, 0);
-	}
-	else if (free && window == 1 && window_timer == 1) {
-		set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED, -1);
-	}
-}
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
 
-if (attack == AT_DSPECIAL_2 and !toggle_courage){
-	if (window == 2 && window_timer == 1){
-		sound_play(dspec_deactivesound);
-	}
-	if(window == 3 && window_timer == 1){
-		if (supersaiyan == 1){
-			supersaiyan = 0;
-        	supersaiyan_frametimer = 0;
-        	move_cooldown[AT_DSPECIAL] = 180;
-			stats_adjusted = false;
-		}
-	}
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
-
-
-if !hitpause {
-	if attack == AT_NAIR and !runeC {
-		if window == 1 && window_timer == 1 {
-				sound_play(asset_get("sfx_swipe_heavy1"));
-		}
-	}
-	
-	if attack == AT_FAIR and !runeI {
-		if window == 1 && window_timer == 1 {
-				sound_play(asset_get("sfx_swipe_heavy2"));
-		}
-	}
-	
-		if attack == AT_BAIR {
-		if window == 1 && window_timer == 5 {
-				sound_play(asset_get("sfx_shovel_swing_med2"));
-		}
-	}
-	
-}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

@@ -1,17 +1,45 @@
-// Post Draw
-var temp_color = c_white;
+// FStrong Smear
+//draw_sprite_ext(sprite_get("soul"), image_index, x + lengthdir_x(uspec_soul_length,joy_dir) + (4 * spr_dir), y - 34 + lengthdir_y(uspec_soul_length,joy_dir), spr_dir, 1, 0, soul_col, 1);
 
-// Draws the gauge above the actual HUD
-if (!showbaby){
-    draw_sprite_ext(sprite_get("littletp"), (floor(tp_gauge/3.34)), x - 20, y + 2.5, 1.25, 1.25, 0, c_white, 0);
-} else {
-    draw_sprite_ext(sprite_get("littletp"), (floor(tp_gauge/3.34)), x - 20, y + 2.5, 1.25, 1.25, 0, c_white, baby_vis);
-    draw_debug_text( x - 10, y + 15, string( tp_gauge ) + "%");
+// FSpecial Soul
+if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR{
+    switch(attack){
+        case AT_FSTRONG_2:
+            if get_player_color(player) != 19{
+                draw_sprite_ext(sprite_get("fstrong_2_smear"), image_index, x, y, spr_dir * 2, 2, 0, stronghit_col, 1);
+            }
+            break;
+        case AT_DSTRONG:
+            draw_sprite_ext(sprite_get("dstrong_ralsei"), image_index, x, y, spr_dir * 2, 2, 0, c_white, 1);
+            break;
+        case AT_FSPECIAL:
+            draw_sprite_ext(sprite_get("fspecial_soul"), image_index, x, y, spr_dir * 2, 2, 0, soul_col, 1);
+            break;
+        case AT_USPECIAL:
+            if (window <= 2 && state_timer > 0) {
+                draw_line_width_color(x, y-34, x+lengthdir_x(temp_soul_dist, uspec_dir), y - 34 + lengthdir_y(temp_soul_dist, uspec_dir), 4, soul_col, soul_col)
+                draw_sprite_ext(
+                    sprite_get("soul"), 
+                    image_index, 
+                    x + lengthdir_x(temp_soul_dist, uspec_dir) + (4 * spr_dir), 
+                    y - 34 + lengthdir_y(temp_soul_dist, uspec_dir), 
+                    spr_dir, 
+                    1, 
+                    0, 
+                    soul_col, 
+                    1
+                    );
+                
+            }
+            break;
+    }
 }
 
-//draw_debug_text( x - 10, y + 30, string(stage_id));
-
-if diamondbutbetterkrisbbutbetter || kris_sparkles_active{
-    draw_sprite_ext(sprite_get("sparkles"), kris_sparkle_frame, x - 110, y- 130, 2, 2, 0, c_white, 1);
-    
-}
+/*
+draw_debug_text(x, y+16, "x: " + string(x));
+draw_debug_text(x, y+32, "y: " + string(y));
+draw_debug_text(x, y+48, "hsp: " + string(hsp));
+draw_debug_text(x, y+64, "vsp: " + string(vsp));
+if soul != noone{
+    draw_debug_text(x, y+80, "dist: " + string(point_distance(x, y, soul.x, soul.y)));
+}*/

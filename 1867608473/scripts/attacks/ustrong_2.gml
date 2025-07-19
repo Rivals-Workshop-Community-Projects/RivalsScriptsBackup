@@ -1,92 +1,87 @@
-make_attack(AT_UTILT,
-    AG_SPRITE, sprite_get("utilt"),
-    AG_NUM_WINDOWS, 5,
-    AG_HURTBOX_SPRITE, sprite_get("utilt_hurt")
+// Soulless 5
+make_attack(AT_USTRONG_2,
+    AG_SPRITE, sprite_get("ustrong_2"),
+    AG_NUM_WINDOWS, 4,
+    AG_HAS_LANDING_LAG, 3,
+    AG_STRONG_CHARGE_WINDOW, 1,
+    AG_HURTBOX_SPRITE, sprite_get("ustrong_2_hurt"),
 )
 
-// Start-up
-make_window(AT_UTILT, 1,
-    AG_WINDOW_LENGTH, 6,
-    AG_WINDOW_ANIM_FRAME_START, 0,
+make_window(AT_USTRONG_2, 1,
+    AG_WINDOW_TYPE, 1,
+    AG_WINDOW_LENGTH, 9,
     AG_WINDOW_ANIM_FRAMES, 2,
-    AG_WINDOW_HAS_SFX, 1,
-    AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"),
-    AG_WINDOW_SFX_FRAME, 3
+    AG_WINDOW_ANIM_FRAME_START, 1
 )
 
-// Active 1
-make_window(AT_UTILT, 2,
+make_window(AT_USTRONG_2, 2,
+    AG_WINDOW_TYPE, 1,
     AG_WINDOW_LENGTH, 2,
-    AG_WINDOW_ANIM_FRAME_START, 2,
     AG_WINDOW_ANIM_FRAMES, 1,
-)
-
-// Transition
-make_window(AT_UTILT, 3,
-    AG_WINDOW_LENGTH, 2,
     AG_WINDOW_ANIM_FRAME_START, 3,
-    AG_WINDOW_ANIM_FRAMES, 2,
     AG_WINDOW_HAS_SFX, 1,
-    AG_WINDOW_SFX, asset_get("sfx_swipe_weak1")
+    AG_WINDOW_SFX, sfx_stab_dair
 )
 
-// Active 2
-make_window(AT_UTILT, 4,
-    AG_WINDOW_LENGTH, 2,
+make_window(AT_USTRONG_2, 3,
+    AG_WINDOW_TYPE, 1,
+    AG_WINDOW_LENGTH, 4,
+    AG_WINDOW_ANIM_FRAMES, 1,
+    AG_WINDOW_ANIM_FRAME_START, 4,
+    AG_WINDOW_HAS_CUSTOM_FRICTION, 1
+)
+
+make_window(AT_USTRONG_2, 4,
+    AG_WINDOW_TYPE, 1,
+    AG_WINDOW_LENGTH, 18,
+    AG_WINDOW_ANIM_FRAMES, 4,
     AG_WINDOW_ANIM_FRAME_START, 5,
-    AG_WINDOW_ANIM_FRAMES, 1
-)
-
-// Endlag
-make_window(AT_UTILT, 5,
-    AG_WINDOW_LENGTH, 12,
-    AG_WINDOW_ANIM_FRAME_START, 6,
-    AG_WINDOW_ANIM_FRAMES, 7,
     AG_WINDOW_HAS_WHIFFLAG, 1
 )
 
-set_num_hitboxes(AT_UTILT,2)
+set_num_hitboxes(AT_USTRONG_2, 2);
 
-make_hitbox(AT_UTILT, 1,
+// Sweet
+make_hitbox(AT_USTRONG_2, 1,
     HG_HITBOX_TYPE, 1,
-    HG_WINDOW, 2,
+    HG_WINDOW, 3,
     HG_LIFETIME, 2,
-    HG_HITBOX_X, 30,
-    HG_HITBOX_Y, -51,
-    HG_WIDTH, 51,
-    HG_HEIGHT, 94,
-    HG_SHAPE, 2,
+    HG_HITBOX_X, 9,
+    HG_HITBOX_Y, -96,
+    HG_WIDTH, 41,
+    HG_HEIGHT, 75,
+    HG_SHAPE, 0,
     HG_PRIORITY, 2,
-    HG_DAMAGE, 4,
+    HG_DAMAGE, 8,
     HG_ANGLE, 90,
-    HG_ANGLE_FLIPPER, 4,
-    HG_BASE_KNOCKBACK, 2,
-    HG_KNOCKBACK_SCALING, .01,
-    HG_BASE_HITPAUSE, 6,
-    HG_HIT_SFX, asset_get("sfx_blow_weak1"),
-    HG_HITSTUN_MULTIPLIER, 1.2,
-    HG_SDI_MULTIPLIER, .5,
-    HG_HITBOX_GROUP, 1
+    HG_BASE_KNOCKBACK, 9,
+    HG_KNOCKBACK_SCALING, .9,
+    HG_BASE_HITPAUSE, 8,
+    HG_HITPAUSE_SCALING, .7,
+    HG_VISUAL_EFFECT, 304,
+    HG_HIT_SFX, asset_get("sfx_blow_heavy2")
 )
 
-make_hitbox(AT_UTILT, 2,
+// Sour
+make_hitbox(AT_USTRONG_2, 2,
     HG_HITBOX_TYPE, 1,
-    HG_WINDOW, 4,
+    HG_WINDOW, 3,
     HG_LIFETIME, 2,
-    HG_HITBOX_X, 30,
-    HG_HITBOX_Y, -62,
-    HG_WIDTH, 55,
-    HG_HEIGHT, 82,
-    HG_SHAPE, 2,
+    HG_HITBOX_X, 18,
+    HG_HITBOX_Y, -46,
+    HG_WIDTH, 37,
+    HG_HEIGHT, 99,
+    HG_SHAPE, 0,
     HG_PRIORITY, 2,
-    HG_DAMAGE, 4,
-    HG_ANGLE, 85,
+    HG_DAMAGE, 7,
+    HG_ANGLE, 60,
+    HG_ANGLE_FLIPPER, 6,
     HG_BASE_KNOCKBACK, 8,
     HG_KNOCKBACK_SCALING, .5,
-    HG_BASE_HITPAUSE, 7,
-    HG_HITPAUSE_SCALING, .35,
-    HG_HIT_SFX, asset_get("sfx_blow_medium3"),
-    HG_HITBOX_GROUP, 2
+    HG_BASE_HITPAUSE, 6,
+    HG_HITPAUSE_SCALING, .6,
+    HG_VISUAL_EFFECT, 304,
+    HG_HIT_SFX, asset_get("sfx_blow_medium2")
 )
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

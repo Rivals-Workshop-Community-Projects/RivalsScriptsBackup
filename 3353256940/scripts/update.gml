@@ -1,11 +1,7 @@
 // update
-//end_match(player)
+end_match(player)
 
-//-- alt
-if is_deadalt {
-	set_victory_bg( sprite_get( "--_victorybg" ));
-    set_victory_theme( sound_get( "mus_--" ));
-}
+
 
 // Intro
 if (state == PS_SPAWN) {

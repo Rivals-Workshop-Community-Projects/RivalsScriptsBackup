@@ -262,11 +262,15 @@ switch (get_player_color(player)) {
         is_deadalt = true;
         is_voiced = false;
     break;
-    default:
-        is_deadalt = false;
-        set_victory_bg( sprite_get( "twenny_victorybg" ));
-        set_victory_theme( sound_get( "mus_twenny_victory" ));
-    break;
+}
+
+if (get_player_color(player) != 20) {
+    is_deadalt = false;
+    set_victory_bg( sprite_get( "twenny_victorybg" ));
+    set_victory_theme( sound_get( "mus_twenny_victory" ));
+} else {
+	set_victory_bg( sprite_get( "--_victorybg" ));
+    set_victory_theme( sound_get( "mus_--" ));
 }
 
 //voiceline on galaxy

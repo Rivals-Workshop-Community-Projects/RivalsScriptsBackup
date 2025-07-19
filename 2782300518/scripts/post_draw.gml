@@ -148,6 +148,11 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.22"
+        patch_note_text[i++] =  
+
+"Fixed a sprite on Fspecial Bike Air that was too large."
+
         patch_note_title[i] = "2.21"
         patch_note_text[i++] =  
 
