@@ -2,7 +2,7 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);//dr mario nair-1
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 7);//dr mario nair-1
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_NAIR, AG_MUNO_ATTACK_MISC_ADD, "hello - this move has AUTOCANCEL at window 1 and 4. because of the way it is implemented, it might look wrong in munobird. i assure you it works. NAIR2 HAS 7 LANDING LAG. NAIR1 LANDING LAG IS 6, AND AUTOCANCEL MAKES IT 4.");
 
@@ -71,7 +71,7 @@ set_window_value(AT_NAIR, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_NAIR, 4); 
 
-//1
+//early
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 8);
@@ -80,7 +80,7 @@ set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 35);
 set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 4);//5
+set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
@@ -88,11 +88,11 @@ set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.35);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
-//2
+//late
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 17);
@@ -101,17 +101,17 @@ set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -19);//-20
 set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 53);//46
 set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 31);//31
 set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 2);
-set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 11);
+set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 4);//5
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.65);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.35);
-set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.35);
+set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 
 //for nair2
@@ -128,9 +128,9 @@ set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, 29);
-set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -32);
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -38);
 set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 52);
-set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 48);
+set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 58);//48
 set_hitbox_value(AT_NAIR, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, tmp_dmg);
 set_hitbox_value(AT_NAIR, 3, HG_ANGLE, tmp_angle);

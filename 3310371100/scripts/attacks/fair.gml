@@ -41,6 +41,7 @@ set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FAIR, 5, AG_AUTOCANCEL, 1);
 set_window_value(AT_FAIR, 5, AG_IASA_THIS_WINDOW, 1);
+set_window_value(AT_FAIR, 5, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 

@@ -384,10 +384,16 @@ if (attack == AT_DSPECIAL_2){
     		}
     		if (destroyed || destroyed_effect || destroyed_next){
 				sound_stop(curr_sfx);
+				curr_sfx = noone;
 			}
 		}
 	}
 }
+
+	if (small_scrap_obj != noone && !instance_exists(small_scrap_obj)){
+		sound_stop(sound_get("scrap_teeth"));
+		sound_stop(sound_get("scrap_robot"));
+	}
 
 
 var sprite_found = get_sprite_name(sprite_index)

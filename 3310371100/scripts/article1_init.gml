@@ -25,7 +25,19 @@ stored_spr_dir = 0;
 
 is_iced = false;
 ice_timer = 0;
-ice_timer_max = 30;//cooldown length basically
+ice_timer_max = 40;//cooldown length basically
 ice_attacktrack = 0;
 
 ice_attacknum = 1;
+
+ice_hbox_owner_id = -4;
+
+ushr_rainclouded = false;
+ushr_rainclouded_timer = 0;
+ushr_rainclouded_timer_max = 0;
+ushr_rainclouded_timer_queue = 0;
+
+stored_spin_state = 0;
+
+cloud_air_friction = 0.1;
+cloud_air_friction_mult = 0.9;

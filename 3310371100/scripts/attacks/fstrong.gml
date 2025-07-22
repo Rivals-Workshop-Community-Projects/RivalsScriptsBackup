@@ -52,6 +52,7 @@ set_window_value(AT_FSTRONG, 8, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FSTRONG, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSTRONG, 8, AG_IASA_THIS_WINDOW, 1);
+set_window_value(AT_FSTRONG, 8, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 

@@ -25,7 +25,7 @@ if (get_player_color( player ) == 0){
 				set_character_color_slot( 6, 88, 237, 183 ); //umbrella
 				set_character_color_slot( 7, 66, 179, 137 ); //eyes
 		break;
-		case 3: //C // defD
+		case 3: //D // defD
 				set_character_color_slot( 0, 226, 255, 247 ); //green
 				set_character_color_slot( 1, 85, 105, 96 ); //hair
 				set_character_color_slot( 2, 255, 238, 215 ); //skin
@@ -35,26 +35,83 @@ if (get_player_color( player ) == 0){
 				set_character_color_slot( 6, 29, 226, 135 ); //umbrella
 				set_character_color_slot( 7, 0, 98, 56 ); //eyes
 		break;
+		case 4: //E // ushr-E: psasbr
+				set_character_color_slot( 0, 0, 255, 146 ); //green
+				set_character_color_slot( 1, 41, 56, 55 ); //hair
+				set_character_color_slot( 2, 71, 65, 60 ); //skin
+				set_character_color_slot( 3, 69, 82, 87 ); //white
+				set_character_color_slot( 4, 0, 255, 146 ); //dark
+				set_character_color_slot( 5, 87, 77, 47 ); //gold
+				set_character_color_slot( 6, 0, 255, 146 ); //umbrella
+				set_character_color_slot( 7, 0, 122, 70 ); //eyes
+		break;
 		default:
 		break;
 	}
 }
+
+
+//just the shading values
 if (get_synced_var( player )==0){//A
+	if (get_player_color( player ) == 1){//blue
+		set_character_color_shading( 3, 0.5 );
+	}
+	if (get_player_color( player ) == 2){//red
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 3){//green
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 1, 1.5 );
+	}
+	if (get_player_color( player ) == 4){//bw
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.3 );
+		set_character_color_shading( 6, 0.4 );
+	}
+	if (get_player_color( player ) == 5){//purple
+		set_character_color_shading( 1, 0.8 );
+		set_character_color_shading( 3, 0.6 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 6){//abyss
+		set_character_color_shading( 6, 1.3 );
+	}
 	if (get_player_color( player ) == 7){//early
 		for (var slot_num = 0; slot_num < 8; slot_num++) {
 			set_character_color_shading( slot_num, 0 );
 		}
 	}
 	if (get_player_color( player ) == 9){//doomsday
-		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 3, 0.4 );
 		set_character_color_shading( 6, 0.5 );
+	}
+	if (get_player_color( player ) == 10){//lens
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.2 );
+	}
+	if (get_player_color( player ) == 11){//ranked gold
+		set_character_color_shading( 2, 0.6 );
+		set_character_color_shading( 7, 3 );
+	}
+	if (get_player_color( player ) == 14){//lavender
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.8 );
 	}
 	if (get_player_color( player ) == 15){//dusk
 		set_character_color_shading( 1, 1.3 );
-		set_character_color_shading( 3, 0.85 );
-		set_character_color_shading( 6, 0.75 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.6 );
+	}
+	if (get_player_color( player ) == 16){//ashe
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 6, -0.5 );
 	}
 	if (get_player_color( player ) == 17){//nb
+		set_character_color_shading( 3, 0.6 );
 		set_character_color_shading( 6, 0.5 );
 	}
 	/*
@@ -92,6 +149,288 @@ if (get_synced_var( player )==0){//A
 		}
 	}
 }
+if (get_synced_var( player )==1){//B
+	if (get_player_color( player ) == 0){//ushr.B
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 1){//verdi
+		set_character_color_shading( 1, 1.3 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 3){//natkinda
+		set_character_color_shading( 5, 0.5 );
+	}
+	if (get_player_color( player ) == 6){//sara
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 3, 0.6 );
+		set_character_color_shading( 6, 0.5 );
+	}
+	if (get_player_color( player ) == 7){//lumina
+		set_character_color_shading( 0, -1 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0 );
+		set_character_color_shading( 6, -1 );
+	}
+	if (get_player_color( player ) == 9){//paintyourworld
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 10){//shadow
+		set_character_color_shading( 1, 0.6 );
+		set_character_color_shading( 3, 0.6 );
+		set_character_color_shading( 6, 0.6 );
+	}
+	if (get_player_color( player ) == 11){//paintyourworld
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 12){//hat the kid
+		set_character_color_shading( 1, 0.8 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 0.8 );
+	}
+	if (get_player_color( player ) == 13){//frallan
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 1, 0.3 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.3 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 15){//xlna
+		set_character_color_shading( 3, 0.5 );
+	}
+	if (get_player_color( player ) == 16){//gato
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.6 );
+		set_character_color_shading( 6, 0.8 );
+	}
+}
+if (get_synced_var( player )==2){//C
+	if (get_player_color( player ) == 1){//macka
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 2){//celeste
+		set_character_color_shading( 3, 0.8 );
+	}
+	if (get_player_color( player ) == 3){//nautilia
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 2, 0.7 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 0.8 );
+	}
+	if (get_player_color( player ) == 4){//maltose
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 1.3 );
+	}
+	if (get_player_color( player ) == 5){//mina
+		for (var slot_num = 0; slot_num < 8; slot_num++) {
+			set_character_color_shading( slot_num, 0.7 );
+		}
+	}
+	if (get_player_color( player ) == 6){//magitech
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 1, 0.6 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.2 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 7){//surging fate
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.5 );
+	}
+	if (get_player_color( player ) == 8){//clockwork fate
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 1, 1.2 );
+		set_character_color_shading( 3, 0.7 );
+	}
+	if (get_player_color( player ) == 9){//bell lily
+		set_character_color_shading( 1, 1.2 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.9 );
+	}
+	if (get_player_color( player ) == 10){//tomokocolor
+		set_character_color_shading( 1, 1.3 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.3 );
+	}
+	if (get_player_color( player ) == 11){//bladewhichreflect
+		set_character_color_shading( 0, 0.8 );
+		set_character_color_shading( 1, 1.4 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 12){//windrose
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 13){//brella of the crib
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 2, 0.7 );
+		set_character_color_shading( 6, 1.3 );
+	}
+	if (get_player_color( player ) == 15){//stith
+		set_character_color_shading( 0, 0.7 );
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 0.8 );
+	}
+	if (get_player_color( player ) == 16){//meimay
+		set_character_color_shading( 3, 0.7 );
+	}
+	if (get_player_color( player ) == 17){//pancake bacon
+		set_character_color_shading( 6, 1.2 );
+		set_character_color_shading( 7, 1.5 );
+	}
+}
+
+if (get_synced_var( player )==3){//D
+	if (get_player_color( player ) == 0){//ushr-d
+		set_character_color_shading( 3, 0.6 );
+	}
+	if (get_player_color( player ) == 1){//sorbet
+		set_character_color_shading( 1, 0.6 );
+	}
+	if (get_player_color( player ) == 2){//infamous
+		set_character_color_shading( 3, 0.7 );
+	}
+	if (get_player_color( player ) == 3){//steampunk
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 3, 0.7 );
+		set_character_color_shading( 6, 0.9 );
+	}
+	if (get_player_color( player ) == 4){//ashveil
+		set_character_color_shading( 1, 0.6 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 5){//dilemma
+		set_character_color_shading( 0, 0.8 );
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 6, 0.9 );
+	}
+	if (get_player_color( player ) == 6){//cora
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.7 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 7){//cocua
+		set_character_color_shading( 3, 0.7 );
+	}
+	if (get_player_color( player ) == 8){//sary
+		set_character_color_shading( 0, 0.4 );
+		set_character_color_shading( 1, 0.4 );
+		set_character_color_shading( 3, 0.6 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 9){//kris
+		set_character_color_shading( 5, 0.4);
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 10){//godspeed you! you're a determination!
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, -2 );
+	}
+	if (get_player_color( player ) == 11){//otherside
+		set_character_color_shading( 1, 1.5 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 12){//supermint
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 13){//tealeaf
+		for (var slot_num = 0; slot_num < 8; slot_num++) {
+			set_character_color_shading( slot_num, 0.8 );
+		}
+	}
+	if (get_player_color( player ) == 14){//teapack
+		set_character_color_shading( 2, 0.7 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 15){//a written song
+		set_character_color_shading( 0, 0.8 );
+		set_character_color_shading( 1, 0.5 );
+		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 16){//forlorn egodeath
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.5 );
+	}
+	if (get_player_color( player ) == 17){//acronym e
+		set_character_color_shading( 0, 0.8 );
+		set_character_color_shading( 1, 0.6 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 6, 0.8 );
+	}
+}
+
+if (get_synced_var( player )==4){//EXTRA
+	if (get_player_color( player ) == 0){//PSASBR
+		for (var slot_num = 0; slot_num < 8; slot_num++) {
+			set_character_color_shading( slot_num, 0.3 );
+		}
+	}
+	if (get_player_color( player ) == 1){//champion
+		set_character_color_shading( 3, 0.7 );
+	}
+	if (get_player_color( player ) == 3){//klein bottle
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 4){//wish...
+		set_character_color_shading( 1, 1.2 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 5){//wish sunset
+		set_character_color_shading( 1, 1.2 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 6){//steel bamboo
+		set_character_color_shading( 0, 0.8 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 5, 0.8 );
+		set_character_color_shading( 6, 0.7 );
+	}
+	if (get_player_color( player ) == 7){//scarletlikecinnabarfire
+		set_character_color_shading( 1, 1.4 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 6, 1.1 );
+	}
+	if (get_player_color( player ) == 11){//endofallthings
+		set_character_color_shading( 0, 0.5 );
+		set_character_color_shading( 1, 1.2 );
+		set_character_color_shading( 2, 0.8 );
+		set_character_color_shading( 3, 0.5 );
+		set_character_color_shading( 5, 0.7 );
+		set_character_color_shading( 6, 1.2 );
+	}
+}
+
+
+
+
+
+
 
 //special:
 if (get_synced_var( player )==2){//C
@@ -100,7 +439,7 @@ if (get_synced_var( player )==2){//C
 			ushr_weird_color_timer = 0;
 			ushr_weird_color_time_dir = 1;
 		}
-		var ushr_weird_color_timer_max = 60;
+		var ushr_weird_color_timer_max = 120;
 		//a: 90, 194, 242
 		//b: 173, 145, 242
 		var tmp_col_a_a = make_colour_rgb(90, 194, 242);
@@ -118,7 +457,7 @@ if (get_synced_var( player )==2){//C
 		
 		
 		if (variable_instance_exists(id, "state")){
-			if (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR){
+		/*	if (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR){
 				if (mask_attack<8){
 					mask_attack++;
 				}
@@ -131,12 +470,12 @@ if (get_synced_var( player )==2){//C
 		var tst_b = 1-(mask_attack/10);
 		set_character_color_slot( 0, 214, 245, 255, tst_a ); //green
 		set_character_color_slot( 6, 122, 208, 255, tst_b ); //umbrella
-		
-		var hairalpha = 0.5;
+		*/
+		var hairalpha = 0;
 		}else{tst_a=0;tst_b=0;var hairalpha = 1;}
 		
 		set_character_color_slot( 1, tmp_col_r, tmp_col_g, tmp_col_b, hairalpha ); //hair
-		set_character_color_shading( 1, -0.5 );//shading
+		set_character_color_shading( 1, -1 );//shading
 		ushr_weird_color_timer+=ushr_weird_color_time_dir;
 		if (ushr_weird_color_timer>ushr_weird_color_timer_max){
 			ushr_weird_color_time_dir = -1;
@@ -146,7 +485,25 @@ if (get_synced_var( player )==2){//C
 		}
 	}
 }
-if (get_synced_var( player )==3){//D??
+if (get_synced_var( player )==3){//D
+	if (get_player_color( player ) == 1){//sorbet
+		if (variable_instance_exists(id, "state")){
+			if (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR){
+				if (mask_attack<8){
+					mask_attack++;
+				}
+			}else{
+				if (mask_attack>0){
+					mask_attack--;
+				}
+			}
+			var tst_a = 1-(mask_attack/8);
+			set_character_color_slot( 6, 0, 217, 224, tst_a);
+		set_character_color_slot( 0, 255, 213, 0, 0 ); //green
+		}
+	}
+}
+if (get_synced_var( player )==4){//EXTRA??
 	if (get_player_color( player ) == 1){//ultragenesis
 		set_character_color_shading( 0, 0 );//green
 		set_character_color_shading( 3, 0.5 );//white
@@ -193,22 +550,6 @@ if (get_synced_var( player )==3){//D??
 		set_character_color_slot( 1, 209, 255, 237, 0.35 ); //hair
 		set_character_color_slot( 6, 191, 255, 208, 0.35 ); //umbrella
 	
-	}
-	if (get_player_color( player ) == 7){//sorbet
-		if (variable_instance_exists(id, "state")){
-			if (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR){
-				if (mask_attack<8){
-					mask_attack++;
-				}
-			}else{
-				if (mask_attack>0){
-					mask_attack--;
-				}
-			}
-			var tst_a = 1-(mask_attack/8);
-			set_character_color_slot( 6, 0, 217, 224, tst_a);
-		set_character_color_slot( 0, 255, 213, 0, 0 ); //green
-		}
 	}
 	if (get_player_color( player ) == 8){//grid
 		set_character_color_shading( 3, 0 );//green
@@ -269,6 +610,30 @@ if (get_synced_var( player )==3){//D??
 		set_character_color_slot( 7, 1, 117, 56, 0.6+tst_a ); //eyes
 		}
 	}
+	
+	
+	/*
+set_color_profile_slot( 29, 0, 127, 135, 129 ); //green
+set_color_profile_slot( 29, 1, 242, 255, 247 ); //hair
+set_color_profile_slot( 29, 2, 160, 164, 166 ); //skin
+set_color_profile_slot( 29, 3, 63, 66, 64 ); //white
+set_color_profile_slot( 29, 4, 39, 41, 40 ); //dark
+set_color_profile_slot( 29, 5, 79, 84, 81 ); //gold
+set_color_profile_slot( 29, 6, 242, 255, 245 ); //umbrella
+set_color_profile_slot( 29, 7, 240, 255, 240 ); //eyes
+	*/
+	
+	if (get_player_color( player ) == 11){//endofallthings
+		set_character_color_slot( 0, 127, 135, 129, 0.8 ); //green
+		//set_character_color_slot( 1, 242, 255, 247, 0.35 ); //hair
+		set_character_color_slot( 2, 160, 164, 166, 0.9 ); //skin
+		set_character_color_slot( 3, 63, 66, 64, 0.5 ); //white
+		set_character_color_slot( 4, 39, 41, 40, 0.3 ); //dark
+		set_character_color_slot( 5, 79, 84, 81, 0.6 ); //gold
+		//set_character_color_slot( 6, 242, 255, 245, 0.35 ); //umbrella
+		//set_character_color_slot( 7, 240, 255, 240, 0.35 ); //eyes
+	
+	}
 }
 
 
@@ -310,12 +675,12 @@ switch(get_synced_var( player )){
 
 		// bw
 		set_color_profile_slot( 4, 0, 237, 255, 250 ); //green
-		set_color_profile_slot( 4, 1, 113, 133, 129 ); //hair
+		set_color_profile_slot( 4, 1, 100, 125, 163 ); //hair
 		set_color_profile_slot( 4, 2, 217, 205, 190 ); //skin
-		set_color_profile_slot( 4, 3, 102, 120, 116 ); //white
+		set_color_profile_slot( 4, 3, 95, 117, 140 ); //white
 		set_color_profile_slot( 4, 4, 176, 207, 199 ); //dark
 		set_color_profile_slot( 4, 5, 51, 66, 63 ); //gold
-		set_color_profile_slot( 4, 6, 102, 120, 116 ); //umbrella
+		set_color_profile_slot( 4, 6, 168, 194, 255 ); //umbrella
 		set_color_profile_slot( 4, 7, 32, 41, 38 ); //eyes
 
 		// purple
@@ -405,7 +770,7 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 10, 0, 113, 230, 119 ); //green
 		set_color_profile_slot( 10, 1, 245, 255, 255 ); //hair
 		set_color_profile_slot( 10, 2, 145, 124, 104 ); //skin
-		set_color_profile_slot( 10, 3, 122, 138, 145 ); //white
+		set_color_profile_slot( 10, 3, 93, 128, 133 ); //white
 		set_color_profile_slot( 10, 4, 23, 54, 29 ); //dark
 		set_color_profile_slot( 10, 5, 51, 49, 59 ); //gold
 		set_color_profile_slot( 10, 6, 245, 255, 255 ); //umbrella
@@ -609,7 +974,7 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 13, 3, 214, 81, 81 ); //white
 		set_color_profile_slot( 13, 4, 225, 239, 245 ); //dark
 		set_color_profile_slot( 13, 5, 63, 67, 89 ); //gold
-		set_color_profile_slot( 13, 6, 214, 81, 81 ); //umbrella
+		set_color_profile_slot( 13, 6, 225, 239, 245 ); //umbrella
 		set_color_profile_slot( 13, 7, 59, 23, 87 ); //eyes
 
 		// starlove
@@ -730,7 +1095,7 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 8, 3, 128, 80, 73 ); //white
 		set_color_profile_slot( 8, 4, 242, 123, 32 ); //dark
 		set_color_profile_slot( 8, 5, 242, 123, 32 ); //gold
-		set_color_profile_slot( 8, 6, 128, 80, 73 ); //umbrella
+		set_color_profile_slot( 8, 6, 255, 186, 89 ); //umbrella
 		set_color_profile_slot( 8, 7, 148, 73, 17 ); //eyes
 
 		// bell lily
@@ -740,7 +1105,7 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 9, 3, 133, 127, 227 ); //white
 		set_color_profile_slot( 9, 4, 36, 71, 44 ); //dark
 		set_color_profile_slot( 9, 5, 77, 138, 85 ); //gold
-		set_color_profile_slot( 9, 6, 81, 158, 92 ); //umbrella
+		set_color_profile_slot( 9, 6, 106, 207, 145 ); //umbrella
 		set_color_profile_slot( 9, 7, 59, 78, 145 ); //eyes
 
 		// tomokocolor
@@ -823,7 +1188,178 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 17, 6, 255, 211, 66 ); //umbrella
 		set_color_profile_slot( 17, 7, 26, 118, 161 ); //eyes
 	break;
-	case 3://secret D-palette
+	case 3://D
+		// sorbet
+		set_color_profile_slot( 1, 0, 255, 213, 0 ); //green
+		set_color_profile_slot( 1, 1, 54, 69, 117 ); //hair
+		set_color_profile_slot( 1, 2, 255, 243, 224 ); //skin
+		set_color_profile_slot( 1, 3, 236, 166, 255 ); //white
+		set_color_profile_slot( 1, 4, 142, 74, 161 ); //dark
+		set_color_profile_slot( 1, 5, 0, 217, 224 ); //gold
+		set_color_profile_slot( 1, 6, 0, 217, 224 ); //umbrella
+		set_color_profile_slot( 1, 7, 166, 97, 0 ); //eyes
+
+		// infamous
+		set_color_profile_slot( 2, 0, 255, 105, 220 ); //green
+		set_color_profile_slot( 2, 1, 103, 95, 176 ); //hair
+		set_color_profile_slot( 2, 2, 224, 194, 166 ); //skin
+		set_color_profile_slot( 2, 3, 103, 95, 176 ); //white
+		set_color_profile_slot( 2, 4, 0, 230, 120 ); //dark
+		set_color_profile_slot( 2, 5, 194, 232, 255 ); //gold
+		set_color_profile_slot( 2, 6, 51, 255, 242 ); //umbrella
+		set_color_profile_slot( 2, 7, 51, 255, 242 ); //eyes
+
+		// steampunk
+		set_color_profile_slot( 3, 0, 0, 135, 112 ); //green
+		set_color_profile_slot( 3, 1, 64, 214, 176 ); //hair
+		set_color_profile_slot( 3, 2, 168, 142, 115 ); //skin
+		set_color_profile_slot( 3, 3, 124, 135, 135 ); //white
+		set_color_profile_slot( 3, 4, 84, 60, 50 ); //dark
+		set_color_profile_slot( 3, 5, 224, 152, 101 ); //gold
+		set_color_profile_slot( 3, 6, 179, 112, 75 ); //umbrella
+		set_color_profile_slot( 3, 7, 212, 212, 212 ); //eyes
+
+		//ashveil
+		set_color_profile_slot( 4, 0, 255, 221, 99 ); //green
+		set_color_profile_slot( 4, 1, 79, 76, 84 ); //hair
+		set_color_profile_slot( 4, 2, 255, 240, 217 ); //skin
+		set_color_profile_slot( 4, 3, 176, 80, 74 ); //white
+		set_color_profile_slot( 4, 4, 47, 72, 92 ); //dark
+		set_color_profile_slot( 4, 5, 153, 149, 163 ); //gold
+		set_color_profile_slot( 4, 6, 245, 245, 255 ); //umbrella
+		set_color_profile_slot( 4, 7, 224, 224, 224 ); //eyes
+
+		// dilemma
+		set_color_profile_slot( 5, 0, 125, 179, 154 ); //green
+		set_color_profile_slot( 5, 1, 77, 60, 112 ); //hair
+		set_color_profile_slot( 5, 2, 194, 183, 176 ); //skin
+		set_color_profile_slot( 5, 3, 77, 60, 112 ); //white
+		set_color_profile_slot( 5, 4, 154, 117, 191 ); //dark
+		set_color_profile_slot( 5, 5, 255, 205, 54 ); //gold
+		set_color_profile_slot( 5, 6, 154, 117, 191 ); //umbrella
+		set_color_profile_slot( 5, 7, 255, 231, 54 ); //eyes
+
+		// cora
+		set_color_profile_slot( 6, 0, 64, 76, 247 ); //green
+		set_color_profile_slot( 6, 1, 53, 63, 204 ); //hair
+		set_color_profile_slot( 6, 2, 255, 240, 222 ); //skin
+		set_color_profile_slot( 6, 3, 83, 86, 94 ); //white
+		set_color_profile_slot( 6, 4, 147, 159, 219 ); //dark
+		set_color_profile_slot( 6, 5, 171, 53, 73 ); //gold
+		set_color_profile_slot( 6, 6, 171, 53, 73 ); //umbrella
+		set_color_profile_slot( 6, 7, 45, 56, 61 ); //eyes
+
+		// cocua
+		set_color_profile_slot( 7, 0, 146, 255, 51 ); //green
+		set_color_profile_slot( 7, 1, 135, 79, 73 ); //hair
+		set_color_profile_slot( 7, 2, 219, 186, 127 ); //skin
+		set_color_profile_slot( 7, 3, 167, 154, 186 ); //white
+		set_color_profile_slot( 7, 4, 60, 54, 74 ); //dark
+		set_color_profile_slot( 7, 5, 60, 54, 74 ); //gold
+		set_color_profile_slot( 7, 6, 163, 255, 15 ); //umbrella
+		set_color_profile_slot( 7, 7, 173, 33, 33 ); //eyes
+
+		// sary
+		set_color_profile_slot( 8, 0, 59, 61, 59 ); //green
+		set_color_profile_slot( 8, 1, 59, 61, 59 ); //hair
+		set_color_profile_slot( 8, 2, 232, 242, 255 ); //skin
+		set_color_profile_slot( 8, 3, 158, 43, 43 ); //white
+		set_color_profile_slot( 8, 4, 232, 201, 62 ); //dark
+		set_color_profile_slot( 8, 5, 232, 242, 255 ); //gold
+		set_color_profile_slot( 8, 6, 255, 255, 201 ); //umbrella
+		set_color_profile_slot( 8, 7, 79, 22, 22 ); //eyes
+
+		// kris
+		set_color_profile_slot( 9, 0, 255, 249, 56 ); //green
+		set_color_profile_slot( 9, 1, 117, 42, 34 ); //hair
+		set_color_profile_slot( 9, 2, 255, 200, 0 ); //skin
+		set_color_profile_slot( 9, 3, 151, 199, 48 ); //white
+		set_color_profile_slot( 9, 4, 69, 37, 24 ); //dark
+		set_color_profile_slot( 9, 5, 94, 51, 33 ); //gold
+		set_color_profile_slot( 9, 6, 255, 255, 250 ); //umbrella
+		set_color_profile_slot( 9, 7, 148, 43, 36 ); //eyes
+
+		// asayzll
+		set_color_profile_slot( 10, 0, 75, 139, 166 ); //green
+		set_color_profile_slot( 10, 1, 125, 81, 94 ); //hair
+		set_color_profile_slot( 10, 2, 204, 155, 138 ); //skin
+		set_color_profile_slot( 10, 3, 235, 173, 70 ); //white
+		set_color_profile_slot( 10, 4, 22, 51, 97 ); //dark
+		set_color_profile_slot( 10, 5, 29, 63, 117 ); //gold
+		set_color_profile_slot( 10, 6, 255, 133, 33 ); //umbrella
+		set_color_profile_slot( 10, 7, 161, 126, 0 ); //eyes
+
+		// otherside
+		set_color_profile_slot( 11, 0, 135, 255, 207 ); //green
+		set_color_profile_slot( 11, 1, 97, 255, 173 ); //hair
+		set_color_profile_slot( 11, 2, 255, 244, 212 ); //skin
+		set_color_profile_slot( 11, 3, 48, 179, 129 ); //white
+		set_color_profile_slot( 11, 4, 7, 92, 59 ); //dark
+		set_color_profile_slot( 11, 5, 247, 245, 94 ); //gold
+		set_color_profile_slot( 11, 6, 247, 235, 146 ); //umbrella
+		set_color_profile_slot( 11, 7, 66, 87, 17 ); //eyes
+
+		// supermint
+		set_color_profile_slot( 12, 0, 242, 255, 253 ); //green
+		set_color_profile_slot( 12, 1, 81, 153, 124 ); //hair
+		set_color_profile_slot( 12, 2, 255, 246, 232 ); //skin
+		set_color_profile_slot( 12, 3, 154, 250, 175 ); //white
+		set_color_profile_slot( 12, 4, 81, 153, 124 ); //dark
+		set_color_profile_slot( 12, 5, 242, 255, 253 ); //gold
+		set_color_profile_slot( 12, 6, 252, 255, 253 ); //umbrella
+		set_color_profile_slot( 12, 7, 116, 189, 131 ); //eyes
+
+		// tealeaf
+		set_color_profile_slot( 13, 0, 137, 207, 8 ); //green
+		set_color_profile_slot( 13, 1, 104, 130, 65 ); //hair
+		set_color_profile_slot( 13, 2, 84, 70, 50 ); //skin
+		set_color_profile_slot( 13, 3, 237, 250, 220 ); //white
+		set_color_profile_slot( 13, 4, 82, 102, 51 ); //dark
+		set_color_profile_slot( 13, 5, 145, 121, 64 ); //gold
+		set_color_profile_slot( 13, 6, 196, 163, 86 ); //umbrella
+		set_color_profile_slot( 13, 7, 156, 121, 28 ); //eyes
+
+		// teapack
+		set_color_profile_slot( 14, 0, 255, 229, 112 ); //green
+		set_color_profile_slot( 14, 1, 232, 203, 25 ); //hair
+		set_color_profile_slot( 14, 2, 163, 124, 89 ); //skin
+		set_color_profile_slot( 14, 3, 207, 146, 66 ); //white
+		set_color_profile_slot( 14, 4, 82, 112, 0 ); //dark
+		set_color_profile_slot( 14, 5, 82, 112, 0 ); //gold
+		set_color_profile_slot( 14, 6, 238, 255, 160 ); //umbrella
+		set_color_profile_slot( 14, 7, 42, 87, 26 ); //eyes
+
+		// a written song
+		set_color_profile_slot( 15, 0, 21, 158, 34 ); //green
+		set_color_profile_slot( 15, 1, 69, 43, 43 ); //hair
+		set_color_profile_slot( 15, 2, 117, 75, 68 ); //skin
+		set_color_profile_slot( 15, 3, 165, 207, 182 ); //white
+		set_color_profile_slot( 15, 4, 189, 75, 53 ); //dark
+		set_color_profile_slot( 15, 5, 232, 103, 35 ); //gold
+		set_color_profile_slot( 15, 6, 66, 255, 183 ); //umbrella
+		set_color_profile_slot( 15, 7, 181, 97, 52 ); //eyes
+
+		// forlorn egodeath
+		set_color_profile_slot( 16, 0, 234, 255, 222 ); //green
+		set_color_profile_slot( 16, 1, 87, 61, 54 ); //hair
+		set_color_profile_slot( 16, 2, 255, 255, 255 ); //skin
+		set_color_profile_slot( 16, 3, 156, 122, 112 ); //white
+		set_color_profile_slot( 16, 4, 234, 255, 222 ); //dark
+		set_color_profile_slot( 16, 5, 77, 153, 96 ); //gold
+		set_color_profile_slot( 16, 6, 82, 89, 85 ); //umbrella
+		set_color_profile_slot( 16, 7, 255, 255, 255 ); //eyes
+
+		// ACronym E
+		set_color_profile_slot( 17, 0, 145, 123, 141 ); //green
+		set_color_profile_slot( 17, 1, 79, 66, 76 ); //hair
+		set_color_profile_slot( 17, 2, 237, 182, 133 ); //skin
+		set_color_profile_slot( 17, 3, 242, 235, 255 ); //white
+		set_color_profile_slot( 17, 4, 154, 0, 179 ); //dark
+		set_color_profile_slot( 17, 5, 154, 0, 179 ); //gold
+		set_color_profile_slot( 17, 6, 154, 0, 179 ); //umbrella
+		set_color_profile_slot( 17, 7, 134, 0, 156 ); //eyes
+	break;
+	case 4://secret extra palette
 		// ULTRAGENESIS
 		set_color_profile_slot( 1, 0, 255, 77, 77 ); //green
 		set_color_profile_slot( 1, 1, 128, 26, 26 ); //hair
@@ -844,55 +1380,55 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 2, 6, 191, 255, 208 ); //umbrella
 		set_color_profile_slot( 2, 7, 56, 252, 120 ); //eyes
 
-		// infamous
-		set_color_profile_slot( 3, 0, 255, 105, 220 ); //green
-		set_color_profile_slot( 3, 1, 103, 95, 176 ); //hair
-		set_color_profile_slot( 3, 2, 224, 194, 166 ); //skin
-		set_color_profile_slot( 3, 3, 103, 95, 176 ); //white
-		set_color_profile_slot( 3, 4, 0, 230, 120 ); //dark
-		set_color_profile_slot( 3, 5, 194, 232, 255 ); //gold
-		set_color_profile_slot( 3, 6, 51, 255, 242 ); //umbrella
-		set_color_profile_slot( 3, 7, 51, 255, 242 ); //eyes
+		// klein bottle
+		set_color_profile_slot( 3, 0, 179, 181, 255 ); //green
+		set_color_profile_slot( 3, 1, 240, 250, 255 ); //hair
+		set_color_profile_slot( 3, 2, 255, 243, 237 ); //skin
+		set_color_profile_slot( 3, 3, 240, 250, 255 ); //white
+		set_color_profile_slot( 3, 4, 255, 66, 66 ); //dark
+		set_color_profile_slot( 3, 5, 179, 181, 255 ); //gold
+		set_color_profile_slot( 3, 6, 163, 178, 255 ); //umbrella
+		set_color_profile_slot( 3, 7, 255, 66, 66 ); //eyes
 
-		// steampunk
-		set_color_profile_slot( 4, 0, 0, 135, 112 ); //green
-		set_color_profile_slot( 4, 1, 64, 214, 176 ); //hair
-		set_color_profile_slot( 4, 2, 168, 142, 115 ); //skin
-		set_color_profile_slot( 4, 3, 124, 135, 135 ); //white
-		set_color_profile_slot( 4, 4, 84, 60, 50 ); //dark
-		set_color_profile_slot( 4, 5, 224, 152, 101 ); //gold
-		set_color_profile_slot( 4, 6, 179, 112, 75 ); //umbrella
-		set_color_profile_slot( 4, 7, 212, 212, 212 ); //eyes
-		
-		//ashveil
-		set_color_profile_slot( 5, 0, 255, 221, 99 ); //green
-		set_color_profile_slot( 5, 1, 79, 76, 84 ); //hair
-		set_color_profile_slot( 5, 2, 255, 240, 217 ); //skin
-		set_color_profile_slot( 5, 3, 176, 80, 74 ); //white
-		set_color_profile_slot( 5, 4, 47, 72, 92 ); //dark
-		set_color_profile_slot( 5, 5, 153, 149, 163 ); //gold
-		set_color_profile_slot( 5, 6, 245, 245, 255 ); //umbrella
-		set_color_profile_slot( 5, 7, 224, 224, 224 ); //eyes
+		// wish...
+		set_color_profile_slot( 4, 0, 48, 232, 240 ); //green
+		set_color_profile_slot( 4, 1, 255, 216, 99 ); //hair
+		set_color_profile_slot( 4, 2, 235, 246, 255 ); //skin
+		set_color_profile_slot( 4, 3, 235, 246, 255 ); //white
+		set_color_profile_slot( 4, 4, 4, 113, 143 ); //dark
+		set_color_profile_slot( 4, 5, 255, 216, 99 ); //gold
+		set_color_profile_slot( 4, 6, 255, 216, 99 ); //umbrella
+		set_color_profile_slot( 4, 7, 3, 76, 105 ); //eyes
 
-		// dilemma
-		set_color_profile_slot( 6, 0, 125, 179, 154 ); //green
-		set_color_profile_slot( 6, 1, 77, 60, 112 ); //hair
-		set_color_profile_slot( 6, 2, 194, 183, 176 ); //skin
-		set_color_profile_slot( 6, 3, 77, 60, 112 ); //white
-		set_color_profile_slot( 6, 4, 154, 117, 191 ); //dark
-		set_color_profile_slot( 6, 5, 255, 205, 54 ); //gold
-		set_color_profile_slot( 6, 6, 154, 117, 191 ); //umbrella
-		set_color_profile_slot( 6, 7, 255, 231, 54 ); //eyes
+		// wish sunset
+		set_color_profile_slot( 5, 0, 255, 80, 74 ); //green
+		set_color_profile_slot( 5, 1, 255, 176, 74 ); //hair
+		set_color_profile_slot( 5, 2, 249, 242, 255 ); //skin
+		set_color_profile_slot( 5, 3, 235, 232, 255 ); //white
+		set_color_profile_slot( 5, 4, 173, 30, 0 ); //dark
+		set_color_profile_slot( 5, 5, 255, 176, 74 ); //gold
+		set_color_profile_slot( 5, 6, 255, 176, 74 ); //umbrella
+		set_color_profile_slot( 5, 7, 143, 41, 0 ); //eyes
 
-		// sorbet
-		set_color_profile_slot( 7, 0, 255, 213, 0 ); //green
-		set_color_profile_slot( 7, 1, 54, 69, 117 ); //hair
-		set_color_profile_slot( 7, 2, 255, 243, 224 ); //skin
-		set_color_profile_slot( 7, 3, 236, 166, 255 ); //white
-		set_color_profile_slot( 7, 4, 142, 74, 161 ); //dark
-		set_color_profile_slot( 7, 5, 0, 217, 224 ); //gold
-		set_color_profile_slot( 7, 6, 0, 217, 224 ); //umbrella
-		set_color_profile_slot( 7, 7, 166, 97, 0 ); //eyes
+		// steel bamboo
+		set_color_profile_slot( 6, 0, 99, 247, 205 ); //green
+		set_color_profile_slot( 6, 1, 162, 191, 185 ); //hair
+		set_color_profile_slot( 6, 2, 245, 255, 254 ); //skin
+		set_color_profile_slot( 6, 3, 162, 191, 185 ); //white
+		set_color_profile_slot( 6, 4, 198, 255, 140 ); //dark
+		set_color_profile_slot( 6, 5, 158, 255, 195 ); //gold
+		set_color_profile_slot( 6, 6, 81, 201, 168 ); //umbrella
+		set_color_profile_slot( 6, 7, 37, 115, 92 ); //eyes
+
+		// scarlet like cinnabar fire
+		set_color_profile_slot( 7, 0, 255, 94, 18 ); //green
+		set_color_profile_slot( 7, 1, 255, 138, 41 ); //hair
+		set_color_profile_slot( 7, 2, 255, 221, 161 ); //skin
+		set_color_profile_slot( 7, 3, 186, 42, 20 ); //white
+		set_color_profile_slot( 7, 4, 59, 145, 90 ); //dark
+		set_color_profile_slot( 7, 5, 91, 224, 139 ); //gold
+		set_color_profile_slot( 7, 6, 255, 139, 31 ); //umbrella
+		set_color_profile_slot( 7, 7, 59, 145, 90 ); //eyes
 
 		// grid
 		set_color_profile_slot( 8, 0, 184, 186, 219 ); //green
@@ -957,15 +1493,15 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 10, 6, 0, 255, 123 ); //umbrella
 		set_color_profile_slot( 10, 7, 1, 117, 56 ); //eyes
 
-		// unnamed alt palette
-		set_color_profile_slot( 11, 0, 128, 0, 128 ); //green
-		set_color_profile_slot( 11, 1, 128, 0, 128 ); //hair
-		set_color_profile_slot( 11, 2, 128, 0, 128 ); //skin
-		set_color_profile_slot( 11, 3, 128, 0, 128 ); //white
-		set_color_profile_slot( 11, 4, 128, 0, 128 ); //dark
-		set_color_profile_slot( 11, 5, 128, 0, 128 ); //gold
-		set_color_profile_slot( 11, 6, 128, 0, 128 ); //umbrella
-		set_color_profile_slot( 11, 7, 128, 0, 128 ); //eyes
+		// it's the end of all things
+		set_color_profile_slot( 11, 0, 127, 135, 129 ); //green
+		set_color_profile_slot( 11, 1, 242, 255, 247 ); //hair
+		set_color_profile_slot( 11, 2, 160, 164, 166 ); //skin
+		set_color_profile_slot( 11, 3, 63, 66, 64 ); //white
+		set_color_profile_slot( 11, 4, 39, 41, 40 ); //dark
+		set_color_profile_slot( 11, 5, 79, 84, 81 ); //gold
+		set_color_profile_slot( 11, 6, 242, 255, 245 ); //umbrella
+		set_color_profile_slot( 11, 7, 240, 255, 240 ); //eyes
 
 		// unnamed alt palette
 		set_color_profile_slot( 12, 0, 128, 0, 128 ); //green

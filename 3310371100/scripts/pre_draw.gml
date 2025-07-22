@@ -37,12 +37,30 @@ if (get_synced_var( player )==2){//C
 			mask_wait--;
 		}
 		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_star"), 0, view_get_xview()+(get_gameplay_time()*0.3), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
+			draw_sprite_tiled_ext(sprite_get("etc_field_celestial"), 0, x+(get_gameplay_time()*0.05), y-(get_gameplay_time()*0.03), 2, 2, c_white, 1)
+			//draw_set_alpha(0.1);
+			//draw_sprite_tiled_ext(sprite_get("etc_field_star"), 0, view_get_xview()+(get_gameplay_time()*0.3), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
+			//draw_set_alpha(1);
 		}
 		maskFooter();
 	}
 }
-if (get_synced_var( player )==3){//D??
+if (get_synced_var( player )==3){//EXTRA??
+	if (get_player_color( player ) == 1){//sorbet
+		shader_end();
+		maskHeader();
+		draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_pool"), 0, x-121, y-141, 0.6, 0.6, c_white, 1)
+		}
+		maskFooter();
+	}
+}
+if (get_synced_var( player )==4){//EXTRA??
 	if (get_player_color( player ) == 1){//ultragenesis
 		if (get_player_name( player )!="KYOUKO"){
 			shader_end();
@@ -73,19 +91,6 @@ if (get_synced_var( player )==3){//D??
 			}
 			maskFooter();
 		}
-	}
-	if (get_player_color( player ) == 7){//sorbet
-		shader_end();
-		maskHeader();
-		draw_self();
-		maskMidder();
-		if (mask_wait>0){
-			mask_wait--;
-		}
-		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_pool"), 0, x-121, y-141, 0.6, 0.6, c_white, 1)
-		}
-		maskFooter();
 	}
 	if (get_player_color( player ) == 8){//grid
 		shader_end();

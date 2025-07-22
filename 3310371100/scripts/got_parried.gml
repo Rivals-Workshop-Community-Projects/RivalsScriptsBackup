@@ -18,7 +18,19 @@ if (my_hitboxID.attack==AT_DATTACK){
 }
 signalling_all_my_besties_i_have_been_PARRIED = true;
 
+if (fsp_loop_count > 0){
+	fsp_loop_count = 0;
+	sound_play(sound_get("oops"),false,noone,0.6,1)
+}
 
+if (my_hitboxID.attack==AT_DSPECIAL_2){
+	//wahh
+	sound_play(sound_get("oops_spin"),false,noone,0.7,1)
+	//hsp = hsp*0.5;
+	hsp = dsp_hsp_store;
+	vsp = dsp_vsp_store;
+	window=6; window_timer=0;
+}
 if (my_hitboxID.attack==AT_DSPECIAL){
 		//print("parrylag = "+string(parry_lag))
 	if (my_hitboxID.hbox_num==3){

@@ -28,6 +28,3 @@
     draw_debug_text(temp_x+mul*10, temp_y+mul*-1, "vsp = " + string(vsp));
 */
 
-if (creature_timer < 300 && scanned_creature){
-    draw_sprite_ext(sprite_get("newcreature"), creature_index, creature_x - 152, creature_y, 2, 2, 0, c_white, creature_alpha);
-}

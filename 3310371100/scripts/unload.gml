@@ -61,6 +61,8 @@ if (!ushr_handled_victory_quote)
             }
             
         }
+		if (other.madeonfinale == true){data.quote="Go out fighting, go out young... A flash of lightning... Eclipse the sun.";data.icon=0;data.priority=3;}
+		if (other.mightyfallen == true){data.quote="Godspeed You! You're a determination!";data.icon=3;data.priority=3;}
             
         transfer_array[player] = data;
     }
@@ -122,6 +124,9 @@ if (!ushr_handled_victory_quote)
         case "3273103805": // Nisae kind of
             quote = "Somehow, I'm driven to say sorry..."; 
             break;
+        case "3346651920": // Slenderman
+            quote = "If I saw Slender Man in an actual dark forest I would probably faint on the spot."; 
+            break;
 		
 		
 		//folks
@@ -173,7 +178,7 @@ if (!ushr_handled_victory_quote)
             break;
         case "2605377553": // Mal
         case "2823291685": // Mal SSL
-            quote = "That's your magic, right? These clouds? My rain doesnt seem to hit it...?";
+            quote = "I'm shivering a little, did the air get colder or am I sick?";
             break;
         case "2254931693": // Bonby
             quote = "I feel like I've seen you somewhere, but I don't have the faintest idea what...";
@@ -189,6 +194,9 @@ if (!ushr_handled_victory_quote)
         case "2551117492": // Parasol by inf1n1te
         case "2558870474": // Eirlys
         case "3011832031": // bill wurtz
+        case "2825520992": // bandana dee (spam)
+        case "2134571731": // bandana dee (awesomealen)
+        case "1978869652": // bandana dee (tdude)
         case "2257303118": // uh...kaleb the shocking truth
             quote = "Same weapon!!!! (Waves intensely)";
             break;
@@ -244,6 +252,28 @@ if (!ushr_handled_victory_quote)
         case "3153417443": // Mau
             quote = "Good fight! Oh? This drink, for me? Thank you!";
             break;
+        case "3405748608": // One
+            quote = "You're stabbing people right through with your sword and acting all cool about it?? Ow!!";
+            break;
+        case "3436597271": // Cocua
+            quote = "So fierce! You didn't hold anything back and I felt it! You're very cool!";
+            break;
+        case "3463541091": // Nonari
+            quote = "(These are some dainty detailed clothes for an adventurer...)";
+            break;
+        case "3479868625": // Kafka
+            quote = "That seemed like an assassin... D-does that mean I'm...???";
+            break;
+        case "3415959265": // Saya
+        case "3304241490": // Saya
+            quote = "I-I've had enough taste of the floor already!! Stop!!";
+            break;
+        case "2283888504": // Tempo
+            quote = "You're always so hard to keep up! Good fight, Tempo!";
+            break;
+        case "2648394023": // Glare
+            quote = "Does your UV lights give me sunburn? Good thing I have a para... well, I guess it's an umbrella.";
+            break;
 		
 		
 		//All-star!
@@ -269,19 +299,21 @@ if (!ushr_handled_victory_quote)
             break;
 				  // 6 - 6th in the week is the stage oops
         case "-": // 7 - Usher
-            quote = "Why did that Me want to fight me!? Or was it my fault...? Did I do something...??";
+            quote = "Why did that Me want to fight me!? Did I do something...? Was it my fault...??";
             break;
+			//this is set as a value in init.gml and thats the one thats used
         case "3316053085": // Venus
             quote = "Why do I feel like she was holding back on me?";
             break;
         case "3316054693": // Asra
             quote = "I saw in my rain's puddles... Reflecting, something horrifying, it can't be, right...?";
             break;
-        case "-": // Ciela
+        case "3382637663": // Ciela
             quote = "The hits from these swords are painful, but GOSH are they cool!! Look at those!! I wanna have swords like those!";
             break;
         case "-": // Lumi
-            quote = "I guess this was truly the experience of a contemporary guardian angel?";
+            //quote = "I guess this was truly the experience of a contemporary guardian angel?";
+            quote = "If you are a guardian angel, where were you when I needed you in my life?";
             break;
 		
 		
@@ -323,9 +355,9 @@ return quote
         case "2811831971": // donyoku SSL
         case "2983344228": // Kiku
         case "3153417443": // Mau
-        case "-": // 3 - Pastelle
+        case "3307937190": // 3 - Pastelle
         case "2843521167": // old pastelle
-        case "-": // 5 - Putrolce
+        case "3309240911": // 5 - Putrolce
             icon = 1;
             break;
             
@@ -338,11 +370,15 @@ return quote
         case "2551117492": // Parasol by inf1n1te
         case "2558870474": // Eirlys
         case "3011832031": // bill wurtz
+        case "2825520992": // bandana dee (spam)
+        case "2134571731": // bandana dee (awesomealen)
+        case "1978869652": // bandana dee (tdude)
         case "2257303118": // uh...kaleb the shocking truth
         case "3297740928": // Mii Gunner
-        case "-": // 4 - Saelune
+        case "3308351120": // 4 - Saelune
         case "3115049167": // old saelukune i think
-        case "-": // Ciela
+        case "3382637663": // Ciela
+        case "3436597271": // Cocua
             icon = 2;
             break;
             
@@ -351,7 +387,8 @@ return quote
         case "3293338995": // Scoop
         case "2744601817": // Lognes
         case "2224867079": // Lognes Old
-        case "-": // 1 - Tomoko
+        case "3306584099": // 1 - Tomoko
+        case "2283888504": // Tempo
             icon = 3;
             break;
             
@@ -364,12 +401,13 @@ return quote
         case "2273636433": // "Melee" Dr. Mario
         case "2872758537": // SSL Dr. Mario
         case "3302238950": // Alexis
-        case "-": // Venus
+        case "3316053085": // Venus
             icon = 4;
             break;
             
         //6 - thinken halfeye
         case "3254404139": // Octobhert
+        case "3463541091": // Nonari
         case "-": // Lumi
             icon = 5;
             break;
@@ -378,7 +416,8 @@ return quote
         case "3139910068": // Gema
         case "2504071554": // Mira
         case "2605468610": // Exetior
-        case "-": // 2 - Sarolyn
+        case "3307368173": // 2 - Sarolyn
+        case "2648394023": // Glare
             icon = 6;
             break;
             
@@ -403,6 +442,9 @@ return quote
         case "2817605804": // Jerma
         case "2929660722": // I gotta shoutout meimay man who do you think I am
         case "3294402694": // meimay SSL
+        case "3415959265": // Saya
+        case "3304241490": // Saya
+        case "3346651920": // slenderman
         case "-": // 7 - Usher
             icon = 9;
             break;
@@ -413,6 +455,7 @@ return quote
         case "3079776883": // Kumaki
         case "3137114060": // Crest
         case "2606483115": // Galega
+        case "3479868625": // Kafka
             icon = 10;
             break;
             
@@ -423,7 +466,7 @@ return quote
             
         //13 - >:/ - upset serious
         case "2605462884": // Explorer
-        case "-": // Asra
+        case "3316054693": // Asra
             icon = 12;
             break;
             
@@ -431,6 +474,7 @@ return quote
         case "2396061657": // Callie
         case "2396053263": // Heartbrake
         case "3292951946": // Hex
+        case "3405748608": // One
             icon = 13;
             break;
             

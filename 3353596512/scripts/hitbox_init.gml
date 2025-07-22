@@ -31,6 +31,7 @@ if (attack == AT_FSPECIAL){
 //dspecial throw
 if (attack == AT_DSPECIAL_2){
     if (hbox_num == 1){
+    	player_id.small_scrap_obj = self;
         image_index = player_id.current_scrap.index;
         proj_scrap_id = player_id.current_scrap;
         made_hit_sfx = false;

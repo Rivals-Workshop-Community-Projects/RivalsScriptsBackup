@@ -349,6 +349,8 @@ jeb_cooldown = 0;
 hit_by_jeb = false;
 scrap_lifetime = 0;
 
+small_scrap_obj = noone;
+
 bees_destroyed = hit_fx_create(sprite_get("bees_destroyed"), 12);
 not_the_bees = noone;
 

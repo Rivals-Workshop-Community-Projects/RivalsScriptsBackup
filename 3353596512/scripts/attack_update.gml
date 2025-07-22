@@ -674,7 +674,7 @@ switch(attack)
     			if (!has_scrap){
     				scrap_found_timer = 0;
     				current_scrap = available_scrap[random_func(7, array_length(available_scrap), true)];
-    				//current_scrap = available_scrap[30]; //debug thing
+    				//current_scrap = available_scrap[9]; //debug thing
     				prev_scrap = current_scrap;
     				scrap_visual_dir = spr_dir;
 

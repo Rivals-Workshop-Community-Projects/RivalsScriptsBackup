@@ -29,7 +29,7 @@ if (cur_x>button_x && cur_x<button_x_BR && cur_y>button_y && cur_y<button_y_BR){
 		if (button_cooldown==0){
 			//print("local var PRE is : "+string(var_localstorage))
 			var_localstorage++;
-			if (var_localstorage>2){
+			if (var_localstorage>3){
 				var_localstorage = 0
 			}
 			reset_color_list = true;
@@ -71,10 +71,10 @@ if (cur_x>button_x && cur_x<button_x_BR && cur_y>button_y && cur_y<button_y_BR){
 		}
 	}else if (e_buffer == 5){
 		//print("mhm")
-		if (menu_y_pressed && get_player_color(player)==0 && var_localstorage==2){
+		if (menu_y_pressed && get_player_color(player)==0 && var_localstorage==3){
 			if (button_cooldown==0){
 				//print("local var PRE is : "+string(var_localstorage))
-					var_localstorage = 3;
+					var_localstorage = 4;
 				reset_color_list = true;
 				sound_stop(sound_get("gui_accept"))
 				sound_stop(sound_get("gui_start"))

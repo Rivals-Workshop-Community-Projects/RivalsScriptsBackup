@@ -70,13 +70,13 @@ set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
 
 //umbrella close GROUND
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH, 7);
-set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 2);
 
 //umbrella close AIR
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_USPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_USPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 2);
 
 

@@ -1,6 +1,13 @@
 //hitbox_update
 
 if (attack==AT_NSPECIAL){
+	if(variable_instance_exists(id, "ice_hsp_b")){
+		if(ice_hsp_b != -4){
+			ice_hsp = ice_hsp_b;
+			ice_vsp = ice_vsp_b;
+			ice_hsp_b = -4;
+		}
+	}
 	hsp = ice_hsp
 	vsp = ice_vsp
 	ice_vsp = ice_vsp + ice_grav
@@ -14,6 +21,9 @@ if (attack==AT_NSPECIAL){
 		}
 		vsp = ice_vsp;
 		sound_play(asset_get("sfx_ice_chain"),false,noone,1,1.4);
+	}
+	if (hitbox_timer%4==0){
+		spawn_hit_fx(x, y, fx_icepart)
 	}
 	
 }

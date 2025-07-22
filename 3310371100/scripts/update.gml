@@ -3,6 +3,56 @@
 if (awake == false){
 	awake = true;
 	instance_create( x, y, "obj_article2" );
+	switch (current_time%10){
+		case 0:
+			ushr_victory_quote = "Why did that Me want to fight me!? Did I do something...? Was it my fault...??"
+			victoryicon_subimg = 9;
+		break;
+		case 1:
+			ushr_victory_quote = "Sun shine or rain fall, I'm always here!"
+			victoryicon_subimg = 2;
+		break;
+		case 2:
+			ushr_victory_quote = "Clouds can cover the sky, but it doesn't have to rain forever!"
+			victoryicon_subimg = 3;
+		break;
+		case 3:
+			ushr_victory_quote = "Fighting myself, is this like a normal thing in this world? So odd..."
+			victoryicon_subimg = 4;
+		break;
+		case 4:
+			ushr_victory_quote = "So if you're me, should I call you me, or - ah, nevermind."
+			victoryicon_subimg = 4;
+		break;
+		case 5:
+			ushr_victory_quote = "Snow melts to nothing, but rain dries away too. Enjoy them while they last!"
+			victoryicon_subimg = 3;
+		break;
+		case 6:
+			ushr_victory_quote = "Don't look down, look up at the sky! Well, do watch your step, of course."
+			victoryicon_subimg = 1;
+		break;
+		case 7:
+			ushr_victory_quote = "Don't forget to drink plenty of water!"
+			victoryicon_subimg = 0;
+		break;
+		case 8:
+			ushr_victory_quote = "Puddles reflect the sky, maybe they're looking at the sky like we do."
+			victoryicon_subimg = 0;
+		break;
+		case 9:
+			ushr_victory_quote = "Pluey?"
+			victoryicon_subimg = 6;
+		break;
+		case 10:
+		case 11:
+		case 12:
+			ushr_victory_quote = "I guess this was truly the experience of a contemporary guardian angel?"
+			victoryicon_subimg = 0;
+		break;
+		
+		default: break;
+	}
 }
 
 if (state == PS_HITSTUN){
@@ -91,7 +141,8 @@ if (state==PS_DASH_TURN){
 			hsp = hsp*tmp_hsp_mult;
 			spawn_base_dust(x-(14*spr_dir), y, "dash_start")
 			spawn_base_dust(x, y, "dash")
-			sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			//sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			sound_play(sound_get("ting"),false,noone,0.5,1.5)
 			var tmp_hfx = spawn_hit_fx(x-(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
 		}
@@ -100,7 +151,8 @@ if (state==PS_DASH_TURN){
 			x = x+(hsp*tmp_x_mult);
 			hsp = hsp*tmp_hsp_mult;
 			spawn_base_dust(x-(28*spr_dir), y, "dash", 1)
-			sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			//sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			sound_play(sound_get("ting"),false,noone,0.5,1.5)
 			var tmp_hfx = spawn_hit_fx(x-(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
 		}
@@ -112,7 +164,8 @@ if (state==PS_DASH_TURN){
 			hsp = hsp*tmp_hsp_mult;
 			spawn_base_dust(x-(14*spr_dir), y, "dash_start")
 			spawn_base_dust(x, y, "dash")
-			sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			//sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			sound_play(sound_get("ting"),false,noone,0.5,1.5)
 			var tmp_hfx = spawn_hit_fx(x-(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
 		}
@@ -121,7 +174,8 @@ if (state==PS_DASH_TURN){
 			x = x+(hsp*tmp_x_mult);
 			hsp = hsp*tmp_hsp_mult;
 			spawn_base_dust(x-(28*spr_dir), y, "dash", -1)
-			sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			//sound_play(asset_get("mfx_star"),false,noone,0.4,1.3)
+			sound_play(sound_get("ting"),false,noone,0.5,1.5)
 			var tmp_hfx = spawn_hit_fx(x-(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
 		}
@@ -140,6 +194,13 @@ if (fsp_did){
 	if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP){
 		fsp_did = false;
 		move_cooldown[AT_FSPECIAL] = 0;
+	}
+}
+if (dsp_did){
+	move_cooldown[AT_DSPECIAL_2] = 2;
+	if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP){
+		dsp_did = false;
+		move_cooldown[AT_DSPECIAL_2] = 0;
 	}
 }
 
@@ -204,15 +265,23 @@ if (get_synced_var( player )==2){//C
 		init_shader();
 	}
 }
-if (get_synced_var( player )==3){//D??
+if (get_synced_var( player )==3){//D
+	if (get_player_color( player ) == 1){//sorbet
+		init_shader();
+	}
+	if (get_player_color( player ) == 10){//asayzll
+		mightyfallen = true;
+	}
+}
+if (get_synced_var( player )==4){//EXTRA??
+	if (get_player_color( player ) == 0){//PSASBR
+		madeonfinale = true;
+	}
 	if (get_player_color( player ) == 1){//ultragenesis
 		//print("yeah?")
 		init_shader();
 	}
 	if (get_player_color( player ) == 2){//champion
-		init_shader();
-	}
-	if (get_player_color( player ) == 7){//sorbet
 		init_shader();
 	}
 	if (get_player_color( player ) == 8){//grid
@@ -221,7 +290,19 @@ if (get_synced_var( player )==3){//D??
 	if (get_player_color( player ) == 10){//hymn
 		init_shader();
 	}
+	if (get_player_color( player ) == 11){//hymn
+		init_shader();
+	}
 }
+
+if (state==PS_DASH){
+	//print(string(stamina));
+	stamina--;
+	if (stamina<=0){
+		dash_speed = dash_speed_tire;
+		dash_anim_speed = dash_anim_speed_tire;
+	}
+}else{stamina=stamina_max; dash_speed=dash_speed_normal; dash_anim_speed=dash_anim_speed_normal;}
 
 //kinda runestuff
 

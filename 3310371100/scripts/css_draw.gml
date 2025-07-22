@@ -28,20 +28,25 @@ if (var_localstorage==0){//A
 		default: break;
 	}
 }
-if (var_localstorage==3){//D???
+if (var_localstorage==3){//D
+	switch(get_player_color( player )){
+		case 1://great riptide icon by reiga its open source its free
+		draw_sprite_ext(sprite_get("z_css_icons"),10,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		case 2:
+		case 3:
+		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		default: break;
+	}
+}
+if (var_localstorage==4){//EXTRA???
 	switch(get_player_color( player )){
 		case 1:
 		draw_sprite_ext(sprite_get("z_css_icons"),9,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 2:
 		draw_sprite_ext(sprite_get("z_css_icons"),4,x+icon_x,y+icon_y,2,2,0,-1,1);
-		break;
-		case 3:
-		case 4:
-		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
-		break;
-		case 7://great riptide icon by reiga its open source its free
-		draw_sprite_ext(sprite_get("z_css_icons"),10,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 8:
 		draw_sprite_ext(sprite_get("z_css_icons"),2,x+icon_x,y+icon_y,2,2,0,-1,1);
@@ -278,7 +283,7 @@ if (reset_color_list == true){
 	ce[8,0] = make_color_rgb(242, 123, 32)
 	ce[8,1] = "Clockwork Fate"
 	ce[9,0] = make_color_rgb(133, 127, 227)
-	ce[9,1] = "Bell Lily"
+	ce[9,1] = "Bell Toll of the Lily"
 	ce[10,0] = make_color_rgb(89, 82, 138)
 	ce[10,1] = "Frozen Armory"
 	ce[11,0] = make_color_rgb(47, 222, 150)
@@ -286,7 +291,7 @@ if (reset_color_list == true){
 	ce[12,0] = make_color_rgb(248, 247, 255)
 	ce[12,1] = "Windrose"
 	ce[13,0] = make_color_rgb(240, 96, 102)
-	ce[13,1] = "Raincoat Red"
+	ce[13,1] = "Raincoat Poppy"
 	ce[14,0] = make_color_rgb(189, 64, 78)
 	ce[14,1] = "Syndrome"
 	ce[15,0] = make_color_rgb(79, 104, 214)
@@ -300,21 +305,61 @@ if (reset_color_list == true){
 	
 	if (var_localstorage == 3){
 	ce[0,0] = make_color_rgb(71, 112, 99)
-	ce[0,1] = "Did you just find a secret palette set"
+	ce[0,1] = "Usher : D"
+	ce[1,0] = make_color_rgb(255, 213, 0)
+	ce[1,1] = "Sorbet ~ Riptide"
+	ce[2,0] = make_color_rgb(51, 255, 242)
+	ce[2,1] = "Infamous"
+	ce[3,0] = make_color_rgb(124, 135, 135)
+	ce[3,1] = "Steampunk"
+	ce[4,0] = make_color_rgb(176, 80, 74)
+	ce[4,1] = "Ashveil"
+	ce[5,0] = make_color_rgb(154, 117, 191)
+	ce[5,1] = "Dilemma"
+	ce[6,0] = make_color_rgb(64, 76, 247)
+	ce[6,1] = "Cora Overwater"
+	ce[7,0] = make_color_rgb(146, 255, 51)
+	ce[7,1] = "Heartbeat of Havoc"
+	ce[8,0] = make_color_rgb(158, 43, 43)
+	ce[8,1] = "For The Flowers"
+	ce[9,0] = make_color_rgb(151, 199, 48)
+	ce[9,1] = "Hometown's Heart"
+	ce[10,0] = make_color_rgb(255, 133, 33)
+	ce[10,1] = "Godspeed You!"
+	ce[11,0] = make_color_rgb(48, 179, 129)
+	ce[11,1] = "Otherside"
+	ce[12,0] = make_color_rgb(154, 250, 175)
+	ce[12,1] = "Supermint"
+	ce[13,0] = make_color_rgb(104, 130, 65)
+	ce[13,1] = "Tealeaf"
+	ce[14,0] = make_color_rgb(207, 146, 66)
+	ce[14,1] = "Teapack"
+	ce[15,0] = make_color_rgb(165, 207, 182)
+	ce[15,1] = "A Written Song"
+	ce[16,0] = make_color_rgb(156, 122, 112)
+	ce[16,1] = "Forlorn Egodeth"
+	ce[17,0] = make_color_rgb(154, 0, 179)
+	ce[17,1] = "ACronym: E"
+	}
+	//--------------------------------------------
+	
+	if (var_localstorage == 4){
+	ce[0,0] = make_color_rgb(0, 255, 146)
+	ce[0,1] = "Usher : E ~ PSASBR"
 	ce[1,0] = make_color_rgb(255, 77, 77)
 	ce[1,1] = "GENESIS: BEYOND"
 	ce[2,0] = make_color_rgb(209, 255, 237)
 	ce[2,1] = "Champion"
-	ce[3,0] = make_color_rgb(51, 255, 242)
-	ce[3,1] = "Infamous"
-	ce[4,0] = make_color_rgb(124, 135, 135)
-	ce[4,1] = "Steampunk"
-	ce[5,0] = make_color_rgb(176, 80, 74)
-	ce[5,1] = "Ashveil"
-	ce[6,0] = make_color_rgb(154, 117, 191)
-	ce[6,1] = "Dilemma"
-	ce[7,0] = make_color_rgb(255, 213, 0)
-	ce[7,1] = "Sorbet"
+	ce[3,0] = make_color_rgb(179, 181, 255)
+	ce[3,1] = "Klein Bottle"
+	ce[4,0] = make_color_rgb(48, 232, 240)
+	ce[4,1] = "Wish..."
+	ce[5,0] = make_color_rgb(255, 80, 74)
+	ce[5,1] = "Wish Sunset"
+	ce[6,0] = make_color_rgb(162, 191, 185)
+	ce[6,1] = "Steel Bamboo"
+	ce[7,0] = make_color_rgb(255, 94, 18)
+	ce[7,1] = "Scarlet like Cinnabar Fire"
 	ce[8,0] = make_color_rgb(184, 186, 219)
 	ce[8,1] = "Grid"
 	switch(get_match_setting( SET_SEASON )){
@@ -337,8 +382,8 @@ if (reset_color_list == true){
 	}
 	ce[10,0] = make_color_rgb(0, 255, 123)
 	ce[10,1] = "Hymn"
-	ce[11,0] = make_color_rgb(128, 0, 128)
-	ce[11,1] = "---"
+	ce[11,0] = make_color_rgb(242, 255, 245)
+	ce[11,1] = "it's the end of all things"
 	ce[12,0] = make_color_rgb(128, 0, 128)
 	ce[12,1] = "---"
 	ce[13,0] = make_color_rgb(128, 0, 128)
@@ -431,13 +476,13 @@ textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 100
 //the other ui stuff
 shader_end()
 
-draw_sprite_ext(sprite_get("aaa_vernum"),0,x+180,y+98,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),0,x+180,y+48,2,2,0,-1,1);
 
 
 var buttonloc_x = 14;//166
 var buttonloc_y = 44;//38
 draw_sprite_ext(sprite_get("z_cssthing"),var_localstorage,x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1);
-if (button_hover){ draw_sprite_ext(sprite_get("z_cssthing"),3,x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1); }
+if (button_hover){ draw_sprite_ext(sprite_get("z_cssthing"),5,x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1); }
 
 //textDraw(temp_x + 20, temp_y + 114, "fName", c_orange, 0, 1000, 1, true, 1, "--USHER BETA v.RC2----");
 

@@ -8,6 +8,10 @@ if (get_match_setting(SET_PRACTICE) == true){
     }
 }
 
+if (creature_timer < 300 && scanned_creature){
+    draw_sprite_ext(sprite_get("newcreature"), creature_index, 328, 42, 2, 2, 0, c_white, creature_alpha);
+}
+
 draw_sprite_ext(sprite_get("hud_quota"), 0, temp_x - 2, temp_y - 60, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_inv_tools"), hud_anim_timer/3, temp_x + 116, temp_y - 52, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_inv_scrap"), hud_scrap_box_index, temp_x + 78, temp_y - 62, 2, 2, 0, c_white, 1);

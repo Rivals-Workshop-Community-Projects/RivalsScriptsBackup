@@ -5,10 +5,21 @@ if (!init){
 	sound_play(asset_get("sfx_orca_snow_mouth"), false, noone, 0.6, 1.3)
 	init = true;
 }
+player_id.raincloud_present = true;
 
 //testy
-x = applied_player_id.x+applied_player_id.hsp;
-y = applied_player_id.y+applied_player_id.vsp;
+if (applied_player_id != -4){
+	x = applied_player_id.x+applied_player_id.hsp;
+	y = applied_player_id.y+applied_player_id.vsp;
+}
+
+//hsp = hsp-(cloud_air_friction*sign(hsp));
+//vsp = vsp-(cloud_air_friction*sign(vsp));
+hsp = hsp*cloud_air_friction_mult;
+vsp = vsp*cloud_air_friction_mult;
+if (ice_timer==0){
+vsp += -0.035;
+}
 
 //distance calculator
 var max_rain_dist = room_height;
@@ -23,33 +34,54 @@ if (collision_line(x, y, x, y+room_height, asset_get("par_block"), false, false)
 
 
 
-var testa = applied_player_id.ushr_rainclouded_timer / applied_player_id.ushr_rainclouded_timer_max
+//var testa = ushr_rainclouded_timer / ushr_rainclouded_timer_max
+var testa = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_rainclouded_timer_max )/100;
 //print("test test = "+string(testa))
-var tmp_width = 100*testa;
-var appl_player_num = applied_player_id.player;
+//var tmp_width = 100*testa;
+var tmp_width = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_rainclouded_timer_max );
+//var appl_player_num = applied_player_id.player;
 //print("playernumber = "+string(appl_player_num));
 if (is_iced == false){
 	if (rain_bottom_dist>3){
 	with(pHitBox){
 		if (variable_instance_exists(player_id, "nurburgring_24h_endurance")){//unique identifier for usher ~~hitboxes~~
 			//print("nurburgring...detected : attack="+string(attack))
-			if ( attack==AT_NSPECIAL || attack==AT_FSTRONG || (attack==AT_FSPECIAL && hbox_num==3) ){
+			if ( attack==AT_NSPECIAL || attack==AT_FSTRONG || (attack==AT_FSPECIAL && hbox_num==3) || (attack==AT_FSPECIAL_2 && hbox_num==3 && other.ushr_rainclouded_timer < other.ushr_rainclouded_timer_max-20) ){
 				//print("hitbox...detected")
-				if (can_hit[appl_player_num] == true){
+				//if (can_hit[appl_player_num] == true){
 					//print("can_hit...detected")
 					if (player_id.move_is_fresh == true){
 						if (collision_rectangle(other.x-round(tmp_width/2), other.y, other.x+round(tmp_width/2), other.y+other.rain_bottom_dist, id, true, false)){//this is the collision box
 							//print("collision...detected")
+							if (reflected==false){
 							other.is_iced = true;
 							other.ice_attacktrack = attack;
-							can_hit[appl_player_num] = false;
+							//can_hit[appl_player_num] = false;
 							other.stored_spr_dir = spr_dir;
+							other.stored_spin_state = player_id.fsp_loop_count_storage;
 							spawn_hit_fx( x, y, hit_effect ) 
+							other.ice_hbox_owner_id = player_id; //hopefully this is usher
 							destroyed = true;
+							}
 						}
 					}
-				}
+				//}
 			}
+			if ( attack==AT_DSPECIAL_2 ){//bouncy
+				if (player_id.move_is_fresh == true){
+					if (collision_circle(other.x, other.y-30, 30, id, true, false)){//this is the collision box
+						//print("collision...detected")
+						spawn_hit_fx( x, y, hit_effect );
+						player_id.move_is_fresh = false;
+						player_id.has_hit = true;
+						other.vsp = 3;
+						sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.8,1);
+						player_id.vsp = clamp(player_id.vsp,-5,-2)-8;
+						sound_play(sound_get("bounce"),false,noone,1,1)
+						sound_play(sound_get("bounce2"),false,noone,0.9,1.2)
+					}
+				}
+			}//hbcheck
 		}
 	}
 	}
@@ -57,11 +89,20 @@ if (is_iced == false){
 
 if (is_iced == true){//iced timer is just mostly for visuals, also acts as cooldown though
 	if (ice_timer==0){//put hitbox here n whatever timer 0 stuff is
-		if (ice_attacktrack==AT_FSTRONG){
-			var hboxthing = create_hitbox( AT_DSPECIAL, 4, applied_player_id.x, applied_player_id.y )
-		}else{//if nspecial and fspecial2
-			var hboxthing = create_hitbox( AT_DSPECIAL, 3, applied_player_id.x, applied_player_id.y )
+		//print(string(ice_hbox_owner_id))
+		with(ice_hbox_owner_id){
+			//print("am i oplayer?")
+			if (other.ice_attacktrack==AT_FSTRONG || (other.ice_attacktrack==AT_FSPECIAL_2 && other.stored_spin_state==8)){
+				//print("it goes")
+				var hboxthing = create_hitbox( AT_DSPECIAL, 4, other.x, other.y+round(other.rain_bottom_dist/2) )
+			}else{//if nspecial and fspecial2
+				var hboxthing = create_hitbox( AT_DSPECIAL, 3, other.x, other.y+round(other.rain_bottom_dist/2) )
+			}
 		}
+		hboxthing.image_xscale = (tmp_width/200);
+		hboxthing.image_yscale = (rain_bottom_dist/200);
+		//hboxthing.image_xscale = (tmp_width)/2;
+		//hboxthing.image_yscale = (rain_bottom_dist/200)/2;
 		hboxthing.spr_dir = stored_spr_dir;
 		hboxthing.ice_checkcheck = ice_attacktrack;
 			
@@ -69,13 +110,17 @@ if (is_iced == true){//iced timer is just mostly for visuals, also acts as coold
 		sound_play(asset_get("sfx_ice_on_player"))
 		//applied_player_id.ushr_rainclouded_timer = clamp(applied_player_id.ushr_rainclouded_timer + (applied_player_id.ushr_rainclouded_timer/3), 0, applied_player_id.ushr_rainclouded_timer_max);//what a mouthful
 		
-		var reduction_amt = 55
-		applied_player_id.ushr_rainclouded_timer = clamp(applied_player_id.ushr_rainclouded_timer + (reduction_amt*ice_attacknum) - 10, 0, applied_player_id.ushr_rainclouded_timer_max);
+		var reduction_amt = ushr_rainclouded_timer_max/3 //55
+		ushr_rainclouded_timer_queue = clamp(ushr_rainclouded_timer - reduction_amt, 0, ushr_rainclouded_timer_max);
+		//ushr_rainclouded_timer = clamp(ushr_rainclouded_timer + (reduction_amt*ice_attacknum) - 10, 0, ushr_rainclouded_timer_max);
 		ice_timer++;
 		ice_attacknum--;
 	}
-	if (applied_player_id.hitpause == false){
+	//if (applied_player_id.hitpause == false){
 		ice_timer++;
+	//}
+	if (ice_timer >= ice_timer_max/2){
+		ushr_rainclouded_timer = ease_linear( round(ushr_rainclouded_timer), round(ushr_rainclouded_timer_queue), ice_timer-(ice_timer_max/2), ice_timer_max/2 );
 	}
 	if (ice_timer_max < ice_timer){
 		is_iced = false;
@@ -85,23 +130,38 @@ if (is_iced == true){//iced timer is just mostly for visuals, also acts as coold
 
 if (player_id.signalling_all_my_besties_i_have_been_PARRIED == true){
 	player_id.thanks_i_received_your_message_you_go_and_reset_now = true;
+/*if (applied_player_id != -4){
 	with (applied_player_id){ outline_color = [ 0, 0, 0 ]; init_shader(); };
 	applied_player_id.ushr_rainclouded = false;
+}
 	instance_destroy();
-	exit;
+	exit;*/
+	
+	ushr_rainclouded = false;
 }
 
 if (player_id.signalling_all_my_besties_i_have_been_HIT_by_this_player==applied_player_id){
 	player_id.thanks_i_received_your_message_you_go_and_reset_now = true;
+if (applied_player_id != -4){
 	applied_player_id.ushr_rainclouded_timer -= round(applied_player_id.ushr_rainclouded_timer_max/3);
+}
 	
 }
 
+if (ushr_rainclouded_timer<=0){
+	ushr_rainclouded = false;
+}
 
-if (applied_player_id.ushr_rainclouded == false){
+if (ushr_rainclouded == false){
 	sound_play(asset_get("sfx_orca_snow_mouth"), false, noone, 0.4, 1.7)
+					player_id.raincloud_present = false;
 	instance_destroy();
 	exit;
 }
+
+if (ice_timer==0){
+			ushr_rainclouded_timer--;
+}
+
 
 //uh...idk

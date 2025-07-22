@@ -72,12 +72,12 @@ switch (attack){
     			}
     			break;
     			case "Toy robot":
-    			if (curr_sfx == noone){
+    			if (curr_sfx == noone && !destroyed_effect){
 					curr_sfx = sound_play(sound_get("scrap_robot"), true, noone, 0.75, 1);
     			}
     			break;
     			case "Teeth":
-    			if (curr_sfx == noone){
+    			if (curr_sfx == noone && !destroyed_effect){
 					curr_sfx = sound_play(sound_get("scrap_teeth"), true, noone, 0.75, 1);
     			}
     			sprite_index = teeth_sprite;

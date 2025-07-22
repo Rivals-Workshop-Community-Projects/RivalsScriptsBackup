@@ -5,9 +5,11 @@ var closest = instance_nearest(x, y, asset_get("par_block"));
 	draw_debug_text( get_instance_x(closest), get_instance_y(closest), "BLOCK IS HERE BLOCK IS HERE" )
 */
 
-var testa = applied_player_id.ushr_rainclouded_timer / applied_player_id.ushr_rainclouded_timer_max
+//var testa = ushr_rainclouded_timer / ushr_rainclouded_timer_max
+var testa = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_rainclouded_timer_max )/100;
 //print("test test = "+string(testa))
-var tmp_width = 100*testa;
+//var tmp_width = 100*testa;
+var tmp_width = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_rainclouded_timer_max );
 
 
 
@@ -19,7 +21,7 @@ if (is_iced){
 var y_offset = 20;
 var scale_calc = rain_bottom_dist+y_offset
 //if (y-y_offset<player_id.cloud_y_limit){
-draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_calc, 0, -1, 0.4 )
+draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_calc, 0, -1, 0.4+((is_iced)?0.3:0) )
 //}
 
 //What
@@ -28,7 +30,7 @@ draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_
 shader_end();
 maskHeader();
 
-draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_calc, 0, -1, 0.5 )
+draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_calc, 0, -1, 1 )
 
 maskMidder();
 
@@ -57,7 +59,7 @@ maskFooter();
 
 
 
-draw_sprite_ext( sprite_get("raincloud"), 0+sign(icemode_i), x, y, 2, 2, 0, -1, 0.6 )
+draw_sprite_ext( sprite_get("raincloud"), 0+sign(icemode_i), x, y, 2, 2, 0, -1, 0.8 )
 //draw_sprite_ext( sprite_get("raincloud"), 0, x, y, 2, 2, 0, -1, 1 )
 
 //HITBOX

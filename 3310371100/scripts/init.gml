@@ -9,7 +9,9 @@ char_height = 52;
 idle_anim_speed = 0.09;
 crouch_anim_speed = 0.1;
 walk_anim_speed = 0.095;
-dash_anim_speed = 0.12;
+dash_anim_speed_normal = 0.26;
+dash_anim_speed_tire = 0.15;
+dash_anim_speed = dash_anim_speed_normal;
 pratfall_anim_speed = .25;
 
 walk_speed = 3.5;
@@ -17,7 +19,9 @@ walk_accel = 0.27;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 7;
-dash_speed = 5.75; //thats the same as kragg!
+dash_speed_normal = 6; //5.75
+dash_speed_tire = 4;
+dash_speed = dash_speed_normal; //5.75
 dash_turn_time = 14; //same as etalus
 dash_turn_accel = 1.25;
 dash_stop_time = 6;
@@ -31,9 +35,9 @@ jump_start_time = 5;
 jump_speed = 13;
 short_hop_speed = 8;
 djump_speed = 9.5;
-leave_ground_max = 3.75;//3.75 //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 3.75;//3.75 //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3.75;//3.75 //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 4;//3.75 //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 4;//3.75 //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4;//3.75 //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -63,9 +67,9 @@ wave_friction = 0.03; //0.03 //grounded deceleration when wavelanding
 wall_frames = 2;
 
 //crouch animation frames
-crouch_startup_frames = 1;
+crouch_startup_frames = 2;
 crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+crouch_recovery_frames = 2;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -125,11 +129,24 @@ crouch_max_patience = 4;
 dattack_speed_timer = 0;
 fspecial_speed_timer = 0;
 uspecial_speed_timer = 0;
+dspecial_speed_timer = 0;
 fsp_airstart = false;
 fsp_did = false;
+dsp_did = false;
+
+dsp_bounce_count = 0;
+fsp_loop_count = 0;
+fsp_loop_count_storage = 0;
+fsp_vulnerable = false;
+raincloud_present = false;
+dsp_hsp_store = 0;
+dsp_vsp_store = 0;
 
 move_start_spr_dir_tracker = 1;
 wow_wavebounce_happened = false;
+
+stamina_max = 120;
+stamina = stamina_max;
 
 //mawralgrab
 grabbed_player_obj = noone;    //the player object currently being grabbed.
@@ -148,6 +165,8 @@ nurburgring_24h_endurance = true; //true!
 signalling_all_my_besties_i_have_been_PARRIED = false;
 signalling_all_my_besties_i_have_been_HIT_by_this_player = -4;
 thanks_i_received_your_message_you_go_and_reset_now = false;
+madeonfinale = false;
+mightyfallen = false;
 
 //hfx_splash = hit_fx_create( sprite_get("splash"), 12 );//unused
 
@@ -184,8 +203,9 @@ knight_compat_dream =
         "Keep going..."
     ]
 mo_grab_x = 0; mo_grab_y = 0;
-mo_mindName = "Usher Evalate"; mo_mindAge = "18"; mo_mindGender = "Female"; mo_mindIdent = "Human";
+mo_mindName = "Usher Evalate"; mo_mindAge = "22"; mo_mindGender = "Female"; mo_mindIdent = "Human";
 mo_mindMessage = "What!?!?";
+sna_interrogated_line_01 = "Wha...!!?? Let me go!! I don't wanna...";
 greenwood_cheer = 1;
 //gwehhh so many sprite-based compats
 pot_compat_variable = sprite_get("etc_pogumbo"); pot_compat_text = "Chocolate Danish"
@@ -198,20 +218,27 @@ buddy_screenko_voice_sfx = sound_get("screen_ko");
 buddy_starko_sfx = sound_get("star_ko");
 neutralized_ability = "Ult. Jump Physics";
 koffing_gas_active=0;
+fx_ice_particle = hit_fx_create( sprite_get("ice_particle"), 8 );//6
 fx_ashe_trail = hit_fx_create(sprite_get("etc_ashe_trail"), 20);
 
 //victory quote thing - sscripts are unload.gml and results_post_draw.gml - scripts are taken from reiga mal but is from frtoud hypercam
-ushr_victory_quote = "Why did that Me want to fight me!? Or was it my fault...? Did I do something...??";
+ushr_victory_quote = "-4";
 ushr_handled_victory_quote = false;
 victoryicon_subimg = 0;
 
 
 //i dont have munobird i hope this works
-AG_MUNO_ATTACK_NAME = 82;
+/*AG_MUNO_ATTACK_NAME = 82;
 AG_MUNO_ATTACK_MISC_ADD = 87;
 HG_MUNO_HITBOX_NAME = 81;
-HG_MUNO_HITBOX_MISC_ADD = 92;
+HG_MUNO_HITBOX_MISC_ADD = 92;*/
 
+AG_MUNO_ATTACK_NAME = 80+1
+AG_MUNO_ATTACK_MISC = 80+5
+AG_MUNO_ATTACK_MISC_ADD = 80+6
+AG_MUNO_WINDOW_EXCLUDE = 80+7 // 0: include window in timeline (default)    1: exclude window from timeline    2: exclude window from timeline, only for the on-hit time    3: exclude window from timeline, only for the on-whiff time
+HG_MUNO_HITBOX_NAME = 80+1
+HG_MUNO_HITBOX_MISC_ADD = 80+12
 
 
 

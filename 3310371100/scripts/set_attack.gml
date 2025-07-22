@@ -13,12 +13,23 @@ if ( attack == AT_FSPECIAL ){
 		fsp_airstart = false;
 	}
 }
+if ( attack == AT_NSPECIAL ){
+	if (!free){
+		attack = AT_NSPECIAL_2
+	}
+}
+if ( attack == AT_FSPECIAL ){
+	attack = AT_FSPECIAL_2
+}
+if ( attack == AT_DSPECIAL ){
+	attack = AT_DSPECIAL_2
+}
 
 move_start_spr_dir_tracker = spr_dir;
 wow_wavebounce_happened = false;
 dsp_hit = false;
 move_is_fresh = true;
 the_parried_ice = 0;
-if ( attack == AT_TAUNT ){
-	print(string(get_match_setting( SET_SEASON )))
-}
+//if ( attack == AT_TAUNT ){
+//	print(string(get_match_setting( SET_SEASON )))
+//}

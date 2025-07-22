@@ -5,6 +5,17 @@ if (state==PS_RESPAWN || (state==PS_ATTACK_GROUND && free && attack==AT_TAUNT)){
 	draw_sprite_ext( sprite_get("plat_grnd"), 0, x, y, 1, 1, 0, -1, 1 ) 
 }
 
+if (state==PS_ATTACK_GROUND && attack==AT_NSPECIAL_2){
+	if (window==3||window==4){
+	var pull_to_x = 28 * spr_dir;
+	var pull_to_y = -56+(10*((window==4)?1:0));
+	//grabbed_player_obj.x = x + pull_to_x + (10 * spr_dir) + (sin( get_gameplay_time()*0.8 )*4)
+	//grabbed_player_obj.y = y + pull_to_y - 10 + (sin( get_gameplay_time()*0.8 )*1)
+	var tmp_x = x + pull_to_x + (10 * spr_dir) + (sin( get_gameplay_time()*0.7 )*10)
+	var tmp_y = y + pull_to_y - 10 + (sin( get_gameplay_time()*0.8 )*5)
+	draw_sprite_ext( sprite_get("nspecial_ice"), get_gameplay_time()/4, tmp_x, tmp_y, 1, 1, 0, -1, 1 )
+	}
+}
 
 
 //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
@@ -31,6 +42,89 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
+		
+		
+		patch_note_title[i] = "v3.2 - (2025/07/21)"
+		patch_note_text[i++] = 
+		"===v3.2===
+		---balancing??---
+		-- UTILT ... 2nd hitbox active frame shorter by 1 frame at the end, it matches the animation now
+		---fixes---
+		-- DASH ... just found out theres been a miscolored part that used the eye color in place of green like. this whole time. fixed that"
+		
+		
+		patch_note_title[i] = "v3.1 - (2025/07/21)"
+		patch_note_text[i++] = 
+		"===v3.1===
+		---additions---
+		:: new hud element to indicate FSPECIAL spin charge state
+
+		---fixes---
+		:: fixed an issue where in an usher ditto match, the ice hitbox from the rainclouds frozen by usher, belongs to the usher who made the raincloud
+		:: fixed the issue of fully charged FSPECIAL still shooting out the raincloud even when it's parried.
+		:: fixed how FSPECIAL spin charge amount was not reset upon getting KO'd.
+		:: fixed some results screen things. i added some ditto stuff too while im at it.
+		:: added some extra data for munobird because everyone keeps complaining about it on all of my characters. can you guys please like stop speaking in numbers i speak in windows. like i'm seriously like begging you please. i don't know what exact frame the hitbox spawns. i don't know where to where the endlag duration is, not to mention the whifflag. hitbox spawns on window 2 and everything from there is endlag. seriously please stop i'm crying
+		:: in specific, IASA windows are now excluded from the endlag.
+		:: some extra notes that were actually there before is now present because i fixed the attack index id number. i had it wrong before.
+
+		---balancing??---
+		++ NSPECIAL-GROUNDED ... hitbox lifetime for this move is different from NSPECIAL-AIR, but it is now even longer a bit. (80 -> 100 frames)
+		++ FSPECIAL ... spin charge scaling for the hitboxes are stronger for knockback growth. as of v3.1, damage max is 11, bkb max is 8.10, kbg max is 0.85.
+		++ DSPECIAL ... EXPERIMENTAL: it can now be exited-out-of early if you land on ground && you are not holding SPECIAL.
+		-- FSPECIAL ... recoil velocity no longer applies when you were parried.
+		-- FSPECIAL ... 1st spin when starting charge no longer charges 
+
+		---notes---
+		early bugfixes and tweaks. looks like ive missed a bunch a stuff.
+		not gonna make any more changes for the time being, let things sit a little bit for the early days
+		open for inputs!"
+		
+		
+		patch_note_title[i] = "v3.0 - (2025/07/20)"
+		patch_note_text[i++] = 
+		"===v3.0===
+		:: ''version 2.0'' is overdone so it's version 3.0 now. Yeah that's the only reason.
+
+		---ameliorations---
+		:: every single animation has been touched up!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! every single one!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		:: new portrait!
+
+		---additions---
+		:: new jab animation! that means new hitbox size and new frame data
+		:: new dattack animation! taller, but less distance.
+		:: completely new dtilt!
+		:: new nspecial-ground! a re-purposing of old dspecial throw animation, she throws the ice ball up high with the umbrella. it's slightly slower to start than nspecial-air.
+		:: completely new dspecial! a forward leap riding the umbrella. it can be held and you bounce on grounds, and with the hitbox you can bounce on opponents too! only once though cause i couldnt figure it out
+		:::: after a bit, you can go out of it by releasing special, pressing parry, or pressing jump. around the same time, you'll be able to fastfall too.
+		:::: that means you don't have a raincloud throw anymore, but it has been moved to...
+		:: new fspecial! a chargeable umbrella blast with a recoil that scales with how much you charged. it's interestingly versatile, maybe?? hopefully???
+		:::: and as a bonus, when it's fully charged, it shoots out the raincloud, on its own, not attached to a player. you can interact with it the same way you've always done, but it doesn't follow the opponent anymore!!
+		:::: you can also bounce on it with dspecial. only once though cause i couldnt figure it out
+		:: new taunt!
+		:: ALT COLORS ... Palette Set D is now available. re-includes some fan favorites like the Sorbet alt!
+
+		---changes---
+		:: ALT COLORS ... like 95% of the alt colors had their shading strength value tweaked.
+		:: ALT COLORS ... alt color Overcast has been tweaked to be hopefully more interesting than just a straight up a mash of grey colors, similarly for alt color Lens too
+		:: ALT COLORS ... Dreaming Starburst alt has a new mask texture thanks to Reiga! it also no longer does the attack pattern fade thing.
+		:: UTILT ... hitbox location and size has been tweaked in accordance to the new animation.
+		:: NAIR1 ... early and late hitbox values are now swapped, along with some tweaks.
+		:: USPECIAL ... umbrella float has directional input sprites now
+		:: RAINCLOUD ... the width of the rain area now utilizes Easing, and it is now wider for longer
+
+		---balancing??---
+		== NAIR1 ... stronger hitbox is now weaker
+		++ STATS ... run speed increased. (5.75 -> 6)
+		++ STATS ... max air speed increased. (3.75 -> 4)
+		++ NAIR2 ... early hitbox is now taller. (48 -> 58)
+		++ USTRONG ... middle hitbox shape is now a rounded rectangle, and it is also taller.
+		:::: this way should be able to hit platforms a bit more easier. it was either this or make it unable to
+		-- no nerfs?
+
+		---notes---
+		now that the worst parts of her is done and gone, let me know any feedback to nerf her if necessary.
+		open for inputs! as i always say."
 		
 		
 		patch_note_title[i] = "v1.9 - (2024/10/01)"
