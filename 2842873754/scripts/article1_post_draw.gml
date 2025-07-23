@@ -1,6 +1,6 @@
 //Gordo color change
 with (player_id) {
-    draw_sprite_ext(sprite_get("gordo_white"), other.image_index, other.x, other.y, other.image_xscale * other.spr_dir, other.image_yscale, other.image_angle, get_player_hud_color(other.owned_player), other.image_alpha)
+    draw_sprite_ext(sprite_get("gordo_white"), other.image_index, other.x, other.y, other.image_xscale * other.spr_dir, other.image_yscale, other.image_angle, get_player_hud_color(other.reflect_player), other.image_alpha)
 }
 
 // OFFSCREEN

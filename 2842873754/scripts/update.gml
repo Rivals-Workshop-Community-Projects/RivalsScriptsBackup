@@ -1,7 +1,53 @@
 //Mask logic
 
-if (get_gameplay_time() <= 2 && shield_pressed) {
-    masked = true;
+if (get_gameplay_time() <= 2) {
+    masked = shield_down;
+	var page = 0;
+    if (!masked) {
+    	page = 0;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "Now, when I said I needed a monster...";
+		page++;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "I didn't think it'd come from someone like... you!";
+		page++;
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "Monster? You must be mistaken. My army isn't for hire by mere mortals. Now hurry along back to your planet, penguin.";
+		page++;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "I came all the way here just for this?? C'mon, there's something we could work out-";
+		page++;
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "You dare defy me?[glass] If you aren't afraid to die, face me like a true king!";
+		page++;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "Alright you old coot! It's time to show you...";
+		page++;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "[taunt]";
+		page++;
+		dracula_speaker[page] = 2;
+		dracula_text[page] = "The power of the Dedede Hammer!";
+		page++;
+    }
+    else {
+    	page = 0;
+		dracula_speaker[page] = 2;
+		dracula_text[page] = "Die monster! You don't belong in this world!";
+		page++;
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "Looks like we got ourselves a joker! Reveal yourself, before I smite you here and now.";
+		page++;
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "[taunt]";
+		page++;
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "You're standing right before King Dedede, comin' atcha!";
+		page++;
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "I like this...[glass]Let the battle of the kings commence!";
+		page++;
+    }
 }
 
 if (masked == !mask_on) {
@@ -15,6 +61,32 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
     }
 }
 current_sprite_set = masked ? 1 : 0;
+
+//Drac special compatability
+var in_dracula = false;
+if (instance_exists(obj_stage_article)) {
+	with (obj_stage_article) {
+		if (num == 6 && ("char_name" in self) && ("sprite_name" in self)) {
+			if (char_name == "Dracula" && sprite_name == "dracula1") {
+				in_dracula = true;
+			}
+		}
+		
+	}
+}
+if (in_dracula) {
+	if ("textbox_taunting" in obj_stage_main) {
+		if (obj_stage_main.textbox_taunting && state == PS_ATTACK_GROUND && attack == AT_TAUNT) {
+		    attack = AT_TAUNT_2;
+		    if (!masked)
+		        window = 1;
+		    else
+		        window = 4;
+		}
+	}
+}
+
+
 //Suck effect
 
 with (hit_fx_obj) {

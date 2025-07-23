@@ -18,6 +18,7 @@ else {
     }
 }
 
+
 //NAIR layer
 if (my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num == 1) {
 	sound_play(sound_get("sfx_dedede_nair_hit"));
@@ -110,17 +111,20 @@ if (my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitbox
 }
 
 //Hitting gordos
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 1) {
-	if (("owner" in my_hitboxID) && id == my_hitboxID.owner.player_id) {
-	    if (my_hitboxID.owner.state == 0) {
-    		if (hit_player_obj.player != my_hitboxID.owner.owned_player) {
-    			with (my_hitboxID.owner) {
-    				hsp = 0.5 * hsp * (other.hit_player_obj.x < x ? -1 : 1)
-    		        if (vsp > 0)
-    		            vsp = -bounce_speed;
-    		        hitstop = other.hit_player_obj.hitstop;
-    			}
-    	    }
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 3) {
+ if (instance_exists(my_hitboxID.owner)) {
+	    var _activate = true;
+	    with (pHitBox) {
+	        if (type == 1 && player_id == other.hit_player_obj) {
+	            if (place_meeting(x, y, other.my_hitboxID))
+	            _activate = false;
+	        }
+	    }
+	    if (_activate && my_hitboxID.owner.state == 0) {
+		   my_hitboxID.owner.old_hsp = -my_hitboxID.owner.old_hsp * 0.5;
+		   my_hitboxID.owner.old_vsp = -abs(my_hitboxID.owner.old_vsp * 0.5);
+	        my_hitboxID.owner.hitstop = hit_player_obj.hitstop;
+	        for (var i = 0; i < array_length(my_hitboxID.can_hit); ++i) my_hitboxID.can_hit[i] = false;
 	    }
 	}
 }

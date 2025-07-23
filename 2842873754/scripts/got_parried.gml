@@ -1,5 +1,6 @@
 
 //Parrying gordos
+/*
 if (my_hitboxID.attack == AT_FSPECIAL) {
 	if (("owner" in my_hitboxID) && id == my_hitboxID.owner.player_id) {
 		if (hit_player_obj.player != my_hitboxID.owner.owned_player) {
@@ -14,6 +15,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
         }
     }
 }
+*/
 
 //Stars should put Dedede in parrystun like a normal move since they are unrefelctable.
 if ((my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_USPECIAL_2) && my_hitboxID.hbox_num == 5) {

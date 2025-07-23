@@ -1,213 +1,273 @@
-//Sprite Animation
-if (hitstop == 0) {
-    state_timer ++;
-    switch(state) {
-        case -1:
-            if (instance_exists(hitbox)) instance_destroy(hitbox);
-            if (player_id.state_cat == SC_HITSTUN) { 
-                destroy_self();
-            	exit;
+state_machine();
+
+with (pHitBox) {
+    if (player_id != other.player_id) continue;
+    if ("owner" in self && owner == other.id && attack == AT_FSPECIAL) {
+    	if (hitbox_timer > 1)
+        	hitbox_timer = 1;
+        if (other.hitstop > 0)
+            hitbox_timer = max(hitbox_timer - 1, 0);
+        else
+        {
+            x = other.x + other.hsp + x_pos * owner.spr_dir;
+            y = other.y + other.vsp + y_pos;
+        }
+        if ((was_parried || reflected) && reflect_player_prev != player) {
+        	reflect_player_prev = player;
+        	reflected = true;
+            other.was_parried = true;
+            other.reflect_player_prev = other.reflect_player;
+            other.reflect_player_id_prev = other.reflect_player_id;
+            other.reflect_player = player;
+            other.reflect_player_id = last_player_id;
+	        for (var i = 0; i < array_length(can_hit); i++) {
+	            can_hit[@ i] = true;
+	        }
+            can_hit[player] = false;
+            with (other) {
+            	if (state == 0) {
+        			hsp = old_hsp * -2;
+					vsp = -abs(old_vsp * 0.5);
+	                spr_dir = hsp >= 0 ? sign(hsp) : spr_dir;
+            	}
             }
-        break;
-        case 0:
-            img_index = state_timer * 0.1;
-            img_index %= 8;
-            visible = true;
-            
-            if (state_timer > 4) {
-                hit_detection();
-                drum_detection();
+        }
+    }
+}
+
+if (hitstop <= 0) {
+	old_hsp = hsp;
+	old_vsp = vsp;
+}
+else if (hitstop == 1) {
+	hsp = old_hsp;
+	vsp = old_vsp;
+}
+else {
+	hsp = 0;
+	vsp = 0;
+}
+
+if (destroyed) {
+    art_destroy_hitboxes();
+    instance_destroy(id);
+    exit;
+}
+
+#define state_machine()
+if (hitstop > 0) return;
+state_timer ++;
+window_timer++;
+switch(state) {
+    case -1:
+        if (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR) { 
+            destroyed = true;
+        }
+	break;  
+    case 0:
+        img_index = state_timer * 0.1;
+        img_index %= 8;
+        visible = true;
+        
+		physics_update();
+		
+		if (state_timer == 4) {
+        	art_destroy_hitboxes();
+        	my_hbox = create_article_hitbox(AT_FSPECIAL, 3, round(x), round(y))
+            my_hbox.can_hit_self = true;
+            my_hbox.player = reflect_player;
+            for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+                my_hbox.can_hit[@ my_hbox.player] = false;
             }
-            if (!instance_exists(hitbox))
-            {
-                if (state_timer >= 0 && state_timer < 60) {
-                    hitbox = create_article_hitbox(AT_FSPECIAL, 3, floor(x), floor(y));
-                    //hitbox.can_hit = can_hit;
-                    hitbox.player = owned_player;
-                    
-                }
-                if (state_timer >= 60) {
-                    hitbox = create_article_hitbox(AT_FSPECIAL, 4, floor(x), floor(y));
-                    //hitbox.can_hit = can_hit;
-                    hitbox.player = owned_player;
-                }
-            }
-            else {
-                hitbox.x = floor(x);
-                hitbox.y = floor(y);
-                hitbox.hsp = hsp;
-                hitbox.vsp = vsp;
-                // with (hitbox) {
-                //     var hitp = instance_place(floor(x), floor(y), pHurtBox)
-                //     if (instance_exists(hitp)) {
-                //         if (was_parried) {
-                //             with (other) {
-                //                 owned_player = hitp.player;
-                //                 hsp = -hsp
-                //                 if (vsp > 0)
-                //                     vsp = -bounce_speed;
-                //                 hit_already = true;
-                //                 state_timer = 0;
-                //             }
-                //         }
-                //     }
-                // }
-                // if (hit_already || state_timer >= 3) {
-                //     with (hitbox) {
-                //         var hitp = instance_place(floor(x), floor(y), pHurtBox)
-                //         if (instance_exists(hitp)) {
-                //             with (other) {
-                //                 if (hitp.player != owned_player) {
-                //                     hsp = -hsp / 2
-                //                     if (vsp > 0)
-                //                         vsp = hit_already ? -bounce_speed : -bounce_current;
-                //                     hitstop = hitp.playerID.hitstop;
-                //                 }
-                //             }
-                            
-                //         }
-                //     }
-                // }
-                //can_hit = hitbox.can_hit;
-            }
-            if (free)
-                vsp += grav;
-                
-            vsp = min(vsp, max_fall_speed);
-            if (hsp != 0)
-                spr_dir = sign(hsp);
-                
-            if (state_timer > hit_time_max) {
-                destroy_self();
-                exit;
-            }
-            
-            if (!hit_already) {
-                current_sprite_set += 0.05;
-                current_sprite_set %= 2;
-                if (!free || (collision_rectangle(bbox_left, bbox_bottom + 8, bbox_right, bbox_bottom + 10, asset_get("par_jumpthrough"), 1, 1) && vsp > 0)) {
-                    vsp = -bounce_speed;
-                    sound_play(asset_get("sfx_gus_land"));
-                }
-                if (place_meeting(x + hsp, y, asset_get("par_block"))) {
-                    if (y < room_height - 64) {
-                        x += hsp;
-                        y += vsp;
-                        hsp = 0;
-                        vsp = 0;
-                        state = 1;
-                        state_timer = 0;
-                        if (instance_exists(hitbox)) instance_destroy(hitbox);
-                        sound_play(asset_get("sfx_shovel_brandish"), 0, 0, 1, 0.9);
-                        var fx = spawn_hit_fx(round(x),round(y),302   );
-                        fx.pause = 8;
-                    }
-                    else {
-                        hsp = -hsp
-                        sound_play(asset_get("sfx_gus_land"));
-                    }
-                }
+            my_hbox.spr_dir = 1;
+        }
+        if (state_timer == 64) {
+        	var _can_hit = instance_exists(my_hbox) ? my_hbox.can_hit : -1;
+        	art_destroy_hitboxes();
+        	my_hbox = create_article_hitbox(AT_FSPECIAL, 4, round(x), round(y))
+            my_hbox.can_hit_self = true;
+            my_hbox.player = reflect_player;
+            if (_can_hit == -1) {
+	            for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+	                my_hbox.can_hit[@ my_hbox.player] = false;
+	            }
             }
             else {
-                current_sprite_set = 2;
-                if (!free) {
-                    sound_play(asset_get("sfx_gus_land"));
-                    vsp = -bounce_speed;
+            	my_hbox.can_hit = _can_hit;
+            }
+            my_hbox.spr_dir = 1;
+        }
+        if (state_timer > hit_time_max) {
+    		art_state_set(2);
+        }
+        
+		if (state_timer >= 4) {
+	        if (instance_exists(my_hbox)) {
+	            my_hbox.spr_dir = 1;
+		        my_hbox.kb_angle = abs(hsp) < 1 ? 90 : (hsp > 0 ? 60 : 120);
+	        }
+	        else {
+	        	if (!hit_already)
+	        		art_state_set(2);
+	        }
+		}
+		
+		if (!hit_already) {
+			current_sprite_set += 0.05;
+            current_sprite_set %= 2;
+            if (!free || (collision_rectangle(bbox_left, bbox_bottom + 8, bbox_right, bbox_bottom + 10, asset_get("par_jumpthrough"), 1, 1) && vsp > 0)) {
+                vsp = -bounce_speed;
+                sound_play(asset_get("sfx_gus_land"));
+            }
+            if (place_meeting(x + hsp, y, asset_get("par_block"))) {
+                if (y < room_height - 64) {
+                    x += hsp;
+                    y += vsp;
+                    hsp = 0;
+                    vsp = 0;
+                    state = 1;
+                    state_timer = 0;
+                    if (instance_exists(my_hbox)) instance_destroy(my_hbox);
+                    sound_play(asset_get("sfx_shovel_brandish"), 0, 0, 1, 0.9);
+                    var fx = spawn_hit_fx(round(x),round(y),302   );
+                    fx.pause = 8;
                 }
-                if (place_meeting(x + hsp, y, asset_get("par_block"))) {
+                else {
                     hsp = -hsp
                     sound_play(asset_get("sfx_gus_land"));
                 }
             }
-            if (x < 0 || x > room_width) {
-                destroy_self();
-                exit;
+		}
+		else {
+			current_sprite_set = 2;
+            if (!free || (collision_rectangle(bbox_left, bbox_bottom + 8, bbox_right, bbox_bottom + 10, asset_get("par_jumpthrough"), 1, 1) && vsp > 0)) {
+                sound_play(asset_get("sfx_gus_land"));
+                vsp = -bounce_speed;
             }
-            if (y > room_height) {
-                destroy_self();
-                exit;
+            if (place_meeting(x + hsp, y, asset_get("par_block"))) {
+                hsp = -hsp
+                sound_play(asset_get("sfx_gus_land"));
             }
-            
-            if place_meeting(x, y, asset_get("plasma_field_obj")) {
-                destroy_self();
-                exit;
+		}
+		drum_detection()
+        hit_detection();
+    break;
+    case 1:
+    	current_sprite_set += 0.05;
+        current_sprite_set %= 2;
+        vsp = 0;
+        hsp = 0;
+        if (!collision_rectangle(floor(bbox_left - 2), floor(bbox_top - 2), floor(bbox_right + 2), floor(bbox_bottom + 2), asset_get("par_block"), 0, 0)) { 
+            hit_already = true;
+            state = 0;
+            state_timer = 0;
+        }
+        
+        if (!instance_exists(my_hbox))
+        {
+        	art_destroy_hitboxes();
+        	my_hbox = create_article_hitbox(AT_FSPECIAL, 5, round(x), round(y))
+            my_hbox.can_hit_self = true;
+            my_hbox.player = reflect_player;
+            for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+                my_hbox.can_hit[@ my_hbox.player] = false;
             }
-                
-        break;
-        case 1:
-            current_sprite_set += 0.05;
-            current_sprite_set %= 2;
-            vsp = 0;
-            hsp = 0;
-            if (!collision_rectangle(floor(bbox_left - 2), floor(bbox_top - 2), floor(bbox_right + 2), floor(bbox_bottom + 2), asset_get("par_block"), 0, 0)) { 
-                hit_already = true;
-                state = 0;
-                state_timer = 0;
-            }
-            
-            if (!instance_exists(hitbox))
-            {
-                hitbox = create_article_hitbox(AT_FSPECIAL, 5, floor(x), floor(y));
-            }
-            else {
-                hitbox.x = floor(x);
-                hitbox.y = floor(y);
-                hitbox.hsp = hsp;
-                hitbox.vsp = vsp;
-            }
-            if (state_timer > stick_time_max - 60) {
-                visible = get_gameplay_time() % 8 > 4;
-            }
-            hit_detection();
-            if (state_timer > stick_time_max) {
-                destroy_self();
-                exit;
-            }
-        break;
-    }
+            my_hbox.spr_dir = 1;
+        }
+        if (state_timer > stick_time_max - 60) {
+            visible = get_gameplay_time() % 8 > 4;
+        }
+        
+        hit_detection();
+        if (state_timer > stick_time_max) {
+    		art_state_set(2);
+        }
+    break;
+    case 2:
+    	var fx = spawn_hit_fx(round(x),round(y),144  );
+		fx.pause = 8;
+		destroyed = true;
+    break;
+}      
     
-    var num_frames = sprite_get_number(sprite_index) / num_sprite_sets;
-    var offset = num_frames * floor(current_sprite_set);
-    image_index = (img_index % num_frames) + offset;
+var num_frames = sprite_get_number(sprite_index) / num_sprite_sets;
+var offset = num_frames * floor(current_sprite_set);
+image_index = (img_index % num_frames) + offset;
+
+if (x < -32 || x > room_width + 32) {
+    destroyed = true;
 }
-else {
-    if (instance_exists(hitbox)) {
-        hitbox.x = floor(x);
-        hitbox.y = floor(y);
-        hitbox.hsp = hsp;
-        hitbox.vsp = vsp;
-    }
+if (y > room_height + 32) {
+    destroyed = true;
 }
+
 if (getting_bashed) {
-    owned_player = bashed_id.player;
+    refle = bashed_id.player;
     hit_already = true;
     state = 0;
     state_timer = 0;
     if (instance_exists(hitbox)) instance_destroy(hitbox);
 }
 
-if (state == 0 || state == 1) {
-    var plasma_field = collision_circle(x, y, 40, asset_get("plasma_field_obj"), 1, 0)
-    if (plasma_field != noone) {
-		if (get_instance_player(plasma_field) != owned_player) {
-		    spawn_hit_fx(x, y, 129);
-		    sound_play(asset_get("sfx_clairen_hit_med"));
-            owned_player = get_instance_player(plasma_field);
-            hsp = -hsp;
-            if (vsp > 0)
-                vsp = -bounce_speed;
-            hit_already = true;
-            state_timer = 0;
+#define drum_detection()
+//Drum Bouncing
+//(I put it here so it can detect multiple instances of the object.)
+
+with (obj_article3) {
+    if (player_id.url == other.player_id.url && get_char_info(player_id.player, INFO_STR_NAME) == get_char_info(other.player, INFO_STR_NAME)) {
+        var player_near = collision_line(x - lengthdir_x(40, img_angle), y - 48 - lengthdir_y(40, img_angle), 
+            x + lengthdir_x(40, img_angle), y - 48 - lengthdir_y(40, img_angle), other, 0, 1);
+        if (instance_exists(player_near)) {
+            if (other.vsp > 0 && other.state == 0 && other.free) {
+                state = 2;
+                state_timer = 0;
+                other.hit_already = true;
+                other.state = 0;
+                other.state_timer = 0;
+                if (img_angle != 0)
+                    other.hsp = lengthdir_x(bounce_speed, img_angle - 90);
+                other.vsp = lengthdir_y(bounce_speed, img_angle - 90);
+            }
         }
     }
 }
 
-#define destroy_self()
-var fx = spawn_hit_fx(round(x),round(y),144  );
-fx.pause = 8;
-if (instance_exists(hitbox)) instance_destroy(hitbox);
-instance_destroy(id);
-exit;
+#define physics_update()
+if (hitstop <= 0) {
+    if (free) {
+        if (vsp < max_fall) {
+            vsp += grav;
+        } 
+        hsp = (max(0, (abs(hsp) - air_frict)) * sign(hsp))
+    }
+}
+x = round(x);
+y = round(y);
+
+#define art_state_set(_state)
+state = _state
+state_timer = 0;
+window = 1;
+window_timer = 0;
+
+#define art_window_set(_window)
+window = _window;
+window_timer = 0;
+
+#define art_got_hit(hbox)
+//This article was hit
+art_destroy_hitboxes();
+art_state_set(0);
+was_parried = true;
+hit_already = true;
+state_timer = 0;
+reflect_player_prev = reflect_player;
+reflect_player_id_prev = reflect_player_id;
+reflect_player = hbox.player;
+reflect_player_id = hbox.last_player_id;
+
+if (hbox.no_other_hit != 0 && reflect_player_prev != 0)
+reflect_player_id.can_be_hit[reflect_player_prev] = hbox.no_other_hit + reflect_player_id_prev.hitstop;
 
 #define on_hit(hbox)
 // This is the code the article should run on hit.
@@ -218,21 +278,24 @@ exit;
  
 //Default hit stuff
 sound_play(hbox.sound_effect);
-var fx = spawn_hit_fx(floor(x+hbox.hit_effect_x),floor(y+hbox.hit_effect_y),floor(hbox.hit_effect == 0 ? 301 : hbox.hit_effect));
-fx.pause = 8;
+with (hbox.player_id) {
+	var fx = spawn_hit_fx(floor(other.x+hbox.hit_effect_x),floor(other.y+hbox.hit_effect_y),floor(hbox.hit_effect == 0 ? 301 : hbox.hit_effect));
+	if (instance_exists(fx))
+		fx.pause = 8;
+}
  
 hit_player_obj = hbox.player_id;
 hit_player_num = hbox.player;
 owned_player = hit_player_num;
  
-percent += hbox.damage * 2;
-hit_time_max += hbox.kb_value * 4;
 
 //Default Hitpause Calculation
 //You probably want this stuff because it makes the hit feel good.
+var desired_hitstop = get_hitstop_formula(0, hbox.damage, hbox.hitpause, hbox.hitpause_growth, hbox.extra_hitpause)
+var desired_hitstop = min(desired_hitstop, 20)
+
 if hbox.type == 1 {
-    var desired_hitstop = clamp(hbox.hitpause + percent * hbox.hitpause_growth * 0.05, 0, 20);
-    with hit_player_obj {
+    with hbox.player_id {
         if !hitpause {
             old_vsp = vsp;
             old_hsp = hsp;
@@ -240,8 +303,8 @@ if hbox.type == 1 {
         hitpause = true;
         has_hit = true;
         if hitstop < desired_hitstop {
-            hitstop = desired_hitstop;
-            hitstop_full = desired_hitstop;
+            hitstop = desired_hitstop - hbox.extra_hitpause;
+            hitstop_full = hitstop;
         }
     }
 }
@@ -249,19 +312,15 @@ if hbox.type == 1 {
 // If your article does not already account for being in hitpause, either make it stop what it's doing in hitpause
 // or comment out the line below.
 hitstop = floor(desired_hitstop); 
- 
+hitstop = min(hitstop, 20)
  
 //Hit Lockout
 if article_should_lockout hit_lockout = hbox.no_other_hit;
- 
-//Default Hitstun Calculation
-hitstun = (hbox.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + percent * 0.12 * hbox.kb_scale * 4 * 0.65 * kb_adj) + 12;
-hitstun_full = hitstun;
-            
-//Default Knockback Calculation
-// if other.force_flinch && !other.free orig_knock = 0; //uncomment this line for grounded articles.
-if hbox.force_flinch orig_knock = 0.3; //comment out this line for grounded articles.
-else orig_knock = hbox.kb_value + percent * hbox.kb_scale * 0.12 * kb_adj;
+enemy_hitboxID = hbox;
+
+//Knockback
+//if hbox.force_flinch orig_knock = 0.3; //comment out this line for grounded articles.
+orig_knock = get_kb_formula(percent, kb_adj, 1, hbox.damage, hbox.kb_value, hbox.kb_scale);
 kb_dir = get_hitbox_angle(hbox);
 
 //Changed this to account for bouncing
@@ -273,35 +332,60 @@ if hsp != 0 spr_dir = -sign(hsp);
 
 if (place_meeting(x + hsp, y, asset_get("par_block"))) hsp = -hsp;
 
-if (!hit_already) {
-    hit_already = true;
-    if (state == 1) {
-        state = 0;
-        state_timer = 0;
+old_hsp = lengthdir_x(orig_knock, kb_dir);
+old_vsp = lengthdir_y(orig_knock, kb_dir);
+
+if (hbox.type == 2) {
+    if (hbox.enemies == 0)
+    {
+        with (hbox)
+        {
+            destroyed = true
+            fx_created = true
+        }
     }
 }
+
+art_got_hit(hbox);
  
 #define filters(hbox)
 //These are the filters that check whether a hitbox should be able to hit the article.
 //Feel free to tweak this as necessary.
 with hbox {
-    var player_equal = player == other.player_id.player;
+    var player_equal = player == other.reflect_player;
     var team_equal = get_player_team(player) == get_player_team(other.player_id.player);
-    var url_equal = player_id.url == other.player_id.url && get_char_info(player_id.player, INFO_STR_NAME) == get_char_info(other.player, INFO_STR_NAME)
-    return ("owner" not in self || owner != other) //check if the hitbox was created by this article
+    var url_equal = player_id.url == other.player_id.url && get_char_info(player_id.player, INFO_STR_NAME) == get_char_info(other.player, INFO_STR_NAME);
+    return ("owner" not in self || (owner != other)) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
         && hitstun_factor >= 0
         && (groundedness == 0 || groundedness == 1+other.free)
-        && (!url_equal || (attack != AT_NSPECIAL && attack != AT_DSPECIAL))
-        //&& (!player_equal) //uncomment to prevent the article from being hit by its owner.
+        //&& (!player_equal || other.reflect_player != other.player_id.player) //uncomment to prevent the article from being hit by its owner.
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.
 }
- 
+
 #define create_article_hitbox(attack, hbox_num, _x, _y)
 //Use this function to easily create hitboxes that ignore the article's hit detection.
 var hbox = create_hitbox(attack, hbox_num, floor(_x), floor(_y))
 hbox.owner = self;
+hbox.can_hit_self = true;
+hbox.player = reflect_player;
+for (var i = 0; i < array_length(hbox.can_hit); i++) {
+    hbox.can_hit[@ hbox.player] = false;
+}
+hbox.spr_dir = spr_dir;
+hbox.x_pos = (hbox.x - x);
+hbox.y_pos = (hbox.y - y);
 return hbox;
+
+#define art_destroy_hitboxes()
+with (pHitBox) {
+    if ("owner" in self && player_id == other.player_id) {
+        if (instance_exists(owner) && owner == other.id) {
+        	instance_destroy(id);
+        	continue;
+        }
+    }
+}
  
 #define hit_detection
 //Code by Supersonic#9999
@@ -316,6 +400,11 @@ with (oPlayer)
 //hit lockout stuff
 if hit_lockout > 0 {
     hit_lockout--;
+    return;
+}
+//hit lockout stuff
+if invincible > 0 {
+	invincible--;
     return;
 }
 //get colliding hitboxes
@@ -374,7 +463,7 @@ if num == 1 {
     }
 }
  
-if final_hbox != noone {
+if final_hbox != noone && final_hbox.type != invince_type {
     on_hit(final_hbox);
     variable_instance_set(final_hbox, hit_variable, true);
     if final_hbox.hbox_group != -1 hbox_group[@ final_hbox.orig_player-1][@ final_hbox.attack][@ final_hbox.hbox_group] = 1;
@@ -383,26 +472,3 @@ if final_hbox != noone {
 //clear hitbox list
 //ds_list_clear(hitbox_list)
 ds_list_destroy(hitbox_list);
-
-#define drum_detection()
-//Drum Bouncing
-//(I put it here so it can detect multiple instances of the object.)
-
-with (obj_article3) {
-    if (player_id.url == other.player_id.url && get_char_info(player_id.player, INFO_STR_NAME) == get_char_info(other.player, INFO_STR_NAME)) {
-        var player_near = collision_line(x - lengthdir_x(40, img_angle), y - 48 - lengthdir_y(40, img_angle), 
-            x + lengthdir_x(40, img_angle), y - 48 - lengthdir_y(40, img_angle), other, 0, 1);
-        if (instance_exists(player_near)) {
-            if (other.vsp > 0 && other.state == 0 && other.free) {
-                state = 2;
-                state_timer = 0;
-                other.hit_already = true;
-                other.state = 0;
-                other.state_timer = 0;
-                if (img_angle != 0)
-                    other.hsp = lengthdir_x(bounce_speed, img_angle - 90);
-                other.vsp = lengthdir_y(bounce_speed, img_angle - 90);
-            }
-        }
-    }
-}

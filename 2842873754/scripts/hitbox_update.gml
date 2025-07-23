@@ -1,4 +1,4 @@
-
+if (was_parried) draw_xscale = spr_dir;
 
 //Attacking hitboxes take priority over Gordos
 if (attack == AT_FSPECIAL && hbox_num > 2)

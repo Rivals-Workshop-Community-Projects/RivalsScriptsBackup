@@ -5,6 +5,32 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 switch (attack){
+		case AT_JAB:
+			//Jab Easter Egg
+			if (alt_cur == 9 && window == 1 && window_timer == 3) {
+			    if (taunt_down) {
+					switch (jab_taunt_held) {
+						case 0:
+							sound_stop(jab_taunt_sound)
+							jab_taunt_sound = sound_play(sound_get("sfx_dedede_hotdog"))
+						break;
+						case 1:
+							sound_stop(jab_taunt_sound)
+							jab_taunt_sound = sound_play(sound_get("sfx_dedede_taco"))
+						break;
+						case 2:
+							sound_stop(jab_taunt_sound)
+							jab_taunt_sound = sound_play(sound_get("sfx_dedede_hamburger"))
+						break;
+					}
+					//Ya only got three things on this menu!
+		        	jab_taunt_held ++;
+		        	if (jab_taunt_held >= 3) {
+		        		jab_taunt_held = 0;
+		        	}
+			    }
+			}
+			break;
 		case AT_FTILT:
 			if(was_parried && window == 3){
 				window = 4;
@@ -525,7 +551,7 @@ switch (attack){
 					else if (sucked_player_obj.object_index == obj_article1) {
 						with (sucked_player_obj) {
 							hit_already = true;
-							owned_player = other.player;
+							reflect_player = other.player;
 							state = 0;
 							state_timer = 0;
 							kb_dir = 45;
@@ -536,6 +562,8 @@ switch (attack){
 							else vsp = -orig_knock*dsin(kb_dir);
 							hsp = orig_knock*dcos(kb_dir)*other.spr_dir;
 							if hsp != 0 spr_dir = -sign(hsp);
+							old_hsp = hsp;
+							old_vsp = vsp;
 						}
 			    		sucked_player_obj = noone; 
 					}
@@ -650,6 +678,8 @@ switch (attack){
 					else {
 						gordo_held.state = 0;
 						gordo_held.state_timer = 0;
+						gordo_held.window = 1;
+						gordo_held.window_timer = 0;
 					}
 					gordo_held = noone;
 				}
@@ -822,10 +852,10 @@ switch (attack){
 				if (masked)
 					window = 4;
 			}
-			if(window = 2 && window_timer == 1) {
+			if(window = 2 && window_timer == 2) {
 			    masked = true;
 			}
-			if(window = 4 && window_timer == 1) {
+			if(window = 4 && window_timer == 2) {
 			    masked = false;
 			}
 		break;

@@ -136,6 +136,10 @@ uspecial_fx1 = hit_fx_create(sprite_get("uspecial2_fx"), 16);
 uspecial_fx2 = hit_fx_create(sprite_get("uspecial2_fx2"), 28);
 uspecial_soft_armor = 10;
 
+//Easter Eggs
+jab_taunt_held = false;
+jab_taunt_sound = noone;
+
 //Gordo stuffs
 gordo_max = 1; //Amount of gordos on screen at a time.
 gordo_angle_min = 15; //Minimum gordo aiming angle.
@@ -255,6 +259,16 @@ checked_sprite_names = [
     
     
 //#endregion
+
+//Compatability
+//Mt. Dedede
+arena_title = "Champion"
+arena_short_name = "King Dedede"
+
+//Dracula
+//(dialogue changes with and without mask)
+dracula_portrait = sprite_get("dracula_portrait");
+dracula_portrait2 = sprite_get("dracula_portrait2");
 
 //Below code from MunoPhone API.
 #define initIndexes()
