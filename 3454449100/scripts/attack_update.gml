@@ -764,6 +764,10 @@ if (attack == AT_FSPECIAL){
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 8);
 		hsp = 0;
 		vsp = 0;
+		
+		// prevents weird things
+		destroy_hitboxes();
+		
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (!fspecBounceOffWall){
 				hsp = -1 * (3.5 - ((fspecChargeAmtGot / fspecMaxChargeTimeAllowed) * 4) ) * spr_dir;
@@ -889,6 +893,10 @@ if (attack == AT_FSPECIAL){
 	
 	// ============
 	// Stylish Taunt stuff
+	
+	if (window >= 9){
+		hud_offset = 64;
+	}
 	
 	if (window == 9){
 		fspecStylishIndicator = false;
@@ -1435,6 +1443,7 @@ if (instance_exists(currKoopaShell)){
 			playerGrabbedShell = true;
 		}
 		numShellTimeRebound = 0;
+		shellhittracker = 0;
 		currKoopaShell = noone;
 	}
 	

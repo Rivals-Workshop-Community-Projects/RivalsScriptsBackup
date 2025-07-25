@@ -40,6 +40,15 @@ if (carryingShell){
 				spr_dir *= -1;	// flip
 			}
 			
+			// HELP
+			if ((left_stick_pressed || left_stick_down) && spr_dir == 1){
+				spr_dir = -1;
+			}
+			
+			if ((right_stick_pressed || right_stick_down) && spr_dir == -1){
+				spr_dir = 1;
+			}
+			
 			//set_attack( AT_NSPECIAL );
 			attack = AT_NSPECIAL;
 			window = 4;

@@ -5,6 +5,15 @@ set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Koopa Shell");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC, "Koopa Troopa pulls out a Koopa Shell as an item.
+In their hands, they can run and jump as normal.
+Press ATTACK/SPECIAL/STRONG + a direction (normal/up/down) to throw the Koopa Shell in the corresponding direction. Press PARRY to drop the Shell in front of you.
+When thrown, the Koopa Shell will act how you'd expect it to act. It will move forwards and will rebound off of opponents or walls it hits.
+Koopa Troopa can jump on the Koopa Shell while it's moving to 'Shell Jump', giving Koopa Troopa effectively another jump. This is most effective to do against a wall when recovering, or in very niche combo situations.
+There's a lot more I'd write here, but just read the Steam Description if you want the full scoop.
+
+also yes you can shell jump");
 
 
 var kickStartup = 6;

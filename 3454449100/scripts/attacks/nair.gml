@@ -161,7 +161,7 @@ set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 3);
 
 // Ground Multihit 1
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_NAME, "Air Multihit 1");
+set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_NAME, "Ground Multihit 1");
 set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 6);
 set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, nairActiveHBFrames);
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_X, 2);

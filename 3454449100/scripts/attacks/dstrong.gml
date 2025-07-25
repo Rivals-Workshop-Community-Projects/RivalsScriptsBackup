@@ -5,7 +5,7 @@ set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_NAME, "DStrong: Whirlwind Shell");
 set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC, "Erratically moves back and forth during active frames. Very whiff-punishable.
-Landing the attack during the first spin will have Koopa prematurely stop, preventing the move from being negative on hit in some circumstances.");
+Landing the attack during the first spin will have Koopa Troopa prematurely stop, preventing the move from being negative on hit in some circumstances.");
 
 // startup + charge
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);

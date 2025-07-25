@@ -143,7 +143,7 @@ initCodecPage(SPK_VIR,  1,  6,  "Yeah, but eating off the floor is just gross.")
 
 // okay actual text here
 initCodecPage(SPK_PIT,	4,	9,	"Woah! This turtle can stand up, walk and jump! It's... kinda weird, seeing that.");
-initCodecPage(SPK_PALU,	2,	5,	"Silly Pit, that's a Koopa Troopa. They're second only to Goombas as the ones Mario jumps every adventure or two.");
+initCodecPage(SPK_PALU,	2,	5,	"Silly Pit, that's a Koopa Troopa. They're second only to Goombas as the ones Mario jumps on every adventure or two.");
 
 // costume-specific dialogue
 if (curr_alt_costume == 0){
@@ -171,7 +171,7 @@ if (curr_alt_costume == 0){
 initCodecPage(SPK_PALU,	4,	0,	"...anyway, this Koopa is quite strong up close - they have very fast moves, but lack a lot on range and disjoint.");
 initCodecPage(SPK_PIT,  3,	10,	"Alrighty then! I've got the range advantage with my Bow - they don't seem to have a lot of projectile options as well.");
 initCodecPage(SPK_VIR,	2,	5,	"Actually, these guys can throw out... shells? Don't they wear those? That's kinda weird to think about...");
-initCodecPage(SPK_PALU,	1,	0,	"...yeah. Anyway, these shells can be hit back at them. But they too can also hit it, and regrab it once it rebounds.");
+initCodecPage(SPK_PALU,	1,	0,	"...yeah. Anyway, these shells can be hit back at them. But they too can also rehit it, and regrab it once it rebounds.");
 initCodecPage(SPK_PIT,	4,	9,	"Ah.. ok then! I think I should be fine. My Guardian Orbitars should do the trick on this little guy!");
 initCodecPage(SPK_VIR,	3,	6,	"And, hey, Pit! If you're feeling a bit cocky... give 'em a jump while they're flying with wings offstage!");
 

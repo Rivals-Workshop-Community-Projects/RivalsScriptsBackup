@@ -8,7 +8,7 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial: Power Shell");
 set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC, "Shell spin that goes forward.
 Can be charged to increase horizontal distance after release. Slightly slows fall if charging in the air.
-Oh hit, Koopa will rebound off of either a wall, enemy or even their own Koopa Shell.
+Oh hit, Koopa Troopa will rebound off of either a wall, enemy or even their own Koopa Shell.
 At full charge, this move gains a strong hitbox. It's weaker if Koopa is in the air, though.
 
 (P.S. Turn on hitboxes and land Grounded FSpecial for an indicator on how to activate the Stylish taunt.)");

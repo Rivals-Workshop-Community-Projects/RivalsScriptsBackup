@@ -4,7 +4,7 @@ set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_NAME, "DSpecial: Shell Slam");
-set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "Stall-and-fall attack. On hit, sends Koopa (and the hit player) upwards.
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "Stall-and-fall attack. On hit, sends Koopa Troopa (and the hit player) upwards.
 Restores double jump on hit.
 After 50 frames of using this move, this can be canceled with either a jump or airdodge.
 Has a 30 frame cooldown after use on hit to prevent repeated use of this in the air upon a successful hit.");

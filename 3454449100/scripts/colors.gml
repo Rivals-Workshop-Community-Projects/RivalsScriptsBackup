@@ -1,3 +1,87 @@
+/*
+						Hi!
+
+If you're here for grabbing recolors for Koopa Troopa (more
+specifically for the Kooper or Koops alternate costumes), then
+you're going to need to change around the color slots for
+the last two slots. This is primarily how exactly I was able
+to recolor the accessories because Koopa Troopa already
+hit the color slot limit, and I had to do some workarounds.
+
+Basically, just copy paste the code and put it where it
+is in the color text in the side bar on the colors
+website. This will allow for the image to properly
+recolor with the alternate portrait art.
+
+(Also, this goes without saying, but you'll also need to
+load either the Kooper or Koops portrait art if you want
+to get the recolors for them. They're literally in both
+the main folder and the sprites folder. Either works.)
+
+=========================
+
+For the Kooper color scheme, replace the last color slot
+in the default color section with this.
+This changes the slot for eye color to be mapped
+to the scarf color.
+
+// eye col, scarf, hoodie
+set_color_profile_slot( 0, 7, 93, 192, 244 );
+set_color_profile_slot_range( 7, 1, 31, 46 );
+
+=========================
+
+For the Koops color scheme, replace the last 2 color slots
+in the default color section with these two.
+This changes the slot for eye whites to Koops' pants
+and the eye color slot to the hoodie color.
+
+// eye whites, pants
+set_color_profile_slot( 0, 6, 21, 111, 225 );
+set_color_profile_slot_range( 6, 1, 7, 44 );
+
+// eye col, scarf, hoodie
+set_color_profile_slot( 0, 7, 93, 192, 244 );
+set_color_profile_slot_range( 7, 1, 31, 46 );
+
+=========================
+
+If you want to go back to the default color
+slots for either base Koopa or the Roving Racer
+costume, then replace the last 2 color slots
+in the default color section with these two.
+
+// eye whites, pants
+set_color_profile_slot( 0, 6, 249, 249, 240 );
+set_color_profile_slot_range( 6, 6, 4, 22 );
+
+// eye col, scarf, hoodie
+set_color_profile_slot( 0, 7, 77, 97, 91 );
+set_color_profile_slot_range( 7, 11, 17, 49 );
+
+=========================
+
+In case you just don't feel like putting this into the website, there's also
+an image in Koopa Troopa's main folder called "__koopa_all_alts.png",
+which has all 32 alternate colors as pngs if you need them as well.
+
+Hope this helps in case you're trying to get images for one of
+the costumes and things for like a tournament graphic or
+something of the like.
+
+- ricE_ECD
+
+
+
+
+
+
+
+
+:eggdog:
+
+*/
+
 // DEFAULT COLOR
 
 // shell
@@ -278,13 +362,13 @@ set_color_profile_slot( 24, 7, 219, 0, 0 ); //eye col, scarf, hoodie
 
 // kooper brown - parakarry
 set_color_profile_slot( 25, 0, 115, 195, 222 ); //shell
-set_color_profile_slot( 25, 1, 239, 173, 75 ); //skin
+set_color_profile_slot( 25, 1, 200, 144, 48 ); //skin
 set_color_profile_slot( 25, 2, 162, 74, 1 ); //shoes
 set_color_profile_slot( 25, 3, 242, 185, 0 ); //shoe rim
 set_color_profile_slot( 25, 4, 253, 251, 244 ); //shell rim
 set_color_profile_slot( 25, 5, 184, 168, 128 ); //belly
-set_color_profile_slot( 25, 6, 193, 213, 247 ); //eye whites, pants
-set_color_profile_slot( 25, 7, 120, 50, 9 ); //eye col, scarf, hoodie
+set_color_profile_slot( 25, 6, 179, 225, 242 ); //eye whites, pants
+set_color_profile_slot( 25, 7, 154, 77, 5 ); //eye col, scarf, hoodie
 
 // kooper purple - kammy koopa
 set_color_profile_slot( 26, 0, 121, 60, 183 ); //shell

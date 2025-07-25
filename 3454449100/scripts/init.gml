@@ -42,6 +42,7 @@ prevHoldShellHSP = 0;
 prevHoldShellVSP = 0;
 
 numShellTimeRebound = 0;
+shellhittracker = 0;
 
 // fspec
 fspecMinChargeTime = 4;

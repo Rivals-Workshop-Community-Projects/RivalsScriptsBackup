@@ -166,7 +166,7 @@ switch (state){
 		break;
 }
 
-if (state == PS_AIR_DODGE || state == PS_WAVELAND || state == PS_PARRY_START || ( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && window == 0) ){
+if (state == PS_AIR_DODGE || state == PS_WAVELAND /*|| state == PS_PARRY_START || ( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && window == 0)*/ ){
 	if (instance_exists(currKoopaShell)){
 		if (place_meeting(x, y, currKoopaShell)){
 			//spawn_hit_fx(x, y, 302);
@@ -332,6 +332,7 @@ if (shield_pressed && carryingShell && !hitpause){
 
 if (carryingShell){
 	numShellTimeRebound = 0;
+	shellhittracker = 0;
 	
 	if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 	
@@ -384,6 +385,7 @@ if (currKoopaShell == noone){
 	sound_play(sfx_smashult_item, false, noone, 1, 0.65);
 	
 	numShellTimeRebound = 0;
+	shellhittracker = 0;
 }
 
 //--------------------------------------------
@@ -398,6 +400,7 @@ if (instance_exists(currKoopaShell)){
 			playerGrabbedShell = true;
 		}
 		numShellTimeRebound = 0;
+		shellhittracker = 0;
 		currKoopaShell = noone;
 	}
 	
