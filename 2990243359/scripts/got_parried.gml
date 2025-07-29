@@ -1,4 +1,8 @@
 //
+if (synced_vars[0]){
+    sound_play(sound_get("voice_got_parried"));
+}
+
 if (my_hitboxID.attack == AT_NSPECIAL){
     window = 4;
     was_parried = true;

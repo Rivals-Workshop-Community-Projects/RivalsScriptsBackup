@@ -61,8 +61,7 @@ set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 24);
     var window_length = get_window_value(atk,window_num , AG_WINDOW_LENGTH);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 3);
-
-
+set_window_value(atk, window_num                        , AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //                        --attack hitboxes--                                 //
 set_num_hitboxes(atk, 5);
@@ -156,9 +155,9 @@ set_hitbox_value(atk, hbox_num, HG_DAMAGE                   , 4);
 set_hitbox_value(atk, hbox_num, HG_ANGLE                    , 45);
 set_hitbox_value(atk, hbox_num, HG_ANGLE_FLIPPER            , 5);
 set_hitbox_value(atk, hbox_num, HG_BASE_KNOCKBACK           , 8);
-set_hitbox_value(atk, hbox_num, HG_KNOCKBACK_SCALING        , .7);
+set_hitbox_value(atk, hbox_num, HG_KNOCKBACK_SCALING        , .9);
 set_hitbox_value(atk, hbox_num, HG_BASE_HITPAUSE            , 6);
-set_hitbox_value(atk, hbox_num, HG_HITPAUSE_SCALING         , .5);
+set_hitbox_value(atk, hbox_num, HG_HITPAUSE_SCALING         , .8);
 set_hitbox_value(atk, hbox_num, HG_HIT_SFX                  , asset_get("sfx_blow_medium3"));
 set_hitbox_value(atk, hbox_num, 82          , 1);
 set_hitbox_value(atk, hbox_num, 84               , 1);
@@ -180,9 +179,9 @@ set_hitbox_value(atk, hbox_num, HG_PRIORITY                 , 1);
 set_hitbox_value(atk, hbox_num, HG_DAMAGE                   , 4);
 set_hitbox_value(atk, hbox_num, HG_ANGLE                    , 45);
 set_hitbox_value(atk, hbox_num, HG_BASE_KNOCKBACK           , 8);
-set_hitbox_value(atk, hbox_num, HG_KNOCKBACK_SCALING        , .7);
+set_hitbox_value(atk, hbox_num, HG_KNOCKBACK_SCALING        , .9);
 set_hitbox_value(atk, hbox_num, HG_BASE_HITPAUSE            , 6);
-set_hitbox_value(atk, hbox_num, HG_HITPAUSE_SCALING         , .5);
+set_hitbox_value(atk, hbox_num, HG_HITPAUSE_SCALING         , .8);
 set_hitbox_value(atk, hbox_num, HG_HIT_SFX                  , asset_get("sfx_blow_medium3"));
 set_hitbox_value(atk, hbox_num, 82          , 1);
 set_hitbox_value(atk, hbox_num, 84               , 1);

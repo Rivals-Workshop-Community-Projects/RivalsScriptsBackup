@@ -266,8 +266,10 @@ switch (attack){
 #define soccer_ball_code()
 
 if (!h_lockout){
+	with (pHitBox) if place_meeting(x, y, other){
+		var soccer_hb_id = self;
+	}
 	if (place_meeting(x,y, asset_get("pHitBox"))){
-		var soccer_hb_id = instance_place(x, y, asset_get("pHitBox"));
 		if (soccer_hb_id.hit_priority != 0 && soccer_hb_id.hitpause != 0 && !soccer_hb_id.player_id.hitpause && soccer_hb_id.kb_value != 0 && soccer_hb_id.player_id.player != player) ||
 		(soccer_hb_id.hit_priority != 0 && soccer_hb_id.hitpause != 0 && !soccer_hb_id.player_id.hitpause && soccer_hb_id.kb_value != 0 && soccer_destroyed_fake){
 		sound_play(hit_sfx);

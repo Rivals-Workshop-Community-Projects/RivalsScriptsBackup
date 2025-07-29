@@ -58,6 +58,7 @@ if (attack == AT_FSPECIAL){
 		if (id != other.player_id) {
 		    if (place_meeting(x, y, other)) {
 		    	var dodging_invul = false;
+		    	var airborne = false;
 		    	
 			    if (state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD || state == PS_TECH_GROUND || state == PS_WALL_TECH){
 					if (hurtboxID.dodging){
@@ -65,8 +66,17 @@ if (attack == AT_FSPECIAL){
 					}
 				}
 				
+				if free || (state == PS_JUMPSQUAT){
+					airborne = true;
+				}
+				
 				if (!dodging_invul){
-					x -= 18*other.spr_dir;
+					if !airborne{
+						x -= 18*other.spr_dir;
+					}else if airborne{
+						x -= 8*other.spr_dir;
+					}
+					
 				}
 		    }
 		}

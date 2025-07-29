@@ -4,7 +4,7 @@ set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 5);
 
 //start
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 3);//2
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 5);//2//3
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 

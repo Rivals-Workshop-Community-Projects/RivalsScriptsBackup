@@ -254,7 +254,7 @@ suppress_music = 0;
 madara = noone;
 
 uspecial_angle = 0;
-uspecial_speed = 8;
+uspecial_speed = 9;
 uspecial_extra_vspeed = -4;
 uspecial_cancel = false;
 uspec_drop = false;

@@ -91,7 +91,7 @@ if (!azure_handled_victory_quote)
             quote = "Welp, BBot, doesn't seem like your questionable humor was strong enough... let alone funny."; 
             break;
         case "2014106219": // Cinna
-            quote = "You weren't half bad, Sis... Maybe next time you'll get it.";
+            quote = "...You weren't half bad, Sis. Maybe next time you'll get it.";
             break;
         case "2089998666": // Big Yoshi
             quote = "...Huh? What do you mean it's a cookie, not a flower?";
@@ -105,16 +105,16 @@ if (!azure_handled_victory_quote)
             break;
         case "2669553388": // Old Man
         case "2160644191": // Old Man (Legacy)
-            quote = "I'm not sure I feel exactly good about beating old tiny men.";
+            quote = "I'm not sure I feel exactly good about beating a tiny old man...";
             break;
         case "2489599400": // Tape
             quote = "I think someone dropped their supplies on the way to school.";
             break;
         case "2799785099": // Sir Kibble
-            quote = "Is there even anything inside that armor...?";
+            quote = "Is there anything inside that armor...?";
             break;	
         case "3380395299": // Ms. Game & Watch
-            quote = "Are you made of paper or something, miss? What are you even supposed to be?";
+            quote = "Are you made of paper or something? ...What are you even supposed to be?";
             break;	
         case "2193855004": // EXW1 Azure
             quote = "Geez, why did I look so pale back then?";
@@ -135,7 +135,7 @@ if (!azure_handled_victory_quote)
             break;
 
         case "2005036466": // Penny
-            quote = "Sometimes I think it'd be cool if the Multi-Rod was a gauntlet.";
+            quote = "Sometimes I think it'd be cool if the Multi-Rod was a gauntlet...";
             break;
             
         case "2605304929": // Daora
@@ -321,19 +321,19 @@ if (!azure_handled_victory_quote)
             break;
         
         case "2241098230": //Rykenburn
-            quote = "Would it kill you to both keep your hands off AND not smoke around pepole? Geez...";
+            quote = "Would it kill you to both keep your hands off AND not smoke around people? Geez...";
             break;
         
         case "2997493298": //Truck-Kun
-            quote = "...Sorry, guess you're the one getting sent to another world this time around.";
+            quote = "...Sorry, you're the one getting sent to another world this time around.";
             break;
         
         case "3070186949": //Napstablook
-            quote = "...uh, you doing alright? You don't seem like you want to fight... or do anything.";
+            quote = "You doing alright? You don't seem like you want to fight... or do anything.";
             break;
         
         case "3118680316": //Awatsu
-            quote = "Cool bubble show, but I don't need another shower today.";
+            quote = "Cool bubble show, but I really don't need another shower today.";
             break;
         
         case "3136330641": //Vakna
@@ -341,7 +341,7 @@ if (!azure_handled_victory_quote)
             break;
         
         case "3109768585": //Koishi Komeiji
-            quote = "... Hey, where'd that girl go? She just up and vanished...";
+            quote = "Uh, where'd that girl go? She just up and vanished. That's weird.";
             break;
         
         case "3310371100": //Usher
@@ -350,7 +350,7 @@ if (!azure_handled_victory_quote)
            break;
 		
         case "2605377553": //Mal
-            quote = "Blah, my stomach feels turned inside out. Try wearing a mask next time, girl.";
+            quote = "Blah, my stomach feels turned inside out. Try wearing a mask next time, miss.";
             break;
             
         case "2626409326": // Yuuto
@@ -381,7 +381,7 @@ if (!azure_handled_victory_quote)
            quote = "Whoops, I think one of your wings got caught in my propeller.";
            break;
         case CH_ELLIANA:
-           quote = "I've always wanted to try riding a mech. I should ask BBot about it someday.";
+           quote = "I've always wanted to try riding a mech... I should ask BBot about it someday.";
            break;
         case CH_POMME:
            quote = "Where can I get a ticket to your next show? ...Asking for a friend."; 
@@ -391,10 +391,10 @@ if (!azure_handled_victory_quote)
            quote = "Note to self: don't drink from any water fountains within the next few hours."; 
            break;
         case CH_ETALUS: 
-           quote = "It must be n-ice to be you, big guy, you don't even need a fridge at home."; 
+           quote = "Must be n-ice to be you, big guy. You don't even need a fridge at home!"; 
            break;
         case CH_RANNO:
-           quote = "Keep that tongue off me! I, uh, taste like rotten blueberries, they'll poison you! ...oh wait.";
+           quote = "Keep that tongue off me! I, uh, taste like rotten blueberries, they'll poison you. ...oh wait.";
            break;
         case CH_HODAN:
            quote = "...Ew, was that your sweat???"; 
@@ -414,7 +414,7 @@ if (!azure_handled_victory_quote)
            quote = "Oh, to have a faceless floating orb of light as a companion... is what I would say if I wanted one."; 
            break;
         case CH_SHOVEL_KNIGHT:
-           quote = "Hmm... Maybe I get a shovel to use and fight with too...";
+           quote = "Hmm... Maybe I oughta get a shovel to use and fight with too...";
            break;
         default: break;
     }

@@ -78,6 +78,7 @@ if (state == 2){
 			instance_destroy(drop_hitbox);
 		}
 		state = 3;
+		state_timer = 0;
 		image_index = 0;
 		sprite_index = sprite_get("trident_crash");
 		sound_play(asset_get("sfx_fishing_rod_land"));
@@ -92,12 +93,25 @@ if (state == 3){
 	hsp = 0;
 	vsp = 0; 
 		if (image_index >= 3){
-			sprite_index = sprite_get("trident_idle");  
+			sprite_index = sprite_get("trident_idle");
+			mask_index = sprite_get("trident_mask");
 			image_index = 0;
-			if (!place_meeting(x,y+6,asset_get("par_block")) && !place_meeting(x,y+6,asset_get("par_jumpthrough"))){
-				state = 2;
-			}
+			trident_idle = true;
 		}
+	}
+	if (state_timer < 10){
+		if ((place_meeting(x,y,asset_get("par_block")) || place_meeting(x,y,asset_get("par_jumpthrough")))){
+			y -= 1;
+		}
+		if ((place_meeting(x,y-3,asset_get("par_block")) || place_meeting(x,y-3,asset_get("par_jumpthrough")))){
+			y -= 3;
+		}
+		if ((!place_meeting(x,y+1,asset_get("par_block")) && !place_meeting(x,y+1,asset_get("par_jumpthrough")))){
+			y += 1;
+		}
+	}
+	if (!place_meeting(x,y+6,asset_get("par_block")) && !place_meeting(x,y+6,asset_get("par_jumpthrough"))){
+		state = 2;
 	}
 }
 

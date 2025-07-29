@@ -5,7 +5,7 @@ switch (get_player_color(player)) {
         set_character_color_shading(3, -1);
     case 13:
         set_character_color_shading(5, 1.5);
-    case 17: //employee
+    case 15: //employee
         set_character_color_shading(5, 1.5)
 }
 

@@ -70,13 +70,16 @@ if (attack==AT_DSPECIAL){
 if (attack==AT_DSPECIAL_2){
 	if (my_hitboxID.hbox_num == 1){
 		sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.8,1);
-		old_vsp = clamp(old_vsp,-5,-2)-5;
+		old_vsp = clamp(old_vsp,-3,-2)-5;
 		sound_play(sound_get("bounce"),false,noone,1,1)
 		sound_play(sound_get("bounce2"),false,noone,0.9,1.52)
 		var min_timer_wait = 20*(0.5);
 		if (window == 3 && window_timer >= min_timer_wait){
 			white_flash_timer = 10;
 		}
+				/*attack_end();
+				destroy_hitboxes();
+				create_hitbox( AT_DSPECIAL_2, 1, x, y );*/
 	}
 }
 

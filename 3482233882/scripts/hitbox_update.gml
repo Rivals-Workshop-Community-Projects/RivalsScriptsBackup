@@ -19,8 +19,9 @@ if (attack == AT_USPECIAL) {
         var recover_dir = point_direction(x, y, _x, _y);
         
         with player_id {
-            hsp = lengthdir_x(11, recover_dir);
-            vsp = lengthdir_y(11, recover_dir);
+        	var sp = 11 + 1*item_grid[29][4];
+            hsp = lengthdir_x(sp, recover_dir);
+            vsp = lengthdir_y(sp, recover_dir);
             old_hsp = hsp;
             old_vsp = vsp;
             

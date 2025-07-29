@@ -9,6 +9,8 @@ if (attack == AT_JAB) {
     set_hitbox_value(AT_JAB, 2, HG_HITSTUN_MULTIPLIER, 1);
     set_hitbox_value(AT_JAB, 3, HG_HITSTUN_MULTIPLIER, 1);
     set_hitbox_value(AT_JAB, 4, HG_HITSTUN_MULTIPLIER, 1);
+    set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
+	set_hitbox_value(AT_JAB, 2, HG_FORCE_FLINCH, 1);
 }
 
 if (attack == AT_TAUNT) {
@@ -35,8 +37,9 @@ if (attack == AT_DSPECIAL) {
         if (point_distance(x, y, chest_obj.x, chest_obj.y) >= radius) move_cooldown[AT_DSPECIAL_2] = 2;
         halt_for_trishop = false;
     }
-    else if (chest_obj.state != clamp(chest_obj.state, 1, 2)) {
-        move_cooldown[AT_DSPECIAL] = 2;
+    else if (chest_obj.state != clamp(chest_obj.state, 1, 2) && move_cooldown[AT_DSPECIAL] == 0) {
+    	sound_play(asset_get("mfx_tut_fail"), false, false, 1, 0.5);
+        move_cooldown[AT_DSPECIAL] = 45; // Hacky anti-spam measure, gets reset by article1 when it's ready
     }
 }
 

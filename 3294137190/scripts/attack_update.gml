@@ -331,7 +331,7 @@ if (attack == AT_JAB || attack == AT_FTILT || attack == AT_UTILT || attack == AT
 	|| attack == AT_JAB_2 || attack == AT_FTILT_2 || attack == AT_UTILT_2 || attack == AT_DTILT_2 || attack == AT_DATTACK_2){
 	//Plays the visual and sound showing it was successful
 	if ((window > (get_attack_value(attack, AG_NUM_WINDOWS)-1) || (get_window_value( attack, window, AG_WINDOW_CANCEL_TYPE) == 1)) 
-	&& special_pressed && !shield_down && trick_attack == false && silver_bullets >= 3){
+	&& special_pressed && !shield_down && joy_pad_idle && trick_attack == false && silver_bullets >= 3){
 		trick_attack = true;
 		var vfx = spawn_hit_fx( x, y, trick_spark );
 		vfx.depth -= 1;
@@ -364,7 +364,7 @@ if (attack == AT_JAB || attack == AT_FTILT || attack == AT_UTILT || attack == AT
 if (attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_DAIR || attack == AT_BAIR
 	|| attack == AT_NAIR_2 || attack == AT_FAIR_2 || attack == AT_UAIR_2 || attack == AT_DAIR_2 || attack == AT_BAIR_2){
 	//Plays the visual and sound showing it was successful
-	if (window > (get_attack_value(attack, AG_NUM_WINDOWS)-1) && special_pressed && !shield_down && trick_attack == false && silver_bullets >= 3){
+	if (window > (get_attack_value(attack, AG_NUM_WINDOWS)-1) && special_pressed && !shield_down && joy_pad_idle && trick_attack == false && silver_bullets >= 3){
 		trick_attack = true;
 		vsp = -5;	//Hop when triggering it
 		var vfx = spawn_hit_fx( x, y, trick_spark );

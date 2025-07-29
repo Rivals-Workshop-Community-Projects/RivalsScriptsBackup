@@ -454,7 +454,7 @@ switch(attack)
 				window_timer = 0;
 				sound_stop(jetpack_sfx);
 			}
-			if (jetpack_fuel <= 0 || shield_down || anti_thrust_stall >= 5 || y <= get_stage_data(SD_TOP_BLASTZONE_Y) - 64){
+			if (jetpack_fuel <= 0 || shield_down || anti_thrust_stall >= 4 || y <= get_stage_data(SD_TOP_BLASTZONE_Y) - 64){
 				window = 5;
 				window_timer = 0;
 				invincible = false;
@@ -467,8 +467,8 @@ switch(attack)
 		}
 		if (window == 3 || window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (quota_level < 7){
-				hsp = lengthdir_x(7, jetpack_dir)
-				vsp = lengthdir_y(6, jetpack_dir)
+				hsp = lengthdir_x(6, jetpack_dir)
+				vsp = lengthdir_y(5, jetpack_dir)
 			} else {
 				hsp = lengthdir_x(11, jetpack_dir)
 				vsp = lengthdir_y(9, jetpack_dir)
@@ -679,7 +679,7 @@ switch(attack)
     				scrap_visual_dir = spr_dir;
 
     				if (current_scrap.index == 31){
-    					if (random_func(9, 10, true) >= 0){
+    					if (random_func(9, 10, true) > 0){
     						current_scrap = available_scrap[random_func(8, array_length(available_scrap) - 1, true)];
     						prev_scrap = current_scrap;
     						//print("no dog here.");

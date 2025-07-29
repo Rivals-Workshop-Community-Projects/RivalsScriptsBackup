@@ -419,8 +419,12 @@ case AT_FSPECIAL:
 			create_hitbox(AT_FSPECIAL, 10, x+32*spr_dir, y-4);
 		}
 	}
+	if window == 2{
+		can_fast_fall = false;
+	}
 	if window > 3{
 		soft_armor = 99;
+		can_fast_fall = false;
 	}
     if window == 6{
     	if window_timer == 18{
@@ -436,9 +440,12 @@ case AT_FSPECIAL:
     		sound_play(sound_get("Hisako_Vacuum_Hit_4_04"),false,noone,1.0);
     	}
     }
-    if window == 3 && window_timer == 16 && wrath_meter >= 20 && !has_hit && focused_fury == 0{
-    	wrath_meter -=8
+    if window == 3 && window_timer == 18 && wrath_meter >= 20 && !has_hit && focused_fury == 0{
+    	wrath_meter -=10
     	wrath = 0;
+    }
+    if window == 3 && window_timer == 1 && !has_hit && focused_fury == 1{
+    	focused_fury_timer-=40
     }
     
 break;

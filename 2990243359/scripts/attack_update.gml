@@ -47,6 +47,7 @@ if (attack == AT_DSTRONG && !instance_exists(trident) && move_cooldown[AT_NSPECI
 			trident = instance_create( x+15*spr_dir, y-45, "obj_article1");
 			trident.state = 3;
 			trident.sprite_index = sprite_get("trident_idle");
+			trident.mask_index = sprite_get("trident_mask");
 			trident.image_index = 4;
 		}
 	}

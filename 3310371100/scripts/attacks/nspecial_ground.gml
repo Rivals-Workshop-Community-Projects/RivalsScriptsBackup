@@ -7,12 +7,12 @@ set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 7);
 //12
 
 //anticipation
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 3);//4
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 //down
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 2);//3
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 1);
 

@@ -38,7 +38,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_UAIR, 4); 
 
 var hb_damage = 8;//10
-var hb_angle = 45;
+var hb_angle = 50;//45
 var hb_bkb = 5;//4
 var hb_kbg = 0.7;
 var hb_bhp = 6;//ori uair value+1

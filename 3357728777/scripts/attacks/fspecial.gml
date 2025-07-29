@@ -22,7 +22,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 0);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_GOTO, 10);
@@ -253,6 +253,7 @@ set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 8, HG_GROUNDEDNESS, 2);
 
 set_hitbox_value(AT_FSPECIAL, 9, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 9, HG_WINDOW, 10);
@@ -276,6 +277,7 @@ set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 9, HG_GROUNDEDNESS, 2);
 
 set_hitbox_value(AT_FSPECIAL, 10, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 10, HG_WINDOW, 10);
@@ -299,6 +301,7 @@ set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 10, HG_GROUNDEDNESS, 2);
 
 set_hitbox_value(AT_FSPECIAL, 11, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 11, HG_WINDOW, 4);

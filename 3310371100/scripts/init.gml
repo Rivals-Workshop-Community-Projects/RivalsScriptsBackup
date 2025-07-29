@@ -44,8 +44,8 @@ prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = 0.05; //bout the same as elliana and olympia
 max_djumps = 1;
 double_jump_time = 38; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 5;//7
-walljump_vsp = 11;//12
+walljump_hsp = 6;//7//5
+walljump_vsp = 9;//12//11
 walljump_time = 32;
 max_fall = 7; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
@@ -137,10 +137,15 @@ dsp_did = false;
 dsp_bounce_count = 0;
 fsp_loop_count = 0;
 fsp_loop_count_storage = 0;
+fsp_loop_count_max = 8;//8
 fsp_vulnerable = false;
 raincloud_present = false;
 dsp_hsp_store = 0;
 dsp_vsp_store = 0;
+
+dsp_downpour = false;
+dsp_downpour_vsp = 16;
+dsp_downpour_hsp = 9;
 
 move_start_spr_dir_tracker = 1;
 wow_wavebounce_happened = false;
@@ -219,6 +224,10 @@ buddy_starko_sfx = sound_get("star_ko");
 neutralized_ability = "Ult. Jump Physics";
 koffing_gas_active=0;
 fx_ice_particle = hit_fx_create( sprite_get("ice_particle"), 8 );//6
+fx_ice_mist_A = hit_fx_create( sprite_get("ice_mist_A"), 32 );
+fx_ice_mist_B = hit_fx_create( sprite_get("ice_mist_B"), 96 );
+fx_ice_mist_C = hit_fx_create( sprite_get("ice_mist_C"), 96 );
+fx_ice_mist_D = hit_fx_create( sprite_get("ice_mist_D"), 96 );
 fx_ashe_trail = hit_fx_create(sprite_get("etc_ashe_trail"), 20);
 
 //victory quote thing - sscripts are unload.gml and results_post_draw.gml - scripts are taken from reiga mal but is from frtoud hypercam

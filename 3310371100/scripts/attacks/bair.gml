@@ -31,14 +31,14 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED, -1);
 
 //hold
-set_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH, 6);//5
 set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 4, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_BAIR, 4, AG_WINDOW_HSPEED, 3);
 
 //end
-set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 15);//18
+set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 16);//18//15
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

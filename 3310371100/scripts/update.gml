@@ -188,6 +188,23 @@ if (state == PS_ATTACK_GROUND){
 	ground_friction = ground_friction_normal;
 }*/
 
+if (fsp_loop_count>=fsp_loop_count_max){
+	if (get_gameplay_time()%8 == 0){
+		var mist_particle_rand = random_func( 0, 2, true )
+		if (mist_particle_rand = 0){
+		var tmp_fx = spawn_hit_fx( x-24+random_func( 1, 48, true ), y-round(char_height/2)-48+random_func( 4, 64, true ), fx_ice_mist_B);
+		}
+		if (mist_particle_rand = 1){
+		var tmp_fx = spawn_hit_fx( x-24+random_func( 2, 48, true ), y-round(char_height/2)-48+random_func( 5, 64, true ), fx_ice_mist_C);
+		}
+		if (mist_particle_rand = 2){
+		var tmp_fx = spawn_hit_fx( x-24+random_func( 3, 48, true ), y-round(char_height/2)-48+random_func( 6, 64, true ), fx_ice_mist_D);
+		}
+		tmp_fx.image_alpha = 0.15;
+		tmp_fx.hsp = -1+random_func( 7, 2, false );
+	}
+}
+
 //once-per-airtime land
 if (fsp_did){
 	move_cooldown[AT_FSPECIAL] = 2;

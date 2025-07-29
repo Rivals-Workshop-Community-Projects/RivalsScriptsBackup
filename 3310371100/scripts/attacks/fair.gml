@@ -7,12 +7,12 @@ set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FAIR, AG_MUNO_ATTACK_MISC_ADD, "hello - this move has AUTOCANCEL at window 5. because of the way it is implemented, it might look wrong in munobird. i assure you it works. FAIR LANDING LAG IS 9, AND AUTOCANCEL MAKES IT 4.");
 
 //start
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 14);//13//15
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 13);//13//15//14
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 13);//12
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 12);//12
 
 //anticipation
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
@@ -48,9 +48,9 @@ set_window_value(AT_FAIR, 5, AG_MUNO_WINDOW_EXCLUDE, 1);
 set_num_hitboxes(AT_FAIR, 5); 
 
 var hb_damage = 13;//10
-var hb_angle = 50;
+var hb_angle = 45;//50
 var hb_bkb = 6;
-var hb_kbg = 1.0;
+var hb_kbg = 0.95;//1.0
 var hb_bhp = 8;
 var hb_hpg = 0.5;
 
@@ -67,6 +67,7 @@ set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, hb_bhp);
@@ -87,6 +88,7 @@ set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, hb_bhp);
@@ -108,6 +110,7 @@ set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FAIR, 3, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, hb_bhp);

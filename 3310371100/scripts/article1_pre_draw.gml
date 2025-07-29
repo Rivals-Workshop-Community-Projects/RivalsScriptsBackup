@@ -19,7 +19,7 @@ if (is_iced){
 }
 
 var y_offset = 20;
-var scale_calc = rain_bottom_dist+y_offset
+var scale_calc = clamp(rain_bottom_dist+y_offset,0,6200);
 //if (y-y_offset<player_id.cloud_y_limit){
 draw_sprite_ext( sprite_get("raincloud_area"), 0, x, y-y_offset, 2*testa, scale_calc, 0, -1, 0.4+((is_iced)?0.3:0) )
 //}

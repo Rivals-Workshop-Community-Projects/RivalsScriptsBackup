@@ -63,6 +63,7 @@ alt_name[22] = "Bloom and Doom";
 alt_name[23] = "All-Star";
 alt_name[24] = "Vortex Gallery";
 alt_name[25] = "Spectral Thief";
+alt_name[26] = "Ghostride";
 
 //everything in between abyss and gold rank alts can be anything, i just like to put these in this pattern
 //if you change it don't forget to change the icon order!

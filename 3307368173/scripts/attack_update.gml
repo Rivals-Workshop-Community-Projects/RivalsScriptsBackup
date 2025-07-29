@@ -13,7 +13,6 @@ if (attack == AT_JAB) {
             set_state(PS_IDLE);
             // if you get ftilt frame-perfectly on parry you can carry the parry lag over
             // that doesn't happen in base cast so this fixes that
-            was_parried = false; 
         }
     } else {
         reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);

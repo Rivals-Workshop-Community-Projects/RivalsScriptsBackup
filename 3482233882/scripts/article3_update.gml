@@ -93,6 +93,13 @@ switch state {
 	case -5:
 		visible = false;
 		
+		// Clean up if the match is restarted
+		if (get_gameplay_time() == 1 && clear_on_restart) {
+			instance_destroy();
+			exit;
+		}
+		clear_on_restart = (get_gameplay_time() > 1);
+		
 		// Clean up upon reaching CSS (failsafe)
 		if (last_room != room) {
 			if (room == asset_get("local_charselect_room")
@@ -133,7 +140,8 @@ switch state {
             image_index = 0;
         }
         with oPlayer {
-            if (!free && player != other.player && !burned && place_meeting(x, y, other)) {
+        	var invuln = hurtboxID.dodging || invincible || attack_invince;
+            if (!invuln && !free && player != other.player && !burned && place_meeting(x, y, other)) {
                 burned = true;
                 burnt_id = other.player_id;
                 burn_timer = 150 - 30*other.damage;
@@ -274,6 +282,22 @@ switch state {
     			trail_color = c_white;
     			break;
     	}
+    	
+    	do_ignition_reroll = false; // used for vfx later
+    	var can_reroll = "forced_index" not in self && player_id.item_grid[25][4] > 0;
+    	can_reroll &= rarity != 2 && (rarity != 1 || array_length(player_id.burn_uncommon_cache) > 0);
+    	if (can_reroll) {
+    		var reroll_odds = power(0.5, 1+player_id.burn_items_held);
+    		if (random_func(3, 1, false) < reroll_odds) {
+    			do_ignition_reroll = true;
+    		}
+    	}
+    	
+    	if (do_ignition_reroll) {
+    		// if used, uncommon cache is guaranteed safe by earlier checks
+    		var reroll_pool = (rarity == 0) ? player_id.burn_common_cache : player_id.burn_uncommon_cache;
+    		forced_index = reroll_pool[random_func(6, array_length(reroll_pool), true)];
+    	}
         
         mask_index = sprite_get("null");
         ignores_walls = 1;
@@ -288,12 +312,16 @@ switch state {
        
     // rise
     case 21:
-        vsp += 0.4 - (rarity/10);
-        if (vsp >= -1 + (rarity/2)) {
+        vsp += 0.4 - (rarity+do_ignition_reroll)/10;
+        if (vsp >= -1 + (rarity+do_ignition_reroll)/2) {
         	vel = abs(vsp);
         	dir = 90;
         	state = 22;
         	state_timer = 0;
+        	if (do_ignition_reroll) {
+        		spawn_hit_fx(x, y, HFX_ZET_FIRE);
+        		sound_play(asset_get("sfx_forsburn_combust"));
+        	}
         }
         update_position_history();
         break;
@@ -336,7 +364,7 @@ switch state {
     		state_timer = 0;
     		player_id.grant_rarity = rarity;
     		
-    		if ("forced_index") in self {
+    		if ("forced_index" in self) {
     			player_id.new_item_id = forced_index;
     		} else {
     			player_id.ue1_command = 0;

@@ -2,6 +2,7 @@
 init_complete = false; // used to ensure that draw scripts don't flood the error log if initialization is interrupted
 is_playtest = (object_index == oTestPlayer);
 is_ror_commando = true;
+tag_alt_active = (get_synced_var(player) == 14);
 
 debug_display_opened = 0;
 debug_display_count = 23;
@@ -15,6 +16,7 @@ item_smuggler.state = -5;
 item_smuggler.persistent = true;
 item_smuggler.inventory_list = [];
 item_smuggler.last_room = room;
+item_smuggler.clear_on_restart = false;
 
 var player_name = get_player_name(player);
 limitless_mode = (string_pos("CHEAT", player_name) == 1); // Indexed starting at 1 due to GML jank
@@ -23,7 +25,6 @@ limitless_mode_locked = !limitless_mode;
 
 rainfont = font_get("_rfont");
 rainfontbig = font_get("_rfontbig");
-
 
 //=-(                        ~~//** CONSTANTS **//~~                       )-=//
 // RCF user_event, defines lots of primitive constants. Will be removed during flattening.
@@ -130,7 +131,8 @@ set_victory_theme(sound_get("cm_victory"))
 // Legendary items must be correctly tagged in the primary type field, or they will be treated as normal items.
 // Critical items must be correctly tagged in either type field to enable their effects.
 
-item_grid =[["Crowbar",0,1,0,0,noone,"Deal more damage & knockback to healthy enemies.",noone], ["Warbanner",0,3,5,0,noone,"Taunt to place down a powerful buffing Warbanner.",noone], ["Headstompers",0,0,noone,0,noone,"Hurt enemies by fast-falling.",noone], ["Armor-Piercing Rounds",0,1,0,0,noone,"Strongs deal more damage and slightly more knockback.",noone], ["Bustling Fungus",0,2,noone,0,noone,"Crouch to heal over time.",noone], ["Paul's Goat Hoof",0,3,noone,0,noone,"Move faster.",noone], ["Energy Drink",0,3,noone,0,noone,"Dash faster.",noone], ["Arcane Blades",0,3,noone,0,noone,"Move faster after reaching 100%.",noone], ["Hermit's Scarf",0,3,noone,0,noone,"Parry, rolls, and airdodges have more invulnerability.",noone], ["Topaz Brooch",0,6,noone,0,noone,"Gain a barrier on kill.",noone], ["Lens Maker's Glasses",0,4,noone,0,noone,"Critical Strikes deal more damage.",noone], ["Tri-Tip Dagger",0,4,noone,0,noone,"Critical Strikes bleed opponents, dealing damage over time.",noone], ["Taser",0,4,noone,0,noone,"Critical Strikes briefly stun opponents.",noone], ["Soldier's Syringe",0,5,noone,0,noone,"Increased attack speed.",noone], ["Mocha",0,5,3,0,noone,"Slightly increased movement & attack speed.",noone], ["Sticky Bomb",0,7,noone,0,noone,"Blast attacks attach a little more firepower.",noone], ["Gasoline",0,7,9,0,noone,"Blast attacks set enemies on fire.",noone], ["Tough Times",0,-1,noone,0,noone,"I'm coming home soon. Stay strong.",noone], ["Kjaro's Band",1,0,9,0,noone,"Strongs blast enemies with runic fire, lighting them ablaze.",noone], ["Runald's Band",1,1,noone,0,noone,"Strongs blast enemies with runic ice, freezing to the bone.",noone], ["Ukulele",1,1,4,0,noone,"..And his music was electric.",noone], ["Hopoo Feather",1,3,noone,0,noone,"Gain an extra jump.",noone], ["Guardian Heart",1,6,noone,0,noone,"Gain a shield that recharges outside of danger.",noone], ["Locked Jewel",1,6,3,0,noone,"Gain a burst of shield and speed after opening chests.",noone], ["Harvester's Scythe",1,2,4,0,noone,"Critical Strikes heal you by a portion of the damage they deal.",noone], ["Ignition Tank",1,4,9,0,noone,"Critical Strikes deal extra knockback to enemies on fire.",noone], ["Predatory Instincts",1,4,5,0,noone,"Critical Strikes increase attack speed.",noone], ["Stun Grenade",1,7,noone,0,noone,"Blast attacks stun enemies briefly.",noone], ["AtG Missile Mk. 1",1,0,noone,0,noone,"Strongs fire a missile.",noone], ["Rusty Jetpack",1,3,noone,0,noone,"Increase jump height and reduce gravity.",noone], ["Legendary Spark",1,-1,noone,0,noone,"Smite them. Smite them all.",noone], ["Ancient Scepter",2,0,noone,0,noone,"Upgrade your Neutral Special with Attack Speed.",noone], ["Fireman's Boots",2,0,noone,0,noone,"Fight fire with fire...",noone], ["AtG Missile Mk. 2",2,0,noone,0,noone,"Hooah.",noone], ["The Ol' Lopper",2,1,noone,0,35,"Enemies above 120% take massive knockback.",noone], ["Shattering Justice",2,1,noone,0,34,"Enemies above 100% have their armor Shattered.",noone], ["Classified Access Codes",2,0,noone,0,noone,"Hold Down Special for repositioning, then press Attack for extreme reinforcements.",noone], ["Photon Jetpack",2,3,noone,0,38,"No hands!",noone], ["H3AD-5T V2",2,3,noone,0,37,"Jump much higher, and fall much faster.",noone], ["Hardlight Afterburner",2,3,noone,0,noone,"Upgrades your side special.",noone], ["Laser Scope",2,4,noone,0,41,"Critical hits deal massive damage and knockback.",noone], ["Laser Turbine",2,5,noone,0,40,"Gunshots charge up a huge Neutral Special.",noone], ["Aegis",2,6,2,0,noone,"All healing also gives you half of its value as barrier.",noone], ["Brilliant Behemoth",2,7,noone,0,noone,"Your gunshots explode!",noone], ["Dio's Best Friend",2,2,noone,0,noone,"Cheat death.",noone], ["Withered Best Friend",-2,2,noone,0,noone,"A spent item with no remaining power.",noone], ["57 Leaf Clover",2,-1,noone,0,noone,"Luck is on your side.",noone], ["Monster Tooth",0,2,noone,0,noone,"Enemies that get launched hard enough spawn healing orbs.",noone], ["Wax Quail",1,3,noone,0,noone,"Jumping while dashing boosts you forward.",noone], ["Filial Imprinting",1,5,3,0,noone,"Hatch a strange creature who drops buffs every 15 seconds.",noone], ["Energy Cell",1,5,noone,0,noone,"Gain attack speed the more you're damaged.",noone], ["Shipping Request Form",1,8,noone,0,noone,"Increases the odds of calling down a Tri-Shop.",noone], ["Fire Shield",0,0,9,0,noone,"Set opponents on fire when dodging or parrying attacks.",noone], ["Trophy Hunter's Tricorn",2,8,0,0,noone,"Claim a trophy from the opponent with FStrong. Only has one shot.",noone], ["Trophy Hunter's Relic",-2,8,0,0,noone,"Looks kinda cool, but that's about it. ",noone], ["Fireworks",0,0,noone,0,noone,"Launch fireworks when opening chests.",noone], ["Snake Eyes",1,4,noone,0,noone,"Consecutive critical hits become stronger.",noone], ["Ceremonial Dagger",2,4,noone,0,noone,"Critical hits summon daggers to chase down opponents.",noone], ["Growth Nectar",2,8,noone,0,noone,"Common items grow more powerful.",noone], ["Shaped Glass",-3,0,noone,0,noone,"Double your damage... but Shatter your weight.",noone], ["ICBM",-3,0,noone,0,noone,"Double all homing missiles. They now apply Blast effects.",noone], ["Plasma Shrimp",-3,0,noone,0,noone,"Hitting opponents with non-Strongs fires missiles.",noone], ["Benthic Bloom",-3,8,noone,0,noone,"Your items mutate and evolve as your opponents die.",noone], ["Longstanding Solitude",-3,8,noone,0,noone,"Gain 8 random items. You have no backup.",noone], ]
+item_grid =[["Crowbar",0,1,0,0,noone,"Deal more damage & knockback to healthy enemies.",noone], ["Warbanner",0,3,5,0,noone,"Taunt to place down a powerful buffing Warbanner.",noone], ["Headstompers",0,0,noone,0,noone,"Hurt enemies by fast-falling.",noone], ["Armor-Piercing Rounds",0,1,0,0,noone,"Strongs deal more damage and slightly more knockback.",noone], ["Bustling Fungus",0,2,noone,0,noone,"Crouch to heal over time.",noone], ["Paul's Goat Hoof",0,3,noone,0,noone,"Move faster.",noone], ["Energy Drink",0,3,noone,0,noone,"Dash faster.",noone], ["Arcane Blades",0,3,noone,0,noone,"Move faster after reaching 100%.",noone], ["Hermit's Scarf",0,3,noone,0,noone,"Parry, rolls, and airdodges have more invulnerability.",noone], ["Topaz Brooch",0,6,noone,0,noone,"Gain a barrier on kill.",noone], ["Lens Maker's Glasses",0,4,noone,0,noone,"Critical Strikes deal more damage.",noone], ["Tri-Tip Dagger",0,4,noone,0,noone,"Critical Strikes bleed opponents, dealing damage over time.",noone], ["Taser",0,4,noone,0,noone,"Critical Strikes briefly stun opponents.",noone], ["Soldier's Syringe",0,5,noone,0,noone,"Increased attack speed.",noone], ["Mocha",0,5,3,0,noone,"Slightly increased movement & attack speed.",noone], ["Sticky Bomb",0,7,noone,0,noone,"Blast attacks attach a little more firepower.",noone], ["Gasoline",0,7,9,0,noone,"Blast attacks set enemies on fire.",noone], ["Tough Times",0,-1,noone,0,noone,"I'm coming home soon. Stay strong.",noone], ["Kjaro's Band",1,0,9,0,noone,"Strongs blast enemies with runic fire, lighting them ablaze.",noone], ["Runald's Band",1,1,noone,0,noone,"Strongs blast enemies with runic ice, freezing to the bone.",noone], ["Ukulele",1,1,4,0,noone,"..And his music was electric.",noone], ["Hopoo Feather",1,3,noone,0,noone,"Gain an extra jump.",noone], ["Guardian Heart",1,6,noone,0,noone,"Gain a shield that recharges outside of danger.",noone], ["Locked Jewel",1,6,3,0,noone,"Gain a burst of shield and speed after opening chests.",noone], ["Harvester's Scythe",1,2,4,0,noone,"Critical Strikes heal you by a portion of the damage they deal.",noone], ["Ignition Tank",1,4,9,0,noone,"Critical Strikes deal extra knockback to enemies on fire.",noone], ["Predatory Instincts",1,4,5,0,noone,"Critical Strikes increase attack speed.",noone], ["Stun Grenade",1,7,noone,0,noone,"Blast attacks stun enemies briefly.",noone], ["AtG Missile Mk. 1",1,0,noone,0,noone,"Strongs fire a missile.",noone], ["Rusty Jetpack",1,3,noone,0,noone,"Increase jump height and reduce gravity.",noone], ["Legendary Spark",1,-1,noone,0,noone,"Smite them. Smite them all.",noone], ["Ancient Scepter",2,0,noone,0,noone,"Upgrade your Neutral Special with Attack Speed.",noone], ["Fireman's Boots",2,0,noone,0,noone,"Fight fire with fire...",noone], ["AtG Missile Mk. 2",2,0,noone,0,noone,"Hooah.",noone], ["The Ol' Lopper",2,1,noone,0,35,"Enemies above 120% take massive knockback.",noone], ["Shattering Justice",2,1,noone,0,34,"Enemies above 100% have their armor Shattered.",noone], ["Classified Access Codes",2,0,noone,0,noone,"Hold Down Special for repositioning, then press Attack for extreme reinforcements.",noone], ["Photon Jetpack",2,3,noone,0,38,"No hands!",noone], ["H3AD-5T V2",2,3,noone,0,37,"Jump much higher, and fall much faster.",noone], ["Hardlight Afterburner",2,3,noone,0,noone,"Upgrades your side special.",noone], ["Laser Scope",2,4,noone,0,41,"Critical hits deal massive damage and knockback.",noone], ["Laser Turbine",2,5,noone,0,40,"Gunshots charge up a huge Neutral Special.",noone], ["Aegis",-2,6,2,0,noone,"All healing also gives you half of its value as barrier.",noone], ["Brilliant Behemoth",2,7,noone,0,noone,"Your gunshots explode!",noone], ["Dio's Best Friend",2,2,noone,0,noone,"Cheat death.",noone], ["Withered Best Friend",-2,2,noone,0,noone,"A spent item with no remaining power.",noone], ["57 Leaf Clover",2,-1,noone,0,noone,"Luck is on your side.",noone], ["Monster Tooth",0,2,noone,0,noone,"Enemies that get launched hard enough spawn healing orbs.",noone], ["Wax Quail",1,3,noone,0,noone,"Jumping while dashing boosts you forward.",noone], ["Filial Imprinting",1,5,3,0,noone,"Hatch a strange creature who drops buffs every 15 seconds.",noone], ["Energy Cell",1,5,noone,0,noone,"Gain attack speed the more you're damaged.",noone], ["Shipping Request Form",1,8,noone,0,noone,"Increases the odds of calling down a Tri-Shop.",noone], ["Fire Shield",0,0,9,0,noone,"Set opponents on fire when dodging or parrying attacks.",noone], ["Trophy Hunter's Tricorn",2,8,0,0,noone,"Claim a trophy from the opponent with FStrong. Only has one shot.",noone], ["Trophy Hunter's Relic",-2,8,0,0,noone,"Looks kinda cool, but that's about it. ",noone], ["Fireworks",0,0,noone,0,noone,"Launch fireworks when opening chests.",noone], ["Snake Eyes",1,4,noone,0,noone,"Consecutive critical hits become stronger.",noone], ["Ceremonial Dagger",2,4,noone,0,noone,"Critical hits summon daggers to chase down opponents.",noone], ["Growth Nectar",2,8,noone,0,noone,"Common items grow more powerful.",noone], ["Shaped Glass",-3,0,noone,0,noone,"Double your damage... but Shatter your weight.",noone], ["ICBM",-3,0,noone,0,noone,"Double all homing missiles. They now apply Blast effects.",noone], ["Plasma Shrimp",-3,0,noone,0,noone,"Hitting opponents with non-Strongs fires missiles.",noone], ["Benthic Bloom",-3,8,noone,0,noone,"Your items mutate and evolve as your opponents die.",noone], ["Longstanding Solitude",-3,8,noone,0,noone,"Gain 8 random items. You have no backup.",noone], ["Captain's Brooch",2,8,noone,0,noone,"Reduce the recharge time of chests. Gain a freebie on the house!",noone],  ["Dios",-5,2,noone,0,noone,"Cheat death.",noone], ["Withered Dios",-5,2,noone,0,noone,"God rest her soul.",noone], ]
+
 
 // Ordering for in-game utilities (debug displays and practice mode)
 item_id_ordering = [
@@ -188,14 +190,23 @@ item_id_ordering = [
     57,
     40,
     41,
-    42,
-    43,      // 55
-    58,
-    44,          // 57
+    43,
+    58,        // 55
+    (tag_alt_active ? 65 : 44),
+    64,      // 57
 ];
 
-// Enable secret if Rune O is taken
-if (has_rune("O")) array_push(item_id_ordering, 46);
+// TAG alt easter egg
+if (tag_alt_active) {
+    item_grid[@ 44][@ 1] = -2;
+    item_grid[@ 65][@ 1] = 2;
+}
+
+// Enable secrets if appropriate
+if (has_rune("O") || limitless_mode) {
+    array_push(item_id_ordering, 42);
+    array_push(item_id_ordering, 46);
+}
 
 // Disable chest-proc items if Longstanding Solitude is taken
 if (has_rune("K")) {
@@ -313,6 +324,19 @@ critical_active = 0;     // enables checks for crit items
 attack_speed = 1;        // inits to 1, goes up with attack speed items
 move_speed = 0;          // inits to 0, goes up with items like Paul's Goat Hoof
 dodge_duration_add = 0;  // inits to 0, adds n frames to shield actions
+burn_items_held = 0;     // inits to 0, excludes ignition tank. used for item rerolling
+
+// Burn item cache (used for ignition tank rerolling)
+burn_item_cache = [];
+burn_common_cache = [];
+burn_uncommon_cache = [];
+for (var i = 0; i < array_length(item_grid); i++) {
+    if (i != 25 && (item_grid[i][2] == 9 || item_grid[i][3] == 9)) {
+        array_push(burn_item_cache, i);
+        if (item_grid[i][1] == 0) array_push(burn_common_cache, i);
+        if (item_grid[i][1] == 1) array_push(burn_uncommon_cache, i);
+    }
+}
 
 // Attack overwrites (see set_attack.gml)
 ntaunt_index = AT_TAUNT; // taunts altered by Ukelele/Warbanner
@@ -368,6 +392,7 @@ warbanner_obj = noone;
 commando_warbanner_owner = noone; // mirrored in other_init
 commando_warbanner_strength = 0;
 commando_warbanner_updated = 0;
+ai_warbanner_claimed = false;
 
 stompers_active = 0;
 stompers_timer = 999; // for anims
@@ -458,7 +483,7 @@ icbm_active = 0;
 // Training mode utility
 tmu_state = -1;
 tmu_exists = get_match_setting(SET_PRACTICE);
-init_prompt_active = tmu_exists && !get_match_setting(SET_RUNES) && !limitless_mode;
+init_prompt_active = tmu_exists && !get_match_setting(SET_RUNES) && !limitless_mode && get_player_hud_color(player) != c_gray;
 init_prompt_timer = 0;
 if (tmu_exists) {
     
@@ -492,7 +517,7 @@ if (tmu_exists) {
 //          Sound Effects (gonna use init this time, wanna see if it makes it easier)                //
 s_dag_swing = sound_get("cm_dagger_swing");
 s_cbar = sound_get("cm_crowbar");
-s_dios = sound_get("cm_item_dios");
+s_dios = tag_alt_active ? sound_get("im_sorry_sheargrub") : sound_get("cm_item_dios");
 s_shotty = sound_get("cm_shotgun_blast");
 s_reload = sound_get("cm_shotgun_load");
 

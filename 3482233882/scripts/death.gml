@@ -18,9 +18,9 @@ do_ignite_hbox = 0;
 do_behemoth_hbox = 0;
 
 // Dio's Best Friend
-if (item_grid[44][4] > 0) {
+if (item_grid[44][4] > 0 || item_grid[65][4] > 0) {
     
-	sound_play(s_dios);
+	sound_play(s_dios, 0, 0); //pans to the middle of the stage
 	dios_revive_timer = 60;
 	set_state(PS_HITSTUN);
 	initial_invince = 1;

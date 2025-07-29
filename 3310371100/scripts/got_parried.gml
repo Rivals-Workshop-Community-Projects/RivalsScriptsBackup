@@ -2,8 +2,14 @@
 the_parried_ice = 0;
 
 if (my_hitboxID.attack==AT_NSPECIAL){
-	my_hitboxID.ice_hsp = my_hitboxID.ice_hsp*-1.5;
-	my_hitboxID.hitbox_timer = 0;
+	if (my_hitboxID.ice_verticalmode==true){
+		my_hitboxID.ice_hsp = my_hitboxID.ice_hsp*-1.5;
+		my_hitboxID.ice_vsp = my_hitboxID.ice_vsp*-1;
+		my_hitboxID.hitbox_timer = 0;
+	}else{
+		my_hitboxID.ice_hsp = my_hitboxID.ice_hsp*-1.5;
+		my_hitboxID.hitbox_timer = 0;
+	}
 }
 if (my_hitboxID.attack==AT_USPECIAL){
 	vsp = 0;

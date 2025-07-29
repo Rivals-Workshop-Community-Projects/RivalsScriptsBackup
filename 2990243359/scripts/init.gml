@@ -112,6 +112,47 @@ vfx_sweetspot = hit_fx_create(sprite_get("vfx_collect"), 36);
 bubble_x = 0;
 bubble_y = 8;
 
+//voice
+var tmp_sync_vars = get_synced_var(player);
+for (var i = 0; i < 2; i++)
+{
+    var shift = (i*4);
+    synced_vars[i] = tmp_sync_vars >> shift & 15;
+}
+
+switch (synced_vars[0])
+{
+	default: //no voice
+
+	break;
+	case 1: //voice
+	voice_attack[1] = sound_get("voice_attack1");
+	voice_attack[2] = sound_get("voice_attack2");
+	voice_attack[3] = sound_get("voice_attack3");
+	voice_attack[4] = sound_get("voice_attack4");
+	voice_attack[5] = sound_get("voice_attack5");
+	voice_attack_long[1] = sound_get("voice_attack_long1");
+	voice_attack_long[2] = sound_get("voice_attack_long2");
+	voice_attack_long[3] = sound_get("voice_attack_long3");
+	voice_attack_long[4] = sound_get("voice_attack_long4");
+	voice_attack_long[5] = sound_get("voice_attack_long5");
+	voice_fstrong[1] = sound_get("voice_fstrong1");
+	voice_fstrong[2] = sound_get("voice_fstrong2");
+	voice_fstrong[3] = sound_get("voice_fstrong3");
+	voice_damage[1] = sound_get("voice_damage1");
+	voice_damage[2] = sound_get("voice_damage2");
+	voice_damage[3] = sound_get("voice_damage3");
+	voice_damage[4] = sound_get("voice_damage4");
+	voice_damage[5] = sound_get("voice_damage5");
+	voice_damage[6] = sound_get("voice_damage6");
+	voice_death[1] = sound_get("voice_damage_big1");
+	voice_death[2] = sound_get("voice_damage_big2");
+	voice_death[3] = sound_get("voice_damage_big3");
+	voice_death[4] = sound_get("voice_damage_big4");
+	break;
+}
+voice_cooldown = 0;
+
 atime=0
 can_glide = false;
 glide_used = false;

@@ -16,10 +16,23 @@ if (!is_valid_index) {
     exit;
 }
 
-// Crit items (assumes they're properly tagged)
+// Crit items
 if (item_grid[new_item_id][2] == 4 || item_grid[new_item_id][3] == 4) {
     if (item_grid[new_item_id][4] > 0) critical_active = 1;
     else assess_critical_active();
+}
+
+// Burn items
+if (new_item_id != 25 && (item_grid[new_item_id][2] == 9 || item_grid[new_item_id][3] == 9)) {
+    burn_items_held = 0;
+    burn_uncommon_cache = [];
+    for (var i = 0; i < array_length(burn_item_cache); i++) {
+        var num_held = item_grid[burn_item_cache[i]][4]
+        burn_items_held += num_held;
+        if (item_grid[burn_item_cache[i]][1] == 1) {
+            if (uncommon_limit - num_held > 0) array_push(burn_uncommon_cache, burn_item_cache[i]);
+        }
+    }
 }
 
 // Switch statement uses hard-coded IDs since RCF constants aren't real constants on dev builds.
@@ -27,6 +40,7 @@ switch new_item_id {
     
     case 1: // Warbanner
         if (item_grid[1][4] == 0) warbanner_obj = noone; // this will prompt the warbanner to clean itself up
+        else far_side_attacks[3] = AT_TAUNT; // for AI
         update_horizontal_movement();
         update_attack_speed();
         set_taunt_indices();
@@ -71,13 +85,15 @@ switch new_item_id {
     case 23: // Locked Jewel
         update_horizontal_movement();
         break;
-        
+    
+    /*
     case 25: // Ignition Tank
         if (!ignition_odds_applied) {
-            buff_synergy_odds(9, 25);
+            buff_synergy_odds(ITP_BURNING, ITEM_IGNITION);
             ignition_odds_applied = true;
         }
         break;
+    */
     
     case 26: // Predatory Instincts
         update_attack_speed();
@@ -96,7 +112,11 @@ switch new_item_id {
         update_attack_speed();
         update_horizontal_movement();
         break;
-        
+    
+    case 31: // Ancient Scepter
+        update_attack_speed();
+        break;
+    
     case 32: // Fireman's Boots
         fireboots_lockout = 0;
         break;
@@ -115,9 +135,9 @@ switch new_item_id {
         break;
     
     case 42: // Aegis
-        aegis_ratio = 0.5 + 0.25*item_grid[42][4]
+        aegis_ratio = 0.5 + 0.25*item_grid[42][4];
         if (!aegis_odds_applied) {
-            buff_synergy_odds(2, 42);
+            //buff_synergy_odds(ITP_HEALING, ITEM_AEGIS);
             aegis_odds_applied = true;
         }
         break;
@@ -210,6 +230,10 @@ switch new_item_id {
         set_hitbox_value(AT_EXTRA_1, 12, 83, icbm_active); // plasma shrimp
         break;
     
+    case 64: // Captain's Brooch
+        dspec_cooldown_hits = 0;
+        break;
+    
 }
 
 
@@ -235,7 +259,7 @@ switch new_item_id {
                  + ((filial_aspeed_timer > 0) ? 3 : 0) // Filial Imprinting
                  + cell_active_stacks // Energy Cell
                  + ((spark_buff_timer > 0) ? 3 * item_grid[30][4] : 0) // Legendary Spark
-    
+                 + item_grid[31][4]
     return;
     
 #define update_horizontal_movement
@@ -285,6 +309,7 @@ switch new_item_id {
     ntaunt_index = (item_grid[1][4] > 0) ? AT_EXTRA_2 : utaunt_index;
     // dtaunt is constant and set in init.gml
 
+// note: deprecated.
 // source_id is the id of the item doing the buffing, which is excluded.
 // rare items are excluded on account of items like Dios existing.
 #define buff_synergy_odds(item_type, source_id)

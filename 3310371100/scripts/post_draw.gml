@@ -13,7 +13,7 @@ if (state==PS_ATTACK_GROUND && attack==AT_NSPECIAL_2){
 	//grabbed_player_obj.y = y + pull_to_y - 10 + (sin( get_gameplay_time()*0.8 )*1)
 	var tmp_x = x + pull_to_x + (10 * spr_dir) + (sin( get_gameplay_time()*0.7 )*10)
 	var tmp_y = y + pull_to_y - 10 + (sin( get_gameplay_time()*0.8 )*5)
-	draw_sprite_ext( sprite_get("nspecial_ice"), get_gameplay_time()/4, tmp_x, tmp_y, 1, 1, 0, -1, 1 )
+	draw_sprite_ext( sprite_get("nspecial_ice_blue"), get_gameplay_time()/4, tmp_x, tmp_y, 1, 1, 0, -1, 1 )
 	}
 }
 
@@ -42,6 +42,82 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
+		
+		
+		patch_note_title[i] = "v3.4 - (2025/07/28)"
+		patch_note_text[i++] = 
+		"===v3.4===
+		---additions---
+		:: extra vfx for FSPECIAL, when your FSPECIAL is fully charged, and NSPECIAL iceball.
+		:::: ... let me know if there are performance problems.
+
+		---changes---
+		:: HUD ... adjusted
+		:: JAB ... now a 2 part jab, with tweaked animation. old jab is now jab1 and the v3.1 jab is now jab2.
+		:::: ... that means you can tilt cancel, i guess
+		:: NSPECIAL-GROUND ... iceball for ground version looks different now? very slightly.
+		:: NSPECIAL-GROUND ... EXPERIMENTAL: specifically for NSPECIAL-GROUND, iceball's physics has been adjusted.
+		:: FSPECIAL ... AG_OFF_LEDGE is now false. that means you don't slide off the edge of the ground into air.
+		:: FSPECIAL ... the recoil now has ledge snap.
+		:: FSPECIAL ... umbrella blast now has body hitbox, doesnt scale with charge nor velocity. it's just a weak hitbox
+		:: DSPECIAL ... EXPERIMENTAL: the end has a little bit of ledge snap?
+		:: DSPECIAL ... now has a priority 0 hitbox that covers the umbrella(doesnt hit players but destroys projectiles)
+		:: DSPECIAL ... bouncing off of raincloud is now much higher (VSP -8 -> -13)
+
+		---fixes---
+		-- ANIMATIONS ... miscolored spots have been spotted in PARRY and FSTRONG. like. this whole time. fixed these now
+		-- DSPECIAL ... fixed an issue where player/cloud bounce velocity behaves weird when you do it really early in the move
+		-- NSPECIAL-AIR ... fixed hurtbox not being filled green when landing
+
+		---balancing??---
+		this is ordered with attacks instead of uh neutral-buffs-nerfs that i usually do
+		i usually order attacks in: jab, dattack, tilts, aerials, strongs, specials, and directions n, f, b, u, d
+		:: STATS ... WALLJUMP horizontal speed increased (5 -> 6)
+		-- STATS ... WALLJUMP height decreased (11 -> 8)
+		:::: ... the only reason i have walljumps like that for my chars are because i didnt really know that there was like standards for base cast walljumps and i just liked them to go vertical. thats like, the only reason
+		:::: ... with the later change on dspecial height and her general recovery height i think its fine to reduce the walljump height
+		:::: ... and im comfortable with horizontal speed increase with her new horizontal recovery option of dspecial
+		-- JAB1 (old jab) ... startup is 1 frame shorter. (5 -> 4)
+		-- JAB1 (old jab) ... now has less forward momentum. (HSP 2 -> 1)
+		:: JAB2 (new jab) ... EXPERIMENTAL: hitbox angle is 40????
+		:: JAB2 (new jab) ... knockback growth has been increased (KBG 0.2 -> 0.35)
+		-- DATTACK ... more of the endlag are properly included in the whifflag, it's pretty dang slow on whiff now
+		++ DATTACK ... endlag reduced by 5 frames, excluding whifflag (25 -> 20)
+		++ DATTACK ... hurtbox sliced a little, hands are no longer hurtbox
+		:: DATTACK ... EXPERIMENTAL: early hit angle now 80, late hit angle 70
+		:: DATTACK ... base knockback decreased, knockback growth increased (BKB 9, 9 -> 8, 8) (KBG 0.4, 0.2 -> 0.5, 0.3)
+		++ FTILT ... hurtbox sliced a little too, when arms are out forward it's not hurtbox
+		-- FTILT ... startup increased by like 2 frames (5 -> 7)
+		:::: ... with ftilt's things like pivot cancels and things maybe its fine to add like that
+		++ DTILT ... time between 1st hitbox and 2nd hitbox is reduced by 3 frames. (7 -> 4)
+		:::: ... DTILT's this inbetween time was always kinda weird so i guess its better
+		:: NAIR1 ... hitbox timings match the animation frame change a bit more now, this makes early hit shorter by 4 frames (8 -> 4), and late hit longer by 5 frames. (17 -> 22)
+		++ NAIR1 ... to compensate, early hit base knockback increased by 1. (BKB 5 -> 6)
+		++ NAIR (both) ... landing lag lower by 2 points (7 -> 5), but no longer has autocancel.
+		++ FAIR ... startup shorter by 1 frame (17 -> 16)
+		++ FAIR ... umbrella's hurtbox was cut in half
+		++ FAIR ... main hit now has hit lockout of 15
+		++ FAIR ... EXPERIMENTAL: main hit angle is now 45 (50 -> 45)
+		++ FAIR ... EXPERIMENTAL: main hit knockback scaling reduced a bit (1.0 -> 0.95)
+		:::: ... maybe i shouldnt have done all these at the same time, lets see how this goes
+		++ BAIR ... EXPERIMENTAL: hurtbox was cut for the shoes, i noticed thats a thing with like ssbu hurtboxes
+		++ UAIR ... EXPERIMENTAL: main hit angle is now 50 (45 -> 50)
+		:::: ... i do like upward angle uair. maybe too good? hard to say, we'll see
+		:: FSTRONG, USTRONG, DSTRONG ... hit lockout of 15 has been added to all of these
+		++ USTRONG ... knockback growth has been increased (KBG 1.0 -> 1.1)
+		++ DSTRONG ... both knockback growth are now the same, and has been increased by 0.05 (KBG 0.75, 0.8 -> 0.85)
+		++ NSPECIAL-GROUND ... startup reduced by 2, it's now the same with NSPECIAL-AIR (19 -> 17)
+		++ FSPECIAL ... umbrella blast minimum startup has been shortened by 6 frames
+		++ USPECIAL ... startup spike hitbox hitpause scaling increased (HPS 0.6 -> 0.8)
+		++ DSPECIAL ... hitbox size increased
+		++ DSPECIAL ... endlag, also being the window after cancelling, is shorter by 2 frames.
+		:::: ... as i tried to buff dspecial more, i felt a disturbance in the air and shivered. even if anyone thinks this move is not good, i am not going to make this move any better. no...
+
+		---notes---
+		thank you spider boi and others, for balance feedbacks!
+		thank you v_force for the ledge snap they added for slenderman fspecial
+
+		i figured out how to make dspecial hit multiple times but im not putting it yet she isn't ready"
 		
 		
 		patch_note_title[i] = "v3.2 - (2025/07/21)"

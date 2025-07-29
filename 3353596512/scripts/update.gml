@@ -381,11 +381,11 @@ if (!free && jetpack_fuel < jetpack_fuel_max && !is_using_jetpack) {
 	move_cooldown[AT_USPECIAL] = 5;
 }
 
-if (jetpack_fuel <= jetpack_fuel_max/3){
+if (jetpack_fuel <= jetpack_fuel_max/3) || (anti_thrust_stall >= 3 && is_attacking && window == 4 && window_timer == 0 && attack == AT_USPECIAL && !hitpause){
 	if (!jetpack_fuel_low){
 		jetpack_fuel_low = true;
 		if (jetpack_fuel != 0){
-		jetpack_warning_sfx = sound_play(sound_get("uspec1_warning"));
+			jetpack_warning_sfx = sound_play(sound_get("uspec1_warning"));
 		}
 	}
 } else {

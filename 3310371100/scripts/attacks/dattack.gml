@@ -19,12 +19,13 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
 //hold
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 12);//16
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //end
-set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 8);//9
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -44,11 +45,11 @@ set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 36);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 62);
 set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 80);//90
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);//9
+set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.5);//0.4
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 7.5);//kragg dattack value+0.5
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 302);
@@ -64,11 +65,11 @@ set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 20);
 set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 49);
 set_hitbox_value(AT_DATTACK, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 70);//90
 set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 8);//9
+set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.3);//0.2
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 7.5);//kragg dattack value+0.5
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 302);

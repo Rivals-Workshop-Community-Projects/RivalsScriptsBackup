@@ -13,9 +13,9 @@ prev_attack = attack;
 switch(attack) {
 	//#region intro 
 	case 2:
-		grabbed_invisible=0
+		grabbed_invisible = 0;
 		if window == 1 {
-			hud_offset = 900
+			hud_offset = 900;
 			if window_timer == 40 {
 				spawn_hit_fx(x, y, intro_pod)
 			}
@@ -42,12 +42,7 @@ switch(attack) {
 			
 		}
 	//#region Standard normals
-        
-    case AT_FTILT:
-        //a
-        
-        break;
-        
+    
     case AT_UTILT:
     	hud_offset = lerp(hud_offset, 50, 0.5);
         if (window == 1 && window_timer == 1) {
@@ -147,6 +142,7 @@ switch(attack) {
         }
         //mods bring out the
         down_down = true
+        move_cooldown[AT_DTILT] = 1
         break;
     case AT_USTRONG:
     	hud_offset = lerp(hud_offset, 90, 0.5);
@@ -240,6 +236,8 @@ switch(attack) {
     			set_hitbox_value(attack, 2, HG_HITSTUN_MULTIPLIER, 0.7);
     			set_hitbox_value(attack, 3, HG_HITSTUN_MULTIPLIER, 0.7);
     			set_hitbox_value(attack, 4, HG_HITSTUN_MULTIPLIER, 0.7);
+    			set_hitbox_value(attack, 1, HG_FORCE_FLINCH, 0);
+				set_hitbox_value(attack, 2, HG_FORCE_FLINCH, 0);
 			}
 		}
 		
@@ -501,7 +499,10 @@ switch(attack) {
 	//#region Forward Special
 	
     case AT_FSPECIAL:
-    	if (window == 1 && window_timer == 1) set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, true);
+    	if (window == 1 && window_timer == 1) {
+    		set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, true);
+    		sound_play(sound_get("nsp1"), 0, noone, .6, 1.15)
+    	}
         if (free) {
             if vsp > 5 vsp = 5 
             if hsp > (7*spr_dir) hsp = (7*spr_dir)
@@ -517,6 +518,9 @@ switch(attack) {
         if (was_parried) set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, false);
         break;
     case AT_FSPECIAL_AIR:
+		 if (window == 1 && window_timer == 1) {
+    		sound_play(sound_get("nsp1"), 0, noone, .6, 1.15)
+    	}
     	if (window == 1) {
     		vsp = 0;
     		hsp *= 0.9;
@@ -634,6 +638,7 @@ switch(attack) {
     case AT_DSPECIAL_2:
     	hsp = 0;
     	vsp = 0;
+    	super_armor = item_grid[23][4] > 0 && (window != 1 || window_timer != 1);
     	if (window == 1 && window_timer == 1) {
     		// Lock limitless mode, if applicable
     		limitless_mode_locked = true;
@@ -666,7 +671,9 @@ switch(attack) {
 				else if (select_for_trishop) {
 					var new_trishop_selection = -1;
 					if ((joy_pad_idle || attack_pressed || special_pressed) && chest_obj.trishop_selection != -1) {
-						dspec_cooldown_hits = chest_obj.is_large ? 8 : 5;
+						var lcd = (item_grid[46][4] > 0) ? 7 : 8;
+						dspec_cooldown_hits = chest_obj.is_large ? lcd : 4;
+						dspec_cooldown_hits = floor(dspec_cooldown_hits / (1+item_grid[64][4]));
 						chest_obj.state = 33;
 						chest_obj.state_timer = 0;
 						window_timer++; // advance past freeze
@@ -690,12 +697,13 @@ switch(attack) {
 				if (chest_obj.state == 12) { // Large chest
 					chest_obj.state = 13;
 					chest_obj.state_timer = 0;
-					dspec_cooldown_hits = 5;
+					dspec_cooldown_hits = floor(4 / (1+item_grid[64][4]));
 				}
 				else if (chest_obj.state == 22) { // Large chest
 					chest_obj.state = 23;
 					chest_obj.state_timer = 0;
-					dspec_cooldown_hits = 8;
+					var lcd = (item_grid[46][4] > 0) ? 7 : 8;
+					dspec_cooldown_hits = floor(lcd / (1+item_grid[64][4]));
 				}
 				
 	    		var window_length = (chest_obj.state < 20) ? 8 : 28;
@@ -704,7 +712,6 @@ switch(attack) {
 	    		hsp = 0;
 	    		spr_dir = (x < chest_obj.x) ? 1 : -1;
 			}
-			if (item_grid[46][4] > 0 && dspec_cooldown_hits > 7) dspec_cooldown_hits = 7;
     	}
     	else if (window == 2 && window_timer == 1 && item_grid[23][4] > 0) {
 			jewel_barrier = 10 * item_grid[23][4];

@@ -30,7 +30,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 9);
 //set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 //endlag
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_GOTO, 7);

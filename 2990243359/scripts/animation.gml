@@ -1,3 +1,47 @@
+if (voice_cooldown > 0) voice_cooldown--;
+var random_voice;
+if (!hitpause && synced_vars[0] && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
+	if (window_timer == 0 && voice_cooldown == 0 && 
+	((attack == AT_JAB && (window == 1 || window == 4))
+     || (attack == AT_FTILT && window == 1)
+     || (attack == AT_UTILT && window == 1)
+     || (attack == AT_DTILT && window == 1)
+     || (attack == AT_DATTACK && window == 1)
+     || (attack == AT_NAIR && (window == 1 || window == 3))
+     || (attack == AT_BAIR && window == 1)
+     || (attack == AT_UAIR && window == 1)
+     || (attack == AT_NSPECIAL && window == 1)
+     || (attack == AT_FSPECIAL && window == 1)
+     || (attack == AT_FSPECIAL_AIR && window == 1)
+     || (attack == AT_FSPECIAL_2 && window == 1)
+     || (attack == AT_FSPECIAL_2_AIR && window == 1))){
+			random_voice = random_func( 0, 8, true);
+			if (random_voice < 5) voice_cooldown = 30;
+	    	sound_play(voice_attack[random_voice+1]);
+		}
+    
+    if (window_timer == 0 && voice_cooldown == 0 && 
+     ((attack == AT_FAIR && window == 1)
+     || (attack == AT_DAIR && window == 1)
+     || (attack == AT_DSTRONG && window == 2)
+     || (attack == AT_USTRONG && window == 2))){
+			random_voice = random_func( 0, 10, true);
+			if (random_voice < 5) voice_cooldown = 60;
+	    	sound_play(voice_attack_long[random_voice+1]);
+		}
+	
+	if (window_timer == 0 && voice_cooldown == 0 && attack == AT_FSTRONG && window == 1){
+			random_voice = random_func( 0, 6, true);
+			if (random_voice < 3) voice_cooldown = 60;
+	    	sound_play(voice_fstrong[random_voice+1]);
+		}
+}
+if (synced_vars[0] && state == PS_HITSTUN){
+	sound_stop(voice_fstrong[1]);
+	sound_stop(voice_fstrong[2]);
+	sound_stop(voice_fstrong[3]);
+}
+
 
 atime++
 var name=sprite_get_name(sprite_index)

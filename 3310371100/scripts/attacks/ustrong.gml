@@ -5,19 +5,19 @@ set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
 //start precharge
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 6);//6
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 7);//6
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_hair"));
 
 //anticipation
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 3);//3
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4);//3
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy1"));
-set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 3);
 
 //atk
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 9);//5
@@ -45,7 +45,7 @@ set_num_hitboxes(AT_USTRONG, 3);
 var hb_damage = 10;
 var hb_angle = 90;//70//80
 var hb_bkb = 8;//4//7
-var hb_kbg = 1.0;//1.3
+var hb_kbg = 1.1;//1.3//1.0 //it was 1.3???????? before??????
 var hb_bhp = 8;//sk ustrong value
 var hb_hpg = 0.7;//sk ustrong value
 
@@ -63,6 +63,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, hb_bhp);
@@ -84,6 +85,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, hb_bhp);
@@ -105,6 +107,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, hb_angle);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, hb_bhp);

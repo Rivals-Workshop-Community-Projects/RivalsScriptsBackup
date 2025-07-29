@@ -114,7 +114,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);//4
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);//1.2
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);//10...ranno value//7
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);//0.8...ranno value+1//0.9
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 158);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("ice_hit"));//additional sound in hit_player
 
@@ -135,7 +135,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 6);//3
 set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);//1.2
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 8);//8...ranno value//6
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.7);//0.7...ranno value+1//0.8
-set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("ice_hit"));//additional sound in hit_player
 

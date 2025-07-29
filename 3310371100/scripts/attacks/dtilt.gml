@@ -22,12 +22,12 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
 //wait
-set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 4);//7
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DTILT, 4, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_DTILT, 4, AG_WINDOW_SFX_FRAME, 3);
 
 //attack2
 set_window_value(AT_DTILT, 5, AG_WINDOW_LENGTH, 3);

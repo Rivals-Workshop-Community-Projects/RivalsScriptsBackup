@@ -24,7 +24,7 @@ vsp += -0.035;
 //distance calculator
 var max_rain_dist = room_height;
 
-rain_bottom_dist = clamp(y+max_rain_dist, -620, player_id.cloud_y_limit)-y;
+rain_bottom_dist = clamp(y+max_rain_dist, 0, player_id.cloud_y_limit)-y;
 //print(string(rain_bottom_dist))
 
 if (collision_line(x, y, x, y+room_height, asset_get("par_block"), false, false) == noone){
@@ -42,7 +42,7 @@ var tmp_width = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_raincl
 //var appl_player_num = applied_player_id.player;
 //print("playernumber = "+string(appl_player_num));
 if (is_iced == false){
-	if (rain_bottom_dist>3){
+	if (true/*rain_bottom_dist>3*/){
 	with(pHitBox){
 		if (variable_instance_exists(player_id, "nurburgring_24h_endurance")){//unique identifier for usher ~~hitboxes~~
 			//print("nurburgring...detected : attack="+string(attack))
@@ -68,19 +68,48 @@ if (is_iced == false){
 				//}
 			}
 			if ( attack==AT_DSPECIAL_2 ){//bouncy
-				if (player_id.move_is_fresh == true){
-					if (collision_circle(other.x, other.y-30, 30, id, true, false)){//this is the collision box
-						//print("collision...detected")
-						spawn_hit_fx( x, y, hit_effect );
-						player_id.move_is_fresh = false;
-						player_id.has_hit = true;
-						other.vsp = 3;
-						sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.8,1);
-						player_id.vsp = clamp(player_id.vsp,-5,-2)-8;
-						sound_play(sound_get("bounce"),false,noone,1,1)
-						sound_play(sound_get("bounce2"),false,noone,0.9,1.2)
-					}
-				}
+				//if (player_id.move_is_fresh == true){
+					/*if (collision_rectangle(other.x, other.y, other.x, other.y+other.rain_bottom_dist, id, true, false)){//DOWNPOUR
+						if (player_id.dsp_downpour == false){
+							if (player_id.window==2||player_id.window==3){
+								with(player_id){//destroy_hitboxes()
+									dsp_downpour = true;
+									if (window==2){
+										window_timer = 0;
+									}
+									window = 7;
+									destroy_hitboxes();
+									vsp = dsp_downpour_vsp;
+									hsp = dsp_downpour_hsp*spr_dir;
+									sound_play(sound_get("fastantici"),false,noone,1,1)
+									sound_play(sound_get("nsp_t"),false,noone,1,1.3)
+									sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.8,1.2);
+									//spawn_hit_fx( x, y, hit_effect );
+									white_flash_timer = 8;
+									create_hitbox( AT_DSPECIAL_2, 3, x, y );
+								}
+							}
+						}
+					}else{*/
+						//if (player_id.dsp_downpour == false){
+						if (collision_circle(other.x, other.y-30, 30, id, true, false)){//this is the collision box
+							//print("collision...detected")
+							if (other.vsp<=1){
+							spawn_hit_fx( x, y, hit_effect );
+							//player_id.move_is_fresh = false;
+							player_id.has_hit = true;
+							other.vsp = 5;
+							sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.8,1);
+							player_id.vsp = -16;
+							sound_play(sound_get("bounce"),false,noone,1,1.2)
+							sound_play(sound_get("bounce"),false,noone,1,1)
+							sound_play(sound_get("bounce3"),false,noone,0.7,1.2)
+							sound_play(sound_get("bounce2"),false,noone,0.9,1.4)
+							}
+						}
+						//}
+					//}
+				//}
 			}//hbcheck
 		}
 	}

@@ -5,6 +5,16 @@ if (state==PS_RESPAWN || (state==PS_ATTACK_GROUND && free && attack==AT_TAUNT)){
 	draw_sprite_ext( sprite_get("plat_bg"), 0, x, y, 1, 1, 0, -1, 1 ) 
 }
 
+if ((state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR) && attack==AT_DSPECIAL_2 && window==7){
+	gpu_set_fog(true, make_colour_rgb(90, 170, 227), 0, 1);
+	var tmp_hsp = hsp; var tmp_vsp = vsp;
+	if (hitpause){var tmp_hsp = old_hsp; var tmp_vsp = old_vsp;}
+	gpu_set_blendmode(bm_add);
+	draw_sprite_ext( sprite_index, image_index, x-(tmp_vsp*spr_dir), y-tmp_vsp, 1*spr_dir, 1, 0, -1, 0.5 ) 
+	gpu_set_blendmode(bm_normal);
+	gpu_set_fog(false, c_white, 0, 1);
+}
+
 
 //pattern test
 //copy and paste this anywhere in the file, but make sure the code past "#define" is at the end of the file. 

@@ -24,7 +24,7 @@ if ( attack == AT_TAUNT ){
 }
 
 if ( attack == AT_JAB ){
-	was_parried = false;
+	//was_parried = false;
 	if (window == 2 && window_timer == 1){
 		if (!hitpause){
 			sound_play(sound_get("SWS1"),false,noone,0.5,1.1)
@@ -178,6 +178,25 @@ if ( attack == AT_FAIR ){
 			//spawn_hit_fx( x+(90*spr_dir), y, hfx_splash )//yea this is where it woulda've been used, but it wasnt very good
 		}
 	}
+	/*if (window == 2 && window_timer == 3){
+		var tmp_fx = spawn_hit_fx( x-10+random_func( 1, 20, true )+(80*spr_dir), y-50-20+random_func( 4, 40, true ), fx_ice_mist_A);
+		
+		tmp_fx.image_alpha = 0.25;
+		tmp_fx.hsp = ((1.5+random_func( tmp_fx%5, 1, false ))*spr_dir)/2
+		tmp_fx.vsp = ((1+random_func( tmp_fx%5, 2, false ))*-1)/1.1
+		
+		var tmp_fx = spawn_hit_fx( x-10+random_func( 2, 20, true )+(80*spr_dir), y-30-20+random_func( 5, 40, true ), fx_ice_mist_A);
+		
+		tmp_fx.image_alpha = 0.25;
+		tmp_fx.hsp = ((2+random_func( tmp_fx%5, 1, false ))*spr_dir)/2
+		tmp_fx.vsp = ((-1+random_func( tmp_fx%5, 2, false ))*1)/1.25
+		
+		var tmp_fx = spawn_hit_fx( x-10+random_func( 3, 20, true )+(80*spr_dir), y-10-20+random_func( 6, 40, true ), fx_ice_mist_A);
+		
+		tmp_fx.image_alpha = 0.25;
+		tmp_fx.hsp = ((1.5+random_func( tmp_fx%5, 1, false ))*spr_dir)/2
+		tmp_fx.vsp = ((1+random_func( tmp_fx%5, 2, false ))*1)/1.1
+	}*/
 }
 if ( attack == AT_UAIR ){
 	if (window == 1 && window_timer == 2){
@@ -264,7 +283,7 @@ if ( attack == AT_FSTRONG ){
 	}
 }
 if ( attack == AT_USTRONG ){
-	if (window == 2 && window_timer == 2){
+	if (window == 2 && window_timer == 3){
 		if (!hitpause){
 			sound_play(asset_get("sfx_spin"),false,noone,0.8,1)
 			sound_play(asset_get("sfx_clairen_spin"),false,noone,0.5,1.2)
@@ -328,7 +347,10 @@ if ( attack == AT_NSPECIAL_2 ){
 			var tmp_hb = create_hitbox( AT_NSPECIAL, 1, x+(30 * spr_dir), y-80 )
 			tmp_hb.ice_vsp_b = -14;
 			tmp_hb.ice_hsp_b = 1*spr_dir;
-			tmp_hb.length = 100;//80
+			tmp_hb.length = 300;//80
+			tmp_hb.ice_fake_lifetime_b = 100;//80
+			tmp_hb.ice_verticalmode_b = true;
+			tmp_hb.sprite_index = sprite_get("nspecial_ice_blue");
 			/*var tmp_hb = create_hitbox( AT_NSPECIAL, 1, x+(37 * spr_dir), y-40 )
 			tmp_hb.ice_vsp_b = -11;
 			tmp_hb.ice_hsp_b = 2*spr_dir;
@@ -353,9 +375,9 @@ if ( attack == AT_NSPECIAL_2 ){
 }
 if ( attack == AT_FSPECIAL_2 ){
 	if (!hitpause){
-		var fsp_loop_atk_charge = 8;
+		var fsp_loop_atk_charge = fsp_loop_count_max;//8
 		if (window == 2 || window == 3){
-			if (state_timer > 16){
+			if (state_timer > 10){//16
 				if (attack_pressed || !special_down){
 					window = 4; window_timer = 0;
 					sound_play(sound_get("woosh_1"),false,noone,0.5,2.5)
@@ -426,6 +448,7 @@ if ( attack == AT_FSPECIAL_2 ){
 				if (fsp_loop_count>=8){set_hitbox_value(AT_FSPECIAL_2, 3, HG_VISUAL_EFFECT, 199)
 					set_hitbox_value(AT_FSPECIAL_2, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"))
 					sound_play(sound_get("wind2"),false,noone,0.7,1.7)};
+				set_hitbox_value(AT_FSPECIAL_2, 4, HG_LIFETIME, 13);//9
 				//print(string(get_hitbox_value(AT_FSPECIAL_2, 3, HG_BASE_KNOCKBACK)))
 				//print(string(get_hitbox_value(AT_FSPECIAL_2, 3, HG_KNOCKBACK_SCALING)))
 				
@@ -439,11 +462,27 @@ if ( attack == AT_FSPECIAL_2 ){
 				
 				fsp_loop_count_storage = fsp_loop_count;
 				fsp_loop_count = 0;
+				
+				
+				var tmp_fx = spawn_hit_fx( x-10+random_func( 1, 20, true )+(40*spr_dir), y-30-20+random_func( 4, 40, true ), fx_ice_mist_B);
+				
+				tmp_fx.image_alpha = 0.15;
+				tmp_fx.hsp = (((fsp_loop_count_storage/fsp_loop_count_max)*1.5)+random_func( tmp_fx%5, 1, false ))*spr_dir
+				
+				var tmp_fx = spawn_hit_fx( x-10+random_func( 2, 20, true )+(40*spr_dir), y-30-20+random_func( 5, 40, true ), fx_ice_mist_C);
+				
+				tmp_fx.image_alpha = 0.15;
+				tmp_fx.hsp = (((fsp_loop_count_storage/fsp_loop_count_max)*1.5)+random_func( tmp_fx%5, 1, false ))*spr_dir
+				
+				var tmp_fx = spawn_hit_fx( x-10+random_func( 3, 20, true )+(40*spr_dir), y-30-20+random_func( 6, 40, true ), fx_ice_mist_D);
+				
+				tmp_fx.image_alpha = 0.15;
+				tmp_fx.hsp = (((fsp_loop_count_storage/fsp_loop_count_max)*1.5)+random_func( tmp_fx%5, 1, false ))*spr_dir
 			}
 		}
 		if (window == 5){
 			if (window_timer == 1){
-				if (fsp_loop_count_storage>=8){
+				if (fsp_loop_count_storage>=fsp_loop_count_max){
 					if (was_parried==false){
 					if (raincloud_present==false){
 						var cloudcloud = instance_create( x+(30*spr_dir), y, "obj_article1" );
@@ -468,6 +507,18 @@ if ( attack == AT_FSPECIAL_2 ){
 			hsp = fsp_spd * spr_dir * -1;
 					}
 			fspecial_speed_timer = clamp(fspecial_speed_timer-1, 0, 500);
+			//vforce's ledge snap code thank you
+			if (place_meeting(x + hsp, y, asset_get("par_block")) && free) 
+			{
+				for (var i = 1; i < 30; i++)
+				{
+					if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+					{
+						y -= i;
+						break;
+					}
+				}
+			}
 		}
 		if (window < 6){
 			can_fast_fall = false;
@@ -724,21 +775,23 @@ if ( attack == AT_DSPECIAL_2 ){
 			dspecial_speed_timer = dspecial_speed_timer_max;
 		}
 		if (window == 2 || window == 3){
+			//print(string(has_hit))
 			if (dspecial_speed_timer > 0){
 				var dsp_spd_h = ease_quadIn( 4, 8, dspecial_speed_timer, dspecial_speed_timer_max );
 				hsp = (dsp_spd_h*spr_dir)+(right_down-left_down);
 				dspecial_speed_timer = clamp(dspecial_speed_timer-1, 0, 500);
-				if (!has_hit_player&&!has_hit){
+				if (has_hit_player||has_hit){
+				}else{
 					var dsp_spd_v = ease_cubeIn( -2, -10, dspecial_speed_timer, dspecial_speed_timer_max );
 					vsp = dsp_spd_v;
 					dspecial_speed_timer = clamp(dspecial_speed_timer-1, 0, 500);
 				}
 			}
 		}
-		if (window >= 3){
+		if (window >= 3 || window == 7){
 			can_wall_jump = true;
 		}
-		if (window == 3){
+		if (window == 3 || window == 7){
 			if (!free){
 				if (dsp_bounce_count>=1 || !special_down){
 					window = 4; window_timer = 0;
@@ -748,8 +801,10 @@ if ( attack == AT_DSPECIAL_2 ){
 					spawn_base_dust(x, y, "land", spr_dir)
 					sound_play(asset_get("sfx_land_light"),false,noone,1,1)
 				}else{
+					dsp_downpour = false;
+					if (window==7){window=3;}
 					vsp = -6;
-					hsp+=2*(right_down-left_down);
+					hsp = clamp(hsp+2*(right_down-left_down),-6,6);
 					dsp_bounce_count++;
 					//print(string(dsp_bounce_count))
 					spawn_base_dust(x-(10*spr_dir), y, "dash", spr_dir)
@@ -758,9 +813,30 @@ if ( attack == AT_DSPECIAL_2 ){
 					sound_play(sound_get("bounce2"),false,noone,0.9,1.2)
 				}
 			}
-			if (has_hit){
+			/*if (has_hit){//this isnt working??????????????
 				attack_end();
 				has_hit = false;
+			}*/
+			//vforce's ledge snap code thank you
+			if (place_meeting(x + hsp, y, asset_get("par_block")) && free && vsp>-2) 
+			{
+				for (var i = 1; i < 30; i++)
+				{
+					if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+					{
+						y -= i;
+						break;
+					}
+				}
+			}
+		}
+		if (window == 7){
+			fall_through = true;
+			vsp = 1;
+			//vsp = clamp(vsp+0.5, -620, dsp_downpour_vsp);
+			//hsp = dsp_downpour_hsp*spr_dir;
+			if (window_timer==get_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_LENGTH)){
+				window_timer=0;
 			}
 		}
 		var min_timer_wait = 20*(1.5-has_hit_player);
@@ -785,6 +861,7 @@ if ( attack == AT_DSPECIAL_2 ){
 		if (window == 4){
 			if (window_timer == 1){
 				sound_play(asset_get("sfx_pigeon_spin"),false,noone,0.6,3)
+				destroy_hitboxes()
 			}
 		}
 		if (window != 6){
@@ -924,7 +1001,8 @@ if ( get_window_value( attack, window, AG_AUTOCANCEL )>0 ){
 	if (get_window_value( attack, window, AG_AUTOCANCEL )==2){
 		//does nothing so you can override
 	}else{
-		set_attack_value( attack, AG_LANDING_LAG, land_time );
+		set_attack_value( attack, AG_LANDING_LAG, land_time*(1.5-(0.5*has_hit_player)) );
+		//print(string(land_time*(1.5-(0.5*has_hit_player))))
 		can_wall_jump = true;
 	}
 }else{

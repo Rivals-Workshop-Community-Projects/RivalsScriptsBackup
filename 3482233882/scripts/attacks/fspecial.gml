@@ -10,7 +10,7 @@ set_attack_value(atk, AG_CATEGORY                       , 2);
 set_attack_value(atk, AG_OFF_LEDGE                      , 1);
 
 set_window_value(atk, window_num                        , AG_WINDOW_TYPE, 0);
-set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 7);
+set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 10);
     var window_length = get_window_value(atk,window_num , AG_WINDOW_LENGTH);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 1);

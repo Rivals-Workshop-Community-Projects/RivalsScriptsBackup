@@ -6,6 +6,8 @@ if (attack==AT_NSPECIAL){
 			ice_hsp = ice_hsp_b;
 			ice_vsp = ice_vsp_b;
 			ice_hsp_b = -4;
+			ice_verticalmode = ice_verticalmode_b
+			ice_fake_lifetime = ice_fake_lifetime_b
 		}
 	}
 	hsp = ice_hsp
@@ -13,6 +15,7 @@ if (attack==AT_NSPECIAL){
 	ice_vsp = ice_vsp + ice_grav
 	if (!free){
 		ice_vsp = clamp(ice_vsp*-1, -8.5, 100);
+		ice_vsp = ice_vsp*clamp(0.25+ice_verticalmode,1,160)
 		spawn_hit_fx(x, y+8, 29);
 		if (first_bounce == -4){
 			first_bounce = ice_vsp;
@@ -21,9 +24,22 @@ if (attack==AT_NSPECIAL){
 		}
 		vsp = ice_vsp;
 		sound_play(asset_get("sfx_ice_chain"),false,noone,1,1.4);
+		if (ice_verticalmode){
+			//print("beep")
+			//vsp = vsp*3
+			if (hitbox_timer >= ice_fake_lifetime){
+				destroyed = true;
+			}
+		}
 	}
 	if (hitbox_timer%4==0){
-		spawn_hit_fx(x, y, fx_icepart)
+		spawn_hit_fx(x-hsp, y-vsp, fx_icepart)
+	}
+	if (hitbox_timer%7==0){
+		var tmp_fx = spawn_hit_fx(x, y, fx_mist)
+		tmp_fx.hsp = hsp/20;
+		tmp_fx.vsp = vsp/20;
+		tmp_fx.image_alpha = 0.25;
 	}
 	
 }

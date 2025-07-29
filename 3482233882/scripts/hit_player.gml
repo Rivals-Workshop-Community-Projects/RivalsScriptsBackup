@@ -5,6 +5,11 @@ var hbox_num = my_hitboxID.hbox_num;
 // Kragg rock shards
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2) exit;
 
+// Check lethality
+var kb = get_kb_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale);
+var hs = get_hitstun_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale)
+var is_galaxy = will_die_from_kb(hit_player_obj, kb, my_hitboxID.kb_angle, hs)
+
 //#region DSpec cooldown handling
 var is_fake_hit = get_hitbox_value(my_hitboxID.attack, hbox_num, 81);
 if ((my_hitboxID.type == 1 && !first_hit) || (my_hitboxID.type == 2 && !is_fake_hit && (my_hitboxID.orig_player != player || my_hitboxID.attack != AT_EXTRA_1))) {
@@ -140,7 +145,7 @@ if (my_hitboxID.cmd_is_explosive == 1) {
 	}
 	
 	// Sticky Bomb
-	if (item_grid[15][4] > 0 && hit_player_obj.commando_status_state[0] <= 0) {
+	if (!is_galaxy && item_grid[15][4] > 0 && hit_player_obj.commando_status_state[0] <= 0) {
 		hit_player_obj.commando_status_state[0] = 1;
 		hit_player_obj.commando_status_counter[0] = 0;
 		hit_player_obj.commando_status_owner[0] = player;
@@ -288,11 +293,6 @@ var plimp_active = item_grid[61][4] > 0;
 
 // If this could spawn missiles...
 if (my_hitboxID.cmd_strong_finisher || my_hitboxID.cmd_behemoth_applied || plimp_active) {
-	// Check lethality
-	var kb = get_kb_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale);
-	var hs = get_hitstun_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale)
-	var is_galaxy = will_die_from_kb(hit_player_obj, kb, my_hitboxID.kb_angle, hs)
-	
 	// Store knockback
 	hbox_stored_damage = my_hitboxID.damage; // probably won't see use in practice
 	hbox_stored_bkb = my_hitboxID.kb_value;

@@ -34,6 +34,15 @@
  * 5x - "Extreme Reinforcements" (Classified Access Codes)
  * 
  */
+ 
+crash_timer++;
+if (crash_timer == 300) {
+	print_debug("PANIC: Script unable to complete for 300 frames. Deleting article.");
+	player_id.chest_obj = noone;
+    instance_destroy();
+    exit;
+}
+ 
 
 if (hitstop > 0) {
     if (instance_exists(hbox)) {
@@ -50,14 +59,17 @@ switch(state) { // use this one for doing actual article behavior
         
     //#region Orbital State
     case 00: // Request arrow (awaiting shipment)
-        if (state_timer >= 300) { // Advance to small arrow after 5s
+        if (state_timer >= 100) { // Advance to small arrow after 5s
             set_state(01);
+            sound_play(sound_get("chest1"))
+            player_id.move_cooldown[AT_DSPECIAL] = 0;
         }
         break;
-    case 01: // Request arrow (large)
-        if (state_timer >= 300) { // Advance to large arrow after 5s
+    case 01: // Request arrow (small)
+        if (state_timer >= 500) { // Advance to large arrow after 5s
             set_state(02);
             is_large = true;
+            sound_play(sound_get("chest2"))
         }
         break;
     case 02: // Request arrow (large)
@@ -71,6 +83,7 @@ switch(state) { // use this one for doing actual article behavior
         }
         break;
     case 03: // Jammed (parried state)
+    	ai_state = noone;
         if (state_timer >= 300) { // Finish after 5s
             should_die = true;
         }
@@ -89,6 +102,7 @@ switch(state) { // use this one for doing actual article behavior
         hbox.owner_chest = self;
         sound_play(player_id.s_cfall);
         is_large = false;
+        ai_state = 1;
         
         var roll = random_func(3, 100, true) + 1;
         if (roll <= player_id.trishop_odds) {
@@ -118,17 +132,28 @@ switch(state) { // use this one for doing actual article behavior
         else if (instance_exists(hbox)) {
             hbox.hitbox_timer--;
             hbox.vsp = vsp;
+        } else {
+        	hbox = noone;
         }
         break;
     case 12: // Idle
         if (free) vsp = clamp(vsp+0.5, vsp, 8);
-        if (point_distance(x, y, player_id.x, player_id.y) < 54) outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
-        else outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        if (point_distance(x, y, player_id.x, player_id.y) < 54) {
+        	outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
+        	ai_state = 2;
+        }
+        else {
+        	outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        	ai_state = 1;
+        }
         break;
     case 13: // Opening
         if (outline_alpha > 0) outline_alpha -= 0.2;
-        if (state_timer == 1) sound_play(sound_get("cm_smallchest"));
-        if (state_timer == 20) {
+        if (state_timer == 1) {
+        	sound_play(sound_get("cm_smallchest"));
+        	ai_state = noone;
+        }
+        else if (state_timer == 20) {
             var rarity_weights = [80, 15, 5]
             if (player_id.uncommon_pool_size <= 0) rarity_weights[1] = 0;
             if (player_id.rares_remaining <= 0) rarity_weights[2] = 0;
@@ -141,7 +166,7 @@ switch(state) { // use this one for doing actual article behavior
             
             do_fireworks();
         }
-        if (state_timer >= 35) set_state(14);
+        else if (state_timer >= 35) set_state(14);
         break;
     case 14: // Despawning
         if (state_timer >= 60) should_die = true;
@@ -160,6 +185,7 @@ switch(state) { // use this one for doing actual article behavior
         hbox.owner_chest = self;
         sound_play(player_id.s_cfall);
         is_large = true;
+        ai_state = 1;
         
         var roll = random_func(player_id.item_seed, 100, true) + 1;
         player_id.item_seed = (player_id.item_seed + 1) % 200;
@@ -193,17 +219,28 @@ switch(state) { // use this one for doing actual article behavior
         else if (instance_exists(hbox)) {
             hbox.hitbox_timer--;
             hbox.vsp = vsp;
+        } else {
+        	hbox = noone;
         }
         break;
     case 22: // Idle
         if (free) vsp = clamp(vsp+0.5, vsp, 8);
-        if (point_distance(x, y, player_id.x, player_id.y) < 54) outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
-        else outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        if (point_distance(x, y, player_id.x, player_id.y) < 54) {
+        	outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
+        	ai_state = 2;
+        }
+        else {
+        	outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        	ai_state = 1;
+        }
         break;
     case 23: // Opening
         if (outline_alpha > 0) outline_alpha -= 0.2;
-        if (state_timer == 1) sound_play(sound_get("cm_largechest"));
-        if (state_timer == 20) {
+        if (state_timer == 1) {
+        	sound_play(sound_get("cm_largechest"));
+        	ai_state = noone;
+        }
+        else if (state_timer == 20) {
             var rarity_weights = [0, 80, 20]
             if (player_id.uncommon_pool_size <= 0) rarity_weights[1] = 0;
             if (player_id.rares_remaining <= 0) rarity_weights[2] = 0;
@@ -216,7 +253,7 @@ switch(state) { // use this one for doing actual article behavior
             
             do_fireworks();
         }
-        if (state_timer >= 54) set_state(24);
+        else if (state_timer >= 54) set_state(24);
         break;
     case 24: // Despawning
         if (state_timer >= 60) should_die = true;
@@ -251,12 +288,20 @@ switch(state) { // use this one for doing actual article behavior
         else if (instance_exists(hbox)) {
             hbox.hitbox_timer--;
             hbox.vsp = vsp;
+        } else {
+        	hbox = noone;
         }
         break;
     case 32: // Idle
         if (free) vsp = clamp(vsp+0.5, vsp, 8);
-        if (point_distance(x, y, player_id.x, player_id.y) < 54) outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
-        else outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        if (point_distance(x, y, player_id.x, player_id.y) < 54) {
+        	outline_alpha = clamp(outline_alpha + 0.2, 0, 1);
+        	ai_state = 2;
+        }
+        else {
+        	outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
+        	ai_state = 1;
+        }
         if (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) trishop_vis_timer = -1;
         if (trishop_vis_timer >= 0) trishop_vis_timer++;
         for (var i = 0; i < 3; i++) {
@@ -272,15 +317,18 @@ switch(state) { // use this one for doing actual article behavior
         break;
     case 33: // Opening
         if (outline_alpha > 0) outline_alpha -= 0.2;
-        if (state_timer == 1) sound_play(sound_get("cm_smallchest"));
-        if (state_timer == 20) {
+        if (state_timer == 1) {
+        	sound_play(sound_get("cm_smallchest"));
+        	ai_state = noone;
+        }
+        else if (state_timer == 20) {
             var item = instance_create(x, y-24, "obj_article3");
             item.state = 20;
             item.rarity = trishop_rarity;
             item.forced_index = trishop_loot[trishop_selection];
             do_fireworks();
         }
-        if (state_timer >= 35) set_state(34);
+        else if (state_timer >= 35) set_state(34);
         break;
     case 34: // Despawning
         if (state_timer >= 60) should_die = true;
@@ -298,6 +346,7 @@ switch(state) { // use this one for doing actual article behavior
         hbox.owner_chest = self;
         sound_play(player_id.s_cfall);
         sound_play(asset_get("sfx_mol_huge_countdown"), false, noone, 1, 0.7);
+        ai_state = noone;
         break;
     case 51: // Fall
     	vsp += 0.9;
@@ -307,7 +356,7 @@ switch(state) { // use this one for doing actual article behavior
         }
         if (!free || has_hit) {
             set_state(52+is_large);
-            hbox.destroyed = true;
+            if instance_exists(hbox) hbox.destroyed = true;
             hbox = noone;
             hsp = 0;
             vsp = 0;
@@ -318,9 +367,11 @@ switch(state) { // use this one for doing actual article behavior
             explode_hbox.owner_chest = self;
             sound_play(asset_get("sfx_mol_norm_explode"));
         }
-        else {
+        else if (instance_exists(hbox)) {
             hbox.hitbox_timer--;
             hbox.vsp = vsp;
+        } else {
+        	hbox = noone;
         }
         break;
     case 52: // Exploding - small
@@ -473,6 +524,8 @@ if (should_die || y > get_stage_data(SD_BOTTOM_BLASTZONE_Y)) { //despawn and exi
     instance_destroy();
     exit;
 }
+
+crash_timer = 0;
 
 
 #define set_state

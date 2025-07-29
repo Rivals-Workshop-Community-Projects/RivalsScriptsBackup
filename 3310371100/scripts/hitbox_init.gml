@@ -8,4 +8,7 @@ if (attack==AT_NSPECIAL){
 	ice_grav = 0.45
 	first_bounce = -4;
 	fx_icepart = player_id.fx_ice_particle;
+	fx_mist = player_id.fx_ice_mist_A;
+	ice_verticalmode = false;
+	ice_fake_lifetime = false;
 }

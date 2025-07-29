@@ -29,6 +29,7 @@ sprite_change_offset("tech", the_x, the_y);
 
 sprite_change_offset("jab", the_x, the_y);
 sprite_change_offset("jab_v2", the_x, the_y);
+sprite_change_offset("jab_both", the_x, the_y);
 sprite_change_offset("dattack", the_x, the_y);
 sprite_change_offset("dattack_v2", the_x, the_y);
 sprite_change_offset("ftilt", the_x, the_y);
@@ -47,6 +48,7 @@ sprite_change_offset("nspecial", the_x, the_y);
 sprite_change_offset("nspecial_ground", the_x, the_y);
 sprite_change_offset("nspecial_air", the_x, the_y);
 sprite_change_offset("nspecial_ice", 32, 32);
+sprite_change_offset("nspecial_ice_blue", 32, 32);
 sprite_change_offset("fspecial", the_x, the_y);
 sprite_change_offset("fspecial_air", the_x, the_y);
 sprite_change_offset("fspecial_v2", the_x, the_y);
@@ -75,6 +77,10 @@ sprite_change_offset("raincloud_rain", 25, 0);
 sprite_change_offset("raincloud_area", 50, 0);
 
 sprite_change_offset("ice_particle", 16, 16);
+sprite_change_offset("ice_mist_A", 48, 48);
+sprite_change_offset("ice_mist_B", 48, 48);
+sprite_change_offset("ice_mist_C", 48, 48);
+sprite_change_offset("ice_mist_D", 48, 48);
 //sprite_change_offset("splash", 16, 16);//unused
 sprite_change_offset("etc_ashe_trail", 9, 9);
 

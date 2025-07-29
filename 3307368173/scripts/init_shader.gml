@@ -46,8 +46,11 @@ switch (alt_cur)
     case 24:
 	set_shading([-20, 2.5, 0.5, 1, 1.5, 1.5, 1, 1])
 	break;
-	case 25:
+    case 25:
 	set_shading([1, 1, 0.5, 0.5, 1, 2, 1, 1])
+	break;
+    case 26:
+	set_shading([0.5, 1.6, 0.9, 0.6, 0.6, 0.7, 1.4, 1])
 	break;
 }
 

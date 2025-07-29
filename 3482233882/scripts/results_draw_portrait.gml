@@ -3,8 +3,8 @@
 if ("draw_items" not in self) {
     
     
-    ITEM_SHIPPING_ALT = 5;
-    ITEM_ICEBAND_ALT = 20;
+    ITEM_SHIPPING_VISALT = 5;
+    ITEM_ICEBAND_VISALT = 20;
     draw_items = noone;
     
     // Retrieve item smuggler
@@ -87,11 +87,11 @@ if ("draw_items" not in self) {
     
     // SRF and Runald's Band: load an alternate sprite for Ukelele portrait
     if (array_contains(inventory_list, 19)) {
-        if (ukelele_active) array_push(draw_items, ITEM_ICEBAND_ALT);
+        if (ukelele_active) array_push(draw_items, ITEM_ICEBAND_VISALT);
         else array_push(draw_items, 19);
     }
     if (array_contains(inventory_list, 51)) {
-        if (ukelele_active) array_push(draw_items, ITEM_SHIPPING_ALT);
+        if (ukelele_active) array_push(draw_items, ITEM_SHIPPING_VISALT);
         else array_push(draw_items, 51);
     }
 

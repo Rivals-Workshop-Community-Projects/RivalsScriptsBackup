@@ -17,6 +17,11 @@ if(get_training_cpu_action() == CPU_FIGHT){
         }
     }
     
+    //No your attack does NOT equal fspecial air actually
+    if(!free and (attack == AT_USPECIAL or attack == AT_FSPECIAL_AIR or attack == AT_BAIR) and state_timer < 2){
+        attack = AT_UTILT;
+    }
+    
     //Defend
     if((abs(ai_target.x - x) <= 90) and (abs(ai_target.y - y) <= 90)){
         if(((ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND))){
@@ -50,10 +55,21 @@ if(get_training_cpu_action() == CPU_FIGHT){
         //Grounded
         if(!free){
             if(ai_target.x < x){
+                if(spr_dir != -1){
                     left_down = true;
-                } else {
+                }
+            } else {
+                if(spr_dir != 1){
                     right_down = true;
                 }
+            }
+            if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH) and ai_target.y > y - 50){
+                if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
+                    attack = AT_JAB;
+                }
+                set_state(PS_ATTACK_GROUND);
+                state_timer = 0;
+            }
             //Try to snipe with dspecial
             if(abs(ai_target.y < y-200) and !instance_exists(trident)){
                 if(attack != AT_DSPECIAL_2){
@@ -148,7 +164,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     //Taunt because funney
-    if(abs(ai_target.x - x) >= 350 and get_player_damage( ai_target.player ) >= 100 and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
+    if(abs(ai_target.x - x) >= 450 and get_player_damage( ai_target.player ) >= 100 and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
         attack = AT_TAUNT;
         set_state(PS_ATTACK_GROUND);
         state_timer = 0;

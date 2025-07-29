@@ -1,6 +1,6 @@
 if get_gameplay_time() == 4 {
-	set_state(PS_ATTACK_GROUND)
-	attack = 2
+	set_state(PS_ATTACK_GROUND);
+	attack = 2;
 }
 
 if (init_prompt_active) {
@@ -113,7 +113,7 @@ with oPlayer {
 	var nectar_mult = other.nectar_mult;
 	
 	if (state == PS_DEAD || state == PS_RESPAWN) {
-		if (commando_status_owner[1] == other.player && commando_status_state[1] > 0) {
+		if (commando_status_owner[1] == other.player) {
 			if (array_equals(outline_color, other.bleeddagger_outline_col)) {
 				outline_color = [0, 0, 0];
 				update_outline = true;
@@ -143,6 +143,11 @@ with oPlayer {
 			commando_status_counter[0] = 0;
 		}
 		else if (commando_status_state[0] > 1 && commando_status_counter[0] >= 45) {
+			commando_status_state[0] = 0;
+			commando_status_counter[0] = 0;
+			commando_status_owner[0] = noone;
+		}
+		if (activated_kill_effect) {
 			commando_status_state[0] = 0;
 			commando_status_counter[0] = 0;
 			commando_status_owner[0] = noone;
@@ -457,9 +462,9 @@ if (item_grid[2][4] != 0) {
 if (item_grid[4][4] != 0) {
 	var attack_crouching = (state == PS_ATTACK_GROUND) && (attack == AT_DTILT || attack == AT_DSPECIAL);
 	if (state == PS_CROUCH || attack_crouching) { 
-		if (!bungus_active && bungus_timer > 90) {
+		if (!bungus_active && bungus_timer > 60) {
 			bungus_active = 1;
-			bungus_timer = 0;
+			bungus_timer = 30;
 			bungus_vis_timer = 0;
 		}
 		if (bungus_active && bungus_timer > floor(30/nectar_mult/item_grid[4][4])) {
@@ -676,15 +681,18 @@ if (dios_revive_timer > 0) {
 		invince_time = 60;
 		visible = true;
 		
-		item_grid[@ 44][@ 4]--;
-		item_grid[@ 45][@ 4]++; // spent dios
-		if (item_grid[45][4] == 1) array_push(inventory_list, 45);
+		var dios = tag_alt_active ? 65 : 44;
+		var spent = tag_alt_active ? 66 : 45;
+		
+		item_grid[@ dios][@ 4]--;
+		item_grid[@ spent][@ 4]++; // spent dios
+		if (item_grid[spent][4] == 1) array_push(inventory_list, spent);
 		
 		// Remove Dios from item display
-		if (item_grid[44][4] == 0) {
+		if (item_grid[dios][4] == 0) {
 			var i = 0;
 			var num_items = array_length(inventory_list)
-			while (inventory_list[i] != 44) i++;
+			while (inventory_list[i] != dios) i++;
 			while (i < num_items-1) {
 				inventory_list[i] = inventory_list[i+1];
 				i++;
@@ -694,7 +702,7 @@ if (dios_revive_timer > 0) {
 		
 		// In practice mode: return Dios to item pool to permit testing
 		if (get_match_setting(SET_PRACTICE)) {
-			var access_id = item_grid[44][7];
+			var access_id = item_grid[dios][7];
 			p_item_remaining[@ 2][@ access_id] += 1;
 			p_item_weights[@ 2][@ access_id] += p_item_values[2][access_id];
 			rares_remaining++;
@@ -708,7 +716,7 @@ else if (dios_revive_timer > -30) {
 	dios_revive_timer--;
 	if (dios_revive_timer == -30) {
 		var popup = instance_create(x-172, y-90, "obj_article2");
-		popup.item_id = 45;
+		popup.item_id = tag_alt_active ? 66 : 45;
 	}
 }
 
@@ -890,8 +898,9 @@ if (fshield_damage != 0) {
 		    spawn_hit_fx(x, _y, HFX_ZET_SHINE_BIG_FG);
 		    sound_play(asset_get("sfx_burnapplied"));
 		    with oPlayer {
+		    	var invuln = hurtboxID.dodging || invincible || attack_invince;
 		        var can_hit = get_match_setting(SET_TEAMATTACK) ? self != other : get_player_team(player) != get_player_team(other.player);
-		        if (can_hit && collision_circle(other.x, _y, 100, hurtboxID, true, false)) {
+		        if (!invuln && can_hit && collision_circle(other.x, _y, 100, hurtboxID, true, false)) {
 		            burned = true;
 		            burnt_id = other;
 		            burn_timer = 150 - 30*other.fshield_damage;
