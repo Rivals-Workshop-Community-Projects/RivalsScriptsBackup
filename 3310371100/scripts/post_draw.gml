@@ -44,6 +44,45 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.7 - (2025/07/29)"
+		patch_note_text[i++] = 
+		"===v3.7===
+		---balancing---
+		:: JAB ... jab 1 no longer has knockback scaling"
+		
+		
+		patch_note_title[i] = "v3.6 - (2025/07/29)"
+		patch_note_text[i++] = 
+		"===v3.6===
+		---balancing??---
+		:: JAB1 ... now forces flinch.
+		-- DTILT ... endlag increased by 2 frames
+		++ RAINCLOUD STATE ... freezing now only takes a quarter of the max duration away. now you can at best freeze it like 4 times
+		++ RAINCLOUD STATE ... EXPERIMENTAL: max duration increased by like 200 frames. (500 -> 700)
+		:::: ... i was thinking to balance it out i could make it so usher getting hit would reduce the duration as a form of like counterplay
+		:::: ... but 1. there already is parrying, 2. looking at maypul or absa, they only have parrying as the gimmick counterplay, 3. though the range is large vertically, it does require charging and you cannot relocate it as long as it's already out
+		:::: ... so that's not in, yet. code is ready though
+
+		---notes---
+		heres the raincloud buff you ordered"
+		
+		
+		patch_note_title[i] = "v3.5 - (2025/07/28)"
+		patch_note_text[i++] = 
+		"===v3.5===
+		---changes---
+		:: my aerial autocancel attack grid code now has whiff multiplier
+
+		---fixes---
+		:: NSPECIAL-GROUND ... parrying it now makes it go up
+		:: JAB ... getting parried work proper now
+
+		---balancing---
+		-- USTRONG ... startup increased by 2 frames, 1 before charge and 1 after charge
+		:: FSPECIAL ... when fully charged, body hitbox active time extended by 4 frames
+		-- BAIR ... endlag increased by 2 frames"
+		
+		
 		patch_note_title[i] = "v3.4 - (2025/07/28)"
 		patch_note_text[i++] = 
 		"===v3.4===

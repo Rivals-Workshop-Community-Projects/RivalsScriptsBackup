@@ -40,7 +40,7 @@ set_window_value(AT_DTILT, 6, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DTILT, 6, AG_WINDOW_ANIM_FRAMES, 1);
 
 //hold
-set_window_value(AT_DTILT, 7, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DTILT, 7, AG_WINDOW_LENGTH, 8);//6
 set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 7, AG_WINDOW_HAS_WHIFFLAG, 1);

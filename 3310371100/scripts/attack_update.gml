@@ -488,7 +488,8 @@ if ( attack == AT_FSPECIAL_2 ){
 						var cloudcloud = instance_create( x+(30*spr_dir), y, "obj_article1" );
 						cloudcloud.hsp = 4*spr_dir;
 						cloudcloud.vsp = -8;
-						var raincloud_apply_time = 500;//CHANGE THIS FOR RAINCLOUD DURATION
+						//CHANGE THIS FOR RAINCLOUD DURATION
+						var raincloud_apply_time = 700;//500
 						cloudcloud.ushr_rainclouded = true;//??
 						cloudcloud.ushr_rainclouded_timer = raincloud_apply_time;//TIMER
 						cloudcloud.ushr_rainclouded_timer_max = raincloud_apply_time;

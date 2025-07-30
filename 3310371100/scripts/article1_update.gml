@@ -139,7 +139,7 @@ if (is_iced == true){//iced timer is just mostly for visuals, also acts as coold
 		sound_play(asset_get("sfx_ice_on_player"))
 		//applied_player_id.ushr_rainclouded_timer = clamp(applied_player_id.ushr_rainclouded_timer + (applied_player_id.ushr_rainclouded_timer/3), 0, applied_player_id.ushr_rainclouded_timer_max);//what a mouthful
 		
-		var reduction_amt = ushr_rainclouded_timer_max/3 //55
+		var reduction_amt = ushr_rainclouded_timer_max/4 //55//3
 		ushr_rainclouded_timer_queue = clamp(ushr_rainclouded_timer - reduction_amt, 0, ushr_rainclouded_timer_max);
 		//ushr_rainclouded_timer = clamp(ushr_rainclouded_timer + (reduction_amt*ice_attacknum) - 10, 0, ushr_rainclouded_timer_max);
 		ice_timer++;
@@ -169,11 +169,13 @@ if (player_id.signalling_all_my_besties_i_have_been_PARRIED == true){
 	ushr_rainclouded = false;
 }
 
-if (player_id.signalling_all_my_besties_i_have_been_HIT_by_this_player==applied_player_id){
+if (player_id.signalling_all_my_besties_i_have_been_HIT_by_this_player){
 	player_id.thanks_i_received_your_message_you_go_and_reset_now = true;
-if (applied_player_id != -4){
-	applied_player_id.ushr_rainclouded_timer -= round(applied_player_id.ushr_rainclouded_timer_max/3);
-}
+	//ushr_rainclouded_timer -= round(ushr_rainclouded_timer_max/3);
+//if (applied_player_id != -4){
+	//applied_player_id.ushr_rainclouded_timer -= round(applied_player_id.ushr_rainclouded_timer_max/3);
+	//applied_player_id.ushr_rainclouded_timer = 0;
+//}
 	
 }
 

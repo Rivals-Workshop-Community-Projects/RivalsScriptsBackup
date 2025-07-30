@@ -6,6 +6,27 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.7===
+---balancing---
+:: JAB ... jab 1 no longer has knockback scaling
+
+===v3.6===
+---balancing??---
+:: JAB1 ... now forces flinch.
+-- DTILT ... endlag increased by 2 frames
+++ RAINCLOUD STATE ... freezing now only takes a quarter of the max duration away. now you can at best freeze it like 4 times
+++ RAINCLOUD STATE ... EXPERIMENTAL: max duration increased by like 200 frames. (500 -> 700)
+:::: ... i was thinking to balance it out i could make it so usher getting hit would reduce the duration as a form of like counterplay
+:::: ... but 1. there already is parrying, 2. looking at maypul or absa, they only have parrying as the gimmick counterplay, 3. though the range is large vertically, it does require charging and you cannot relocate it as long as it's already out
+:::: ... so that's not in, yet. code is ready though
+
+---notes---
+heres the raincloud buff you ordered
+
+
+
+
+
 ===v3.5===
 ---changes---
 :: my aerial autocancel attack grid code now has whiff multiplier
