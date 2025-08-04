@@ -256,6 +256,10 @@ if (!pastelle_handled_victory_quote)
 	    quote = "CHEEEEEESE!";
 	    icon = 1;
 	    break;
+	case "3436597271": // Cocua
+	    quote = "You remind me of Sarolyn... I dunno why, but maybe it's your attitude.";
+	    icon = 5;
+	    break;
 	case "2217843818": // Crewmate
 	    quote = "Aww look at the lil guy... wait why do I hear sirens?";
 	    icon = 7;
@@ -413,6 +417,10 @@ if (!pastelle_handled_victory_quote)
 	    quote = "GAH! Kiku, where are you?! I need your comfy jacket, it's c-c-cold over here!";
 	    icon = 12;
 	    break;
+	case "3463541091": // Nonari
+	    quote = "Nonari? Looks like I'm having non-of-that! Hahaha...yeahhh..."
+	    icon = 2;
+	    break;
 	case "2904498757": // Peppino
 	case "2990315396": // Noise
 	case "2885762133": // Brook
@@ -420,10 +428,12 @@ if (!pastelle_handled_victory_quote)
 	    icon = 10;
 	    break;
 	case "2005036466": // Penny
+	case "2817605804": // Kafka
 		quote = "What a shock! Unfortunately for you, I'm pretty limber!";
 		icon = 4;
 		break;
 	case "2977835488": // Qoedil
+	case "3042615374": // Nemesis
 		quote = "Spooky monsters just need a bit of color to become a cute monster!";
 		icon = 0;
 		break;

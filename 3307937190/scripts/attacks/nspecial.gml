@@ -79,7 +79,7 @@ set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_ink_col1[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(atk, hitbox_num, 81, "Red Nspec");//HG_MUNO_HITBOX_NAME = i; i++;
