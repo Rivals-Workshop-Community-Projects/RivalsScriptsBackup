@@ -199,6 +199,10 @@ if (!sarolyn_handled_victory_quote)
 	    quote = "Tch. What a waste of perfectly good food.";
 	    icon = 3;
 	    break;
+	case "3436597271": // Cocua
+		quote = "Go back to the trash heap of where you belong. You're already harming yourself.";
+		icon = 2;
+		break;
 	case "2283888145": // Coda
 	    quote = "Not my kind of music, thanks.";
 	    icon = 3;
@@ -246,6 +250,10 @@ if (!sarolyn_handled_victory_quote)
 	case "2817605804": // Jerma
 	    quote = "Your audience has stopped watching you. I wonder why.";
 	    icon = 1;
+	    break;
+	case "3479868625": // Kafka
+	    quote = "You're juggling too much. Try being skilled with one weapon first.";
+	    icon = 0;
 	    break;
 	case "2802423078": // Kaiero
 	    quote = "Such an improper use of light powers. What a shame.";
@@ -352,6 +360,10 @@ if (!sarolyn_handled_victory_quote)
 	case "2904134945": // Noelle
 	    quote = "Another fool with ice powers. Don’t you have a responsibility to tend to?";
 	    icon = 2;
+	    break;
+	case "3463541091": // Nonari
+	    quote = "You're definitely NOT a master of martial arts. All I saw was an idiot flailing about.";
+	    icon = 0;
 	    break;
 	case "2005036466": // Penny
 		quote = "You lack common sense. Impatience will get you nowhere.";

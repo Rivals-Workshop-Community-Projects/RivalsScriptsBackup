@@ -9,7 +9,7 @@ game_time = get_gameplay_time();
 hbox_view = get_match_setting(SET_HITBOX_VIS);
 saro_frenzy = clamp(saro_frenzy,0,3);
 
-if (get_player_color(player) == 23 && game_time % 7 == 0 && point_distance(0, 0, hsp, vsp) > 2.5 && visible)
+if (get_player_color(player) == 25 && game_time % 7 == 0 && point_distance(0, 0, hsp, vsp) > 2.5 && visible)
 {
     var fx = spawn_hit_fx(
         x + draw_x + (random_func(0, 8, false) - 4)*8,

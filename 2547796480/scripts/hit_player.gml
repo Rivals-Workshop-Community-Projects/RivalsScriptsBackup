@@ -16,7 +16,7 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
    
    create_hitbox(AT_FTHROW,1,x - 6,y - 75)
    create_hitbox(AT_FTHROW,1,x + 6,y - 75)
-   oknifelost -= 2
+   //oknifelost -= 2
    
    if hit_player_obj.ANwounded == 1 {
    	move_cooldown[AT_NSPECIAL] = 40
@@ -25,7 +25,6 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     sound_play(asset_get("sfx_ori_energyhit_medium"));   
     sound_play(sound_get("Fstrong"),false,noone,1.4,0.8);  
     create_hitbox(AT_FTHROW,1,x,y - 80) 
-    oknifelost -= 1
    }
 
    if hit_player_obj.ANwounded == 2 {
@@ -36,7 +35,6 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     sound_play(sound_get("Fstrong"),false,noone,1.5,0.7);  
     create_hitbox(AT_FTHROW,1,x - 20,y - 45)
     create_hitbox(AT_FTHROW,1,x + 20,y - 45)
-    oknifelost -= 2
    }
    
    if hit_player_obj.ANwounded == 3 {
@@ -48,7 +46,6 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     create_hitbox(AT_FTHROW,1,x - 35,y - 45)
     create_hitbox(AT_FTHROW,1,x + 35,y - 45)
     create_hitbox(AT_FTHROW,1,x,y - 85) 
-    oknifelost -= 3
    }
    
    hit_player_obj.ANwounded = 0
@@ -69,15 +66,13 @@ if my_hitboxID.type == 1  {
     }     
  if hit_player_obj != self  {       
     if hit_player_obj.ANwounded == 1 {
-    	hitstop += 1
-    	hit_player_obj.hitstop += 1
     	move_cooldown[AT_EXTRA_3] = 6
 
         with hit_player_obj {
-		take_damage( player, -1 , floor(halodmg/1.5))
+		take_damage( player, -1 , floor(halodmg/2))
         }
         
-	   	 sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);   
+	   	 sound_play(sound_get("slice"),false, 0, 0.5 + my_hitboxID.damage/20, 0.8 + random_func(2,10,true)/100);   
 
         
          if spr_dir = -1 {       
@@ -92,15 +87,15 @@ if my_hitboxID.type == 1  {
     } 
     
         if hit_player_obj.ANwounded == 2 {
-        	hitstop += 2
-    	hit_player_obj.hitstop += 2
+        	hitstop += 1
+    	hit_player_obj.hitstop += 1
            move_cooldown[AT_EXTRA_3] = 14
            with hit_player_obj {
-		   take_damage( player, -1 , floor(halodmg/1.2))
+		   take_damage( player, -1 , floor(halodmg/1.6))
            }  
 
-	   	 sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);   
-        sound_play(sound_get("slice3"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
+	   	sound_play(sound_get("slice"),false, 0, 0.5 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);   
+        sound_play(sound_get("slice3"),false, 0, 0.5 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
          if spr_dir = 1 {       
          spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 140, km2r );
          } else {
@@ -114,14 +109,14 @@ if my_hitboxID.type == 1  {
         }
     
         if hit_player_obj.ANwounded == 3 {
-        	hitstop += 4
-    	hit_player_obj.hitstop += 4
+        	hitstop += 2
+    	hit_player_obj.hitstop += 2
                 move_cooldown[AT_EXTRA_3] = 20 		   
                          with hit_player_obj {
-              		      take_damage( player, -1 , floor(halodmg))
+              		      take_damage( player, -1 , floor(halodmg/1.2))
                          } 
-                       sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);  
-              	   	 sound_play(sound_get("slice1"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
+                     sound_play(sound_get("slice"),false, 0, 0.5 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);  
+              	   	 sound_play(sound_get("slice1"),false, 0, 0.5 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
               	   	 
                if spr_dir = 1 {       
                spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 140, km3r );
@@ -142,9 +137,9 @@ if my_hitboxID.type == 1  {
 
 if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.sound_effect == sound_get("slice") {
 	
-	if my_hitboxID.hbox_num <= 4 && my_hitboxID.attack == AT_FSPECIAL{
-                my_hitboxID.destroyed = true
-		create_hitbox(AT_FTHROW,1,my_hitboxID.x,my_hitboxID.y)
+	if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num <= 5 && my_hitboxID.effect != 9{
+        my_hitboxID.destroyed = true
+		hb = create_hitbox(AT_FTHROW,1,hit_player_obj.x,hit_player_obj.y - 30)
 	}
 	       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
        			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
@@ -153,7 +148,7 @@ if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.sound_effect == sound_get("s
     if hit_player_obj.ANwounded < 3 {
     hit_player_obj.ANwounded += 1
     }
-if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG{
+if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG{
    hit_player_obj.ANwounded = 3
     sound_play(sound_get("slice"),false, 0, 1, 0.65);   
 }

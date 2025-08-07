@@ -36,6 +36,37 @@ if invince_time > 0 {
     
 }
 shader_start();
+
+if moonlight < 0{
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(sprite_index, image_index, x, y,  side*1.02, 1*1.02, 0 , -1, .5 - (get_gameplay_time()%20)/40 )
+    gpu_set_blendmode(bm_normal);
+    if moonlight < -290{
+        draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.6 - (moonlight - -290)/20,1.6 - (moonlight - -290)/2, get_gameplay_time()*-1.2, -1, 0.2)
+      gpu_set_blendmode(bm_add);
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.4- (moonlight - -290)/20,1.4- (moonlight - -290)/20, get_gameplay_time(), -1, 0.1)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1- (moonlight - -290)/20,1- (moonlight - -290)/20, get_gameplay_time()*-1.6, -1, 0.1)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1- (moonlight - -290)/20,1- (moonlight - -290)/20, get_gameplay_time()*2, -1, 0.1)
+      gpu_set_blendmode(bm_normal);
+    } 
+    if moonlight >= -290 && moonlight < -10{
+     draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.6,1.6, get_gameplay_time()*-1.2, -1, 0.2)
+      gpu_set_blendmode(bm_add);
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.4,1.4, get_gameplay_time(), -1, 0.1)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1,1, get_gameplay_time()*-1.6, -1, 0.1)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1,1, get_gameplay_time()*2, -1, 0.1)
+      gpu_set_blendmode(bm_normal);
+    }
+    if moonlight >= -10{
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.6,1.6, get_gameplay_time()*-1.2, -1, 0.2 - moonlight/100)
+      gpu_set_blendmode(bm_add);
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1.4,1.4, get_gameplay_time(), -1, 0.1 - moonlight/100)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1,1, get_gameplay_time()*-1.6, -1, 0.1 - moonlight/100)
+      draw_sprite_ext(sprite_get("Moonlight"),0, x, y - 30, 1,1, get_gameplay_time()*2, -1, 0.1 - moonlight/100)
+      gpu_set_blendmode(bm_normal); 
+    }
+}
+
 with oPlayer {
     if hatstate == other.player*other.player  {
         with other {

@@ -56,17 +56,19 @@ for ( var i = 0; i < array_length_1d(att); i += 1)
 
 holding_turntable = false;
 // destroy turntable
-/*
 with (obj_article1)
 {
     if (player_id == other)
     {
-        instance_destroy(self);  
+             PV -= 100;  
     }
 }
-*/
-cd_level = 0;
 
+cd_level = 0;
+if (attack == AT_FSPECIAL) 
+{
+    move_cooldown[AT_FSPECIAL] = 0;
+}
 
 sound_play(sound_get("wait1"));
 

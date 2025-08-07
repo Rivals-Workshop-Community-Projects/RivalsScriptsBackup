@@ -29,7 +29,10 @@ if attack == AT_DSTRONG {
     }
 }
 
-
+if attack == AT_FAIR && window == 1{
+        set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 16);
+        set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+}
 if attack == AT_DAIR {
     
         if window == 1 && window_timer == 1 {
@@ -72,8 +75,10 @@ if attack == AT_DAIR {
     	if has_hit {
     	vsp = -7
     	set_attack(AT_FAIR)
+        set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 8);
+        set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
     	window = 4 
-    	window_timer = 6
+    	window_timer = 1
     	}
     	
     	if !free {
@@ -90,7 +95,7 @@ if attack == AT_DAIR {
         vsp = 14
     }
     
-    if window == 2 && hitpause  {
+    if window == 2 && hitpause{
         old_vsp = -14
     }
     
@@ -101,8 +106,6 @@ if attack == AT_DAIR {
 }
 
 if attack == AT_NSPECIAL  {
-	
-
 	
 	if window == 1 && window_timer < 5{
 	    if left_down && !right_down {
@@ -232,34 +235,41 @@ if !hitpause && window == 7 && window_timer == 1 {
       sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,1.35);
 }
 
+}
+
+if attack == AT_FTILT{
+
+if !hitpause && window == 3 && attack_pressed {
+    attack_end()
+    set_attack(AT_JAB)
+    window = 4
+    window_timer = 0
+    hsp += 2*spr_dir
+}
 
 }
+
 
 if attack == AT_USTRONG{
-
 if !hitpause && window == 1 && window_timer == 1 {
-      sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,0.75);
+      sound_play(asset_get("sfx_ice_shieldup"),false,noone,0.8,0.75);
 }
 
 if !hitpause && window == 2 && window_timer == 1 {
-      sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.75);
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,1.2);
+}
 }
 
-
-}
-
-if attack == AT_FSTRONG{
-
+if attack == AT_DSTRONG or attack == AT_FSTRONG{
 if !hitpause && window == 1 && window_timer == 1 {
-      sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,0.75);
+      sound_play(asset_get("sfx_ice_shieldup"),false,noone,0.8,0.75);
 }
-
 if !hitpause && window == 2 && window_timer == 1 {
-      sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.75);
+      sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,0.75);
+}
 }
 
 
-}
 
 if attack == AT_FSPECIAL{
 	move_cooldown[AT_FSPECIAL] = 30
@@ -433,11 +443,11 @@ if attack == AT_DSPECIAL{
    	    
    	    if ethrow = 0 {
    	    if move_cooldown[AT_DTILT] = 0 {	
-   	    if window_timer == 1 && oknifecount >= 1 {
+   	    if window_timer == 1 && batt >= 1 {
    	    	set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_HSPEED, 0);
    	    	set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_VSPEED, 6);
    	    	create_hitbox(AT_FSPECIAL,4,x,y+30)
-   	    	oknifecount -= 1
+   	    	batt -= 1
    	    	move_cooldown[AT_TAUNT] = 16
    	    	sound_play(asset_get("sfx_ice_shieldup"));
    	    	
@@ -538,7 +548,7 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_USPECIAL{
 	move_cooldown[AT_DSPECIAL] = 0
-		set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+	set_attack_value(AT_FAIR, AG_CATEGORY, 2);
 	draw_indicator = false
 	if window == 2{
 	    if left_down && !right_down {
@@ -557,7 +567,7 @@ if attack == AT_USPECIAL{
 		ethrow = 0
 	}
 	
-	if window == 1 && window_timer == 8{
+	if window == 1 && window_timer == 12{
 		spawn_hit_fx(x,y,cape)
 		spawn_hit_fx(x,y - 34,timeS2)
 	}

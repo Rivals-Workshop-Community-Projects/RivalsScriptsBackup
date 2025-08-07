@@ -186,7 +186,7 @@ if state == PS_WAVELAND  {
 	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1)
 }
 
-if state == PS_ATTACK_AIR && attack == AT_EXTRA_3 {
+if state == PS_ATTACK_AIR && attack == AT_EXTRA_3 && window == 1 {
 	    if state_timer % 4 <= 1 {
         draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 0.4)
             draw_sprite_ext(sprite_index, image_index, x - shsp*3, y - svsp*3, spr_dir, 1, 0, -1, 0.2)

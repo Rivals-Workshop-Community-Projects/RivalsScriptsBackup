@@ -1,6 +1,90 @@
 //
 //sound_stop(cur_sound)
 
+if moonlight != 0{
+	if moonlight >= 0 {
+		if walk_speed != 4.5{
+           walk_speed = 4.5;
+           walk_accel = 1;
+           walk_turn_time = 1;
+           initial_dash_time = 2;
+           initial_dash_speed = 4;
+           dash_speed = 4.5;
+           dash_turn_time = 1;
+           dash_turn_accel = .5;
+           dash_stop_time = 1;
+           dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+           ground_friction = 1;
+           moonwalk_accel = 2;
+           
+           max_jump_hsp = 3; //the maximum hsp you can have when jumping from the ground
+           air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+           jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+           air_accel = .25;
+           h3x = spawn_hit_fx(floor(x), floor(y - 40), h3)
+           h3x.depth = -6
+           h3x.spr_dir *= 1.5
+           h3x.image_yscale = 1.5
+        }
+        
+		if moonlight >= 0 moonlight --
+        if moonlight >= 180{
+        	shake_camera(4, 6)
+        	sound_play(asset_get("sfx_gem_collect"),false,noone,1,1.5)
+        	sound_play(sound_get("hatoff1"),false, noone, .4, 0.5);
+  			   h3x = spawn_hit_fx(floor(x), floor(y - 40), h3)
+               h3x.depth = -6
+               h3x.spr_dir *= 1.5
+               h3x.image_yscale = 1.5
+            moonlight = -300
+    	} 
+    }else {
+    	if state_timer % 5 == 0 {
+         fx1 = spawn_hit_fx(x - 30 + random_func(1,60,true), y - 60 + random_func(2,40,true),p1)
+         fx2 = spawn_hit_fx(x - 30 + random_func(3,60,true), y - 60 + random_func(4,40,true),p2)
+         fx1.depth = -6
+         fx2.depth = -6
+         }
+    	if walk_speed == 4.5{
+           walk_speed = 6;
+           walk_accel = 1;
+           walk_turn_time = 1;
+           initial_dash_time = 2;
+           initial_dash_speed = 6;
+           dash_speed = 6;
+           dash_turn_time = 1;
+           dash_turn_accel = .5;
+           dash_stop_time = 1;
+           dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+           ground_friction = 1;
+           moonwalk_accel = 2;
+           
+           max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+           air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+           jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
+           air_accel = .4;
+        }
+		moonlight ++
+	}
+}
+if state == PS_CROUCH or state == PS_IDLE{
+	if moonlight >= 0{
+		 if state_timer % 3 == 0 {
+         spawn_hit_fx(x - 30 + random_func(1,60,true), y - 60 + random_func(2,40,true),p1)
+         spawn_hit_fx(x - 30 + random_func(3,60,true), y - 60 + random_func(4,40,true),p2)
+         }
+		moonlight += 2
+	}
+}
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL or attack == AT_TAUNT{
+	if moonlight >= 0{
+		if state_timer % 3 == 0 {
+         spawn_hit_fx(x - 30 + random_func(1,60,true), y - 60 + random_func(2,40,true),p1)
+         spawn_hit_fx(x - 30 + random_func(3,60,true), y - 60 + random_func(4,40,true),p2)
+         }
+		moonlight += 3
+	}
+}
 
 if get_gameplay_time() <= 120 && voiced == 1 {
 sound_stop(sound_get("v_dowitdabear"))

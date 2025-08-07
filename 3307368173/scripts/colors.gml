@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 6, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 30 );
 
 // I NEED MORE POWER
 set_color_profile_slot( 1, 0, 235, 255, 253 ); //Sword
@@ -278,49 +278,82 @@ set_color_profile_slot( 22, 6, 68, 69, 84 ); //Pants
 set_color_profile_slot( 22, 7, 255, 255, 255 ); //Sclera
 //shading data: [1, 1, 1.5, 1, 1, 1, 1, 1]
 
-// All-Star
-set_color_profile_slot( 23, 0, 230, 202, 145 ); //Sword
-set_color_profile_slot( 23, 1, 73, 84, 186 ); //Shirt
-set_color_profile_slot( 23, 2, 29, 36, 87 ); //Hand + Hair
-set_color_profile_slot( 23, 3, 119, 77, 153 ); //Jacket
-set_color_profile_slot( 23, 4, 230, 202, 145 ); //Jacket 2
-set_color_profile_slot( 23, 5, 221, 203, 247 ); //Skin
-set_color_profile_slot( 23, 6, 71, 90, 148 ); //Pants
+// Scarlet Blade
+set_color_profile_slot( 23, 0, 110, 0, 0 ); //Sword
+set_color_profile_slot( 23, 1, 252, 254, 255 ); //Shirt
+set_color_profile_slot( 23, 2, 31, 31, 48 ); //Hand + Hair
+set_color_profile_slot( 23, 3, 80, 80, 90 ); //Jacket
+set_color_profile_slot( 23, 4, 40, 40, 50 ); //Jacket 2
+set_color_profile_slot( 23, 5, 163, 106, 65 ); //Skin
+set_color_profile_slot( 23, 6, 37, 37, 77 ); //Pants
 set_color_profile_slot( 23, 7, 255, 255, 255 ); //Sclera
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// Vortex
-set_color_profile_slot( 24, 0, 239, 141, 0 ); //Sword
-set_color_profile_slot( 24, 1, 248, 13, 0 ); //Shirt
-set_color_profile_slot( 24, 2, 235, 75, 46 ); //Hand + Hair
-set_color_profile_slot( 24, 3, 158, 45, 25 ); //Jacket
-set_color_profile_slot( 24, 4, 255, 196, 79 ); //Jacket 2
-set_color_profile_slot( 24, 5, 219, 154, 96 ); //Skin
-set_color_profile_slot( 24, 6, 99, 36, 36 ); //Pants
+// Mint Blade
+set_color_profile_slot( 24, 0, 143, 255, 176 ); //Sword
+set_color_profile_slot( 24, 1, 37, 37, 77 ); //Shirt
+set_color_profile_slot( 24, 2, 252, 254, 255 ); //Hand + Hair
+set_color_profile_slot( 24, 3, 15, 133, 163 ); //Jacket
+set_color_profile_slot( 24, 4, 42, 53, 87 ); //Jacket 2
+set_color_profile_slot( 24, 5, 163, 106, 65 ); //Skin
+set_color_profile_slot( 24, 6, 252, 254, 255 ); //Pants
 set_color_profile_slot( 24, 7, 255, 255, 255 ); //Sclera
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
+// All-Star
+set_color_profile_slot( 25, 0, 230, 202, 145 ); //Sword
+set_color_profile_slot( 25, 1, 73, 84, 186 ); //Shirt
+set_color_profile_slot( 25, 2, 29, 36, 87 ); //Hand + Hair
+set_color_profile_slot( 25, 3, 119, 77, 153 ); //Jacket
+set_color_profile_slot( 25, 4, 230, 202, 145 ); //Jacket 2
+set_color_profile_slot( 25, 5, 221, 203, 247 ); //Skin
+set_color_profile_slot( 25, 6, 71, 90, 148 ); //Pants
+set_color_profile_slot( 25, 7, 255, 255, 255 ); //Sclera
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
+// Vortex
+set_color_profile_slot( 26, 0, 239, 141, 0 ); //Sword
+set_color_profile_slot( 26, 1, 248, 13, 0 ); //Shirt
+set_color_profile_slot( 26, 2, 235, 75, 46 ); //Hand + Hair
+set_color_profile_slot( 26, 3, 158, 45, 25 ); //Jacket
+set_color_profile_slot( 26, 4, 255, 196, 79 ); //Jacket 2
+set_color_profile_slot( 26, 5, 219, 154, 96 ); //Skin
+set_color_profile_slot( 26, 6, 99, 36, 36 ); //Pants
+set_color_profile_slot( 26, 7, 255, 255, 255 ); //Sclera
 //shading data: [-20, 2.5, 0.5, 1, 1.5, 1.5, 1, 1]
 
 // Spectral Thief
-set_color_profile_slot( 25, 0, 56, 162, 168 ); //Sword
-set_color_profile_slot( 25, 1, 35, 36, 36 ); //Shirt
-set_color_profile_slot( 25, 2, 50, 146, 150 ); //Hand + Hair
-set_color_profile_slot( 25, 3, 35, 36, 36 ); //Jacket
-set_color_profile_slot( 25, 4, 45, 131, 135 ); //Jacket 2
-set_color_profile_slot( 25, 5, 255, 174, 87 ); //Skin
-set_color_profile_slot( 25, 6, 51, 148, 153 ); //Pants
-set_color_profile_slot( 25, 7, 255, 255, 255 ); //Sclera
+set_color_profile_slot( 27, 0, 56, 162, 168 ); //Sword
+set_color_profile_slot( 27, 1, 35, 36, 36 ); //Shirt
+set_color_profile_slot( 27, 2, 50, 146, 150 ); //Hand + Hair
+set_color_profile_slot( 27, 3, 35, 36, 36 ); //Jacket
+set_color_profile_slot( 27, 4, 45, 131, 135 ); //Jacket 2
+set_color_profile_slot( 27, 5, 255, 174, 87 ); //Skin
+set_color_profile_slot( 27, 6, 51, 148, 153 ); //Pants
+set_color_profile_slot( 27, 7, 255, 255, 255 ); //Sclera
 //shading data: [1, 1, 0.5, 0.5, 1, 2, 1, 1]
 
 // Ghostride
-set_color_profile_slot( 26, 0, 237, 235, 123 ); //Sword
-set_color_profile_slot( 26, 1, 160, 120, 207 ); //Shirt
-set_color_profile_slot( 26, 2, 194, 97, 97 ); //Hand + Hair
-set_color_profile_slot( 26, 3, 255, 141, 96 ); //Jacket
-set_color_profile_slot( 26, 4, 224, 72, 146 ); //Jacket 2
-set_color_profile_slot( 26, 5, 210, 158, 122 ); //Skin
-set_color_profile_slot( 26, 6, 74, 158, 118 ); //Pants
-set_color_profile_slot( 26, 7, 255, 255, 255 ); //Sclera
+set_color_profile_slot( 28, 0, 237, 235, 123 ); //Sword
+set_color_profile_slot( 28, 1, 160, 120, 207 ); //Shirt
+set_color_profile_slot( 28, 2, 194, 97, 97 ); //Hand + Hair
+set_color_profile_slot( 28, 3, 255, 141, 96 ); //Jacket
+set_color_profile_slot( 28, 4, 224, 72, 146 ); //Jacket 2
+set_color_profile_slot( 28, 5, 210, 158, 122 ); //Skin
+set_color_profile_slot( 28, 6, 74, 158, 118 ); //Pants
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //Sclera
 //shading data: [0.5, 1.6, 0.9, 0.6, 0.6, 0.7, 1.4, 1]
+
+// sly
+set_color_profile_slot( 29, 0, 15, 1, 1 ); //Sword
+set_color_profile_slot( 29, 1, 163, 29, 55 ); //Shirt
+set_color_profile_slot( 29, 2, 255, 255, 255 ); //Hand + Hair
+set_color_profile_slot( 29, 3, 224, 78, 78 ); //Jacket
+set_color_profile_slot( 29, 4, 158, 25, 32 ); //Jacket 2
+set_color_profile_slot( 29, 5, 210, 158, 122 ); //Skin
+set_color_profile_slot( 29, 6, 76, 42, 23 ); //Pants
+set_color_profile_slot( 29, 7, 245, 213, 229 ); //Sclera
+//shading data: [-50, 3, 1.5, 3, 2, 1.5, 1.1, 0]
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

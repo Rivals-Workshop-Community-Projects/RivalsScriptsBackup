@@ -222,6 +222,7 @@ hue_speed=1; //change this to change the speed of the hueshift
 
 //sweet victory
 //Quote
-mal_victory_quote = "Was that Cel again? Those clones of hers are getting borderline lifelike...";
+mal_victory_quote = "
+Did that blue lady do that? Scary...";
 mal_handled_victory_quote = false;
 victoryicon_subimg = 0;

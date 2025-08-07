@@ -2,6 +2,10 @@
 
 sound_play(asset_get("sfx_buzzsaw_hit"),false,noone,max(.6, hit_player_obj.hitstop*hit_player_obj.hitstop/150), 3 - min(2, 1 + hit_player_obj.hitstop*hit_player_obj.hitstop/150) )
 
+if moonlight < 0{
+   moonlight = -280
+}
+
 if my_hitboxID.damage > 4 && hit_player_obj.hatstate != 0 && hit_player_obj.hatstate != 2*player*player && my_hitboxID.attack != AT_NSPECIAL && hit_player_obj.hatprotection == 0{
     hit_player_obj.hatstate = 2*player*player
     hitstop += 5
@@ -12,6 +16,10 @@ if my_hitboxID.damage > 4 && hit_player_obj.hatstate != 0 && hit_player_obj.hats
 
 if my_hitboxID.attack == AT_FTHROW {
     old_hsp = 0
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL) && moonlight >= 0 && my_hitboxID.effect != 9{
+    moonlight = 300
 }
 
 if my_hitboxID.attack == AT_BAIR {

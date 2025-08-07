@@ -1,17 +1,22 @@
 ///
 if attack == AT_FTHROW  {
+	
   if hitbox_timer == 1 {
   hsp = (x - player_id.x)
   vsp = (y - player_id.y + 30)
   hsp = clamp(-10,hsp,10)
   vsp = clamp(-10,vsp,10)
+  hitbox_timer = get_gameplay_time()%20
   }
-  if hitbox_timer <= 15 {
-        vsp += 0.65
+  
+  if hitbox_timer <= 30 {
+        vsp += 0.15
+        hsp /= 1.05
+        vsp /= 1.05
   }
 
- if hitbox_timer > 15{
-	spawn_hit_fx (x,y, hams)
+ if hitbox_timer > 30{
+	// spawn_hit_fx (x,y, hams)
    if x < player_id.x {
    	   hsp += 1
    } else {
@@ -31,27 +36,23 @@ if attack == AT_FTHROW  {
    }
    
    
-   if hitbox_timer % 4 <= 1 {
-   	 sprite_index = asset_get("empty_sprite")
-   } else if hitbox_timer % 4 == 2 {
+   if hitbox_timer % 4 == 2 {
    	  sprite_index = sprite_get("hamburger")
-   	  image_index = hitbox_timer/2
    } else if hitbox_timer % 4 == 3 {
    	  sprite_index = sprite_get("hamburger2")
-   	  image_index = hitbox_timer/2
    }
    if abs(x - player_id.x) < 30 and abs(y - player_id.y + 50) < 30 && hitbox_timer > 30 {
    	destroyed = true
    	with player_id {
-		oknifecount ++
+		batt ++
         spawn_hit_fx(other.x,other.y,timeS)
         sound_stop(asset_get("sfx_ice_on_player"))
 		sound_play(asset_get("sfx_ice_on_player"),false,noone,.9,1.5)
    	}
    }
-   
 }
 }
+
 if attack == AT_DSPECIAL && hbox_num == 6 && !free {
 	 create_hitbox(AT_DSPECIAL , 5 , x  , y - 16 );
 	 destroyed = 1
@@ -71,9 +72,9 @@ if hitbox_timer == 1 && !free{
 }
 
 if attack == AT_FSPECIAL && hbox_num == 5 { 
-	if hitbox_timer == 59 {
-          player_id.oknifelost ++
-	}
+	// if hitbox_timer == 59 {
+ //         player_id.oknifelost ++
+	// }
 	
 	if hsp > 0 {
 		spr_dir = 1
@@ -85,7 +86,6 @@ if attack == AT_FSPECIAL && hbox_num == 5 {
 	
 	spawn_hit_fx (x , y + 20 - random_func(2,40,true) , hams)
 
-	
 }
 
 if attack == AT_FSPECIAL && hbox_num == 6 {
@@ -108,7 +108,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
 	
 	if y > room_height {
 		destroyed = true
-                player_id.oknifelost ++
+        // player_id.oknifelost ++
 	}
     
     
@@ -188,18 +188,17 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
      	spawn_hit_fx(x,y+12,14)
     }
     
-    if player_id.move_cooldown[AT_NSPECIAL_2] == 4 && hitbox_timer >= 20 {
-    	hsp = shsp
-        vsp = svsp
-    	hitbox_timer = -60
-    	player = orig_player
-    	hit_priority = 9
-    	spawn_hit_fx(x,y,timeS2)
-    	for (var i = 1; i < 20; i++) can_hit[i] = true
-    }  
+    // if player_id.move_cooldown[AT_NSPECIAL_2] == 4 && hitbox_timer >= 20 {
+    // 	hsp = shsp
+    //     vsp = svsp
+    // 	hitbox_timer = -60
+    // 	player = orig_player
+    // 	hit_priority = 9
+    // 	spawn_hit_fx(x,y,timeS2)
+    // 	for (var i = 1; i < 20; i++) can_hit[i] = true
+    // }  
     
     with (pHitBox) {
-    
     nearbyhitbox = collision_circle( x, y , 48, other, true, true ) 
     
     
@@ -213,11 +212,9 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     	     window_timer = 0
     	     spawn_hit_fx (x, y + 6, 14)
     	}
-    	
     }
     
     if nearbyhitbox != noone && type == 1 && hitpause == 1.1133  {
-    	
     	with player_id {
     	    move_cooldown[AT_DTILT] = 60
     	    ethrow += 1
@@ -244,7 +241,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls1)
     		sound_stop(sound_get("RI"))
     		sound_play(sound_get("RI"),false,noone,1,0.6)
-    		other.player_id.oknifelost ++
+    		// other.player_id.oknifelost ++
     		}
     		
     		}
@@ -256,7 +253,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > 0 {
 		  if player_id.char_height != other.player_id.char_height {
 		  	other.destroyed = true 
-		  	other.player_id.oknifelost ++
+		  	// other.player_id.oknifelost ++
 		  	with other {
 		  		sound_stop(asset_get("sfx_shovel_hit_heavy2"))
 		        sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,1,1.4)
@@ -271,12 +268,12 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
             sound_stop(asset_get("sfx_shovel_hit_light1"))
 		    sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,1,1.4)
             shake_camera(4, 4)
-		    
+		    effect = 0
 		    
 
                if other.attack != AT_JAB {
                if (other.kb_angle > 0 and other.kb_angle <= 45) or
-               other.kb_angle  == 361{
+               other.kb_angle == 361{
                    hsp = 10 * other.spr_dir
                    vsp = -3
                } 

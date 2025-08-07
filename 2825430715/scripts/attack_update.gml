@@ -26,17 +26,17 @@ if attack != AT_NAIR and attack != AT_FAIR and attack != AT_BAIR and attack != A
 
 if free {
 	if window == 1 {
-		set_attack_value(AT_NAIR, AG_LANDING_LAG, 3);
-		set_attack_value(AT_FAIR, AG_LANDING_LAG, 3);
-		set_attack_value(AT_BAIR, AG_LANDING_LAG, 3);
-		set_attack_value(AT_UAIR, AG_LANDING_LAG, 3);
-		set_attack_value(AT_DAIR, AG_LANDING_LAG, 3);
-	} else {
 		set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
-		set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
-		set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
+		set_attack_value(AT_FAIR, AG_LANDING_LAG, 4);
+		set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
+		set_attack_value(AT_UAIR, AG_LANDING_LAG, 4);
+		set_attack_value(AT_DAIR, AG_LANDING_LAG, 4);
+	} else {
+		set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
+		set_attack_value(AT_FAIR, AG_LANDING_LAG, 10);
+		set_attack_value(AT_BAIR, AG_LANDING_LAG, 5);
 		set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
-		set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
+		set_attack_value(AT_DAIR, AG_LANDING_LAG, 10);
 	}
 	
 }
@@ -375,7 +375,7 @@ switch attack {
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
                      with hit_player_obj {
-                     	take_damage(player,-1,8)
+                     	take_damage(player,-1,6)
                      }
         	}
         	
@@ -394,6 +394,7 @@ switch attack {
          }	
         
          if window_timer == 3*4 && !free {
+         	if right_down - left_down != 0 spr_dir = right_down - left_down
          	galaxplayer.y = y
          	galaxplayer.x = x + 20*spr_dir
          	window = 2
@@ -439,7 +440,7 @@ switch attack {
        }
        
        if has_hit_player && hitpause && hit_player_obj.state_cat == SC_HITSTUN {
-	      galaxplayer.x += floor((x -  galaxplayer.x)/6)
+	     galaxplayer.x += floor((x -  galaxplayer.x)/6)
          galaxplayer.y += floor((y - 50 - galaxplayer.y)/6)	
        }
        
@@ -554,7 +555,7 @@ switch attack {
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
                       with hit_player_obj {
-                     	take_damage(player,-1,8)
+                     	take_damage(player,-1,6)
                      }
         	}
         	
@@ -569,7 +570,7 @@ switch attack {
                      vsp = -15
                      hsp = 15*spr_dir
                       with hit_player_obj {
-                     	take_damage(player,-1,8)
+                     	take_damage(player,-1,6)
                      }
         	}
         	
@@ -584,7 +585,7 @@ switch attack {
                      vsp = -15
                      hsp = 15*spr_dir
                       with hit_player_obj {
-                     	take_damage(player,-1,8)
+                     	take_damage(player,-1,6)
                      }
         	}
         	galaxplayer.fall_through = true 
@@ -827,7 +828,7 @@ switch attack {
 	 		spawn_hit_fx(x,y - 30, 306)
                         take_damage(player,-1,20)
                         spawn_hit_fx(x,y - 30,305)
-	 		turningtodust = 900
+	 		turningtodust = 60
 	 		turningtodustID = other
 	 	}
 	  }
@@ -860,11 +861,11 @@ switch attack {
 	
 	case AT_FTHROW:
 
-	if "turningtodust" in self {
-                		if turningtodust > 2 {
-                			turningtodust = 600
-                		}
-     }
+	// if "turningtodust" in self {
+ //       if turningtodust > 2 {
+ //        	turningtodust = 60
+ //       }
+ //    }
      
 	 if window == 1 {
 	 if move_cooldown[AT_DTHROW] < 30 move_cooldown[AT_DTHROW] += 5
@@ -974,8 +975,8 @@ switch attack {
 	 
 	 
 	 if window == 2 && !hitpause{
-	 	
 	 	if window_timer == 1 {
+	 		if right_down - left_down != 0 spr_dir = right_down - left_down
 	 		hsp = 4*spr_dir
 	 	}
 	 	
@@ -997,7 +998,6 @@ switch attack {
 	 }
 	 
 	 if window == 4 && !hitpause{
-	 	
 	 	if window_timer == 1 {
 	 		hsp = -4*spr_dir
 	 	}
@@ -1092,7 +1092,7 @@ switch attack {
    if window == 1 {
    	
    	if window_timer == 1 {
-   		threshold = 150 - (hasbody*10) - (hasmind*10) - (hasbalance*10)
+   		threshold = 200 - (hasbody*12) - (hasmind*12) - (hasbalance*12)
    		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
    	}
    	
@@ -1428,7 +1428,6 @@ if attack == AT_FSPECIAL && !hitpause{
     	can_wall_jump = false 
         soft_armor = 999
         if window < 5 {
-        	
             hit_player_obj.x += floor((x + 120*spr_dir -  hit_player_obj.x)/2)
             hit_player_obj.y += floor((y - 20 - hit_player_obj.y)/4)
             hit_player_obj.fall_through = true 
@@ -1490,7 +1489,7 @@ if attack == AT_FSPECIAL && !hitpause{
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
                       with hit_player_obj {
-                     	take_damage(player,-1,8)
+                     	take_damage(player,-1,6)
                      }
                  }
                  
@@ -1705,7 +1704,7 @@ if attack == AT_DSPECIAL && !hitpause{
     
 	if move_cooldown[AT_DSPECIAL] == 118 {
 		if free {
-	         		vsp = -6
+	       vsp = -6
 	    }
 		pratfx = spawn_hit_fx(x,y - 40,306)
 		pratfx.pause = 3
@@ -1723,18 +1722,20 @@ if attack == AT_DSPECIAL && !hitpause{
 		if vsp > 0 vsp /= 1.4
 	}
 	if window == 1{
-		
+		if window_timer > 1 {
 		ptprep = spawn_hit_fx(x + 20 - random_func(2,40,true) + 20*spr_dir,y + 10 - random_func(1,50,true) ,ptgone)
     					ptprep.spr_dir = 0.3*spr_dir
     					ptprep.image_yscale = 0.3
-    					
+		}			
 		if window_timer == 1 && !hitpause && move_cooldown[AT_FTHROW] >= 4 {
 			sound_play(asset_get("sfx_coin_collect"));
 			sound_play(sound_get("SpaceCut"),false,noone,1,1.2)
 			create_hitbox(AT_DTHROW,4,x + 50*spr_dir,y - 46)
 			grab = spawn_hit_fx (x + 50*spr_dir,y, ptgone)
 			grab.depth = -6
+			set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 		} else if move_cooldown[AT_FTHROW] == 0 {
+			set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);
 			sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1.25);
 			window = 2
 			window_timer = 0
@@ -1745,24 +1746,25 @@ if attack == AT_DSPECIAL && !hitpause{
 		}
 	}
 	
-	if window == 2 && window_timer == 16 && !hitpause{
-		if move_cooldown[AT_FTHROW] == 0 {
+	if window == 2 && !hitpause{
+		if move_cooldown[AT_FTHROW] == 0 && window_timer == 30 {
 			
-         x = round(x)
+            x = round(x)
 			y = round(y)
 			
 			sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
 			sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
 			create_hitbox(AT_DTHROW,1, x + 18*spr_dir, y - 46)
 			grab = spawn_hit_fx (x + 18*spr_dir, y - 10, ptgone)
-			hee = spawn_hit_fx (x + 30*spr_dir, y, rollfx)
-	 	    hee.spr_dir = spr_dir
-	 	    hee1 = spawn_hit_fx (x + 90*spr_dir, y, rollfx)
-	 	    hee1.spr_dir = spr_dir
-			hsp = 50*spr_dir 
-			vsp = 0
+			// hee = spawn_hit_fx (x + 30*spr_dir, y, rollfx)
+	 	//     hee.spr_dir = spr_dir
+	 	//     hee1 = spawn_hit_fx (x + 90*spr_dir, y, rollfx)
+	 	//     hee1.spr_dir = spr_dir
+			// hsp = 50*spr_dir 
+			// vsp = 0
 			grab.depth = -6
-		} else{
+		}
+	   if move_cooldown[AT_FTHROW] != 0 && window_timer == 15 {
 			sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.4)
 		}
 	}

@@ -78,9 +78,9 @@ set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 6); //because of the looping, window_timer 0 won't spawn hitboxes
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 7);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -29);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 137);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 48);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);

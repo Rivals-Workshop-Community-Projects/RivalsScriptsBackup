@@ -382,7 +382,6 @@ with oPlayer {
 	if "turningtodustID" in self {
 		
 		if turningtodustID == other && turningtodust > 0{
-			
 			if other.state == PS_RESPAWN {
 				turningtodust = 1
 				spawn_hit_fx(x,y-40,306)
@@ -393,19 +392,19 @@ with oPlayer {
 			
 			if !hitpause {
 			
-			with other {
+			// with other {
 
-			if state_cat != SC_HITSTUN && !hitpause {
-				x -= floor(hsp/3)
-				y -= floor(vsp/4)
-			}
+			// if state_cat != SC_HITSTUN && !hitpause {
+			// 	x -= floor(hsp/3)
+			// 	y -= floor(vsp/4)
+			// }
 			
-	    	}
+	  //  	}
 		
 			turningtodust--
 			invisible = true 
 			
-			if get_gameplay_time()% (1 + floor(turningtodust/40)) == 0 {
+			if get_gameplay_time()% 3 == 0 {
 			    take_damage(player,-1,7)
 			    sound_play(asset_get("sfx_icehit_heavy1"),false,noone,.6,1)
 			    if random_func(4,2,true) ==  0 {
@@ -431,8 +430,6 @@ with oPlayer {
 			    dustx = x
 			    dusty = y 
 			    KOdusted = 60
-
-			    
 			    y = 99999
 			    turningtodust = 0
 			}

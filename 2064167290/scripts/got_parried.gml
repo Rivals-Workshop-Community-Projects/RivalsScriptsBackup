@@ -1,4 +1,5 @@
 // got parried
+cd_level = 0;
 
 if (my_hitboxID.attack == AT_DSPECIAL)
 {
@@ -14,7 +15,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
         }
     }
     
-    parry_lag = 50;
+    parry_lag = 60;
     
     
 }

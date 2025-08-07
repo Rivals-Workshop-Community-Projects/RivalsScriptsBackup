@@ -77,9 +77,9 @@ if get_gameplay_time() == 90 && get_player_color(player) == 4 {
 
 
 if djumps == 0 {
-	djump_speed = 9;
+	djump_speed = 8;
 } else {
-	djump_speed = 7.5;
+	djump_speed = 7;
 }
 
 with pHitBox {
@@ -172,14 +172,15 @@ if state == PS_RESPAWN  {
 
 if move_cooldown[AT_DSPECIAL] > 0 {
 	
-if move_cooldown[AT_DSPECIAL] % 2 == 0 {
-	spawn_hit_fx(x - 20 + random_func(1,40,true),y - 70 + random_func(2,60,true), bfx4)
+if move_cooldown[AT_DSPECIAL] % 15 == 0 {
+	fx = spawn_hit_fx(x ,y - 50, bfx5)
+	fx.pause = 2
 }	
 
 if move_cooldown[AT_DSPECIAL] == 1 {
-	
-	spawn_hit_fx(x ,y - 40, bfx5)
-	spawn_hit_fx(x ,y - 60, bfx5)
+	fx = spawn_hit_fx(x,y-45,sw2)
+	fx.spr_dir *= 0.6
+	fx.image_yscale = 0.6
 	sound_stop(asset_get("sfx_zetter_shine_charged"))
 	sound_play(asset_get("sfx_zetter_shine_charged"),false,noone,1.6,.8)	
 	sound_play(sound_get("b2"),false,noone,0.8,1)
@@ -256,30 +257,28 @@ if sagemode != 0 {
 
 }
 
+if !free move_cooldown[AT_EXTRA_3] = 0
+// if state == PS_AIR_DODGE {
 
-if state == PS_AIR_DODGE {
 
-    
+// 	if state_timer == 1 && (!joy_pad_idle) {
 		
-
-	if state_timer == 1 && (!joy_pad_idle) {
+// 		if right_down - left_down != 0 spr_dir = right_down - left_down
+// 		move_cooldown[AT_EXTRA_3] = 0
+// 		set_attack(AT_EXTRA_3)
+// 		window = 1
+// 		window_timer = 1
+// 		sound_play(asset_get("sfx_bird_sidespecial_start"))
+// 	    vsp /= 2
 		
-		if right_down - left_down != 0 spr_dir = right_down - left_down
-		move_cooldown[AT_EXTRA_3] = 0
-		set_attack(AT_EXTRA_3)
-		window = 1
-		window_timer = 1
-		sound_play(asset_get("sfx_bird_sidespecial_start"))
-	    vsp /= 2
-		
-	}
+// 	}
     
-    if state_timer > 2 {
-    	hsp = 0
-    	vsp = 0
-    }
+//     if state_timer > 2 {
+//     	hsp = 0
+//     	vsp = 0
+//     }
     
-}
+// }
 
 
 //if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {

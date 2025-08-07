@@ -23,6 +23,13 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial"));
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_SFX_FRAME, 1);
+
 set_num_hitboxes(AT_FSPECIAL, 3);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);

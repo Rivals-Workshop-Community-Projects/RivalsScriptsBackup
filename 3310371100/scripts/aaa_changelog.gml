@@ -6,6 +6,13 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.8===
+---balancing---
+:: JAB ... further changes to avoid problems
+
+---notes---
+thanks to spider for exact changes
+
 ===v3.7===
 ---balancing---
 :: JAB ... jab 1 no longer has knockback scaling

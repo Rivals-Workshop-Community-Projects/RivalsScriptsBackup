@@ -121,6 +121,9 @@ if my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_DAIR or my_hitboxID
 
 }
 
+if my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 2{
+	sound_play(asset_get("sfx_blow_heavy2"));
+}
 
 if hit_player_obj.url == 2154720280 {
 	
@@ -134,13 +137,9 @@ coindrop = 0
 }
 
 if my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 1{
-coindrop = 0
-
+    coindrop = 0
     create_hitbox(AT_DSPECIAL , 6 , floor(hit_player_obj.x) ,  floor(hit_player_obj.y - 40) );
-
 }
-
-
 
 
 }
@@ -150,9 +149,7 @@ or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG or my_hi
 or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_DAIR or 
 (my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num < 3)  or my_hitboxID.attack == AT_DAIR
 or my_hitboxID.attack == AT_USPECIAL{
-
     meleehit = 1
-
 } else {
 	meleehit = 0
 }

@@ -538,7 +538,7 @@ switch attack {
 	 	}
 	 	
 	 	
-	 	if window_timer > 6 && jump_pressed && djumps < 1 {
+	 	if window_timer > 6 && jump_pressed && djumps < 1 && moonlight < 0 {
 	 		if right_down - left_down != 0 {
 	 			side = right_down - left_down
 	 		    spr_dir = right_down - left_down
@@ -697,6 +697,7 @@ switch attack {
 	   		nearbyhitbox = collision_circle( x, y - 30, 69, asset_get("pHitBox"), true, true ) 
 	               if nearbyhitbox != noone{
 	               	if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
+	               		moonlight = 280
 	               		heehee = spawn_hit_fx(x,y,dsp)
 	               		heehee.depth = -6
 	               			 window = 4 

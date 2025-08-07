@@ -43,21 +43,21 @@ if karmatimer != 0 {
 }
 
 if soultimer < 0 && soultimer >= -350 {
-     if get_gameplay_time() % 20 == 0 && soulfree == 1 {
-    spawn_hit_fx (soulx,souly - 30, wh )
-    spawn_hit_fx (soulx,souly - 30, bh )
-    }
+    //  if get_gameplay_time() % 20 == 0 && soulfree == 1 {
+    // spawn_hit_fx (soulx,souly - 30, wh )
+    // spawn_hit_fx (soulx,souly - 30, bh )
+    // }
     
     
     
-    if get_gameplay_time() % 20 == 0 && soulfree == -1 && soultimer < -300  {
-    spawn_hit_fx (soulx,souly - 30, wh )
-    spawn_hit_fx (soulx,souly - 30, bh )
-    }
+    // if get_gameplay_time() % 20 == 0 && soulfree == -1 && soultimer < -300  {
+    // spawn_hit_fx (soulx,souly - 30, wh )
+    // spawn_hit_fx (soulx,souly - 30, bh )
+    // }
     
     
 
-if soultimer % 3 == 0 {
+if abs(soultimer % 6) <= 2 {
     if soulfree == -1{
    if souldir = -1 {
     draw_sprite(sprite_get("dspecl"), 5, soulx, souly); 
@@ -80,7 +80,7 @@ if soultimer % 3 == 0 {
 }
 
 
-if soultimer > -340 {
+if bodyinvulve <= 0 {
         if soulfree == -1{
    if souldir = -1 {
     draw_sprite(sprite_get("dspecl"), 5, soulx, souly); 

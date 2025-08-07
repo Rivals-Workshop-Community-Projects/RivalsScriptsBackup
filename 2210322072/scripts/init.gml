@@ -13,7 +13,7 @@ ncode3 = "she is capable of creating astra projection of herself."
 curse_target = 0
 
 hue = 5
-
+bodyinvulve = 0
 savemode = 0
 
 superMove = 14

@@ -92,8 +92,8 @@ switch state {
     }
     if (side == -1 && right_down) or (side == 1 && left_down) {
     sprite_index = sprite_get("moonwalk")
-    image_index = state_timer/6 
-    hsp = -1.5*side
+    image_index = state_timer/6
+    hsp = -1*side
     if state_timer%(6*4) == 0 {
         sound_play(asset_get("sfx_dash_start"),false,noone,1,.8)
     }

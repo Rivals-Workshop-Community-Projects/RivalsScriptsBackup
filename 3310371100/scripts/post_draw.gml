@@ -44,6 +44,16 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.8 - (2025/07/30)"
+		patch_note_text[i++] = 
+		"===v3.8===
+		---balancing---
+		:: JAB ... further changes to avoid problems
+
+		---notes---
+		thanks to spider for exact changes"
+		
+		
 		patch_note_title[i] = "v3.7 - (2025/07/29)"
 		patch_note_text[i++] = 
 		"===v3.7===

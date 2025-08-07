@@ -4,33 +4,44 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL ){
 }
 
 if attack == AT_EXTRA_3 {
-    
-    has_airdodge = false
     can_fast_fall = false
-    
-    invincible = false
-    invince_time = 0
         
-    if !free {
-        sound_play(asset_get("sfx_waveland_zet"))
-    }
+    if window == 1{
+    // if !free {
+    //     sound_play(asset_get("sfx_waveland_zet"))
+    // }
     
-    if state_timer <= 5 {
-
-    } else if state_timer > 5 {
-    	can_attack = true
-    }
+        if state_timer <= 5 {
     
-    if state_timer < 12 {
-    	vsp -= 0.4
-		if state_timer > 1 {
-		hsp = 7*spr_dir
-		}
-		
-
-	}
+        } else if state_timer > 5 {
+        	can_attack = true
+        }
+        
+        if state_timer < 12 {
+        	vsp -= 0.4
+	    	if state_timer > 1 {
+	    	hsp = 7*spr_dir
+	    	}
+	    }
+    }
+    if window == 5{
+    // if !free {
+    //     sound_play(asset_get("sfx_waveland_zet"))
+    // }
+    
+        if state_timer <= 5 {
+    
+        } else if state_timer > 5 {
+        	can_attack = true
+        }
+        
+        if state_timer < 12 {
+	    	if state_timer > 1 {
+	    	hsp = 4*spr_dir
+	    	}
+	    }
+    }
 	
-
 }
 
 /// 
@@ -280,8 +291,6 @@ if !hitpause {
 
     
         if attack == AT_NSPECIAL {
-            
-
             if ncharge < 65 {
                 move_cooldown[AT_NSPECIAL] = 10
             } else {
@@ -395,10 +404,10 @@ if !hitpause {
                 vsp /= 1.2
                 }
             }
-        if window == 1 {
-            if window_timer == 1 {
-                     sound_play(asset_get("sfx_absa_whip"),false,noone,.8)
-                     sound_play(asset_get("sfx_absa_whip3"),false,noone,.8)
+        if window == 8{
+        	if window_timer == 1 {
+               sound_play(asset_get("sfx_absa_whip"),false,noone,.8,2)
+               sound_play(asset_get("sfx_absa_whip3"),false,noone,.8)
             }
             
              if window_timer == 10 && voiced == 1{
@@ -409,6 +418,31 @@ if !hitpause {
              if window_timer == 10 && voiced == 0{
              	sound_play(sound_get("b1"),false,noone,0.8,0.9)
              }
+             if window_timer == 10{
+             	window = 2
+             	window_timer = 0
+             }
+        }
+        if window == 1 {
+        	if window_timer == 1 {
+        		if move_cooldown[AT_EXTRA_3] == 0{
+        		if !free vsp -= 10
+	        	set_attack(AT_EXTRA_3)
+	        	move_cooldown[AT_EXTRA_3] = 999
+	        	window = 1
+	        	window_timer = 1
+	        	sound_play(asset_get("sfx_bird_sidespecial_start"))
+	            vsp /= 2
+        		}else{
+        		set_attack(AT_EXTRA_3)
+	        	window = 5
+	        	window_timer = 1
+	        	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,0.6,1.5)
+	            vsp /= 2
+        		}
+        	}
+        	
+            
         }
         }
        

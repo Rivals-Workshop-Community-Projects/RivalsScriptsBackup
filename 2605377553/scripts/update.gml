@@ -1,5 +1,7 @@
 user_event(9); //Leave this at the top of update.
 
+//end_match(player)
+
 // update.gml
 
 with (asset_get("oPlayer")){

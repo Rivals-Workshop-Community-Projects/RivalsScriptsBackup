@@ -1,7 +1,6 @@
 //got_hit
 
 
-
 can_uspecial = true;
 can_fspecial = true;
 runeG_can_uspecial = true;
@@ -28,4 +27,9 @@ if (holding_turntable)
             uspecial = false;
         }
     }
+}
+
+if (attack == AT_FSPECIAL) 
+{
+    move_cooldown[AT_FSPECIAL] = 0;
 }

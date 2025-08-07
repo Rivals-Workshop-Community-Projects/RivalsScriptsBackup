@@ -60,10 +60,13 @@ alt_name[19] = "Sandai Kitetsu";
 alt_name[20] = "Reploid Defender";
 alt_name[21] = "Lab Rat";
 alt_name[22] = "Bloom and Doom";
-alt_name[23] = "All-Star";
-alt_name[24] = "Vortex Gallery";
-alt_name[25] = "Spectral Thief";
-alt_name[26] = "Ghostride";
+alt_name[23] = "Scarlet Blade";
+alt_name[24] = "Mint";
+alt_name[25] = "All-Star";
+alt_name[26] = "Vortex";
+alt_name[27] = "Spectral Thief";
+alt_name[28] = "Ghostride";
+alt_name[29] = "The Sly Alt";
 
 //everything in between abyss and gold rank alts can be anything, i just like to put these in this pattern
 //if you change it don't forget to change the icon order!

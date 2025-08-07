@@ -545,22 +545,20 @@ if admw == 4 && visible {
 }
 // Soul
 if soultimer <= -240 && !hitpause {
-
     soultimer += 1
-
 }
+bodyinvulve -= 1
 
 	if soulfree && soultimer < 0 && soulx < x {
-		soulx += min(floor((x - 90*spr_dir - soulx)/40), 2)
-		
+		soulx += min(floor((x - 90*spr_dir - soulx)/40), 1)
 	}
 	
 	if soulfree && soultimer < 0 {
-	souly += min(floor((y - 90 - souly)/40), 1)
+	souly += min(floor((y - 90 - souly)/40), 2)
 	}
 	
 	if soulfree && soultimer < 0 && soulx >= x {
-		soulx += max(floor((x - 90*spr_dir - soulx)/40), -2)
+		soulx += max(floor((x - 90*spr_dir - soulx)/40), -1)
 	}
 	
 	
@@ -576,25 +574,25 @@ if soultimer < 0 && get_gameplay_time() % 60 == 0 && soulfree == 1 {
 	take_damage( player, -1 , 1)
 }
 
-	if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] <= 0 {
-		 create_hitbox(AT_NSPECIAL , 5 , soulx  , souly - 30 ); 
-		 move_cooldown[AT_EXTRA_3] = 60
-     	spawn_hit_fx (soulx,souly - 30, 302 )
-		sound_play(asset_get("sfx_ice_ftilt"))
-		take_damage( player, -1 , 1)
-	}
+	// if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] <= 0 {
+	// 	 create_hitbox(AT_NSPECIAL , 5 , soulx  , souly - 30 ); 
+	// 	 move_cooldown[AT_EXTRA_3] = 60
+ //    	spawn_hit_fx (soulx,souly - 30, 302 )
+	// 	sound_play(asset_get("sfx_ice_ftilt"))
+	// 	take_damage( player, -1 , 1)
+	// }
 	
 
 	
-	if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] > 40 {
-	            spawn_hit_fx( soulx + 60 - random_func(6, 120, true) - (10*spr_dir), souly - 0 - random_func(8, 80, true) , esp1 )
-	            spawn_hit_fx( soulx + 60 - random_func(7, 120, true) - (10*spr_dir), souly - 0 - random_func(9, 80, true) , esp2 )
-	}
+	// if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] > 40 {
+	//   spawn_hit_fx( soulx + 60 - random_func(6, 120, true) - (10*spr_dir), souly - 0 - random_func(8, 80, true) , esp1 )
+	//   spawn_hit_fx( soulx + 60 - random_func(7, 120, true) - (10*spr_dir), souly - 0 - random_func(9, 80, true) , esp2 )
+	// }
 	
-	if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] % 20 == 0 {
-	spawn_hit_fx (soulx,souly - 30, wh )
-    spawn_hit_fx (soulx,souly - 30, bh )
-	}
+	// if soulfree == -1 && soultimer >= -300 && soultimer < -1 && move_cooldown[AT_EXTRA_3] % 20 == 0 {
+	// spawn_hit_fx (soulx,souly - 30, wh )
+ //   spawn_hit_fx (soulx,souly - 30, bh )
+	// }
 
 if soultimer < -1 && soultimer > -330 && down_down && special_down && (can_jump or can_attack) {
 	outline_color = [0, 0, 0]
@@ -613,15 +611,11 @@ vsp = 0
 set_attack (AT_DSPECIAL)
 window = 4
 window_timer = 0
-
-
 }
 
 
 if soultimer < -1 {
-	
-
-    
+	has_airdodge = false
 	var col = get_gameplay_time() % 60 * 1.5
 	
 	if get_gameplay_time() % 60 == 0 {
@@ -681,7 +675,7 @@ if soultimer < -1 {
 		} 
 	}
 
-if soultimer > -340 && soultimer < -1  { 	
+if soultimer > -340 && soultimer < -1 && bodyinvulve <= 0 { 	
 	
 	nearbyhitbox = collision_circle( soulx, souly - 10, 20, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone {

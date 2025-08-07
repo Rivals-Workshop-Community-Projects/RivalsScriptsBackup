@@ -172,39 +172,41 @@ if attack == AT_DTHROW && hbox_num == 1 {
 	with (pHitBox) {
 		hitdetect = collision_circle( x, y , 44, other, true, true ) 
 	if hitdetect != noone && type == 1 && player_id != other.player_id && hit_priority > 0 && (hitbox_timer == 1 or hitbox_timer < length - 1){
-           length += 2
-           hit_priority = 9
-           image_xscale += .4
-           image_yscale += .4       
-            hitpause = 30
-            hitpause_growth = .6
+           //length += 2
+           //hit_priority = 9
+           //image_xscale += .4
+           //image_yscale += .4       
+           // hitpause = 30
+           // hitpause_growth = .6
             
 
     	   with other {       		
-    		spawn_hit_fx(x,y - 10,SC)
-    		sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
-    		
-            
-            with other.player_id {
-                       if get_attack_value(attack, AG_CATEGORY) == 0 {
-                       	 changedattack = attack
-                         set_attack_value(attack, AG_CATEGORY, 2);
-                         resettingtype = true 
-                       }
-              has_airdodge = true 
-              has_walljump = true 
-              djumps = 0
-            }
+    		var fx = spawn_hit_fx(x,y - 10,SC)
+    		fx.spr_dir = .6
+    		fx.image_yscale = .6  
+    		sound_play(sound_get("SpaceCut"),false,noone,0.5,1.4)
+    		destroyed = true
+    	   }
+          //  with other.player_id {
+          //             if get_attack_value(attack, AG_CATEGORY) == 0 {
+          //             	 changedattack = attack
+          //               set_attack_value(attack, AG_CATEGORY, 2);
+          //               resettingtype = true 
+          //             }
+          //    has_airdodge = true 
+          //    has_walljump = true 
+          //    djumps = 0
+          //  }
  
               
-            rafx = spawn_hit_fx(other.player_id.x,other.player_id.y - 40,SC)
-            rafx.depth = -7
-            rafx.spr_dir = -0.8*spr_dir 
-            rafx.image_yscale = -0.8
-            destroyed = true
-         	}
-             player_id.x = floor(other.player_id.x - (x_pos))
-             player_id.y = floor(other.player_id.y - 34 - (y_pos))
+          //  rafx = spawn_hit_fx(other.player_id.x,other.player_id.y - 40,SC)
+          //  rafx.depth = -7
+          //  rafx.spr_dir = -0.8*spr_dir 
+          //  rafx.image_yscale = -0.8
+            
+         	// }
+          //   player_id.x = floor(other.player_id.x - (x_pos))
+          //   player_id.y = floor(other.player_id.y - 34 - (y_pos))
     }
 	}
 	

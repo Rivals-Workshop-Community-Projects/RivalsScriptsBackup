@@ -539,9 +539,6 @@ if attack == AT_DSPECIAL {
 		}
 		
 	if window == 1 && soultimer < 0 {
-		
-
-
 		outline_color = [0, 0, 0]
                      	init_shader();
                          spawn_hit_fx (x,y -30 , 302 )
@@ -566,6 +563,8 @@ if attack == AT_DSPECIAL {
 	
 	if window == 2 && window_timer == 8{
 		spawn_hit_fx(x , y - 36, 306)
+		take_damage(player,-1, 12 )
+		bodyinvulve = 120
 	}
 	
 	if window == 3 && window_timer == 1 && !hitpause {

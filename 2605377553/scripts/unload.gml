@@ -85,39 +85,39 @@ if (!mal_handled_victory_quote)
     switch (char_url)
     {
         case "2802914735": // Ayaka
-            quote = "That's rough buddy."; 
+            quote = "...That's rough, buddy."; 
             break;
         case "2885762133": // Brook
-            quote = "Wrong address, I think??";
+            quote = "Wrong address?";
             break;
         case "1917856427": // Liz
         case "1917856427": // Liz
         case "2108895293": //Lumina
         case "2064167290": //Hana
-            quote = "Well, I sure almost got beat up by what, a 5 year old?"
+            quote = "...Was that a 5 year old? The one beating me up?"
             break;
         
         case "2802423078": // Kaiero
         case "2456124960": // Nate
         case "2348671555": // Nate
-            quote = "Was that the power of a Hex Gift? But they weren't from Ambrosia..."; 
+            quote = "A Hex Gift? No..."; 
             break;
             
         case "2396061657": // Callie
-            quote = "Yeah I don't really -do- this whole, uh, dating thing."; 
+            quote = "Dating? Uhh... I'm good."; 
             break;
         case "2396053263": // Heartbrake
-            quote = "I think you're just mad because you don't have any friends?"; 
+            quote = "Just advice but... I think you'd be less frustrated if you had friends?"; 
             break;
             
         case "2400092760": // Dony
         case "2811831971": // 
-            quote = "You're hexed too? Though I'd hardly imagine it was an accident..."; 
+            quote = "He was hexed too? Though I'd imagine it wasn't an accident..."; 
             break;
             
         case "2605377553": // Mal
         case "2823291685":
-            quote = "Was that Cel again? Those clones of hers are getting borderline lifelike...";
+            quote = "Did that blue lady do that? Scary...";
             break;
         
         case "2561479115": // Rokesha
@@ -126,7 +126,7 @@ if (!mal_handled_victory_quote)
             
         case "1882960192": // Bluey
         case "2014106219": // Cinna
-            quote = "Compressed paranormal energy to store weaponheads... they're a genius!"
+            quote = "Hmm... was that wand hexed too?"
             break;
             
         case "2871608790": //Azi
@@ -134,59 +134,153 @@ if (!mal_handled_victory_quote)
             break;
             
         case "1894194148": //AR
-            quote = "Was that girl even real? Wow, my head hurts."
+            quote = "Was that girl even real? Ugh, my head hurts."
             break;
             
         case "2802300675": // Valley
-            quote = "You seem like someone I would NEVER get along with. Cool smoke."; 
+            quote = "Why was that weird green kid so obsessed with me? They should watch their distance..."; 
             break;
             
         case "2843521167": // Pastelle
-        quote = "Oh God I think I got some hair in my mouth. ...Crayons??";
+        quote = "Gosh I got some hair in my mouth, why does it taste like... crayons?";
         break;
         
         case "2983344228": // Kiku Braeburn
-        quote = "Note to self: don't pick a fight with a Granny Smith.";
+        quote = "The apple thing, was that a boxing gimmick? Can I be the Bird Boxer, or something?";
         break;
         
         case "2965700442": // Humanthem
-        quote = "It's like 10 celsius out here, you should really put something on.";
+        quote = "Brr... how did that woman fight wearing so little, it's cold out.";
         break;
         
         case "2977835488": //Qoedil
-        quote = "Huh, never seen a pitch black ghost like that. Kinda cute."
+        quote = "Never seen a pitch black ghost like that. ..Kinda cute."
         break;
         
         case "2601775097": //Bar Reygard
-        quote = "So, angels exist? Eh, I've seen odder things. Probably."
+        quote = "...Angels? Those exist? Huh."
         break;
         
         case "2254931693": //Bonby
-        quote = "Best friends with a frog... I guess there's companionship for everyone!"
+        quote = "She was friends with a frog... guess everyone needs... a friend."
         break;
         
         case "2867341866": //Aur (honorary human)
-        quote = "Greed lead to a curse? Seems there's things like that in any world."
+        quote = "So he was cursed from greed. Guess there's something like that in every world..."
         break;
         
         case "2415092274": //Ao (honorary human)
-        quote = "Alone on the hill, do you fear your burden on others? Ok, projecting."
+        quote = "Alone on the hill, do you fear your burden on others?"
         break;
         
         case "2817605804": //Jerma (honorary human)
-        quote = "That was close, that guy was like if you compiled all serial killers into one dude."
+        quote = "Scary... was he some kind of serial killer?"
         break;
         
         case "3079776883": //Kumaki
-        quote = "Upchucking your entire bloodstream with a farming tool only gets you so far. Also ew."
+        quote = "...Aren't scythes for farming? I don't know what she was expecting, fighting with one."
         break;
         
         case "3039085407": //Larry
-        quote = "All this old grease smell is AWFUL. How much chicken is in that crockpot anyways??"
+        quote = "That loud gunbarrel was one thing, but the stench of that old grease... eugh."
         break;
         
-        case "3115049167": //Saelukune
-        quote = "They were so carefree, but I could tell some sort of melancholy... I'm taking that hat."
+        case "3308351120": //Saelune
+        case "3115049167": //Saelukune (legacy)
+        quote = "They were so carefree... But also, sad? ...I'm taking that hat."
+        break;
+        
+        case "3302238950": //Alexis
+        quote = "Magic, and technology? Maybe if she's alright I could introduce her to..."
+        break;
+        
+        case "3306584099": //Tomoko
+        quote = "...Was that a cop?... Uhh..."
+        break;
+        
+        case "3307368173": //Sarolyn
+        quote = "A vampire? Scary!! The one I know is way friendlier!!"
+        break;
+        
+        case "3294183869": //Vale
+        quote = "What was that, a freaky... zombie?"
+        break;
+        
+        case "3382637663": //Ciela
+        quote = "Why didn't that lady just... always use the ghost sword?"
+        break;
+        
+        case "3310371100": //Usher
+        quote = "A utopia can't be all that good, but I didn't want to rain on her parade..."
+        break;
+        
+        case "3309240911": //Putrolce
+        quote = "Under the jacket...she was bone thin, right? I hope that hexed mask wasn't starving her..."
+        break;
+        
+        case "3316053085": //Venus
+        quote = "A cupid?? She wasn't going to force me to like anyone was she? Ugh, I-"
+        break;
+        
+        case "3316054693": //Asra
+        quote = "That hex on her soul seemed painful... but couldn't you cure it at that size?"
+        break;
+        
+        case "3349890045": //Queen Platina
+        quote = "A ghost etched in the image of her dead husband... Anyone in grief would fall for that too, really."
+        break;
+        
+        case "3463541091": //Nonari
+        quote = "If you fight someone right after soccer practice, you'll definitely tire yourself out like that..."
+        break;
+
+        case "3436597271": //Cocua
+        quote = "Beating me up was one thing but the cigarette smell was awful. ...Though maybe I'm one to talk."
+        break;
+        
+        case "3415959265": //Saya
+        quote = "A guardian's duty sounds tiring... Maybe I carry a similar role now too, with these Shards."
+        break;
+        
+        case "3346651920": //Slenderman
+        quote = "No, I won't find your pages!! Gosh, insistent ghosts are too annoying!!"
+        break;
+        
+        case "2996263079": //Yuuko
+        case "3047409367": //Nano
+        quote = "An ordinary life... yeah, I'd... I'd like that."
+        break;
+        
+        case "3353596512": //Employee
+        quote = "Hey, no, these Shards aren't for looting! I'm calling, uh... HR."
+        break;
+        
+        case "3349889053": //deraciné
+        quote = "Pretty standard fare ghost stuff, but... creepy crawlies sure give me the heebie jeebies."
+        break;
+        
+        case "3357728777": //Ingrim
+        quote = "...I've exorcised that awful spirit of wrath. May that raven spread its wings and fly to a better place."
+        break;
+        
+        case "2871136791": //Lode 
+        quote = "Pigeons are cute, it's unfair people call them pests! ...Glad you agree Mr., uh, rock turtle."
+        break;
+        
+        case "3357700659": //Spooky 
+        quote = "The standard of scariness Americans hold seems very... low. Scariest thing was definitely the deer."
+        break;
+        
+        case "3042615374": //Nemesis
+        quote = "If that was just a zombie, I wouldn't bother. But if human hands made that... thing..."
+        break;
+        
+        case "3354842635": //Phasmo Hunters
+        quote = "Hiring pro hunters sounds like a luxury, whenever I see a ghost eating from my trashcan I just whack it with a broom."
+        break;
+
+        case "3353256940": //Twenny 
+        quote = "I thought it was just a mad ghost, but her soul ached like a human... 'Twenny'... Is this how it ends?"
         break;
 
         default: break;
@@ -211,6 +305,16 @@ return quote
         case "2817605804": //Jerma (honorary human)
         case "3079776883": //Kumaki
         case "3039085407": //Larry
+        case "3307368173": //Sarolyn
+        case "3382637663": //Ciela
+        case "3316053085": //Venus
+        case "3463541091": //Nonari
+        case "3436597271": //Cocua
+        case "3346651920": //Slenderman
+        case "2996263079": //Yuuko
+        case "3047409367": //Nano
+        case "3357728777": //Ingrim
+        case "3354842635": //Phasmo Hunters
             icon = 0;
             break;
             
@@ -218,7 +322,8 @@ return quote
         case "2802423078": // Kaiero
         case "2456124960": // Nate
         case "2348671555": // Nate
-        case "3115049167": //Saelukune
+        case "3308351120": //Saelune
+        case "3115049167": //Saelukune (legacy)
             icon = 1;
             break;
         
@@ -229,6 +334,10 @@ return quote
         case "2064167290": //Hana
         case "2983344228": // Kiku Braeburn
         case "2415092274": //Ao (honorary human)
+        case "3349890045": //Queen Platina
+        case "3415959265": //Saya
+        case "3042615374": //Nemesis
+        case "3353256940": //Twenny 
             icon = 2;
             break;
         
@@ -238,6 +347,12 @@ return quote
         case "2396061657": // Callie
         case "2843521167": // Pastelle
         case "2965700442": // Humanthem
+        case "3306584099": //Tomoko
+        case "3294183869": //Vale
+        case "3309240911": //Putrolce
+        case "3353596512": //Employee
+        case "3349889053": //deraciné
+        case "3357700659": //Spooky 
             icon = 3;
             break;
         
@@ -250,17 +365,20 @@ return quote
         case "1894194148": //AR
         case "2601775097": //Bar Reygard
         case "2867341866": //Aur (honorary human)
+        case "3316054693": //Asra
             icon = 4;
             break;
             
         //surprised
         case "2561479115": // Rokesha
+        case "3302238950": //Alexis
             icon = 5;
             break;
             
         //smiling
         case "2977835488": //Qoedil
         case "2254931693": //Bonby
+        case "2871136791": //Lode 
             icon = 6;
             break;
         

@@ -658,56 +658,56 @@ if lockouttimer < 0 {
               nearbyhitbox.player_id.window_timer = 1
          	}
          	
-         	if nearbyhitbox.attack == AT_DSPECIAL {
+         	// if nearbyhitbox.attack == AT_DSPECIAL {
          		
-         		if bouncing == false {
-         	    spawn_hit_fx(x,y ,b4)
-                hitbox_timer = 30
-                shake_camera(2,2)
-         		bouncing = true
-         		bouncenum = 1
-         		sound_stop(sound_get("shockready"))
-         		sound_play(sound_get("shockready"),false,noone,.5,0.8)
-         		hsp = 2*player_id.spr_dir
-         		}
+         	// 	if bouncing == false {
+         	//     spawn_hit_fx(x,y ,b4)
+          //      hitbox_timer = 30
+          //      shake_camera(2,2)
+         	// 	bouncing = true
+         	// 	bouncenum = 1
+         	// 	sound_stop(sound_get("shockready"))
+         	// 	sound_play(sound_get("shockready"),false,noone,.5,0.8)
+         	// 	hsp = 2*player_id.spr_dir
+         	// 	}
          		
-               batted = 1
+          //     batted = 1
                
-               if player != orig_player && string_count("bat bat", string_lower( get_char_info(player, INFO_STR_NAME))) > 0 {
+          //     if player != orig_player && string_count("bat bat", string_lower( get_char_info(player, INFO_STR_NAME))) > 0 {
       	
-      	        	x += floor(nearbyhitbox.x - x)/2
-		        	y += floor(nearbyhitbox.y - y)/2
-		        	destroyed = 1
-                     	 sound_play(asset_get("sfx_absa_whip"),false,noone,1) 
-                     	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1)
+      	   //     	x += floor(nearbyhitbox.x - x)/2
+		        // 	y += floor(nearbyhitbox.y - y)/2
+		        // 	destroyed = 1
+          //           	 sound_play(asset_get("sfx_absa_whip"),false,noone,1) 
+          //           	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1)
                      	
-                       switch hbox_num {
-                       case 1 :
-                       with nearbyhitbox.player_id {
-                       create_hitbox(AT_NSPECIAL,2,floor(other.x),floor(other.y))
-                       }
-                       break;
+          //             switch hbox_num {
+          //             case 1 :
+          //             with nearbyhitbox.player_id {
+          //             create_hitbox(AT_NSPECIAL,2,floor(other.x),floor(other.y))
+          //             }
+          //             break;
                        
-                       case 2 :
-                       sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.7)
-                       with nearbyhitbox.player_id {
-                       create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
-                       }
-                       break;
+          //             case 2 :
+          //             sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.7)
+          //             with nearbyhitbox.player_id {
+          //             create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
+          //             }
+          //             break;
                        
-                       case 3 :
-                       sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
-                       with nearbyhitbox.player_id {
-                       create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
-                       }
+          //             case 3 :
+          //             sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+          //             with nearbyhitbox.player_id {
+          //             create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
+          //             }
                        
                        
-                       break;     
+          //             break;     
                        	
-              }
-              }
+          //    }
+          //    }
                
-         	}
+         	// }
          	
          }
 	}

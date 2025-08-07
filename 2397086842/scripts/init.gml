@@ -84,14 +84,14 @@ ground_friction = .45;
 moonwalk_accel = 1.8;
 
 jump_start_time = 5;
-jump_speed = 10;
+jump_speed = 9;
 short_hop_speed = 6;
-djump_speed = 9;
+djump_speed = 6;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .45;
+air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .35;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .05;
 max_djumps = 2;
@@ -100,16 +100,16 @@ walljump_hsp = 6;
 walljump_vsp = 9;
 walljump_time = 12;
 wall_frames = 2; //anim frames before you leave the wall
-max_fall = 8; //maximum fall speed without fastfalling
+max_fall = 7; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
-gravity_speed = .4;
+gravity_speed = .35;
 hitstun_grav = .45;
 knockback_adj = 1.1;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 12;
 wave_land_time = 8;
-wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames

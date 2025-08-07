@@ -14,14 +14,14 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
 window_num ++; //windup 2
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("swingweak"));
-set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 5);
 
 window_num ++; //throw
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);

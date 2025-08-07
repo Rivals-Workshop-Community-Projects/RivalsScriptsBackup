@@ -17,7 +17,7 @@ if ("mal_initialized_victory_screen" not in self)
 if (winner == player /* && uhc_batteries */)
 {
     //panel constants
-    var quote_pos_y =    320;
+    var quote_pos_y =    288;
     var quote_pos_x =   -20;
     var hide_pos_x  = -1200;
     var quote_time  =   240;

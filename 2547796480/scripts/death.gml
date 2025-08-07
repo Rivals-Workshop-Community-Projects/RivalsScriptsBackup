@@ -19,5 +19,5 @@ if  cheapmode = 1   {
     window_timer = 0
 }
 
-oknifelost = 0
+batt = 5
 

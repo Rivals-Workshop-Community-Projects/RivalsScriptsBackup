@@ -795,7 +795,7 @@ if window == 1 && window_timer == 1 {
 	}
 	
 
-	if dspec_timer > 20 && (jump_pressed || (has_airdodge && shield_pressed)) {
+	if dspec_timer > 20 && (jump_pressed || (has_airdodge && shield_pressed)) && !was_parried {
 		djumps = 0;
 		set_state( PS_DOUBLE_JUMP );
 	}
@@ -828,7 +828,9 @@ switch(attack){
 	
 	case AT_USPECIAL:
 	
+		if(window != 6){
 		can_fast_fall = false;
+		}
 		can_wall_jump = true;
 		fall_through = true;
 	
@@ -869,15 +871,15 @@ switch(attack){
     		}
 		}
 		
-		if window == 2 && window_timer == 5 && grabbed_player_obj != noone && special_down {
+		if window == 2 && window_timer == 5 && grabbed_player_obj != noone { // && special_down
 			window = 5;
 			window_timer = 0;
-		} else if window == 2 && window_timer == 5 && grabbed_player_obj != noone && !special_down {
-			window = 3;
-			window_timer = 0;
-			grabbed_player_obj = noone;
+		// } else if window == 2 && window_timer == 5 && grabbed_player_obj != noone && !special_down {
+		// 	window = 3;
+		// 	window_timer = 0;
+		// 	grabbed_player_obj = noone;
+		// }
 		}
-   
 		if window == 5 && uspecialgrabbing = true && !hitpause {
 			if window_timer == 10 {
     			window = 6;
@@ -888,6 +890,7 @@ switch(attack){
 		}
    
 		if window == 5 && (grabbed_player_obj != noone or mau_grabbed_da_bubble) and !hitpause {
+			can_fast_fall = true;
 			if(grabbed_player_obj != noone){
    			grabbed_player_obj.hitpause = true;
 			grabbed_player_obj.hitstop = 2;
@@ -940,9 +943,12 @@ switch(attack){
 				set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 7);
     		}
 		}
-    	}
-    	if (has_hit && window = 6 && !hitpause){
-    		can_fast_fall = true;
+		if (!free){
+			state = PS_LANDING_LAG
+			landing_lag_time = 6;
+			hurtboxID.sprite_index = sprite_get("hurtbox")
+			state_timer = 0;
+		}
     	}
 		break;
 	

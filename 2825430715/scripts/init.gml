@@ -37,7 +37,7 @@ stoned = 0
 
 Kanosbeatbox = 0
 
-threshold = 150
+threshold = 200
 thresholdNEO = 0
 
 beatbox = 0

@@ -19,6 +19,8 @@ voiced = 1
 soundlol = 0
 wahoo = 0
 
+moonlight = 0
+
 damageminigate = 0
 side = 0
 tiptoe = 0
@@ -50,10 +52,10 @@ jump_speed = 12;
 short_hop_speed = 7;
 djump_speed = 12;
 leave_ground_max = 10; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .35;
+max_jump_hsp = 3; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .25;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .0535;
 max_djumps = 1;
@@ -120,6 +122,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+sprite_change_offset("Moonlight", 75, 75);
 
 dsp = hit_fx_create( sprite_get( "dspecgone" ), 7*3);
 sprite_change_offset("dspecgone", 94, 122);

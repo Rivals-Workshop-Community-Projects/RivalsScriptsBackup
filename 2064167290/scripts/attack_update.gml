@@ -8,7 +8,7 @@ if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
 }
 
 // no fast fall please it's weird
-if (attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) or (attack == AT_DTHROW) or (attack == AT_USPECIAL_GROUND) or (attack == AT_USPECIAL) or (attack == AT_DSPECIAL) or (attack == AT_FSPECIAL)
+if (attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) or (attack == AT_DTHROW) or (attack == AT_USPECIAL_GROUND) or (attack == AT_USPECIAL) or (attack == AT_FSPECIAL)
 {
     can_fast_fall = false;
 }
@@ -87,7 +87,7 @@ if (attack == AT_DTILT) and ( window == 3) and ( window_timer == 13) and (!was_p
 
 
 // DATTACK
-if (attack == AT_DATTACK) and ( window == 4) and ( window_timer == 3) and(!was_parried) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+if (attack == AT_DATTACK) and ( window == 4) and ( window_timer == 3) and (!was_parried) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     set_state(PS_CROUCH);
     state_timer = 10;
@@ -101,7 +101,7 @@ if (attack == AT_DAIR)
 {
     if (!was_parried)
     {
-        if (window == 3 && window_timer >= 12) or (window == 4)
+        if (window == 3 && window_timer >= 10) or (window == 4)
         {
 			can_jump = true
 			can_shield = true
@@ -119,7 +119,7 @@ if (attack == AT_DAIR)
         
         if (attack == AT_DAIR) and ( !free ) and (bounce_needed) 
         {
-             set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 18)
+             set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 12)
             destroy_hitboxes()
             attack_end();
             set_attack(AT_EXTRA_1);
@@ -451,8 +451,6 @@ if (attack == AT_NSPECIAL)
         }
     }
     
-    
-    
     if (cd_rel_lvl != 0)
     {
         if (!special_down) and (cd_rel_lvl = cd_level)
@@ -517,16 +515,10 @@ if (attack == AT_NSPECIAL)
 
         if (shield_pressed)
         {
-            if (free)
-            {
-                set_state(PS_IDLE_AIR);
-            }
-            else
-            {
                 window = 3 ;
                 window_timer = 7;
-                clear_button_buffer( PC_SHIELD_PRESSED );
-            }
+                clear_button_buffer(PC_SHIELD_PRESSED)
+           
         }
         
         if (special_pressed)
@@ -682,11 +674,13 @@ if (attack == AT_FSPECIAL)
     
     if ((window == 3) or (window == 4))
     {
-        if (jump_pressed || (tap_jump_pressed && can_tap_jump())) or (special_pressed)
+        if (jump_pressed || (tap_jump_pressed && can_tap_jump())) or (special_pressed) or (shield_pressed)
         {
             window = 5;
             window_timer = 0;
+            clear_button_buffer(PC_SHIELD_PRESSED)
         }
+        
         
         if (!free) 
         {

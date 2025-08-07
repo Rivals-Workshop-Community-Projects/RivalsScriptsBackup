@@ -44,10 +44,10 @@ prepare_shader(); //resets shader
 
 //alt icons
 switch (get_player_color(player)){
-case 23:
+case 25:
 	    draw_sprite(sprite_get("css_allstar"),0,x+176,y+110);
 	break;
-case 24:
+case 26:
 	    draw_sprite(sprite_get("css_vortex"),0,x+176,y+110);
 	break;
 }
