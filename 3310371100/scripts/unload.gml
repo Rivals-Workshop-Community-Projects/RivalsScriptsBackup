@@ -146,7 +146,7 @@ if (!ushr_handled_victory_quote)
             quote = "Oh gosh, you're so fast I can't even keep track of you with my eyes!";
             break;
         case "1917856427": // Liz
-            quote = "Hey, how long have you been in this world? ...4 YEARS?! I wonder if we don't age in this world...";
+            quote = "Hey, how long have you been in this world? ...5 YEARS?! I wonder if we don't age in this world...";
             break;
         case "2885762133": // Brook
             quote = "I'll pay for the pizza, just please stop smacking me with the pizza box!!";

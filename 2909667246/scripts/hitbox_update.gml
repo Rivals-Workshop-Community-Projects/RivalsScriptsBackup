@@ -5,6 +5,7 @@ if (attack == AT_NSPECIAL){
 	x = player_id.x+55*player_id.spr_dir;y = player_id.y-25;
     if(hbox_num == 1 && !destroyed && hitbox_timer <= 15){
     	with(pHitBox){
+    		//var ispocketable = "Pocketable" not in self || "Pocketable" in self && Pocketable;
 			if(type == 2 && self != other && !instance_exists(other.player_id.Pocketed_Projectile) && (((damage > 0 && hit_priority > 0 &&
 			("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) || "MattStar" in self && MattStar) && "Pocketable" not in self || "Pocketable" in self && Pocketable) &&
 			("PocketableByOwner" in self && PocketableByOwner != other.player || "PocketableByOwner" not in self) &&

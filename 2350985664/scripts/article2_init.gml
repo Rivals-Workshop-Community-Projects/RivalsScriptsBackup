@@ -64,6 +64,3 @@ cant_grab_time = 0;
 
 has_played_leaving_sound = false;
 destroyed = false;
-
-
-

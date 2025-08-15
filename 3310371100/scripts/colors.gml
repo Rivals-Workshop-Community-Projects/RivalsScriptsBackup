@@ -42,7 +42,7 @@ set_num_palettes( 18 );
 
 // blue
 set_color_profile_slot( 1, 0, 140, 168, 255 ); //green
-set_color_profile_slot( 1, 1, 70, 82, 232 ); //hair
+set_color_profile_slot( 1, 1, 116, 138, 247 ); //hair
 set_color_profile_slot( 1, 2, 242, 230, 213 ); //skin
 set_color_profile_slot( 1, 3, 47, 71, 194 ); //white
 set_color_profile_slot( 1, 4, 9, 9, 89 ); //dark

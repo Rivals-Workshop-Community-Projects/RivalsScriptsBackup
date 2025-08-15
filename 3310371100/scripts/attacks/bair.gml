@@ -61,12 +61,12 @@ set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 75);
 set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_BAIR, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 10);//dr mario bair does 14%???
+set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 10);//dr mario bair does 14%???//10
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6.5);//5
+set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);//5//6.5
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.75);//0.75
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 10);//ranno bair value
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);//3
@@ -76,7 +76,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 //2
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 9);//11
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 6);//11//9
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -40);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -33);
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 79);

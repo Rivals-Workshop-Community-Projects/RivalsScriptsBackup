@@ -59,7 +59,7 @@ hitstun_grav = 0.5; //i'll keep it at that
 knockback_adj = 1.05; //lighter than average, lighter than dr mario because i feel like her bigger range warrant it
 
 land_time = 4; //normal landing frames
-prat_land_time = 10; //same as maypul clairen etc
+prat_land_time = 12; //maypul clairen etc + 2//10
 wave_land_time = 9; //sylv value now //8
 wave_land_adj = 1.05; //1.2 //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0.03; //0.03 //grounded deceleration when wavelanding

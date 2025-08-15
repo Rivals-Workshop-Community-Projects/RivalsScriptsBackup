@@ -357,8 +357,8 @@ if get_gameplay_time() < 80 {
   window = 10
   
   if get_gameplay_time() == 65  {
-  sound_play(sound_get("RZ"));
-  sound_play(sound_get("RZ2"));
+  sound_play(sound_get("RZ"),false,noone,0.8,1);
+  sound_play(sound_get("RZ2"),false,noone,0.8,1);
  }
 
  if get_gameplay_time() >= 65  {

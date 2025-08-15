@@ -18,5 +18,3 @@ for (var i = 0; i < ds_list_size(caged_list); i += 1)
      draw_sprite(sprite_get("cage"),im,opp.x,opp.y - opp.char_height / 2);
     shader_end()
 }
-
-

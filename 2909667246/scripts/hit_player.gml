@@ -45,7 +45,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 		}
 		if ("sol_burn" in hit_player_obj && hit_player_obj.sol_burn) hit_player_obj.sol_burn_timer = 1;
 		
-		with(hit_player_obj)if(element_cooldown <= 0 && ("KoBWeaknesses" in self && variableExistsInAndIs(KoBWeaknesses,"Water",true))){
+		with(hit_player_obj)if("element_cooldown" in self && element_cooldown <= 0 && ("KoBWeaknesses" in self && variableExistsInAndIs(KoBWeaknesses,"Water",true))){
             take_damage(player,-1,1);element_cooldown = 60;
         }
 	}else if(my_hitboxID.hbox_num == 10){ //trip sapling

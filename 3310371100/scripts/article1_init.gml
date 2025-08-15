@@ -6,7 +6,7 @@ sprite_index = asset_get("empty_sprite");
 image_xscale = 2;
 image_yscale = 2;
 image_alpha = 0;
-depth = 15;
+depth = 1;
 
 state = 0;
 state_timer = 0;

@@ -31,7 +31,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("RZ2"));
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 999);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);

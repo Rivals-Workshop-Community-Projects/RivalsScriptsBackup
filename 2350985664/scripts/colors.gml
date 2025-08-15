@@ -1,4 +1,4 @@
-set_num_palettes(12);
+set_num_palettes(13);
 
 //DEFAULT COLOR (R,G,B)
 // DEFAULT COLOR (R,G,B)
@@ -135,21 +135,13 @@ set_color_profile_slot(11, 4, 0,0,0); //EYES
 set_color_profile_slot(11, 5, 115,198,222); //WING (dark)
 set_color_profile_slot(11, 6, 71,127,187); //EXTRA's (dark)
 set_color_profile_slot(11, 7, 240,180,189); //PINK
-/*
-
-
-
-
 
 // Hatate
-set_color_profile_slot(10, 0, 107,17,107); //DRESS (light)
-set_color_profile_slot(10, 1, 163,46,128); //HAT (middle)
-set_color_profile_slot(10, 2, 56,44,6); //HAIR (light)
-set_color_profile_slot(10, 3, 255,215,198); //SKIN (light)
-set_color_profile_slot(10, 4, 56,44,6); //EYES 
-set_color_profile_slot(10, 5, 26,26,44); //WING (dark)
-set_color_profile_slot(10, 6, 208,22,145); //EXTRA's (dark)
-set_color_profile_slot(10, 7, 240,180,189); //PINK
-
-
-
+set_color_profile_slot(12, 0, 107,17,107); //DRESS (light)
+set_color_profile_slot(12, 1, 163,46,128); //HAT (middle)
+set_color_profile_slot(12, 2, 56,44,6); //HAIR (light)
+set_color_profile_slot(12, 3, 255,215,198); //SKIN (light)
+set_color_profile_slot(12, 4, 56,44,6); //EYES 
+set_color_profile_slot(12, 5, 26,26,44); //WING (dark)
+set_color_profile_slot(12, 6, 208,22,145); //EXTRA's (dark)
+set_color_profile_slot(12, 7, 240,180,189); //PINK

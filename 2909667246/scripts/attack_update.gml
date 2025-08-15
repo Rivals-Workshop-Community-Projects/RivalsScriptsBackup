@@ -764,10 +764,10 @@ if (canon || op) strong_charge = 61;
 
 #define pocket_article_if_valid
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
-    	var playerurl = 21;
+    	var playerurl = 21;var ispocketable = "Pocketable" not in self || "Pocketable" in self && Pocketable;
     	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
-        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && "Pocketable" not in self || "Pocketable" in self && Pocketable
-        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && sprite_index != asset_get("empty_sprite")
+        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && ispocketable
+        || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable)
         && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
         || other.runeI){
         	var dist = point_distance(other.x+55*other.spr_dir, other.y-25, x, y); //distance

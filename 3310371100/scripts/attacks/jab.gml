@@ -119,7 +119,7 @@ set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 61);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_JAB, 2, HG_WIDTH, 108);
 set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 36);
-set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);//6
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 70);//65//40
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);

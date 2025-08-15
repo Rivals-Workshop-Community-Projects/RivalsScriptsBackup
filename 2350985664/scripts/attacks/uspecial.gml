@@ -112,10 +112,10 @@ set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 320);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.55);
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_LOCKOUT, 3);
 
@@ -148,9 +148,3 @@ set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_LOCKOUT, 2);
-
-
-
-
-
-

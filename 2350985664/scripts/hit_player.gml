@@ -1,5 +1,35 @@
 // hit_player
 var skip = false;
+if attack == AT_JAB {
+    if (my_hitboxID.hbox_num == 3) {
+        sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, 1);
+    }
+}
+if attack == AT_DTILT {
+    sound_play(asset_get("sfx_crunch"), false, noone, 0.4, 1);
+}
+if attack == AT_NAIR {
+    sound_play(asset_get("sfx_bird_upspecial"), false, noone, 0.25, 1);
+}
+if attack == AT_FAIR {
+    if (my_hitboxID.hbox_num == 2) {
+        sound_play(asset_get("sfx_birdclap"), false, noone, 0.25, 1);
+    }
+}
+if attack == AT_BAIR {
+    //sound_play(sound_get("hit_s15a"), false, noone, 0.35, 1);
+}
+if attack == AT_USTRONG {
+    if (my_hitboxID.hbox_num == 1) {
+        sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, 1);
+    }
+    if (my_hitboxID.hbox_num == 2) {
+        sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, 1);
+    }
+    if (my_hitboxID.hbox_num == 3) {
+        sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
+    }
+}
 switch(my_hitboxID.attack)
 {
     case AT_JAB:
@@ -51,9 +81,9 @@ switch(my_hitboxID.attack)
     case AT_NSPECIAL:
         if (ds_list_find_index(caged_list,hit_player_obj) == -1) and (hit_player_obj.blind_immune_time == 0)
         {
-            if (hit_player_obj.blinded < 540)
+            if (hit_player_obj.blinded < 300)
             {
-                hit_player_obj.blinded = 540;
+                hit_player_obj.blinded = 300;
                 hit_player_obj.blinded_id = self;
             }
         }
@@ -158,9 +188,3 @@ if (hit_player_obj.blind_immune_time > 0)
         hit_player_obj.blind_immune_time = 0;
     }
 }
-
-
-
-
-
-

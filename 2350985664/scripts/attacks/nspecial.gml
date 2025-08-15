@@ -16,10 +16,9 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10 - has_rune("B") * 3);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16 - has_rune("B") * 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_NSPECIAL,2);
 
@@ -37,7 +36,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5 + has_rune("O") * 5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6 + has_rune("O") * 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303 );
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -61,7 +60,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 5 + has_rune("O") * 5);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 6 + has_rune("O") * 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 303 );
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -85,7 +84,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 5 + has_rune("O") * 5);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 6 + has_rune("O") * 5);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 303 );
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -102,10 +101,3 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, has_rune("O") * 11);
 //set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, true);
-
-
-
-
-
-
-

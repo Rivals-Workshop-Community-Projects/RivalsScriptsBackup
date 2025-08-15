@@ -171,8 +171,10 @@ switch (state)
             case 30:
                 sound_play(asset_get("sfx_swipe_weak2"));
             break;
-            
-            
+            case 31:
+                sound_play(asset_get("sfx_may_wrap1"), false, noone, 0.5, 1);
+                sound_play(asset_get("sfx_leafy_hit2"), false, noone, 0.7, 1);
+            break;
             
         }
         
@@ -250,7 +252,3 @@ if (destroyed)
 {
          instance_destroy(self);
 }
-
-
-
-

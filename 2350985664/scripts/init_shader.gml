@@ -7,4 +7,3 @@ switch (get_player_color(player)) {
    
     
 }
-

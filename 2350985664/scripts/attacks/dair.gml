@@ -150,10 +150,3 @@ set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_LOCKOUT, 2);
-
-
-
-
-
-
-

@@ -336,8 +336,8 @@ if (reset_color_list == true){
 	ce[14,1] = "Teapack"
 	ce[15,0] = make_color_rgb(165, 207, 182)
 	ce[15,1] = "A Written Song"
-	ce[16,0] = make_color_rgb(156, 122, 112)
-	ce[16,1] = "Forlorn Egodeth"
+	ce[16,0] = make_color_rgb(225, 231, 245)
+	ce[16,1] = "What's a PHD?"
 	ce[17,0] = make_color_rgb(154, 0, 179)
 	ce[17,1] = "ACronym: E"
 	}
@@ -384,8 +384,8 @@ if (reset_color_list == true){
 	ce[10,1] = "Hymn"
 	ce[11,0] = make_color_rgb(242, 255, 245)
 	ce[11,1] = "it's the end of all things"
-	ce[12,0] = make_color_rgb(128, 0, 128)
-	ce[12,1] = "---"
+	ce[12,0] = make_color_rgb(156, 122, 112)
+	ce[12,1] = "Forlorn Egodeth"
 	ce[13,0] = make_color_rgb(128, 0, 128)
 	ce[13,1] = "---"
 	ce[14,0] = make_color_rgb(128, 0, 128)
@@ -476,7 +476,7 @@ textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 100
 //the other ui stuff
 shader_end()
 
-draw_sprite_ext(sprite_get("aaa_vernum"),0,x+180,y+48,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),0,x+176,y+48,2,2,0,-1,1);
 
 
 var buttonloc_x = 14;//166

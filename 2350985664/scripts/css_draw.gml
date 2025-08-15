@@ -9,7 +9,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 12;
+var num_alts = 13;
 var alt_cur = get_player_color(player);
  
  
@@ -29,7 +29,7 @@ alt_name[9]  = "Broken Bird";
 alt_name[10] = "Electric Bird";
 alt_name[11] = "Blue Bird";
 alt_name[12] = "Strange Bird";
-alt_name[13] = "Zetta";
+alt_name[13] = "Lying Bird";
 alt_name[14] = "Abyss";
 alt_name[15] = "Early Access";
  

@@ -104,7 +104,7 @@ if ( attack == AT_DATTACK ){
 		}
 		if (window >= 3){
 			if (!hitpause){
-				var dat_spd = ease_quadIn( 0, 8, dattack_speed_timer, dattack_speed_timer_max );
+				var dat_spd = ease_quadIn( 0, 95, dattack_speed_timer, dattack_speed_timer_max )/10;
 				hsp = dat_spd * spr_dir;
 				dattack_speed_timer = clamp(dattack_speed_timer-1, 0, 500);
 			}
@@ -169,11 +169,23 @@ if ( attack == AT_FAIR ){
 	if (window == 2 && window_timer == 2){
 		if (!hitpause){
 			sound_play(asset_get("sfx_waterhit_heavy"),false,noone,0.7,1.1)
-			sound_play(sound_get("SWB2"),false,noone,0.7,1)
+			//sound_play(sound_get("SWB2"),false,noone,0.7,1)
 			if (get_synced_var( player )==3){//D
+				if (get_player_color( player ) == 7){
+					sound_play(sound_get("dash"),false,noone,1,1)
+					var sfxdid = true;
+				}
+				if (get_player_color( player ) == 9){
+					sound_play(sound_get("kris_1"),false,noone,1,1)
+					var sfxdid = true;
+				}
 				if (get_player_color( player ) == 10){
 					sound_play(sound_get("asayzll_2"),false,noone,1,1)
+					var sfxdid = true;
 				}
+			}
+			if (sfxdid == false){
+				sound_play(sound_get("SWB2"),false,noone,0.7,1)
 			}
 			//spawn_hit_fx( x+(90*spr_dir), y, hfx_splash )//yea this is where it woulda've been used, but it wasnt very good
 		}
@@ -318,9 +330,13 @@ if ( attack == AT_NSPECIAL ){
 		if (!hitpause){
 			var tmp_hfx = spawn_hit_fx(x+(39*spr_dir), y-28, 27)
 			tmp_hfx.depth = 30;
-			sound_play(sound_get("ice_short"),false,noone,0.7,1.2)
-			sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.7,1)
-			sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.7,1.3)
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
+					sound_play(sound_get("dr_1"),false,noone,0.7,1)
+			}else{
+				sound_play(sound_get("ice_short"),false,noone,0.7,1.2)
+				sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.7,1)
+				sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.7,1.3)
+			}
 			spawn_base_dust(x-(24*spr_dir), y, "dash", spr_dir)
 			spawn_base_dust(x+(24*spr_dir), y, "dash", spr_dir*-1)
 		}
@@ -333,9 +349,13 @@ if ( attack == AT_NSPECIAL_2 ){
 		if (window == 3 && window_timer == 1){
 			var tmp_hfx = spawn_hit_fx(x+(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
-			sound_play(asset_get("sfx_buzzsaw_throw"),false,noone,0.8,1.15)
-			sound_play(sound_get("ice_short"),false,noone,0.5,1.5)
-			sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.4,1.4)
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
+					sound_play(sound_get("dr_1"),false,noone,0.7,1.2)
+			}else{
+				sound_play(asset_get("sfx_buzzsaw_throw"),false,noone,0.8,1.15)
+				sound_play(sound_get("ice_short"),false,noone,0.5,1.5)
+				sound_play(asset_get("sfx_ice_fspecial_hit_ground"),false,noone,0.4,1.4)
+			}
 		}
 		if (window == 4 && window_timer == 4){
 				//var pull_to_x = 37 * spr_dir;
@@ -378,11 +398,23 @@ if ( attack == AT_FSPECIAL_2 ){
 		var fsp_loop_atk_charge = fsp_loop_count_max;//8
 		if (window == 2 || window == 3){
 			if (state_timer > 10){//16
-				if (attack_pressed || !special_down){
+				if (!special_down){
 					window = 4; window_timer = 0;
 					sound_play(sound_get("woosh_1"),false,noone,0.5,2.5)
 					sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.6,1)
 					sound_play(asset_get("sfx_shovel_swing_heavy2"),false,noone,0.4,3)
+					reset_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_LENGTH);
+				}
+				if (attack_pressed){
+					window = 4; window_timer = 0;
+					spr_dir = spr_dir*-1;
+					hsp = clamp(hsp*-20, -4, 4);
+					white_flash_timer = 7;
+					sound_play(sound_get("swosh2"),false,noone,0.8,0.8)
+					sound_play(sound_get("woosh_1"),false,noone,0.5,2.5)
+					sound_play(asset_get("sfx_waterhit_medium"),false,noone,0.6,1)
+					sound_play(asset_get("sfx_shovel_swing_heavy2"),false,noone,0.4,3)
+					set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_LENGTH, 8);//+2
 				}
 				if (shield_pressed){
 					window = 8; window_timer = 0;
@@ -789,10 +821,10 @@ if ( attack == AT_DSPECIAL_2 ){
 				}
 			}
 		}
-		if (window >= 3 || window == 7){
+		if (window >= 3 || window == 8){
 			can_wall_jump = true;
 		}
-		if (window == 3 || window == 7){
+		if (window == 3 || window == 8){
 			if (!free){
 				if (dsp_bounce_count>=1 || !special_down){
 					window = 4; window_timer = 0;
@@ -803,7 +835,7 @@ if ( attack == AT_DSPECIAL_2 ){
 					sound_play(asset_get("sfx_land_light"),false,noone,1,1)
 				}else{
 					dsp_downpour = false;
-					if (window==7){window=3;}
+					if (window==8){window=3;}
 					vsp = -6;
 					hsp = clamp(hsp+2*(right_down-left_down),-6,6);
 					dsp_bounce_count++;
@@ -831,7 +863,7 @@ if ( attack == AT_DSPECIAL_2 ){
 				}
 			}
 		}
-		if (window == 7){
+		if (window == 8){
 			fall_through = true;
 			vsp = 1;
 			//vsp = clamp(vsp+0.5, -620, dsp_downpour_vsp);

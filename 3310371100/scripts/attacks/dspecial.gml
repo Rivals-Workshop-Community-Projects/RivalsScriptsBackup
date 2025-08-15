@@ -41,11 +41,11 @@ set_window_value(AT_DSPECIAL_2, 6, AG_MUNO_WINDOW_EXCLUDE, 1);
 //wait what is this window- oh yeah, parried thing attempt
 
 //DOWNPOUR
-set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DSPECIAL_2, 7, AG_MUNO_WINDOW_EXCLUDE, 1);
-set_window_value(AT_DSPECIAL_2, 7, AG_WINDOW_GOTO, 7);
+set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL_2, 8, AG_MUNO_WINDOW_EXCLUDE, 1);
+set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_GOTO, 7);
 
 
 

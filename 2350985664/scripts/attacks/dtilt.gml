@@ -49,7 +49,7 @@ set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_VSPEED, lengthdir_y(spd,70));
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_AIR_FRICTION, 0.01);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 303 );
-set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_crunch"));
+set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_SPRITE, sprite_get("lamprey_spin"));
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, lamprey_destroy);
@@ -81,7 +81,7 @@ set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_VSPEED, lengthdir_y(spd,50));
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_AIR_FRICTION, 0.01);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 303 );
-set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_crunch"));
+set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("lamprey_spin"));
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, lamprey_destroy);
@@ -113,7 +113,7 @@ set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_VSPEED, lengthdir_y(spd,25));
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_AIR_FRICTION, 0.01);
 set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, 303 );
-set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_crunch"));
+set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_SPRITE, sprite_get("lamprey_spin"));
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, lamprey_destroy);
@@ -146,7 +146,7 @@ set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_VSPEED, lengthdir_y(spd,60));
 set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_AIR_FRICTION, 0.01);
 set_hitbox_value(AT_DTILT, 4, HG_VISUAL_EFFECT, 303 );
-set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_crunch"));
+set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_SPRITE, sprite_get("lamprey_spin"));
 set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, lamprey_destroy);
@@ -178,7 +178,7 @@ set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_VSPEED, lengthdir_y(spd,37));
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_AIR_FRICTION, 0.01);
 set_hitbox_value(AT_DTILT, 5, HG_VISUAL_EFFECT, 303 );
-set_hitbox_value(AT_DTILT, 5, HG_HIT_SFX, asset_get("sfx_crunch"));
+set_hitbox_value(AT_DTILT, 5, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_SPRITE, sprite_get("lamprey_spin"));
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_DESTROY_EFFECT, lamprey_destroy);
@@ -188,11 +188,3 @@ set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_DTILT, 5, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_DTILT, 5, HG_PROJECTILE_PARRY_STUN, true);
-
-
-
-
-
-
-
-

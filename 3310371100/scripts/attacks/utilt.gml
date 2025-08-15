@@ -1,7 +1,7 @@
 set_attack_value(AT_UTILT, AG_CATEGORY, 0);
 set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
-set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 5);
 
 //start
 set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);//4
@@ -12,23 +12,28 @@ set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light2"
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 
 //atk
-set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
+
+//atk
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
 //hold
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //end
-set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(AT_UTILT, 4, AG_IASA_THIS_WINDOW, 1);
-set_window_value(AT_UTILT, 4, AG_MUNO_WINDOW_EXCLUDE, 1);
+set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_UTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_UTILT, 5, AG_IASA_THIS_WINDOW, 1);
+set_window_value(AT_UTILT, 5, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
@@ -52,7 +57,7 @@ var hb_hpg = 0.4;//0.3
 //1
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 2);//4
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 42);//37
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -42);//-56
 set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 48);//37
@@ -71,9 +76,9 @@ set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //2
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 3);
+//set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 4);//4
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);//3
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 36);//12
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -68);//-66
 set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 68);//52

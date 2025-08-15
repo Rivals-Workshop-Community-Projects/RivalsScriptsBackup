@@ -60,8 +60,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);//6
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.3);//0.6
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);//0.75
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 28);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 27);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_weak2"));

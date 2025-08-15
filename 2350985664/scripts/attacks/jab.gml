@@ -35,6 +35,8 @@ set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_JAB, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_JAB, 4, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 3);
 
 
 
@@ -142,6 +144,3 @@ set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_crunch"));
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, grab_fx);// 302
 set_hitbox_value(AT_JAB, 3, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 2);
-
-
-

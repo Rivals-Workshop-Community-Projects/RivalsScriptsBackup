@@ -15,6 +15,9 @@ switch attack {
     case AT_JAB:
     if window == 1 {
         jab_grab = false
+        with oPlayer if "tco_jab_grab_id" in self && tco_jab_grab_id == other.id {
+        	tco_jab_grab_id = noone
+        }
     }
     
     if window == 8 && jab_grab && !hitpause {

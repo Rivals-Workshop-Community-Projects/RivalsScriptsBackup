@@ -385,8 +385,3 @@ if (has_rune("A"))
 {
     hurtboxID.sprite_index = sprite_get("small_hurtbox");
 }
-
-
-
-
-

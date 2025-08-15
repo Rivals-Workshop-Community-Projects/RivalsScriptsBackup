@@ -15,7 +15,7 @@ walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 8;
 initial_dash_speed = 8.5 + has_rune("H") * 2;
-dash_speed = 7 + has_rune("H") * 2.5;
+dash_speed = 6.5 + has_rune("H") * 2.5;
 dash_turn_time = 12;
 dash_turn_accel = 0.7;
 dash_stop_time = 8;
@@ -24,14 +24,14 @@ ground_friction = 0.35 - has_rune("F") * 0.2;
 moonwalk_accel = 1.5;
 
 jump_start_time = 5;
-jump_speed = 10.1;
+jump_speed = 10;
 short_hop_speed = 5.5;
 djump_speed = 8; djump_speed_ref = djump_speed;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.8 + has_rune("H") * 2.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5.5 + has_rune("H") * 2.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .28;
+air_accel = .25;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 3 + has_rune("J") ;
@@ -43,11 +43,11 @@ wall_frames = 2;
 max_fall = 9.5; //maximum fall speed without fastfalling
 fast_fall = 11; //fast fall speed
 gravity_speed = .4;
-hitstun_grav = .4;
+hitstun_grav = .45;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 18;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .03; //grounded deceleration when wavelanding
@@ -143,6 +143,9 @@ lamprey_destroy = hit_fx_create( sprite_get("lamprey_die"), 12)
 // grab
 grab_id = noone;
 
+// mystia winscreen
+set_victory_bg(sprite_get("winscreen"));
+set_victory_theme(sound_get("mystia_win"));
 
 // 
 caged_list = ds_list_create();

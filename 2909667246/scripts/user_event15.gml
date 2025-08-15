@@ -259,6 +259,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.55", "7th August, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug with last patch when pocketing certain projectiles");
+
+initPatch("1.54", "7th August, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Articles with an empty sprite can now be pocketed if Pocketable is specified as true (this is not only consistent with how Pocket treats projectiles, but should allow articles to be Pocketable if specified)
++ Fixed an error with DSpecial water");
+
 initPatch("1.53", "14th June, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug with the new plush taunt");

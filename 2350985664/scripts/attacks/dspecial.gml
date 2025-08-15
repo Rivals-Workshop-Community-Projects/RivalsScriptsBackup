@@ -27,4 +27,3 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
-

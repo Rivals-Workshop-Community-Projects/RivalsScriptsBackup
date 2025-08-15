@@ -51,5 +51,3 @@ switch (my_hitboxID.attack )
 
 
 parry_lag_ref = parry_lag;
-        
-        

@@ -10,4 +10,3 @@ if (has_rune("L"))
 {
     draw_sprite(sprite_get("familiar_sing"),sing_image,x,y)
 }
-

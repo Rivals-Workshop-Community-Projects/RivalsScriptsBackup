@@ -366,12 +366,6 @@ if (get_synced_var( player )==3){//D
 		set_character_color_shading( 1, 0.5 );
 		set_character_color_shading( 6, 1.2 );
 	}
-	if (get_player_color( player ) == 16){//forlorn egodeath
-		set_character_color_shading( 1, 0.7 );
-		set_character_color_shading( 3, 0.8 );
-		set_character_color_shading( 5, 0.5 );
-		set_character_color_shading( 6, 0.5 );
-	}
 	if (get_player_color( player ) == 17){//acronym e
 		set_character_color_shading( 0, 0.8 );
 		set_character_color_shading( 1, 0.6 );
@@ -423,6 +417,13 @@ if (get_synced_var( player )==4){//EXTRA
 		set_character_color_shading( 3, 0.5 );
 		set_character_color_shading( 5, 0.7 );
 		set_character_color_shading( 6, 1.2 );
+	}
+	if (get_player_color( player ) == 12){//forlorn egodeath
+		set_character_color_shading( 1, 0.7 );
+		set_character_color_shading( 2, 0 );
+		set_character_color_shading( 3, 0.8 );
+		set_character_color_shading( 5, 0.5 );
+		set_character_color_shading( 6, 0.5 );
 	}
 }
 
@@ -645,7 +646,7 @@ switch(get_synced_var( player )){
 	case 0: //A
 		// blue
 		set_color_profile_slot( 1, 0, 140, 168, 255 ); //green
-		set_color_profile_slot( 1, 1, 70, 82, 232 ); //hair
+		set_color_profile_slot( 1, 1, 116, 138, 247 ); //hair
 		set_color_profile_slot( 1, 2, 242, 230, 213 ); //skin
 		set_color_profile_slot( 1, 3, 47, 71, 194 ); //white
 		set_color_profile_slot( 1, 4, 9, 9, 89 ); //dark
@@ -1338,16 +1339,16 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 15, 5, 232, 103, 35 ); //gold
 		set_color_profile_slot( 15, 6, 66, 255, 183 ); //umbrella
 		set_color_profile_slot( 15, 7, 181, 97, 52 ); //eyes
-
-		// forlorn egodeath
-		set_color_profile_slot( 16, 0, 234, 255, 222 ); //green
-		set_color_profile_slot( 16, 1, 87, 61, 54 ); //hair
-		set_color_profile_slot( 16, 2, 255, 255, 255 ); //skin
-		set_color_profile_slot( 16, 3, 156, 122, 112 ); //white
-		set_color_profile_slot( 16, 4, 234, 255, 222 ); //dark
-		set_color_profile_slot( 16, 5, 77, 153, 96 ); //gold
-		set_color_profile_slot( 16, 6, 82, 89, 85 ); //umbrella
-		set_color_profile_slot( 16, 7, 255, 255, 255 ); //eyes
+		
+		// what's a phd?
+		set_color_profile_slot( 16, 0, 225, 231, 245 ); //green
+		set_color_profile_slot( 16, 1, 115, 63, 36 ); //hair
+		set_color_profile_slot( 16, 2, 245, 189, 147 ); //skin
+		set_color_profile_slot( 16, 3, 225, 231, 245 ); //white
+		set_color_profile_slot( 16, 4, 65, 79, 94 ); //dark
+		set_color_profile_slot( 16, 5, 255, 74, 61 ); //gold
+		set_color_profile_slot( 16, 6, 225, 231, 245 ); //umbrella
+		set_color_profile_slot( 16, 7, 6, 89, 130 ); //eyes
 
 		// ACronym E
 		set_color_profile_slot( 17, 0, 145, 123, 141 ); //green
@@ -1501,17 +1502,16 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 11, 4, 39, 41, 40 ); //dark
 		set_color_profile_slot( 11, 5, 79, 84, 81 ); //gold
 		set_color_profile_slot( 11, 6, 242, 255, 245 ); //umbrella
-		set_color_profile_slot( 11, 7, 240, 255, 240 ); //eyes
-
-		// unnamed alt palette
-		set_color_profile_slot( 12, 0, 128, 0, 128 ); //green
-		set_color_profile_slot( 12, 1, 128, 0, 128 ); //hair
-		set_color_profile_slot( 12, 2, 128, 0, 128 ); //skin
-		set_color_profile_slot( 12, 3, 128, 0, 128 ); //white
-		set_color_profile_slot( 12, 4, 128, 0, 128 ); //dark
-		set_color_profile_slot( 12, 5, 128, 0, 128 ); //gold
-		set_color_profile_slot( 12, 6, 128, 0, 128 ); //umbrella
-		set_color_profile_slot( 12, 7, 128, 0, 128 ); //eyes
+		
+		// forlorn egodeath
+		set_color_profile_slot( 12, 0, 234, 255, 222 ); //green
+		set_color_profile_slot( 12, 1, 87, 61, 54 ); //hair
+		set_color_profile_slot( 12, 2, 255, 255, 255 ); //skin
+		set_color_profile_slot( 12, 3, 156, 122, 112 ); //white
+		set_color_profile_slot( 12, 4, 234, 255, 222 ); //dark
+		set_color_profile_slot( 12, 5, 77, 153, 96 ); //gold
+		set_color_profile_slot( 12, 6, 82, 89, 85 ); //umbrella
+		set_color_profile_slot( 12, 7, 255, 255, 255 ); //eyes
 
 		// unnamed alt palette
 		set_color_profile_slot( 13, 0, 128, 0, 128 ); //green

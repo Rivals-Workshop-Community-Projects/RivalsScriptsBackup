@@ -15,8 +15,4 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.15);
-
-
-
-
-
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 7);

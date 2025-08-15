@@ -263,7 +263,7 @@ if ((state == PS_ATTACK_GROUND) or (state == PS_ATTACK_AIR))
                     }
                     
                     
-                    if (window_timer == 0)
+                    if (window_timer == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     {
                         if (abs(right_down - left_down))
                         {
@@ -358,7 +358,7 @@ if ((state == PS_ATTACK_GROUND) or (state == PS_ATTACK_AIR))
                 
                     
                     
-                    if (window_timer == 0)
+                    if (window_timer == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                     {
                         if (abs(right_down - left_down))
                         {
@@ -452,7 +452,11 @@ if (has_rune("N"))
     
 }
 
-
-
-
-
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

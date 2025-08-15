@@ -7,12 +7,12 @@ set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_UAIR, AG_MUNO_ATTACK_MISC_ADD, "hello - this move does NOT have autocancel");
 
 //start
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);//formerly 3. what
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 
 //atk
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 4);
@@ -26,7 +26,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //end
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 8);//10
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -37,19 +37,19 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UAIR, 4); 
 
-var hb_damage = 8;//10
+var hb_damage = 7;//10
 var hb_angle = 50;//45
 var hb_bkb = 5;//4
-var hb_kbg = 0.7;
+var hb_kbg = 0.65;//0.7
 var hb_bhp = 6;//ori uair value+1
-var hb_hpg = 0.5;//ori uair value
+var hb_hpg = 0.55;//ori uair value+0.05//0.5
 
 //1sthalf
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 33);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -46);
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -42);//-46
 set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 66);
 set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 48);
 set_hitbox_value(AT_UAIR, 1, HG_SHAPE, 0);

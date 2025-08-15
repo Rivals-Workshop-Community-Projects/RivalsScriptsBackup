@@ -17,6 +17,13 @@ if (attack==AT_FSTRONG){
 			break;
 	}
 }
+if (my_hitboxID.attack==AT_NSPECIAL){
+	if (my_hitboxID.player_id==id){
+		if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
+			sound_play(sound_get("dr_2"),false,noone,0.7,1)
+		}
+	}
+}
 if (attack==AT_FSPECIAL){
 	if (my_hitboxID.hbox_num == 1){
 		sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,1.2);
@@ -41,7 +48,7 @@ if (attack==AT_UTILT){
 	sound_play(asset_get("sfx_blow_medium3"),false,noone,0.5,0.85);
 }
 if (attack==AT_DTILT){
-	if (my_hitboxID.hbox_num == 2){
+	if (my_hitboxID.hbox_num == 2||my_hitboxID.hbox_num == 3){
 		sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.4,1.2);
 		sound_play(asset_get("sfx_blow_medium3"),false,noone,0.8,1.3);
 		sound_play(asset_get("sfx_blow_medium3"),false,noone,0.5,1);

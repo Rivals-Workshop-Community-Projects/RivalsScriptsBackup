@@ -69,7 +69,7 @@ set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
 
 //umbrella close GROUND
-set_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH, 8);//7
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 2);
 

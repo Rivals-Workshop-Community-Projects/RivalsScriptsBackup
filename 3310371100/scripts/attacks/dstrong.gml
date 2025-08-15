@@ -5,7 +5,7 @@ set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 8);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
 //start precharge
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 5);//3
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
@@ -20,20 +20,20 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 3);//2
 
 //atk
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 3);//2
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
 //continues
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 5);//6
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX_FRAME, 4);
 
 //atk 2
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 3);//2
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 

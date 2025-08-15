@@ -108,11 +108,3 @@ else
 {
     instance_destroy(self);
 }
-
-
-
-
-
-
-
-

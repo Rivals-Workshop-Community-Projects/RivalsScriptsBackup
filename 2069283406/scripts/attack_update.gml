@@ -118,7 +118,7 @@ if attack == AT_JAB{
        if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
         set_attack (AT_FTILT)
         window = 1
-        window_timer = 5
+        window_timer = 3
        }
        
        if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
@@ -469,14 +469,14 @@ if attack == AT_DAIR{
 
 
 if attack == AT_NSPECIAL{
-	
-	
-	 set_attack_value(AT_FAIR, AG_CATEGORY, 2);
-     set_attack_value(AT_NAIR, AG_CATEGORY, 2);
-     set_attack_value(AT_BAIR, AG_CATEGORY, 2);
-     set_attack_value(AT_DAIR, AG_CATEGORY, 2);
-     set_attack_value(AT_UAIR, AG_CATEGORY, 2);
-     
+	 //set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+  //   set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+  //   set_attack_value(AT_BAIR, AG_CATEGORY, 2);
+  //   set_attack_value(AT_DAIR, AG_CATEGORY, 2);
+  //   set_attack_value(AT_UAIR, AG_CATEGORY, 2);
+     if window == 2 && window_timer == 1{
+     sound_play(sound_get("RZ2"),false,noone,0.8,1);
+     }
 		if window == 3 && (!inrange or firerange <= 0){
 		
 		if window_timer > 1{
@@ -575,79 +575,78 @@ if attack == AT_NSPECIAL{
 	}
 	
 	if window >= 3 && state_timer >= 30 {
-		
 		if fireon < 3 && window == 3 {
 	 	window_timer += 2
      	}
      	
-     		if fireon != 3 {
+    if fireon != 3 {
 		can_jump = true
 	}
 	
 	
-		if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
+		// if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
 			
-			   if fireon == 3 {
-					canceltime = 20
-			   }
+		// 	   if fireon == 3 {
+		// 			canceltime = 20
+		// 	   }
 			   
-			if  firerange > 0 {
-			firerange = -100
-			fireon = 0
-			}
+		// 	if  firerange > 0 {
+		// 	firerange = -100
+		// 	fireon = 0
+		// 	}
 
-			if hsp > 4 or hsp < -4{
-			hsp = 4*spr_dir
-			}
-			vsp = -4
-			sound_play(asset_get("sfx_ori_bash_launch"));
-	        if !up_down && !down_down && !left_down && !right_down {
-	        set_attack(AT_NAIR)
-	        window = 1
-			window_timer = 5
-					canceltime = 0
-	        }
+		// 	if hsp > 4 or hsp < -4{
+		// 	hsp = 4*spr_dir
+		// 	}
+		// 	vsp = -4
+		// 	sound_play(asset_get("sfx_ori_bash_launch"));
+	 //       if !up_down && !down_down && !left_down && !right_down {
+	 //       set_attack(AT_NAIR)
+	 //       window = 1
+		// 	window_timer = 5
+		// 			canceltime = 0
+	 //       }
 	        
-	        if up_stick_down or (up_down && !down_down)  {
-	        set_attack(AT_UAIR)
-	        window = 1
-			window_timer = 5
-	        }
+	 //       if up_stick_down or (up_down && !down_down)  {
+	 //       set_attack(AT_UAIR)
+	 //       window = 1
+		// 	window_timer = 5
+	 //       }
 	        
-	        if down_stick_down or (!up_down && down_down)  {
-	        set_attack(AT_DAIR)
-	        window = 1
-			window_timer = 5
-	        }
+	 //       if down_stick_down or (!up_down && down_down)  {
+	 //       set_attack(AT_DAIR)
+	 //       window = 1
+		// 	window_timer = 5
+	 //       }
 		
-			if right_stick_down or (!up_down && !down_down && !left_down && right_down) {
-				if spr_dir == 1 {
-	        set_attack(AT_FAIR)
-	        window = 1
-			window_timer = 5
-				}
+		// 	if right_stick_down or (!up_down && !down_down && !left_down && right_down) {
+		// 		if spr_dir == 1 {
+	 //       set_attack(AT_FAIR)
+	 //       window = 1
+		// 	window_timer = 5
+		// 		}
 				
-				if spr_dir == -1 {
-	        set_attack(AT_BAIR)
-	        window = 1
-			window_timer = 5
-				}	
-	        }
+		// 		if spr_dir == -1 {
+	 //       set_attack(AT_BAIR)
+	 //       window = 1
+		// 	window_timer = 5
+		// 		}	
+	 //       }
 	        
-	       	if right_stick_down or (!up_down && !down_down && left_down && !right_down) {
-				if spr_dir == -1 {
-	        set_attack(AT_FAIR)
-	        window = 1
-			window_timer = 5
-				}
+	 //      	if right_stick_down or (!up_down && !down_down && left_down && !right_down) {
+		// 		if spr_dir == -1 {
+	 //       set_attack(AT_FAIR)
+	 //       window = 1
+		// 	window_timer = 5
+		// 		}
 				
-				if spr_dir == 1 {
-	        set_attack(AT_BAIR)
-	        window = 1
-			window_timer = 5
-				}	
-	        } 
-		}
+		// 		if spr_dir == 1 {
+	 //       set_attack(AT_BAIR)
+	 //       window = 1
+		// 	window_timer = 5
+		// 		}	
+	 //       } 
+		// }
 
 	}
 	
@@ -655,9 +654,6 @@ if attack == AT_NSPECIAL{
 	if window == 3 && firerange > 0 && inrange  {
 
 		move_cooldown[AT_FSPECIAL_AIR] = 999
-       
-
-		
 		move_cooldown[AT_TAUNT_2] = 15
 		
 		firetimer += 1
@@ -678,29 +674,28 @@ if attack == AT_NSPECIAL{
 		spr_dir = (hit_player_obj.x > x?1:-1)
 		
         
-        if abs(hit_player_obj.x - x) > 10 && abs(hit_player_obj.y - 25 - y) > 10  {
-	     var angle = point_direction(x + 20*spr_dir, y,  hit_player_obj.x,  hit_player_obj.y - 25 );
-		 x += floor(lengthdir_x(10, angle))
-		}
-         y += floor(lengthdir_y(10, angle))
+	    var angle = point_direction(x, y,  hit_player_obj.x,  hit_player_obj.y - 25 );
+		x += floor(lengthdir_x(16, angle))
+        y += floor(lengthdir_y(16, angle))
          
-		hsp = (hit_player_obj.x + hit_player_obj.hsp*2 - 30*spr_dir - x) / 24
+		hsp = (hit_player_obj.x + hit_player_obj.hsp*2 - x) / 24
 		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 24
 
         
        	y += (hit_player_obj.y - y) / 20
-       
-		
+       if window_timer == 1 && !hitpause{
+       	create_hitbox(AT_USPECIAL,5,round(x),round(y))
+       }
 
-   	if hit_player_obj.x < x - 50  {
+   	if hit_player_obj.x < x {
 		x -= 6
 	} 
 	
-	if hit_player_obj.x > x + 50{
+	if hit_player_obj.x > x {
 	    x += 6
 	} 	
 	
-		        if hit_player_obj.state == PS_RESPAWN or hit_player_obj.state == PS_DEAD {
+		 if hit_player_obj.state == PS_RESPAWN or hit_player_obj.state == PS_DEAD {
         	hsp /= 4
         	vsp = -9
         	set_state(PS_IDLE_AIR)
@@ -712,10 +707,14 @@ if attack == AT_NSPECIAL{
 	
 	
 	if window = 3 && has_hit {
-				y = hit_player_obj.y - 20
-			window = 4
-			window_timer = 0
-		}
+		attack_end()
+		djumps = 0
+		set_attack(AT_DAIR)
+		window = 5
+		window_timer = 0
+		old_vsp = -5
+		vsp = -5
+	}
 		
 		
 
@@ -962,9 +961,45 @@ if attack == AT_USPECIAL {
 	}
 	
 	if window == 5 && window_timer == 8 {
-		
 		set_state (PS_PRATFALL)
-		
+	}
+	if window == 1 && window_timer == 1{
+		set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 4);
+		set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 4);
+		set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6.5);
+        set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .6);
+        set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 302);
+        set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 4);
+        set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .25);
+        set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+        set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+        
+        set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 6.5);
+        set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, .6);
+        set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 302);
+        set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 4);
+        set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .25);
+        set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+        set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+	}
+	if window == 2 && has_hit_player{
+		set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 12);
+		set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 12);
+		set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6.5);
+        set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 304);
+        set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 9);
+        set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .25);
+        set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+        set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+        
+        set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 6.5);
+        set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 304);
+        set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 9);
+        set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .25);
+        set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+        set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	}
 can_wall_jump = true
 	

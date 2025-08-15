@@ -53,6 +53,10 @@ if (awake == false){
 		
 		default: break;
 	}
+	if (get_synced_var( player )==1 && get_player_color( player ) == 6){
+		dash_anim_speed_normal = 0.07;
+		dash_anim_speed = dash_anim_speed_normal;
+	}
 }
 
 if (state == PS_HITSTUN){

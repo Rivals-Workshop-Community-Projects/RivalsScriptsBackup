@@ -20,3 +20,4 @@ move_cooldown[AT_NSPECIAL] = 0
 
 fire_stance = false
 fire_amount = 0
+jab_grab = false

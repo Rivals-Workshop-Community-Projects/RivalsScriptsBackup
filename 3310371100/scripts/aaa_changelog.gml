@@ -6,6 +6,68 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.10===
+---fixes---
+:: FSPECIAL ... fixed an oversight where when the new FSPECIAL-ATTACK reverse thing is used with higher hsp your hsp goes insane high because of the way i coded the distance penalty. i clamped it now, cant go too fast
+:: DSPECIAL ... fixed an issue where you can keep bouncing after DSPECIAL was parried if you held special.
+
+---notes---
+myeah phew
+
+
+===v3.9===
+---additions---
+++ FSPECIAL ... as a bit of an executional accessibility feature for less dexterous players like me, now when you release FSPECIAL by pressing ATTACK instead of releasing SPECIAL, you automatically turn around, using the recoil to send yourself forward!
+:::: ... as a bit of penalty or reward better control, doing it this way subdues the total distance travelled, by a little bit, and it has more startup (2 frames more, i tried 4 but it was too much i think).
+:::: ... actually i put the penalty because otherwise it would have better distance than doing it normally because of your aerial drift beforehand.
+:::: ... this has an interesting side effect of allowing a cross-up by charging while passing the opponent over from the air. i'll see how this goes, maybe i'll nerf damage when you do it like this or something.
+
+---changes---
+:: ALT COLORS ... blue alt Cobalt adjusted a little cause it felt too samey everywhere
+++ RAINCLOUD ... the depth (layer/z-index) value was unchanged from when it was supposed to stay behind players... so it was really low before and tend to go behind too many things like stages. it is now fixed to be hopefully just be behind players. (15 -> 1)
+:: FSPECIAL ... getting FSPECIAL charge removed by getting hit or getting parried now spawns some mist vfx leaving you.
+
+---balancing---
+-- STATS ... pratland increased by 2 (10 -> 12)
+-- JAB2 ... damage decreased by 2 (6 -> 4, JAB total 10 -> 8)
+++ UTILT ... early hitbox active time decreased, in turn moving everything else earlier. in other words main hitbox comes out 2 frames early now
+++ DTILT ... EXPERIMENTAL: hit 1 now has a SDI multiplier of 0, nullifying any SDI attempts.
+:::: ... i found out base cast does this a lot for moves that link together. ima do it now
+++ DTILT ... hit 1 hitbox extended forward a bit, to match visual
+++ DTILT ... in addition, hit 2 has an additional hitbox as a bodybox
+:: DTILT ... base knockback and knockback growth adjusted (BKB 8 -> 7, KBG 0.3 -> 0.4)
+++ DTILT ... hit 1 damage decreased by 1 (3 -> 4, total 7 -> 8)
+-- DATTACK ... damage -1 (early 8 -> 7, late 6 -> 5)
+:::: ... felt weird that DATTACK was dealing more damage than DTILT. sorry boys
+:: DATTACK ... distance increased by a bit
+:::: ... hard to describe but in v1.9 a number was 13, with v3.0 it becamse 8, now it's 9.5, if that makes sense
+:::: ... no further
+:: NAIR ... early hit angle changed (361 -> 45)
+:: NAIR ... late hit knockback growth reduced (KBG 0.35 -> 0.3)
+-- BAIR ... base knockback reduced (BKB 6.5 -> 6)
+-- BAIR ... late hit active time reduced by 3 frames.
+:::: ... endlag is N O T reduced.
+:::: ... you may also notice that it's not matching the visual. i don't care. it wasn't before and it won't be.
+-- UAIR ... startup increased by 2 frames. (3 -> 5)
+++ UAIR ... endlag decreased by 2 frames, idk about whifflag
+:: UAIR ... knockback growth decreased (0.7 -> 0.65), hitpause scaling increased (0.5 -> 0.55)
+-- UAIR ... damage decreased decreased by 1 (8 -> 7)
+:: UAIR ... earliest hitbox location lowered by like 4 pixels
+:::: ... this is a sort of experimental change. something to note is that this doesnt actually increase the size of the hitbox, it trades upward range for downward range.
+:::: ... without this, because of the startup increase, shorthop UAIR would no longer hit standing opponents. it was really tempting to NOT do this, but i figured this is a fine compromise in my eyes
+-- DSTRONG ... startup increased by 2, before charge.
+:: FSPECIAL ... hit lockout of 15 has been applied.
+++ FSPECIAL ... hitpause scaling reduced (0.6 -> 0.3) and EXPERIMENTAL: hitstun multiplier reduced (0.75 -> 0.7)
+++ FSPECIAL ... EXPERIMENTAL: freeze hitbox height increased upwards, matching the vfx a bit better.
+++ FSPECIAL ... body hitbox height increased, covering usher a bit more.
+-- USPECIAL ... landing with umbrella out (with dedicated animation thing) endlag increased by 1 frame (7 -> 8)
+
+---notes---
+what's the echoign
+
+
+
+
 ===v3.8===
 ---balancing---
 :: JAB ... further changes to avoid problems
