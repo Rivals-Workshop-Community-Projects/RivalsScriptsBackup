@@ -24,10 +24,12 @@ switch (attack)
 	/////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
     //
 	case AT_UAIR:
-       if (window == 6 && !free && window_timer >= 2)
+        if(window >= 6)
+            move_cooldown[AT_UAIR] = 10;
+        if (window == 6 && !free && window_timer >= 2)
 		{
-    	set_state(PS_LANDING_LAG);
-    	landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+            set_state(PS_LANDING_LAG);
+            landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
 		}
         if (window == 1)
         {
@@ -52,7 +54,8 @@ switch (attack)
                     }
                     break;
                 case 5: 
-                    if(y > room_height - 25)
+                    hsp /= 1+(window_timer)/50;
+                    if(y > room_height - 75)
                     {
                         window = 6;
                         window_timer = 0;

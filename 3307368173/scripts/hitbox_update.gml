@@ -69,7 +69,7 @@ if(attack == AT_DSPECIAL)
                     if(place_meeting(x,y,other) && id != other.player_id)
                     {
                         //hit players inside if detected!
-                        if(state_cat == SC_HITSTUN && state != PS_HITSTUN_LAND && (last_attack != AT_DSPECIAL && other.player_id.attack != AT_DSPECIAL))
+                        if(state_cat == SC_HITSTUN && state != PS_HITSTUN_LAND && other.player_id.my_grab_id == noone && (last_attack != AT_DSPECIAL && other.player_id.attack != AT_DSPECIAL))
                         {
                             with(other)
                             {
@@ -99,6 +99,15 @@ if(attack == AT_DSPECIAL)
                             drag_dir = point_direction(x,y,other.x,other.y);
                             hsp += lengthdir_x(drag_spd,drag_dir)
                             if(free) vsp += lengthdir_y(drag_spd,drag_dir)
+                        }
+                    }
+                    //If this is UAIR, detonate!!
+                    else if(place_meeting(x-10*other.player_id.spr_dir,y-40,other) && other.player_id.vsp > 1 && id == other.player_id && other.player_id.my_grab_id != noone && other.player_id.attack == AT_UAIR)
+                    {
+                        with(other.player_id)
+                        {
+                            window = 6;
+                            window_timer = 0;
                         }
                     }
                 }
@@ -152,7 +161,7 @@ else if(attack == AT_NSPECIAL && hbox_num == 1)
         case 0:
             image_index = (anim_timer/4);
             if(anim_timer == 5) anim_timer = 0;
-            if(hitbox_timer >= 39 || player_id.state_cat == SC_HITSTUN || player_id.state == PS_RESPAWN || player_id.was_parried)
+            if(hitbox_timer >= 29 || player_id.state_cat == SC_HITSTUN || player_id.state == PS_RESPAWN || player_id.was_parried)
             {
                 hitbox_timer = 0;
                 anim_timer = 0;

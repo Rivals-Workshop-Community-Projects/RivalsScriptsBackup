@@ -28,14 +28,14 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 //////////////////////////////////////////////////////////////// HITBOXES ////////////////////////////////////////////////////////////////
 
-hitbox_num = 1; //sweetspot
+hitbox_num = 1; //the dunk
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 10);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, 5);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 69);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 80);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 4);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, 8);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 72);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 11);
