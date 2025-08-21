@@ -58,12 +58,7 @@ if (ai_target != self) {
 }
 
 // Determine Edgeguarding
-if (ai_fighting && temp_level > 3 && target_offstage && !block_check(250, 40, 0, 120, "both")) {
-	var ai_edgeguarding = true;
-} else {
-	var ai_edgeguarding = false;
-}
-ai_test_3 = ai_edgeguarding;
+var ai_edgeguarding = (ai_fighting && temp_level > 3 && target_offstage && !block_check(250, 40, 0, 120, "both"));
 
 // Keep the ai from holding buttons when they're not supposed to
 attack_down = false;
@@ -292,10 +287,7 @@ if (ai_running) { // Run from respawning targets
 			if (vsp >= -3 && !fast_falling && state_cat == SC_AIR_NEUTRAL && random_func(5, 36 - (temp_level * 2), true) == 0 &&
 			    sign(stage_center - x) == sign(stage_center - ai_target.x)) {
 				if (move_cooldown[AT_USPECIAL] == 0) {
-					left_down = false;
-					right_down = false;
-					up_down = true;
-					down_down = false;
+					ai_hold_dir("U", false);
 					special_pressed = true;
 				}
 			}
@@ -382,13 +374,17 @@ if (ai_running) { // Run from respawning targets
 	}
 	
 	// Keep the ai from randomly not looking at their target
-	if (temp_level >= 6 && state_cat == SC_GROUND_NEUTRAL && !ai_facing) {
+	if (temp_level >= 5 && state_cat == SC_GROUND_NEUTRAL) {
 		if (x > ai_target.x) {
-			left_down = true;
+			if (!ai_facing) {
+				left_down = true;
+			}
 			right_down = false;
 		} else if (x < ai_target.x) {
+			if (!ai_facing) {
+				right_down = true;
+			}
 			left_down = false;
-			right_down = true;
 		}
 	}
 	
@@ -528,7 +524,7 @@ if (ai_running) { // Run from respawning targets
 	
 	// If possible, be defensive while recovering
 	if (ai_recovering && temp_level > 3) {
-		var bottom_blastzone = stage_top + get_stage_data(SD_BOTTOM_BLASTZONE);
+		var bottom_blastzone = get_stage_data(SD_BOTTOM_BLASTZONE_Y);
 		if (edge_dist > 0 && edge_dist <= 360 && targ_distance <= 100 && y < bottom_blastzone - 300 &&
 		   (djumps < max_djumps || has_walljump || has_airdodge) && random_func(3, 39 - (temp_level * 4), true) == 0) {
 			var defend_atk = random_func(7, 2, true); // Use neutral air or not
@@ -647,7 +643,8 @@ if (spr_dir == -1) { // When facing left
 	return false;
 }
 
-// --- Tells which direction the AI should hold. Must be called on every frame when used --- 
+// --- Tells which direction the AI should hold, forbidding them from using any other. --- 
+// --- Must be called on every frame when used --- 
 #define ai_hold_dir(hold_dir, do_hard_press)
 
 // Which direction should the ai hold? Options are below.

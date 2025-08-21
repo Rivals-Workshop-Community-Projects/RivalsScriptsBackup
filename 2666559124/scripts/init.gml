@@ -112,10 +112,6 @@ barreled = false;
 
 canBomb = true;
 
-ai_test = 0;
-ai_test_2 = 0;
-ai_test_3 = false;
-
 if (alt == 2 || alt == 3 || alt == 4 ||
     alt == 7 || alt == 13 || alt == 14 || alt == 15) {
 	use_ex_sprites = true;
