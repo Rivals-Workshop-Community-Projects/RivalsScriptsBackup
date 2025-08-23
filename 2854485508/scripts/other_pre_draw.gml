@@ -16,10 +16,12 @@ if (("mamizou_mark_id" in self) && instance_exists(mamizou_mark_id)) {
 
 if (("mamizou_trans" in self) && mamizou_trans) {
     get_trans_spr();
-	draw_y = 999;
 }
 
 #define get_trans_spr()
+var spr = sprite_get("net_disc_spr");
+var img = 0;
+    
 with (other_player_id) {
     var spr = sprite_get("tanuki_hurt");
     var img = 0;
@@ -113,22 +115,22 @@ with (other_player_id) {
     switch (mamizou_transform_sprite) {
         case -1:
         	spr = other.mamizou_transform_spr;
-            scale = other.small_sprites;
+            scale = other.small_sprites + 1;
         break;
         default:
         	if (mamizou_transform_sprite <= 20 && mamizou_transform_sprite > 0){
         	    spr = sprite_get("transformations_base");
                 img = mamizou_transform_sprite - 1;
-                scale = 1;
+                scale = 2;
             }
         	if (mamizou_transform_sprite <= 34 && mamizou_transform_sprite > 20){
         	    spr = sprite_get("transformations_touhou");
                 img = mamizou_transform_sprite - 21;
-                scale = 0;
+                scale = 1;
             }
         break;
     }
-    with (other) shader_start();
-    draw_sprite_ext(spr, img, other.x, other.y, (other.spr_dir * other.image_xscale) + scale, other.image_yscale + scale, 0, c_white, 1);
-     with (other) shader_end();
 }
+shader_start();
+draw_sprite_ext(spr, img, x, y, (spr_dir) * scale, scale, 0, c_white, 1);
+shader_end();

@@ -53,7 +53,8 @@ mask_sprite_prev = -1;
 grounded_last_frame = true; // Assume starts grounded
 safe_grounded = true;
 
-
+slam_meet_target = noone;   // resolved collider used for place_meeting
+article_owns_victim = false; // true only when artc_grab_id == slam_grab_id
 slam_grab_id = noone;
 slam_grab_time = 0;
 slam_hitpause = 10; // Hitpause frames to wait to before going into slam

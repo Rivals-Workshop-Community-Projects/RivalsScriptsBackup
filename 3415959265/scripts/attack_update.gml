@@ -1112,11 +1112,6 @@ switch (attack)
 					case 7: //Looping descent window
 						with (other)
 						{
-							
-							
-						    print("uspecial_timer: " + string(uspecial_timer));
-						    print("new_formula: " + string(new_formula));
-						
 						    //increment window when landing and adjust power (stole from la reina)
 						    if (vsp >= 0 && window_timer != window_end){
 						      // updated formula

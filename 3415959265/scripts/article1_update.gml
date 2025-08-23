@@ -5,7 +5,36 @@ state_timer++;
 // Ensure hitstop doesn't go negative
 if (hitstop < 0) hitstop = 0;
 
-if (player_id.my_grab_id != noone) slam_grab_id = player_id.my_grab_id 
+// --- Mirror player's grab safely + resolve a collider we can test ---
+var _att  = player_id.attack;
+var _win  = player_id.window;
+
+// Gate mirroring to slam-capable windows (adjust ranges if yours differ)
+var _mirror_ok =
+    (_att == AT_FSTRONG       && (_win >= 8  && _win <= 17)) ||
+    (_att == AT_EXTRA_2       && (_win >= 6  && _win <= 7 )) ||
+    (_att == AT_USTRONG       && (_win >= 7  && _win <= 9 )) ||
+    (_att == AT_USPECIAL      && (_win >= 7  && _win <= 8 )) ||
+    (_att == AT_NSPECIAL      && (_win >= 4  && _win <= 5 )) ||
+    (_att == AT_NSPECIAL_AIR  && (_win >= 4  && _win <= 6 ));
+
+if (_mirror_ok && instance_exists(player_id.my_grab_id)) {
+    slam_grab_id = player_id.my_grab_id;
+} else if (!instance_exists(slam_grab_id)) {
+    slam_grab_id = noone;
+}
+
+// Resolve collider for place_meeting: prefer hurtbox if it exists
+slam_meet_target = noone;
+if (instance_exists(slam_grab_id)) {
+    if (instance_exists(slam_grab_id.hurtboxID)) {
+        slam_meet_target = slam_grab_id.hurtboxID;
+    } else {
+        slam_meet_target = slam_grab_id;
+    }
+}
+// Track ownership so we never touch a victim we don't own
+article_owns_victim = (artc_grab_id != noone) && (artc_grab_id == slam_grab_id);
 
 //Placed these outside the switch case as the 3 states share the same detonation code for the command grabs
 if (state == 1) //Prepping
@@ -115,7 +144,7 @@ switch (state)
             case AT_FSTRONG:
                 switch (player_id.window) {
                     case 8: case 13: case 16: // Looping windows
-                        should_galaxy = !place_meeting(x, y, slam_grab_id);
+                        should_galaxy = (slam_meet_target == noone) || !place_meeting(x, y, slam_meet_target);
                         break;
 
                     case 9: case 14: case 17: // Slam windows
@@ -333,7 +362,7 @@ switch (state)
         sprite_index = sprite_get("artc_slam_start");
         image_index = state_timer / 6;
         artc_grab_time++; // Increment article grab time every frame while in this state        
-        if (slam_grab_id != noone) 
+        if (article_owns_victim && slam_grab_id != noone)
         {
  			//"with" switches the perspective of the code, in this case to the grabbed player
 			//if you want to refer to the article in this scenario it is called "other"           

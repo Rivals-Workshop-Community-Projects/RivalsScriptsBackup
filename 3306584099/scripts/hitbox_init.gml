@@ -65,6 +65,7 @@ if (multihit_amount > 0) //only works if the hitbox grid actually has multihits 
     force_flinch = 2;
     enemies = 1;
     hitstun_factor = 1;
+    hit_effect_lerp = -1;
     
     //what this chunk of code does is record the size of the hitbox
     old_xscale = image_xscale;

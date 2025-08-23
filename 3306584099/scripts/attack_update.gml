@@ -28,7 +28,7 @@ switch (attack) {
 			sound_play(asset_get("sfx_oly_fspecial_dash"), false, noone, 0.7, 0.9);
 		}
 		
-		if (window == 3 && window_timer >= 4 && !hitpause) {
+		if (window == 3 && !hitpause) {
 			if (has_hit_player && !was_parried) {
 				can_jump = true;
 			}

@@ -192,7 +192,7 @@ with (oPlayer) {
 	    	draw_y = mamizou_draw_y;
 		}
 		else {
-			draw_y = 999;
+			draw_y = room_height + 999;
 		}
 	}
 	

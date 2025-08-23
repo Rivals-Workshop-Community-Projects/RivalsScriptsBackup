@@ -270,7 +270,7 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Vortex";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "A Major Accomplishment!";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "2024 WS Bracket";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "2025 WS Bracket";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 

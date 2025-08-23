@@ -86,8 +86,6 @@ if (is_sparking)
 
 shader_end();
 
-
-
 #define maskHeader
 
 gpu_set_blendenable(false);
