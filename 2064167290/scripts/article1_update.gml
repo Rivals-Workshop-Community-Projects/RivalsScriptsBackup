@@ -160,7 +160,7 @@ else
 }
 
 
-if (y > room_height + 20) or (x > room_width) or (x < 0)
+if (y > room_height + 60) or (x > room_width) or (x < 0)
 {
     destroyed = true;
 }
@@ -254,6 +254,8 @@ if (can_be_hit) and (!is_held) and (!uspecial)
     }
 }
 */
+
+
 
 if (cbh_timer < 15)
 {

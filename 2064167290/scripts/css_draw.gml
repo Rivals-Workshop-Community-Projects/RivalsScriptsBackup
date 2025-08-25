@@ -9,7 +9,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 19;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
  
  
@@ -37,6 +37,8 @@ alt_name[17] = "Vortex Gallery";
 alt_name[18] = "Rainbow";
 alt_name[19] = "Puree of Disks";
 alt_name[20] = "Quote Em'"
+alt_name[21] = "Vortex 2025"
+alt_name[22] = "MEXICO"
  
 //Patch
  
