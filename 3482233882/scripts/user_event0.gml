@@ -79,7 +79,7 @@ switch new_item_id {
         break;
     
     case 22: // Guardian Heart
-        heart_barrier_max = 0 + 5*item_grid[22][4];
+        heart_barrier_max = 0 + 10*item_grid[22][4];
         break;
     
     case 23: // Locked Jewel

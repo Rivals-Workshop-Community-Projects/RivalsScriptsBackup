@@ -5,11 +5,6 @@ var hbox_num = my_hitboxID.hbox_num;
 // Kragg rock shards
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2) exit;
 
-// Check lethality
-var kb = get_kb_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale);
-var hs = get_hitstun_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale)
-var is_galaxy = will_die_from_kb(hit_player_obj, kb, my_hitboxID.kb_angle, hs)
-
 //#region DSpec cooldown handling
 var is_fake_hit = get_hitbox_value(my_hitboxID.attack, hbox_num, 81);
 if ((my_hitboxID.type == 1 && !first_hit) || (my_hitboxID.type == 2 && !is_fake_hit && (my_hitboxID.orig_player != player || my_hitboxID.attack != AT_EXTRA_1))) {
@@ -145,7 +140,7 @@ if (my_hitboxID.cmd_is_explosive == 1) {
 	}
 	
 	// Sticky Bomb
-	if (!is_galaxy && item_grid[15][4] > 0 && hit_player_obj.commando_status_state[0] <= 0) {
+	if (item_grid[15][4] > 0 && hit_player_obj.commando_status_state[0] <= 0) {
 		hit_player_obj.commando_status_state[0] = 1;
 		hit_player_obj.commando_status_counter[0] = 0;
 		hit_player_obj.commando_status_owner[0] = player;
@@ -282,6 +277,12 @@ if (!hit_player_obj.clone && recently_hit[hit_player_obj.player-1] == noone) {
 
 //#endregion
 
+//#region Guardian Heart
+if (item_grid[22][4] != 0 && heart_barrier_endangered) {
+	heart_barrier_timer += 10*my_hitboxID.damage;
+}
+//#endregion
+
 //#region Monster Tooth
 if (item_grid[47][4] > 0 && hit_player_obj.orig_knock >= 12) {
 	tooth_awaiting_spawn[hit_player_obj.player-1] = point_direction(0, 0, hit_player_obj.hsp*-1, abs(hit_player_obj.vsp)*-1);
@@ -309,6 +310,10 @@ if (my_hitboxID.cmd_behemoth_applied && item_grid[43][4] > 0) {
 }
 
 if (my_hitboxID.cmd_strong_finisher && atg_freq > 0) {
+	var kb = get_kb_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale);
+	var hs = get_hitstun_formula(get_player_damage(hit_player), hit_player_obj.knockback_adj, get_match_setting(SET_SCALING)*2, my_hitboxID.damage, my_hitboxID.kb_value, my_hitboxID.kb_scale)
+	var is_whiteline = will_die_from_kb(hit_player_obj, kb, my_hitboxID.kb_angle, hs);
+	
 	var factory = instance_create(x, y, "obj_article3");
 	factory.state = 63;
 	factory.target_obj = hit_player_obj;
@@ -318,7 +323,10 @@ if (my_hitboxID.cmd_strong_finisher && atg_freq > 0) {
 	factory.spr_dir = hbox_stored_dir;
 	factory.bhp = hbox_stored_bhp;
 	factory.hps = hbox_stored_hps;
-	factory.force_kill = is_galaxy ? hit_player : noone;
+	factory.force_kill = is_whiteline ? hit_player : noone;
+	// Obviously, this is an imperfect check,
+	// but it seems reasonable to assume that if the original hit whitelined,
+	// then ATG should pretty much always kill.
 }
 
 else if (plimp_active && my_hitboxID.type == 1) {

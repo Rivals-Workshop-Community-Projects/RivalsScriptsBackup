@@ -19,7 +19,7 @@ switch(state) { // use this one for changing sprites and animating
     case 12: // Idle
     case 13: // Opening
         if (show_hud) draw_sprite_ext(sprite_get("hud_arrow"), 0, x, y-48, 1, 1, 0, get_player_hud_color(player), 1);
-        draw_sprite_ext(sprite_get("dspec_smallchest_outline"), 0, x, y, 1, 1, 0, c_white, outline_alpha);
+        draw_sprite_ext(sprite_get("dspec_smallchest_outline"), 0, x, y, spr_dir, 1, 0, c_white, outline_alpha);
         break;
     case 14: // Despawning
         break;
@@ -32,7 +32,7 @@ switch(state) { // use this one for changing sprites and animating
     case 22: // Idle
     case 23: // Opening
         if (show_hud) draw_sprite_ext(sprite_get("hud_arrow"), 0, x, y-64, 1, 1, 0, get_player_hud_color(player), 1);
-        draw_sprite_ext(sprite_get("dspec_largechest_outline"), 0, x, y, 1, 1, 0, c_white, outline_alpha);
+        draw_sprite_ext(sprite_get("dspec_largechest_outline"), 0, x, y, spr_dir, 1, 0, c_white, outline_alpha);
         break;
     case 24: // Despawning
         

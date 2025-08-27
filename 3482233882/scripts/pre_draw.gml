@@ -20,16 +20,17 @@ if blocktimer > 0 {
 if (instance_exists(chest_obj) && chest_obj.state == 32 && chest_obj.trishop_vis_timer >= 0) with chest_obj {
     var progress = clamp(trishop_vis_timer / 5, 0, 1);
     var _x = x;
-    var _y = other.y-50;
+    var _y = y-50;
+    var fade = trishop_fade_timer / trishop_fade_max;
     
     if (other.object_index != oTestPlayer) {
         if (_x+90 < get_instance_x(asset_get("camera_obj"))-half_width) _x = get_instance_x(asset_get("camera_obj")) - half_width + 90;
         else if (get_instance_x(asset_get("camera_obj"))+half_width < _x-90) _x = get_instance_x(asset_get("camera_obj")) + half_width - 90;
     }
 
-    draw_sprite_ext(sprite_get("trishop_bg_sidefill"), 0, _x, _y, 2, 2, 0, c_white, trishop_vis_opacities[0]*progress);
-    draw_sprite_ext(sprite_get("trishop_bg_centerfill"), 0, _x, _y, 2, 2, 0, c_white, trishop_vis_opacities[1]*progress);
-    draw_sprite_ext(sprite_get("trishop_bg_sidefill"), 0, _x, _y, -2, 2, 0, c_white, trishop_vis_opacities[2]*progress);
+    draw_sprite_ext(sprite_get("trishop_bg_sidefill"), 0, _x, _y, 2, 2, 0, c_white, trishop_vis_opacities[0]*progress*fade);
+    draw_sprite_ext(sprite_get("trishop_bg_centerfill"), 0, _x, _y, 2, 2, 0, c_white, trishop_vis_opacities[1]*progress*fade);
+    draw_sprite_ext(sprite_get("trishop_bg_sidefill"), 0, _x, _y, -2, 2, 0, c_white, trishop_vis_opacities[2]*progress*fade);
 }
 //#endregion
 
@@ -117,7 +118,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECI
     }
 }
 
-var tsc = (turbine_stored_charge >= 90) ? 3 : 2*turbine_stored_charge/90;
+var tsc = (turbine_stored_charge >= 60) ? 3 : 2*turbine_stored_charge/60;
 var nspec_charge = max(tsc, nspec_charge_level);
 if (nspec_charge > 0) {
     var vibrancy = progress*nspec_charge/3;

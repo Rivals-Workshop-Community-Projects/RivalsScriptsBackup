@@ -37,7 +37,7 @@ if (attack == AT_DSPECIAL) {
         if (point_distance(x, y, chest_obj.x, chest_obj.y) >= radius) move_cooldown[AT_DSPECIAL_2] = 2;
         halt_for_trishop = false;
     }
-    else if (chest_obj.state != clamp(chest_obj.state, 1, 2) && move_cooldown[AT_DSPECIAL] == 0) {
+    else if (chest_obj.state != clamp(chest_obj.state, 1, 2) && move_cooldown[AT_DSPECIAL] == 0 && item_grid[36][4] <= 0) {
     	sound_play(asset_get("mfx_tut_fail"), false, false, 1, 0.5);
         move_cooldown[AT_DSPECIAL] = 45; // Hacky anti-spam measure, gets reset by article1 when it's ready
     }

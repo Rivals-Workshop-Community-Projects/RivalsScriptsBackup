@@ -302,8 +302,16 @@ switch(state) { // use this one for doing actual article behavior
         	outline_alpha = clamp(outline_alpha - 0.2, 0, 1);
         	ai_state = 1;
         }
-        if (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) trishop_vis_timer = -1;
+        
+        if (player_id.attack != AT_DSPECIAL_2 || (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)) {
+        	if (trishop_fade_timer > 0) trishop_fade_timer--;
+        	else trishop_vis_timer = -1;
+        } else {
+        	trishop_fade_timer = trishop_fade_max;
+        }
         if (trishop_vis_timer >= 0) trishop_vis_timer++;
+        print_debug(trishop_fade_timer);
+        
         for (var i = 0; i < 3; i++) {
         	if (i == trishop_selection) {
         		if (trishop_vis_flashing) {

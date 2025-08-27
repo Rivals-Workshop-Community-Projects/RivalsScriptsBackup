@@ -5,7 +5,7 @@ var window_length   = 0;
 //                        --attack windows--                                  //
 set_attack_value(atk, AG_SPRITE                         , sprite_get("dattack"));
 set_attack_value(atk, AG_HURTBOX_SPRITE                 , sprite_get("dattack_hurt"));
-set_attack_value(atk, AG_NUM_WINDOWS                    , 3);
+set_attack_value(atk, AG_NUM_WINDOWS                    , 4);
 set_attack_value(atk, AG_CATEGORY                       , 0);
 
 
@@ -27,20 +27,28 @@ set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 5);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num                        , AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(atk, window_num                        , AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
-
 window_num++;
 
+// Normal endlag
 set_window_value(atk, window_num                        , AG_WINDOW_TYPE, 0);
-set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 20);
+set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 14);
     var window_length = get_window_value(atk,window_num , AG_WINDOW_LENGTH);
 set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num                        , AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(atk, window_num                        , AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-
 set_window_value(atk, window_num                        , AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
+window_num++;
 
+// IASA endlag
+set_window_value(atk, window_num                        , AG_WINDOW_TYPE, 0);
+set_window_value(atk, window_num                        , AG_WINDOW_LENGTH, 6);
+    var window_length = get_window_value(atk,window_num , AG_WINDOW_LENGTH);
+set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(atk, window_num                        , AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num                        , AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(atk, window_num                        , AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num                        , AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
 window_num++;
 
 //                        --attack hitboxes--                                 //

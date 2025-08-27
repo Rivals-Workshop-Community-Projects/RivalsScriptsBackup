@@ -36,5 +36,7 @@ trishop_selection = -1; // 0-2, left-to-right
 trishop_vis_timer = -1;
 trishop_vis_opacities = [0.1, 0.1, 0.1];
 trishop_vis_flashing = 0;
+trishop_fade_timer = 0;
+trishop_fade_max = 40;
 
 half_width = floor(view_get_wview()/2); // for camera detection

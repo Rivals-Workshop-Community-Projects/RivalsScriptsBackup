@@ -10,6 +10,7 @@ commando_use_draw_x = false; // for signal passing
 commando_draw_x = 0; // for signal passing
 
 burnt_pause = 0; // seems to improve stability (?)
+should_make_shockwave = false;
 
 // This is technically undocumented compat (lol)
 commando_warbanner_owner = noone;

@@ -39,18 +39,19 @@ if (flash_timer > 0) {
 if (instance_exists(chest_obj) && chest_obj.state == 32 && chest_obj.trishop_vis_timer >= 0) with chest_obj {
     var progress = clamp(trishop_vis_timer / 5, 0, 1);
     var _x = x;
-    var _y = other.y-50;
+    var _y = y-50;
+    var fade = trishop_fade_timer / trishop_fade_max;
     
     if (other.object_index != oTestPlayer) {
         if (_x+90 < get_instance_x(asset_get("camera_obj"))-half_width) _x = get_instance_x(asset_get("camera_obj")) - half_width + 90;
         else if (get_instance_x(asset_get("camera_obj"))+half_width < _x-90) _x = get_instance_x(asset_get("camera_obj")) + half_width - 90;
     }
     
-    draw_sprite_ext(sprite_get("trishop_bg_lines"), 0, _x, _y, 2, 2, 0, c_white, progress);
+    draw_sprite_ext(sprite_get("trishop_bg_lines"), 0, _x, _y, 2, 2, 0, c_white, progress*fade);
     
-    draw_sprite_ext(sprite_get("item"), trishop_loot[0], _x-(64*progress), _y-(52*progress), 2*progress, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("item"), trishop_loot[1], _x,               _y-(66*progress), 2*progress, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("item"), trishop_loot[2], _x+(64*progress), _y-(52*progress), 2*progress, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("item"), trishop_loot[0], _x-(64*progress), _y-(52*progress), 2*progress, 2, 0, c_white, fade);
+    draw_sprite_ext(sprite_get("item"), trishop_loot[1], _x,               _y-(66*progress), 2*progress, 2, 0, c_white, fade);
+    draw_sprite_ext(sprite_get("item"), trishop_loot[2], _x+(64*progress), _y-(52*progress), 2*progress, 2, 0, c_white, fade);
 }
 //#endregion
 
