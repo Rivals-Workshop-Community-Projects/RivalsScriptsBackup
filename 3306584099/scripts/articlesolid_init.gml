@@ -14,7 +14,7 @@ hittable_init();
 
 //can_be_grounded = true;
 //ignores_walls = false;
-stamina_max = 24; //The amount of damage the wall can take before being destroyed.
+stamina_max = 16; //The amount of damage the wall can take before being destroyed.
 stamina_threshold = 10; //The amount of damage the wall can take before cracking visually.
 destroyed = false;
 despawn_time = 240;

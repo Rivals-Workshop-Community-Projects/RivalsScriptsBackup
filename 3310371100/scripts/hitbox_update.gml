@@ -1,6 +1,17 @@
 //hitbox_update
 
 if (attack==AT_NSPECIAL){
+	var tmp_counting = 0.5;
+	with(asset_get("pHitBox")){
+		if (id != other.id){
+			if (variable_instance_exists(id, "nurburgring_24h_endurance")){
+				tmp_counting++;
+				//print("more hitbox found. "+string(tmp_counting))
+			}
+		}
+	}
+	tmp_counting = ceil(tmp_counting*2);
+	
 	if(variable_instance_exists(id, "ice_hsp_b")){
 		if(ice_hsp_b != -4){
 			ice_hsp = ice_hsp_b;
@@ -32,10 +43,10 @@ if (attack==AT_NSPECIAL){
 			}
 		}
 	}
-	if (hitbox_timer%4==0){
+	if (hitbox_timer%(4*tmp_counting)==0){
 		spawn_hit_fx(x-hsp, y-vsp, fx_icepart)
 	}
-	if (hitbox_timer%7==0){
+	if (hitbox_timer%(7*tmp_counting)==0){
 		var tmp_fx = spawn_hit_fx(x, y, fx_mist)
 		tmp_fx.hsp = hsp/20;
 		tmp_fx.vsp = vsp/20;

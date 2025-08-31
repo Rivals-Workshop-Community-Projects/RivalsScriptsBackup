@@ -48,7 +48,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
         }
     }
     with (pHitBox){
-        if(abs(other.x - x) <= 150 and abs(other.y - y) <= 70 and player != other.player){
+        if(abs(other.x - x) <= 150 and abs(other.y - y) <= 70 and player != other.player and damage != 0){
             if(type == 2 && hit_priority > 0 && hsp != 0){
                 with(other){
                     if(attack != AT_NSPECIAL){
@@ -72,10 +72,10 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     //Detecting close range fighter distance
-    if(abs(ai_target.x - x) <= 15 and state_timer < 2){
+    if(abs(ai_target.x - x) <= 30){
         //Grounded
         if(!free){
-            if(abs(ai_target.y - y) < 20 ){
+            if(abs(ai_target.y - y) < 20 and state_timer < 2){
                 if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
                     if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
                         attack = AT_JAB;
@@ -86,7 +86,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
             }
         } else {
             //snipe with uspecial
-            if(free and ai_target.y < y-50 and ai_target.y > y-150 and get_player_damage(ai_target.player) >= 90 and uspecial_charge == 3){
+            if(free and state_timer < 2 and ai_target.y < y-50 and ai_target.y > y-150 and get_player_damage(ai_target.player) >= 90 and uspecial_charge == 3){
                 if(attack != AT_USPECIAL and (state == PS_IDLE_AIR or state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP)){
                     attack = AT_USPECIAL
                     set_state(PS_ATTACK_AIR);
@@ -186,7 +186,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     //Taunt because funney
-    if(abs(ai_target.x - x) >= 350 and get_player_damage( ai_target.player ) >= 100 and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
+    if(abs(ai_target.x - x) >= 250 and get_player_damage( ai_target.player ) >= 100 and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
         attack = AT_TAUNT;
         set_state(PS_ATTACK_GROUND);
         state_timer = 0;
@@ -198,4 +198,10 @@ if(attack == AT_USPECIAL && ai_recovering == true){
         special_down = true;
     }
     jump_pressed = true;
+}
+
+if(attack == AT_TAUNT and abs(ai_target.x - x) >= 200 and window > 5){
+    taunt_down = true;
+} else {
+    taunt_down = false;
 }

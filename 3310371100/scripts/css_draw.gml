@@ -476,7 +476,7 @@ textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 100
 //the other ui stuff
 shader_end()
 
-draw_sprite_ext(sprite_get("aaa_vernum"),0,x+176,y+48,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),0,x+172,y+48,2,2,0,-1,1);
 
 
 var buttonloc_x = 14;//166

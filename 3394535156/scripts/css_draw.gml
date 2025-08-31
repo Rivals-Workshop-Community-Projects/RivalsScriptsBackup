@@ -28,7 +28,7 @@ alt_name[18] = "Ranked Gold";
 alt_name[19] = "Champion";
 alt_name[20] = "Percy";
 alt_name[21] = "Lunatic Cultist";
-alt_name[22] = "Teal";
+alt_name[22] = "Vortex Gallery '25";
 alt_name[23] = "Unmapped";
 alt_name[24] = "template";
 alt_name[25] = "template";
@@ -132,6 +132,9 @@ switch (get_player_color(player)){
 	case 15:
 		// Pandemonium Cloak
 		draw_sprite(sprite_get("_css_icons"),4,icon_draw_x,icon_draw_y);
+	case 22:
+		// Vortex Gallery 2025
+		draw_sprite(sprite_get("_css_icons"),6,icon_draw_x,icon_draw_y);
 }
 
 //>

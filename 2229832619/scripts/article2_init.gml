@@ -23,4 +23,9 @@ ignores_walls = true;
 uses_shader = false;
 
 parried_player = -4;
+parried_player_id_old = -4;
 slash_immune = false;
+verticalmode = false;
+extraparried = false;
+
+extraparry_target_next = player_id;

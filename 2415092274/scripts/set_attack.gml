@@ -34,11 +34,11 @@ if (attack==AT_FSPECIAL){
 	reset_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING);
 }
 if (attack==AT_TAUNT){
-	if (attack_down){
-		attack = AT_TAUNT_4
+	if (down_down){
+		attack = AT_TAUNT_3
 	}
 	if (up_down){
-		attack = AT_TAUNT_3
+		attack = AT_TAUNT_4
 	}
 }
 if (attack==AT_USPECIAL){
@@ -46,6 +46,6 @@ if (attack==AT_USPECIAL){
 	usp_d_able = false;
 	usp_d_done = false;
 }
-if (attack==35 && mode=="B" && down_down){
+if (attack==35 && mode=="B" && shield_down){
 	attack = 36
 }

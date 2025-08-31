@@ -2,7 +2,7 @@ set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial_v2"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_v2_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "true startup of 8 frames. hitbox startup is 12 frames. 80 frames inbetween is the max duration of umbrella hold. after that, endlag of 9 frames excluding endlag.");
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "true startup of 8 frames. hitbox startup is 12 frames. 80 frames inbetween is the max duration of umbrella hold. after that, endlag of 9 frames excluding whifflag.");
 
 //start
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 8);//8

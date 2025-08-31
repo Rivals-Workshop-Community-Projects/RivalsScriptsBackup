@@ -227,7 +227,7 @@ heartBreakInProgress = false;
 heartBreakRadius = 50;
 
 //heartBreakDelay: how long the article waits until coming back together.
-heartBreakDelay = 12;
+heartBreakDelay = 180;
 
 //heartReassembleDelay: how long the heart will last reassembled
 heartReassembleDelay = 2;
@@ -249,7 +249,7 @@ heartFriction = 0.9
 heartLerpVal = 0.04
 
 //heartBreakMaxTimer: How long the break and the reformation take (respectively), in frames
-heartBreakMaxTimer = [14, 12];
+heartBreakMaxTimer = [16, 15];
 
 //heartBreakDetectSelf: Whether to detect yourself.
 heartBreakDetectSelf = false;
@@ -332,11 +332,6 @@ trummelcodec_id = noone;
 
 //Hikaru title
 Hikaru_Title = "Heartstopper";
-
-//Agent N Codec
-ncode1 = "Powerful warrior. Plans to ''end love forever.''";
-ncode2 = "Fights using emotion magic. Violent and irritable."
-ncode3 = "Extremely agile. Don't let your guard down."
 
 //Miiverse
 miiverse_post = sprite_get("miiversepost");

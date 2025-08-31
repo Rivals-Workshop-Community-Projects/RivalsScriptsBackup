@@ -4,6 +4,16 @@ they're in my head, they're in my soul.
 
 
 
+===v0.7===
+------
+:: i was reminded of it today so i went ahead and made JAB check for invincibility. now it no longer deals damage-over-time piercing through invincibility.
+:::: ... this was only really a thing because i was stubborn JUST to keep the move Weird. it was only a matter of time that this was addressed
+
+------
+A ship in harbor is safe, but that's not why ships are built
+
+
+
 ===v0.4===
 ------
 :: run animations improved

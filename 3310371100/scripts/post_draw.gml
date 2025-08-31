@@ -44,6 +44,33 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.12 - (2025/08/27)"
+		patch_note_text[i++] = 
+		"===v3.12===
+		---changes---
+		:: when more than 1 of usher's iceball is out at the same time, the amount of icy mist VFX that spawns is much reduced.
+		:::: ... what i did last patch was a rogue compat. but now that ive actually PLAYED the thing, i decided to tweak this bit.
+
+		---notes---
+		i just came out of my first Rogue set. that was incredible"
+		
+		
+		patch_note_title[i] = "v3.11 - (2025/08/26)"
+		patch_note_text[i++] = 
+		"===v3.11===
+		---notes---
+		some compat stuff
+
+		---fixes---
+		:: MUNOBIRD ... typo fixed in dspecial notes (excluding endlag -> excluding whifflag)
+		:: NSPECIAL-GROUND ... technically a change but it's an unintended behaviour so it's in fix: NSPECIAL-GROUND is now AG_OFF_LEDGE FALSE, meaning you can no longer slide off platforms with it.
+		:: NSPECIAL-GROUND ... nevermind it already was, i guess what im gonna do is make it AG_CATEGORY 0, making it grounded-only. so this way even if you get off the ledge by any glitch, you're booted out of NSPEC-GROUND.
+		:::: ... sorry boys
+
+		---notes---
+		i forgot i had this in the ready before pushing this patch but yknow"
+		
+		
 		patch_note_title[i] = "v3.10 - (2025/08/08)"
 		patch_note_text[i++] = 
 		"===v3.10===

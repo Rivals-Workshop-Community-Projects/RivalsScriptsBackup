@@ -64,7 +64,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     //Defend
-    if((abs(ai_target.x - x) <= 70) and (abs(ai_target.y - y) <= 70)){
+    if((abs(ai_target.x - x) <= 70) and (abs(ai_target.y - y) <= 110)){
         if(((ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND))){
             shield_pressed = true;
         }
@@ -79,7 +79,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
         }
     }
     with (pHitBox){
-        if(abs(other.x - x) <= 70 and abs(other.y - y) <= 70 and player != other.player){
+        if(abs(other.x - x) <= 70 and abs(other.y - y) <= 70 and player != other.player and damage != 0){
             with(other){
                 shield_pressed = true;
             }
@@ -90,6 +90,20 @@ if(get_training_cpu_action() == CPU_FIGHT){
     if(abs(ai_target.x - x) <= 40 and state_timer < 2){
         //Grounded
         if(!free){
+            if(ai_target.x < x){
+                    left_down = true;
+                } else {
+                    right_down = true;
+                }
+            if(abs(ai_target.y - y) < 20 ){
+                if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
+                    if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
+                        attack = AT_JAB;
+                    }
+                    set_state(PS_ATTACK_GROUND);
+                    state_timer = 0;
+                }
+            }
             //Try to snipe with ustrong
             if(abs(ai_target.y < y-200)){
                 if(attack != AT_USTRONG){

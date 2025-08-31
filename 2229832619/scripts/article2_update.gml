@@ -84,7 +84,9 @@ if (state == 1){
 			}
 		}*/
 	}
-	if (article1check == true || parried_player != -4){
+	if (extraparried == true){
+		state_end = 6
+	}else if (article1check == true || parried_player != -4){
 		state_end = 8//12
 	}else{
 		state_end = 15

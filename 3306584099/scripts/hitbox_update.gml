@@ -106,6 +106,7 @@ if (attack == AT_NSPECIAL && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3)) 
 		    vsp = lengthdir_y(33, dir);  
 		    
 		    tomoko_icewall_reflect = -1;
+		    spr_dir = sign(hsp) != 0 ? sign(hsp) : spr_dir;
 		}
 	}
 	var hit_wall = 0;
@@ -137,6 +138,7 @@ if (attack == AT_NSPECIAL && (hbox_num == 1 || hbox_num == 2 || hbox_num == 3)) 
 			    hitbox_timer = floor(hitbox_timer / 2);
 			}
 			tomoko_icewall_reflect ++;
+		    spr_dir = sign(hsp) != 0 ? sign(hsp) : spr_dir;
 			if (collision_rectangle(bbox_left + 8, bbox_top-2, bbox_right - 8, bbox_top, asset_get("par_block"), 0, 1)) {
 				destroyed = true;
 			}

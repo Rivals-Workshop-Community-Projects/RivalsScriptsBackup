@@ -915,13 +915,14 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || at
 		else {
 			// Drop opponent for any reason if they are somehow grabbed
 			if(grabbed_player_obj != noone){
-			grabbed_player_obj.state = PS_IDLE_AIR;
-			grabbed_player_obj.vsp = -7;
+				grabbed_player_obj.state = PS_IDLE_AIR;
+				grabbed_player_obj.vsp = -7;
+				grabbed_player_obj = noone;
+			}
 			can_shield = true;
 			can_jump = true;
-				if(ganoncide_preventor_available_flag == true){
-					fspecial_recovery_enabled_flag = true;
-				}
+			if(ganoncide_preventor_available_flag == true){
+				fspecial_recovery_enabled_flag = true;
 			}
 		}
 	}

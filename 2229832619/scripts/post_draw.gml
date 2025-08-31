@@ -179,6 +179,29 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v4.1 - (2025 Aug 30)"
+		patch_note_text[i++] = 
+		"v4.1 (2025 Aug 30)
+		[b]additions[/b]
+		- FSTRONG ... you can now hold backwards to not do the lunge thing.
+
+		[b]balances[/b]
+		-- -- beneficial
+		- DSPECIAL ... total charge amount decreased to 30, effectively reverting the last change. (35 -> 30)
+		- FSTRONG ... i just randomly figured out how to make axe hit reliable. it was not working because knockback started after hitpause and sometimes the main hit would end before the opponent would reach it.
+		- FSTRONG ... axe hit now has -6 frames of extra hitpause, meaning they take LESS hitpause than N/A.
+		- FSTRONG ... i recently found out that in base cast, the 'linker' hitboxes usually have SDI multiplier of 0. so the axe hit now has a SDI multiplier of 0 as well.
+		- FSTRONG ... for good measure, axe hit hitbox has been extended backwards a bit.
+		- FSTRONG ... startup reduced by 3, after charge. (31 -> 28 total.)
+		- FSTRONG ... that messed with how the lunge worked so i increased the speed, it might be more distance than before now, im not sure.
+		-- -- counterplay
+		- NSPECIAL-SLICED ... you can parry this now to make it send towards N/A. very fast. and don't worry, i figured it out so that you can parry this again to send it back to the parrier. and again. and again
+
+		[b]balances[/b]
+		yall should fear N/A more. have fun!
+		"
+		
+		
 		patch_note_title[i] = "v4.0 -After All- Pg.1"
 		patch_note_text[i++] = 
 		"v4.0 -After All-

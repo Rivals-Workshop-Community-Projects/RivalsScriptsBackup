@@ -98,7 +98,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 25;
+	col_max = 26;
 	
 	ce[0,0] = make_color_rgb(53, 149, 242)
 	ce[0,1] = "Ao"
@@ -142,11 +142,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[13,0] = make_color_rgb(63, 128, 75)
 	ce[13,1] = "Samsara and Paramnesia"
 	ce[13,2] = ""
-	ce[14,0] = make_color_rgb(156, 45, 204)
-	ce[14,1] = "Feri"
+	ce[14,0] = make_color_rgb(229, 158, 255)
+	ce[14,1] = "Clearing Fog ~ Pink"
 	ce[14,2] = ""
-	ce[15,0] = make_color_rgb(212, 45, 45)
-	ce[15,1] = "Red 2"
+	ce[15,0] = make_color_rgb(255, 84, 104)
+	ce[15,1] = "Trailing Lights"
 	ce[15,2] = ""
 	ce[16,0] = make_color_rgb(126, 73, 148)
 	ce[16,1] = "Dilemma"
@@ -166,18 +166,21 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[21,0] = make_color_rgb(49, 120, 2)
 	ce[21,1] = "Antefn"
 	ce[21,2] = ""
-	ce[22,0] = make_color_rgb(136, 189, 36)
-	ce[22,1] = "Neae"
+	ce[22,0] = make_color_rgb(93, 189, 122)
+	ce[22,1] = "Sundews"
 	ce[22,2] = ""
-	ce[23,0] = make_color_rgb(93, 189, 122)
-	ce[23,1] = "Sundews"
+	ce[23,0] = make_color_rgb(97, 82, 16)
+	ce[23,1] = "Gunplant"
 	ce[23,2] = ""
-	ce[24,0] = make_color_rgb(97, 82, 16)
-	ce[24,1] = "Gunplant"
+	ce[24,0] = make_color_rgb(189, 50, 45)
+	ce[24,1] = "SHU"
 	ce[24,2] = ""
-	ce[25,0] = make_color_rgb(189, 50, 45)
-	ce[25,1] = "SHU"
+	ce[25,0] = make_color_rgb(227, 196, 255)
+	ce[25,1] = "Gestaltzerfall"
 	ce[25,2] = ""
+	ce[26,0] = make_color_rgb(107, 73, 66)
+	ce[26,1] = "Future Holds The Key"
+	ce[26,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

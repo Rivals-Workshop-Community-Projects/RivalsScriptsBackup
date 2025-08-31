@@ -13,6 +13,25 @@ if (my_hitboxID.attack==AT_NSPECIAL_AIR){
 	my_hitboxID.owner_article.loop_count = 0;
 	my_hitboxID.owner_article.void_speed = 3;//4
 	my_hitboxID.owner_article.slash_immune = true;//4
+	var targetPlayer = noone;
+	
+	if (my_hitboxID.owner_article.verticalmode == true){
+		
+		//print_debug( "target got" )
+		var target_angle = point_direction(my_hitboxID.x, my_hitboxID.y, my_hitboxID.owner_article.extraparry_target_next.x, my_hitboxID.owner_article.extraparry_target_next.y)
+			
+		my_hitboxID.owner_article.image_angle = target_angle;
+		my_hitboxID.owner_article.void_speed = 7;
+		my_hitboxID.owner_article.extraparried = true;
+		my_hitboxID.owner_article.extraparry_target_next = hit_player_obj;
+		my_hitboxID.destroyed = true;
+		
+	}
+	/*if (my_hitboxID.owner_article.player_id == hit_player_obj){
+		my_hitboxID.destroyed = true;
+		my_hitboxID.owner_article.loop_count = my_hitboxID.owner_article.loop_max;
+		//print_debug( "THAT'S RUNNING" )
+	}*/
 	
 	/*var leader = my_hitboxID.leaderhb
 	

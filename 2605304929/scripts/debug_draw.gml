@@ -12,6 +12,9 @@
 #macro AI_STAGE_ZONE_FAR_OFF_LEDGE_DANGER_ZONE 32
 
 // debrug draw
+
+//draw_debug_text(x, y - 100,"ganoncide_preventor_available_flag:" + string(ganoncide_preventor_available_flag));
+//draw_debug_text(x, y - 120,"fspecial_recovery_enabled_flag:" + string(fspecial_recovery_enabled_flag))
 // Draw AI Variables
 
 // Variable Info

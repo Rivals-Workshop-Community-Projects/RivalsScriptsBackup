@@ -101,15 +101,20 @@ switch (state)
 					if (id != other.id && get_player_team(other.player) != get_player_team(player) &&
 						!((state == PS_RESPAWN && visible == false) || state == PS_DEAD))
 					{
+						if (invincible||initial_invince){}else
+						{
+						
 						if (point_distance(x, y, other.x, other.y - 66) < other.dist_h_static)
 						{
 							is_it_heavy_distance = true;
-							if (get_gameplay_time() % 5 == 0) take_damage(player, other.player, 2);
+								if (get_gameplay_time() % 5 == 0) take_damage(player, other.player, 2);
 							if (slender_haunt == noone) slender_buildup += 2.05;
 						}
 						//you might notice that this doesn't check for invincibility.... yes, it is NTENTIONAL.
 						// holdup chat you forgot the 'i' in intentional here.
 						// not gonna fix it just thought I'd say something ya know?
+						//thanks vforce hi i'm here and i check for invincibility now are you proud of me mom
+						}
 					}
 				}
 				

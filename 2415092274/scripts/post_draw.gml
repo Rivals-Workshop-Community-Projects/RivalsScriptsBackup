@@ -56,8 +56,7 @@ var tmp_colg = get_color_profile_slot_g(tmp_colornum, tmp_colorslot);
 var tmp_colb = get_color_profile_slot_b(tmp_colornum, tmp_colorslot);
 
 var tmp_col = make_color_rgb(tmp_colr, tmp_colg, tmp_colb);
-
-/*//deprecated
+/*
 if (attack==AT_TAUNT_3){
 	if (window == 2 || window == 3) {
 		var timeoffset = ease_expoOut( 65, 0, dsp_test_timer, dsp_test_max )
@@ -72,14 +71,14 @@ if (attack==AT_TAUNT_3){
 		draw_debug_text( x-68-190, y-180, "MODE 1:" )
 		draw_debug_text( x-68-190, y-180+14*1, "this doesn't do" )
 		draw_debug_text( x-68-190, y-180+14*2, "anything actually." )
-		draw_debug_text( x-68-190, y-180+14*3, "sorry" )
-		
+		draw_debug_text( x-68-190, y-180+14*3, "sorry" )*/
+		/*
 		draw_debug_text( x-68-190, y-180+14*1, "normal rivals buffer" )
 		draw_debug_text( x-68-190, y-180+14*2, "will account for dspec" )
 		draw_debug_text( x-68-190, y-180+14*3, "input _before_" )
 		draw_debug_text( x-68-190, y-180+14*4, "entering hitpause" )
-		
-		
+		*/
+		/*
 		draw_debug_text( x-84+190, y-180, "MODE 2:" )
 		draw_debug_text( x-84+190, y-180+14*1, "dspecial can be" )
 		draw_debug_text( x-84+190, y-180+14*2, "buffered the entire" )
@@ -140,10 +139,60 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//
 		//put text here.
 		
+		patch_note_title[i] = "v2.7 - hotfix"
+		patch_note_text[i++] = 
+		"v2.7 - (2025 Aug 30)
+		[b]notes[/b]
+		hotfix to fix shading value because if i dont do it right now i probably never will."
+		
+		patch_note_title[i] = "v2.6 - (2025 Aug 30)"
+		patch_note_text[i++] = 
+		"v2.6 - (2025 Aug 30)
+		[b]additions[/b]
+		- ALT COLORS ... some alt colors have been removed and in their place are new colors. theyre cool if i say so myself! i love making original alts
+
+		[b]changes[/b]
+		- ALT COLORS ... they have shading value tweak treatment now
+		- TAUNT ... DOWN TAUNT is now Pondering The Aorb. this was formerly attack+taunt that was used for testing some alternate behavior, but the testing is long done by now (results were applied in v2.5) so i disabled the mode setter functionality and it's now just this.
+		- USPECIAL-DASH ... yes! that's right! this gets a ledge snap, too! at last!
+		- NSPECIAL ... you get a ledge snap too!! that's right!!!
+		--- i considered putting it in FSPECIAL too, but with how many you can use in one airtime i figured it doesnt need one. sorry if you were lookin forward to that!
+		- NSPECIAL TULIP MOON ... has a glow to it now.
+		- NSPECIAL TULIP MOON ... it now cancels normal USPECIAL on hit, allowing you to do USPECIAL again.
+
+		[b]balances[/b]
+		-- -- idk
+		- STATS ... shorthop speed reduced by 2 (9 -> 7)
+		--- i guess this was a leftover relic from the times of Acid Rainbows
+		- UTILT ... angle now 90 (89 -> 90)
+		--- WHY WERE YOU LIKE THIS???????
+		-- -- beneficial
+		- DATTACK ... endlag reduced.
+		- FTILT ... measures to make it hopefully more reliable to connect togather has been applied, such as:
+		- FTILT ... hit 1 angle is now lower. (20 -> 15) wow thats crazy
+		- FTILT ... hit 1 base knockback increased (10 -> 12)
+		- FTILT ... hit 1 now has SDI multiplier of 0.
+		- UTILT ... endlag reduced by 2 frames, idk about whifflag
+		- FAIR ... endlag reduced drastically. (30 -> 18)
+		--- WHY WERE YOU LIKE THIS???????
+		- DAIR ... landinglag reduced by 2 points (8 -> 6)
+		- USTRONG ... endlag reduced.
+		-- -- counterplay
+		- DATTACK ... now has whifflag
+		- DATTACK ... removed IASA.
+
+		[b]notes[/b]
+		''an update? for me???'' yes!
+		balance changes pretty much based on what spiderboi has proposed. thank you!
+		ao loves you!
+		open for inputs!"
+		
+		
+		
 		patch_note_title[i] = "v2.5 - (2023 Nov 15)"
 		patch_note_text[i++] = 
-		"v2.5
-		changes
+		"v2.5 - (2023 Nov 15)
+		[b]changes[/b]
 		- made it so you can do the DSPECIAL cancelling for 6 frames after moves hit.
 		--- it's 6 frames because it is the same amount of frames as the control input buffer. the way i implemented this makes it easy to change how many frames it can check for so i can easily make it longer!
 		- because of this above change, v2.3's attack-taunt lost the purpose of setting the experimental stuff, so i made it the up-taunt.
@@ -154,20 +203,21 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		- BAIR animation too, putting emphasis on that back hit is stronger or at least different
 		- added sparkly trails for dspecial
 
-		fixes
+		[b]fixes[/b]
 		- fixed an issue where one (two actually) of the FAIR hitboxes have different sound effects (thanks mallow!!!)
 
-		balances
+		[b]balances[/b]
 		-- -- beneficial
 		- FTILT's horizontal speed increased, making effective range slightly further
 		- UAIR's hitboxes are larger
 		- UAIR has a new sweetspot hitbox, uh its beneficial right?
 		- DTILT moves forward a bit now. with horizontal speed.
-		
-		notes
+
+		[b]notes[/b]
 		i dont remember if theres anything else i changed my brain doesnt work right now
 		ao loves you!
 		open for inputs!"
+		
 		
 		
 		patch_note_title[i] = "v2.4 - (2022 Sep 17)"

@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 27 );
 
 // blue
 set_color_profile_slot( 1, 0, 69, 86, 199 ); //blue tulip
@@ -65,7 +65,7 @@ set_color_profile_slot( 3, 0, 0, 247, 145 ); //blue tulip
 set_color_profile_slot( 3, 1, 60, 122, 120 ); //green grass
 set_color_profile_slot( 3, 2, 247, 213, 111 ); //twilight trails
 set_color_profile_slot( 3, 3, 227, 144, 20 ); //twilight.2
-set_color_profile_slot( 3, 4, 75, 45, 102 ); //night sky
+set_color_profile_slot( 3, 4, 73, 45, 102 ); //night sky
 set_color_profile_slot( 3, 5, 68, 194, 143 ); //silver cloud
 set_color_profile_slot( 3, 6, 0, 0, 0 ); //temporary
 set_color_profile_slot( 3, 7, 125, 76, 166 ); //temporary.2
@@ -170,25 +170,25 @@ set_color_profile_slot( 13, 5, 148, 22, 22 ); //silver cloud
 set_color_profile_slot( 13, 6, 0, 0, 0 ); //temporary
 set_color_profile_slot( 13, 7, 165, 184, 165 ); //temporary.2
 
-// feri
-set_color_profile_slot( 14, 0, 136, 140, 156 ); //blue tulip
-set_color_profile_slot( 14, 1, 156, 45, 204 ); //green grass
-set_color_profile_slot( 14, 2, 255, 128, 240 ); //twilight trails
-set_color_profile_slot( 14, 3, 255, 0, 225 ); //twilight.2
-set_color_profile_slot( 14, 4, 22, 36, 181 ); //night sky
-set_color_profile_slot( 14, 5, 20, 89, 20 ); //silver cloud
+// pinkrain
+set_color_profile_slot( 14, 0, 110, 69, 191 ); //blue tulip
+set_color_profile_slot( 14, 1, 162, 122, 255 ); //green grass
+set_color_profile_slot( 14, 2, 229, 158, 255 ); //twilight trails
+set_color_profile_slot( 14, 3, 148, 82, 209 ); //twilight.2
+set_color_profile_slot( 14, 4, 124, 83, 145 ); //night sky
+set_color_profile_slot( 14, 5, 255, 194, 243 ); //silver cloud
 set_color_profile_slot( 14, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 14, 7, 102, 22, 84 ); //temporary.2
+set_color_profile_slot( 14, 7, 0, 255, 0 ); //temporary.2
 
 // red 2
-set_color_profile_slot( 15, 0, 110, 51, 242 ); //blue tulip
-set_color_profile_slot( 15, 1, 255, 166, 245 ); //green grass
-set_color_profile_slot( 15, 2, 140, 85, 222 ); //twilight trails
-set_color_profile_slot( 15, 3, 94, 55, 173 ); //twilight.2
-set_color_profile_slot( 15, 4, 120, 10, 12 ); //night sky
-set_color_profile_slot( 15, 5, 212, 19, 19 ); //silver cloud
+set_color_profile_slot( 15, 0, 255, 84, 104 ); //blue tulip
+set_color_profile_slot( 15, 1, 166, 58, 78 ); //green grass
+set_color_profile_slot( 15, 2, 242, 85, 116 ); //twilight trails
+set_color_profile_slot( 15, 3, 255, 135, 158 ); //twilight.2
+set_color_profile_slot( 15, 4, 222, 177, 205 ); //night sky
+set_color_profile_slot( 15, 5, 61, 17, 24 ); //silver cloud
 set_color_profile_slot( 15, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 15, 7, 156, 42, 100 ); //temporary.2
+set_color_profile_slot( 15, 7, 227, 61, 105 ); //temporary.2
 
 // oblivion
 set_color_profile_slot( 16, 0, 126, 73, 148 ); //blue tulip
@@ -250,45 +250,55 @@ set_color_profile_slot( 21, 5, 164, 173, 163 ); //silver cloud
 set_color_profile_slot( 21, 6, 0, 0, 0 ); //temporary
 set_color_profile_slot( 21, 7, 255, 201, 41 ); //temporary.2
 
-// neae
-set_color_profile_slot( 22, 0, 62, 112, 16 ); //blue tulip
-set_color_profile_slot( 22, 1, 163, 163, 114 ); //green grass
-set_color_profile_slot( 22, 2, 185, 250, 62 ); //twilight trails
-set_color_profile_slot( 22, 3, 136, 189, 36 ); //twilight.2
-set_color_profile_slot( 22, 4, 79, 76, 49 ); //night sky
-set_color_profile_slot( 22, 5, 111, 145, 25 ); //silver cloud
-set_color_profile_slot( 22, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 22, 7, 185, 250, 62 ); //temporary.2
-
 // sundews
-set_color_profile_slot( 23, 0, 158, 89, 87 ); //blue tulip
-set_color_profile_slot( 23, 1, 153, 209, 98 ); //green grass
-set_color_profile_slot( 23, 2, 93, 189, 122 ); //twilight trails
-set_color_profile_slot( 23, 3, 31, 84, 49 ); //twilight.2
-set_color_profile_slot( 23, 4, 43, 158, 78 ); //night sky
-set_color_profile_slot( 23, 5, 179, 41, 69 ); //silver cloud
-set_color_profile_slot( 23, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 23, 7, 209, 52, 111 ); //temporary.2
+set_color_profile_slot( 22, 0, 158, 89, 87 ); //blue tulip
+set_color_profile_slot( 22, 1, 153, 209, 98 ); //green grass
+set_color_profile_slot( 22, 2, 93, 189, 122 ); //twilight trails
+set_color_profile_slot( 22, 3, 31, 84, 49 ); //twilight.2
+set_color_profile_slot( 22, 4, 43, 158, 78 ); //night sky
+set_color_profile_slot( 22, 5, 179, 41, 69 ); //silver cloud
+set_color_profile_slot( 22, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 22, 7, 209, 52, 111 ); //temporary.2
 
 // gunplant
-set_color_profile_slot( 24, 0, 34, 76, 214 ); //blue tulip
-set_color_profile_slot( 24, 1, 127, 181, 9 ); //green grass
-set_color_profile_slot( 24, 2, 112, 145, 255 ); //twilight trails
-set_color_profile_slot( 24, 3, 42, 72, 168 ); //twilight.2
-set_color_profile_slot( 24, 4, 97, 82, 16 ); //night sky
-set_color_profile_slot( 24, 5, 43, 120, 12 ); //silver cloud
-set_color_profile_slot( 24, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 24, 7, 235, 255, 209 ); //temporary.2
+set_color_profile_slot( 23, 0, 34, 76, 214 ); //blue tulip
+set_color_profile_slot( 23, 1, 127, 181, 9 ); //green grass
+set_color_profile_slot( 23, 2, 112, 145, 255 ); //twilight trails
+set_color_profile_slot( 23, 3, 42, 72, 168 ); //twilight.2
+set_color_profile_slot( 23, 4, 97, 82, 16 ); //night sky
+set_color_profile_slot( 23, 5, 43, 120, 12 ); //silver cloud
+set_color_profile_slot( 23, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 23, 7, 235, 255, 209 ); //temporary.2
 
 // SHU
-set_color_profile_slot( 25, 0, 255, 153, 0 ); //blue tulip
-set_color_profile_slot( 25, 1, 189, 50, 45 ); //green grass
-set_color_profile_slot( 25, 2, 255, 153, 0 ); //twilight trails
-set_color_profile_slot( 25, 3, 255, 81, 0 ); //twilight.2
-set_color_profile_slot( 25, 4, 125, 39, 60 ); //night sky
-set_color_profile_slot( 25, 5, 106, 163, 73 ); //silver cloud
+set_color_profile_slot( 24, 0, 255, 153, 0 ); //blue tulip
+set_color_profile_slot( 24, 1, 189, 50, 45 ); //green grass
+set_color_profile_slot( 24, 2, 255, 153, 0 ); //twilight trails
+set_color_profile_slot( 24, 3, 255, 81, 0 ); //twilight.2
+set_color_profile_slot( 24, 4, 125, 39, 60 ); //night sky
+set_color_profile_slot( 24, 5, 106, 163, 73 ); //silver cloud
+set_color_profile_slot( 24, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 24, 7, 255, 153, 0 ); //temporary.2
+
+// Suzuran-not
+set_color_profile_slot( 25, 0, 227, 196, 255 ); //blue tulip
+set_color_profile_slot( 25, 1, 130, 176, 153 ); //green grass
+set_color_profile_slot( 25, 2, 187, 146, 224 ); //twilight trails
+set_color_profile_slot( 25, 3, 68, 107, 173 ); //twilight.2
+set_color_profile_slot( 25, 4, 55, 54, 143 ); //night sky
+set_color_profile_slot( 25, 5, 216, 173, 255 ); //silver cloud
 set_color_profile_slot( 25, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 25, 7, 255, 153, 0 ); //temporary.2
+set_color_profile_slot( 25, 7, 216, 173, 255 ); //temporary.2
+
+// Durian
+set_color_profile_slot( 26, 0, 199, 127, 46 ); //blue tulip
+set_color_profile_slot( 26, 1, 158, 126, 106 ); //green grass
+set_color_profile_slot( 26, 2, 199, 153, 99 ); //twilight trails
+set_color_profile_slot( 26, 3, 120, 74, 49 ); //twilight.2
+set_color_profile_slot( 26, 4, 72, 64, 125 ); //night sky
+set_color_profile_slot( 26, 5, 107, 73, 66 ); //silver cloud
+set_color_profile_slot( 26, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 26, 7, 255, 250, 209 ); //temporary.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -32,7 +32,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 12;
-short_hop_speed = 9;
+short_hop_speed = 7;//9
 djump_speed = 12;
 leave_ground_max = 6.2;//7//7.2 //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.2;//7//7.5//8 //the maximum hsp you can have when jumping from the ground
@@ -117,7 +117,7 @@ nsp_direction_storage_for_post_draw = 0;
 dsp_free = false;
 dsp_done = false;
 dsp_override = false;
-dsp_qualified = 0;//used to be bool, now numbers for buffer
+dsp_qualified = false;
 dsp_confirmed = false;
 dsp_TESTMODE = 0;
 dsp_test_buffer = 0;
@@ -158,15 +158,11 @@ skate_tmp = 0;
 optimalmodeEX = false;
 fake_mhID = -4;
 
-Hikaru_Title = "Starry Magic";
-feri_costume = sprite_get("exp_ao"); //i coded this!
-arena_title = "Blue Tulip";
+Hikaru_Title = "Lylip Magic";
+arena_title = "Stargazer Lylip"; boxing_title = arena_title; //holy frick
 arena_short_name = "Ao";
-battle_text = "* Stars";
-
-ncode1 = "Looks like Feri but not."
-ncode2 = "Might be a similar species."
-ncode3 = "too lazy to write this doc."
+battle_text = "* Smells like star trails.";
+greenwood_cheer = 1;
 
 steve_death_message = "Steve was slain by starryao";
 

@@ -5,7 +5,7 @@ set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 6);
 
 // startup charge
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_frog_nspecial_shove"));

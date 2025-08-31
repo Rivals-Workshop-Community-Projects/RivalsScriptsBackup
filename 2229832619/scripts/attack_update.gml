@@ -125,23 +125,30 @@ if (attack==AT_FSTRONG){
 	if (window==4 && !hitpause){
 		if (window_timer==4){
 			//if ((attack_down||strong_down||((left_stick_down&&spr_dir==-1)||(right_stick_down&&spr_dir==1)))&&((left_down&&spr_dir==-1)||(right_down&&spr_dir==1))){
+			if ((left_down&&spr_dir==1)||(right_down&&spr_dir==-1)){//when backward is held
+			}else{//do nothing, else
 				fstr_thing_hsp = hsp;
-				hsp = 9*spr_dir;
+				hsp = 15*spr_dir;
 				fstr_thing = true;
-				spawn_base_dust(x-(10*spr_dir), y, "wavedash", spr_dir)
-			//}
+				spawn_base_dust(x-(10*spr_dir), y, "dash_start", spr_dir)
+				sound_play(sound_get("bounce"),false,noone,0.7,1.4);
+			}
 		}
 	}
 	if (window==5 && !hitpause){
+		if (window_timer==1){
+			spawn_base_dust(x-((hsp/2)*spr_dir), y, "dash", spr_dir)
+			spawn_base_dust(x-(10*spr_dir), y, "walk", spr_dir)
+		}
 		if (window_timer==2){
-			if (fstr_thing==true){
-				if (sign(fstr_thing_hsp)==spr_dir){
-					hsp = fstr_thing_hsp;
-				}else{
-					hsp = 0;
-				}
+			//if (fstr_thing==true){
+				//if (sign(fstr_thing_hsp)==spr_dir){
+				//	hsp = fstr_thing_hsp;
+				//}else{
+					hsp = 3*spr_dir;
+				//}
 				fstr_thing = false;
-			}
+			//}
 		}
 	}
 	
@@ -378,6 +385,7 @@ if (attack==AT_FSTRONG){
 	if (window==1){
 		if (window_timer==1&&!hitpause){
 			sound_play(sound_get("down2"));
+			sound_play(sound_get("down2"),false,noone,0.4,0.5);
 			v_fstrong = false
 			reset_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH);
 			reset_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH);

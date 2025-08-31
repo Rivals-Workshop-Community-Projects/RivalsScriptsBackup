@@ -69,7 +69,7 @@ set_window_value(AT_USPECIAL, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("SWFS5"));
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 18);//18
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 2);

@@ -196,155 +196,155 @@ set_color_profile_slot( 16, 5, 46, 50, 69 ); //Pants 1
 set_color_profile_slot( 16, 6, 0, 0, 0 ); //Pants 2
 set_color_profile_slot( 16, 7, 183, 3, 30 ); //Knife
 
-// Fallen
-set_color_profile_slot( 17, 0, 126, 50, 25 ); //Hair
-set_color_profile_slot( 17, 1, 255, 221, 179 ); //Skin
-set_color_profile_slot( 17, 2, 255, 186, 193 ); //Blush
-set_color_profile_slot( 17, 3, 255, 24, 58 ); //Sweater
-set_color_profile_slot( 17, 4, 36, 36, 36 ); //Stripe
-set_color_profile_slot( 17, 5, 71, 71, 71 ); //Pants 1
-set_color_profile_slot( 17, 6, 38, 38, 38 ); //Pants 2
-set_color_profile_slot( 17, 7, 183, 3, 30 ); //Knife
-
 // X-Event
-set_color_profile_slot( 18, 0, 255, 255, 255 ); //Hair
-set_color_profile_slot( 18, 1, 255, 255, 255 ); //Skin
-set_color_profile_slot( 18, 2, 255, 255, 255 ); //Blush
-set_color_profile_slot( 18, 3, 255, 255, 255 ); //Sweater
-set_color_profile_slot( 18, 4, 255, 255, 255 ); //Stripe
-set_color_profile_slot( 18, 5, 68, 32, 117 ); //Pants 1
-set_color_profile_slot( 18, 6, 33, 3, 59 ); //Pants 2
-set_color_profile_slot( 18, 7, 131, 123, 220 ); //Knife
-
-// Hero of Darkness
-set_color_profile_slot( 19, 0, 255, 255, 255 ); //Hair
-set_color_profile_slot( 19, 1, 255, 221, 179 ); //Skin
-set_color_profile_slot( 19, 2, 255, 186, 193 ); //Blush
-set_color_profile_slot( 19, 3, 255, 219, 38 ); //Sweater
-set_color_profile_slot( 19, 4, 38, 38, 38 ); //Stripe
-set_color_profile_slot( 19, 5, 68, 102, 206 ); //Pants 1
-set_color_profile_slot( 19, 6, 55, 28, 166 ); //Pants 2
-set_color_profile_slot( 19, 7, 183, 3, 30 ); //Knife
+set_color_profile_slot( 17, 0, 255, 255, 255 ); //Hair
+set_color_profile_slot( 17, 1, 255, 255, 255 ); //Skin
+set_color_profile_slot( 17, 2, 255, 255, 255 ); //Blush
+set_color_profile_slot( 17, 3, 255, 255, 255 ); //Sweater
+set_color_profile_slot( 17, 4, 255, 255, 255 ); //Stripe
+set_color_profile_slot( 17, 5, 68, 32, 117 ); //Pants 1
+set_color_profile_slot( 17, 6, 33, 3, 59 ); //Pants 2
+set_color_profile_slot( 17, 7, 131, 123, 220 ); //Knife
 
 // Hikikomori
-set_color_profile_slot( 20, 0, 23, 23, 23 ); //Hair
-set_color_profile_slot( 20, 1, 255, 255, 255 ); //Skin
-set_color_profile_slot( 20, 2, 255, 255, 255 ); //Blush
-set_color_profile_slot( 20, 3, 23, 23, 23 ); //Sweater
-set_color_profile_slot( 20, 4, 23, 23, 23 ); //Stripe
-set_color_profile_slot( 20, 5, 255, 255, 255 ); //Pants 1
-set_color_profile_slot( 20, 6, 115, 115, 115 ); //Pants 2
-set_color_profile_slot( 20, 7, 255, 255, 255 ); //Knife
+set_color_profile_slot( 18, 0, 23, 23, 23 ); //Hair
+set_color_profile_slot( 18, 1, 255, 255, 255 ); //Skin
+set_color_profile_slot( 18, 2, 255, 255, 255 ); //Blush
+set_color_profile_slot( 18, 3, 23, 23, 23 ); //Sweater
+set_color_profile_slot( 18, 4, 23, 23, 23 ); //Stripe
+set_color_profile_slot( 18, 5, 255, 255, 255 ); //Pants 1
+set_color_profile_slot( 18, 6, 115, 115, 115 ); //Pants 2
+set_color_profile_slot( 18, 7, 255, 255, 255 ); //Knife
 
 // Infernal Dream
-set_color_profile_slot( 21, 0, 130, 74, 80 ); //Hair
-set_color_profile_slot( 21, 1, 215, 175, 157 ); //Skin
-set_color_profile_slot( 21, 2, 186, 151, 151 ); //Blush
-set_color_profile_slot( 21, 3, 215, 81, 110 ); //Sweater
-set_color_profile_slot( 21, 4, 197, 14, 14 ); //Stripe
-set_color_profile_slot( 21, 5, 94, 25, 62 ); //Pants 1
-set_color_profile_slot( 21, 6, 20, 5, 13 ); //Pants 2
-set_color_profile_slot( 21, 7, 153, 153, 153 ); //Knife
+set_color_profile_slot( 19, 0, 130, 74, 80 ); //Hair
+set_color_profile_slot( 19, 1, 215, 175, 157 ); //Skin
+set_color_profile_slot( 19, 2, 186, 151, 151 ); //Blush
+set_color_profile_slot( 19, 3, 215, 81, 110 ); //Sweater
+set_color_profile_slot( 19, 4, 197, 14, 14 ); //Stripe
+set_color_profile_slot( 19, 5, 94, 25, 62 ); //Pants 1
+set_color_profile_slot( 19, 6, 20, 5, 13 ); //Pants 2
+set_color_profile_slot( 19, 7, 153, 153, 153 ); //Knife
 
 // Theory
-set_color_profile_slot( 22, 0, 89, 32, 16 ); //Hair
-set_color_profile_slot( 22, 1, 247, 203, 161 ); //Skin
-set_color_profile_slot( 22, 2, 247, 226, 207 ); //Blush
-set_color_profile_slot( 22, 3, 247, 180, 156 ); //Sweater
-set_color_profile_slot( 22, 4, 146, 0, 214 ); //Stripe
-set_color_profile_slot( 22, 5, 54, 54, 54 ); //Pants 1
-set_color_profile_slot( 22, 6, 38, 38, 38 ); //Pants 2
-set_color_profile_slot( 22, 7, 49, 224, 62 ); //Knife
+set_color_profile_slot( 20, 0, 89, 32, 16 ); //Hair
+set_color_profile_slot( 20, 1, 247, 203, 161 ); //Skin
+set_color_profile_slot( 20, 2, 247, 226, 207 ); //Blush
+set_color_profile_slot( 20, 3, 247, 180, 156 ); //Sweater
+set_color_profile_slot( 20, 4, 146, 0, 214 ); //Stripe
+set_color_profile_slot( 20, 5, 54, 54, 54 ); //Pants 1
+set_color_profile_slot( 20, 6, 38, 38, 38 ); //Pants 2
+set_color_profile_slot( 20, 7, 49, 224, 62 ); //Knife
 
 // Story of Undertale
-set_color_profile_slot( 23, 0, 78, 68, 58 ); //Hair
-set_color_profile_slot( 23, 1, 254, 210, 161 ); //Skin
-set_color_profile_slot( 23, 2, 255, 179, 173 ); //Blush
-set_color_profile_slot( 23, 3, 185, 255, 6 ); //Sweater
-set_color_profile_slot( 23, 4, 235, 255, 183 ); //Stripe
-set_color_profile_slot( 23, 5, 78, 68, 58 ); //Pants 1
-set_color_profile_slot( 23, 6, 36, 29, 21 ); //Pants 2
-set_color_profile_slot( 23, 7, 154, 255, 255 ); //Knife
+set_color_profile_slot( 21, 0, 78, 68, 58 ); //Hair
+set_color_profile_slot( 21, 1, 254, 210, 161 ); //Skin
+set_color_profile_slot( 21, 2, 255, 179, 173 ); //Blush
+set_color_profile_slot( 21, 3, 185, 255, 6 ); //Sweater
+set_color_profile_slot( 21, 4, 235, 255, 183 ); //Stripe
+set_color_profile_slot( 21, 5, 78, 68, 58 ); //Pants 1
+set_color_profile_slot( 21, 6, 36, 29, 21 ); //Pants 2
+set_color_profile_slot( 21, 7, 154, 255, 255 ); //Knife
 
 // Curse
-set_color_profile_slot( 24, 0, 42, 62, 115 ); //Hair
-set_color_profile_slot( 24, 1, 54, 80, 148 ); //Skin
-set_color_profile_slot( 24, 2, 54, 80, 148 ); //Blush
-set_color_profile_slot( 24, 3, 50, 75, 138 ); //Sweater
-set_color_profile_slot( 24, 4, 50, 75, 138 ); //Stripe
-set_color_profile_slot( 24, 5, 56, 76, 128 ); //Pants 1
-set_color_profile_slot( 24, 6, 25, 37, 69 ); //Pants 2
-set_color_profile_slot( 24, 7, 80, 46, 163 ); //Knife
+set_color_profile_slot( 22, 0, 42, 62, 115 ); //Hair
+set_color_profile_slot( 22, 1, 54, 80, 148 ); //Skin
+set_color_profile_slot( 22, 2, 54, 80, 148 ); //Blush
+set_color_profile_slot( 22, 3, 50, 75, 138 ); //Sweater
+set_color_profile_slot( 22, 4, 50, 75, 138 ); //Stripe
+set_color_profile_slot( 22, 5, 56, 76, 128 ); //Pants 1
+set_color_profile_slot( 22, 6, 25, 37, 69 ); //Pants 2
+set_color_profile_slot( 22, 7, 80, 46, 163 ); //Knife
 
 // TKS
-set_color_profile_slot( 25, 0, 126, 50, 25 ); //Hair
-set_color_profile_slot( 25, 1, 255, 221, 179 ); //Skin
-set_color_profile_slot( 25, 2, 255, 186, 193 ); //Blush
-set_color_profile_slot( 25, 3, 255, 133, 210 ); //Sweater
-set_color_profile_slot( 25, 4, 252, 218, 103 ); //Stripe
-set_color_profile_slot( 25, 5, 253, 255, 148 ); //Pants 1
-set_color_profile_slot( 25, 6, 137, 138, 80 ); //Pants 2
-set_color_profile_slot( 25, 7, 183, 3, 30 ); //Knife
+set_color_profile_slot( 23, 0, 126, 50, 25 ); //Hair
+set_color_profile_slot( 23, 1, 255, 221, 179 ); //Skin
+set_color_profile_slot( 23, 2, 255, 186, 193 ); //Blush
+set_color_profile_slot( 23, 3, 255, 133, 210 ); //Sweater
+set_color_profile_slot( 23, 4, 252, 218, 103 ); //Stripe
+set_color_profile_slot( 23, 5, 253, 255, 148 ); //Pants 1
+set_color_profile_slot( 23, 6, 137, 138, 80 ); //Pants 2
+set_color_profile_slot( 23, 7, 183, 3, 30 ); //Knife
 
 // BLW
-set_color_profile_slot( 26, 0, 77, 77, 77 ); //Hair
-set_color_profile_slot( 26, 1, 126, 50, 25 ); //Skin
-set_color_profile_slot( 26, 2, 126, 50, 25 ); //Blush
-set_color_profile_slot( 26, 3, 252, 203, 37 ); //Sweater
-set_color_profile_slot( 26, 4, 38, 38, 38 ); //Stripe
-set_color_profile_slot( 26, 5, 38, 38, 38 ); //Pants 1
-set_color_profile_slot( 26, 6, 0, 0, 0 ); //Pants 2
-set_color_profile_slot( 26, 7, 252, 203, 37 ); //Knife
+set_color_profile_slot( 24, 0, 77, 77, 77 ); //Hair
+set_color_profile_slot( 24, 1, 126, 50, 25 ); //Skin
+set_color_profile_slot( 24, 2, 126, 50, 25 ); //Blush
+set_color_profile_slot( 24, 3, 252, 203, 37 ); //Sweater
+set_color_profile_slot( 24, 4, 38, 38, 38 ); //Stripe
+set_color_profile_slot( 24, 5, 38, 38, 38 ); //Pants 1
+set_color_profile_slot( 24, 6, 0, 0, 0 ); //Pants 2
+set_color_profile_slot( 24, 7, 252, 203, 37 ); //Knife
 
 // VAE
-set_color_profile_slot( 27, 0, 255, 255, 255 ); //Hair
-set_color_profile_slot( 27, 1, 255, 221, 179 ); //Skin
-set_color_profile_slot( 27, 2, 255, 186, 193 ); //Blush
-set_color_profile_slot( 27, 3, 53, 0, 87 ); //Sweater
-set_color_profile_slot( 27, 4, 183, 3, 30 ); //Stripe
-set_color_profile_slot( 27, 5, 49, 28, 99 ); //Pants 1
-set_color_profile_slot( 27, 6, 17, 5, 26 ); //Pants 2
-set_color_profile_slot( 27, 7, 183, 3, 30 ); //Knife
+set_color_profile_slot( 25, 0, 255, 255, 255 ); //Hair
+set_color_profile_slot( 25, 1, 255, 221, 179 ); //Skin
+set_color_profile_slot( 25, 2, 255, 186, 193 ); //Blush
+set_color_profile_slot( 25, 3, 53, 0, 87 ); //Sweater
+set_color_profile_slot( 25, 4, 183, 3, 30 ); //Stripe
+set_color_profile_slot( 25, 5, 49, 28, 99 ); //Pants 1
+set_color_profile_slot( 25, 6, 17, 5, 26 ); //Pants 2
+set_color_profile_slot( 25, 7, 183, 3, 30 ); //Knife
 
 // Abyss
-set_color_profile_slot( 28, 0, 146, 59, 206 ); //Hair
-set_color_profile_slot( 28, 1, 166, 172, 214 ); //Skin
-set_color_profile_slot( 28, 2, 239, 189, 255 ); //Blush
-set_color_profile_slot( 28, 3, 79, 61, 94 ); //Sweater
-set_color_profile_slot( 28, 4, 220, 113, 255 ); //Stripe
-set_color_profile_slot( 28, 5, 122, 129, 187 ); //Pants 1
-set_color_profile_slot( 28, 6, 63, 81, 122 ); //Pants 2
-set_color_profile_slot( 28, 7, 220, 113, 255 ); //Knife
+set_color_profile_slot( 26, 0, 146, 59, 206 ); //Hair
+set_color_profile_slot( 26, 1, 166, 172, 214 ); //Skin
+set_color_profile_slot( 26, 2, 239, 189, 255 ); //Blush
+set_color_profile_slot( 26, 3, 79, 61, 94 ); //Sweater
+set_color_profile_slot( 26, 4, 220, 113, 255 ); //Stripe
+set_color_profile_slot( 26, 5, 122, 129, 187 ); //Pants 1
+set_color_profile_slot( 26, 6, 63, 81, 122 ); //Pants 2
+set_color_profile_slot( 26, 7, 220, 113, 255 ); //Knife
 
 // Early Access
-set_color_profile_slot( 29, 0, 83, 122, 62 ); //Hair
-set_color_profile_slot( 29, 1, 211, 226, 154 ); //Skin
-set_color_profile_slot( 29, 2, 211, 226, 154 ); //Blush
-set_color_profile_slot( 29, 3, 167, 186, 74 ); //Sweater
-set_color_profile_slot( 29, 4, 211, 226, 154 ); //Stripe
-set_color_profile_slot( 29, 5, 83, 122, 62 ); //Pants 1
-set_color_profile_slot( 29, 6, 83, 122, 62 ); //Pants 2
-set_color_profile_slot( 29, 7, 167, 186, 74 ); //Knife
+set_color_profile_slot( 27, 0, 83, 122, 62 ); //Hair
+set_color_profile_slot( 27, 1, 211, 226, 154 ); //Skin
+set_color_profile_slot( 27, 2, 211, 226, 154 ); //Blush
+set_color_profile_slot( 27, 3, 167, 186, 74 ); //Sweater
+set_color_profile_slot( 27, 4, 211, 226, 154 ); //Stripe
+set_color_profile_slot( 27, 5, 83, 122, 62 ); //Pants 1
+set_color_profile_slot( 27, 6, 83, 122, 62 ); //Pants 2
+set_color_profile_slot( 27, 7, 167, 186, 74 ); //Knife
 
 // Khepri
-set_color_profile_slot( 30, 0, 91, 206, 250 ); //Hair
-set_color_profile_slot( 30, 1, 255, 221, 179 ); //Skin
-set_color_profile_slot( 30, 2, 245, 169, 184 ); //Blush
-set_color_profile_slot( 30, 3, 245, 169, 184 ); //Sweater
-set_color_profile_slot( 30, 4, 255, 255, 255 ); //Stripe
-set_color_profile_slot( 30, 5, 91, 206, 250 ); //Pants 1
-set_color_profile_slot( 30, 6, 91, 206, 250 ); //Pants 2
-set_color_profile_slot( 30, 7, 250, 250, 250 ); //Knife
+set_color_profile_slot( 28, 0, 91, 206, 250 ); //Hair
+set_color_profile_slot( 28, 1, 255, 221, 179 ); //Skin
+set_color_profile_slot( 28, 2, 245, 169, 184 ); //Blush
+set_color_profile_slot( 28, 3, 245, 169, 184 ); //Sweater
+set_color_profile_slot( 28, 4, 255, 255, 255 ); //Stripe
+set_color_profile_slot( 28, 5, 91, 206, 250 ); //Pants 1
+set_color_profile_slot( 28, 6, 91, 206, 250 ); //Pants 2
+set_color_profile_slot( 28, 7, 250, 250, 250 ); //Knife
 
 // -9 Lives
-set_color_profile_slot( 31, 0, 227, 9, 96 ); //Hair
-set_color_profile_slot( 31, 1, 252, 255, 245 ); //Skin
-set_color_profile_slot( 31, 2, 255, 186, 214 ); //Blush
-set_color_profile_slot( 31, 3, 0, 37, 46 ); //Sweater
-set_color_profile_slot( 31, 4, 85, 32, 227 ); //Stripe
-set_color_profile_slot( 31, 5, 0, 37, 46 ); //Pants 1
-set_color_profile_slot( 31, 6, 0, 21, 26 ); //Pants 2
-set_color_profile_slot( 31, 7, 0, 51, 171 ); //Knife
+set_color_profile_slot( 29, 0, 227, 9, 96 ); //Hair
+set_color_profile_slot( 29, 1, 252, 255, 245 ); //Skin
+set_color_profile_slot( 29, 2, 255, 186, 214 ); //Blush
+set_color_profile_slot( 29, 3, 0, 37, 46 ); //Sweater
+set_color_profile_slot( 29, 4, 85, 32, 227 ); //Stripe
+set_color_profile_slot( 29, 5, 0, 37, 46 ); //Pants 1
+set_color_profile_slot( 29, 6, 0, 21, 26 ); //Pants 2
+set_color_profile_slot( 29, 7, 0, 51, 171 ); //Knife
+
+// Vortex
+set_color_profile_slot( 30, 0, 241, 249, 127 ); //Hair
+set_color_profile_slot( 30, 1, 255, 221, 179 ); //Skin
+set_color_profile_slot( 30, 2, 255, 186, 214 ); //Blush
+set_color_profile_slot( 30, 3, 0, 255, 13 ); //Sweater
+set_color_profile_slot( 30, 4, 46, 95, 194 ); //Stripe
+set_color_profile_slot( 30, 5, 53, 119, 253 ); //Pants 1
+set_color_profile_slot( 30, 6, 34, 77, 163 ); //Pants 2
+set_color_profile_slot( 30, 7, 241, 249, 127 ); //Knife
+
+// DISCARDED
+set_color_profile_slot( 31, 0, 62, 18, 15 ); //Hair
+set_color_profile_slot( 31, 1, 195, 195, 195 ); //Skin
+set_color_profile_slot( 31, 2, 195, 195, 195 ); //Blush
+set_color_profile_slot( 31, 3, 121, 131, 127 ); //Sweater
+set_color_profile_slot( 31, 4, 231, 227, 226 ); //Stripe
+set_color_profile_slot( 31, 5, 62, 18, 15 ); //Pants 1
+set_color_profile_slot( 31, 6, 62, 18, 15 ); //Pants 2
+set_color_profile_slot( 31, 7, 183, 3, 30 ); //Knife
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
@@ -352,4 +352,3 @@ set_color_profile_slot( 31, 7, 0, 51, 171 ); //Knife
 {"formatversion":1,"data":[{"name":"Hair","colors":[{"r":126,"g":50,"b":25,"main":true},{"r":89,"g":33,"b":14},{"r":52,"g":17,"b":5}]},{"name":"Skin","colors":[{"r":255,"g":221,"b":179,"main":true},{"r":240,"g":182,"b":148},{"r":189,"g":123,"b":99}]},{"name":"Blush","colors":[{"r":255,"g":186,"b":193,"main":true},{"r":255,"g":125,"b":154}]},{"name":"Sweater","colors":[{"r":49,"g":224,"b":62,"main":true},{"r":25,"g":158,"b":35},{"r":27,"g":169,"b":38},{"r":13,"g":115,"b":21}]},{"name":"Stripe","colors":[{"r":252,"g":203,"b":37,"main":true},{"r":222,"g":147,"b":18},{"r":169,"g":91,"b":7}]},{"name":"Pants 1","colors":[{"r":34,"g":139,"b":245,"main":true}]},{"name":"Pants 2","colors":[{"r":74,"g":44,"b":198,"main":true},{"r":55,"g":28,"b":166}]},{"name":"Knife","colors":[{"r":183,"g":3,"b":30,"main":true},{"r":255,"g":0,"b":0},{"r":192,"g":5,"b":33},{"r":138,"g":1,"b":36}]}]}
 === END JSON PALETTE ===
 */
-

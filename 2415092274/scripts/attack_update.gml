@@ -64,11 +64,11 @@ if (attack==AT_DTILT && window == 4 && has_hit_player && !was_parried) {
     iasa_script();
 }
 
-if (attack==AT_DATTACK && window == 5 && window_timer >= 10 && !shield_pressed && !was_parried) {
-    iasa_script();
+if (attack==AT_DATTACK && window == 5 && window_timer >= 10 /*&& !shield_pressed*/ && !was_parried) {
+    /*iasa_script();
 	if (!has_hit_player){
 		move_cooldown[AT_DATTACK]=3;
-	}
+	}*/
 }
 
 if (attack==AT_FTILT && window == 6 && window_timer >= 5 && !was_parried) {
@@ -83,8 +83,7 @@ if (attack==AT_TAUNT_3){
 	if (window == 3 && taunt_down) {
 		window = 2;
 		window_timer = 0;
-	}
-	/*//deprecated
+	}/*
 	if (window == 2 || window == 3) {
 		//print(string(dsp_test_buffer))
 		if (left_down){
@@ -121,8 +120,7 @@ if (attack==AT_TAUNT_3){
 			clear_button_buffer( PC_ATTACK_PRESSED );
 			sound_play(sound_get("gui_accept"));
 		}
-	}
-	*/
+	}*/
 }
 
 if (attack==36&&window==2&&taunt_down&&window_timer>=43){window_timer=43}
@@ -198,6 +196,7 @@ if (dsp_qualified){
 }
 //print("dsp_qualified = "+((dsp_qualified)?"!!YES!!":"nah"))
 //print("dsp_confirmed = "+((dsp_confirmed)?"!!YES!!":"nah"))
+
 
 
 // new Ao code below
@@ -284,6 +283,18 @@ if (attack==AT_NSPECIAL){
 			//spawn_dust_fx( x+(10*spr_dir), (y-30)+(10*sign(vsp)), sprite_get("hfx_tackle"), 15 )
 			//spawn_hit_fx( x+(14*spr_dir), (y-30)+((floor(vsp)==0)?0:(14*sign(vsp))), tackle_hfx)
 			spawn_hit_fx( x+(20*spr_dir), (y-30)+((floor(vsp)==0)?0:(20*sign(vsp))), tackle_hfx)
+		}
+		//vforce's ledge snap code thank you
+		if (place_meeting(x + hsp, y, asset_get("par_block")) && free) 
+		{
+			for (var i = 1; i < 30; i++)
+			{
+				if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+				{
+					y -= i;
+					break;
+				}
+			}
 		}
 		
 	}
@@ -397,7 +408,6 @@ if (attack==AT_DSPECIAL){
 
 if (attack==AT_USPECIAL){
 	can_fast_fall = false;
-	usp_did = true;
 	if (window==1&&window_timer>=13){
 		if (((spr_dir==1 && right_down) || (spr_dir==-1 && left_down))&&special_down&&!up_down){
 			usp_d_able = true;
@@ -418,6 +428,7 @@ if (attack==AT_USPECIAL){
 		//can_move = false;
 		//hsp = clamp(hsp+(right_down-left_down)*0.5, -1, 1)
 		hsp = clamp(hsp, -3, 3)
+		usp_did = true;
 	}
 	if (window==3){
 		if (window_timer>=6){
@@ -453,6 +464,21 @@ if (attack==AT_USPECIAL){
 	}
 	if (window==5&&window_timer==1){
 		shake_camera(6,3)
+	}
+	if (window==7){
+		//hsp = 11*spr_dir;
+		//vforce's ledge snap code thank you
+		if (place_meeting(x + hsp, y, asset_get("par_block")) && free) 
+		{
+			for (var i = 1; i < 40; i++)
+			{
+				if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+				{
+					y -= i;
+					break;
+				}
+			}
+		}
 	}
 	if (window==7||window==8){
 		if (has_hit_player){
@@ -603,7 +629,7 @@ if (attack==AT_USTRONG){
 
 
 
-//supersonic's base game dust function thanks super sonic !
+//supersonic's base game dust function
 //find this here : https://github.com/SupersonicNK/roa-workshop-templates/blob/master/snippets/spawn_base_dust.md
 
 #define spawn_base_dust

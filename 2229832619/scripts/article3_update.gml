@@ -68,6 +68,8 @@ if (state == 0){
 					riftID2.state_timer = state_end;
 					riftID1.slash_immune = true;
 					riftID2.slash_immune = true;
+					riftID1.verticalmode = true;
+					riftID2.verticalmode = true;
 					var hfx = spawn_hit_fx( x, y, player_id.na_ms_fx )
 					hfx.draw_angle = other.image_angle+90
 					state = 1;

@@ -18,7 +18,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     //No your attack does NOT equal fspecial air actually
-    if(!free and (attack == AT_USPECIAL or attack == AT_FSPECIAL_AIR or attack == AT_BAIR) and state_timer < 2){
+    if(!free and (attack == AT_USPECIAL or attack == AT_FSPECIAL_AIR or attack == AT_BAIR or attack == AT_FSPECIAL_2_AIR) and state_timer < 2){
         attack = AT_UTILT;
     }
     
@@ -43,7 +43,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
         }
     }
     with (pHitBox){
-        if(abs(other.x - x) <= 90 and abs(other.y - y) <= 90 and player != other.player){
+        if(abs(other.x - x) <= 90 and abs(other.y - y) <= 90 and player != other.player and damage != 0){
             with(other){
                 shield_pressed = true;
             }
@@ -63,12 +63,14 @@ if(get_training_cpu_action() == CPU_FIGHT){
                     right_down = true;
                 }
             }
-            if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH) and ai_target.y > y - 50){
-                if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
-                    attack = AT_JAB;
+            if(abs(ai_target.y - y) < 40 ){
+                if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH) and ai_target.y > y - 50){
+                    if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
+                        attack = AT_JAB;
+                    }
+                    set_state(PS_ATTACK_GROUND);
+                    state_timer = 0;
                 }
-                set_state(PS_ATTACK_GROUND);
-                state_timer = 0;
             }
             //Try to snipe with dspecial
             if(abs(ai_target.y < y-200) and !instance_exists(trident)){
@@ -158,7 +160,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
     
     //Correct air attack queue
     if(!free){
-        if(attack == AT_FSPECIAL_AIR or attack == AT_FSPECIAL_2_AIR or attack == AT_BAIR){
+        if(attack == AT_FSPECIAL_AIR or attack == AT_FSPECIAL_2_AIR or attack == AT_BAIR or attack == AT_USPECIAL){
             attack = AT_UTILT;
         }
     }

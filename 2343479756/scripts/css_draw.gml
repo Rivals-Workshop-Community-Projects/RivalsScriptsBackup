@@ -99,7 +99,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 17; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 19; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 171, 171)
@@ -150,12 +150,18 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[15,0] = make_color_rgb(141, 199, 154)
 	ce[15,1] = "Unconscious"
 	ce[15,2] = ""
-	ce[16,0] = make_color_rgb(196, 92, 191)
-	ce[16,1] = "Miasma"
+	ce[16,0] = make_color_rgb(82, 59, 49)
+	ce[16,1] = "Noradrenaline"
 	ce[16,2] = ""
-	ce[17,0] = make_color_rgb(181, 17, 58)
-	ce[17,1] = "Inu"
+	ce[17,0] = make_color_rgb(196, 92, 191)
+	ce[17,1] = "Miasma"
 	ce[17,2] = ""
+	ce[18,0] = make_color_rgb(255, 195, 0)
+	ce[18,1] = "Pyrite"
+	ce[18,2] = ""
+	ce[19,0] = make_color_rgb(181, 17, 58)
+	ce[19,1] = "Inu"
+	ce[19,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

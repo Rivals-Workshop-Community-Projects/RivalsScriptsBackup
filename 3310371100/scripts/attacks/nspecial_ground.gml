@@ -2,6 +2,7 @@ set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_ground"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_ground_hurt"));
 set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 7);
+set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 0);
 
 
 //12

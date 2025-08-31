@@ -138,27 +138,6 @@ if(state_timer == 1){
 
 //#endregion
 
-//#endregion
-
-/*
-Removing cause the after image code bothers people
-//#region After Image Code
-if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu
-if(afterImageTimer = 0) {afterImageTimer = 6;}
-//	if (afterImageTimer > 0)
-	{
-	    afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10};
-	    afterImageTimer--;
-	}
-	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
-//}
-//afterImageTimer++;
-}
-//#endregion
-*/
-
-//#endregion
-
 //#region Other character update
 with(asset_get("oPlayer")){
 	
@@ -191,106 +170,6 @@ if(state == PS_SPAWN && state_timer == 1)
 			}
 		}
 //#endregion
-/* Not yet finished
-//#region Dialogue Buddy Support
-
-if(variable_instance_exists(id,"diag"))
-{
-//Change their name whenever
-    diag_name = "Daora"
-//  ADDING REGULAR DIALOGUE
-
-    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
-    diagchoice = [
-    "We don't have to fight, we could settle this over some tea.",
-    "I don't want to hurt you, but I will grapple and shock you into submission.",
-    "If it gets to be too much, consider tapping out and I won't shock you any more."]
-
-//  Specific Character Interactions
-
-//  Regular dialogue
-    if(otherUrl == "2661141982" && diag != "") //Anglara
-    {
-        diag = "Your fighting style is very clean. But can you strike me without getting grabbed?";
-        diag_index = 2; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-
-// Klockwurth
-//  NRS/3-Part dialogue
-    if(otherUrl == "2396817161") //Change the url into a specific character's
-    {
-        with(pet_obj)
-        {
-            if(variable_instance_exists(id,"diag_text"))
-            {
-                diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead. other.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                diag_nrs_diag = [
-                "Klock, I'd much prefer you stop trying to be a warrior when you aren't one. You are going to get yourself killed. Let me do the fighting.",
-                "I don't care if I die. I am going to bring the fight Loxodont, one shotgun shell at a time.",
-                "I will break your legs if it stops you from throwing your life away."]
-            }
-            
-            //If your portrait has multiple sprite indexes. You can change them during the interaction!
-            switch(diag_nrs_state)
-            {
-                case 0: //First Message
-                    other.diag_index = 4;
-                    break;
-                case 1: //Second Message
-                    other.diag_index = 4;
-                    break;
-                case 2: //Last Message
-                    other.diag_index = 5;
-                    break;
-            }
-        }
-    }
-}
-*/
-// Proto
-/*
-//  Regular dialogue
-    if(otherUrl == "" && diag != "") //Change the url into a specific character's
-    {
-        diag = "Hey, I know you! I will beat you up.";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    
-//  NRS/3-Part dialogue
-    if(otherUrl == url) //Change the url into a specific character's
-    {
-        with(pet_obj)
-        {
-            if(variable_instance_exists(id,"diag_text"))
-            {
-                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                diag_nrs_diag = [
-                "Hey, I know you! I will beat you up!",
-                "So you left us for someone else, and now you've come back to beat us up?",
-                "I-I had to do what was best for all of us, I wished you weren't dragged into this."]
-            }
-            
-            //If your portrait has multiple sprite indexes. You can change them during the interaction!
-            switch(diag_nrs_state)
-            {
-                case 0: //First Message
-                    other.diag_index = 1;
-                    break;
-                case 1: //Second Message
-                    other.diag_index = 1;
-                    break;
-                case 2: //Last Message
-                    other.diag_index = 2;
-                    break;
-            }
-        }
-    }
-}
-
-//#endregion
-*/
 
 #define Training_Functionality()
 {

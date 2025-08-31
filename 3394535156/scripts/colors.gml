@@ -9,11 +9,6 @@ set_color_profile_slot( 0, 1, 78, 166, 41 );
 set_color_profile_slot_range( 1, 1, 20, 27 );
 
 // robe 1, cane
-/*
-this color file contains all of plague knight's normal colors.
-if you wanna see the full list of all of his available pandemonium cloak colors, use colors_full.gml
-*/
-
 set_color_profile_slot( 0, 2, 32, 71, 98 );
 set_color_profile_slot_range( 2, 1, 10, 21 );
 
@@ -251,13 +246,13 @@ set_color_profile_slot( 21, 5, 255, 216, 121 ); //tan
 set_color_profile_slot( 21, 6, 190, 219, 89 ); //[X] bomb powder
 set_color_profile_slot( 21, 7, 160, 138, 232 ); //[X] bomb casing
 
-// free slot 7 - teal (original color)
-set_color_profile_slot( 22, 0, 255, 178, 61 ); //beak
-set_color_profile_slot( 22, 1, 209, 103, 31 ); //beak shading
-set_color_profile_slot( 22, 2, 0, 103, 102 ); //robe 1, cane
-set_color_profile_slot( 22, 3, 0, 103, 102 ); //robe lower
-set_color_profile_slot( 22, 4, 255, 178, 61 ); //robe acc
-set_color_profile_slot( 22, 5, 0, 170, 255 ); //tan
+// vortex gallery 2025
+set_color_profile_slot( 22, 0, 253, 220, 0 ); //beak
+set_color_profile_slot( 22, 1, 209, 143, 0 ); //beak shading
+set_color_profile_slot( 22, 2, 10, 63, 168 ); //robe 1, cane
+set_color_profile_slot( 22, 3, 10, 63, 168 ); //robe lower
+set_color_profile_slot( 22, 4, 103, 204, 23 ); //robe acc
+set_color_profile_slot( 22, 5, 103, 204, 23 ); //tan
 set_color_profile_slot( 22, 6, 190, 219, 89 ); //[X] bomb powder
 set_color_profile_slot( 22, 7, 160, 138, 232 ); //[X] bomb casing
 
@@ -310,6 +305,16 @@ set_color_profile_slot( 27, 4, 255, 70, 71 ); //robe acc
 set_color_profile_slot( 27, 5, 245, 213, 173 ); //tan
 set_color_profile_slot( 27, 6, 190, 219, 89 ); //[X] bomb powder
 set_color_profile_slot( 27, 7, 160, 138, 232 ); //[X] bomb casing
+
+// teal
+set_color_profile_slot( 28, 0, 255, 178, 61 ); //beak
+set_color_profile_slot( 28, 1, 209, 103, 31 ); //beak shading
+set_color_profile_slot( 28, 2, 0, 103, 102 ); //robe 1, cane
+set_color_profile_slot( 28, 3, 0, 103, 102 ); //robe lower
+set_color_profile_slot( 28, 4, 255, 178, 61 ); //robe acc
+set_color_profile_slot( 28, 5, 0, 170, 255 ); //tan
+set_color_profile_slot( 28, 6, 190, 219, 89 ); //[X] bomb powder
+set_color_profile_slot( 28, 7, 160, 138, 232 ); //[X] bomb casing
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

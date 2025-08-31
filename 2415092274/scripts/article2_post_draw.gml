@@ -90,7 +90,7 @@ var f_alpha = alp_start/2;
 	draw_sprite_ext( spr_oldstar_wh, 0, x-3, y, 2, 2, fake_angle, tmp_col, f_alpha/1.5 );
 	draw_sprite_ext( spr_oldstar_wh, 0, x+3, y, 2, 2, fake_angle, tmp_col, f_alpha/1.5 );
 	draw_sprite_ext( spr_oldstar_wh, 0, x, y-2, 2, 2, fake_angle, tmp_col, f_alpha/1.5 );
-	draw_sprite_ext( spr_oldstar_wh, 0, x, y+2, 2, 2, fake_angle, tmp_col, f_alpha/1.5 );
+	draw_sprite_ext( spr_oldstar_wh, 0, x, y+2, 2, 2, fake_angle, tmp_col, f_alpha/1.5 );draw_sprite_ext( sprite_index, image_index, x, y, 2.1+((sin( get_gameplay_time()*0.02 )+1)/5), 2.1+((sin( get_gameplay_time()*0.02 )+1)/5), 0, c_white, 0.4+((sin( get_gameplay_time()*0.02 )+1)/30) );
 	gpu_set_blendmode(bm_normal);
 	draw_sprite_ext( sprite_index, image_index, x, y, 2, 2, 0, -1, 1 );
 

@@ -449,6 +449,13 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
 
+initPatch("2.22", "25 Aug, 2025");
+initHeader("Presentation:");
+initSection("- Rotated in and updated Vortex alt
+			- Rotated out TAS alt
+			- Rotated out Genesis alt");
+initHeader("Bugs");
+initSection("- Corrected alt 6 back to being pink");
 
 initPatch("2.21", "02 Mar, 2025");
 initHeader("Bugs");

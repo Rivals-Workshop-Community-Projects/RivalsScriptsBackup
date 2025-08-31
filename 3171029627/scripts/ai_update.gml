@@ -45,25 +45,9 @@ if(get_training_cpu_action() == CPU_FIGHT){
     }
     
     with (pHitBox){
-        if(abs(other.x - x) <= 150 and abs(other.y - y) <= 70 and player != other.player){
-            if(type == 2 && hit_priority > 0 && hsp != 0){
-                with(other){
-                    if(attack != AT_NSPECIAL){
-                        if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH) and !free){
-                             set_state(PS_ATTACK_GROUND);
-                             state_timer = 0;
-                             attack = AT_NSPECIAL
-                        } else if(state!=PS_ATTACK_AIR and (state == PS_IDLE_AIR or state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP) and free){
-                            set_state(PS_ATTACK_AIR);
-                            state_timer = 0;
-                            attack = AT_NSPECIAL
-                        }
-                    }
-                }
-            } else {
-                with(other){
-                    shield_pressed = true;
-                }
+        if(abs(other.x - x) <= 100 and abs(other.y - y) <= 100 and player != other.player and damage != 0){
+            with(other){
+                shield_pressed = true;
             }
         }
     }
@@ -77,7 +61,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
                 } else {
                     right_down = true;
                 }
-            //if(abs(ai_target.y - y) < 20 ){
+            if(abs(ai_target.y - y) < 40 ){
                 if(state!=PS_ATTACK_GROUND and (state == PS_IDLE or state == PS_WALK or state == PS_DASH or state == PS_CROUCH)){
                     if(attack == AT_UAIR or attack == AT_DAIR or attack == AT_BAIR or attack == AT_FAIR or attack == AT_NAIR){
                         attack = AT_JAB;
@@ -85,7 +69,7 @@ if(get_training_cpu_action() == CPU_FIGHT){
                     set_state(PS_ATTACK_GROUND);
                     state_timer = 0;
                 }
-            //}
+            }
         } else {
             //snipe with uspecial
             
@@ -108,12 +92,16 @@ if(get_training_cpu_action() == CPU_FIGHT){
     //detecting far range fighters
     if(abs(ai_target.x - x) >= 300 and state_timer < 2){
         if(ai_target.x < x){
-            left_down = true;
+            if(spr_dir != -1){
+                left_down = true;
+            }
         } else {
-            right_down = true;
+            if(spr_dir != 1){
+                right_down = true;
+            }
         }
         //Within an area
-        if(ai_target.x - x <= 400){
+        if(abs(ai_target.x - x) <= 400){
             if(!free and torment_opponent != noone){
                 if(attack != AT_FSPSECIAL){
                     attack = AT_FSPECIAL

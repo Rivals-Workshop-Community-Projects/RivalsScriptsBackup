@@ -29,6 +29,24 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v1.8 - (2025 Aug 30)"
+		patch_note_text[i++] = 
+		"v1.8 - (2025 Aug 30)
+		[b]additions[/b]
+		- new alt colors 'Pyrite' and 'Noradrenaline'!
+
+		[b]changes[/b]
+		- FSPECIAL ... FSPECIAL now has ledge snap! if the red line is above the ground, you can rest assured you can probably actually get back on stage now.
+
+		[b]balances[/b]
+		-- -- counterplay
+		- STATS ... run speed lowered. (6.5 -> 6)
+		- STATS ... max air speed lowered. (5.2 -> 5)
+
+		[b]notes[/b]
+		natsumi patch? in 2025?"
+		
+		
 		patch_note_title[i] = "v1.7 - (2025 Apr 26)"
 		patch_note_text[i++] = 
 		"v1.7 - (2025 Apr 26)

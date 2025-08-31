@@ -349,7 +349,21 @@ if (get_match_setting( SET_RUNES )){//if runes mode active
 //testy
 //print(string( (sin( get_gameplay_time()*0.8 )*4) ));
 
-
+//"rounds"
+if (get_gameplay_time() == 10) {
+  //General Attacks
+  ror_attacks_dattack = [AT_DATTACK];
+  //Strong
+  ror_attacks_ustrong = [AT_USTRONG];
+  ror_attacks_fstrong = [AT_FSTRONG];
+  ror_attacks_dstrong = [AT_DSTRONG];
+  //Specials
+  ror_attacks_nspecial = [AT_NSPECIAL, AT_NSPECIAL_2];
+  ror_attacks_fspecial = [AT_FSPECIAL, AT_FSPECIAL_2];
+  ror_attacks_uspecial = [AT_USPECIAL];
+  //Taunt
+  ror_attacks_taunt = [AT_TAUNT, AT_TAUNT_2];
+}
 
 
 //=======================================================================================================================//

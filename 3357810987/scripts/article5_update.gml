@@ -7,12 +7,14 @@ if(active == false){
 
 if(get_gameplay_time() == 1){
 	with (oPlayer){//Make cameo not appear if fighter is present (stolen from Ghostabo's fridge kirby code lol)
-	   	if (
-	      	(string_count("dracula", string_lower( get_char_info(1, INFO_STR_NAME))) > 0) ||
-	      	(string_count("dracula", string_lower( get_char_info(2, INFO_STR_NAME))) > 0) ||
-	      	(string_count("dracula", string_lower( get_char_info(3, INFO_STR_NAME))) > 0) ||
-	      	(string_count("dracula", string_lower( get_char_info(4, INFO_STR_NAME))) > 0)){
-			other.active = false;
+	   	var player_count = 1;
+	   	while(player_count < 5){
+		   	if (
+		      	(string_count("dracula", string_lower( get_char_info(player_count, INFO_STR_NAME))) > 0) ||
+		      	(string_count("soma", string_lower( get_char_info(player_count, INFO_STR_NAME))) > 0)){
+				other.active = false;
+		   	}
+		   	player_count++
 	   	}
 	}
 }

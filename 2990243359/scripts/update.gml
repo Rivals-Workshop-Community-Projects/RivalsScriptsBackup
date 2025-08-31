@@ -72,6 +72,9 @@ if (im_gliding == true && jump_down && im_gliding_cont < 90){
 }
 }
 
+//Flame Choke Fix
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) flame_choke = false;
+
 if (trident_opponent && trident_opponent.trident_stuck == true && instance_exists(trident)){
 	if (trident.state != 7){
 		trident_opponent.trident_stuck = false;

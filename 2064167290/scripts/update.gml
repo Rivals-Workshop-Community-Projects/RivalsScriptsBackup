@@ -179,6 +179,12 @@ if (ycd_id != noone)
         inst.hitbox_timer = ycd_id.hitbox_timer;
         inst.hsp = ycd_id.hsp;
         ycd_id.destroyed = true;
+        inst.last_player_id = ycd_id.last_player_id;
+inst.player= ycd_id.player;
+inst.was_parried= ycd_id.was_parried;
+inst.reflected= ycd_id.reflected;
+inst.bashed= ycd_id.bashed;
+inst.can_hit_self= ycd_id.can_hit_self; //idk if this one works, remove maybe
         
         ycd_id = noone;
     }

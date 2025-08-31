@@ -134,6 +134,20 @@ if (attack==AT_FSPECIAL){
 				hsp = 0;
 			}
 		}
+		if (window==4||window==5){
+			//vforce's ledge snap code thank you
+			if (place_meeting(x + hsp, y, asset_get("par_block")) && free) 
+			{
+				for (var i = 1; i < 40; i++)
+				{
+					if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) 
+					{
+						y -= i;
+						break;
+					}
+				}
+			}
+		}
 		if (window>=6){
 			if (window==6&&window_timer>=6||window==7){
 				can_wall_jump = true;
