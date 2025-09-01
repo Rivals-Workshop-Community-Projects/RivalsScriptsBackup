@@ -3,6 +3,9 @@
 overtime_attacked = false;
 
 switch (attack){
+	case AT_JAB:
+		jab_walk_hsp = 0;
+	break;
     case AT_USPECIAL:
     switch (curr_uspec){
     	case -1:
@@ -84,6 +87,11 @@ switch (attack){
     }
     break;
     case AT_FSTRONG:
+    if (hsp == 0){
+    	strong_walk_hsp = 0;
+    } else {
+    	strong_walk_hsp = clamp(hsp, -3, 3);
+    }
 	if (!has_scrap){
         switch (curr_melee){
         	case 0:
@@ -101,6 +109,11 @@ switch (attack){
 	}
     break;
     case AT_USTRONG:
+    if (hsp == 0){
+    	strong_walk_hsp = 0;
+    } else {
+    	strong_walk_hsp = clamp(hsp, -3, 3);
+    }
     if (!has_scrap){
         switch (curr_melee){
         	case 0:

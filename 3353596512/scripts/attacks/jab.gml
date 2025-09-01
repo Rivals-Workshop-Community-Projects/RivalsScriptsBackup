@@ -54,7 +54,7 @@ set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAME_START, 22);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 6);
 
 //knife rapid jab endlag
-set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 2);
 

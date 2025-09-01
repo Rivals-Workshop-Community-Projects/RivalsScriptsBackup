@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 18, 18 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // green suit
 set_color_profile_slot( 1, 0, 0, 130, 52 ); //suit
@@ -276,6 +276,15 @@ set_color_profile_slot( 24, 5, 173, 160, 76 ); //rabbit
 set_color_profile_slot( 24, 6, 173, 160, 76 ); //rabbit shading
 set_color_profile_slot( 24, 7, 250, 253, 255 ); //visor
 
+// vortex gallery 2025
+set_color_profile_slot( 25, 0, 225, 225, 40 ); //suit
+set_color_profile_slot( 25, 1, 181, 164, 48 ); //suit shading
+set_color_profile_slot( 25, 2, 37, 83, 176 ); //mask
+set_color_profile_slot( 25, 3, 24, 53, 112 ); //mask shading
+set_color_profile_slot( 25, 4, 37, 83, 176 ); //boots/gloves
+set_color_profile_slot( 25, 5, 37, 83, 176 ); //rabbit
+set_color_profile_slot( 25, 6, 24, 53, 112 ); //rabbit shading
+set_color_profile_slot( 25, 7, 144, 255, 56 ); //visor
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

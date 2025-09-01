@@ -13,6 +13,18 @@ if(get_gameplay_time() > 100){
 
 hud_anim_timer++;
 
+if (!miiverse_friendslop && get_gameplay_time() <= 3){
+	with (oPlayer) if (self != other){
+		if (url == 3482233882){
+			other.miiverse_friendslop = true;
+		}
+	}
+}
+
+if (miiverse_friendslop && get_gameplay_time() <= 3){
+	miiverse_post = sprite_get("miiverse_commando");
+}
+
 //intro
 if (state == PS_SPAWN){
 	if (state_timer == 60){
@@ -58,9 +70,9 @@ overtime_total = clamp(overtime_total, 0, overtime_credits_cap);
 
 
 
-if (overtime_damage >= 5){
+if (overtime_damage >= 4){
 	if (overtime_bonus < overtime_bonus_max) overtime_bonus += 1;
-	overtime_damage -= 5;
+	overtime_damage -= 4;
 }
 
 if (state == PS_RESPAWN || respawn_taunt > 0){

@@ -61,16 +61,35 @@ switch(attack)
 					window_timer = 0;
 				}
 				jab_walk_dir = right_down - left_down;
+				    if (jab_walk_dir == 0){
+    					jab_walk_hsp = 0;
+    					hsp = 0;
+					 }
 				if (!hitpause){
-					hsp = walk_speed*jab_walk_dir;
+	    	    	if (hsp < walk_speed || hsp > -walk_speed){
+						jab_walk_hsp += walk_accel*jab_walk_dir;
+						jab_walk_hsp = clamp(jab_walk_hsp, -walk_speed, walk_speed)
+						hsp = jab_walk_hsp;
+						//print(hsp);
+	    	    	}
 				}
     		}
     	}
     	if (window == 7 || window == 8){ //hold rapid jab
     		jab_rapid_timer = (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)/2);
     		jab_walk_dir = right_down - left_down;
+				jab_walk_dir = right_down - left_down;
+				    if (jab_walk_dir == 0){
+    					jab_walk_hsp = 0;
+    					hsp = 0;
+					 }
     		if (!hitpause){
-				hsp = walk_speed*jab_walk_dir;
+	    	    if (hsp < walk_speed || hsp > -walk_speed){
+					jab_walk_hsp += walk_accel*jab_walk_dir;
+					jab_walk_hsp = clamp(jab_walk_hsp, -walk_speed, walk_speed)
+					hsp = jab_walk_hsp;
+					//print(hsp);
+	    	    }
 				if (window_timer % 8 == 0 && window == 8){
 					spawn_base_dust(x - 4*spr_dir, y, "walk", spr_dir);
 				}
@@ -283,6 +302,19 @@ switch(attack)
     	if (window_timer == 8 && !hitpause){
     		using_terminal = true;
     	}
+    	if (up_stick_down){
+    		if (terminal_slot != 0){
+    			terminal_slot = 0;
+    		}
+    	} else if (left_stick_down || right_stick_down){
+    		if (terminal_slot != 1){
+    			terminal_slot = 1;
+    		}
+    	} else if (down_stick_down){
+    		if (terminal_slot != 2){
+    			terminal_slot = 2;
+    		}
+    	}
     }
     if (window == 2 || window == 3 || window == 4){
     	using_terminal = true;
@@ -373,10 +405,13 @@ switch(attack)
     			spawn_hit_fx(x, y, fspec2_scan_linger)
     		}
     	}
+    	if (window >= 4){
+    		can_move = false;
+    	}
     	if (window == 4){
     		sound_stop(scan_sound);
-    		vsp *= 0.9;
-    		hsp *= 0.9;
+    		vsp *= 0.6;
+    		hsp *= 0.6;
     		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
     			beam_sound = sound_play(sound_get("fspec2_beam_loop"), true, noone, 0.9, 1);
     		}
@@ -407,6 +442,8 @@ switch(attack)
     		}
 		}
 		if (window == 7){
+			hsp = 0;
+			vsp = 0;
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
     			spawn_hit_fx(x, y, fspec2_zap_linger);
     			var dropped_zapgun = spawn_hit_fx(x + 6*spr_dir, y-74, fspec2_drop_gun);
@@ -416,6 +453,8 @@ switch(attack)
     		}
 		}
 		if (window == 8){
+			hsp = 0;
+			vsp = 0;
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
     			move_cooldown[AT_FSPECIAL_2] = 120;
     		}
@@ -868,9 +907,18 @@ if (attack == AT_USTRONG|| attack == AT_USTRONG_2 || attack == AT_USTRONG_3){
 #define strong_walk()
 
     strong_walk_dir = right_down - left_down;
+    if (strong_walk_dir == 0){
+    	strong_walk_hsp = 0;
+    	hsp = 0;
+    }
     	if (strong_walk_dir != 0 && window == 1 && smash_charging){
     	    if (!hitpause){
-				hsp = walk_speed*strong_walk_dir;
+    	    	if (hsp < walk_speed || hsp > -walk_speed){
+					strong_walk_hsp += walk_accel*strong_walk_dir;
+					strong_walk_hsp = clamp(strong_walk_hsp, -walk_speed, walk_speed)
+					hsp = strong_walk_hsp;
+					//print(hsp);
+    	    	}
 				if (strong_charge % 8 == 0){
 					spawn_base_dust(x - 4*spr_dir, y, "walk", spr_dir);
 				}

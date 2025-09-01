@@ -22,7 +22,7 @@ dash_anim_speed = .3;
 pratfall_anim_speed = .35;
 
 walk_speed = 3;
-walk_accel = 0.5;
+walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
 initial_dash_speed = 6.5; //changes with weight
@@ -231,6 +231,7 @@ crouch_walk_anim_speed = 0.25;
 crouch_walk_speed = 2.5;
 
 jab_walk_dir = 0;
+jab_walk_hsp = 0;
 jab_rapid_timer = 0;
 
 bair_shot_linger = hit_fx_create(sprite_get("bair_shot_linger"), 12);
@@ -240,6 +241,7 @@ bair_gun_dropped = hit_fx_create(sprite_get("bair_shotty"), 300);
 strong_walk_dir = 0;
 strong_walk_index = 0;
 strong_walking = false;
+strong_walk_hsp = 0;
 strong_sfx = noone;
 
 vfx_drop_melee = [];
@@ -595,6 +597,8 @@ mamizou_transform_spr = sprite_get("mamizou_transformation");
 pot_compat_variable = sprite_get("pumbo_food");
 pot_compat_text = "Company Rations";
 
+miiverse_post = sprite_get("miiverse");
+miiverse_friendslop = false;
 
 //custom indexes
 overtime_bonus = 0;
