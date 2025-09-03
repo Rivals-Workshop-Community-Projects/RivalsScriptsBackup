@@ -36,6 +36,42 @@ if (get_synced_var( player )==0){//A
 		}
 		maskFooter();
 	}*/
+	if (get_player_color( player ) == 9){//radialvortex
+		shader_end();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x-4, y, 1*spr_dir, 1, 0, -1, 0.15 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x+4, y, 1*spr_dir, 1, 0, -1, 0.15 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, -1, 1 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+	}
 }
 if (get_synced_var( player )==2){//C
 	if (get_player_color( player ) == 2){//starburst

@@ -277,7 +277,7 @@ if (get_synced_var( player )==0){//A
 }
 
 if (get_synced_var( player )==0){//A
-	if (get_player_color( player ) == 8){//sorbet
+	if (get_player_color( player ) == 9){//radialvortex
 		init_shader();
 	}
 }

@@ -6,6 +6,19 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.13===
+---changes---
+:: some results dialogue added and adjusted for some reason
+:: shifted around some alt colors, in preparation for...
+
+---additions---
+:: new alt color, Radial Vortex. with the new shifting around for alt colors, this new slot (after Seasonal) will probably be for tournament colors
+
+---notes---
+open for inputs!
+
+
+
 ===v3.12===
 ---changes---
 :: when more than 1 of usher's iceball is out at the same time, the amount of icy mist VFX that spawns is much reduced.
@@ -13,7 +26,6 @@
 
 ---notes---
 i just came out of my first Rogue set. that was incredible
-
 
 
 

@@ -16,10 +16,14 @@ if (var_localstorage==0){//A
 		draw_sprite_ext(sprite_get("z_css_icons"),0,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 9:
+		draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
+		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
 		case 10:
+		case 11:
 		draw_sprite_ext(sprite_get("z_css_icons"),5,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
-		case 11:
+		case 12:
 		draw_sprite_ext(sprite_get("z_css_icons"),1,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 16:
@@ -28,14 +32,38 @@ if (var_localstorage==0){//A
 		default: break;
 	}
 }
+if (var_localstorage==1){//B
+	switch(get_player_color( player )){
+		case 6:
+		draw_sprite_ext(sprite_get("z_css_icons"),12,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		default: break;
+	}
+}
+if (var_localstorage==2){//C
+	switch(get_player_color( player )){
+		case 2:
+		draw_sprite_ext(sprite_get("z_css_icons"),12,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		default: break;
+	}
+}
 if (var_localstorage==3){//D
 	switch(get_player_color( player )){
 		case 1://great riptide icon by reiga its open source its free
+		draw_sprite_ext(sprite_get("etc_css_sorbet"),1,x+8,y+8,2,2,0,-1,1);
 		draw_sprite_ext(sprite_get("z_css_icons"),10,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 2:
 		case 3:
 		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		case 5:
+		case 6:
+		case 8:
+		case 9:
+		case 16:
+		draw_sprite_ext(sprite_get("z_css_icons"),12,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		default: break;
 	}
@@ -202,16 +230,16 @@ if (reset_color_list == true){
 			ce[8,1] = "Seasonal ~ SANTA!!"
 		break;
 	}
-	ce[9,0] = make_color_rgb(48, 74, 60)
-	ce[9,1] = "Doomsday Forever"
-	ce[10,0] = make_color_rgb(113, 230, 119)
-	ce[10,1] = "Lens"
-	ce[11,0] = make_color_rgb(255, 207, 13)
-	ce[11,1] = "Ranked Gold"
-	ce[12,0] = make_color_rgb(255, 106, 0)
-	ce[12,1] = "Orange"
-	ce[13,0] = make_color_rgb(106, 161, 107)
-	ce[13,1] = "Twinleaf"
+	ce[9,0] = make_color_rgb(0, 88, 240)
+	ce[9,1] = "Radial Vortex"
+	ce[10,0] = make_color_rgb(48, 74, 60)
+	ce[10,1] = "Doomsday Forever"
+	ce[11,0] = make_color_rgb(113, 230, 119)
+	ce[11,1] = "Lens"
+	ce[12,0] = make_color_rgb(255, 207, 13)
+	ce[12,1] = "Ranked Gold"
+	ce[13,0] = make_color_rgb(255, 106, 0)
+	ce[13,1] = "Orange"
 	ce[14,0] = make_color_rgb(203, 139, 232)
 	ce[14,1] = "Lavender"
 	ce[15,0] = make_color_rgb(138, 57, 75)
@@ -314,18 +342,18 @@ if (reset_color_list == true){
 	ce[3,1] = "Steampunk"
 	ce[4,0] = make_color_rgb(176, 80, 74)
 	ce[4,1] = "Ashveil"
-	ce[5,0] = make_color_rgb(154, 117, 191)
-	ce[5,1] = "Dilemma"
-	ce[6,0] = make_color_rgb(64, 76, 247)
-	ce[6,1] = "Cora Overwater"
-	ce[7,0] = make_color_rgb(146, 255, 51)
-	ce[7,1] = "Heartbeat of Havoc"
-	ce[8,0] = make_color_rgb(158, 43, 43)
-	ce[8,1] = "For The Flowers"
-	ce[9,0] = make_color_rgb(151, 199, 48)
-	ce[9,1] = "Hometown's Heart"
-	ce[10,0] = make_color_rgb(255, 133, 33)
-	ce[10,1] = "Godspeed You!"
+	ce[5,0] = make_color_rgb(64, 76, 247)
+	ce[5,1] = "Cora Overwater"
+	ce[6,0] = make_color_rgb(146, 255, 51)
+	ce[6,1] = "Heartbeat of Havoc"
+	ce[7,0] = make_color_rgb(158, 43, 43)
+	ce[7,1] = "For The Flowers"
+	ce[8,0] = make_color_rgb(151, 199, 48)
+	ce[8,1] = "Hometown's Heart"
+	ce[9,0] = make_color_rgb(255, 133, 33)
+	ce[9,1] = "Godspeed You!"
+	ce[10,0] = make_color_rgb(106, 161, 107)
+	ce[10,1] = "Twinleaf"
 	ce[11,0] = make_color_rgb(48, 179, 129)
 	ce[11,1] = "Otherside"
 	ce[12,0] = make_color_rgb(154, 250, 175)
@@ -386,8 +414,8 @@ if (reset_color_list == true){
 	ce[11,1] = "it's the end of all things"
 	ce[12,0] = make_color_rgb(156, 122, 112)
 	ce[12,1] = "Forlorn Egodeth"
-	ce[13,0] = make_color_rgb(128, 0, 128)
-	ce[13,1] = "---"
+	ce[13,0] = make_color_rgb(154, 117, 191)
+	ce[13,1] = "Dilemma"
 	ce[14,0] = make_color_rgb(128, 0, 128)
 	ce[14,1] = "---"
 	ce[15,0] = make_color_rgb(128, 0, 128)

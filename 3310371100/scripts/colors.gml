@@ -153,55 +153,55 @@ set_color_profile_slot( 7, 7, 83, 122, 62 ); //eyes
 			set_color_profile_slot( 8, 7, 20, 122, 23 ); //eyes
 		}//yes i know i shoulda done a switch() here or something but i didnt remember if switch() within switch() worked or not and i didnt want to test it out
 
+// Radial Vortex
+set_color_profile_slot( 9, 0, 0, 87, 240 ); //green
+set_color_profile_slot( 9, 1, 0, 125, 235 ); //hair
+set_color_profile_slot( 9, 2, 156, 120, 86 ); //skin
+set_color_profile_slot( 9, 3, 45, 59, 64 ); //white
+set_color_profile_slot( 9, 4, 104, 240, 0 ); //dark
+set_color_profile_slot( 9, 5, 104, 240, 0 ); //gold
+set_color_profile_slot( 9, 6, 0, 125, 235 ); //umbrella
+set_color_profile_slot( 9, 7, 255, 223, 41 ); //eyes
+
 // doomsday forever
-set_color_profile_slot( 9, 0, 0, 255, 129 ); //green
-set_color_profile_slot( 9, 1, 0, 255, 129 ); //hair
-set_color_profile_slot( 9, 2, 99, 91, 120 ); //skin
-set_color_profile_slot( 9, 3, 58, 89, 72 ); //white
-set_color_profile_slot( 9, 4, 37, 26, 64 ); //dark
-set_color_profile_slot( 9, 5, 189, 130, 255 ); //gold
-set_color_profile_slot( 9, 6, 138, 117, 199 ); //umbrella
-set_color_profile_slot( 9, 7, 1, 150, 75 ); //eyes
+set_color_profile_slot( 10, 0, 0, 255, 129 ); //green
+set_color_profile_slot( 10, 1, 0, 255, 129 ); //hair
+set_color_profile_slot( 10, 2, 99, 91, 120 ); //skin
+set_color_profile_slot( 10, 3, 58, 89, 72 ); //white
+set_color_profile_slot( 10, 4, 37, 26, 64 ); //dark
+set_color_profile_slot( 10, 5, 189, 130, 255 ); //gold
+set_color_profile_slot( 10, 6, 138, 117, 199 ); //umbrella
+set_color_profile_slot( 10, 7, 1, 150, 75 ); //eyes
 
 // bw.2
-set_color_profile_slot( 10, 0, 113, 230, 119 ); //green
-set_color_profile_slot( 10, 1, 245, 255, 255 ); //hair
-set_color_profile_slot( 10, 2, 145, 124, 104 ); //skin
-set_color_profile_slot( 10, 3, 93, 128, 133 ); //white
-set_color_profile_slot( 10, 4, 23, 54, 29 ); //dark
-set_color_profile_slot( 10, 5, 51, 49, 59 ); //gold
-set_color_profile_slot( 10, 6, 245, 255, 255 ); //umbrella
-set_color_profile_slot( 10, 7, 92, 186, 97 ); //eyes
+set_color_profile_slot( 11, 0, 113, 230, 119 ); //green
+set_color_profile_slot( 11, 1, 245, 255, 255 ); //hair
+set_color_profile_slot( 11, 2, 145, 124, 104 ); //skin
+set_color_profile_slot( 11, 3, 93, 128, 133 ); //white
+set_color_profile_slot( 11, 4, 23, 54, 29 ); //dark
+set_color_profile_slot( 11, 5, 51, 49, 59 ); //gold
+set_color_profile_slot( 11, 6, 245, 255, 255 ); //umbrella
+set_color_profile_slot( 11, 7, 92, 186, 97 ); //eyes
 
 // ranked gold
-set_color_profile_slot( 11, 0, 255, 207, 13 ); //green
-set_color_profile_slot( 11, 1, 255, 217, 66 ); //hair
-set_color_profile_slot( 11, 2, 128, 87, 67 ); //skin
-set_color_profile_slot( 11, 3, 247, 252, 255 ); //white
-set_color_profile_slot( 11, 4, 123, 122, 191 ); //dark
-set_color_profile_slot( 11, 5, 114, 113, 168 ); //gold
-set_color_profile_slot( 11, 6, 255, 217, 66 ); //umbrella
-set_color_profile_slot( 11, 7, 146, 138, 224 ); //eyes
+set_color_profile_slot( 12, 0, 255, 207, 13 ); //green
+set_color_profile_slot( 12, 1, 255, 217, 66 ); //hair
+set_color_profile_slot( 12, 2, 128, 87, 67 ); //skin
+set_color_profile_slot( 12, 3, 247, 252, 255 ); //white
+set_color_profile_slot( 12, 4, 123, 122, 191 ); //dark
+set_color_profile_slot( 12, 5, 114, 113, 168 ); //gold
+set_color_profile_slot( 12, 6, 255, 217, 66 ); //umbrella
+set_color_profile_slot( 12, 7, 146, 138, 224 ); //eyes
 
 // orange
-set_color_profile_slot( 12, 0, 255, 106, 0 ); //green
-set_color_profile_slot( 12, 1, 255, 110, 51 ); //hair
-set_color_profile_slot( 12, 2, 255, 238, 222 ); //skin
-set_color_profile_slot( 12, 3, 240, 244, 255 ); //white
-set_color_profile_slot( 12, 4, 64, 45, 32 ); //dark
-set_color_profile_slot( 12, 5, 255, 202, 28 ); //gold
-set_color_profile_slot( 12, 6, 255, 151, 102 ); //umbrella
-set_color_profile_slot( 12, 7, 138, 57, 0 ); //eyes
-
-// twinleaf
-set_color_profile_slot( 13, 0, 191, 255, 194 ); //green
-set_color_profile_slot( 13, 1, 106, 161, 107 ); //hair
-set_color_profile_slot( 13, 2, 250, 226, 192 ); //skin
-set_color_profile_slot( 13, 3, 108, 166, 109 ); //white
-set_color_profile_slot( 13, 4, 36, 79, 60 ); //dark
-set_color_profile_slot( 13, 5, 235, 247, 131 ); //gold
-set_color_profile_slot( 13, 6, 223, 247, 178 ); //umbrella
-set_color_profile_slot( 13, 7, 29, 46, 31 ); //eyes
+set_color_profile_slot( 13, 0, 255, 106, 0 ); //green
+set_color_profile_slot( 13, 1, 255, 110, 51 ); //hair
+set_color_profile_slot( 13, 2, 255, 238, 222 ); //skin
+set_color_profile_slot( 13, 3, 240, 244, 255 ); //white
+set_color_profile_slot( 13, 4, 64, 45, 32 ); //dark
+set_color_profile_slot( 13, 5, 255, 202, 28 ); //gold
+set_color_profile_slot( 13, 6, 255, 151, 102 ); //umbrella
+set_color_profile_slot( 13, 7, 138, 57, 0 ); //eyes
 
 // lavender
 set_color_profile_slot( 14, 0, 203, 139, 232 ); //green

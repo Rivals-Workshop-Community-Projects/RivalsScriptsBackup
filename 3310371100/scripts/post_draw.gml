@@ -44,6 +44,20 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.13 - (2025/09/03)"
+		patch_note_text[i++] = 
+		"===v3.13===
+		---changes---
+		:: some results dialogue added and adjusted for some reason
+		:: shifted around some alt colors, in preparation for...
+
+		---additions---
+		:: new alt color, Radial Vortex. with the new shifting around for alt colors, this new slot (after Seasonal) will probably be for tournament colors
+
+		---notes---
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v3.12 - (2025/08/27)"
 		patch_note_text[i++] = 
 		"===v3.12===

@@ -146,7 +146,7 @@ if (!ushr_handled_victory_quote)
             quote = "Oh gosh, you're so fast I can't even keep track of you with my eyes!";
             break;
         case "1917856427": // Liz
-            quote = "Hey, how long have you been in this world? ...5 YEARS?! I wonder if we don't age in this world...";
+            quote = "Hey, how long have you been in this world? ...6 YEARS?! I wonder if we don't age in this world...";
             break;
         case "2885762133": // Brook
             quote = "I'll pay for the pizza, just please stop smacking me with the pizza box!!";
@@ -154,7 +154,7 @@ if (!ushr_handled_victory_quote)
         case "2456124960": // Nate
         case "2400092760": // donyoku
         case "2811831971": // donyoku SSL
-            quote = "I'd recognize that kind of crystal-metal anywhere!... Hm, on second thought, maybe not...";
+            quote = "That's a cool crystal-metal thing! Kinda familiar...";
             break;
         case "2601775097": // Bar new
         case "2429376422": // Bar old
@@ -198,11 +198,14 @@ if (!ushr_handled_victory_quote)
         case "2134571731": // bandana dee (awesomealen)
         case "1978869652": // bandana dee (tdude)
         case "2257303118": // uh...kaleb the shocking truth
-            quote = "Same weapon!!!! (Waves intensely)";
+            quote = "Same weapon!!!! (Waves enthusiastically)";
             break;
         case "2931408497": // Grace
         case "3091203333": // Grace Legacy
             quote = "Good fight! You're fast, but I can catch up, too! Uh, in fight, I mean. I'm not good at running...";
+            break;
+        case "3079776883": // Kumaki
+            quote = "Gosh, that was scary! With that big scythe and all that! Sometimes humans scare me more...";
             break;
         case "3079776883": // Kumaki
             quote = "Gosh, that was scary! With that big scythe and all that! Sometimes humans scare me more...";
@@ -213,12 +216,27 @@ if (!ushr_handled_victory_quote)
         case "3293338995": // Scoop
             quote = "Ice cream! Yum! Do you have a shop?";
             break;
+        case "1993599340": // Lucy in the Sky with Dynamites
+            quote = "Huhh... Where... am I?";
+            break;
+        case "1872924853": // Urotsuki (CoconutBun)
+        case "3345583689": // Urotsuki (tdude)
+            quote = "That felt like it hurt, but it... didn't actually hurt? Am I dreaming? Huh?";
+            break;
         case "2273636433": // "Melee" Dr. Mario
         case "2872758537": // SSL Dr. Mario
             quote = "We fight quite similarly, don't we! But what's with your gimmick? Do you need those?";
             break;
+        case "3353256940": // 20
+        case "2823288287": // 20 (8bit mix)
+        case "3144219345": // cabinetcannibal
+            quote = "(Oh, I gotta get out of here...)";
+            break;
         case "2983344228": // Kiku
             quote = "Kiku? But you're punching!!! ... ... Do you get that a lot?";
+            break;
+        case "2350985664": // Mystia
+            quote = "You're doing an izakaya? Why??? Seriously, what???";
             break;
         case "2744601817": // Lognes
         case "2224867079": // Lognes Old
@@ -226,6 +244,82 @@ if (!ushr_handled_victory_quote)
             break;
         case "2874473566": // Neptune
             quote = "Hey! That was fun! Let's fight again sometime!";
+            break;
+        case "3349586897": // Tekt
+            quote = "Hey! Where did you go? Oh, it's all the way over there already...";
+            break;
+        case "2941243552": // Buster
+            quote = "A Guitar, huh... I've always wanted to try it out, but other instruments are probably a better fit for me.";
+            break;
+        case "3171029627": // Pyramid Head
+            quote = "Strange... That man was scary, but it seemed like he wasn't here for me...";
+            break;
+        case "3347162744": // ULTIMATE. GAME SYSTEM.
+            quote = "I'm not here to beat you, I'm just here to have fun!";
+            break;
+        case "2274954061": // Cosign
+            quote = "I always wondered how it would be to swing these around! Can I try too, pretty please?";
+            break;
+        case "2002172624": // King Briggs
+            quote = "Bow down? I... don't know why I should, but I guess I can...";
+            break;
+        case "2945616859": // Castel Guide
+            quote = "Oh, this way? Thank you! Waitaminute.";
+            break;
+        case "2283888145": // Coda
+            quote = "Tempo always talks about you! Cool to fight with you too, Mr. Coda!";
+            break;
+        case "3039085407": // Larry
+            quote = "...Yeah, now that I'm looking at it closely, yeah, that's definitely a chicken gun... Chicken gun...?";
+            break;
+        case "2778789055": // Pogumbo
+            quote = "Ooh, this is yummy! Food from different parts of the world, huh... I wanna try more!";
+            break;
+        case "3508783644": // Vibri
+            quote = "What!! What's happening to you?? You're all wobbly and everything!!! I'm sorry!!!";
+            break;
+        case "2804295068": // Peashooter
+            quote = "Maybe green peas aren't so bad! They do hurt to be hit by, though.";
+            break;
+        case "3540483025": // Nura
+            quote = "You're so nimble with that heavy-looking tool... So cool!";
+            break;
+        case "2867341866": // Aur
+            quote = "Are you angry, or are you sad? It's kind of scary...";
+            break;
+        case "2922280596": // Desirae
+        case "3550480197": // Desirae EX
+            quote = "You can't take my time!! Time isn't to be stolen, it should be shared with everyone!";
+            break;
+        case "2921407044": // Klockwurth DE
+        case "2396817161": // Klockwurth
+            quote = "Phew, I got out of this fight in one piece... That weapon does some real damage!";
+            break;
+        case "2801851415": // Frostine
+            quote = "Freezing cold, even for me! Somehow kinda feels bitter even, such a weird ice magic...";
+            break;
+        case "2064167290": // Hana
+            quote = "That person was... She has an odd mysterious feeling to her.";
+            break;
+        case "2282173822": // Trummel Alto 2
+        case "1933111975": // Trummel Alto 1
+            quote = "Uwah! These aren't some usual rain, they hit hard like snowballs!";
+            break;
+        case "2277550383": // Trummel
+        case "2043072797": // Alto
+        case "2442862285": // Alto 2
+            quote = "What, uh, happened, haha?";
+            break;
+        case "2404896545": // Ms. Maribel
+        case "1873294979": // Every Single Mr. Game And Watch
+        case "2711400626": // Every Single Mr. Game And Watch
+        case "2834518864": // Every Single Mr. Game And Watch
+        case "3222706678": // Every Single Mr. Game And Watch
+        case "2012934808": // Every Single Mr. Game And Watch
+        case "1890285023": // Every Single Mr. Game And Watch
+        case "3380395299": // and Ms. Game And Watch
+        case "2848199264": // Every Single Mr. Game And Watch
+            quote = "What the - How are you moving like that? It's so hard to keep track of you...";
             break;
         case "2817605804": // Jerma
             quote = "Hey, y'know- don't say, s-swears!"; //LET'S GO! jerma vs star_ jerma vs star_ everybody wants to see this happen jerma vs star_
@@ -244,7 +338,8 @@ if (!ushr_handled_victory_quote)
             quote = "Steam's kinda scary, I wish it was like, more obvious that they hurt, yknow!";
             break;
         case "3293357713": // Ykyr
-            quote = "What did you say your name was? ...e-Equ-er, well, gosh, That was a great fight! I love your style!";
+            //quote = "What did you say your name was? ...e-Equ-er, well, gosh, That was a great fight! I love your style!";
+            quote = "Love your style! What did you say your name was? ...E-Equ-er, E-keer, E...";
             break;
         case "3292951946": // Hex
             quote = "The fight was so tense, it's almost suffocating in a way...";
@@ -256,7 +351,8 @@ if (!ushr_handled_victory_quote)
             quote = "You're stabbing people right through with your sword and acting all cool about it?? Ow!!";
             break;
         case "3436597271": // Cocua
-            quote = "So fierce! You didn't hold anything back and I felt it! You're very cool!";
+            //quote = "So fierce! You didn't hold anything back and I felt it! You're very cool!";
+            quote = "So fierce! I felt the energy! And I also feel it in my, hair, which is rising up from the electricity...";
             break;
         case "3463541091": // Nonari
             quote = "(These are some dainty detailed clothes for an adventurer...)";
@@ -274,28 +370,31 @@ if (!ushr_handled_victory_quote)
         case "2648394023": // Glare
             quote = "Does your UV lights give me sunburn? Good thing I have a para... well, I guess it's an umbrella.";
             break;
+        case "3136330641": // Vakna
+            quote = "My clothes are for snowy weather, not for this much burning heat!!";
+            break;
 		
 		
 		//All-star!
         case "3302238950": // Alexis
-            quote = "What's that saying again? Any super advanced technology is basically magic? But which is it when both exist!?";
+            quote = "What's that saying again? Any super advanced technology is basically magic? But both exist!! Which is it?!?";
             break;
         case "3306584099": // 1 - Tomoko
-            quote = "You're kinda intimidating, but that won't deter me! Good fight!";
+            quote = "You're kinda intimidating, but that won't deter me! I stand to fight!";
             break;
         case "3307368173": // 2 - Sarolyn
-            quote = "That's ice magic, but... Not just a pure ice magic, is it? It's shadowy...";
+            quote = "That's ice magic, but... it's shadowy... cuts like a knife.";
             break;
         case "3307937190": // 3 - Pastelle
         case "2843521167": // old pastelle
-            quote = "Did you see that? That girl looked awesome and had a cool Pen weapon! And uh, left paint all over the place.";
+            quote = "Did you see that? That girl looked awesome and had a cool Pen blade! And uh, left paint all over the place.";
             break;
         case "3308351120": // 4 - Saelune
         case "3115049167": // old saelukune i think
-            quote = "My favourite pastry? I looove chocolate danish! How about you?";
+            quote = "My favourite pastry? I looooove chocolate danish! How about you?";
             break;
         case "3309240911": // 5 - Putrolce
-            quote = "Would you like to go get some sweet snacks? I know a good place in this world! ...Huh? You can't? Aw, it's ok!";
+            quote = "Would you like to go get some sweet snacks? I know a good place in this world!";
             break;
 				  // 6 - 6th in the week is the stage oops
         case "-": // 7 - Usher
@@ -306,14 +405,14 @@ if (!ushr_handled_victory_quote)
             quote = "Why do I feel like she was holding back on me?";
             break;
         case "3316054693": // Asra
-            quote = "I saw in my rain's puddles... Reflecting, something horrifying, it can't be, right...?";
+            quote = "I saw in the puddles... Reflecting, something horrifying, it can't be, right...?";
             break;
         case "3382637663": // Ciela
             quote = "The hits from these swords are painful, but GOSH are they cool!! Look at those!! I wanna have swords like those!";
             break;
         case "-": // Lumi
             //quote = "I guess this was truly the experience of a contemporary guardian angel?";
-            quote = "If you are a guardian angel, where were you when I needed you in my life?";
+            quote = "If you are a guardian angel, where were you when people needed you?";
             break;
 		
 		
@@ -343,6 +442,8 @@ return quote
         case "3091203333": // Grace Legacy
         case "2874473566": // Neptune
         case "3293357713": // Ykyr
+        case "3347162744": // ULTIMATE. GAME SYSTEM.
+        case "2804295068": // Peashooter
         case "3271549730": //
             icon = 0;
             break;
@@ -379,6 +480,7 @@ return quote
         case "3115049167": // old saelukune i think
         case "3382637663": // Ciela
         case "3436597271": // Cocua
+        case "3540483025": // Nura
             icon = 2;
             break;
             
@@ -387,8 +489,11 @@ return quote
         case "3293338995": // Scoop
         case "2744601817": // Lognes
         case "2224867079": // Lognes Old
-        case "3306584099": // 1 - Tomoko
         case "2283888504": // Tempo
+        case "2283888145": // Coda
+        case "2945616859": // Castel Guide
+        case "2274954061": // Cosign
+        case "2778789055": // Pogumbo
             icon = 3;
             break;
             
@@ -402,13 +507,17 @@ return quote
         case "2872758537": // SSL Dr. Mario
         case "3302238950": // Alexis
         case "3316053085": // Venus
+        case "2941243552": // Buster
+        case "3171029627": // Pyramid Head
+        case "3039085407": // Larry
             icon = 4;
             break;
             
         //6 - thinken halfeye
         case "3254404139": // Octobhert
         case "3463541091": // Nonari
-        case "-": // Lumi
+        case "2350985664": // Mystia
+        case "2064167290": // Hana
             icon = 5;
             break;
             
@@ -418,12 +527,18 @@ return quote
         case "2605468610": // Exetior
         case "3307368173": // 2 - Sarolyn
         case "2648394023": // Glare
+        case "2277550383": // Trummel
+        case "2043072797": // Alto
+        case "2442862285": // Alto 2
+        case "2002172624": // King Briggs
             icon = 6;
             break;
             
         //8 - phew
         case "2229832619": // N/A
         case "2294898328": // N/A old sprites
+        case "2921407044": // Klockwurth DE
+        case "2396817161": // Klockwurth
             icon = 7;
             break;
             
@@ -431,6 +546,9 @@ return quote
         case "2895650073": // Dreaming Madotsuki (hyuponia and spiderboi)
         case "1871060242": // old Madotsuki (Uni)
         case "2177701650": // old Madotsuki ""balanced"" (Uni n sakk)
+        case "1993599340": // Lucy in the Sky with Dynamites
+        case "1872924853": // Urotsuki (CoconutBun)
+        case "3345583689": // Urotsuki (tdude)
             icon = 8;
             break;
             
@@ -446,6 +564,11 @@ return quote
         case "3304241490": // Saya
         case "3346651920": // slenderman
         case "-": // 7 - Usher
+        case "3353256940": // 20
+        case "2823288287": // 20 (8bit mix)
+        case "3144219345": // cabinetcannibal
+        case "3508783644": // Vibri
+        case "3136330641": // Vakna
             icon = 9;
             break;
             
@@ -456,17 +579,23 @@ return quote
         case "3137114060": // Crest
         case "2606483115": // Galega
         case "3479868625": // Kafka
+        case "3349586897": // Tekt
+        case "2282173822": // Trummel Alto 2
+        case "1933111975": // Trummel Alto 1
             icon = 10;
             break;
             
         //12 - >8o - circleeye angry
         case "3138837099": // Lux
+        case "2922280596": // Desirae
+        case "3550480197": // Desirae EX
             icon = 11;
             break;
             
         //13 - >:/ - upset serious
         case "2605462884": // Explorer
         case "3316054693": // Asra
+        case "3306584099": // 1 - Tomoko
             icon = 12;
             break;
             
@@ -475,12 +604,17 @@ return quote
         case "2396053263": // Heartbrake
         case "3292951946": // Hex
         case "3405748608": // One
+        case "2801851415": // Frostine
             icon = 13;
             break;
             
         //15 - sad
         case "3273103805": // Nisae kind of
         case "2787737701": // Sinker
+        case "2867341866": // Aur
+            quote = "Are you angry, or are you sad? It's kind of scary...";
+            break;
+        case "-": // Lumi
             icon = 14;
             break;
         
