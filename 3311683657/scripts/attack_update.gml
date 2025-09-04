@@ -160,10 +160,10 @@ switch attack {
             set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, hfx_ori_orange_small);
             set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, hfx_wra_wind_huge);
             set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_abyss_explosion"));
-            set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 8);
+            set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 10);
             set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 8);
-            set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.8);
-            set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 60);
+            set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 1.1);
+            set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 55);
         }
         var shkn = create_hitbox(AT_NSPECIAL, shuriken_charge, x+40*spr_dir, y-25)
             shkn.spr_dir = spr_dir
