@@ -67,6 +67,7 @@ set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_JAB, 3);
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Jab 1 Hitbox");
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_X, 36);
@@ -89,6 +90,7 @@ set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 3);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Jab 2 Hitbox");
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 26);
@@ -110,6 +112,7 @@ set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 3);
 
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 3, HG_MUNO_HITBOX_NAME, "Jab 3 Hitbox");
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 38);

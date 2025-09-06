@@ -6,6 +6,10 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("dive"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dive_hurt"));
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial: Dive");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Moving dash with a hitbox.
+After Mario starts to fall a little bit, the move can be canceled with either a jump or an airdodge. Is cancelable with a walljump at any point.
+Landing with the move allows Mario to do a roll by pressing either Jump or Special when landing within a brief window.");
 
 //Startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
@@ -80,6 +84,7 @@ set_num_hitboxes(AT_FSPECIAL, 2);
 
 //e
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Dive Hitbox");
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 9);
@@ -100,6 +105,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 12);
 
 //Getup Hitbox
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Roll Hitbox");
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);

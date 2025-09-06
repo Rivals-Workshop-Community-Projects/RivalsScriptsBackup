@@ -4,6 +4,8 @@ set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
+set_attack_value(AT_FAIR, AG_MUNO_ATTACK_NAME, "FAir: Forward Knuckle");
+set_attack_value(AT_FAIR, AG_MUNO_ATTACK_MISC_ADD, "I think we all know what this move does.");
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 15);
@@ -28,6 +30,7 @@ set_num_hitboxes(AT_FAIR, 4);
 
 // Spike 1
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 48);
@@ -50,6 +53,7 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 // Normal 1
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Clean Hitbox");
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 27);
@@ -71,13 +75,14 @@ set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 6);
 
 // Spike 2
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 3, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 16);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, 8);
-set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 14);
-set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 14);
+set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 20);
+set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 20);
 set_hitbox_value(AT_FAIR, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 12);
@@ -94,6 +99,7 @@ set_hitbox_value(AT_FAIR, 3, HG_ANGLE_FLIPPER, 0);
 
 // Normal 2
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 4, HG_MUNO_HITBOX_NAME, "Clean Hitbox");
 set_hitbox_value(AT_FAIR, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 4, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 2);

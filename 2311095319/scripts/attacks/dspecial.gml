@@ -7,6 +7,9 @@ set_attack_value(AT_DSPECIAL, AG_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial_air_hurt"));
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_NAME, "DSpecial: Mario Tornado");
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Repeatedly press SPECIAL to rise. Can only rise once per airtime unless Mario is hit, grounded or has walljumped.
+Using a Firebrand charge on this move will have Mario throw out fireballs on all sides of Mario multiple times.");
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 9);
@@ -98,6 +101,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
 //Fireball Stuff
 //This is for Down B Lol!
 //Same Thing
+set_hitbox_value(AT_NSPECIAL, 7, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 7, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL, 7, HG_LIFETIME, 70);
@@ -124,6 +128,7 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_HIT_SFX, sound_get("sfx_mario_fireball_hit")
 set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_HITPAUSE, 6);
 
 //Normal Fireball
+set_hitbox_value(AT_NSPECIAL, 9, HG_MUNO_HITBOX_EXCLUDE,1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 9, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL, 9, HG_LIFETIME, 70);

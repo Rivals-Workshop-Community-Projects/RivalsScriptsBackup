@@ -3,6 +3,8 @@ set_attack_value(AT_FSTRONG_2, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSTRONG_2, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_FSTRONG_2, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_FSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("firebrand_hurt"));
+set_attack_value(AT_FSTRONG_2, AG_MUNO_ATTACK_NAME, "FStrong 2: Firebrand");
+set_attack_value(AT_FSTRONG_2, AG_MUNO_ATTACK_MISC_ADD, "Only usable when Mario uses FStrong with a Firebrand charge.");
 
 set_window_value(AT_FSTRONG_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG_2, 1, AG_WINDOW_LENGTH, 8);

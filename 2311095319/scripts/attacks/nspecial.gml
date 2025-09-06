@@ -7,6 +7,15 @@ set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Fireball");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Projectile that has 2 variations.
+Simply pressing Special will throw a fireball in front of Mario.
+Hold Special to charge a fireball. Once fully charged, Mario will store it as Firebrand. A Firebrand charge can be used on the following moves:
+- NSpecial
+- DSpecial
+- FStrong
+
+Using a Firebrand charge on this move will have Mario throw a bigger Fireball which deals a lot more knockback and damage.");
 
 //Startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
@@ -67,6 +76,7 @@ set_num_hitboxes(AT_NSPECIAL, 2);
 
 //Normal Fireball
 set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Fireball Hitbox");
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 70);

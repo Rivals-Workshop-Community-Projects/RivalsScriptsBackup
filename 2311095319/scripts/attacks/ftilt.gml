@@ -29,6 +29,7 @@ set_num_hitboxes(AT_FTILT, 5);
 
 //First Hit
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 3);
@@ -51,6 +52,7 @@ set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 //Second Hit
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 3);
@@ -75,6 +77,7 @@ set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
 //Third Hit
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FTILT, 3, HG_MUNO_HITBOX_NAME, "Multihit 3");
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW_CREATION_FRAME, 6);
@@ -99,6 +102,7 @@ set_hitbox_value(AT_FTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
 //Final Hit
 set_hitbox_value(AT_FTILT, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FTILT, 4, HG_MUNO_HITBOX_NAME, "Finishing Hitbox");
 set_hitbox_value(AT_FTILT, 4, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_FTILT, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 4, HG_WINDOW_CREATION_FRAME, 9);
@@ -121,6 +125,7 @@ set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //Hitbox In Front of Mario
 set_hitbox_value(AT_FTILT, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FTILT, 5, HG_MUNO_HITBOX_NAME, "Front Scoop Hitbox");
 set_hitbox_value(AT_FTILT, 5, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FTILT, 5, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 5, HG_LIFETIME, 3);

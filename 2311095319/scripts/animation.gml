@@ -34,6 +34,17 @@ if(attack == AT_FSPECIAL){
 	}
 }
 
+/*
+if (sprite_index == sprite_get("empty")){
+	print("empty");
+} else if (sprite_index == sprite_get("intro")){
+	print("intro");
+} else if (sprite_index == sprite_get("idle")){
+	print("idle");
+} else {
+	print("spomething else")
+}
+*/
 
 if (state == PS_SPAWN) {
 	if (introTimer < -10) {//>
@@ -119,6 +130,11 @@ if (state == PS_SPAWN) {
 	}
 }
 
+if (state == PS_SPAWN){
+	if (theIntroWhichPartAmIOn < 2){//>
+		hud_offset = 1000;
+	}
+}
 //--------------------------------------------
 
 //Supersonic's Base Cast Dust Function

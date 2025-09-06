@@ -25,3 +25,25 @@ if (get_player_color(player) == 12){
 if get_player_color(player) == 0 {
 	set_character_color_slot(1, 238, 3, 16, 1);
 }
+
+// classic
+if (get_player_color(player) == 2){
+	set_character_color_shading(1, 0.7);
+}
+
+// green
+if (get_player_color(player) == 3){
+	set_character_color_shading(1, 0.7);
+}
+
+// flying
+if (get_player_color(player) == 4){
+	set_character_color_shading(0, 0.4);
+	set_character_color_shading(2, 0.4);
+}
+
+// waluigi
+if (get_player_color(player) == 5){
+	set_character_color_shading(0, 1.2);
+	set_character_color_shading(1, 1.2);
+}

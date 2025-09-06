@@ -1,5 +1,6 @@
 //Idle, Walk, Dash
 sprite_change_offset("idle", 18, 66);
+sprite_change_offset("idle_wait", 98, 130);
 sprite_change_offset("intro", 100, 130);
 sprite_change_offset("intro_pipe", 100, 130);
 sprite_change_offset("intro_pipe_leave", 100, 130);
@@ -54,6 +55,7 @@ sprite_change_offset("utilt", 44, 88);
 sprite_change_offset("nair", 32, 72);
 sprite_change_offset("fair", 28, 76);
 sprite_change_offset("bair", 60, 64);
+sprite_change_offset("bair", 100, 130);
 sprite_change_offset("uair", 46, 92);
 sprite_change_offset("dair", 26, 68);
 

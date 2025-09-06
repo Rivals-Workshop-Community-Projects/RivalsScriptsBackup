@@ -3,6 +3,8 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
+set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_NAME, "FStrong: Hammer");
+set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Using a Firebrand charge on this move will have Mario instead use Firebrand.");
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);
@@ -33,6 +35,7 @@ set_num_hitboxes(AT_FSTRONG, 2);
 
 //Normal Hit
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Main Hitbox");
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 52);
@@ -54,6 +57,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
 
 //Spike
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 52);

@@ -143,6 +143,15 @@ if (attack == AT_UAIR){
 //Down Air (Stomp)
 //There's no code for this move in here, it's in hit_player.gml.
 
+// back Air
+if (attack == AT_BAIR){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 3){
+			sound_play(asset_get("sfx_swipe_heavy1"), false, noone, 0.45, 1);
+		}
+	}
+}
+
 //Forward Strong (Hammer)
 if (attack == AT_FSTRONG){
 	if (window == 2){

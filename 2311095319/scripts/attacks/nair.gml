@@ -36,6 +36,7 @@ set_num_hitboxes(AT_NAIR, 2);
 
 //Strong Hit
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Clean Hitbox");
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 15);
@@ -56,6 +57,7 @@ set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 //Late Hit
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_NAME, "Late Hitbox");
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 14);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 12);

@@ -4,6 +4,8 @@ set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_NAME, "DAir: Stomp");
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_MISC, "Bounces Mario upwards on hit. If you stomp 10 times in a row before touching the ground...");
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 7);

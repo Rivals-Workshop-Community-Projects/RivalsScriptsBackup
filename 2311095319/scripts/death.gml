@@ -30,6 +30,7 @@ if (voiced == 1){
 
 //USPECIAL HITBOXES ARE BEING RESET
 	
+/*
 //Linking Hitbox 1
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 20);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -61);
@@ -53,3 +54,4 @@ set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_X, 22);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y, -61);
 set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 50);
 set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 50);
+*/
