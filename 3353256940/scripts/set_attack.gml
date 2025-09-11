@@ -7,3 +7,5 @@ set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_alt"));
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong_alt"));
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_alt"));
 }
+
+if (down_down && attack == AT_TAUNT) attack = AT_EXTRA_5;

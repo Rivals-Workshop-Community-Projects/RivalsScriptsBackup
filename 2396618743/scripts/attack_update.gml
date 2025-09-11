@@ -167,7 +167,9 @@ if (attack == AT_FSTRONG){
             set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_small"));
         }
         
-        
+        if (window == 2 && window_timer == 1 && !hitpause){ //making uncharged fstrong faster
+            window_timer = 6;
+        }
         
         if (window == 2 && window_timer == 12 && !hitpause){
             create_hitbox(AT_FSTRONG, 5, x, y);

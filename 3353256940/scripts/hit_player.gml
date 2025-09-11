@@ -33,7 +33,7 @@ switch (my_hitboxID.attack) {
         break;
         
     case AT_UAIR:
-    	if (hit_player_obj.activated_kill_effect) sound_play(sound_get("ig_eureka"), false, 0, 1, 1);
+    	if (hit_player_obj.activated_kill_effect && is_voiced) sound_play(sound_get("ig_eureka"), false, 0, 1, 1);
     	break;
     
     case AT_FSTRONG:

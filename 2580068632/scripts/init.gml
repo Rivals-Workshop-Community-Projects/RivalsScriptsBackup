@@ -340,6 +340,11 @@ if (get_stage_data( SD_ID ) == 2580068913){
 	isOnHalberd = true;
 }
 
+// idle fidget
+wait_time = 256;	// time it takes in frames to start the idle fidget
+wait_length = (30 * 5);	// how long the idle fidget takes, in frames. there's now way to adjust the frame rate for this. i hate rivals
+wait_sprite = sprite_get("idle_wait"); 
+
 //Compatability
 otto_bobblehead_sprite = sprite_get("otto");
 steve_death_message = "Steve had a Meta Knightmare";

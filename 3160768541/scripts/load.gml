@@ -19,4 +19,7 @@ sprite_change_offset("final_uibg_glow", 598/2, 296/2);
 sprite_change_offset("final_uigrnd", 316/2, 166/2);
 sprite_change_offset("final_uigrnd_glow", 474/2, 166);
 
+sprite_change_offset("plat", 39, 0);
+sprite_change_offset("plat_mask", 39, 0);
+
 sprite_change_offset("zzz_c", 12, 12);

@@ -216,6 +216,7 @@ arena_title = "Ambrosia's CUTEST Anomaly"
 mamizou_transform_spr = sprite_get("mami_transformation");
 pot_compat_variable = sprite_get("pumbo_dish");
 pot_compat_text = "Spaghetti al Necrotico"
+miiverse_post = sprite_get("miiverse");
 
 scrapbomb_visual = "b_scrapbomb"
 scrapbomb_alt_index = 0;

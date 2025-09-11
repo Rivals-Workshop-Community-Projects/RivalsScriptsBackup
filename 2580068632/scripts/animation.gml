@@ -1,5 +1,6 @@
 //animation.gml
 
+
 if (!free && attack != AT_NSPECIAL && attack != AT_DSPECIAL){
 	wings_out = false;
 }

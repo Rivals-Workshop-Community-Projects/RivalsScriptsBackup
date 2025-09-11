@@ -1,4 +1,4 @@
-//DRAIN
+//GRAVIGA
 
 init = 0;
 //sprite_index = sprite_get("drain");

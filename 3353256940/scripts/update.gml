@@ -127,7 +127,8 @@ if galaxy_timer == 89 {
 			}
 }
 
-
+//dtaunt failsafe
+if (state != PS_CROUCH && state != PS_ATTACK_GROUND && attack == AT_EXTRA_5) attack = AT_TAUNT; 
 
 // So... no head?
 if (in_hstance) {

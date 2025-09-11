@@ -82,12 +82,14 @@ if (attack == AT_JAB){
 if (attack == AT_DATTACK){
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 2){
+			sound_play(asset_get("sfx_swipe_medium2"));
+		
 			if (voiced == true){
 				sound_play(vc_mk_grunt_6)
 			}
 		}
 	}
-	if (image_index == 6){
+	if (image_index == 7){
 		dattack_land_var++;
 		if (dattack_land_var == 1){
 			spawn_base_dust( x - (2 * spr_dir), y, "land", spr_dir)

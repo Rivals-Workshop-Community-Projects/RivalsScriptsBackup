@@ -33,7 +33,7 @@ if (state==1){
 }
 
 if (state==2){
-	state_end = 100
+	state_end = 150
 	if (state_timer == 0){
 		sound_play(sound_get("snd_battlefall"),false,0)
 	}

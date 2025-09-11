@@ -153,5 +153,14 @@ introTimer = 0;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
 
+//detect if Rivals Rogue is being played, to alter how Batter's stat buffs are handled
+if("rivals_rogue" in obj_stage_main && obj_stage_main.rivals_rogue ){
+    rogue_mode = true;
+    move_epsiloned = array_create(50, false);
+}else{
+    rogue_mode = false;
+}
+print(rogue_mode)
+
 set_victory_bg( sprite_get("victorybg") );
 set_victory_theme( sound_get("peper") );

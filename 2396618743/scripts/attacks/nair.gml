@@ -14,7 +14,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("terra_slash1"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_NAIR, 2, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -29,7 +29,7 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_SFX_FRAME, 8);
 
 
 set_window_value(AT_NAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -61,7 +61,7 @@ set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("terra_swordhit1"));
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 2); //was 3
+set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3); //was 3
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 30);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -54);
 set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 80);

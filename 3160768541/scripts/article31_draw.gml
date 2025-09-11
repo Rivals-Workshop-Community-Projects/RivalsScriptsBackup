@@ -5,15 +5,15 @@ if (init){
 var yeah = 1;
 if (sequencer.state==1){
 	if (sequencer.state_timer < ceil(sequencer.state_end/1.5)){
-		image_alpha = 1
-	}else{
 		image_alpha = 0.8
+	}else{
+		image_alpha = 0.5
 		//yeah = 0;
 	}
 		yeah = 0;
 }
 if (sequencer.state==2){
-	var a_tmp = ease_quadOut( 100, 95, sequencer.state_timer, sequencer.state_end )/100
+	var a_tmp = (ease_quadOut( 100, 95, sequencer.state_timer, sequencer.state_end )/100)-0.2
 	var b_tmp = ease_quadOut( 0, 100, sequencer.state_timer, sequencer.state_end )/100
 	image_alpha = a_tmp
 	yeah = b_tmp;

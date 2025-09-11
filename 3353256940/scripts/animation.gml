@@ -22,6 +22,7 @@ if (state == PS_SPAWN) {
 switch (state)
 {
     case PS_CROUCH:
+    	if (down_down && attack = AT_EXTRA_5) sprite_index = sprite_get("crouch_frame");
 		if (right_down || left_down) sprite_index = sprite_get("crawl");
 		if (crawl_time > 0) image_index = fake_img;
 	break;

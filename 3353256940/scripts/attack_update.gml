@@ -595,6 +595,24 @@ switch(attack) {
     		}
     	}
 	break;
+	
+	case AT_EXTRA_5: //crouching taunt
+		if (window == 2) {
+			if (state_timer == 6) {
+				sound_play( sound_get("projector"), true, noone, 0.6, 1);
+			}
+			if (window_timer == 1) sound_play(sound_get("ssl_dash"), false, noone, 0.2, (random_func(3, 6, true) + 10) * 0.075);
+			
+			if (!taunt_down && state_timer >= 60) {
+				window = 3;
+				window_timer = 0;
+			}
+			
+			if (window == 3) {
+				sound_stop(sound_get("projector"))
+				sound_play(sound_get("ssl_dash"), false, noone, 0.4, 0.8);
+			}
+		}
 }
 
 //B - Reversals

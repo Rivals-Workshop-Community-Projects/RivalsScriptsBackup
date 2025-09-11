@@ -12,6 +12,7 @@ sprite_change_offset("spinhurt", 48, 63);
 sprite_change_offset("bighurt", 48, 63);
 
 sprite_change_offset("crouch", 32, 47);
+sprite_change_offset("crouch_frame", 32, 47);
 sprite_change_offset("crawl", 32, 47);
 
 sprite_change_offset("walk", 32, 47);
@@ -60,6 +61,7 @@ sprite_change_offset("fspecial", 64, 79, true);
 sprite_change_offset("uspecial", 48, 63, true);
 sprite_change_offset("dspecial", 64, 79, true);
 sprite_change_offset("taunt", 64, 79, true);
+sprite_change_offset("dtaunt", 48, 63, true);
 sprite_change_offset("uspecial_land", 64, 79, true);
 sprite_change_offset("uspecial_land_hurt", 96, 127);
 sprite_change_offset("dspecial_error", 64, 79, true);

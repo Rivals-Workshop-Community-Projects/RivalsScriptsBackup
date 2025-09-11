@@ -9,7 +9,7 @@ var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
  
-alt_name[0]  = "Default";
+alt_name[0]  = "Meta Knight";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Red";
 alt_name[3]  = "Green";

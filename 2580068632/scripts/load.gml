@@ -1,5 +1,6 @@
 //Idle, Walk, Dash
 sprite_change_offset("idle", 92, 138);
+sprite_change_offset("idle_wait", 98, 130);
 sprite_change_offset("crouch", 92, 138);
 sprite_change_offset("walk", 92, 138);
 sprite_change_offset("walkturn", 92, 138);
@@ -46,7 +47,7 @@ sprite_change_offset("tech", 92, 138);
 //Grounded Normals
 sprite_change_offset("jab", 92, 138);
 sprite_change_offset("jab_muno", 92, 138);
-sprite_change_offset("dattack", 92, 138);
+sprite_change_offset("dattack", 98, 130);
 sprite_change_offset("ftilt", 92, 138);
 sprite_change_offset("ftilt_muno", 92, 138);
 sprite_change_offset("dtilt", 92, 138);

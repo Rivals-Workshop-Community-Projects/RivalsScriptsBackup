@@ -22,6 +22,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){ //if Fira is parried, send it in the opp
         fira_vspeed *= -1;
         image_angle -= 180;
         image_yscale = -1;
+        //through_platforms = 30;
         
     }
 }
