@@ -12,3 +12,14 @@ if (state == PS_SPAWN) {
         sprite_index = sprite_get("idle");
     }
 }
+
+if (state == PS_PRATFALL && attack == AT_FSPECIAL) {
+    spr_prat2 = sprite_get("pratfall2");
+    sprite_index = spr_prat2;
+    if (sprite_index == spr_prat2){
+    var frames = 4;
+    var frame_dur = 5;
+    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
+}
+    print(image_index);
+}

@@ -45,6 +45,8 @@ sprite_change_offset("ustrong", 124, 148);
 sprite_change_offset("dstrong", 124, 148);
 sprite_change_offset("nspecial", 98, 148);
 sprite_change_offset("fspecial", 76, 98);
+sprite_change_offset("fspecialtrail", 76, 98)
+sprite_change_offset("pratfall2", 76, 98)
 sprite_change_offset("uspecial", 80, 90);
 sprite_change_offset("dspecial", 124, 148);
 sprite_change_offset("dspecial2", 124, 148);
@@ -56,8 +58,13 @@ sprite_change_offset("plat", 60, 24);
 sprite_change_offset("projdair", 26, 12);
 
 sprite_change_offset("minion", 40, 38);
+sprite_change_offset("minionspin", 40, 38);
+sprite_change_offset("spinmask", 40, 38);
+sprite_change_offset("markedminiontrail", 40, 38);
+sprite_change_offset("markedminionspin", 40, 38);
+sprite_change_offset("miniontrail", 40, 38);
 sprite_change_offset("poisonminion", 40, 38);
-sprite_change_offset("webzone", 46, 18);
+sprite_change_offset("webbedeffect", 76, 75);
 
 sprite_change_offset("intro", 76, 498);
 

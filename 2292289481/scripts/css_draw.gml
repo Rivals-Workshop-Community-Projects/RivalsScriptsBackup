@@ -10,9 +10,9 @@ var alt_cur = get_player_color(player);
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 25;
-num_colors = 25;
-patch_ver = "2.2"; 
+var num_alts = 27;
+num_colors = 27;
+patch_ver = "3.0"; 
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
@@ -26,20 +26,23 @@ alt_name[7]  = "Poison";
 alt_name[8]  = "Widow";
 alt_name[9]  = "White";
 alt_name[10]  = "Purple";
-alt_name[11]  = "Lava";
-alt_name[12]  = "Teal";
-alt_name[13]  = "Giant Enemy Spider";
-alt_name[14]  = "Saturated";
-alt_name[15]  = "True Green";
-alt_name[16]  = "True Yellow";
-alt_name[17]  = "True Pink";
-alt_name[18]  = "True Orange";
-alt_name[19]  = "Elder";
-alt_name[20]  = "Blood";
-alt_name[21]  = "Muffet";
-alt_name[22]  = "Divine Force";
-alt_name[23]  = "Trans Rights";
-alt_name[24]  = "Abyss";
+alt_name[11]  = "Brown";
+alt_name[12]  = "Grey";
+alt_name[13]  = "Teal";
+alt_name[14]  = "Giant Enemy Spider";
+alt_name[15]  = "Saturated";
+alt_name[16]  = "Elder";
+alt_name[17]  = "Blood";
+alt_name[18]  = "Gold";
+alt_name[19]  = "True Green";
+alt_name[20]  = "True Yellow";
+alt_name[21]  = "True Pink";
+alt_name[22]  = "True Orange";
+alt_name[23]  = "Muffet";
+alt_name[24]  = "Divine Force";
+alt_name[25]  = "Trans Rights";
+alt_name[26]  = "Classic";
+alt_name[27]  = "Abyss";
  
 //Patch
  

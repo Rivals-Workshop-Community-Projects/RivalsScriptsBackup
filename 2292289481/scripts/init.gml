@@ -14,7 +14,7 @@ walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 7;
+initial_dash_speed = 6.25;
 dash_speed = 6;
 dash_turn_time = 10;
 dash_turn_accel = 1;
@@ -47,7 +47,7 @@ hitstun_grav = .5;
 knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 15;
 wave_land_time = 8;
 wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding
@@ -106,11 +106,15 @@ introTimer2 = 0;
 
 //custom init
 minion = noone;
-webzone = noone;
+webbed_opponent = noone;
+opp_webbed = false;
 minion_active = false;
+minion_can_hit_owner = false;
+on_minion = false;
 killarticles = false;
 prevent_fspecial = false;
 minion_poisoned = false;
+cancel_pratfall = false;
 prevent_uspecial = false;
 prevent_dair1 = false;
 grabbedid = noone;
@@ -118,11 +122,16 @@ kirbyability = 13;
 tcoart = sprite_get("tharatcoart");
 plushForAmber = sprite_get("plushForAmber");
 
-nname = "Thara"
-
-ncode1 = "The underground terror."
-ncode2 = "Highly aggressive cave-dwelling parasite that seeks"
-ncode3 = "to consume Aether from the inside. Destroy on sight"
-
 
 taunt_repeat = true;
+
+
+//poisoned = false;
+//poisoned_id = 0;
+//poisoned_timer = 250;
+poisoned_opponent = noone;
+webbed_opponent = noone;
+
+//webbed = false;
+//webbed_id = 0;
+//webbed_timer = 0;

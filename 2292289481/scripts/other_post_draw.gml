@@ -1,20 +1,36 @@
 //post-draw
 
 if (poisoned && other_player_id == poisoned_id){
-    var bubble_sprite = -1;
+    var poisoned_sprite = -1;
     with (poisoned_id){
         //sprite_get can only be called directly by the workshop character
-        if (other.land_time < 6)
-            bubble_sprite = sprite_get("poisoned_arrow");
-        //shader_start();
+            poisoned_sprite = sprite_get("poisoned_arrow");
+        shader_start();
     }
-    if (bubble_sprite != -1)
-        draw_sprite(bubble_sprite, get_gameplay_time()*.15, x+10, y-char_height);
+    if (poisoned_sprite != -1)
+        draw_sprite(poisoned_sprite, get_gameplay_time()*.15, x+5, y-(char_height+15));
     with (poisoned_id){
-        //shader_end();
+        shader_end();
     }
 }
-
+/*
+if (webbed && other_player_id == webbed_id){
+    var webbed_sprite = -1;
+    with (webbed_id){
+        //sprite_get can only be called directly by the workshop character
+            webbed_sprite = sprite_get("webbedeffect");
+        shader_start();
+    }
+    if (webbed_sprite != -1)
+        draw_sprite(webbed_sprite, get_gameplay_time()*.15, x, y);
+        with (webbed_id) {
+            draw_sprite(webbed_sprite, get_gameplay_time()*.15, x, y);
+        }
+    with (webbed_sprite){
+        shader_end();
+    }
+}
+*/
 
 /*
 if (poisoned && other_player_id == poisoned_id) {
