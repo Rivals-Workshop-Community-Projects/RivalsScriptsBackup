@@ -36,6 +36,12 @@ article_should_lockout = true; //set to false if you don't want hit lockout.
 switch (get_player_color(player))
 {
 
+case 1: 
+sprite_index = sprite_get("pooh_jar");
+boomsprite = sprite_get("pooh_jar");
+uses_shader = false;  
+break;
+
   case 9: 
 sprite_index = sprite_get("fuzzyjar");
 boomsprite = sprite_get("fuzzyjar");

@@ -48,24 +48,13 @@ if get_player_color(player) == 14 {
     ;
 }
 
-//Disco Bear alt
-if get_player_color(player) == 12 {
-    set_character_color_shading( 0, 0 );
-    set_character_color_shading( 1, 0 );
-    set_character_color_shading( 2, 0 );
-    set_character_color_shading( 3, 0 );
-    set_character_color_shading( 4, 0 );
-    set_character_color_shading( 5, 0 );
-    set_character_color_shading( 6, 0 );
-        set_character_color_shading( 7, 0 );
-            set_character_color_shading( 8, 0 );
-            outline_color = [ 131, 22, 7 ];
-    ;
-}
 
 // init_shader.gml
 switch(get_player_color(player)){
   case 9:  // Replace this with whatever skin slot you want the mask on
     set_character_color_slot(0, 255, 255, 255, 0);  // Change the shade slot to whatever you need
+    break;
+    case 12:  // Replace this with whatever skin slot you want the mask on
+    set_character_color_slot(3, 255, 255, 255, 0);  // Change the shade slot to whatever you need
     break;
 }

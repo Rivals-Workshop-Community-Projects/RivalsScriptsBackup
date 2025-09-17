@@ -46,12 +46,22 @@ patch_ver = "1.0";
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 31;
+var num_alts = 32;
 var alt_cur = get_player_color(player);
  
 
- 
- 
+ if get_player_color(player) == 9 
+ {
+	set_ui_element( UI_CHARSELECT, sprite_get( "charselect_grizz" ) );
+ }
+ else if get_player_color(player) == 12 
+ {
+	set_ui_element( UI_CHARSELECT, sprite_get( "charselect_picnic" ) );
+ }
+ else 
+  {
+	set_ui_element( UI_CHARSELECT, sprite_get( "charselect") );
+ }
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
@@ -66,7 +76,7 @@ alt_name[8]  = "Camp Lazlo";
 alt_name[9]  = "Mr. Grizz";
 alt_name[10] = "Joylon";
 alt_name[11] = "Amber Burmese";
-alt_name[12] = "Disco Bear";
+alt_name[12] = "Gingham";
 alt_name[13] = "Abyss";
 alt_name[14] = "Gameboy";
 alt_name[15] = "Ralsei";

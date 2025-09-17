@@ -16,6 +16,9 @@ with (obj_article1) {
 	}
 }
 
+move_cooldown[AT_NSPECIAL] = 0;
+nspecial_cool = 0;
+
 floating = 1;
 
 with (asset_get("oPlayer")) {

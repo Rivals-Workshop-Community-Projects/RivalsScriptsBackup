@@ -36,8 +36,7 @@ if (floating) and state == PS_ATTACK_AIR
 
 nspecial_cool --;
 
-if state == PS_FIRST_JUMP
-{print(string(state_timer));}
+
 
 //Float Canceling
 if (state == PS_FIRST_JUMP) and (state_timer <= 1)
@@ -46,7 +45,7 @@ if down_down
 {	
     floating = 1;
 	floatTimer = floatMax;
-    print("floating cancel");
+    
 	can_fast_fall = false;
 }
 
@@ -59,10 +58,13 @@ if ustrongtimer == true
     }
 
 
-
-print_debug(string(intro_type));
-
-
+if get_match_setting( SET_PRACTICE )
+{
+                           if phone_cheats[CHEAT_JAR] == 1
+                      {    move_cooldown[AT_NSPECIAL] = 0
+                            nspecial_cool = 0;
+                       }
+}
 
 
 
@@ -109,7 +111,7 @@ with (asset_get("oPlayer")) {
 		// replace -= with += if you don't want the status effect to wear off so it counts up repeatedly instead of counting down
 		samson_honeyed_timer -= 1;
 		honeyed_cooldown = 50;
-		print("honeyed!!");
+	
 		set_state( PS_WRAPPED );
 		can_jump = false;
 		can_attack = false;
@@ -121,7 +123,7 @@ with (asset_get("oPlayer")) {
 					if "honeyed_amn_speed" in self
 						{
 							honeyed_frame += honeyed_amn_speed;
-							print(string(honeyed_frame));
+							
 						}
 				}
 		can_shield = false;
@@ -138,7 +140,7 @@ with (asset_get("oPlayer")) {
 	if "samson_cooldown_ID" in self
 {	if (!samson_honeyed and samson_cooldown_ID == other.id) {
 honeyed_cooldown -= 1;
-print(string(honeyed_cooldown));
+
 	}}
 };
 

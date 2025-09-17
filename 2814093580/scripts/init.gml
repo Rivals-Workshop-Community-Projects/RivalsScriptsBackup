@@ -283,6 +283,21 @@ if get_player_color(player) == 0
 {
     fs_char_portrait_override = sprite_get("colored");
 }
+
+if get_player_color(player) == 9
+{
+    fs_char_portrait_override = sprite_get("portrait_mrgrizz");
+    set_victory_portrait( sprite_get("portrait_mrgrizz") );
+    set_victory_sidebar( sprite_get("result_small_grizz") );
+}
+
+if get_player_color(player) == 12
+{
+    fs_char_portrait_override = sprite_get("portrait_picnic");
+    set_victory_portrait( sprite_get("portrait_picnic") );
+    set_victory_sidebar( sprite_get("result_small_picnic") );
+}
+
 fs_char_portrait_y = 95;
 fs_char_chosen_final_smash = "custom";
 grabbedid = noone;

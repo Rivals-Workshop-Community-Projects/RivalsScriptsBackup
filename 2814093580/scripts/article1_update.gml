@@ -24,10 +24,8 @@ if place_meeting(x, y, pHitBox)
                     shake_camera( 8, 10 );
                     instance_destroy(jar);
                     jar_is_out = false;
-                              if phone_cheats[CHEAT_JAR] == 0
-                      {    move_cooldown[AT_NSPECIAL] = 250
-                            nspecial_cool = 250;
-                       }
+     move_cooldown[AT_NSPECIAL] = 250
+    nspecial_cool = 250;
                     instance_destroy(plunger);
                     create_hitbox( AT_DSPECIAL, 4, x+(87*spr_dir), y );
                     create_hitbox( AT_DSPECIAL, 5, x-(5*spr_dir), y );
@@ -84,10 +82,8 @@ with(player_id)
 if (jar_health <= 0)
 {
     with(player_id)
-    {              if phone_cheats[CHEAT_JAR] == 0
-        {    move_cooldown[AT_NSPECIAL] = 250
+    {                 move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
-        }
         }
 thar_he_blows = 1
 can_hit = 0;
@@ -141,10 +137,8 @@ else {grounded = 0;}
 if (y >= (get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) )) {
         with(player_id)
     {
-          if phone_cheats[CHEAT_JAR] == 0
-        {    move_cooldown[AT_NSPECIAL] = 250
+   move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
-        }
 
     jar_is_out = false;
     }
@@ -153,10 +147,8 @@ if (y >= (get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) )) {
 
 if (x < 0 || x > room_width){
 	with (player_id){
-              if phone_cheats[CHEAT_JAR] == 0
-        {    move_cooldown[AT_NSPECIAL] = 250
+   move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
-        }
     jar_is_out = false;
 	}
         should_die = true;
@@ -167,10 +159,8 @@ if(position_meeting(x,y,asset_get("plasma_field_obj")))
     with(player_id)
     {
         
-          if phone_cheats[CHEAT_JAR] == 0
-        {    move_cooldown[AT_NSPECIAL] = 250
+   move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
-        }
     jar_is_out = false;
     }
         should_die = true;
@@ -220,7 +210,7 @@ if should_die {
 
 
 // Keeps MUG sprite forward
-if (sprite_index == sprite_get("mugmoment") and spr_dir == -1) 
+if ((sprite_index == sprite_get("mugmoment") or sprite_index == sprite_get("pooh_jar")) and spr_dir == -1) 
 {
     spr_dir = 1;
 }
@@ -427,8 +417,8 @@ should_die = true;
 with(player_id)
     {
 jar_is_out = false;
-          if phone_cheats[CHEAT_JAR] == 0
-        {    move_cooldown[AT_NSPECIAL] = 250
+  
+    move_cooldown[AT_NSPECIAL] = 250
     nspecial_cool = 250;
-        }
+        
     }

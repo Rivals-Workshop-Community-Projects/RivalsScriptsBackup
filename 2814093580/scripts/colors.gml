@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Winnie The Pooh
 set_color_profile_slot( 1, 0, 229, 25, 55 ); //orange
@@ -146,14 +146,14 @@ set_color_profile_slot( 11, 5, 255, 255, 255 ); //eye
 set_color_profile_slot( 11, 6, 254, 170, 58 ); //pupil
 set_color_profile_slot( 11, 7, 176, 70, 56 ); //darkshading
 
-// Disco  Bear
-set_color_profile_slot( 12, 0, 255, 182, 128 ); //orange
-set_color_profile_slot( 12, 1, 255, 196, 74 ); //light fur
-set_color_profile_slot( 12, 2, 255, 196, 74 ); //dark fur
-set_color_profile_slot( 12, 3, 255, 236, 11 ); //coat
-set_color_profile_slot( 12, 4, 255, 130, 4 ); //fluff
+// Picnic
+set_color_profile_slot( 12, 0, 216, 244, 193 ); //orange
+set_color_profile_slot( 12, 1, 244, 236, 205 ); //light fur
+set_color_profile_slot( 12, 2, 254, 189, 104 ); //dark fur
+set_color_profile_slot( 12, 3, 255, 117, 11 ); //coat
+set_color_profile_slot( 12, 4, 244, 236, 205 ); //fluff
 set_color_profile_slot( 12, 5, 255, 255, 255 ); //eye
-set_color_profile_slot( 12, 6, 0, 0, 0 ); //pupil
+set_color_profile_slot( 12, 6, 61, 120, 96 ); //pupil
 set_color_profile_slot( 12, 7, 255, 196, 74 ); //darkshading
 
 // Abyss

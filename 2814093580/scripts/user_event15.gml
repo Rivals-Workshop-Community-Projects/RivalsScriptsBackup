@@ -283,6 +283,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.1.1", "September 2025");
+initHeader("Jar Patch");
+initSection("'''quick''' fix with Samson's Jar and it acting weird in VS mode.");
+initSection("Mr. Grizz CSS thing fixed.");
+initSection("Disco Bear alt replaced with Picnic Alt.");
+initSection("Added custom Jar to Samson's Winnie The Pooh alt.");
+initSection("Jar cooldown resets on death.");
+
 
 initPatch("1.1.0", "November 2024");
 initHeader("HUGE patch. Thanks to a lot of feedback, a lot of issues with Samson have been fixed, I hope.");

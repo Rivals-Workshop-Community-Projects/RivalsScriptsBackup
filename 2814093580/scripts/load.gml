@@ -58,6 +58,7 @@ sprite_change_offset("transjar", 48, 98);
 sprite_change_offset("fuzzyjar", 48, 98);
 sprite_change_offset("mugmoment", 48, 98);
 sprite_change_offset("cola", 48, 98);
+sprite_change_offset("pooh_jar", 48, 96);
 sprite_change_offset("peanutbutter", 48, 98);
 sprite_change_offset("halloweenjar", 48, 96);
 sprite_change_offset("christmasjar", 48, 98);
