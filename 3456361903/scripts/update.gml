@@ -168,12 +168,12 @@ if (bboost_counter == 3) {
 	////////////////// STRONGS
 	// - Higher Damage
 	if (free) {
-		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 17);
+		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 15);
 		//
-		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 13);
+		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 14);
 		//
-		set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 14);
-		set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 14);
+		set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 13);
+		set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 13);
 	}
 	////////////////// DSPECIAL
 	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 5);

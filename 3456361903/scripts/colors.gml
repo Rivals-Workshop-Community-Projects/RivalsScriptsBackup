@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 21, 46, 4 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 24 );
 
 // Blue / Original
 set_color_profile_slot( 1, 0, 39, 41, 184 ); //Body 1

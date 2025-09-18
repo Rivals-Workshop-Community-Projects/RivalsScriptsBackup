@@ -21,6 +21,7 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_HEIGHT, 0);
 set_hitbox_value(AT_EXTRA_2, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_SPRITE, sprite_get("parry"));
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_MASK, sprite_get("log"));
+set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_COLLISION_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_GRAVITY, 0.5);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_VSPEED, -4);

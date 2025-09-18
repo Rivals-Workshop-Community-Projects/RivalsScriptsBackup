@@ -13,11 +13,11 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
 
 //startup postcharge
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 //active

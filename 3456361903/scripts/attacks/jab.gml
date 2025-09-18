@@ -73,7 +73,7 @@ set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 999); //set this in attack update
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 16);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 3);
+set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_JAB, 2, HG_HITSTUN_MULTIPLIER, 0.6);
