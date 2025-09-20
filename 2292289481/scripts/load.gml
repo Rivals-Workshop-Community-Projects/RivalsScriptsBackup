@@ -71,6 +71,6 @@ sprite_change_offset("intro", 76, 498);
 set_victory_theme( sound_get( "thara_win") );
 
 //The giant enemy spider
-if (get_player_color( player ) == 13) {
+if (get_player_color( player ) == 14) {
 set_victory_theme(sound_get("the_giant_enemy_spider"));
 }

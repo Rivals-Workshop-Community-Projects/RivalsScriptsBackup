@@ -53,27 +53,29 @@ if (!variable_instance_exists(id, "mus_phase"))
  
 var placeholder_name = "MUSIC_FILE_NAME_HERE";
  
-if (get_gameplay_time() <= 122 && mus_phase == 0 && get_gameplay_time() > 5)
+if (get_gameplay_time() <= 110 && mus_phase == 0 && get_gameplay_time() > 5)
 {
     with (asset_get("oPlayer"))
     {
-        var conditions;
-        conditions = [  joy_dir > 45-43 && joy_dir < 45+43 || up_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down),//Black night
-                        joy_dir > 315-43 && joy_dir < 315+43 || right_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down),//You Goddamned Bathead
-                        joy_dir > 225-43 && joy_dir < 225+43 || down_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down), //Lord of the Vampires 
-                        joy_dir > 135-43 && joy_dir < 135+43 || left_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down), //De-a lungul vieţii
-                        joy_dir > 90-5 && joy_dir < 90+5 || up_stick_down,                                              //Nothing to Lose
-                        joy_dir > 360-5 || joy_dir < 5 && !joy_pad_idle || joy_dir=0 and right_down || right_stick_down,   //Riddle
-                        joy_dir > 270-5 && joy_dir < 270+5 || down_stick_down,                                          //Dance of Illusions
-                        joy_dir > 180-5 && joy_dir < 180+5 || left_stick_down]                                          //Banquet of Madness
-        //conditions = [left_stick_down, right_stick_down, up_stick_down, down_stick_down, shield_down, shield_down and right_stick_down, shield_down and up_stick_down, shield_down and down_stick_down];
-        for (var m = 0; m < array_length_1d(conditions); m++)
-        {
-            if (conditions[m] && music_files[m] != placeholder_name)
+        if(temp_level == 0){
+            var conditions;
+            conditions = [  joy_dir > 45-43 && joy_dir < 45+43 || up_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down),//Black night
+                            joy_dir > 315-43 && joy_dir < 315+43 || right_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down),//You Goddamned Bathead
+                            joy_dir > 225-43 && joy_dir < 225+43 || down_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down), //Lord of the Vampires 
+                            joy_dir > 135-43 && joy_dir < 135+43 || left_stick_down && (special_down or attack_down or shield_down or strong_down or taunt_down), //De-a lungul vieţii
+                            joy_dir > 90-5 && joy_dir < 90+5 || up_stick_down,                                              //Nothing to Lose
+                            joy_dir > 360-5 || joy_dir < 5 && !joy_pad_idle || joy_dir=0 and right_down || right_stick_down,   //Riddle
+                            joy_dir > 270-5 && joy_dir < 270+5 || down_stick_down,                                          //Dance of Illusions
+                            joy_dir > 180-5 && joy_dir < 180+5 || left_stick_down]                                          //Banquet of Madness
+            //conditions = [left_stick_down, right_stick_down, up_stick_down, down_stick_down, shield_down, shield_down and right_stick_down, shield_down and up_stick_down, shield_down and down_stick_down];
+            for (var m = 0; m < array_length_1d(conditions); m++)
             {
-                other.mus = m;
-                other.mus_phase = 1;
-                break;
+                if (conditions[m] && music_files[m] != placeholder_name)
+                {
+                    other.mus = m;
+                    other.mus_phase = 1;
+                    break;
+                }
             }
         }
     }

@@ -27,7 +27,7 @@ if (place_meeting(x, y, asset_get("plasma_field_obj"))) {
 // // // // STATE 1 - SCRAPBOMB IDLE
 if (state == 1) { //
 	// be punchable
-	hit_detection()
+	if (has_bounced) hit_detection()
 	
 	state_end = 30; //duration of this state in frames
 	if (scrapbomb_visual == "b_scrapbomb") image_index_scrapb =  state_timer * 3 / state_end;
@@ -217,7 +217,7 @@ if (state == 2){ // SCRAP BOMB DELAY
 // // // // STATE 11 - BAG BOMB IDLE
 if (state == 11) { //
 	// be punchable
-	hit_detection()
+	if (!free) hit_detection()
 
 	image_index_scrapb =  state_timer * 3 / state_end;
 

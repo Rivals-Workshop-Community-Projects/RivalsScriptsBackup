@@ -231,6 +231,9 @@ switch(state){
 				can_wall_cling = false
 				can_move = false
 				if(attack_pressed or special_pressed or jump_pressed or hitpause == true or other.state_timer >= 700 or other.final_stock_spawned == 20){
+					if(hitpause == true){
+						visible = true;
+					}
 					if(other.state_timer > 10){
 						other.state = 3;
 						other.state_timer = 0;
@@ -477,6 +480,10 @@ while(wood_num < 10){
 	wood.img_spd = 0;
 	wood.hsp = 1.25*(random_func(wood_num+1, 10, true ) - 5)
 	wood.vsp = -1.25*(random_func(wood_num+2, 10, true)-1)
+	if(wood_num%2 = 1){
+		//print("flipped " + string(wood_num))
+		wood.draw_xscale = -1
+	}
 	wood_num++;
 	//print(wood_num)
 }

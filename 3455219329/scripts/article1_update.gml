@@ -177,5 +177,8 @@ while(ice_num < amount){
 	ice.grav = 0.5
 	ice.length = 15;
 	ice.depth = 9
+	if(ice_num%2 = 1){
+		ice.draw_xscale = -1
+	}
 	ice_num++;
 }

@@ -110,6 +110,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 2);
     set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, i * 2);
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 50);
+    set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 1);
     set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -80);
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 130);

@@ -57,7 +57,7 @@ set_window_value(AT_USTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 1.2);
 
 //zap endlag
 set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 18);
@@ -195,7 +195,7 @@ set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_Y, -50);
 set_hitbox_value(AT_USTRONG, 5, HG_WIDTH, 112);
 set_hitbox_value(AT_USTRONG, 5, HG_HEIGHT, 112);
 set_hitbox_value(AT_USTRONG, 5, HG_PRIORITY, 2);
-set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 4);
+set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 3);
 set_hitbox_value(AT_USTRONG, 5, HG_ANGLE, 90); 
 set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USTRONG, 5, HG_KNOCKBACK_SCALING, 1.05);

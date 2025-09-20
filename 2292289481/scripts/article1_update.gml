@@ -29,7 +29,12 @@ if (init == 0){
     }
 }
 
-if ((player_id.attack == AT_USPECIAL || player_id.attack == AT_USPECIAL_GROUND) && player_id.window == 1)  {
+if (
+		(player_id.attack == AT_USPECIAL || player_id.attack == AT_USPECIAL_GROUND) 
+		&& player_id.window == 1 
+		&& (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)
+	 ) 
+{
 	sound_play(asset_get("sfx_syl_nspecial_flowerhit"));
 	state = 2; // die
 	state_timer = 0; 

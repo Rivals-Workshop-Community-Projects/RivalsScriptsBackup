@@ -67,12 +67,12 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 301);
 // livespark
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 999);
-set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 36);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 40);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 32);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 32);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.3);
@@ -83,11 +83,11 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, livespark_death);
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, thunder_small);
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, thunder_big);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 18);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 20);
 

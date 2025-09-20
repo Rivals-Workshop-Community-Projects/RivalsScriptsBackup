@@ -162,6 +162,7 @@ if (in_hstance) {
         state = PS_ATTACK_AIR;
         state_timer = 0;
     	attack = AT_EXTRA_3;
+    	hurtboxID.sprite_index = sprite_get("uspecial_claw_hurt");
     	window = 1;
     	window_timer = 0;
     }

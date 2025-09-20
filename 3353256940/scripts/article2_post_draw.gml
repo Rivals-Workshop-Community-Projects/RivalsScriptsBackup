@@ -1,10 +1,10 @@
 
-if (state == 1) draw_sprite_ext(sprite_get(scrapbomb_visual), image_index_scrapb, x, y, spr_dir, 1, angle_scrapb, c_white, 1);
+if (state == 1) draw_sprite_ext(sprite_get(scrapbomb_visual), image_index_scrapb, x, y, spr_dir, 1, angle_scrapb, has_bounced ? c_white : c_white, 1);
 
 shader_end();
 
-if (fuse_active && bomb_fuse < 40) {
-    var upper = 0.8 - (bomb_fuse / 60);
+if (fuse_active && bomb_fuse < 90) {
+    var upper = 0.8 - (bomb_fuse / 120);
     var intensity = upper/2 * (1 + cos(pi*bomb_fuse/8)); // 16f period
     
     gpu_set_fog(true, fuse_color, depth, depth);

@@ -65,7 +65,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 16);
 set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 16);
 set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_SPRITE, sprite_get("wood"));

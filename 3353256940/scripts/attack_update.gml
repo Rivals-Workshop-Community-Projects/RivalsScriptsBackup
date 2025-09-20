@@ -319,6 +319,7 @@ switch(attack) {
         	vsp *= 0.94;
         	if (vsp >= 0 && (special_pressed || is_special_pressed(DIR_ANY)) && move_cooldown[AT_EXTRA_3] == 0) {
 	        	attack_end();
+	        	hurtboxID.sprite_index = sprite_get("uspecial_claw_hurt");
 	        	attack = AT_EXTRA_3;
 	        	window = 1;
 	        	window_timer = 0;
