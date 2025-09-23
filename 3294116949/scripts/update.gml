@@ -104,6 +104,7 @@ if (airstall == 1){
 if(state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN || state_cat == SC_HITSTUN)
 {
 	move_cooldown[AT_FSPECIAL] = 0;
+	airstall_cooldown = 0;
 }
 if !free move_cooldown[AT_FSPECIAL] = min(50, move_cooldown[AT_FSPECIAL]);
 
@@ -112,6 +113,8 @@ if !free move_cooldown[AT_FSPECIAL] = min(50, move_cooldown[AT_FSPECIAL]);
 if !free or (state == PS_WALL_JUMP or state_cat == SC_HITSTUN or state == PS_DEAD or state == PS_RESPAWN) {
 	move_cooldown[AT_USPECIAL] = 0;
 	uspec_bounce = true;
+	airstall_cooldown = 0;
+	
 }
 
 

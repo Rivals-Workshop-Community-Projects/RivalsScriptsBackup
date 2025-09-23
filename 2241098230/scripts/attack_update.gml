@@ -756,6 +756,7 @@ if (attack == AT_FSPECIAL){
 		if (window == 5) {
 	        grabbedid.x = x + spr_dir * 48
 	        grabbedid.y = y + 2;
+	        grabbedid.x = clamp(grabbedid.x, -16, room_width + 16)
 	        if (y >= room_height - abs(vsp) && (has_rune("K") || (("smoked" in grabbedid) && grabbedid.smoked))) {
 		        grabbedid.x = x;
 		        grabbedid.y = room_height + 256;
@@ -791,6 +792,8 @@ if (attack == AT_FSPECIAL){
 			grabbedid.vsp = vsp * 2;
 			grabbedid.hitstun = 4;
 			grabbedid = noone;
+			spawn_hit_fx(floor(x + 26 * spr_dir), floor(y - 24), 14  );
+			sound_play(asset_get("sfx_forsburn_consume_fail"));
             attack_end();
             djumps = 0;
             clear_button_buffer(PC_SHIELD_PRESSED);

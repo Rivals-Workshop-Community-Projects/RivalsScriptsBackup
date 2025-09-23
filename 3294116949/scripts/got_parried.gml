@@ -48,8 +48,11 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 }
 
 if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
-	my_hitboxID.has_bounced = false;
+	/*my_hitboxID.has_bounced = false;
 	my_hitboxID.vsp = max(my_hitboxID.vsp, -my_hitboxID.vsp);
 	my_hitboxID.free = true;
 	my_hitboxID.y -= my_hitboxID.vsp;
+	*/
+	was_parried = true;	
+	my_hitboxID.destroyed = true;
 }

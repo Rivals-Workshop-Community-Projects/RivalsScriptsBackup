@@ -49,7 +49,7 @@ set_color_profile_slot( 1, 7, 247, 251, 255 ); //Axe Blade
 // Shinjiro Aragaki
 set_color_profile_slot( 2, 0, 255, 255, 255 ); //Fur
 set_color_profile_slot( 2, 1, 92, 64, 44 ); //Raccoon Marks
-set_color_profile_slot( 2, 2, 89, 0, 0 ); //Sweater
+set_color_profile_slot( 2, 2, 107, 0, 0 ); //Sweater
 set_color_profile_slot( 2, 3, 61, 61, 61 ); //Scarf
 set_color_profile_slot( 2, 4, 150, 150, 150 ); //Axe
 set_color_profile_slot( 2, 5, 102, 33, 24 ); //Wood
@@ -129,8 +129,8 @@ set_color_profile_slot( 9, 7, 204, 0, 0 ); //Axe Blade
 // Jaggi Armor
 set_color_profile_slot( 10, 0, 255, 235, 238 ); //Fur
 set_color_profile_slot( 10, 1, 199, 151, 129 ); //Raccoon Marks
-set_color_profile_slot( 10, 2, 112, 48, 82 ); //Sweater
-set_color_profile_slot( 10, 3, 207, 132, 106 ); //Scarf
+set_color_profile_slot( 10, 2, 128, 55, 93 ); //Sweater
+set_color_profile_slot( 10, 3, 217, 134, 91 ); //Scarf
 set_color_profile_slot( 10, 4, 166, 100, 173 ); //Axe
 set_color_profile_slot( 10, 5, 184, 116, 88 ); //Wood
 set_color_profile_slot( 10, 6, 198, 158, 255 ); //Sparks
@@ -187,7 +187,7 @@ set_color_profile_slot( 15, 6, 182, 205, 214 ); //Sparks
 set_color_profile_slot( 15, 7, 255, 255, 255 ); //Axe Blade
 
 // Fennie
-set_color_profile_slot( 16, 0, 255, 219, 231 ); //Fur
+set_color_profile_slot( 16, 0, 255, 207, 229 ); //Fur
 set_color_profile_slot( 16, 1, 255, 255, 255 ); //Raccoon Marks
 set_color_profile_slot( 16, 2, 171, 12, 12 ); //Sweater
 set_color_profile_slot( 16, 3, 105, 101, 101 ); //Scarf
@@ -269,7 +269,7 @@ set_color_profile_slot( 23, 7, 255, 255, 255 ); //Axe Blade
 // Susie (Deltarune)
 set_color_profile_slot( 24, 0, 247, 168, 225 ); //Fur
 set_color_profile_slot( 24, 1, 148, 59, 124 ); //Raccoon Marks
-set_color_profile_slot( 24, 2, 64, 36, 94 ); //Sweater
+set_color_profile_slot( 24, 2, 71, 41, 105 ); //Sweater
 set_color_profile_slot( 24, 3, 255, 202, 117 ); //Scarf
 set_color_profile_slot( 24, 4, 139, 144, 176 ); //Axe
 set_color_profile_slot( 24, 5, 117, 89, 154 ); //Wood
@@ -278,7 +278,7 @@ set_color_profile_slot( 24, 7, 68, 216, 182 ); //Axe Blade
 
 // Rayman
 set_color_profile_slot( 25, 0, 255, 219, 176 ); //Fur
-set_color_profile_slot( 25, 1, 235, 138, 21 ); //Raccoon Marks
+set_color_profile_slot( 25, 1, 235, 157, 21 ); //Raccoon Marks
 set_color_profile_slot( 25, 2, 106, 56, 156 ); //Sweater
 set_color_profile_slot( 25, 3, 173, 2, 2 ); //Scarf
 set_color_profile_slot( 25, 4, 152, 153, 156 ); //Axe
@@ -336,15 +336,15 @@ set_color_profile_slot( 30, 5, 102, 57, 41 ); //Wood
 set_color_profile_slot( 30, 6, 0, 255, 255 ); //Sparks
 set_color_profile_slot( 30, 7, 255, 0, 255 ); //Axe Blade
 
-// Vortex Gallery
-set_color_profile_slot( 31, 0, 240, 226, 202 ); //Fur
-set_color_profile_slot( 31, 1, 252, 120, 58 ); //Raccoon Marks
-set_color_profile_slot( 31, 2, 158, 45, 25 ); //Sweater
-set_color_profile_slot( 31, 3, 255, 202, 117 ); //Scarf
-set_color_profile_slot( 31, 4, 201, 37, 8 ); //Axe
-set_color_profile_slot( 31, 5, 92, 53, 38 ); //Wood
-set_color_profile_slot( 31, 6, 255, 180, 18 ); //Sparks
-set_color_profile_slot( 31, 7, 255, 243, 209 ); //Axe Blade
+// Vortex Gallery (2025)
+set_color_profile_slot( 31, 0, 255, 247, 240 ); //Fur
+set_color_profile_slot( 31, 1, 247, 212, 13 ); //Raccoon Marks
+set_color_profile_slot( 31, 2, 119, 209, 8 ); //Sweater
+set_color_profile_slot( 31, 3, 38, 105, 240 ); //Scarf
+set_color_profile_slot( 31, 4, 53, 119, 253 ); //Axe
+set_color_profile_slot( 31, 5, 105, 60, 43 ); //Wood
+set_color_profile_slot( 31, 6, 255, 191, 0 ); //Sparks
+set_color_profile_slot( 31, 7, 240, 245, 247 ); //Axe Blade
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

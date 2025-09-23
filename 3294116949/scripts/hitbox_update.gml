@@ -100,5 +100,7 @@ if (attack == (44)){
 	}
 }*/
 
-
+if(attack == AT_USPECIAL && hbox_num == 5){
+	airstall_cooldown = 1;
+}
 

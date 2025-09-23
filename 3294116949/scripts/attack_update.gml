@@ -565,6 +565,19 @@ if (attack == AT_DSPECIAL) && (airstall == 1){
 	//}
 }
 
+//UP SPECIAL AIRTALL
+if (attack == AT_USPECIAL){
+	if ((window == 1) && window_timer == 8) && (vsp > 6) && (airstall_cooldown == 0){
+		airstall = 1;
+	}
+}
+
+if (attack == AT_USPECIAL) && (airstall == 1){
+	//if (airstall_timer <= 4){
+		vsp *= 0.7;
+	//}
+}
+
 if(attack == AT_FAIR){
 	if(hitpause && has_hit && !did_hit && !fast_falling){
 		did_hit = true;

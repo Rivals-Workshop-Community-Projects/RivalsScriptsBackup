@@ -56,8 +56,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .25);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);//4.5
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -8.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, .5);
-// set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
-// set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 99);

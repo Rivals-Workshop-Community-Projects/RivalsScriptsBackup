@@ -9,7 +9,7 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 
 //Startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 // set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 0);
@@ -33,7 +33,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HITPAUSE_FRAME, 9);
 
 //Endlag
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

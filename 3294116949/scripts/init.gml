@@ -12,6 +12,7 @@ did_hit = false;
 
 airstall = 0;
 airstall_timer = 0;
+airstall_cooldown = 0;
 
 uspec_bounce = true;
 fennek_uspec_grab = noone;
