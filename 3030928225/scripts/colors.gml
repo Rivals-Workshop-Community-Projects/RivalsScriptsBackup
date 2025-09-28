@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 76, 71 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 31 );
 
 // Skullgirl
 set_color_profile_slot( 1, 0, 241, 234, 210 ); //hair
@@ -342,10 +342,11 @@ set_color_profile_slot( 28, 4, 131, 61, 168 ); //dress
 set_color_profile_slot( 28, 5, 255, 0, 161 ); //red
 set_color_profile_slot( 28, 6, 218, 140, 237 ); //white
 set_color_profile_slot( 28, 7, 175, 138, 255 ); //fire
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Waga Bobaga
 set_color_profile_slot( 29, 0, 44, 46, 46 ); //hair
-set_color_profile_slot( 29, 1, 197, 103, 234 ); //lev 
+set_color_profile_slot( 29, 1, 197, 103, 234 ); //lev 
 set_color_profile_slot( 29, 2, 224, 222, 237 ); //skirt
 set_color_profile_slot( 29, 3, 248, 242, 252 ); //skin
 set_color_profile_slot( 29, 4, 105, 105, 105 ); //dress
@@ -353,6 +354,17 @@ set_color_profile_slot( 29, 5, 102, 102, 102 ); //red
 set_color_profile_slot( 29, 6, 203, 143, 255 ); //white
 set_color_profile_slot( 29, 7, 243, 192, 255 ); //fire
 //shading data: [1, 1, 1, 0.5, 1, 1, 1, 1]
+
+// Ghostride
+set_color_profile_slot( 30, 0, 87, 39, 102 ); //hair
+set_color_profile_slot( 30, 1, 247, 153, 114 ); //lev 
+set_color_profile_slot( 30, 2, 156, 63, 63 ); //skirt
+set_color_profile_slot( 30, 3, 148, 92, 62 ); //skin
+set_color_profile_slot( 30, 4, 193, 156, 192 ); //dress
+set_color_profile_slot( 30, 5, 107, 37, 103 ); //red
+set_color_profile_slot( 30, 6, 156, 37, 76 ); //white
+set_color_profile_slot( 30, 7, 241, 161, 255 ); //fire
+//shading data: [1, 1.3, 1, 1, 1, 1, 1, -1]
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

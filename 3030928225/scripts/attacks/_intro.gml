@@ -7,8 +7,8 @@ window_num = 1; //loading char...
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
-set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_intro"));
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(atk, window_num, AG_WINDOW_SFX, sound_get("sfx_intro"));
+//set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 2);
 
 window_num ++; //load complete?

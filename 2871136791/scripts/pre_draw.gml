@@ -24,3 +24,10 @@ with (puul)
 	    }
 	}
 }
+
+if (state == PS_RESPAWN || respawn_taunt)
+{
+	shader_start();
+	draw_sprite_ext(sprite_get("plat2"), -1, x+draw_x, y+draw_y, 2*spr_dir, 2, 0, c_white, 1);
+	shader_end();
+}

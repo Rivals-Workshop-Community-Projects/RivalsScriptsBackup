@@ -8,10 +8,21 @@ reverseDir = false;
 dairDamageTimer = 0;
 //dairOffStage = 30;
 dairID = noone;
+dairDJumps = 0;
 birdOut = false;
 puul = instance_create(x-200*spr_dir, y-100, "obj_article1");
 pullfieldfx = hit_fx_create(sprite_get("pullfield"), 16);
 pushfieldfx = hit_fx_create(sprite_get("pushfield"), 16);
+
+practicemode = false;
+puulnocooldown = false;
+tutalpha = 0;
+tutstate = 0;
+tutstatebuffer = 0;
+tuton = false;
+holdtimer = 0;
+tutmenu = 0;
+noofitems = 3;
 
 steelball = noone;
 steelballextra = noone;

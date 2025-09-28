@@ -4,11 +4,38 @@ if ("canShoot" in self)
 	shader_start();
 	draw_sprite( sprite_get("ballarea"), 0, temp_x+140+dspecshiver, temp_y-12);
 	for (var i = 0; i < min(canShoot,2); ++i)
-		draw_sprite( sprite_get("steelballhud"), 0, temp_x+154+(i*12)+dspecshiver, temp_y-14);
+		draw_sprite(sprite_get("steelballhud"), 0, temp_x+154+(i*12)+dspecshiver, temp_y-14);
 	shader_end();
 	
 	if (canShoot < 2)
 		draw_debug_text(temp_x+148+dspecshiver, temp_y - 6, string((recharge1 != 0 && recharge2 != 0)?(1 + floor(min(recharge1,recharge2) / 60)):(1 + floor(max(recharge1,recharge2) / 60))));
+}
+
+if ("practicemode" in self
+	&& practicemode
+	&& tutalpha != 0) // Tutorial
+{
+	menu[0] = "Unlimited Ammo: ";
+	menu[1] = "Unlimited Magnet: ";
+	menu[2] = "YAY";
+	draw_set_alpha(tutalpha);
+	switch (tutstate)
+	{
+	case 0:
+		draw_debug_text(temp_x,temp_y - 8 + floor(tutalpha*4)*2-8, "Dev menu (Taunt)");
+		break;
+	case 1:
+		draw_set_alpha(tutalpha*0.4);
+		draw_rectangle_color(temp_x - 8,temp_y - 12 - 16*noofitems + floor(tutalpha*4)*2-8,temp_x + 215,temp_y + floor(tutalpha*4)*2-8,c_white,c_white,c_white,c_white,false);
+		draw_rectangle_color(temp_x - 6,temp_y - 10 - 16*noofitems + floor(tutalpha*4)*2-8,temp_x + 213,temp_y-2 + floor(tutalpha*4)*2-8,c_black,c_black,c_black,c_black,false);
+		draw_set_alpha(tutalpha);
+		for (var i = 0; i < noofitems; ++i)
+			draw_debug_text((tutmenu==i?round(sin(get_gameplay_time()/8))*2+2:0) + temp_x,temp_y - 20 - (noofitems-i-1)*16 + floor(tutalpha*4)*2-8, (tutmenu==i?"> ":"  ")+menu[i]+string(i==0?runeM?"True":"False":i==1?puulnocooldown?"True":"False":""));
+		break;
+	default:
+		break;
+	}
+	draw_set_alpha(1);
 }
 
 //abyss gui code

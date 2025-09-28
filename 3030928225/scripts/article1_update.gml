@@ -12,6 +12,7 @@ enum ARTICLE_STATE {
 if (num_children > 0) {
     switch(state) {
         case ARTICLE_STATE.STATE_APPEAR :
+        	visible = true;
             if (state_timer < 2) { // windup of 3 cycles
                 image_index = 3;
             } else if (state_timer == 2) { // hitbox active for 4 frames (says '5' in dspecial.gml, but I guess it's not counted right?)
@@ -89,6 +90,7 @@ if (num_children > 0) {
     // This is an endpoint piece
         switch(state) {
         case ARTICLE_STATE.STATE_APPEAR :
+        	visible = true;
             if (state_timer < 2) { // windup of 3 cycles
                 image_index = 3;
             } else if (state_timer == 2) { // hitbox active for 4 frames (says '5' in dspecial.gml, but I guess it's not counted right?)

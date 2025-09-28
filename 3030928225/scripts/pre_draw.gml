@@ -12,7 +12,7 @@ if (state == PS_RESPAWN || respawn_taunt > 0)
 // If there's an fspecial hitbox, draw a line to it
 if ((attack == AT_FSPECIAL) && (grab_hitbox != noone) && (instance_exists(grab_hitbox))) {
 	var x_origin = x + (spr_dir * 40);
-	var x_distance = (grab_hitbox.x + (spr_dir * 20)) - x_origin;
+	var x_distance = (grab_hitbox.x - (spr_dir * (fspecial_harpoon_hitbox_x_offset - 20))) - x_origin;
 	var x_scale = x_distance / 7;
 	draw_sprite_ext(rope_image, 0,
 				x_origin, y - 48, x_scale, 2, 0,

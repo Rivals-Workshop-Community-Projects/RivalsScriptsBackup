@@ -18,7 +18,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 1);
 
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_CANCEL_TYPE, 1);

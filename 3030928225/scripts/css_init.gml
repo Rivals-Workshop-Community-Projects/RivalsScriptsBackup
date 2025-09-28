@@ -68,7 +68,7 @@ box_vert_offset = 48;
 // Manage synced var
 // Synced var is 32 bits, only use ones of interest to us
 var synced_var = get_synced_var(player);
-uspecial_mode_active = (synced_var & 0x1) == 0;
+va_mode_selected = (synced_var & 0x1) == 0;
 
 //ANIMATION VARS
 sprite_change_offset("idle", 23, 47); //should mimic the load.gml offsets

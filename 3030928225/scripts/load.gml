@@ -2,7 +2,7 @@
 //this script is usually used to put in all our sprites' offsets
 
 //ground movement
-sprite_change_offset("idle",            50, 74);
+sprite_change_offset("idle",            45, 75);
 sprite_change_offset("crouch",          50, 74);
 sprite_change_offset("walk",            50, 74);
 sprite_change_offset("walkturn",        50, 74);
@@ -41,6 +41,7 @@ sprite_change_offset("dattack",         40, 74, true);
 sprite_change_offset("ustrong",         48, 84, true);
 sprite_change_offset("ustrong2",        48, 84, true);
 sprite_change_offset("fstrong",         39, 79, true);
+sprite_change_offset("airstrong",       33, 59, true);
 sprite_change_offset("dstrong",         50, 84, true);
 sprite_change_offset("nair",            51, 74, true);
 sprite_change_offset("uair",            48, 103, true);
@@ -69,8 +70,9 @@ sprite_change_offset("intro",           44, 79, true);
 sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 
+sprite_change_offset("shadow",          20, 8);
 sprite_change_offset("tail",            0, 11);
-sprite_change_offset("harpoon",         0, 11);
+sprite_change_offset("harpoon",         fspecial_harpoon_hitbox_x_offset, 21);
 sprite_change_offset("tailspike",       46, 58);
 sprite_change_offset("tailspike_mask",  46, 58);
 sprite_change_offset("hud_icons",       7, 7);

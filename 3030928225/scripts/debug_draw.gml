@@ -3,7 +3,9 @@
 //the commented line below is used to draw debug text right under the player character
 
 //draw_debug_text(x, y, "text = " + string(variable));
-
+/*draw_debug_text(x, y, string(special_charge));
+draw_debug_text(x, y+16, string(stored_strong_charge));
+*/
 //Put this above all the #defines in your script.
 draw_colored_hitboxes();
 

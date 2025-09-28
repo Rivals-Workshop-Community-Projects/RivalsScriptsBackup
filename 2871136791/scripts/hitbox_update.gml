@@ -1,5 +1,3 @@
-// hitbox_update
-
 if (attack == AT_DSPECIAL && hbox_num == 2)
 {
 	var kbAngle = 50;

@@ -5,6 +5,14 @@ set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_NAME, "DSpecial: Spin Dash");
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Sonic's signature technique.
+Hold SPECIAL to charge the move. Longer charge means longer Spin Dash duration.
+After releasing, Sonic will Spin Dash forwards.
+While rolling, Sonic can do the following:
+- turn around by inputting the opposite direction
+- cancel the move with a dodge
+- attack to instantly Dash Attack (on the ground) or into an aerial (in the air)");
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
@@ -48,6 +56,7 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_num_hitboxes(AT_DSPECIAL, 3);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Charging Hitbox");
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 4);
@@ -69,6 +78,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Rolling Hitbox");
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 9);
@@ -88,6 +98,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Rolling Hitbox");
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 10);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 8);

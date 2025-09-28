@@ -19,7 +19,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -367,6 +367,7 @@ fully_charged = false;
 was_fully_charged = false;
 charge_sound = asset_get("sfx_boss_shine");
 charge_consume_sound = asset_get("sfx_boss_shine");
+charged_active_sound = sound_get("getboosted");
 white_flash_cooldown = 0;
 charge_flash_cooldown = 0;
 charge_flash_cooldown_max = 10;
@@ -385,11 +386,14 @@ stance_image_timer = 0;
 stance_frames = 4;
 stance_frames_length = 5;
 stancle_length = 11;
+in_stancel_window = false;
 
 // Nspecial
 super_armor_available = false;
 nspecial_use_air = false;
 nspecial_air_stall_available = true;
+reduced_gravity_nspecial_air = gravity_speed / 4;
+reduced_gravity_fstrong2 = gravity_speed / 1.5;
 // Fspecial
 charge_signalled = false;
 grab_hitbox = noone;
@@ -408,23 +412,24 @@ fspecial_uncharged_max_distance = 200;
 fspecial_uncharged_time = 55;
 //fspecial_charged_initial_speed = 16;
 fspecial_charged_max_distance = 300;
-fspecial_charged_time = 65;
+fspecial_charged_time = 55;
 // This is roughly how many frames to hold still after the grab has completed, doesn't account for user recovery frames
-fspecial_stun_time = 6;
+fspecial_stun_time = 8;
 stun_counter = 0;
 fspecial_whip_spin_sound_fx = asset_get("sfx_swipe_weak1");
 fspecial_whip_spin_sound_curr = noone;
+// fspecial harpoon hitbox offsets
+fspecial_harpoon_hitbox_width = 50;
+fspecial_harpoon_hitbox_height = 45;
+fspecial_harpoon_hitbox_x_offset = 10; // horizontal offset of the hitbox, adjustments are relative to the visual
 // Uspecial
 uspecial_dig_distance_max = 100;
 uspecial_dig_distance = uspecial_dig_distance_max;
 uspecial_dig_wall_default_offset = uspecial_dig_distance_max + 85;
 uspecial_original_x = x;
-uspecial_hold_to_consume = true;
+//uspecial_hold_to_consume = true;
+uspecial_secretly_charged = false;
 // Dspecial
-//tail_active = false;
-// TODO temporary solution
-//dspecial_tail_countdown = 0;
-//dspecial_tail_countdown_max = 60;
 dspecial_tail_article = noone;
 max_space_between_parts = 74;
 space_between_parts = max_space_between_parts;
@@ -434,6 +439,11 @@ spot_found = false;
 begin_reeling = false;
 begin_return = false;
 dspecial_charge_time = 0;
+draw_dspecial_indicator = false;
+dspecial_requested_position_x = 0;
+dspecial_assigned_position_x = 0;
+dspecial_adjustment_increment = 8;
+dspecial_granularity = 8;
 // Dspecial air
 non_grab_hitbox = noone;
 dspecial_caught_one = false;
@@ -442,10 +452,16 @@ dspecial_air_looping_duration = 12;
 dspecial_spike_hitbox_duration = 3;
 dspecial_dive_time = 0;
 
+// voice line VA section
+va_mode_active = false;
+curr_va_line = noone;
+curr_va_line_must_play_fully = false;
+va_hurt_cd = 0;
+va_hurt_cd_max = 60; // in frames, 60 per second
+playing_stance_line = false;
+
 var synced_var = get_synced_var(player);
-uspecial_hold_to_consume = (synced_var & 0x1) != 0;
-
-
+va_mode_active = (synced_var & 0x1) != 0;
 
 //this section is mostly used by tester's specific attack variables, for your own character you probably don't need this
 fair_cd = false;
@@ -526,3 +542,4 @@ TCG_Kirby_Copy = 12;
 */
 
 uairvfx = hit_fx_create(sprite_get("uair_explosion"), 30)
+

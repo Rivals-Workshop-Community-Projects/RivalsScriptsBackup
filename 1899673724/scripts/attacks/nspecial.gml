@@ -5,6 +5,11 @@ set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NSPECIAL, AG_LANDING_LAG, 18);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Homing Attack");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Basically his Smash NSpecial.
+Charges in place before launching at a nearby opponent.
+On hit, Sonic will do a pose that can be canceled into anything a few frames into it.
+If there is no enemy nearby after charging, Sonic will launch himself at a horizontally downwards angle.");
 
 //**************************************************************
 //New
@@ -60,6 +65,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 22);
 set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Main Hitbox");
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 16);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);

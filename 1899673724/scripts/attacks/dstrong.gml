@@ -3,6 +3,7 @@ set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_NAME, "DStrong: Sonic Flare");
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 6);
@@ -42,6 +43,7 @@ set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_DSTRONG,2);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Front Hitbox");
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 36);
@@ -62,6 +64,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_MUNO_HITBOX_NAME, "Back Hitbox");
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -24);

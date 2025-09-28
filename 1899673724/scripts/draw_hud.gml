@@ -8,6 +8,7 @@ if (state == PS_SPAWN && state_timer <= 100){
     draw_debug_text( temp_x + 50, temp_y - 20, string( "Taunt: Voiced" ));
 }
 
+
 /*
 draw_debug_text(temp_x,temp_y-16,"Current state: " + get_state_name(state))
 draw_debug_text(temp_x,temp_y-32,"Window timer: " + string(window_timer) + "    State timer: " + string(state_timer))

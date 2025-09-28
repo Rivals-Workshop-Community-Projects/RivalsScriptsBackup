@@ -11,6 +11,9 @@ if (charge_flash_cooldown > 0) {
 if (white_flash_cooldown > 0) {
 	white_flash_cooldown--;
 }
+if (va_hurt_cd > 0) {
+	va_hurt_cd--;
+}
 
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack check - becomes true if the state is PS_ATTACK_GROUND or PS_ATTACK_AIR
 is_dodging = (hurtboxID.dodging); //dodge check - becomes true if the character is invincible when dodging/teching
@@ -111,6 +114,8 @@ else
     if (state != PS_LANDING_LAG) {
 		can_stancle = false;
     }
+    
+    draw_dspecial_indicator = false; //Enabled when charging dspecial
 }
 
 //grab logic
@@ -411,6 +416,7 @@ with hit_fx_obj if player_id == other {
 //print_debug("player state = " + string(state) + ", state_timer = " + string(state_timer));
 //print_debug("window = " + string(window) + ", window_timer = " + string(window_timer) + ", image_index = " + string(image_index));
 //print_debug("shield_pressed = " + string(shield_pressed) + ", shield_down = " + string(shield_down));
+//print_debug("can_jump = " + string(can_jump) + ", can_djump = " + string(can_djump) + ", dspecial_dive_time = " + string(dspecial_dive_time));
 
 ////////////////////////////////////////////////////////////////// MISC. //////////////////////////////////////////////////////////////////
 

@@ -110,6 +110,7 @@ if (introTimer2 < 4) {
 //Dash Start Sound Effect
 if (state == PS_DASH_START) {
     if (state_timer == 1) {
+        sound_stop(sound_get("sfx_sonic_dashstart"));
         sound_play(sound_get("sfx_sonic_dashstart"));
     }
 }
@@ -167,15 +168,27 @@ if (move_cooldown[AT_NSPECIAL] == 1){
 }
 
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	var dirForHADust = point_direction(x, y, x + hsp, y + vsp);
 	if (attack == AT_NSPECIAL){
-		var dirForHADust = point_direction(x, y, x + hsp, y + vsp);
 		if (window == 2 && window_timer == 1 && !hitpause){
 			spawn_base_dust( x - (0 * spr_dir), y - 20, "doublejump", spr_dir, dirForHADust + (270 * spr_dir));
 		}
-		if (window == 2 && window_timer >= 2 && window_timer mod 3 == 0 && !hitpause){
+		if (window == 2 && window_timer mod 2 == 0 && !hitpause){
 			spawn_base_dust( x - (0 * spr_dir), y - 20, "doublejump_small", spr_dir, dirForHADust + (270 * spr_dir));
 		}
 	}
+	
+	if (attack == AT_FSPECIAL){
+		if (window == 1 && window_timer == 0){
+			print(free);
+			if (!free){
+				spawn_base_dust( x - (0 * spr_dir), y, "jump", spr_dir, 0);
+			} else {
+				spawn_base_dust( x - (0 * spr_dir), y, "doublejump", spr_dir, -24 * spr_dir);
+			}
+		}
+	}
+	
 }
 
 //Making the Light Speed Particles animate

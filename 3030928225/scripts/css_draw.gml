@@ -10,10 +10,10 @@ draw_sprite_ext(sprite_get("uspecial_button"),
 				uspecial_button_frame, x + uspecial_button_origin_x, y + uspecial_button_origin_y,
 				2, 2, 0, c_white, 1);
 if ((uspecial_button_frame % 2) == 1) {
-	line_1 = "Will only consume uspecial";
-	line_2 = "charge if button isn't held";
-	if (uspecial_mode_active) {
-		line_2 = "charge if button is held";
+	line_1 = "VA mode is currently ON";
+	line_2 = "click to toggle";
+	if (va_mode_selected) {
+		line_1 = "VA mode is currently OFF";
 	}
 	
 	draw_rectangle_color(x + 10, y + box_vert_offset,

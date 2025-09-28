@@ -9,12 +9,26 @@
 //B - Reversals
 if (attack == AT_FSPECIAL
 	|| attack == AT_DSPECIAL
-	|| attack == AT_DSPECIAL_AIR)
-
+	|| attack == AT_DSPECIAL_AIR
+	|| attack == AT_USPECIAL_GROUND
+	|| attack == AT_FSTRONG_2
+	|| attack == AT_DSTRONG
+	|| attack == AT_USTRONG)
+{
+	trigger_b_reverse();
+}
+if ((attack == AT_USPECIAL)
+	&& (window < uspecial_air_burrowed_wall_window))
 {
 	trigger_b_reverse();
 }
 
+enum ARTICLE_STATE {
+	STATE_APPEAR,
+	STATE_HOLD,
+	STATE_RETREAT,
+	STATE_DESTROY
+}
 
 // Allow use of previously charged strongs or specials on hit
 if (can_stancle) {
@@ -32,6 +46,31 @@ if (can_stancle) {
             can_ustrong = true;
         }
     }
+    if ((stored_strong_charge >= strong_full_charge_time && free)
+        && (attack != AT_FSTRONG_2))
+    {
+        // Want to only enable AT_FAIR and AT_BAIR
+        can_attack = true;
+        //can_strong = true;
+        if (//any_strong_down
+        	((attack == AT_NAIR)
+        	 || (attack == AT_UAIR)
+        	 || (attack == AT_DAIR)
+        	 || (attack == AT_FAIR)
+        	 || (attack == AT_BAIR)
+        	 || (attack == AT_DSPECIAL_AIR)
+        	 || (attack == AT_NSPECIAL_AIR)
+        	 || (attack == AT_USPECIAL)))
+        {
+        	move_cooldown[AT_NAIR] = 1;
+        	move_cooldown[AT_UAIR] = 1;
+        	move_cooldown[AT_DAIR] = 1;
+        	if (!any_strong_down) {
+        		move_cooldown[AT_FAIR] = 1;
+        		move_cooldown[AT_BAIR] = 1;
+        	}
+        }
+    }
 	if ((special_charge >= special_full_charge_time)
 		&& (attack != AT_NSPECIAL)
 		&& (attack != AT_NSPECIAL_AIR)
@@ -42,6 +81,213 @@ if (can_stancle) {
 		&& (attack != AT_USPECIAL_GROUND))
 	{
 		can_special = true;
+	}
+}
+
+// VA section - voice lines that play at a certain point in each attack
+if (va_mode_active) {
+	// charging strong stance lines
+	if (!must_complete_attack) {
+		switch (attack) {
+			case AT_FSTRONG:
+			case AT_USTRONG:
+			case AT_DSTRONG:
+				if ((window == 1) && (window_timer == 2)) {
+					play_va_line("strongstance", 2, 70, 1);
+					playing_stance_line = true;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	// charging special stance lines
+	if (!must_complete_attack) {
+		switch (attack) {
+			case AT_NSPECIAL:
+			case AT_FSPECIAL:
+			case AT_USPECIAL_GROUND:
+			case AT_DSPECIAL:
+				if ((window == 1) && (window_timer == 2)) {
+					play_va_line("specialstance", 2, 70, 1);
+					playing_stance_line = true;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	// End stance voice lines if we leave a stance - that can happen if either
+	// we use a different attack or enter the stancel window of the associated attack
+	if (playing_stance_line) {
+		switch (attack) {
+			case AT_FSTRONG:
+			case AT_USTRONG:
+			case AT_DSTRONG:
+			case AT_NSPECIAL:
+			case AT_FSPECIAL:
+			case AT_USPECIAL_GROUND:
+			case AT_DSPECIAL:
+				// Lickily, all stance charge moves charge
+				// in window 2, and 3 is a bonus charge window
+				if (window > 3) {
+					sound_stop(curr_va_line);
+				}
+				break;
+			default:
+				sound_stop(curr_va_line);
+				break;
+		}
+	}
+	
+	// most lines played during normals share the same generic lines
+	var play_generic_attack_va_this_frame = false;
+	switch (attack) {
+		case 2: //AT_INTRO
+			// Note that Rivals randomization is weird - since this is frame 2 of
+			// the game it may be repeated if you rapidly quit/restart the game,
+			// but seems to work under normal use conditions.
+			if ((window == 1) && (window_timer == 2)) {
+				play_va_line("intro", 4, 100, 1);
+			}
+			break;
+		case AT_FSTRONG:
+			if (((window == fstrong_uncharged_window) || (window == fstrong_charged_window)) && (window_timer == 1)) {
+				play_va_line("fstrong", 2, 75, 1);
+			}
+			break;
+		case AT_FSTRONG_2:
+			if ((window == fstrong2_charged_window) && (window_timer == 1)) {
+				play_va_line("Astrong", 2, 75, 1);
+			}
+			break;
+		case AT_USTRONG_2:
+			if ((window == ustrong_charged_window) && (window_timer == 1)) {
+				play_va_line("Custrong", 2, 75, 1);
+			} else if ((window == ustrong_uncharged_window) && (window_timer == 1)) {
+				play_va_line("ustrong", 2, 75, 1);
+			}
+			break;
+		case AT_DSTRONG:
+			if (((window == dstrong_uncharged_window) || (window == dstrong_charged_window)) && (window_timer == 1)) {
+				play_va_line("dstrong", 2, 75, 1);
+			}
+			break;
+		case AT_NSPECIAL:
+			if (((window == nspecial_uncharged_window) || (window == nspecial_charged_window)) && (window_timer == 1)) {
+				play_va_line("nspecial", 2, 75, 1);
+			}
+			break;
+		case AT_NSPECIAL_AIR:
+			if (((window == nspecial_uncharged_window) || (window == nspecial_charged_window)) && (window_timer == 1)) {
+				play_va_line("nspecial", 2, 75, 1);
+			}
+			break;
+		case AT_FSPECIAL:
+			if ((window == fspecial_charged_window) && (window_timer == 1)) {
+				play_va_line("Cfspecial", 1, 100, 1);
+			} else if ((window == fspecial_uncharged_window) && (window_timer == 1)) {
+				play_va_line("fspecial", 1, 100, 1);
+			}
+			break;
+		case AT_USPECIAL:
+			if ((window == uspecial_leap_window) && (window_timer == 1)) {
+				play_va_line("Auspecial", 2, 75, 1);
+			}
+			break;
+		case AT_USPECIAL_GROUND:
+			if (((window == uspecial_uncharged_dig_window) || (window == uspecial_charged_dig_window)) && (window_timer == 1)) {
+				play_va_line("Guspecial", 2, 75, 1);
+			} else if ((window == uspecial_charged_rise_window) && (window_timer == 1)) {
+				play_va_line("coffin", 2, 100, 1);
+			}
+			break;
+		case AT_DSPECIAL:
+			if ((window == dspecial_charged_window) && (window_timer == 1)) {
+				play_va_line("GCdspecial", 1, 100, 1);
+			} else if ((window == dspecial_uncharged_window) && (window_timer == 1)) {
+				play_va_line("Gdspecial", 2, 75, 1);
+			}
+			break;
+		case AT_DSPECIAL_AIR:
+			if ((window == dspecial_air_kick_flip_windup_window) && (window_timer == 7)) {
+				play_va_line("ACdspecial_finisher", 1, 100, 1);
+			} else if ((window == dspecial_air_windup_window) && (window_timer == 1)) {
+				play_va_line("Adspecial", 2, 75, 1);
+			}
+			break;
+		case AT_JAB:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			} else if ((window == 4) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			} else if ((window == 7) && (window_timer == 1)) {
+				play_va_line("rapidjab", 2, 75, 1);
+			}
+			break;
+		case AT_FTILT:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			} else if ((window == 4) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_UTILT:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_DTILT:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_DATTACK:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_FAIR:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_BAIR:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_UAIR:
+			// I figure up air singing note is already enough voice line, but you can uncomment below if you want more
+			/*if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}*/
+			break;
+		case AT_DAIR:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_NAIR:
+			if ((window == 1) && (window_timer == 1)) {
+				play_generic_attack_va_this_frame = true;
+			}
+			break;
+		case AT_TAUNT:
+			if ((window == 1) && (window_timer == 1)) {
+				play_va_line("taunt", 2, 75, 1);
+			}
+			break;
+		default:
+			break;
+	}
+	if (play_generic_attack_va_this_frame)
+		play_va_line("attack", 5, 40, 1);
+} else { // VA mode is disabled
+	if (attack == 2) { //AT_INTRO
+		if ((window == 1) && (window_timer == 2)) {
+			sound_play(sound_get("sfx_intro"));
+		}
 	}
 }
 
@@ -190,6 +436,28 @@ if attack == AT_FSTRONG {
     }
 }
 
+if attack == AT_FSTRONG_2 {
+    // Sound for neck extending
+    if window == fstrong2_windup_window && window_timer == 2 and !hitpause 
+        sound_play(asset_get("sfx_kragg_spike"), false, noone, 0.9, 1.5);
+
+    if window == fstrong2_charged_window && window_timer == 9 and !hitpause 
+        sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 1.2, 1.1);
+
+    if window == fstrong2_charged_window && window_timer == 5 and !hitpause 
+        sound_play(asset_get("sfx_zetter_fireball_fire"), false, noone, .8, 1.2);
+
+    // Sound for chomp
+    if window == fstrong2_charged_window && window_timer == 9 and !hitpause 
+        sound_play(asset_get("sfx_bite"));
+
+    if window == fstrong2_charged_window && window_timer == 4 and !hitpause 
+        sound_play(asset_get("sfx_swipe_heavy1"), false, noone, 0.9, .9);
+}
+
+
+
+// break ////
 
 if attack == AT_USPECIAL {
     // Check if we're touching a wall
@@ -412,9 +680,7 @@ if attack == AT_USPECIAL_GROUND {
     if ((window == uspecial_charged_hide_window)
     	&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
 	{
-		if (((special_charge >= special_full_charge_time) && special_down && uspecial_hold_to_consume)
-			|| ((special_charge >= special_full_charge_time) && !special_down && !uspecial_hold_to_consume))
-		{
+		if (((special_charge >= special_full_charge_time) && !special_down)) {
 			// emergence with no hitbox
         	sound_play(asset_get("sfx_kragg_rock_pillar"));
 		} else {
@@ -536,7 +802,7 @@ switch (attack) {
 	case AT_FSTRONG :
 		// Lose charge if you complete the attack mid charge
 		if ((window > fstrong_bonus_charging_window) && (window != fstrong_stancel_window)) {
-			strong_charge = 0;
+			//strong_charge = 0;
 			stored_strong_charge = 0;
 		}
 
@@ -557,7 +823,7 @@ switch (attack) {
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
 				charge_flash_cooldown = charge_flash_cooldown_max;
-				strong_charge = 0;
+				//strong_charge = 0;
 				stored_strong_charge = 0;
 			} else {
 				must_complete_attack = false;
@@ -641,6 +907,126 @@ switch (attack) {
 			window_timer = 0;
 		}
 		break;
+	case AT_FSTRONG_2 : // A.K.A. airstrong - This one is unique in that you cannot release the attack uncharged, must either wait until charged or cancel
+		// Lose charge if you complete the attack mid charge
+		if ((window > fstrong2_bonus_charging_window) && (window != fstrong2_stancel_window)) {
+			//strong_charge = 0;
+			stored_strong_charge = 0;
+		}
+
+		off_edge = false;
+		//print("strong charge = " + string(strong_charge));
+		if (stored_strong_charge > strong_charge) {
+			strong_charge = stored_strong_charge;
+		} else if ((strong_charge >= stored_strong_charge) && (window <= fstrong_charging_window)) {
+			stored_strong_charge = strong_charge;
+		}
+		// Skip initial charge window if charge is ready
+		if ((window == fstrong2_windup_window)
+			&& (window_timer == 1))
+		{
+			// Stalling is weaker if used multiple times in airtime
+			// Shares stall decay with nspecial
+			if (nspecial_air_stall_available) {
+				vsp = -2;
+				nspecial_air_stall_available = false;
+			} else {
+					vsp = 2;
+			}
+			current_charge_time = max_charge_time;
+			if (strong_charge >= strong_full_charge_time) {
+				must_complete_attack = true;
+				// Play the 'consuming charge' sound
+				sound_play(charge_consume_sound);
+				//rega vfx sfx
+				sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+				spawn_hit_fx(x-10*spr_dir, y-0, fx_pow_hit[0]);
+				//
+				
+				charge_flash_cooldown = charge_flash_cooldown_max;
+				//strong_charge = 0;
+				stored_strong_charge = 0;
+			} else {
+				must_complete_attack = false;
+			}
+		}
+		
+		if (window <= fstrong2_bonus_charging_window) {
+			strong_charge_interrupted = true;
+		} else {
+			strong_charge_interrupted = false;
+		}
+		
+		fully_charged = (strong_charge >= strong_full_charge_time);
+		//not_allowed_to_finish = any_strong_down || !fully_charged;
+
+		if (window == fstrong2_charging_window) {
+			if ((!fully_charged) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+				window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
+				strong_charge++;
+			}
+		}
+		
+		fully_charged = (strong_charge >= strong_full_charge_time);
+
+		if ((window == fstrong2_windup_window)
+			&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
+			&& must_complete_attack)
+		{
+			if (must_complete_attack) {
+				window = fstrong2_charged_window;
+				stored_strong_charge = 0;
+				window_timer = 0;
+			}
+		} else if ((window < fstrong2_bonus_charging_window) && !must_complete_attack) {
+			if (shield_pressed) {
+				// Perform 'stancle' animation, different from stancle
+				smash_charging = false;
+				stored_strong_charge = strong_charge;
+				strong_charge = 0;
+				window = fstrong2_stancel_window;
+				window_timer = 0;
+			}
+		} else if (window == fstrong2_bonus_charging_window) {
+			if (fully_charged) {
+				if ((window_timer == 1) && !must_complete_attack) {
+					// Play the 'done charging' sound the first time we reach this part
+					sound_play(charge_sound);
+					charge_flash_cooldown = charge_flash_cooldown_max;
+ 				}
+			}
+			if (!must_complete_attack) {
+				// Store charge by pressing parry
+				if (shield_pressed) {
+					// Perform 'stancle' animation, different from stancle
+					smash_charging = false;
+					stored_strong_charge = strong_charge;
+					strong_charge = 0;
+					window = fstrong2_stancel_window;
+					window_timer = 0;
+				} else if (!must_complete_attack) {
+					// Loop in this window while button held
+					if (any_strong_down && (current_charge_time > 0)) {
+						// Can't just use a loop type because it's incompatible with attacks using strong charge
+						if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+							window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
+						}
+					}
+				}
+			}
+			if (!any_strong_down) {
+				window = fstrong2_charged_window;
+				stored_strong_charge = 0;
+				window_timer = 0;
+			}
+		}
+
+		// Jump to correct recovery window if uncharged
+		/*if ((window == fstrong2_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+			window = fstrong_recovery_window;
+			window_timer = 0;
+		}*/
+		break;
 	case AT_USTRONG :
 		// Don't have to reset charge here - do it in ustrong2
 
@@ -648,7 +1034,7 @@ switch (attack) {
 		//print("strong charge = " + string(strong_charge));
 		if (stored_strong_charge > strong_charge) {
 			strong_charge = stored_strong_charge;
-		} else if ((strong_charge >= stored_strong_charge) && (window <= fstrong_charging_window)) {
+		} else if ((strong_charge >= stored_strong_charge) && (window <= dstrong_charging_window)) {
 			stored_strong_charge = strong_charge;
 		}
 		// Skip initial charge window if charge is ready
@@ -662,7 +1048,7 @@ switch (attack) {
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
 				charge_flash_cooldown = charge_flash_cooldown_max;
-				strong_charge = 0;
+				//strong_charge = 0;
 				stored_strong_charge = 0;
 			} else {
 				was_fully_charged = false;
@@ -748,7 +1134,7 @@ switch (attack) {
 	case AT_USTRONG_2 :
 		// Lose charge if you complete the attack mid charge
 		// Always lose charge because there's no way we'd want to preserve it in this stage
-		strong_charge = 0;
+		//strong_charge = 0;
 		stored_strong_charge = 0;
 	
 		// If in the air, allow wall-jump cancel
@@ -784,7 +1170,7 @@ switch (attack) {
 	case AT_DSTRONG :
 		// Lose charge if you complete the attack mid charge
 		if ((window > dstrong_bonus_charging_window) && (window != dstrong_stancel_window)) {
-			strong_charge = 0;
+			//strong_charge = 0;
 			stored_strong_charge = 0;
 		}
 
@@ -792,7 +1178,7 @@ switch (attack) {
 		//print("strong charge = " + string(strong_charge));
 		if (stored_strong_charge > strong_charge) {
 			strong_charge = stored_strong_charge;
-		} else if ((strong_charge >= stored_strong_charge) && (window <= fstrong_charging_window)) {
+		} else if ((strong_charge >= stored_strong_charge) && (window <= dstrong_charging_window)) {
 			stored_strong_charge = strong_charge;
 		}
 		// Skip initial charge window if charge is ready
@@ -805,7 +1191,7 @@ switch (attack) {
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
 				charge_flash_cooldown = charge_flash_cooldown_max;
-				strong_charge = 0;
+				//strong_charge = 0;
 				stored_strong_charge = 0;
 			} else {
 				must_complete_attack = false;
@@ -1627,7 +2013,12 @@ switch (attack) {
 				must_complete_attack = true;
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
+				//rega vfx sfx
+				sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+				spawn_hit_fx(x-16*spr_dir, y-32, fx_pow_hit[1]);
+				//
 				charge_flash_cooldown = charge_flash_cooldown_max;
+				
 				//special_charge = 0;
 			} else {
 				// Don't do this on uncharged version or you end the 'stunned' state
@@ -1661,13 +2052,15 @@ switch (attack) {
 			window = dspecial_air_charged_recovery_window;
 			window_timer = 0;
 		}
-        if (window == 2) {
+        if (window == dspecial_air_windup_window) {
         	if (window_timer == 1) {
         		dspecial_dive_time = 0;
         	}
+        }
+        if (window == dspecial_air_diving_window) {
         	dspecial_dive_time++;
         }
-    	if ((window == 2)
+    	if ((window == dspecial_air_diving_window)
     		&& (dspecial_dive_time > 18)
     		&& !dspecial_caught_one)
 		{
@@ -1676,17 +2069,29 @@ switch (attack) {
     			sound_play(asset_get("sfx_burnend"));
     		}
     		if (!was_parried) {
-	        	can_jump = true
-	        	can_shield = true
+	        	can_jump = true;
+	        	can_djump = true;
+	        	can_shield = true;
     		}
         }
 		break;
 	case AT_USPECIAL :
-		// Cannot stancel this move
+		// Cannot stancel out of this move
 		if ((window == uspecial_start_window)
-			&& (window_timer == 1))
-					can_fast_fall = false;
+			&& (window_timer == 1)
+			&& (hitstop == 0)) // Wait until hitpause ends before we consume charge
 		{
+			can_fast_fall = false;
+			
+			// Charge normally gets consumed by doing the special cancel out of
+			// another move. However, we need to still allow the player to use
+			// the coffin move if this was fully charged and sent to the grounded
+			// mode. So we'll 'secretly' continue to track if the full charge
+			// was still available.
+			uspecial_secretly_charged = false;
+			print_debug("Reset 'secret' charge");
+			// TODO = see if 'secret charge' is actually good idea
+			
 			current_charge_time = max_charge_time;
 			//special_charge = 0;
 			if (special_charge >= special_full_charge_time) {
@@ -1695,8 +2100,11 @@ switch (attack) {
 				if (this_attack_was_the_result_of_a_cancel) {
 					// Play the 'consuming charge' sound
 					sound_play(charge_consume_sound);
+					//rega vfx sfx
+					//
 					charge_flash_cooldown = charge_flash_cooldown_max;
 					special_charge = 0;
+					uspecial_secretly_charged = true;
 				}
 			} else {
 				must_complete_attack = false;
@@ -1709,11 +2117,10 @@ switch (attack) {
 		{
 			attack_end();
 			set_attack(AT_USPECIAL_GROUND);
-			if (special_charge >= special_full_charge_time) {
+			
+			if ((special_charge >= special_full_charge_time) || uspecial_secretly_charged) {
 				// Allow us to not use the charge at the last minute
-				if ((uspecial_hold_to_consume && special_down)
-					|| (!uspecial_hold_to_consume && !special_down))
-				{
+				if (!special_down) {
 					window = uspecial_uncharged_hide_window;
 				} else {
 					window = uspecial_charged_hide_window;
@@ -1744,6 +2151,7 @@ switch (attack) {
 				must_complete_attack = true;
 				// Play the 'consuming charge' sound
 				sound_play(charge_consume_sound);
+    			//
 				charge_flash_cooldown = charge_flash_cooldown_max;
 				//special_charge = 0;
 			} else {
@@ -1838,9 +2246,7 @@ switch (attack) {
 		
 		// Allow us to not use the charge at the last minute
 		if ((window == uspecial_charged_hide_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-			if ((uspecial_hold_to_consume && special_down)
-				|| (!uspecial_hold_to_consume && !special_down))
-			{
+			if (!special_down) {
 				window = uspecial_uncharged_hide_window;
 			} else {
 				window = uspecial_charged_hide_window;
@@ -1875,18 +2281,32 @@ if (attack == AT_NSPECIAL_AIR) {
 		attack_end();
 	}
 }
+// Similarly for the airstrong/fstrong2 - we have to introduce landing lag manually here.
+if (attack == AT_FSTRONG_2) {
+	if ((!free) && (!was_parried) && (window < fstrong2_charged_window)) {
+		// Enter landing lag on contact with the ground
+		set_state(PS_LANDING_LAG);
+		state_timer = 0;
+		hurtboxID.sprite_index = hurtbox_spr;
+		landing_lag_time = get_attack_value(attack, AG_LANDING_LAG);
+		window = 0;
+		window_timer = 0;
+		strong_charge = 0; // Make sure to reset strong charge just in case
+		attack_end();
+	}
+}
 
 // Section just for fspecial projectile/grab management
 if (attack == AT_FSPECIAL) {
 	can_move = false;
 	// TODO - check here if there's room to create the hitbox in front of you, if not then skip to recovery
 	if ((window == fspecial_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		grab_hitbox = create_hitbox(attack, 1, x + (spr_dir * 40), y - 59);
+		grab_hitbox = create_hitbox(attack, 1, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 49);
 		grab_hitbox.max_distance = fspecial_uncharged_max_distance;
 		grab_hitbox.prev_owner_x = x;
 		grab_hitbox.next_owner_x = x;
 	} else if ((window == fspecial_charged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		grab_hitbox = create_hitbox(attack, 2, x + (spr_dir * 40), y - 59);
+		grab_hitbox = create_hitbox(attack, 2, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 49);
 		grab_hitbox.max_distance = fspecial_charged_max_distance;
 		grab_hitbox.prev_owner_x = x;
 		grab_hitbox.next_owner_x = x;
@@ -1894,53 +2314,83 @@ if (attack == AT_FSPECIAL) {
 }
 
 // Section just for dspecial article management
+draw_dspecial_indicator = false;
 if (attack == AT_DSPECIAL) {
 	can_move = false;
-	if ((window == dspecial_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		// Based on charge time, find where we would like to place dspecial
-		//print_debug("Current charge percent = " + string(floor(100*(dspecial_charge_time / special_full_charge_time))) + "%");
-		var picked_spot = floor(max_space_between_parts + (max_space_between_parts * 4 * (dspecial_charge_time / special_full_charge_time))); //((1 - (current_charge_time / max_charge_time)) * 5);
-		//if (picked_spot < 0) {
-		//	picked_spot = max_space_between_parts;
-		//}
-		// Find the best place to put the first segment
-		spot_found = false;
-		space_between_parts = picked_spot;
-		//space_between_parts = max_space_between_parts;
-		num_placement_options = floor(space_between_parts / 10);
-		placement_option = num_placement_options;
-		dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");
-		while (!spot_found) {
-		    with (dspecial_tail_article){
-		        if (place_meeting(x, y + 1, asset_get("par_block"))
-		        	&& !place_meeting(x, y - 5, asset_get("par_block")))
-		        {
-		            //print_debug("Grounded on solid plat");
-		            other.spot_found = true;
-		        } else if (place_meeting(x, y + 1, asset_get("par_jumpthrough"))
-		        		   && !place_meeting(x, y - 5, asset_get("par_jumpthrough")))
-	        	{
-		            //print_debug("Grounded on dropthrough plat");
-		            other.spot_found = true;
-		        }
-		    }
-		    
-	        //print_debug("Did we find it?");
-		    if (!spot_found) {
-		        //print_debug("Spot not found yet");
-		        if (placement_option <= 0) {
-		            //print_debug("Give up - overlap");
-		            spot_found = true;
-		        }
-		        dspecial_tail_article.x = x + spr_dir * 10 * placement_option;
-		    }
-		    placement_option--;
+	
+	// While charging, we can pick a spot. Once it's fully charged, it locks on instead
+	
+	// First, reset location when starting up the move
+	if ((window == dspecial_windup_window) && (window_timer == 1)) {
+		dspecial_requested_position_x = x + spr_dir * max_space_between_parts;
+		dspecial_assigned_position_x = dspecial_requested_position_x;
+	} else if ((window > dspecial_windup_window)
+		&& (window < dspecial_uncharged_window)
+		&& !fully_charged)
+	{
+		// Figure out where we want it to be, track that across time
+		if (right_down) {
+			dspecial_requested_position_x += dspecial_adjustment_increment;
 		}
+		if (left_down) {
+			dspecial_requested_position_x -= dspecial_adjustment_increment;
+		}
+		draw_dspecial_indicator = true;
+	}
+	
+	// Based on requested location, find where we actually can place dspecial
+	var picked_spot = dspecial_requested_position_x;//floor(max_space_between_parts + (max_space_between_parts * 4 * (dspecial_charge_time / special_full_charge_time)));
+	//var picked_spot = floor(max_space_between_parts + (max_space_between_parts * 4 * (dspecial_charge_time / special_full_charge_time)));
+	// Find the best place to put the first segment
+	spot_found = false;
+	space_between_parts = abs(picked_spot - x);
+	// Is the tail in front of of squig? 1 if in front, -1 if behind
+	var relative_dir = sign(picked_spot - x) * spr_dir;
+	//space_between_parts = max_space_between_parts;
+	num_placement_options = floor(space_between_parts / dspecial_granularity);
+	placement_option = num_placement_options;
+	//dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");
+	dspecial_tail_article = instance_create(dspecial_requested_position_x, y, "obj_article1");
+	while (!spot_found) {
+	    with (dspecial_tail_article){
+	        if (place_meeting(x, y + 1, asset_get("par_block"))
+	        	&& !place_meeting(x, y - 5, asset_get("par_block")))
+	        {
+	            //print_debug("Grounded on solid plat");
+	            other.spot_found = true;
+	        } else if (place_meeting(x, y + 1, asset_get("par_jumpthrough"))
+	        		   && !place_meeting(x, y - 5, asset_get("par_jumpthrough")))
+        	{
+	            //print_debug("Grounded on dropthrough plat");
+	            other.spot_found = true;
+	        }
+	    }
+	    
+        //print_debug("Did we find it?");
+	    if (!spot_found) {
+	        //print_debug("Spot not found yet");
+	        if (placement_option <= 0) {
+	            //print_debug("Give up - overlap");
+	            spot_found = true;
+	        }
+	        dspecial_tail_article.x = x + spr_dir * dspecial_granularity * placement_option * relative_dir;
+	    }
+	    placement_option--;
+	}
+	dspecial_assigned_position_x = dspecial_tail_article.x;
+	
+	dspecial_tail_article.spr_dir = spr_dir;
+	dspecial_tail_article.parent = id;
+	dspecial_tail_article.num_children = 0;
+	dspecial_tail_article.state = ARTICLE_STATE.STATE_DESTROY;
+	
+	if ((window == dspecial_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		dspecial_tail_article = instance_create(dspecial_assigned_position_x, y, "obj_article1");
 		dspecial_tail_article.spr_dir = spr_dir;
 		dspecial_tail_article.parent = id;
 		dspecial_tail_article.num_children = 1;
 	} else if ((window == dspecial_charged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		// Find the nearest opponent in front of us, default to normal placement distance
+		// Find the nearest opponent in front of us, default to requested placement
 		var nearest = -1;
 		with (oPlayer) {
 			var opponent_found = false;
@@ -1973,7 +2423,7 @@ if (attack == AT_DSPECIAL) {
 		// Find the best place to put the first segment
 		spot_found = false;
 		space_between_parts = nearest;
-		num_placement_options = floor(space_between_parts / 10);
+		num_placement_options = floor(space_between_parts / dspecial_granularity);
 		placement_option = num_placement_options;
 		dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");
 		while (!spot_found) {
@@ -1998,7 +2448,7 @@ if (attack == AT_DSPECIAL) {
 		            //print_debug("Give up - overlap");
 		            spot_found = true;
 		        }
-		        dspecial_tail_article.x = x + spr_dir * 10 * placement_option;
+		        dspecial_tail_article.x = x + spr_dir * dspecial_granularity * placement_option;
 		    }
 		    placement_option--;
 		}
@@ -2069,6 +2519,57 @@ if (attack == AT_DSPECIAL_AIR) {
 if (current_charge_time > 0) {
 	current_charge_time--;
 }
+
+//reiga's post-release round of vfx additions
+switch (attack) {
+	case AT_FSTRONG:
+		if (window == 5 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, .9);
+    		spawn_hit_fx(x, y-32, fx_pow_hit[0]);
+		}
+		break;
+    case AT_USTRONG_2:
+		if (window == 6 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, .9);
+    		spawn_hit_fx(x, y-40, fx_pow_hit[0]);
+		}
+    	break;
+    case AT_DSTRONG:
+		if (window == 5 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, .9);
+    		spawn_hit_fx(x+24*spr_dir, y-72, fx_pow_hit[0]);
+		}
+    	break;
+    case AT_NSPECIAL:
+    case AT_NSPECIAL_AIR:
+		if (window == 5 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+    		spawn_hit_fx(x-16*spr_dir, y-72, fx_pow_hit[1]);
+		}
+    	break;
+    case AT_FSPECIAL:
+		if (window == 7 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+    		spawn_hit_fx(x-16*spr_dir, y-32, fx_pow_hit[0]);
+		}
+    	break;
+    case AT_DSPECIAL:
+		if (window == 7 && window_timer == 1) {
+			sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+    		spawn_hit_fx(x-16*spr_dir, y-16, fx_pow_hit[0]);
+		}
+    	break;
+    case AT_USPECIAL:
+    case AT_USPECIAL_GROUND:
+		if (window == uspecial_charged_rise_window && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+			sound_play(charged_active_sound, false, noone, 0.5, 1.1);
+    		spawn_hit_fx(x-32*spr_dir, y-64, fx_pow_hit[1]);
+		}
+    	break;
+    default:
+    	break;
+}
+
 
 switch (attack)
 {
@@ -2472,6 +2973,26 @@ switch (attack)
 }
 
 custom_attack_grid();
+
+// All voice lines start with va_, and will randomize between num_options
+// Chance is 0 - 100 % chance of playing the line at all
+// Volume needs to be between 0 and 1
+#define play_va_line(va_line, num_options, chance, volume)
+playing_stance_line = false;
+var roll = random_func(13, 100, false);
+if (roll < chance) {
+	if (curr_va_line_must_play_fully) {
+		curr_va_line_must_play_fully = false;
+	} else if (curr_va_line != noone) {
+		sound_stop(curr_va_line);
+	}
+	if (num_options > 1) {
+		var choice = random_func(14, num_options, true);
+		curr_va_line = sound_play(sound_get("va_" + va_line + string(choice + 1)), false /*looping*/, noone /*panning*/, volume/*volume*/, 1/*pitch*/);
+	} else {
+		curr_va_line = sound_play(sound_get("va_" + va_line), false /*looping*/, noone /*panning*/, volume/*volume*/, 1/*pitch*/);
+	}
+}
 
 #define clamp_horizontally(front_buffer, rear_buffer)
 spot_found = false;

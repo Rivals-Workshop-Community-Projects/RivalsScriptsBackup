@@ -133,7 +133,7 @@ for (i = 0.5; i < 4; i++) {
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 85);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 70);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
     set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0);
@@ -209,7 +209,7 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 85);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.95);

@@ -104,6 +104,45 @@ if (place_meeting(x+5*spr_dir,y,asset_get("par_block")) && can_wall_jump && has_
 	jump_pressed = true;
 }
 
+// Update close attack selection
+if (ai_ydist <= -90) {
+	close_up_attacks[0] = AT_USTRONG;
+	close_up_attacks[1] = AT_USTRONG;
+	close_up_attacks[2] = AT_USTRONG;
+	close_up_attacks[3] = AT_USTRONG;
+	close_up_attacks[4] = 0;
+	close_down_attacks[0] = AT_USTRONG;
+	close_down_attacks[1] = AT_USTRONG;
+	close_down_attacks[2] = AT_USTRONG;
+	close_down_attacks[3] = AT_USTRONG;
+	neutral_attacks[1] = AT_USTRONG;
+	neutral_attacks[2] = AT_USTRONG;
+} else if (ai_ydist >= 90) {
+	close_up_attacks[0] = AT_DTILT;
+	close_up_attacks[1] = AT_DTILT;
+	close_up_attacks[2] = AT_DTILT;
+	close_up_attacks[3] = AT_DTILT;
+	close_up_attacks[4] = 0;
+	close_down_attacks[0] = AT_JAB;
+	close_down_attacks[1] = AT_JAB;
+	close_down_attacks[2] = AT_DTILT;
+	close_down_attacks[3] = AT_DTILT;
+	neutral_attacks[1] = AT_DSTRONG;
+	neutral_attacks[2] = AT_DSTRONG;
+} else {
+	close_up_attacks[0] = AT_JAB;
+	close_up_attacks[1] = AT_DATTACK;
+	close_up_attacks[2] = AT_FTILT;
+	close_up_attacks[3] = AT_UTILT;
+	close_up_attacks[4] = 0;
+	close_down_attacks[0] = AT_JAB;
+	close_down_attacks[1] = AT_DATTACK;
+	close_down_attacks[2] = AT_FTILT;
+	close_down_attacks[3] = AT_DTILT;
+	neutral_attacks[1] = AT_USTRONG;
+	neutral_attacks[2] = AT_DSTRONG;
+}
+
 // Unique Attack Knowledge
 if (ai_atk_state) {
 	switch (attack) {
@@ -379,27 +418,23 @@ if (ai_running) { // Run from respawning targets
 			if (!ai_facing) {
 				left_down = true;
 			}
+			right_pressed = false;
 			right_down = false;
 		} else if (x < ai_target.x) {
 			if (!ai_facing) {
 				right_down = true;
 			}
+			left_pressed = false;
 			left_down = false;
 		}
 	}
 	
-	// Keep the ai from using certain attacks when ai is too high or too low
-	if (!ai_recovering) {
-		if (ai_ydist < -100) {
-			down_pressed = false;
-			down_down = false;
-			if (!free) {
-				move_cooldown[AT_UTILT] = 2;
-			}
-		} else if (ai_ydist > 100) {
-			up_pressed = false;
-			up_down = false;
-		}
+	// Don't be defensive when target is at a disatvantage
+	if (temp_level >= 7 && !free &&
+	   (ai_target.state == PS_PRATLAND ||
+	    ai_target.state == PS_PRATFALL ||
+	    ai_target.state_cat == SC_HITSTUN)) {
+		shield_pressed = false;
 	}
 	
 	// Drop through platforms if the target is under you (ai does not do this if the target is still close)

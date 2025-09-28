@@ -41,18 +41,18 @@ if (instance_exists(cursor_id)) {
 		// If over the boxes, suppress the cursor and detect click
 		suppress_cursor = 1;
 		if (menu_a_pressed) {
-			uspecial_mode_active = !uspecial_mode_active;
+			va_mode_selected = !va_mode_selected;
 			sound_play(asset_get("mfx_forward"), false, noone, 1, 1);
 		}
 	} else {
 		uspecial_button_frame = 0;
 	}
-	if (uspecial_mode_active) {
+	if (va_mode_selected) {
 		uspecial_button_frame += 2;
 	}
 }
 
 // Manage synced var
 // Synced var is 32 bits, only use ones of interest to us
-var synced_var = uspecial_mode_active ? 0 : 1;
+var synced_var = va_mode_selected ? 0 : 1;
 set_synced_var(player, synced_var);

@@ -22,7 +22,13 @@ mask_index = sprite_get("tailspike_mask"); // - sets the mask of the article, it
 image_index = 3;                            // - sets the current frame of the article
 
 //custom article variables for your comfort
-state = 0;                                  // - state check in case the article has multiple states
+enum ARTICLE_STATE {
+        STATE_APPEAR,
+        STATE_HOLD,
+        STATE_RETREAT,
+        STATE_DESTROY
+}
+state = ARTICLE_STATE.STATE_APPEAR;         // - state check in case the article has multiple states
 state_timer = 0;                            // - state timer to check how long an article has been in a state
 
 parent = noone;
@@ -34,3 +40,4 @@ num_placement_options = floor(max_space_between_parts / 10);
 placement_option = num_placement_options;
 spot_found = false;
 begin_return = false;
+visible = false;

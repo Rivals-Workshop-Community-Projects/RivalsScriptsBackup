@@ -469,6 +469,12 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_FSPECIAL){
 	can_wall_jump = true;
 	if (window == 1){
+	
+		if (window_timer == 1){
+			sound_play(sound_get("sfx_sonic_light_speed_charge"), false, noone, 1, 1.1);
+			sound_play(sound_get("sfx_sonic_homing"), false, noone, 0.25, 1.25);
+		}
+	
 		lightspeed_hitwithstronghitbox = false
 		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
 		lightspeed_bounce = 0
@@ -506,9 +512,26 @@ if (attack == AT_FSPECIAL){
 		}
 		//afterimage = 0
 		if (window_timer == 17){
-			sound_play(sound_get("sfx_sonic_homing"))
 			//spawn_hit_fx( x, y - 34, 126 );
 			//spawn_hit_fx( x + (65 * 4) * spr_dir, y - 34 + lightspeed_dir_y, 256 );
+		}
+		
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			sound_stop(sound_get("sfx_sonic_light_speed_charge"));
+			
+			sound_play(sound_get("sfx_sonic_homing"), false, noone, 0.75, 1);
+			sound_play(sound_get("sfx_sonic_light_speed"), false, noone, 0.35, 3);
+			sound_play(sound_get("sfx_sonic_downspecial"), false, noone, 0.65, 1.55);
+			
+			if (lightspeed_dir == 0){
+				var lightspeeddustDirMod = 0;
+			} else if (lightspeed_dir == 1){
+				var lightspeeddustDirMod = 34;
+			} else if (lightspeed_dir == 2){
+				var lightspeeddustDirMod = -34;
+			}
+			
+			spawn_base_dust( x - (5 * spr_dir), y - 40, "doublejump", spr_dir, (270 * spr_dir) + lightspeeddustDirMod*spr_dir);
 		}
 	}
 	if (window == 2){
@@ -552,7 +575,12 @@ if (attack == AT_FSPECIAL){
 		}
 		//afterimage = 0
 		if (!free){
-			set_state( PS_PRATLAND );
+			if (has_hit){
+				landing_lag_time = get_attack_value( attack, AG_LANDING_LAG );
+				set_state( PS_LANDING_LAG );
+			} else {
+				set_state( PS_PRATLAND );
+			}
 		}
 		if (has_hit == true){
 			if (window_timer == 1){

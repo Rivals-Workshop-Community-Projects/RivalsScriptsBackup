@@ -4,6 +4,7 @@ set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 12);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
+set_attack_value(AT_FAIR, AG_MUNO_ATTACK_NAME, "FAir: Sonic Eagle");
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
@@ -27,6 +28,7 @@ set_num_hitboxes(AT_FAIR, 2);
 
 // clean
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Clean Hitbox");
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 26);
@@ -48,6 +50,7 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 // spike
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 30);

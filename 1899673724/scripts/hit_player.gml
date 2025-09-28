@@ -86,6 +86,13 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 		spawn_hit_fx( hit_player_obj.x - 14 * hit_player_obj.spr_dir, hit_player_obj.y - 30, 304 );
 		//set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -10);
 		lightspeed_hitwithstronghitbox = true
+		
+		sound_play(sound_get("sfx_bounce"), false, noone, 0.95, 1.3);
+		sound_play(sound_get("sfx_sonic_wind"), false, noone, 0.95, 1.3);
+		sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.95, 1.3);
+		sound_play(sound_get("sfx_sonic_light_speed"), false, noone, 0.75, 1.75);
+		// sound_play(sound_get("sfx_ancientlight"), false, noone, 0.65, 2);
+		
 	} else if (my_hitboxID.hbox_num == 2){
 		lightspeed_hitwithstronghitbox = false
 		x = x + 10 * spr_dir

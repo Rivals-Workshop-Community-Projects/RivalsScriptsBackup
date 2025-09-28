@@ -20,35 +20,26 @@ prevDjumps = djumps;
 
 dspecshivertimer = (canShoot==0&&down_down&&special_pressed&&(state_cat==SC_GROUND_NEUTRAL||state_cat==SC_AIR_NEUTRAL)?15:dspecshivertimer-1);
 dspecshiver = (dspecshivertimer<=0?0:dspecshiver+(floor(get_gameplay_time()/3)%2==0?2:-2));
-if (canShoot == 0)
-	move_cooldown[AT_DSPECIAL] = 2;
+if (canShoot == 0) move_cooldown[AT_DSPECIAL] = 2;
 
 if (djumps == 0 && jump_pressed) move_cooldown[AT_DAIR] = 15;
 
-if (!free)
+if (!free || puulnocooldown)
 {
 	var cooldownnum = (runeK?0:15);
-	if(move_cooldown[AT_NSPECIAL] > cooldownnum){
-		
+	if (move_cooldown[AT_NSPECIAL] > cooldownnum)
 		move_cooldown[AT_NSPECIAL] = cooldownnum;
-	}
-	if(move_cooldown[AT_FSPECIAL_2] > cooldownnum){
-		
+	if (move_cooldown[AT_FSPECIAL_2] > cooldownnum)
 		move_cooldown[AT_FSPECIAL_2] = cooldownnum;
-	}
 }
 
 if (recharge1 > 0){
 	--recharge1;
-	if(recharge1 == 1){
-		++canShoot;
-	}
+	if (recharge1 == 1) canShoot++;
 }
 if (recharge2 > 0){
 	--recharge2;
-	if(recharge2 == 1){
-		++canShoot;
-	}
+	if (recharge2 == 1) canShoot++;
 }
 
 if (!runeC)
@@ -70,12 +61,8 @@ if (!runeC)
 }
 
 if (get_gameplay_time() % 3 == 0)
-{
 	with (ballbreaker)
-	{
-		spawn_hit_fx( x, y, (random_func(1,2,true)==0?136:13) );
-	}
-}
+		spawn_hit_fx(x, y, (random_func(1,2,true)==0?136:13));
 
 // crawl
 if (state == PS_CROUCH && state_timer > 3)
@@ -174,3 +161,112 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
 ++hue;
 hue%=255;
 init_shader();
+
+if (!practicemode && get_training_cpu_action() != CPU_FIGHT)
+{
+	practicemode = true;
+	tuton = true;
+}
+
+// menu
+if (practicemode)
+{
+	tutalpha = clamp(tutalpha+(tuton?0.1:-0.1), 0, 1);
+	if (tutalpha == 0)
+	{
+		tutstate = tutstatebuffer;
+		tuton = true;
+	}
+	switch (tutstate)
+	{
+		case 0:
+			if (taunt_pressed)
+			{
+				tuton = false;
+				tutstatebuffer = 1;
+			}
+			break;
+		case 1:
+			hitstop = 1;
+			hitpause = true;
+			old_hsp = 0;
+			old_vsp = 0;
+			hsp = 0;
+			vsp = 0;
+			can_fast_fall = false;
+			set_state(PS_IDLE_AIR);
+			djumps = max_djumps;
+			has_airdodge = false;
+			invincible = true;
+			invince_time = 1;
+			if (special_pressed || taunt_pressed)
+			{
+				clear_button_buffer(PC_TAUNT_PRESSED);
+				clear_button_buffer(PC_SPECIAL_PRESSED);
+				sound_play(asset_get("mfx_confirm"));
+				sound_stop(sound_get("yaySfx"));
+				tuton = false;
+				tutstatebuffer = 0;
+			}
+			else if (left_down)
+			{
+				holdtimer += 1;
+				if (holdtimer % 3 == 1 && (holdtimer > 30 || holdtimer == 1))
+				{
+					sound_play(asset_get("mfx_option"));
+					switch (tutmenu)
+					{
+					case 0:
+						runeM = !runeM;
+						break;
+					case 1:
+						puulnocooldown = !puulnocooldown;
+						break;
+					case 2:
+						sound_stop(sound_get("yaySfx"));
+						break;
+					}
+				}
+			}
+			else if (right_down || attack_down)
+			{
+				holdtimer += 1;
+				if (holdtimer % 3 == 1 && (holdtimer > 30 || holdtimer == 1))
+				{
+					sound_play(asset_get("mfx_option"));
+					switch (tutmenu)
+					{
+					case 0:
+						runeM = !runeM;
+						break;
+					case 1:
+						puulnocooldown = !puulnocooldown;
+						break;
+					case 2:
+						sound_play(sound_get("yaySfx"));
+						break;
+					}
+				}
+			}
+			else if (up_down)
+			{
+				holdtimer += 1;
+				if (holdtimer % 6 == 1 && (holdtimer > 30 || holdtimer == 1))
+				{
+					sound_play(asset_get("mfx_option"));
+					tutmenu = max(tutmenu-1,0);
+				}
+			}
+			else if (down_down)
+			{
+				holdtimer += 1;
+				if (holdtimer % 6 == 1 && (holdtimer > 30 || holdtimer == 1))
+				{
+					sound_play(asset_get("mfx_option"));
+					tutmenu = min(tutmenu+1,noofitems-1);
+				}
+			}
+			else holdtimer = 0;
+			break;
+	}
+}

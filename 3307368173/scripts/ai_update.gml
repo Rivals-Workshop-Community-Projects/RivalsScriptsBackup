@@ -177,15 +177,15 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 0 + (9-temp_level) * 4;
+			ai_attack_time = 0 + (9-temp_level) * 8;
 			Movement();
 			break;
 		case AS_RECOVER:
-			ai_attack_time = 0 + (9-temp_level) * 10;
+			ai_attack_time = 0 + (9-temp_level) * 14;
 			if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 0 + (9-temp_level) * 10;
+			ai_attack_time = 0 + (9-temp_level) * 14;
 			Movement();
 			break;
 	}
@@ -210,7 +210,7 @@ SetAttack();
 		case AS_NEUTRAL:
 			if (get_training_cpu_action() != CPU_FIGHT)
 				break;
-			TryParry();
+			if (temp_level > 7) TryParry();
 
 		case AS_ADVANTAGE:
 			if (ready_to_attack && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)

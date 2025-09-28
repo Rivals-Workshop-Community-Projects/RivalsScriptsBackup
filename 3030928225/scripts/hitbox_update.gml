@@ -18,7 +18,7 @@ if (attack == AT_FSPECIAL) {
 	// Stay level with the owner
 	with (asset_get("oPlayer")) {
 		if (other.player_id == id) {
-			other.y = y - 59;
+			other.y = y - 49;
 			other.next_owner_x = x;
 		}
 	}

@@ -6,9 +6,51 @@
 var attack = my_hitboxID.attack;
 var hbox = my_hitboxID.hbox_num;
 
-// Can use charged strong or special on hit
-can_stancle = true;
+if (hit_player_obj.state_cat == SC_HITSTUN) {
+	//airstrong lerp 
+	if ((attack == AT_FSTRONG_2) && (hbox < 6)) {
+	    hit_player_obj.x = lerp(floor(hit_player_obj.x), x+80 * spr_dir, .2)
+	    hit_player_obj.y = lerp(floor(hit_player_obj.y), y-15, .2)
+	}
+	
+	//fstrong lerp
+	if ((attack == AT_FSTRONG) && (hbox != 3) && (hbox != 8)) {
+		if (hit_player_obj.free) { //only happens if they arent grounded
+	    	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+70 * spr_dir, .2)
+	    	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-5, .3)
+		}
+	}
+	
+	//dattack lerp
+	if ((attack == AT_DATTACK) && (hbox != 3)) {
+		if (hit_player_obj.free) { //only happens if they arent grounded
+	    	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+100 * spr_dir, .4)
+	    	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-5, .4)
+		}
+	}
+}
 
+//dspecial
+if (attack == AT_DSPECIAL_AIR) {
+	// Restore double jump on dspecial_air hit
+	if (djumps > 0) {
+		djumps = 0;
+		//print_debug("Restore djump on dspecial_air hit");
+	}
+	//print_debug("landed a dspecial_air");
+}
+
+//fspecial
+if (attack == AT_FSPECIAL) {
+	// Restore double jump on fspecial hit
+	if (djumps > 0) {
+		djumps = 0;
+	}
+} else {
+	// Can use charged strong or special on hit
+	// (For everything except fspecial)
+	can_stancle = true;
+}
 
 //if statement for your attack
 if (attack == AT_BAIR) {
@@ -142,6 +184,25 @@ if (attack == AT_DSPECIAL_AIR) {
     }
 }
 
+if (attack == AT_FSTRONG_2) {
+    if (hbox == 1) {
+        sound_play(asset_get("sfx_zetter_upb_hit"));
+	} else if (hbox == 2) {
+        sound_play(asset_get("sfx_zetter_upb_hit"));    
+	} else if (hbox == 3) {
+        sound_play(asset_get("sfx_zetter_upb_hit"));
+	} else if (hbox == 4) {
+        sound_play(asset_get("sfx_zetter_upb_hit"));  
+	} else if (hbox == 5) {
+        sound_play(asset_get("sfx_burnapplied")); 
+	} else if (hbox == 6) {
+        sound_play(asset_get("sfx_burnconsume"), false, noone, .6, 1.3);  
+        sound_play(asset_get("sfx_burnapplied"));
+    }
+}
+
+//break/// 
+
 if my_hitboxID.attack == AT_DAIR {
 old_vsp = -7;
 old_hsp = 0;
@@ -166,6 +227,14 @@ if (my_hitboxID == grab_hitbox) {
 	        
 	        // Play a grab-confirm sound
 	        sound_play(asset_get("sfx_waveland_syl"));
+	        if (va_mode_active) {
+				curr_va_line_must_play_fully = true;
+	        	if (my_hitboxID.hbox_num == 2) {
+	        		play_va_line("Cfspecial_land", 2, 100, 1);
+	        	} else {
+	        		play_va_line("fspecial_land", 2, 100, 1);
+	        	}
+	        }
 	    }
 	} else 	if (attack == AT_DSPECIAL_AIR) {
 	    // Fail grab under certain circumstances
@@ -179,6 +248,11 @@ if (my_hitboxID == grab_hitbox) {
 	        
 	        // Play a grab-confirm sound
 	        sound_play(asset_get("sfx_waveland_syl"));
+	        if (va_mode_active) {
+	        	if (my_hitboxID.hbox_num == 3) {
+	        		play_va_line("ACdspecial_grab", 1, 100, 1);
+	        	}
+	        }
 	    }
 	}
 } else {
@@ -267,6 +341,26 @@ with (my_hitboxID)
 }
 */
 
+// All voice lines start with va_, and will randomize between num_options
+// Chance is 0 - 100 % chance of playing the line at all
+// Volume needs to be between 0 and 1
+#define play_va_line(va_line, num_options, chance, volume)
+playing_stance_line = false;
+var roll = random_func(13, 100, false);
+if (roll < chance) {
+	if (curr_va_line_must_play_fully) {
+		curr_va_line_must_play_fully = false;
+	} else if (curr_va_line != noone) {
+		sound_stop(curr_va_line);
+	}
+	if (num_options > 1) {
+		var choice = random_func(14, num_options, true);
+		curr_va_line = sound_play(sound_get("va_" + va_line + string(choice + 1)), false /*looping*/, noone /*panning*/, volume/*volume*/, 1/*pitch*/);
+	} else {
+		curr_va_line = sound_play(sound_get("va_" + va_line), false /*looping*/, noone /*panning*/, volume/*volume*/, 1/*pitch*/);
+	}
+}
+
 #define set_grab_id
 {
     //things to check when you grab someone:
@@ -280,4 +374,3 @@ with (my_hitboxID)
         my_grab_id = hit_player_obj;
     }
 }
-

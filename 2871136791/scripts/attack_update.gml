@@ -81,9 +81,7 @@ switch (attack)
 						}
 						dairID.x = x;
 						with (dairID)
-						{
 							set_state(free?PS_HITSTUN:PS_HITSTUN_LAND);
-						}
 					}
 				}
 			}
@@ -99,6 +97,7 @@ switch (attack)
 					hbox.damage = min(round(dairDamageTimer/2)+3, 20);
 					can_fast_fall = true;
 				}
+				else djumps = dairDJumps;
 			}
 		}
 		break;
@@ -110,7 +109,7 @@ switch (attack)
 		break;
 		
 	case AT_NSPECIAL_2:
-			move_cooldown[AT_NSPECIAL_2] = 30
+		move_cooldown[AT_NSPECIAL_2] = 30
 		if (window_timer == 1)
 		{
 			puul.spr_dir = spr_dir;
@@ -191,7 +190,7 @@ switch (attack)
 						}
 					}
 					spawn_hit_fx(tempx - (12 * spr_dir), tempy, pullfieldfx);
-					if (instance_exists(steelball) && steelball != noone)
+					if (instance_exists(steelball) && steelball != noone && !steelball.was_parried)
 					{
 						if (point_distance(steelball.x, steelball.y, tempx, tempy) < puul.radius)
 						{
@@ -311,7 +310,7 @@ switch (attack)
 						}
 					}
 					spawn_hit_fx(tempx - (12 * spr_dir), tempy, pushfieldfx);
-					if (instance_exists(steelball) && steelball != noone)
+					if (instance_exists(steelball) && steelball != noone && !steelball.was_parried)
 					{
 						if (point_distance(steelball.x, steelball.y, tempx, tempy) < puul.radius)
 						{
@@ -364,8 +363,12 @@ switch (attack)
 	case AT_DSTRONG:
 		if (window > 2 && window <= 4)
 		{
-			spr_dir=left_down?-1:right_down?1:spr_dir;
-			hsp = left_down||right_down?4*spr_dir:0;
+			if (!hitpause)
+			{
+				if (window > 2 && window < 4)
+					spr_dir=left_down?-1:right_down?1:spr_dir;
+				hsp = (right_down-left_down==spr_dir)?4*spr_dir:0;
+			}
 			if (!hitpause && window_timer % 3 == 1) create_hitbox(AT_DSTRONG, 1, x, y);
 			if (hitpause && has_hit_player) Grab(20, -4, 3, 2);
 		}

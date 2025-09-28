@@ -29,3 +29,16 @@ if ((attack == AT_USPECIAL)
     attack = AT_USPECIAL_GROUND;
 }
 
+if ((attack == AT_FAIR) && (strong_down || ((spr_dir > 0) && right_strong_down) || ((spr_dir < 0) && left_strong_down)) && free) {
+    attack = AT_FSTRONG_2;
+}
+if ((attack == AT_BAIR) && (strong_down || ((spr_dir > 0) && left_strong_down) || ((spr_dir < 0) && right_strong_down)) && free) {
+    spr_dir *= -1;
+    attack = AT_FSTRONG_2;
+}
+
+// If in training mode, down + taunt to refresh charges
+if ((get_training_cpu_action() != CPU_FIGHT) && (attack == AT_TAUNT) && down_down) {
+    stored_strong_charge = strong_full_charge_time;
+    special_charge = special_full_charge_time;
+}

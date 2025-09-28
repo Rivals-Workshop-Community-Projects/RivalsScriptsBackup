@@ -4,6 +4,9 @@ set_attack_value(atk, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 set_attack_value(atk, AG_OFF_LEDGE, 1);
 set_attack_value(atk, AG_CATEGORY, 2);
+// Need at least one window to be marked as charge window, used
+// an unused window so it can only charge in grounded version.
+set_attack_value(atk, AG_STRONG_CHARGE_WINDOW, 25);
 
 window_num = 1; // Uncharged version - crouch
 ustrong_uncharged_window = window_num;
@@ -115,7 +118,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 130);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 85);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);

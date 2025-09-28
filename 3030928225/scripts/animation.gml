@@ -6,6 +6,7 @@
 if (abs(hud_offset) < 1) hud_offset = 0;
 
 // Do the special visual when charging grounded strongs
+in_stancel_window = false;
 if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	switch (attack) {
 		case AT_FSTRONG :
@@ -40,6 +41,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == fstrong_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		case AT_USTRONG_2 :
@@ -92,6 +94,44 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == ustrong_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
+			}
+			break;
+		case AT_FSTRONG_2 :
+			if ((!must_complete_attack) && (window <= fstrong2_bonus_charging_window)) {
+				if (left_down && right_down) {
+					hsp = 0;
+				} else if (left_down) {
+					if (free && (spr_dir < 0)) {
+						can_move = true;
+					} else {
+						hsp = -stance_speed;
+					}
+				} else if (right_down) {
+					if (free && (spr_dir > 0)) {
+						can_move = true;
+					} else {
+						hsp = stance_speed;
+					}
+				}
+			}
+
+			// Bounce back on a certain frame
+			if (window == fstrong2_charged_window) {
+				if (window_timer == 1) {
+					vsp = -2;
+					//hsp = -spr_dir * 2
+				}
+			}
+		
+			if (window == fstrong2_stancel_window) {
+				sprite_index = sprite_get("stancle");
+				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
+			} else {
+				stance_image_timer = 0;
+				sprite_index = sprite_get("airstrong");
+				hurtboxID.sprite_index = sprite_get("airstrong_hurt");
 			}
 			break;
 		case AT_DSTRONG :
@@ -126,6 +166,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == dstrong_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		case AT_NSPECIAL :
@@ -170,6 +211,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == nspecial_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		case AT_NSPECIAL_AIR :
@@ -202,6 +244,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == nspecial_air_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			} else {
 				stance_image_timer = 0;
 				sprite_index = sprite_get("nspecial_air");
@@ -261,6 +304,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window ==fspecial_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		case AT_DSPECIAL :
@@ -305,6 +349,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window ==dspecial_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		case AT_USPECIAL_GROUND :
@@ -359,6 +404,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			if (window == uspecial_stancel_window) {
 				sprite_index = sprite_get("stancle");
 				hurtboxID.sprite_index = sprite_get("stancle_hurt");
+				in_stancel_window = true;
 			}
 			break;
 		default :
@@ -366,6 +412,14 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 			break;
 	}
 
+	// Can flip around if in stancel window
+	/*if (in_stancel_window && (window_timer <= 1)) {
+		if ((spr_dir > 0) && left_down) {
+			spr_dir *= -1;
+		} else if ((spr_dir < 0) && right_down) {
+			spr_dir *= -1;
+		}
+	}*/
 
 	// Manage grabbed enemy player position
 	if (attack == AT_FSPECIAL) {

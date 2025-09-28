@@ -3,11 +3,10 @@ var temp_y = y + 9;
 
 if (get_color_profile_slot_r(1, 0) == 249)
 {
-    sound_play(sound_get("whistle"),0,-4,2);
+	sound_play(sound_get("whistle"),0,-4,2);
 	set_color_profile_slot( 1, 0, 250, 250, 250 );
 }
 
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR), 0));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -27,43 +26,34 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
-alt_name = 0;
-alt_name[0]  = "Magnetic Duo";
-alt_name[1]  = "Blue";
-alt_name[2]  = "Baked";
-alt_name[3]  = "Titan Gauntlet";
-alt_name[4]  = "Gold";
-alt_name[5]  = "Natural";
-alt_name[6]  = "King";
-alt_name[7]  = "Zenikame";
-alt_name[8]  = "Big Fish";
-alt_name[9]  = "ExpLode";
-alt_name[10] = "Uh Oh";
-alt_name[11] = "Transcend";
-alt_name[12] = "Of Fire";
-alt_name[13] = "Of Water";
-alt_name[14] = "Of Air";
-alt_name[15] = "Inversion";
-alt_name[16] = "Pals in Pink";
-alt_name[17] = "Primordial";
-alt_name[18] = "Purple Drankula";
-alt_name[19] = "BLM";
-alt_name[20] = "Terrapin";
-alt_name[21] = "Paint";
-alt_name[22] = "Champion";
+alt_name = [
+	"Magnetic Duo",
+	"Blue",
+	"Baked",
+	"Titan Gauntlet",
+	"Gold",
+	"Natural",
+	"King",
+	"Zenikame",
+	"Big Fish",
+	"ExpLode",
+	"Uh Oh",
+	"Transcend",
+	"Of Fire",
+	"Of Water",
+	"Of Air",
+	"Inversion",
+	"Pals in Pink",
+	"Primordial",
+	"Purple Drankula",
+	"BLM",
+	"Terrapin",
+	"Paint",
+	"Champion"
+]
 var num_alts = array_length_1d(alt_name);
 
 shader_end();
-
-//draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
-
-draw_set_halign(fa_right);
-var verX = 192;
-var verY = 36;
-textDraw(temp_x + verX,   temp_y + verY,   "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-textDraw(temp_x + verX+2, temp_y + verY+2, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-
-//draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
 draw_set_halign(fa_left);
 
@@ -87,14 +77,14 @@ init_shader();
 	
 	if (argument[7]) // outline. doesn't work
 	{
-	    for (i = -1; i < 2; i++)
+		for (i = -1; i < 2; i++)
 		{
-	        for (j = -1; j < 2; j++)
+			for (j = -1; j < 2; j++)
 			{
 				if (argument[8] > 0)
 					draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, argument[8]);
-	        }
-	    }
+			}
+		}
 	}
 	
 	if (argument[8] > 0)

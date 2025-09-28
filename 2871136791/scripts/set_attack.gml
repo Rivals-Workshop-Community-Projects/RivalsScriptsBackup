@@ -25,6 +25,7 @@ switch (attack)
 	case AT_DAIR:
 		can_fast_fall = false;
 		dairDamageTimer = 0;
+		dairDJumps = djumps;
 		break;
 	case AT_FSPECIAL:
 		if (birdOut)

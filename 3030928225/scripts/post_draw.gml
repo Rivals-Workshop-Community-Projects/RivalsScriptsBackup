@@ -81,6 +81,12 @@ if (draw_indicator_arrow) {
                     spr_dir, 1, 0, c_white, 1);
 }
 
+// Draw an indicator of where dspecial will show up
+if (draw_dspecial_indicator) {
+	draw_sprite_ext(sprite_get("shadow"),
+					0, dspecial_assigned_position_x, y,
+					spr_dir, 1, 0, c_white, 0.8);
+}
 
 shader_end();
 

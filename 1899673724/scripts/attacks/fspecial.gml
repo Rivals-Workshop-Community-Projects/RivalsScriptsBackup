@@ -1,16 +1,23 @@
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
-set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_FSPECIAL, AG_LANDING_LAG, 6);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_NAME, "FSpecial: Light Speed Dash");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Forwards moving dash.
+The dash can be angled upwards or downwards.
+Has a weak hitbox while travelling, but also has a very strong hitbox right at the end of the move's active frames.
+Has no pratfall on hit.");
+
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1); //Startup
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_homing_startup"));
+//set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_homing_startup"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -7.5);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
 
@@ -46,6 +53,7 @@ set_num_hitboxes(AT_FSPECIAL,3);
 
 //Strong Hitbox
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Strong Hitbox");
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
@@ -71,6 +79,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1.5);
 
 //Weak Hitbox
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Weak Hitbox");
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);

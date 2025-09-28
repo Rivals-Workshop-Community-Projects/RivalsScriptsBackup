@@ -8,13 +8,15 @@ if ("char_height" not in self) exit;
 shader_start();
 if (stored_strong_charge >= strong_full_charge_time) {
     draw_sprite_ext(sprite_get("hud_dragon"),
-                    0, temp_x + 130, temp_y - 29,
+                    0, temp_x + 120, temp_y - 36,
                     2, 2, 0, c_white, 1);
+    draw_debug_text(temp_x + 120, temp_y - 6, "+ST");
 }
 if (special_charge >= special_full_charge_time) {
     draw_sprite_ext(sprite_get("hud_tailwhip"),
-                    0, temp_x + 170, temp_y - 29,
+                    0, temp_x + 170, temp_y - 36,
                     2, 2, 0, c_white, 1);
+    draw_debug_text(temp_x + 175, temp_y - 6, "+SP");
 }
 shader_end();
 
