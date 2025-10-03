@@ -2,15 +2,18 @@
 
 //Sprite and direction
 sprite_index = sprite_get("bubbleBombIdle");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+draw_index = sprite_get("bubbleBombIdle");
 mask_index = sprite_get("bubbleBombMask");
 collision_sprite = sprite_get("bubbleBombMask");
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
+draw_angle = 0
+drawframe_index = 0
 spr_dir = player_id.spr_dir;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 
 //State
-state = 1; 
-
+type = 0
+state = 1;
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
 hsp = 0;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
@@ -23,9 +26,10 @@ free = true;                                        //Whether the article is in 
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
 
 is_waterbomb = true
-
-old_vspeed = 0
-old_hspeed = 0
+old_vsp = 0
+old_hsp = 0
+older_vsp = 0
+older_hsp = 0
 
 current_owner = player
 
@@ -40,13 +44,19 @@ die_time = 1;                                      //Example variable used in th
 animation_type = 0;                                 //This variable is part of the animation handling found in article1_update. It determines when, or how frequently, the image_index should increment
 new_sprite = sprite_get("bubbleBombIdle");             //This is another part of the animation handling. It tells the game "this is the sprite this article should be using; if it's not already, switch it over please"
 
-if(get_player_color(player) != 13){
-    bubble_idle = sprite_get("bubbleBombIdle");
-    bubble_strong = sprite_get("bubbleBombStrong");
+if(!(has_rune("F") || player_id.all_runes)){
+    if(get_player_color(player) != 13){
+        bubble_idle = sprite_get("bubbleBombIdle");
+        bubble_strong = sprite_get("bubbleBombStrong");
+    }else{
+        bubble_idle = sprite_get("bubbleBombIdle_ocean");
+        bubble_strong = sprite_get("bubbleBombStrong_ocean");
+    }
 }else{
-    bubble_idle = sprite_get("bubbleBombIdle_ocean");
-    bubble_strong = sprite_get("bubbleBombStrong_ocean");
+    bubble_idle = sprite_get("bubbleBombIdle_cheese");
+    bubble_strong = sprite_get("bubbleBombStrong_cheese");
 }
+sprite_index = bubble_idle
 
 //Limit on number of articles
 replacedcount = 0;                                  //This gets incremented whenever a new article is created. If this reaches maxarticles, the article is destroyed
@@ -86,9 +96,18 @@ vfx_waterhit_huge = hit_fx_create( sprite_get( "vfx_waterhit_huge" ), 32 );
 
 hitstun = -1
 got_hit_timer = -1
+if(type == 0){
+    size = 1 * player_id.waterBomb_size_multiplier //Size multiplier
+}else{
+    size = 1 * player_id.sawblade_size_multiplier //Size multiplier
+}
 damage = 0
 strong = false
+big = false
 lifetime = 0
+bounces = player_id.waterBomb_max_bounces //Amount of bounces until explosion
+splits = player_id.waterBomb_splits //Amounts of splits the bomb can make
+split_amount = player_id.waterBomb_split_amount //Amount of bombs waterbomb will split into for each split
 
 slow = false
 was_hit = false
@@ -103,7 +122,6 @@ destroy = false
 temp_hitbox_angle = 0
 
 //runes
-G_modifier = player_id.G_modifier
 
 /* README - Basic Article Usage
 

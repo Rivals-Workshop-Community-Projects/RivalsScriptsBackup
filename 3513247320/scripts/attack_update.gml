@@ -44,7 +44,7 @@ switch attack{
 	// 	}
 	// break;
 	case AT_UTILT:
-		if window > 1 hsp = clamp(hsp, -2, 2);
+		hsp = clamp(hsp, -2, 2);
 		if has_rune("G") && (window < 2 || (window == 2 && window_timer == 1)) invincible = true;
 		else invincible = false;
 		can_fast_fall = false;
@@ -243,7 +243,7 @@ switch attack{
 				destroy_hitboxes();
 				sound_play(asset_get("sfx_kragg_spike"));
 				spawn_hit_fx(x + 72 * spr_dir, y - 40, HFX_KRA_ROCK_SMALL);
-			} else if(spr_dir == 1 && x + 100 + hsp > get_stage_data(SD_RIGHT_BLASTZONE_X) || spr_dir == -1 && x - 100 + hsp < get_stage_data(SD_LEFT_BLASTZONE_X)) && !instance_exists(oTestPlayer) {
+			} else if(spr_dir == 1 && x + 100 + hsp > get_stage_data(SD_RIGHT_BLASTZONE_X) || spr_dir == -1 && x - 100 + hsp < get_stage_data(SD_LEFT_BLASTZONE_X)){
 				window = 6;
 				window_timer = 0;
 				destroy_hitboxes();
@@ -549,37 +549,36 @@ switch attack{
 			uspec_rush.image_index = uspec_rush.num == 1? 19:2;
 			sound_play(sound_get("rush_vanish"));
 		}
-		if shield_pressed || shield_down uspec_shield_pressed = true;
 		if window_timer == window_end_time {
 			// var dist = 50;
 			// while place_meeting(x + dist, y, asset_get("par_block")) x--;
 			// while place_meeting(x - dist, y, asset_get("par_block")) x++;
-			var jet = false;
-			switch (get_synced_var(player) - arbitrary_sync_number) {
-				default: //hold special
-					if special_down jet = true;
-				break;
-				case 1: //double tap special
-					if special_pressed {
-						jet = true;
-						clear_button_buffer(PC_SPECIAL_PRESSED);
-					}
-				break;
-				case 2: //press shield
-					if uspec_shield_pressed {
-						jet = true;
-						clear_button_buffer(PC_SHIELD_PRESSED);
-					}
-				break;
-			}
-			if !can_use_jet jet = false;
+			
+			var jet = special_down && can_use_jet;
+			// switch get_synced_var(player){
+			// 	default: //hold special
+			// 		if special_down jet = true;
+			// 	break;
+			// 	case 1: //double tap special
+			// 		if special_pressed{
+			// 			jet = true;
+			// 			clear_button_buffer(PC_SPECIAL_PRESSED);
+			// 		}
+			// 	break;
+			// 	case 2: //press shield
+			// 		if shield_pressed{
+			// 			jet = true;
+			// 			clear_button_buffer(PC_SHIELD_PRESSED);
+			// 		}
+			// 	break;
+			// }
 			
 			uspec_rush = instance_create(x, y + (jet? -32:0), jet? "obj_article_platform":"obj_article1");
 			uspec_rush.spr_dir = spr_dir;
 			
 			uspec_uses++;
 			
-			if jet {
+			if jet{
 				spawn_hit_fx(x, y - 16, HFX_CLA_PLASMA_PLUS);
 				spawn_hit_fx(x, y - 16, HFX_CLA_PLASMA_X);
 				sound_play(sound_get("rush_jet"));

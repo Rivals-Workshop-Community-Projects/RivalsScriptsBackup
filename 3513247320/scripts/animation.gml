@@ -209,7 +209,7 @@ if has_rock{
 			my_grab_id.hitstop_full = 20;
 			my_grab_id.invincible = true;
 			my_grab_id.invince_time = 2;
-			if !dspec_grab_timer || y + 100 + vsp > get_stage_data(SD_BOTTOM_BLASTZONE_Y) && !instance_exists(oTestPlayer) {
+			if !dspec_grab_timer || y + 100 + vsp > get_stage_data(SD_BOTTOM_BLASTZONE_Y) {
 				my_grab_id.invincible = false;
 				my_grab_id.invince_time = 0;
 				spawn_hit_fx(round(my_grab_id.x), round(my_grab_id.y + (my_grab_id.char_height / -2)), 302);

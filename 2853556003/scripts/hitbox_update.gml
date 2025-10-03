@@ -17,4 +17,9 @@ if(attack == AT_JAB && hbox_num == 3){
     }
 }
 
-
+if(attack == AT_FSPECIAL && hbox_num == 3){
+    if(instance_exists(player_id.sawblade)){
+        x = player_id.sawblade.x
+        y = player_id.sawblade.y
+    }
+}

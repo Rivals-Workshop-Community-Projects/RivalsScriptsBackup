@@ -1,44 +1,60 @@
 //post_draw
 
-if(attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !instance_exists(waterBomb)){
+if(attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !(instance_exists(waterBomb) && waterBomb.state == 1)){
     
     //Drawing Bomb
     shader_start()
-    if(!instance_exists(waterBomb) && !(instance_exists(hurricane) && hurricane.holding_bomb == true)){
+    if(!(instance_exists(waterBomb) && waterBomb.state == 1) && !(instance_exists(hurricane) && hurricane.holding_bomb == true)){
         if(window == 1){
             if(window_timer <= 1){
                 bomb_sizevar = 0
             }else{
                 bomb_sizevar = lerp(bomb_sizevar, 1, 0.5)
             }
-            if(get_player_color(player) != 13){
-	            if(regrab_damage >= 8){
-	                var bomb_spr = sprite_get("bubbleBombStrong")
+            if(!(has_rune("F") || all_runes)){
+	            if(get_player_color(player) != 13){
+		            if(regrab_damage >= 8){
+		                var bomb_spr = sprite_get("bubbleBombStrong")
+		            }else{
+		                var bomb_spr = sprite_get("bubbleBombIdle")
+		            }
 	            }else{
-	                var bomb_spr = sprite_get("bubbleBombIdle")
+	            	if(regrab_damage >= 8){
+		                var bomb_spr = sprite_get("bubbleBombStrong_ocean")
+		            }else{
+		                var bomb_spr = sprite_get("bubbleBombIdle_ocean")
+		            }
 	            }
             }else{
             	if(regrab_damage >= 8){
-	                var bomb_spr = sprite_get("bubbleBombStrong_ocean")
+	                var bomb_spr = sprite_get("bubbleBombStrong_cheese")
 	            }else{
-	                var bomb_spr = sprite_get("bubbleBombIdle_ocean")
+	                var bomb_spr = sprite_get("bubbleBombIdle_cheese")
 	            }
             }
             var bomb_spr = draw_sprite_ext(bomb_spr, 0, x + 20*spr_dir, y - 10, bomb_sizevar*spr_dir*-1, bomb_sizevar, -60*spr_dir + 6*sin(state_timer/20), c_white, 1)
         }
         
         if(window == 2){
-            if(get_player_color(player) != 13){
-	            if(regrab_damage >= 8){
-	                var bomb_spr = sprite_get("bubbleBombStrong")
+            if(!(has_rune("F") || all_runes)){
+	            if(get_player_color(player) != 13){
+		            if(regrab_damage >= 8){
+		                var bomb_spr = sprite_get("bubbleBombStrong")
+		            }else{
+		                var bomb_spr = sprite_get("bubbleBombIdle")
+		            }
 	            }else{
-	                var bomb_spr = sprite_get("bubbleBombIdle")
+	            	if(regrab_damage >= 8){
+		                var bomb_spr = sprite_get("bubbleBombStrong_ocean")
+		            }else{
+		                var bomb_spr = sprite_get("bubbleBombIdle_ocean")
+		            }
 	            }
             }else{
             	if(regrab_damage >= 8){
-	                var bomb_spr = sprite_get("bubbleBombStrong_ocean")
+	                var bomb_spr = sprite_get("bubbleBombStrong_cheese")
 	            }else{
-	                var bomb_spr = sprite_get("bubbleBombIdle_ocean")
+	                var bomb_spr = sprite_get("bubbleBombIdle_cheese")
 	            }
             }
             
@@ -83,8 +99,9 @@ if(attack == AT_DSPECIAL){
         }else{
             temp_thump = 0
         }
+        init_shader();
         shader_start()
-        var watershield = draw_sprite_ext(sprite_get("watershield"), 1, x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), (1 + temp_thump) * spr_dir, 1 + temp_thump, 0 + 8*sin(state_timer/20), c_white, 1)
+        var watershield = draw_sprite_ext(sprite_get("watershield"), 1, x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), ((1 * shield_size_multiplier) + temp_thump) * spr_dir, (1 * shield_size_multiplier) + temp_thump, 0 + 8*sin(state_timer/20), c_white, 1)
         shader_end();
     }
 }
@@ -486,9 +503,9 @@ shader_start();
 
 if(instance_exists(waterBomb)){
 	if(waterBomb.strong){
-		draw_indicator('bomb', 0, 1, waterBomb.x, waterBomb.y, waterBomb.current_owner);
+		draw_vertical_indicator('bomb', 0, 1, waterBomb.x, waterBomb.y, waterBomb.current_owner);
 	}else{
-		draw_indicator('bomb', 0, 0, waterBomb.x, waterBomb.y, waterBomb.current_owner);
+		draw_vertical_indicator('bomb', 0, 0, waterBomb.x, waterBomb.y, waterBomb.current_owner);
 	}
 }
 if(instance_exists(hurricane)){
@@ -508,7 +525,7 @@ draw_debug_text(x - 50, y - 80, string(enemy_url))
 
 shader_end();
 
-#define draw_indicator(type, angle, index, temp_x, temp_y, current_owner)
+#define draw_vertical_indicator(type, angle, index, temp_x, temp_y, current_owner)
 var offX = undefined;
 var offY = undefined;
 var offIndex = 0;
@@ -540,6 +557,60 @@ if (temp_y < view_get_yview() + 35) {
 		}
 	}
 }else{
+	if (offX != undefined) {
+		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY, 1, 1, offRot, get_player_hud_color(current_owner), 1);
+		switch type {
+			case 'bomb':
+			draw_sprite_ext(sprite_get("article_offscreen"), index, offX, offY, 1, 1, 0, c_white, 1);
+			break;
+			case 'hurricane':
+			draw_sprite_ext(sprite_get("hurricane_offscreen"), index, offX, offY, 1, 1, 0, c_white, 1);
+			break;
+		}
+	}
+}
+
+#define draw_indicator(type, angle, index, temp_x, temp_y, current_owner)
+var offX = undefined;
+var offY = undefined;
+var offIndex = 0;
+var offRot = 0;
+var size = 0;
+
+if (!onscreen(temp_x, temp_y)) {
+	offX = clamp(temp_x, view_get_xview() + 35, view_get_xview() + view_get_wview() - 35);
+    offY = clamp(temp_y, view_get_yview() + 35, view_get_yview() + view_get_hview() - 35);
+    if(temp_x > view_get_xview() + view_get_wview() - 35){
+    	if(temp_y < view_get_yview() - 35){
+    		offIndex = 1
+    		offRot = 90
+    	}else if(temp_y > view_get_yview() + view_get_hview() + 35){
+    		offIndex = 1
+    		offRot = 0
+    	}else{
+    		offIndex = 0
+    		offRot = 90
+    	}
+    }else if(temp_x < view_get_xview() + 35){
+    	if(temp_y < view_get_yview() - 35){
+    		offIndex = 1
+    		offRot = 180
+    	}else if(temp_y > view_get_yview() + view_get_hview() + 35){
+    		offIndex = 1
+    		offRot = 270
+    	}else{
+    		offIndex = 0
+    		offRot = 270
+    	}
+    }else if(temp_y < view_get_yview() + 35){
+    	offIndex = 0
+		offRot = 180
+    }else{
+    	offIndex = 0
+		offRot = 0
+    }
+	size = 1
+	
 	if (offX != undefined) {
 		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY, 1, 1, offRot, get_player_hud_color(current_owner), 1);
 		switch type {

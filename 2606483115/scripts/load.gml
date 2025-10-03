@@ -101,11 +101,13 @@ sprite_change_offset("vfx_steam_large", 140, 140);
 sprite_change_offset("vfx_steam_large_tired", 140, 140);
 sprite_change_offset("rocket_trail", 8, 8);
 sprite_change_offset("steam_rocket", 8, 8);
+sprite_change_offset("steam_mortar", 16, 16);
 sprite_change_offset("firework", 48, 48);
 sprite_change_offset("firework2", 48, 48);
 sprite_change_offset("firework3", 48, 48);
 sprite_change_offset("G7_EFfect", 45, 84);
 sprite_change_offset("blw_flag", 48, 48);
+
 
 set_victory_bg( sprite_get( "victory" ));
 //Masked

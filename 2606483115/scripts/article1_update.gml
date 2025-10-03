@@ -53,7 +53,7 @@ if(state == 1){
 				}
 			}
 			sound_play(asset_get("sfx_kragg_roll_start"))
-			player_id.steam -= player_id.dspec_cost
+			if (!bypass_cost) player_id.steam -= player_id.dspec_cost
 			player_id.geysers += 1
 		}else{
 			player_id.geysers -= 1

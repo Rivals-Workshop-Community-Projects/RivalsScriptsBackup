@@ -60,6 +60,7 @@ if(attack == AT_DSPECIAL){
 	if(window == 2 && window_timer == 1){
 		if(steam >= 20 && geysers < max_geysers && !hitpause){
 			var geyser = instance_create(x + 5*spr_dir, y - 80, "obj_article1")
+			array_push(geyser_array, geyser)
 			
 		}
 	}
@@ -329,20 +330,24 @@ if(attack == AT_DSTRONG){
 
 //Fstrong Steam Wall
 if(attack == AT_FSTRONG){
+	print_debug(steam)
 	if(window == 1){
 		steam_wall_dismiss = false
 		if(!instance_exists(steam_wall) && steam_wall_timer <= 0 || steam_wall == noone && steam_wall_timer <= 0){
-			length = floor(state_timer / 6)
-			full_length = floor(state_timer / 6)
+			length = floor(state_timer / 6) + 2
+			full_length = floor(state_timer / 6) + 2
 			wall_dir = spr_dir
 		}
 	}
 	if(window == 2 && window_timer == 1){
 		shake_camera( 6, 4)
 		if(!instance_exists(steam_wall) && steam_wall_timer <= 0 || steam_wall == noone && steam_wall_timer <= 0){
-			steam_wall = instance_create(x + 55*spr_dir, y - 47, "obj_article2")
-			steam_wall.length = length
-			steam_wall_no_down = 10
+			if(steam > 0){
+				steam -= 5
+				steam_wall = instance_create(x + 55*spr_dir, y - 47, "obj_article2")
+				steam_wall.length = length
+				steam_wall_no_down = 10
+			}
 		}
 	} 
 }

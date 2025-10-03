@@ -44,7 +44,7 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2){
 	}
 }
 
-if(my_hitboxID.attack == AT_DSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 5)){
+if(my_hitboxID.attack == AT_DSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 7)){
 	hit_player_obj.overheat = 99
 }
 

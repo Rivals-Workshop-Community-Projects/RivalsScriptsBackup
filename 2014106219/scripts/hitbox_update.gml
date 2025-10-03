@@ -134,7 +134,7 @@ if (attack == AT_FSPECIAL) {
 				}
 			}
 			
-			if (place_meeting(x-2*spr_dir, y, other.id) && player_id != other.player_id && !player_id.has_hit && !other.borked && damage >= 6 && !proj_break && !other.player_id.Lmao){
+			if (place_meeting(x-2*spr_dir, y, other.id) && player_id != other.player_id && !player_id.has_hit && !other.borked && damage >= 6 && !proj_break){
 				got_hit = true;
 				with player_id enemy_hitboxID = player;
 				hit_distance = kb_value;
@@ -162,11 +162,11 @@ if (attack == AT_FSPECIAL) {
 		}
 		
 	if got_hit{
+		player = enemy_hitboxID;
 		in_hitpause = true;
 		hitstop = 7;
 		smacked = true;
 		hitbox_timer = 25;
-		player = enemy_hitboxID;
 		spr_dir = hit_dir;
 		old_vsp = -5;
 		old_hsp = (hit_distance) * hit_dir;
@@ -299,7 +299,7 @@ if (attack == AT_FSPECIAL_2) {
 				}
 			}
 			
-			if (place_meeting(x-2*spr_dir, y, other.id) && player_id != other.player_id && !player_id.has_hit && !other.borked && damage >= 6 && !proj_break && !other.player_id.Lmao){
+			if (place_meeting(x-2*spr_dir, y, other.id) && player_id != other.player_id && !player_id.has_hit && !other.borked && damage >= 6 && !proj_break){
 				got_hit = true;
 				with player_id enemy_hitboxID = player;
 				if hit_flipper == 5 {
@@ -327,11 +327,11 @@ if (attack == AT_FSPECIAL_2) {
 		}
 		
 	if got_hit{
+		player = enemy_hitboxID;
 		in_hitpause = true;
 		hitstop = 7;
 		smacked = true;
 		hitbox_timer = 25;
-		player = enemy_hitboxID;
 		spr_dir = hit_dir;
 		old_vsp = -5;
 		old_hsp = (hit_distance) * hit_dir;

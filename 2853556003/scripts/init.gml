@@ -13,8 +13,6 @@ walk_anim_speed = .18;
 dash_anim_speed = .25;
 pratfall_anim_speed = 0.2;
 
-saw_blade = 0
-
 hue = 0;
 outlineR = 0;
 outlineG = 0;
@@ -49,52 +47,46 @@ if(has_rune("B") && has_rune("E") && has_rune("N")
 	all_runes = false
 }
 
-if(has_rune("L") || all_runes){
-	L_modifier = 2
-}else{
-	L_modifier = 1
-}
-
-walk_speed = 3.25 * L_modifier;
-walk_accel = 0.2 * L_modifier;
-walk_turn_time = 8 / L_modifier;
+walk_speed = 3.25;
+walk_accel = 0.2;
+walk_turn_time = 8;
 initial_dash_time = 15;
-initial_dash_speed = 6.25 * L_modifier;
-dash_speed = 5.75 * L_modifier;
-dash_turn_time = 6 / L_modifier;
-dash_turn_accel = 1 * L_modifier;
-dash_stop_time = 4 / L_modifier;
-dash_stop_percent = .5 * L_modifier; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .22 / L_modifier;
-moonwalk_accel = 1.4 * L_modifier;
+initial_dash_speed = 6.25;
+dash_speed = 5.75;
+dash_turn_time = 6;
+dash_turn_accel = 1;
+dash_stop_time = 4;
+dash_stop_percent = .5; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .22;
+moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 9.5 * L_modifier;
+jump_speed = 9.5;
 short_hop_speed = 5.8;
 djump_speed = -1;
-leave_ground_max = 6 * L_modifier; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6 * L_modifier; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5 * L_modifier; // (3) the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3 * L_modifier; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .32 * L_modifier;
-prat_fall_accel = .75 * L_modifier; //multiplier of air_accel while in pratfall
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5.5; // (3) the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .32;
+prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .06;
 max_djumps = 1;
 double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 6 * L_modifier;
-walljump_vsp = 9 * L_modifier;
-walljump_time = 16 * L_modifier;
-max_fall = 11 * L_modifier; //maximum fall speed without fastfalling
-fast_fall = 15 * L_modifier; // (11) fast fall speed
+walljump_hsp = 6;
+walljump_vsp = 9;
+walljump_time = 16;
+max_fall = 11; //maximum fall speed without fastfalling
+fast_fall = 15; // (11) fast fall speed
 gravity_speed = .45; // (.45)
 hitstun_grav = .5;
 knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4 / L_modifier; //normal landing frames
+land_time = 4; //normal landing frames
 prat_land_time = 8;
-wave_land_time = 12 / L_modifier;
+wave_land_time = 12;
 wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .2 / L_modifier; //grounded deceleration when wavelanding
+wave_friction = .2; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -114,13 +106,13 @@ tech_recovery_frames = 1;
 techroll_startup_frames = 2;
 techroll_active_frames = 5;
 techroll_recovery_frames = 4;
-techroll_speed = 7 * L_modifier;
+techroll_speed = 7;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
 air_dodge_recovery_frames = 2;
-air_dodge_speed = 8 * L_modifier;
+air_dodge_speed = 8;
 
 //roll animation frames
 roll_forward_startup_frames = 2;
@@ -129,8 +121,8 @@ roll_forward_recovery_frames = 4;
 roll_back_startup_frames = 2;
 roll_back_active_frames = 5;
 roll_back_recovery_frames = 4;	
-roll_forward_max = 7 * L_modifier; //roll speed
-roll_backward_max = 7 * L_modifier;
+roll_forward_max = 7; //roll speed
+roll_backward_max = 7;
 
 land_sound = asset_get("sfx_land_heavy");
 landing_lag_sound = asset_get("sfx_land_heavy");
@@ -142,8 +134,6 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
-
-waterCutterExist = 0
 
 bouncePad = hit_fx_create( sprite_get( "bouncePad" ), 12 );
 airdodge1 = hit_fx_create( sprite_get( "airdodge1" ), 15 );
@@ -159,12 +149,18 @@ vfx_waterhit_medium_sweet = hit_fx_create( sprite_get( "vfx_delta_waterhit_sweet
 vfx_waterhit_medium = hit_fx_create( sprite_get( "vfx_waterhit_medium" ), 24);
 vfx_waterhit_small = hit_fx_create( sprite_get( "vfx_waterhit_small" ), 18 );
 vfx_waterhit_huge = hit_fx_create( sprite_get( "vfx_waterhit_huge" ), 32 );
+vfx_cheesehit_medium = hit_fx_create( sprite_get( "vfx_waterhit_medium_cheese" ), 24);
+vfx_cheesehit_small = hit_fx_create( sprite_get( "vfx_waterhit_small_cheese" ), 18 );
 
 vfx_waterfx_small = hit_fx_create( sprite_get( "vfx_waterfx_small" ), 21);
 
 vfx_shieldshatter = hit_fx_create( sprite_get( "shieldshatter" ), 24);
 
 vfx_fspecial = hit_fx_create( sprite_get( "fspecial_fx" ), 24);
+
+vfx_cheese_fx = hit_fx_create( sprite_get( "cheese_destroy" ), 20);
+vfx_cheesed_fx = hit_fx_create( sprite_get( "cheesed_fx" ), 27);
+vfx_nspec_cancel = hit_fx_create( sprite_get( "vfx_nspec_cancel" ), 21);
 
 //sfx
 if(get_player_color(player) == 11){
@@ -255,12 +251,33 @@ sounds_changed = false
 bomb_hurricane = false
 uspecial_charge = 0
 bubble_bounce_potential = 0
+sawblade = noone
+spawned_riptide = false
+airtime = 0
 
 thump = 0
 bomb_thump = 0
 bead_thump = 0
 waterBomb_charge_stun = 0
 extended_cooldown = false
+
+//Tweakable Variables
+
+waterBomb_cooldown = 210 //Waterbomb cooldown after Nspecial
+waterBomb_throw_multiplier = 1 //Velocity multiplier for Nspecial throw
+waterBomb_max_bounces = 0 //Amount of times waterbomb can bounce before detonation
+waterBomb_splits = 0 //Amounts of splits the bomb can make
+waterBomb_split_amount = 0 //Amount of bombs waterbomb will split into for each split
+waterBomb_size_multiplier = 1 //Base size multiplier
+
+sawblade_speed = 10 //Riptide groundspeed
+sawblade_jumpspeed = -8 //Riptide jumpspeed
+sawblade_damage = 1 //Damage for each sawblade hit
+sawblade_gravity_multiplier = 1 //Gravity of sawblade
+sawblade_size_multiplier = 1 //Sawblade size
+
+shield_size_multiplier = 1 //Dspecial shield size multiplier
+shield_cooldown = 120
 
 if(secret_skins == true){
 
@@ -544,111 +561,131 @@ kirbyability = 16;
 
 // Level 1 runes
 
-//Ustrong distance
+//Waterbomb cooldown reduced
 if(has_rune("A") || all_runes){
-	A_modifier = 2	
-}else{
-	A_modifier = 1
+	waterBomb_cooldown = 90
 }
-//Faster Nspecial
+
+//Hurricane goes farther
 if(has_rune("B") || all_runes){
-	B_modifier = 2
+	B_modifier = 2.5
 }else{
 	B_modifier = 1
 }
-//WaterBomb Farther
+
+//Flipped Kick Angles
 if(has_rune("C") || all_runes){
-	C_modifier = 1.5
-}else{
-	C_modifier = 1
+	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 215);
+	
+	set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 140);
+	set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 97);
+	
+	set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 270);
+	set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 270);
+	
+	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 60);
+	
+	set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 270);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 225);
+	
+	set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 90);
+	set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 270);
+	set_hitbox_value(AT_DATTACK, 4, HG_ANGLE, 270);
+	
+	set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 255);
 }
-//Hurricane Multihits
+
+//No Ground Friction
 if(has_rune("D") || all_runes){
-	D_modifier = 1.75
-}else{
-	D_modifier = 1
+	ground_friction = 0;
+	wave_friction = 0; //grounded deceleration when wavelanding
 }
-//Dspecial dash farther
+
+//Gatling Dattack
 if(has_rune("E") || all_runes){
-	E_modifier = 1.5
+
 }else{
-	E_modifier = 1
+
 }
-//Fspecial Stronger
+//Cheese Ball
 if(has_rune("F") || all_runes){
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 16);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.95);
+
 }
 
 // Level 2 Runes
 
-//Waterbomb is bigger and stronger
+//Waterbomb throws further and bounces
 if(has_rune("G") || all_runes){
-	G_modifier = 1.5
-	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 50);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 50);
-
-	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.75);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 30);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1.1);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 150);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 150);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.9);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 50);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 180);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 180);
-	
-	set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 180);
-	set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 180);
+	waterBomb_throw_multiplier = 1.5 //Velocity multiplier for Nspecial throw
+	waterBomb_max_bounces = 3 //Amount of times waterbomb can bounce before detonation
 }else{
-	G_modifier = 1
+	
 }
-//H (Waterbomb has no cooldown)
+//H Homing Hurricane
+if(has_rune("H") || all_runes){
+	H_modifier = true
+}else{
+	H_modifier = false
+}
 
-//I (dattack cancel)
+//I Wavesplash
 
-//Uair sends down
+//Whetstone, RIPTIDE stronger across the board and summon on hit from Fspecial
 if(has_rune("J") || all_runes){
-	set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 270);
-}else{
-	set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 90);
+	sawblade_speed += 5 //Riptide groundspeed
+	sawblade_jumpspeed -= 2 //Riptide jumpspeed
+	sawblade_damage += 1 //Damage for each sawblade hit
 }
 
-//K (Bair can be held forever)
+//K Spacesuit
 if(has_rune("K") || all_runes){
-	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 5);
-}else{
-	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 3);
-	set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 3);
-	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 3);
-	set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 3);
+	jump_speed = 7.5;
+	short_hop_speed = 3.5;
+	gravity_speed = .15; // (.45)
+	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -2);
 }
 
 //L (Torga faster)
+if(has_rune("L") || all_runes){
+	waterBomb_splits = 2 //Amounts of splits the bomb can make
+	waterBomb_split_amount = 2 //Amount of bombs waterbomb will split into for each split
+}
 
-//M (Waterbomb always strong)
+//M Hurricane more multihits and strengthens waterbombs
+if(has_rune("M") || all_runes){
+	M_modifier = 2.6
+}else{
+	M_modifier = 1
+}
+
+//Blood Fuse
+if(has_rune("N") || all_runes){
+	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 18);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 2);
+	
+	waterBomb_size_multiplier = 1.25
+	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
+	set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
+	
+	set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+	
+	shield_size_multiplier = 1.5 //Dspecial shield size multiplier
+	shield_cooldown /= 2
+	
+    sawblade_size_multiplier = 1.2
+    sawblade_speed += 2.5 //Riptide groundspeed
+	sawblade_jumpspeed -= 2 //Riptide jumpspeed
+	sawblade_damage += 1 //Damage for each sawblade hit
+	sawblade_gravity_multiplier += 0.5 //Gravity of sawblade
+
+}else{
+	N_modifier = 1
+}
 
 //O (Turbo mode)
-
-//Hurricane cannot be destroyed
-if(has_rune("N") || all_runes){
-	N_modifier = true
-}else{
-	N_modifier = false
-}
 
 //Other player URL
 

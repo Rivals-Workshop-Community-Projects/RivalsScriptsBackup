@@ -37,27 +37,58 @@ if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 if(instance_exists(hurricane)){
 	if(hurricane.grabbedid != noone){
 		if(hit_player_obj == hurricane.grabbedid && !(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2) && hurricane.state == 0){
-			with(hurricane){
-				state = 1
-				state_timer = 0
-				image_index = 0
-				with(player_id){
-					if(hurricane.holding_bomb){
-						waterBomb = instance_create(hurricane.x, hurricane.y - 10,"obj_article2");
-						if(hurricane.bomb_strong){
-							waterBomb.strong = true
-							waterBomb.state = 3
-							waterBomb.state_timer = 0
-							waterBomb.image_index = 0
-						}else{
-							waterBomb.strong = false
-							waterBomb.state = 2
-							waterBomb.state_timer = 0
-							waterBomb.image_index = 0
+			if(!(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1)){
+				with(hurricane){
+					state = 1
+					state_timer = 0
+					image_index = 0
+					with(player_id){
+						if(hurricane.holding_bomb){
+							waterBomb = instance_create(hurricane.x, hurricane.y - 10,"obj_article2");
+							if(hurricane.bomb_strong){
+								waterBomb.strong = true
+								waterBomb.state = 3
+								waterBomb.state_timer = 0
+								waterBomb.image_index = 0
+							}else{
+								waterBomb.strong = false
+								waterBomb.state = 2
+								waterBomb.state_timer = 0
+								waterBomb.image_index = 0
+							}
+							waterBomb.spr_dir = 1
+							hurricane.holding_bomb = false
 						}
-						waterBomb.spr_dir = 1
-						hurricane.holding_bomb = false
 					}
+				}
+			}else{
+				with(hurricane){
+					player_id.spawned_riptide = true
+	    			state = 1
+	    			state_timer = 0
+	    			image_index = 0
+	    			hsp = 7.5 * player_id.spr_dir
+	    			if(!instance_exists(player_id.sawblade)){
+		    			player_id.sawblade = instance_create(x, y,"obj_article2");
+		    			player_id.sawblade.spr_dir = player_id.spr_dir
+		    			player_id.sawblade.type = 1
+		    			player_id.sawblade.hsp = (player_id.sawblade_speed / 4) * player_id.sawblade.spr_dir
+		    			player_id.sawblade.vsp = player_id.sawblade_jumpspeed / 2
+		    			sound_play(asset_get("sfx_spin"))
+		    			if(holding_bomb){
+		    				player_id.sawblade.big = true
+		    				with(player_id.sawblade){
+		    					sound_play(asset_get("sfx_waterwarp"))
+		    				}
+		    			}else{
+		    				with(player_id.sawblade){
+		    					sound_play(asset_get("sfx_waterwarp_start"))
+		    				}
+		    			}
+		    			if(bomb_strong) player_id.sawblade.strong = true
+	    			}
+	
+	    			holding_bomb = false
 				}
 			}
 		}
@@ -93,19 +124,35 @@ if(my_hitboxID.attack == AT_DATTACK){
 		dispos_y = y - hit_player_obj.y
 	}
 }
-
-if(instance_exists(waterBomb)){
-	if(my_hitboxID.attack == AT_NSPECIAL){
-		if(my_hitboxID.hbox_num == 1 && waterBomb.got_hit_timer <= 0){
-			if(!waterBomb.strong){
-				waterBomb.state = 2
-				waterBomb.state_timer = 0
+if(my_hitboxID.attack == AT_NSPECIAL){
+	if(instance_exists(my_hitboxID.waterBomb_id)){
+		if(my_hitboxID.hbox_num == 1 && my_hitboxID.waterBomb_id.got_hit_timer <= 0){
+			if(!my_hitboxID.waterBomb_id.strong){
+				my_hitboxID.waterBomb_id.state = 2
+				my_hitboxID.waterBomb_id.state_timer = 0
 			}else{
-				waterBomb.state = 3
-				waterBomb.state_timer = 0
+				my_hitboxID.waterBomb_id.state = 3
+				my_hitboxID.waterBomb_id.state_timer = 0
 			}
-		}else if(my_hitboxID.hbox_num == 1 && waterBomb.got_hit_timer > 0){
-			instance_destroy(waterBomb.waterBomb_hitbox)
+		}else if(my_hitboxID.hbox_num == 1 && my_hitboxID.waterBomb_id.got_hit_timer > 0){
+			instance_destroy(my_hitboxID.waterBomb_id.waterBomb_hitbox)
+		}
+		if(my_hitboxID.hbox_num == 2){
+			move_cooldown[AT_NSPECIAL] = max(0, move_cooldown[AT_NSPECIAL] - 60)
+			
+		}
+		if(my_hitboxID.hbox_num == 3){
+			move_cooldown[AT_NSPECIAL] = max(0, move_cooldown[AT_NSPECIAL] - 15)
+		}
+	}
+}
+
+if(instance_exists(sawblade)){
+	if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3){
+		sawblade.hitstun = 3
+		if(sawblade.state == 1){
+			sawblade.old_vsp += 0.35
+			sawblade.vsp += 0.35
 		}
 	}
 }
@@ -114,6 +161,36 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 	fspecial_can_attack = true
 }
 
+
+//Runes
+if((has_rune("F") || all_runes)){
+	if(my_hitboxID.attack == AT_NSPECIAL){
+	    hit_player_obj.cheesed = 300
+	}else if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num > 1 || my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DSTRONG
+	|| my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
+		if(hit_player_obj.cheesed > 50){
+			sound_play(sound_get("sfx_collecttoppin"))
+			spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 20, vfx_cheesed_fx)
+			hit_player_obj.cheesed = 0
+			hit_player_obj.hitstop += 40
+			hit_player_obj.hitstop_full += 40
+		}
+	}
+}
+
+if((has_rune("J") || all_runes)){
+	if(!instance_exists(sawblade) && my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
+		spawned_riptide = true
+		sawblade = instance_create(my_hitboxID.x, my_hitboxID.y,"obj_article2");
+		sawblade.spr_dir = spr_dir
+		sawblade.type = 1
+		sawblade.old_hsp = hit_player_obj.old_hsp / 1.25
+		sawblade.old_vsp = hit_player_obj.old_vsp / 1.25
+		sawblade.hitstun = 10 //NOT WOKRING
+		sawblade.big = true
+		sound_play(asset_get("sfx_waterwarp"))
+	}
+}
 
 //Ai stuff
 if(ai == 1){

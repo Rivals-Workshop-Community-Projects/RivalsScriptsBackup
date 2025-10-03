@@ -169,6 +169,7 @@ lifetime = 0
 last_state_wl = false
 tired = false
 geysers = 0
+geyser_array = []
 overheat = 0
 overheat_timer = 0
 switch_timer = 0
@@ -204,6 +205,7 @@ jump_cost = 20
 //Geysers
 max_geysers = 2
 geyser_duration = 900
+geyser_mortars = 1 //How many mortars are shot by a geyser
 
 //Abyss Variables
 regen_geysers = false
@@ -392,6 +394,7 @@ if(has_rune("B") && has_rune("E") && has_rune("N")
 
 if(has_rune("A") || all_runes){
 	max_geysers = 4
+	geyser_mortars = 3
 }
 
 if(has_rune("B") || all_runes){

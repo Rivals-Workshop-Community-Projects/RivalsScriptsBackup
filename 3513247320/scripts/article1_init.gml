@@ -1,4 +1,4 @@
-sprite_index = sprite_get("a_rush_coil" + (orig_player_id.alt == 0 || orig_player_id.alt == 31 ? "":"_mapped"));
+sprite_index = sprite_get("a_rush_coil" + (orig_player_id.alt == 0? "":"_mapped"));
 mask_index = sprite_get("a_rush_coil_mask");
 
 //uses_shader = false;

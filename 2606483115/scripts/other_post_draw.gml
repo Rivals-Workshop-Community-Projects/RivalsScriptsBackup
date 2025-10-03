@@ -1,5 +1,5 @@
 //bleh
-if("other_player_id" not in self) exit;
+if !instance_exists(other_player_id) exit;
 with(other_player_id){
     if("shrug_galega" not in self) exit;
 }

@@ -149,7 +149,7 @@ attacking = false;
 sfx = noone;
 attack_window_end = 0;
 
-arbitrary_sync_number = 22771;
+
 
 // Special variables
 fstrong_sfx = noone;
@@ -187,7 +187,7 @@ fspec_hitbox = noone;
 fspec_grab = [];
 fspec_loops = 0;
 fspec_wall_timer = 0;
-fspec_wall_timer_max = 14;
+fspec_wall_timer_max = 30;
 fspec_sfx_timer = 0;
 fspec_jump_flip = 0;
 fspec_jc_hsp_mult = .75;
@@ -211,7 +211,6 @@ uspec_uses = 0;
 uspec_max_uses = 1 + has_rune("N");
 uspec_max_fuel = 2000;
 uspec_fuel = uspec_max_fuel;
-uspec_shield_pressed = false;
 can_use_jet = true;
 can_recharge_fuel = true;
 // can_use_coil = true;

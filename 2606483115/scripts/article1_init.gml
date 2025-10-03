@@ -25,3 +25,4 @@ dist = 0
 lifetime = 0
 attack = false
 start_adjust = 0
+bypass_cost = false //If true, cost no steam

@@ -31,6 +31,9 @@ if(!(attack == AT_USPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_A
 	if(instance_exists(waterBomb)){
 		waterBomb.slow = false
 	}
+	if(instance_exists(sawblade)){
+		sawblade.slow = false
+	}
 }
 
 //All DJ stuff
@@ -94,10 +97,10 @@ if(state != PS_DOUBLE_JUMP && state != PS_ATTACK_AIR){
 }
 
 if(double_jump_timer > 0 && !hitpause && free){
-	if(has_rune("L") || all_runes){
-		vsp -= 1.25
-	}else{
+	if(!(has_rune("K") || all_runes)){
 		vsp -= 1.05
+	}else{
+		vsp -= 0.75
 	}
 	double_jump_timer -= 1
 }else if(!free){
@@ -513,6 +516,15 @@ if(state == PS_LAND || state == PS_JUMPSQUAT){
 			splash.spr_dir = -1
 		}
 		bubble_bounce_potential = 0
+		if(has_rune("I") || all_runes){
+			var wavesplash_hbox = create_hitbox(AT_FSPECIAL, 3, x, y - 15)
+			wavesplash_hbox.image_xscale = 0.3
+			wavesplash_hbox.image_yscale = 0.3
+			wavesplash_hbox.damage = 4
+			wavesplash_hbox.kb_angle = 90
+			wavesplash_hbox.hitpause = 10
+			wavesplash_hbox.length = 4
+		}
 	}
 }
 
@@ -593,17 +605,50 @@ if(variable_instance_exists(id,"diag"))
 */
 
 //Runes
-if(has_rune("B") || all_runes){
-	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 2);
-}else{
-	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
+//Hydroplaning
+if(has_rune("D") || all_runes){
+	if(!free && (hsp > 1 || hsp < -1) && state != PS_DASH && state != PS_DASH_START && state != PS_WALK){
+		if(state_timer mod 3 == 0){
+			var waterfx = spawn_hit_fx(x + hsp + (30 - random_func_2(1, 60, true)), y + (5 - random_func_2(2, 10, true)), vfx_waterfx_small)
+		}
+	}	
 }
-if(has_rune("M") || all_runes){
-	if(instance_exists(waterBomb)){
-		waterBomb.strong = true 
-		waterBomb.damage = 8
+
+//Cheese Ball
+if(has_rune("F") || all_runes){
+	with(oPlayer){
+		if(self != other){
+			if(state == PS_DEAD || state == PS_SPAWN){
+			    cheesed = 0
+			    stock_lifetime = 0
+			}
+			if(cheesed >= 0){
+			    if(cheesed > 50 && state_timer mod 8 == 0 && !hitpause){
+			        with(other){
+			            spawn_hit_fx(other.x - 30 + random_func(1, 60, true), other.y + 5 - random_func(2, 60, true), vfx_cheese_fx)
+			        }
+			    }
+			    if(state_cat != SC_HITSTUN){
+			        cheesed -= 2
+			    }
+			    if(cheesed <= 255){
+			        outline_color = [240 - (255 - cheesed), 224 - (255 - cheesed), 158 - (255 - cheesed)]
+			    }else{
+			        outline_color = [240, 224, 158]
+			    }
+			    init_shader();
+			}
+		}
 	}
 }
+
+//Spacesuit
+if(free && (has_rune("K") || all_runes)){
+	if(down_pressed && !hitpause && can_move){
+		vsp = fast_fall
+	}
+}
+
 
 //SS
 
@@ -821,3 +866,8 @@ set_color_profile_slot( 13, 5, 143, 135, 96 ); //Book
 }
 switch_timer--
 bubble_bounce_potential--
+if(free && state_cat != PS_HITSTUN){
+	airtime++
+}else{
+	airtime = 0
+}

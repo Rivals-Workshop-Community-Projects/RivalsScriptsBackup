@@ -22,6 +22,11 @@ if(my_hitboxID.attack == AT_FSPECIAL){
     if(my_hitboxID.hbox_num == 2){
         hurricane.current_owner = hit_player
         hurricane.hsp *= -1
+    }else if(my_hitboxID.hbox_num == 3){
+        sawblade.current_owner = hit_player
+        sawblade.hsp *= -1
+        sawblade.vsp *= -1
+        sawblade.spr_dir *= -1
     }else{
         parriedID = hit_player
     }

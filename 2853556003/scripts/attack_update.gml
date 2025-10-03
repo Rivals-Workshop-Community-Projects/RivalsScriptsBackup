@@ -102,7 +102,7 @@ if (attack == AT_NSPECIAL){
 	Make hurricane stuff work
 	*/
 	if(attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !instance_exists(waterBomb)){
-	    if(window == 2 && state_timer > (10 / B_modifier) && ai != 1){
+	    if(window == 2 && state_timer > 10 && ai != 1){
 	        if(!joy_pad_idle ||
 	        right_stick_down || left_stick_down || down_stick_down || up_stick_down){
 	            if(left_down || left_stick_down){
@@ -164,42 +164,17 @@ if (attack == AT_NSPECIAL){
 	if(window == 1){
 		//Reset variables
 		if(window_timer = 1){
+			if(has_rune("N") || all_runes){
+				bloodFuseDamage(1)
+			}
 			regrab_damage = 0
 			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_down"));
 			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_down_air"));
 			pointing_direction = 270
 		}
-		if(window_timer == round(3 / B_modifier)){
+		if(window_timer == 3){
 			if(!instance_exists(waterBomb) && !(instance_exists(hurricane) && hurricane.holding_bomb)){
 				sound_play(sound_get("sfx_waterbomb_enlarge"))
-			}
-		}
-
-		//Regrab bomb
-		if(window_timer < 8){
-			if(instance_exists(waterBomb) && window_timer > 1){
-				if(distance_to_object(waterBomb) < 25 && waterBomb.state == 1 && waterBomb.current_owner == player){
-					regrab_damage = waterBomb.damage
-					window = 2
-					window_timer = 0
-					sound_play(asset_get("sfx_frog_dspecial_hit"))
-					instance_destroy(waterBomb);
-				}
-			}else if(!instance_exists(waterBomb) && instance_exists(hurricane)){
-				if(distance_to_object(hurricane) < 25 && hurricane.holding_bomb){
-					if(hurricane.bomb_strong){
-						regrab_damage = 8
-					}else{
-						regrab_damage = 0
-					}
-					window = 2
-					window_timer = 0
-					sound_play(asset_get("sfx_frog_dspecial_hit"))
-					hurricane.holding_bomb = false
-					hurricane.state = 1
-					hurricane.state_timer = 0
-					hurricane.image_index = 0
-				}
 			}
 		}
 	}
@@ -230,13 +205,11 @@ if (attack == AT_NSPECIAL){
 	//Hold Frame
 	if(window == 2){
 		//Go to next window
-		if(!special_down && state_timer > (14 / B_modifier) || instance_exists(waterBomb) || instance_exists(hurricane) && hurricane.holding_bomb == true || state_timer > 180){
-			window = 3
+		if(!special_down && state_timer > 14 || instance_exists(waterBomb) && waterBomb.state == 1 || instance_exists(hurricane) && hurricane.holding_bomb == true || state_timer > 180){
+			window = 3 //Its checking to see if waterbomb exists for hold frame but we changed that and i think thats why
 			window_timer = 0
 			if(!instance_exists(waterBomb) && !(instance_exists(hurricane) && hurricane.holding_bomb == true)){
-				if(!has_rune("H") && !all_runes){
-					move_cooldown[AT_NSPECIAL] = 120
-				}
+				move_cooldown[AT_NSPECIAL] = waterBomb_cooldown
 			}
 		}
 		
@@ -252,9 +225,7 @@ if (attack == AT_NSPECIAL){
 			can_shield = true
 		}
 		if(has_airdodge && shield_pressed || djumps < 1 && jump_pressed || djumps < 1 && tap_jump_pressed && can_tap_jump() && !tap_jump_suppress){
-			if(!has_rune("H") && !all_runes){
-    			move_cooldown[AT_NSPECIAL] = 120
-			}
+			move_cooldown[AT_NSPECIAL] = waterBomb_cooldown
 		}
 		
 		//Set holding animation
@@ -318,9 +289,9 @@ if (attack == AT_NSPECIAL){
 	        		if(regrab_damage > 7){
 		        		waterBomb.strong = true
 		        	}
-		        	waterBomb.hsp = 6.5 * spr_dir * C_modifier
+		        	waterBomb.hsp = 6.5 * spr_dir * waterBomb_throw_multiplier
 		        	waterBomb.old_hspeed = waterBomb.hsp
-		        	waterBomb.vsp = -4 * C_modifier
+		        	waterBomb.vsp = -4 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 45 || pointing_direction == 135){
@@ -330,9 +301,9 @@ if (attack == AT_NSPECIAL){
 	        		if(regrab_damage > 7){
 		        		waterBomb.strong = true
 		        	}
-		        	waterBomb.vsp = -7 * C_modifier
+		        	waterBomb.vsp = -7 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
-		        	waterBomb.hsp = 4 * spr_dir * C_modifier
+		        	waterBomb.hsp = 4 * spr_dir * waterBomb_throw_multiplier
 		        	waterBomb.old_hspeed = waterBomb.hsp
 		        	
 				}else if(pointing_direction == 315 || pointing_direction == 225){
@@ -342,9 +313,9 @@ if (attack == AT_NSPECIAL){
 	        		if(regrab_damage > 7){
 		        		waterBomb.strong = true
 		        	}
-		        	waterBomb.hsp = 4 * spr_dir * C_modifier
+		        	waterBomb.hsp = 4 * spr_dir * waterBomb_throw_multiplier
 		        	waterBomb.old_hspeed = waterBomb.hsp
-		        	waterBomb.vsp = -3 * C_modifier
+		        	waterBomb.vsp = -3 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 90){
@@ -354,7 +325,7 @@ if (attack == AT_NSPECIAL){
 		        	if(regrab_damage > 7){
 		        		waterBomb.strong = true 
 		        	}
-		        	waterBomb.vsp = -7.5 * C_modifier
+		        	waterBomb.vsp = -7.5 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 270){
@@ -364,9 +335,9 @@ if (attack == AT_NSPECIAL){
 	        		if(regrab_damage > 7){
 		        		waterBomb.strong = true
 		        	}
-		        	waterBomb.vsp = -3.5 * C_modifier
+		        	waterBomb.vsp = -3.5 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
-		        	waterBomb.hsp = 1.2*spr_dir * C_modifier
+		        	waterBomb.hsp = 1.2*spr_dir * waterBomb_throw_multiplier
 		        	waterBomb.old_hspeed = waterBomb.hsp
 				}else{
 					//Same as Down
@@ -375,9 +346,9 @@ if (attack == AT_NSPECIAL){
 	        		if(regrab_damage > 7){
 		        		waterBomb.strong = true
 		        	}
-		        	waterBomb.vsp = -3.5 * C_modifier
+		        	waterBomb.vsp = -3.5 * waterBomb_throw_multiplier
 		        	waterBomb.old_vspeed = waterBomb.vsp
-		        	waterBomb.hsp = 1.2*spr_dir * C_modifier
+		        	waterBomb.hsp = 1.2*spr_dir * waterBomb_throw_multiplier
 		        	waterBomb.old_hspeed = waterBomb.hsp
 				}
 				
@@ -661,12 +632,15 @@ if(attack == AT_DSPECIAL){
 		extended_cooldown = false
 	}else{
 		if(!extended_cooldown){
-			move_cooldown[AT_DSPECIAL] = 60
+			move_cooldown[AT_DSPECIAL] = shield_cooldown
 		}else{
-			move_cooldown[AT_DSPECIAL] = 240
+			move_cooldown[AT_DSPECIAL] = shield_cooldown * 2
 		}
 	}
 	if(window == 1 && window_timer == 8){
+		if(has_rune("N") || all_runes){
+			bloodFuseDamage(2)
+		}
 		if(vsp > 1.5){
 			vsp = 1.5
 		}
@@ -700,15 +674,29 @@ if(attack == AT_DSPECIAL){
 				sound_play(asset_get("sfx_waveland_wra"))
 				if(super_armor == true){
 					sound_play(sound_get("sfx_watershield_deactivate"))
-					spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					var shield_shatter = spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					shield_shatter.spr_dir *= shield_size_multiplier
+					shield_shatter.image_yscale *= shield_size_multiplier
 				}
 				spr_dir = -1
 				if(free){
 					super_armor = false
 					window = 4
 					window_timer = 0
-					hsp = -10 * E_modifier
+					hsp = -10
 					vsp = -1
+					if(instance_exists(sawblade)){
+						if(sawblade.current_owner == player){
+							if(sawblade.state == 1){
+								sawblade.hsp = -6
+								sawblade.vsp = -2
+								sawblade.spr_dir = -1
+							}else if(sawblade.state == 0){
+								sawblade.hsp = 0
+								sawblade.spr_dir = -1
+							}
+						}
+					}
 					if(instance_exists(waterBomb)){
 						if(waterBomb.current_owner == player){
 							waterBomb.hsp = -5.5
@@ -745,7 +733,19 @@ if(attack == AT_DSPECIAL){
 					super_armor = false
 					window = 4
 					window_timer = 0
-					hsp = -12 * E_modifier
+					hsp = -12
+					if(instance_exists(sawblade)){
+						if(sawblade.current_owner == player){
+							if(sawblade.state == 1){
+								sawblade.hsp = -6
+								sawblade.vsp = -2
+								sawblade.spr_dir = -1
+							}else if(sawblade.state == 0){
+								sawblade.hsp = 0
+								sawblade.spr_dir = -1
+							}
+						}
+					}
 					if(instance_exists(waterBomb)){
 						if(waterBomb.current_owner == player){
 							waterBomb.hsp = -5.5
@@ -784,15 +784,29 @@ if(attack == AT_DSPECIAL){
 				sound_play(asset_get("sfx_waveland_wra"))
 				if(super_armor == true){
 					sound_play(sound_get("sfx_watershield_deactivate"))
-					spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					var shield_shatter = spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					shield_shatter.spr_dir *= shield_size_multiplier
+					shield_shatter.image_yscale *= shield_size_multiplier
 				}
 				spr_dir = 1
 				if(free){
 					super_armor = false
 					window = 4
 					window_timer = 0
-					hsp = 10 * E_modifier
+					hsp = 10
 					vsp = -1
+					if(instance_exists(sawblade)){
+						if(sawblade.current_owner == player){
+							if(sawblade.state == 1){
+								sawblade.hsp = 6
+								sawblade.vsp = -2
+								sawblade.spr_dir = 1
+							}else if(sawblade.state == 0){
+								sawblade.hsp = 0
+								sawblade.spr_dir = 1
+							}
+						}
+					}
 					if(instance_exists(waterBomb)){
 						if(waterBomb.current_owner == player){
 							if(waterBomb.state == 1){
@@ -831,7 +845,19 @@ if(attack == AT_DSPECIAL){
 					super_armor = false
 					window = 4
 					window_timer = 0
-					hsp = 12 * E_modifier
+					hsp = 12
+					if(instance_exists(sawblade)){
+						if(sawblade.current_owner == player){
+							if(sawblade.state == 1){
+								sawblade.hsp = 6
+								sawblade.vsp = -2
+								sawblade.spr_dir = 1
+							}else if(sawblade.state == 0){
+								sawblade.hsp = 0
+								sawblade.spr_dir = 1
+							}
+						}
+					}
 					if(instance_exists(waterBomb)){
 						if(waterBomb.current_owner == player){
 							if(waterBomb.state == 1){
@@ -871,7 +897,9 @@ if(attack == AT_DSPECIAL){
 			if(shield_pressed && !left_down && !right_down || state_timer == 125 || attack_buffer && !left_down && !right_down){
 				destroy_hitboxes();
 				if(super_armor == true){
-					spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					var shield_shatter = spawn_hit_fx(x + 30*spr_dir, y - 31 + 5*sin(state_timer/16), vfx_shieldshatter)
+					shield_shatter.spr_dir *= shield_size_multiplier
+					shield_shatter.image_yscale *= shield_size_multiplier
 					sound_play(sound_get("sfx_watershield_deactivate"))
 				}
 				super_armor = false
@@ -894,9 +922,19 @@ if(attack == AT_DSPECIAL){
 				waterBomb.slow = false
 			}
 		}
+		if(instance_exists(sawblade)){
+			if(sawblade.current_owner == player){
+				sawblade.slow = true
+			}else{
+				sawblade.slow = false
+			}
+		}
 	}else{
 		if(instance_exists(waterBomb)){
 			waterBomb.slow = false
+		}
+		if(instance_exists(sawblade)){
+			sawblade.slow = false
 		}
 	}
 	if(window == 4){
@@ -910,11 +948,11 @@ if(attack == AT_DSPECIAL){
 		if(window_timer <= 12){
 			if(free){
 				var waterfx = spawn_hit_fx(x - ((15 - random_func_2(1, 10, true)) * spr_dir), y - (50 - random_func_2(1, 40, true)), vfx_waterfx_small)
-				hsp = 10*spr_dir* E_modifier
+				hsp = 10*spr_dir
 				vsp = 0
 			}else{
 				var waterfx = spawn_hit_fx(x - ((15 - random_func_2(1, 10, true)) * spr_dir), y - (50 - random_func_2(1, 40, true)), vfx_waterfx_small)
-				hsp = 10.5*spr_dir* E_modifier
+				hsp = 10.5*spr_dir
 				vsp = 0
 			}
 		}else if(window_timer == 13){
@@ -1123,10 +1161,26 @@ if(attack == AT_USPECIAL){
 					vsp = -12
 					prat_land_time = 20;
 					hsp = 5*spr_dir
-					set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+					if(!(has_rune("N") || all_runes)){
+						set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+					}else{
+						move_cooldown[AT_USPECIAL] = 60
+						bloodFuseDamage(2)
+						if (y < -80){
+						    create_deathbox(x, y - 25, 30, 30, player, true, 0, 4, 2)
+						}
+					}
 				}else if(!hitpause){
 					if(free){
-						set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+						if(!(has_rune("N") || all_runes)){
+							set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+						}else{
+							move_cooldown[AT_USPECIAL] = 60
+							bloodFuseDamage(2)
+							if (y < -80){
+							    create_deathbox(x, y - 25, 30, 30, player, true, 0, 4, 2)
+							}
+						}
 						vsp = -9
 						hsp = 4*spr_dir
 						prat_land_time = 10;
@@ -1151,7 +1205,15 @@ if(attack == AT_USPECIAL){
 				}
 			}else if(!hitpause){
 				if(free){
-					set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+					if(!(has_rune("N") || all_runes)){
+						set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+					}else{
+						move_cooldown[AT_USPECIAL] = 60
+						bloodFuseDamage(2)
+						if (y < -80 || airtime > 1200){
+						    create_deathbox(x, y - 25, 30, 30, player, true, 0, 4, 2)
+						}
+					}
 					vsp = -9
 					hsp = 4*spr_dir
 					prat_land_time = 10;
@@ -1182,6 +1244,10 @@ if(attack == AT_USPECIAL){
 //Fspecial hurricane kick
 if(attack == AT_FSPECIAL){
 	if(window == 1 && window_timer == 1){
+		if(has_rune("N") || all_runes){
+			bloodFuseDamage(2)
+		}
+		spawned_riptide = false
 		spr_dir_start = spr_dir
 		if(get_player_color(player) == 11 && !bypass_sounds){
 			sound_play(sound_get("sfx_sonic"))
@@ -1266,42 +1332,28 @@ if(attack == AT_FSPECIAL){
 				hurricane.holding_bomb = false
 			}
 		}
-		hurricane = instance_create(x + (spr_dir*15),y - 40,"obj_article1");
-		if(was_parried){
-			hurricane.current_owner = parriedID
-		}
-		if(!has_hit_player){
-			if(hsp > 0 && spr_dir == 1 || hsp < 0 && spr_dir == -1){
-				hurricane.hsp = hsp * 2
-			}else{
-				hurricane.hsp = 4*spr_dir
+		if(!spawned_riptide){
+			hurricane = instance_create(x + (spr_dir*15),y - 40,"obj_article1");
+			if(was_parried){
+				hurricane.current_owner = parriedID
 			}
-		}else{
-			hurricane.hsp = 6*spr_dir
+			if(!has_hit_player){
+				if(hsp > 0 && spr_dir == 1 || hsp < 0 && spr_dir == -1){
+					hurricane.hsp = hsp * 2 * B_modifier
+				}else{
+					hurricane.hsp = 4*spr_dir * B_modifier
+				}
+			}else{
+				hurricane.hsp = 6*spr_dir * B_modifier
+			}
+			has_used_fspecial = true
 		}
-		has_used_fspecial = true
 		if(hsp > 4){
 			hsp -= 4
 		}else if(hsp < -4){
 			hsp += 4
 		}else{
 			hsp /= 2
-		}
-	}
-}
-
-//Bair stuff with runes
-if(attack == AT_BAIR){
-	if(has_rune("K") || all_runes){
-		if(window == 2){
-			if(window_timer == 10 && (attack_down || right_stick_down || left_stick_down)){
-				window_timer = 0
-			}
-			if(state_timer > 18 && window_timer < 11){
-				if(!(attack_down || right_stick_down || left_stick_down)){
-					window_timer = 11
-				}
-			}
 		}
 	}
 }
@@ -1393,7 +1445,7 @@ if(attack == AT_DATTACK){
 			can_special = true
 		}
 	}
-	if(has_rune("I") || all_runes){
+	if(has_rune("E") || all_runes){
 		if(has_hit && !hitpause){
 			if(grabbedid != noone){
 				if(abs(grabbedid.hsp) < 7){
@@ -1461,7 +1513,7 @@ if(attack == AT_USTRONG){
 		set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 24);
 	}
 	if(window == 1){
-		set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, (-8 + (-24 * strong_charge/60)) * A_modifier);
+		set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, (-8 + (-24 * strong_charge/60)));
 		set_window_value(AT_USTRONG, 4, AG_WINDOW_VSPEED, -4);
 	}
 	if(window == 3 || window == 4 && window_timer < 4){
@@ -1556,18 +1608,26 @@ if(attack == AT_EXTRA_1){
 	}
 }
 
-if(has_rune("O") || all_runes){
-	if(has_hit_player && !hitpause && attack != AT_DATTACK){
-		can_attack = true
-		can_special = true
-		can_strong = true
-		can_jump = true
-		can_shield = true 
-		can_ustrong = true
-	}
-}
-
 //Bubblebounce
 if(state == PS_LAND && prev_state == PS_DOUBLE_JUMP && !free){
 	set_state(PS_JUMPSQUAT)
 }
+
+//Runes
+if(has_rune("O") || all_runes){
+	if(has_hit && attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && !hitpause){
+		if(special_pressed){
+			set_state(PS_IDLE)
+			can_special = true
+			spawn_hit_fx(x, y - 25, vfx_nspec_cancel)
+			sound_play(sound_get("sfx_steam_quick"))
+		}
+	}
+}
+
+#define bloodFuseDamage(damage)
+
+take_damage(player, -1, damage)
+spawn_hit_fx(x, y - 25, vfx_waterhit_small)
+sound_play(sound_get("sfx_blood"))
+move_cooldown[AT_NSPECIAL] = max(0, move_cooldown[AT_NSPECIAL] - (damage * 4))

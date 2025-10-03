@@ -159,8 +159,8 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 3);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 12);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 26);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -30);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 63);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 43);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
@@ -170,7 +170,6 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, hfx_small);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sound_get("sfx_saya_blow_weak_alt"));
 

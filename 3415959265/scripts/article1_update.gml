@@ -24,13 +24,25 @@ if (_mirror_ok && instance_exists(player_id.my_grab_id)) {
     slam_grab_id = noone;
 }
 
-// Resolve collider for place_meeting: prefer hurtbox if it exists
+// Resolve a collider we can test against for slam (hb if reliable, else player)
 slam_meet_target = noone;
-if (instance_exists(slam_grab_id)) {
-    if (instance_exists(slam_grab_id.hurtboxID)) {
-        slam_meet_target = slam_grab_id.hurtboxID;
-    } else {
-        slam_meet_target = slam_grab_id;
+var _p = slam_grab_id;
+if (instance_exists(_p)) {
+    var _prefer_player = true; // treat invuln/dodge as "use player mask"
+    if (_prefer_player && (_p.invincible || _p.perfect_dodging || (_p.attack_invince > 0) || (_p.initial_invince > 0) || (_p.state == PS_RESPAWN) || (_p.respawn_taunt > 0))) {
+        slam_meet_target = _p;
+    }
+    if (slam_meet_target == noone) {
+        var _hb = _p.hurtboxID;
+        if (instance_exists(_hb)) {
+            if (_prefer_player && _hb.dodging) {
+                slam_meet_target = _p;
+            } else {
+                slam_meet_target = _hb;
+            }
+        } else {
+            slam_meet_target = _p;
+        }
     }
 }
 // Track ownership so we never touch a victim we don't own
@@ -84,49 +96,114 @@ for (var i = 0; i < ds_list_size(player_id.article_list); i++) {
             } else {
                 sprite_index = sprite_get("artc_idle");
                 image_index = state_timer / 5;
-
-                // Grabbing Logic (Detect Valid Hit Player)
-                var grabbing_player_obj = player_id.hit_player_obj;
-
-                if (instance_exists(grabbing_player_obj)) {
-                    var grabbing_player_hb = grabbing_player_obj.hurtboxID;
-
-                    if (grabbing_player_obj != player_id.my_grab_id && !grabbing_player_obj.activated_kill_effect) {
-                        // Check lockout before allowing grab
-                        if (player_id.artc_lockout == 0) {
-                            if (place_meeting(x, y, grabbing_player_hb) &&
-                                grabbing_player_obj.state == PS_HITSTUN) {
-                                // Trigger Grab
-                                newState(4);
-                                create_hitbox(AT_EXTRA_1, 1, x, y - article_height / 2);
-                                player_id.artc_lockout = 120; // Adjust duration as needed
-                            }
-                        }
-                    }
-                }
-
-                // New Hitbox Baiting Logic
-                var total_players = instance_number(oPlayer); // Get total number of player instances
-
-                for (var j = 0; j < total_players; j++) {
-                    var target_player = instance_find(oPlayer, j);
-
-                    if (instance_exists(target_player)) {
-                        var target_hurtbox = target_player.hurtboxID;
-
-                        // Exclude the Article's Owner & Check Conditions
-                        if (target_player != player_id && instance_exists(target_hurtbox)) {
-                            if (target_player.state != PS_HITSTUN) { 
-                                if (place_meeting(x, y, target_hurtbox)) { // If overlapping a valid player's hurtbox
-                                	detect_player = true;
-    	                        	sound_play(sound_get("sfx_saya_chargemax2"), 0, noone, 1, 1.1);
-                                    newState(4); // Trigger the article's attack state
-                                    break; // Exit loop early since we triggered state 4
-                                }
-                            }
-                        }
-                    }
-                }
+				// --- Suppress detection while a slam is active/owned or during slam-capable windows ---
+				var _pa = player_id.attack;
+				var _pw = player_id.window;
+				
+				// re-create the slam windows used up top
+				var _in_slam_window =
+				    (_pa == AT_FSTRONG      && (_pw >= 8  && _pw <= 17)) ||
+				    (_pa == AT_EXTRA_2      && (_pw >= 6  && _pw <= 7 )) ||
+				    (_pa == AT_USTRONG      && (_pw >= 7  && _pw <= 9 )) ||
+				    (_pa == AT_USPECIAL     && (_pw >= 7  && _pw <= 8 )) ||
+				    (_pa == AT_NSPECIAL     && (_pw >= 4  && _pw <= 5 )) ||
+				    (_pa == AT_NSPECIAL_AIR && (_pw >= 4  && _pw <= 6 ));
+				
+				var _owns_victim   = (artc_grab_id != noone) && (artc_grab_id == slam_grab_id);
+				var _has_grab_id   = instance_exists(slam_grab_id);
+				
+				// if any of these are true, do NOT run article detection
+				var _suppress_detect = _in_slam_window || _owns_victim || _has_grab_id;
+				
+				// ensure stale flags don’t leak into attack timing when suppressed
+				if (_suppress_detect) detect_player = false;
+				
+				
+				// Grabbing Logic (detect regardless of hurtbox; grab only on hitstun)
+				var g = player_id.hit_player_obj;
+				if (!_suppress_detect) {
+					if (instance_exists(g)) {
+					    if (g != player_id.my_grab_id && !g.activated_kill_effect) {
+					        if (player_id.artc_lockout == 0) {
+					
+					            // Resolve collider for g (prefer player when dodging/invincible)
+					            var _meet = noone;
+					            {
+					                var _prefer_player = true;
+					                if (_prefer_player && (g.invincible || g.perfect_dodging || (g.attack_invince > 0) || (g.initial_invince > 0) || (g.state == PS_RESPAWN) || (g.respawn_taunt > 0))) {
+					                    _meet = g;
+					                }
+					                if (_meet == noone) {
+					                    var _hb = g.hurtboxID;
+					                    if (instance_exists(_hb)) {
+					                        if (_prefer_player && _hb.dodging) _meet = g; else _meet = _hb;
+					                    } else {
+					                        _meet = g;
+					                    }
+					                }
+					            }
+					
+					            if (_meet != noone) {
+					                var _detected = place_meeting(x, y, _meet);
+					                // Optional small proximity bubble (set to 0 for strict overlap)
+					                if (!_detected) {
+					                    var _r = 0; // e.g., 6–10 for forgiveness; keep 0 for strict
+					                    if (_r > 0) _detected = collision_circle(x, y, _r, _meet, false, true);
+					                }
+					
+					                // Only grab if they’re actually vulnerable
+					                if (_detected && g.state == PS_HITSTUN) {
+					                    newState(4);
+					                    create_hitbox(AT_EXTRA_1, 1, x, y - article_height / 2);
+					                    player_id.artc_lockout = 120;
+					                }
+					            }
+					        }
+					    }
+					}
+				}
+				// Detection (bait) — detect enemies even if no hurtbox; no hitstun required
+				var total_players = instance_number(oPlayer);
+				if (!_suppress_detect) { 
+					for (var j = 0; j < total_players; j++) {
+					    var t = instance_find(oPlayer, j);
+					    if (!instance_exists(t) || t == player_id) continue;
+					    // If you use teams, optionally skip allies: if (t.team == player_id.team) continue;
+					
+					    // Resolve collider for t (prefer player when dodging/invincible)
+					    var _meet_t = noone;
+					    {
+					        var _prefer_player = true;
+					        if (_prefer_player && (t.invincible || t.perfect_dodging || (t.attack_invince > 0) || (t.initial_invince > 0) || (t.state == PS_RESPAWN) || (t.respawn_taunt > 0))) {
+					            _meet_t = t;
+					        }
+					        if (_meet_t == noone) {
+					            var _hb_t = t.hurtboxID;
+					            if (instance_exists(_hb_t)) {
+					                if (_prefer_player && _hb_t.dodging) _meet_t = t; else _meet_t = _hb_t;
+					            } else {
+					                _meet_t = t;
+					            }
+					        }
+					    }
+					
+					    var _hit = false;
+					    if (_meet_t != noone) {
+					        _hit = place_meeting(x, y, _meet_t);
+					        if (!_hit) {
+					            var detect_radius = 8; // small bubble helps during dodge/platform offsets
+					            if (detect_radius > 0) _hit = collision_circle(x, y, detect_radius, _meet_t, false, true);
+					        }
+					    }
+					
+					    if (_hit) {
+					        detect_player = true;
+					        sound_play(sound_get("sfx_saya_chargemax2"), 0, noone, 1, 1.1);
+					        newState(4); // Trigger the article's attack state
+					        break;       // Exit loop early since we triggered state 4
+					    }
+					}
+				}
             }
         }
     }

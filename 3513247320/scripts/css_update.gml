@@ -62,32 +62,32 @@ if swap_timer < 10 {
 var cursor_x = get_instance_x(cursor_id);
 var cursor_y = get_instance_y(cursor_id);
 
-rush_hovering_button = point_in_rect(cursor_x, cursor_y,
-	x+rush_button_pos[0], y+rush_button_pos[1],
-	x+rush_button_pos[0]+30, y+rush_button_pos[1]+24)
-if (rush_hovering_button) {
-	suppress_cursor = true;
-	switch rush_toggle{
-		case 0: setting_message = `Rush Jet: Hold SPECIAL`; break;
-		case 1: setting_message = `Rush Jet: Double tap SPECIAL`; break;
-		case 2: setting_message = `Rush Jet: SPECIAL + SHIELD`; break;
-	}
-	setting_hover_time = 120;
-	info_hover_time = 0;
-	//print(__soup_alt_directives[@ alt_cur])
-	if menu_a_pressed || menu_b_pressed{
-		if menu_a_pressed rush_toggle++;
-		else rush_toggle--;
-		if rush_toggle < 0 rush_toggle = 2;
-		if rush_toggle > 2 rush_toggle = 0;
-		css_anim_time = 0;
-		rush_button_timer = 6;
-		sound_play(sound_get("dogbark"), false, noone);
-		menu_a_pressed = false;
-		menu_b_pressed = false;
-	}
-}
-if rush_button_timer > 0 rush_button_timer--;
+// rush_hovering_button = point_in_rect(cursor_x, cursor_y,
+// 	x+rush_button_pos[0], y+rush_button_pos[1],
+// 	x+rush_button_pos[0]+30, y+rush_button_pos[1]+24)
+// if (rush_hovering_button) {
+// 	suppress_cursor = true;
+// 	switch rush_toggle{
+// 		case 0: setting_message = `Rush Jet: Hold SPECIAL`; break;
+// 		case 1: setting_message = `Rush Jet: Double tap SPECIAL`; break;
+// 		case 2: setting_message = `Rush Jet: SPECIAL + SHIELD`; break;
+// 	}
+// 	setting_hover_time = 120;
+// 	info_hover_time = 0;
+// 	//print(__soup_alt_directives[@ alt_cur])
+// 	if menu_a_pressed || menu_b_pressed{
+// 		if menu_a_pressed rush_toggle++;
+// 		else rush_toggle--;
+// 		if rush_toggle < 0 rush_toggle = 2;
+// 		if rush_toggle > 2 rush_toggle = 0;
+// 		css_anim_time = 0;
+// 		rush_button_timer = 6;
+// 		sound_play(sound_get("dogbark"), false, noone);
+// 		menu_a_pressed = false;
+// 		menu_b_pressed = false;
+// 	}
+// }
+// if rush_button_timer > 0 rush_button_timer--;
 
 info_hovering_button = point_in_rect(cursor_x, cursor_y,
 	x+info_button_pos[0], y+info_button_pos[1],
@@ -123,9 +123,7 @@ if setting_hover_time > 0 setting_hover_time--;
 if info_hover_time > 0 info_hover_time--;
 init_shader();
 
-// var syncvar = generate_synced_var(rush_toggle, 2)//, voice_toggle, 2)
-// set_synced_var(player, syncvar);
-var syncvar = rush_toggle + arbitrary_sync_number; //, voice_toggle, 2)
+var syncvar = generate_synced_var(rush_toggle, 2)//, voice_toggle, 2)
 set_synced_var(player, syncvar);
 
 alt_changed = false;

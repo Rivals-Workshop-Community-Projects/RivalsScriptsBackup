@@ -17,7 +17,7 @@ set_color_profile_slot( pal_num, 7, 255, 252, 250 ); // Arm Wraps/Belt/Shoe Acce
 //Color Range
 set_color_profile_slot_range( 0, 3, 36, 64 ); // Eyes/Aura
 set_color_profile_slot_range( 1, 1, 27, 1 ); // Eyes/Aura HS
-set_color_profile_slot_range( 2, 12, 3, 11 ); //Hair
+set_color_profile_slot_range( 2, 1, 4, 11 ); //Hair
 set_color_profile_slot_range( 3, 1, 2, 24 ); // Hair HS 
 set_color_profile_slot_range( 4, 1, 1, 1 ); // Shirt/Gloves/Shoes
 set_color_profile_slot_range( 5, 1, 13, 22 ); // Shirt/Gloves/Shoes HS
@@ -554,7 +554,27 @@ set_color_profile_slot( 17, 7, 104, 86, 206 ); //Arm Wraps/Belt/Shoe Accent
 */
 
 
+pal_num ++; // Vortex
+set_color_profile_slot( pal_num, 0, 249, 222, 34 ); //Eyes/Aura
+set_color_profile_slot( pal_num, 1, 241, 249, 127 ); //Eyes/Aura HS
+set_color_profile_slot( pal_num, 2, 53, 119, 253 ); //Hair
+set_color_profile_slot( pal_num, 3, 30, 71, 150 ); //Hair HS
+set_color_profile_slot( pal_num, 4, 129, 255, 28 ); //Shirt/Gloves/Shoes
+set_color_profile_slot( pal_num, 5, 0, 179, 9 ); //Shirt/Gloves/Shoes HS
+set_color_profile_slot( pal_num, 6, 53, 119, 253 ); //Arms/Pants
+set_color_profile_slot( pal_num, 7, 249, 222, 34 ); //Arm Wraps/Belt/Shoe Accent
 
+/*
+// Vortex HS
+set_color_profile_slot( 2, 0, 249, 237, 154 ); //Eyes/Aura
+set_color_profile_slot( 2, 1, 246, 249, 209 ); //Eyes/Aura HS
+set_color_profile_slot( 2, 2, 53, 119, 253 ); //Hair
+set_color_profile_slot( 2, 3, 30, 71, 150 ); //Hair HS
+set_color_profile_slot( 2, 4, 129, 255, 28 ); //Shirt/Gloves/Shoes
+set_color_profile_slot( 2, 5, 0, 179, 9 ); //Shirt/Gloves/Shoes HS
+set_color_profile_slot( 2, 6, 53, 119, 253 ); //Arms/Pants
+set_color_profile_slot( 2, 7, 249, 222, 34 ); //Arm Wraps/Belt/Shoe Accent
+*/
 
 
 /*

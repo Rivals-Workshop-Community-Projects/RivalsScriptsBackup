@@ -54,6 +54,7 @@ alt_name[24] = "Flow";
 alt_name[25] = "Inked";
 alt_name[26] = "Hermit";
 alt_name[27] = "Poisonous";
+alt_name[28] = "Vortex";
 
 
 

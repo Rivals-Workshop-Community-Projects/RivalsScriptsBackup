@@ -13,6 +13,7 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 
 if(my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 2)){
     steam_wall_dismiss = true
+    steam -= 50
 }
 
 hit_player_obj.overheat = 0

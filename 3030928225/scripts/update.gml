@@ -116,6 +116,7 @@ else
     }
     
     draw_dspecial_indicator = false; //Enabled when charging dspecial
+    strong_charge = false;
 }
 
 //grab logic
@@ -189,6 +190,9 @@ with (oPlayer) if (test_status_owner == other)
             {
                 //spawns the little sparkles
                 //using random_func, we can make the particles spread randomly on the enemy player
+    draw_dspecial_indicator = false; //Enabled when charging dspecial
+    strong_charge = false;
+
                 var status_part = spawn_hit_fx(
                     other.x + (random_func(11, 5, true) - 2) * 8,
                     other.y + (random_func(12, 5, true) - 2) * 8 - other.char_height/2,
@@ -673,7 +677,7 @@ holding_someone = false;
 /// print_vars(instance = self)
 {
     //prints the variables in the given instance, or in whatever instance ran the function.
-    var instance = argument_count > 0 ? argument[0] : self;
+    var instance; if (argument_count > 0) instance = argument[0]; else instance = self;
     with (instance) {
         var names = variable_instance_get_names(self);
         var str = "";

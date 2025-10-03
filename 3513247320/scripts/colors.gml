@@ -421,17 +421,17 @@ set_color_profile_slot( 21, 12, 232, 212, 158 ); //Yellow
 set_color_profile_slot( 21, 13, 242, 206, 128 ); //Rush Skin
 set_color_profile_slot( 21, 14, 241, 249, 252 ); //Rush Fins
 
-// Time Stopper
-set_color_profile_slot( 22, 0, 245, 249, 252 ); //Dark Blue Light
-set_color_profile_slot( 22, 1, 128, 140, 153 ); //Dark Blue Dark
-set_color_profile_slot( 22, 2, 234, 243, 247 ); //Light Blue Light
-set_color_profile_slot( 22, 3, 151, 143, 191 ); //Light Blue Dark
-set_color_profile_slot( 22, 4, 76, 74, 87 ); //Red
-set_color_profile_slot( 22, 5, 255, 222, 196 ); //Skin
-set_color_profile_slot( 22, 6, 206, 216, 225 ); //Whites
-set_color_profile_slot( 22, 7, 87, 87, 87 ); //Irises
-set_color_profile_slot( 22, 8, 128, 140, 153 ); //Red Light
-set_color_profile_slot( 22, 9, 93, 110, 128 ); //Red Dark
+// [DEAD OR ALIVE]
+set_color_profile_slot( 22, 0, 106, 106, 255 ); //Dark Blue Light
+set_color_profile_slot( 22, 1, 74, 74, 255 ); //Dark Blue Dark
+set_color_profile_slot( 22, 2, 199, 199, 199 ); //Light Blue Light
+set_color_profile_slot( 22, 3, 130, 130, 130 ); //Light Blue Dark
+set_color_profile_slot( 22, 4, 227, 9, 56 ); //Red
+set_color_profile_slot( 22, 5, 189, 189, 189 ); //Skin
+set_color_profile_slot( 22, 6, 48, 48, 48 ); //Whites
+set_color_profile_slot( 22, 7, 227, 9, 56 ); //Irises
+set_color_profile_slot( 22, 8, 106, 106, 255 ); //Red Light
+set_color_profile_slot( 22, 9, 74, 74, 255 ); //Red Dark
 set_color_profile_slot( 22, 10, 219, 216, 240 ); //Salmon Light
 set_color_profile_slot( 22, 11, 112, 106, 153 ); //Salmon Dark
 set_color_profile_slot( 22, 12, 245, 249, 252 ); //Yellow
