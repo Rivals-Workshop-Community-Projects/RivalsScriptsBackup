@@ -27,7 +27,7 @@ if (slow && state == 1 && type == 0 || slow && type == 1) {
 gpu_set_blendmode(blend);
 
 if(current_owner != player_id.player && state == 1 && type == 0){
-	if(has_rune("F") || all_runes){
+	if(has_rune("F") || player_id.all_runes){
 		draw_sprite_ext(sprite_get("bubbleBomb_cheese_outline"), image_index, x, y, 1.1 *spr_dir  * size, 1.1 * size, image_angle, get_player_hud_color(current_owner), 1)
 	}else{
 		draw_sprite_ext(sprite_get("bubbleBomb_outline"), image_index, x, y, 1.1 *spr_dir  * size, 1.1 * size, image_angle, get_player_hud_color(current_owner), 1)

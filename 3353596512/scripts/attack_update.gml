@@ -506,8 +506,8 @@ switch(attack)
 		}
 		if (window == 3 || window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (quota_level < 7){
-				hsp = lengthdir_x(6, jetpack_dir)
-				vsp = lengthdir_y(5, jetpack_dir)
+				hsp = lengthdir_x(7, jetpack_dir)
+				vsp = lengthdir_y(6, jetpack_dir)
 			} else {
 				hsp = lengthdir_x(11, jetpack_dir)
 				vsp = lengthdir_y(9, jetpack_dir)
@@ -691,7 +691,7 @@ switch(attack)
     	}
     break;
     case AT_USPECIAL_FAIL:
-    	can_wall_jump = true;
+    	can_wall_jump = false;
     break;
     case AT_DSPECIAL:
     	can_fast_fall = false;

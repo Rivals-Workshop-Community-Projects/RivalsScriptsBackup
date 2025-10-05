@@ -390,7 +390,7 @@ if(type == 0){
 		if(lifetime > 2 && got_hit_timer <= 0 && !slow){
 		    var waterBomb_hitbox = create_hitbox(AT_NSPECIAL, 1, round(x + hsp), round(y + vsp))
 		    waterBomb_hitbox.player = current_owner
-		    waterBomb_hitbox.waterBomb_id = self
+		    waterBomb_hitbox.parent_article = self
 		    waterBomb_hitbox.image_xscale *= size
 			waterBomb_hitbox.image_yscale *= size
 	    }
@@ -413,7 +413,7 @@ if(type == 0){
 		if(image_index == 1){
 			var waterBomb_hitbox = create_hitbox(AT_NSPECIAL, 2, x, y);
 			waterBomb_hitbox.player = current_owner
-			waterBomb_hitbox.waterBomb_id = self
+			waterBomb_hitbox.parent_article = self
 			waterBomb_hitbox.image_xscale *= size
 			waterBomb_hitbox.image_yscale *= size
 			if(has_rune("F") || player_id.all_runes){
@@ -488,7 +488,7 @@ if(type == 0){
 		if(image_index == 1 || image_index == 7){
 			var waterBomb_hitbox = create_hitbox(AT_NSPECIAL, 3, x, y);
 			waterBomb_hitbox.player = current_owner
-			waterBomb_hitbox.waterBomb_id = self
+			waterBomb_hitbox.parent_article = self
 			waterBomb_hitbox.image_xscale *= size
 			waterBomb_hitbox.image_yscale *= size
 			if(has_rune("F") || player_id.all_runes){
@@ -500,7 +500,7 @@ if(type == 0){
 		}else if(image_index == 2 || image_index == 6 || image_index == 8){
 			var waterBomb_hitbox = create_hitbox(AT_NSPECIAL, 4, x, y);
 			waterBomb_hitbox.player = current_owner
-			waterBomb_hitbox.waterBomb_id = self
+			waterBomb_hitbox.parent_article = self
 			waterBomb_hitbox.image_xscale *= size
 			waterBomb_hitbox.image_yscale *= size
 			if(has_rune("F") || player_id.all_runes){
@@ -512,7 +512,7 @@ if(type == 0){
 		}else if(image_index == 10 || image_index == 4){
 			var waterBomb_hitbox = create_hitbox(AT_NSPECIAL, 3, x, y);
 			waterBomb_hitbox.player = current_owner
-			waterBomb_hitbox.waterBomb_id = self
+			waterBomb_hitbox.parent_article = self
 			waterBomb_hitbox.image_xscale *= size
 			waterBomb_hitbox.image_yscale *= size
 			if(has_rune("F") || player_id.all_runes){
@@ -628,6 +628,7 @@ if(type == 0){
 				}
 				
 				var multihit_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
+				multihit_hitbox.parent_article = self
 				multihit_hitbox.player = current_owner
 				multihit_hitbox.image_xscale *= size
 				multihit_hitbox.image_yscale *= size
@@ -750,6 +751,7 @@ if(type == 0){
 			var multihit_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
 			multihit_hitbox.player = current_owner
 			multihit_hitbox.image_xscale *= size
+			multihit_hitbox.parent_article = self
 				multihit_hitbox.image_yscale *= size
 		}else if(state_timer mod round(4 - (2 * abs(vsp / 10))) == 0 && !slow && strong){
 			sound_play(asset_get("sfx_waterhit_weak"), false, noone, 0.75, clamp(abs(vsp) / 6, 0.75, 2))
@@ -760,6 +762,7 @@ if(type == 0){
 			var multihit_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
 			multihit_hitbox.hitbox_timer = 1
 			multihit_hitbox.player = current_owner
+			multihit_hitbox.parent_article = self
 			multihit_hitbox.image_xscale *= size
 				multihit_hitbox.image_yscale *= size
 		}

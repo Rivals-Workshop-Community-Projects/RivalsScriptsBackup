@@ -92,6 +92,7 @@ if(state == 0){
 	
 	if(state_timer mod 10 == 0 && lifetime >= 6){
 		hurricane_hitbox = create_hitbox(AT_FSPECIAL, 2, round(x + hsp), round(y + vsp) - 4)
+		hurricane_hitbox.parent_article = self
 		hurricane_hitbox.player = current_owner
 	}
 	if(instance_exists(hurricane_hitbox)){

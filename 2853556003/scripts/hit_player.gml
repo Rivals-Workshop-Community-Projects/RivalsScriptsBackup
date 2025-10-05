@@ -125,17 +125,17 @@ if(my_hitboxID.attack == AT_DATTACK){
 	}
 }
 if(my_hitboxID.attack == AT_NSPECIAL){
-	if(instance_exists(my_hitboxID.waterBomb_id)){
-		if(my_hitboxID.hbox_num == 1 && my_hitboxID.waterBomb_id.got_hit_timer <= 0){
-			if(!my_hitboxID.waterBomb_id.strong){
-				my_hitboxID.waterBomb_id.state = 2
-				my_hitboxID.waterBomb_id.state_timer = 0
+	if(instance_exists(my_hitboxID.parent_article)){
+		if(my_hitboxID.hbox_num == 1 && my_hitboxID.parent_article.got_hit_timer <= 0){
+			if(!my_hitboxID.parent_article.strong){
+				my_hitboxID.parent_article.state = 2
+				my_hitboxID.parent_article.state_timer = 0
 			}else{
-				my_hitboxID.waterBomb_id.state = 3
-				my_hitboxID.waterBomb_id.state_timer = 0
+				my_hitboxID.parent_article.state = 3
+				my_hitboxID.parent_article.state_timer = 0
 			}
-		}else if(my_hitboxID.hbox_num == 1 && my_hitboxID.waterBomb_id.got_hit_timer > 0){
-			instance_destroy(my_hitboxID.waterBomb_id.waterBomb_hitbox)
+		}else if(my_hitboxID.hbox_num == 1 && my_hitboxID.parent_article.got_hit_timer > 0){
+			instance_destroy(my_hitboxID.parent_article.waterBomb_hitbox)
 		}
 		if(my_hitboxID.hbox_num == 2){
 			move_cooldown[AT_NSPECIAL] = max(0, move_cooldown[AT_NSPECIAL] - 60)
