@@ -1,0 +1,34 @@
+var curr_attack = AT_TAUNT
+var _num = 1;
+//Homing Missile
+set_hitbox_value(curr_attack, _num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(curr_attack, _num, HG_LIFETIME, 45);
+set_hitbox_value(curr_attack, _num, HG_WIDTH, 40);
+set_hitbox_value(curr_attack, _num, HG_HEIGHT, 40);
+set_hitbox_value(curr_attack, _num, HG_PRIORITY, 1);
+set_hitbox_value(curr_attack, _num, HG_DAMAGE, 2); //Damage is based amount
+set_hitbox_value(curr_attack, _num, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(curr_attack, _num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(curr_attack, _num, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(curr_attack, _num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(curr_attack, _num, HG_HITSTUN_MULTIPLIER, .5);
+set_hitbox_value(curr_attack, _num, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
+set_hitbox_value(curr_attack, _num, HG_ANGLE, 90);
+set_hitbox_value(curr_attack, _num, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(curr_attack, _num, HG_VISUAL_EFFECT, HFX_ETA_ICEPOP_SMALL);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_SPRITE, sprite_get("blizzard"));
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_UNBASHABLE, false);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_ENEMY_BEHAVIOR, true);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_DOES_NOT_REFLECT, false);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(curr_attack, _num, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(curr_attack, _num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_HSPEED, 8);
+set_hitbox_value(curr_attack, _num, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(curr_attack, _num, HG_PROJECTILE_DESTROY_EFFECT, HFX_ETA_ICE_SMALL);
+//set_hitbox_value(curr_attack, _num, HG_EXTENDED_PARRY_STUN, true);
+//set_hitbox_value(curr_attack, _num, HG_PROJECTILE_PARRY_STUN, true);
+_num++;

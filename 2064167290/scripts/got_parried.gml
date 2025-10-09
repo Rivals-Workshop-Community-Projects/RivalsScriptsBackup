@@ -15,7 +15,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
         }
     }
     
-    parry_lag = 60;
+    parry_lag = 70;
     
     
 }
