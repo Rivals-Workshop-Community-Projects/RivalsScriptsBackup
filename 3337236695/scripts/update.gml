@@ -34,6 +34,18 @@ if (get_gameplay_time() < 120){
         cur_song = 6
       }
     }
+    //Option 5: Attack
+    if (shield_down && attack_down) {
+      with (other) {
+        cur_song = 3
+      }
+    }
+    //Option 6: Special
+    if (shield_down && special_down) {
+      with (other) {
+        cur_song = 5
+      }
+    }
   }
 }
 
