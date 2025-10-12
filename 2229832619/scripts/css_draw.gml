@@ -3,7 +3,7 @@
 //test
 
 
-draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+80,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+82,2,2,0,-1,1);
 
 if (get_player_color( player ) == 10) {
 init_shader();

@@ -9,6 +9,163 @@ if (attack == AT_USPECIAL && (state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND)){
 			}else{
 				var angle = (round(((spr_dir==-1&&joy_pad_idle)?180:joy_dir) / 22.25) * 22.25) + ((spr_dir)?0:180);
 			}
+			// !!
+				var tmp_usp_angle = ((spr_dir==1)?67.5:112.5);
+				if (usp_extramode == 1){ //special: for keyboards - ATTACK is for sideways
+					var tmp_cur_card = usp_cur_cardinal_direction;
+					switch(usp_cur_cardinal_direction){
+						case "tl":
+						case "tr":
+							tmp_cur_card = "up";
+						break;
+						case "bl":
+						case "br":
+							tmp_cur_card = "down";
+						break;
+					}
+					switch(usp_last_cardinal_direction){ //im doing an another switch cause iirc i cant use the same case multiple times
+						case "tl":
+						case "up":
+						case "tr":
+							if (tmp_cur_card == "left"){
+								var tmp_usp_angle = 157.5;
+							}
+							if (tmp_cur_card == "right"){
+								var tmp_usp_angle = 22.5;
+							}
+						break;
+						case "bl":
+						case "down":
+						case "br":
+							if (tmp_cur_card == "left"){
+								var tmp_usp_angle = 202.5;
+							}
+							if (tmp_cur_card == "right"){
+								var tmp_usp_angle = 337.5;
+							}
+						break;
+					}//switch
+					switch(usp_last_cardinal_direction){
+						case "left":
+						case "tl":
+						case "bl":
+							if (tmp_cur_card == "up"){
+								var tmp_usp_angle = 157.5;
+							}
+							if (tmp_cur_card == "down"){
+								var tmp_usp_angle = 202.5;
+							}
+						break;
+						case "right":
+						case "tr":
+						case "br":
+							if (tmp_cur_card == "up"){
+								var tmp_usp_angle = 22.5;
+							}
+							if (tmp_cur_card == "down"){
+								var tmp_usp_angle = 337.5;
+							}
+						break;
+						case "up":
+							if (tmp_cur_card == "up"){
+								if (spr_dir = -1){
+									var tmp_usp_angle = 157.5;
+								}
+								if (spr_dir = 1){
+									var tmp_usp_angle = 22.5;
+								}
+							}
+							if (tmp_cur_card == "down"){
+								if (spr_dir = -1){
+									var tmp_usp_angle = 202.5;
+								}
+								if (spr_dir = 1){
+									var tmp_usp_angle = 337.5;
+								}
+							}
+						break;
+					}//switch
+					super_tmp_usp_angle = tmp_usp_angle;
+					var angle = tmp_usp_angle + ((spr_dir)?0:180);
+				}//atkdown
+				if (usp_extramode == 2){ //special: for keyboards - JUMP is for verticals
+					var tmp_cur_card = usp_cur_cardinal_direction;
+					switch(usp_cur_cardinal_direction){
+						case "tl":
+						case "tr":
+							tmp_cur_card = "up";
+						break;
+						case "bl":
+						case "br":
+							tmp_cur_card = "down";
+						break;
+					}
+					switch(usp_last_cardinal_direction){
+						case "left":
+						case "tl":
+						case "bl":
+							if (tmp_cur_card == "up"){
+								var tmp_usp_angle = 112.5;
+							}
+							if (tmp_cur_card == "down"){
+								var tmp_usp_angle = 247.5;
+							}
+						break;
+						case "right":
+						case "tr":
+						case "br":
+							if (tmp_cur_card == "up"){
+								var tmp_usp_angle = 67.5;
+							}
+							if (tmp_cur_card == "down"){
+								var tmp_usp_angle = 292.5;
+							}
+						break;
+						case "up":
+							if (tmp_cur_card == "up"){
+								if (spr_dir = -1){
+									var tmp_usp_angle = 112.5;
+								}
+								if (spr_dir = 1){
+									var tmp_usp_angle = 67.5;
+								}
+							}
+							if (tmp_cur_card == "down"){
+								if (spr_dir = -1){
+									var tmp_usp_angle = 247.5;
+								}
+								if (spr_dir = 1){
+									var tmp_usp_angle = 292.5;
+								}
+							}
+						break;
+					}//switch
+					switch(usp_last_cardinal_direction){ //im doing an another switch cause iirc i cant use the same case multiple times
+						case "tl":
+						case "up":
+						case "tr":
+							if (tmp_cur_card == "left"){
+								var tmp_usp_angle = 112.5;
+							}
+							if (tmp_cur_card == "right"){
+								var tmp_usp_angle = 67.5;
+							}
+						break;
+						case "bl":
+						case "down":
+						case "br":
+							if (tmp_cur_card == "left"){
+								var tmp_usp_angle = 247.5;
+							}
+							if (tmp_cur_card == "right"){
+								var tmp_usp_angle = 292.5;
+							}
+						break;
+					}//switch
+					super_tmp_usp_angle = tmp_usp_angle;
+					var angle = tmp_usp_angle + ((spr_dir)?0:180);
+				}
+			// !!
 		}else{
 			var angle = usp_angle + ((spr_dir)?0:180)
 		}
@@ -179,6 +336,20 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v4.2 - (2025 Oct 12)"
+		patch_note_text[i++] = 
+		"v4.2 (2025 Oct 12)
+		this one goes out to all you keyboard players
+		[b]additions[/b]
+		- i had an ephiphany at like 4 in the morning. i noticed how when you are playing on keyboard, it's a lot more easier to press multiple buttons at the same time. thusly, i present to you:
+		+ while in USPECIAL, you can now hold ATTACK or JUMP to aim in the inbetween shallow angles.
+		- ATTACK aims the more sideways shallow angles, while JUMP will aim the vertical shallow angles.
+		- you are even able to do the doubletap with this aiming. i can do it like 75% of the time i think. 
+
+		- ... nothing else! but it's 7AM now
+		"
+		
+		
 		patch_note_title[i] = "v4.1 - (2025 Aug 30)"
 		patch_note_text[i++] = 
 		"v4.1 (2025 Aug 30)
@@ -197,7 +368,7 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		-- -- counterplay
 		- NSPECIAL-SLICED ... you can parry this now to make it send towards N/A. very fast. and don't worry, i figured it out so that you can parry this again to send it back to the parrier. and again. and again
 
-		[b]balances[/b]
+		[b]notes[/b]
 		yall should fear N/A more. have fun!
 		"
 		

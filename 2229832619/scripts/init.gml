@@ -192,6 +192,10 @@ fstr_thing_hsp = false;
 was_it_extended_parrystun = false;
 
 usp_land = false;
+usp_extramode = 0;
+usp_cur_cardinal_direction = "up";
+usp_last_cardinal_direction = "up";
+super_tmp_usp_angle = 0; //im so lazy
 
 col_timer = 0;
 col_timer_max = 30;

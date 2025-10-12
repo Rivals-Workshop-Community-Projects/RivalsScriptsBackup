@@ -618,6 +618,10 @@ if (attack == AT_USPECIAL){
 		usp_distance = 10;
 		usp_angle = 0;
 		usp_angle_f = 0;
+		usp_extramode = 0;
+		super_tmp_usp_angle = 0;
+		usp_last_cardinal_direction = "up";
+		usp_cur_cardinal_direction = "up";
 		usp_hsp_storage = hsp;
 		usp_vsp_storage = (free)?vsp:-9;
 		sound_play(sound_get("dimensional"), false, noone, 0.6, 0.6);
@@ -640,6 +644,37 @@ if (attack == AT_USPECIAL){
 		if (y + vsp > test1+test2){
 			usp_vsp_storage = -4
 			vsp = usp_vsp_storage;
+		}
+			if (attack_down){usp_extramode = 1;
+			}else if (jump_down){usp_extramode = 2;
+			}else{usp_extramode = 0;}
+		if (usp_extramode){
+			//yeah
+				if (joy_dir==0 && usp_cur_cardinal_direction != "right"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "right";}
+				if (joy_dir==45 && usp_cur_cardinal_direction != "tr"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "tr";}
+				if (joy_dir==90 && usp_cur_cardinal_direction != "up"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "up";}
+				if (joy_dir==135 && usp_cur_cardinal_direction != "tl"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "tl";}
+				if (joy_dir==180 && usp_cur_cardinal_direction != "left"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "left";}
+				if (joy_dir==225 && usp_cur_cardinal_direction != "bl"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "bl";}
+				if (joy_dir==270 && usp_cur_cardinal_direction != "down"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "down";}
+				if (joy_dir==315 && usp_cur_cardinal_direction != "br"){
+					usp_last_cardinal_direction = usp_cur_cardinal_direction;
+					usp_cur_cardinal_direction = "br";}
+				//print(usp_cur_cardinal_direction+" last: "+usp_last_cardinal_direction)
 		}
 	}
 	if (window==2||window==3&&window_timer<4){
@@ -687,6 +722,158 @@ if (attack == AT_USPECIAL){
 				//hsp_decide = 0;
 				//vsp_decide = -distance;
 			}
+			// !!
+				if (usp_extramode == 1){ //special: for keyboards - ATTACK is for sideways
+					switch(usp_cur_cardinal_direction){
+						case "tl":
+						case "tr":
+							usp_cur_cardinal_direction = "up";
+						break;
+						case "bl":
+						case "br":
+							usp_cur_cardinal_direction = "down";
+						break;
+					}
+					switch(usp_last_cardinal_direction){ //im doing an another switch cause iirc i cant use the same case multiple times
+						case "tl":
+						case "up":
+						case "tr":
+							if (usp_cur_cardinal_direction == "left"){
+								usp_angle = 157.5;
+							}
+							if (usp_cur_cardinal_direction == "right"){
+								usp_angle = 22.5;
+							}
+						break;
+						case "bl":
+						case "down":
+						case "br":
+							if (usp_cur_cardinal_direction == "left"){
+								usp_angle = 202.5;
+							}
+							if (usp_cur_cardinal_direction == "right"){
+								usp_angle = 337.5;
+							}
+						break;
+					}//switch
+					switch(usp_last_cardinal_direction){
+						case "left":
+						case "tl":
+						case "bl":
+							if (usp_cur_cardinal_direction == "up"){
+								usp_angle = 157.5;
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								usp_angle = 202.5;
+							}
+						break;
+						case "right":
+						case "tr":
+						case "br":
+							if (usp_cur_cardinal_direction == "up"){
+								usp_angle = 22.5;
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								usp_angle = 337.5;
+							}
+						break;
+						case "up":
+							if (usp_cur_cardinal_direction == "up"){
+								if (spr_dir = -1){
+									usp_angle = 157.5;
+								}
+								if (spr_dir = 1){
+									usp_angle = 22.5;
+								}
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								if (spr_dir = -1){
+									usp_angle = 202.5;
+								}
+								if (spr_dir = 1){
+									usp_angle = 337.5;
+								}
+							}
+						break;
+					}//switch
+					usp_angle_f = usp_angle / 180 * -3.14; //45)*45)/180
+				}//atkdown
+				if (usp_extramode == 2){ //special: for keyboards - JUMP is for verticals
+					switch(usp_cur_cardinal_direction){
+						case "tl":
+						case "tr":
+							usp_cur_cardinal_direction = "up";
+						break;
+						case "bl":
+						case "br":
+							usp_cur_cardinal_direction = "down";
+						break;
+					}
+					switch(usp_last_cardinal_direction){
+						case "left":
+						case "tl":
+						case "bl":
+							if (usp_cur_cardinal_direction == "up"){
+								usp_angle = 112.5;
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								usp_angle = 247.5;
+							}
+						break;
+						case "right":
+						case "tr":
+						case "br":
+							if (usp_cur_cardinal_direction == "up"){
+								usp_angle = 67.5;
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								usp_angle = 292.5;
+							}
+						break;
+						case "up":
+							if (usp_cur_cardinal_direction == "up"){
+								if (spr_dir = -1){
+									usp_angle = 112.5;
+								}
+								if (spr_dir = 1){
+									usp_angle = 67.5;
+								}
+							}
+							if (usp_cur_cardinal_direction == "down"){
+								if (spr_dir = -1){
+									usp_angle = 247.5;
+								}
+								if (spr_dir = 1){
+									usp_angle = 292.5;
+								}
+							}
+						break;
+					}//switch
+					switch(usp_last_cardinal_direction){ //im doing an another switch cause iirc i cant use the same case multiple times
+						case "tl":
+						case "up":
+						case "tr":
+							if (usp_cur_cardinal_direction == "left"){
+								usp_angle = 112.5;
+							}
+							if (usp_cur_cardinal_direction == "right"){
+								usp_angle = 67.5;
+							}
+						break;
+						case "bl":
+						case "down":
+						case "br":
+							if (usp_cur_cardinal_direction == "left"){
+								usp_angle = 247.5;
+							}
+							if (usp_cur_cardinal_direction == "right"){
+								usp_angle = 292.5;
+							}
+						break;
+					}//switch
+					usp_angle_f = usp_angle / 180 * -3.14; //45)*45)/180
+				}
+			// !!
 			
 			//hitbox angle set...
 			//if (spr_dir == 1){

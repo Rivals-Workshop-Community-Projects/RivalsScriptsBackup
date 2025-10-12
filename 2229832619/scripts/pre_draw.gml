@@ -25,19 +25,13 @@ if (attack == AT_USPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
 		var tmp_alpha4 = ease_quadOut( 0, 60, state_timer, 40 )/100//50
 		
 		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0), get_color_profile_slot_g( get_player_color(player), 0), get_color_profile_slot_b( get_player_color(player), 0));
+		var make_color_b = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3), get_color_profile_slot_g( get_player_color(player), 3), get_color_profile_slot_b( get_player_color(player), 3));
 		
 		if (joy_pad_idle){
-			var tmp_angle = (round(((spr_dir==1)?67.5:112.5) / 22.25) * 22.25) / 180 * -3.14;
+			var tmp_angle = (round(((spr_dir==1)?67.5:112.5) / 22.25) * 22.25);
 		}else{
-			var tmp_angle = (round(((spr_dir==-1&&joy_pad_idle)?180:joy_dir) / 22.25) * 22.25) / 180 * -3.14;
+			var tmp_angle = (round(((spr_dir==-1&&joy_pad_idle)?180:joy_dir) / 22.25) * 22.25);
 		}
-		var tmp_dist_min = 70;
-		var tmp_dist_max = 140;
-		var tmp_x1 = x+(tmp_dist_min * cos(tmp_angle));
-		var tmp_y1 = y-24+(tmp_dist_min * sin(tmp_angle));
-		var tmp_x2 = x+(tmp_dist_max * cos(tmp_angle));
-		var tmp_y2 = y-24+(tmp_dist_max * sin(tmp_angle));
-		
 		
 		draw_set_alpha(tmp_alpha1);
 		draw_circle_colour(x, y-24, tmp_range1, c_black, c_black, false);
@@ -50,7 +44,45 @@ if (attack == AT_USPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
 		draw_circle_colour(x, y-24-1, tmp_range2, make_color, make_color, true);
 		
 		draw_set_alpha(tmp_alpha4);
-		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2, tmp_y2, 1, c_white, c_white);
+		if (usp_extramode==0){
+			draw_the_line_omg(tmp_angle, false);
+		}else{
+			var tmp_card_angle = 0;
+			switch(usp_last_cardinal_direction){
+				case "right": tmp_card_angle = 0; break;
+				case "tr": tmp_card_angle = 45; break;
+				case "up": tmp_card_angle = 90; break;
+				case "tl": tmp_card_angle = 135; break;
+				case "left": tmp_card_angle = 180; break;
+				case "bl": tmp_card_angle = 225; break;
+				case "down": tmp_card_angle = 270; break;
+				case "br": tmp_card_angle = 315; break;
+			}
+			draw_the_line_omg(tmp_card_angle, 3);
+			switch(usp_cur_cardinal_direction){
+				case "right": tmp_card_angle = 0; break;
+				case "tr": tmp_card_angle = 45; break;
+				case "up": tmp_card_angle = 90; break;
+				case "tl": tmp_card_angle = 135; break;
+				case "left": tmp_card_angle = 180; break;
+				case "bl": tmp_card_angle = 225; break;
+				case "down": tmp_card_angle = 270; break;
+				case "br": tmp_card_angle = 315; break;
+			}
+			draw_the_line_omg(tmp_card_angle, 2);
+		}
+		if (usp_extramode==1){
+			draw_the_line_omg(157.5, ((super_tmp_usp_angle==157.5)?1:0));
+			draw_the_line_omg(22.5, ((super_tmp_usp_angle==22.5)?1:0));
+			draw_the_line_omg(202.5, ((super_tmp_usp_angle==202.5)?1:0));
+			draw_the_line_omg(337.5, ((super_tmp_usp_angle==337.5)?1:0));
+		}
+		if (usp_extramode==2){
+			draw_the_line_omg(112.5, ((super_tmp_usp_angle==112.5)?1:0));
+			draw_the_line_omg(247.5, ((super_tmp_usp_angle==247.5)?1:0));
+			draw_the_line_omg(67.5, ((super_tmp_usp_angle==67.5)?1:0));
+			draw_the_line_omg(292.5, ((super_tmp_usp_angle==292.5)?1:0));
+		}
 		
 		draw_set_alpha(1);
 		
@@ -127,3 +159,40 @@ shader_end()
 }*/
 
 
+
+#define draw_the_line_omg(angle, empha)
+	var tmp_dist_min = 70;
+	var tmp_dist_max = 140;
+	var tmp_lineangle = argument[0] / 180 * -3.14; //45)*45)/180
+		//var tmp_x1 = x+(tmp_dist_min * cos(tmp_angle));
+		//var tmp_y1 = y-24+(tmp_dist_min * sin(tmp_angle));
+		//var tmp_x2 = x+(tmp_dist_max * cos(tmp_angle));
+		//var tmp_y2 = y-24+(tmp_dist_max * sin(tmp_angle));
+	var tmp_x1 = x+(tmp_dist_min * cos(tmp_lineangle));
+	var tmp_y1 = y-24+(tmp_dist_min * sin(tmp_lineangle));
+	var tmp_x2 = x+(tmp_dist_max * cos(tmp_lineangle));
+	var tmp_y2 = y-24+(tmp_dist_max * sin(tmp_lineangle));
+		var tmp_x1b = x+((tmp_dist_min+2) * cos(tmp_lineangle));
+		var tmp_y1b = y-24+((tmp_dist_min+2) * sin(tmp_lineangle));
+		var tmp_x2b = x+((tmp_dist_max-2) * cos(tmp_lineangle));
+		var tmp_y2b = y-24+((tmp_dist_max-2) * sin(tmp_lineangle));
+			var tmp_x2c = x+((tmp_dist_max-20) * cos(tmp_lineangle));
+			var tmp_y2c = y-24+((tmp_dist_max-20) * sin(tmp_lineangle));
+				var tmp_x2d = x+((tmp_dist_max-40) * cos(tmp_lineangle));
+				var tmp_y2d = y-24+((tmp_dist_max-40) * sin(tmp_lineangle));
+		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0), get_color_profile_slot_g( get_player_color(player), 0), get_color_profile_slot_b( get_player_color(player), 0));
+		var make_color_b = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3), get_color_profile_slot_g( get_player_color(player), 3), get_color_profile_slot_b( get_player_color(player), 3));
+	if (argument[1]==0){
+		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2, tmp_y2, 1, c_white, c_white);
+	}
+	if (argument[1]==1){
+		draw_line_width_colour(tmp_x1b, tmp_y1b, tmp_x2b, tmp_y2b, 4, make_color_b, c_white);
+		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2, tmp_y2, 2, make_color_b, make_color_b);
+		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2, tmp_y2, 2, make_color_b, make_color_b);
+	}
+	if (argument[1]==2){
+		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2c, tmp_y2c, 3, make_color, make_color_b);
+	}
+	if (argument[1]==3){
+		draw_line_width_colour(tmp_x1, tmp_y1, tmp_x2d, tmp_y2d, 3, make_color, make_color_b);
+	}
