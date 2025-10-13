@@ -54,14 +54,14 @@ if(move_cooldown[AT_DATTACK] > 0){
 
 if(epic_riches <= 60){
 	var offset_y = -16;
-	draw_text_color(temp_x+32,temp_y-62-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
-	draw_text_color(temp_x+34,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
-	draw_text_color(temp_x+30,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
-	draw_text_color(temp_x+32,temp_y-58-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+32,temp_y-62-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"-")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+34,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"-")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+30,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"-")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
+	draw_text_color(temp_x+32,temp_y-58-offset_y+(epic_riches2/epic_riches)/2,(money_diff>0?"+":"-")+string_thousands(money_diff*100), c_black, c_black, c_black, c_black, 1.0-(epic_riches/60));
 	if(money_diff > 0){ //epic riches gained
 		draw_text_color(temp_x+32,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,"+"+string_thousands(money_diff*100), c_yellow, c_yellow, c_yellow, c_yellow, 2.0-(epic_riches/30));
 	}else if(money_diff < 0){ //cringe riches lost
-		draw_text_color(temp_x+32,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,string_thousands(money_diff*100), c_red, c_red, c_red, c_red, 2.0-(epic_riches/30));
+		draw_text_color(temp_x+32,temp_y-60-offset_y+(epic_riches2/epic_riches)/2,"-"+string_thousands(money_diff*100), c_red, c_red, c_red, c_red, 2.0-(epic_riches/30));
 	}
 }
 
@@ -72,33 +72,14 @@ user_event(14);
 	
 	
 #define string_thousands    
-///Returns argument0 as a string with commas at every thousand digit
-///eg 1234567890 becomes 1,234,567,890
-///Created by Andrew McCluskey
-
 var str,stl,rtn,place;
-
-str=string(floor(real(argument0))) //String to be passed
-stl=string_length(str) //Char length of that string
-rtn="" //What to return (ignored if string is under four digits long)
-
-if stl<=3
-{
-    return str;
-}
-
-else
-{
+str=string_digits(string(floor(real(argument0))));stl=string_length(str);rtn="";
+if(stl<=3)return str;else{
     place=((stl-1) mod 3)+1;
-   
-    rtn+=string_copy(str,1,place)
-   
-    while(place<string_length(str))
-    {
-        rtn+=","
-        rtn+=string_copy(str,place+1,3)
-        place+=3
-    }
-   
-    return rtn;
+    rtn+=string_copy(str,1,place);
+    while(place<string_length(str)){
+        rtn+=",";
+        rtn+=string_copy(str,place+1,3);
+        place+=3;
+    }return rtn;
 }

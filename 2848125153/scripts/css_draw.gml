@@ -14,11 +14,9 @@ prev_alt = alt;
 
 alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable
 
-if ("detish_alt" not in self)detish_alt = false;
-if ("sketish_alt" not in self)sketish_alt = false;
-if(alt == 17 && string_lower(get_player_name(player)) == "don"){detish_alt = true;init_shader();}
-else if(alt == 17 && string_lower(get_player_name(player)) == "sky"){sketish_alt = true;init_shader();}
-else{detish_alt = false;sketish_alt = false;init_shader();}
+shader_end();prepare_shader(); //Add this line before you draw the charselectbg
+
+shader_start(); //Add this before drawing the css images
 
 //if (get_color_profile_slot_b(0, 7) == 255) {
 	if(drawtime == 1){
@@ -253,5 +251,14 @@ if ("portrait" in self){
     }
 }
 
+shader_end();prepare_shader(); //Add this after drawing the css images
+
 muno_event_type = 6;
 user_event(14);
+
+#define prepare_shader()
+	static_colorB = colorB;
+	static_colorO = colorO;
+	static_colorT = colorT;
+	static_colorI = colorI;
+	init_shader();

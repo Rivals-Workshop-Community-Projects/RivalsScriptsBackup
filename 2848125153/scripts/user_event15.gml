@@ -103,7 +103,7 @@ MunoPhone Touch.
 
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
-muno_char_name = "Mr Monopoly";
+muno_char_name = "Mr. Monopoly";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -318,6 +318,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.41", "12th October, 2025");
+initHeader("Skillful Buffs");
+initSection("+ Golden Suit should now show on results screen");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed several things about the angle 0 effect
++ Fixed properties gaining a lot of money if both a player and their clone (if they have one) passes by it in hitstun");
+
 initPatch("1.40", "14th June, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Made DSpecial property a bit more stable on vertically moving platforms (hopefully). Also removed the platform on it, as Rivals is just way too unstable and it has always caused issues on certain stages");
@@ -735,7 +742,7 @@ zero".
 
 CHEAT_Money	= initCheat("Money!", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ["0", "1,000,000", "2,000,000", "3,000,000", "4,000,000", "5,000,000", "6,000,000", "7,000,000", "8,000,000", "9,000,000", "10,000,000", "Infinite"], "Set your money!");
 
-CHEAT_Dice	= initCheat("NSpecial Dices", [0, 1, 2, 3, 4, 5, 6], ["Random", "1", "2", "3", "4", "5", "6"], "Guarantee which dice to throw during NSpecial!");
+CHEAT_Dice	= initCheat("NSpecial Dices", [0, 1, 2, 3, 4, 5, 6], ["Random", "1 (Self-dmg)", "2 (Weak)", "3 (Standard)", "4 (Vertical)", "5 (Strong)", "6 (Spikes)"], "Guarantee which dice to throw during NSpecial!");
 
 CHEAT_Dice2	= initCheat("NSpecial Dice Luck", [0, 1, 2, 3, 4], ["Normal", "White", "Yellow", "Red", "Red (+ Jail)"], "Set your dices!");
 

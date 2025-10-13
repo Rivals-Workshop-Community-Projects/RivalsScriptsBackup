@@ -640,7 +640,9 @@ if(attack == AT_DSPECIAL){
 	    if(hbox_num <= 2){
 		    playermoneytimer -= 1;
 		    with(oPlayer){
-	    		if(place_meeting(x,y,other) && (state == PS_HITSTUN || state == PS_HITSTUN_LAND) && other.playermoneytimer <= 0 && other.lastplayer != self && other.player_id != self){
+	    		if(place_meeting(x,y,other) && (state == PS_HITSTUN || state == PS_HITSTUN_LAND) && other.playermoneytimer <= 0
+	    		&& other.lastplayer != self && other.player_id != self
+	    		&& (instance_exists(other.lastplayer) && player != other.lastplayer.player && player != other.lastplayer.player+10 || !instance_exists(other.lastplayer))){
 	    			other.lastplayer = self;
 	    			with(other){
 		    	    	sound_play(sound_get("money_pickup2"),false,noone,2);sound_play(sound_get("soldsfx"),false,noone,2);
@@ -650,7 +652,7 @@ if(attack == AT_DSPECIAL){
 		    	    	}else if(hbox_num == 2){
 		    	    		player_id.current_money += 3000*income_boost;
 		    	    	}
-		    	    	playermoneytimer = 6;
+		    	    	playermoneytimer = 10;
 	    			}
 	    			if("current_money" in self){
 	    				if(other.hbox_num == 1){
@@ -658,9 +660,7 @@ if(attack == AT_DSPECIAL){
 		    	    	}else if(other.hbox_num == 2){
 		    	    		current_money -= 3000*income_boost;
 		    	    	}
-		    	    	if(current_money < 0){
-		    	    		current_money = 0;
-		    	    	}
+		    	    	if(current_money < 0)current_money = 0;
 	                }
 	    		}
 		    }
@@ -887,8 +887,7 @@ if(attack == AT_JAB){
                 }
                 if("current_money" in self){
                     current_money += other.value;
-                }
-                if("IsToad" in self || "IsToadette" in self || "IsToadsworth" in self){
+                }if("coins" in self){
                 	coins += ceil(other.value/10000);if("current_coins" in self)current_coins += ceil(other.value/10000);
                 	sound_play(sound_get("coin"),false,noone,1);
                 }

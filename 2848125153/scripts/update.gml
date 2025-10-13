@@ -72,6 +72,26 @@ if(state == PS_WAVELAND && state_timer == 0 && !hitpause){
     }
 }
 
+//silly angle 0 code (part 2)
+if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
+if(instance_exists(killtarget)){
+	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
+		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
+		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
+		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
+		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
+		if(position_meeting(killtarget2.prev_x,killtarget2.prev_y+4,asset_get("par_block"))){killtarget2.prev_y -= 4;}
+	}else{killtarget = noone;}
+}if(instance_exists(killtarget2)){
+	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause || killtarget2.last_player != player
+	|| place_meeting(killtarget2.x+killtarget2.hsp,killtarget2.y-20,asset_get("par_block")) || place_meeting(killtarget2.x+(killtarget2.hsp/2),killtarget2.y-20,asset_get("par_block"))){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
+	if(instance_exists(killtarget2) && killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
+		killtarget2.old_vsp = 0;killtarget2.vsp = 0;
+		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_bounce = true;killtarget2.fall_through = true;
+		if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
+	}
+}
+
 //gain money on kill. very skillful!
 with(oPlayer){
     if(id != other.id){
@@ -313,23 +333,6 @@ if(runeE){
 if(runeN){
 	//skillful weight rune
 	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.5,1.10935);
-}
-
-//silly angle 0 code (part 2)
-if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
-if(instance_exists(killtarget)){
-	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
-		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
-		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
-		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
-		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
-	}else{killtarget = noone;}
-}if(instance_exists(killtarget2)){
-	if(killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
-		killtarget2.old_vsp = 0;killtarget2.vsp = 0;//killtarget2.y = killtarget_y;
-		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_tech = 1;killtarget2.fall_through = true;
-	}if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
-	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
 }
 
 //absolute peak code
