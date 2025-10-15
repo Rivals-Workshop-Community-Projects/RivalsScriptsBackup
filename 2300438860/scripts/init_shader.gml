@@ -24,7 +24,7 @@ if "attackbar" in self {
 
 
 
-animate_portrait("_portrait_intro", 48, 6, "_portrait_idle", 20, 5);
+animate_portrait("_portrait_intro", 48, 14, "_portrait_idle", 20, 5);
 
 #define animate_portrait(SpriteName, StartUp, AnimSpeed, IdleSpriteName, IdleStartUp, IdleSpeed)
 if (object_index == asset_get("draw_result_screen"))
@@ -70,13 +70,13 @@ if (object_index == asset_get("draw_result_screen"))
     {
         
         if stime % 20 == 0 {
-	 	sound_play(sound_get("click"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10,);
-	 	 sound_play(sound_get("nspecen"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10);
+	 	sound_play(sound_get("click"),false,noone,(30 - stime/5)/30, 0.9 + random_func(1,4,true)/10,);
+	 	 //sound_play(sound_get("nspecen"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10);
         }
         
         if stime % 13 == 0 {
-	 	sound_play(sound_get("click"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10);	
-	 	 sound_play(sound_get("nspecdis"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10);
+	 	sound_play(sound_get("click"),false,noone,(30 - stime/5)/30, 0.9 + random_func(1,4,true)/10);	
+	 	 //sound_play(sound_get("nspecdis"),false,noone,(30 - stime/10)/30, 0.9 + random_func(1,4,true)/10);
         }
         
      

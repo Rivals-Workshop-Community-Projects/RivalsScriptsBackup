@@ -43,7 +43,7 @@ finisherinc = 0
 
 Genocide = false 
 
-cosmetic = 0
+cosmetic = 1
 
 heartbroke = 0
 
@@ -92,8 +92,8 @@ walk_speed = 2.8;
 walk_accel = 1;
 walk_turn_time = 4;
 initial_dash_time = 10;
-initial_dash_speed = 7.4;
-dash_speed = 6.5;
+initial_dash_speed = 6;
+dash_speed = 5;
 dash_turn_time = 3;
 dash_turn_accel = .5;
 dash_stop_time = 4;
@@ -106,11 +106,11 @@ jump_speed = 11;
 jump_frames = 6;
 short_hop_speed = 7;
 djump_speed = 11;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 3; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = 0.30;
+air_accel = 0.25;
 prat_fall_accel = 0.8; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;

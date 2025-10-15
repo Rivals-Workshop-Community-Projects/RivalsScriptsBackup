@@ -12,7 +12,6 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 0);
 
-
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 1)
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);

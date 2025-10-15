@@ -211,7 +211,28 @@ hit_player_obj = self
 }
 
 if attackbar != 0 or barpause {
-	suppress_stage_music( 0.3, 0.05 );
+	suppress_stage_music( 0.2, 0.06 );
+	if initial_dash_speed == 6{
+		initial_dash_speed = 9;
+    	dash_speed = 8;
+    	
+    	leave_ground_max = 9; //the maximum hsp you can have when you go from grounded to aerial without jumping
+		max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+		air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+		jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
+		air_accel = 0.40;
+	}
+} else {
+	if initial_dash_speed == 9{
+		initial_dash_speed = 6;
+    	dash_speed = 5;
+    	
+    	leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+		max_jump_hsp = 3; //the maximum hsp you can have when jumping from the ground
+		air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
+		jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+		air_accel = 0.25;
+	}
 }
 
 if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
@@ -422,15 +443,15 @@ init_shader();
 
 /////////music
 
-if songcd > 50 {
+if songcd > 40 {
 	songcd -= 1
-	  suppress_stage_music(0.4, 0.05 );
+	  suppress_stage_music(0.2, 0.08 );
 }
 
 
 if songcd == 120 {
 	 	var volume = 0;
-        volume = get_local_setting(3)*1.2;
+        volume = get_local_setting(3)*5;
         
 	if songplay % 12 == 0 {
 			sound_stop(sound_get("megalo12"))

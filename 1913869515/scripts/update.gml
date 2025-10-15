@@ -64,7 +64,7 @@ or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FOR
 }
 
 with oPlayer {
-	if state == PS_RESPAWN or state == PS_DEAD {
+	if state == PS_RESPAWN {
 		with other {
 			iaispr = 0
             iaiimg = 0

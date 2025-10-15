@@ -97,9 +97,9 @@ if esave > 0 {
 		 draw_sprite_ext(sprite_get("save"), 140 - (esave/10), esavex  - 60 , esavey + 10 , 1, 1, 0 , c_white , 0.5);
 		 draw_sprite_ext(sprite_get("save"), 140 - (esave/10), saveid.x - 60 , saveid.y + 10 , 1, 1, 0 , c_white , 1);
      with saveid shader_start();    
-      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, esavex , esavey, 1 * saveid.spr_dir, 1, 0 , -1 , 0.6);
-      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, saveid.x - saveid.hsp*3 , saveid.y - saveid.vsp*3, 1 * saveid.spr_dir, 1, 0 , -1 , 0.4);
-      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, saveid.x - saveid.hsp*6 , saveid.y - saveid.vsp*6, 1 * saveid.spr_dir, 1, 0 , -1 , 0.2);
+      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, esavex , esavey, (1 + saveid.small_sprites) * saveid.spr_dir , (1 + saveid.small_sprites), 0 , -1 , 0.6);
+      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, saveid.x - saveid.hsp*3 , saveid.y - saveid.vsp*3, (1 + saveid.small_sprites) * saveid.spr_dir, (1 + saveid.small_sprites), 0 , -1 , 0.4);
+      	draw_sprite_ext(saveid.sprite_index, saveid.image_index, saveid.x - saveid.hsp*6 , saveid.y - saveid.vsp*6, (1 + saveid.small_sprites) * saveid.spr_dir, (1 + saveid.small_sprites), 0 , -1 , 0.2);
 	with saveid shader_end();
 }
 

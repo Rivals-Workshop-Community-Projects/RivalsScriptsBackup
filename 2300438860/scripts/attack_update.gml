@@ -313,7 +313,7 @@ if !hitpause {
         
         if window == 1 && window_timer == 10{
             sound_play(sound_get("hstrong"))
-            take_damage (player, -1, 33)
+            take_damage (player, -1, 12)
         }
         
         if window == 2 && window_timer == 1{
@@ -345,7 +345,7 @@ if !hitpause {
         	window_timer = 10
 
             sound_play(sound_get("fstrong2"))
-            take_damage (player, -1, -33)
+            take_damage (player, -1, -12)
             x = savex
             y = savey
             savex = 0

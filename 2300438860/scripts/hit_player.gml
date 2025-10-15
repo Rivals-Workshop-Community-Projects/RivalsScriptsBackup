@@ -52,6 +52,9 @@ switch my_hitboxID.attack {
        case AT_USPECIAL :
           if my_hitboxID.hbox_num <= 4 {
        		sound_play(sound_get("slicel"),false,noone,1,1)
+       		if hit_player_obj.id == id{
+       			take_damage(player, -1, 9)
+       		}
           }
        break;
        
