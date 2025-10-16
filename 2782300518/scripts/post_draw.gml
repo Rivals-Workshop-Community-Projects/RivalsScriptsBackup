@@ -147,6 +147,19 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        
+        patch_note_title[i] = "2.23"
+        patch_note_text[i++] =  
+        
+"Made some minor alterations to the sound effect volume
+
+Carol will now change which direction she is facing if turning around to aim during Fspecial or Bike Air FSpecial.
+
+Fixed parrying not recolouring certain parts of the character
+
+Added Command Center compatibility
+
+Added win quote for Tommy Oliver"
 
         patch_note_title[i] = "2.22"
         patch_note_text[i++] =  

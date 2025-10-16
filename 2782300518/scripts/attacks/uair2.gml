@@ -47,7 +47,7 @@ hv(atk, 1, HG_KNOCKBACK_SCALING, 0.5);
 hv(atk, 1, HG_BASE_HITPAUSE, 6);
 hv(atk, 1, HG_HITPAUSE_SCALING, .25);
 hv(atk, 1, HG_VISUAL_EFFECT, hit_medium);
-hv(atk, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+hv(atk, 1, HG_HIT_SFX, sound_get("hit"));
 
 hv(atk, 2, HG_HITBOX_TYPE, 1);
 hv(atk, 2, HG_HITBOX_GROUP, 1);
@@ -66,7 +66,7 @@ hv(atk, 2, HG_KNOCKBACK_SCALING, 0.5);
 hv(atk, 2, HG_BASE_HITPAUSE, 6);
 hv(atk, 2, HG_HITPAUSE_SCALING, .25);
 hv(atk, 2, HG_VISUAL_EFFECT, hit_medium);
-hv(atk, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+hv(atk, 1, HG_HIT_SFX, sound_get("hit"));
 
 if has_rune ("O")
 {

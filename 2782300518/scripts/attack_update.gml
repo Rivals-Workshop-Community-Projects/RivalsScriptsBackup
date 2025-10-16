@@ -1317,6 +1317,14 @@ switch (attack)
 	
 		if (window = 1)
 		{
+			if (joy_dir > 90 && joy_dir < 270 || left_pressed) 
+			{
+				spr_dir = -1;
+			}
+			if (joy_dir < 90 && joy_dir  > 0 || joy_dir > 270 || right_pressed)
+			{
+				spr_dir = 1;
+			}
 			var ddir = spr_dir > 0 ? 0 : 180;
 			//Move the boost arrow around
 			if (joy_pad_idle) brotation=0;

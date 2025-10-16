@@ -217,6 +217,10 @@ if (!handled_victory_quote)
         case "3299337477": //Twilight Sparkle
 			quote = "I guess you're a ''one trick pony'' after all."        
         break;
+        case "3583212615"://Tommy
+            quote = "Wait I didn't get to fight your giant robot? I was looking forward to that part..."
+		break;
+        
         default: break;
     }
     return [quote];
