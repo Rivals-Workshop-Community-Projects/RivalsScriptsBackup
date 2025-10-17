@@ -259,6 +259,17 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.56", "16th October, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Pocket no longer pockets articles by default (though they can still be pocketed if specified)
++ Fixed crouch hurtbox to be more accurate
++ Fixed a small sprite error on NSpecial, and a small hurtbox error on FSpecial
++ Updated some animations slightly (hurt, ustrong, dattack, etc)
++ Added a custom bury and sleep sprites
++ Some alts now randomize certain special alt sprites
++ Fixed several things about the angle 0 effect
++ Fixed some misc stuff");
+
 initPatch("1.55", "7th August, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug with last patch when pocketing certain projectiles");
@@ -725,7 +736,7 @@ zero".
 
 #define CORE_cheats
 
-CHEAT_BeegKewtian	= initCheat("Beeg Kewtian", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 99], ["no", "beeg", "beeg,,,", "very beeg", "extra beeg", "yuge", "massiv", "enormus", "wow!", "what a silky kewtian", "yes"], "Very very beeg");
+CHEAT_BeegKewtian	= initCheat("Beeg Kewtian", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 99], ["no", "yes", "beeg", "very beeg", "extra beeg", "very extra beeg", "sizeable", "hm", "woa", "WOA", "yes"], "Kewtian Magic");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

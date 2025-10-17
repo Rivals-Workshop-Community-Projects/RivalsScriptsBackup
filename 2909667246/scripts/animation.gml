@@ -23,6 +23,8 @@ if (state == PS_DOUBLE_JUMP){
     }
 }
 
+if(villager_bury && state == PS_HITSTUN)sprite_index = sprite_get("hurt_bury");
+
 if(phone_attacking){
 	if(attack == AT_DSPECIAL){
 		if (window == 4){

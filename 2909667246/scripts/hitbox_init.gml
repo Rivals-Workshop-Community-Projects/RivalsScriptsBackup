@@ -14,27 +14,24 @@ if (player_id.runeE) {
 
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
-    	Pocketable = false;
-        UnReflectable = true;
-        AriaCantAbsorb = true;
+    	Pocketable = false;UnReflectable = true;AriaCantAbsorb = true;
     }
 }else if(attack == AT_FSPECIAL){
 	if(hbox_num == 1){
 		Is_Lloid_Rocket = true;
 	    Pocketable = true;Pocket_hsp = hsp;Pocket_vsp = vsp;Pocketed = false;PocketBuff = 0;
 	    Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 3;
-	    if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
+	    if((player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1)
+	    && (sprite_index == sprite_get("fspecial_lloid_mjau") || sprite_index == sprite_get("fspecial_lloid_mjau_alts"))){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
-        	if(player_id.alt != 0){
-        		Pocket_hud_imageindex = 18;
-        	}
+        	if(player_id.alt != 0)Pocket_hud_imageindex = 18;
         }
         if(player_id.alt == 30){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 17;
         }
 	    MattCanGrab = true;
 	    MorshuCanGrab = true;
-	    CalCanSnack = 1;
+	    CalCanSnack = 1;SellValue = 500;
 	    SpikeCanEat = true;//SpikeHealPercent = 0;
 	    
 	    rider = noone;old_rider = noone;
@@ -94,12 +91,13 @@ if(attack == AT_NSPECIAL){
 		
 		Pocketable = true;Pocket_hsp = 1;Pocket_vsp = 2;Pocketed = false;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 7;
-        if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1 || player_id.alt == 22 || player_id.alt == 25){
+        if((player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1 || player_id.alt == 22 || player_id.alt == 25)
+	    && (sprite_index == sprite_get("uspecial_balloon_sol") || sprite_index == sprite_get("uspecial_balloon_sol_alts"))){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
         	if(player_id.alt == 0){Pocket_hud_imageindex = 16;}
         }
 		MattCanGrab = true;MorshuCanGrab = true;
-	    CalCanSnack = 1;AriaCantAbsorb = true;SpikeCanEat = true;
+	    CalCanSnack = 1;AriaCantAbsorb = true;SpikeCanEat = true;SellValue = 500;
 		
 		hp = 1;hitpausehit = 0;timer = 0;
     	lasthitbox = noone;
@@ -114,12 +112,12 @@ if(attack == AT_NSPECIAL){
 }else if(attack == AT_DSPECIAL){
 	UnReflectable = true;AriaCantAbsorb = true;
 	if(hbox_num == 1){ //seed
-		timer = 0;airtime = 0;watr = 0;hit_timer = 0;
+		timer = 0;airtime = 0;watr = 0;hit_timer = 0;SellValue = 50;
 		Is_Villager_Sapling = true;
 	}else if(hbox_num == 2){ //water
         Pocketable = true;Pocket_hsp = 8;Pocket_vsp = -1;
         Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 8;
-        CalCanSnack = 1;WaterHitbox = true;Toadie_Ability = 6;
+        CalCanSnack = 1;WaterHitbox = true;Toadie_Ability = 6;SellValue = 50;
 	}else if(hbox_num == 3){ //tree
 		hp = 60;
 		image_index = 1;
@@ -157,9 +155,9 @@ if(attack == AT_NSPECIAL){
         landtimer = 0;
         landsfx = player_id.tree_landsfx;
         hsp = 1.5*spr_dir;vsp = -5;prev_vsp = vsp;
-        Pocket_hsp = 2;Pocket_vsp = -12;
+        Pocket_hsp = 2;Pocket_vsp = -12;SellValue = 1000;
     }else if(hbox_num == 8){ //tree stump
-    	image_index = 23;
+    	image_index = 23;SellValue = 100;
     }
 }else if (attack == AT_FSTRONG){
     if(hbox_num == 1){
@@ -170,11 +168,11 @@ if(attack == AT_NSPECIAL){
         despawning = false;
         prev_player = player;
         MattCanGrab = true;MorshuCanGrab = true;
-        CalCanSnack = 2;AriaCantAbsorb = true;
+        CalCanSnack = 2;AriaCantAbsorb = true;SellValue = 500;
         SpikeCanEat = true;//SpikeHealPercent = 0;
         landtimer = 0;
         landsfx = sound_get("fstrong_land");
-        if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
+        if(sprite_index == sprite_get("bowlingball_planet")){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
         }
         if(player_id.alt == 25){
@@ -211,10 +209,10 @@ if(attack == AT_NSPECIAL){
         fireworks_sfx2 = sound_get("ustrong_charge");
         thechargesfx = noone;
         chargesfx = 80;
-        FireHitbox = true;Toadie_Ability = 3;
+        FireHitbox = true;Toadie_Ability = 3;SellValue = 750;
 	}else{ //fireworks explosions
 		Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 0;
-		UnReflectable = false;
+		UnReflectable = false;AriaCantAbsorb = false;
 		Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 6;
 		FireHitbox = true;Toadie_Ability = 3;
 	}
@@ -233,7 +231,7 @@ if(attack == AT_NSPECIAL){
     MattCanGrab = true;
     MorshuCanGrab = true;
     CalCanSnack = 1;
-    AriaCantAbsorb = true;
+    AriaCantAbsorb = true;SellValue = 250;
     SpikeCanEat = true;//SpikeHealPercent = 0;
     if (attack == AT_FAIR){
 		if(hsp > 0){
@@ -257,7 +255,7 @@ if(attack == AT_NSPECIAL){
     MattCanGrab = true;
     MorshuCanGrab = true;
     CalCanSnack = 1;
-    AriaCantAbsorb = true;
+    AriaCantAbsorb = true;SellValue = 350;
     SpikeCanEat = true;//SpikeHealPercent = 0;
 }
 

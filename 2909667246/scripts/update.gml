@@ -8,13 +8,9 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
    }
 }
 if(move_cooldown[AT_USPECIAL] <= 0 && uspec_landed){
-	if(get_gameplay_time() % 3 == 0){
-		uspec_fuel += 1;
-	}
+	if(get_gameplay_time() % 3 == 0)uspec_fuel += 1;
 }uspec_fuel = min(uspec_fuel,300);
-if(bellspawntimer > 0){
-	bellspawntimer -= 1;
-}
+if(bellspawntimer > 0)bellspawntimer -= 1;
 
 if(instance_exists(Pocketed_Projectile)){
 	Pocketed_Projectile.hitbox_timer = 0;Pocketed_Projectile.hit_priority = 0;Pocketed_Projectile.grounds = 1;Pocketed_Projectile.walls = 1;
@@ -50,6 +46,26 @@ if(instance_exists(Pocketed_Projectile)){
 		}
 		pocket_release = 0;Pocketed_Projectile = noone;
 		pocket_projectile = false;pocket_article = false;
+	}
+}
+
+//silly angle 0 code (part 2)
+if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
+if(instance_exists(killtarget)){
+	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
+		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
+		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
+		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
+		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
+		if(position_meeting(killtarget2.prev_x,killtarget2.prev_y+4,asset_get("par_block"))){killtarget2.prev_y -= 4;}
+	}else{killtarget = noone;}
+}if(instance_exists(killtarget2)){
+	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause || killtarget2.last_player != player
+	|| place_meeting(killtarget2.x+killtarget2.hsp,killtarget2.y-20,asset_get("par_block")) || place_meeting(killtarget2.x+(killtarget2.hsp/2),killtarget2.y-20,asset_get("par_block"))){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
+	if(instance_exists(killtarget2) && killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
+		killtarget2.old_vsp = 0;killtarget2.vsp = 0;
+		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_bounce = true;killtarget2.fall_through = true;
+		if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
 	}
 }
 
@@ -373,14 +389,12 @@ if(!loaded || kewtmode == 1){
 		fx_leaves = hit_fx_create(sprite_get("dspecial_tree_leaves_alts"), 60);
 	}
 	if(alt >= 15 && alt <= 21 || kewtmode == 1){ //kewts
-		set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_balloon_sol_alts"));
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_mjau"));
-		if(alt != 0)set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_mjau_alts"));
+		set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, alt == 0 ? sprite_get("uspecial_balloon_sol") : sprite_get("uspecial_balloon_sol_alts"));
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, alt == 0 ? sprite_get("fspecial_lloid_mjau") :  sprite_get("fspecial_lloid_mjau_alts"));
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_planet"));
 		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_planet"));
 	    set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_planet"));
 	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_planet"));
-	    if(alt == 0)set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_balloon_sol"));
 	    
 	    set_victory_bg(sprite_get("victorybg_kewt"));
 	    
@@ -493,12 +507,7 @@ if(canon || op){
 //hyper armor stuff, checking if the character gets put in hitstun despite having super armor
 if(hyperarmor && (state == PS_HITSTUN || state == PS_HITSTUN_LAND || state == PS_WRAPPED)){
 	hyper_armor_triggered();
-}
-if(super_armor || soft_armor >= 999){
-	hyperarmor = true;
-}else{
-	hyperarmor = false;
-}
+}if(super_armor || soft_armor >= 999)hyperarmor = true; else hyperarmor = false;
 
 if(supercanon){
 	invincible = true;super_armor = true;
@@ -533,43 +542,16 @@ if(trainingmode || op || canon || runeK){
 
 if("element_cooldown" not in self)element_cooldown = 0;
 if(element_cooldown > 0)element_cooldown--;
-//uncanon things!
-if(get_gameplay_time() % 30 == 0 || hitpause){
+if(sol && (get_gameplay_time() % 30 == 0 || hitpause)){
 	poison = 0;
-	if("infection_timer" in self){ //nemesis
-		infection_timer = 0;blood_tick = 0;is_infected = false;
-	}if("has_bleeding" in self){ //hassan
-		has_bleeding = false;bleeding_time = 0;has_bleed_timer = 0;has_bleed_stacks = 0;
-	}if("filia_bleed" in self && "timer_nspecial" in self){ //filia
-		filia_bleed = 0;timer_nspecial = 0;filia_tempid = -1;filia_id = -1;outline_color = [ 0, 0, 0 ];init_shader();
-	}if("test_status_timer" in self){ //yor
-		test_status_timer = 0;
-	}if("amaya_venom" in self){ //amaya
-		amaya_venom = false;amaya_venom_count = 0;amaya_venom_id = 0;
-	}if ("croagpoison" in self){ //croagunk
-        croagpoison = 0;
-	}if ("malsick" in self){ //mal
-		malsick = false;sickTimer = 0;sickAfterGrace = sickAfterGraceMax;sickGrace = 0;resetOutline = true;
-	}
+	if("infection_timer" in self){infection_timer = 0;blood_tick = 0;is_infected = false;}
+	if("has_bleeding" in self){has_bleeding = false;bleeding_time = 0;has_bleed_timer = 0;has_bleed_stacks = 0;}
+	if("filia_bleed" in self && "timer_nspecial" in self){filia_bleed = 0;timer_nspecial = 0;filia_tempid = -1;filia_id = -1;outline_color = [ 0, 0, 0 ];init_shader();}
+	if("test_status_timer" in self)test_status_timer = 0;
+	if("amaya_venom" in self){amaya_venom = false;amaya_venom_count = 0;amaya_venom_id = 0;}
+	if ("croagpoison" in self)croagpoison = 0;
+	if ("malsick" in self){malsick = false;sickTimer = 0;sickAfterGrace = sickAfterGraceMax;sickGrace = 0;resetOutline = true;}
 }
-
-//silly angle 0 code (part 2)
-if("killtarget" not in self){killtarget = noone;killtarget2 = noone;}
-if(instance_exists(killtarget)){
-	if(killtarget.activated_kill_effect && killtarget.state == PS_HITSTUN && !instance_exists(killtarget2)){
-		if(!killtarget.free || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_block")) || position_meeting(killtarget.x,killtarget.y+20,asset_get("par_jumpthrough")))killtarget.y -= 40;
-		killtarget.old_vsp = 0;killtarget.vsp = 0;killtarget.orig_knock *= 2;
-		killtarget.dumb_di_mult = 0;killtarget.sdi_mult = 0;
-		killtarget2 = killtarget;killtarget2.mask_index = asset_get("empty_sprite");killtarget = noone;
-	}else{killtarget = noone;}
-}if(instance_exists(killtarget2)){
-	if(killtarget2.state != PS_DEAD && killtarget2.state != PS_RESPAWN){
-		killtarget2.old_vsp = 0;killtarget2.vsp = 0;//killtarget2.y = killtarget_y;
-		killtarget2.free = true;killtarget2.can_tech = 1;killtarget2.can_tech = 1;killtarget2.fall_through = true;
-	}if(position_meeting(killtarget2.x,killtarget2.y+30,asset_get("par_block"))){killtarget2.y -= 10;}
-	if(killtarget2.state != PS_HITSTUN || abs(killtarget2.hsp) < 10 && !killtarget2.hitpause){killtarget2.mask_index = asset_get("ex_guy_collision_mask");killtarget2 = noone;}
-}
-
 
 #define hyper_armor_triggered
 	set_state(PS_IDLE);

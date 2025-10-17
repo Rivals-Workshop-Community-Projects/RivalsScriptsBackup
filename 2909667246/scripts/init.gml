@@ -157,6 +157,7 @@ bonus_damage = false;bonus_damage_flash = 0;
 KoBWeaknesses = 
 {
     Khraosis: true,
+    Poison: false,
     Miracle: false
 }
 
@@ -210,6 +211,8 @@ fx_sharphit_big2 = hit_fx_create(sprite_get("fx_sharphitbig2"), 15);
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
 toad_mushrooms_ignore_moves = true;
+kob_sleep_sprite = sprite_get("sleep");
+kob_sleep_sprite_air = sprite_get("downhurt");kob_sleep = false;
 miiverse_post = sprite_get("miiverse_post");
 gfzsignspr = sprite_get("greenflowerzone");
 gfzsignsfx = sound_get("fspecial_spawn");
@@ -224,8 +227,9 @@ wily_robotmaster_img = sprite_get("Wily_Castle");
 ncode1 = "Mayor of a small town";
 ncode2 = "Seemingly has endless pockets";
 ncode3 = "Whatever you do, don't turn your back to him";
-wiimote_compat_sprite = sprite_get("wiimote");if(kewtmode>=1)wiimote_compat_sprite = sprite_get("wiimote_kewt");
-
+wiimote_compat_sprite = sprite_get("wiimote");if(kewtmode>=1 && random_func(0,2,true) == 0)wiimote_compat_sprite = sprite_get("wiimote_kewt");
+oohEeOohAhAhTingTangWallaWallaBingBang = 1;
+//Toadie_Ability = 1;
 TCG_Kirby_Copy = 7;
 
 muno_event_type = 0;

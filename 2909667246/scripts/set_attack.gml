@@ -8,7 +8,9 @@ grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
 //reset bonus dmg stuff
 if(bonus_damage){bonus_damage = false;damage_scaling = 1;outline_color = [0, 0, 0];init_shader();}
 
-if(attack == AT_NSPECIAL){
+
+
+if(attack == AT_NSPECIAL && move_cooldown[attack] <= 0){
 	pocket_release = 0;
 	if(instance_exists(Pocketed_Projectile)){
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
@@ -20,18 +22,23 @@ if(attack == AT_NSPECIAL){
 	}
 }
 
-if(attack == AT_FSPECIAL){
+if(attack == AT_FSPECIAL && move_cooldown[attack] <= 0){
 	fspec_spawned = false;
-	//reset_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS);
 	set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
+	
+	if(random_func(0,2,true) == 0 && (alt >= 15 && alt <= 21 || kewtmode > 0)){ //kewts
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, alt == 0 ? sprite_get("fspecial_lloid_mjau") :  sprite_get("fspecial_lloid_mjau_alts"));
+	}else reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE);
 }
 
-if(attack == AT_USPECIAL){
-	uspec_fuel = max(uspec_fuel,45);
-	uspec_fall = 60;
+if(attack == AT_USPECIAL && move_cooldown[attack] <= 0){
+	uspec_fuel = max(uspec_fuel,45);uspec_fall = 60;
+	if(random_func(0,2,true) == 0 && (alt >= 15 && alt <= 21 || kewtmode > 0)){ //kewts
+		set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, alt == 0 ? sprite_get("uspecial_balloon_sol") : sprite_get("uspecial_balloon_sol_alts"));
+	}else reset_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE);
 }
 
-if(attack == AT_DSPECIAL){
+if(attack == AT_DSPECIAL && move_cooldown[attack] <= 0){
 	set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 2);
 	//reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
 	if(instance_exists(tree) || shield_down){
@@ -43,8 +50,33 @@ if(attack == AT_DSPECIAL){
 	}
 }
 
+if(attack == AT_FSTRONG){
+	if(random_func(0,2,true) == 0){ 
+		if(alt >= 15 && alt <= 21 || kewtmode > 0){ //kewts
+			set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_planet"));
+			set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_planet"));
+		}
+	}else{
+		reset_attack_value(AT_FSTRONG, AG_SPRITE);
+		reset_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE);
+	}
+}
+
+
 if (attack == AT_FAIR){
 	reset_attack_value(AT_FAIR, AG_LANDING_LAG);
+}
+
+if (attack == AT_FAIR || attack == AT_BAIR){
+	if(random_func(0,2,true) == 0){
+		if(alt >= 15 && alt <= 21 || kewtmode > 0){ //kewts
+			set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_planet"));
+	    	set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_planet"));
+		}
+	}else{
+		reset_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE);
+	    reset_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE);
+	}
 }
 
 if (attack == AT_UAIR){

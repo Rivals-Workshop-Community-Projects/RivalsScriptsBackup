@@ -306,7 +306,7 @@ if (attack == AT_NSPECIAL){
 		        rider = noone;
 		    }
 		    if(instance_exists(rider)){
-		    	rider.x = x-(22*spr_dir);rider.y = y-16;rider.spr_dir = spr_dir;
+		    	rider.x = x-(22*spr_dir);rider.y = y-16;rider.hurtboxID.x = rider.x;rider.hurtboxID.y = rider.y;rider.spr_dir = spr_dir;
 		    	rider.hsp = hsp;rider.vsp = vsp;rider.spr_dir = spr_dir;
 		    	depth = rider.depth+1;can_hit[rider.player] = false;
 		    	if(timer >= 40 && (spr_dir == 1 && player_id.right_down || spr_dir == -1 && player_id.left_down)){

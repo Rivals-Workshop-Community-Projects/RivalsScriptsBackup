@@ -127,16 +127,14 @@ if (attack == AT_NSPECIAL){
 			var balloon_collision = create_hitbox(AT_USPECIAL, 2, x+45*spr_dir, y-25);balloon_collision.theotherhitbox = balloon1;
         	balloon1.theotherhitbox = balloon_collision;
         	
-        	if(!uspec_landed2){
-        		uspec_fuel -= 60;
-        	}uspec_landed2 = false;
+        	if(!uspec_landed2)uspec_fuel -= 60;
+        	uspec_landed2 = false;
         	
         	if(instance_exists(Pocketed_Projectile) && "Villager_Balloon" in Pocketed_Projectile){
         		Pocketed_Projectile.destroyed = true;Pocketed_Projectile = noone;
 	        	pocket_projectile = false;pocket_article = false;
 	        	uspec_fuel += 120;vsp = -5;
         	}
-        	
         	if(uspec_fuel >= 90){
 	        	balloon2 = create_hitbox(AT_USPECIAL, 1, x-15*spr_dir, y-80);balloon2.num3 = 3;balloon2.spr_dir = -spr_dir;
 				var balloon_collision = create_hitbox(AT_USPECIAL, 2, x+45*spr_dir, y-25);balloon_collision.theotherhitbox = balloon2;
@@ -642,7 +640,7 @@ if (attack == AT_NSPECIAL){
 	if(instance_exists(grabbedtarget)){
 		grabbedtargetstuff();
     	if(!grabbedobject){
-        	grabbedtarget.y = ease_expoOut(grabbedtarget.y, round(y+grabbedposY), 2, 20);
+        	grabbedtarget.y = ease_expoOut(round(grabbedtarget.y), round(y+grabbedposY), 2, 20);
     	}else{
         	grabbedtarget.y = ease_expoOut(round(grabbedtarget.y), round(y+(grabbedposY-25)), 2, 20);
     	}
@@ -764,7 +762,7 @@ if (canon || op) strong_charge = 61;
 
 #define pocket_article_if_valid
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
-    	var playerurl = 21;var ispocketable = "Pocketable" not in self || "Pocketable" in self && Pocketable;
+    	var playerurl = 21;var ispocketable = /*"Pocketable" not in self ||*/ "Pocketable" in self && Pocketable;
     	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
         if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && ispocketable
         || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable)
@@ -840,7 +838,7 @@ if (canon || op) strong_charge = 61;
 	        
         	if(dist <= range+GrabRangeModifier && ("MattCanGrab" in self && MattCanGrab || "MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20) && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)){
             	other.grabbedtarget = self;other.grabbedobject = true;other.grabbedarticle = true;
-            	KoB_grabbed = true;
+            	KoB_grabbed = true;player = other.player;
 	        	if("MattPlanet" in self){
 	            	state = 3;
             	}if("current_player" in self){
