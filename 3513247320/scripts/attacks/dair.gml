@@ -50,6 +50,7 @@ set_hitbox_value(atk, hit, HG_KNOCKBACK_SCALING, 0.65); // .3
 set_hitbox_value(atk, hit, HG_BASE_HITPAUSE, 9); // 6
 set_hitbox_value(atk, hit, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(atk, hit, HG_PROJECTILE_SPRITE, sprite_get("megaman_dair_proj"));
+set_hitbox_value(atk, hit, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("megaman_dair_proj_collision"));
 set_hitbox_value(atk, hit, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hit, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(atk, hit, HG_PROJECTILE_WALL_BEHAVIOR, 2);

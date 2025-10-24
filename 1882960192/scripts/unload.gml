@@ -91,17 +91,17 @@ if (!azure_handled_victory_quote)
             quote = "Welp, BBot, doesn't seem like your questionable humor was strong enough... let alone funny."; 
             break;
         case "2014106219": // Cinna
-            quote = "...You weren't half bad, Sis. Maybe next time you'll get it.";
+            quote = "You weren't half bad, sis. Maybe next time you'll get it.";
             break;
         case "2089998666": // Big Yoshi
             quote = "...Huh? What do you mean it's a cookie, not a flower?";
             break;
         case "3380391964": // Troops
         case "1932503649": // Troops (Legacy)
-            quote = "How odd... I feel like I've known you for ages.";
+            quote = "How odd. I feel like I've known you for ages.";
             break;
         case "2310580951": // 64 Mario
-            quote = "Can I have an autograph now, Mr. Mario? Wait, where are your fingers?";
+            quote = "Can I have an autograph now, Mr. Mario? ...Wait, where are your fingers?";
             break;
         case "2669553388": // Old Man
         case "2160644191": // Old Man (Legacy)
@@ -111,7 +111,7 @@ if (!azure_handled_victory_quote)
             quote = "I think someone dropped their supplies on the way to school.";
             break;
         case "2799785099": // Sir Kibble
-            quote = "Is there anything inside that armor...?";
+            quote = "Is there anything inside that armor?";
             break;	
         case "3380395299": // Ms. Game & Watch
             quote = "Are you made of paper or something? ...What are you even supposed to be?";
@@ -188,7 +188,7 @@ if (!azure_handled_victory_quote)
             break;
       
         case "2817605804": //Jerma985
-            quote = "You... I haven't forgotten that one tournament, you know!";
+            quote = "You... I haven't forgotten that one tournament, you know.";
             break;
         
         case "3119664631": //Helios
@@ -371,10 +371,10 @@ if (!azure_handled_victory_quote)
            quote = "*cough* *cough* I'd like to NOT be a passive smoker, thank you very much!"; 
            break;
         case CH_CLAIREN: 
-           quote = "I wonder if the Multi-Rod could copy that sword. It'd be so much cooler than the one I have right now...";
+           quote = "I wonder if the Multi-Rod could copy that sword. It'd be WAY cooler than the one I have right now...";
            break;
         case CH_MOLLO:
-           quote = "You aren't the only one with bombs around here, you know! ...What? Where am I getting them from?";
+           quote = "You aren't the only one with bombs around here, you know! ...What? No, I don't have any on me.";
            break;
 
         case CH_WRASTOR:
@@ -391,7 +391,7 @@ if (!azure_handled_victory_quote)
            quote = "Note to self: don't drink from any water fountains within the next few hours."; 
            break;
         case CH_ETALUS: 
-           quote = "Must be n-ice to be you, big guy. You don't even need a fridge at home!"; 
+           quote = "Must be n-ice to be you, big guy. You don't even need a fridge at home."; 
            break;
         case CH_RANNO:
            quote = "Keep that tongue off me! I, uh, taste like rotten blueberries, they'll poison you. ...oh wait.";

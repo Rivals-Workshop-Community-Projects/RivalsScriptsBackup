@@ -1,4 +1,4 @@
-sprite_index = sprite_get("a_rush_coil" + (orig_player_id.alt == 0? "":"_mapped"));
+sprite_index = sprite_get("a_rush_coil" + (orig_player_id.alt == 0 || orig_player_id.alt == 31 ? "":"_mapped"));
 mask_index = sprite_get("a_rush_coil_mask");
 
 //uses_shader = false;
@@ -10,7 +10,7 @@ max_fall = 5;
 pillar_ascent_speed = -15;
 
 article_state = "SPAWN";
-article_lifetime = has_rune("J")? 300:180;
+article_lifetime = has_rune("J")? 500:240;
 article_timer = 0;
 
 launch_speed_grounded = has_rune("K")? -18:-15;

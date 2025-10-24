@@ -50,6 +50,7 @@ sprite_change_offset("bair",                        43, 48, small_sprites);
 sprite_change_offset("dair",                        20, 38, small_sprites);
 sprite_change_offset("uair",                        18, 48, small_sprites);
 sprite_change_offset("megaman_dair_proj",           36, 32, small_sprites);
+sprite_change_offset("megaman_dair_proj_collision", 36, 32, small_sprites);
 sprite_change_offset("megaman_uair_proj",           24, 24, small_sprites);
 
 //Specials

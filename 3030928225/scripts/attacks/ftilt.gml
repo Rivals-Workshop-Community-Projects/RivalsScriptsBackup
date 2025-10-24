@@ -17,7 +17,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(atk, window_num, AG_WINDOW_HSPEED, 3);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 2);
 
 window_num ++;//endlag
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);

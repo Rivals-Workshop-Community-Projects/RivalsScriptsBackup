@@ -71,20 +71,6 @@ if !ai_recovering and rangedtimer > 0 and ai_target.state_cat != SC_HITSTUN{
 				right_down = false;
 			}
 	}
-	if can_special and 0 > bowlingtimer and xdist > 350 {
-	bowlingtimer = 60
-    joy_pad_idle = true;
-    if x > ai_target.x{
-            left_down = true;
-            right_down = false;
-    } else {
-            left_down = false;
-            right_down = true;
-        }
-	up_down = false;
-    special_pressed = true;
-    attack_pressed = false;
-	}
 }
 
 if (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and state != PS_DOUBLE_JUMP and ydist > 70 and y > ai_target.y {
@@ -216,16 +202,9 @@ if (get_stage_data(SD_Y_POS) - 150 > y and get_gameplay_time() mod 13 == 0 and c
 }
 
 //Fspecial
-if ( get_stage_data( SD_Y_POS ) > y and can_special and 250 > xdist and xdist > 120 and 70 > ydist and 0 > bowlingtimer){
+if ( get_stage_data( SD_Y_POS ) > y and can_special and 250 > xdist and xdist > 120 and 70 > ydist){
 	bowlingtimer = 120
     joy_pad_idle = true;
-    if x > ai_target.x{
-            left_down = true;
-            right_down = false;
-    } else {
-            left_down = false;
-            right_down = true;
-        }
 	up_down = false;
     special_pressed = true;
     attack_pressed = false;

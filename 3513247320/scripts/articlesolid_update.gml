@@ -89,7 +89,7 @@ if(hitstop && mask_index == sprite_get("a_rock_ground_detection")) mask_index = 
 
 else if(!hitstop && rock_damage_alpha > 0) rock_damage_alpha -= .05;
 
-if y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200{
+if y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200 && !instance_exists(oTestPlayer) {
 	sound_play(asset_get("sfx_kragg_rock_shatter"));
 	with owner spawn_hit_fx(me.x, me.y, dspec_destroy);
 	instance_destroy(self);

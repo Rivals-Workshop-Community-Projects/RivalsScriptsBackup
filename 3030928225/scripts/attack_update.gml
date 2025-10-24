@@ -2343,40 +2343,141 @@ if (attack == AT_DSPECIAL) {
 	//var picked_spot = floor(max_space_between_parts + (max_space_between_parts * 4 * (dspecial_charge_time / special_full_charge_time)));
 	// Find the best place to put the first segment
 	spot_found = false;
-	space_between_parts = abs(picked_spot - x);
+	
+	// If we're holding away from Squigly, move the shadow across the gap if there's something out there
+	// Otherwise, find the spot closest to the requested spot on the way back to Squigly
+	var holding_dir = (right_down && !left_down) ? 1 : (left_down && !right_down) ? -1 : 0;
 	// Is the tail in front of of squig? 1 if in front, -1 if behind
 	var relative_dir = sign(picked_spot - x) * spr_dir;
-	//space_between_parts = max_space_between_parts;
-	num_placement_options = floor(space_between_parts / dspecial_granularity);
-	placement_option = num_placement_options;
-	//dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");
-	dspecial_tail_article = instance_create(dspecial_requested_position_x, y, "obj_article1");
-	while (!spot_found) {
-	    with (dspecial_tail_article){
-	        if (place_meeting(x, y + 1, asset_get("par_block"))
-	        	&& !place_meeting(x, y - 5, asset_get("par_block")))
-	        {
-	            //print_debug("Grounded on solid plat");
-	            other.spot_found = true;
-	        } else if (place_meeting(x, y + 1, asset_get("par_jumpthrough"))
-	        		   && !place_meeting(x, y - 5, asset_get("par_jumpthrough")))
-        	{
-	            //print_debug("Grounded on dropthrough plat");
-	            other.spot_found = true;
-	        }
-	    }
-	    
-        //print_debug("Did we find it?");
-	    if (!spot_found) {
-	        //print_debug("Spot not found yet");
-	        if (placement_option <= 0) {
-	            //print_debug("Give up - overlap");
-	            spot_found = true;
-	        }
-	        dspecial_tail_article.x = x + spr_dir * dspecial_granularity * placement_option * relative_dir;
-	    }
-	    placement_option--;
+	var holding_away = (spr_dir == holding_dir * relative_dir);
+	//print_debug("holding away = " + string(holding_away));
+	
+	// First, check if we can just use the desired spot
+	dspecial_tail_article = instance_create(picked_spot, y, "obj_article1");
+	spot_found = check_article_grounded(dspecial_tail_article);
+	
+	if (!spot_found) {
+		// Should we look away from the desired spot or toward Squigly from the desired spot?
+		//var search_away = true;
+		// Check forward for another platform
+		var plat_found = false;
+		if (holding_away) {
+			// Find the first platform
+			// Assume platforms have a minimum size
+			num_placement_options = floor(dspecial_max_search_distance / dspecial_granularity);
+			placement_option = 0; // Count up to max
+			
+			while (!spot_found) {
+				dspecial_tail_article.x = picked_spot + holding_dir * dspecial_granularity * placement_option;
+				spot_found = check_article_grounded(dspecial_tail_article);
+				//print_debug("Did we find a platform?");
+				if (!spot_found) {
+					//print_debug("Not yet...");
+					if (placement_option >= num_placement_options) {
+						//print_debug("Give up - overlap");
+						spot_found = true;
+						dspecial_tail_article.x = picked_spot;
+					}
+				} else {
+					//print_debug("Yes - a grounded space was found");
+					plat_found = true;
+				}
+				placement_option++;
+			}
+			
+			// If we found a platform, do a binary search to find the spot closest to the original desired location
+			if (plat_found) {
+				spot_found = false;
+				var start_point = picked_spot;
+				var end_point = dspecial_tail_article.x;
+				var remaining_distance = abs(start_point - end_point);
+				while (remaining_distance > 0) {
+					var half_distance = floor(remaining_distance / 2);
+					dspecial_tail_article.x = start_point + holding_dir * half_distance;
+					spot_found = check_article_grounded(dspecial_tail_article);
+					//print_debug("Did we find it?");
+					if (spot_found) {
+						//print_debug("Yes - bring end of search space down");
+						end_point = dspecial_tail_article.x;
+					} else {
+						if (remaining_distance == 1) { // Final comparison
+							//print_debug("No - bring start of search space up to the end");
+							start_point = end_point;
+						} else {
+							//print_debug("No - bring start of search space up");
+							start_point = dspecial_tail_article.x;
+						}
+					}
+					remaining_distance = abs(start_point - end_point);
+				}
+				dspecial_requested_position_x = start_point;
+			}
+		}
+		
+		//print_debug("holding_away = " + string(holding_away) + ", plat_found = " + string(plat_found));
+		
+		// If holding away and no platform found forward, or not holding away, search backward toward Squigly
+		if ((holding_away && !plat_found) || !holding_away) {
+			spot_found = false;
+			plat_found = false;
+			
+			// Find the first platform on the way back to squigly
+			// Assume platforms have a minimum size
+			var space_to_squigly = abs(x - picked_spot);
+			var squigly_relative_dir = sign(x - picked_spot);
+			num_placement_options = floor(space_to_squigly / dspecial_granularity);
+			placement_option = 0; // Count up to max
+			
+			while (!spot_found) {
+				dspecial_tail_article.x = picked_spot + squigly_relative_dir * dspecial_granularity * placement_option;
+				spot_found = check_article_grounded(dspecial_tail_article);
+				//print_debug("Did we find a platform?");
+				if (!spot_found) {
+					//print_debug("Not yet...");
+					if (placement_option >= num_placement_options) {
+						//print_debug("Give up - closest spot, but not overlapping");
+						spot_found = true;
+						dspecial_tail_article.x = picked_spot;
+					}
+				} else {
+					//print_debug("Yes - a grounded space was found");
+					plat_found = true;
+				}
+				placement_option++;
+			}
+			
+			//print_debug("plat_found = " + string(plat_found));
+			
+			// If we found a platform, do a binary search to find the spot closest to the original desired location
+			if (plat_found) {
+				spot_found = false;
+				var start_point = picked_spot;
+				var end_point = dspecial_tail_article.x;
+				var remaining_distance = abs(start_point - end_point);
+				while (remaining_distance > 0) {
+					var half_distance = floor(remaining_distance / 2);
+					dspecial_tail_article.x = start_point + squigly_relative_dir * half_distance;
+					spot_found = check_article_grounded(dspecial_tail_article);
+					//print_debug("Did we find it?");
+					if (spot_found) {
+						//print_debug("Yes - bring end of search space down");
+						end_point = dspecial_tail_article.x;
+					} else {
+						if (remaining_distance == 1) { // Final comparison
+							//print_debug("No - bring start of search space up to the end");
+							start_point = end_point;
+						} else {
+							//print_debug("No - bring start of search space up");
+							start_point = dspecial_tail_article.x;
+						}
+					}
+					remaining_distance = abs(start_point - end_point);
+				}
+				dspecial_requested_position_x = start_point;
+			}
+		}
 	}
+	
 	dspecial_assigned_position_x = dspecial_tail_article.x;
 	
 	dspecial_tail_article.spr_dir = spr_dir;
@@ -2421,37 +2522,70 @@ if (attack == AT_DSPECIAL) {
 		}
 		//print_debug("Nearest 'x' = " + string(nearest));
 		// Find the best place to put the first segment
+		
+		picked_spot = x + nearest * spr_dir;
 		spot_found = false;
-		space_between_parts = nearest;
-		num_placement_options = floor(space_between_parts / dspecial_granularity);
-		placement_option = num_placement_options;
-		dspecial_tail_article = instance_create(x + spr_dir * space_between_parts, y, "obj_article1");
-		while (!spot_found) {
-		    with (dspecial_tail_article){
-		        if (place_meeting(x, y + 1, asset_get("par_block"))
-		        	&& !place_meeting(x, y - 5, asset_get("par_block")))
-		        {
-		            //print_debug("Grounded on solid plat");
-		            other.spot_found = true;
-		        } else if (place_meeting(x, y + 1, asset_get("par_jumpthrough"))
-		        		   && !place_meeting(x, y - 5, asset_get("par_jumpthrough")))
-	        	{
-		            //print_debug("Grounded on dropthrough plat");
-		            other.spot_found = true;
-		        }
-		    }
-		    
-	        //print_debug("Did we find it?");
-		    if (!spot_found) {
-		        //print_debug("Spot not found yet");
-		        if (placement_option <= 0) {
-		            //print_debug("Give up - overlap");
-		            spot_found = true;
-		        }
-		        dspecial_tail_article.x = x + spr_dir * dspecial_granularity * placement_option;
-		    }
-		    placement_option--;
+		var plat_found = false;
+		
+		// Find the first platform on the way back to squigly
+		// Assume platforms have a minimum size
+		var space_to_squigly = abs(x - picked_spot);
+		var squigly_relative_dir = sign(x - picked_spot);
+		num_placement_options = floor(space_to_squigly / dspecial_granularity);
+		placement_option = 0; // Count up to max
+		dspecial_tail_article = instance_create(picked_spot, y, "obj_article1");
+		spot_found = check_article_grounded(dspecial_tail_article);
+		
+		if (!spot_found) {
+			while (!spot_found) {
+				dspecial_tail_article.x = picked_spot + squigly_relative_dir * dspecial_granularity * placement_option;
+				spot_found = check_article_grounded(dspecial_tail_article);
+				//print_debug("Did we find a platform?");
+				if (!spot_found) {
+					//print_debug("Not yet...");
+					if (placement_option >= num_placement_options) {
+						//print_debug("Give up - closest spot, but not overlapping");
+						spot_found = true;
+						dspecial_tail_article.x = picked_spot;
+					}
+				} else {
+					//print_debug("Yes - a grounded space was found");
+					plat_found = true;
+				}
+				placement_option++;
+			}
+			
+			print_debug("plat_found = " + string(plat_found));
+			
+			// If we found a platform, do a binary search to find the spot closest to the original desired location
+			if (plat_found) {
+				spot_found = false;
+				var start_point = picked_spot;
+				var end_point = dspecial_tail_article.x;
+				var remaining_distance = abs(start_point - end_point);
+				while (remaining_distance > 0) {
+					var half_distance = floor(remaining_distance / 2);
+					dspecial_tail_article.x = start_point + squigly_relative_dir * half_distance;
+					spot_found = check_article_grounded(dspecial_tail_article);
+					//print_debug("Did we find it?");
+					if (spot_found) {
+						//print_debug("Yes - bring end of search space down");
+						end_point = dspecial_tail_article.x;
+					} else {
+						if (remaining_distance == 1) { // Final comparison
+							//print_debug("No - bring start of search space up to the end");
+							start_point = end_point;
+						} else {
+							//print_debug("No - bring start of search space up");
+							start_point = dspecial_tail_article.x;
+						}
+					}
+					remaining_distance = abs(start_point - end_point);
+				}
+				dspecial_requested_position_x = start_point;
+			}
 		}
+		
 		dspecial_tail_article.spr_dir = spr_dir;
 		// If we're holding backwards, pull the opponent in instead
 		if (((spr_dir > 0) && left_down)
@@ -2974,6 +3108,22 @@ switch (attack)
 
 custom_attack_grid();
 
+#define check_article_grounded(article_name)
+with (article_name) {
+    if (place_meeting(x, y + 1, asset_get("par_block"))
+    	&& !place_meeting(x, y - 5, asset_get("par_block")))
+    {
+        //print_debug("Grounded on solid plat");
+        return true;
+    } else if (place_meeting(x, y + 1, asset_get("par_jumpthrough"))
+    		   && !place_meeting(x, y - 5, asset_get("par_jumpthrough")))
+	{
+        //print_debug("Grounded on dropthrough plat");
+        return true;
+    }
+}
+return false;
+
 // All voice lines start with va_, and will randomize between num_options
 // Chance is 0 - 100 % chance of playing the line at all
 // Volume needs to be between 0 and 1
@@ -3049,6 +3199,7 @@ with (oPlayer) {
     }
 }
 holding_someone = false;  
+
 //custom attack grid example - Looping window X times (by Bar-Kun)
 #define custom_attack_grid
 {
@@ -3084,6 +3235,7 @@ holding_someone = false;
 
     if (!is_attacking) window_loops = 0; //resets loop value in case the character isn't attacking (useful for hitstun)
 }
+
 //0 will just go to the next window instead of a specific one
 //-1 makes it loop on the same window
 #define set_window(window_num)

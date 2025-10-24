@@ -24,7 +24,7 @@ if (attack == AT_USPECIAL) {
 		} else if !in_hitpause {
 			hitbox_timer = length;
 			spawn_hit_fx(x, y-10, 301);
-		}	
+		}
 	}
 	if in_hitpause {
 		hitstop--;

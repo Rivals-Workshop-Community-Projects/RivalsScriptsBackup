@@ -38,6 +38,7 @@ set_hitbox_value(atk, hit, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hit, HG_PROJECTILE_ANIM_SPEED, 2);
 set_hitbox_value(atk, hit, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(atk, hit, HG_BASE_KNOCKBACK, 0.1);
+set_hitbox_value(atk, hit, HG_HITSTUN_MULTIPLIER, .2);
 set_hitbox_value(atk, hit, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(atk, hit, HG_FORCE_FLINCH, 1);
 set_hitbox_value(atk, hit, HG_HIT_SFX, asset_get("sfx_absa_orb_hit"));

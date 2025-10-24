@@ -22,11 +22,11 @@ set_window_value(AT_JAB, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .15);
 set_window_value(AT_JAB, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .15);
 set_window_value(AT_JAB, 2, AG_WINDOW_CUSTOM_GRAVITY, .25);
 
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 4, AG_WINDOW_CANCEL_TYPE, 1);
@@ -34,12 +34,12 @@ set_window_value(AT_JAB, 4, AG_WINDOW_CANCEL_FRAME, 2);
 
 
 
-set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_JAB, 5, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_JAB, 5, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 1);
@@ -49,7 +49,7 @@ set_window_value(AT_JAB, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, .75);
 set_window_value(AT_JAB, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, .55);
 
-set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 8);
 

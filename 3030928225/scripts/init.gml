@@ -443,7 +443,8 @@ draw_dspecial_indicator = false;
 dspecial_requested_position_x = 0;
 dspecial_assigned_position_x = 0;
 dspecial_adjustment_increment = 8;
-dspecial_granularity = 8;
+dspecial_granularity = 16; //  Assumed minimum platform width based on training stage grid size
+dspecial_max_search_distance = 4000;
 // Dspecial air
 non_grab_hitbox = noone;
 dspecial_caught_one = false;

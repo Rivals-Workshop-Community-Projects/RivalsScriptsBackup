@@ -79,7 +79,7 @@ techroll_speed = 10;
 air_dodge_startup_frames = 0;
 air_dodge_active_frames = 3;
 air_dodge_recovery_frames = 3;
-air_dodge_speed = 8.5; air_dodge_speed_ref = air_dodge_speed ; air_dodge_speed_jmp = 10.2; air_dodge_speed_shld = 6.5;
+air_dodge_speed = 8; air_dodge_speed_ref = air_dodge_speed ; air_dodge_speed_jmp = 10.2; air_dodge_speed_shld = 6.5;
 
 has_really_airdodge = false;
 has_really_walljump = false;

@@ -14,13 +14,6 @@ if attack == AT_TAUNT {
 	}
 }
 
-if attack == AT_FSTRONG  && ( (spr_dir == 1 && left_strong_pressed || 
-							spr_dir == -1 && right_strong_pressed) || 
-							(spr_dir == -1 && hsp > 0 || spr_dir == 1 && 0 > hsp) ) {
-	attack = AT_FTHROW;
-}
-
-
 if (attack == AT_TAUNT_2) {
 		if spr_dir == -1 {
 		set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("tauntd_l"));
@@ -29,6 +22,8 @@ if (attack == AT_TAUNT_2) {
 	}
 }
 
+/*
 if (attack == AT_FSPECIAL && (ballOut || ballDown > 0) ) {
 	attack = AT_FSPECIAL_AIR;
 	}
+*/

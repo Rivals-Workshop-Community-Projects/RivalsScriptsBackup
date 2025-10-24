@@ -17,15 +17,24 @@ switch my_hitboxID.attack{
 	window_timer = 0;
 	destroy_hitboxes();
 	break;
-	case AT_DSPECIAL:
-	if(instance_exists(dspec_rock)){
+	case AT_DSPECIAL_2:
+	if(instance_exists(dspec_rock) && my_hitboxID.hbox_num == 2){
 		with(dspec_rock){
-			launcher = hit_player_obj.player;
+			launcher = other.hit_player_obj.player;
 			hsp *= -1;
 			vsp = -abs(vsp);
 			old_vsp = vsp;	
 			old_hsp = hsp;
 		}
+	}
+	break;
+	case AT_NSPECIAL:
+	my_hitboxID.lifetime = 0;
+	my_hitboxID.hsp *= 1.5;
+	my_hitboxID.transcendent = true;
+	if(my_hitboxID.hbox_num == 1){
+		print(true)
+		my_hitboxID.hitstun_factor = 40;
 	}
 	break;
 }

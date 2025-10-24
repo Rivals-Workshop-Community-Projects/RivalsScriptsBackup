@@ -22,23 +22,10 @@ if !(get_player_color( player ) == 16) {
 	}
 }
 
-//Check if a fspecial ball is out
-var ABallThereIs = false;
-
-with(asset_get("pHitBox")){
-    if(player_id == other.id && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && hbox_num == 1){
-        ABallThereIs = true;
-    }
-}
-
-if ABallThereIs{
-   	ballOut = true;
-}
-
-else { ballOut = false; }
-
-if ballDown > 0 {
-	ballDown--;
+if !free {
+	if stupidstall == false {
+		stupidstall = true;
+	}
 }
 
 if (get_player_color( player ) == 16) {
@@ -52,7 +39,7 @@ if (get_player_color( player ) == 16) {
 
 init_shader();
 
-if (wblastcharge > 35) { //Ensure wblastcharge never goes above 55
+if (wblastcharge > 35) { //Ensure wblastcharge never goes above 35
 	wblastcharge = 35;
 }
 
@@ -93,57 +80,4 @@ if has_rune("G") { //Rune G: Charging NSpecial boosts stats.
 		djump_speed = 10;
 		max_jump_hsp = 6;
 	}
-}
-
-if(variable_instance_exists(id,"diag"))
-{
-//Change their name whenever
-    diag_name = "Azure"
-//  ADDING REGULAR DIALOGUE
-
-    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
-    diagchoice = [
-    "Another day, another opponent... Let's do it!",
-    "Heyo.",
-    "Nothing to do but fight, I guess...",
-    "(Honestly, I dunno why I am doing this.)"]
-
-//  Specific Character Interactions
-
-//  Regular dialogue
-    if(otherUrl == CH_ZETTERBURN && diag != "") 
-    {
-        diag = "Uh... Hey man, your hair's on fire.";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == CH_FORSBURN && diag != "") 
-    {
-        diag = "I sincerely hope your lungs are okay.";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == CH_CLAIREN && diag != "") 
-    {
-        diag = "That's a pretty cool sword.";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == CH_MAYPUL && diag != "") 
-    {
-        diag = "...What animal ARE you even?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == "2014106219" && diag != "") 
-    {
-        diag = "Hope you don't hold back, Sis!";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == "2007375819" && diag != "") 
-    {
-        diag = "Let's see what you've got, BBot!";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
-    if(otherUrl == "2089998666" && diag != "") 
-    {
-        diag = "Hey, it's been a while, Yoshi!";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
-    }
 }

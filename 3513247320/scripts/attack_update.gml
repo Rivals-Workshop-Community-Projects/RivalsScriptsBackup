@@ -44,7 +44,7 @@ switch attack{
 	// 	}
 	// break;
 	case AT_UTILT:
-		hsp = clamp(hsp, -2, 2);
+		if window > 1 hsp = clamp(hsp, -2, 2);
 		if has_rune("G") && (window < 2 || (window == 2 && window_timer == 1)) invincible = true;
 		else invincible = false;
 		can_fast_fall = false;
@@ -94,7 +94,7 @@ switch attack{
 	case AT_DSTRONG:
 		var minimum_hsp = 1.5;
 		var steer = 0.25;
-		if abs(hsp) < minimum_hsp && right_down - left_down != 0 hsp = clamp(hsp + (steer * (right_down - left_down)), -minimum_hsp, minimum_hsp);
+		if free && abs(hsp) < minimum_hsp && right_down - left_down != 0 hsp = clamp(hsp + (steer * (right_down - left_down)), -minimum_hsp, minimum_hsp);
 		else hsp *= 0.925;
 		can_move = false;
 		can_fast_fall = false;
@@ -243,7 +243,7 @@ switch attack{
 				destroy_hitboxes();
 				sound_play(asset_get("sfx_kragg_spike"));
 				spawn_hit_fx(x + 72 * spr_dir, y - 40, HFX_KRA_ROCK_SMALL);
-			} else if(spr_dir == 1 && x + 100 + hsp > get_stage_data(SD_RIGHT_BLASTZONE_X) || spr_dir == -1 && x - 100 + hsp < get_stage_data(SD_LEFT_BLASTZONE_X)){
+			} else if(spr_dir == 1 && x + 100 + hsp > get_stage_data(SD_RIGHT_BLASTZONE_X) || spr_dir == -1 && x - 100 + hsp < get_stage_data(SD_LEFT_BLASTZONE_X)) && !instance_exists(oTestPlayer) {
 				window = 6;
 				window_timer = 0;
 				destroy_hitboxes();
@@ -425,7 +425,7 @@ switch attack{
 				if window_timer == window_end_time{
 					attack_end();
 					destroy_hitboxes();
-					fixed_set_state(free? PS_IDLE_AIR:PS_IDLE);
+					fixed_set_state(was_parried ? (free ? PS_PRATFALL:PS_PRATLAND) : (free ? PS_IDLE_AIR:PS_IDLE));
 				}
 			break;
 			case 4:
@@ -549,36 +549,37 @@ switch attack{
 			uspec_rush.image_index = uspec_rush.num == 1? 19:2;
 			sound_play(sound_get("rush_vanish"));
 		}
+		if shield_pressed || shield_down uspec_shield_pressed = true;
 		if window_timer == window_end_time {
 			// var dist = 50;
 			// while place_meeting(x + dist, y, asset_get("par_block")) x--;
 			// while place_meeting(x - dist, y, asset_get("par_block")) x++;
-			
-			var jet = special_down && can_use_jet;
-			// switch get_synced_var(player){
-			// 	default: //hold special
-			// 		if special_down jet = true;
-			// 	break;
-			// 	case 1: //double tap special
-			// 		if special_pressed{
-			// 			jet = true;
-			// 			clear_button_buffer(PC_SPECIAL_PRESSED);
-			// 		}
-			// 	break;
-			// 	case 2: //press shield
-			// 		if shield_pressed{
-			// 			jet = true;
-			// 			clear_button_buffer(PC_SHIELD_PRESSED);
-			// 		}
-			// 	break;
-			// }
+			var jet = false;
+			switch (get_synced_var(player) - arbitrary_sync_number) {
+				default: //hold special
+					if special_down jet = true;
+				break;
+				case 1: //double tap special
+					if special_pressed {
+						jet = true;
+						clear_button_buffer(PC_SPECIAL_PRESSED);
+					}
+				break;
+				case 2: //press shield
+					if uspec_shield_pressed {
+						jet = true;
+						clear_button_buffer(PC_SHIELD_PRESSED);
+					}
+				break;
+			}
+			if !can_use_jet jet = false;
 			
 			uspec_rush = instance_create(x, y + (jet? -32:0), jet? "obj_article_platform":"obj_article1");
 			uspec_rush.spr_dir = spr_dir;
 			
 			uspec_uses++;
 			
-			if jet{
+			if jet {
 				spawn_hit_fx(x, y - 16, HFX_CLA_PLASMA_PLUS);
 				spawn_hit_fx(x, y - 16, HFX_CLA_PLASMA_X);
 				sound_play(sound_get("rush_jet"));
@@ -601,7 +602,7 @@ switch attack{
 	break;
 	case AT_USPECIAL_2:
 		can_use_jet = false;
-		if instance_exists(uspec_rush) if special_down && !uspec_rush.rush_pause && uspec_rush.article_state != "DESPAWN" && place_meeting(x, y + 2, uspec_rush){
+		if instance_exists(uspec_rush) if special_down && !uspec_rush.rush_pause && uspec_rush.article_state != "DESPAWN" && place_meeting(x, y + 2, uspec_rush) {
 			uspec_rush.article_timer = 0;
 			window_timer--;
 			

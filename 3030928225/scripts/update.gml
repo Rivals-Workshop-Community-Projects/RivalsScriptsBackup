@@ -190,9 +190,6 @@ with (oPlayer) if (test_status_owner == other)
             {
                 //spawns the little sparkles
                 //using random_func, we can make the particles spread randomly on the enemy player
-    draw_dspecial_indicator = false; //Enabled when charging dspecial
-    strong_charge = false;
-
                 var status_part = spawn_hit_fx(
                     other.x + (random_func(11, 5, true) - 2) * 8,
                     other.y + (random_func(12, 5, true) - 2) * 8 - other.char_height/2,
@@ -417,6 +414,7 @@ with hit_fx_obj if player_id == other {
 
 //print_debug("states: parry " + string(PS_PARRY));
 //print_debug("states: attack " + string(attack));
+//print_debug("strong_charge " + string(strong_charge));
 //print_debug("player state = " + string(state) + ", state_timer = " + string(state_timer));
 //print_debug("window = " + string(window) + ", window_timer = " + string(window_timer) + ", image_index = " + string(image_index));
 //print_debug("shield_pressed = " + string(shield_pressed) + ", shield_down = " + string(shield_down));
@@ -677,7 +675,7 @@ holding_someone = false;
 /// print_vars(instance = self)
 {
     //prints the variables in the given instance, or in whatever instance ran the function.
-    var instance; if (argument_count > 0) instance = argument[0]; else instance = self;
+    var instance = argument_count > 0 ? argument[0] : self;
     with (instance) {
         var names = variable_instance_get_names(self);
         var str = "";

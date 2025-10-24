@@ -111,7 +111,7 @@ if (setting_hover_time > 0) {
 	draw_set_alpha(1);
 }
 	
-// draw_sprite_ext(sprite_get("css_rush"),(rush_toggle * 3) + (rush_button_timer ? 1+(rush_button_timer>0) : 0), x+rush_button_pos[0], y+rush_button_pos[1], 2, 2, 0, -1, 1);
+draw_sprite_ext(sprite_get("css_rush"),(rush_toggle * 3) + (rush_button_timer ? 1+(rush_button_timer>0) : 0), x+rush_button_pos[0], y+rush_button_pos[1], 2, 2, 0, -1, 1);
 //draw_sprite_ext(sprite_get("cssvoice_button"),(voice_toggle * 3) + (voice_button_timer ? 1+(voice_button_timer>0) : 0), x+voice_button_pos[0], y+voice_button_pos[1], 2, 2, 0, -1, 1);
 
 draw_sprite_ext(sprite_get("css_desc"),(info_button_timer ? 1+(info_button_timer>0) : 0), x+info_button_pos[0], y+info_button_pos[1], 2, 2, 0, -1, 1);

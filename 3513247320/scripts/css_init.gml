@@ -22,12 +22,17 @@ cpu_hover_init();
 
 init_alt_directives();
 
-synced_vars = split_synced_var(6, 2);
+// synced_vars = split_synced_var(6, 2);
+arbitrary_sync_number = 22771; // this is just a random number so that sync data doesn't trasnfer from other characters
+if(get_synced_var(player) < arbitrary_sync_number || get_synced_var(player) > arbitrary_sync_number + 2) set_synced_var(player, arbitrary_sync_number);
 
 rush_hovering_button = false;
 rush_button_pos = [180, 40];
 rush_button_timer = 0;
-rush_toggle = synced_vars[0];
+// rush_toggle = synced_vars[0];
+rush_toggle = get_synced_var(player) - arbitrary_sync_number;
+
+
 
 info_hovering_button = false;
 info_button_pos = [80, 12];
@@ -42,7 +47,7 @@ alt_desc = [
 	"Just an Alt - Mega Man 2",
 	"I'm more-so a Leo - Mega Man 3",
 	"SNIKT! - Mega Man 7",
-	"Hot to the Touch - Mega Man 8",
+	"Hot to the Touch - Mega Man 7",
 	"Not-so Shocking - Mega Man 1",
 	"Rock-Rock Man! - Mega Man 11",
 	"Atomic, no less! - Mega Man 2",
@@ -58,7 +63,7 @@ alt_desc = [
 	"Boing. - Mega Man 7",
 	"Mine! - Mega Man and Bass",
 	"Hedgehog's Prize - Mega Man 4",
-	"Hue Hue Hue! - ...Sonic CD?",
+	"Za Warudo! - Mega Man 2",
 	"Hmm...Nice. - Mega Man 2",
 	"FLAME ON! - Mega Man 11",
 	"Canadian Frog - Mega Man DOS",
@@ -125,7 +130,7 @@ add_alt("Chain Blast");
 add_alt("Wild Coil");
 add_alt("Remote Mine");
 add_alt("Ring Boomerang");
-add_alt("[DEAD OR ALIVE]");
+add_alt("Time Stopper");
 add_alt("Wooden Armor");
 add_alt("Blazing Torch");
 add_alt("Leaping Frog");

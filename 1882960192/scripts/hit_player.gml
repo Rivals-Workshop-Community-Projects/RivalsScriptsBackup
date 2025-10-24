@@ -1,10 +1,11 @@
 //hit_player - called when one of your hitboxes hits a player
 
 //Stun effect
-if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3 || 
+if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 || 
 	my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 1 || 
 	my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 2 ||
-	my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 9) {
+	my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 9 ||
+	my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
 	
 	spawn_hit_fx(other.x-40*other.spr_dir, other.y+6, stung2);
 	spawn_hit_fx(other.x+30*other.spr_dir, other.y-60, stung2);
@@ -14,16 +15,20 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 }
 
 //FSpecial bounce
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-7;
-	my_hitboxID.vsp = -2;
-	my_hitboxID.hsp = 0;
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num != 2) {
+	sound_play(sound_get("hammer-hit"));
 }
 
-if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-8;
-	my_hitboxID.vsp = -2;
+//NSpecial
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
+	my_hitboxID.hitbox_timer = my_hitboxID.length-6;
 	my_hitboxID.hsp = 0;	
+	my_hitboxID.vsp = 0;	
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num != 2) {
+	sound_play(sound_get("hammer-hit"));
+	sound_play(asset_get("sfx_absa_kickhit"), false, noone, 1, 0.8);
 }
 
 //DSpecial double jump restore

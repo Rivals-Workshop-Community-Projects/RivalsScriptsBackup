@@ -5,11 +5,113 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
     can_fast_fall = false;
-	if (window == 4 && window_timer > 12) {
-		can_strong = true;
-		can_special = true;
+	if window == 1 {	
+		if window_timer == 8 && !hitpause {
+			if attack == AT_FSPECIAL && dashactivated {
+			spawn_hit_fx(x-60*spr_dir, y-60, nspecialAfter);
+			}
+			if attack == AT_FSPECIAL_2 {
+			spawn_hit_fx(x-60*spr_dir, y-74, nspecialAfter);
+			spawn_hit_fx(x-60*spr_dir, y-44, nspecialAfter3);
+			}
+		}
+	}
+	
+	if window == 3 || window == 4 {
+		if !hitpause {
+			if attack == AT_FSPECIAL {
+			hsp = 5*spr_dir;
+			}
+			if attack == AT_FSPECIAL_2 {
+			hsp = 11*spr_dir;
+			}
+			if free hsp *= .85;
+			can_move = false;
+		}
+	} else hsp = clamp(hsp, -2, 2);
+	
+	if window == 5 && window_timer > 5 || window > 5 {
+		can_wall_jump = true;
+	}
+	
+	if 6 > window {
+		if !hitpause && free && stupidstall {
+			vsp = clamp(vsp, -3, 3);
+		}
+	}
+	
+	if window == 6 && free {
+		stupidstall = false;
+	}
+	
+	if window == 4 && window_timer == 1 && !hitpause {
+		if stupidstall	vsp = clamp(vsp, -100, 0);	
+		if attack == AT_FSPECIAL_2 {
+			spawn_hit_fx(x+30*spr_dir, y-86, stung2);
+			spawn_hit_fx(x+50*spr_dir, y-56, stung2);
+			spawn_hit_fx(x+30*spr_dir, y-16, stung2);
+			spawn_hit_fx(x+30*spr_dir, y-36, stung);
+			spawn_hit_fx(x+60*spr_dir, y-36, stung);
+			spawn_hit_fx(x+30*spr_dir, y-66, stung);
+			spawn_hit_fx(x+10*spr_dir, y-40, stung);
+			
+		} else {
+		spawn_hit_fx(x+30*spr_dir, y-86, nspecialAfter);
+		spawn_hit_fx(x+50*spr_dir, y-56, nspecialAfter);
+		spawn_hit_fx(x+30*spr_dir, y-16, nspecialAfter);
+		}
+	}
+	if window == 3 && window_timer == 1 {
+		if !hitpause && stupidstall && free {
+			vsp = clamp(vsp, -100, -2);	
+		}
+	}
+	if window == 4 {
+		if attack == AT_FSPECIAL_2 {
+			shake_camera(6, 6);
+		}
 	}
 }
+
+//FSpecial reflect
+if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && window == 4 {
+	with(pHitBox) { //checks for fspecial's hitbox
+		if orig_player_id == other && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && hbox_num == 2 {
+			with(pHitBox) if orig_player_id != other.player_id && type == 2 && place_meeting(x,y,other.id)
+			&& hit_priority != 0 && hit_priority != -1 { //enemy's projectile
+				if (!does_not_reflect
+					&& !unbashable
+					&& !plasma_safe
+					&& !other.burned
+					) {
+							with other.orig_player_id {
+								spawn_hit_fx(other.x, other.y, 302);
+								sound_play(sound_get("hammer-hit"), false, noone, .5, 1.2);
+								invincible = 1;
+								invince_time = 2;			
+								}
+							was_parried = true;
+							reflected = true;
+							hitbox_timer = 0;
+							player = other.player;
+							spr_dir = other.spr_dir;
+							hsp *= -1.2;
+							if other.attack == AT_FSPECIAL_2 {
+								damage *= 1.25;
+								kb_value *= 1.1;
+								hsp *= 1.1;
+							}
+							draw_xscale = spr_dir;
+							
+							if vsp > 0 vsp *= -.85;
+							other.burned = true;
+					}
+				
+			}
+		}
+	}
+}
+
 
 //DSpecial stuff
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
@@ -185,7 +287,6 @@ if (attack == AT_NSPECIAL){
 		can_jump = false;
 		if (window == 3 && window_timer == (get_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME))+1 ) ||
 		   (window == 5 && window_timer == (get_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX_FRAME))+1 ) {
-			wblastcharge = 0;
 			if !hitpause {
 				spawn_hit_fx(x+44*spr_dir, y-32, 111);
 				if window == 5 {
@@ -193,6 +294,12 @@ if (attack == AT_NSPECIAL){
 				}
 			}
 		}
+		
+		if (window == 3 && window_timer == (get_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME))+2) ||
+		(window == 5 && window_timer == (get_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX_FRAME))+1 )	{
+			wblastcharge = 0;
+		}	
+		
 		if (window == 3 && window_timer == (get_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH)) ) ||
 		   (window == 5 && window_timer == (get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)) ) { //endlag
 			window = 6;
@@ -277,8 +384,7 @@ if (attack == AT_USTRONG_2) {
 
 //NSpecial cooldown
 if (attack == AT_NSPECIAL) and (window == 7) and (window_timer == 3) {
-    move_cooldown[AT_NSPECIAL] = 35;
-	move_cooldown[AT_FSPECIAL] = 15;
+    move_cooldown[AT_NSPECIAL] = 65;
 }
 //DSpecial cooldown
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) and (window == 5) {
@@ -292,16 +398,10 @@ if (attack == AT_DSPECIAL_AIR) and (window == 5 || window == 6) {
 }
 
 //FSpecial cooldown
-if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) and (window == 4) and (window_timer == 3) {
+if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) and (window == 6) and (window_timer == 3) {
     move_cooldown[AT_FSPECIAL] = 40;
-    move_cooldown[AT_FSPECIAL_AIR] = 10;
-    move_cooldown[AT_NSPECIAL] = 15;
 	}
-//FSpecial cooldown
-if (attack == AT_FSPECIAL_AIR) {
-    move_cooldown[AT_FSPECIAL_AIR] = 10;
-	}
-	
+
 //Attacks deplete wblastcharge
 if wblastcharge > 0 {
 	//UStrong2
@@ -330,6 +430,18 @@ if wblastcharge > 0 {
 	}
 }
 
+//DStrong thing {
+if (attack == AT_DSTRONG) {
+	if window == 3 {
+		if left_down {
+			hsp = -7.5;
+		}
+		if right_down {
+			hsp = 7.5;
+		}
+	}
+}
+
 //USpecial stuff
 if (attack == AT_USPECIAL) {
 	if (window == 2 && window_timer == 1) {
@@ -354,12 +466,16 @@ if (attack == AT_USPECIAL) {
 	if (window >= 2) and (vsp > -6) and (6 > window) {
 			vsp -= .65;	
 	}
-	if (window == 6 && 40 > window_timer ){ 
+	if (window == 6 && 40 > window_timer) && !hitpause { 
 		vsp -= .25;
 	}
-	if (window == 5 && 4 > window_timer ){ 
+	if (window == 5 && 4 > window_timer ) && !hitpause{ 
 		vsp -= .15;
-	}	
+	}
+
+	if 7 > window && !hitpause && (left_down || right_down) {
+		vsp += .025;
+	}
 	
 	if (window == 6 && window_timer > 20) && !was_parried{
 		can_fast_fall = true;
@@ -411,10 +527,10 @@ if (attack == AT_BAIR && window == 2 && window_timer == 2 && (attack_down || str
 	sound_play(asset_get("sfx_may_arc_cointoss"));		
 	}
 
-if (attack == AT_FSPECIAL && window == 1 && window_timer == 9 && special_down && wblastcharge >= 35) {
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 5 && special_down && wblastcharge >= 35) {
 	attack = AT_FSPECIAL_2;
 	window = 1;
-	window_timer = 6;
+	window_timer = 5;
 	sound_play(asset_get("sfx_may_arc_cointoss"));
 	}
 	
@@ -446,14 +562,24 @@ if !hitpause {
 		spawn_base_dust(x+2*spr_dir, y, "dash");
 		sound_play(asset_get("sfx_zetter_downb"));
 	}
-	if attack == AT_FTHROW && window == 3 && window_timer == 4 {
-		spawn_base_dust(x+70*spr_dir, y, "dash_start", -spr_dir);
-		spawn_base_dust(x+2*spr_dir, y, "dash");
+	if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && window == 3 && window_timer == 2 {
+		spawn_base_dust(x+30*spr_dir, y, "dash_start", -spr_dir);
+		spawn_base_dust(x-10*spr_dir, y, "dash");
+		if (attack == AT_FSPECIAL_2) {
+		spawn_base_dust(x+90*spr_dir, y, "dash", -spr_dir);
+		}
 	}
-	if attack == AT_DSTRONG && window == 4 && window_timer == 4 {
-		spawn_base_dust(x-20, y, "dash_start", 1);
-		spawn_base_dust(x+20, y, "dash_start", -1);
+	if attack == AT_DSTRONG {
+		if (window == 3 && window_timer == 1 || window == 5 && window_timer == 1) {
+			spawn_base_dust(x-40, y, "dash", 1);
+			spawn_base_dust(x+40, y, "dash", -1);
+		}
+		if window == 7 && window_timer == 1 {
+			spawn_base_dust(x-20, y, "dash_start", 1);
+			spawn_base_dust(x+20, y, "dash_start", -1);
+		}
 	}
+	
 	if attack == AT_USTRONG && (window == 3) && window_timer == 1 {
 		spawn_base_dust(x-12, y, "dash", 1);
 		spawn_base_dust(x+12, y, "dash", -1);
@@ -476,54 +602,6 @@ if (attack == AT_TAUNT_2) and (window == 4) {
 		window_timer = 10;
 		}
 	}
-
-
-//FSpecial angling
-if (attack == AT_FSPECIAL) and (3 > window) and !(joy_pad_idle) {
-	if(joy_dir >= 30 && joy_dir <= 170) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 1);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -11);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR);
-		ligmaballs = 2;
-		}
-	else 
-	if(joy_dir <= 330 && joy_dir >= 190) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -1);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-		ligmaballs = 1;
-	}
-	else {
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR);
-		ligmaballs = 0;
-	}
-}
-
-//FSpecial2 angling
-if (attack == AT_FSPECIAL_2) and (3 > window) and !(joy_pad_idle) {
-	if(joy_dir >= 30 && joy_dir <= 170) {
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 1);
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -12);
-		reset_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR);
-		ligmaballs = 2;
-		}
-	else 
-	if(joy_dir <= 330 && joy_dir >= 190) {
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7.5);
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -1);
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-		ligmaballs = 1;
-		
-	}
-	else {
-		reset_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED);
-		reset_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED);
-		reset_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR);
-		ligmaballs = 0;
-	}
-}
 
 //FTilt RPS
 if (attack == AT_FTILT) {
@@ -746,74 +824,6 @@ if 	(attack == AT_NSPECIAL && window == 2 && window_timer > 0) {
 	else { 
 	showHUD = false;
 	}
-	
-//rune thingies
-/*
-if (attack == AT_UAIR && has_rune("A")) { //Rune A: Holding UAir makes you fall slower. Legacy rune because this became an actual mechanic in the main character lol
-	if window > 1 && vsp > 0 && attack_down {
-		window_timer = 9;
-		vsp = clamp(vsp, -100, 2);
-	}	
-}
-*/
-
-if has_rune("B") { //Rune B: NSpecial's first three stages slightly stun the opponent.
-	set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 13);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 16);
-	set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 16);
-	set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 20);
-	set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 20);
-	set_hitbox_value(AT_NSPECIAL, 7, HG_EXTRA_HITPAUSE, 20);
-}
-
-if has_rune("L") { //Rune L: Return of Old FSpecial(indestructible spiky ball).
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecialold"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, .75);
-	
-	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_AIR_FRICTION, 0);
-	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_FRICTION, 0);
-	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecialold2"));
-	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, .75);
-}
-
-if has_rune("H") { //Rune H: DStrong's quake hitbox is larger and stronger.
-	set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 5);
-	set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 3);
-}
-
-if (attack == AT_NSPECIAL && has_rune("D")){ //Rune D: NSpecial charges faster.
-    if (window == 2 && special_down && 65 > wblastcharge) {
-			wblastcharge += .5;
-			if wblastcharge == 1 || wblastcharge == 15 || wblastcharge == 35 || wblastcharge == 55 {
-				sound_play(asset_get("sfx_ori_ustrong_charge"), false, noone, 1, 1+(wblastcharge/35));		
-			}			
-	}
-}
-
-if has_rune("I") { //Rune I: FStrong has less startup.
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
-}
-
-if has_rune("K") { //Rune K: Every DAir hit spikes.
-	set_hitbox_value(AT_DAIR, 1, HG_ANGLE, -90);
-	set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 0);
-	set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_DAIR, 5, HG_KNOCKBACK_SCALING, .45);
-	set_hitbox_value(AT_DAIR, 5, HG_ANGLE, -90);
-	set_hitbox_value(AT_DAIR, 6, HG_ANGLE, -90);
-	set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 1);
-	set_hitbox_value(AT_DAIR, 5, HG_TECHABLE, 1);
-	set_hitbox_value(AT_DAIR, 6, HG_TECHABLE, 1);
-}
-
-if has_rune("O") { //Rune O: FTilt semi-spikes. (Ha gottem)
-	rps = -1;
-}
 
 #define spawn_base_dust
 ///spawn_base_dust(x, y, name, ?dir)

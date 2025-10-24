@@ -121,6 +121,8 @@ stung = hit_fx_create(sprite_get("nspecial_proj_after"), 28);
 stung2 = hit_fx_create(sprite_get("nspecial_proj3_after"), 34);
 ligmaballs = 0;
 shaboingboing = 0;
+stupidstall = true;
+dashactivated = true;
 
 //Character support
 miiverse_post = sprite_get("miiverse");
@@ -132,23 +134,29 @@ showHUD = false;
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 msgw_compat = sprite_get("msgwsprite");
-Lmao = has_rune("L");
-diag_portrait=sprite_get("diagportrait");
 pot_compat_variable = sprite_get("pot_compat");
-pot_compat_text = "The 'B'est Cake (Debatably)";
+pot_compat_text = " 'A'mazing Cake (Debatably)";
 mamizou_transform_spr = sprite_get("mamizou_compat");
 has_fail = true;
 fail_text = "Don't get too blue over this.";
+
+//rc
+kart_sprite = sprite_get("rc");
+kart_frames = 3;
+kart_anim_speed = .16;
+kart_anim_speed_scaling = 1.5;
+kart_engine_sound = 2;
+kart_drift_spr = 0;
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
 dracula_portrait2 = sprite_get("dracportrait2");
 var page = 0;
 dracula_speaker[page] = 0;
-dracula_text[page] = "Well, what do we have here... A human boy? Strange. You look different, although I had the impression that this world was free of those miserable insects.";
+dracula_text[page] = "Well, what do we have here... A human boy? Strange. I had the impression that this world was free of those miserable insects.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh, no. I'm an outsider, like you. Nice decor BTW.";
+dracula_text[page] = "Oh, nah. I'm an outsider, like you. Nice decor BTW.";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "Hmph... Native of this world or not, that makes you no less of a trespasser to my castle!";
@@ -157,13 +165,13 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "Unless, of course, you intend to join my army and swear servitude to me for eternity. Surely, you must be strong enough to have gotten past my guards on your way here, especially for such a young and puny age.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Eh. Nah, I'll pass. Actually, on that topic, I think you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
+dracula_text[page] = "...Eh. Nah, I'll pass. Actually, on that topic, I think you need to get better security. Honestly, skeletons and bats? And from what I've heard, you've been doing this over and over for centuries?";
 page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "Is it any wonder the whip men keep breaking into your house every time?";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare make a mockery of me and my army... You need to be taught a lesson, insolent child!";
+dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and make a mockery of me and my army... You need to be taught a lesson, insolent child!";
 page++;
 dracula_speaker[page] = 1;
 dracula_text[page] = "Oh, I guess we're doing it like that, then.[taunt] Bring it then, geezer!";

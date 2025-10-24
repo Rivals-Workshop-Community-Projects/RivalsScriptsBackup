@@ -119,19 +119,20 @@ if has_rock{
 	if !my_grab_id {
 		if (!nspec_lockout) {
 			if right_pressed - left_pressed != 0 spr_dir = right_pressed - left_pressed;
+			if special_down && nspec_charge_lockout nspec_lemon_timer = max(nspec_lemon_timer, 2);
 			
 			var lemons = 0;
 			with pHitBox if "lemon_weight" in self && orig_player_id == other lemons += lemon_weight;
 			//print_debug(lemons);
-			if nspec_lemon_timer == 1 && special_down {
-				if nspec_charge == 0{
+			if nspec_lemon_timer == 1 && special_down && !nspec_charge_lockout {
+				if nspec_charge == 0 {
 					sound_stop(nspec_sfx);
 					nspec_sfx = sound_play(sound_get("nspecial_charge_start"), false, false, 1, 1);
-					nspec_sfx_timer = nspec_sfx_length;
+					nspec_sfx_timer = nspec_sfx_length
 				}
 				if nspec_charge % 10 == 1 nspec_vfx = spawn_hit_fx(x + muzzle_pos[clamp(image_index % array_length(muzzle_pos), 0, array_length(muzzle_pos))][0], y + muzzle_pos[clamp(image_index % array_length(muzzle_pos), 0, array_length(muzzle_pos))][1], nspec_charge >= nspec_charge_max? muzzle_big_fx:(nspec_charge >= nspec_charge_mid? muzzle_mid_fx:muzzle_fx));
 				if instance_exists(nspec_vfx){
-					if nspec_charge{
+					if nspec_charge {
 						nspec_vfx.depth = depth;
 						nspec_vfx.spr_dir = spr_dir;
 						nspec_vfx.x = x + (muzzle_pos[clamp(image_index % array_length(muzzle_pos), 0, array_length(muzzle_pos))][0] * spr_dir);
@@ -155,6 +156,8 @@ if has_rock{
 							sound_stop(nspec_sfx);
 							nspec_sfx_timer = 0;
 							if bullet > 1 nspec_anim_timer = nspec_anim_length;
+							if bullet == 2 nspec_charge_lockout = 90;
+							if bullet == 3 nspec_charge_lockout = 120;
 						}
 					}
 					else if shield_pressed 
@@ -176,7 +179,7 @@ if has_rock{
 					}
 					else nspec_anim_timer = 0;
 				}
-				if special_pressed{
+				if special_pressed {
 					if up_down && !move_cooldown[AT_USPECIAL]{
 						has_rock = false;
 						fixed_set_attack(AT_USPECIAL);
@@ -209,7 +212,7 @@ if has_rock{
 			my_grab_id.hitstop_full = 20;
 			my_grab_id.invincible = true;
 			my_grab_id.invince_time = 2;
-			if !dspec_grab_timer || y + 100 + vsp > get_stage_data(SD_BOTTOM_BLASTZONE_Y) {
+			if !dspec_grab_timer || y + 200 + vsp > get_stage_data(SD_BOTTOM_BLASTZONE_Y) && !instance_exists(oTestPlayer) {
 				my_grab_id.invincible = false;
 				my_grab_id.invince_time = 0;
 				spawn_hit_fx(round(my_grab_id.x), round(my_grab_id.y + (my_grab_id.char_height / -2)), 302);
@@ -230,6 +233,7 @@ else{
 }
 
 if nspec_lockout nspec_lockout--;
+if nspec_charge_lockout nspec_charge_lockout--;
 
 hud_offset = abs(hud_offset) < 1? 0:round(hud_offset);
 

@@ -73,7 +73,7 @@ if !free && !freemd && instance_exists(uspec_rush) && "is_plat" in uspec_rush {
 if(!free && !standingonrush) can_recharge_fuel = true;
 if(state_cat == SC_HITSTUN || instance_exists(uspec_rush) && "is_plat" in uspec_rush && uspec_rush.article_state != "DESPAWN") can_recharge_fuel = false;
 
-if(can_recharge_fuel && uspec_fuel < uspec_max_fuel) uspec_fuel += 6 + 2 * !free;
+if(can_recharge_fuel && uspec_fuel < uspec_max_fuel) uspec_fuel += 5 + 2 * !free;
 uspec_fuel = clamp(uspec_fuel, 0, uspec_max_fuel);
 if(uspec_fuel >= uspec_max_fuel && !can_use_jet) can_use_jet = true;
 

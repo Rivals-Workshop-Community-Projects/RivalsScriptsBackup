@@ -6,7 +6,7 @@ switch article_state{
 		var check = 0;
 		var dist = 24;
 		while !place_meeting(x + (check * spr_dir), y, asset_get("par_block")) && check < dist check++;
-		if place_meeting(x + (check * spr_dir), y, asset_get("par_block")) || y <= get_stage_data(SD_TOP_BLASTZONE_Y){
+		if place_meeting(x + (check * spr_dir), y, asset_get("par_block")) || y <= get_stage_data(SD_TOP_BLASTZONE_Y) && !instance_exists(oTestPlayer) {
 			rush_pause = true;
 			hsp = 0;
 			vsp = 0;
@@ -16,12 +16,12 @@ switch article_state{
 			vsp = 0;
 			hsp *= .9;
 			if(abs(hsp) < 1) hsp = 0;
-			player_id.uspec_fuel -= 7;
+			player_id.uspec_fuel -= 6;
 		} else {
 			if(vsp < 0) player_id.uspec_fuel -= 40;
 			else player_id.uspec_fuel -= 20;
 		}
-		if article_timer == article_lifetime ||  y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200 || player_id.uspec_fuel <= 0{
+		if article_timer == article_lifetime ||  y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200 && !instance_exists(oTestPlayer) || player_id.uspec_fuel <= 0{
 			if orig_player_id.standingonrush{
 				orig_player_id.free = true;
 			}
@@ -42,7 +42,7 @@ switch article_state{
 		image_index += 1/4;
 		if image_index >= image_number{
 			vsp = pillar_ascent_speed;
-			if y < get_stage_data(SD_TOP_BLASTZONE_Y) - 200{
+			if y < get_stage_data(SD_TOP_BLASTZONE_Y) - 200 {
 				instance_destroy(self);
 				exit;
 			}

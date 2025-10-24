@@ -136,6 +136,7 @@ switch attack{
 	case AT_USPECIAL:
 		if !move_cooldown[AT_USPECIAL] && !standingonrush spawn_hit_fx(x, y - 16, HFX_ORI_ORANGE_SMALL);
 		uspec_started_grounded = !free;
+		uspec_shield_pressed = false;
 		accurate_megaman_alt = 1;
 		TCG_Kirby_Copy = 3;
 	break;

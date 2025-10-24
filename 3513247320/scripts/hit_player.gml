@@ -3,7 +3,7 @@ switch my_hitboxID.attack{
     if(my_hitboxID.force_flinch == 1 && hit_player_obj.state == PS_HITSTUN_LAND && !free)
     {
         var hsp_value = (point_distance(hit_player_obj.x, 0, x + 30 * spr_dir + hsp * 3, 0) + .5 * hit_player_obj.ground_friction * (8*8))/8; // (#*#))/#, # = number of frames to get to intended position
-        hit_player_obj.old_hsp = -hsp_value * hit_player_obj.spr_dir;
+        hit_player_obj.old_hsp = -hsp_value * -spr_dir;
     }
     break;
 	case AT_FSTRONG:

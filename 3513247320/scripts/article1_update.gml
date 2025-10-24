@@ -27,7 +27,7 @@ switch article_state{
 		image_index += 1/4;
 		if image_index >= image_number{
 			vsp = pillar_ascent_speed;
-			if y < get_stage_data(SD_TOP_BLASTZONE_Y) - 200{
+			if y < get_stage_data(SD_TOP_BLASTZONE_Y) - 200 && !instance_exists(oTestPlayer){
 				instance_destroy(self);
 				exit;
 			}
@@ -45,7 +45,7 @@ if article_state != "DESPAWN"{
 	if free vsp = clamp(vsp + grav, 0, max_fall);
 	else vsp = 0;
 	
-	if article_timer >= article_lifetime || y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200{
+	if article_timer >= article_lifetime || y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y) + 200 && !instance_exists(oTestPlayer) {
 		article_state = "DESPAWN";
 		mask_index = asset_get("empty_sprite");
 		image_index = 14;

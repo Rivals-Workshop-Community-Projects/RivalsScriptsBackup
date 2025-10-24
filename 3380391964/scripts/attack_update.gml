@@ -425,8 +425,8 @@ if (attack == AT_NSPECIAL) {
 						window = 4;
 						window_timer = 2;
 					}
-					hitbox_timer = length;
 					spawn_hit_fx(x, y, 301);
+					destroyed = true;
 				}
 			}
 		}
