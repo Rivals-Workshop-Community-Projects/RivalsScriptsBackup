@@ -7,3 +7,13 @@ if (state_cat == SC_HITSTUN) {
     got_hit_ticks = 0;
 
 got_hit_num = 1;
+
+peacock_has_airdash = 1;
+
+/*if (had_airdodge_pre_dash == true)
+{
+    has_airdodge = true;
+    had_airdodge_pre_dash = false;
+}*/
+
+last_hit = hit_player_obj;

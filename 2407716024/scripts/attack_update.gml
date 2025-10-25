@@ -1,114 +1,30 @@
 //B - Reversals
 //only DSPECIAL can be b-reversed out of a consecutive attack cancel.
-if (attack == AT_DSPECIAL || ((attack == AT_FSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) && peacock_consecutive_cancelled_attacks < 0 )) {
+if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) {
     trigger_b_reverse();
 }
 
-		fs_force_fs = false;
-/*
-	if (attack == AT_USPECIAL) {
-	  if (window == 1){
-        hsp = 0;
-        vsp = 0;
-        can_move = false;
-}
-        if (window == 2){
-        if(!joy_pad_idle){
-            teleport_sp = -80;
-            vsp = (dsin(joy_dir)*teleport_sp);
-            hsp = (dcos(joy_dir)*-teleport_sp);
-        }
-    }
-    if (window == 3){
-        hsp = 0;
-        vsp = 0;
-        can_wall_jump = true;
-    }
-    if (window == 3 && window_timer == 10 ) {
-    	if (free) {
-    		state = PS_PRATFALL;
-    	}
-    }
+fs_force_fs = false;
+
+
+if (attack == AT_FTILT){
+	if(window == 4 and window_timer >= get_window_value( AT_FTILT, 4, AG_WINDOW_CANCEL_FRAME )){
+		if(left_stick_pressed or right_stick_pressed){
+			window++;
+			window_timer = 0;
+		}
 	}
-    if (window > 3 && window < 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-        window++;
-        window_timer = 0;
-    }
-
-	if (attack == AT_USPECIAL) {
-	  if (window == 1){
-        hsp = 0;
-        vsp = 0;
-        can_move = false;
 }
-        if (window == 2){
-        if(!joy_pad_idle){
-            teleport_sp = -80;
-            vsp = (dsin(joy_dir)*teleport_sp);
-            hsp = (dcos(joy_dir)*-teleport_sp);
-        }
-    }
-    if (window == 3){
-        hsp = 0;
-        vsp = 0;
-        can_wall_jump = true;
-    }
-    if (window == 3 && window_timer == 10 ) {
-    	if (free) {
-    		state = PS_PRATFALL;
-    	}
-    }
-	}
-    if (window > 3 && window < 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-        window++;
-        window_timer = 0;
-    }
-
-	if (attack == AT_DATTACK) {
-move_cooldown[AT_DATTACK] = 12;
-    }
-*/
-
 //normal and special cancels
+
+
+
 var normal_cancel_value = 0;
 switch (attack) {
-    case AT_FTILT:
-        move_cooldown[AT_FTILT] = 10; //extra delay for the projectile
-        
-    case AT_DTILT:
-    	move_cooldown[AT_DTILT] = 2;
-        move_cooldown[AT_JAB] = 2;
-        move_cooldown[AT_UTILT] = 2;
-    
-    case AT_FTHROW: //jab3
-    	move_cooldown[AT_UTILT] = 2;
-    
-    case AT_JAB:
-        if (attack == AT_JAB && window == 4) { has_hit = false; has_hit_player = false; }
-        move_cooldown[AT_JAB] = 2;
-        //reset hit_player when starting a new jab
-		if (attack == AT_JAB && (window == 4 || window == 7)) {
-			has_hit_player = false;
-		}
 
-    case AT_UTILT:
-        //don't allow cancels on parry, or while using ground normals in the air for some reason.
-        if (!was_parried && !free) {
-            //allow special cancels, if not currently in late endlag frames.
-            if (window < get_attack_value(attack, AG_NUM_WINDOWS) || window_timer >= 2) { // get_window_value(attack, window, AG_WINDOW_LENGTH) / 3 ) {
-	            can_special = 1;
-	            //only allow normal and strong cancels on hit, and not during hitpause.
-	            if (has_hit_player && !hitpause && window_timer >= 2) {
-	                can_attack = 1;
-	                can_strong = 1;
-	                can_ustrong = 1;
-	            }
-            }
-        }
-    break;
     
     case AT_DAIR:
-    	move_cooldown[AT_DAIR] = 8;
+    	move_cooldown[AT_DAIR] = 12;
     	if (!hitpause && window == 2 && !down_hard_pressed && !fast_falling) vsp = min(vsp, 4);
     	
     	peacock_consecutive_cancelled_attacks = 0;
@@ -116,29 +32,22 @@ switch (attack) {
     
     case AT_UAIR:
 	
-		if (window == 2 && window_timer <= 10) {
+		if (window == 2 && window_timer <= 5) 
+		{
 			//halt movement
-			can_move = false;
-			hsp *= 0.8;
+			can_move = true;
+			hsp *= 1;
 			
 			//spawn avery
-			if (window_timer == 1 && !fast_falling) {
-				
-				var avery_exists = 0;
-				with (obj_article2) {
-					if (player_id == other.id) { avery_exists++; break; }
+			if (window_timer == 1 && !hitpause) 
+			{
+				if (!instance_exists(uair_borb)) 
+				{
+					uair_borb = instance_create(x + spr_dir * 28, y - 74, "obj_article2");
+					uair_borb.spr_dir = spr_dir;
 				}
-				if (!avery_exists) {
-					//instance_create(x, y - 80, "obj_article2").spr_dir = spr_dir;
-					instance_create(x + spr_dir * 28, y - 74, "obj_article2").spr_dir = spr_dir;	
-				}
-				
 			}
 		}
-		//else if (window == 3 && window_timer <= 1) {
-			//make the momentum pause a little less punishing
-		//	hsp = right_down - left_down;
-		//}
 		peacock_consecutive_cancelled_attacks = 0;
 	break;
 	
@@ -174,42 +83,7 @@ switch (attack) {
 		break;
 	}
 	break;
-	
-	/*
-	case AT_NAIR:
-		switch (window) {
-			case 2:
-				//do nothing
-			break;
-			case 3:
-			//case 5:
-			//case 6:
-				//allow endlag cancels if the attack hit
-				if (has_hit && !was_parried) {
-					can_attack = true;
-					can_special = true;
-					move_cooldown[AT_NAIR] = 2;
-				}
-				else {
-					can_attack = false;
-					can_special = false;
-				}
-			break;
-			
-			case 4:
-				//reset 'has_hit'
-				if (window_timer == 1) {
-					if (has_hit) {
-						vsp = min(vsp, -0.5);
-					}
-					
-					has_hit = false;
-					has_hit_player = false;
-				}
-			break;
-		}
-	break;
-		*/
+
 	case AT_NAIR:
 		switch (window) {
 			case 1:
@@ -218,13 +92,13 @@ switch (attack) {
 				//do nothing
 			break;
 			case 3:
-				peacock_used_nair = true;
+				peacock_used_nair = false;
 			//case 5:
 			//case 6:
 				//allow endlag cancels if the attack hit
 				if (has_hit && !was_parried && window_timer >= 3) {
-					can_attack = true;
-					can_special = true;
+					can_attack = false;
+					can_special = false;
 					//move_cooldown[AT_NAIR] = 2;
 				}
 				else {
@@ -239,26 +113,10 @@ switch (attack) {
 					if (has_hit) {
 						vsp = min(vsp, -0.5);
 					}
-					
-					has_hit = false;
-					has_hit_player = false;
 				}
 			break;
 		}
 	break;
-		
-	case AT_NTHROW: //nair2
-		if (window == 1 && window_timer == 1 && peacock_hit_with_nair) {
-			vsp = min(vsp, -0.5);
-		}
-	break;
-	
-    case AT_DTILT:
-        //jump cancel
-        if (has_hit_player && jump_down && !was_parried && (window >= 3 || (window == 2 && window_timer >= 4))) {
-            set_state(PS_JUMPSQUAT);
-        }
-    break;
 	
 	case AT_FAIR:
 		//can't move during active frames
@@ -277,19 +135,18 @@ switch (attack) {
 	    fs_force_fs = false;
 		if (window = 2 && window_timer == 6 || window == 3 && state_timer <= 90) {
 			spawn_hit_fx(x + 40 * spr_dir, y - 80, peacock_fx_fsmash_beam);
-		
 		}
 		
-		if (state_timer == 100){
+		if (state_timer == 100)
+		{
 			window = 4;
 			window_timer = 0;
 		}
 		
-		if(window = 5 && window_timer = 1){
-			sound_play(sound_get("fsmash_shot"));
-		}
+		if (window = 5 && window_timer = 1) sound_play(sound_get("fsmash_shot"));
 		
-		if (state_timer == 220){
+		if (state_timer == 220)
+		{
 			window = 6;
 			window_timer = 0;
 		}
@@ -302,9 +159,13 @@ switch (attack) {
 
 	break;
 	
+	case AT_DSTRONG:
+	hsp = (free) ? clamp(hsp, -6, 6) : clamp(hsp, -9, 9);
+	break;
 	
 	case AT_NSPECIAL:
-		if (window >= 2) move_cooldown[AT_NSPECIAL] = 60;
+		trigger_wavebounce();
+		if (window >= 2) move_cooldown[AT_NSPECIAL] = 100;
 	break;
 	
 	case AT_FSPECIAL:
@@ -314,8 +175,9 @@ switch (attack) {
 				peacock_fspecial_shots = 3;
 			break;
 			case 3:
-				if (window_timer == 1) {
-					var bullet = create_hitbox(attack, 1, x + 58 * spr_dir, y - 82);
+				if (window_timer == 1) 
+				{
+					var bullet = create_hitbox(attack, 1, x + 58 * spr_dir, y - 42);
 					spawn_hit_fx(x + 40 * spr_dir, y - 50, peacock_fx_fspecial_blast);
 					switch (random_func(player + 1, 5, true)) {
 						case 0:
@@ -348,32 +210,225 @@ switch (attack) {
 				}
 		}
 	break;
-	
-	case AT_USPECIAL_GROUND:
-		switch (window) {
-			case 2:
-				if (is_end_of_window()) {
-					if (joy_pad_idle) peacock_uspec_move_speed = 0;
-					else { 
-						peacock_uspec_move_speed = lengthdir_x(34, joy_dir);
-						
-						//peacock can teleport backwards now :)
 
-					}
-				}
+	case AT_USPECIAL_GROUND:
+	if (window == 1 && window_timer == 1) 
+	{
+		uspecial_free_start = (state == PS_ATTACK_AIR);
+	}
+	if (uspecial_free_start && !hitpause)
+	{
+		var glove = special_down;
+		can_fast_fall = false;
+		switch (window)
+		{
+			case 1:
+	        can_move = false;
+	        hsp = 0;
+			vsp = 0;
+	        set_attack_value(AT_USPECIAL_GROUND, AG_NUM_WINDOWS, 6);
+	        set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 7);
 			break;
+			
+			case 2:
+			can_move = false;
+	        hsp = 0;
+			vsp = 0;
+			break;
+			
 			case 3:
-				hsp = peacock_uspec_move_speed;
-				draw_indicator = false;//is_end_of_window();
+			can_move = false;
+	        hsp = 0;
+			vsp = 0;
+			uspecial_x_start = x;
+			uspecial_y_start = y;
+			if (window_timer == 6)
+			{
+	            var _dir = 
+	            	(joy_pad_idle)
+	            		? 90
+	            		: joy_dir % 360;
+	            var _total_distance = 200;
+	            var _inc = 10;
+	            var _test_x = x;
+	            var _test_y = y;
+	            var _ground_stick = false;
+	            var _last_open_x = x;
+	            var _last_open_y = y;
+	            for (var _dist = _inc; _dist <= _total_distance; _dist += _inc)
+            	{
+            		_test_x = x + _dist * dcos(_dir);
+            		_test_y = y - _dist * dsin(_dir);
+            		
+            		if (_ground_stick)
+            		{
+            			// If special is down this will snap to the nearest ground.
+            			if (!instance_place_ground(_test_x, _test_y, true))
+            			{
+            				if (_inc > 1) 
+            				{
+            					_dist -= _inc;
+            					_inc /= 10;
+            				}
+            				else 
+            				{
+            					_last_open_x = _test_x;
+            					_last_open_y = _test_y;
+            					set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 1);
+            					break;
+            				}
+            			}
+            			else{
+            				if(collision_rectangle(_test_x, _test_y, _test_x, _test_y, asset_get("par_jumpthrough"), true, true)){
+            					_last_open_x = _test_x;
+            					_last_open_y = _test_y;
+            					set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 1);
+            				}
+            			}
+            		}
+            		else
+            		{
+            			if (special_down)
+            			{
+            				// If special is down, stick to stage if possible.
+            				if (instance_place_ground(_test_x, _test_y, true))
+            				{
+            					
+            					if (_dir > 180)
+            					{
+            						// Should stop at first ground if moving down.
+	            					if (_inc > 1) 
+		            				{
+		            					_dist -= _inc;
+		            					_inc /= 10;
+		            				}
+		            				else break;
+            					}
+            					else _ground_stick = true;
+            				}
+            				else
+            				{
+            					_last_open_x = _test_x;
+	            				_last_open_y = _test_y;
+            				}
+            			}
+            			else
+            			{
+            				// Otherwise get furthest point that isn't in the ground.
+            				if (instance_place_ground(_test_x, _test_y))
+	            			{
+	            				// If special is down, stick to stage if possible.
+	            				if (_dir > 180)
+	            				{
+	            					// Should stop at first ground if moving down.
+	            					if (_inc > 1) 
+		            				{
+		            					_dist -= _inc;
+		            					_inc /= 10;
+		            				}
+		            				else break;
+	            				}
+	            			}
+	            			else
+	            			{
+	            				_last_open_x = _test_x;
+	            				_last_open_y = _test_y;
+	            			}
+            			}
+            			
+            		}
+            	}
+            	//ds_list_add(list_of_dots, [_last_open_x, _last_open_y]);
+            	//ds_list_add(list_of_dots, [x + _total_distance * dcos(_dir), y - _total_distance * dsin(_dir)]);
+	            x = _last_open_x;
+	            y = _last_open_y + 2;
+	        }
 			break;
-			case 4:
-				draw_indicator = true;
-				//add slight cooldown
-				move_cooldown[AT_USPECIAL] = 6;
+			
+			case 4: 
+			if (window_timer == 1)
+			{
+				if (free)
+				{
+					var _dir = darctan2(y - uspecial_y_start, x - uspecial_x_start);
+					hsp = 3 * dcos(_dir);
+					vsp = 3 * dsin(_dir);
+				}
+				else
+				{
+					set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 1);
+				}
+			}
+			can_move = true;
+			break;
+			
+			case 6:
+			if (window_timer == 3)
+			{
+				if (free)
+				{
+					var _dir = darctan2(y - uspecial_y_start, x - uspecial_x_start);
+					hsp = 3 * dcos(_dir);
+					vsp = 3 * dsin(_dir);
+					var _hole_fx = spawn_hit_fx(x - 20 * spr_dir, y - 10, peacock_fx_uspecial_hole);
+					_hole_fx.depth = depth + 1;
+					can_move = true;
+				}
+				else
+				{
+					set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 1);
+				}
+			}
+			else if (window_timer < 3)
+			{
+				hsp = 0;
+				vsp = 0;
+				can_move = false;
+			}
 			break;
 		}
-	 
-	 break;
+	}
+	else
+	{
+		set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 0); //no pratfall on the ground
+		var glove = (window < 5) ? special_down : false;
+		switch (window) 
+		{
+			case 1:
+			set_attack_value(AT_USPECIAL_GROUND, AG_NUM_WINDOWS, 6);
+			break;
+			
+			case 2:
+			if (is_end_of_window()) 
+			{
+				if (joy_pad_idle) peacock_uspec_move_speed = 0;
+				else peacock_uspec_move_speed = lengthdir_x(34, joy_dir);
+			}
+			break;
+			
+			case 3:
+			hsp = peacock_uspec_move_speed;
+			draw_indicator = false;
+			can_move = false;
+			break;
+			
+			case 4:
+			can_move = false;
+	        hsp = 0;
+			vsp = 0;
+			if (window_timer == 1 && glove) 
+			{
+				window = 7;
+				window_timer = 0;
+				set_attack_value(AT_USPECIAL_GROUND, AG_NUM_WINDOWS, 9);
+			}
+			draw_indicator = true;
+			//add slight cooldown
+			move_cooldown[AT_USPECIAL] = 6;
+			break;
+		}
+	}
+	break;
 	
 	case AT_USPECIAL:
 		switch (window) {
@@ -399,6 +454,7 @@ switch (attack) {
 				move_cooldown[AT_BAIR]     = 12;
 				move_cooldown[AT_UAIR]     = 12;
 				move_cooldown[AT_DAIR]     = 12;
+				
 			break;
 		}
 	 
@@ -418,15 +474,16 @@ switch (attack) {
             //halve hsp during startup
             switch (window) {
                 case 2:
-                    if (window_timer == 1) hsp = spr_dir * initial_dash_speed * 0.5; //hsp *= 0.5; 
+                if (window_timer == 1) hsp = spr_dir * 4 * 0.5; //hsp *= 0.5; 
                 break;
                 case 3:
-                	//allow jump cancel
-                	can_jump = true;
-                	//fix dash speed
-                    hsp = (dash_speed - 0.5) * spr_dir;
-                    //end after 30 frames if the player stops holding in the direction of the dash
-                    if (state_timer >= 30 && right_down - left_down != spr_dir) set_state(PS_IDLE_AIR);
+            	//allow jump cancel
+            	can_jump = true;
+            	//fix dash speed
+                hsp = (dash_speed +0.5) * spr_dir;
+                //end after 30 frames if the player stops holding in the direction of the dash
+                if (state_timer >= 30 && right_down - left_down != spr_dir) set_state(PS_IDLE_AIR);
+                //has_airdodge = had_airdodge_pre_dash;
                 break;
             }
             break;
@@ -446,9 +503,9 @@ switch (attack) {
         //allow all typical air cancels
         can_attack = true;
         can_special = true;
-        //can_jump = true;
+        can_jump = true;
         can_wall_jump = true;
-        can_shield = true;
+        can_shield = (window == 3 && window_timer > 6);
         //disable drifting
         can_move = false;
         //set dash speed
@@ -478,7 +535,6 @@ switch (attack) {
                     window_timer = 0;
                 }
             break;
-
         }
     break;
     
@@ -506,6 +562,8 @@ switch (attack) {
     }
     break;
 }
+
+
 
 
 
@@ -591,11 +649,136 @@ move_cooldown[AT_UTILT] = 4;
 }
 
 if (attack == AT_FSPECIAL){
-move_cooldown[AT_FSPECIAL] = 40;
+move_cooldown[AT_FSPECIAL] = 100;
 }
 
-if (attack == AT_DAIR){
-    can_fast_fall = false;
+/*if (attack == AT_FTILT){
+move_cooldown[AT_FTILT] = 40; 
+}*/
+
+
+
+
+//sfxs
+
+if attack == AT_USPECIAL_GROUND
+	if window == 7 && window_timer == 1 and !hitpause 
+		sound_play(asset_get("sfx_springgo"), false, noone, .7, .8);
+
+if attack == AT_USTRONG
+	if window == 3 && window_timer == 1 and !hitpause 
+		sound_play(asset_get("sfx_springgo"), false, noone, .7, .8);
+		
+if attack == AT_FSTRONG {
+	if window == 1 && window_timer == 1 and !hitpause  {
+		sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, .5, .7);
+	}	
+	if window == 1 and window_timer == 8 and !hitpause {
+		sound_play(asset_get("sfx_ice_shieldup"), false, noone, .8, 1.2);
+	}	
+	if window == 3 and window_timer == 1 and !hitpause {
+		sound_play(asset_get("sfx_ice_burst_up"), false, noone, .5, 1.5);
+	}	
+	if window == 4 and window_timer == 1 and !hitpause {
+		sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, .6, 1.3);
+	}	
+}
+if attack == AT_DSTRONG
+	if window == 2 && window_timer == 1 and !hitpause 
+		sound_play(sound_get("sfx_dstrong"), false, noone, .7, 1.05);
+		
+if attack == AT_DTILT {
+    if window == 1 && window_timer == 8 and !hitpause {
+    	sound_play(sound_get("sfx_spring"), false, noone, 1.1, .85);
+        sound_play(asset_get("sfx_syl_dstrong"), false, noone, 0.8, 1);
+    }
+}
+
+if attack == AT_FTILT {
+	if window == 2 && window_timer == 1 and !hitpause {
+		sound_play(asset_get("sfx_waveland_kra"), false, noone, .7, .8);
+	}
+	if window == 5 && window_timer == 1 and !hitpause  {
+		sound_play(asset_get("sfx_forsburn_consume_fail"), false, noone, 1, .8);
+	}
+}		
+		
+if attack == AT_UTILT {
+	if window == 1 && window_timer == 4 and !hitpause {
+		sound_play(sound_get("sfx_utilt"), false, noone, .6, 1);
+	}	
+}
+
+if attack == AT_DATTACK {
+	if window == 1 && window_timer == 3 and !hitpause {
+		sound_play(asset_get("sfx_ice_back_air"), false, noone, .6, 1);
+	}	
+}
+
+if attack == AT_FTHROW {
+	if window == 1 && window_timer == 4 and !hitpause {
+		sound_play(asset_get("sfx_swish_medium"), false, noone, .8, 1.5);
+	}	
+}
+
+if attack == AT_FAIR {
+	if window == 1 && window_timer == 13 and !hitpause {
+		sound_play(asset_get("sfx_forsburn_reappear"), false, noone, .8, .7);
+	}	
+}
+
+if attack == AT_FAIR {
+	if window == 1 && window_timer == 13 and !hitpause {
+		sound_play(asset_get("sfx_forsburn_reappear"), false, noone, .8, .7);
+	}	
+}
+
+if attack == AT_UAIR {
+	if window == 1 && window_timer == 1 and !hitpause {
+		sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, .8, 1.1);
+	}	
+}
+
+if attack == AT_BAIR {
+	if window == 1 && window_timer == 4 and !hitpause {
+		sound_play(asset_get("sfx_swish_weak"), false, noone, .7, 1.4);
+	}	
+}
+
+
+if attack == AT_DAIR {
+	if window == 1 && window_timer == 6 and !hitpause {
+		sound_play(asset_get("sfx_bite"), false, noone, .7, 1.4);
+		sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, .6, 1.3);
+	}	
+}
+
+if attack == AT_NAIR {
+	if window == 1 && window_timer == 4 and !hitpause {
+		sound_play(asset_get("sfx_kragg_throw"), false, noone, .6, .6);
+	}	
+		if window == 4 && window_timer == 5 and !hitpause {
+		sound_play(asset_get("sfx_buzzsaw_throw"), false, noone, .8, 1.2);
+		sound_play(asset_get("sfx_ice_shatter"), false, noone, .7, 1);
+
+	}	
+}
+
+if attack == AT_FSPECIAL {
+	if window == 1 && window_timer == 2 and !hitpause {
+
+		sound_play(asset_get("sfx_spin"), false, noone, .85, 1.15);
+	}	
+	if window == 1 && window_timer == 7 and !hitpause {
+		sound_play(asset_get("sfx_ell_utilt_loop"), false, noone, .7, .8);
+
+	}
+}
+
+if attack == AT_NSPECIAL {
+	if window == 1 && window_timer == 8 and !hitpause {
+		sound_play(asset_get("sfx_burnapplied"), false, noone, .7, 1.6);
+	}	
 }
 
 
@@ -647,7 +830,7 @@ if ((attack == AT_FTILT) && state_timer == 1) {
     }
 }
 
-if ((attack == AT_FTHROW) && state_timer == 1) {
+if ((attack == AT_FTHROW) && window == 1 && window_timer == 3) {
     snd_rng = random_func(0, 10, true);
     
     if (snd_rng == 0) {
@@ -954,8 +1137,37 @@ if ((attack == 49) && state_timer == 1) {
 }
 	}
 }
+#define instance_place_ground()
+var _x = argument[0], _y = argument[1];
+var _plats = argument_count > 2 ? argument[2] : false;
+var _returner = 
+		(collision_rectangle(
+			_x, _y, 
+			_x, _y, 
+			asset_get("par_block"), true, true) || 
+		(_plats &&
+		 collision_rectangle(
+			_x, _y, 
+			_x, _y, 
+			asset_get("par_jumpthrough"), true, true)));
+return _returner;
+
 #define is_end_of_window
 return window_timer + 1 > get_window_value(attack, window, AG_WINDOW_LENGTH);
 
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 6 and spr_dir == 1) or (right_down and state_timer <= 6 and spr_dir == -1) and (b_reversed == false)) {
+    	if(free){
+    	hsp = 4 * -spr_dir;
+    	vsp = -4;
+    	}
+    	//hsp *= -spr_dir;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 7) {
+    	b_reversed = false;
+	}
+}
 
 

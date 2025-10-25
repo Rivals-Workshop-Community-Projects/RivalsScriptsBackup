@@ -1,13 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-seasonal_override = false;
-color_overriden = -1;
-
-patch_ver = " ";
-patch_day = " ";
-patch_month = " ";
- 
 var num_alts = 28;
 var alt_cur = get_player_color(player);
  
@@ -35,12 +28,12 @@ alt_name[17]  = "Infamous";
 alt_name[18]  = "Gold";
 alt_name[19]  = "Pretty";
 alt_name[20]  = "Glass";
-alt_name[21]  = "Vampire";
-alt_name[22]  = "Relic";
-alt_name[23]  = "Pyromaniac";
-alt_name[24]  = "Pea(t)shooter";
-alt_name[25]  = "Spacepod";
-alt_name[26]  = "Cream Pea Pasta";
+alt_name[21]  = "Se-pea-a";
+alt_name[22]  = "Vampire";
+alt_name[23]  = "Relic";
+alt_name[24]  = "Pyromaniac";
+alt_name[25]  = "Pea(t)shooter";
+alt_name[26]  = "Creamy Pea Pasta";
 alt_name[27]  = "Imitated";
 
 if (get_player_color(player) == 7){

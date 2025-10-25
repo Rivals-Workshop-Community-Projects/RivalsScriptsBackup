@@ -1,6 +1,6 @@
 //bean packet
 var bean_packet_shader = c_gray;
-var bean_bomb_recharge_yscale = ((ceil((450-bean_bomb_recharge)/22.5))/20)
+var bean_bomb_recharge_yscale = ( ceil( ( 450 - bean_bomb_recharge ) / 22.5 ) ) / 20
 
 if (bean_bomb_recharge >= 450){
     bean_packet_shader = c_white;
@@ -13,7 +13,7 @@ draw_sprite_ext(sprite_get("packet_recharge"), 0, temp_x+96, temp_y-40, 1, bean_
 //torchwood packet
 
 var torchwood_packet_shader = c_gray;
-var torchwood_recharge_yscale = ((ceil((300-torchwood_recharge)/15))/20)
+var torchwood_recharge_yscale = ( ceil( ( 300 - torchwood_recharge ) / 15) ) / 20
 var torchwood_exists = false;
 
 with (obj_article1){
@@ -38,6 +38,6 @@ if (alert_text_timer > 0){
 	if (alert_text_timer mod 8 >= 4){
 		draw_text_colour(temp_x+112, temp_y - 56, "recharging...", c_red, c_red, c_red, c_red, 1);
 	}
-} else if (practice_mode && (bean_bomb_recharge < 450 || torchwood_recharge < 300)){
+} else if (practice_mode && ((bean_bomb_recharge < 450) || torchwood_recharge < 300)){
     draw_debug_text(temp_x+94, temp_y - 56, "Taunt to refresh")
 }

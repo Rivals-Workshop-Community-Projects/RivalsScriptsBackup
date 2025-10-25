@@ -13,3 +13,9 @@ if easter_egg_set = true {
         sound_play(sound_get("parry4"));
     }
 }
+
+if (enemy_hitboxID.attack == AT_DSPECIAL && enemy_hitboxID.player_id == id)
+{
+    invince_time = 0;
+    invincible = false;
+}

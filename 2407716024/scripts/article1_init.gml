@@ -10,6 +10,8 @@ uses_shader = false;                                 //Whether or not the articl
 
 charge_time = 0;
 
+left_x = 0;
+right_x = 0;
 
 stats_lvl1_time = 90;
 stats_lvl2_time = 210;
@@ -49,3 +51,7 @@ spr_pillar = sprite_get("dspecial_pillar");
 
 sfx_landed = noone;
 sfx_falling = noone;
+
+roller_freeze = false
+
+ownershit = player_id;

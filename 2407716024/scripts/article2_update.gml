@@ -8,6 +8,8 @@ case 0: //newly spawned
     free = true;
     state = 1;
     depth = player_id.depth;
+
+    sound_play(asset_get("sfx_buzzsaw_throw"));
 break;
 
 case 1:
@@ -34,7 +36,8 @@ case 1:
         hitbox_id.y = y + 20 + vsp;
         if (hitboxes_spawned <= 1) hitbox_id.hitbox_timer = 0;
     }
-    else {
+    else if (!player_id.hitpause && player_id.state != PS_HITSTUN)
+    {
         hitbox_respawn_timer++;
         if (hitbox_respawn_timer >= hitbox_max_respawn_timer) {
             //spawn new hitbox

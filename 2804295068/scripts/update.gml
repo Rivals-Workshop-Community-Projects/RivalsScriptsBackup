@@ -119,6 +119,7 @@ if (state == PS_PARRY){
 }
 
 // DAIR hover
+/*
 if (hover_used){
 	if (!free || state == PS_WALL_JUMP || state == PS_DEAD || state == PS_RESPAWN || state == PS_HITSTUN){
 		move_cooldown[AT_DAIR] = 0;
@@ -126,6 +127,7 @@ if (hover_used){
 	}
 	move_cooldown[AT_DAIR] = 2;
 }
+*/
 if (has_hit){
 	//if (hover_used) hover_used = false;
 	if (hover_pratfall) hover_pratfall = false;
@@ -150,7 +152,8 @@ if (hover_pratfall){
 
 //runes
 if (has_rune("A")){
-	set_attack_value(AT_FTILT, AG_CATEGORY, 2);
+	bean_bomb_recharge++;
+	torchwood_recharge++;
 }
 
 if (has_rune("B")){
@@ -198,12 +201,18 @@ if (has_rune("K")){
 	set_num_hitboxes(AT_EXTRA_2, 1);
 }
 
-if (has_rune("M")){
-	if (bean_bomb_recharge < 450){
-		bean_bomb_recharge = 450;
-	}
-	if (torchwood_recharge < 300){
-		torchwood_recharge = 300;
+
+with (oPlayer) {
+	if (snow_pea_chill_id == other){
+		snow_pea_chill_time--;
+		x -= ((abs(hsp) + air_friction) * sign(hsp)) / 2;
+		y -= (vsp - hitstun_grav) / 2;
+		hitstun += .5;
+		hitstun_full += .5;
+		if (snow_pea_chill_time <= 0 || state_cat != SC_HITSTUN || burned){
+			snow_pea_chill_id = noone;
+			snow_pea_chill_time = 0;
+		}
 	}
 }
 
@@ -335,4 +344,10 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
             move_cooldown[AT_EXTRA_3] = 30;
         }
     }
+}
+
+//rogue
+if (get_gameplay_time() == 10) {
+  ror_attacks_uspecial = [AT_USPECIAL, AT_USPECIAL_2];
+  ror_attacks_taunt = [AT_TAUNT, AT_TAUNT_2, AT_EXTRA_2];
 }

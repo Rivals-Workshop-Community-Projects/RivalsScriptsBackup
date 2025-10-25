@@ -56,6 +56,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 15);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);

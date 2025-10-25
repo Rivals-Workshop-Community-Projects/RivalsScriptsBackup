@@ -1,4 +1,4 @@
-set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open"));
+/*set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open"));
 set_attack_value(AT_PHONE, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_PHONE, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_PHONE, AG_CATEGORY, 2);
@@ -25,4 +25,4 @@ set_window_value(AT_PHONE, 2, AG_WINDOW_ANIM_FRAME_START, 17);
 
 set_window_value(AT_PHONE, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 18);
+set_window_value(AT_PHONE, 3, AG_WINDOW_ANIM_FRAME_START, 18);*/

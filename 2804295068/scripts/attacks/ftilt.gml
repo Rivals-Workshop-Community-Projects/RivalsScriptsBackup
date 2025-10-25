@@ -3,12 +3,12 @@ set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("throw"));
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 11);
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 3);
@@ -23,7 +23,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_CANCEL_FRAME, 0);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_SFX, 1);

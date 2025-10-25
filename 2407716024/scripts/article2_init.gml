@@ -11,10 +11,10 @@ hitbox_respawn_timer = 0;
 hitbox_max_respawn_timer = 6;
 
 hitboxes_spawned = 0;
-max_hitboxes_spawned = 2;
+max_hitboxes_spawned = 5;
 
 
 //
-ignores_walls = false;
+ignores_walls = true;
 can_be_grounded = true;
 uses_shader = true;

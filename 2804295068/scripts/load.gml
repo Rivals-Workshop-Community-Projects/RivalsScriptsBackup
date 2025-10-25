@@ -62,7 +62,7 @@ sprite_change_offset("final_smash", 32, 31, true);
 
 sprite_change_offset("wait", 16, 47, true);
 sprite_change_offset("wait2", 16, 47, true);
-sprite_change_offset("plat", 48, 46);
+sprite_change_offset("plat", 24, 23, true);
 
 sprite_change_offset("pea", 16, 16);
 sprite_change_offset("pea_torched", 48, 16);
@@ -73,9 +73,7 @@ sprite_change_offset("torchwood_mask", 24, 30);
 sprite_change_offset("torchwood_exhaust", 24, 30);
 
 sprite_change_offset("pea_big", 32, 32);
-sprite_change_offset("pea_torched_big", 64, 64);
-sprite_change_offset("wrench", 24, 24);
-sprite_change_offset("wrench_torched", 56, 24);
+sprite_change_offset("pea_torched_big", 64, 32);
 
 sprite_change_offset("kirby", 32, 62);
 sprite_change_offset("helpless", 16, 47, true);
@@ -84,3 +82,9 @@ sprite_change_offset("hud", 0, -2);
 sprite_change_offset("hudhurt", 0, -2);
 sprite_change_offset("offscreen", 16, 18);
 sprite_change_offset("cosmic_offscreen", 16, 18);
+
+sprite_change_offset("wrench", 24, 24);
+sprite_change_offset("wrench_torched", 56, 24);
+sprite_change_offset("unused_snowpea", 32, 31, true);
+sprite_change_offset("unused_pea_snowy", 16, 16);
+sprite_change_offset("unused_snowy_particles", 16, 16);

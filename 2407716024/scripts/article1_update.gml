@@ -20,7 +20,7 @@ state_timer++;
 
 
 //destroy if peacock doesn't complete the startup
-if (state < 8) destroy_if_peacock_is_stunned();
+//if (state < 8) destroy_if_peacock_is_stunned();
 
 
 switch (state) {
@@ -139,18 +139,33 @@ case 4:
 break;
 
 case 5: //charge: level 1
+    left_x = x - 30;
+    right_x = x + 30;
+    
     if (charge_time >= stats_lvl1_time) { //adjust fall time in article1_init.gml
         article_set_state(6);
         image_index = 1;
         power_level = 2;
     }
+    //increase timer
+    charge_time++;
+break;
 case 6: //charge: level 2
+    left_x = x - 60;
+    right_x = x + 60;
+    
     if (charge_time >= stats_lvl2_time) {
         article_set_state(7);
         image_index = 2;
         power_level = 3;
     }
+    //increase timer
+    charge_time++;
+break;
 case 7: //charge: level 3
+    left_x = x - 94;
+    right_x = x + 94;
+
     if (charge_time >= stats_lvl3_time) {
         article_set_state(8);
     }
@@ -177,7 +192,8 @@ case 9: //fall
     //set fall stats
     if (state_timer == 1) {
         
-        switch (power_level) {
+        switch (power_level) 
+        {
             case 1: hitbox_y_offset = 15; break;
             case 2: hitbox_y_offset = 30; break;
             case 3: hitbox_y_offset = 45; break;
@@ -185,6 +201,8 @@ case 9: //fall
         hitbox_x = x;
         hitbox_y_target = y;
         hitbox_id = create_hitbox(AT_DSPECIAL, power_level, x, -hitbox_y_offset);
+        //hitbox_id.can_hit_self = true;
+        hitbox_id.player = ownershit.player;
     }
     else {
         x = hitbox_x;
@@ -255,6 +273,8 @@ case 20: //fall
         hitbox_y_target = y;
         power_level = 4;
         hitbox_id = create_hitbox(AT_DSPECIAL, power_level, x, -hitbox_y_offset);
+        //hitbox_id.can_hit_self = true;
+        hitbox_id.player = ownershit.player;
         roller_segment_x = [0, 0, 0, 0];
         roller_segment_y = [0, 0, 0, 0];
         roller_segment_hsp = [0, 0, 0, 0];
@@ -295,10 +315,20 @@ case 21: //land
         hitbox_id.x = hitbox_x;
         hitbox_id.y = hitbox_y - hitbox_y_offset;
         hitbox_id.destroyed = true;
+        sound_play(sound_get("avery_sqwuak"));
+        
+        	var splat = random_func( player_id.player + 5, 2, false);
+        
+        	if splat && place_meeting(x,y,oPlayer){
+        	
+        		sound_play(sound_get("splat"));
+        }
+        
     }
     
     //spawn landing hitbox
-    create_hitbox(AT_DSPECIAL, 5, x, y - hitbox_y_offset);
+    var _hb = create_hitbox(AT_DSPECIAL, 5, x, y - hitbox_y_offset);
+    _hb.can_hit_self = true;
     
     if (sfx_landed != noone) sound_play(sfx_landed);
     
@@ -314,8 +344,13 @@ break;
 case 22: //wryyyyy
     roller_grab = is_roller_grabbing_any_player();
     if (state_timer == 1 && roller_grab) {
-        sound_play(sound_get("avery_wryyy"));
+        
+        
+       roller_freeze = true;
     }
+    if state_timer > 60{
+    	if state_timer = 61 && roller_grab
+    sound_play(sound_get("avery_wryyy"));
     roller_avery_image_index += 0.2 - (roller_grab * 0.075);
     if (roller_avery_image_index) >= 13 {
         //make avery do his thing, only if the roller hit someone
@@ -323,9 +358,12 @@ case 22: //wryyyyy
         //otherwise, skip to an ending animation state
         else { 
             article_set_state(31);
-            sound_play(sound_get("avery_sqwuak"));
+           // sound_play(sound_get("avery_sqwuak"));
         }
         roller_avery_image_index = 12.8;
+    }
+    if !roller_grab
+     article_set_state(31);
     }
 break;
 
@@ -344,7 +382,8 @@ case 28:
         case 9:
             //spawn hitbox
             roller_shake(4, 90);
-            create_hitbox(AT_DSPECIAL, 6, x, y - hitbox_y_offset);
+            var _hb = create_hitbox(AT_DSPECIAL, 6, x, y - hitbox_y_offset);
+            _hb.can_hit_self = true;
         break;
     }
     roller_avery_image_index += 0.25;
@@ -373,7 +412,8 @@ case 30: //hrahhhh
         break;
         case 19:
             roller_shake(6, 90);
-            create_hitbox(AT_DSPECIAL, 6, x, y - hitbox_y_offset);
+            var _hb = create_hitbox(AT_DSPECIAL, 6, x, y - hitbox_y_offset);
+            _hb.can_hit_self = true;
         break;
         case 22:
         case 22.25:
@@ -395,6 +435,7 @@ case 32: //prepare to jump
     roller_avery_image_index = 23;
     if (state_timer >= 10 + (roller_grab * 10)) {
         article_go_to_next_state();
+        roller_freeze = false
     }
 break;
 
@@ -405,8 +446,12 @@ case 33: //ascend with gorb
         roller_fall_apart();
         //sound_play(sound_get("is_that_a_jojo_reference"));
         
+        
         //spawn final hitbox
-        create_hitbox(AT_DSPECIAL, 7, x, y - hitbox_y_offset);
+        if roller_grab {
+        var _hb = create_hitbox(AT_DSPECIAL, 7, x, y - hitbox_y_offset);
+        _hb.can_hit_self = true;
+        }
     }
     roller_translate_gravity();
     //animate avery
@@ -425,37 +470,17 @@ break;
 if (state >= 21 && state <= 32) {
     roller_translate_center();
     if (state >= 22) roller_update_grabbed_player_array_efficient();
-    //disable peacock's attacks across the board
-    
-    //lock the article's position
-    x = hitbox_x;
-    
-    with (player_id) {
-        move_cooldown[AT_JAB] = 2;
-        move_cooldown[AT_DATTACK] = 2;
-        move_cooldown[AT_FTILT] = 2;
-        move_cooldown[AT_UTILT] = 2;
-        move_cooldown[AT_DTILT] = 2;
-        move_cooldown[AT_FSTRONG] = 2;
-        move_cooldown[AT_USTRONG] = 2;
-        move_cooldown[AT_DSTRONG] = 2;
-        move_cooldown[AT_NAIR] = 2;
-        move_cooldown[AT_FAIR] = 2;
-        move_cooldown[AT_BAIR] = 2;
-        move_cooldown[AT_UAIR] = 2;
-        move_cooldown[AT_DAIR] = 2;
-        move_cooldown[AT_NSPECIAL] = 2;
-        move_cooldown[AT_FSPECIAL] = 2;
-    }
 }
-
 
 if (destroy) { sound_stop(sfx_falling); instance_destroy(); }
 
-
-
-
-
+if (state >= 5 && state <= 7 && player_id.state == PS_HITSTUN &&
+    player_id.x > left_x && player_id.x < right_x)
+{
+	ownershit =	player_id.last_hit;
+    state = 8;
+	state_timer = 0;
+}
 
 #define article_set_state
 /// @param {undefined} arg_state

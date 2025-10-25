@@ -47,29 +47,30 @@ sprite_change_offset("fair", 54, 110);
 sprite_change_offset("bair", 104, 128);
 sprite_change_offset("uair", 76, 128);
 sprite_change_offset("dair", 76, 128);
-sprite_change_offset("fstrong", 74, 94);
+sprite_change_offset("fstrong", 96, 94);
 sprite_change_offset("ustrong", 78, 158);
 sprite_change_offset("dstrong", 46, 94);
 sprite_change_offset("nspecial", 60, 94);
 sprite_change_offset("fspecial", 52, 92);
 sprite_change_offset("uspecial", 78, 128);
+sprite_change_offset("uspecial_air", 78, 128);
 sprite_change_offset("dspecial", 48, 94);
 sprite_change_offset("taunt", 46, 158);
 sprite_change_offset("phone_open", 46, 158);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("ftilt_proj", 14, 32);
+sprite_change_offset("ftilt_proj", 14, 22);
 sprite_change_offset("dair_proj", 14, 32);
 sprite_change_offset("dair_proj_mask", 14, 32);
 sprite_change_collision_mask( "dair_proj_mask", true, 1, 0, 0, 0, 0, 0);
 sprite_change_offset("fair_shot", 14, 32);
 sprite_change_offset("fair_shot_mask", 14, 32);
 sprite_change_offset("uair_proj", 48, 48);
-sprite_change_offset("bomb_walk", 52, 32);
-sprite_change_offset("bullet1", 52, 32);
-sprite_change_offset("bullet2", 52, 32);
-sprite_change_offset("bullet3", 52, 32);
+sprite_change_offset("bomb_walk", 54, 76);
+sprite_change_offset("bullet1", 52, 82);
+sprite_change_offset("bullet2", 52, 82);
+sprite_change_offset("bullet3", 52, 82);
 sprite_change_offset("fspecial_blast", 14, 32);
 sprite_change_offset("bullet_mask", 52, 32);
 sprite_change_offset("dspecial_roadroller", 42, 70);
@@ -119,7 +120,11 @@ sprite_change_offset("fsmash_hurt", 68, 126);
 
 sprite_change_offset("miiverse_post_peacock", 60, 30);
 
-
+//misc
+sprite_change_offset("boom_hfx", 100, 100);
+sprite_change_offset("bigboom_hfx", 100, 100);
+sprite_change_offset("pow_hfx", 100, 100);
+sprite_change_offset("bigpow_hfx", 100, 100);
 
 /*
 var i;
@@ -235,7 +240,7 @@ sprite_change_offset("01_fair", 54, 110);
 sprite_change_offset("01_bair", 104, 128);
 sprite_change_offset("01_uair", 76, 128);
 sprite_change_offset("01_dair", 76, 128);
-sprite_change_offset("01_fstrong", 74, 94);
+sprite_change_offset("01_fstrong", 96, 94);
 sprite_change_offset("01_ustrong", 78, 158);
 sprite_change_offset("01_dstrong", 46, 94);
 sprite_change_offset("01_nspecial", 60, 94);
@@ -281,3 +286,4 @@ sprite_change_offset("01_dspecial_block_lv1_0_die",12,16);
 
 sprite_change_offset("01_fsmash", 68, 126);
 
+sprite_change_offset("dash_icon", 0, 0);

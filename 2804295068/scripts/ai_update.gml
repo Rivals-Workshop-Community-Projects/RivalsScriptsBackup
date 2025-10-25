@@ -82,7 +82,7 @@ if (get_training_cpu_action() == CPU_FIGHT){
 		
 		// charging fstrong
 		if (attack == AT_FSTRONG && window == 1){
-			if (y < ai_target.y) && (ai_target.free){
+			if !(y-40 < ai_target.y && ai_target.y < y+8) && (ai_target.free){
 				strong_down = true;
 			}
 		}
@@ -91,20 +91,21 @@ if (get_training_cpu_action() == CPU_FIGHT){
 	if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) 
 	&& (ai_attack_timer >= ai_attack_time){
 		// start nspecial
-		if (point_distance(x,y,ai_target.x,ai_target.y) > 300){
-			if (nspecial_charge < 4) && (move_cooldown[AT_NSPECIAL] == 0) && (ai_recovering == false)
-			&& !((x-120 < ai_target.x && ai_target.x < x+120) || !(y-64 < ai_target.y && ai_target.y < y+64)){
-				up_down = false;
-				down_down = false;
-				left_down = false;
-				right_down = false;
-				special_pressed = true;
-				special_down = true;
-				print("neutral special");
-				ai_attack_timer = 0;
-			}
-		} else {
-		
+		if (point_distance(x,y,ai_target.x,ai_target.y) > 300) && (nspecial_charge < 4) 
+		&& (move_cooldown[AT_NSPECIAL] == 0) && (ai_recovering == false)
+		&& !((x-120 < ai_target.x && ai_target.x < x+120) || !(y-64 < ai_target.y && ai_target.y < y+64)){
+			up_down = false;
+			down_down = false;
+			left_down = false;
+			right_down = false;
+			special_pressed = true;
+			special_down = true;
+			print("neutral special");
+			ai_attack_timer = 0;
+		}
+		if (point_distance(x,y,ai_target.x,ai_target.y) > 128) 
+		&& (point_distance(x,y,ai_target.x,ai_target.y) < 400){
+
 			// place torchwood
 			if torchwood_recharge >= 292
 			&& (collision_point(floor(x+56*spr_dir),floor(y),asset_get("par_block"),1,1)
@@ -135,21 +136,18 @@ if (get_training_cpu_action() == CPU_FIGHT){
 					}
 				}
 			}
-			if (point_distance(x,y,ai_target.x,ai_target.y) < 300){
-				// summon bean
-				if bean_bomb_recharge >= 434 && torchwood_recharge >= 240 
-				&& (ai_recovering == false){
-					up_down = false;
-					down_down = false;
-					if (x > ai_target.x) left_down = true;
-					else right_down = true;
-					special_pressed = true;
-					print("forward special");
-					ai_attack_timer = 0;
-				}
+			// summon bean
+			if bean_bomb_recharge >= 434 && torchwood_recharge >= 240 
+			&& (ai_recovering == false){
+				up_down = false;
+				down_down = false;
+				if (x > ai_target.x) left_down = true;
+				else right_down = true;
+				special_pressed = true;
+				print("forward special");
+				ai_attack_timer = 0;
 			}
 		}
-		
 		
 		//with torchwood
 		var torchwood_exists = false;
@@ -162,7 +160,7 @@ if (get_training_cpu_action() == CPU_FIGHT){
 					if (x-32 < other.x && other.x < x+32
 					&& y-200 < other.y && other.y < y+32)
 					&& ((other.x-48 < ai_target.x && ai_target.x < other.x+48 
-					&& ai_target.y < other.y-40) || (ai_recovering == true)){
+					&& (other.y-300 < ai_target.x && ai_target.y < other.y-40)) || (ai_recovering == true)){
 						up_down = true;
 						special_pressed = true;
 						print("torchwood up special");
@@ -188,7 +186,8 @@ if (get_training_cpu_action() == CPU_FIGHT){
 								ai_attack_timer = 0;
 							
 							// fstrong
-							} else if (x-256 < ai_target.x && ai_target.x < x+256){
+							} else if (x-256 < ai_target.x && ai_target.x < x+256)
+							&& !(x-32 < ai_target.x && ai_target.x < x+32){
 								up_down = false;
 								down_down = false;
 								up_strong_pressed = false;

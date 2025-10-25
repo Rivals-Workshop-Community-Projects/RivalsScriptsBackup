@@ -1,0 +1,2 @@
+draw_sprite_ext(sprite_get("hud_player_arrow"), 0, x, y - 120, 1, 1, 0, get_player_hud_color(player), 1);
+if get_match_setting(SET_HITBOX_VIS) draw_sprite_ext(mask_index, 0, x, y, 2, 2, 0, c_white, .5);

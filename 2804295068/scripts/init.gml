@@ -129,6 +129,7 @@ switch get_player_color(player){
 }
 
 firepea_sprite = sprite_get("pea_torched");
+pea_sprite = sprite_get("pea");
 nspecial_charge = 0;
 boom = false;
 bean_x = 0;
@@ -138,8 +139,9 @@ bean_bomb_recharge = 0;
 torchwood_recharge = 0;
 alert_text_timer = 0;
 
+uspecial_iasa = false;
 airraid_used = false;
-hover_used = false;
+//hover_used = false;
 hover_pratfall = false;
 hover_store_jump = -1;
 wait_time = 600;
@@ -150,6 +152,9 @@ wait_what = 0;
 playtest = (object_index == oTestPlayer);
 practice_mode = false;
 
+snow_pea_chill_id = noone;
+snow_pea_chill_time = 0;
+snowy_particles = hit_fx_create( sprite_get("unused_snowy_particles"), 12 );
 kirbyability = 16
 copy_ability_id = 64
 fs_char_chosen_final_smash = "custom";
@@ -157,14 +162,18 @@ fs_char_portrait_y = 110;
 mamizou_transform_spr = sprite_get("helpless");
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Roasted Sugar Snap Peas"
+scoop_personalized_flavour_name = "Don't Pea in the Snow";
+scoop_personalized_flavour_sprite = sprite_get("snow_pea_cone");
 arena_title = "The Garden's First Defender";
+miiverse_post = sprite_get("post_pea"); 
+tcoart = sprite_get("peashootertco"); 
 swallowed = 0;
 enemykirby = 0;
 knight_compat_dream = 
     [
         "...peas...was never an option...",
         "...peased...to meet you...",
-        "...many...forms..."
+        "So, the peashooter has many forms: fire, ice, electric, shoot, even shadow. But recently, there's been new mods that really need to be added to the game. So there's three and the first one is bendy, he shoots wrenches, look at this. Oh that's sick, but why not ink? Dude wait, that's actually a good idea, but look at this one. Oh they should actually add that. Yeah, the game would go viral but look at this, it's John Pork. What? I'm just kidding, actually look at this one. Is that an enderman? Yeah, it's an ender pea, it shoots minecraft blocks."
     ]
 
 user_event(0);

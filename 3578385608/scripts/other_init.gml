@@ -1,0 +1,12 @@
+breaking_bad_handler = noone;
+breaking_bad_nitrogen = 0;
+breaking_bad_lily = 0;
+breaking_bad_meth_stack = 0;
+breaking_bad_meth_pos_timer = 0;
+breaking_bad_meth_neg_timer = 0;
+breaking_bad_old_damage = 0;
+breaking_bad_walt_fall = 0;
+breaking_bad_freezable = 0;
+breaking_bad_freezable_times = 0;
+breaking_bad_acid_pratland = 0;
+breaking_bad_acid_initial_pratland = 0;

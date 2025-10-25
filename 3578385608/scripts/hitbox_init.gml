@@ -1,0 +1,1 @@
+platcheck = -1;

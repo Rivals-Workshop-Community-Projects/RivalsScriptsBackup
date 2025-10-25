@@ -27,13 +27,21 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_FTILT){
-	if (window == 2 || window == 5) && (window_timer == 1){
-		move_cooldown[AT_FTILT] = 30
+	if (window == 2 || window == 5){
+		move_cooldown[AT_FTILT] = 35;
 	}
 	if (window == 3){
         if (is_attack_pressed(DIR_RIGHT) - is_attack_pressed(DIR_LEFT) == -spr_dir){
 		    set_attack( AT_EXTRA_1 );
 	    }
+	}
+}
+if (attack == AT_FSPECIAL_2){
+	if (window == 2){
+		move_cooldown[AT_FSPECIAL_2] = 45;
+	}
+	if (window == 3) && (window_timer >= 15){
+		iasa_script();
 	}
 }
 
@@ -76,21 +84,10 @@ if (attack == AT_BAIR){
 }
 
 if (attack == AT_DAIR){
-	if (window == 1 || window >= 4){
-        can_fast_fall = true;
-    }else{
-	    can_fast_fall = false;
-	}
+	if (window == 1 || window >= 4) can_fast_fall = true;
+    else can_fast_fall = false;
 	if (window == 2){
         can_wall_jump = true
-		/*
-		if (left_down && !right_down){
-            spr_dir = -1
-        }
-		if (right_down && !left_down){
-            spr_dir = 1
-        }
-		*/
 		if (attack_pressed){
 			sound_stop(asset_get("sfx_spin_longer"));
 			window = 3;
@@ -110,6 +107,20 @@ if (attack == AT_DAIR){
 				window_timer = 0;
 			}
 		}
+		
+		/*
+		if (left_down && !right_down){
+            spr_dir = -1
+        }
+		if (right_down && !left_down){
+            spr_dir = 1
+        }
+		if (up_down && special_pressed){
+			set_attack( AT_USPECIAL );
+			window_timer = 0;
+			window = 1;
+		}
+		*/
 	}
 	if (window == 2 || window == 3){
 		vsp = -0.5;
@@ -319,9 +330,9 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_USPECIAL){
 	if (window == 1){
-		if free{
-            hsp = clamp(hsp, -2, 2);
-		}
+		hsp = clamp(hsp, -2, 2);
+	} else if (uspecial_iasa){
+		iasa_script();
 	}
 	if (window == 2 || window == 3){
 	    with (obj_article1){
@@ -518,11 +529,10 @@ if (attack == 49){
 	}
 	if (!hitpause && !hitstop){
 		if (window == 2 || window == 3 || window == 4){
-			if (window_timer mod 2 == 0){
-				create_hitbox( 49, 1, x, y-(19 + random_func(0, 33, true)) );
-			}
-			if (window_timer mod 2 == 1){
-				create_hitbox( 49, 2, x, y-(19 + random_func(0, 33, true)) );
+			if (window_timer mod 3 == 0){
+				create_hitbox( 49, 1, x, y-(20 + random_func(0, 32, true)) );
+			} else {
+				create_hitbox( 49, 2, x, y-(20 + random_func(0, 32, true)) );
 			}
 			if (window_timer mod 5 == 0){
 				sound_play (asset_get ("sfx_bubblepop"));

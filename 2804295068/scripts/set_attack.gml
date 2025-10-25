@@ -17,6 +17,17 @@ if (attack == AT_DSTRONG){
     }
 }
 
+if (attack == AT_USPECIAL){
+	if (free){
+		uspecial_iasa = false;
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+		
+	} else if (up_down){
+		uspecial_iasa = true;
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+	}
+}
+
 if (attack == AT_TAUNT){
 	if (down_down){
 		attack = AT_TAUNT_2;
@@ -25,8 +36,6 @@ if (attack == AT_TAUNT){
 	}
 }
 
-if (has_rune("A")){
-	if (attack == AT_NAIR){
-		attack = AT_FTILT;
-	}
+if (attack == AT_FTILT){
+	if (has_rune("M")) attack = AT_FSPECIAL_2;
 }

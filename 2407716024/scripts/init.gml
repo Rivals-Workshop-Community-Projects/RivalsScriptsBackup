@@ -15,7 +15,7 @@ pratfall_anim_speed = .25;
 walk_speed = 2;
 walk_accel = 0.2;
 walk_turn_time = 8;
-initial_dash_time = 6;
+initial_dash_time = 8;
 initial_dash_speed = 5;
 dash_speed = 5.4;
 dash_turn_time = 16;
@@ -25,15 +25,15 @@ dash_stop_percent = .1; //the value to multiply your hsp by when going into idle
 ground_friction = .4;
 moonwalk_accel = 1.5;
 
-jump_start_time = 4;
+jump_start_time = 5;
 jump_speed = 10;
 short_hop_speed = 5.5;
 djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .15;
+air_accel = .3;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
@@ -45,13 +45,13 @@ max_fall = 12; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .45;
-knockback_adj = 1.02; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 16;
 wave_land_time = 8;
-wave_land_adj = 1.05; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .1; //grounded deceleration when wavelanding
+wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 5;
@@ -96,6 +96,12 @@ jump_sound = asset_get("sfx_jumpground");
 djump_sound = sound_get("djump");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
+//hfx
+bigboom = hit_fx_create(sprite_get("bigboom_hfx"), 50);
+boom = hit_fx_create(sprite_get("boom_hfx"), 40);
+bigpow = hit_fx_create(sprite_get("bigpow_hfx"), 40);
+pow = hit_fx_create(sprite_get("pow_hfx"), 15);
+
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 0;
@@ -126,6 +132,10 @@ peacock_fx_fair_shot = hit_fx_create(sprite_get("fair_shot"), 24);
 peacock_fx_airdash_puff = hit_fx_create(sprite_get("airdash_puff"), 16);
 peacock_fx_fsmash_beam = hit_fx_create(sprite_get("fsmash_laser"), 16);
 peacock_fx_fsmash_shot = hit_fx_create(sprite_get("fsmash_proj_shot"), 16);
+peacock_fx_uspecial_hole = hit_fx_create(sprite_get("uspecial_hole"), 6);
+
+last_sprite = noone;
+last_sprite_ticks = 0;
 
 //codec
 ncode1 = "The Cartoon Elemental Anti-Skullgirl Unit crafted"
@@ -211,8 +221,24 @@ fs_force_fs = false;
 time_frozen = false
 time_freeze_ticks = 0
 
+uspecial_free_start = false;
+uspecial_x_start = 0;
+uspecial_y_start = 0;
 
-		
+uair_borb = noone;
+
+had_airdodge_pre_dash = false;
+
+list_of_dots = ds_list_create();
+
+last_hit = noone;
+
+dash_toggle = get_synced_var(player);
+
+char_half_width = noone;
+char_width_set_timer = 0;
+
+// taunt = 0, normal is 1
 
 //Runes
 
@@ -444,4 +470,4 @@ switch(get_player_color(player)){
 }
 */
 
-user_event(14); // General init
+user_event(14); // General init <- CHUNGUS!

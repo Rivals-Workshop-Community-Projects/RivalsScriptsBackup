@@ -81,7 +81,7 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_EXTRA_HITPAUSE, 3);
-set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_leafy_hit3"));
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, -1);
 

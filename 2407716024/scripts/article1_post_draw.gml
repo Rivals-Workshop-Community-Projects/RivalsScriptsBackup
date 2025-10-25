@@ -12,8 +12,6 @@ if (state >= 9 && hitbox_sprite_index != noone) {
 }
 */
 
-
-
 if (state >= 21) {
     var double_spr_dir = spr_dir * 2;
     for (var i = 0; i < 3; i++) {

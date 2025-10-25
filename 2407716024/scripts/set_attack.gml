@@ -31,13 +31,13 @@ switch (attack) {
         //reset grid index
         set_attack_value(AT_DAIR, AG_CATEGORY, 1);
     break;
-    case AT_USPECIAL:
-        if (!free) {
+    case AT_USPECIAL: {
             attack = AT_USPECIAL_GROUND;
             //skip some of the teleport's startup if this move is used as an attack cancel
             if (has_hit_player && peacock_consecutive_cancelled_attacks > 0) { window = 1; }
         }
     break;
 }
+
 
 user_event(13);

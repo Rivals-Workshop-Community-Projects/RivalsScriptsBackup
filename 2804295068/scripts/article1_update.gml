@@ -10,7 +10,7 @@
 */
 	//Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 
-    if (place_meeting(x, y, asset_get("pHitBox")) && state != 2) {
+    if (place_meeting(x, y, asset_get("pHitBox")) && (state != 2)) {
     	with (asset_get("pHitBox")){
     		if (player != other.player_id.player){
     			if (place_meeting(x, y, other)) && (type != 2){
@@ -59,7 +59,8 @@ if (state != 2){
 			|| (attack == AT_NAIR && hbox_num == 4) 
 			|| attack == AT_FAIR 
 			|| attack == AT_BAIR 
-			|| attack == AT_NSPECIAL){
+			|| attack == AT_NSPECIAL 
+			|| attack == AT_FSPECIAL_2){
 				if (!torched){
 					torched = true;
 					with other{
@@ -72,11 +73,11 @@ if (state != 2){
 					torched = true;
 					if (hbox_num != 4){
 						with other{
-							state_timer += 60;
+							state_timer += 180;
 						}
 					} else {
 						with other{
-							state_timer += 540;
+							state_timer += 180;
 						}
 					}
 				}
@@ -85,25 +86,26 @@ if (state != 2){
 			if (attack == 49){
 				if (!torched){
 					torched = true;
-					with other{
-						state_timer = 0;
-					}
 					if (hbox_num == 3){
 						with other{
 							state = 2;
+							state_timer = 0;
 						}
 					}
 				}
 			}
 			//bean
 			if (attack == AT_FSPECIAL && hbox_num == 1){
-				hitbox_timer += 120
-				vsp += -1.25
-				hsp += 2*spr_dir
-				sound_play (sound_get ("wakeup"));
-				with other{
-					state = 2;
-					state_timer = 0;
+				if (!torched){
+					torched = true;
+					hitbox_timer += 120
+					vsp += -1.25
+					hsp += 2*spr_dir
+					sound_play (sound_get ("wakeup"));
+					with other{
+						state = 2;
+						state_timer = 0;
+					}
 				}
 			}
 	    }
@@ -173,7 +175,7 @@ if (state == 2){
 	    sound_play(asset_get("sfx_zetter_fireball_fire"));
 		spawn_hit_fx(x,y - 30,3)
 	}
-    if (state_timer == 60){
+    if (state_timer == 60) && (!has_rune("D")){
 		spawn_hit_fx(x,y - 30,13)
 	    instance_destroy();
         exit;
@@ -245,7 +247,7 @@ if (shovel == true){
 	spawn_hit_fx(x - 16,y,15)
     sound_play (sound_get ("shovel"));
 	if (has_rune("D")){
-		create_hitbox( AT_DSPECIAL, 2, (x),(y-30) );
+		create_hitbox( AT_DSPECIAL, 2, (x),(y-10) );
 	}
 	instance_destroy();
     exit;

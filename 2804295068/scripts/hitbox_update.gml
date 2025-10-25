@@ -7,13 +7,10 @@ if (attack == AT_FTILT
 || attack == AT_FSTRONG 
 || attack == AT_NSPECIAL 
 || attack == 49 && hbox_num != 3){
-	if was_parried{
-		instance_destroy();
-		exit;
-	}
+	//through_platforms = 2;
 	if torched{
 		sprite_index = player_id.firepea_sprite;
-		hit_effect = 4
+		hit_effect = 4;
 		if (sound_effect == sound_get("splat3")){
 		    sound_effect = sound_get("ignite");
 		}
@@ -23,9 +20,12 @@ if (attack == AT_FTILT
 		if (sound_effect == asset_get("sfx_ell_utilt_hit")){
 		    sound_effect = asset_get("sfx_ell_uspecial_explode");
 		}
-		damage = torch_damage_mult
-		length = torch_length_mult
-		hsp = torch_hsp_mult
+		damage = torch_damage_mult;
+		length = torch_length_mult;
+		if (!was_parried) hsp = torch_hsp_mult;
+	} else if was_parried{
+		instance_destroy();
+		exit;
 	}
 }
 if (has_rune("G")){
@@ -36,34 +36,48 @@ if (has_rune("G")){
 	|| attack == AT_BAIR 
 	|| attack == AT_FSTRONG 
 	|| attack == AT_NSPECIAL){
-		if torched{
-			extra_hitpause = 12
-		}
-	}
-}
-//big firepea
-if (attack == 49 && hbox_num == 3){
-	if was_parried{
-		instance_destroy();
-		exit;
-	}
-	if torched{
-		sprite_index = sprite_get("pea_torched_big");
-		collision = sprite_get("pea_big");
-		hit_effect = 148
-		sound_effect = asset_get("sfx_burnconsume");
-		damage = torch_damage_mult
-		length = torch_length_mult
-		hsp = torch_hsp_mult
-		if (has_rune("G")){
-		    extra_hitpause = 12
-		}
+		if torched extra_hitpause = 12;
 	}
 }
 if (attack == AT_EXTRA_1){
 	if torched{
-		proj_angle = 180;
+		image_xscale = -1;
 	}
+}
+//big firepea
+if (attack == 49){
+	if was_parried{
+		instance_destroy();
+		exit;
+	}
+	if (hbox_num == 3){
+		if torched{
+			sprite_index = sprite_get("pea_torched_big");
+			collision = sprite_get("pea_big");
+			hit_effect = 148
+			sound_effect = asset_get("sfx_burnconsume");
+			damage = torch_damage_mult;
+			length = torch_length_mult;
+			hsp = torch_hsp_mult;
+			if (has_rune("G")) extra_hitpause = 12;
+		}
+	}
+}
+//snowpea
+if (attack == AT_FSPECIAL_2){
+	if torched{
+		sprite_index = player_id.pea_sprite;
+		hit_effect = 301;
+		sound_effect = sound_get("splat3");
+		kb_angle = 70;
+		kb_value = 5;
+		extra_hitpause = 0;
+		if (!was_parried) hsp = torch_hsp_mult;
+		else {
+			instance_destroy();
+			exit;
+		}
+	} else if (hitbox_timer mod 4 == 0) spawn_hit_fx(floor(x),floor(y),player_id.snowy_particles);
 }
 
 //bean stuff
@@ -72,8 +86,8 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	player_id.bean_y = y;
 	if (!free){
 		bean_fall_prevention = true;
-	    hsp *= .97
-	    proj_angle += (hsp*-2)
+	    hsp *= .97;
+	    proj_angle += (hsp*-2);
 		for (var i = 0; i < array_length(can_hit); i++) {
 			can_hit[i] = false;
 		}
@@ -94,7 +108,7 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	}
 	if (hitbox_timer >= 180){
 		create_hitbox( AT_FSPECIAL, 2, x, y-12, );
-		spawn_hit_fx(x,y-12,145)
+		spawn_hit_fx(x,y-12,145);
 		sound_play (sound_get("bean_explode"));
 		sound_stop (sound_get("bean_voice"));
 		sound_stop (sound_get("bean_voice2"));
