@@ -18,6 +18,10 @@ if (attack == AT_FTILT){
 //normal and special cancels
 
 
+if (attack == AT_DSTRONG)
+{
+	trigger_b_reverse();
+}
 
 var normal_cancel_value = 0;
 switch (attack) {
@@ -194,7 +198,7 @@ switch (attack) {
 						bullet.kb_value = 6;
 						bullet.kb_angle = 50;
 						bullet.kb_scale = 0.5;
-						bullet.hit_effect = 302;
+					//	bullet.hit_effect = 302;
 					}
 				}
 			break;

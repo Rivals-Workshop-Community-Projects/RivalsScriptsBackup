@@ -209,7 +209,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 12);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, 42);
-set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, boom);
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, bigboom);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, true);

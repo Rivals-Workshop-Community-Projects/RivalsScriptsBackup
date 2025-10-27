@@ -50,7 +50,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -6.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
