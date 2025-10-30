@@ -20,7 +20,7 @@ set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_UTILT,2);
+set_num_hitboxes(AT_UTILT, 1);
 
 set_hitbox_value(AT_UTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
@@ -38,3 +38,21 @@ set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+
+// cheater tipper utilt
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 12);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -118);
+set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 20);
+set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 20);
+set_hitbox_value(AT_UTILT, 2, HG_PRIORITY, 4);
+set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 11);
+set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 305)

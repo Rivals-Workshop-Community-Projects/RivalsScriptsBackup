@@ -22,7 +22,7 @@ if attack == AT_TAUNT && down_down {
 
 if attack == AT_NSPECIAL && "fs_charge" in self && fs_charge >= 200 { attack = 49; fs_force_fs = true}
 
-if has_rune("K") && attack == AT_NSPECIAL && ((!using_stored_attack && !has_saved_state && move_cooldown[AT_NSPECIAL] <= 2) || saved_state.attack == AT_NSPECIAL) {
+if (has_rune("K") || juiced_up) && attack == AT_NSPECIAL && ((!using_stored_attack && !has_saved_state && move_cooldown[AT_NSPECIAL] <= 2) || saved_state.attack == AT_NSPECIAL) {
 	move_cooldown[AT_NSPECIAL] = 0;
 	clear_button_buffer(PC_SPECIAL_PRESSED);
 }

@@ -65,12 +65,12 @@ if(state == PS_SPAWN && !hitpause && !has_spawned){
 		spawn_hit_fx(x, y - char_height/2, fx_load);
 		sound_play(asset_get("mfx_star"))
 		if juiced_up sound_play(sound_get("sfx_strong_hit"))
-		if(get_player_color(player) == 31){
+		if(get_player_color(player) == 29){
 			sound_play(asset_get("mfx_title_start"), false, false, 1.2);
 			sound_play(sound_get("sfx_scratch_meow2"));
 			intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y, spr_dir:1, sprite_index:sprite_get("maxwell"), image_index:image_index, rot:spr_angle, col:c_gray, timer:0, timerMax:20, is_cat:true};
 		}
-		if(get_player_color(player) == 30){
+		if(get_player_color(player) == 28){
 			if !juiced_up sound_play(sound_get("sfx_strong_hit"));
 		}
 	}
@@ -78,7 +78,7 @@ if(state == PS_SPAWN && !hitpause && !has_spawned){
 		sprite_index = (cur_skin == 1 ? sprite_get("f_dspecial") : sprite_get("dspecial"));
 		image_index = 11 + (state_timer-85)/5;
 	}
-	if(get_player_color(player) == 30){
+	if(get_player_color(player) == 28){
 		var blu = make_colour_rgb(85, 205, 252);
 		var pink = make_colour_rgb(247, 168, 223);
 		switch(state_timer){

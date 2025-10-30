@@ -300,6 +300,13 @@ fx_strike_down = hit_fx_create( sprite_get("fx_strike_down"), 24 );
 fx_gouge = hit_fx_create( sprite_get("fx_gouge"), 22 );
 fx_proj = hit_fx_create( sprite_get("rune_proj_end"), 22 );
 
+//custom alt vfx code
+galaxy_vfx_array = 0;
+galaxy_vfx_list = [];
+galaxy_vfx_timer = 0;
+chippi_animate_timer = 0;
+chippi_sfx = noone;
+
 //rune variables
 rune_save_cancel_buffer = 0;
 murder_mode_target = noone;

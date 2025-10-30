@@ -22,9 +22,10 @@ with(oPlayer){
 //nspecial
 move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL], 2);
 var is_genociding = ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL_2)
+var teching = (state == PS_TECH_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_FORWARD);
 // if "fs_charge" in self && fs_charge >= 200 move_cooldown[AT_NSPECIAL] = 0;
 if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parried && !is_genociding &&
-    state != PS_PRATFALL && state != PS_PRATLAND && state_cat != SC_HITSTUN && state != PS_DEAD && state != PS_RESPAWN)
+    state != PS_PRATFALL && state != PS_PRATLAND && state_cat != SC_HITSTUN && state != PS_DEAD && state != PS_RESPAWN && !teching)
 {
     //LOAD STORED ATTACK
     if (has_saved_state &&
@@ -38,7 +39,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
         sound_play(sound_get("sfx_load"));
         spawn_hit_fx(x, y - 32, fx_savestate);
         
-        if !get_match_setting(SET_RUNES) && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
+        if !get_match_setting(SET_RUNES) && !juiced_up && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
 
         if (saved_state.attack > 0)
         {
@@ -73,7 +74,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             	//runes stuff
                 if has_rune("L") && fspec_charge == fspec_max_charge {
 		            set_num_hitboxes(AT_FSPECIAL, 2);
-		            if has_rune("B") set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 0);
+		            if (has_rune("B") || juiced_up) set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 0);
 		        } else{
 		            set_num_hitboxes(AT_FSPECIAL, 1);
 		            reset_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY);
@@ -94,6 +95,8 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             }
             else uses_afterimage_trail = false;
             if(saved_state.attack == AT_TAUNT_2 && lobotomy == noone) lobotomy = sound_play(sound_get("lobotomy"), true);
+            
+            if(state == PS_AIR_DODGE && window == 1) has_airdodge = false;
             
             attack_end();
             set_attack(saved_state.attack);
@@ -136,7 +139,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             
             sound_stop(voice_playing_sound);
             
-            if !get_match_setting(SET_RUNES) && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
+            if !get_match_setting(SET_RUNES) && !juiced_up && attack == AT_DSTRONG vsp = max(vsp, dstrong_initial_vsp) // no more flying child
 
             saved_state.free = free;
             saved_state.attack = attack;
@@ -175,7 +178,7 @@ if (special_pressed && special_counter == 0 && !using_stored_attack && !was_parr
             has_saved_state = true;
         }
     }
-    if (!has_rune("K") || (has_rune("K") && has_saved_state)) clear_button_buffer(PC_SPECIAL_PRESSED);
+    if (!has_rune("K") && !juiced_up || ((has_rune("K") || juiced_up) && has_saved_state)) clear_button_buffer(PC_SPECIAL_PRESSED);
 }
 
 if (using_stored_attack && loaded_off_uspec && !has_hit_player && window == last_window && window_timer == window_end_time-1 && free) //cue schrodinger's pratfall
@@ -357,12 +360,6 @@ if (taunt_down || taunt_pressed) && (special_down || special_pressed) && (shield
 				) found = true;
 			break;
 		}
-		for(var i = 0; i < array_length(other.felix_urls); i++){
-				print(url == other.felix_urls[@i])
-				print(url)
-				print(other.felix_urls[@i])
-			if url == other.felix_urls[@i] { found = true; break; }
-		}
 		if other.faq_u_timer <= 0 && found {
 			other.cringer_player = get_player_name(player);
 			other.cringer_character = get_char_info(player, INFO_STR_NAME);
@@ -450,6 +447,91 @@ if(faq_u_timer > 0 && self == orig_self){
 	}
 }
 
+// custom alt vfx code
+var new_galaxy_vfx_list = [];
+for(var i = 0; i < array_length(galaxy_vfx_list); i++){
+	if(instance_exists(galaxy_vfx_list[i])) with(galaxy_vfx_list[i]){
+		if(state_cat == SC_HITSTUN && activated_kill_effect && hit_player_obj == other){
+			array_push(new_galaxy_vfx_list, self);
+		}
+	}
+}
+
+with(oPlayer){
+	if(enemy_hitboxID > 0 && !perfect_dodging && activated_kill_effect && enemy_hitboxID.player_id == other) {
+		switch(get_player_color(other.player)){
+			case 28:
+			array_push(new_galaxy_vfx_list, self);
+			other.galaxy_vfx_timer = 60;
+			sound_play(asset_get("sfx_mol_tauntup"), false, noone, 1);
+			sound_play(asset_get("sfx_mol_bat_whack"), false, noone, 2);
+			sound_play(asset_get("sfx_abyss_explosion_start"), false, noone, 1.5);
+    		sound_play(asset_get("sfx_oly_uspecial_crystal"));
+			break
+			case 29:
+			with(other){
+				galaxy_vfx_timer = 90;
+				if(chippi_sfx == noone){
+					chippi_animate_timer = 0;
+					sound_stop(sound_get("chippi"));
+					chippi_sfx = sound_play(sound_get("chippi"));
+				} else {
+					sound_volume(chippi_sfx, 1, 0);
+				}
+			}
+			break;
+		}
+	}
+}
+
+if(get_player_color(player) == 28){
+	galaxy_vfx_list = new_galaxy_vfx_list;
+	for(var i = 0; i < array_length(galaxy_vfx_list); i++){
+		with(galaxy_vfx_list[i]) if(!hitpause){
+			CreateAfterimage(other);
+		}
+	}
+	
+	var blu = make_colour_rgb(85, 205, 252);
+	var pink = make_colour_rgb(247, 168, 223);
+	var colr = 0;
+	switch(galaxy_vfx_timer){
+		case 60: case 44:
+		colr = blu;
+		break;
+		case 56: case 48:
+		colr = pink;
+		break;
+		case 52:
+		colr = c_white;
+		break;
+	}
+	if colr != 0 intro_alt_vfx_array[array_length_1d(intro_alt_vfx_array)] = {x:x+draw_x, y:y+draw_y-char_height/2, spr_dir:1, sprite_index:sprite_get("artc_dspec"), image_index:image_index, rot:60*galaxy_vfx_timer, col:colr, timer:0, timerMax:20, is_khep:true};
+}
+
+if(get_player_color(player) == 29){
+	if(galaxy_vfx_timer > 40 && chippi_animate_timer <= 360 && taunt_down) galaxy_vfx_timer = max(galaxy_vfx_timer, 42);
+	if(galaxy_vfx_timer > 30) suppress_stage_music(.5, .1);
+	if(galaxy_vfx_timer == 40){
+		sound_volume(chippi_sfx, 0, 800);
+	}
+	if(galaxy_vfx_timer == 0){
+		chippi_sfx = noone;
+	}
+}
+
+galaxy_vfx_timer--;
+chippi_animate_timer++;
+
+// update afterimage array (code by Karu)
+var newArray = 0;
+for (var i = 0; i < array_length_1d(galaxy_vfx_array); ++i)
+{
+    var obj = galaxy_vfx_array[i];
+    if (++obj.timer <= obj.timerMax) newArray[array_length_1d(newArray)] = obj;
+}
+galaxy_vfx_array = newArray;
+
 //murder_vfx_array[array_length_1d(murder_vfx_array)] = {x:x+draw_x, y:y+draw_y, spr_dir:spr_dir, sprite_index:sprite_index, anim_speed:.25, rot:spr_angle, col:colr, timer:0, timerMax:20};
 
 #define check_string_for_name(player, string)
@@ -489,4 +571,36 @@ selected = (idx/10 >= 1? "": "0") + string(idx) + string(selected);
 if selected != noone{
 	sound_stop(voice_playing_sound);
 	voice_playing_sound = sound_play(sound_get("vc_" + selected), false, noone, 1.2);
+}
+
+#define CreateAfterimage(orig)
+{
+	var colr = 0;
+	var blu = make_colour_rgb(85, 205, 252);
+	var pink = make_colour_rgb(247, 168, 223);
+	switch((state_timer - 1)%5){
+		case 0: case 4:
+		colr = blu;
+		break;
+		case 1: case 3:
+		colr = pink;
+		break;
+		case 2:
+		colr = c_white;
+		break;
+	}
+	with(orig){
+	    galaxy_vfx_array[array_length_1d(galaxy_vfx_array)] = {
+	    	orig_player_id:other,
+	    	x:other.x+other.draw_x,
+	    	y:other.y+other.draw_y,
+	    	spr_dir:other.spr_dir,
+	    	sprite_index:other.sprite_index,
+	    	image_index:other.image_index,
+	    	rot:other.spr_angle,
+	    	col:colr,
+	    	timer:0,
+	    	timerMax:20
+	    };
+	}
 }

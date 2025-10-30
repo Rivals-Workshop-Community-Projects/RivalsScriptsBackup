@@ -131,7 +131,7 @@ switch (attack)
     case AT_FSPECIAL:
         if has_rune("L") && fspec_charge == fspec_max_charge {
             set_num_hitboxes(AT_FSPECIAL, 2);
-            if has_rune("B") set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 0);
+            if (has_rune("B") || juiced_up) set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 0);
         } else{
             set_num_hitboxes(AT_FSPECIAL, 1);
             reset_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY);
@@ -192,7 +192,7 @@ switch (attack)
                             }
                         }
                     }
-                if(has_rune("B") && hitpause && has_hit){
+                if ((has_rune("B") || juiced_up) && hitpause && has_hit){
                     window = 4;
                     window_timer = 0;
                     destroy_hitboxes();
@@ -243,7 +243,7 @@ switch (attack)
         if(window == 1 && window_timer == 1 && !hitpause) voice_play(floor(abs(x%200)), [vc_taunt])
         if(window == 2 && window_timer == 26){
             take_damage(player, player, 1);
-            take_damage(player, player, -2)
+            take_damage(player, player, -2 - (juiced_up * 19))
         }
         break;
     case AT_TAUNT_2:

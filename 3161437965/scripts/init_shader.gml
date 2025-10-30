@@ -14,7 +14,7 @@ switch (alt_cur)
         set_article_color_slot(6, 89, 33, 14); // Pants 2
         break;
         
-    case 29: //EA
+    case 27: //EA
         for(var i = 0; i < 8; i++){
             set_character_color_shading(i, 0);
         }

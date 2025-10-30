@@ -35,10 +35,13 @@ switch (my_hitboxID.attack) {
         sound_play(sound_get("sfx_sword_hit"))
     break;
     case AT_FAIR:
-        if ((my_hitboxID.hbox_num == 1 || has_rune("D")) && hit_player_obj.should_make_shockwave) {
+        if ((my_hitboxID.hbox_num == 1 || has_rune("D") || juiced_up) && hit_player_obj.should_make_shockwave) {
             sound_play(sound_get("sfx_deal_damage"))
             sound_play(asset_get("sfx_blow_heavy2"))
         }
+    break;
+    case AT_UTILT:
+    if (my_hitboxID.hbox_num == 2 && hit_player_obj.should_make_shockwave) sound_play(sound_get("sfx_deal_damage"))
     break;
     case AT_FSPECIAL_2:
     hitpause = false;
@@ -92,3 +95,15 @@ switch (my_hitboxID.attack) {
 }
 
 if (loaded_off_uspec) loaded_off_uspec = false;
+
+if(get_player_color(player) == 26 && hit_player_obj.should_make_shockwave){
+    sound_play(asset_get("sfx_abyss_hex_hit"));
+    var hfx = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height/2, HFX_ABY_EXPLODE_WARN);
+}
+
+if(get_player_color(player) == 27 && hit_player_obj.should_make_shockwave){
+    sound_play(asset_get("sfx_holy_lightning"));
+    hit_player_obj.gameboy_shock = true;
+    hit_player_obj.hitpause_shock = true;
+    hit_player_obj.hitpause_flash = true;
+}
