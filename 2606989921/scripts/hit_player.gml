@@ -1,6 +1,17 @@
 //ACE grab setup
 msg_acemilate(hit_player_obj.attack, attack, my_hitboxID);
 
+if (my_hitboxID.type == 1) && (my_hitboxID.damage > 0)
+{ 
+    if (msg_rune_flags.recoil) take_damage(player, player, 1);
+    
+    if (msg_rune_flags.whiff_storage)
+    {
+        take_damage(hit_player_obj.player, player, max(0, msg_rune_whiff_storage));
+        msg_rune_whiff_storage = -1;
+    }
+}
+
 if (my_hitboxID.orig_player_id != self) exit; //Only our own hitboxes
 
 //==========================================================
@@ -18,19 +29,30 @@ if ("msg_last_known_damage" in hit_player_obj)
 }
 //==========================================================
 
+//RUNE: opponent's attack variable may trigger effects...
+var opponent_attack = msg_rune_flags.check_hit_opponent ? hit_player_obj.attack : noone;
+
 //==========================================================
 //Bubbles internal lockout logic (hopefully less heavy)
-if (my_hitboxID.attack == AT_FSPECIAL_2)
+if (my_hitboxID.attack == AT_FSPECIAL_2) && (my_hitboxID.hbox_num == 2)
 {
     var victim_player = hit_player_obj.player;
     with (pHitBox) if (orig_player_id == other)
-                   && (attack == AT_FSPECIAL_2)
+                   && (attack == AT_FSPECIAL_2) && (hbox_num == 2)
     {
         can_hit[victim_player] = false;
     }
     msg_collective_bubble_lockout[victim_player] = msg_fspecial_bubble_lockout;
 }
 
+//==========================================================
+// JAB: FLAME BODY rune effect
+if (my_hitboxID.attack == AT_JAB || opponent_attack == AT_JAB) && (my_hitboxID.type == 1)
+{
+    hit_player_obj.burned = true;
+    hit_player_obj.burn_timer = hit_player_obj.burn_timer % 30;
+    hit_player_obj.burnt_id = self;
+}
 //==========================================================
 // NAIR sfx
 if (my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num == 1)
@@ -39,13 +61,25 @@ if (my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num == 1)
 }
 //==========================================================
 // UTILT: airtech
-if (my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 2)
+if (my_hitboxID.attack == AT_UTILT || opponent_attack == AT_UTILT) && (my_hitboxID.hbox_num == 2)
 {
     msg_air_tech_active = true;
+
+    if (my_hitboxID.type == 3)
+    {
+        hitpause = true;
+        old_vsp = vsp;
+        old_hsp = hsp;
+        hitstop = max(5, hitstop);
+        hitstop_full = max(5, hitstop_full);
+
+        my_hitboxID.type = 2;
+        my_hitboxID.destroyed = true;
+    }
 }
 //==========================================================
 // DSTRONG: save which side to activate yoyo from
-if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num <= 2)
+if (my_hitboxID.attack == AT_DSTRONG || opponent_attack == AT_DSTRONG) && (my_hitboxID.hbox_num <= 2)
 {
     //1 is in front, 2 is in back
     msg_dstrong_yoyo.dir = spr_dir * (my_hitboxID.hbox_num == 1 ? 1 : -1);
@@ -54,17 +88,26 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num <= 2)
 }
 else if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4)
 {
-    //1 is in front, 2 is in back
     msg_dstrong_sweetspot_hit = true;
 }
 
 //==========================================================
 // USTRONG non-interruption of kb
-if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num != 1)
+if (my_hitboxID.attack == AT_USTRONG || opponent_attack == AT_USTRONG) && (my_hitboxID.hbox_num != 1)
 {
     var coin = my_hitboxID;
+
+    if (coin.hitpause == 0) //signal for repeating rune
+    {
+        coin.can_hit[hit_player_obj.player] = true;
+        hit_player_obj.can_be_hit[coin.player] = coin.no_other_hit;
+        coin.stop_effect = false;
+
+        if (coin.transcendent) coin.length -= 12;
+        hit_player_obj.should_make_shockwave = false;
+    }
     //signal for kb preservation
-    if (coin.kb_value == 0) with (hit_player_obj)
+    else if (coin.kb_value == 0) with (hit_player_obj)
     {
         if (!hitpause)
         {
@@ -89,12 +132,28 @@ if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num != 1)
 
 //==========================================================
 // FAIR variable damage
-if (my_hitboxID.attack == AT_FAIR)
+if (my_hitboxID.attack == AT_FAIR || opponent_attack == AT_FAIR)
 {
     var victim_dmg = get_player_damage(hit_player_obj.player);
 
-    var bonus_dmg = floor(clamp(14.5 - (victim_dmg * 0.12), 0, 19));
-    take_damage(hit_player_obj.player, player, bonus_dmg);
+    if (my_hitboxID.hit_priority > 4) //signal for Opponent-sum rune
+    {
+        victim_dmg = abs(victim_dmg -1);
+        var own_dmg = abs(get_player_damage(player));
+        var bonus_dmg = floor(victim_dmg % 10)
+                      + floor((victim_dmg/10) % 10)
+                      + floor((victim_dmg/100) % 10) - 1
+                      + floor(own_dmg % 10)
+                      + floor((own_dmg/10) % 10)
+                      + floor((own_dmg/100) % 10) - 1;
+
+        take_damage(hit_player_obj.player, player, bonus_dmg);
+    }
+    else
+    {
+        var bonus_dmg = floor(clamp(14.5 - (victim_dmg * 0.12), 0, 19));
+        take_damage(hit_player_obj.player, player, bonus_dmg);
+    }
 
     var min_knockback = 7;
     if (hit_player_obj.old_vsp > 0) 
@@ -105,6 +164,22 @@ if (my_hitboxID.attack == AT_FAIR)
     }
     else if (hit_player_obj.orig_knock < min_knockback) hit_player_obj.orig_knock = min_knockback;
 
+    if (my_hitboxID.kb_angle == 70) //signal for variable angle rune
+    {
+        //normalize vector
+        var old_spd = point_distance(0, 0, hit_player_obj.old_vsp, hit_player_obj.old_hsp);
+        hit_player_obj.old_vsp /= old_spd;
+        hit_player_obj.old_hsp /= old_spd;
+
+        //Influence the direction based on current percent
+        hit_player_obj.old_vsp -= (victim_dmg < 0 ? 0.005 : 0.01) * victim_dmg;
+
+        //denormalize, just to let visualizer show it correctly
+        old_spd /= point_distance(0, 0, hit_player_obj.old_vsp, hit_player_obj.old_hsp);
+        hit_player_obj.old_vsp *= old_spd;
+        hit_player_obj.old_hsp *= old_spd;
+    }
+
     //SFX
     if (victim_dmg < -80)   
     { sound_play(sound_get("aurorabeam")); msg_alt_sprite = get_attack_value(attack, AG_MSG_ALT_SPRITES)[0]; }
@@ -114,7 +189,7 @@ if (my_hitboxID.attack == AT_FAIR)
 
 //==========================================================
 // UAIR stacking reset
-if (my_hitboxID.attack == AT_UAIR)
+if (my_hitboxID.attack == AT_UAIR || opponent_attack == AT_UAIR)
 {
     reset_hitbox_value(AT_UAIR, 1, HG_WIDTH);
     reset_hitbox_value(AT_UAIR, 1, HG_HEIGHT);
@@ -125,6 +200,18 @@ if (my_hitboxID.attack == AT_UAIR)
 }
 
 //==========================================================
+// Rune: BAIR mirror-porting
+if (my_hitboxID.attack == AT_BAIR || opponent_attack == AT_BAIR)
+//signal for mirrorport
+&& (my_hitboxID.hit_priority <= 5) && ("has_did_do_flipped_yes" not in my_hitboxID)
+{
+    var targetx = hit_player_obj.x - (x - hit_player_obj.x);
+    swap_correcting_for_clones(self, targetx, y);
+    spr_dir *= -1;
+    my_hitboxID.has_did_do_flipped_yes = true;
+}
+
+//==========================================================
 // DAIR: prevent obscene amounts of hitpause when multilanding
 if (my_hitboxID.attack == AT_DAIR) && (msg_dair_earthquake_counter > 0)
 {
@@ -132,8 +219,27 @@ if (my_hitboxID.attack == AT_DAIR) && (msg_dair_earthquake_counter > 0)
 }
 
 //==========================================================
+// FSPECIAL Player-throw rune: collateral hitbox
+if (my_hitboxID.attack == AT_FSPECIAL || opponent_attack == AT_FSPECIAL) && (my_hitboxID.hbox_num == 5)
+{
+    //attach collateral hitbox to victim
+    var collateral = create_hitbox(AT_FSPECIAL, 3, x, y);
+        collateral.hbox_num = 7;
+        collateral.can_hit_self = false;
+        collateral.can_hit[player] = false;
+        collateral.can_hit[hit_player_obj.player] = false;
+        collateral.length = hit_player_obj.hitstun_full;
+        collateral.kb_scale = abs(collateral.kb_scale);
+        collateral.damage = 8;
+        collateral.player_id = hit_player_obj;
+        collateral.x_pos = 0;
+        collateral.y_pos = -ceil(hit_player_obj.char_height / 2);
+        collateral.image_yscale = collateral.image_xscale;
+}
+
+//==========================================================
 //Grab logic
-if (my_hitboxID.attack == AT_NTHROW)
+if (my_hitboxID.attack == AT_NTHROW || opponent_attack == AT_NTHROW)
 {
     hit_player_obj.msg_handler_id = self;
 
@@ -141,6 +247,14 @@ if (my_hitboxID.attack == AT_NTHROW)
     {
         if !(hit_player_obj.msg_grab_immune_timer > 0)
         {
+            //FIRST VICTIM: process Painsplit
+            if (msg_rune_flags.dspecial_painsplit) && window != 4
+            {
+                var dmg = floor((get_player_damage(hit_player_obj.player) + get_player_damage(player)) / 2);
+                set_player_damage(player, dmg);
+                set_player_damage(hit_player_obj.player, dmg);
+            }
+
             //grab success: send directly to window 4
             window = 4; window_timer = 0;
             hit_player_obj.msg_grabbed_timer = 5;
@@ -152,7 +266,17 @@ if (my_hitboxID.attack == AT_NTHROW)
                 hit_player_obj.x = expected_x;
                 hit_player_obj.y = expected_y;
             }
+
+            if (msg_rune_flags.holp)
+            {
+                set_holp(my_hitboxID.x, 
+                         my_hitboxID.y);
+            }
         }
+    }
+    else if (my_hitboxID.hbox_num == MSG_GRAB_PRATTOSS_HITBOX)
+    {
+        with (hit_player_obj) set_state(PS_PRATFALL);
     }
     else if (my_hitboxID.hbox_num == MSG_GRAB_LEECHSEED_HITBOX)
     {
@@ -219,16 +343,34 @@ if (my_hitboxID.attack == AT_NTHROW)
 
 //==========================================================
 //hit someone with the TMTRAINER
-if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
+if (my_hitboxID.attack == AT_NSPECIAL || opponent_attack == AT_NSPECIAL) && (my_hitboxID.hbox_num == 1)
 {
-    var hb = create_hitbox(my_hitboxID.attack, 2, my_hitboxID.x, my_hitboxID.y)
-    hb.hsp = my_hitboxID.initial_hsp;
-    hb.vsp = my_hitboxID.initial_vsp;
+    var hb = create_hitbox(AT_NSPECIAL, 2, floor(my_hitboxID.x), floor(my_hitboxID.y) )
+    
+    if ("initial_hsp" in my_hitboxID)
+    {
+        hb.hsp = my_hitboxID.initial_hsp;
+        hb.vsp = my_hitboxID.initial_vsp;
+    }
+    else //Melee
+    {
+        hb.hsp = spr_dir * lengthdir_x(6, my_hitboxID.kb_angle);
+        hb.vsp = lengthdir_y(6, my_hitboxID.kb_angle);
+    }
+
     hb.missingno_copied_player_id = hit_player_obj;
     //consume existing clones
     destroy_copies(hit_player_obj);
 
     hit_player_obj.msg_unsafe_effects.quadrant.impulse = 3;
+}
+
+//==========================================================
+//rune: Cloned Rehit
+if (msg_rune_flags.nspecial_rehits) && (my_hitboxID.type == 1)
+&& ("missingno_hitbox_is_copy_of" in my_hitboxID)
+{
+    my_hitboxID.can_hit[hit_player_obj.player] = true;
 }
 
 //==========================================================
@@ -242,7 +384,6 @@ if (!hit_player_obj.msg_is_missingno)
 var hurt_rng = min(abs(get_player_damage(hit_player_obj.player)) * 0.25, 64)
              + min(1.5 * abs(my_hitboxID.damage), 64);
 
-if (msg_stability_mode) hurt_rng = 0;
 //add bonus brokenness chances for grabs
 if (my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num > 1)
 {
@@ -250,6 +391,7 @@ if (my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num > 1)
     if (my_hitboxID.hbox_num == MSG_GRAB_GLITCHTIME_HITBOX) hurt_rng += 32;
     else if (my_hitboxID.hbox_num == MSG_GRAB_BROKEN_HITBOX) hurt_rng = 65535;
 }
+if (msg_stability_mode || my_hitboxID.damage < 2) hurt_rng = 0;
 
 if (hit_player_obj.msg_is_local || !msg_is_online)
 && (hurt_rng > GET_RNG(21, 0x7FF))
@@ -303,9 +445,45 @@ if (hurt_rng > GET_RNG(24, 0xFF))
 #define destroy_copies(target_client_id)
 {
     with (obj_article2) if ("is_missingno_copy" in self)
-                        && (client_id == target_client_id)
+                        && (client_id == target_client_id) && (num == "2")
     {
         needs_to_die = true; //article consumed
+    }
+}
+
+//==============================================================
+#define swap_correcting_for_clones(playerId, posx, posy)
+{
+    playerId.x = posx;
+    playerId.y = posy;
+
+    //update to all copies
+    for (var i = 0; i < instance_number(obj_article2); i++) 
+    with (instance_find(obj_article2, i)) if ("is_missingno_copy" in self)
+                                          && (client_id == playerId) && (num == "2")
+    {
+        //adjust relative offset of all copies
+        client_offset_x = x - client_id.x;
+        client_offset_y = y - client_id.y;
+
+        //adjust hitbox positions
+        with (pHitBox) if (type == 1) && (orig_player_id == other.client_id)
+        {
+            // note: variable reused for yoyo glitch (this is intentional, lerped hitboxes should not be copied)
+            if ("missingno_hitbox_is_copy_of" in self)
+            && (missingno_hitbox_is_copy_for == other && instance_exists(missingno_hitbox_is_copy_of))
+            {
+                x_pos = missingno_hitbox_is_copy_of.x_pos + other.client_offset_x;
+                y_pos = missingno_hitbox_is_copy_of.y_pos + other.client_offset_y;
+            }
+        }
+    }
+
+    //Microplatform (if it exists) needs to follow the client player to its destination
+    if ("msg_clone_microplatform" in playerId) && instance_exists(playerId.msg_clone_microplatform)
+    {
+        playerId.msg_clone_microplatform.x = playerId.x;
+        playerId.msg_clone_microplatform.y = playerId.y;
     }
 }
 
@@ -346,6 +524,29 @@ if (hurt_rng > GET_RNG(24, 0xFF))
         var base = get_hitbox_value(AT_NTHROW, MSG_GRAB_BROKEN_HITBOX, idx);
         set_hitbox_value(AT_NTHROW, MSG_GRAB_BROKEN_HITBOX, idx, (cap == noone) ? stat : ((base + stat) % cap));
     }
+
+#define set_holp(newx, newy) // Version 0
+    // snap position to grid
+    newx = round(newx / 8.0) % 512; //9b
+    newy = round(newy / 8.0) % 256; //8b
+
+    if instance_exists(msg_persistence)
+    {
+        //record position in persistence (if it exists)
+        if (msg_is_local)
+        {
+            msg_persistence.msg_holp_x[0] = newx;
+            msg_persistence.msg_holp_y[0] = newy;
+        }
+        else if (!msg_is_online)
+        {
+            msg_persistence.msg_holp_x[player] = newx;
+            msg_persistence.msg_holp_y[player] = newy;
+        }
+    }
+
+    msg_holp_pos.x = newx * 8;
+    msg_holp_pos.y = newy * 8;
 
 #define GET_RNG(offset, mask) // Version 0
     // ===========================================================

@@ -12,13 +12,18 @@ msg_acemilate(attack, hit_player_obj.attack, enemy_hitboxID);
 // attempt to apply the fix to negative damage premptively (see article1_update)
 if (msg_last_known_damage < 0) && (get_player_damage(player) == 0)
 {
-    var new_damage = floor(msg_last_known_damage + enemy_hitboxID.damage);
-    set_player_damage(player, new_damage);
-    msg_last_known_damage = new_damage;
+    if (msg_rune_flags.dspecial_disablefix) msg_last_known_damage = 0;
+    else
+    {
+        var new_damage = floor(msg_last_known_damage + enemy_hitboxID.damage);
+        set_player_damage(player, new_damage);
+        msg_last_known_damage = new_damage;
+    }
 }
 
 // its possible to explode into a negative-damage state with no timer. dont let armor apply.
 if (msg_last_known_damage < -100) && (msg_negative_dmg_timer > 0)
+&& !msg_rune_flags.dspecial_disablefix //Rune: prevent balance fixes
 {
     //being able to heal by getting hit is too strong
     //therefore Missingno gains a damage resistance proportional to its percent
@@ -40,7 +45,7 @@ if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)
     if (attack == AT_FSTRONG && strong_charge > 0 && strong_charge < 60)
     {
         //interrupted: start charging passively >:]
-        msg_fstrong_interrupted_timer = strong_charge;
+        msg_fstrong_interrupted_timer = msg_rune_flags.fstrong_drain_charge ? 60 : strong_charge;
         sound_play(sound_get("cometpunch"));
     }
     else if (attack == AT_UTILT)
@@ -51,6 +56,28 @@ if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)
             y -= 80;
             msg_air_tech_active = true;
         }
+    }
+}
+
+//==========================================================
+//Rune: Rough Skin ability
+if (enemy_hitboxID.type == 1) && (msg_rune_flags.rough_skin)
+{
+    take_damage(enemy_hitboxID.player, player, floor(enemy_hitboxID.damage * 0.5));
+}
+//==========================================================
+//Rune: Wonder Guard ability
+if (msg_rune_flags.wonder_guard)
+{
+    if (should_make_shockwave)
+    {
+        orig_knock *= 4;
+    }
+    else
+    {
+        orig_knock = clamp(orig_knock, -5, 5);
+        hitstun_full = clamp(hitstun_full, -10, 10);
+        hitstun = hitstun_full;
     }
 }
 

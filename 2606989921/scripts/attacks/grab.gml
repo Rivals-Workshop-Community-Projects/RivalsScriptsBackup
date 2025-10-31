@@ -51,6 +51,66 @@ set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 1);
 var hbox_num = 1;
 var current_window = 4;
 //========================================================================
+//Grab Outcome: Toss
+current_window++;
+MSG_GRAB_PRATTOSS_WINDOW = current_window;
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_ANIM_FRAMES, 7)
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_ANIM_FRAME_START, 20);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_SFX, sound_get("main8d"));
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_SFX_FRAME, 17);
+
+hbox_num++;
+MSG_GRAB_PRATTOSS_HITBOX = hbox_num;
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WINDOW, current_window);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WINDOW_CREATION_FRAME, 18);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_LIFETIME, 1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_X, -22);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_Y, -80);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WIDTH, 60);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HEIGHT, 60);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_PRIORITY, 4);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_TECHABLE, 3);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_DAMAGE, 0);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_ANGLE, 125);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_EXTRA_HITPAUSE, 1);
+
+//========================================================================
+//Grab Outcome: Normal
+current_window++;
+MSG_GRAB_REGULAR_WINDOW = current_window;
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_ANIM_FRAMES, 7)
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_SFX, sound_get("main8d"));
+set_window_value(AT_NTHROW, current_window, AG_WINDOW_SFX_FRAME, 17);
+
+hbox_num++;
+MSG_GRAB_NORMAL_HITBOX = hbox_num;
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WINDOW, current_window);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WINDOW_CREATION_FRAME, 18);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_LIFETIME, 1);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_X, -40);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HITBOX_Y, -72);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_WIDTH, 60);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_HEIGHT, 60);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_PRIORITY, 4);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_TECHABLE, 3);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_DAMAGE, 3);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_ANGLE, 40);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_NTHROW, hbox_num, HG_EXTRA_HITPAUSE, 1);
+
+//========================================================================
 //Grab Outcome: Frozen + Burning
 current_window++;
 MSG_GRAB_FROSTBURN_WINDOW = current_window;
@@ -334,9 +394,11 @@ var grab_negative =   { name:"DC", window:MSG_GRAB_NEGATIVE_WINDOW,   sound:soun
 
 msg_grab_broken_outcome.window = MSG_GRAB_BROKEN_WINDOW; //see failsafe in init.gml
 var grab_glitchtime = { name:"00", window:MSG_GRAB_GLITCHTIME_WINDOW, sound:sound_get("grab0")};
-var grab_antibash =   { name:"F1", window:MSG_GRAB_ANTIBASH_WINDOW,   sound:sound_get("grab5")};
-var grab_vanish =     { name:"17", window:MSG_GRAB_VANISH_WINDOW,     sound:sound_get("grab3")};
-var grab_collider =   { name:"64", window:MSG_GRAB_COLLIDER_WINDOW,   sound:sound_get("grab1")};
+var grab_antibash =   { name:"45", window:MSG_GRAB_ANTIBASH_WINDOW,   sound:sound_get("grab5")};
+var grab_vanish =     { name:"64", window:MSG_GRAB_VANISH_WINDOW,     sound:sound_get("grab3")};
+var grab_collider =   { name:"B3", window:MSG_GRAB_COLLIDER_WINDOW,   sound:sound_get("grab1")};
+
+var grab_prattoss =   { name:"5F", window:MSG_GRAB_PRATTOSS_WINDOW,   sound:sound_get("grab1")};
 
 msg_grab_pointer = 0;
 //standard rotation of grabs
@@ -352,9 +414,31 @@ msg_grab_queue = [msg_grab_broken_outcome,
                   grab_antibash,
                   grab_vanish,
                   grab_explode,
-                  grab_collider];
+                  grab_collider,
+                  grab_prattoss];
 
-if (msg_yellow_mode)
+if (msg_rune_flags.dspecial_variantset)
+{
+    //runic rotation of grabs
+    msg_grab_rotation = [grab_glitchtime, //front,
+                         grab_explode,    //up, 
+                         grab_prattoss,   //back, 
+                         msg_grab_broken_outcome]; //down 
+
+    //rest is broken/glitched
+    msg_grab_queue = [grab_vanish,
+                      grab_glitchtime,
+                      grab_negative,
+                      grab_negative,
+                      grab_antibash,
+                      grab_frostburn,
+                      grab_leechseed,
+                      grab_explode,
+                      grab_prattoss,
+                      grab_collider];
+
+}
+else if (msg_yellow_mode)
 {
     //alternate rotation of grabs
     msg_grab_rotation = [grab_antibash,  //front,
@@ -369,7 +453,8 @@ if (msg_yellow_mode)
                       grab_negative,
                       grab_frostburn,
                       grab_leechseed,
-                      grab_explode];
+                      grab_explode,
+                      grab_prattoss];
 }
 
 exit;

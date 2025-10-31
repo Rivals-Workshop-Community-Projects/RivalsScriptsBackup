@@ -31,6 +31,12 @@ else if (color == 14)
     var sync = get_synced_var(true_player);
     apply_color_slot(1, (sync & 0xF0) >> 4, 2);
     apply_color_slot(2, (sync & 0xF00)>> 8, 1);
+
+    var bgsync = (sync & 0x3C0) >> 6;
+    apply_color_slot(4, bgsync, 4);
+    apply_color_slot(5, bgsync, 5);
+    apply_color_slot(6, bgsync, 6);
+    apply_color_slot(7, bgsync, 7);
 }
 else if (color == 15)
 {
@@ -56,10 +62,13 @@ if (object_index == asset_get("oPlayer") || object_index == asset_get("oTestPlay
     set_character_color_shading(3, 0.0);
 
     //set true colors to pixelblock zones
-    apply_color_slot(4, color, 0);
-    apply_color_slot(5, color, 1);
-    apply_color_slot(6, color, 2);
-    apply_color_slot(7, color, 3);
+    if (color != 14)
+    {
+        apply_color_slot(4, color, 0);
+        apply_color_slot(5, color, 1);
+        apply_color_slot(6, color, 2);
+        apply_color_slot(7, color, 3);
+    }
 }
 
 //============================================

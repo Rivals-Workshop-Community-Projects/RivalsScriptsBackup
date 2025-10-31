@@ -14,7 +14,7 @@ state_timer = 0;
 needs_to_die = false; //kills the article
 
 spawn_time = 15; //time it takes for copy to begin acting like player
-max_lifetime = 12*60; //maximum time before a copy despawns
+max_lifetime = player_id.msg_nspecial_clone_duration; //maximum time before a copy despawns
 death_time = 30; //time it takes for copy to fade out
 
 was_parried = false; //if a clone's hitbox was parried; this detects & triggers a swap

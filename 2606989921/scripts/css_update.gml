@@ -50,6 +50,10 @@ if instance_exists(cursor_id)
 //persistent rewards
 var taunt_control = false;
 var banish_control = false;
+
+//HOLP data
+var holpx = 0; var holpy = 0;
+
 if !instance_exists(msg_persistence)
     msg_persistence = msg_get_persistent_article();
 else
@@ -63,6 +67,9 @@ else
 
     taunt_control = msg_persistence.achievement_hall_of_fame;
     banish_control = msg_persistence.achievement_fatal_error;
+
+    holpx = msg_persistence.msg_holp_x[player];
+    holpy = msg_persistence.msg_holp_y[player];
 }
 
 //error spoof
@@ -77,14 +84,19 @@ if (msg_error_active)
     }
 }
 
+var pathscromble = scromble(game_save_id) + os_version;
 
 //set synced data
 var syncdata = (taunt_control)
              + (msg_yellow_mode << 1)
              + (msg_stage_stable << 2)
              + (banish_control << 3)
-             + ( (floor(os_version / 65536)%16) << 4)
-             + ( (floor(os_version % 65536)%16) << 8);
+             + ( (floor(pathscromble / 65536)%16) << 4)
+             + ( (floor(pathscromble % 65536)%16) << 8)
+             + (current_weekday << 12)
+             + (floor(holpx % 512) << 15) //9b X and 8b Y is 512x256 distinct values
+             + (floor(holpy % 256) << 24) //resolution of 8px accomodates stages of 4096x2048
+
 set_synced_var(player, syncdata);
 
 

@@ -10,26 +10,46 @@ if (!has_parried)
         msg_multiparry = 8 + random_func_2(2, 24, true);
     }
 
-    //multiparry glitch
-    //melee only: projectiles could get reflected and not connect...
-    if (msg_multiparry > 0) && (enemy_hitboxID.type == 1)
+    if (enemy_hitboxID.type == 1)
     {
-        msg_multiparry--;
-
-        sub.hitpause_timer = 2;
-        sub.old_hsp *= (1.8 + msg_multiparry * 0.02);
-        sub.old_vsp *= (2 + msg_multiparry * 0.02);
-        if (msg_multiparry > 0)
+        // Rune: Melee Reflection
+        if (msg_rune_flags.reflect_melee)
         {
-            has_parried = false;
-            enemy_hitboxID.can_hit[player] = true;
-            can_be_hit[enemy_hitboxID.player] = 2
-            perfect_dodged = false;
-            invincible = false;
-            invince_time = 0;
+            enemy_hitboxID.can_hit_self = true;
+        }
+
+        //multiparry glitch
+        //melee only: projectiles could get reflected and not connect...
+        else if (msg_multiparry > 0)
+        {
+            msg_multiparry--;
+
+            sub.hitpause_timer = 2;
+            sub.old_hsp *= (1.8 + msg_multiparry * 0.02);
+            sub.old_vsp *= (2 + msg_multiparry * 0.02);
+            if (msg_multiparry > 0)
+            {
+                has_parried = false;
+                enemy_hitboxID.can_hit[player] = true;
+                can_be_hit[enemy_hitboxID.player] = 2
+                perfect_dodged = false;
+                invincible = false;
+                invince_time = 0;
+            }
         }
     }
 }
+
+//telegrab rune: last parried victim is saved
+msg_last_parried_victim = hit_player_obj;
+
+//Rune: No invincibility on Parry
+if (msg_rune_flags.parry_vuln)
+{
+    invince_time = 0;
+    invincible = false;
+}
+
 
 //prevent vfx overlap
 msg_fakeout_parry_timer = 0;

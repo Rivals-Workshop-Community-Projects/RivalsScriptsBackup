@@ -219,7 +219,7 @@ if ("msg_unsafe_handler_id" in self && other_player_id == msg_unsafe_handler_id)
 #define msg_draw_clones // Version 0
     // Draws every clone you own
     with (obj_article2) if ("is_missingno_copy" in self)
-                        && (client_id == other)
+                        && (client_id == other) && (num == "2")
     {
         var has_gaslit_dodge = ("msg_gaslight_dodge" in other) && other.msg_gaslight_dodge.active
         if (has_gaslit_dodge)

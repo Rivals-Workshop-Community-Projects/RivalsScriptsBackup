@@ -68,3 +68,21 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_GRAVITY, gravity_speed);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_GROUND_FRICTION, 0.2);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_AIR_FRICTION, 0.03);
+
+//RUNE: FLAME BODY (persistent Melee hitbox on self)
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 5);
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_JAB, 3, HG_WIDTH, 30);
+set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 50);
+set_hitbox_value(AT_JAB, 3, HG_SHAPE, 2);
+set_hitbox_value(AT_JAB, 3, HG_PRIORITY, 4);
+set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 0.1);
+set_hitbox_value(AT_JAB, 3, HG_ANGLE, 270);
+set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_JAB, 3, HG_FORCE_FLINCH, 0);
+set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_JAB, 3, HG_EFFECT, 1);
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);

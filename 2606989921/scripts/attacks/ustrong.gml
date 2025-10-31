@@ -60,6 +60,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
+//coin projectile
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_SPRITE, sprite_get("proj_payday"));
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_MASK, -1);
@@ -85,4 +86,3 @@ set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_GROUND_FRICTION, 100);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
-set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);

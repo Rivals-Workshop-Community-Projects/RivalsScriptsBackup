@@ -15,13 +15,23 @@ if !instance_exists(msg_other_update_article)
     }
 }
 
+//==============================================================================
+// Runes
+if (request_stats_update)
+{
+    user_event(3);
+    request_stats_update = false;
+}
+
 //==============================================================
 //First-jump physics: same as shorthop, just with teleport
 //jump_down is the full-hop condition. shield_down prevents breaking wavedash
 //note: tap_jump_pressed lasts 6 frames. if jumpsquat lasts longer, this effect is lost.
-if (state == PS_FIRST_JUMP && state_timer == 0 && (jump_down || tap_jump_pressed) && !shield_pressed)
+if (state == PS_FIRST_JUMP && state_timer == 0 && !shield_pressed)
 {
-    y -= msg_firstjump_height;
+    //Rune: Inverted Fullhop Logic 
+    if (jump_down || tap_jump_pressed) != (msg_rune_flags.invert_fullhop)
+         y -= msg_firstjump_height;
 }
 
 //==============================================================
@@ -90,7 +100,6 @@ if (msg_dair_cooldown_override)
 //==============================================================
 // BSPECIAL "Last move used" detection
 // if starting an attack: gets caught by set_attack (requires prev_attack)
-
 var counts_as_hitpause = (hitpause) || ( (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
                                          && (attack == AT_NTHROW && window == 4) );
 
@@ -98,7 +107,7 @@ var counts_as_hitpause = (hitpause) || ( (state == PS_ATTACK_AIR || state == PS_
 if (!at_prev_special_down && special_down) 
     at_fresh_special_down = true;
 
-if (at_fresh_special_down)
+if (at_fresh_special_down && !msg_bspec_sketch_locked)
 {
     var target = noone;
     var saved_move = -1;
@@ -132,13 +141,24 @@ if (at_fresh_special_down)
         msg_bspecial_last_move.move = saved_move;
         msg_bspecial_last_move.small_sprites = target.small_sprites;
 
-        if (target != self) 
+        if (target != self)
             sound_play(sound_get("eden3"));
         else sound_play(asset_get("mfx_change_color"));
 
         set_ui_element( UI_HUD_ICON, get_char_info( target.player, INFO_HUD));
         set_ui_element( UI_HUDHURT_ICON, get_char_info( target.player, INFO_HUDHURT));
-        
+
+
+        if (!target.msg_is_missingno || saved_move == AT_DSPECIAL_2 )
+        {
+            msg_construct_bspecial_start(target, saved_move); //starts copying
+        }
+        //otherwise: Missingnos can just reuse their own data, no copy
+        else if (target.msg_is_missingno)
+        {
+            msg_bspec_effective_runeflags = target.msg_rune_flags;
+        }
+
         msg_unsafe_effects.bad_vsync.impulse = 4;
         msg_unsafe_effects.bad_vsync.horz_max = 5;
         msg_unsafe_effects.shudder.impulse = 4;
@@ -147,9 +167,16 @@ if (at_fresh_special_down)
     }
 }
 
+if (!msg_bspec_copying_status.done)
+{
+    if (msg_rune_flags.bspecial_amalgam) msg_construct_bspecial_step_AMALGAM();
+                                    else msg_construct_bspecial_step();
+}
+
 at_prev_special_down = special_down;
 at_was_in_hitpause = counts_as_hitpause;
 if (attack != AT_DSPECIAL_2) at_prev_attack = attack;
+
 //for bspecial input:
 //requires spr_dir to have been "backwards" previously
 //special case for WALKTURN and DASHTURN: they get the new spr_dir at the start of the turn
@@ -191,14 +218,14 @@ for (var p = 0; p < array_length(msg_collective_bubble_lockout); p++)
         {
             //reenable bubbles for target
             with (pHitBox) if (orig_player_id == other)
-                           && (attack == AT_FSPECIAL_2)
+                           && (attack == AT_FSPECIAL_2) 
+                           && (hbox_num == 2)
             {
                 can_hit[p] = true;
             }
         }
     }
 }
-
 //==============================================================
 //airtech glitch
 if (msg_air_tech_active && !hitpause)
@@ -225,8 +252,16 @@ if (msg_air_tech_active && !hitpause)
 //passive charge glitch
 if (msg_fstrong_interrupted_timer > 0)
 {
-    msg_fstrong_interrupted_timer++;
-    strong_flashing = (msg_fstrong_interrupted_timer % 10 > 5);
+    if (msg_rune_flags.fstrong_drain_charge)
+    {
+        msg_fstrong_interrupted_timer -= 0.02;
+        strong_flashing = (msg_fstrong_interrupted_timer % 1 > 0.9);
+    }
+    else
+    {
+        msg_fstrong_interrupted_timer++;
+        strong_flashing = (msg_fstrong_interrupted_timer % 10 > 5);
+    }
 }
 //==============================================================
 //stop tracking grab outcome selection if somehow no longer in grab
@@ -322,11 +357,17 @@ if (msg_ustrong_coin_charge > 0)
 
         msg_ustrong_coin_charge = 0;
 
+        msg_blackhole_index = (msg_blackhole_index + 1) % array_length(msg_blackholes);
+        msg_blackholes[msg_blackhole_index].x = 0;
+        msg_blackholes[msg_blackhole_index].y = 0;
+        msg_blackholes[msg_blackhole_index].n = 0;
+
         for (var i = 0; i < num_coins; i++)
         {
             var hb = create_hitbox(AT_USTRONG, 3, best_hitbox.x, best_hitbox.y);
             hb.hsp = hsp_base;
             hb.vsp = vsp_base;
+            hb.update_cardinality = i%2; //for blackhole
             if (i != 0)
             {
                 var spread = (i < 6 ? 1 : 1.5);
@@ -345,6 +386,8 @@ if (msg_dstrong_yoyo.active)
 {
     var best_hitbox = noone;
     with (pHitBox) if (type == 1 && orig_player_id == other)
+                   && ("missingno_hitbox_is_copy_for" not in self 
+                   ||  missingno_hitbox_is_copy_for != noone)
     {
         if (best_hitbox == noone)
         || (best_hitbox.hit_priority < hit_priority)
@@ -380,8 +423,11 @@ if (msg_dstrong_yoyo.active)
             if (is_group_minus) interp_hb.hbox_group = 0;
         }
         
-        msg_dstrong_yoyo.active = false;
-        msg_dstrong_yoyo.visible = false;
+        if (!msg_rune_flags.dstrong_persisting) //See death for removal
+        {
+            msg_dstrong_yoyo.active = false;
+            msg_dstrong_yoyo.visible = false;
+        }
 
         vfx_yoyo_snap.timer = 8;
         vfx_yoyo_snap.x = best_hitbox.x;
@@ -463,6 +509,289 @@ if (gfx_glitch_death_stack > 0)
 }
 
 //=========================================================
+// Rune: broken airdodge
+if (msg_rune_flags.antidodge && state == PS_AIR_DODGE)
+{
+    //make yourself invincible for the duration and allow exiting the state
+    if (!shield_down) state = PS_IDLE_AIR;
+    else invincible = true;
+}
+//=========================================================
+// Rune: rotated hurtbox
+hurtboxID.image_angle = msg_rune_flags.tilted_hurtbox ? (spr_dir * 70) : 0;
+// Rune: downscaled hurtbox
+hurtboxID.image_yscale = msg_rune_flags.smaller_hurtbox ? 0.65 : 1;
+//=========================================================
+// Rune: parry-regrab
+if (state == PS_PARRY) && (has_parried) && msg_rune_flags.dspecial_magicthrow
+&& is_special_pressed(DIR_DOWN)
+{
+    move_cooldown[AT_NTHROW] = 0;
+    set_attack(AT_DSPECIAL);
+    hitpause = false;
+    perfect_hitpause = false;
+    hitstop = 0;
+}
+//=========================================================
+// Rune: Projectile Immunity
+if (attack_invince == 0) && (msg_rune_flags.proj_immunity)
+    attack_invince = 2;
+//=========================================================
+// Rune: Post-dodge Immunity
+if (free) && (msg_rune_flags.persist_dodge) &&(!has_airdodge)
+{
+    attack_invince = true;
+}
+//=========================================================
+// Rune: Jump-Waveland
+if (state == PS_WAVELAND) && (msg_rune_flags.wavebounce) 
+{
+    hsp = 10 * sign(hsp);
+    vsp = -8;
+    state = PS_FIRST_JUMP;
+}
+//=========================================================
+// Rune: Camera-Teching
+if (state == PS_HITSTUN) && (msg_rune_flags.camera_tech)
+                         && (!hitpause && shield_pressed)
+{
+    var cambounds = { l:get_instance_x(asset_get("camera_obj")),
+                      t:get_instance_y(asset_get("camera_obj")),
+                      r:view_get_wview(), b:view_get_hview() }
+    cambounds.l -= cambounds.r/2;
+    cambounds.r += cambounds.l;
+    cambounds.t -= cambounds.b/2;
+    cambounds.b += cambounds.t;
+
+    if (y < cambounds.b) && (y > cambounds.t)
+    {
+        if (hsp < 0) &&  (x > cambounds.l && x+hsp <= cambounds.l)
+        {
+            x = cambounds.l;
+            hsp = 0; vsp = 0; spr_dir = 1;
+            set_state(PS_WALL_TECH);
+        }
+        else if (hsp > 0) &&  (x < cambounds.r && x+hsp >= cambounds.r)
+        {
+            x = cambounds.r;
+            hsp = 0; vsp = 0; spr_dir = -1;
+            set_state(PS_WALL_TECH);
+        }
+    }
+}
+//=========================================================
+// Rune: Direction Locking
+if (msg_rune_flags.direction_lock)
+{
+    if (get_gameplay_time() < 5) msg_directionlock = spr_dir;
+    else
+    {
+        spr_dir = msg_directionlock;
+        
+        if sign(right_down - left_down) == -sign(spr_dir)
+        {
+            if (state == PS_DASH_START)
+            {
+                hsp = -(currently_crawling ? 1.2 : moonwalk_accel)*dash_speed*spr_dir;
+            }
+            else if (state == PS_WALK_TURN)
+            {
+                hsp = clamp(hsp - sign(walk_accel)*(ground_friction+abs(walk_accel))*spr_dir, -walk_speed, walk_speed)
+            }
+        }
+    }
+}
+//=========================================================
+// Rune: Direction Immunity
+if (msg_rune_flags.direction_immune)
+{
+    with (oPlayer) if (self != other)
+    {
+        var towards = (x - other.x);
+        if (abs(towards) > 6) && (sign(towards) * spr_dir > 0)
+        {
+            can_be_hit[other.player] = max(can_be_hit[other.player], 2);
+        }
+    }
+}
+//==============================================================================
+// Rune: SlowStart timer
+if (msg_rune_flags.slow_start) && !msg_slowstart_ended
+{
+    if (get_gameplay_time() > 60*60*3)
+    {
+        request_stats_update = true;
+        msg_slowstart_ended = true;
+
+        //effects
+        sound_play(sound_get("pmd_speed_up"), false, noone, 0.6, 1.07)
+
+        for (var i = 0; i < 16; i++)
+        {
+            var k = spawn_hit_fx(floor(x - 60 + random_func_2(player+i+1, 120, true)),
+                                 floor(y - random_func_2(player+i+5, 20, true) ), hfx_glitchtwinkle_long);
+            k.image_yscale = (2 + random_func_2(player+i+3, 2, true));
+            k.grav = -0.2 - 0.4 * random_func_2(player+i+7, 1, false);
+            k.uses_shader = false;
+            k.depth = depth - 1;
+        }
+    }
+}
+//=========================================================
+// Rune: Taunt stun escape
+if (msg_rune_flags.taunt_stuncancel) && taunt_pressed
+&& (has_airdodge) && (state_cat == SC_HITSTUN) && !hitpause
+{
+    has_airdodge = false;
+    set_state(PS_TUMBLE);
+    clear_button_buffer(PC_TAUNT_PRESSED);
+    sound_play(sound_get("shorthand"));
+    if point_distance(0, 0, hsp, vsp) > 20
+    {
+        vsp *= 0.7; hsp *= 0.7;
+    }
+}
+//=========================================================
+// Rune: Flame Body
+if (msg_rune_flags.flame_body) && (get_gameplay_time() % 5 == 0)
+{
+    create_hitbox(AT_JAB, 3, x, y-40);
+}
+//=========================================================
+// Rune: DStrong Jumpcancel
+if (msg_stored_dstrong && !strong_down)
+{
+    set_attack(AT_DSTRONG);
+    set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    window = 3; window_timer = 0;
+    if (free) vsp = min(vsp, -3);
+    msg_stored_dstrong = false;
+}
+//These two are independent storages, hehehehe
+if (msg_stored_bspec_dstrong && !special_down)
+{
+    set_attack(AT_DSTRONG);
+    set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    window = 3; window_timer = 0;
+    if (free) vsp = min(vsp, -3);
+    msg_stored_bspec_dstrong = false;
+}
+//=======================================================
+// Rune: persistent superarmor
+if (attack == AT_DATTACK) && (msg_rune_dattack_persistent_armor)
+{
+    soft_armor = max(24, soft_armor);
+    hitpause_shock = true;
+}
+//=======================================================
+// Rune: wraparound
+if (msg_rune_flags.horizontal_wraparound)
+{
+    var blastzone_r = get_stage_data(SD_RIGHT_BLASTZONE_X);
+    var blastzone_l = get_stage_data(SD_LEFT_BLASTZONE_X);
+    if (x + hsp > blastzone_r - 12)
+    && (blastzone_r != blastzone_l)
+    {
+        x = blastzone_l + 2;
+        attack_end();
+        sound_play(asset_get("sfx_genesis_tv_static"));
+    }
+    else if (x + hsp < blastzone_l + 12)
+    && (blastzone_r != blastzone_l)
+    {
+        x = blastzone_r - 2;
+        attack_end();
+        sound_play(asset_get("sfx_genesis_tv_static"));
+    }
+}
+
+//Compat specific
+//==============================================================================
+//Kirby
+if (swallowed && instance_exists(enemykirby))
+{
+    while (!msg_bspec_copying_status.done)
+    {
+        if (msg_rune_flags.bspecial_amalgam) msg_construct_bspecial_step_AMALGAM();
+                                        else msg_construct_bspecial_step();
+    }
+
+    var temp = 0;
+    var move = (msg_bspecial_last_move.target == noone) ? AT_NSPECIAL 
+             : (msg_bspecial_last_move.target.msg_is_missingno ? msg_bspecial_last_move.move : AT_DSPECIAL_2);
+    var hitboxes = get_num_hitboxes(move);
+    var windows = clamp(get_attack_value(move, AG_NUM_WINDOWS), 0, 30);
+    with (enemykirby) set_num_hitboxes(AT_EXTRA_3, hitboxes);
+
+    for (var i = 0; i < 100; i++)
+    {
+        //base attack attributes
+        temp = get_attack_value(move, i);
+        //sanity limits
+        if (i == AG_CATEGORY) { temp = 2; } //Always allow usage
+        else if (i == AG_NUM_WINDOWS) { temp = clamp(temp, 0, 30); }
+
+        if (temp != 0) with (enemykirby) set_attack_value(AT_EXTRA_3, i, temp);
+
+        //window data
+        for (var w = 0; w <= windows; w++)
+        {
+            temp =  get_window_value(move, w, i);
+            //softlock prevention: no looping windows
+            if (i == AG_WINDOW_TYPE) { temp = (temp == 9 ? 0 : (temp == 10 ? 8 : temp)) }
+            else if (i == AG_WINDOW_LENGTH) { temp = clamp(temp, 0, 60) }
+
+            if (temp != 0) with (enemykirby) set_window_value(AT_EXTRA_3, w, i, temp);
+        }
+        //hitbox data
+        for (var h = 0; h <= hitboxes; h++)
+        {
+            temp = get_hitbox_value(move, h, i);
+            if (i == HG_HITBOX_Y || i == HG_HITBOX_X)
+            { temp = clamp(temp, -500, 500) }
+
+            if (temp != 0)  with (enemykirby) set_hitbox_value(AT_EXTRA_3, h, i, temp);
+        }
+    }
+    enemykirby.newicon = sprite_get("cmp_stadium_back");
+    swallowed = false;
+
+    //clears BSPEC entirely
+    at_prev_attack = AT_TAUNT;
+    msg_bspecial_last_move.target = noone;
+    msg_bspecial_last_move.move = at_prev_attack;
+    msg_bspecial_last_move.small_sprites = 0;
+    msg_bspec_sketch_locked = false;
+    set_ui_element( UI_HUD_ICON, get_char_info( player, INFO_HUD));
+    set_ui_element( UI_HUDHURT_ICON, get_char_info(  player, INFO_HUDHURT));
+}
+
+//intercept Kirby-Pokeballs to make them behave normally
+var pokeball_sprite = sprite_get("proj_pokeball");
+with (pHitBox) if (type == 2 && !orig_player_id.msg_is_missingno)
+               && (sprite_index == pokeball_sprite)
+{
+    missingno_copied_player_id = player_id;
+    can_hit[player_id.player] = false;
+    can_hit_self = true;
+
+    msg_runeflag_noflush = false;
+    msg_runeflag_control = false;
+    msg_proj_should_slide = false;
+    initial_hsp = hsp;
+    initial_vsp = vsp;
+
+    orig_player_id = other;
+    player_id = other;
+    orig_player = player_id.player;
+    player = player_id.player;
+    my_team = get_player_team(player);
+
+    attack = AT_NSPECIAL;
+}
+
+
+//=========================================================
 //banishment (can't be done in init sadly)
 if (msg_can_banish_cheater)
    && msg_is_online && !get_match_setting(SET_TEAMS)
@@ -472,3 +801,144 @@ if (msg_can_banish_cheater)
     msg_banish_cheater_to_purgatory = true;
     msg_alt_startup = 153;
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define msg_construct_bspecial_start(target_id, target_move) // Version 0
+    // start stealing the move.
+    msg_bspec_copying_status.done = false;
+    //save the target (MIGHT STOP EXISTING! WAT DO)
+    msg_bspec_copying_status.tgt = target_id;
+    msg_bspec_copying_status.move = target_move;
+    msg_bspec_copying_status.index = 0;
+
+    move_cooldown[AT_DSPECIAL_2] = 9; //estimated safe copytime
+
+    var num_hitboxes = 0;
+
+    //collect some info to start off
+    with (target_id)
+    {
+        num_hitboxes = clamp(get_num_hitboxes(target_move), 0, 30);
+    }
+    set_num_hitboxes(AT_DSPECIAL_2, num_hitboxes);
+
+    var temp = 0;
+
+    //Move's main Indexes
+    for (var i = 0; i < 100; i++)
+    {
+        with (target_id) { temp = get_attack_value(target_move, i); }
+        //sanity limits
+        if (i == AG_CATEGORY) { temp = 2; } //Always allow usage
+        else if (i == AG_NUM_WINDOWS) { temp = clamp(temp, 0, 30); }
+
+        if (temp != 0 || !msg_rune_flags.bspecial_amalgam)
+            set_attack_value(AT_DSPECIAL_2, i, temp);
+    }
+
+#define msg_construct_bspecial_step // Version 0
+    if (msg_bspec_copying_status.index >= 32)
+    || !instance_exists(msg_bspec_copying_status.tgt)
+    {
+        msg_bspec_copying_status.done = true;
+        return; //nothing left to do
+    }
+
+    //one steal step; 8th of the buffer
+    var winval = 0;
+    var hitval = 0;
+
+    var LOOP_SIZE = 2;
+    for (var k = 0; k < LOOP_SIZE; k++)
+    {
+        var the_index = msg_bspec_copying_status.index + k;
+        var move = msg_bspec_copying_status.move;
+
+        for (var i = 0; i < 100; i++)
+        {
+            with (msg_bspec_copying_status.tgt)
+            { winval = get_window_value(move, the_index, i);
+              hitval = get_hitbox_value(move, the_index, i); }
+
+            //softlock prevention: no looping windows
+            if (i == AG_WINDOW_TYPE)
+            { winval = winval == 9 ? 0 : (winval == 10 ? 8 : winval) }
+            else if (i == AG_WINDOW_LENGTH)
+            { winval = clamp(winval, 0, 60) }
+            set_window_value(AT_DSPECIAL_2, the_index, i, winval);
+
+            if (i == HG_HITBOX_Y || i == HG_HITBOX_X)
+            { hitval = clamp(hitval, -500, 500) }
+            else if msg_rune_flags.bspecial_copies_wrong
+                     && ( (i == HG_WINDOW)
+                        ||(i == HG_WINDOW_CREATION_FRAME)
+                        ||(i == HG_LIFETIME)
+                        ||(i == HG_BASE_KNOCKBACK)
+                        ||(i == HG_BASE_HITPAUSE) )
+            { hitval++; }
+            set_hitbox_value(AT_DSPECIAL_2, the_index, i, hitval);
+        }
+    }
+
+    msg_bspec_copying_status.index += LOOP_SIZE;
+    msg_bspec_copying_status.done = msg_bspec_copying_status.index >= 32;
+
+#define msg_construct_bspecial_step_AMALGAM // Version 0
+    // THIS variant of the function does not copy over data that is zero.
+    // see Rune: AMALGAM.
+
+    if (msg_bspec_copying_status.index >= 32)
+    || !instance_exists(msg_bspec_copying_status.tgt)
+    {
+        msg_bspec_copying_status.done = true;
+        return; //nothing left to do
+    }
+
+    //one steal step; 8th of the buffer
+    var winval = 0;
+    var hitval = 0;
+
+    var LOOP_SIZE = 2;
+    for (var k = 0; k < LOOP_SIZE; k++)
+    {
+        var the_index = msg_bspec_copying_status.index + k;
+        var move = msg_bspec_copying_status.move;
+
+        for (var i = 0; i < 100; i++)
+        {
+            with (msg_bspec_copying_status.tgt)
+            { winval = get_window_value(move, the_index, i);
+              hitval = get_hitbox_value(move, the_index, i); }
+
+            if (winval != 0)
+            {
+                //softlock prevention: no looping windows
+                if (i == AG_WINDOW_TYPE)
+                { winval = winval == 9 ? 0 : (winval == 10 ? 8 : winval) }
+                else if (i == AG_WINDOW_LENGTH)
+                { winval = clamp(winval, 0, 60) }
+                set_window_value(AT_DSPECIAL_2, the_index, i, winval);
+            }
+
+            if (hitval != 0)
+            {
+                if (i == HG_HITBOX_Y || i == HG_HITBOX_X)
+                { hitval = clamp(hitval, -500, 500) }
+                else if msg_rune_flags.bspecial_copies_wrong
+                     && ( (i == HG_WINDOW)
+                        ||(i == HG_WINDOW_CREATION_FRAME)
+                        ||(i == HG_LIFETIME)
+                        ||(i == HG_BASE_KNOCKBACK)
+                        ||(i == HG_BASE_HITPAUSE) )
+                { hitval++; }
+                set_hitbox_value(AT_DSPECIAL_2, the_index, i, hitval);
+            }
+        }
+    }
+
+    msg_bspec_copying_status.index += LOOP_SIZE;
+    msg_bspec_copying_status.done = msg_bspec_copying_status.index >= 32;
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

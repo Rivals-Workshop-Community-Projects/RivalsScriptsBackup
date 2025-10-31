@@ -78,7 +78,7 @@ if (!msg_low_fps_mode)
         msg_background_draw(asset_get("fx_ko_space"), 3, draw_x, draw_y + current_time/12);
         gpu_set_colorwriteenable(cw[0], cw[1], cw[2], cw[3]);
     }
-    else msg_background_draw(glitch_bg_spr, msg_effective_alt)
+    else msg_background_draw( glitch_bg_spr, (msg_effective_alt == 14 ? (get_synced_var(player) & 0x3C0) >> 6 : msg_effective_alt) )
 
     msg_prep_negative_draw();
 
@@ -93,6 +93,10 @@ if (!msg_low_fps_mode)
 else
 {
     msg_reroll_random();
+
+    shader_start();
+    msg_draw_clones();
+    shader_end();
 }
 
 if (vfx_yoyo_snap.timer > 0)
@@ -380,7 +384,7 @@ if (vfx_yoyo_snap.timer > 0)
 #define msg_draw_clones // Version 0
     // Draws every clone you own
     with (obj_article2) if ("is_missingno_copy" in self)
-                        && (client_id == other)
+                        && (client_id == other) && (num == "2")
     {
         var has_gaslit_dodge = ("msg_gaslight_dodge" in other) && other.msg_gaslight_dodge.active
         if (has_gaslit_dodge)

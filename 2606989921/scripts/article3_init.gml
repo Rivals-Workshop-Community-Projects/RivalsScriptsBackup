@@ -31,6 +31,9 @@ achievement = {
 
 msg_coinhits = 0; //missingnos can increment this for each coin hit landed in battle
 
+msg_holp_x = [0,0,0,0,0]; //HOLP rune persists across matches
+msg_holp_y = [0,0,0,0,0]; //Zero is for online, and needs a bit more care...
+
 //music brokenness status
 music_request_breaking = noone; //set to 0 for "fix", 1 for "break"
 music_is_broken = false; //0 is normal, 1 is broken
@@ -42,7 +45,7 @@ sound_request_breaking = noone; //set to 0 for "fix", anything above for "break 
 sound_is_broken = false; //0 is normal, 1 is broken
 sound_to_break_with = asset_get("sfx_abyss_rumble");
 
-//sound brokenness status
+//graphics brokenness status
 stage_request_breaking = noone; //set to 0 for "fix", 1 for "break"
 stage_is_broken = false; //0 is normal, 1 is broken
 stage_broken_kind = 0;
@@ -75,6 +78,9 @@ msg_unsafe_random = current_time;
 msg_unsafe_paused_timer = 0;
 
 
+msg_dust_bandaid_num = 0; //two additional helper articles just to clamp depth 7
+msg_dustfx_bandaid_1 = noone;
+msg_dustfx_bandaid_2 = noone;
 
 //=======================================================
 // F5 in practice mode kills these articles. needs a backup

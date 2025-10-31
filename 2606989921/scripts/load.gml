@@ -45,7 +45,7 @@ sprite_change_offset("nspecial_alt3", 15, 46);
 sprite_change_offset("fspecial", 29, 42, true);
 sprite_change_offset("fspecial_air", 29, 37);
 sprite_change_offset("uspecial", 41, 61, true);
-sprite_change_offset("grab", 27, 45, true);
+sprite_change_offset("grab", 37, 56, true);
 sprite_change_offset("taunt", 23, 49);
 sprite_change_offset("taunt_alt1", 25, 48);
 sprite_change_offset("taunt_alt2", 28, 48);
@@ -76,7 +76,7 @@ sprite_change_collision_mask("proj_payday", false, 2, 12, 12, 20, 20, 2);
 sprite_change_collision_mask("proj_payday_broken", false, 2, 12, 12, 20, 20, 1);
 
 sprite_change_offset("orca_fsmash_puddle", 20, 20);
-sprite_change_offset("orca_fsmash_puddle_hurt", 20, 20);
+sprite_change_offset("orca_fsmash_puddle_hurt", 20, 20); //INHERENT PRECISE BECAUSE IT IS NAMED HURT!
 
 sprite_change_offset("banish", 28, 52);
 

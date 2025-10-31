@@ -203,6 +203,8 @@ msg_init_locality();
         msg_prev_status = { state:0, x:0, y:0, hsp:0, vsp:0 };
         //inverted collider
         msg_inverted_collider_timer = 0;
+        //Perish-Song
+        msg_perish_song_timer = 0;
 
         msg_clone_microplatform = noone; //clone pseudoground
         msg_clone_tempswaptarget = noone; //where the true player must return after a special interaction

@@ -137,6 +137,15 @@ msg_can_control_taunt  = (get_synced_var(player) & 0x01) > 0;
 msg_yellow_mode        = (get_synced_var(player) & 0x02) > 0;
 msg_stability_mode     = (get_synced_var(player) & 0x04) > 0;
 msg_can_banish_cheater = (get_synced_var(player) & 0x08) > 0;
+msg_stored_weekday     = clamp((get_synced_var(player) >> 12) & 0x07, 0, 6);
+
+//for a bit of bonus info on the HUD...
+strong_charge = msg_stored_weekday;
+
+//Rune: persitent HOLP
+msg_holp_pos = { x:0, y:0 } //relative to current slice of 4096x2048. zero means none.
+msg_holp_pos.x = ((get_synced_var(player) >> 15) & 0x1FF) * 8;
+msg_holp_pos.y = ((get_synced_var(player) >> 24) & 0x0FF) * 8;
 
 if (msg_yellow_mode)
 {
@@ -154,9 +163,172 @@ if (msg_yellow_mode)
 msg_banish_cheater_to_purgatory = false;
 
 //=========================================================
+//Rune Flags (see also user_event3.gml)
+request_stats_update = true;
+
+var runephabet = "ABCDEFGHIJKLMNOX";
+var msg_has_rune = {}; //temporary buffer
+for (var i = 0; i < string_length(runephabet); i++)
+{
+    var rune_char = string_char_at(runephabet, i+1);
+    variable_instance_set(msg_has_rune, rune_char, has_rune(rune_char));
+}
+var colorcheck = false;
+if (msg_has_rune.C && msg_has_rune.O)
+{
+    colorcheck = true;
+    variable_instance_set(msg_has_rune, string_char_at(runephabet, get_player_color(player)+1), true);
+}
+if (msg_has_rune.N && msg_has_rune.M)
+{
+    var name = string_upper(string_letters(get_player_name(player)));
+    for (var i = 0; i < string_length(name); i++)
+    {
+        var name_char = string_char_at(name, i+1);
+        variable_instance_set(msg_has_rune, name_char,
+            name_char in msg_has_rune ? !variable_instance_get(msg_has_rune, name_char) : true );
+    }
+}
+if (msg_has_rune.C && msg_has_rune.O) && !colorcheck
+    variable_instance_set(msg_has_rune, string_char_at(runephabet, get_player_color(player)+1), true);
+
+msg_hud_rune_info = 0;
+for (var i = 0; i < string_length(runephabet); i++)
+{
+    var rune_char = string_char_at(runephabet, i+1);
+    msg_hud_rune_info += (!!variable_instance_get(msg_has_rune, rune_char) << i);
+}
+var EZHEX = "0123456789ABCDEF";
+msg_hud_rune_info = string_char_at(EZHEX, 1+ floor(msg_hud_rune_info/4096) %16) 
+                  + string_char_at(EZHEX, 1+ floor(msg_hud_rune_info/256) %16) 
+                  + string_char_at(EZHEX, 1+ floor(msg_hud_rune_info/16) %16) 
+                  + string_char_at(EZHEX, 1+       msg_hud_rune_info    %16);
+
+//It's a secret to everybody!
+var r = array_create(2000);
+recombobulate_discombobulator(msg_has_rune, r);
+
+msg_rune_flags = 
+{
+    antifriction: r[0x12D],
+    antiwalk: r[0x1D9],
+    antijump: r[0x47B],
+    antidodge: r[0x11],
+    antiroll: r[0x21],
+    antisprite: r[0x13F],
+    anti_di: r[0x0B],
+    invert_fullhop: r[0x16],
+    wavebounce: r[0x27],
+    strong_grav: r[0x37],
+    morejumps: r[0xD9],
+    bonus_stock: r[0x5ED],
+    not_very_effective: r[0x197],
+    rough_skin: r[0x1E1],
+    wonder_guard: r[0xCD],
+    slow_start: r[0x5F],
+    flame_body: r[0x0D],
+    recoil: r[0x1C3],
+    tilted_hurtbox: r[0xCB],
+    smaller_hurtbox: r[0x05],
+    persist_dodge: r[0x9B],
+    reflect_melee: r[0x5D],
+    piercing_melee: r[0x2BF],
+    camera_tech: r[0x23],
+    parry_vuln: r[0x6E3],
+    horizontal_wraparound: r[0x06],
+    proj_larger: r[0x0F],
+    proj_sliding: r[0x73],
+    proj_immunity: r[0xB9],
+    whiff_storage: r[0x215],
+    direction_lock: r[0x20F],
+    direction_immune: r[0x637],
+    check_hit_opponent: r[0x0E],
+    blastzone: r[0x2C9],
+    holp: r[0xFD],
+
+    turbo_ff: r[0x29B],
+    turbo_tt: r[0xF7],
+    turbo_ss: r[0x1B5],
+    turbo_weekday: false, //special case: calulated in userevent3
+
+    ntilt_freesnap: r[0x22],
+    ntilt_verticality: r[0x4DF],
+    ntilt_snapforward: r[0x03],
+    utilt_constant: r[0x193],
+    utilt_stuck: r[0x143],
+    dtilt_platform: r[0x155],
+    dtilt_permanent_sdi: r[0x4D],
+    dattack_forward_blj: r[0x26],
+    dattack_armored: r[0x24D],
+
+    fstrong_port_priority: r[0x81],
+    fstrong_easy_charge: r[0x29],
+    fstrong_drain_charge: r[0x22F],
+    fstrong_burnconsume: r[0x2B],
+    fstrong_critical: r[0x7B],
+    dstrong_movement: r[0x52],
+    dstrong_persisting: r[0x55],
+    dstrong_firefang: r[0x41],
+    dstrong_jumpcancel: r[0x1A],
+    ustrong_coin_bounce: r[0x2E],
+    ustrong_limitless: r[0x383],
+    ustrong_repeating: r[0x91],
+    ustrong_arrowing: r[0x39],
+    ustrong_blackhole: r[0x57],
+
+    nair_poison: r[0x56],
+    nair_nofollowup: r[0x02],
+    nair_landinglag: r[0x5B],
+    bair_paralysis: r[0x85],
+    bair_disjoint: r[0x12B],
+    bair_growth: r[0x179],
+    bair_mirrorport: r[0x15],
+    fair_angled: r[0x1F],
+    fair_sumdamage: r[0x227],
+    fair_reversed: r[0x535],
+    uair_infinite: r[0x1ED],
+    uair_accelerate: r[0x3DD],
+    uair_tipper: r[0x1D],
+    dair_cloning: r[0x3A],
+    dair_plummet: r[0x103],
+    dair_bury: r[0x3E],
+
+    nspecial_longerclones: r[0x2B9],
+    nspecial_nocloneflush: r[0x11F],
+    nspecial_rehits: r[0x4A5],
+    nspecial_controlled: r[0x30B],
+    fspecial_elemental: r[0xDD],
+    fspecial_hydro_cannon: r[0xD1],
+    fspecial_playerthrow: r[0x431],
+    fspecial_everything: r[0x33],
+    dspecial_deathbox: r[0x353],
+    dspecial_magicthrow: r[0x331],
+    dspecial_downbroken: r[0x2DB],
+    dspecial_variantset: r[0x25],
+    dspecial_rotate: r[0xBB],
+    dspecial_disablefix: r[0x4A],
+    dspecial_painsplit: r[0x4F7],
+    dspecial_pocket: r[0xA1],
+    uspecial_noprat: r[0x07],
+    uspecial_reversed: r[0x17],
+    uspecial_charged: r[0x3AF],
+
+    bspecial_switch: r[0x8F],
+    bspecial_sketch: r[0x275],
+    bspecial_amalgam: r[0x13],
+    bspecial_copies_wrong: r[0x45],
+
+    taunt_teleport: r[0x187],
+    taunt_stuncancel: r[0x77],
+    taunt_perish_song: r[0x0A],
+}
+
+//=========================================================
 // Balance variables
 msg_ntilt_accel = 1.05;
 msg_ntilt_maxspeed = dash_speed * 2.2;
+
+msg_nspecial_clone_duration = 12*60;
 
 msg_fspecial_bubble_lockout = 8;
 msg_fspecial_bubble_random_hsp_boost = 5;
@@ -176,6 +348,8 @@ msg_grab_collider_duration = 60*16; //how long to stay in inverted-collider mode
 msg_grab_antibash_force = 12; //how far to send Missingno after the bash
 msg_grab_vanish_duration = 60*8; //how long players are vanished for (with slight variance)
 
+msg_grab_pocket_radius = 80; //see POCKET rune
+
 //=========================================================
 // Attack variables
 at_prev_free = free;
@@ -184,10 +358,14 @@ at_prev_attack = AT_TAUNT;
 at_prev_special_down = false; //edge detection. set to true by either update or set_attack
 at_fresh_special_down = false; //becomes true on press, can become false by release, or something else
 at_was_in_hitpause = false;
+at_prev_x = x;
 
+msg_bspec_copying_status = { tgt:self, move:AT_JAB, done:true, index:0 };
 msg_bspecial_last_move = 
 { target:noone, move:AT_TAUNT, small_sprites:0 }; //if target is noone, actually uses at_prev_attack
 msg_is_bspecial = false; //this move was input through BSPECIAL; extra considerations apply.
+msg_bspec_effective_runeflags = msg_rune_flags; //Bspec-moves need to use these
+set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 1); //default value (see Amalgamations)
 
 msg_air_tech_active = false; //if true, allows teching in midair. see update
 
@@ -232,6 +410,7 @@ msg_grab_queue = [msg_grab_broken_outcome];
 msg_grab_selected_index = noone;  //selected index within msg_grab_rotation
 msg_grab_selection_timer = 0;
 msg_grab_last_outcome = -1; //"-1" is a signal to use the RNG one
+msg_last_performed_grab = "FF" //filled by the name of the last grab done
 
 //estimated maximum of particles at once (4/second, 2 at once, per victim)
 //if you somehow exceed that number, it will start overwriting previous ones and... well, let's say its an intentional bug.
@@ -268,6 +447,47 @@ msg_other_update_article = noone; //article with update hook for consistent de/b
 msg_common_init();
 
 //=========================================================
+//Bonus rune effect data
+msg_last_parried_victim = noone; //telegrab rune
+msg_bspec_sketch_locked = false; //once used, never changes (once per life)
+msg_directionlock = spr_dir; //prevents ANY turning
+msg_slowstart_ended = false; //wetehr slowstart delay has elapsed
+msg_stored_dstrong = false; //edge-detection of followup to DStrong
+msg_stored_bspec_dstrong = false; //same as above, but Special input is considered
+msg_pocket_slot_content = noone; //shared by all MissingNos.
+msg_rune_dattack_persistent_armor = false; //wether this last dattack grants armor.
+msg_rune_whiff_storage = -1; //bonus damage stored from whiffs
+msg_perishsong_used = false; //TAUNT: first use, pulses every two seconds, then kills at the 8th
+msg_perishsong_max = 9*60;
+
+msg_blackhole_index = 0;
+msg_blackholes = 
+[
+    { x:0, y:0, n:0 }, //centroid of bugged coins + number of coins magnetized
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 },
+    { x:0, y:0, n:0 }
+]
+
+if (!custom_clone)
+{
+    msg_exploded_stock_abyss_freebie = 
+        get_match_setting(SET_RUNES) && (get_player_stocks(player) == 1)
+
+    // Rune: Bonus Stock
+    if (msg_rune_flags.bonus_stock)
+        set_player_stocks(player, get_player_stocks(player) + 1)
+
+    // Rune: Blast Zone
+    if (msg_rune_flags.blastzone)
+        room_width += get_stage_data(SD_SIDE_BLASTZONE);
+}
+
+//=========================================================
 // Visual effects
 AG_MSG_ALT_SPRITES = 39; //Array of alternate sprites to use. see set_attack.gml
 
@@ -277,6 +497,7 @@ no_sprite = asset_get("empty_sprite");
 error_sprite_x = asset_get("net_disc_spr");
 error_sprite_b = asset_get("solid_32x32");
 hfx_glitchtwinkle = hit_fx_create(sprite_get("microplatform"), 4);
+hfx_glitchtwinkle_long = hit_fx_create(sprite_get("microplatform"), 24);
 
 msg_initial_hud_spr = get_char_info(player, INFO_HUD);
 msg_initial_hudhurt_spr = get_char_info(player, INFO_HUDHURT);
@@ -352,7 +573,7 @@ msg_spawn_clone_effects[0] = { vsp:0, x:0, y:0, tx:0, ty:0, state:noone, timer:0
 
 
 //removes special rendering shenanigans
-msg_low_fps_mode = false; //pointless?
+msg_low_fps_mode = msg_stability_mode;
 
 msg_persistence = msg_get_persistent_article();
 
@@ -385,7 +606,30 @@ for (var i = 0; i < 20; i++)
 //Hypercam
 uhc_victory_quote = "An unspecified error occurred while recording.";
 
+//Kirby
+enemykirby = noone;
+kirbyability = 16;
+swallowed = false;
+
+//Galarian Koffing - INCOMPLETE: does not trigger correctly; see koffing's side of things
+var random_abilities_names = ["'l) m) ZM", "Cooltrainer♀", "99||9"]
+neutralized_ability = random_abilities_names[current_time % 3];
+koffing_gas_active = 0;
+
 //=========================================================
+#define recombobulate_discombobulator(runes, arr)
+{
+    var r = "ABCDEFGHIJKLMNO";
+    var p = [0x07,2,0x2B,1,11,0x11,13,0x13,0x1F,23,29,0x29,3,37,5];
+    var ri = ""; var rj = "";
+
+    for (var i = 0; i < string_length(r); i++)
+    for (var j = i; j < string_length(r); j++)
+    {
+        ri = string_char_at(r, i+1); rj = string_char_at(r, j+1);
+        arr[@p[i]*p[j]] = variable_instance_get(runes, rj)*variable_instance_get(runes, ri);
+    }
+}
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
@@ -581,6 +825,8 @@ uhc_victory_quote = "An unspecified error occurred while recording.";
         msg_prev_status = { state:0, x:0, y:0, hsp:0, vsp:0 };
         //inverted collider
         msg_inverted_collider_timer = 0;
+        //Perish-Song
+        msg_perish_song_timer = 0;
 
         msg_clone_microplatform = noone; //clone pseudoground
         msg_clone_tempswaptarget = noone; //where the true player must return after a special interaction

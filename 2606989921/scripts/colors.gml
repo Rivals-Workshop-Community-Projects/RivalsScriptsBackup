@@ -115,12 +115,6 @@ set_color_profile_slot(13, 1, 248,   8,   8);
 set_color_profile_slot(13, 2, 248, 248,   0);
 set_color_profile_slot(13, 3, 255, 255, 255);
 
-//0x_?
-set_color_profile_slot(14, 0,  30,  30,  30);
-set_color_profile_slot(14, 1, 128, 128, 128); //see synced var
-set_color_profile_slot(14, 2, 170, 170, 170); //see synced var
-set_color_profile_slot(14, 3, 255, 255, 230);
-
 //for low-fps mode undefined (doesnt affect slot zero)
 for (var i = 1; i < num_colors; i++)
 {
@@ -129,6 +123,17 @@ for (var i = 1; i < num_colors; i++)
    steal_color_profile_slot(i, 6, i, 2);
    steal_color_profile_slot(i, 7, i, 3);
 }
+
+//0x_?  (slots 12-4567 actually depend on synced var)
+set_color_profile_slot(14, 0,  30,  30,  30);
+set_color_profile_slot(14, 1, 128, 128, 128);
+set_color_profile_slot(14, 2, 170, 170, 170);
+set_color_profile_slot(14, 3, 255, 255, 230);
+set_color_profile_slot(14, 4, 255, 255, 230);
+set_color_profile_slot(14, 5, 170, 170, 170);
+set_color_profile_slot(14, 6, 128, 128, 112);
+set_color_profile_slot(14, 7,  30,  30,  30);
+
 
 #define steal_color_profile_slot(target_color, target_shade, source_color, source_shade)
 {

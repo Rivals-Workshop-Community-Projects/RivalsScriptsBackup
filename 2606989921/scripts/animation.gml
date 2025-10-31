@@ -78,7 +78,7 @@ switch (state)
     case PS_WALK_TURN:
     {
         sprite_index = idle_sprite;
-        if (abs(hsp) > 0.2)
+        if (abs(hsp) > 0.2) && !msg_rune_flags.direction_lock
         {
             msg_unsafe_effects.bad_vsync.gameplay_timer = 4;
             msg_unsafe_effects.bad_vsync.timer = 1;
@@ -170,7 +170,13 @@ switch (state)
     case PS_TECH_BACKWARD:
     case PS_AIR_DODGE:
     {
-        if (state_timer == 4) && !msg_is_local
+        if (state == PS_AIR_DODGE) && (msg_rune_flags.antidodge)
+        {
+            sprite_index = sprite_get("roll_forward");
+            if (state_timer == 0 && !hitpause) sound_play(air_dodge_sound);
+            msg_gaslight_dodge.active = false;
+        }
+        else if (state_timer == 4) && !msg_is_local
         {
             var movement_angle = (state == PS_AIR_DODGE) ? ((360+135) - 45*(air_dodge_dir)) % 360
                                                          : (90 + 90*spr_dir);
@@ -304,6 +310,11 @@ switch (state)
             {
                 image_index = 1 + get_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START);
             }
+            else if (window == 2) && !free && (abs(hsp) > 1)
+            {
+                msg_unsafe_effects.crt.impulse = 4;
+                msg_unsafe_effects.crt.maximum = floor(2 * abs(hsp));
+            }
 
             if (image_index == 8)
             {
@@ -312,6 +323,7 @@ switch (state)
                 msg_unsafe_effects.shudder.freq = 2;
                 msg_unsafe_effects.shudder.horz_max = 20;
             }
+
         } break;
 //==================================================================
         case AT_USTRONG:
@@ -359,7 +371,11 @@ switch (state)
         {
             if (window == 2)
             {
-                image_index = msg_fspecial_charge + 2;
+                image_index = clamp(msg_fspecial_charge, 0, 2) + 2;
+                if (msg_fspecial_charge > 2) && (get_gameplay_time() % 10 > 5)
+                {
+                    strong_flashing = true;
+                }
             }
         } break;
 //==================================================================
@@ -453,6 +469,22 @@ switch (state)
                         }
                     }
                 } break;
+
+                case 99: //Perish song
+                {
+                    if (window == 1)
+                    {
+                        var hfx = random_func(11, room_width, true);
+                        var hfy = room_height * window_timer/90 + random_func(12, 32, true);
+                        spawn_hit_fx(hfx, hfy, HFX_POM_NOTE_FALLOFF);
+                    }
+                    else if (window == 2) && (window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) - 1)
+                    {
+                        window = 3;
+                        window_timer = 0;
+                    }
+                }break;
+                
                 case 2: //majora
                 {
                     if (window == 1)
@@ -792,6 +824,7 @@ msg_unsafe_trail_active = do_glitch_trail;
 if (do_glitch_trail && msg_low_fps_mode)
 {
     //sparkles
+    spawn_debuff_twinkle(hfx_glitchtwinkle, x, y - 30, 40);
 }
 
 //HUD order detection
@@ -803,12 +836,19 @@ if (msg_do_hud_position_check && get_gameplay_time() > 5)
 
 //stability mode
 if (get_gameplay_time() > 90)
+&& instance_exists(msg_persistence)
 {
     msg_persistence.stage_stability_mode |= msg_stability_mode;
 }
 
 //fakeout parry
 if (msg_fakeout_parry_timer > 0) msg_fakeout_parry_timer--;
+
+//Rune: inverted small_sprites
+if (msg_rune_flags.antisprite)
+{
+    small_sprites = -small_sprites - 2;
+}
 
 //==================================================================
 //Stage-compatibility setup
@@ -867,6 +907,16 @@ if (get_gameplay_time() > 5)
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
+#define spawn_debuff_twinkle(vfx, pos_x, pos_y, width) // Version 0
+    // THXNOZ
+    var kx = pos_x - (width / 2) + random_func(1, 1, false) * width;
+    var ky = pos_y - (width / 2) + random_func(2, 1, false) * width;
+
+    var k = spawn_hit_fx(floor(kx), floor(ky), vfx);
+    k.spr_dir = 4 + 4*random_func(5, 2, true);
+    k.image_yscale = (2 + random_func(6, 2, true));
+    k.draw_angle = random_func(3, 4, true) * 90;
+
 #define commit_asset_murder(entity) // Version 0
     if instance_exists(entity) with (oPlayer)
     {

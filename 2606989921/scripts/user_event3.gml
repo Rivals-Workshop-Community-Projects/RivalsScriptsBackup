@@ -1,146 +1,78 @@
-#macro AT_BSPECIAL AT_DSPECIAL_2
+//rune stat adjustments
 
-
-if (attack == AT_DSPECIAL && move_cooldown[AT_NTHROW] < 1) attack = AT_NTHROW; //GRAB
-else if (attack == AT_JAB) attack = AT_FTILT; //NTILT
-else if (attack == AT_DATTACK && down_down) attack = AT_DTILT;
-
-//==========================================================
-// BSPECIAL input
-if (attack == AT_FSPECIAL && (spr_dir * at_prev_spr_dir < 0))
+//=========================================================
+//Negative airfriction
+air_friction = (msg_rune_flags.antifriction ? -0.07 : 0.07);
+//=========================================================
+//Antijumping
+fast_fall =   (msg_rune_flags.antijump ? -7 : 16);
+djump_speed = (msg_rune_flags.antijump ? -7 : (msg_yellow_mode ? 8 : 9) );
+//=========================================================
+//Negative walking
+walk_accel = (msg_rune_flags.antiwalk ? -0.1 : 0.1);
+//=========================================================
+//Antiroll
+roll_forward_max    = (msg_rune_flags.antiroll ? -2.5 : 7);
+roll_backward_max   = (msg_rune_flags.antiroll ? -2.5 : 7);
+//=========================================================
+//High Gravity
+max_fall      = (msg_rune_flags.strong_grav ? 7 : 12);
+gravity_speed = (msg_rune_flags.strong_grav ? 1.0 : 0.5);
+djump_speed  *= (msg_rune_flags.strong_grav ? 1.5 : 1);
+jump_speed    = (msg_rune_flags.strong_grav ? 9.5 : 6.5);
+short_hop_speed = jump_speed;
+//=========================================================
+//Bonus Midair jumps
+max_djumps = (msg_rune_flags.morejumps ? 4 : 2);
+//=========================================================
+//SLOW START
+if (msg_slowstart_ended)
 {
-    attack = AT_BSPECIAL; //conversion
-    spr_dir = sign(at_prev_spr_dir); //dont flip
-    clear_button_buffer(PC_SPECIAL_PRESSED);
-}
-
-// Rune: Flip NSpec/BSpec inputs
-if (msg_rune_flags.bspecial_switch)
-{
-         if (attack == AT_BSPECIAL) attack = AT_NSPECIAL;
-    else if (attack == AT_NSPECIAL) attack = AT_BSPECIAL;
-}
-
-//=== Input management end ===
-
-if (attack == AT_BSPECIAL) && !(move_cooldown[AT_BSPECIAL] > 0)
-{
-    if (msg_bspecial_last_move.target == noone)
-    {
-        attack = at_prev_attack; //why? failsafe?
-
-        if (msg_rune_flags.bspecial_sketch)
-        {
-            //take info about this move down
-            msg_bspecial_last_move.target = self;
-            msg_bspecial_last_move.move = attack;
-            msg_bspecial_last_move.small_sprites = small_sprites;
-        }
-    }
-    else if (msg_bspecial_last_move.target.msg_is_missingno)
-    {
-        attack = msg_bspecial_last_move.move;
-        if (!attack == AT_BSPECIAL)
-        {
-            msg_bspec_effective_runeflags = msg_bspecial_last_move.target.msg_rune_flags;
-        }
-    }
-    else //move had been copied already
-    {
-        sound_play(sound_get("eden3"), false, noone, 0.6, 1.4 + GET_RNG(6, 0x07)/6.0);
-    }
-
-    move_cooldown[attack] = 0; //cannot prevent use of BSPEC, whatever it is at the moment
-    set_attack_value(attack, AG_CATEGORY, 2); //Allowed at any time because of special input
-    msg_is_bspecial = true;
-
-    //Rune: SKETCH, forces Bspec to stick to this version forever
-    if (msg_rune_flags.bspecial_sketch)
-    && !(msg_bspecial_last_move.target.msg_is_missingno && msg_bspecial_last_move.move == AT_DSPECIAL) //dont lock the broken B move
-        msg_bspec_sketch_locked = true;
+    walk_speed  = (msg_yellow_mode ? 5.25 : 5.55 );
+    dash_speed  = (msg_yellow_mode ? 8.15 : 9.25 );
+    crawl_speed = (msg_yellow_mode ? 6.5  : 7.2  );
+    air_max_speed = 7.5;
 }
 else
 {
-    reset_attack_value(attack, AG_CATEGORY);
-    msg_is_bspecial = false;
+    walk_speed  = (msg_yellow_mode ? 3    : 3.15 );
+    dash_speed  = (msg_yellow_mode ? 5.75 : 6.25 );
+    crawl_speed = (msg_yellow_mode ? 4.5  : 5    );
+    air_max_speed = 5;
 }
-
-setup_rune_on_move(attack, msg_is_bspecial ? msg_bspec_effective_runeflags : msg_rune_flags)
-
-if msg_rune_flags.whiff_storage && !(move_cooldown[attack] > 0)
-{
-    msg_rune_whiff_storage++;
-}
-
-//"morph" effect attacks
-if (attack == AT_BSPECIAL)
-|| (attack == AT_NSPECIAL)
-{
-    msg_unsafe_effects.quadrant.gameplay_timer = 1;
-    msg_unsafe_effects.quadrant.freq = 1;
-    msg_unsafe_effects.quadrant.impulse = 4;
-    msg_unsafe_effects.shudder.impulse = 4;
-}
-
-//===========================================================
-// RNG for Alternative sprites
-msg_alt_sprite = noone;
-var list = get_attack_value(attack, AG_MSG_ALT_SPRITES);
-if (list != 0) switch (attack)
-{
-    case AT_FSTRONG:
-        var active = GET_RNG(10, 0x07) < 1;
-        if (active) msg_alt_sprite = list[0];
-        set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get(active ? "sfx_burnconsume" : "sfx_ell_arc_small_missile_ground"));
-    break;
-    case AT_NAIR:
-        //TBD: "seen" criteria tracked across game session
-        var active = GET_RNG(10, 0x07) < 3;
-        if (active) msg_alt_sprite = list[0];
-    break;
-    case AT_FAIR:
-        //if not online; check if self has negative percent
-        var active = (!msg_is_online || !msg_is_local)
-                  && 0 > get_player_damage(msg_is_online ? msg_get_local_player() : player);
-        if (active) msg_alt_sprite = list[0];
-        set_window_value(AT_FAIR, 1, AG_WINDOW_SFX,asset_get( active ? "sfx_clairen_arc_lose" : "sfx_swipe_weak2"));
-    break;
-    case AT_DAIR:
-        var active = GET_RNG(10, 0x07) < 3;
-        if (active) set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_SPRITE, list[1]);
-              else  set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_SPRITE, list[0])
-    break;
-    case AT_NSPECIAL:
-        var rng = GET_RNG(20, 0x03);
-        if (rng < array_length(list)) msg_alt_sprite = list[rng];
-    break;
-    case AT_TAUNT:
-        msg_alt_taunt_flag = 0; //default
-        reset_window_value(AT_TAUNT, 1, AG_WINDOW_SFX);
-        var rng = GET_RNG(10, 0x0F);
-
-        if (msg_can_control_taunt) && (up_down - down_down != 0)
-            rng = (up_down ? 4 : 1);
-
-        if (msg_is_bspecial ? msg_bspec_effective_runeflags.taunt_perish_song : msg_rune_flags.taunt_perish_song)
-        && (!msg_perishsong_used) //still available
-        {
-            set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("perish_song"));
-            rng = 9; //negate change
-            msg_alt_taunt_flag = 99;
-        }
-        else if (msg_is_bspecial ? msg_bspec_effective_runeflags.taunt_teleport : msg_rune_flags.taunt_teleport)
-            rng = clamp(rng, 3, 9);
+//=========================================================
+//Turbo-weekdays
+var turboweek = [
+    msg_rune_flags.turbo_ff,
+    false,
+    msg_rune_flags.turbo_tt,
+    msg_rune_flags.turbo_ss,
+    msg_rune_flags.turbo_tt,
+    msg_rune_flags.turbo_ff,
+    msg_rune_flags.turbo_ss,
+]
+msg_rune_flags.turbo_weekday = turboweek[msg_stored_weekday]
+                           && !get_match_setting(SET_TURBO);
+//=========================================================
+//Break Airdodge
+air_dodge_type = msg_rune_flags.antidodge ? "Cooltrainer♀" : "melee";
+//=========================================================
+//"Not Very Effective"
+damage_scaling = msg_rune_flags.not_very_effective ? 0.5 : 1;
+//=========================================================
+//Grid-affecting runes
+setup_rune_on_move(AT_FTILT, msg_rune_flags);
+setup_rune_on_move(AT_USTRONG, msg_rune_flags);
+setup_rune_on_move(AT_NAIR, msg_rune_flags);
+setup_rune_on_move(AT_DAIR, msg_rune_flags);
+setup_rune_on_move(AT_USPECIAL, msg_rune_flags);
+//=========================================================
+//NSPECIAL Clone duration
+msg_nspecial_clone_duration = 60 * (msg_rune_flags.nspecial_longerclones ? 30 : 12);
+//=========================================================
 
 
-        if (rng < 2) //gaster
-        { msg_alt_taunt_flag = 1; msg_alt_sprite = list[0]; set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("hands")); }
-        else if (rng < 5) //majora
-        { msg_alt_taunt_flag = 2; msg_alt_sprite = list[1]; set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("ben"));}
-        else if (rng < 7) //fred
-        { set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("fred"));}
-    break;
-}
+//=========================================================
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
@@ -284,23 +216,5 @@ if (list != 0) switch (attack)
         break;
     //=========================================================
     }
-
-#define GET_RNG(offset, mask) // Version 0
-    // ===========================================================
-    // returns a random number from the seed by using the mask.
-    // uses "msg_unsafe_random" implicitly.
-    return (mask <= 0) ? 0
-           :((msg_unsafe_random >> offset) & mask);
-
-#define msg_get_local_player // Version 0
-    // get closest local player
-    var best_player = player;
-    var best_distance = 9999999;
-    with (oPlayer)
-    {
-        if (msg_is_local) && (point_distance(other.x, other.y, x, y) < best_distance)
-            best_player = player;
-    }
-    return best_player;
 // DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
 // #endregion

@@ -7,7 +7,7 @@ if !get_match_setting(SET_HITBOX_VIS) exit;
 if (state == 1) with (client_id)
 {
     //hurtbox
-    draw_sprite_ext(hurtboxID.sprite_index, hurtboxID.image_index, other.x, other.y, spr_dir, 1, 0, c_white, 0.5);
+    draw_sprite_ext(hurtboxID.sprite_index, hurtboxID.image_index, other.x, other.y, spr_dir, hurtboxID.image_yscale, hurtboxID.image_angle, c_white, 0.5);
 }
 
 

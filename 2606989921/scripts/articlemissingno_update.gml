@@ -12,7 +12,7 @@ if (room != prev_room)
 
 
 master.depth = 50;
-clone.depth = -18;
+clone.depth = -24;
 
 if (state == PERS_MATCH)
 {
@@ -29,12 +29,23 @@ if (state == PERS_MATCH)
         stage_request_breaking = noone;
     }
 
-    //dust fx surface draws at depth 7, needs to be suppressed else entire screen is black
-    //(does not work well with online mode)
+    //dust fx surface draws at both depth 7 and -7, needs to be suppressed else entire screen is black
+    //still had stutters. new solution depends on draw instead.
     if (stage_is_broken) 
     {
-        if (is_online || true) clone.depth = 7;
-        else commit_asset_murder(dust_object_asset);
+        ////if (is_online) clone.depth = 7;
+        ////else commit_asset_murder(dust_object_asset);
+    }
+
+    if !instance_exists(msg_dustfx_bandaid_1)
+    {
+        msg_dustfx_bandaid_1 = spawn_bandaid();
+        msg_dustfx_bandaid_1.msg_dust_bandaid_num = 1; //fixes temporarily
+        msg_dustfx_bandaid_1.depth = 8;
+
+        msg_dustfx_bandaid_2 = spawn_bandaid();
+        msg_dustfx_bandaid_2.msg_dust_bandaid_num = 2; //re-breaks
+        msg_dustfx_bandaid_2.depth = -6;
     }
 }
 else if (state == PERS_SSS)
@@ -167,6 +178,21 @@ else with (oPlayer) //attempt creation
     request_results_banishment = false;
     request_banish_local_player = false;
 
+}
+
+#define spawn_bandaid()
+{
+    var ar = instance_create(0, 0, "obj_article3");
+        ar.num = "missingno";
+        ar.uses_shader = false;
+        ar.player_id = self;
+        ar.orig_player_id = self;
+        ar.url = "-153.14159265"
+        ar.player = 5;
+        ar.orig_player = orig_player;
+        ar.master = self;
+        ar.clone = clone;
+    return ar;
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

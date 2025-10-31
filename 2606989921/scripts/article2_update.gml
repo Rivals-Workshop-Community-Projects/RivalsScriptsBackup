@@ -80,6 +80,11 @@ switch (state)
 
                 hb_copy.length = max(length, 1);
                 hb_copy.hitbox_timer = max(0, hitbox_timer - 1);
+
+                if (orig_player_id.msg_is_missingno && orig_player_id.msg_rune_flags.nspecial_rehits)
+                {
+                    hb_copy.hbox_group = -1; hb_copy.no_other_hit = 1;
+                }
             }
         }
 
@@ -263,7 +268,7 @@ force_hitpause_cooldown = force_hitpause_cooldown_max;
                                || ( x + hsp >= other.blastzone_r ) || ( x + hsp <= other.blastzone_l ) );
 
         with (obj_article2) if ("is_missingno_copy" in self)
-                            && (client_id == other)
+                            && (client_id == other) && (num == "2")
         {
             //============================================================
             //test for hitswapping
@@ -506,7 +511,7 @@ force_hitpause_cooldown = force_hitpause_cooldown_max;
     //update to all copies
     for (var i = 0; i < instance_number(obj_article2); i++) 
     with (instance_find(obj_article2, i)) if ("is_missingno_copy" in self)
-                                          && (client_id == other.client_id)
+                                          && (client_id == other.client_id) && (num == "2")
     {
         //adjust relative offset of all OTHER copies
         if (self != other)
@@ -711,7 +716,7 @@ force_hitpause_cooldown = force_hitpause_cooldown_max;
     for (var i = 0; i < instance_number(obj_article2); i++) 
     with (instance_find(obj_article2, i)) 
         if ("is_missingno_copy" in self)
-        && (client_id == target_client_id)
+        && (client_id == target_client_id) && (num == "2")
         {
             needs_to_die = true; //article consumed
         }

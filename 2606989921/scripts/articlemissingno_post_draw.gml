@@ -4,6 +4,10 @@
 // clone only exists at a different depth to let master do two draw passes
 if (master != self)
 {
+    if (msg_dust_bandaid_num > 0)
+    {
+        with (master) draw_bandaid(other.msg_dust_bandaid_num == 1); exit;
+    }
     with (master) draw_front();
 }
 else
@@ -105,6 +109,12 @@ master.time_since_last_ran_script = current_time;
 {
     if (stage_is_broken)
     {
+        with (oPlayer)
+        {
+            msg_unsafe_effects.blending.timer = 2;
+            msg_unsafe_effects.blending.kind = 3;
+        }
+
         msg_gpu_push_state();
 
         gpu_set_blendenable(false);
@@ -122,14 +132,25 @@ master.time_since_last_ran_script = current_time;
         gpu_set_alphatestenable(false);
     }
 }
+#define draw_bandaid(refix)
+{
+    if (stage_is_broken)
+    {
+        gpu_set_blendenable(refix);
+        gpu_set_alphatestenable(refix);
+    }
+}
 #define draw_front()
 {
     if (room == asset_get("milestones_room"))
         draw_sprite_ext(special_sprite_get("glitch_bg"), 0, 4*((current_time * current_time) % 16) ^ 0x17 - 120, 140, 40, 2, -7, c_white, 1);
-   
-    msg_gpu_clear();
-    gpu_set_blendenable(true);
-    gpu_set_alphatestenable(true);
+    
+    if (msg_unsafe_gpu_stack_level > 0)
+    {
+        msg_gpu_clear();
+        gpu_set_blendenable(true);
+        gpu_set_alphatestenable(true);
+    }
 
     if !(state == PERS_MATCH || state == PERS_CSS)
         msg_draw_achievement(special_sprite_get("achievement"));

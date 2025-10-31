@@ -11,14 +11,27 @@ if (msg_exploded_stock_cost > 0)
 }
 msg_exploded_stock_cost = 0;
 
+if (msg_rune_flags.dstrong_persisting)
+{
+    msg_dstrong_yoyo.active = false;
+    msg_dstrong_yoyo.visible = false;
+}
 
 //clears saved attack index
 msg_bspecial_last_move.target = noone;
-msg_bspecial_last_move.move = AT_TAUNT;
+msg_bspecial_last_move.move = at_prev_attack;
+msg_bspecial_last_move.small_sprites = small_sprites;
+set_ui_element( UI_HUD_ICON, get_char_info( player, INFO_HUD));
+set_ui_element( UI_HUDHURT_ICON, get_char_info(  player, INFO_HUDHURT));
 
-msg_persistence.stage_request_breaking = GET_RNG(16, 0x01) * noone;
-msg_persistence.music_request_breaking = GET_RNG(17, 0x01) * noone;
-msg_persistence.sound_request_breaking = GET_RNG(18, 0x01) * noone;
+msg_bspec_sketch_locked = false;
+msg_stored_dstrong = false;
+msg_stored_bspec_dstrong = false;
+msg_rune_whiff_storage = -1;
+
+msg_persistence.stage_request_breaking = 0;
+msg_persistence.music_request_breaking = 0;
+msg_persistence.sound_request_breaking = 0;
 
 //banishment
 if (msg_banish_cheater_to_purgatory)
@@ -70,15 +83,3 @@ else if (random_func(7, 8, true) == 0 || is_laststock())
 
 //bonus
 msg_compat_data.stadium.reroll_sprites = true;
-
-// #region vvv LIBRARY DEFINES AND MACROS vvv
-// DANGER File below this point will be overwritten! Generated defines and macros below.
-// Write NO-INJECT in a comment above this area to disable injection.
-#define GET_RNG(offset, mask) // Version 0
-    // ===========================================================
-    // returns a random number from the seed by using the mask.
-    // uses "msg_unsafe_random" implicitly.
-    return (mask <= 0) ? 0
-           :((msg_unsafe_random >> offset) & mask);
-// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
-// #endregion

@@ -1,14 +1,8 @@
 //TODO: remove if it's still empty
 if ("msg_grab_rotation" not in self) exit;
 
-var grabnames = "0x";
-for (var i = 0; i < 4; i++)
-{
-    grabnames += (msg_grab_last_outcome == i) ? msg_grab_broken_outcome.name
-                                              : msg_grab_rotation[i].name;
-}
-
-draw_debug_text(temp_x-4, temp_y-12, grabnames);
+//HUD cryptic info data
+draw_hud_address();
 
 for (var p = 1; p <=4; p++)
 {
@@ -18,6 +12,7 @@ for (var p = 1; p <=4; p++)
     
     var rect_pos_x = temp_temp_x + 112 - 10 * string_length(string(abs(temp_dmg)));
     var rect_pos_y = temp_y + 24;
+    if get_match_setting(SET_RUNES) rect_pos_x -= 6;
 
     draw_rectangle_color(rect_pos_x-8, rect_pos_y-4, rect_pos_x+8, rect_pos_y+4, c_black, c_black, c_black, c_black, false);
     draw_rectangle_color(rect_pos_x-6, rect_pos_y-2, rect_pos_x+6, rect_pos_y+2, c_white, c_white, c_white, c_white, false);
@@ -54,6 +49,70 @@ for (var k = 0; k < array_length(keys); k++)
         fx_str += param + ":" + string(variable_instance_get(fx, param)) + ",";
     }
     draw_debug_text(temp_x-4, h, fx_str); h+=20;
+}
+
+#define draw_hud_address()
+{
+    var EZHEX = "0123456789ABCDEF?";
+    var data = "0x";
+
+    //BSpec index
+    var bspec_index = (msg_bspec_sketch_locked * 128) + msg_bspecial_last_move.move;
+    data += string_char_at(EZHEX, 1+ floor(bspec_index/16)) + string_char_at(EZHEX, 1+ bspec_index%16);
+
+    //DSpec breakage
+    data += msg_last_performed_grab;
+
+    //FSpec level
+    var FSPECs = ["0","1",msg_rune_flags.fspecial_hydro_cannon ? "C" : "2","D"]
+    if (msg_rune_flags.fspecial_elemental) { FSPECs[0] = "A"; FSPECs[1] = "B" };
+    data += msg_fspecial_ghost_arrow_active ? "F" : FSPECs[msg_fspecial_charge];
+
+    //UAIR level
+    data += string_char_at(EZHEX, clamp(get_hitbox_value(AT_UAIR, 1, HG_DAMAGE) - 8, 1, 17));
+
+    //Strong Charge
+    var effective_timer = ceil(msg_fstrong_interrupted_timer);
+    if (effective_timer > 60) effective_timer = clamp(60 + (effective_timer - 60)/2, 0, 255);
+    effective_timer = floor(max(effective_timer, strong_charge));
+    data += string_char_at(EZHEX, 1+ floor(effective_timer/16)) + string_char_at(EZHEX, 1+ effective_timer%16);
+
+    //RUNE BONUS DATA
+    if get_match_setting(SET_RUNES)
+    {
+        data += " ";
+
+        //Current Alt
+        data += string_char_at(EZHEX, 1+ clamp(get_player_color(player), 0, 16) )
+
+        //Passives
+        var speedtest = msg_slowstart_ended
+                      + msg_rune_flags.flame_body << 1
+                      + msg_rune_flags.wonder_guard << 2
+                      + msg_rune_flags.turbo_weekday << 3
+        data += string_char_at(EZHEX, 1+ clamp(speedtest, 0, 15) )
+
+        //Pocket Contents
+        if instance_exists(msg_pocket_slot_content) 
+            switch (msg_pocket_slot_content.object_index)
+            {
+                case pHitBox: data += "2"; break;
+                case obj_article1:         data += "A"; break;
+                case obj_article2:         data += "B"; break;
+                case obj_article3:         data += "C"; break;
+                case obj_article_solid:    data += "D"; break;
+                case obj_article_platform: data += "E"; break;
+            }
+        else data += "0";
+
+        //Whiffstorage
+        data += string_char_at(EZHEX, 1+ clamp(msg_rune_whiff_storage, 0, 16) )
+
+        //Activated runes (precalculated)
+        data += msg_hud_rune_info;
+    }
+
+    draw_debug_text(temp_x-4, temp_y-12, data);
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

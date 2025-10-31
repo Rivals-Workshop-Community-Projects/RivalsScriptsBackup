@@ -1,4 +1,4 @@
-//article1_init.gml -- CD
+//article1_init.gml
 
 //Rendering
 sprite_index = asset_get("empty_sprite");

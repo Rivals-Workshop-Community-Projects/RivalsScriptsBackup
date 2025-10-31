@@ -8,24 +8,29 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 //=============================================================
 // BSPECIAL: propagate inputs to relevant variable
 // only affects this frame because these input flags will get reset anyways
-if (msg_is_bspecial) switch (attack)
+var effective_rune_flags = msg_rune_flags;
+if (msg_is_bspecial) 
 {
-    case AT_FTILT: case AT_DTILT: case AT_UTILT:
-    case AT_NAIR: case AT_FAIR: case AT_DAIR: case AT_BAIR: case AT_UAIR:
-        attack_down = special_down;
-        attack_pressed = special_pressed;
-    break;
-    case AT_FSTRONG: case AT_USTRONG: case AT_DSTRONG:
-        strong_down = special_down;
-        strong_pressed = special_pressed;
-    break;
-    case AT_DSPECIAL_2:
-        strong_down = special_down;
-        strong_pressed = special_pressed;
-        attack_down = special_down;
-        attack_pressed = special_pressed;
-        window_attack_pressed = attack_pressed; //for jab combos
-    break;
+    effective_rune_flags = msg_bspec_effective_runeflags;
+    switch (attack)
+    {
+        case AT_FTILT: case AT_DTILT: case AT_UTILT:
+        case AT_NAIR: case AT_FAIR: case AT_DAIR: case AT_BAIR: case AT_UAIR:
+            attack_down = special_down;
+            attack_pressed = special_pressed;
+        break;
+        case AT_FSTRONG: case AT_USTRONG: case AT_DSTRONG:
+            strong_down = special_down;
+            strong_pressed = special_pressed;
+        break;
+        case AT_DSPECIAL_2: //Copied-Bspecial
+            strong_down = special_down;
+            strong_pressed = special_pressed;
+            attack_down = special_down;
+            attack_pressed = special_pressed;
+            window_attack_pressed = attack_pressed; //for jab combos
+        break;
+    }
 }
 
 switch (attack)
@@ -50,7 +55,6 @@ switch (attack)
             { 
                 hsp -= sign(hsp) * min(abs(hsp), actual_frict);
             }
-
             else if (held_dir == spr_dir)
             {
                 //walking forward
@@ -96,28 +100,49 @@ switch (attack)
                             //accelerate
                             hsp = clamp(hsp * msg_ntilt_accel, -msg_ntilt_maxspeed, msg_ntilt_maxspeed);
                         }
+
+                        if (effective_rune_flags.ntilt_verticality)
+                        {
+                            //cancel gravity
+                            if (free) vsp -= gravity_speed;
+                            //bonus vertical speed
+                            vsp = clamp(vsp + 0.3*(down_down - up_down), -msg_ntilt_maxspeed, msg_ntilt_maxspeed);
+                            //dampening
+                            if (down_down == up_down) vsp *= 0.9;
+                        }
                     }
                 }
             } break;
             case 3: // DRAG END
             {
                 set_attack_value(AT_FTILT, AG_NO_PARRY_STUN, 0);
-                set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 12);
+                set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 
+                                (effective_rune_flags.ntilt_freesnap ? 0 : 12) );
                 if (window_timer == 2)
                 {
                     //setup interpolation & teleport
                     var distance = point_distance(x, y, msg_ntilt_origin.x, msg_ntilt_origin.y);
                     if (distance > 20)
                     {
-                        if (distance > 60)
-                            set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 1);
-
                         msg_dstrong_yoyo.active = true;
                         msg_dstrong_yoyo.visible = false;
-                        msg_dstrong_yoyo.y = y - 48; msg_dstrong_yoyo.x = x + spr_dir * 40;
 
-                        x = msg_ntilt_origin.x;
-                        y = msg_ntilt_origin.y;
+                        if (effective_rune_flags.ntilt_snapforward)
+                        {
+                            msg_dstrong_yoyo.x = msg_ntilt_origin.x + spr_dir * 40;
+                            msg_dstrong_yoyo.y = msg_ntilt_origin.y - 48; 
+                        }
+                        else
+                        {
+                            if (distance > 60)
+                                set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 1);
+
+                            msg_dstrong_yoyo.x = x + spr_dir * 40;
+                            msg_dstrong_yoyo.y = y - 48; 
+                            x = msg_ntilt_origin.x;
+                            y = msg_ntilt_origin.y;
+                        }
+
                     }
                 }
             } break;
@@ -146,18 +171,26 @@ switch (attack)
                 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 1);
             }
 
-            set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, 1 + msg_dtilt_times_through * 0.2);
+            var sdi_mult = clamp(1 + get_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER) + 0.25, 1, 30);
+            set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, sdi_mult);
         }
         else if (window == 1 && window_timer = 1)
         {
             msg_dtilt_times_through = 0;
             reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
             reset_hitbox_value(AT_DTILT, 1, HG_TECHABLE);
-            reset_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER);
+            if (!effective_rune_flags.dtilt_permanent_sdi) 
+                reset_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER);
         }
-        else if (window == 5 && has_hit && !was_parried)
+        else if (window == 5 && !was_parried)
         {
-            can_jump = true;
+            if (has_hit) can_jump = true;
+            else if (effective_rune_flags.dtilt_platform) && free
+            {
+                var plat = instance_create(x, y, "obj_article_platform");
+                plat.client_id = self;
+                plat.die_condition = 2; //Groundedness
+            }
         }
     } break;
 //=============================================================
@@ -188,6 +221,17 @@ switch (attack)
                 with (highest_touched_projectile) spawn_hit_fx(x, y, hit_effect);
                 msg_air_tech_active = true;
             }
+
+            // Rune: held UTILT
+            if (attack_down && effective_rune_flags.utilt_constant)
+            {
+                window_timer = 0;
+
+                //cleanup other type3 hitboxes nearby
+                with (pHitBox) if (type == 3 && player_id == other && attack == AT_UTILT)
+                               && (abs(x - other.x) < 5) && (abs(y - other.y + 130) < 5)
+                { type = 2; destroy_fx = 1; destroyed = true; }
+            }
         }
 
     } break;
@@ -217,7 +261,8 @@ switch (attack)
         }
         else if (window == 5)
         {
-            if (window_timer < 3 && attack_pressed) && (hsp*spr_dir < 0)
+            if (window_timer < 3 && attack_pressed)
+            && ( (hsp*spr_dir < 0.01) || effective_rune_flags.dattack_forward_blj)
             {
                 window = 3; 
                 window_timer = 13;
@@ -240,30 +285,108 @@ switch (attack)
         {
             //fstrong's bug potentially active, check for collisions with own projectiles
             with (pHitBox) if (hit_priority > 0)
-            && (player == other.player)
+            && (player == other.player) && (type == 2)
             && (place_meeting(x, y, other.hurtboxID) || test_place_meeting_with_clones(other, self))
             {
                 can_hit_self = true;
             }
+
+            //Rune: EZ Charge
+            if (strong_charge == 55) && (msg_fstrong_interrupted_timer < strong_charge)
+            && (effective_rune_flags.fstrong_easy_charge)
+            {
+                strong_down = false; //No, i don't know why this is necessary
+                window = 5;
+                msg_fstrong_interrupted_timer = 60;
+            }
         }
+        else if (effective_rune_flags.fstrong_critical)
+             && (window == 2 && window_timer == 2)
+        {
+            current_dmg = get_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE)
+
+            if (abs(at_prev_x - x) < 2) || (current_dmg > 50) || has_hit
+            {
+                //stop the move
+                reset_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED);
+                hsp = clamp(hsp *0.7, -8, 8);
+            }
+            else if (!hitpause) 
+            {
+                //serves as collision test for potential victims
+                create_hitbox(AT_FSTRONG, 3, x, y);
+                at_prev_x = x;
+
+                window_timer--;
+                set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, current_dmg + 1)
+            }
+        }
+        else if (window == 1 && window_timer == 1)
+        {
+            reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);
+        }
+
+        if (effective_rune_flags.fstrong_port_priority)
+        {
+            perfect_dodging |= (window == player);
+        }
+
     } break;
 //=============================================================
     case AT_DSTRONG:
     {
-        if (window == 2 && has_hit && !free && strong_charge > 0)
-        && (shield_pressed && (right_down - left_down) != 0)
+        if (window == 2 && strong_charge > 0)
         {
-            //yoyo activated, rolling out
-            msg_dstrong_yoyo.active = true;
-            msg_dstrong_yoyo.visible = true;
+            if (has_hit && !free && shield_pressed && (right_down - left_down) != 0)
+            {
+                //yoyo activated, rolling out
+                msg_dstrong_yoyo.active = true;
+                msg_dstrong_yoyo.visible = true;
 
-            set_state( (right_down - left_down)*spr_dir > 0 ? PS_ROLL_FORWARD : PS_ROLL_BACKWARD);
+                set_state( (right_down - left_down)*spr_dir > 0 ? PS_ROLL_FORWARD : PS_ROLL_BACKWARD);
+            }
+            else if (effective_rune_flags.dstrong_jumpcancel) && (jump_pressed || tap_jump_pressed)
+            {
+                if (msg_is_bspecial)
+                    msg_stored_bspec_dstrong = special_down; //negative-edge to resume
+                else
+                    msg_stored_dstrong = strong_down; //negative-edge to resume
+
+                set_state(free ? PS_DOUBLE_JUMP : PS_FIRST_JUMP);
+            }
+        }
+        else if effective_rune_flags.dstrong_movement && !free
+        {
+            if (window == 2 && strong_charge > 0)
+            {
+                var max_dstrong_speed = 2.5 * walk_speed;
+                hsp = clamp(hsp + (right_down - left_down) * 0.8, -max_dstrong_speed, max_dstrong_speed);
+            }
+            else if (window == 3)
+            {
+                hsp *= 0.5;
+            }
         }
     } break;
 //=============================================================
     case AT_USTRONG:
     {
-        if (window == 2) && (window_timer == 1 && !hitpause)
+        if (window == 1) && effective_rune_flags.ustrong_limitless
+        {
+            if (strong_charge > 58) && strong_down
+            {
+                msg_ustrong_coin_charge += (strong_charge - 58) //store all excess
+                strong_charge = 58;
+            }
+
+            if (shield_pressed) //explicit store all
+            {
+                window = 4;
+                window_timer = 1;
+                msg_ustrong_coin_charge += (1 + strong_charge);
+            }
+        }
+        else if (window == 2) && (window_timer == 1 && !hitpause)
         {
             move_cooldown[attack] = 60;
             if (strong_charge == 31)
@@ -275,6 +398,40 @@ switch (attack)
 
             msg_ustrong_coin_charge += (1 + strong_charge);
         }
+        else if (effective_rune_flags.ustrong_arrowing)
+             && (window == 2) && (window_timer == 2)
+        {
+            //try to find a projectile to steal
+            var closest_dist = -1;
+            var found_proj = noone;
+            
+            with (pHitBox) if (type == 2) && (hit_priority > 0) && (hsp != 0 || vsp != 0)
+            {
+                if (closest_dist < 0 || closest_dist > distance_to_point(other.x, other.y))
+                {
+                    found_proj = self;
+                    closest_dist = distance_to_point(other.x, other.y);
+                }
+            }
+
+            if (found_proj != noone)
+            {
+                vfx_yoyo_snap.timer = 8;
+                vfx_yoyo_snap.x = found_proj.x;
+                vfx_yoyo_snap.y = found_proj.y;
+
+                throw_stolen_proj(found_proj);
+                found_proj.vsp = -(10 + clamp(strong_charge/40, 0, 3)) * (1 + found_proj.grav);
+                found_proj.hsp = 0;
+
+                vfx_yoyo_snap.length = point_distance(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
+                                                         found_proj.x,    found_proj.y);
+                vfx_yoyo_snap.angle = point_direction(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
+                                                         found_proj.x,    found_proj.y);
+
+                msg_ustrong_coin_charge = 0; //No coins for this one
+            }
+        }
     } break;
 //=============================================================
     case AT_NAIR:
@@ -283,7 +440,7 @@ switch (attack)
         {
             set_num_hitboxes(AT_NAIR, 1);
         }
-        else if (has_hit)
+        else if (has_hit) || (effective_rune_flags.nair_landinglag)
         {
             set_num_hitboxes(AT_NAIR, 3);
         }
@@ -386,7 +543,7 @@ switch (attack)
                 var on_a_ledge = (left_test xor right_test);
 
                 //Proxy-land on ledge also counts
-                if (!on_a_ledge) with (obj_article2) if ("is_missingno_copy" in self) && (client_id == other)
+                if (!on_a_ledge) with (obj_article2) if ("is_missingno_copy" in self) && (client_id == other) && (num == "2")
                 {
                     var clone_x = other.x + client_offset_x;
                     var clone_y = other.y + client_offset_y;
@@ -440,7 +597,7 @@ switch (attack)
                     best_player = corrected_player;
                 }
             }
-            msg_construct_bair(best_target);
+            msg_construct_bair(best_target, effective_rune_flags);
         }
     } break;
 //=============================================================
@@ -448,16 +605,37 @@ switch (attack)
     {
         if (window == 1 && window_timer == 1)
         {
-            var newwidth = min(360, 1.1 * get_hitbox_value(AT_UAIR, 1, HG_WIDTH));
-            var newheight = min(400, 1.1 * get_hitbox_value(AT_UAIR, 1, HG_HEIGHT));
-            var newdamage = min(18, 1 + get_hitbox_value(AT_UAIR, 1, HG_DAMAGE));
-            var newstartup = min(24, 2 + get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH));
+            var newwidth = 1.1 * get_hitbox_value(AT_UAIR, 1, HG_WIDTH);
+            var newheight = 1.1 * get_hitbox_value(AT_UAIR, 1, HG_HEIGHT)
+                                  / (effective_rune_flags.uair_tipper ? 0.9 : 1);
+            var newdamage = 1 + get_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
+            if (!effective_rune_flags.uair_infinite)
+            {
+                newwidth = min(360, newwidth);
+                newheight = min(400, newheight);
+                newdamage = min(18, newdamage);
+            }
+
+            var newstartup = effective_rune_flags.uair_accelerate 
+                             ? max(3, get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH) - 1)
+                             : min(24, 2 + get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH));
+
             set_hitbox_value(AT_UAIR, 1, HG_WIDTH, newwidth);
             set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, newheight);
             set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, newdamage);
             set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, newstartup);
             set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, newstartup - 1);
-            if (newstartup > 17) set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+            if (newstartup > 17 || newstartup < 6) 
+                set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+
+            if (effective_rune_flags.uair_tipper)
+            {
+                set_hitbox_value(AT_UAIR, 2, HG_WIDTH, newwidth);
+                set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, newheight);
+                set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, newheight*0.9);
+                set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 2 * newdamage);
+                set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, get_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y) - 0.15 * newheight)
+            }
 
         }
     } break;
@@ -487,7 +665,13 @@ switch (attack)
             else if (window_timer == get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH) - 1)
             && special_down
             {
-                if (msg_fspecial_charge < 2)
+                if (msg_fspecial_charge < 3) && effective_rune_flags.fspecial_elemental
+                {
+                   msg_fspecial_charge++;
+                   var sfxs = [0,"sfx_ori_charged_flame_hit","sfx_orca_absorb","sfx_kragg_roll_start"];
+                   sound_play(asset_get(sfxs[msg_fspecial_charge]));
+                }
+                else if (msg_fspecial_charge < 2)
                 {
                    msg_fspecial_charge++;
                    sound_play(msg_fspecial_charge == 1 ? asset_get("sfx_abyss_portal_spawn") : asset_get("sfx_orca_absorb"));
@@ -507,9 +691,15 @@ switch (attack)
                     window = 2;
                     window_timer = 0;
                 }
-                else
+                else if (msg_fspecial_charge == 2)
                 {
                     set_attack(AT_FSPECIAL_AIR);
+                    window = 2;
+                    window_timer = 0;
+                }
+                else //step 3, but also default, if you manage to break this you earned it
+                {
+                    set_attack(AT_FTHROW);
                     window = 2;
                     window_timer = 0;
                 }
@@ -529,47 +719,94 @@ switch (attack)
             var found_proj = noone;
             
             with (pHitBox) if (type == 2) && (hit_priority > 0) && (hsp != 0 || vsp != 0)
-            && (closest_dist < 0 || closest_dist > distance_to_point(other.x, other.y))
             {
-                found_proj = self;
-                closest_dist = distance_to_point(other.x, other.y);
+                if (closest_dist < 0 || closest_dist > distance_to_point(other.x, other.y))
+                {
+                    found_proj = self;
+                    closest_dist = distance_to_point(other.x, other.y);
+                }
+                with (other) if (effective_rune_flags.fspecial_everything)
+                    throw_stolen_proj(other);
             }
 
             if (found_proj != noone)
             {
-                //steal it: refresh, plus cannot hit me anymore
-                found_proj.can_hit_self = true;
-                for (var p = 0; p < array_length(found_proj.can_hit); p++)
-                {
-                    found_proj.can_hit[p] = true;
-                }
-                found_proj.can_hit[player] = false;
-
                 vfx_yoyo_snap.timer = 8;
                 vfx_yoyo_snap.x = found_proj.x;
                 vfx_yoyo_snap.y = found_proj.y;
-                vfx_yoyo_snap.length = closest_dist;
 
-                // and throw it (sort of like water gun)
-                found_proj.x = x + spr_dir*get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X);
-                found_proj.y = y + get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y);
 
+                if (!effective_rune_flags.fspecial_everything)
+                    throw_stolen_proj(found_proj);
+                //else it has already been thrown in above loop
+
+                vfx_yoyo_snap.length = point_distance(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
+                                                         found_proj.x,    found_proj.y);
                 vfx_yoyo_snap.angle = point_direction(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
-                                                      found_proj.x, found_proj.y);
-                
-                found_proj.hsp = spr_dir * max(msg_fspecial_ghost_arrow_min_speed, 
-                                 point_distance(0, 0, found_proj.hsp, found_proj.vsp));
-                found_proj.vsp = -found_proj.grav * 
-                                 (1.0 * msg_fspecial_ghost_arrow_target_distance/abs(found_proj.hsp));
-                
-                sound_play(asset_get("sfx_watergun_fire"));
+                                                         found_proj.x,    found_proj.y);
 
+                sound_play(asset_get("sfx_watergun_fire"));
                 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_GOTO, 6);
+            }
+            else if (effective_rune_flags.fspecial_playerthrow)
+                 && !(msg_ustrong_coin_charge > 0)
+            {
+                var team_attack = get_match_setting(SET_TEAMATTACK);
+                var furthest_dist = -1;
+                var dist_max = 255;
+                var found_player = noone; //Find player to throw
+                with (oPlayer) if (dist_max > distance_to_point(other.x, other.y - 30))
+                && (state != PS_DEAD) && (state != PS_RESPAWN) && !invincible && (attack_invince != 1)
+                && (furthest_dist < 0 || furthest_dist < distance_to_point(other.x, other.y - 30))
+                && (get_player_team(other.player) != get_player_team(player) || team_attack || self == other)
+                {
+                    found_player = self;
+                    furthest_dist = distance_to_point(other.x, other.y - 30);
+                }
+
+                if (found_player != noone)
+                {
+                    //cleanup other type3 hitboxes...
+                    with (pHitBox) if (type == 3 && player_id == other && attack == AT_FSPECIAL)
+                    { type = 2; destroyed = true; }
+
+                    //"throw" hitbox (needs adjustment)
+                    var hitbox = create_hitbox(AT_FSPECIAL, 3, x+spr_dir*40, y-10);
+                    hitbox.kb_scale = abs(hitbox.kb_scale)
+                    hitbox.hitpause = 0;
+                    hitbox.extra_hitpause = 2;
+                    hitbox.hbox_num = 5;
+                    hitbox.type = 3;
+
+                    if (msg_holp_pos.x != 0) && (msg_holp_pos.y != 0)
+                    {
+                        hitbox.x = msg_holp_pos.x;
+                        hitbox.y = msg_holp_pos.y;
+                    }
+
+                    hitbox.can_hit_self = true;
+                    for (var p = 0; p < array_length(hitbox.can_hit); p++)
+                    {
+                        hitbox.can_hit[p] = false;
+                    }
+                    hitbox.can_hit[found_player.player] = true;
+
+                    vfx_yoyo_snap.timer = 8;
+                    vfx_yoyo_snap.x = found_player.x;
+                    vfx_yoyo_snap.y = found_player.y - 20;
+                    vfx_yoyo_snap.length = point_distance(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
+                                                          hitbox.x, hitbox.y);
+                    vfx_yoyo_snap.angle = point_direction(vfx_yoyo_snap.x, vfx_yoyo_snap.y, 
+                                                          hitbox.x, hitbox.y);
+
+                    found_player.x = hitbox.x;
+                    found_player.y = hitbox.y + 20;
+                }
             }
             else
             {
                 //nothing to shoot. spawn melee windbox (causes stored coins to manifest)
-                var hitbox = create_hitbox(AT_FSPECIAL, 2, x, y);
+                var hitbox = create_hitbox(AT_FSPECIAL, 3, x, y);
                 spawn_hit_fx(x+(spr_dir*20), y-30, hitbox.hit_effect);
                 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_GOTO, 6);
             }
@@ -578,9 +815,11 @@ switch (attack)
 //=============================================================
     case AT_FSPECIAL_2: // Bubblebeam
     {
-        if (window == 3)
+        if (window == 3) 
+        //Turns off for Ember variant
+        && !effective_rune_flags.fspecial_elemental
         {
-            var hitbox = create_hitbox(AT_FSPECIAL_2, 1, x+(spr_dir*20), y-30);
+            var hitbox = create_hitbox(AT_FSPECIAL_2, 2, x+(spr_dir*20), y-30);
             hitbox.hsp += spr_dir * msg_fspecial_bubble_random_hsp_boost 
                                   * (0.5 - random_func(0, 100, true)/ 100.0);
             hitbox.image_index = 2 * random_func(1, 6, true);
@@ -604,16 +843,105 @@ switch (attack)
         if (window == 1)
         {
             msg_grab_selection_timer = 0;
+            if (effective_rune_flags.dspecial_downbroken) msg_grab_last_outcome = 3;
+            if (effective_rune_flags.dspecial_pocket) && instance_exists(msg_pocket_slot_content)
+            {
+                //goto "normal throw" window w/ no victim
+                window = MSG_GRAB_REGULAR_WINDOW;
+                window_timer = 0;
+            }
+        }
+        else if (window == 2)
+        {
+            //grab is active.
+            if (effective_rune_flags.dspecial_magicthrow)
+            && (window_timer == 2)
+            && instance_exists(msg_last_parried_victim)
+            {
+                msg_last_parried_victim.x = x + spr_dir * 20;
+                msg_last_parried_victim.y = y;
+            }
+
+            if (effective_rune_flags.dspecial_pocket) && (window_timer >= 2)
+            {
+                //pocket active.
+                var pocket_target = noone;
+                var pokx = floor(x + spr_dir*20);
+                var poky = floor(y - 40);
+
+                //check articles first
+                if (noone == pocket_target) pocket_target = try_pocket(obj_article1);
+                if (noone == pocket_target) pocket_target = try_pocket(obj_article2);
+                if (noone == pocket_target) pocket_target = try_pocket(obj_article3);
+
+                //then check hitboxes
+                if !instance_exists(pocket_target)
+                with (pHitBox) if (type == 2 && damage > 0 && hit_priority > 0) && visible
+                && (pocket_target == noone || pocket_target.hit_priority < hit_priority)
+                && (self == collision_circle(pokx, poky, other.msg_grab_pocket_radius, self, true, false))
+                {
+                    pocket_target = self;
+                }
+
+                //then check these (microplatform takes precedence otherwise, awkwardly)
+                if (noone == pocket_target) pocket_target = try_pocket(obj_article_solid);
+                if (noone == pocket_target) pocket_target = try_pocket(obj_article_platform);
+
+                if instance_exists(pocket_target) //pocket success
+                {
+                    spawn_hit_fx(floor(pocket_target.x), floor(pocket_target.y), hfx_error_x)
+
+                    if (msg_rune_flags.holp)
+                    {
+                        set_holp(pocket_target.x, pocket_target.y);
+                    }
+
+                    //trap pocketed object
+                    pocket_target.x = 0;
+                    pocket_target.y = 0;
+                    pocket_target.visible = false;
+                    pocket_target.msg_pocketeered_original_speed = 
+                           max(5, point_distance(0, 0, pocket_target.hsp, pocket_target.vsp));
+
+                    if (pocket_target.object_index == pHitBox)
+                    {
+                        pocket_target.type = 6;
+                        pocket_target.hitbox_timer = 0;
+                    }
+                    else
+                    {
+                        pocket_target.msg_pocketeered_nullified_num = pocket_target.num;
+                        pocket_target.num = "//temporarily nullified article, please understand";
+                    }
+
+                    //update/clear all other Missingno Pocket slots
+                    with (oPlayer) if ("msg_pocket_slot_content" in self)
+                    {
+                        instance_destroy(msg_pocket_slot_content);
+                        msg_pocket_slot_content = pocket_target;
+                    }
+
+                    //Success effects
+                    destroy_hitboxes();
+                    invincible = true; invince_time = 8;
+                    sound_play(sound_get("pocket"),false,noone,1);
+                    window = 3; window_timer = 0;
+                }
+
+            }
         }
         else if (window == 4) 
         {
             //grab-success
             destroy_hitboxes();
+            msg_last_parried_victim = noone;
+
+            //outcome select
             if (msg_grab_selection_timer >= 40)
             || (window_timer > get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH) - 1)
             {
                 //for broken-tracking
-                msg_grab_last_outcome = msg_grab_selected_index;
+                msg_grab_last_outcome = effective_rune_flags.dspecial_downbroken ? 3 : msg_grab_selected_index;
 
                 //last frame of window. release grab
                 var current_outcome = (msg_grab_selected_index < 0) ?
@@ -621,10 +949,21 @@ switch (attack)
                      msg_grab_queue[random_func(1, array_length(msg_grab_queue), true)]
                      //normal
                    : msg_grab_rotation[msg_grab_selected_index];
+
+                //Rune: rotate-on-use
+                if (effective_rune_flags.dspecial_rotate) && !(msg_grab_selected_index < 0)
+                {
+                    var temp_grabindex = msg_grab_rotation[0];
+                    msg_grab_rotation[0] = msg_grab_rotation[1];
+                    msg_grab_rotation[1] = msg_grab_rotation[2];
+                    msg_grab_rotation[2] = msg_grab_rotation[3];
+                    msg_grab_rotation[3] = temp_grabindex;
+                }
                 
                 //proceed with outcome
                 window_timer = 0;
                 window = current_outcome.window;
+                msg_last_performed_grab = current_outcome.name;
                     
                 sound_stop(msg_grab_sfx);
                 msg_grab_sfx = noone;
@@ -671,6 +1010,8 @@ switch (attack)
                         msg_grab_selected_index = selected;
 
                         msg_grab_selection_timer = 0;
+                        msg_last_performed_grab = (selected == -1) ? msg_grab_broken_outcome.name
+                                                                   : msg_grab_rotation[selected].name;
                     }
                 }
             }
@@ -680,7 +1021,28 @@ switch (attack)
         //Grab outcomes
         //Note: window_timer 0 is accessible and occurs right after the detected end of window 4 above
         //=============================================================
-        if (window == MSG_GRAB_FROSTBURN_WINDOW)
+        if (window == MSG_GRAB_PRATTOSS_WINDOW)
+        {
+            if (window_timer < get_hitbox_value(AT_NTHROW, MSG_GRAB_PRATTOSS_HITBOX, HG_WINDOW_CREATION_FRAME))
+            {
+                var animpositionsdeltasx = [54,52,48,24,-22]
+                var animpositionsdeltasy = [12,10, 8,40, 56]
+                var targetposx = x + spr_dir*animpositionsdeltasx[floor(window_timer/4)]
+                var targetposy = y - animpositionsdeltasy[floor(window_timer/4)]
+
+
+                with (oPlayer) if (msg_handler_id == other && msg_grabbed_timer > 0)
+                {
+                    //refresh grab on victims
+                    msg_grabbed_timer = 5;
+                    
+                    //lerp position towards where hand would be
+                    x = lerp(x, targetposx, 0.5);
+                    y = lerp(y, targetposy, 0.5);
+                }
+            }
+        }
+        else if (window == MSG_GRAB_FROSTBURN_WINDOW)
         {
             if (window_timer == 0 && !hitpause)
             with (oPlayer) if (msg_handler_id == other && msg_grabbed_timer > 0)
@@ -698,7 +1060,22 @@ switch (attack)
         else if (window == MSG_GRAB_EXPLOSION_WINDOW)
         {
             visible = false;
-            if (window_timer == 0 && !hitpause)
+            if (effective_rune_flags.dspecial_deathbox)
+            {
+                if (!hitpause)
+                {
+                    if (window_timer == 1)
+                    {
+                        spawn_hit_fx( x, y -35, HFX_MOL_BOOM_FINISH);
+                        //sound_play(sfx_sd);
+                        sound_play(asset_get("sfx_playerdefeated"));
+                        create_deathbox( x, y -35, 150, 150, 0, true, 0, 21, 2);
+                    }
+                    else if (window_timer == 2)
+                        create_deathbox( x, y -35, 5, 5, -1, true, 0, 4, 2);
+                }
+            }
+            else if (window_timer == 0 && !hitpause)
             {
                 spawn_hit_fx( x, y -35, 143 );
                 sound_play(sfx_sd);
@@ -845,6 +1222,91 @@ switch (attack)
                 msg_unsafe_effects.quadrant.freq = 1;
             }
         }
+        else if (window == MSG_GRAB_REGULAR_WINDOW)
+        {
+            if (window_timer == 0)
+            {
+                var unpocketing = true;
+                with (oPlayer) if (msg_handler_id == other && msg_grabbed_timer > 0)
+                { unpocketing = false; break; } //Victim exists, this is a regular throw
+
+                set_hitbox_value(AT_NTHROW, MSG_GRAB_NORMAL_HITBOX, HG_WINDOW, unpocketing ? noone : MSG_GRAB_REGULAR_WINDOW);
+                set_window_value(AT_NTHROW, MSG_GRAB_REGULAR_WINDOW, AG_WINDOW_LENGTH, unpocketing ? 14 : 28);
+            }
+
+            if (window_timer < get_hitbox_value(AT_NTHROW, MSG_GRAB_PRATTOSS_HITBOX, HG_WINDOW_CREATION_FRAME))
+            && (window == get_hitbox_value(AT_NTHROW, MSG_GRAB_PRATTOSS_HITBOX, HG_WINDOW))
+            {
+                var animpositionsdeltasx = [-28,-54,-60,-20, 36]
+                var animpositionsdeltasy = [  2,  6, 16, 54, 46]
+                var targetposx = x + spr_dir*animpositionsdeltasx[floor(window_timer/4)]
+                var targetposy = y - animpositionsdeltasy[floor(window_timer/4)]
+
+
+                with (oPlayer) if (msg_handler_id == other && msg_grabbed_timer > 0)
+                {
+                    //refresh grab on victims
+                    msg_grabbed_timer = 5;
+                    
+                    //lerp position towards where hand would be
+                    x = lerp(x, targetposx, 0.5);
+                    y = lerp(y, targetposy, 0.5);
+                }
+            }
+            else if instance_exists(msg_pocket_slot_content) && (window_timer == 10)
+            {
+                //untrap entity & throw
+                msg_pocket_slot_content.x = x + spr_dir*40;
+                msg_pocket_slot_content.y = y - 60;
+                msg_pocket_slot_content.visible = true;
+
+                //Rune: HOLP
+                if (msg_holp_pos.x != 0) && (msg_holp_pos.y != 0)
+                {
+                    msg_pocket_slot_content.x = msg_holp_pos.x;
+                    msg_pocket_slot_content.y = msg_holp_pos.y;
+                }
+
+                msg_pocket_slot_content.hsp = spr_dir * msg_pocket_slot_content.msg_pocketeered_original_speed;
+                msg_pocket_slot_content.vsp = 0;
+
+                if (msg_pocket_slot_content.object_index == pHitBox)
+                {
+                    msg_pocket_slot_content.type = 2;
+                    msg_pocket_slot_content.vsp = -8*msg_pocket_slot_content.grav;
+
+                    //steal it: refresh, plus cannot hit me anymore
+                    msg_pocket_slot_content.can_hit_self = true;
+                    for (var p = 0; p < array_length(msg_pocket_slot_content.can_hit); p++)
+                    {
+                        msg_pocket_slot_content.can_hit[@ p] = true;
+                    }
+                    msg_pocket_slot_content.can_hit[@ player] = false;
+                }
+                else
+                {
+                    msg_pocket_slot_content.num = msg_pocket_slot_content.msg_pocketeered_nullified_num;
+
+                    //if missingno-clone: special client-offset corrections for the displacement
+                    if ("is_missingno_copy" in msg_pocket_slot_content)
+                    {
+                        var GRIDSNAP = 16;
+                        msg_pocket_slot_content.client_offset_x = 
+                            GRIDSNAP * floor((msg_pocket_slot_content.x - msg_pocket_slot_content.client_id.x) / GRIDSNAP);
+                        msg_pocket_slot_content.client_offset_y = 
+                            GRIDSNAP * floor((msg_pocket_slot_content.y - msg_pocket_slot_content.client_id.y) / GRIDSNAP);
+                    }
+                }
+
+                //clear pocket slot everywhere
+                with (oPlayer) if ("msg_pocket_slot_content" in self)
+                {
+                    msg_pocket_slot_content = noone;
+                }
+
+                sound_play(get_window_value(AT_NTHROW, window, AG_WINDOW_SFX));
+            }
+        }
 
     } break;
 //=============================================================
@@ -915,7 +1377,7 @@ switch (attack)
                 window_timer = 0;
                 destroy_hitboxes();
             }
-            else if (shield_down) && (window_timer == 8)
+            else if (shield_down) && (window_timer == get_window_value(AT_USPECIAL, window, AG_WINDOW_CANCEL_FRAME))
             {
                 window = 6;
                 window_timer = 0;
@@ -927,12 +1389,48 @@ switch (attack)
             hsp *= 0.9; 
             vsp *= 0.4; vsp -= 1;
         }
+        else if (window == get_attack_value(AT_USPECIAL, AG_STRONG_CHARGE_WINDOW))
+        {
+            vsp *= 0.5;
+            strong_down = special_down;
+
+            var charge_vsp = -15 - clamp(strong_charge * 0.1, -1, 10);
+            set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, charge_vsp);
+        }
     } break;
 //=============================================================
     case AT_TAUNT:
     {
         //clears saved attack index
-        msg_bspecial_last_move.target = noone;
+        if (!msg_bspec_sketch_locked) 
+            msg_bspecial_last_move.target = noone;
+        
+        if (window == 1 && window_timer == 1)
+        && (effective_rune_flags.taunt_perish_song) && !msg_perishsong_used
+        {
+            with (oPlayer)
+            {
+                msg_perish_song_timer = other.msg_perishsong_max;
+                msg_handler_id = other;
+            }
+
+            msg_perishsong_used = true;
+            //see animation
+        }
+        else if (window == 2) && (window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) - 1)
+        {
+            //Rune: Taunt-Teleport
+            if (effective_rune_flags.taunt_teleport)
+            {
+                var number_player = random_func(13, instance_number(oPlayer), true);
+                swap_target = instance_find(oPlayer, number_player);
+
+                var posx = x;
+                var posy = y;
+                taunt_swap_correcting_for_clones(self, swap_target.x, swap_target.y);
+                taunt_swap_correcting_for_clones(swap_target, posx, posy);
+            }
+        }
     } break;
     default: break;
 }
@@ -946,13 +1444,16 @@ if (msg_fstrong_interrupted_timer > 0)
 //exception: TAUNT and TMTRAINER
 && (attack != AT_TAUNT)
 && (attack != AT_NSPECIAL)
+//exception: post-EZ charge Fstrong rune
+&& !(attack == AT_FSTRONG && window >= 5)
 {
-    strong_charge = msg_fstrong_interrupted_timer;
-    msg_fstrong_interrupted_timer = 0;
+    strong_charge = max(strong_charge, ceil(msg_fstrong_interrupted_timer));
+    if (!msg_rune_flags.fstrong_drain_charge)
+        msg_fstrong_interrupted_timer = 0;
 
     //"diminishing returns" above 60 for up to 400% charge
     if (strong_charge > 60)
-        strong_charge = 60 + min((strong_charge - 60)/2, 60*3);
+        strong_charge = clamp(60 + (strong_charge - 60)/2, 0, 255);
 }
 
 if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_WINDOW)
@@ -962,6 +1463,50 @@ if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_W
     var next_window = get_window_value(attack, window, AG_WINDOW_GOTO);
     window = (next_window == 0) ? window + 1 : next_window;
     window_timer = 0;
+
+    //skiipping the transition makes window peeds type 2 fail to apply...
+    if (get_window_value(attack, window, AG_WINDOW_HSPEED_TYPE) == 2)
+        hsp = spr_dir * get_window_value(attack, window, AG_WINDOW_HSPEED);
+
+    if (get_window_value(attack, window, AG_WINDOW_VSPEED_TYPE) == 2)
+        vsp = get_window_value(attack, window, AG_WINDOW_VSPEED);
+}
+//==============================================================
+//Turbo rune(s)
+if (msg_rune_flags.turbo_weekday && has_hit_player && !was_parried)
+&& (!hitpause)
+{
+    if (attack == AT_NTHROW) 
+    {
+       //can't IASA because you lose the ability to influence the throw
+       can_attack = true; can_special = true;
+       can_strong = true;  can_shield = true;
+
+    }
+    else iasa_script();
+    move_cooldown[attack] = 2;
+}
+
+//==============================================================
+#define try_pocket(article_type)
+{
+    var pokx = floor(x + spr_dir*20);
+    var poky = floor(y - 40);
+    var pok_radius = msg_grab_pocket_radius;
+
+    var best_dist = 9999;
+    var best_obj = noone;
+
+    with (article_type)
+    if (orig_player != 5) && ("player" in self) && visible
+    && (point_distance(pokx, poky, x, y) < best_dist)
+    && (self == collision_circle(pokx, poky, pok_radius, self, true, false))
+    {
+        best_dist = point_distance(pokx, poky, x, y);
+        best_obj = self;
+    }
+
+    return best_obj;
 }
 
 //==============================================================
@@ -969,7 +1514,7 @@ if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_W
 {
     for (var i = 0; i < instance_number(obj_article2); i++) 
     with (instance_find(obj_article2, i)) if ("is_missingno_copy" in self)
-                                          && (client_id == playerId)
+                                          && (client_id == playerId) && (num == "2")
     {
         with (hbxId) if place_meeting(x - other.client_offset_x, y - other.client_offset_y, playerId.hurtboxID)
             return true; //at least one clone touched
@@ -977,11 +1522,76 @@ if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_W
 
     return false; //none found
 }
+//==============================================================
+#define taunt_swap_correcting_for_clones(playerId, posx, posy)
+{
+    playerId.x = posx;
+    playerId.y = posy;
+
+    //update to all copies
+    for (var i = 0; i < instance_number(obj_article2); i++) 
+    with (instance_find(obj_article2, i)) if ("is_missingno_copy" in self)
+                                          && (client_id == playerId) && (num == "2")
+    {
+        //adjust relative offset of all copies
+        client_offset_x = x - client_id.x;
+        client_offset_y = y - client_id.y;
+
+        //adjust hitbox positions
+        with (pHitBox) if (type == 1) && (orig_player_id == other.client_id)
+        {
+            // note: variable reused for yoyo glitch (this is intentional, lerped hitboxes should not be copied)
+            if ("missingno_hitbox_is_copy_of" in self)
+            && (missingno_hitbox_is_copy_for == other && instance_exists(missingno_hitbox_is_copy_of))
+            {
+                x_pos = missingno_hitbox_is_copy_of.x_pos + other.client_offset_x;
+                y_pos = missingno_hitbox_is_copy_of.y_pos + other.client_offset_y;
+            }
+        }
+    }
+
+    //Microplatform (if it exists) needs to follow the client player to its destination
+    if ("msg_clone_microplatform" in playerId) && instance_exists(playerId.msg_clone_microplatform)
+    {
+        playerId.msg_clone_microplatform.x = playerId.x;
+        playerId.msg_clone_microplatform.y = playerId.y;
+    }
+}
+//==============================================================
+#define throw_stolen_proj(found_proj)
+{
+    //steal it: refresh, plus cannot hit me anymore
+    found_proj.can_hit_self = true;
+    for (var p = 0; p < array_length(found_proj.can_hit); p++)
+    {
+        found_proj.can_hit[@ p] = true;
+    }
+    found_proj.can_hit[@ player] = false;
+
+    spawn_hit_fx(found_proj.x, found_proj.y, hfx_error_b);
+    spawn_hit_fx(found_proj.x, found_proj.y, hfx_error_x);
+
+    // and throw it (based on water gun trajectory)
+    found_proj.x = x + spr_dir*get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X);
+    found_proj.y = y + get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y);
+
+    if (msg_holp_pos.x != 0) && (msg_holp_pos.y != 0)
+    {
+        found_proj.x = msg_holp_pos.x;
+        found_proj.y = msg_holp_pos.y;
+    }
+
+    found_proj.hsp = spr_dir * max(msg_fspecial_ghost_arrow_min_speed, 
+                        point_distance(0, 0, found_proj.hsp, found_proj.vsp));
+    found_proj.vsp = -found_proj.grav * 
+                        (1.0 * msg_fspecial_ghost_arrow_target_distance/abs(found_proj.hsp));
+    
+}
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
-#define msg_construct_bair(target) // Version 0
+#define msg_construct_bair(target, rune_flags) // Version 0
     // steals physical statistics to dynamically determine BAIR's stats
 
     set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, target.max_fall);
@@ -990,13 +1600,57 @@ if (strong_charge > 60) && window == get_attack_value(attack, AG_STRONG_CHARGE_W
     set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, target.fast_fall);
 
     set_hitbox_value(AT_BAIR, 1, HG_ANGLE, target.char_height);
-    set_hitbox_value(AT_BAIR, 1, HG_EFFECT, target.land_time);
+    set_hitbox_value(AT_BAIR, 1, HG_EFFECT, rune_flags.bair_paralysis ? 11 //Plasmastun
+                                                                      : target.land_time);
     set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, target.walljump_vsp);
     set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, target.initial_dash_speed);
     set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, target.prat_fall_accel);
 
     set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, target.max_jump_hsp);
     set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, target.gravity_speed);
+
+    if (rune_flags.bair_growth)
+    {
+        set_hitbox_value(AT_BAIR, 1, HG_WIDTH, get_hitbox_value(AT_UAIR, 1, HG_HEIGHT));
+        set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, get_hitbox_value(AT_UAIR, 1, HG_WIDTH));
+    }
+    else
+    {
+        reset_hitbox_value(AT_BAIR, 1, HG_WIDTH);
+        reset_hitbox_value(AT_BAIR, 1, HG_HEIGHT);
+    }
+
+    if (rune_flags.bair_disjoint)
+    {
+        set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -45 - floor(target.char_height) );
+    }
+    else
+    {
+        reset_hitbox_value(AT_BAIR, 1, HG_HITBOX_X);
+    }
+
+#define set_holp(newx, newy) // Version 0
+    // snap position to grid
+    newx = round(newx / 8.0) % 512; //9b
+    newy = round(newy / 8.0) % 256; //8b
+
+    if instance_exists(msg_persistence)
+    {
+        //record position in persistence (if it exists)
+        if (msg_is_local)
+        {
+            msg_persistence.msg_holp_x[0] = newx;
+            msg_persistence.msg_holp_y[0] = newy;
+        }
+        else if (!msg_is_online)
+        {
+            msg_persistence.msg_holp_x[player] = newx;
+            msg_persistence.msg_holp_y[player] = newy;
+        }
+    }
+
+    msg_holp_pos.x = newx * 8;
+    msg_holp_pos.y = newy * 8;
 
 #define spawn_base_dust // Version 0
     // /spawn_base_dust(x, y, name, dir = 0, angle = 0)

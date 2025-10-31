@@ -37,14 +37,14 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 5); //reversed
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 5);
+set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 6);
 //Note: only used as baseline/backup. influenced by opponents
-msg_construct_bair(self);
+msg_construct_bair(self, msg_rune_flags);
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
-#define msg_construct_bair(target) // Version 0
+#define msg_construct_bair(target, rune_flags) // Version 0
     // steals physical statistics to dynamically determine BAIR's stats
 
     set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, target.max_fall);
@@ -53,12 +53,33 @@ msg_construct_bair(self);
     set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, target.fast_fall);
 
     set_hitbox_value(AT_BAIR, 1, HG_ANGLE, target.char_height);
-    set_hitbox_value(AT_BAIR, 1, HG_EFFECT, target.land_time);
+    set_hitbox_value(AT_BAIR, 1, HG_EFFECT, rune_flags.bair_paralysis ? 11 //Plasmastun
+                                                                      : target.land_time);
     set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, target.walljump_vsp);
     set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, target.initial_dash_speed);
     set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, target.prat_fall_accel);
 
     set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, target.max_jump_hsp);
     set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, target.gravity_speed);
+
+    if (rune_flags.bair_growth)
+    {
+        set_hitbox_value(AT_BAIR, 1, HG_WIDTH, get_hitbox_value(AT_UAIR, 1, HG_HEIGHT));
+        set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, get_hitbox_value(AT_UAIR, 1, HG_WIDTH));
+    }
+    else
+    {
+        reset_hitbox_value(AT_BAIR, 1, HG_WIDTH);
+        reset_hitbox_value(AT_BAIR, 1, HG_HEIGHT);
+    }
+
+    if (rune_flags.bair_disjoint)
+    {
+        set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -45 - floor(target.char_height) );
+    }
+    else
+    {
+        reset_hitbox_value(AT_BAIR, 1, HG_HITBOX_X);
+    }
 // DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
 // #endregion

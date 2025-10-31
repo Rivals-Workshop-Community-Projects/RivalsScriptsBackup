@@ -106,6 +106,8 @@ if (object_index == oPlayer) msg_other_update();
             image_yscale = 1;
 
             msg_unsafe_invisible_timer = 0;
+
+            msg_perish_song_timer = 0;
         }
 
         //stay in hitpause while grabbed
@@ -257,6 +259,45 @@ if (object_index == oPlayer) msg_other_update();
         {
             msg_inverted_collider_timer--;
             image_yscale = (msg_inverted_collider_timer <= 0) ? 1 : -1;
+        }
+
+        //======RUNE: INVERTED DI=====
+        if (state == PS_HITSTUN && hitpause) && instance_exists(hit_player_obj)
+        && (hit_player_obj.player == last_player_hit_me)
+        && (hit_player_obj.msg_is_missingno && hit_player_obj.msg_rune_flags.anti_di)
+        {
+            state = PS_FLASHED;
+        }
+
+        //======RUNE: PERISH SONG=====
+        if (msg_perish_song_timer > 0)
+        {
+            msg_perish_song_timer--;
+
+            if instance_exists(msg_handler_id) with (msg_handler_id)
+            {
+                switch (other.msg_perish_song_timer)
+                {
+                    case 360:
+                    case 240:
+                    case 120:
+                        var spite = sound_get("spite");
+                        with (other) if ("msg_is_local" in self) && (msg_is_local || !msg_is_online)
+                            sound_play(spite, false, noone, 0.6 - (msg_perish_song_timer/720), 0.8);
+                        spawn_hit_fx(floor(other.x), floor(other.y - 40), HFX_POM_MUSIC);
+                        shake_camera(8 + other.msg_perish_song_timer/60, 10);
+                    break;
+
+                    case 1://massive hitbox
+                        var hb = create_hitbox(AT_TAUNT, 11, other.x, other.y)
+                        hb.x = other.x;
+                        hb.y = other.y - 40;
+                        hb.can_hit = array_create(array_length(hb.can_hit), 0)
+                        hb.can_hit[other.player] = true;
+                        hb.can_hit_self = true;
+                    break;
+                }
+            }
         }
     }
 

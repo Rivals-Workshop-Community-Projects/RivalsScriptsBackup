@@ -39,6 +39,16 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
     {
         draw_sprite_ext(asset_get("bash_dir_spr"), 0, x+25*spr_dir, y-25, 1, 1, msg_antibash_direction - 45, c_white, 1);
     }
+
+    if get_match_setting(SET_HITBOX_VIS) && (attack == AT_NTHROW && window == 2) && (window_timer >= 2)
+    && (msg_is_bspecial ? msg_bspec_effective_runeflags.dspecial_pocket : msg_rune_flags.dspecial_pocket)
+    {
+        //show effective range of Pocket
+        var alpha = draw_get_alpha();
+        draw_set_alpha(0.5);
+        draw_circle_color(x+spr_dir*20, y-40, msg_grab_pocket_radius, c_blue, c_blue, false);
+        draw_set_alpha(alpha);
+    }
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
