@@ -53,8 +53,9 @@ with pHitBox{
 		if (has_rune("H")){
 			if (attack == AT_USPECIAL){
 				with other{
-					state = 1
-					state_timer = 0
+					state = 1;
+					state_timer = 0;
+					image_index = 0;
 					vsp = -4.5;
 					if (other.x - x) < 0 {
 						hsp = 6;
@@ -84,8 +85,8 @@ if (buffertimer < 20){
 
 //gravity
 if (grav_on){
-	var grav_speed = .1
-	var grav_max = 6;
+	var grav_speed = .08;
+	var grav_max = 2;
 	
 	if (free){
 		
@@ -127,7 +128,8 @@ if (state == 1){
 		sound_play (sound_get("witchhazel_blast"));
 		sound_play (sound_get("witchhazel_wobble"));
 		create_hitbox( AT_FSPECIAL, 1, (x + 224*spr_dir),(y - 34) );
-		create_hitbox( AT_FSPECIAL, 2, (x + 144*spr_dir),(y - 34) );
+		create_hitbox( AT_FSPECIAL, 2, (x + 136*spr_dir),(y - 34) );
+		vsp = 0;
 	}
 	if (state_timer == 60){
 		poof = true

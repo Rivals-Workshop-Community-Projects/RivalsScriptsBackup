@@ -86,7 +86,7 @@ if (buffertimer < 20){
 
 //gravity
 if (grav_on){
-	var grav_speed = .1
+	var grav_speed = .08;
 	var grav_max = 6;
 	
 	if (free){

@@ -1,4 +1,4 @@
 //other_init
 dattack_drag = false;
-dattack_flick = false;
+witch_hazel_id = noone;
 puffshroom_timer = 0;

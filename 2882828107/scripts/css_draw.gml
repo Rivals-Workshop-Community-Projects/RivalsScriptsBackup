@@ -53,14 +53,7 @@ init_shader();
 
 var temp_x = x + 8;
 var temp_y = y + 9;
- 
-seasonal_override = false;
-color_overriden = -1;
 
-patch_ver = " ";
-patch_day = " ";
-patch_month = " ";
- 
 var num_alts = 32;
 var alt_cur = get_player_color(player);
  
@@ -74,30 +67,30 @@ alt_name[3]  = "Jack-o-Lantern";
 alt_name[4]  = "Grave Buster";
 alt_name[5]  = "Hypno-shroom";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "Gameboy";
-alt_name[8]  = "Gameboy Color";
-alt_name[9]  = "Frightened";
+alt_name[7]  = "Heaven";
+alt_name[8]  = "Anomaly";
+alt_name[9]  = "Vulnerable";
 alt_name[10]  = "Disguised";
 alt_name[11]  = "Shadowy";
 alt_name[12]  = "Crowned";
-alt_name[13]  = "Vessel";
-alt_name[14]  = "Soothe";
+alt_name[13]  = "Infected";
+alt_name[14]  = "Outta Sight";
 alt_name[15]  = "Ruinous";
 alt_name[16]  = "Spectral";
 alt_name[17]  = "Infamous";
 alt_name[18]  = "Protoplast";
-alt_name[19]  = "Trendsetter";
+alt_name[19]  = "Transcendence";
 alt_name[20]  = "Flaming Hot";
-alt_name[21]  = "???";
-alt_name[22]  = "Blossoming";
-alt_name[23]  = "Overgrown";
+alt_name[21]  = "Namesake";
+alt_name[22]  = "Unwilling";
+alt_name[23]  = "Blossoming";
 alt_name[24]  = "Twilight";
 alt_name[25]  = "Eldritch";
 alt_name[26]  = "Hexchained";
 alt_name[27]  = "Remnant";
 alt_name[28]  = "Warden";
 alt_name[29]  = "Cryptic";
-alt_name[30]  = "Excited";
+alt_name[30]  = "Static";
 alt_name[31]  = "Smoldering";
  
 //Alt

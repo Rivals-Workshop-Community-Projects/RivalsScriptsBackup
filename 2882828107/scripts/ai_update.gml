@@ -1,5 +1,4 @@
 //ai_update
-up_down = true;
 if (position_meeting(x, y - 16, asset_get("par_block"))){
 	if (vsp > 0){
 		if (djumps < 1){

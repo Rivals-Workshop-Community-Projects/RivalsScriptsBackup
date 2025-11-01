@@ -66,7 +66,7 @@ set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));

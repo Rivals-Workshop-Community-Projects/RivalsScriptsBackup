@@ -12,7 +12,6 @@ switch(attack){
 			spawn_base_dust(x, y, "n_wavedash", spr_dir);
 			spawn_base_dust(x + 36, y, "dash_start", -1);
 			spawn_base_dust(x - 36, y, "dash_start", 1);
-			sound_play(sound_get("haunt_ambience"));
 		}
 		break;
 	case AT_DTILT:
@@ -42,6 +41,19 @@ switch(attack){
 		if (window == 2 && window_timer == 4) || (window == 3 && window_timer == 5){
 			spawn_base_dust(x + 30, y, "dash", -1);
 			spawn_base_dust(x - 30, y, "dash", 1);
+		}
+		break;
+	case 49:
+		if (window == 2 || (window == 3 && window_timer <= 50)){
+			if (window_timer mod 10 == 1){
+				spawn_base_dust(x, y, "n_wavedash", spr_dir);
+				spawn_base_dust(x + 180, y, "dash_start", 1);
+				spawn_base_dust(x - 180, y, "dash_start", -1);
+			}
+			if (window_timer mod 10 == 6){
+				spawn_base_dust(x + 120, y, "dash_start", 1);
+				spawn_base_dust(x - 120, y, "dash_start", -1);
+			}
 		}
 		break;
 }
@@ -75,12 +87,6 @@ if (attack == AT_JAB){
 	}
 }
 
-if (attack == AT_JAB){
-	if (has_hit){
-		old_hsp = clamp (hsp, -6, 6);
-	}
-}
-
 if (attack == AT_DATTACK){
 	if (window == 1){
 		if (free){
@@ -95,42 +101,33 @@ if (attack == AT_DATTACK){
 		if (hsp * spr_dir < 0){
 			hsp = lerp(hsp, 8 * spr_dir, 0.1);
 		} else hsp = 8 * spr_dir;
+		
+		with oPlayer if (id != other.id) && (dattack_drag == other.id){
+            x = lerp(x, other.x - 16*other.spr_dir, 0.5)
+            y = lerp(y, other.y, 0.5)
+        }
+		with (obj_stage_article) if ("enemy_stage_article" in self) && (dattack_drag == other.id){
+			x = lerp(x, other.x - 16*other.spr_dir, 0.5);
+			y = lerp(y, other.y, 0.5);
+        }
 	}
-    if (window == 2 && window_timer >= 4) || (window == 3){
+    if (window == 2 && (free || window_timer >= 6)) || (window == 3){
 		if (!attack_down || free){
 			window = 4;
 			window_timer = 0;
 			destroy_hitboxes();
 		}
-		with oPlayer if (id != other.id) && (dattack_drag == other.id){
-            x = lerp(x - 8*other.spr_dir, other.x - 8*other.spr_dir, 0.5)
-            y = lerp(y, other.y, 0.5)
-        }
-		with (obj_stage_article) if ("enemy_stage_article" in self) && (dattack_drag == other.id){
-			x = lerp(x - 8*other.spr_dir, other.x - 8*other.spr_dir, 0.5);
-			y = lerp(y, other.y, 0.5);
-        }
 	}
 	if (window == 4){
-		with oPlayer if (id != other.id) && (dattack_flick == other.id){
-            x = lerp(x + 24*other.spr_dir, other.x + 24*other.spr_dir, 1);
-            y = lerp(y, other.y, 0.5);
-			dattack_drag = false;
+		with oPlayer if (id != other.id) && (dattack_drag == other.id){
+            x = lerp(x, other.x + 24*other.spr_dir, 0.5);
+            y = lerp(y, other.y, 1);
         }
-		with (obj_stage_article) if ("enemy_stage_article" in self) && (dattack_flick == other.id){
-			x = lerp(x + 24*other.spr_dir, other.x + 24*other.spr_dir, 1);
-			y = lerp(y, other.y, 0.5);
-			dattack_drag = false;
+		with (obj_stage_article) if ("enemy_stage_article" in self) && (dattack_drag == other.id){
+			x = lerp(x, other.x + 24*other.spr_dir, 0.5);
+			y = lerp(y, other.y, 1);
         }
 	}
-	if (window == 5){
-        with oPlayer if (id != other.id) && (dattack_flick == other.id){
-			dattack_flick = false;
-        }
-		with (obj_stage_article) if ("enemy_stage_article" in self) && (dattack_flick == other.id){
-			dattack_flick = false
-        }
-    }
 	if (free){	
 		vsp = min(vsp, 1);
 		hsp = clamp(hsp, -5,5);
@@ -166,7 +163,7 @@ if (attack == AT_FSTRONG){
 		spawn_hit_fx(floor(x + (80 + strong_charge*3)*spr_dir),floor(y - 30),20)
 	}
 	if (window == 3){
-		hsp = (20 + (strong_charge/1.3))*spr_dir;
+		hsp = (20 + (strong_charge/1.4))*spr_dir;
 	}
 }
 
@@ -180,16 +177,17 @@ if (has_rune("L")){
 
 if (attack == AT_NSPECIAL){
     if (window == 2 || window == 3){
+		if (window_timer == 1){
+			sound_play(sound_get("haunt_ambience"));
+		}
 		if (free){
 			vsp = min(vsp, 1.5);
-			hsp = clamp(hsp, -5,5);
+			hsp = clamp(hsp, -5.5,5.5);
 			can_move = false;
 		}
-		if (left_down && !right_down && special_down) && !(window == 2 && window_timer < 8){
-			spr_dir = -1
-		}
-		if (right_down && !left_down && special_down) && !(window == 2 && window_timer < 8){
-			spr_dir = 1
+		if (special_down) && !(window == 2 && window_timer < 8){
+			if (left_down && !right_down) spr_dir = -1;
+			if (right_down && !left_down) spr_dir = 1;
 		}
 	}
 	//loop
@@ -243,18 +241,19 @@ if (attack == AT_FSPECIAL){
 if (attack == AT_USPECIAL){
     if (window == 2){
 		can_move = false;
-		if (has_rune("F")){
-			invincible = true;
+		if !(wall_phase) && (has_rune("F") && get_player_damage(player) >= 96){
+			super_armor = true;
 		}
 	}
 	if (window == 3){
 		if (window_timer == 1){
-			spawn_hit_fx(floor(x),floor(y - 24),195)
-			take_damage (player, -1, 4)
+			if (wall_phase) || (has_rune("F") && get_player_damage(player) >= 96) spawn_hit_fx(floor(x),floor(y - 24),161);
+			else spawn_hit_fx(floor(x),floor(y - 24),195);
 			if (down_down) && !(up_down){
-				vsp = max(vsp, 6);
+				vsp = max(vsp, 7);
 			}
-			if (has_rune("F")){
+			take_damage (player, -1, 4);
+			if (has_rune("F") && get_player_damage(player) >= 100){
 				create_deathbox(floor(x),floor(y - 30), 10, 10, player, true, 1, 1, 0);
 			}
 		}
@@ -290,9 +289,10 @@ if (attack == AT_DSPECIAL){
             if (jackolantern_exists){
 				with (obj_article1){
 					if (player_id == other.id){
-						shovel = true
+						shovel = true;
 					}
 				}
+				jackolantern_recharge = max(jackolantern_recharge, 225);
 			}
 			if (jackolantern_recharge >= 450){
 				instance_create(x + (spr_dir*30),y - 0,"obj_article1");
@@ -313,7 +313,7 @@ if (attack == AT_DSPECIAL){
 if (attack == AT_TAUNT){
 	if (window == 1){
 		if (window_timer == 1){
-			sound_play (sound_get ("watering_cannot"));
+			sound_play(sound_get("watering_cannot"));
 		}
 		if (taunt_pressed || down_pressed) && (window_timer < 112){
 			window_timer = 112;
@@ -321,6 +321,54 @@ if (attack == AT_TAUNT){
 		if (window_timer > 133){
 			iasa_script();
 		}
+	}
+}
+
+if (attack == 49){
+	super_armor = true;
+	hurtboxID.sprite_index = get_attack_value(49, AG_HURTBOX_SPRITE);
+	if (window == 2 || (window == 3 && window_timer <= 50)){
+		if (left_down && !right_down) spr_dir = -1;
+		if (right_down && !left_down) spr_dir = 1;
+		
+		fall_through = true;
+		if (!joy_pad_idle){
+			hsp += lengthdir_x(1, joy_dir);
+			vsp += lengthdir_y(1, joy_dir);
+		} else {
+			vsp = min(vsp, .5);
+		}
+		var fly_dir = point_direction(0,0,hsp,vsp);
+		var fly_dist = point_distance(0,0,hsp,vsp);
+		
+		if (window == 2 && window_timer <= 30) var max_speed = 4;
+		else var max_speed = 1;
+		
+		if (fly_dist > max_speed){
+			hsp = lengthdir_x(max_speed, fly_dir);
+			vsp = lengthdir_y(max_speed, fly_dir);
+		}
+		if (!hitpause && !hitstop){
+			if (window == 2 && window_timer mod 20 == 0) || (window == 3 && window_timer mod 20 == 10){
+				create_hitbox( 49, 1, x, y );
+			}
+			if (window_timer mod 10 == 0 && !(window == 3 && window_timer > 40)){
+				create_hitbox( 49, 2, x, y );
+			}
+		}
+		
+		with oPlayer {
+			if (player != other.player){
+				if (abs(y + 32 - other.y) <= 160) && (abs(x - other.x) <= 200){
+					if (abs(x - other.x) >= 48) x -= 4 * sign(x - other.x);
+					if (y - other.y > 0) && (abs(x - other.x) < 64) vsp = min(vsp, -6);
+				}
+			}
+		}
+	} else {
+		hsp = clamp(hsp, -2, 2);
+		vsp -= gravity_speed * 2 / 3;
+		vsp = min(vsp, 1.5);
 	}
 }
 

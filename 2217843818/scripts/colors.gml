@@ -198,8 +198,8 @@ set_color_profile_slot( 17, 1, 184, 144, 101 ); //unnamed color row
 set_color_profile_slot( 17, 2, 149, 201, 220 ); //unnamed color row
 set_color_profile_slot( 17, 3, 76, 111, 166 ); //unnamed color row
 set_color_profile_slot( 17, 4, 189, 238, 240 ); //unnamed color row
-set_color_profile_slot( 17, 5, 0, 255, 0 ); //unnamed color row
-set_color_profile_slot( 17, 6, 0, 255, 0 ); //unnamed color row
+set_color_profile_slot( 17, 5, 240, 236, 206 ); //unnamed color row
+set_color_profile_slot( 17, 6, 184, 163, 140 ); //unnamed color row
 set_color_profile_slot( 17, 7, 0, 71, 236 );
 
 // gray

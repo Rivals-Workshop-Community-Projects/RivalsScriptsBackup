@@ -10,23 +10,23 @@ alert_text_timer--;
 if (wall_phase == true){
 	mask_index = asset_get("empty_sprite");
     go_through = true;
-    can_wall_jump = false;
+    has_walljump = false;
 } else if (wall_phase == false){
 	mask_index = orig_mask;
     go_through = false;
 }
-if (state == PS_WALL_JUMP && state_timer <= 2) && (wall_phase == false) && (vsp <= 0){
+if (state == PS_WALL_JUMP || state == PS_WALL_TECH) && state_timer <= 2 && wall_phase == false && vsp <= 0{
 	wall_phase = true;
 	sound_play(asset_get("sfx_frog_nspecial_cast"));
 }
 if (wall_phase == true){
-	if (!position_meeting(x, y - 48, asset_get("par_block"))) && (state == PS_AIR_DODGE) 
+	if !position_meeting(x, y - 16, asset_get("par_block")) && (vsp > 0){
+		wall_phase = false;
+	} else if (!position_meeting(x, y - 48, asset_get("par_block"))) && (state == PS_AIR_DODGE) 
 	&& (state_timer > 0 && state_timer <= 14) && (vsp >= 0){
 		wall_phase = false;
 	} else if (!position_meeting(x, y - 64, asset_get("par_block"))) 
 	&& (state == PS_PRATFALL) && (vsp >= 0){
-		wall_phase = false;
-	} else if !position_meeting(x, y - 16, asset_get("par_block")) && (vsp > 0){
 		wall_phase = false;
 	}
 }
@@ -56,14 +56,6 @@ if (state == PS_DASH_START && state_timer > 1){
 	}
 }
 
-if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	sound_stop(sound_get("haunt_ambience"));
-}
-
-if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_TAUNT){
-	sound_stop(sound_get ("watering_cannot"));
-}
-
 with (obj_stage_article){
 	if ("enemy_stage_article" in self){
 		if "dattack_drag" not in self dattack_drag = false;
@@ -73,12 +65,13 @@ with (obj_stage_article){
 
 //witchhazel
 with (oPlayer) {
-	if (id != other.id){
+	if (witch_hazel_id == other){
 		if (puffshroom_timer != 0 && puffshroom_timer <= 30){
 			if (state == PS_HITSTUN_LAND || state == PS_HITSTUN) puffshroom_timer--;
 			else puffshroom_timer = 0;
 		} else draw_y = 0;
 		if (puffshroom_timer == 1) spawn_hit_fx(floor(x),floor(y - 30),67);
+		if (puffshroom_timer == 0 || state == PS_RESPAWN) witch_hazel_id = noone;
 	}
 }
 
@@ -165,20 +158,14 @@ if (has_rune("C")){
 }
 
 if (has_rune("D")){
-	if (state == PS_WAVELAND && state_timer mod 2 == 0 && hsp != 0){
+	if (state == PS_WAVELAND && state_timer mod 3 == 0 && hsp != 0){
 		create_hitbox( AT_DSPECIAL, 1, (x),(y - 10) );
 	}
 }
 
 if (has_rune("E")){
-	walljump_hsp = 5
-	walljump_vsp = 9
-}
-
-if (has_rune("F")){
-	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 45);
-	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1.2);
+	walljump_hsp = 5.5;
+	walljump_vsp = 9;
 }
 
 if (has_rune("J")){
@@ -222,8 +209,8 @@ if (has_rune("M")){
 }
 
 if (has_rune("N")){
+	set_hitbox_value(AT_DATTACK, 5, HG_EFFECT, 1);
 	set_hitbox_value(AT_DATTACK, 6, HG_EFFECT, 1);
-	set_hitbox_value(AT_DATTACK, 7, HG_EFFECT, 1);
 	set_hitbox_value(AT_BAIR, 1, HG_EFFECT, 1);
 	set_hitbox_value(AT_BAIR, 2, HG_EFFECT, 1);
 	set_hitbox_value(AT_DAIR, 1, HG_EFFECT, 1);
@@ -236,5 +223,8 @@ if (has_rune("N")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+	set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 5);
+	set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 5);
 }

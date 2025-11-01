@@ -10,14 +10,14 @@ walk_anim_speed = .125;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 3;
+walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 12;
 initial_dash_speed = 4;
 dash_speed = 7;
-dash_turn_time = 12;
-dash_turn_accel = .5;
+dash_turn_time = 18;
+dash_turn_accel = 1;
 dash_stop_time = 7;
 dash_stop_percent = .5; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .35;
@@ -39,7 +39,7 @@ prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = -4;
+walljump_hsp = -4.5;
 walljump_vsp = 6;
 walljump_time = 32;
 max_fall = 6; //maximum fall speed without fastfalling
@@ -97,18 +97,14 @@ jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_absa_jump");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
-/*
-haunt_ambience = sound_get("haunt_ambience");
-ambience_sound = noone;
-watering_cannot = sound_get ("watering_cannot");
-watering_sound = noone;
-*/
-
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
 
 small_sprites = 1;
+set_victory_bg(sprite_get("winbg"));
+
+jackolantern_effect = hit_fx_create( sprite_get("jackolantern_fire_vfx"), 12 );
 
 wall_phase = false;
 orig_mask = mask_index;
@@ -117,6 +113,7 @@ jackolantern_recharge = 0;
 witchhazel_recharge = 0;
 alert_text_timer = 0;
 
+witch_hazel_id = noone;
 puffshroom_timer = 0;
 puffshroom_sprite = sprite_get("puffshroom");
 playtest = (object_index == oTestPlayer);
@@ -126,12 +123,17 @@ uspecial_used = false;
 hit_player_event = 13;
 draw_hud_event = 14;
 copy_ability_id = 47;
-TCG_Kirby_Copy = 11;
+TCG_Kirby_Copy = 9;
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 110;
 mamizou_transform_spr = sprite_get("helpless");
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Ghost Pepper Fajita"
+scoop_personalized_flavour_name = "Chilly Ice Scream";
+scoop_personalized_flavour_sprite = sprite_get("chilly_ice_scream");
 arena_title = "The Haunting Harvest";
 miiverse_post = sprite_get("post_ghost"); 
+tcoart = sprite_get("ghostpeppertco"); 
 knight_compat_dream = 
     [
         "Hey, you're a ghost too!",

@@ -1,23 +1,27 @@
 //animation.gml
-if (attack == AT_UTILT && (window == 2 || window == 3 || window == 4)){
-	hud_offset = lerp(hud_offset, 80, 0.5);
-}
-if (attack == AT_USTRONG && (window == 3)){
-	hud_offset = lerp(hud_offset, 80, 0.5);
+
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+	if (attack == AT_UTILT && window > 1 && window < 5){
+		if (char_height < 100){
+			char_height += 12;
+		}
+	} else if (attack == AT_USTRONG && window == 3){
+		if (char_height < 100){
+			char_height += 12;
+		}
+	} else if (attack == 49 && window > 1 && window < 5){
+		if (char_height < 140){
+			char_height += 4;
+		}
+	} else {
+		if char_height > 52{
+			char_height -= 8;
+		}	
+	}
+} else if (char_height > 52){
+	char_height -= 8;
 }
 
-if abs(hud_offset) < 1{
-	hud_offset = 0;
+if (char_height < 52){
+	char_height = 52;
 }
-
-/*
-if (state == PS_IDLE) && (state_timer == 400){
-	wait_what = random_func(1, 2, true);
-}
-if (wait_what == 0){
-	wait_sprite = sprite_get("wait");
-}
-if (wait_what == 1){
-	wait_sprite = sprite_get("wait2");
-}
-*/

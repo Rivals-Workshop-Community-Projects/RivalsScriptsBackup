@@ -9,3 +9,8 @@ if position_meeting(x, y - 16, asset_get("par_block")){
 
 gpu_set_fog(0, c_white, 0, 0);
 gpu_set_alphatestenable(false);
+
+if !(wall_phase) && (has_rune("F") && get_player_damage(player) >= 96) 
+&& !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_USPECIAL){
+	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_black, (sin(get_gameplay_time()/6)+1)/4);
+}

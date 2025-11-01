@@ -156,25 +156,25 @@ set_color_profile_slot( 12, 5, 255, 249, 196 ); //stem
 set_color_profile_slot( 12, 6, 214, 222, 180 ); //stem 2
 set_color_profile_slot( 12, 7, 135, 138, 106 ); //stem 3
 
-// knight
-set_color_profile_slot( 13, 0, 75, 75, 98 ); //pepper
-set_color_profile_slot( 13, 1, 32, 32, 44 ); //pepper 2
-set_color_profile_slot( 13, 2, 15, 15, 30 ); //face
+// john hollow knight
+set_color_profile_slot( 13, 0, 255, 163, 92 ); //pepper
+set_color_profile_slot( 13, 1, 209, 81, 25 ); //pepper 2
+set_color_profile_slot( 13, 2, 255, 163, 92 ); //face
 set_color_profile_slot( 13, 3, 246, 250, 251 ); //sheet
 set_color_profile_slot( 13, 4, 107, 156, 194 ); //sheet 2
 set_color_profile_slot( 13, 5, 114, 124, 159 ); //stem
 set_color_profile_slot( 13, 6, 84, 87, 138 ); //stem 2
 set_color_profile_slot( 13, 7, 46, 29, 80 ); //stem 3
 
-// unnamed alt palette
-set_color_profile_slot( 14, 0, 235, 117, 137 ); //pepper
-set_color_profile_slot( 14, 1, 166, 73, 73 ); //pepper 2
-set_color_profile_slot( 14, 2, 245, 71, 71 ); //face
-set_color_profile_slot( 14, 3, 255, 240, 240 ); //sheet
-set_color_profile_slot( 14, 4, 235, 162, 188 ); //sheet 2
-set_color_profile_slot( 14, 5, 145, 97, 90 ); //stem
-set_color_profile_slot( 14, 6, 113, 65, 59 ); //stem 2
-set_color_profile_slot( 14, 7, 82, 40, 35 ); //stem 3
+// from mario
+set_color_profile_slot( 14, 0, 86, 214, 164 ); //pepper
+set_color_profile_slot( 14, 1, 59, 152, 173 ); //pepper 2
+set_color_profile_slot( 14, 2, 0, 83, 122 ); //face
+set_color_profile_slot( 14, 3, 197, 255, 196 ); //sheet
+set_color_profile_slot( 14, 4, 112, 186, 157 ); //sheet 2
+set_color_profile_slot( 14, 5, 242, 199, 99 ); //stem
+set_color_profile_slot( 14, 6, 237, 94, 77 ); //stem 2
+set_color_profile_slot( 14, 7, 166, 17, 77 ); //stem 3
 
 // polterghast
 set_color_profile_slot( 15, 0, 140, 238, 255 ); //pepper
@@ -208,37 +208,37 @@ set_color_profile_slot( 17, 7, 12, 155, 110 ); //stem 3
 
 // gold
 set_color_profile_slot( 18, 0, 217, 163, 63 ); //pepper
-set_color_profile_slot( 18, 1, 168, 108, 5 ); //pepper 2
-set_color_profile_slot( 18, 2, 122, 69, 0 ); //face
+set_color_profile_slot( 18, 1, 122, 69, 0 ); //pepper 2
+set_color_profile_slot( 18, 2, 168, 108, 5 ); //face
 set_color_profile_slot( 18, 3, 250, 230, 120 ); //sheet
-set_color_profile_slot( 18, 4, 217, 163, 63 ); //sheet 2
+set_color_profile_slot( 18, 4, 168, 108, 5 ); //sheet 2
 set_color_profile_slot( 18, 5, 250, 230, 120 ); //stem
 set_color_profile_slot( 18, 6, 217, 163, 63 ); //stem 2
-set_color_profile_slot( 18, 7, 168, 108, 5 ); //stem 3
+set_color_profile_slot( 18, 7, 122, 69, 0 ); //stem 3
 
 // trendsetter
 set_color_profile_slot( 19, 0, 250, 197, 207 ); //pepper
 set_color_profile_slot( 19, 1, 255, 255, 255 ); //pepper 2
 set_color_profile_slot( 19, 2, 255, 255, 255 ); //face
 set_color_profile_slot( 19, 3, 245, 145, 172 ); //sheet
-set_color_profile_slot( 19, 4, 204, 102, 151 ); //sheet 2
-set_color_profile_slot( 19, 5, 176, 231, 252 ); //stem
+set_color_profile_slot( 19, 4, 204, 82, 140 ); //sheet 2
+set_color_profile_slot( 19, 5, 188, 236, 255 ); //stem
 set_color_profile_slot( 19, 6, 91, 206, 250 ); //stem 2
-set_color_profile_slot( 19, 7, 90, 151, 232 ); //stem 3
+set_color_profile_slot( 19, 7, 84, 130, 232 ); //stem 3
 
 // scoville
-set_color_profile_slot( 20, 0, 244, 210, 156 ); //pepper
+set_color_profile_slot( 20, 0, 254, 243, 192 ); //pepper
 set_color_profile_slot( 20, 1, 219, 164, 99 ); //pepper 2
 set_color_profile_slot( 20, 2, 0, 0, 0 ); //face
 set_color_profile_slot( 20, 3, 180, 32, 42 ); //sheet
 set_color_profile_slot( 20, 4, 115, 23, 45 ); //sheet 2
-set_color_profile_slot( 20, 5, 141, 201, 121 ); //stem
+set_color_profile_slot( 20, 5, 174, 207, 85 ); //stem
 set_color_profile_slot( 20, 6, 20, 160, 46 ); //stem 2
 set_color_profile_slot( 20, 7, 36, 82, 59 ); //stem 3
 
 // ghost pepper?
 set_color_profile_slot( 21, 0, 255, 138, 212 ); //pepper
-set_color_profile_slot( 21, 1, 248, 82, 250 ); //pepper 2
+set_color_profile_slot( 21, 1, 223, 65, 224 ); //pepper 2
 set_color_profile_slot( 21, 2, 0, 0, 0 ); //face
 set_color_profile_slot( 21, 3, 214, 193, 211 ); //sheet
 set_color_profile_slot( 21, 4, 149, 138, 149 ); //sheet 2
@@ -246,35 +246,35 @@ set_color_profile_slot( 21, 5, 255, 255, 255 ); //stem
 set_color_profile_slot( 21, 6, 214, 193, 211 ); //stem 2
 set_color_profile_slot( 21, 7, 136, 136, 136 ); //stem 3
 
-// valley
-set_color_profile_slot( 22, 0, 110, 103, 216 ); //pepper
-set_color_profile_slot( 22, 1, 67, 61, 164 ); //pepper 2
-set_color_profile_slot( 22, 2, 69, 103, 225 ); //face
-set_color_profile_slot( 22, 3, 232, 224, 225 ); //sheet
-set_color_profile_slot( 22, 4, 182, 158, 251 ); //sheet 2
-set_color_profile_slot( 22, 5, 153, 204, 197 ); //stem
-set_color_profile_slot( 22, 6, 68, 164, 115 ); //stem 2
-set_color_profile_slot( 22, 7, 36, 117, 75 ); //stem 3
+// mycolich
+set_color_profile_slot( 22, 0, 168, 255, 208 ); //pepper
+set_color_profile_slot( 22, 1, 87, 204, 171 ); //pepper 2
+set_color_profile_slot( 22, 2, 168, 255, 208 ); //face
+set_color_profile_slot( 22, 3, 185, 206, 173 ); //sheet
+set_color_profile_slot( 22, 4, 130, 150, 120 ); //sheet 2
+set_color_profile_slot( 22, 5, 28, 44, 19 ); //stem
+set_color_profile_slot( 22, 6, 51, 81, 36 ); //stem 2
+set_color_profile_slot( 22, 7, 96, 137, 72 ); //stem 3
 
-// anthem
-set_color_profile_slot( 23, 0, 136, 136, 136 ); //pepper
-set_color_profile_slot( 23, 1, 60, 60, 60 ); //pepper 2
-set_color_profile_slot( 23, 2, 54, 108, 28 ); //face
-set_color_profile_slot( 23, 3, 54, 108, 28 ); //sheet
-set_color_profile_slot( 23, 4, 62, 72, 46 ); //sheet 2
-set_color_profile_slot( 23, 5, 236, 204, 65 ); //stem
-set_color_profile_slot( 23, 6, 236, 204, 65 ); //stem 2
-set_color_profile_slot( 23, 7, 200, 126, 25 ); //stem 3
+// valley
+set_color_profile_slot( 23, 0, 110, 103, 216 ); //pepper
+set_color_profile_slot( 23, 1, 67, 61, 164 ); //pepper 2
+set_color_profile_slot( 23, 2, 69, 103, 225 ); //face
+set_color_profile_slot( 23, 3, 232, 224, 225 ); //sheet
+set_color_profile_slot( 23, 4, 182, 158, 251 ); //sheet 2
+set_color_profile_slot( 23, 5, 153, 204, 197 ); //stem
+set_color_profile_slot( 23, 6, 68, 164, 115 ); //stem 2
+set_color_profile_slot( 23, 7, 36, 117, 75 ); //stem 3
 
 // ao
 set_color_profile_slot( 24, 0, 255, 194, 79 ); //pepper
 set_color_profile_slot( 24, 1, 201, 117, 51 ); //pepper 2
 set_color_profile_slot( 24, 2, 201, 117, 51 ); //face
-set_color_profile_slot( 24, 3, 55, 121, 96 ); //sheet
-set_color_profile_slot( 24, 4, 29, 89, 67 ); //sheet 2
-set_color_profile_slot( 24, 5, 70, 98, 168 ); //stem
-set_color_profile_slot( 24, 6, 10, 43, 112 ); //stem 2
-set_color_profile_slot( 24, 7, 7, 17, 81 ); //stem 3
+set_color_profile_slot( 24, 3, 10, 43, 112 ); //sheet
+set_color_profile_slot( 24, 4, 7, 17, 81 ); //sheet 2
+set_color_profile_slot( 24, 5, 117, 147, 222 ); //stem
+set_color_profile_slot( 24, 6, 70, 98, 168 ); //stem 2
+set_color_profile_slot( 24, 7, 39, 65, 132 ); //stem 3
 
 // carcossant
 set_color_profile_slot( 25, 0, 255, 63, 0 ); //pepper
@@ -292,9 +292,9 @@ set_color_profile_slot( 26, 1, 116, 81, 196 ); //pepper 2
 set_color_profile_slot( 26, 2, 101, 0, 137 ); //face
 set_color_profile_slot( 26, 3, 225, 92, 198 ); //sheet
 set_color_profile_slot( 26, 4, 161, 65, 190 ); //sheet 2
-set_color_profile_slot( 26, 5, 132, 115, 148 ); //stem
-set_color_profile_slot( 26, 6, 74, 63, 81 ); //stem 2
-set_color_profile_slot( 26, 7, 49, 35, 56 ); //stem 3
+set_color_profile_slot( 26, 5, 111, 110, 156 ); //stem
+set_color_profile_slot( 26, 6, 72, 72, 125 ); //stem 2
+set_color_profile_slot( 26, 7, 36, 35, 82 ); //stem 3
 
 // desperado
 set_color_profile_slot( 27, 0, 136, 120, 120 ); //pepper
@@ -307,11 +307,11 @@ set_color_profile_slot( 27, 6, 185, 108, 82 ); //stem 2
 set_color_profile_slot( 27, 7, 118, 58, 38 ); //stem 3
 
 // deracine
-set_color_profile_slot( 28, 0, 0, 255, 152 ); //pepper
-set_color_profile_slot( 28, 1, 0, 163, 97 ); //pepper 2
-set_color_profile_slot( 28, 2, 0, 92, 55 ); //face
-set_color_profile_slot( 28, 3, 189, 255, 229 ); //sheet
-set_color_profile_slot( 28, 4, 85, 128, 110 ); //sheet 2
+set_color_profile_slot( 28, 0, 189, 255, 229 ); //pepper
+set_color_profile_slot( 28, 1, 0, 255, 152 ); //pepper 2
+set_color_profile_slot( 28, 2, 0, 163, 97 ); //face
+set_color_profile_slot( 28, 3, 85, 128, 110 ); //sheet
+set_color_profile_slot( 28, 4, 57, 87, 74 ); //sheet 2
 set_color_profile_slot( 28, 5, 111, 149, 146 ); //stem
 set_color_profile_slot( 28, 6, 62, 69, 92 ); //stem 2
 set_color_profile_slot( 28, 7, 35, 40, 56 ); //stem 3

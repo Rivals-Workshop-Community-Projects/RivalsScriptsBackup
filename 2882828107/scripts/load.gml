@@ -51,7 +51,7 @@ sprite_change_offset("dspecial", 16, 47, true);
 sprite_change_offset("dspecial_air", 16, 47, true);
 sprite_change_offset("taunt", 16, 31, true);
 
-sprite_change_offset("plat", 48, 14);
+sprite_change_offset("plat", 24, 15, true);
 sprite_change_offset("plat_back", 48, 46);
 
 sprite_change_offset("hurtbox", 32, 62);
@@ -64,14 +64,16 @@ sprite_change_offset("jackolantern_startup", 32, 78);
 sprite_change_offset("jackolantern_attacking", 32, 46);
 sprite_change_offset("jackolantern_fire", 32, 30);
 sprite_change_offset("jackolantern_fire_collision", 32, 14);
+sprite_change_offset("jackolantern_fire_vfx", 32, 32);
 sprite_change_offset("jackolantern_end", 32, 78);
 sprite_change_offset("witchhazel", 48, 62);
 sprite_change_offset("witchhazel_mask", 32, 62);
 sprite_change_offset("witchhazel_ready", 48, 62);
 sprite_change_offset("witchhazel_attacking", 48, 62);
 sprite_change_offset("witchhazel_blast", 0, 64);
-sprite_change_offset("puffshroom", 0, 0);
+sprite_change_offset("puffshroom", 16, 16);
 
 sprite_change_offset("watering_cannot", 64, 110);
 
+sprite_change_offset("final_smash", 48, 95, true);
 sprite_change_offset("helpless", 16, 31, true);
