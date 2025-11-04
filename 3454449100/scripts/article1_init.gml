@@ -72,6 +72,8 @@ storedVSP = 0;
 timesParried = 0;
 wasShellParriedAtAll = false;
 
+shellHitlockoutAmt = 20;
+
 canShellBounce = false;
 
 ownedByOriginalKoopaAndReboundedOffOfEnemy = false;

@@ -845,6 +845,7 @@ switch (attack) {
 			if (must_complete_attack) {
 				window = fstrong_charged_window;
 				stored_strong_charge = 0;
+				strong_charge = 0;
 				window_timer = 0;
 				// Play sound here so it lines up with the first hit
 				sound_play(asset_get("sfx_bite"));
@@ -976,6 +977,7 @@ switch (attack) {
 			if (must_complete_attack) {
 				window = fstrong2_charged_window;
 				stored_strong_charge = 0;
+				strong_charge = 0;
 				window_timer = 0;
 			}
 		} else if ((window < fstrong2_bonus_charging_window) && !must_complete_attack) {
@@ -1072,6 +1074,7 @@ switch (attack) {
 				set_attack(AT_USTRONG_2);
 				window = ustrong_charged_window;
 				stored_strong_charge = 0;
+				strong_charge = 0;
 				window_timer = 0;
 				// Play sound here so it lines up with the first hit
 				sound_play(asset_get("sfx_zetter_fireball_fire"));
@@ -1213,6 +1216,7 @@ switch (attack) {
 			if (must_complete_attack) {
 				window = dstrong_charged_window;
 				stored_strong_charge = 0;
+				strong_charge = 0;
 				window_timer = 0;
 				// Play sound here so it lines up with the first hit
 				sound_play(asset_get("sfx_zetter_fireball_fire"));
@@ -2301,12 +2305,12 @@ if (attack == AT_FSPECIAL) {
 	can_move = false;
 	// TODO - check here if there's room to create the hitbox in front of you, if not then skip to recovery
 	if ((window == fspecial_uncharged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		grab_hitbox = create_hitbox(attack, 1, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 49);
+		grab_hitbox = create_hitbox(attack, 1, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 70 + fspecial_harpoon_hitbox_y_offset);
 		grab_hitbox.max_distance = fspecial_uncharged_max_distance;
 		grab_hitbox.prev_owner_x = x;
 		grab_hitbox.next_owner_x = x;
 	} else if ((window == fspecial_charged_window) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-		grab_hitbox = create_hitbox(attack, 2, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 49);
+		grab_hitbox = create_hitbox(attack, 2, x + (spr_dir * (40 + fspecial_harpoon_hitbox_x_offset)), y - 70 + fspecial_harpoon_hitbox_y_offset);
 		grab_hitbox.max_distance = fspecial_charged_max_distance;
 		grab_hitbox.prev_owner_x = x;
 		grab_hitbox.next_owner_x = x;

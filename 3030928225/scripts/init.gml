@@ -420,8 +420,9 @@ fspecial_whip_spin_sound_fx = asset_get("sfx_swipe_weak1");
 fspecial_whip_spin_sound_curr = noone;
 // fspecial harpoon hitbox offsets
 fspecial_harpoon_hitbox_width = 50;
-fspecial_harpoon_hitbox_height = 45;
+fspecial_harpoon_hitbox_height = 40;
 fspecial_harpoon_hitbox_x_offset = 10; // horizontal offset of the hitbox, adjustments are relative to the visual
+fspecial_harpoon_hitbox_y_offset = 25; // vertical offset of the hitbox, higher numbers push the box downward as usual
 // Uspecial
 uspecial_dig_distance_max = 100;
 uspecial_dig_distance = uspecial_dig_distance_max;

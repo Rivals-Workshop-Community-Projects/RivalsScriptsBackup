@@ -24,13 +24,15 @@
 */
 
 //Marlow variables
+last_joy_dir = 0;
+
 after_image1 = noone;
 after_image1_no_dash = false;
 
 nspec_press_tp_buffer = false;
 nspec_dir = 0;
 nspec_normal_lag = 8;
-nspec_whifflag = 20;//18
+nspec_whifflag = 22;//20
 
 uspec_pratfall_verif = 0;
 uspec_pratfall_attack = 0;

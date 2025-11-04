@@ -13,9 +13,9 @@ charge_time = 0;
 left_x = 0;
 right_x = 0;
 
-stats_lvl1_time = 90;
-stats_lvl2_time = 210;
-stats_lvl3_time = 300;
+stats_lvl1_time = 70;
+stats_lvl2_time = 180;
+stats_lvl3_time = 280;
 stats_fall_speed = 25;
 
 state = 0;

@@ -18,7 +18,7 @@ if (attack == AT_FSPECIAL) {
 	// Stay level with the owner
 	with (asset_get("oPlayer")) {
 		if (other.player_id == id) {
-			other.y = y - 49;
+			other.y = y - 70 + fspecial_harpoon_hitbox_y_offset;
 			other.next_owner_x = x;
 		}
 	}

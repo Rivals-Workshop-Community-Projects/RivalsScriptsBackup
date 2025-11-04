@@ -37,31 +37,14 @@ prepare_shader(); //resets shader
 
 //everything below this point shouldn't use shaders
 
-//alt icons
-/*
-switch (alt_cur)
-{
-    case 13: draw_sprite_ext(asset_get("prem_skin_spr"), 3, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //abyss
-    case 14: draw_sprite_ext(asset_get("prem_skin_spr"), 2, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //early access
-    case 15: draw_sprite_ext(asset_get("prem_skin_spr"), 8, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //milestone
-    case 16: draw_sprite_ext(asset_get("prem_skin_spr"), 7, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //seasonal
-    case 17: draw_sprite_ext(asset_get("prem_skin_spr"), 0, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //infamous/premium
-    case 18: draw_sprite_ext(asset_get("prem_skin_spr"), 5, icon_x_pos + 32, icon_y_pos + 34, 2, 2, 0, c_white, 1); break; //gold rank
-    case 25: draw_sprite_ext(sprite_get("css_umbra"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //umbra princess
-    case 26: draw_sprite_ext(sprite_get("css_allstar"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //all-star heroine
-    case 27: draw_sprite_ext(sprite_get("css_vortex"), 0, icon_x_pos, icon_y_pos, 2, 2, 0, c_white, 1); break; //vortex 2024
-}
-*/
-
 //alt boxes
 draw_set_halign(fa_left);
-var thin = alt_total > 16;
 rectDraw(x+78, y+9, 132, 6, c_black);
 for (i = 0; i < alt_total; i++)
 {
 	var draw_color = (i == alt_cur) ? c_white : c_gray * 0.5;
-	var draw_x = x + 78 + 6 * i;
-	rectDraw(draw_x, y + 9, 3, 4, draw_color);
+	var draw_x = x + 78 + 4 * i;
+	rectDraw(draw_x, y + 9, 2, 4, draw_color);
 }
 var txt = "#" + string(alt_cur);
 rectDraw(x + 76, y + 15, 42, 20, c_black);

@@ -1,5 +1,5 @@
 /*
-						Hi!
+						Hello!
 
 If you're here for grabbing recolors for Koopa Troopa (more
 specifically for the Kooper or Koops alternate costumes), then
@@ -8,10 +8,8 @@ the last two slots. This is primarily how exactly I was able
 to recolor the accessories because Koopa Troopa already
 hit the color slot limit, and I had to do some workarounds.
 
-Basically, just copy paste the code and put it where it
-is in the color text in the side bar on the colors
-website. This will allow for the image to properly
-recolor with the alternate portrait art.
+Basically, just follow what the images in here do for the sprite
+pallete, and you should do fine.
 
 (Also, this goes without saying, but you'll also need to
 load either the Kooper or Koops portrait art if you want
@@ -21,44 +19,36 @@ the main folder and the sprites folder. Either works.)
 =========================
 
 For the Kooper color scheme, replace the last color slot
-in the default color section with this.
-This changes the slot for eye color to be mapped
-to the scarf color.
+in the "sprite's pallete" section - take out ALL of the greys and blacks,
+and in it's place, put the light-blue colors in it's place.
+The lightest shade should be the main color.
 
-// eye col, scarf, hoodie
-set_color_profile_slot( 0, 7, 93, 192, 244 );
-set_color_profile_slot_range( 7, 1, 31, 46 );
+Paste this image into your browser to see a visual example:
+
+https://file.garden/Zs36hb96OyyJ2qLv/kooper_alt_coloring.png
 
 =========================
 
-For the Koops color scheme, replace the last 2 color slots
-in the default color section with these two.
-This changes the slot for eye whites to Koops' pants
-and the eye color slot to the hoodie color.
+For the Kooper color scheme, replace the last color slot
+in the "sprite's pallete" section - take out ALL of the greys and blacks,
+and in it's place, put the light-blue colors in it's place.
+Then, for the second-to-last color slot, take out both of the whites, and
+replace them with the darker blues. The lightest shade should be the main color.
 
-// eye whites, pants
-set_color_profile_slot( 0, 6, 21, 111, 225 );
-set_color_profile_slot_range( 6, 1, 7, 44 );
+Paste this image into your browser to see a visual example:
 
-// eye col, scarf, hoodie
-set_color_profile_slot( 0, 7, 93, 192, 244 );
-set_color_profile_slot_range( 7, 1, 31, 46 );
+https://file.garden/Zs36hb96OyyJ2qLv/koops_alt_coloring.png 
 
 =========================
 
 If you want to go back to the default color
 slots for either base Koopa or the Roving Racer
-costume, then replace the last 2 color slots
-in the default color section with these two.
+costume, then set the colors in the last two slots to what they 
+were previously. You can just color pick them from the sprite.
 
-// eye whites, pants
-set_color_profile_slot( 0, 6, 249, 249, 240 );
-set_color_profile_slot_range( 6, 6, 4, 22 );
+Paste this image into your browser to see a visual example:
 
-// eye col, scarf, hoodie
-set_color_profile_slot( 0, 7, 77, 97, 91 );
-set_color_profile_slot_range( 7, 11, 17, 49 );
-
+https://file.garden/Zs36hb96OyyJ2qLv/koopa_base_coloring.png
 =========================
 
 In case you just don't feel like putting this into the website, there's also

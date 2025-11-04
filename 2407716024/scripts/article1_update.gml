@@ -40,8 +40,10 @@ case 0: //landing
         x = xstart;
         free = true;
     }
+    
     //upon landing, set state to 1
     if (!free) {
+    	
         article_set_state(1);
     }
     //otherwise, fall
@@ -93,11 +95,14 @@ case 2:
     
     if (free && !place_meeting_floor(0)) {
         vsp = 1;
+        
         if (hsp != 0) {
-            x -= hsp * 2 ;
+            x -= hsp * 2;
             hsp = 0;
             shift_off_ledge_onto_platform(-spr_dir, 4);
             article_set_state(3);
+            // slight offset to make sure that it stays on stage on the right side.
+            if (spr_dir == 1) x -= 4;
         }
         else {
             article_set_state(0);
@@ -113,6 +118,8 @@ case 2:
         article_set_state(3);
         hsp = 0;
     }
+    
+    
     break;
 break;
 
@@ -201,8 +208,8 @@ case 9: //fall
         hitbox_x = x;
         hitbox_y_target = y;
         hitbox_id = create_hitbox(AT_DSPECIAL, power_level, x, -hitbox_y_offset);
-        //hitbox_id.can_hit_self = true;
-        hitbox_id.player = ownershit.player;
+        if (ownershit == player_id) hitbox_id.can_hit_self = true;
+        else hitbox_id.player = ownershit.player;
     }
     else {
         x = hitbox_x;
@@ -236,8 +243,9 @@ case 10: //landing frame
     }
     if (instance_exists(hitbox_id)) {
         hitbox_id.destroyed = true;
+        
         hitbox_id.x = hitbox_x;
-        hitbox_id.y = hitbox_y - hitbox_y_offset;
+        hitbox_id.y = 1000;
     }
     
             switch (power_level) {
@@ -274,7 +282,8 @@ case 20: //fall
         power_level = 4;
         hitbox_id = create_hitbox(AT_DSPECIAL, power_level, x, -hitbox_y_offset);
         //hitbox_id.can_hit_self = true;
-        hitbox_id.player = ownershit.player;
+        if (ownershit == player_id) hitbox_id.can_hit_self = true;
+        else hitbox_id.player = ownershit.player;
         roller_segment_x = [0, 0, 0, 0];
         roller_segment_y = [0, 0, 0, 0];
         roller_segment_hsp = [0, 0, 0, 0];
@@ -315,6 +324,7 @@ case 21: //land
         hitbox_id.x = hitbox_x;
         hitbox_id.y = hitbox_y - hitbox_y_offset;
         hitbox_id.destroyed = true;
+        
         sound_play(sound_get("avery_sqwuak"));
         
         	var splat = random_func( player_id.player + 5, 2, false);
@@ -534,7 +544,6 @@ if (power_level == 3) {
     //check for 5% roadroller drop
     else {
         var roller_roll = random_func( player_id.player + 5, 40, false);
-        print(roller_roll);
     }if (roller_roll < 5) { power_level = 4; }
 }
 

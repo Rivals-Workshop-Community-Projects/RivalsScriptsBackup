@@ -17,3 +17,9 @@ peacock_has_airdash = 1;
 }*/
 
 last_hit = hit_player_obj;
+
+if (instance_exists(uair_borb) && enemy_hitboxID.type == 1)
+{
+    instance_destroy(uair_borb);
+    uair_borb = noone;
+}

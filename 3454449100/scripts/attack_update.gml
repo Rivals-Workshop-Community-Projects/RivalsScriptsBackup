@@ -287,13 +287,7 @@ if (attack == AT_NAIR){
 			sound_play(sfx_ttydR_mario_field_hammer_spinfast, false, noone, 1, 1.25);
 			spawn_base_dust( x + (0 * spr_dir), y, "doublejump_small", spr_dir);
 		}
-	}
-	
-	// allows for spinning on the ground
-	if ( (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (window > 1)){
-		set_attack_value(AT_NAIR, AG_CATEGORY, 2);
-	}
-	
+	}	
 	
 	// ground stuff
 	if (!free){

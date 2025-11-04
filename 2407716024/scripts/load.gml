@@ -286,4 +286,4 @@ sprite_change_offset("01_dspecial_block_lv1_0_die",12,16);
 
 sprite_change_offset("01_fsmash", 68, 126);
 
-sprite_change_offset("dash_icon", 0, 0);
+sprite_change_offset("dash_icon", 100, 100);

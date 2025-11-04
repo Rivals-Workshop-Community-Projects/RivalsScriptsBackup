@@ -237,8 +237,9 @@ if (!free || state_cat == SC_HITSTUN){
 	}
 }
 
-// this is to not make the transition between jabs 1 and 2 look... weird from a positioning view.
+// attack update stuff in here so it doesnt have to deal with the one frame delay from attack update lol
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	// this is to not make the transition between jabs 1 and 2 look... weird from a positioning view.
 	if (attack == AT_JAB){
 		if (window == 4){
 			if (window_timer == 0){
@@ -257,6 +258,15 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 					// hsp += (4 * spr_dir);
 				}
 			}
+		}
+	}
+	
+	if (attack == AT_NAIR){
+		// allows for spinning on the ground
+		if ( (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (window > 1 && window != 5)){
+			set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+		} else {
+			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 		}
 	}
 	

@@ -82,7 +82,6 @@ if (shellWasParried){
 // print(shellOwnedByOrigKoopa);
 // print(timesParried);
 
-
 // regrab, also hitting the shell (both ways)
 if (state == 0 || state == 1 || state == 3){
 
@@ -99,8 +98,12 @@ if (state == 0 || state == 1 || state == 3){
 		with (asset_get("pHitBox")){
 		
 			// check if the hitbox is now touching our article.
-			if (place_meeting(x, y, other) && other.shellHitLockout == 0){
+			if (place_meeting(x, y, other) && ((other.whoHitShell == player && other.shellHitLockout == 0) || (other.whoHitShell != player))){
 			
+			
+				/*
+				&& ((other.whoHitShell != player) || (other.whoHitShell == player && other.shellHitLockout == 0))
+				*/
 				// this check is for if we're touching the hitboxes of the ORIGINAL player that spawned the shell!
 				if (player_id == other.player_id){
 					if (type == 1){// yeah
@@ -140,7 +143,7 @@ if (state == 0 || state == 1 || state == 3){
 							other.storedVSP = -2 - ((player_id.fspecTimeCharging / player_id.fspecMaxChargeTimeAllowed) * 3.5);
 							other.state = 2;
 							other.state_timer = 0;
-							other.shellHitLockout = 30;
+							other.shellHitLockout = other.shellHitlockoutAmt;
 							
 							other.hitByOrigOwner = false;
 							other.whoHitShell = player;
@@ -177,14 +180,14 @@ if (state == 0 || state == 1 || state == 3){
 								other.storedVSP = 18;
 								other.state = 1;
 								other.state_timer = 0;
-								other.shellHitLockout = 30;
+								other.shellHitLockout = other.shellHitlockoutAmt;
 							} else {
 								// if struck on ground
 								other.hsp = 10 * spr_dir;
 								other.vsp = -2;
 								other.state = 1;
 								other.state_timer = 0;
-								other.shellHitLockout = 30;
+								other.shellHitLockout = other.shellHitlockoutAmt;
 							}
 							
 							other.hitByOrigOwner = false;
@@ -214,7 +217,7 @@ if (state == 0 || state == 1 || state == 3){
 						} else {	// all other kinds of attacks
 							// print(other.timesParried);
 							if (other.state != 3){
-								if (other.wasShellParriedAtAll == false){
+								if (other.wasShellParriedAtAll == false && ( (other.whoHitShell != player) || (other.whoHitShell == player && other.shellHitLockout == 0) )){
 									// print(other.shellWasParried)
 							
 									// im so cooked!
@@ -238,7 +241,7 @@ if (state == 0 || state == 1 || state == 3){
 										//other.vsp = -10;						
 										//other.state = 3;
 										//other.state_timer = 0;
-										//other.shellHitLockout = 30;
+										//other.shellHitLockout = other.shellHitlockoutAmt;
 										//other.y -= 4;		
 									//} else {
 										// my code is so unreadable LOL
@@ -248,7 +251,7 @@ if (state == 0 || state == 1 || state == 3){
 										other.storedVSP = -1.5;								
 										other.state = 2;
 										other.state_timer = 0;
-										other.shellHitLockout = 30;
+										other.shellHitLockout = other.shellHitlockoutAmt;
 										other.y -= 4;	
 									//}
 									
@@ -296,11 +299,11 @@ if (state == 0 || state == 1 || state == 3){
 							
 						}
 					}
-				} else {	
+				} else {	// For Non-Koopa Troopa attackers
 					// REMINDER TO MYSELF THAT IM CHECKING STATES HERE
 					if (other.state == 0 || other.state == 1){
 						if (type == 1){
-							if (other.wasShellParriedAtAll == false){
+							if (other.wasShellParriedAtAll == false && ((other.whoHitShell != player) || (other.whoHitShell == player && other.shellHitLockout == 0))){
 								other.teamOfPlayerWhoHitShell = get_player_team( player_id.player );
 								
 								if (player_id.x > other.x){
@@ -318,7 +321,7 @@ if (state == 0 || state == 1 || state == 3){
 								other.storedVSP = -1.5;
 								other.state = 2;
 								other.state_timer = 0;
-								other.shellHitLockout = 10;
+								other.shellHitLockout = other.shellHitlockoutAmt;
 								
 								other.hitByOrigOwner = false;
 								other.whoHitShell = player;

@@ -11,7 +11,7 @@ var custom_friction = air_friction + 0.2;
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);//7
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 5.2);//5.3
+set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 5.5);//5.3
 set_window_value(AT_DATTACK, 1, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
@@ -25,7 +25,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -6);//-6
+set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -7);//-6
 //set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 //set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, custom_friction);
 

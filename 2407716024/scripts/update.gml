@@ -1,4 +1,12 @@
 //update.gml
+
+if(!dash_toggle){
+	move_cooldown[AT_TAUNT] = 10;
+	if ((down_pressed || down_down)){
+       move_cooldown[AT_TAUNT] = 0;
+    }
+}
+
 if (char_width_set_timer <= 10) char_width_set_timer++;
 else 
 {
@@ -24,6 +32,17 @@ else
         }
     }
 }
+
+/*if (hitbox_circle_spr == noone)
+{
+	//sprite_index
+	var _egg = create_hitbox(AT_NSPECIAL, 2, x, y);
+	hitbox_circle_spr = _egg.sprite_index;
+	var _egg = create_hitbox(AT_NSPECIAL, 3, x, y);
+	hitbox_square_spr = _egg.sprite_index;
+	var _egg = create_hitbox(AT_NSPECIAL, 4, x, y);
+	hitbox_rounded_rectangle = _egg.sprite_index;
+}*/
 
 // Flips all hit effects... for text purposes.
 with (hit_fx_obj)
@@ -463,7 +482,7 @@ if (easter_egg_timer <= 90)
 		cancelled_voice = false;
 		snd_rng = random_func(0, 5, true);
 		if (snd_rng < 4) sound_play(sound_get("intro" + string(snd_rng)));
-		else if snd_rng < 5
+		else
 		{
 			switch (oPlayer.url)
 			{
@@ -503,8 +522,6 @@ if (easter_egg_timer <= 90)
 
 // LORD SYNTAX HAS REWRITTEN THIS SECTION FOR time stop.
 // LORD SYNTAX HAS SPOKEN.
-
-//all hail lord syntax -Notakin
 time_frozen = time_freeze_ticks > 0;
 time_freeze_ticks = clamp(time_freeze_ticks - 1, 0, 9999);
 

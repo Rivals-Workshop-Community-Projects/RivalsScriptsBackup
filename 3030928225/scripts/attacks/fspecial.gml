@@ -85,7 +85,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num++; // Recover from miss or wall hit
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 17);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);

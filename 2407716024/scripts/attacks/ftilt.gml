@@ -75,11 +75,12 @@ set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, 1);
 
-
 set_hitbox_value(AT_FTILT, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj"));
-set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, sprite_get("ftilt_proj"));
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 25);
+set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 25);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 12);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_GROUND_FRICTION, 1);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 6);

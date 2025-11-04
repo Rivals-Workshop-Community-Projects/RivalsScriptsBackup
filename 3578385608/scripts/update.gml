@@ -173,7 +173,10 @@ with hit_fx_obj if player_id == other{
 	if hit_fx == other.acidbubbbles hsp = dsin(step_timer*10 + id*180);
 }
 
-
+if instance_exists(hit_vfx) && hitstop && state_cat != SC_HITSTUN{
+	hit_vfx.step_timer--;
+	if hit_vfx.hit_fx == dair_fx hit_vfx.step_timer = 3;
+}
 
 
 #define spawn_area_effect

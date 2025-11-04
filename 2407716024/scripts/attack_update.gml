@@ -6,7 +6,6 @@ if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL || a
 
 fs_force_fs = false;
 
-
 if (attack == AT_FTILT){
 	if(window == 4 and window_timer >= get_window_value( AT_FTILT, 4, AG_WINDOW_CANCEL_FRAME )){
 		if(left_stick_pressed or right_stick_pressed){
@@ -18,10 +17,6 @@ if (attack == AT_FTILT){
 //normal and special cancels
 
 
-if (attack == AT_DSTRONG)
-{
-	trigger_b_reverse();
-}
 
 var normal_cancel_value = 0;
 switch (attack) {
@@ -126,7 +121,7 @@ switch (attack) {
 		//can't move during active frames
 		can_move = window != 2;
 		//can't fastfall during startup or active frames
-		can_fast_fall = window > 2;
+//		can_fast_fall = window > 2;
 		
 		//fx
 		if (window == 1 && is_end_of_window()) {
@@ -198,7 +193,7 @@ switch (attack) {
 						bullet.kb_value = 6;
 						bullet.kb_angle = 50;
 						bullet.kb_scale = 0.5;
-					//	bullet.hit_effect = 302;
+//						bullet.hit_effect = 302;
 					}
 				}
 			break;
@@ -218,6 +213,8 @@ switch (attack) {
 	case AT_USPECIAL_GROUND:
 	if (window == 1 && window_timer == 1) 
 	{
+		uspecial_hold_version = false;
+		uspecial_ground_move_meter = 0;
 		uspecial_free_start = (state == PS_ATTACK_AIR);
 	}
 	if (uspecial_free_start && !hitpause)
@@ -246,6 +243,8 @@ switch (attack) {
 			vsp = 0;
 			uspecial_x_start = x;
 			uspecial_y_start = y;
+			
+			if(window_timer <= 6 && special_down) {uspecial_hold_version = true} //six frames of leniency
 			if (window_timer == 6)
 			{
 	            var _dir = 
@@ -292,12 +291,14 @@ switch (attack) {
             		}
             		else
             		{
-            			if (special_down)
+            			if (uspecial_hold_version)
             			{
             				// If special is down, stick to stage if possible.
             				if (instance_place_ground(_test_x, _test_y, true))
             				{
-            					
+            					if(collision_rectangle(_test_x, _test_y, _test_x, _test_y, asset_get("par_jumpthrough"), true, true)){
+            					set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 1);
+            				}
             					if (_dir > 180)
             					{
             						// Should stop at first ground if moving down.
@@ -392,28 +393,35 @@ switch (attack) {
 			break;
 		}
 	}
-	else
+	else //grounded
 	{
+		var h_dir = right_down - left_down;
 		set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 0); //no pratfall on the ground
 		var glove = (window < 5) ? special_down : false;
 		switch (window) 
 		{
 			case 1:
 			set_attack_value(AT_USPECIAL_GROUND, AG_NUM_WINDOWS, 6);
+			if(window_timer >= 7) uspecial_ground_move_meter += h_dir;
 			break;
 			
 			case 2:
 			if (is_end_of_window()) 
 			{
-				if (joy_pad_idle) peacock_uspec_move_speed = 0;
-				else peacock_uspec_move_speed = lengthdir_x(34, joy_dir);
+				//if (joy_pad_idle) peacock_uspec_move_speed = 0;
+				//else peacock_uspec_move_speed = lengthdir_x(34, joy_dir);
 			}
+			uspecial_ground_move_meter += h_dir;
 			break;
 			
 			case 3:
-			hsp = peacock_uspec_move_speed;
+			uspecial_ground_move_meter += h_dir;
+			//hsp = peacock_uspec_move_speed;
 			draw_indicator = false;
 			can_move = false;
+			if(is_end_of_window()){
+				hsp = floor(uspecial_ground_move_meter * 11.1);
+			}
 			break;
 			
 			case 4:
@@ -554,7 +562,11 @@ switch (attack) {
 				}
 			}
 		}
-		else {
+		else 
+		{
+			// Find where to offset the article to to make it properly stick to stage.
+			//instance_place_ground()
+			
 			peacock_article_doom_id = instance_create(x, y - 1, "obj_article1" );
 			peacock_article_doom_id.free = true;
 			peacock_article_doom_id.player = player;
@@ -566,10 +578,6 @@ switch (attack) {
     }
     break;
 }
-
-
-
-
 
 
 //normal cancels
@@ -834,7 +842,7 @@ if ((attack == AT_FTILT) && state_timer == 1) {
     }
 }
 
-if ((attack == AT_FTHROW) && window == 1 && window_timer == 3) {
+if ((attack == AT_FTHROW) && state_timer == 1) {
     snd_rng = random_func(0, 10, true);
     
     if (snd_rng == 0) {

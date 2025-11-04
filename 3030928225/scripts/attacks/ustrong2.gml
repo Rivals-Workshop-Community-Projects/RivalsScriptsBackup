@@ -118,7 +118,7 @@ for (i = 0; i < 1; i++) {
     set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
     set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 130);
     set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
     set_hitbox_value(atk, hitbox_num, HG_ANGLE, 85);
     set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 4);

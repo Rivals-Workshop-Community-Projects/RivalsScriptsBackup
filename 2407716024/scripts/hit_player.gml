@@ -68,6 +68,7 @@ switch (my_hitboxID.attack)
     
     case AT_FSTRONG:
     sound_play(asset_get("sfx_syl_ustrong_part3"), false, noone, 0.95, 0.8);
+    sound_play(asset_get("sfx_kragg_rock_land"), false, noone, 1.2, .6);
     break;
     
     case AT_USTRONG:

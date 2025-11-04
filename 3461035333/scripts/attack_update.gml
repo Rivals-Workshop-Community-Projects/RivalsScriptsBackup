@@ -51,7 +51,7 @@ if (attack == AT_FSTRONG)
 {
 	if (window == 2)
 	{
-		wsh = 13.5 + (strong_charge / 4.5)
+		var wsh = 13.5 + (strong_charge / 4.5)
 		set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, wsh);
 	}
 	if (window == 4)
@@ -81,7 +81,7 @@ if (attack == AT_FAIR)
 		{
 			dont_cancel = true;
 		}
-		if (window == 4) and (window_timer == 7)
+		if (window == 4) and (window_timer == 8)
 		{
 			dont_cancel = true;
 		}
@@ -196,6 +196,10 @@ if (attack == AT_DAIR)
 
 if (attack == AT_NSPECIAL)
 {
+	if state_timer == 1
+	{
+		if spr_dir last_joy_dir = 0 else last_joy_dir = 180;
+	}
 	//Whifflag
 	if instance_exists(after_image1) and after_image1.victim != noone
 	{
@@ -291,14 +295,7 @@ if (attack == AT_NSPECIAL)
     {
     	if (window_timer == 1)
     	{
-    		if joy_pad_idle 
-			{
-				nspec_dir = "idle";
-			}
-			else
-			{
-				nspec_dir = joy_dir;	
-			}
+    		nspec_dir = last_joy_dir;
     		if !joy_pad_idle
 			{
 				if (spr_dir == -1) and ((joy_dir <= 90 and joy_dir >= 0) or (joy_dir >= 270 and joy_dir <= 360))
@@ -432,6 +429,10 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_DSPECIAL)
 {
+	if state_timer == 1
+	{
+		if spr_dir last_joy_dir = 0 else last_joy_dir = 180;
+	}
 	if instance_exists(after_image1)
 	{
 		//Wavedash cancel
@@ -452,7 +453,7 @@ if (attack == AT_DSPECIAL)
 		{
 			if (!special_down)
 			{
-				dspec_angle = joy_dir;
+				dspec_angle = last_joy_dir;
 				window = 2;
 			}	
 			if !joy_pad_idle
@@ -537,7 +538,7 @@ if (attack == AT_USPECIAL)
     	set_state(PS_LANDING_LAG);
     }
     //Uspecial smear creation
-    if (window == 1) and (window_timer == 9)
+    if (window == 1) and (window_timer == 10)
     {
     	article2_type = 0;
     	uspec_smear = instance_create(x, y, "obj_article2");

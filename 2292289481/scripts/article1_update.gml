@@ -454,10 +454,11 @@ if (x < 0 || x > room_width) {
 hit_player_obj = hbox.player_id;
 hit_player_num = hbox.player;
 
+
 with (oPlayer){
 		with (other.id){
 	    var teammate = get_player_team(get_instance_player(other)); 
-	      if (teammate != get_player_team (hit_player_obj)) && hit_player_obj != player_id {
+	      if (teammate != get_player_team(hit_player_num)) && hit_player_obj != player_id {
 					can_hit_owner = true;
 	      }
 				else {

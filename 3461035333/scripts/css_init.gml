@@ -13,28 +13,72 @@ alt_name = []; //refresh name array in case other characters use the same system
 //ALT NAMES
 //alts
 //there can be a total of 32 (0 - 31) alts normally
-alt_name[0] = "Avocado";
-alt_name[1] = "Time Avatar";
-alt_name[2] = "Umbra Princess";
-alt_name[3] = "MARLOW.exe";
-alt_name[4] = "Butterfly";
-alt_name[5] = "Tornade Tragique";
-alt_name[6] = "True Vessel";
-alt_name[7] = "Spheromancer";
-alt_name[8] = "Pentafist";
-alt_name[9] = "Slimy Archeologist";
-alt_name[10] = "Slayer";
-alt_name[11] = "Ebon Flame";
-alt_name[12] = "Eager Rookie";
-alt_name[13] = "Blonde Huntress";
-alt_name[14] = "Lady Crimepocalypse";
-alt_name[15] = "Kyaa";
-alt_name[16] = "Maneater";
-alt_name[17] = "Featherbottom";
-//alt_name[18] = "Flame's Salvation";
-alt_name[18] = "The Reservist";
-alt_name[19] = "Hotshot for hire";
-alt_name[20] = "Witch Bunny";
+
+var i = 0;
+
+alt_name[i] = "Avocado";
+i++;
+alt_name[i] = "Time Avatar";
+i++;
+alt_name[i] = "OP BodyGuard";
+i++;
+alt_name[i] = "The Saga";
+i++;
+alt_name[i] = "Teoran Barbecue";
+i++;
+alt_name[i] = "LoveyDovey Princess";
+i++;
+alt_name[i] = "Heterochromia";
+i++;
+alt_name[i] = "Defective Hypnosis";
+i++;
+alt_name[i] = "Stale Bread";
+i++;
+alt_name[i] = "The Conqueror";
+i++;
+alt_name[i] = "MARLOW.exe";
+i++;
+alt_name[i] = "Butterfly";
+i++;
+alt_name[i] = "Tornade Tragique";
+i++;
+alt_name[i] = "True Vessel";
+i++;
+alt_name[i] = "Spheromancer";
+i++;
+alt_name[i] = "Pentafist";
+i++;
+alt_name[i] = "Slimy Archeologist";
+i++;
+alt_name[i] = "Slayer";
+i++;
+alt_name[i] = "Ebon Flame";
+i++;
+alt_name[i] = "Eager Rookie";
+i++;
+alt_name[i] = "Blonde Huntress";
+i++;
+alt_name[i] = "Lady Crimepocalypse";
+i++;
+alt_name[i] = "Kyaa";
+i++;
+alt_name[i] = "Maneater";
+i++;
+alt_name[i] = "Marloween";
+i++;
+alt_name[i] = "The Reservist";
+i++;
+alt_name[i] = "Hotshot for hire";
+i++;
+alt_name[i] = "Witch Bunny";
+i++;
+alt_name[i] = "Delusional duo";
+i++
+alt_name[i] = "School President";
+i++
+alt_name[i] = "Not a phase";
+i++
+alt_name[i] = "Floaty";
 
 alt_cur = 0;
 alt_prev = 0;

@@ -38,6 +38,7 @@ switch attack{
         g.follow_id = self;
         g.follow_time = null;
         g.depth = depth-1;
+        hit_vfx = g;
     }
     break;
     
@@ -45,7 +46,7 @@ switch attack{
     
     case AT_USTRONG:
     if window >= 2 offset_hud(400);
-    if window == 2 && window_timer == window_end spawn_hit_fx(x, y - 120, 266);
+    if window == 2 && window_timer == window_end hit_vfx = spawn_hit_fx(x, y - 120, 266);
     break;
     
     case AT_FSTRONG:
@@ -57,6 +58,7 @@ switch attack{
     if window == 2 && window_timer == window_end{
         var n = spawn_hit_fx(x, y, dstrong_fx);
         n.depth = depth;
+        hit_vfx = n;
     }
     break;
     
@@ -68,6 +70,7 @@ switch attack{
         g.depth = depth-1;
         g.follow_id = self;
         g.follow_time = null;
+        hit_vfx = g;
     }
     break;
     
@@ -82,6 +85,7 @@ switch attack{
         g.depth = depth-2;
         g.follow_id = self;
         g.follow_time = null;
+        hit_vfx = g;
     }
     break;
     

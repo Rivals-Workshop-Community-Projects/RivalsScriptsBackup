@@ -34,238 +34,346 @@ set_color_profile_slot_range( 7, 1, 1, 26 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21);
+set_num_palettes(32);
 
+var i = 1;
 // Time Avatar
-set_color_profile_slot( 1, 0, 126, 134, 163 ); //hair + glaze
-set_color_profile_slot( 1, 1, 171, 122, 104 ); //skin
-set_color_profile_slot( 1, 2, 208, 186, 111 ); //leggings
-set_color_profile_slot( 1, 3, 223, 225, 242 ); //clothes
-set_color_profile_slot( 1, 4, 255, 255, 255 ); //headgear
-set_color_profile_slot( 1, 5, 168, 175, 218 ); //zipper + sleeves
-set_color_profile_slot( 1, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 1, 7, 186, 186, 188 ); //moontech logo
+set_color_profile_slot( i, 0, 126, 134, 163 ); //hair + glaze
+set_color_profile_slot( i, 1, 171, 122, 104 ); //skin
+set_color_profile_slot( i, 2, 208, 186, 111 ); //leggings
+set_color_profile_slot( i, 3, 223, 225, 242 ); //clothes
+set_color_profile_slot( i, 4, 255, 255, 255 ); //headgear
+set_color_profile_slot( i, 5, 168, 175, 218 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 186, 186, 188 ); //moontech logo
 
-// Umbra Princess
-set_color_profile_slot( 2, 0, 148, 114, 108 ); //hair + glaze
-set_color_profile_slot( 2, 1, 255, 231, 201 ); //skin
-set_color_profile_slot( 2, 2, 135, 30, 40 ); //leggings
-set_color_profile_slot( 2, 3, 187, 25, 25 ); //clothes
-set_color_profile_slot( 2, 4, 245, 249, 252 ); //headgear
-set_color_profile_slot( 2, 5, 252, 210, 40 ); //zipper + sleeves
-set_color_profile_slot( 2, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 2, 7, 186, 186, 188 ); //moontech logo
+i++;
+// Geo
+set_color_profile_slot( i, 0, 245, 243, 243 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 74, 55, 83 ); //leggings
+set_color_profile_slot( i, 3, 245, 243, 243 ); //clothes
+set_color_profile_slot( i, 4, 74, 55, 83 ); //headgear
+set_color_profile_slot( i, 5, 74, 55, 83 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 245, 243, 243 ); //eye
+set_color_profile_slot( i, 7, 245, 243, 243 ); //moontech logo
 
+i++;
+// Gwain
+set_color_profile_slot( i, 0, 245, 210, 73 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 245, 242, 230 ); //leggings
+set_color_profile_slot( i, 3, 245, 242, 230 ); //clothes
+set_color_profile_slot( i, 4, 245, 242, 230 ); //headgear
+set_color_profile_slot( i, 5, 199, 191, 142 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 199, 191, 142 ); //moontech logo
+
+i++;
+// Agni
+set_color_profile_slot( i, 0, 225, 91, 92 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 74, 55, 83 ); //leggings
+set_color_profile_slot( i, 3, 255, 255, 255 ); //clothes
+set_color_profile_slot( i, 4, 255, 255, 255 ); //headgear
+set_color_profile_slot( i, 5, 225, 91, 92 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 225, 91, 92 ); //moontech logo
+
+// Ami
+i++;
+set_color_profile_slot( i, 0, 255, 171, 197 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 255, 255, 255 ); //leggings
+set_color_profile_slot( i, 3, 255, 255, 255 ); //clothes
+set_color_profile_slot( i, 4, 255, 255, 255 ); //headgear
+set_color_profile_slot( i, 5, 74, 55, 83 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 74, 55, 83 ); //moontech logo
+
+i++;
+// Deva
+set_color_profile_slot( i, 0, 124, 230, 246 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 74, 55, 83 ); //leggings
+set_color_profile_slot( i, 3, 74, 55, 83 ); //clothes
+set_color_profile_slot( i, 4, 255, 255, 255 ); //headgear
+set_color_profile_slot( i, 5, 150, 216, 255 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 186, 186, 188 ); //moontech logo
+
+i++;
+// Savien
+set_color_profile_slot( i, 0, 108, 63, 156 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 51, 65, 104 ); //leggings
+set_color_profile_slot( i, 3, 22, 36, 62 ); //clothes
+set_color_profile_slot( i, 4, 51, 65, 104 ); //headgear
+set_color_profile_slot( i, 5, 111, 60, 69 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 245, 243, 243 ); //eye
+set_color_profile_slot( i, 7, 245, 243, 243 ); //moontech logo
+
+i++;
+// Lanney
+set_color_profile_slot( i, 0, 168, 110, 77 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 253, 253, 253 ); //leggings
+set_color_profile_slot( i, 3, 146, 92, 60 ); //clothes
+set_color_profile_slot( i, 4, 216, 193, 153 ); //headgear
+set_color_profile_slot( i, 5, 216, 193, 153 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 245, 243, 243 ); //eye
+set_color_profile_slot( i, 7, 216, 193, 153 ); //moontech logo
+
+i++;
+// Twain
+set_color_profile_slot( i, 0, 250, 226, 185 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 135, 123, 109 ); //leggings
+set_color_profile_slot( i, 3, 46, 43, 48 ); //clothes
+set_color_profile_slot( i, 4, 46, 43, 48 ); //headgear
+set_color_profile_slot( i, 5, 237, 168, 59 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 199, 191, 142 ); //moontech logo
+
+i++;
 // Marlow.exe
-set_color_profile_slot( 3, 0, 255, 0, 0 ); //hair + glaze
-set_color_profile_slot( 3, 1, 156, 156, 156 ); //skin
-set_color_profile_slot( 3, 2, 74, 55, 83 ); //leggings
-set_color_profile_slot( 3, 3, 74, 55, 83 ); //clothes
-set_color_profile_slot( 3, 4, 74, 55, 83 ); //headgear
-set_color_profile_slot( 3, 5, 120, 0, 0 ); //zipper + sleeves
-set_color_profile_slot( 3, 6, 255, 0, 0 ); //eye
-set_color_profile_slot( 3, 7, 156, 156, 156 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 0, 0 ); //hair + glaze
+set_color_profile_slot( i, 1, 156, 156, 156 ); //skin
+set_color_profile_slot( i, 2, 74, 55, 83 ); //leggings
+set_color_profile_slot( i, 3, 74, 55, 83 ); //clothes
+set_color_profile_slot( i, 4, 74, 55, 83 ); //headgear
+set_color_profile_slot( i, 5, 120, 0, 0 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 0, 0 ); //eye
+set_color_profile_slot( i, 7, 156, 156, 156 ); //moontech logo
 
+i++;
 // Butterfly
-set_color_profile_slot( 4, 0, 147, 41, 181 ); //hair + glaze
-set_color_profile_slot( 4, 1, 255, 238, 217 ); //skin
-set_color_profile_slot( 4, 2, 60, 32, 119 ); //leggings
-set_color_profile_slot( 4, 3, 60, 32, 119 ); //clothes
-set_color_profile_slot( 4, 4, 60, 32, 119 ); //headgear
-set_color_profile_slot( 4, 5, 235, 107, 255 ); //zipper + sleeves
-set_color_profile_slot( 4, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 4, 7, 186, 186, 188 ); //moontech logo
+set_color_profile_slot( i, 0, 147, 41, 181 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 238, 217 ); //skin
+set_color_profile_slot( i, 2, 60, 32, 119 ); //leggings
+set_color_profile_slot( i, 3, 60, 32, 119 ); //clothes
+set_color_profile_slot( i, 4, 60, 32, 119 ); //headgear
+set_color_profile_slot( i, 5, 235, 107, 255 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 186, 186, 188 ); //moontech logo
 
+i++;
 // Tornade Tragique
-set_color_profile_slot( 5, 0, 146, 227, 166 ); //hair + glaze
-set_color_profile_slot( 5, 1, 249, 221, 210 ); //skin
-set_color_profile_slot( 5, 2, 56, 56, 56 ); //leggings
-set_color_profile_slot( 5, 3, 56, 56, 56 ); //clothes
-set_color_profile_slot( 5, 4, 56, 56, 56 ); //headgear
-set_color_profile_slot( 5, 5, 188, 255, 168 ); //zipper + sleeves
-set_color_profile_slot( 5, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 5, 7, 255, 255, 255 ); //moontech logo
+set_color_profile_slot( i, 0, 146, 227, 166 ); //hair + glaze
+set_color_profile_slot( i, 1, 249, 221, 210 ); //skin
+set_color_profile_slot( i, 2, 56, 56, 56 ); //leggings
+set_color_profile_slot( i, 3, 56, 56, 56 ); //clothes
+set_color_profile_slot( i, 4, 56, 56, 56 ); //headgear
+set_color_profile_slot( i, 5, 188, 255, 168 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 255, 255, 255 ); //moontech logo
 
+i++;
 // True Vessel
-set_color_profile_slot( 6, 0, 34, 255, 0 ); //hair + glaze
-set_color_profile_slot( 6, 1, 139, 154, 189 ); //skin
-set_color_profile_slot( 6, 2, 66, 83, 106 ); //leggings
-set_color_profile_slot( 6, 3, 66, 83, 106 ); //clothes
-set_color_profile_slot( 6, 4, 66, 83, 106 ); //headgear
-set_color_profile_slot( 6, 5, 34, 255, 0 ); //zipper + sleeves
-set_color_profile_slot( 6, 6, 31, 31, 31 ); //eye
-set_color_profile_slot( 6, 7, 34, 255, 0 ); //moontech logo
+set_color_profile_slot( i, 0, 34, 255, 0 ); //hair + glaze
+set_color_profile_slot( i, 1, 139, 154, 189 ); //skin
+set_color_profile_slot( i, 2, 66, 83, 106 ); //leggings
+set_color_profile_slot( i, 3, 66, 83, 106 ); //clothes
+set_color_profile_slot( i, 4, 66, 83, 106 ); //headgear
+set_color_profile_slot( i, 5, 34, 255, 0 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 31, 31, 31 ); //eye
+set_color_profile_slot( i, 7, 34, 255, 0 ); //moontech logo
 
+i++;
 // Spheromancer
-set_color_profile_slot( 7, 0, 85, 139, 255 ); //hair + glaze
-set_color_profile_slot( 7, 1, 255, 227, 219 ); //skin
-set_color_profile_slot( 7, 2, 97, 25, 25 ); //leggings
-set_color_profile_slot( 7, 3, 245, 245, 245 ); //clothes
-set_color_profile_slot( 7, 4, 64, 64, 64 ); //headgear
-set_color_profile_slot( 7, 5, 0, 150, 224 ); //zipper + sleeves
-set_color_profile_slot( 7, 6, 196, 243, 255 ); //eye
-set_color_profile_slot( 7, 7, 255, 255, 255 ); //moontech logo
+set_color_profile_slot( i, 0, 85, 139, 255 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 227, 219 ); //skin
+set_color_profile_slot( i, 2, 97, 25, 25 ); //leggings
+set_color_profile_slot( i, 3, 245, 245, 245 ); //clothes
+set_color_profile_slot( i, 4, 64, 64, 64 ); //headgear
+set_color_profile_slot( i, 5, 0, 150, 224 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 196, 243, 255 ); //eye
+set_color_profile_slot( i, 7, 255, 255, 255 ); //moontech logo
 
+i++;
 // Pentafist
-set_color_profile_slot( 8, 0, 255, 118, 66 ); //hair + glaze
-set_color_profile_slot( 8, 1, 255, 226, 201 ); //skin
-set_color_profile_slot( 8, 2, 105, 105, 105 ); //leggings
-set_color_profile_slot( 8, 3, 232, 232, 232 ); //clothes
-set_color_profile_slot( 8, 4, 112, 112, 112 ); //headgear
-set_color_profile_slot( 8, 5, 255, 94, 0 ); //zipper + sleeves
-set_color_profile_slot( 8, 6, 255, 222, 204 ); //eye
-set_color_profile_slot( 8, 7, 232, 232, 232 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 118, 66 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 226, 201 ); //skin
+set_color_profile_slot( i, 2, 105, 105, 105 ); //leggings
+set_color_profile_slot( i, 3, 232, 232, 232 ); //clothes
+set_color_profile_slot( i, 4, 112, 112, 112 ); //headgear
+set_color_profile_slot( i, 5, 255, 94, 0 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 222, 204 ); //eye
+set_color_profile_slot( i, 7, 232, 232, 232 ); //moontech logo
 
+i++;
 // Slimy Archeologist
-set_color_profile_slot( 9, 0, 255, 133, 219 ); //hair + glaze
-set_color_profile_slot( 9, 1, 255, 222, 249 ); //skin
-set_color_profile_slot( 9, 2, 115, 102, 111 ); //leggings
-set_color_profile_slot( 9, 3, 117, 101, 111 ); //clothes
-set_color_profile_slot( 9, 4, 107, 95, 107 ); //headgear
-set_color_profile_slot( 9, 5, 255, 158, 202 ); //zipper + sleeves
-set_color_profile_slot( 9, 6, 255, 227, 249 ); //eye
-set_color_profile_slot( 9, 7, 252, 202, 225 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 133, 219 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 222, 249 ); //skin
+set_color_profile_slot( i, 2, 115, 102, 111 ); //leggings
+set_color_profile_slot( i, 3, 117, 101, 111 ); //clothes
+set_color_profile_slot( i, 4, 107, 95, 107 ); //headgear
+set_color_profile_slot( i, 5, 255, 158, 202 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 227, 249 ); //eye
+set_color_profile_slot( i, 7, 252, 202, 225 ); //moontech logo
 
+i++;
 // Slayer
-set_color_profile_slot( 10, 0, 225, 221, 240 ); //hair + glaze
-set_color_profile_slot( 10, 1, 255, 240, 231 ); //skin
-set_color_profile_slot( 10, 2, 78, 80, 107 ); //leggings
-set_color_profile_slot( 10, 3, 250, 250, 250 ); //clothes
-set_color_profile_slot( 10, 4, 78, 80, 107 ); //headgear
-set_color_profile_slot( 10, 5, 208, 179, 98 ); //zipper + sleeves
-set_color_profile_slot( 10, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 10, 7, 208, 179, 98 ); //moontech logo
+set_color_profile_slot( i, 0, 225, 221, 240 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 240, 231 ); //skin
+set_color_profile_slot( i, 2, 78, 80, 107 ); //leggings
+set_color_profile_slot( i, 3, 250, 250, 250 ); //clothes
+set_color_profile_slot( i, 4, 78, 80, 107 ); //headgear
+set_color_profile_slot( i, 5, 208, 179, 98 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 208, 179, 98 ); //moontech logo
 
+i++;
 // Ebon Flame
-set_color_profile_slot( 11, 0, 149, 29, 36 ); //hair + glaze
-set_color_profile_slot( 11, 1, 224, 194, 182 ); //skin
-set_color_profile_slot( 11, 2, 26, 25, 31 ); //leggings
-set_color_profile_slot( 11, 3, 26, 25, 31 ); //clothes
-set_color_profile_slot( 11, 4, 26, 25, 31 ); //headgear
-set_color_profile_slot( 11, 5, 218, 31, 38 ); //zipper + sleeves
-set_color_profile_slot( 11, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 11, 7, 218, 31, 38 ); //moontech logo
+set_color_profile_slot( i, 0, 149, 29, 36 ); //hair + glaze
+set_color_profile_slot( i, 1, 224, 194, 182 ); //skin
+set_color_profile_slot( i, 2, 26, 25, 31 ); //leggings
+set_color_profile_slot( i, 3, 26, 25, 31 ); //clothes
+set_color_profile_slot( i, 4, 26, 25, 31 ); //headgear
+set_color_profile_slot( i, 5, 218, 31, 38 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 218, 31, 38 ); //moontech logo
 
+i++;
 // Eager Rookie
-set_color_profile_slot( 12, 0, 115, 40, 40 ); //hair + glaze
-set_color_profile_slot( 12, 1, 171, 117, 101 ); //skin
-set_color_profile_slot( 12, 2, 64, 67, 89 ); //leggings
-set_color_profile_slot( 12, 3, 253, 253, 253 ); //clothes
-set_color_profile_slot( 12, 4, 64, 67, 89 ); //headgear
-set_color_profile_slot( 12, 5, 222, 53, 56 ); //zipper + sleeves
-set_color_profile_slot( 12, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 12, 7, 222, 53, 56 ); //moontech logo
+set_color_profile_slot( i, 0, 115, 40, 40 ); //hair + glaze
+set_color_profile_slot( i, 1, 171, 117, 101 ); //skin
+set_color_profile_slot( i, 2, 64, 67, 89 ); //leggings
+set_color_profile_slot( i, 3, 253, 253, 253 ); //clothes
+set_color_profile_slot( i, 4, 64, 67, 89 ); //headgear
+set_color_profile_slot( i, 5, 222, 53, 56 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 222, 53, 56 ); //moontech logo
 
+i++;
 // Blonde Huntress
-set_color_profile_slot( 13, 0, 255, 218, 133 ); //hair + glaze
-set_color_profile_slot( 13, 1, 255, 238, 222 ); //skin
-set_color_profile_slot( 13, 2, 94, 94, 94 ); //leggings
-set_color_profile_slot( 13, 3, 117, 82, 50 ); //clothes
-set_color_profile_slot( 13, 4, 117, 82, 50 ); //headgear
-set_color_profile_slot( 13, 5, 252, 143, 0 ); //zipper + sleeves
-set_color_profile_slot( 13, 6, 247, 255, 181 ); //eye
-set_color_profile_slot( 13, 7, 255, 255, 255 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 218, 133 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 238, 222 ); //skin
+set_color_profile_slot( i, 2, 94, 94, 94 ); //leggings
+set_color_profile_slot( i, 3, 117, 82, 50 ); //clothes
+set_color_profile_slot( i, 4, 117, 82, 50 ); //headgear
+set_color_profile_slot( i, 5, 252, 143, 0 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 247, 255, 181 ); //eye
+set_color_profile_slot( i, 7, 255, 255, 255 ); //moontech logo
 
+i++;
 // Lady Crimepocalypse
-set_color_profile_slot( 14, 0, 255, 107, 51 ); //hair + glaze
-set_color_profile_slot( 14, 1, 255, 212, 166 ); //skin
-set_color_profile_slot( 14, 2, 53, 44, 39 ); //leggings
-set_color_profile_slot( 14, 3, 194, 123, 67 ); //clothes
-set_color_profile_slot( 14, 4, 86, 52, 57 ); //headgear
-set_color_profile_slot( 14, 5, 227, 212, 190 ); //zipper + sleeves
-set_color_profile_slot( 14, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 14, 7, 51, 51, 51 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 107, 51 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 212, 166 ); //skin
+set_color_profile_slot( i, 2, 53, 44, 39 ); //leggings
+set_color_profile_slot( i, 3, 194, 123, 67 ); //clothes
+set_color_profile_slot( i, 4, 86, 52, 57 ); //headgear
+set_color_profile_slot( i, 5, 227, 212, 190 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 51, 51, 51 ); //moontech logo
 
+i++;
 // Kyaa
-set_color_profile_slot( 15, 0, 209, 135, 206 ); //hair + glaze
-set_color_profile_slot( 15, 1, 255, 204, 188 ); //skin
-set_color_profile_slot( 15, 2, 225, 225, 225); //leggings
-set_color_profile_slot( 15, 3, 101, 44, 84 ); //clothes
-set_color_profile_slot( 15, 4, 101, 44, 84 ); //headgear
-set_color_profile_slot( 15, 5, 222, 156, 13 ); //zipper + sleeves
-set_color_profile_slot( 15, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 15, 7, 222, 156, 13 ); //moontech logo
+set_color_profile_slot( i, 0, 209, 135, 206 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 204, 188 ); //skin
+set_color_profile_slot( i, 2, 225, 225, 225); //leggings
+set_color_profile_slot( i, 3, 101, 44, 84 ); //clothes
+set_color_profile_slot( i, 4, 101, 44, 84 ); //headgear
+set_color_profile_slot( i, 5, 222, 156, 13 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 222, 156, 13 ); //moontech logo
 
+i++;
 // Maneater
-set_color_profile_slot( 16, 0, 218, 213, 222 ); //hair + glaze
-set_color_profile_slot( 16, 1, 158, 129, 107 ); //skin
-set_color_profile_slot( 16, 2, 99, 104, 157 ); //leggings
-set_color_profile_slot( 16, 3, 221, 213, 227 ); //clothes
-set_color_profile_slot( 16, 4, 68, 72, 118 ); //headgear
-set_color_profile_slot( 16, 5, 94, 100, 105 ); //zipper + sleeves
-set_color_profile_slot( 16, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 16, 7, 209, 209, 209 ); //moontech logo
+set_color_profile_slot( i, 0, 218, 213, 222 ); //hair + glaze
+set_color_profile_slot( i, 1, 158, 129, 107 ); //skin
+set_color_profile_slot( i, 2, 99, 104, 157 ); //leggings
+set_color_profile_slot( i, 3, 221, 213, 227 ); //clothes
+set_color_profile_slot( i, 4, 68, 72, 118 ); //headgear
+set_color_profile_slot( i, 5, 94, 100, 105 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 209, 209, 209 ); //moontech logo
 
-// Featherbottom
-set_color_profile_slot( 17, 0, 237, 251, 255 ); //hair + glaze
-set_color_profile_slot( 17, 1, 255, 231, 201 ); //skin
-set_color_profile_slot( 17, 2, 45, 44, 64 ); //leggings
-set_color_profile_slot( 17, 3, 45, 44, 64 ); //clothes
-set_color_profile_slot( 17, 4, 45, 44, 64 ); //headgear
-set_color_profile_slot( 17, 5, 237, 249, 255 ); //zipper + sleeves
-set_color_profile_slot( 17, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 17, 7, 255, 255, 255 ); //moontech logo
+i++;
+// Marloween
+set_color_profile_slot( i, 0, 242, 238, 232 ); //hair + glaze
+set_color_profile_slot( i, 1, 98, 74, 110 ); //skin
+set_color_profile_slot( i, 2, 207, 203, 198 ); //leggings
+set_color_profile_slot( i, 3, 207, 203, 198 ); //clothes
+set_color_profile_slot( i, 4, 227, 217, 204 ); //headgear
+set_color_profile_slot( i, 5, 179, 167, 154 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 207, 203, 198 ); //moontech logo
 
-// Flame's Salvation
-/*
-set_color_profile_slot( 18, 0, 104, 86, 128 ); //hair + glaze
-set_color_profile_slot( 18, 1, 104, 86, 128 ); //skin
-set_color_profile_slot( 18, 2, 69, 69, 89 ); //leggings
-set_color_profile_slot( 18, 3, 170, 34, 74 ); //clothes
-set_color_profile_slot( 18, 4, 170, 34, 74 ); //headgear
-set_color_profile_slot( 18, 5, 69, 255, 249 ); //zipper + sleeves
-set_color_profile_slot( 18, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 18, 7, 69, 255, 255 ); //moontech logo
-*/
-
+i++;
 // The Reservist
-set_color_profile_slot( 18, 0, 50, 44, 43 ); //hair + glaze
-set_color_profile_slot( 18, 1, 255, 204, 167 ); //skin
-set_color_profile_slot( 18, 2, 202, 66, 48 ); //leggings
-set_color_profile_slot( 18, 3, 221, 237, 236 ); //clothes
-set_color_profile_slot( 18, 4, 221, 237, 236 ); //headgear
-set_color_profile_slot( 18, 5, 202, 66, 48 ); //zipper + sleeves
-set_color_profile_slot( 18, 6, 221, 237, 236 ); //eye
-set_color_profile_slot( 18, 7, 50, 44, 43 ); //moontech logo
+set_color_profile_slot( i, 0, 50, 44, 43 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 204, 167 ); //skin
+set_color_profile_slot( i, 2, 202, 66, 48 ); //leggings
+set_color_profile_slot( i, 3, 221, 237, 236 ); //clothes
+set_color_profile_slot( i, 4, 221, 237, 236 ); //headgear
+set_color_profile_slot( i, 5, 202, 66, 48 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 221, 237, 236 ); //eye
+set_color_profile_slot( i, 7, 50, 44, 43 ); //moontech logo
 
+i++;
 // Hotshot for hire
-set_color_profile_slot( 19, 0, 255, 203, 150 ); //hair + glaze
-set_color_profile_slot( 19, 1, 255, 231, 201 ); //skin
-set_color_profile_slot( 19, 2, 64, 18, 29 ); //leggings
-set_color_profile_slot( 19, 3, 156, 0, 12 ); //clothes
-set_color_profile_slot( 19, 4, 97, 71, 81 ); //headgear
-set_color_profile_slot( 19, 5, 216, 180, 183 ); //zipper + sleeves
-set_color_profile_slot( 19, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 19, 7, 255, 144, 74 ); //moontech logo
+set_color_profile_slot( i, 0, 255, 203, 150 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 231, 201 ); //skin
+set_color_profile_slot( i, 2, 64, 18, 29 ); //leggings
+set_color_profile_slot( i, 3, 156, 0, 12 ); //clothes
+set_color_profile_slot( i, 4, 97, 71, 81 ); //headgear
+set_color_profile_slot( i, 5, 216, 180, 183 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 255, 144, 74 ); //moontech logo
 
+i++;
 // Witch bunny
-set_color_profile_slot( 20, 0, 131, 113, 138 ); //hair + glaze
-set_color_profile_slot( 20, 1, 204, 163, 139 ); //skin
-set_color_profile_slot( 20, 2, 110, 74, 128 ); //leggings
-set_color_profile_slot( 20, 3, 43, 35, 43 ); //clothes
-set_color_profile_slot( 20, 4, 43, 35, 43 ); //headgear
-set_color_profile_slot( 20, 5, 255, 247, 196 ); //zipper + sleeves
-set_color_profile_slot( 20, 6, 244, 212, 255 ); //eye
-set_color_profile_slot( 20, 7, 255, 247, 196 ); //moontech logo
+set_color_profile_slot( i, 0, 131, 113, 138 ); //hair + glaze
+set_color_profile_slot( i, 1, 204, 163, 139 ); //skin
+set_color_profile_slot( i, 2, 110, 74, 128 ); //leggings
+set_color_profile_slot( i, 3, 43, 35, 43 ); //clothes
+set_color_profile_slot( i, 4, 43, 35, 43 ); //headgear
+set_color_profile_slot( i, 5, 255, 247, 196 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 244, 212, 255 ); //eye
+set_color_profile_slot( i, 7, 255, 247, 196 ); //moontech logo
 
-// invisiwoman
-/*
-set_color_profile_slot( 21, 0, 255, 219, 110 ); //hair + glaze
-set_color_profile_slot( 21, 1, 255, 214, 201 ); //skin
-set_color_profile_slot( 21, 2, 20, 111, 255 ); //leggings
-set_color_profile_slot( 21, 3, 255, 255, 255 ); //clothes
-set_color_profile_slot( 21, 4, 255, 255, 255 ); //headgear
-set_color_profile_slot( 21, 5, 38, 150, 255 ); //zipper + sleeves
-set_color_profile_slot( 21, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 21, 7, 0, 242, 255 ); //moontech logo
+i++;
+// Delusional
+set_color_profile_slot( i, 0, 137, 100, 91 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 233, 221 ); //skin
+set_color_profile_slot( i, 2, 164, 184, 195 ); //leggings
+set_color_profile_slot( i, 3, 237, 237, 237 ); //clothes
+set_color_profile_slot( i, 4, 130, 114, 98 ); //headgear
+set_color_profile_slot( i, 5, 86, 85, 119 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 95, 90, 121 ); //moontech logo
 
-// Placing blocks and shit
-set_color_profile_slot( 22, 0, 107, 69, 46 ); //hair + glaze
-set_color_profile_slot( 22, 1, 227, 182, 152 ); //skin
-set_color_profile_slot( 22, 2, 60, 84, 184 ); //leggings
-set_color_profile_slot( 22, 3, 106, 203, 230 ); //clothes
-set_color_profile_slot( 22, 4, 106, 203, 230 ); //headgear
-set_color_profile_slot( 22, 5, 84, 84, 84 ); //zipper + sleeves
-set_color_profile_slot( 22, 6, 255, 255, 255 ); //eye
-set_color_profile_slot( 22, 7, 186, 186, 188 ); //moontech logo
-*/
+i++;
+// Satsuki
+set_color_profile_slot( i, 0, 91, 105, 128 ); //hair + glaze
+set_color_profile_slot( i, 1, 253, 240, 232 ); //skin
+set_color_profile_slot( i, 2, 242, 243, 255 ); //leggings
+set_color_profile_slot( i, 3, 219, 220, 231 ); //clothes
+set_color_profile_slot( i, 4, 219, 220, 231 ); //headgear
+set_color_profile_slot( i, 5, 66, 91, 160 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 239, 194, 122 ); //moontech logo
+
+i++;
+// Ryuko
+set_color_profile_slot( i, 0, 36, 44, 66 ); //hair + glaze
+set_color_profile_slot( i, 1, 255, 233, 221 ); //skin
+set_color_profile_slot( i, 2, 64, 88, 122 ); //leggings
+set_color_profile_slot( i, 3, 45, 62, 86 ); //clothes
+set_color_profile_slot( i, 4, 45, 62, 86 ); //headgear
+set_color_profile_slot( i, 5, 193, 44, 74 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 255, 255, 255 ); //eye
+set_color_profile_slot( i, 7, 193, 44, 74 ); //moontech logo
+
+i++
+// Ochako Uraraka
+set_color_profile_slot( i, 0, 137, 72, 39 ); //hair + glaze
+set_color_profile_slot( i, 1, 249, 216, 195 ); //skin
+set_color_profile_slot( i, 2, 252, 243, 244 ); //leggings
+set_color_profile_slot( i, 3, 23, 60, 70 ); //clothes
+set_color_profile_slot( i, 4, 252, 243, 244 ); //headgear
+set_color_profile_slot( i, 5, 238, 127, 164 ); //zipper + sleeves
+set_color_profile_slot( i, 6, 252, 243, 244 ); //eye
+set_color_profile_slot( i, 7, 238, 127, 164 ); //moontech logo
+

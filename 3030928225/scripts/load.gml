@@ -72,7 +72,7 @@ sprite_change_offset("plat",            32, 47); //don't use this
 
 sprite_change_offset("shadow",          20, 8);
 sprite_change_offset("tail",            0, 11);
-sprite_change_offset("harpoon",         fspecial_harpoon_hitbox_x_offset, 21);
+sprite_change_offset("harpoon",         fspecial_harpoon_hitbox_x_offset, fspecial_harpoon_hitbox_y_offset);
 sprite_change_offset("tailspike",       46, 58);
 sprite_change_offset("tailspike_mask",  46, 58);
 sprite_change_offset("hud_icons",       7, 7);

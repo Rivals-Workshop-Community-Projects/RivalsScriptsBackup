@@ -10,8 +10,8 @@ state = 0;
 hitbox_respawn_timer = 0;
 hitbox_max_respawn_timer = 6;
 
-hitboxes_spawned = 0;
-max_hitboxes_spawned = 5;
+hitboxes_spawned = 5;
+max_hitboxes_spawned = 40;
 
 
 //

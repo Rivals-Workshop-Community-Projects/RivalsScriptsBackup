@@ -198,6 +198,7 @@ acidbubbbles = hit_fx_create(sprite_get("partc_acidbubbles"), 33);
 water_steampulse = hit_fx_create(sprite_get("partc_water_steampulse"), 10);
 dattack_fx = hit_fx_create(sprite_get("partc_dattack"), 13);
 egocollect_fx = hit_fx_create(sprite_get("partc_egocollected"), 93);
+hit_vfx = noone;
 
 //buffs
 ego_boost = 0;

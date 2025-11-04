@@ -174,6 +174,7 @@ set_hitbox_value(atk, num, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(atk, num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(atk, num, HG_HIT_LOCKOUT, 20);
+set_hitbox_value(atk, num, HG_VISUAL_EFFECT, HFX_GEN_BIG);
 set_hitbox_value(atk, num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 num++
@@ -194,6 +195,7 @@ set_hitbox_value(atk, num, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(atk, num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(atk, num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(atk, num, HG_HIT_LOCKOUT, 20);
+set_hitbox_value(atk, num, HG_VISUAL_EFFECT, HFX_GEN_BIG);
 set_hitbox_value(atk, num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 //carton

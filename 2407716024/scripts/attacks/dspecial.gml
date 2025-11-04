@@ -53,8 +53,6 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("blank"));
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 
 
 
@@ -89,8 +87,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("blank"));
-set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 2);
@@ -123,8 +119,6 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("blank"));
-set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 
 //roller - falling  hit
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -159,8 +153,6 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_LOCKOUT, 0);
 set_hitbox_value(AT_DSPECIAL, 4, HG_TECHABLE, 1); //untechable
 set_hitbox_value(AT_DSPECIAL, 4, HG_SDI_MULTIPLIER, 0.0001); //no SDI
 set_hitbox_value(AT_DSPECIAL, 4,  HG_PROJECTILE_DESTROY_EFFECT, sprite_get("blank"));
-set_hitbox_value(AT_DSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 4, HG_EXTENDED_PARRY_STUN, 1);
 
 //roller - floor hit
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -195,9 +187,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_DSPECIAL, 5, HG_TECHABLE, 1); //untechable
 set_hitbox_value(AT_DSPECIAL, 5, HG_SDI_MULTIPLIER, 0.0001); //no SDI
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, sprite_get("blank"));
-set_hitbox_value(AT_DSPECIAL, 5, HG_SDI_MULTIPLIER, 0.0001);
-set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
+
 //roller - muda
 set_hitbox_value(AT_DSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 6, HG_WINDOW, 20);

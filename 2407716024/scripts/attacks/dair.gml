@@ -61,6 +61,7 @@ set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_VSPEED, 500);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DAIR, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DAIR, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 2);
