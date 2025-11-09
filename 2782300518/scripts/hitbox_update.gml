@@ -25,10 +25,11 @@ switch(attack)
 		}
 		if (changeSprite = true)
 		{
-			sprite_index = sprite_get("bike_spin");
+			sprite_index = sprite_get("fspecial_air_proj");
+			mask_index = sprite_get("fspecial_air_proj");
 			if (hitbox_timer == 27 && player_id.moveDisc == true && !get_match_setting(SET_TEAMS))
 			{
-				can_hit_self = true;				
+				can_hit_self = true;
 			}
 			if (hitbox_timer == 37 && player_id.moveDisc == true && get_match_setting(SET_TEAMS))
 			{

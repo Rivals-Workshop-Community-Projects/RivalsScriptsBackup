@@ -1,4 +1,3 @@
-//Maiden with Eyes of Blue
 can_be_grounded = true;                    // - allows articles to stick to platforms
 ignores_walls = false;                       // - checks if article can go through walls, if true it can
 uses_shader = true;                         // - if the article is recolored with the player

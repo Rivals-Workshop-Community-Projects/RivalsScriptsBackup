@@ -9,7 +9,7 @@ av(atk, AG_NUM_WINDOWS, 3);
 av(atk, AG_HAS_LANDING_LAG, 1);
 av(atk, AG_LANDING_LAG, 7);
 av(atk, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
-av(atk, AG_USES_CUSTOM_GRAVITY, 1);
+//av(atk, AG_USES_CUSTOM_GRAVITY, 1);
 av(atk, AG_MUNO_ATTACK_NAME, "FAir (Low Kick)");
 av(atk, AG_MUNO_ATTACK_MISC, "Can be walljump cancelled frame 9 onwards");
 
@@ -18,22 +18,22 @@ win(atk, 1, AG_WINDOW_ANIM_FRAMES, 1);
 win(atk, 1, AG_WINDOW_HAS_SFX, 1);
 win(atk, 1, AG_WINDOW_SFX, sound_get("jab1"));
 win(atk, 1, AG_WINDOW_SFX_FRAME, 7);
-win(atk, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
+//win(atk, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 win(atk, 2, AG_WINDOW_LENGTH, 6);
 win(atk, 2, AG_WINDOW_ANIM_FRAMES, 2);
 win(atk, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 win(atk, 2, AG_WINDOW_HSPEED_TYPE, 2);
 win(atk, 2, AG_WINDOW_HSPEED, 7);
-win(atk, 2, AG_WINDOW_VSPEED_TYPE, 1);
-win(atk, 2, AG_WINDOW_VSPEED, .5);
-win(atk, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
+//win(atk, 2, AG_WINDOW_VSPEED_TYPE, 1);
+//win(atk, 2, AG_WINDOW_VSPEED, .5);
+//win(atk, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 win(atk, 3, AG_WINDOW_LENGTH, 15);
 win(atk, 3, AG_WINDOW_ANIM_FRAMES, 5);
 win(atk, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-win(atk, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.35);
-win(atk, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+//win(atk, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.35);
+//win(atk, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(atk, 2);
 

@@ -147,6 +147,23 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+
+        patch_note_title[i] = "2.24"
+        patch_note_text[i++] =  
+
+"Removed custom gravity and preset vertical speed on FAir so now it feels exactly like the move from Freedom Planet 2 that its based on instead of being an awkward float (Thanks Youtube shorts for pointing out this issue with the move)
+
+Increased Base Knockback on Bike Jab hit 3 from 7 to 8 (and hitpause too)
+
+Altered roll forward sprite to make it a slight bit more distinct from all those rolling animations, there is now a more noticeable turnaround.
+
+The variable governing extra speed on Carol's bike now gets reset whenever she goes into idle
+
+Fixed a bug where Fspecial interaction with the parked bike changed the disc into a bike sprite that's too small.
+
+As a result of this, also adjusted the position of the bike from FSpecial Air
+
+Added a dust spawn effect in the intro"
         
         patch_note_title[i] = "2.23"
         patch_note_text[i++] =  

@@ -116,9 +116,9 @@ hv(atk, 3, HG_HEIGHT, 48);
 hv(atk, 3, HG_PRIORITY, 2);
 hv(atk, 3, HG_DAMAGE, 4);
 hv(atk, 3, HG_ANGLE, 361);
-hv(atk, 3, HG_BASE_KNOCKBACK, 7);
+hv(atk, 3, HG_BASE_KNOCKBACK, 8);
 hv(atk, 3, HG_KNOCKBACK_SCALING, .5)
-hv(atk, 3, HG_BASE_HITPAUSE, 7);
+hv(atk, 3, HG_BASE_HITPAUSE, 8);
 hv(atk, 3, HG_HITPAUSE_SCALING, .5);
 hv(atk, 3, HG_VISUAL_EFFECT, hit_medium);
 hv(atk, 3, HG_HIT_SFX, sound_get("hit"));

@@ -1692,6 +1692,10 @@ switch (attack)
 	//Intro
 	case 2:
 		var time = get_gameplay_time();
+		if (window == 2 && window_timer == 12)
+		{
+			spawn_base_dust(x, y, "land", spr_dir)
+		}
 		if (window <= 4) hud_offset = lerp(hud_offset, 2000, 0.1); // put hud away
 		if (window == 4 && window_timer == 33 && time <= 125) state = PS_SPAWN; //correct state to spawn if needed
 	break;

@@ -96,6 +96,7 @@ sco("fspecial", 16, 39, true);
 sco("fspecial2", 68, 43, true);
 sco("fspecial_air", 26, 44, true);
 sco("fspecial_proj", 24, 24);
+sco("fspecial_air_proj", 42, 44);
 sco("fspecial_pre_empt", -170, 24);
 sco("bike_store_spin", 26, 45, true);
 sco("uspecial", 30, 33, true);

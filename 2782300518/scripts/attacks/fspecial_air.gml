@@ -57,7 +57,7 @@ hv(atk, 1, HG_SHAPE, 0);
 hv(atk, 1, HG_HITBOX_GROUP, 1);
 hv(atk, 1, HG_LIFETIME, 38);
 hv(atk, 1, HG_HITBOX_X, 30)
-hv(atk, 1, HG_HITBOX_Y, -55);
+hv(atk, 1, HG_HITBOX_Y, -11);
 hv(atk, 1, HG_PRIORITY, 9);
 hv(atk, 1, HG_DAMAGE, 4);
 //hv(atk, 1, HG_TECHABLE, 2);

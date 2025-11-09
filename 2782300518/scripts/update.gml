@@ -239,6 +239,7 @@ if (motorbike == false)
 				tsx=1;
 				tsy=1;
 				bsprite_index=-1;
+				bike_sp = 0;
 				if (state_timer == 397)
 				{
 					voice_protection = false;

@@ -84,7 +84,6 @@ hv(atk, 1, HG_TECHABLE, 1);
 hv(atk, 1, HG_HIT_SFX, sound_get("hit_light"));
 hv(atk, 1, HG_MUNO_HITBOX_MISC_ADD, "Becomes techable if the move is cancelled into.");
 
-
 hv(atk, 2, HG_HITBOX_TYPE, 1);
 hv(atk, 2, HG_WINDOW, 5);
 hv(atk, 2, HG_HITBOX_GROUP, 2);

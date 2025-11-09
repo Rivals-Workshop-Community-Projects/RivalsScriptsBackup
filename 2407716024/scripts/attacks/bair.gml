@@ -20,7 +20,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_BAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -56,7 +56,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 //set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 7);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 5);
 //set_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -36);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -22);
