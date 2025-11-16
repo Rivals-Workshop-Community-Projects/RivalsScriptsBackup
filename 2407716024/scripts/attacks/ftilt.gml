@@ -98,8 +98,8 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, boom);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_FTILT, 2, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
+set_hitbox_value(AT_FTILT, 2, HG_IGNORES_PROJECTILES, false);
 set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 1);
 
 

@@ -37,7 +37,7 @@ switch (attack)
 	}
 	break;
 
-	case AT_FTILT:
+	/*case AT_FTILT:
 	if (type == 1) break;
 	with (pHitBox)
 	{
@@ -46,7 +46,7 @@ switch (attack)
 			other.y = 1000;
 		}
 	}
-	break;
+	break; */
 }
 
 #define bomb_to_hitbox(_bomb_id)

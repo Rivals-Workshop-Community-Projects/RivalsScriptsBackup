@@ -53,7 +53,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, boom);

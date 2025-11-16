@@ -49,7 +49,7 @@ set_window_value(AT_USPECIAL_GROUND, 5, AG_WINDOW_INVINCIBILITY, 1);
 
 //reappear - no longer invulnerable
 set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_USPECIAL_GROUND, 6, AG_WINDOW_SFX, sound_get("airdash"));
