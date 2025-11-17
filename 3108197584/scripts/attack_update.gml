@@ -632,7 +632,7 @@ if reset_timer body_anim_timer = 0;
 var lim = argument_count > 0 ? argument[0] : 0;
 var maxl = argument_count > 1 ? argument[1] : 80;
 var minl = argument_count > 2 ? argument[2] : 50;;
-shot_angle = shot_angle - angle_difference(shot_angle, (joy_pad_idle? spr_dir*.1: joy_dir + 90 - 90*spr_dir))*(.06 + .04*using_controller); //point_direction(x + ground_body_pos[image_index - 5][0], y + ground_body_pos[image_index - 5][1], mouse_x, mouse_y-3)
+shot_angle = shot_angle - angle_difference(shot_angle, (joy_pad_idle? spr_dir*.1: joy_dir + 90 - 90*spr_dir))*(using_controller? .16: .06); //point_direction(x + ground_body_pos[image_index - 5][0], y + ground_body_pos[image_index - 5][1], mouse_x, mouse_y-3)
 if lim shot_angle = point_direction(0, 0, clamp(dcos(shot_angle), dcos(sign(dsin(shot_angle))*spr_dir? minl: maxl), 1), -dsin(shot_angle));
 
 #define play_sniper_sound()

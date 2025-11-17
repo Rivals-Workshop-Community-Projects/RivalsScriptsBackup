@@ -9,7 +9,7 @@ if !alt_cur for(var e = 0; e < 8; e++){
 
 static_colorO[32] = 0;
 static_colorO[33] = 0;
-static_colorO[34] = 0
+static_colorO[34] = 0;
 if alt_cur == 7{
     static_colorO[32] = 33/255;
     static_colorO[33] = 1;

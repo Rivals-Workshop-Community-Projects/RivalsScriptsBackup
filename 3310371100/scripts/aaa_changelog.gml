@@ -6,6 +6,23 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.14===
+Hey, it's Pi!
+
+---changes---
+:: wow the tourney alt's really gonna date the character if i kept it there huh. crazy. sorry, it'll have to go for now, now its slot is used by Champion alt.
+
+---fixes---
+:: fixing this before i forget, some of the alt colors in palette D that had special sound effects had their alt color check wrong because of the re-organizing i did with last patch. now they have the right ones
+
+---balancing---
+-- JAB ... JAB1 has 1 more frame of startup why were you so fast
+
+---notes---
+there's no pies to give nor can i cook pies idk how
+
+
+
 ===v3.13===
 ---changes---
 :: some results dialogue added and adjusted for some reason

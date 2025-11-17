@@ -16,8 +16,9 @@ if (var_localstorage==0){//A
 		draw_sprite_ext(sprite_get("z_css_icons"),0,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 9:
-		draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
-		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);
+		/*draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
+		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);*/
+		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 10:
 		case 11:
@@ -81,6 +82,10 @@ if (var_localstorage==4){//EXTRA???
 		break;
 		case 9:
 		draw_sprite_ext(sprite_get("z_css_icons"),0,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
+		case 14:
+		draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
+		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		default: break;
 	}
@@ -230,8 +235,10 @@ if (reset_color_list == true){
 			ce[8,1] = "Seasonal ~ SANTA!!"
 		break;
 	}
-	ce[9,0] = make_color_rgb(0, 88, 240)
-	ce[9,1] = "Radial Vortex"
+	//ce[9,0] = make_color_rgb(0, 88, 240)
+	//ce[9,1] = "Radial Vortex"
+	ce[9,0] = make_color_rgb(209, 255, 237)
+	ce[9,1] = "Champion"
 	ce[10,0] = make_color_rgb(48, 74, 60)
 	ce[10,1] = "Doomsday Forever"
 	ce[11,0] = make_color_rgb(113, 230, 119)
@@ -416,8 +423,8 @@ if (reset_color_list == true){
 	ce[12,1] = "Forlorn Egodeth"
 	ce[13,0] = make_color_rgb(154, 117, 191)
 	ce[13,1] = "Dilemma"
-	ce[14,0] = make_color_rgb(128, 0, 128)
-	ce[14,1] = "---"
+	ce[14,0] = make_color_rgb(0, 88, 240)
+	ce[14,1] = "Radial Vortex"
 	ce[15,0] = make_color_rgb(128, 0, 128)
 	ce[15,1] = "---"
 	ce[16,0] = make_color_rgb(128, 0, 128)

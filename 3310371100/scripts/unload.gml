@@ -310,6 +310,15 @@ if (!ushr_handled_victory_quote)
         case "2442862285": // Alto 2
             quote = "What, uh, happened, haha?";
             break;
+        case "3582673397": // Sary
+            quote = "Are these wings on your shoes? No wonder why you can breeze through the air!";
+            break;
+        case "3532575292": // Who is Ràiné?
+            quote = "Um... Excuse me, do we know eachother? No? Huh...";
+            break;
+        case "3581774032": // Plum
+            quote = "The power of science is incredible! But, looking at her, it reminds me that we should be careful with it as well.";
+            break;
         case "2404896545": // Ms. Maribel
         case "1873294979": // Every Single Mr. Game And Watch
         case "2711400626": // Every Single Mr. Game And Watch
@@ -444,6 +453,7 @@ return quote
         case "3293357713": // Ykyr
         case "3347162744": // ULTIMATE. GAME SYSTEM.
         case "2804295068": // Peashooter
+        case "3582673397": // Sary
         case "3271549730": //
             icon = 0;
             break;
@@ -459,6 +469,7 @@ return quote
         case "3307937190": // 3 - Pastelle
         case "2843521167": // old pastelle
         case "3309240911": // 5 - Putrolce
+        case "3581774032": // Plum
             icon = 1;
             break;
             
@@ -531,6 +542,7 @@ return quote
         case "2043072797": // Alto
         case "2442862285": // Alto 2
         case "2002172624": // King Briggs
+        case "3532575292": // Who is Ràiné?
             icon = 6;
             break;
             
@@ -612,8 +624,6 @@ return quote
         case "3273103805": // Nisae kind of
         case "2787737701": // Sinker
         case "2867341866": // Aur
-            quote = "Are you angry, or are you sad? It's kind of scary...";
-            break;
         case "-": // Lumi
             icon = 14;
             break;

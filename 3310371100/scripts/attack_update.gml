@@ -160,7 +160,7 @@ if ( attack == AT_FAIR ){
 			sound_play(asset_get("sfx_shovel_swing_light1"),false,noone,1,1.2)
 			sound_play(asset_get("sfx_grass_creature"),false,noone,0.6,2.5)
 			if (get_synced_var( player )==3){//D
-				if (get_player_color( player ) == 10){
+				if (get_player_color( player ) == 9){
 					sound_play(sound_get("asayzll_1"),false,noone,1,1)
 				}
 			}
@@ -171,15 +171,15 @@ if ( attack == AT_FAIR ){
 			sound_play(asset_get("sfx_waterhit_heavy"),false,noone,0.7,1.1)
 			//sound_play(sound_get("SWB2"),false,noone,0.7,1)
 			if (get_synced_var( player )==3){//D
-				if (get_player_color( player ) == 7){
+				if (get_player_color( player ) == 6){
 					sound_play(sound_get("dash"),false,noone,1,1)
 					var sfxdid = true;
 				}
-				if (get_player_color( player ) == 9){
+				if (get_player_color( player ) == 8){
 					sound_play(sound_get("kris_1"),false,noone,1,1)
 					var sfxdid = true;
 				}
-				if (get_player_color( player ) == 10){
+				if (get_player_color( player ) == 9){
 					sound_play(sound_get("asayzll_2"),false,noone,1,1)
 					var sfxdid = true;
 				}
@@ -330,7 +330,7 @@ if ( attack == AT_NSPECIAL ){
 		if (!hitpause){
 			var tmp_hfx = spawn_hit_fx(x+(39*spr_dir), y-28, 27)
 			tmp_hfx.depth = 30;
-			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 5||get_player_color( player ) == 16)){
 					sound_play(sound_get("dr_1"),false,noone,0.7,1)
 			}else{
 				sound_play(sound_get("ice_short"),false,noone,0.7,1.2)
@@ -349,7 +349,7 @@ if ( attack == AT_NSPECIAL_2 ){
 		if (window == 3 && window_timer == 1){
 			var tmp_hfx = spawn_hit_fx(x+(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
-			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 5||get_player_color( player ) == 16)){
 					sound_play(sound_get("dr_1"),false,noone,0.7,1.2)
 			}else{
 				sound_play(asset_get("sfx_buzzsaw_throw"),false,noone,0.8,1.15)

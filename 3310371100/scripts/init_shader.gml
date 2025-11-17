@@ -82,10 +82,13 @@ if (get_synced_var( player )==0){//A
 			set_character_color_shading( slot_num, 0 );
 		}
 	}
-	if (get_player_color( player ) == 9){//radialvortex
+	/*if (get_player_color( player ) == 9){//radialvortex
 		set_character_color_shading( 0, 0.3 );
 		set_character_color_shading( 2, 0.6 );
 		set_character_color_shading( 3, 0.5 );
+	}*/
+	if (get_player_color( player ) == 9){//champion
+		set_character_color_shading( 3, 0.7 );
 	}
 	if (get_player_color( player ) == 10){//doomsday
 		set_character_color_shading( 3, 0.4 );
@@ -381,7 +384,7 @@ if (get_synced_var( player )==4){//EXTRA
 			set_character_color_shading( slot_num, 0.3 );
 		}
 	}
-	if (get_player_color( player ) == 1){//champion
+	if (get_player_color( player ) == 2){//champion
 		set_character_color_shading( 3, 0.7 );
 	}
 	if (get_player_color( player ) == 3){//klein bottle
@@ -433,6 +436,11 @@ if (get_synced_var( player )==4){//EXTRA
 		set_character_color_shading( 3, 0.5 );
 		set_character_color_shading( 6, 0.9 );
 	}
+	if (get_player_color( player ) == 14){//radialvortex
+		set_character_color_shading( 0, 0.3 );
+		set_character_color_shading( 2, 0.6 );
+		set_character_color_shading( 3, 0.5 );
+	}
 }
 
 
@@ -443,12 +451,17 @@ if (get_synced_var( player )==4){//EXTRA
 
 //special:
 if (get_synced_var( player )==0){//A
-	if (get_player_color( player ) == 9){//radialvortex
+	/*if (get_player_color( player ) == 9){//radialvortex
 		if (variable_instance_exists(id, "state")){
 			set_character_color_slot( 0, 0, 87, 240, 0 );
 			set_character_color_slot( 1, 0, 125, 235, 0 );
 			set_character_color_slot( 6, 0, 125, 235, 0 );
 		}
+	}*/
+	if (get_player_color( player ) == 9){//champion
+		set_character_color_slot( 1, 209, 255, 237, 0.35 ); //hair
+		set_character_color_slot( 6, 191, 255, 208, 0.35 ); //umbrella
+	
 	}
 }
 if (get_synced_var( player )==2){//C
@@ -652,6 +665,13 @@ set_color_profile_slot( 29, 7, 240, 255, 240 ); //eyes
 		//set_character_color_slot( 7, 240, 255, 240, 0.35 ); //eyes
 	
 	}
+	if (get_player_color( player ) == 14){//radialvortex
+		if (variable_instance_exists(id, "state")){
+			set_character_color_slot( 0, 0, 87, 240, 0 );
+			set_character_color_slot( 1, 0, 125, 235, 0 );
+			set_character_color_slot( 6, 0, 125, 235, 0 );
+		}
+	}
 }
 
 
@@ -775,7 +795,7 @@ switch(get_synced_var( player )){
 		}//yes i know i shoulda done a switch() here or something but i didnt remember if switch() within switch() worked or not and i didnt want to test it out
 
 		// Radial Vortex
-		set_color_profile_slot( 9, 0, 0, 87, 240 ); //green
+		/*set_color_profile_slot( 9, 0, 0, 87, 240 ); //green
 		set_color_profile_slot( 9, 1, 0, 125, 235 ); //hair
 		set_color_profile_slot( 9, 2, 156, 120, 86 ); //skin
 		set_color_profile_slot( 9, 3, 45, 59, 64 ); //white
@@ -783,6 +803,16 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 9, 5, 104, 240, 0 ); //gold
 		set_color_profile_slot( 9, 6, 0, 125, 235 ); //umbrella
 		set_color_profile_slot( 9, 7, 255, 223, 41 ); //eyes
+		*/
+		// champion
+		set_color_profile_slot( 9, 0, 158, 255, 190 ); //green
+		set_color_profile_slot( 9, 1, 209, 255, 237 ); //hair
+		set_color_profile_slot( 9, 2, 128, 145, 138 ); //skin
+		set_color_profile_slot( 9, 3, 128, 145, 138 ); //white
+		set_color_profile_slot( 9, 4, 158, 255, 190 ); //dark
+		set_color_profile_slot( 9, 5, 191, 255, 208 ); //gold
+		set_color_profile_slot( 9, 6, 191, 255, 208 ); //umbrella
+		set_color_profile_slot( 9, 7, 56, 252, 120 ); //eyes
 
 		// doomsday forever
 		set_color_profile_slot( 10, 0, 0, 255, 129 ); //green
@@ -1539,16 +1569,16 @@ switch(get_synced_var( player )){
 		set_color_profile_slot( 13, 5, 255, 205, 54 ); //gold
 		set_color_profile_slot( 13, 6, 154, 117, 191 ); //umbrella
 		set_color_profile_slot( 13, 7, 255, 231, 54 ); //eyes
-
-		// unnamed alt palette
-		set_color_profile_slot( 14, 0, 128, 0, 128 ); //green
-		set_color_profile_slot( 14, 1, 128, 0, 128 ); //hair
-		set_color_profile_slot( 14, 2, 128, 0, 128 ); //skin
-		set_color_profile_slot( 14, 3, 128, 0, 128 ); //white
-		set_color_profile_slot( 14, 4, 128, 0, 128 ); //dark
-		set_color_profile_slot( 14, 5, 128, 0, 128 ); //gold
-		set_color_profile_slot( 14, 6, 128, 0, 128 ); //umbrella
-		set_color_profile_slot( 14, 7, 128, 0, 128 ); //eyes
+		
+		// Radial Vortex
+		set_color_profile_slot( 14, 0, 0, 87, 240 ); //green
+		set_color_profile_slot( 14, 1, 0, 125, 235 ); //hair
+		set_color_profile_slot( 14, 2, 156, 120, 86 ); //skin
+		set_color_profile_slot( 14, 3, 45, 59, 64 ); //white
+		set_color_profile_slot( 14, 4, 104, 240, 0 ); //dark
+		set_color_profile_slot( 14, 5, 104, 240, 0 ); //gold
+		set_color_profile_slot( 14, 6, 0, 125, 235 ); //umbrella
+		set_color_profile_slot( 14, 7, 255, 223, 41 ); //eyes
 
 		// unnamed alt palette
 		set_color_profile_slot( 15, 0, 128, 0, 128 ); //green

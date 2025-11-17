@@ -5,7 +5,7 @@ set_attack_value(AT_JAB, AG_NUM_WINDOWS, 11);
 
 //1
 //start
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);

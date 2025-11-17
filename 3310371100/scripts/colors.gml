@@ -153,15 +153,15 @@ set_color_profile_slot( 7, 7, 83, 122, 62 ); //eyes
 			set_color_profile_slot( 8, 7, 20, 122, 23 ); //eyes
 		}//yes i know i shoulda done a switch() here or something but i didnt remember if switch() within switch() worked or not and i didnt want to test it out
 
-// Radial Vortex
-set_color_profile_slot( 9, 0, 0, 87, 240 ); //green
-set_color_profile_slot( 9, 1, 0, 125, 235 ); //hair
-set_color_profile_slot( 9, 2, 156, 120, 86 ); //skin
-set_color_profile_slot( 9, 3, 45, 59, 64 ); //white
-set_color_profile_slot( 9, 4, 104, 240, 0 ); //dark
-set_color_profile_slot( 9, 5, 104, 240, 0 ); //gold
-set_color_profile_slot( 9, 6, 0, 125, 235 ); //umbrella
-set_color_profile_slot( 9, 7, 255, 223, 41 ); //eyes
+// champion
+set_color_profile_slot( 9, 0, 158, 255, 190 ); //green
+set_color_profile_slot( 9, 1, 209, 255, 237 ); //hair
+set_color_profile_slot( 9, 2, 128, 145, 138 ); //skin
+set_color_profile_slot( 9, 3, 128, 145, 138 ); //white
+set_color_profile_slot( 9, 4, 158, 255, 190 ); //dark
+set_color_profile_slot( 9, 5, 191, 255, 208 ); //gold
+set_color_profile_slot( 9, 6, 191, 255, 208 ); //umbrella
+set_color_profile_slot( 9, 7, 56, 252, 120 ); //eyes
 
 // doomsday forever
 set_color_profile_slot( 10, 0, 0, 255, 129 ); //green
