@@ -8,8 +8,8 @@ if (is_attacking && attack == AT_DSPECIAL && (window <= 2 || dspec_charge_fx_fad
         sprite_get("fx_dspec"),
         dspec_charge_fx_spd * state_timer,
         x, y,
-        window == 3 ? lerp(2, 4, window_timer/window_end) : 2,
-        window == 3 ? lerp(2, 4, window_timer/window_end) : 2, 0, c_white,
+        window == 3 ? lerp(2, 4, window_timer/window_end) : 2, // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        window == 3 ? lerp(2, 4, window_timer/window_end) : 2, 0, c_white, // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         lerp(1, 0, dspec_charge_fx_fade/dspec_charge_fx_fade_max)
     )
 }

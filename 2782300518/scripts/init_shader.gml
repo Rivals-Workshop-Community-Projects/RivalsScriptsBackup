@@ -15,10 +15,41 @@ switch (alt_cur)
         set_character_color_slot(7, 248, 252, 0);
         set_article_color_slot(7, 248, 252, 0);
     break;
+    case 7: //Milla
+        set_character_color_shading(0, 2);
+    case 5: //Corazon
+        set_character_color_shading(6, 2);
+    break;
+    case 8://Scary Lady (Neera)
+        set_character_color_shading(4, 2);
+        set_character_color_shading(6, 1.5);
+    break;
+    case 9://Spade
+        set_character_color_shading(3, 2);
+        set_character_color_shading(4, 2);
+        set_character_color_shading(6, 3);
+    break;
     case 14:
         for (var i = 0; i < 8; i++) set_character_color_shading(i, 0);
         outline_color = [35, 67, 49];
     break;
+    case 15://Big the Cat
+        set_character_color_shading(4, 1.5);
+        set_character_color_shading(6, 3);
+    break;
+    case 16://Blaze the Cat
+        set_character_color_shading(4, 3);
+        set_character_color_shading(6, 0.2);
+    break;
+    case 19: //Litten
+        set_character_color_shading(6, 0.05);
+    break;
+    case 28: //Valentino Rossi
+        set_character_color_shading(0, 2);
+        set_character_color_shading(2, 2);
+        set_character_color_shading(3, 2);
+        set_character_color_shading(6, 2);
+    break;    
 }
 
 //This code plays a quote on the victory screen if Carol wins

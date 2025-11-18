@@ -3,18 +3,18 @@
 
 var mask_width = sprite_get_width(sprite_index)*size/2;
 var mask_height = sprite_get_height(sprite_index)*size/2;
-var cam_x = view_get_xview()-200;
-var cam_y = view_get_yview()-200;
-var cam_w = view_get_xview()+view_get_wview()+200;
-var cam_h = view_get_yview()+view_get_hview()+200;
+var cam_x = view_get_xview()-200; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+var cam_y = view_get_yview()-200; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+var cam_w = view_get_xview()+view_get_wview()+200; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+var cam_h = view_get_yview()+view_get_hview()+200; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 
 for (var i = 0; i < 4; i++)
 {
     maskHeader();
     draw_sprite_ext(
         sprite_get(`fx_od_garden_bg${i + 1}`), layer_data[i][0] * player_id.game_time,
-        lerp(view_get_xview() + view_get_wview()/2, x, layer_data[i][1]),
-        lerp(view_get_yview() + view_get_hview()/2, y, layer_data[i][2]),
+        lerp(view_get_xview() + view_get_wview()/2, x, layer_data[i][1]), // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+        lerp(view_get_yview() + view_get_hview()/2, y, layer_data[i][2]), // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
         2, 2, 0, c_white, 1
     );
     gpu_set_blendenable(true);
@@ -30,8 +30,8 @@ for (var i = 0; i < 4; i++)
     maskMidder();
     draw_sprite_ext(
         sprite_get(`fx_od_garden_bg${i + 1}`), layer_data[i][0] * player_id.game_time,
-        lerp(view_get_xview() + view_get_wview()/2, x, layer_data[i][1]),
-        lerp(view_get_yview() + view_get_hview()/2, y, layer_data[i][2]),
+        lerp(view_get_xview() + view_get_wview()/2, x, layer_data[i][1]), // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+        lerp(view_get_yview() + view_get_hview()/2, y, layer_data[i][2]), // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
         2, 2, 0, c_white, 1
     );
     maskFooter();

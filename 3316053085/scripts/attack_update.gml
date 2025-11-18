@@ -12,7 +12,7 @@ if (attack == AT_JAB)
     if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player)
 	{
         set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, window_end); //NOTE: window_end is a tester variable!
-        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end)
+        if (get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == window_end) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 		{
             set_state(PS_IDLE);
             // if you get ftilt frame-perfectly on parry you can carry the parry lag over
@@ -102,6 +102,7 @@ switch (attack)
                     for (var i = 1; i <= 2; i++)
                     {
                         set_hitbox_value(attack, i, HG_DAMAGE, 3);
+                        set_hitbox_value(attack, i, HG_ANGLE, 100);
                         set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, 10); //8
                         set_hitbox_value(attack, i, HG_KNOCKBACK_SCALING, 0);
                         set_hitbox_value(attack, i, HG_BASE_HITPAUSE, 6);
@@ -863,3 +864,12 @@ switch (attack)
         }
     }
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

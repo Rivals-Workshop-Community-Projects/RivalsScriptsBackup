@@ -439,10 +439,10 @@ if (!s_alt)
     if (alt_cur == 10) //byakuren alt
     {
         //offscreen indicator
-        view_left = view_get_xview() + 35; //0, y
-        view_right = view_get_wview() + view_get_xview() - 35; //screenborder, y
-        view_up = view_get_yview() + 32; //x, 0
-        view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder
+        view_left = view_get_xview() + 35; //0, y // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+        view_right = view_get_wview() + view_get_xview() - 35; //screenborder, y // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+        view_up = view_get_yview() + 32; //x, 0 // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+        view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
         char_offscreen = !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 85);
 
         //set ranges to 0 (NOTICE: ATTACKS FOR SOME REASON OVERWRITE THE RETURN)

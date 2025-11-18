@@ -117,7 +117,7 @@ switch (state)
 				}
 				else draw_y = 0;
 
-				if (window == window_last && window_timer == 0)
+				if (window == window_last && window_timer == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					sound_play(asset_get("sfx_land"), false, 0, 0.8, 0.9)
 				}
@@ -308,9 +308,9 @@ if (is_attacking)
 			spawn_base_dust(x, y - 32, "djump_small", 0, 60 * -spr_dir, 5, 0);
 			spawn_base_dust(x + 32 * spr_dir, y, "dattack", 0, 0, 9, 0);
 
-			if (window == 3 && window_timer == 0) white_flash_timer = 10;
+			if (window == 3 && window_timer == 0) white_flash_timer = 10; // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 
-			if (window == 12 && window_timer == 0) spawn_base_dust(x, y - vsp, "jump", 1, 0);
+			if (window == 12 && window_timer == 0) spawn_base_dust(x, y - vsp, "jump", 1, 0); // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 			else if ((window == 12 || window == 13) && state_timer % 5 == 0 && vsp < -5) spawn_base_dust(x, y, "djump", 1, 0);
 			break;
 		case AT_USPECIAL:
@@ -320,7 +320,7 @@ if (is_attacking)
 				fx.hsp = hsp/8;
 				fx.vsp = vsp/8;
 			}
-			if (window == 4 && window_timer % floor(window_end/2) == 0)
+			if (window == 4 && window_timer % floor(window_end/2) == 0) // WARN: Possible repetition during hitpause. Consider using window_time_is_div(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is_div.html
 			{
 				var fx = spawn_hit_fx(x, y - 32, fx_uspec_smear);
 				fx.depth = depth - 1;
@@ -452,3 +452,16 @@ if (state == PS_WALL_JUMP)
         return newdust;
     }
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+
+#define window_time_is_div(modulo) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer % modulo == 0 and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

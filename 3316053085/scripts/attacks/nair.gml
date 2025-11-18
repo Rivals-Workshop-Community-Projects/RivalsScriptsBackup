@@ -60,9 +60,9 @@ set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_medium);
-set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 
 set_num_hitboxes(atk, hitbox_num);

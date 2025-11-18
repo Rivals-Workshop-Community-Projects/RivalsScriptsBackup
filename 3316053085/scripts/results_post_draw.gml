@@ -6,26 +6,26 @@ if (results_timer < 5) exit;
 
 if ("initialized_victory_screen" not in self)
 {
-    initialized_victory_screen = true;
+    initialized_victory_screen = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     //defaults to prevent errors
-    victory_quote = "I'm sorry, I don't think this works...";
-    emote = 1;
-    stage_id = noone;
+    victory_quote = "I'm sorry, I don't think this works..."; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    emote = 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    stage_id = noone; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     
     //magic happens in there
     get_victory_screen_data();
 }
 if ("check_alt" not in self)
 {
-    alt_hair_apply = false;
-    s_alt = false;
+    alt_hair_apply = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    s_alt = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     with (asset_get("hit_fx_obj")) if ("alt_checker" in self)
     {
         other.alt_hair_apply = alt_hair_apply;
         other.s_alt = s_alt;
     }
 
-    check_alt = true;
+    check_alt = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 //...only do the following with the frontmost bar
@@ -34,17 +34,17 @@ if (winner == player)
     //panel constants
     if (results_timer == 5)
     {
-        quote_pos_y =   320;
-        quote_pos_x =   0;
-        hide_pos_x  =   -1200;
-        quote_time  =   240;
-        a_player_skipped = false;
+        quote_pos_y =   320; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        quote_pos_x =   0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        hide_pos_x  =   -1200; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        quote_time  =   240; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        a_player_skipped = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     }
     //player skip check
     if (skipped_player != 0 && !a_player_skipped)
     {
-        quote_time = results_timer;
-        a_player_skipped = true;
+        quote_time = results_timer; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        a_player_skipped = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     }
 
 
@@ -54,7 +54,7 @@ if (winner == player)
     //Must check with timing or if result boxes are open
     var diff = ((results_timer > quote_time) ? quote_pos_x : hide_pos_x) - quote_current_pos_x;
     
-    quote_current_pos_x += sign(diff) * max(min(abs(diff), 5), abs(diff) * 0.25);
+    quote_current_pos_x += sign(diff) * max(min(abs(diff), 5), abs(diff) * 0.25); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     
     //Draw panel
     if (quote_current_pos_x > hide_pos_x)
@@ -143,8 +143,8 @@ if (winner == player)
     if (string_length(data_array[winner].status_quote) > 1)
     {
         //Status messages always take precedence for winner bar
-        victory_quote = data_array[winner].status_quote;
-        emote = data_array[winner].status_emote;
+        victory_quote = data_array[winner].status_quote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        emote = data_array[winner].status_emote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
     }
     else
     {
@@ -171,14 +171,13 @@ if (winner == player)
             }
         }
 
-        victory_quote = data_array[best_player].quote;
-        emote = data_array[best_player].emote;
+        victory_quote = data_array[best_player].quote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+        emote = data_array[best_player].emote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
         if (string_length(victory_quote) < 1)
         {
-            victory_quote = get_random_quote().quote;
-            emote = get_random_quote().emote;
+            victory_quote = get_random_quote().quote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+            emote = get_random_quote().emote; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         }
     }
 }
-

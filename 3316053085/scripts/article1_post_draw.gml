@@ -53,19 +53,19 @@ if (charge_lvl > 0) for (var i = 0; i < charge_lvl; i ++) with (player_id)
 ///////////////////////////////////////////////////// OFFSCREEN INDICATOR /////////////////////////////////////////////////////
 
 //capture area + sprite offsets
-var view_left = view_get_xview() + 34; //0, y
-var view_right = view_get_wview() + view_get_xview() - 34; //screenborder, y
-var view_up = view_get_yview() + 32; //x, 0
-var view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder
+var view_left = view_get_xview() + 34; //0, y // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+var view_right = view_get_wview() + view_get_xview() - 34; //screenborder, y // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+var view_up = view_get_yview() + 32; //x, 0 // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+var view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 
 //offscree check
-article_offscreen = !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 85);
+article_offscreen = !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 85); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
 if (offscreen_arrow_enabled)
 {
     if (article_offscreen && !player_id.playtest_active)
     {
-        depth = -200; //makes the indicator appear above everything
+        depth = -200; //makes the indicator appear above everything // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         
         //screen limits x
         if (x < view_left - 65) offscreen_x_pos = view_left - 32;

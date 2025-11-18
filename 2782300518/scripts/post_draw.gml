@@ -148,6 +148,21 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.25"
+        patch_note_text[i++] =  
+
+"Revamped some alts base colourwise, notably Corazon, Rivet, Neera, Spade, Big the Cat
+
+Kragg rock shards no longer count as hits from Carol's Wild Kick
+
+Hitting players now applies the hitbox of the attack rather than whatever Carol's attack applies at that moment, removing some inconsistencies with FSpecial hitting your own bike
+
+Reworked the bike physics slightly so that it doesn't awkwardly slide down walls and in midair, it now has a decent falling speed.
+
+The bike now has a smaller range for being detected on platforms
+
+Hitting the bike with USpecial now depletes its fuel, preventing you from hitting it around forever"
+
         patch_note_title[i] = "2.24"
         patch_note_text[i++] =  
 

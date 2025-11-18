@@ -1,6 +1,10 @@
 should_make_shockwave = false;
 
-switch (attack)
+//The following line makes it so that Kragg rock shards don't count as your own character's.
+if (my_hitboxID.orig_player_id != self) exit;
+
+
+switch (my_hitboxID.attack)
 {
 	case AT_NAIR:
 		if (pounce && motorbike == false)

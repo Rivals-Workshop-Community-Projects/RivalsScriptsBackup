@@ -7,7 +7,7 @@ var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(p
 
 if ("s_alt" not in self)
 {
-    s_alt = (get_player_name(player) == "SMURF");
+    s_alt = (get_player_name(player) == "SMURF"); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 
 if ("s_alt" in self && s_alt)
@@ -62,13 +62,13 @@ else
             {
                 if ("venus_color1" not in self) //rainbow stuff
                 {
-                    venus_color1 = 0;
-                    venus_color2 = 240;
+                    venus_color1 = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    venus_color2 = 240; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 }
                 else
                 {
                     //loops variable around (there's a total of 256 hues) to rotate between
-                    venus_color1 += 1;
+                    venus_color1 += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     if (venus_color1 >= 255) venus_color1 -= 255;
 
                     var color_rgb = make_color_rgb(255, 0, 0);
@@ -77,7 +77,7 @@ else
                     set_color_profile_slot(alt_cur, 6, color_get_red(hsv) + 300, color_get_green(hsv) + 300, color_get_blue(hsv) + 300);
                     set_article_color_slot(6, color_get_red(hsv) + 300, color_get_green(hsv) + 300, color_get_blue(hsv) + 300);
 
-                    venus_color2 += 1;
+                    venus_color2 += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                     if (venus_color2 >= 255) venus_color2 -= 255;
 
                     var color_rgb = make_color_rgb(255, 0, 0);
@@ -100,22 +100,22 @@ else
             {
                 if ("venus_array_color1" not in self)
                 {
-                    color_timer = 0;
-                    venus_color_used = 0;
-                    venus_array_color1 = [
+                    color_timer = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    venus_color_used = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    venus_array_color1 = [ // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         [get_color_profile_slot_r(alt_cur, 1), get_color_profile_slot_g(alt_cur, 1), get_color_profile_slot_b(alt_cur, 1)],
                         [12, 147, 0],
                         [181, 49, 32],
                         [0, 0, 0]
                     ];
-                    venus_array_color2 = [
+                    venus_array_color2 = [ // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                         [get_color_profile_slot_r(alt_cur, 3), get_color_profile_slot_g(alt_cur, 3), get_color_profile_slot_b(alt_cur, 3)],
                         [234, 158, 34],
                         [255, 255, 255],
                         [153, 78, 0]
                     ];
-                    orig_light_main = [get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_b(alt_cur, 6)];
-                    orig_light_sub = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
+                    orig_light_main = [get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_b(alt_cur, 6)]; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                    orig_light_sub = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)]; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 }
                 else
                 {

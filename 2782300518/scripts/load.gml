@@ -128,7 +128,7 @@ sco("walljump_counter2", 14,0);
 
 sco("nitro_boost", 50, 50)
 
-sco("plat", 50, 0);
+sco("plat", 25, 0);
 
 sco("sparkle", 30, 30);
 

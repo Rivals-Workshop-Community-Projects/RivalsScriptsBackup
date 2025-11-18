@@ -5,8 +5,8 @@
 //angles debug
 if (get_match_setting(SET_PRACTICE) && keyboard_lastkey == angles_debug_key)
 {
-    keyboard_lastkey = 0;
-    angles_debug = !angles_debug;
+    keyboard_lastkey = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    angles_debug = !angles_debug; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 }
 if (angles_debug)
 {
@@ -127,7 +127,7 @@ draw_colored_hitboxes();
     {
         var arrowspr = __kb_arrow_spr, hitboxes = [], arr_len, __kb_angle, angle;
         with (pHitBox) if (player_id == other && draw_colored && "do_not_show" not in self) array_push(hitboxes,self)
-        arr_len = array_length(hitboxes);
+        arr_len = array_length(hitboxes); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         if (arr_len > 0)
         {
             selection_sort_priority(hitboxes);
@@ -135,8 +135,8 @@ draw_colored_hitboxes();
             {
                 var col = hit_priority > 0 ? self.col : c_gray
                 draw_sprite_ext(draw_spr, shape, x, y, image_xscale,image_yscale,0,col,0.5);
-                __kb_angle = kb_angle == 361 ? 45 : kb_angle;
-                angle = ((__kb_angle+90)*(hit_flipper==5?-1:1)*spr_dir)-90
+                __kb_angle = kb_angle == 361 ? 45 : kb_angle; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+                angle = ((__kb_angle+90)*(hit_flipper==5?-1:1)*spr_dir)-90 // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
                 draw_sprite_ext(arrowspr, 0, x, y, 1,1,angle,-1,0.5);
             }
         }
@@ -155,11 +155,11 @@ draw_colored_hitboxes();
     var arr_len = array_length(arr), jmin, store;
     for (var i = 0; i < arr_len-1; i++)
     {
-        jmin = i;
+        jmin = i; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
         for (var j = i+1; j < arr_len; j++) if (arr[@j].hit_priority < arr[@jmin].hit_priority) jmin = j;
         if (jmin != i)
         {
-            store = arr[@i];
+            store = arr[@i]; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
             arr[@i] = arr[@jmin];
             arr[@jmin] = store;
         }

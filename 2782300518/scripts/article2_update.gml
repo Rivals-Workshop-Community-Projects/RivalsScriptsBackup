@@ -16,6 +16,7 @@ var e = instance_place(x, y, pHitBox);
 
 if (e && state == 0)
 {
+	print_debug(e.hbox_num);
 	if (e.player_id != player_id && get_player_team(e.player) != get_player_team(player) && !e.has_hit)
 	{
 		player_id.fuel--;
@@ -48,7 +49,7 @@ if (e && state == 0)
 	}
 	else if (e.player_id = player_id)
 	{
-		if(e.attack = AT_NSPECIAL)
+		if(e.player_id.attack = AT_NSPECIAL)
 		{
 			if (has_rune("A")) player_id.fuel--;
 			player_id.fuel--;
@@ -80,14 +81,25 @@ if (e && state == 0)
 				if (type == 2 && enemies == 0) instance_destroy(self);
 			}
 		}
-		if (e.attack == AT_FSPECIAL && e.hbox_num == 1)
+		if (e.player_id.attack == AT_FSPECIAL && e.hbox_num == 1)
 		{
 			instance_destroy()
 			exit;
 		}
-		if (e.attack == AT_USPECIAL && state == 0 && e.hbox_num == 1)
+		if (e.player_id.attack == AT_USPECIAL && state == 0 && e.hbox_num == 1)
 		{
 			//hsp = player_id.spr_dir > 0? 3: -3;
+			if (player_id.fuel > 3)
+			{
+				player_id.fuel--;
+				player_id.fuel--;
+				player_id.fuel--;
+			}
+			else
+			{
+				instance_destroy()
+				exit;
+			}
 			sound_play(sound_get("motorbike_extra"));
 			with (e)
 			{
@@ -110,8 +122,8 @@ switch (state)
     case 0: //Idle
         sprite_index = sprite_get("bike_charge");
         //mask_index = sprite_get("bike_mask");
-        if (free && !(collision_rectangle(x - 36, y, x + 36, y, jumpthrough, false, true))) y+= 2;
-        if (collision_rectangle(x - 36, y-2, x + 36, y-2, jumpthrough, false, true)) y-=2;
+        if (free && !(collision_rectangle(x - 18, y, x + 18, y, jumpthrough, false, true))) y+= 6;
+        if (collision_rectangle(x - 18, y-2, x + 18, y-2, jumpthrough, false, true)) y-=2;
     break;
     case 1: //uppercut
 		is_hittable = false;
@@ -132,7 +144,9 @@ switch (state)
         	vsp = 0;
         	hsp = 0;
         }
-        if (!free && vsp > 0 && state_timer >2 && !player_id.hitpause)
+        if ((collision_rectangle(x - 18, y, x + 18, y, jumpthrough, false, true) 
+        || collision_rectangle(x - 18, y, x + 18, y, block, false, true)) 
+        && vsp > 0 && state_timer >2 && !player_id.hitpause)
         {
         	hsp = 0;
         	vsp = 0;
