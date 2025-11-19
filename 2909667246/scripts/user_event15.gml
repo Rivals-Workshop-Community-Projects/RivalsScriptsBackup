@@ -259,13 +259,18 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.57", "16th November, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some special effects on certain alts being bugged since the previous update
++ Improved Kewtian alt effects a bit by making them work with other alts + properly affect certain things like sounds");
+
 initPatch("1.56", "16th October, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Pocket no longer pockets articles by default (though they can still be pocketed if specified)
 + Fixed crouch hurtbox to be more accurate
 + Fixed a small sprite error on NSpecial, and a small hurtbox error on FSpecial
 + Updated some animations slightly (hurt, ustrong, dattack, etc)
-+ Added a custom bury and sleep sprites
++ Added custom bury and sleep sprites
 + Some alts now randomize certain special alt sprites
 + Fixed several things about the angle 0 effect
 + Fixed some misc stuff");

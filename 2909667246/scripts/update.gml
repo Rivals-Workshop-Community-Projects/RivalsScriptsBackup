@@ -413,25 +413,31 @@ if(!loaded || kewtmode == 1){
 		set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_balloon_sol_alts"));
 	}
 	if(alt == 25){
-		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_melon"));
-		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_melon"));
-		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_abl"));
-	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_abl"));
+		fstrong_sprite = sprite_get("fstrong_melon");fstrong_proj_sprite = sprite_get("bowlingball_melon");
+		slingshot_proj_sprite = sprite_get("slingshot_projectile_abl");
+		set_attack_value(AT_FSTRONG, AG_SPRITE, fstrong_sprite);
+		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, fstrong_proj_sprite);
+		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, slingshot_proj_sprite);
+	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, slingshot_proj_sprite);
 	}else if(alt == 30){
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_lloid_golfcar"));
-		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_golf"));
-		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_golf"));
-		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_golf"));
-	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("slingshot_projectile_golf"));
+		fspecial_proj_sprite = sprite_get("fspecial_lloid_golfcar");
+		fstrong_sprite = sprite_get("fstrong_golf");fstrong_proj_sprite = sprite_get("bowlingball_golf");
+		slingshot_proj_sprite = sprite_get("slingshot_projectile_golf");
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, fspecial_proj_sprite);
+		set_attack_value(AT_FSTRONG, AG_SPRITE, fstrong_sprite);
+		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, fstrong_proj_sprite);
+		set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, slingshot_proj_sprite);
+	    set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, slingshot_proj_sprite);
 	    waveland_sound = sound_get("craig_mmm");
 	    set_victory_theme(sound_get("craig_victory"));
 	    PlayVoiceClip("craig_the_real_battle_starts_now", 2.5);
 	}else if(alt == 31){
 		sound_play(sound_get("villager"));waveland_sound = sound_get("villager");
+		fstrong_sprite = sprite_get("fstrong_anvil");fstrong_proj_sprite = sprite_get("bowlingball_anvil");
 		set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack_mc"));
 		set_hitbox_value(AT_DATTACK, 1, HG_PROJECTILE_SPRITE, sprite_get("dattack_pot_mc"));
-		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_anvil"));
-		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowlingball_anvil"));
+		set_attack_value(AT_FSTRONG, AG_SPRITE, fstrong_sprite);
+		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, fstrong_proj_sprite);
 		set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("ustrong_fireworks_mc"));
 		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecial_seed_mc"));
 		set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("dspecial_tree_mc"));

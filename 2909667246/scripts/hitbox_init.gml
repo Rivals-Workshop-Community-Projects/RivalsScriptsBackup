@@ -57,7 +57,7 @@ if(attack == AT_NSPECIAL){
     	sfx_start = sound_get("fspecial_start");
     	sfx_loop = sound_get("fspecial_loop");
     	sfx_explode = sound_get("fspecial_explode");
-    	if(player_id.alt == 30){
+    	if(player_id.alt == 30 && sprite_index == player_id.fspecial_proj_sprite){
     		sfx_loop = sound_get("craig_car");
     	}
     	speedmod = 1;
@@ -179,7 +179,7 @@ if(attack == AT_NSPECIAL){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 10;
         }else if(player_id.alt == 30){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 11;
-        }else if(player_id.alt == 31){
+        }else if(player_id.alt == 31 && sprite_index == player_id.fstrong_proj_sprite){
         	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 12;
         	landsfx = sound_get("fstrong_land_anvil");
         }
