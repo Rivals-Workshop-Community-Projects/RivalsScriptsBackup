@@ -259,6 +259,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.93", "19th November, 2025");
+initHeader("Buffs");
+initSection("+ Added windbox immunity to DSpecial time rift");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed contact damage rune not always destroying the hitbox reliably & in the proper states
++ Some file size optimization
++ Fixed several things about the angle 0 effect
++ Added new KoB CPU code (mostly doesn't affect boss mode)");
+
 initPatch("1.92", "8th February, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ DStrong now goes through platforms for a few frames, making it get caught on them a bit less

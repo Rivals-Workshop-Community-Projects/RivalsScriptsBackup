@@ -179,7 +179,7 @@ if (attack == AT_NSPECIAL){
 		if(y < -500){
 			if(instance_exists(uspectarget)){
 				x = uspectarget.x;
-			}y = -500;
+			}y = -500;initial_invince = 2;
 			window = 16;window_timer = 0;
 		}
 		if(get_gameplay_time() % 3 == 0){
@@ -199,7 +199,7 @@ if (attack == AT_NSPECIAL){
 		}
 		if(y >= 150){
 			window = 30;mask_index = asset_get("ex_guy_collision_mask");
-		}
+		}if(y < 120)initial_invince = 2; else initial_invince = 0;
 		
 		if(get_gameplay_time() % 3 == 0){
 			spawn_hit_fx(x-20+(random_func(0, 40, true)),y-20,fx_feathers);
@@ -393,6 +393,7 @@ if (attack == AT_NSPECIAL){
 	    	}
     	}
     }
+    prev_invinc = initial_invince;
 }else if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
     if(window == 1){

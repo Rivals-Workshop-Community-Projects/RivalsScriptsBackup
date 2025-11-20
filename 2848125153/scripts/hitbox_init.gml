@@ -278,7 +278,7 @@ if(attack == AT_DSPECIAL){
         //CalCanSnack = 2;
         UnReflectable = true;
         AriaCantAbsorb = true;
-        Bounceable = true;
+        Bounceable = true;UnSuckable = 1;
 		depth = -2;
         //thedice = instance_create(x,y-40,"obj_article_platform");
         //thedice.choochoo = self;thedice.property = true;

@@ -20,9 +20,9 @@ if(object_index == asset_get("draw_result_screen")){
     }
 }
 
-altBehaviors(alt_cur);
+altBehaviors(alt_cur,true_player);
 with(asset_get("result_screen_box")){
-    if(player == true_player)altBehaviors(alt_cur);
+    if(player == true_player)altBehaviors(alt_cur,true_player);
 }
 
 #define get_victory_screen_data()
@@ -31,9 +31,9 @@ with(asset_get("result_screen_box")){
 	    break;
 	}
 
-#define altBehaviors(alt_cur)
-	var detish_alt = alt_cur == 17 && string_lower(get_player_name(player)) == "don";
-	var sketish_alt = alt_cur == 17 && string_lower(get_player_name(player)) == "sky";
+#define altBehaviors(alt_cur,plr)
+	var detish_alt = alt_cur == 17 && string_lower(get_player_name(plr)) == "don";
+	var sketish_alt = alt_cur == 17 && string_lower(get_player_name(plr)) == "sky";
 	if(detish_alt){
 	    set_character_color_slot(0, 113, 113, 113);set_article_color_slot(0, 113, 113, 113); //Hat rim
 	    set_character_color_slot(1, 185, 218, 226);set_article_color_slot(1, 185, 218, 226); //Hat

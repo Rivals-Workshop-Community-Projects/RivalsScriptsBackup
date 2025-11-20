@@ -114,7 +114,7 @@ if (state == PS_IDLE && !bibical && sprite_index != wait_sprite)
 			wait_time = -1;
 			if (venus_time >= venus_blush_time)
 			{
-				if (floor(venus_blush_img) < 3) venus_blush_img += 0.16;
+				if (floor(venus_blush_img) < 3) venus_blush_img += 0.14;
 			}
 			else venus_blush_img = 0;
 		}

@@ -23,6 +23,7 @@ laserboom2_sfx = sound_get("laserboom2");
 UnReflectable = true;
 Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 0;Pocketed = false;waspocketed = false;PocketBuff = 0;
 Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 5;
+UnSuckable = 2;
 
 runeA = player_id.runeA;
 runeL = player_id.runeL;

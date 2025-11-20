@@ -417,7 +417,7 @@ skill_desc[4] = string("
 skill_desc[5] = string("
     Jumps down into the ground and creates a crater
     filled with holy fire. Can be cancelled in midair
-    with a jump.
+    with a jump or airdodge.
     ");
 skill_desc[6] = string("
     Aim around by moving and holding SPECIAL. releasing
@@ -435,19 +435,19 @@ skill_desc[8] = string("
     a multihit blast instead.
     ");
 skill_desc[9] = string("
-    Throws a light spear tied to a light chain that
-    when hits a foe or wall, Bar will throw himself
-    forward. Charging makes Bar go further.
+    Throws a light spear and chain that when hits a
+    foe or terrain will fling Bar forward. Charging
+    increases spear's speed. Cancellable with PARRY.
     ");
 skill_desc[10] = string("
     Leaps high up into the air with a burning hand.
     holding SPECIAL will make Bar crash down.
-    Burning Fury makes the initial leap higher
+    Burning Fury turns move into a strong uppercut.
     ");
 skill_desc[11] = string("
-    Punches down the ground to unleash bursts of
-    holy fire. can be cancelled midair with a jump.
-    Burning Fury increases bursts amount to 6.
+    Punches down ground to unleash 4 bursts of holy
+    fire. Can be cancelled midair with a jump or
+    airdodge. Burning Fury adds 2 more fire bursts.
     ");
 //////////////
 

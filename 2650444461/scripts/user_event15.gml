@@ -116,7 +116,7 @@ phone.dont_fast = true;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = true;
+phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -255,6 +255,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.23", "19th November, 2025");
+initHeader("Buffs");
+initSection("+ Weight change (1.3->1.25)");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some misc KoB compatibility
++ Fixed several things about the angle 0 effect");
+
 initPatch("1.22", "23rd May, 2025");
 initHeader("Buffs");
 initSection("+ BAir comes out a little faster (f16->f13)");

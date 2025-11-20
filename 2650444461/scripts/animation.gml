@@ -16,6 +16,20 @@ if(intro && (state == PS_IDLE or state == PS_SPAWN)){
     intro = 0;
 }
 
+if(phone_attacking){
+	with(pHitBox){
+		if(player_id == other && type != 2){
+			if(attack == AT_JAB && hbox_num == 1){
+				DarkHitbox = true;
+			}else if(attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_USPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL){
+				WaterHitbox = true;
+			}else if(attack == AT_DAIR && hbox_num >= 2){
+				MetalHitbox = true;if(hbox_num != 0)IgnoreElement = true;
+			}
+		}
+    }
+}
+
 if(state == PS_IDLE && up_down){
     lookuptime += 1;
 }else{

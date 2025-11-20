@@ -318,6 +318,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.42", "19th November, 2025");
+initHeader("Skillful Buffs");
+initSection("+ Go to Property USpecial now has some i-frames on the descent
++ Added weak windbox immunity to DSpecial properties");
+initHeader("Unskillful Nerfs");
+initSection("+ Toned down rune N slightly (caps at 0.7 weight instead of 0.5)");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a slight jitter on walljump animation");
+
 initPatch("1.41", "12th October, 2025");
 initHeader("Skillful Buffs");
 initSection("+ Golden Suit should now show on results screen");

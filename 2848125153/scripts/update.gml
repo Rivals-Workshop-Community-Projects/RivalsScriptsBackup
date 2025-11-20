@@ -332,7 +332,7 @@ if(runeE){
 }
 if(runeN){
 	//skillful weight rune
-	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.5,1.10935);
+	knockback_adj = 1.2-(current_money/200000);knockback_adj = clamp(knockback_adj,.7,1.10935);
 }
 
 //absolute peak code
@@ -369,6 +369,11 @@ if(golden_skill_suit){
 			PlayVoiceClip("lets upgrade", 1.0);
 		}
 	}
+}
+
+//failsafe for invincibility
+if(prev_invinc != 0 && initial_invince >= 1 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_RESPAWN && state != PS_DEAD){
+	initial_invince = 0;prev_invinc = 0;
 }
 
 #define check_offscreen(offset) //Got this function from Bar-Kun, seems to be useful. Thanks - Don

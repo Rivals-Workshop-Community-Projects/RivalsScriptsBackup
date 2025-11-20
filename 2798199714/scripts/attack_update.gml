@@ -348,20 +348,14 @@ if (attack == AT_NSPECIAL){
 
 }else if(attack == AT_JAB){
 	if(window == 3){
-		if(attack_down){
-			window = 4;
-			window_timer = 0;
-		}
+		if(attack_down){window = 4;window_timer = 0;}
 	}else if(window == 4 || window == 5){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	        dusteff = spawn_hit_fx(x-15*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 	    }
 	}else if(window == 6){
-		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) /*&& has_hit*/){
-    		if(attack_down && !was_parried){
-    		    window = 5;
-    	    	window_timer = 0;
-    		}
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+    		if(attack_down && !was_parried){window = 5;window_timer = 0;}
     	}
 	}else if(window == 7){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
@@ -370,18 +364,15 @@ if (attack == AT_NSPECIAL){
 	        star = spawn_hit_fx(x-80*spr_dir, y-35, fx_star_tiny);star.spr_dir = -spr_dir;star.depth = depth-1;
 	        shake_camera(5,5);
 	        if (has_rune("F") || runeF) {
-	        	create_hitbox(AT_FSTRONG, 2, x+50*spr_dir, y-45);
+	        	create_hitbox(AT_FSTRONG, 2, round(x+50*spr_dir), round(y-45));
     			sound_play(sound_get("swordbeam"));
 	        }
 	    }
 	}if(window == 5 || window == 6){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
     		if(!attack_down || was_parried){
-				window = 7;
-				window_timer = 0;
-				if(!was_parried){
-					create_hitbox(AT_JAB, 5, x, y);
-				}
+				window = 7;window_timer = 0;
+				if(!was_parried)create_hitbox(AT_JAB, 5, round(x), round(y));
 			}
     	}
 	}

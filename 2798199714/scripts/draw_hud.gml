@@ -9,9 +9,7 @@ if(BossMode){
 
 if(get_gameplay_time() <= 240){
     if(superop){
-        draw_debug_text(temp_x, temp_y - 80, "Anti-cheapie activated!
-(If you didn't want this, hold
-Attack to disable next time)");
+        draw_debug_text(temp_x, temp_y - 80, "Anti-cheapie activated!");
     }
 }
 

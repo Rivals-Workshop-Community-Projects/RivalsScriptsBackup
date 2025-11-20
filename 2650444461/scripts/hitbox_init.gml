@@ -18,6 +18,7 @@ if (attack == AT_NSPECIAL && hbox_num == 1 || attack == AT_FAIR){
     MorshuCanGrab = true;
     Pocketable = true;Pocket_hsp = 6;Pocket_vsp = 0;
     Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 1;
+    WaterHitbox = true;Toadie_Ability = 6;
 }
 
 if (attack == AT_NSPECIAL){
@@ -33,6 +34,7 @@ if (attack == AT_DSPECIAL){
     	UnReflectable = true;
         collision_sprite = sprite_get("mudpuddle_collision");
         ScrubbableObject = true;scrubbed = false;  
+        EarthHitbox = true;GroundHitbox = true;
     }
 }
 
@@ -42,6 +44,7 @@ if (attack == AT_DTILT){
         MorshuCanGrab = true;
         Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;
         Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;
+        EarthHitbox = true;GroundHitbox = true;
     }
 }
 
@@ -53,6 +56,7 @@ if (attack == AT_TAUNT){
     //AriaCantAbsorb = true;
     Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 10;Pocketed = false;
     Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 2;
+    WaterHitbox = true;Toadie_Ability = 6;
 }
 
 //intro pokeball
@@ -64,5 +68,5 @@ if(attack == AT_JAB && hbox_num == 3){
 }
 
 if (attack == AT_USPECIAL){
-	UnReflectable = true;
+	UnReflectable = true;WaterHitbox = true;Toadie_Ability = 6;
 }
