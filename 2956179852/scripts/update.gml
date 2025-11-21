@@ -25,14 +25,15 @@ if(free && /*floating &&*/ (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || st
 }
 if(state != PS_WALK && (state != PS_WALK_TURN || state == PS_WALK_TURN && abs(hsp) <= .2)){sound_stop(walk_music);walk_music_timer = 0;walk_music = noone;}
 
-playercount = 0;
+playercount = 0;total_playercount = 0;
 with(oPlayer){
+	if(is_player_on(player)) other.total_playercount++;
 	if ("state" in self){
 	if (state == PS_RESPAWN || state == PS_DEAD){
         sol_burn = false;
         outline_color = [0, 0, 0];init_shader();
     }
-    
+
     if (sol_burn && sol_burn_id == other.id && !hitpause) {
 		sol_burn_timer -= 1;
 		with (other){
@@ -50,7 +51,7 @@ with(oPlayer){
 	}
 	
 	if(is_player_on(player) && state != PS_DEAD && state != PS_RESPAWN){other.playercount++;}
-	if(get_player_team(player) == get_player_team(other.player) && self != other && (string_count("Luigi", string(get_char_info(player, INFO_STR_NAME))) > 0)){ //If on a team with a Luigi
+	if(get_player_team(player) == get_player_team(other.player) && self != other && variableExistsInAndIs(self,"hotelMario_IAmLuigi",true)){ //If on a team with a Luigi
         with(oPlayer){
             if(get_player_team(player) == get_player_team(other.player))return;
             other.can_this_be_it_luigi = false;
@@ -97,6 +98,38 @@ with(oPlayer){
 	}
 	
     }		
+}
+
+if(prev_playercount != playercount){prev_playercount = playercount;loaded_timer = 5;} //Just to reload these variables each time a player reloads so we can get all players to have their variable
+
+if(loaded_timer > 0){
+	with(oPlayer){
+		CharCheck = 
+		{
+			Luigi:    ["Luigi"],
+			Hotelluigi: ["Hotel Luigi"]
+		} //CharacterName : ["ValidName","!invalid","ValidName&&Variable"] (!invalid is useful for cases like Sonic and Metal Sonic)
+		var charArray = variable_instance_get_names(CharCheck);
+		for(var i = 0; i < array_length(charArray); i++){
+			var nameArray = variable_instance_get(CharCheck,charArray[i]);
+			var brokeOut = true;
+			for(var k = 0; k < array_length(nameArray); k++){
+				if(string_count("!",nameArray[k]) > 0){
+					if(string_count(string_delete(nameArray[k],1,1), string_lower(get_char_info(player, INFO_STR_NAME))) > 0)break;
+				}else if(string_count("&&",nameArray[k]) > 0){
+					var splitThing = string_split(nameArray[k],"&");
+					if(string_count(splitThing[0], string(get_char_info(player, INFO_STR_NAME))) > 0 && variableExistsInAndIs(self,splitThing[1],true)){brokeOut = false;break;}
+				}else{
+					if(string_count(nameArray[k], string(get_char_info(player, INFO_STR_NAME))) > 0){brokeOut = false;break;}
+				}
+			}
+			if(!brokeOut){
+				variable_instance_set(other,string_lower(charArray[i])+"_inmatch",true);
+				variable_instance_set(self,"hotelMario_IAm"+charArray[i],true);
+			}
+		}
+	}
+	loaded_timer--;
 }
 
 switch(state){
@@ -199,3 +232,42 @@ else if(instance_exists(pig_hb) && move_cooldown[AT_UAIR] < 3)move_cooldown[AT_U
 		if(argument_count>1)sound_volume(voice, argument[1], 0);
 	}
 
+#define string_split(str, divider){
+	
+	
+	var len = string_length(str);
+	
+	var subStr = "";
+	var arrIndex = 0;
+	var arr;
+	for (var i = 1; i <= len; i++)
+	{
+		var char = string_char_at(str, i);
+		if (char != divider)
+		{
+			//add char to substring
+			subStr += char;
+		}
+		else
+		{
+			//ensure substring is not empty. 
+			if(string_length(subStr) > 0)
+			{
+				//add substring to array
+				arr[arrIndex] = subStr;
+				arrIndex++;
+				//clear substring
+				subStr = "";
+			}
+		}
+	}
+		//Add final substring to array
+		if(string_length(subStr) > 0)
+		{
+			arr[arrIndex] = subStr;
+		}
+	return arr;
+}
+#define variableExistsInAndIs(obj,variable,type)
+if(variable not in obj)return false;
+return (variable_instance_exists(obj,variable) && variable_instance_get(obj,variable) == type);

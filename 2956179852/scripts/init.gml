@@ -167,6 +167,7 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 // Victory
 set_victory_bg(sprite_get("victory_background")); // victory_background.png
 set_victory_theme(sound_get("Hotel_Mario_Victory"));
+set_ui_element(UI_CHARSELECT,sprite_get("charselect"));
 if(alt == 9)set_victory_theme(sound_get("hotel mario win")); // victory_theme.ogg
 
 // Movement SFX
@@ -180,6 +181,12 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//Character Variables
+luigi_inmatch = false;hotelMario_IAmLuigi = false;
+hotelluigi_inmatch = false;hotelMario_IAmHotelluigi = false;
+
+hotel_mario_handeled_victory_shit = false;
 
 is_KOB = true;
 upb = false;
@@ -196,7 +203,8 @@ grab_target = noone;
 pipesprite = sprite_get("pipe")
 peach_sprite = sprite_get("useless creature");
 meatball_sprite = sprite_get("meatball")
-playercount = 0;
+loaded = false;loaded_timer = 5;
+playercount = 0;prev_playercount = 0;total_playercount = 0;
 meatball_fill = 0;
 meatball_angle = 0;
 meatball = noone;

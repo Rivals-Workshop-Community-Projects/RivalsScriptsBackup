@@ -252,6 +252,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.8", "20th November, 2024");
+initHeader("Fixes / Other Changes");
+initSection("+ Optimized some sfx
++ Added a custom team name when on a team with a Luigi
++ Added proper CPU voice button support
++ Improved the CPU with newer KoB CPU code
++ Fixed some buggy interactions with NSpecial");
+
 initPatch("1.7", "27th October, 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed an error sound with Pig
