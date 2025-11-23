@@ -60,6 +60,11 @@ if (attack == AT_DSTRONG) {
 		window_timer = 0;
 } 
 
+if(window == 3){
+	window = 6;
+	window_timer = 0;
+}
+
 if window == 5 && window_timer == 14 {
 	    var k = spawn_hit_fx(x + (spr_dir + 10), y - 50, dstrong_vfx);
         k.depth = depth + 20;
