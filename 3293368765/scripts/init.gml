@@ -262,3 +262,33 @@ TCG_Kirby_Copy = 15;
 
 // Miiverse
 miiverse_post = sprite_get("miiverse");
+
+// Yi
+yi_codec_available = 1;
+yi_codec_data = [
+    msg("yi", 0, 33, "Ah, it's her again."),
+    msg("kuafu", 1, 19,"'Again?' You've met before?"),
+    msg("yi", 0, 2, "Yes, in the Limitless Realm. Supposedly, she somehow attuned to the Primodial Roots."),
+    msg("kuafu", 3, 6, "What?! But she's not even Solarian! How could she possibly do that?!"),
+    msg("yi", 0, 60, "If I had to guess, the roots must have responded to her powerful Will."),
+    msg("ruyi", 0, 0, "An astute observation, my lord. That which you call 'Will' is akin to Rhizomatic Energy in nature."),
+    msg("ruyi", 0, 5, "Not only does it enhance her innate abilities, it can also be wielded as a physical force."),
+    msg("yi", 0, 37, "To turn stubborness into power... it beggars belief."),
+    msg("kuafu", 4, 24, "That explains these energy readings. She sounds like bad news, Bro."),
+    msg("yi", 0, 4, "Her tenacity is impressive for certain, but she relies on momentum to push past her limits."),
+    msg("yi", 0, 60, "As long as I keep calm and intercept her attacks, I'll be fine."),
+    msg("shuanshuan", 1, 5, "Are you guys talking about Teenah? Tell her she needs to come visit us again soon!"),
+    msg("kuafu", 5, 3, "H-hey! Didn't anyone teach you Apemen not to eavesdrop?! It's rude!!"),
+    msg("shuanshuan", 0, 1, "Please, Yi! She never finished her story about the Dark Dragon and the Sealing Sage!"),
+    msg("yi", 0, 41, "..."),
+    msg("yi", 0, 44, "I'll ask, once the battle is over."),
+    msg("shuanshuan", 1, 61, "Yay!"),
+    ];
+
+#define msg(character, expression, voiceclip, text)
+return {
+	char: character,
+	expr: expression,
+	txt: text,
+	clip: voiceclip
+}
