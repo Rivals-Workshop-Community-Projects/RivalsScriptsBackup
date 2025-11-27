@@ -126,7 +126,7 @@ set_color_profile_slot( 9, 5, 195, 135, 101 ); //collar
 set_color_profile_slot( 9, 6, 93, 64, 56 ); //coat
 set_color_profile_slot( 9, 7, 108, 155, 113 ); //pants
 
-// "That bitch."
+// "That b---h."
 set_color_profile_slot( 10, 0, 255, 61, 135 ); //fire
 set_color_profile_slot( 10, 1, 207, 48, 110 ); //fire shading
 set_color_profile_slot( 10, 2, 255, 255, 228 ); //mask

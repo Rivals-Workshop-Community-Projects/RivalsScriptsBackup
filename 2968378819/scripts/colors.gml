@@ -86,7 +86,7 @@ set_color_profile_slot( 5, 5, 255, 59, 246 ); //Eyes
 set_color_profile_slot( 5, 6, 153, 172, 204 ); //Bandages/Claws 1
 set_color_profile_slot( 5, 7, 83, 95, 171 ); //Claws 2
 
-// Darkstalker
+// Darkstalker (Jon Talbain: Darkstalkers)
 set_color_profile_slot( 6, 0, 155, 189, 255 ); //Fur 1
 set_color_profile_slot( 6, 1, 75, 90, 122 ); //Fur 2
 set_color_profile_slot( 6, 2, 255, 205, 71 ); //Belt 1
@@ -106,7 +106,7 @@ set_color_profile_slot( 7, 5, 0, 227, 240 ); //Eyes
 set_color_profile_slot( 7, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 7, 7, 217, 217, 217 ); //Claws 2
 
-// Kung Fu Man
+// Kung Fu Man (Kung Fu Man: Mugen)
 set_color_profile_slot( 8, 0, 239, 189, 156 ); //Fur 1
 set_color_profile_slot( 8, 1, 115, 90, 75 ); //Fur 2
 set_color_profile_slot( 8, 2, 90, 90, 99 ); //Belt 1
@@ -116,7 +116,7 @@ set_color_profile_slot( 8, 5, 68, 144, 251 ); //Eyes
 set_color_profile_slot( 8, 6, 127, 153, 222 ); //Bandages/Claws 1
 set_color_profile_slot( 8, 7, 95, 114, 166 ); //Claws 2
 
-// Wanderer
+// Wanderer (Kilia: Disgaea 5)
 set_color_profile_slot( 9, 0, 93, 109, 169 ); //Fur 1
 set_color_profile_slot( 9, 1, 39, 46, 71 ); //Fur 2
 set_color_profile_slot( 9, 2, 190, 42, 109 ); //Belt 1
@@ -126,7 +126,7 @@ set_color_profile_slot( 9, 5, 251, 204, 68 ); //Eyes
 set_color_profile_slot( 9, 6, 227, 227, 227 ); //Bandages/Claws 1
 set_color_profile_slot( 9, 7, 166, 166, 166 ); //Claws 2
 
-// Street Fighter
+// Street Fighter (Ryu: Street Fighter)
 set_color_profile_slot( 10, 0, 240, 201, 175 ); //Fur 1
 set_color_profile_slot( 10, 1, 105, 88, 76 ); //Fur 2
 set_color_profile_slot( 10, 2, 199, 56, 69 ); //Belt 1
@@ -156,7 +156,7 @@ set_color_profile_slot( 12, 5, 243, 101, 0 ); //Eyes
 set_color_profile_slot( 12, 6, 82, 82, 82 ); //Bandages/Claws 1
 set_color_profile_slot( 12, 7, 48, 48, 48 ); //Claws 2
 
-// Killer Instinct
+// Killer Instinct (Sabrewulf: Killer Instinct)
 set_color_profile_slot( 13, 0, 107, 123, 148 ); //Fur 1
 set_color_profile_slot( 13, 1, 37, 42, 51 ); //Fur 2
 set_color_profile_slot( 13, 2, 207, 185, 82 ); //Belt 1
@@ -166,7 +166,7 @@ set_color_profile_slot( 13, 5, 255, 255, 0 ); //Eyes
 set_color_profile_slot( 13, 6, 239, 231, 181 ); //Bandages/Claws 1
 set_color_profile_slot( 13, 7, 163, 157, 123 ); //Claws 2
 
-// The Aura
+// The Aura (Lucario: Pokemon)
 set_color_profile_slot( 14, 0, 90, 177, 214 ); //Fur 1
 set_color_profile_slot( 14, 1, 47, 94, 115 ); //Fur 2
 set_color_profile_slot( 14, 2, 120, 115, 111 ); //Belt 1
@@ -176,7 +176,7 @@ set_color_profile_slot( 14, 5, 51, 134, 255 ); //Eyes
 set_color_profile_slot( 14, 6, 207, 198, 191 ); //Bandages/Claws 1
 set_color_profile_slot( 14, 7, 189, 179, 172 ); //Claws 2
 
-// Bloody Wolf
+// Bloody Wolf (Yugo: Bloody Roar)
 set_color_profile_slot( 15, 0, 168, 168, 168 ); //Fur 1
 set_color_profile_slot( 15, 1, 66, 66, 66 ); //Fur 2
 set_color_profile_slot( 15, 2, 232, 232, 232 ); //Belt 1
@@ -186,7 +186,7 @@ set_color_profile_slot( 15, 5, 255, 0, 0 ); //Eyes
 set_color_profile_slot( 15, 6, 222, 222, 222 ); //Bandages/Claws 1
 set_color_profile_slot( 15, 7, 171, 171, 171 ); //Claws 2
 
-// Bloody Fox
+// Bloody Fox (Hans: Bloody Roar)
 set_color_profile_slot( 16, 0, 213, 180, 86 ); //Fur 1
 set_color_profile_slot( 16, 1, 117, 99, 47 ); //Fur 2
 set_color_profile_slot( 16, 2, 89, 89, 114 ); //Belt 1
@@ -196,7 +196,7 @@ set_color_profile_slot( 16, 5, 144, 194, 222 ); //Eyes
 set_color_profile_slot( 16, 6, 217, 113, 235 ); //Bandages/Claws 1
 set_color_profile_slot( 16, 7, 151, 78, 163 ); //Claws 2
 
-// Thunderous Howl
+// Thunderous Howl (Iroh: Blaner)
 set_color_profile_slot( 17, 0, 201, 200, 240 ); //Fur 1
 set_color_profile_slot( 17, 1, 96, 96, 115 ); //Fur 2
 set_color_profile_slot( 17, 2, 122, 37, 200 ); //Belt 1
@@ -206,7 +206,7 @@ set_color_profile_slot( 17, 5, 255, 210, 50 ); //Eyes
 set_color_profile_slot( 17, 6, 239, 219, 0 ); //Bandages/Claws 1
 set_color_profile_slot( 17, 7, 158, 145, 0 ); //Claws 2
 
-// The Last Wish
+// The Last Wish (Death: Puss in Boots)
 set_color_profile_slot( 18, 0, 153, 173, 209 ); //Fur 1
 set_color_profile_slot( 18, 1, 82, 93, 112 ); //Fur 2
 set_color_profile_slot( 18, 2, 82, 69, 61 ); //Belt 1
@@ -216,7 +216,7 @@ set_color_profile_slot( 18, 5, 227, 10, 19 ); //Eyes
 set_color_profile_slot( 18, 6, 222, 222, 222 ); //Bandages/Claws 1
 set_color_profile_slot( 18, 7, 171, 171, 171 ); //Claws 2
 
-// HEY ITS ME
+// HEY ITS ME (Goku: Dragon Ball Z)
 set_color_profile_slot( 19, 0, 240, 201, 175 ); //Fur 1
 set_color_profile_slot( 19, 1, 105, 88, 76 ); //Fur 2
 set_color_profile_slot( 19, 2, 18, 77, 118 ); //Belt 1
@@ -246,7 +246,7 @@ set_color_profile_slot( 21, 5, 200, 63, 153 ); //Eyes
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 21, 7, 150, 150, 150 ); //Claws 2
 
-// The Crusher
+// The Crusher (Bergamo: Dragon Ball Super)
 set_color_profile_slot( 22, 0, 102, 139, 184 ); //Fur 1
 set_color_profile_slot( 22, 1, 42, 57, 74 ); //Fur 2
 set_color_profile_slot( 22, 2, 199, 56, 69 ); //Belt 1
@@ -256,7 +256,7 @@ set_color_profile_slot( 22, 5, 255, 51, 51 ); //Eyes
 set_color_profile_slot( 22, 6, 224, 209, 190 ); //Bandages/Claws 1
 set_color_profile_slot( 22, 7, 184, 171, 155 ); //Claws 2
 
-// Capoeira Fighter
+// Capoeira Fighter (Bathym: Tokyo A. Summoners)
 set_color_profile_slot( 23, 0, 151, 131, 156 ); //Fur 1
 set_color_profile_slot( 23, 1, 67, 58, 69 ); //Fur 2
 set_color_profile_slot( 23, 2, 190, 73, 78 ); //Belt 1
@@ -286,7 +286,7 @@ set_color_profile_slot( 25, 5, 64, 175, 245 ); //Eyes
 set_color_profile_slot( 25, 6, 255, 255, 255 ); //Bandages/Claws 1
 set_color_profile_slot( 25, 7, 217, 217, 217 ); //Claws 2
 
-// Poisonous Pacifist
+// Poisonous Pacifist (Ranno, duh)
 set_color_profile_slot( 26, 0, 52, 188, 204 ); //Fur 1
 set_color_profile_slot( 26, 1, 24, 86, 94 ); //Fur 2
 set_color_profile_slot( 26, 2, 255, 255, 228 ); //Belt 1

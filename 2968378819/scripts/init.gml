@@ -276,6 +276,12 @@ if has_rune("J"){
 
 TCG_Kirby_Copy = 4;
 
+//Dedede Stadium
+arena_title = "The Nameless Brawler";
+
+//Soulbound Conflict
+battle_text = "* FIGHT!";
+
 //Reiga's The Knight
 knight_compat_dream = 
     [
@@ -283,3 +289,6 @@ knight_compat_dream =
         "......",
         "STOP DAWDLING AND FIGHT!"
     ]
+
+//Stinker Kancho Reaction
+butthurt = 0;

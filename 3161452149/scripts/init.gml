@@ -129,7 +129,7 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
 set_victory_bg(sprite_get("winscreen")); // sprites\winscreen.png - name doesn't matter, the size has to be 480 x 270 pixels big, usually has this puple filter on it
-set_victory_theme(sound_get("music_win_generic")); // sounds\mus_victory.ogg - leave some silence in the file after the victory theme finishes
+set_victory_theme(sound_get("music_win_father")); // sounds\mus_victory.ogg - leave some silence in the file after the victory theme finishes
 
 alt_cur = get_player_color(player);
 
@@ -177,12 +177,18 @@ up_hard_pressed, right_hard_pressed, left_hard_pressed, down_hard_pressed,
 attack_pressed, attack_down, special_pressed, special_down, jump_pressed, jump_down, tap_jump_pressed, shield_pressed, shield_down, taunt_pressed, taunt_down]
 */
 
+//Dedede Stadium
+arena_title = "The Rival Lost To Time";
+
+//Soulbound Conflict
+battle_text = "* She looks really pissed off.";
+
 //Reiga's The Knight
 knight_compat_dream = 
     [
         "Damn Ayala and her damn workshop...",
         "Bringing in these freaks from god knows where...",
-        "And this #%$@ing ghost thing trying to read my mind!"
+        "And this #%$@ing bug thing trying to read my mind..."
     ]
 
 //Kirby Copy Ability

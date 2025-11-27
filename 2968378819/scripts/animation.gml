@@ -24,6 +24,15 @@ if state == PS_HITSTUN && hurt_img == 2 && !hitpause && jestermode == true{
 	sprite_index = sprite_get("jestermodedownhurt");
 }
 
+
+if state_cat != SC_HITSTUN butthurt = 0;
+
+if state_cat == SC_HITSTUN && butthurt{
+        sprite_index = sprite_get("jestermodeuphurt");
+        image_index = state_timer/4;
+        if !free sprite_index = sprite_get("hurtground");
+}
+
 //parry code
 if state == PS_PARRY && jestermode == true{
     if state_timer == 0 and parry_spam_cancel == false{

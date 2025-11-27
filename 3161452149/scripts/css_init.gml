@@ -19,7 +19,7 @@ alt_name = [
 	"Early Access",
 	"Father",
 	"Mom",
-	"That bitch...",
+	"That b---h...",
 	"Auntie Mayreed",
 	"Claiyen",
 	"Yellow",
