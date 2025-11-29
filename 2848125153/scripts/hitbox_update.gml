@@ -974,7 +974,7 @@ if(attack == AT_DATTACK){
 	    	        			other.hitstop = other.hitpausehit;
 	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-	                			player_id.has_hit = true;
+	                			//player_id.has_hit = true;
 	                			//to make certain characters bounce
 				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
 				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				

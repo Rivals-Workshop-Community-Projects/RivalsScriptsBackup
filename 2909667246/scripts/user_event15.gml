@@ -259,6 +259,16 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.59", "24th November, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Added more custom SFX from Smash for stuff like jumping, landing, walking, etc
++ Added a simple extra taunt! Hold left/right to use it
++ Fixed Green Flower Zone compatibility (this was kinda just forgotten about, but should be there properly now)");
+
+initPatch("1.58", "21st November, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed an error where Villager couldn't Pocket unreflectable articles even if Pocketable was defined as true");
+
 initPatch("1.57", "16th November, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed some special effects on certain alts being bugged since the previous update
@@ -547,7 +557,7 @@ initSection("");
 initHeader("Character by");
 initSection("FelixBlobDev");
 initHeader("Compatible with");
-initSection("Himself, Toon Link, Mt. Dedede, Boxing Ring, Steve, Link");
+initSection("Himself, Toon Link, Miiverse, Mt. Dedede, Boxing Ring, Wily Castle, Green Flower Zone, Nintendo Wii, Steve, Link");
 
 /*initPatch("1.2", "22 September, 2021");
 initHeader("MunoPhone Touch Firmware v2");

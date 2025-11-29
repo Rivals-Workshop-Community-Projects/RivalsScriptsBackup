@@ -90,11 +90,11 @@ roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-land_sound = asset_get("sfx_land_med");
-landing_lag_sound = asset_get("sfx_land");
+land_sound = sound_get("land");
+landing_lag_sound = sound_get("land2");
 waveland_sound = asset_get("sfx_waveland_zet");
-jump_sound = asset_get("sfx_jumpground");
-djump_sound = asset_get("sfx_jumpair");
+jump_sound = sound_get("jump");
+djump_sound = sound_get("jump2");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 set_victory_theme(sound_get("villager win"));
 set_victory_bg(sprite_get("victorybg"));
@@ -123,7 +123,7 @@ attacking = false;
 outline_timer = 0;outline_rev = false;
 bells = 0;bellspawntimer = 0;
 jump = 0;
-crouching = false;
+crouching = false;step = false;
 Pocket_Hitbox = noone;Pocketed_Projectile = noone;pocket_projectile = false;pocket_article = false;
 pocket_projectile_sprite = asset_get("empty_sprite");pocket_projectile_sprite_imageindex = 0;
 pocket_projectile_hud_sprite_original = sprite_get("nspecial_pocket_hud_icons");pocket_hud_slot = sprite_get("nspecial_pocket_hud");

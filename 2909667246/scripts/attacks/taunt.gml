@@ -23,6 +23,28 @@ set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAME_START, 14);
 
+//skary pose taunt
+set_window_value(AT_TAUNT, 5, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_TAUNT, 5, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_TAUNT, 5, AG_WINDOW_ANIM_FRAME_START, 20);
+
+set_window_value(AT_TAUNT, 6, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 6, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_TAUNT, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_TAUNT, 6, AG_WINDOW_ANIM_FRAME_START, 23);
+
+set_window_value(AT_TAUNT, 7, AG_WINDOW_TYPE, 9);
+set_window_value(AT_TAUNT, 7, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_TAUNT, 7, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_TAUNT, 7, AG_WINDOW_ANIM_FRAME_START, 25);
+
+set_window_value(AT_TAUNT, 8, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 8, AG_WINDOW_ANIM_FRAME_START, 24);
+set_window_value(AT_TAUNT, 8, AG_WINDOW_ANIM_FRAMES, -1);
+
+
 //silky taunt
 set_window_value(AT_TAUNT, 12, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 12, AG_WINDOW_LENGTH, 4);

@@ -1,6 +1,6 @@
 muno_event_type = 1;
-	user_event(14);
-
+user_event(14);
+var t = get_gameplay_time();
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
    move_cooldown[AT_USPECIAL] = 0;Lloid_Rocket_Ride = false;
    if(!free){
@@ -8,7 +8,7 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
    }
 }
 if(move_cooldown[AT_USPECIAL] <= 0 && uspec_landed){
-	if(get_gameplay_time() % 3 == 0)uspec_fuel += 1;
+	if(t % 3 == 0)uspec_fuel += 1;
 }uspec_fuel = min(uspec_fuel,300);
 if(bellspawntimer > 0)bellspawntimer -= 1;
 
@@ -288,16 +288,26 @@ if(state == PS_CROUCH && !hitpause){
 	if(crouching && !hitpause && state == PS_IDLE){
 		sound_play(sound_get("crouch2"),false,noone,0.6);
 	}crouching = false;
+
+	if(state == PS_DASH_START && state_timer == 0 && !hitpause){
+		sound_play(sound_get("dashstart"),false,noone,0.4,0.95+(random_func(2,20,true)/100));
+	}else if(state == PS_DASH_STOP && state_timer == 0 && !hitpause){
+		sound_play(sound_get("dashstop"),false,noone,0.15,0.95+(random_func(2,20,true)/100));
+	}else if(state == PS_DASH && t % 16 == 0 && !hitpause){
+		sound_play(step ? sound_get("step3") : sound_get("step4"),false,noone,0.5,0.95+(random_func(2,20,true)/100));step = !step
+	}else if(state == PS_WALK && t % 20 == 0 && !hitpause){
+		sound_play(step ? sound_get("step") : sound_get("step2"),false,noone,0.5,0.85+(random_func(2,20,true)/100));step = !step
+	}
 }
 
-if((state == PS_LAND || state == PS_LANDING_LAG || state == PS_PRATLAND|| state == PS_WAVELAND) && state_timer == 1 && !hitpause && (size_mult > 1 || sol || op || canon)){
+if((state == PS_LAND || state == PS_LANDING_LAG || state == PS_PRATLAND || state == PS_WAVELAND) && state_timer == 1 && !hitpause && (size_mult > 1 || sol)){
 	shake_camera(floor((size_mult>1)?5*(size_mult*.55):3), floor((size_mult>1)?3*(size_mult*.65):3));
 	if(size_mult > 2 || op || canon){
 		sound_play( sound_get("dspecial_tree_land") );
-	}sound_play( sound_get("heavyland") );
+	}sound_play(sound_get("heavyland"),false,noone,size_mult > 2 ? 1.1 : 0.8);
 }
 
-if(get_gameplay_time() <= 120 || !loaded){
+if(t <= 120 || !loaded){
 	if(attack_down && jump_pressed && kewtmode <= 0){
 		kewtmode = 1;
 	}
@@ -548,7 +558,7 @@ if(trainingmode || op || canon || runeK){
 
 if("element_cooldown" not in self)element_cooldown = 0;
 if(element_cooldown > 0)element_cooldown--;
-if(sol && (get_gameplay_time() % 30 == 0 || hitpause)){
+if(sol && (t % 30 == 0 || hitpause)){
 	poison = 0;
 	if("infection_timer" in self){infection_timer = 0;blood_tick = 0;is_infected = false;}
 	if("has_bleeding" in self){has_bleeding = false;bleeding_time = 0;has_bleed_timer = 0;has_bleed_stacks = 0;}

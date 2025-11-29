@@ -223,7 +223,7 @@ notmuchtimeleft = 0;
 diedienow = 0;diedienowP1 = false;
 diedienowP2 = false;diedienowP3 = false;diedienowP4 = false;
 golden_skill_suit = false;
-playercount = 0;
+playercount = 0;prev_invinc = 0;
 lookuptime = 0;
 
 drawtime = 0;

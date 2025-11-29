@@ -660,26 +660,26 @@ if (attack == AT_NSPECIAL){
 		if(!free){if(specialkewtland <= 0){specialkewtland = 1;sound_play(land_sound);sound_play(sound_get("squeaky"),false,noone,0.3,1.2);array_push(phone_dust_query, [x, y, "land", spr_dir]);}specialkewtland += 1;}else specialkewtland = 0;
 	}if(window >= 13 && window <= 15)hud_offset = 35;
 	
-	if((window == 1 || window == 3) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
-        sound_play(sound_get("crouch2"),false,noone,0.6);
-    }if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-10 && !hitpause){
-        sound_play(sound_get("crouch"),false,noone,0.4);
-    }
+	if((window == 1 || window == 3) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)sound_play(sound_get("crouch2"),false,noone,0.6);
+    if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-10 && !hitpause)sound_play(sound_get("crouch"),false,noone,0.4);
+    
     if(window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && !hitpause && taunt_down){
         window = 0;window_timer = 0;
     }
     
-    if(window <= 1){
+    if(window <= 4 || window == 7){
     	if(tauntcancel)cancelattack2();
-    	if(down_down){
-	    	
-		}else if(up_down && kewtmode >= 1){
+    	if(up_down && kewtmode >= 1){
 			set_attack(AT_TAUNT_2);hurtboxID.sprite_index = sprite_get("taunt_beeg_hurt");spr_dir = 1;
 			create_hitbox(AT_TAUNT, 2, x, y+100);create_hitbox(AT_TAUNT, 2, x+100, y+200);create_hitbox(AT_TAUNT, 2, x-100, y-200);
 		}
+		if(window == 7 && taunt_pressed){window += 1;window_timer = 0;}
     }else{
     	tauntcancel = true;
     }
+    
+    if(window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)sound_play(sound_get("land3"),false,noone,0.8);
+    
     
     if(attack_down && jump_pressed && kewtmode <= 0){
 		kewtmode = 1;
@@ -764,7 +764,7 @@ if (canon || op) strong_charge = 61;
     if(orig_player != 5 && !instance_exists(other.Pocketed_Projectile) && "url" in player_id){
     	var playerurl = 21;var ispocketable = /*"Pocketable" not in self ||*/ "Pocketable" in self && Pocketable;
     	if(string_length(string(player_id.url)) > 0)playerurl = real(player_id.url);
-        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) && ispocketable
+        if((("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self) || ispocketable
         || playerurl < 20) && ("Pocketed" in self && !Pocketed || "Pocketed" not in self) && (sprite_index != asset_get("empty_sprite") || "Pocketable" in self && Pocketable)
         && ("KoB_grabbed" in self && !KoB_grabbed || "KoB_grabbed" not in self)
         || other.runeI){

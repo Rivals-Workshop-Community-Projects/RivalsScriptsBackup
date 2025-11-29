@@ -318,6 +318,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.43", "26th November, 2025");
+initHeader("Skillful Buffs");
+initSection("+ DSpecial property no longer sets has_hit on players when hit by attacks");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some misc errors");
+
 initPatch("1.42", "19th November, 2025");
 initHeader("Skillful Buffs");
 initSection("+ Go to Property USpecial now has some i-frames on the descent

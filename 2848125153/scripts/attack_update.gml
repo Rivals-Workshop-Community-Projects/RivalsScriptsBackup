@@ -767,7 +767,7 @@ if (attack == AT_NSPECIAL){
 			if(current_money2 <= 15000){
 			}else if(current_money2 <= 30000){
 			}else{
-				if(!has_hit){
+				if(!has_hit_player){
 					if(current_money2 >= 6000*discount){
 						sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 		    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-25));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 1000;
@@ -846,7 +846,7 @@ if (attack == AT_NSPECIAL){
 		if(current_money2 <= 15000){
 		}else if(current_money2 <= 30000){
 		}else{
-			if(!has_hit){
+			if(!has_hit_player){
 				if(current_money2 >= 4000*discount){
 					sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 		    		var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-55));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 750;money.hit_priority = 0;
@@ -1031,7 +1031,7 @@ if (attack == AT_NSPECIAL){
 	}
 
 #define cancelattack
-    if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+    if(has_hit_player && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
 		window = 20;
 		if(attack == AT_DATTACK){
