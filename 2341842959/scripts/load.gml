@@ -82,5 +82,3 @@ sprite_change_offset("proj_zetter1", 49, 10);
 sprite_change_offset("zetter_hit2", 74, 74);
 
 sprite_change_offset("plat", 96, 18);
-
-set_victory_theme( sound_get( "music_win_stink" ));

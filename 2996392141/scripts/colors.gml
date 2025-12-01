@@ -333,16 +333,16 @@ set_color_profile_slot( 27, 6, 255, 148, 216 ); //hair
 set_color_profile_slot( 27, 7, 0, 0, 0 ); //eyes
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// Android 21
-set_color_profile_slot( 28, 0, 56, 44, 0 ); //gold
-set_color_profile_slot( 28, 1, 225, 0, 12 ); //blue
-set_color_profile_slot( 28, 2, 242, 225, 217 ); //skin
-set_color_profile_slot( 28, 3, 10, 113, 151 ); //shirt
-set_color_profile_slot( 28, 4, 239, 239, 239 ); //coat
-set_color_profile_slot( 28, 5, 255, 200, 0 ); //red
-set_color_profile_slot( 28, 6, 155, 72, 50 ); //hair
-set_color_profile_slot( 28, 7, 151, 204, 217 ); //eyes
-//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+// Sly alt.
+set_color_profile_slot( 28, 0, 234, 221, 180 ); //gold
+set_color_profile_slot( 28, 1, 124, 124, 125 ); //blue
+set_color_profile_slot( 28, 2, 224, 152, 112 ); //skin
+set_color_profile_slot( 28, 3, 193, 164, 201 ); //shirt
+set_color_profile_slot( 28, 4, 149, 166, 201 ); //coat
+set_color_profile_slot( 28, 5, 193, 164, 201 ); //red
+set_color_profile_slot( 28, 6, 219, 94, 130 ); //hair
+set_color_profile_slot( 28, 7, 0, 125, 22 ); //eyes
+//shading data: [1, 1, 1.5, 1, 1, 1, 1, 1]
 
 // Lovergirl
 set_color_profile_slot( 29, 0, 253, 152, 85 ); //gold
@@ -377,16 +377,6 @@ set_color_profile_slot( 31, 6, 152, 106, 75 ); //hair
 set_color_profile_slot( 31, 7, 187, 176, 157 ); //eyes
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// The Player
-set_color_profile_slot( 32, 0, 235, 255, 240 ); //gold
-set_color_profile_slot( 32, 1, 45, 43, 50 ); //blue
-set_color_profile_slot( 32, 2, 255, 214, 209 ); //skin
-set_color_profile_slot( 32, 3, 13, 196, 90 ); //shirt
-set_color_profile_slot( 32, 4, 122, 120, 130 ); //coat
-set_color_profile_slot( 32, 5, 255, 255, 255 ); //red
-set_color_profile_slot( 32, 6, 142, 96, 71 ); //hair
-set_color_profile_slot( 32, 7, 172, 50, 50 ); //eyes
-//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

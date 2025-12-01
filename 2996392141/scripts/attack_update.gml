@@ -443,6 +443,7 @@ switch (attack) {
 	    		hbox.hsp = lengthdir_x( lerp(8, 12, i / times), lerp(270, 350, i / (times))) * spr_dir;
 	    		hbox.vsp = lengthdir_y( lerp(8, 12, i / times), lerp(270, 350, i / (times)));
 	    		hbox.image_off = i;
+	    		hbox.length = 20;
         	}
         }
         

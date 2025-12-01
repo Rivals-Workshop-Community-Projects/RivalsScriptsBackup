@@ -42,6 +42,9 @@ switch (real_alt)
     case 23: //gameboy / early access - gameboy palletes don't have shading
     	set_shading([5, 1, 1, 1, 3, 1, 1.5, 1]);
     break;
+    case 28: //gameboy / early access - gameboy palletes don't have shading
+    	set_shading([1, 1, 1.5, 1, 1, 1, 1, 1]);
+    break;
     case 29: //gameboy / early access - gameboy palletes don't have shading
     	var color_orange = /*#*/$002cd4;
     	var color_purple = /*#*/$6101a2;

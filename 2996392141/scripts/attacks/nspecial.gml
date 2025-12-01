@@ -99,7 +99,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Projectile (uncharged)");
 set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_ACTIVE, startup + 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 80);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 30);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 20);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
@@ -121,7 +121,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"))
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Projectile (charged)");
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_ACTIVE, startup_full + 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 40);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 1);

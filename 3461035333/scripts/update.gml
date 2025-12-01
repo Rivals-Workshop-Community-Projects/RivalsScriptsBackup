@@ -1,5 +1,9 @@
 if !joy_pad_idle last_joy_dir = joy_dir;
 
+if !free and uspec_pratfall_verif {
+	set_state(PS_PRATLAND);
+}
+
 // Colors palettes exceptions 
 var ami_slot = 5;
 if get_player_color( player ) == ami_slot 

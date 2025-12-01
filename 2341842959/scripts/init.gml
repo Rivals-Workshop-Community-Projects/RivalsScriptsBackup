@@ -165,6 +165,10 @@ corB = 0;
 claw_effect = hit_fx_create( sprite_get( "claw_effect" ), 20 );
 zetter_effect = hit_fx_create( sprite_get( "zetter_hit2" ), 20 );
 
+// Victory
+set_victory_bg(sprite_get("acridimnotgonnadabunlessyourecord")); // sprites\winscreen.png - name doesn't matter, the size has to be 480 x 270 pixels big, usually has this puple filter on it
+set_victory_theme( sound_get( "music_win_stink" ));
+
 //Compaaaatablitiesilies
 
 //Hikaru Title, da fox

@@ -154,9 +154,7 @@ if (reflected && reflect_player_prev != player) {
     
     hitbox_timer /= _lifetime_mult;
     hitbox_timer = floor(hitbox_timer);
-    
     hsp *= _speed_mult;  
-    vsp *= _speed_mult;  
     
     if (multihit_amount > 0)
     {

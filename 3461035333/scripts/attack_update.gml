@@ -180,22 +180,25 @@ if (attack == AT_DAIR)
 {
     if (window == 1 and window_timer < 5)
     {
-        if (spr_dir == 1 && left_down){
+        if (spr_dir == 1 and left_down){
     		spr_dir = -1
     	}
-    	if (spr_dir == -1 && right_down){
+    	if (spr_dir == -1 and right_down){
     		spr_dir = 1
     	}
     }
+    /*
     if (!free) and (!hitpause) and (!was_parried){
         destroy_hitboxes();
         landing_lag_time = 11;
         set_state(PS_LANDING_LAG);
     }
+    */
 }
 
 if (attack == AT_NSPECIAL)
 {
+	nspec_dir = last_joy_dir;
 	if state_timer == 1
 	{
 		if spr_dir last_joy_dir = 0 else last_joy_dir = 180;
@@ -295,7 +298,6 @@ if (attack == AT_NSPECIAL)
     {
     	if (window_timer == 1)
     	{
-    		nspec_dir = last_joy_dir;
     		if !joy_pad_idle
 			{
 				if (spr_dir == -1) and ((joy_dir <= 90 and joy_dir >= 0) or (joy_dir >= 270 and joy_dir <= 360))
@@ -520,8 +522,8 @@ if (attack == AT_USPECIAL)
 	{
 		can_attack = true;
 	}
-	if ((attack_pressed) or (attack_down) or (strong_down)
-	or (up_stick_pressed) or (left_stick_pressed) or (right_stick_pressed)) or (down_stick_pressed)  
+	if (((attack_pressed) or (attack_down) or (strong_down)or (up_stick_pressed) or (left_stick_pressed) or (right_stick_pressed)) or (down_stick_pressed))
+	and (window != 4) and (window != 1)
 	{
 		if (!has_hit)
 		{
