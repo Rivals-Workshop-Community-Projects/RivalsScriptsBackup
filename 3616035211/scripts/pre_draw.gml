@@ -1,0 +1,1 @@
+if state == PS_PARRY && jestermode draw_sprite_ext(sprite_get("vfx_jesterparry"), state_timer/6, x, y, 2, 2, 0, c_white, 1);

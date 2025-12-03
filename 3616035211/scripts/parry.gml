@@ -1,0 +1,1 @@
+if jestermode sound_play(sound_get("JMStinkerlaugh"));
