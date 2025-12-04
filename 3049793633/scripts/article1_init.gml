@@ -11,6 +11,7 @@ song_name_array[5] = "Green Hill: Act1"
 song_name_array[6] = "Green Hill: Act2 - Normal"
 song_name_array[7] = "Green Hill Zone Act 1"
 song_name_array[8] = "Green Hill Zone Act 2"
+song_name_array[9] = "Green Hill Zone (Nokia Lloyd Version)"
 
 //Artist
 song_artist_array[1] = "Masato Nakamura"
@@ -21,6 +22,7 @@ song_artist_array[5] = "Naofumi Hataya"
 song_artist_array[6] = "Jun Senoue"
 song_artist_array[7] = "Tee Lopes"
 song_artist_array[8] = "Tee Lopes"
+song_artist_array[9] = "Glu Mobile"
 
 //Album/Source Game
 song_album_array[1] = "Sonic the Hedgehog 1&2 Soundtrack"
@@ -31,3 +33,4 @@ song_album_array[5] = "Blue Blur: Sonic Generations Original Soundtrack"
 song_album_array[6] = "Blue Blur: Sonic Generations Original Soundtrack"
 song_album_array[7] = "Sonic Mania"
 song_album_array[8] = "Sonic Mania"
+song_album_array[9] = "Sonic the Hedgehog Golf"

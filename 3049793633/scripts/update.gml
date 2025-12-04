@@ -1,5 +1,5 @@
 //Music randomizer
-if (cur_song == -1) cur_song = random_func(current_second, 8, true)+1;
+if (cur_song == -1) cur_song = random_func(current_second, 9, true)+1;
 
 music_play_file("music_track" + string(cur_song));
 

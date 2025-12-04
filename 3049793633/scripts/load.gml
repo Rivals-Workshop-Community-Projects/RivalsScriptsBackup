@@ -6,3 +6,10 @@
    sprite_change_offset(("sunflower_a"), 2, 1);
    sprite_change_offset(("lilac"), 5, 2);
    sprite_change_offset(("lilac_a"), 5, 2);
+   
+//Steve block compat:   
+//Set offsets of item drops to bottom center of sprite.
+sprite_change_offset("steve_0_drop", 6, 10);
+sprite_change_offset("steve_1_drop", 6, 10);
+sprite_change_offset("steve_2_drop", 6, 10);
+sprite_change_offset("steve_3_drop", 6, 11);
