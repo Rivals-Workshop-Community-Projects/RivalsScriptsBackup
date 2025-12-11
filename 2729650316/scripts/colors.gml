@@ -106,174 +106,174 @@ set_color_profile_slot( 7, 5, 186, 186, 186 ); //Black
 set_color_profile_slot( 7, 6, 115, 50, 0 ); //Eyes
 set_color_profile_slot( 7, 7, 0, 255, 0 ); //Table
 
-// Valentine's
-set_color_profile_slot( 8, 0, 219, 175, 203 ); //Light Fur
-set_color_profile_slot( 8, 1, 38, 0, 22 ); //Dark Fur
-set_color_profile_slot( 8, 2, 163, 36, 104 ); //Red Tights
-set_color_profile_slot( 8, 3, 135, 17, 17 ); //Yellow Tights
-set_color_profile_slot( 8, 4, 242, 242, 242 ); //Kneepads
-set_color_profile_slot( 8, 5, 36, 36, 36 ); //Black
-set_color_profile_slot( 8, 6, 209, 96, 164 ); //Eyes
+// Punchin' Purple
+set_color_profile_slot( 8, 0, 223, 228, 237 ); //Light Fur
+set_color_profile_slot( 8, 1, 20, 25, 28 ); //Dark Fur
+set_color_profile_slot( 8, 2, 58, 22, 140 ); //Red Tights
+set_color_profile_slot( 8, 3, 94, 150, 34 ); //Yellow Tights
+set_color_profile_slot( 8, 4, 41, 11, 122 ); //Kneepads
+set_color_profile_slot( 8, 5, 94, 150, 34 ); //Black
+set_color_profile_slot( 8, 6, 160, 245, 56 ); //Eyes
 set_color_profile_slot( 8, 7, 0, 255, 0 ); //Table
 
-// Akira Taue
-set_color_profile_slot( 9, 0, 242, 194, 194 ); //Light Fur
-set_color_profile_slot( 9, 1, 48, 14, 14 ); //Dark Fur
-set_color_profile_slot( 9, 2, 84, 5, 5 ); //Red Tights
-set_color_profile_slot( 9, 3, 247, 247, 247 ); //Yellow Tights
-set_color_profile_slot( 9, 4, 204, 204, 204 ); //Kneepads
-set_color_profile_slot( 9, 5, 125, 18, 18 ); //Black
-set_color_profile_slot( 9, 6, 122, 39, 21 ); //Eyes
+// Inverted Gear
+set_color_profile_slot( 9, 0, 197, 207, 227 ); //Light Fur
+set_color_profile_slot( 9, 1, 46, 41, 60 ); //Dark Fur
+set_color_profile_slot( 9, 2, 165, 103, 0 ); //Red Tights
+set_color_profile_slot( 9, 3, 130, 15, 15 ); //Yellow Tights
+set_color_profile_slot( 9, 4, 15, 15, 15 ); //Kneepads
+set_color_profile_slot( 9, 5, 171, 162, 159 ); //Black
+set_color_profile_slot( 9, 6, 238, 226, 33 ); //Eyes
 set_color_profile_slot( 9, 7, 0, 255, 0 ); //Table
 
-// Toshiaki Kawada
-set_color_profile_slot( 10, 0, 250, 234, 158 ); //Light Fur
-set_color_profile_slot( 10, 1, 23, 22, 17 ); //Dark Fur
-set_color_profile_slot( 10, 2, 15, 15, 15 ); //Red Tights
-set_color_profile_slot( 10, 3, 255, 188, 0 ); //Yellow Tights
-set_color_profile_slot( 10, 4, 201, 201, 201 ); //Kneepads
-set_color_profile_slot( 10, 5, 33, 33, 33 ); //Black
-set_color_profile_slot( 10, 6, 217, 182, 20 ); //Eyes
+// La Reina
+set_color_profile_slot( 10, 0, 167, 61, 72 ); //Light Fur
+set_color_profile_slot( 10, 1, 0, 190, 242 ); //Dark Fur
+set_color_profile_slot( 10, 2, 204, 80, 172 ); //Red Tights
+set_color_profile_slot( 10, 3, 167, 61, 72 ); //Yellow Tights
+set_color_profile_slot( 10, 4, 204, 80, 172 ); //Kneepads
+set_color_profile_slot( 10, 5, 122, 32, 39 ); //Black
+set_color_profile_slot( 10, 6, 0, 190, 242 ); //Eyes
 set_color_profile_slot( 10, 7, 0, 255, 0 ); //Table
 
-// Kenta Kobashi
-set_color_profile_slot( 11, 0, 222, 182, 149 ); //Light Fur
-set_color_profile_slot( 11, 1, 33, 31, 29 ); //Dark Fur
-set_color_profile_slot( 11, 2, 179, 70, 0 ); //Red Tights
-set_color_profile_slot( 11, 3, 179, 70, 0 ); //Yellow Tights
-set_color_profile_slot( 11, 4, 191, 71, 19 ); //Kneepads
-set_color_profile_slot( 11, 5, 232, 232, 232 ); //Black
-set_color_profile_slot( 11, 6, 104, 76, 150 ); //Eyes
+// Akira Taue
+set_color_profile_slot( 11, 0, 242, 194, 194 ); //Light Fur
+set_color_profile_slot( 11, 1, 48, 14, 14 ); //Dark Fur
+set_color_profile_slot( 11, 2, 84, 5, 5 ); //Red Tights
+set_color_profile_slot( 11, 3, 247, 247, 247 ); //Yellow Tights
+set_color_profile_slot( 11, 4, 204, 204, 204 ); //Kneepads
+set_color_profile_slot( 11, 5, 125, 18, 18 ); //Black
+set_color_profile_slot( 11, 6, 122, 39, 21 ); //Eyes
 set_color_profile_slot( 11, 7, 0, 255, 0 ); //Table
 
-// Mitsuharu Misawa
-set_color_profile_slot( 12, 0, 195, 217, 212 ); //Light Fur
-set_color_profile_slot( 12, 1, 43, 41, 46 ); //Dark Fur
-set_color_profile_slot( 12, 2, 0, 56, 31 ); //Red Tights
-set_color_profile_slot( 12, 3, 255, 255, 255 ); //Yellow Tights
-set_color_profile_slot( 12, 4, 0, 61, 34 ); //Kneepads
-set_color_profile_slot( 12, 5, 255, 255, 255 ); //Black
-set_color_profile_slot( 12, 6, 0, 131, 72 ); //Eyes
+// Toshiaki Kawada
+set_color_profile_slot( 12, 0, 250, 234, 158 ); //Light Fur
+set_color_profile_slot( 12, 1, 23, 22, 17 ); //Dark Fur
+set_color_profile_slot( 12, 2, 15, 15, 15 ); //Red Tights
+set_color_profile_slot( 12, 3, 255, 188, 0 ); //Yellow Tights
+set_color_profile_slot( 12, 4, 201, 201, 201 ); //Kneepads
+set_color_profile_slot( 12, 5, 33, 33, 33 ); //Black
+set_color_profile_slot( 12, 6, 217, 182, 20 ); //Eyes
 set_color_profile_slot( 12, 7, 0, 255, 0 ); //Table
 
-// Sting
-set_color_profile_slot( 13, 0, 255, 250, 245 ); //Light Fur
-set_color_profile_slot( 13, 1, 31, 26, 26 ); //Dark Fur
-set_color_profile_slot( 13, 2, 28, 28, 28 ); //Red Tights
-set_color_profile_slot( 13, 3, 255, 255, 252 ); //Yellow Tights
-set_color_profile_slot( 13, 4, 69, 68, 66 ); //Kneepads
-set_color_profile_slot( 13, 5, 28, 28, 28 ); //Black
-set_color_profile_slot( 13, 6, 250, 250, 250 ); //Eyes
+// Kenta Kobashi
+set_color_profile_slot( 13, 0, 222, 182, 149 ); //Light Fur
+set_color_profile_slot( 13, 1, 33, 31, 29 ); //Dark Fur
+set_color_profile_slot( 13, 2, 179, 70, 0 ); //Red Tights
+set_color_profile_slot( 13, 3, 179, 70, 0 ); //Yellow Tights
+set_color_profile_slot( 13, 4, 191, 71, 19 ); //Kneepads
+set_color_profile_slot( 13, 5, 232, 232, 232 ); //Black
+set_color_profile_slot( 13, 6, 104, 76, 150 ); //Eyes
 set_color_profile_slot( 13, 7, 0, 255, 0 ); //Table
 
-// Undertaker
-set_color_profile_slot( 14, 0, 114, 118, 130 ); //Light Fur
-set_color_profile_slot( 14, 1, 16, 12, 28 ); //Dark Fur
-set_color_profile_slot( 14, 2, 23, 23, 23 ); //Red Tights
-set_color_profile_slot( 14, 3, 49, 15, 130 ); //Yellow Tights
-set_color_profile_slot( 14, 4, 49, 15, 130 ); //Kneepads
-set_color_profile_slot( 14, 5, 19, 17, 31 ); //Black
-set_color_profile_slot( 14, 6, 115, 0, 255 ); //Eyes
+// Mitsuharu Misawa
+set_color_profile_slot( 14, 0, 195, 217, 212 ); //Light Fur
+set_color_profile_slot( 14, 1, 43, 41, 46 ); //Dark Fur
+set_color_profile_slot( 14, 2, 0, 56, 31 ); //Red Tights
+set_color_profile_slot( 14, 3, 255, 255, 255 ); //Yellow Tights
+set_color_profile_slot( 14, 4, 0, 61, 34 ); //Kneepads
+set_color_profile_slot( 14, 5, 255, 255, 255 ); //Black
+set_color_profile_slot( 14, 6, 0, 131, 72 ); //Eyes
 set_color_profile_slot( 14, 7, 0, 255, 0 ); //Table
 
-// Bret Hart
-set_color_profile_slot( 15, 0, 227, 136, 227 ); //Light Fur
-set_color_profile_slot( 15, 1, 26, 26, 26 ); //Dark Fur
-set_color_profile_slot( 15, 2, 158, 41, 134 ); //Red Tights
-set_color_profile_slot( 15, 3, 31, 31, 31 ); //Yellow Tights
-set_color_profile_slot( 15, 4, 163, 42, 138 ); //Kneepads
-set_color_profile_slot( 15, 5, 26, 26, 26 ); //Black
-set_color_profile_slot( 15, 6, 201, 123, 164 ); //Eyes
+// Sting
+set_color_profile_slot( 15, 0, 255, 250, 245 ); //Light Fur
+set_color_profile_slot( 15, 1, 31, 26, 26 ); //Dark Fur
+set_color_profile_slot( 15, 2, 28, 28, 28 ); //Red Tights
+set_color_profile_slot( 15, 3, 255, 255, 252 ); //Yellow Tights
+set_color_profile_slot( 15, 4, 69, 68, 66 ); //Kneepads
+set_color_profile_slot( 15, 5, 28, 28, 28 ); //Black
+set_color_profile_slot( 15, 6, 250, 250, 250 ); //Eyes
 set_color_profile_slot( 15, 7, 0, 255, 0 ); //Table
 
-// Becky Lynch (WM 35)
-set_color_profile_slot( 16, 0, 209, 104, 46 ); //Light Fur
-set_color_profile_slot( 16, 1, 54, 25, 11 ); //Dark Fur
-set_color_profile_slot( 16, 2, 15, 11, 15 ); //Red Tights
-set_color_profile_slot( 16, 3, 145, 122, 3 ); //Yellow Tights
-set_color_profile_slot( 16, 4, 28, 28, 28 ); //Kneepads
-set_color_profile_slot( 16, 5, 33, 33, 33 ); //Black
-set_color_profile_slot( 16, 6, 82, 48, 28 ); //Eyes
+// Bret Hart
+set_color_profile_slot( 16, 0, 227, 136, 227 ); //Light Fur
+set_color_profile_slot( 16, 1, 26, 26, 26 ); //Dark Fur
+set_color_profile_slot( 16, 2, 158, 41, 134 ); //Red Tights
+set_color_profile_slot( 16, 3, 31, 31, 31 ); //Yellow Tights
+set_color_profile_slot( 16, 4, 163, 42, 138 ); //Kneepads
+set_color_profile_slot( 16, 5, 26, 26, 26 ); //Black
+set_color_profile_slot( 16, 6, 201, 123, 164 ); //Eyes
 set_color_profile_slot( 16, 7, 0, 255, 0 ); //Table
 
-// Beowulf
-set_color_profile_slot( 17, 0, 201, 198, 193 ); //Light Fur
-set_color_profile_slot( 17, 1, 135, 131, 116 ); //Dark Fur
-set_color_profile_slot( 17, 2, 46, 35, 35 ); //Red Tights
-set_color_profile_slot( 17, 3, 163, 171, 152 ); //Yellow Tights
-set_color_profile_slot( 17, 4, 0, 0, 0 ); //Kneepads
-set_color_profile_slot( 17, 5, 43, 43, 43 ); //Black
-set_color_profile_slot( 17, 6, 64, 64, 64 ); //Eyes
+// Becky Lynch (WM 35)
+set_color_profile_slot( 17, 0, 209, 104, 46 ); //Light Fur
+set_color_profile_slot( 17, 1, 54, 25, 11 ); //Dark Fur
+set_color_profile_slot( 17, 2, 15, 11, 15 ); //Red Tights
+set_color_profile_slot( 17, 3, 145, 122, 3 ); //Yellow Tights
+set_color_profile_slot( 17, 4, 28, 28, 28 ); //Kneepads
+set_color_profile_slot( 17, 5, 33, 33, 33 ); //Black
+set_color_profile_slot( 17, 6, 82, 48, 28 ); //Eyes
 set_color_profile_slot( 17, 7, 0, 255, 0 ); //Table
 
-// Goldust
-set_color_profile_slot( 18, 0, 217, 183, 32 ); //Light Fur
-set_color_profile_slot( 18, 1, 28, 28, 24 ); //Dark Fur
-set_color_profile_slot( 18, 2, 168, 142, 25 ); //Red Tights
-set_color_profile_slot( 18, 3, 18, 18, 18 ); //Yellow Tights
-set_color_profile_slot( 18, 4, 140, 118, 24 ); //Kneepads
-set_color_profile_slot( 18, 5, 145, 114, 0 ); //Black
-set_color_profile_slot( 18, 6, 140, 118, 24 ); //Eyes
+// Beowulf
+set_color_profile_slot( 18, 0, 201, 198, 193 ); //Light Fur
+set_color_profile_slot( 18, 1, 135, 131, 116 ); //Dark Fur
+set_color_profile_slot( 18, 2, 46, 35, 35 ); //Red Tights
+set_color_profile_slot( 18, 3, 163, 171, 152 ); //Yellow Tights
+set_color_profile_slot( 18, 4, 0, 0, 0 ); //Kneepads
+set_color_profile_slot( 18, 5, 43, 43, 43 ); //Black
+set_color_profile_slot( 18, 6, 64, 64, 64 ); //Eyes
 set_color_profile_slot( 18, 7, 0, 255, 0 ); //Table
 
-// Terryman
-set_color_profile_slot( 19, 0, 186, 186, 164 ); //Light Fur
-set_color_profile_slot( 19, 1, 5, 44, 130 ); //Dark Fur
-set_color_profile_slot( 19, 2, 20, 64, 168 ); //Red Tights
-set_color_profile_slot( 19, 3, 153, 142, 25 ); //Yellow Tights
-set_color_profile_slot( 19, 4, 112, 91, 54 ); //Kneepads
-set_color_profile_slot( 19, 5, 8, 25, 66 ); //Black
-set_color_profile_slot( 19, 6, 141, 192, 214 ); //Eyes
+// Goldust
+set_color_profile_slot( 19, 0, 217, 183, 32 ); //Light Fur
+set_color_profile_slot( 19, 1, 28, 28, 24 ); //Dark Fur
+set_color_profile_slot( 19, 2, 168, 142, 25 ); //Red Tights
+set_color_profile_slot( 19, 3, 18, 18, 18 ); //Yellow Tights
+set_color_profile_slot( 19, 4, 140, 118, 24 ); //Kneepads
+set_color_profile_slot( 19, 5, 145, 114, 0 ); //Black
+set_color_profile_slot( 19, 6, 140, 118, 24 ); //Eyes
 set_color_profile_slot( 19, 7, 0, 255, 0 ); //Table
 
-// Chris Hayabusa
-set_color_profile_slot( 20, 0, 237, 237, 237 ); //Light Fur
-set_color_profile_slot( 20, 1, 22, 22, 28 ); //Dark Fur
-set_color_profile_slot( 20, 2, 16, 22, 31 ); //Red Tights
-set_color_profile_slot( 20, 3, 248, 212, 72 ); //Yellow Tights
-set_color_profile_slot( 20, 4, 230, 187, 29 ); //Kneepads
-set_color_profile_slot( 20, 5, 53, 15, 69 ); //Black
-set_color_profile_slot( 20, 6, 0, 183, 255 ); //Eyes
+// Terryman
+set_color_profile_slot( 20, 0, 186, 186, 164 ); //Light Fur
+set_color_profile_slot( 20, 1, 5, 44, 130 ); //Dark Fur
+set_color_profile_slot( 20, 2, 20, 64, 168 ); //Red Tights
+set_color_profile_slot( 20, 3, 153, 142, 25 ); //Yellow Tights
+set_color_profile_slot( 20, 4, 112, 91, 54 ); //Kneepads
+set_color_profile_slot( 20, 5, 8, 25, 66 ); //Black
+set_color_profile_slot( 20, 6, 141, 192, 214 ); //Eyes
 set_color_profile_slot( 20, 7, 0, 255, 0 ); //Table
 
+// Chris Hayabusa
+set_color_profile_slot( 21, 0, 237, 237, 237 ); //Light Fur
+set_color_profile_slot( 21, 1, 22, 22, 28 ); //Dark Fur
+set_color_profile_slot( 21, 2, 16, 22, 31 ); //Red Tights
+set_color_profile_slot( 21, 3, 248, 212, 72 ); //Yellow Tights
+set_color_profile_slot( 21, 4, 230, 187, 29 ); //Kneepads
+set_color_profile_slot( 21, 5, 53, 15, 69 ); //Black
+set_color_profile_slot( 21, 6, 0, 183, 255 ); //Eyes
+set_color_profile_slot( 21, 7, 0, 255, 0 ); //Table
+
 // Anglara
-set_color_profile_slot( 21, 0, 74, 201, 198 ); //Light Fur
-set_color_profile_slot( 21, 1, 214, 208, 118 ); //Dark Fur
-set_color_profile_slot( 21, 2, 74, 201, 198 ); //Red Tights
-set_color_profile_slot( 21, 3, 255, 0, 0 ); //Yellow Tights
-set_color_profile_slot( 21, 4, 255, 1, 1 ); //Kneepads
-set_color_profile_slot( 21, 5, 36, 91, 97 ); //Black
-set_color_profile_slot( 21, 6, 214, 183, 124 ); //Eyes
-set_color_profile_slot( 21, 7, 15, 31, 112 ); //Table
+set_color_profile_slot( 22, 0, 74, 201, 198 ); //Light Fur
+set_color_profile_slot( 22, 1, 214, 208, 118 ); //Dark Fur
+set_color_profile_slot( 22, 2, 74, 201, 198 ); //Red Tights
+set_color_profile_slot( 22, 3, 255, 0, 0 ); //Yellow Tights
+set_color_profile_slot( 22, 4, 255, 1, 1 ); //Kneepads
+set_color_profile_slot( 22, 5, 36, 91, 97 ); //Black
+set_color_profile_slot( 22, 6, 214, 183, 124 ); //Eyes
+set_color_profile_slot( 22, 7, 15, 31, 112 ); //Table
 
 // Olympia
-set_color_profile_slot( 22, 0, 184, 128, 83 ); //Light Fur
-set_color_profile_slot( 22, 1, 219, 70, 201 ); //Dark Fur
-set_color_profile_slot( 22, 2, 242, 233, 224 ); //Red Tights
-set_color_profile_slot( 22, 3, 23, 21, 21 ); //Yellow Tights
-set_color_profile_slot( 22, 4, 26, 26, 26 ); //Kneepads
-set_color_profile_slot( 22, 5, 201, 134, 64 ); //Black
-set_color_profile_slot( 22, 6, 0, 88, 150 ); //Eyes
-set_color_profile_slot( 22, 7, 0, 255, 0 ); //Table
-
-// Fernet
-set_color_profile_slot( 23, 0, 247, 168, 225 ); //Light Fur
-set_color_profile_slot( 23, 1, 74, 50, 67 ); //Dark Fur
-set_color_profile_slot( 23, 2, 65, 0, 122 ); //Red Tights
-set_color_profile_slot( 23, 3, 196, 140, 0 ); //Yellow Tights
-set_color_profile_slot( 23, 4, 41, 0, 54 ); //Kneepads
-set_color_profile_slot( 23, 5, 30, 14, 36 ); //Black
-set_color_profile_slot( 23, 6, 33, 184, 61 ); //Eyes
+set_color_profile_slot( 23, 0, 184, 128, 83 ); //Light Fur
+set_color_profile_slot( 23, 1, 219, 70, 201 ); //Dark Fur
+set_color_profile_slot( 23, 2, 156, 150, 144 ); //Red Tights
+set_color_profile_slot( 23, 3, 23, 21, 21 ); //Yellow Tights
+set_color_profile_slot( 23, 4, 26, 26, 26 ); //Kneepads
+set_color_profile_slot( 23, 5, 201, 134, 64 ); //Black
+set_color_profile_slot( 23, 6, 0, 88, 150 ); //Eyes
 set_color_profile_slot( 23, 7, 0, 255, 0 ); //Table
 
-// TuQiu
-set_color_profile_slot( 24, 0, 255, 255, 255 ); //Light Fur
-set_color_profile_slot( 24, 1, 0, 33, 66 ); //Dark Fur
-set_color_profile_slot( 24, 2, 0, 7, 28 ); //Red Tights
-set_color_profile_slot( 24, 3, 255, 23, 62 ); //Yellow Tights
-set_color_profile_slot( 24, 4, 0, 255, 238 ); //Kneepads
-set_color_profile_slot( 24, 5, 255, 255, 255 ); //Black
-set_color_profile_slot( 24, 6, 89, 125, 255 ); //Eyes
+// Fernet
+set_color_profile_slot( 24, 0, 247, 168, 225 ); //Light Fur
+set_color_profile_slot( 24, 1, 74, 50, 67 ); //Dark Fur
+set_color_profile_slot( 24, 2, 65, 0, 122 ); //Red Tights
+set_color_profile_slot( 24, 3, 196, 140, 0 ); //Yellow Tights
+set_color_profile_slot( 24, 4, 41, 0, 54 ); //Kneepads
+set_color_profile_slot( 24, 5, 30, 14, 36 ); //Black
+set_color_profile_slot( 24, 6, 33, 184, 61 ); //Eyes
 set_color_profile_slot( 24, 7, 0, 255, 0 ); //Table
 
 // Incineroar
@@ -349,6 +349,6 @@ set_color_profile_slot( 31, 7, 0, 255, 0 ); //Table
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Light Fur","colors":[{"r":144,"g":151,"b":166},{"r":197,"g":207,"b":227,"main":true},{"r":227,"g":236,"b":255}]},{"name":"Dark Fur","colors":[{"r":46,"g":41,"b":60,"main":true},{"r":69,"g":62,"b":90}]},{"name":"Red Tights","colors":[{"r":141,"g":0,"b":25,"main":true},{"r":192,"g":0,"b":34},{"r":255,"g":0,"b":45}]},{"name":"Yellow Tights","colors":[{"r":165,"g":103,"b":0,"main":true},{"r":255,"g":160,"b":0}]},{"name":"Kneepads","colors":[{"r":116,"g":110,"b":108,"main":true},{"r":180,"g":171,"b":168}]},{"name":"Black","colors":[{"r":47,"g":44,"b":43,"main":true}]},{"name":"Eyes","colors":[{"r":238,"g":226,"b":33,"main":true},{"r":160,"g":143,"b":20}]},{"name":"Table","colors":[{"r":56,"g":69,"b":235,"main":true},{"r":3,"g":17,"b":192}]}]}
+{"formatversion":1,"data":[{"name":"Light Fur","colors":[{"r":144,"g":151,"b":166},{"r":197,"g":207,"b":227,"main":true},{"r":227,"g":236,"b":255}]},{"name":"Dark Fur","colors":[{"r":46,"g":41,"b":60,"main":true},{"r":69,"g":62,"b":90}]},{"name":"Red Tights","colors":[{"r":141,"g":0,"b":25,"main":true},{"r":192,"g":0,"b":34},{"r":255,"g":0,"b":45}]},{"name":"Yellow Tights","colors":[{"r":165,"g":103,"b":0,"main":true},{"r":255,"g":160,"b":0}]},{"name":"Kneepads","colors":[{"r":116,"g":110,"b":108,"main":true},{"r":180,"g":171,"b":168}]},{"name":"Black","colors":[{"r":47,"g":44,"b":43,"main":true}]},{"name":"Eyes","colors":[{"r":160,"g":143,"b":20},{"r":238,"g":226,"b":33,"main":true}]},{"name":"Table","colors":[{"r":56,"g":69,"b":235,"main":true},{"r":3,"g":17,"b":192}]}]}
 === END JSON PALETTE ===
 */
