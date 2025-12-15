@@ -2,6 +2,9 @@
 // Main offset for all anims should be (118, 148) unless otherwise stated.
 // This centers the sprite so it is in the middle.
 
+var mainX = 120;
+var mainY = 152;
+
 //Idle, Walk, Dash
 sprite_change_offset("idle", 118, 148);
 sprite_change_offset("crouch", 118, 148);
@@ -10,7 +13,7 @@ sprite_change_offset("walkturn", 118, 148);
 sprite_change_offset("dash", 118, 148);
 sprite_change_offset("dashstart", 118, 148);
 sprite_change_offset("dashstop", 118, 148);
-sprite_change_offset("dashturn", 118, 148);
+sprite_change_offset("dashturn", mainX, mainY);
 
 //Hurtboxes
 sprite_change_offset("mrMonopoly_hurtbox", 49, 78);
@@ -53,7 +56,7 @@ sprite_change_offset("utilt", 118, 148);
 //Aerials
 sprite_change_offset("nair", 118, 148);
 sprite_change_offset("fair", 118, 148);
-sprite_change_offset("bair", 118, 148);
+sprite_change_offset("bair", mainX, mainY);
 sprite_change_offset("uair", 118, 148);
 sprite_change_offset("dair", 118, 148);
 

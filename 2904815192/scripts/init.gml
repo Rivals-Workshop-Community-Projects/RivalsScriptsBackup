@@ -302,6 +302,34 @@ knight_compat_dream =
         "Don't think you can just waltz away without giving me some rent for seeing me!"
     ]
 
+isOnRivalsRogue = false;
+if (get_stage_data( SD_ID ) == 3556602243){
+	isOnRivalsRogue = true;
+}
+
+// rivals rogue stuff 
+ror_card_fast_movement = 0;
+ror_card_air_control = 0;
+ror_card_higher_airspeed = 0;
+
+ror_card_install_black_jack = 0;
+ror_install_timer = 0;
+ror_luck = 0;
+ror_card_install_slow_start = 0;
+ror_card_install_burst = 0;
+ror_card_funny_dash = 0;
+ror_tidal_mult = 0;
+ror_card_gold_rush = 0;
+
+if (isOnRivalsRogue){
+	sandstorm_thing = obj_stage_main.sandstorm_active;
+} else {
+	sandstorm_thing = 1;
+}
+
+
+
+
 // frame data woodcock stuff
 
 initIndexes();

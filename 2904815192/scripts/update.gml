@@ -1,5 +1,16 @@
 //update.gml
 
+/*
+
+print("==============================================================");
+print("init dash speed: " + string(initial_dash_speed));
+print("dash speed: " + string(dash_speed));
+print("walk speed: " + string(walk_speed));
+print("air accel: " + string(air_accel));
+print("air max spd: " + string(air_max_speed));
+print("leave ground max: " + string(leave_ground_max));
+*/
+
 //practice mode stuff
 if (get_match_setting(SET_PRACTICE)){
 	if (up_down && taunt_down){
@@ -247,6 +258,11 @@ if (doublesBoostTimer != 0){
 	diceAfterimages = 0;
 }
 
+if (isOnRivalsRogue){
+	sandstorm_thing = obj_stage_main.sandstorm_active;
+} else {
+	sandstorm_thing = 1;
+}
 // Boosting Stats if You got a Double
 if (doublesBoostTimer != 0){
 	doublesBoostTimer--;
@@ -254,12 +270,69 @@ if (doublesBoostTimer != 0){
 	//move_cooldown[AT_NSPECIAL] = 4;
 	if (doublesCount == 1 || doublesCount == 2){ // not jail
 		//doubles stats
-		doublesWalkSpeedInc = 1 * doublesCount;
-		doublesDashStartSpeedInc = .45 * doublesCount;
-		doublesDashSpeedInc = .6 * doublesCount;
-		doublesAirAccelInc = .25 * doublesCount;
-		doublesAirMaxSpeedInc = .5 * doublesCount;
-		doublesLeaveGroundMaxInc = .4 * doublesCount;
+		doublesWalkSpeedInc = (1 * doublesCount)
+		+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+		
+		doublesDashStartSpeedInc = (.45 * doublesCount)
+		+
+			((
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		doublesDashSpeedInc = (.6 * doublesCount)
+		+
+			((
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		doublesAirAccelInc = (.25 * doublesCount)
+		+	(ror_card_air_control * .1) //Air Control + .1 Per Card
+		+ 	((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 1 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 1 Per Card
+		+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.1 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		;
+		
+		doublesAirMaxSpeedInc = (.5 * doublesCount)
+		+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		doublesLeaveGroundMaxInc = (.4 * doublesCount)
+		+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		// =====
 		
 		walk_speed = 3 + doublesDashStartSpeedInc; //keep these variables stable when not in doubles (note to myself)
 		initial_dash_speed = 6.85 + doublesDashSpeedInc;
@@ -270,12 +343,69 @@ if (doublesBoostTimer != 0){
 	} else if (doublesCount == 3){ //jail
 		//
 		//jail stats
-		doublesWalkSpeedInc = -.3;
-		doublesDashStartSpeedInc = -.85;
-		doublesDashSpeedInc = -.2;
-		doublesAirAccelInc = -.1;
-		doublesAirMaxSpeedInc = -.05;
-		doublesLeaveGroundMaxInc = -.2;
+		doublesWalkSpeedInc = -.3
+		+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+		
+		doublesDashStartSpeedInc = -.85
+		+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+		
+		doublesDashSpeedInc = -.2
+		+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+		
+		doublesAirAccelInc = -.1
+		+	(ror_card_air_control * .1) //Air Control + .1 Per Card
+		+ 	((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 1 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 1 Per Card
+		+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.1 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		;
+		
+		doublesAirMaxSpeedInc = -.05
+		+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		doublesLeaveGroundMaxInc = -.2
+		+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+		
+		// =====
 		
 		var cdAmount = 4;
 		move_cooldown[AT_JAB] = cdAmount;
@@ -295,6 +425,8 @@ if (doublesBoostTimer != 0){
 		move_cooldown[AT_FSPECIAL] = cdAmount;
 		move_cooldown[AT_DSPECIAL] = cdAmount;
 		
+		// =====
+		
 		walk_speed = 3 + doublesDashStartSpeedInc; //keep these variables stable when not in doubles (note to myself)
 		initial_dash_speed = 6.85 + doublesDashSpeedInc;
 		dash_speed = 5.5 + doublesWalkSpeedInc;
@@ -304,12 +436,69 @@ if (doublesBoostTimer != 0){
 	}
 } else {
 	doublesUsage = false;
-	walk_speed = 3; //keep these variables stable when not in doubles (note to myself)
-	initial_dash_speed = 6.85;
-	dash_speed = 5.5;
-	air_max_speed = 4.5;
-	air_accel = .3;
-	leave_ground_max = 5.2;
+	
+	//keep these variables stable when not in doubles (note to myself)
+	walk_speed = 3
+	+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+	
+	initial_dash_speed = 6.85
+	+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+	
+	dash_speed = 5.5
+	+
+			(
+				(ror_card_fast_movement * 1) //Fast Movement + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+        ) 
+		*   (1 + ror_card_funny_dash * 0.25) //Funny Run Multiplier
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0)) //Gold Rush
+		;
+	
+	air_max_speed = 4.5
+	+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
+	
+	air_accel = .3
+	+	(ror_card_air_control * .1) //Air Control + .1 Per Card
+	+ 	((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 1 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 1 Per Card
+	+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.1 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+	;
+	
+	leave_ground_max = 5.2
+	+ ((
+			+   (ror_card_higher_airspeed * 1) //Higher Airspeed + 1 Per Card
+			+   ((ror_card_install_black_jack && ror_install_timer) && ror_luck && ror_luck % 21 == 0 ? 3 * (ror_card_install_slow_start + 1) : 0) //Black Jack + 3 Per Card
+			+   (ror_install_timer && ror_card_install_burst ? ror_card_install_burst * 0.5 * (ror_card_install_slow_start + 1) : 0) //Burst of Speed (Install)
+		)
+		*   (1 + (ror_tidal_mult)) //Tidal Flow Multiplier
+		*   (1 + ((sandstorm_thing && ror_card_gold_rush) ? ror_card_gold_rush * .1 : 0))) //Gold Rush
+		;
 }
 
 if (doublesBoostTimer == 1){
