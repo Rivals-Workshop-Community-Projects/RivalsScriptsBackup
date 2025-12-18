@@ -124,11 +124,11 @@ if ("alt_cur" in self && !s_alt && (alt_cur == 0 || alt_cur == 30))
 {
     col_lightmain = [
         [static_colorO[6*4+0], static_colorO[6*4+1], static_colorO[6*4+2]],
-        [get_color_profile_slot_r(26, 6)/255, get_color_profile_slot_g(26, 6)/255, get_color_profile_slot_b(26, 6)/255],
+        [get_color_profile_slot_r(27, 6)/255, get_color_profile_slot_g(27, 6)/255, get_color_profile_slot_b(27, 6)/255],
     ];
     col_lightsub = [
         [static_colorO[7*4+0], static_colorO[7*4+1], static_colorO[7*4+2]],
-        [get_color_profile_slot_r(26, 7)/255, get_color_profile_slot_g(26, 7)/255, get_color_profile_slot_b(26, 7)/255],
+        [get_color_profile_slot_r(27, 7)/255, get_color_profile_slot_g(27, 7)/255, get_color_profile_slot_b(27, 7)/255],
     ];
 }
 
