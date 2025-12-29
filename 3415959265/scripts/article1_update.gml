@@ -18,12 +18,21 @@ var _mirror_ok =
     (_att == AT_NSPECIAL      && (_win >= 4  && _win <= 5 )) ||
     (_att == AT_NSPECIAL_AIR  && (_win >= 4  && _win <= 6 ));
 
-if (_mirror_ok && instance_exists(player_id.my_grab_id)) {
-    slam_grab_id = player_id.my_grab_id;
-} else if (!instance_exists(slam_grab_id)) {
-    slam_grab_id = noone;
+if (_mirror_ok) {
+    if (instance_exists(player_id.my_grab_id)) {
+        slam_grab_id = player_id.my_grab_id;
+    } else {
+        slam_grab_id = noone;
+    }
+} else {
+    // If we're not actively slamming (states 8–10), drop the reference even if the instance still exists.
+    if (!(state == 8 || state == 9 || state == 10)) {
+        slam_grab_id = noone;
+    }
 }
 
+
+print_debug(slam_grab_id)
 // Resolve a collider we can test against for slam (hb if reliable, else player)
 slam_meet_target = noone;
 var _p = slam_grab_id;
@@ -104,7 +113,7 @@ for (var i = 0; i < ds_list_size(player_id.article_list); i++) {
 				var _in_slam_window =
 				    (_pa == AT_FSTRONG      && (_pw >= 8  && _pw <= 17)) ||
 				    (_pa == AT_EXTRA_2      && (_pw >= 6  && _pw <= 7 )) ||
-				    (_pa == AT_USTRONG      && (_pw >= 7  && _pw <= 9 )) ||
+				    (_pa == AT_USTRONG      && (_pw >= 1  && _pw <= 9 )) ||
 				    (_pa == AT_USPECIAL     && (_pw >= 7  && _pw <= 8 )) ||
 				    (_pa == AT_NSPECIAL     && (_pw >= 4  && _pw <= 5 )) ||
 				    (_pa == AT_NSPECIAL_AIR && (_pw >= 4  && _pw <= 6 ));

@@ -621,7 +621,7 @@ if(type == 0){
 					var splash_fx = spawn_hit_fx(x - 20 * spr_dir, y + 22, player_id.vfx_dattack_jumpfx)
 					splash_fx.spr_dir = spr_dir
 				}
-			}else if(state_timer mod round(6 - (3 * abs(hsp / 10))) == 0 && !slow && !strong){
+			}else if(state_timer mod max(round(6 - (3 * abs(hsp / 10))), 1) == 0 && !slow && !strong){ 
 				sound_play(asset_get("sfx_waterhit_weak"), false, noone, 0.75, clamp(abs(hsp) / 8, 0.75, 2))
 				for(i = 0; i < 2; i++){
 					spawn_hit_fx(x - 20 + random_func_2(i, 40, true), y - 20 + random_func_2(i + 10, 30, true), player_id.vfx_waterfx_small)
@@ -632,7 +632,7 @@ if(type == 0){
 				multihit_hitbox.player = current_owner
 				multihit_hitbox.image_xscale *= size
 				multihit_hitbox.image_yscale *= size
-			}else if(state_timer mod round(4 - (2 * abs(hsp / 10))) == 0 && !slow && strong){
+			}else if(state_timer mod max(round(4 - (2 * abs(hsp / 10))), 1) == 0 && !slow && strong){
 				sound_play(asset_get("sfx_waterhit_weak"), false, noone, 0.75, clamp(abs(hsp) / 8, 0.75, 2))
 				for(i = 0; i < 3; i++){
 					spawn_hit_fx(x - 20 + random_func_2(i, 40, true), y - 20 + random_func_2(i + 10, 30, true), player_id.vfx_waterfx_small)
@@ -742,7 +742,7 @@ if(type == 0){
 			draw_index = sprite_get("sawblade_small")
 		}
 		
-		if(state_timer mod round(6 - (3 * abs(vsp / 10))) == 0 && !slow && !strong){
+		if(state_timer mod max(round(6 - (3 * abs(hsp / 10))), 1) == 0 && !slow && !strong){
 			sound_play(asset_get("sfx_waterhit_weak"), false, noone, 0.75, clamp(abs(vsp) / 6, 0.75, 2))
 			for(i = 0; i < 2; i++){
 				spawn_hit_fx(x - 20 + random_func_2(i, 40, true), y - 20 + random_func_2(i + 10, 20, true), player_id.vfx_waterfx_small)
@@ -753,7 +753,7 @@ if(type == 0){
 			multihit_hitbox.image_xscale *= size
 			multihit_hitbox.parent_article = self
 				multihit_hitbox.image_yscale *= size
-		}else if(state_timer mod round(4 - (2 * abs(vsp / 10))) == 0 && !slow && strong){
+		}else if(state_timer mod max(round(4 - (2 * abs(vsp / 10))), 1) == 0 && !slow && strong){
 			sound_play(asset_get("sfx_waterhit_weak"), false, noone, 0.75, clamp(abs(vsp) / 6, 0.75, 2))
 			for(i = 0; i < 3; i++){
 				spawn_hit_fx(x - 20 + random_func_2(i, 40, true), y - 20 + random_func_2(i + 10, 20, true), player_id.vfx_waterfx_small)

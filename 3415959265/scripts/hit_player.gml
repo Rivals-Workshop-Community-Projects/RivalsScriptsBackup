@@ -115,15 +115,6 @@ switch (my_hitboxID.attack)
               hit_player_obj.should_make_shockwave = false;
           }
         }
-	    // Iterate through the article list to apply the slam grab ID
-	    for (var i = 0; i < ds_list_size(article_list); i++) {
-	        var article_instance = article_list[| i];
-	        
-	        if (instance_exists(article_instance) && my_hitboxID.hbox_num == 7 && !article_instance.should_galaxy) {
-	            hit_player_obj.should_make_shockwave = false; // Prevent shockwave for grab interaction
-	            set_grab_id(); // Set the grab ID
-	        }
-	    }        
         break;
     case AT_DSTRONG:
         if (my_hitboxID.hbox_num < 5) sound_play(sound_get("sfx_saya_blow_medium"), 0, noone, 0.8, 1.1);
@@ -174,16 +165,6 @@ switch (my_hitboxID.attack)
         if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4) sound_play(sound_get("sfx_saya_blow_medium"), 0, noone, 0.6, 1.1);
         if (my_hitboxID.hbox_num == 5) sound_play(sound_get("sfx_saya_blow_heavy1"), 0, noone, 0.9);
         if (my_hitboxID.hbox_num == 6) sound_play(sound_get("sfx_saya_blow_medium"), 0, noone, 0.9, 0.9);
-        
-	    // Iterate through the article list to apply the slam grab ID
-	    for (var i = 0; i < ds_list_size(article_list); i++) {
-	        var article_instance = article_list[| i];
-	        
-	        if (instance_exists(article_instance) && my_hitboxID.hbox_num == 5 && !article_instance.should_galaxy) {
-	            hit_player_obj.should_make_shockwave = false; // Prevent shockwave for grab interaction
-	            set_grab_id(); // Set the grab ID
-	        }
-	    }        
         break; 
     case AT_DSPECIAL:
         if (my_hitboxID.hbox_num < 5) sound_play(sound_get("sfx_saya_explosion_blow2"), 0, noone, 1);
